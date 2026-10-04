@@ -255,12 +255,13 @@ export function outreachService(ctx) {
     return { view, digest: composeDigest({ name: life.name, city: CITY_NAMES[life.cityId] ?? life.cityId, missions: view.missions, events: upcomingEvents(now(), 2, life.cityId).slice(0, 3),
       lines: (life.state.social?.notices ?? []).slice(-6).map((notice) => ({ text: notice.text, at: notice.at, group: 'sim' })) }) };
   }
-  let running = false, lastTick = 0;
+  let running = false, lastTick = 0, stopped = false, current = null;
   /**
    * Look at who is due a message and send it. Runs at most once a minute from the server's heartbeat
    * (and when the operator asks). Each due message is claimed in a saved transaction first.
    */
-  async function tick({ force = false } = {}) {
+  function tick(options) { if (stopped) return Promise.resolve({ ran: false, reason: 'stopping' }); const run = runTick(options); current = run; run.then(() => {}, () => {}).then(() => { if (current === run) current = null; }); return run; }
+  async function runTick({ force = false } = {}) {
     if (running || (!force && now() - lastTick < LIMITS.tickMs)) return { ran: false };
     running = true; lastTick = now();
     const jobs = [];
@@ -309,6 +310,9 @@ export function outreachService(ctx) {
     finally { running = false; }
   }
   ctx.on?.('heartbeat', () => { void tick(); });
+  // The server is stopping: no new round starts, and a round that is sending is waited for, so what it sent is recorded
+  // before the store closes (a claimed message is then never attempted again after a restart).
+  ctx.closing?.push(async () => { stopped = true; await current?.catch(() => {}); });
 
   // ---- what each side may see ---------------------------------------------------------------------
   /** For the player's own Stay in touch screen. */

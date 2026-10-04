@@ -147,8 +147,14 @@
  *   ctx.env(name) / ctx.fetch / ctx.keyFile(name, make)   for the one module that reaches outside the game (server/growth/
  *                                          outreach.js): a fixed list of settings, an outside request, and a secret this server makes
  *                                          for itself and keeps in DATA_DIR/keys with mode 0600. A page may also be POSTed to (`method`).
+ *                                          ctx.env answers only for the names on its allowlist (server.js OUTREACH_ENV) and '' for everything
+ *                                          else; ctx.fetch refuses anything but https, never follows a redirect and is cut off after 15 s whatever
+ *                                          the caller asked. The host writes every page itself, with fixed headers: a page returns { status, html, cache? }.
  *   ctx.startup                            array of promises the host awaits before it takes requests
  *                                          (a module loading an in-memory index pushes its load here)
+ *   ctx.closing                            array of async functions the host runs, in order, when it stops — before the world
+ *                                          registry and the store are closed (a module that may be in the middle of sending
+ *                                          something outside the game waits for it here). Absent on a host without it (use ctx.closing?.push).
  *   ctx.shards                             the world's shard store (server/world/shards.js): one append-only file per local
  *                                          government, used only through the world service (server/world/service.js)
  *   ctx.randomId()                         a random UUID (for salts and ids; not a clock, not a secret store)

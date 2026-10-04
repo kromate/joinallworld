@@ -108,6 +108,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // Rotate credentials created by versions that exposed the cookie as a public ID.
     for (const secret of sessionKeys(db, session => !session.publicId || !Number.isFinite(session.expiresAt) || session.expiresAt <= now())) archiveSession(db, secret, db.sessions[secret]);
   });
+  /** The longest an outside request (ctx.fetch) may take, whatever its caller asked for. */
+  const OUTBOUND_TIMEOUT_MS = 15000;
   const OUTREACH_ENV = ['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'EMAIL_FROM_NAME', 'EMAIL_CONTACT_LINE', 'EMAIL_DAILY_CAP', 'WHATSAPP_CHANNEL_URL', 'VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT', 'PUSH_DAILY_CAP'];
   const keyFiles = new Map();
   /** A secret made once by `make()` and kept beside the data file, readable by the server's user only. Never logged. */
@@ -215,6 +217,37 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       return true;
     } catch (error) { log(`Response could not be written: ${error?.code || error?.message}`); try { res.destroy(); } catch {} return false; }
   }
+  /**
+   * The ONLY place an HTML page is written (ctx.pages: the link preview /s/<code>, the e-mail pages /e/…). The same promise
+   * as reply(): at most one answer per request, and it never throws. Every page goes out with the same headers, which a
+   * page cannot change: no script may run, nothing may frame it, it sets no cookie and it sends no referrer.
+   */
+  const PAGE_HEADERS = Object.freeze({ 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY',
+    'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'" });
+  function replyPage(res, status, html, { cache = false, head = false } = {}) {
+    if (res.headersSent || res.writableEnded || res.destroyed) return false;
+    try {
+      res.writeHead(Number.isInteger(status) && status >= 200 && status <= 599 ? status : 200, { ...PAGE_HEADERS, 'Cache-Control': cache ? 'public, max-age=300' : 'no-store' });
+      res.end(head ? undefined : html);
+      return true;
+    } catch (error) { log(`Page could not be written: ${error?.code || error?.message}`); try { res.destroy(); } catch {} return false; }
+  }
+  /** The registered page whose prefix a path starts with: [prefix, render] or undefined. */
+  const pageFor = (pathname) => [...ctx.pages].find(([prefix]) => pathname.startsWith(prefix));
+  /** index.html with the default preview image made absolute (a link preview needs an absolute URL): see serveIndex. */
+  let indexCache = null;
+  async function serveIndex(req, file) {
+    const info = await stat(file);
+    if (!indexCache || indexCache.mtimeMs !== info.mtimeMs || indexCache.size !== info.size) indexCache = { mtimeMs: info.mtimeMs, size: info.size, text: await readFile(file, 'utf8'), byOrigin: new Map() };
+    const origin = publicOrigin(req);
+    if (!origin) return indexCache.text;
+    if (!indexCache.byOrigin.has(origin)) {
+      if (indexCache.byOrigin.size >= 8) indexCache.byOrigin.clear();
+      // Only the two preview-image attributes, and only when they are the site-relative /og/ path the build ships.
+      indexCache.byOrigin.set(origin, indexCache.text.replace(/(<meta (?:property="og:image"|name="twitter:image") content=")(\/og\/[A-Za-z0-9._-]+")/g, `$1${origin}$2`));
+    }
+    return indexCache.byOrigin.get(origin);
+  }
   // Nothing a request does may escape as an unhandled rejection: the last line of defence closes the connection.
   const server = http.createServer((req, res) => { handle(req, res).catch(() => { try { res.destroy(); } catch {} }); });
   async function handle(req, res) {
@@ -263,30 +296,39 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (sent && typeof result.after === 'function') { try { await result.after(); } catch (error) { log(`After-response step of ${req.method} ${route.key} failed: ${firstLine(error)}`); } }
         return;
       }
-      const paged = [...ctx.pages.keys()].some(prefix => url.pathname.startsWith(prefix));
+      const paged = pageFor(url.pathname);
       if (!['GET', 'HEAD'].includes(req.method) && !(paged && req.method === 'POST')) throw fail(405, 'method_not_allowed');
       // PAGES: a module may serve one small HTML page for a path prefix outside /api/ (ctx.pages — the link-preview
-      // page /s/<code>, routes/growth.js). The page gets the path, the query and the public origin, never the request;
-      // it may not set cookies, and it is sent with a policy that allows no script at all.
-      for (const [prefix, render] of ctx.pages) {
-        if (!url.pathname.startsWith(prefix)) continue;
-        if (!allow(`http:${addressOf(req)}`, 600)) throw fail(429, 'rate_limited');
-        // A POST to a page carries no body the page may read (the one use is an unsubscribe link: RFC 8058 posts a fixed form).
-        if (req.method === 'POST') req.resume();
-        const page = await render({ path: url.pathname, query: url.searchParams, origin: publicOrigin(req), ip: addressOf(req), method: req.method });
-        if (!page || typeof page.html !== 'string') { if (req.method === 'POST') throw fail(405, 'method_not_allowed'); break; }
-        if (res.headersSent || res.writableEnded) return;
-        res.writeHead(Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': page.cache === false || req.method === 'POST' ? 'no-store' : 'public, max-age=300',
-          'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'self'" });
-        res.end(req.method === 'HEAD' ? undefined : page.html);
-        return;
+      // page /s/<code> and the e-mail pages /e/…, routes/growth.js). A page is a route like any other for the host: the
+      // same per-address limit, the same telemetry hooks (a path TEMPLATE, never the path), one writer that answers at
+      // most once (replyPage). The page itself gets the path, the query and the public origin — never the request, its
+      // headers or its cookie — and returns { status, html }; it cannot set a header.
+      if (paged) {
+        const [prefix, render] = paged, ip = addressOf(req);
+        at = { key: `${prefix}*`, request: {}, began: performance.now() };
+        if (!allow(`http:${ip}`, 600)) throw fail(429, 'rate_limited');
+        // A POST to a page carries no body the page may read (the one use is an unsubscribe link: RFC 8058 posts a fixed
+        // form). It is drained without being kept, and a body larger than any such form ends the connection.
+        if (req.method === 'POST') { let seen = 0; req.on('data', (chunk) => { seen += chunk.length; if (seen > 8192) req.destroy(); }); req.resume(); }
+        const page = await render({ path: url.pathname, query: url.searchParams, origin: publicOrigin(req), ip, method: req.method });
+        if (page && typeof page.html === 'string') {
+          const status = Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200;
+          replyPage(res, status, page.html, { cache: page.cache !== false && req.method !== 'POST' && status === 200, head: req.method === 'HEAD' });
+          telemetry.http({ method: req.method, route: at.key, status, ms: performance.now() - at.began });
+          return;
+        }
+        // A registered prefix that renders nothing is not a page: a POST has nowhere else to go, a GET falls through to the game.
+        if (req.method === 'POST') throw fail(405, 'method_not_allowed');
+        at = null;
       }
       const root = resolve(distDir);
       let path = resolve(root, `.${decodeURIComponent(url.pathname)}`);
       if (path !== root && !path.startsWith(root + sep)) throw fail(403, 'invalid_path');
       if (extname(path) === '.map') throw fail(404, 'not_found'); // source maps are uploaded to Sentry, never served
       try { if (!(await stat(path)).isFile()) path = resolve(root, 'index.html'); } catch { path = resolve(root, 'index.html'); }
-      const bytes = await readFile(path);
+      // The game's own page: its default link-preview image is made absolute here, from PUBLIC_ORIGIN (or this request's own
+      // host when that is not set), because the crawlers of chat apps do not resolve a relative og:image.
+      const bytes = path === resolve(root, 'index.html') ? Buffer.from(await serveIndex(req, path)) : await readFile(path);
       if (res.headersSent || res.writableEnded) return;
       res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'X-Content-Type-Options': 'nosniff' });
       res.end(req.method === 'HEAD' ? undefined : bytes);
@@ -369,11 +411,23 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     //   keyFile(name, make) → Promise<object>   a secret this server makes for itself (signing key, push keys), kept in
     //                      DATA_DIR/keys/<name>.json with file mode 0600 and never in the data file or a response
     env: (name) => (OUTREACH_ENV.includes(name) && typeof env?.[name] === 'string' ? env[name] : ''),
-    fetch: (...args) => outbound(...args),
+    fetch(url, init = {}) {
+      // An outside request is HTTPS, bounded in time whatever the caller passed, and never follows a redirect (a provider
+      // that answers with one is treated as failed: the request must not be led to another host).
+      let target;
+      try { target = new URL(String(url)); } catch { return Promise.reject(new TypeError('Invalid outbound URL')); }
+      if (target.protocol !== 'https:') return Promise.reject(new TypeError('Outbound requests must use https'));
+      const limit = AbortSignal.timeout(OUTBOUND_TIMEOUT_MS);
+      const { signal, redirect, ...rest } = init && typeof init === 'object' ? init : {};
+      return outbound(target.href, { ...rest, redirect: 'error', signal: signal && typeof AbortSignal.any === 'function' ? AbortSignal.any([signal, limit]) : limit });
+    },
     keyFile,
     config: { publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup: [],
+    // Work a module must finish when the server stops, BEFORE the store is closed: async functions, run in order
+    // (outreach waits for a message that is being sent, so its outcome is in the data file).
+    closing: [],
     core: {
       archiveSession,
       expiredSessionKeys: (db) => sessionKeys(db, record => record.expiresAt <= now()),
@@ -524,7 +578,25 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // close(callback) reports back only once the store has written everything, so "the server has
   // stopped" always means "the data file is complete" — for a restart, a test or a shutdown script.
   const closeHttp = server.close.bind(server);
-  server.close = (callback) => { closeHttp((error) => { Promise.resolve(server.world.idle()).then(() => server.world.saveMeta()).then(() => shards.close()).catch(() => {}).then(() => store.close?.()).catch(() => {}).then(() => telemetry.close()).catch(() => {}).finally(() => callback?.(error)); }); return server; };
+  /**
+   * THE SHUTDOWN ORDER, one for every way the server stops (close(), SIGINT, SIGTERM). Each step is attempted even if the
+   * one before it failed, and none can throw:
+   *   1. modules finish what they are in the middle of (ctx.closing: outreach waits for a message being sent, so that
+   *      "sent" or "failed" is recorded and a restart can never send it twice)
+   *   2. the world registry settles, saves its summary and closes its shard files
+   *   3. the main store writes everything it holds                — from here the data on disk is complete
+   *   4. telemetry sends what it queued, last, so it can still report a failure of the steps above
+   */
+  let flushing = null;
+  server.flush = () => (flushing ??= (async () => {
+    const step = async (name, fn) => { try { await fn(); } catch (error) { log(`Shutdown: ${name} failed: ${firstLine(error)}`); } };
+    clearInterval(heartbeat);
+    for (const fn of ctx.closing.splice(0)) await step('a module', fn);
+    await step('the world registry', async () => { await server.world.idle(); await server.world.saveMeta(); await shards.close(); });
+    await step('the store', () => store.close?.());
+    await step('telemetry', () => telemetry.close());
+  })());
+  server.close = (callback) => { closeHttp((error) => { server.flush().finally(() => callback?.(error)); }); return server; };
   await Promise.all(ctx.startup.splice(0));
   return server;
 }
@@ -533,8 +605,13 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (process.env.STORE_MODE) console.error('STORE_MODE is no longer used: there is one store. See "Storage and limits" in the README.');
   const server = await createServer();
   const telemetry = useTelemetry(server.telemetry);
-  // Write anything not yet on disk — and send any telemetry still queued — before the process leaves.
-  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { Promise.resolve(server.world.saveMeta()).then(() => server.shards.close()).catch(() => {}).then(() => server.store.close?.()).catch(() => {}).then(() => telemetry.close()).finally(() => process.exit(0)); });
+  // Stop taking requests, then write everything in the one shutdown order (server.flush) before the process leaves. A step
+  // that hangs (a provider that never answers) cannot hold the process: after the deadline it exits with what is on disk.
+  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => {
+    const deadline = setTimeout(() => process.exit(0), 20000); deadline.unref();
+    try { server.closeIdleConnections?.(); for (const ws of server.wss.clients) ws.terminate(); } catch { /* already closing */ }
+    server.flush().finally(() => process.exit(0));
+  });
   // Only with error monitoring on: a crash is reported before the process exits as it would have anyway.
   if (telemetry.enabled) for (const event of ['uncaughtException', 'unhandledRejection']) process.once(event, (error) => { console.error(error); telemetry.captureError(error, { source: event, level: 'fatal' }); telemetry.close().finally(() => process.exit(1)); });
   telemetry.started();

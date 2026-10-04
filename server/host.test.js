@@ -209,3 +209,133 @@ test('the poll outcome key covers what a settlement can decide by chance', () =>
   const drift = structuredClone(base); drift.t = 5; drift.needs = { hunger: 49 };
   assert.equal(outcomeKey(drift), outcomeKey(base), 'the clock and slow need decay alone are not an outcome');
 });
+
+// ---- the merged host: pages, the outside-world capabilities, static files and shutdown ------------------------------
+
+/** A route module that registers pages which do everything a page must not, and reports what the host hands a module. */
+const pageRoutes = (seen) => (ctx) => {
+  seen.ctx = ctx;
+  ctx.pages.set('/p/', async ({ path, query, origin, ip, method, ...rest }) => {
+    seen.page = { path, origin, ip: typeof ip, method, extra: Object.keys(rest) };
+    if (path === '/p/throw') throw Error('page failed\nwith a second line');
+    if (path === '/p/nothing') return null;
+    if (path === '/p/odd') return { status: 99999, html: '<p>odd</p>', headers: { 'Set-Cookie': 'a=b', 'Content-Security-Policy': "default-src *" } };
+    if (path === '/p/private') return { status: 200, cache: false, html: '<p>private</p>' };
+    if (path === '/p/missing') return { status: 404, html: '<p>missing</p>' };
+    return { status: 200, html: `<p>${query.get('q') === '1' ? 'one' : 'page'}</p>` };
+  });
+  return {};
+};
+
+test('pages (/s/, /e/) are served by the host like any route: one answer, the same limit, fixed headers, a template for telemetry', async (t) => {
+  const seen = {}, calls = [];
+  const telemetry = { enabled: false, attach() {}, close: async () => {}, started() {}, captureError() {}, socketIn() {}, socketOut() {}, socketClosed() {}, socketFailed() {},
+    http: (entry) => calls.push(['http', entry.method, entry.route, entry.status, Object.keys(entry).sort().join()]), httpFailed: (error, entry) => calls.push(['failed', entry.method, entry.route, entry.status, entry.code]) };
+  const f = await fixture(t, { routes: [core, pageRoutes(seen)], telemetry, log: () => {} });
+  const get = (path, init) => fetch(`${f.base}${path}`, init);
+  const page = await get('/p/x?q=1');
+  assert.deepEqual([page.status, await page.text()], [200, '<p>one</p>']);
+  assert.deepEqual([page.headers.get('content-type'), page.headers.get('x-content-type-options'), page.headers.get('referrer-policy'), page.headers.get('x-frame-options'), page.headers.get('cache-control'), page.headers.get('set-cookie')],
+    ['text/html; charset=utf-8', 'nosniff', 'no-referrer', 'DENY', 'public, max-age=300', null]);
+  const csp = page.headers.get('content-security-policy');
+  assert.match(csp, /default-src 'none'/); assert.match(csp, /frame-ancestors 'none'/); assert.ok(!/script-src/.test(csp), 'no script may run on a page');
+  // The page is handed the path, the query, the origin, the address and the method — never the request, a header or a cookie.
+  assert.deepEqual(seen.page, { path: '/p/x', origin: f.base, ip: 'string', method: 'GET', extra: [] });
+  // A page cannot set a header or an impossible status, and an error page or a private page is never cached.
+  const odd = await get('/p/odd');
+  assert.deepEqual([odd.status, odd.headers.get('set-cookie'), odd.headers.get('content-security-policy')], [200, null, csp]);
+  assert.equal((await get('/p/private')).headers.get('cache-control'), 'no-store');
+  const missing = await get('/p/missing');
+  assert.deepEqual([missing.status, missing.headers.get('cache-control')], [404, 'no-store']);
+  // HEAD has the headers and no body; POST is allowed only to a page, is never cached and its body is not read.
+  const head = await get('/p/x', { method: 'HEAD' });
+  assert.deepEqual([head.status, await head.text()], [200, '']);
+  const posted = await get('/p/x', { method: 'POST', body: 'List-Unsubscribe=One-Click', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+  assert.deepEqual([posted.status, posted.headers.get('cache-control'), seen.page.method], [200, 'no-store', 'POST']);
+  assert.equal((await get('/not-a-page', { method: 'POST', body: 'x' })).status, 405, 'POST outside /api/ and outside a page is refused');
+  assert.equal((await get('/p/nothing', { method: 'POST', body: 'x' })).status, 405);
+  // A page that throws is one generic answer, logged by its first line only, and the server carries on.
+  const thrown = await get('/p/throw');
+  assert.deepEqual([thrown.status, await thrown.json()], [500, { error: 'internal_error' }]);
+  assert.equal((await get('/p/x')).status, 200);
+  // Telemetry sees a path template and a status — never the path, the query or a body.
+  assert.deepEqual(calls.filter((call) => call[2] === '/p/*').slice(0, 2), [['http', 'GET', '/p/*', 200, 'method,ms,route,status'], ['http', 'GET', '/p/*', 200, 'method,ms,route,status']]);
+  assert.ok(calls.some((call) => call[0] === 'failed' && call[2] === '/p/*' && call[3] === 500));
+  assert.ok(!JSON.stringify(calls).includes('q=1') && !JSON.stringify(calls).includes('/p/x'));
+  // The same per-address budget as the API: once it is used up a page is refused like any request.
+  let limited = null;
+  for (let i = 0; i < 620 && !limited; i++) { const res = await get('/p/x'); if (res.status === 429) limited = await res.json(); else await res.arrayBuffer(); }
+  assert.deepEqual(limited, { error: 'rate_limited' });
+});
+
+test('ctx.env is an allowlist, ctx.fetch is https-only, bounded and follows no redirect, and key files are private', async (t) => {
+  const seen = {}, outbound = [];
+  const env = { ZEPTOMAIL_AUTH: 'send-token', EMAIL_FROM_ADDRESS: 'hello@example.com', WHATSAPP_CHANNEL_URL: 'https://whatsapp.com/channel/x', MODERATOR_TOKEN: TOKEN, SENTRY_AUTH_TOKEN: 'secret', PATH: '/usr/bin', HOME: '/root', POSTHOG_KEY: 'phc_x', EMAIL_DAILY_CAP: 5 };
+  const f = await fixture(t, { routes: [core, pageRoutes(seen)], env, fetch: async (url, init) => { outbound.push({ url, init }); return { ok: true, status: 200 }; } });
+  const { ctx } = seen;
+  assert.deepEqual(['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'WHATSAPP_CHANNEL_URL'].map((name) => ctx.env(name)), ['send-token', 'hello@example.com', 'https://whatsapp.com/channel/x']);
+  for (const name of ['MODERATOR_TOKEN', 'SENTRY_AUTH_TOKEN', 'PATH', 'HOME', 'POSTHOG_KEY', 'DATA_DIR', 'constructor', '__proto__', 'toString', '', undefined, null, 7]) assert.equal(ctx.env(name), '', String(name));
+  assert.equal(ctx.env('EMAIL_DAILY_CAP'), '', 'a value that is not a string is not handed out');
+  assert.equal(ctx.env('EMAIL_FROM_NAME'), '', 'an allowed name that is not set is the empty string');
+  // Outside requests.
+  for (const url of ['http://api.zeptomail.com/v1.1/sg/email', 'file:///etc/passwd', 'ftp://example.com/', 'not a url', '//example.com', '']) await assert.rejects(() => ctx.fetch(url, { method: 'POST' }), TypeError, url);
+  assert.equal(outbound.length, 0, 'a refused request never reaches the network');
+  const own = new AbortController();
+  await ctx.fetch('https://api.zeptomail.com/v1.1/sg/email', { method: 'POST', body: '{}', redirect: 'follow', signal: own.signal, headers: { Authorization: 'x' } });
+  await ctx.fetch('https://fcm.googleapis.com/fcm/send/abc');
+  assert.deepEqual(outbound.map((call) => [call.url, call.init.redirect, call.init.signal instanceof AbortSignal, call.init.method]), [['https://api.zeptomail.com/v1.1/sg/email', 'error', true, 'POST'], ['https://fcm.googleapis.com/fcm/send/abc', 'error', true, undefined]]);
+  assert.notEqual(outbound[0].init.signal, own.signal, 'the caller’s signal is combined with the host’s time limit, not trusted alone');
+  own.abort(); assert.equal(outbound[0].init.signal.aborted, true, 'and the caller can still cancel');
+  // A secret the server makes for itself: made once, readable by the server's user only, and only under a plain name.
+  const { stat } = await import('node:fs/promises'), { join } = await import('node:path');
+  let made = 0;
+  const first = await ctx.keyFile('test-key', async () => { made += 1; return { key: 'k1' }; }), again = await ctx.keyFile('test-key', async () => { made += 1; return { key: 'k2' }; });
+  assert.deepEqual([first, again, made], [{ key: 'k1' }, { key: 'k1' }, 1]);
+  assert.equal((await stat(join(f.dir, 'keys', 'test-key.json'))).mode & 0o777, 0o600);
+  for (const name of ['../escape', 'a/b', 'UPPER', '', '.hidden', 'x'.repeat(40)]) await assert.rejects(() => ctx.keyFile(name, async () => ({})), /Invalid key file name/, name);
+});
+
+test('static files: a source map is never served, and the game page carries an absolute preview image', async (t) => {
+  const { mkdtemp, writeFile, mkdir, rm } = await import('node:fs/promises'), { tmpdir } = await import('node:os'), { join } = await import('node:path');
+  const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
+  t.after(() => rm(dist, { recursive: true, force: true }));
+  await mkdir(join(dist, 'assets'));
+  const page = '<!doctype html><head><meta property="og:image" content="/og/allworld.jpg"><meta name="twitter:image" content="/og/allworld.jpg"><meta property="og:image:alt" content="/og/not-an-image"><link rel="icon" href="/icons/icon-192.png"></head><body>game</body>';
+  await writeFile(join(dist, 'index.html'), page);
+  await writeFile(join(dist, 'assets', 'app.js'), 'console.log(1)');
+  await writeFile(join(dist, 'assets', 'app.js.map'), '{"sources":["../../src/secret.js"]}');
+  const f = await fixture(t, { distDir: dist, publicOrigin: 'https://play.example' });
+  const get = (path, headers) => fetch(`${f.base}${path}`, { headers });
+  assert.deepEqual([(await get('/assets/app.js')).status, (await get('/assets/app.js.map')).status, (await get('/anything.map')).status], [200, 404, 404]);
+  assert.deepEqual(await (await get('/assets/app.js.map')).json(), { error: 'not_found' });
+  const expected = page.replaceAll('content="/og/allworld.jpg"', 'content="https://play.example/og/allworld.jpg"');
+  // The index, and every path that falls back to it (an invite link, a share link on a host without the page).
+  for (const path of ['/', '/index.html', '/v/11111111-1111-4111-8111-111111111111', '/some/deep/link']) assert.equal(await (await get(path)).text(), expected, path);
+  assert.ok(expected.includes('content="/og/not-an-image"') && expected.includes('href="/icons/icon-192.png"'), 'only the two preview-image tags are rewritten');
+  // Without PUBLIC_ORIGIN the request's own host is used — and only if it is made of host characters.
+  const g = await fixture(t, { distDir: dist, publicOrigin: '' });
+  assert.ok((await (await fetch(`${g.base}/`)).text()).includes(`content="${g.base}/og/allworld.jpg"`));
+  const h = await fixture(t, { distDir: dist, publicOrigin: 'javascript:alert(1)//' });
+  assert.ok((await (await fetch(`${h.base}/`)).text()).includes(`content="${h.base}/og/allworld.jpg"`), 'a PUBLIC_ORIGIN that is not an origin is ignored');
+});
+
+test('shutdown has one order: modules finish, the world and the store are written, telemetry goes last — and each step runs once', async (t) => {
+  const order = [], { mkdtemp, rm } = await import('node:fs/promises'), { tmpdir } = await import('node:os'), { join } = await import('node:path'), { once } = await import('node:events');
+  const { createServer } = await import('./server.js'), { createStore } = await import('./store.js');
+  const dir = await mkdtemp(join(tmpdir(), 'joinallworld-stop-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  const real = await createStore(dir);
+  const store = new Proxy(real, { get: (target, key) => (key === 'close' ? async () => { order.push('store'); return target.close(); } : Reflect.get(target, key)) });
+  const telemetry = { enabled: false, attach() {}, started() {}, captureError() {}, http() {}, httpFailed() {}, socketIn() {}, socketOut() {}, socketClosed() {}, socketFailed() {}, close: async () => { order.push('telemetry'); } };
+  const module = (ctx) => { ctx.closing.push(async () => { await new Promise((done) => setTimeout(done, 20)); order.push('module'); }); ctx.closing.push(async () => { order.push('module-that-fails'); throw Error('boom'); }); return {}; };
+  const logs = [];
+  const server = await createServer({ dataDir: dir, store, telemetry, routes: [core, module], log: (line) => logs.push(line) });
+  server.listen(0, '127.0.0.1'); await once(server, 'listening');
+  const closeShards = server.shards.close.bind(server.shards);
+  server.shards.close = async () => { order.push('world'); return closeShards(); };
+  await new Promise((done) => server.close(done));
+  assert.deepEqual(order, ['module', 'module-that-fails', 'world', 'store', 'telemetry']);
+  assert.ok(logs.some((line) => /Shutdown: a module failed: boom/.test(line)), 'a failing step is logged and does not stop the rest');
+  await server.flush();
+  assert.equal(order.length, 5, 'asking again flushes nothing twice');
+});

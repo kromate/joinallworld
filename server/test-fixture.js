@@ -1,17 +1,42 @@
 // Shared server test fixture: a real server on a random port with a controllable clock.
 // Usage is documented in server/routes/index.js ("HOW TO TEST").
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, rm, writeFile, rename } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { once } from 'node:events';
 import { WebSocket } from 'ws';
 import { createServer } from './server.js';
+import { createStore } from './store.js';
 
-export async function fixture(t, options = {}) {
+/**
+ * File calls a test can break (pass as fixture(t, { disk }) or createStore(dir, { io: disk.io })):
+ *   disk.fail = 'ENOSPC'   every write of the data file fails from now on; null heals it
+ *   disk.hold()            the next write waits until the returned function is called
+ */
+export function flakyDisk() {
+  const disk = { fail: null, gate: null, writes: 0 };
+  disk.hold = () => { let open; const gate = disk.gate = new Promise((done) => { open = done; }); return () => { if (disk.gate === gate) disk.gate = null; open(); }; };
+  disk.io = {
+    async writeFile(...args) {
+      disk.writes += 1;
+      const gate = disk.gate;
+      if (gate) await gate;
+      if (disk.fail) throw Object.assign(new Error(`${disk.fail}: injected write failure`), { code: disk.fail });
+      return writeFile(...args);
+    },
+    rename,
+  };
+  return disk;
+}
+
+export async function fixture(t, { disk, ...options } = {}) {
   const dir = await mkdtemp(join(tmpdir(), 'joinallworld-test-'));
   let time = 100000;
-  const server = await createServer({ dataDir: dir, now: () => time, sessionTtlMs: 2592000000, ...options });
+  const logs = []; // what the server would have printed: tests read it, and failure-injection tests stay quiet
+  const log = (line) => logs.push(String(line));
+  const store = disk ? await createStore(dir, { io: disk.io, log, ...(options.lazyFlushMs !== undefined ? { lazyFlushMs: options.lazyFlushMs } : {}) }) : undefined;
+  const server = await createServer({ dataDir: dir, now: () => time, sessionTtlMs: 2592000000, ...(store ? { store } : {}), ...(disk ? { log } : {}), ...options });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   const base = `http://127.0.0.1:${server.address().port}`;
   const sockets = [];
@@ -29,5 +54,7 @@ export async function fixture(t, options = {}) {
     return { ws, next: () => queue.length ? Promise.resolve(queue.shift()) : new Promise((resolve, reject) => { const timeout = setTimeout(() => reject(Error('Message timeout')), 2000); waiting.push(message => { clearTimeout(timeout); resolve(message); }); }) };
   }
   async function joinRoom(device) { const peer = await socket(device); peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await peer.next(); return peer; }
-  return { base, request, device, action, socket, joinRoom, advance: ms => { time += ms; }, dir, server, now: () => time, flush: () => server.store.flush() };
+  /** A client id / request id as a browser makes one: server time, then a random UUID (server/routes/once.js). */
+  const id = () => `${time}:${randomUUID()}`;
+  return { base, request, device, action, socket, joinRoom, id, logs, advance: ms => { time += ms; }, dir, server, now: () => time, flush: () => server.store.flush() };
 }

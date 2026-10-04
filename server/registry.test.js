@@ -17,17 +17,20 @@ function guestbookRoutes(ctx) {
   return {
     'GET /api/guestbook/entries': async () => ({ body: { entries: await ctx.store.read(db => ctx.collection(db, 'guestbook', { entries: [] }).entries) } }),
     'POST /api/guestbook/entries/:city': async (request) => {
-      const { text } = await request.json();
+      const { text, requestId } = await request.json();
       if (typeof text !== 'string' || !text.trim() || text.length > 80) throw ctx.fail(400, 'invalid_entry');
       if (!ctx.cityIds.includes(request.params.city)) throw ctx.fail(400, 'invalid_city');
       const result = await ctx.store.transact(db => {
         const session = request.requireSession(db, { renew: true });
         const life = ctx.settle(session, request.params.city);
-        const paid = ctx.act(life, { type: 'travel', payload: { id: 'library', mode: 'cab' }, cityId: request.params.city });
-        if (!paid.ok) throw ctx.fail(409, paid.code);
-        const book = ctx.collection(db, 'guestbook', { entries: [] });
-        book.entries.push({ by: ctx.publicSession(session), text: text.trim(), at: ctx.now() });
-        return { count: book.entries.length, cash: life.cash, sent: ctx.push(session.publicId, { type: 'guestbook-signed', count: book.entries.length }) };
+        // The fare and the entry are one receipted step: the same requestId again returns this result and charges nothing.
+        return ctx.once(db, session, { id: requestId, kind: 'guestbook.sign', fingerprint: [request.params.city, text] }, () => {
+          const paid = ctx.act(life, { type: 'travel', payload: { id: 'library', mode: 'cab' }, cityId: request.params.city });
+          if (!paid.ok) throw ctx.fail(409, paid.code);
+          const book = ctx.collection(db, 'guestbook', { entries: [] });
+          book.entries.push({ by: ctx.publicSession(session), text: text.trim(), at: ctx.now() });
+          return { count: book.entries.length, cash: life.cash, sent: ctx.push(session.publicId, { type: 'guestbook-signed', count: book.entries.length }) };
+        });
       });
       return { status: 201, body: result, renew: true };
     },
@@ -57,12 +60,12 @@ test('route registry: a module gets storage, sessions, settlement, actions and p
   assert.equal((await f.request('/api/guestbook/entries/lagos', { text: 'Hi' })).status, 401);
   assert.deepEqual(await (await f.request('/api/guestbook/entries/lagos', { text: '' }, a.cookie)).json(), { error: 'invalid_entry' });
   assert.equal((await f.request('/api/guestbook/entries/atlantis', { text: 'Hi' }, a.cookie)).status, 400);
-  const signed = await f.request('/api/guestbook/entries/lagos', { text: ' Hello Lagos ' }, a.cookie);
+  const signed = await f.request('/api/guestbook/entries/lagos', { text: ' Hello Lagos ', requestId: f.id() }, a.cookie);
   assert.equal(signed.status, 201); assert.match(signed.headers.get('set-cookie'), /HttpOnly; SameSite=Lax/, 'renew re-issues the session cookie');
   assert.deepEqual(await signed.json(), { count: 1, cash: 4600, sent: 1, serverTime: 100000 });
   assert.deepEqual(await x.next(), { type: 'guestbook-signed', count: 1 });
   // A throw inside transact saves nothing: the second signing fails (already travelling) and leaves the book alone.
-  assert.deepEqual(await (await f.request('/api/guestbook/entries/lagos', { text: 'Again' }, a.cookie)).json(), { error: 'busy' });
+  assert.deepEqual(await (await f.request('/api/guestbook/entries/lagos', { text: 'Again', requestId: f.id() }, a.cookie)).json(), { error: 'busy' });
   const db = await database(f);
   assert.deepEqual(db.guestbook.entries, [{ by: { id: a.id, name: 'Ada' }, text: 'Hello Lagos', at: 100000 }]);
   assert.ok(!JSON.stringify(db.guestbook).includes(a.cookie.slice(4)), 'the collection never holds a session secret');
@@ -204,7 +207,8 @@ test('server-only actions: the public /api/action can never run one; a route mod
   const grantRoutes = (ctx) => ({
     'POST /api/grant/gift': async (request) => ({ body: await ctx.store.transact(db => {
       const life = ctx.settle(request.requireSession(db), 'lagos');
-      const result = ctx.act(life, { type: 'social.server', cityId: 'lagos', payload: { op: 'transfer-in', from: '11111111-2222-4333-8444-555555555555', name: 'Server', amount: 250 } });
+      const result = ctx.act(life, { type: 'social.server', cityId: 'lagos', payload: { op: 'transfer-in', from: '11111111-2222-4333-8444-555555555555', name: 'Server', amount: 250 },
+        stateGuard: 'test fixture: the route is called once' });
       return { ok: result.ok, code: result.code, cash: life.cash };
     }) }),
   });

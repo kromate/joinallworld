@@ -18,7 +18,12 @@ const HOUR = 3600000;
 async function harness(t) {
   const f = await fixture(t);
   const get = async (path, device) => { const res = await f.request(path, null, device?.cookie); return { status: res.status, ...(await res.json()) }; };
-  const post = async (path, body, device) => { const res = await f.request(path, body, device?.cookie); return { status: res.status, ...(await res.json()) }; };
+  // Like the browser, every paid civic request carries a fresh request id unless the test names one.
+  const RECEIPTED = ['/api/civic/gov/run', '/api/civic/ads/rent', '/api/civic/radio/shoutout'];
+  const post = async (path, body, device) => {
+    const sent = RECEIPTED.includes(path) && device && body.requestId === undefined ? { ...body, requestId: f.id() } : body;
+    const res = await f.request(path, sent, device?.cookie); return { status: res.status, ...(await res.json()) };
+  };
   const life = async (device) => (await get('/api/life?city=lagos', device)).state;
   let clock = START;
   const goTo = (at) => { f.advance(at - clock); clock = at; };
@@ -307,7 +312,7 @@ test('club radio: bought in a club with in-game naira, queued on server time, re
     assert.equal(refused.code, code); assert.ok(refused.reason); assert.equal(refused.state.cash, 5000);
   }
   wait(60000);
-  const requestId = 'request-0001';
+  const requestId = f.id();
   const queued = await post('/api/civic/radio/shoutout', { cityId: 'lagos', title: ' Water ', artist: '<b>Tyla</b>', requestId, url: 'https://evil.example', audio: 'x' }, ada);
   assert.equal(queued.ok, true); assert.equal(queued.state.cash, 4500); assert.equal(queued.state.ledger.at(-1).reason, 'Club radio shout-out · The Library');
   assert.deepEqual(Object.keys(queued.entry).sort(), ['artist', 'by', 'endsAt', 'id', 'mine', 'startsAt', 'title'], 'text only: no audio or link field');

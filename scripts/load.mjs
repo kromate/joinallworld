@@ -1,10 +1,10 @@
 /**
- * Local load test: N simulated players against an in-process server, once per store mode.
+ * Local load test: N simulated players against an in-process server.
  *
- *   node scripts/load.mjs [--players 100] [--seconds 10] [--poll-ms 1000] [--action-ms 2000] [--modes legacy,grouped]
+ *   node scripts/load.mjs [--players 100] [--seconds 10] [--poll-ms 1000] [--action-ms 2000]
  *
  * METHOD
- *   For each mode a fresh server is started on a temporary data directory with the real clock.
+ *   A fresh server is started on a temporary data directory with the real clock.
  *   Every player gets a device session, then for `--seconds`:
  *     - polls GET /api/life every `--poll-ms` (with jitter), as the browser does, and
  *     - sends one POST /api/action every `--action-ms` (with jitter), cycling through what a player
@@ -13,11 +13,11 @@
  *   X-Forwarded-For (the server runs with trustProxy), so the per-address rate limit treats them as
  *   separate visitors, as it would behind a proxy.
  *   Latency is measured around each fetch (request sent → JSON parsed). The store's own counters give
- *   the number of file writes and bytes written. `legacy` is the previous store (every transaction
- *   clones and rewrites the whole file, polls included); `grouped` is the current one.
+ *   the number of file writes and bytes written. (There is one store; the old per-request rewrite
+ *   that this script used to compare against was removed.)
  *
  * WHAT IT DOES NOT SHOW
- *   One machine, loopback, one process serving and generating the load, a few seconds per mode, a
+ *   One machine, loopback, one process serving and generating the load, a few seconds, a
  *   data file of N young lives. It says nothing about a real network, a slow disk, or a data file
  *   with thousands of long-lived sessions. Report the numbers with this method beside them.
  */
@@ -49,9 +49,9 @@ const SCRIPT = [
   { type: 'travel', payload: { id: 'park', mode: 'trek' } },
 ];
 
-export async function runLoad({ mode, players = 100, seconds = 10, pollMs = 1000, actionMs = 2000 } = {}) {
-  const dataDir = await mkdtemp(join(tmpdir(), `joinallworld-load-${mode}-`));
-  const server = await createServer({ dataDir, distDir: join(dataDir, 'no-dist'), storeMode: mode, trustProxy: true });
+export async function runLoad({ players = 100, seconds = 10, pollMs = 1000, actionMs = 2000 } = {}) {
+  const dataDir = await mkdtemp(join(tmpdir(), 'joinallworld-load-'));
+  const server = await createServer({ dataDir, distDir: join(dataDir, 'no-dist'), trustProxy: true });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   const base = `http://127.0.0.1:${server.address().port}`;
   const latencies = { action: [], poll: [] }, codes = {};
@@ -95,7 +95,7 @@ export async function runLoad({ mode, players = 100, seconds = 10, pollMs = 1000
     const end = server.store.stats();
     const bytes = (await stat(join(dataDir, 'devices.json'))).size;
     return {
-      mode, players, seconds, pollMs, actionMs,
+      players, seconds, pollMs, actionMs,
       action: summary(latencies.action), poll: summary(latencies.poll),
       writes: end.writes - setup.writes, megabytesWritten: round((end.bytes - setup.bytes) / 1e6), transactions: end.transactions - setup.transactions,
       fileKilobytes: Math.round(bytes / 1024), errors, codes,
@@ -112,13 +112,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const args = process.argv.slice(2);
   const option = (name, fallback) => { const at = args.indexOf(`--${name}`); return at >= 0 ? args[at + 1] : fallback; };
   const settings = { players: Number(option('players', 100)), seconds: Number(option('seconds', 10)), pollMs: Number(option('poll-ms', 1000)), actionMs: Number(option('action-ms', 2000)) };
-  const modes = String(option('modes', 'legacy,grouped')).split(',');
-  console.log(`Load test · ${settings.players} players · ${settings.seconds}s per mode · a poll every ~${settings.pollMs}ms and an action every ~${settings.actionMs}ms per player · loopback, in-process`);
-  console.log(['mode    ', 'actions', 'act p50', 'act p95', 'act max', 'polls', 'poll p50', 'poll p95', 'writes', 'MB written', 'file KB', 'errors'].join(' | '));
-  for (const mode of modes) {
-    const r = await runLoad({ mode, ...settings });
-    console.log([mode.padEnd(8), String(r.action.count).padStart(7), `${r.action.p50}ms`.padStart(7), `${r.action.p95}ms`.padStart(7), `${r.action.max}ms`.padStart(7), String(r.poll.count).padStart(5),
-      `${r.poll.p50}ms`.padStart(8), `${r.poll.p95}ms`.padStart(8), String(r.writes).padStart(6), String(r.megabytesWritten).padStart(10), String(r.fileKilobytes).padStart(7), String(r.errors).padStart(6)].join(' | '));
-    console.log(`         result codes: ${Object.entries(r.codes).map(([code, count]) => `${code} ${count}`).join(', ')}`);
-  }
+  console.log(`Load test · ${settings.players} players · ${settings.seconds}s · a poll every ~${settings.pollMs}ms and an action every ~${settings.actionMs}ms per player · loopback, in-process`);
+  console.log(['actions', 'act p50', 'act p95', 'act max', 'polls', 'poll p50', 'poll p95', 'writes', 'MB written', 'file KB', 'errors'].join(' | '));
+  const r = await runLoad(settings);
+  console.log([String(r.action.count).padStart(7), `${r.action.p50}ms`.padStart(7), `${r.action.p95}ms`.padStart(7), `${r.action.max}ms`.padStart(7), String(r.poll.count).padStart(5),
+    `${r.poll.p50}ms`.padStart(8), `${r.poll.p95}ms`.padStart(8), String(r.writes).padStart(6), String(r.megabytesWritten).padStart(10), String(r.fileKilobytes).padStart(7), String(r.errors).padStart(6)].join(' | '));
+  console.log(`result codes: ${Object.entries(r.codes).map(([code, count]) => `${code} ${count}`).join(', ')}`);
 }

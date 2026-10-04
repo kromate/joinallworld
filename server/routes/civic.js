@@ -17,13 +17,22 @@
  *     host's per-address limit.
  *   - A player an operator has muted (ctx.checks.muted) cannot post a slogan, an announcement, an
  *     ad or a shout-out until the mute ends; the refusal says so and charges nothing.
- *   - VOTES PER ADDRESS (soft cap, ctx.config.votesPerAddress, 0 = off). Besides one vote per
- *     player, at most that many votes are counted from one network address in an election. The
- *     address is kept only as a salted hash and only for the current election. From a public
- *     address a vote over the cap is refused with a reason and written to the operator's audit
- *     trail. From a loopback or private-range address — which means the server is seeing a shared
- *     address (a proxy without TRUST_PROXY, a LAN) — the vote is COUNTED and only logged, because
- *     refusing there would silence real voters.
+ *   - RETRIES. Every route that charges or creates something on the player's word alone — standing
+ *     for Governor, renting an ad, buying a shout-out — takes a MANDATORY `requestId` of the form
+ *     `<unix ms>:<uuid>` and goes through ctx.once (server/routes/once.js): without it 400
+ *     client_id_required, the same id again returns the first outcome with `duplicate: true` and
+ *     charges nothing, the same id with other contents is 409 client_id_conflict, and an id older
+ *     than 24 hours is 409 client_id_expired. A vote needs no id: the ballot itself holds one vote
+ *     per player and is written in the same transaction.
+ *   - VOTES PER ADDRESS (ctx.config.votesPerAddress, default 3, 0 = off; ctx.config.voteCapMode).
+ *     The address is kept only as a salted hash and only for the current election. Many real voters
+ *     can share one public address (a mobile carrier's NAT, a school, a hostel), so by DEFAULT
+ *     ('flag') a vote beyond that many from one address IS COUNTED and the operator's audit trail
+ *     gets one line per address per election: a signal to look at, not a refusal. With
+ *     VOTE_CAP_MODE=refuse a vote over the number from a PUBLIC address is refused with a reason
+ *     (and nothing is recorded as cast); from a loopback or private-range address — the server is
+ *     seeing a proxy or a LAN — it is still counted and logged. A vote is answered `voted` only
+ *     when it is on the ballot and saved.
  *   - A life that must still finish character creation is not checked in: it is absent from the
  *     neighbours directory, the rich list and the counters until it has moved in.
  *
@@ -31,17 +40,17 @@
  *   GET  /api/civic/pulse       { city, checkedIn, counters: { players, online, visits }, hunt: { found, today, claims, prize, gemsPerDay },
  *                                 gov: { phase, phaseEndsAt, governor | null }, notices: [{ id, kind, title, text, at }], radio: RadioView | null }
  *   GET  /api/civic/gov         { city, phase, phaseEndsAt, election, governor, lastResult, announcements, rules, you | null }
- *   POST /api/civic/gov/run      { cityId, slogan }      → { ok, code, reason?, state, gov }
+ *   POST /api/civic/gov/run      { cityId, slogan, requestId } → { ok, code, reason?, duplicate?, state, gov }
  *   POST /api/civic/gov/vote     { cityId, candidate }   → { ok, code, reason?, state, gov }
  *   POST /api/civic/gov/announce { cityId, text }        → { ok, code, reason?, gov }
  *   GET  /api/civic/neighbours  { city, demonym, total, online, listed, hidden, districts: [{ id, label, count, online, homes: [{ id, name, online, you }] }] }
  *   GET  /api/civic/ads         { city, palette, billboards, sea }   — shape documented at adsView() in server/civic/ads.js
- *   POST /api/civic/ads/rent     { cityId, kind: 'billboard' | 'sea', slot, text, colour, icon } → { ok, code, reason?, state, ads }
+ *   POST /api/civic/ads/rent     { cityId, kind: 'billboard' | 'sea', slot, text, colour, icon, requestId } → { ok, code, reason?, duplicate?, state, ads }
  *   POST /api/civic/ads/remove   { cityId, kind, slot }  → { ok, code, reason?, ads }
  *   GET  /api/civic/hunt        { city, found, today, claims, prize, gemsPerDay, you: { found, total, claimed, canClaim } | null }
  *        (searching and claiming are the game actions 'civic.hunt-search' and 'civic.hunt-claim' on POST /api/action)
  *   GET  /api/civic/radio       ?venue=<venueId>  { city, venue, club, playing, queue, price, slotSeconds, perDay, usedToday, queueMax }
- *   POST /api/civic/radio/shoutout { cityId, title, artist, requestId? } → { ok, code, reason?, duplicate?, state, entry, radio }
+ *   POST /api/civic/radio/shoutout { cityId, title, artist, requestId } → { ok, code, reason?, duplicate?, state, entry, radio }
  *   GET  /api/civic/richlist    { city, week, size, balances, earners, you, counters }
  *   POST /api/civic/prefs        { richList?: boolean, directory?: boolean }  (true = listed) → { ok, prefs: { richList, directory } }
  */
@@ -55,7 +64,7 @@ import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapN
 import { hash53, isSharedAddress } from '../protocol.js';
 import { moderationService } from '../moderation/service.js';
 import { AD_KINDS, adsView, removeAd, rent, rentBlock, validateCreative } from '../civic/ads.js';
-import { addShoutout, findRequest, isClub, publicEntry, radioView, shoutBlock, validateSong, validRequestId } from '../civic/radio.js';
+import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong } from '../civic/radio.js';
 import { checkIn, counters, huntCounters, neighboursView, richListView } from '../civic/residents.js';
 
 const CITY_NAMES = { lagos: 'Lagos', ibadan: 'Ibadan' };
@@ -71,7 +80,17 @@ export default function civicRoutes(ctx) {
   const civicOf = (db) => ctx.collection(db, 'civic', emptyCivic());
   const engine = (cityId, op) => makeContext({ now: ctx.now(), cityId, seed: `civic|${op}|${ctx.now()}` });
   /** Run a server-completed civic action through the rules engine, inside the caller's transaction. */
-  const act = (life, cityId, type, payload = {}) => ctx.act(life, { type, cityId, payload });
+  // Inside ctx.once the receipt covers the action; elsewhere `guard` says why a repeat cannot apply twice (ctx.act in server.js).
+  const act = (life, cityId, type, payload = {}, guard) => ctx.act(life, { type, cityId, payload, ...(guard ? { stateGuard: guard } : {}) });
+  /**
+   * SEAM (shared departing predicate): has this life left its venue — on a trip or on the commute to
+   * work? The engine owner's shared predicate replaces the body; the call site stays as it is.
+   */
+  const departing = (life) => (typeof ctx.core?.departing === 'function' ? ctx.core.departing(life) : ['travel', 'commute'].includes(life?.activeAction?.kind));
+  /** Wrap every handler: whatever a civic request settled, the player's rooms are re-checked afterwards — also when it failed. */
+  const revalidated = (handlers) => Object.fromEntries(Object.entries(handlers).map(([key, handler]) => [key, async (request) => {
+    try { return await handler(request); } finally { await ctx.core?.revalidate?.(request.secret); } // ROOM REVALIDATION SEAM (core.revalidate in server.js)
+  }]));
   const refused = (block, extra = {}) => ({ body: { ok: false, code: block.code, reason: block.reason, ...extra }, renew: true });
   const muted = (who) => ctx.checks?.muted?.(who.id) ?? null;
   const moderation = moderationService(ctx);
@@ -152,7 +171,7 @@ export default function civicRoutes(ctx) {
   function pulseBody(city, cityId, who, life, checkedIn) {
     const now = ctx.now(), view = govView(city, now, who?.id ?? null);
     const hunt = huntCounters(city, now);
-    const venue = life && life.activeAction?.kind !== 'travel' ? life.location : null;
+    const venue = life && !departing(life) ? life.location : null;
     return { city: cityId, checkedIn, counters: cityCounters(city, cityId),
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
@@ -160,7 +179,7 @@ export default function civicRoutes(ctx) {
       radio: venue && isClub(venue) ? radioView(city, now, venue, who.id) : null };
   }
 
-  return {
+  return revalidated({
     'GET /api/civic/pulse': async (request) => {
       const cityId = cityParam(request.query.get('city'));
       const signedIn = await store.read(db => request.session(db)?.publicId ?? null);
@@ -173,7 +192,7 @@ export default function civicRoutes(ctx) {
           counterCache.delete(cityId);
           // City news the resident has not been told yet goes into their own Updates feed, once.
           const fresh = resident ? notices(city, ctx.now(), cityName(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
-          if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) });
+          if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) }, 'only notices whose id is not yet in life.civic.news are posted');
           return pulseBody(city, cityId, who, life, resident);
         }, { durable: false }); // a check-in acknowledges nothing: news not yet stored is simply posted again
         return { body, renew: true };
@@ -192,15 +211,19 @@ export default function civicRoutes(ctx) {
       const cityId = cityParam(body.cityId);
       const slogan = cleanLine(body.slogan, { min: ELECTION.sloganMin, max: ELECTION.sloganMax, what: 'Your slogan' });
       return store.transact(db => {
-        const { who, life, city } = enter(db, request, cityId);
+        const { session, who, life, city } = enter(db, request, cityId);
         limit('gov-run', who.id, 12);
-        const block = declareBlock(city, ctx.now(), who.id) ?? muted(who) ?? (slogan.ok ? null : slogan);
-        if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life) });
-        const paid = act(life, cityId, 'civic.run');
-        if (!paid.ok) return refused(paid, { state: life, gov: govBody(city, cityId, who, life) });
-        declare(city, ctx.now(), who, slogan.text);
-        checkIn(city, ctx.now(), who, life, ttl());
-        return { body: { ok: true, code: 'declared', state: life, gov: govBody(city, cityId, who, life) }, renew: true };
+        // The filing fee and the ballot entry are one receipted step: a retry with the same id pays nothing more.
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.run', fingerprint: [cityId, slogan.ok ? slogan.text : String(body.slogan ?? '')] }, () => {
+          const block = declareBlock(city, ctx.now(), who.id) ?? muted(who) ?? (slogan.ok ? null : slogan);
+          if (block) return { ok: false, code: block.code, reason: block.reason };
+          const paid = act(life, cityId, 'civic.run');
+          if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
+          declare(city, ctx.now(), who, slogan.text);
+          checkIn(city, ctx.now(), who, life, ttl());
+          return { ok: true, code: 'declared' };
+        });
+        return { body: { ...outcome, state: life, gov: govBody(city, cityId, who, life) }, renew: true };
       });
     },
     'POST /api/civic/gov/vote': async (request) => {
@@ -211,24 +234,26 @@ export default function civicRoutes(ctx) {
         limit('gov-vote', who.id, 12);
         const block = voteBlock(city, ctx.now(), who.id, body.candidate);
         if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life) });
-        // Soft cap per network address (see the header). It applies only to a vote that would otherwise
-        // count — an ineligible voter is told what they are missing instead — and it is checked BEFORE the
-        // rules engine records the vote in the life, so a capped vote leaves no trace of having been cast.
+        // Votes per network address (see the header). It applies only to a vote that would otherwise
+        // count — an ineligible voter is told what they are missing instead — and it is decided BEFORE the
+        // rules engine records the vote in the life, so a refused vote leaves no trace of having been cast.
         const cap = ctx.config.votesPerAddress, key = addressKey(civic, request.ip);
         const eligible = civicEligibility(life, engine(cityId, 'vote')).vote.every((item) => item.met);
         if (eligible && cap > 0 && addressVotes(city, ctx.now(), key) >= cap) {
           const shared = isSharedAddress(request.ip);
+          const refuse = ctx.config.voteCapMode === 'refuse' && !shared;
           if (firstCapNotice(city, ctx.now(), key)) {
-            moderation.audit(db, shared ? 'vote-cap-shared' : 'vote-cap', `${cityId}:week ${govView(city, ctx.now()).election.week}`,
-              shared ? `More than ${cap} votes from one private or loopback address (key ${key}). They are being counted: the server cannot tell voters apart behind a shared address. Set TRUST_PROXY=1 behind a proxy, or raise VOTES_PER_ADDRESS.`
-                : `Votes over the cap of ${cap} from one address (key ${key}) are being refused. Raise VOTES_PER_ADDRESS if this is a shared connection.`, 'server');
+            const week = `${cityId}:week ${govView(city, ctx.now()).election.week}`;
+            if (refuse) moderation.audit(db, 'vote-cap', week, `Votes over the cap of ${cap} from one address (key ${key}) are being refused (VOTE_CAP_MODE=refuse). Many real voters can share a public address; unset VOTE_CAP_MODE to count and flag instead.`, 'server');
+            else if (ctx.config.voteCapMode === 'refuse') moderation.audit(db, 'vote-cap-shared', week, `More than ${cap} votes from one private or loopback address (key ${key}). They are being counted: the server cannot tell voters apart behind a shared address. Set TRUST_PROXY=1 behind a proxy, or raise VOTES_PER_ADDRESS.`, 'server');
+            else moderation.audit(db, 'vote-cap-flag', week, `More than ${cap} votes from one address (key ${key}). They are all being counted: this is a signal to look at, not a refusal — it may be one person with several sessions, or many people behind one connection (a mobile carrier, a school).`, 'server');
           }
-          if (!shared) {
-            return refused({ code: 'address_vote_limit', reason: `${cap} votes have already been counted from your network connection in this election, which is the most allowed from one connection. Your vote was not counted. If you share a connection (a school, an office, a hostel), ask whoever runs this server to raise the limit, or vote from another connection.` },
+          if (refuse) {
+            return refused({ code: 'address_vote_limit', reason: `${cap} votes have already been counted from your network connection in this election, which is the most this server allows from one connection. Your vote was not counted. If you share a connection (a mobile network, a school, an office, a hostel), ask whoever runs this server to lift the limit, or vote from another connection.` },
               { state: life, gov: govBody(city, cityId, who, life) });
           }
         }
-        const allowed = act(life, cityId, 'civic.vote');
+        const allowed = act(life, cityId, 'civic.vote', {}, 'voteBlock refuses a second vote and the ballot entry is written in this transaction');
         if (!allowed.ok) return refused(allowed, { state: life, gov: govBody(city, cityId, who, life) });
         vote(city, ctx.now(), who.id, body.candidate, key);
         return { body: { ok: true, code: 'voted', state: life, gov: govBody(city, cityId, who, life) }, renew: true };
@@ -272,16 +297,18 @@ export default function civicRoutes(ctx) {
       const cityId = cityParam(body.cityId);
       const creative = validateCreative(body);
       return store.transact(db => {
-        const { who, life, city } = enter(db, request, cityId);
+        const { session, who, life, city } = enter(db, request, cityId);
         limit('ads-rent', who.id, 30);
-        const ads = () => ({ city: cityId, ...adsView(city, ctx.now(), who.id) });
-        const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot) ?? muted(who) ?? (creative.ok ? null : creative);
-        if (block) return refused(block, { state: life, ads: ads() });
-        const paid = act(life, cityId, 'civic.rent-ad', { kind: body.kind, slot: body.slot });
-        if (!paid.ok) return refused(paid, { state: life, ads: ads() });
-        rent(city, ctx.now(), who, body.kind, body.slot, creative.creative);
-        checkIn(city, ctx.now(), who, life, ttl());
-        return { body: { ok: true, code: 'rented', state: life, ads: ads() }, renew: true };
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.rent-ad', fingerprint: [cityId, body.kind, body.slot, creative.ok ? creative.creative.text : body.text, body.colour, body.icon].map((part) => String(part ?? '')) }, () => {
+          const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot) ?? muted(who) ?? (creative.ok ? null : creative);
+          if (block) return { ok: false, code: block.code, reason: block.reason };
+          const paid = act(life, cityId, 'civic.rent-ad', { kind: body.kind, slot: body.slot });
+          if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
+          rent(city, ctx.now(), who, body.kind, body.slot, creative.creative);
+          checkIn(city, ctx.now(), who, life, ttl());
+          return { ok: true, code: 'rented' };
+        });
+        return { body: { ...outcome, state: life, ads: { city: cityId, ...adsView(city, ctx.now(), who.id) } }, renew: true };
       });
     },
     'POST /api/civic/ads/remove': async (request) => {
@@ -315,22 +342,22 @@ export default function civicRoutes(ctx) {
     'POST /api/civic/radio/shoutout': async (request) => {
       const body = await request.json();
       const cityId = cityParam(body.cityId);
-      const song = validateSong(body), requestId = validRequestId(body.requestId);
+      const song = validateSong(body);
       return store.transact(db => {
-        const { who, life, city } = enter(db, request, cityId);
+        const { session, who, life, city } = enter(db, request, cityId);
         limit('radio', who.id, 6);
         const now = ctx.now(), venue = life.location;
-        const radio = () => ({ city: cityId, ...radioView(city, ctx.now(), venue, who.id) });
         // A retried request (same id) returns the entry it already bought instead of charging again.
-        const earlier = isClub(venue) ? findRequest(city, venue, now, who.id, requestId) : null;
-        if (earlier) return { body: { ok: true, code: 'queued', duplicate: true, state: life, entry: publicEntry(earlier, who.id), radio: radio() }, renew: true };
-        const block = shoutBlock(city, now, who.id, venue) ?? muted(who) ?? (song.ok ? null : song);
-        if (block) return refused(block, { state: life, radio: radio() });
-        const paid = act(life, cityId, 'civic.shoutout');
-        if (!paid.ok) return refused(paid, { state: life, radio: radio() });
-        const entry = addShoutout(city, now, who, venue, song.song, nextId(city, 'r'), requestId);
-        checkIn(city, now, who, life, ttl());
-        return { body: { ok: true, code: 'queued', state: life, entry: publicEntry(entry, who.id), radio: radio() }, renew: true };
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.shoutout', fingerprint: [cityId, ...(song.ok ? [song.song.title, song.song.artist] : [String(body.title ?? ''), String(body.artist ?? '')])] }, () => {
+          const block = shoutBlock(city, now, who.id, venue) ?? muted(who) ?? (song.ok ? null : song);
+          if (block) return { ok: false, code: block.code, reason: block.reason };
+          const paid = act(life, cityId, 'civic.shoutout');
+          if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
+          const entry = addShoutout(city, now, who, venue, song.song, nextId(city, 'r'), body.requestId);
+          checkIn(city, now, who, life, ttl());
+          return { ok: true, code: 'queued', entry: publicEntry(entry, who.id) };
+        });
+        return { body: { ...outcome, state: life, radio: { city: cityId, ...radioView(city, ctx.now(), venue, who.id) } }, renew: true };
       });
     },
 
@@ -363,5 +390,5 @@ export default function civicRoutes(ctx) {
       });
       return { body: { ok: true, prefs }, renew: true };
     },
-  };
+  });
 }

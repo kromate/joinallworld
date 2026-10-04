@@ -18,8 +18,11 @@
  *         const state = await ctx.store.transact(db => {
  *           const session = request.requireSession(db, { renew: true });
  *           const life = ctx.settle(session, cityId);
- *           ...validate, change ctx.collection(db, 'civic'), spend via ctx.act(life, { type, payload, cityId })...
- *           return life;
+ *           ...validate; then, exactly once per request id (see ctx.once below):
+ *           return ctx.once(db, session, { id: requestId, kind: 'civic.plot', fingerprint: [cityId, plot] }, () => {
+ *             ...change ctx.collection(db, 'civic'), spend via ctx.act(life, { type, payload, cityId })...
+ *             return { ok: true, code: 'bought' };
+ *           });
  *         });
  *         return { body: { state }, renew: true };
  *       },
@@ -44,15 +47,28 @@
  * path except /api/mod/, which authenticates with that bearer header instead — and applied the
  * per-address rate limit (429).
  *
- * RESPONSE   return { status = 200, body, headers?, renew? }. The host JSON-encodes the body,
- *   adds `serverTime` to every success, and with `renew: true` re-issues the sliding session
+ * RESPONSE   return { status = 200, body, headers?, renew?, after? }. The host JSON-encodes the body
+ *   BEFORE it sends anything, adds `serverTime` to every success (and `storage: 'failing'` while
+ *   the data file cannot be written), and with `renew: true` re-issues the sliding session
  *   cookie. To fail, `throw ctx.fail(status, 'machine_code')` → `{ "error": "machine_code" }`.
  *   An error that carries a string `reason` is answered `{ "error": code, "reason": sentence }`.
+ *   A request is answered exactly once. A body that cannot be serialised, an invalid status or
+ *   header, or anything else thrown becomes one generic 500 and a log line; it cannot take the
+ *   server down. `headers` may only set Set-Cookie, Cache-Control and Retry-After. `after()` runs
+ *   once the answer is out; if it throws, that is logged and nothing else happens.
  *
  * CONTEXT (ctx)
- *   ctx.store.transact(fn(db), { durable }?) → Promise   serialised read-modify-write of the whole document;
+ *   ctx.store.transact(fn(db), { durable, committed, waitForObserved }?) → Promise
+ *                                          serialised read-modify-write of the whole document;
  *                                          throw inside fn to abort without saving. By default it
- *                                          resolves only once the change is on disk. Pass
+ *                                          resolves only once the change is on disk. If the write
+ *                                          fails it REJECTS with { status: 503, code: 'storage_unavailable' }
+ *                                          and the change is undone: a rejected transaction changed
+ *                                          nothing, so let that error reach the host. Update anything
+ *                                          you keep in memory (an index) in `committed(result)`, which
+ *                                          runs only once the change is in the file. Values a
+ *                                          transaction returns may be stored objects and are frozen:
+ *                                          copy before you change one. Pass
  *                                          { durable: false } — or a function of the result — ONLY for
  *                                          a request that acknowledges nothing a player could see as an
  *                                          outcome (see server/store.js); such a change is written within
@@ -70,11 +86,28 @@
  *   ctx.fail(status, code)                 build an HTTP error to throw
  *   ctx.allow(key, count = 120, windowMs = 60000) → boolean   rate limiter
  *   ctx.settle(session, cityId)            → the session's life in that city, settled to now
- *   ctx.act(state, { type, payload, cityId, actionId? }) → { ok, code, state, reason? }
+ *   ctx.act(state, { type, payload, cityId, actionId?, stateGuard? }) → { ok, code, state, reason? }
  *                                          run a game action server-side (inside transact). It runs
  *                                          with server authority: actions declared `serverOnly` in
  *                                          a game system succeed here and nowhere else. Name the
  *                                          `type` yourself — never forward one from a request.
+ *                                          IT MUST BE RETRY-SAFE, and the host refuses it otherwise:
+ *                                          call it inside ctx.once(…); or pass the request's `actionId`
+ *                                          (`<ms>:<uuid>`) with a life from ctx.settle, which runs the
+ *                                          same receipt steps as POST /api/action and answers a repeat
+ *                                          with { ok, code, state, duplicate: true }; or pass
+ *                                          `stateGuard: '<what stored state makes a repeat harmless>'`
+ *                                          when your own collection, written in the same transaction,
+ *                                          is the record (a ballot entry, a queue you remove from).
+ *   ctx.once(db, session, { id, kind, fingerprint }, run) → run()'s result, or the first result + duplicate: true
+ *                                          exactly-once for any write that charges or creates something
+ *                                          (inside transact). `id` is the client's `<ms>:<uuid>` request
+ *                                          id and is mandatory: 400 without it, 409 for the same id with
+ *                                          another kind or fingerprint, 409 once it is older than 24 h.
+ *                                          run() must return a small JSON object; return { ok: false, … }
+ *                                          for a refusal that changed nothing (no receipt is kept).
+ *                                          Rules, quotas and what is not promised: server/routes/once.js.
+ *   ctx.onceId(id)                         → the id's time, or throws the same 400/409 (to refuse early)
  *   ctx.cityIds                            valid city ids
  *   ctx.publicSession(session)             → { id, name } — the ONLY identity you may expose
  *   ctx.push(publicId, message)            → number of open sockets the message was sent to
@@ -102,7 +135,7 @@
  *                                          'heartbeat' { now } on every beat; ws/rooms.js raises
  *                                          'guest-expired' { hostId, guestId, cityId } when a beat ends a visit.
  *   ctx.config                             { sessionTtlMs, actionWindowMs, maxActiveSessions, buildId,
- *                                            votesPerAddress, heartbeatMs, moderation: boolean }
+ *                                            votesPerAddress, voteCapMode, heartbeatMs, moderation: boolean }
  *                                          (the operator token itself is not in the context)
  *   ctx.core                               foundation internals — not for feature modules
  *
@@ -110,6 +143,9 @@
  *   - Identify players by session.publicId only; session.secret is the cookie and must never
  *     be stored in your collection, logged or returned.
  *   - All game-state changes go through ctx.act (the rules engine); routes never edit a life.
+ *   - A route that settles or changes the caller's life ends with
+ *     `finally { await ctx.core.revalidate(request.secret) }` so their rooms are re-checked
+ *     whether or not the request succeeded (see routes/social.js, routes/civic.js).
  *   - May import: ../protocol.js, ../../src/life.js, ../../src/game/** (pure). Must not import
  *     server.js, store.js, node:* modules or `ws` — keep modules portable.
  *
@@ -151,7 +187,7 @@ export function buildRoutes(ctx, modules = ROUTE_MODULES) {
     keys: [...exact.keys(), ...patterns.map(route => route.key)],
     match(method, pathname) {
       const handler = exact.get(`${method} ${pathname}`);
-      if (handler) return { handler, params: {} };
+      if (handler) return { handler, params: {}, key: pathname };
       const parts = pathname.split('/');
       for (const route of patterns) {
         if (route.method !== method || route.segments.length !== parts.length) continue;
@@ -161,7 +197,7 @@ export function buildRoutes(ctx, modules = ROUTE_MODULES) {
           try { params[segment.slice(1)] = decodeURIComponent(parts[i]); } catch { return false; }
           return parts[i].length > 0;
         });
-        if (hit) return { handler: route.handler, params };
+        if (hit) return { handler: route.handler, params, key: route.key.split(' ')[1] };
       }
       return null;
     },

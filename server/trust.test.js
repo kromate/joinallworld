@@ -30,11 +30,13 @@ async function harness(t, options = {}) {
   const f = await fixture(t, { moderatorToken: TOKEN, ...options });
   const json = async (res) => ({ status: res.status, ...(await res.json()) });
   const get = async (path, device) => json(await f.request(path, null, device?.cookie));
-  const post = async (path, body, device) => json(await f.request(path, body, device?.cookie));
+  // Like the browser, every paid civic request carries a fresh request id unless the test names one.
+  const RECEIPTED = ['/api/civic/gov/run', '/api/civic/ads/rent', '/api/civic/radio/shoutout'];
+  const post = async (path, body, device) => json(await f.request(path, RECEIPTED.includes(path) && device && body.requestId === undefined ? { ...body, requestId: f.id() } : body, device?.cookie));
   const mod = async (path, body, headers = { Authorization: `Bearer ${TOKEN}` }) => json(await fetch(f.base + path, { method: body ? 'POST' : 'GET',
     headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined }));
   const database = async () => { await f.flush(); return JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')); };
-  const clientId = () => `c-${randomUUID()}`;
+  const clientId = () => f.id();
   /** Drain a socket until a message of `type` arrives. */
   const until = async (peer, type) => { for (let i = 0; i < 50; i++) { const message = await peer.next(); if (message.type === type) return message; } throw Error(`no ${type}`); };
   /** Resolve true if no message of `type` arrives shortly (a later marker message proves delivery order). */
@@ -343,7 +345,7 @@ test('statement: the server explains the balance — opening, every change, clos
 });
 
 test('polls do not write unless something happened; an outcome is on disk before the poll is answered', async (t) => {
-  const { f, get } = await harness(t, { lazyFlushMs: 60000, storeMode: 'grouped' });
+  const { f, get } = await harness(t, { lazyFlushMs: 60000,  });
   const ada = await f.device('Ada');
   const file = join(f.dir, 'devices.json');
   const signature = async () => { const info = await stat(file, { bigint: true }); return `${info.ino}:${info.mtimeNs}`; };
@@ -465,7 +467,7 @@ test('heartbeat ends an expired house visit even when neither the guest nor the 
 });
 
 test('votes per address: a soft cap that refuses with a reason from a public address and only logs from a shared one', async (t) => {
-  const { f, mod } = await harness(t, { trustProxy: true, votesPerAddress: 2 });
+  const { f, mod } = await harness(t, { trustProxy: true, votesPerAddress: 2, voteCapMode: 'refuse' });
   const call = async (path, body, device, address) => {
     const res = await fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(device ? { Cookie: device.cookie } : {}), ...(address ? { 'X-Forwarded-For': address } : {}) }, body: body ? JSON.stringify(body) : undefined });
     return { status: res.status, ...(await res.json()) };
@@ -481,7 +483,7 @@ test('votes per address: a soft cap that refuses with a reason from a public add
   await workDay(); f.advance(DAY - 21000); await workDay();
   const [ada, bola, chidi, dayo, eve, femi] = people;
   f.advance(MONDAY + 60000 - f.now());
-  assert.equal((await call('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all' }, ada, '41.58.0.1')).code, 'declared');
+  assert.equal((await call('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all', requestId: f.id() }, ada, '41.58.0.1')).code, 'declared');
   f.advance(MONDAY + 3 * DAY + 9 * HOUR - f.now());
   for (const device of people) assert.equal((await act(device, 'travel', { id: 'polling-unit', mode: 'trek' })).ok, true);
   f.advance(30000);

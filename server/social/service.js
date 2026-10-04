@@ -24,7 +24,8 @@
  *             player be in that host's Home room?"; the room module asks it on join and on re-validation.
  *   pending   { [publicId]: [{ n, at, cityId, payload, keep, refund? }] }  life effects owed to a player who was
  *             offline (a gift waiting to be credited, a friendship to record); applied on their next request
- *   receipts  { ['<publicId>|<clientId>']: { at, kind, fp, result } }       idempotency for non-message writes
+ *   (Receipts are not kept here. A gift, an interaction and a new group go through ctx.once — see
+ *   server/routes/once.js — which keeps them in the acting player's own session record.)
  *   reports   [{ id, by, about, aboutName, reason, text, at, status, note?, evidence: [body] }]   for moderators
  *             (read and answered through the operator routes — server/routes/moderation.js)
  *   seq, sweptAt
@@ -34,11 +35,20 @@
  * is refused — never altered — with a reason. A player an operator has muted (ctx.checks.muted)
  * cannot send messages or name groups until the mute ends; everything else still works for them.
  *
+ * WHICH LIFE AN EFFECT LANDS IN (lifeCity). A player may have a life in several cities, or none.
+ * An effect owed to a player — a gift, a refund, a friendship — carries the city it was sent from.
+ * It is applied to that player's life in THAT city if they have one; otherwise to the life they
+ * played most recently in another city. It is never applied to a life that does not exist, and no
+ * life is ever created to receive it. A gift is refused before the sender is charged when the
+ * recipient has no life anywhere; a gift already waiting stays waiting (and goes back to the sender
+ * after a week) rather than being dropped.
+ *
  * BLOCKS IN MEMORY. Who has blocked whom is also kept in a small in-memory index so the room
  * module can hide two players from each other in a public venue without a store read:
  *   ctx.checks.blocked(a, b) → true when either has blocked the other
- * It is loaded before the server takes requests and updated by deliver() after each committed
- * block, unblock or removal of an idle player. deliver() raises 'blocks-changed' { a, b }.
+ * It is loaded before the server takes requests and updated (committed()) once a block, unblock or
+ * removal of an idle player is in the data file — never for a change the store had to undo.
+ * committed() raises 'blocks-changed' { a, b }.
  */
 import { UUID_PATTERN, venueRoomKey } from '../protocol.js';
 import { lagosTime } from '../../src/game/clock.js';
@@ -50,10 +60,10 @@ import { screenText } from '../moderation/text.js';
 /** Original beta limits. */
 export const LIMITS = Object.freeze({
   body: 500, history: 200, page: 50, friends: 200, requests: 30, blocked: 200, convs: 100, groups: 20, groupSize: 12, groupName: 32,
-  updates: 50, reports: 2000, ownReports: 20, reportText: 300, pending: 50, receipts: 5000,
+  updates: 50, reports: 2000, ownReports: 20, reportText: 300, pending: 50,
   guests: 5, knockMs: 60000, knockCooldownMs: 60000, visitMs: 30 * 60000,
   strangerMessages: 3, newChatsPerDay: 10, searchResults: 10,
-  receiptMs: 86400000, escrowMs: 7 * 86400000, playerIdleMs: 45 * 86400000, sweepMs: 3600000,
+  escrowMs: 7 * 86400000, playerIdleMs: 45 * 86400000, sweepMs: 3600000,
 });
 export const REPORT_REASONS = Object.freeze(['harassment', 'spam', 'cheating', 'offensive-name', 'other']);
 
@@ -104,7 +114,13 @@ export function socialService(ctx) {
   // ---- input validation (throws 400) ---------------------------------------------------------
   const uuid = (value, code = 'invalid_player') => { if (typeof value !== 'string' || !UUID_PATTERN.test(value)) throw bad(code); return value.toLowerCase(); };
   const city = (value) => { if (!ctx.cityIds.includes(value)) throw bad('invalid_city'); return value; };
+  /** A message's client id: any opaque retry key (the message itself is the record). Writes that go through ctx.once need the timed form instead. */
   const clientId = (value) => { if (typeof value !== 'string' || !CLIENT_ID.test(value)) throw bad('invalid_client_id'); return value; };
+  /**
+   * SEAM (shared departing predicate): has this life left its venue — on a trip or on the commute to
+   * work? The engine owner's shared predicate replaces the body; the two call sites stay as they are.
+   */
+  const departing = (state) => (typeof ctx.core?.departing === 'function' ? ctx.core.departing(state) : ['travel', 'commute'].includes(state?.activeAction?.kind));
   function text(value, max, code) {
     const body = typeof value === 'string' ? value.trim() : '';
     if (!body || body.length > max || CONTROL.test(body)) throw bad(code);
@@ -117,7 +133,9 @@ export function socialService(ctx) {
   function col(db) {
     const s = ctx.collection(db, 'social');
     dbOf.set(s, db);
-    for (const key of ['players', 'convs', 'houses', 'pending', 'receipts']) if (!isRecord(s[key])) s[key] = {};
+    for (const key of ['players', 'convs', 'houses', 'pending']) if (!isRecord(s[key])) s[key] = {};
+    // Receipts written by earlier builds: their ids are no longer accepted (server/routes/once.js), so nothing can replay them.
+    if (s.receipts !== undefined) delete s.receipts;
     if (!Array.isArray(s.reports)) s.reports = [];
     if (!Number.isSafeInteger(s.seq)) s.seq = 0;
     return s;
@@ -175,8 +193,20 @@ export function socialService(ctx) {
   // ---- life effects (through the rules engine only) ------------------------------------------
   // 'social.server' is a server-only action: it runs through ctx.act and is refused on the public
   // /api/action. `actionId` seeds the outcome, so a replayed request rolls the same dice.
-  function act(session, cityId, op, payload, actionId) {
-    return ctx.act(ctx.settle(session, cityId), { type: 'social.server', cityId, actionId, payload: { ...payload, op } });
+  // `guard` says why a repeat cannot apply twice when the call is not inside ctx.once (see ctx.act in server.js).
+  function act(session, cityId, op, payload, actionId, guard) {
+    return ctx.act(ctx.settle(session, cityId), { type: 'social.server', cityId, actionId, payload: { ...payload, op }, ...(guard ? { stateGuard: guard } : {}) });
+  }
+  /** Has this session a created life in that city? (A life still in character creation does not count.) */
+  const hasLife = (session, cityId) => {
+    const state = session?.cities?.[cityId]?.state;
+    return Boolean(state) && !(state.onboarding?.required === true && state.onboarding.done !== true);
+  };
+  /** The city whose life receives an effect sent from `preferred` — see the header. null: this player has no life anywhere. */
+  function lifeCity(session, preferred) {
+    if (hasLife(session, preferred)) return preferred;
+    const others = ctx.cityIds.filter((cityId) => hasLife(session, cityId)).sort((a, b) => (session.cities[b].updatedAt ?? 0) - (session.cities[a].updatedAt ?? 0));
+    return others[0] ?? null;
   }
   function onlineSession(db, id) {
     for (const ws of presence.sockets(id)) {
@@ -185,12 +215,17 @@ export function socialService(ctx) {
     }
     return null;
   }
-  const runEffect = (session, effect) => act(session, effect.cityId, effect.payload.op, effect.payload, `social|effect|${effect.n}`).ok;
+  /** 'applied' | 'refused' (the rules engine said no) | 'no-life' (nowhere to apply it yet: it waits). */
+  function runEffect(session, effect) {
+    const cityId = lifeCity(session, effect.cityId);
+    if (!cityId) return 'no-life';
+    return act(session, cityId, effect.payload.op, effect.payload, `social|effect|${effect.n}`, 'an owed effect is applied and taken off the queue in one transaction').ok ? 'applied' : 'refused';
+  }
   /** Apply a life effect to another player now if they are connected, otherwise keep it for their next request. */
   function owe(s, db, to, cityId, payload, { keep = false, refund = false } = {}) {
     const effect = { n: ++s.seq, at: now(), cityId, payload, keep, ...(refund ? { refund: true } : {}) };
     const session = onlineSession(db, to);
-    if (session && runEffect(session, effect)) return true;
+    if (session && runEffect(session, effect) === 'applied') return true;
     const queue = s.pending[to] ||= [];
     queue.push(effect);
     // Money (keep) is never dropped; only bookkeeping effects make room.
@@ -200,17 +235,20 @@ export function socialService(ctx) {
   function claim(s, session) {
     const queue = s.pending[session.publicId];
     if (!queue?.length) return;
-    endedIn(s).material = true; // a gift or a friendship reached this life: the request must be durable
-    const left = queue.filter((effect) => !runEffect(session, effect) && effect.keep);
+    const left = [];
+    for (const effect of queue) {
+      const outcome = runEffect(session, effect);
+      // Money (keep) is never dropped. Anything waits while the player has no life to apply it to.
+      if (outcome === 'no-life' || (outcome === 'refused' && effect.keep)) left.push(effect);
+      else endedIn(s).material = true; // a gift or a friendship reached this life (or was settled): the request must be durable
+    }
     if (left.length) s.pending[session.publicId] = left; else delete s.pending[session.publicId];
   }
 
-  /** Hourly housekeeping: expire receipts, return unclaimed gifts, forget long-idle players. */
+  /** Hourly housekeeping: return unclaimed gifts, forget long-idle players. */
   function sweep(s, t) {
     if (t - (s.sweptAt || 0) < LIMITS.sweepMs) return;
     s.sweptAt = t;
-    const receipts = Object.entries(s.receipts);
-    for (const [key, receipt] of receipts) if (t - receipt.at > LIMITS.receiptMs) delete s.receipts[key];
     for (const [to, queue] of Object.entries(s.pending)) {
       const keep = [];
       for (const effect of queue) {
@@ -234,20 +272,6 @@ export function socialService(ctx) {
       endedIn(s).blocks.push(['forget', id]);
     }
     for (const hostId of Object.keys(s.houses)) pruneHouse(s, hostId);
-  }
-
-  /** Idempotency for non-message writes: the same client id returns the first outcome; a different request is refused. */
-  function receiptFor(s, me, cid, kind, fp) {
-    const receipt = s.receipts[`${me}|${cid}`];
-    if (!receipt) return null;
-    if (receipt.kind !== kind || receipt.fp !== fp) throw ctx.fail(409, 'client_id_conflict');
-    return { ...receipt.result, duplicate: true };
-  }
-  function saveReceipt(s, me, cid, kind, fp, result) {
-    const keys = Object.keys(s.receipts);
-    if (keys.length >= LIMITS.receipts) for (const key of keys.slice(0, 500)) delete s.receipts[key];
-    s.receipts[`${me}|${cid}`] = { at: now(), kind, fp, result };
-    return result;
   }
 
   // ---- conversations -------------------------------------------------------------------------
@@ -455,7 +479,7 @@ export function socialService(ctx) {
       city(cityId);
       const { s, p, id } = enter(db, session);
       const state = ctx.settle(session, cityId);
-      const travelling = state.activeAction?.kind === 'travel';
+      const travelling = departing(state);
       const room = venueRoomKey(cityId, state.location, id);
       const joined = !travelling && presence.isIn(id, room);
       // `look` (appearance option ids) and `here` come from the room module's own record of who is in the room.
@@ -520,7 +544,7 @@ export function socialService(ctx) {
       if (!body.accept) return yes('declined', { player: pub(s, from), push });
       if (Object.keys(p.friends).length >= LIMITS.friends || Object.keys(asker.friends).length >= LIMITS.friends) return no('friends_full', `One of you already has ${LIMITS.friends} friends.`);
       p.friends[from] = asker.friends[id] = now();
-      act(session, cityId, 'friend', { id: from, name: asker.name }, `social|friend|${id}|${from}`);
+      act(session, cityId, 'friend', { id: from, name: asker.name }, `social|friend|${id}|${from}`, 'the friendship is written to the social collection in this transaction; a repeat is answered from it');
       owe(s, db, from, cityId, { op: 'friend', id, name: p.name });
       push.push([from, { type: 'friend-accepted', by: pub(s, id) }], [from, { type: 'social-sync' }]);
       notify(s, from, 'friend-accepted', `${p.name} accepted your friend request.`, { from: id }, push);
@@ -617,6 +641,10 @@ export function socialService(ctx) {
       let conv = Object.hasOwn(s.convs, key) ? s.convs[key] : null;
       const sent = conv?.messages.find((item) => item.from === id && item.cid === cid);
       if (sent) {
+        // A replay is answered only to someone who is still in the conversation: a removed group
+        // member or a guest whose visit ended learns nothing about it by resending an old message.
+        const still = conv.members.includes(id) && (conv.kind === 'dm' || Boolean(p.convs[key]));
+        if (!still) return no('not_a_member', 'You are not in that conversation.');
         if (sent.body !== message) throw ctx.fail(409, 'client_id_conflict');
         return yes('sent', { conv: summary(s, conv, id), message: messageView(s, conv, sent, id), duplicate: true });
       }
@@ -648,26 +676,33 @@ export function socialService(ctx) {
 
     // ---- groups ----------------------------------------------------------------------------
     groupCreate(db, session, body) {
-      const cid = clientId(body.clientId), name = text(body.name, LIMITS.groupName, 'invalid_group_name');
+      ctx.onceId(body.clientId);
+      const name = text(body.name, LIMITS.groupName, 'invalid_group_name');
       if (!Array.isArray(body.members) || body.members.length > LIMITS.groupSize) throw bad('invalid_members');
       const members = [...new Set(body.members.map((member) => uuid(member)))];
       const { s, p, id } = enter(db, session);
-      const existing = Object.keys(p.convs).map((key) => s.convs[key]).find((conv) => conv?.kind === 'group' && conv.creator === id && conv.cid === cid);
-      if (existing) return yes('created', { conv: summary(s, existing, id), duplicate: true });
-      const refused = mutedRefusal(id) ?? screened(name, 'A group name', true);
-      if (refused) return refused;
-      if (!ctx.allow(`social:group:${id}`, 5, 3600000)) return no('rate_limited', 'You have created several groups this hour. Try again later.');
-      if (Object.keys(p.convs).filter((key) => s.convs[key]?.kind === 'group').length >= LIMITS.groups) return no('too_many_groups', `You can be in ${LIMITS.groups} groups. Leave one first.`);
-      if (members.length + 1 > LIMITS.groupSize) return no('group_full', `A group holds ${LIMITS.groupSize} people including you.`);
-      const stranger = members.find((member) => member === id || !areFriends(s, id, member));
-      if (stranger) return no('friends_only', `You can only add friends to a group. ${pub(s, stranger).name} is not your friend yet.`);
-      const conv = s.convs[`g.${++s.seq}`] = { id: `g.${s.seq}`, kind: 'group', name, owner: id, creator: id, cid, members: [id, ...members], seq: 0, created: now(), messages: [] };
-      for (const member of conv.members) index(s, member, conv);
-      const first = append(s, conv, null, `${p.name} created “${name}”.`, null, true);
       const push = [];
-      fanOut(s, conv, first, push, id);
-      for (const member of members) notify(s, member, 'group-added', `${p.name} added you to the group “${name}”.`, { conv: conv.id }, push);
-      return yes('created', { conv: summary(s, conv, id), push });
+      // Exactly once per client id (ctx.once): a retry never makes a second group.
+      const outcome = ctx.once(db, session, { id: body.clientId, kind: 'group', fingerprint: [name, [...members].sort()] }, () => {
+        const refused = mutedRefusal(id) ?? screened(name, 'A group name', true);
+        if (refused) return refused;
+        if (!ctx.allow(`social:group:${id}`, 5, 3600000)) return no('rate_limited', 'You have created several groups this hour. Try again later.');
+        if (Object.keys(p.convs).filter((key) => s.convs[key]?.kind === 'group').length >= LIMITS.groups) return no('too_many_groups', `You can be in ${LIMITS.groups} groups. Leave one first.`);
+        if (members.length + 1 > LIMITS.groupSize) return no('group_full', `A group holds ${LIMITS.groupSize} people including you.`);
+        const stranger = members.find((member) => member === id || !areFriends(s, id, member));
+        if (stranger) return no('friends_only', `You can only add friends to a group. ${pub(s, stranger).name} is not your friend yet.`);
+        const conv = s.convs[`g.${++s.seq}`] = { id: `g.${s.seq}`, kind: 'group', name, owner: id, creator: id, members: [id, ...members], seq: 0, created: now(), messages: [] };
+        for (const member of conv.members) index(s, member, conv);
+        const first = append(s, conv, null, `${p.name} created “${name}”.`, null, true);
+        fanOut(s, conv, first, push, id);
+        for (const member of members) notify(s, member, 'group-added', `${p.name} added you to the group “${name}”.`, { conv: conv.id }, push);
+        return yes('created', { conv: conv.id });
+      });
+      if (!outcome.ok) return outcome;
+      // The receipt holds the group's id only. Its summary is built now, and only for someone still in it.
+      const conv = memberConv(s, id, outcome.conv);
+      if (!conv) return no('not_a_member', 'You are no longer in that group.');
+      return yes('created', { conv: summary(s, conv, id), ...(outcome.duplicate ? { duplicate: true } : { push }) });
     },
     /** body: { conv, op: 'rename' | 'add' | 'remove' | 'leave', name?, id? } */
     groupUpdate(db, session, body) {
@@ -862,25 +897,26 @@ export function socialService(ctx) {
 
     // ---- player-to-player interactions, Bae, transfers -------------------------------------------
     interact(db, session, body) {
-      const target = uuid(body.id), cityId = city(body.cityId), cid = clientId(body.clientId);
+      const target = uuid(body.id), cityId = city(body.cityId), cid = body.clientId;
+      ctx.onceId(cid);
       const action = PLAYER_ACTIONS.find((item) => item.id === body.action);
       if (!action) throw bad('invalid_interaction');
       const { s, id } = enter(db, session);
-      const fp = `${target}|${action.id}|${cityId}`;
-      const replay = receiptFor(s, id, cid, 'interact', fp);
-      if (replay) return replay;
-      const { target: them, refusal } = other(s, id, target);
-      if (refusal) return refusal;
-      if (!ctx.allow(`social:interact:${id}`, 30)) return no('rate_limited', 'Slow down a little. Try again in a moment.');
-      const state = ctx.settle(session, cityId);
-      const room = venueRoomKey(cityId, state.location, id);
-      if (state.location === 'home' || state.activeAction?.kind === 'travel' || !presence.isIn(id, room)) return no('not_joined', 'You are not in a venue room right now. Go to a public venue and wait for it to connect.');
-      if (!presence.isIn(target, room)) return no('not_here', `${them.name} is not at ${venueLabel(state.location, cityId)} with you right now.`);
-      const result = act(session, cityId, 'interact', { id: target, name: them.name, action: action.id }, `social|interact|${id}|${cid}`);
-      if (!result.ok) return no(result.code, result.reason);
-      const push = [[target, { type: 'people-interaction', from: pub(s, id), action: action.id, label: action.label, landed: result.code === 'interacted' }]];
-      const outcome = saveReceipt(s, id, cid, 'interact', fp, yes(result.code, { message: result.state.message, closeness: result.state.social.rel[target]?.p ?? 0 }));
-      return { ...outcome, push };
+      const push = [];
+      const outcome = ctx.once(db, session, { id: cid, kind: 'interact', fingerprint: [target, action.id, cityId] }, () => {
+        const { target: them, refusal } = other(s, id, target);
+        if (refusal) return refusal;
+        if (!ctx.allow(`social:interact:${id}`, 30)) return no('rate_limited', 'Slow down a little. Try again in a moment.');
+        const state = ctx.settle(session, cityId);
+        const room = venueRoomKey(cityId, state.location, id);
+        if (state.location === 'home' || departing(state) || !presence.isIn(id, room)) return no('not_joined', 'You are not in a venue room right now. Go to a public venue and wait for it to connect.');
+        if (!presence.isIn(target, room)) return no('not_here', `${them.name} is not at ${venueLabel(state.location, cityId)} with you right now.`);
+        const result = act(session, cityId, 'interact', { id: target, name: them.name, action: action.id }, `social|interact|${id}|${cid}`);
+        if (!result.ok) return no(result.code, result.reason);
+        push.push([target, { type: 'people-interaction', from: pub(s, id), action: action.id, label: action.label, landed: result.code === 'interacted' }]);
+        return yes(result.code, { message: String(result.state.message ?? '').slice(0, 300), closeness: result.state.social.rel[target]?.p ?? 0 });
+      });
+      return outcome.ok && !outcome.duplicate ? { ...outcome, push } : outcome;
     },
     baeAsk(db, session, body) {
       const target = uuid(body.id), cityId = city(body.cityId);
@@ -889,7 +925,7 @@ export function socialService(ctx) {
       if (refusal) return refusal;
       if (!areFriends(s, id, target)) return no('friends_only', `Become friends with ${them.name} before asking.`);
       if (p.bae || them.bae) return no('already_have_bae', p.bae ? 'You already have a Bae. End that first.' : `${them.name} is already with someone.`);
-      const check = act(session, cityId, 'bae-check', { id: target }, `social|baecheck|${id}`);
+      const check = act(session, cityId, 'bae-check', { id: target }, `social|baecheck|${id}`, 'a check: it reads the life and changes nothing');
       if (!check.ok) return no(check.code, check.reason);
       if (them.baeIn[id]) return yes('asked', { duplicate: true });
       if (!ctx.allow(`social:bae:${id}`, 5, 3600000)) return no('rate_limited', 'You have asked a lot this hour. Give it some time.');
@@ -909,7 +945,7 @@ export function socialService(ctx) {
       const push = [[from, { type: 'social-sync' }]];
       if (!body.accept) { notify(s, from, 'bae-answer', `${p.name} said no for now.`, { from: id }, push); return yes('declined', { push }); }
       if (p.bae || asker.bae) return no('already_have_bae', p.bae ? 'You already have a Bae. End that first.' : `${asker.name} is already with someone.`);
-      const mine = act(session, cityId, 'bae', { id: from, name: asker.name }, `social|bae|${id}|${from}`);
+      const mine = act(session, cityId, 'bae', { id: from, name: asker.name }, `social|bae|${id}|${from}`, 'the pending request is deleted and p.bae is set in this transaction; a repeat is answered from them');
       if (!mine.ok) return no(mine.code, mine.reason);
       p.bae = from; asker.bae = id;
       owe(s, db, from, cityId, { op: 'bae', id, name: p.name });
@@ -923,7 +959,7 @@ export function socialService(ctx) {
       if (!ex) return yes('ended', { duplicate: true });
       p.bae = null;
       if (s.players[ex]?.bae === id) s.players[ex].bae = null;
-      act(session, cityId, 'bae-end', { id: ex }, `social|baeend|${id}|${++s.seq}`);
+      act(session, cityId, 'bae-end', { id: ex }, `social|baeend|${id}|${++s.seq}`, 'p.bae is cleared in this transaction; a repeat finds none and stops before this');
       owe(s, db, ex, cityId, { op: 'bae-end', id });
       const push = [[ex, { type: 'social-sync' }]];
       notify(s, ex, 'bae-answer', `${p.name} ended things.`, { from: id }, push);
@@ -932,37 +968,44 @@ export function socialService(ctx) {
     /**
      * Gift naira to a friend. One transaction: the sender is debited through the rules engine
      * and the recipient is credited (or, if they are not connected, the credit is stored and
-     * applied on their next request). Idempotent on `clientId`.
+     * applied on their next request). Exactly once per `clientId` (ctx.once).
+     * The credit goes to the recipient's life in the gift's city if they have one, otherwise to the
+     * life they played most recently (lifeCity); with no life anywhere the gift is refused before
+     * anything is charged.
      */
     transfer(db, session, body) {
-      const to = uuid(body.to), cityId = city(body.cityId), cid = clientId(body.clientId), amount = body.amount;
+      const to = uuid(body.to), cityId = city(body.cityId), cid = body.clientId, amount = body.amount;
+      ctx.onceId(cid);
       if (!Number.isSafeInteger(amount) || amount <= 0) throw bad('invalid_amount');
       const { s, p, id } = enter(db, session);
-      const fp = `${to}|${amount}|${cityId}`;
-      const replay = receiptFor(s, id, cid, 'transfer', fp);
-      if (replay) return replay;
-      const L = TRANSFER_LIMITS, t = now();
-      const { target, refusal } = other(s, id, to);
-      if (refusal) return refusal;
-      if (!ctx.allow(`social:transfer:${id}`, 5)) return no('rate_limited', 'Too many transfers in a minute. Wait, then try again.');
-      if (!areFriends(s, id, to)) return no('friends_only', `You can only send money to friends. Add ${target.name} as a friend first.`);
-      const wait = (ms) => { const minutes = Math.ceil(ms / 60000); return minutes >= 60 ? `${Math.ceil(minutes / 60)} h` : `${minutes} min`; };
-      if (t - p.first < L.minAccountAgeMs) return no('account_too_new', `Sending money opens 24 hours after you start playing. Try again in ${wait(L.minAccountAgeMs - (t - p.first))}.`);
-      const since = Math.max(p.friends[to], target.friends[id]);
-      if (t - since < L.minFriendshipMs) return no('friendship_too_new', `You and ${target.name} only just became friends. Try again in ${wait(L.minFriendshipMs - (t - since))}.`);
-      const day = lagosTime(t).day;
-      if (target.recv.day !== day) target.recv = { day, amount: 0 };
-      if (target.recv.amount + amount > L.dailyReceive) return no('recipient_limit', `${target.name} has received the most a player can be given in one day (${naira(L.dailyReceive)}).`);
-      if ((s.pending[to]?.length ?? 0) >= LIMITS.pending) return no('recipient_unavailable', `${target.name} has too many gifts waiting. Ask them to log in first.`);
-      const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount }, `social|transfer|${id}|${cid}`);
-      if (!sent.ok) return no(sent.code, sent.reason);
-      target.recv.amount += amount;
-      const credited = owe(s, db, to, cityId, { op: 'transfer-in', from: id, name: p.name, amount }, { keep: true });
-      const push = [[to, { type: 'transfer', from: pub(s, id), amount, credited }], [to, { type: 'social-sync' }]];
-      notify(s, to, 'transfer', `${p.name} sent you ${naira(amount)}.`, { from: id, amount }, push);
-      const result = yes('sent', { amount, to: pub(s, to), credited, balance: sent.state.cash });
-      saveReceipt(s, id, cid, 'transfer', fp, result);
-      return { ...result, push };
+      const push = [];
+      const outcome = ctx.once(db, session, { id: cid, kind: 'transfer', fingerprint: [to, amount, cityId] }, () => {
+        const L = TRANSFER_LIMITS, t = now();
+        const { target, refusal } = other(s, id, to);
+        if (refusal) return refusal;
+        if (!ctx.allow(`social:transfer:${id}`, 5)) return no('rate_limited', 'Too many transfers in a minute. Wait, then try again.');
+        if (!areFriends(s, id, to)) return no('friends_only', `You can only send money to friends. Add ${target.name} as a friend first.`);
+        const wait = (ms) => { const minutes = Math.ceil(ms / 60000); return minutes >= 60 ? `${Math.ceil(minutes / 60)} h` : `${minutes} min`; };
+        if (t - p.first < L.minAccountAgeMs) return no('account_too_new', `Sending money opens 24 hours after you start playing. Try again in ${wait(L.minAccountAgeMs - (t - p.first))}.`);
+        const since = Math.max(p.friends[to], target.friends[id]);
+        if (t - since < L.minFriendshipMs) return no('friendship_too_new', `You and ${target.name} only just became friends. Try again in ${wait(L.minFriendshipMs - (t - since))}.`);
+        const day = lagosTime(t).day;
+        if (target.recv.day !== day) target.recv = { day, amount: 0 };
+        if (target.recv.amount + amount > L.dailyReceive) return no('recipient_limit', `${target.name} has received the most a player can be given in one day (${naira(L.dailyReceive)}).`);
+        if ((s.pending[to]?.length ?? 0) >= LIMITS.pending) return no('recipient_unavailable', `${target.name} has too many gifts waiting. Ask them to log in first.`);
+        // Where the money will land, decided before anything is charged. No life anywhere: no gift.
+        const theirs = ctx.core.sessionByPublicId(db, to);
+        const creditCity = theirs && theirs.expiresAt > t ? lifeCity(theirs, cityId) : null;
+        if (!creditCity) return no('recipient_no_life', `${target.name} has no life in any city right now, so there is nowhere to put the money. Nothing was sent.`);
+        const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount }, `social|transfer|${id}|${cid}`);
+        if (!sent.ok) return no(sent.code, sent.reason);
+        target.recv.amount += amount;
+        const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount }, { keep: true });
+        push.push([to, { type: 'transfer', from: pub(s, id), amount, credited }], [to, { type: 'social-sync' }]);
+        notify(s, to, 'transfer', `${p.name} sent you ${naira(amount)}.`, { from: id, amount }, push);
+        return yes('sent', { amount, to: pub(s, to), credited, creditedCity: creditCity, balance: sent.state.cash });
+      });
+      return outcome.ok && !outcome.duplicate ? { ...outcome, push } : outcome;
     },
   };
   services.set(ctx, service);

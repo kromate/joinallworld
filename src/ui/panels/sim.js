@@ -1,6 +1,6 @@
 /**
  * OWNER: character
- * Sim sheet tabs: Profile (display name and appearance), Needs and Skills.
+ * Sim sheet tabs: Profile (the 3D preview, display name and appearance), Needs and Skills.
  * This file exports several 'sim-tab' panels; `order` fixes the tab order.
  *
  * Profile is a form, so it is not live: it keeps a draft and redraws itself by re-opening
@@ -10,7 +10,7 @@
 import './sim.css';
 import { esc, cap, money } from '../dom.js';
 import { TRAITS, DREAMS, START_HOMES } from '../../game/content/traits.js';
-import { avatarSvg, lookEditor, chooseLook, sameLook } from './look-ui.js';
+import { lookStage, lookEditor, chooseLook, sameLook, lookSummary, lookTabClick, mountLookPreview } from './look-ui.js';
 
 const NEED_ICONS = { hunger: '🍲', energy: '⚡', fun: '🎉', social: '💬', hygiene: '🫧', bladder: '🚻' };
 const SEGMENTS = 10;
@@ -46,7 +46,7 @@ const profile = {
       `<li><b>Home</b> ${home ? `${esc(home.label)}, ${esc(home.district)}` : 'Your home'} · <button type="button" class="sim-link" data-open="houses">See houses</button></li>`,
     ].join('');
     const create = o.done ? '' : '<p class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" data-open="onboarding">Create your Sim</button></p>';
-    return `<form class="sim-profile" data-profile novalidate>${create}<div class="sim-profile-top"><div class="look-stage">${avatarSvg(draft.look, { size: 110 })}</div><div><label class="sim-field">Display name<input name="name" maxlength="24" autocomplete="nickname" value="${esc(draft.name)}" data-key="name"></label><p class="sim-hint">${esc(view.city.name)} · shown to other players. 3–24 characters.</p><ul class="sim-about">${about}</ul></div></div>
+    return `<form class="sim-profile" data-profile novalidate>${create}${lookStage(draft.look, { variant: 'wide', name: state.name, caption: esc(lookSummary(draft.look)) })}<div class="sim-profile-top"><div><label class="sim-field">Display name<input name="name" maxlength="24" autocomplete="nickname" value="${esc(draft.name)}" data-key="name"></label><p class="sim-hint">${esc(view.city.name)} · shown to other players. 3–24 characters.</p><ul class="sim-about">${about}</ul></div></div>
       <h3>Appearance</h3><p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>${lookEditor(draft.look, { owned: o.wardrobe })}
       ${error ? `<p class="sim-error" role="alert">${esc(error)}</p>` : ''}<div class="sim-save-bar"><button class="ui-button is-primary sim-save" data-save data-key="save" ${save.disabled ? 'disabled' : ''}>${esc(save.label)}</button></div></form>`;
   },
@@ -54,7 +54,8 @@ const profile = {
     const form = root.querySelector('[data-profile]');
     if (!form) return;
     const redraw = () => { if (document.querySelector('[data-profile]')) api.open('profile'); };
-    if (focusKey && focusKey !== 'name') root.querySelector(`[data-key="${CSS.escape(focusKey)}"]`)?.focus();
+    if (focusKey && focusKey !== 'name') root.querySelector(`[data-key="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true });
+    mountLookPreview(root, draft.look, { name: api.state().name });
     const button = form.querySelector('[data-save]');
     // Typing must not rebuild the form (the caret would jump), so only the save button is updated.
     form.elements.name.addEventListener('input', (event) => {
@@ -63,9 +64,10 @@ const profile = {
       button.disabled = save.disabled; button.textContent = save.label;
     });
     form.addEventListener('click', (event) => {
-      const target = event.target.closest('[data-look]');
+      const target = event.target.closest('[data-look],[data-look-tab]');
       if (!target || target.disabled) return;
       focusKey = target.dataset.key;
+      if (lookTabClick(target)) { redraw(); return; }
       draft.look = chooseLook(draft.look, target.dataset.look, target.dataset.value, api.view().onboarding.wardrobe);
       redraw();
     });

@@ -6,7 +6,7 @@
 // through LegacyPanel and the Vue Messages app read the same `social` object, so a message sent
 // in one shows in the other. It is not reactive: it calls `api.refresh()` whenever it changes, and
 // Vue code reads `shell.legacyTick` to follow that.
-import { S, call as callJs, cityId as cityIdJs, discard as discardJs, loadPeople as loadPeopleJs, newClientId as newClientIdJs, onPeople as onPeopleJs, openThread as openThreadJs, perform as performJs, reconnect as reconnectJs, retry as retryJs, send as sendJs, start as startJs, sync as syncJs, threadView as threadViewJs } from '../../ui/panels/social-client.js'
+import { S, call as callJs, cityId as cityIdJs, discard as discardJs, loadPeople as loadPeopleJs, newClientId as newClientIdJs, onPeople as onPeopleJs, openThread as openThreadJs, perform as performJs, reconnect as reconnectJs, retry as retryJs, send as sendJs, start as startJs, sync as syncJs, takeLinkHost as takeLinkHostJs, threadView as threadViewJs } from '../../ui/panels/social-client.js'
 import type { Conversation, Message, OutboxEntry, SocialOverview, ThreadItem } from '../../types/social.ts'
 import type { PanelApi } from '../types/panel.ts'
 
@@ -49,6 +49,8 @@ export const send = sendJs as unknown as (key: string, target: SendTarget, body:
 /** Send a failed message again under the same client id, so the server stores it at most once. */
 export const retry = retryJs as unknown as (clientId: string) => void
 export const discard = discardJs as unknown as (clientId: string) => void
+/** The landing handled the invite link itself: do not also open the Invite app for it. Returns the host it held. */
+export const takeLinkHost = takeLinkHostJs as unknown as () => string | null
 export const reconnectSocial = reconnectJs as unknown as () => void
 export const socialCityId = cityIdJs as unknown as () => string
 export const newClientId = newClientIdJs as unknown as () => string

@@ -16,6 +16,8 @@ import { heldActionFor, shortcutFor } from './legacy/modules.ts'
 import { startSocial } from './legacy/social.ts'
 import GameIcon from './ui/GameIcon.vue'
 import ToastStack from './ui/ToastStack.vue'
+import LinkBanner from './features/landing/LinkBanner.vue'
+import { useGrowth } from './features/growth/useGrowth.ts'
 import CoachTip from './features/hud/CoachTip.vue'
 import HudBar from './features/hud/HudBar.vue'
 import HudSidebar from './features/hud/HudSidebar.vue'
@@ -28,7 +30,7 @@ import SheetHost from './features/phone/SheetHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
 
-const { game, shell, legacy, scene, command, connect, quickStart, startLife, switchCity, menu } = useApp()
+const { game, shell, legacy, scene, command, connect, quickStart, startLife, switchCity, menu, landing } = useApp()
 const ui = shell.ui
 const mode = game.mode
 const navPanel = computed(() => (mode.value !== 'venue' ? shell.byId.get(mode.value) ?? null : null))
@@ -125,6 +127,8 @@ onMounted(() => {
 onBeforeUnmount(() => { for (const [target, type, listener] of listeners) target.removeEventListener(type, listener) })
 // Connected (or connected again): the social client opens its socket and reads the overview.
 watch(game.connected, (connected) => { if (connected) startSocial(legacy.api) })
+// Where the page's share link came from, once the landing knows (growth.state.landing).
+watch(landing.landed, (landed) => { if (landed) useGrowth().state.landing = landed })
 watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), { immediate: true })
 </script>
 
@@ -147,5 +151,6 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
     </div>
   </div>
   <SheetHost />
+  <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
   <ToastStack :host="sheetOpen ? '#life-dialog' : 'body'" />
 </template>

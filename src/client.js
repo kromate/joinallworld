@@ -119,7 +119,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     status('Connecting…');
     try {
       let response;
-      if (createNew) response = await api('/api/session', { method: 'POST', body: { name: client.identity.name } });
+      // `onboarding: true` tells the server this client shows character creation, so a life made for this new session must finish it first.
+      if (createNew) response = await api('/api/session', { method: 'POST', body: { name: client.identity.name, onboarding: true } });
       else {
         try { response = await api('/api/session'); }
         catch (error) {

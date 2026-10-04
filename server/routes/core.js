@@ -1,7 +1,10 @@
 /**
  * OWNER: foundation
  * Core routes: device session, life, action and voice configuration. Behaviour is unchanged
- * from the pre-registry server except that POST /api/action also accepts `payload`.
+ * from the pre-registry server except that POST /api/action also accepts `payload`, and that
+ * POST /api/session accepts `onboarding: true` when it CREATES a session: lives of that session
+ * must finish character creation before any other action (see life-service.js settleCity). The
+ * field is ignored for an existing session, so a rename can neither add nor remove the rule.
  */
 import { validateName, validateActionPayload, publicSession, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig, venueRoomKey } from '../protocol.js';
 
@@ -17,7 +20,7 @@ export default function coreRoutes(ctx) {
         if (!current) {
           if (Object.keys(db.sessions).length >= config.maxActiveSessions) throw fail(503, 'device_capacity');
           const { secret, publicId } = core.newIdentity();
-          current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {} };
+          current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {}, ...(body.onboarding === true ? { onboarding: true } : {}) };
         }
         current.name = name;
         current.expiresAt = now() + config.sessionTtlMs;

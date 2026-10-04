@@ -7,10 +7,15 @@ export { VENUES };
  * Bring one city's life up to `now` and return it. Creates the life on first use, re-validates
  * the stored state (migrating older saves), then settles the elapsed server time: the timed
  * action progresses and every system's background advance runs.
+ *
+ * A life created for a session whose record carries `onboarding: true` must finish character
+ * creation before any other action is accepted (state.onboarding.required). The flag is set
+ * only by the host when the session is created; a session without it — every session made
+ * before the flag existed, and every session the Cloudflare worker makes — behaves as before.
  */
 export function settleCity(session, cityId, now) {
   session.cities ||= {};
-  const entry = session.cities[cityId] ||= { state: createLife({ name: session.name }, { now, cityId, isNew: true }), updatedAt: now };
+  const entry = session.cities[cityId] ||= { state: createLife({ name: session.name }, { now, cityId, isNew: true, requireOnboarding: session.onboarding === true }), updatedAt: now };
   entry.state = createLife(entry.state, { now, cityId, isNew: false });
   const elapsed = Number.isFinite(entry.updatedAt) ? Math.max(0, (now - entry.updatedAt) / 1000) : 0;
   if (elapsed > 0) advanceLife(entry.state, elapsed, { now, cityId });

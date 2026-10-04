@@ -141,7 +141,9 @@ test('e-mail: nothing without the age answer and the consent tick; under-18 is n
   const shown = await page(link);
   assert.ok(shown.status === 200 && /<form method="post"/.test(shown.html) && shown.cache === 'no-store' && !/<script/i.test(shown.html));
   assert.equal((await hello(ada)).consent.email, false);
-  assert.equal((await page(link.replace(/.$/, link.endsWith('A') ? 'B' : 'A'), 'POST')).status, 400, 'a changed token is refused');
+  // (The first character of the signature is changed: the last one carries bits that base64url discards.)
+  const dot = link.lastIndexOf('.') + 1, forged = `${link.slice(0, dot)}${link[dot] === 'A' ? 'B' : 'A'}${link.slice(dot + 1)}`;
+  assert.equal((await page(forged, 'POST')).status, 400, 'a changed token is refused');
   assert.equal((await page('/e/confirm?t=nope.nope', 'POST')).status, 400);
   assert.equal((await page(link, 'POST')).status, 200);
   view = await hello(ada);

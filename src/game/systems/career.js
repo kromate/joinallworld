@@ -240,7 +240,7 @@ function setAuto(state, payload) {
 
 /** The player's next step, in one sentence, with where to send them. */
 function nextStep(state, ctx, job, status) {
-  if (!job) return { kind: 'apply', text: 'Pick a track in Phone → Jobs and tap Apply. Applying is free and you can work your first shift the same day.' };
+  if (!job) return { kind: 'apply', text: 'Pick a job and tap Apply. Applying is free and you can work your first shift the same day.' };
   const shift = job.shift, place = placeName(job, ctx), pay = payOf(state, job);
   if (status.code === 'working') return { kind: 'wait', text: `Shift in progress: ${naira(pay)} arrives when it finishes. Cancelling earns nothing.` };
   if (state.activeAction?.kind === 'commute') return { kind: 'wait', text: `On your way to ${place}. Open the ${spotName(job)} spot when you arrive.` };
@@ -401,6 +401,8 @@ export default {
           summary: item.summary || '', schedule: scheduleText(item), hours: workplaceHoursText(item, ctx),
           skill: item.skill ?? null, duration: item.shift.duration,
           workplace: placeName(item, ctx), blocked,
+          // The workplace venue's id (null while it is not in this build) and whether it is open at this moment.
+          venue: open ? item.workplace.venue : null, openNow: open ? workplaceOpening(item, state, ctx).open : false,
           switchWarning: job && !current ? `You will leave ${job.label}${job.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? item.ladder[0].role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,
         };
       }),

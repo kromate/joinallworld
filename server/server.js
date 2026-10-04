@@ -295,7 +295,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (!entry) throw Error(ws.room ? 'invalid_message' : 'join_required');
         if (entry.room && !ws.room) throw Error('join_required');
         await entry.handle(ws, message);
-      } catch (error) { send(ws, { type: 'error', code: error.message, error: error.message, ...(typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
+      } catch (error) { send(ws, { type: 'error', code: error.message, error: error.message, ...(typeof error.reason === 'string' ? { reason: error.reason, message: error.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));
     });
   });

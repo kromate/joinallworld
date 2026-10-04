@@ -327,6 +327,14 @@ test('outbox: pending → sent or failed, retry keeps the client id, a confirmed
   assert.equal(presenceText({ status: 'online', venue: 'park' }, () => 'Freedom Park'), 'Online · Freedom Park');
   assert.equal(presenceText({ status: 'online', venue: 'home' }), 'Online · at home');
   assert.deepEqual(['away', 'reconnecting', 'offline', 'nonsense'].map((status) => presenceText({ status })), ['Away', 'Reconnecting…', 'Offline', 'Offline']);
+  // An offline listing that carries `seenAt` says when; reconnecting stays its own word; without a clock nothing is invented.
+  const minute = 60000, seen = 1_000_000_000;
+  assert.deepEqual([20000, 5 * minute, 3 * 60 * minute, 26 * 60 * minute, 49 * 60 * minute].map((ago) => presenceText({ status: 'offline', seenAt: seen }, undefined, seen + ago)),
+    ['Offline · last seen just now', 'Offline · last seen 5 min ago', 'Offline · last seen 3 h ago', 'Offline · last seen 1 day ago', 'Offline · last seen 2 days ago']);
+  assert.equal(presenceText({ status: 'reconnecting', seenAt: seen }, undefined, seen + minute), 'Reconnecting…');
+  assert.equal(presenceText({ status: 'offline', seenAt: seen }), 'Offline');
+  assert.equal(presenceText({ status: 'offline' }, undefined, seen), 'Offline');
+  assert.equal(presenceText({ status: 'online', venue: 'park', seenAt: seen }, () => 'Freedom Park', seen + minute), 'Online · Freedom Park');
   assert.match(roomSummary({ venue: 'park', self: 'not_joined', count: 0 }, 'Freedom Park'), /cannot see you here yet/);
   assert.match(roomSummary({ venue: 'park', self: 'joined', count: 1 }, 'Freedom Park'), /^1 other player here/);
   assert.match(roomSummary(null, 'x'), /Checking/);

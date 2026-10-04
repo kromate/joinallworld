@@ -7,8 +7,10 @@
  * ACTIONS
  *   'travel'    { id: venueId, mode }   start a trip. The fare is charged at departure.
  *   'world.roadside'  { choice }        answer the pending roadside event (state.travel.event).
- * Timed-action kind: 'travel' — { kind, id, duration, remaining, mode }. A save from before
- * per-mode travel has no `mode` and the old flat duration; it still resumes and arrives.
+ * Timed-action kind: 'travel' — { kind, id, duration, remaining, mode, fare }. `fare` is the naira
+ * charged at departure, kept so the travel screen can say exactly what a cancel forfeits. A save
+ * from before per-mode travel has no `mode` and the old flat duration, and an older trip has no
+ * `fare`; both still resume and arrive.
  *
  * RULES
  *   - Five modes (content/travel.js) plus 'car', which is offered only when a system adds it
@@ -72,6 +74,8 @@ import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.
 
 const MAP_WIDTH = 1000, MAP_HEIGHT = 700;
 const MAX_COOLDOWNS = 80;
+/** Upper bound accepted for a saved trip's `fare` (no route costs anywhere near this). */
+const MAX_TRIP_FARE = 1_000_000;
 
 // ---- places and routes ------------------------------------------------------------------
 
@@ -164,7 +168,7 @@ function travel(state, payload, ctx) {
   const mode = ALL_MODES[modeId];
   debit(state, trip.fare, `${mode.fuel ? 'Fuel' : mode.label} to ${label}`, ctx);
   state.travel.event = null; // an unanswered roadside choice lapses when you move on
-  state.activeAction = { kind: 'travel', id: destination, duration: trip.seconds, remaining: trip.seconds, mode: modeId };
+  state.activeAction = { kind: 'travel', id: destination, duration: trip.seconds, remaining: trip.seconds, mode: modeId, fare: trip.fare };
   state.message = `Travelling to ${label}.`;
   return ok(state, 'started');
 }
@@ -330,6 +334,7 @@ function destinationCard(state, venue, ctx) {
 
 function view(state, ctx) {
   const pending = state.travel.event && EVENTS[state.travel.event.id];
+  const trip = state.activeAction?.kind === 'travel' ? state.activeAction : null;
   const venues = Object.values(VENUES).map((venue) => destinationCard(state, venue, ctx));
   const soon = Object.values(COMING_SOON).map((place) => ({
     id: place.id, kind: 'soon', label: venueLabel(place.id, ctx.cityId), district: venueDistrict(place.id, ctx.cityId), icon: place.icon, description: place.description,
@@ -355,6 +360,10 @@ function view(state, ctx) {
     } : null,
     cooldowns: Object.fromEntries(Object.keys(state.travel.cooldowns).map((id) => [id, cooldownLeft(state, id, ctx.now)]).filter(([, left]) => left > 0)),
     gigs: { limit: GIG_DAILY_LIMIT, used: gigsToday(state, ctx.now), left: Math.max(0, GIG_DAILY_LIMIT - gigsToday(state, ctx.now)) },
+    // The gigs offered at the spot the player stands at (activity ids), so the venue panel can show the counter beside them.
+    gigsHere: (spotsOf(state.location).find((spot) => spot.id === state.spot)?.activities || []).filter(isGig).map((def) => def.id),
+    // The trip in progress: where it started (a cancel leaves the player there), how, and the fare already paid (null on an older save).
+    active: trip ? { from: state.location, to: trip.id, mode: typeof trip.mode === 'string' ? trip.mode : null, fare: Number.isSafeInteger(trip.fare) ? trip.fare : null, refundable: false } : null,
   };
 }
 
@@ -369,7 +378,8 @@ export default {
         if (!Object.hasOwn(VENUES, value.id) || value.id === state.location) return null;
         if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;
         const valid = typeof value.mode === 'string' && Object.hasOwn(ALL_MODES, value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
-        return valid ? { mode: value.mode } : null;
+        if (!valid) return null;
+        return { mode: value.mode, ...(Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
       },
       complete,
     },

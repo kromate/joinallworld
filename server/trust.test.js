@@ -91,6 +91,7 @@ test('text filter: refused with a reason, never altered — names, venue chat, m
   a.ws.send(JSON.stringify({ type: 'chat', body: 'you should kill yourself', clientId: 'bad-1' }));
   const refused = await until(a, 'error');
   assert.deepEqual([refused.code, refused.clientId], ['text_blocked', 'bad-1']); assert.match(refused.reason, /^Your message was not accepted because/);
+  assert.equal(refused.message, refused.reason, 'the sentence is also in `message`, the field the community panel prints');
   a.ws.send(JSON.stringify({ type: 'chat', body: 'How far? Niger State next week', clientId: 'ok-1' }));
   assert.equal((await until(b, 'chat')).body, 'How far? Niger State next week', 'the first chat line Bola receives is the clean one, unaltered');
   // Messages and group names.
@@ -427,7 +428,9 @@ test('presence registry: unresponsive sockets are ignored, and say "reconnecting
   dead.add(two);
   assert.deepEqual(presence.status('p'), { state: 'reconnecting', rooms: [] });
   presence.close(one); presence.close(two);
-  assert.equal(presence.status('p').state, 'reconnecting'); now += 20001; assert.equal(presence.status('p').state, 'offline');
+  assert.equal(presence.status('p').state, 'reconnecting'); now += 20001;
+  assert.deepEqual(presence.status('p'), { state: 'offline', rooms: [], seenAt: 1000 }, 'offline carries the time the last connection closed');
+  assert.deepEqual(presence.status('never-connected'), { state: 'offline', rooms: [] }, 'and nothing is invented for someone this process never saw');
 });
 
 test('heartbeat ends an expired house visit even when neither the guest nor the host sends anything', async (t) => {

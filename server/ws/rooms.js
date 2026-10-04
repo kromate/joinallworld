@@ -37,7 +37,8 @@
  * still shared: the room's voice cap counts everyone, so a blocked pair can fill it for each other.)
  * CHAT TEXT. A chat line passes the text filter (server/moderation/text.js) and the sender's mute
  * state (ctx.checks.muted). A refused line is answered with an `error` carrying the code
- * ('text_blocked' | 'muted'), a `reason` sentence and the line's clientId; it is delivered to nobody.
+ * ('text_blocked' | 'muted'), a `reason` sentence (repeated as `message`, the field the community
+ * panel prints in its status line) and the line's clientId; it is delivered to nobody.
  * GUEST EXPIRY ON THE HEARTBEAT. On every host heartbeat (ctx.on('heartbeat')) each socket that is
  * visiting a host's Home room is re-checked against the guest list. A visit that ran out, or whose
  * host is no longer at home, is dropped then — so a guest who never polls leaves at most one

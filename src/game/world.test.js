@@ -213,11 +213,16 @@ test('the fare is charged at departure, a cancel keeps it, and arrival applies t
   const state = createLife(null, at(DRY_NOON));
   assert.equal(dispatch(state, { type: 'travel', payload: { id: 'library', mode: 'danfo' } }, at(DRY_NOON)).code, 'started');
   assert.equal(state.cash, 4850); assert.equal(state.location, 'park'); assert.deepEqual(state.ledger.at(-1), { at: DRY_NOON, amount: -150, reason: 'Danfo to The Library', balance: 4850 });
-  assert.deepEqual(state.activeAction, { kind: 'travel', id: 'library', duration: 8, remaining: 8, mode: 'danfo' });
+  assert.deepEqual(state.activeAction, { kind: 'travel', id: 'library', duration: 8, remaining: 8, mode: 'danfo', fare: 150 });
+  // The travel screen's cancel rule comes from the trip itself: where it started and what was paid.
+  assert.deepEqual(viewLife(state, at(DRY_NOON)).travel.active, { from: 'park', to: 'library', mode: 'danfo', fare: 150, refundable: false });
+  assert.deepEqual(createLife(JSON.parse(JSON.stringify(state)), at(DRY_NOON)).activeAction, state.activeAction, 'the fare survives a save and load');
+  assert.equal(createLife({ location: 'park', activeAction: { kind: 'travel', id: 'library', duration: 8, remaining: 8, mode: 'danfo', fare: -5 } }, at(DRY_NOON)).activeAction.fare, undefined, 'a nonsense saved fare is dropped');
   assert.equal(dispatch(state, { type: 'travel', payload: { id: 'home', mode: 'trek' } }, at(DRY_NOON)).code, 'busy');
   advanceLife(state, 3, at(DRY_NOON + 3000));
   assert.equal(dispatch(state, { type: 'cancel' }, at(DRY_NOON + 3000)).code, 'cancelled');
   assert.deepEqual([state.cash, state.location, state.needs.hygiene, state.travel.trips], [4850, 'park', 50, 0], 'no refund, no move, no need cost');
+  assert.equal(viewLife(state, at(DRY_NOON + 3000)).travel.active, null);
   assert.equal(heard.length, 0);
   go(state, 'library', 'danfo', DRY_NOON + 10000, 'no-event-1');
   // A Danfo ride leaves every need as it was (as reported from the reference game).
@@ -569,6 +574,7 @@ test('daily gig limit: paid gigs across the whole city stop at the limit and reo
     assert.equal(state.cash, cash + gig.def.reward);
     done += 1;
     assert.deepEqual(viewLife(state, at(now)).travel.gigs, { limit: GIG_DAILY_LIMIT, used: done, left: GIG_DAILY_LIMIT - done });
+    assert.ok(viewLife(state, at(now)).travel.gigsHere.includes(gig.def.id), 'the view names the gigs at this spot, so the counter can sit beside them');
   }
   assert.equal(done, GIG_DAILY_LIMIT);
   assert.equal(refused.code, 'gig_limit'); assert.match(refused.reason, /today’s 8 paid gigs\. Gigs open again at midnight, Lagos time\. Your job’s shift is not affected\./);
@@ -577,6 +583,7 @@ test('daily gig limit: paid gigs across the whole city stop at the limit and reo
   // The starter job's shift still pays today.
   if (state.location !== 'park') { act('travel', { id: 'park', mode: 'trek' }); wait(state.activeAction.remaining); }
   act('apply-job', { id: 'community-helper' }); act('spot', { id: 'work' });
+  assert.deepEqual(viewLife(state, at(now)).travel.gigsHere, [], 'a job shift is not listed as a gig');
   const before = state.cash;
   assert.equal(act('activity', { id: 'helper-shift' }).ok, true); wait(20);
   assert.equal(state.cash, before + 300);

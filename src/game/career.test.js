@@ -127,11 +127,17 @@ test('a track whose workplace is not in this build is listed but cannot be held'
     const result = player.act('apply-job', { id: job.id });
     assert.equal(result.code, 'workplace_unavailable'); assert.match(result.reason, new RegExp(job.workplaceName));
     assert.equal(player.state.job, null);
-    assert.match(player.view().career.jobs.find((item) => item.id === job.id).blocked, /not open in this build/);
+    const row = player.view().career.jobs.find((item) => item.id === job.id);
+    assert.match(row.blocked, /not open in this build/);
+    assert.deepEqual([row.venue, row.openNow], [null, false], 'no venue id and never open while the workplace is not built');
     assert.equal(createLife({ job: job.id, career: { level: 6, performance: 100 } }, ctx).job, null, 'a save cannot hold a job with no workplace');
   }
   for (const job of TRACKS.filter((item) => !missing.includes(item))) {
-    assert.equal(player.view().career.jobs.find((item) => item.id === job.id).blocked, null);
+    const row = player.view().career.jobs.find((item) => item.id === job.id);
+    assert.equal(row.blocked, null);
+    // The Jobs card reads the workplace by id and its open state from the career view, the same answer the map gives.
+    assert.equal(row.venue, job.workplace.venue);
+    assert.equal(row.openNow, player.view().travel.destinations.find((place) => place.id === job.workplace.venue).open, job.id);
     assert.ok(player.view().activities.spots.length >= 0);
   }
   assert.equal(player.view().career.jobs.find((item) => item.id === 'teaching').blocked, null, 'Teaching works at the park on every branch');
@@ -140,7 +146,7 @@ test('a track whose workplace is not in this build is listed but cannot be held'
 test('apply hires at once; a shift pays once on completion, costs needs, trains the skill and raises performance', () => {
   const player = life();
   const before = player.view().career;
-  assert.equal(before.employed, false); assert.match(before.step.text, /Jobs/); assert.equal(before.nextShift, null);
+  assert.equal(before.employed, false); assert.match(before.step.text, /tap Apply/); assert.doesNotMatch(before.step.text, /Phone →/, 'the step is shown inside Jobs too, so it names no route'); assert.equal(before.nextShift, null);
   const applied = player.act('apply-job', { id: 'teaching' });
   assert.equal(applied.code, 'applied'); assert.equal(player.state.job, 'teaching');
   assert.match(player.state.message, /Hired as Lesson Teacher .*₦3,000 per shift.*first shift today/);

@@ -152,8 +152,9 @@ export function socialService(ctx) {
 
   function whereabouts(id, detailed) {
     const status = presence.status(id);
-    // `seenAt` is the server time it last heard from that player's connection (a frame or a ping answer).
-    if (status.state !== 'online') return { status: status.state };
+    // `seenAt` is the server time it last heard from that player's connection (a frame or a ping answer);
+    // once they are gone it is when their last connection closed, if this server process saw it.
+    if (status.state !== 'online') return { status: status.state, ...(Number.isFinite(status.seenAt) ? { seenAt: status.seenAt } : {}) };
     if (!status.rooms.length) return { status: 'away', seenAt: status.seenAt };
     if (!detailed) return { status: 'online', seenAt: status.seenAt };
     // Their own venue room says where they are; a socket in someone else's Home room is a visit, not "at home".
@@ -420,7 +421,11 @@ export function socialService(ctx) {
     // ---- overview --------------------------------------------------------------------------
     me(db, session) {
       const { s, p, id } = enter(db, session);
-      const person = (other) => ({ ...pub(s, other), ...whereabouts(other, true) });
+      // An offline friend this process never saw connected (it restarted since) still has the stored time of their last request.
+      const person = (other) => {
+        const where = whereabouts(other, true);
+        return { ...pub(s, other), ...where, ...(where.status === 'offline' && !Number.isFinite(where.seenAt) && Number.isFinite(s.players[other]?.seen) ? { seenAt: s.players[other].seen } : {}) };
+      };
       const visit = p.visiting ? houseView(s, p.visiting, id) : null; // prunes first, so an ended visit is never reported
       return yes('ok', {
         me: { id, name: p.name, since: p.first },

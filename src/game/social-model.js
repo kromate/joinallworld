@@ -69,13 +69,28 @@ export function createOutbox() {
 export const PRESENCE = Object.freeze({
   online: { label: 'Online', dot: 'on', hint: 'Connected and in a venue right now.' },
   away: { label: 'Away', dot: 'away', hint: 'Connected, but travelling or between places.' },
-  reconnecting: { label: 'Reconnecting…', dot: 'wait', hint: 'Their connection dropped a moment ago.' },
+  reconnecting: { label: 'Reconnecting…', dot: 'wait', hint: 'Their connection dropped a moment ago. They may be back within seconds.' },
   offline: { label: 'Offline', dot: 'off', hint: 'Not connected.' },
 });
 
-/** "Online · Freedom Park", "Online · at home", "Online · visiting a friend", "Away", "Reconnecting…", "Offline". */
-export function presenceText(person, venueName = (id) => id) {
+/** How long ago a server time was, from the server's `now`: "just now", "5 min ago", "3 h ago", "2 days ago". */
+export function agoText(at, now) {
+  const minutes = Math.floor(Math.max(0, now - at) / 60000);
+  if (minutes < 1) return 'just now';
+  if (minutes < 60) return `${minutes} min ago`;
+  if (minutes < 1440) return `${Math.floor(minutes / 60)} h ago`;
+  const days = Math.floor(minutes / 1440);
+  return `${days} day${days === 1 ? '' : 's'} ago`;
+}
+
+/**
+ * "Online · Freedom Park", "Online · at home", "Online · visiting a friend", "Away", "Reconnecting…",
+ * "Offline". Given the server's `now`, an offline player whose listing carries `seenAt` (the time
+ * their last connection closed) reads "Offline · last seen 5 min ago".
+ */
+export function presenceText(person, venueName = (id) => id, now = null) {
   const entry = PRESENCE[person?.status] || PRESENCE.offline;
+  if (entry === PRESENCE.offline && Number.isFinite(person?.seenAt) && Number.isFinite(now)) return `${entry.label} · last seen ${agoText(person.seenAt, now)}`;
   if (person?.status !== 'online' || !person.venue) return entry.label;
   return `${entry.label} · ${person.venue === 'home' ? 'at home' : person.venue === 'visit' ? 'visiting a friend' : venueName(person.venue)}`;
 }

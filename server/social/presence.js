@@ -15,7 +15,9 @@
  * pong grace (5 s): it reads 'reconnecting' at most heartbeatMs + 5 s = 15 s after it died, is
  * closed by the next beat (at most 20 s), and reads 'offline' RECONNECT_GRACE_MS after that
  * (at most 40 s). Before this the bounds were 60 s and 80 s.
- * `status().seenAt` is the server time a live connection was last heard from.
+ * `status().seenAt` is the server time a live connection was last heard from; for a player who
+ * has disconnected it is the time their last connection closed (kept in memory only, so it is
+ * absent after a server restart and for someone who has not connected since).
  *
  * Portable: no Node imports. One registry per server context, kept in memory only.
  */
@@ -62,7 +64,8 @@ export function presenceOf(ctx) {
       // Connected on paper but not answering pings: say so instead of showing a stale "online".
       if (open(id).length) return { state: 'reconnecting', rooms: [] };
       const closedAt = lastSeen.get(id);
-      return { state: closedAt !== undefined && ctx.now() - closedAt < RECONNECT_GRACE_MS ? 'reconnecting' : 'offline', rooms: [] };
+      // A player who left since this server started carries the time their last connection closed.
+      return { state: closedAt !== undefined && ctx.now() - closedAt < RECONNECT_GRACE_MS ? 'reconnecting' : 'offline', rooms: [], ...(closedAt !== undefined ? { seenAt: closedAt } : {}) };
     },
     isIn: (id, room) => live(id).some((ws) => ws.room === room),
     /**

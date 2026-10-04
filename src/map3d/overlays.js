@@ -135,7 +135,8 @@ export function createOverlays(kit, city) {
       push(ring, `gov-ring-${id}`);
     }
     const seat = city.places['state-house'];
-    if (seat) chipList.push({ key: 'gov', kind: 'gov', x: seat.x, y: seat.top + 2.6, z: seat.z, icon: '🏛️', text: data.governor ? `Governor ${data.governor.name}` : 'No Governor yet', label: data.governor ? `The Governor is ${data.governor.name}` : 'There is no Governor yet' });
+    // `lift` raises the chip (in pixels) clear of the State House's own label, at every zoom.
+    if (seat) chipList.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, y: seat.top + 0.5, z: seat.z, icon: '🏛️', text: data.governor ? `Governor ${data.governor.name}` : 'No Governor yet', label: data.governor ? `The Governor is ${data.governor.name}` : 'There is no Governor yet' });
   }
 
   return {

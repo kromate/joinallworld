@@ -100,7 +100,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs = [], gaps = [];
   let trip = null, route = null, returning = null, settling = false, pendingArrive = null, dueAt = -Infinity, tripCamera = true, pose = null;
   const clock = createTripClock();
-  let heldTime = null;
+  let heldTime = null, following = false;        // following: "find me" was pressed during a trip, so the view keeps the traveller in its middle
   const shown = () => !destroyed && !lost && !container.hidden && !pageHidden() && size.width > 0;
   const placeKey = (id) => (id === 'home' ? `home:${city.places.home.house}` : id);
 
@@ -150,14 +150,14 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   }
   function startTrip(next) {
     trip = next; returning = null; settling = false; dueAt = -Infinity; tripCamera = true;
-    dismissHint();
+    dismissHint(); following = false;
     route = network.route(placeKey(next.from), placeKey(next.to)) || straight(next.from, next.to);
     actor.dot(reducedMotion); actor.setMode(next.mode);
     drawRoute();
     if (shown() && !reducedMotion) rig.ease(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route.points.length - 1), { pad: 1.5, min: 70 }), 0.9);
   }
   function clearTrip() {
-    trip = null; route = null; returning = null; settling = false; pose = null;
+    trip = null; route = null; returning = null; settling = false; pose = null; following = false;
     clock.clear();
     drawRoute();
     if (state) standHere();
@@ -174,6 +174,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     const p = clock.progress(t);
     pose = tripPose(route, p, trip.mode); pose.progress = p;
     actor.place(pose);
+    if (following && !rig.goal && dt) { const k = Math.min(1, dt * 5); rig.view.x += (pose.x - rig.view.x) * k; rig.view.z += (pose.z - rig.view.z) * k; rig.apply(); }
     if (p >= 1) {
       // The door is reached: ask the server for the arrival now instead of waiting for the next poll.
       if (t - dueAt > 700) { dueAt = t; onTripDue(); }
@@ -310,7 +311,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       const at = project(chip.x, chip.y, chip.z);
       const visible = at.front && at.x > -40 && at.x < size.width + 40 && at.y > 0 && at.y < size.height + 40 && !(far && (chip.kind === 'plot' || chip.kind === 'board-free'));
       if (node.hidden === visible) node.hidden = !visible;
-      if (visible) node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
+      if (visible) node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y - (chip.lift || 0))}px) translate(-50%,-100%)`;
     }
   }
 
@@ -397,7 +398,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   let gesture = null, lastTap = { id: null, at: 0 }, suppressClick = false;
   const local = (event) => { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; };
   const toNdc = (point) => ({ x: (point.x / size.width) * 2 - 1, y: -(point.y / size.height) * 2 + 1 });
-  function grab() { userMoved = true; tripCamera = false; dismissHint(); }
+  function grab() { userMoved = true; tripCamera = false; following = false; dismissHint(); }
   function onPointerDown(event) {
     if (event.target.closest?.('[data-m3],[data-neighbour]')) return;   // the view buttons and the estate's homes are not a place to start a drag
     if (event.isPrimary) pointers.clear();
@@ -489,7 +490,12 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     if (name === 'in') motion({ distance: rig.view.distance * 0.68 }, 0.3);
     else if (name === 'out') motion({ distance: rig.view.distance / 0.68 }, 0.3);
     else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; }
-    else if (name === 'me') { const place = city.places[state?.location] || city.places.home, at = pose || place; motion({ x: at.x, z: at.z, distance: Math.min(rig.view.distance, 80) }, 0.6); }
+    else if (name === 'me') {
+      // During a trip "find me" also keeps up with the traveller, until the player moves the view themselves.
+      const place = city.places[state?.location] || city.places.home, at = pose || place;
+      motion({ x: at.x, z: at.z, distance: Math.min(rig.view.distance, 80) }, 0.6);
+      following = Boolean(trip && pose && !reducedMotion);
+    }
   }
   function onKey(event) {
     const { action, mode } = event.detail || {};

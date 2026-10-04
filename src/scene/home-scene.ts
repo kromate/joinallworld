@@ -44,14 +44,52 @@
  * The camera and canvas are learned from the renderer at draw time (onBeforeRender), so taps
  * are resolved with the exact camera the host used.
  */
-import { FURNITURE, KINDS } from '../game/content/furniture.ts';
-import { createBatch, sceneMaterials, releaseObjects } from './build.js';
-import { drawAvatar, buildAvatar, POSES } from './characters.js';
-import { playerOptions, rigOf } from './avatar-rig.js';
-import { createWalkGrid } from './movement.js';
+import { FURNITURE as CATALOGUE, KINDS as KIND_TABLE } from '../game/content/furniture.ts';
+import { createBatch, sceneMaterials, releaseObjects } from './build.ts';
+import { drawAvatar, buildAvatar, POSES } from './characters.ts';
+import type { Pose } from './characters.ts';
+import { playerOptions, rigOf } from './avatar-rig.ts';
+import { createWalkGrid } from './movement.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
 import { HOUSE_DESIGNS } from '../game/content/world.ts';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.ts';
+import type * as THREE from 'three';
+import type { Kit } from './kit.ts';
+import type { Colour, SceneCamera, Vec3 } from './types.ts';
+import type { WalkRect } from './movement.ts';
+import type { FurnitureDefinition } from '../types/content.ts';
+import type { LifeState } from '../types/life.ts';
+
+/** The modelling tools a furniture shape draws with (the kit's primitives, bound to one parent group). */
+export interface Tools {
+  box(x: number, y: number, z: number, w: number, h: number, d: number, c: Colour, lit?: boolean): THREE.Mesh;
+  round(x: number, y: number, z: number, r: number, h: number, c: Colour, lit?: boolean): THREE.Mesh;
+  ball(x: number, y: number, z: number, r: number, c: Colour): THREE.Mesh;
+  crown(x: number, y: number, z: number, sx: number, sy: number, sz: number, c: Colour): THREE.Mesh;
+}
+/** Draws one catalogue shape: W × D tiles, colour, and the catalogue entry. */
+type Shape = (b: Tools, W: number, D: number, c: Colour, def: FurnitureDefinition) => void;
+/** The UI-only state the Buy panel sends ('jaw:home-ui'). */
+export interface HomeGhost { itemId: string; x: number; y: number; rot: number; valid?: boolean }
+export interface HomeUi { selected: string | null; ghost: HomeGhost | null; buy: boolean }
+/** A name tag the host projects into the DOM (the scene's `tags()`). */
+export interface HomeTag { id: string; name: string; kind: string; text: string; marker: string; colour: string; position: { x: number; y: number; z: number } }
+/** The player's avatar as the host hands it over (setPlayer). */
+export interface HomePlayer { look?: unknown; seed?: string; name?: unknown; pose?: string | null }
+/** What the host knows about where the avatar belongs (`walk.rest()`). */
+export interface HomeRest { spot: string | null; x: number; y: number; z: number; ry: number; pose: Pose; busy: boolean; leaving: boolean; fixed: boolean }
+/** What is under a tap (`pickAt`). */
+export interface HomePick { id: string | null; cell: { x: number; y: number } | null; x: number; z: number; rect: [number, number, number, number] | null }
+type Wall = 'back' | 'left';
+type Solid = [number, number, number, number, number, number];
+/** A figure built by characters.ts (one prebuilt per pose). */
+type Figure = ReturnType<typeof buildAvatar>;
+/** A guest the host let in, as setCrowd keeps it. */
+interface Guest { id: unknown; name: unknown; kind: unknown; look: unknown; seed: unknown }
+const FURNITURE = CATALOGUE as unknown as Readonly<Record<string, FurnitureDefinition | undefined>>;
+const KINDS = KIND_TABLE as unknown as Readonly<Record<string, { spot: string | null } | undefined>>;
+/** homeOf(state, designs): the rented tier, or the design of the house the player built (housing.js types `designs` as null: it is a table). */
+const houseOf = homeOf as unknown as (state: LifeState | null | undefined, designs: unknown) => { grid: number };
 
 const ROOM = 10;         // world units along each wall, whatever the grid size
 const WALL_HEIGHT = 3.4;
@@ -62,12 +100,12 @@ const WOOD = '#7a5c40', DARK = '#33373d', WHITE = '#f3f1ea', STEEL = '#9aa3a8';
 const AVATAR_SCALE = 0.72;
 export const MAX_GUESTS_SHOWN = 5;
 /** How tall each furniture shape stands, in tiles — what can come between the camera and the avatar (camera-collision.js). Unlisted shapes are low. */
-const TALL = { bed: 1.3, fridge: 1.9, shower: 1.8, speaker: 1.25, tv: 1.4, shelf: 1.5, wardrobe: 1.7, tripod: 1.25, mic: 1.3, floorlamp: 1.7, cage: 1.5, aquarium: 1.15, plant: 1.1, drum: 1, cooker: 1.1, desk: 1, bench: 1, inverter: 0.95, chair: 0.95, sofa: 0.85 };
+const TALL: Record<string, number | undefined> = { bed: 1.3, fridge: 1.9, shower: 1.8, speaker: 1.25, tv: 1.4, shelf: 1.5, wardrobe: 1.7, tripod: 1.25, mic: 1.3, floorlamp: 1.7, cage: 1.5, aquarium: 1.15, plant: 1.1, drum: 1, cooker: 1.1, desk: 1, bench: 1, inverter: 0.95, chair: 0.95, sofa: 0.85 };
 
-const legs = (b, w, d, h, c = WOOD) => { for (const x of [-w / 2, w / 2]) for (const z of [-d / 2, d / 2]) b.box(x, h / 2, z, 0.06, h, 0.06, c); };
+const legs = (b: Tools, w: number, d: number, h: number, c: Colour = WOOD) => { for (const x of [-w / 2, w / 2]) for (const z of [-d / 2, d / 2]) b.box(x, h / 2, z, 0.06, h, 0.06, c); };
 
 /** One low-poly model per catalogue `shape`. Units are tiles; origin is the footprint centre on the floor; W × D is the footprint. */
-const SHAPES = {
+const SHAPES: { fallback: Shape; [shape: string]: Shape | undefined } = {
   mat(b, W, D, c) { b.box(0, 0.04, 0, W * 0.84, 0.06, D * 0.9, c); b.box(0, 0.1, -D * 0.36, W * 0.5, 0.07, D * 0.12, WHITE); },
   bed(b, W, D, c, def) {
     b.box(0, 0.2, 0, W * 0.92, 0.26, D * 0.94, WOOD);
@@ -135,14 +173,14 @@ const SHAPES = {
   },
   shelf(b, W, D, c) {
     b.box(0, 0.75, -0.14, 0.8, 1.5, 0.05, c); for (const x of [-0.39, 0.39]) b.box(x, 0.75, 0, 0.04, 1.5, 0.34, c);
-    [0.08, 0.5, 0.92, 1.34].forEach((y, row) => { b.box(0, y, 0, 0.78, 0.04, 0.34, c); if (row < 3) for (let i = 0; i < 5; i++) b.box(-0.28 + i * 0.14, y + 0.17, 0, 0.1, 0.28 - (i % 2) * 0.05, 0.22, ['#b6524a', '#4f7fa8', '#d1a94a', '#5d8f63', '#8a5f99'][(i + row) % 5]); });
+    [0.08, 0.5, 0.92, 1.34].forEach((y, row) => { b.box(0, y, 0, 0.78, 0.04, 0.34, c); if (row < 3) for (let i = 0; i < 5; i++) b.box(-0.28 + i * 0.14, y + 0.17, 0, 0.1, 0.28 - (i % 2) * 0.05, 0.22, ['#b6524a', '#4f7fa8', '#d1a94a', '#5d8f63', '#8a5f99'][(i + row) % 5]!); });
   },
   keyboard(b, W, D, c) {
     for (const x of [-W * 0.3, W * 0.3]) { b.box(x, 0.36, 0, 0.05, 0.72, 0.05, DARK); b.box(x, 0.03, 0, 0.05, 0.05, 0.5, DARK); }
     b.box(0, 0.75, 0, W * 0.88, 0.08, 0.32, c); b.box(0, 0.8, 0.05, W * 0.82, 0.02, 0.16, WHITE); b.box(0, 0.815, 0.01, W * 0.82, 0.02, 0.05, '#17181a');
   },
   tripod(b, W, D, c) {
-    for (const [x, z] of [[-0.2, 0.16], [0.2, 0.16], [0, -0.22]]) b.box(x * 0.6, 0.5, z * 0.6, 0.04, 1.0, 0.04, STEEL);
+    for (const [x, z] of [[-0.2, 0.16], [0.2, 0.16], [0, -0.22]] as const) b.box(x * 0.6, 0.5, z * 0.6, 0.04, 1.0, 0.04, STEEL);
     b.box(0, 1.1, 0, 0.3, 0.2, 0.2, c); b.round(0, 1.1, 0.13, 0.07, 0.06, '#5b6068');
   },
   mic(b, W, D, c) { b.round(0, 0.03, 0, 0.2, 0.05, c); b.round(0, 0.62, 0, 0.022, 1.2, STEEL); b.ball(0, 1.26, 0, 0.07, DARK); },
@@ -172,40 +210,40 @@ const SHAPES = {
   fallback(b, W, D, c) { b.box(0, 0.3, 0, W * 0.8, 0.6, D * 0.8, c); },
 };
 
-export function buildHomeScene(kit) {
+export function buildHomeScene(kit: Kit) {
   const { THREE } = kit;
   const group = new THREE.Group();
   const room = new THREE.Group(), furniture = new THREE.Group(), overlay = new THREE.Group(), people = new THREE.Group();
   // Each wall, with its trim and its window or door, is a group of its own: hidden when the camera is behind it.
-  const wallGroups = { back: new THREE.Group(), left: new THREE.Group() };
-  const hiddenWalls = { back: false, left: false };
-  let solids = [];
+  const wallGroups: Record<Wall, THREE.Group> = { back: new THREE.Group(), left: new THREE.Group() };
+  const hiddenWalls: Record<Wall, boolean> = { back: false, left: false };
+  let solids: Solid[] = [];
   group.add(room, furniture, overlay, people);
   group.position.set(SHIFT, 0, SHIFT);
   const glow = new THREE.PointLight('#ffe3b0', 26, 18, 1.5);
   glow.position.set(-1, 3, -1);
   group.add(glow);
 
-  let grid = 0, tile = 1, drawn = '', lastState = null, camera = null, canvas = null, status = '', undrawn = false;
-  let ui = { selected: null, ghost: null, buy: false };
-  let who = { look: undefined, seed: 'you', name: 'You', pose: null }, guests = [], guestTags = [], selfTag = null, guestKey = '', restKey = '', dressKey = '';
-  const actorMeshes = [], markMeshes = [];
+  let grid = 0, tile = 1, drawn = '', lastState: LifeState | null = null, camera: THREE.Camera | null = null, canvas: HTMLElement | null = null, status = '', undrawn = false;
+  let ui: HomeUi = { selected: null, ghost: null, buy: false };
+  let who: { look: unknown; seed: string; name: string; pose: Pose | null } = { look: undefined, seed: 'you', name: 'You', pose: null }, guests: Guest[] = [], guestTags: HomeTag[] = [], selfTag: HomeTag | null = null, guestKey = '', restKey = '', dressKey = '';
+  const actorMeshes: THREE.Mesh[] = [], markMeshes: THREE.Mesh[] = [];
   // The player's own figure: a group moved by its transform, with one prebuilt figure per pose.
   const avatar = new THREE.Group();
   avatar.name = 'avatar';
   people.add(avatar);
-  const figures = new Map();
-  let shownFigure = null, shownPose = 'stand', driven = false, walkGrid = null, gridKey = '', restAt = null, goalMark = null;
+  const figures = new Map<Pose, Figure>();
+  let shownFigure: Figure | null = null, shownPose: Pose = 'stand', driven = false, walkGrid: ReturnType<typeof createWalkGrid> | null = null, gridKey = '', restAt: HomeRest | null = null, goalMark: THREE.Mesh | null = null;
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const tools = (parent) => ({
+  const tools = (parent: THREE.Object3D): Tools => ({
     box: (x, y, z, w, h, d, c, lit) => kit.box(x, y, z, w, h, d, c, parent, lit),
     round: (x, y, z, r, h, c, lit) => kit.round(x, y, z, r, h, c, parent, lit),
     ball: (x, y, z, r, c) => kit.sphere(x, y, z, r, c, parent),
     crown: (x, y, z, sx, sy, sz, c) => kit.mesh(kit.crownGeometry, x, y, z, sx, sy, sz, c, parent),
   });
-  const along = (index, span = 1) => -ROOM / 2 + (index + span / 2) * tile;
+  const along = (index: number, span = 1) => -ROOM / 2 + (index + span / 2) * tile;
 
-  function announce(next, placed) {
+  function announce(next: string, placed: number) {
     if (next === status) return;
     status = next;
     globalThis.window?.dispatchEvent?.(new CustomEvent('jaw:home-scene', { detail: { status, placed } }));
@@ -231,11 +269,11 @@ export function buildHomeScene(kit) {
     left.box(-ROOM / 2 + 0.11, 1.1, dz + wide * 0.3, 0.05, 0.07, 0.07, '#d8c27a');
     room.add(wallGroups.back, wallGroups.left);
     // The floor reports the camera and canvas the host draws with, so taps can be resolved.
-    room.children[0].onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); };
+    room.children[0]!.onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); };
   }
 
   /** A group holding one object's model, placed and rotated on its tile(s) or wall slot. */
-  function model(def, x, y, rot, parent) {
+  function model(def: FurnitureDefinition, x: number, y: number, rot: number, parent: THREE.Object3D) {
     const holder = new THREE.Group();
     if (def.wall) {
       const scale = Math.max(tile, 0.8);
@@ -244,7 +282,7 @@ export function buildHomeScene(kit) {
       holder.scale.setScalar(scale);
       // It hangs on that wall, and hides with it.
       holder.userData.wall = rot === 0 ? 'back' : 'left';
-      holder.visible = !hiddenWalls[holder.userData.wall];
+      holder.visible = !hiddenWalls[holder.userData.wall as Wall];
     } else {
       const size = footprint(def, rot);
       holder.position.set(along(x, size.w), 0.015, along(y, size.h));
@@ -257,22 +295,22 @@ export function buildHomeScene(kit) {
   }
 
   /** A flat marker under a footprint (or behind a wall item). */
-  function marker(def, x, y, rot, colour, lift) {
+  function marker(def: FurnitureDefinition, x: number, y: number, rot: number, colour: Colour, lift: number) {
     const b = tools(overlay);
     if (def.wall) {
       const size = Math.max(tile, 0.8) * 0.94;
       const mark = rot === 0 ? b.box(along(x), WALL_ITEM_Y, -ROOM / 2 + 0.006, size, size * 1.2, 0.012, colour, true)
         : b.box(-ROOM / 2 + 0.006, WALL_ITEM_Y, along(y), 0.012, size * 1.2, size, colour, true);
       mark.userData.wall = rot === 0 ? 'back' : 'left';
-      mark.visible = !hiddenWalls[mark.userData.wall];
+      mark.visible = !hiddenWalls[mark.userData.wall as Wall];
       return;
     }
     const size = footprint(def, rot);
     b.box(along(x, size.w), lift, along(y, size.h), size.w * tile * 0.97, 0.02, size.h * tile * 0.97, colour, true);
   }
 
-  function rebuild(state) {
-    const house = homeOf(state, HOUSE_DESIGNS);   // the rented tier, or the design of the house the player built
+  function rebuild(state: LifeState | null) {
+    const house = houseOf(state, HOUSE_DESIGNS);   // the rented tier, or the design of the house the player built
     if (house.grid !== grid) { grid = house.grid; tile = ROOM / grid; buildRoom(); }
     furniture.clear(); overlay.clear();
     const items = Array.isArray(state?.home?.items) ? state.home.items : [];
@@ -294,11 +332,11 @@ export function buildHomeScene(kit) {
     return placed;
   }
 
-  const signature = (state) => JSON.stringify([state?.property?.house, state?.home?.items, state?.spot, ui]);
+  const signature = (state: LifeState | null) => JSON.stringify([state?.property?.house, state?.home?.items, state?.spot, ui]);
 
   /** Tiles a standing figure may use: not under furniture. `taken` holds "x,y" keys. */
-  function freeTiles(items) {
-    const taken = new Set();
+  function freeTiles(items: readonly { itemId: string; x: number; y: number; rot: number }[]) {
+    const taken = new Set<string>();
     for (const item of items) {
       const def = FURNITURE[item?.itemId];
       if (!def || def.wall || def.shape === 'rug' || def.shape === 'mat') continue;
@@ -308,11 +346,11 @@ export function buildHomeScene(kit) {
     return taken;
   }
   /** Where the player stands: on a free tile next to the first object of the chosen spot, else just inside the door. */
-  function standing(state, taken) {
+  function standing(state: LifeState | null, taken: Set<string>) {
     const items = Array.isArray(state?.home?.items) ? state.home.items : [];
     const door = { x: 0, y: doorSlot(grid) };
-    const target = items.find((item) => KINDS[FURNITURE[item?.itemId]?.kind]?.spot === state?.spot && !FURNITURE[item.itemId].wall);
-    const centre = target ? (() => { const size = footprint(FURNITURE[target.itemId], target.rot); return { x: target.x + (size.w - 1) / 2, y: target.y + (size.h - 1) / 2 }; })() : door;
+    const target = items.find((item) => KINDS[FURNITURE[item?.itemId]?.kind ?? '']?.spot === state?.spot && !FURNITURE[item.itemId]!.wall);
+    const centre = target ? (() => { const size = footprint(FURNITURE[target.itemId]!, target.rot); return { x: target.x + (size.w - 1) / 2, y: target.y + (size.h - 1) / 2 }; })() : door;
     let best = null;
     for (let x = 0; x < grid; x++) for (let y = 0; y < grid; y++) {
       if (taken.has(`${x},${y}`)) continue;
@@ -322,7 +360,7 @@ export function buildHomeScene(kit) {
     const tileAt = best || door;
     return { x: tileAt.x, y: tileAt.y, ry: Math.atan2(centre.x - tileAt.x, centre.y - tileAt.y) || 0 };
   }
-  function figure(pose) {
+  function figure(pose: Pose) {
     let entry = figures.get(pose);
     if (!entry) {
       const state = lastState;
@@ -334,7 +372,7 @@ export function buildHomeScene(kit) {
     }
     return entry;
   }
-  function show(pose) {
+  function show(pose: Pose) {
     const next = figure(pose);
     shownPose = pose;
     if (next === shownFigure) return false;
@@ -349,7 +387,7 @@ export function buildHomeScene(kit) {
     shownFigure = null;
   }
   /** Move the avatar (transform only) and its name tag. */
-  function moveAvatar(x, y, z, ry) {
+  function moveAvatar(x: number, y: number, z: number, ry: number) {
     avatar.position.set(x, y, z);
     avatar.rotation.y = ry;
     const top = y + (shownFigure?.userData.top ?? 2.95 * tile * AVATAR_SCALE);
@@ -357,35 +395,35 @@ export function buildHomeScene(kit) {
     else selfTag = { id: 'self', name: who.name, kind: 'self', text: who.name, marker: 'crown', colour: '#ffd34d', position: { x, y: top, z } };
   }
   /** The floor as a grid: the room, minus every piece of floor furniture. Rebuilt only when either changes. */
-  function refreshGrid(state) {
+  function refreshGrid(state: LifeState | null) {
     const items = (Array.isArray(state?.home?.items) ? state.home.items : []).filter((item) => { const def = FURNITURE[item?.itemId]; return def && !def.wall && def.shape !== 'rug' && def.shape !== 'mat'; });
     const key = JSON.stringify([grid, items.map((item) => [item.itemId, item.x, item.y, item.rot])]);
     if (key === gridKey && walkGrid) return;
     gridKey = key;
     const inset = tile * 0.1, edge = ROOM / 2;
-    const block = items.map((item) => {
-      const size = footprint(FURNITURE[item.itemId], item.rot);
+    const block = items.map((item): WalkRect => {
+      const size = footprint(FURNITURE[item.itemId]!, item.rot);
       return [-edge + item.x * tile + inset, -edge + item.y * tile + inset, -edge + (item.x + size.w) * tile - inset, -edge + (item.y + size.h) * tile - inset];
     });
     walkGrid = createWalkGrid({ bounds: [-edge + 0.22, -edge + 0.22, edge - 0.15, edge - 0.15], block, cell: 0.25, radius: Math.min(0.3, tile * 0.22) });
     // The same footprints, with heights: what can stand between the camera and the avatar.
-    solids = items.map((item, index) => [block[index][0], 0, block[index][1], block[index][2], (TALL[FURNITURE[item.itemId].shape] || 0.7) * tile, block[index][3]]).filter((box) => box[4] > 0.9 * tile);
+    solids = items.map((item, index): Solid => [block[index]![0], 0, block[index]![1], block[index]![2], (TALL[FURNITURE[item.itemId]!.shape] || 0.7) * tile, block[index]![3]]).filter((box) => box[4] > 0.9 * tile);
   }
   /** Hide the walls the camera is behind (and what hangs on them); show the others. True when anything changed. */
-  function look(x, z) {
+  function look(x: number, z: number) {
     const back = z < -ROOM / 2, left = x < -ROOM / 2;
     if (back === hiddenWalls.back && left === hiddenWalls.left) return false;
     hiddenWalls.back = back; hiddenWalls.left = left;
     wallGroups.back.visible = !back; wallGroups.left.visible = !left;
-    for (const parent of [furniture, overlay]) for (const child of parent.children) if (child.userData.wall) child.visible = !hiddenWalls[child.userData.wall];
+    for (const parent of [furniture, overlay]) for (const child of parent.children) if (child.userData.wall) child.visible = !hiddenWalls[child.userData.wall as Wall];
     return true;
   }
   /** Rebuild what changed about the people: the player's figure, where it rests, the guests. Returns true when anything did. */
-  function refreshPeople(state) {
+  function refreshPeople(state: LifeState | null) {
     const taken = freeTiles(Array.isArray(state?.home?.items) ? state.home.items : []);
     const mine = standing(state, taken);
     const active = state?.location === 'home' || state?.location == null ? state?.activeAction : null;
-    const leaving = !who.pose && Boolean(active) && (active.kind === 'travel' || active.kind === 'commute');
+    const leaving = !who.pose && Boolean(active) && (active?.kind === 'travel' || active?.kind === 'commute');
     const pose = who.pose || (!active ? 'stand' : leaving ? 'walk' : 'work');
     let changed = false;
     refreshGrid(state);
@@ -407,10 +445,10 @@ export function buildHomeScene(kit) {
     const batch = createBatch(THREE);
     guestTags = [];
     // Guests wait on the free tiles nearest the door.
-    const door = { x: 0, y: doorSlot(grid) }, spare = [];
+    const door = { x: 0, y: doorSlot(grid) }, spare: { x: number; y: number; d: number }[] = [];
     for (let x = 0; x < grid; x++) for (let y = 0; y < grid; y++) if (!taken.has(`${x},${y}`)) spare.push({ x, y, d: Math.hypot(x - door.x, y - door.y) });
     spare.sort((a, b) => a.d - b.d);
-    const placed = guests.slice(0, Math.min(MAX_GUESTS_SHOWN, spare.length)).map((guest, index) => ({ ...guest, x: along(spare[index].x), y: 0.03, z: along(spare[index].y), ry: Math.PI / 2, scale }));
+    const placed = guests.slice(0, Math.min(MAX_GUESTS_SHOWN, spare.length)).map((guest, index) => ({ ...guest, x: along(spare[index]!.x), y: 0.03, z: along(spare[index]!.y), ry: Math.PI / 2, scale }));
     for (const [index, person] of placed.entries()) {
       const drawn = drawAvatar(batch, person.look ?? null, { x: person.x, y: person.y, z: person.z, ry: person.ry, pose: 'stand', seed: person.seed ?? person.id, scale, marker: person.kind === 'npc' ? 'npc' : 'player' });
       const name = String(person.name ?? '');
@@ -423,7 +461,7 @@ export function buildHomeScene(kit) {
   }
 
   /** Rebuild if anything visible changed. Returns true when it did. */
-  function refresh(state) {
+  function refresh(state: LifeState | null) {
     const next = signature(state);
     if (next === drawn) return false;
     drawn = next;
@@ -433,7 +471,7 @@ export function buildHomeScene(kit) {
   }
 
   /** What is under a point of the canvas: { id (furniture), cell (floor tile), x, z (the floor point), rect (the furniture's footprint) } | null. */
-  function pickAt(clientX, clientY) {
+  function pickAt(clientX: number, clientY: number): HomePick | null {
     if (!group.visible || !camera || !canvas || !lastState) return null;
     const box = canvas.getBoundingClientRect();
     if (!box.width || !box.height) return null;
@@ -442,7 +480,7 @@ export function buildHomeScene(kit) {
     group.updateMatrixWorld(true);
     let id = null;
     // What hangs on a hidden wall cannot be tapped.
-    for (let node = raycaster.intersectObjects(furniture.children.filter((child) => child.visible), true)[0]?.object; node && !id; node = node.parent) id = node.userData.objectId ?? null;
+    for (let node: THREE.Object3D | null | undefined = raycaster.intersectObjects(furniture.children.filter((child) => child.visible), true)[0]?.object; node && !id; node = node.parent) id = node.userData.objectId ?? null;
     let cell = null, x = NaN, z = NaN;
     const point = raycaster.ray.intersectPlane(floorPlane, new THREE.Vector3());
     if (point) {
@@ -452,27 +490,27 @@ export function buildHomeScene(kit) {
       if (cx >= 0 && cy >= 0 && cx < grid && cy < grid) cell = { x: cx, y: cy };
     }
     if (!id && !cell) return null;
-    let rect = null;
-    const item = id ? lastState.home?.items?.find((entry) => entry.id === id) : null, def = FURNITURE[item?.itemId];
-    if (def && !def.wall) { const size = footprint(def, item.rot); rect = [-ROOM / 2 + item.x * tile, -ROOM / 2 + item.y * tile, -ROOM / 2 + (item.x + size.w) * tile, -ROOM / 2 + (item.y + size.h) * tile]; }
+    let rect: HomePick['rect'] = null;
+    const item = id ? lastState.home?.items?.find((entry) => entry.id === id) : null, def = FURNITURE[item?.itemId ?? ''];
+    if (def && item && !def.wall) { const size = footprint(def, item.rot); rect = [-ROOM / 2 + item.x * tile, -ROOM / 2 + item.y * tile, -ROOM / 2 + (item.x + size.w) * tile, -ROOM / 2 + (item.y + size.h) * tile]; }
     return { id, cell, x, z, rect };
   }
   /** Tell the Buy panel / home chip that an object or a tile was chosen — what a tap has always done. */
-  function use(id, cell) { window.dispatchEvent(new CustomEvent('jaw:home-pick', { detail: { id: id ?? null, cell: cell ?? null } })); }
-  function onPick(event) {
+  function use(id?: string | null, cell?: { x: number; y: number } | null) { window.dispatchEvent(new CustomEvent('jaw:home-pick', { detail: { id: id ?? null, cell: cell ?? null } })); }
+  function onPick(event: MouseEvent) {
     // Outside Buy mode the host walks the avatar to the furniture first, then calls use().
     if (driven && !buying()) return;
     const hit = pickAt(event.clientX, event.clientY);
     if (hit) use(hit.id, hit.cell);
   }
-  function attach(element) {
+  function attach(element: HTMLElement) {
     if (canvas || !element?.addEventListener) return;
     canvas = element;
     canvas.addEventListener('click', onPick);
   }
 
-  const onUi = (event) => {
-    const detail = event.detail || {};
+  const onUi = (event: Event) => {
+    const detail = (event as CustomEvent<{ selected?: unknown; buy?: unknown; ghost?: HomeGhost | null; retry?: unknown } | null>).detail || {};
     ui = { selected: typeof detail.selected === 'string' ? detail.selected : null, buy: detail.buy === true, ghost: detail.ghost && FURNITURE[detail.ghost.itemId] ? { ...detail.ghost } : null };
     if (detail.retry) { drawn = ''; status = ''; }
     // Rebuild now so the frame the sender asks the host for shows it; drawing stays the host's job.
@@ -482,8 +520,8 @@ export function buildHomeScene(kit) {
   globalThis.window?.addEventListener?.('jaw:home-ui', onUi);
   // The Buy panel says `buy` only when it has something to draw; the shell's view is known the moment Buy opens.
   // (A scene built while Buy is already open reads the view the shell wrote on its root element.)
-  let shellMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
-  const onMode = (event) => { shellMode = event.detail?.mode || 'venue'; };
+  let shellMode = globalThis.document?.querySelector?.<HTMLElement>('.life-ui')?.dataset?.mode || 'venue';
+  const onMode = (event: Event) => { shellMode = (event as CustomEvent<{ mode?: string } | null>).detail?.mode || 'venue'; };
   const buying = () => ui.buy || shellMode === 'buy';
   globalThis.window?.addEventListener?.('jaw:mode', onMode);
 
@@ -494,10 +532,10 @@ export function buildHomeScene(kit) {
     group,
     background: '#c9d6cf',
     // [horizon, zenith]: a soft morning haze rather than a flat fill; the host grades between them.
-    sky: ['#c9d6cf', '#8fb0b4'],
+    sky: ['#c9d6cf', '#8fb0b4'] as [Colour, Colour],
     ground: '#7f8f7c',
-    camera: { landscape: [17.5, 19.5, 17.5], portrait: [19, 24, 19] },
-    update(state) {
+    camera: { landscape: [17.5, 19.5, 17.5], portrait: [19, 24, 19] } as SceneCamera,
+    update(state: LifeState) {
       const first = lastState === null;
       lastState = state;
       const room = refresh(state);
@@ -506,13 +544,13 @@ export function buildHomeScene(kit) {
       return changed;
     },
     /** The player's avatar: { look, seed, name, pose? }. Returns true when it changed what is drawn. */
-    setPlayer({ look, seed, name, pose } = {}) {
-      who = { look, seed: seed ?? 'you', name: String(name ?? 'You'), pose: pose || null };
+    setPlayer({ look, seed, name, pose }: HomePlayer = {}) {
+      who = { look, seed: seed ?? 'you', name: String(name ?? 'You'), pose: (pose as Pose | null | undefined) || null };
       return refreshPeople(lastState);
     },
     /** Guests the host let in, standing by the door: [{ id, name, look?, seed? }]. */
-    setCrowd(list) {
-      guests = (Array.isArray(list) ? list : []).filter((person) => person && typeof person === 'object').slice(0, MAX_GUESTS_SHOWN)
+    setCrowd(list: unknown) {
+      guests = (Array.isArray(list) ? list as Record<string, unknown>[] : []).filter((person) => person && typeof person === 'object').slice(0, MAX_GUESTS_SHOWN)
         .map((person) => ({ id: person.id, name: person.name, kind: person.kind, look: person.look ?? null, seed: person.seed ?? person.id }));
       refreshPeople(lastState);
       return guestTags;
@@ -526,8 +564,8 @@ export function buildHomeScene(kit) {
     pickAt, use,
     /** Floor furniture and where it stands, for diagnostics: [{ id, itemId, x, z }] (centre of the footprint). */
     objects() {
-      return (Array.isArray(lastState?.home?.items) ? lastState.home.items : []).filter((item) => FURNITURE[item?.itemId] && !FURNITURE[item.itemId].wall)
-        .map((item) => { const size = footprint(FURNITURE[item.itemId], item.rot); return { id: item.id, itemId: item.itemId, x: along(item.x, size.w), z: along(item.y, size.h) }; });
+      return (Array.isArray(lastState?.home?.items) ? lastState.home.items : []).filter((item) => FURNITURE[item?.itemId] && !FURNITURE[item.itemId]!.wall)
+        .map((item) => { const size = footprint(FURNITURE[item.itemId]!, item.rot); return { id: item.id, itemId: item.itemId, x: along(item.x, size.w), z: along(item.y, size.h) }; });
     },
     /** Walking — the same contract as a venue scene's `walk` (src/scene/venue-scenes.js). */
     walk: {
@@ -537,32 +575,32 @@ export function buildHomeScene(kit) {
       get scale() { return tile * AVATAR_SCALE; },
       // The camera turns about the middle of the room, so a full orbit keeps the room in place on screen
       // (the host already lifts the scene clear of the bottom panels through its insets).
-      centre: [0, 0.7, 0],
+      centre: [0, 0.7, 0] as Vec3,
       avatar,
-      drive(on) { driven = Boolean(on); if (!driven && restAt) { show(restAt.pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); } },
+      drive(on: unknown) { driven = Boolean(on); if (!driven && restAt) { show(restAt.pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); } },
       rest: () => restAt,
       spots: () => [],
       people: () => guestTags.map((tag) => ({ id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y })),
       get solids() { return solids; },
       move: moveAvatar,
-      pose: (name) => { rigOf(figures.get('stand'))?.rest(); return show(POSES.includes(name) ? name : 'stand'); },
+      pose: (name: string) => { rigOf(figures.get('stand'))?.rest(); return show((POSES as readonly string[]).includes(name) ? name as Pose : 'stand'); },
       // With a rigged figure the limbs swing with `phase`; without one the two figures alternate (avatar-rig.js).
-      gait(step, phase = 0, jog = false) { const rig = rigOf(figures.get('stand')); if (rig) { rig.stride(phase, 1, jog); return show('stand'); } return show(step ? 'walk' : 'stand'); },
+      gait(step: boolean, phase = 0, jog = false) { const rig = rigOf(figures.get('stand')); if (rig) { rig.stride(phase, 1, jog); return show('stand'); } return show(step ? 'walk' : 'stand'); },
       heightAt: () => 0.03,
       near: () => false,
-      goal(x, z) {
+      goal(x?: number, z?: number) {
         const visible = Number.isFinite(x);
         if (!goalMark) {
           if (!visible) return false;
           const batch = createBatch(THREE);
           batch.cyl(0, 0.07, 0, 0.36, 0.04, '#ffffff', { seg: 14, open: true, layer: 'glow' }); batch.disc(0, 0.06, 0, 0.12, '#ffffff', { seg: 10, layer: 'glow' });
-          goalMark = batch.build(sceneMaterials(kit)).meshes[0];
+          goalMark = batch.build(sceneMaterials(kit)).meshes[0]!;
           goalMark.name = 'mark-goal';
           group.add(goalMark); markMeshes.push(goalMark);
         }
         const changed = goalMark.visible !== visible || (visible && (goalMark.position.x !== x || goalMark.position.z !== z));
         goalMark.visible = visible;
-        if (visible) goalMark.position.set(x, 0, z);
+        if (visible) goalMark.position.set(x!, 0, z!);
         return changed;
       },
     },
@@ -580,3 +618,6 @@ export function buildHomeScene(kit) {
     },
   };
 }
+
+/** What buildHomeScene returns: the scene entry the host drives. */
+export type HomeScene = ReturnType<typeof buildHomeScene>;

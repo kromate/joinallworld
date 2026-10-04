@@ -35,27 +35,60 @@ export const PITCH_MAX = Math.PI / 2 - 0.07;  // ≈ 86°: nearly top-down
 export const DRAG_YAW = 0.006, DRAG_PITCH = 0.005; // radians per CSS pixel
 const EASE = { turn: 18, zoom: 11, pivot: 7, squeezeIn: 12, squeezeOut: 3.2 };
 /** What step() eases: the two angles first (at the turning rate), then the pivot. */
-const EASED = ['yaw', 'tilt', 'x', 'y', 'z'];
+const EASED = ['yaw', 'tilt', 'x', 'y', 'z'] as const;
 
-const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
+const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 
-export function createOrbit() {
-  const base = { azimuth: 0.6, elevation: 0.6, distance: 35 };
-  const limits = { zoomMin: 0.72, zoomMax: 6, azimuth: null };
+/** One side of the orbit: yaw / tilt offsets, zoom factor, pivot, collision squeeze. */
+export interface OrbitState { yaw: number; tilt: number; zoom: number; x: number; y: number; z: number; squeeze: number }
+export interface OrbitBase { azimuth: number; elevation: number; distance: number }
+export interface OrbitLimits { zoomMin: number; zoomMax: number; azimuth: [number, number] | null }
+/** The camera as the orbit drives it (a THREE camera satisfies this). */
+export interface OrbitCamera {
+  position: { set(x: number, y: number, z: number): unknown };
+  lookAt(x: number, y: number, z: number): void;
+}
+export interface Orbit {
+  base: OrbitBase;
+  limits: OrbitLimits;
+  goal: OrbitState;
+  now: OrbitState;
+  setBase(position: readonly number[], target?: readonly number[]): void;
+  setLimits(options?: { near?: number; far?: number; azimuth?: [number, number] | null }): void;
+  rotate(yaw: number, tilt: number): void;
+  drag(dx: number, dy: number): void;
+  zoomBy(factor: number): void;
+  reset(): void;
+  unwind(): void;
+  follow(x: number, y: number, z: number): void;
+  cap(distance: number): void;
+  snap(): void;
+  readonly settled: boolean;
+  step(dt: number): boolean;
+  readonly azimuth: number;
+  readonly pitch: number;
+  readonly distance: number;
+  readonly asked: number;
+  apply(camera: OrbitCamera): void;
+}
+
+export function createOrbit(): Orbit {
+  const base: OrbitBase = { azimuth: 0.6, elevation: 0.6, distance: 35 };
+  const limits: OrbitLimits = { zoomMin: 0.72, zoomMax: 6, azimuth: null };
   // squeeze: the share of the asked-for distance the camera is held at (1 = not held; see cap()).
-  const goal = { yaw: 0, tilt: 0, zoom: 1, x: 0, y: 0.7, z: 0, squeeze: 1 };
-  const now = { yaw: 0, tilt: 0, zoom: 1, x: 0, y: 0.7, z: 0, squeeze: 1 };
+  const goal: OrbitState = { yaw: 0, tilt: 0, zoom: 1, x: 0, y: 0.7, z: 0, squeeze: 1 };
+  const now: OrbitState = { yaw: 0, tilt: 0, zoom: 1, x: 0, y: 0.7, z: 0, squeeze: 1 };
 
   function constrain() {
     goal.tilt = clamp(base.elevation + goal.tilt, PITCH_MIN, PITCH_MAX) - base.elevation;
     goal.zoom = clamp(goal.zoom, limits.zoomMin, limits.zoomMax);
     if (limits.azimuth) goal.yaw = clamp(base.azimuth + goal.yaw, limits.azimuth[0], limits.azimuth[1]) - base.azimuth;
   }
-  const orbit = {
+  const orbit: Orbit = {
     base, limits, goal, now,
     /** The scene's own camera preset: its position and the point it looks at. */
     setBase(position, target = [0, 0.7, 0]) {
-      const dx = position[0] - target[0], dy = position[1] - target[1], dz = position[2] - target[2];
+      const dx = position[0]! - target[0]!, dy = position[1]! - target[1]!, dz = position[2]! - target[2]!;
       const flat = Math.hypot(dx, dz);
       base.azimuth = Math.atan2(dx, dz); base.elevation = Math.atan2(dy, flat); base.distance = Math.hypot(flat, dy);
       constrain();
@@ -92,7 +125,7 @@ export function createOrbit() {
       const turn = 1 - Math.exp(-EASE.turn * dt), slide = 1 - Math.exp(-EASE.pivot * dt);
       let moving = false;
       for (let i = 0; i < EASED.length; i++) {
-        const key = EASED[i], delta = goal[key] - now[key];
+        const key = EASED[i]!, delta = goal[key] - now[key];
         if (delta === 0) continue;
         if (Math.abs(delta) < (i < 2 ? 0.0008 : 0.004)) { now[key] = goal[key]; continue; }
         now[key] += delta * (i < 2 ? turn : slide);
@@ -131,4 +164,4 @@ export function createOrbit() {
 }
 
 /** How much the pivot belongs to the avatar (1) rather than the scene's centre (0) at a zoom level. */
-export function followShare(zoom) { return clamp(0.35 + (zoom - 1) * 0.9, 0.08, 1); }
+export function followShare(zoom: number) { return clamp(0.35 + (zoom - 1) * 0.9, 0.08, 1); }

@@ -21,16 +21,27 @@
  * createOccluders() holds the boxes; sweep() is the test; resolve() turns a hit into { cap, ghost }.
  */
 
+/** One box: [x0, y0, z0, x1, y1, z1]. */
+export type OccluderBox = [number, number, number, number, number, number];
+/** A person standing about, as a box: x / z centre, top height. */
+export interface OccluderPerson { x: number; z: number; top?: number }
+export interface Occluders {
+  setStatic(boxes: OccluderBox[] | Float32Array | null | undefined): void;
+  setPeople(people: OccluderPerson[] | null | undefined, radius?: number): void;
+  readonly count: number;
+  sweep(hx: number, hy: number, hz: number, cx: number, cy: number, cz: number, skin?: number): number;
+}
+
 /** Boxes are stored flat: [x0, y0, z0, x1, y1, z1] per box. */
-export function createOccluders() {
-  let fixed = new Float32Array(0), moving = new Float32Array(0), movingCount = 0;
+export function createOccluders(): Occluders {
+  let fixed: Float32Array = new Float32Array(0), moving: Float32Array = new Float32Array(0), movingCount = 0;
   return {
     /** The scene's own solids: [[x0, y0, z0, x1, y1, z1], ...] (or a ready Float32Array). Set once per scene. */
     setStatic(boxes) {
       if (boxes instanceof Float32Array) { fixed = boxes; return; }
       const list = Array.isArray(boxes) ? boxes : [];
       fixed = new Float32Array(list.length * 6);
-      for (let i = 0; i < list.length; i++) for (let k = 0; k < 6; k++) fixed[i * 6 + k] = list[i][k];
+      for (let i = 0; i < list.length; i++) for (let k = 0; k < 6; k++) fixed[i * 6 + k] = list[i]![k]!;
     },
     /** People standing about: [{ x, z, top }] — a box each. Re-read whenever the crowd changed or moved; allocates only when it grows. */
     setPeople(people, radius = 0.32) {
@@ -38,9 +49,9 @@ export function createOccluders() {
       if (moving.length < list.length * 6) moving = new Float32Array(list.length * 6);
       movingCount = list.length;
       for (let i = 0; i < list.length; i++) {
-        const person = list[i], at = i * 6;
+        const person = list[i]!, at = i * 6;
         moving[at] = person.x - radius; moving[at + 1] = 0; moving[at + 2] = person.z - radius;
-        moving[at + 3] = person.x + radius; moving[at + 4] = Number.isFinite(person.top) ? person.top : 2.4; moving[at + 5] = person.z + radius;
+        moving[at + 3] = person.x + radius; moving[at + 4] = Number.isFinite(person.top) ? person.top! : 2.4; moving[at + 5] = person.z + radius;
       }
     },
     get count() { return fixed.length / 6 + movingCount; },
@@ -61,10 +72,10 @@ export function createOccluders() {
   };
 }
 
-function scan(boxes, count, hx, hy, hz, dx, dy, dz, length, skin, best) {
+function scan(boxes: Float32Array, count: number, hx: number, hy: number, hz: number, dx: number, dy: number, dz: number, length: number, skin: number, best: number) {
   for (let i = 0; i < count; i++) {
     const at = i * 6;
-    const x0 = boxes[at] - skin, y0 = boxes[at + 1] - skin, z0 = boxes[at + 2] - skin, x1 = boxes[at + 3] + skin, y1 = boxes[at + 4] + skin, z1 = boxes[at + 5] + skin;
+    const x0 = boxes[at]! - skin, y0 = boxes[at + 1]! - skin, z0 = boxes[at + 2]! - skin, x1 = boxes[at + 3]! + skin, y1 = boxes[at + 4]! + skin, z1 = boxes[at + 5]! + skin;
     if (hx > x0 && hx < x1 && hy > y0 && hy < y1 && hz > z0 && hz < z1) continue; // the head is inside it
     // Slab test of the segment head → camera, t in 0…1.
     let enter = 0, leave = 1;
@@ -94,7 +105,8 @@ export const PULL_FROM_ZOOM = 1.5;
  * → { cap, ghost }: cap = the distance to hold the camera at (Infinity = leave it alone);
  *   ghost = true when what is in the way must be dithered away instead of (or as well as) pulling in.
  */
-export function resolve(hit, distance, zoom, nearest, out = { cap: Infinity, ghost: false }) {
+export interface Resolution { cap: number; ghost: boolean }
+export function resolve(hit: number, distance: number, zoom: number, nearest: number, out: Resolution = { cap: Infinity, ghost: false }): Resolution {
   out.cap = Infinity; out.ghost = false;
   if (!(hit < distance)) return out;
   const room = hit - CAMERA_GAP;

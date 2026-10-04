@@ -18,9 +18,24 @@
  * FOR THE CITY MAP (src/map3d, another owner): call applyRendererLook(THREE, renderer, renderTier())
  * in place of its own outputColorSpace / setPixelRatio lines to match the scenes' tone mapping.
  */
+import type * as THREE from 'three';
+import type { Colour, ThreeModule } from './types.ts';
 
-export const PHONE_TIER = Object.freeze({ name: 'phone', pixelRatio: 1.5, shadowMap: 1024, softShadows: false });
-export const WIDE_TIER = Object.freeze({ name: 'wide', pixelRatio: 2, shadowMap: 2048, softShadows: true });
+/** What a device is allowed to cost. */
+export interface RenderTier { readonly name: 'phone' | 'wide'; readonly pixelRatio: number; readonly shadowMap: number; readonly softShadows: boolean }
+/** The window-like object the helpers read (a real window, or a test stub). */
+export type LookWindow = Partial<Pick<Window, 'location' | 'localStorage' | 'matchMedia' | 'innerWidth' | 'innerHeight' | 'devicePixelRatio'>>
+/** The parts of a renderer applyRendererLook touches (a test stub may lack the optional ones). */
+export interface LookRenderer {
+  outputColorSpace: THREE.WebGLRenderer['outputColorSpace']
+  toneMapping: THREE.WebGLRenderer['toneMapping']
+  toneMappingExposure: number
+  setPixelRatio?: (ratio: number) => void
+  shadowMap?: { enabled: boolean; type: THREE.ShadowMapType }
+}
+
+export const PHONE_TIER: RenderTier = Object.freeze({ name: 'phone', pixelRatio: 1.5, shadowMap: 1024, softShadows: false });
+export const WIDE_TIER: RenderTier = Object.freeze({ name: 'wide', pixelRatio: 2, shadowMap: 2048, softShadows: true });
 
 /**
  * FOR REVIEW, DEFAULT OFF: cheaper scenery. With the flag on, the kit's per-colour materials and the
@@ -28,7 +43,7 @@ export const WIDE_TIER = Object.freeze({ name: 'wide', pixelRatio: 2, shadowMap:
  * without the per-pixel roughness/specular work. Turn it on with ?matte in the address, or
  * localStorage['joinallworld-matte'] = '1'; ?matte=0 turns it off again for that page.
  */
-export function matteScenery(win = globalThis) {
+export function matteScenery(win: LookWindow = globalThis): boolean {
   try {
     const query = new URLSearchParams(win.location?.search || '');
     if (query.has('matte')) return query.get('matte') !== '0';
@@ -37,14 +52,14 @@ export function matteScenery(win = globalThis) {
 }
 
 /** The render tier for this device. */
-export function renderTier(win = globalThis) {
+export function renderTier(win: LookWindow = globalThis): RenderTier {
   const coarse = win.matchMedia?.('(pointer: coarse)').matches === true;
   const short = Math.min(Number(win.innerWidth) || Infinity, Number(win.innerHeight) || Infinity);
   return coarse && short <= 720 ? PHONE_TIER : WIDE_TIER;
 }
 
 /** Colour space, tone mapping, pixel ratio and shadow filter for a renderer. Safe on a test stub. */
-export function applyRendererLook(THREE, renderer, tier = WIDE_TIER, { shadows = true, win = globalThis } = {}) {
+export function applyRendererLook(THREE: ThreeModule, renderer: LookRenderer, tier: RenderTier = WIDE_TIER, { shadows = true, win = globalThis }: { shadows?: boolean; win?: LookWindow } = {}): RenderTier {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 1;
@@ -56,11 +71,11 @@ export function applyRendererLook(THREE, renderer, tier = WIDE_TIER, { shadows =
   return tier;
 }
 
-const channels = (hex) => { const n = parseInt(String(hex).slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+const channels = (hex: Colour): [number, number, number] => { const n = parseInt(String(hex).slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
 /** '#rrggbb' between two colours. */
-export function mixHex(a, b, t) {
+export function mixHex(a: Colour, b: Colour, t: number): Colour {
   const x = channels(a), y = channels(b);
-  return `#${x.map((v, i) => Math.round(v * (1 - t) + y[i] * t).toString(16).padStart(2, '0')).join('')}`;
+  return `#${x.map((v, i) => Math.round(v * (1 - t) + y[i]! * t).toString(16).padStart(2, '0')).join('')}`;
 }
 
 const SKY_ROWS = 32;
@@ -69,7 +84,7 @@ const SKY_ROWS = 32;
  * zenith colour at the top. One 1×32 texture, re-used and re-filled when the colours change.
  * → { texture, set(horizon, zenith) → boolean (changed), dispose() }
  */
-export function createSky(THREE) {
+export function createSky(THREE: ThreeModule) {
   const data = new Uint8Array(SKY_ROWS * 4);
   const texture = new THREE.DataTexture(data, 1, SKY_ROWS, THREE.RGBAFormat);
   texture.colorSpace = THREE.SRGBColorSpace;
@@ -78,7 +93,7 @@ export function createSky(THREE) {
   let key = '';
   return {
     texture,
-    set(horizon, zenith = horizon) {
+    set(horizon: Colour, zenith: Colour = horizon): boolean {
       const next = `${horizon}:${zenith}`;
       if (next === key) return false;
       key = next;
@@ -86,7 +101,7 @@ export function createSky(THREE) {
       for (let row = 0; row < SKY_ROWS; row += 1) {
         // The lower third stays near the horizon colour (that is where the ground meets it), then it rises.
         const t = Math.max(0, (row / (SKY_ROWS - 1) - 0.3) / 0.7), ease = t * t * (3 - 2 * t);
-        for (let c = 0; c < 3; c += 1) data[row * 4 + c] = Math.round(low[c] * (1 - ease) + high[c] * ease);
+        for (let c = 0; c < 3; c += 1) data[row * 4 + c] = Math.round(low[c]! * (1 - ease) + high[c]! * ease);
         data[row * 4 + 3] = 255;
       }
       texture.needsUpdate = true;
@@ -103,9 +118,9 @@ const GROUND_SEGMENTS = 48;
  * draw call, 96 triangles; it never casts a shadow.
  * → { mesh, place(x, z, radius, y), tint(colour), dispose() }
  */
-export function createGround(THREE) {
-  const positions = [0, 0, 0], colours = [1, 1, 1, 1], index = [];
-  const rings = [[0.72, 1], [1, 0]];
+export function createGround(THREE: ThreeModule) {
+  const positions = [0, 0, 0], colours = [1, 1, 1, 1], index: number[] = [];
+  const rings: [number, number][] = [[0.72, 1], [1, 0]];
   for (const [reach, alpha] of rings) {
     for (let i = 0; i < GROUND_SEGMENTS; i += 1) {
       const a = (i / GROUND_SEGMENTS) * Math.PI * 2;
@@ -129,8 +144,8 @@ export function createGround(THREE) {
   mesh.renderOrder = -1;
   return {
     mesh,
-    place(x, z, radius, y = -0.5) { mesh.position.set(x, y, z); mesh.scale.set(radius, 1, radius); },
-    tint(colour) { material.color.set(colour); },
+    place(x: number, z: number, radius: number, y = -0.5) { mesh.position.set(x, y, z); mesh.scale.set(radius, 1, radius); },
+    tint(colour: Colour) { material.color.set(colour); },
     dispose() { geometry.dispose(); material.dispose(); },
   };
 }

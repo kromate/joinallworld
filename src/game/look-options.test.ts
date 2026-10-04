@@ -8,7 +8,7 @@ import { checkLook } from './systems/onboarding.ts';
 import { APPEARANCE, BOUTIQUE_PRICES, ACCESSORY_BASICS, DEFAULT_LOOK } from './content/traits.ts';
 import type { ActionBody, ActionResult, ActionType } from '../types/actions.ts';
 import type { AccessoryId, LifeContext, LifeState, Look } from '../types/life.ts';
-import { LOOK_OPTIONS, ACCESSORY_SLOTS, normalizeLook } from '../scene/characters.js';
+import { LOOK_OPTIONS, ACCESSORY_SLOTS, normalizeLook } from '../scene/characters.ts';
 
 const START = Date.UTC(2026, 0, 5, 8);
 let tick = 0;

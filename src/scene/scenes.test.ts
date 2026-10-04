@@ -4,12 +4,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import * as THREE from 'three';
-import { createKit } from './kit.js';
-import { SCENES, KINDS, TIMES, LIGHTING, MAX_CROWD, DEFAULT_CAMERA, buildVenueScene, timeOfDay, lightingFor } from './venue-scenes.js';
-import { LOOK_OPTIONS, POSES, normalizeLook, drawAvatar, buildAvatar, buildCrowd, appearanceToLook } from './characters.js';
-import { createBatch, sceneMaterials } from './build.js';
-import { sign, textWidth, table, chair, bench, stall, speaker, screen, plant, palm, lampPost, signBoard } from './props.js';
-import { createVenueWorld, createHostLights, sceneVenue, HOST_LIGHTING } from '../venue-world.js';
+import { createKit } from './kit.ts';
+import type { SceneMaterials, SceneOptions, SceneVenue } from './types.ts';
+import { SCENES, KINDS, TIMES, LIGHTING, MAX_CROWD, DEFAULT_CAMERA, buildVenueScene, timeOfDay, lightingFor } from './venue-scenes.ts';
+import { LOOK_OPTIONS, POSES, normalizeLook, drawAvatar, buildAvatar, buildCrowd, appearanceToLook } from './characters.ts';
+import type { CrowdPerson, DrawOptions } from './characters.ts';
+import type { LifeState } from '../types/life.ts';
+import { createBatch, sceneMaterials } from './build.ts';
+import { sign, textWidth, table, chair, bench, stall, speaker, screen, plant, palm, lampPost, signBoard } from './props.ts';
+import { createVenueWorld, createHostLights, sceneVenue, HOST_LIGHTING } from '../venue-world.ts';
 import { VENUES } from '../game/content/venues.ts';
 import { NPCS } from '../game/content/npcs.ts';
 import { spotsOf } from '../life.ts';
@@ -18,13 +21,17 @@ const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym'
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail (up to ~2,700 triangles, once), on top.
 const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
-const venueOf = (kind, scene = {}, more = {}) => ({ id: kind, label: kind, scene: { kind, ...scene }, ...more });
+// build() only reads the materials of meshes it makes; these tests look at geometry alone.
+// A partial game state, as the host's setState takes it in these tests.
+const asState = (state: object) => state as unknown as LifeState;
+const NO_MATERIALS = { solid: null, glow: null, glass: null } as unknown as SceneMaterials;
+const venueOf = (kind: string, scene: Partial<SceneOptions> = {}, more: Partial<SceneVenue> = {}): SceneVenue => ({ id: kind, label: kind, scene: { kind, ...scene }, ...more });
 
 /** Count geometries that are created and later disposed while `run` executes. */
-function trackGeometries(run) {
-  const live = new Set();
+function trackGeometries(run: (live: Set<THREE.BufferGeometry>) => void) {
+  const live = new Set<THREE.BufferGeometry>();
   const original = THREE.BufferGeometry.prototype.setIndex;
-  THREE.BufferGeometry.prototype.setIndex = function setIndex(...args) {
+  THREE.BufferGeometry.prototype.setIndex = function setIndex(this: THREE.BufferGeometry, ...args: Parameters<typeof original>) {
     if (!live.has(this)) { live.add(this); this.addEventListener('dispose', () => live.delete(this)); }
     return original.apply(this, args);
   };
@@ -39,13 +46,13 @@ test('every venue kind has a scene', () => {
 });
 
 test('each scene builds within budget with a full crowd, and disposes without leaving anything behind', () => {
-  const report = [];
+  const report: string[] = [];
   const leaked = trackGeometries((live) => {
     const kit = createKit();
     const kitGeometries = live.size;
     for (const kind of [...EXPECTED_KINDS, 'library', 'mosque', 'generic']) {
       const parent = new THREE.Scene();
-      const entry = SCENES[kind](kit, venueOf(kind));
+      const entry = SCENES[kind]!(kit, venueOf(kind));
       parent.add(entry.group);
       const tags = entry.setCrowd(crowd());
       const stats = entry.stats();
@@ -58,8 +65,8 @@ test('each scene builds within budget with a full crowd, and disposes without le
       assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= (entry.walls ? 21 : 15), `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
       assert.ok(stats.lights <= 4, `${kind} lights ${stats.lights}`);
       assert.equal(tags.length, MAX_CROWD, kind);
-      for (const mesh of entry.group.children.filter((child) => child.isMesh)) {
-        const { position, normal, color } = mesh.geometry.attributes;
+      for (const mesh of (entry.group.children as THREE.Mesh[]).filter((child) => child.isMesh)) {
+        const { position, normal, color } = mesh.geometry.attributes as Record<'position' | 'normal' | 'color', THREE.BufferAttribute>;
         assert.ok(position.count > 0 && normal.count === position.count && color.count === position.count, `${kind} ${mesh.name}`);
         assert.ok(position.array.every(Number.isFinite), `${kind} ${mesh.name} has finite vertices`);
       }
@@ -81,7 +88,7 @@ test('dispose() frees a scene’s geometry, a rebuild gives the same scene, and 
   const leaked = trackGeometries((live) => {
     const kit = createKit();
     const base = live.size;
-    const entry = SCENES.market(kit, venueOf('market'));
+    const entry = SCENES.market!(kit, venueOf('market'));
     const shown = entry.stats();
     assert.ok(live.size > base);
     // Hiding is only hiding: a scene no longer watches group.visible to learn about the host.
@@ -93,7 +100,7 @@ test('dispose() frees a scene’s geometry, a rebuild gives the same scene, and 
     assert.equal(entry.group.children.length, 0);
     assert.equal(entry.stats().triangles, 0);
     assert.ok(entry.anchors.people, 'anchors stay readable after dispose');
-    const again = SCENES.market(kit, venueOf('market'));
+    const again = SCENES.market!(kit, venueOf('market'));
     assert.deepEqual(again.stats(), shown, 'the next visit builds the same scene');
     kit.dispose();
     assert.equal(again.group.children.length, 0, 'kit.dispose() frees scenes the host never disposed');
@@ -106,7 +113,7 @@ test('kit.dispose() frees the shared scene materials', () => {
   const materials = sceneMaterials(kit);
   let disposed = 0;
   for (const material of Object.values(materials)) material.addEventListener('dispose', () => { disposed += 1; });
-  SCENES.park(kit, venueOf('park'));
+  SCENES.park!(kit, venueOf('park'));
   assert.equal(sceneMaterials(kit), materials, 'one material set per kit');
   kit.dispose();
   assert.ok(disposed >= 3);
@@ -140,20 +147,20 @@ test('every spot gets an anchor; named spots land on their landmark', () => {
   const kit = createKit();
   const spots = [{ id: 'bookcase', label: 'Secret bookcase' }, { id: 'lounge', label: 'Lounge' }, { id: 'cocktail', label: 'Cocktail bar' }, { id: 'floor', label: 'Dance floor' }, { id: 'people', label: 'People' }, { id: 'mystery', label: 'Something else' }];
   const club = buildVenueScene(kit, venueOf('club', { spots }));
-  assert.deepEqual(spots.map((spot) => club.anchors[spot.id].landmark), ['bookcase', 'lounge', 'bar', 'dancefloor', 'people', 'dj']);
-  for (const spot of spots) assert.ok(Number.isFinite(club.anchors[spot.id].x) && Number.isFinite(club.anchors[spot.id].z), spot.id);
+  assert.deepEqual(spots.map((spot) => club.anchors[spot.id]!.landmark), ['bookcase', 'lounge', 'bar', 'dancefloor', 'people', 'dj']);
+  for (const spot of spots) assert.ok(Number.isFinite(club.anchors[spot.id]!.x) && Number.isFinite(club.anchors[spot.id]!.z), spot.id);
   assert.equal(club.spot, 'bookcase', 'the player starts at the first spot');
   // Venue-declared spots (an object map, as in content/venues.js) work too.
   const buka = buildVenueScene(kit, venueOf('buka', {}, { spots: { counter: { id: 'counter', label: 'Buka counter' }, kitchen: { id: 'kitchen', label: "Mama's kitchen" }, wash: { id: 'wash', label: 'Wash bowl' }, people: { id: 'people', label: 'People' } } }));
-  assert.deepEqual(['counter', 'kitchen', 'wash', 'people'].map((id) => buka.anchors[id].landmark), ['counter', 'kitchen', 'wash', 'people']);
+  assert.deepEqual(['counter', 'kitchen', 'wash', 'people'].map((id) => buka.anchors[id]!.landmark), ['counter', 'kitchen', 'wash', 'people']);
   // More spots than landmarks: the rest still get distinct places.
   const many = Array.from({ length: 14 }, (_, i) => ({ id: `s${i}`, label: `Spot ${i}` }));
   const park = buildVenueScene(kit, venueOf('park', { spots: many }));
-  const places = new Set(many.map((spot) => `${park.anchors[spot.id].x},${park.anchors[spot.id].z}`));
+  const places = new Set(many.map((spot) => `${park.anchors[spot.id]!.x},${park.anchors[spot.id]!.z}`));
   assert.equal(places.size, many.length);
   // A spot that appears later (added by another system) is placed on demand.
   assert.equal(park.setSpot('late-spot'), true);
-  assert.ok(Number.isFinite(park.anchors['late-spot'].x));
+  assert.ok(Number.isFinite(park.anchors['late-spot']!.x));
   for (const kind of EXPECTED_KINDS) {
     const entry = buildVenueScene(kit, venueOf(kind));
     assert.ok(entry.anchors.people, `${kind} has a people anchor`);
@@ -180,12 +187,12 @@ test('update(state) reports a change only when something visible changed', () =>
   assert.equal(entry.update({ location: 'park', t: midnight + 60000, spot: 'amphitheatre' }), false, 'a minute later is still night');
   assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees' }), true);
   assert.equal(entry.spot, 'trees');
-  const standing = entry.tags()[0].position;
+  const standing = entry.tags()[0]!.position;
   assert.equal(entry.update({ location: 'home', t: midnight, spot: 'kitchen' }), false, 'spots of other venues are ignored');
   assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees', onboarding: { look: { body: 'man', hair: 'afro' } } }), true);
   assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees', onboarding: { look: { body: 'man', hair: 'afro' } } }), false);
   assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees', onboarding: { look: { body: 'man', hair: 'afro' } }, activeAction: { id: 'chill' } }), true);
-  assert.notDeepEqual(entry.tags()[0].position, standing, 'a busy player moves to the seat of the spot');
+  assert.notDeepEqual(entry.tags()[0]!.position, standing, 'a busy player moves to the seat of the spot');
   assert.equal(entry.setTime('night'), false);
   assert.equal(entry.setTime('dusk'), true);
   assert.equal(entry.setTime('noon'), false);
@@ -197,7 +204,7 @@ test('update(state) reports a change only when something visible changed', () =>
 });
 
 test('lighting presets exist for every mood and time; the scene reports its preset and the host applies it', () => {
-  for (const mood of ['outdoor', 'indoor', 'club']) for (const time of TIMES) {
+  for (const mood of ['outdoor', 'indoor', 'club'] as const) for (const time of TIMES) {
     const preset = LIGHTING[mood][time];
     assert.ok(preset.sky.length === 2 && preset.hemi.length === 3 && preset.sun.length === 3 && preset.glow > 0 && preset.lamps > 0, `${mood} ${time}`);
   }
@@ -226,25 +233,25 @@ test('every spot of every venue stands at a landmark of its scene, and every reg
   for (const venue of Object.values(VENUES)) {
     if (venue.scene.kind === 'home') continue;
     const seen = sceneVenue(venue.id);
-    assert.deepEqual(seen.scene.spots.map((spot) => spot.id), spotsOf(venue.id).map((spot) => spot.id), `${venue.id}: spots added by other systems are passed to the scene`);
+    assert.deepEqual(seen!.scene.spots.map((spot) => spot.id), spotsOf(venue.id).map((spot) => spot.id), `${venue.id}: spots added by other systems are passed to the scene`);
     const entry = buildVenueScene(kit, seen);
-    for (const spot of seen.scene.spots) assert.ok(entry.anchors[spot.id]?.landmark, `${venue.id}.${spot.id} is on open floor`);
-    for (const [spot, landmark] of Object.entries(venue.scene.anchors || {})) {
-      assert.ok(seen.scene.spots.some((item) => item.id === spot), `${venue.id}: anchor hint for unknown spot ${spot}`);
-      assert.equal(entry.anchors[spot].landmark, landmark, `${venue.id}.${spot}`);
+    for (const spot of seen!.scene.spots) assert.ok(entry.anchors[spot.id]?.landmark, `${venue.id}.${spot.id} is on open floor`);
+    for (const [spot, landmark] of Object.entries((venue.scene as SceneOptions).anchors || {})) {
+      assert.ok(seen!.scene.spots.some((item) => item.id === spot), `${venue.id}: anchor hint for unknown spot ${spot}`);
+      assert.equal(entry.anchors[spot]!.landmark, landmark, `${venue.id}.${spot}`);
     }
-    for (const npc of Object.values(NPCS).filter((item) => item.venue === venue.id)) assert.ok(entry.anchors[npc.at]?.landmark, `${npc.id} stands at ${npc.at}`);
+    for (const npc of (Object.values(NPCS) as { id: string; venue: string; at: string }[]).filter((item) => item.venue === venue.id)) assert.ok(entry.anchors[npc.at]?.landmark, `${npc.id} stands at ${npc.at}`);
     entry.dispose();
   }
   // A running activity takes the pose of the spot it happens at; leaving shows the avatar walking.
   const park = buildVenueScene(kit, sceneVenue('park'));
   assert.equal(park.update({ location: 'park', spot: 'trees' }), true);
-  const standing = park.tags()[0].position;
+  const standing = park.tags()[0]!.position;
   assert.equal(park.update({ location: 'park', spot: 'trees', activeAction: { kind: 'activity', id: 'chill' } }), true, 'starting an activity redraws the avatar');
-  const sitting = park.tags()[0].position;
+  const sitting = park.tags()[0]!.position;
   assert.ok(sitting.y < standing.y && (sitting.x !== standing.x || sitting.z !== standing.z), 'chilling under the trees sits on the bench');
   assert.equal(park.update({ location: 'park', spot: 'trees', activeAction: { kind: 'travel', id: 'home' } }), true);
-  assert.deepEqual([park.tags()[0].position.x, park.tags()[0].position.z], [standing.x, standing.z], 'a traveller is not posed at the bench');
+  assert.deepEqual([park.tags()[0]!.position.x, park.tags()[0]!.position.z], [standing.x, standing.z], 'a traveller is not posed at the bench');
   kit.dispose();
 });
 
@@ -259,7 +266,7 @@ test('looks are normalised deterministically and tolerate missing or unknown fie
   const seeds = Array.from({ length: 40 }, (_, i) => JSON.stringify(normalizeLook(null, `public-${i}`)));
   assert.ok(new Set(seeds).size > 30, 'different players look different');
   assert.deepEqual(normalizeLook({ body: 'Woman', hair: 'Low cut', outfit: 'Site work', fabric: 'Aso-oke', skin: 6, hairColor: 'Purple', outfitColor: 'Gold', bottomsColor: '#ABCDEF' }), {
-    body: 'woman', hair: 'lowcut', outfit: 'sitework', fabric: 'asooke', skin: LOOK_OPTIONS.skin[6].hex, hairColor: '#7a4bb0', outfitColor: '#d6a83a', bottomsColor: '#abcdef',
+    body: 'woman', hair: 'lowcut', outfit: 'sitework', fabric: 'asooke', skin: LOOK_OPTIONS.skin[6]!.hex, hairColor: '#7a4bb0', outfitColor: '#d6a83a', bottomsColor: '#abcdef',
     accessories: [], face: 'oval', expression: 'smile',
   });
   assert.equal(normalizeLook({ body: 'man', hair: 'gele', outfit: 'owambe' }, 's').body, 'man');
@@ -270,14 +277,14 @@ test('looks are normalised deterministically and tolerate missing or unknown fie
 });
 
 test('every hairstyle, outfit, fabric and pose builds a distinct low-poly avatar', () => {
-  const signature = (look, options) => {
+  const signature = (look: unknown, options?: DrawOptions) => {
     const batch = createBatch(THREE);
     drawAvatar(batch, look, options);
-    const built = batch.build({ solid: null, glow: null, glass: null });
-    const solid = built.meshes[0].geometry;
+    const built = batch.build(NO_MATERIALS);
+    const solid = built.meshes[0]!.geometry;
     let sum = 0;
     const { position, color } = solid.attributes;
-    for (let i = 0; i < position.array.length; i++) sum += position.array[i] * (i % 7 + 1) + color.array[i] * (i % 5 + 1);
+    for (let i = 0; i < position!.array.length; i++) sum += position!.array[i]! * (i % 7 + 1) + color!.array[i]! * (i % 5 + 1);
     built.meshes.forEach((mesh) => mesh.geometry.dispose());
     assert.ok(built.triangles > 150 && built.triangles <= 600, `avatar triangles ${built.triangles} for ${JSON.stringify(look)}`);
     return `${built.triangles}:${sum.toFixed(3)}`;
@@ -296,9 +303,9 @@ test('every hairstyle, outfit, fabric and pose builds a distinct low-poly avatar
     assert.equal(new Set(tops).size, 10);
     const poses = POSES.map((pose) => signature(base, { pose }));
     assert.equal(new Set(poses).size, POSES.length, `${body} poses are distinct`);
-    assert.equal(signature(base, { pose: 'cartwheel' }), signature(base, { pose: 'stand' }), 'unknown pose stands');
+    assert.equal(signature(base, { pose: 'cartwheel' } as unknown as DrawOptions), signature(base, { pose: 'stand' }), 'unknown pose stands');
   }
-  for (const pose of ['stand', 'sit', 'walk', 'wave', 'work']) assert.ok(POSES.includes(pose));
+  for (const pose of ['stand', 'sit', 'walk', 'wave', 'work']) assert.ok((POSES as readonly string[]).includes(pose));
 });
 
 test('buildAvatar and buildCrowd return groups, name-tag data and free themselves', () => {
@@ -311,14 +318,14 @@ test('buildAvatar and buildCrowd return groups, name-tag data and free themselve
     assert.equal(avatar.userData.look.hair, 'gele');
     assert.ok(avatar.userData.top > 2.5);
     const again = buildAvatar(kit, { body: 'woman', hair: 'gele', outfit: 'owambe', fabric: 'ankara' }, { pose: 'wave', marker: 'crown' });
-    assert.deepEqual(Array.from(again.children[0].geometry.attributes.position.array), Array.from(avatar.children[0].geometry.attributes.position.array), 'same look, same geometry');
-    const people = [{ id: 'a', name: 'Ada', kind: 'player', x: 1, z: 1 }, { id: 'n', name: 'Mama Nkechi', kind: 'npc', x: -2, z: 0, pose: 'work' }, { name: 'Tunde', x: 3, z: 2, pose: 'sit', look: { body: 'man', hair: 'locs' } }];
+    assert.deepEqual(Array.from((again.children[0] as THREE.Mesh).geometry.attributes.position!.array), Array.from((avatar.children[0] as THREE.Mesh).geometry.attributes.position!.array), 'same look, same geometry');
+    const people: CrowdPerson[] = [{ id: 'a', name: 'Ada', kind: 'player', x: 1, z: 1 }, { id: 'n', name: 'Mama Nkechi', kind: 'npc', x: -2, z: 0, pose: 'work' }, { name: 'Tunde', x: 3, z: 2, pose: 'sit', look: { body: 'man', hair: 'locs' } }];
     const built = buildCrowd(kit, people);
     assert.ok(built.group.children.length <= 2, 'a crowd is at most two meshes');
     assert.equal(built.tags.length, 3);
     assert.deepEqual(built.tags.map((tag) => [tag.id, tag.text, tag.kind, tag.marker]), [['a', '@Ada', 'player', 'tag'], ['n', 'Mama Nkechi', 'npc', 'dot'], ['person-2', '@Tunde', 'player', 'tag']]);
-    assert.deepEqual([built.tags[0].position.x, built.tags[0].position.z], [1, 1]);
-    assert.ok(built.tags[0].position.y > 2.5 && built.tags[2].position.y < built.tags[0].position.y, 'a seated person has a lower tag');
+    assert.deepEqual([built.tags[0]!.position.x, built.tags[0]!.position.z], [1, 1]);
+    assert.ok(built.tags[0]!.position.y > 2.5 && built.tags[2]!.position.y < built.tags[0]!.position.y, 'a seated person has a lower tag');
     assert.ok(built.triangles < 3 * 600);
     assert.deepEqual(buildCrowd(kit, []).tags, []);
     avatar.userData.dispose();
@@ -341,14 +348,14 @@ test('a scene crowd is capped, placed and tagged; the player carries the crown',
   assert.equal(new Set(tags.map((tag) => `${tag.position.x.toFixed(2)},${tag.position.z.toFixed(2)}`)).size, MAX_CROWD, 'everyone has their own place');
   const all = entry.tags();
   assert.equal(all.length, MAX_CROWD + 1);
-  assert.deepEqual([all[0].kind, all[0].marker], ['self', 'crown']);
+  assert.deepEqual([all[0]!.kind, all[0]!.marker], ['self', 'crown']);
   const placed = entry.setCrowd([{ id: 'x', name: 'X', x: 4, z: -2 }, { id: 'y', name: 'Y', spot: 'snacks' }, null, 'junk']);
-  assert.deepEqual([placed[0].position.x, placed[0].position.z], [4, -2]);
-  const fromSnacks = Math.hypot(placed[1].position.x - entry.anchors.snacks.x, placed[1].position.z - entry.anchors.snacks.z);
+  assert.deepEqual([placed[0]!.position.x, placed[0]!.position.z], [4, -2]);
+  const fromSnacks = Math.hypot(placed[1]!.position.x - entry.anchors.snacks!.x, placed[1]!.position.z - entry.anchors.snacks!.z);
   assert.ok(fromSnacks > 1 && fromSnacks < 3.2, `someone "at" a spot stands beside its marker, not on it (${fromSnacks.toFixed(2)} away)`);
   assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), true);
   assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), false);
-  assert.equal(entry.tags()[0].text, 'Kromate');
+  assert.equal(entry.tags()[0]!.text, 'Kromate');
   assert.equal(entry.setPlayer({ pose: 'wave' }), true);
   assert.deepEqual(entry.setCrowd([]), []);
   assert.equal(entry.stats().meshes <= 13, true);
@@ -357,7 +364,7 @@ test('a scene crowd is capped, placed and tagged; the player carries the crown',
 
 test('shared props draw into a batch; block lettering needs no canvas', () => {
   const batch = createBatch(THREE);
-  const steps = [];
+  const steps: number[] = [];
   for (const draw of [() => table(batch, 0, 0), () => chair(batch, 1, 0), () => bench(batch, 2, 0), () => stall(batch, 4, 0), () => speaker(batch, 6, 0), () => screen(batch, 8, 2, 0), () => plant(batch, 9, 0), () => palm(batch, 10, 0), () => lampPost(batch, 11, 0), () => signBoard(batch, 12, 0, 'ON AIR')]) {
     const before = batch.triangles;
     draw();
@@ -368,7 +375,7 @@ test('shared props draw into a batch; block lettering needs no canvas', () => {
   sign(batch, 0, 3, 0, 'On Air 99.9', { lit: true });
   assert.ok(batch.triangles - before > 40 && batch.triangles - before < 200);
   assert.ok(Math.abs(textWidth('AB', 0.5) - 0.7) < 1e-9);
-  const built = batch.build({ solid: null, glow: null, glass: null });
+  const built = batch.build(NO_MATERIALS);
   assert.deepEqual(built.meshes.map((mesh) => mesh.name), ['solid', 'glow']);
   built.meshes.forEach((mesh) => mesh.geometry.dispose());
 });
@@ -377,17 +384,17 @@ test('the host draws one frame per real change and none while a venue scene is i
   const calls = { render: 0 };
   const renderer = { shadowMap: {}, domElement: { remove() {} }, setPixelRatio() {}, setClearColor() {}, setSize() {}, dispose() {}, render() { calls.render += 1; } };
   const container = { appendChild() {}, getBoundingClientRect: () => ({ width: 1280, height: 800 }) };
-  const world = createVenueWorld(container, { location: 'park', renderer });
+  const world = createVenueWorld(container as unknown as HTMLElement, { location: 'park', renderer: renderer as unknown as THREE.WebGLRenderer });
   const midnight = Date.UTC(2026, 0, 5, 23, 30);
   assert.equal(world.diagnostics().renderCount, 1);
-  world.setState({ location: 'park', t: midnight, spot: 'amphitheatre' });
+  world.setState(asState({ location: 'park', t: midnight, spot: 'amphitheatre' }));
   assert.equal(world.diagnostics().renderCount, 2, 'night falls: one frame');
-  for (let i = 1; i <= 20; i++) world.setState({ location: 'park', t: midnight + i * 1000, spot: 'amphitheatre' });
+  for (let i = 1; i <= 20; i++) world.setState(asState({ location: 'park', t: midnight + i * 1000, spot: 'amphitheatre' }));
   assert.equal(world.diagnostics().renderCount, 2, 'twenty state ticks with nothing new: no frames');
-  world.setState({ location: 'park', t: midnight, spot: 'trees' });
+  world.setState(asState({ location: 'park', t: midnight, spot: 'trees' }));
   assert.equal(world.diagnostics().renderCount, 3, 'moving to another spot: one frame');
   world.setLocation('library');
-  world.setState({ location: 'library', t: midnight });
+  world.setState(asState({ location: 'library', t: midnight }));
   assert.equal(world.diagnostics().renderCount, 4);
   await new Promise((resolve) => setTimeout(resolve, 80));
   assert.equal(world.diagnostics().renderCount, 4, 'idle: zero renders');
@@ -398,7 +405,7 @@ test('the host draws one frame per real change and none while a venue scene is i
 test('scene sources hold no frame loops or timers, and the dev harness is not a build input', async () => {
   // Assembled from parts so this file does not itself contain the words the host's own source scan looks for.
   const banned = new RegExp([['request', 'Animation', 'Frame'], ['set', 'Animation', 'Loop'], ['set', 'Interval'], ['set', 'Timeout'], ['Texture', 'Loader'], ['GLTF', 'Loader'], ['new ', 'Image'], ['\\.png'], ['\\.jpg'], ['\\.glb'], ['\\.gltf'], ['fetch', '\\(']].map((parts) => parts.join('')).join('|'));
-  for (const file of ['build.js', 'characters.js', 'props.js', 'venue-scenes.js', 'venues-outdoor.js', 'venues-social.js', 'venues-work.js', 'venues-civic.js', 'venues-transport.js', 'harness.js', 'harness.html']) {
+  for (const file of ['build.ts', 'characters.ts', 'props.ts', 'venue-scenes.ts', 'venues-outdoor.ts', 'venues-social.ts', 'venues-work.ts', 'venues-civic.ts', 'venues-transport.ts', 'harness.ts', 'harness.html']) {
     const code = (await readFile(new URL(file, import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
     assert.doesNotMatch(code, banned, file);
   }
@@ -409,13 +416,13 @@ test('scene sources hold no frame loops or timers, and the dev harness is not a 
 
 test('every game table stands in its venue’s scene: on free floor, reachable from the door, clear of markers and of each other', async () => {
   const { TABLES, tablesAt } = await import('../tables/places.ts');
-  const { TABLE_CLEAR, TABLE_REACH, TABLE_PLACES } = await import('./venue-scenes.js');
+  const { TABLE_CLEAR, TABLE_REACH, TABLE_PLACES } = await import('./venue-scenes.ts');
   const kit = createKit();
   const venues = [...new Set(TABLES.map((table) => table.venue))];
   assert.deepEqual(venues.sort(), ['amala-shitta', 'beach', 'park', 'rooftop', 'viewing-centre']);
-  const seen = [];
+  const seen: string[] = [];
   for (const id of venues) {
-    const venue = sceneVenue(id) ?? VENUES[id];
+    const venue = sceneVenue(id) ?? (VENUES as unknown as Record<string, SceneVenue>)[id];
     const parent = new THREE.Scene();
     const bare = buildVenueScene(kit, { ...venue, id: `${id}-without-tables` }), bareTriangles = bare.stats().triangles;
     bare.dispose();
@@ -428,18 +435,18 @@ test('every game table stands in its venue’s scene: on free floor, reachable f
       seen.push(thing.id);
       assert.deepEqual([thing.kind, typeof thing.label, thing.top > 1 && thing.r > 1], ['table', 'string', true]);
       // The table itself is solid (the avatar walks round it)…
-      assert.equal(grid.free(thing.x, thing.z), false, `${thing.id}: the table is an obstacle`);
+      assert.equal(grid!.free(thing.x, thing.z), false, `${thing.id}: the table is an obstacle`);
       // …with standing room all round it, and a way there from the door.
-      const stands = Array.from({ length: 12 }, (_, step) => { const angle = (step / 12) * Math.PI * 2; return [thing.x + Math.sin(angle) * TABLE_REACH, thing.z + Math.cos(angle) * TABLE_REACH]; }).filter(([x, z]) => grid.free(x, z));
+      const stands = Array.from({ length: 12 }, (_, step) => { const angle = (step / 12) * Math.PI * 2; return [thing.x + Math.sin(angle) * TABLE_REACH, thing.z + Math.cos(angle) * TABLE_REACH] as [number, number]; }).filter(([x, z]) => grid!.free(x, z));
       assert.ok(stands.length >= 8, `${thing.id}: ${stands.length} of 12 places beside it are free`);
-      assert.ok(stands.some(([x, z]) => grid.path(door.x, door.z, x, z)?.length > 0), `${thing.id}: can be walked to from the entrance`);
-      assert.ok(Math.hypot(thing.x - door.x, thing.z - door.z) > 3, `${thing.id}: not in the doorway`);
+      assert.ok(stands.some(([x, z]) => grid!.path(door!.x, door!.z, x, z)?.length! > 0), `${thing.id}: can be walked to from the entrance`);
+      assert.ok(Math.hypot(thing.x - door!.x, thing.z - door!.z) > 3, `${thing.id}: not in the doorway`);
       // No spot marker is covered or crowded by it, and no two tables touch.
       for (const spot of entry.walk.spots()) assert.ok(Math.hypot(spot.x - thing.x, spot.z - thing.z) > TABLE_CLEAR + 0.8, `${thing.id} stands clear of the ${spot.id} marker`);
       for (const other of things) if (other !== thing) assert.ok(Math.hypot(other.x - thing.x, other.z - thing.z) > TABLE_CLEAR * 2, `${thing.id} and ${other.id} do not touch`);
     }
     // Every spot is still reachable with the tables in the room.
-    for (const spot of entry.walk.spots()) { const at = grid.nearest(spot.approach?.x ?? spot.x, spot.approach?.z ?? spot.z); assert.ok(at && grid.path(door.x, door.z, at.x, at.z)?.length > 0, `${id}: ${spot.id} is still reachable`); }
+    for (const spot of entry.walk.spots()) { const at = grid!.nearest(spot.approach?.x ?? spot.x, spot.approach?.z ?? spot.z); assert.ok(at && grid!.path(door!.x, door!.z, at.x, at.z)?.length! > 0, `${id}: ${spot.id} is still reachable`); }
     // The tables are part of the venue's own batch: a few hundred triangles, no mesh or draw call of their own, inside the budget.
     const stats = entry.stats();
     assert.ok(stats.triangles - bareTriangles > 60 * things.length && stats.triangles - bareTriangles < 420 * things.length, `${id}: ${things.length} tables cost ${stats.triangles - bareTriangles} triangles`);

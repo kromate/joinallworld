@@ -3,16 +3,17 @@
  * Food and nightlife venues: buka, club (and its speakeasy variant), viewing centre, music
  * shrine and mall. Scene definition format: see venues-outdoor.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
+import type { Batch, Colour, SceneDef } from './types.ts';
 import {
   room, table, chair, stool, bench, sofa, counter, speaker, screen, plant, shelf, kiosk, crate, laptop, rug, bottles, pot,
   ropeLine, stringLights, door, sign, landmark, extra,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, LEAF, WARM,
-} from './props.js';
+} from './props.ts';
 
 const PI = Math.PI, HALF = Math.PI / 2;
 
-const buka = {
+const buka: SceneDef = {
   mood: 'indoor', accent: '#e0822f',
   build(b, { accent }) {
     room(b, { floor: '#b3936a', wall: '#dcb875', side: '#cfa765', trim: '#8a5a34' });
@@ -20,7 +21,7 @@ const buka = {
     b.box(-11.94, 1.1, 0, 0.06, 1.4, 20, '#b5673a');
     // Counter with the day's pots
     counter(b, 0.6, -7, { w: 11, d: 1.2, color: '#8a5a34', top: '#d9b780', stripe: accent });
-    [['#4a3a2e', false], ['#4f7a3a', false], ['#d9a441', true], ['#b8402a', false], ['#f0e6c8', true]].forEach(([food, lid], i) => {
+    ([['#4a3a2e', false], ['#4f7a3a', false], ['#d9a441', true], ['#b8402a', false], ['#f0e6c8', true]] as [string, boolean][]).forEach(([food, lid], i) => {
       pot(b, -3.6 + i * 2.1, 1.35, -7, { food, lid, r: 0.5 });
       if (!lid) b.box(-3.3 + i * 2.1, 2.15, -7.1, 0.05, 0.6, 0.05, METAL, { rz: -0.4 });
     });
@@ -48,9 +49,9 @@ const buka = {
       bench(b, x - 1.05, 1, { w: 5, ry: HALF }); bench(b, x + 1.05, 1, { w: 5, ry: HALF });
       for (let p = 0; p < 3; p++) {
         b.cyl(x + (p % 2 ? 0.2 : -0.2), 1.08, -0.6 + p * 1.6, 0.24, 0.05, WHITE, { seg: 8 });
-        b.ico(x + (p % 2 ? 0.2 : -0.2), 1.16, -0.6 + p * 1.6, 0.16, 0.08, 0.16, ['#4a3a2e', '#d9a441', '#b8402a'][(p + i) % 3]);
+        b.ico(x + (p % 2 ? 0.2 : -0.2), 1.16, -0.6 + p * 1.6, 0.16, 0.08, 0.16, ['#4a3a2e', '#d9a441', '#b8402a'][(p + i) % 3]!);
       }
-      b.cyl(x, 1.2, 1.9, 0.07, 0.3, ['#5f9a62', '#a14b3c', '#c9973f'][i], { seg: 5, top: 0.5 });
+      b.cyl(x, 1.2, 1.9, 0.07, 0.3, ['#5f9a62', '#a14b3c', '#c9973f'][i]!, { seg: 5, top: 0.5 });
     });
     extra(b, 'buka-eater-1', -5.45, 0.2, HALF, 'sit'); extra(b, 'buka-eater-2', -3.35, 1.8, -HALF, 'sit');
     extra(b, 'buka-eater-3', 7.85, -0.6, -HALF, 'sit'); extra(b, 'buka-eater-4', 0.15, 2.4, HALF, 'sit');
@@ -83,7 +84,7 @@ const buka = {
   },
 };
 
-const club = {
+const club: SceneDef = {
   mood: 'club', accent: '#c794fa',
   build(b, { variant, accent }) {
     const speakeasy = variant === 'speakeasy';
@@ -93,7 +94,7 @@ const club = {
     const tiles = ['#7a3fd0', '#d04f9a', '#3f8fd0', '#f2b84a'];
     for (let row = 0; row < 4; row++) for (let col = 0; col < 5; col++) {
       const lit = (row + col) % 2 === 0;
-      b.box(-1.6 + col * 1.6, 0.14, -1.2 + row * 1.6, 1.5, 0.04, 1.5, lit ? tiles[(row * 2 + col) % 4] : '#2a2440', lit ? GLOW : undefined);
+      b.box(-1.6 + col * 1.6, 0.14, -1.2 + row * 1.6, 1.5, 0.04, 1.5, lit ? tiles[(row * 2 + col) % 4]! : '#2a2440', lit ? GLOW : undefined);
     }
     b.cyl(1.6, 5.6, 1.2, 0.02, 1.2, METAL, { seg: 4 }); b.ball(1.6, 4.9, 1.2, 0.5, 0.5, 0.5, '#e6e6f2', { seg: 8 });
     b.light(1.6, 4.2, 1.2, accent, 55, 20);
@@ -106,7 +107,7 @@ const club = {
     extra(b, 'club-dj', 1.6, -7.6, 0, 'work', { y: 0.6, look: { outfit: 'hoodie', outfitColor: 'violet', body: 'man' } });
     speaker(b, -2.9, -8.2, { h: 3.4, w: 1.4 }); speaker(b, 6.1, -8.2, { h: 3.4, w: 1.4 });
     const bars = [1.2, 2.2, 1.6, 2.8, 2, 3, 1.8, 2.6, 1.4];
-    bars.forEach((h, i) => b.quad(-0.8 + i * 0.6, 3.3 + h / 2, -9.7, 0.44, h, tiles[i % 4], GLOW));
+    bars.forEach((h, i) => b.quad(-0.8 + i * 0.6, 3.3 + h / 2, -9.7, 0.44, h, tiles[i % 4]!, GLOW));
     // Bar along the left wall
     counter(b, -8.6, 2, { w: 8, d: 1, ry: HALF, color: '#3a2f3d', top: '#d9b46a', stripe: accent });
     b.box(-11.5, 1.9, 2, 0.5, 3, 7.6, '#241d2c');
@@ -164,7 +165,7 @@ const club = {
   },
 };
 
-const viewing = {
+const viewing: SceneDef = {
   mood: 'indoor', accent: '#f2c14e',
   build(b, { accent }) {
     room(b, { floor: '#a39c8f', wall: '#3f5d80', side: '#38557a', trim: '#2a3f5a' });
@@ -175,7 +176,7 @@ const viewing = {
     b.quad(0, 3.05, -9.61, 0.06, 3.5, WHITE, GLOW);
     b.cyl(0, 3.05, -9.62, 0.7, 0.02, '#dff4e0', { seg: 14, rx: HALF, open: true, ...GLOW });
     for (const side of [-1, 1]) { b.quad(side * 4.2, 3.05, -9.61, 0.06, 1.8, WHITE, GLOW); b.quad(side * 4.5, 3.95, -9.61, 0.6, 0.06, WHITE, GLOW); b.quad(side * 4.5, 2.15, -9.61, 0.6, 0.06, WHITE, GLOW); }
-    [[-3, 3.6, 0], [-1.6, 2.4, 0], [-0.6, 3.9, 0], [1, 2.9, 1], [2.4, 3.8, 1], [3.2, 2.2, 1], [-2.4, 2.9, 1], [1.8, 2.1, 0]].forEach(([x, y, team]) => b.quad(x, y, -9.6, 0.2, 0.3, team ? '#ff5a4a' : '#5aa0ff', GLOW));
+    ([[-3, 3.6, 0], [-1.6, 2.4, 0], [-0.6, 3.9, 0], [1, 2.9, 1], [2.4, 3.8, 1], [3.2, 2.2, 1], [-2.4, 2.9, 1], [1.8, 2.1, 0]] as [number, number, number][]).forEach(([x, y, team]) => b.quad(x, y, -9.6, 0.2, 0.3, team ? '#ff5a4a' : '#5aa0ff', GLOW));
     b.quad(0.2, 3.2, -9.6, 0.12, 0.12, WHITE, GLOW);
     b.quad(0, 5.02, -9.62, 3, 0.44, '#1c2430', GLOW); sign(b, 0, 5.02, -9.63, '2 - 1', { size: 0.28, color: '#ffe07a', lit: true });
     speaker(b, -6.4, -9, { h: 2.4, w: 1.1 }); speaker(b, 6.4, -9, { h: 2.4, w: 1.1 });
@@ -219,26 +220,26 @@ const viewing = {
   },
 };
 
-function drumKit(b, x, y, z) {
+function drumKit(b: Batch, x: number, y: number, z: number) {
   b.at(x, y, z, 0, () => {
     b.cyl(0, 0.5, 0.2, 0.5, 0.5, '#c9423a', { seg: 10, rx: HALF });
     b.cyl(0, 0.5, 0.46, 0.46, 0.02, '#f0e6c8', { seg: 10, rx: HALF });
-    for (const [dx, h] of [[-0.75, 0.8], [0.75, 0.75]]) { b.cyl(dx, h, 0.1, 0.26, 0.2, '#c9423a', { seg: 8 }); b.cyl(dx, h + 0.11, 0.1, 0.25, 0.02, '#f0e6c8', { seg: 8 }); b.cyl(dx, h / 2, 0.1, 0.03, h, METAL, { seg: 4 }); }
+    for (const [dx, h] of ([[-0.75, 0.8], [0.75, 0.75]] as [number, number][])) { b.cyl(dx, h, 0.1, 0.26, 0.2, '#c9423a', { seg: 8 }); b.cyl(dx, h + 0.11, 0.1, 0.25, 0.02, '#f0e6c8', { seg: 8 }); b.cyl(dx, h / 2, 0.1, 0.03, h, METAL, { seg: 4 }); }
     for (const dx of [-1.1, 1.1]) { b.cyl(dx, 0.7, -0.3, 0.02, 1.4, METAL, { seg: 4 }); b.cyl(dx, 1.42, -0.3, 0.34, 0.02, '#d9b24c', { seg: 9 }); }
   });
 }
-function micStand(b, x, y, z) {
+function micStand(b: Batch, x: number, y: number, z: number) {
   b.cyl(x, y + 0.75, z, 0.02, 1.5, BLACK, { seg: 4 }); b.cyl(x, y + 0.03, z, 0.18, 0.05, BLACK, { seg: 6 });
   b.ball(x, y + 1.56, z + 0.05, 0.06, 0.09, 0.06, '#8b9096', { seg: 5 });
 }
 
-const shrine = {
+const shrine: SceneDef = {
   mood: 'club', accent: '#f2c14e',
   build(b, { accent }) {
     room(b, { floor: '#4f3d32', wall: '#5a2a26', side: '#472420', trim: '#2a1a16', base: '#241a16', h: 6 });
     // Mural blocks on the back wall
     const mural = ['#d9a441', '#2f8f55', '#c9423a', '#1c1614'];
-    for (let i = 0; i < 12; i++) b.quad(-11 + i * 2, 5.2, -9.96 + 0.17, 1.9, 0.9, mural[i % 4]);
+    for (let i = 0; i < 12; i++) b.quad(-11 + i * 2, 5.2, -9.96 + 0.17, 1.9, 0.9, mural[i % 4]!);
     b.cyl(0, 3.9, -9.74, 1.5, 0.06, accent, { seg: 14, rx: HALF, ...GLOW });
     for (let i = 0; i < 8; i++) b.box(Math.sin(i * PI / 4) * 2.1, 3.9 + Math.cos(i * PI / 4) * 2.1, -9.74, 0.2, 0.7, 0.05, accent, { rz: -i * PI / 4, ...GLOW });
     // Stage with a truss and lights
@@ -265,8 +266,8 @@ const shrine = {
     for (const side of [-1, 1]) { speaker(b, side * 9.8, -3.4, { h: 1.9, w: 1.5, ry: -side * 0.3 }); speaker(b, side * 9.8, -3.4, { h: 1.6, w: 1.3, y: 1.9, ry: -side * 0.3 }); }
     // Floor: painted ring, barrel tables, dancers
     b.disc(0, 0.07, 2, 4.2, '#6a4a34', { seg: 18 }); b.disc(0, 0.08, 2, 3.4, '#4f3d32', { seg: 18 });
-    [[-5.4, 5.2], [5.2, 4.4], [0.6, 7.4]].forEach(([x, z], i) => {
-      b.cyl(x, 0.55, z, 0.5, 1.1, ['#2f6f8f', '#a8323a', '#2f8f55'][i], { seg: 9 }); b.cyl(x, 1.12, z, 0.56, 0.06, '#8a8478', { seg: 9 });
+    ([[-5.4, 5.2], [5.2, 4.4], [0.6, 7.4]] as [number, number][]).forEach(([x, z], i) => {
+      b.cyl(x, 0.55, z, 0.5, 1.1, ['#2f6f8f', '#a8323a', '#2f8f55'][i]!, { seg: 9 }); b.cyl(x, 1.12, z, 0.56, 0.06, '#8a8478', { seg: 9 });
       bottles(b, x, 1.15, z, { n: 3, gap: 0.22 });
     });
     extra(b, 'shrine-fan-1', -1.6, 1.2, PI - 0.2, 'dance'); extra(b, 'shrine-fan-2', 1.8, 2.6, PI + 0.3, 'dance');
@@ -302,7 +303,7 @@ const shrine = {
   },
 };
 
-function shopfront(b, x, w, { fascia, text, window: tint, items }) {
+function shopfront(b: Batch, x: number, w: number, { fascia, text, window: tint, items }: { fascia: Colour; text: string; window: Colour; items: (b: Batch, cx: number, width: number) => void }) {
   b.at(x, 0, -9.7, 0, () => {
     b.box(0, 4.3, 0.7, w, 1, 1.5, fascia);
     sign(b, 0, 4.3, 1.47, text, { size: 0.44, color: WHITE, lit: true });
@@ -315,12 +316,12 @@ function shopfront(b, x, w, { fascia, text, window: tint, items }) {
     b.at(0, 0.4, 1.15, 0, () => items(b, -w * 0.14, w * 0.62));
   });
 }
-function mannequin(b, x, z, color) {
+function mannequin(b: Batch, x: number, z: number, color: Colour) {
   b.cyl(x, 0.05, z, 0.3, 0.1, METAL, { seg: 7 }); b.cyl(x, 0.6, z, 0.04, 1, METAL, { seg: 4 });
   b.box(x, 1.6, z, 0.56, 1.1, 0.3, color); b.ball(x, 2.4, z, 0.2, 0.24, 0.2, '#e9e4d8', { seg: 6 });
 }
 
-const mall = {
+const mall: SceneDef = {
   mood: 'indoor', accent: '#e9614b',
   build(b, { accent }) {
     room(b, { floor: '#e6e0d2', wall: '#d9d4c6', side: '#cfc9ba', trim: '#b5ae9c', h: 6 });
@@ -328,7 +329,7 @@ const mall = {
     for (let i = 0; i < 4; i++) b.box(0, 0.055, -7.2 + i * 4.8, 24, 0.02, 0.12, '#cfc7b4');
     // Shopfronts along the back
     shopfront(b, -8, 6.6, { fascia: '#c9423a', text: 'MODA', window: '#f2d9d0', items: (bb, cx) => { mannequin(bb, cx - 1.1, -0.5, '#dd6fa0'); mannequin(bb, cx, -0.5, '#3f72c4'); mannequin(bb, cx + 1.1, -0.5, '#d6a83a'); } });
-    shopfront(b, -1.2, 6.6, { fascia: '#243a66', text: 'TECH', window: '#d0e4f2', items: (bb, cx) => { bb.box(cx, 0.5, -0.5, 3.4, 1, 0.7, WHITE); for (let i = 0; i < 4; i++) bb.quad(cx - 1.2 + i * 0.8, 1.4, -0.3, 0.5, 0.7, ['#9fd8ff', '#b8f0c8', '#ffd58a', '#f2a6c8'][i], { ...GLOW, rx: -0.2 }); } });
+    shopfront(b, -1.2, 6.6, { fascia: '#243a66', text: 'TECH', window: '#d0e4f2', items: (bb, cx) => { bb.box(cx, 0.5, -0.5, 3.4, 1, 0.7, WHITE); for (let i = 0; i < 4; i++) bb.quad(cx - 1.2 + i * 0.8, 1.4, -0.3, 0.5, 0.7, ['#9fd8ff', '#b8f0c8', '#ffd58a', '#f2a6c8'][i]!, { ...GLOW, rx: -0.2 }); } });
     shopfront(b, 5.6, 6.6, { fascia: '#2f8f55', text: 'BOOKS', window: '#dff0d9', items: (bb, cx) => shelf(bb, cx, -0.6, { w: 3.6, h: 2.6, rows: 3, per: 8 }) });
     // Escalator to a mezzanine at the back right
     b.box(10.4, 3.1, -8.6, 3, 0.3, 2.6, '#cfc9ba'); b.box(10.4, 3.75, -7.34, 3, 1, 0.06, '#bfe3ef', GLASS);
@@ -344,8 +345,8 @@ const mall = {
       for (let i = 0; i < 14; i++) { b.box(-3.9 + i * 0.6, 3.92, 1.36, 0.16, 0.16, 0.06, i % 2 ? '#ffe07a' : '#ff8f7a', GLOW); b.box(-3.9 + i * 0.6, 5.08, 1.36, 0.16, 0.16, 0.06, i % 2 ? '#ff8f7a' : '#ffe07a', GLOW); }
       b.box(0, 1.7, 0.12, 3.4, 3.4, 0.1, '#1c1418');
       for (const side of [-1, 1]) { b.box(side * 0.85, 1.65, 0.2, 1.5, 3.2, 0.08, '#5a2f3a'); b.quad(side * 0.85, 2.3, 0.25, 0.9, 1, '#2a1a22'); b.box(side * 0.3, 1.6, 0.27, 0.08, 0.7, 0.06, '#d6a83a'); }
-      [['#f2a03c', '#3a1f2a'], ['#3f8fd0', '#f4f1e4'], ['#58a06a', '#f2d24a']].forEach(([one, two], i) => {
-        const px = [-3.2, 2.6, 3.9][i];
+      ([['#f2a03c', '#3a1f2a'], ['#3f8fd0', '#f4f1e4'], ['#58a06a', '#f2d24a']] as [string, string][]).forEach(([one, two], i) => {
+        const px = [-3.2, 2.6, 3.9][i]!;
         b.box(px, 2.2, 0.14, 1.1, 1.7, 0.08, '#d6a83a'); b.quad(px, 2.2, 0.19, 0.94, 1.54, one, GLOW); b.quad(px, 1.9, 0.2, 0.5, 0.5, two, GLOW);
       });
     });
@@ -360,9 +361,9 @@ const mall = {
     b.ico(0.4, 3.8, 0.6, 1.5, 1.1, 1.5, LEAF); b.ico(1, 4.4, 0.3, 0.9, 0.8, 0.9, '#6aa95a');
     extra(b, 'mall-sitter', 0.4, 2.7, 0, 'sit', { seat: 0.67 });
     // Food court
-    [[5.6, 4.6], [8.6, 7], [4.6, 8]].forEach(([x, z], i) => {
+    ([[5.6, 4.6], [8.6, 7], [4.6, 8]] as [number, number][]).forEach(([x, z], i) => {
       table(b, x, z, { round: true, w: 1.5, color: WHITE, leg: METAL });
-      for (let c = 0; c < 3; c++) { const turn = i + c * 2.1; chair(b, x + Math.sin(turn) * 1.15, z + Math.cos(turn) * 1.15, { ry: turn + PI, color: [accent, '#f2c14e', '#39a9a6'][i] }); }
+      for (let c = 0; c < 3; c++) { const turn = i + c * 2.1; chair(b, x + Math.sin(turn) * 1.15, z + Math.cos(turn) * 1.15, { ry: turn + PI, color: [accent, '#f2c14e', '#39a9a6'][i]! }); }
       b.cyl(x, 1.12, z, 0.14, 0.2, accent, { seg: 6, top: 1.2 });
     });
     extra(b, 'mall-diner', 5.6 + Math.sin(0) * 1.15, 4.6 + Math.cos(0) * 1.15, PI, 'sit');

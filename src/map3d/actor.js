@@ -10,8 +10,8 @@
  * its mirror image, swapped every stride. Which frame shows comes from the pose's `step`, which
  * is a function of the distance covered — the walk never keeps time of its own.
  */
-import { createBatch, sceneMaterials } from '../scene/build.js';
-import { buildAvatar } from '../scene/characters.js';
+import { createBatch, sceneMaterials } from '../scene/build.ts';
+import { buildAvatar } from '../scene/characters.ts';
 import { VEHICLES } from './vehicles.js';
 import { lookOf } from './trip.js';
 

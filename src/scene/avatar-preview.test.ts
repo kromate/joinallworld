@@ -4,15 +4,39 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import * as THREE from 'three';
-import { createAvatarPreview, previewStats, frameCamera, ANIMATION_LIMIT_MS, PreviewUnavailable } from './avatar-preview.js';
-import { createBatch } from './build.js';
-import { LOOK_OPTIONS, DETAILS, POSES, PARTS, ACCESSORY_SLOTS, drawAvatar, buildAvatar, poseAvatar, normalizeLook } from './characters.js';
-import { createKit } from './kit.js';
+import { createAvatarPreview, previewStats, frameCamera, ANIMATION_LIMIT_MS, PreviewUnavailable } from './avatar-preview.ts';
+import type { PreviewOptions } from './avatar-preview.ts';
+import { createBatch } from './build.ts';
+import { LOOK_OPTIONS, DETAILS, POSES, PARTS, ACCESSORY_SLOTS, drawAvatar, buildAvatar, poseAvatar, normalizeLook } from './characters.ts';
+import type { DetailLevel, DrawOptions, Pose } from './characters.ts';
+import { createKit } from './kit.ts';
+import type { Kit } from './kit.ts';
+import type { Colour, SceneMaterials } from './types.ts';
+
+/** The browser pieces the preview touches, as plain stubs (cast to the DOM types where they are handed over). */
+interface FakeHost { clientWidth: number; clientHeight: number; appended: number; appendChild(node: { parentElement: unknown }): void }
+interface FakeCanvas {
+  style: Record<string, string>; dataset: Record<string, string>; attributes: Record<string, string>;
+  parentElement: unknown; removed: boolean;
+  classList: { add(): void };
+  setAttribute(name: string, value: string): void;
+  addEventListener(type: string, fn: (event: unknown) => void): void;
+  removeEventListener(type: string): void;
+  setPointerCapture(): void; releasePointerCapture(): void;
+  remove(): void;
+  fire(type: string, event?: Record<string, unknown>): void;
+  listening(): number;
+}
+interface RendererCalls { render: number; dispose: number; contextLoss: number; size: [number, number][] }
+/** Scene-like globals the tests swap out. */
+const scope = globalThis as unknown as Record<string, unknown>;
+/** The materials a batch is built with when only the geometry matters. */
+const NO_MATERIALS = { solid: null, glow: null, glass: null } as unknown as SceneMaterials;
 
 function fakeCanvas() {
-  const handlers = new Map();
-  const host = { clientWidth: 520, clientHeight: 256, appended: 0, appendChild(node) { node.parentElement = host; host.appended += 1; } };
-  const canvas = {
+  const handlers = new Map<string, (event: unknown) => void>();
+  const host: FakeHost = { clientWidth: 520, clientHeight: 256, appended: 0, appendChild(node) { node.parentElement = host; host.appended += 1; } };
+  const canvas: FakeCanvas = {
     style: {}, dataset: {}, attributes: {}, parentElement: null, removed: false,
     classList: { add() {} },
     setAttribute(name, value) { canvas.attributes[name] = value; },
@@ -25,41 +49,41 @@ function fakeCanvas() {
   };
   return { canvas, host };
 }
-function stubRenderer(canvas) {
-  const calls = { render: 0, dispose: 0, contextLoss: 0, size: [] };
-  return { calls, domElement: canvas, setPixelRatio() {}, setClearColor() {}, setSize(w, h) { calls.size.push([w, h]); }, render() { calls.render += 1; }, dispose() { calls.dispose += 1; }, forceContextLoss() { calls.contextLoss += 1; } };
+function stubRenderer(canvas: FakeCanvas) {
+  const calls: RendererCalls = { render: 0, dispose: 0, contextLoss: 0, size: [] };
+  return { calls, domElement: canvas, setPixelRatio() {}, setClearColor() {}, setSize(w: number, h: number) { calls.size.push([w, h]); }, render() { calls.render += 1; }, dispose() { calls.dispose += 1; }, forceContextLoss() { calls.contextLoss += 1; } };
 }
 /** A hand-cranked clock: scheduled steps run only when step() is called. */
 function fakeClock() {
   let time = 0, next = 1;
-  const queue = new Map();
+  const queue = new Map<number, () => void>();
   return {
-    now: () => time, raf: (fn) => { queue.set(next, fn); return next++; }, caf: (id) => queue.delete(id),
+    now: () => time, raf: (fn: () => void) => { queue.set(next, fn); return next++; }, caf: (id: number) => { queue.delete(id); },
     pending: () => queue.size,
     step(ms = 16) { time += ms; const run = [...queue.values()]; queue.clear(); run.forEach((fn) => fn()); return run.length; },
     /** Run frames until nothing is scheduled; returns [frames run, ms elapsed]. Fails if it never stops. */
-    drain() { let frames = 0; const start = time; while (queue.size) { this.step(); if (++frames > 600) assert.fail('the animation never stopped'); } return [frames, time - start]; },
+    drain(): [number, number] { let frames = 0; const start = time; while (queue.size) { this.step(); if (++frames > 600) assert.fail('the animation never stopped'); } return [frames, time - start]; },
   };
 }
 const LOOK = { body: 'woman', hair: 'braids', outfit: 'owambe', fabric: 'ankara', skin: '#96603c', hairColor: '#15110f', outfitColor: '#2c9c9a', bottomsColor: '#243a6b' };
-function make(more = {}) {
+function make(more: PreviewOptions = {}) {
   const { canvas, host } = fakeCanvas(), renderer = stubRenderer(canvas), clock = fakeClock();
-  const preview = createAvatarPreview(host, { look: LOOK, renderer, raf: clock.raf, caf: clock.caf, now: clock.now, reducedMotion: false, ...more });
+  const preview = createAvatarPreview(host as unknown as HTMLElement, { look: LOOK, renderer: renderer as unknown as THREE.WebGLRenderer, raf: clock.raf, caf: clock.caf, now: clock.now, reducedMotion: false, ...more });
   return { preview, canvas, host, renderer, clock };
 }
 
 test('an idle preview renders nothing; each change costs exactly one frame', async () => {
   let frames = 0, timers = 0;
   const FRAME = ['request', 'Animation', 'Frame'].join(''), INTERVAL = ['set', 'Interval'].join('');
-  const original = { raf: globalThis[FRAME], interval: globalThis[INTERVAL], timeout: globalThis.setTimeout };
-  globalThis[FRAME] = () => { frames += 1; return 0; };
-  globalThis[INTERVAL] = (...args) => { timers += 1; return original.interval(...args); };
+  const original = { raf: scope[FRAME], interval: scope[INTERVAL] as (...args: unknown[]) => unknown, timeout: globalThis.setTimeout };
+  scope[FRAME] = () => { frames += 1; return 0; };
+  scope[INTERVAL] = (...args: unknown[]) => { timers += 1; return original.interval(...args); };
   try {
     const { preview, canvas, host, renderer, clock } = make();
     const count = () => preview.diagnostics().renderCount;
     assert.equal(count(), 1, 'one frame to show the Sim');
     assert.ok(preview.diagnostics().triangles > 10000, 'the preview uses the high-detail avatar');
-    await new Promise((resolve) => original.timeout(resolve, 120));
+    await new Promise((resolve) => original.timeout(resolve as () => void, 120));
     assert.equal(count(), 1, 'idle: zero renders');
     assert.equal(renderer.calls.render, 1);
     assert.equal(clock.pending(), 0, 'nothing is scheduled while idle');
@@ -75,7 +99,7 @@ test('an idle preview renders nothing; each change costs exactly one frame', asy
     assert.equal(count(), 5, 'one frame per arrow key; other keys draw nothing');
     assert.equal(clock.pending(), 0);
     preview.dispose();
-  } finally { globalThis[FRAME] = original.raf; globalThis[INTERVAL] = original.interval; }
+  } finally { scope[FRAME] = original.raf; scope[INTERVAL] = original.interval; }
 });
 
 test('dragging draws one frame per pointer move, then eases to rest in a bounded time and stops', () => {
@@ -172,11 +196,11 @@ test('a lost context stops drawing and tells the caller; without WebGL the previ
   assert.equal(preview.diagnostics().renderCount, count + 1, 'one frame when it comes back');
   preview.dispose();
 
-  const before = previewStats.live, real = globalThis.document, errors = [], realError = console.error;
-  globalThis.document = { createElement: () => ({ getContext: () => null }) };
-  console.error = (...args) => errors.push(args);
-  try { assert.throws(() => createAvatarPreview({}, { look: LOOK }), PreviewUnavailable); }
-  finally { globalThis.document = real; console.error = realError; }
+  const before = previewStats.live, real = scope.document, errors: unknown[][] = [], realError = console.error;
+  scope.document = { createElement: () => ({ getContext: () => null }) };
+  console.error = (...args: unknown[]) => { errors.push(args); };
+  try { assert.throws(() => createAvatarPreview({} as HTMLElement, { look: LOOK }), PreviewUnavailable); }
+  finally { scope.document = real; console.error = realError; }
   assert.equal(previewStats.live, before, 'nothing is left alive');
   assert.deepEqual(errors, [], 'no error is logged');
 });
@@ -194,11 +218,11 @@ test('the camera frames the whole Sim at any stage shape', () => {
 
 test('three detail levels: the crowd budget holds at low, medium is a light version of the full model, high is the full model', () => {
   assert.deepEqual([...DETAILS], ['low', 'medium', 'high']);
-  const triangles = (look, detail, pose = 'stand') => { const batch = createBatch(THREE); drawAvatar(batch, look, { detail, pose, seed: 'x', marker: 'crown' }); return batch.triangles; };
-  const range = { low: [Infinity, 0], medium: [Infinity, 0], high: [Infinity, 0] };
-  const loaded = [[], ['sunglasses', 'cap', 'earrings', 'chain', 'watch'], ['glasses', 'fila', 'beads', 'handbag'], ['headwrap', 'backpack']];
+  const triangles = (look: Record<string, unknown>, detail: DetailLevel, pose: Pose = 'stand') => { const batch = createBatch(THREE); drawAvatar(batch, look, { detail, pose, seed: 'x', marker: 'crown' }); return batch.triangles; };
+  const range: Record<DetailLevel, [number, number]> = { low: [Infinity, 0], medium: [Infinity, 0], high: [Infinity, 0] };
+  const loaded: string[][] = [[], ['sunglasses', 'cap', 'earrings', 'chain', 'watch'], ['glasses', 'fila', 'beads', 'handbag'], ['headwrap', 'backpack']];
   for (const body of LOOK_OPTIONS.body) for (const hair of LOOK_OPTIONS.hair[body]) for (const outfit of LOOK_OPTIONS.outfit[body]) for (const fabric of LOOK_OPTIONS.fabric) for (const accessories of loaded) {
-    for (const detail of DETAILS) for (const pose of detail === 'low' ? POSES : accessories.length > 4 || !accessories.length ? ['stand'] : []) {
+    for (const detail of DETAILS) for (const pose of detail === 'low' ? POSES : accessories.length > 4 || !accessories.length ? ['stand' as Pose] : []) {
       const n = triangles({ body, hair, outfit, fabric, accessories }, detail, pose);
       range[detail] = [Math.min(range[detail][0], n), Math.max(range[detail][1], n)];
     }
@@ -211,18 +235,18 @@ test('three detail levels: the crowd budget holds at low, medium is a light vers
 });
 
 test('every option changes the model at every detail level, and one batch can mix levels', () => {
-  const signature = (look, detail) => {
+  const signature = (look: Record<string, unknown>, detail: DetailLevel) => {
     const batch = createBatch(THREE);
     drawAvatar(batch, look, { detail, seed: 'x' });
-    const built = batch.build({ solid: null, glow: null, glass: null }), { position, color } = built.meshes[0].geometry.attributes;
+    const built = batch.build(NO_MATERIALS), { position, color } = built.meshes[0]!.geometry.attributes as Record<'position' | 'color', THREE.BufferAttribute>;
     let sum = 0;
-    for (let i = 0; i < position.array.length; i++) sum += position.array[i] * (i % 7 + 1) + color.array[i] * (i % 5 + 1);
+    for (let i = 0; i < position.array.length; i++) sum += position.array[i]! * (i % 7 + 1) + color.array[i]! * (i % 5 + 1);
     built.meshes.forEach((mesh) => mesh.geometry.dispose());
     return `${built.triangles}:${sum.toFixed(3)}`;
   };
   for (const detail of DETAILS) for (const body of LOOK_OPTIONS.body) {
     const base = { body, hair: 'lowcut', outfit: 'casual', fabric: 'plain', skin: 2, hairColor: 0, outfitColor: 'blue', bottomsColor: 'navy', accessories: [] };
-    const distinct = (list, what) => assert.equal(new Set(list).size, list.length, `${detail} ${body}: ${what} are distinct`);
+    const distinct = (list: string[], what: string) => assert.equal(new Set(list).size, list.length, `${detail} ${body}: ${what} are distinct`);
     distinct(LOOK_OPTIONS.hair[body].map((hair) => signature({ ...base, hair }, detail)), 'hairstyles');
     distinct(LOOK_OPTIONS.outfit[body].map((outfit) => signature({ ...base, outfit }, detail)), 'outfits');
     distinct(LOOK_OPTIONS.fabric.map((fabric) => signature({ ...base, fabric }, detail)), 'fabrics');
@@ -243,25 +267,25 @@ test('every option changes the model at every detail level, and one batch can mi
   const low = createBatch(THREE); drawAvatar(low, { body: 'man' }, { seed: 'a', x: 0 }); drawAvatar(low, { body: 'woman' }, { seed: 'b', x: 1 });
   const mixed = createBatch(THREE); drawAvatar(mixed, { body: 'man' }, { seed: 'a', x: 0, detail: 'medium' }); drawAvatar(mixed, { body: 'woman' }, { seed: 'b', x: 1 });
   assert.ok(mixed.triangles > low.triangles + 1000 && mixed.triangles < low.triangles + 4500);
-  assert.equal(mixed.build({ solid: null, glow: null, glass: null }).meshes.length, 1, 'still one mesh: no extra draw call');
+  assert.equal(mixed.build(NO_MATERIALS).meshes.length, 1, 'still one mesh: no extra draw call');
 });
 
 test('walk and jog are full cycles driven by stride, at every detail level', () => {
-  const shape = (options) => {
+  const shape = (options: DrawOptions) => {
     const batch = createBatch(THREE);
     drawAvatar(batch, { body: 'man', hair: 'lowcut', outfit: 'casual', fabric: 'plain' }, { seed: 'x', ...options });
-    const { position } = batch.build({ solid: null, glow: null, glass: null }).meshes[0].geometry.attributes;
+    const { position } = batch.build(NO_MATERIALS).meshes[0]!.geometry.attributes as Record<'position', THREE.BufferAttribute>;
     let sum = 0, top = -Infinity;
-    for (let i = 0; i < position.array.length; i += 3) { sum += (position.array[i] * 3 + position.array[i + 1] * 5 + position.array[i + 2] * 7) * (i % 11 + 1); top = Math.max(top, position.array[i + 1]); }
+    for (let i = 0; i < position.array.length; i += 3) { sum += (position.array[i]! * 3 + position.array[i + 1]! * 5 + position.array[i + 2]! * 7) * (i % 11 + 1); top = Math.max(top, position.array[i + 1]!); }
     return { sum: sum.toFixed(2), top };
   };
   assert.ok(POSES.includes('walk') && POSES.includes('jog'));
-  for (const detail of DETAILS) for (const pose of ['walk', 'jog']) {
+  for (const detail of DETAILS) for (const pose of ['walk', 'jog'] as Pose[]) {
     const frames = [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875].map((stride) => shape({ detail, pose, stride }));
     assert.equal(new Set(frames.map((frame) => frame.sum)).size, 8, `${detail} ${pose}: eight different frames`);
-    assert.equal(shape({ detail, pose, stride: 1 }).sum, frames[0].sum, 'the cycle wraps');
-    assert.ok(frames[0].top > frames[2].top && frames[4].top > frames[6].top, 'the body is highest as the legs pass and lowest at each contact');
-    assert.ok(Math.abs(frames[2].top - frames[6].top) < 1e-6, 'left and right contacts are the same height');
+    assert.equal(shape({ detail, pose, stride: 1 }).sum, frames[0]!.sum, 'the cycle wraps');
+    assert.ok(frames[0]!.top > frames[2]!.top && frames[4]!.top > frames[6]!.top, 'the body is highest as the legs pass and lowest at each contact');
+    assert.ok(Math.abs(frames[2]!.top - frames[6]!.top) < 1e-6, 'left and right contacts are the same height');
   }
   assert.notEqual(shape({ pose: 'walk', stride: 0.25 }).sum, shape({ pose: 'jog', stride: 0.25 }).sum);
   assert.equal(shape({ pose: 'walk' }).sum, shape({ pose: 'walk', stride: undefined }).sum, 'walk without a stride is still the single mid-stride figure');
@@ -277,14 +301,14 @@ test('a rigged avatar is the same figure in movable parts, posed by transforms a
   };
   try {
     const kit = createKit();
-    const box = (object) => { object.updateMatrixWorld(true); return new THREE.Box3().setFromObject(object, true); };
-    const close = (a, b, slack, what) => { for (const edge of ['min', 'max']) for (const axis of ['x', 'y', 'z']) assert.ok(Math.abs(a[edge][axis] - b[edge][axis]) <= slack, `${what}: ${edge}.${axis} ${a[edge][axis]} vs ${b[edge][axis]}`); };
+    const box = (object: THREE.Object3D) => { object.updateMatrixWorld(true); return new THREE.Box3().setFromObject(object, true); };
+    const close = (a: THREE.Box3, b: THREE.Box3, slack: number, what: string) => { for (const edge of ['min', 'max'] as const) for (const axis of ['x', 'y', 'z'] as const) assert.ok(Math.abs(a[edge][axis] - b[edge][axis]) <= slack, `${what}: ${edge}.${axis} ${a[edge][axis]} vs ${b[edge][axis]}`); };
     for (const detail of DETAILS) {
       const look = { body: 'woman', hair: 'braids', outfit: 'jersey', fabric: 'plain', accessories: ['cap', 'watch'] };
       const whole = buildAvatar(kit, look, { detail, seed: 'x' }), rig = buildAvatar(kit, look, { detail, seed: 'x', rig: true, x: 2, z: 1, ry: 0 });
       const { parts } = rig.userData;
       assert.deepEqual(Object.keys(parts).sort(), ['body', ...PARTS].sort());
-      for (const name of PARTS) assert.ok(parts[name].isGroup && parts[name].children.some((child) => child.isMesh), `${detail}: ${name} has geometry`);
+      for (const name of PARTS) assert.ok(parts[name].isGroup && parts[name].children.some((child) => (child as THREE.Mesh).isMesh), `${detail}: ${name} has geometry`);
       assert.equal(rig.userData.triangles, whole.userData.triangles, 'the same model');
       assert.equal(rig.userData.top - 0, whole.userData.top, 'the name tag sits at the same height');
       assert.ok(parts.armL.position.x > 0.15 && parts.armR.position.x < -0.15 && Math.abs(parts.armL.position.y + 1.06 - 1.74) < 0.08, 'arms pivot at the shoulders');
@@ -312,13 +336,13 @@ test('a rigged avatar is the same figure in movable parts, posed by transforms a
 });
 
 test('the preview and the panels that use it hold no interval timers or free-running loops, and Three.js stays out of the first download', async () => {
-  const read = async (path) => (await readFile(new URL(path, import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
-  const preview = await read('./avatar-preview.js');
+  const read = async (path: string) => (await readFile(new URL(path, import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
+  const preview = await read('./avatar-preview.ts');
   assert.doesNotMatch(preview, new RegExp([['request', 'Animation', 'Frame'], ['set', 'Animation', 'Loop'], ['set', 'Interval']].map((parts) => parts.join('')).join('|')));
-  assert.equal(preview.match(new RegExp(['set', 'Timeout'].join(''), 'g')).length, 1, 'the only timer is the one-shot step of the bounded animator');
+  assert.equal(preview.match(new RegExp(['set', 'Timeout'].join(''), 'g'))!.length, 1, 'the only timer is the one-shot step of the bounded animator');
   for (const file of ['look-ui.js', 'onboarding.js', 'sim.js', 'boutique.js']) {
     const code = await read(`../ui/panels/${file}`);
     assert.doesNotMatch(code, new RegExp(`${['request', 'Animation', 'Frame'].join('')}|${['set', 'Interval'].join('')}|${['set', 'Timeout'].join('')}|from '[^']*three[^']*'|from '[^']*scene/`), `${file} has no loops and no static import of the 3D code`);
   }
-  assert.match(await read('../ui/panels/look-ui.js'), /import\('\.\.\/\.\.\/scene\/avatar-preview\.js'\)/, 'the preview is fetched with a dynamic import');
+  assert.match(await read('../ui/panels/look-ui.js'), /import\('\.\.\/\.\.\/scene\/avatar-preview\.ts'\)/, 'the preview is fetched with a dynamic import');
 });

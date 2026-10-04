@@ -4,13 +4,18 @@
  * settings and the host's own lights (createHostLights), builds one scene kind from the query string and draws it once per change.
  * Nothing here runs in the game: the production build does not include this page.
  */
-import { createKit } from './kit.js';
-import { buildVenueScene, KINDS, TIMES } from './venue-scenes.js';
-import { createHostLights } from '../venue-world.js';
-import { applyRendererLook, renderTier, createSky } from './look.js';
+import { createKit } from './kit.ts';
+import { buildVenueScene, KINDS, TIMES } from './venue-scenes.ts';
+import { createHostLights } from '../venue-world.ts';
+import { applyRendererLook, renderTier, createSky } from './look.ts';
 
+interface HarnessSettings { kind: string; time: string; variant: string; crowd: number; spot: string; busy: boolean }
+type HarnessSelect = 'kind' | 'time';
+type VenueEntry = ReturnType<typeof buildVenueScene>;
+/** What this page publishes for the screenshot scripts. */
+interface HarnessWindow extends Window { __diag?: unknown; __harness?: unknown }
 const params = new URLSearchParams(location.search);
-const settings = {
+const settings: HarnessSettings = {
   kind: params.get('kind') || 'park',
   time: params.get('time') || 'day',
   variant: params.get('variant') || '',
@@ -18,7 +23,7 @@ const settings = {
   spot: params.get('spot') || '',
   busy: params.has('busy'),
 };
-const stage = document.getElementById('stage'), info = document.getElementById('info'), bar = document.getElementById('bar');
+const stage = document.getElementById('stage')!, info = document.getElementById('info')!, bar = document.getElementById('bar')!;
 const kit = createKit();
 const { THREE } = kit;
 const scene = new THREE.Scene();
@@ -30,9 +35,12 @@ const lights = createHostLights(THREE, scene);
 const sky = createSky(THREE);
 scene.background = sky.texture;
 
-let entry = null, renderCount = 0;
+let entry: VenueEntry | null = null, renderCount = 0;
+/** The built scene; draw and the buttons only run after build(). */
+const current = (): VenueEntry => entry!;
 const names = ['Ada', 'Tunde', 'Zainab', 'Chidi', 'Bisi', 'Emeka', 'Kemi', 'Sani', 'Ngozi', 'Femi', 'Amaka', 'Yusuf'];
 function draw() {
+  const entry = current();
   const { clientWidth: width, clientHeight: height } = stage;
   camera.aspect = width / Math.max(1, height);
   const portrait = camera.aspect < 0.85;
@@ -53,13 +61,13 @@ function draw() {
     const node = document.createElement('div');
     node.className = 'tag';
     node.textContent = tag.marker === 'dot' ? `● ${tag.text}` : tag.marker === 'crown' ? `♛ ${tag.text}` : tag.text;
-    node.style.color = tag.colour;
+    node.style.color = tag.colour as string;
     node.style.left = `${(point.x + 1) / 2 * width}px`;
     node.style.top = `${(1 - point.y) / 2 * height}px`;
     document.body.appendChild(node);
   }
   const stats = entry.stats();
-  window.__diag = { ...settings, renderCount, calls: renderer.info.render.calls, triangles: renderer.info.render.triangles, geometries: renderer.info.memory.geometries, stats, spots: Object.keys(entry.anchors) };
+  (window as HarnessWindow).__diag = { ...settings, renderCount, calls: renderer.info.render.calls, triangles: renderer.info.render.triangles, geometries: renderer.info.memory.geometries, stats, spots: Object.keys(entry.anchors) };
   info.textContent = `${settings.kind} · ${entry.time} · frame ${renderCount} · ${renderer.info.render.calls} calls · ${renderer.info.render.triangles} tris (scene ${stats.triangles}) · ${renderer.info.memory.geometries} geometries`;
 }
 function build() {
@@ -71,7 +79,7 @@ function build() {
   if (settings.busy) entry.update({ activeAction: {} });
   draw();
 }
-function select(key, values) {
+function select(key: HarnessSelect, values: readonly string[]) {
   const node = document.createElement('select');
   for (const value of values) node.add(new Option(value || '(default)', value, false, value === settings[key]));
   node.onchange = () => { settings[key] = node.value; build(); };
@@ -81,12 +89,12 @@ select('kind', [...KINDS, 'library', 'mosque', 'generic']);
 select('time', TIMES);
 const spots = document.createElement('button');
 spots.textContent = 'Next spot';
-spots.onclick = () => { const keys = Object.keys(entry.anchors); const next = keys[(keys.indexOf(entry.spot) + 1) % keys.length]; if (entry.setSpot(next)) draw(); };
+spots.onclick = () => { const entry = current(); const keys = Object.keys(entry.anchors); const next = keys[(keys.indexOf(entry.spot as string) + 1) % keys.length]; if (entry.setSpot(next as string)) draw(); };
 bar.appendChild(spots);
 const busy = document.createElement('button');
 busy.textContent = 'Toggle busy';
-busy.onclick = () => { settings.busy = !settings.busy; if (entry.update({ activeAction: settings.busy ? {} : null })) draw(); };
+busy.onclick = () => { settings.busy = !settings.busy; if (current().update({ activeAction: settings.busy ? {} : null })) draw(); };
 bar.appendChild(busy);
 addEventListener('resize', draw);
-window.__harness = { settings, build, draw, get entry() { return entry; } };
+(window as HarnessWindow).__harness = { settings, build, draw, get entry() { return entry; } };
 build();

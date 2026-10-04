@@ -19,26 +19,48 @@
  * page is hidden; onHidden() lets the owner drop held input, and onVisible() lets it resume a
  * motion that was cut short (it must call wake() itself — the loop never restarts on its own).
  */
-export function createMotionLoop(tick, { onHidden, onVisible, request = globalThis.requestAnimationFrame, cancel = globalThis.cancelAnimationFrame, doc = globalThis.document, clock = () => globalThis.performance.now() } = {}) {
-  let handle = null, last = 0, queued = false;
+/** The slice of `document` the loop uses (tests pass a stub). */
+export interface MotionDocument {
+  visibilityState?: string;
+  addEventListener?(type: string, listener: () => void): void;
+  removeEventListener?(type: string, listener: () => void): void;
+}
+export interface MotionLoopOptions {
+  onHidden?: () => void;
+  onVisible?: () => void;
+  request?: ((callback: (time: number) => void) => number) | undefined;
+  cancel?: ((handle: number) => void) | undefined;
+  doc?: MotionDocument | null | undefined;
+  clock?: () => number;
+}
+export interface MotionLoop {
+  running: boolean;
+  frames: number;
+  available: boolean;
+  wake(): boolean;
+  stop(): void;
+  dispose(): void;
+}
+export function createMotionLoop(tick: (dt: number) => boolean | void, { onHidden, onVisible, request = globalThis.requestAnimationFrame, cancel = globalThis.cancelAnimationFrame, doc = globalThis.document, clock = () => globalThis.performance.now() }: MotionLoopOptions = {}): MotionLoop {
+  let handle: number | null = null, last = 0, queued = false;
   const hidden = () => doc?.visibilityState === 'hidden';
-  const loop = {
+  const loop: MotionLoop = {
     running: false, frames: 0,
     available: typeof request === 'function',
     wake() {
       if (loop.running || !loop.available || hidden()) return loop.running;
       loop.running = true; last = clock();
       // A callback that could not be cancelled is still on its way: it will do, never ask for a second one.
-      if (!queued) { queued = true; handle = request(frame); }
+      if (!queued) { queued = true; handle = request!(frame); }
       return true;
     },
     stop() {
-      if (queued && typeof cancel === 'function') { cancel(handle); queued = false; }
+      if (queued && typeof cancel === 'function') { cancel(handle!); queued = false; }
       handle = null; loop.running = false;
     },
     dispose() { loop.stop(); doc?.removeEventListener?.('visibilitychange', onVisibility); },
   };
-  function frame(time) {
+  function frame(time: number) {
     queued = false; handle = null;
     if (!loop.running) return;
     const at = Number.isFinite(time) ? time : clock();
@@ -46,7 +68,7 @@ export function createMotionLoop(tick, { onHidden, onVisible, request = globalTh
     last = at; loop.frames += 1;
     let more = false;
     try { more = tick(dt) === true; } catch (error) { console.error('Scene motion stopped:', error); }
-    if (more && loop.running && !hidden()) { queued = true; handle = request(frame); } else loop.running = false;
+    if (more && loop.running && !hidden()) { queued = true; handle = request!(frame); } else loop.running = false;
   }
   function onVisibility() { if (hidden()) { loop.stop(); onHidden?.(); } else onVisible?.(); }
   doc?.addEventListener?.('visibilitychange', onVisibility);

@@ -1,15 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createVenueWorld } from './venue-world.js';
+import { createVenueWorld } from './venue-world.ts';
+import type * as THREE from 'three';
+
+/** A pointer event as the host's canvas listeners receive it (only the fields the tests set). */
+type StubEvent = Record<string, unknown>;
+/** What the stub renderer saw in the last frame. */
+interface RenderedView { position: number[]; zoom: number }
+type StubRenderer = THREE.WebGLRenderer & { view: RenderedView };
 
 function fixture() {
-  const listeners = new Map(), captured = new Set(), options = new Map();
-  const canvas = { style: {}, addEventListener(type, fn, opts) { listeners.set(type, fn); options.set(type, opts); }, removeEventListener(type) { listeners.delete(type); },
-    setPointerCapture(id) { captured.add(id); }, releasePointerCapture(id) { captured.delete(id); }, remove() {} };
+  const listeners = new Map<string, (event: StubEvent) => void>(), captured = new Set<number>(), options = new Map<string, { capture?: boolean } | undefined>();
+  const canvas = { style: {}, addEventListener(type: string, fn: (event: StubEvent) => void, opts?: { capture?: boolean }) { listeners.set(type, fn); options.set(type, opts); }, removeEventListener(type: string) { listeners.delete(type); },
+    setPointerCapture(id: number) { captured.add(id); }, releasePointerCapture(id: number) { captured.delete(id); }, remove() {} };
   const renderer = { shadowMap: {}, domElement: canvas, setPixelRatio() {}, setClearColor() {}, setSize() {}, dispose() {},
-    render(scene, camera) { this.view = { position: camera.position.toArray(), zoom: camera.zoom }; } };
-  const world = createVenueWorld({ appendChild() {}, getBoundingClientRect: () => ({ width: 390, height: 844 }) }, { renderer });
-  const send = (type, props = {}) => listeners.get(type)?.({ pointerId: 1, button: 0, clientX: 120, clientY: 200, preventDefault() {}, ...props });
+    render(this: { view: RenderedView }, scene: unknown, camera: THREE.Camera) { this.view = { position: camera.position.toArray(), zoom: (camera as THREE.PerspectiveCamera).zoom }; } } as unknown as StubRenderer;
+  // The host is handed a container and a renderer; under node these are stand-ins, and the state the tests would push is a slice of a LifeState.
+  const host = { appendChild() {}, getBoundingClientRect: () => ({ width: 390, height: 844 }) };
+  const world = createVenueWorld(host as unknown as HTMLElement, { renderer });
+  const send = (type: string, props: StubEvent = {}) => listeners.get(type)?.({ pointerId: 1, button: 0, clientX: 120, clientY: 200, preventDefault() {}, ...props });
   return { world, renderer, send, listeners, captured, options };
 }
 
@@ -19,7 +28,7 @@ test('venue mouse/touch drag changes camera and tags, persists through HUD resiz
   const before = structuredClone(f.renderer.view), tag = f.world.diagnostics().tags[0];
   f.send('pointerdown'); f.send('pointermove', { clientX: 210, clientY: 230 }); f.send('pointerup');
   assert.notDeepEqual(f.renderer.view.position, before.position, 'drag rotates the actual rendered camera');
-  assert.ok(f.renderer.view.position[1] > before.position[1], 'dragging down raises the camera: the view tips towards top-down');
+  assert.ok(f.renderer.view.position[1]! > before.position[1]!, 'dragging down raises the camera: the view tips towards top-down');
   assert.notDeepEqual(f.world.diagnostics().tags[0], tag, 'tags follow camera');
   const rotated = f.renderer.view.position;
   f.world.setInsets({ top: 100, bottom: 200 });
@@ -76,7 +85,7 @@ test('drag click is intercepted before Home picking, while taps and keyboard cli
   f.send('pointerdown'); f.send('pointermove', { clientX: 180 }); f.send('pointerup');
   f.send('lostpointercapture'); click();
   assert.equal(picked, 1, 'post-drag click does not reach furniture');
-  assert.equal(f.options.get('click').capture, true, 'interception precedes the scene click listener');
+  assert.equal(f.options.get('click')?.capture, true, 'interception precedes the scene click listener');
   f.send('pointerdown'); f.send('pointerup'); click();
   assert.equal(picked, 2, 'next tap works');
   f.send('pointerdown'); f.send('pointermove', { clientX: 190 }); f.send('pointercancel');

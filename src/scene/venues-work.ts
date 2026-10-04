@@ -3,22 +3,23 @@
  * Work and self-care venues: tech hub, office tower, gym, salon and radio station.
  * Scene definition format: see venues-outdoor.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
+import type { Batch, Colour, SceneDef } from './types.ts';
 import {
   room, table, chair, stool, bench, sofa, counter, speaker, screen, plant, shelf, desk, laptop, rug, bottles, windowPane,
   door, sign, landmark, extra,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,
-} from './props.js';
+} from './props.ts';
 
 const PI = Math.PI, HALF = Math.PI / 2;
 
-function pendant(b, x, z, color = WARM, y = 4.2) {
+function pendant(b: Batch, x: number, z: number, color: Colour = WARM, y = 4.2) {
   b.box(x, y + 0.9, z, 0.03, 1.5, 0.03, BLACK);
   b.cyl(x, y, z, 0.4, 0.3, '#2a2d33', { seg: 8, top: 0.4 });
   b.cyl(x, y - 0.16, z, 0.36, 0.03, color, { seg: 8, ...GLOW });
 }
 
-const hub = {
+const hub: SceneDef = {
   mood: 'indoor', accent: '#3fae6a',
   build(b, { accent }) {
     room(b, { floor: '#cdb891', wall: '#ece8dc', side: '#e3dfd2', trim: '#b5ae9c' });
@@ -26,9 +27,9 @@ const hub = {
     b.box(-11.94, 4.6, 0, 0.06, 0.5, 20, accent);
     // Whiteboard wall
     b.box(-4.6, 2.6, -9.72, 5.6, 2.8, 0.1, METAL); b.quad(-4.6, 2.6, -9.66, 5.3, 2.5, '#f8f8f4');
-    [[-6.4, 3.2, 1.4, '#3f72c4'], [-6, 2.8, 2, '#3f72c4'], [-6.2, 2.4, 1.6, '#c9423a'], [-3.4, 3.2, 1.2, '#2f8f55'], [-3.2, 2.2, 1.6, '#2a2d33']].forEach(([x, y, w, color]) => b.quad(x, y, -9.65, w, 0.08, color));
+    ([[-6.4, 3.2, 1.4, '#3f72c4'], [-6, 2.8, 2, '#3f72c4'], [-6.2, 2.4, 1.6, '#c9423a'], [-3.4, 3.2, 1.2, '#2f8f55'], [-3.2, 2.2, 1.6, '#2a2d33']] as [number, number, number, string][]).forEach(([x, y, w, color]) => b.quad(x, y, -9.65, w, 0.08, color));
     b.cyl(-3.4, 2.7, -9.66, 0.5, 0.02, '#c9423a', { seg: 10, rx: HALF, open: true });
-    [['#ffe07a', -5], ['#f2a6c8', -4.5], ['#b8f0c8', -2.6], ['#ffe07a', -2.2]].forEach(([color, x], i) => b.quad(x, 1.75 + (i % 2) * 0.1, -9.65, 0.36, 0.36, color));
+    ([['#ffe07a', -5], ['#f2a6c8', -4.5], ['#b8f0c8', -2.6], ['#ffe07a', -2.2]] as [string, number][]).forEach(([color, x], i) => b.quad(x, 1.75 + (i % 2) * 0.1, -9.65, 0.36, 0.36, color));
     // Pitch stage with a screen
     b.box(6, 0.15, -8, 6.4, 0.3, 3.4, '#8a6644');
     screen(b, 6, 3, -9.7, { w: 5, h: 2.6, color: '#1f3a4a' });
@@ -38,13 +39,13 @@ const hub = {
     b.box(4, 0.95, -7.4, 0.7, 1.3, 0.5, WOOD_DARK); laptop(b, 4, 1.6, -7.4, { ry: PI });
     extra(b, 'hub-founder', 6.6, -7.6, 0.2, 'wave', { y: 0.3, look: { outfit: 'hoodie', body: 'man', outfitColor: 'green' } });
     // Desks
-    [[-5.4, -3.4], [-2.2, -3.4], [1, -3.4], [-5.4, 0.8], [-2.2, 0.8], [1, 0.8]].forEach(([x, z], i) => {
+    ([[-5.4, -3.4], [-2.2, -3.4], [1, -3.4], [-5.4, 0.8], [-2.2, 0.8], [1, 0.8]] as [number, number][]).forEach(([x, z], i) => {
       desk(b, x, z, { color: i % 2 ? '#e9e2cf' : WOOD_LIGHT, seatColor: i % 3 === 0 ? accent : '#4d6f8f' });
       if (i % 2) b.cyl(x + 0.75, 1.13, z + 0.2, 0.09, 0.18, WHITE, { seg: 6 });
     });
     extra(b, 'hub-dev-1', -5.4, -2.45, PI, 'sit'); extra(b, 'hub-dev-2', 1, -2.45, PI, 'sit', { look: { outfit: 'hoodie', body: 'man' } });
     extra(b, 'hub-dev-3', -2.2, 1.75, PI, 'sit'); extra(b, 'hub-mentor', -4, 2.4, 2.4, 'stand');
-    for (const [x, z] of [[-3.8, -3], [-0.6, -3], [-3.8, 1.2], [-0.6, 1.2]]) pendant(b, x, z);
+    for (const [x, z] of ([[-3.8, -3], [-0.6, -3], [-3.8, 1.2], [-0.6, 1.2]] as [number, number][])) pendant(b, x, z);
     b.light(-2.2, 3.6, -1, '#ffe2b0', 20, 12);
     // Coffee corner on the left wall
     counter(b, -10.8, 4.4, { w: 5.6, d: 1.1, ry: HALF, color: '#3a4a45', top: WOOD_LIGHT, stripe: accent });
@@ -56,7 +57,7 @@ const hub = {
     extra(b, 'hub-barista', -11.2, 3.6, HALF, 'work');
     // Bean-bag lounge
     rug(b, 7.4, 5.4, 5.6, 4.4, '#5d8f7a', { border: '#e9e2cf' });
-    [[5.8, 4.4, '#e0822f'], [8.8, 4.2, '#3f72c4'], [7.6, 6.8, '#dd6fa0']].forEach(([x, z, color]) => { b.ball(x, 0.45, z, 0.75, 0.5, 0.75, color, { seg: 8 }); b.ball(x, 0.85, z - 0.35, 0.55, 0.4, 0.4, color, { seg: 7 }); });
+    ([[5.8, 4.4, '#e0822f'], [8.8, 4.2, '#3f72c4'], [7.6, 6.8, '#dd6fa0']] as [number, number, string][]).forEach(([x, z, color]) => { b.ball(x, 0.45, z, 0.75, 0.5, 0.75, color, { seg: 8 }); b.ball(x, 0.85, z - 0.35, 0.55, 0.4, 0.4, color, { seg: 7 }); });
     table(b, 7.2, 5.4, { round: true, w: 1, h: 0.5 });
     extra(b, 'hub-lounger', 8.8, 4.3, -0.6, 'sit', { seat: 0.62 });
     // ATM, server rack, plants
@@ -80,7 +81,7 @@ const hub = {
   },
 };
 
-const office = {
+const office: SceneDef = {
   mood: 'indoor', accent: '#3f72c4',
   build(b, { accent }) {
     room(b, { floor: '#dcd8d0', wall: '#cfc8b8', side: '#c2ccd4', trim: '#8f8a7e', h: 6 });
@@ -90,7 +91,7 @@ const office = {
       const z = -7 + i * 4.6;
       b.box(-11.92, 3.1, z, 0.1, 5, 3.6, '#8f8a7e');
       b.quad(-11.84, 3.1, z, 3.3, 4.7, '#bfe0f2', { ry: HALF, ...GLOW });
-      for (let t = 0; t < 3; t++) b.quad(-11.83, 1.2 + ((i + t) % 3) * 0.5, z - 1.1 + t * 1.1, 0.8, 1 + ((i + t) % 3), ['#8fb0c9', '#7a9ab5', '#a3c0d6'][t], { ry: HALF, ...GLOW });
+      for (let t = 0; t < 3; t++) b.quad(-11.83, 1.2 + ((i + t) % 3) * 0.5, z - 1.1 + t * 1.1, 0.8, 1 + ((i + t) % 3), ['#8fb0c9', '#7a9ab5', '#a3c0d6'][t]!, { ry: HALF, ...GLOW });
       b.box(-11.82, 3.1, z, 0.04, 5, 0.08, '#8f8a7e');
     }
     // Lifts
@@ -122,7 +123,7 @@ const office = {
     extra(b, 'office-visitor', -9.5, 4.2, HALF, 'sit', { seat: 0.69 });
     b.cyl(-3.4, 0.6, -9.1, 0.3, 1.2, WHITE, { seg: 8 }); b.cyl(-3.4, 1.5, -9.1, 0.26, 0.6, '#bfe3f2', { seg: 8, ...GLASS });
     // Open-plan desks
-    [[4.2, 1.6], [7.6, 1.6], [4.2, 5.6], [7.6, 5.6]].forEach(([x, z], i) => {
+    ([[4.2, 1.6], [7.6, 1.6], [4.2, 5.6], [7.6, 5.6]] as [number, number][]).forEach(([x, z], i) => {
       desk(b, x, z, { color: '#e9e4d8', seatColor: '#2d3f5c' });
       b.box(x + 1.5, 0.8, z + 0.2, 0.08, 1.6, 2.4, i % 2 ? accent : '#b9c0c6');
     });
@@ -131,7 +132,7 @@ const office = {
     b.box(10.4, 0.6, 8.4, 1.2, 1.2, 1, '#e9e4d8'); b.box(10.4, 1.26, 8.4, 1, 0.12, 0.8, '#3a3f46');
     // Meeting table
     b.box(8.6, 1, -2.6, 3.6, 0.08, 1.8, '#bfe3ef', GLASS); for (const sx of [-1.5, 1.5]) b.box(8.6 + sx, 0.5, -2.6, 0.1, 1, 1.4, METAL);
-    for (const [dx, dz, ry] of [[-1, -1.3, 0], [1, -1.3, 0], [-1, 1.3, PI], [1, 1.3, PI]]) chair(b, 8.6 + dx, -2.6 + dz, { ry, color: '#2d3f5c' });
+    for (const [dx, dz, ry] of ([[-1, -1.3, 0], [1, -1.3, 0], [-1, 1.3, PI], [1, 1.3, PI]] as [number, number, number][])) chair(b, 8.6 + dx, -2.6 + dz, { ry, color: '#2d3f5c' });
     extra(b, 'office-meeting', 9.6, -3.9, 0, 'sit', { look: { outfit: 'office' } });
     b.box(10.9, 2.9, -9.7, 1.6, 1, 0.08, BLACK); b.quad(10.9, 2.9, -9.65, 1.4, 0.8, '#9fd8ff', GLOW);
     b.light(3, 3.6, -5, '#fff2d0', 22, 12);
@@ -149,21 +150,21 @@ const office = {
   },
 };
 
-function treadmill(b, x, z, ry) {
+function treadmill(b: Batch, x: number, z: number, ry: number) {
   b.at(x, 0, z, ry, () => {
     b.box(0, 0.2, 0, 1, 0.3, 2.4, '#2a2d33'); b.box(0, 0.37, 0, 0.8, 0.04, 2.2, '#4a4f58');
     for (const side of [-1, 1]) { b.box(side * 0.46, 0.95, 0.95, 0.07, 1.5, 0.07, METAL); b.box(side * 0.46, 1.5, 0.5, 0.06, 0.06, 0.9, METAL); }
     b.box(0, 1.75, 1, 0.9, 0.5, 0.12, '#2a2d33', { rx: 0.3 }); b.quad(0, 1.76, 0.93, 0.6, 0.3, '#7fe0a8', { ry: PI, rx: -0.3, ...GLOW });
   });
 }
-function barbell(b, x, y, z, { w = 2.2, color = '#c9423a', ry = 0 } = {}) {
+function barbell(b: Batch, x: number, y: number, z: number, { w = 2.2, color = '#c9423a', ry = 0 }: { w?: number; color?: Colour; ry?: number } = {}) {
   b.at(x, y, z, ry, () => {
     b.cyl(0, 0, 0, 0.035, w, METAL, { seg: 5, rz: HALF });
     for (const side of [-1, 1]) { b.cyl(side * (w / 2 - 0.25), 0, 0, 0.34, 0.1, color, { seg: 9, rz: HALF }); b.cyl(side * (w / 2 - 0.38), 0, 0, 0.26, 0.08, '#2a2d33', { seg: 9, rz: HALF }); }
   });
 }
 
-const gym = {
+const gym: SceneDef = {
   mood: 'indoor', accent: '#e9614b',
   build(b, { accent }) {
     room(b, { floor: '#4a515c', wall: '#d9d4c8', side: '#cfcabd', trim: '#2a2d33' });
@@ -198,7 +199,7 @@ const gym = {
     });
     for (let i = 0; i < 4; i++) { b.ball(6.6 + i * 0.7, 0.24, -8.8, 0.22, 0.22, 0.22, i % 2 ? accent : '#2a2d33', { seg: 6 }); b.box(6.6 + i * 0.7, 0.5, -8.8, 0.24, 0.1, 0.07, METAL); }
     // Mats
-    [['#39a9a6', 4.2], ['#dd6fa0', 6.4], ['#f2c14e', 8.6]].forEach(([color, x]) => b.box(x, 0.085, 4.6, 1.5, 0.05, 3.6, color));
+    ([['#39a9a6', 4.2], ['#dd6fa0', 6.4], ['#f2c14e', 8.6]] as [string, number][]).forEach(([color, x]) => b.box(x, 0.085, 4.6, 1.5, 0.05, 3.6, color));
     b.ball(10.4, 0.6, 7.6, 0.6, 0.6, 0.6, '#3f72c4', { seg: 9 });
     extra(b, 'gym-yoga', 6.4, 4.2, 0, 'sit', { seat: 0.05, look: { body: 'woman', outfit: 'casual', hair: 'bun' } });
     extra(b, 'gym-trainer', 5.4, 1.4, 0.6, 'wave', { look: { outfit: 'casual', outfitColor: 'red' } });
@@ -229,7 +230,7 @@ const gym = {
   },
 };
 
-function salonChair(b, x, z, ry, color) {
+function salonChair(b: Batch, x: number, z: number, ry: number, color: Colour) {
   b.at(x, 0, z, ry, () => {
     b.cyl(0, 0.06, 0, 0.5, 0.1, METAL, { seg: 9 }); b.cyl(0, 0.35, 0, 0.1, 0.5, METAL, { seg: 6 });
     b.box(0, 0.65, 0, 0.9, 0.2, 0.9, color); b.box(0, 1.25, -0.4, 0.9, 1.1, 0.16, color);
@@ -238,7 +239,7 @@ function salonChair(b, x, z, ry, color) {
   });
 }
 
-const salon = {
+const salon: SceneDef = {
   mood: 'indoor', accent: '#dd6fa0',
   build(b, { accent }) {
     room(b, { floor: '#f0dccb', wall: '#f2bdb8', side: '#e8aeac', trim: '#a8687a' });
@@ -269,7 +270,7 @@ const salon = {
     // Nail table
     table(b, 3.6, 2.6, { w: 1.8, d: 0.9, h: 0.95, color: WHITE, leg: '#d6a83a' });
     chair(b, 3.6, 1.6, { color: accent }); chair(b, 3.6, 3.6, { ry: PI, color: '#7a3f5c' });
-    for (let i = 0; i < 5; i++) b.cyl(3 + i * 0.16, 1.02, 2.3, 0.04, 0.14, ['#c9423a', accent, '#8055c2', '#f2c14e', '#39a9a6'][i], { seg: 5 });
+    for (let i = 0; i < 5; i++) b.cyl(3 + i * 0.16, 1.02, 2.3, 0.04, 0.14, ['#c9423a', accent, '#8055c2', '#f2c14e', '#39a9a6'][i]!, { seg: 5 });
     b.cyl(4.3, 1.2, 2.6, 0.03, 0.4, '#d6a83a', { seg: 4 }); b.ball(4.3, 1.44, 2.6, 0.12, 0.08, 0.12, WARM, { seg: 6, ...GLOW });
     extra(b, 'salon-nails', 3.6, 1.6, 0, 'sit', { look: { body: 'woman', hair: 'bun' } });
     // Reception, waiting bench, products
@@ -281,7 +282,7 @@ const salon = {
     b.box(-3.8, 0.64, 7.4, 0.5, 0.04, 0.36, accent);
     extra(b, 'salon-waiting', -7.6, 7.6, PI, 'sit');
     shelf(b, -11.6, 5.6, { ry: HALF, w: 3.4, h: 3.4, rows: 4, per: 7, color: WHITE, items: [accent, '#39a9a6', '#f2c14e', '#8055c2', '#e9e4d8'] });
-    [[8.2, '#c98a5c'], [10, '#7a4a2f']].forEach(([x, tone], i) => { b.box(x, 3.4, -9.74, 1.3, 1.7, 0.06, WHITE); b.quad(x, 3.3, -9.7, 1, 1.2, i ? '#f2d0b8' : '#d0e4f2'); b.ball(x, 3.3, -9.68, 0.26, 0.3, 0.02, tone, { seg: 7 }); b.ball(x, 3.55, -9.67, 0.36, 0.3, 0.02, '#1c1917', { seg: 7 }); });
+    ([[8.2, '#c98a5c'], [10, '#7a4a2f']] as [number, string][]).forEach(([x, tone], i) => { b.box(x, 3.4, -9.74, 1.3, 1.7, 0.06, WHITE); b.quad(x, 3.3, -9.7, 1, 1.2, i ? '#f2d0b8' : '#d0e4f2'); b.ball(x, 3.3, -9.68, 0.26, 0.3, 0.02, tone, { seg: 7 }); b.ball(x, 3.55, -9.67, 0.36, 0.3, 0.02, '#1c1917', { seg: 7 }); });
     rug(b, 0, 0.6, 4.4, 3, accent, { border: WHITE });
     plant(b, 10.6, 9, { s: 1.2, pot: WHITE }); plant(b, -10.8, -8.6, { s: 1.1, pot: WHITE });
     b.light(0, 4.4, -4, '#ffe6ea', 20, 14);
@@ -299,14 +300,14 @@ const salon = {
   },
 };
 
-function boomMic(b, x, z, ry) {
+function boomMic(b: Batch, x: number, z: number, ry: number) {
   b.at(x, 1.1, z, ry, () => {
     b.cyl(0, 0.3, 0, 0.03, 0.6, METAL_DARK, { seg: 4 }); b.box(0, 0.68, 0.3, 0.04, 0.04, 0.8, METAL_DARK, { rx: -0.35 });
     b.cyl(0, 0.72, 0.66, 0.08, 0.26, '#2a2d33', { seg: 6 }); b.ball(0, 0.58, 0.66, 0.1, 0.1, 0.1, '#8b9096', { seg: 6 });
   });
 }
 
-const radio = {
+const radio: SceneDef = {
   mood: 'indoor', accent: '#ff5a4a',
   build(b, { accent }) {
     room(b, { floor: '#4f4a60', wall: '#5d5674', side: '#544e6a', trim: '#2f2b3d' });
@@ -333,7 +334,7 @@ const radio = {
     b.box(-6, 2, -3.4, 0.24, 4, 0.24, '#3d3850');
     table(b, -7.6, -6.6, { w: 4.4, d: 1.2, ry: HALF, color: '#2a2330' });
     b.box(-7.6, 1.16, -6.6, 0.9, 0.12, 3.6, '#2a2d33');
-    for (let i = 0; i < 10; i++) b.box(-7.6 + (i % 2) * 0.3 - 0.15, 1.24, -8.2 + i * 0.36, 0.08, 0.05, 0.14, ['#58d68a', '#ffd34d', accent][i % 3], GLOW);
+    for (let i = 0; i < 10; i++) b.box(-7.6 + (i % 2) * 0.3 - 0.15, 1.24, -8.2 + i * 0.36, 0.08, 0.05, 0.14, ['#58d68a', '#ffd34d', accent][i % 3]!, GLOW);
     b.box(-10.9, 1.6, -8.4, 1.2, 3.2, 1.6, '#1f1b2a');
     for (let i = 0; i < 9; i++) b.quad(-10.28, 0.6 + i * 0.3, -8.8 + (i % 3) * 0.4, 0.2, 0.1, i % 2 ? '#58d68a' : '#7fb8ff', { ry: HALF, ...GLOW });
     chair(b, -8.9, -6.6, { ry: HALF, color: '#2a2d33' });

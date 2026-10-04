@@ -1,6 +1,6 @@
 /**
  * OWNER: character
- * The 3D character preview: one high-detail avatar (src/scene/characters.js) on a ground disc,
+ * The 3D character preview: one high-detail avatar (src/scene/characters.ts) on a ground disc,
  * on its own small WebGL canvas. Used wherever a look is edited (character creation, Sim →
  * Profile, the Boutique) through src/ui/panels/look-ui.js, which loads this file — and with it
  * Three.js — only when a preview is first shown.
@@ -30,25 +30,64 @@
  * caller can show its 2D figure; if no WebGL context can be made at all, createAvatarPreview
  * throws PreviewUnavailable before Three.js is asked for one.
  */
-import { createKit } from './kit.js';
-import { buildAvatar } from './characters.js';
+import type * as THREE from 'three';
+import { createKit } from './kit.ts';
+import { buildAvatar } from './characters.ts';
+import type { AvatarGroup } from './characters.ts';
+import type { ThreeModule } from './types.ts';
 
 export const ANIMATION_LIMIT_MS = 600;
 const FRAME_MS = 16;
 export const previewStats = { live: 0, created: 0, disposed: 0 };
 export class PreviewUnavailable extends Error {}
 
-const FRAMES = {
+/** Where the camera looks: the height of the centre of the view, and how much must fit. */
+export interface PreviewFrame { y: number; height: number; width: number }
+export type PreviewFocus = 'body' | 'head';
+/** The options of createAvatarPreview (renderer, raf, caf and now are injected by tests). */
+export interface PreviewOptions {
+  look?: unknown;
+  focus?: PreviewFocus;
+  label?: string;
+  reducedMotion?: boolean;
+  onSpin?: () => void;
+  onLost?: () => void;
+  renderer?: THREE.WebGLRenderer;
+  raf?: (fn: () => void) => number;
+  caf?: (id: number) => void;
+  now?: () => number;
+}
+export interface PreviewDiagnostics {
+  renderCount: number; frames: number; animating: boolean; live: number; lost: boolean; disposed: boolean;
+  triangles: number; yaw: number; focus: PreviewFocus; lastRenderMs: number;
+}
+/** What createAvatarPreview returns. */
+export interface AvatarPreview {
+  canvas: HTMLCanvasElement;
+  setLook(look: unknown, options?: { react?: boolean }): boolean;
+  setFocus(next: string): boolean;
+  rotate(delta: number): void;
+  resize(): boolean;
+  attach(target: HTMLElement | null | undefined): void;
+  setLabel(text: unknown): void;
+  diagnostics(): PreviewDiagnostics;
+  dispose(): void;
+}
+/** An animation step: `t` runs 0 … 1, `dt` is ms since the last step; returning false stops it early. */
+interface Tween { start: number; last: number; duration: number; step: (t: number, dt: number) => boolean | void }
+interface Drag { id: number; x: number; time: number; speed: number; moved?: boolean }
+
+const FRAMES: Record<PreviewFocus, PreviewFrame> = {
   body: { y: 1.47, height: 3.22, width: 1.9 },
   head: { y: 2.26, height: 1.62, width: 1.5 }, // head and shoulders, with room for the tallest hair, a gele or a hat // head and shoulders, with room above for the stage's buttons
 };
 const FOV = 26, START_YAW = -0.42, DRAG_SPEED = 0.011, KEY_STEP = Math.PI / 12, MAX_PIXEL_RATIO = 2.5;
-const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
-const ease = (t) => 1 - (1 - t) ** 3;
-let current = null;
+const clamp = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
+const ease = (t: number): number => 1 - (1 - t) ** 3;
+let current: AvatarPreview | null = null;
 
 /** Key, fill and rim lights for a character on a pale backdrop. Returns the lights it added. */
-export function lightStage(THREE, scene) {
+export function lightStage(THREE: ThreeModule, scene: THREE.Scene): THREE.Light[] {
   // Tuned on the whole skin range: enough light from the front that the darkest tones keep their features.
   const hemi = new THREE.HemisphereLight('#ffffff', '#e6d2bb', 1.85);
   const key = new THREE.DirectionalLight('#fff3e2', 2.5); key.position.set(2.4, 3.6, 5);
@@ -60,10 +99,10 @@ export function lightStage(THREE, scene) {
 }
 
 /** The ground disc and a soft baked contact shadow (a generated texture; no shadow map). */
-export function buildGround(THREE) {
+export function buildGround(THREE: ThreeModule): { group: THREE.Group; dispose(): void } {
   const group = new THREE.Group();
-  const disposables = [];
-  const keep = (item) => { disposables.push(item); return item; };
+  const disposables: { dispose(): void }[] = [];
+  const keep = <T extends { dispose(): void }>(item: T): T => { disposables.push(item); return item; };
   const disc = new THREE.Mesh(keep(new THREE.CircleGeometry(1.32, 56)), keep(new THREE.MeshStandardMaterial({ color: '#c3c8d2', roughness: 1 })));
   disc.rotation.x = -Math.PI / 2;
   const rim = new THREE.Mesh(keep(new THREE.CircleGeometry(1.4, 56)), keep(new THREE.MeshStandardMaterial({ color: '#aeb4c0', roughness: 1 })));
@@ -84,7 +123,7 @@ export function buildGround(THREE) {
 }
 
 /** Place a camera so a frame (FRAMES entry, or a blend of two) fits the given aspect ratio. */
-export function frameCamera(camera, frame, aspect) {
+export function frameCamera(camera: THREE.PerspectiveCamera, frame: PreviewFrame, aspect: number): void {
   const half = Math.tan(camera.fov * Math.PI / 360);
   const distance = Math.max(frame.height / 2 / half, frame.width / 2 / (half * aspect));
   camera.aspect = aspect;
@@ -93,10 +132,10 @@ export function frameCamera(camera, frame, aspect) {
   camera.updateProjectionMatrix();
 }
 
-function makeRenderer(THREE) {
+function makeRenderer(THREE: ThreeModule): THREE.WebGLRenderer {
   const canvas = document.createElement('canvas');
-  const options = { alpha: true, antialias: true, powerPreference: 'low-power' };
-  let context = null;
+  const options: WebGLContextAttributes = { alpha: true, antialias: true, powerPreference: 'low-power' };
+  let context: WebGL2RenderingContext | null = null;
   try { context = canvas.getContext('webgl2', options); } catch { context = null; }
   if (!context) throw new PreviewUnavailable('WebGL is not available');
   return new THREE.WebGLRenderer({ canvas, context, ...options });
@@ -106,15 +145,15 @@ function makeRenderer(THREE) {
  * options: { look, focus, label, reducedMotion, onSpin(), onLost(),
  *            renderer, raf, caf, now (injected by tests) }
  */
-export function createAvatarPreview(host, options = {}) {
+export function createAvatarPreview(host: HTMLElement | null | undefined, options: PreviewOptions = {}): AvatarPreview {
   current?.dispose();
   const kit = createKit();
   const { THREE } = kit;
-  let renderer;
+  let renderer: THREE.WebGLRenderer;
   try { renderer = options.renderer || makeRenderer(THREE); } catch (error) { kit.dispose(); throw error; }
   // The next step of a running animation: a one-shot timer (tests inject a hand-cranked one).
-  const raf = options.raf || ((fn) => globalThis.setTimeout(fn, FRAME_MS));
-  const caf = options.caf || ((id) => globalThis.clearTimeout(id));
+  const raf = options.raf || ((fn: () => void) => globalThis.setTimeout(fn, FRAME_MS) as unknown as number);
+  const caf = options.caf || ((id: number) => globalThis.clearTimeout(id));
   const now = options.now || (() => globalThis.performance.now());
   const reduced = options.reducedMotion ?? !!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   previewStats.live += 1; previewStats.created += 1;
@@ -138,10 +177,10 @@ export function createAvatarPreview(host, options = {}) {
   const turntable = new THREE.Group();
   scene.add(ground.group, turntable);
 
-  let avatar = null, lookKey = '', renderCount = 0, frames = 0, disposed = false, lost = false, lastMs = 0;
-  let yaw = START_YAW, zoom = options.focus === 'head' ? 1 : 0, focus = options.focus === 'head' ? 'head' : 'body';
+  let avatar: AvatarGroup | null = null, lookKey = '', renderCount = 0, frames = 0, disposed = false, lost = false, lastMs = 0;
+  let yaw = START_YAW, zoom = options.focus === 'head' ? 1 : 0, focus: PreviewFocus = options.focus === 'head' ? 'head' : 'body';
   let size = { width: 0, height: 0 }, frameId = 0;
-  const tweens = new Map(); // name → { start, duration, step(t, dt) → false to stop early, last }
+  const tweens = new Map<string, Tween>(); // name → { start, duration, step(t, dt) → false to stop early, last }
 
   function frame() {
     const a = FRAMES.body, b = FRAMES.head, t = zoom;
@@ -172,13 +211,13 @@ export function createAvatarPreview(host, options = {}) {
     if (tweens.size) frameId = raf(tick);
   }
   /** Run `step` for at most `duration` ms (never more than ANIMATION_LIMIT_MS), then stop. */
-  function animate(name, duration, step) {
+  function animate(name: string, duration: number, step: Tween['step']): void {
     if (reduced) { step(1, 0); tweens.delete(name); render(); return; }
     const start = now();
     tweens.set(name, { start, last: start, duration: Math.min(duration, ANIMATION_LIMIT_MS), step });
     if (!frameId) frameId = raf(tick);
   }
-  function stop(name) {
+  function stop(name: string): void {
     tweens.delete(name);
     if (!tweens.size && frameId) { caf(frameId); frameId = 0; }
   }
@@ -193,7 +232,7 @@ export function createAvatarPreview(host, options = {}) {
     render();
     return true;
   }
-  function setLook(look, { react = false } = {}) {
+  function setLook(look: unknown, { react = false }: { react?: boolean } = {}): boolean {
     if (disposed) return false;
     const key = JSON.stringify(look ?? null);
     if (key === lookKey) return false;
@@ -203,19 +242,19 @@ export function createAvatarPreview(host, options = {}) {
     turntable.add(avatar);
     if (react && !reduced) {
       // A small turn and settle, so a change is felt as well as seen.
-      animate('react', 420, (t) => { turntable.userData.swing = Math.sin(t * Math.PI) * (1 - t) * 0.55; turntable.position.y = Math.sin(t * Math.PI) * 0.035; });
+      animate('react', 420, (t: number) => { turntable.userData.swing = Math.sin(t * Math.PI) * (1 - t) * 0.55; turntable.position.y = Math.sin(t * Math.PI) * 0.035; });
     } else render();
     return true;
   }
-  function setFocus(next) {
+  function setFocus(next: string): boolean {
     const wanted = next === 'head' ? 'head' : 'body';
     if (disposed || wanted === focus) return false;
     focus = wanted;
     const from = zoom, to = wanted === 'head' ? 1 : 0;
-    animate('zoom', 340, (t) => { zoom = from + (to - from) * ease(t); });
+    animate('zoom', 340, (t: number) => { zoom = from + (to - from) * ease(t); });
     return true;
   }
-  function rotate(delta) {
+  function rotate(delta: number): void {
     if (disposed || !delta) return;
     stop('inertia');
     yaw += delta;
@@ -223,17 +262,17 @@ export function createAvatarPreview(host, options = {}) {
   }
 
   // Drag to spin: one frame per pointer event, then a short ease to rest.
-  let drag = null;
-  const listeners = [];
-  const on = (type, fn, opts) => { canvas.addEventListener?.(type, fn, opts); listeners.push([type, fn, opts]); };
-  on('pointerdown', (event) => {
+  let drag: Drag | null = null;
+  const listeners: [string, EventListener, AddEventListenerOptions | undefined][] = [];
+  const on = <E extends Event>(type: string, fn: (event: E) => void, opts?: AddEventListenerOptions) => { canvas.addEventListener?.(type, fn as EventListener, opts); listeners.push([type, fn as EventListener, opts]); };
+  on<PointerEvent>('pointerdown', (event) => {
     if (event.button > 0 || drag) return;
     stop('inertia');
     drag = { id: event.pointerId, x: event.clientX, time: now(), speed: 0 };
     try { canvas.setPointerCapture?.(event.pointerId); } catch { /* not capturable */ }
     if (canvas.style) canvas.style.cursor = 'grabbing';
   });
-  on('pointermove', (event) => {
+  on<PointerEvent>('pointermove', (event) => {
     if (!drag || event.pointerId !== drag.id) return;
     const dx = event.clientX - drag.x, time = now(), dt = Math.max(1, time - drag.time);
     if (!dx) return;
@@ -243,26 +282,26 @@ export function createAvatarPreview(host, options = {}) {
     yaw += dx * DRAG_SPEED;
     render();
   });
-  const release = (event) => {
+  const release = (event: PointerEvent) => {
     if (!drag || event.pointerId !== drag.id) return;
     try { canvas.releasePointerCapture?.(event.pointerId); } catch { /* already released */ }
     if (canvas.style) canvas.style.cursor = 'grab';
     let speed = now() - drag.time > 90 ? 0 : clamp(drag.speed, -0.02, 0.02); // radians per ms
     drag = null;
     if (reduced || event.type === 'pointercancel' || Math.abs(speed) < 0.0012) return;
-    animate('inertia', 520, (t, dt) => {
+    animate('inertia', 520, (t: number, dt: number) => {
       yaw += speed * dt;
       speed *= Math.exp(-dt / 130);
       return Math.abs(speed) > 0.0002;
     });
   };
-  on('pointerup', release); on('pointercancel', release);
-  on('keydown', (event) => {
+  on<PointerEvent>('pointerup', release); on<PointerEvent>('pointercancel', release);
+  on<KeyboardEvent>('keydown', (event) => {
     const turn = event.key === 'ArrowLeft' ? -KEY_STEP : event.key === 'ArrowRight' ? KEY_STEP : 0;
     if (turn) { event.preventDefault(); options.onSpin?.(); rotate(turn); }
     else if (event.key === 'Home') { event.preventDefault(); stop('inertia'); yaw = START_YAW; render(); }
   });
-  on('webglcontextlost', (event) => {
+  on<Event>('webglcontextlost', (event) => {
     event.preventDefault?.();
     lost = true; tweens.clear();
     if (frameId) { caf(frameId); frameId = 0; }
@@ -271,7 +310,7 @@ export function createAvatarPreview(host, options = {}) {
   on('webglcontextrestored', () => { lost = false; render(); });
 
   const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(() => resize()) : null;
-  function attach(target) {
+  function attach(target: HTMLElement | null | undefined): void {
     if (disposed || !target) return;
     if (canvas.parentElement !== target) target.appendChild(canvas);
     observer?.disconnect();
@@ -279,9 +318,9 @@ export function createAvatarPreview(host, options = {}) {
     resize();
   }
 
-  const api = {
+  const api: AvatarPreview = {
     canvas, setLook, setFocus, rotate, resize, attach,
-    setLabel(text) { canvas.setAttribute?.('aria-label', String(text ?? '')); },
+    setLabel(text: unknown) { canvas.setAttribute?.('aria-label', String(text ?? '')); },
     diagnostics: () => ({ renderCount, frames, animating: tweens.size > 0 || frameId !== 0, live: previewStats.live, lost, disposed, triangles: avatar?.userData.triangles ?? 0, yaw, focus, lastRenderMs: Math.round(lastMs * 10) / 10 }),
     dispose() {
       if (disposed) return;

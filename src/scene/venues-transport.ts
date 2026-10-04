@@ -3,17 +3,18 @@
  * The airport terminal and the refinery yard. Scene definition format: see venues-outdoor.js.
  * Their walkable descriptions (WALK) are with the other kinds in venue-scenes.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
+import type { Batch, Colour, SceneDef } from './types.ts';
 import {
   ground, table, chair, bench, counter, plant, lampPost, kiosk, ropeLine, fence, rug, sign, landmark, extra,
   WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,
-} from './props.js';
+} from './props.ts';
 
 const PI = Math.PI, HALF = Math.PI / 2;
 const AMBER = '#ffc94a', NAVY = '#2f4a66', TANK = '#dfe2e0';
 
 /** An airliner on the ground, nose along local +z. */
-function airliner(b, x, y, z, ry, tail) {
+function airliner(b: Batch, x: number, y: number, z: number, ry: number, tail: Colour) {
   b.at(x, y, z, ry, () => {
     b.cyl(0, 1.75, 0, 0.95, 9, WHITE, { seg: 10, rx: HALF });
     b.cone(0, 1.75, 5.3, 0.95, 1.6, WHITE, { seg: 10, rx: HALF });
@@ -31,7 +32,7 @@ function airliner(b, x, y, z, ry, tail) {
   });
 }
 
-const airport = {
+const airport: SceneDef = {
   mood: 'indoor', accent: '#3f9ad0',
   build(b, { accent }) {
     // The hall: a floor, a solid left wall, and a back wall of glass on the apron (drawn here instead of room(), which has no glass).
@@ -61,7 +62,7 @@ const airport = {
       counter(b, x, -6.6, { w: 1.9, d: 0.9, color: NAVY, top: '#cfd6dc', stripe: accent });
       b.box(x + 1.35, 0.3, -6.6, 0.6, 0.5, 1.7, '#3d444b'); b.box(x + 1.35, 0.57, -6.6, 0.5, 0.04, 1.6, '#22252a');
       b.box(x, 3.5, -6.9, 1.7, 0.7, 0.12, BLACK); b.quad(x, 3.5, -6.83, 1.5, 0.5, i === 1 ? '#7fe0a8' : '#9fd8ff', GLOW);
-      b.box(x + 1.35, 0.85, -6.3 - i * 0.3, 0.44, 0.52, 0.3, ['#c9423a', '#3f9a5a', '#7a4bb0'][i]);
+      b.box(x + 1.35, 0.85, -6.3 - i * 0.3, 0.44, 0.52, 0.3, ['#c9423a', '#3f9a5a', '#7a4bb0'][i]!);
     }
     for (const x of [-10.9, -1.9]) b.box(x, 1.95, -6.9, 0.12, 3.9, 0.12, METAL_DARK);
     b.box(-6.4, 3.95, -6.9, 9.2, 0.14, 0.16, METAL_DARK);
@@ -73,7 +74,7 @@ const airport = {
     // The departures board on the left wall.
     b.box(-11.92, 3.3, -1.4, 0.12, 2.6, 6.4, BLACK);
     for (let row = 0; row < 6; row++) {
-      [[-3.3, 2.2], [-1, 1.5], [1.2, 0.7]].forEach(([dz, w], col) => b.quad(-11.84, 4.25 - row * 0.38, -1.4 - dz - w / 2 + 0.6, w - ((row * 3 + col) % 3) * 0.2, 0.14, col === 2 ? (row % 3 === 1 ? '#ff7a5a' : '#7fe0a8') : AMBER, { ry: HALF, ...GLOW }));
+      ([[-3.3, 2.2], [-1, 1.5], [1.2, 0.7]] as [number, number][]).forEach(([dz, w], col) => b.quad(-11.84, 4.25 - row * 0.38, -1.4 - dz - w / 2 + 0.6, w - ((row * 3 + col) % 3) * 0.2, 0.14, col === 2 ? (row % 3 === 1 ? '#ff7a5a' : '#7fe0a8') : AMBER, { ry: HALF, ...GLOW }));
     }
     sign(b, -11.9, 4.98, -1.4, 'DEPARTURES', { size: 0.3, color: NAVY, ry: HALF });
     // Waiting seats, back to back, with luggage.
@@ -91,7 +92,7 @@ const airport = {
     b.box(9.4, 3.5, -6.6, 4.3, 0.7, 0.3, NAVY);
     sign(b, 9.4, 3.5, -6.42, 'ARRIVALS', { size: 0.32, color: AMBER, lit: true });
     b.cyl(9.4, 0.3, -8.3, 1.5, 0.6, '#3d444b', { seg: 12, sz: 0.62 }); b.cyl(9.4, 0.62, -8.3, 1.3, 0.06, '#22252a', { seg: 12, sz: 0.6 });
-    for (const [dx, dz, colour] of [[-0.8, 0.3, '#3f72c4'], [0.3, -0.5, '#c9423a'], [0.9, 0.4, '#2f8f55']]) b.box(9.4 + dx, 0.86, -8.3 + dz, 0.6, 0.42, 0.4, colour);
+    for (const [dx, dz, colour] of ([[-0.8, 0.3, '#3f72c4'], [0.3, -0.5, '#c9423a'], [0.9, 0.4, '#2f8f55']] as [number, number, string][])) b.box(9.4 + dx, 0.86, -8.3 + dz, 0.6, 0.42, 0.4, colour);
     ropeLine(b, [[7.3, -4.6], [9.4, -4.6], [11.5, -4.6]]);
     extra(b, 'airport-greeter', 10.5, -3.6, PI, 'wave', { look: { body: 'woman', outfit: 'owambe', hair: 'gele', fabric: 'ankara' } });
     b.at(6.4, 0, -2.6, 0.5, () => { b.box(0, 0.5, 0, 0.7, 0.06, 1.1, METAL); b.box(0, 0.75, 0.1, 0.56, 0.44, 0.8, '#7a4bb0'); b.box(0, 1, -0.55, 0.7, 0.06, 0.06, METAL); for (const sx of [-0.3, 0.3]) b.box(sx, 0.75, -0.55, 0.05, 0.5, 0.05, METAL); });
@@ -99,7 +100,7 @@ const airport = {
     counter(b, -10.8, 5.2, { w: 5.6, d: 1.1, ry: HALF, color: '#b5483f', top: WOOD_LIGHT, stripe: WARM });
     sign(b, -11.92, 3.3, 5.2, 'FOOD COURT', { size: 0.3, color: '#b5483f', ry: HALF });
     b.box(-10.9, 1.75, 3.4, 0.7, 0.8, 0.8, '#2a2d33'); b.quad(-10.54, 1.8, 3.4, 0.3, 0.2, '#ffb070', { ry: HALF, ...GLOW });
-    for (let i = 0; i < 3; i++) b.cyl(-10.7, 1.5, 4.6 + i * 0.5, 0.2, 0.3, ['#3a3d42', '#8b9096', '#3a3d42'][i], { seg: 8, top: 1.1 });
+    for (let i = 0; i < 3; i++) b.cyl(-10.7, 1.5, 4.6 + i * 0.5, 0.2, 0.3, ['#3a3d42', '#8b9096', '#3a3d42'][i]!, { seg: 8, top: 1.1 });
     extra(b, 'airport-cook', -11.2, 6.6, HALF, 'work', { look: { outfit: 'casual', outfitColor: 'cream' } });
     table(b, -6.4, 5.6, { round: true, w: 1.5 }); chair(b, -7.5, 5.6, { ry: HALF, color: '#b5483f' }); chair(b, -5.3, 5.6, { ry: -HALF, color: '#b5483f' });
     table(b, -4.6, 8.4, { round: true, w: 1.5 }); chair(b, -5.7, 8.4, { ry: HALF, color: '#b5483f' }); chair(b, -3.5, 8.4, { ry: -HALF, color: '#b5483f' });
@@ -130,7 +131,7 @@ const airport = {
   },
 };
 
-const refinery = {
+const refinery: SceneDef = {
   mood: 'outdoor', accent: '#f2c230',
   build(b, { accent }) {
     ground(b, { w: 30, d: 26, color: '#a39d8f', edge: '#77736a' });
@@ -138,13 +139,13 @@ const refinery = {
     b.box(3.4, 0.04, -3.2, 21, 0.04, 2.6, '#6b6f75');
     for (let i = 0; i < 6; i++) b.box(0.5, 0.07, -2 + i * 2.4, 0.16, 0.02, 1.2, accent);
     // The tank farm, the columns and the flare stack, along the back.
-    for (const [x, z, r, h] of [[4.8, -9.2, 2.5, 4.2], [10.6, -9.4, 2.5, 4.2]]) {
+    for (const [x, z, r, h] of ([[4.8, -9.2, 2.5, 4.2], [10.6, -9.4, 2.5, 4.2]] as [number, number, number, number][])) {
       b.cyl(x, h / 2, z, r, h, TANK, { seg: 14 });
       b.cyl(x, h + 0.2, z, r * 0.97, 0.4, '#b8bcba', { seg: 14, top: 0.45 });
       b.cyl(x, h * 0.62, z, r * 1.01, 0.4, '#3f72c4', { seg: 14, open: true });
       b.box(x + r * 0.72, h / 2, z + r * 0.72, 0.5, h, 0.08, METAL_DARK, { ry: PI / 4 });
     }
-    for (const [x, z, r, h] of [[-3.6, -9.6, 0.75, 9.4], [-1.5, -10.2, 0.55, 7.2]]) {
+    for (const [x, z, r, h] of ([[-3.6, -9.6, 0.75, 9.4], [-1.5, -10.2, 0.55, 7.2]] as [number, number, number, number][])) {
       b.cyl(x, h / 2, z, r, h, '#aab0b3', { seg: 10 });
       b.cyl(x, h + 0.25, z, r, 0.5, '#8a8f95', { seg: 10, top: 0.3 });
       for (let level = 1; level <= 3; level++) b.cyl(x, (h / 4) * level + 0.6, z, r * 1.7, 0.1, METAL_DARK, { seg: 10 });
@@ -160,7 +161,7 @@ const refinery = {
       for (const dz of [-0.55, 0.55]) b.box(x, 1.45, -5.6 + dz, 0.16, 2.9, 0.16, METAL_DARK);
       b.box(x, 2.9, -5.6, 0.16, 0.14, 1.5, METAL_DARK);
     }
-    [[-0.4, '#c9ced3', 0.17], [0, accent, 0.13], [0.4, '#a85c40', 0.17]].forEach(([dz, colour, r]) => b.cyl(3.6, 3.14, -5.6 + dz, r, 19, colour, { seg: 7, rz: HALF }));
+    ([[-0.4, '#c9ced3', 0.17], [0, accent, 0.13], [0.4, '#a85c40', 0.17]] as [number, string, number][]).forEach(([dz, colour, r]) => b.cyl(3.6, 3.14, -5.6 + dz, r, 19, colour, { seg: 7, rz: HALF }));
     b.cyl(4.8, 3.9, -6.4, 0.17, 1.6, '#c9ced3', { seg: 7 }); b.cyl(10.6, 3.9, -6.5, 0.17, 1.6, '#c9ced3', { seg: 7 });
     // The control room: a block with a window wall, and the operators' console under its canopy.
     b.box(-10.4, 1.7, -8.6, 6.4, 3.4, 4.4, '#d9d4c4');
@@ -169,7 +170,7 @@ const refinery = {
     sign(b, -10.4, 3.02, -6.36, 'CONTROL', { size: 0.26, color: WHITE, board: '#55707c', pad: 0.12 });
     for (const x of [-13.5, -7.3]) b.box(x, 1.7, -5.3, 0.14, 3.4, 0.14, METAL_DARK);
     counter(b, -10.4, -4.7, { w: 4.4, d: 0.9, h: 1.1, color: '#3d444b', top: '#2a2d33' });
-    for (let i = 0; i < 3; i++) { b.box(-11.8 + i * 1.4, 1.62, -4.9, 1.1, 0.8, 0.1, BLACK, { rx: -0.2 }); b.quad(-11.8 + i * 1.4, 1.62, -4.83, 0.94, 0.62, ['#7fe0a8', '#9fd8ff', AMBER][i], { rx: -0.2, ...GLOW }); }
+    for (let i = 0; i < 3; i++) { b.box(-11.8 + i * 1.4, 1.62, -4.9, 1.1, 0.8, 0.1, BLACK, { rx: -0.2 }); b.quad(-11.8 + i * 1.4, 1.62, -4.83, 0.94, 0.62, ['#7fe0a8', '#9fd8ff', AMBER][i]!, { rx: -0.2, ...GLOW }); }
     b.cyl(-8.7, 1.2, -4.5, 0.12, 0.08, '#e0483f', { seg: 8, ...GLOW });
     const crew = { outfit: 'sitework', fabric: 'plain' };
     extra(b, 'refinery-operator', -11.8, -3.5, PI + 0.2, 'work', { look: { body: 'woman', hair: 'bun', ...crew } });
@@ -191,10 +192,10 @@ const refinery = {
     b.at(10.8, 0, 4.6, 0, () => {
       b.box(0, 0.75, -0.6, 2.1, 0.24, 4.6, '#3d444b'); b.box(0, 1.5, 2.5, 2.1, 1.9, 1.6, '#2f8f55'); b.box(0, 1.85, 3.32, 1.8, 0.7, 0.04, '#8fb8cc');
       for (const sx of [-1, 1]) for (const sz of [-2, 0.2, 2.4]) b.cyl(sx * 0.98, 0.42, sz, 0.42, 0.26, BLACK, { seg: 8, rz: HALF });
-      for (const [dx, dz] of [[-0.5, -2.2], [0.5, -2.2], [-0.5, -1.2]]) b.cyl(dx, 1.36, dz, 0.36, 0.98, '#2b5fa8', { seg: 8 });
+      for (const [dx, dz] of ([[-0.5, -2.2], [0.5, -2.2], [-0.5, -1.2]] as [number, number][])) b.cyl(dx, 1.36, dz, 0.36, 0.98, '#2b5fa8', { seg: 8 });
     });
     b.box(7.6, 0.1, 2.6, 1.7, 0.16, 1.7, WOOD_LIGHT);
-    for (const [dx, dz, colour] of [[-0.4, -0.4, '#2b5fa8'], [0.4, -0.4, '#2b5fa8'], [-0.4, 0.4, '#c9423a'], [0.4, 0.4, '#2b5fa8']]) b.cyl(7.6 + dx, 0.67, 2.6 + dz, 0.36, 0.98, colour, { seg: 8 });
+    for (const [dx, dz, colour] of ([[-0.4, -0.4, '#2b5fa8'], [0.4, -0.4, '#2b5fa8'], [-0.4, 0.4, '#c9423a'], [0.4, 0.4, '#2b5fa8']] as [number, number, string][])) b.cyl(7.6 + dx, 0.67, 2.6 + dz, 0.36, 0.98, colour, { seg: 8 });
     b.at(12.6, 0, -2.2, HALF, () => {
       b.box(0, 0.7, 0, 1.9, 0.2, 5.4, '#3d444b'); b.cyl(0, 1.75, -0.7, 0.95, 3.8, TANK, { seg: 10, rx: HALF }); b.box(0, 1.5, 2.1, 1.9, 1.7, 1.2, '#c9423a');
       for (const sx of [-1, 1]) for (const sz of [-2, 1.9]) b.cyl(sx * 0.9, 0.42, sz, 0.42, 0.26, BLACK, { seg: 8, rz: HALF });

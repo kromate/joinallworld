@@ -3,24 +3,35 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import * as THREE from 'three';
-import { createVenueWorld, HOST_LIGHTING } from './venue-world.js';
-import { LIGHTING, MAX_CROWD } from './scene/venue-scenes.js';
+import { createVenueWorld, HOST_LIGHTING } from './venue-world.ts';
+import type { VenueWorld, VenueWorldOptions, SceneSpotRequest, SceneTag, AvatarPosition, ShownTag } from './venue-world.ts';
+import { LIGHTING, MAX_CROWD } from './scene/venue-scenes.ts';
 import { createLife } from './life.ts';
 
-function stubRenderer() {
+/** The host is handed a renderer and a container; these are the narrow stand-ins the tests drive it with (there is no WebGL or DOM under node). */
+type StubRenderer = THREE.WebGLRenderer & { calls: { render: number } };
+function stubRenderer(): StubRenderer {
   const calls = { render: 0 };
-  return { calls, shadowMap: {}, domElement: { remove() {} }, setPixelRatio() {}, setClearColor() {}, setSize() {}, dispose() {}, render() { calls.render += 1; } };
+  return { calls, shadowMap: {}, domElement: { remove() {} }, setPixelRatio() {}, setClearColor() {}, setSize() {}, dispose() {}, render() { calls.render += 1; } } as unknown as StubRenderer;
 }
-const container = { appendChild() {}, getBoundingClientRect: () => ({ width: 390, height: 844 }) };
+interface StubContainer { appendChild(): void; getBoundingClientRect: () => { width: number; height: number; left?: number; top?: number } }
+const container: StubContainer = { appendChild() {}, getBoundingClientRect: () => ({ width: 390, height: 844 }) };
+/** The game state the tests push is a slice of a LifeState (the host reads only a few fields), so setState takes any object here. */
+type TestWorld = Omit<VenueWorld, 'setState'> & { setState(state: object): void };
+function makeWorld(host: StubContainer, options: VenueWorldOptions): TestWorld {
+  return createVenueWorld(host as unknown as HTMLElement, options) as unknown as TestWorld;
+}
+/** The browser globals the tests replace and restore (assignable here, unlike on the real `globalThis`). */
+const browser = globalThis as unknown as Record<string, unknown>;
 
 test('idle venue performs zero renders; each change draws exactly one frame', async () => {
   let frames = 0, timers = 0;
   const original = { raf: globalThis.requestAnimationFrame, interval: globalThis.setInterval };
   globalThis.requestAnimationFrame = () => { frames += 1; return 0; };
-  globalThis.setInterval = (...args) => { timers += 1; return original.interval(...args); };
+  globalThis.setInterval = ((...args: Parameters<typeof setInterval>) => { timers += 1; return original.interval(...args); }) as typeof setInterval;
   try {
     const renderer = stubRenderer();
-    const world = createVenueWorld(container, { location: 'park', renderer });
+    const world = makeWorld(container, { location: 'park', renderer });
     const afterCreate = world.diagnostics().renderCount;
     assert.equal(afterCreate, 1, 'one frame to show the first venue');
     await new Promise(resolve => setTimeout(resolve, 120));
@@ -40,16 +51,16 @@ test('idle venue performs zero renders; each change draws exactly one frame', as
 
 const NOON = Date.UTC(2026, 0, 5, 11), MIDNIGHT = Date.UTC(2026, 0, 5, 23, 30);
 const PLAYER = '11111111-2222-4333-8444-555555555555';
-const people = (count) => Array.from({ length: count }, (_, i) => (i % 2 ? { id: `npc:n${i}`, name: `Local ${i}`, kind: 'npc', seed: `n${i}` } : { id: `0000000${i}-2222-4333-8444-555555555555`, name: `Player ${i}`, kind: 'player', seed: `p${i}` }));
+const people = (count: number) => Array.from({ length: count }, (_, i) => (i % 2 ? { id: `npc:n${i}`, name: `Local ${i}`, kind: 'npc', seed: `n${i}` } : { id: `0000000${i}-2222-4333-8444-555555555555`, name: `Player ${i}`, kind: 'player', seed: `p${i}` }));
 
 test('an idle venue with a crowd renders zero frames; the crowd, the player and the lighting each cost one frame when they change', async () => {
   let frames = 0, timers = 0;
   const original = { raf: globalThis.requestAnimationFrame, interval: globalThis.setInterval };
   globalThis.requestAnimationFrame = () => { frames += 1; return 0; };
-  globalThis.setInterval = (...args) => { timers += 1; return original.interval(...args); };
+  globalThis.setInterval = ((...args: Parameters<typeof setInterval>) => { timers += 1; return original.interval(...args); }) as typeof setInterval;
   try {
     const renderer = stubRenderer();
-    const world = createVenueWorld(container, { location: 'park', renderer });
+    const world = makeWorld(container, { location: 'park', renderer });
     const count = () => world.diagnostics().renderCount;
     assert.equal(count(), 1);
     assert.deepEqual(world.diagnostics().lighting, { hemi: LIGHTING.outdoor.day.hemi[2], sun: LIGHTING.outdoor.day.sun[1], sky: '#eaf4ff' }, 'the host applied the scene’s own lighting preset');
@@ -63,10 +74,10 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     assert.deepEqual(tags.filter((tag) => tag.kind !== 'table').map((tag) => [tag.kind, tag.marker]), [['self', 'crown'], ['player', 'tag'], ['npc', 'dot'], ['player', 'tag'], ['npc', 'dot']]);
     // The park's two game tables stand in the scene and are named (part of the scene, like its spots: they cost no frame of their own).
     assert.deepEqual(tags.filter((tag) => tag.kind === 'table').map((tag) => tag.text), ['Whot · Bench under the trees', 'Penalties · Kickabout corner']);
-    assert.deepEqual([tags[0].text, tags[1].text, tags[2].name], ['Ada', '@Player 0', 'Local 1']);
+    assert.deepEqual([tags[0]!.text, tags[1]!.text, tags[2]!.name], ['Ada', '@Player 0', 'Local 1']);
     assert.ok(tags.every((tag) => Number.isFinite(tag.x) && Number.isFinite(tag.y)), 'every tag has a screen position');
     // The view starts close to the player (START_DISTANCE in venue-world.js), so not everyone is in it: the player's own tag always is.
-    assert.ok(tags[0].visible && tags.filter((tag) => tag.visible).length >= 2, 'the player’s tag and the people nearby are projected inside the 390 × 844 view');
+    assert.ok(tags[0]!.visible && tags.filter((tag) => tag.visible).length >= 2, 'the player’s tag and the people nearby are projected inside the 390 × 844 view');
     // Idle with a crowd on screen: no frames, no timers, however long we wait and however often the same data arrives.
     for (let i = 0; i < 25; i++) { assert.equal(world.setCrowd(people(4)), false); world.setState({ location: 'park', spot: 'amphitheatre', t: NOON + i * 1000, name: 'Ada' }); }
     await new Promise((resolve) => setTimeout(resolve, 150));
@@ -74,7 +85,7 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     assert.equal(renderer.calls.render, 3); assert.equal(frames, 0); assert.equal(timers, 0);
     // The crowd is capped, and a changed crowd costs exactly one frame.
     assert.equal(world.setCrowd(people(40)), true);
-    const people_ = (list) => list.filter((tag) => tag.kind !== 'table');
+    const people_ = (list: ShownTag[]) => list.filter((tag) => tag.kind !== 'table');
     assert.equal(count(), 4); assert.equal(people_(world.diagnostics().tags).length, MAX_CROWD + 1); assert.equal(world.diagnostics().crowd, MAX_CROWD);
     world.setCrowd([]); assert.equal(count(), 5); assert.equal(people_(world.diagnostics().tags).length, 1);
     // Night falls: the scene reports a change, and the host re-reads its lighting and background.
@@ -84,11 +95,11 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     assert.equal(world.diagnostics().lighting.hemi, LIGHTING.outdoor.night.hemi[2]);
     assert.notEqual(world.diagnostics().background, day); assert.equal(world.diagnostics().background, LIGHTING.outdoor.night.sky[0]);
     // Tags are re-projected with the frame a resize draws — nothing else moves them.
-    const before = world.diagnostics().tags[0];
+    const before = world.diagnostics().tags[0]!;
     container.getBoundingClientRect = () => ({ width: 1280, height: 800 });
     assert.deepEqual(world.diagnostics().tags[0], before, 'a resize that has not been drawn yet moves nothing');
     world.resize();
-    assert.equal(count(), 7); assert.notDeepEqual([world.diagnostics().tags[0].x, world.diagnostics().tags[0].y], [before.x, before.y]);
+    assert.equal(count(), 7); assert.notDeepEqual([world.diagnostics().tags[0]!.x, world.diagnostics().tags[0]!.y], [before.x, before.y]);
     container.getBoundingClientRect = () => ({ width: 390, height: 844 });
     world.dispose();
   } finally { globalThis.requestAnimationFrame = original.raf; globalThis.setInterval = original.interval; }
@@ -102,7 +113,7 @@ test('leaving a venue disposes its scene; home shows the player’s avatar and g
   };
   try {
     const renderer = stubRenderer();
-    const world = createVenueWorld(container, { location: 'park', renderer });
+    const world = makeWorld(container, { location: 'park', renderer });
     world.setPlayer({ seed: PLAYER, name: 'Ada' });
     world.setCrowd(people(3));
     const inPark = live.size;
@@ -130,7 +141,7 @@ test('leaving a venue disposes its scene; home shows the player’s avatar and g
 
 test('HUD insets re-centre the scene with one frame per change, never by themselves, and keep name tags on the canvas', () => {
   const renderer = stubRenderer();
-  const world = createVenueWorld(container, { location: 'park', renderer });
+  const world = makeWorld(container, { location: 'park', renderer });
   const drawn = world.diagnostics().renderCount;
   assert.equal(world.setInsets({ top: 0, bottom: 0 }), false, 'no insets: nothing changes');
   assert.equal(world.diagnostics().renderCount, drawn);
@@ -143,7 +154,7 @@ test('HUD insets re-centre the scene with one frame per change, never by themsel
   const before = world.diagnostics().tags.find(tag => tag.kind === 'self');
   assert.ok(before, 'the player has a tag');
   world.setInsets({ top: 104, bottom: 520 });
-  const after = world.diagnostics().tags.find(tag => tag.kind === 'self');
+  const after = world.diagnostics().tags.find(tag => tag.kind === 'self')!;
   assert.ok(after.y < before.y, 'a taller bottom panel moves the scene (and its tags) up');
   assert.ok(after.x === before.x, 'and never sideways');
   world.setInsets({ top: 0, bottom: 0 });
@@ -151,46 +162,48 @@ test('HUD insets re-centre the scene with one frame per change, never by themsel
 });
 
 test('only the motion loop may name a frame callback; no scene, map or shell source holds an interval', async () => {
-  const files = ['src/venue-world.js', 'src/world-map.js', 'src/city-map.js', 'src/ui/shell.js', 'src/life-main.js', 'src/client.js',
+  const files = ['src/venue-world.ts', 'src/world-map.js', 'src/city-map.js', 'src/ui/shell.js', 'src/life-main.js', 'src/client.js',
     ...(await readdir('src/scene')).map(name => `src/scene/${name}`), ...(await readdir('src/ui/panels')).filter(name => name.endsWith('.js')).map(name => `src/ui/panels/${name}`)];
   const withLoop = [];
   for (const file of files) {
-    if (file.endsWith('.test.js')) continue;
+    if (file.endsWith('.test.js') || file.endsWith('.test.ts')) continue;
     const code = (await readFile(file, 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
     assert.doesNotMatch(code, /setAnimationLoop|setInterval/, file);
     if (/requestAnimationFrame/.test(code)) withLoop.push(file);
   }
-  assert.deepEqual(withLoop, ['src/scene/motion-loop.js'], 'the one frame loop lives in one file, and that file cannot idle');
+  assert.deepEqual(withLoop, ['src/scene/motion-loop.ts'], 'the one frame loop lives in one file, and that file cannot idle');
 });
 
 // ---- motion: frames only while something moves ------------------------------------------------
 
 /** A browser's frame callback, a window and a document, all driven by hand. */
 function motionBench({ width = 1280, height = 800, location = 'park' } = {}) {
-  const original = { raf: globalThis.requestAnimationFrame, caf: globalThis.cancelAnimationFrame, window: globalThis.window, document: globalThis.document, matchMedia: globalThis.matchMedia };
-  let queue = [], time = 5000, reduce = false;
-  const docListeners = new Map();
+  const original = { raf: globalThis.requestAnimationFrame, caf: globalThis.cancelAnimationFrame, window: browser.window, document: browser.document, matchMedia: browser.matchMedia };
+  let queue: ((time: number) => void)[] = [], time = 5000, reduce = false;
+  const docListeners = new Map<string, () => void>();
   globalThis.requestAnimationFrame = (fn) => { queue.push(fn); return queue.length; };
   globalThis.cancelAnimationFrame = () => { queue = []; };
-  globalThis.window = new EventTarget();
-  globalThis.document = { visibilityState: 'visible', addEventListener: (type, fn) => docListeners.set(type, fn), removeEventListener: (type) => docListeners.delete(type) };
-  globalThis.matchMedia = (query) => ({ matches: reduce && /reduced-motion/.test(query) });
-  const listeners = new Map();
-  const canvas = { style: {}, addEventListener(type, fn) { listeners.set(type, fn); }, removeEventListener(type) { listeners.delete(type); }, setPointerCapture() {}, releasePointerCapture() {}, remove() {} };
-  const renderer = { calls: 0, shadowMap: {}, domElement: canvas, setPixelRatio() {}, setClearColor() {}, setSize() {}, dispose() {}, render() { this.calls += 1; } };
-  const spots = [], tagged = [], moves = [];
-  const world = createVenueWorld({ appendChild() {}, getBoundingClientRect: () => ({ width, height, left: 0, top: 0 }) }, { location, renderer, onSpot: (spot) => spots.push(spot), onTag: (tag) => tagged.push(tag), onMove: (at) => moves.push(at) });
+  const win = new EventTarget();
+  const fakeDocument = { visibilityState: 'visible', addEventListener: (type: string, fn: () => void) => docListeners.set(type, fn), removeEventListener: (type: string) => docListeners.delete(type) };
+  browser.window = win;
+  browser.document = fakeDocument;
+  browser.matchMedia = (query: string) => ({ matches: reduce && /reduced-motion/.test(query) });
+  const listeners = new Map<string, (event: unknown) => void>();
+  const canvas = { style: {}, addEventListener(type: string, fn: (event: unknown) => void) { listeners.set(type, fn); }, removeEventListener(type: string) { listeners.delete(type); }, setPointerCapture() {}, releasePointerCapture() {}, remove() {} };
+  const renderer = { calls: 0, shadowMap: {}, domElement: canvas, setPixelRatio() {}, setClearColor() {}, setSize() {}, dispose() {}, render(this: { calls: number }) { this.calls += 1; } } as unknown as THREE.WebGLRenderer & { calls: number };
+  const spots: SceneSpotRequest[] = [], tagged: SceneTag[] = [], moves: AvatarPosition[] = [];
+  const world = makeWorld({ appendChild() {}, getBoundingClientRect: () => ({ width, height, left: 0, top: 0 }) }, { location, renderer, onSpot: (spot) => spots.push(spot), onTag: (tag) => tagged.push(tag), onMove: (at) => moves.push(at) });
   return {
     world, renderer, spots, tagged, moves, listeners,
     /** Run up to `count` frames 16 ms apart; returns how many ran (fewer when the loop stopped itself). */
     pump(count = 1) { let ran = 0; for (let i = 0; i < count; i++) { const fns = queue; queue = []; if (!fns.length) break; time += 16; fns.forEach((fn) => fn(time)); ran += 1; } return ran; },
     queued: () => queue.length,
-    key: (action, mode = 'venue', jog = false) => globalThis.window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action, mode, jog } })),
-    keyUp: (action) => globalThis.window.dispatchEvent(new CustomEvent('jaw:key-up', { detail: { action } })),
-    send: (type, props = {}) => listeners.get(type)?.({ pointerId: 1, button: 0, detail: 1, clientX: 0, clientY: 0, preventDefault() {}, stopImmediatePropagation() {}, ...props }),
-    hide(hidden) { globalThis.document.visibilityState = hidden ? 'hidden' : 'visible'; docListeners.get('visibilitychange')?.(); },
-    reduceMotion(on) { reduce = on; },
-    restore() { world.dispose(); globalThis.requestAnimationFrame = original.raf; globalThis.cancelAnimationFrame = original.caf; globalThis.window = original.window; globalThis.document = original.document; globalThis.matchMedia = original.matchMedia; },
+    key: (action: string, mode = 'venue', jog = false) => win.dispatchEvent(new CustomEvent('jaw:key', { detail: { action, mode, jog } })),
+    keyUp: (action: string) => win.dispatchEvent(new CustomEvent('jaw:key-up', { detail: { action } })),
+    send: (type: string, props: Record<string, unknown> = {}) => listeners.get(type)?.({ pointerId: 1, button: 0, detail: 1, clientX: 0, clientY: 0, preventDefault() {}, stopImmediatePropagation() {}, ...props }),
+    hide(hidden: boolean) { fakeDocument.visibilityState = hidden ? 'hidden' : 'visible'; docListeners.get('visibilitychange')?.(); },
+    reduceMotion(on: boolean) { reduce = on; },
+    restore() { world.dispose(); globalThis.requestAnimationFrame = original.raf; globalThis.cancelAnimationFrame = original.caf; browser.window = original.window; browser.document = original.document; browser.matchMedia = original.matchMedia; },
   };
 }
 const PARK = { location: 'park', spot: 'amphitheatre', t: NOON, name: 'Ada' };
@@ -334,12 +347,12 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
   try {
     const { world } = bench;
     world.setState(PARK);
-    const hold = (action, frames = 10, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
+    const hold = (action: string, frames = 10, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
     // The park camera looks from the front right (+x, +z): away is −x −z, the camera's right is +x −z.
     const yaw = world.diagnostics().camera.yaw;
     const away = [-Math.sin(yaw), -Math.cos(yaw)], right = [Math.cos(yaw), -Math.sin(yaw)];
-    const along = (move, axis) => move.dx * axis[0] + move.dz * axis[1];
-    for (const [action, axis, sign] of [['walk-up', away, 1], ['move-up', away, 1], ['walk-down', away, -1], ['move-down', away, -1], ['walk-right', right, 1], ['move-right', right, 1], ['walk-left', right, -1], ['move-left', right, -1]]) {
+    const along = (move: { dx: number; dz: number }, axis: number[]) => move.dx * axis[0]! + move.dz * axis[1]!;
+    for (const [action, axis, sign] of [['walk-up', away, 1], ['move-up', away, 1], ['walk-down', away, -1], ['move-down', away, -1], ['walk-right', right, 1], ['move-right', right, 1], ['walk-left', right, -1], ['move-left', right, -1]] as [string, number[], number][]) {
       world.walkTo(6, 4); bench.pump(2000);
       const move = hold(action);
       const forward = along(move, axis) * sign, sideways = Math.abs(along(move, axis === away ? right : away));
@@ -383,7 +396,7 @@ test('spots and walking stay coherent: taps walk first, the panel walks instead 
     const { world } = bench;
     world.setState(PARK);
     world.setCrowd([{ id: 'npc:n1', name: 'Mama', kind: 'npc', seed: 'n1', spot: 'drinks' }]);
-    const spot = (id) => world.diagnostics().spots.find((item) => item.id === id);
+    const spot = (id: string) => world.diagnostics().spots.find((item) => item.id === id)!;
     const spawn = world.diagnostics().avatar;
     assert.ok(spawn.z > 10 && Math.abs(spawn.x) < 1, 'the avatar appears at the entrance, not at the selected spot');
     assert.equal(spot('amphitheatre').selected, true);
@@ -467,7 +480,7 @@ test('spots and walking stay coherent: taps walk first, the panel walks instead 
     bench.key('walk-down'); assert.equal(bench.pump(10), 10); bench.keyUp('walk-down'); bench.pump(400);
 
     // A person: walk up to them, then open their card.
-    const mama = world.diagnostics().people[0];
+    const mama = world.diagnostics().people[0]!;
     bench.send('pointerdown', { clientX: mama.px, clientY: mama.py }); bench.send('pointerup', { clientX: mama.px, clientY: mama.py }); bench.send('click', { clientX: mama.px, clientY: mama.py });
     assert.equal(bench.tagged.length, 0);
     bench.pump(3000);
@@ -518,7 +531,7 @@ test('reduced motion snaps: a tap puts the avatar there in one frame and the cam
     assert.ok(world.diagnostics().camera.zoom > 1.3);
     world.setState({ ...PARK, spot: 'work' });
     assert.equal(bench.queued(), 0);
-    const work = world.diagnostics().spots.find((item) => item.id === 'work');
+    const work = world.diagnostics().spots.find((item) => item.id === 'work')!;
     assert.ok(Math.hypot(world.diagnostics().avatar.x - work.x, world.diagnostics().avatar.z - work.z) < 0.01, 'a spot chosen in the panel: simply there');
   } finally { bench.restore(); }
 });
@@ -539,12 +552,12 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
     assert.ok(Math.hypot(moved.x - spawn.avatar.x, moved.z - spawn.avatar.z) > 0.8, 'walks in the room');
     assert.equal(world.diagnostics().loop.running, false);
     // Buy mode keeps its own taps: a click on the floor walks nowhere (the scene's own picking handles it).
-    const floor = world.diagnostics().tags[0];
-    const click = (x, y) => { bench.send('pointerdown', { clientX: x, clientY: y }); bench.send('pointerup', { clientX: x, clientY: y }); bench.send('click', { clientX: x, clientY: y }); };
-    globalThis.window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'buy' } }));
+    const floor = world.diagnostics().tags[0]!;
+    const click = (x: number, y: number) => { bench.send('pointerdown', { clientX: x, clientY: y }); bench.send('pointerup', { clientX: x, clientY: y }); bench.send('click', { clientX: x, clientY: y }); };
+    (browser.window as EventTarget).dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'buy' } }));
     click(floor.x + 60, floor.y + 110);
     assert.deepEqual([bench.queued(), world.diagnostics().avatar.mode], [0, 'idle'], 'Buy mode: a tap does not walk the avatar');
-    globalThis.window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'venue' } }));
+    (browser.window as EventTarget).dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'venue' } }));
     click(floor.x + 60, floor.y + 110);
     assert.equal(world.diagnostics().avatar.mode, 'path', 'back in the room view: the same tap walks');
     bench.pump(3000);
@@ -582,7 +595,7 @@ test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit a
         world.setState({ ...base, spot });
         const frames = bench.pump(4000);
         const at = world.diagnostics();
-        const target = at.spots.find((item) => item.id === spot);
+        const target = at.spots.find((item) => item.id === spot)!;
         assert.ok(frames < 3900 && !at.loop.running, `${id}.${spot}: the walk ends (${frames} frames)`);
         assert.ok(Math.hypot(at.avatar.x - target.x, at.avatar.z - target.z) < 0.05, `${id}.${spot}: standing on the spot (${at.avatar.x}, ${at.avatar.z}) vs (${target.x}, ${target.z})`);
       }
@@ -649,7 +662,7 @@ test('raised spots: the avatar climbs the declared way up, stands at the deck’
     bench.keyUp('walk-down'); bench.pump(600);
     const down = world.diagnostics();
     assert.equal(down.perch, false); assert.ok(down.avatar.y < 0.1, `back on the ground (y ${down.avatar.y}) after ${frames} frames`);
-    assert.ok(heights.every((height, index) => index === 0 || height - heights[index - 1] < 0.5), 'no leap on the way down');
+    assert.ok(heights.every((height, index) => index === 0 || height - heights[index - 1]! < 0.5), 'no leap on the way down');
     assert.ok(Math.abs(down.avatar.x + 8) < 1.2 && down.avatar.z > 10, `it came down the stair (${down.avatar.x}, ${down.avatar.z})`);
     assert.equal(down.loop.running, false);
   } finally { bench.restore(); }
@@ -665,7 +678,7 @@ test('in sight: zoomed in behind a tree the camera is held in or the tree is gho
     for (let i = 0; i < 60; i++) bench.send('wheel', { deltaY: -400, deltaMode: 0 });
     bench.pump(900);
     let held = 0, ghosted = 0, visits = 0, jumps = 0;
-    for (const [x, z] of [[8.8, 9], [10.6, 7.4], [9.6, 5.6], [-8, 8], [5, -3], [-2, 0], [11, 9], [7.5, 6.5]]) {
+    for (const [x, z] of [[8.8, 9], [10.6, 7.4], [9.6, 5.6], [-8, 8], [5, -3], [-2, 0], [11, 9], [7.5, 6.5]] as [number, number][]) {
       world.walkTo(x, z); bench.pump(3000);
       for (let turn = 0; turn < 6; turn++) {
         bench.send('pointerdown', { clientX: 600, clientY: 300 }); bench.send('pointermove', { clientX: 600 + 175, clientY: 300 }); bench.send('pointerup', { clientX: 775, clientY: 300 });
@@ -689,7 +702,7 @@ test('in sight: zoomed in behind a tree the camera is held in or the tree is gho
     assert.equal(bench.pump(50), 0); assert.equal(world.diagnostics().renderCount, rest);
     // The composed wide view: whatever crosses the line, the camera is where the player put it.
     bench.key('zoom-fit'); bench.pump(900);
-    for (const [x, z] of [[8.8, 9], [-8, 8], [5, -3]]) { world.walkTo(x, z); bench.pump(3000); assert.equal(world.diagnostics().camera.held, 1); }
+    for (const [x, z] of [[8.8, 9], [-8, 8], [5, -3]] as [number, number][]) { world.walkTo(x, z); bench.pump(3000); assert.equal(world.diagnostics().camera.held, 1); }
   } finally { bench.restore(); }
 });
 
@@ -699,13 +712,13 @@ test('other players stand where they report, ease when they move (bounded frames
     const { world } = bench;
     world.setState(PARK);
     const ada = '00000001-2222-4333-8444-555555555555';
-    const crowd = (x, z) => [{ id: ada, name: 'Ada', kind: 'player', seed: ada, look: null, x, z }, { id: 'npc:n1', name: 'Mama', kind: 'npc', seed: 'n1', spot: 'drinks' }];
+    const crowd = (x: number, z: number) => [{ id: ada, name: 'Ada', kind: 'player', seed: ada, look: null, x, z }, { id: 'npc:n1', name: 'Mama', kind: 'npc', seed: 'n1', spot: 'drinks' }];
     const drawn = world.diagnostics().renderCount;
     assert.equal(world.setCrowd(crowd(4, 6)), true);
     assert.deepEqual([world.diagnostics().renderCount, bench.queued()], [drawn + 1, 0], 'someone arrived: one frame, no loop');
     const first = world.diagnostics();
     assert.deepEqual(first.people.map((person) => [person.id, person.x, person.z]).find(([id]) => id === ada), [ada, 4, 6]);
-    const tagAt = () => world.diagnostics().tags.find((tag) => tag.id === ada);
+    const tagAt = () => world.diagnostics().tags.find((tag) => tag.id === ada)!;
     const before = tagAt();
     // She walks: the loop runs for a bounded number of frames, her tag moves with her, then everything is at rest.
     world.setCrowd(crowd(6.5, 6));
@@ -714,7 +727,7 @@ test('other players stand where they report, ease when they move (bounded frames
     assert.ok(frames > 5 && frames < 40, `eased over ${frames} frames`);
     const after = world.diagnostics();
     assert.deepEqual([after.easing, after.loop.running, bench.queued()], [false, false, 0]);
-    assert.deepEqual(after.people.find((person) => person.id === ada).x, 6.5);
+    assert.deepEqual(after.people.find((person) => person.id === ada)!.x, 6.5);
     assert.notDeepEqual([tagAt().x, tagAt().y], [before.x, before.y], 'her name tag followed her');
     assert.equal(after.renderCount, drawn + 1 + frames, 'exactly one render per frame of the ease');
     // The same list again, and again: nothing.
@@ -729,7 +742,7 @@ test('other players stand where they report, ease when they move (bounded frames
     const count = world.diagnostics().renderCount;
     world.setCrowd(crowd(-3, 8));
     assert.deepEqual([world.diagnostics().renderCount, bench.queued(), world.diagnostics().easing], [count + 1, 0, false]);
-    assert.equal(world.diagnostics().people.find((person) => person.id === ada).x, -3);
+    assert.equal(world.diagnostics().people.find((person) => person.id === ada)!.x, -3);
     bench.reduceMotion(false);
     // The local avatar walks round her instead of through her.
     world.setCrowd(crowd(3, 8));
@@ -748,13 +761,13 @@ test('markers and people: a click on a marker’s ring picks the marker even wit
   try {
     const { world } = bench;
     world.setState(PARK);
-    const spot = (id) => world.diagnostics().spots.find((item) => item.id === id);
+    const spot = (id: string) => world.diagnostics().spots.find((item) => item.id === id)!;
     const drinks = spot('drinks');
     // Somebody (a player who walked there) stands right in front of the drinks marker, as the camera sees it.
     const yaw = world.diagnostics().camera.yaw;
     const blocker = '00000003-2222-4333-8444-555555555555';
     world.setCrowd([{ id: blocker, name: 'Tunde', kind: 'player', seed: blocker, look: null, x: drinks.x + Math.sin(yaw) * 1.1, z: drinks.z + Math.cos(yaw) * 1.1 }]);
-    const person = world.diagnostics().people[0];
+    const person = world.diagnostics().people[0]!;
     // Hover: the marker names itself; the person's body, higher up, is the person.
     const draws = world.diagnostics().renderCount;
     bench.send('pointermove', { clientX: drinks.px, clientY: drinks.py, pointerType: 'mouse' });
@@ -775,7 +788,7 @@ test('markers and people: a click on a marker’s ring picks the marker even wit
     assert.ok(Math.hypot(world.diagnostics().avatar.x - drinks.x, world.diagnostics().avatar.z - drinks.z) < 0.01);
     // Click the person's body: their card.
     world.walkTo(0, 9); bench.pump(3000);
-    const now = world.diagnostics().people[0];
+    const now = world.diagnostics().people[0]!;
     bench.send('pointerdown', { clientX: now.px, clientY: now.py - 14 }); bench.send('pointerup', { clientX: now.px, clientY: now.py - 14 }); bench.send('click', { clientX: now.px, clientY: now.py - 14 });
     bench.pump(3000);
     assert.deepEqual(bench.tagged, [{ id: blocker, kind: 'player' }]);
@@ -802,9 +815,9 @@ test('where the avatar stands is reported in presence units, on request and whil
     const moved = world.position();
     assert.ok(Math.abs(moved.z - (start.z - 2)) < 0.45 && Math.abs(moved.x - start.x) < 0.45, 'two steps up-screen');
     assert.ok(bench.moves.length >= 1 && bench.moves.every((move) => move.location === 'park' && Math.abs(move.x) <= 20 && Math.abs(move.z) <= 20));
-    assert.deepEqual([bench.moves.at(-1).x, bench.moves.at(-1).z], [moved.x, moved.z], 'the last report is where it stopped');
+    assert.deepEqual([bench.moves.at(-1)!.x, bench.moves.at(-1)!.z], [moved.x, moved.z], 'the last report is where it stopped');
     assert.equal(world.walkBy(NaN, 1), false);
-    globalThis.window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'map' } }));
+    (browser.window as EventTarget).dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'map' } }));
     assert.equal(world.walkBy(1, 0), false, 'not while another screen is in front');
   } finally { bench.restore(); }
 });
@@ -816,7 +829,7 @@ test('game tables can be walked up to: a tap walks there and opens it on arrival
     world.setState(PARK);
     const things = () => world.diagnostics().things, avatar = () => world.diagnostics().avatar;
     assert.deepEqual(things().map((thing) => [thing.id, thing.kind, thing.at]), [['table:park-bench', 'table', false], ['table:park-goal', 'table', false]]);
-    const table = things()[0];
+    const table = things()[0]!;
     const away = () => Math.hypot(avatar().x - table.x, avatar().z - table.z);
     assert.ok(away() > 6, 'the avatar starts at the entrance, not at a table');
     // Idle with tables in the room: nothing runs.
@@ -831,7 +844,7 @@ test('game tables can be walked up to: a tap walks there and opens it on arrival
     bench.pump(3000);
     assert.deepEqual(bench.tagged, [{ id: 'table:park-bench', kind: 'table' }]);
     assert.ok(away() > 1.2 && away() < 2.6, `standing beside the table, not on it (${away().toFixed(2)} away)`);
-    assert.deepEqual([things()[0].at, avatar().moving, bench.queued()], [true, false, 0], 'at the table, and the loop has stopped');
+    assert.deepEqual([things()[0]!.at, avatar().moving, bench.queued()], [true, false, 0], 'at the table, and the loop has stopped');
     // Staying there, a state poll and the dwell passing report nothing more.
     world.setState({ ...PARK, t: NOON + 5000 });
     await new Promise((resolve) => setTimeout(resolve, 800));
@@ -839,7 +852,7 @@ test('game tables can be walked up to: a tap walks there and opens it on arrival
 
     // 2. Walk away, then walk back beside it without tapping it (the keyboard way): after a short dwell it opens again, once.
     assert.equal(world.walkBy(-6, 3), true); bench.pump(3000);
-    assert.ok(away() > 3.3); assert.equal(things()[0].at, false, 'walked away from it');
+    assert.ok(away() > 3.3); assert.equal(things()[0]!.at, false, 'walked away from it');
     await new Promise((resolve) => setTimeout(resolve, 800));
     assert.equal(bench.tagged.length, 1, 'resting somewhere else opens nothing');
     const here = avatar();
@@ -854,7 +867,7 @@ test('game tables can be walked up to: a tap walks there and opens it on arrival
     // 3. While an activity runs the scene is locked: a tap on a table does nothing.
     world.setState({ ...PARK, t: NOON + 9000, activeAction: { kind: 'activity', id: 'chill', duration: 11, remaining: 11 } });
     bench.pump(600);
-    const far = things()[1];
+    const far = things()[1]!;
     bench.send('pointerdown', { clientX: far.px, clientY: far.py }); bench.send('pointerup', { clientX: far.px, clientY: far.py }); bench.send('click', { clientX: far.px, clientY: far.py });
     bench.pump(600);
     assert.equal(bench.tagged.length, 2);

@@ -3,16 +3,18 @@
  * Civic venues: hospital, police station and places of worship (church and mosque variants).
  * Scene definition format: see venues-outdoor.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
+import type { Pose } from './characters.ts';
+import type { Batch, BatchOptions, Colour, SceneDef, SceneLayout } from './types.ts';
 import {
   room, table, chair, stool, bench, counter, screen, plant, shelf, bed, desk, laptop, rug, column, flag, windowPane, door, sign, landmark, extra,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,
-} from './props.js';
+} from './props.ts';
 
 const PI = Math.PI, HALF = Math.PI / 2;
-const cross = (b, x, y, z, size, color, o) => { b.box(x, y, z, size * 0.3, size, 0.06, color, o); b.box(x, y, z, size, size * 0.3, 0.06, color, o); };
+const cross = (b: Batch, x: number, y: number, z: number, size: number, color: Colour, o?: BatchOptions) => { b.box(x, y, z, size * 0.3, size, 0.06, color, o); b.box(x, y, z, size, size * 0.3, 0.06, color, o); };
 
-const hospital = {
+const hospital: SceneDef = {
   mood: 'indoor', accent: '#3fae8a',
   build(b, { accent }) {
     room(b, { floor: '#e3e9e6', wall: '#eef2ee', side: '#e6ece8', trim: '#9fb8ae' });
@@ -69,7 +71,7 @@ const hospital = {
   },
 };
 
-const police = {
+const police: SceneDef = {
   mood: 'indoor', accent: '#3f72c4',
   build(b, { accent }) {
     room(b, { floor: '#b9b2a2', wall: '#e3dcc2', side: '#d9d2b8', trim: '#243a66' });
@@ -99,7 +101,7 @@ const police = {
     // Notice board
     b.box(8.4, 3, -9.74, 4.6, 2.6, 0.1, '#a67c4a'); b.box(8.4, 3, -9.7, 4.2, 2.2, 0.06, '#c9a878');
     sign(b, 8.4, 3.8, -9.66, 'WANTED', { size: 0.24, color: '#a8323a' });
-    for (let i = 0; i < 3; i++) { b.quad(6.9 + i * 1.5, 2.8, -9.66, 1.1, 1.3, '#f4f1e4'); b.quad(6.9 + i * 1.5, 3, -9.65, 0.6, 0.6, ['#6e422c', '#845236', '#573323'][i]); b.quad(6.9 + i * 1.5, 2.4, -9.65, 0.8, 0.08, BLACK); b.cyl(6.9 + i * 1.5, 3.42, -9.63, 0.05, 0.04, '#e0483f', { seg: 5, rx: HALF }); }
+    for (let i = 0; i < 3; i++) { b.quad(6.9 + i * 1.5, 2.8, -9.66, 1.1, 1.3, '#f4f1e4'); b.quad(6.9 + i * 1.5, 3, -9.65, 0.6, 0.6, ['#6e422c', '#845236', '#573323'][i]!); b.quad(6.9 + i * 1.5, 2.4, -9.65, 0.8, 0.08, BLACK); b.cyl(6.9 + i * 1.5, 3.42, -9.63, 0.05, 0.04, '#e0483f', { seg: 5, rx: HALF }); }
     // Filing cabinets and statement desk
     for (let i = 0; i < 3; i++) { b.box(-3.6 + i * 1, 1.1, -9.4, 0.94, 2.2, 0.9, i % 2 ? '#6f767e' : '#7d858c'); for (let d = 0; d < 3; d++) b.box(-3.6 + i * 1, 0.5 + d * 0.66, -8.93, 0.4, 0.06, 0.04, '#2a2d33'); }
     desk(b, 8.4, -1.6, { ry: PI, color: WOOD, seatColor: '#243a66' });
@@ -129,7 +131,7 @@ const police = {
   },
 };
 
-function church(b, accent) {
+function church(b: Batch, accent: Colour): SceneLayout {
   room(b, { floor: '#b9966a', wall: '#ece3cf', side: '#e3dac4', trim: '#8a6644', h: 6.4 });
   b.box(0, 0.06, 2.4, 2.2, 0.03, 15, '#a8323a');
   // Chancel, altar and cross
@@ -177,12 +179,12 @@ function church(b, accent) {
   };
 }
 
-function arch(b, x, y, z, w, h, color, o = {}) {
+function arch(b: Batch, x: number, y: number, z: number, w: number, h: number, color: Colour, o: BatchOptions = {}) {
   b.box(x, y + (h - w / 2) / 2, z, w, h - w / 2, 0.08, color, o);
   b.cyl(x, y + h - w / 2, z, w / 2, 0.08, color, { seg: 12, rx: HALF, ...o });
 }
 
-function mosque(b, accent) {
+function mosque(b: Batch, accent: Colour): SceneLayout {
   room(b, { floor: '#2f8580', wall: '#efe6cf', side: '#e6dcc4', trim: '#c9a14a', h: 6.4 });
   // Carpet rows
   for (let i = 0; i < 9; i++) b.box(0, 0.056, -6 + i * 1.8, 22, 0.02, 0.16, '#d6b45a');
@@ -214,9 +216,9 @@ function mosque(b, accent) {
     b.at(-11.9, 0, z, HALF, () => { arch(b, 0, 1.4, 0, 1.9, 3.6, '#c9a14a'); arch(b, 0, 1.56, 0.04, 1.5, 3.2, '#cfeee6', GLOW); for (let k = 0; k < 3; k++) b.box(-0.5 + k * 0.5, 2.9, 0.1, 0.05, 2.9, 0.03, '#c9a14a'); for (let k = 0; k < 4; k++) b.box(0, 1.9 + k * 0.6, 0.1, 1.5, 0.05, 0.03, '#c9a14a'); });
   }
   // Worshippers in rows
-  const worshipper = (seed, x, z, pose, seat) => extra(b, seed, x, z, PI, pose, { seat, look: { body: 'man', outfit: 'chill', fabric: 'plain', bottomsColor: 'cream' } });
-  [[-3.6, -2.5], [-1.2, -2.5], [1.2, -2.5], [3.6, -2.5]].forEach(([x, z], i) => worshipper(`mosque-row-${i}`, x, z, 'stand'));
-  [[-4.8, 1.1], [2.4, 1.1], [0, 2.9]].forEach(([x, z], i) => worshipper(`mosque-sit-${i}`, x, z, 'sit', 0.04));
+  const worshipper = (seed: string, x: number, z: number, pose: Pose, seat?: number) => extra(b, seed, x, z, PI, pose, { seat, look: { body: 'man', outfit: 'chill', fabric: 'plain', bottomsColor: 'cream' } });
+  ([[-3.6, -2.5], [-1.2, -2.5], [1.2, -2.5], [3.6, -2.5]] as [number, number][]).forEach(([x, z], i) => worshipper(`mosque-row-${i}`, x, z, 'stand'));
+  ([[-4.8, 1.1], [2.4, 1.1], [0, 2.9]] as [number, number][]).forEach(([x, z], i) => worshipper(`mosque-sit-${i}`, x, z, 'sit', 0.04));
   // Ablution taps
   b.box(-9.6, 0.5, 7.4, 4.4, 1, 0.5, '#d9d2c0'); b.box(-9.6, 0.1, 6.7, 4.4, 0.2, 0.9, '#9fb8b4');
   for (let i = 0; i < 3; i++) { b.box(-11 + i * 1.4, 0.9, 7.1, 0.08, 0.08, 0.3, METAL); b.box(-11 + i * 1.4, 0.82, 6.98, 0.06, 0.16, 0.06, METAL); stool(b, -11 + i * 1.4, 6, { h: 0.4, color: '#d9d2c0' }); }
@@ -224,7 +226,7 @@ function mosque(b, accent) {
   // Shoe rack, donation box, book stands
   shelf(b, 9.6, 9.2, { ry: PI, w: 3.6, h: 1.8, rows: 3, per: 7, color: WOOD, items: ['#2a2d33', '#8a5a36', '#e9e4d8', '#3a3f46'] });
   b.box(6.6, 0.6, 8.6, 0.8, 1.2, 0.8, '#1f5f5a'); b.box(6.6, 1.22, 8.6, 0.4, 0.03, 0.08, BLACK); b.quad(6.6, 0.7, 8.19, 0.4, 0.4, '#d6a83a', { ry: PI });
-  for (const [x, z] of [[-7.6, 1], [7.6, -1.6]]) { b.box(x, 0.3, z, 0.7, 0.05, 0.4, WOOD, { rz: 0.5 }); b.box(x, 0.3, z, 0.7, 0.05, 0.4, WOOD, { rz: -0.5 }); b.box(x, 0.52, z, 0.5, 0.08, 0.36, '#2f8f55'); }
+  for (const [x, z] of ([[-7.6, 1], [7.6, -1.6]] as [number, number][])) { b.box(x, 0.3, z, 0.7, 0.05, 0.4, WOOD, { rz: 0.5 }); b.box(x, 0.3, z, 0.7, 0.05, 0.4, WOOD, { rz: -0.5 }); b.box(x, 0.52, z, 0.5, 0.08, 0.36, '#2f8f55'); }
   return {
     spots: [
       landmark('prayer', /prayer|pray|hall|salah|salat|jum|row|worship|listen|sermon|khutb/, 0, -0.7, PI),
@@ -237,7 +239,7 @@ function mosque(b, accent) {
   };
 }
 
-const worship = {
+const worship: SceneDef = {
   mood: 'indoor', accent: '#c9a14a',
   build(b, { variant, accent }) { return variant === 'mosque' ? mosque(b, accent) : church(b, accent); },
 };

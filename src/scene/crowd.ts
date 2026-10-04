@@ -1,3 +1,4 @@
+import type { LifeState } from '../types/life.ts';
 /**
  * OWNER: scenes
  * Who stands in a venue scene besides the player, from real data only (pure; no THREE, no DOM):
@@ -22,18 +23,43 @@ import { isDeparting } from '../game/registry.ts';
 const SCENE_REACH = 20;
 export const CROWD_LIMIT = 12; // equals MAX_CROWD in venue-scenes.js (asserted in crowd.test.js)
 
-export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_LIMIT, positions = null } = {}) {
-  const seen = new Set(selfId ? [selfId] : []);
-  const list = [];
-  for (const player of Array.isArray(players) ? players : []) {
+/** One person the scene host's setCrowd() takes. Real players carry a `look`, regulars a `spot`; `x`/`z` only when presence reported them. */
+export interface CrowdEntry {
+  id: string;
+  name: string;
+  kind: 'player' | 'npc';
+  seed: string;
+  look?: Record<string, unknown> | null;
+  x?: number;
+  z?: number;
+  spot?: string;
+}
+/** What crowdList reads (the data is not trusted: anything malformed is skipped). */
+export interface CrowdInput {
+  players?: unknown;
+  npcs?: unknown;
+  selfId?: string | null;
+  max?: number;
+  /** { [publicId]: { x, z } } as the room's presence reports it. */
+  positions?: unknown;
+}
+interface PlayerIn { id?: unknown; name?: unknown; here?: unknown; look?: unknown }
+interface NpcIn { id?: unknown; name?: unknown; at?: unknown }
+/** The server's who-is-here listing for a venue room. */
+export interface PresenceListing { error?: unknown; venue?: unknown; cityId?: unknown; players?: unknown }
+
+export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_LIMIT, positions = null }: CrowdInput = {}): CrowdEntry[] {
+  const seen = new Set<string>(selfId ? [selfId] : []);
+  const list: CrowdEntry[] = [];
+  for (const player of (Array.isArray(players) ? players : []) as (PlayerIn | null)[]) {
     if (!player || typeof player.id !== 'string' || seen.has(player.id) || player.here === false) continue;
     seen.add(player.id);
     // Where the player stands, when presence reports it (see the header): the scene places them there instead of at a spare place.
-    const at = positions && typeof positions === 'object' ? positions[player.id] : null;
-    const placed = at && Number.isFinite(at.x) && Number.isFinite(at.z) ? { x: Math.max(-SCENE_REACH, Math.min(SCENE_REACH, at.x)), z: Math.max(-SCENE_REACH, Math.min(SCENE_REACH, at.z)) } : null;
-    list.push({ id: player.id, name: String(player.name ?? 'Player'), kind: 'player', seed: player.id, look: player.look && typeof player.look === 'object' ? player.look : null, ...placed });
+    const at = (positions && typeof positions === 'object' ? (positions as Record<string, { x?: unknown; z?: unknown } | null | undefined>)[player.id] : null);
+    const placed = at && typeof at.x === 'number' && Number.isFinite(at.x) && typeof at.z === 'number' && Number.isFinite(at.z) ? { x: Math.max(-SCENE_REACH, Math.min(SCENE_REACH, at.x)), z: Math.max(-SCENE_REACH, Math.min(SCENE_REACH, at.z)) } : null;
+    list.push({ id: player.id, name: String(player.name ?? 'Player'), kind: 'player', seed: player.id, look: player.look && typeof player.look === 'object' ? player.look as Record<string, unknown> : null, ...placed });
   }
-  for (const npc of Array.isArray(npcs) ? npcs : []) {
+  for (const npc of (Array.isArray(npcs) ? npcs : []) as (NpcIn | null)[]) {
     if (!npc || typeof npc.id !== 'string') continue;
     list.push({ id: `npc:${npc.id}`, name: String(npc.name ?? ''), kind: 'npc', seed: npc.id, ...(typeof npc.at === 'string' ? { spot: npc.at } : {}) });
   }
@@ -41,8 +67,8 @@ export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_
 }
 
 /** The server's listing, if it is for the venue and city the player is in right now; otherwise nobody. */
-export function playersHere(listing, state, cityId) {
+export function playersHere(listing: PresenceListing | null | undefined, state: { location?: string; activeAction?: unknown } | null | undefined, cityId: string): unknown[] {
   if (!listing || listing.error || listing.venue !== state?.location || listing.cityId !== cityId) return [];
-  if (isDeparting(state)) return []; // in transit (a trip, the commute): the player is in no venue
+  if (isDeparting(state as Pick<LifeState, 'activeAction'> | null | undefined)) return []; // in transit (a trip, the commute): the player is in no venue
   return Array.isArray(listing.players) ? listing.players : [];
 }

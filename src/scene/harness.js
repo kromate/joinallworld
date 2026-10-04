@@ -7,6 +7,7 @@
 import { createKit } from './kit.js';
 import { buildVenueScene, KINDS, TIMES } from './venue-scenes.js';
 import { createHostLights } from '../venue-world.js';
+import { applyRendererLook, renderTier, createSky } from './look.js';
 
 const params = new URLSearchParams(location.search);
 const settings = {
@@ -22,13 +23,12 @@ const kit = createKit();
 const { THREE } = kit;
 const scene = new THREE.Scene();
 const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+applyRendererLook(THREE, renderer, renderTier());
 stage.appendChild(renderer.domElement);
 const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 150);
 const lights = createHostLights(THREE, scene);
+const sky = createSky(THREE);
+scene.background = sky.texture;
 
 let entry = null, renderCount = 0;
 const names = ['Ada', 'Tunde', 'Zainab', 'Chidi', 'Bisi', 'Emeka', 'Kemi', 'Sani', 'Ngozi', 'Femi', 'Amaka', 'Yusuf'];
@@ -42,6 +42,8 @@ function draw() {
   camera.updateProjectionMatrix();
   renderer.setSize(width, height, false);
   lights.apply(entry.lighting());
+  lights.aim(camera);
+  sky.set(...entry.sky);
   renderer.setClearColor(entry.background);
   renderer.render(scene, camera);
   renderCount += 1;

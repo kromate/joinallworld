@@ -569,7 +569,7 @@ function headHigh(b, look, woman, fine) {
   // A clean stylised face: every part is a deliberate shape (primitives cannot be blended into one another).
   const skin = look.skin, F = FACES[look.face] || FACES.oval, mood = look.expression;
   const dark = channels(skin).reduce((sum, v) => sum + v, 0) < 250; // the two darkest tones: features are lifted, not darkened
-  const deep = shade(skin, -0.22), white = '#f6f1e7', fz = (x, y) => faceZ(x, y, F), relief = shade(skin, dark ? 0.16 : -0.04);
+  const deep = shade(skin, -0.22), white = '#f6f1e7', fz = (x, y) => faceZ(x, y, F), relief = shade(skin, dark ? 0.1 : -0.05);
   b.ball(0, HEAD.y + HEAD.ry - F.ry, 0, HEAD.rx, F.ry, HEAD.rz, skin, { seg: 28 });
   if (F.jaw) b.ball(0, JAW.y, JAW.z, F.jaw, JAW.ry, JAW.rz, skin, { seg: 24 });
   const brow = mix(look.hairColor, INK, 0.5), grin = mood === 'grin', flat = mood === 'neutral';
@@ -584,11 +584,13 @@ function headHigh(b, look, woman, fine) {
     // Upper lid and lash line; a grin narrows the eye.
     const lid = ey + (grin ? 0.046 : 0.06);
     b.ball(ex, lid, ez - 0.01, 0.054, 0.014, 0.024, skin, { seg: 9, ry: turn });
-    b.box(ex + side * 0.004, lid - 0.012, ez + 0.011, 0.1, woman ? 0.01 : 0.006, 0.012, INK, { ry: turn, rz: side * 0.04 });
+    b.box(ex + side * 0.004, lid - 0.012, ez + 0.011, 0.098, woman ? 0.009 : 0.005, 0.012, woman ? INK : mix(skin, INK, 0.7), { ry: turn, rz: side * -0.03 });
     if (woman && fine) b.box(ex + side * 0.054, lid - 0.006, ez + 0.002, 0.03, 0.01, 0.01, INK, { ry: turn, rz: side * 0.55 }); // lash flick
     if (grin && fine) b.ball(ex, ey - 0.046, ez - 0.008, 0.05, 0.014, 0.022, shade(skin, -0.06), { seg: 8, ry: turn });
-    const by = 2.31 - (flat ? 0.012 : 0);
-    b.ball(ex + side * 0.002, by, fz(ex, by) + 0.003, 0.062, woman ? 0.012 : 0.017, 0.012, brow, { seg: 8, ry: turn, rz: side * (flat ? 0 : 0.03) });
+    // Brows: slim, set a little above the lid, and lifted at the INNER end — an open, friendly face at rest
+    // (a brow that dips towards the nose reads as a scowl at phone size). Neutral keeps them level.
+    const by = 2.318 - (flat ? 0.016 : 0);
+    b.ball(ex + side * 0.004, by, fz(ex, by) + 0.003, 0.058, woman ? 0.0105 : 0.0135, 0.012, brow, { seg: 8, ry: turn, rz: side * (flat ? 0 : -0.07) });
     // Ear: the outer shell and its hollow.
     b.ball(side * 0.247, 2.19, -0.012, 0.034, 0.066, 0.048, skin, { seg: 10 });
     if (fine) b.ball(side * 0.266, 2.195, -0.004, 0.016, 0.042, 0.027, deep, { seg: 6 });
@@ -602,7 +604,7 @@ function headHigh(b, look, woman, fine) {
   if (grin) b.box(0, my + 0.002, mz + 0.004, 0.092, 0.024, 0.012, white);
   else b.box(0, my + 0.003, mz + 0.006, wide, 0.007, 0.012, line);
   for (const side of [-1, 1]) {
-    if (!flat) b.box(side * (wide / 2 + 0.008), my + 0.015, mz - 0.004, 0.036, 0.007, 0.012, line, { rz: side * 0.72, ry: side * 0.45 }); // the corners of a smile
+    if (!flat) b.box(side * (wide / 2 + 0.01), my + 0.017, mz - 0.004, 0.042, 0.007, 0.012, line, { rz: side * 0.78, ry: side * 0.45 }); // the corners of a smile
     b.ball(side * 0.019, my + (grin ? 0.024 : 0.014), mz + 0.002, 0.03 * full, 0.0105 * full, 0.015, lip, { seg: 8, rz: side * -0.16, ry: side * 0.2 });
   }
   b.ball(0, my - (grin ? 0.022 : 0.011), mz + 0.003, (grin ? 0.048 : 0.04) * full, 0.0145 * full, 0.017, shade(lip, 0.08), { seg: 9 });
@@ -764,8 +766,9 @@ const HAIR_HIGH = {
 
 /** A relaxed hand below the wrist at y = end: palm, four fingers curling towards the body, and a thumb. dir: +1 on the avatar's left. */
 function handHigh(b, m, end, dir, skin) {
-  const w = m.wrist, inwards = -dir;
-  b.ball(0, end - 0.058, 0.004, w * 0.5, 0.06, w * 0.98, skin, { seg: 12 });
+  // Hands are drawn a fifth larger than the wrist would give: they carry every gesture and vanish at phone size otherwise.
+  const w = m.wrist * 1.2, inwards = -dir;
+  b.ball(0, end - 0.058, 0.004, w * 0.5, 0.064, w * 0.98, skin, { seg: 12 });
   for (let i = 0; i < 4; i++) {
     const z = (i - 1.5) * w * 0.47 + 0.004, long = [0.062, 0.072, 0.068, 0.054][i], y0 = end - 0.1;
     rope(b, [[0, y0, z], [inwards * 0.008, y0 - long * 0.55, z], [inwards * 0.026, y0 - long, z * 0.94]], w * 0.24, w * 0.19, skin, 5);
@@ -1208,7 +1211,7 @@ function drawHigh(b0, look, { joints, sitting, marker }, fine) {
       upper.joint = covered ? top : skin;
       limbHigh(b, side ? 'armL' : 'armR', dir * (m.shoulder - 0.004 + bulk), SHOULDER_Y, 0, pitch, dir * (style.robe ? Math.max(roll, 0.3) : roll), upper, joints.fore[side], lower, (end) => {
         if (fine) handHigh(b, m, end, dir, skin);
-        else { b.ball(0, end - 0.07, 0, m.wrist * 0.62, 0.088, m.wrist * 1.1, skin, { seg: 10 }); b.ball(dir * -0.01, end - 0.055, m.wrist * 1.05, 0.02, 0.042, 0.022, skin, { seg: 6, rx: 0.3 }); }
+        else { b.ball(0, end - 0.074, 0, m.wrist * 0.74, 0.098, m.wrist * 1.3, skin, { seg: 10 }); b.ball(dir * -0.01, end - 0.058, m.wrist * 1.24, 0.023, 0.046, 0.025, skin, { seg: 6, rx: 0.3 }); }
       });
     }
   }, joints.lean);

@@ -52,7 +52,7 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     const world = createVenueWorld(container, { location: 'park', renderer });
     const count = () => world.diagnostics().renderCount;
     assert.equal(count(), 1);
-    assert.deepEqual(world.diagnostics().lighting, { hemi: LIGHTING.outdoor.day.hemi[2], sun: LIGHTING.outdoor.day.sun[1], sky: '#e6f3ff' }, 'the host applied the scene’s own lighting preset');
+    assert.deepEqual(world.diagnostics().lighting, { hemi: LIGHTING.outdoor.day.hemi[2], sun: LIGHTING.outdoor.day.sun[1], sky: '#eaf4ff' }, 'the host applied the scene’s own lighting preset');
     world.setPlayer({ look: { body: 'woman', hair: 'afro' }, seed: PLAYER, name: 'Ada' });
     assert.equal(count(), 2, 'the avatar changed: one frame');
     world.setPlayer({ look: { body: 'woman', hair: 'afro' }, seed: PLAYER, name: 'Ada' });
@@ -63,7 +63,8 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     assert.deepEqual(tags.map((tag) => [tag.kind, tag.marker]), [['self', 'crown'], ['player', 'tag'], ['npc', 'dot'], ['player', 'tag'], ['npc', 'dot']]);
     assert.deepEqual([tags[0].text, tags[1].text, tags[2].name], ['Ada', '@Player 0', 'Local 1']);
     assert.ok(tags.every((tag) => Number.isFinite(tag.x) && Number.isFinite(tag.y)), 'every tag has a screen position');
-    assert.ok(tags.filter((tag) => tag.visible).length >= 4, 'tags are projected inside the 390 × 844 view');
+    // The view starts close to the player (START_DISTANCE in venue-world.js), so not everyone is in it: the player's own tag always is.
+    assert.ok(tags[0].visible && tags.filter((tag) => tag.visible).length >= 2, 'the player’s tag and the people nearby are projected inside the 390 × 844 view');
     // Idle with a crowd on screen: no frames, no timers, however long we wait and however often the same data arrives.
     for (let i = 0; i < 25; i++) { assert.equal(world.setCrowd(people(4)), false); world.setState({ location: 'park', spot: 'amphitheatre', t: NOON + i * 1000, name: 'Ada' }); }
     await new Promise((resolve) => setTimeout(resolve, 150));

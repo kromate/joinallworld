@@ -52,7 +52,9 @@ test('wheel and two-finger pinch zoom are bounded and cancel clears gestures', (
   for (let i = 0; i < 100; i++) f.send('wheel', { deltaY: -1000 });
   assert.ok(Math.abs(distance() - 6.2) < 0.01, 'zooming in stops close enough to see a face, and no closer');
   for (let i = 0; i < 100; i++) f.send('wheel', { deltaY: 1000 });
-  assert.ok(distance() > initial * 1.3 && distance() < initial * 1.45, 'zooming out stops with the whole venue in view');
+  // The view starts close to the player; zooming out reaches the venue's own whole-venue framing and 38% beyond, no further.
+  const whole = f.world.diagnostics().camera.whole;
+  assert.ok(distance() > whole * 1.3 && distance() < whole * 1.45, 'zooming out stops with the whole venue in view');
   f.world.setLocation('home');
   assert.equal(f.world.diagnostics().camera.zoom, 1, 'new venue restores its framing');
   f.world.dispose();

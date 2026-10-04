@@ -50,10 +50,10 @@ let current = null;
 /** Key, fill and rim lights for a character on a pale backdrop. Returns the lights it added. */
 export function lightStage(THREE, scene) {
   // Tuned on the whole skin range: enough light from the front that the darkest tones keep their features.
-  const hemi = new THREE.HemisphereLight('#ffffff', '#d9c9b6', 1.55);
+  const hemi = new THREE.HemisphereLight('#ffffff', '#e6d2bb', 1.85);
   const key = new THREE.DirectionalLight('#fff3e2', 2.5); key.position.set(2.4, 3.6, 5);
   const fill = new THREE.DirectionalLight('#d6e4ff', 1.1); fill.position.set(-4, 2.4, 3.4);
-  const rim = new THREE.DirectionalLight('#ffffff', 1.7); rim.position.set(-1.8, 3.8, -4.2);
+  const rim = new THREE.DirectionalLight('#ffffff', 2); rim.position.set(-1.8, 3.8, -4.2);
   const lights = [hemi, key, fill, rim];
   lights.forEach((light) => scene.add(light));
   return lights;
@@ -123,6 +123,8 @@ export function createAvatarPreview(host, options = {}) {
   renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, MAX_PIXEL_RATIO));
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  // The same tone mapping as the scenes (src/scene/look.js), so the figure made here is the figure seen there.
+  renderer.toneMapping = THREE.NeutralToneMapping; renderer.toneMappingExposure = 1;
   if (canvas.style) Object.assign(canvas.style, { display: 'block', width: '100%', height: '100%', touchAction: 'pan-y', cursor: 'grab', outline: 'none' });
   canvas.setAttribute?.('tabindex', '0');
   canvas.setAttribute?.('role', 'img');

@@ -14,6 +14,7 @@ import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.js';
 import { settleCity, applyLifeAction } from './life-service.js';
 import { buildRoutes } from './routes/index.js';
+import { executeCommand } from './routes/core.js';
 import { createOnce } from './routes/once.js';
 import { buildSocketHandlers } from './ws/index.js';
 import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canOccupyVenue } from './protocol.js';
@@ -330,6 +331,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       revalidate: async () => {},
     },
   };
+  // One game action for the caller, exactly once, with everything it changed saved together (routes/core.js).
+  ctx.command = (request, body, options) => executeCommand(ctx, request, body, options);
   const sockets = buildSocketHandlers(ctx, wsModules);
   const routes = buildRoutes(ctx, routeModules);
   server.on('upgrade', async (req, socket, head) => {

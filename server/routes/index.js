@@ -99,6 +99,24 @@
  *                                          `stateGuard: '<what stored state makes a repeat harmless>'`
  *                                          when your own collection, written in the same transaction,
  *                                          is the record (a ballot entry, a queue you remove from).
+ *   ctx.command(request, { type, payload, cityId, actionId }, { internal?, scope?, afterAction? }?) → Promise<outcome>
+ *                                          ONE game action for the caller, as a whole request: session
+ *                                          check, settlement, action, receipt — in a single saved
+ *                                          transaction. Call it directly from the handler, NEVER inside
+ *                                          transact. A repeat of the action id returns the first outcome
+ *                                          with duplicate: true; other contents, authority or scope → 409.
+ *                                          For a server-only action name the type in server code and pass
+ *                                          { internal: true } yourself. { scope: 'my.route', afterAction }
+ *                                          runs afterAction({ db, session, result }) once, after a
+ *                                          successful action and before the receipt: the counterparty or
+ *                                          queue write that must be saved with the charge (throw → the
+ *                                          charge, the receipt and everything else are discarded). It is
+ *                                          synchronous and sends nothing. Never forward these options
+ *                                          from request JSON. (routes/core.js executeCommand)
+ *                                            return { body: await ctx.command(request,
+ *                                              { actionId: body.actionId, cityId: body.cityId,
+ *                                                type: 'my.fixed.action', payload: { amount: body.amount } },
+ *                                              { internal: true }), renew: true };
  *   ctx.once(db, session, { id, kind, fingerprint }, run) → run()'s result, or the first result + duplicate: true
  *                                          exactly-once for any write that charges or creates something
  *                                          (inside transact). `id` is the client's `<ms>:<uuid>` request

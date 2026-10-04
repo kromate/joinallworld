@@ -119,12 +119,15 @@ export function createOnce({ now, windowMs, limits = {} }) {
    * when a route forwards a request's action id. Refusals are recorded too, as they always were
    * for actions: the same id returns the same answer. Returns the result of run(), or
    * { ok, code, duplicate: true } for a repeat.
+   * `authority` is a fixed string from server code (never from a request) that becomes part of the
+   * receipt's identity: ctx.command uses it so that an id spent with server authority, or under one
+   * route's scope, cannot be replayed as an ordinary player action or under another scope (409).
    */
-  function action(session, body, run) {
+  function action(session, body, run, { authority = '' } = {}) {
     const actionAt = parseActionId(body.actionId, now(), windowMs);
     if (!isRecord(session.actions)) session.actions = {};
     pruneReceipts(session.actions, now(), windowMs);
-    const full = actionFingerprint(body), fingerprint = boundedFingerprint(full);
+    const full = `${authority}${actionFingerprint(body)}`, fingerprint = boundedFingerprint(full);
     const old = Object.hasOwn(session.actions, body.actionId) ? session.actions[body.actionId] : null;
     // A receipt written before fingerprints were bounded holds the full text; accept either form.
     if (old && old.fingerprint !== fingerprint && old.fingerprint !== full) throw fail(409, 'action_id_conflict');

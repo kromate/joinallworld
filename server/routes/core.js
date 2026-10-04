@@ -29,6 +29,47 @@ export const outcomeKey = (state) => (state ? JSON.stringify([state.cash, state.
   state.health?.sick ?? false, state.health?.cause ?? null, state.travel?.event ?? null, state.skills ?? null,
   state.goals?.chain ?? 0, state.goals?.stars ?? 0, state.goals?.granted ?? 0, state.goals?.dreamDone ?? false]) : 'none');
 
+/**
+ * ctx.command — the authenticated, saved, retry-safe boundary for a route that runs ONE game action
+ * for the caller (documented in routes/index.js). Everything happens in a single store transaction:
+ * the session check, the settlement, the action, the optional `afterAction` step and the receipt.
+ * So they are all saved or none is; a repeat of the same action id returns the first outcome
+ * ({ ok, code, state, duplicate: true }) without running anything again; the same id with other
+ * contents, with other authority or under another scope is 409 action_id_conflict; and an id older
+ * than the action window is 409 action_expired, so it can never run after its receipt was dropped.
+ * Options come from server code only — never forward them from a request:
+ *   internal     true → the action runs with server authority (ctx.act), so server-only types work
+ *   scope        a fixed name for the calling route ('civic.queue'); required with afterAction
+ *   afterAction  ({ db, session, result }) => void, called once after a SUCCESSFUL action and before
+ *                the receipt is written (never on a repeat). For the counterparty or queue write
+ *                that belongs to the charge: throw and the charge, the receipt and every other change
+ *                are discarded together. It must be synchronous and must not send anything.
+ */
+export async function executeCommand(ctx, request, body, { internal = false, scope, afterAction } = {}) {
+  const { store, now, settle, core, config } = ctx;
+  if (scope !== undefined && (typeof scope !== 'string' || !/^[a-z][a-z0-9_.-]{0,63}$/.test(scope))) throw new Error('A command scope is a fixed server string');
+  if (afterAction !== undefined && (typeof afterAction !== 'function' || scope === undefined)) throw new Error('A command callback requires a fixed server scope');
+  if (!body || typeof body !== 'object' || Array.isArray(body)) throw ctx.fail(400, 'invalid_action');
+  validateActionPayload(body, now(), config.actionWindowMs);
+  const authority = `${scope ? `scope:${scope}:` : ''}${internal === true ? 'internal:' : ''}`;
+  const { outcome, publicId } = await store.transact(db => {
+    const session = request.requireSession(db, { renew: true });
+    validateActionPayload(body, now(), config.actionWindowMs);
+    const state = settle(session, body.cityId);
+    const result = core.actionOnce(session, body, () => {
+      const done = internal === true ? ctx.act(state, body) : core.playerAct(state, body);
+      if (done.ok && afterAction) {
+        const pending = afterAction({ db, session, result: done });
+        if (pending && typeof pending.then === 'function') throw new Error('A command callback must be synchronous');
+      }
+      return done;
+    }, { authority });
+    return { publicId: session.publicId, outcome: result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true } : result };
+  });
+  await core.validateMemberships(request.secret, body.cityId, outcome.state, publicId);
+  return outcome;
+}
+
 export default function coreRoutes(ctx) {
   const { store, now, fail, allow, settle, core, config } = ctx;
   /** For a request that only reads: when the renewal could not be saved, answer from the stored data instead. */
@@ -113,18 +154,11 @@ export default function coreRoutes(ctx) {
     'POST /api/action': async (request) => {
       const body = await request.json();
       validateActionPayload(body, now(), config.actionWindowMs);
-      const { outcome, publicId } = await store.transact(db => {
-        const session = request.requireSession(db, { renew: true });
-        validateActionPayload(body, now(), config.actionWindowMs);
-        const state = settle(session, body.cityId);
-        // never ctx.act: a player's request carries no server authority
-        const result = core.actionOnce(session, body, () => core.playerAct(state, body));
-        return { publicId: session.publicId, outcome: result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true } : result };
-      });
-      // Saved (a repeat is checked like a first answer). A rejected or unsaved action changed nothing:
-      // the route host then re-checks the rooms against the stored life (core.revalidate, server.js).
-      await core.validateMemberships(request.secret, body.cityId, outcome.state, publicId);
-      return { body: outcome, renew: true };
+      // A player's own request: no server authority, no scope (see executeCommand above). Once it is
+      // saved the rooms are told with the state it produced (a repeat is checked like a first answer).
+      // A rejected or unsaved action changed nothing: the route host then re-checks the rooms against
+      // the stored life (core.revalidate, server.js).
+      return { body: await executeCommand(ctx, request, body), renew: true };
     },
   };
 }

@@ -38,10 +38,10 @@
  * banner ("You’re joining Ada"), and a table it names (?table=<id>) is opened in the Tables app. The funnel
  * events ('jaw:track') are reported from the server's own state as it changes (see accepted()).
  */
-import { createClient, CITIES, roomJoinNeeded } from './client.js';
-import { createLazyLoader } from './lazy-load.js';
+import { createClient, CITIES, roomJoinNeeded } from './client.ts';
+import { createLazyLoader } from './lazy-load.ts';
 import { createShell } from './ui/shell.js';
-import { linkWords } from './ui/link.js';
+import { linkWords } from './ui/link.ts';
 import { PANELS, sessionGate } from './ui/panels/index.js';
 import { S as social, loadPeople, onPeople, takeLinkHost, resetSocial } from './ui/panels/social-client.js';
 import { crowdList, playersHere } from './scene/crowd.ts';
@@ -49,9 +49,9 @@ import { NPCS } from './game/content/npcs.ts';
 import { viewLife, VENUES, isDeparting } from './life.ts';
 import { venueLabel, venueDistrict } from './game/content/venues.ts';
 import { funnelSnap, funnelEvents, joinBanner, linkBanner } from './quick-start/model.ts';
-import { pendingPlay, keepPlay, forgetDraft, joinTarget, forgetJoin, track, play, captureLink, pendingRef, forgetRef, pendingTable, forgetTable, deviceToken } from './quick-start/entry.js';
+import { pendingPlay, keepPlay, forgetDraft, joinTarget, forgetJoin, track, play, captureLink, pendingRef, forgetRef, pendingTable, forgetTable, deviceToken } from './quick-start/entry.ts';
 import { tableById } from './tables/places.ts';
-import { telemetry } from './telemetry/index.js';
+import { telemetry } from './telemetry/index.ts';
 
 const $ = (id) => document.getElementById(id);
 let storage; try { storage = window.localStorage; } catch {}

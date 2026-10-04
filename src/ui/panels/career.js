@@ -7,8 +7,8 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './career.css';
-import { esc, money, json, cap, empty, mark as glyphMark, iconFor } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, json, cap, empty, mark as glyphMark, iconFor } from '../dom.ts';
+import { linkWords } from '../link.ts';
 
 const mark = (met, text) => `<span class="${met ? 'is-met' : 'is-unmet'}">${glyphMark(met ? 'check' : 'close')}<span class="ui-sr">${met ? 'Met:' : 'Not met:'}</span> ${esc(text)}</span>`;
 

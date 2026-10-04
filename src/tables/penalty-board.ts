@@ -5,7 +5,7 @@
  * and sends a choice when a side is tapped. A choice stays secret on the server until both are in.
  * Three real buttons: it works by keyboard and at 360 px, and needs no reflexes or fast network.
  */
-import { esc, glyph } from '../ui/dom.js';
+import { esc, glyph } from '../ui/dom.ts';
 import { ZONES } from './penalty.ts';
 import type { Kick, PenaltyView } from './penalty.ts';
 import type { TableStateFrame } from '../types/growth.ts';

@@ -57,7 +57,7 @@ import { lgaAt } from './lga.ts';
 import { tripOf, createTripClock, tripPose } from './trip.ts';
 import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
 import { avatarBox, labelShift, nearPoints } from './labels.ts';
-import { iconFor } from '../ui/icon-map.js';
+import { iconFor } from '../ui/icon-map.ts';
 
 /** What the map reads of a venue (src/game/content/venues.js): its icon, filter category and opening hours. */
 interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }

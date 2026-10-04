@@ -23,7 +23,7 @@ import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/
 import { openingInfo } from '../game/clock.ts';
 import { isDeparting } from '../game/registry.ts';
 import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, unpackStyle } from '../game/content/world.ts';
-import { iconFor } from '../ui/icon-map.js';
+import { iconFor } from '../ui/icon-map.ts';
 import { buildNetwork, pointAt } from './roads.ts';
 import { flatModel, flatSvg } from './flat.ts';
 import { estateLayout, plotAt } from './estates.ts';

@@ -6,9 +6,9 @@
  * system). Every disabled button says what is missing.
  */
 import './cars.css';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { esc, money, json } from '../dom.js';
-import { linkWords } from '../link.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { esc, money, json } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { CAR_RESALE_RATE } from '../../game/content/cars.ts';
 
 /**

@@ -6,10 +6,10 @@
  * and announce — every disabled control here shows that reason. The app is a form (`live: false`).
  * The weekly cycle and all eligibility rules are original beta design.
  */
-import { esc, money, empty, avatar, mark } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, empty, avatar, mark } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { ELECTION, STATE_HOUSE_TEXT } from '../../game/content/civic.ts';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 import { button, busy, dateTime, count, entry, load, put, send, stale, status, until, requestId, requestDone, markCivicNewsRead } from './civic-ui.js';
 
 const PANEL = 'governor';

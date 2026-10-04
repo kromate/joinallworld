@@ -1,5 +1,5 @@
 /** Lazy panel group: character creation and the account landing. Loaded on first open (see ../index.js). */
-import '../../phone/icons-more.js';
+import '../../phone/icons-more.ts';
 import onboarding, { HOME_EXTRAS } from '../onboarding.js';
 import { lgaHomeExtra } from '../lga-card.js';
 import account from '../account.js';

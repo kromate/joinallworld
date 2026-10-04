@@ -14,11 +14,11 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './support.css';
-import { esc, empty, skeleton } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, empty, skeleton } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { formatClock } from '../../game/clock.ts';
-import { noteReports, markReportsRead, noteFiled } from '../phone/reports.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { noteReports, markReportsRead, noteFiled } from '../phone/reports.ts';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 
 const LABELS = { money: 'Money or balance', stuck: 'I am stuck', messages: 'Messages or invites', people: 'Another player', bug: 'Something is broken', other: 'Something else' };
 const STATUS = { received: 'Received — waiting for a moderator', reviewing: 'Being looked at', resolved: 'Resolved', dismissed: 'Closed without action' };

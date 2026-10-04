@@ -4,8 +4,8 @@
  * friends — and Find a player.
  * The panel contract is at the top of src/ui/shell.js. All names are escaped.
  */
-import { esc, json, empty, avatar } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, json, empty, avatar } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { PRESENCE, presenceText } from '../../game/social-model.ts';
 import { S, bindCommon, gate, call } from './social-client.js';
 

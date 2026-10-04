@@ -3,7 +3,7 @@
 // control kit's own (src/ui/controls.js).
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { keepsNative as legacyKeepsNative, nextEnabled as legacyNextEnabled, typeAhead as legacyTypeAhead } from '../../../ui/controls.js'
+import { keepsNative as legacyKeepsNative, nextEnabled as legacyNextEnabled, typeAhead as legacyTypeAhead } from '../../../ui/controls.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
 import { createGame } from '../../state/game.ts'
 import { memoryStorage } from '../../testing/fakeServer.ts'

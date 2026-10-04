@@ -11,9 +11,9 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './jobs.css';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { esc, money, json, cap, chevron, mark, iconFor } from '../dom.js';
-import { linkWords } from '../link.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { esc, money, json, cap, chevron, mark, iconFor } from '../dom.ts';
+import { linkWords } from '../link.ts';
 
 /** UI-only state: the job id whose switch is being confirmed, or 'quit'. */
 let asking = null;

@@ -7,10 +7,10 @@
  * from another player.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, json, avatar, glyph } from '../dom.js';
+import { esc, json, avatar, glyph } from '../dom.ts';
 import { inviteIdFrom } from '../../game/social-model.ts';
 import { S, bindCommon, gate, call, perform, sync, cityId } from './social-client.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 
 const ui = { paste: '', host: null, house: null, loading: false, params: null };
 const STATUS = { home: 'At home', out: 'Online, but not at home', reconnecting: 'Reconnecting…', offline: 'Offline' };

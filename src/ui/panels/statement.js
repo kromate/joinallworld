@@ -11,9 +11,9 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './statement.css';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { esc, money, json, empty, ledgerRow } from '../dom.js';
-import { linkWords } from '../link.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { esc, money, json, empty, ledgerRow } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { formatClock, lagosDayStart, WEEKDAYS } from '../../game/clock.ts';
 
 let checked = null; // { cityId, closing, at, ok, text }

@@ -10,8 +10,8 @@
  * Every disabled control says why. All names and text are escaped.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, json, money, empty, avatar, mark, iconFor } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, json, money, empty, avatar, mark, iconFor } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { NPCS } from '../../game/content/npcs.ts';
 import { PRESENCE, presenceText, roomSummary } from '../../game/social-model.ts';
 import { S, start, bindCommon, gate, perform, loadPeople, loadProfile, cityId, newClientId, refreshLife } from './social-client.js';

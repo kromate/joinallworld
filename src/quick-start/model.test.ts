@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE, NUDGE_CAP, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.ts';
 import type { JoinBanner } from './model.ts';
 import type { Look } from '../types/life.ts';
-import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom } from './look-model.js';
+import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom } from './look-model.ts';
 import { checkLook } from '../game/systems/onboarding.ts';
 import { validateName } from '../../server/protocol.js';
 import { makeRng } from '../game/util.ts';

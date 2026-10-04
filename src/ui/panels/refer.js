@@ -5,9 +5,9 @@
  * share sheet every Share button in the growth apps opens.
  * Rules: server/growth/referral.js; numbers: src/game/content/growth.js.
  */
-import { esc, money, mark, avatar, empty } from '../dom.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { linkWords } from '../link.js';
+import { esc, money, mark, avatar, empty } from '../dom.ts';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { linkWords } from '../link.ts';
 import { G, load, share, shareNow, copyShare } from './growth-client.js';
 
 const STATE = { joined: 'Made a Sim · has not worked two days yet', counted: 'Playing · counted' };

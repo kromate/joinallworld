@@ -4,7 +4,7 @@
  * One city is open (Lagos); the others on the Nigeria map are "coming soon" and have no card,
  * so there is nothing to enter from here.
  */
-import { esc, json, iconFor } from '../dom.js';
+import { esc, json, iconFor } from '../dom.ts';
 
 export default {
   id: 'city', title: 'City', placement: 'modal',

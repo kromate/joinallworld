@@ -7,9 +7,9 @@
  * Rules and validation live on the server (server/civic) and in src/game/systems/civic.js.
  */
 import './civic.css';
-import { unseenNews } from '../phone/logic.js';
-import { esc, skeleton, mark } from '../dom.js';
-import { linkWords, linkButton } from '../link.js';
+import { unseenNews } from '../phone/logic.ts';
+import { esc, skeleton, mark } from '../dom.ts';
+import { linkWords, linkButton } from '../link.ts';
 
 const cache = new Map();
 const pending = new Set();

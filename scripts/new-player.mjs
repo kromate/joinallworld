@@ -40,7 +40,7 @@ import { MISSION_REWARDS } from '../src/game/content/missions.ts';
 import { STARTER_GOALS } from '../src/game/content/goals.ts';
 import { venueLabel } from '../src/game/content/venues.ts';
 import { joinIdFrom, linkParts, joinBanner, GIFT_LINE } from '../src/quick-start/model.ts';
-import { presetLook } from '../src/quick-start/look-model.js';
+import { presetLook } from '../src/quick-start/look-model.ts';
 import { tableById } from '../src/tables/places.ts';
 
 const CITY = 'lagos', ORIGIN = 'https://play.example';

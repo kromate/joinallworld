@@ -8,7 +8,7 @@
  * no number is shown. The chip also carries the real presence counter and is where civic
  * notices (a new Governor, an announcement) surface as toasts. How the hunt works is original.
  */
-import { esc, money, mark } from '../dom.js';
+import { esc, money, mark } from '../dom.ts';
 import { count, entry, load, put } from './civic-ui.js';
 
 const SEEN_KEY = 'joinallworld-civic-seen';

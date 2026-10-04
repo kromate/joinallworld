@@ -4,10 +4,10 @@
  * Counts and the online flag come from the server (GET /api/civic/neighbours). "Say hi" opens
  * that player's card (the social 'person' panel): chat, add friend, knock at their house.
  */
-import { esc, json, avatar } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, json, avatar } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { button, busy, count, entry, load, send, stale, status } from './civic-ui.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 
 const key = (view) => `hood:${view.cityId}`;
 const path = (view) => `/api/civic/neighbours?city=${view.cityId}`;

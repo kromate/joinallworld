@@ -8,8 +8,8 @@
  * is bought or changed until Buy or Wear is pressed.
  */
 import './boutique.css';
-import { esc, money, json, mark } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, json, mark } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { lookStage, lookSummary, mountLookPreview, withAccessory, withoutAccessory } from './look-ui.js';
 
 const SECTIONS = [['hair', 'Hairstyles'], ['outfit', 'Outfits'], ['fabric', 'Fabrics'], ['accessories', 'Accessories']];

@@ -4,8 +4,8 @@
  * registered. Everything is derived from view.travel (systems/travel.js), so the map card and
  * the Ride app can never disagree about a fare, a trip time or why a trip is refused.
  */
-import { esc, money, cap, iconFor } from '../dom.js';
-import { linkWords, linkAttrs } from '../link.js';
+import { esc, money, cap, iconFor } from '../dom.ts';
+import { linkWords, linkAttrs } from '../link.ts';
 
 /** What follows "…, so the trip cannot start." for each connection state: the way out, truthfully. */
 const LINK_NEXT = {

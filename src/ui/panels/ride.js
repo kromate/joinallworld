@@ -9,8 +9,8 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './ride.css';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { esc, json, mark, iconFor } from '../dom.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { esc, json, mark, iconFor } from '../dom.ts';
 import { chosenMode, fareText, fixButton, goBlock, modeIcon, statusClass, tripLine } from './world-ui.js';
 
 let wanted = null;

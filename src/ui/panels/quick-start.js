@@ -25,12 +25,12 @@
  *              enforced flow left on its first step
  */
 import './quick-start.css';
-import { esc, mark } from '../dom.js';
-import { linkWords, linkButton } from '../link.js';
+import { esc, mark } from '../dom.ts';
+import { linkWords, linkButton } from '../link.ts';
 import { lookStage, lookEditor, chooseLook, lookTabClick, lookFocusBody, mountLookPreview, starterWardrobe, avatarSvg } from './look-ui.js';
-import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, starterLook } from '../../quick-start/look-model.js';
-import { quickDraft, keepDraft, firstLanding } from '../../quick-start/draft.js';
-import { keepPlay, joinTarget, pendingRef, track, play } from '../../quick-start/entry.js';
+import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, starterLook } from '../../quick-start/look-model.ts';
+import { quickDraft, keepDraft, firstLanding } from '../../quick-start/draft.ts';
+import { keepPlay, joinTarget, pendingRef, track, play } from '../../quick-start/entry.ts';
 import { APPEARANCE } from '../../game/content/traits.ts';
 
 const ID = 'quick-start';

@@ -1,9 +1,9 @@
 // The typed boundary to the parts of the existing Phone that arrive with it (not in the first
 // download): app tints, the wallpaper choice, and the check for a moderator's reply. Imported only
 // by the Phone's own component, so they stay out of the entry chunk.
-import { tintOf as tintOfJs } from '../../ui/phone/icons-more.js'
-import { getWallpaper as getWallpaperJs } from '../../ui/phone/wallpapers.js'
-import { checkReports as checkReportsJs } from '../../ui/phone/reports.js'
+import { tintOf as tintOfJs } from '../../ui/phone/icons-more.ts'
+import { getWallpaper as getWallpaperJs } from '../../ui/phone/wallpapers.ts'
+import { checkReports as checkReportsJs } from '../../ui/phone/reports.ts'
 import type { PanelApi, PanelMeta } from '../types/panel.ts'
 
 /** An app's icon and app bar colour: its own `tint`, else the one for its id. */

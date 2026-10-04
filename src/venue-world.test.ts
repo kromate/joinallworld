@@ -162,7 +162,7 @@ test('HUD insets re-centre the scene with one frame per change, never by themsel
 });
 
 test('only the motion loop may name a frame callback; no scene, map or shell source holds an interval', async () => {
-  const files = ['src/venue-world.ts', 'src/world-map.ts', 'src/city-map.ts', 'src/ui/shell.js', 'src/life-main.js', 'src/client.js',
+  const files = ['src/venue-world.ts', 'src/world-map.ts', 'src/city-map.ts', 'src/ui/shell.js', 'src/life-main.js', 'src/client.ts',
     ...(await readdir('src/scene')).map(name => `src/scene/${name}`), ...(await readdir('src/ui/panels')).filter(name => name.endsWith('.js')).map(name => `src/ui/panels/${name}`)];
   const withLoop = [];
   for (const file of files) {

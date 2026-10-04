@@ -26,7 +26,7 @@ import { createBatch, sceneMaterials } from '../scene/build.ts';
 import { sign } from '../scene/props.ts';
 import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
 import { WATER_Y, LANDMARK_SCALE, leanGeometry } from './city-build.ts';
-import { iconFor } from '../ui/icon-map.js';
+import { iconFor } from '../ui/icon-map.ts';
 
 /** Which layers are on. */
 export interface OverlayLayers { billboards?: boolean; sea?: boolean; neighbours?: boolean; gov?: boolean }

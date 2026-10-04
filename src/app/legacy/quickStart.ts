@@ -3,7 +3,7 @@
 // device between tapping Play and the server confirming the look. The module is still JavaScript
 // and still the single owner of that state; the landing screen and this shell read the same
 // `play` object.
-import { forgetDraft as forgetDraftJs, keepPlay as keepPlayJs, pendingPlay as pendingPlayJs, play as playJs } from '../../quick-start/entry.js'
+import { forgetDraft as forgetDraftJs, keepPlay as keepPlayJs, pendingPlay as pendingPlayJs, play as playJs } from '../../quick-start/entry.ts'
 import type { Look } from '../../types/life.ts'
 
 /**

@@ -6,12 +6,12 @@
  * The banner follows the server's schedule whenever the HUD is redrawn (each state poll); it runs
  * no timer of its own, so a new shout-out can take up to a poll interval to appear.
  */
-import { esc, money } from '../dom.js';
+import { esc, money } from '../dom.ts';
 import { RADIO } from '../../game/content/civic.ts';
 import { button, busy, entry, load, put, send, stale, status, until } from './civic-ui.js';
 import { isDeparting } from '../../game/registry.ts';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { linkWords } from '../link.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { linkWords } from '../link.ts';
 import { PANEL, inClub, key, path, schedule, song } from './radio-banner.js';
 
 const draft = { title: '', artist: '', requestId: null };

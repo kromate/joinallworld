@@ -8,7 +8,7 @@
  * `role: 'session-gate'` to this panel — src/life-main.js then opens it instead of ./session.js
  * with params { reason: 'new' | 'expired' }. The panel contract is at the top of src/ui/shell.js.
  */
-import { placeholder } from '../dom.js';
+import { placeholder } from '../dom.ts';
 
 export default {
   id: 'account', title: 'Account', placement: 'modal',

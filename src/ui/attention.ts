@@ -36,7 +36,39 @@ export const COACH_GOALS = 3;
 /** A situational pointer (Go, the trip card, a roadside prompt) is shown this many times, then retired. */
 export const TAPER = 3;
 
-const isTrip = (active) => active?.kind === 'travel' || active?.kind === 'commute';
+/** A point on screen (CSS px). */
+export interface Point { x: number; y: number }
+/** The edges of a box on screen; a DOMRect fits. */
+export interface Box { left: number; right: number; top: number; bottom: number }
+/** The size of the viewport. */
+export interface ViewSize { width: number; height: number }
+
+/** The goal chip as the coach reads it (the full type is GoalChip in src/types/view.ts). */
+export interface CoachChip { kind: string; step: number; of: number; title: string; hint: string; go?: readonly string[] | null; activity?: string; open?: string }
+/** What nextStep reads of the player's state, the view and the screen. Every part is optional: a missing one means "nothing to say". */
+export interface StepContext {
+  state?: { location?: string; spot?: string | null; activeAction?: { kind?: string } | null } | null;
+  view?: {
+    connected?: boolean;
+    onboarding?: { required?: boolean } | null;
+    travel?: { event?: unknown } | null;
+    goals?: { chip?: CoachChip | null } | null;
+    activities?: { spots?: readonly { id: string; label: string }[] } | null;
+  } | null;
+  mode?: string;
+  expanded?: boolean;
+  clean?: boolean;
+  hintsOff?: boolean;
+  sheet?: string | null;
+  seen?: Record<string, number>;
+  apps?: (id: string) => { placement?: string; title: string } | undefined;
+  has?: (selector: string) => boolean;
+  picked?: unknown;
+}
+/** The one next thing to do. */
+export interface NextStep { id: 'go' | 'trip' | 'roadside' | 'goal'; text: string; target: string | null; bubble: boolean; title?: string; app?: string }
+
+const isTrip = (active?: { kind?: string } | null): boolean => active?.kind === 'travel' || active?.kind === 'commute';
 
 /**
  * The next step. ctx: { state, view, mode ('venue' | 'map' | 'buy' | …), expanded, clean, hintsOff,
@@ -47,10 +79,10 @@ const isTrip = (active) => active?.kind === 'travel' || active?.kind === 'commut
  *   target  a selector for the control to ring (null: nothing to ring, the text stands alone)
  *   bubble  true: say the text; false: ring only
  */
-export function nextStep(ctx) {
+export function nextStep(ctx?: StepContext | null): NextStep | null {
   const { state, view, mode = 'venue', expanded = false, clean = false, hintsOff = false, sheet = null, seen = {}, apps = () => undefined, has = () => false, picked = null } = ctx || {};
   if (!state || !view || hintsOff || clean || !view.connected || view.onboarding?.required) return null;
-  const fresh = (id) => (seen[id] || 0) < TAPER;
+  const fresh = (id: string): boolean => (seen[id] || 0) < TAPER;
   const active = state.activeAction;
   // A trip that is running: the first few times, say where its card is (it is easy to miss on a big screen).
   if (isTrip(active)) return mode === 'map' && fresh('trip') ? { id: 'trip', text: 'Your trip is here — time left and Cancel', target: '.map-trip', bubble: true } : null;
@@ -62,7 +94,7 @@ export function nextStep(ctx) {
   const goal = view.goals?.chip;
   if (!goal || goal.kind !== 'goal') return null;
   const bubble = goal.step <= COACH_GOALS, title = `Goal ${goal.step} of ${goal.of} · ${goal.title}`;
-  const step = (text, target, more) => ({ id: 'goal', text, target, bubble, title, ...more });
+  const step = (text: string, target: string | null, more?: { app?: string }): NextStep => ({ id: 'goal', text, target, bubble, title, ...more });
   if (active) {
     if (!bubble) return null;
     // Only the goal's own activity (one started at the goal's spot) is cheered on; anything else is named as a detour.
@@ -88,22 +120,33 @@ export function nextStep(ctx) {
 }
 
 /** Which way is `to` from `from`, as one of eight arrows, and how far (CSS px). Pure. */
-export function wayTo(from, to) {
+export function wayTo(from: Point, to: Point): { far: number; arrow: string } {
   const dx = to.x - from.x, dy = to.y - from.y, far = Math.hypot(dx, dy);
   const turn = Math.round(Math.atan2(dy, dx) / (Math.PI / 4));
-  return { far, arrow: ['→', '↘', '↓', '↙', '←', '↖', '↑', '↗'][((turn % 8) + 8) % 8] };
+  return { far, arrow: ['→', '↘', '↓', '↙', '←', '↖', '↑', '↗'][((turn % 8) + 8) % 8]! }; // the index is 0..7
 }
 
 /** A pointer is worth a bubble only when the target is off-screen or a good way from where the player is looking. Pure. */
-export function needsBubble(from, box, view) {
+export function needsBubble(from: Point, box: Box, view: ViewSize): boolean {
   const off = box.right < 0 || box.bottom < 0 || box.left > view.width || box.top > view.height;
   const to = { x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2 };
   return off || Math.hypot(to.x - from.x, to.y - from.y) > Math.max(260, Math.min(view.width, view.height) * 0.32);
 }
 
-export function createAttention({ root, dialog } = {}) {
+/** Something to ring: an element, or a selector inside the dialog or the root. */
+export type AttentionTarget = string | HTMLElement | null | undefined;
+export interface Attention {
+  point(target: AttentionTarget, options?: { text?: string; from?: Point | null; say?: boolean }): HTMLElement | null | undefined;
+  clear(): void;
+  announce(text: string, options?: { at?: AttentionTarget; kind?: string }): void;
+  arrive(element: HTMLElement | null | undefined, from: Point | null | undefined): void;
+  destroy(): void;
+}
+
+// `root` is needed whenever there is a document; without a document nothing here touches it.
+export function createAttention({ root, dialog }: { root?: ParentNode; dialog?: HTMLDialogElement | null } = {}): Attention {
   const doc = globalThis.document;
-  if (!doc?.createElement) return { point() {}, clear() {}, announce() {}, arrive() {}, destroy() {} };
+  if (!doc?.createElement) return { point() { return undefined; }, clear() {}, announce() {}, arrive() {}, destroy() {} };
   const layer = doc.createElement('div');
   layer.className = 'attn';
   // What is said for screen readers: polite, and separate from the toasts so neither swallows the other.
@@ -112,19 +155,19 @@ export function createAttention({ root, dialog } = {}) {
   layer.append(live);
   doc.body.append(layer);
   const reduced = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
-  const view = () => ({ width: globalThis.innerWidth || 0, height: globalThis.innerHeight || 0 });
-  const middle = () => ({ x: view().width / 2, y: view().height * 0.56 });
-  const clampTo = (value, low, high) => Math.max(low, Math.min(high, value));
-  const find = (target) => (typeof target === 'string' ? (dialog?.open && dialog.querySelector(target)) || root.querySelector(target) : target) || null;
+  const view = (): ViewSize => ({ width: globalThis.innerWidth || 0, height: globalThis.innerHeight || 0 });
+  const middle = (): Point => ({ x: view().width / 2, y: view().height * 0.56 });
+  const clampTo = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
+  const find = (target: AttentionTarget): HTMLElement | null => (typeof target === 'string' ? (dialog?.open && dialog.querySelector<HTMLElement>(target)) || root!.querySelector<HTMLElement>(target) : target) || null;
   const home = () => (dialog?.open ? dialog : doc.body);
-  let ringed = null, bubble = null, said = '';
+  let ringed: HTMLElement | null = null, bubble: HTMLParagraphElement | null = null, said = '';
 
-  function clear() {
+  function clear(): void {
     ringed?.classList.remove('is-coach');
     ringed = null;
     bubble?.remove(); bubble = null;
   }
-  function point(target, { text = '', from = null, say = true } = {}) {
+  function point(target: AttentionTarget, { text = '', from = null, say = true }: { text?: string; from?: Point | null; say?: boolean } = {}): HTMLElement | null {
     const node = find(target);
     if (node !== ringed) { ringed?.classList.remove('is-coach'); ringed = node; node?.classList.add('is-coach'); }
     if (!node || !text) { bubble?.remove(); bubble = null; if (!node) said = ''; return node; }
@@ -146,7 +189,7 @@ export function createAttention({ root, dialog } = {}) {
     layer.append(bubble);
     return node;
   }
-  function announce(text, { at = null, kind = 'info' } = {}) {
+  function announce(text: string, { at = null, kind = 'info' }: { at?: AttentionTarget; kind?: string } = {}): void {
     if (!text) return;
     live.textContent = text;
     const node = find(at), size = view();
@@ -162,7 +205,7 @@ export function createAttention({ root, dialog } = {}) {
     // The place it happened answers too: one flash of its outline.
     if (node && !reduced()) { node.classList.remove('is-noted'); void node.offsetWidth; node.classList.add('is-noted'); node.addEventListener('animationend', () => node.classList.remove('is-noted'), { once: true }); }
   }
-  function arrive(element, from) {
+  function arrive(element: HTMLElement | null | undefined, from: Point | null | undefined): void {
     if (!element || !from || reduced()) return;
     const box = element.getBoundingClientRect();
     if (!box.width) return;

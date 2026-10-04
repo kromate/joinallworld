@@ -8,7 +8,7 @@
  */
 import { F, S, DOT } from './icons.ts';
 
-export const GROWTH_GLYPHS = {
+export const GROWTH_GLYPHS: Record<string, string> = {
   missions: `<rect x="5" y="4" width="14" height="17" rx="2.5" ${F}/><path d="M9 4V3h6v1M8.5 10l1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15.5 10.5h.5M15.5 16.5h.5"/>`,
   events: `<rect x="4" y="5.5" width="16" height="15" rx="2.5" ${F}/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><path d="m12 12.3 1 2 2.2.3-1.6 1.5.4 2.2-2-1.1-2 1.1.4-2.2-1.6-1.5 2.2-.3Z" ${S}/>`,
   refer: `<circle cx="9" cy="9" r="3.2" ${F}/><path d="M3 20c.4-3.4 2.9-5.5 6-5.5s5.6 2.1 6 5.5Z" ${F}/><path d="M18 7v6M15 10h6"/>`,

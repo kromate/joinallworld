@@ -26,7 +26,7 @@ export const S = 'fill="currentColor" stroke="none"';
 export const DOT = 'stroke-width="2.7"';
 const FACE = `<circle cx="12" cy="12" r="8.5" ${F}/><path d="M9 9.5h.01M15 9.5h.01" ${DOT}/>`;
 
-const GLYPHS = {
+const GLYPHS: Record<string, string> = {
   // ---- apps -----------------------------------------------------------------------------
   jobs: `<rect x="3" y="7.5" width="18" height="12" rx="2.5" ${F}/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3 12.5h18M12 11.5v2.5"/>`,
   messages: `<path d="M5 4.5h14A2.5 2.5 0 0 1 21.5 7v7.5A2.5 2.5 0 0 1 19 17h-7l-4.5 3.5V17H5a2.5 2.5 0 0 1-2.5-2.5V7A2.5 2.5 0 0 1 5 4.5Z" ${F}/><path d="M8 10.8h.01M12 10.8h.01M16 10.8h.01" ${DOT}/>`,
@@ -166,23 +166,23 @@ const GLYPHS = {
 };
 /** Drawn for a name that is not registered (yet): a quiet dot in the same box. */
 const PENDING = `<circle cx="12" cy="12" r="3" ${F}/>`;
-const listeners = new Set();
+const listeners = new Set<() => void>();
 
 /** A bare glyph, sized by CSS. `className` (optional) is one of our own class names, never player text. */
-export const glyph = (name, className) => `<svg${className ? ` class="${className}"` : ''} aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[name] || PENDING}</svg>`;
-export const hasGlyph = (name) => typeof name === 'string' && Object.hasOwn(GLYPHS, name);
+export const glyph = (name: string, className?: string): string => `<svg${className ? ` class="${className}"` : ''} aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[name] || PENDING}</svg>`;
+export const hasGlyph = (name: unknown): boolean => typeof name === 'string' && Object.hasOwn(GLYPHS, name);
 /** Add glyphs to the set (./icons-more.js does, when the Phone or a lazy panel group is fetched). */
-export function registerGlyphs(set) {
+export function registerGlyphs(set: Record<string, string>): void {
   Object.assign(GLYPHS, set);
   for (const listener of listeners) { try { listener(); } catch (error) { console.error(error); } }
 }
 /** Be told when glyphs were added, to redraw anything that showed a placeholder. Returns the unsubscribe. */
-export function onGlyphs(listener) { listeners.add(listener); return () => listeners.delete(listener); }
+export function onGlyphs(listener: () => void): () => boolean { listeners.add(listener); return () => listeners.delete(listener); }
 
 /** Panel ids whose glyph has another name. */
-const ALIAS = { 'hunt-sheet': 'hunt', 'state-house': 'governor', roadside: 'barrier', 'roadside-chip': 'barrier', needs: 'health', profile: 'person', skills: 'book',
+const ALIAS: Record<string, string> = { 'hunt-sheet': 'hunt', 'state-house': 'governor', roadside: 'barrier', 'roadside-chip': 'barrier', needs: 'health', profile: 'person', skills: 'book',
   session: 'globe', city: 'globe', onboarding: 'star', account: 'key', 'goal-chip': 'goals', 'home-chip': 'home', 'social-inbox': 'messages', 'radio-banner': 'radio',
   'health-chip': 'health', 'weather-chip': 'sun' };
 /** Glyphs that arrive with ./icons-more.js: known by name before they can be drawn. */
 const LATER = ['contacts', 'family', 'neighbours', 'ads', 'support'];
-export const glyphFor = (id) => (hasGlyph(ALIAS[id] || id) || LATER.includes(id) ? ALIAS[id] || id : 'info');
+export const glyphFor = (id: string): string => (hasGlyph(ALIAS[id] || id) || LATER.includes(id) ? ALIAS[id] || id : 'info');

@@ -6,14 +6,26 @@ import { createClient, outgoing, TEXT, STORAGE_KEY, roomJoinNeeded } from './cli
 import { dispatch } from './life.ts';
 import { START_HOMES, TRAITS, DREAMS } from './game/content/traits.ts';
 import { createLife } from './life.ts';
+import type { ApiError, NameProblem } from './client.ts';
+import type { ActionBody, ActionType } from './types/actions.ts';
+import type { LifeState } from './types/life.ts';
+import type { OwnSession } from './types/protocol.ts';
+
+/** What the tests read of a request body the client sent. */
+interface SentBody { actionId?: string; payload?: unknown }
+/** [method, path, parsed request body] of one fake request. */
+type Call = [string, string, SentBody | undefined]
+/** A fake fetch answer: only what the client reads. */
+const json = (status: number, body: unknown) => ({ ok: status < 300, status, json: async () => body });
+/** Test states that are deliberately not full lives (an action kind this build does not know). */
+const loose = (value: unknown) => value as LifeState;
 
 function harness({ online = true } = {}) {
-  const calls = [], statuses = [], changes = [];
-  let life = createLife({ name: 'Ada' }), up = online, session = { id: 'public-1', name: 'Ada' };
+  const calls: Call[] = [], statuses: [string, boolean][] = [], changes: LifeState[] = [];
+  let life = createLife({ name: 'Ada' }), up = online, session: OwnSession | null = { id: 'public-1', name: 'Ada' };
   const memory = new Map();
-  const json = (status, body) => ({ ok: status < 300, status, json: async () => body });
-  const fetch = async (path, options = {}) => {
-    calls.push([options.method || 'GET', path, options.body ? JSON.parse(options.body) : undefined]);
+  const fetch = async (path: string, options: RequestInit = {}) => {
+    calls.push([options.method || 'GET', path, options.body ? JSON.parse(options.body as string) as SentBody : undefined]);
     if (!up) throw new TypeError('fetch failed');
     if (path === '/api/session') return session ? json(200, { session, serverTime: 5000 }) : json(401, { error: 'device_session_required' });
     if (path.startsWith('/api/life')) return json(200, { state: life, serverTime: 5000 });
@@ -23,7 +35,7 @@ function harness({ online = true } = {}) {
   const client = createClient({ fetch, now: () => 1000, randomUUID: () => '11111111-1111-4111-8111-111111111111', setTimeout: () => 0, clearTimeout: () => {},
     storage: { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) },
     onStatus: (text, error) => statuses.push([text, error]), onChange: state => changes.push(state) });
-  return { client, calls, statuses, changes, memory, setUp: value => { up = value; }, dropSession: () => { session = null; } };
+  return { client, calls, statuses, changes, memory, setUp: (value: boolean) => { up = value; }, dropSession: () => { session = null; } };
 }
 
 test('offline client is read-only: no request, no local grant, state unchanged', async () => {
@@ -31,7 +43,8 @@ test('offline client is read-only: no request, no local grant, state unchanged',
   assert.equal(await h.client.connect(), false);
   assert.equal(h.client.online, false);
   const before = JSON.stringify(h.client.state); h.calls.length = 0;
-  for (const [type, payload] of [['travel', { id: 'library', mode: 'cab' }], ['activity', { id: 'chill' }], ['apply-job', { id: 'community-helper' }], ['cancel', undefined]]) {
+  const attempts: [ActionType, Record<string, unknown> | undefined][] = [['travel', { id: 'library', mode: 'cab' }], ['activity', { id: 'chill' }], ['apply-job', { id: 'community-helper' }], ['cancel', undefined]];
+  for (const [type, payload] of attempts) {
     assert.deepEqual(await h.client.command(type, payload), { ok: false, code: 'offline', reason: TEXT.paused[h.client.link] });
   }
   assert.equal((await h.client.switchCity('ibadan')).ok, false);
@@ -46,7 +59,7 @@ test('online commands carry a server-time action ID and a payload, and only serv
   assert.equal(h.client.serverTimeOffset, 4000);
   const result = await h.client.command('travel', { id: 'library', mode: 'cab' });
   assert.deepEqual(result, { ok: true, code: 'started', reason: undefined });
-  const [method, path, body] = h.calls.at(-1);
+  const [method, path, body] = h.calls.at(-1) as Call;
   assert.deepEqual([method, path], ['POST', '/api/action']);
   assert.deepEqual(body, { actionId: '5000:11111111-1111-4111-8111-111111111111', cityId: 'lagos', type: 'travel', payload: { id: 'library', mode: 'cab' } });
   assert.equal(h.client.state.cash, 4600);
@@ -85,7 +98,7 @@ test('room membership is restored on arrival and after a cancelled trip, and nev
   const arrived = createLife({ location: 'library' });
   const chilling = createLife({ location: 'park', spot: 'trees', activeAction: { kind: 'activity', id: 'chill', duration: 11, remaining: 4 } });
   assert.equal(roomJoinNeeded(travelling, idle), true, 'trip cancelled: same place, no action');
-  assert.equal(roomJoinNeeded({ ...travelling, activeAction: { kind: 'commute' } }, idle), true, 'cancelled work commute rejoins without enabling voice');
+  assert.equal(roomJoinNeeded(loose({ ...travelling, activeAction: { kind: 'commute' } }), idle), true, 'cancelled work commute rejoins without enabling voice');
   assert.equal(roomJoinNeeded(travelling, arrived), true, 'arrived somewhere new');
   assert.equal(roomJoinNeeded(idle, idle), false);
   assert.equal(roomJoinNeeded(idle, travelling), false, 'setting off does not rejoin');
@@ -100,7 +113,7 @@ test('room membership is restored on arrival and after a cancelled trip, and nev
   assert.equal(roomJoinNeeded(idle, commuting), false, 'the commute starting does not rejoin');
   assert.equal(roomJoinNeeded(commuting, commuting), false);
   // A timed action of a kind this build does not know is treated as a departure, never as "still here".
-  assert.equal(roomJoinNeeded({ location: 'park', activeAction: { kind: 'future-move' } }, idle), true);
+  assert.equal(roomJoinNeeded(loose({ location: 'park', activeAction: { kind: 'future-move' } }), idle), true);
   // The entry file wires that decision to community.join only — never to a voice or microphone control.
   const main = await readFile('src/life-main.js', 'utf8');
   assert.match(main, /if \(roomJoinNeeded\(previous, state\)\) community\?\.join\(client\.cityId, state\.location\);/);
@@ -117,18 +130,17 @@ test('city sheet footnote uses the current city-specific text', async () => {
 test('uuid() works without crypto.randomUUID, as on a plain-HTTP LAN origin', async () => {
   const { uuid } = await import('./client.ts');
   const pattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
-  const insecure = { getRandomValues: (bytes) => globalThis.crypto.getRandomValues(bytes) };
+  const insecure = { getRandomValues: ((bytes: Uint8Array) => globalThis.crypto.getRandomValues(bytes as Uint8Array<ArrayBuffer>)) as Crypto['getRandomValues'] };
   const ids = new Set(Array.from({ length: 50 }, () => uuid(insecure)));
   assert.equal(ids.size, 50); for (const id of ids) assert.match(id, pattern);
   assert.match(uuid(), pattern);
 });
 
 test('a nickname the server refuses comes back to the form with the server’s reason; other requests keep it on the error', async () => {
-  const asked = [], statuses = [];
+  const asked: (NameProblem | undefined)[] = [], statuses: [string, boolean][] = [];
   const reason = 'That name cannot contain a link or web address in this beta.';
-  const json = (status, body) => ({ ok: status < 300, status, json: async () => body });
   let reply = json(400, { error: 'name_not_allowed', reason });
-  const fetch = async (path, options = {}) => (path === '/api/session' && options.method === 'POST' ? reply : path === '/api/session' ? json(401, { error: 'device_session_required' }) : json(404, { error: 'not_found' }));
+  const fetch = async (path: string, options: RequestInit = {}) => (path === '/api/session' && options.method === 'POST' ? reply : path === '/api/session' ? json(401, { error: 'device_session_required' }) : json(404, { error: 'not_found' }));
   const client = createClient({ fetch, now: () => 1000, setTimeout: () => 0, clearTimeout: () => {}, onStatus: (text, error) => statuses.push([text, error]), onNeedName: (problem) => asked.push(problem) });
   client.identity.name = 'www.abc.com';
   assert.equal(await client.connect(true), false);
@@ -138,17 +150,17 @@ test('a nickname the server refuses comes back to the form with the server’s r
   // A muted player renaming, and a refusal that carries no sentence: still a reason the form can show.
   reply = json(403, { error: 'muted', reason: 'A moderator has muted you until 10:00 UTC.' });
   await client.connect(true);
-  assert.deepEqual([asked.at(-1).code, asked.at(-1).reason], ['muted', 'A moderator has muted you until 10:00 UTC.']);
+  assert.deepEqual([asked.at(-1)?.code, asked.at(-1)?.reason], ['muted', 'A moderator has muted you until 10:00 UTC.']);
   reply = json(400, { error: 'invalid_name' });
   await client.connect(true);
-  assert.deepEqual([asked.at(-1).code, asked.at(-1).reason], ['invalid_name', 'A nickname needs 3 to 24 ordinary characters.']);
+  assert.deepEqual([asked.at(-1)?.code, asked.at(-1)?.reason], ['invalid_name', 'A nickname needs 3 to 24 ordinary characters.']);
   // Anything else is a connection problem, not a question about the name.
   reply = json(503, { error: 'device_capacity' });
   await client.connect(true);
   assert.equal(asked.length, 3);
   // fetchJson rejects with the server's sentence attached, for panels that show it themselves (Profile rename).
   reply = json(400, { error: 'name_not_allowed', reason });
-  await assert.rejects(client.fetchJson('/api/session', { method: 'POST', body: { name: 'x' } }), (error) => error.status === 400 && error.code === 'name_not_allowed' && error.reason === reason);
+  await assert.rejects(client.fetchJson('/api/session', { method: 'POST', body: { name: 'x' } }), (error: ApiError) => error.status === 400 && error.code === 'name_not_allowed' && error.reason === reason);
 });
 
 test('retry keys have the timed form the server requires, stamped with server time', async () => {
@@ -156,16 +168,15 @@ test('retry keys have the timed form the server requires, stamped with server ti
   await h.client.connect();
   assert.equal(h.client.newId(), '5000:11111111-1111-4111-8111-111111111111', 'server time (5000), not the device clock (1000)');
   await h.client.command('travel', { id: 'library', mode: 'cab' });
-  assert.equal(h.calls.at(-1)[2].actionId, h.client.newId(), 'the same helper stamps action IDs');
+  assert.equal(h.calls.at(-1)?.[2]?.actionId, h.client.newId(), 'the same helper stamps action IDs');
 });
 
 test('what the server says about its storage is shown as it is: failing, the 503 reason, and saving again', async () => {
-  const statuses = [], changes = [];
+  const statuses: [string, boolean][] = [], changes: LifeState[] = [];
   const life = createLife({ name: 'Ada' });
   let mode = 'ok';
-  const json = (status, body) => ({ ok: status < 300, status, json: async () => body });
   const refused = { error: 'storage_unavailable', reason: 'The server could not save this, so nothing was changed. Try again in a moment.' };
-  const fetch = async (path) => {
+  const fetch = async (path: string) => {
     if (path === '/api/session') return json(200, { session: { id: 'public-1', name: 'Ada' }, serverTime: 5000 });
     if (path === '/api/action') return mode === 'ok' ? json(200, { ok: true, code: 'started', state: life, serverTime: 5000 }) : json(503, refused);
     return json(200, { state: life, serverTime: 5000, ...(mode === 'failing' ? { storage: 'failing' } : {}) });
@@ -231,10 +242,10 @@ test('settling in: the game’s own client cannot send the legacy rented-home pa
   const h = harness();
   await h.client.connect(); h.calls.length = 0;
   await h.client.command('onboarding.home', { house: 'mushin', lga: 'ikeja', via: 'manual', stay: true, extra: 1 });
-  assert.deepEqual(h.calls[0][2].payload, { lga: 'ikeja', via: 'manual', stay: true });
+  assert.deepEqual(h.calls[0]?.[2]?.payload, { lga: 'ikeja', via: 'manual', stay: true });
   h.calls.length = 0;
   await h.client.command('onboarding.home', { house: 'mushin' });
-  assert.deepEqual(h.calls[0][2].payload, {}, 'a rented home alone is sent as nothing: the server answers lga_required');
+  assert.deepEqual(h.calls[0]?.[2]?.payload, {}, 'a rented home alone is sent as nothing: the server answers lga_required');
   assert.deepEqual(outgoing('onboarding.home', { house: 'yaba', via: 'device' }), { via: 'device' });
   // Every other action is sent as written.
   const travel = { id: 'library', mode: 'cab', house: 'x' };
@@ -243,7 +254,7 @@ test('settling in: the game’s own client cannot send the legacy rented-home pa
   const house = Object.keys(START_HOMES)[0];
   const ready = () => {
     const life = createLife(null, { now: 1000, cityId: 'lagos', isNew: true, quickStart: true });
-    const send = (type, payload, id) => dispatch(life, { type, payload, actionId: id }, { now: 1000, cityId: 'lagos', actionId: id });
+    const send = (type: ActionType, payload: Record<string, unknown>, id: string) => dispatch(life, { type, payload, actionId: id } as ActionBody, { now: 1000, cityId: 'lagos', actionId: id });
     send('onboarding.quick-start', { look: life.onboarding.look }, 'play');
     send('onboarding.traits', { traits: Object.keys(TRAITS).slice(0, 2) }, 'traits'); send('onboarding.dream', { dream: Object.keys(DREAMS)[0] }, 'dream');
     return { life, send };
@@ -253,4 +264,18 @@ test('settling in: the game’s own client cannot send the legacy rented-home pa
   assert.equal(probe.send('onboarding.home', outgoing('onboarding.home', { house }), 'home-client').code, 'lga_required', 'what the client would send for { house }');
   const legacy = probe.send('onboarding.home', { house }, 'home-legacy');
   assert.ok(legacy.code === 'life_started' || legacy.code === 'house_locked', `the legacy payload is still understood (${legacy.code})`);
+});
+
+test('a cached cityId that is not a string is ignored, and switchCity refuses a non-string id', async () => {
+  const memory = new Map([[STORAGE_KEY, JSON.stringify({ identity: { name: 'Ada' }, cityId: ['lagos'] })]]);
+  const client = createClient({ fetch: async () => json(404, { error: 'not_found' }), setTimeout: () => 0, clearTimeout: () => {},
+    storage: { getItem: key => memory.get(key), setItem() {} } });
+  assert.equal(client.cityId, 'lagos');
+  const result = await client.switchCity(['lagos'] as unknown as string);
+  assert.deepEqual(result, { ok: false, code: 'invalid_city' });
+});
+
+test('a JSON null response body is the unreadable-response error, not a TypeError', async () => {
+  const client = createClient({ fetch: async () => json(200, null), setTimeout: () => 0, clearTimeout: () => {} });
+  await assert.rejects(() => client.api('/api/anything'), (error: Error) => error.message === 'Server returned an unreadable response' && !(error instanceof TypeError));
 });

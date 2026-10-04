@@ -10,7 +10,7 @@ const SECRET = '5b0f2c1e-7a44-4d0b-9c1d-2f6f6a7e8b90'; // a cookie secret is a U
 const PUBLIC = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10';
 const CHAT = 'meet me at the bar tonight, my number is 0803 555 0199';
 const EMAIL = 'ada.obi@example.com';
-const leaks = (value) => { const text = JSON.stringify(value); return [SECRET, CHAT, 'meet me', EMAIL, '0803', '6.5244', '3.3792', 'Ada Obi', 'invite=', 'hunter2'].filter((needle) => text.includes(needle)); };
+const leaks = (value: unknown) => { const text = JSON.stringify(value); return [SECRET, CHAT, 'meet me', EMAIL, '0803', '6.5244', '3.3792', 'Ada Obi', 'invite=', 'hunter2'].filter((needle) => text.includes(needle)); };
 
 test('scrubText removes emails, ids, cookies, tokens, coordinates, phone numbers, query strings and quoted prose', () => {
   assert.equal(scrubText(`Cannot send "${CHAT}" to ${EMAIL}`), 'Cannot send "[text]" to [email]');
@@ -76,22 +76,23 @@ test('scrubEvent rebuilds a Sentry event from allowed fields: hostile data in an
     server_name: 'anthonys-macbook.local', modules: { ws: '8' }, sdk: { name: 'sentry.javascript.browser', version: '11.4.0', integrations: ['x'] },
   };
   const event = scrubEvent(hostile, { userId: PUBLIC });
+  assert.ok(event);
   assert.deepEqual(leaks(event), []);
   assert.deepEqual(event.user, { id: PUBLIC }, 'the user is the public id the telemetry code passed, nothing from the event');
   assert.deepEqual(event.request, { url: 'https://play.example/', headers: { 'User-Agent': 'Mozilla/5.0 Test' } });
   assert.deepEqual(event.tags, { action_type: 'activity', result_code: 'busy' });
   assert.deepEqual(event.extra, { chunk: 'scene' });
   assert.deepEqual(event.breadcrumbs, [{ category: 'action', timestamp: 1, data: { type: 'activity', code: 'started' } }]);
-  assert.deepEqual(Object.keys(event.contexts).sort(), ['game', 'trace']);
-  assert.deepEqual(event.contexts.game, { screen: 'venue' });
-  assert.deepEqual(event.contexts.trace, { trace_id: 'b'.repeat(32), span_id: 'c'.repeat(16) });
-  assert.deepEqual(event.exception.values[0].stacktrace.frames, [{ filename: 'https://play.example/assets/app-abc.js', function: 'send', lineno: 1, colno: 2, in_app: true }]);
+  assert.deepEqual(Object.keys(event.contexts ?? {}).sort(), ['game', 'trace']);
+  assert.deepEqual(event.contexts?.game, { screen: 'venue' });
+  assert.deepEqual(event.contexts?.trace, { trace_id: 'b'.repeat(32), span_id: 'c'.repeat(16) });
+  assert.deepEqual(event.exception?.values[0]?.stacktrace?.frames, [{ filename: 'https://play.example/assets/app-abc.js', function: 'send', lineno: 1, colno: 2, in_app: true }]);
   assert.equal(event.sdk.settings.infer_ip, 'never');
-  assert.equal(event.server_name, undefined);
+  assert.equal((event as unknown as Record<string, unknown>).server_name, undefined);
   assert.equal(event.release, 'build-7');
   // Without a public id there is no user at all — an id on the event itself is never trusted.
-  assert.equal(scrubEvent(hostile).user, undefined);
-  assert.equal(scrubEvent(hostile, { userId: 'Ada Obi' }).user, undefined);
+  assert.equal(scrubEvent(hostile)?.user, undefined);
+  assert.equal(scrubEvent(hostile, { userId: 'Ada Obi' })?.user, undefined);
 });
 
 test('scrubEvent drops browser-extension noise and things that are not events', () => {
@@ -123,7 +124,9 @@ test('the catalogue: every event is named and described, and its properties pass
 test('an analytics event as it leaves: only catalogued properties and the allowed PostHog fields', () => {
   assert.equal(captureArgs({ name: 'Bad Name', props: {} }), null);
   assert.equal(captureArgs({ name: '$autocapture', props: {} }), null);
-  const [name, props, options] = captureArgs({ name: 'action_failed', props: { action_type: 'travel', code: 'busy', reason: CHAT, nickname: 'Ada Obi' }, at: 1700000000000, extra: { setOnce: { first_seen_date: '2026-10-04', email: EMAIL } } });
+  const args = captureArgs({ name: 'action_failed', props: { action_type: 'travel', code: 'busy', reason: CHAT, nickname: 'Ada Obi' }, at: 1700000000000, extra: { setOnce: { first_seen_date: '2026-10-04', email: EMAIL } } });
+  assert.ok(args);
+  const [name, props, options] = args;
   assert.equal(name, 'action_failed');
   assert.deepEqual(props, { action_type: 'travel', code: 'busy' });
   assert.deepEqual(options, { timestamp: new Date(1700000000000), $set_once: { first_seen_date: '2026-10-04' } });
@@ -131,12 +134,14 @@ test('an analytics event as it leaves: only catalogued properties and the allowe
   const sent = cleanEvent({ event: 'action_failed', uuid: 'u1', properties: { ...props, token: 'phc_test', distinct_id: PUBLIC, $lib: 'web', $session_id: 's1', $browser: 'Chrome',
     $current_url: 'https://play.example/?invite=abc123', $referrer: 'https://x.example/?q=Ada+Obi', $raw_user_agent: 'Mozilla', $ip: '197.210.1.2', $screen_height: 900, $timezone: 'Africa/Lagos', $initial_current_url: 'https://play.example/?invite=abc123', title: 'Ada Obi' },
   $set: { nickname: 'Ada Obi', email: EMAIL }, $set_once: { first_seen_date: '2026-10-04', $initial_referrer: 'https://x.example/?q=Ada+Obi' } }, { release: 'build-7', env: 'production' });
+  assert.ok(sent);
   assert.deepEqual(sent.properties, { action_type: 'travel', code: 'busy', token: 'phc_test', distinct_id: PUBLIC, $lib: 'web', $session_id: 's1', $browser: 'Chrome', $geoip_disable: true, app: 'allworld', environment: 'production', release: 'build-7' });
   assert.equal(sent.$set, undefined);
   assert.deepEqual(sent.$set_once, { first_seen_date: '2026-10-04' });
   assert.deepEqual(leaks(sent), []);
   // A page view carries the page's origin and path, never its query string.
   const view = cleanEvent({ event: '$pageview', properties: { $current_url: 'https://play.example/?invite=abc123' } }, { location: { href: 'https://play.example/?invite=abc123&venue=bar', pathname: '/', host: 'play.example' } });
+  assert.ok(view);
   assert.equal(view.properties.$current_url, 'https://play.example/');
   // Anything the SDK would send by itself is dropped.
   for (const event of ['$autocapture', '$pageleave', '$rageclick', '$exception', '$snapshot', '$web_vitals', '$feature_flag_called']) assert.equal(cleanEvent({ event, properties: {} }), null, event);

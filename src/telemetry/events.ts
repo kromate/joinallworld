@@ -10,24 +10,29 @@
  *
  * ONE SOURCE PER EVENT. `from` names the one place that reports it: 'quick-start' (the first minute and the landing of a
  * link: src/quick-start/entry.js track), 'world' (where you live), 'growth' (missions, tables, sharing, outreach) — all
- * three arrive as `jaw:track` DOM events — 'client' (derived here from the server's states: ./funnel.js and ./core.js) and
- * 'server' (server/telemetry/instrument.js). src/telemetry/telemetry.test.js reads the game's sources and fails if a
+ * three arrive as `jaw:track` DOM events — 'client' (derived here from the server's states: ./funnel.ts and ./core.ts) and
+ * 'server' (server/telemetry/instrument.js). src/telemetry/telemetry.test.ts reads the game's sources and fails if a
  * `track('…')` call names an event that is not listed here, or carries a property this list would drop.
  *
- * Property rules, enforced by src/telemetry/scrub.js for every event: numbers, booleans and short
+ * Property rules, enforced by src/telemetry/scrub.ts for every event: numbers, booleans and short
  * id-like words only. Never chat or message text, a nickname, an email, a position, an IP or a
  * UUID. The player is identified by the session's PUBLIC id as the distinct id, nowhere else.
- *
- * @typedef {'string' | 'number' | 'boolean'} PropType
- * @typedef {object} EventSpec
- * @property {Record<string, PropType>} props   allowed properties and their types
- * @property {string} when                      when it fires (and how often)
- * @property {string} why                       the question it answers
- * @property {'client' | 'server' | 'quick-start' | 'world' | 'growth'} from   the one place that reports it (see ONE SOURCE PER EVENT)
  */
+import type { SafeProps } from './scrub.ts';
 
-/** @type {Record<string, EventSpec>} */
-export const EVENTS = {
+export type PropType = 'string' | 'number' | 'boolean';
+export interface EventSpec {
+  /** allowed properties and their types */
+  props: Record<string, PropType>;
+  /** when it fires (and how often) */
+  when: string;
+  /** the question it answers */
+  why: string;
+  /** the one place that reports it (see ONE SOURCE PER EVENT) */
+  from: 'client' | 'server' | 'quick-start' | 'world' | 'growth';
+}
+
+export const EVENTS: Record<string, EventSpec> = {
   // ---- Views and sessions ---------------------------------------------------------------------
   $pageview: { from: 'client', props: {}, when: 'Once per page load, after consent. Carries only the page origin and path.', why: 'Views are counted apart from players: a page view is not a player.' },
   screen_view: { from: 'client', props: { screen: 'string' }, when: 'The screen in front changed (venue, map), or screen(name) was called.', why: 'Which screens are used; views inside the single page.' },
@@ -50,7 +55,7 @@ export const EVENTS = {
   save_character_done: { from: 'quick-start', props: { activities: 'number', ms: 'number' }, when: 'Once per life: the life settled in (it has its local government and its house).', why: 'Funnel step 5: guest → resident.' },
   join_landed: { from: 'quick-start', props: { code: 'string', ms: 'number' }, when: 'A new visitor’s invite link was answered (code: joined | here | at_home | reconnecting | out | offline | refused).', why: 'How often an invite puts two people in the same place.' },
 
-  // ---- After the first minute (derived by telemetry from the server’s states: src/telemetry/funnel.js)
+  // ---- After the first minute (derived by telemetry from the server’s states: src/telemetry/funnel.ts)
   activity_completed: { from: 'client', props: { activity_id: 'string', venue_id: 'string' }, when: 'Every time a timed activity ran to its end (not when cancelled).', why: 'What players actually do; engagement per venue.' },
   first_travel: { from: 'client', props: { mode: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed trip.', why: 'Funnel step 6.' },
   first_job_shift: { from: 'client', props: { job_id: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed work shift.', why: 'Funnel step 7.' },
@@ -113,17 +118,17 @@ export const ACTIVATION_FUNNEL = Object.freeze(['landed', 'play_tapped', 'arrive
 export const INVITE_FUNNEL = Object.freeze(['invite_created', 'invite_opened', 'invite_joined', 'invite_colocated', 'referral_rewarded']);
 
 /** The events that reach the facade as `jaw:track` DOM events from the game's own screens (everything not derived or server-side). */
-export const TRACKED_EVENTS = Object.freeze(Object.keys(EVENTS).filter((name) => ['quick-start', 'world', 'growth'].includes(EVENTS[name].from)));
+export const TRACKED_EVENTS = Object.freeze(Object.keys(EVENTS).filter((name) => { const from = EVENTS[name]?.from; return from !== undefined && ['quick-start', 'world', 'growth'].includes(from); }));
 
 /** The property names an event may carry, or null for an event that is not in the catalogue. */
-export function allowedProps(name) { return Object.hasOwn(EVENTS, name) ? Object.keys(EVENTS[name].props) : null; }
+export function allowedProps(name: string): string[] | null { const spec = Object.hasOwn(EVENTS, name) ? EVENTS[name] : undefined; return spec ? Object.keys(spec.props) : null; }
 
 /**
  * Properties checked against the catalogue: only listed names, each of its listed type.
  * `clean` is the generic scrubber (scrubProps), passed in so this file stays pure data.
  */
-export function checkProps(name, props, clean) {
-  const spec = Object.hasOwn(EVENTS, name) ? EVENTS[name] : null;
+export function checkProps(name: string, props: unknown, clean: (props: unknown, options: { allow: readonly string[] | null }) => SafeProps): SafeProps {
+  const spec = (Object.hasOwn(EVENTS, name) ? EVENTS[name] : undefined) ?? null;
   const safe = clean(props, { allow: spec ? Object.keys(spec.props) : null });
   if (spec) for (const key of Object.keys(safe)) if (typeof safe[key] !== spec.props[key]) delete safe[key];
   return safe;

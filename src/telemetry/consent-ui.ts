@@ -8,7 +8,7 @@
  * the player change it.
  *
  * It is a native <dialog> opened with showModal(), so the rest of the page cannot be reached with
- * the keyboard while it is open. It is never asked over another sheet (src/telemetry/core.js waits
+ * the keyboard while it is open. It is never asked over another sheet (src/telemetry/core.ts waits
  * for a quiet moment). If the game then opens a sheet of its own while the question is still
  * unanswered (an invite link, an arrival, a table), the question STEPS ASIDE — `giveWay: true`:
  * the sheet closes without an answer and resolves 'later', and the core asks again once that sheet
@@ -16,6 +16,12 @@
  * operator's "ask on the landing screen") it is raised above the game's sheet instead.
  */
 import { CONSENT, whatWeCollect } from './what-we-collect.ts';
+import type { Consent } from './policy.ts';
+
+/** What the sheet is told about the situation (see core.ts openSheet). */
+export interface ConsentState { analytics?: boolean; errors?: boolean; consent?: Consent; signal?: boolean; under18?: boolean; pending?: boolean }
+/** 'settings': opened from Settings (shows the choice in force); 'sheet': the first question. */
+export type ConsentSource = 'sheet' | 'settings';
 
 const STYLE = `
 #jaw-consent{border:0;padding:0;border-radius:20px;width:min(460px,calc(100% - 24px));max-height:min(88dvh,720px);background:#fff;color:var(--c-ink,#14231b);font-family:var(--font,system-ui,sans-serif);box-shadow:0 24px 60px #0006;overflow:hidden}
@@ -37,10 +43,11 @@ const STYLE = `
 #jaw-consent h2:focus{outline:none}
 `;
 
-const esc = (text) => String(text).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+const ENTITIES: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+const esc = (text: unknown) => String(text).replace(/[&<>"']/g, (char) => ENTITIES[char] ?? char);
 
 /** The sheet's HTML for a given state (pure: exported for the tests). */
-export function consentHtml({ source = 'sheet', state = {}, open = false, host = '' } = {}) {
+export function consentHtml({ source = 'sheet', state = {}, open = false, host = '' }: { source?: ConsentSource, state?: ConsentState, open?: boolean, host?: string } = {}): string {
   const details = whatWeCollect({ host }).map((section) => `<h3>${esc(section.heading)}</h3><ul>${section.lines.map((line) => `<li>${esc(line)}</li>`).join('')}</ul>`).join('');
   const more = `<button type="button" class="jaw-consent-more" data-consent="more" aria-expanded="${open}" aria-controls="jaw-consent-details">${esc(open ? CONSENT.less : CONSENT.more)}</button><div id="jaw-consent-details" ${open ? '' : 'hidden'}>${details}</div>`;
   const choosing = source !== 'settings';
@@ -59,10 +66,9 @@ export function consentHtml({ source = 'sheet', state = {}, open = false, host =
 /**
  * Show the sheet. Resolves with the choice ('granted' | 'denied'), null when it was only closed, or
  * 'later' when it stepped aside for a sheet of the game's (giveWay) and has to be asked again.
- * @param {{ document: Document, source?: 'sheet' | 'settings', state?: object, host?: string, giveWay?: boolean, onChoice?: (choice: string) => void }} options
  */
-export function showConsent({ document: doc, source = 'sheet', state = {}, host = '', giveWay = false, onChoice = () => {} }) {
-  return new Promise((resolve) => {
+export function showConsent({ document: doc, source = 'sheet', state = {}, host = '', giveWay = false, onChoice = () => {} }: { document: Document, source?: ConsentSource, state?: ConsentState, host?: string, giveWay?: boolean, onChoice?: (choice: string) => void }): Promise<string | null> {
+  return new Promise<string | null>((resolve) => {
     if (!doc.getElementById('jaw-consent-style')) { const style = doc.createElement('style'); style.id = 'jaw-consent-style'; style.textContent = STYLE; doc.head.append(style); }
     doc.getElementById('jaw-consent')?.remove();
     const dialog = doc.createElement('dialog');
@@ -75,26 +81,26 @@ export function showConsent({ document: doc, source = 'sheet', state = {}, host 
     const returnFocus = doc.activeElement;
     const raise = () => { if (dialog.isConnected) { dialog.close(); dialog.showModal(); } };
     // The game's own sheet opened after this one: step aside for it and be asked again later (giveWay), or come back to the front.
-    const other = doc.getElementById('life-dialog');
+    const other = doc.getElementById('life-dialog') as HTMLDialogElement | null;
     const watch = other && typeof MutationObserver === 'function' ? new MutationObserver(() => { if (other.open && dialog.open) { if (giveWay) finish('later'); else raise(); } }) : null;
-    watch?.observe(other, { attributes: true, attributeFilter: ['open'] });
-    const finish = (choice) => {
+    if (other) watch?.observe(other, { attributes: true, attributeFilter: ['open'] });
+    const finish = (choice: string | null) => {
       watch?.disconnect();
       dialog.close(); dialog.remove();
       if (choice && choice !== 'later') onChoice(choice);
-      try { returnFocus?.focus?.({ preventScroll: true }); } catch { /* the element is gone */ }
+      try { (returnFocus as HTMLElement | null)?.focus?.({ preventScroll: true }); } catch { /* the element is gone */ }
       resolve(choice);
     };
     // The first question has two answers and no way round them; from Settings, Escape simply closes.
     dialog.addEventListener('cancel', (event) => { event.preventDefault(); if (source === 'settings') finish(null); });
     dialog.addEventListener('click', (event) => {
-      const action = event.target.closest?.('[data-consent]')?.dataset.consent;
+      const action = (event.target as Element).closest?.<HTMLElement>('[data-consent]')?.dataset.consent;
       if (!action) return;
-      if (action === 'more') { open = !open; draw(); dialog.querySelector('[data-consent="more"]')?.focus(); return; }
+      if (action === 'more') { open = !open; draw(); dialog.querySelector<HTMLElement>('[data-consent="more"]')?.focus(); return; }
       finish(action === 'close' ? null : action);
     });
     dialog.showModal();
     dialog.querySelector('h2')?.setAttribute('tabindex', '-1');
-    dialog.querySelector('h2')?.focus();
+    dialog.querySelector<HTMLElement>('h2')?.focus();
   });
 }

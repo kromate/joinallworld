@@ -22,7 +22,22 @@
  *   whole button, or '' — for a note that says why and offers the way out in one tap.
  * Pure data and strings: no DOM. The shell keeps its own pill/notice table next to this one.
  */
-const WORDS = {
+/** The connection states that have words; 'online' has none. */
+export type WordedLink = 'connecting' | 'new' | 'expired' | 'offline' | 'unreachable';
+export type LinkState = 'online' | WordedLink;
+/** The one thing that resolves a state: a shell menu or a session gate. */
+export interface LinkAction { label: string; menu?: 'reconnect'; gate?: 'new' | 'expired' }
+export interface LinkWords {
+  state: WordedLink;
+  short: string;
+  why: string;
+  action: LinkAction | null;
+  cannot(what?: string): string;
+}
+/** What linkOf reads of a view. */
+export interface LinkView { connected?: boolean; link?: unknown }
+
+const WORDS: Record<WordedLink, { short: string; why: string; next: string; action: LinkAction | null }> = {
   connecting: { short: 'Connecting…', why: 'Still connecting to the game server.', next: 'Try again in a moment.', action: null },
   new: { short: 'Not started', why: 'You have not started a life yet.', next: 'Choose a nickname to start.', action: { label: 'Choose a nickname', gate: 'new' } },
   expired: { short: 'Saved life not found', why: 'The server no longer has the life this device remembers.', next: 'Start a new life, or try again.', action: { label: 'Start a new life', gate: 'expired' } },
@@ -30,30 +45,33 @@ const WORDS = {
   unreachable: { short: 'Server unreachable', why: 'The game server is not answering.', next: 'Your life is safe there. Try again shortly.', action: { label: 'Try again', menu: 'reconnect' } },
 };
 
-export const LINK_STATES = Object.freeze(['online', ...Object.keys(WORDS)]);
+const isWorded = (value: unknown): value is WordedLink => typeof value === 'string' && Object.hasOwn(WORDS, value);
+
+export const LINK_STATES: readonly LinkState[] = Object.freeze(['online', ...(Object.keys(WORDS) as WordedLink[])]);
 
 /** The connection state a view reports ('online' when connected). */
-export function linkOf(view) {
+export function linkOf(view?: LinkView | null): LinkState {
   if (view?.connected) return 'online';
-  return Object.hasOwn(WORDS, view?.link) ? view.link : 'unreachable';
+  const link = view?.link;
+  return isWorded(link) ? link : 'unreachable';
 }
 
 /** The attribute of the control that runs a state's action (the shell handles both, anywhere in the UI). */
-export const linkAttrs = (action) => (!action ? '' : action.menu ? `data-menu="${action.menu}"` : `data-open-gate="${action.gate}"`);
+export const linkAttrs = (action?: LinkAction | null): string => (!action ? '' : action.menu ? `data-menu="${action.menu}"` : `data-open-gate="${action.gate}"`);
 /** The one-tap way out of a connection state as a button, or '' when online or still connecting. Labels are our own text. */
-export function linkButton(link, className = 'ui-button') {
+export function linkButton(link: string | LinkView | null | undefined, className = 'ui-button'): string {
   const action = linkWords(link)?.action;
   return action ? `<button type="button" class="${className}" ${linkAttrs(action)}>${action.label}</button>` : '';
 }
 
 /** Words for a connection state, or null when it is 'online'. Accepts a state name or a view. */
-export function linkWords(link) {
+export function linkWords(link: string | LinkView | null | undefined): LinkWords | null {
   const state = typeof link === 'string' ? link : linkOf(link);
-  if (state === 'online' || !Object.hasOwn(WORDS, state)) return null;
+  if (!isWorded(state)) return null;
   const words = WORDS[state];
   return {
     state, short: words.short, why: words.why, action: words.action,
     /** "This device has no internet connection. You cannot <what> until … " — `what` is lower-case, e.g. 'travel'. */
-    cannot: (what) => `${words.why} ${what ? `You cannot ${what} right now. ` : ''}${words.next}`,
+    cannot: (what?: string) => `${words.why} ${what ? `You cannot ${what} right now. ` : ''}${words.next}`,
   };
 }

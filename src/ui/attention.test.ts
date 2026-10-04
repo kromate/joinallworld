@@ -6,30 +6,30 @@ const goal = (more = {}) => ({ kind: 'goal', step: 1, of: 7, title: 'Eat somethi
 const base = (more = {}) => ({
   state: { location: 'home', spot: 'bedroom', activeAction: null },
   view: { connected: true, goals: { chip: goal() }, activities: { spots: [{ id: 'kitchen', label: 'Kitchen' }] }, travel: {} },
-  mode: 'venue', expanded: false, seen: {}, apps: (id) => ({ jobs: { placement: 'phone', title: 'Jobs' }, buy: { placement: 'nav', title: 'Buy' } })[id],
+  mode: 'venue', expanded: false, seen: {}, apps: (id: string) => (({ jobs: { placement: 'phone', title: 'Jobs' }, buy: { placement: 'nav', title: 'Buy' } }) as Record<string, { placement: string; title: string }>)[id],
   ...more,
 });
 
 test('the next step for a goal: go there, pick the spot, pick an activity, then watch it finish', () => {
   assert.deepEqual(nextStep(base({ state: { location: 'park', spot: 'trees', activeAction: null } })), { id: 'goal', text: 'Go Home first: tap Home.', target: '[data-nav="home"]', bubble: true, title: 'Goal 1 of 7 · Eat something' });
-  assert.equal(nextStep(base()).target, '[data-spot="kitchen"]');
-  assert.equal(nextStep(base({ state: { location: 'home', spot: 'kitchen', activeAction: null }, expanded: true })).target, '.life-action:not(:disabled):not(.is-blocked)');
-  const doing = nextStep(base({ state: { location: 'home', spot: 'kitchen', activeAction: { kind: 'activity', id: 'garri' } } }));
+  assert.equal(nextStep(base())!.target, '[data-spot="kitchen"]');
+  assert.equal(nextStep(base({ state: { location: 'home', spot: 'kitchen', activeAction: null }, expanded: true }))!.target, '.life-action:not(:disabled):not(.is-blocked)');
+  const doing = nextStep(base({ state: { location: 'home', spot: 'kitchen', activeAction: { kind: 'activity', id: 'garri' } } }))!;
   assert.equal(doing.target, '.life-progress'); assert.match(doing.text, /finishes by itself/);
-  const detour = nextStep(base({ state: { location: 'home', spot: 'bedroom', activeAction: { kind: 'activity', id: 'nap' } } }));
+  const detour = nextStep(base({ state: { location: 'home', spot: 'bedroom', activeAction: { kind: 'activity', id: 'nap' } } }))!;
   assert.equal(detour.target, null); assert.match(detour.text, /not part of the goal/);
 });
 
 test('a goal that opens an app points at the Phone, or at its nav tab', () => {
-  const view = (open) => ({ ...base().view, goals: { chip: goal({ go: null, open }) } });
-  assert.deepEqual([nextStep(base({ view: view('jobs') })).target, nextStep(base({ view: view('jobs') })).app], ['[data-nav="phone"]', 'jobs']);
-  assert.equal(nextStep(base({ view: view('buy') })).target, '[data-nav="buy"]');
+  const view = (open: string) => ({ ...base().view, goals: { chip: goal({ go: null, open }) } });
+  assert.deepEqual([nextStep(base({ view: view('jobs') }))!.target, nextStep(base({ view: view('jobs') }))!.app], ['[data-nav="phone"]', 'jobs']);
+  assert.equal(nextStep(base({ view: view('buy') }))!.target, '[data-nav="buy"]');
   assert.equal(nextStep(base({ view: view('nowhere') })), null);
 });
 
 test('it tapers: later goals are ringed but not spelled out, and say nothing while an activity runs', () => {
   const later = { ...base().view, goals: { chip: goal({ step: COACH_GOALS + 1 }) } };
-  const step = nextStep(base({ view: later }));
+  const step = nextStep(base({ view: later }))!;
   assert.equal(step.bubble, false); assert.equal(step.target, '[data-spot="kitchen"]');
   assert.equal(nextStep(base({ view: later, state: { location: 'home', spot: 'kitchen', activeAction: { kind: 'activity', id: 'x' } } })), null);
   assert.equal(nextStep(base({ view: { ...base().view, goals: { chip: { kind: 'next', title: 'Explore' } } } })), null, 'the rolling next step after the starter goals is not coached');
@@ -46,7 +46,7 @@ test('on the map: Go after a place is picked, then where the trip card is — ea
   assert.equal(nextStep(base({ mode: 'map', picked: true, sheet: 'panel' })), null);
   assert.equal(nextStep(base({ mode: 'map', picked: true, seen: { go: TAPER } })), null, 'retired after a few uses');
   const trip = { location: 'home', spot: null, activeAction: { kind: 'travel', id: 'park' } };
-  assert.equal(nextStep(base({ mode: 'map', state: trip })).target, '.map-trip');
+  assert.equal(nextStep(base({ mode: 'map', state: trip }))!.target, '.map-trip');
   assert.equal(nextStep(base({ mode: 'map', state: trip, seen: { trip: TAPER } })), null);
   assert.equal(nextStep(base({ mode: 'venue', state: trip })), null, 'a trip is shown on the map; the venue view says nothing');
 });
@@ -54,8 +54,8 @@ test('on the map: Go after a place is picked, then where the trip card is — ea
 test('a roadside prompt is pointed at before the goal, a few times, and never during an activity', () => {
   const view = { ...base().view, travel: { event: { id: 'boys', at: 1 } } };
   assert.deepEqual(nextStep(base({ view })), { id: 'roadside', text: 'Someone is waiting — tap to answer', target: '.map-event-chip', bubble: false });
-  assert.equal(nextStep(base({ view, seen: { roadside: TAPER } })).id, 'goal');
-  assert.equal(nextStep(base({ view, state: { location: 'home', spot: 'kitchen', activeAction: { kind: 'activity', id: 'x' } } })).id, 'goal');
+  assert.equal(nextStep(base({ view, seen: { roadside: TAPER } }))!.id, 'goal');
+  assert.equal(nextStep(base({ view, state: { location: 'home', spot: 'kitchen', activeAction: { kind: 'activity', id: 'x' } } }))!.id, 'goal');
 });
 
 test('which way, and whether a bubble is needed', () => {
@@ -72,8 +72,8 @@ test('which way, and whether a bubble is needed', () => {
 test('a goal that names its activity rings that card when it is on screen (the quick start’s first goal), else the first one that can start', () => {
   const view = { ...base().view, goals: { chip: goal({ activity: 'park-stroll', hint: 'Take a stroll' }) } };
   const at = { state: { location: 'home', spot: 'kitchen', activeAction: null }, expanded: true, view };
-  const named = nextStep(base({ ...at, has: (selector) => selector === '[data-start="park-stroll"]' }));
+  const named = nextStep(base({ ...at, has: (selector: string) => selector === '[data-start="park-stroll"]' }))!;
   assert.deepEqual([named.target, named.text], ['[data-start="park-stroll"]', 'Tap it: Take a stroll.']);
-  const absent = nextStep(base(at));
+  const absent = nextStep(base(at))!;
   assert.deepEqual([absent.target, absent.text], ['.life-action:not(:disabled):not(.is-blocked)', 'Pick one. Take a stroll.']);
 });

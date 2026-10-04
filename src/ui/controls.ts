@@ -20,27 +20,33 @@
  * resize, a click elsewhere or the sheet being redrawn.
  */
 const CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-let serial = 0, openList = null;
+/** An option as the keyboard helpers see it. */
+export interface ListOption { label: string; disabled?: boolean }
+/** The parts of `window` keepsNative reads. */
+export interface ViewportLike { matchMedia?: (query: string) => { matches: boolean }; innerWidth?: number }
+interface OpenList { list: HTMLUListElement; button: HTMLButtonElement; off(): void }
+
+let serial = 0, openList: OpenList | null = null;
 
 /** Should this device keep the platform picker? */
-export const keepsNative = (win = globalThis) => win.matchMedia?.('(pointer: coarse)').matches === true && (win.innerWidth || 0) <= 720;
+export const keepsNative = (win: ViewportLike = globalThis): boolean => win.matchMedia?.('(pointer: coarse)').matches === true && (win.innerWidth || 0) <= 720;
 
 /** The index of the next enabled option from `from` in direction `step` (no wrap). Pure. */
-export function nextEnabled(options, from, step) {
-  for (let i = from + step; i >= 0 && i < options.length; i += step) if (!options[i].disabled) return i;
+export function nextEnabled(options: readonly { disabled?: boolean }[], from: number, step: number): number {
+  for (let i = from + step; i >= 0 && i < options.length; i += step) if (!options[i]!.disabled) return i;
   return from;
 }
 /** The option a typed prefix goes to: the next one after `from` whose label starts with it. Pure. */
-export function typeAhead(options, from, typed) {
+export function typeAhead(options: readonly ListOption[], from: number, typed: string): number {
   const want = typed.toLowerCase();
   for (let n = 1; n <= options.length; n += 1) {
     const i = (from + n) % options.length;
-    if (!options[i].disabled && options[i].label.toLowerCase().startsWith(want)) return i;
+    if (!options[i]!.disabled && options[i]!.label.toLowerCase().startsWith(want)) return i;
   }
   return from;
 }
 
-function close(focus = false) {
+function close(focus = false): void {
   if (!openList) return;
   const { list, button, off } = openList;
   openList = null;
@@ -49,7 +55,7 @@ function close(focus = false) {
   if (focus) button.focus();
 }
 
-function enhance(select) {
+function enhance(select: HTMLSelectElement): void {
   const doc = select.ownerDocument, id = `ui-select-${serial += 1}`;
   const button = doc.createElement('button');
   button.type = 'button'; button.className = 'ui-select';
@@ -58,18 +64,18 @@ function enhance(select) {
   if (name) button.setAttribute('aria-label', name);
   button.innerHTML = `<span></span>${CHEVRON}`;
   button.disabled = select.disabled;
-  const options = () => [...select.options].map((option) => ({ value: option.value, label: option.textContent, disabled: option.disabled }));
-  const show = () => { const chosen = select.options[select.selectedIndex]; button.firstChild.textContent = chosen ? chosen.textContent : ''; button.classList.toggle('is-empty', !chosen || chosen.value === ''); };
+  const options = () => [...select.options].map((option) => ({ value: option.value, label: option.textContent ?? '', disabled: option.disabled }));
+  const show = () => { const chosen = select.options[select.selectedIndex]; button.firstChild!.textContent = chosen ? chosen.textContent : ''; button.classList.toggle('is-empty', !chosen || chosen.value === ''); };
   show();
   select.classList.add('ui-select-native'); select.tabIndex = -1; select.setAttribute('aria-hidden', 'true');
   select.dataset.enhanced = '1';
   select.after(button);
   select.addEventListener('change', show);
   // A label around the select would otherwise send its click to the hidden native control.
-  select.closest('label')?.addEventListener('click', (event) => { if (event.target.closest('.ui-select') !== button && !event.target.closest('.ui-listbox')) { event.preventDefault(); button.focus(); } });
+  select.closest('label')?.addEventListener('click', (event) => { const target = event.target as Element; if (target.closest('.ui-select') !== button && !target.closest('.ui-listbox')) { event.preventDefault(); button.focus(); } });
 
   let active = -1, typed = '', typedAt = 0;
-  function choose(index) {
+  function choose(index: number): void {
     const all = options();
     if (index < 0 || all[index]?.disabled) return;
     const changed = select.selectedIndex !== index;
@@ -78,13 +84,13 @@ function enhance(select) {
     show();
     if (changed) { select.dispatchEvent(new Event('input', { bubbles: true })); select.dispatchEvent(new Event('change', { bubbles: true })); }
   }
-  function mark(list, index) {
+  function mark(list: HTMLUListElement, index: number): void {
     active = index;
-    for (const item of list.children) item.classList.toggle('is-active', Number(item.dataset.index) === index);
-    const item = list.children[index];
+    for (const item of list.children as HTMLCollectionOf<HTMLElement>) item.classList.toggle('is-active', Number(item.dataset.index) === index);
+    const item = list.children[index] as HTMLElement | undefined;
     if (item) { button.setAttribute('aria-activedescendant', item.id); item.scrollIntoView({ block: 'nearest' }); }
   }
-  function open(start) {
+  function open(start?: number): void {
     if (button.disabled) return;
     close();
     const all = options(), list = doc.createElement('ul');
@@ -92,7 +98,7 @@ function enhance(select) {
     if (name) list.setAttribute('aria-label', name);
     all.forEach((option, index) => {
       const item = doc.createElement('li');
-      item.id = `${id}-${index}`; item.dataset.index = index; item.setAttribute('role', 'option');
+      item.id = `${id}-${index}`; item.dataset.index = String(index); item.setAttribute('role', 'option');
       item.setAttribute('aria-selected', String(index === select.selectedIndex));
       if (option.disabled) item.setAttribute('aria-disabled', 'true');
       item.textContent = option.label;
@@ -106,10 +112,10 @@ function enhance(select) {
     list.style.maxHeight = `${Math.round(Math.max(120, Math.min(tall, up ? box.top - 12 : below)))}px`;
     if (up) list.style.bottom = `${Math.round(globalThis.innerHeight - box.top + 6)}px`; else list.style.top = `${Math.round(box.bottom + 6)}px`;
     list.addEventListener('pointerdown', (event) => event.preventDefault()); // keep focus on the button
-    list.addEventListener('click', (event) => { const item = event.target.closest('[role=option]'); if (item) choose(Number(item.dataset.index)); });
-    list.addEventListener('pointermove', (event) => { const item = event.target.closest('[role=option]'); if (item && Number(item.dataset.index) !== active) mark(list, Number(item.dataset.index)); });
-    const outside = (event) => { if (!list.contains(event.target) && !button.contains(event.target)) close(); };
-    const away = (event) => { if (!list.contains(event.target)) close(); };
+    list.addEventListener('click', (event) => { const item = (event.target as Element).closest<HTMLElement>('[role=option]'); if (item) choose(Number(item.dataset.index)); });
+    list.addEventListener('pointermove', (event) => { const item = (event.target as Element).closest<HTMLElement>('[role=option]'); if (item && Number(item.dataset.index) !== active) mark(list, Number(item.dataset.index)); });
+    const outside = (event: Event) => { if (!list.contains(event.target as Node) && !button.contains(event.target as Node)) close(); };
+    const away = (event: Event) => { if (!list.contains(event.target as Node)) close(); };
     doc.addEventListener('pointerdown', outside, true); globalThis.addEventListener('scroll', away, true); globalThis.addEventListener('resize', away);
     openList = { list, button, off() { doc.removeEventListener('pointerdown', outside, true); globalThis.removeEventListener('scroll', away, true); globalThis.removeEventListener('resize', away); } };
     button.setAttribute('aria-expanded', 'true');
@@ -118,12 +124,13 @@ function enhance(select) {
   button.addEventListener('click', () => { if (openList?.button === button) close(); else open(); });
   button.addEventListener('blur', () => { if (openList?.button === button) close(); });
   button.addEventListener('keydown', (event) => {
-    const all = options(), isOpen = openList?.button === button, list = openList?.list;
+    const all = options(), current = openList, isOpen = current?.button === button;
     const key = event.key;
     if (!isOpen) {
       if (key === 'ArrowDown' || key === 'ArrowUp' || key === 'Enter' || key === ' ') { event.preventDefault(); open(); }
       return;
     }
+    const list = current!.list; // isOpen: there is a list
     // While the list is open its keys are its own: they never reach the game's shortcuts.
     event.stopPropagation();
     if (key === 'Escape') { event.preventDefault(); close(true); }
@@ -142,8 +149,8 @@ function enhance(select) {
 }
 
 /** Enhance every native select under `root` that has not been yet. A redraw that removed an open list's button closes it. */
-export function enhanceSelects(root) {
+export function enhanceSelects(root: ParentNode | null | undefined): void {
   if (openList && !openList.button.isConnected) close();
   if (!root?.querySelectorAll || keepsNative()) return;
-  for (const select of root.querySelectorAll('select:not([data-enhanced]):not([multiple])')) enhance(select);
+  for (const select of root.querySelectorAll<HTMLSelectElement>('select:not([data-enhanced]):not([multiple])')) enhance(select);
 }

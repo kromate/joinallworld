@@ -1,24 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLazyLoader, RETRY_DELAYS_MS, MAX_RETRY_DELAY_MS } from './lazy-load.ts';
+import type { LazyState } from './lazy-load.ts';
+
+interface FakeTimer { fn: () => void; ms: number; live: boolean }
 
 /** Timers the test fires by hand. */
 function clock() {
-  const timers = [];
-  return { timers, setTimeout: (fn, ms) => { const timer = { fn, ms, live: true }; timers.push(timer); return timer; }, clearTimeout: (timer) => { if (timer) timer.live = false; },
-    async fire() { const timer = timers.filter((item) => item.live).at(-1); timer.live = false; timer.fn(); await settle(); } };
+  const timers: FakeTimer[] = [];
+  return { timers, setTimeout: (fn: () => void, ms: number) => { const timer = { fn, ms, live: true }; timers.push(timer); return timer; }, clearTimeout: (timer: FakeTimer | null) => { if (timer) timer.live = false; },
+    async fire() { const timer = timers.filter((item) => item.live).at(-1) as FakeTimer; timer.live = false; timer.fn(); await settle(); } };
 }
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 
 test('a chunk that fails to load is retried with doubling delays, a bounded number of times, and says what is true at each step', async () => {
-  const c = clock(), states = [];
+  const c = clock(), states: LazyState[] = [];
   let calls = 0;
   const piece = createLazyLoader(() => { calls += 1; return Promise.reject(new Error('Failed to fetch dynamically imported module\nat somewhere')); }, { onState: (state) => states.push(state), setTimeout: c.setTimeout, clearTimeout: c.clearTimeout });
   assert.equal(piece.state.status, 'idle');
   assert.equal(await piece.load(), null, 'not loaded: the caller gets null, not an exception');
   assert.deepEqual([piece.state.status, piece.state.attempt, piece.state.retryInMs, piece.state.error], ['retrying', 1, 1000, 'Failed to fetch dynamically imported module']);
   const waits = [1000];
-  for (let i = 0; i < 4; i++) { await c.fire(); waits.push(piece.state.retryInMs); }
+  for (let i = 0; i < 4; i++) { await c.fire(); waits.push(piece.state.retryInMs as number); }
   assert.deepEqual(waits, [...RETRY_DELAYS_MS], 'bounded exponential backoff: 1, 2, 4, 8, 16 seconds');
   await c.fire();
   assert.deepEqual([piece.state.status, piece.state.attempt, piece.state.attempts, calls], ['failed', 6, 6, 6]);
@@ -31,7 +34,7 @@ test('a chunk that fails to load is retried with doubling delays, a bounded numb
 
 test('a manual retry tries at once, joins an attempt in flight, and a success is kept', async () => {
   const c = clock();
-  let calls = 0, fail = true, release;
+  let calls = 0, fail = true, release: () => void = () => {};
   const piece = createLazyLoader(() => { calls += 1; if (fail) return Promise.reject(new Error('offline')); return new Promise((resolve) => { release = () => resolve({ createCommunity: true }); }); }, { setTimeout: c.setTimeout, clearTimeout: c.clearTimeout });
   await piece.load();
   assert.equal(piece.state.status, 'retrying');

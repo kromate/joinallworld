@@ -23,7 +23,7 @@ test('type-ahead goes to the next option that starts with what was typed, wrappi
 });
 
 test('the platform picker is kept only on a small touch screen', () => {
-  const win = (coarse, width) => ({ matchMedia: () => ({ matches: coarse }), innerWidth: width });
+  const win = (coarse: boolean, width: number) => ({ matchMedia: () => ({ matches: coarse }), innerWidth: width });
   assert.equal(keepsNative(win(true, 390)), true);
   assert.equal(keepsNative(win(true, 1024)), false);
   assert.equal(keepsNative(win(false, 390)), false);

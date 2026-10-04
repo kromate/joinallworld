@@ -3,9 +3,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
-function fakeStorage(initial = {}) {
+function fakeStorage(initial: Record<string, string> = {}) {
   const data = new Map(Object.entries(initial));
-  return { getItem: (key) => (data.has(key) ? data.get(key) : null), setItem: (key, value) => data.set(key, String(value)), data };
+  return { getItem: (key: string) => (data.has(key) ? data.get(key) : null), setItem: (key: string, value: unknown) => data.set(key, String(value)), data };
 }
 
 test('every Phone app has its own drawn icon and colour, and an unknown id still draws something', async () => {
@@ -18,7 +18,7 @@ test('every Phone app has its own drawn icon and colour, and an unknown id still
   const drawn = new Set();
   for (const id of apps) {
     assert.ok(hasGlyph(glyphFor(id)) && glyphFor(id) !== 'info', `${id} has a glyph`);
-    assert.match(TINTS[id], /^#[0-9a-f]{6}$/, `${id} has a colour`);
+    assert.match(TINTS[id]!, /^#[0-9a-f]{6}$/, `${id} has a colour`);
     drawn.add(glyph(glyphFor(id)));
     assert.match(appIcon(id), /^<span class="ph-icon" style="--tint:#[0-9a-f]{6}"><svg aria-hidden="true"/);
   }
@@ -37,13 +37,13 @@ test('the wallpaper is a preference of this device: unknown values fall back, a 
   Object.defineProperty(globalThis, 'localStorage', { value: store, configurable: true, writable: true });
   const { WALLPAPERS, WALLPAPER_KEY, getWallpaper, setWallpaper } = await import('./wallpapers.ts');
   assert.ok(WALLPAPERS.length >= 3 && WALLPAPERS.length <= 4);
-  assert.equal(getWallpaper(), WALLPAPERS[0].id);
-  assert.equal(setWallpaper('nonsense'), false); assert.equal(getWallpaper(), WALLPAPERS[0].id);
-  assert.equal(setWallpaper(WALLPAPERS[2].id), true);
-  assert.equal(getWallpaper(), WALLPAPERS[2].id); assert.equal(store.data.get(WALLPAPER_KEY), WALLPAPERS[2].id);
+  assert.equal(getWallpaper(), WALLPAPERS[0]!.id);
+  assert.equal(setWallpaper('nonsense'), false); assert.equal(getWallpaper(), WALLPAPERS[0]!.id);
+  assert.equal(setWallpaper(WALLPAPERS[2]!.id), true);
+  assert.equal(getWallpaper(), WALLPAPERS[2]!.id); assert.equal(store.data.get(WALLPAPER_KEY), WALLPAPERS[2]!.id);
   Object.defineProperty(globalThis, 'localStorage', { value: { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); } }, configurable: true, writable: true });
-  assert.equal(setWallpaper(WALLPAPERS[1].id), false, 'the browser would not save it');
-  assert.equal(getWallpaper(), WALLPAPERS[1].id, 'it still applies for this visit');
+  assert.equal(setWallpaper(WALLPAPERS[1]!.id), false, 'the browser would not save it');
+  assert.equal(getWallpaper(), WALLPAPERS[1]!.id, 'it still applies for this visit');
   // Every wallpaper is CSS: each id has a rule and none of them loads a picture.
   const css = await readFile(new URL('./phone.css', import.meta.url), 'utf8');
   for (const item of WALLPAPERS) assert.ok(css.includes(`[data-wall=${item.id}] .ph-wallpaper`), `${item.id} is drawn in CSS`);
@@ -65,7 +65,7 @@ test('the Report badge counts replies not read on this device, and reading clear
 });
 
 test('the phone runs nothing while idle: no timers and no frame loop in its sources', async () => {
-  for (const file of ['phone.js', 'icons.js', 'wallpapers.js', 'reports.js', 'how.js', 'logic.js']) {
+  for (const file of ['phone.ts', 'icons.ts', 'wallpapers.ts', 'reports.ts', 'how.ts', 'logic.ts']) {
     const code = (await readFile(new URL(`./${file}`, import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
     assert.doesNotMatch(code, /requestAnimationFrame|setAnimationLoop|setInterval|setTimeout/, file);
   }
@@ -112,10 +112,11 @@ test('checkReports fetches once when the phone opens, without the app, and shows
   const real = globalThis.localStorage;
   t.after(() => { Object.defineProperty(globalThis, 'localStorage', { value: real, configurable: true, writable: true }); });
   Object.defineProperty(globalThis, 'localStorage', { value: fakeStorage(), configurable: true, writable: true });
-  const { checkReports, reportReplies, markReportsRead } = await import('./reports.js?badge'); // a fresh copy of the module's state
+  const specifier = './reports.ts?badge'; // a variable, so the type checker does not look for a file of that name
+  const { checkReports, reportReplies, markReportsRead } = (await import(specifier)) as typeof import('./reports.ts'); // a fresh copy of the module's state
   let fetches = 0, refreshes = 0, connected = false;
   const api = { view: () => ({ connected }), refresh: () => { refreshes += 1; },
-    fetchJson: async (path) => { fetches += 1; assert.equal(path, '/api/support/reports'); return { reports: [{ id: 'P-9', at: 100, updatedAt: 400, note: 'Fixed.', status: 'resolved' }] }; } };
+    fetchJson: async (path: string) => { fetches += 1; assert.equal(path, '/api/support/reports'); return { reports: [{ id: 'P-9', at: 100, updatedAt: 400, note: 'Fixed.', status: 'resolved' }] }; } };
   assert.equal(checkReports(api, 1000), false, 'not connected: nothing is sent');
   connected = true;
   assert.equal(checkReports(api, 1000), true);
@@ -129,7 +130,7 @@ test('checkReports fetches once when the phone opens, without the app, and shows
 
 test('How it works: the open state is kept by id, and an unchanged toggle changes nothing', async () => {
   const { toggled, rulesList } = await import('./logic.ts');
-  const none = new Set();
+  const none = new Set<string>();
   const one = toggled(none, 'bank-rent', true);
   assert.deepEqual([...one], ['bank-rent']); assert.equal(none.size, 0, 'the old set is not touched');
   assert.equal(toggled(one, 'bank-rent', true), one, 'markup that arrives open raises a toggle too: same set, no redraw');

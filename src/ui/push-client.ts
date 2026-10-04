@@ -5,12 +5,17 @@
  * Called only from a tap in the Stay in touch app, after the game's own explanation: the browser's
  * permission prompt is never shown on arrival, and a "no" is final for the browser, so it is asked once.
  */
-const toBytes = (value) => { const s = atob(String(value).replace(/-/g, '+').replace(/_/g, '/')); const out = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) out[i] = s.charCodeAt(i); return out; };
+/** The parts of `window` the push code touches, so a test can hand in a stand-in. */
+export type PushWindow = Pick<typeof globalThis, 'navigator' | 'matchMedia' | 'Notification'>;
+export type PushState = 'ready' | 'unsupported' | 'needs-install' | 'blocked';
+export type EnableResult = { ok: true; subscription: PushSubscriptionJSON } | { ok: false; code: 'declined' | 'blocked' | 'unsupported' | 'failed' };
+
+const toBytes = (value: string) => { const s = atob(String(value).replace(/-/g, '+').replace(/_/g, '/')); const out = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) out[i] = s.charCodeAt(i); return out; };
 
 /** 'ready' | 'unsupported' | 'needs-install' (iPhone and iPad: only after Add to Home Screen) | 'blocked' (the browser said no for good). */
-export function pushState(win = globalThis) {
+export function pushState(win: PushWindow = globalThis): PushState {
   const nav = win.navigator, ios = /iPad|iPhone|iPod/.test(nav?.userAgent ?? '') || (nav?.platform === 'MacIntel' && nav.maxTouchPoints > 1);
-  const standalone = win.matchMedia?.('(display-mode: standalone)').matches || nav?.standalone === true;
+  const standalone = win.matchMedia?.('(display-mode: standalone)').matches || (nav as Navigator & { standalone?: boolean } | undefined)?.standalone === true; // iOS-only property, not in lib.dom
   if (ios && !standalone) return 'needs-install';
   if (!('serviceWorker' in (nav ?? {})) || !('PushManager' in win) || !('Notification' in win)) return 'unsupported';
   return win.Notification.permission === 'denied' ? 'blocked' : 'ready';
@@ -18,9 +23,8 @@ export function pushState(win = globalThis) {
 
 /**
  * Ask the browser and subscribe. Must run inside a tap.
- * @returns {Promise<{ ok: true, subscription: object } | { ok: false, code: 'declined' | 'blocked' | 'unsupported' | 'failed' }>}
  */
-export async function enablePush(publicKey, win = globalThis) {
+export async function enablePush(publicKey: string, win: PushWindow = globalThis): Promise<EnableResult> {
   const state = pushState(win);
   if (state !== 'ready') return { ok: false, code: state === 'blocked' ? 'blocked' : 'unsupported' };
   try {
@@ -34,7 +38,7 @@ export async function enablePush(publicKey, win = globalThis) {
 }
 
 /** Remove this browser's subscription. Resolves its endpoint (to tell the server), or null. */
-export async function disablePush(win = globalThis) {
+export async function disablePush(win: PushWindow = globalThis): Promise<string | null> {
   try {
     const registration = await win.navigator.serviceWorker.getRegistration('/');
     const subscription = await registration?.pushManager.getSubscription();

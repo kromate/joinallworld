@@ -26,15 +26,17 @@ export const CONSENT = Object.freeze({
 });
 
 /** Where the analytics provider stores data, said in words when the host tells us. */
-export function regionWords(host) {
+export function regionWords(host: unknown): string {
   const name = String(host ?? '');
   if (/(^|\/\/)eu\./.test(name)) return ' Its servers for this game are in the European Union.';
   if (/(^|\/\/)us\./.test(name)) return ' Its servers for this game are in the United States.';
   return '';
 }
 
+export interface CollectSection { heading: string; lines: string[] }
+
 /** The "What we collect" text, as sections of { heading, lines }. */
-export function whatWeCollect({ host = '' } = {}) {
+export function whatWeCollect({ host = '' }: { host?: string } = {}): CollectSection[] {
   return [
     { heading: 'If you accept: usage analytics', lines: [
       'Which steps you complete: starting to play (how long your name is and whether you changed the suggestion — never the name), your first activity, each step of settling in, your first trip and first work shift, and the days you come back.',

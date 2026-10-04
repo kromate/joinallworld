@@ -3,7 +3,7 @@
  * analytics (PostHog) sit behind it. This file is all of telemetry that is in the first download,
  * and it is deliberately tiny: it only remembers calls.
  *
- *   import { track, screen, identify, setGroup, captureError, setConsent } from './telemetry/index.js';
+ *   import { track, screen, identify, setGroup, captureError, setConsent } from './telemetry/index.ts';
  *   track('activity_completed', { activity_id: 'jog', venue_id: 'park' });
  *
  * Or, without importing anything (for code on another branch):
@@ -19,45 +19,59 @@
  * index.html). Then the game's OWN server is asked once what is configured
  * (GET /api/telemetry/config). If it says nothing is — or the request fails — the list is thrown
  * away, the listeners are removed and that is the end: no other telemetry code is downloaded, no
- * SDK runs, no request goes to either service. Only if it is configured is ./core.js fetched and
- * the kept calls replayed into it, each at the time it was made; core.js decides the rest
+ * SDK runs, no request goes to either service. Only if it is configured is ./core.ts fetched and
+ * the kept calls replayed into it, each at the time it was made; core.ts decides the rest
  * (development hosts, consent, which SDK may load).
  *
- * The rules are in ./policy.js, the events in ./events.js, the words shown to players in
- * ./what-we-collect.js and the operator's side in SECURITY.md ("Telemetry").
+ * The rules are in ./policy.ts, the events in ./events.ts, the words shown to players in
+ * ./what-we-collect.ts and the operator's side in SECURITY.md ("Telemetry").
  */
 export const CALL_LIMIT = 300;
 
-/**
- * @param {object} [env] injectable for tests
- * @param {Window} [env.window]
- * @param {() => number} [env.now]
- * @param {() => Promise<{ createCore: Function }>} [env.loadCore]
- * @param {() => Promise<{ showConsent: Function }>} [env.loadSheet]
- */
-export function createTelemetry({ window: win = globalThis.window, now = Date.now, loadCore = () => import('./core.ts'), loadSheet = () => import('./consent-ui.ts') } = {}) {
+// Named as types only (inline `import()` types): the facade has no static import, so it stays in the entry chunk alone.
+type Core = import('./core.ts').Core;
+type CoreState = import('./core.ts').CoreState;
+type TelemetryWindow = import('./core.ts').TelemetryWindow;
+/** The names of the core's methods (not its getters). */
+type CoreMethod = { [K in keyof Core]: Core[K] extends (...args: never[]) => unknown ? K : never }[keyof Core];
+/** The part of the game's client model that telemetry reads, taken when a state is accepted. */
+export interface ClientSnapshot { session?: { id?: string } | null; cityId?: unknown; storage?: unknown; serverNow(): number }
+/** The result of a game action, as far as telemetry looks at it. */
+export interface ActionResult { ok?: unknown; code?: unknown }
+
+/** What the facade is given, injectable for tests. */
+export interface TelemetryEnv {
+  window?: TelemetryWindow;
+  now?: () => number;
+  loadCore?: () => Promise<{ createCore: typeof import('./core.ts').createCore }>;
+  loadSheet?: () => Promise<{ showConsent: typeof import('./consent-ui.ts').showConsent }>;
+}
+
+export function createTelemetry({ window: win = globalThis.window as TelemetryWindow, now = Date.now, loadCore = () => import('./core.ts'), loadSheet = () => import('./consent-ui.ts') }: TelemetryEnv = {}) {
   /** Kept calls: [method, args, wall-clock time]. The first ones matter most (landed, named), so a full list refuses new ones. */
-  const calls = [];
-  let core = null, off = false, started = false;
+  const calls: Array<[method: string, args: unknown[], at: number]> = [];
+  let core: Core | null = null, off = false, started = false;
   const perf = () => { try { return win.performance.now(); } catch { return undefined; } };
-  const send = (method, ...args) => {
+  const send = (method: string, ...args: unknown[]): unknown => {
     try {
       if (off) return undefined;
-      if (core) return core[method](...args);
+      if (core) return (core as unknown as Record<string, ((...args: unknown[]) => unknown) | undefined>)[method]?.(...args);
       if (calls.length < CALL_LIMIT) calls.push([method, args, now()]);
     } catch { /* telemetry never reaches the game as an error */ }
     return undefined;
   };
-  const forward = (method) => (...args) => send(method, ...args);
-  const onTrack = (event) => send('track', event?.detail?.name, event?.detail?.props);
+  /** The public function for one core method: same parameters, same result (nothing, while the core is not here). */
+  const forward = <M extends CoreMethod>(method: M) => (...args: Parameters<Core[M]>) => send(method, ...args) as ReturnType<Core[M]> | undefined;
+  const onTrack = (event: Event) => send('track', (event as CustomEvent<{ name?: unknown, props?: unknown } | undefined>)?.detail?.name, (event as CustomEvent<{ name?: unknown, props?: unknown } | undefined>)?.detail?.props);
   /** The age question was answered somewhere in the game ('jaw:age' { age: 'adult' | 'minor' }): one stored answer, heard here. */
-  const onAge = (event) => send('age', event?.detail?.age);
+  const onAge = (event: Event) => send('age', (event as CustomEvent<{ age?: unknown } | undefined>)?.detail?.age);
 
   function stop() {
     off = true; calls.length = 0;
     try {
       win.removeEventListener('jaw:track', onTrack); win.removeEventListener('jaw:age', onAge);
-      win.removeEventListener('error', win.__jawErrorHandler); win.removeEventListener('unhandledrejection', win.__jawErrorHandler);
+      const handler = win.__jawErrorHandler;
+      if (handler) { win.removeEventListener('error', handler); win.removeEventListener('unhandledrejection', handler); }
       win.__jawErrors = []; win.__jawErrorHandler = null;
     } catch { /* not a browser */ }
   }
@@ -67,7 +81,7 @@ export function createTelemetry({ window: win = globalThis.window, now = Date.no
     started = true;
     try {
       const response = await win.fetch('/api/telemetry/config', { headers: { Accept: 'application/json' } });
-      const config = response.ok ? await response.json() : null;
+      const config: import('./policy.ts').ClientConfig | null = response.ok ? await response.json() : null;
       if (!config || config.enabled !== true) { stop(); return; }
       const made = (await loadCore()).createCore({ config, window: win });
       if (made.mode !== 'on') { stop(); return; } // a development host without TELEMETRY_DEBUG=1
@@ -87,7 +101,7 @@ export function createTelemetry({ window: win = globalThis.window, now = Date.no
 
   return {
     // ---- the public facade ----------------------------------------------------------------------
-    /** One analytics event. Names and properties: src/telemetry/events.js. */
+    /** One analytics event. Names and properties: src/telemetry/events.ts. */
     track: forward('track'),
     /** The screen in front changed. */
     screen: forward('screen'),
@@ -103,19 +117,22 @@ export function createTelemetry({ window: win = globalThis.window, now = Date.no
     needName: forward('needName'),
     session: forward('session'),
     /** After every accepted server state. Only what telemetry needs of the client model is kept, read now. */
-    state(next, previous, client) { try { if (!off) send('state', next, previous, { session: client.session, cityId: client.cityId, storage: client.storage, now: client.serverNow() }); } catch { /* ignore */ } },
+    state(next: CoreState | null | undefined, previous: CoreState | null | undefined, client: ClientSnapshot) { try { if (!off) send('state', next, previous, { session: client.session, cityId: client.cityId, storage: client.storage, now: client.serverNow() }); } catch { /* ignore */ } },
     /** Wrap one game action: `const done = telemetry.action(type); … done(result)`. */
-    action(type) {
+    action(type?: unknown) {
       const from = perf();
       send('pending', type);
-      return (result) => { send('actionDone', type, perf() - from, result && { ok: result.ok, code: result.code }); };
+      return (result?: ActionResult | null) => { send('actionDone', type, (perf() ?? NaN) - (from ?? NaN), result && { ok: result.ok, code: result.code }); };
     },
     link: forward('link'),
     hudReady() { send('hudReady', perf()); },
     /** The first scene was drawn (or could not be): from here on telemetry may start, when the browser is idle. */
-    sceneReady(ok, canvas) {
+    sceneReady(ok?: unknown, canvas?: { getContext(kind: string): unknown } | null) {
       send('sceneReady', ok, canvas, perf());
-      try { (win.requestIdleCallback || win.setTimeout)(() => { void start(); }, win.requestIdleCallback ? { timeout: 3000 } : 1); } catch { /* not a browser */ }
+      try {
+        const idle = win.requestIdleCallback as Window['requestIdleCallback'] | undefined; // not in every browser (Safari)
+        if (idle) idle(() => { void start(); }, { timeout: 3000 }); else win.setTimeout(() => { void start(); }, 1);
+      } catch { /* not a browser */ }
     },
     chunkFailed: forward('chunkFailed'),
     start, openPrivacy: privacy,

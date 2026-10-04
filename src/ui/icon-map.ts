@@ -25,7 +25,7 @@
 import { glyph, glyphFor, hasGlyph } from './phone/icons.ts';
 
 /** glyph name → the emoji that mean it. Looked up by an emoji's first code point (skin tones, ZWJ tails and variation selectors do not matter). */
-const GROUPS = {
+const GROUPS: Record<string, string> = {
   person: '👤🧑👩👨👴👵🧒🧔👮🕴🧍🧢', people: '👥👪', hand: '👋🙌🤜', handshake: '🤝', social: '💬🗣🗯', heart: '❤💞💔',
   fun: '😂😆😁😄🎉🎊', meh: '🙂😏', sad: '😟😣', sick: '🤒', pray: '🙏🤲📿🕊', crown: '👑',
   hunger: '🥣🍲🍛🥘🍜🍚', drink: '🍹🥤🍸☕🥥🥛🧃🥂🫗', bottle: '🍾🛢🧴🥫', grill: '🍢🍖🍗', snack: '🍩🧆🌯🍨🍿🍞🥚🍯🧈',
@@ -43,11 +43,11 @@ const GROUPS = {
   sun: '🌤☀', rain: '🌧', moon: '🌙', lock: '🔒', key: '🔑', link: '🔗', bell: '🔔🛎', hunt: '💎', good: '✅✔', error: '⚠',
   invite: '🚪', messages: '✉', goals: '🎯', support: '🛟', settings: '⚙',
 };
-const EMOJI = new Map();
+const EMOJI = new Map<string, string>();
 for (const [name, list] of Object.entries(GROUPS)) for (const char of list) EMOJI.set(char, name);
 
 /** Explicit choices by content id, per kind. */
-const BY_ID = {
+const BY_ID: Record<string, Record<string, string>> = {
   // Where the content's emoji would mislead (a chef's face for a cooker, a basket for a sleeping mat), the id decides.
   spot: { kitchen: 'pan', queue: 'people' },
   activity: { 'hub-freelance': 'screen', 'mosque-teach': 'book', 'polling-educate': 'book', 'park-sell-prints': 'frame' },
@@ -73,7 +73,7 @@ const BY_ID = {
     'group-added': 'people', 'bae-request': 'heart', 'bae-answer': 'heart' },
 };
 /** What a kind is drawn as when neither its id nor its emoji is known. */
-const DEFAULTS = { venue: 'pin', spot: 'pin', activity: 'star', mode: 'compass', weather: 'cloud', mood: 'fun', health: 'health', need: 'health', track: 'jobs', furniture: 'box',
+const DEFAULTS: Record<string, string> = { venue: 'pin', spot: 'pin', activity: 'star', mode: 'compass', weather: 'cloud', mood: 'fun', health: 'health', need: 'health', track: 'jobs', furniture: 'box',
   category: 'box', food: 'hunger', car: 'cars', house: 'home', home: 'home', event: 'barrier', npc: 'person', 'npc-action': 'social', ad: 'star', trait: 'star', dream: 'goals',
   lottery: 'game', goal: 'goals', wish: 'star', perk: 'star', notice: 'megaphone', update: 'bell', empty: 'info' };
 
@@ -83,27 +83,29 @@ const EMOJI_RE = /(?:\p{Regional_Indicator}{2}|\p{Extended_Pictographic}(?:️|\
 const LEAD_RE = new RegExp(`^(?:${EMOJI_RE.source}\\s*)+`, 'u');
 
 /** The glyph an emoji stands for, or undefined. Flags are the globe. */
-export function glyphOfEmoji(emoji) {
+export function glyphOfEmoji(emoji: unknown): string | undefined {
   if (typeof emoji !== 'string' || !emoji) return undefined;
   const first = [...emoji.replace(SKIP, '')][0];
   if (!first) return undefined;
   return EMOJI.get(first) || (/\p{Regional_Indicator}/u.test(first) ? 'globe' : undefined);
 }
 
-export function glyphNameFor(kind, id, icon) {
+export function glyphNameFor(kind: string, id?: string | null, icon?: unknown): string {
   if (kind === 'npc') return 'person'; // a person is never an emoji face: the lettered avatar, or the person glyph
-  const byId = kind === 'panel' ? glyphFor(id) : BY_ID[kind]?.[id];
+  // A missing id looks up the key 'undefined' / 'null', which no table has: the same answer as before.
+  const byId = kind === 'panel' ? glyphFor(String(id)) : BY_ID[kind]?.[String(id)];
   if (byId && byId !== 'info') return byId;
-  if (hasGlyph(icon)) return icon;
+  if (typeof icon === 'string' && hasGlyph(icon)) return icon;
   return glyphOfEmoji(icon) || DEFAULTS[kind] || 'info';
 }
 
 /** The icon of a piece of content as SVG html. `icon` is the content's emoji field (or a glyph name). */
-export const iconFor = (kind, id, icon) => glyph(glyphNameFor(kind, id, icon), 'ui-glyph');
+export const iconFor = (kind: string, id?: string | null, icon?: unknown): string => glyph(glyphNameFor(kind, id, icon), 'ui-glyph');
 
-const escape = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const ESCAPES: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+const escape = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => ESCAPES[c] ?? c);
 /** Plain text → escaped html in which every emoji is drawn as its glyph. Text marks (→ · − ₦) are left alone. */
-export function withGlyphs(text) {
+export function withGlyphs(text: unknown): string {
   const source = String(text ?? '');
   let out = '', last = 0;
   for (const match of source.matchAll(EMOJI_RE)) {
@@ -115,4 +117,4 @@ export function withGlyphs(text) {
   return out + escape(source.slice(last));
 }
 /** A text without the emoji it starts with — for a line that is shown next to a glyph of its own. */
-export const stripLeadEmoji = (text) => String(text ?? '').replace(LEAD_RE, '');
+export const stripLeadEmoji = (text: unknown): string => String(text ?? '').replace(LEAD_RE, '');

@@ -26,14 +26,16 @@ registerGlyphs({
 });
 
 /** One colour per app: the icon's rounded square and the app bar. */
-export const TINTS = {
+export const TINTS: Record<string, string> = {
   jobs: '#2563eb', messages: '#16a34a', bank: '#0f766e', ride: '#d97706',
   statement: '#475569', invest: '#7c3aed', career: '#0284c7', richlist: '#b7791f',
   goals: '#ea580c', health: '#e11d48', groceries: '#4d9a1a', boutique: '#db2777', houses: '#b45309', cars: '#334155', settings: '#6b7280', help: '#0e8fd6',
   contacts: '#0d9488', people: '#4f46e5', family: '#c026d3', invite: '#d98200', community: '#0891b2',
   governor: '#166534', neighbours: '#059669', ads: '#9333ea', 'hunt-sheet': '#0aa5c2', radio: '#1e293b', support: '#dc5a0c',
 };
-export const tintOf = (panel) => panel?.tint || TINTS[panel?.id] || '#3f4a5a';
+/** The part of a panel the Phone reads for colour: its own `tint` or its id. */
+export interface Tinted { id?: string; tint?: string }
+export const tintOf = (panel?: Tinted | null): string => panel?.tint || (panel?.id !== undefined ? TINTS[panel.id] : undefined) || '#3f4a5a';
 
 /** The rounded-square app icon. `tint` is a CSS colour from our own table, never player text. */
-export const appIcon = (id, tint = TINTS[id] || '#3f4a5a') => `<span class="ph-icon" style="--tint:${tint}">${glyph(glyphFor(id))}</span>`;
+export const appIcon = (id: string, tint: string = TINTS[id] || '#3f4a5a'): string => `<span class="ph-icon" style="--tint:${tint}">${glyph(glyphFor(id))}</span>`;

@@ -18,14 +18,16 @@ import { HEALTH } from '../game/content/health.ts';
 import { TRAITS, DREAMS, START_HOMES, LOTTERY, MOODS } from '../game/content/traits.ts';
 
 const EMOJI = /(?:\p{Regional_Indicator}{2}|\p{Extended_Pictographic}(?:️|\p{Emoji_Modifier})*(?:‍\p{Extended_Pictographic}(?:️|\p{Emoji_Modifier})*)*)/gu;
+/** A spot of a venue and its activities, as far as this test reads them. */
+interface SpotLike { id: string; icon?: string; activities?: { id: string; icon?: string }[] }
 /** A glyph that is really drawn: registered, and not the generic fallback mark. */
-const drawn = (name) => hasGlyph(name) && name !== 'info';
+const drawn = (name: string | undefined) => hasGlyph(name) && name !== 'info';
 
 test('every piece of content that reaches the UI maps to a glyph of the first download — by id or by its emoji, never by luck', () => {
   // Everything below is asserted BEFORE ./phone/icons-more.js is imported: a venue panel, a HUD chip, the map and a
   // travel tile are first paint, and so are the home's furniture and kitchen (their activity cards).
-  const seen = [];
-  const check = (kind, id, icon) => {
+  const seen: string[] = [];
+  const check = (kind: string, id: string | null | undefined, icon?: unknown) => {
     const name = glyphNameFor(kind, id, icon);
     assert.ok(drawn(name), `${kind} "${id}" (${icon}) → "${name}" is not a drawn glyph`);
     // Not the kind's catch-all: either its id is listed, or its emoji is in the table.
@@ -35,7 +37,8 @@ test('every piece of content that reaches the UI maps to a glyph of the first do
   };
   for (const venue of [...Object.values(VENUES), ...Object.values(COMING_SOON)]) {
     check('venue', venue.id, venue.icon);
-    for (const spot of Object.values(venue.spots || {})) {
+    // Only the real venues have spots; the coming-soon ones do not.
+    for (const spot of Object.values((venue as { spots?: Record<string, SpotLike> }).spots || {})) {
       if (spot.icon) check('spot', spot.id, spot.icon);
       for (const activity of spot.activities || []) check('activity', activity.id, activity.icon);
     }
@@ -43,11 +46,11 @@ test('every piece of content that reaches the UI maps to a glyph of the first do
   for (const spot of Object.values(HOME_SPOTS)) check('spot', spot.label, spot.icon);
   for (const activity of HOME_ACTIVITIES) if (activity.icon) check('activity', activity.id, activity.icon);
   for (const item of Object.values(FURNITURE)) check('furniture', item.id, item.icon);
-  for (const category of [...CATEGORIES, { id: 'storage' }]) check('category', category.id, category.icon);
+  for (const category of [...CATEGORIES, { id: 'storage', icon: undefined }]) check('category', category.id, category.icon);
   for (const item of [...Object.values(INGREDIENTS), ...Object.values(RECIPES)]) check('food', item.id, item.icon);
   for (const job of Object.values(JOBS)) { check('track', job.id, job.icon); if (job.shift) check('activity', job.shift.id, job.shift.icon); }
   for (const car of Object.values(CARS)) check('car', car.id, car.icon);
-  for (const mode of [...Object.values(ALL_MODES), { id: 'commute' }]) check('mode', mode.id, mode.icon);
+  for (const mode of [...Object.values(ALL_MODES), { id: 'commute', icon: undefined }]) check('mode', mode.id, mode.icon);
   for (const event of Object.values(EVENTS)) check('event', event.id, event.icon);
   for (const goal of STARTER_GOALS) check('goal', goal.id, goal.icon);
   for (const wish of WISHES) check('wish', wish.id, wish.icon);
@@ -61,7 +64,7 @@ test('every piece of content that reaches the UI maps to a glyph of the first do
   for (const trait of Object.values(TRAITS)) check('trait', trait.id, trait.icon);
   for (const dream of Object.values(DREAMS)) check('dream', dream.id, dream.icon);
   for (const home of Object.values(START_HOMES)) check('home', home.id, home.icon);
-  for (const outcome of Object.values(LOTTERY.outcomes || LOTTERY).filter((item) => item && item.id)) check('lottery', outcome.id, outcome.icon);
+  for (const outcome of Object.values(((LOTTERY as unknown as { outcomes?: object }).outcomes || LOTTERY) as Record<string, { id?: string; icon?: string } | null>).filter((item): item is { id: string; icon?: string } => Boolean(item && item.id))) check('lottery', outcome.id, outcome.icon);
   // People are drawn as a lettered avatar or the person glyph — an emoji face is never shown.
   for (const person of [...Object.values(NPCS), ...Object.values(FAMILY)]) assert.equal(glyphNameFor('npc', person.id, person.emoji), 'person', person.id);
   for (const kind of ['rent-due', 'rent', 'rent-missed', 'loan', 'loan-missed', 'promotion', 'illness', 'recovered', 'gov', 'transfer', 'bae']) assert.ok(drawn(glyphNameFor('notice', kind)), kind);
@@ -72,7 +75,7 @@ test('every piece of content that reaches the UI maps to a glyph of the first do
 
 test('every emoji written anywhere in the game content or the systems has a glyph', async () => {
   for (const dir of ['../game/content/', '../game/systems/']) {
-    for (const file of (await readdir(new URL(dir, import.meta.url))).filter((name) => name.endsWith('.js') && !name.endsWith('.test.js'))) {
+    for (const file of (await readdir(new URL(dir, import.meta.url))).filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))) {
       const source = await readFile(new URL(dir + file, import.meta.url), 'utf8');
       for (const emoji of new Set(source.match(EMOJI) || [])) assert.ok(drawn(glyphOfEmoji(emoji)), `${file}: ${emoji} has no glyph in src/ui/icon-map.js`);
     }

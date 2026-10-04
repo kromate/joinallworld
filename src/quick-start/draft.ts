@@ -5,19 +5,20 @@
  * screen; the decisions are ./look-model.js (pure).
  */
 import { draftFrom } from './look-model.ts';
+import type { Draft } from './model.ts';
 import { kept, store, landedAt } from './entry.ts';
 
 /** The draft the landing screen edits (made on first use, then kept). `name`: a name this device already uses. */
-export function quickDraft(name) {
+export function quickDraft(name?: string): Draft {
   kept.draft ??= draftFrom(store.read(store.KEYS.draft), { random: Math.random, now: landedAt(), name });
   return kept.draft;
 }
 /** True the first time the landing screen is shown on this device (and false after, across reloads), so 'landed' is reported once. */
-export function firstLanding() {
+export function firstLanding(): boolean {
   if (store.read(store.KEYS.landed)) return false;
   store.write(store.KEYS.draft, quickDraft()); // the moment of landing is kept with the draft: `ms` counts from here, also after a reload
   store.write(store.KEYS.landed, 1);
   return true;
 }
 /** Change the draft and keep it. */
-export function keepDraft(changes) { kept.draft = { ...quickDraft(), ...changes }; store.write(store.KEYS.draft, kept.draft); return kept.draft; }
+export function keepDraft(changes: Partial<Draft>): Draft { kept.draft = { ...quickDraft(), ...changes }; store.write(store.KEYS.draft, kept.draft); return kept.draft; }

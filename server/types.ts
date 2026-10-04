@@ -451,6 +451,8 @@ export interface Store {
   flush?(): Promise<void>
   close?(): Promise<void>
   stats?(): StoreStats
+  /** True while one of THIS store's transaction or read callbacks is running (hosts with several stores in one isolate). */
+  executing?(): boolean
 }
 
 // ---- the route-module contract (server/routes/index.ts) ------------------------------------------

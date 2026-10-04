@@ -70,13 +70,29 @@ async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) 
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
   const options = { name: 'joinallworld-conformance', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
-  let mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true });
+  // What the object wrote to its console is kept (and still shown): a test can say what must never be logged.
+  const lines: string[] = [], handleStructuredLogs = ({ level, message }: { level: string; message: string }) => { lines.push(message); (level === 'error' || level === 'warn' ? console.error : console.log)(message); };
+  let mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs });
   const sockets: StubSocket[] = [];
-  t.after(async () => { for (const socket of sockets) try { socket.close(); } catch {} await mf.dispose(); await rm(folder, { recursive: true, force: true }); });
+  /**
+   * Every response the test was handed. A body nobody read (a status check on a 150 KB image) keeps its connection busy, and
+   * Miniflare's dispose() waits for every connection to the runtime to finish: with the runtime already stopped it never
+   * does, so a whole run hung there. `stop` cancels what was left unread, and gives dispose a deadline so a hang is a failure.
+   */
+  const handed: MiniflareResponse[] = [];
+  const send = async (url: string, init?: RequestInit & { headers?: Record<string, string> }) => { const response = await mf.dispatchFetch(url, init); handed.push(response); return response; };
+  const within = <T>(step: string, work: Promise<T>, ms = 30000) => { let timer: NodeJS.Timeout; return Promise.race([work, new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Error(`${step} did not finish within ${ms} ms`)), ms); })]).finally(() => clearTimeout(timer)); };
+  async function stop() {
+    for (const socket of sockets) try { socket.close(); } catch {}
+    sockets.length = 0;
+    for (const response of handed.splice(0)) if (!response.bodyUsed && response.body && !response.body.locked) await response.body.cancel().catch(() => {});
+    await within('Miniflare dispose', mf.dispose());
+  }
+  t.after(async () => { await stop(); await rm(folder, { recursive: true, force: true }); });
   await mf.ready;
   const origin = 'https://joinallworld.test';
   async function request(path: string, body?: object | null, cookie?: string | null, headers: Record<string, string> = {}) {
-    return mf.dispatchFetch(origin + path, { method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined });
+    return send(origin + path, { method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined });
   }
   async function device(name: string): Promise<Device> {
     const response = await request('/api/session', { name });
@@ -89,7 +105,7 @@ async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) 
   const action = (device: Device, fields: object) => request('/api/action', { actionId: `${Date.now()}:${randomUUID()}`, cityId: 'lagos', ...fields }, device.cookie);
   const life = async (device: Device) => (await (await request('/api/life?city=lagos', null, device.cookie)).json()).state;
   async function socket(device: Device) {
-    const response = await mf.dispatchFetch(origin + '/socket', { headers: { origin, cookie: device.cookie, upgrade: 'websocket' } });
+    const response = await send(origin + '/socket', { headers: { origin, cookie: device.cookie, upgrade: 'websocket' } });
     assert.equal(response.status, 101);
     const ws = response.webSocket as StubSocket;
     const queue: Frame[] = [], pending: ((item: Frame) => void)[] = [], heartbeats: number[] = [];
@@ -119,8 +135,8 @@ async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) 
     if (work.last !== null) work.last -= 1;
     await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
   }
-  const upgrade = (headers: Record<string, string>) => mf.dispatchFetch(origin + '/socket', { headers: { upgrade: 'websocket', ...headers } });
-  return { atHost: (host: string,path: string,method='GET') => mf.dispatchFetch(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path: string, init?: RequestInit & { headers?: Record<string, string> }) => mf.dispatchFetch(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { for (const socket of sockets) socket.close(); await mf.dispose(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true }); await mf.ready; } };
+  const upgrade = (headers: Record<string, string>) => send(origin + '/socket', { headers: { upgrade: 'websocket', ...headers } });
+  return { logged: () => lines.join('\n'), atHost: (host: string,path: string,method='GET') => send(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path: string, init?: RequestInit & { headers?: Record<string, string> }) => send(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { await stop(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs }); await within('Miniflare restart', mf.ready); } };
 }
 
 test('Cloudflare: public IDs, origin isolation, atomic duplicate fare, replay window and restart durability', async t => {
@@ -187,6 +203,9 @@ test('Cloudflare: two clients presence, chat dedupe, signaling isolation and tra
   await f.action(a, { type: 'travel', id: 'library', mode: 'cab' });
   assert.equal((await x.next()).code, 'venue_mismatch'); assert.equal((await y.next()).members.length, 1);
   x.send({ type: 'join', cityId: 'lagos', venueId: 'library' }); assert.equal((await x.next()).code, 'venue_mismatch');
+  // The object was put to sleep twice above and made again: the instance it replaced is not reached by this one's requests (no "different Durable Object" I/O).
+  await new Promise(resolve => setTimeout(resolve, 500));
+  assert.ok(!/World sync failed|different Durable Object/.test(f.logged()), f.logged().split('\n').filter(line => /World sync failed|different Durable Object/.test(line)).join('\n'));
 });
 
 test('Cloudflare: socket auth, expired open connection and disconnect after hibernation', async t => {

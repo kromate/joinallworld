@@ -63,7 +63,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   sql.exec('CREATE INDEX IF NOT EXISTS once_expiry ON once_receipts(at)');
   sql.exec('CREATE TABLE IF NOT EXISTS collections (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
   sql.exec('CREATE TABLE IF NOT EXISTS collection_parts (name TEXT NOT NULL, part INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(name,part))');
-  let serial: Promise<unknown> = Promise.resolve(), failed = false;
+  let serial: Promise<unknown> = Promise.resolve(), failed = false, executing = false;
   const stats = { transactions: 0, reads: 0, writes: 0, aborted: 0, writeFailures: 0 };
 
   /** A collection's JSON text, put together from its parts when it was split. */
@@ -213,7 +213,9 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
       if (failed) throw toStorageError(new Error('The durability of an earlier write is unknown'));
       const draft = view();
       let result: T;
-      try { result = await fn(draft.db); } catch (error) { if (write) stats.aborted += 1; throw error; }
+      // `executing` is true only while THIS store's callback runs, so a watcher can tell whose transaction announced a life.
+      executing = true;
+      try { result = await fn(draft.db); } catch (error) { if (write) stats.aborted += 1; throw error; } finally { executing = false; }
       if (write) {
         stats.transactions += 1;
         let wrote: number;
@@ -234,6 +236,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   return {
     transact: (fn, options) => run(fn, options, true),
     read: fn => run(fn, null, false),
+    executing: () => executing,
     stats: () => ({ mode: 'sqlite', failed, failing: failed, ...stats }),
     flush: () => serial.then(() => undefined), close: () => serial.then(() => undefined),
   };

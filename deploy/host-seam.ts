@@ -18,6 +18,7 @@ export type { PublicSession }
 
 export interface SqliteStore extends Store {
   stats(): StoreStats
+  executing(): boolean
   flush(): Promise<void>
   close(): Promise<void>
 }

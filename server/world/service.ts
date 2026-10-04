@@ -216,6 +216,9 @@ function buildWorld(ctx: RouteContext) {
   // Only a look: the stored life is read again by sync(), so an undone transaction costs one idle sync.
   const onLife = (publicId: string, cityId: CityId, state: LifeState): void => {
     if (!shards || !state?.estate || quiet) return;
+    // The watcher list is process-wide. A life announced inside ANOTHER store's transaction (an earlier Durable Object instance in
+    // this isolate that has not been collected) is not ours: syncing it would use this instance's storage on that request's behalf.
+    if (ctx.store.executing && !ctx.store.executing()) return;
     const key = `${publicId}:${cityId}`, sig = sigOf(cityId, state);
     if (sigs.get(key) === sig) return;
     sigs.set(key, sig);

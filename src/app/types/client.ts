@@ -3,7 +3,7 @@
 // converted these become its own declarations.
 import type { ActionMap, ActionType, PlayerActionType } from '../../types/actions.ts'
 import type { LifeState } from '../../types/life.ts'
-import type { CityId, PublicSession } from '../../types/protocol.ts'
+import type { CityId, OwnSession } from '../../types/protocol.ts'
 
 /**
  * WHY the game is or is not playable. "Offline" is said only for 'offline'.
@@ -72,7 +72,7 @@ export interface ClientOptions {
   onSessionExpired?: () => void
   /** No session yet: ask for a nickname, then call connect(true). */
   onNeedName?: (problem?: NameProblem) => void
-  onSession?: (session: PublicSession, created: boolean) => void
+  onSession?: (session: OwnSession, created: boolean) => void
 }
 
 /** The object `createClient()` returns. Fields change in place; nothing here is reactive by itself. */
@@ -81,7 +81,8 @@ export interface GameClient {
   cityId: CityId
   identity: { name: string }
   hasSavedIdentity: boolean
-  session: PublicSession | null
+  /** The caller's own session: `cities` lists where it has a life (absent from an older server). */
+  session: OwnSession | null
   ready: boolean
   busy: boolean
   serverTimeOffset: number

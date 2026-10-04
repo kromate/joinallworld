@@ -4,16 +4,16 @@
 // module and the casts live in one place. When a module is converted to TypeScript its lines here
 // are deleted and its importers point at the real file. The DOM-free modules are in ./engine.ts.
 import { PANELS as PANELS_JS, sessionGate as sessionGateJs } from '../../ui/panels/index.js'
-import { glyph as glyphJs, glyphFor as glyphForJs, hasGlyph as hasGlyphJs, tintOf as tintOfJs } from '../../ui/phone/icons.js'
+import { glyph as glyphJs, glyphFor as glyphForJs, hasGlyph as hasGlyphJs, onGlyphs as onGlyphsJs } from '../../ui/phone/icons.js'
+import { glyphNameFor as glyphNameForJs } from '../../ui/icon-map.js'
 import { icon as iconJs } from '../../ui/dom.js'
-import { getWallpaper as getWallpaperJs } from '../../ui/phone/wallpapers.js'
-import { checkReports as checkReportsJs, markReportsRead as markReportsReadJs, noteFiled as noteFiledJs, noteReports as noteReportsJs, reportReplies as reportRepliesJs } from '../../ui/phone/reports.js'
+import { markReportsRead as markReportsReadJs, noteFiled as noteFiledJs, noteReports as noteReportsJs, reportReplies as reportRepliesJs } from '../../ui/phone/reports.js'
 import { shortcutFor as shortcutForJs, shortcutRows as shortcutRowsJs, heldActionFor as heldActionForJs } from '../../ui/keys.js'
 import { crowdList as crowdListJs, playersHere as playersHereJs } from '../../scene/crowd.js'
 import type { LifeState } from '../../types/life.ts'
 import type { SupportReport } from '../../types/support.ts'
 import type { NpcContent } from './engine.ts'
-import type { LegacyPanel, PanelApi, PanelMeta } from '../types/panel.ts'
+import type { LegacyPanel, PanelApi } from '../types/panel.ts'
 
 // ---- panels --------------------------------------------------------------------------------
 /** Every existing panel, sorted. A lazy one is a stub (`pending`) until its group arrives. */
@@ -31,12 +31,21 @@ export const iconSvg = (name: string): string => (name === 'chevron-down' ? inte
 export const hasGlyph = hasGlyphJs as unknown as (name: string) => boolean
 /** The glyph name for a panel id. */
 export const glyphFor = glyphForJs as unknown as (id: string) => string
-export const tintOf = tintOfJs as unknown as (panel: Pick<PanelMeta, 'id' | 'tint'> | null | undefined) => string
-export const getWallpaper = getWallpaperJs as unknown as () => string
+/**
+ * The first download carries only the glyphs the first paint needs; the rest of the set registers
+ * itself when the Phone's code arrives. `listener` runs then, so marks drawn as "info" meanwhile
+ * are drawn again. Returns the function that stops listening.
+ */
+export const onGlyphs = onGlyphsJs as unknown as (listener: () => void) => () => void
+/**
+ * Which glyph a piece of game content gets (src/ui/icon-map.js): content carries an emoji in its
+ * `icon` field as a plain-text fallback, and nothing on screen draws it. `kind` is 'venue', 'spot',
+ * 'activity', 'mode', 'mood', 'need', 'panel', 'empty', 'notice', 'update' …
+ */
+export const glyphNameFor = glyphNameForJs as unknown as (kind: string, id?: string | null, icon?: string | null) => string
 
 // ---- report replies (the badge on Report a problem) ----------------------------------------
 type ReportStamp = Pick<SupportReport, 'id' | 'at' | 'updatedAt' | 'note' | 'status'>
-export const checkReports = checkReportsJs as unknown as (api: Pick<PanelApi, 'view' | 'fetchJson' | 'refresh'>) => void
 export const noteReports = noteReportsJs as unknown as (reports: readonly ReportStamp[]) => void
 export const markReportsRead = markReportsReadJs as unknown as () => boolean
 export const noteFiled = noteFiledJs as unknown as () => void

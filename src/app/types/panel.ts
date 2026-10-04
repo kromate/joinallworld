@@ -5,7 +5,7 @@
 import type { Component } from 'vue'
 import type { LifeState } from '../../types/life.ts'
 import type { LifeView } from '../../types/view.ts'
-import type { CityId, PublicSession } from '../../types/protocol.ts'
+import type { CityId, OwnSession } from '../../types/protocol.ts'
 import type { City, Command, FetchJson, LinkState, NetStatus, StorageProblem } from './client.ts'
 
 /**
@@ -36,7 +36,7 @@ export interface PanelView extends LifeView {
   connected: boolean
   /** Use only to word the reason truthfully. */
   link: LinkState
-  session: PublicSession | null
+  session: OwnSession | null
   net: NetStatus
   storage: StorageProblem | null
   name: string

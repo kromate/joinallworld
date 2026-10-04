@@ -10,7 +10,7 @@
 import { computed, ref, shallowRef } from 'vue'
 import type { ComputedRef, Ref, ShallowRef } from 'vue'
 import type { LifeState } from '../../types/life.ts'
-import type { CityId, PublicSession } from '../../types/protocol.ts'
+import type { CityId, OwnSession } from '../../types/protocol.ts'
 import type { PlayerActionType } from '../../types/actions.ts'
 import type { ClientOptions, CommandArgs, CommandResult, FetchJson, GameClient, LinkState, NameProblem, NetStatus, StorageProblem, SwitchCityResult } from '../types/client.ts'
 import type { PanelView, ShellMode, ToastKind } from '../types/panel.ts'
@@ -27,7 +27,7 @@ export interface GameEvents {
   /** The server no longer knows this browser's session. */
   expired: () => void
   /** A session was established or replaced. */
-  session: (session: PublicSession, created: boolean) => void
+  session: (session: OwnSession, created: boolean) => void
 }
 
 export interface Game {
@@ -40,7 +40,7 @@ export interface Game {
   connected: ComputedRef<boolean>
   net: Ref<NetStatus>
   storage: ShallowRef<StorageProblem | null>
-  session: ShallowRef<PublicSession | null>
+  session: ShallowRef<OwnSession | null>
   cityId: Ref<CityId>
   /** Actions sent and not yet answered. */
   saving: Ref<number>
@@ -91,7 +91,7 @@ export function createGame(options: GameOptions = {}): Game {
   const state = shallowRef<LifeState>(client.state)
   const link = ref<LinkState>(client.link)
   const storage = shallowRef<StorageProblem | null>(client.storage)
-  const session = shallowRef<PublicSession | null>(client.session)
+  const session = shallowRef<OwnSession | null>(client.session)
   const cityId = ref<CityId>(client.cityId)
   const online = ref(client.online)
   const connected = computed(() => online.value)

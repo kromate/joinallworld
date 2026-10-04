@@ -67,11 +67,19 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
     scene.arrivals.value += 1
   }
 
-  function heldCities(): string[] {
+  function rememberedCities(): string[] {
     try { const list: unknown = JSON.parse(globalThis.localStorage?.getItem(HELD_KEY) || '[]'); return Array.isArray(list) ? list.filter((id): id is string => typeof id === 'string') : [] } catch { return [] }
   }
+  /**
+   * The cities this player has a life in. The server says so in the session response, which makes
+   * it true on every device; only a server that does not report it falls back to what this browser remembers.
+   */
+  function heldCities(): string[] {
+    const held = game.session.value?.cities
+    return Array.isArray(held) ? held.filter((id) => typeof id === 'string') : rememberedCities()
+  }
   function noteCity(id: string): void {
-    try { const list = heldCities(); if (!list.includes(id)) globalThis.localStorage?.setItem(HELD_KEY, JSON.stringify([...list, id])) } catch { /* remembered for this visit only */ }
+    try { const list = rememberedCities(); if (!list.includes(id)) globalThis.localStorage?.setItem(HELD_KEY, JSON.stringify([...list, id])) } catch { /* remembered for this visit only */ }
   }
 
   game.on('accepted', (state, previous) => {

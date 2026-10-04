@@ -39,6 +39,8 @@ const nav = ref<InstanceType<typeof BottomNav> | null>(null)
 /** What covers the top of the scene: the top bar, and on a phone the needs strip under it. */
 const topCover = (): (Element | null)[] => [root.value?.querySelector('.hud-bar') ?? null, window.innerWidth <= 720 ? root.value?.querySelector('.life-quick') ?? null : null]
 
+const hudRows = (): (Element | null)[] => (window.innerWidth <= 720 ? ['.life-quick', '.life-alerts', '.life-goal'].map((selector) => root.value?.querySelector(selector) ?? null) : [])
+
 // ---- keys ----------------------------------------------------------------------------------
 // The same map as the existing shell (src/ui/keys.js). Walking and the scene camera belong to the
 // scene host: in the venue view with no sheet open the movement keys are forwarded as 'jaw:key'.
@@ -125,7 +127,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
 </script>
 
 <template>
-  <ScenePane :top="topCover" :bottom="() => bottom" :hidden="mode === 'map'" />
+  <ScenePane :top="topCover" :rows="hudRows" :bottom="() => bottom" :hidden="mode === 'map'" />
   <MapPane />
   <div id="life-overlay" ref="root" class="life-ui" :class="{ 'is-clean': ui.clean, 'is-tray-open': ui.trayOpen, 'is-expanded': ui.expanded && mode === 'venue' }" :data-mode="mode">
     <p class="life-wordmark" aria-label="Allworld"><i aria-hidden="true"><GameIcon name="globe" :size="19" /></i><span><b>Allworld</b></span></p>

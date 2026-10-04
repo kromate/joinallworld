@@ -551,11 +551,12 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
 
 test('the look unions are exactly the appearance options', () => {
   assert.deepEqual(sorted(APPEARANCE.bodies.map((body) => body.id)), idsOf<BodyId>({ woman: true, man: true }))
-  assert.deepEqual([...new Set([...APPEARANCE.hair.woman, ...APPEARANCE.hair.man])].sort(), idsOf<HairId>({
+  assert.deepEqual([...new Set([...APPEARANCE.hair.woman, ...APPEARANCE.hair.man, ...APPEARANCE.extra.hair.woman, ...APPEARANCE.extra.hair.man])].sort(), idsOf<HairId>({
     braids: true, afro: true, bun: true, ponytail: true, long: true, locs: true, 'low-cut': true, gele: true, classic: true, bald: true, curls: true,
+    'bantu-knots': true, cornrows: true, fade: true, twists: true,
   }))
-  assert.deepEqual([...new Set([...APPEARANCE.outfits.woman, ...APPEARANCE.outfits.man])].sort(), idsOf<OutfitId>({
-    casual: true, office: true, owambe: true, 'site-work': true, hoodie: true, chill: true,
+  assert.deepEqual([...new Set([...APPEARANCE.outfits.woman, ...APPEARANCE.outfits.man, ...APPEARANCE.extra.outfits.woman, ...APPEARANCE.extra.outfits.man])].sort(), idsOf<OutfitId>({
+    casual: true, office: true, owambe: true, 'site-work': true, hoodie: true, chill: true, jersey: true, kaftan: true, gown: true, agbada: true,
   }))
   assert.deepEqual(sorted(APPEARANCE.fabrics), idsOf<FabricId>({ plain: true, ankara: true, adire: true, 'aso-oke': true }))
   assert.deepEqual(sorted(APPEARANCE.skin.map((swatch) => swatch.id)), idsOf<SkinId>({ 'skin-1': true, 'skin-2': true, 'skin-3': true, 'skin-4': true, 'skin-5': true, 'skin-6': true, 'skin-7': true }))
@@ -565,7 +566,7 @@ test('the look unions are exactly the appearance options', () => {
   assert.deepEqual(sorted(APPEARANCE.outfitColours.map((swatch) => swatch.id)), idsOf<OutfitColourId>({
     blue: true, green: true, red: true, orange: true, violet: true, pink: true, teal: true, navy: true, cream: true, gold: true,
   }))
-  assert.deepEqual(keys(BOUTIQUE_PRICES.hair), sorted([...new Set([...APPEARANCE.hair.woman, ...APPEARANCE.hair.man])]))
+  assert.deepEqual(keys(BOUTIQUE_PRICES.hair), sorted([...new Set([...APPEARANCE.hair.woman, ...APPEARANCE.hair.man, ...APPEARANCE.extra.hair.woman, ...APPEARANCE.extra.hair.man])]))
 })
 
 test('venue, scene and furniture unions are exactly the values the content uses', () => {

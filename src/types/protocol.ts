@@ -29,6 +29,14 @@ export interface PublicSession {
   id: string
   name: string
 }
+/**
+ * The caller's OWN session, as the session routes answer it (server/routes/core.js ownSession):
+ * the public identity plus the cities this session has a life in.
+ * WORKER: sends `{ id, name }` only, so `cities` is absent there (src/client.js tolerates that).
+ */
+export interface OwnSession extends PublicSession {
+  cities?: CityId[]
+}
 /** `{ id, name }` of any player, as stored and returned by the social and civic features. */
 export type PlayerRef = PublicSession
 
@@ -102,7 +110,7 @@ export interface SessionRequest {
   onboarding?: boolean
 }
 export interface SessionResponse extends ApiEnvelope {
-  session: PublicSession
+  session: OwnSession
 }
 
 export interface LifeResponse extends ApiEnvelope {
@@ -451,6 +459,8 @@ export const WORKER_SERVER_FRAME_TYPES = ['presence', 'chat', 'signal', 'error']
 export const HEALTH_RESPONSE_KEYS = ['build', 'ok', 'serverTime'] as const satisfies readonly (keyof HealthResponse)[]
 export const SESSION_RESPONSE_KEYS = ['serverTime', 'session'] as const satisfies readonly (keyof SessionResponse)[]
 export const PUBLIC_SESSION_KEYS = ['id', 'name'] as const satisfies readonly (keyof PublicSession)[]
+/** What the Node server sends as its own session. */
+export const OWN_SESSION_KEYS = ['cities', 'id', 'name'] as const satisfies readonly (keyof OwnSession)[]
 export const LIFE_RESPONSE_KEYS = ['serverTime', 'state'] as const satisfies readonly (keyof LifeResponse)[]
 /** A first answer to an accepted action; a refusal with a sentence adds `reason`, a repeat adds `duplicate`. */
 export const ACTION_RESPONSE_KEYS = ['code', 'ok', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]

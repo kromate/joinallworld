@@ -18,7 +18,7 @@ import { CATEGORIES, STATUSES } from '../../server/support/service.js'
 import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/service.js'
 import {
   ACTION_DUPLICATE_RESPONSE_KEYS, ACTION_RESPONSE_KEYS, CHAT_FRAME_KEYS, CITY_IDS, CLIENT_FRAME_TYPES, ERROR_BODY_KEYS, HEALTH_RESPONSE_KEYS, HTTP_ROUTE_KEYS,
-  LIFE_RESPONSE_KEYS, PRESENCE_MEMBER_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
+  LIFE_RESPONSE_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
   WORKER_CLIENT_FRAME_TYPES, WORKER_HTTP_ROUTE_KEYS, WORKER_SERVER_FRAME_TYPES,
 } from './protocol.ts'
 import { CONVERSATION_KEYS, HOUSE_VIEW_KEYS, OWN_MESSAGE_KEYS, PEOPLE_LISTING_KEYS, REPORT_REASONS, SOCIAL_LIMITS_KEYS, SOCIAL_OVERVIEW_KEYS } from './social.ts'
@@ -119,7 +119,7 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   const created = await f.request('/api/session', { name: 'Ada' })
   const cookie = String(created.headers.get('set-cookie')).split(';')[0] ?? ''
   const session = sameKeys(await body(created), SESSION_RESPONSE_KEYS, 'POST /api/session')
-  const ada = sameKeys(session.session, PUBLIC_SESSION_KEYS, 'session')
+  const ada = sameKeys(session.session, OWN_SESSION_KEYS, 'session')
   sameKeys(await get('/api/session', cookie), SESSION_RESPONSE_KEYS, 'GET /api/session')
   sameKeys(await get('/api/session'), ERROR_BODY_KEYS, 'an error body')
   assert.deepEqual(await get('/api/life?city=atlantis', cookie), { error: 'invalid_city' })

@@ -18,7 +18,8 @@ export interface VenueWorld {
   diagnostics(): SceneDiagnostics
   resize(): void
   /** How many CSS pixels of the canvas the HUD covers at the top and bottom. */
-  setInsets(insets: { top?: number; bottom?: number }): boolean
+  /** `hint`: where the HUD rows under the top bar end, so the scene's one-time hint sits below them. */
+  setInsets(insets: { top?: number; bottom?: number; hint?: number }): boolean
   setLocation(location: string): void
   setState(state: LifeState): void
   setPlayer(player: PlayerLook): void
@@ -54,7 +55,7 @@ export interface CityViewOptions {
   onTripDue?: () => void
   onNotice?: (text: string) => void
 }
-export interface WorldMap { setCity(id: string): void; resize(): void }
+export interface WorldMap { setCity(id: string): void; resize(): void; /** Draw again: the list of cities the player holds changed. */ refresh?(): void }
 export interface WorldMapOptions { onOpenCity?: () => void; onEnterCity?: (cityId: string) => void; held?: () => string[] }
 
 export async function loadVenueWorld(): Promise<(container: HTMLElement, options?: VenueWorldOptions) => VenueWorld> {

@@ -439,10 +439,12 @@ export interface HomeSlice {
 // ---- onboarding ---------------------------------------------------------------------------
 
 export type BodyId = 'woman' | 'man'
-/** Hairstyles of either body (APPEARANCE.hair); which are valid depends on `body`. */
-export type HairId = 'braids' | 'afro' | 'bun' | 'ponytail' | 'long' | 'locs' | 'low-cut' | 'gele' | 'classic' | 'bald' | 'curls'
-/** Outfits of either body (APPEARANCE.outfits); which are valid depends on `body`. */
-export type OutfitId = 'casual' | 'office' | 'owambe' | 'site-work' | 'hoodie' | 'chill'
+/** Hairstyles of either body (APPEARANCE.hair, then the beta additions in APPEARANCE.extra.hair); which are valid depends on `body`. */
+export type HairId =
+  | 'braids' | 'afro' | 'bun' | 'ponytail' | 'long' | 'locs' | 'low-cut' | 'gele' | 'classic' | 'bald' | 'curls'
+  | 'bantu-knots' | 'cornrows' | 'fade' | 'twists'
+/** Outfits of either body (APPEARANCE.outfits, then APPEARANCE.extra.outfits); which are valid depends on `body`. */
+export type OutfitId = 'casual' | 'office' | 'owambe' | 'site-work' | 'hoodie' | 'chill' | 'jersey' | 'kaftan' | 'gown' | 'agbada'
 export type FabricId = 'plain' | 'ankara' | 'adire' | 'aso-oke'
 export type SkinId = 'skin-1' | 'skin-2' | 'skin-3' | 'skin-4' | 'skin-5' | 'skin-6' | 'skin-7'
 export type HairColourId = 'black' | 'soft-black' | 'dark-brown' | 'brown' | 'auburn' | 'blonde' | 'purple'

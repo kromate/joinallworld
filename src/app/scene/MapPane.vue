@@ -53,6 +53,8 @@ function load(): Promise<void> {
 }
 watch(scene.mapsWanted, (wanted) => { if (wanted) void load() }, { immediate: true, flush: 'post' })
 watch([game.mode, worldLayer], show, { flush: 'post' })
+// The country map shows which cities this player holds: drawn again when that list changes.
+watch(() => heldCities().join(), () => scene.world.value?.refresh?.())
 const onResize = (): void => { if (mapOpen()) { scene.world.value?.resize(); scene.city.value?.resize() } }
 window.addEventListener('resize', onResize)
 onBeforeUnmount(() => {

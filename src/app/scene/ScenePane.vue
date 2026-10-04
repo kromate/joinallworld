@@ -21,6 +21,8 @@ const props = defineProps<{
   top: () => (Element | null)[]
   /** The element whose top edge marks how far the HUD covers the bottom. */
   bottom: () => Element | null
+  /** On a phone: the HUD rows under the top bar. Empty on a wide screen. */
+  rows: () => (Element | null)[]
   hidden: boolean
 }>()
 const { game, shell, scene, showPlayer, showCrowd } = useApp()
@@ -37,7 +39,9 @@ function layout(): void {
   const page = box.getBoundingClientRect()
   const covered = Math.max(page.top, ...props.top().map((node) => node?.getBoundingClientRect().bottom ?? page.top))
   const stack = props.bottom()?.getBoundingClientRect()
-  venue.setInsets({ top: covered - page.top, bottom: stack?.height ? page.bottom - stack.top : 0 })
+  // On a phone the rows under the top bar (needs, alerts, the goal line) are the HUD's: the scene's one-time hint sits under the last of them.
+  const rows = Math.max(0, ...props.rows().map((node) => { const row = node?.getBoundingClientRect(); return row?.height ? row.bottom : 0 }))
+  venue.setInsets({ top: covered - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 })
 }
 const onResize = (): void => { if (game.mode.value !== 'map') scene.venue.value?.resize() }
 
@@ -60,7 +64,7 @@ onMounted(() => {
       layout()
       // The HUD changed size (activities opened, Clean screen, a trip): re-centre the scene. An observer, not a timer.
       observer = new ResizeObserver(layout)
-      for (const node of [...props.top(), props.bottom()]) if (node) observer.observe(node)
+      for (const node of [...props.top(), ...props.rows(), props.bottom()]) if (node) observer.observe(node)
     } catch (error) {
       console.error('The scene could not be started:', error)
       failed.value = true

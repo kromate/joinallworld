@@ -2,17 +2,26 @@
 // One mark from the game's icon set (src/ui/phone/icons.js): original inline SVG, 24×24, drawn in
 // currentColor. The markup is the icon set's own static string, never anything a player typed.
 import { computed } from 'vue'
-import { iconSvg } from '../legacy/modules.ts'
+import { glyphNameFor, iconSvg } from '../legacy/modules.ts'
+import { glyphTick } from './glyphs.ts'
 
 const props = withDefaults(defineProps<{
   /** A mark's name ('bank', 'back', 'close', 'hunger', 'menu', 'chevron-down' …). An unknown name draws the "info" mark. */
-  name: string
+  name?: string
+  /** Instead of a name: the kind of game content ('venue', 'spot', 'activity', 'mood' …), with its id and the emoji its content carries. */
+  kind?: string
+  id?: string | null
+  emoji?: string | null
   /** Width and height in CSS pixels. */
   size?: number
   /** Leave the size to the surrounding styles (the Phone's chrome sizes its own marks). */
   bare?: boolean
-}>(), { size: 20, bare: false })
-const svg = computed(() => iconSvg(props.name))
+}>(), { name: undefined, kind: undefined, id: undefined, emoji: undefined, size: 20, bare: false })
+const svg = computed(() => {
+  // More of the icon set arrives with the Phone's code: a mark drawn as "info" until then is drawn again.
+  void glyphTick.value
+  return iconSvg(props.name ?? glyphNameFor(props.kind ?? '', props.id, props.emoji))
+})
 </script>
 
 <template>

@@ -59,10 +59,12 @@ function step(rng, state) {
 
 function newLife(rng, seedName) {
   let now = START;
-  const state = createLife(null, { now, cityId: CITY, isNew: true, requireOnboarding: rng() < 0.8 });
+  // Most lives start as guests of the quick start; of those, a third stay guests for the whole run (playing in public, never settling in).
+  const state = createLife(null, { now, cityId: CITY, isNew: true, quickStart: rng() < 0.8 });
   const send = (type, payload, id) => dispatch(state, { type, payload, actionId: id }, { now, cityId: CITY, actionId: id });
   if (state.onboarding.required) {
-    send('onboarding.look', { look: LOOK }, `${seedName}-look`);
+    assert.equal(send('onboarding.quick-start', { look: LOOK }, `${seedName}-play`).code, 'playing');
+    if (rng() < 0.34) return { state, now };
     const traits = Object.keys(TRAITS); const first = pick(rng, traits); const second = pick(rng, traits.filter((id) => id !== first));
     send('onboarding.traits', { traits: [first, second] }, `${seedName}-traits`);
     send('onboarding.dream', { dream: pick(rng, Object.keys(DREAMS)) }, `${seedName}-dream`);
@@ -125,10 +127,18 @@ function invariants(state, expectedCash, index, next, now) {
   assert.ok(state.travel.gigs.count <= GIG_DAILY_LIMIT, `gig count at ${where}`);
   const line = state.ledger.at(-1);
   if (line) assert.equal(line.balance, state.cash, `the last ledger line ends at the balance at ${where}`);
+  // A guest of the quick start never reaches a state the economy takes as settled, whatever is thrown at it.
+  if (state.onboarding.stage === 'guest') {
+    assert.deepEqual([state.economy.rent.house, state.economy.loan, state.economy.billedWeek, state.economy.started, state.home.stocked, state.onboarding.done],
+      [null, null, null, false, false, false], `a guest has no rent house, loan, bills or kitchen at ${where}`);
+    assert.ok(state.location !== 'home' && !(state.activeAction && state.activeAction.id === 'home'), `a guest is never at home or on the way there at ${where}`);
+    assert.ok(!state.ledger.some((entry) => /^(Rent|Loan repayment|Start cash|Moved)/.test(entry.reason)), `no rent, loan, start cash or move in a guest's ledger at ${where}`);
+  }
 }
 
 test('random play: cash is always start + Σ ledger, nothing goes negative, and the statement reconciles', () => {
   let actions = 0, accepted = 0, moved = 0;
+  const stages = { guest: 0, settled: 0, plain: 0 };
   for (let seed = 1; seed <= 60; seed++) {
     const run = play(`conservation-${seed}`, 400, invariants);
     actions += run.trace.filter((entry) => entry.body).length;
@@ -140,7 +150,9 @@ test('random play: cash is always start + Σ ledger, nothing goes negative, and 
     // A reload (what the server does before every settlement) changes nothing.
     const reloaded = createLife(structuredClone(run.state), { now: run.now, cityId: CITY });
     assert.deepEqual(reloaded, run.state, `seed ${seed}: sanitize is a fixed point of a played life`);
+    stages[run.state.onboarding.stage === 'guest' ? 'guest' : run.state.onboarding.done ? 'settled' : 'plain'] += 1;
   }
+  assert.ok(stages.guest >= 8 && stages.settled >= 20, `the walk covers lives that stayed guests (${stages.guest}) and lives that settled in (${stages.settled})`);
   // The walk must actually exercise the game, not bounce off refusals.
   assert.ok(actions > 15000 && accepted > 4000 && moved >= 55, `${actions} actions, ${accepted} accepted, ${moved} of 60 lives moved money`);
 });

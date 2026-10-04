@@ -81,3 +81,13 @@
 .ob-card-icon svg.ui-glyph{width:28px;height:28px;color:var(--c-green-dark)}
 .ob-lottery.is-waiting svg.ui-glyph{width:64px;height:64px;color:var(--c-amber-dark)}
 .ob-note{flex-wrap:wrap}.ob-note>span:nth-child(2){flex:1 1 180px}.ob-note-action{flex:none;align-self:center}
+
+/* Settling in: why the sheet opened (a reward, or a home-only tap), the "Not now" under every card, the Home card's extra sections. */
+.ob-intro{display:flex;gap:10px;align-items:flex-start;margin:0!important;padding:12px;border-radius:16px;background:var(--c-green-soft);color:var(--c-green-dark);font-size:13px!important;line-height:1.4!important}
+.ob-intro.is-reward{background:linear-gradient(#fff8df,#fff3c4);color:#5c430c}
+.ob-intro strong{display:block;font-size:15px;color:var(--c-ink);margin-bottom:2px}
+.ob-intro svg.ui-glyph{width:26px;height:26px;flex:none}
+.ob-lead b{display:block;font-size:15px;color:var(--c-ink)}
+.ob-later,.ob-stay{width:100%;min-height:var(--tap)}
+.ob-later{background:none;border-color:transparent;color:var(--c-muted);text-decoration:underline;text-underline-offset:3px}
+.ob-extra{display:grid;gap:var(--s-2);min-width:0}

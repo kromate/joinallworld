@@ -27,17 +27,28 @@
  * the moment the server reports it the Map becomes the screen in front and shows the trip; when
  * the server reports the arrival the map shows it for a moment and then the venue comes up. The
  * rules and the timer stay the server's — see accepted() and src/map3d/trip.js.
+ *
+ * THE FIRST MINUTE (src/quick-start/). A new device meets the landing screen (the 'quick-start'
+ * panel: a name, a quick character, Play). Play arrives here as 'jaw:quick-start' { name, look }:
+ * the session is opened (POST /api/session), the look is confirmed by the 'onboarding.quick-start'
+ * action under an action id that is kept on the device until the server has answered — so a
+ * double tap, a retry on a bad connection and a reload are all the same one start — and the
+ * player is standing in a public venue. A link that points at a player (/v/<id>, ?join=<id>) is
+ * then answered by POST /api/social/join and shown as one banner ("You’re joining Ada"). The funnel
+ * events ('jaw:track') are reported from the server's own state as it changes (see accepted()).
  */
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
 import { createLazyLoader } from './lazy-load.js';
 import { createShell } from './ui/shell.js';
 import { linkWords } from './ui/link.js';
 import { PANELS, sessionGate } from './ui/panels/index.js';
-import { S as social, loadPeople, onPeople } from './ui/panels/social-client.js';
+import { S as social, loadPeople, onPeople, takeLinkHost } from './ui/panels/social-client.js';
 import { crowdList, playersHere } from './scene/crowd.js';
 import { NPCS } from './game/content/npcs.js';
 import { viewLife, VENUES, isDeparting } from './life.js';
 import { venueLabel, venueDistrict } from './game/content/venues.js';
+import { funnelSnap, funnelEvents, joinBanner } from './quick-start/model.js';
+import { pendingPlay, keepPlay, forgetDraft, joinTarget, forgetJoin, track, play } from './quick-start/entry.js';
 
 const $ = (id) => document.getElementById(id);
 let storage; try { storage = window.localStorage; } catch {}
@@ -107,7 +118,8 @@ async function loadScene() {
     const { createVenueWorld } = await import('./venue-world.js');
     venue = createVenueWorld($('venue-scene'), { location: client.state.location, onTag: (tag) => {
       // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
-      if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') });
+      if (tag.kind === 'goal') void goTo(client.state.location, tag.id.replace(/^goal:/, ''));
+      else if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') });
       else if (tag.kind === 'player') shell.open('person', { player: tag.id });
     },
     // The avatar moved: that is where the player stands in the room (presence, and so proximity voice).
@@ -116,6 +128,7 @@ async function loadScene() {
     venue.setState(client.state);
     showPlayer();
     showCrowd();
+    showGoal();
     venue.resize();
     layoutScene();
     reportPlace();
@@ -250,9 +263,22 @@ function showVenue() {
   scene.classList.remove('is-arriving'); void scene.offsetWidth; scene.classList.add('is-arriving');
 }
 
+/** The current goal's place in the world: the scene flags the spot it points at (a guest's first goals; nothing once settled in). */
+function showGoal() {
+  const state = client.state, chip = client.online && state.onboarding?.stage === 'guest' && !state.onboarding.done ? viewLife(state, { now: client.serverNow(), cityId: client.cityId }).goals?.chip : null;
+  const at = chip?.kind === 'goal' && Array.isArray(chip.go) && chip.go.length === 2 && !state.activeAction ? chip : null;
+  venue?.setGoal(at ? { venue: at.go[0], spot: at.go[1], text: at.title } : null);
+}
+
 /** Called after every accepted server state. */
 function accepted(state, previous) {
   const moved = previous.location !== state.location;
+  // The funnel, from the server's own state: each event once, when it happens.
+  const was = funnelSnap(previous), is = funnelSnap(state);
+  for (const event of funnelEvents(was, is)) {
+    track(event.name, event.name === 'first_activity_completed' && Number.isFinite(state.onboarding.bornAt) ? { ...event.props, serverMs: state.onboarding.firstAt - state.onboarding.bornAt } : event.props);
+  }
+  if (was.guest && is.done) forgetDraft();
   noteCity(client.cityId);
   // A trip started — from the map card, the Ride app, Go to work, anywhere: the map shows it. Once per trip, so a
   // player who then opens another screen (Buy, a Phone app) is not pulled back; leaving that screen returns to the map.
@@ -271,6 +297,7 @@ function accepted(state, previous) {
   venue?.setState(state);
   showPlayer();
   showCrowd();
+  showGoal();
   // One character: the life has arrived in another city. The server files it under that city (asked for here, so it is
   // done before the new city's life is requested), then the game follows it there.
   if (state?.estate?.city && state.estate.city !== client.cityId && !followingCity) {
@@ -410,15 +437,95 @@ function watchChatRefusals(container) {
 }
 
 async function connect(createNew = false) {
-  if (connecting) return;
+  if (connecting) return false;
   connecting = true;
   try {
     if (createNew) { community?.destroy(); community = null; positions = {}; }
     const ok = await client.connect(createNew);
     render();
+    if (ok) await firstMinute();
     // Not awaited: a slow or failing community chunk must not hold up the game or block a later Reconnect.
     if (ok) void startCommunity();
+    return ok;
   } finally { connecting = false; }
+}
+
+/**
+ * After every successful connection: finish a quick start whose Play was tapped (now, or before a
+ * reload or a dropped connection), then handle an invite link. Safe to call any number of times.
+ */
+async function firstMinute() {
+  const o = client.state.onboarding;
+  if (o?.done || o?.stage !== 'guest') { play.sending = false; if (o?.done) forgetDraft(); await landJoin(); return; }
+  const kept = pendingPlay();
+  if (o.required && kept) {
+    // One action id for this start, made once (it carries server time) and kept until the server has answered.
+    const actionId = kept.actionId ?? client.newId();
+    if (!kept.actionId) keepPlay({ ...kept, actionId });
+    play.sending = true;
+    const result = await client.command('onboarding.quick-start', { look: kept.look }, { actionId });
+    play.sending = false;
+    if (result.ok) { keepPlay(null); shell.setExpanded(true); if (shell.isOpen(sessionGate().id)) shell.close(); }
+    else if (result.code === 'invalid_look' || result.code === 'action_id_conflict' || result.code === 'action_expired') { keepPlay(null); shell.open(sessionGate().id, { problem: { reason: 'That character could not be saved. Choose again and tap Play.' } }); }
+    else if (client.online) shell.open(sessionGate().id, { problem: { reason: result.reason || 'Your character could not be saved yet. Tap Play to try again — nothing is lost.' } });
+    render();
+  } else { play.sending = false; if (!o.required) keepPlay(null); }
+  if (!client.state.onboarding.required) await landJoin();
+}
+
+/** An invite link: ask the server how the player it points at can be joined, and say so in one banner. */
+let joining = false;
+async function landJoin() {
+  const host = joinTarget();
+  if (!host || joining || !client.online) return;
+  // A settled player's link is handled as it always was: the Invite app opens on that house (src/ui/panels/social-client.js).
+  if (client.state.onboarding?.stage !== 'guest' || host === client.session?.id) { forgetJoin(); return; }
+  joining = true;
+  // This landing handles the link: the address is cleaned (the id is kept on the device until it is answered) and the Invite app is not opened for it.
+  try { history.replaceState(null, '', '/'); } catch { /* the address stays as it was */ }
+  takeLinkHost();
+  try {
+    const answer = await client.fetchJson('/api/social/join', { method: 'POST', body: { host, cityId: client.cityId } });
+    forgetJoin();
+    track('join_landed', { code: answer.code ?? 'refused' });
+    const banner = joinBanner(answer, (id) => venueLabel(id, client.cityId));
+    if (!banner) return;
+    if (answer.code === 'joined') await client.refresh();
+    showBanner(banner, banner.knock ? { label: 'Knock', run: () => shell.open('invite', { host }) } : null);
+  } catch (error) {
+    // No answer: the link is kept and tried again at the next connection. A refusal that will not change is dropped.
+    if (error.status && error.status < 500) forgetJoin();
+  } finally { joining = false; }
+}
+
+/** One banner over the scene (built with textContent: a player's name is never markup). It leaves when closed or after 12 s. */
+function showBanner({ tone, title, text }, action) {
+  document.querySelector('.qs-banner')?.remove();
+  const node = document.createElement('aside'), words = document.createElement('div'), strong = document.createElement('strong'), small = document.createElement('small');
+  node.className = `qs-banner is-${tone}`; node.setAttribute('role', 'status');
+  strong.textContent = title; small.textContent = text; words.append(strong, small); node.append(words);
+  if (action) { const button = document.createElement('button'); button.className = 'ui-button is-primary is-small'; button.textContent = action.label; button.onclick = () => { node.remove(); action.run(); }; node.append(button); }
+  const close = document.createElement('button'); close.className = 'qs-banner-close'; close.setAttribute('aria-label', 'Dismiss'); close.textContent = '×'; close.onclick = () => node.remove(); node.append(close);
+  document.body.append(node);
+  setTimeout(() => node.remove(), 12000);
+}
+
+/** Play was tapped on the landing screen. A second tap while the first is on its way is the same start. */
+let starting = false;
+async function quickStart(detail) {
+  if (starting) return;
+  starting = true;
+  try {
+    // A life that is already there and only held for its look (its Play never reached the server, or it is a
+    // life the old flow left on its first step): the session exists, so a rename and the action are all it takes.
+    if (detail?.name) client.identity.name = detail.name;
+    const ok = await connect(true);
+    if (!ok && client.link !== 'new') {
+      play.sending = false;
+      const words = linkWords(client.link);
+      shell.open(sessionGate().id, { reason: 'new', problem: { reason: `${words?.why || 'The game server did not answer.'} Your name and character are kept on this device — tap Play to try again.`, name: detail?.name } });
+    }
+  } finally { starting = false; play.sending = false; render(); }
 }
 
 async function switchCity(id) {
@@ -440,6 +547,7 @@ function menu(id) {
 }
 
 window.addEventListener('jaw:start-life', (event) => { if (event.detail?.name) client.identity.name = event.detail.name; connect(true); });
+window.addEventListener('jaw:quick-start', (event) => { void quickStart(event.detail); });
 window.addEventListener('jaw:reconnect', () => connect());
 window.addEventListener('jaw:switch-city', (event) => switchCity(event.detail.city));
 $('close-life-dialog').onclick = () => shell.close();

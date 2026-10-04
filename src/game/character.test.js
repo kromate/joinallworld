@@ -6,7 +6,7 @@ import { createLife, dispatch, advanceLife, viewLife } from '../life.js';
 import { systems, emit, modify } from './registry.js';
 import { makeContext } from './util.js';
 import { APPEARANCE, TRAITS, DREAMS, LOTTERY, START_HOMES, START_NEEDS, MOODS, BOUTIQUE_PRICES, DREAM_REWARD, DREAM_TARGETS } from './content/traits.js';
-import { STARTER_GOALS, WISHES, PERKS, WISH_REROLLS_PER_DAY } from './content/goals.js';
+import { STARTER_GOALS, STARTER_INTRO, WISHES, PERKS, WISH_REROLLS_PER_DAY } from './content/goals.js';
 import { fixture } from '../../server/test-fixture.js';
 
 const START = Date.UTC(2026, 0, 5, 8); // Monday 9 AM in Lagos
@@ -320,7 +320,11 @@ test('traits and lottery outcomes change play through the modifier keys', () => 
 });
 
 test('starter goals pay the observed rewards from events, once each, with a ledger line and a toast', () => {
-  assert.deepEqual(STARTER_GOALS.map(goal => [goal.title, goal.hint, goal.cash, goal.stars]), [
+  // The three opening goals belong to the quick start (a guest plays them in public, before there is a home);
+  // a life that was never a guest starts at the first home goal, with the observed rewards unchanged.
+  assert.equal(STARTER_INTRO, 3);
+  assert.deepEqual(STARTER_GOALS.slice(0, STARTER_INTRO).map(goal => [goal.id, goal.cash, goal.stars, goal.beta]), [['first-fun', 500, 1, true], ['say-hello', 500, 1, true], ['settle-in', 1000, 1, true]]);
+  assert.deepEqual(STARTER_GOALS.slice(STARTER_INTRO).map(goal => [goal.title, goal.hint, goal.cash, goal.stars]), [
     ['Eat something', 'Tap the cooler or stove', 500, 1], ['Freshen up', 'Tap the bucket or shower', 500, 1], ['Get a job', 'Open Phone → Jobs', 1000, 1],
     ['Buy something new', 'Open Buy and place an item', 1000, 1], ['Visit the buka', 'Open Map → Amala Shitta', 1500, 1], ['Make a new friend', 'Tap someone at a venue', 1500, 1],
     ['Work a shift', 'Leave for work on time', 2000, 1]]);
@@ -333,9 +337,9 @@ test('starter goals pay the observed rewards from events, once each, with a ledg
 
   // 1: a real meal at home. Cancelling pays nothing; completing pays once.
   assert.equal(act(state, 'activity', { id: 'garri' }).code, 'started');
-  act(state, 'cancel'); assert.equal(state.goals.chain, 0); assert.equal(state.cash, 96000);
+  act(state, 'cancel'); assert.equal(state.goals.chain, STARTER_INTRO); assert.equal(state.cash, 96000);
   act(state, 'activity', { id: 'garri' }); advanceLife(state, 5, at(START + 5000));
-  assert.equal(state.cash, 96500); assert.equal(state.goals.stars, 1); assert.equal(state.goals.chain, 1);
+  assert.equal(state.cash, 96500); assert.equal(state.goals.stars, 1); assert.equal(state.goals.chain, STARTER_INTRO + 1);
   assert.deepEqual([state.ledger.at(-1).amount, state.ledger.at(-1).reason], [500, 'Goal: Eat something']);
   assert.equal(state.goals.feed.at(-1).text, 'Goal complete: Eat something · +₦500 +1✨');
   act(state, 'activity', { id: 'garri' }); advanceLife(state, 5, at(START + 10000));
@@ -361,7 +365,7 @@ test('starter goals pay the observed rewards from events, once each, with a ledg
   assert.deepEqual(chip().go, ['park', 'work']);
   // 7: a shift.
   emit(state, 'shift.completed', { job: 'community-helper', pay: 300, level: 1 }, at());
-  assert.equal(state.cash, 104000); assert.equal(state.goals.chain, 7);
+  assert.equal(state.cash, 104000); assert.equal(state.goals.chain, STARTER_GOALS.length);
   assert.equal(state.goals.feed.at(-1).text, 'Goal complete: Work a shift · +₦2,000 +1✨');
   const paid = state.ledger.filter(entry => entry.reason.startsWith('Goal: '));
   assert.deepEqual(paid.map(entry => entry.amount), [500, 500, 1000, 1000, 1500, 1500, 2000]);
@@ -376,13 +380,16 @@ test('goals done early are paid as the chain reaches them; unknown events and ba
   const state = started();
   // Applied for a job and made a friend before eating anything.
   act(state, 'apply-job', { id: 'community-helper' }); emit(state, 'friend.made', { id: 'f1', npc: 'tunde' }, at());
-  assert.equal(state.goals.chain, 0); assert.equal(state.cash, 96000); assert.deepEqual(state.goals.seen, ['get-a-job', 'make-a-friend']);
+  assert.equal(state.goals.chain, STARTER_INTRO); assert.equal(state.cash, 96000); assert.deepEqual(state.goals.seen, ['get-a-job']);
   emit(state, 'meal.eaten', { id: 'garri', source: 'cooler' }, at());
-  assert.equal(state.goals.chain, 1); assert.equal(state.cash, 96500);
+  assert.equal(state.goals.chain, STARTER_INTRO + 1); assert.equal(state.cash, 96500);
   emit(state, 'activity.completed', { id: 'bath', def: {}, tags: ['hygiene'], choice: null }, at());
-  assert.equal(state.goals.chain, 3, 'the job goal pays straight after, because the Sim is already employed'); assert.equal(state.cash, 98000);
+  assert.equal(state.goals.chain, STARTER_INTRO + 3, 'the job goal pays straight after, because the Sim is already employed'); assert.equal(state.cash, 98000);
   emit(state, 'item.bought', { id: 'chair', price: 500 }, at()); emit(state, 'venue.visited', { venue: 'amala-shitta' }, at());
-  assert.equal(state.goals.chain, 6, 'the friend made earlier counts'); assert.equal(state.cash, 102000); assert.equal(state.goals.stars, 6);
+  // "Make a new friend" counts only once it is the current goal (the hello of the quick start must not pay it too).
+  assert.equal(state.goals.chain, STARTER_INTRO + 5, 'the friend made before the goal came up does not count'); assert.equal(state.cash, 100500);
+  emit(state, 'friend.made', { id: 'f2', npc: 'amaka' }, at());
+  assert.equal(state.goals.chain, STARTER_INTRO + 6); assert.equal(state.cash, 102000); assert.equal(state.goals.stars, 6);
   assert.deepEqual(state.goals.seen, []);
   for (const event of ['house.moved', 'car.bought', 'rent.paid', 'loan.paid', 'promotion', 'skill.levelup', 'wallet.changed', 'made.up']) {
     for (const data of [undefined, null, 5, 'x', { amount: 'lots', level: -3, left: NaN, venue: 7, price: 1e400 }]) emit(state, event, data, at());
@@ -640,7 +647,7 @@ test('server end to end: onboarding, goal rewards and perks are authoritative an
   // Goal 1 through the real activity, settled by server time; a reload neither loses nor repeats it.
   assert.equal((await f.action(a.cookie, { type: 'activity', id: 'garri' })).code, 'started'); f.advance(6000);
   const after = (await (await f.request('/api/life?city=lagos', null, a.cookie)).json()).state;
-  assert.equal(after.cash, outcome.startCash.yaba + 500); assert.equal(after.goals.stars, 1); assert.equal(after.goals.chain, 1);
+  assert.equal(after.cash, outcome.startCash.yaba + 500); assert.equal(after.goals.stars, 1); assert.equal(after.goals.chain, STARTER_INTRO + 1);
   f.advance(60000);
   const later = (await (await f.request('/api/life?city=lagos', null, a.cookie)).json()).state;
   assert.equal(later.cash, outcome.startCash.yaba + 500); assert.deepEqual(later.onboarding, after.onboarding);

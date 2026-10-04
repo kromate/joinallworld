@@ -15,16 +15,26 @@ async function open(f, body) {
 const life = async (f, device, city = 'lagos') => (await (await f.request(`/api/life?city=${city}`, null, device.cookie)).json()).state;
 const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
 
-test('a session created with onboarding: true must finish character creation before any other action', async t => {
+const quick = (f, device, look = LOOK) => f.action(device.cookie, { type: 'onboarding.quick-start', payload: { look } });
+/** Settle in: the deferred choices, then the home. Returns the last answer. */
+async function settle(f, device, extra = {}) {
+  await f.action(device.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } });
+  await f.action(device.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } });
+  const rolled = await f.action(device.cookie, { type: 'onboarding.lottery', payload: {} });
+  assert.equal(rolled.code, 'rolled');
+  return f.action(device.cookie, { type: 'onboarding.home', payload: { house: rolled.state.onboarding.lottery.id === 'ajebutter' ? 'lekki' : 'yaba', ...extra } });
+}
+
+test('a session created with onboarding: true is a guest: held until its look is confirmed, then playing in public, with no home until it settles in', async t => {
   const f = await fixture(t);
   const ada = await open(f, { name: 'Ada', onboarding: true });
   const start = await life(f, ada);
-  assert.deepEqual([start.onboarding.required, start.onboarding.done, start.location, start.cash], [true, false, 'park', 5000]);
+  assert.deepEqual([start.onboarding.stage, start.onboarding.required, start.onboarding.done, start.location, start.cash], ['guest', true, false, 'park', 5000]);
 
   for (const fields of [{ type: 'spot', payload: { id: 'trees' } }, { type: 'activity', id: 'chill' }, { type: 'travel', id: 'library', mode: 'trek' }, { type: 'apply-job', id: 'tech' }, { type: 'cancel' }]) {
     const refused = await f.action(ada.cookie, fields);
     assert.deepEqual([refused.ok, refused.code], [false, 'onboarding_required'], fields.type);
-    assert.match(refused.state.message, /Finish creating your Sim first/);
+    assert.match(refused.state.message, /Choose your look and tap Play first/);
     assert.deepEqual([refused.state.location, refused.state.spot, refused.state.cash, refused.state.job, refused.state.activeAction], ['park', 'amphitheatre', 5000, null, null]);
   }
   // The refusal is a recorded outcome like any other: the same action ID replays it.
@@ -33,18 +43,40 @@ test('a session created with onboarding: true must finish character creation bef
   const again = await (await f.request('/api/action', body, ada.cookie)).json();
   assert.deepEqual([first.code, again.code, again.duplicate], ['onboarding_required', 'onboarding_required', true]);
 
-  // The other city's life for the same session is enforced too.
-  assert.equal((await life(f, ada, 'ibadan')).onboarding.required, true);
+  // The other city's life for the same session is a guest too.
+  assert.deepEqual([(await life(f, ada, 'ibadan')).onboarding.required, (await life(f, ada, 'ibadan')).onboarding.stage], [true, 'guest']);
 
-  // Creation steps are accepted, and moving in lifts the rule.
-  assert.equal((await f.action(ada.cookie, { type: 'onboarding.look', payload: { look: LOOK } })).code, 'look_saved');
-  assert.equal((await f.action(ada.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } })).code, 'traits_saved');
-  assert.equal((await f.action(ada.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } })).code, 'dream_saved');
-  const rolled = await f.action(ada.cookie, { type: 'onboarding.lottery', payload: {} });
-  assert.equal(rolled.code, 'rolled');
-  const house = rolled.state.onboarding.lottery.id === 'ajebutter' ? 'lekki' : 'yaba';
-  const moved = await f.action(ada.cookie, { type: 'onboarding.home', payload: { house } });
-  assert.deepEqual([moved.code, moved.state.location, moved.state.onboarding.done], ['life_started', 'home', true]);
+  // The quick start is validated like any creation step, and it is exactly-once: a double tap or a retry is one start.
+  assert.equal((await quick(f, ada, { ...LOOK, hair: 'bantu-knots' })).code, 'invalid_look');
+  const play = { actionId: `100000:22222222-2222-4222-8222-222222222222`, cityId: 'lagos', type: 'onboarding.quick-start', payload: { look: LOOK } };
+  const [one, two] = await Promise.all([f.request('/api/action', play, ada.cookie), f.request('/api/action', play, ada.cookie)]).then((all) => Promise.all(all.map((res) => res.json())));
+  assert.deepEqual([one.code, two.code, [one.duplicate, two.duplicate].filter(Boolean).length], ['playing', 'playing', 1]);
+  const playing = await life(f, ada);
+  assert.deepEqual([playing.onboarding.required, playing.onboarding.stage, playing.onboarding.playedAt, playing.spot], [false, 'guest', 100000, 'trees']);
+  assert.deepEqual(playing.onboarding.look, LOOK);
+  // Play is open in public…
+  assert.equal((await f.action(ada.cookie, { type: 'activity', id: 'play-ayo' })).code, 'started');
+  f.advance(7000);
+  const rewarded = await life(f, ada);
+  assert.deepEqual([rewarded.cash, rewarded.goals.stars, rewarded.ledger.at(-1).reason, rewarded.onboarding.firstAt], [5500, 1, 'Goal: Play a round of Ayo', 107000]);
+  // …and everything that needs a home is refused, so nothing the economy takes as settled can exist.
+  for (const fields of [{ type: 'travel', id: 'home', mode: 'trek' }, { type: 'home.grocery-buy', payload: { id: 'rice' } }, { type: 'home.kitchen-unpack' }, { type: 'property.house-move', payload: { id: 'mushin' } },
+    { type: 'home.furniture-buy', payload: { item: 'plastic-chair', x: 0, y: 0, rot: 0 } }]) {
+    const refused = await f.action(ada.cookie, fields);
+    assert.deepEqual([refused.ok, refused.code], [false, 'settle_required'], fields.type);
+  }
+  const guest = await life(f, ada);
+  assert.deepEqual([guest.economy.rent.house, guest.economy.loan, guest.economy.billedWeek, guest.cash], [null, null, null, 5500]);
+  // The server-only arrival cannot be sent by a player.
+  assert.equal((await f.action(ada.cookie, { type: 'onboarding.arrive', payload: { venue: 'quilox' } })).code, 'server_only');
+
+  // Settling in: every step still validated in order, life.started once, nothing earned is lost.
+  assert.equal((await f.action(ada.cookie, { type: 'onboarding.home', payload: { house: 'yaba' } })).code, 'step_required');
+  const moved = await settle(f, ada);
+  assert.deepEqual([moved.code, moved.state.location, moved.state.onboarding.done, moved.state.onboarding.stage], ['life_started', 'home', true, 'settled']);
+  assert.equal(moved.state.ledger.filter((entry) => entry.reason.startsWith('Start cash')).length, 1);
+  assert.equal(moved.state.cash - 500, moved.state.onboarding.seed + moved.state.ledger.find((entry) => entry.reason.startsWith('Start cash')).amount, 'start cash as the old flow gave it, plus the ₦500 earned as a guest');
+  assert.equal((await f.action(ada.cookie, { type: 'onboarding.home', payload: { house: 'mushin' } })).code, 'already_onboarded');
   assert.equal((await f.action(ada.cookie, { type: 'spot', payload: { id: 'bathroom' } })).code, 'selected');
 });
 
@@ -52,7 +84,7 @@ test('a session created without the flag keeps today’s behaviour, and a rename
   const f = await fixture(t);
   const old = await f.device('Bola'); // { name } only, as every existing client and test sends
   const state = await life(f, old);
-  assert.deepEqual([state.onboarding.required, state.onboarding.done], [false, false]);
+  assert.deepEqual([state.onboarding.required, state.onboarding.stage, state.onboarding.done], [false, 'settled', false]);
   assert.equal((await f.action(old.cookie, { type: 'spot', payload: { id: 'trees' } })).code, 'selected');
   // An existing session cannot be switched into enforcement, even before a city's life exists…
   const renamed = await f.request('/api/session', { name: 'Bola B', onboarding: true }, old.cookie);
@@ -73,7 +105,7 @@ test('a session created without the flag keeps today’s behaviour, and a rename
   assert.deepEqual(Object.values(stored).map((session) => session.onboarding === true).sort(), [false, false, false, false, false, true]);
 });
 
-test('until creation is finished a player is not in the city: no room, no presence or chat, no directory, list, counter or search', async t => {
+test('until the quick start is confirmed a player is not in the city: no room, no presence or chat, no directory, list, counter or search', async t => {
   const f = await fixture(t);
   const get = async (path, device) => { const res = await f.request(path, null, device?.cookie); return { status: res.status, ...(await res.json()) }; };
   const old = await f.device('Bola');
@@ -101,14 +133,11 @@ test('until creation is finished a player is not in the city: no room, no presen
   assert.ok(!JSON.stringify(await get('/api/civic/neighbours?city=lagos', old)).includes(ada.id));
   const rich = await get('/api/civic/richlist?city=lagos', ada);
   assert.deepEqual([rich.balances.map((row) => row.name), rich.you], [['Bola'], null]);
-  // She creates her Sim and moves in: now she is a resident like anyone else.
-  await f.action(ada.cookie, { type: 'onboarding.look', payload: { look: LOOK } });
-  await f.action(ada.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } });
-  await f.action(ada.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } });
-  const rolled = await f.action(ada.cookie, { type: 'onboarding.lottery', payload: {} });
-  const moved = await f.action(ada.cookie, { type: 'onboarding.home', payload: { house: rolled.state.onboarding.lottery.id === 'ajebutter' ? 'lekki' : 'yaba' } });
-  assert.equal(moved.code, 'life_started');
+  // She taps Play (the quick start): now she is in the city like anyone else — as a guest, in public.
+  assert.equal((await quick(f, ada)).code, 'playing');
   a.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' }));
+  assert.equal((await a.next()).code, 'venue_mismatch', 'a guest has no home room: she is in the park');
+  a.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
   assert.equal((await a.next()).type, 'presence');
   assert.equal((await get('/api/social/me', ada)).me.name, 'Ada');
   assert.deepEqual((await get('/api/social/search?q=ada', old)).results.map((item) => item.id), [ada.id]);

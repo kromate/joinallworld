@@ -19,8 +19,10 @@
  * Inside the room a guest is an ordinary member: same chat, same proximity-gated signalling,
  * same voice cap, and — as for everyone — voice off and muted on join. Nothing enables it.
  *
- * ONBOARDING GATE. A life that must finish character creation (state.onboarding.required and not
- * done) cannot join any room, so it never appears in presence or chat.
+ * ONBOARDING GATE. A life still held for the quick start (state.onboarding.required and not done:
+ * its Play has not been confirmed) cannot join any room, so it never appears in presence or chat.
+ * A guest who has tapped Play joins venue rooms like anyone else; it has no Home room of its own
+ * because its life is never at Home (the rules engine refuses it), and it may be a guest in a host's.
  * LOOK. On join the server records the joining life's appearance on the socket (ws.look) from the
  * server-held state, re-validated against the appearance option lists (checkLook): eight option
  * ids, nothing a client sent. It is not added to `presence` (which is re-sent on every move); the
@@ -344,7 +346,7 @@ export default function roomSocket(ctx) {
           const session = core.sessionOf(ws, db);
           if (!session || session.expiresAt <= now()) throw Error('device_session_required');
           const state = settle(session, message.cityId);
-          // A life that must still be created is not in the city yet: no room, so no presence and no chat.
+          // A life still held for the quick start (Play not confirmed) is not in the city yet: no room, so no presence and no chat.
           if (state.onboarding?.required === true && state.onboarding.done !== true) throw Error('onboarding_required');
           // The look comes from the server-held life and is validated again: option ids only.
           const look = checkLook(state.onboarding?.look).look ?? null;

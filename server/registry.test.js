@@ -202,7 +202,7 @@ test('server-only actions: the public /api/action can never run one; a route mod
   assert.throws(() => registerSystem({ id: 'bad-server-only', stateKeys: [], sanitize() {}, actions: { 'bad.thing': { serverOnly: true } } }), /needs a handler function/);
   assert.throws(() => registerSystem({ id: 'bad-plain', stateKeys: [], sanitize() {}, actions: { 'bad.other': { run() {} } } }), /needs a handler function/);
   const serverOnly = actionTypes().filter((type) => serverOnlyReason(type));
-  assert.deepEqual(serverOnly.sort(), ['civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote', 'estate.assign', 'estate.released', 'social.server']);
+  assert.deepEqual(serverOnly.sort(), ['civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server']);
   /** A route written against the contract: it names the type itself and runs it with server authority. */
   const grantRoutes = (ctx) => ({
     'POST /api/grant/gift': async (request) => ({ body: await ctx.store.transact(db => {

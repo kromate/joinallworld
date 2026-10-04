@@ -182,7 +182,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     status('Connecting…');
     try {
       let response;
-      // `onboarding: true` tells the server this client shows character creation, so a life made for this new session must finish it first.
+      // `onboarding: true` tells the server this client shows the quick start: a life made for this new session starts as a guest (its look is confirmed by one action, then it plays).
       if (createNew) response = await api('/api/session', { method: 'POST', body: { name: client.identity.name, onboarding: true } });
       else {
         try { response = await api('/api/session'); }
@@ -232,15 +232,17 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   /**
    * Send one action. Resolves { ok, code, reason? }. Offline or busy: nothing is sent and
    * nothing changes ({ ok: false, code: 'offline' | 'busy' }). Each call carries a fresh
-   * idempotent action ID stamped with server time.
+   * idempotent action ID stamped with server time — or `options.actionId`, an ID made earlier with
+   * client.newId() and kept by the caller, so that a retry (also after a reload) is the SAME action
+   * to the server and is applied exactly once.
    */
-  async function command(type, payload) {
+  async function command(type, payload, options) {
     if (client.busy) return { ok: false, code: 'busy' };
     // `code: 'offline'` is the machine code for "not sent"; the sentence says which of the reasons it really is.
     if (!client.online) { const reason = TEXT.paused[client.link] || TEXT.paused.unreachable; status(reason, true); return { ok: false, code: 'offline', reason }; }
     client.busy = true;
     try {
-      const body = { actionId: client.newId(), cityId: client.cityId, type };
+      const body = { actionId: typeof options?.actionId === 'string' ? options.actionId : client.newId(), cityId: client.cityId, type };
       if (payload !== undefined && payload !== null) body.payload = payload;
       const response = await api('/api/action', { method: 'POST', body });
       accept(response.state);

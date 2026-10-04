@@ -104,7 +104,8 @@ export default function civicRoutes(ctx) {
     const who = ctx.publicSession(session);
     const life = ctx.settle(session, cityId);
     const civic = civicOf(db), city = cityOf(civic, cityId);
-    // A life that must still be created is not a resident yet: it is in no directory, list or counter.
+    // A life still held for the quick start (Play not confirmed) is not a resident yet: it is in no directory, list or counter.
+    // A guest who is playing is one (with the default house until they settle in and choose theirs).
     const resident = !(life.onboarding?.required === true && life.onboarding.done !== true);
     if (resident) checkIn(city, ctx.now(), who, life, ttl());
     prunePrefs(civic);

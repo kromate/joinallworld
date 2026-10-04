@@ -3,8 +3,9 @@
  * Core routes: device session, life, action and voice configuration. Behaviour is unchanged
  * from the pre-registry server except that POST /api/action also accepts `payload`, and that
  * POST /api/session accepts `onboarding: true` when it CREATES a session: lives of that session
- * must finish character creation before any other action (see life-service.js settleCity). The
- * field is ignored for an existing session, so a rename can neither add nor remove the rule.
+ * start as guests of the quick start — held until their look is confirmed (one action), then
+ * playing in public venues until they settle in (see life-service.js settleCity). The field is
+ * ignored for an existing session, so a rename can neither add nor remove the rule.
  * A name must pass the text filter (protocol.js validateName → 400 name_not_allowed with a reason).
  * A player an operator has muted cannot rename (403 muted with the reason), and sending the same
  * name again renews the session without writing or re-announcing the name.

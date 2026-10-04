@@ -77,17 +77,19 @@ function announce(meta, state) {
  * the stored state (migrating older saves), then settles the elapsed server time: the timed
  * action progresses and every system's background advance runs.
  *
- * A life created for a session whose record carries `onboarding: true` must finish character
- * creation before any other action is accepted (state.onboarding.required). The flag is set
- * only by the host when the session is created; a session without it — every session made
- * before the flag existed, and every session the Cloudflare worker makes — behaves as before.
+ * A life created for a session whose record carries `onboarding: true` starts as a GUEST of the
+ * quick start (src/game/systems/onboarding.js, THE STAGED MODEL): it must confirm its look before
+ * any other action is accepted (state.onboarding.required — seconds, one action), then plays in
+ * public venues and settles in when the player chooses. The flag is set only by the host when the
+ * session is created; a session without it — every session made before the flag existed, and
+ * every session the Cloudflare worker makes — behaves as before.
  */
 export function settleCity(session, cityId, now) {
   session.cities ||= {};
   let entry = session.cities[cityId];
   if (!entry) {
     const salt = newSalt();
-    entry = session.cities[cityId] = { state: createLife({ name: session.name }, { now, cityId, isNew: true, requireOnboarding: session.onboarding === true, salt }), updatedAt: now, salt };
+    entry = session.cities[cityId] = { state: createLife({ name: session.name }, { now, cityId, isNew: true, quickStart: session.onboarding === true, salt }), updatedAt: now, salt };
   }
   if (typeof entry.salt !== 'string' || !SALT_PATTERN.test(entry.salt)) entry.salt = newSalt();
   const { salt } = entry;

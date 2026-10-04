@@ -77,7 +77,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const moderatorDigest = typeof moderatorToken === 'string' && /^[\x21-\x7e]{24,512}$/.test(moderatorToken) ? sha256(moderatorToken) : null;
   if (typeof moderatorToken === 'string' && moderatorToken && !moderatorDigest) console.error('MODERATOR_TOKEN must be 24 to 512 printable ASCII characters without spaces: the moderator routes stay disabled.');
   moderatorToken = undefined;
-  /** A session with nothing in it — no city, or only lives still waiting for character creation — has no life to keep. */
+  /** A session with nothing in it — no city, or only lives whose quick start was never confirmed — has no life to keep. */
   const hasLife = (session) => Object.values(session.cities || {}).some(entry => entry?.state && !(entry.state.onboarding?.required === true && entry.state.onboarding.done !== true));
   function archiveSession(db, secret, session) {
     // A lived life is never destroyed: it moves to the archive without its secret. A session that

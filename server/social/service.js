@@ -53,7 +53,7 @@
 import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.js';
 import { lagosTime } from '../../src/game/clock.js';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.js';
-import { venueLabel } from '../../src/game/content/venues.js';
+import { venueLabel, VENUES } from '../../src/game/content/venues.js';
 import { presenceOf, describeRoom } from './presence.js';
 import { screenText } from '../moderation/text.js';
 
@@ -141,8 +141,9 @@ export function socialService(ctx) {
 
   /** Register/refresh the caller, run housekeeping and apply anything owed to their life. */
   function enter(db, session) {
-    // A session whose lives must all still be created has not arrived in any city: it is not
-    // registered as a player, so nobody can find, message or befriend it yet.
+    // A session whose lives are all still held for the quick start (state.onboarding.required: Play has not
+    // been confirmed) has not arrived in any city: it is not registered as a player, so nobody can find,
+    // message or befriend it yet. A guest who has tapped Play is in the city like anyone else.
     const lives = Object.values(session.cities || {}).map((entry) => entry?.state?.onboarding).filter(Boolean);
     if (lives.length ? lives.every((o) => o.required === true && o.done !== true) : session.onboarding === true) throw ctx.fail(403, 'onboarding_required');
     const s = col(db), id = session.publicId, t = now();
@@ -192,7 +193,7 @@ export function socialService(ctx) {
   function act(session, cityId, op, payload, actionId, guard) {
     return ctx.act(ctx.settle(session, cityId), { type: 'social.server', cityId, actionId, payload: { ...payload, op }, ...(guard ? { stateGuard: guard } : {}) });
   }
-  /** Has this session a created life in that city? (A life still in character creation does not count.) */
+  /** Has this session a life in that city that has arrived? (One still held for the quick start does not count; a guest who is playing does.) */
   const hasLife = (session, cityId) => {
     const state = session?.cities?.[cityId]?.state;
     return Boolean(state) && !(state.onboarding?.required === true && state.onboarding.done !== true);
@@ -820,6 +821,36 @@ export function socialService(ctx) {
       const house = houseView(s, hostId, id);
       const knock = s.houses[hostId]?.knocks[id];
       return yes('ok', { house, knock: knock ? { status: knock.status, expiresAt: knock.expires } : null });
+    },
+    /**
+     * THE INVITE LANDING. A player opened someone's link (`/v/<publicId>` or `?join=<publicId>`): say who
+     * they are joining and how that player can be reached right now, so the client can show one banner.
+     *   'joined'    the caller is a brand-new guest (src/game/systems/onboarding.js) and the inviter is in a
+     *               public venue right now — their own venue-room socket says so — so the guest was put
+     *               there: free, once per life, only in the life's first minutes ('onboarding.arrive', a
+     *               server-only action; the venue is never taken from the request). Answers `venue`.
+     *   'here'      they already share that venue. Answers `venue`.
+     *   'at_home'   the inviter is at home: the client offers the knock (POST /api/social/house/knock).
+     *   'out' | 'offline' | 'reconnecting'   nothing to join right now; the caller stays where they are.
+     * WHAT IT DISCLOSES: `hostStatus` is exactly what GET /api/social/house/:host already tells anyone who
+     * holds the link. The venue itself is answered only with 'joined' and 'here' — to someone who is, by
+     * then, standing in that public room and sees the inviter anyway. Blocked either way: unknown_player.
+     */
+    join(db, session, body) {
+      const hostId = uuid(body.host), cityId = city(body.cityId);
+      const { s, id } = enter(db, session);
+      const { refusal } = other(s, id, hostId);
+      if (refusal) return refusal.code === 'self' ? no('self', 'That is your own link. Share it with someone else.') : no('unknown_player', 'That player was not found.');
+      if (!ctx.allow(`social:join:${id}`, 6)) return no('rate_limited', 'Too many tries. Wait a minute.');
+      const host = pub(s, hostId), where = whereabouts(hostId, true);
+      if (where.status !== 'online') return yes(where.status === 'reconnecting' ? 'reconnecting' : 'offline', { host, hostStatus: where.status === 'reconnecting' ? 'reconnecting' : 'offline' });
+      if (where.venue === 'home' && where.cityId === cityId) return yes('at_home', { host, hostStatus: 'home' });
+      if (where.cityId !== cityId || where.venue === 'visit' || where.venue === 'home' || !Object.hasOwn(VENUES, where.venue)) return yes('out', { host, hostStatus: 'out' });
+      const life = ctx.settle(session, cityId);
+      if (life.location === where.venue && !isDeparting(life)) return yes('here', { host, hostStatus: 'out', venue: where.venue });
+      const moved = ctx.act(life, { type: 'onboarding.arrive', cityId, payload: { venue: where.venue }, stateGuard: 'onboarding.joined: the first arrival sets it and a second is refused' });
+      if (!moved.ok) return yes('out', { host, hostStatus: 'out' });
+      return yes('joined', { host, hostStatus: 'out', venue: where.venue });
     },
     knock(db, session, body) {
       const hostId = uuid(body.host), cityId = city(body.cityId);

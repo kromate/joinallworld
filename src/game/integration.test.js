@@ -19,6 +19,8 @@ import { workplaceHoursText, scheduleText } from './systems/career.js';
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8); // 09:00 in Lagos
 const at = (now = MONDAY_9AM, seed = 'seam', extra = {}) => makeContext({ now, cityId: 'lagos', seed, ...extra });
 const act = (state, type, payload, ctx = at()) => dispatch(state, { type, payload }, ctx);
+/** The starting homes a life's rolled outcome allows, { [houseId]: startCash }. */
+const LOTTERY_HOMES = (state) => Object.fromEntries(viewLife(state, at()).onboarding.homes.filter((home) => !home.locked).map((home) => [home.id, home.startCash]));
 
 // A stand-in for a later owner's system: registered last, it records events and can veto actions.
 const heard = [];
@@ -97,26 +99,82 @@ test('action.block lets any system veto any action with a code and a reason', ()
   assert.throws(() => dispatch(state, { type: 'no-such-action' }, at()), /Invalid action type/);
 });
 
-test('enforced onboarding: a life created with requireOnboarding accepts only onboarding.* until it has moved in', () => {
-  const state = createLife(null, at(MONDAY_9AM, 'new', { isNew: true, requireOnboarding: true }));
-  assert.deepEqual([state.onboarding.required, state.onboarding.done], [true, false]);
+test('quick start: a guest life is held only until its look is confirmed, then plays in public and never reaches a home state', () => {
+  const state = createLife(null, at(MONDAY_9AM, 'new', { isNew: true, quickStart: true }));
+  assert.deepEqual([state.onboarding.stage, state.onboarding.required, state.onboarding.done, state.onboarding.bornAt], ['guest', true, false, MONDAY_9AM]);
+  assert.equal(createLife(null, at(MONDAY_9AM, 'old-name', { isNew: true, requireOnboarding: true })).onboarding.stage, 'guest', 'the older context name still makes a guest');
   assert.equal(viewLife(state, at()).onboarding.required, true);
   for (const [type, payload] of [['spot', { id: 'trees' }], ['activity', { id: 'chill' }], ['travel', { id: 'home', mode: 'trek' }], ['apply-job', { id: 'tech' }],
     ['home.grocery-buy', { id: 'rice' }], ['goals.reroll-wish', { slot: 0 }], ['economy.pay-rent', {}], ['cancel', {}]]) {
     const result = act(state, type, payload);
     assert.deepEqual([result.ok, result.code], [false, 'onboarding_required'], type);
-    assert.match(result.reason, /Finish creating your Sim first: you are on the Look step/);
+    assert.match(result.reason, /Choose your look and tap Play first/);
   }
   assert.deepEqual([state.location, state.cash, state.job, state.activeAction], ['park', 5000, null, null], 'nothing changed');
   // A reload keeps the rule; the client cannot drop it by saving and restoring.
   const restored = createLife(JSON.parse(JSON.stringify(state)), at());
-  assert.equal(restored.onboarding.required, true);
+  assert.deepEqual([restored.onboarding.required, restored.onboarding.stage], [true, 'guest']);
   assert.equal(act(restored, 'spot', { id: 'trees' }).code, 'onboarding_required');
+  // The quick start: a look, strictly validated. Then the guest plays.
+  const look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
+  for (const bad of [undefined, {}, { look: { ...look, hair: 'gele' } }, { look: { ...look, outfit: 'agbada' } }, { look: { ...look, skin: '#fff' } }]) assert.equal(act(restored, 'onboarding.quick-start', bad).code, 'invalid_look');
+  assert.equal(restored.onboarding.required, true);
+  const played = act(restored, 'onboarding.quick-start', { look });
+  assert.deepEqual([played.code, restored.onboarding.required, restored.onboarding.stage, restored.onboarding.step, restored.spot], ['playing', false, 'guest', 1, 'trees']);
+  assert.deepEqual(restored.needs, { hunger: 80, energy: 85, fun: 70, social: 60, hygiene: 75, bladder: 70 }, 'the starting needs are handed out at the quick start');
+  let chip = viewLife(restored, at()).goals.chip;
+  assert.deepEqual([chip.kind, chip.id, chip.step, chip.go, chip.activity], ['goal', 'first-fun', 1, ['park', 'trees'], 'play-ayo'], 'the first goal is the public first activity');
+  assert.equal(act(restored, 'activity', { id: 'play-ayo' }).code, 'started');
+  advanceLife(restored, 7, at(MONDAY_9AM + 7000));
+  assert.deepEqual([restored.cash, restored.goals.stars, restored.goals.chain, restored.onboarding.firstAt, restored.onboarding.activities], [5500, 1, 1, MONDAY_9AM + 7000, 1]);
+  // Nothing that needs a home is reachable, and nothing the economy takes as settled exists.
+  for (const [type, payload] of [['travel', { id: 'home', mode: 'trek' }], ['home.grocery-buy', { id: 'rice' }], ['home.furniture-buy', { item: 'plastic-chair', x: 0, y: 0, rot: 0 }],
+    ['home.kitchen-unpack', {}], ['property.house-move', { id: 'mushin' }]]) {
+    const result = act(restored, type, payload);
+    assert.deepEqual([result.ok, result.code], [false, 'settle_required'], type);
+    assert.match(result.reason, /Settle in to get your home/);
+  }
+  assert.equal(act(restored, 'economy.pay-rent', {}).ok, false);
+  assert.deepEqual([restored.economy.rent.house, restored.economy.loan, restored.economy.billedWeek, restored.economy.started, restored.location, restored.home.stocked], [null, null, null, false, 'park', false]);
+  // A whole week as a guest: no rent, no loan, no bill.
+  const week = structuredClone(restored);
+  advanceLife(week, 8 * 86400, at(MONDAY_9AM + 8 * 86400000));
+  assert.deepEqual([week.cash, week.economy.billedWeek, week.ledger.filter((entry) => /Rent|Loan/.test(entry.reason)).length], [5500, null, 0]);
+  // Public play is open: a trip, a job.
+  assert.equal(act(restored, 'travel', { id: 'library', mode: 'trek' }, at(MONDAY_9AM + 8000)).code, 'started');
+  assert.equal(act(restored, 'cancel', {}, at(MONDAY_9AM + 8000)).ok, true);
+  // Settling in keeps what was earned: the start cash is topped up from the seed, not from the wallet.
+  const before = restored.cash;
   onboard(restored);
-  assert.deepEqual([restored.location, restored.onboarding.done, viewLife(restored, at()).onboarding.required], ['home', true, false]);
-  const chip = viewLife(restored, at()).goals.chip;
-  assert.deepEqual([chip.kind, chip.title, chip.step], ['goal', STARTER_GOALS[0].title, 1], 'the goal chip shows the first starter goal');
+  assert.deepEqual([restored.location, restored.onboarding.done, restored.onboarding.stage, viewLife(restored, at()).onboarding.required], ['home', true, 'settled', false]);
+  assert.equal(restored.cash, 96000 + (before - 5000), 'the old flow’s start cash plus what the guest earned: nothing lost, nothing counted twice');
+  assert.deepEqual(restored.goals.seen, ['settle-in'], 'Settle in is paid when the chain reaches it');
+  chip = viewLife(restored, at()).goals.chip;
+  assert.deepEqual([chip.kind, chip.id], ['goal', 'say-hello'], 'the chain carries on where the guest was');
   assert.equal(act(restored, 'spot', { id: 'bathroom' }).code, 'selected');
+});
+
+test('a life the old enforced flow left half-way resumes as a guest with every choice it had made', () => {
+  const look = { body: 'man', hair: 'afro', outfit: 'hoodie', fabric: 'ankara', skin: 'skin-6', hairColor: 'auburn', outfitColor: 'teal', bottomsColor: 'cream' };
+  const old = (onboarding) => createLife({ v: 1, cash: 5000, location: 'park', onboarding: { done: false, legacy: false, required: true, seed: 5000, bonusAt: 0, completedAt: null, wardrobe: null, house: null, lottery: null, dream: null, traits: [], look, ...onboarding } }, at());
+  // Still on the Look step: held until the look is confirmed, as before — by the quick start or the old look action.
+  const fresh = old({ step: 0 });
+  assert.deepEqual([fresh.onboarding.stage, fresh.onboarding.required, fresh.goals.started], ['guest', true, true]);
+  assert.equal(act(fresh, 'spot', { id: 'trees' }).code, 'onboarding_required');
+  assert.equal(act(fresh, 'onboarding.look', { look }).code, 'look_saved');
+  assert.equal(act(fresh, 'spot', { id: 'trees' }).code, 'selected');
+  // Three steps in: nothing is asked again, play is open at once, and the remaining steps finish the same way.
+  const mid = old({ step: 3, traits: ['hustler', 'foodie'], dream: 'lekki-landlord' });
+  assert.deepEqual([mid.onboarding.stage, mid.onboarding.required, mid.onboarding.step, mid.onboarding.traits, mid.onboarding.dream], ['guest', false, 3, ['hustler', 'foodie'], 'lekki-landlord']);
+  act(mid, 'spot', { id: 'trees' });
+  assert.equal(act(mid, 'activity', { id: 'chill' }).code, 'started');
+  advanceLife(mid, 11, at(MONDAY_9AM + 11000));
+  assert.equal(act(mid, 'onboarding.lottery', {}).code, 'rolled');
+  const house = Object.keys(LOTTERY_HOMES(mid))[0];
+  const moved = act(mid, 'onboarding.home', { house, stay: true });
+  assert.deepEqual([moved.code, mid.onboarding.stage, mid.location, mid.property.house, mid.economy.rent.house], ['life_started', 'settled', 'park', house, house]);
+  assert.deepEqual(mid.needs, { hunger: 80, energy: 85, fun: 70, social: 60, hygiene: 75, bladder: 70 }, 'a life that never had the quick start gets its starting needs at move-in, as before');
+  assert.deepEqual(createLife(structuredClone(mid), at()), mid);
 });
 
 test('onboarding is never forced on a life that predates it, or on one created without the flag', () => {
@@ -126,9 +184,11 @@ test('onboarding is never forced on a life that predates it, or on one created w
   // A hostile save cannot turn a legacy life into an un-onboarded one or the reverse.
   assert.equal(createLife({ onboarding: { required: true } }, at()).onboarding.done, true);
   const plain = createLife(null, at(MONDAY_9AM, 'plain', { isNew: true }));
-  assert.deepEqual([plain.onboarding.required, plain.onboarding.done, viewLife(plain, at()).onboarding.required], [false, false, false]);
+  assert.deepEqual([plain.onboarding.required, plain.onboarding.stage, plain.onboarding.done, viewLife(plain, at()).onboarding.required], [false, 'settled', false, false]);
+  assert.equal(act(plain, 'onboarding.quick-start', { look: { body: 'man' } }).code, 'not_a_guest');
   assert.equal(act(plain, 'spot', { id: 'trees' }).code, 'selected', 'offered, not enforced');
   assert.equal(viewLife(plain, at()).goals.chip.kind, 'create');
+  assert.equal(act(plain, 'travel', { id: 'home', mode: 'trek' }).code, 'started', 'a life that was never a guest keeps its home');
 });
 
 test('all fourteen career tracks can be applied for, show a work spot, and can be reached on every work day', () => {

@@ -106,6 +106,6 @@ export function roomSummary(list, venueName) {
 
 /** A house-invite id from a pasted link (`…/v/<id>`, `?v=<id>`) or a bare id; null if there is none. */
 export function inviteIdFrom(text) {
-  const match = /(?:\/v\/|[?&]v=|^)([0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})(?:[/?#&]|$)/i.exec(String(text ?? '').trim());
+  const match = /(?:\/v\/|[?&](?:v|join)=|^)([0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})(?:[/?#&]|$)/i.exec(String(text ?? '').trim());
   return match ? match[1].toLowerCase() : null;
 }

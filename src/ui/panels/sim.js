@@ -28,7 +28,7 @@ const nameProblem = (name) => (name.trim().length < 3 ? 'A display name needs at
 function saveState(state, view) {
   if (!view.connected) return { disabled: true, label: `${linkWords(view).short} — cannot save right now` };
   if (pending) return { disabled: true, label: 'Saving…' };
-  if (!view.onboarding.done) return { disabled: true, label: 'Finish creating your Sim first' };
+  if (!view.onboarding.done) return { disabled: true, label: view.onboarding.guest ? 'Settle in to change your look' : 'Finish creating your Sim first' };
   if (draft.name.trim() === state.name && sameLook(draft.look, state.onboarding.look)) return { disabled: true, label: 'No changes yet' };
   const problem = nameProblem(draft.name);
   return problem ? { disabled: true, label: problem } : { disabled: false, label: 'Save changes' };
@@ -46,7 +46,8 @@ const profile = {
       o.lottery ? `<li><b>Born</b> ${iconFor('lottery', o.lottery.id, o.lottery.icon)} ${esc(o.lottery.label)}</li>` : '',
       `<li><b>Home</b> ${home ? `${esc(home.label)}, ${esc(home.district)}` : 'Your home'} · <button type="button" class="sim-link" data-open="houses">See houses</button></li>`,
     ].join('');
-    const create = o.done ? '' : '<p class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" data-open="onboarding">Create your Sim</button></p>';
+    const create = o.done ? '' : o.guest ? '<p class="sim-note">You are a guest in the city: no traits, dream or home yet. <button type="button" class="sim-link" data-open="onboarding">Make this life yours</button> — everything you have earned is kept.</p>'
+      : '<p class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" data-open="onboarding">Create your Sim</button></p>';
     return `<form class="sim-profile" data-profile novalidate>${create}${lookStage(draft.look, { variant: 'wide', name: state.name, caption: esc(lookSummary(draft.look)) })}<div class="sim-profile-top"><div><label class="sim-field">Display name<input name="name" maxlength="24" autocomplete="nickname" value="${esc(draft.name)}" data-key="name"></label><p class="sim-hint">${esc(view.city.name)} · shown to other players. 3–24 characters.</p><ul class="sim-about">${about}</ul></div></div>
       <h3>Appearance</h3><p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>${lookEditor(draft.look, { owned: o.wardrobe })}
       ${o.done ? renderLgaCard(state, view) : ''}

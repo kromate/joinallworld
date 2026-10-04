@@ -35,6 +35,7 @@ import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../src/game/
 import { blockReason, spotsOf, skillLevel } from '../src/game/api.js';
 import { VENUES } from '../src/game/content/venues.js';
 import { JOBS } from '../src/game/content/jobs.js';
+import { NPCS } from '../src/game/content/npcs.js';
 import { LOTTERY, START_HOMES } from '../src/game/content/traits.js';
 import { HOUSES, HOUSE_ORDER } from '../src/game/content/housing.js';
 import { CARS, CAR_ORDER } from '../src/game/content/cars.js';
@@ -87,9 +88,13 @@ export class Player {
     this.lines = [];      // every ledger line ever written, in order
     this.activeSeconds = 0;
     this.refusals = {};
-    this.state = createLife(null, { now: this.now, cityId: CITY, isNew: true, requireOnboarding: true });
+    // A new player as the quick start makes one: a guest in Freedom Park who plays the two opening
+    // goals (a round of Ayo, a hello) and then settles in. The three opening goals are original beta rewards.
+    this.state = createLife(null, { now: this.now, cityId: CITY, isNew: true, quickStart: true });
     this.seed = this.state.cash;
-    this.must('onboarding.look', { look: LOOK });
+    this.must('onboarding.quick-start', { look: LOOK });
+    this.run('trees', 'play-ayo');
+    this.run('people', `npc-${Object.values(NPCS).find((npc) => npc.venue === 'park').id}-hello`);
     this.must('onboarding.traits', { traits: TRAITS });
     this.must('onboarding.dream', { dream: DREAM });
     // The roll depends on the action id: try ids, on a copy, until this one rolls the wanted outcome.

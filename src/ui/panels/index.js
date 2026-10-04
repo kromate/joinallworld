@@ -3,7 +3,7 @@
  * The panel registry. The panel contract is at the top of src/ui/shell.js.
  *
  * EAGER panels are imported here and are part of the first download: only what the first paint
- * needs — the session gate and the HUD chips (goal, home, inbox, gem hunt, club radio, health,
+ * needs — the session gate, the landing screen (./quick-start.js: a name, a quick character, Play) and the HUD chips (goal, home, inbox, gem hunt, club radio, health,
  * weather, the roadside prompt). A chip's file holds the chip alone; the app or sheet it opens is a lazy
  * panel like any other (inbox.js → messages.js, hunt-chip.js → hunt.js, home-chip.js → buy.js, roadside-chip.js → map.js …).
  * The two nav panels, Map and Buy, are lazy too: the Map's own 3D code is fetched on first open anyway.
@@ -22,6 +22,7 @@
  * A panel a group exports without a metadata line here is reported in the console and ignored.
  */
 import session from './session.js';
+import quickStart from './quick-start.js';
 import city from './city.js';
 import roadsideChip from './roadside-chip.js';
 import healthChips from './health-chips.js';
@@ -131,9 +132,8 @@ const trust = lazyGroup(() => import('./groups/trust.js'), [
   { id: 'support', title: 'Report a problem', short: 'Report', placement: 'phone', order: 96, live: false, group: 'city', badge: () => reportReplies() },
 ]);
 const start = lazyGroup(() => import('./groups/start.js'), [
-  // `required` must answer before the code is here: a brand-new life is held in character creation.
-  { id: 'onboarding', title: 'Create your Sim', placement: 'modal', live: false,
-    required: (state, view) => (view.onboarding?.required ? 'Finish creating your Sim to start playing.' : null) },
+  // Settling in ("Make this life yours") is offered, never required: a new life starts from the landing screen (./quick-start.js, eager).
+  { id: 'onboarding', title: 'Make this life yours', placement: 'modal', live: false },
   { id: 'account', title: 'Account', placement: 'modal' },
 ]);
 const life = lazyGroup(() => import('./groups/life.js'), [
@@ -152,7 +152,7 @@ const home = lazyGroup(() => import('./groups/home.js'), [
   { id: 'buy', title: 'Buy', placement: 'nav', enabled: (state) => state.location === 'home' || 'Go home to buy furniture' },
 ]);
 
-export const PANELS = buildPanels([session, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels]);
+export const PANELS = buildPanels([session, quickStart, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

@@ -75,7 +75,7 @@
  *                         invalidated?(state, value, ctx) } },
  *   };
  *
- * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId?, requireOnboarding?, internal? }`:
+ * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId?, quickStart?, internal? }` (quickStart: the new life starts as a guest of the quick start — systems/onboarding.js; `requireOnboarding` is its older name):
  *   now     server time in ms — the only clock you may read (see clock.js for Lagos time)
  *   cityId  the city this life belongs to
  *   rng     () => float in [0,1), seeded from the action ID or the settlement interval, so

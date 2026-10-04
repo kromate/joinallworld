@@ -145,6 +145,10 @@ function loadMaps() {
       onSelectVenue: (venueId) => shell.open('map', { destination: venueId }),
       onSelectGov: () => shell.open('state-house'),
       onSelectNeighbour: (player) => shell.open('person', { player: player.id, name: player.name }),
+      // The world layer: a local government opens its page, a house its owner's card; the maps fetch only what is in view.
+      onSelectLga: (lga) => shell.open('lga', { lga }),
+      onSelectHouse: (house) => shell.open('house-card', { house }),
+      fetchJson: client.fetchJson,
       // The avatar reached the door: ask the server for the arrival now rather than at its next poll.
       onTripDue: () => { if (client.online) void client.refresh(); },
       onNotice: (text) => shell.toast(text),

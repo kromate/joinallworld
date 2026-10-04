@@ -17,6 +17,8 @@ import { PLOTS_PER_ESTATE, packStyle } from '../src/game/content/world.js';
 const get = async (f, path, who) => { const res = await f.request(path, null, who.cookie); return { status: res.status, ...(await res.json()) }; };
 const life = (f, who) => get(f, '/api/life?city=lagos', who).then((body) => body.state);
 const me = (f, who) => get(f, '/api/world/me?city=lagos', who);
+/** What the settle-in card does: choose (or confirm) a local government. The house comes with it. */
+const choose = async (f, who, lga = 'lagos-mainland') => { const result = await f.action(who.cookie, { type: 'estate.set-lga', payload: { lga } }); assert.equal(result.ok, true, result.reason); return who; };
 const shardOptions = { empty: registry.empty, reduce: registry.reduce, snapshot: registry.snapshot, loaded: registry.loaded, live: registry.live };
 const names = ['Ada', 'Bola', 'Chidi', 'Dami', 'Emeka', 'Funke', 'Gbenga', 'Halima', 'Ife', 'Jide', 'Kemi', 'Lanre', 'Musa', 'Ngozi', 'Ola', 'Peju', 'Rasheed', 'Sade', 'Tunde', 'Uche', 'Wale', 'Yemi', 'Zainab'];
 const fakeName = (i) => `${names[i % names.length]} ${names[(i * 7 + 3) % names.length]}${i}`;
@@ -49,6 +51,10 @@ test('migration: every session gets a character record with its current city; ev
 test('every life gets exactly one plot: allocated in order, kept across polls, retries and a restart; concurrent newcomers never share one', async (t) => {
   const f = await fixture(t);
   const players = await Promise.all(Array.from({ length: 40 }, (_, i) => f.device(fakeName(i))));
+  // Before they choose a local government they have no house and are on nobody's list.
+  assert.deepEqual([(await me(f, players[0])).plot, (await me(f, players[0])).counts], [null, null]);
+  assert.equal((await get(f, '/api/world/city?city=lagos', players[0])).lgas.every((item) => item.houses === 0 && item.residents === 0), true);
+  await Promise.all(players.map((who) => choose(f, who)));
   // All forty arrive at once, each asking twice in parallel.
   const answers = await Promise.all(players.flatMap((who) => [me(f, who), me(f, who)]));
   assert.equal(answers.every((answer) => answer.status === 200 && answer.lga === 'lagos-mainland' && answer.plot), true);
@@ -76,6 +82,7 @@ test('a restart finds the same plots, and a torn last line of a shard file is ig
   const stop = (server) => { server.closeAllConnections(); return new Promise((done) => server.close(done)); };
   let server = await start();
   const ada = await call(server, '/api/session', null, { name: 'Ada' }), bola = await call(server, '/api/session', null, { name: 'Bola' });
+  for (const who of [ada, bola]) await call(server, '/api/action', who.cookie, { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', type: 'estate.set-lga', payload: { lga: 'lagos-mainland' } });
   const first = [(await call(server, '/api/world/me?city=lagos', ada.cookie)).plot, (await call(server, '/api/world/me?city=lagos', bola.cookie)).plot];
   await stop(server);
   await appendFile(join(dir, 'world', 'lagos.lagos-mainland.log'), '["h",0,7,"half-written');   // a crash in the middle of an append
@@ -83,6 +90,7 @@ test('a restart finds the same plots, and a torn last line of a shard file is ig
   t.after(() => stop(server));
   assert.deepEqual([(await call(server, '/api/world/me?city=lagos', ada.cookie)).plot, (await call(server, '/api/world/me?city=lagos', bola.cookie)).plot], first);
   const chidi = await call(server, '/api/session', null, { name: 'Chidi' });
+  await call(server, '/api/action', chidi.cookie, { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', type: 'estate.set-lga', payload: { lga: 'lagos-mainland' } });
   assert.equal((await call(server, '/api/world/me?city=lagos', chidi.cookie)).plot.plot, 2, 'the next newcomer takes the next plot');
   const city = await call(server, '/api/world/city?city=lagos', ada.cookie);
   assert.equal(city.lgas.find((item) => item.id === 'lagos-mainland').houses, 3);
@@ -91,7 +99,9 @@ test('a restart finds the same plots, and a torn last line of a shard file is ig
 test('changing local government moves the house: a plot there, the old one freed and reused, and the seven-day rule', async (t) => {
   const f = await fixture(t);
   const [ada, bola, chidi] = [await f.device('Ada'), await f.device('Bola'), await f.device('Chidi')];
+  await choose(f, ada); await me(f, ada); await choose(f, bola);
   assert.deepEqual([(await me(f, ada)).plot.plot, (await me(f, bola)).plot.plot], [0, 1]);
+  f.advance(8 * 86400000);   // the first choice was free; a change needs the cooldown to have passed
   assert.equal((await f.action(ada.cookie, { type: 'estate.set-lga', payload: { lga: 'ikeja', via: 'device', lat: 6.6, lon: 3.35 } })).ok, true);
   const moved = await me(f, ada);
   assert.deepEqual([moved.lga, moved.plot], ['ikeja', { lga: 'ikeja', estate: 0, plot: 0 }]);
@@ -102,6 +112,7 @@ test('changing local government moves the house: a plot there, the old one freed
   const city = await get(f, '/api/world/city?city=lagos', ada);
   assert.deepEqual(city.lgas.filter((item) => item.houses).map((item) => [item.id, item.residents, item.houses]), [['ikeja', 1, 1], ['lagos-mainland', 1, 1]]);
   // The freed plot is the growing edge again: the next newcomer gets it.
+  await choose(f, chidi);
   assert.equal((await me(f, chidi)).plot.plot, 0);
   const again = await f.action(ada.cookie, { type: 'estate.set-lga', payload: { lga: 'epe' } });
   assert.deepEqual([again.ok, again.code], [false, 'lga_cooldown']);
@@ -113,7 +124,7 @@ test('changing local government moves the house: a plot there, the old one freed
 test('a house shows its owner only if they are listed: a hidden player keeps the house, anonymous, and leaves the directory; style and upgrades reach the map', async (t) => {
   const f = await fixture(t);
   const [ada, bola] = [await f.device('Ada Obi'), await f.device('Bola Ade')];
-  await me(f, ada); await me(f, bola);
+  await choose(f, ada); await me(f, ada); await choose(f, bola); await me(f, bola);
   const socket = await f.socket(bola);
   const houses = () => get(f, '/api/world/lga/lagos-mainland/estate/0/houses?city=lagos', ada);
   let page = await houses();
@@ -221,6 +232,8 @@ test('a write outage: nobody is told about a plot that is not saved, and the nex
   const f = await fixture(t, { log: () => {}, shardIo: { appendFile: async (...args) => { if (fail) throw Object.assign(new Error('ENOSPC'), { code: 'ENOSPC' }); return appendFile(...args); } } });
   const ada = await f.device('Ada');
   fail = true;
+  await choose(f, ada);   // the choice itself is saved (the main store is fine); the shard cannot take the house
+  await f.server.world.idle();
   assert.equal((await me(f, ada)).plot, null);
   assert.equal((await life(f, ada)).estate.plot, null);
   fail = false;

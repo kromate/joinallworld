@@ -22,7 +22,7 @@
 import { createBatch, sceneMaterials } from '../scene/build.js';
 import { sign } from '../scene/props.js';
 import { PLINTH as PLINTH_UNIT } from './landmarks.js';
-import { WATER_Y, LANDMARK_SCALE } from './city-build.js';
+import { WATER_Y, LANDMARK_SCALE, leanGeometry } from './city-build.js';
 import { iconFor } from '../ui/icon-map.js';
 
 const HOUSES_PER_ESTATE = 18, HOMES_LISTED = 6, PLOT_CHIPS = 36;
@@ -75,12 +75,12 @@ export function createOverlays(kit, city) {
     if (!area || !grid?.rows || !grid?.cols) return;
     const taken = new Map(grid.plots.map((plot) => [plot.slot, plot]));
     const stepX = (area.x1 - area.x0) / grid.cols, stepZ = (area.z1 - area.z0) / grid.rows;
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const geometry = leanGeometry(THREE, 'box');   // no underside: nobody sees a sea plot from below
     const mesh = new THREE.InstancedMesh(geometry, tile, grid.rows * grid.cols);
     let i = 0;
     for (let row = 0; row < grid.rows; row++) for (let col = 0; col < grid.cols; col++) {
       const plot = taken.get(`sea-${row}-${col}`), x = area.x0 + (col + 0.5) * stepX, z = area.z0 + (row + 0.5) * stepZ;
-      dummy.position.set(x, WATER_Y + (plot ? 0.3 : 0.1), z); dummy.rotation.set(0, 0, 0); dummy.scale.set(stepX - 0.5, plot ? 0.5 : 0.12, stepZ - 0.5); dummy.updateMatrix();
+      dummy.position.set(x, WATER_Y + (plot ? 0.05 : 0.04), z); dummy.rotation.set(0, 0, 0); dummy.scale.set(stepX - 0.5, plot ? 0.5 : 0.12, stepZ - 0.5); dummy.updateMatrix();
       mesh.setMatrixAt(i, dummy.matrix);
       mesh.setColorAt(i, tint.set(plot ? colourOf(ads, plot.colour).bg : row < grid.shoreRows ? '#e8f6f8' : '#c2e6ee'));
       i += 1;

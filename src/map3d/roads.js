@@ -7,6 +7,7 @@
  *     roads   [{ id, name, major, bridge, pylon, points: [{ x, y, z }], length }]   smoothed, with deck heights
  *     places  { [venueId | 'home:<house>']: { x, z, ry, gate: { x, y, z }, door: { x, y, z } } }   ry faces the road; a trip runs door to door
  *     route(fromKey, toKey) → Route | null
+ *     attachPlace(id, { x, z }) → the place: join one more place to the network later (the player's own plot)
  *   }
  *   Route = { points: [{ x, y, z, bridge }], lengths: [cumulative], length, lead, tail, bridges: [roadId] }
  *     `lead` is the length of the walk from the door to the road, `tail` of the walk from the road to the door.
@@ -177,7 +178,15 @@ export function buildNetwork(pack, { door = 4.7 } = {}) {
     return result;
   }
 
-  return { roads, places, route, nodeCount: nodes.size };
+  /** Join one more place to the road network after it was built (the player's own plot). The same id again moves it. */
+  function attachPlace(id, spot) {
+    nodes.delete(`place:${id}`);
+    for (const other of nodes.values()) other.links.delete(`place:${id}`);
+    cache.clear();
+    add(id, spot);
+    return places[id];
+  }
+  return { roads, places, route, attachPlace, get nodeCount() { return nodes.size; } };
 }
 
 /** Where a distance along the route is: position, the direction of travel (ry) and the bridge it is on, if any. */

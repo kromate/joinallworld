@@ -40,6 +40,7 @@
  */
 import { lagosTime } from '../../src/game/clock.js';
 import { ESTATE, PLOTS_PER_ESTATE, cityRules, lgaOf, lgasOf, packStyle } from '../../src/game/content/world.js';
+import { hasPlace } from '../../src/game/systems/estate.js';
 import { watchLives } from '../life-service.js';
 import * as registry from './registry.js';
 
@@ -82,8 +83,9 @@ export function worldOf(ctx) {
   // keeps failing (a full disk) would retry itself in a loop. A failed sync waits for the player's next poll.
   let quiet = false;
   const quietly = (fn) => { const was = quiet; quiet = true; try { return fn(); } finally { quiet = was; } };
-  const sigOf = (cityId, state) => { const e = state.estate; return [cityId, e.city, state.name, e.lga, e.plot ? `${e.plot.lga}/${e.plot.estate}/${e.plot.plot}` : '', e.old ? e.old.lga : '', packStyle(e.style, e.tier), e.upgrade?.doneAt ?? 0, e.living, state.property?.house, today()].join('|'); };
-  const inCity = (state) => !(state.onboarding?.required === true && state.onboarding.done !== true);
+  const sigOf = (cityId, state) => { const e = state.estate; return [cityId, e.city, state.name, e.lga, e.plot ? `${e.plot.lga}/${e.plot.estate}/${e.plot.plot}` : '', e.old ? e.old.lga : '', packStyle(e.style, e.tier), e.upgrade?.doneAt ?? 0, e.living, state.property?.house, hasPlace(state), today()].join('|'); };
+  // A resident is a life with a place in the city: it has settled in and has a local government (src/game/systems/estate.js hasPlace).
+  const inCity = (state) => hasPlace(state);
 
   function touch(name) {
     const state = shards.peek(name);

@@ -2,6 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife } from '../life.js';
+import { hasPlace } from './systems/estate.js';
 import { makeContext } from './util.js';
 import { HOUSES } from './content/housing.js';
 import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_CAPACITY, LGA_RULES, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cleanStyle, lgaOf, lgaOfDistrict, moveLevy, packStyle, stylePrice, tierCost, unpackStyle } from './content/world.js';
@@ -10,12 +11,17 @@ const MONDAY_9AM = Date.UTC(2026, 0, 5, 8), DAY = 86400000;
 const at = (now = MONDAY_9AM, seed = 'estate', extra = {}) => makeContext({ now, cityId: 'lagos', seed, ...extra });
 const act = (state, type, payload, ctx = at()) => dispatch(state, { type, payload }, ctx);
 const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
-/** A life taken through creation. `home` is what the last step is sent. */
-function onboard(home = { house: 'yaba' }, outcome = 'lapo-baby') {
-  const state = createLife(null, at(MONDAY_9AM, 'new', { isNew: true }));
+/**
+ * A life taken through creation (which knows nothing of local governments), then — as the settle-in
+ * card does — given its local government and, with `own`, moved into the house that comes with it.
+ */
+function onboard({ house = 'yaba', lga = null, own = false, via } = {}, outcome = 'lapo-baby') {
+  const state = createLife(null, at(MONDAY_9AM, 'new', { isNew: true, requireOnboarding: true }));
   act(state, 'onboarding.look', { look: LOOK }); act(state, 'onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }); act(state, 'onboarding.dream', { dream: 'yaba-unicorn' });
   for (let i = 0; i < 500 && state.onboarding.lottery?.id !== outcome; i++) { state.onboarding.lottery = null; act(state, 'onboarding.lottery', {}, at(MONDAY_9AM, `roll-${i}`)); }
-  const result = act(state, 'onboarding.home', home);
+  let result = act(state, 'onboarding.home', { house });
+  if (lga) result = act(state, 'estate.set-lga', { lga, ...(via ? { via } : {}) });
+  if (own) result = act(state, 'estate.move-in', {});
   return { state, result };
 }
 /** cash = what the life was seeded with + every ledger line: no naira from nowhere. */
@@ -49,36 +55,37 @@ test('a house style is a few small numbers: it packs into one integer and back, 
   assert.equal(stylePrice(cleanStyle({}), style), 8000 + 1000 + 1000 + 1500 + 2000 + 3500);
 });
 
-test('creation: the local government arrives as an id, an unknown one is refused, and a life can start in its own house without rent', () => {
-  const bad = onboard({ house: 'yaba', lga: 'atlantis' });
-  assert.equal(bad.result.code, 'invalid_lga'); assert.equal(bad.state.onboarding.done, false);
-  const rented = onboard({ house: 'yaba', lga: 'ikeja', lgaVia: 'device' }).state;
-  assert.deepEqual([rented.estate.lga, rented.estate.lgaConfirmed, rented.estate.lgaVia, rented.estate.living], ['ikeja', true, 'device', 'rent']);
-  assert.equal(rented.economy.rent.house, 'yaba');
-  // Left out: guessed from the home district, and marked as a guess to confirm.
-  const guessed = onboard({ house: 'mushin' }).state;
-  assert.deepEqual([guessed.estate.lga, guessed.estate.lgaConfirmed, guessed.estate.lgaVia], ['mushin', false, 'default']);
-  // Nothing but the id is kept: a client that sent coordinates along stored none of them.
-  const nosy = onboard({ house: 'yaba', lga: 'ikeja', lat: 6.6, lon: 3.35, position: { latitude: 6.6, longitude: 3.35 } }).state;
-  assert.ok(!/6\.6|3\.35|latitude|position/.test(JSON.stringify(nosy.estate)));
-  // The start in your own house: the cheapest start's cash, no tenancy, the starter room.
-  const { state: own, result } = onboard({ own: true, lga: 'alimosho' });
-  assert.equal(result.code, 'life_started');
+test('settling in: a new life has no place until it chooses a local government; the choice is an id and nothing else; its own house has no rent', () => {
+  // Creation is untouched by all this: it ends with a rented home and only a GUESS at the local government.
+  const fresh = createLife(null, at(MONDAY_9AM, 'new', { isNew: true, requireOnboarding: true }));
+  assert.equal(hasPlace(fresh), false, 'a life still being created belongs nowhere');
+  assert.equal(act(fresh, 'estate.set-lga', { lga: 'ikeja' }).code, 'onboarding_required');
+  const { state: guest } = onboard({ house: 'mushin' });
+  assert.deepEqual([guest.estate.lga, guest.estate.lgaConfirmed, guest.estate.lgaVia, hasPlace(guest), viewLife(guest, at()).estate.placed], ['mushin', false, 'default', false, false]);
+  assert.equal(act(guest, 'estate.set-lga', { lga: 'atlantis' }).code, 'invalid_lga');
+  // The choice: a server-validated id. Coordinates a client sends along are not kept anywhere.
+  const chosen = act(guest, 'estate.set-lga', { lga: 'ikeja', via: 'device', lat: 6.6, lon: 3.35, position: { latitude: 6.6, longitude: 3.35 } });
+  assert.equal(chosen.code, 'lga_set');
+  assert.deepEqual([guest.estate.lga, guest.estate.lgaConfirmed, guest.estate.lgaVia, hasPlace(guest)], ['ikeja', true, 'device', true]);
+  assert.ok(!/6\.6|3\.35|latitude|position/.test(JSON.stringify(guest)));
+  assert.equal(guest.economy.rent.house, 'mushin', 'still a tenant until they move into their own house');
+  // Moving into the house that came with the plot: free, the starter room, and no weekly rent from then on.
+  const { state: own, result } = onboard({ house: 'mushin', lga: 'alimosho', own: true });
+  assert.equal(result.code, 'moved_in');
   assert.deepEqual([own.estate.living, own.estate.tier, own.economy.rent.house, own.cash], ['own', 'starter', null, 76000]);
   assert.equal(viewLife(own, at()).economy.rent, null);
-  assert.equal(viewLife(own, at()).onboarding.ownStart.startCash, 76000);
   assert.equal(own.home.items.every((item) => item.x < HOUSE_TIERS.starter.grid && item.y < HOUSE_TIERS.starter.grid), true);
-  // Saturdays pass: no rent is taken from a life in its own starter house (the loan still is).
   const before = own.cash;
   settle(own, MONDAY_9AM + 6 * DAY);
   assert.equal(own.ledger.some((line) => /Rent/.test(line.reason)), false);
-  assert.equal(own.cash, before - 12000);
+  assert.equal(own.cash, before - 12000, 'the loan instalment is still collected; rent is not');
   conserved(own, 5000);
 });
 
 test('an old save gets a local government from its home district and keeps everything else', () => {
   const legacy = createLife({ name: 'Old', cash: 12345, property: { house: 'lekki', cars: [], car: null }, location: 'home' }, at(MONDAY_9AM, 'old'));
   assert.deepEqual([legacy.estate.lga, legacy.estate.lgaConfirmed, legacy.estate.living, legacy.estate.tier, legacy.cash, legacy.property.house], ['eti-osa', false, 'rent', 'starter', 12345, 'lekki']);
+  assert.equal(hasPlace(legacy), true, 'a life from before local governments has the one its home lies in, and a house there');
   assert.deepEqual(createLife(legacy, at(MONDAY_9AM, 'old')), legacy, 'sanitize is stable');
   // Confirming the guess is free and starts no cooldown problem; choosing another one right after is the one free change.
   assert.equal(act(legacy, 'estate.set-lga', { lga: 'eti-osa' }).code, 'lga_confirmed');
@@ -86,7 +93,7 @@ test('an old save gets a local government from its home district and keeps every
 });
 
 test('changing local government: once every seven days, and an upgraded house pays the difference to move to dearer land', () => {
-  const { state } = onboard({ own: true, lga: 'badagry' });
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'badagry' });
   assert.equal(act(state, 'estate.set-lga', { lga: 'nowhere' }).code, 'invalid_lga');
   const refused = act(state, 'estate.set-lga', { lga: 'ikeja' });
   assert.equal(refused.code, 'lga_cooldown'); assert.match(refused.reason, /once every 7 days.*7 days/);
@@ -106,7 +113,7 @@ test('changing local government: once every seven days, and an upgraded house pa
 });
 
 test('the server-only plot assignment: refused to a player, idempotent, and the plot left behind is remembered once', () => {
-  const { state } = onboard({ own: true, lga: 'ikeja' });
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' });
   assert.equal(act(state, 'estate.assign', { lga: 'ikeja', estate: 0, plot: 3 }).code, 'server_only');
   const server = at(MONDAY_9AM, 'server', { internal: true });
   assert.equal(act(state, 'estate.assign', { lga: 'mushin', estate: 0, plot: 3 }, server).code, 'invalid_plot', 'only in the life’s own local government');
@@ -123,7 +130,7 @@ test('the server-only plot assignment: refused to a player, idempotent, and the 
 });
 
 test('styling: free options cost nothing, priced ones are charged through the ledger, bad values are refused', () => {
-  const { state } = onboard({ own: true, lga: 'ikeja' });
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' });
   const cash = state.cash;
   assert.equal(act(state, 'estate.style', { style: { wall: 2, roof: 1, door: 3 } }).code, 'styled');
   assert.equal(state.cash, cash);
@@ -139,7 +146,7 @@ test('styling: free options cost nothing, priced ones are charged through the le
 });
 
 test('upgrading: paid once, built on server time even while away, then ground rent on Saturdays; the room grows without losing furniture', () => {
-  const { state } = onboard({ own: true, lga: 'badagry' }, 'ajebutter');
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'badagry' }, 'ajebutter');
   const seed = 5000, cost = tierCost('lagos', 'badagry', 'bq'), cash = state.cash;
   assert.equal(act(state, 'estate.upgrade', { to: 'starter' }).code, 'not_an_upgrade');
   assert.equal(act(state, 'estate.upgrade', { to: 'palace' }).code, 'invalid_tier');
@@ -165,7 +172,7 @@ test('upgrading: paid once, built on server time even while away, then ground re
 });
 
 test('renting stays a choice: moving to a rented home restarts the weekly rent, moving back into your own house stops it; furniture is kept', () => {
-  const { state } = onboard({ own: true, lga: 'ikeja' }, 'ajebutter');
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   assert.equal(act(state, 'estate.move-in', {}).code, 'already_home');
   assert.equal(act(state, 'property.house-move', { id: 'yaba' }).code, 'moved');
   assert.deepEqual([state.estate.living, state.economy.rent.house, state.property.house], ['rent', 'yaba', 'yaba']);
@@ -183,7 +190,7 @@ test('cities connect as data, and a trip to a city that is not open is refused w
   assert.equal(CITY_RULES.lagos.status, 'open');
   for (const id of ['ibadan', 'abuja', 'port-harcourt']) assert.equal(CITY_RULES[id].status, 'soon');
   for (const link of CITY_LINKS) { assert.ok(CITY_RULES[link.a] && CITY_RULES[link.b] && ['road', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
-  const { state } = onboard({ own: true, lga: 'ikeja' }, 'ajebutter');
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   const cash = state.cash;
   const refused = act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' });
   assert.equal(refused.code, 'city_not_open'); assert.match(refused.reason, /Ibadan is not open yet/);
@@ -195,7 +202,7 @@ test('cities connect as data, and a trip to a city that is not open is refused w
 });
 
 test('one character between cities: money, skills and people travel; the home left behind is kept and found again on return', () => {
-  const { state } = onboard({ own: true, lga: 'ikeja' }, 'ajebutter');
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   const open = { openCities: ['ibadan'] }, server = at(MONDAY_9AM, 'server', { internal: true });
   act(state, 'estate.assign', { lga: 'ikeja', estate: 4, plot: 20 }, server);
   act(state, 'estate.style', { style: { wall: 3 } });

@@ -15,7 +15,8 @@
  *
  * Routes (fields besides `serverTime`)
  *   GET /api/world/me?city=
- *        { city, character: { city }, lga, plot: { lga, estate, plot } | null, hidden, counts: { residents, houses, online } | null }
+ *        { city, character: { city }, placed, lga, plot: { lga, estate, plot } | null, hidden, counts: { residents, houses, online } | null }
+ *        `placed` is false (and lga, plot, counts null) for a life that has not chosen a local government yet.
  *        Also makes sure the caller has their plot (allocating it on a first visit), so it is the
  *        one call a client makes after creation or after changing local government.
  *   GET /api/world/city?city=&v=
@@ -33,6 +34,7 @@
  */
 import { ESTATE, lgaOf } from '../../src/game/content/world.js';
 import { worldOf } from '../world/service.js';
+import { hasPlace } from '../../src/game/systems/estate.js';
 import { PAGE, fold } from '../world/registry.js';
 
 export default function worldRoutes(ctx) {
@@ -47,7 +49,9 @@ export default function worldRoutes(ctx) {
   const caller = (request, cityId) => store.read((db) => {
     const session = request.requireSession(db);
     const state = session.cities?.[cityId]?.state;
-    return { id: session.publicId, lga: state?.estate?.lga ?? null, plot: state?.estate?.plot ?? null, character: { city: session.character?.city ?? cityId } };
+    // A life that has not settled in has no local government and no house (src/game/systems/estate.js hasPlace).
+    const placed = hasPlace(state);
+    return { id: session.publicId, placed, lga: placed ? state.estate.lga : null, plot: placed ? state.estate.plot ?? null : null, hasLife: Boolean(state?.estate), character: { city: session.character?.city ?? cityId } };
   });
   // One character: once a life has travelled to another city, asking for the city it left must not start a second life there.
   (ctx.checks ??= {}).cityGate = (session, cityId) => {
@@ -65,11 +69,11 @@ export default function worldRoutes(ctx) {
       let who = await caller(request, cityId);
       limit('me', who.id, 30);
       // A device that asks before its first poll has no life yet: it is created (or brought up to now) exactly as a poll would.
-      if (!who.lga) await store.transact((db) => { const session = request.requireSession(db, { renew: true }); ctx.checks.cityGate(session, cityId); ctx.settle(session, cityId); }, { durable: false });
+      if (!who.hasLife) await store.transact((db) => { const session = request.requireSession(db, { renew: true }); ctx.checks.cityGate(session, cityId); ctx.settle(session, cityId); }, { durable: false });
       await world.sync(who.id, cityId);
       who = await caller(request, cityId);
       const counts = who.lga && lgaOf(cityId, who.lga) ? await world.lga(cityId, who.lga) : null;
-      return { body: { city: cityId, character: who.character, lga: who.lga, plot: who.plot, hidden: world.isHidden(who.id), counts: counts ? { residents: counts.residents, houses: counts.houses, online: counts.online } : null } };
+      return { body: { city: cityId, character: who.character, placed: who.placed, lga: who.lga, plot: who.plot, hidden: world.isHidden(who.id), counts: counts ? { residents: counts.residents, houses: counts.houses, online: counts.online } : null } };
     },
     'GET /api/world/city': async (request) => {
       ready();

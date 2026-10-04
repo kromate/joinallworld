@@ -44,12 +44,14 @@ const CHIP_LIMIT = 9;
 let destination = null, mode = null, seenParams = null, filter = 'all', layer = 'city', lastCity = null, showAll = false;
 /** UI-only: is the list of places open (null = not chosen yet: open on a wide screen, a handle on a phone), is "About" open, and the last layout the map was told about. */
 let listOpen = null, aboutOpen = false, lastLayout = '';
-const layers = { moving: false, billboards: false, sea: false, neighbours: false, gov: false };
+const layers = { lgas: true, homes: true, moving: false, billboards: false, sea: false, gov: false };
 const LAYERS = [
+  // The world layer: on from the start. The maps load only what is in view (src/map3d/world-data.js).
+  { id: 'lgas', label: 'LGAs', icon: 'map' },
+  { id: 'homes', label: 'Homes', icon: 'houses' },
   { id: 'moving', label: 'Moving', icon: 'bus', note: 'Street traffic — decoration only, it changes nothing in the game.' },
   { id: 'billboards', label: 'Billboards', icon: 'megaphone', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'billboard' }, action: 'Rent a billboard' },
   { id: 'sea', label: 'Sea', icon: 'wave', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'sea' }, action: 'Rent a sea plot' },
-  { id: 'neighbours', label: 'Neighbours', icon: 'home', key: 'hood', path: 'neighbours', open: 'neighbours', action: 'Open Neighbours' },
   { id: 'gov', label: 'Gov', icon: 'governor', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
 ];
 const cacheKey = (item, view) => `${item.key}:${view.cityId}`;
@@ -76,14 +78,13 @@ function overview(state, view) {
   const stamp = on.map((item) => `${item.id}:${item.path ? entry(cacheKey(item, view)).at : ''}`).join('|');
   const layerRow = `<div class="map-filters map-layers" role="group" aria-label="Map layers" data-map-stamp="${esc(stamp)}">${LAYERS.map((item) => `<button data-map-layer-toggle="${esc(item.id)}" aria-pressed="${layers[item.id]}" class="${layers[item.id] ? 'is-selected' : ''}">${mark(item.icon)}<span>${esc(item.label)}</span></button>`).join('')}</div>`;
   const layerNotes = on.map((item) => {
-    if (!item.path) return `<div class="map-layer-note"><span>${esc(item.note)}</span></div>`;
+    if (!item.path) return item.note ? `<div class="map-layer-note"><span>${esc(item.note)}</span></div>` : '';
     const cached = entry(cacheKey(item, view));
     const status = cached.data ? '' : !view.connected ? `${linkWords(view).why} This layer cannot be loaded right now.` : cached.error ? `Could not load: ${cached.error}` : 'Loading…';
     if (!cached.data && !view.connected) return `<div class="map-layer-note"><span>${esc(status)}</span>${linkButton(view, 'map-chip-button')}</div>`;
     const summary = !cached.data ? status : item.id === 'billboards' ? `${cached.data.billboards.slots.filter((slot) => slot.ad).length} of ${cached.data.billboards.slots.length} billboards rented`
       : item.id === 'sea' ? `${cached.data.sea.plots.length} sea plot${cached.data.sea.plots.length === 1 ? '' : 's'} rented · shown in the water below the city`
-        : item.id === 'neighbours' ? `${cached.data.total} home${cached.data.total === 1 ? '' : 's'}, ${cached.data.online} online`
-          : cached.data.governor ? `Governor ${cached.data.governor.name}` : 'No Governor yet';
+        : cached.data.governor ? `Governor ${cached.data.governor.name}` : 'No Governor yet';
     return `<div class="map-layer-note"><span>${esc(summary)}</span><button class="map-chip-button" data-open="${esc(item.open)}" ${item.params ? `data-params="${json(item.params)}"` : ''}>${esc(item.action)}</button></div>`;
   }).join('');
   // The list is the alternative to the pins: every place, with where it is and whether it is open.
@@ -158,7 +159,7 @@ const mapPanel = {
     const view = api.view(), detail = { layers: { ...layers }, layer };
     for (const item of DATA_LAYERS.filter((option) => layers[option.id])) {
       load(api, cacheKey(item, view), `/api/civic/${item.path}?city=${view.cityId}`, { maxAge: 30000 });
-      detail[item.key === 'hood' ? 'neighbours' : item.key] = entry(cacheKey(item, view)).data;
+      detail[item.key] = entry(cacheKey(item, view)).data;
     }
     // Opened for a place (the Home tab, a goal chip, "Go to work", a pin): highlight it on the city map too.
     if (params?.destination && params.destination === destination) detail.selected = destination;

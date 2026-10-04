@@ -153,7 +153,7 @@ test('reports reach an operator; a mute silences text everywhere and leaves the 
   assert.equal(after.status, 200); assert.equal(after.state.cash, before.state.cash); assert.deepEqual(after.state.ledger, before.state.ledger);
   assert.equal((await f.action(bola.cookie, { type: 'spot', payload: { id: 'trees' } })).ok, true, 'a muted player can still play');
   assert.equal((await post('/api/social/messages', { to: bola.id, body: 'are you there?', clientId: clientId() }, ada)).code, 'sent', 'and still receives messages');
-  assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'other', text: 'I think this mute is a mistake' }, bola)).code, 'filed', 'and can still report a problem');
+  assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'other', text: 'I think this mute is a mistake', clientId: clientId() }, bola)).code, 'filed', 'and can still report a problem');
   let db = await database();
   assert.ok(db.sessions[bola.cookie.slice(4)], 'the session is still there'); assert.equal(db.archivedLives, undefined, 'nothing was archived or deleted');
   assert.deepEqual((await mod('/api/mod/mutes')).mutes.map((mute) => [mute.id, mute.reason, mute.report]), [[bola.id, 'Spam in messages', filed.receipt.id]]);
@@ -274,9 +274,12 @@ test('report a problem: a receipt with automatic context and a status the player
   await register(ada);
   assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'money', text: 'x' })).status, 401, 'signed out: no report');
   for (const [body, error] of [[{ cityId: 'atlantis', category: 'money', text: 'abc' }, 'invalid_city'], [{ cityId: 'lagos', category: 'gossip', text: 'abc' }, 'invalid_category'],
-    [{ cityId: 'lagos', category: 'money', text: 'ab' }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'a'.repeat(601) }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'abc', clientId: 'x' }, 'invalid_client_id']]) {
+    [{ cityId: 'lagos', category: 'money', text: 'ab' }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'a'.repeat(601) }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'abc', clientId: 'x' }, 'invalid_client_id'], [{ cityId: 'lagos', category: 'money', text: 'abc', clientId: 'support-1b4e28ba-2fa1-41d2-883f-0016d3cca427' }, 'invalid_client_id']]) {
     assert.deepEqual(await post('/api/support/reports', body, ada), { status: 400, error });
   }
+  // The id is mandatory: without one a retry could file the report twice, so nothing is filed.
+  const bare = await post('/api/support/reports', { cityId: 'lagos', category: 'money', text: 'abc' }, ada);
+  assert.deepEqual([bare.status, bare.error], [400, 'client_id_required']);
   // Some history: thirteen actions, the last of which is refused.
   await f.action(ada.cookie, { type: 'travel', payload: { id: 'library', mode: 'cab' } });
   f.advance(10000);
@@ -289,6 +292,8 @@ test('report a problem: a receipt with automatic context and a status the player
   assert.deepEqual([filed.status, filed.ok, filed.code, filed.receipt.id, filed.receipt.status, filed.receipt.category, filed.receipt.text], [200, true, 'filed', 'P-1', 'received', 'money', 'My balance dropped and I do not know why']);
   const retry = await post('/api/support/reports', { cityId: 'lagos', category: 'money', text: 'My balance dropped and I do not know why', clientId: cid }, ada);
   assert.deepEqual([retry.duplicate, retry.receipt.id], [true, 'P-1'], 'a retried filing is stored once');
+  const changed = await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'A different report under the same id', clientId: cid }, ada);
+  assert.deepEqual([changed.status, changed.error], [409, 'client_id_conflict'], 'the same id with other contents is refused');
   // What the operator sees: the automatic context.
   const [problem] = (await mod('/api/mod/problems')).problems;
   assert.deepEqual([problem.id, problem.by, problem.name, problem.context.build, problem.context.cityId], ['P-1', ada.id, 'Ada', 'test-build-7', 'lagos']);
@@ -308,13 +313,15 @@ test('report a problem: a receipt with automatic context and a status the player
   assert.equal((await mod('/api/mod/problems/P-1/status', { status: 'resolved', note: 'That was Saturday rent: see Phone → Statement.' })).code, 'updated');
   const mine = await get('/api/support/reports', ada);
   assert.deepEqual([mine.reports[0].status, mine.reports[0].note], ['resolved', 'That was Saturday rent: see Phone → Statement.']);
+  const later = await post('/api/support/reports', { cityId: 'lagos', category: 'money', text: 'My balance dropped and I do not know why', clientId: cid }, ada);
+  assert.deepEqual([later.duplicate, later.receipt.id, later.receipt.status], [true, 'P-1', 'resolved'], 'a late repeat shows the report as it stands now');
   assert.ok((await get('/api/social/me', ada)).updates.some((update) => update.text.startsWith('Problem report P-1 is now “resolved”.')));
   const other = await f.device('Bola');
   assert.deepEqual((await get('/api/support/reports', other)).reports, [], 'a player only ever sees their own receipts');
   // Three filings an hour per player; the limit says so instead of failing silently.
-  assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'second' }, ada)).code, 'filed');
-  assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'third' }, ada)).code, 'filed');
-  const limited = await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'fourth' }, ada);
+  assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'second', clientId: clientId() }, ada)).code, 'filed');
+  assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'third', clientId: clientId() }, ada)).code, 'filed');
+  const limited = await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'fourth', clientId: clientId() }, ada);
   assert.deepEqual([limited.ok, limited.code], [false, 'rate_limited']); assert.match(limited.reason, /the ones you filed are kept/);
   assert.deepEqual((await mod('/api/mod/overview')).problems, { total: 3, open: 2 });
 });

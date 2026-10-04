@@ -2,7 +2,8 @@
  * OWNER: support
  * "Report a problem" under /api/support/ — rules and stored shape in server/support/service.js.
  *
- *   POST /api/support/reports   { cityId, category, text, clientId? } → { ok, code: 'filed', receipt, duplicate? }
+ *   POST /api/support/reports   { cityId, category, text, clientId } → { ok, code: 'filed', receipt, duplicate? }
+ *                               clientId is mandatory, `<unix ms>:<uuid>` (400 client_id_required / invalid_client_id)
  *                                                                    | { ok: false, code, reason }
  *   GET  /api/support/reports                                         → { ok, reports: [receipt], categories, limits }
  *   receipt = { id: 'P-<n>', at, cityId, category, text, status, note, updatedAt }

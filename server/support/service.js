@@ -4,10 +4,12 @@
  * status they can read later. No external account is involved at any point.
  *
  * STORED COLLECTION  ctx.collection(db, 'support')
- *   reports  [{ id: 'P-<n>', by, name, cityId, category, text, at, status, note, updatedAt, cid?, context }]
+ *   reports  [{ id: 'P-<n>', by, name, cityId, category, text, at, status, note, updatedAt, context }]
  *            newest last, at most LIMITS.reports. When full, the oldest CLOSED report makes room; if
  *            every one is still open the filing is refused with a reason rather than dropping one.
  *   seq      number
+ * A filing is applied exactly once per `clientId` (ctx.once, server/routes/once.js): the id is
+ * mandatory, has the timed form `<unix ms>:<uuid>`, and its receipt lives in the player's session.
  * `by` is the public id. The cookie secret is never read into a report: the context below is built
  * field by field from the server-held life and the action receipts, not by copying the session.
  *
@@ -26,7 +28,6 @@ export const CATEGORIES = Object.freeze(['money', 'stuck', 'messages', 'people',
 export const STATUSES = Object.freeze(['received', 'reviewing', 'resolved', 'dismissed']);
 const OPEN = ['received', 'reviewing'];
 const CONTROL = /[\u0000-\u0008\u000b-\u001f\u007f]/;
-const CLIENT_ID = /^[A-Za-z0-9:_-]{8,80}$/;
 const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const no = (code, reason) => ({ ok: false, code, reason });
 
@@ -56,33 +57,36 @@ export function supportService(ctx) {
   }
   return {
     LIMITS,
-    /** body: { cityId, category, text, clientId? }. Idempotent on clientId. */
+    /** body: { cityId, category, text, clientId }. Exactly once per clientId (ctx.once); the id is mandatory. */
     file(db, session, body, address) {
       if (!ctx.cityIds.includes(body.cityId)) throw ctx.fail(400, 'invalid_city');
       if (!CATEGORIES.includes(body.category)) throw ctx.fail(400, 'invalid_category');
       const text = typeof body.text === 'string' ? body.text.trim() : '';
       if (text.length < 3 || text.length > LIMITS.text || CONTROL.test(text)) throw ctx.fail(400, 'invalid_report_text');
-      const cid = body.clientId === undefined ? null : body.clientId;
-      if (cid !== null && (typeof cid !== 'string' || !CLIENT_ID.test(cid))) throw ctx.fail(400, 'invalid_client_id');
+      ctx.onceId(body.clientId);
       const s = col(db), id = session.publicId;
-      const earlier = cid ? s.reports.find((report) => report.by === id && report.cid === cid) : null;
-      if (earlier) return { ok: true, code: 'filed', duplicate: true, receipt: receipt(earlier) };
-      if (s.reports.filter((report) => report.by === id && OPEN.includes(report.status)).length >= LIMITS.openPerPlayer) {
-        return no('too_many_open', `You already have ${LIMITS.openPerPlayer} problem reports waiting. They are listed below with their status; add to one of those when it is answered.`);
-      }
-      if (!ctx.allow(`support:file:${id}`, LIMITS.perHour, 3600000) || !ctx.allow(`support:address:${address}`, LIMITS.perAddressPerHour, 3600000)) {
-        return no('rate_limited', 'You have filed several problem reports this hour. Try again later; the ones you filed are kept.');
-      }
-      if (s.reports.length >= LIMITS.reports) {
-        const closed = s.reports.findIndex((report) => !OPEN.includes(report.status));
-        if (closed < 0) return no('inbox_full', 'The problem inbox is full right now. Nothing was filed; please try again later.');
-        s.reports.splice(closed, 1);
-      }
-      const state = ctx.settle(session, body.cityId);
-      const report = { id: `P-${++s.seq}`, by: id, name: session.name, cityId: body.cityId, category: body.category, text, at: ctx.now(), status: 'received', note: '', updatedAt: ctx.now(),
-        ...(cid ? { cid } : {}), context: contextOf(session, body.cityId, state) };
-      s.reports.push(report);
-      return { ok: true, code: 'filed', receipt: receipt(report) };
+      const outcome = ctx.once(db, session, { id: body.clientId, kind: 'support.report', fingerprint: [body.cityId, body.category, text] }, () => {
+        if (s.reports.filter((report) => report.by === id && OPEN.includes(report.status)).length >= LIMITS.openPerPlayer) {
+          return no('too_many_open', `You already have ${LIMITS.openPerPlayer} problem reports waiting. They are listed below with their status; add to one of those when it is answered.`);
+        }
+        if (!ctx.allow(`support:file:${id}`, LIMITS.perHour, 3600000) || !ctx.allow(`support:address:${address}`, LIMITS.perAddressPerHour, 3600000)) {
+          return no('rate_limited', 'You have filed several problem reports this hour. Try again later; the ones you filed are kept.');
+        }
+        if (s.reports.length >= LIMITS.reports) {
+          const closed = s.reports.findIndex((report) => !OPEN.includes(report.status));
+          if (closed < 0) return no('inbox_full', 'The problem inbox is full right now. Nothing was filed; please try again later.');
+          s.reports.splice(closed, 1);
+        }
+        const state = ctx.settle(session, body.cityId);
+        const report = { id: `P-${++s.seq}`, by: id, name: session.name, cityId: body.cityId, category: body.category, text, at: ctx.now(), status: 'received', note: '', updatedAt: ctx.now(),
+          context: contextOf(session, body.cityId, state) };
+        s.reports.push(report);
+        return { ok: true, code: 'filed', id: report.id };
+      });
+      if (outcome.ok === false) return outcome;
+      // The receipt is read from the report as it stands now, so a repeat shows the current status.
+      const report = s.reports.find((item) => item.id === outcome.id && item.by === id);
+      return { ok: true, code: 'filed', ...(outcome.duplicate ? { duplicate: true } : {}), receipt: report ? receipt(report) : { id: outcome.id } };
     },
     /** The caller's own receipts, newest first. */
     mine(db, session) {

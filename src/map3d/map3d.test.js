@@ -10,6 +10,7 @@ import { LANDMARK_KINDS } from './landmarks.js';
 import { avatarBox, labelShift, nearPoints } from './labels.js';
 import { shimmer } from './city-build.js';
 import pack from './cities/lagos.js';
+import { lgaAt } from './lga.js';
 import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.js';
 import { ALL_MODES } from '../game/content/travel.js';
 import { createLife, viewLife } from '../life.js';
@@ -51,6 +52,8 @@ test('the Lagos pack places every venue (the airport and the refinery among them
   assert.deepEqual(Object.keys(pack.soon).sort(), Object.keys(COMING_SOON).sort());
   assert.deepEqual(Object.keys(pack.estates).sort(), Object.keys(HOME_SPOTS).sort(), 'an estate for the Neighbours layer in every home district');
   for (const kind of SCENE_KINDS) assert.ok(LANDMARK_KINDS.includes(kind), `landmark for scene kind ${kind}`);
+  // The UNILAG campus stands at Akoka: inside the Lagos Mainland local government.
+  assert.equal(lgaAt(pack, pack.sites.unilag.x, pack.sites.unilag.z), 'lagos-mainland');
   // The geography the server prices trips by is respected: mainland venues stand north of the lagoon, the rest south of it.
   for (const [id, venue] of Object.entries(VENUES)) {
     if (id === 'home') continue;

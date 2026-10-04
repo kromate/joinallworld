@@ -515,6 +515,15 @@ tables (`housing.js`, `economy.js`, `traits.js`); two mood scales describe one s
 different `CAR_MODE` and two different `HOME_SPOTS` exports; the Worker and the Node server
 disagree on the health body, the voice-config error codes and what a session contains.
 
+## Intentional tightenings
+
+The conversion was meant to change types only. These are the places where the typed code is
+deliberately stricter than the JavaScript, each with a test:
+
+| Where | Before | Now |
+|---|---|---|
+| `src/campus/unilag/games.ts` `isPublicId` / `isStudentId` | `PUBLIC_ID.test(x ?? '')` coerced any value to a string, so the number `12` passed as `"12"` | the id must be a string; a number from a client is refused with the same error code (`invalid_candidate` for a vote). Tested in `games.test.ts` |
+
 ## What the deploy owner must change
 
 Nothing now. `deploy/**` and `wrangler.jsonc` are untouched and `npm run test:edge` passes.

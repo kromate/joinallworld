@@ -7,7 +7,7 @@ import { createStore } from './store.js';
 
 async function temp(t, options) {
   const dir = await mkdtemp(join(tmpdir(), 'joinallworld-store-'));
-  const store = await createStore(dir, options);
+  const store = await createStore(dir, { mode: 'grouped', ...options }); // never taken from STORE_MODE: these tests name their mode
   t.after(async () => { await store.close().catch(() => {}); await rm(dir, { recursive: true, force: true }); });
   return { dir, store, file: async () => JSON.parse(await readFile(join(dir, 'devices.json'), 'utf8')) };
 }
@@ -51,7 +51,7 @@ test('grouped: the file is exactly the JSON of the document, whatever was touche
   assert.deepEqual(await file(), expected);
   // A new store reading that file sees the same document.
   await store.close();
-  const again = await createStore(dir);
+  const again = await createStore(dir, { mode: 'grouped' });
   assert.deepEqual(await again.read((db) => JSON.parse(JSON.stringify(db))), expected);
   await again.close();
 });
@@ -115,7 +115,7 @@ test('grouped: close writes what is pending, and an unreadable file is refused a
   await store.close();
   assert.equal((await file()).sessions.a.publicId, 'pa');
   await writeFile(join(dir, 'devices.json'), '{"version":2,"sessions":{}}');
-  await assert.rejects(createStore(dir), /Invalid device database/);
+  await assert.rejects(createStore(dir, { mode: 'grouped' }), /Invalid device database/);
 });
 
 test('grouped: the write budget paces whole-file rewrites without delaying a lone write', async (t) => {

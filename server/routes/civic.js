@@ -211,11 +211,12 @@ export default function civicRoutes(ctx) {
         limit('gov-vote', who.id, 12);
         const block = voteBlock(city, ctx.now(), who.id, body.candidate);
         if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life) });
-        const allowed = act(life, cityId, 'civic.vote');
-        if (!allowed.ok) return refused(allowed, { state: life, gov: govBody(city, cityId, who, life) });
-        // Soft cap per network address (see the header). Checked last, so it only ever applies to a vote that would count.
+        // Soft cap per network address (see the header). It applies only to a vote that would otherwise
+        // count — an ineligible voter is told what they are missing instead — and it is checked BEFORE the
+        // rules engine records the vote in the life, so a capped vote leaves no trace of having been cast.
         const cap = ctx.config.votesPerAddress, key = addressKey(civic, request.ip);
-        if (cap > 0 && addressVotes(city, ctx.now(), key) >= cap) {
+        const eligible = civicEligibility(life, engine(cityId, 'vote')).vote.every((item) => item.met);
+        if (eligible && cap > 0 && addressVotes(city, ctx.now(), key) >= cap) {
           const shared = isSharedAddress(request.ip);
           if (firstCapNotice(city, ctx.now(), key)) {
             moderation.audit(db, shared ? 'vote-cap-shared' : 'vote-cap', `${cityId}:week ${govView(city, ctx.now()).election.week}`,
@@ -227,6 +228,8 @@ export default function civicRoutes(ctx) {
               { state: life, gov: govBody(city, cityId, who, life) });
           }
         }
+        const allowed = act(life, cityId, 'civic.vote');
+        if (!allowed.ok) return refused(allowed, { state: life, gov: govBody(city, cityId, who, life) });
         vote(city, ctx.now(), who.id, body.candidate, key);
         return { body: { ok: true, code: 'voted', state: life, gov: govBody(city, cityId, who, life) }, renew: true };
       });

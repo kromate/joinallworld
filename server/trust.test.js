@@ -332,7 +332,7 @@ test('statement: the server explains the balance — opening, every change, clos
 });
 
 test('polls do not write unless something happened; an outcome is on disk before the poll is answered', async (t) => {
-  const { f, get } = await harness(t, { lazyFlushMs: 60000 });
+  const { f, get } = await harness(t, { lazyFlushMs: 60000, storeMode: 'grouped' });
   const ada = await f.device('Ada');
   const file = join(f.dir, 'devices.json');
   const signature = async () => { const info = await stat(file, { bigint: true }); return `${info.ino}:${info.mtimeNs}`; };
@@ -479,6 +479,7 @@ test('votes per address: a soft cap that refuses with a reason from a public add
   const third = await vote(chidi, '41.58.0.9');
   assert.deepEqual([third.status, third.ok, third.code, third.gov.election.totalVotes], [200, false, 'address_vote_limit', 2]);
   assert.match(third.reason, /^2 votes have already been counted from your network connection in this election/); assert.match(third.reason, /Your vote was not counted/);
+  assert.notEqual(third.state.message, 'Your vote was counted.', 'a capped vote leaves no trace of having been cast in the life');
   assert.equal((await vote(chidi, '41.58.0.9')).code, 'address_vote_limit');
   assert.equal((await vote(chidi, '197.210.1.1')).code, 'voted', 'the same player can vote from another connection');
   // A private-range address means the server is seeing a shared address: counted, and logged instead.

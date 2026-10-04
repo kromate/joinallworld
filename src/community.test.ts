@@ -439,3 +439,70 @@ test('state is published to subscribers and onChange, and a rejected line carrie
   assert.equal(latest.chat[0]?.body, '<b>not html</b>', 'user text is data, never markup')
   stop()
 })
+
+test('destroy releases everything the controller took: window listeners, timers, socket, tracks, peers and audio elements', async (t) => {
+  let localStops = 0, remoteStops = 0, diagnosticsCleared = 0
+  const localTrack = { enabled: true, stop() { localStops++ } }
+  const remoteTrack = { enabled: true, readyState: 'live', stop() { remoteStops++ } }
+  const remote = { getTracks: () => [remoteTrack], getAudioTracks: () => [remoteTrack] }
+  const { start, audios } = browserFor(t, { mediaDevices: { getUserMedia: async () => ({ getTracks: () => [localTrack], getAudioTracks: () => [localTrack] }) } })
+  const added: [string, unknown][] = [], removed: [string, unknown][] = []
+  g.addEventListener = (type: string, handler: unknown) => { added.push([type, handler]) }
+  g.removeEventListener = (type: string, handler: unknown) => { removed.push([type, handler]) }
+  g.setInterval = () => 77
+  g.clearInterval = (id: number) => { if (id === 77) diagnosticsCleared++ }
+  g.RTCPeerConnection = PC
+  const published: unknown[] = []
+  const api = await start({ diagnostics: true })
+  api.subscribe((state) => published.push(state))
+  assert.ok(added.some(([type]) => type === 'pagehide'), 'the controller listens for the page going away')
+  const ws = lastSocket()
+  ws.open()
+  ws.receive({ type: 'presence', members: [{ id: 'a', name: 'Alex', enabled: false }, { id: 'b', name: 'Bea', enabled: true }] })
+  await api.joinVoice()
+  assert.equal(api.state.voice.muted, true, 'the microphone starts muted')
+  assert.equal(localTrack.enabled, false)
+  ws.receive({ type: 'presence', members: [{ id: 'a', name: 'Alex', enabled: true }, { id: 'b', name: 'Bea', enabled: true }] })
+  await tick()
+  const pc = PC.all[0]
+  assert.ok(pc, 'a peer connection was made for the person in range')
+  ;(pc.ontrack as (event: Loose) => void)({ streams: [remote], track: remoteTrack })
+  const audio = audios[0]
+  assert.ok(audio?.srcObject, 'received audio is attached')
+  published.length = 0
+
+  api.destroy()
+  assert.equal(localStops, 1, 'the microphone track is stopped')
+  assert.equal(remoteStops, 1, 'received tracks are stopped')
+  assert.equal(pc.closed, true, 'the peer connection is closed')
+  assert.equal(pc.ontrack, null); assert.equal(pc.onicecandidate, null); assert.equal(pc.onconnectionstatechange, null)
+  assert.equal(audio?.srcObject, null, 'the audio element is released')
+  assert.equal(diagnosticsCleared, 1, 'the diagnostics timer is cleared')
+  assert.equal(ws.readyState, 3, 'the socket is closed')
+  assert.equal(ws.onmessage, null); assert.equal(ws.onclose, null)
+  for (const entry of added) assert.ok(removed.some(([type, handler]) => type === entry[0] && handler === entry[1]), `the ${entry[0]} listener is removed`)
+  assert.deepEqual(lastSent(ws), { type: 'voice-state', enabled: false, muted: false }, 'the room is told voice is off')
+  const after = published.length
+  ws.receive({ type: 'presence', members: [] })
+  assert.equal(published.length, after, 'nothing is published after destroy')
+  assert.equal(api.destroy(), undefined, 'a second destroy does nothing')
+})
+
+test('destroy cancels a pending reconnect: no socket is opened afterwards', async (t) => {
+  const { start } = browserFor(t, {})
+  const realSet = globalThis.setTimeout, realClear = globalThis.clearTimeout
+  const timers = new Map<number, () => void>()
+  let nextTimer = 1000
+  g.setTimeout = (callback: () => void, delay?: number) => { if (!delay) return realSet(callback, delay); timers.set(++nextTimer, callback); return nextTimer }
+  g.clearTimeout = (id: number) => { if (timers.has(id)) timers.delete(id); else realClear(id) }
+  t.after(() => { g.setTimeout = realSet; g.clearTimeout = realClear })
+  const api = await start()
+  const ws = lastSocket()
+  ws.open()
+  ws.close() // the connection drops: a reconnect is scheduled
+  assert.equal(timers.size, 1, 'a reconnect is waiting')
+  const sockets = WS.instances.length
+  api.destroy()
+  assert.equal(timers.size, 0, 'destroy clears the reconnect timer')
+  assert.equal(WS.instances.length, sockets)
+})

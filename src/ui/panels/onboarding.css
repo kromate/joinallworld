@@ -77,3 +77,7 @@
   .ob-steps li.is-current{flex:none}.ob-steps li.is-current::after{min-width:10px;width:10px;flex:none}
 }
 @media(max-width:420px){.ob-grid{grid-template-columns:1fr 1fr}.ob-card{padding:10px}.ob-card ul{padding-left:14px}}
+
+.ob-card-icon svg.ui-glyph{width:28px;height:28px;color:var(--c-green-dark)}
+.ob-lottery.is-waiting svg.ui-glyph{width:64px;height:64px;color:var(--c-amber-dark)}
+.ob-note{flex-wrap:wrap}.ob-note>span:nth-child(2){flex:1 1 180px}.ob-note-action{flex:none;align-self:center}

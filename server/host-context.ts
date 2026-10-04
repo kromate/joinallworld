@@ -107,7 +107,7 @@ export function routeHeaders(headers: unknown): Record<string, string | string[]
  * The headers of every HTML page a module serves (ctx.pages). A page cannot change them: no script may run, nothing may
  * frame it, it sets no cookie and it sends no referrer.
  */
-export const PAGE_HEADERS = Object.freeze({ 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY',
+export const PAGE_HEADERS = Object.freeze({ 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY', 'X-Robots-Tag': 'noindex, nofollow',
   'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'" });
 /** The registered page whose prefix a path starts with: [prefix, render] or undefined. */
 export const pageFor = (pages: Map<string, PageHandler>, pathname: string): [string, PageHandler] | undefined => [...pages].find(([prefix]) => pathname.startsWith(prefix));
@@ -115,8 +115,16 @@ export const pageFor = (pages: Map<string, PageHandler>, pathname: string): [str
 export const cleanOrigin = (value: unknown): string => (typeof value === 'string' && /^https?:\/\/[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(value) ? value : '');
 /** A request's own Host, accepted only if it is made of host characters (nothing a client sends in that header can put markup into a page). */
 export const cleanHost = (value: unknown): string => (/^[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(String(value || '')) ? String(value) : '');
-/** index.html with its default preview image made absolute: only the two preview-image attributes, and only the site-relative /og/ path the build ships. */
-export const absolutePreviewImage = (html: string, origin: string): string => (origin ? html.replace(/(<meta (?:property="og:image"|name="twitter:image") content=")(\/og\/[A-Za-z0-9._-]+")/g, `$1${origin}$2`) : html);
+/** The host the static index.html is written for: its canonical, og:url, og:image and JSON-LD carry it, and a host answering for another origin swaps it. */
+export const SITE_ORIGIN = 'https://joinallworld.com';
+/**
+ * index.html written for the origin it is served from (a link preview needs absolute URLs, and a canonical must name the
+ * page's own host): the two preview-image attributes given as a site-relative /og/ path become absolute, and every
+ * SITE_ORIGIN in the page (canonical, og:url, og:image, JSON-LD) becomes `origin`. `origin` is already validated (cleanOrigin / cleanHost).
+ */
+export const absolutePreviewImage = (html: string, origin: string): string => (origin
+  ? html.replace(/(<meta (?:property="og:image"|name="twitter:image") content=")(\/og\/[A-Za-z0-9._-]+")/g, `$1${origin}$2`).replaceAll(SITE_ORIGIN, origin)
+  : html);
 /** The operator token must be something a Bearer header can carry: 24–512 printable ASCII characters without spaces. */
 export const validOperatorToken = (token: unknown): boolean => typeof token === 'string' && /^[\x21-\x7e]{24,512}$/.test(token);
 /** The token of an `Authorization: Bearer …` header, or null. */

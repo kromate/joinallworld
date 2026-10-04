@@ -83,7 +83,7 @@ const isFrame = (value: unknown): value is { type: string; [field: string]: unkn
 /** The raw Node request a route's `raw` holds. */
 const isNodeRequest = (value: unknown): value is IncomingMessage => isObject(value) && 'socket' in value && 'headers' in value;
 
-const mime: Record<string, string> = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json' };
+const mime: Record<string, string> = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8' };
 const cookieId = (req: IncomingMessage): string | undefined => (req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith('sid='))?.slice(4);
 const sameOrigin = (req: IncomingMessage): boolean => isSameOrigin(req.headers.origin, req.headers.host);
 /**

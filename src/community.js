@@ -69,6 +69,8 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   function nearby(member) { return room.venueId !== 'home' && !rejectedPeers.has(member?.id) && member?.enabled && member.id !== session?.id && distanceTo(member) < VOICE_RADIUS; }
   function moveTo(x, z) {
     if (!roomReady || room.venueId === 'home' || !Number.isFinite(x) || !Number.isFinite(z)) return false;
+    // The UNILAG campus is walked in campus coordinates: the server checks them against its walkable ground (server/protocol.js).
+    if (room.venueId === 'unilag') return send({ type: 'move', x, z });
     const mx = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), mz = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z));
     // Exactly the origin means "not reported yet" (see reported()): a player standing there reports a hair beside it.
     return send({ type: 'move', x: mx === 0 && mz === 0 ? 0.01 : mx, z: mz });
@@ -83,7 +85,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     if (self) moveTo(self.x + dx, self.z + dz);
   }
   /** The origin is where the server puts everyone on joining: it means "has not reported a position yet". */
-  const reported = (member) => { const position = validPosition(member); return position && (position.x !== 0 || position.z !== 0) ? { x: position.x, z: position.z } : null; };
+  const reported = (member) => { const position = validPosition(member); return position && (room.venueId === 'unilag' || position.x !== 0 || position.z !== 0) ? { x: position.x, z: position.z } : null; };
   /** Tell the game who is here and where each one stands (see the header). Never throws into the room code. */
   function announce() {
     try { onMembers({ self: session?.id ?? null, members: members.map((member) => ({ id: member.id, name: member.name, position: reported(member) })) }); } catch { /* the game's own problem */ }
@@ -286,6 +288,8 @@ function closePlaybackContext() {
   }
   function receive(event) {
     let message; try { message = JSON.parse(event.data); } catch { return; }
+    // The Worker host cannot ping a hibernating socket: it asks, and the answer proves this connection is alive.
+    if (message?.type === 'heartbeat') { if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'heartbeat-ack' })); return; }
     if (message.type === 'presence') {
       const wasRevoked = roomRevoked; members = message.members || [];
       if (roomRevoked && !members.some((member) => member.id === session?.id)) return;

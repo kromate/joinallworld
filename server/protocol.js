@@ -2,6 +2,8 @@
 // No Node-only imports here (no node:*, ws or fs): the worker bundles this file as-is.
 import { hasAction, isDeparting, occupiesVenue } from '../src/life.js';
 import { screenText } from './moderation/text.js';
+import { createCampusWalk } from '../src/campus/unilag/walk.js';
+import { ENTRANCE } from '../src/campus/unilag/layout.js';
 
 export const MAX_PAYLOAD_BYTES = 2048;
 export const CITY_IDS = Object.freeze(['lagos', 'ibadan']);
@@ -10,6 +12,11 @@ export const ACTION_WINDOW_MS = 86400000;
 export const MAX_VOICE_MEMBERS = 8;
 export const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 export const protocolError = (status, code) => Object.assign(new Error(code), { status, code });
+/** What a caller gets when a store could not save: the same on every host and for every store. Carries the HTTP shape the route host answers with. */
+export function storageError(cause) {
+  return Object.assign(new Error('storage_unavailable'), { status: 503, code: 'storage_unavailable',
+    reason: 'The server could not save this, so nothing was changed. Try again in a moment.', cause });
+}
 /** A fast 53-bit text hash (not cryptographic): compact receipt fingerprints and pseudonymous address keys. */
 export function hash53(text) {
   let a = 0xdeadbeef ^ text.length, b = 0x41c6ce57 ^ text.length;
@@ -112,7 +119,21 @@ export const VOICE_RADIUS = 12;
 export const POSITION_BOUNDS = Object.freeze({ min: -20, max: 20 });
 export const STUN_ONLY_CONFIG = Object.freeze({ iceServers: Object.freeze([{ urls: 'stun:stun.l.google.com:19302' }]), turnConfigured: false, mode: 'stun-only' });
 
-export function validatePosition(value) {
+/**
+ * The UNILAG campus is a venue the size of a district: its positions are campus coordinates, valid only on its
+ * walkable ground (src/campus/unilag/walk.js). Every other venue keeps the ±20 bounds.
+ */
+let campusWalk;
+/** Where a socket that has just joined a venue room stands: the campus gate, or the origin ("not reported yet") anywhere else. */
+export function initialVenuePosition(venueId) { return venueId === 'unilag' ? { x: ENTRANCE.x, z: ENTRANCE.z } : { x: 0, z: 0 }; }
+export function validatePosition(value, venueId) {
+  if (venueId === 'unilag') {
+    if (!value || !Number.isFinite(value.x) || !Number.isFinite(value.z)) throw protocolError(400, 'invalid_position');
+    campusWalk ??= createCampusWalk();
+    const zone = campusWalk.zoneAt(value.x, value.z);
+    if (!zone || !campusWalk.grids.get(zone.id).free(value.x, value.z)) throw protocolError(400, 'invalid_position');
+    return { x: value.x, z: value.z };
+  }
   if (!value || !Number.isFinite(value.x) || !Number.isFinite(value.z)
     || value.x < POSITION_BOUNDS.min || value.x > POSITION_BOUNDS.max
     || value.z < POSITION_BOUNDS.min || value.z > POSITION_BOUNDS.max) throw protocolError(400, 'invalid_position');

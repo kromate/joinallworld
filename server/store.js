@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { join } from 'node:path';
+import { storageError } from './protocol.js';
 
 /**
  * JSON file store (Node only). The storage interface the rest of the server relies on is just:
@@ -82,11 +83,8 @@ const isRecord = (value) => value !== null && typeof value === 'object' && !Arra
 /** The longest a write is held back by the write budget, whatever the file size (an action must still be answered). */
 const MAX_WRITE_PAUSE_MS = 2000;
 
-/** What a caller gets when the file could not be written. Carries the HTTP shape the route host answers with. */
-export function storageError(cause) {
-  return Object.assign(new Error('storage_unavailable'), { status: 503, code: 'storage_unavailable',
-    reason: 'The server could not save this, so nothing was changed. Try again in a moment.', cause });
-}
+// What a caller gets when the file could not be written: defined in protocol.js so the Worker's stores answer with the same error.
+export { storageError };
 /** Objects this module has frozen all the way down (so a second visit, or a cycle, stops). */
 const frozen = new WeakSet();
 function deepFreeze(value) {

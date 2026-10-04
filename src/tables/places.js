@@ -22,6 +22,10 @@ export const TABLES = Object.freeze([
   { id: 'viewing-goal', venue: 'viewing-centre', game: 'penalty', label: 'Five-a-side goal', seats: 2 },
   { id: 'beach-goal', venue: 'beach', game: 'penalty', label: 'Goalposts in the sand', seats: 2 },
   { id: 'park-goal', venue: 'park', game: 'penalty', label: 'Kickabout corner', seats: 2 },
+  // The Student Union at the UNILAG campus (src/campus/unilag): the campus has its own scene host, so these two are
+  // opened from the Tables app and the "table here" chip rather than walked up to.
+  { id: 'union-whot-1', venue: 'unilag', game: 'whot', label: 'Student Union table 1', seats: 4 },
+  { id: 'union-whot-2', venue: 'unilag', game: 'whot', label: 'Student Union table 2', seats: 4 },
 ]);
 
 export const tableById = (id) => TABLES.find((table) => table.id === id) ?? null;

@@ -224,7 +224,8 @@ test('lighting presets exist for every mood and time; the scene reports its pres
 test('every spot of every venue stands at a landmark of its scene, and every regular has a place', () => {
   const kit = createKit();
   for (const venue of Object.values(VENUES)) {
-    if (venue.scene.kind === 'home') continue;
+    // The UNILAG campus is drawn by its own host (src/campus/unilag/host.js behind world-adapter.js) and has its own scene, walk and budget tests there.
+    if (venue.scene.kind === 'home' || venue.scene.kind === 'unilag') continue;
     const seen = sceneVenue(venue.id);
     assert.deepEqual(seen.scene.spots.map((spot) => spot.id), spotsOf(venue.id).map((spot) => spot.id), `${venue.id}: spots added by other systems are passed to the scene`);
     const entry = buildVenueScene(kit, seen);
@@ -411,7 +412,8 @@ test('every game table stands in its venue’s scene: on free floor, reachable f
   const { TABLES, tablesAt } = await import('../tables/places.js');
   const { TABLE_CLEAR, TABLE_REACH, TABLE_PLACES } = await import('./venue-scenes.js');
   const kit = createKit();
-  const venues = [...new Set(TABLES.map((table) => table.venue))];
+  // The campus tables (venue 'unilag') are not furniture of a venue scene: the campus has its own host, and they open from the Tables app.
+  const venues = [...new Set(TABLES.map((table) => table.venue))].filter((id) => id !== 'unilag');
   assert.deepEqual(venues.sort(), ['amala-shitta', 'beach', 'park', 'rooftop', 'viewing-centre']);
   const seen = [];
   for (const id of venues) {
@@ -450,7 +452,7 @@ test('every game table stands in its venue’s scene: on free floor, reachable f
     assert.deepEqual(entry.walk.things().map((thing) => [thing.x, thing.z]), before);
     entry.dispose();
   }
-  assert.equal(seen.length, TABLES.length, 'all eight tables stand somewhere');
+  assert.equal(seen.length, TABLES.filter((table) => table.venue !== 'unilag').length, 'all eight venue tables stand somewhere');
   // A venue without a table has nothing extra.
   const library = buildVenueScene(kit, sceneVenue('library') ?? VENUES.library);
   assert.deepEqual(library.walk.things(), []);

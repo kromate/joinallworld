@@ -173,6 +173,7 @@ export function worldOf(ctx) {
     const work = syncNow(publicId, cityId).catch((error) => { sigs.delete(key); if (error?.code !== 'storage_unavailable') log(`World sync failed: ${String(error?.message ?? error).split('\n')[0]}`); return null; })
       .finally(() => { running.delete(key); if (dirty.delete(key)) void sync(publicId, cityId); });
     running.set(key, work);
+    ctx.waitUntil?.(work); // a host that could stop between requests (the Worker) stays up until the registry has caught up
     return work;
   }
 

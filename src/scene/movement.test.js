@@ -314,7 +314,8 @@ test('the home room’s walkable description comes from state.home.items: furnit
 test('every venue of the game can be entered and crossed', () => {
   const kit = createKit();
   for (const venue of Object.values(VENUES)) {
-    if (venue.scene.kind === 'home') continue;
+    // The UNILAG campus is drawn by its own host (src/campus/unilag/host.js behind world-adapter.js) and has its own scene, walk and budget tests there.
+    if (venue.scene.kind === 'home' || venue.scene.kind === 'unilag') continue;
     const entry = buildVenueScene(kit, sceneVenue(venue.id));
     const walker = createWalker();
     walker.setGrid(entry.walk.grid); walker.place(entry.walk.entrance.x, entry.walk.entrance.z, Math.PI);

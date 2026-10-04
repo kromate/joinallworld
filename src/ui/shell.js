@@ -553,6 +553,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       <button data-menu="city"><span aria-hidden="true">${glyph('globe')}</span><span><b>${esc(view.city?.name || 'City')}, Nigeria</b><small>See Nigeria: your city and what is coming</small></span></button>
       <button data-community><span aria-hidden="true">${glyph('community')}</span><span><b>Community</b><small>${atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue'}</small></span></button>
       <button data-open="help"><span aria-hidden="true">${glyph('help')}</span><span><b>How to play</b><small>Tips and keyboard shortcuts</small></span></button>
+      <a class="legacy-character-link" href="https://joinallworld.com/old-character.html"><span aria-hidden="true">${glyph('home')}</span><span><b>Your original Allworld character</b><small>Open the original world · separate save</small></span></a>
       <p class="life-net ${net.error ? 'is-error' : ''}" role="status">${esc(net.text || '')}</p>${link && link.tone === 'off' ? '<button class="life-menu-retry" data-menu="reconnect">Try again</button>' : ''}`;
   }
 
@@ -799,6 +800,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     renderCoach();
     // A panel that must be completed opens by itself (and comes back if anything replaced it).
     if (view.connected) {
+      // A first-time nickname gate stays locked until the server has accepted the session: release it here, so what
+      // the life needs next (its look) can take over without another tap.
+      if (sheet?.kind === 'panel' && sheet.id === 'session' && sheet.params?.reason === 'new') closeDialog();
       const must = panels.find((panel) => panel.placement === 'modal' && typeof panel.required?.(state, panelView()) === 'string');
       if (must && !(sheet?.kind === 'panel' && (sheet.id === must.id || byId.get(sheet.id)?.role === 'session-gate'))) { sheet = null; open(must.id); }
     }

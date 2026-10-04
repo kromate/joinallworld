@@ -96,7 +96,10 @@ export function createOnce({ now, windowMs, limits = {} }) {
     if (!(time - counted.at < ONCE.recountMs && time >= counted.at)) {
       const sum = { at: time, money: 0, light: 0 };
       const count = (record) => { if (isRecord(record?.once)) for (const receipt of Object.values(record.once)) if (live(receipt, time)) sum[isLight(receipt.kind) ? 'light' : 'money'] += 1; return false; };
-      if (db.$store) db.$store.scanSessions(count); else Object.values(db.sessions).forEach(count);
+      // A store that keeps receipts apart from the session records (the Worker's SQLite store) counts them itself:
+      // $store.onceCounts(liveSince, lightKinds) → { money, light }, the same two numbers the scan below produces.
+      if (typeof db.$store?.onceCounts === 'function') Object.assign(sum, db.$store.onceCounts(time - windowMs, LIGHT_KINDS));
+      else if (db.$store) db.$store.scanSessions(count); else Object.values(db.sessions).forEach(count);
       counted = sum;
     }
     return light ? counted.light : counted.money;

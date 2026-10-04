@@ -185,12 +185,12 @@
    "src/game/systems/travel.js": {
     "TS18047": 3,
     "TS18048": 1,
-    "TS2339": 2,
+    "TS2339": 4,
     "TS2365": 1,
     "TS2532": 1,
     "TS2538": 1,
     "TS7006": 87,
-    "TS7053": 19
+    "TS7053": 21
    },
    "src/game/util.js": {
     "TS18048": 20,
@@ -205,6 +205,129 @@
    }
   },
   "client": {
+   "src/campus/shared/geometry.js": {
+    "TS18048": 9,
+    "TS2339": 6
+   },
+   "src/campus/shared/signs.js": {
+    "TS2538": 1
+   },
+   "src/campus/unilag/buildings.js": {
+    "TS2367": 19,
+    "TS7006": 14
+   },
+   "src/campus/unilag/capture.mjs": {
+    "TS7005": 3,
+    "TS7006": 5,
+    "TS7034": 2
+   },
+   "src/campus/unilag/content.js": {
+    "TS2353": 1,
+    "TS2532": 2,
+    "TS2538": 2
+   },
+   "src/campus/unilag/curriculum.js": {
+    "TS2322": 1
+   },
+   "src/campus/unilag/games.js": {
+    "TS18048": 3,
+    "TS2322": 7,
+    "TS2339": 13,
+    "TS2345": 1,
+    "TS2531": 12,
+    "TS7005": 3,
+    "TS7006": 106,
+    "TS7031": 5,
+    "TS7034": 3,
+    "TS7053": 6
+   },
+   "src/campus/unilag/host.js": {
+    "TS2322": 1,
+    "TS2339": 16,
+    "TS2345": 5,
+    "TS2353": 1,
+    "TS2538": 1,
+    "TS2554": 3,
+    "TS7005": 27,
+    "TS7006": 30,
+    "TS7034": 8
+   },
+   "src/campus/unilag/landmark.js": {
+    "TS2339": 1
+   },
+   "src/campus/unilag/layout.js": {
+    "TS2322": 1,
+    "TS2339": 1,
+    "TS7006": 6
+   },
+   "src/campus/unilag/preview.js": {
+    "TS18047": 13,
+    "TS18048": 15,
+    "TS2322": 1,
+    "TS2339": 30,
+    "TS2345": 1,
+    "TS2353": 1,
+    "TS2531": 44,
+    "TS2532": 4,
+    "TS7005": 3,
+    "TS7006": 12,
+    "TS7034": 3,
+    "TS7053": 1
+   },
+   "src/campus/unilag/scene.js": {
+    "TS18048": 2,
+    "TS2322": 3,
+    "TS2339": 1,
+    "TS2345": 4,
+    "TS2353": 1,
+    "TS2488": 1,
+    "TS2532": 3,
+    "TS2783": 1,
+    "TS7005": 11,
+    "TS7006": 32,
+    "TS7034": 5,
+    "TS7053": 2
+   },
+   "src/campus/unilag/shuttle.js": {
+    "TS18048": 20,
+    "TS2322": 4,
+    "TS2339": 1,
+    "TS2345": 6,
+    "TS2532": 14,
+    "TS2538": 1,
+    "TS4104": 1,
+    "TS7005": 11,
+    "TS7006": 17,
+    "TS7034": 4
+   },
+   "src/campus/unilag/student.js": {
+    "TS18046": 16,
+    "TS18047": 10,
+    "TS18048": 35,
+    "TS2322": 17,
+    "TS2345": 40,
+    "TS2464": 1,
+    "TS2531": 3,
+    "TS2532": 12,
+    "TS2538": 7,
+    "TS7005": 1,
+    "TS7006": 15,
+    "TS7034": 1,
+    "TS7053": 15
+   },
+   "src/campus/unilag/walk.js": {
+    "TS18049": 3,
+    "TS2322": 2,
+    "TS2339": 9,
+    "TS2345": 3
+   },
+   "src/campus/unilag/world-adapter.js": {
+    "TS2339": 6,
+    "TS2353": 1,
+    "TS7005": 34,
+    "TS7006": 17,
+    "TS7034": 7
+   },
    "src/city-map.js": {
     "TS18047": 8,
     "TS2339": 23,
@@ -235,7 +358,7 @@
     "TS2349": 2,
     "TS2551": 1,
     "TS2554": 3,
-    "TS7005": 62,
+    "TS7005": 63,
     "TS7006": 53,
     "TS7031": 1,
     "TS7034": 10
@@ -252,13 +375,13 @@
     "TS18046": 2,
     "TS18047": 11,
     "TS2322": 3,
-    "TS2339": 43,
+    "TS2339": 46,
     "TS2345": 1,
     "TS2353": 1,
     "TS2531": 14,
-    "TS7005": 99,
-    "TS7006": 42,
-    "TS7031": 5,
+    "TS7005": 103,
+    "TS7006": 45,
+    "TS7031": 6,
     "TS7034": 10,
     "TS7053": 2
    },
@@ -387,12 +510,11 @@
    },
    "src/map3d/landmarks.js": {
     "TS18048": 54,
-    "TS2353": 7,
+    "TS2353": 8,
     "TS2362": 1,
     "TS2363": 13,
     "TS2365": 10,
-    "TS2488": 1,
-    "TS7006": 62,
+    "TS7006": 63,
     "TS7053": 3
    },
    "src/map3d/lga.js": {
@@ -657,7 +779,7 @@
    "src/tables/client.js": {
     "TS18047": 6,
     "TS2339": 8,
-    "TS7005": 9,
+    "TS7005": 10,
     "TS7006": 11,
     "TS7034": 2
    },
@@ -823,6 +945,11 @@
     "TS2532": 2,
     "TS7006": 34,
     "TS7053": 8
+   },
+   "src/ui/panels/campus.js": {
+    "TS2339": 8,
+    "TS7006": 110,
+    "TS7053": 3
    },
    "src/ui/panels/career.js": {
     "TS2531": 1,
@@ -990,11 +1117,13 @@
    },
    "src/ui/panels/messages.js": {
     "TS18047": 34,
-    "TS2322": 5,
+    "TS2322": 6,
     "TS2339": 19,
     "TS2345": 2,
     "TS2531": 2,
-    "TS7006": 48
+    "TS7005": 6,
+    "TS7006": 48,
+    "TS7034": 2
    },
    "src/ui/panels/missions.js": {
     "TS2531": 2,
@@ -1028,7 +1157,7 @@
     "TS2322": 1,
     "TS2531": 11,
     "TS2532": 2,
-    "TS7006": 12
+    "TS7006": 15
    },
    "src/ui/panels/radio-banner.js": {
     "TS7006": 12
@@ -1060,7 +1189,7 @@
    "src/ui/panels/session.js": {
     "TS2339": 1,
     "TS2531": 1,
-    "TS7006": 6
+    "TS7006": 8
    },
    "src/ui/panels/settings.js": {
     "TS2339": 1,
@@ -1086,7 +1215,7 @@
     "TS2531": 1,
     "TS2698": 1,
     "TS2769": 1,
-    "TS7005": 13,
+    "TS7005": 14,
     "TS7006": 28,
     "TS7034": 3
    },
@@ -1201,7 +1330,7 @@
     "TS2353": 1,
     "TS2554": 2,
     "TS2741": 1,
-    "TS7005": 121,
+    "TS7005": 122,
     "TS7006": 93,
     "TS7019": 1,
     "TS7031": 8,
@@ -1415,6 +1544,12 @@
     "TS7019": 1,
     "TS7031": 2
    },
+   "server/host-context.js": {
+    "TS2339": 2,
+    "TS7006": 23,
+    "TS7031": 4,
+    "TS7053": 1
+   },
    "server/life-service.js": {
     "TS2532": 1,
     "TS7006": 10
@@ -1434,12 +1569,17 @@
    },
    "server/protocol.js": {
     "TS2345": 2,
-    "TS7006": 39,
+    "TS7006": 42,
     "TS7023": 1,
     "TS7024": 1
    },
    "server/routes/auth.js": {
     "TS7006": 1
+   },
+   "server/routes/campus.js": {
+    "TS2339": 1,
+    "TS7006": 12,
+    "TS7031": 3
    },
    "server/routes/civic.js": {
     "TS2339": 5,
@@ -1490,16 +1630,15 @@
    },
    "server/server.js": {
     "TS18046": 6,
-    "TS18047": 1,
-    "TS2339": 88,
+    "TS2339": 86,
     "TS2353": 1,
     "TS2531": 1,
     "TS2532": 1,
     "TS2554": 1,
     "TS7005": 1,
-    "TS7006": 86,
+    "TS7006": 73,
     "TS7034": 1,
-    "TS7053": 2
+    "TS7053": 1
    },
    "server/social/presence.js": {
     "TS7006": 10
@@ -1520,7 +1659,7 @@
     "TS2349": 1,
     "TS2722": 1,
     "TS7005": 16,
-    "TS7006": 28,
+    "TS7006": 27,
     "TS7023": 1,
     "TS7024": 1,
     "TS7034": 6,
@@ -1587,50 +1726,65 @@
     "TS7034": 1,
     "TS7053": 1
    },
-   "server/world/shards.js": {
-    "TS18046": 1,
-    "TS2339": 10,
+   "server/world/shard-core.js": {
+    "TS2339": 5,
     "TS2554": 1,
     "TS7006": 20
    },
+   "server/world/shards.js": {
+    "TS18046": 1,
+    "TS2339": 5,
+    "TS7006": 9
+   },
    "server/ws/index.js": {
-    "TS18046": 2,
+    "TS18046": 3,
     "TS18048": 2,
-    "TS2339": 4,
+    "TS2339": 6,
     "TS2345": 1,
     "TS2349": 3,
     "TS2532": 2,
-    "TS7005": 2,
-    "TS7006": 7,
+    "TS7005": 3,
+    "TS7006": 8,
     "TS7019": 2,
-    "TS7034": 2
+    "TS7034": 3
    },
    "server/ws/rooms.js": {
     "TS7005": 2,
-    "TS7006": 61,
+    "TS7006": 62,
     "TS7031": 4,
     "TS7034": 1
    },
    "server/ws/social.js": {
     "TS18046": 1,
-    "TS7006": 55,
+    "TS7006": 56,
     "TS7031": 9
    },
    "server/ws/tables.js": {
     "TS7006": 19
    },
    "server/ws/world.js": {
-    "TS7006": 3
+    "TS7006": 4
    }
   },
   "worker": {
    "deploy/cloudflare-worker.js": {
-    "TS18046": 5,
-    "TS2345": 1,
+    "TS2322": 1,
+    "TS2339": 25,
+    "TS2353": 1,
+    "TS2532": 1,
+    "TS2554": 2,
     "TS4119": 5,
-    "TS7005": 7,
-    "TS7006": 47,
-    "TS7034": 1
+    "TS7006": 92
+   },
+   "deploy/sqlite-shards.js": {
+    "TS7006": 11
+   },
+   "deploy/sqlite-store.js": {
+    "TS2339": 1,
+    "TS2554": 1,
+    "TS2722": 1,
+    "TS7006": 28,
+    "TS7053": 2
    },
    "deploy/turn-provider.js": {
     "TS18047": 1,
@@ -1642,7 +1796,7 @@
    },
    "server/protocol.js": {
     "TS2345": 2,
-    "TS7006": 39,
+    "TS7006": 42,
     "TS7023": 1,
     "TS7024": 1
    }
@@ -1651,13 +1805,37 @@
    "deploy/cloudflare.test.mjs": {
     "TS18046": 1,
     "TS2307": 1,
-    "TS7005": 4,
-    "TS7006": 20,
-    "TS7034": 3
+    "TS7005": 5,
+    "TS7006": 28,
+    "TS7034": 4
+   },
+   "deploy/legacy-bridge.test.mjs": {
+    "TS2345": 1,
+    "TS2531": 1,
+    "TS7005": 1,
+    "TS7006": 6,
+    "TS7019": 1,
+    "TS7034": 1
+   },
+   "deploy/sqlite-store.test.mjs": {
+    "TS18046": 6,
+    "TS2339": 4,
+    "TS2353": 1,
+    "TS2365": 1,
+    "TS2532": 10,
+    "TS2533": 4,
+    "TS7006": 36,
+    "TS7019": 2
    },
    "deploy/turn-provider.test.mjs": {
     "TS18048": 2,
     "TS2345": 1
+   },
+   "server/campus.test.js": {
+    "TS2322": 1,
+    "TS2339": 5,
+    "TS2353": 6,
+    "TS7006": 10
    },
    "server/civic.test.js": {
     "TS2345": 1,
@@ -1923,9 +2101,11 @@
    },
    "server/world.test.js": {
     "TS2339": 14,
+    "TS2353": 1,
     "TS2532": 1,
     "TS2556": 2,
-    "TS7006": 39,
+    "TS2559": 1,
+    "TS7006": 40,
     "TS7019": 2,
     "TS7053": 1
    },
@@ -1945,6 +2125,61 @@
     "TS2532": 1,
     "TS7006": 9,
     "TS7053": 6
+   },
+   "src/campus/unilag/client.integration.test.js": {
+    "TS2339": 5,
+    "TS7005": 1,
+    "TS7006": 4,
+    "TS7034": 1
+   },
+   "src/campus/unilag/content.test.js": {
+    "TS2339": 1
+   },
+   "src/campus/unilag/games.test.js": {
+    "TS18048": 2,
+    "TS2339": 27,
+    "TS2532": 4,
+    "TS7005": 2,
+    "TS7006": 18,
+    "TS7034": 1
+   },
+   "src/campus/unilag/integration.test.js": {
+    "TS18048": 1,
+    "TS2339": 18,
+    "TS2532": 1,
+    "TS7006": 2
+   },
+   "src/campus/unilag/scene.test.js": {
+    "TS18047": 2,
+    "TS2339": 6,
+    "TS2532": 1
+   },
+   "src/campus/unilag/shuttle.test.js": {
+    "TS18047": 16,
+    "TS18048": 12,
+    "TS2322": 1,
+    "TS2339": 6,
+    "TS2345": 1,
+    "TS2532": 5,
+    "TS2554": 1,
+    "TS2698": 4,
+    "TS2790": 1,
+    "TS7006": 3
+   },
+   "src/campus/unilag/student.test.js": {
+    "TS18048": 31,
+    "TS2339": 46,
+    "TS2532": 10,
+    "TS7005": 1,
+    "TS7006": 21,
+    "TS7034": 1
+   },
+   "src/campus/unilag/walk.test.js": {
+    "TS18047": 4,
+    "TS18048": 7,
+    "TS2345": 4,
+    "TS2532": 5,
+    "TS7006": 1
    },
    "src/client.test.js": {
     "TS18046": 3,
@@ -2106,7 +2341,7 @@
     "TS7005": 9,
     "TS7006": 60,
     "TS7034": 1,
-    "TS7053": 12
+    "TS7053": 14
    },
    "src/lazy-load.test.js": {
     "TS2339": 8,
@@ -2298,6 +2533,26 @@
     "TS2532": 1,
     "TS7006": 3
    },
+   "src/ui/panels/messages.test.js": {
+    "TS2339": 5,
+    "TS2367": 1,
+    "TS2540": 3,
+    "TS2740": 1,
+    "TS2790": 1,
+    "TS7006": 13,
+    "TS7053": 3
+   },
+   "src/ui/panels/social-client.test.js": {
+    "TS2322": 1,
+    "TS2339": 1,
+    "TS2739": 1,
+    "TS2740": 1,
+    "TS7005": 4,
+    "TS7006": 7,
+    "TS7008": 1,
+    "TS7034": 2,
+    "TS7053": 1
+   },
    "src/ui/panels/world-ui.test.js": {
     "TS18047": 11,
     "TS2339": 14,
@@ -2327,7 +2582,8 @@
     "TS7006": 29,
     "TS7019": 5,
     "TS7031": 1,
-    "TS7034": 4
+    "TS7034": 4,
+    "TS7053": 1
    }
   }
  }

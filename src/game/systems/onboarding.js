@@ -118,6 +118,9 @@ export const JOIN_WINDOW_MS = 10 * 60 * 1000;
 /** Where a new guest stands in a venue: the spot of the first activity the goal chip points at. */
 const WELCOME_SPOT = { park: 'trees' };
 const ACTIVITY_CAP = 9999;
+/** What a guest cannot do at the UNILAG campus (src/campus/unilag): become or be a student. Visiting, the trail, the games and the shuttle stay open. */
+export const GUEST_CAMPUS = /^unilag\.(apply|matriculate|change-programme|register-semester|lecture|assignment|test|close-semester|defer|resume|drop|job|hostel\.|election\.)/;
+const ENROL_REASON = 'Settle in before you enrol: students need a home of their own. Tap the "Settle in" goal — it takes a minute, and you can still look round the campus as a visitor.';
 const SETTLE_REASON = 'Settle in to get your home: choose your traits, your dream and where you live. It takes a minute, and everything you have earned is kept.';
 const isGuest = (o) => o?.stage === 'guest' && !o.done;
 /** A life of the quick start that has not settled in: it has no home, no local government and no house, and is in no directory. */
@@ -519,6 +522,8 @@ export default {
       if (!isGuest(o)) return value;
       // A guest has no home, no local government and no house: everything that needs one waits for settling in.
       if (type.startsWith('home.') || type.startsWith('estate.') || type === 'property.house-move' || (type === 'travel' && data.payload?.id === 'home')) return { code: 'settle_required', reason: SETTLE_REASON };
+      // The campus is open to visitors, but a student needs a life of their own: enrolment, study, the hostel, campus jobs and the student vote wait too.
+      if (GUEST_CAMPUS.test(type)) return { code: 'settle_required', reason: ENROL_REASON };
       return value;
     },
   },

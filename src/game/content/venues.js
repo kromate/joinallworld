@@ -34,6 +34,7 @@
  * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.js).
  */
 import { AIRPORT, REFINERY } from './venues-transport.js';
+import { UNILAG_VENUE } from '../../campus/unilag/content.js';
 
 /**
  * Paid gigs a player may finish per Lagos day, over all venues together (original beta value).
@@ -50,7 +51,7 @@ const seenCard = 'Duration and price as observed in the reference game; effect a
 const seenName = 'Name seen in the reference game; duration, price and effects are original beta values.';
 
 export const SCENE_KINDS = Object.freeze(['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
-  'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'home']);
+  'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'unilag', 'home']);
 
 /** Map filter bar. */
 export const VENUE_CATEGORIES = {
@@ -704,6 +705,8 @@ export const VENUES = {
   // The airport at Ikeja and the refinery in the Lekki Free Zone: src/game/content/venues-transport.js.
   airport: AIRPORT,
   refinery: REFINERY,
+  // The University of Lagos campus at Akoka (Lagos only): src/campus/unilag/content.js.
+  unilag: UNILAG_VENUE,
 };
 
 /**

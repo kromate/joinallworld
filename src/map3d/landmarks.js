@@ -399,6 +399,27 @@ const KINDS = {
     b.cone(2.6, Y + 7.7, -1.2, 0.34, 1.1, '#ff7a2f', { seg: 6, ...GLOW }); b.cone(2.6, Y + 7.55, -1.2, 0.18, 0.7, '#ffe08a', { seg: 5, ...GLOW });
     return 8.4;
   },
+  /** The University of Lagos at Akoka: Senate House with its red grid over a low entrance block, and the main gate (after src/campus/unilag/landmark.js). */
+  unilag(g) {
+    const { b } = g; plinth(b, '#b9c887', '#98aa6c');
+    const cream = '#efe2c4', red = '#8f2434';
+    b.box(0.7, Y + 0.6, -0.9, 3.4, 1.2, 2.3, cream);                      // the entrance block
+    b.box(0.7, Y + 2.3, -1.15, 2.1, 2.3, 1.6, cream);                     // the tower
+    b.box(0.7, Y + 3.55, -1.15, 2.3, 0.18, 1.8, red);
+    for (let floor = 0; floor < 3; floor++) {
+      const y = Y + 1.6 + floor * 0.62;
+      b.box(0.7, y + 0.2, -0.32, 2.0, 0.06, 0.06, red);
+      for (let column = -1; column <= 1; column++) b.box(0.7 + column * 0.6, y, -0.32, 0.06, 0.4, 0.06, red);
+    }
+    winGrid(g, 0.7, Y + 2.22, -0.33, 2, 3, 0.42, 0.3, 0.6, 0.62);
+    winGrid(g, 0.7, Y + 0.65, 0.27, 4, 1, 0.5, 0.5, 0.75, 1);
+    for (const x of [-2.5, -1.1]) b.box(x, Y + 0.65, 2.2, 0.34, 1.3, 0.34, red);   // the main gate
+    b.box(-1.8, Y + 1.3, 2.2, 1.9, 0.2, 0.46, red); b.box(-1.8, Y + 1.46, 2.2, 1.3, 0.12, 0.5, cream);
+    sign(b, -1.8, Y + 1.74, 2.3, 'UNILAG', { size: 0.2, color: WHITE, board: red, pad: 0.08 });
+    b.box(-1.8, Y + 0.02, 1.2, 1.4, 0.04, 2.6, '#8a7a66');
+    palm(b, -2.7, -2.3, 0.8); palm(b, 2.7, 1.9, 0.72); tree(b, 2.6, -2.5, 0.9, LEAF_DARK);
+    return 4.2;
+  },
 };
 
 /** Draw the landmark for a venue's scene kind. Unknown kinds get a plain block, so a new venue is never invisible. */

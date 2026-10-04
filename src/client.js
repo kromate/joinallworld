@@ -153,7 +153,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   function accept(next) {
     const previous = client.state;
-    client.state = createLife(next);
+    // A server snapshot is rebuilt at ITS time and city, not at time zero: a sanitiser that compares with the clock
+    // (a running campus shuttle, today's quiz) must not drop what the server has just sent.
+    client.state = createLife(next, { now: Number.isFinite(next?.t) ? next.t : client.serverNow(), cityId: client.cityId });
     persist();
     onChange(client.state, previous);
     schedule();

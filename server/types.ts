@@ -15,6 +15,7 @@ import type { ActionRequest, CityId, ClientFrameType, IceServerConfig, PlayerRef
 import type { ConversationKind, LookIds, PlayerReportReceipt, ReportReason, SocialUpdate } from '../src/types/social.ts'
 import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types/support.ts'
 import type { ConsentView, OutreachLogLine, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
+import type { CampusElectionRecord } from '../src/types/campus.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
 //
@@ -398,11 +399,13 @@ export interface Database {
   support?: SupportCollection
   moderation?: ModerationCollection
   growth?: GrowthCollection
+  /** server/routes/campus.js: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
+  campus?: { election?: CampusElectionRecord }
   /** A collection a module added (collection names: a lower-case letter, then 1–31 letters or digits). */
   [collection: string]: unknown
 }
 /** Top-level keys of the document. */
-export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth'] as const satisfies readonly (keyof Database)[]
+export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'campus'] as const satisfies readonly (keyof Database)[]
 /** The namespaced collections reached through `collection(db, name)`. */
 export const COLLECTION_NAMES = ['social', 'civic', 'support', 'moderation', 'growth'] as const
 export type CollectionName = (typeof COLLECTION_NAMES)[number]

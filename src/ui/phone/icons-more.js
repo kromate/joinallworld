@@ -13,6 +13,8 @@ import { GROWTH_GLYPHS } from './icons-growth.js';
 
 registerGlyphs({
   ...GROWTH_GLYPHS,
+  // The Campus app (UNILAG): a mortarboard.
+  campus: `<path d="M2.5 9.5 12 5l9.5 4.5L12 14Z" ${F}/><path d="M6.5 11.6v4.4c1.6 1.5 3.4 2.2 5.5 2.2s3.9-.7 5.5-2.2v-4.4M21.5 9.5v5.5"/>`,
   contacts: `<rect x="5" y="3.5" width="14.5" height="17" rx="2.5" ${F}/><circle cx="12.2" cy="10" r="2.2"/><path d="M8.5 16.5c.5-2 2-3 3.7-3s3.2 1 3.7 3M3 8h2M3 12h2M3 16h2"/>`,
   family: `<path d="M4 10.5 12 4l8 6.5V20H4Z" ${F}/><path d="M12 17.2s-3.5-2-3.5-4.5a1.9 1.9 0 0 1 3.5-1 1.9 1.9 0 0 1 3.5 1c0 2.5-3.5 4.5-3.5 4.5Z" ${S}/>`,
   neighbours: `<path d="M2.5 12 8 7l5.5 5v8h-11Z" ${F}/><path d="M13.5 13.5 17 10.5l4.5 4V20h-8M6.5 20v-3.5h3V20"/>`,

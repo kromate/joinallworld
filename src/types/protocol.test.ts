@@ -19,7 +19,7 @@ import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/ser
 import {
   ACTION_DUPLICATE_RESPONSE_KEYS, ACTION_RESPONSE_KEYS, CHAT_FRAME_KEYS, CITY_IDS, CLIENT_FRAME_TYPES, ERROR_BODY_KEYS, HEALTH_RESPONSE_KEYS, HTTP_ROUTE_KEYS,
   LIFE_RESPONSE_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
-  WORKER_CLIENT_FRAME_TYPES, WORKER_HTTP_ROUTE_KEYS, WORKER_SERVER_FRAME_TYPES,
+  WORKER_CLIENT_FRAME_TYPES, WORKER_HOST_ROUTE_KEYS, WORKER_HTTP_ROUTE_KEYS, WORKER_SERVER_FRAME_TYPES,
 } from './protocol.ts'
 import { CONVERSATION_KEYS, HOUSE_VIEW_KEYS, OWN_MESSAGE_KEYS, PEOPLE_LISTING_KEYS, REPORT_REASONS, SOCIAL_LIMITS_KEYS, SOCIAL_OVERVIEW_KEYS } from './social.ts'
 import {
@@ -99,18 +99,28 @@ test('every frame type the server accepts or sends is typed', async () => {
   assert.deepEqual(sorted(sent), sorted(SERVER_FRAME_TYPES), 'the frames built in server/**/*.js and SERVER_FRAME_TYPES differ')
 })
 
-test('the Cloudflare Worker implements exactly the subset the types say it does', async () => {
+test('the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does', async () => {
   const source = await readFile(join(root, 'deploy', 'cloudflare-worker.js'), 'utf8')
-  const routes = new Set<string>()
-  for (const match of source.matchAll(/url\.pathname === '(\/api\/[a-z-]+)' && request\.method === '(GET|POST)'/g)) routes.add(`${match[2]} ${match[1]}`)
-  if (source.includes("url.pathname === '/api/health'")) routes.add('GET /api/health')
-  assert.deepEqual(sorted(routes), sorted(WORKER_HTTP_ROUTE_KEYS))
-  const accepted = new Set([...source.matchAll(/message\.type === '([a-z][a-z0-9-]*)'/g)].map((match) => match[1] ?? ''))
-  assert.deepEqual(sorted(accepted), sorted(WORKER_CLIENT_FRAME_TYPES))
-  assert.deepEqual(sorted(frameTypesIn(source)), sorted(WORKER_SERVER_FRAME_TYPES))
-  for (const key of WORKER_HTTP_ROUTE_KEYS) assert.ok((HTTP_ROUTE_KEYS as readonly string[]).includes(key))
-  // The documented difference in the health answer (HealthResponse vs WorkerHealthResponse).
-  assert.match(source, /\{ ok: true, transport: 'cloudflare', buildId: /)
+  // The same modules as Node, not a second implementation: the registries are imported and built over one context.
+  assert.match(source, /import \{ buildRoutes, ROUTE_MODULES \} from '\.\.\/server\/routes\/index\.js'/)
+  assert.match(source, /import \{ buildSocketHandlers \} from '\.\.\/server\/ws\/index\.js'/)
+  assert.match(source, /this\.routes = buildRoutes\(context, \[\.\.\.ROUTE_MODULES, telemetryRoutes\]\)/)
+  assert.match(source, /this\.handlers = buildSocketHandlers\(context\)/)
+  assert.deepEqual(sorted(WORKER_HTTP_ROUTE_KEYS), sorted(HTTP_ROUTE_KEYS))
+  // The routes the host answers itself, before the registry.
+  const own = new Set<string>()
+  for (const match of source.matchAll(/url\.pathname === '(\/api\/[a-z-]+)' && raw\.method === '(GET|POST)'/g)) own.add(`${match[2]} ${match[1]}`)
+  assert.deepEqual(sorted(own), sorted(WORKER_HOST_ROUTE_KEYS))
+  // The frames the host handles and sends itself, beside the registry's.
+  const accepted = new Set([...source.matchAll(/(?<!typeof )message\.type === '([a-z][a-z0-9-]*)'/g)].map((match) => match[1] ?? ''))
+  assert.deepEqual(sorted(accepted), sorted(['chat', 'heartbeat-ack']), 'heartbeat-ack is the one frame the host consumes; a chat line is only given its body digest before the shared handler runs')
+  assert.deepEqual(sorted(WORKER_CLIENT_FRAME_TYPES), sorted([...CLIENT_FRAME_TYPES, 'heartbeat-ack']))
+  assert.deepEqual(sorted(frameTypesIn(source)), sorted(['chat', 'error', 'heartbeat']), 'the host builds only the error frame, its heartbeat, and a retried chat line from its receipt')
+  assert.deepEqual(sorted(WORKER_SERVER_FRAME_TYPES), sorted([...SERVER_FRAME_TYPES, 'heartbeat']))
+  // Every browser socket answers the heartbeat.
+  for (const file of ['src/community.js', 'src/ui/panels/social-client.js', 'src/tables/client.js']) assert.match(await readFile(join(root, file), 'utf8'), /type: 'heartbeat-ack'/, file)
+  // The documented addition to the health answer (WorkerHealthResponse).
+  assert.match(source, /\{ transport: 'cloudflare', buildId: /)
 })
 
 test('core, social, civic and support answers carry exactly the typed keys', async (t) => {

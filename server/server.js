@@ -15,14 +15,14 @@ import { createStore } from './store.js';
 import { createShardStore } from './world/shards.js';
 import * as worldRegistry from './world/registry.js';
 import { worldOf } from './world/service.js';
-import { settleCity, applyLifeAction } from './life-service.js';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from './host-context.js';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.js';
 import { executeCommand } from './routes/core.js';
 import { createOnce } from './routes/once.js';
 import { buildSocketHandlers } from './ws/index.js';
 import { createServerTelemetry, useTelemetry } from './telemetry/index.js';
 import telemetryRoutes from './telemetry/routes.js';
-import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canOccupyVenue } from './protocol.js';
+import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue } from './protocol.js';
 
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json' };
 const cookieId = (req) => (req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith('sid='))?.slice(4);
@@ -71,7 +71,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   buildId = process.env.BUILD_ID || packageVersion(),
   // Error monitoring and analytics (server/telemetry): off, and doing nothing at all, unless its environment keys are set.
   telemetry = createServerTelemetry({ env: process.env, buildId, now, log }) } = {}) {
-  const configuredOrigin = typeof givenOrigin === 'string' && /^https?:\/\/[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(givenOrigin) ? givenOrigin : '';
+  const configuredOrigin = cleanOrigin(givenOrigin);
   const store = providedStore || await createStore(dataDir, { ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
   // The world registry: one append-only shard file per local government, beside the main data file.
   const shards = await createShardStore(join(dataDir, 'world'), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log, ...(shardIo ? { io: shardIo } : {}) });
@@ -82,21 +82,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // The operator token never leaves this closure: only its digest is kept, it is compared in
   // constant time, and nothing here logs it. Unset (or too short to be a real secret) = no moderator surface.
   // It must be something a Bearer header can carry: 24–512 printable ASCII characters without spaces.
-  const moderatorDigest = typeof moderatorToken === 'string' && /^[\x21-\x7e]{24,512}$/.test(moderatorToken) ? sha256(moderatorToken) : null;
+  const moderatorDigest = validOperatorToken(moderatorToken) ? sha256(moderatorToken) : null;
   if (typeof moderatorToken === 'string' && moderatorToken && !moderatorDigest) console.error('MODERATOR_TOKEN must be 24 to 512 printable ASCII characters without spaces: the moderator routes stay disabled.');
   moderatorToken = undefined;
-  /** A session with nothing in it — no city, or only lives whose quick start was never confirmed — has no life to keep. */
-  const hasLife = (session) => Object.values(session.cities || {}).some(entry => entry?.state && !(entry.state.onboarding?.required === true && entry.state.onboarding.done !== true));
-  function archiveSession(db, secret, session) {
-    // A lived life is never destroyed: it moves to the archive without its secret. A session that
-    // never created a life leaves nothing behind, so abandoned sign-ups cannot grow the data file.
-    if (hasLife(session)) {
-      db.archivedLives ||= {};
-      const publicId = session.publicId || randomUUID();
-      db.archivedLives[publicId] = archivedLife(session, publicId, now());
-    }
-    delete db.sessions[secret];
-  }
+  // A lived life is never destroyed: it moves to the archive without its secret (host-context.js, shared with the Worker).
+  const archiveSession = sessionArchiver({ now, randomId: () => randomUUID() });
   /** Keys of stored sessions matching `predicate`, without copying every record when the store can avoid it. */
   const sessionKeys = (db, predicate) => (db.$store ? db.$store.scanSessions(predicate) : Object.entries(db.sessions).filter(([, record]) => predicate(record)).map(([key]) => key));
   /** The stored session with this public id, or undefined (any expiry). */
@@ -108,9 +98,6 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // Rotate credentials created by versions that exposed the cookie as a public ID.
     for (const secret of sessionKeys(db, session => !session.publicId || !Number.isFinite(session.expiresAt) || session.expiresAt <= now())) archiveSession(db, secret, db.sessions[secret]);
   });
-  /** The longest an outside request (ctx.fetch) may take, whatever its caller asked for. */
-  const OUTBOUND_TIMEOUT_MS = 15000;
-  const OUTREACH_ENV = ['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'EMAIL_FROM_NAME', 'EMAIL_CONTACT_LINE', 'EMAIL_DAILY_CAP', 'WHATSAPP_CHANNEL_URL', 'VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT', 'PUSH_DAILY_CAP'];
   const keyFiles = new Map();
   /** A secret made once by `make()` and kept beside the data file, readable by the server's user only. Never logged. */
   function keyFile(name, make) {
@@ -150,10 +137,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     if (renew) renewSession(session, now(), sessionTtlMs);
     return session;
   };
-  // Which stored session a settled life belongs to, so ctx.act can find that player's receipts.
-  const ownerOf = new WeakMap();
-  const settle = (session, city) => { const state = settleCity(session, city, now()); ownerOf.set(state, session); return state; };
   const receipts = createOnce({ now, windowMs: actionWindowMs, limits: receiptLimits });
+  // ctx.settle, ctx.act (server authority, always under a receipt) and what POST /api/action runs: host-context.js, shared with the Worker.
+  const { settle, act, playerAct } = lifeAuthority({ now, receipts });
   /** True from a failed write of the data file until the next successful one. Reads still work then; saving does not. */
   const storageFailing = () => { try { return store.stats?.().failing === true; } catch { return false; } };
   function cookieHeader(req, secret) {
@@ -173,25 +159,15 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
    */
   function publicOrigin(req) {
     if (configuredOrigin) return configuredOrigin;
-    const host = String(req.headers.host || '');
-    if (!/^[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(host)) return '';
+    const host = cleanHost(req.headers.host);
+    if (!host) return '';
     return `${req.socket.encrypted || (trustProxy && req.headers['x-forwarded-proto'] === 'https') ? 'https' : 'http'}://${host}`;
   }
   /** Header-only bearer check for the operator routes. False when the feature is disabled. */
   function isModerator(req) {
     if (!moderatorDigest) return false;
-    const match = /^Bearer ([\x21-\x7e]{1,512})$/.exec(req.headers.authorization || '');
-    return Boolean(match) && timingSafeEqual(sha256(match[1]), moderatorDigest);
-  }
-  /** Response headers a route may set. Anything else a module returns is dropped. */
-  const ROUTE_HEADERS = new Map([['set-cookie', 'Set-Cookie'], ['cache-control', 'Cache-Control'], ['retry-after', 'Retry-After']]);
-  function routeHeaders(headers) {
-    const kept = {};
-    if (headers && typeof headers === 'object') for (const [name, value] of Object.entries(headers)) {
-      const known = ROUTE_HEADERS.get(String(name).toLowerCase());
-      if (known && (typeof value === 'string' || (Array.isArray(value) && value.every(item => typeof item === 'string')))) kept[known] = value;
-    }
-    return kept;
+    const token = bearerToken(req.headers.authorization);
+    return token !== null && timingSafeEqual(sha256(token), moderatorDigest);
   }
   /**
    * The ONLY place an API response is written. It answers at most once per request: the body is
@@ -222,8 +198,6 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
    * as reply(): at most one answer per request, and it never throws. Every page goes out with the same headers, which a
    * page cannot change: no script may run, nothing may frame it, it sets no cookie and it sends no referrer.
    */
-  const PAGE_HEADERS = Object.freeze({ 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY',
-    'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'" });
   function replyPage(res, status, html, { cache = false, head = false } = {}) {
     if (res.headersSent || res.writableEnded || res.destroyed) return false;
     try {
@@ -233,7 +207,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     } catch (error) { log(`Page could not be written: ${error?.code || error?.message}`); try { res.destroy(); } catch {} return false; }
   }
   /** The registered page whose prefix a path starts with: [prefix, render] or undefined. */
-  const pageFor = (pathname) => [...ctx.pages].find(([prefix]) => pathname.startsWith(prefix));
+  const pageFor = (pathname) => findPage(ctx.pages, pathname);
   /** index.html with the default preview image made absolute (a link preview needs an absolute URL): see serveIndex. */
   let indexCache = null;
   async function serveIndex(req, file) {
@@ -244,7 +218,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     if (!indexCache.byOrigin.has(origin)) {
       if (indexCache.byOrigin.size >= 8) indexCache.byOrigin.clear();
       // Only the two preview-image attributes, and only when they are the site-relative /og/ path the build ships.
-      indexCache.byOrigin.set(origin, indexCache.text.replace(/(<meta (?:property="og:image"|name="twitter:image") content=")(\/og\/[A-Za-z0-9._-]+")/g, `$1${origin}$2`));
+      indexCache.byOrigin.set(origin, absolutePreviewImage(indexCache.text, origin));
     }
     return indexCache.byOrigin.get(origin);
   }
@@ -360,25 +334,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     on(event, fn) { if (!listeners.has(event)) listeners.set(event, []); listeners.get(event).push(fn); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, error.message); } } },
     settle,
-    // Server authority: ctx.act may run server-only actions (internal: true). Route modules call it
-    // with action types they name themselves, never with a type taken from a request.
-    // EVERY ctx.act must be safe to retry, and the host checks it rather than trusting the caller:
-    //   - inside ctx.once(...) (or another ctx.act) the surrounding receipt covers it;
-    //   - with `stateGuard: '<why a repeat cannot apply twice>'` the caller declares that stored state
-    //     checked in the same transaction makes it once-only (a ballot entry, a queue it removes from);
-    //   - otherwise `actionId` must be an action id (`<ms>:<uuid>`, normally the request's) and the life
-    //     must come from ctx.settle: the same receipt steps as POST /api/action run, and a repeat
-    //     returns { ok, code, state, duplicate: true } without running the action again.
-    // Anything else throws, so a route cannot spend without a receipt by accident.
-    act(state, body) {
-      const { stateGuard, ...action } = body;
-      const run = () => applyLifeAction(state, action, { now: now(), cityId: action.cityId, actionId: action.actionId, internal: true });
-      if (receipts.active() || (typeof stateGuard === 'string' && stateGuard.trim().length >= 12)) return run();
-      const session = ownerOf.get(state);
-      if (!session || action.actionId === undefined) throw new Error(`ctx.act(${action.type}) has no receipt: call it inside ctx.once, pass the request's actionId, or state its stateGuard`);
-      const result = receipts.action(session, action, run);
-      return result.duplicate ? { ...result, state } : result;
-    },
+    // Server authority: ctx.act may run server-only actions (internal: true). Route modules call it with action types they
+    // name themselves, never with a type taken from a request, and every call runs under a receipt (host-context.js lifeAuthority).
+    act,
     // Exactly-once for a write that carries a client id — see server/routes/once.js.
     once: receipts.once,
     onceId: receipts.onceId,
@@ -410,17 +368,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     //   fetch(url, init)   an outside request (the mail provider, a browser's push service)
     //   keyFile(name, make) → Promise<object>   a secret this server makes for itself (signing key, push keys), kept in
     //                      DATA_DIR/keys/<name>.json with file mode 0600 and never in the data file or a response
-    env: (name) => (OUTREACH_ENV.includes(name) && typeof env?.[name] === 'string' ? env[name] : ''),
-    fetch(url, init = {}) {
-      // An outside request is HTTPS, bounded in time whatever the caller passed, and never follows a redirect (a provider
-      // that answers with one is treated as failed: the request must not be led to another host).
-      let target;
-      try { target = new URL(String(url)); } catch { return Promise.reject(new TypeError('Invalid outbound URL')); }
-      if (target.protocol !== 'https:') return Promise.reject(new TypeError('Outbound requests must use https'));
-      const limit = AbortSignal.timeout(OUTBOUND_TIMEOUT_MS);
-      const { signal, redirect, ...rest } = init && typeof init === 'object' ? init : {};
-      return outbound(target.href, { ...rest, redirect: 'error', signal: signal && typeof AbortSignal.any === 'function' ? AbortSignal.any([signal, limit]) : limit });
-    },
+    env: envReader(env),
+    // An outside request is HTTPS, bounded in time whatever the caller passed, and never follows a redirect (host-context.js).
+    fetch: outboundFetch(outbound),
+    // Work that outlives the request that started it (a message being sent, a registry sync). Node needs no help to finish it;
+    // the Worker host keeps itself alive for it. A module calls ctx.waitUntil?.(promise) and never relies on the answer.
+    waitUntil() {},
     keyFile,
     config: { publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
@@ -441,7 +394,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       isOpen: (ws) => ws.readyState === WebSocket.OPEN,
       sessionOf: (ws, db) => db.sessions[ws.secret],
       // What POST /api/action runs: a player's own request, with no server authority.
-      playerAct: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }),
+      playerAct,
       // The receipt steps of an action, shared by POST /api/action and ctx.act (server/routes/once.js).
       actionOnce: receipts.action,
       storageFailing,

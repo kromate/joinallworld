@@ -22,6 +22,11 @@
  *       },
  *       open(ws) {},    // optional: a socket connected (already authenticated)
  *       close(ws) {},   // optional: a socket closed
+ *       restore(ws) {}, // optional: a host that can lose its memory while sockets stay connected (the Worker's
+ *                       // hibernation) hands back each socket with the fields it carried (ws.room, ws.position,
+ *                       // ws.voice, …): put it back in your in-memory registries. Nothing is announced and nothing
+ *                       // is reset; what the socket may still do is re-checked before its next message (revalidate).
+ *                       // The Node host never calls it.
  *       lifecycle: {},  // optional: see ROOM LIFECYCLE below
  *     };
  *   }
@@ -85,13 +90,14 @@ export const WS_MODULES = [rooms, social, world, tables];
 const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'];
 
 /**
- * Build the dispatch table. Returns { messages: Map<type, { room, handle }>, open(ws), close(ws) }
+ * Build the dispatch table. Returns { messages: Map<type, { room, handle }>, open(ws), close(ws), restore(ws) }
  * and installs the room lifecycle functions on ctx.core (see ROOM LIFECYCLE above).
  */
 export function buildSocketHandlers(ctx, modules = WS_MODULES) {
   const messages = new Map();
   const opens = [];
   const closes = [];
+  const restores = [];
   const hooks = Object.fromEntries(LIFECYCLE.map(name => [name, []]));
   for (const module of modules) {
     const built = module(ctx) || {};
@@ -103,6 +109,7 @@ export function buildSocketHandlers(ctx, modules = WS_MODULES) {
     }
     if (built.open) opens.push(built.open);
     if (built.close) closes.push(built.close);
+    if (built.restore) restores.push(built.restore);
     for (const [name, hook] of Object.entries(built.lifecycle || {})) {
       if (!LIFECYCLE.includes(name) || typeof hook !== 'function') throw new Error(`Invalid socket lifecycle hook: ${name}`);
       hooks[name].push(hook);
@@ -138,6 +145,7 @@ export function buildSocketHandlers(ctx, modules = WS_MODULES) {
   return {
     messages,
     open(ws) { for (const fn of opens) fn(ws); },
+    restore(ws) { for (const fn of restores) { try { fn(ws); } catch (error) { console.error('Socket restore handler failed:', error.message); } } },
     close(ws) { for (const fn of closes) { try { fn(ws); } catch (error) { console.error('Socket close handler failed:', error.message); } } },
   };
 }

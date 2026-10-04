@@ -32,11 +32,15 @@ import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, s
 import { quickDraft, keepDraft, firstLanding } from '../../quick-start/draft.js';
 import { keepPlay, joinTarget, pendingRef, track, play } from '../../quick-start/entry.js';
 import { APPEARANCE } from '../../game/content/traits.js';
+import { legacyCharacterHtml } from './session.js';
 
 const ID = 'quick-start';
 let more = false, error = '', taps = 0, landed = false, focusKey = '';
 
 const held = (view) => view.onboarding?.required === true && view.connected;
+/** A device the server has no session for yet (link 'new'): it stays on the landing until Play has been sent — there is no life behind the sheet to look at. */
+export const unstarted = (view) => view.link === 'new' && !view.connected;
+export const gateReason = (view, sending) => (sending ? null : held(view) ? 'Choose your look and tap Play to start.' : unstarted(view) ? 'Choose a name and tap Play to start your life.' : null);
 
 function landing(state, view) {
   const draft = quickDraft(view.name === 'New Lagosian' ? undefined : view.name);
@@ -56,13 +60,13 @@ function landing(state, view) {
     <div class="qs-row"><div class="qs-body" role="group" aria-label="Body">${bodies}</div><button type="button" class="qs-more" data-qs="more" data-key="more" aria-expanded="${more}">${more ? 'Fewer options' : 'More options'}</button></div>
     ${more ? lookEditor(draft.look, { owned: starterWardrobe() }) : ''}
     <label class="qs-name">Your name<span><input name="name" data-qs-name minlength="3" maxlength="24" autocomplete="nickname" autocapitalize="words" spellcheck="false" enterkeyhint="go" value="${esc(problem?.name ?? draft.name)}"><button type="button" class="qs-dice" data-qs="dice" data-key="dice" aria-label="Suggest another name" title="Suggest another name">${mark('game')}</button></span></label>
-    <div class="qs-foot"><button type="button" class="ui-button is-primary qs-play" data-qs="play" data-key="play">Play</button><p>No password, no e-mail. You can change everything later.</p></div></div>`;
+    <div class="qs-foot"><button type="button" class="ui-button is-primary qs-play" data-qs="play" data-key="play">Play</button><p>No password, no e-mail. You can change everything later.</p></div>${legacyCharacterHtml()}</div>`;
 }
 
 export default {
   id: ID, title: 'Welcome to Allworld', placement: 'modal', role: 'session-gate', live: false,
   /** A life whose look the server has not confirmed is held here — unless its Play is being sent right now (the same rule is on its stub in ./index.js, so it holds before this file has arrived). */
-  required(state, view) { return held(view) && !play.sending ? 'Choose your look and tap Play to start.' : null; },
+  required(state, view) { return gateReason(view, play.sending); },
   render(state, view) {
     return landing(state, view);
   },

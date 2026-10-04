@@ -29,7 +29,8 @@ export type NoticeKind =
 
 /**
  * Every event emitted through `emit(state, '<name>', data, ctx)` anywhere in src/game, with the
- * data its emitter passes. Listeners always receive an object (anything else becomes `{}`), run in
+ * data its emitter passes. (The campus systems in src/campus/unilag emit seven more, which nothing
+ * listens to: campus.ts CampusEventMap.) Listeners always receive an object (anything else becomes `{}`), run in
  * registration order, may mutate state and may emit further events (at most 8 deep).
  */
 export interface EngineEventMap {
@@ -48,7 +49,9 @@ export interface EngineEventMap {
    * The player was put in a venue (a trip, the commute, moving in). `mode` is a travel mode id, or
    * null when no vehicle was used. Extra `options` handed to api.arrive() are passed through.
    */
-  'travel.arrived': { venue: VenueId; from: VenueId; mode: TravelModeId | null; [extra: string]: unknown }
+  // INCONSISTENT: the campus shuttle arrives with `mode: 'campus-shuttle'` (src/campus/unilag/shuttle.js:246), which is
+  // not a travel mode id; the listeners (health, missions, goals, home) only compare it with ids they know.
+  'travel.arrived': { venue: VenueId; from: VenueId; mode: TravelModeId | 'campus-shuttle' | null; [extra: string]: unknown }
 
   // -- career --
   /** `maxLevel` (rungs in the ladder) only for a career track. */

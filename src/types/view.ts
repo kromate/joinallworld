@@ -19,6 +19,7 @@ import type {
   Look, LotteryId, MissionId, Moodlet, Ms, NeedId, NeedMap, Notice, NpcId, OnboardingStage, PerkId, PlotAddress, RoadsideEventId,
   SkillId, SkillMap, SpotId, StarterGoalId, StartHomeId, TierId, TraitId, TravelModeId, VenueId, Wardrobe, WardrobeKind, WishId,
 } from './life.ts'
+import type { UnilagCommunityView, UnilagShuttleView, UnilagStudentView } from './campus.ts'
 
 // ---- wallet -------------------------------------------------------------------------------
 
@@ -1008,7 +1009,7 @@ export interface GrowthView {
 
 // ---- the whole view -----------------------------------------------------------------------
 
-/** The object returned by `viewLife(state, ctx)`. `core` has no view. */
+/** The object returned by `viewLife(state, ctx)`. `core` has no view. The three campus views are in campus.ts. */
 export interface LifeView {
   wallet: WalletView
   inventory: InventoryView
@@ -1029,6 +1030,9 @@ export interface LifeView {
   missions: MissionsView
   events: EventsView
   growth: GrowthView
+  unilagStudent: UnilagStudentView
+  unilagCommunity: UnilagCommunityView
+  unilagShuttle: UnilagShuttleView
 }
 
 // ---- runtime lists (checked against the running engine by engine.test.ts) -------------------
@@ -1036,7 +1040,7 @@ export interface LifeView {
 /** The keys of `viewLife(state, ctx)`, in registration order. */
 export const VIEW_KEYS = [
   'wallet', 'inventory', 'needs', 'skills', 'career', 'activities', 'travel', 'health', 'economy', 'property', 'estate', 'home',
-  'onboarding', 'goals', 'social', 'civic', 'missions', 'events', 'growth',
+  'onboarding', 'goals', 'social', 'civic', 'missions', 'events', 'growth', 'unilagStudent', 'unilagCommunity', 'unilagShuttle',
 ] as const satisfies readonly (keyof LifeView)[]
 
 /** The keys of each system's view, sorted. (`skills` is keyed by SkillId.) */
@@ -1078,6 +1082,12 @@ export const VIEW_FIELD_KEYS = {
   ],
   events: ['count', 'here', 'live', 'spray', 'sprayed'],
   growth: ['referral', 'tables'],
+  unilagStudent: [
+    'admittedDay', 'applicationCount', 'betaRules', 'campusJobs', 'courses', 'degree', 'hostel', 'lifetime', 'programme', 'records',
+    'status', 'studentId', 'term',
+  ],
+  unilagCommunity: ['clubs', 'discoveries', 'eligible', 'events', 'quiz', 'tables', 'today', 'trail'],
+  unilagShuttle: ['active', 'fare', 'source', 'stops'],
 } as const satisfies { readonly [K in keyof LifeView]?: readonly (keyof LifeView[K])[] }
 
 /** The keys every entry of `view.travel.destinations` carries, sorted. */

@@ -36,9 +36,22 @@ import { EVENTS_CALENDAR, SPRAY } from '../game/content/calendar.js'
 import { REFERRAL, TABLE_REWARDS } from '../game/content/growth.js'
 import { DEPOSIT_TERMS, LOAN, RENTS } from '../game/systems/economy.js'
 import { NEEDS } from '../game/systems/needs.js'
+import { GUEST_CAMPUS } from '../game/systems/onboarding.js'
 import { SKILLS } from '../game/systems/skills.js'
+import { DISCOVERY_TRAIL } from '../campus/unilag/content.js'
+import { LECTURE_SLOTS, PROGRAMMES, UNILAG_BETA_RULES } from '../campus/unilag/curriculum.js'
+import { CAMPUS_CLUBS, CAMPUS_DISCOVERIES, CAMPUS_FACULTIES, CAMPUS_HALLS, QUIZ_QUESTIONS, STUDENT_UNION_TABLES } from '../campus/unilag/games.js'
+import { SHUTTLE_STOPS } from '../campus/unilag/shuttle.js'
+import { CAMPUS_JOBS, HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS } from '../campus/unilag/student.js'
 import { ACTION_TYPES, INBOUND_ACTIONS, SERVER_ONLY_ACTIONS, SOCIAL_SERVER_OPS } from './actions.ts'
 import type { ActionPayload, ActionResult, ActionType, InboundActionType, ServerOnlyActionType, SocialServerOp } from './actions.ts'
+import { CAMPUS_ACTION_TYPES, CAMPUS_EVENT_NAMES, GUEST_CAMPUS_ACTIONS } from './campus.ts'
+import type {
+  CampusActionType, CampusClubDefinition, CampusClubId, CampusDiscoveryDefinition, CampusDiscoveryId, CampusEngineEvent, CampusFaculty,
+  CampusGameAction, CampusJobDefinition, CampusJobId, CampusShuttleAction, CampusStudyAction, GuestCampusActionType, HostelHallId,
+  HostelStorageItemId, LectureSlot, LectureSlotId, ProgrammeDefinition, ProgrammeId, QuizQuestion, ShuttleStopId, StudentUnionTable,
+  TrailStopDefinition, TrailStopId, UnilagBetaRules,
+} from './campus.ts'
 import type {
   ActivityDefinition, ActivityOutcomeRule, AdColour, AdIcon, Appearance, BillboardContent, BoutiquePrices, CalendarEvent, CarDefinition,
   CatalogueSpot, CityLink, CityLinkFrom, CityMapNames, CityRules, CityVenueLabel, ComingSoonDefinition, DayTitle, DepositTerm, District,
@@ -109,6 +122,9 @@ export type ListChecks = [
   Assert<Equal<Members<typeof LGA_IDS>, LgaId>>,
   Assert<Equal<Members<typeof EVENT_NAMES>, EngineEvent>>,
   Assert<Equal<Members<typeof MODIFIER_KEYS>, ModifierKey>>,
+  Assert<Equal<Members<typeof CAMPUS_ACTION_TYPES>, CampusActionType>>,
+  Assert<Equal<Members<typeof GUEST_CAMPUS_ACTIONS>, GuestCampusActionType>>,
+  Assert<Equal<Members<typeof CAMPUS_EVENT_NAMES>, CampusEngineEvent>>,
 ]
 
 // ---- compile-time conformance of the content tables ---------------------------------------
@@ -188,6 +204,15 @@ export const contentConformance = {
   spray: SPRAY satisfies Loose<SprayRules>,
   tableRewards: TABLE_REWARDS satisfies Loose<TableRewards>,
   referral: REFERRAL satisfies Loose<ReferralRules>,
+  // The campus tables (src/campus/unilag).
+  programmes: PROGRAMMES satisfies Table<ProgrammeDefinition>,
+  lectureSlots: LECTURE_SLOTS satisfies Table<LectureSlot>,
+  betaRules: UNILAG_BETA_RULES satisfies Readonly<Record<string, number>>,
+  campusJobs: CAMPUS_JOBS satisfies Table<CampusJobDefinition>,
+  campusClubs: CAMPUS_CLUBS satisfies List<CampusClubDefinition>,
+  campusDiscoveries: CAMPUS_DISCOVERIES satisfies Table<CampusDiscoveryDefinition>,
+  unionTables: STUDENT_UNION_TABLES satisfies List<StudentUnionTable>,
+  trail: DISCOVERY_TRAIL satisfies List<TrailStopDefinition>,
 }
 
 // ---- runtime helpers ----------------------------------------------------------------------
@@ -292,6 +317,12 @@ const inner = {
   }),
   events: ({ events: e }: LifeState) => ({ attended: e.attended, count: e.count, spray: e.spray, sprayed: e.sprayed }),
   growth: ({ growth: g }: LifeState) => ({ tables: g.tables, welcomed: g.welcomed, referrals: g.referrals }),
+  unilagStudent: ({ unilagStudent: u }: LifeState) => ({
+    status: u.status, programme: u.programme, studentId: u.studentId, admittedDay: u.admittedDay, applicationCount: u.applicationCount, term: u.term, records: u.records,
+    hostel: u.hostel, lifetime: u.lifetime,
+  }),
+  unilagCommunity: ({ unilagCommunity: u }: LifeState) => ({ clubs: u.clubs, discoveries: u.discoveries, trail: u.trail, days: u.days, quiz: u.quiz, elections: u.elections }),
+  unilagShuttle: ({ unilagShuttle: u }: LifeState) => ({ rides: u.rides }),
 } satisfies { [K in keyof typeof SLICE_FIELD_KEYS]: (state: LifeState) => LifeState[K] }
 
 const activeReaders = {
@@ -300,6 +331,13 @@ const activeReaders = {
   commute: (a: CommuteAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining }),
   call: (a: CallAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining }),
   intercity: (a: IntercityAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining, mode: a.mode, fare: a.fare, from: a.from }),
+  // One kind, four tasks: `semester` exists on a lecture, an assignment and a test; `session` on a lecture only.
+  'campus-study': (a: CampusStudyAction) => ({
+    kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining, task: a.task, startedDay: a.startedDay, startedMinute: a.startedMinute,
+    ...(a.task === 'lecture' ? { semester: a.semester, session: a.session } : a.task === 'assignment' || a.task === 'test' ? { semester: a.semester } : {}),
+  }),
+  'campus-game': (a: CampusGameAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining, day: a.day }),
+  'campus-shuttle': (a: CampusShuttleAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining, origin: a.origin, dest: a.dest, start: a.start }),
 } satisfies { [K in ActiveKind]: (action: Extract<ActiveAction, { kind: K }>) => object }
 
 /** Every field read is present (not undefined), and the fields read are exactly the keys that exist. */
@@ -345,6 +383,29 @@ function checkState(state: LifeState, what: string): void {
   assert.deepEqual(keys(state.events.spray), ['day', 'spent'], `${what}: events.spray`)
   assert.deepEqual(keys(state.growth.tables), ['bots', 'day', 'paid', 'played', 'won'], `${what}: growth.tables`)
   assert.deepEqual(keys(state.growth.referrals), ['paid', 'total', 'week'], `${what}: growth.referrals`)
+  const student = state.unilagStudent
+  assert.deepEqual(keys(student.hostel), ['allocations', 'storage'], `${what}: unilagStudent.hostel`)
+  assert.deepEqual(keys(student.lifetime), ['campusJobDays', 'scholarshipPaid'], `${what}: unilagStudent.lifetime`)
+  for (const room of student.hostel.allocations) assert.deepEqual(keys(room), ['attempt', 'hall', 'room', 'semester'], `${what}: hostel allocation`)
+  for (const item of Object.keys(student.hostel.storage)) assert.ok((HOSTEL_STORAGE_ITEMS as readonly string[]).includes(item), `${what}: hostel storage ${item}`)
+  if (student.term) {
+    assert.deepEqual(keys(student.term), ['assessments', 'attempt', 'attendance', 'deadlineDay', 'deferredAtDay', 'deferredDays', 'registeredCourses', 'semester', 'startDay', 'study'], `${what}: unilagStudent.term`)
+    const courses = sorted(student.term.registeredCourses)
+    for (const record of [student.term.attendance, student.term.study, student.term.assessments]) assert.deepEqual(keys(record), courses, `${what}: a term record is keyed by the registered courses`)
+    for (const assessment of Object.values(student.term.assessments)) assert.deepEqual(keys(assessment), ['assignment', 'test'], `${what}: assessment`)
+  }
+  for (const record of student.records) {
+    assert.deepEqual(keys(record), ['attempt', 'closedDay', 'courseResults', 'gpa', 'passed', 'scholarshipAwarded', 'semester', 'startedDay'], `${what}: semester record`)
+    for (const result of record.courseResults) assert.deepEqual(keys(result), ['assignment', 'attendanceDays', 'attendanceMark', 'courseId', 'credits', 'exam', 'grade', 'points', 'total'], `${what}: course result`)
+  }
+  const community = state.unilagCommunity
+  assert.deepEqual(keys(community.elections), ['nominated', 'voted'], `${what}: unilagCommunity.elections`)
+  if (community.quiz) assert.deepEqual(keys(community.quiz), ['day', 'faculty', 'questionId', 'startedAt'], `${what}: unilagCommunity.quiz`)
+  for (const day of community.days) {
+    assert.deepEqual(keys(day).filter((key) => key !== 'teams'), ['day', 'games', 'volunteered'], `${what}: community day`)
+    assert.equal('teams' in day, Object.keys(day.games).length > 0, `${what}: a day has teams exactly when a game was scored`)
+    for (const team of Object.values(day.teams ?? {})) assert.deepEqual(keys(team), ['faculty', 'hall', 'studentId'], `${what}: team`)
+  }
 }
 
 function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
@@ -410,6 +471,22 @@ function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   assert.deepEqual(keys(shown.events.spray), ['amounts', 'left', 'perDay', 'spentToday'], `${what}: spray`)
   assert.deepEqual(keys(shown.growth.tables), ['paidLeft', 'paidToday', 'perDay', 'played', 'win', 'won'], `${what}: growth.tables`)
   assert.deepEqual(keys(shown.growth.referral), ['lifetime', 'paidThisWeek', 'paidTotal', 'perWeek', 'reward', 'rewardStars', 'welcome', 'welcomed'], `${what}: growth.referral`)
+  const campus = shown.unilagStudent
+  if (campus.programme) assert.deepEqual(keys(campus.programme), ['department', 'faculty', 'id', 'label', 'spot'], `${what}: programme card`)
+  if (campus.degree) assert.deepEqual(keys(campus.degree), ['careerTrack', 'cgpa', 'faculty', 'programme', 'skill'], `${what}: degree`)
+  for (const course of campus.courses) assert.deepEqual(keys(course), ['assignment', 'attendance', 'credits', 'id', 'skill', 'slot', 'study', 'test', 'title'], `${what}: course progress`)
+  assert.deepEqual(keys(campus.betaRules), keys(UNILAG_BETA_RULES), `${what}: betaRules`)
+  for (const job of campus.campusJobs) assert.deepEqual(keys(job), ['id', 'label', 'pay', 'spot'], `${what}: campus job`)
+  const community = shown.unilagCommunity
+  for (const club of community.clubs) assert.deepEqual(keys(club), ['id', 'joined', 'label', 'spot'], `${what}: club`)
+  for (const discovery of community.discoveries) assert.deepEqual(keys(discovery), ['found', 'id', 'label', 'skill'], `${what}: discovery`)
+  for (const table of community.tables) assert.deepEqual(keys(table), ['game', 'id', 'label', 'seats', 'spot'], `${what}: union table`)
+  for (const event of community.events) assert.deepEqual(keys(event), ['beta', 'endsAt', 'id', 'label', 'startsAt', 'tags'], `${what}: campus event`)
+  if (community.quiz) assert.deepEqual([keys(community.quiz), keys(community.quiz.question)], [['faculty', 'question'], ['id', 'options', 'prompt']], `${what}: quiz`)
+  assert.deepEqual(keys(community.today).filter((key) => key !== 'teams'), ['day', 'games', 'volunteered'], `${what}: today`)
+  assert.deepEqual(keys(community.trail), ['complete', 'found', 'shareText', 'total'], `${what}: trail`)
+  for (const stop of shown.unilagShuttle.stops) assert.deepEqual(keys(stop), ['id', 'label'], `${what}: shuttle stop`)
+  if (shown.unilagShuttle.active) assert.deepEqual(keys(shown.unilagShuttle.active), ['destination', 'origin', 'refundable'], `${what}: shuttle ride`)
   return shown
 }
 
@@ -484,7 +561,8 @@ test('a guest who is playing is refused exactly what needs a home, until it sett
   for (const type of ACTION_TYPES) {
     const payload = type === 'travel' ? { id: 'home', mode: 'trek' } : {}
     const result = dispatch(state, { type, payload }, { ...at(), internal: true }) as { code: string }
-    const needsHome = type.startsWith('home.') || type.startsWith('estate.') || type === 'property.house-move' || type === 'travel'
+    // … and, at the campus, being a student (onboarding.js GUEST_CAMPUS): visiting, the trail, the games and the shuttle stay open.
+    const needsHome = type.startsWith('home.') || type.startsWith('estate.') || type === 'property.house-move' || type === 'travel' || GUEST_CAMPUS.test(type)
     assert.equal(result.code === 'settle_required', needsHome, `${type}: ${result.code}`)
     // The wardrobe and the Boutique open once there is a home: their own handler says so with this code (mustBeDone).
     assert.equal(result.code === 'onboarding_required', type === 'onboarding.set-look' || type === 'onboarding.boutique-buy', `${type}: ${result.code}`)
@@ -598,7 +676,8 @@ test('every slice of a mid-game life has exactly the declared fields, and surviv
     else if (action.kind === 'activity') complete(activeReaders.activity(action), action, 'activity action')
     else if (action.kind === 'call') complete(activeReaders.call(action), action, 'call action')
     else if (action.kind === 'commute') complete(activeReaders.commute(action), action, 'commute action')
-    else complete(activeReaders.intercity(action), action, 'intercity action')
+    else if (action.kind === 'intercity') complete(activeReaders.intercity(action), action, 'intercity action')
+    else assert.fail(`${action.kind}: the campus kinds are read in the campus test`)
   }
 
   const shown = checkView(state, at(now), 'mid-game')
@@ -627,6 +706,207 @@ test('a running timed action shows in the views that describe it', () => {
   const running = view(state, at()).activities.active
   assert.ok(running)
   assert.deepEqual(keys(running), ['cancellable', 'icon', 'id', 'label', 'reward', 'tags'])
+})
+
+// ---- the UNILAG campus (src/campus/unilag) ---------------------------------------------------
+
+test('the campus id unions are exactly the campus tables', () => {
+  assert.deepEqual(keys(PROGRAMMES), idsOf<ProgrammeId>({ eee: true, computer: true, mechanical: true, civil: true, english: true, business: true, economics: true }))
+  const faculties = idsOf<CampusFaculty>({ Engineering: true, Arts: true, 'Management Sciences': true, 'Social Sciences': true })
+  assert.deepEqual(sorted(CAMPUS_FACULTIES), faculties)
+  assert.deepEqual(keys(QUIZ_QUESTIONS), faculties)
+  const halls = idsOf<HostelHallId>({ moremi: true, mariere: true, 'eni-njoku': true, jaja: true, fagunwa: true })
+  assert.deepEqual(sorted(HOSTEL_HALLS), halls)
+  assert.deepEqual(sorted(CAMPUS_HALLS), halls, 'games.js keeps its own copy of the hall list')
+  assert.deepEqual(sorted(HOSTEL_STORAGE_ITEMS), idsOf<HostelStorageItemId>({ rice: true, garri: true, sugar: true, noodles: true, eggs: true, bread: true, zobo: true, plantain: true }))
+  assert.deepEqual(keys(CAMPUS_JOBS), idsOf<CampusJobId>({ 'library-assistant': true, 'lab-assistant': true, tutor: true }))
+  assert.deepEqual(sorted(CAMPUS_CLUBS.map((club) => club.id)), idsOf<CampusClubId>({ robotics: true, literary: true, debate: true, enterprise: true, football: true }))
+  assert.deepEqual(keys(CAMPUS_DISCOVERIES), idsOf<CampusDiscoveryId>({ senate: true, library: true, 'lagoon-front': true, 'sports-centre': true, 'student-union': true }))
+  assert.deepEqual(sorted(DISCOVERY_TRAIL.map((stop) => stop.id)), idsOf<TrailStopId>({
+    'main-gate': true, 'new-hall': true, library: true, engineering: true, sports: true, auditorium: true, lagoon: true, 'student-union': true,
+  }))
+  assert.deepEqual(sorted(SHUTTLE_STOPS.map((stop) => stop.id)), idsOf<ShuttleStopId>({
+    'main-gate': true, 'new-hall-shopping': true, senate: true, engineering: true, 'sports-centre': true, 'second-gate': true, 'dli-building': true, 'lagoon-front': true,
+  }))
+  assert.deepEqual(keys(LECTURE_SLOTS), idsOf<LectureSlotId>({ morning: true, afternoon: true, night: true }))
+  assert.deepEqual(keys(UNILAG_BETA_RULES), idsOf<keyof UnilagBetaRules>({
+    admissionFee: true, tuition: true, levy: true, hostelFee: true, hostelSleepSeconds: true, hostelSleepEnergy: true, semesterDays: true, lectureSeconds: true,
+    assessmentSeconds: true, campusJobSeconds: true, lectureXp: true, attendanceMaximumDays: true, attendanceWeight: true, assignmentWeight: true, examWeight: true,
+    graduationCgpa: true, scholarshipCgpa: true, scholarshipAward: true,
+  }))
+
+  // Every spot the campus rules name is a spot of the venue, and every id a rule points at is in its closed set.
+  const spots = new Set((spotsOf('unilag') as CatalogueSpot[]).map((spot) => spot.id))
+  const jobs: readonly string[] = keys(JOBS)
+  for (const programme of Object.values(PROGRAMMES)) {
+    assert.ok(spots.has(programme.spot), `${programme.id}: spot`)
+    assert.ok((SKILL_IDS as readonly string[]).includes(programme.skill), `${programme.id}: skill`)
+    assert.ok(programme.careerTrack === null || jobs.includes(programme.careerTrack), `${programme.id}: career track`)
+    assert.deepEqual(programme.semesters.map((semester) => semester.number), [1, 2], programme.id)
+    assert.deepEqual(Object.keys(programme).filter((key) => key !== 'note'), ['id', 'label', 'faculty', 'department', 'spot', 'skill', 'careerTrack', 'semesters'], programme.id)
+    for (const course of programme.semesters.flatMap((semester) => semester.courses)) {
+      assert.deepEqual(keys(course), ['credits', 'id', 'skill', 'slot', 'title'], course.id)
+      assert.ok((SKILL_IDS as readonly string[]).includes(course.skill) && (course.slot === 'morning' || course.slot === 'afternoon'), course.id)
+    }
+  }
+  for (const hall of HOSTEL_HALLS) assert.ok(spots.has(`${hall}-hall`), `${hall}: the hall's spot`)
+  for (const place of [...Object.values(CAMPUS_JOBS), ...CAMPUS_CLUBS, ...DISCOVERY_TRAIL, ...STUDENT_UNION_TABLES]) assert.ok(spots.has(place.spot), `${place.id}: spot`)
+  for (const id of [...keys(CAMPUS_DISCOVERIES), ...SHUTTLE_STOPS.map((stop) => stop.id)]) assert.ok(spots.has(id), `${id}: spot`)
+  for (const discovery of Object.values(CAMPUS_DISCOVERIES)) assert.ok((SKILL_IDS as readonly string[]).includes(discovery.skill), discovery.id)
+  const questions: readonly QuizQuestion[] = Object.values(QUIZ_QUESTIONS).flat()
+  for (const question of questions) {
+    assert.deepEqual(keys(question), ['id', 'options', 'prompt'], `${question.id}: a public question never carries its answer`)
+    for (const option of question.options) assert.deepEqual(keys(option), ['id', 'label'], question.id)
+  }
+  const campus: Loose<VenueDefinition> = VENUES.unilag
+  assert.deepEqual(campus.cities, ['lagos'])
+})
+
+test('the campus lists equal what the campus systems register and emit', () => {
+  const campus = (systems() as { id: string; actions?: Record<string, unknown> }[]).filter((system) => system.id.startsWith('unilag'))
+  assert.deepEqual(campus.map((system) => system.id), ['unilagStudent', 'unilagCommunity', 'unilagShuttle'])
+  assert.deepEqual(campus.flatMap((system) => Object.keys(system.actions ?? {})), [...CAMPUS_ACTION_TYPES])
+  assert.deepEqual(ACTION_TYPES.slice(-CAMPUS_ACTION_TYPES.length), [...CAMPUS_ACTION_TYPES], 'the campus registers last')
+  assert.deepEqual((ACTION_TYPES as readonly string[]).filter((type) => GUEST_CAMPUS.test(type)), [...GUEST_CAMPUS_ACTIONS])
+  const root = fileURLToPath(new URL('../campus/unilag/', import.meta.url))
+  const source = (readdirSync(root) as string[]).filter((file) => file.endsWith('.js') && !file.endsWith('.test.js')).map((file) => readFileSync(`${root}${file}`, 'utf8')).join('\n')
+  assert.deepEqual([...new Set([...source.matchAll(/\bemit\(state,\s*'([A-Za-z.-]+)'/g)].map((match) => match[1] ?? ''))].sort(), [...CAMPUS_EVENT_NAMES])
+  // None of them is an engine event, and no system listens to one.
+  const listened = new Set((systems() as { on?: Record<string, unknown> }[]).flatMap((system) => Object.keys(system.on ?? {})))
+  for (const name of CAMPUS_EVENT_NAMES) assert.ok(!(EVENT_NAMES as readonly string[]).includes(name) && !listened.has(name), name)
+})
+
+test('a student life: every campus slice, timed action and view has exactly the declared fields, and survives a reload', () => {
+  const state = onboarded()
+  let now = MONDAY_9AM // Monday 09:00 in Lagos: the morning lecture slot, and the freshers' day
+  const run = (): ActiveAction => {
+    const active = state.activeAction
+    assert.ok(active, 'a timed action is running')
+    const seen = { ...active }
+    now += active.duration * 1000
+    assert.equal(settle(state, active.duration, now), 'completed')
+    assert.equal(state.activeAction, null)
+    return seen
+  }
+  const stand = (id: string) => assert.equal(act(state, 'spot', { id }, at(now)).code, 'selected', id)
+  const study = (action: ActiveAction): CampusStudyAction => {
+    assert.ok(action.kind === 'campus-study')
+    complete(activeReaders['campus-study'](action), action, `campus-study action (${action.task})`)
+    return action
+  }
+
+  // A visitor: the trail and the shuttle are open, the student games are not.
+  assert.equal(act(state, 'travel', { id: 'unilag', mode: 'trek' }, at(now)).code, 'started')
+  run()
+  assert.deepEqual([state.location, state.spot], ['unilag', 'main-gate'])
+  assert.equal(act(state, 'unilag.trail.visit', {}, at(now)).code, 'trail_visited')
+  assert.equal(act(state, 'unilag.discovery', {}, at(now)).code, 'student_required')
+  assert.equal(act(state, 'unilag.apply', { programme: 'eee' }, at(now)).code, 'wrong_place')
+  assert.equal(act(state, 'campus-shuttle', { destination: 'senate' }, at(now)).code, 'started')
+  const riding = view(state, at(now)).unilagShuttle.active
+  assert.deepEqual(riding, { origin: 'main-gate', destination: 'senate', refundable: false })
+  const ride = run()
+  assert.ok(ride.kind === 'campus-shuttle')
+  complete(activeReaders['campus-shuttle'](ride), ride, 'campus-shuttle action')
+  assert.deepEqual([ride.id, ride.origin, ride.dest, state.location, state.spot, state.unilagShuttle.rides], ['senate', 'main-gate', 'senate', 'unilag', 'senate', 1])
+
+  // Admission, matriculation, registration and a room, all at the Senate.
+  assert.equal(act(state, 'unilag.apply', { programme: 'eee' }, at(now)).code, 'admitted')
+  assert.equal(act(state, 'unilag.apply', { programme: 'eee' }, at(now)).code, 'already_applied')
+  assert.equal(act(state, 'unilag.change-programme', { programme: 'computer' }, at(now)).code, 'programme_changed')
+  assert.equal(act(state, 'unilag.change-programme', { programme: 'eee' }, at(now)).code, 'programme_changed')
+  assert.equal(act(state, 'unilag.matriculate', {}, at(now)).code, 'matriculated')
+  assert.match(state.unilagStudent.studentId ?? '', /^ULG-[0-9]{4}-[0-9]{6}$/)
+  const eee = PROGRAMMES.eee
+  assert.ok(eee)
+  const courses = eee.semesters[0]?.courses.map((course) => course.id) ?? []
+  assert.equal(act(state, 'unilag.register-semester', { courses: courses.slice(1) }, at(now)).code, 'courses_required')
+  assert.equal(act(state, 'unilag.register-semester', { courses }, at(now)).code, 'registered')
+  assert.equal(act(state, 'unilag.hostel.sleep', {}, at(now)).code, 'hostel_required', 'without a room the expected spot is the Senate itself')
+  assert.equal(act(state, 'unilag.hostel.allocate', { hall: 'jaja' }, at(now)).code, 'hostel_allocated')
+  assert.deepEqual([state.unilagStudent.status, state.unilagStudent.programme, state.unilagStudent.term?.semester], ['studying', 'eee', 1])
+
+  // Study at the programme's spot: three tasks of the one kind 'campus-study', then a campus job.
+  stand('engineering')
+  assert.equal(act(state, 'unilag.lecture', { course: 'eee-101' }, at(now)).code, 'started')
+  const lecture = study(run())
+  assert.deepEqual([lecture.task, lecture.id, 'session' in lecture && lecture.session, 'semester' in lecture && lecture.semester], ['lecture', 'eee-101', 'official', 1])
+  assert.equal(act(state, 'unilag.assignment', { course: 'eee-101' }, at(now)).code, 'started')
+  assert.deepEqual([study(run()).task, typeof state.unilagStudent.term?.assessments['eee-101']?.assignment], ['assignment', 'number'])
+  assert.equal(act(state, 'unilag.assignment', { course: 'eee-101' }, at(now)).code, 'already_completed')
+  assert.equal(act(state, 'unilag.test', { course: 'eee-101' }, at(now)).code, 'started')
+  assert.equal(study(run()).task, 'test')
+  assert.equal(act(state, 'unilag.close-semester', {}, at(now)).code, 'semester_running')
+  assert.equal(act(state, 'unilag.job', { id: 'lab-assistant' }, at(now)).code, 'started')
+  const job = study(run())
+  assert.deepEqual([job.task, job.id, 'semester' in job, state.unilagStudent.lifetime.campusJobDays.length], ['job', 'lab-assistant', false, 1])
+  assert.equal(act(state, 'unilag.job', { id: 'lab-assistant' }, at(now)).code, 'campus_job_done')
+
+  // The student games, a club, the hall.
+  assert.equal(act(state, 'campus-shuttle', { destination: 'sports-centre' }, at(now)).code, 'started')
+  run()
+  assert.equal(act(state, 'unilag.penalties', {}, at(now)).code, 'started')
+  const game = run()
+  assert.ok(game.kind === 'campus-game')
+  complete(activeReaders['campus-game'](game), game, 'campus-game action')
+  assert.equal(act(state, 'unilag.penalties', {}, at(now)).code, 'daily_limit')
+  assert.equal(act(state, 'unilag.discovery', {}, at(now)).code, 'discovered')
+  assert.equal(act(state, 'unilag.club.join', { id: 'football' }, at(now)).code, 'joined')
+  assert.equal(act(state, 'unilag.quiz.start', {}, at(now)).code, 'wrong_place')
+  stand('student-union')
+  assert.equal(act(state, 'unilag.quiz.start', {}, at(now)).code, 'quiz_closed', 'quiz night is on Friday evening')
+  const volunteering = view(state, at(now)).activities.cards.find((card) => card.id === 'unilag-volunteer')
+  assert.ok(volunteering && volunteering.blocked === null)
+  assert.equal(act(state, 'activity', { id: 'unilag-volunteer' }, at(now)).code, 'started')
+  run()
+  assert.equal(view(state, at(now)).activities.cards.find((card) => card.id === 'unilag-volunteer')?.blocked?.code, 'daily_limit', 'the campus veto shows on the card')
+  stand('jaja-hall')
+  assert.equal(act(state, 'unilag.hostel.sleep', {}, at(now)).code, 'started')
+  const sleep = study(run())
+  assert.deepEqual([sleep.task, sleep.id], ['sleep', 'hostel-sleep'])
+  assert.equal(act(state, 'unilag.hostel.store', { item: 'rice', count: 1, direction: 'in' }, at(now)).code, 'stored')
+  assert.deepEqual(state.unilagStudent.hostel.storage, { rice: 1 })
+  assert.equal(act(state, 'unilag.defer', {}, at(now)).code, 'deferred')
+  assert.deepEqual([state.unilagStudent.status, state.unilagStudent.term?.deferredAtDay === null], ['deferred', false])
+  assert.equal(act(state, 'unilag.lecture', { course: 'eee-101' }, at(now)).code, 'deferred')
+  assert.equal(act(state, 'unilag.resume', {}, at(now)).code, 'resumed')
+
+  // The student vote is the server's: refused to a player, recorded with server authority (Monday: nominations).
+  assert.equal(act(state, 'unilag.election.nominate', {}, at(now)).code, 'server_only')
+  const internal: LifeContext = { ...at(now), internal: true }
+  assert.equal(act(state, 'unilag.election.nominate', {}, internal).code, 'nominated')
+  assert.equal(act(state, 'unilag.election.vote', { candidate: 'someone' }, internal).code, 'polls_closed')
+  assert.equal(state.unilagCommunity.elections.nominated.length, 1)
+
+  checkState(state, 'student')
+  const today = state.unilagCommunity.days.at(-1)
+  assert.ok(today)
+  assert.deepEqual([keys(today.games), keys(today.teams ?? {}), today.volunteered], [['discovery', 'penalties'], ['discovery', 'penalties'], true])
+  assert.deepEqual([state.unilagCommunity.clubs, state.unilagCommunity.discoveries, state.unilagCommunity.trail], [['football'], ['sports-centre'], ['main-gate']])
+  // What sanitize rebuilds is what the actions wrote.
+  assert.deepEqual(life(JSON.parse(JSON.stringify(state)), { ...at(now), isNew: false }), state)
+
+  const shown = checkView(state, at(now), 'student')
+  assert.deepEqual([shown.unilagStudent.status, shown.unilagStudent.programme?.id, shown.unilagStudent.degree, shown.unilagStudent.courses.length], ['studying', 'eee', null, courses.length])
+  assert.deepEqual(shown.unilagStudent.courses[0], { ...eee.semesters[0]?.courses[0], attendance: 1, study: 1, ...state.unilagStudent.term?.assessments['eee-101'] })
+  assert.deepEqual([shown.unilagCommunity.eligible, shown.unilagCommunity.events.map((event) => event.id), shown.unilagCommunity.trail.found], [true, ['freshers'], 1])
+  assert.deepEqual(shown.unilagCommunity.today, today)
+  assert.equal(shown.unilagShuttle.active, null)
+
+  // Dropping out keeps what a new application does not reset.
+  assert.equal(act(state, 'unilag.drop', {}, at(now)).code, 'dropped')
+  assert.deepEqual([state.unilagStudent.status, state.unilagStudent.programme, state.unilagStudent.term, state.unilagStudent.hostel.allocations.length, state.unilagStudent.hostel.storage.rice], ['dropped', null, null, 0, 1])
+  checkState(state, 'dropped out')
+  assert.deepEqual(life(JSON.parse(JSON.stringify(state)), { ...at(now), isNew: false }), state)
+})
+
+test('the campus is a venue of Lagos only', () => {
+  const state = onboarded()
+  const elsewhere: LifeContext = context({ now: MONDAY_9AM, cityId: 'ibadan', seed: 'types' })
+  const refused = act(state, 'travel', { id: 'unilag', mode: 'trek' }, elsewhere)
+  assert.deepEqual([refused.ok, refused.code], [false, 'campus_lagos_only'])
+  assert.ok(!view(state, elsewhere).travel.destinations.some((destination) => destination.id === 'unilag'))
+  assert.ok(view(state, at()).travel.destinations.some((destination) => destination.id === 'unilag'))
 })
 
 // ---- registry: events and modifier keys ---------------------------------------------------
@@ -668,6 +948,7 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
     park: true, library: true, home: true, radio: true, shrine: true, 'viewing-centre': true, 'amala-shitta': true, cchub: true,
     hospital: true, salon: true, church: true, mosque: true, market: true, police: true, 'polling-unit': true, 'state-house': true,
     'i-fitness': true, office: true, quilox: true, rooftop: true, 'canopy-walk': true, palms: true, beach: true, airport: true, refinery: true,
+    unilag: true,
   }))
   // No place is waiting in this build: ComingSoonId has no member.
   assert.deepEqual(keys(COMING_SOON), idsOf<ComingSoonId>({}))
@@ -749,7 +1030,7 @@ test('venue, scene and furniture unions are exactly the values the content uses'
   assert.deepEqual([...SCENE_KINDS].sort(), idsOf<SceneKind>({
     park: true, buka: true, hub: true, club: true, office: true, market: true, gym: true, mall: true, beach: true, hospital: true,
     salon: true, rooftop: true, police: true, worship: true, radio: true, polling: true, viewing: true, shrine: true, walk: true,
-    statehouse: true, airport: true, refinery: true, home: true,
+    statehouse: true, airport: true, refinery: true, unilag: true, home: true,
   }))
   for (const venue of venues) assert.ok((SCENE_KINDS as readonly string[]).includes(venue.scene.kind), venue.scene.kind)
   assert.deepEqual([...new Set(venues.map((venue) => venue.zone))].sort(), idsOf<VenueZone>({ mainland: true, island: true, east: true }))
@@ -772,8 +1053,8 @@ test('venue, scene and furniture unions are exactly the values the content uses'
 })
 
 test('every field used by a venue, a spot, an activity or a job is declared in content.ts', () => {
-  const venueFields = ['id', 'label', 'district', 'icon', 'description', 'category', 'hours', 'zone', 'map', 'ambient', 'scene', 'spots', 'beta'] as const satisfies readonly (keyof VenueDefinition)[]
-  const spotFields = ['id', 'label', 'icon', 'caption', 'activities', 'beta'] as const satisfies readonly (keyof SpotDefinition)[]
+  const venueFields = ['id', 'label', 'district', 'icon', 'description', 'category', 'hours', 'zone', 'map', 'ambient', 'scene', 'spots', 'beta', 'cities', 'note'] as const satisfies readonly (keyof VenueDefinition)[]
+  const spotFields = ['id', 'label', 'icon', 'caption', 'activities', 'beta', 'integration'] as const satisfies readonly (keyof SpotDefinition)[]
   const catalogueSpotFields = ['id', 'label', 'icon', 'caption', 'activities'] as const satisfies readonly (keyof CatalogueSpot)[]
   const activityFields = [
     'id', 'label', 'icon', 'duration', 'cost', 'chargeOn', 'refundOnCancel', 'cancellable', 'effects', 'effectsPerSecond', 'reward',

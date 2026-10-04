@@ -260,7 +260,7 @@ export function outreachService(ctx) {
    * Look at who is due a message and send it. Runs at most once a minute from the server's heartbeat
    * (and when the operator asks). Each due message is claimed in a saved transaction first.
    */
-  function tick(options) { if (stopped) return Promise.resolve({ ran: false, reason: 'stopping' }); const run = runTick(options); current = run; run.then(() => {}, () => {}).then(() => { if (current === run) current = null; }); return run; }
+  function tick(options) { if (stopped) return Promise.resolve({ ran: false, reason: 'stopping' }); const run = runTick(options); current = run; ctx.waitUntil?.(run.catch(() => {})); run.then(() => {}, () => {}).then(() => { if (current === run) current = null; }); return run; }
   async function runTick({ force = false } = {}) {
     if (running || (!force && now() - lastTick < LIMITS.tickMs)) return { ran: false };
     running = true; lastTick = now();

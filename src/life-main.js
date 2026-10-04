@@ -117,8 +117,14 @@ onPeople(showFriends);
 function reportPlace() {
   const at = venue?.position?.();
   if (!at || !community || at.location !== client.state.location || at.location === 'home' || isDeparting(client.state)) return;
-  community.moveTo(at.x, at.z);
+  if (community.moveTo(at.x, at.z) === true) placeSent = true;
 }
+/**
+ * Whether the room has been told where the avatar stands since it was last joined. Everywhere but the campus the room
+ * says so itself (a member at the origin has not reported yet); on the campus a join starts at the main gate, which is a
+ * real place, so the game remembers whether its own report went out and repeats it with the next member list if not.
+ */
+let placeSent = false;
 /** The room's member list arrived (or emptied): draw the others where they stand, and make sure the room knows where we do. */
 function onMembers({ self, members }) {
   const next = {};
@@ -129,14 +135,15 @@ function onMembers({ self, members }) {
   }
   positions = next;
   showCrowd();
-  if (listed && !placed) reportPlace();
+  if (listed && (!placed || (client.state.location === 'unilag' && !placeSent))) reportPlace();
 }
 
 /** The 3D scene: fetched once the HUD is up. A device that cannot draw it still gets the whole game. */
 async function loadScene() {
   try {
-    const { createVenueWorld } = await import('./venue-world.js');
-    venue = createVenueWorld($('venue-scene'), { location: client.state.location, onTag: (tag) => {
+    // One scene API over two hosts: the venue host, and the UNILAG campus's own (fetched only when the player goes there).
+    const { createWorldAdapter } = await import('./campus/unilag/world-adapter.js');
+    venue = createWorldAdapter($('venue-scene'), { location: client.state.location, onTag: (tag) => {
       // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
       if (tag.kind === 'goal') void goTo(client.state.location, tag.id.replace(/^goal:/, ''));
       // A game table in the venue (walked up to, or tapped): the Tables app opens on that table — sit, watch or invite.
@@ -145,7 +152,10 @@ async function loadScene() {
       else if (tag.kind === 'player') shell.open('person', { player: tag.id });
     },
     // The avatar moved: that is where the player stands in the room (presence, and so proximity voice).
-    onMove: (at) => { if (at.location === client.state.location && at.location !== 'home' && !isDeparting(client.state)) community?.moveTo(at.x, at.z); } });
+    onMove: (at) => { if (at.location === client.state.location && at.location !== 'home' && !isDeparting(client.state) && community?.moveTo(at.x, at.z) === true) placeSent = true; },
+    // The campus: its host walks the avatar to a landmark and then asks for the game's ordinary `spot` action; its shuttle runs on server time.
+    commitSpot: ({ id }) => commitSpot(id), now: () => client.serverNow(),
+    onHost: () => { if (shell) { layoutScene(); reportPlace(); } } });
     $('scene-wait')?.remove();
     venue.setState(client.state);
     showPlayer();
@@ -327,6 +337,7 @@ function accepted(state, previous) {
     if (pendingRoute && pendingRoute.venue !== state.location) pendingRoute = null; // went somewhere else instead
   }
   // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
+  if (roomJoinNeeded(previous, state)) placeSent = false;
   if (roomJoinNeeded(previous, state)) community?.join(client.cityId, state.location);
   venue?.setState(state);
   showPlayer();
@@ -353,7 +364,7 @@ function accepted(state, previous) {
   }
 }
 
-async function command(type, payload) {
+async function sendCommand(type, payload) {
   if (type === 'cancel') pendingRoute = null;
   const measured = telemetry.action(type);
   const result = await client.command(type, payload);
@@ -361,6 +372,25 @@ async function command(type, payload) {
   if (!result.ok && result.reason && result.code !== 'busy') shell.toast(result.reason, 'error');
   if (!result.ok && type === 'travel') pendingRoute = null;
   return result;
+}
+
+/** The campus host calls this once the avatar has reached the landmark it was sent to: the ordinary `spot` action. */
+async function commitSpot(id) {
+  const result = await sendCommand('spot', { id });
+  if (result.ok) shell.setExpanded(true);
+  render();
+  return result;
+}
+
+/** Every game action goes through here. On the campus a spot is walked to first (the host commits it on arrival); everywhere else it is sent at once. */
+async function command(type, payload) {
+  if (type === 'spot' && client.state.location === 'unilag' && venue?.host === 'campus' && typeof payload?.id === 'string' && payload.id !== client.state.spot) {
+    const result = await venue.walkToSpot(payload.id);
+    // A refusal of the walk itself (the server's own refusals were already shown by commitSpot).
+    if (!result.ok && result.reason && (result.code === 'no_route' || result.code === 'invalid_spot')) shell.toast(result.reason, 'error');
+    return result;
+  }
+  return sendCommand(type, payload);
 }
 
 /**
@@ -607,6 +637,7 @@ async function switchCity(id) {
   if (!result.ok) { if (result.reason) shell.toast(result.reason, 'error'); return; }
   noteCity(id);
   world?.setCity(id); cityMap?.setCity(id);
+  placeSent = false;
   community?.join(id, client.state.location);
   venue?.setLocation(client.state.location);
   shell.setMode('venue');

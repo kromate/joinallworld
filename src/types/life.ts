@@ -6,10 +6,11 @@
  * survives a load. `src/types/engine.test.ts` fails when the running code and these types drift.
  *
  * Naming: a `<System>Slice` holds the TOP-LEVEL state keys a system owns (its `stateKeys`);
- * `LifeState` is the intersection of all twenty. Older systems keep several flat keys
+ * `LifeState` is the intersection of all twenty-three (the three campus slices are in campus.ts). Older systems keep several flat keys
  * (`cash`, `needs`, `job` …); newer ones keep one object under their own id (`travel`, `goals` …),
  * typed as `<System>State`.
  */
+import type { CampusActiveAction, UnilagCommunitySlice, UnilagShuttleSlice, UnilagStudentSlice } from './campus.ts'
 
 // ---- closed id sets -----------------------------------------------------------------------
 
@@ -19,11 +20,14 @@ export type NeedId = 'hunger' | 'energy' | 'fun' | 'social' | 'hygiene' | 'bladd
 /** The nine skills (systems/skills.js SKILLS). */
 export type SkillId = 'cooking' | 'charisma' | 'fitness' | 'coding' | 'music' | 'hustle' | 'dance' | 'comedy' | 'photography'
 
-/** Every venue in this build (keys of content/venues.js VENUES). `state.location` is always one of these. */
+/**
+ * Every venue in this build (keys of content/venues.js VENUES). `state.location` is always one of these.
+ * 'unilag' (the campus, src/campus/unilag/content.js) exists in Lagos only: see VenueDefinition.cities.
+ */
 export type VenueId =
   | 'park' | 'library' | 'home' | 'radio' | 'shrine' | 'viewing-centre' | 'amala-shitta' | 'cchub'
   | 'hospital' | 'salon' | 'church' | 'mosque' | 'market' | 'police' | 'polling-unit' | 'state-house'
-  | 'i-fitness' | 'office' | 'quilox' | 'rooftop' | 'canopy-walk' | 'palms' | 'beach' | 'airport' | 'refinery'
+  | 'i-fitness' | 'office' | 'quilox' | 'rooftop' | 'canopy-walk' | 'palms' | 'beach' | 'airport' | 'refinery' | 'unilag'
 
 /**
  * Places shown on the map that cannot be travelled to yet (content/venues.js COMING_SOON).
@@ -203,8 +207,8 @@ export interface IntercityAction extends ActiveActionBase {
   from: WorldCityId
 }
 
-/** The single timed-action slot. Only one runs at a time. */
-export type ActiveAction = ActivityAction | TravelAction | CommuteAction | CallAction | IntercityAction
+/** The single timed-action slot. Only one runs at a time. The campus kinds ('campus-study', 'campus-game', 'campus-shuttle') are in campus.ts. */
+export type ActiveAction = ActivityAction | TravelAction | CommuteAction | CallAction | IntercityAction | CampusActiveAction
 
 /** Every registered timed-action kind. */
 export type ActiveKind = ActiveAction['kind']
@@ -617,8 +621,8 @@ export type OnboardingStage = 'guest' | 'settled'
 export interface OnboardingState {
   /**
    * A guest plays in public venues at once but has no home, no local government and no house until
-   * 'onboarding.home' succeeds: going Home, `home.*`, `estate.*` and 'property.house-move' are
-   * refused with 'settle_required'.
+   * 'onboarding.home' succeeds: going Home, `home.*`, `estate.*`, 'property.house-move' and the student
+   * actions of the campus (campus.ts GuestCampusActionType) are refused with 'settle_required'.
    */
   stage: OnboardingStage
   /** The life has moved in. Traits and lottery effects apply only once true. */
@@ -917,12 +921,13 @@ export interface GrowthSlice {
  */
 export interface LifeState extends CoreSlice, WalletSlice, InventorySlice, NeedsSlice, SkillsSlice, CareerSlice, ActivitiesSlice,
   TravelSlice, HealthSlice, EconomySlice, PropertySlice, EstateSlice, HomeSlice, OnboardingSlice, GoalsSlice, SocialSlice, CivicSlice,
-  MissionsSlice, EventsSlice, GrowthSlice {}
+  MissionsSlice, EventsSlice, GrowthSlice, UnilagStudentSlice, UnilagCommunitySlice, UnilagShuttleSlice {}
 
 /** System ids in registration order (systems/index.js). Sanitize, events and modifiers all run in this order. */
 export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
   | 'economy' | 'property' | 'estate' | 'home' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth'
+  | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
 
 /** The top-level keys each system owns. */
 export interface SliceBySystem {
@@ -946,6 +951,9 @@ export interface SliceBySystem {
   missions: MissionsSlice
   events: EventsSlice
   growth: GrowthSlice
+  unilagStudent: UnilagStudentSlice
+  unilagCommunity: UnilagCommunitySlice
+  unilagShuttle: UnilagShuttleSlice
 }
 
 // ---- context and results ------------------------------------------------------------------
@@ -1033,7 +1041,8 @@ export interface AdvanceOutcome {
 export const LIFE_STATE_KEYS = [
   'activeAction', 'career', 'cash', 'civic', 'completedShifts', 'decay', 'economy', 'estate', 'events', 'goals', 'growth',
   'health', 'home', 'homeOwned', 'inventory', 'job', 'ledger', 'ledgerDays', 'location', 'message', 'missions', 'moodlets',
-  'name', 'needs', 'onboarding', 'property', 'skills', 'social', 'spot', 't', 'travel', 'v',
+  'name', 'needs', 'onboarding', 'property', 'skills', 'social', 'spot', 't', 'travel', 'unilagCommunity', 'unilagShuttle',
+  'unilagStudent', 'v',
 ] as const satisfies readonly (keyof LifeState)[]
 
 /** Each system's `stateKeys`, in registration order. */
@@ -1058,6 +1067,9 @@ export const SYSTEM_STATE_KEYS = {
   missions: ['missions'],
   events: ['events'],
   growth: ['growth'],
+  unilagStudent: ['unilagStudent'],
+  unilagCommunity: ['unilagCommunity'],
+  unilagShuttle: ['unilagShuttle'],
 } as const satisfies { readonly [S in SystemId]: readonly (keyof SliceBySystem[S])[] }
 
 /**
@@ -1082,6 +1094,9 @@ export const SLICE_FIELD_KEYS = {
   missions: ['active', 'claimed', 'daily', 'day', 'paidDay', 'rerolls', 'seed', 'sets', 'stamps', 'titles', 'visited', 'week', 'weekly'],
   events: ['attended', 'count', 'spray', 'sprayed'],
   growth: ['referrals', 'tables', 'welcomed'],
+  unilagStudent: ['admittedDay', 'applicationCount', 'hostel', 'lifetime', 'programme', 'records', 'status', 'studentId', 'term'],
+  unilagCommunity: ['clubs', 'days', 'discoveries', 'elections', 'quiz', 'trail'],
+  unilagShuttle: ['rides'],
 } as const satisfies { readonly [K in keyof LifeState]?: readonly (keyof LifeState[K])[] }
 
 /** NEEDS, in the engine's display order. */
@@ -1097,4 +1112,4 @@ export const LGA_IDS = [
 export const SKILL_IDS = ['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography'] as const satisfies readonly SkillId[]
 
 /** Every registered timed-action kind, sorted. */
-export const ACTIVE_KINDS = ['activity', 'call', 'commute', 'intercity', 'travel'] as const satisfies readonly ActiveKind[]
+export const ACTIVE_KINDS = ['activity', 'call', 'campus-game', 'campus-shuttle', 'campus-study', 'commute', 'intercity', 'travel'] as const satisfies readonly ActiveKind[]

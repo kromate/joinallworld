@@ -48,6 +48,8 @@ async function claim() {
 }
 
 function onMessage(message) {
+  // The Worker host cannot ping a hibernating socket: it asks, and the answer proves this connection is alive.
+  if (message.type === 'heartbeat') { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return; }
   if (message.type === 'tables') { T.list = message.tables; T.listAt = Date.now(); }
   else if (message.type === 'tables-changed') send('table-list', { venue: undefined, table: undefined });
   else if (message.type === 'table-state') {

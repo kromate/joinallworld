@@ -162,7 +162,7 @@ export type VenueCategoryId = 'food' | 'fun' | 'nightlife' | 'work' | 'care' | '
 export type SceneKind =
   | 'park' | 'buka' | 'hub' | 'club' | 'office' | 'market' | 'gym' | 'mall' | 'beach' | 'hospital' | 'salon'
   | 'rooftop' | 'police' | 'worship' | 'radio' | 'polling' | 'viewing' | 'shrine' | 'walk' | 'statehouse' | 'airport'
-  | 'refinery' | 'home'
+  | 'refinery' | 'unilag' | 'home'
 
 export interface VenueScene {
   kind: SceneKind
@@ -186,6 +186,8 @@ export interface SpotDefinition {
   caption?: string
   activities: ActivityDefinition[]
   beta?: boolean
+  /** Campus only ('unilag' → 'student-union'): names a feature another owner is asked to bind to this spot. Dropped from the merged catalogue. */
+  integration?: { requested: string }
 }
 
 export interface VenueDefinition {
@@ -205,6 +207,13 @@ export interface VenueDefinition {
   /** The first spot is where a player stands on arrival. Other systems attach activities by spot id. */
   spots: Record<SpotId, SpotDefinition>
   beta?: boolean
+  /**
+   * The cities this venue exists in; omitted = every city. Only 'unilag' sets it (['lagos']): elsewhere the venue is left
+   * out of `view.travel.destinations` and a trip to it is refused ('campus_lagos_only'; 'invalid_travel' for any other such venue).
+   */
+  cities?: WorldCityId[]
+  /** Where the values come from. Campus only. */
+  note?: string
 }
 
 /** A spot of the merged catalogue (activities.js spotsOf): venue content plus what systems attached. */

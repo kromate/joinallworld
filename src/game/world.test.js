@@ -82,9 +82,9 @@ test('world systems are registered and survive hostile saves', () => {
   assert.deepEqual(createLife(JSON.parse(JSON.stringify(state)), at(MONDAY_NOON + 60000)), state, 'a valid state round-trips unchanged');
 });
 
-test('venue catalogue: 25 venues with district, hours, scene kind, map position, spots and activities', () => {
+test('venue catalogue: 25 venues and the UNILAG campus with district, hours, scene kind, map position, spots and activities', () => {
   const ids = ['home', 'park', 'library', 'amala-shitta', 'cchub', 'shrine', 'viewing-centre', 'market', 'i-fitness', 'office', 'quilox', 'canopy-walk', 'palms', 'beach',
-    'hospital', 'salon', 'rooftop', 'police', 'church', 'mosque', 'radio', 'polling-unit', 'state-house', 'airport', 'refinery'];
+    'hospital', 'salon', 'rooftop', 'police', 'church', 'mosque', 'radio', 'polling-unit', 'state-house', 'airport', 'refinery', 'unilag'];
   assert.deepEqual(Object.keys(VENUES).sort(), [...ids].sort());
   assert.deepEqual(Object.keys(COMING_SOON), [], 'nothing in Lagos is coming soon: the airport and the refinery are venues');
   const seen = new Set();
@@ -98,7 +98,8 @@ test('venue catalogue: 25 venues with district, hours, scene kind, map position,
     assert.ok(venue.ambient.length >= 2, `${venue.id} ambient lines`);
     if (venue.hours) assert.ok(Number.isFinite(venue.hours.open) && Number.isFinite(venue.hours.close) && venue.hours.open !== venue.hours.close, `${venue.id} hours`);
     const own = Object.values(venue.spots).filter((spot) => !['people', 'work'].includes(spot.id));
-    assert.ok(own.length >= 3 && own.length <= 5, `${venue.id} has ${own.length} spots`);
+    // The campus is a venue the size of a district: one spot per landmark (src/campus/unilag/layout.js).
+    assert.ok(own.length >= 3 && own.length <= (venue.id === 'unilag' ? 64 : 5), `${venue.id} has ${own.length} spots`);
     const defs = own.flatMap((spot) => spot.activities);
     assert.ok(venue.id === 'home' || defs.length >= 7, `${venue.id} has ${defs.length} activities`);
     for (const spot of own) { assert.equal(venue.spots[spot.id], spot); assert.ok(spot.label && spot.activities.length >= 1, `${venue.id}/${spot.id}`); }
@@ -116,7 +117,7 @@ test('venue catalogue: 25 venues with district, hours, scene kind, map position,
   assert.ok(seen.size >= 180, `${seen.size} activities`);
   // Places that must be reachable at any hour.
   for (const id of ['home', 'park', 'hospital', 'police', 'amala-shitta']) assert.equal(VENUES[id].hours, undefined, id);
-  for (const id of ids.filter((id) => id !== 'home')) assert.ok(CITY_LABELS.ibadan[id]?.label, `Ibadan label for ${id}`);
+  for (const id of ids.filter((id) => id !== 'home' && (!VENUES[id].cities || VENUES[id].cities.includes('ibadan')))) assert.ok(CITY_LABELS.ibadan[id]?.label, `Ibadan label for ${id}`);
   assert.equal(venueLabel('park', 'ibadan'), 'Agodi Gardens'); assert.equal(venueLabel('airport', 'lagos'), 'Airport');
   assert.deepEqual(Object.keys(CITY_MAPS).sort(), ['ibadan', 'lagos']);
   assert.deepEqual(Object.keys(HOME_SPOTS).sort(), ['banana', 'ikoyi', 'lekki', 'mushin', 'yaba']);

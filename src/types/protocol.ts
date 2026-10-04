@@ -9,7 +9,9 @@
  *   server/routes/core.js       session, life, action, voice configuration, health
  *   server/protocol.js          validation shared with the Cloudflare Worker
  *   server/ws/rooms.js          venue rooms: join, move, voice-state, signal, chat
- *   deploy/cloudflare-worker.js the second host; every place it differs is marked `WORKER:`
+ *   deploy/cloudflare-worker.js the second host. It builds the same server context and runs the SAME route and socket
+ *                               registries (server/routes/index.js, server/ws/index.js), so it answers every route and
+ *                               accepts every frame below; the few places it still differs are marked `WORKER:`
  *
  * Types only, plus the runtime key lists at the bottom that src/types/protocol.test.ts compares
  * with what the server really registers and sends.
@@ -21,6 +23,7 @@ import type { CivicHttpRoutes } from './civic.ts'
 import type { ModerationHttpRoutes, SupportHttpRoutes } from './support.ts'
 import type { WorldHttpRoutes } from './world.ts'
 import type { GrowthHttpRoutes, GrowthModerationHttpRoutes, TableClientFrame, TableErrorCode, TableServerFrame } from './growth.ts'
+import type { CampusHttpRoutes } from './campus.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -38,7 +41,6 @@ export interface PublicSession {
 /**
  * The caller's OWN session, as the session routes answer it (server/routes/core.js ownSession):
  * the public identity plus the cities this session has a life in.
- * WORKER: sends `{ id, name }` only, so `cities` is absent there (src/client.js tolerates that).
  */
 export interface OwnSession extends PublicSession {
   cities?: CityId[]
@@ -53,8 +55,8 @@ export type TimedId = `${number}:${string}`
 
 /**
  * Fields the Node route host adds to every success whose body is a JSON object (server.js `handle`).
- * WORKER: `serverTime` is added by each handler instead and `storage` is never sent; the Worker's
- * GET /api/health carries neither.
+ * WORKER: the same envelope (its store refuses everything after an uncertain write, so `storage: 'failing'` there
+ * accompanies the last answers before the object restarts).
  */
 export interface ApiEnvelope {
   /** Server clock in ms. The client keeps `serverTime - Date.now()` as its clock offset. */
@@ -67,7 +69,6 @@ export type Ok<T> = T & ApiEnvelope
 /**
  * Body of every non-2xx answer: `{ error }`, plus `reason` when the server wrote a sentence for
  * the player (name_not_allowed, muted, storage_unavailable, client_id_required, receipt_quota, …).
- * WORKER: never sends `reason`.
  */
 export interface ApiErrorBody<Code extends string = string> {
   error: Code
@@ -112,7 +113,6 @@ export interface SessionRequest {
    * Only the literal `true`, and only when the request CREATES a session: lives of that session
    * start as GUESTS of the quick start — held until their look is confirmed (one action), then
    * playing in public venues until they settle in. Ignored for an existing session.
-   * WORKER: ignored entirely — a Worker session's lives are never guests.
    */
   onboarding?: boolean
 }
@@ -173,12 +173,10 @@ export interface HealthResponse extends ApiEnvelope {
   build: string
 }
 /**
- * WORKER: GET /api/health is answered by the Worker's entry point before any origin check or rate
- * limit, with a different key for the build (`buildId`, not `build`) and no `serverTime`.
+ * WORKER: the same route (server/routes/core.js), to which the host adds which transport answered and the build
+ * under its older key as well.
  */
-// INCONSISTENT: deploy/cloudflare-worker.js:44 `{ ok, transport, buildId }` vs server/routes/core.js `{ ok, build, serverTime }`.
-export interface WorkerHealthResponse {
-  ok: true
+export interface WorkerHealthResponse extends HealthResponse {
   transport: 'cloudflare'
   buildId: string
 }
@@ -187,7 +185,6 @@ export type ActionErrorCode = 'invalid_action' | 'invalid_payload' | 'action_exp
 /**
  * 409 with a `reason`: the session's one character travelled to another city ('estate.relocate'),
  * so it has no life left in the city asked for and none is started there (server/routes/world.js cityGate).
- * WORKER: never sent.
  */
 // INCONSISTENT: server/routes/world.js:60 also puts `city` (where the character is now) on the thrown error,
 // but the host's error body carries only `error` and `reason` (server/server.js:341-342), so it never reaches a client.
@@ -216,7 +213,7 @@ export interface CoreHttpRoutes {
     response: VoiceConfigResponse
     /**
      * Node: 403 room_membership_required, 429 voice_config_rate_limited, 503 voice_config_unavailable.
-     * WORKER: 409 join_required, 429 rate_limited, 429 relay_test_limit, 503 voice_config_unavailable.
+     * WORKER: answered by the host itself (the bounded relay test, deploy/turn-provider.js): the same refusals, plus 429 relay_test_limit.
      */
     // INCONSISTENT: the two hosts use different codes AND statuses for "not in a room" and "too many requests".
     errors: HostErrorCode | SessionErrorCode | 'room_membership_required' | 'voice_config_rate_limited' | 'voice_config_unavailable' | 'join_required' | 'relay_test_limit'
@@ -228,7 +225,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.js: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -236,14 +233,13 @@ export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
 // ---- WebSocket /socket: venue rooms (server/ws/rooms.js) -----------------------------------------
 //
 // The socket is opened with the session cookie and an Origin header; a refused upgrade is a bare
-// HTTP 403 on Node (WORKER: a JSON error — 403 upgrade_rejected, 401 device_session_required,
-// 503 connection_capacity). Frames are JSON text of at most 16 KB. There is no `leave` frame on
+// HTTP 403 on Node (WORKER: a JSON error — 403 origin_rejected or websocket_required, 401 device_session_required,
+// 429 rate_limited, 503 socket_capacity). Frames are JSON text of at most 16 KB. There is no `leave` frame on
 // either host: a socket leaves its room by joining another one or by closing.
 
 /**
  * Enter a venue room. The server admits the socket only to the venue the stored life occupies.
  * `hostId` (Home only): join THAT player's Home room as an accepted guest.
- * WORKER: `hostId` is not read, so the sender always lands in their OWN Home room.
  */
 export interface JoinFrame {
   type: 'join'
@@ -294,7 +290,8 @@ export interface ChatSendFrame {
   /**
    * Retry key, at most 80 characters. The same id in the same room replays the stored line to the
    * sender only. Node keeps the last 100 per (sender, room) in memory and does not compare the body.
-   * WORKER: receipts are stored for 24 h and the same id with another body is `chat_id_conflict`.
+   * WORKER: the retry receipts survive the object's sleep (an id, a time and a digest of the body — never the text),
+   * are kept for 24 h, and the same id with another body is `chat_id_conflict`.
    */
   clientId?: string
 }
@@ -309,7 +306,7 @@ export interface PresenceMember extends PublicSession {
 }
 /**
  * The room's member list, sent to every member on each join, leave, move and voice change.
- * Node leaves out members the recipient has a block with; WORKER: no block filtering.
+ * Members the recipient has a block with are left out (on both hosts).
  */
 export interface PresenceFrame {
   type: 'presence'
@@ -342,8 +339,8 @@ export type NodeSocketErrorCode =
   | 'invalid_player' | 'invalid_city' | 'invalid_conversation' | 'invalid_answer'
   // refused table frames (server/growth/tables.js), always with a `reason`
   | TableErrorCode
-/** WORKER: codes only the Worker sends. It never sends the Node-only moderation, guest or social codes. */
-export type WorkerSocketErrorCode = 'room_changed' | 'chat_id_conflict'
+/** WORKER: codes only the Worker sends, in addition to every code above: a retried chat id with another body, and an expired session on an open socket. */
+export type WorkerSocketErrorCode = 'chat_id_conflict' | 'device_session_required'
 export type SocketErrorCode = NodeSocketErrorCode | WorkerSocketErrorCode
 
 /**
@@ -352,7 +349,6 @@ export type SocketErrorCode = NodeSocketErrorCode | WorkerSocketErrorCode
  * a blocked or muted chat line, an unsaved write — `to` when a `signal` frame was refused, and
  * `clientId` when a `chat` frame was refused. A socket the server dropped from its room gets
  * `venue_mismatch` or `visit_ended` with no other field.
- * WORKER: only `code`, `error` and (for chat) `clientId`; never `reason`, `message` or `to`.
  */
 export interface ErrorFrame {
   type: 'error'
@@ -370,12 +366,19 @@ export type RoomServerFrame = PresenceFrame | ChatFrame | SignalRelayFrame | Err
 /** Close codes the hosts use: 1008 rate limit / expired session, 1011 server error. */
 export type SocketCloseCode = 1008 | 1011
 
-/** Everything a browser may send. WORKER: accepts only `RoomClientFrame`; anything else is `invalid_message` (or `join_required` outside a room). */
+/**
+ * WORKER: a hibernating socket cannot be pinged, so the host asks with a frame — `{ type: 'heartbeat' }` — and every
+ * browser socket (src/community.js, src/ui/panels/social-client.js, src/tables/client.js) answers
+ * `{ type: 'heartbeat-ack' }`. Node pings at the protocol level and never sends or expects either.
+ */
+export interface HeartbeatFrame { type: 'heartbeat' }
+export interface HeartbeatAckFrame { type: 'heartbeat-ack' }
+/** Everything a browser may send (on the Worker also `HeartbeatAckFrame`). */
 export type ClientFrame = RoomClientFrame | SocialClientFrame | TableClientFrame
 /**
  * Everything a server may send. Clients must ignore types they do not know: the community panel's
  * socket and the social client's socket both receive every frame addressed to the player.
- * WORKER: sends only `RoomServerFrame`.
+ * WORKER: also `HeartbeatFrame`.
  */
 export type ServerFrame = RoomServerFrame | SocialServerFrame | TableServerFrame
 export type ClientFrameType = ClientFrame['type']
@@ -469,17 +472,15 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/mod/growth/outreach/switch',
   'POST /api/mod/growth/outreach/run',
   'GET /api/mod/growth/metrics',
+  'GET /api/campus',
+  'POST /api/campus/nominate',
+  'POST /api/campus/vote',
 ] as const satisfies readonly HttpRouteKey[]
 
-/** WORKER: the only routes deploy/cloudflare-worker.js answers; every other `/api/*` path is 404 not_found. */
-export const WORKER_HTTP_ROUTE_KEYS = [
-  'GET /api/health',
-  'POST /api/session',
-  'GET /api/session',
-  'GET /api/voice-config',
-  'GET /api/life',
-  'POST /api/action',
-] as const satisfies readonly HttpRouteKey[]
+/** WORKER: the same registry, so the same routes. (`/api/mod/*` answers only when the MODERATOR_TOKEN secret is set, as on Node.) */
+export const WORKER_HTTP_ROUTE_KEYS: readonly HttpRouteKey[] = HTTP_ROUTE_KEYS
+/** WORKER: the one route the host answers itself instead of handing it to the registry (the bounded relay test). */
+export const WORKER_HOST_ROUTE_KEYS = ['GET /api/voice-config'] as const satisfies readonly HttpRouteKey[]
 
 /** `type` of every frame the Node server accepts (server/ws/index.js buildSocketHandlers). */
 export const CLIENT_FRAME_TYPES = [
@@ -487,8 +488,8 @@ export const CLIENT_FRAME_TYPES = [
   'dm-send', 'dm-read', 'people-list', 'friend-request', 'friend-answer', 'invite-knock', 'invite-answer',
   'table-list', 'table-watch', 'table-unwatch', 'table-sit', 'table-options', 'table-start', 'table-move', 'table-leave', 'table-again',
 ] as const satisfies readonly ClientFrameType[]
-/** WORKER: the frame types its webSocketMessage handles. */
-export const WORKER_CLIENT_FRAME_TYPES = ['join', 'move', 'voice-state', 'signal', 'chat'] as const satisfies readonly ClientFrameType[]
+/** WORKER: every frame type of the registry, and the answer to its application heartbeat. */
+export const WORKER_CLIENT_FRAME_TYPES: readonly (ClientFrameType | HeartbeatAckFrame['type'])[] = [...CLIENT_FRAME_TYPES, 'heartbeat-ack']
 
 /** `type` of every frame the Node server sends (server/server.js, server/ws/*.js, server/social/service.js, server/growth/tables.js). */
 export const SERVER_FRAME_TYPES = [
@@ -498,8 +499,8 @@ export const SERVER_FRAME_TYPES = [
   'people-interaction', 'invite-knock', 'invite-answer', 'invite-house', 'transfer',
   'tables', 'table-state', 'tables-changed',
 ] as const satisfies readonly ServerFrameType[]
-/** WORKER: the frame types it sends. */
-export const WORKER_SERVER_FRAME_TYPES = ['presence', 'chat', 'signal', 'error'] as const satisfies readonly ServerFrameType[]
+/** WORKER: every frame type the shared modules send, and its application heartbeat. */
+export const WORKER_SERVER_FRAME_TYPES: readonly (ServerFrameType | HeartbeatFrame['type'])[] = [...SERVER_FRAME_TYPES, 'heartbeat']
 
 /** Exact key sets of the core responses on the Node host, sorted. `storage` appears only while saving fails. */
 export const HEALTH_RESPONSE_KEYS = ['build', 'ok', 'serverTime'] as const satisfies readonly (keyof HealthResponse)[]

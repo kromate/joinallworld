@@ -91,6 +91,10 @@ export function socialService(ctx) {
   /** Register/refresh the caller, run housekeeping and apply anything owed to their life. */
   function enter(db, session) {
     ended.length = 0; // anything left over belongs to a transaction that was aborted or only read
+    // A session whose lives must all still be created has not arrived in any city: it is not
+    // registered as a player, so nobody can find, message or befriend it yet.
+    const lives = Object.values(session.cities || {}).map((entry) => entry?.state?.onboarding).filter(Boolean);
+    if (lives.length ? lives.every((o) => o.required === true && o.done !== true) : session.onboarding === true) throw ctx.fail(403, 'onboarding_required');
     const s = col(db), id = session.publicId, t = now();
     const p = s.players[id] ||= { name: session.name, first: t, seen: t, friends: {}, in: {}, out: {}, blocked: {}, convs: {}, updates: [], reports: [],
       baeIn: {}, bae: null, visiting: null, recv: { day: 0, amount: 0 }, chats: { day: 0, count: 0 } };

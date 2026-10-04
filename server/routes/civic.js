@@ -15,6 +15,8 @@
  *   - Everything is paid in in-game naira through the wallet ledger. There is no real-money path.
  *   - Every route is rate-limited per player (or per address when signed out) on top of the
  *     host's per-address limit.
+ *   - A life that must still finish character creation is not checked in: it is absent from the
+ *     neighbours directory, the rich list and the counters until it has moved in.
  *
  * Routes (response fields besides `serverTime`)
  *   GET  /api/civic/pulse       { city, checkedIn, counters: { players, online, visits }, hunt: { found, today, claims, prize, gemsPerDay },
@@ -67,8 +69,10 @@ export default function civicRoutes(ctx) {
     const who = ctx.publicSession(session);
     const life = ctx.settle(session, cityId);
     const civic = civicOf(db), city = cityOf(civic, cityId);
-    checkIn(city, ctx.now(), who, life, ttl());
-    return { session, who, life, civic, city };
+    // A life that must still be created is not a resident yet: it is in no directory, list or counter.
+    const resident = !(life.onboarding?.required === true && life.onboarding.done !== true);
+    if (resident) checkIn(city, ctx.now(), who, life, ttl());
+    return { session, who, life, civic, city, resident };
   }
   /** Read-only view of the same things. Works on the snapshot, so nothing it settles is saved. */
   function peek(db, request, cityId) {
@@ -138,7 +142,7 @@ export default function civicRoutes(ctx) {
       // A signed-in pulse is the check-in that keeps the directory, the rich list and the gem
       // counter current; it is allowed a few writes a minute and is read-only beyond that.
       if (signedIn && ctx.allow(`civic:checkin:${signedIn}`, 6)) {
-        const body = await store.transact(db => { const { who, life, city } = enter(db, request, cityId); counterCache.delete(cityId); return pulseBody(city, cityId, who, life, true); });
+        const body = await store.transact(db => { const { who, life, city, resident } = enter(db, request, cityId); counterCache.delete(cityId); return pulseBody(city, cityId, who, life, resident); });
         return { body, renew: true };
       }
       return { body: await store.read(db => { const { who, life, city } = peek(db, request, cityId); return pulseBody(city, cityId, who, life, false); }) };

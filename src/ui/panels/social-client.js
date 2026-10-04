@@ -35,7 +35,8 @@ export function onPeople(fn) { peopleWatchers.add(fn); return () => peopleWatche
 const peopleChanged = () => { for (const fn of peopleWatchers) { try { fn(S.people); } catch (error) { console.error('People watcher failed:', error); } } };
 
 const refresh = () => S.api?.refresh();
-const connected = () => Boolean(S.api?.view()?.connected);
+// Until a new life has finished character creation it is not in the city: the social features stay closed.
+const connected = () => { const view = S.api?.view(); return Boolean(view?.connected) && view.onboarding?.required !== true; };
 export const cityId = () => S.api.view().cityId;
 export const newClientId = () => `c-${globalThis.crypto.randomUUID()}`;
 
@@ -45,6 +46,7 @@ export async function call(path, body) {
   catch (error) {
     const reason = error.status === 429 ? 'Too many requests. Wait a minute and try again.'
       : error.status === 401 ? 'Your device session expired. Reconnect to continue.'
+        : error.code === 'onboarding_required' ? 'Finish creating your Sim first. People and messages open once you have moved in.'
         : error.status === 409 ? 'That was already sent with different details. Try again.'
           : error.status >= 400 && error.status < 500 ? 'That request was not accepted. Check what you typed.'
             : 'Connection lost. Nothing was changed; try again.';
@@ -254,6 +256,7 @@ export function bindCommon(root, api) {
 }
 /** Standard not-ready states; returns '' when the overview is loaded. */
 export function gate(view) {
+  if (view.onboarding?.required) return '<p class="social-note">Finish creating your Sim first. People and messages open once you have moved in.</p>';
   if (!view.connected) return '<p class="social-note is-warn">You are offline. People and messages are read-only until you reconnect.</p>';
   if (S.error && !S.me) return `<p class="social-note is-warn">Could not load: ${escapeText(S.error)} <button class="social-link" data-social-retry>Retry</button></p>`;
   if (!S.me) return '<p class="social-note">Loading…</p>';

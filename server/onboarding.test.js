@@ -72,3 +72,49 @@ test('a session created without the flag keeps today’s behaviour, and a rename
   const stored = JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')).sessions;
   assert.deepEqual(Object.values(stored).map((session) => session.onboarding === true).sort(), [false, false, false, false, false, true]);
 });
+
+test('until creation is finished a player is not in the city: no room, no presence or chat, no directory, list, counter or search', async t => {
+  const f = await fixture(t);
+  const get = async (path, device) => { const res = await f.request(path, null, device?.cookie); return { status: res.status, ...(await res.json()) }; };
+  const old = await f.device('Bola');
+  const ada = await open(f, { name: 'Ada', onboarding: true });
+  await life(f, ada); await get('/api/social/me', old);
+  const b = await f.joinRoom(old);
+  // Rooms: refused for every venue, including her own home and a host's home, so she is in nobody's presence or chat.
+  const a = await f.socket(ada);
+  for (const message of [{ venueId: 'park' }, { venueId: 'home' }, { venueId: 'home', hostId: old.id }]) {
+    a.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', ...message }));
+    assert.equal((await a.next()).code, 'onboarding_required', JSON.stringify(message));
+  }
+  a.ws.send(JSON.stringify({ type: 'chat', body: 'hello?' })); assert.equal((await a.next()).code, 'join_required');
+  b.ws.send(JSON.stringify({ type: 'move', x: 1, z: 1 }));
+  assert.deepEqual((await b.next()).members.map((member) => member.name), ['Bola'], 'the room has not heard of her');
+  // Social: not registered as a player, so she cannot be found, messaged or befriended, and cannot do so herself.
+  assert.deepEqual(await get('/api/social/me', ada), { status: 403, error: 'onboarding_required' });
+  assert.deepEqual((await get('/api/social/search?q=ada', old)).results, []);
+  const dm = await f.request('/api/social/messages', { to: ada.id, body: 'hi', clientId: 'c-12345678' }, old.cookie);
+  assert.equal((await dm.json()).code, 'unknown_player');
+  // Civic: a pulse answers but does not check her in; she is in no counter, directory or list.
+  const pulse = await get('/api/civic/pulse?city=lagos', ada);
+  assert.deepEqual([pulse.status, pulse.checkedIn, pulse.counters.players], [200, false, 0]);
+  assert.equal((await get('/api/civic/pulse?city=lagos', old)).counters.players, 1);
+  assert.ok(!JSON.stringify(await get('/api/civic/neighbours?city=lagos', old)).includes(ada.id));
+  const rich = await get('/api/civic/richlist?city=lagos', ada);
+  assert.deepEqual([rich.balances.map((row) => row.name), rich.you], [['Bola'], null]);
+  // She creates her Sim and moves in: now she is a resident like anyone else.
+  await f.action(ada.cookie, { type: 'onboarding.look', payload: { look: LOOK } });
+  await f.action(ada.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } });
+  await f.action(ada.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } });
+  const rolled = await f.action(ada.cookie, { type: 'onboarding.lottery', payload: {} });
+  const moved = await f.action(ada.cookie, { type: 'onboarding.home', payload: { house: rolled.state.onboarding.lottery.id === 'ajebutter' ? 'lekki' : 'yaba' } });
+  assert.equal(moved.code, 'life_started');
+  a.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' }));
+  assert.equal((await a.next()).type, 'presence');
+  assert.equal((await get('/api/social/me', ada)).me.name, 'Ada');
+  assert.deepEqual((await get('/api/social/search?q=ada', old)).results.map((item) => item.id), [ada.id]);
+  f.advance(6000);
+  assert.equal((await get('/api/civic/pulse?city=lagos', ada)).checkedIn, true);
+  f.advance(6000);
+  assert.equal((await get('/api/civic/pulse?city=lagos', old)).counters.players, 2);
+  assert.ok(JSON.stringify(await get('/api/civic/neighbours?city=lagos', old)).includes(ada.id));
+});

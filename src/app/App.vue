@@ -15,6 +15,7 @@ import { start as startSocial } from './features/social/useSocial.ts'
 import GameIcon from './ui/GameIcon.vue'
 import ToastStack from './ui/ToastStack.vue'
 import LinkBanner from './features/landing/LinkBanner.vue'
+import UpdateBanner from './ui/UpdateBanner.vue'
 import { useGrowth } from './features/growth/useGrowth.ts'
 import CoachTip from './features/hud/CoachTip.vue'
 import HudBar from './features/hud/HudBar.vue'
@@ -158,5 +159,6 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
   <SheetHost />
   <CommunityHost />
   <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
+  <UpdateBanner />
   <ToastStack :host="sheetOpen ? '#life-dialog' : 'body'" />
 </template>

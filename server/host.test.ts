@@ -330,6 +330,24 @@ test('ctx.env is an allowlist, ctx.fetch is https-only, bounded and follows no r
   for (const name of ['../escape', 'a/b', 'UPPER', '', '.hidden', 'x'.repeat(40)]) await assert.rejects(() => ctx.keyFile(name, async () => ({})), /Invalid key file name/, name);
 });
 
+test('static files: a missing hashed asset is a 404 (never the app page); real assets are immutable, the page is no-cache', async (t) => {
+  const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
+  t.after(() => rm(dist, { recursive: true, force: true }));
+  await mkdir(join(dist, 'assets'));
+  await writeFile(join(dist, 'index.html'), '<!doctype html><body>game</body>');
+  await writeFile(join(dist, 'assets', 'app-abc123.js'), 'console.log(1)');
+  const f = await fixture(t, { distDir: dist });
+  const missing = await fetch(`${f.base}/assets/x-123.js`);
+  assert.deepEqual([missing.status, missing.headers.get('content-type'), missing.headers.get('cache-control')], [404, 'text/plain; charset=utf-8', 'no-store']);
+  assert.ok(!(await missing.text()).includes('<'), 'a short text body, not HTML');
+  assert.equal((await fetch(`${f.base}/assets/nested/gone.css`)).status, 404);
+  const real = await fetch(`${f.base}/assets/app-abc123.js`);
+  assert.deepEqual([real.status, real.headers.get('content-type'), real.headers.get('cache-control')], [200, 'text/javascript', 'public, max-age=31536000, immutable']);
+  const deep = await fetch(`${f.base}/some/deep/link`);
+  assert.deepEqual([deep.status, deep.headers.get('content-type'), deep.headers.get('cache-control')], [200, 'text/html', 'no-cache']);
+  assert.ok((await deep.text()).includes('game'));
+});
+
 test('static files: a source map is never served, and the game page carries an absolute preview image', async (t) => {
   const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
   t.after(() => rm(dist, { recursive: true, force: true }));

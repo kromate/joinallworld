@@ -1,7 +1,7 @@
 import test from 'node:test';
 import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm, readFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
@@ -838,4 +838,21 @@ test('Worker host surface: operator routes are off without the token and bearer-
   assert.equal(metrics.status, 200);
   // Every other route still needs the page's own origin.
   assert.equal((await f.fetch('/api/session', { method: 'POST', headers: { 'content-type': 'application/json', origin: 'https://evil.test' }, body: JSON.stringify({ name: 'Mallory' }) })).status, 403);
+});
+
+test('assets: a missing hashed file is a 404 (never index.html); a real one is immutable; a deep link is still the page', async t => {
+  const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
+  t.after(() => rm(dist, { recursive: true, force: true }));
+  await mkdir(join(dist, 'assets'));
+  await writeFile(join(dist, 'index.html'), '<!doctype html><head></head><body>game</body>');
+  await writeFile(join(dist, 'assets', 'app-abc123.js'), 'console.log(1)');
+  const f = await fixture(t, { assets: { directory: dist, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } });
+  const missing = await f.fetch('/assets/x-123.js');
+  assert.deepEqual([missing.status, missing.headers.get('content-type'), missing.headers.get('cache-control')], [404, 'text/plain; charset=utf-8', 'no-store']);
+  assert.ok(!(await missing.text()).includes('<'));
+  const real = await f.fetch('/assets/app-abc123.js');
+  assert.equal(real.status, 200); assert.match(real.headers.get('content-type') as string, /javascript/); assert.equal(real.headers.get('cache-control'), 'public, max-age=31536000, immutable');
+  const deep = await f.fetch('/some/deep/link');
+  assert.equal(deep.status, 200); assert.match(deep.headers.get('content-type') as string, /text\/html/); assert.equal(deep.headers.get('cache-control'), 'no-cache');
+  assert.ok((await deep.text()).includes('game'));
 });

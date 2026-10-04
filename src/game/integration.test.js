@@ -315,3 +315,56 @@ test('one Updates feed: rent due, paid and missed, loan paid and missed, promoti
   assert.ok(state.social.notices.length <= 20);
   assert.deepEqual(createLife(structuredClone(state), at(saturday + 9 * DAY)).social.notices, state.social.notices);
 });
+
+test('gift cap in the merged economy: start cash, the loan principal, goal rewards, prizes and refunds are not "earned from work"; shift pay and paid gigs are', () => {
+  const FRIEND = '11111111-2222-4333-8444-555555555555';
+  const state = onboard(createLife(null, at(MONDAY_9AM, 'gifts', { isNew: true })));
+  let now = MONDAY_9AM;
+  const server = (seed) => ({ ...at(now, seed), internal: true });
+  const gift = (amount, seed = `gift-${amount}-${now}`) => dispatch(state, { type: 'social.server', payload: { op: 'transfer-out', to: FRIEND, name: 'Bola', amount } }, server(seed));
+  const run = (id, seconds) => { assert.equal(act(state, 'activity', { id }, at(now, id)).code, 'started', id); now += seconds * 1000; advanceLife(state, seconds, at(now)); };
+  // ₦96,000 in hand — ₦60,000 of it borrowed — and none of it may be given away.
+  assert.deepEqual([state.cash, state.social.earned, state.economy.loan.left], [96000, 0, 72000]);
+  let refused = gift(500);
+  assert.equal(refused.code, 'earn_first'); assert.match(refused.reason, /Earn at least ₦1,000 from paid work.*you have earned ₦0/);
+  // Starter goals pay ₦500 and ₦1,000 each: rewards, not wages.
+  state.spot = 'kitchen'; run('home-soak-garri', 5);
+  assert.equal(state.ledger.at(-1).reason, 'Goal: Eat something'); assert.equal(state.social.earned, 0);
+  // A gem-hunt prize, a furniture sale and a matured deposit are not wages either.
+  for (const gem of state.civic.hunt.gems) gem.found = true;
+  assert.equal(act(state, 'civic.hunt-claim', {}, at(now)).code, 'claimed');
+  assert.equal(act(state, 'economy.open-deposit', { amount: 10000, term: 'd1' }, at(now)).code, 'deposit_opened');
+  assert.equal(act(state, 'economy.close-deposit', { id: 'fd-1' }, at(now)).code, 'deposit_closed');
+  assert.equal(state.social.earned, 0);
+  assert.equal(gift(500).code, 'earn_first');
+  assert.ok(state.cash > 99000, 'plenty of cash, still nothing earned');
+  // One Tech shift at CcHub: ₦3,600 of wages.
+  assert.equal(act(state, 'cancel', undefined, at(now)).code, 'idle');
+  assert.equal(act(state, 'apply-job', { id: 'tech' }, at(now)).code, 'applied');
+  if (state.activeAction) { now += 6000; advanceLife(state, 6, at(now)); } // the automatic commute, if it started
+  state.location = 'cchub'; state.spot = 'work'; state.activeAction = null;
+  run('tech-shift', JOBS.tech.shift.duration);
+  assert.equal(state.ledger.findLast((entry) => entry.reason === 'Tech shift').amount, 3600);
+  assert.equal(state.social.earned, 3600, 'shift pay is earned from work');
+  assert.equal(viewLife(state, at(now)).social.transfer.leftToday, 3600);
+  // The cap is what was earned — not the ₦100,000 in the wallet.
+  refused = gift(4000);
+  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(refused.reason, /You can still give ₦3,600/);
+  assert.equal(gift(3000).code, 'sent');
+  refused = gift(700);
+  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(refused.reason, /You can still give ₦600/);
+  // A paid gig counts too: Freelance Gig at the hot desks pays through the same activity engine.
+  const gig = spotsOf('cchub').flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def }))).find((item) => item.def.reward > 0 && !item.def.requiresJob && !item.def.requiresSkill);
+  if (gig) {
+    state.spot = gig.spot; for (const need of Object.keys(state.needs)) state.needs[need] = 90;
+    const before = state.social.earned;
+    run(gig.def.id, gig.def.duration);
+    assert.equal(state.social.earned, before + gig.def.reward, `${gig.def.label} is paid work`);
+  }
+  // A returned gift restores the room it used, and repaying the loan changes nothing about what was earned.
+  const earned = state.social.earned;
+  assert.equal(dispatch(state, { type: 'social.server', payload: { op: 'transfer-in', from: FRIEND, name: 'Bola', amount: 3000, refund: true } }, server('refund')).code, 'received');
+  assert.equal(act(state, 'economy.pay-loan', { mode: 'week' }, at(now)).ok, true);
+  assert.equal(state.social.earned, earned);
+  assert.equal(state.social.transfer.total, 0);
+});

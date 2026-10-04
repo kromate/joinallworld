@@ -27,7 +27,7 @@
  *
  * Every step is confirmed by a server action (see src/game/systems/onboarding.js); this file
  * only keeps the draft being edited. The panel is not live, so a poll never wipes a draft:
- * it redraws itself by re-opening (api.open('onboarding')).
+ * it redraws itself with api.refresh().
  *
  * The Sim is on screen through the whole flow: the Look step is a character creator (a large 3D
  * preview with Shuffle and Undo, option tabs beside it — under it on a phone, where the preview
@@ -47,7 +47,7 @@ import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocus
 const ID = 'onboarding';
 const LAST = ONBOARDING_STEPS.length - 1;
 const DRAFT_KEY = 'joinallworld-look-draft';
-let draft = null, shown = 0, error = '', pending = '', focusKey = '', owner = null, undo = null, offered = null;
+let draft = null, shown = 0, error = '', pending = '', focusKey = '', owner = null, undo = null, offered = false;
 /** Extra sections of the Home card, added by other owners (see the header). */
 export const HOME_EXTRAS = [];
 /** The first card a life sees: a guest's look is already chosen. */
@@ -157,14 +157,18 @@ export default {
     return `<div class="ob-root" data-step="${shown}">${intro}<div class="ob-head">${shown > first ? `<button type="button" class="sheet-back" data-ob="back" data-key="back" aria-label="Back to ${esc(ONBOARDING_STEPS[shown - 1].label)}">${icon('back')}</button>` : ''}<div class="ob-head-main"><strong>Step ${shown + 1 - first} of ${count} · ${esc(ONBOARDING_STEPS[shown].label)}</strong><ol class="ob-steps" aria-label="Progress">${steps}</ol></div></div>
       ${offline}${error ? `<p class="ob-error" role="alert">${esc(error)}</p>` : ''}${content}${footer}</div>`;
   },
-  bind(root, api) {
+  bind(root, api, params) {
     // Each redraw replaces this root, so check the document, not the (possibly detached) root.
-    const redraw = () => { if (document.querySelector('.ob-root')) api.open(ID); };
+    // A redraw keeps what the sheet was opened with (the reward, or the Home tap that brought the player here).
+    const redraw = () => { if (document.querySelector('.ob-root')) api.refresh(); };
     if (focusKey) root.querySelector(`[data-key="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true });
     mountLookPreview(root, draft?.look ?? api.view().onboarding.look, { name: api.view().name });
     // One funnel event per time the sheet is put in front of a guest (a redraw of the same opening is not another offer).
-    const opened = api.view().params ?? null;
-    if (api.view().onboarding.guest && opened !== offered && draft) { offered = opened ?? {}; track('save_character_offered', { reason: opened?.nudge ?? opened?.why ?? 'asked', step: api.view().onboarding.step }); }
+    if (api.view().onboarding.guest && !offered && draft) {
+      offered = true;
+      track('save_character_offered', { reason: params?.nudge ?? params?.why ?? 'asked', step: api.view().onboarding.step });
+      root.closest('dialog')?.addEventListener('close', () => { offered = false; }, { once: true });
+    }
     const send = async (label, type, payload, then) => {
       pending = label; error = ''; redraw();
       const result = await api.command(type, payload);

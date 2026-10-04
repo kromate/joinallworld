@@ -28,7 +28,7 @@ import { linkWords, linkButton } from '../link.js';
 import session from './session.js';
 import { lookStage, lookEditor, chooseLook, lookTabClick, lookFocusBody, mountLookPreview, starterWardrobe, avatarSvg } from './look-ui.js';
 import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, starterLook } from '../../quick-start/model.js';
-import { quickDraft, keepDraft, keepPlay, joinTarget, track, play } from '../../quick-start/entry.js';
+import { quickDraft, keepDraft, keepPlay, joinTarget, track, play, firstLanding } from '../../quick-start/entry.js';
 import { APPEARANCE } from '../../game/content/traits.js';
 
 const ID = 'quick-start';
@@ -47,7 +47,7 @@ function landing(state, view) {
   return `<div class="qs-root" data-qs-root>
     <p class="qs-lead"><b>Jump into a Nigerian world with your friends.</b>Start playing in seconds. Build your life as you go.</p>
     ${invited ? `<p class="qs-join" role="status"><span aria-hidden="true">${mark('invite')}</span><span><strong>A friend invited you.</strong>Tap Play and you land where they are.</span></p>` : ''}
-    ${words && view.link !== 'new' && view.link !== 'connecting' ? `<p class="qs-note" role="status"><span aria-hidden="true">${mark('cloud-off')}</span><span><strong>${esc(words.short)}</strong>${esc(words.why)} Your character is kept on this device.</span>${linkButton(view, 'ui-button is-small')}</p>` : ''}
+    ${words && !shown && view.link !== 'new' && view.link !== 'connecting' ? `<p class="qs-note" role="status"><span aria-hidden="true">${mark('cloud-off')}</span><span><strong>${esc(words.short)}</strong>${esc(words.why)} Your character is kept on this device.</span>${linkButton(view, 'ui-button is-small')}</p>` : ''}
     ${shown ? `<p class="qs-error" role="alert">${esc(shown)}</p>` : ''}
     ${lookStage(draft.look, { variant: 'hero', name: draft.name, tools })}
     <div class="qs-presets" role="group" aria-label="Quick characters">${presets}</div>
@@ -65,11 +65,12 @@ export default {
     if (view.params?.reason === 'expired') return session.render(state, view);
     return landing(state, view);
   },
-  bind(root, api) {
+  bind(root, api, params) {
     const view = api.view();
-    if (view.params?.reason === 'expired') { session.bind(root, api); return; }
+    if (params?.reason === 'expired') { session.bind(root, api); return; }
     const draft = () => quickDraft();
-    if (!landed) { landed = true; if (!held(view)) track('landed', { join: Boolean(joinTarget()) }); }
+    // Once per device, not once per page load: a reload in the middle of the form is the same landing.
+    if (!landed) { landed = true; if (!held(view) && firstLanding()) track('landed', { join: Boolean(joinTarget()) }); }
     mountLookPreview(root, draft().look, { name: draft().name });
     // Play is where the keyboard starts (Enter plays); after a tap the focus goes back to what was tapped.
     root.querySelector(`[data-key="${CSS.escape(focusKey || 'play')}"]`)?.focus({ preventScroll: true });
@@ -77,6 +78,7 @@ export default {
     // Typing never redraws (the caret stays where it is); the draft is kept as it changes.
     input?.addEventListener('input', () => { keepDraft({ name: input.value, nameEdited: true }); });
     const go = () => {
+      if (play.sending) return; // a second tap while the first is on its way
       const name = (input?.value ?? draft().name).trim(), wrong = nameProblem(name);
       taps += 1;
       if (wrong) { error = wrong; focusKey = ''; api.refresh(); root.ownerDocument.querySelector('[data-qs-name]')?.focus(); return; }

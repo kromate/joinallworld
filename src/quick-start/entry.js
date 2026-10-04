@@ -13,6 +13,7 @@
  *                              the server applies it exactly once.
  *   joinallworld-quick-join    the public id an invite link pointed at, until the landing was handled
  *   joinallworld-quick-nudge   { [life]: { count, reasons, day } } — how often settling in was offered
+ *   joinallworld-quick-landed  1 once the landing screen was shown, so 'landed' is reported once per device
  * None of it is a credential: the session is the cookie the server sets, exactly as before.
  *
  * FUNNEL EVENTS — window 'jaw:track' { name, props } (the telemetry branch listens). Every event
@@ -31,7 +32,7 @@
  */
 import { draftFrom, nudgeMemory, joinIdFrom } from './model.js';
 
-const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge' };
+const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed' };
 const memory = new Map(); // the fallback when storage is off
 let storage = null;
 try { storage = globalThis.localStorage ?? null; } catch { storage = null; }
@@ -54,10 +55,17 @@ export function quickDraft(name) {
   landed ??= draft.landedAt;
   return draft;
 }
+/** True the first time the landing screen is shown on this device (and false after, across reloads), so 'landed' is reported once. */
+export function firstLanding() {
+  if (read(KEYS.landed)) return false;
+  write(KEYS.draft, quickDraft()); // the moment of landing is kept with the draft: `ms` counts from here, also after a reload
+  write(KEYS.landed, 1);
+  return true;
+}
 /** Change the draft and keep it. */
 export function keepDraft(changes) { draft = { ...quickDraft(), ...changes }; write(KEYS.draft, draft); return draft; }
 /** The first minute is over (the life has moved in, or belongs to a returning player): forget the drafts. */
-export function forgetDraft() { draft = null; write(KEYS.draft, null); write(KEYS.play, null); }
+export function forgetDraft() { draft = null; write(KEYS.draft, null); write(KEYS.play, null); write(KEYS.landed, null); }
 
 // ---- Play, until the server has confirmed it ---------------------------------------------------
 /** @returns {{ look: object, actionId?: string } | null} */

@@ -76,4 +76,24 @@ export const goals = definePanel({
   component: defineAsyncComponent(() => import('./life/GoalsTab.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals]
+export const profile = definePanel({
+  id: 'profile', title: 'Profile', placement: 'sim-tab', order: 10, live: false,
+  component: defineAsyncComponent(() => import('./sim/ProfileTab.vue')),
+})
+
+export const needs = definePanel({
+  id: 'needs', title: 'Needs', placement: 'sim-tab', order: 20,
+  component: defineAsyncComponent(() => import('./sim/NeedsTab.vue')),
+})
+
+export const skills = definePanel({
+  id: 'skills', title: 'Skills', placement: 'sim-tab', order: 40,
+  component: defineAsyncComponent(() => import('./sim/SkillsTab.vue')),
+})
+
+export const settings = definePanel({
+  id: 'settings', title: 'Settings', placement: 'sim-tab', order: 70, phone: true, group: 'life',
+  component: defineAsyncComponent(() => import('./sim/SettingsTab.vue')),
+})
+
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings]

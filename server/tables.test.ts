@@ -359,3 +359,35 @@ test('tables: a move whose description is empty is logged as running out of time
   await playOn([ada], 1);
   assert.ok(ada.state.log.some((line) => /Ada ran out of time/.test(line)), JSON.stringify(ada.state.log));
 });
+
+test('tables: a match that is over (called off or finished) never blocks the next one — seated players start again, and an emptied table opens at once', async (t) => {
+  const { act, all, player, claim, wins, playOn, bothMoveTwice } = await harness(t);
+  const ada = await player('Ada'), bola = await player('Bola'), chidi = await player('Chidi'), dayo = await player('Dayo');
+  // A game called off: Ada leaves before either has really moved. Nothing counts and no rating moves.
+  await act(ada, 'table-sit', {}); await act(bola, 'table-sit', {}, ada);
+  await act(ada, 'table-start', {}, bola);
+  await act(ada, 'table-leave', {}, bola);
+  assert.deepEqual([bola.state.table.status, bola.state.result.calledOff, bola.state.result.mine], ['over', true, null]);
+  // Bola, still seated, starts the next game against a bot without first pressing Play again.
+  await act(bola, 'table-start', { bots: 1 }, ada);
+  assert.deepEqual([bola.errors, bola.state.table.status, bola.state.table.seats.length], [[], 'playing', 2]);
+  assert.deepEqual([(await claim(ada)).results, (await claim(bola)).results], [[], []]);
+  await act(bola, 'table-leave', {}, ada);
+  assert.equal(bola.state.table.status, 'over');
+  // Every human has left the finished game: the next two players sit and start with 2 at once.
+  await act(chidi, 'table-sit', {}, bola); await act(dayo, 'table-sit', {}, chidi);
+  assert.deepEqual([chidi.errors, dayo.errors, dayo.state.table.status, dayo.state.table.seats.map((seat) => seat.name)], [[], [], 'open', ['Chidi', 'Dayo']]);
+  await act(chidi, 'table-start', {}, dayo);
+  assert.deepEqual([chidi.errors, chidi.state.table.status, chidi.state.table.seats.length], [[], 'playing', 2]);
+  // A finished game: both stay seated and start the next one straight from the result, with no second payout or rating change.
+  await bothMoveTwice(chidi, dayo);
+  await playOn([chidi, dayo]);
+  assert.equal(chidi.state.table.status, 'over');
+  const winner = chidi.state.result.winners[0] === 0 ? chidi : dayo;
+  if (chidi.state.result.winners.length) await claim(winner);
+  const before = (await wins(winner)).length;
+  await act(dayo, 'table-start', {}, chidi);
+  assert.deepEqual([dayo.errors, dayo.state.table.status, dayo.state.table.seats.length, dayo.state.result], [[], 'playing', 2, null]);
+  assert.deepEqual([(await claim(winner)).results, (await wins(winner)).length], [[], before]);
+  await all(chidi, dayo);
+});

@@ -41,8 +41,8 @@ Game rules belong in plain modules such as `src/life.ts` that run without a brow
 
 ## Originality
 
-- **No copied code or assets from any reference game or the older Allworld project** — no extracted scripts, models, textures, audio, icons or text.
-- Observed behaviour (a label, a price, a duration) may inform a value. Mark it in code as observed or as a placeholder, the way `src/life.ts` does. Do not present guesses as verified.
+- **No copied code or assets** from the older Allworld project or from any other game — no extracted scripts, models, textures, audio, icons or text.
+- Values that are guesses are marked as provisional (`beta: true` in content, or a placeholder note in code, the way `src/life.ts` does). Do not present guesses as verified.
 - Only contribute work you have the right to license under MIT. Note the licence of anything third-party you add.
 
 ## Keep these out of the repository

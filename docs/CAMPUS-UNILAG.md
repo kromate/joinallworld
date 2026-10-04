@@ -138,11 +138,11 @@ The Jobs hook currently gives +1 positive `career.performance` only for an exist
 
 The shared election/leaderboard/goal functions never persist their own shared state. The route handler must derive identity from its authenticated life, execute reducers and server-only life receipts within the same durable transaction, and use domain events for scores. Client payloads must never supply trusted `authority`, results, faculty or hall. Weekly caps are finite. Quiz answers are absent from views but are readable in shared source; this is a casual game, not a secure examination platform.
 
-## Original beta numbers
+## Provisional numbers
 
 All are in-game values, unrelated to real admissions, fees, degrees or hostel allocation.
 
-| Rule | Original beta value |
+| Rule | Provisional value |
 |---|---|
 | Admission | Coding or Charisma level1; application fee ₦200 |
 | Semester | Two semesters per game degree; seven Lagos calendar days each; six total recorded attempts |

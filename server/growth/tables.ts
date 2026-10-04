@@ -320,6 +320,9 @@ function buildService(ctx: RouteContext) {
     table.status = 'open'; table.match = null; table.result = null; table.endedAt = 0;
   }
 
+  /** A finished table that nobody is playing at any more: the next people who come may sit at once instead of waiting for the reset. */
+  const abandoned = (table: Table) => table.status === 'over' && !table.seats.some((seat) => !seat.bot && !seat.left);
+
   /** The match is over: say so, and record what it earned — once, in one saved transaction. */
   async function finish(table: Table): Promise<void> {
     const match = matchOf(table), outcome = match.engine.outcome(), t = now();
@@ -395,7 +398,7 @@ function buildService(ctx: RouteContext) {
     const index = seatIndex(table, id);
     if (index < 0 || connected(table, id)) return;
     if (table.status === 'playing') { seatOf(table, index).away = now(); schedule(table); }
-    else { table.seats.splice(index, 1); seated.delete(id); }
+    else { table.seats.splice(index, 1); seated.delete(id); if (abandoned(table)) reset(table); }
     broadcast(table);
   }
   /** Is this player's stored life standing in the table's venue right now? Read-only. */
@@ -423,6 +426,7 @@ function buildService(ctx: RouteContext) {
       limit(ws);
       const table = tableOf(message.cityId, message.table), id = ws.session.id;
       if (seatIndex(table, id) >= 0) { attach(ws, table); broadcast(table); return; } // coming back to your own seat
+      if (abandoned(table)) reset(table);
       if (table.status !== 'open') throw refuse('game_on', 'A game is on at this table. Watch it, or sit when it ends.');
       if (seated.has(id)) throw refuse('already_seated', 'You are sitting at another table. Leave it first.');
       if (table.seats.length >= Math.min(table.place.seats, table.game.seats.max)) throw refuse('table_full', 'Every seat at this table is taken.');
@@ -445,8 +449,11 @@ function buildService(ctx: RouteContext) {
     async start(ws: WsConnection, message: Frame): Promise<{ humans: number }> {
       limit(ws);
       const table = tableOf(message.cityId, message.table), id = ws.session.id;
-      if (table.status !== 'open') throw refuse('game_on', 'A game is already on.');
-      if (seatIndex(table, id) < 0) throw refuse('not_seated', 'Sit down first.');
+      if (table.status === 'playing') throw refuse('game_on', 'A game is already on.');
+      // A finished or called-off match does not hold the table: whoever is still seated may start the next one without leaving.
+      const mine = table.seats[seatIndex(table, id)];
+      if (!mine || (table.status === 'over' && mine.left)) throw refuse('not_seated', 'Sit down first.');
+      if (table.status === 'over') { attach(ws, table); reset(table); }
       const max = Math.min(table.place.seats, table.game.seats.max);
       const bots = typeof message.bots === 'number' && Number.isInteger(message.bots) ? Math.max(0, Math.min(message.bots, max - table.seats.length, BOT_NAMES.length)) : 0;
       if (table.seats.length + bots < table.game.seats.min) throw refuse('need_players', `This game needs ${table.game.seats.min} players. Wait for someone, or play with a bot.`);
@@ -492,7 +499,7 @@ function buildService(ctx: RouteContext) {
       if (seat < 0) { table.sockets.delete(ws); return; }
       if (table.status === 'playing' && !seatOf(table, seat).left) { forfeitSeat(table, seat, 'left the table'); broadcast(table); await pump(table); }
       else if (table.status === 'open') { table.seats.splice(seat, 1); seated.delete(id); broadcast(table); }
-      else { seated.delete(id); seatOf(table, seat).left = true; broadcast(table); }
+      else { seated.delete(id); seatOf(table, seat).left = true; if (abandoned(table)) reset(table); broadcast(table); }
     },
     /** Play again: the table opens with the people still here. */
     again(ws: WsConnection, message: Frame): void {

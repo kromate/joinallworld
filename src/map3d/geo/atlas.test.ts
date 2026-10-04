@@ -9,7 +9,7 @@ import { decodeTopology, decodeInts, encodeInts, encodeArc, selfIntersections, r
 import { createPicker } from './pick.ts';
 import { EXTENT, project, relLon, unproject } from './projection.ts';
 import { FRAME_MARGIN, HYSTERESIS, crumbs, focusLevel, levelAt, pitchAt, thresholds } from './levels.ts';
-import { LABEL_CAP, placeLabels, textWidth } from './labels.ts';
+import { EDGE_MARGIN, LABEL_CAP, placeLabels, textWidth } from './labels.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
@@ -178,6 +178,13 @@ test('labels never overlap, are capped, abbreviate when the region is narrow, an
   assert.deepEqual(placeLabels([{ id: 'a', x: 50, y: 50, text: 'Too wide for it', priority: 1, room: 20 }]), [], 'a name wider than its region, with no abbreviation, is left out');
   assert.equal(placeLabels(many, { cap: 5 }).length, 5);
   assert.ok(textWidth('Federal Capital Territory', 11) > textWidth('FCT', 11));
+  // The open place is kept inside the screen with a margin: a marker near an edge is moved in, not clipped.
+  const near = (x: number, y: number) => placeLabels([{ id: 'open', x, y, text: 'Lagos', note: 'You are here', priority: 1000, fixed: true, anchor: 'above' }], { width: 390, height: 844 })[0]!;
+  for (const [x, y] of [[10, 300], [385, 300], [195, 30]] as const) {
+    const label = near(x, y);
+    assert.ok(label.box.left >= EDGE_MARGIN && label.box.right <= 390 - EDGE_MARGIN && label.box.top >= EDGE_MARGIN, `inside the screen at ${x},${y}: ${JSON.stringify(label.box)}`);
+  }
+  assert.deepEqual([near(195, 300).x, near(195, 300).y], [195, 300], 'a label already inside is not moved');
 });
 
 test('routes: the roads pass real towns in Nigeria, every link has a line, and a traveller is where the progress says', () => {

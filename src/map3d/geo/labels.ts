@@ -34,9 +34,18 @@ const boxOf = (candidate: LabelCandidate, text: string): LabelBox => {
 };
 const overlaps = (a: LabelBox, b: LabelBox, pad: number): boolean => a.left < b.right + pad && b.left < a.right + pad && a.top < b.bottom + pad && b.top < a.bottom + pad;
 
+/** The space kept between a label that is always shown and the edge of the screen, in CSS pixels. */
+export const EDGE_MARGIN = 8;
+/** How far a box must move to lie inside `0..limit` with `margin` to spare; none when it already does (or cannot fit). */
+const nudge = (low: number, high: number, limit: number, margin: number): number => {
+  if (!Number.isFinite(limit) || high - low > limit - 2 * margin) return low < margin ? margin - low : 0;
+  return low < margin ? margin - low : high > limit - margin ? limit - margin - high : 0;
+};
+
 export interface PlaceOptions { cap?: number; pad?: number; width?: number; height?: number; avoid?: readonly LabelBox[] }
 /**
- * options.width/height: the screen; a label wholly outside it is skipped. options.avoid: boxes nothing may cover (the panels).
+ * options.width/height: the screen; a label wholly outside it is skipped, and a label that is always shown (`fixed`) is moved to lie
+ * inside it with EDGE_MARGIN to spare, so the place you are in is never cut off at the edge. options.avoid: boxes nothing may cover (the panels).
  */
 export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL_CAP, pad = 3, width = Infinity, height = Infinity, avoid = [] }: PlaceOptions = {}): PlacedLabel[] {
   const placed: PlacedLabel[] = [];
@@ -45,10 +54,14 @@ export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL
     if (placed.length >= cap) break;
     for (const text of candidate.short && candidate.short !== candidate.text ? [candidate.text, candidate.short] : [candidate.text]) {
       if (candidate.room !== undefined && textWidth(text, candidate.size) > candidate.room) continue;
-      const box = boxOf(candidate, text);
+      let box = boxOf(candidate, text), at = candidate;
       if (box.right < 0 || box.left > width || box.bottom < 0 || box.top > height) break;
+      if (candidate.fixed) {
+        const dx = nudge(box.left, box.right, width, EDGE_MARGIN), dy = nudge(box.top, box.bottom, height, EDGE_MARGIN);
+        if (dx || dy) { box = { left: box.left + dx, right: box.right + dx, top: box.top + dy, bottom: box.bottom + dy }; at = { ...candidate, x: candidate.x + dx, y: candidate.y + dy }; }
+      }
       if (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0)))) continue;
-      placed.push({ ...candidate, shown: text, abbreviated: text !== candidate.text, box });
+      placed.push({ ...at, shown: text, abbreviated: text !== candidate.text, box });
       break;
     }
   }

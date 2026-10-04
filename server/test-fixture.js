@@ -40,7 +40,9 @@ export async function fixture(t, { disk, ...options } = {}) {
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   const base = `http://127.0.0.1:${server.address().port}`;
   const sockets = [];
-  t.after(async () => { for (const ws of sockets) ws.terminate(); server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); await server.store?.close?.().catch(() => {}); await rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 20 }); });
+  // Every socket the server still holds is closed first — also ones a test opened by itself — so a test that
+  // fails halfway can never leave the teardown waiting for a connection nobody will close.
+  t.after(async () => { for (const ws of sockets) ws.terminate(); for (const ws of server.wss?.clients ?? []) ws.terminate(); server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); await server.store?.close?.().catch(() => {}); await rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 20 }); });
   async function request(path, body, cookie) {
     return fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
   }

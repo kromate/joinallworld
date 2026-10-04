@@ -10,7 +10,7 @@
 import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
-import { social } from '../../legacy/social.ts'
+import { social } from '../social/useSocial.ts'
 import { notificationLines } from '../messages/messagesModel.ts'
 import { noticeMarks } from '../messages/messagesState.ts'
 import { awayCardFor, awayWanted, inboxSlot } from './awayModel.ts'

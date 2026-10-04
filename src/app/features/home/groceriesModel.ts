@@ -1,7 +1,7 @@
 // What the Groceries app decides, worked out from view.home.groceries. Pure, so it is tested
 // without a browser. Every price is the amount the server will charge after discounts.
 import type { HomeView } from '../../../types/view.ts'
-import type { IngredientContent } from '../../legacy/content.ts'
+import type { IngredientDefinition as IngredientContent } from '../../../types/content.ts'
 
 export type Quote = { price: number; list: number }
 

@@ -276,12 +276,21 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     let message: Incoming
     try { message = JSON.parse(String(event.data)) as Incoming } catch { return }
     if (!message || typeof message.type !== 'string') return
+    // The Worker's liveness probe: answered at once, or the social socket is closed as idle.
+    if ((message.type as string) === 'heartbeat') { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return }
     switch (message.type) {
       case 'dm': {
         if (!message.conv || !message.message) return
         const thread = threadOf(message.conv.id)
         thread.messages = mergeMessages(thread.messages, [message.message])
         noteConv(message.conv)
+        if (message.conv.with) {
+          // The other player can create this conversation while its empty draft is open here: the open
+          // new chat becomes the real one, and a reply waiting to be sent follows it.
+          const provisional = `to:${message.conv.with}`
+          if (state.openConv === provisional) state.openConv = message.conv.id
+          outbox.rekey(provisional, message.conv.id)
+        }
         const mine = message.message.from?.id === state.me?.me.id
         if (state.openConv === message.conv.id) { if (!mine) void markRead(message.conv.id) }
         else if (!mine && !message.message.sys) api?.toast(`New message from ${message.message.from?.name ?? message.conv.name}`)

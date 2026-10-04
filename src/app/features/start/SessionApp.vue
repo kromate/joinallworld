@@ -13,7 +13,7 @@
 import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { problemOf } from './quickStartModel.ts'
-import { nicknameOf } from './sessionModel.ts'
+import { LEGACY_CHARACTER_URL, nicknameOf } from './sessionModel.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
@@ -44,10 +44,18 @@ function retry(): void {
     </div>
     <div class="session-actions"><button class="ui-button is-primary is-block" data-session-new @click="start(null)">Start a new life</button><button class="ui-button is-block" data-session-retry @click="retry">Try again</button></div>
     <p class="session-note">Starting a new life keeps your nickname<template v-if="kept"> ({{ kept }})</template> and begins with a quick character and a fresh start in the city. The old life cannot be brought back from this device.</p>
+    <p class="session-legacy"><a class="legacy-character-link" :href="LEGACY_CHARACTER_URL">Open your original Allworld character</a><span>Your original world and this city life have separate saves.</span></p>
   </template>
   <template v-else>
     <div class="session-card"><h3>Start your city life</h3><p>Choose a nickname for this device. There is no password and no e-mail: a cookie in this browser is the key to your life.</p></div>
     <p v-if="problem?.reason" class="ui-error" role="alert">{{ problem.reason }}</p>
     <form class="session-form" data-session-form @submit.prevent="submit"><label>Your nickname <input v-model="nickname" name="name" minlength="3" maxlength="24" required autocomplete="nickname"></label><button class="ui-button is-primary is-block">Start life</button></form>
+    <p class="session-legacy"><a class="legacy-character-link" :href="LEGACY_CHARACTER_URL">Open your original Allworld character</a><span>Your original world and this city life have separate saves.</span></p>
   </template>
 </template>
+
+<style scoped>
+.legacy-character-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.legacy-character-link:focus-visible { outline: 3px solid var(--c-green-dark); outline-offset: 3px; }
+.session-legacy { display: grid; gap: 2px; margin: 12px 0 0; font-size: var(--t-small); color: var(--c-muted); }
+</style>

@@ -5,8 +5,10 @@
 import type { FurnitureDefinition } from '../../../types/content.ts'
 import type { LifeState, PlacedItem } from '../../../types/life.ts'
 import type { PanelView } from '../../types/panel.ts'
-import { FURNITURE, SELL_REFUND_RATE, checkPlacement, findFreeSpot, houseOf, nudge } from '../../legacy/content.ts'
-import type { Refusal, Spot } from '../../legacy/content.ts'
+import { FURNITURE, SELL_REFUND_RATE } from '../../../game/content/furniture.ts'
+import { checkPlacement, findFreeSpot, nudge } from '../../../game/home-layout.ts'
+import { houseOf } from './houseOf.ts'
+import type { PlacementBlock as Refusal, Placement as Spot } from '../../../game/home-layout.ts'
 
 export type GhostSource = 'buy' | 'move' | 'storage'
 /** The piece being placed: where it came from and where it is now. */

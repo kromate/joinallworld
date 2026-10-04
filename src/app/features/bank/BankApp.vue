@@ -19,7 +19,7 @@ import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { billsLine, loanReasons, loanRule, rentStanding } from './bankModel.ts'
 
 defineProps<{ params?: unknown }>()

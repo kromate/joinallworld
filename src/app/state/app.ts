@@ -7,20 +7,28 @@
 // callers skip it, exactly as before, and it is given the current state the moment it exists.
 import { shallowRef } from 'vue'
 import type { LifeState } from '../../types/life.ts'
-import type { Panel, ShellMode, VuePanel } from '../types/panel.ts'
-import type { CityView, PlayerLook, VenueWorld, WorldMap } from '../legacy/scene.ts'
-import { NPCS, isDeparting, roomJoinNeeded, venueLabel } from '../legacy/engine.ts'
-import { LEGACY_PANELS, crowdList, linkWords, playersHere } from '../legacy/modules.ts'
-import { captureLink, forgetDraft, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingPlay, pendingRef, pendingTable, play, track } from '../legacy/quickStart.ts'
+import type { Panel, PanelApi, ShellMode, VuePanel } from '../types/panel.ts'
+import type { CityView, PlayerLook, SceneWorld, WorldMap } from '../types/scene.ts'
+import type { PlayerActionType } from '../../types/actions.ts'
+import type { CommandArgs, CommandResult } from '../types/client.ts'
+import { NPCS } from '../../game/content/npcs.ts'
+import { isDeparting } from '../../life.ts'
+import { roomJoinNeeded } from '../../client.ts'
+import { venueLabel } from '../../game/content/venues.ts'
+import { crowdList, playersHere } from '../../scene/crowd.ts'
+import { linkWords } from '../../ui/link.ts'
+import { captureLink, forgetDraft, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
 import { deviceToken } from '../features/growth/boundary.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
 import { tableById } from '../../tables/places.ts'
-import { loadPeople, onPeople, social, takeLinkHost } from '../legacy/social.ts'
-import { createLegacyHost } from '../legacy/api.ts'
-import { createDeclarativeHandler } from '../legacy/declarative.ts'
+import { loadPeople, onPeople, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
+import { funnelEvents, funnelSnap } from '../../quick-start/model.ts'
+import { telemetry } from '../../telemetry/index.ts'
+import { installCommunity } from '../features/community/communityStore.ts'
+import type { MembersEvent } from '../../types/community.ts'
 import { useGame } from './game.ts'
 import type { Game } from './game.ts'
-import { buildRegistry, legacyChoice } from './panels.ts'
+import { buildRegistry } from './panels.ts'
 import { createShell } from './shell.ts'
 import { NATIVE_PANELS } from '../features/panels.ts'
 
@@ -32,11 +40,13 @@ export const tripKey = (state: LifeState): string => {
 
 const HELD_KEY = 'joinallworld-cities'
 
-function createApp(game: Game, native: readonly VuePanel[], search: string) {
-  const panels: Panel[] = buildRegistry(LEGACY_PANELS, native, legacyChoice(search))
+function createApp(game: Game, native: readonly VuePanel[]) {
+  /** Where the other players in this venue room stand, as the room reports it: { [publicId]: { x, z } }. */
+  let positions: Record<string, { x: number; z: number }> = {}
+  const panels: Panel[] = buildRegistry(native)
   /** The 3D hosts, once their code has arrived. */
   const scene = {
-    venue: shallowRef<VenueWorld | null>(null),
+    venue: shallowRef<SceneWorld | null>(null),
     city: shallowRef<CityView | null>(null),
     world: shallowRef<WorldMap | null>(null),
     /** Bumped when the venue comes up after a trip, so the pane can fade it in. */
@@ -53,6 +63,7 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
     onMode(mode: ShellMode) {
       // A trip is watched on the map: while one is running there is no venue to stand in.
       if (mode === 'venue' && tripKey(game.state.value)) { shell.setMode('map'); return }
+      telemetry.screen(mode)
       if (mode === 'map') scene.mapsWanted.value = true
     },
   })
@@ -63,9 +74,66 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
   function showCrowd(): void {
     const state = game.state.value
     const npcs = isDeparting(state) ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location)
-    scene.venue.value?.setCrowd(crowdList({ players: playersHere(social.people, state, game.cityId.value), npcs, selfId: game.session.value?.id ?? null }))
+    scene.venue.value?.setCrowd(crowdList({ players: playersHere(social.people, state, game.cityId.value), npcs, selfId: game.session.value?.id ?? null, positions }))
   }
   onPeople(showCrowd)
+  // Friends' houses are named on the map (public ids only).
+  const showFriends = (): void => { scene.city.value?.setFriends?.((social.me?.friends ?? []).map((friend) => friend.id)) }
+  onPeople(showFriends)
+
+  /** The current goal's place in the world: the scene flags the spot it points at (a guest's first goals; nothing once settled in). */
+  function showGoal(): void {
+    const state = game.state.value
+    const chip = game.connected.value && state.onboarding?.stage === 'guest' && !state.onboarding.done ? game.view.value.goals?.chip : null
+    const at = chip?.kind === 'goal' && Array.isArray(chip.go) && chip.go.length === 2 && !state.activeAction ? chip : null
+    scene.venue.value?.setGoal?.(at && at.go ? { venue: at.go[0] ?? '', spot: at.go[1] ?? '', text: at.title } : null)
+  }
+
+  /**
+   * WHERE PEOPLE STAND. In a public venue the avatar's place in the scene IS the player's place in the room: the scene host
+   * reports it (onMove, at most three times a second, only when it moved), it goes to the community store's moveTo(x, z), the
+   * server puts it in the room's `presence`, and what comes back through onMembers is drawn in the scene (other players as
+   * figures at their own places) AND is what proximity voice measures. One position, one source. Home is private and reports
+   * nothing. Nothing here enables voice: that is the Join voice button alone.
+   */
+  let placeSent = false
+  /** Tell the room where the avatar stands right now (the scene itself reports only while it moves). Public venues only. */
+  function reportPlace(): void {
+    const at = scene.venue.value?.position?.()
+    const state = game.state.value
+    if (!at || at.location !== state.location || at.location === 'home' || isDeparting(state)) return
+    if (community.moveTo(at.x, at.z)) placeSent = true
+  }
+  /** The avatar moved: that is where the player stands in the room. */
+  function onMove(at: { location: string | null; x: number; z: number }): void {
+    const state = game.state.value
+    if (at.location === state.location && at.location !== 'home' && !isDeparting(state) && community.moveTo(at.x, at.z)) placeSent = true
+  }
+  /**
+   * The room's member list arrived (or emptied): draw the others where they stand, and make sure the room knows where we do.
+   * Everywhere but the campus the room says so itself (a member at the origin has not reported yet); on the campus a join starts
+   * at the main gate, which is a real place, so the game remembers whether its own report went out and repeats it if not.
+   */
+  function onMembers({ self, members }: MembersEvent): void {
+    const next: Record<string, { x: number; z: number }> = {}
+    let listed = false, placed = false
+    for (const member of members) {
+      if (member.id === self) { listed = true; placed = Boolean(member.position); continue }
+      if (member.position) next[member.id] = member.position
+    }
+    positions = next
+    showCrowd()
+    if (listed && (!placed || (game.state.value.location === 'unilag' && !placeSent))) reportPlace()
+  }
+  const community = installCommunity({
+    game,
+    venueLabel,
+    status: (text, error = false) => { game.net.value = { text, error } },
+    toast: (text, kind) => game.toast(text, kind),
+    onMembers,
+    walkBy: (dx, dz) => scene.venue.value?.walkBy?.(dx, dz) === true,
+    telemetry: { chunkFailed: (name, error) => { telemetry.chunkFailed(name as never, error) }, captureError: (error, context) => { telemetry.captureError(error, context) } },
+  })
 
   function showVenue(): void {
     if (game.mode.value === 'venue') return
@@ -88,13 +156,25 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
     try { const list = rememberedCities(); if (!list.includes(id)) globalThis.localStorage?.setItem(HELD_KEY, JSON.stringify([...list, id])) } catch { /* remembered for this visit only */ }
   }
 
+  let lastPlot: string | null = null
+  let followingCity = false
   game.on('accepted', (state, previous) => {
     const moved = previous.location !== state.location
+    // The funnel, from the server's own state: each event once, when it happens.
+    const was = funnelSnap(previous), is = funnelSnap(state)
+    for (const event of funnelEvents(was, is)) {
+      const onboarding = state.onboarding
+      track(event.name, event.name === 'first_activity_completed' && Number.isFinite(onboarding.bornAt) ? { ...event.props, server_ms: (onboarding.firstAt ?? 0) - (onboarding.bornAt ?? 0) } : event.props)
+    }
+    if (was.guest && is.done) forgetDraft()
     noteCity(game.cityId.value)
     // A trip started — from the map card, the Ride app, Go to work, anywhere: the map shows it. Once per trip, so a
     // player who then opens another screen is not pulled back; leaving that screen returns to the map.
     const trip = tripKey(state)
     if (trip && trip !== shownTrip && game.mode.value !== 'map') shell.setMode('map')
+    // The trip has just set off: build the place it is going to now (once, a moment after the trip bar has appeared), so
+    // arriving is a reveal and not a wait. Nothing is drawn; the map is what is on screen.
+    if (trip && trip !== shownTrip && state.activeAction?.kind === 'travel') { const to = state.activeAction.id; setTimeout(() => { if (tripKey(game.state.value) === trip) scene.venue.value?.prepare?.(to) }, 450) }
     shownTrip = trip
     const city = scene.city.value
     if (moved) {
@@ -104,10 +184,37 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
       else if (game.mode.value !== 'venue') shell.setMode('venue')
       if (pendingRoute && pendingRoute.venue !== state.location) pendingRoute = null // went somewhere else instead
     }
+    // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
+    // (The community store joins the room itself, with voice off.)
+    if (roomJoinNeeded(previous, state)) placeSent = false
     scene.venue.value?.setState(state)
     showPlayer()
     showCrowd()
+    showGoal()
+    // One character: the life has arrived in another city. The server files it under that city (asked for here, so it is
+    // done before the new city's life is requested), then the game follows it there.
+    if (state.estate?.city && state.estate.city !== game.cityId.value && !followingCity) {
+      followingCity = true
+      const to = state.estate.city
+      game.fetchJson(`/api/world/me?city=${game.cityId.value}`).catch(() => undefined).finally(() => { followingCity = false; void switchCity(to) })
+    }
+    // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
+    const plot = state.estate?.plot
+    const plotKey = plot ? `${plot.lga}/${plot.estate}/${plot.plot}` : ''
+    if (plotKey !== lastPlot) {
+      if (plotKey && lastPlot !== null) { globalThis.window?.dispatchEvent(new CustomEvent('jaw:track', { detail: { name: 'house_allocated', props: {} } })); globalThis.window?.dispatchEvent(new CustomEvent('jaw:world-changed')) }
+      lastPlot = plotKey
+    }
+    // The campus, from the server's own state: enrolment and graduation are told to analytics once each, as they happen (the programme id only).
+    const studied = previous.unilagStudent?.status, studies = state.unilagStudent?.status
+    if (studied !== studies && studied !== undefined) {
+      const programme = state.unilagStudent?.programme
+      const event = studies === 'matriculated' && studied === 'admitted' ? { name: 'campus_enrolled', props: { programme } } : studies === 'graduated' ? { name: 'campus_graduated', props: { programme } } : null
+      if (event) globalThis.window?.dispatchEvent(new CustomEvent('jaw:track', { detail: event }))
+    }
     city?.setState(state)
+    // A trip between cities is drawn on the world map, where the server's timer says it is.
+    scene.world.value?.setState?.(state)
     shell.enforceRequired()
     // Arrived somewhere (or a trip ended): read who is here once; later changes are pushed by the server.
     if (roomJoinNeeded(previous, state) && game.connected.value) void loadPeople()
@@ -117,8 +224,21 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
       else if (!game.connected.value) pendingRoute = null
     }
   })
+  // The device session is another identity now (a new life was started, or the old one is gone): whatever the browser holds
+  // about people — friends, requests, threads, the growth hello, a seat at a table — belonged to the previous one and is
+  // dropped before anything is drawn for the new one. A reconnection of the same session changes nothing.
+  let sessionId: string | null | undefined
+  function sessionChanged(id: string | null): void {
+    if (sessionId === id) return
+    const first = sessionId === undefined
+    sessionId = id
+    if (first) return // the first session of this page: nothing was held for anyone else
+    resetSocial()
+    globalThis.window?.dispatchEvent(new CustomEvent('jaw:session', { detail: { id } }))
+  }
+  game.on('session', (session) => { sessionChanged(session.id ?? null) })
   // The saved life is gone: its own sheet says so, not the welcome of the landing screen.
-  game.on('expired', () => { const gate = shell.sessionGate('expired'); if (gate) shell.open(gate.id, { reason: 'expired' }) })
+  game.on('expired', () => { positions = {}; sessionChanged(null); const gate = shell.sessionGate('expired'); if (gate) shell.open(gate.id, { reason: 'expired' }) })
   game.on('needName', (problem) => { const gate = shell.sessionGate('new'); if (gate) shell.open(gate.id, { reason: 'new', problem }) })
 
   /** The landing of an invite, share or table link (features/landing): handled once, after the quick start. */
@@ -183,6 +303,8 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
   async function connect(createNew = false, name: string | null = null): Promise<boolean> {
     const ok = await game.connect(createNew, name)
     if (ok) await firstMinute()
+    // Not awaited: a slow or failing community chunk must not hold up the game or block a later Reconnect.
+    if (ok) void community.ensure()
     return ok
   }
   /** Play was tapped on the landing screen ('jaw:quick-start'). A second tap while the first is on its way is the same start. */
@@ -197,15 +319,33 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
         play.sending = false
         reopenLanding(`${linkWords(game.link.value)?.why || 'The game server did not answer.'} Your name and character are kept on this device — tap Play to try again.`, name)
       }
-    } finally { starting = false; play.sending = false; legacy.api.refresh(); shell.enforceRequired() }
+    } finally { starting = false; play.sending = false; shell.bump(); shell.enforceRequired() }
   }
 
   /** One action, with the routing the shell adds: a cancel or a refused trip forgets where the player was heading. */
-  const command: Game['command'] = async (type, ...args) => {
+  async function send<T extends PlayerActionType>(type: T, ...args: CommandArgs<T>): Promise<CommandResult<T>> {
     if (type === 'cancel') pendingRoute = null
     const result = await game.command(type, ...args)
     if (!result.ok && type === 'travel') pendingRoute = null
     return result
+  }
+  /** The campus host calls this once the avatar has reached the landmark it was sent to: the ordinary `spot` action. */
+  async function commitSpot(id: string): Promise<CommandResult<'spot'>> {
+    const result = await send('spot', { id })
+    if (result.ok) shell.ui.expanded = true
+    return result
+  }
+  /** Every game action goes through here. On the campus a spot is walked to first (the host commits it on arrival); everywhere else it is sent at once. */
+  const command: Game['command'] = async (type, ...args) => {
+    const payload = args[0] as { id?: unknown } | undefined
+    const venue = scene.venue.value
+    if (type === 'spot' && game.state.value.location === 'unilag' && venue?.host === 'campus' && typeof payload?.id === 'string' && payload.id !== game.state.value.spot) {
+      const result = await venue.walkToSpot(payload.id)
+      // A refusal of the walk itself (the server's own refusals were already shown by commitSpot).
+      if (!result.ok && result.reason && (result.code === 'no_route' || result.code === 'invalid_spot')) game.toast(result.reason, 'error')
+      return result as never
+    }
+    return send(type, ...args)
   }
 
   /**
@@ -239,32 +379,36 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
     if (!result.ok) return
     noteCity(id)
     scene.world.value?.setCity(id); scene.city.value?.setCity(id)
+    placeSent = false
     scene.venue.value?.setLocation(game.state.value.location)
     shell.setMode('venue')
     shell.open('city', { city: id })
   }
-  /**
-   * Presence, venue chat and proximity voice (src/community.js) are not hosted by this shell yet:
-   * that module is ported last and by itself (docs/MIGRATION-VUE-TS.md, step 7). Nothing here
-   * loads it, so nothing here can reach the microphone.
-   */
-  function toggleCommunity(): void {
-    game.toast(game.state.value.location === 'home' ? 'Your home is private. Visit a public venue to meet people.' : 'Venue chat and voice are not in this preview yet. Open the game without “next” to use them.')
-  }
   function redrawScene(): void { if (game.mode.value !== 'map') scene.venue.value?.update() }
 
-  const legacy = createLegacyHost(game, shell, { goTo, toggleCommunity, redrawScene })
-  // The command an existing panel sends goes through the same routing as the shell's own.
-  legacy.api.command = command
-  const onDeclarativeClick = createDeclarativeHandler({ ...game, command }, shell, { toggleCommunity, menu, startLife })
+  /** The services the panels that keep their own state are handed (the social client, the civic cache, the Phone's report check). */
+  const api: PanelApi = {
+    command: (type, ...args) => command(type, ...args),
+    open: (id, params) => shell.open(id, params),
+    close: () => shell.close(),
+    toast: (text, kind) => game.toast(text, kind),
+    fetchJson: (path, options) => game.fetchJson(path, options),
+    newId: () => game.newId(),
+    refresh: () => shell.bump(),
+    redrawScene,
+    goTo: (venueId, spotId) => goTo(venueId, spotId),
+    toggleCommunity: (force) => community.toggle(force),
+    state: () => game.state.value,
+    view: () => shell.viewFor(),
+  }
 
-  return { game, panels, shell, landing, legacy, scene, command, connect, quickStart, goTo, menu, startLife, switchCity, toggleCommunity, showMapLayer, showPlayer, showCrowd, heldCities, onDeclarativeClick, playerLook }
+  return { game, panels, shell, landing, api, community, scene, command, connect, showFriends, showGoal, reportPlace, onMove, commitSpot, quickStart, goTo, menu, startLife, switchCity, showMapLayer, showPlayer, showCrowd, heldCities, playerLook }
 }
 export type App = ReturnType<typeof createApp>
 
 let shared: App | null = null
 /** The one application of this page. Created on first use. */
 export function useApp(): App {
-  shared ??= createApp(useGame(), NATIVE_PANELS, globalThis.location?.search ?? '')
+  shared ??= createApp(useGame(), NATIVE_PANELS)
   return shared
 }

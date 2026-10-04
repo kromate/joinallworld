@@ -346,8 +346,8 @@ test('picking through the view, and entering: only the open city is entered, aft
 });
 
 test('the atlas stays out of the first download, and its one frame loop lives in atlas.ts', () => {
-  const main = readFileSync('src/life-main.js', 'utf8'), door = readFileSync('src/world-map.ts', 'utf8'), registry = readFileSync('src/map3d/regions.ts', 'utf8');
-  assert.doesNotMatch(main, /^import .*(geo\/|world-map)/m); assert.match(main, /import\('\.\/world-map\.ts'\)/);
+  const main = readFileSync('src/app/scene/loaders.ts', 'utf8'), door = readFileSync('src/world-map.ts', 'utf8'), registry = readFileSync('src/map3d/regions.ts', 'utf8');
+  assert.doesNotMatch(main, /^import (?!type ).*(geo\/|world-map)/m); assert.match(main, /import\('\.\.\/\.\.\/world-map\.ts'\)/);
   assert.doesNotMatch(door, /requestAnimationFrame/);
   // The data is reached only through dynamic imports in the registry: one chunk per level.
   for (const level of ATLAS_LEVELS) assert.match(registry, new RegExp(`data: \\(\\) => import\\('\\./geo/data/${level.id}\\.ts'\\)`));

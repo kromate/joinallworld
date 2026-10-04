@@ -354,3 +354,44 @@ test('the state is reactive: a computed follows the overview and the outbox with
   assert.equal(pending.value, 1, 'the outbox is followed through the revision counter')
   assert.ok(ctx.flags.refreshes > 0, 'the host is told too, for the panels that are not reactive')
 })
+
+// Port of src/ui/panels/social-client.test.js.
+test('first incoming DM adopts an open provisional chat, marks read and keeps retries unique', async () => {
+  const sender = conv('dm.receiver.sender', { with: 'sender', name: 'Sender', unread: 1 })
+  const first = message(1, sender.id, { clientId: 'first-id', body: 'First message', from: { id: 'sender', name: 'Sender' } })
+  const reply = message(2, sender.id, { clientId: 'reply-id', body: 'Reply waiting for acknowledgement', from: { id: 'receiver', name: 'Receiver' } })
+  const ctx = setup({
+    '/api/social/conversations/*/read': () => ({ ok: true, code: 'read', conv: { ...sender, unread: 0 } }),
+    '/api/social/conversations/*': () => ({ ok: true, code: 'ok', conv: { ...sender, unread: 0 }, messages: [first, reply], read: 0 }),
+  })
+  ctx.client.start(ctx.api)
+  await settle()
+  ctx.client.state.me = overview({ me: { id: 'receiver', name: 'Receiver', since: 1 }, conversations: [] })
+  ctx.client.state.openConv = 'to:sender'
+  ctx.client.outbox.add('to:sender', reply.body, 'reply-id', 1)
+  const readsOf = (): number => ctx.calls.filter((item) => item.path.endsWith('/read')).length
+  const socket = ctx.sockets[0]
+  socket?.push({ type: 'dm', conv: sender, message: first })
+  assert.equal(ctx.client.state.openConv, sender.id, 'an already open new chat must display the first incoming message')
+  assert.equal(ctx.client.outbox.get('reply-id')?.key, sender.id, 'a pending reply follows the real conversation')
+  assert.deepEqual(ctx.client.threadView(sender.id).map((item) => item.body), [first.body, reply.body])
+  await settle()
+  assert.equal(ctx.client.state.me?.conversations[0]?.unread, 0)
+  assert.equal(readsOf(), 1)
+  assert.deepEqual(ctx.toasts, [], 'the visible conversation is read, not announced as a different chat')
+
+  socket?.push({ type: 'dm', conv: sender, message: first })
+  socket?.push({ type: 'dm', conv: sender, message: reply })
+  assert.deepEqual(ctx.client.threadView(sender.id).map((item) => ('seq' in item ? item.seq : null)), [1, 2], 'duplicate pushes and the pending echo do not double a message')
+  assert.equal(ctx.client.outbox.size(), 0)
+  await ctx.client.openThread(sender.id)
+  assert.deepEqual(ctx.client.threadView(sender.id).map((item) => ('seq' in item ? item.seq : null)), [1, 2], 'history refresh merges without duplication')
+
+  const readsBefore = readsOf()
+  ctx.client.state.openConv = 'to:another-person'
+  socket?.push({ type: 'dm', conv: sender, message: { ...first, seq: 3 } })
+  assert.equal(ctx.client.state.openConv, 'to:another-person', 'a message from someone else must not steal the open chat')
+  socket?.push({ type: 'dm', conv: conv('group.one', { kind: 'group', name: 'Group' }), message: first })
+  assert.equal(ctx.client.state.openConv, 'to:another-person', 'group messages do not adopt a provisional direct chat')
+  assert.equal(readsOf(), readsBefore, 'background messages remain unread')
+})

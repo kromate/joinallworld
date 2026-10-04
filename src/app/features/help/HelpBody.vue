@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // How to play: the Help app in the phone, and the help sheet (the ? key) outside it.
 import { useApp } from '../../state/app.ts'
-import { shortcutRows } from '../../legacy/modules.ts'
+import { shortcutRows } from '../../../ui/keys.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 

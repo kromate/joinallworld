@@ -344,5 +344,5 @@ test('the preview and the panels that use it hold no interval timers or free-run
     const code = await read(`../ui/panels/${file}`);
     assert.doesNotMatch(code, new RegExp(`${['request', 'Animation', 'Frame'].join('')}|${['set', 'Interval'].join('')}|${['set', 'Timeout'].join('')}|from '[^']*three[^']*'|from '[^']*scene/`), `${file} has no loops and no static import of the 3D code`);
   }
-  assert.match(await read('../ui/panels/look-ui.js'), /import\('\.\.\/\.\.\/scene\/avatar-preview\.ts'\)/, 'the preview is fetched with a dynamic import');
+  assert.match(await read('../app/features/start/lookPreview.ts'), /import\('\.\.\/\.\.\/scene\/avatar-preview\.ts'\)/, 'the preview is fetched with a dynamic import');
 });

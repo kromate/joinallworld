@@ -5,7 +5,7 @@
 import '../../../ui/panels/social.css'
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import type { FamilyId } from '../../../types/life.ts'
 import { useAct } from '../kit/act.ts'
 import { callReason } from './socialModel.ts'

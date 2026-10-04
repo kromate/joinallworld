@@ -4,16 +4,14 @@
 // front: Buy, the Map), the bottom nav, toasts, and one dialog for the Phone, the Sim sheet and
 // modal panels.
 //
-// It runs on the same server, the same client model and the same panels as the existing shell
-// (src/ui/shell.js): screens that have been converted are Vue components, every other one is the
-// existing panel shown through LegacyPanel. See docs/MIGRATION-VUE-TS.md.
+// Every screen is a Vue component (src/app/features). See docs/MIGRATION-VUE-TS.md.
 import '../ui/tokens.css'
 // The page layout and the styles of every existing panel. Converted components carry their own.
 import '../ui/shell.css'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from './state/app.ts'
-import { heldActionFor, shortcutFor } from './legacy/modules.ts'
-import { startSocial } from './legacy/social.ts'
+import { heldActionFor, shortcutFor } from '../ui/keys.ts'
+import { start as startSocial } from './features/social/useSocial.ts'
 import GameIcon from './ui/GameIcon.vue'
 import ToastStack from './ui/ToastStack.vue'
 import LinkBanner from './features/landing/LinkBanner.vue'
@@ -30,7 +28,7 @@ import SheetHost from './features/phone/SheetHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
 
-const { game, shell, legacy, scene, command, connect, quickStart, startLife, switchCity, menu, landing } = useApp()
+const { game, shell, api, community, scene, command, connect, quickStart, startLife, switchCity, menu, landing } = useApp()
 const ui = shell.ui
 const mode = game.mode
 const navPanel = computed(() => (mode.value !== 'venue' ? shell.byId.get(mode.value) ?? null : null))
@@ -109,7 +107,7 @@ const onReconnect = (): void => menu('reconnect')
 const onSwitchCity = (event: Event): void => { const city = (event as CustomEvent<{ city?: string }>).detail?.city; if (city) void switchCity(city) }
 // The device got its network back: try the connection once, by itself (an event, not a timer).
 const onOnline = (): void => { if (!game.connected.value && (game.link.value === 'offline' || game.link.value === 'unreachable')) void connect() }
-const onPageHide = (): void => game.stop()
+const onPageHide = (): void => { community.destroy(); game.stop() }
 const onVisibility = (): void => { if (document.hidden) game.stop(); else void game.refresh() }
 
 const listeners: [EventTarget, string, EventListener][] = [
@@ -120,13 +118,13 @@ const listeners: [EventTarget, string, EventListener][] = [
 onMounted(() => {
   for (const [target, type, listener] of listeners) target.addEventListener(type, listener)
   // The social client reads who is here for the scene's crowd; it starts once connected (see state/app.ts).
-  startSocial(legacy.api)
+  startSocial(api)
   void connect()
   if (new URLSearchParams(location.search).has('venue')) scene.mapsWanted.value = true
 })
 onBeforeUnmount(() => { for (const [target, type, listener] of listeners) target.removeEventListener(type, listener) })
 // Connected (or connected again): the social client opens its socket and reads the overview.
-watch(game.connected, (connected) => { if (connected) startSocial(legacy.api) })
+watch(game.connected, (connected) => { if (connected) startSocial(api) })
 // Where the page's share link came from, once the landing knows (growth.state.landing).
 watch(landing.landed, (landed) => { if (landed) useGrowth().state.landing = landed })
 watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), { immediate: true })
@@ -135,7 +133,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
 <template>
   <ScenePane :top="topCover" :rows="hudRows" :bottom="() => bottom" :hidden="mode === 'map'" />
   <MapPane />
-  <div id="life-overlay" ref="root" class="life-ui" :class="{ 'is-clean': ui.clean, 'is-tray-open': ui.trayOpen, 'is-expanded': ui.expanded && mode === 'venue' }" :data-mode="mode">
+  <div id="life-overlay" ref="root" class="life-ui" :class="{ 'has-coach': ui.coaching, 'is-guest': Boolean(game.view.value.onboarding?.guest), 'is-clean': ui.clean, 'is-tray-open': ui.trayOpen, 'is-expanded': ui.expanded && mode === 'venue' }" :data-mode="mode">
     <p class="life-wordmark" aria-label="Allworld"><i aria-hidden="true"><GameIcon name="globe" :size="19" /></i><span><b>Allworld</b></span></p>
     <HudBar />
     <ConnectionNotice />

@@ -23,7 +23,7 @@ import ListRow from '../../ui/ListRow.vue'
 import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import GlyphText from '../kit/GlyphText.vue'
 import LinkButton from '../growth/LinkButton.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
@@ -31,7 +31,7 @@ import { noticeMarks, ui } from './messagesState.ts'
 import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
 
 const props = defineProps<{ params?: unknown }>()
-const { game, shell, legacy, menu } = useApp()
+const { game, shell, api, menu } = useApp()
 const growth = useGrowth()
 
 /**
@@ -172,7 +172,7 @@ const answerBae = (from: string, accept: boolean): Promise<unknown> => perform('
 
 onMounted(() => {
   void growth.load() // the footer's WhatsApp link comes with the growth hello (asked for at most every five minutes)
-  startSocial(legacy.api)
+  startSocial(api)
   // The thread that was on screen when the app was closed is on screen again: say so, and catch up.
   if (ui.open) { social.openConv = ui.open; if (!ui.open.startsWith('to:')) void openThread(ui.open) }
 })

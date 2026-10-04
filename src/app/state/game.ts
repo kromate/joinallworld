@@ -14,8 +14,11 @@ import type { CityId, OwnSession } from '../../types/protocol.ts'
 import type { PlayerActionType } from '../../types/actions.ts'
 import type { ClientOptions, CommandArgs, CommandResult, FetchJson, GameClient, LinkState, NameProblem, NetStatus, StorageProblem, SwitchCityResult } from '../types/client.ts'
 import type { PanelView, ShellMode, ToastKind } from '../types/panel.ts'
-import { CITIES, VENUES, createClient, venueDistrict, venueLabel, viewLife } from '../legacy/engine.ts'
+import { CITIES, createClient } from '../../client.ts'
+import { VENUES, viewLife } from '../../life.ts'
+import { venueDistrict, venueLabel } from '../../game/content/venues.ts'
 import { toast as sharedToast } from './toasts.ts'
+import { telemetry as realTelemetry } from '../../telemetry/index.ts'
 
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true })
 
@@ -67,12 +70,24 @@ export interface Game {
   client: GameClient
 }
 
+/** What the game tells telemetry (src/telemetry/index.ts is the real one; every call is safe and does nothing while telemetry is off). */
+export interface TelemetryHooks {
+  link(link: string): void
+  needName(): void
+  session(session: OwnSession, created: boolean, serverNow: number): void
+  state(next: LifeState, previous: LifeState, client: GameClient): void
+  /** Wrap one action: call the returned function with its result. */
+  action(type: string): ((result: { ok?: unknown; code?: unknown }) => void) | undefined
+}
+const NO_TELEMETRY: TelemetryHooks = { link() {}, needName() {}, session() {}, state() {}, action: () => undefined }
+
 export interface GameOptions extends Pick<ClientOptions, 'fetch' | 'storage' | 'now' | 'setTimeout' | 'clearTimeout' | 'randomUUID' | 'isHidden' | 'isOnline'> {
   toast?: (text: unknown, kind?: ToastKind) => void
+  telemetry?: TelemetryHooks
 }
 
 export function createGame(options: GameOptions = {}): Game {
-  const { toast = sharedToast, ...clientOptions } = options
+  const { toast = sharedToast, telemetry = NO_TELEMETRY, storage: deviceStorage, ...clientOptions } = options
   const listeners: { [K in keyof GameEvents]: Set<GameEvents[K]> } = { accepted: new Set(), needName: new Set(), expired: new Set(), session: new Set() }
   function emit<K extends keyof GameEvents>(event: K, ...args: Parameters<GameEvents[K]>): void {
     for (const listener of listeners[event]) (listener as (...values: Parameters<GameEvents[K]>) => void)(...args)
@@ -85,17 +100,19 @@ export function createGame(options: GameOptions = {}): Game {
   let lastMessage: string | null = null
   let lastLife = ''
 
+  // The shell reads the model through the contract in types/client.ts (its `api<T>` is generic; the class's is not), hence the one assertion.
   const client: GameClient = createClient({
     ...clientOptions,
-    onStatus(text, error) { net.value = { text, error } },
-    onChange(next, previous) { publish(); announce(next); emit('accepted', next, previous) },
+    ...(deviceStorage ? { storage: deviceStorage } : {}),
+    onStatus(text, error) { net.value = { text, error }; telemetry.link(client.link) },
+    onChange(next, previous) { publish(); announce(next); telemetry.state(next, previous, client); emit('accepted', next, previous) },
     onSessionExpired() { publish(); emit('expired') },
-    onNeedName(problem) { publish(); emit('needName', problem ?? null) },
+    onNeedName(problem) { publish(); telemetry.needName(); emit('needName', problem ?? null) },
     // The session is known a moment before its life is (GET /api/life follows): 'connected' is published with that life,
     // not here, so no panel is drawn as connected over the placeholder state (the goal chip would offer character creation
     // to a life that has long moved in).
-    onSession(session, created) { publish(false); emit('session', session, created) },
-  })
+    onSession(session, created) { publish(false); telemetry.session(session, created, client.serverNow()); emit('session', session, created) },
+  }) as unknown as GameClient
 
   const state = shallowRef<LifeState>(client.state)
   const link = ref<LinkState>(client.link)
@@ -142,8 +159,10 @@ export function createGame(options: GameOptions = {}): Game {
 
   async function command<T extends PlayerActionType>(type: T, ...args: CommandArgs<T>): Promise<CommandResult<T>> {
     saving.value += 1
+    const measured = telemetry.action(type)
     try {
       const result = await client.command(type, args[0]) as CommandResult<T>
+      measured?.(result)
       publish()
       if (!result.ok && result.reason && result.code !== 'busy') toast(result.reason, 'error')
       return result
@@ -200,7 +219,16 @@ export function useGame(): Game {
   if (!shared) {
     let storage: Storage | null = null
     try { storage = globalThis.localStorage ?? null } catch { storage = null }
-    shared = createGame({ storage, isHidden: () => globalThis.document?.hidden === true })
+    shared = createGame({
+      storage, isHidden: () => globalThis.document?.hidden === true,
+      telemetry: {
+        link: (link) => { realTelemetry.link(link as never) },
+        needName: () => { realTelemetry.needName() },
+        session: (session, created, now) => { realTelemetry.session(session as never, created, now as never) },
+        state: (next, previous, client) => { realTelemetry.state(next as never, previous as never, client) },
+        action: (type) => realTelemetry.action(type),
+      },
+    })
   }
   return shared
 }

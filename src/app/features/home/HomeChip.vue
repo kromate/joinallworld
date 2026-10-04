@@ -7,9 +7,10 @@
 // fetched the first time Buy is opened. What the two share is homeState.ts; the conversation with
 // the scene is homeScene.ts, which this chip starts because it is in the HUD from the first paint.
 import { computed } from 'vue'
-import { isDeparting } from '../../legacy/engine.ts'
-import { KINDS, houseOf } from '../../legacy/content.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { isDeparting } from '../../../life.ts'
+import { KINDS } from '../../../game/content/furniture.ts'
+import { houseOf } from './houseOf.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import StarRating from './StarRating.vue'

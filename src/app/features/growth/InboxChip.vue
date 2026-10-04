@@ -4,15 +4,15 @@
 // holds; mounting the chip starts that client (idempotent), as the existing chip does.
 import { computed, onMounted } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
-import { social, startSocial } from '../../legacy/social.ts'
+import { linkWords } from '../../../ui/link.ts'
+import { social, start as startSocial } from '../social/useSocial.ts'
 import { unreadChats, unreadUpdates } from '../messages/messagesModel.ts'
 import { noticeMarks } from '../messages/messagesState.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { inboxChip } from './awayModel.ts'
 
 defineProps<{ params?: unknown }>()
-const { game, shell, legacy } = useApp()
+const { game, shell, api } = useApp()
 const view = game.view
 const chip = computed(() => {
   void shell.legacyTick.value
@@ -23,7 +23,7 @@ const chip = computed(() => {
     short: linkWords(v)?.short ?? '',
   })
 })
-onMounted(() => startSocial(legacy.api))
+onMounted(() => startSocial(api))
 </script>
 
 <template>

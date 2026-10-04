@@ -5,7 +5,7 @@
 // every cure with its price and where to get it. Everything shown comes from view.health
 // (src/game/systems/health.js) and view.travel.
 import { computed } from 'vue'
-import { VENUE_SPOTS } from '../../legacy/content.ts'
+import { VENUES as VENUE_SPOTS } from '../../../game/content/venues.ts'
 import { useApp } from '../../state/app.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'

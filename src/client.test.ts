@@ -114,15 +114,16 @@ test('room membership is restored on arrival and after a cancelled trip, and nev
   assert.equal(roomJoinNeeded(commuting, commuting), false);
   // A timed action of a kind this build does not know is treated as a departure, never as "still here".
   assert.equal(roomJoinNeeded(loose({ location: 'park', activeAction: { kind: 'future-move' } }), idle), true);
-  // The entry file wires that decision to community.join only — never to a voice or microphone control.
-  const main = await readFile('src/life-main.js', 'utf8');
-  assert.match(main, /if \(roomJoinNeeded\(previous, state\)\) community\?\.join\(client\.cityId, state\.location\);/);
-  assert.doesNotMatch(main, /getUserMedia|voice-state|joinVoice|community\?*\.(mute|voice|enable)/i);
+  // The community store wires that decision to join only — never to a voice or microphone control.
+  const store = await readFile('src/app/features/community/communityStore.ts', 'utf8'), app = await readFile('src/app/state/app.ts', 'utf8');
+  assert.match(store, /if \(roomJoinNeeded\(previous, next\)\) instance\?\.join\(game\.cityId\.value, next\.location\);/);
+  assert.doesNotMatch(store, /getUserMedia|voice-state|joinVoice|\.(mute|enableVoice)/i);
+  assert.doesNotMatch(app, /getUserMedia|voice-state|joinVoice|community\.(mute|voice|enable)/i);
 });
 
 test('city sheet footnote uses the current city-specific text', async () => {
-  const city = await readFile('src/ui/panels/city.js', 'utf8');
-  assert.match(city, /More places and activities are coming to \$\{esc\(city\.name\)\}\./);
+  const city = await readFile('src/app/features/travel/CityPanel.vue', 'utf8');
+  assert.match(city, /More places and activities are coming to/);
   assert.doesNotMatch(city, /original starter city pack/);
   assert.equal(TEXT.cityNote('Lagos'), 'More places and activities are coming to Lagos.');
 });

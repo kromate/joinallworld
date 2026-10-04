@@ -12,9 +12,10 @@ import { computed, onMounted, reactive, ref } from 'vue'
 // The wallpaper tiles are drawn by the phone's stylesheet; the phone's code may not have been fetched yet.
 import '../../../ui/phone/phone.css'
 import { useApp } from '../../state/app.ts'
-import LegacyPanel from '../../legacy/LegacyPanel.vue'
-import { linkWords } from '../../legacy/modules.ts'
-import { WALLPAPERS, channelLink, getWallpaper, hosted, loadGrowth, setWallpaper } from '../../legacy/parts.ts'
+import { linkWords } from '../../../ui/link.ts'
+import { WALLPAPERS, getWallpaper, setWallpaper } from '../../../ui/phone/wallpapers.ts'
+import LinkButton from '../growth/LinkButton.vue'
+import { useGrowth } from '../growth/useGrowth.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { HINTS_KEY, NOT_SAVED, OPTIONS, SESSION_RULES, SETTINGS_KEY, WALLPAPER_NOT_SAVED, hintsOn, readSettings } from './settingsModel.ts'
@@ -22,7 +23,8 @@ import type { SettingId } from './settingsModel.ts'
 
 defineProps<{ params?: unknown }>()
 
-const { game, shell, legacy } = useApp()
+const { game, shell } = useApp()
+const growth = useGrowth()
 const view = game.view
 function store(): Storage | null { try { return window.localStorage } catch { return null } }
 
@@ -45,8 +47,7 @@ function pickWall(id: string): void { warning.value = setWallpaper(id) ? '' : WA
 
 function openPrivacy(): void { window.dispatchEvent(new CustomEvent('jaw:privacy')) }
 
-const channel = hosted('settings-channel', () => channelLink())
-onMounted(() => { void loadGrowth(legacy.api) })
+onMounted(() => { void growth.load() })
 </script>
 
 <template>
@@ -92,7 +93,7 @@ onMounted(() => { void loadGrowth(legacy.api) })
     <div class="ui-rows">
       <button type="button" class="ui-row" @click="shell.open('touch')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="bell" /></span><span class="ui-row-body"><b>Stay in touch</b><small>Notifications and e-mail: off until you switch them on</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
     </div>
-    <LegacyPanel :panel="channel" />
+    <LinkButton v-if="growth.channel.value" :href="growth.channel.value" block>Follow Allworld on WhatsApp</LinkButton>
     <p class="settings-note">The game never contacts you unless you ask. News always arrives in Phone → Messages → Updates.</p>
     <div class="ui-rows">
       <button type="button" class="ui-row" @click="shell.open('support')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="support" /></span><span class="ui-row-body"><b>Report a problem</b><small>File a report and get a receipt</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>

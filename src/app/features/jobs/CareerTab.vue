@@ -5,7 +5,7 @@
 // Everything shown comes from view.career (systems/career.js), so this file holds no rules.
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { cap, money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'

@@ -5,7 +5,7 @@
 // buttons carry as data-menu and data-open-gate.
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 
 defineProps<{ className?: string }>()
 const { game, shell, menu } = useApp()

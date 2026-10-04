@@ -49,7 +49,7 @@ before(async () => {
   app.game.stop()
   client = (await load<{ useSocial: () => SocialClient }>('/src/app/features/social/useSocial.ts')).useSocial()
   // Under Node there is no page and no WebSocket: the client is given the api and nothing more.
-  client.attach(app.legacy.api)
+  client.attach(app.api)
 })
 after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch })
 
@@ -280,7 +280,7 @@ test('the registry: the same ids, placements, order, groups and badges as the la
   ])
   const badge = (id: string) => SOCIAL_PANELS.find((panel) => panel.id === id)?.badge as undefined | (() => number)
   assert.equal(SOCIAL_PANELS.find((panel) => panel.id === 'contacts')?.badge, undefined)
-  const { social } = await load<{ social: { me: SocialOverview | null } }>('/src/app/legacy/social.ts')
+  const { social } = await load<{ social: { me: SocialOverview | null } }>('/src/app/features/social/useSocial.ts')
   const before = social.me
   try {
     social.me = overview({ requests: { in: [ref('a', 'A')].map((r) => ({ ...r, at: 1 })), out: [] }, baeRequests: [{ ...ref('b', 'B'), at: 1 }] })

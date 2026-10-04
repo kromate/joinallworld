@@ -3,6 +3,8 @@
 // so the stack moves into the open dialog (`host`) and back to the page when it closes.
 import { toasts } from '../state/toasts.ts'
 import GameIcon from './GameIcon.vue'
+import GlyphText from '../features/kit/GlyphText.vue'
+import { stripLeadEmoji } from '../../ui/icon-map.ts'
 
 withDefaults(defineProps<{
   /** A selector for the element the stack lives in: the open dialog, else 'body'. */
@@ -15,7 +17,7 @@ withDefaults(defineProps<{
     <div class="toast-stack" :class="{ 'is-in-dialog': host !== 'body' }" role="status" aria-live="polite">
       <div v-for="item in toasts" :key="item.id" class="toast" :class="`is-${item.kind}`">
         <span class="toast-mark"><GameIcon :name="item.kind" :size="16" /></span>
-        <span>{{ item.text }}</span>
+        <span><GlyphText :text="stripLeadEmoji(item.text) || item.text" /></span>
       </div>
     </div>
   </Teleport>

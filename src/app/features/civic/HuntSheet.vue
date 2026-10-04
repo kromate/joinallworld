@@ -5,8 +5,8 @@
 // and claiming are game actions, so the press says "Working…" until the server answers.
 import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { isDeparting } from '../../legacy/engine.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { isDeparting } from '../../../life.ts'
+import { linkWords } from '../../../ui/link.ts'
 import type { PulseResponse } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'

@@ -460,7 +460,7 @@ test('source maps are never served, and closing the server sends what is still q
   await mkdir(join(distDir, 'assets'));
   await writeFile(join(distDir, 'index.html'), '<!doctype html><title>game</title>');
   await writeFile(join(distDir, 'assets', 'app-abc.js'), 'console.log(1)');
-  await writeFile(join(distDir, 'assets', 'app-abc.js.map'), '{"sources":["../../src/life-main.js"]}');
+  await writeFile(join(distDir, 'assets', 'app-abc.js.map'), '{"sources":["../../src/app/main.ts"]}');
   const net = wire();
   const telemetry = createServerTelemetry({ env: ENV, fetch: net.fetch, flushMs: 60000 });
   const f = await fixture(t, { telemetry, distDir });

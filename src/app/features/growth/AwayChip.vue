@@ -7,7 +7,7 @@
 // minutes, only once a connected player has settled in; for anyone else it draws nothing.
 import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { social } from '../../legacy/social.ts'
+import { social } from '../social/useSocial.ts'
 import { notificationLines } from '../messages/messagesModel.ts'
 import { noticeMarks } from '../messages/messagesState.ts'
 import { awayCardFor, awayWanted } from './awayModel.ts'

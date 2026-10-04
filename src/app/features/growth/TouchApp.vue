@@ -11,7 +11,7 @@
 import { computed, nextTick, onMounted, ref } from 'vue'
 import type { ConsentResult, EmailResult } from '../../../types/growth.ts'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import HeroCard from '../../ui/HeroCard.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'

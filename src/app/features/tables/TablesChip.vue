@@ -5,7 +5,7 @@
 // new life must still choose its look, the Sim is travelling, or there is no table in this venue.
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { isDeparting } from '../../legacy/engine.ts'
+import { isDeparting } from '../../../life.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { chipGames } from './tablesChipModel.ts'
 import { tablesAt } from './tablesPlaces.ts'

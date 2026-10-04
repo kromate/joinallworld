@@ -5,7 +5,7 @@
 import { computed } from 'vue'
 import type { DreamId, PerkId } from '../../../types/life.ts'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import GlyphText from '../kit/GlyphText.vue'

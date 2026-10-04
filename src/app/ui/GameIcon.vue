@@ -2,7 +2,8 @@
 // One mark from the game's icon set (src/ui/phone/icons.js): original inline SVG, 24×24, drawn in
 // currentColor. The markup is the icon set's own static string, never anything a player typed.
 import { computed } from 'vue'
-import { glyphNameFor, iconSvg } from '../legacy/modules.ts'
+import { glyphNameFor } from '../../ui/icon-map.ts'
+import { iconSvg } from './iconSvg.ts'
 import { glyphTick } from './glyphs.ts'
 
 const props = withDefaults(defineProps<{

@@ -1,5 +1,5 @@
 // The Getting around logic without a browser. The first tests are the port of
-// src/ui/panels/world-ui.test.js (the words and the way out for every connection state); the rest
+// the former world-ui test (the words and the way out for every connection state); the rest
 // hold what the Map, the Ride app and the roadside prompt decide to what the existing panels did.
 import assert from 'node:assert/strict'
 import test from 'node:test'
@@ -223,49 +223,6 @@ test('your own house: what can be pressed, and the words beside what cannot', ()
   assert.deepEqual(offeredTiers([{ id: 'starter', current: false }, { id: 'family', current: false }, { id: 'starter', current: true }] as never).map((tier) => `${tier.id}:${tier.current}`), ['family:false', 'starter:true'])
   assert.equal(FIELD_NAMES.shape, 'Roof shape')
   assert.equal(Object.keys(FIELD_NAMES).length, 8)
-})
-
-test('held equal to the existing helpers (src/ui/panels/world-ui.js) over a grid of situations', async () => {
-  const legacy = await import('../../../ui/panels/world-ui.js') as unknown as {
-    goBlock(state: unknown, view: unknown, destination: unknown, mode: unknown): (Record<string, unknown> & { fix?: Record<string, unknown> | null }) | null
-    tripLine(mode: unknown): string
-    tripInfo(state: unknown, view: unknown): Record<string, unknown> | null
-    fareText(mode: unknown): string
-    chosenMode(destination: unknown, wanted: unknown, fallback?: string): unknown
-    statusClass(destination: unknown): string
-  }
-  const trek = mode({ id: 'trek', label: 'Trek', fare: 0, seconds: 20 })
-  const broke = mode({ blocked: { code: 'insufficient_funds', reason: '' } })
-  const places = [
-    place({ modes: [mode(), trek] }), place({ modes: [broke, trek] }), place({ modes: [broke] }), place({ blocked: { code: 'closed', reason: 'Shut.' }, status: 'Closed' }),
-    place({ blocked: { code: 'already_here', reason: '' } }), place({ blocked: { code: 'coming_soon', reason: 'Soon.' } }), place({ blocked: { code: 'invalid_travel', reason: 'No.' } }), place({ modes: [] }),
-  ]
-  const actives = [null, { kind: 'travel', id: 'park', remaining: 3, duration: 8 }, { kind: 'commute', id: 'park', remaining: 3, duration: 8 }, { kind: 'activity', id: 'a', remaining: 2.2, duration: 5 }]
-  const views = [{ connected: true }, { connected: false, link: 'offline' }, { connected: false, link: 'unreachable' }, { connected: false, link: 'expired' }, { connected: false, link: 'new' }, { connected: false, link: 'connecting' }, { connected: false }, { connected: false, session: null }]
-  const strip = (block: Record<string, unknown> & { fix?: Record<string, unknown> | null } | null) => (block ? { ...block, fix: block.fix ? Object.fromEntries(Object.entries(block.fix).filter(([key]) => key !== 'attrs')) : block.fix } : block)
-  const withoutAction = (block: ReturnType<typeof goBlock>) => (block ? { ...block, fix: block.fix ? Object.fromEntries(Object.entries(block.fix).filter(([key]) => key !== 'action')) : block.fix } : block)
-  let checked = 0
-  for (const destinationCard of places) for (const active of actives) for (const link of views) for (const cash of [10, 1000]) for (const which of [0, 1]) {
-    const current = { cash, location: 'home', activeAction: active }
-    const panelView = { ...link, travel: { destinations: [destinationCard], modes: [], active: null }, activities: { active: { label: 'Jog', cancellable: which === 0 } } }
-    const picked = destinationCard.modes[which] ?? null
-    const old = strip(legacy.goBlock(current, panelView, destinationCard, picked))
-    const next = withoutAction(goBlock(current as unknown as LifeState, panelView as unknown as TravelPanelView, destinationCard, picked))
-    assert.deepEqual(next && { ...next, fix: next.fix === undefined ? undefined : next.fix }, old && { ...old, fix: old.fix === undefined ? undefined : old.fix }, JSON.stringify({ link, active, cash, which }))
-    checked++
-  }
-  assert.ok(checked > 1000)
-  for (const item of [mode(), trek, mode({ needs: { hygiene: -2 }, xp: { fitness: 2 }, fuel: true })]) {
-    assert.equal(tripLine(item), legacy.tripLine(item))
-    assert.equal(fareText(item), legacy.fareText(item))
-  }
-  for (const wanted of [null, 'trek', 'cab']) assert.deepEqual(chosenMode(places[0] ?? null, wanted), legacy.chosenMode(places[0], wanted))
-  for (const item of [place(), place({ open: false }), place({ kind: 'soon' })]) assert.equal(statusClass(item), legacy.statusClass(item))
-  const full = view({ connected: true, travel: { destinations: [destination], modes: [{ id: 'okada', label: 'Okada' }], active: { from: 'cchub', fare: 200 } } })
-  for (const active of [{ kind: 'travel', id: 'cchub', mode: 'okada', duration: 10, remaining: 4 }, { kind: 'travel', id: 'zzz', mode: 'car', duration: 10, remaining: 4 }, { kind: 'commute', id: 'cchub', duration: 10, remaining: 0 }, { kind: 'travel', id: 'cchub', duration: 0, remaining: 3 }, null]) {
-    const current = { location: 'home', activeAction: active }
-    assert.deepEqual(tripInfo(current as unknown as LifeState, full), legacy.tripInfo(current, full))
-  }
 })
 
 test('a house style is announced only after the server accepted it', async () => {

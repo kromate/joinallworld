@@ -144,6 +144,15 @@ test('the session sheet: a nickname form for a new device, the reason in words w
   assert.ok(!sentence.includes('offline'), 'it never says offline')
 })
 
+// Port of src/ui/panels/session.test.js.
+test('fresh and expired entry offer ordinary navigation to the old-character bridge', async () => {
+  for (const reason of ['new', 'expired']) {
+    const html = await render('SessionApp', { params: { reason } })
+    assert.match(html, /href="https:\/\/joinallworld\.com\/old-character\.html"/)
+    assert.match(text(html), /separate saves/)
+  }
+})
+
 test('the account placeholder says accounts are not available', async () => {
   const words = text(await render('AccountApp'))
   assert.equal(words, 'Account Accounts are not available yet. Your progress is saved to this device session.')

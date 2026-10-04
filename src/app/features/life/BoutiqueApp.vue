@@ -5,12 +5,12 @@
 //
 // The 3D preview at the top shows your Sim. "Try on" puts an item on the preview only — nothing is
 // bought or changed until Buy or Wear is pressed. The preview is the look stage of the character
-// panels (src/ui/panels/look-ui.js), hosted through src/app/legacy/parts.ts.
+// panels (src/ui/panels/look-ui.js).
 import { computed } from 'vue'
 import type { AccessoryId, Look } from '../../../types/life.ts'
 import type { BoutiqueItem } from '../../../types/view.ts'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import LookStage from '../start/LookStage.vue'
 import { lookSummary, withAccessory, withoutAccessory } from '../start/lookModel.ts'
 import { money } from '../../ui/format.ts'
@@ -21,7 +21,7 @@ import { trying } from './boutiqueState.ts'
 
 defineProps<{ params?: unknown }>()
 
-const { game, legacy, command } = useApp()
+const { game, command } = useApp()
 const { act, pending } = useAct()
 const view = game.view
 const onboarding = computed(() => view.value.onboarding)

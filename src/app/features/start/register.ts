@@ -5,8 +5,9 @@
 import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
-import { play } from '../../legacy/quickStart.ts'
+import { play } from '../../../quick-start/entry.ts'
 import { quickStartRequired } from './quickStartModel.ts'
+import { sessionRequired } from './sessionModel.ts'
 
 /** The landing screen of a new device; it replaces the nickname form as the session gate. */
 export const quickStart = definePanel({
@@ -22,6 +23,8 @@ export const onboarding = definePanel({
 })
 export const session = definePanel({
   id: 'session', title: 'Your city life', placement: 'modal', role: 'session-gate', live: false,
+  /** A new device stays in nickname entry until the server has accepted its session; an expired saved preview stays dismissible. */
+  required: (_state, view) => sessionRequired(view.params, view.connected),
   component: defineAsyncComponent(() => import('./SessionApp.vue')),
 })
 export const account = definePanel({

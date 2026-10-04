@@ -9,7 +9,7 @@
 // (a toast is gone in seconds). The weekly cycle and all eligibility rules are original beta design.
 import { computed, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { isDeparting } from '../../legacy/engine.ts'
+import { isDeparting } from '../../../life.ts'
 import type { GovResponse, PulseResponse } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'

@@ -5,8 +5,7 @@
 // covered, and a disabled entry says why instead of opening.
 import { computed, reactive, ref, shallowRef } from 'vue'
 import type { LifeState } from '../../types/life.ts'
-import type { LegacyPanel, Panel, PanelView, ShellMode, Sheet } from '../types/panel.ts'
-import { isVuePanel } from '../types/panel.ts'
+import type { Panel, PanelView, ShellMode, Sheet } from '../types/panel.ts'
 import type { Game } from './game.ts'
 
 export interface ShellHooks {
@@ -18,10 +17,10 @@ export function createShell(game: Game, panels: readonly Panel[], hooks: ShellHo
   const byId = new Map(panels.map((panel) => [panel.id, panel]))
   const sheet = shallowRef<Sheet | null>(null)
   const modeParams = shallowRef<unknown>(null)
-  const ui = reactive({ expanded: false, trayOpen: false, clean: false })
+  const ui = reactive({ expanded: false, trayOpen: false, clean: false, coaching: false })
   /**
-   * Bumped by refresh(): existing panels keep UI state in module variables that Vue cannot see, so
-   * anything computed from them (badges, notification lines) reads this to be recomputed.
+   * Bumped by refresh(): panels that keep UI state in module variables Vue cannot see (the social client, the
+   * civic cache) ask for a redraw this way; anything computed from them reads this to be recomputed.
    */
   const legacyTick = ref(0)
   /** The key hook of each panel on screen, by id (set by PanelHost). */
@@ -139,10 +138,8 @@ export function createShell(game: Game, panels: readonly Panel[], hooks: ShellHo
     },
     placed, sessionGate, gateOf, lockOf, phoneHosts, viewFor,
     open, close, closeSheet, phoneBack, setMode, enforceRequired, showing,
-    /** Existing panels re-render synchronously on this (see legacy/api.ts); Vue reads the tick. */
+    /** Panels with state outside Vue ask for a redraw with this (api.refresh); readers watch the tick. */
     bump(): void { legacyTick.value += 1 },
   }
 }
 export type Shell = ReturnType<typeof createShell>
-export type { LegacyPanel }
-export { isVuePanel }

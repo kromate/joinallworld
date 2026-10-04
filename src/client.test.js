@@ -1,7 +1,8 @@
 // The client is a read-only mirror: offline it sends nothing and grants nothing.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createClient, TEXT, STORAGE_KEY } from './client.js';
+import { readFile } from 'node:fs/promises';
+import { createClient, TEXT, STORAGE_KEY, roomJoinNeeded } from './client.js';
 import { createLife } from './life.js';
 
 function harness({ online = true } = {}) {
@@ -74,4 +75,28 @@ test('an expired session stops the client and a tampered cache is sanitized', as
   assert.equal(client.cityId, 'lagos'); assert.equal(client.state.cash, 5000); assert.equal(client.state.location, 'park');
   assert.equal(await client.connect(), false); assert.equal(expired, 1); assert.equal(client.online, false);
   assert.equal(TEXT.cityNote('Ibadan'), 'More places and activities are coming to Ibadan.');
+});
+
+test('room membership is restored on arrival and after a cancelled trip, and never enables voice', async () => {
+  const idle = createLife({ location: 'park' });
+  const travelling = createLife({ location: 'park', activeAction: { kind: 'travel', id: 'library', duration: 5, remaining: 3 } });
+  const arrived = createLife({ location: 'library' });
+  const chilling = createLife({ location: 'park', spot: 'trees', activeAction: { kind: 'activity', id: 'chill', duration: 11, remaining: 4 } });
+  assert.equal(roomJoinNeeded(travelling, idle), true, 'trip cancelled: same place, no action');
+  assert.equal(roomJoinNeeded(travelling, arrived), true, 'arrived somewhere new');
+  assert.equal(roomJoinNeeded(idle, idle), false);
+  assert.equal(roomJoinNeeded(idle, travelling), false, 'setting off does not rejoin');
+  assert.equal(roomJoinNeeded(travelling, travelling), false);
+  assert.equal(roomJoinNeeded(chilling, idle), false, 'finishing or cancelling an activity is not a room change');
+  // The entry file wires that decision to community.join only — never to a voice or microphone control.
+  const main = await readFile('src/life-main.js', 'utf8');
+  assert.match(main, /if \(roomJoinNeeded\(previous, state\)\) community\?\.join\(client\.cityId, state\.location\);/);
+  assert.doesNotMatch(main, /getUserMedia|voice-state|joinVoice|community\?*\.(mute|voice|enable)/i);
+});
+
+test('city sheet footnote uses the current city-specific text', async () => {
+  const city = await readFile('src/ui/panels/city.js', 'utf8');
+  assert.match(city, /More places and activities are coming to \$\{esc\(city\.name\)\}\./);
+  assert.doesNotMatch(city, /original starter city pack/);
+  assert.equal(TEXT.cityNote('Lagos'), 'More places and activities are coming to Lagos.');
 });

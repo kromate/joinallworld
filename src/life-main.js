@@ -8,7 +8,7 @@ import { createVenueWorld } from './venue-world.js';
 import { createWorldMap } from './world-map.js';
 import { createCityMap } from './city-map.js';
 import { createCommunity } from './community.js';
-import { createClient, CITIES } from './client.js';
+import { createClient, CITIES, roomJoinNeeded } from './client.js';
 import { createShell } from './ui/shell.js';
 import { PANELS, sessionGate } from './ui/panels/index.js';
 import { viewLife, VENUES } from './life.js';
@@ -71,7 +71,9 @@ function refreshScene() { if (shell.mode === 'map') { world.resize(); cityMap.re
 /** Called after every accepted server state. */
 function accepted(state, previous) {
   const moved = previous.location !== state.location;
-  if (moved) { venue.setLocation(state.location); if (shell.mode !== 'venue') shell.setMode('venue'); community?.join(client.cityId, state.location); }
+  if (moved) { venue.setLocation(state.location); if (shell.mode !== 'venue') shell.setMode('venue'); }
+  // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
+  if (roomJoinNeeded(previous, state)) community?.join(client.cityId, state.location);
   venue.setState(state);
   cityMap.setState(state);
   render();

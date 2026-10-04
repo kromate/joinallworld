@@ -16,6 +16,17 @@ export const TEXT = Object.freeze({
   outOfSync: 'Your action time was out of sync. Reconnect and try again.',
   cityNote: (cityName) => `More places and activities are coming to ${cityName}.`,
 });
+/**
+ * Whether the community room must be (re)joined after a state change: on arrival somewhere
+ * new, and when a trip was cancelled — the server removed the player from the room when they
+ * set off, so staying put needs an explicit rejoin. This only joins the room (presence and
+ * text chat); it never turns voice or the microphone on.
+ */
+export function roomJoinNeeded(previous, next) {
+  if (previous.location !== next.location) return true;
+  return previous.activeAction?.kind === 'travel' && !next.activeAction;
+}
+
 const ACTIVE_POLL_MS = 1000;
 const IDLE_POLL_MS = 60000;
 

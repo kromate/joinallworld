@@ -41,6 +41,8 @@ export const CITY_LIGHT = Object.freeze({
 
 function mulberry(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 const segmentDistance = (x, z, a, b) => { const dx = b.x - a.x, dz = b.z - a.z, t = Math.max(0, Math.min(1, ((x - a.x) * dx + (z - a.z) * dz) / (dx * dx + dz * dz || 1))); return Math.hypot(x - a.x - dx * t, z - a.z - dz * t); };
+const circle = (x, z, radius, sides = 12) => Array.from({ length: sides }, (_, i) => [x + Math.cos((i / sides) * Math.PI * 2) * radius, z + Math.sin((i / sides) * Math.PI * 2) * radius]);
+const PYLON_STAYS = 5;
 const inBox = (x, z, [x0, z0, x1, z1]) => x >= x0 && x <= x1 && z >= z0 && z <= z1;
 
 /** A hand-rolled mesh collector for flat things the batch has no primitive for: polygons, ribbons, walls. */
@@ -85,13 +87,13 @@ export function createRaw(THREE) {
       }
       for (let i = 0; i < points.length - 1; i++) { const k = base + i * 2; tri(k, k + 1, k + 2); tri(k + 1, k + 3, k + 2); }
     },
-    /** A vertical strip along a polyline, `side` units to one side, between two lifts; it faces away from the line. */
+    /** A vertical strip along a polyline, `side` units to one side, between two lifts (`high` may be a list, one per point); it faces away from the line. */
     strip(points, side, low, high, colour, facing = Math.sign(side) || 1) {
       const base = pos.length / 3;
       for (let i = 0; i < points.length; i++) {
         const a = points[Math.max(0, i - 1)], b = points[Math.min(points.length - 1, i + 1)], length = Math.hypot(b.x - a.x, b.z - a.z) || 1;
         const px = -(b.z - a.z) / length, pz = (b.x - a.x) / length, p = points[i];
-        v(p.x + px * side, p.y + high, p.z + pz * side, px * facing, 0, pz * facing, colour);
+        v(p.x + px * side, p.y + (Array.isArray(high) ? high[i] : high), p.z + pz * side, px * facing, 0, pz * facing, colour);
         v(p.x + px * side, p.y + low, p.z + pz * side, px * facing, 0, pz * facing, colour);
       }
       for (let i = 0; i < points.length - 1; i++) { const k = base + i * 2; tri(k, k + 1, k + 2); tri(k + 1, k + 3, k + 2); }
@@ -107,6 +109,34 @@ export function createRaw(THREE) {
     },
   };
   return raw;
+}
+
+/** The shimmer tile covers this many units of water. */
+const WATER_TILE = 30;
+/** The brightness (0…1) of the water's shimmer at (u, v) of its tile. Every frequency is a whole number, so the tile repeats without a seam. */
+export function shimmer(u, v) {
+  const a = u * Math.PI * 2, c = v * Math.PI * 2;
+  const swell = Math.sin(c * 3 + Math.sin(a * 2) * 1.3) * 0.55 + Math.sin(c * 7 + a + Math.sin(a * 3 + c) * 0.9) * 0.45;
+  const glint = Math.pow(Math.max(0, Math.sin(c * 10 + Math.sin(a * 2 + c) * 2.4 + Math.sin(a * 5) * 0.7)), 10) * (0.5 + 0.5 * Math.sin(a * 3 + c * 2));
+  return Math.min(1, 0.91 + swell * 0.03 + glint * 0.07);
+}
+/**
+ * The water's shimmer: a small procedural texture of soft swells and pale glints, made once and
+ * tiled over the lagoon. It is STATIC — nothing about it moves, so it costs no frames; it multiplies
+ * the water's colour, so it follows the time of day with it.
+ */
+function waterTexture(THREE, size = 128) {
+  const data = new Uint8Array(size * size * 4);
+  for (let j = 0; j < size; j++) for (let i = 0; i < size; i++) {
+    const tone = Math.round(shimmer(i / size, j / size) * 255), k = (j * size + i) * 4;
+    data[k] = tone; data[k + 1] = tone; data[k + 2] = Math.min(255, tone + 4); data[k + 3] = 255;
+  }
+  const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
+  texture.wrapS = THREE.RepeatWrapping; texture.wrapT = THREE.RepeatWrapping;
+  texture.magFilter = THREE.LinearFilter; texture.minFilter = THREE.LinearMipmapLinearFilter; texture.generateMipmaps = true;
+  texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4;
+  texture.needsUpdate = true;
+  return texture;
 }
 
 /** Push a polygon's outline outwards by `distance`. */
@@ -130,7 +160,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   const keep = (thing) => { own.push(thing); return thing; };
   const materials = {
     ground: keep(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 })),
-    water: keep(new THREE.MeshStandardMaterial({ color: CITY_LIGHT.day.water, roughness: 0.42, metalness: 0.05 })),
+    water: keep(new THREE.MeshStandardMaterial({ color: CITY_LIGHT.day.water, roughness: 0.42, metalness: 0.05, map: keep(waterTexture(THREE)) })),
     board: keep(new THREE.MeshStandardMaterial({ color: '#2c4a52', roughness: 1 })),
     waves: keep(new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.5, depthWrite: false })),
     windows: keep(new THREE.MeshBasicMaterial({ vertexColors: true, color: CITY_LIGHT.day.windows })),
@@ -149,6 +179,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   board.position.set(midX, WATER_Y - 1.56, midZ);
   count(add(board, 'board'));
   const water = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), materials.water);
+  materials.water.map.repeat.set(width / WATER_TILE, depth / WATER_TILE);
   water.rotation.x = -Math.PI / 2; water.position.set(midX, WATER_Y, midZ);
   count(add(water, 'water'));
 
@@ -181,34 +212,64 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
         raw.ribbon([{ x: a.x + (mid.x - a.x) * 0.3, y: a.y, z: a.z + (mid.z - a.z) * 0.3 }, mid], 0.16, road.bridge ? 0.1 : 0.08, DASH);
       }
     }
+    // Every road end is rounded off, so two roads that meet at an angle join in a smooth corner and not a notch.
+    for (const end of [road.points[0], road.points[road.points.length - 1]]) {
+      raw.shape(circle(end.x, end.z, wide / 2 + 0.35), 0.035, KERB); raw.shape(circle(end.x, end.z, wide / 2), 0.06, ASPHALT);
+    }
     if (road.bridge) {
+      // The parapets grow out of the ground with the ramp, so the deck leaves the road without a step.
+      const span = road.points.slice(1, -1), rise = span.map((point) => 0.42 * Math.min(1, point.y / (road.bridge * 0.4)));
+      const coping = span.map((point, i) => ({ ...point, y: point.y + Math.max(0.1, rise[i]) }));
       for (const side of [-1, 1]) {
         const edge = side * (wide / 2 + 0.35);
-        raw.strip(road.points, edge, -0.4, 0.42, '#efe9da', side); raw.strip(road.points, edge - side * 0.12, 0.05, 0.42, '#d6cfbc', -side);
-        raw.ribbon(road.points, 0.14, 0.42, '#f6f2e6', edge - side * 0.06);
+        raw.strip(span, edge, -0.4, rise, '#efe9da', side); raw.strip(span, edge - side * 0.12, 0.05, rise.map((high) => Math.max(0.05, high)), '#d6cfbc', -side);
+        raw.ribbon(coping, 0.14, 0, '#f6f2e6', edge - side * 0.06);
       }
+      const mid = Math.floor(road.points.length / 2), middle = road.points[mid];
       let since = 99;
       for (let i = 1; i < road.points.length - 1; i++) {
         const point = road.points[i], previous = road.points[i - 1];
         since += Math.hypot(point.x - previous.x, point.z - previous.z);
-        if (since < 5.5 || onLand(point.x, point.z)) continue;
+        if (since < 5.5 || onLand(point.x, point.z) || (road.pylon && Math.hypot(point.x - middle.x, point.z - middle.z) < 3.2)) continue;
         since = 0;
         const next = road.points[i + 1], ry = Math.atan2(next.x - previous.x, next.z - previous.z), height = point.y - WATER_Y;
         b.box(point.x, WATER_Y + height / 2 - 0.2, point.z, wide * 0.8, height, 0.5, '#cfc8b6', { ry });
         b.box(point.x, WATER_Y + 0.12, point.z, wide * 0.95, 0.24, 0.9, '#b9b2a0', { ry });
       }
-      if (road.pylon) {                              // a cable-stayed pylon at the middle of the span
-        const middle = road.points[Math.floor(road.points.length / 2)], from = road.points[0], to = road.points[road.points.length - 1];
-        const ry = Math.atan2(to.x - from.x, to.z - from.z), top = middle.y + 9;
+      if (road.pylon) {
+        // A cable-stayed pylon astride the deck at mid-span: two legs rise from pile caps in the water and lean in to one
+        // mast head, a cross-beam carries the deck between them, and the stays fan down in two planes to the parapets.
+        const before = road.points[mid - 1], after = road.points[mid + 1], ry = Math.atan2(after.x - before.x, after.z - before.z);
+        const foot = wide / 2 + 1.25, apex = 0.2, top = middle.y + 8.2, tall = top - WATER_Y, lean = Math.atan2(foot - apex, tall), stone = '#f4f0e6';
+        const legAt = (y) => foot - (foot - apex) * ((y - WATER_Y) / tall);
+        const heads = { [-1]: [], 1: [] };
         b.at(middle.x, 0, middle.z, ry, () => {
-          for (const side of [-1, 1]) b.box(side * 1.5, (top + WATER_Y) / 2, 0, 0.45, top - WATER_Y, 0.55, '#f1ede2', { rz: side * 0.14 });
-          b.box(0, top - 0.6, 0, 1.2, 0.5, 0.6, '#f1ede2');
-          for (const end of [-1, 1]) for (let i = 1; i <= 4; i++) {
-            const reach = i * 2.1 * end, drop = top - 1 - middle.y - 0.3, length = Math.hypot(reach, drop);
-            b.box(0, middle.y + 0.3 + drop / 2, reach / 2, 0.05, length, 0.05, '#dfe4e6', { rx: -Math.atan2(reach, drop) });
+          for (const side of [-1, 1]) {
+            b.box(side * (foot + apex) / 2, WATER_Y + tall / 2, 0, 0.5, Math.hypot(foot - apex, tall), 0.62, stone, { rz: side * lean });
+            b.box(side * foot, WATER_Y + 0.2, 0, 1.4, 0.4, 1.6, '#b9b2a0');
+            for (let n = 1; n <= PYLON_STAYS; n++) heads[side].push(b.world(-side * 0.16, top + 0.1 + n * 0.3, 0));
           }
-          b.ico(0, top + 0.2, 0, 0.16, 0.16, 0.16, '#ff3b30', { layer: 'glow' });
+          b.box(0, middle.y - 0.42, 0, legAt(middle.y - 0.42) * 2, 0.44, 0.5, stone);
+          b.box(0, top + 0.55, 0, 0.66, 2.5, 0.72, stone);
+          b.box(0, top + 1.88, 0, 0.86, 0.16, 0.92, '#d9d3c4');
+          b.ico(0, top + 2.14, 0, 0.17, 0.17, 0.17, '#ff3b30', { layer: 'glow' });
         });
+        for (const way of [-1, 1]) {
+          let run = 0, n = 0;
+          for (let i = mid + way; i > 1 && i < road.points.length - 2 && n < PYLON_STAYS; i += way) {
+            const point = road.points[i], previous = road.points[i - way];
+            run += Math.hypot(point.x - previous.x, point.z - previous.z);
+            if (run < (n + 1) * 1.45) continue;
+            const a = road.points[i - 1], c = road.points[i + 1], length = Math.hypot(c.x - a.x, c.z - a.z) || 1, px = -(c.z - a.z) / length, pz = (c.x - a.x) / length;
+            for (const side of [-1, 1]) {
+              const head = heads[side][n], reach = side * (wide / 2 + 0.29);
+              const anchor = { x: point.x + px * reach, y: point.y + 0.4, z: point.z + pz * reach };
+              const flat = Math.hypot(anchor.x - head.x, anchor.z - head.z), drop = head.y - anchor.y;
+              b.at(head.x, head.y, head.z, Math.atan2(anchor.x - head.x, anchor.z - head.z), () => b.box(0, -drop / 2, flat / 2, 0.055, Math.hypot(flat, drop), 0.055, '#e6eaec', { rx: -Math.atan2(flat, drop) }));
+            }
+            n += 1;
+          }
+        }
       }
     } else {
       for (let i = 1; i < road.points.length; i++) segments.push({ a: road.points[i - 1], b: road.points[i], half: wide / 2 + 0.5 });

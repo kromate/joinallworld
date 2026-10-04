@@ -1,6 +1,6 @@
 /* OWNER: social — shared styles for People, Messages, Contacts, Family and Invite. */
 .social-note{font-size:12px!important;line-height:1.45!important;color:var(--c-muted);margin:6px 2px!important}.social-note.is-warn{color:var(--c-red)}
-.social-link{border:0;background:none;color:var(--c-green-dark);font:600 12px var(--font);text-decoration:underline;cursor:pointer;min-height:32px;padding:0 4px}
+.social-link{border:0;background:none;color:var(--c-green-dark);font:600 12px var(--font);text-decoration:underline;cursor:pointer;min-height:40px;padding:0 8px}
 .social-tabs{display:flex;gap:6px;margin-bottom:var(--s-3)}
 .social-tabs button,.social-chip{border:0;background:var(--c-fill);border-radius:var(--r-chip);padding:9px 14px;min-height:var(--tap);font:600 12px var(--font);color:var(--c-ink);cursor:pointer}
 .social-tabs .is-selected{background:var(--c-ink);color:#fff}
@@ -52,7 +52,7 @@ button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);back
 .social-head .social-btn{padding:6px 14px;font-size:12px}
 .social-beta{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:9px;background:#fff3d9;color:#8a5a00;margin-left:6px;vertical-align:middle}
 .social-code{display:block;width:100%;box-sizing:border-box;font:12px ui-monospace,monospace;padding:10px;border:1px dashed #b9bec4;border-radius:var(--r-sm);background:var(--c-fill);overflow-wrap:anywhere;user-select:all}
-.social-checks{display:grid;gap:2px;max-height:150px;overflow-y:auto;margin:6px 0}.social-checks label{display:flex!important;grid-template-columns:none;align-items:center;gap:8px;min-height:36px;margin:0!important;font-weight:500!important}
+.social-checks{display:grid;gap:2px;max-height:184px;overflow-y:auto;margin:6px 0}.social-checks label{display:flex!important;grid-template-columns:none;align-items:center;gap:8px;min-height:var(--tap);margin:0!important;font-weight:500!important}
 
 /* ---- Messages ---- */
 .msg-conv.is-unread .ui-row-body>b{font-weight:800}
@@ -112,3 +112,6 @@ button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);back
 @media(max-width:540px){.social-msg{max-width:86%}.social-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .people-who h3{font-size:18px!important;letter-spacing:0!important;text-transform:none!important;color:var(--c-ink)!important}
 .people-who .ui-avatar{width:46px;height:46px;font-size:18px}
+/* A person in a social row is the lettered avatar (no emoji faces): it fills the round slot. */
+.social-avatar>.ui-avatar{width:100%;height:100%;font-size:.72em}
+.social-avatar>svg.ui-glyph{color:var(--c-ink-2)}

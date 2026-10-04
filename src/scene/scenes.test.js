@@ -15,7 +15,8 @@ import { NPCS } from '../game/content/npcs.js';
 import { spotsOf } from '../life.js';
 
 const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse'];
-const TRIANGLE_BUDGET = 15000, DRAW_CALL_BUDGET = 60;
+// The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail (up to ~2,700 triangles, once), on top.
+const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
 const venueOf = (kind, scene = {}, more = {}) => ({ id: kind, label: kind, scene: { kind, ...scene }, ...more });
 
@@ -52,8 +53,9 @@ test('each scene builds within budget with a full crowd, and disposes without le
       assert.ok(entry.group.isGroup && typeof entry.background === 'string' && entry.camera.landscape.length === 3 && entry.camera.portrait.length === 3, kind);
       assert.ok(stats.triangles > 1500, `${kind} has real geometry (${stats.triangles})`);
       assert.ok(stats.triangles < TRIANGLE_BUDGET, `${kind} triangles ${stats.triangles}`);
-      // Static (≤ 3) + sky + crowd (≤ 2) + the player's own figure (≤ 2) + the spot ring; the two walking marks add at most 2 more.
-      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= 9, `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
+      // Static (≤ 3) + sky + crowd (≤ 2) + the player's own figure (a rig: one mesh per part, ≤ 8 with its crown) + the spot ring; the two walking marks add at most 2 more.
+      // A room's two walls are parts of their own (≤ 3 layers each), so that the scene can hide the wall the camera is behind.
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= (entry.walls ? 21 : 15), `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
       assert.ok(stats.lights <= 4, `${kind} lights ${stats.lights}`);
       assert.equal(tags.length, MAX_CROWD, kind);
       for (const mesh of entry.group.children.filter((child) => child.isMesh)) {
@@ -342,13 +344,14 @@ test('a scene crowd is capped, placed and tagged; the player carries the crown',
   assert.deepEqual([all[0].kind, all[0].marker], ['self', 'crown']);
   const placed = entry.setCrowd([{ id: 'x', name: 'X', x: 4, z: -2 }, { id: 'y', name: 'Y', spot: 'snacks' }, null, 'junk']);
   assert.deepEqual([placed[0].position.x, placed[0].position.z], [4, -2]);
-  assert.ok(Math.hypot(placed[1].position.x - entry.anchors.snacks.x, placed[1].position.z - entry.anchors.snacks.z) < 2);
+  const fromSnacks = Math.hypot(placed[1].position.x - entry.anchors.snacks.x, placed[1].position.z - entry.anchors.snacks.z);
+  assert.ok(fromSnacks > 1 && fromSnacks < 3.2, `someone "at" a spot stands beside its marker, not on it (${fromSnacks.toFixed(2)} away)`);
   assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), true);
   assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), false);
   assert.equal(entry.tags()[0].text, 'Kromate');
   assert.equal(entry.setPlayer({ pose: 'wave' }), true);
   assert.deepEqual(entry.setCrowd([]), []);
-  assert.equal(entry.stats().meshes <= 7, true);
+  assert.equal(entry.stats().meshes <= 13, true);
   kit.dispose();
 });
 

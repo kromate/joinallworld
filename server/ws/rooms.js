@@ -25,6 +25,11 @@
  * server-held state, re-validated against the appearance option lists (checkLook): eight option
  * ids, nothing a client sent. It is not added to `presence` (which is re-sent on every move); the
  * social module's who-is-here listing carries it so other players' avatars can be drawn.
+ * POSITION. `move` { x, z } (finite, within ±20 — protocol.js validatePosition; at most 5 a second per
+ * socket) records where the sender's avatar stands in the venue's scene. It is the ONE position:
+ * `presence` carries it to the room (the message is unchanged), and the proximity gate for voice
+ * signalling measures between these same positions. A join resets it to the origin { x: 0, z: 0 },
+ * which clients read as "has not reported a position yet" (a client never reports exactly the origin).
  * ROOM-CHANGED. When a room's membership or a member's name changes, this module raises the
  * server event 'room-changed' { room, cityId, venueId, members: [publicId] } (ctx.emit). It sends
  * nothing itself, so the room protocol is unchanged; the social module turns the event into a

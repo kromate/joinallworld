@@ -20,7 +20,7 @@
  * previewDiagnostics() reports its render counter.
  */
 import './look-ui.css';
-import { esc, money } from '../dom.js';
+import { esc, money, mark } from '../dom.js';
 import { APPEARANCE, BOUTIQUE_PRICES } from '../../game/content/traits.js';
 
 const hexOf = (group, id) => APPEARANCE[group].find((swatch) => swatch.id === id)?.hex ?? '#888888';
@@ -140,11 +140,11 @@ export function randomLook(random = Math.random) {
 // ---- Editor ----------------------------------------------------------------------------------
 // Tabs group the options by what they change. `focus` is where the preview looks while a tab is open.
 const SECTIONS = [
-  { id: 'body', title: 'Body', icon: '🧍', focus: 'body', groups: [['chips', 'body', 'Body type'], ['swatches', 'skin', 'Skin tone', 'skin'], ['chips', 'face', 'Face shape'], ['chips', 'expression', 'Expression']] },
-  { id: 'hair', title: 'Hair', icon: '💇', focus: 'head', groups: [['chips', 'hair', 'Hairstyle'], ['swatches', 'hairColor', 'Hair colour', 'hairColours']] },
-  { id: 'outfit', title: 'Outfit', icon: '👕', focus: 'body', groups: [['chips', 'outfit', 'Outfit'], ['chips', 'fabric', 'Fabric']] },
-  { id: 'colours', title: 'Colours', icon: '🎨', focus: 'body', groups: [['swatches', 'outfitColor', 'Outfit colour', 'outfitColours'], ['swatches', 'bottomsColor', 'Bottoms colour', 'outfitColours']] },
-  { id: 'extras', title: 'Extras', icon: '🕶️', focus: 'body', groups: [['chips', 'accessories', `Accessories · up to ${APPEARANCE.accessoryLimit}, tap again to take one off`]] },
+  { id: 'body', title: 'Body', icon: 'person', focus: 'body', groups: [['chips', 'body', 'Body type'], ['swatches', 'skin', 'Skin tone', 'skin'], ['chips', 'face', 'Face shape'], ['chips', 'expression', 'Expression']] },
+  { id: 'hair', title: 'Hair', icon: 'scissors', focus: 'head', groups: [['chips', 'hair', 'Hairstyle'], ['swatches', 'hairColor', 'Hair colour', 'hairColours']] },
+  { id: 'outfit', title: 'Outfit', icon: 'boutique', focus: 'body', groups: [['chips', 'outfit', 'Outfit'], ['chips', 'fabric', 'Fabric']] },
+  { id: 'colours', title: 'Colours', icon: 'frame', focus: 'body', groups: [['swatches', 'outfitColor', 'Outfit colour', 'outfitColours'], ['swatches', 'bottomsColor', 'Bottoms colour', 'outfitColours']] },
+  { id: 'extras', title: 'Extras', icon: 'crown', focus: 'body', groups: [['chips', 'accessories', `Accessories · up to ${APPEARANCE.accessoryLimit}, tap again to take one off`]] },
 ];
 const HEAD_FIELDS = new Set(['hair', 'hairColor', 'skin', 'face', 'expression']);
 let section = 'body', lastField = null, zoomOverride = null;
@@ -179,10 +179,10 @@ export function lookEditor(look, { owned = null } = {}) {
   const current = SECTIONS.find((item) => item.id === section) ?? SECTIONS[0];
   const chips = (field, title) => `<fieldset class="look-group"><legend>${title}</legend><div class="look-chips">${optionsOf(field, look).map((id) => {
     const why = owned && owned[field] && !owned[field].includes(id) && !chosen(look, field, id) ? `Boutique · ${money(BOUTIQUE_PRICES[field][id])}` : '';
-    return `<button type="button" class="look-chip" data-look="${field}" data-value="${esc(id)}" data-key="${field}:${esc(id)}" aria-pressed="${chosen(look, field, id)}" ${why ? `disabled title="${esc(why)}"` : ''}>${esc(titled(id))}${why ? `<small>🔒 ${esc(why)}</small>` : ''}</button>`;
+    return `<button type="button" class="look-chip" data-look="${field}" data-value="${esc(id)}" data-key="${field}:${esc(id)}" aria-pressed="${chosen(look, field, id)}" ${why ? `disabled title="${esc(why)}"` : ''}>${esc(titled(id))}${why ? `<small>${mark('lock')} ${esc(why)}</small>` : ''}</button>`;
   }).join('')}</div></fieldset>`;
   const swatches = (field, title, group) => `<fieldset class="look-group"><legend>${title} <b>${esc(swatchLabel(group, look[field]))}</b></legend><div class="look-swatches">${APPEARANCE[group].map((swatch) => `<button type="button" class="look-swatch" data-look="${field}" data-value="${esc(swatch.id)}" data-key="${field}:${esc(swatch.id)}" aria-pressed="${look[field] === swatch.id}" aria-label="${esc(title)}: ${esc(swatch.label)}" style="--swatch:${swatch.hex}"><i aria-hidden="true">${look[field] === swatch.id ? '✓' : ''}</i><span>${esc(swatch.label)}</span></button>`).join('')}</div></fieldset>`;
-  const tabs = SECTIONS.map((item) => `<button type="button" role="tab" class="look-tab" id="look-tab-${item.id}" data-look-tab="${item.id}" data-key="tab:${item.id}" aria-selected="${item === current}" aria-controls="look-panel"><span aria-hidden="true">${item.icon}</span>${item.title}${item.id === 'extras' && worn(look).length ? `<b>${worn(look).length}</b>` : ''}</button>`).join('');
+  const tabs = SECTIONS.map((item) => `<button type="button" role="tab" class="look-tab" id="look-tab-${item.id}" data-look-tab="${item.id}" data-key="tab:${item.id}" aria-selected="${item === current}" aria-controls="look-panel"><span aria-hidden="true">${mark(item.icon)}</span>${item.title}${item.id === 'extras' && worn(look).length ? `<b>${worn(look).length}</b>` : ''}</button>`).join('');
   const groups = current.groups.map(([kind, field, title, group]) => (kind === 'chips' ? chips(field, title) : swatches(field, title, group))).join('');
   return `<div class="look-editor"><div class="look-tabs" role="tablist" aria-label="What to change">${tabs}</div><div class="look-panel" id="look-panel" role="tabpanel" aria-labelledby="look-tab-${current.id}">${groups}</div></div>`;
 }
@@ -202,7 +202,7 @@ export function lookStage(look, { variant = 'hero', name = 'Your Sim', tools = '
   return `<div class="look-view is-${variant}"><div class="look-stage" data-look-stage data-mode="loading" ${spun ? 'data-spun' : ''}>
     <div class="look-stage-view" data-look-canvas>${avatarSvg(look, { size: 150, label: lookAlt(look, name) })}</div>
     ${mini ? '' : '<p class="look-hint" aria-hidden="true">↔ Drag to spin</p>'}</div>
-    ${mini ? '' : `<div class="look-bar"><button type="button" class="look-tool" data-look-zoom aria-pressed="${focus === 'head'}" title="Switch between full body and face">${focus === 'head' ? '🧍 Full body' : '🔍 Face'}</button><p class="look-caption">${caption}</p>${tools}</div>`}</div>`;
+    ${mini ? '' : `<div class="look-bar"><button type="button" class="look-tool" data-look-zoom aria-pressed="${focus === 'head'}" title="Switch between full body and face">${focus === 'head' ? `${mark('person')} Full body` : `${mark('search')} Face`}</button><p class="look-caption">${caption}</p>${tools}</div>`}</div>`;
 }
 
 let scene3d = null, loading = null, preview = null, unavailable = false, wanted = null, watcher = null, watchedDialog = null, lastShown = '';
@@ -262,7 +262,7 @@ export function mountLookPreview(root, look, { name = 'Your Sim' } = {}) {
   view.querySelector('[data-look-zoom]')?.addEventListener('click', (event) => {
     zoomOverride = lookFocus() === 'head' ? 'body' : 'head';
     const button = event.currentTarget, head = zoomOverride === 'head';
-    button.setAttribute('aria-pressed', String(head)); button.textContent = head ? '🧍 Full body' : '🔍 Face';
+    button.setAttribute('aria-pressed', String(head)); button.innerHTML = head ? `${mark('person')} Full body` : `${mark('search')} Face`;
     preview?.setFocus(zoomOverride);
   });
   if (unavailable) { stage.dataset.mode = '2d'; return; }

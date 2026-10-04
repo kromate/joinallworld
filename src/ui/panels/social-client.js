@@ -14,6 +14,7 @@
  */
 import './social.css';
 import { createOutbox, mergeMessages, inviteIdFrom, SEND_TIMEOUT_MS } from '../../game/social-model.js';
+import { linkWords, linkButton } from '../link.js';
 
 const MAX_ATTEMPTS = 6;
 export const outbox = createOutbox();
@@ -269,7 +270,7 @@ export function bindCommon(root, api) {
 /** Standard not-ready states; returns '' when the overview is loaded. */
 export function gate(view) {
   if (view.onboarding?.required) return '<p class="social-note">Finish creating your Sim first. People and messages open once you have moved in.</p>';
-  if (!view.connected) return '<p class="social-note is-warn">Not connected. People and messages are read-only until the connection is back.</p>';
+  if (!view.connected) return `<p class="social-note is-warn">${escapeText(linkWords(view).why)} People and messages are read-only until that is resolved. ${linkButton(view, 'social-link')}</p>`;
   if (S.error && !S.me) return `<p class="social-note is-warn">Could not load: ${escapeText(S.error)} <button class="social-link" data-social-retry>Retry</button></p>`;
   if (!S.me) return '<p class="social-note">Loading…</p>';
   return '';

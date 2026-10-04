@@ -7,6 +7,8 @@
 .settings-note strong{color:var(--c-ink)}
 .settings-list{margin:0 0 var(--s-2);padding:var(--s-3) var(--s-4) var(--s-3) 32px;border-radius:var(--r-md);background:var(--c-fill);font-size:12px;line-height:1.55;color:var(--c-ink-2)}
 .settings-walls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s-2)}
+/* Expanded on a desktop: the wallpaper tiles keep the size they have on a phone. */
+.ph.is-wide .settings-walls{grid-template-columns:repeat(4,96px)}
 .settings-wall{position:relative;aspect-ratio:9/15;min-height:var(--tap);padding:0;border:0;border-radius:var(--r-sm);overflow:hidden;cursor:pointer;box-shadow:var(--e-1);color:#fff}
 .settings-wall span{color:#fff;position:absolute;left:0;right:0;bottom:0;padding:14px 4px 6px;background:linear-gradient(transparent,#000000a6);font:600 10.5px var(--font);line-height:1.2;text-align:center}
 .settings-wall[aria-pressed=true]{outline:3px solid var(--c-ink);outline-offset:2px}

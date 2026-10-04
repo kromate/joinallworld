@@ -9,6 +9,11 @@
  * It listens to the Map panel's 'jaw:map-ui' event (filter, selected place, layers and their data)
  * and to the shell's 'jaw:key' (arrows pan, + and − zoom, 0 shows the whole city).
  *
+ * THE OPENING VIEW: a phone opens close on the player, where the places around them are named in
+ * words; "Whole city" pulls back to all of it and "Find me" comes back (it lights up while the
+ * player's piece is out of sight or far away). A wide screen has room for the whole city and opens on it.
+ * A label never covers the player's piece: see src/map3d/labels.js.
+ *
  * BATTERY RULE — NO FRAME LOOP WHILE IDLE
  *   A frame is drawn when something asks for one (the map opens, a resize, camera input, the
  *   state or a layer changes). After drawing, another frame is scheduled ONLY while something is
@@ -35,6 +40,8 @@ import { createActor } from './actor.js';
 import { createOverlays } from './overlays.js';
 import { tripOf, createTripClock, tripPose } from './trip.js';
 import { PLINTH as PLINTH_UNIT } from './landmarks.js';
+import { avatarBox, labelShift, nearPoints } from './labels.js';
+import { iconFor } from '../ui/icon-map.js';
 
 const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34, PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
 let hintSeen = false;             // the how-to line shows until the player first moves the map, picks a place or travels
@@ -83,7 +90,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     root = doc.createElement('div');
     root.className = 'm3';
     root.innerHTML = `<div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
-      <div class="m3-controls" role="group" aria-label="Map view"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" class="m3-fit" data-m3="fit" aria-label="Show the whole city" title="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" data-m3="me" aria-label="Show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>
+      <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill m3-fit" data-m3="fit" aria-label="Show the whole city" title="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Find me: show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
       <p class="m3-hint" data-m3-hint ${hintSeen ? 'hidden' : ''}>Drag to turn the city · pinch or scroll to zoom · two fingers to move. Tap a building to go there.</p>`;
     root.prepend(canvas);
     canvas.classList?.add('m3-canvas');
@@ -99,6 +106,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   let size = { width: 0, height: 0 }, insets = { left: 0, top: 0, right: 0, bottom: 0 }, opened = false, userMoved = false, time = null, labelKey = '', chipKey = '';
   let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs = [], gaps = [];
   let trip = null, route = null, returning = null, settling = false, pendingArrive = null, dueAt = -Infinity, tripCamera = true, pose = null;
+  let stood = null, nearDistance = 0;             // stood: where the piece stands when it is not travelling; nearDistance: how far out the close view is
   const clock = createTripClock();
   let heldTime = null, following = false;        // following: "find me" was pressed during a trip, so the view keeps the traveller in its middle
   const shown = () => !destroyed && !lost && !container.hidden && !pageHidden() && size.width > 0;
@@ -134,6 +142,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     const place = city.places[state?.location] || city.places.home, node = network.places[placeKey(place.id)];
     const door = node?.door || place;
     actor.stand(door.x, door.z, place.ry);
+    stood = { x: door.x, y: 0, z: door.z };
   }
   function straight(from, to) {
     const a = network.places[placeKey(from)]?.door || city.places[from] || city.places.home, b = network.places[placeKey(to)]?.door || city.places[to] || city.places.home;
@@ -210,12 +219,12 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       const source = VENUES[place.id] || COMING_SOON[place.id];
       const node = doc.createElement('button');
       node.type = 'button'; node.className = `m3-label is-${place.kind}`; node.dataset.venue = place.id;
-      const icon = doc.createElement('span'); icon.className = 'm3-label-icon'; icon.setAttribute('aria-hidden', 'true'); icon.textContent = source?.icon || '📍';
+      const icon = doc.createElement('span'); icon.className = 'm3-label-icon'; icon.setAttribute('aria-hidden', 'true'); icon.innerHTML = iconFor('venue', place.id, source?.icon);
       const text = doc.createElement('span'); text.className = 'm3-label-text';
       const name = doc.createElement('b'), note = doc.createElement('small');
       text.append(name, note); node.append(icon, text);
       labelLayer.append(node);
-      labels.set(place.id, { node, name, note, width: 80, height: 30, priority: 0 });
+      labels.set(place.id, { node, name, note, width: 80, height: 30, priority: 0, shift: 0 });
     }
     // The traveller's own tag: it rides above the avatar for the length of a trip.
     you = doc.createElement('div');
@@ -224,7 +233,8 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   }
   function updateLabels() {
     if (!labelLayer) return;
-    const at = state?.t ?? 0, going = trip?.to ?? null, home = city.places.home;
+    // Once the server has moved the player, the place is where they are — not where they are going, nor one they are leaving.
+    const at = state?.t ?? 0, going = trip && state?.location !== trip.to ? trip.to : null, home = city.places.home;
     const next = JSON.stringify([state?.location, going, home.house, filter, selected, hovered, layers.gov, Object.values(VENUES).map((venue) => openingInfo(venue.hours, at).status)]);
     if (next === labelKey) return;
     labelKey = next;
@@ -256,7 +266,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       node.className = `m3-chip is-${chip.kind}`;
       if (chip.label) { node.setAttribute('role', 'img'); node.setAttribute('aria-label', chip.label); }
       if (chip.bg) { node.style.background = chip.bg; node.style.color = chip.ink; }
-      const icon = doc.createElement('span'); icon.className = 'm3-chip-icon'; icon.textContent = chip.icon || '';
+      const icon = doc.createElement('span'); icon.className = 'm3-chip-icon'; icon.innerHTML = chip.glyph || '';
       node.append(icon);
       // Player text goes in as text, never as markup, and is not a link or a button.
       if (chip.text) { const text = doc.createElement('span'); text.className = 'm3-chip-text'; text.textContent = chip.text; node.append(text); }
@@ -265,7 +275,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
         const row = doc.createElement('span'); row.className = 'm3-chip-homes';
         for (const item of chip.homes) {
           const house = doc.createElement(item.you ? 'span' : 'button');
-          house.className = `m3-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`; house.textContent = '🏠';
+          house.className = `m3-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`; house.innerHTML = chip.homeGlyph || iconFor('house', null, 'home');
           house.title = item.you ? `${item.name} (you)` : item.name;
           house.setAttribute('aria-label', `${item.name}${item.you ? ' (you)' : ''}, ${item.online ? 'online now' : 'not online'}`);
           if (!item.you) { house.type = 'button'; house.dataset.neighbour = item.id; house.dataset.name = item.name; }
@@ -289,24 +299,38 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     entries.sort((a, b) => b.label.priority - a.label.priority || b.at.y - a.at.y);
     const taken = [];
     const hits = (box) => taken.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t);
+    // The player's piece on screen (with its "You" tag during a trip): no label may cover it.
+    const travelling = Boolean(pose && trip && shown()), spot = travelling ? pose : stood, riding = travelling && pose.phase === 'ride';
+    const feet = spot ? project(spot.x, spot.y, spot.z) : null, head = spot ? project(spot.x, spot.y + (riding ? 3.3 : 3.1) * actor.size, spot.z) : null;
+    const piece = feet?.front ? avatarBox(feet, head, { riding, tag: travelling }) : null;
     for (const { label, at, visible } of entries) {
       const node = label.node;
       if (!visible) { if (!node.hidden) node.hidden = true; continue; }
       if (node.hidden) node.hidden = false;
       const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 };
       // A name that would sit on top of a more important one shrinks to its icon; it is still a button with its full name.
-      const compact = hits(full);
-      taken.push(compact ? { l: at.x - 15, r: at.x + 15, t: at.y - 30, b: at.y } : full);
+      const lift = labelShift(full, piece), moved = lift ? { l: full.l, r: full.r, t: full.t + lift, b: full.b + lift } : full;
+      const compact = hits(moved), small = { l: at.x - 15, r: at.x + 15, t: at.y - 30, b: at.y };
+      // It steps clear of the player's piece: up on a longer stalk, or down over its own roof (src/map3d/labels.js).
+      const shift = compact ? labelShift(small, piece) : lift;
+      taken.push(compact ? { l: small.l, r: small.r, t: small.t + shift, b: small.b + shift } : moved);
       node.classList.toggle('is-compact', compact);
-      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
+      if (shift !== label.shift) {
+        label.shift = shift;
+        node.classList.toggle('is-lowered', shift > 0);
+        if (shift < 0) node.style.setProperty('--m3-stalk', `${(compact ? 6 : 9) - shift}px`); else node.style.removeProperty('--m3-stalk');
+      }
+      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y + shift)}px) translate(-50%,-100%)`;
     }
     if (you) {
-      const travelling = Boolean(pose && trip && shown());
       if (you.hidden === travelling) you.hidden = !travelling;
-      if (travelling) { const at = project(pose.x, pose.y + (pose.phase === 'ride' ? 3.3 : 3.1) * actor.size, pose.z); you.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`; }
+      if (travelling) you.style.transform = `translate(${Math.round(head.x)}px,${Math.round(head.y)}px) translate(-50%,-100%)`;
     }
     const far = rig.view.distance > 230;
     if (root.classList.contains('is-far') !== far) root.classList.toggle('is-far', far);
+    // "Find me" lights up while the player's piece is out of sight, or (on a phone) the view has pulled well back from it.
+    const away = !feet?.front || feet.x < insets.left || feet.x > size.width - insets.right || feet.y < insets.top || feet.y > size.height - insets.bottom + 40 || (size.width <= 720 && nearDistance > 0 && rig.view.distance > nearDistance * 1.7);
+    if (root.classList.contains('is-away') !== away) root.classList.toggle('is-away', away);
     for (const { node, chip } of chips.values()) {
       const at = project(chip.x, chip.y, chip.z);
       const visible = at.front && at.x > -40 && at.x < size.width + 40 && at.y > 0 && at.y < size.height + 40 && !(far && (chip.kind === 'plot' || chip.kind === 'board-free'));
@@ -332,10 +356,14 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     opened = true; userMoved = false;
     rig.jump({ yaw: 0, pitch: DEFAULT_PITCH });
     if (size.width > 720) { rig.jump(rig.whole()); return; }
-    // A phone cannot name the places of the whole city at once: it opens on where the player is.
-    const here = city.places[state?.location] || city.places.home;
-    rig.jump({ x: here.x, z: here.z, distance: 150 });
-    rig.jump(rig.framing([{ x: here.x - 34, z: here.z }, { x: here.x + 34, z: here.z }, { x: here.x, z: here.z - 22 }, { x: here.x, z: here.z + 26 }], { pad: 1, min: MIN_DISTANCE }));
+    // A phone cannot name the places of the whole city at once: it opens close on where the player is.
+    rig.jump(nearView(city.places[state?.location] || city.places.home));
+  }
+  /** The close view around a point (the player): near enough for the places around it to be named, on this screen. */
+  function nearView(at) {
+    const near = rig.framing(nearPoints(at, size.width <= 720), { pad: 1, min: MIN_DISTANCE });
+    nearDistance = near.distance;
+    return near;
   }
   function layout() {
     const rect = container.getBoundingClientRect();
@@ -492,8 +520,9 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; }
     else if (name === 'me') {
       // During a trip "find me" also keeps up with the traveller, until the player moves the view themselves.
+      // It comes back to the close view the map opens on — or stays closer, if the player already is.
       const place = city.places[state?.location] || city.places.home, at = pose || place;
-      motion({ x: at.x, z: at.z, distance: Math.min(rig.view.distance, 80) }, 0.6);
+      motion({ x: at.x, z: at.z, distance: Math.min(rig.view.distance, nearView(at).distance) }, 0.6);
       following = Boolean(trip && pose && !reducedMotion);
     }
   }

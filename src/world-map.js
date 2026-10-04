@@ -10,8 +10,10 @@
  *     → { setCity(cityId), resize(), destroy() }
  *   onOpenCity   the player chose the city they are already in: show its city map
  *   onEnterCity  the player chose another city they may enter (see cityAccess in regions.js)
- *   held()       the cities shown as coming soon in which this player already has a life; only
- *                those are offered, labelled "Preview". Nobody else gets a way in.
+ *   held()       the cities in which this player already has a life — from the server's session
+ *                response (session.cities), so it is the same on every device. A city shown as
+ *                coming soon is offered only to someone who already lives there, labelled
+ *                "Preview". Nobody else gets a way in, and no link or browser setting opens one.
  *
  * No WebGL and no animation loop: it is one SVG tilted with a CSS transform, and markers that are
  * real buttons. The list beside the map says the same thing as the markers, in reading order.
@@ -30,11 +32,7 @@ const ACCESS = {
 
 export function createWorldMap(container, { onOpenCity = () => {}, onEnterCity = () => {}, held = () => [] } = {}) {
   let current = 'lagos', selected = 'lagos', countryId = 'nigeria';
-  // A support link (?preview=<city>) lets a player who had a life there before this build reach it again.
-  let linked = null;
-  try { linked = new URLSearchParams(window.location.search).get('preview'); } catch { linked = null; }
-  const heldNow = () => [...new Set([...(held() || []), ...(linked && cityEntry(linked)?.legacy ? [linked] : [])])];
-  const access = (id) => cityAccess(id, { current, held: heldNow() });
+  const access = (id) => cityAccess(id, { current, held: held() || [] });
 
   const root = document.createElement('section');
   root.className = 'wm';
@@ -94,6 +92,8 @@ export function createWorldMap(container, { onOpenCity = () => {}, onEnterCity =
 
   return {
     setCity(id) { if (!cityEntry(id)) return; current = id; selected = id; countryId = cityEntry(id).country; draw(); },
+    /** The list of held cities may have changed (a session arrived): draw again. */
+    refresh() { draw(); },
     resize() {},
     destroy() { root.removeEventListener('click', onClick); root.remove(); },
   };

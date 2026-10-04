@@ -143,7 +143,7 @@ test('a muted player cannot put a name in front of others: not a new one, and th
   assert.deepEqual([other.status, refusal.error], [403, 'muted']); assert.match(refusal.reason, /A moderator has muted you/);
   const same = await f.request('/api/session', { name: 'Bola' }, bola.cookie);
   assert.equal(same.status, 200);
-  assert.deepEqual((await same.json()).session, { id: bola.id, name: 'Bola' });
+  assert.deepEqual((await same.json()).session, { id: bola.id, name: 'Bola', cities: ['lagos'] });
   assert.match(same.headers.get('set-cookie'), /^sid=/, 'the session itself is renewed as for anyone');
   const stored = await f.server.store.read((db) => Object.values(db.sessions).find((item) => item.publicId === bola.id));
   assert.equal(stored.name, 'Bola'); assert.equal(stored.expiresAt, before + HOUR, 'both requests renewed the stored session');

@@ -1,0 +1,18 @@
+/* "How it works" (src/ui/phone/how.js): a quiet, native disclosure. Values come from ../tokens.css. */
+.ph-how{margin:2px 0 -6px;font-size:12px;line-height:1.5;color:var(--c-muted)}
+.ph-how>summary{display:inline-flex;align-items:center;gap:6px;min-height:var(--tap);margin:0 -10px;padding:0 10px;border-radius:var(--r-pill);font:600 12px var(--font);color:var(--c-ink-2);cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+.ph-how>summary::-webkit-details-marker{display:none}
+.ph-how>summary::before{content:'i';display:grid;place-items:center;width:17px;height:17px;border-radius:50%;box-shadow:inset 0 0 0 1.5px currentColor;font:700 11px/1 ui-serif,Georgia,serif;opacity:.8}
+.ph-how>summary::after{content:'';width:6px;height:6px;margin:-3px 2px 0 1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);opacity:.7}
+.ph-how[open]>summary::after{margin-top:3px;transform:rotate(225deg)}
+.ph-how>summary:hover{background:var(--c-fill)}
+.ph-how>summary:focus-visible{outline:var(--focus);outline-offset:1px}
+.ph-how-body{max-width:68ch;margin:0 0 var(--s-2);padding:10px 12px;border-radius:var(--r-sm);background:var(--c-fill)}
+.ph-how-body>*{margin:0!important;font-size:12px!important;line-height:1.5!important;color:var(--c-muted)}
+.ph-how-body>*+*{margin-top:6px!important}
+.ph-how-body ul{padding-left:16px}
+.ph-how-body li+li{margin-top:3px}
+.ph-how-body b,.ph-how-body strong{color:var(--c-ink-2)}
+/* On the page itself (not inside a white card) the disclosure sits on the canvas: its body becomes the card. */
+.ph-how.is-page{margin:0 2px 2px}
+.ph-how.is-page>.ph-how-body{background:#fff;box-shadow:var(--e-1),var(--ring)}

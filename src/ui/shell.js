@@ -4,7 +4,7 @@
  * OWNER: foundation. The shell owns the HUD (top bar: clock, mood, name, saved state, wallet;
  * the needs strip; the goal line; the "More" tray and the Clean-screen toggle), the bottom nav
  * (Home / Buy / Map / Phone), the venue panel (spot rail, activity cards, progress + cancel),
- * the travel view, the first-session coach, toasts, the connection notice, the Sim sheet and its
+ * the first-session coach, toasts, the connection notice, the Sim sheet and its
  * tabs, the keyboard map (src/ui/keys.js) and the help overlay. Everything else is a panel.
  * The Phone — the device, its home screen and the frame every app opens in — is drawn by
  * src/ui/phone/phone.js; the shell only decides which sheet is open and hands it over.
@@ -32,8 +32,9 @@
  *   export default {
  *     id: 'jobs',                 // unique; also the target of api.open('jobs') and data-open="jobs"
  *     title: 'Jobs',
- *     icon: '💼',                 // emoji or short text shown in a Sim tab and the coach (the Phone draws
- *                                 //   its own icon for the id: src/ui/phone/icons.js)
+ *     icon: 'jobs',               // optional: a GLYPH NAME of the icon set (src/ui/phone/icons.js) for the sheet
+ *                                 //   head and the Sim tab. Left out, the glyph of the panel id is used. Never an
+ *                                 //   emoji: no emoji is drawn anywhere in the UI (see src/ui/icon-map.js)
  *     group: 'money',             // optional, Phone apps: 'life' | 'money' | 'people' | 'city' on the home screen
  *     phone: true,                // optional: a Sim tab that is also listed as a Phone app
  *     badge(state, view) {},      // optional: the count for the red badge on the Phone icon, from data
@@ -78,7 +79,8 @@
  *   state  the server's life state, read-only (shape: src/life.js + each system's stateKeys)
  *   view   { ...viewLife(state) (view[systemId] from each system's view()),
  *            cityId, city: { id, name, region }, connected, session: { id, name } | null,
- *            name, now (server ms), mode, venues: [{ id, label, district, icon, description }],
+ *            name, now (server ms), mode, venues: [{ id, label, district, icon, description }] (icon is the content's
+ *                  emoji: draw it with iconFor('venue', id, icon) from ../dom.js, never as text),
  *            net: { text, error } (the connection status line),
  *            link: 'connecting' | 'online' | 'new' | 'expired' | 'offline' | 'unreachable' — WHY the game
  *                  is or is not playable (src/client.js). `connected` is still the one flag to test for
@@ -103,7 +105,9 @@
  *   api.open(panelId, params?)    open a panel (or 'phone', 'sim', 'help')
  *   api.close()                   close the sheet, or return a nav panel to the venue view
  *   api.toast(text, kind?)        top-centre toast; kind: 'info' | 'good' | 'earn' | 'spend' | 'error'.
- *                                 At most two show at once; the same text is never shown twice.
+ *                                 At most two show at once; the same text is never shown twice. The toast has
+ *                                 its own glyph: an emoji the text starts with is dropped, one inside it is
+ *                                 drawn as a glyph.
  *   api.fetchJson(path, { method, body, headers }?) → Promise<object>; rejects Error{ status, code }
  *   api.newId()                   a retry key for an exactly-once write: `<server ms>:<uuid>` (the action-id
  *                                 form the server requires). One per thing the player does; reuse it on a retry.
@@ -123,7 +127,7 @@
  *   command, fetchJson, goTo, toggleCommunity, redrawScene — behind the api calls above
  *   onMode(mode, params)          a nav panel was entered or left
  *   onRender()                    the shell finished a render pass (the HUD may have changed size)
- *   menu(id)                      an entry of the More menu: 'city' | 'locate' | 'reconnect' (also "Try again"
+ *   menu(id)                      an entry of the More menu: 'city' (the country map) | 'reconnect' (also "Try again"
  *                                 in the connection notice). "Start a new life" in that notice dispatches the
  *                                 window event 'jaw:start-life', the same one the session panel sends.
  *
@@ -131,6 +135,9 @@
  *   - Panels never change state locally and never fetch /api/action themselves: the server is
  *     authoritative; use api.command. While offline everything is read-only.
  *   - UI-only state (selected tab, form draft) lives in module-level variables of your file.
+ *   - No emoji as icons. Icons are glyphs: glyph(name) / mark(name) / iconFor(kind, id, contentIcon) / empty(name, …)
+ *     from ../dom.js. Words about the connection come from src/ui/link.js (linkWords(view)): "offline" is said only
+ *     when the device has no network.
  *   - Styles: import './<id>.css' from your panel file; shared values come from ../tokens.css.
  *     Prefix your class names with your panel id. Must work at 390×844 and on desktop.
  *   - No requestAnimationFrame loops, no intervals: nothing may run while the game is idle.
@@ -141,9 +148,10 @@
  */
 import './tokens.css';
 import './shell.css';
-import { esc, money, cap, icon, json, skeleton } from './dom.js';
-import { shortcutFor, shortcutRows, heldActionFor } from './keys.js';
-import { glyph } from './phone/icons.js';
+import { esc, money, cap, icon, json, skeleton, mark, iconFor, withGlyphs, stripLeadEmoji } from './dom.js';
+import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.js';
+import { glyph, glyphFor, hasGlyph, onGlyphs } from './phone/icons.js';
+import { linkWords } from './link.js';
 
 const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
 const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone']];
@@ -250,16 +258,18 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const tone = TOAST_KINDS.includes(kind) ? kind : 'info';
     const showing = [...el.toasts.children].find((node) => node.dataset.text === text);
     if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.innerHTML = glyph(tone); } return; }
+    // The toast carries its own glyph: an emoji the text starts with is dropped, one inside it is drawn as a glyph.
+    const shown = stripLeadEmoji(text) || text;
     const item = document.createElement('div');
     item.className = `life-toast is-${tone}`;
     item.dataset.text = text;
     const mark = document.createElement('span'); mark.setAttribute('aria-hidden', 'true'); mark.innerHTML = glyph(tone);
-    const body = document.createElement('span'); body.textContent = text;
+    const body = document.createElement('span'); body.innerHTML = withGlyphs(shown);
     item.append(mark, body);
     el.toasts.append(item);
     placeToasts();
     while (el.toasts.children.length > MAX_TOASTS) el.toasts.firstChild.remove();
-    setTimeout(() => item.remove(), Math.min(7000, 2800 + text.length * 40));
+    setTimeout(() => item.remove(), Math.min(7000, 2800 + shown.length * 40));
   }
   /**
    * On a phone (and any window too narrow to keep them clear of the left column) toasts sit just
@@ -300,6 +310,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     return phoneLoading;
   }
   loadPhone().catch((error) => console.error('The phone could not be loaded:', error));
+  // The rest of the icon set arrives with the phone and the lazy panel groups: redraw whatever showed a placeholder.
+  const offGlyphs = onGlyphs(() => { if (state) api.refresh(); });
 
   /** The reason the open sheet may not be closed yet (a panel whose required() still returns one), or null. */
   function lockOf() {
@@ -379,7 +391,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   function panelView(params) { return { ...view, mode, params: params ?? null }; }
   /** A lazy panel's code is fetched the first time it is shown; the screen redraws itself when it arrives. */
   function fetchPanel(panel) {
-    if (panel.failed) return `<div class="ui-empty"><span aria-hidden="true">📡</span><h3>This screen did not load</h3><p>Check your connection and try again.</p><button class="ui-button is-primary" data-retry-panel="${esc(panel.id)}">Try again</button></div>`;
+    if (panel.failed) return `<div class="ui-empty"><span aria-hidden="true">${mark('cloud-off')}</span><h3>This screen did not load</h3><p>Check your connection and try again.</p><button class="ui-button is-primary" data-retry-panel="${esc(panel.id)}">Try again</button></div>`;
     panel.load().then(() => { if (state) api.refresh(); }, (error) => { console.error(`Panel ${panel.id} failed to load:`, error); panel.failed = true; if (state) api.refresh(); });
     return LOADING;
   }
@@ -398,12 +410,31 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
 
   const sheetHead = (title, { back = false, extra = '' } = {}) => `<header class="sheet-head">${back ? `<button class="sheet-back" data-open="phone" aria-label="Back to phone">${icon('back')}</button>` : ''}${extra}<h2>${title}</h2></header>`;
 
+  /** The glyph of a panel: its own `icon` when that names a glyph, else the glyph of its id. */
+  const panelGlyph = (panel) => (hasGlyph(panel?.icon) ? panel.icon : glyphFor(panel?.id));
+  const kbd = (...keys) => keys.map((key) => `<kbd>${esc(key)}</kbd>`).join(' ');
+  /**
+   * "Move around": how to walk, look and zoom in a venue or at home. Every key named here is read from
+   * src/ui/keys.js (labelOf), so this card and the key table below it cannot disagree with what the keys do.
+   */
+  function moveHtml() {
+    const labelOf = (run) => SHORTCUTS.find((shortcut) => shortcut.run === run)?.label || '';
+    const row = (name, title, text) => `<li><i aria-hidden="true">${glyph(name)}</i><div><b>${title}</b><span>${text}</span></div></li>`;
+    const walk = ['walk:up', 'walk:left', 'walk:down', 'walk:right'].map(labelOf), arrows = ['key:move-left', 'key:move-up', 'key:move-down', 'key:move-right'].map(labelOf);
+    return `<h3 id="help-move">Move around</h3><ul class="help-steps help-move" aria-labelledby="help-move">${row('walk', 'Walk', `${kbd(...walk)} or the arrow keys ${kbd(...arrows)}. Hold ${kbd(labelOf('walk:jog'))} to jog. On a touch screen, drag the stick at the bottom left.`)
+      }${row('pin', 'Go to a spot', `Click or tap the floor to walk there. Click a spot marker or a person and your Sim walks up to it. ${kbd('1')}–${kbd('9')} pick a spot from the keyboard.`)
+      }${row('compass', 'Look around', `Drag the scene to turn the camera. ${kbd(labelOf('look:left'))} ${kbd(labelOf('look:right'))} swing it left and right; ${kbd(labelOf('look:up'))} ${kbd(labelOf('look:down'))} raise and lower it.`)
+      }${row('search', 'Zoom', `Mouse wheel, pinch, or ${kbd(labelOf('key:zoom-in'))} ${kbd(labelOf('key:zoom-out'))}. ${kbd(labelOf('key:zoom-fit'))} recentres the camera on your Sim.`)
+      }${row('person', 'Your Sim', `${kbd(labelOf('open:sim'))} opens your Sim: profile, needs, goals and skills. ${kbd(labelOf('clean'))} hides the panels to see the whole scene.`)}</ul>`;
+  }
   /** How to play: the Help app in the phone, and the help sheet (the ? key) outside it. */
   function helpHtml() {
     const card = (name, title, text) => `<li><i aria-hidden="true">${glyph(name)}</i><div><b>${title}</b><span>${text}</span></div></li>`;
+    const words = linkWords(view);
     return `<ul class="help-steps">${card('home', 'Do things', 'Pick a spot in the venue panel, then an activity. It takes real seconds and finishes on the server even if you close the tab.')}${card('map', 'Go places', 'Open the Map to travel. Every fare, trip time and closing hour is shown before you go.')}${card('phone', 'Use your phone', 'Jobs, Bank, Messages and every other app live in the Phone (P). Red badges mean something is waiting.')}${card('person', 'Look after your Sim', 'The six bars are your needs. Tap your avatar for your profile, goals, skills and people.')}</ul>
-      <p class="help-note">The <b>More</b> button holds the weather, the gem hunt, messages and the city switch. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p>
-      <p class="help-note">${view.connected ? 'Your progress is saved on this server under this device session. It is not a password-protected account, so keep your cookies.' : 'You are not connected: what you see is the last saved copy, and nothing changes until the connection is back.'}</p>
+      ${moveHtml()}
+      <p class="help-note">The <b>More</b> button holds the weather, the gem hunt, messages and the Nigeria map. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p>
+      <p class="help-note">${words ? `${esc(words.why)} What you see is the last copy kept on this device, and nothing changes until that is resolved.` : 'Your progress is saved on this server under this device session. It is not a password-protected account, so keep your cookies.'}</p>
       <h3>Keyboard</h3><dl class="help-keys">${shortcutRows().map((row) => `<div><dt><kbd>${esc(row.label)}</kbd></dt><dd>${esc(row.description)}</dd></div>`).join('')}</dl>
       <button class="ui-button is-block" data-open="support">Report a problem</button>`;
   }
@@ -422,12 +453,12 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       const current = tabs.find((panel) => panel.id === sheet.tab) || tabs[0];
       const feeling = view.needs?.feelings?.[0];
       if (current && current.live === false && !current.pending && !force) return;
-      body = `<header class="sheet-head sim-head"><span class="sim-avatar" aria-hidden="true">👤</span><div><h2>${esc(state.name)}</h2><p>${esc(moodOf().word)}${feeling ? ` · ${esc(feeling.label)}` : ''}</p></div></header><div class="sim-tabs" role="tablist">${tabs.map((panel) => `<button role="tab" aria-selected="${panel === current}" class="${panel === current ? 'is-selected' : ''}" data-tab="${esc(panel.id)}">${esc(panel.title)}</button>`).join('')}</div><div class="sheet-body" role="tabpanel" data-panel="${esc(current?.id ?? '')}">${current ? panelHtml(current, sheet.params) : ''}</div>`;
+      body = `<header class="sheet-head sim-head"><span class="sim-avatar" aria-hidden="true">${mark('person')}</span><div><h2>${esc(state.name)}</h2><p>${esc(moodOf().word)}${feeling ? ` · ${esc(feeling.label)}` : ''}</p></div></header><div class="sim-tabs" role="tablist">${tabs.map((panel) => `<button role="tab" aria-selected="${panel === current}" class="${panel === current ? 'is-selected' : ''}" data-tab="${esc(panel.id)}">${mark(panelGlyph(panel))}<span>${esc(panel.title)}</span></button>`).join('')}</div><div class="sheet-body" role="tabpanel" data-panel="${esc(current?.id ?? '')}">${current ? panelHtml(current, sheet.params) : ''}</div>`;
     } else {
       const panel = byId.get(sheet.id);
       if (panel.live === false && !panel.pending && !force) return;
       const lock = lockOf();
-      body = `${sheetHead(`${esc(panel.icon || '')} ${esc(panel.title)}`, { back: sheet.from === 'phone' })}${lock ? `<p class="sheet-lock" role="note">🔒 ${esc(lock.reason)}</p>` : ''}<div class="sheet-body" data-panel="${esc(panel.id)}">${panelHtml(panel, sheet.params)}</div>`;
+      body = `${sheetHead(`${mark(panelGlyph(panel))}<span>${esc(panel.title)}</span>`, { back: sheet.from === 'phone' })}${lock ? `<p class="sheet-lock" role="note">${mark('lock')}<span>${esc(lock.reason)}</span></p>` : ''}<div class="sheet-body" data-panel="${esc(panel.id)}">${panelHtml(panel, sheet.params)}</div>`;
     }
     dialog.toggleAttribute('data-locked', Boolean(lockOf()));
     if (setHtml(dialogContent, body)) {
@@ -491,8 +522,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const atHome = state.location === 'home', net = view.net || {};
     const link = LINKS[linkOf()];
     return `<p class="life-brand"><strong><span>Allworld</span></strong><small>${esc(link ? link.menu : 'City beta')}</small></p>
-      <button data-menu="city"><span aria-hidden="true">${glyph('globe')}</span><span><b>${esc(view.city?.name || 'City')}</b><small>Switch city on the world map</small></span></button>
-      <button data-menu="locate"><span aria-hidden="true">${glyph('pin')}</span><span><b>Use my location</b><small>Find the nearest city</small></span></button>
+      <button data-menu="city"><span aria-hidden="true">${glyph('globe')}</span><span><b>${esc(view.city?.name || 'City')}, Nigeria</b><small>See Nigeria: your city and what is coming</small></span></button>
       <button data-community><span aria-hidden="true">${glyph('community')}</span><span><b>Community</b><small>${atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue'}</small></span></button>
       <button data-open="help"><span aria-hidden="true">${glyph('help')}</span><span><b>How to play</b><small>Tips and keyboard shortcuts</small></span></button>
       <p class="life-net ${net.error ? 'is-error' : ''}" role="status">${esc(net.text || '')}</p>${link && link.tone === 'off' ? '<button class="life-menu-retry" data-menu="reconnect">Try again</button>' : ''}`;
@@ -518,13 +548,13 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const price = card.reward > 0 ? `+${money(card.reward)}` : card.cost > 0 ? money(card.cost) : 'Free';
     const unmet = Object.entries(card.minimumNeeds || {}).filter(([need, minimum]) => state.needs[need] < minimum).map(([need, minimum]) => `${cap(need)} ${Math.floor(state.needs[need])}/${minimum}`);
     const why = unavailable ? (card.requiresSkill ? `Needs ${cap(card.requiresSkill.id)} level ${card.requiresSkill.level}` : 'Unavailable in this preview')
-      : unmet.length ? `Needs ${unmet.join(', ')}` : blocked?.code === 'gig_limit' ? 'Today’s gigs are done · back at midnight' : blocked ? blocked.reason : offline ? 'Not connected — cannot start now' : '';
+      : unmet.length ? `Needs ${unmet.join(', ')}` : blocked?.code === 'gig_limit' ? 'Today’s gigs are done · back at midnight' : blocked ? blocked.reason : offline ? `${linkWords(view)?.short || 'Not connected'} — cannot start now` : '';
     const busyWhy = !why && busy ? 'Finish or cancel what you are doing first' : '';
     // The card shows the short line; the tooltip and the screen-reader label carry the server's full sentence.
     const full = blocked?.code === 'gig_limit' ? blocked.reason : why || busyWhy;
-    const foot = why ? `<span class="life-lock">🔒 ${esc(why)}</span>`
+    const foot = why ? `<span class="life-lock">${mark('lock')} ${esc(why)}</span>`
       : `<span class="life-tags">${effectTags(card).map((tag) => `<span${tag.cost ? ' class="is-cost"' : tag.beta ? ' class="is-beta"' : ''}>${esc(tag.text)}</span>`).join('')}</span>`;
-    const inner = `<span class="life-action-head"><span class="life-action-emoji" aria-hidden="true">${esc(card.icon || '✨')}</span><span class="life-action-title">${esc(card.label)}</span></span><span class="life-action-meta"><span>◷ ${esc(card.duration)}s</span><strong class="${card.reward > 0 ? 'is-earn' : card.cost > 0 ? 'is-cost' : ''}">${price}</strong></span>${foot}`;
+    const inner = `<span class="life-action-head"><span class="life-action-emoji" aria-hidden="true">${iconFor('activity', card.id, card.icon)}</span><span class="life-action-title">${esc(card.label)}</span></span><span class="life-action-meta"><span>${mark('clock')} ${esc(card.duration)}s</span><strong class="${card.reward > 0 ? 'is-earn' : card.cost > 0 ? 'is-cost' : ''}">${price}</strong></span>${foot}`;
     const classes = `life-action ${unavailable ? 'is-unavailable' : why ? 'is-blocked' : busy ? 'is-busy' : ''}`;
     const label = `${esc(card.label)}, ${esc(card.duration)} seconds, ${esc(price)}${full ? `. ${esc(full)}` : ''}`;
     if (card.choices && !unavailable) {
@@ -543,7 +573,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const house = privateHome ? view.property?.house : null;
     const title = house?.label || venue.label, district = house?.district || venue.district;
     const ambient = view.travel?.destinations?.find((item) => item.id === state.location)?.ambient;
-    const line = !view.connected ? (LINKS[linkOf()]?.menu || 'Not connected · read-only') : `${privateHome ? '🔒 Private · ' : ''}${ambient || spot?.caption || 'Explore at your own pace'}`;
+    const line = !view.connected ? (LINKS[linkOf()]?.menu || 'Not connected · read-only') : `${privateHome ? 'Private · ' : ''}${ambient || spot?.caption || 'Explore at your own pace'}`;
+    const lineMark = privateHome && view.connected ? `${mark('lock')} ` : '';
     const busyNote = state.activeAction && expanded ? '<p class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>' : '';
     // Where this spot lists paid gigs, the day's counter sits above them (view.travel.gigs; the limit is the server's).
     const gigs = view.travel?.gigs, gigIds = view.travel?.gigsHere || [];
@@ -551,26 +582,14 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       ? `<p class="life-actions-note life-gigs${gigs.left ? '' : ' is-out'}" role="note" title="Paid gigs are limited each Lagos day. Your job’s shift does not count."><b>Gigs today: ${esc(gigs.used)}/${esc(gigs.limit)}</b> · ${gigs.left ? `${esc(gigs.left)} left` : 'open again at midnight, Lagos time'}</p>` : '';
     const cards = activities.cards.length ? activities.cards.map(activityCard).join('')
       : `<div class="ui-empty is-inline"><p>${spot ? 'Nothing to do at this spot yet.' : 'Pick a spot above to see what you can do there.'}</p></div>`;
-    return `<section class="life-venue-panel" aria-label="Current venue"><header class="life-venue-header"><button class="life-avatar" data-open="sim" aria-label="Open your Sim: profile, needs, goals and skills">👤</button><div class="life-venue-heading"><h1>${esc(venue.icon || '')} ${esc(title)} <span>· ${esc(district)}</span></h1><p>${esc(line)}</p></div>${privateHome || !view.connected ? '' : `<button class="life-icon-button" data-community aria-label="Open community chat" title="Community chat">${icon('chat')}</button>`}<button class="life-icon-button" data-open="map" aria-label="Open map" title="Map (M)">${icon('map')}</button></header><div class="life-spots"><button class="life-expand ${expanded ? 'is-expanded' : ''}" data-toggle-activities aria-expanded="${expanded}" aria-label="${expanded ? 'Hide' : 'Show'} activities" title="Activities (T)">${icon('chevron')}</button>${spots.map((item, i) => `<button class="${item.id === state.spot ? 'is-selected' : ''}" data-spot="${esc(item.id)}" aria-pressed="${item.id === state.spot}" title="Shortcut ${i + 1}">${esc(item.icon || '')} ${esc(item.label)}</button>`).join('')}${privateHome || spots.some((item) => item.id === 'people') ? '' : '<button data-community>👥 People</button>'}</div>${expanded ? `${busyNote}${gigNote}<div class="life-actions">${cards}</div>` : ''}</section>`;
+    return `<section class="life-venue-panel" aria-label="Current venue"><header class="life-venue-header"><button class="life-avatar" data-open="sim" aria-label="Open your Sim: profile, needs, goals and skills">${mark('person')}</button><div class="life-venue-heading"><h1>${iconFor('venue', venue.id, venue.icon)} ${esc(title)} <span>· ${esc(district)}</span></h1><p>${lineMark}${esc(line)}</p></div>${privateHome || !view.connected ? '' : `<button class="life-icon-button" data-community aria-label="Open community chat" title="Community chat">${icon('chat')}</button>`}<button class="life-icon-button" data-open="map" aria-label="Open map" title="Map (M)">${icon('map')}</button></header><div class="life-spots"><button class="life-expand ${expanded ? 'is-expanded' : ''}" data-toggle-activities aria-expanded="${expanded}" aria-label="${expanded ? 'Hide' : 'Show'} activities" title="Activities (T)">${icon('chevron')}</button>${spots.map((item, i) => `<button class="${item.id === state.spot ? 'is-selected' : ''}" data-spot="${esc(item.id)}" aria-pressed="${item.id === state.spot}" title="Shortcut ${i + 1}">${iconFor('spot', item.id, item.icon)}<span>${esc(item.label)}</span></button>`).join('')}${privateHome || spots.some((item) => item.id === 'people') ? '' : `<button data-community>${mark('people')}<span>People</span></button>`}</div>${expanded ? `${busyNote}${gigNote}<div class="life-actions">${cards}</div>` : ''}</section>`;
   }
   const isTrip = (active) => active?.kind === 'travel' || active?.kind === 'commute';
-  const placeOf = (id) => { const venue = view.venues.find((item) => item.id === id); return venue ? { icon: venue.icon || '📍', label: id === 'home' ? 'Home' : venue.label } : { icon: '📍', label: 'your destination' }; };
+  const placeOf = (id) => { const venue = view.venues.find((item) => item.id === id); return { label: !venue ? 'your destination' : id === 'home' ? 'Home' : venue.label }; };
   /**
-   * The travel view replaces the venue panel for the length of a trip: from → to, how, the time
-   * left, and what cancelling does (the trip stops where it started; a fare already paid stays paid).
+   * What is running right now, as a small chip above the nav: its name, the time left and Cancel.
+   * A trip is named by where it goes; the trip itself (route, fare, the cancel rule) is the Map panel's trip bar.
    */
-  function travelHtml() {
-    const active = state.activeAction, commute = active.kind === 'commute';
-    // view.travel.active carries where the trip started and the fare charged at departure (null on an older save).
-    const trip = commute ? null : view.travel?.active;
-    const from = placeOf(trip?.from ?? state.location), to = placeOf(active.id);
-    const how = view.travel?.modes?.find((item) => item.id === active.mode) || (commute ? { icon: '💼', label: 'Commute to work' } : active.mode === 'car' ? { icon: '🚗', label: 'Your car' } : { icon: '🧭', label: 'On the way' });
-    const rule = commute ? `Cancel to stay at ${from.label}. The commute is free, so nothing is lost.`
-      : Number.isFinite(trip?.fare) ? (trip.fare > 0 ? `Cancel to stay at ${from.label}. The ${money(trip.fare)} ${active.mode === 'car' ? 'fuel' : 'fare'} you paid is not refunded.` : `Cancel to stay at ${from.label}. This trip was free, so nothing is lost.`)
-      : how.fare > 0 || active.mode === 'car' ? `Cancel to stay at ${from.label}. The fare you paid is not refunded.` : `Cancel to stay at ${from.label}. Nothing was charged.`;
-    const paid = Number.isFinite(trip?.fare) ? `<small class="life-travel-fare">${trip.fare > 0 ? `${money(trip.fare)} paid` : 'Free'}</small>` : '';
-    return `<section class="life-travel" aria-label="Travelling to ${esc(to.label)}"><div class="life-travel-route"><span class="life-travel-place"><i aria-hidden="true">${esc(from.icon)}</i><b>${esc(from.label)}</b><small>From</small></span><span class="life-travel-mode"><i aria-hidden="true">${esc(how.icon)}</i><small>${esc(how.label)}</small>${paid}</span><span class="life-travel-place"><i aria-hidden="true">${esc(to.icon)}</i><b>${esc(to.label)}</b><small>To</small></span></div><progress max="1" value="0" data-progress aria-label="Trip progress"></progress><div class="life-travel-foot"><strong data-remaining></strong><button data-cancel aria-label="Cancel the trip and stay at ${esc(from.label)}">Cancel trip</button></div><p class="life-progress-note">${esc(rule)}</p></section>`;
-  }
   function progressHtml() {
     const active = state.activeAction;
     if (!active) return '';
@@ -580,7 +599,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const name = activity?.label || (active.kind === 'travel' ? `Travelling to ${place}` : active.kind === 'commute' ? `Commuting to work · ${place}` : 'Action in progress');
     const paid = activity?.reward > 0, sleeping = Boolean(activity?.tags?.includes('sleep'));
     const fixed = activity && !activity.cancellable;
-    return `<section class="life-progress" aria-label="Current activity"><span class="life-progress-icon" aria-hidden="true">${esc(activity?.icon || (isTrip(active) ? '🧭' : '⏳'))}</span><div><strong>${esc(name)}</strong><small data-remaining></small></div><button data-cancel ${fixed ? 'disabled title="This cannot be cancelled once started"' : ''} aria-label="${fixed ? 'This cannot be cancelled once started' : paid ? 'Cancel shift. Cancelling earns nothing' : sleeping ? 'Wake up. The rest you got is kept' : 'Cancel current activity'}">${sleeping ? 'Wake up' : 'Cancel'}</button><progress max="1" value="0" data-progress aria-label="Activity progress"></progress>${paid ? `<p class="life-progress-note">Pays ${money(activity.reward)} when finished. Cancelling earns nothing.</p>` : fixed ? '<p class="life-progress-note">This cannot be cancelled once started.</p>' : ''}</section>`;
+    return `<section class="life-progress" aria-label="Current activity"><span class="life-progress-icon" aria-hidden="true">${activity ? iconFor('activity', activity.id, activity.icon) : mark(active.kind === 'commute' ? 'jobs' : isTrip(active) ? 'compass' : 'clock')}</span><div><strong>${esc(name)}</strong><small data-remaining></small></div><button data-cancel ${fixed ? 'disabled title="This cannot be cancelled once started"' : ''} aria-label="${fixed ? 'This cannot be cancelled once started' : paid ? 'Cancel shift. Cancelling earns nothing' : sleeping ? 'Wake up. The rest you got is kept' : 'Cancel current activity'}">${sleeping ? 'Wake up' : 'Cancel'}</button><progress max="1" value="0" data-progress aria-label="Activity progress"></progress>${paid ? `<p class="life-progress-note">Pays ${money(activity.reward)} when finished. Cancelling earns nothing.</p>` : fixed ? '<p class="life-progress-note">This cannot be cancelled once started.</p>' : ''}</section>`;
   }
   function navHtml() {
     return NAV.map(([id, label]) => {
@@ -625,7 +644,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
   function renderCoach() {
     const step = coachStep(), goal = view.goals?.chip;
-    setHtml(el.coach, step ? `<div class="life-coach" role="note"><span aria-hidden="true">👉</span><p><b>Goal ${esc(goal.step)} of ${esc(goal.of)} · ${esc(goal.title)}</b>${esc(step.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
+    setHtml(el.coach, step ? `<div class="life-coach" role="note"><span aria-hidden="true">${mark('pointer')}</span><p><b>Goal ${esc(goal.step)} of ${esc(goal.of)} · ${esc(goal.title)}</b>${esc(step.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
     for (const node of [...root.querySelectorAll('.is-coach'), ...dialogContent.querySelectorAll('.is-coach')]) node.classList.remove('is-coach');
     if (step?.target) root.querySelector(step.target)?.classList.add('is-coach');
     if (step?.app && sheet?.kind === 'phone') dialogContent.querySelector(`[data-ph-app="${step.app}"]`)?.classList.add('is-coach');
@@ -640,7 +659,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (life !== lastLife) { lastLife = life; lastCash = null; lastNeeds = null; lastMessage = null; }
     setText(el.clock, view.clock);
     const mood = moodOf();
-    setText(el.mood, `${mood.icon} ${mood.word}`);
+    setHtml(el.mood, `${iconFor('mood', mood.tone, mood.icon)}<span>${esc(mood.word)}</span>`);
     el.mood.classList.toggle('is-uneasy', mood.tone === 'warn');
     el.mood.classList.toggle('is-bad', mood.tone === 'bad');
     el.mood.classList.toggle('is-neutral', mood.tone === 'neutral');
@@ -686,22 +705,21 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (lastMessage !== null && text && text !== lastMessage && !(active && (text === (view.activities.active?.label || '') || text.startsWith('Travelling to ')))) toast(text);
     lastMessage = text;
 
-    // Clean screen keeps only the small progress chip (with Cancel), also for a trip.
-    const travelling = isTrip(active) && mode === 'venue' && !clean;
-    setHtml(el.progress, travelling ? '' : progressHtml());
+    // What is running — an activity or a trip — is always the small progress chip (with Cancel), also on a Clean screen.
+    // A trip itself is shown on the map: the host sends the shell there for as long as one runs (onMode in src/life-main.js).
+    setHtml(el.progress, progressHtml());
     root.classList.toggle('is-expanded', expanded && mode === 'venue');
-    root.classList.toggle('is-travelling', travelling);
     root.dataset.mode = mode;
 
     const navPanel = mode !== 'venue' ? byId.get(mode) : null;
     const rail = el.main.querySelector('.life-spots');
     const railLeft = rail?.scrollLeft || 0;
     const cardsLeft = el.main.querySelector('.life-actions')?.scrollLeft || 0;
-    const mainHtml = navPanel ? `<section class="life-sheet" aria-label="${esc(navPanel.title)}" data-panel="${esc(navPanel.id)}">${panelHtml(navPanel, modeParams)}</section>` : travelling ? travelHtml() : venuePanel();
+    const mainHtml = navPanel ? `<section class="life-sheet" aria-label="${esc(navPanel.title)}" data-panel="${esc(navPanel.id)}">${panelHtml(navPanel, modeParams)}</section>` : venuePanel();
     if (navPanel?.live === false && html.has(el.main) && lastMode === mode && !forced) { /* static nav panel: leave as is until api.refresh() */ }
     else if (setHtml(el.main, mainHtml)) {
       if (navPanel) bindPanels(el.main, modeParams);
-      else if (!travelling) {
+      else {
         if (!rail) lastSpotKey = '';
         const sameSpot = lastSpotKey === `${state.location}:${state.spot}`;
         restoreRail(railLeft);
@@ -710,7 +728,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       }
     }
     if (active) {
-      const scope = travelling ? el.main : el.progress;
+      const scope = el.progress;
       const bar = scope.querySelector('[data-progress]');
       if (bar) bar.value = Math.max(0, Math.min(1, 1 - active.remaining / (active.duration || 1)));
       const left = scope.querySelector('[data-remaining]');
@@ -862,6 +880,6 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     get mode() { return mode; },
     setMode,
     setExpanded(value) { expanded = Boolean(value); },
-    destroy() { phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
+    destroy() { offGlyphs(); phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

@@ -41,15 +41,32 @@
  *   tags()                      name-tag data for you and the crowd, for the DOM layer
  *   walk                        what the host needs to walk the avatar about: { grid, entrance,
  *                               open, avatar, drive(on), rest(), spots(), people(), move(x, y, z, ry),
- *                               pose(name, seat), gait(step), heightAt(x, z), near(spot), goal(x, z) }
- *                               — see WALK below and src/scene/movement.js
+ *                               pose(name, seat), gait(step, phase), heightAt(x, z), near(spot),
+ *                               goal(x, z), solids } — see WALK below and src/scene/movement.js
+ *   look(x, z) → boolean        the camera is at (x, z) in the scene's own coordinates: a room hides
+ *                               whichever wall the camera has gone behind, with everything that
+ *                               hangs on it (dollhouse-style), so the camera may orbit all the way
+ *                               round. True when a wall was shown or hidden. Transform-free and
+ *                               build-free: it only flips mesh.visible.
+ *   easing / stepCrowd(dt) / settleCrowd()   other PLAYERS who report where they stand are separate
+ *                               figures that ease to each new position; the host steps them in its
+ *                               motion loop for as long as `easing` is true (each ease is bounded,
+ *                               under half a second) and snaps them when motion is reduced
+ *
+ * WHO STANDS WHERE
+ *   NPCs stand at their landmark; players who have not reported a position stand at the scene's
+ *   crowd places; a player with a reported position ({ x, z } on the crowd entry — the same scene
+ *   coordinates the host reports for the local avatar) stands exactly there. Nobody the scene
+ *   places itself stands on a spot marker or on the ground in front of one (clearOfSpots), so a
+ *   marker is never hidden behind a figure in the scene's own view.
  *   stats()                     { triangles, meshes, drawCalls, lights, geometries }
  *   dispose()                   free everything and detach from the parent (the host calls it on
  *                               a location change and when it is disposed itself)
  */
 import { createBatch, kitResources, releaseObjects, GLOW } from './build.js';
 import { buildAvatar, drawCrowd } from './characters.js';
-import { createWalkGrid, footprintRecorder } from './movement.js';
+import { playerOptions, rigOf } from './avatar-rig.js';
+import { createWalkGrid, footprintRecorder, turnTowards } from './movement.js';
 import { spotMarker } from './props.js';
 import { lagosTime } from '../game/clock.js';
 import * as outdoor from './venues-outdoor.js';
@@ -125,7 +142,13 @@ function paintSky(THREE, mesh, [horizon, zenith]) {
  */
 function resolveAnchors(landmarks, spots, spare, hints = {}) {
   const anchors = {}, used = new Set();
-  const place = (landmark) => ({ x: landmark.x, y: landmark.y || 0, z: landmark.z, ry: landmark.ry || 0, landmark: landmark.key, act: landmark.act || null });
+  // approach on a landmark is the way up to a raised place: [x, z] — the foot of its steps, where the avatar leaves the
+  // floor — or a chain [[x, z], ...] whose first point is on the floor and whose others are the way up (a stair top, a platform).
+  const place = (landmark) => {
+    const pair = (value) => (Array.isArray(value) && Number.isFinite(value[0]) && Number.isFinite(value[1]) ? { x: value[0], z: value[1] } : null);
+    const chain = Array.isArray(landmark.approach) ? (Array.isArray(landmark.approach[0]) ? landmark.approach.map(pair).filter(Boolean) : [pair(landmark.approach)].filter(Boolean)) : [];
+    return { x: landmark.x, y: landmark.y || 0, z: landmark.z, ry: landmark.ry || 0, landmark: landmark.key, act: landmark.act || null, approach: chain[0] || null, steps: chain.slice(1) };
+  };
   for (const landmark of landmarks) anchors[landmark.key] = place(landmark);
   const pending = [], unhinted = [];
   for (const spot of spots) {
@@ -148,7 +171,7 @@ function resolveAnchors(landmarks, spots, spare, hints = {}) {
     const [x, z] = spare[spareIndex % spare.length];
     const ring = Math.floor(spareIndex / spare.length);
     spareIndex += 1;
-    return { x: x + ring * 0.9, y: 0, z: z + ring * 0.9, ry: 0, landmark: null, act: null };
+    return { x: x + ring * 0.9, y: 0, z: z + ring * 0.9, ry: 0, landmark: null, act: null, approach: null, steps: [] };
   };
   for (const spot of pending) anchors[spot.id] = fallback();
   return { anchors, fallback, hint: (id) => (typeof hints[id] === 'string' && landmarks.find((landmark) => landmark.key === hints[id])) || null, place };
@@ -180,6 +203,14 @@ export const WALK = Object.freeze({
 });
 /** How far from a spot's anchor the avatar counts as standing at it. */
 export const SPOT_REACH = 1.5;
+/**
+ * The ground a placed figure keeps off, around each spot marker: SPOT_BEHIND units beyond it,
+ * SPOT_FRONT units towards the scene's own camera (a figure standing there would cover the marker
+ * on screen — a person is 2.45 tall), SPOT_SIDE to either side.
+ */
+export const SPOT_BEHIND = 1.3, SPOT_FRONT = 3.4, SPOT_SIDE = 1.7;
+/** How long another player's figure takes to ease to a newly reported position (seconds), and the jump beyond which it is simply placed. */
+const PEER_EASE = [0.16, 0.42], PEER_JUMP = 7, PEER_PACE = 6;
 
 function createEntry(kit, venue, def, kind, defaultVariant) {
   const { THREE } = kit;
@@ -207,6 +238,13 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   let layout = null, resolved = null, live = false, disposed = false, footprints = null, grid = null, entrance = null;
   const staticObjects = [], actorObjects = [], markObjects = [];
   let staticTriangles = 0, actorTriangles = 0, crowdTags = [], selfTag = null, sky = null;
+  // Other players who report where they stand: one figure each, eased to every new position.
+  const peers = new Map();
+  let peopleList = [], mergedTags = [], batchKey = null, easing = false;
+  const wallParts = { wallBack: [], wallLeft: [] };
+  const sceneCamera = def.camera || SCENE_CAMERA;
+  // The ground direction from the scene's centre towards its own camera: "in front of" a marker.
+  const toCamera = (() => { const [cx, , cz] = sceneCamera.landscape, size = Math.hypot(cx, cz) || 1; return { x: cx / size, z: cz / size }; })();
   // The player's avatar is its own group, moved by its transform only: one prebuilt figure per pose.
   const avatar = new THREE.Group();
   avatar.name = 'avatar';
@@ -244,20 +282,73 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     if (!resolved.anchors[id]) { const pinned = resolved.hint(id); resolved.anchors[id] = pinned ? resolved.place(pinned) : resolved.fallback(); }
     return resolved.anchors[id];
   }
+  /** Is this place off every spot marker and off the ground in front of one (as the scene's own camera sees it)? */
+  function offMarkers(x, z) {
+    for (const at of markerList()) {
+      const dx = x - at.x, dz = z - at.z;
+      const along = dx * toCamera.x + dz * toCamera.z, side = dx * toCamera.z - dz * toCamera.x;
+      if (along > -SPOT_BEHIND && along < SPOT_FRONT && Math.abs(side) < SPOT_SIDE) return false;
+    }
+    return true;
+  }
+  let markers = null;
+  /** Every place a spot marker is drawn, and every spot the server knows (each once). */
+  function markerList() {
+    if (markers) return markers;
+    const seen = new Set(), list = [];
+    for (const at of Object.values(resolved.anchors)) { const key = `${at.x.toFixed(2)},${at.z.toFixed(2)}`; if (!seen.has(key)) { seen.add(key); list.push(at); } }
+    markers = list;
+    return list;
+  }
+  /**
+   * The nearest place to (x, z) where a figure may be stood: on free floor, clear of every spot
+   * marker and of the ground in front of it, and not on top of someone already placed. Searched in
+   * widening rings, so a crowd place that is already fine is kept exactly.
+   */
+  function clearOfSpots(x, z, taken) {
+    const fits = (px, pz) => (!grid || grid.free(px, pz)) && offMarkers(px, pz) && !taken.some((other) => Math.hypot(other.x - px, other.z - pz) < 0.9);
+    if (fits(x, z)) return { x, z };
+    for (let ring = 1; ring <= 14; ring++) {
+      const radius = ring * 0.45;
+      let best = null, bestScore = Infinity;
+      for (let step = 0; step < 16; step++) {
+        const angle = (step / 16) * Math.PI * 2 + ring * 0.37;
+        const px = x + Math.sin(angle) * radius, pz = z + Math.cos(angle) * radius;
+        if (!fits(px, pz)) continue;
+        // Of the places on this ring, prefer the one farthest from the camera side: behind a marker rather than beside it.
+        const score = px * toCamera.x + pz * toCamera.z;
+        if (score < bestScore) { bestScore = score; best = { x: px, z: pz }; }
+      }
+      if (best) return best;
+    }
+    return { x, z };
+  }
+  /** Where each person of the crowd stands. A player with a reported position stands there (`live`); everyone else is placed by the scene. */
   function placeCrowd(people) {
-    const slots = layout.crowd, base = resolved.anchors.people || { x: 0, z: 3 };
+    const slots = layout.crowd, base = resolved.anchors.people || { x: 0, z: 3 }, taken = [];
     return people.slice(0, MAX_CROWD).map((person, index) => {
-      if (Number.isFinite(person.x) && Number.isFinite(person.z)) return person;
+      if (Number.isFinite(person.x) && Number.isFinite(person.z)) {
+        const bounds = grid?.bounds;
+        const x = bounds ? Math.max(bounds[0], Math.min(bounds[2], person.x)) : person.x, z = bounds ? Math.max(bounds[1], Math.min(bounds[3], person.z)) : person.z;
+        return { ...person, x, z, live: person.kind !== 'npc' };
+      }
+      let wanted;
       const at = person.spot != null && resolved.anchors[person.spot];
       if (at) {
         const turn = index * 2.4;
         // Far enough from the anchor that someone standing at it (you, perhaps) and this person do not overlap.
         const reach = 1.9, angle = turn + 0.9;
-        return { ...person, x: at.x + Math.sin(angle) * reach, y: at.y, z: at.z + Math.cos(angle) * reach, ry: person.ry ?? angle + Math.PI };
-      }
-      if (index < slots.length) { const [x, z, ry = 0, y = 0] = slots[index]; return { ...person, x, y, z, ry: person.ry ?? ry }; }
-      const turn = index * 2.4, radius = 1.6 + (index % 3) * 0.7;
-      return { ...person, x: base.x + Math.sin(turn) * radius, z: base.z + Math.cos(turn) * radius, ry: person.ry ?? turn + Math.PI };
+        wanted = { x: at.x + Math.sin(angle) * reach, y: at.y, z: at.z + Math.cos(angle) * reach, ry: person.ry ?? angle + Math.PI };
+      } else if (index < slots.length) { const [x, z, ry = 0, y = 0] = slots[index]; wanted = { x, y, z, ry: person.ry ?? ry }; }
+      else { const turn = index * 2.4, radius = 1.6 + (index % 3) * 0.7; wanted = { x: base.x + Math.sin(turn) * radius, z: base.z + Math.cos(turn) * radius, ry: person.ry ?? turn + Math.PI }; }
+      // Someone on a raised place (a stage, a walkway) stands at its height, where the scene put them; everyone else is on
+      // the ground, clear of the markers.
+      const deck = Math.max(walk.heightAt(wanted.x, wanted.z), index < slots.length && !at ? wanted.y || 0 : 0);
+      const clear = deck > 0.05 ? { x: wanted.x, z: wanted.z } : clearOfSpots(wanted.x, wanted.z, taken);
+      // Someone standing "at" a spot who had to step aside still faces it.
+      const ry = at && (clear.x !== wanted.x || clear.z !== wanted.z) ? Math.atan2(at.x - clear.x, at.z - clear.z) : wanted.ry;
+      taken.push(clear);
+      return { ...person, ...wanted, x: clear.x, y: deck > 0.05 ? deck : 0, z: clear.z, ry };
     });
   }
   /**
@@ -271,7 +362,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     return {
       spot: view.spot, x: acting?.x ?? anchor.x, y: acting?.y ?? anchor.y, z: acting?.z ?? anchor.z, ry: acting?.ry ?? anchor.ry, pose, seat: acting?.seat,
       busy: view.pose === 'busy' && !view.poseFixed, leaving: view.pose === 'walk' && !view.poseFixed, fixed: view.poseFixed,
-      anchor,
+      anchor, approach: anchor.approach || null, steps: anchor.steps || [],
     };
   }
   /** One figure per pose, built the first time the pose is needed and kept until the look changes. */
@@ -279,7 +370,8 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     const key = `${pose}:${seat ?? ''}`;
     let entry = figures.get(key);
     if (!entry) {
-      entry = buildAvatar(kit, view.look, { pose, seat, seed: view.seed, marker: 'crown' });
+      // The player's own figure is seen close up: the best detail characters.js offers a scene (avatar-rig.js).
+      entry = buildAvatar(kit, view.look, { pose, seat, seed: view.seed, marker: 'crown', ...playerOptions(pose) });
       entry.visible = false;
       avatar.add(entry);
       figures.set(key, entry);
@@ -300,7 +392,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     shownFigure = null; standFigure = null; strideFigure = null;
   }
   /** The two figures of the walk cycle, built ahead so that a step only switches which one is visible. */
-  function prebuild() { standFigure = figure('stand'); strideFigure = figure('walk'); }
+  function prebuild() { standFigure = figure('stand'); strideFigure = rigOf(standFigure) ? null : figure('walk'); }
   /** Move the avatar (transform only) and its name tag. */
   function moveAvatar(x, y, z, ry) {
     avatar.position.set(x, y, z);
@@ -338,13 +430,107 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     show(at.pose, at.seat);
     moveAvatar(at.x, at.y, at.z, at.ry);
   }
+  /** One of a peer's two figures (standing, walking): both are built when the player first appears, so easing builds nothing. */
+  function peerFigure(peer, pose) {
+    const figure = buildAvatar(kit, peer.look, { pose, seed: peer.seed, marker: 'player' });
+    figure.visible = false;
+    peer.group.add(figure);
+    return figure;
+  }
+  function showPeer(peer, walking) {
+    const next = walking ? peer.walk : peer.stand;
+    if (peer.shown === next) return;
+    if (peer.shown) peer.shown.visible = false;
+    next.visible = true; peer.shown = next;
+  }
+  function placePeer(peer) {
+    peer.y = walk.heightAt(peer.x, peer.z);
+    peer.group.position.set(peer.x, peer.y, peer.z);
+    peer.group.rotation.y = peer.ry;
+    peer.tag.position.x = peer.x; peer.tag.position.y = peer.y + peer.top; peer.tag.position.z = peer.z;
+    peer.at.x = peer.x; peer.at.z = peer.z; peer.at.top = peer.y + peer.top;
+  }
+  function dropPeer(peer) {
+    peer.stand.userData.dispose(); peer.walk.userData.dispose();
+    peer.group.parent?.remove(peer.group);
+    peers.delete(peer.id);
+  }
+  /** A player with a reported position: make their figure, or send it on its way to the new place. */
+  function syncPeer(person) {
+    const id = String(person.id), lookKey = JSON.stringify([person.look ?? null, person.seed ?? id]);
+    let peer = peers.get(id);
+    if (peer && peer.lookKey !== lookKey) { dropPeer(peer); peer = null; }
+    const name = String(person.name ?? '');
+    if (!peer) {
+      const holder = new THREE.Group();
+      holder.name = 'peer';
+      peer = { id, lookKey, look: person.look ?? null, seed: person.seed ?? id, group: holder, shown: null, x: person.x, z: person.z, y: 0, ry: Number.isFinite(person.ry) ? person.ry : Math.atan2(-person.x, -person.z) || 0,
+        fromX: person.x, fromZ: person.z, toX: person.x, toZ: person.z, t: 1, span: 0, stride: 0, top: 2.95,
+        tag: { id, name, kind: 'player', text: `@${name}`, marker: 'tag', colour: '#6fb4ff', position: { x: person.x, y: 2.95, z: person.z } },
+        at: { id, kind: 'player', x: person.x, z: person.z, top: 2.95 } };
+      peer.stand = peerFigure(peer, 'stand'); peer.walk = peerFigure(peer, 'walk');
+      peer.top = peer.stand.userData.top ?? 2.95;
+      showPeer(peer, false);
+      group.add(holder);
+      peers.set(id, peer);
+      placePeer(peer);
+      return peer;
+    }
+    if (peer.tag.name !== name) { peer.tag.name = name; peer.tag.text = `@${name}`; }
+    const distance = Math.hypot(person.x - peer.toX, person.z - peer.toZ);
+    if (distance < 0.01) return peer;
+    peer.fromX = peer.x; peer.fromZ = peer.z; peer.toX = person.x; peer.toZ = person.z;
+    const far = Math.hypot(peer.toX - peer.x, peer.toZ - peer.z);
+    if (far > PEER_JUMP) { peer.x = peer.toX; peer.z = peer.toZ; peer.t = 1; showPeer(peer, false); placePeer(peer); return peer; }
+    peer.span = Math.max(PEER_EASE[0], Math.min(PEER_EASE[1], far / PEER_PACE));
+    peer.t = 0; easing = true;
+    return peer;
+  }
+  /** Advance every figure that is on its way. Returns true while any still is; moves transforms only. */
+  function stepCrowd(dt) {
+    if (!easing) return false;
+    let more = false;
+    for (const peer of peers.values()) {
+      if (peer.t >= 1) continue;
+      peer.t = Math.min(1, peer.t + dt / peer.span);
+      const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
+      peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
+      const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
+      peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
+      if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
+      peer.stride += dt * 6.5;
+      if (peer.t < 1) { showPeer(peer, Math.floor(peer.stride) % 2 === 0); more = true; } else showPeer(peer, false);
+      placePeer(peer);
+    }
+    easing = more;
+    return more;
+  }
+  /** Put every figure where it is going, at once (reduced motion, or no frame loop). */
+  function settleCrowd() {
+    for (const peer of peers.values()) { if (peer.t >= 1) continue; peer.t = 1; peer.x = peer.toX; peer.z = peer.toZ; showPeer(peer, false); placePeer(peer); }
+    easing = false;
+  }
   function buildActors() {
-    releaseObjects(actorObjects);
-    const batch = createBatch(THREE);
-    crowdTags = drawCrowd(batch, placeCrowd(view.crowd));
-    const built = batch.build(shared.materials);
-    actorTriangles = built.triangles;
-    for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
+    const placed = placeCrowd(view.crowd);
+    const merged = placed.filter((person) => !person.live);
+    // The merged batch holds NPCs and players without a reported position: rebuilt only when THEY change.
+    const key = JSON.stringify(merged);
+    if (key !== batchKey) {
+      batchKey = key;
+      releaseObjects(actorObjects);
+      const batch = createBatch(THREE);
+      mergedTags = drawCrowd(batch, merged);
+      const built = batch.build(shared.materials);
+      actorTriangles = built.triangles;
+      for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
+    }
+    const kept = new Set();
+    for (const person of placed) if (person.live) kept.add(syncPeer(person).id);
+    for (const peer of [...peers.values()]) if (!kept.has(peer.id)) dropPeer(peer);
+    // Tags and tap targets in the order the crowd was given.
+    let next = 0;
+    crowdTags = placed.map((person) => (person.live ? peers.get(String(person.id)).tag : mergedTags[next++])).filter(Boolean);
+    peopleList = crowdTags.map((tag) => peers.get(tag.id)?.tag === tag ? peers.get(tag.id).at : { id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y });
   }
   function applyLighting() {
     const preset = lightingFor(mood, view.time);
@@ -356,7 +542,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     if (live || disposed) return;
     const built = drawStatic().build(shared.materials);
     staticTriangles = built.triangles;
-    for (const object of [...built.meshes, ...built.lights]) { group.add(object); staticObjects.push(object); }
+    for (const object of [...built.meshes, ...built.lights]) { group.add(object); staticObjects.push(object); if (object.userData.part && wallParts[object.userData.part]) wallParts[object.userData.part].push(object); }
     sky = skyDome(kit, shared.materials);
     group.add(sky);
     staticObjects.push(sky);
@@ -370,6 +556,9 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     applyLighting();
   }
   function release() {
+    for (const peer of [...peers.values()]) dropPeer(peer);
+    easing = false; batchKey = null; peopleList = []; mergedTags = [];
+    wallParts.wallBack.length = 0; wallParts.wallLeft.length = 0;
     releaseObjects(staticObjects);
     releaseObjects(actorObjects);
     releaseObjects(markObjects);
@@ -403,18 +592,32 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     avatar,
     drive(on) { driven = Boolean(on); if (!driven && live) settle(); },
     rest,
-    /** The spots the server knows, with where they are: [{ id, x, y, z, ry }]. */
-    spots() { return spots.filter((spot) => spot && typeof spot.id === 'string').map((spot) => { const at = anchorFor(spot.id); return { id: spot.id, x: at.x, y: at.y, z: at.z, ry: at.ry }; }); },
-    /** People standing in the scene, for taps: [{ id, kind, x, z, top }]. */
-    people() { return crowdTags.map((tag) => ({ id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y })); },
+    /** The spots the server knows, with where they are: [{ id, label, x, y, z, ry, approach }] (approach: the foot of the steps up to a raised spot, or null). */
+    spots() { return spots.filter((spot) => spot && typeof spot.id === 'string').map((spot) => { const at = anchorFor(spot.id); return { id: spot.id, label: String(spot.label ?? spot.id), x: at.x, y: at.y, z: at.z, ry: at.ry, approach: at.approach || null, steps: at.steps || [] }; }); },
+    /** People standing in the scene, for taps and for walking round them: [{ id, kind, x, z, top }]. The same objects until the crowd changes; a moving player's entry moves with them. */
+    people() { return peopleList; },
+    /** Boxes [x0, y0, z0, x1, y1, z1] of what can hide the avatar from the camera (camera-collision.js). */
+    get solids() { return footprints?.solids || []; },
     move: moveAvatar,
     /** Resting pose ('stand', or the activity's pose) — builds that figure if it has not been needed yet. */
-    pose(name, seat) { return show(name || 'stand', seat); },
-    /** The two-frame walk cycle: alternate the walking and the standing figure. No geometry is built. */
-    gait(step) { return showFigure(step ? strideFigure : standFigure); },
-    /** How high the floor is at a place: raised spots (a stage, a bridge) lift the avatar as it steps on. */
+    pose(name, seat) { rigOf(standFigure)?.rest(); return show(name || 'stand', seat); },
+    /**
+     * The walk cycle. With a rigged figure (characters.js offering limb parts — see avatar-rig.js) the
+     * standing figure's limbs swing with `phase`; without one the walking and the standing figure
+     * alternate, one visible at a time. Either way no geometry is built.
+     */
+    gait(step, phase = 0, jog = false) {
+      const rig = rigOf(standFigure);
+      if (rig) { rig.stride(phase, 1, jog); return showFigure(standFigure); }
+      return showFigure(step ? strideFigure : standFigure);
+    },
+    /**
+     * How high the floor is at a place. A scene declares what can be stood on above the ground in
+     * layout.raised (see deckHeight): a stage, a landing, a stair, a bridge. A raised spot nothing
+     * was declared for still lifts the avatar as it steps on, in a small radius around it.
+     */
     heightAt(x, z) {
-      let height = 0;
+      let height = deckHeight(x, z);
       for (const at of raised) {
         const share = 1 - (Math.hypot(x - at.x, z - at.z) - 0.3) / 1.6;
         if (share > 0) height = Math.max(height, at.y * Math.min(1, share));
@@ -425,11 +628,46 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     goal(x, z) { return Number.isFinite(x) ? placeMark(marks.goal, x, 0, z, true) : placeMark(marks.goal, 0, 0, 0, false); },
   };
   let raised = [];
+  /**
+   * layout.raised: what can be stood on above the ground, so the avatar walks UP it instead of
+   * through it. Each shape gives the height of its top:
+   *   { rect: [x0, z0, x1, z1], y, lip }   a stage or a landing; `lip` is how wide the step up around it is
+   *   { disc: [x, z, radius], y, lip }     a round platform
+   *   { ramp: [ax, az, ay, bx, bz, by], half, sag }   a stair or a bridge between two heights, `half` wide to each side
+   */
+  function deckHeight(x, z) {
+    let height = 0;
+    const shapes = layout?.raised;
+    if (!shapes) return 0;
+    for (let i = 0; i < shapes.length; i++) {
+      const shape = shapes[i];
+      let top = 0;
+      if (shape.rect) {
+        const [x0, z0, x1, z1] = shape.rect;
+        const away = Math.hypot(Math.max(x0 - x, 0, x - x1), Math.max(z0 - z, 0, z - z1));
+        top = away <= 0 ? shape.y : shape.lip > 0 && away < shape.lip ? shape.y * (1 - away / shape.lip) : 0;
+      } else if (shape.disc) {
+        const away = Math.hypot(x - shape.disc[0], z - shape.disc[1]) - shape.disc[2];
+        top = away <= 0 ? shape.y : shape.lip > 0 && away < shape.lip ? shape.y * (1 - away / shape.lip) : 0;
+      } else if (shape.ramp) {
+        const [ax, az, ay, bx, bz, by] = shape.ramp, dx = bx - ax, dz = bz - az, span = dx * dx + dz * dz || 1;
+        const t = ((x - ax) * dx + (z - az) * dz) / span;
+        if (t < -0.02 || t > 1.02) continue;
+        const k = Math.max(0, Math.min(1, t));
+        if (Math.hypot(x - (ax + dx * k), z - (az + dz * k)) > (shape.half || 0.7)) continue;
+        top = ay + (by - ay) * k - (shape.sag || 0) * 4 * k * (1 - k);
+      }
+      if (top > height) height = top;
+    }
+    return height;
+  }
   function findRaised() {
     raised = [];
+    // Only raised places no declared shape covers get the small ramp of their own.
+    const lone = (x, y, z) => { if (y > 0.05 && deckHeight(x, z) < y - 0.2) raised.push({ x, y, z }); };
     for (const at of Object.values(resolved.anchors)) {
-      if (at.y > 0.05) raised.push({ x: at.x, y: at.y, z: at.z });
-      if (at.act && (at.act.y ?? at.y) > 0.05) raised.push({ x: at.act.x ?? at.x, y: at.act.y ?? at.y, z: at.act.z ?? at.z });
+      lone(at.x, at.y, at.z);
+      if (at.act) lone(at.act.x ?? at.x, at.act.y ?? at.y, at.act.z ?? at.z);
     }
   }
 
@@ -465,9 +703,24 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     },
     setCrowd(people) {
       view.crowd = Array.isArray(people) ? people.filter((person) => person && typeof person === 'object') : [];
-      if (live) buildActors(); else crowdTags = [];
+      if (live) buildActors(); else { crowdTags = []; peopleList = []; }
       return crowdTags;
     },
+    /** True while another player's figure is on its way to a newly reported position. */
+    get easing() { return easing; },
+    stepCrowd, settleCrowd,
+    /** The camera is at (x, z): hide whichever wall it has gone behind, with what hangs on it. */
+    look(x, z) {
+      const zone = footprints?.walls;
+      if (!zone || !live) return false;
+      let changed = false;
+      const set = (meshes, shown) => { for (const mesh of meshes) if (mesh.visible !== shown) { mesh.visible = shown; changed = true; } };
+      set(wallParts.wallBack, !(z < zone.backZ));
+      set(wallParts.wallLeft, !(x < zone.leftX));
+      return changed;
+    },
+    /** Which walls are showing right now: { back, left } (true = shown), or null for a scene without walls. */
+    get walls() { return footprints?.walls ? { back: wallParts.wallBack.every((mesh) => mesh.visible), left: wallParts.wallLeft.every((mesh) => mesh.visible) } : null; },
     tags: () => (selfTag ? [selfTag, ...crowdTags] : [...crowdTags]),
     stats() {
       const meshes = [];

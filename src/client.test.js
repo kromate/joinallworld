@@ -30,7 +30,7 @@ test('offline client is read-only: no request, no local grant, state unchanged',
   assert.equal(h.client.online, false);
   const before = JSON.stringify(h.client.state); h.calls.length = 0;
   for (const [type, payload] of [['travel', { id: 'library', mode: 'cab' }], ['activity', { id: 'chill' }], ['apply-job', { id: 'community-helper' }], ['cancel', undefined]]) {
-    assert.deepEqual(await h.client.command(type, payload), { ok: false, code: 'offline', reason: TEXT.offlinePaused });
+    assert.deepEqual(await h.client.command(type, payload), { ok: false, code: 'offline', reason: TEXT.paused[h.client.link] });
   }
   assert.equal((await h.client.switchCity('ibadan')).ok, false);
   assert.equal(h.calls.length, 0, 'nothing was sent');

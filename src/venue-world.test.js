@@ -527,7 +527,8 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
     world.setState(state);
     const spawn = world.diagnostics();
     assert.equal(spawn.location, 'home');
-    assert.deepEqual(spawn.camera.limits.azimuth.map((value) => Math.round(value * 100) / 100), [0.05, 1.52], 'two cut-away walls: the camera stays on the open side');
+    assert.equal(spawn.camera.limits.azimuth, null, 'the camera may orbit all the way round the room');
+    assert.deepEqual(spawn.walls, { back: true, left: true }, 'from the composed view both walls are behind the room and showing');
     assert.ok(spawn.avatar.x < -4, 'the avatar appears by the door');
     bench.key('walk-right'); bench.pump(30); bench.keyUp('walk-right'); bench.pump(400);
     const moved = world.diagnostics().avatar;
@@ -550,5 +551,253 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
       const at = world.diagnostics().avatar;
       assert.ok(Math.abs(at.x) <= 5 && Math.abs(at.z) <= 5, `${action}: still inside (${at.x}, ${at.z})`);
     }
+  } finally { bench.restore(); }
+});
+
+// ---- the finished camera and walking: every venue, sight lines, other players, markers ------------
+
+test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit all the way round, zoom to both limits — and the loop always stops', async () => {
+  const { VENUES } = await import('./game/content/venues.js');
+  const { spotsOf } = await import('./life.js');
+  const report = [];
+  for (const id of Object.keys(VENUES)) {
+    const bench = motionBench({ location: id });
+    try {
+      const { world } = bench;
+      const spots = spotsOf(id).map((spot) => spot.id);
+      const base = id === 'home' ? createLife({ location: 'home', name: 'Ada' }, { now: NOON, cityId: 'lagos' }) : { location: id, spot: spots[0], t: NOON, name: 'Ada' };
+      world.setState(base);
+      const spawn = world.diagnostics();
+      assert.equal(spawn.location, id);
+      assert.equal(spawn.camera.limits.azimuth, null, `${id}: free orbit`);
+      const entrance = { x: spawn.avatar.x, z: spawn.avatar.z };
+      assert.equal(spawn.avatar.y < 0.1, true, `${id}: spawns on the ground`);
+      // Every spot the server knows, chosen in the panel one after another: the avatar gets there and the loop stops.
+      // (The first state of a scene just shown leaves the avatar at the entrance, so the first spot is visited last.)
+      for (const spot of id === 'home' ? [] : [...spots.slice(1), spots[0]]) {
+        world.setState({ ...base, spot });
+        const frames = bench.pump(4000);
+        const at = world.diagnostics();
+        const target = at.spots.find((item) => item.id === spot);
+        assert.ok(frames < 3900 && !at.loop.running, `${id}.${spot}: the walk ends (${frames} frames)`);
+        assert.ok(Math.hypot(at.avatar.x - target.x, at.avatar.z - target.z) < 0.05, `${id}.${spot}: standing on the spot (${at.avatar.x}, ${at.avatar.z}) vs (${target.x}, ${target.z})`);
+      }
+      // Never stranded: from the last spot the avatar walks back out to where it came in.
+      assert.equal(world.walkTo(entrance.x, entrance.z), true);
+      bench.pump(4000);
+      const out = world.diagnostics();
+      assert.ok(Math.hypot(out.avatar.x - entrance.x, out.avatar.z - entrance.z) < 0.5 && !out.loop.running && out.avatar.y < 0.1 && !out.perch, `${id}: back at the entrance, on the ground (${out.avatar.x}, ${out.avatar.z}, y ${out.avatar.y})`);
+      // Keys still walk from there.
+      bench.key('walk-up'); bench.pump(20); bench.keyUp('walk-up'); bench.pump(400);
+      assert.ok(Math.hypot(world.diagnostics().avatar.x - out.avatar.x, world.diagnostics().avatar.z - out.avatar.z) > 0.3, `${id}: not stuck at the entrance`);
+      // A full turn in eight drags: the camera goes all the way round; a room shows and hides its walls on the way.
+      const seen = new Set();
+      let turned = 0, last = world.diagnostics().camera.yaw;
+      for (let i = 0; i < 8; i++) {
+        bench.send('pointerdown', { clientX: 600, clientY: 300 }); bench.send('pointermove', { clientX: 600 + 131, clientY: 300 }); bench.send('pointerup', { clientX: 731, clientY: 300 });
+        bench.pump(400);
+        const now = world.diagnostics();
+        turned += Math.abs(now.camera.yaw - last); last = now.camera.yaw;
+        if (now.walls) seen.add(`${now.walls.back}${now.walls.left}`);
+        assert.equal(now.loop.running, false, `${id}: the orbit comes to rest`);
+        assert.ok(now.camera.y > 0.5, `${id}: the camera stays above the floor`);
+      }
+      assert.ok(Math.abs(turned - Math.PI * 2) < 0.2, `${id}: turned ${turned.toFixed(2)} rad — a full orbit`);
+      if (spawn.walls) assert.equal(seen.size, 4, `${id}: each wall was hidden while the camera was behind it, and shown again (${[...seen].join(' ')})`);
+      assert.deepEqual(world.diagnostics().walls, spawn.walls, `${id}: back where it started, the walls are as they were`);
+      // Zoom limits both ways.
+      for (let i = 0; i < 60; i++) bench.send('wheel', { deltaY: -400, deltaMode: 0 });
+      bench.pump(900);
+      const close = world.diagnostics().camera;
+      assert.ok(close.zoom === close.limits.zoom[1] && close.distance <= close.asked + 0.01 && close.distance > 1, `${id}: closest ${close.distance}`);
+      for (let i = 0; i < 80; i++) bench.send('wheel', { deltaY: 400, deltaMode: 0 });
+      bench.pump(900);
+      const far = world.diagnostics().camera;
+      assert.ok(far.zoom === far.limits.zoom[0] && far.held === 1, `${id}: farthest ${far.distance}, nothing holds the wide view`);
+      assert.equal(world.diagnostics().loop.running, false); assert.equal(bench.queued(), 0);
+      report.push(id);
+    } finally { bench.restore(); }
+  }
+  assert.ok(report.length >= 23, `${report.length} venues walked`);
+});
+
+test('raised spots: the avatar climbs the declared way up, stands at the deck’s height, and a walking key takes the same way down first', () => {
+  const bench = motionBench({ location: 'canopy-walk' });
+  try {
+    const { world } = bench;
+    world.setState({ location: 'canopy-walk', spot: 'trail', t: NOON, name: 'Ada' });
+    bench.pump(4000);
+    const tower = world.diagnostics().spots.map((spot) => spot.id);
+    // Find the spot that sits on the walkway (a raised landmark) by asking each in turn.
+    let up = null;
+    for (const id of tower) { world.setState({ location: 'canopy-walk', spot: id, t: NOON, name: 'Ada' }); let highest = 0, frames = 0; while (bench.pump(1) && frames < 5000) { frames += 1; highest = Math.max(highest, world.diagnostics().avatar.y); } if (world.diagnostics().avatar.y > 2) { up = { id, highest }; break; } }
+    assert.ok(up, 'one of the canopy walk’s spots is up on the walkway');
+    const top = world.diagnostics();
+    assert.equal(top.perch, true, 'the host remembers the way it came up');
+    assert.ok(top.avatar.y > 2.4 && up.highest <= 4.6, `standing ${top.avatar.y} up; never higher than the platforms on the way (${up.highest})`);
+    // A walking key: down the same way, then free on the ground.
+    bench.key('walk-down');
+    let frames = 0, heights = [];
+    while (world.diagnostics().perch && frames < 3000) { bench.pump(1); frames += 1; heights.push(world.diagnostics().avatar.y); }
+    bench.keyUp('walk-down'); bench.pump(600);
+    const down = world.diagnostics();
+    assert.equal(down.perch, false); assert.ok(down.avatar.y < 0.1, `back on the ground (y ${down.avatar.y}) after ${frames} frames`);
+    assert.ok(heights.every((height, index) => index === 0 || height - heights[index - 1] < 0.5), 'no leap on the way down');
+    assert.ok(Math.abs(down.avatar.x + 8) < 1.2 && down.avatar.z > 10, `it came down the stair (${down.avatar.x}, ${down.avatar.z})`);
+    assert.equal(down.loop.running, false);
+  } finally { bench.restore(); }
+});
+
+test('in sight: zoomed in behind a tree the camera is held in or the tree is ghosted — eased, then at rest; the wide view is never pulled', () => {
+  const bench = motionBench();
+  try {
+    const { world } = bench;
+    world.setState(PARK);
+    assert.ok(world.diagnostics().solids > 20, 'the park has things that can hide the avatar');
+    // Walk about the park zoomed right in, looking from every side: whenever something is in the way, one of the two answers is on.
+    for (let i = 0; i < 60; i++) bench.send('wheel', { deltaY: -400, deltaMode: 0 });
+    bench.pump(900);
+    let held = 0, ghosted = 0, visits = 0, jumps = 0;
+    for (const [x, z] of [[8.8, 9], [10.6, 7.4], [9.6, 5.6], [-8, 8], [5, -3], [-2, 0], [11, 9], [7.5, 6.5]]) {
+      world.walkTo(x, z); bench.pump(3000);
+      for (let turn = 0; turn < 6; turn++) {
+        bench.send('pointerdown', { clientX: 600, clientY: 300 }); bench.send('pointermove', { clientX: 600 + 175, clientY: 300 }); bench.send('pointerup', { clientX: 775, clientY: 300 });
+        let previous = world.diagnostics().camera.distance;
+        for (let frame = 0; frame < 400 && bench.pump(1); frame++) { const now = world.diagnostics().camera.distance; if (Math.abs(now - previous) > 1.6) jumps += 1; previous = now; }
+        const view = world.diagnostics();
+        assert.equal(view.loop.running, false, 'the camera comes to rest');
+        assert.ok(view.camera.distance >= 1.7 && view.camera.distance <= view.camera.asked + 0.01);
+        visits += 1;
+        if (view.camera.held < 0.999) held += 1;
+        if (view.camera.ghost > 0.5) ghosted += 1;
+        assert.ok(view.camera.ghost === 0 || view.camera.ghost === 1, 'the ghost has finished fading by the time the loop stops');
+      }
+    }
+    assert.ok(held > 0, `the camera was held in at ${held} of ${visits} views`);
+    assert.ok(ghosted > 0, `and the thing in the way was ghosted at ${ghosted}`);
+    assert.ok(held + ghosted < visits, 'most views are clear and untouched');
+    assert.equal(jumps, 0, 'never a jump: the hold eases in and out');
+    // Idle afterwards.
+    const rest = world.diagnostics().renderCount;
+    assert.equal(bench.pump(50), 0); assert.equal(world.diagnostics().renderCount, rest);
+    // The composed wide view: whatever crosses the line, the camera is where the player put it.
+    bench.key('zoom-fit'); bench.pump(900);
+    for (const [x, z] of [[8.8, 9], [-8, 8], [5, -3]]) { world.walkTo(x, z); bench.pump(3000); assert.equal(world.diagnostics().camera.held, 1); }
+  } finally { bench.restore(); }
+});
+
+test('other players stand where they report, ease when they move (bounded frames, then idle), and are simply there with reduced motion', () => {
+  const bench = motionBench();
+  try {
+    const { world } = bench;
+    world.setState(PARK);
+    const ada = '00000001-2222-4333-8444-555555555555';
+    const crowd = (x, z) => [{ id: ada, name: 'Ada', kind: 'player', seed: ada, look: null, x, z }, { id: 'npc:n1', name: 'Mama', kind: 'npc', seed: 'n1', spot: 'drinks' }];
+    const drawn = world.diagnostics().renderCount;
+    assert.equal(world.setCrowd(crowd(4, 6)), true);
+    assert.deepEqual([world.diagnostics().renderCount, bench.queued()], [drawn + 1, 0], 'someone arrived: one frame, no loop');
+    const first = world.diagnostics();
+    assert.deepEqual(first.people.map((person) => [person.id, person.x, person.z]).find(([id]) => id === ada), [ada, 4, 6]);
+    const tagAt = () => world.diagnostics().tags.find((tag) => tag.id === ada);
+    const before = tagAt();
+    // She walks: the loop runs for a bounded number of frames, her tag moves with her, then everything is at rest.
+    world.setCrowd(crowd(6.5, 6));
+    assert.equal(world.diagnostics().easing, true);
+    const frames = bench.pump(400);
+    assert.ok(frames > 5 && frames < 40, `eased over ${frames} frames`);
+    const after = world.diagnostics();
+    assert.deepEqual([after.easing, after.loop.running, bench.queued()], [false, false, 0]);
+    assert.deepEqual(after.people.find((person) => person.id === ada).x, 6.5);
+    assert.notDeepEqual([tagAt().x, tagAt().y], [before.x, before.y], 'her name tag followed her');
+    assert.equal(after.renderCount, drawn + 1 + frames, 'exactly one render per frame of the ease');
+    // The same list again, and again: nothing.
+    for (let i = 0; i < 10; i++) assert.equal(world.setCrowd(crowd(6.5, 6)), false);
+    assert.equal(bench.pump(50), 0); assert.equal(world.diagnostics().renderCount, after.renderCount);
+    // A stream of updates three times a second (as presence delivers them) never leaves the loop running afterwards.
+    for (let step = 0; step < 6; step++) { world.setCrowd(crowd(6.5 - step * 0.8, 6 + step * 0.3)); bench.pump(20); }
+    bench.pump(400);
+    assert.deepEqual([world.diagnostics().loop.running, world.diagnostics().easing], [false, false]);
+    // Reduced motion: a new place is one frame, no loop.
+    bench.reduceMotion(true);
+    const count = world.diagnostics().renderCount;
+    world.setCrowd(crowd(-3, 8));
+    assert.deepEqual([world.diagnostics().renderCount, bench.queued(), world.diagnostics().easing], [count + 1, 0, false]);
+    assert.equal(world.diagnostics().people.find((person) => person.id === ada).x, -3);
+    bench.reduceMotion(false);
+    // The local avatar walks round her instead of through her.
+    world.setCrowd(crowd(3, 8));
+    bench.pump(400);
+    world.walkTo(0, 8); bench.pump(3000);
+    world.walkTo(6, 8);
+    let closest = Infinity;
+    for (let i = 0; i < 3000 && bench.pump(1); i++) { const at = world.diagnostics().avatar; closest = Math.min(closest, Math.hypot(at.x - 3, at.z - 8)); }
+    assert.ok(Math.hypot(world.diagnostics().avatar.x - 6, world.diagnostics().avatar.z - 8) < 0.45, 'it gets where it was going');
+    assert.ok(closest > 0.5, `and kept ${closest.toFixed(2)} clear of her on the way`);
+  } finally { bench.restore(); }
+});
+
+test('markers and people: a click on a marker’s ring picks the marker even with someone in front of it; hovering names what a click would pick', () => {
+  const bench = motionBench();
+  try {
+    const { world } = bench;
+    world.setState(PARK);
+    const spot = (id) => world.diagnostics().spots.find((item) => item.id === id);
+    const drinks = spot('drinks');
+    // Somebody (a player who walked there) stands right in front of the drinks marker, as the camera sees it.
+    const yaw = world.diagnostics().camera.yaw;
+    const blocker = '00000003-2222-4333-8444-555555555555';
+    world.setCrowd([{ id: blocker, name: 'Tunde', kind: 'player', seed: blocker, look: null, x: drinks.x + Math.sin(yaw) * 1.1, z: drinks.z + Math.cos(yaw) * 1.1 }]);
+    const person = world.diagnostics().people[0];
+    // Hover: the marker names itself; the person's body, higher up, is the person.
+    const draws = world.diagnostics().renderCount;
+    bench.send('pointermove', { clientX: drinks.px, clientY: drinks.py, pointerType: 'mouse' });
+    assert.equal(world.diagnostics().hover, 'spot:drinks', 'on the ring: the marker');
+    assert.equal(world.diagnostics().renderCount, draws + 1, 'a hover change draws one frame');
+    bench.send('pointermove', { clientX: drinks.px + 1, clientY: drinks.py, pointerType: 'mouse' });
+    assert.equal(world.diagnostics().renderCount, draws + 1, 'moving within the same target draws nothing');
+    bench.send('pointermove', { clientX: person.px, clientY: person.py - 14, pointerType: 'mouse' });
+    assert.equal(world.diagnostics().hover, `person:${blocker}`, 'on the figure: the person');
+    bench.send('pointermove', { clientX: 5, clientY: 5, pointerType: 'mouse' });
+    assert.equal(world.diagnostics().hover, null);
+    assert.equal(bench.queued(), 0, 'hovering never starts the loop');
+    // Click the ring: the avatar walks to the SPOT and asks for it; the person's card is not opened.
+    bench.send('pointerdown', { clientX: drinks.px, clientY: drinks.py }); bench.send('pointerup', { clientX: drinks.px, clientY: drinks.py }); bench.send('click', { clientX: drinks.px, clientY: drinks.py });
+    bench.pump(3000);
+    assert.deepEqual(bench.spots, [{ id: 'drinks', open: true }]);
+    assert.deepEqual(bench.tagged, []);
+    assert.ok(Math.hypot(world.diagnostics().avatar.x - drinks.x, world.diagnostics().avatar.z - drinks.z) < 0.01);
+    // Click the person's body: their card.
+    world.walkTo(0, 9); bench.pump(3000);
+    const now = world.diagnostics().people[0];
+    bench.send('pointerdown', { clientX: now.px, clientY: now.py - 14 }); bench.send('pointerup', { clientX: now.px, clientY: now.py - 14 }); bench.send('click', { clientX: now.px, clientY: now.py - 14 });
+    bench.pump(3000);
+    assert.deepEqual(bench.tagged, [{ id: blocker, kind: 'player' }]);
+    // The marker's hit area is a little larger than the ring: a click just outside it still picks the spot.
+    world.setCrowd([]);
+    world.walkTo(0, 9); bench.pump(3000);
+    const art = spot('art');
+    bench.send('pointerdown', { clientX: art.px + 20, clientY: art.py }); bench.send('pointerup', { clientX: art.px + 20, clientY: art.py }); bench.send('click', { clientX: art.px + 20, clientY: art.py });
+    bench.pump(3000);
+    assert.deepEqual(bench.spots.at(-1), { id: 'art', open: true });
+  } finally { bench.restore(); }
+});
+
+test('where the avatar stands is reported in presence units, on request and while walking; walkBy is the keyboard way to move', () => {
+  const bench = motionBench();
+  try {
+    const { world } = bench;
+    world.setState(PARK);
+    const start = world.position();
+    assert.deepEqual(start, { x: world.diagnostics().avatar.x, z: world.diagnostics().avatar.z, location: 'park' }, 'the park fits the room protocol’s bounds: scene units are presence units');
+    assert.ok(Math.abs(start.x) <= 20 && Math.abs(start.z) <= 20);
+    assert.equal(world.walkBy(0, -2), true);
+    bench.pump(600);
+    const moved = world.position();
+    assert.ok(Math.abs(moved.z - (start.z - 2)) < 0.45 && Math.abs(moved.x - start.x) < 0.45, 'two steps up-screen');
+    assert.ok(bench.moves.length >= 1 && bench.moves.every((move) => move.location === 'park' && Math.abs(move.x) <= 20 && Math.abs(move.z) <= 20));
+    assert.deepEqual([bench.moves.at(-1).x, bench.moves.at(-1).z], [moved.x, moved.z], 'the last report is where it stopped');
+    assert.equal(world.walkBy(NaN, 1), false);
+    globalThis.window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'map' } }));
+    assert.equal(world.walkBy(1, 0), false, 'not while another screen is in front');
   } finally { bench.restore(); }
 });

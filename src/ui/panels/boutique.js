@@ -8,7 +8,8 @@
  * is bought or changed until Buy or Wear is pressed.
  */
 import './boutique.css';
-import { esc, money, json } from '../dom.js';
+import { esc, money, json, mark } from '../dom.js';
+import { linkWords } from '../link.js';
 import { lookStage, lookSummary, mountLookPreview, withAccessory, withoutAccessory } from './look-ui.js';
 
 const SECTIONS = [['hair', 'Hairstyles'], ['outfit', 'Outfits'], ['fabric', 'Fabrics'], ['accessories', 'Accessories']];
@@ -23,18 +24,18 @@ function shownLook(o) {
 }
 
 export default {
-  id: 'boutique', title: 'Boutique', icon: '👗', placement: 'phone', order: 32,
+  id: 'boutique', title: 'Boutique', placement: 'phone', order: 32,
   render(state, view) {
-    const o = view.onboarding, offline = view.connected ? '' : 'Offline — reconnect to shop';
+    const o = view.onboarding, words = linkWords(view), offline = words ? `${words.short} — you cannot shop right now` : '';
     const { look, item: tried } = shownLook(o);
     const card = (item) => {
       const on = tried === item;
-      const tryOn = item.wearing ? '' : `<button type="button" class="ui-button boutique-try" data-try="${json({ kind: item.kind, id: item.id })}" data-key="try:${esc(item.kind)}:${esc(item.id)}" aria-pressed="${on}">${on ? '✓ Trying on' : 'Try on'}</button>`;
+      const tryOn = item.wearing ? '' : `<button type="button" class="ui-button boutique-try" data-try="${json({ kind: item.kind, id: item.id })}" data-key="try:${esc(item.kind)}:${esc(item.id)}" aria-pressed="${on}">${on ? `${mark('check')} Trying on` : 'Try on'}</button>`;
       let control;
       if (item.wearing && item.kind === 'accessories') {
         const why = offline || (o.done ? '' : 'Finish creating your Sim first.');
-        control = `<button class="ui-button" data-action="onboarding.set-look" data-payload="${json({ look: { ...o.look, accessories: withoutAccessory(o.look, item.id) } })}" ${why ? 'disabled' : ''}>✓ Wearing · take off</button>${why ? `<small class="boutique-why">${esc(why)}</small>` : ''}`;
-      } else if (item.wearing) control = '<em class="boutique-state">✓ Wearing</em>';
+        control = `<button class="ui-button" data-action="onboarding.set-look" data-payload="${json({ look: { ...o.look, accessories: withoutAccessory(o.look, item.id) } })}" ${why ? 'disabled' : ''}>${mark('check')} Wearing · take off</button>${why ? `<small class="boutique-why">${esc(why)}</small>` : ''}`;
+      } else if (item.wearing) control = `<em class="boutique-state">${mark('check')} Wearing</em>`;
       else if (item.owned) {
         const why = offline || (o.done ? '' : 'Finish creating your Sim first.');
         control = `<button class="ui-button ${why ? '' : 'is-primary'}" data-action="onboarding.set-look" data-payload="${json({ look: wearing(o.look, item) })}" ${why ? 'disabled' : ''}>Wear</button>${why ? `<small class="boutique-why">${esc(why)}</small>` : ''}`;

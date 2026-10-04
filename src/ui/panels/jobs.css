@@ -27,5 +27,10 @@
 .jobs-badge{display:inline-block;border-radius:var(--r-pill);padding:2px 8px;background:var(--c-fill);font-size:10px;font-weight:700;vertical-align:middle;letter-spacing:.02em}
 .jobs-badge.is-mine{background:var(--c-green-soft);color:var(--c-green-dark)}
 .jobs-track .ui-button,.jobs-mine>.ui-button{width:100%}
-.jobs-rules{padding-left:18px;font-size:12px;color:var(--c-muted);line-height:1.5}
-.jobs-rules li{margin-bottom:3px}
+/* One job per row on a phone; side by side when the phone is expanded on a desktop. */
+.jobs-list{display:grid;gap:var(--s-2);grid-template-columns:minmax(0,1fr)}
+.jobs-list .jobs-track{margin-bottom:0;align-content:start}
+.jobs-list .jobs-track>.ui-button,.jobs-list .jobs-track>.ui-confirm,.jobs-list .jobs-track>.jobs-note{align-self:end}
+.ph.is-wide .jobs-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ph.is-wide .jobs-track{grid-template-rows:auto auto 1fr auto}
+.ph.is-wide .jobs-mine>.ui-button{width:auto;justify-self:start;min-width:220px}

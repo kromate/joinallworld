@@ -17,7 +17,8 @@
  * offline and is saved when the step is confirmed.
  */
 import './onboarding.css';
-import { esc, money, icon } from '../dom.js';
+import { esc, money, icon, mark, iconFor } from '../dom.js';
+import { linkWords, linkButton } from '../link.js';
 import { TRAITS, TRAITS_REQUIRED, DREAMS, ONBOARDING_STEPS, RENT_NOTE, LOTTERY_NOTE } from '../../game/content/traits.js';
 import { APPEARANCE } from '../../game/content/traits.js';
 import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocusBody, mountLookPreview, randomLook, sameLook, starterWardrobe, hairOptions, outfitOptions } from './look-ui.js';
@@ -65,41 +66,41 @@ const withSim = (view, body) => `<div class="ob-with-sim"><aside class="ob-sim">
 function stepBody(state, view) {
   const o = view.onboarding, name = view.name;
   if (shown === 0) {
-    const tools = `<button type="button" class="look-tool" data-ob="undo" data-key="undo" ${undo && !pending ? '' : 'disabled'} aria-label="Undo the last shuffle">↶ Undo</button><button type="button" class="look-tool is-main" data-ob="shuffle" data-key="shuffle" ${pending ? 'disabled' : ''}>🎲 Shuffle</button>`;
+    const tools = `<button type="button" class="look-tool" data-ob="undo" data-key="undo" ${undo && !pending ? '' : 'disabled'} aria-label="Undo the last shuffle">↶ Undo</button><button type="button" class="look-tool is-main" data-ob="shuffle" data-key="shuffle" ${pending ? 'disabled' : ''}>${mark('game')} Shuffle</button>`;
     return [`<div class="ob-creator"><div class="ob-hero">${lookStage(draft.look, { variant: 'hero', name, tools, caption: esc(lookSummary(draft.look)) })}</div><div class="ob-options">${lookEditor(draft.look, { owned: starterWardrobe() })}</div></div>`,
-      primary('Looks good — next: personality', { action: 'look', why: view.connected ? 'Still to choose: 2 traits, a dream, the birth lottery and a home.' : 'Offline: your look is kept on this device and is saved when you reconnect.' })];
+      primary('Looks good — next: personality', { action: 'look', why: view.connected ? 'Still to choose: 2 traits, a dream, the birth lottery and a home.' : `${linkWords(view)?.short || 'Not connected'}: your look is kept on this device and is saved when you are connected again.` })];
   }
   if (shown === 1) {
     const left = TRAITS_REQUIRED - draft.traits.length;
     return [withSim(view, `<p class="ob-lead">Choose ${TRAITS_REQUIRED} traits. Each one changes how ${esc(name)} plays.</p>
-      <div class="ob-grid">${Object.values(TRAITS).map((trait) => `<button type="button" class="ob-card" data-trait="${esc(trait.id)}" data-key="trait:${esc(trait.id)}" aria-pressed="${draft.traits.includes(trait.id)}"><span class="ob-card-icon" aria-hidden="true">${trait.icon}</span><strong>${esc(trait.label)}</strong><small>${esc(trait.blurb)}</small><ul>${trait.effects.map((line) => `<li>${esc(line)}</li>`).join('')}</ul></button>`).join('')}</div>
+      <div class="ob-grid">${Object.values(TRAITS).map((trait) => `<button type="button" class="ob-card" data-trait="${esc(trait.id)}" data-key="trait:${esc(trait.id)}" aria-pressed="${draft.traits.includes(trait.id)}"><span class="ob-card-icon" aria-hidden="true">${iconFor('trait', trait.id, trait.icon)}</span><strong>${esc(trait.label)}</strong><small>${esc(trait.blurb)}</small><ul>${trait.effects.map((line) => `<li>${esc(line)}</li>`).join('')}</ul></button>`).join('')}</div>
       <p class="preview-note">Trait strengths are original beta values. Picking a third trait swaps out your first pick.</p>`),
       primary(left > 0 ? `Choose ${left} more` : 'Next: your dream', { action: 'traits', disabled: left > 0, why: left > 0 ? `${draft.traits.length} of ${TRAITS_REQUIRED} traits chosen.` : '' })];
   }
   if (shown === 2) {
     return [withSim(view, `<p class="ob-lead">What is ${esc(name)}’s big dream?</p>
-      <div class="ob-list">${Object.values(DREAMS).map((dream) => `<button type="button" class="ob-card is-row" data-dream="${esc(dream.id)}" data-key="dream:${esc(dream.id)}" aria-pressed="${draft.dream === dream.id}"><span class="ob-card-icon" aria-hidden="true">${dream.icon}</span><span><strong>${esc(dream.label)}</strong><small>${esc(dream.goal)}</small><small class="ob-faint">${esc(dream.measure)}</small></span></button>`).join('')}</div>`),
+      <div class="ob-list">${Object.values(DREAMS).map((dream) => `<button type="button" class="ob-card is-row" data-dream="${esc(dream.id)}" data-key="dream:${esc(dream.id)}" aria-pressed="${draft.dream === dream.id}"><span class="ob-card-icon" aria-hidden="true">${iconFor('dream', dream.id, dream.icon)}</span><span><strong>${esc(dream.label)}</strong><small>${esc(dream.goal)}</small><small class="ob-faint">${esc(dream.measure)}</small></span></button>`).join('')}</div>`),
       primary(draft.dream ? 'Next: birth lottery' : 'Choose a dream', { action: 'dream', disabled: !draft.dream, why: draft.dream ? '' : 'Tap one of the dreams above to continue.' })];
   }
   if (shown === 3) {
     const outcome = o.lottery;
     if (!outcome) {
       return [withSim(view, `<p class="ob-lead">Everyone in this city is born into something. Roll once to find out what ${esc(name)} starts with.</p>
-        <div class="ob-lottery is-waiting" aria-hidden="true">🎲</div><p class="preview-note">${esc(LOTTERY_NOTE)}</p>`), primary('Roll the birth lottery', { action: 'lottery' })];
+        <div class="ob-lottery is-waiting" aria-hidden="true">${mark('game')}</div><p class="preview-note">${esc(LOTTERY_NOTE)}</p>`), primary('Roll the birth lottery', { action: 'lottery' })];
     }
-    return [withSim(view, `<div class="ob-lottery"><span class="ob-card-icon" aria-hidden="true">${outcome.icon}</span><h3>${esc(outcome.label)}</h3><p>${esc(outcome.tagline)}</p><ul>${outcome.bullets.map((line) => `<li>${esc(line)}</li>`).join('')}</ul>${outcome.beta ? '<p class="preview-note">Original beta outcome.</p>' : ''}</div>
+    return [withSim(view, `<div class="ob-lottery"><span class="ob-card-icon" aria-hidden="true">${iconFor('lottery', outcome.id, outcome.icon)}</span><h3>${esc(outcome.label)}</h3><p>${esc(outcome.tagline)}</p><ul>${outcome.bullets.map((line) => `<li>${esc(line)}</li>`).join('')}</ul>${outcome.beta ? '<p class="preview-note">Original beta outcome.</p>' : ''}</div>
       <p class="preview-note">${esc(LOTTERY_NOTE)}</p>`), primary('Choose where to live', { action: 'to-home' })];
   }
   const chosen = o.homes.find((home) => home.id === draft.house && !home.locked);
   return [withSim(view, `<p class="ob-lead">Where will ${esc(name)} live? ${esc(RENT_NOTE)}</p>
-    <div class="ob-list">${o.homes.map((home) => `<button type="button" class="ob-card is-row ob-home" data-house="${esc(home.id)}" data-key="house:${esc(home.id)}" aria-pressed="${draft.house === home.id && !home.locked}" ${home.locked ? 'disabled' : ''}><span class="ob-card-icon" aria-hidden="true">${home.icon}</span><span><em class="ob-tag">${esc(home.tag)}</em><strong>${esc(home.label)} · ${esc(home.district)}</strong><small>${esc(home.blurb)}</small>${home.locked
-    ? `<small class="ob-locked">🔒 ${esc(home.locked)}</small>`
+    <div class="ob-list">${o.homes.map((home) => `<button type="button" class="ob-card is-row ob-home" data-house="${esc(home.id)}" data-key="house:${esc(home.id)}" aria-pressed="${draft.house === home.id && !home.locked}" ${home.locked ? 'disabled' : ''}><span class="ob-card-icon" aria-hidden="true">${iconFor('home', home.id, home.icon)}</span><span><em class="ob-tag">${esc(home.tag)}</em><strong>${esc(home.label)} · ${esc(home.district)}</strong><small>${esc(home.blurb)}</small>${home.locked
+    ? `<small class="ob-locked">${mark('lock')} ${esc(home.locked)}</small>`
     : `<small class="ob-money">Start with ${money(home.startCash)} · rent ${money(home.rent)} a week</small>`}</span></button>`).join('')}</div>`),
     primary(chosen ? `Move in to ${chosen.label}` : 'Choose a home', { action: 'home', disabled: !chosen, why: chosen ? '' : 'Tap one of the homes above to continue.' })];
 }
 
 export default {
-  id: ID, title: 'Create your Sim', icon: '✨', placement: 'modal', live: false,
+  id: ID, title: 'Create your Sim', placement: 'modal', live: false,
   /** A brand-new life must be created before anything else: the shell opens this by itself and keeps it open. */
   required(state, view) { return view.onboarding?.required ? 'Finish creating your Sim to start playing. This cannot be skipped, and nothing else works until you have moved in.' : null; },
   render(state, view) {
@@ -111,7 +112,9 @@ export default {
     sync(state, view);
     // Every step is numbered and named; finished ones are ticked and the current one is spelled out.
     const steps = ONBOARDING_STEPS.map((step, index) => `<li class="${index < o.step ? 'is-done' : ''} ${index === shown ? 'is-current' : ''}" ${index === shown ? 'aria-current="step"' : ''}><i aria-hidden="true">${index < o.step && index !== shown ? '✓' : index + 1}</i><span>${esc(step.label)}</span></li>`).join('');
-    const offline = view.connected ? '' : '<p class="ob-note" role="status"><span aria-hidden="true">📴</span><span><strong>You are offline — keep going.</strong> Your choices are kept on this device and are saved as soon as you reconnect.</span></p>';
+    const words = linkWords(view);
+    // The real connection state in its own words ("No internet", "Server unreachable" …), with the action that fixes it.
+    const offline = !words ? '' : `<p class="ob-note" role="status"><span aria-hidden="true">${mark('cloud-off')}</span><span><strong>${esc(words.short)} — keep going.</strong> ${esc(words.why)} Your choices are kept on this device and are saved as soon as you are connected again.</span>${linkButton(view, 'ui-button is-small ob-note-action')}</p>`;
     const [content, footer] = stepBody(state, view);
     return `<div class="ob-root" data-step="${shown}"><div class="ob-head">${shown > 0 ? `<button type="button" class="sheet-back" data-ob="back" data-key="back" aria-label="Back to ${esc(ONBOARDING_STEPS[shown - 1].label)}">${icon('back')}</button>` : ''}<div class="ob-head-main"><strong>Step ${shown + 1} of ${ONBOARDING_STEPS.length} · ${esc(ONBOARDING_STEPS[shown].label)}</strong><ol class="ob-steps" aria-label="Progress">${steps}</ol></div></div>
       ${offline}${error ? `<p class="ob-error" role="alert">${esc(error)}</p>` : ''}${content}${footer}</div>`;
@@ -126,7 +129,7 @@ export default {
       const result = await api.command(type, payload);
       pending = '';
       if (result.ok) then?.();
-      else error = result.code === 'offline' || !api.view().connected ? 'You are still offline, so this step cannot be saved yet. Nothing is lost — try again when you are back online.' : result.reason || 'That could not be saved. Check your connection and try again.';
+      else error = result.code === 'offline' || !api.view().connected ? `${linkWords(api.view())?.why || 'The game server did not answer.'} This step cannot be saved yet. Nothing is lost — try again when you are connected.` : result.reason || 'That could not be saved. Check your connection and try again.';
       return result;
     };
     root.addEventListener('click', async (event) => {

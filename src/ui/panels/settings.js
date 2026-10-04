@@ -12,8 +12,10 @@
  * account. The panel contract is at the top of src/ui/shell.js.
  */
 import './settings.css';
-import { esc, chevron } from '../dom.js';
+import { esc, chevron, mark } from '../dom.js';
+import { linkWords } from '../link.js';
 import { WALLPAPERS, getWallpaper, setWallpaper } from '../phone/wallpapers.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.js';
 
 export const SETTINGS_KEY = 'joinallworld-settings-v1';
 const DEFAULTS = Object.freeze({ sound: true, music: true });
@@ -39,7 +41,7 @@ function save(next) {
 }
 
 export default {
-  id: 'settings', title: 'Settings', icon: '⚙️', placement: 'sim-tab', order: 70,
+  id: 'settings', title: 'Settings', placement: 'sim-tab', order: 70,
   render(state, view) {
     const current = settings();
     const session = view.session;
@@ -47,27 +49,24 @@ export default {
       <span class="settings-state">${current[option.id] ? 'On' : 'Off'}</span><input type="checkbox" role="switch" data-setting="${esc(option.id)}" ${current[option.id] ? 'checked' : ''} aria-label="${esc(option.label)}"><i class="ui-switch" aria-hidden="true"></i></label>`).join('');
     const wall = getWallpaper();
     const walls = WALLPAPERS.map((item) => `<button class="settings-wall wall-${esc(item.id)}" data-wallpaper="${esc(item.id)}" aria-pressed="${item.id === wall}" aria-label="${esc(item.label)} wallpaper"><span>${esc(item.label)}</span></button>`).join('');
-    const link = (id, emoji, title, text) => `<button class="ui-row" data-open="${id}"><span class="ui-row-icon" aria-hidden="true">${emoji}</span><span class="ui-row-body"><b>${title}</b><small>${text}</small></span><span class="ui-row-end">${chevron()}</span></button>`;
+    const link = (id, icon, title, text) => `<button class="ui-row" data-open="${id}"><span class="ui-row-icon" aria-hidden="true">${mark(icon)}</span><span class="ui-row-body"><b>${title}</b><small>${text}</small></span><span class="ui-row-end">${chevron()}</span></button>`;
     return `<h3 class="ui-section">Phone wallpaper</h3><div class="settings-walls" role="group" aria-label="Phone wallpaper">${walls}</div>
       <p class="settings-note">Saved on this device only. Open the Phone to see it.</p>
       <h3 class="ui-section">Sound</h3><div class="ui-rows">${toggles}</div>
-      <p class="settings-note">This beta has no audio yet, so these switches change nothing you can hear today. Your choice is saved on this device and will apply when sound ships.</p>
+      <p class="settings-note">No audio in this beta yet: your choice is saved on this device for when sound ships.</p>
       ${warning ? `<p class="ui-error" role="alert">${esc(warning)}</p>` : ''}
       <h3 class="ui-section">This device</h3>
-      <div class="ui-rows"><div class="ui-row"><span class="ui-row-icon" aria-hidden="true">🪪</span><span class="ui-row-body"><b>${esc(state.name)}</b><small>${session ? `Player code #${esc(session.id.slice(0, 6))} · ` : ''}${view.connected ? 'progress saved on the server' : 'not connected: this is the last saved copy'}</small></span></div></div>
-      <ul class="settings-list">
-        <li>This is a <strong>device session</strong>, not an account: there is no password, no email and no sign-in.</li>
-        <li>A cookie in this browser is the only key to this life. Clearing cookies, or not playing for 30 days, ends the session; the life is kept on the server but cannot be recovered from another device yet.</li>
-        <li>Other players only ever see your name and player code — never the cookie.</li>
-        <li>Change your name and look in your Sim’s Profile tab.</li>
-      </ul>
+      <div class="ui-rows"><div class="ui-row"><span class="ui-row-icon" aria-hidden="true">${mark('id')}</span><span class="ui-row-body"><b>${esc(state.name)}</b><small>${session ? `Player code #${esc(session.id.slice(0, 6))} · ` : ''}${view.connected ? 'progress saved on the server' : `${esc(linkWords(view).short)}: this is the last copy kept on this device`}</small></span></div></div>
+      <p class="settings-note">A <strong>device session</strong>, not an account: a cookie in this browser is the only key. Clearing cookies, or 30 days without playing, ends it.</p>
+      ${how('settings-session', ruleList(['This is a device session, not an account: there is no password, no email and no sign-in.', 'A cookie in this browser is the only key to this life. Clearing cookies, or not playing for 30 days, ends the session; the life is kept on the server but cannot be recovered from another device yet.', 'Other players only ever see your name and player code — never the cookie.', 'Change your name and look in your Sim’s Profile tab.']), 'How a device session works', true)}
       <h3 class="ui-section">Privacy</h3>
-      <div class="ui-rows">${link('neighbours', '🏡', 'Neighbours directory', 'Hide or list your home')}${link('richlist', '🏆', 'Rich List', 'Hide or show your balance')}${link('people', '👥', 'People and blocks', 'Blocked players are listed there')}</div>
+      <div class="ui-rows">${link('neighbours', 'neighbours', 'Neighbours directory', 'Hide or list your home')}${link('richlist', 'richlist', 'Rich List', 'Hide or show your balance')}${link('people', 'people', 'People and blocks', 'Blocked players are listed there')}</div>
       <h3 class="ui-section">Accounts</h3>
       <p class="settings-note">Accounts (sign up, log in, recovery email, moving a life to another device) are not part of this build. Notifications outside the game are not available either: news arrives in Phone → Messages → Updates.</p>
-      <div class="ui-rows">${link('support', '🛟', 'Report a problem', 'File a report and get a receipt')}</div>`;
+      <div class="ui-rows">${link('support', 'support', 'Report a problem', 'File a report and get a receipt')}</div>`;
   },
   bind(root, api) {
+    bindHow(root, api);
     for (const button of root.querySelectorAll('[data-wallpaper]')) {
       button.addEventListener('click', () => {
         warning = setWallpaper(button.dataset.wallpaper) ? '' : 'This browser would not save the wallpaper, so it lasts only until you close the tab.';

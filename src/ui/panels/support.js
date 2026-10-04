@@ -15,8 +15,10 @@
  */
 import './support.css';
 import { esc, empty, skeleton } from '../dom.js';
+import { linkWords } from '../link.js';
 import { formatClock } from '../../game/clock.js';
 import { noteReports, markReportsRead, noteFiled } from '../phone/reports.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.js';
 
 const LABELS = { money: 'Money or balance', stuck: 'I am stuck', messages: 'Messages or invites', people: 'Another player', bug: 'Something is broken', other: 'Something else' };
 const STATUS = { received: 'Received — waiting for a moderator', reviewing: 'Being looked at', resolved: 'Resolved', dismissed: 'Closed without action' };
@@ -44,7 +46,7 @@ async function load(api) {
 }
 
 export default {
-  id: 'support', title: 'Report a problem', icon: '🛟', placement: 'phone', order: 96, live: false,
+  id: 'support', title: 'Report a problem', placement: 'phone', order: 96, live: false,
   render(state, view) {
     const offline = view.connected === false;
     const max = list?.limits?.text ?? 600;
@@ -53,14 +55,14 @@ export default {
           <p>${esc(report.text)}</p><small>${esc(LABELS[report.category] ?? report.category)} · filed ${esc(formatClock(report.at))}${report.updatedAt > report.at ? ` · updated ${esc(formatClock(report.updatedAt))}` : ''}</small>
           ${report.note ? `<p class="support-reply"><b>Moderator:</b> ${esc(report.note)}</p>` : ''}</li>`).join('')}</ul>` : '';
     const receipts = !list ? skeleton(2, 'Loading your reports')
-      : list.failed ? `${rows}${empty('📡', 'Your reports did not load', 'They are kept on the server. Check your connection and try again.', `<button class="ui-button" type="button" data-support-reload ${offline ? 'disabled' : ''}>Try again</button>`, { compact: true })}`
-      : rows || empty('🛟', 'Nothing reported yet', 'A report you send appears here with its receipt number, its status and any reply from a moderator.', '', { compact: true });
-    return `<section class="ui-hero support-hero"><small>Report a problem</small><strong>Tell us what went wrong</strong><p>Your report is filed on this server and you get a receipt number at once — no e-mail or other account is needed.</p></section>
+      : list.failed ? `${rows}${empty('cloud-off', 'Your reports did not load', 'They are kept on the server. Check your connection and try again.', `<button class="ui-button" type="button" data-support-reload ${offline ? 'disabled' : ''}>Try again</button>`, { compact: true })}`
+      : rows || empty('support', 'Nothing reported yet', 'A report you send appears here with its receipt number, its status and any reply from a moderator.', '', { compact: true });
+    return `<section class="ui-hero support-hero"><small>Report a problem</small><strong>Tell us what went wrong</strong><p>You get a receipt number at once. No e-mail needed.</p></section>
       <form class="support-form" data-support-form>
         <label>What kind of problem?<select name="category" ${offline ? 'disabled' : ''}>${options}</select></label>
         <label>What happened?<textarea name="text" rows="5" maxlength="${esc(max)}" placeholder="What you did, what you expected, what you saw instead." ${offline ? 'disabled' : ''}>${esc(draft.text)}</textarea></label>
-        <p class="ui-fine support-note">Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines. Your device’s secret is never included.</p>
-        <span class="support-send"><button class="ui-button is-primary is-block" type="submit" ${offline || sending ? 'disabled' : ''}>${sending ? 'Sending…' : 'Send report'}</button>${offline ? '<small>Not connected: sending needs the server. What you typed is kept.</small>' : ''}</span>
+        <p class="ui-note support-note">Your recent actions and wallet lines are attached automatically. Your device’s secret never is.</p>${how('support-sent', ruleList(['Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines.', 'Your device’s secret is never included.', 'The report is filed on this server and you get a receipt number at once — no e-mail or other account is needed.', 'Its status and any reply from a moderator appear under “Your reports”, and as a red badge on this app.']), 'What is sent, and what happens next')}
+        <span class="support-send"><button class="ui-button is-primary is-block" type="submit" ${offline || sending ? 'disabled' : ''}>${sending ? 'Sending…' : 'Send report'}</button>${offline ? `<small>${esc(linkWords(view).why)} A report cannot be sent right now. What you typed is kept.</small>` : ''}</span>
         ${notice ? `<p class="support-${esc(notice.kind)}" role="${notice.kind === 'error' ? 'alert' : 'status'}">${esc(notice.text)}</p>` : ''}
       </form>
       <h3 class="ui-section">Your reports</h3>${receipts}`;
@@ -68,6 +70,7 @@ export default {
   bind(root, api, params) {
     // A category handed over by another screen ("Something here looks wrong") is applied once per opening, never over a choice made since.
     if (params !== seenParams) { seenParams = params; if (params?.category && LABELS[params.category] && !draft.text) draft.category = params.category; }
+    bindHow(root, api);
     if (!list && !loading) load(api);
     root.querySelector('[data-support-reload]')?.addEventListener('click', () => { list = null; redraw(api); load(api); });
     const form = root.querySelector('[data-support-form]');

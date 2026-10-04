@@ -1,8 +1,9 @@
 /*
  * The in-game phone (src/ui/phone/phone.js): device, wallpapers, status bar, home screen,
  * notification shade and the app frame. Values come from ../tokens.css.
- * Motion: the device rises once when it opens; entering and leaving an app is a short zoom.
- * Nothing loops. All of it is off under prefers-reduced-motion.
+ * Motion: the device rises once when it opens and drops away once when it closes (#ph-ghost);
+ * entering and leaving an app is a short zoom. Nothing loops. All of it is off under
+ * prefers-reduced-motion.
  */
 
 /* ---- the dialog becomes a clear stage for the device ----------------------------------- */
@@ -22,12 +23,25 @@
 /* ---- device -------------------------------------------------------------------------------- */
 .ph{--ph-w:392px;--ph-h:min(812px,calc(100dvh - 96px));--app-tint:#3f4a5a;position:relative;width:var(--ph-w);max-width:100vw;height:var(--ph-h);padding:11px;border-radius:54px;background:linear-gradient(145deg,#3a3f48 0%,#0e1014 38%,#0e1014 62%,#2b2f37 100%);box-shadow:inset 0 0 0 1.5px #646b77,inset 0 0 0 4.5px #08090b,var(--e-3);font-family:var(--font);transition:width var(--ease-phone);animation:ph-rise .3s cubic-bezier(.2,.8,.2,1)}
 @keyframes ph-rise{from{transform:translateY(46%);opacity:.2}to{transform:none;opacity:1}}
+/* Closing: phone.js moves the device out of the (already closed) dialog into this layer, which
+   dims out and lets the device drop away, then removes itself on animationend. Decoration only. */
+#ph-ghost{position:fixed;inset:0;z-index:900;pointer-events:none;overflow:hidden;background:rgba(8,14,11,.42);animation:ph-undim .2s ease-out forwards}
+#ph-ghost>.ph-stage{position:absolute;max-width:none;animation:ph-leave .2s cubic-bezier(.4,0,1,1) forwards}
+#ph-ghost .ph,#ph-ghost .ph-close{animation:none}
+#ph-ghost h2{margin:0}
+#ph-ghost p{font-size:14px;line-height:1.5}
+@keyframes ph-leave{to{transform:translateY(34%);opacity:0}}
+@keyframes ph-undim{to{background-color:transparent}}
 /* side buttons: two on the left, one on the right */
 .ph::before,.ph::after{content:'';position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#1a1c21,#4a505b)}
 .ph::before{left:-3px;top:128px;height:34px;box-shadow:0 48px 0 #2d3138,0 96px 0 #2d3138}
 .ph::after{right:-3px;top:176px;height:76px;transform:scaleX(-1)}
 .ph-screen{position:relative;height:100%;border-radius:43px;overflow:hidden;background:#05070a;color:#fff;isolation:isolate}
-.ph button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+/* A reset with NO specificity (:where): the phone's own buttons inherit, and an app's button keeps
+   the colour and font its own class gives it (a bare `.ph button` used to beat `.ride-go{color:#fff}`
+   and left dark text on a dark button). */
+:where(.ph) button{font:inherit;color:inherit}
+.ph button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .ph-island{position:absolute;z-index:8;top:10px;left:50%;width:98px;height:28px;margin-left:-49px;border-radius:16px;background:#000;box-shadow:inset 0 0 0 1px #1c1f26;pointer-events:none}
 .ph-island::after{content:'';position:absolute;right:11px;top:9px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#3b4a6b,#0c1220 70%)}
 
@@ -132,6 +146,8 @@
 .ph-appbody{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:14px 14px 30px;font-size:14px;line-height:1.45;scrollbar-width:thin}
 .ph-appbody>:first-child{margin-top:0!important}
 .ph.is-wide{width:min(780px,calc(100vw - 40px))}
+/* Expanded: running text keeps a readable measure instead of spanning the whole device. */
+.ph.is-wide .ph-appbody :is(.ui-note,.civic-note,.settings-note,.social-note,.ride-intro,.ride-blurb,.groceries-intro,.help-note,.goals-why){max-width:72ch}
 @media(max-width:899px){.ph-wide{display:none}}
 
 /* ---- sizes ---------------------------------------------------------------------------------- */
@@ -157,5 +173,6 @@
   .ph-grid{row-gap:10px}
 }
 @media(prefers-reduced-motion:reduce){
+  #ph-ghost{display:none}#ph-ghost>.ph-stage{animation:none}
   .ph,.ph *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }

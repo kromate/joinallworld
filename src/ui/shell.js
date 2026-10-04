@@ -7,6 +7,11 @@
  * the travel view, the first-session coach, toasts, the Phone app grid, the Sim sheet and its
  * tabs, the keyboard map (src/ui/keys.js) and the help overlay. Everything else is a panel.
  *
+ * THE SCENE AND THE KEYS: walking and the scene camera belong to the scene host
+ * (src/venue-world.js). The shell only routes: in the venue view with no sheet open it forwards
+ * the movement and camera keys as 'jaw:key' / 'jaw:key-up' window events, and it sends the `spot`
+ * action when the scene reports ('jaw:scene-spot') that the avatar has walked up to a spot.
+ *
  * THE HUD IS SMALL ON PURPOSE: the scene is the hero. Always visible are one top bar, the six
  * need bars as a slim strip, and one goal line. Every other HUD chip lives in the tray behind
  * the "More" button on a phone (and in a capped column on a wide screen); a chip asks for
@@ -118,7 +123,7 @@
 import './tokens.css';
 import './shell.css';
 import { esc, money, cap, icon, json } from './dom.js';
-import { shortcutFor, shortcutRows } from './keys.js';
+import { shortcutFor, shortcutRows, heldActionFor } from './keys.js';
 
 const NEED_ICONS = { hunger: '🍲', energy: '⚡', fun: '🎉', social: '💬', hygiene: '🫧', bladder: '🚻' };
 const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone']];
@@ -318,7 +323,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (sheet.kind === 'phone') {
       body = `${sheetHead('Phone')}<div class="phone-grid">${placed('phone').map((panel) => { const reason = gate(panel); return `<button class="phone-app" data-open="${esc(panel.id)}" ${reason ? `disabled title="${esc(reason)}"` : ''}><span aria-hidden="true">${esc(panel.icon || '📱')}</span>${esc(panel.title)}</button>`; }).join('')}<button class="phone-app" data-community><span aria-hidden="true">💬</span>Community</button><button class="phone-app" data-open="help"><span aria-hidden="true">❓</span>Help</button></div>`;
     } else if (sheet.kind === 'help') {
-      body = `${sheetHead('How to play')}<div class="sheet-body"><p>Pick a spot in the venue panel, then an activity. Activities take real seconds and finish on the server even if you close the tab. Open Map to travel, Phone for apps, and your avatar for your Sim.</p><p>The <b>☰ More</b> button holds the weather, the gem hunt, messages, the city switch and this help. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p><p>${view.connected ? 'Your progress is saved on this server under this device session — it is not a password-protected account, so keep your cookies.' : 'You are offline: what you see is the last saved state, and nothing changes until you reconnect.'}</p><h3>Keyboard</h3><dl class="help-keys">${shortcutRows().map((row) => `<div><dt><kbd>${esc(row.label)}</kbd></dt><dd>${esc(row.description)}</dd></div>`).join('')}</dl></div>`;
+      body = `${sheetHead('How to play')}<div class="sheet-body"><p>Pick a spot in the venue panel, then an activity. Activities take real seconds and finish on the server even if you close the tab. Open Map to travel, Phone for apps, and your avatar for your Sim.</p><p><b>Move around:</b> walk with W A S D or the arrow keys (hold Shift to jog), or click or tap the floor, a spot or a person to walk there. Drag the scene to look around, scroll or pinch to zoom, and use the + − ◎ buttons to zoom and recentre.</p><p>The <b>☰ More</b> button holds the weather, the gem hunt, messages, the city switch and this help. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p><p>${view.connected ? 'Your progress is saved on this server under this device session — it is not a password-protected account, so keep your cookies.' : 'You are offline: what you see is the last saved state, and nothing changes until you reconnect.'}</p><h3>Keyboard</h3><dl class="help-keys">${shortcutRows().map((row) => `<div><dt><kbd>${esc(row.label)}</kbd></dt><dd>${esc(row.description)}</dd></div>`).join('')}</dl></div>`;
     } else if (sheet.kind === 'sim') {
       const tabs = placed('sim-tab');
       const current = tabs.find((panel) => panel.id === sheet.tab) || tabs[0];
@@ -683,7 +688,14 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (verb === 'key') {
       if (event.key === 'Enter' && event.target.matches?.('button, a, summary')) return;
       showing()?.keys?.(arg, api);
-      window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action: arg, mode: dialog.open ? 'sheet' : mode } }));
+      // In the venue view the arrows walk the avatar (the scene host listens); they must not also scroll the spot rail.
+      if (mode === 'venue' && !dialog.open && arg.startsWith('move-')) event.preventDefault();
+      window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action: arg, mode: dialog.open ? 'sheet' : mode, jog: event.shiftKey } }));
+      return;
+    }
+    if (verb === 'walk' || verb === 'look') {
+      // Held keys for the scene host: only in the venue view, never under a sheet (typing was ruled out above).
+      if (mode === 'venue' && !dialog.open) { if (arg !== 'jog') event.preventDefault(); window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action: `${verb}-${arg}`, mode, jog: event.shiftKey } })); }
       return;
     }
     if (dialog.open && verb !== 'close' && verb !== 'open' && verb !== 'help') return;
@@ -707,16 +719,31 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       if (isOpen) close(); else open(arg);
     }
   }
+  /** A movement or camera key was released: always forwarded, so a key can never stay "held" in the scene. */
+  function onKeyUp(event) { const action = heldActionFor(event); if (action) window.dispatchEvent(new CustomEvent('jaw:key-up', { detail: { action } })); }
+  /**
+   * The avatar walked up to a spot in the scene. Selecting it is still the server's `spot` action;
+   * `open` (the player sent the avatar there on purpose) also shows the spot's activities.
+   */
+  function onSceneSpot(event) {
+    const { id, open: show } = event.detail || {};
+    if (!state || !view?.connected || mode !== 'venue' || dialog.open || state.activeAction || !view.activities.spots.some((spot) => spot.id === id)) return;
+    if (id === state.spot) { if (show && !expanded) { expanded = true; api.refresh(); } return; }
+    if (show) expanded = true;
+    api.command('spot', { id }).then(api.refresh);
+  }
   root.addEventListener('click', onClick);
   dialog.addEventListener('click', onClick);
   document.addEventListener('pointerdown', onOutside);
   window.addEventListener('keydown', onKey);
+  window.addEventListener('keyup', onKeyUp);
+  window.addEventListener('jaw:scene-spot', onSceneSpot);
 
   return {
     api, render, open, close, toast,
     get mode() { return mode; },
     setMode,
     setExpanded(value) { expanded = Boolean(value); },
-    destroy() { el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); root.replaceChildren(); root.classList.remove('life-ui'); },
+    destroy() { el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

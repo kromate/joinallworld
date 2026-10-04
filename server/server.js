@@ -456,5 +456,5 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const server = await createServer();
   // Write anything not yet on disk before the process leaves.
   for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { server.store.close?.().catch(() => {}).finally(() => process.exit(0)); });
-  server.listen(Number(process.env.PORT) || 3001, '0.0.0.0', () => console.log(`JoinAllworld server listening on ${server.address().port}`));
+  server.listen(Number(process.env.PORT) || 3001, '0.0.0.0', () => console.log(`Allworld server listening on ${server.address().port}`));
 }

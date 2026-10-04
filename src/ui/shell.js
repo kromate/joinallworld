@@ -188,7 +188,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   const gate = (panel) => { const value = panel.enabled?.(state, view); return value === undefined || value === true ? null : String(value || 'Unavailable right now'); };
 
   root.classList.add('life-ui');
-  root.innerHTML = `<p class="life-wordmark" aria-label="JoinAllworld"><i aria-hidden="true">${glyph('globe')}</i><span>Join<b>Allworld</b></span></p>
+  root.innerHTML = `<p class="life-wordmark" aria-label="Allworld"><i aria-hidden="true">${glyph('globe')}</i><span><b>Allworld</b></span></p>
     <section class="life-status" aria-label="Player status"><i class="life-status-mark" aria-hidden="true">${glyph('globe')}</i><span class="life-clock" data-clock></span><span class="life-mood" data-mood></span><button class="life-status-profile" data-open="sim" data-name></button><span class="life-saved-slot" data-saved></span><button class="life-cash" data-open="bank" data-cash></button><span class="life-delta" data-delta aria-hidden="true"></span></section>
     <div class="life-notice" data-notice role="status"></div>
     <aside class="life-sidebar" aria-label="Needs, goal and more">
@@ -490,7 +490,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   function menuHtml() {
     const atHome = state.location === 'home', net = view.net || {};
     const link = LINKS[linkOf()];
-    return `<p class="life-brand"><strong>Join<span>Allworld</span></strong><small>${esc(link ? link.menu : 'City beta')}</small></p>
+    return `<p class="life-brand"><strong><span>Allworld</span></strong><small>${esc(link ? link.menu : 'City beta')}</small></p>
       <button data-menu="city"><span aria-hidden="true">${glyph('globe')}</span><span><b>${esc(view.city?.name || 'City')}</b><small>Switch city on the world map</small></span></button>
       <button data-menu="locate"><span aria-hidden="true">${glyph('pin')}</span><span><b>Use my location</b><small>Find the nearest city</small></span></button>
       <button data-community><span aria-hidden="true">${glyph('community')}</span><span><b>Community</b><small>${atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue'}</small></span></button>

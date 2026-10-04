@@ -1,8 +1,8 @@
-# JoinAllworld
+# Allworld
 
 An open-source, lightweight browser city-life game. You pick a city on a world map, move between venues, and spend time on activities that change your cash and needs. Lagos is the first city; Ibadan is the second, and cities are meant to become reusable packs rather than one-off builds.
 
-JoinAllworld is original work built in a new repository. No files were copied from the older Allworld project, and no assets or code were extracted from any reference game.
+Allworld (this repository, `joinallworld`) is original work built in a new repository. No files were copied from the earlier Allworld v1 project, and no assets or code were extracted from any reference game.
 
 **Status: early beta, incomplete.** Read [What works today](#what-works-today) and [What does not work yet](#what-does-not-work-yet) before assuming a feature exists.
 

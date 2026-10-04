@@ -77,7 +77,11 @@ export async function sync() {
   syncing = true; S.loading = !S.me;
   const result = await call('/api/social/me');
   syncing = false; S.loading = false;
-  if (result.ok) { S.me = result; S.error = null; joinHouse(); } else S.error = result.reason;
+  if (result.ok) {
+    S.me = result; S.error = null;
+    if (S.knock?.status === 'accepted' && result.visiting?.host.id !== S.knock.host) S.knock = null;
+    joinHouse();
+  } else S.error = result.reason;
   refresh();
   if (dirty) { dirty = false; void sync(); }
 }

@@ -58,7 +58,10 @@ function bubble(item, meId, group) {
 
 function threadHtml(view) {
   const key = ui.open, conv = convOf(key), meId = S.me.me.id;
-  const title = conv?.name ?? ui.openName ?? 'New chat';
+  const houseHost = key.startsWith('h.') ? key.slice(2) : null;
+  const endedVisit = houseHost && houseHost !== meId && S.me.visiting?.host.id !== houseHost;
+  const readOnly = !view.connected ? 'You are offline. Reconnect to send.' : endedVisit ? 'Your visit has ended. Knock again to join the house chat.' : null;
+  const title = conv?.name ?? ui.openName ?? (houseHost ? 'House chat' : 'New chat');
   const thread = S.threads.get(key);
   const items = threadView(key);
   const group = conv && conv.kind !== 'dm';
@@ -72,8 +75,8 @@ function threadHtml(view) {
   return `<div class="social-head"><button class="social-btn" data-m-back aria-label="Back to chats">←</button><h3>${esc(title)}</h3>${conv?.kind === 'group' ? `<button class="social-btn" data-m-manage>${ui.manage ? 'Done' : `Members (${conv.members.length})`}</button>` : ''}</div>
     ${conv?.kind === 'house' ? '<p class="social-note">House chat: only the host and the guests inside can read this.</p>' : ''}${manage}
     <div class="social-thread" data-m-thread aria-live="polite">${body}</div>
-    <form class="social-form" data-m-compose><input name="body" maxlength="${S.me.limits.body}" autocomplete="off" placeholder="Message" aria-label="Message" value="${esc(ui.draft)}" required ${view.connected ? '' : 'disabled'}><button class="social-btn is-primary" ${view.connected ? '' : 'disabled'}>Send</button></form>
-    ${view.connected ? '' : '<span class="social-why">You are offline. Reconnect to send.</span>'}`;
+    <form class="social-form" data-m-compose><input name="body" maxlength="${S.me.limits.body}" autocomplete="off" placeholder="Message" aria-label="Message" value="${esc(ui.draft)}" required ${readOnly ? 'disabled' : ''}><button class="social-btn is-primary" ${readOnly ? 'disabled' : ''}>Send</button></form>
+    ${readOnly ? `<span class="social-why">${esc(readOnly)}</span>` : ''}`;
 }
 
 function chatsHtml() {

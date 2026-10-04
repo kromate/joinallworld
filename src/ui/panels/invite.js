@@ -30,7 +30,8 @@ function visitHtml(view) {
   // Once you are inside, the overview's copy of the house is the current one; the looked-up copy predates the answer.
   const house = S.me.visiting?.host.id === ui.house.house.host.id ? S.me.visiting : ui.house.house, knock = S.knock?.host === house.host.id ? S.knock : null;
   if (house.role === 'host') return '<p class="social-note">That is your own house. Share the link with someone else.</p>';
-  const inside = house.role === 'guest' || knock?.status === 'accepted';
+  // The overview is authoritative; a cached lookup or accepted knock can outlive the visit.
+  const inside = S.me.visiting?.host.id === house.host.id;
   const waiting = knock && (knock.status === 'knocking' || knock.status === 'sending') && (knock.status === 'sending' || knock.expiresAt > view.now);
   const expired = knock?.status === 'knocking' && knock.expiresAt <= view.now;
   const why = inside ? null : house.hostStatus !== 'home' ? `${house.host.name} must be at home to answer (${STATUS[house.hostStatus] ?? 'unavailable'}).` : house.guests.length >= house.capacity ? `The house is full (${house.capacity} guests).` : waiting ? 'Knocking… waiting for an answer.' : null;

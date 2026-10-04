@@ -16,16 +16,16 @@
  * Kitchen ingredients are ordinary inventory items (state.inventory; ids in content/food.js).
  *
  * Actions — all return a code and, when refused, a reason naming what is missing
- *   'furniture-buy'   { item, x, y, rot }   at home only; charged when placed, through the wallet
+ *   'home.furniture-buy'   { item, x, y, rot }   at home only; charged when placed, through the wallet
  *                                           ledger, at modify('shop.price', price, { item, kind: 'furniture' })
- *   'furniture-move'  { id, x, y, rot }     move / rotate a placed object (free)
- *   'furniture-sell'  { id } | { item }     sell a placed object, or one from storage, for
+ *   'home.furniture-move'  { id, x, y, rot }     move / rotate a placed object (free)
+ *   'home.furniture-sell'  { id } | { item }     sell a placed object, or one from storage, for
  *                                           SELL_REFUND_RATE of its list price
- *   'furniture-store' { id }                put a placed object into storage (free)
- *   'furniture-place' { item, x, y, rot }   place an object from storage (free)
- *   'grocery-buy'     { id, packs? }        buy ingredient packs anywhere; delivered to the kitchen
+ *   'home.furniture-store' { id }                put a placed object into storage (free)
+ *   'home.furniture-place' { item, x, y, rot }   place an object from storage (free)
+ *   'home.grocery-buy'     { id, packs? }        buy ingredient packs anywhere; delivered to the kitchen
  *                                           at once, at modify('shop.price', total, { item, kind: 'grocery' })
- *   'kitchen-unpack'  {}                    hand out the starter ingredients if that has not happened
+ *   'home.kitchen-unpack'  {}                    hand out the starter ingredients if that has not happened
  *
  * Furniture actions run on the shared activity engine. Activity ids are `home-<id>`
  * (content/furniture.js HOME_ACTIVITIES and content/food.js RECIPES); each carries
@@ -303,13 +303,13 @@ export default {
   },
 
   actions: {
-    'furniture-buy': buyFurniture,
-    'furniture-move': moveFurniture,
-    'furniture-sell': sellFurniture,
-    'furniture-store': storeFurniture,
-    'furniture-place': placeFromStorage,
-    'grocery-buy': buyGroceries,
-    'kitchen-unpack': unpackKitchen,
+    'home.furniture-buy': buyFurniture,
+    'home.furniture-move': moveFurniture,
+    'home.furniture-sell': sellFurniture,
+    'home.furniture-store': storeFurniture,
+    'home.furniture-place': placeFromStorage,
+    'home.grocery-buy': buyGroceries,
+    'home.kitchen-unpack': unpackKitchen,
   },
 
   activities: [...furnitureActivities, ...recipeActivities],

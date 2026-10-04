@@ -11,11 +11,11 @@
  *     car    the owned car currently driven, or null
  *
  * Actions (every refusal carries a code and a reason)
- *   'house-move' { id }   pay the landlord and agent (the house's moveIn, 3 × weekly rent) and
+ *   'property.house-move' { id }   pay the landlord and agent (the house's moveIn, 3 × weekly rent) and
  *                         move. Furniture moves with you — systems/home.js re-fits it.
- *   'car-buy'    { id }   buy a car at modify('shop.price', price, { item, kind: 'car' })
- *   'car-use'    { id }   choose which owned car to drive
- *   'car-sell'   { id }   sell an owned car back for CAR_RESALE_RATE of its list price
+ *   'property.car-buy'    { id }   buy a car at modify('shop.price', price, { item, kind: 'car' })
+ *   'property.car-use'    { id }   choose which owned car to drive
+ *   'property.car-sell'   { id }   sell an owned car back for CAR_RESALE_RATE of its list price
  *
  * Emits   'house.moved' { id, from, cost }     'car.bought' { id, price }     'car.sold' { id, refund }
  * Listens 'life.started' { house }             sets the starting house at the end of onboarding (free)
@@ -115,11 +115,12 @@ export default {
       car: cars.includes(saved.car) ? saved.car : cars.at(-1) ?? null,
     };
   },
-  actions: { 'house-move': moveHouse, 'car-buy': buyCar, 'car-use': useCar, 'car-sell': sellCar },
+  actions: { 'property.house-move': moveHouse, 'property.car-buy': buyCar, 'property.car-use': useCar, 'property.car-sell': sellCar },
   on: {
     /** End of onboarding: live in the chosen house. Free — the move-in fee is for later moves. */
     'life.started'(state, data) {
-      const house = houseOf(data?.house);
+      // The house arrives as an id string; an object carrying `id` is accepted too.
+      const house = houseOf(typeof data?.house === 'string' ? data.house : data?.house?.id);
       if (house) state.property.house = house.id;
     },
   },

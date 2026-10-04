@@ -450,7 +450,8 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', re
     const walk = walkOf();
     if (!walk) { orbit.follow(0, 0.7, 0); return; }
     // The closer the starting view, the more the pivot belongs to the avatar (closeness: see frame()).
-    const share = followShare(orbit.now.zoom * closeness), centre = walk.centre, offset = current!.group.position;
+    // Buy mode frames the whole room (the bed being placed must be in view), not the avatar's side of it.
+    const share = uiMode === 'buy' ? 0 : followShare(orbit.now.zoom * closeness), centre = walk.centre, offset = current!.group.position;
     orbit.follow(offset.x + centre[0] + (walker.x - centre[0]) * share, centre[1] + (avatarY + 1.55 * walk.scale - centre[1]) * share, offset.z + centre[2] + (walker.z - centre[2]) * share);
   }
   function nearestSpot() {

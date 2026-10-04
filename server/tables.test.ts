@@ -11,6 +11,7 @@ import type { LifeState } from '../src/types/life.ts';
 import { TUNING } from './growth/tables.ts';
 import { TABLE_REWARDS } from '../src/game/content/growth.ts';
 import { TABLES } from '../src/tables/places.ts';
+import { GAMES } from '../src/tables/games.ts';
 
 const DAY = 86400000;
 TUNING.botDelayMs = 0; // bots answer at once, so a test never waits on a timer
@@ -345,4 +346,16 @@ test('tables: a penalty shoot-out between two real sockets and against a bot —
   assert.deepEqual([dayo.state.table.seats.map((seat) => seat.bot), dayo.state.toMove], [[false, true], [0]], 'the bot has already chosen');
   for (let guard = 0; guard < 40 && dayo.state.table.status === 'playing'; guard++) await act(dayo, 'table-move', { ...goal, n: dayo.state.n, move: { z: guard % 3 } });
   assert.deepEqual([dayo.state.table.status, dayo.state.result.mine.human, (await claim(dayo)).results.map((item) => item.code), (await wins(dayo)).length], ['over', false, ['counted'], 0]);
+});
+
+test('tables: a move whose description is empty is logged as running out of time, as it always was', async (t) => {
+  const { act, player, playOn } = await harness(t);
+  const real = GAMES.whot.describe;
+  GAMES.whot.describe = () => '';
+  t.after(() => { GAMES.whot.describe = real; });
+  const ada = await player('Ada');
+  await act(ada, 'table-sit', {});
+  await act(ada, 'table-start', { bots: 1 });
+  await playOn([ada], 1);
+  assert.ok(ada.state.log.some((line) => /Ada ran out of time/.test(line)), JSON.stringify(ada.state.log));
 });

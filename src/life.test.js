@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLife, VENUES, TRAVEL_OPTIONS, PREVIEW_TRAVEL_DURATION, startActivity, cancelActivity, advanceLife, startTravel } from './life.js';
+import { createLife, VENUES, TRAVEL_OPTIONS, PREVIEW_TRAVEL_DURATION, startActivity, cancelActivity, advanceLife, startTravel, applyJob } from './life.js';
 
 test('preview seed is independent; saved needs and cash override seed safely', () => {
   const state = createLife();
@@ -69,7 +69,7 @@ test('unknown outcomes and skill-locked actions are catalogued but unavailable',
   const state = createLife();
   for (const spot of Object.values(VENUES.park.spots)) {
     state.spot = spot.id;
-    for (const action of spot.actions.filter((item) => item.id !== 'chill')) {
+    for (const action of spot.actions.filter((item) => item.id !== 'chill' && !item.beta)) {
       assert.equal(action.unavailable, true);
       assert.equal(action.effects, undefined);
       assert.ok(action.source);
@@ -155,7 +155,7 @@ test('home travel uses existing free trek and preserves starting venue and paid 
   const state = createLife({ cash: 0 });
   assert.equal(state.location, 'park');
   assert.equal(VENUES.home.travelMode, 'trek');
-  assert.equal(startTravel(state, 'home', 'cab').code, 'insufficient_funds');
+  assert.equal(startTravel(state, 'home', 'cab').code, 'home_travel_free_only');
   assert.equal(startTravel(state, 'home', 'trek').code, 'started');
   advanceLife(state, 5);
   assert.equal(state.location, 'home');
@@ -231,5 +231,83 @@ test('Nap is deterministic across frame sizes and invalid saved timers never rep
     assert.equal(restored.activeAction, null);
     advanceLife(restored, 100);
     assert.equal(restored.needs.energy, 35);
+  }
+});
+
+test('Community helper application is beta, persistent, free and rejects unknown jobs', () => {
+  const state = createLife();
+  assert.equal(state.job, null);
+  assert.equal(state.completedShifts, 0);
+  assert.equal(applyJob(state, 'tech-intern').code, 'invalid_job');
+  assert.equal(applyJob(state, 'community-helper').code, 'applied');
+  assert.equal(applyJob(state, 'community-helper').code, 'already_employed');
+  assert.equal(state.cash, 5000);
+  assert.equal(createLife(state).job, 'community-helper');
+  assert.equal(VENUES.park.spots.work.beta, true);
+  const corrupt = createLife({ job: 'dropoff', completedShifts: -1 });
+  assert.equal(corrupt.job, null);
+  assert.equal(corrupt.completedShifts, 0);
+});
+
+test('shift requires application and both needs; overlapping work and travel do not start', () => {
+  const state = createLife({ spot: 'work', needs: { energy: 19, hunger: 20 } });
+  assert.equal(startActivity(state, 'helper-shift').code, 'job_required');
+  applyJob(state, 'community-helper');
+  assert.equal(startActivity(state, 'helper-shift').code, 'needs_required');
+  state.needs.energy = 20;
+  state.needs.hunger = 19;
+  assert.equal(startActivity(state, 'helper-shift').code, 'needs_required');
+  assert.equal(state.activeAction, null);
+  state.needs.hunger = 20;
+  assert.equal(startActivity(state, 'helper-shift').code, 'started');
+  const active = state.activeAction;
+  assert.equal(startActivity(state, 'helper-shift').code, 'busy');
+  assert.equal(startTravel(state, 'home', 'trek').code, 'busy');
+  assert.equal(applyJob(state, 'community-helper').code, 'busy');
+  assert.equal(state.activeAction, active);
+  assert.equal(state.cash, 5000);
+});
+
+test('cancelled shift grants no reward or need costs', () => {
+  const state = createLife({ spot: 'work', job: 'community-helper' });
+  startActivity(state, 'helper-shift');
+  advanceLife(state, 19);
+  assert.equal(state.cash, 5000);
+  cancelActivity(state);
+  advanceLife(state, 100);
+  assert.equal(state.cash, 5000);
+  assert.equal(state.completedShifts, 0);
+  assert.equal(state.needs.energy, 50);
+  assert.equal(state.needs.hunger, 50);
+});
+
+test('midshift reload completes reward and costs exactly once; completed saves cannot replay', () => {
+  const state = createLife({ spot: 'work', job: 'community-helper' });
+  startActivity(state, 'helper-shift');
+  advanceLife(state, 7);
+  const restored = createLife(JSON.parse(JSON.stringify(state)));
+  assert.equal(restored.activeAction.remaining, 13);
+  advanceLife(restored, 13);
+  advanceLife(restored, 100);
+  assert.equal(restored.cash, 5300);
+  assert.equal(restored.needs.energy, 40);
+  assert.equal(restored.needs.hunger, 45);
+  assert.equal(restored.completedShifts, 1);
+  const completed = createLife(JSON.parse(JSON.stringify(restored)));
+  advanceLife(completed, 100);
+  assert.equal(completed.cash, 5300);
+  assert.equal(completed.completedShifts, 1);
+  startActivity(completed, 'helper-shift');
+  advanceLife(completed, 20);
+  assert.equal(completed.cash, 5600);
+  assert.equal(completed.completedShifts, 2);
+  assert.equal(createLife({ ...state, job: null }).activeAction, null);
+});
+
+test('shift rejects unsafe reward balances and preserves counters when blocked', () => {
+  for (const saved of [{ cash: Number.MAX_SAFE_INTEGER }, { completedShifts: Number.MAX_SAFE_INTEGER }]) {
+    const state = createLife({ ...saved, spot: 'work', job: 'community-helper' });
+    assert.equal(startActivity(state, 'helper-shift').code, 'balance_limit');
+    assert.equal(state.activeAction, null);
   }
 });

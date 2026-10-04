@@ -30,6 +30,11 @@ const actions = {
   nap: { id: 'nap', label: 'Take a Nap', duration: 15, cost: 0, effects: {}, effectsPerSecond: { energy: 2 }, beta: true,
     source: 'Home Nap observation: energy 75 → 91 mid-action, 98 at wake.',
     evidence: 'Beta rate: +2 energy per elapsed second, capped at 100; accrued energy survives cancellation.' },
+  'helper-shift': { id: 'helper-shift', label: 'Community helper shift', duration: 20, cost: 0,
+    reward: 300, requiresJob: 'community-helper', minimumNeeds: { energy: 20, hunger: 20 },
+    effects: { energy: -10, hunger: -5 }, beta: true,
+    source: 'Original Community helper beta gameplay; not a reference-game job.',
+    evidence: '20-second shift: ₦300 on completion, energy −10, hunger −5. Cancellation grants no reward or effects.' },
 };
 for (const action of Object.values(actions)) {
   action.source ??= action.id === 'chill' ? 'A05: completed Freedom Park Chill observation'
@@ -48,6 +53,8 @@ export const VENUES = {
       trees: { id: 'trees', label: 'Under the trees', actions: [actions.chill, actions['play-ayo']] },
       drinks: { id: 'drinks', label: 'Drinks kiosk', actions: [] },
       people: { id: 'people', label: 'People', actions: [] },
+      work: { id: 'work', label: 'Community desk', beta: true,
+        source: 'Original Community helper beta gameplay', actions: [actions['helper-shift']] },
     },
   },
   library: { id: 'library', label: 'The Library', district: 'Victoria Island', spots: {} },
@@ -67,20 +74,20 @@ for (const venue of Object.values(VENUES)) {
     : 'A06: destination menu observation';
   venue.placeholder = venue.id === 'library';
   for (const spot of Object.values(venue.spots)) {
-    spot.source = venue.source;
+    spot.source ??= venue.source;
     spot.placeholder = spot.actions.length === 0;
   }
 }
 
 const defaultSpot = (location) => location === 'park' ? 'amphitheatre' : location === 'home' ? 'kitchen' : null;
 
-function validActive(value, location) {
+function validActive(value, location, job) {
   if (!isRecord(value) || !finite(value.remaining) || value.remaining <= 0) return null;
   if (value.kind === 'activity') {
     const action = actions[value.id];
     const belongs = Object.values(VENUES[location].spots).some((spot) => spot.actions.includes(action));
     if (!belongs || !action || action.unavailable || value.duration !== action.duration
-      || value.remaining > action.duration) return null;
+      || value.remaining > action.duration || (action.requiresJob && job !== action.requiresJob)) return null;
     return { kind: 'activity', id: action.id, duration: action.duration, remaining: value.remaining };
   }
   if (value.kind === 'travel' && Object.hasOwn(VENUES, value.id)
@@ -100,6 +107,7 @@ export function createLife(saved) {
   const input = isRecord(saved) ? saved : {};
   const location = Object.hasOwn(VENUES, input.location) ? input.location : 'park';
   const spots = VENUES[location].spots;
+  const job = input.job === 'community-helper' ? input.job : null;
   const needs = {};
   for (const need of NEEDS) {
     const value = isRecord(input.needs) ? input.needs[need] : input[need];
@@ -109,12 +117,33 @@ export function createLife(saved) {
     cash: Number.isSafeInteger(input.cash) && input.cash >= 0 ? input.cash : 5000,
     name: typeof input.name === 'string' ? input.name.trim().slice(0, 24) || 'New Lagosian' : 'New Lagosian',
     homeOwned: input.homeOwned === true,
+    job,
+    completedShifts: Number.isSafeInteger(input.completedShifts) && input.completedShifts >= 0 ? input.completedShifts : 0,
     needs,
     location,
     spot: Object.hasOwn(spots, input.spot) ? input.spot : defaultSpot(location),
-    activeAction: validActive(input.activeAction, location),
+    activeAction: validActive(input.activeAction, location, job),
     message: typeof input.message === 'string' && input.message.length <= 500 ? input.message : '',
   };
+}
+
+/** Enrol in the original beta job. No application fee, immediate reward or reference schedule. */
+export function applyJob(state, id) {
+  if (state.activeAction) {
+    state.message = 'Finish or cancel your current action before applying.';
+    return result(state, false, 'busy');
+  }
+  if (id !== 'community-helper') {
+    state.message = 'Choose the Community helper beta job.';
+    return result(state, false, 'invalid_job');
+  }
+  if (state.job === id) {
+    state.message = 'You already work as a Community helper. Visit the Community desk in Freedom Park.';
+    return result(state, true, 'already_employed');
+  }
+  state.job = id;
+  state.message = 'Community helper job accepted. Visit the Community desk in Freedom Park to work a shift.';
+  return result(state, true, 'applied');
 }
 
 export function startActivity(state, id) {
@@ -127,6 +156,16 @@ export function startActivity(state, id) {
   if (!action || action.unavailable || action.locked) {
     state.message = 'This activity is unavailable in the local preview.';
     return result(state, false, 'unavailable');
+  } else if (action.requiresJob && state.job !== action.requiresJob) {
+    state.message = 'Apply for the Community helper beta job before starting a shift.';
+    return result(state, false, 'job_required');
+  } else if (Object.entries(action.minimumNeeds ?? {}).some(([need, minimum]) => state.needs[need] < minimum)) {
+    state.message = 'This shift requires at least 20 energy and 20 hunger. Eat and rest at Home first.';
+    return result(state, false, 'needs_required');
+  } else if (action.reward && (!Number.isSafeInteger(state.cash + action.reward)
+    || state.completedShifts >= Number.MAX_SAFE_INTEGER)) {
+    state.message = 'Your saved balance or shift count has reached its supported limit.';
+    return result(state, false, 'balance_limit');
   } else if (state.cash < action.cost) {
     state.message = 'You do not have enough cash for this activity.';
     return result(state, false, 'insufficient_funds');
@@ -166,7 +205,12 @@ export function advanceLife(state, dt) {
     for (const [need, amount] of Object.entries(action.effects)) {
       state.needs[need] = clamp(state.needs[need] + amount);
     }
-    state.message = `${action.label} completed.`;
+    if (action.reward) {
+      state.cash += action.reward;
+      state.completedShifts += 1;
+    }
+    state.message = action.reward ? `${action.label} completed. You earned ₦${action.reward}.`
+      : `${action.label} completed.`;
   } else {
     state.location = active.id;
     state.spot = defaultSpot(active.id);
@@ -182,6 +226,9 @@ export function startTravel(state, destination, mode) {
   } else if (!Object.hasOwn(VENUES, destination) || !Object.hasOwn(TRAVEL_OPTIONS, mode)) {
     state.message = 'Choose a valid destination and travel option.';
     return result(state, false, 'invalid_travel');
+  } else if (destination === 'home' && mode !== 'trek') {
+    state.message = 'Home uses free beta travel. Choose trek.';
+    return result(state, false, 'home_travel_free_only');
   } else if (destination === state.location) {
     state.message = 'You are already here.';
     return result(state, false, 'already_here');

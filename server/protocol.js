@@ -17,7 +17,7 @@ export function parseActionId(id, now, windowMs = ACTION_WINDOW_MS) {
   return at;
 }
 export function validateActionPayload(body, now, windowMs = ACTION_WINDOW_MS) {
-  if (!body || typeof body !== 'object' || !CITY_IDS.includes(body.cityId) || !['activity', 'cancel', 'travel', 'spot'].includes(body.type)) throw protocolError(400, 'invalid_action');
+  if (!body || typeof body !== 'object' || !CITY_IDS.includes(body.cityId) || !['activity', 'cancel', 'travel', 'spot', 'apply-job'].includes(body.type)) throw protocolError(400, 'invalid_action');
   return parseActionId(body.actionId, now, windowMs);
 }
 export function publicSession(session) { return { id: session.publicId, name: session.name }; }

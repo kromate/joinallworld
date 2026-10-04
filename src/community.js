@@ -5,8 +5,8 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     <header class="community-header"><div><span class="community-eyebrow">People nearby</span><h2>Community</h2></div><span class="community-connection" role="status">Connecting…</span></header>
     <p class="community-room"></p>
     <form class="community-name"><label for="community-nickname">Choose a device nickname</label><div class="community-input-row"><input id="community-nickname" name="name" required minlength="3" maxlength="24" autocomplete="nickname" placeholder="Your name"><button>Join room</button></div><p>This nickname is saved on this device. It is not a verified identity.</p></form>
-    <div class="community-content" hidden><div class="community-presence"><h3>In this room <span class="community-count">0</span></h3><ul class="community-members" aria-label="Room members"></ul></div>
-    <div class="community-proximity"><h3>Nearby voice</h3><p class="community-position" role="status">Waiting for your venue position…</p><div class="community-position-map" role="img" aria-label="People in venue voice space"></div><div class="community-movement" aria-label="Move within venue voice space"><button type="button" class="community-north" aria-label="Move north two units">↑ North</button><button type="button" class="community-west" aria-label="Move west two units">← West</button><button type="button" class="community-south" aria-label="Move south two units">↓ South</button><button type="button" class="community-east" aria-label="Move east two units">East →</button></div><p class="community-position-note">Move in this venue voice space. Nearby voices fade with distance and stop at 12 units. This map does not move the scene’s characters.</p></div><div class="community-voice"><div class="community-voice-top"><h3>Voice circle</h3><button class="community-join-voice" type="button">Join voice</button><button class="community-mute" type="button" hidden>Mute mic</button><button class="community-leave-voice" type="button" hidden>Leave voice</button></div><p class="community-voice-status" role="status">Your microphone is off. Join voice to request access.</p><div class="community-device" hidden><label for="community-microphone">Microphone</label><select id="community-microphone" aria-label="Microphone device"></select><small>Device changes apply the next time you join voice.</small></div><p class="community-network-note">Relay availability is checked when you join voice. Microphone starts muted.</p><div class="community-audio"></div></div>
+    <p class="community-private-note" hidden>Your home is private to this device session. Public nearby voice and community chat are available at shared venues.</p><div class="community-content" hidden><div class="community-presence"><h3>In this room <span class="community-count">0</span></h3><ul class="community-members" aria-label="Room members"></ul></div>
+    <div class="community-proximity"><h3>Nearby voice</h3><p class="community-position" role="status">Waiting for your venue position…</p><div class="community-position-map" role="img" aria-label="People in venue voice space"></div><div class="community-movement" aria-label="Move within venue voice space"><button type="button" class="community-north" aria-label="Move north two units">↑ North</button><button type="button" class="community-west" aria-label="Move west two units">← West</button><button type="button" class="community-south" aria-label="Move south two units">↓ South</button><button type="button" class="community-east" aria-label="Move east two units">East →</button></div><p class="community-position-note">Move in this venue voice space. Nearby voices fade with distance and stop at 12 units. This map does not move the scene’s characters.</p></div><div class="community-voice"><div class="community-voice-top"><h3>Voice circle</h3><button class="community-join-voice" type="button">Join voice</button><button class="community-mute" type="button" hidden>Mute mic</button><button class="community-leave-voice" type="button" hidden>Leave voice</button></div><p class="community-voice-status" role="status">Your microphone is off. Join voice to request access.</p><div class="community-device" hidden><label for="community-microphone">Microphone</label><select id="community-microphone" aria-label="Microphone device"></select><small>Device changes apply the next time you join voice.</small></div><p class="community-playback-note" hidden></p><p class="community-network-note">Relay availability is checked when you join voice. Microphone starts muted.</p><div class="community-audio"></div></div>
     <div class="community-chat"><h3>Room chat</h3><ol class="community-messages" aria-label="Room messages" aria-live="polite" aria-relevant="additions"></ol><form class="community-compose"><label class="community-sr-only" for="community-message">Message this room</label><div class="community-input-row"><input id="community-message" maxlength="500" required autocomplete="off" placeholder="Say hello to this room…"><button>Send</button></div></form></div></div>
     <div class="community-feedback" role="status"></div><button class="community-retry" type="button" hidden>Reconnect</button>
   </section>`;
@@ -15,17 +15,19 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     connection: $('.community-connection'), room: $('.community-room'), name: $('.community-name'), content: $('.community-content'),
     members: $('.community-members'), count: $('.community-count'), messages: $('.community-messages'), compose: $('.community-compose'),
     join: $('.community-join-voice'), mute: $('.community-mute'), leave: $('.community-leave-voice'), voice: $('.community-voice-status'),
-    position: $('.community-position'), positionMap: $('.community-position-map'), north: $('.community-north'), south: $('.community-south'), west: $('.community-west'), east: $('.community-east'), relay: $('.community-network-note'),
+    proximity: $('.community-proximity'), voiceSection: $('.community-voice'), chatSection: $('.community-chat'), privateNote: $('.community-private-note'),
+    position: $('.community-position'), positionMap: $('.community-position-map'), north: $('.community-north'), south: $('.community-south'), west: $('.community-west'), east: $('.community-east'), relay: $('.community-network-note'), playbackNote: $('.community-playback-note'),
     audio: $('.community-audio'), device: $('.community-device'), deviceSelect: $('#community-microphone'), feedback: $('.community-feedback'), retry: $('.community-retry'),
   };
   let room = { cityId, venueId }, session = null, socket = null, members = [], stream = null;
   let destroyed = false, connected = false, roomReady = false, voice = false, muted = false, joiningVoice = false;
   let reconnectTimer = null, attempts = 0, voiceGeneration = 0, selectedDevice = '', diagnosticsTimer = null;
-  let iceConfig = null, iceConfigRequest = null;
+  let iceConfig = null, iceConfigRequest = null, playbackContext = null;
   const VOICE_RADIUS = 12, SPACE_BOUND = 20;
   const sourceLabel = audioStreamFactory ? 'Test audio' : 'Microphone';
   const diagnosticsPanel = diagnostics ? document.createElement('pre') : null;
   if (diagnosticsPanel) { diagnosticsPanel.className = 'community-diagnostics'; diagnosticsPanel.setAttribute('aria-label', 'Synthetic test connection diagnostics'); el.audio.append(diagnosticsPanel); }
+  const rejectedPeers = new Set();
   const peers = new Map(), pending = new Map(), seen = new Set(), listeners = [];
   const listen = (target, event, handler) => { target.addEventListener(event, handler); listeners.push(() => target.removeEventListener(event, handler)); };
   const feedback = (message) => { el.feedback.textContent = message; };
@@ -35,7 +37,12 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     onStatus({ connected, session: session ? { ...session } : null, status });
   };
   const send = (message) => { if (socket?.readyState !== WebSocket.OPEN) return false; socket.send(JSON.stringify(message)); return true; };
-  const roomLabel = () => { el.room.textContent = `${room.cityId === 'ibadan' ? 'Ibadan' : 'Lagos'} · ${room.venueId === 'library' ? 'Library' : 'Park'} · room chat`; };
+  const roomLabel = () => {
+    const privateHome = room.venueId === 'home';
+    const venueName = privateHome ? 'Your home (private)' : room.venueId === 'library' ? 'Library' : room.venueId === 'club' ? 'Club' : 'Park';
+    el.room.textContent = `${room.cityId === 'ibadan' ? 'Ibadan' : 'Lagos'} · ${venueName}`;
+    el.proximity.hidden = privateHome; el.voiceSection.hidden = privateHome; el.chatSection.hidden = privateHome; el.privateNote.hidden = !privateHome;
+  };
   roomLabel();
 
   function validPosition(member) {
@@ -46,9 +53,9 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     const self = validPosition(members.find((person) => person.id === session?.id)), other = validPosition(member);
     return self && other ? Math.hypot(self.x - other.x, self.z - other.z) : Infinity;
   }
-  function nearby(member) { return member?.enabled && member.id !== session?.id && distanceTo(member) < VOICE_RADIUS; }
+  function nearby(member) { return room.venueId !== 'home' && !rejectedPeers.has(member?.id) && member?.enabled && member.id !== session?.id && distanceTo(member) < VOICE_RADIUS; }
   function moveTo(x, z) {
-    if (!roomReady || !Number.isFinite(x) || !Number.isFinite(z)) return false;
+    if (!roomReady || room.venueId === 'home' || !Number.isFinite(x) || !Number.isFinite(z)) return false;
     return send({ type: 'move', x: Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), z: Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z)) });
   }
   function step(dx, dz) {
@@ -122,18 +129,28 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     const peer = peers.get(id); if (!peer) return;
     peer.pc.onicecandidate = null; peer.pc.ontrack = null; peer.pc.onconnectionstatechange = null;
     peer.pc.close(); peer.remoteStream?.getTracks().forEach((track) => track.stop());
-    peer.audioSource?.disconnect(); peer.analyser?.disconnect(); peer.audioContext?.close().catch(() => {});
+    peer.audioSource?.disconnect(); peer.gainNode?.disconnect(); peer.analyser?.disconnect();
     peer.audio.srcObject = null; peer.wrapper.remove(); peers.delete(id);
   }
   function leaveVoice(notify = true) {
     voiceGeneration++; clearInterval(diagnosticsTimer); diagnosticsTimer = null; joiningVoice = false; voice = false; muted = false;
     stream?.getTracks().forEach((track) => track.stop()); stream = null; iceConfig = null;
     [...peers.keys()].forEach(closePeer);
+    closePlaybackContext();
     if (notify) send({ type: 'voice-state', enabled: false, muted: false });
     voiceStatus();
     if (diagnosticsPanel) diagnosticsPanel.textContent = JSON.stringify({ voice: false, muted: false, trackCount: 0, liveTrackCount: 0, peers: [] }, null, 2);
   }
-  function signal(id, data) { send({ type: 'signal', to: id, data }); }
+function closePlaybackContext() {
+    const context = playbackContext; playbackContext = null; context?.close().catch(() => {});
+  }
+  function setPeerGain(id, peer) {
+    const gain = Math.max(0, 1 - distanceTo(members.find((member) => member.id === id)) / VOICE_RADIUS);
+    peer.gain = gain;
+    if (peer.gainNode) peer.gainNode.gain.value = gain;
+    else peer.audio.volume = gain;
+  }
+  function signal(id, data) { if (voice && nearby(members.find((member) => member.id === id))) send({ type: 'signal', to: id, data }); }
   function makePeer(id) {
     if (peers.has(id)) return peers.get(id);
     if (!voice || !stream || id === session.id) return null;
@@ -146,7 +163,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     play.addEventListener('click', () => audio.play().then(() => { play.hidden = true; }).catch(() => feedback('Audio playback is blocked. Check your browser sound permissions.')));
     wrapper.append(audio, play); el.audio.append(wrapper);
     audio.volume = Math.max(0, 1 - distanceTo(member) / VOICE_RADIUS);
-    const peer = { pc, audio, wrapper, candidates: [], chain: Promise.resolve() };
+    const peer = { pc, audio, wrapper, gain: audio.volume, candidates: [], chain: Promise.resolve() };
     peers.set(id, peer);
     stream.getTracks().forEach((track) => pc.addTrack(track, stream));
     pc.onicecandidate = ({ candidate }) => { if (candidate) signal(id, { candidate: candidate.toJSON() }); };
@@ -154,17 +171,25 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     pc.ontrack = ({ streams, track }) => {
       const remoteStream = streams[0] || new MediaStream([track]);
       peer.remoteStream = remoteStream; audio.srcObject = remoteStream;
-      if (diagnostics && !peer.analyser) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext) {
-          try {
-            peer.audioContext = new AudioContext(); peer.audioSource = peer.audioContext.createMediaStreamSource(remoteStream);
-            peer.analyser = peer.audioContext.createAnalyser(); peer.analyser.fftSize = 512;
-            peer.audioSamples = new Float32Array(peer.analyser.fftSize); peer.audioSource.connect(peer.analyser);
-            peer.audioContext.resume().catch(() => {});
-          } catch { peer.audioContext?.close().catch(() => {}); peer.audioContext = null; peer.analyser = null; }
+      if (peer.gainNode) { audio.muted = true; audio.srcObject = null; return; }
+      if (playbackContext && !peer.audioSource) {
+        try {
+          peer.audioSource = playbackContext.createMediaStreamSource(remoteStream);
+          peer.gainNode = playbackContext.createGain(); peer.gainNode.gain.value = peer.gain;
+          peer.audioSource.connect(peer.gainNode); peer.gainNode.connect(playbackContext.destination);
+          if (diagnostics) {
+            peer.analyser = playbackContext.createAnalyser(); peer.analyser.fftSize = 512;
+            peer.audioSamples = new Float32Array(peer.analyser.fftSize); peer.gainNode.connect(peer.analyser);
+          }
+          audio.muted = true; audio.srcObject = null; play.hidden = true;
+          return;
+        } catch {
+          peer.audioSource?.disconnect(); peer.gainNode?.disconnect(); peer.analyser?.disconnect();
+          peer.audioSource = null; peer.gainNode = null; peer.analyser = null;
+          el.playbackNote.hidden = false; el.playbackNote.textContent = 'Spatial playback is unavailable for this connection. Browser audio volume is a fallback and may not fade reliably on every device; the distance cutoff still applies.';
         }
       }
+      audio.muted = false;
       audio.play().catch(() => { play.hidden = false; feedback('Tap the audio button to hear a person in your voice circle.'); });
     };
     return peer;
@@ -179,7 +204,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     if (!voice) return;
     let eligible = new Set(members.filter(nearby).map((member) => member.id));
     for (const id of peers.keys()) if (!eligible.has(id)) closePeer(id);
-    for (const [id, peer] of peers) peer.audio.volume = Math.max(0, 1 - distanceTo(members.find((member) => member.id === id)) / VOICE_RADIUS);
+    for (const [id, peer] of peers) setPeerGain(id, peer);
     const generation = voiceGeneration;
     try { if ([...eligible].some((id) => !peers.has(id)) && !await ensureVoiceConfig(generation)) return; } catch { feedback('Relay configuration could not be refreshed. New voice connections are paused.'); return; }
     if (!voice || generation !== voiceGeneration) return;
@@ -239,7 +264,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   function receive(event) {
     let message; try { message = JSON.parse(event.data); } catch { return; }
     if (message.type === 'presence') {
-      members = message.members || []; roomReady = true; renderMembers(); retryPending(); syncPeers(); voiceStatus();
+      members = message.members || []; rejectedPeers.clear(); roomReady = true; renderMembers(); retryPending(); syncPeers(); voiceStatus();
     } else if (message.type === 'chat') {
       if (seen.has(message.id)) return;
       seen.add(message.id); if (seen.size > 100) seen.delete(seen.values().next().value);
@@ -262,7 +287,11 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
         }
         rejected.retry.hidden = false;
       }
-      if (message.error === 'peer_out_of_range') { syncPeers(); return; }
+      if (message.error === 'peer_out_of_range') {
+        const rejected = message.to ? [message.to] : [...peers].filter(([, peer]) => peer.pc.connectionState !== 'connected').map(([id]) => id);
+        for (const id of rejected) { rejectedPeers.add(id); closePeer(id); }
+        voiceStatus(); return;
+      }
       if (message.error === 'voice_room_full') { leaveVoice(); feedback('This voice circle is full. Try joining when someone leaves.'); }
       else if (message.error === 'rate_limited') feedback('Messages are arriving too quickly. Pause briefly before sending more.');
       else feedback(message.message || 'The room could not process that action.');
@@ -285,10 +314,25 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     current.onerror = () => report('Connection unavailable');
   }
   async function joinVoice() {
-    if (!roomReady || joiningVoice || voice) return;
+    if (!roomReady || room.venueId === 'home' || joiningVoice || voice) return;
     if ((!audioStreamFactory && !navigator.mediaDevices?.getUserMedia) || !window.RTCPeerConnection) { feedback('Voice needs a supported browser on localhost or HTTPS.'); return; }
     const generation = ++voiceGeneration; joiningVoice = true; feedback(''); voiceStatus();
+    let resumePlayback = Promise.resolve();
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    el.playbackNote.hidden = true;
+    if (AudioContext) {
+      try {
+        playbackContext = new AudioContext(); const context = playbackContext;
+        resumePlayback = context.resume().then(() => { if (context.state && context.state !== 'running') throw new Error('Playback suspended'); });
+      } catch { resumePlayback = Promise.reject(new Error('Playback unavailable')); }
+    } else resumePlayback = Promise.reject(new Error('WebAudio unsupported'));
     try {
+      try { await resumePlayback; } catch {
+        if (destroyed || generation !== voiceGeneration) return;
+        closePlaybackContext(); el.playbackNote.hidden = false;
+        el.playbackNote.textContent = 'This browser cannot use spatial WebAudio playback. Browser audio volume is a fallback and may not fade reliably on every device; the distance cutoff still applies.';
+      }
+      if (destroyed || generation !== voiceGeneration) return;
       if (!await ensureVoiceConfig(generation) || !roomReady) return;
       const constraints = { audio: selectedDevice ? { deviceId: { exact: selectedDevice } } : true, video: false };
       const acquired = await (audioStreamFactory ? audioStreamFactory(constraints) : navigator.mediaDevices.getUserMedia(constraints));
@@ -301,12 +345,12 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
       if (diagnostics) { updateDiagnostics(generation); diagnosticsTimer = setInterval(() => updateDiagnostics(generation), 1000); }
     } catch (error) {
       if (generation !== voiceGeneration || destroyed) return;
-      joiningVoice = false; voiceStatus(); feedback(error.name === 'NotAllowedError' ? 'Microphone permission was denied. You can still use room chat.' : error.message?.includes('configuration') || error.message?.includes('credentials') ? 'Voice connection settings are unavailable. Try joining again when the relay service is ready.' : 'No microphone could be opened. Check your device and try again.');
+      leaveVoice(false); feedback(error.name === 'NotAllowedError' ? 'Microphone permission was denied. You can still use room chat.' : error.message?.includes('configuration') || error.message?.includes('credentials') ? 'Voice connection settings are unavailable. Try joining again when the relay service is ready.' : 'No microphone could be opened. Check your device and try again.');
     }
   }
   async function getDiagnostics() {
     const peerStats = await Promise.all([...peers].map(async ([id, peer]) => {
-      const result = { id, connectionState: peer.pc.connectionState, inboundPacketsReceived: 0, totalAudioEnergy: 0, outboundPacketsSent: 0, rms: 0, gain: peer.audio.volume, distance: distanceTo(members.find((member) => member.id === id)) };
+      const result = { id, connectionState: peer.pc.connectionState, inboundPacketsReceived: 0, totalAudioEnergy: 0, outboundPacketsSent: 0, rms: null, gain: peer.gain, playbackMode: peer.gainNode ? 'web-audio' : 'media-element-fallback', distance: distanceTo(members.find((member) => member.id === id)) };
       try {
         if (peer.analyser) {
           peer.analyser.getFloatTimeDomainData(peer.audioSamples);
@@ -394,7 +438,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
       if (destroyed || (room.cityId === nextCityId && room.venueId === nextVenueId)) return;
       leaveVoice(); room = { cityId: nextCityId, venueId: nextVenueId }; roomReady = false; members = [];
       for (const message of pending.values()) message.status.textContent = 'Not delivered: room changed';
-      pending.clear(); seen.clear(); el.messages.replaceChildren(); renderMembers(); roomLabel();
+      pending.clear(); seen.clear(); rejectedPeers.clear(); el.messages.replaceChildren(); renderMembers(); roomLabel();
       feedback(''); if (connected) send({ type: 'join', ...room }); voiceStatus();
     },
     destroy() {

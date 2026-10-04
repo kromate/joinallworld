@@ -38,3 +38,23 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#182a25;fon
  .map-open .life-message{top:175px}
 }
 .map-open .life-message{display:none}
+
+.life-private-home{display:block;padding:8px 12px;color:#67776c;font-size:11px;min-height:32px}
+
+.life-action.has-requirements{min-height:195px}.life-requirements{display:grid;gap:2px;margin-top:8px;padding-top:7px;border-top:1px solid #e3e8e3;font-size:10px;color:#657268}.life-requirements strong{font-size:10px;color:#80592e;font-weight:500;margin-top:3px}
+.life-requirements .is-met{color:#2f6f4a}.life-requirements .is-unmet{color:#a2542a;font-weight:600}
+.life-tags>span.is-cost{background:#eef0f3;color:#4f5966}
+.life-action-cta{display:block;margin-top:8px;font-size:11px;font-weight:700;color:#256b45}
+
+/* Activity progress sits on the venue panel instead of floating over the scene. */
+.life-bottom .life-progress{position:static;transform:none;width:100%;max-width:480px;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 12px;padding:10px 12px 12px 15px;box-shadow:0 5px 30px #00000012}
+.life-bottom .life-progress div{min-width:0}.life-bottom .life-progress strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.life-bottom .life-progress progress{grid-column:1/-1;width:100%;height:8px;-webkit-appearance:none;appearance:none;border:0;border-radius:8px;overflow:hidden;background:#dfe5e0;color:#2f8a57}
+.life-progress progress::-webkit-progress-bar{background:#dfe5e0}.life-progress progress::-webkit-progress-value{background:#2f8a57;border-radius:8px}.life-progress progress::-moz-progress-bar{background:#2f8a57;border-radius:8px}
+.life-progress-note{grid-column:1/-1;font-size:11px;color:#5b655f}
+@media(max-width:540px){.life-bottom.has-progress .life-venue-panel{max-height:calc(100dvh - 430px)}}
+
+.life-job.is-active{background:#eef8f1;border-color:#8fc7a4!important}.life-ui .life-job:disabled{opacity:1;cursor:default}
+
+/* Dialog primary actions: readable contrast and a full touch target. */
+.city-primary{background:#256b45;font-size:14px;min-height:44px;border-radius:22px}#job-primary{display:block;width:100%;margin:6px 0}

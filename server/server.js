@@ -101,8 +101,19 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           return reply(res, 200, { session: publicSession(session), serverTime: now() }, renewedHeaders(req));
         }
         if (url.pathname === '/api/voice-config' && req.method === 'GET') {
-          const session = await store.transact(db => sessionFor(req, db, true));
-          if (!session) throw fail(401, 'device_session_required');
+          const session = await store.transact(db => {
+            const current = sessionFor(req, db, true);
+            if (!current) throw fail(401, 'device_session_required');
+            const live = [...wss.clients].some(ws => {
+              if (ws.session.id !== current.publicId || ws.readyState !== WebSocket.OPEN || !ws.room || ws.expiresAt <= now()) return false;
+              const city = ws.room.split(':')[0];
+              const state = settle(current, city);
+              return canJoinVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, current.publicId);
+            });
+            if (!live) throw fail(403, 'room_membership_required');
+            return current;
+          });
+          if (!allow(`voice-config:${session.publicId}`, 6)) throw fail(429, 'voice_config_rate_limited');
           let config = STUN_ONLY_CONFIG;
           if (voiceConfigProvider) {
             try { config = validateVoiceConfig(await voiceConfigProvider(publicSession(session)), now()); }
@@ -240,6 +251,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         let rejected;
         try { rejected = JSON.parse(raw.toString()); } catch {}
         send(ws, { type: 'error', code: 'rate_limited', error: 'rate_limited',
+          ...(rejected?.type === 'signal' && typeof rejected.to === 'string' && uuid.test(rejected.to) && rejected.to !== ws.secret ? { to: rejected.to } : {}),
           ...(rejected?.type === 'chat' && typeof rejected.clientId === 'string' && rejected.clientId.length <= 80 ? { clientId: rejected.clientId } : {}) });
         ws.close(1008, 'Rate limit'); return;
       }
@@ -302,7 +314,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           for (const peer of rooms.get(ws.room)) send(peer, chat); return;
         }
         throw Error('invalid_message');
-      } catch (error) { send(ws, { type: 'error', code: error.message, error: error.message, ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
+      } catch (error) { send(ws, { type: 'error', code: error.message, error: error.message, ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));
     });
   });

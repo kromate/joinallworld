@@ -28,7 +28,8 @@ async function fixture(t, options = {}) {
     await once(ws, 'open');
     return { ws, next: () => queue.length ? Promise.resolve(queue.shift()) : new Promise((resolve, reject) => { const timeout = setTimeout(() => reject(Error('Message timeout')), 2000); waiting.push(message => { clearTimeout(timeout); resolve(message); }); }) };
   }
-  return { base, request, device, action, socket, advance: ms => { time += ms; }, dir };
+  async function joinRoom(device) { const peer = await socket(device); peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await peer.next(); return peer; }
+  return { base, request, device, action, socket, joinRoom, advance: ms => { time += ms; }, dir };
 }
 
 test('device auth, isolation, concurrent duplicate fare, and server time persist', async t => {
@@ -226,7 +227,7 @@ test('movement accepts five updates per second and resets its rate window', asyn
 test('voice configuration requires auth and explicitly reports absent TURN', async t => {
   const f = await fixture(t);
   assert.equal((await f.request('/api/voice-config')).status, 401);
-  const a = await f.device('Ada'); const response = await f.request('/api/voice-config', null, a.cookie);
+  const a = await f.device('Ada'); await f.joinRoom(a); const response = await f.request('/api/voice-config', null, a.cookie);
   const config = await response.json();
   assert.equal(config.turnConfigured, false); assert.equal(config.mode, 'stun-only'); assert.equal(config.radius, 12); assert.equal(config.serverTime, 100000);
   assert.equal(config.iceServers[0].urls, 'stun:stun.l.google.com:19302'); assert.ok(!JSON.stringify(config).includes(a.cookie.slice(4)));
@@ -235,17 +236,17 @@ test('voice configuration requires auth and explicitly reports absent TURN', asy
 test('short-lived TURN provider receives public identity and response strips unrelated secrets', async t => {
   let received;
   const f = await fixture(t, { voiceConfigProvider: async session => { received = session; return { iceServers: [{ urls: ['turn:relay.example:3478'], username: 'temporary-user', credential: 'temporary-password', providerSecret: 'hidden-api-key' }], expiresAt: 3700000, providerSecret: 'hidden-api-key' }; } });
-  const a = await f.device('Ada'); const response = await f.request('/api/voice-config', null, a.cookie); const config = await response.json();
+  const a = await f.device('Ada'); await f.joinRoom(a); const response = await f.request('/api/voice-config', null, a.cookie); const config = await response.json();
   assert.deepEqual(received, { id: a.id, name: 'Ada' }); assert.equal(config.turnConfigured, true); assert.equal(config.mode, 'turn'); assert.equal(config.expiresAt, 3700000);
   assert.equal(config.iceServers[0].credential, 'temporary-password'); assert.ok(!JSON.stringify(config).includes('hidden-api-key')); assert.ok(!JSON.stringify(config).includes(a.cookie.slice(4)));
 });
 
 test('failed or expired TURN configuration returns a credential-free error', async t => {
   const f = await fixture(t, { voiceConfigProvider: async () => { throw Error('hidden-provider-api-key'); } });
-  const a = await f.device('Ada'); const response = await f.request('/api/voice-config', null, a.cookie);
+  const a = await f.device('Ada'); await f.joinRoom(a); const response = await f.request('/api/voice-config', null, a.cookie);
   assert.equal(response.status, 503); assert.deepEqual(await response.json(), { error: 'voice_config_unavailable' });
   const expired = await fixture(t, { voiceConfigProvider: async () => ({ iceServers: [{ urls: 'turn:relay.example', username: 'test', credential: 'secret' }], expiresAt: 99999 }) });
-  const b = await expired.device('Bola'); assert.equal((await expired.request('/api/voice-config', null, b.cookie)).status, 503);
+  const b = await expired.device('Bola'); await expired.joinRoom(b); assert.equal((await expired.request('/api/voice-config', null, b.cookie)).status, 503);
 });
 
 
@@ -289,4 +290,80 @@ test('home presence chat and signals stay isolated between device identities', a
   y.ws.send(JSON.stringify({ type: 'voice-state', enabled: true, muted: true })); const own = await y.next(); assert.equal(own.type, 'presence'); assert.equal(own.members[0].id, b.id);
   assert.equal((await f.request('/api/life?city=lagos', null, a.cookie)).status, 200);
   x.ws.send(JSON.stringify({ type: 'chat', body: 'Still home', clientId: 'home-chat-2' })); assert.equal((await x.next()).type, 'chat'); assert.equal((await same.next()).type, 'chat');
+});
+
+
+test('TURN mint requires a live venue socket and is capped at six requests per minute', async t => {
+  let minted = 0;
+  const f = await fixture(t, { voiceConfigProvider: async () => { minted++; return { iceServers: [{ urls: 'turn:relay.example', username: 'test', credential: 'temporary' }], expiresAt: 3700000 }; } });
+  const a = await f.device('Ada');
+  const absent = await f.request('/api/voice-config', null, a.cookie); assert.equal(absent.status, 403); assert.equal(minted, 0);
+  const x = await f.joinRoom(a);
+  for (let i = 0; i < 6; i++) assert.equal((await f.request('/api/voice-config', null, a.cookie)).status, 200);
+  const capped = await f.request('/api/voice-config', null, a.cookie); assert.equal(capped.status, 429); assert.equal((await capped.json()).error, 'voice_config_rate_limited'); assert.equal(minted, 6);
+  f.advance(60000); assert.equal((await f.request('/api/voice-config', null, a.cookie)).status, 200); assert.equal(minted, 7);
+  await f.action(a.cookie, { type: 'travel', id: 'library', mode: 'trek' }); assert.equal((await x.next()).code, 'venue_mismatch');
+  assert.equal((await f.request('/api/voice-config', null, a.cookie)).status, 403); assert.equal(minted, 7);
+});
+
+test('paid Home transport is refused without charging while trek is free', async t => {
+  const f = await fixture(t); const a = await f.device('Ada');
+  for (const mode of ['cab', 'keke', 'danfo', 'okada']) {
+    const result = await f.action(a.cookie, { type: 'travel', id: 'home', mode });
+    assert.equal(result.ok, false); assert.equal(result.code, 'home_travel_free_only'); assert.equal(result.state.cash, 5000); assert.equal(result.state.activeAction, null);
+  }
+  const free = await f.action(a.cookie, { type: 'travel', id: 'home', mode: 'trek' }); assert.equal(free.ok, true); assert.equal(free.state.cash, 5000);
+});
+
+test('out-of-range signal error identifies public peer without echoing cookie secret', async t => {
+  const f = await fixture(t); const a = await f.device('Ada'); const b = await f.device('Bola');
+  const x = await f.joinRoom(a); const y = await f.joinRoom(b); await x.next();
+  x.ws.send(JSON.stringify({ type: 'move', x: 20, z: 0 })); await x.next(); await y.next();
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'far' } })); const denied = await x.next(); assert.equal(denied.code, 'peer_out_of_range'); assert.equal(denied.to, b.id);
+  x.ws.send(JSON.stringify({ type: 'signal', to: a.cookie.slice(4), data: { candidate: 'secret' } })); const own = await x.next(); assert.equal(own.to, undefined); assert.ok(!JSON.stringify(own).includes(a.cookie.slice(4)));
+});
+
+
+test('job enrollment and shift receipts survive reload and reward completion once', async t => {
+  const f = await fixture(t); const a = await f.device('Ada');
+  const enrollment = { actionId: `100000:${randomUUID()}`, type: 'apply-job', id: 'community-helper' };
+  const applied = await f.action(a.cookie, enrollment); assert.equal(applied.ok, true); assert.equal(applied.state.job, 'community-helper');
+  const duplicate = await f.action(a.cookie, enrollment); assert.equal(duplicate.duplicate, true); assert.equal(duplicate.state.cash, 5000);
+  await f.action(a.cookie, { type: 'spot', id: 'work' });
+  const shift = { actionId: `100000:${randomUUID()}`, type: 'activity', id: 'helper-shift' };
+  assert.equal((await f.action(a.cookie, shift)).ok, true); f.advance(10000);
+  const midway = await (await f.request('/api/life?city=lagos', null, a.cookie)).json(); assert.equal(midway.state.activeAction.remaining, 10); assert.equal(midway.state.cash, 5000);
+  const reloaded = await createServer({ dataDir: f.dir, now: () => 121000 });
+  reloaded.listen(0, '127.0.0.1'); await once(reloaded, 'listening');
+  t.after(async () => { reloaded.closeAllConnections(); await new Promise(resolve => reloaded.close(resolve)); });
+  const base = `http://127.0.0.1:${reloaded.address().port}`;
+  const read = async () => (await (await fetch(base + '/api/life?city=lagos', { headers: { Cookie: a.cookie } })).json()).state;
+  const completed = await read(); assert.equal(completed.cash, 5300); assert.equal(completed.completedShifts, 1); assert.equal(completed.job, 'community-helper'); assert.equal(completed.needs.energy, 40); assert.equal(completed.needs.hunger, 45); assert.equal(completed.activeAction, null);
+  assert.equal((await read()).cash, 5300); assert.equal((await read()).completedShifts, 1);
+  const retried = await fetch(base + '/api/action', { method: 'POST', headers: { Cookie: a.cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...shift, cityId: 'lagos' }) });
+  const receipt = await retried.json(); assert.equal(receipt.duplicate, true); assert.equal(receipt.state.cash, 5300); assert.equal(receipt.state.activeAction, null); assert.equal(receipt.state.completedShifts, 1);
+});
+
+
+test('pre-job saves hydrate before timers and complete their first shift with a finite counter', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'joinallworld-pre-job-')); const secret = randomUUID(); const publicId = randomUUID();
+  const filesystem = await import('node:fs/promises'); let time = 100000;
+  const oldState = { cash: 5000, name: 'Ada', homeOwned: true, needs: { hunger: 50, energy: 50, fun: 50, social: 50, hygiene: 50, bladder: 50 }, location: 'park', spot: 'work', activeAction: null, message: '' };
+  await filesystem.writeFile(join(dir, 'devices.json'), JSON.stringify({ version: 1, sessions: { [secret]: { secret, publicId, name: 'Ada', expiresAt: 2592100000, cities: { lagos: { state: oldState, updatedAt: 'malformed' } }, actions: {} } } }));
+  let server = await createServer({ dataDir: dir, now: () => time });
+  const listen = async () => { server.listen(0, '127.0.0.1'); await once(server, 'listening'); return `http://127.0.0.1:${server.address().port}`; };
+  let base = await listen();
+  t.after(async () => { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); await rm(dir, { recursive: true, force: true }); });
+  const request = async (path, body) => { const response = await fetch(base + path, { method: body ? 'POST' : 'GET', headers: { Cookie: `sid=${secret}`, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify({ actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...body }) : undefined }); return response.json(); };
+  const hydrated = (await request('/api/life?city=lagos')).state;
+  assert.equal(hydrated.job, null); assert.equal(hydrated.completedShifts, 0); assert.equal(hydrated.cash, 5000); assert.equal(hydrated.homeOwned, true);
+  assert.equal((await request('/api/action', { type: 'apply-job', id: 'community-helper' })).ok, true);
+  assert.equal((await request('/api/action', { type: 'activity', id: 'helper-shift' })).ok, true);
+  time += 10000; const midway = (await request('/api/life?city=lagos')).state; assert.equal(midway.activeAction.remaining, 10); assert.equal(midway.completedShifts, 0);
+  server.closeAllConnections(); await new Promise(resolve => server.close(resolve));
+  server = await createServer({ dataDir: dir, now: () => time }); base = await listen();
+  assert.equal((await request('/api/life?city=lagos')).state.activeAction.remaining, 10);
+  time += 10000; const done = (await request('/api/life?city=lagos')).state;
+  assert.equal(done.cash, 5300); assert.equal(done.completedShifts, 1); assert.equal(done.job, 'community-helper'); assert.equal(done.homeOwned, true); assert.equal(done.activeAction, null);
+  assert.equal((await request('/api/life?city=lagos')).state.completedShifts, 1);
 });

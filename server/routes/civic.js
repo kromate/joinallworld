@@ -377,9 +377,10 @@ export default function civicRoutes(ctx) {
         // Stored as "hidden" flags so that the default (no entry) is listed.
         for (const key of ['richList', 'directory']) if (body[key] === true) delete mine[key]; else if (body[key] === false) mine[key] = true;
         if (Object.keys(mine).length) civic.prefs[session.publicId] = mine; else delete civic.prefs[session.publicId];
-        return { richList: mine.richList !== true, directory: mine.directory !== true };
-      });
-      return { body: { ok: true, prefs }, renew: true };
+        return { richList: mine.richList !== true, directory: mine.directory !== true, id: session.publicId };
+      // Once the preference is in the file the world registry follows it (server/world/service.js): a hidden player's house stays on the map, anonymous.
+      }, { committed: (saved) => ctx.emit('directory-pref', { id: saved.id, hidden: saved.directory !== true }) });
+      return { body: { ok: true, prefs: { richList: prefs.richList, directory: prefs.directory } }, renew: true };
     },
   };
 }

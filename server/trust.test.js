@@ -359,6 +359,8 @@ test('polls do not write unless something happened; an outcome is on disk before
   const stored = async () => JSON.parse(await readFile(file, 'utf8')).sessions[ada.cookie.slice(4)].cities?.lagos?.state;
   const started = await f.action(ada.cookie, { type: 'spot', payload: { id: 'trees' } });
   assert.equal(started.ok, true);
+  // The first settlement of a life is followed by one write of its own: the plot the world service allocated for it.
+  await f.server.world.idle(); await f.flush();
   const baseline = await signature(), writes = f.server.store.stats().writes;
   for (let i = 0; i < 20; i++) { f.advance(1000); assert.equal((await get('/api/life?city=lagos', ada)).status, 200); }
   assert.equal(await signature(), baseline, 'twenty quiet polls wrote nothing');

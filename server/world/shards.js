@@ -13,6 +13,7 @@
  *       that rebuilds the state from the file, so memory and file can never be two code paths.
  *   read(name, fn(state) → result)                            → Promise<result>
  *   peek(name)       → the state if the shard is open, else null (never loads anything)
+ *   readMeta() / writeMeta(value)   one small derived JSON file beside the shards (the city summary)
  *   stats()          → counters (loads, recordsRead, appends, bytes, compactions, open, …)
  *   flush(), close()
  *
@@ -45,7 +46,7 @@ import { storageError } from '../store.js';
 
 const NAME = /^[a-z][a-z0-9-]{0,39}\.[a-z][a-z0-9-]{0,39}$/;
 
-export async function createShardStore(dir, { empty, reduce, snapshot, live = () => 0, maxOpen = 8, compactSlack = 2000, io = {}, log = (line) => console.error(line) } = {}) {
+export async function createShardStore(dir, { empty, reduce, snapshot, loaded = (state) => state, live = () => 0, maxOpen = 8, compactSlack = 2000, io = {}, log = (line) => console.error(line) } = {}) {
   if (typeof empty !== 'function' || typeof reduce !== 'function' || typeof snapshot !== 'function') throw new Error('A shard store needs empty(), reduce() and snapshot()');
   const fs = { readFile: io.readFile ?? readFile, appendFile: io.appendFile ?? appendFile, writeFile: io.writeFile ?? writeFile, rename: io.rename ?? rename, stat: io.stat ?? stat };
   await mkdir(dir, { recursive: true });
@@ -72,6 +73,7 @@ export async function createShardStore(dir, { empty, reduce, snapshot, live = ()
       }
       start = end + 1;
     }
+    loaded(state);
     stats.loads += 1; stats.recordsRead += lines;
     return { state, lines, bytes: Buffer.byteLength(text), queue: Promise.resolve(), pending: [], flushing: null, used: ++tick, broken: false };
   }
@@ -186,6 +188,9 @@ export async function createShardStore(dir, { empty, reduce, snapshot, live = ()
     /** Rewrite one shard's file from its state now (used by the load generator to report the compact size). */
     async compact(name) { const shard = await open(name); await shard.queue; if (shard.flushing) await shard.flushing; await compact(name, shard); return shard.bytes; },
     open: () => [...shards.keys()],
+    /** One small JSON file beside the shards (the city summary). Derived data: losing it costs a re-count, nothing else. */
+    async readMeta() { try { return JSON.parse(await fs.readFile(join(dir, 'summary.json'), 'utf8')); } catch { return null; } },
+    async writeMeta(value) { const file = join(dir, 'summary.json'); await fs.writeFile(`${file}.tmp`, JSON.stringify(value), { mode: 0o600 }); await fs.rename(`${file}.tmp`, file); },
     stats: () => ({ ...stats, open: shards.size }),
     flush: settled,
     async close() { await settled(); closed = true; },

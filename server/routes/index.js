@@ -30,7 +30,7 @@
  *   }
  *
  * PATHS   must start with /api/<your area>/ (auth → /api/auth/, social → /api/social/,
- *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/). A ":name" segment captures into request.params. A duplicate
+ *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/, world → /api/world/). A ":name" segment captures into request.params. A duplicate
  *         "METHOD /path" aborts start-up.
  *
  * REQUEST (portable — no Node req/res, so the same module can run in the Worker later)
@@ -141,6 +141,8 @@
  *                                          Ask both before delivering or storing player text.
  *   ctx.startup                            array of promises the host awaits before it takes requests
  *                                          (a module loading an in-memory index pushes its load here)
+ *   ctx.shards                             the world's shard store (server/world/shards.js): one append-only file per local
+ *                                          government, used only through the world service (server/world/service.js)
  *   ctx.randomId()                         a random UUID (for salts and ids; not a clock, not a secret store)
  *   ctx.on(event, fn) / ctx.emit(event, data)   in-process events between server modules. The
  *                                          foundation raises 'room-changed' { room, cityId, venueId,
@@ -183,8 +185,9 @@ import social from './social.js';
 import civic from './civic.js';
 import support from './support.js';
 import moderation from './moderation.js';
+import world from './world.js';
 
-export const ROUTE_MODULES = [core, auth, social, civic, support, moderation];
+export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, world];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /** Build the lookup. Returns { match(method, pathname) → { handler, params } | null, keys }. */

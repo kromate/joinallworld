@@ -29,7 +29,7 @@
  *       pulse route with the server's own notices; news older than the life itself is skipped.
  *   'civic.run' · 'civic.vote' · 'civic.rent-ad' { kind, slot } · 'civic.shoutout'
  *       SERVER-COMPLETED: each of these is one half of a change whose other half is shared
- *       storage (a ballot, a slot, a queue). They are declared `serverOnly` (registry.js), so
+ *       storage (a ballot, a slot, a queue). They are declared `serverOnly` (registry.ts), so
  *       they succeed only when server/routes/civic.js runs them through ctx.act inside its store
  *       transaction. Sent on their own through POST /api/action they are refused with
  *       `server_only` and charge nothing, so a player can never pay without receiving what was paid for.
@@ -42,6 +42,10 @@
  *        'radio.shoutout'     { venue, price }
  * Listens: 'activity.completed', 'wallet.changed'.
  */
+import type {
+  ActionType, ActivityDefinition, CivicCheckCode, CivicView, DailyHunt, EligibilityCheck, GemKind, HuntGem, LifeContext, LifeState, ServerOnlyAction, SpotId,
+  SystemDefinition, TypedActionHandler, VenueId,
+} from '../../types/index.ts';
 import { emit, isDeparting } from '../registry.ts';
 import { fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -49,16 +53,19 @@ import { canAfford, canCredit, credit, debit, spotsOf } from '../api.ts';
 import { VENUES, venueLabel } from '../content/venues.ts';
 import { BILLBOARDS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../content/civic.ts';
 
-const KINDS = ['visit', 'activity'];
-const nowOf = (state, ctx) => (finite(ctx?.now) && ctx.now > 0 ? ctx.now : state.t);
+const KINDS: readonly unknown[] = ['visit', 'activity'];
+const isKind = (value: unknown): value is GemKind => KINDS.includes(value);
+const isVenue = (value: unknown): value is VenueId => typeof value === 'string' && Object.hasOwn(VENUES, value);
+const nowOf = (state: LifeState, ctx: LifeContext | undefined): number => (finite(ctx?.now) && ctx.now > 0 ? ctx.now : state.t);
 /** On the way out of a venue by any means (a trip, the commute): the shared departing predicate. */
-const travelling = (state) => isDeparting(state);
-const startable = (def) => !def.unavailable && !def.requiresJob && !def.requiresSkill;
+const travelling = (state: LifeState): boolean => isDeparting(state);
+const startable = (def: ActivityDefinition): boolean => !def.unavailable && !def.requiresJob && !def.requiresSkill;
 
 /** Every place a gem may hide: each spot of each venue except Home (a venue without spots counts once). */
-function hidingPlaces() {
-  const places = [];
-  for (const venue of Object.keys(VENUES)) {
+interface HidingPlace { venue: VenueId; spot: SpotId | null; hasActivity: boolean }
+function hidingPlaces(): HidingPlace[] {
+  const places: HidingPlace[] = [];
+  for (const venue of Object.keys(VENUES) as VenueId[]) { // the keys of the VENUES table are the venue ids
     if (venue === 'home') continue;
     const spots = spotsOf(venue);
     const hasActivity = spots.some((spot) => spot.activities.some(startable));
@@ -69,17 +76,18 @@ function hidingPlaces() {
 }
 
 /** Where a player's gems hide on a Lagos day. Deterministic for (seed, city, day); spreads over venues first. */
-export function gemsFor(seed, cityId, day) {
+export function gemsFor(seed: number, cityId: string, day: number): HuntGem[] {
   const rng = makeRng(`gems|${cityId}|${day}|${seed}`);
   const places = hidingPlaces();
   for (let i = places.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1));
-    [places[i], places[j]] = [places[j], places[i]];
+    const a = places[i], b = places[j];
+    if (a && b) { places[i] = b; places[j] = a; } // i and j are in range
   }
-  const picked = [];
+  const picked: HidingPlace[] = [];
   for (const place of places) if (picked.length < HUNT.gemsPerDay && !picked.some((gem) => gem.venue === place.venue)) picked.push(place);
   for (const place of places) if (picked.length < HUNT.gemsPerDay && !picked.includes(place)) picked.push(place);
-  const gems = [];
+  const gems: HuntGem[] = [];
   for (const place of picked) {
     // At most one "finish an activity" gem per venue, so one activity never shakes two loose.
     const activity = place.hasActivity && rng() < 0.5 && !gems.some((gem) => gem.kind === 'activity' && gem.venue === place.venue);
@@ -88,14 +96,14 @@ export function gemsFor(seed, cityId, day) {
   return gems;
 }
 
-const freshHunt = (state, cityId, day) => ({ day, claimed: false, gems: gemsFor(state.civic.seed, cityId, day) });
+const freshHunt = (state: LifeState, cityId: string, day: number): DailyHunt => ({ day, claimed: false, gems: gemsFor(state.civic.seed, cityId, day) });
 
 /** Today's hunt without touching state: the saved one if it is today's, otherwise what it will be. */
-function currentHunt(state, ctx) {
+function currentHunt(state: LifeState, ctx: LifeContext | undefined): DailyHunt {
   const day = lagosTime(nowOf(state, ctx)).day;
   return state.civic.hunt?.day === day ? state.civic.hunt : freshHunt(state, ctx?.cityId ?? 'lagos', day);
 }
-function roll(state, ctx) {
+function roll(state: LifeState, ctx: LifeContext | undefined): DailyHunt {
   const hunt = currentHunt(state, ctx);
   state.civic.hunt = hunt;
   return hunt;
@@ -105,8 +113,9 @@ function roll(state, ctx) {
  * Mark a gem found. Gems found in passing (arriving, finishing an activity) never replace
  * state.message, which belongs to whatever the player was doing; the HUD chip announces them.
  */
-function found(state, gem, ctx, announce = false) {
+function found(state: LifeState, gem: HuntGem, ctx: LifeContext, announce = false): void {
   const hunt = state.civic.hunt;
+  if (!hunt) return; // every caller has rolled today's hunt first
   gem.found = true;
   if (state.civic.gems < Number.MAX_SAFE_INTEGER) state.civic.gems += 1;
   const count = hunt.gems.filter((item) => item.found).length;
@@ -119,7 +128,7 @@ function found(state, gem, ctx, announce = false) {
 }
 
 /** Find any 'visit' gem hidden exactly where the player is standing. Returns how many were found. */
-function sweep(state, ctx, announce = false) {
+function sweep(state: LifeState, ctx: LifeContext, announce = false): number {
   if (travelling(state)) return 0;
   let count = 0;
   for (const gem of state.civic.hunt?.gems ?? []) {
@@ -130,20 +139,23 @@ function sweep(state, ctx, announce = false) {
   return count;
 }
 
-const daysLived = (state, ctx) => Math.max(0, lagosTime(nowOf(state, ctx)).day - lagosTime(state.civic.since).day);
-const check = (id, met, label, detail, code) => ({ id, met, label, detail, code });
+const daysLived = (state: LifeState, ctx: LifeContext | undefined): number => Math.max(0, lagosTime(nowOf(state, ctx)).day - lagosTime(state.civic.since).day);
+type Check<Code extends CivicCheckCode> = EligibilityCheck & { code: Code };
+type RunCheck = Check<Exclude<CivicCheckCode, 'wrong_place'>>;
+type VoteCheck = Check<Exclude<CivicCheckCode, 'insufficient_funds'>>;
+const check = <Code extends CivicCheckCode>(id: EligibilityCheck['id'], met: boolean, label: string, detail: string, code: Code): Check<Code> => ({ id, met, label, detail, code });
 
 /**
  * What a player must satisfy to run or vote, each with its current status. The election phase,
  * the ballot and "already voted" are shared state and are checked by the server on top of these.
  */
-export function civicEligibility(state, ctx) {
+export function civicEligibility(state: LifeState, ctx: LifeContext | undefined): Omit<CivicView['eligibility'], 'run' | 'vote'> & { run: RunCheck[]; vote: VoteCheck[] } {
   const days = daysLived(state, ctx), city = ctx?.cityId ?? 'lagos';
   const polling = Object.hasOwn(VENUES, ELECTION.pollingVenue);
-  const lived = (min, verb) => check('days', days >= min, `Lived here for at least ${min} Lagos day${min === 1 ? '' : 's'}`,
+  const lived = (min: number, verb: string) => check('days', days >= min, `Lived here for at least ${min} Lagos day${min === 1 ? '' : 's'}`,
     days >= min ? `You have lived here ${days} day${days === 1 ? '' : 's'}.`
       : `You have lived here ${days} day${days === 1 ? '' : 's'}; you can ${verb} after ${min - days} more midnight${min - days === 1 ? '' : 's'} (Lagos time).`, 'too_new');
-  const run = [
+  const run: RunCheck[] = [
     lived(ELECTION.minDaysToRun, 'run'),
     check('fee', canAfford(state, ELECTION.filingFee), `Filing fee of ${naira(ELECTION.filingFee)} (not refunded)`,
       canAfford(state, ELECTION.filingFee) ? `You have ${naira(state.cash)}.` : `You have ${naira(state.cash)}; earn ${naira(ELECTION.filingFee - state.cash)} more.`, 'insufficient_funds'),
@@ -154,7 +166,7 @@ export function civicEligibility(state, ctx) {
     worked >= need ? `You have been paid for work on ${worked} different days.`
       : `You have been paid for work on ${worked} day${worked === 1 ? '' : 's'}. Finish a paid shift or gig on ${need - worked} more day${need - worked === 1 ? '' : 's'}${state.civic.work.last === lagosTime(nowOf(state, ctx)).day ? ' (today is already counted — come back tomorrow)' : ''}.`, 'work_days');
   run.push(working);
-  const vote = [lived(ELECTION.minDaysToVote, 'vote'), working];
+  const vote: VoteCheck[] = [lived(ELECTION.minDaysToVote, 'vote'), working];
   if (polling) {
     const there = state.location === ELECTION.pollingVenue && !travelling(state);
     vote.push(check('place', there, `Be at ${venueLabel(ELECTION.pollingVenue, city)}`,
@@ -162,10 +174,13 @@ export function civicEligibility(state, ctx) {
   }
   return { days, pollingVenue: polling ? ELECTION.pollingVenue : null, run, vote };
 }
-const firstUnmet = (state, checks) => { const unmet = checks.find((item) => !item.met); return unmet ? fail(state, unmet.code, `${unmet.label}. ${unmet.detail}`) : null; };
+const firstUnmet = <Code extends CivicCheckCode>(state: LifeState, checks: readonly Check<Code>[]) => { const unmet = checks.find((item) => !item.met); return unmet ? fail(state, unmet.code, `${unmet.label}. ${unmet.detail}`) : null; };
 
 /** Price, period and display label of an ad slot, or null if the kind or slot does not exist. */
-export function adSlot(kind, slot) {
+export type AdSlot =
+  | { kind: 'billboard'; slot: string; price: number; days: number; near: string; road: string; label: string }
+  | { kind: 'sea'; slot: string; row: number; col: number; price: number; days: number; label: string };
+export function adSlot(kind: unknown, slot: unknown): AdSlot | null {
   if (kind === 'billboard') {
     const entry = BILLBOARDS.slots.find((item) => item.id === slot);
     return entry ? { kind, slot: entry.id, price: BILLBOARDS.price, days: BILLBOARDS.days, near: entry.near, road: entry.road, label: `Billboard · ${entry.road}` } : null;
@@ -174,19 +189,19 @@ export function adSlot(kind, slot) {
     const parts = typeof slot === 'string' ? /^sea-(\d{1,2})-(\d{1,2})$/.exec(slot) : null;
     const row = Number(parts?.[1]), col = Number(parts?.[2]);
     if (!parts || row >= SEA_PLOTS.rows || col >= SEA_PLOTS.cols || slot !== `sea-${row}-${col}`) return null;
-    return { kind, slot, row, col, price: row < SEA_PLOTS.shoreRows ? SEA_PLOTS.shorePrice : SEA_PLOTS.price, days: SEA_PLOTS.days, label: `Sea plot ${row + 1}·${col + 1}` };
+    return { kind, slot: `sea-${row}-${col}`, row, col, price: row < SEA_PLOTS.shoreRows ? SEA_PLOTS.shorePrice : SEA_PLOTS.price, days: SEA_PLOTS.days, label: `Sea plot ${row + 1}·${col + 1}` };
   }
   return null;
 }
 
-/** A server-only action definition (registry.js) whose refusal says which screen does it properly. */
-const serverOnly = (run, where) => ({ serverOnly: true, run,
+/** A server-only action definition (registry.ts) whose refusal says which screen does it properly. */
+const serverOnly = <T extends ActionType>(run: TypedActionHandler<T>, where: string): ServerOnlyAction<T> => ({ serverOnly: true, run,
   refusal: `This step is completed by the server together with ${where}. Use ${where} instead; nothing was charged.` });
 
 // ---- action handlers ---------------------------------------------------------------------
 
 /** Look for a gem where the player stands. Fails with what is missing when nothing is found. */
-export function searchForGem(state, payload, ctx) {
+export function searchForGem(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const hunt = roll(state, ctx);
   if (travelling(state)) return fail(state, 'travelling', 'You are on the road. Arrive somewhere before searching for gems.');
   if (sweep(state, ctx, true)) return ok(state, 'found');
@@ -203,7 +218,7 @@ export function searchForGem(state, payload, ctx) {
 }
 
 /** Pay the daily prize once every gem is found. Exactly once per Lagos day. */
-export function claimHuntPrize(state, payload, ctx) {
+export function claimHuntPrize(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const hunt = roll(state, ctx);
   const count = hunt.gems.filter((gem) => gem.found).length;
   if (hunt.claimed) return fail(state, 'already_claimed', 'You already claimed today’s gem prize. New gems are hidden at midnight, Lagos time.');
@@ -218,7 +233,7 @@ export function claimHuntPrize(state, payload, ctx) {
 }
 
 /** Charge the filing fee for a candidacy the server has already accepted. */
-export function fileCandidacy(state, payload, ctx) {
+export function fileCandidacy(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = firstUnmet(state, civicEligibility(state, ctx).run);
   if (blocked) return blocked;
   debit(state, ELECTION.filingFee, 'Governorship filing fee', ctx);
@@ -228,7 +243,7 @@ export function fileCandidacy(state, payload, ctx) {
 }
 
 /** Confirm this life may vote now (age, and being at the polling unit once that venue exists). */
-export function castVote(state, payload, ctx) {
+export function castVote(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = firstUnmet(state, civicEligibility(state, ctx).vote);
   if (blocked) return blocked;
   state.message = 'Your vote was counted.';
@@ -237,7 +252,7 @@ export function castVote(state, payload, ctx) {
 }
 
 /** Charge the rent for an ad slot the server has already found free. payload: { kind, slot }. */
-export function payForAd(state, payload, ctx) {
+export function payForAd(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const slot = adSlot(payload?.kind, payload?.slot);
   if (!slot) return fail(state, 'invalid_slot', 'Choose a billboard or sea plot from the list.');
   if (!canAfford(state, slot.price)) return fail(state, 'insufficient_funds', `${slot.label} costs ${naira(slot.price)} for ${slot.days} days; you have ${naira(state.cash)}.`);
@@ -248,7 +263,7 @@ export function payForAd(state, payload, ctx) {
 }
 
 /** Charge for a club-radio shout-out. The player must be standing in a club. */
-export function payForShoutout(state, payload, ctx) {
+export function payForShoutout(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   if (!RADIO.venues.includes(state.location) || travelling(state)) {
     const clubs = RADIO.venues.filter((id) => Object.hasOwn(VENUES, id)).map((id) => venueLabel(id, ctx?.cityId));
     return fail(state, 'not_in_club', `Shout-outs are bought inside a club. ${clubs.length ? `Travel to ${clubs.join(' or ')} first.` : 'No club is open in this city yet.'}`);
@@ -264,8 +279,9 @@ const NEWS_LIMIT = 40;
 const NEWS_ID = /^[a-z]+-[a-z0-9-]{1,40}$/;
 
 /** Post city news this life has not been told yet. Each id is posted once; at most five a call. */
-export function postNews(state, payload, ctx) {
-  const items = Array.isArray(payload?.items) ? payload.items.slice(0, 12) : [];
+export function postNews(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  // Typed by the one field the sort reads; every item is validated by isRecord below.
+  const items: ({ at?: number; [field: string]: unknown } | null | undefined)[] = Array.isArray(payload?.items) ? payload.items.slice(0, 12) : [];
   let posted = 0;
   for (const item of [...items].sort((a, b) => (a?.at ?? 0) - (b?.at ?? 0))) {
     if (!isRecord(item) || typeof item.id !== 'string' || !NEWS_ID.test(item.id) || typeof item.title !== 'string' || !finite(item.at)) continue;
@@ -280,11 +296,11 @@ export function postNews(state, payload, ctx) {
   return ok(state, posted ? 'posted' : 'nothing_new');
 }
 
-function sanitizeHunt(value) {
+function sanitizeHunt(value: unknown): DailyHunt | null {
   if (!isRecord(value) || !safeCount(value.day) || !Array.isArray(value.gems) || !value.gems.length || value.gems.length > HUNT.gemsPerDay) return null;
-  const gems = [];
+  const gems: HuntGem[] = [];
   for (const gem of value.gems) {
-    if (!isRecord(gem) || typeof gem.venue !== 'string' || !Object.hasOwn(VENUES, gem.venue) || !KINDS.includes(gem.kind)) return null;
+    if (!isRecord(gem) || !isVenue(gem.venue) || !isKind(gem.kind)) return null;
     if (gem.spot !== null && (gem.kind !== 'visit' || typeof gem.spot !== 'string' || !spotsOf(gem.venue).some((spot) => spot.id === gem.spot))) return null;
     gems.push({ venue: gem.venue, spot: gem.spot, kind: gem.kind, found: gem.found === true });
   }
@@ -295,10 +311,10 @@ export default {
   id: 'civic',
   stateKeys: ['civic'],
   sanitize(input, state, ctx) {
-    const saved = isRecord(input.civic) ? input.civic : {};
+    const saved: Record<string, unknown> = isRecord(input.civic) ? input.civic : {};
     const week = isRecord(saved.week) && safeCount(saved.week.week) && safeCount(saved.week.earned) ? { week: saved.week.week, earned: saved.week.earned } : { week: 0, earned: 0 };
     state.civic = {
-      seed: Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
+      seed: typeof saved.seed === 'number' && Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
         : Math.floor(makeRng(`civic-seed|${state.t}|${state.name}|${ctx?.cityId}`)() * 4294967296),
       since: finite(saved.since) && saved.since >= 0 && saved.since <= state.t ? saved.since : state.t,
       gems: safeCount(saved.gems) ? saved.gems : 0,
@@ -306,7 +322,7 @@ export default {
       week,
       work: isRecord(saved.work) && safeCount(saved.work.days) && saved.work.days <= 100000 && (saved.work.last === null || safeCount(saved.work.last)) && (saved.work.days === 0) === (saved.work.last === null)
         ? { days: saved.work.days, last: saved.work.last } : { days: 0, last: null },
-      news: [...new Set((Array.isArray(saved.news) ? saved.news : []).filter((id) => typeof id === 'string' && NEWS_ID.test(id)))].slice(-NEWS_LIMIT),
+      news: [...new Set((Array.isArray(saved.news) ? saved.news : []).filter((id): id is string => typeof id === 'string' && NEWS_ID.test(id)))].slice(-NEWS_LIMIT),
       hunt: sanitizeHunt(saved.hunt),
     };
   },
@@ -323,7 +339,7 @@ export default {
   on: {
     'activity.completed'(state, data, ctx) {
       // A paid shift or gig: count today once as a day worked.
-      if (data?.def?.reward > 0) {
+      if ((data?.def?.reward ?? 0) > 0) {
         const day = lagosTime(nowOf(state, ctx)).day, work = state.civic.work;
         if (work.last === null || day > work.last) { work.days = Math.min(100000, work.days + 1); work.last = day; }
       }
@@ -359,4 +375,4 @@ export default {
       gems: state.civic.gems,
     };
   },
-};
+} satisfies SystemDefinition<'civic'>;

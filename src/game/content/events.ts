@@ -1,7 +1,7 @@
 /**
  * OWNER: world
  * Roadside events offered on arrival, and chance outcomes of a few venue activities.
- * Everything is picked and resolved with ctx.rng (systems/travel.js), so a replayed request
+ * Everything is picked and resolved with ctx.rng (systems/travel.ts), so a replayed request
  * gives the same result.
  *
  * EVENTS[id] = {
@@ -24,7 +24,10 @@
  * more than ₦500, an event needs a trip (which costs time, and usually a fare) to appear, and an
  * event marked `oncePerDay` is offered at most once per Lagos day.
  */
-export const EVENTS = {
+import type { RoadsideEventId } from '../../types/life.ts'
+import type { ActivityOutcomeRule, RoadsideEvent } from '../../types/content.ts'
+
+export const EVENTS: Record<RoadsideEventId, RoadsideEvent> = {
   agbo: {
     id: 'agbo', icon: '🌿', title: 'Iya Agbo by the road', modes: ['trek'], weight: 5,
     text: 'A woman with a tray of dark bottles waves you over. “This one will clear anything in your body.”',
@@ -66,7 +69,7 @@ export const EVENTS = {
   },
   wallet: {
     // oncePerDay: the only event that can pay real money appears at most once per Lagos day, so
-    // walking up and down a road is not a way to earn (original beta rule; systems/travel.js).
+    // walking up and down a road is not a way to earn (original beta rule; systems/travel.ts).
     id: 'wallet', icon: '👛', title: 'A wallet on the ground', modes: ['trek', 'keke'], weight: 2, beta: true, oncePerDay: true,
     text: 'Somebody has dropped a wallet by the roadside. There is an ID card inside, and a little cash.',
     choices: [
@@ -116,7 +119,7 @@ export const EVENT_TTL_SECONDS = 600;
  *   chance = base + perLevel × level of `skill`, capped at max.
  * `once` pays the grant a single time per life; later successes give `repeat` instead.
  */
-export const ACTIVITY_OUTCOMES = {
+export const ACTIVITY_OUTCOMES: Record<string, ActivityOutcomeRule> = {
   'hub-pitch': {
     skill: 'charisma', base: 0.25, perLevel: 0.06, max: 0.85, beta: true,
     success: { once: 'funded', reward: 20000, event: 'startup.funded', moodlet: { id: 'funded', label: 'Startup Funded', value: 12, duration: 3600 },

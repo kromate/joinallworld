@@ -34,7 +34,7 @@
  *   look         { body: 'woman'|'man', hair, outfit, fabric, skin, hairColor, outfitColor, bottomsColor }
  *                plus, only when set: accessories [ids] (at most APPEARANCE.accessoryLimit, one per slot),
  *                face and expression (left out when they are the default, so an old look is unchanged)
- *                — every value is an id from content/traits.js APPEARANCE (hair/outfit lists
+ *                — every value is an id from content/traits.ts APPEARANCE (hair/outfit lists
  *                depend on body; the three colour fields and skin are swatch ids whose hex is in
  *                APPEARANCE). Scene code reads this to draw the avatar.
  *   traits       [traitId, traitId] once chosen (ids of TRAITS), else []
@@ -94,7 +94,7 @@
  * `lottery` is the outcome id ('lapo-baby' is the loan outcome); `house` is the rented home's id, or null for a
  * life that lives in its own starter house. The event also carries `look`, `loan` ({ principal, weekly, owed } |
  * null), `rent` (0 in the own house), `startCash`, and — when a local government was chosen — `lga`, `via` and
- * `own` (true: the life lives in its own house; systems/estate.js takes these three).
+ * `own` (true: the life lives in its own house; systems/estate.ts takes these three).
  *
  * MODIFIERS contributed (from the two traits and the lottery outcome): needs.decayRate,
  * skills.xpRate, activity.cost, activity.reward, travel.fare, shop.price, social.gain,
@@ -102,6 +102,10 @@
  * 'dance', 'workout', 'fitness', 'nightlife'.
  * LISTENS TO 'activity.completed' and 'meal.eaten' (trait completion bonuses).
  */
+import type { AccessoryId, LotteryId, NeedId, AccessorySlot, BodyId, FabricId, HairId, LifeContext, LifeState, Look, OnboardingState, OutfitId, StartHomeId, TraitId, DreamId, VenueId, Wardrobe, WardrobeKind } from '../../types/life.ts';
+import type { Appearance, LotteryOutcome, MoodWord } from '../../types/content.ts';
+import type { SavedInput, SystemDefinition } from '../../types/registry.ts';
+import type { BoutiqueItem, OnboardingView } from '../../types/view.ts';
 import { emit } from '../registry.ts';
 import { busy, fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
 import { arrive, canAfford, changeNeeds, credit, debit, moodOf, feelingsOf, setSkillLevel, spotsOf } from '../api.ts';
@@ -112,59 +116,93 @@ import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, FEELING_LINES, LOTTE
 import { VENUES } from '../content/venues.ts';
 import { lgaOf, lgasOf, cityRules } from '../content/world.ts';
 
+/** An accessory of the catalogue: its id and the slot it is worn in. */
+type AccessoryEntry = Appearance['accessories'][number];
+/** The outcome of checking a look or a list of accessories: the valid value, or the first reason it is not. */
+type LookCheck = { look: Look; reason?: undefined } | { look?: undefined; reason: string };
+type AccessoryCheck = { list: AccessoryId[]; reason?: undefined } | { list?: undefined; reason: string };
+/** The four swatch fields of a look. */
+type ColourField = 'skin' | 'hairColor' | 'outfitColor' | 'bottomsColor';
+
 const DONE_STEP = ONBOARDING_STEPS.length;
 /** How long after its creation a guest life may still be put in an inviter's venue (original beta value). */
 export const JOIN_WINDOW_MS = 10 * 60 * 1000;
 /** Where a new guest stands in a venue: the spot of the first activity the goal chip points at. */
-const WELCOME_SPOT = { park: 'trees' };
+const WELCOME_SPOT: Partial<Record<VenueId, string>> = { park: 'trees' };
 const ACTIVITY_CAP = 9999;
 const SETTLE_REASON = 'Settle in to get your home: choose your traits, your dream and where you live. It takes a minute, and everything you have earned is kept.';
-const isGuest = (o) => o?.stage === 'guest' && !o.done;
+const isGuest = (o: Pick<OnboardingState, 'stage' | 'done'> | null | undefined): boolean => o?.stage === 'guest' && !o.done;
 /** A life of the quick start that has not settled in: it has no home, no local government and no house, and is in no directory. */
-export const isGuestLife = (state) => isGuest(state?.onboarding);
+export const isGuestLife = (state: Pick<LifeState, 'onboarding'> | null | undefined): boolean => isGuest(state?.onboarding);
 /**
  * Server-only actions that deliver something TO a life (a gift or a friendship from another player, a referral gift, a
  * finished table game). They are applied with the server's authority whatever the life is doing — also while it is still
  * held for its look — so the sender's side and the receiver's side can never disagree. Nothing else passes the hold.
  */
 const INBOUND = ['social.server', 'growth.referral', 'growth.table-result'];
-const KINDS = ['hair', 'outfit', 'fabric'];
-const COLOUR_FIELDS = { skin: ['skin', 'skin tone'], hairColor: ['hairColours', 'hair colour'], outfitColor: ['outfitColours', 'outfit colour'], bottomsColor: ['outfitColours', 'bottoms colour'] };
-const name = (id) => APPEARANCE.labels[id] ?? id;
-const list = (ids) => ids.map(name).join(', ');
+const KINDS: WardrobeKind[] = ['hair', 'outfit', 'fabric'];
+const COLOUR_FIELD_IDS: ColourField[] = ['skin', 'hairColor', 'outfitColor', 'bottomsColor'];
+const COLOUR_FIELDS: Record<ColourField, ['skin' | 'hairColours' | 'outfitColours', string]> = { skin: ['skin', 'skin tone'], hairColor: ['hairColours', 'hair colour'], outfitColor: ['outfitColours', 'outfit colour'], bottomsColor: ['outfitColours', 'bottoms colour'] };
+const name = (id: string): string => APPEARANCE.labels[id] ?? id;
+const list = (ids: Iterable<string>): string => [...ids].map(name).join(', ');
+
+// Guards for ids that arrive from a client or a save: the same own-key tests as before, now narrowing.
+const isTraitId = (id: unknown): id is TraitId => typeof id === 'string' && Object.hasOwn(TRAITS, id);
+const isDreamId = (id: unknown): id is DreamId => typeof id === 'string' && Object.hasOwn(DREAMS, id);
+const isLotteryId = (id: unknown): id is LotteryId => typeof id === 'string' && Object.hasOwn(LOTTERY, id);
+const isStartHomeId = (id: unknown): id is StartHomeId => typeof id === 'string' && Object.hasOwn(START_HOMES, id);
+const isVenueId = (id: unknown): id is VenueId => typeof id === 'string' && Object.hasOwn(VENUES, id);
+const isKind = (kind: unknown): kind is WardrobeKind => typeof kind === 'string' && (KINDS as readonly string[]).includes(kind);
+/** Whether `value` is one of `known` (any type of value may be asked). */
+const isOneOf = (known: readonly unknown[], value: unknown): boolean => known.includes(value);
 
 /** Styles of one kind that the given body can wear: the observed list, then the beta additions. */
-const optionsFor = (kind, body) => (kind === 'hair' ? [...(APPEARANCE.hair[body] || []), ...(APPEARANCE.extra.hair[body] || [])]
-  : kind === 'outfit' ? [...(APPEARANCE.outfits[body] || []), ...(APPEARANCE.extra.outfits[body] || [])] : APPEARANCE.fabrics);
-const ACCESSORIES = new Map(APPEARANCE.accessories.map((item) => [item.id, item]));
+function optionsFor(kind: 'hair', body: BodyId): HairId[];
+function optionsFor(kind: 'outfit', body: BodyId): OutfitId[];
+function optionsFor(kind: 'fabric', body: BodyId): FabricId[];
+function optionsFor(kind: WardrobeKind, body: BodyId): string[];
+function optionsFor(kind: WardrobeKind, body: BodyId): string[] {
+  return kind === 'hair' ? [...(APPEARANCE.hair[body] || []), ...(APPEARANCE.extra.hair[body] || [])]
+    : kind === 'outfit' ? [...(APPEARANCE.outfits[body] || []), ...(APPEARANCE.extra.outfits[body] || [])] : APPEARANCE.fabrics;
+}
+const ACCESSORIES = new Map<string, AccessoryEntry>(APPEARANCE.accessories.map((item): [string, AccessoryEntry] => [item.id, item]));
 /** Bought in the Boutique only: not offered, shuffled or accepted while a character is being created. */
-const boutiqueOnly = (kind, id) => APPEARANCE.boutiqueOnly[kind]?.includes(id) === true;
-const kindWord = (kind) => (kind === 'hair' ? 'hairstyle' : kind === 'accessories' ? 'accessory' : kind);
+const boutiqueOnlyLists: Partial<Record<WardrobeKind | 'accessories', readonly string[]>> = APPEARANCE.boutiqueOnly;
+const boutiqueOnly = (kind: WardrobeKind | 'accessories', id: string): boolean => boutiqueOnlyLists[kind]?.includes(id) === true;
+const kindWord = (kind: WardrobeKind | 'accessories'): string => (kind === 'hair' ? 'hairstyle' : kind === 'accessories' ? 'accessory' : kind);
+/** The Boutique price of a style or accessory that is known to be sold there. */
+const priceOfStyle = (kind: WardrobeKind | 'accessories', id: string): number => BOUTIQUE_PRICES[kind][id]!; // every id offered or accepted here is priced
+/** Whether the Sim owns the style `id` of a wardrobe kind. */
+const ownsStyle = (o: OnboardingState, kind: WardrobeKind, id: unknown): boolean => isOneOf(o.wardrobe[kind], id);
 
 /**
  * The accessories of a look: { list } (known ids, no repeats, one per slot, at most the limit) or
  * { reason }. Nothing given means none.
  */
-function checkAccessories(value) {
+function checkAccessories(value: unknown): AccessoryCheck {
   if (value === undefined || value === null) return { list: [] };
   if (!Array.isArray(value)) return { reason: 'Accessories must be a list.' };
-  if (value.length > APPEARANCE.accessoryLimit) return { reason: `Wear at most ${APPEARANCE.accessoryLimit} accessories.` };
-  const slots = new Map();
-  for (const id of value) {
+  const given: unknown[] = value;
+  if (given.length > APPEARANCE.accessoryLimit) return { reason: `Wear at most ${APPEARANCE.accessoryLimit} accessories.` };
+  const slots = new Map<AccessorySlot, string>();
+  const ids: AccessoryId[] = [];
+  for (const id of given) {
     const item = typeof id === 'string' ? ACCESSORIES.get(id) : null;
     if (!item) return { reason: `Choose accessories from the list: ${list([...ACCESSORIES.keys()])}.` };
-    if (slots.has(item.slot)) return { reason: slots.get(item.slot) === id ? `${name(id)} is listed twice.` : `${name(slots.get(item.slot))} and ${name(id)} cannot be worn together.` };
-    slots.set(item.slot, id);
+    const taken = slots.get(item.slot);
+    if (taken !== undefined) return { reason: taken === id ? `${name(item.id)} is listed twice.` : `${name(taken)} and ${name(item.id)} cannot be worn together.` };
+    slots.set(item.slot, item.id);
+    ids.push(item.id);
   }
-  return { list: [...value] };
+  return { list: ids };
 }
 /** The accessories that are still valid in a saved list (for loading old or damaged saves). */
-function tidyAccessories(value) {
-  const slots = new Set(), out = [];
+function tidyAccessories(value: unknown): AccessoryId[] {
+  const slots = new Set<AccessorySlot>(), out: AccessoryId[] = [];
   for (const id of Array.isArray(value) ? value.slice(0, 40) : []) {
     const item = typeof id === 'string' ? ACCESSORIES.get(id) : null;
     if (!item || slots.has(item.slot) || out.length >= APPEARANCE.accessoryLimit) continue;
-    slots.add(item.slot); out.push(id);
+    slots.add(item.slot); out.push(item.id);
   }
   return out;
 }
@@ -175,20 +213,23 @@ function tidyAccessories(value) {
  * stored, so a look without them is exactly the eight fields it always was. With `starter`, styles
  * that are sold only in the Boutique are refused.
  */
-export function checkLook(value, { starter = false } = {}) {
+export function checkLook(value: unknown, { starter = false }: { starter?: boolean } = {}): LookCheck {
   if (!isRecord(value)) return { reason: 'Choose a look: body, hairstyle, outfit, fabric, skin tone and colours.' };
-  if (!APPEARANCE.bodies.some((body) => body.id === value.body)) return { reason: 'Choose a body: Woman or Man.' };
-  const look = { body: value.body };
+  const body = APPEARANCE.bodies.find((item) => item.id === value.body)?.id;
+  if (body === undefined) return { reason: 'Choose a body: Woman or Man.' };
+  const look: { [K in keyof Look]?: unknown } = { body: value.body };
   for (const kind of KINDS) {
-    const options = optionsFor(kind, value.body);
-    if (!options.includes(value[kind])) {
+    const options = optionsFor(kind, body);
+    const chosen = value[kind];
+    if (typeof chosen !== 'string' || !options.includes(chosen)) {
       const what = kind === 'hair' ? 'hairstyle' : kind;
-      return { reason: `Choose a ${what}${kind === 'fabric' ? '' : ` for the ${value.body} body`}: ${list(options)}.` };
+      return { reason: `Choose a ${what}${kind === 'fabric' ? '' : ` for the ${body} body`}: ${list(options)}.` };
     }
-    if (starter && boutiqueOnly(kind, value[kind])) return { reason: `${name(value[kind])} is sold in the Boutique: you can buy it there once you have moved in.` };
-    look[kind] = value[kind];
+    if (starter && boutiqueOnly(kind, chosen)) return { reason: `${name(chosen)} is sold in the Boutique: you can buy it there once you have moved in.` };
+    look[kind] = chosen;
   }
-  for (const [field, [group, label]] of Object.entries(COLOUR_FIELDS)) {
+  for (const field of COLOUR_FIELD_IDS) {
+    const [group, label] = COLOUR_FIELDS[field];
     if (!APPEARANCE[group].some((swatch) => swatch.id === value[field])) return { reason: `Choose a ${label} from the swatches.` };
     look[field] = value[field];
   }
@@ -197,22 +238,28 @@ export function checkLook(value, { starter = false } = {}) {
   const shop = starter ? worn.list.find((id) => boutiqueOnly('accessories', id)) : null;
   if (shop) return { reason: `${name(shop)} is sold in the Boutique: you can buy it there once you have moved in.` };
   if (worn.list.length) look.accessories = worn.list;
-  for (const [field, group, label] of [['face', 'faces', 'face shape'], ['expression', 'expressions', 'expression']]) {
-    if (value[field] === undefined || value[field] === null) continue;
-    if (!APPEARANCE[group].includes(value[field])) return { reason: `Choose a ${label}: ${list(APPEARANCE[group])}.` };
-    if (value[field] !== APPEARANCE[group][0]) look[field] = value[field];
+  for (const [field, group, label] of [['face', 'faces', 'face shape'], ['expression', 'expressions', 'expression']] as const) {
+    const given = value[field];
+    if (given === undefined || given === null) continue;
+    const known: readonly unknown[] = APPEARANCE[group];
+    if (!known.includes(given)) return { reason: `Choose a ${label}: ${list(APPEARANCE[group])}.` };
+    if (given !== known[0]) look[field] = given;
   }
-  return { look };
+  // Every field above was checked against the catalogue before it was copied.
+  return { look: look as Look };
 }
 /** Two looks are the same when every field matches (the accessories in any order). */
-const sameLook = (a, b) => [...KINDS, 'body', ...Object.keys(COLOUR_FIELDS), 'face', 'expression'].every((field) => a[field] === b[field])
+const SAME_LOOK_FIELDS: (keyof Look)[] = [...KINDS, 'body', ...COLOUR_FIELD_IDS, 'face', 'expression'];
+const sameLook = (a: Look, b: Look): boolean => SAME_LOOK_FIELDS.every((field) => a[field] === b[field])
   && [...(a.accessories ?? [])].sort().join() === [...(b.accessories ?? [])].sort().join();
 
-function randomLook(rng) {
-  const pick = (items) => items[Math.floor(rng() * items.length) % items.length];
+function randomLook(rng: () => number): Look {
+  const pick = <T>(items: readonly T[]): T => items[Math.floor(rng() * items.length) % items.length]!; // the catalogue lists are not empty
   const body = pick(APPEARANCE.bodies).id;
   // Only what a new Sim may wear: nothing that is sold in the Boutique.
-  const free = (kind) => optionsFor(kind, body).filter((id) => !boutiqueOnly(kind, id));
+  function free(kind: 'hair'): HairId[];
+  function free(kind: 'outfit'): OutfitId[];
+  function free(kind: 'hair' | 'outfit'): string[] { return optionsFor(kind, body).filter((id) => !boutiqueOnly(kind, id)); }
   return { body, hair: pick(free('hair')), outfit: pick(free('outfit')), fabric: pick(APPEARANCE.fabrics),
     skin: pick(APPEARANCE.skin).id, hairColor: pick(APPEARANCE.hairColours).id, outfitColor: pick(APPEARANCE.outfitColours).id, bottomsColor: pick(APPEARANCE.outfitColours).id };
 }
@@ -222,66 +269,68 @@ function randomLook(rng) {
  * Bought accessories are kept under `accessories` only once there are some, so a wardrobe that
  * has none is exactly the three lists it always was.
  */
-function wardrobeOf(saved, look) {
-  const wardrobe = {};
+function wardrobeOf(saved: unknown, look: Look | null | undefined): Wardrobe {
+  const wardrobe: Record<WardrobeKind, string[]> & { accessories?: string[] } = { hair: [], outfit: [], fabric: [] };
   for (const kind of KINDS) {
-    const owned = [...WARDROBE_BASICS[kind], ...(isRecord(saved) && Array.isArray(saved[kind]) ? saved[kind].slice(0, 40) : []), look?.[kind]];
-    wardrobe[kind] = [...new Set(owned.filter((id) => typeof id === 'string' && Object.hasOwn(BOUTIQUE_PRICES[kind], id)))];
+    const owned: unknown[] = [...WARDROBE_BASICS[kind], ...(isRecord(saved) && Array.isArray(saved[kind]) ? saved[kind].slice(0, 40) : []), look?.[kind]];
+    wardrobe[kind] = [...new Set(owned.filter((id): id is string => typeof id === 'string' && Object.hasOwn(BOUTIQUE_PRICES[kind], id)))];
   }
-  const extras = [...(isRecord(saved) && Array.isArray(saved.accessories) ? saved.accessories.slice(0, 40) : []), ...(look?.accessories ?? [])];
-  const bought = [...new Set(extras.filter((id) => typeof id === 'string' && ACCESSORIES.has(id) && !ACCESSORY_BASICS.includes(id)))];
+  const extras: unknown[] = [...(isRecord(saved) && Array.isArray(saved.accessories) ? saved.accessories.slice(0, 40) : []), ...(look?.accessories ?? [])];
+  const bought = [...new Set(extras.filter((id): id is string => typeof id === 'string' && ACCESSORIES.has(id) && !isOneOf(ACCESSORY_BASICS, id)))];
   if (bought.length) wardrobe.accessories = bought;
-  return wardrobe;
+  // Every id was kept only if the Boutique sells it for that kind, so the lists hold ids of their own kind.
+  return wardrobe as Wardrobe;
 }
 /** Every accessory the Sim owns: the free ones and the ones bought. */
-const ownedAccessories = (o) => [...ACCESSORY_BASICS, ...(o.wardrobe.accessories ?? [])];
+const ownedAccessories = (o: OnboardingState): AccessoryId[] => [...ACCESSORY_BASICS, ...(o.wardrobe.accessories ?? [])];
 /** `list` with `id` put on: it replaces whatever shares its slot, and the oldest gives way at the limit. */
-function wearAccessory(worn, id) {
-  const slot = ACCESSORIES.get(id).slot;
-  const kept = (worn ?? []).filter((other) => other !== id && ACCESSORIES.get(other)?.slot !== slot);
-  return [...kept.slice(Math.max(0, kept.length - (APPEARANCE.accessoryLimit - 1))), id];
+function wearAccessory(worn: AccessoryId[] | undefined, id: string): AccessoryId[] {
+  const item = ACCESSORIES.get(id)!; // a Boutique accessory is a catalogue accessory
+  const kept = (worn ?? []).filter((other) => other !== id && ACCESSORIES.get(other)?.slot !== item.slot);
+  return [...kept.slice(Math.max(0, kept.length - (APPEARANCE.accessoryLimit - 1))), item.id];
 }
 
-const validLottery = (value) => (isRecord(value) && typeof value.id === 'string' && Object.hasOwn(LOTTERY, value.id)
+const validLottery = (value: unknown): OnboardingState['lottery'] => (isRecord(value) && isLotteryId(value.id)
   ? { id: value.id, at: finite(value.at) && value.at >= 0 ? value.at : 0 } : null);
 
-const outcomeOf = (state) => (state.onboarding.lottery ? LOTTERY[state.onboarding.lottery.id] : null);
+const outcomeOf = (state: LifeState): LotteryOutcome | null => (state.onboarding.lottery ? LOTTERY[state.onboarding.lottery.id] : null);
 
 /** Active effect blocks: nothing applies until the life has moved in. */
-function sources(state) {
+function sources(state: LifeState) {
   const o = state.onboarding;
   if (!o?.done) return [];
   return [...o.traits.map((id) => TRAITS[id]?.fx), outcomeOf(state)?.fx];
 }
 
 /** The mood word for a 0–100 mood score. */
-export const moodWord = (score) => MOODS.find((mood) => score >= mood.min) ?? MOODS[MOODS.length - 1];
+export const moodWord = (score: number): MoodWord => MOODS.find((mood) => score >= mood.min) ?? MOODS[MOODS.length - 1]!; // MOODS is not empty
 
 /** Why a starting home cannot be chosen with the rolled outcome, or null. */
-function homeLock(outcome, houseId) {
+function homeLock(outcome: LotteryOutcome | null | undefined, houseId: StartHomeId): string | null {
   if (!outcome) return 'Roll the birth lottery first.';
-  if (outcome.locked?.[houseId]) return outcome.locked[houseId];
+  if (outcome.locked?.[houseId]) return outcome.locked[houseId] ?? null;
   return safeCount(outcome.startCash?.[houseId]) ? null : `${START_HOMES[houseId].label} is not available for ${outcome.label}.`;
 }
 
-const notDone = (state) => (state.onboarding.done
+const notDone = (state: LifeState) => (state.onboarding.done
   ? fail(state, 'already_onboarded', 'Your Sim is already created. Change your look in Sim → Profile, or shop in Phone → Boutique.') : null);
-const needStep = (state, step) => (state.onboarding.step < step
-  ? fail(state, 'step_required', `Finish the ${ONBOARDING_STEPS[state.onboarding.step].label} step first.`) : null);
-const reach = (state, step) => { state.onboarding.step = Math.max(state.onboarding.step, step); };
-const mustBeDone = (state) => (state.onboarding.done ? null : fail(state, 'onboarding_required', isGuest(state.onboarding) ? 'Settle in first: tap the "Settle in" goal. The Boutique and your wardrobe open once you have a home.' : 'Finish creating your Sim first: tap the "Create your Sim" goal.'));
+// `step` is at most 4 here, and below it the step index is in range of ONBOARDING_STEPS.
+const needStep = (state: LifeState, step: number) => (state.onboarding.step < step
+  ? fail(state, 'step_required', `Finish the ${ONBOARDING_STEPS[state.onboarding.step]!.label} step first.`) : null);
+const reach = (state: LifeState, step: number): void => { state.onboarding.step = Math.max(state.onboarding.step, step); };
+const mustBeDone = (state: LifeState) => (state.onboarding.done ? null : fail(state, 'onboarding_required', isGuest(state.onboarding) ? 'Settle in first: tap the "Settle in" goal. The Boutique and your wardrobe open once you have a home.' : 'Finish creating your Sim first: tap the "Create your Sim" goal.'));
 
-function giveBonus(state, tags) {
+function giveBonus(state: LifeState, tags: string[]): void {
   const bonus = bonusNeeds(sources(state), tags);
   if (Object.keys(bonus).length) changeNeeds(state, bonus);
 }
 
 /** Hand out the starting needs, once per life (at the quick start, or at move-in for a life that had none). */
-function startNeeds(state) {
+function startNeeds(state: LifeState): void {
   const o = state.onboarding;
   if (o.needsSet) return;
   o.needsSet = true;
-  changeNeeds(state, Object.fromEntries(Object.entries(START_NEEDS).map(([need, value]) => [need, value - state.needs[need]])));
+  changeNeeds(state, Object.fromEntries(Object.entries(START_NEEDS).filter((entry): entry is [NeedId, number] => Object.hasOwn(START_NEEDS, entry[0])).map(([need, value]): [NeedId, number] => [need, value - state.needs[need]])));
 }
 
 const actions = {
@@ -310,7 +359,7 @@ const actions = {
     if (!isGuest(o) || o.required) return fail(state, 'not_a_guest', 'Only a brand-new guest is brought to a friend’s venue. Use the Map to go there.');
     if (o.joined) return fail(state, 'already_joined', 'You have already joined a friend once. Use the Map to go there.');
     if (o.bornAt === null || now - o.bornAt > JOIN_WINDOW_MS) return fail(state, 'join_window_closed', 'That invite brings you along only in your first minutes. Use the Map to go there.');
-    const venue = typeof payload?.venue === 'string' && payload.venue !== 'home' && Object.hasOwn(VENUES, payload.venue) ? payload.venue : null;
+    const venue = isVenueId(payload?.venue) && payload.venue !== 'home' ? payload.venue : null;
     if (!venue) return fail(state, 'invalid_venue', 'That is not a public venue.');
     const stop = busy(state, 'Finish or cancel your current action first.');
     if (stop) return stop;
@@ -339,7 +388,7 @@ const actions = {
   'onboarding.traits'(state, payload) {
     const blocked = notDone(state) || needStep(state, 1);
     if (blocked) return blocked;
-    const chosen = Array.isArray(payload?.traits) ? [...new Set(payload.traits.filter((id) => typeof id === 'string' && Object.hasOwn(TRAITS, id)))] : [];
+    const chosen = Array.isArray(payload?.traits) ? [...new Set(payload.traits.filter(isTraitId))] : [];
     const sent = Array.isArray(payload?.traits) ? payload.traits.length : 0;
     if (chosen.length !== TRAITS_REQUIRED || sent !== TRAITS_REQUIRED) {
       return fail(state, 'invalid_traits', `Choose exactly ${TRAITS_REQUIRED} different traits (you chose ${Math.min(chosen.length, sent)}).`);
@@ -352,7 +401,7 @@ const actions = {
   'onboarding.dream'(state, payload) {
     const blocked = notDone(state) || needStep(state, 2);
     if (blocked) return blocked;
-    const dream = typeof payload?.dream === 'string' && Object.hasOwn(DREAMS, payload.dream) ? DREAMS[payload.dream] : null;
+    const dream = isDreamId(payload?.dream) ? DREAMS[payload.dream] : null;
     if (!dream) return fail(state, 'invalid_dream', `Choose one dream: ${Object.values(DREAMS).map((item) => item.label).join(', ')}.`);
     state.onboarding.dream = dream.id;
     reach(state, 3);
@@ -373,7 +422,7 @@ const actions = {
     const roll = (ctx.rng() + makeRng(`lottery|${ctx.now}|${state.t}`)()) % 1;
     const outcomes = Object.values(LOTTERY);
     const total = outcomes.reduce((sum, outcome) => sum + outcome.odds, 0);
-    let mark = roll * total, chosen = outcomes[outcomes.length - 1];
+    let mark = roll * total, chosen = outcomes[outcomes.length - 1]!; // LOTTERY is not empty
     for (const outcome of outcomes) { if (mark < outcome.odds) { chosen = outcome; break; } mark -= outcome.odds; }
     o.lottery = { id: chosen.id, at: finite(ctx.now) ? ctx.now : state.t };
     reach(state, 4);
@@ -389,28 +438,31 @@ const actions = {
     const wantsLga = payload?.lga !== undefined && payload?.lga !== null, unit = wantsLga ? lgaOf(city, payload.lga) : null;
     if (wantsLga && !unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(city).length} local governments of ${cityRules(city)?.name ?? 'this city'}.`);
     const rented = payload?.house !== undefined && payload?.house !== null;
-    const home = typeof payload?.house === 'string' && Object.hasOwn(START_HOMES, payload.house) ? START_HOMES[payload.house] : null;
+    const home = isStartHomeId(payload?.house) ? START_HOMES[payload.house] : null;
     if (rented && !home) return fail(state, 'invalid_house', `Choose a starting home: ${Object.values(START_HOMES).map((item) => `${item.label} (${item.district})`).join(', ')}.`);
     if (!rented && !unit) return fail(state, 'lga_required', 'Choose your local government: your free starter house stands on a plot there.');
     const locked = home ? homeLock(outcome, home.id) : null;
     if (locked) return fail(state, 'house_locked', locked);
     if (o.traits.length !== TRAITS_REQUIRED || !o.dream) return fail(state, 'step_required', 'Choose your two traits and a dream before moving in.');
-    const startCash = home ? outcome.startCash[home.id] : outcome.ownCash;
+    // Step 4 is only reached once the lottery was rolled, and a rented home was checked against it by homeLock.
+    const rolled = outcome!;
+    // A life without a rented home has a local government: 'lga_required' was returned otherwise.
+    const startCash = home ? rolled.startCash[home.id]! : rolled.ownCash; // homeLock checked that this start cash exists
     const grant = Math.max(0, startCash - o.seed);
     if (!Number.isSafeInteger(state.cash + grant)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
 
     o.house = home?.id ?? null; o.done = true; o.stage = 'settled'; o.required = false; o.step = DONE_STEP; o.completedAt = finite(ctx.now) ? ctx.now : state.t;
     o.wardrobe = wardrobeOf(o.wardrobe, o.look);
-    for (const [skill, level] of Object.entries(outcome.skills || {})) setSkillLevel(state, skill, level);
+    for (const [skill, level] of Object.entries(rolled.skills || {})) setSkillLevel(state, skill, level);
     startNeeds(state);
-    const where = home ? `${home.label}, ${home.district}` : `Starter house, ${unit.name}`;
-    credit(state, grant, `Start cash · ${where}${outcome.loan ? ` (includes ${naira(outcome.loan.principal)} LAPO loan)` : ''}`, ctx);
+    const where = home ? `${home.label}, ${home.district}` : `Starter house, ${unit!.name}`;
+    credit(state, grant, `Start cash · ${where}${rolled.loan ? ` (includes ${naira(rolled.loan.principal)} LAPO loan)` : ''}`, ctx);
     if (!stay) arrive(state, 'home', ctx, { mode: null });
-    emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: outcome.id, house: home?.id ?? null,
-      look: { ...o.look, ...(o.look.accessories ? { accessories: [...o.look.accessories] } : {}) }, loan: outcome.loan ? { ...outcome.loan } : null, rent: home?.rent ?? 0, startCash,
-      ...(unit ? { lga: unit.id, via: payload.via === 'device' ? 'device' : 'manual', own: !home } : {}) }, ctx);
-    const place = home ? `${home.label} in ${home.district}` : `starter house in ${unit.name}`;
-    state.message = stay ? `Your ${place} is ready. Tap Home whenever you want to see it. You have ${naira(state.cash)}.` : `Welcome to ${home ? home.district : unit.name}. You moved into your ${home ? home.label : 'own starter house'} with ${naira(state.cash)}.`;
+    emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: rolled.id, house: home?.id ?? null,
+      look: { ...o.look, ...(o.look.accessories ? { accessories: [...o.look.accessories] } : {}) }, loan: rolled.loan ? { ...rolled.loan } : null, rent: home?.rent ?? 0, startCash,
+      ...(unit ? { lga: unit.id, via: payload.via === 'device' ? 'device' as const : 'manual' as const, own: !home } : {}) }, ctx);
+    const place = home ? `${home.label} in ${home.district}` : `starter house in ${unit!.name}`;
+    state.message = stay ? `Your ${place} is ready. Tap Home whenever you want to see it. You have ${naira(state.cash)}.` : `Welcome to ${home ? home.district : unit!.name}. You moved into your ${home ? home.label : 'own starter house'} with ${naira(state.cash)}.`;
     return ok(state, 'life_started');
   },
   'onboarding.set-look'(state, payload) {
@@ -420,7 +472,7 @@ const actions = {
     const { look, reason } = checkLook(payload?.look);
     if (!look) return fail(state, 'invalid_look', reason);
     for (const kind of KINDS) {
-      if (!o.wardrobe[kind].includes(look[kind])) {
+      if (!ownsStyle(o, kind, look[kind])) {
         return fail(state, 'not_owned', `You do not own the ${name(look[kind])} ${kind === 'hair' ? 'hairstyle' : kind} yet. Buy it in Phone → Boutique for ${naira(BOUTIQUE_PRICES[kind][look[kind]])}.`);
       }
     }
@@ -436,35 +488,38 @@ const actions = {
     if (blocked) return blocked;
     const o = state.onboarding, kind = payload?.kind, id = payload?.id;
     const extra = kind === 'accessories';
-    if (!(KINDS.includes(kind) || extra) || typeof id !== 'string' || !Object.hasOwn(BOUTIQUE_PRICES[kind], id)) return fail(state, 'invalid_item', 'Choose a hairstyle, outfit, fabric or accessory from the Boutique list.');
+    if (!(isKind(kind) || extra) || typeof id !== 'string' || !Object.hasOwn(BOUTIQUE_PRICES[kind], id)) return fail(state, 'invalid_item', 'Choose a hairstyle, outfit, fabric or accessory from the Boutique list.');
     if (!extra && !optionsFor(kind, o.look.body).includes(id)) {
       return fail(state, 'wrong_body', `${name(id)} is not made for the ${o.look.body} body. Switch body in Sim → Profile first.`);
     }
-    if (extra ? ownedAccessories(o).includes(id) : o.wardrobe[kind].includes(id)) return fail(state, 'already_owned', `You already own ${name(id)}. Put it on in Sim → Profile.`);
-    const price = BOUTIQUE_PRICES[kind][id];
+    if (extra ? isOneOf(ownedAccessories(o), id) : ownsStyle(o, kind, id)) return fail(state, 'already_owned', `You already own ${name(id)}. Put it on in Sim → Profile.`);
+    const price = priceOfStyle(kind, id);
     if (!canAfford(state, price)) return fail(state, 'insufficient_funds', `${name(id)} costs ${naira(price)}; you have ${naira(state.cash)}.`);
     debit(state, price, `Boutique: ${name(id)} ${kindWord(kind)}`, ctx);
     if (extra) {
-      o.wardrobe.accessories = [...(o.wardrobe.accessories ?? []), id];
+      o.wardrobe.accessories = [...(o.wardrobe.accessories ?? []), ACCESSORIES.get(id)!.id]; // a Boutique accessory is a catalogue accessory
       o.look = { ...o.look, accessories: wearAccessory(o.look.accessories, id) };
     } else {
-      o.wardrobe[kind].push(id);
+      const owned: string[] = o.wardrobe[kind]; // `id` was checked against this kind's Boutique list above
+      owned.push(id);
       o.look = { ...o.look, [kind]: id };
     }
     state.message = `Bought ${name(id)} for ${naira(price)}. You are wearing it now.`;
     return ok(state, 'bought');
   },
-};
+} satisfies NonNullable<SystemDefinition<'onboarding'>['actions']>;
 
 export default {
   id: 'onboarding',
   stateKeys: ['onboarding'],
-  sanitize(input, state, ctx) {
+  sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
     const raw = input.onboarding;
     const lottery = validLottery(isRecord(raw) ? raw.lottery : null);
-    const base = { stage: 'settled', done: false, legacy: false, required: false, step: 0, seed: state.cash, look: { ...DEFAULT_LOOK }, traits: [], dream: null, lottery, house: null,
-      wardrobe: null, completedAt: null, bonusAt: 0, bornAt: null, playedAt: null, firstAt: null, activities: 0, needsSet: false, joined: false };
-    const time = (value) => (finite(value) && value >= 0 ? value : null);
+    const base: OnboardingState = { stage: 'settled', done: false, legacy: false, required: false, step: 0, seed: state.cash, look: { ...DEFAULT_LOOK }, traits: [], dream: null, lottery, house: null,
+      wardrobe: { hair: [], outfit: [], fabric: [] }, completedAt: null, bonusAt: 0, bornAt: null, playedAt: null, firstAt: null, activities: 0, needsSet: false, joined: false };
+    // The saved wardrobe is rebuilt from scratch below; only a settled life keeps what it owned.
+    let savedWardrobe: unknown = null;
+    const time = (value: unknown): number | null => (finite(value) && value >= 0 ? value : null);
     if (ctx?.isNew) {
       // A brand-new life: only the lottery roll may be carried in (see the header).
       if (ctx.quickStart === true || ctx.requireOnboarding === true) Object.assign(base, { stage: 'guest', required: true, bornAt: time(ctx.now) });
@@ -474,10 +529,10 @@ export default {
     } else {
       // A saved look keeps everything that is still valid: an unknown accessory, face or expression is dropped, not the whole look.
       base.look = checkLook(isRecord(raw.look) ? { ...raw.look, accessories: tidyAccessories(raw.look.accessories),
-        face: APPEARANCE.faces.includes(raw.look.face) ? raw.look.face : undefined, expression: APPEARANCE.expressions.includes(raw.look.expression) ? raw.look.expression : undefined } : raw.look).look ?? base.look;
-      base.traits = Array.isArray(raw.traits) ? [...new Set(raw.traits.filter((id) => typeof id === 'string' && Object.hasOwn(TRAITS, id)))].slice(0, TRAITS_REQUIRED) : [];
-      base.dream = typeof raw.dream === 'string' && Object.hasOwn(DREAMS, raw.dream) ? raw.dream : null;
-      base.house = typeof raw.house === 'string' && Object.hasOwn(START_HOMES, raw.house) ? raw.house : null;
+        face: isOneOf(APPEARANCE.faces, raw.look.face) ? raw.look.face : undefined, expression: isOneOf(APPEARANCE.expressions, raw.look.expression) ? raw.look.expression : undefined } : raw.look).look ?? base.look;
+      base.traits = Array.isArray(raw.traits) ? [...new Set(raw.traits.filter(isTraitId))].slice(0, TRAITS_REQUIRED) : [];
+      base.dream = isDreamId(raw.dream) ? raw.dream : null;
+      base.house = isStartHomeId(raw.house) ? raw.house : null;
       base.seed = safeCount(raw.seed) ? raw.seed : state.cash;
       base.done = raw.done;
       // A guest: saved as one, or left half-way by the old enforced flow (required, not done).
@@ -489,7 +544,7 @@ export default {
       else {
         // The step can never be ahead of what has actually been chosen.
         const limit = base.traits.length !== TRAITS_REQUIRED ? 1 : !base.dream ? 2 : !lottery ? 3 : 4;
-        base.step = Number.isInteger(raw.step) ? Math.min(Math.max(raw.step, 0), limit) : 0;
+        base.step = typeof raw.step === 'number' && Number.isInteger(raw.step) ? Math.min(Math.max(raw.step, 0), limit) : 0;
       }
       // Held only until the look is confirmed; never for a life that was not made by the quick start.
       base.required = base.stage === 'guest' && raw.required === true && base.step < 1;
@@ -497,10 +552,10 @@ export default {
       base.activities = safeCount(raw.activities) ? Math.min(raw.activities, ACTIVITY_CAP) : 0;
       base.needsSet = raw.done || raw.needsSet === true;
       base.joined = raw.joined === true;
-      base.wardrobe = raw.wardrobe;
+      savedWardrobe = raw.wardrobe;
     }
     // Until the life has moved in nothing is owned but the basics, however many looks were tried on.
-    base.wardrobe = base.done ? wardrobeOf(base.wardrobe, base.look) : wardrobeOf(null, null);
+    base.wardrobe = base.done ? wardrobeOf(savedWardrobe, base.look) : wardrobeOf(null, null);
     state.onboarding = base;
   },
   actions,
@@ -545,7 +600,7 @@ export default {
       giveBonus(state, ['food']);
     },
   },
-  view(state) {
+  view(state: LifeState): OnboardingView {
     const o = state.onboarding, outcome = outcomeOf(state), mood = moodOf(state);
     const word = moodWord(mood.score);
     const notYet = isGuest(o) ? 'Settle in first.' : 'Finish creating your Sim first.';
@@ -554,21 +609,21 @@ export default {
       /** The first-minute timings in server ms (null until they happen) and what a guest has done so far. */
       timing: { bornAt: o.bornAt, playedAt: o.playedAt, firstAt: o.firstAt, settledAt: o.completedAt }, activities: o.activities,
       settleReason: isGuest(o) ? SETTLE_REASON : null, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
-      lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery.at } : null,
+      lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery!.at } : null, // outcomeOf found it through o.lottery
       /** The start a new life is offered: its own starter house, free, in the local government it chooses. */
       own: { startCash: outcome ? outcome.ownCash : null, rent: 0 },
       homes: Object.values(START_HOMES).map((home) => {
         const locked = outcome ? homeLock(outcome, home.id) : null;
-        return { ...home, startCash: outcome && !locked ? outcome.startCash[home.id] : null, locked };
+        return { ...home, startCash: outcome && !locked ? outcome.startCash[home.id]! : null, locked }; // not locked: homeLock found the start cash
       }),
       wardrobe: { hair: [...o.wardrobe.hair], outfit: [...o.wardrobe.outfit], fabric: [...o.wardrobe.fabric], accessories: ownedAccessories(o) },
-      boutique: KINDS.flatMap((kind) => optionsFor(kind, o.look.body).map((id) => {
-        const owned = o.wardrobe[kind].includes(id), price = BOUTIQUE_PRICES[kind][id];
+      boutique: KINDS.flatMap((kind) => optionsFor(kind, o.look.body).map((id): BoutiqueItem => {
+        const owned = ownsStyle(o, kind, id), price = priceOfStyle(kind, id);
         const blocked = !o.done ? notYet : owned ? null
           : !canAfford(state, price) ? `Costs ${naira(price)}; you have ${naira(state.cash)}.` : null;
         return { kind, id, label: name(id), price, owned, wearing: o.look[kind] === id, blocked };
-      })).concat(APPEARANCE.accessories.map(({ id, slot }) => {
-        const owned = ownedAccessories(o).includes(id), price = BOUTIQUE_PRICES.accessories[id];
+      })).concat(APPEARANCE.accessories.map(({ id, slot }): BoutiqueItem => {
+        const owned = ownedAccessories(o).includes(id), price = priceOfStyle('accessories', id);
         const blocked = !o.done ? notYet : owned ? null
           : !canAfford(state, price) ? `Costs ${naira(price)}; you have ${naira(state.cash)}.` : null;
         return { kind: 'accessories', id, slot, label: name(id), price, owned, wearing: (o.look.accessories ?? []).includes(id), blocked };
@@ -577,4 +632,4 @@ export default {
       feelings: feelingsOf(state).map((feeling) => ({ ...feeling, line: FEELING_LINES[feeling.id] ?? '' })),
     };
   },
-};
+} satisfies SystemDefinition<'onboarding'>;

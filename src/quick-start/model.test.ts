@@ -1,7 +1,9 @@
-// OWNER: quick start — the pure client logic of the first minute (./model.js).
+// OWNER: quick start — the pure client logic of the first minute (./model.ts).
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE, NUDGE_CAP, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.ts';
+import type { JoinBanner } from './model.ts';
+import type { Look } from '../types/life.ts';
 import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom } from './look-model.js';
 import { checkLook } from '../game/systems/onboarding.ts';
 import { validateName } from '../../server/protocol.js';
@@ -9,6 +11,8 @@ import { makeRng } from '../game/util.ts';
 import { createLife, dispatch, advanceLife } from '../life.ts';
 
 const ID = '36f5f5a1-493e-474f-b23c-3a2e503ada54';
+/** A banner that must have been made. */
+const shown = (banner: JoinBanner | null): JoinBanner => { assert.ok(banner, 'there is a banner'); return banner; };
 
 test('every suggested name is one the server accepts, and the pre-check agrees with the server on length', () => {
   for (const mood of NAME_MOODS) for (const stem of NAME_STEMS) assert.equal(validateName(`${mood} ${stem}`), `${mood} ${stem}`);
@@ -63,16 +67,17 @@ test('the landing hook reads /v/<id>, ?join=<id> and ?v=<id>, and nothing else',
   assert.equal(joinIdFrom('/', `?utm=x&join=${ID}&y=1`), ID);
   assert.equal(joinIdFrom('/', `?v=${ID}`), ID);
   for (const [path, search] of [['/', ''], ['/v/nope', ''], [`/x/${ID}`, ''], ['/', `?joined=${ID}`], ['/', '?join=<script>'], [`/v/${ID}x`, ''], [null, undefined]]) assert.equal(joinIdFrom(path, search), null);
-  const label = (id) => ({ park: 'Freedom Park' }[id] ?? 'the city');
+  const places: Record<string, string> = { park: 'Freedom Park' };
+  const label = (id: string): string => places[id] ?? 'the city';
   assert.deepEqual(joinBanner({ ok: true, code: 'joined', host: { name: 'Ada' }, venue: 'park' }, label), { tone: 'good', title: 'You’re joining Ada', text: 'Ada is at Freedom Park right now — so are you. Look for their name tag.', knock: false });
-  assert.equal(joinBanner({ ok: true, code: 'at_home', host: { name: 'Ada' } }, label).knock, true);
-  for (const code of ['offline', 'out', 'reconnecting']) { const banner = joinBanner({ ok: true, code, host: { name: 'Ada' } }, label); assert.deepEqual([banner.tone, banner.title, banner.knock], ['info', 'You’re joining Ada', false]); }
+  assert.equal(shown(joinBanner({ ok: true, code: 'at_home', host: { name: 'Ada' } }, label)).knock, true);
+  for (const code of ['offline', 'out', 'reconnecting']) { const banner = shown(joinBanner({ ok: true, code, host: { name: 'Ada' } }, label)); assert.deepEqual([banner.tone, banner.title, banner.knock], ['info', 'You’re joining Ada', false]); }
   for (const none of [null, { ok: false, code: 'unknown_player' }, { ok: true, code: 'joined' }]) assert.equal(joinBanner(none, label), null);
 });
 
 test('settling in is offered at natural moments, each once, never while busy and never past the cap', () => {
   let memory = nudgeMemory(null);
-  const facts = (extra) => ({ guest: true, activities: 0, firstAt: null, busy: false, day: 10, ...extra });
+  const facts = (extra: Partial<Parameters<typeof nextNudge>[0]> = {}) => ({ guest: true, activities: 0, firstAt: null, busy: false, day: 10, ...extra });
   assert.equal(nextNudge(facts(), memory), null, 'nothing before the first reward');
   assert.equal(nextNudge(facts({ firstAt: 7, activities: 1, busy: true }), memory), null, 'not in the middle of something');
   assert.equal(nextNudge(facts({ firstAt: 7, activities: 1 }), memory), 'first-reward');
@@ -93,11 +98,13 @@ test('settling in is offered at natural moments, each once, never while busy and
 test('funnel events come from the server state, once each', () => {
   const now = Date.UTC(2026, 0, 5, 9), at = (ms = 0, id = 'a') => ({ now: now + ms, cityId: 'lagos', actionId: id });
   const state = createLife(null, { ...at(), isNew: true, quickStart: true });
-  const names = [];
+  const names: string[] = [];
   let before = funnelSnap(state);
   const step = () => { const after = funnelSnap(state); const events = funnelEvents(before, after); names.push(...events.map((event) => event.name)); before = after; assert.deepEqual(funnelEvents(after, after), [], 'nothing twice'); return events; };
   const look = presetLook('street');
-  dispatch(state, { type: 'onboarding.quick-start', payload: { look } }, at(1000, 'q'));
+  assert.ok(look, 'the street preset exists');
+  // look-model.js is not typed yet: its Look is the loose string shape, and presetLook only returns looks the server accepts.
+  dispatch(state, { type: 'onboarding.quick-start', payload: { look: look as Look } }, at(1000, 'q'));
   assert.deepEqual(step(), [{ name: 'arrived', props: { venue: 'park' } }]);
   dispatch(state, { type: 'activity', payload: { id: 'play-ayo' } }, at(2000, 'p'));
   assert.deepEqual(step(), [{ name: 'first_activity_started', props: { activity: 'play-ayo', venue: 'park' } }]);
@@ -109,6 +116,7 @@ test('funnel events come from the server state, once each', () => {
   dispatch(state, { type: 'onboarding.traits', payload: { traits: ['hustler', 'foodie'] } }, at(22000, 't')); step();
   dispatch(state, { type: 'onboarding.dream', payload: { dream: 'lekki-landlord' } }, at(23000, 'd')); step();
   dispatch(state, { type: 'onboarding.lottery', payload: {} }, at(24000, 'l')); step();
+  assert.ok(state.onboarding.lottery, 'the lottery was rolled');
   const house = state.onboarding.lottery.id === 'ajebutter' ? 'lekki' : 'mushin';
   assert.equal(dispatch(state, { type: 'onboarding.home', payload: { house, stay: true } }, at(25000, 'h')).code, 'life_started'); step();
   assert.deepEqual(names, ['arrived', 'first_activity_started', 'first_activity_completed', 'settle_traits_done', 'settle_dream_done', 'settle_lottery_done', 'save_character_done']);
@@ -125,7 +133,7 @@ test('one landing: a link’s share code and table are read by shape, and the re
   }
   assert.equal(joinIdFrom('/', `?join=${host}&ref=abcdef0123&table=buka-corner`), host, 'the same link still names the player to join');
   const label = () => 'Amala Shitta', joined = { ok: true, code: 'joined', host: { name: 'Ada' }, venue: 'amala-shitta' };
-  const plain = joinBanner(joined, label), gift = joinBanner(joined, label, { gift: true });
+  const plain = shown(joinBanner(joined, label)), gift = shown(joinBanner(joined, label, { gift: true }));
   assert.equal(plain.title, 'You’re joining Ada'); assert.equal(gift.title, plain.title);
   assert.equal(gift.text, `${plain.text} ${GIFT_LINE}`, 'one banner: where they are, and what the link is worth');
   assert.match(GIFT_LINE, /paid shift/, 'the gift is promised only for real work');

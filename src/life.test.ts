@@ -1,16 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import type { NeedId, TravelModeId, VenueId } from './types/life.ts';
 import { createLife, VENUES, TRAVEL_OPTIONS, PREVIEW_TRAVEL_DURATION, startActivity, cancelActivity, advanceLife, startTravel, applyJob } from './life.ts';
 
+/** Narrows a lookup that must have found something. */
+function must<T>(value: T | null | undefined, what = 'expected a value'): T { assert.ok(value, what); return value; }
+
 test('preview seed is independent; saved needs and cash override seed safely', () => {
-  const state = createLife();
+  const state = createLife(undefined);
   assert.equal(state.cash, 5000);
   assert.equal(state.location, 'park');
   assert.equal(state.spot, 'amphitheatre');
   assert.equal(state.activeAction, null);
   assert.deepEqual(state.needs, { hunger: 50, energy: 50, fun: 50, social: 50, hygiene: 50, bladder: 50 });
   state.needs.fun = 0;
-  assert.equal(createLife().needs.fun, 50);
+  assert.equal(createLife(undefined).needs.fun, 50);
   const saved = createLife({ cash: 7200, needs: { hunger: 24, energy: 74, fun: 0, social: 87, hygiene: 31, bladder: 12 } });
   assert.equal(saved.cash, 7200);
   assert.deepEqual(saved.needs, { hunger: 24, energy: 74, fun: 0, social: 87, hygiene: 31, bladder: 12 });
@@ -53,8 +57,8 @@ test('cancelled actions have no effects; overlapping and invalid time are harmle
   startActivity(state, 'chill');
   assert.equal(state.activeAction, active);
   assert.equal(state.cash, 5000);
-  for (const dt of [NaN, Infinity, -1, '11']) advanceLife(state, dt);
-  assert.equal(active.remaining, 11);
+  for (const dt of [NaN, Infinity, -1, '11']) advanceLife(state, dt as number); // '11' is deliberately not a number
+  assert.equal(must(active).remaining, 11);
   advanceLife(state, 4);
   cancelActivity(state);
   advanceLife(state, 100);
@@ -63,10 +67,10 @@ test('cancelled actions have no effects; overlapping and invalid time are harmle
 });
 
 test('unknown outcomes and skill-locked actions are catalogued but unavailable', () => {
-  assert.ok(VENUES.park.spots.trees.activities.some((action) => action.id === 'play-ayo'));
+  assert.ok(must(VENUES.park.spots.trees).activities.some((action) => action.id === 'play-ayo'));
   assert.equal(VENUES.park.district, 'Lagos Island');
   assert.equal(VENUES.library.district, 'Victoria Island');
-  const state = createLife();
+  const state = createLife(undefined);
   for (const spot of Object.values(VENUES.park.spots)) {
     state.spot = spot.id;
     for (const action of spot.activities.filter((item) => item.id !== 'chill' && !item.beta)) {
@@ -89,11 +93,12 @@ test('travel charges each fare once and settles location only on completion', ()
   assert.deepEqual(TRAVEL_OPTIONS, { trek: 0, keke: 150, danfo: 150, okada: 200, cab: 400 });
   // Freedom Park → The Library is an across-town trip: each mode has its own trip time.
   const seconds = { trek: 12, keke: 9, danfo: 8, okada: 5, cab: 6 };
-  for (const [mode, fare] of Object.entries(TRAVEL_OPTIONS)) {
-    const state = createLife();
+  for (const [name, fare] of Object.entries(TRAVEL_OPTIONS)) {
+    const mode = name as keyof typeof seconds; // the table's own keys
+    const state = createLife(undefined);
     startTravel(state, 'library', mode);
     assert.equal(state.cash, 5000 - fare);
-    assert.equal(state.activeAction.duration, seconds[mode], mode);
+    assert.equal(must(state.activeAction).duration, seconds[mode], mode);
     startTravel(state, 'library', mode);
     assert.equal(state.cash, 5000 - fare);
     advanceLife(state, seconds[mode] - 1);
@@ -112,8 +117,9 @@ test('travel charges each fare once and settles location only on completion', ()
 test('unaffordable, invalid or redundant travel does not charge or start', () => {
   const state = createLife({ cash: 149 });
   assert.equal(startTravel(state, 'library', 'keke').code, 'insufficient_funds');
-  for (const [destination, mode] of [['library', 'keke'], ['library', 'cab'], ['park', 'cab'], ['unknown', 'trek'], ['library', 'unknown']]) {
-    startTravel(state, destination, mode);
+  const trips: [string, string][] = [['library', 'keke'], ['library', 'cab'], ['park', 'cab'], ['unknown', 'trek'], ['library', 'unknown']];
+  for (const [destination, mode] of trips) {
+    startTravel(state, destination as VenueId, mode as TravelModeId); // 'unknown' is deliberately not a venue or a mode
     assert.equal(state.cash, 149);
     assert.equal(state.activeAction, null);
   }
@@ -124,12 +130,12 @@ test('unaffordable, invalid or redundant travel does not charge or start', () =>
 });
 
 test('saved in-progress travel resumes without charging again', () => {
-  const state = createLife();
+  const state = createLife(undefined);
   startTravel(state, 'library', 'cab');
   advanceLife(state, 2);
   const restored = createLife(JSON.parse(JSON.stringify(state)));
   assert.equal(restored.cash, 4600);
-  assert.equal(restored.activeAction.remaining, 4, 'a cab across town takes 6 seconds');
+  assert.equal(must(restored.activeAction).remaining, 4, 'a cab across town takes 6 seconds');
   advanceLife(restored, 4);
   assert.equal(restored.location, 'library');
   assert.equal(restored.cash, 4600);
@@ -141,13 +147,13 @@ test('reload mid activity pauses offline and completion cannot award again after
   startActivity(state, 'chill');
   advanceLife(state, 4);
   const restored = createLife(JSON.parse(JSON.stringify(state)));
-  assert.equal(restored.activeAction.remaining, 7);
+  assert.equal(must(restored.activeAction).remaining, 7);
   assert.equal(advanceLife(restored, 7).code, 'completed');
   const completed = createLife(JSON.parse(JSON.stringify(restored)));
   assert.equal(advanceLife(completed, 100).code, 'idle');
   assert.equal(completed.needs.fun, 60);
   assert.equal(completed.needs.energy, 54);
-  const cancelledTravel = createLife();
+  const cancelledTravel = createLife(undefined);
   startTravel(cancelledTravel, 'library', 'cab');
   cancelActivity(cancelledTravel);
   assert.equal(cancelledTravel.cash, 4600);
@@ -158,19 +164,19 @@ test('home is reachable by every mode: a paid ride needs its fare, trek is free,
   const state = createLife({ cash: 0 });
   assert.equal(state.location, 'park');
   assert.equal(VENUES.home.hours, undefined, 'home never closes');
-  for (const mode of ['keke', 'danfo', 'okada', 'cab']) {
+  for (const mode of ['keke', 'danfo', 'okada', 'cab'] as const) {
     assert.equal(startTravel(state, 'home', mode).code, 'insufficient_funds', mode);
     assert.equal(state.cash, 0); assert.equal(state.activeAction, null);
   }
   assert.equal(startTravel(state, 'home', 'trek').code, 'started');
-  assert.equal(state.activeAction.duration, 18, 'Freedom Park → Home (Yaba) crosses the lagoon');
+  assert.equal(must(state.activeAction).duration, 18, 'Freedom Park → Home (Yaba) crosses the lagoon');
   advanceLife(state, 17);
   assert.equal(state.location, 'park');
   advanceLife(state, 1);
   assert.equal(state.location, 'home');
   assert.equal(state.spot, 'kitchen');
   assert.equal(state.cash, 0);
-  const rider = createLife();
+  const rider = createLife(undefined);
   assert.equal(startTravel(rider, 'home', 'cab').code, 'started');
   assert.equal(rider.cash, 5000 - 550);
   startTravel(rider, 'home', 'cab');
@@ -179,15 +185,16 @@ test('home is reachable by every mode: a paid ride needs its fare, trek is free,
 });
 
 test('Garri and Bath award once only on completion and cap needs', () => {
-  for (const [id, spot, need, duration, gain] of [
+  const foods: [string, string, NeedId, number, number][] = [
     ['garri', 'kitchen', 'hunger', 5, 20], ['bath', 'bathroom', 'hygiene', 6, 25],
-  ]) {
+  ];
+  for (const [id, spot, need, duration, gain] of foods) {
     const state = createLife({ location: 'home', spot });
     assert.equal(startActivity(state, id).code, 'started');
     advanceLife(state, duration - 1);
     assert.equal(state.needs[need], 50);
     const restored = createLife(JSON.parse(JSON.stringify(state)));
-    assert.equal(restored.activeAction.remaining, 1);
+    assert.equal(must(restored.activeAction).remaining, 1);
     advanceLife(restored, 1);
     advanceLife(restored, 100);
     assert.equal(restored.needs[need], 50 + gain);
@@ -215,7 +222,7 @@ test('Nap accrues only elapsed energy, resumes after reload and cancellation kee
   advanceLife(state, 4);
   assert.equal(state.needs.energy, 48);
   const restored = createLife(JSON.parse(JSON.stringify(state)));
-  assert.equal(restored.activeAction.remaining, 11);
+  assert.equal(must(restored.activeAction).remaining, 11);
   assert.equal(restored.needs.energy, 48);
   advanceLife(restored, 3);
   assert.equal(restored.needs.energy, 54);
@@ -250,7 +257,7 @@ test('Nap is deterministic across frame sizes and invalid saved timers never rep
 });
 
 test('Community helper application is beta, persistent, free and rejects unknown jobs', () => {
-  const state = createLife();
+  const state = createLife(undefined);
   assert.equal(state.job, null);
   assert.equal(state.completedShifts, 0);
   assert.equal(applyJob(state, 'tech-intern').code, 'invalid_job');
@@ -258,7 +265,7 @@ test('Community helper application is beta, persistent, free and rejects unknown
   assert.equal(applyJob(state, 'community-helper').code, 'already_employed');
   assert.equal(state.cash, 5000);
   assert.equal(createLife(state).job, 'community-helper');
-  assert.equal(VENUES.park.spots.work.beta, true);
+  assert.equal(must(VENUES.park.spots.work).beta, true);
   const corrupt = createLife({ job: 'dropoff', completedShifts: -1 });
   assert.equal(corrupt.job, null);
   assert.equal(corrupt.completedShifts, 0);
@@ -301,7 +308,7 @@ test('midshift reload completes reward and costs exactly once; completed saves c
   startActivity(state, 'helper-shift');
   advanceLife(state, 7);
   const restored = createLife(JSON.parse(JSON.stringify(state)));
-  assert.equal(restored.activeAction.remaining, 13);
+  assert.equal(must(restored.activeAction).remaining, 13);
   advanceLife(restored, 13);
   advanceLife(restored, 100);
   assert.equal(restored.cash, 5300);

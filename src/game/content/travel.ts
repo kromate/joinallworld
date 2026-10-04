@@ -13,7 +13,10 @@
  */
 
 /** `fare` is the standard-band fare. `seconds` is the standard-band trip time (original beta value). */
-export const TRAVEL_MODES = {
+import type { BaseTravelModeId, TravelModeId } from '../../types/life.ts'
+import type { BaseModeTable, FareBands, RouteBand, TravelModeDefinition } from '../../types/content.ts'
+
+export const TRAVEL_MODES: BaseModeTable = {
   trek: { id: 'trek', label: 'Trek', icon: '🚶', fare: 0, seconds: 12, needs: { energy: -10, hygiene: -7 }, xp: { fitness: 15 }, exposed: true, eventChance: 0.5,
     blurb: 'Free, slow, sweaty — and good for your fitness.' },
   keke: { id: 'keke', label: 'Keke', icon: '🛺', fare: 150, seconds: 9, needs: { hygiene: -1 }, eventChance: 0.2, blurb: 'Cheap and breezy.' },
@@ -26,27 +29,28 @@ export const TRAVEL_MODES = {
  * Own car. Offered only when some system adds 'car' through modify(state, 'travel.modes', ids).
  * The base "fare" is fuel; the owner of cars may reprice it through 'travel.fare' (data.mode === 'car').
  */
-export const CAR_MODE = { id: 'car', label: 'Own car', icon: '🚗', fare: 120, seconds: 5, needs: {}, eventChance: 0.1, fuel: true, beta: true, blurb: 'Your own ride. You only pay for fuel.' };
+export const CAR_MODE = { id: 'car', label: 'Own car', icon: '🚗', fare: 120, seconds: 5, needs: {}, eventChance: 0.1, fuel: true, beta: true, blurb: 'Your own ride. You only pay for fuel.' } satisfies TravelModeDefinition;
 
 /** Every mode the travel action accepts. */
-export const ALL_MODES = { ...TRAVEL_MODES, car: CAR_MODE };
-export const BASE_MODE_IDS = Object.freeze(Object.keys(TRAVEL_MODES));
-export const DEFAULT_MODE = 'danfo';
+export const ALL_MODES: Record<TravelModeId, TravelModeDefinition> = { ...TRAVEL_MODES, car: CAR_MODE };
+// Object.keys is string[]; the keys of TRAVEL_MODES are exactly the BaseTravelModeId union.
+export const BASE_MODE_IDS: readonly BaseTravelModeId[] = Object.freeze(Object.keys(TRAVEL_MODES) as BaseTravelModeId[]);
+export const DEFAULT_MODE: BaseTravelModeId = 'danfo';
 
 /**
  * Fares by band for the modes whose fare changes with distance. `near` was observed (a short
  * hop within one district cluster); `far` (crossing the lagoon) is an original beta value.
  * The standard band is each mode's own `fare`.
  */
-export const FARE_BANDS = {
+export const FARE_BANDS: FareBands = {
   near: { keke: 100, danfo: 100, okada: 200, cab: 350, car: 80 },
   far: { keke: 200, danfo: 200, okada: 300, cab: 550, car: 180, beta: true },
 };
 
 /** Trip-time multiplier per band (original beta values). */
-export const BAND_TIME = { near: 0.85, standard: 1, far: 1.5 };
-export const BAND_LABELS = { near: 'Short hop', standard: 'Across town', far: 'Across the lagoon' };
-/** Map distance (in map units, see content/venues.js) below which a trip on one landmass is a short hop. */
+export const BAND_TIME: Record<RouteBand, number> = { near: 0.85, standard: 1, far: 1.5 };
+export const BAND_LABELS: Record<RouteBand, string> = { near: 'Short hop', standard: 'Across town', far: 'Across the lagoon' };
+/** Map distance (in map units, see content/venues.ts) below which a trip on one landmass is a short hop. */
 export const NEAR_DISTANCE = 160;
 export const MIN_TRIP_SECONDS = 4;
 export const MAX_TRIP_SECONDS = 60;

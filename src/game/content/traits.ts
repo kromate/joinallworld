@@ -7,8 +7,8 @@
  * without that mark follow what was observed in the reference game. Where only part of an
  * entry is original, `betaFields` lists which fields are.
  *
- * EFFECT DATA (`fx`) — shared by traits, lottery outcomes and perks (content/goals.js) and
- * applied by src/game/character-effects.js through the registry modifier keys:
+ * EFFECT DATA (`fx`) — shared by traits, lottery outcomes and perks (content/goals.ts) and
+ * applied by src/game/character-effects.ts through the registry modifier keys:
  *   xp          { all?: mult, [skill]: mult }      'skills.xpRate'
  *   decay       { all?: mult, [need]: mult }       'needs.decayRate'
  *   nightDecay  { [need]: mult }                   'needs.decayRate', 9 PM – 5 AM Lagos time only
@@ -21,9 +21,14 @@
  *   bonus       { tags: [...], needs: { ... } }    extra need change when such an activity completes
  */
 
+import type { AccessoryId, DreamId, Look, LotteryId, NeedId, StartHomeId, TraitId, Wardrobe } from '../../types/life.ts'
+import type {
+  Appearance, BoutiquePrices, DreamDefinition, LotteryOutcome, MoodWord, OnboardingStep, StartHomeDefinition, TraitDefinition,
+} from '../../types/content.ts'
+
 // ---- Appearance -------------------------------------------------------------------------
 // Option names and list lengths as observed in the reference game; hex values are original.
-export const APPEARANCE = {
+export const APPEARANCE: Appearance = {
   bodies: [{ id: 'woman', label: 'Woman' }, { id: 'man', label: 'Man' }],
   hair: {
     woman: ['braids', 'afro', 'bun', 'ponytail', 'long', 'locs', 'low-cut', 'gele', 'classic'],
@@ -59,12 +64,12 @@ export const APPEARANCE = {
     gele: 'Gele', classic: 'Classic', bald: 'Bald', curls: 'Curls',
     casual: 'Casual', office: 'Office', owambe: 'Owambe', 'site-work': 'Site work', hoodie: 'Hoodie', chill: 'Chill',
     plain: 'Plain', ankara: 'Ankara', adire: 'Adire', 'aso-oke': 'Aso-oke',
-    // Original beta additions
+    // Original beta additions. ('long' above is shared by the hair and the face of the same name.)
     cornrows: 'Cornrows', twists: 'Twists', 'bantu-knots': 'Bantu knots', fade: 'Fade',
     jersey: 'Jersey', kaftan: 'Kaftan', gown: 'Gown', agbada: 'Agbada',
     glasses: 'Glasses', sunglasses: 'Sunglasses', cap: 'Cap', headwrap: 'Headwrap', fila: 'Fila', earrings: 'Earrings', chain: 'Chain',
     watch: 'Wristwatch', beads: 'Beads', backpack: 'Backpack', handbag: 'Handbag',
-    oval: 'Oval', round: 'Round', long: 'Long', smile: 'Smile', neutral: 'Calm', grin: 'Grin',
+    oval: 'Oval', round: 'Round', smile: 'Smile', neutral: 'Calm', grin: 'Grin',
   },
   /**
    * Original beta additions (add-only; the lists above stay exactly as observed). A body's styles
@@ -100,18 +105,18 @@ export const APPEARANCE = {
 };
 
 /** Look given to a life that predates character creation, and the starting point of a new one. */
-export const DEFAULT_LOOK = {
+export const DEFAULT_LOOK: Look = {
   body: 'woman', hair: 'low-cut', outfit: 'casual', fabric: 'plain',
   skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy',
 };
 
 /** Items every Sim owns without buying them (valid for both bodies). Original beta choice. */
-export const WARDROBE_BASICS = { hair: ['low-cut'], outfit: ['casual'], fabric: ['plain'] };
+export const WARDROBE_BASICS: Pick<Wardrobe, 'hair' | 'outfit' | 'fabric'> = { hair: ['low-cut'], outfit: ['casual'], fabric: ['plain'] };
 /** Accessories every Sim owns without buying them: the ones offered at creation. Original beta choice. */
-export const ACCESSORY_BASICS = ['glasses', 'cap', 'earrings', 'watch'];
+export const ACCESSORY_BASICS: AccessoryId[] = ['glasses', 'cap', 'earrings', 'watch'];
 
 /** Boutique prices in naira. Every price is an original beta value. */
-export const BOUTIQUE_PRICES = {
+export const BOUTIQUE_PRICES: BoutiquePrices = {
   beta: true,
   hair: { 'low-cut': 0, bald: 500, bun: 2000, ponytail: 2000, afro: 2500, classic: 2500, curls: 3000, braids: 3500, long: 4000, locs: 4500, gele: 6000,
     fade: 1500, cornrows: 3000, twists: 3500, 'bantu-knots': 3000 },
@@ -123,7 +128,7 @@ export const BOUTIQUE_PRICES = {
 // ---- Traits (choose exactly two) ---------------------------------------------------------
 // The ten names and what each one is about were observed; every magnitude is an original beta value.
 export const TRAITS_REQUIRED = 2;
-export const TRAITS = {
+export const TRAITS: Record<TraitId, TraitDefinition> = {
   hustler: { id: 'hustler', label: 'Hustler', icon: '💸', beta: true, betaFields: ['fx', 'blurb'],
     blurb: 'Every corner is a business plan.', effects: ['Hustle grows 25% faster', 'Work performance rises 15% faster'],
     fx: { xp: { hustle: 1.25 }, performance: 1.15 } },
@@ -158,8 +163,8 @@ export const TRAITS = {
 
 // ---- Dreams (choose one) -----------------------------------------------------------------
 // Names and completion conditions were observed. How progress is measured on the way there
-// (see systems/goals.js) and the completion reward are original beta values.
-export const DREAMS = {
+// (see systems/goals.ts) and the completion reward are original beta values.
+export const DREAMS: Record<DreamId, DreamDefinition> = {
   'oga-at-the-top': { id: 'oga-at-the-top', label: 'Oga at the Top', icon: '👔', goal: 'Reach the top level of any career.',
     measure: 'Progress follows your highest career level.' },
   'lekki-landlord': { id: 'lekki-landlord', label: 'Lekki Landlord', icon: '🏘️', goal: 'Build a net worth of ₦1,000,000.',
@@ -178,7 +183,7 @@ export const DREAM_TARGETS = { beta: true, netWorth: 1000000, bestFriends: 4, ca
 
 // ---- Starting homes ----------------------------------------------------------------------
 // Names, districts, weekly rent and difficulty tags were observed; the descriptions are original.
-export const START_HOMES = {
+export const START_HOMES: Record<StartHomeId, StartHomeDefinition> = {
   mushin: { id: 'mushin', label: 'Face-me-I-face-you', district: 'Mushin', rent: 2400, tag: 'Hard start', icon: '🏚️',
     blurb: 'One room in a busy shared compound. The rent is tiny and so is the space.' },
   yaba: { id: 'yaba', label: 'Self-contain', district: 'Yaba', rent: 6000, tag: 'Balanced', icon: '🏠',
@@ -189,17 +194,17 @@ export const START_HOMES = {
 export const RENT_NOTE = 'Rent is paid every Saturday.';
 
 /** Needs a life starts with once it moves in, as reported for a fresh life in the reference game. */
-export const START_NEEDS = { hunger: 80, energy: 85, fun: 70, social: 60, hygiene: 75, bladder: 70 };
+export const START_NEEDS: Record<NeedId, number> = { hunger: 80, energy: 85, fun: 70, social: 60, hygiene: 75, bladder: 70 };
 
 // ---- Birth lottery -----------------------------------------------------------------------
 // Rolled once. LAPO Baby is exactly as observed (loan, Hustle 2, +25% learning, Lekki locked,
 // start cash 76,000 in Mushin and 96,000 in Yaba). Its odds, and every other outcome in full,
 // are original beta content. `odds` are weights out of 100.
 // `ownCash` (original beta value) is the start cash of a life that settles into the free starter house on its own plot
-// (systems/estate.js) instead of a rented home. It is the outcome's Mushin start — the same 6 × 6 room, without the ₦2,400
+// (systems/estate.ts) instead of a rented home. It is the outcome's Mushin start — the same 6 × 6 room, without the ₦2,400
 // weekly rent — except for Ajebutter: ₦200,000, not ₦230,000, because with no rent to pay the larger sum let the starter job
 // alone reach the cheapest car inside 150 days (scripts/economy-sim.mjs; asserted in src/game/economy.test.js).
-export const LOTTERY = {
+export const LOTTERY: Record<LotteryId, LotteryOutcome> = {
   'lapo-baby': {
     id: 'lapo-baby', label: 'LAPO Baby', icon: '🧾', tagline: 'Nothing handed over, everything earned.', odds: 50, betaFields: ['odds', 'tagline'],
     startCash: { mushin: 76000, yaba: 96000 }, ownCash: 76000,
@@ -237,14 +242,14 @@ export const LOTTERY = {
 };
 export const LOTTERY_NOTE = 'Decided once. Starting a new life keeps the same roll.';
 
-export const ONBOARDING_STEPS = [
+export const ONBOARDING_STEPS: OnboardingStep[] = [
   { id: 'look', label: 'Look' }, { id: 'traits', label: 'Personality' }, { id: 'dream', label: 'Dream' },
   { id: 'lottery', label: 'Birth lottery' }, { id: 'home', label: 'Home' },
 ];
 
 // ---- Mood words and feeling lines --------------------------------------------------------
 // The five mood words and their colours were observed; the score thresholds are original beta values.
-export const MOODS = [
+export const MOODS: MoodWord[] = [
   { word: 'Very Happy', min: 78, tone: 'good', icon: '😁' },
   { word: 'Happy', min: 62, tone: 'good', icon: '😄' },
   { word: 'Fine', min: 45, tone: 'neutral', icon: '🙂' },
@@ -252,7 +257,7 @@ export const MOODS = [
   { word: 'Miserable', min: 0, tone: 'bad', icon: '😣' },
 ];
 /** Original one-line descriptions for the feelings the needs system reports, by feeling id. */
-export const FEELING_LINES = {
+export const FEELING_LINES: Record<string, string> = {
   hungry: 'Your stomach is filing a complaint.', tired: 'Bed is calling your name.', bored: 'Nothing fun has happened in a while.',
   lonely: 'You have not talked to anyone lately.', grubby: 'A bath is overdue.', bursting: 'Find a toilet. Soon.',
 };

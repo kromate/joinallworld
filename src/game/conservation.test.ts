@@ -9,6 +9,8 @@ import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, actionTypes, spotsOf } from '../life.ts';
 import { makeRng } from './util.ts';
 import { serverOnlyReason } from './registry.ts';
+import type { ActionBody } from '../types/actions.ts';
+import type { LifeContextInit, LifeState, StartHomeId } from '../types/life.ts';
 import { statementOf } from './systems/wallet.ts';
 import { MAX_STACK } from './systems/inventory.ts';
 import { VENUES } from './content/venues.ts';
@@ -26,11 +28,20 @@ import { GIG_DAILY_LIMIT } from './content/venues.ts';
 const CITY = 'lagos';
 const START = Date.UTC(2026, 0, 5, 9);
 const LOOK = { body: 'woman', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
-const pick = (rng, list) => list[Math.floor(rng() * list.length)];
-const HOSTILE = [undefined, null, '', '__proto__', 'constructor', -1, 1e99, NaN, {}, [], { id: { toString: 1 } }, 'x'.repeat(200)];
+type Rng = () => number;
+/** A random element. Every list passed is non-empty, so the index is always in range. */
+const pick = <T>(rng: Rng, list: readonly T[]): T => list[Math.floor(rng() * list.length)] as T;
+/** An action as the walk sends it: the payload is often deliberately not an object. */
+type Body = { type: string; payload?: unknown; actionId?: string };
+/** One random step: seconds to pass, or an action body. */
+type Step = { wait: number; type?: undefined; payload?: undefined } | { wait?: undefined; type: string; payload?: unknown };
+type TraceEntry = { wait: number; body?: undefined; ok?: undefined; code?: undefined } | { wait?: undefined; body: Body; ok: boolean; code: string };
+/** Send a body that may be malformed on purpose: dispatch validates every field itself. */
+const sendBody = (state: LifeState, body: Body, context: LifeContextInit) => dispatch(state, body as ActionBody, context);
+const HOSTILE: unknown[] = [undefined, null, '', '__proto__', 'constructor', -1, 1e99, NaN, {}, [], { id: { toString: 1 } }, 'x'.repeat(200)];
 
 /** One random step: an action body, or a number of seconds to let pass. */
-function step(rng, state) {
+function step(rng: Rng, state: LifeState): Step {
   const roll = rng();
   const venues = Object.keys(VENUES);
   if (roll < 0.16) return { wait: pick(rng, [1, 5, 9, 20, 45, 300, 3600, 4 * 3600, 26 * 3600, 8 * 86400]) };
@@ -38,7 +49,7 @@ function step(rng, state) {
   if (roll < 0.40) return { type: 'spot', payload: { id: pick(rng, spotsOf(state.location)).id } };
   if (roll < 0.62) {
     const here = spotsOf(state.location).find((spot) => spot.id === state.spot)?.activities ?? [];
-    const def = pick(rng, here.length ? here : [{ id: 'nap' }]);
+    const def = pick<{ id: string; choices?: readonly { id: string }[] }>(rng, here.length ? here : [{ id: 'nap' }]);
     return { type: 'activity', payload: { id: def.id, ...(def.choices ? { choice: pick(rng, def.choices).id } : {}) } };
   }
   if (roll < 0.66) return { type: 'cancel' };
@@ -57,11 +68,11 @@ function step(rng, state) {
   return { type: pick(rng, actionTypes()), payload: rng() < 0.5 ? { id: pick(rng, HOSTILE), amount: pick(rng, HOSTILE), mode: pick(rng, HOSTILE), item: pick(rng, HOSTILE) } : pick(rng, HOSTILE) };
 }
 
-function newLife(rng, seedName) {
+function newLife(rng: Rng, seedName: string) {
   let now = START;
   // Most lives start as guests of the quick start; of those, a third stay guests for the whole run (playing in public, never settling in).
   const state = createLife(null, { now, cityId: CITY, isNew: true, quickStart: rng() < 0.8 });
-  const send = (type, payload, id) => dispatch(state, { type, payload, actionId: id }, { now, cityId: CITY, actionId: id });
+  const send = (type: string, payload: Record<string, unknown>, id: string) => sendBody(state, { type, payload, actionId: id }, { now, cityId: CITY, actionId: id });
   if (state.onboarding.required) {
     assert.equal(send('onboarding.quick-start', { look: LOOK }, `${seedName}-play`).code, 'playing');
     if (rng() < 0.34) return { state, now };
@@ -69,14 +80,17 @@ function newLife(rng, seedName) {
     send('onboarding.traits', { traits: [first, second] }, `${seedName}-traits`);
     send('onboarding.dream', { dream: pick(rng, Object.keys(DREAMS)) }, `${seedName}-dream`);
     send('onboarding.lottery', {}, `${seedName}-lottery`);
-    const homes = Object.keys(START_HOMES).filter((house) => !LOTTERY[state.onboarding.lottery.id].locked?.[house]);
+    const rolled = state.onboarding.lottery;
+    assert.ok(rolled, 'the lottery was rolled');
+    // The keys of START_HOMES are StartHomeIds.
+    const homes = (Object.keys(START_HOMES) as StartHomeId[]).filter((house) => !LOTTERY[rolled.id].locked?.[house]);
     assert.equal(send('onboarding.home', { house: pick(rng, homes) }, `${seedName}-home`).ok, true);
   }
   return { state, now };
 }
 
 /** Play `steps` random steps. Returns the trace, the final state and the running totals. */
-function play(seedName, steps, check) {
+function play(seedName: string, steps: number, check?: (state: LifeState, expectedCash: number, index: number, next: Step, now: number) => void) {
   const rng = makeRng(seedName);
   const life = newLife(rng, seedName);
   const { state } = life;
@@ -84,7 +98,7 @@ function play(seedName, steps, check) {
   // The life began with the seed and whatever creation paid: everything from here on must be in the ledger.
   const opening = state.cash - state.ledger.reduce((total, line) => total + line.amount, 0);
   sum = state.ledger.reduce((total, line) => total + line.amount, 0);
-  const trace = [];
+  const trace: TraceEntry[] = [];
   const collect = () => {
     let fresh = 0;
     for (let i = state.ledger.length - 1; i >= 0 && state.ledger[i] !== lastLine; i--) fresh += 1;
@@ -93,7 +107,7 @@ function play(seedName, steps, check) {
   };
   for (let i = 0; i < steps; i++) {
     const next = step(rng, state);
-    if (next.wait) {
+    if (next.type === undefined) {
       now += next.wait * 1000;
       advanceLife(state, next.wait, { now, cityId: CITY });
       trace.push({ wait: next.wait });
@@ -101,7 +115,7 @@ function play(seedName, steps, check) {
       const actionId = `${seedName}-${i}`;
       const body = { type: next.type, payload: next.payload, actionId };
       const ctx = { now, cityId: CITY, actionId };
-      const result = dispatch(state, body, ctx);
+      const result = sendBody(state, body, ctx);
       trace.push({ body: structuredClone(body), ok: result.ok, code: result.code });
       assert.equal(typeof result.ok, 'boolean'); assert.equal(typeof result.code, 'string', `${next.type} returned a code`);
       if (!result.ok && serverOnlyReason(next.type)) assert.equal(result.code, 'server_only');
@@ -112,7 +126,7 @@ function play(seedName, steps, check) {
   return { state, trace, opening, sum, now };
 }
 
-function invariants(state, expectedCash, index, next, now) {
+function invariants(state: LifeState, expectedCash: number, index: number, next: Step, now: number) {
   const where = `step ${index} ${JSON.stringify(next).slice(0, 120)}`;
   // A reload (what the server does before every settlement) changes nothing — after EVERY step, so
   // a field some system wrote without declaring or rebuilding it is caught where it was written.
@@ -171,7 +185,8 @@ test('random play replays exactly: the same inputs give the same life, step for 
     let now = life.now;
     for (const entry of first.trace) {
       if (entry.wait) { now += entry.wait * 1000; advanceLife(life.state, entry.wait, { now, cityId: CITY }); continue; }
-      const result = dispatch(life.state, structuredClone(entry.body), { now, cityId: CITY, actionId: entry.body.actionId });
+      assert.ok(entry.body, 'a trace entry that did not wait holds its body');
+      const result = sendBody(life.state, structuredClone(entry.body), { now, cityId: CITY, actionId: entry.body.actionId });
       assert.deepEqual([result.ok, result.code], [entry.ok, entry.code]);
     }
     assert.deepEqual(life.state, first.state);

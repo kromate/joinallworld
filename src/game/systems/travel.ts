@@ -13,7 +13,7 @@
  * `fare`; both still resume and arrive.
  *
  * RULES
- *   - Five modes (content/travel.js) plus 'car', which is offered only when a system adds it
+ *   - Five modes (content/travel.ts) plus 'car', which is offered only when a system adds it
  *     through the 'travel.modes' modifier. Trek is always offered, so nobody is ever stranded.
  *   - Every mode goes everywhere, Home included.
  *   - A closed venue cannot be travelled to. The refusal names the opening time and the wait,
@@ -22,7 +22,7 @@
  *     the lagoon (routeBand). Need costs are applied on arrival.
  *   - Cancelling keeps the foundation's rule: the trip stops where it started and the fare is
  *     not refunded. No need cost is applied and no roadside event is rolled.
- *   - On arrival a roadside event may be offered (content/events.js). It never blocks play:
+ *   - On arrival a roadside event may be offered (content/events.ts). It never blocks play:
  *     it lapses when the next trip starts or after EVENT_TTL_SECONDS.
  *
  * STATE  state.travel = {
@@ -37,7 +37,7 @@
  *   eventDays  { [eventId]: day }  the Lagos day a once-a-day roadside event was last offered
  * }
  *
- * THE DAILY GIG LIMIT (original beta rule, GIG_DAILY_LIMIT in content/venues.js)
+ * THE DAILY GIG LIMIT (original beta rule, GIG_DAILY_LIMIT in content/venues.ts)
  *   A gig is a venue activity that pays (a `reward`, or a chance outcome that pays more than once)
  *   and is not a job's shift. Each one finished counts; once the day's limit is reached every gig
  *   is refused with 'gig_limit' and a reason that says when they reopen. Job shifts are untouched.
@@ -63,6 +63,11 @@
  * EVENTS LISTENED TO
  *   'life.started' { house }, 'house.moved' { id }, 'activity.completed'
  */
+import type { ActivityDefinition, ActivityOutcomeRule, ActivitySuccessOutcome, Block, ComingSoonDefinition, FareBands, OutcomeBlock, RoadsideEvent, RouteBand, SkillCheck, VenueDefinition, VenueZone } from '../../types/content.ts';
+import type { ActivityId, HouseId, LifeContext, LifeState, NeedMap, RoadsideEventId, SkillMap, TravelAction, TravelModeId, TravelState, VenueId } from '../../types/life.ts';
+import type { TravelBlockCode } from '../../types/actions.ts';
+import type { SavedInput, SystemDefinition } from '../../types/registry.ts';
+import type { TravelDestination, TravelModeCard, TravelView } from '../../types/view.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { openingInfo } from '../clock.ts';
@@ -78,20 +83,37 @@ const MAX_COOLDOWNS = 80;
 /** Upper bound accepted for a saved trip's `fare` (no route costs anywhere near this). */
 const MAX_TRIP_FARE = 1_000_000;
 
+/** Fare, trip time and need cost of one quoted trip. */
+interface TripQuote { mode: TravelModeId; band: RouteBand; fare: number; seconds: number; needs: NeedMap; xp: SkillMap }
+
 // ---- places and routes ------------------------------------------------------------------
 
-const homeId = (state) => (Object.hasOwn(HOME_SPOTS, state?.travel?.home) ? state.travel.home : DEFAULT_HOME);
+// Lookups by an id that is not yet known to be a key; the same objects, typed as open tables.
+const comingSoon: Partial<Record<string, ComingSoonDefinition>> = COMING_SOON;
+const outcomeRules: Partial<Record<string, ActivityOutcomeRule>> = ACTIVITY_OUTCOMES;
+const fareBands: Partial<Record<RouteBand, FareBands['near']>> = FARE_BANDS;
+const needNames: readonly string[] = NEEDS;
+const isVenue = (id: unknown): id is VenueId => typeof id === 'string' && Object.hasOwn(VENUES, id);
+const isModeId = (id: unknown): id is TravelModeId => typeof id === 'string' && Object.hasOwn(ALL_MODES, id);
+const isHomeId = (id: unknown): id is HouseId => typeof id === 'string' && Object.hasOwn(HOME_SPOTS, id);
+const isEventId = (id: unknown): id is RoadsideEventId => typeof id === 'string' && Object.hasOwn(EVENTS, id);
+const outcomeRuleOf = (id: string): ActivityOutcomeRule | undefined => (Object.hasOwn(ACTIVITY_OUTCOMES, id) ? outcomeRules[id] : undefined);
+
+const homeId = (state: LifeState): HouseId => {
+  const home = state?.travel?.home;
+  return isHomeId(home) ? home : DEFAULT_HOME;
+};
 
 /** Map position and landmass of a venue; Home depends on which house the player lives in. */
-export function placeOf(state, venueId) {
+export function placeOf(state: LifeState, venueId: VenueId): { x: number; y: number; zone: VenueZone } | null {
   // Home in a house the player built: the landmass of its local government; the middle of the map for distance.
   if (venueId === 'home' && state?.estate?.living === 'own') return { x: 50, y: 50, zone: lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.zone ?? 'mainland' };
-  const place = venueId === 'home' ? HOME_SPOTS[homeId(state)] : VENUES[venueId] || COMING_SOON[venueId];
+  const place = venueId === 'home' ? HOME_SPOTS[homeId(state)] : VENUES[venueId] || comingSoon[venueId];
   return place ? { x: place.map.x, y: place.map.y, zone: place.zone } : null;
 }
 
 /** 'near' | 'standard' | 'far' for a trip between two venues. */
-export function routeBand(state, from, to) {
+export function routeBand(state: LifeState, from: VenueId, to: VenueId): RouteBand {
   const a = placeOf(state, from), b = placeOf(state, to);
   if (!a || !b) return 'standard';
   if ((a.zone === 'mainland') !== (b.zone === 'mainland')) return 'far';
@@ -99,17 +121,17 @@ export function routeBand(state, from, to) {
   return distance < NEAR_DISTANCE ? 'near' : 'standard';
 }
 
-const cleanNeeds = (value, fallback) => (isRecord(value)
-  ? Object.fromEntries(Object.entries(value).filter(([need, amount]) => NEEDS.includes(need) && finite(amount) && amount !== 0).map(([need, amount]) => [need, clamp(Math.round(amount), -100, 100)]))
+const cleanNeeds = (value: unknown, fallback: NeedMap): NeedMap => (isRecord(value)
+  ? Object.fromEntries(Object.entries(value).filter((entry): entry is [string, number] => needNames.includes(entry[0]) && finite(entry[1]) && entry[1] !== 0).map(([need, amount]) => [need, clamp(Math.round(amount), -100, 100)]))
   : fallback);
 
 /** Fare, trip time and need cost of one trip from where the player is, after every modifier. */
-export function quote(state, destination, modeId, ctx) {
+export function quote(state: LifeState, destination: VenueId, modeId: TravelModeId, ctx: LifeContext): TripQuote {
   const mode = ALL_MODES[modeId];
   const from = state.location;
   const band = routeBand(state, from, destination);
   const data = { mode: modeId, destination, from, band };
-  const baseFare = FARE_BANDS[band]?.[modeId] ?? mode.fare;
+  const baseFare = fareBands[band]?.[modeId] ?? mode.fare;
   const fare = Math.max(0, Math.round(Number(modify(state, 'travel.fare', baseFare, data, ctx)) || 0));
   const baseSeconds = Math.round(mode.seconds * BAND_TIME[band]);
   const seconds = clamp(Math.round(Number(modify(state, 'travel.duration', baseSeconds, data, ctx)) || baseSeconds), MIN_TRIP_SECONDS, MAX_TRIP_SECONDS);
@@ -118,7 +140,7 @@ export function quote(state, destination, modeId, ctx) {
 }
 
 /** Mode ids offered for a trip. Trek is always first, so there is always a free way to go. */
-export function modesFor(state, destination, ctx) {
+export function modesFor(state: LifeState, destination: VenueId, ctx: LifeContext): TravelModeId[] {
   const offered = modify(state, 'travel.modes', [...BASE_MODE_IDS], { destination, from: state.location }, ctx);
   const ids = (Array.isArray(offered) ? offered : BASE_MODE_IDS).filter((id, index, list) => typeof id === 'string' && Object.hasOwn(ALL_MODES, id) && list.indexOf(id) === index);
   return ids.includes('trek') ? ids : ['trek', ...ids];
@@ -126,7 +148,7 @@ export function modesFor(state, destination, ctx) {
 
 // ---- opening hours: one source of truth -------------------------------------------------
 
-const waitText = (minutes) => (minutes >= 60 ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : `${minutes}m`);
+const waitText = (minutes: number): string => (minutes >= 60 ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : `${minutes}m`);
 
 /** Opening state of a venue's hours with the one label every screen shows — see clock.js. */
 export { openingInfo };
@@ -135,11 +157,11 @@ export { openingInfo };
  * Why this trip cannot start, or null. Pure: never mutates state. Does not check `busy`.
  * Codes: invalid_travel · coming_soon · already_here · travel_mode_unavailable · closed · insufficient_funds
  */
-export function travelBlock(state, destination, modeId, ctx) {
+export function travelBlock(state: LifeState, destination: unknown, modeId: unknown, ctx: LifeContext): Block<TravelBlockCode> | null {
   if (typeof destination === 'string' && Object.hasOwn(COMING_SOON, destination)) {
     return { code: 'coming_soon', reason: `${venueLabel(destination, ctx?.cityId)} is not open yet — it is coming soon.` };
   }
-  if (typeof destination !== 'string' || !Object.hasOwn(VENUES, destination) || typeof modeId !== 'string' || !Object.hasOwn(ALL_MODES, modeId)) {
+  if (!isVenue(destination) || !isModeId(modeId)) {
     return { code: 'invalid_travel', reason: 'Choose a valid destination and travel option.' };
   }
   if (destination === state.location) return { code: 'already_here', reason: 'You are already here.' };
@@ -160,12 +182,14 @@ export function travelBlock(state, destination, modeId, ctx) {
 
 // ---- the trip ---------------------------------------------------------------------------
 
-function travel(state, payload, ctx) {
+function travel(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = busy(state);
   if (blocked) return blocked;
   const destination = payload?.id, modeId = payload?.mode;
   const why = travelBlock(state, destination, modeId, ctx);
   if (why) return fail(state, why.code, why.reason);
+  // travelBlock only returns null for a known venue and mode; this narrows the untrusted payload.
+  if (!isVenue(destination) || !isModeId(modeId)) return fail(state, 'invalid_travel', 'Choose a valid destination and travel option.');
   const trip = quote(state, destination, modeId, ctx);
   const label = venueLabel(destination, ctx.cityId);
   const mode = ALL_MODES[modeId];
@@ -176,15 +200,15 @@ function travel(state, payload, ctx) {
   return ok(state, 'started');
 }
 
-const signed = (amount) => (amount > 0 ? `+${amount}` : `−${-amount}`);
-const needsText = (needs) => Object.entries(needs).map(([need, amount]) => `${signed(amount)} ${need[0].toUpperCase()}${need.slice(1)}`).join(', ');
+const signed = (amount: number): string => (amount > 0 ? `+${amount}` : `−${-amount}`);
+const needsText = (needs: Record<string, number>): string => Object.entries(needs).map(([need, amount]) => `${signed(amount)} ${need.charAt(0).toUpperCase()}${need.slice(1)}`).join(', ');
 
 /** Is this activity a gig for the daily limit? */
-export const isGig = (def) => Boolean(def) && !def.requiresJob && (def.reward > 0
-  || (Object.hasOwn(ACTIVITY_OUTCOMES, def.id) && ACTIVITY_OUTCOMES[def.id].success?.reward > 0 && !ACTIVITY_OUTCOMES[def.id].success.once));
-const gigsToday = (state, now) => (state.travel.gigs.day === lagosTime(now).day ? state.travel.gigs.count : 0);
+export const isGig = (def: ActivityDefinition | null | undefined): boolean => !!def && !def.requiresJob && ((def.reward ?? 0) > 0
+  || ((outcomeRuleOf(def.id)?.success?.reward ?? 0) > 0 && !outcomeRuleOf(def.id)?.success.once));
+const gigsToday = (state: LifeState, now: number): number => (state.travel.gigs.day === lagosTime(now).day ? state.travel.gigs.count : 0);
 
-function pickEvent(state, modeId, ctx) {
+function pickEvent(state: LifeState, modeId: TravelModeId, ctx: LifeContext): RoadsideEvent | null {
   const today = lagosTime(ctx.now).day;
   const fits = Object.values(EVENTS).filter((event) => event.modes.includes(modeId) && !(event.oncePerDay && state.travel.eventDays[event.id] === today));
   if (!fits.length) return null;
@@ -193,12 +217,12 @@ function pickEvent(state, modeId, ctx) {
   if (ctx.rng() >= ALL_MODES[modeId].eventChance) return null;
   let roll = ctx.rng() * fits.reduce((sum, event) => sum + event.weight, 0);
   for (const event of fits) { roll -= event.weight; if (roll < 0) return event; }
-  return fits[fits.length - 1];
+  return fits[fits.length - 1] ?? null;
 }
 
-function complete(state, active, ctx) {
+function complete(state: LifeState, active: TravelAction, ctx: LifeContext): void {
   const from = state.location, destination = active.id;
-  const modeId = typeof active.mode === 'string' && Object.hasOwn(ALL_MODES, active.mode) ? active.mode : null;
+  const modeId = isModeId(active.mode) ? active.mode : null;
   // Quote before moving: the band depends on where the trip started.
   const trip = modeId ? quote(state, destination, modeId, ctx) : null;
   state.travel.lastTrip = { mode: modeId, from, to: destination };
@@ -211,10 +235,10 @@ function complete(state, active, ctx) {
     changeNeeds(state, trip.needs);
     for (const [skill, amount] of Object.entries(trip.xp)) addSkillXp(state, skill, amount, ctx);
     const costs = Object.fromEntries(Object.entries(trip.needs).filter(([, amount]) => amount < 0));
-    if (Object.keys(costs).length) state.message += ` The ${ALL_MODES[modeId].label.toLowerCase()} cost you ${needsText(costs)}.`;
+    if (Object.keys(costs).length) state.message += ` The ${ALL_MODES[trip.mode].label.toLowerCase()} cost you ${needsText(costs)}.`;
   }
   emit(state, 'venue.visited', { venue: destination, first }, ctx);
-  const event = trip ? pickEvent(state, modeId, ctx) : null;
+  const event = trip ? pickEvent(state, trip.mode, ctx) : null;
   if (event) {
     if (event.oncePerDay) state.travel.eventDays[event.id] = lagosTime(ctx.now).day;
     state.travel.event = { id: event.id, at: ctx.now };
@@ -226,19 +250,19 @@ function complete(state, active, ctx) {
 // ---- outcomes shared by roadside choices and chance activities --------------------------
 
 /** Apply one outcome block. Money out is taken as far as the wallet allows; it never goes negative. */
-function applyOutcome(state, outcome, reason, ctx) {
+function applyOutcome(state: LifeState, outcome: OutcomeBlock, reason: string, ctx: LifeContext): void {
   const lost = (outcome.cost || 0) + (outcome.fine || 0);
   if (lost > 0) debit(state, lost, reason, ctx, { partial: true });
-  if (outcome.reward > 0) credit(state, outcome.reward, reason, ctx);
+  if ((outcome.reward ?? 0) > 0) credit(state, outcome.reward ?? 0, reason, ctx);
   changeNeeds(state, outcome.effects);
   for (const [skill, amount] of Object.entries(outcome.xp || {})) addSkillXp(state, skill, amount, ctx);
   if (outcome.moodlet) addMoodlet(state, outcome.moodlet, ctx);
   if (outcome.treat) emit(state, 'health.treat', { by: reason }, ctx);
 }
 
-const chanceOf = (state, check) => Math.min(check.max ?? 1, check.base + check.perLevel * skillLevel(state, check.skill));
+const chanceOf = (state: LifeState, check: SkillCheck<unknown, unknown>): number => Math.min(check.max ?? 1, check.base + check.perLevel * skillLevel(state, check.skill));
 
-function roadside(state, payload, ctx) {
+function roadside(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const pending = state.travel.event;
   const event = pending && EVENTS[pending.id];
   if (!event) return fail(state, 'no_event', 'Nothing is waiting for you by the roadside right now.');
@@ -263,12 +287,12 @@ function roadside(state, payload, ctx) {
   return ok(state, 'resolved');
 }
 
-function rollActivity(state, id, rule, ctx) {
+function rollActivity(state: LifeState, id: ActivityId, rule: ActivityOutcomeRule, ctx: LifeContext): void {
   const success = ctx.rng() < chanceOf(state, rule);
-  let outcome = success ? rule.success : rule.failure;
+  let outcome: ActivitySuccessOutcome = success ? rule.success : rule.failure;
   const label = findActivity(id)?.def.label ?? id;
   if (success && outcome.once) {
-    if (state.travel[outcome.once]) outcome = outcome.repeat;
+    if (state.travel[outcome.once]) outcome = outcome.repeat ?? outcome; // every `once` outcome in content has a `repeat`
     else state.travel[outcome.once] = true;
   }
   applyOutcome(state, outcome, label, ctx);
@@ -277,69 +301,70 @@ function rollActivity(state, id, rule, ctx) {
   emit(state, 'activity.outcome', { id, success }, ctx);
 }
 
-const cooldownLeft = (state, id, now) => Math.max(0, Math.ceil(((state.travel?.cooldowns?.[id] ?? 0) - now) / 1000));
+const cooldownLeft = (state: LifeState, id: string, now: number): number => Math.max(0, Math.ceil(((state.travel?.cooldowns?.[id] ?? 0) - now) / 1000));
 
 // ---- state ------------------------------------------------------------------------------
 
-function sanitize(input, state, ctx) {
+function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   const saved = isRecord(input.travel) ? input.travel : {};
   const now = finite(ctx?.now) ? ctx.now : state.t;
-  const event = isRecord(saved.event) && typeof saved.event.id === 'string' && Object.hasOwn(EVENTS, saved.event.id) && finite(saved.event.at) ? { id: saved.event.id, at: saved.event.at } : null;
+  const event = isRecord(saved.event) && isEventId(saved.event.id) && finite(saved.event.at) ? { id: saved.event.id, at: saved.event.at } : null;
   const trip = saved.lastTrip;
-  const lastTrip = isRecord(trip) && typeof trip.to === 'string' && Object.hasOwn(VENUES, trip.to) && typeof trip.from === 'string' && Object.hasOwn(VENUES, trip.from)
-    && (trip.mode === null || (typeof trip.mode === 'string' && Object.hasOwn(ALL_MODES, trip.mode))) ? { mode: trip.mode, from: trip.from, to: trip.to } : null;
-  const cooldowns = {};
+  const lastTrip = isRecord(trip) && isVenue(trip.to) && isVenue(trip.from)
+    && (trip.mode === null || isModeId(trip.mode)) ? { mode: trip.mode, from: trip.from, to: trip.to } : null;
+  const cooldowns: TravelState['cooldowns'] = {};
   for (const [id, readyAt] of Object.entries(isRecord(saved.cooldowns) ? saved.cooldowns : {}).slice(0, MAX_COOLDOWNS)) {
     const seconds = findActivity(id)?.def.cooldown;
     // A cooldown can never be longer than the activity's own, whatever the save claims.
     if (finite(seconds) && seconds > 0 && finite(readyAt) && readyAt > now) cooldowns[id] = Math.min(readyAt, now + seconds * 1000);
   }
   state.travel = {
-    home: typeof saved.home === 'string' && Object.hasOwn(HOME_SPOTS, saved.home) ? saved.home : DEFAULT_HOME,
+    home: isHomeId(saved.home) ? saved.home : DEFAULT_HOME,
     event, lastTrip,
-    visited: [...new Set((Array.isArray(saved.visited) ? saved.visited : []).filter((id) => typeof id === 'string' && Object.hasOwn(VENUES, id)))],
+    visited: [...new Set((Array.isArray(saved.visited) ? saved.visited : []).filter(isVenue))],
     trips: safeCount(saved.trips) ? saved.trips : 0,
     cooldowns,
     funded: saved.funded === true,
     gigs: isRecord(saved.gigs) && safeCount(saved.gigs.day) && safeCount(saved.gigs.count) ? { day: saved.gigs.day, count: Math.min(saved.gigs.count, GIG_DAILY_LIMIT) } : { day: 0, count: 0 },
-    eventDays: Object.fromEntries(Object.entries(isRecord(saved.eventDays) ? saved.eventDays : {}).filter(([id, day]) => Object.hasOwn(EVENTS, id) && EVENTS[id].oncePerDay && safeCount(day))),
+    eventDays: Object.fromEntries(Object.entries(isRecord(saved.eventDays) ? saved.eventDays : {}).filter(([id, day]) => isEventId(id) && EVENTS[id].oncePerDay && safeCount(day))),
   };
 }
 
-function setHome(state, id) { if (typeof id === 'string' && Object.hasOwn(HOME_SPOTS, id)) state.travel.home = id; }
+function setHome(state: LifeState, id: unknown): void { if (isHomeId(id)) state.travel.home = id; }
 
 // ---- view -------------------------------------------------------------------------------
 
-function modeCard(state, destination, modeId, base, ctx) {
+function modeCard(state: LifeState, destination: VenueId, modeId: TravelModeId, base: Block<TravelBlockCode> | null, ctx: LifeContext): TravelModeCard {
   const mode = ALL_MODES[modeId];
   const trip = quote(state, destination, modeId, ctx);
   const blocked = base || (!canAfford(state, trip.fare) ? travelBlock(state, destination, modeId, ctx) : null);
   return { id: modeId, label: mode.label, icon: mode.icon, blurb: mode.blurb, fuel: Boolean(mode.fuel), fare: trip.fare, seconds: trip.seconds, needs: trip.needs, xp: trip.xp, blocked };
 }
 
-function destinationCard(state, venue, ctx) {
+function destinationCard(state: LifeState, venue: VenueDefinition, ctx: LifeContext): TravelDestination {
   const now = ctx.now, id = venue.id, here = id === state.location;
   const opening = openingInfo(venue.hours, now);
-  const place = placeOf(state, id);
+  const place = placeOf(state, id)!; // non-null: id is a key of VENUES, which placeOf always finds
   // Reasons that do not depend on the mode are worked out once and shared by every tile.
-  const base = here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
+  const base: Block<TravelBlockCode> | null = here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
   return {
     id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? (state.estate?.living === 'own' ? lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.name ?? 'Your house' : HOME_SPOTS[homeId(state)].district) : venueDistrict(id, ctx.cityId),
     icon: venue.icon, description: venue.description, category: venue.category, x: place.x, y: place.y, zone: place.zone,
     here, visited: state.travel.visited.includes(id), open: opening.open, hours: opening.hours, status: opening.status,
     band: here ? null : BAND_LABELS[routeBand(state, state.location, id)],
-    ambient: venue.ambient?.length ? venue.ambient[Math.floor(now / 8000) % venue.ambient.length] : '',
+    ambient: venue.ambient?.length ? venue.ambient[Math.floor(now / 8000) % venue.ambient.length] ?? '' : '',
     preview: spotsOf(id).flatMap((spot) => spot.activities.map((def) => def.label)),
     blocked: base,
     modes: modesFor(state, id, ctx).map((modeId) => modeCard(state, id, modeId, base, ctx)),
   };
 }
 
-function view(state, ctx) {
-  const pending = state.travel.event && EVENTS[state.travel.event.id];
+function view(state: LifeState, ctx: LifeContext): TravelView {
+  const queued = state.travel.event;
+  const pending = queued && EVENTS[queued.id];
   const trip = state.activeAction?.kind === 'travel' ? state.activeAction : null;
   const venues = Object.values(VENUES).map((venue) => destinationCard(state, venue, ctx));
-  const soon = Object.values(COMING_SOON).map((place) => ({
+  const soon = Object.values(COMING_SOON).map((place): TravelDestination => ({
     id: place.id, kind: 'soon', label: venueLabel(place.id, ctx.cityId), district: venueDistrict(place.id, ctx.cityId), icon: place.icon, description: place.description,
     category: 'soon', x: place.map.x, y: place.map.y, zone: place.zone, here: false, visited: false, open: false, hours: 'Coming soon', status: 'Coming soon',
     band: null, ambient: '', preview: [], modes: [], blocked: travelBlock(state, place.id, 'trek', ctx),
@@ -352,21 +377,21 @@ function view(state, ctx) {
     trips: state.travel.trips,
     visited: state.travel.visited.length,
     destinations: [...venues, ...soon],
-    event: pending ? {
-      id: pending.id, icon: pending.icon, title: pending.title, text: pending.text, at: state.travel.event.at,
-      expiresIn: Math.max(0, Math.ceil(EVENT_TTL_SECONDS - (ctx.now - state.travel.event.at) / 1000)),
+    event: pending && queued ? {
+      id: pending.id, icon: pending.icon, title: pending.title, text: pending.text, at: queued.at,
+      expiresIn: Math.max(0, Math.ceil(EVENT_TTL_SECONDS - (ctx.now - queued.at) / 1000)),
       choices: pending.choices.map((choice) => ({
         id: choice.id, label: choice.label, hint: choice.hint, cost: choice.cost || 0,
         chance: choice.check ? Math.round(chanceOf(state, choice.check) * 100) : null,
         blocked: choice.cost && !canAfford(state, choice.cost) ? { code: 'insufficient_funds', reason: `Costs ${naira(choice.cost)}; you have ${naira(state.cash)}.` } : null,
       })),
     } : null,
-    cooldowns: Object.fromEntries(Object.keys(state.travel.cooldowns).map((id) => [id, cooldownLeft(state, id, ctx.now)]).filter(([, left]) => left > 0)),
+    cooldowns: Object.fromEntries(Object.keys(state.travel.cooldowns).map((id): [string, number] => [id, cooldownLeft(state, id, ctx.now)]).filter(([, left]) => left > 0)),
     gigs: { limit: GIG_DAILY_LIMIT, used: gigsToday(state, ctx.now), left: Math.max(0, GIG_DAILY_LIMIT - gigsToday(state, ctx.now)) },
     // The gigs offered at the spot the player stands at (activity ids), so the venue panel can show the counter beside them.
     gigsHere: (spotsOf(state.location).find((spot) => spot.id === state.spot)?.activities || []).filter(isGig).map((def) => def.id),
     // The trip in progress: where it started (a cancel leaves the player there), how, and the fare already paid (null on an older save).
-    active: trip ? { from: state.location, to: trip.id, mode: typeof trip.mode === 'string' ? trip.mode : null, fare: Number.isSafeInteger(trip.fare) ? trip.fare : null, refundable: false } : null,
+    active: trip ? { from: state.location, to: trip.id, mode: typeof trip.mode === 'string' ? trip.mode : null, fare: typeof trip.fare === 'number' && Number.isSafeInteger(trip.fare) ? trip.fare : null, refundable: false } : null,
   };
 }
 
@@ -381,9 +406,9 @@ export default {
       sanitize(value, state) {
         if (!Object.hasOwn(VENUES, value.id) || value.id === state.location) return null;
         if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;
-        const valid = typeof value.mode === 'string' && Object.hasOwn(ALL_MODES, value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
+        const valid = isModeId(value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
         if (!valid) return null;
-        return { mode: value.mode, ...(Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
+        return { mode: value.mode, ...(typeof value.fare === 'number' && Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
       },
       complete,
     },
@@ -403,7 +428,7 @@ export default {
       const now = finite(ctx?.now) ? ctx.now : state.t;
       if (finite(def.cooldown) && def.cooldown > 0) {
         const ids = Object.keys(state.travel.cooldowns);
-        if (ids.length >= MAX_COOLDOWNS && !Object.hasOwn(state.travel.cooldowns, def.id)) delete state.travel.cooldowns[ids[0]];
+        if (ids.length >= MAX_COOLDOWNS && !Object.hasOwn(state.travel.cooldowns, def.id)) delete state.travel.cooldowns[ids[0] ?? '']; // ids is never empty here: it holds MAX_COOLDOWNS entries
         state.travel.cooldowns[def.id] = now + def.cooldown * 1000;
       }
       if (isGig(def)) {
@@ -411,7 +436,8 @@ export default {
         state.travel.gigs = { day, count: Math.min(GIG_DAILY_LIMIT, gigsToday(state, now) + 1) };
       }
       for (const id of def.clears || []) removeMoodlet(state, id);
-      if (Object.hasOwn(ACTIVITY_OUTCOMES, def.id)) rollActivity(state, def.id, ACTIVITY_OUTCOMES[def.id], ctx);
+      const rule = outcomeRuleOf(def.id);
+      if (rule) rollActivity(state, def.id, rule, ctx);
     },
   },
   modifiers: {
@@ -429,4 +455,4 @@ export default {
       return null;
     },
   },
-};
+} satisfies SystemDefinition<'travel'>;

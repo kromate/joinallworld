@@ -6,35 +6,44 @@ import { createLife, dispatch, viewLife } from '../life.ts';
 import { makeContext } from './util.ts';
 import { checkLook } from './systems/onboarding.ts';
 import { APPEARANCE, BOUTIQUE_PRICES, ACCESSORY_BASICS, DEFAULT_LOOK } from './content/traits.ts';
+import type { ActionBody, ActionResult, ActionType } from '../types/actions.ts';
+import type { AccessoryId, LifeContext, LifeState, Look } from '../types/life.ts';
 import { LOOK_OPTIONS, ACCESSORY_SLOTS, normalizeLook } from '../scene/characters.js';
 
 const START = Date.UTC(2026, 0, 5, 8);
 let tick = 0;
-const at = (now = START, seed = `look-${tick++}`) => makeContext({ now, cityId: 'lagos', seed });
-const act = (state, type, payload, context = at()) => dispatch(state, { type, payload }, context);
-const LOOK = { body: 'man', hair: 'afro', outfit: 'hoodie', fabric: 'ankara', skin: 'skin-6', hairColor: 'auburn', outfitColor: 'teal', bottomsColor: 'cream' };
+const at = (now = START, seed = `look-${tick++}`): LifeContext => makeContext({ now, cityId: 'lagos', seed });
+// The payload is deliberately `unknown`: several tests send hostile (malformed) input to prove the server-side validation.
+const act = <T extends ActionType>(state: LifeState, type: T, payload?: unknown, context: LifeContext = at()): ActionResult<T> =>
+  dispatch(state, { type, payload } as unknown as ActionBody<T>, context);
+/** The reason of a refused action ('' for a success or a refusal without one). */
+const why = (result: { ok: boolean; reason?: string }): string => result.reason ?? '';
+/** Narrows a lookup that must have found something. */
+function need<T>(value: T | null | undefined, what = 'expected a value'): T { assert.ok(value, what); return value; }
+const LOOK: Look = { body: 'man', hair: 'afro', outfit: 'hoodie', fabric: 'ankara', skin: 'skin-6', hairColor: 'auburn', outfitColor: 'teal', bottomsColor: 'cream' };
 
-function started(look = LOOK, house = 'yaba') {
+function started(look: Look = LOOK, house = 'yaba'): LifeState {
   let state = createLife(null, at());
   assert.equal(act(state, 'onboarding.look', { look }).code, 'look_saved');
   act(state, 'onboarding.traits', { traits: ['hustler', 'foodie'] }); act(state, 'onboarding.dream', { dream: 'yaba-unicorn' });
   for (let i = 0; i < 500; i++) {
     const trial = structuredClone(state);
     act(trial, 'onboarding.lottery', {}, at(START + i, `look-roll-${i}`));
-    if (trial.onboarding.lottery.id === 'civil-servant') { state = trial; break; }
+    if (need(trial.onboarding.lottery).id === 'civil-servant') { state = trial; break; }
   }
   assert.equal(act(state, 'onboarding.home', { house }).code, 'life_started');
   return state;
 }
 
 test('the beta options are add-only, priced, labelled and known to the scene', () => {
-  const ids = (list) => list.map((item) => item.id);
+  const ids = <I extends string>(list: { id: I }[]): I[] => list.map((item) => item.id);
   for (const body of ids(APPEARANCE.bodies)) {
-    for (const [kind, base, extra] of [['hair', APPEARANCE.hair[body], APPEARANCE.extra.hair[body]], ['outfit', APPEARANCE.outfits[body], APPEARANCE.extra.outfits[body]]]) {
+    const rows: ['hair' | 'outfit', readonly string[], readonly string[]][] = [['hair', APPEARANCE.hair[body], APPEARANCE.extra.hair[body]], ['outfit', APPEARANCE.outfits[body], APPEARANCE.extra.outfits[body]]];
+    for (const [kind, base, extra] of rows) {
       assert.ok(extra.length >= 2, `${body} has at least two more ${kind} options`);
       assert.equal(new Set([...base, ...extra]).size, base.length + extra.length, 'no id is offered twice');
       for (const id of extra) {
-        assert.ok(Number.isSafeInteger(BOUTIQUE_PRICES[kind][id]) && BOUTIQUE_PRICES[kind][id] > 0, `${id} has a price`);
+        assert.ok(Number.isSafeInteger(BOUTIQUE_PRICES[kind][id]) && (BOUTIQUE_PRICES[kind][id] ?? 0) > 0, `${id} has a price`);
         assert.ok(APPEARANCE.labels[id], `${id} has a label`);
         assert.ok(LOOK_OPTIONS[kind][body].includes(id.replace(/[^a-z0-9]/g, '')), `the scene can draw ${id}`);
       }
@@ -48,7 +57,7 @@ test('the beta options are add-only, priced, labelled and known to the scene', (
     assert.equal(APPEARANCE.boutiqueOnly.accessories.includes(id), !ACCESSORY_BASICS.includes(id), `${id}: a starter or sold in the Boutique`);
   }
   assert.deepEqual([APPEARANCE.faces, APPEARANCE.expressions], [LOOK_OPTIONS.face, LOOK_OPTIONS.expression]);
-  for (const [kind, list] of Object.entries(APPEARANCE.boutiqueOnly)) for (const id of list) assert.ok(BOUTIQUE_PRICES[kind][id] > 0, `${id} is for sale`);
+  for (const kind of ['hair', 'outfit', 'accessories'] as const) for (const id of APPEARANCE.boutiqueOnly[kind]) assert.ok((BOUTIQUE_PRICES[kind][id] ?? 0) > 0, `${id} is for sale`);
 });
 
 test('a look without the optional fields is the eight fields it always was; with them, only what is set is stored', () => {
@@ -57,26 +66,28 @@ test('a look without the optional fields is the eight fields it always was; with
   assert.deepEqual(checkLook({ ...LOOK, accessories: null, face: null }).look, LOOK);
   assert.deepEqual(checkLook({ ...LOOK, accessories: ['glasses', 'cap'], face: 'round', expression: 'grin' }).look, { ...LOOK, accessories: ['glasses', 'cap'], face: 'round', expression: 'grin' });
   assert.deepEqual(checkLook(DEFAULT_LOOK).look, DEFAULT_LOOK);
-  for (const [bad, why] of [
+  const badLooks: [Record<string, unknown>, RegExp][] = [
     [{ accessories: 'glasses' }, /must be a list/], [{ accessories: ['monocle'] }, /from the list: Glasses, Sunglasses/], [{ accessories: [7] }, /from the list/],
     [{ accessories: ['constructor'] }, /from the list/], [{ accessories: ['glasses', 'glasses'] }, /Glasses is listed twice/],
     [{ accessories: ['glasses', 'sunglasses'] }, /Glasses and Sunglasses cannot be worn together/], [{ accessories: ['cap', 'fila'] }, /cannot be worn together/],
     [{ accessories: ['glasses', 'cap', 'earrings', 'chain', 'watch', 'beads'] }, /at most 5 accessories/],
     [{ face: 'heart' }, /face shape: Oval, Round, Long/], [{ expression: 7 }, /expression: Smile, Calm, Grin/],
-  ]) {
+  ];
+  for (const [bad, pattern] of badLooks) {
     const result = checkLook({ ...LOOK, ...bad });
-    assert.equal(result.look, undefined, JSON.stringify(bad)); assert.match(result.reason, why);
+    assert.equal(result.look, undefined, JSON.stringify(bad)); assert.match(result.reason ?? '', pattern);
   }
-  assert.equal(checkLook({ ...LOOK, accessories: ['glasses', 'cap', 'earrings', 'chain', 'watch'] }).look.accessories.length, 5);
+  assert.equal(need(need(checkLook({ ...LOOK, accessories: ['glasses', 'cap', 'earrings', 'chain', 'watch'] }).look).accessories).length, 5);
   assert.equal(checkLook({ ...LOOK, body: 'woman', hair: 'afro', outfit: 'agbada' }).look, undefined, 'the agbada is not offered for the woman body');
   assert.equal(checkLook({ ...LOOK, hair: 'bantu-knots' }).look, undefined);
 });
 
 test('character creation offers the free starters, refuses what the Boutique sells, and shuffles only what a new Sim may wear', () => {
   const state = createLife(null, at());
-  for (const [extra, name] of [[{ hair: 'twists' }, 'Twists'], [{ outfit: 'agbada' }, 'Agbada'], [{ outfit: 'kaftan' }, 'Kaftan'], [{ accessories: ['sunglasses'] }, 'Sunglasses'], [{ accessories: ['glasses', 'backpack'] }, 'Backpack']]) {
+  const sold: [Record<string, unknown>, string][] = [[{ hair: 'twists' }, 'Twists'], [{ outfit: 'agbada' }, 'Agbada'], [{ outfit: 'kaftan' }, 'Kaftan'], [{ accessories: ['sunglasses'] }, 'Sunglasses'], [{ accessories: ['glasses', 'backpack'] }, 'Backpack']];
+  for (const [extra, name] of sold) {
     const refused = act(state, 'onboarding.look', { look: { ...LOOK, ...extra } });
-    assert.equal(refused.code, 'invalid_look'); assert.match(refused.reason, new RegExp(`${name} is sold in the Boutique`));
+    assert.equal(refused.code, 'invalid_look'); assert.match(why(refused), new RegExp(`${name} is sold in the Boutique`));
   }
   assert.equal(state.onboarding.step, 0);
   for (let i = 0; i < 300; i++) {
@@ -105,13 +116,14 @@ test('lives saved before these options, and damaged saves, load unchanged or tid
   assert.equal(act(legacy, 'onboarding.set-look', { look: { ...DEFAULT_LOOK, accessories: ['glasses'], expression: 'grin' } }).code, 'look_saved', 'a legacy life may wear the free accessories');
 
   const damaged = structuredClone(old);
-  damaged.onboarding.look = { ...LOOK, accessories: ['glasses', 'monocle', 'sunglasses', 7, 'chain', 'chain'], face: 'heart', expression: 'grin' };
-  damaged.onboarding.wardrobe.accessories = ['chain', 'wig', 'glasses', 'chain', {}];
+  // A damaged save holds ids and types the types forbid: that is the point of the test.
+  damaged.onboarding.look = { ...LOOK, accessories: ['glasses', 'monocle', 'sunglasses', 7, 'chain', 'chain'], face: 'heart', expression: 'grin' } as unknown as Look;
+  damaged.onboarding.wardrobe.accessories = ['chain', 'wig', 'glasses', 'chain', {}] as unknown as AccessoryId[];
   const loaded = createLife(damaged, at());
   assert.deepEqual(loaded.onboarding.look, { ...LOOK, accessories: ['glasses', 'chain'], expression: 'grin' }, 'the look survives; what is unknown or clashes is dropped');
   assert.deepEqual(loaded.onboarding.wardrobe.accessories, ['chain']);
   for (const junk of ['text', 7, { length: 3 }]) {
-    const state = structuredClone(old); state.onboarding.look = { ...LOOK, accessories: junk }; state.onboarding.wardrobe.accessories = junk;
+    const state = structuredClone(old); state.onboarding.look = { ...LOOK, accessories: junk } as unknown as Look; state.onboarding.wardrobe.accessories = junk as unknown as AccessoryId[];
     assert.deepEqual(createLife(state, at()).onboarding, old.onboarding);
   }
   assert.deepEqual(normalizeLook(LOOK, 'x').accessories, [], 'a recorded look without accessories wears none in a scene');
@@ -119,19 +131,19 @@ test('lives saved before these options, and damaged saves, load unchanged or tid
 
 test('the Boutique sells accessories and the new styles; ownership persists and every refusal says why', () => {
   const state = started();
-  const cash = state.cash, shop = () => viewLife(state, at()).onboarding.boutique, item = (id) => shop().find((entry) => entry.id === id);
+  const cash = state.cash, shop = () => viewLife(state, at()).onboarding.boutique, item = (id: string) => need(shop().find((entry) => entry.id === id));
   assert.deepEqual(shop().filter((entry) => entry.kind === 'accessories').map((entry) => entry.id), APPEARANCE.accessories.map((entry) => entry.id));
   assert.deepEqual([item('glasses').owned, item('glasses').price, item('chain').owned, item('chain').price, item('chain').slot], [true, 0, false, 6000, 'neck']);
   assert.ok(shop().some((entry) => entry.kind === 'outfit' && entry.id === 'agbada') && !shop().some((entry) => entry.id === 'gown'), 'styles for the current body only');
 
   const unowned = act(state, 'onboarding.set-look', { look: { ...LOOK, accessories: ['glasses', 'chain'] } });
-  assert.equal(unowned.code, 'not_owned'); assert.match(unowned.reason, /do not own the Chain yet.*Boutique for ₦6,000/);
+  assert.equal(unowned.code, 'not_owned'); assert.match(why(unowned), /do not own the Chain yet.*Boutique for ₦6,000/);
   assert.equal(act(state, 'onboarding.set-look', { look: { ...LOOK, accessories: ['glasses', 'watch'] } }).code, 'look_saved', 'the free accessories can be worn without buying');
   assert.equal(act(state, 'onboarding.set-look', { look: { ...LOOK, accessories: ['watch', 'glasses'] } }).code, 'unchanged', 'the order does not matter');
 
   const chain = act(state, 'onboarding.boutique-buy', { kind: 'accessories', id: 'chain' });
   assert.equal(chain.code, 'bought'); assert.equal(state.cash, cash - 6000);
-  assert.deepEqual([state.ledger.at(-1).amount, state.ledger.at(-1).reason], [-6000, 'Boutique: Chain accessory']);
+  assert.deepEqual([need(state.ledger.at(-1)).amount, need(state.ledger.at(-1)).reason], [-6000, 'Boutique: Chain accessory']);
   assert.deepEqual(state.onboarding.look.accessories, ['glasses', 'watch', 'chain'], 'bought and put on');
   assert.deepEqual(state.onboarding.wardrobe.accessories, ['chain']);
   assert.deepEqual([item('chain').owned, item('chain').wearing], [true, true]);
@@ -154,8 +166,8 @@ test('the Boutique sells accessories and the new styles; ownership persists and 
   assert.equal(act(state, 'onboarding.boutique-buy', { kind: 'accessories', id: 'fila' }).code, 'bought');
   state.cash = 10;
   const dear = act(state, 'onboarding.boutique-buy', { kind: 'accessories', id: 'handbag' });
-  assert.equal(dear.code, 'insufficient_funds'); assert.match(dear.reason, /Handbag costs ₦7,000; you have ₦10/);
-  assert.match(item('handbag').blocked, /Costs ₦7,000/);
+  assert.equal(dear.code, 'insufficient_funds'); assert.match(why(dear), /Handbag costs ₦7,000; you have ₦10/);
+  assert.match(need(item('handbag').blocked), /Costs ₦7,000/);
   // At the limit the oldest gives way.
   state.cash = 100000;
   for (const id of ['beads', 'backpack']) assert.equal(act(state, 'onboarding.boutique-buy', { kind: 'accessories', id }).code, 'bought');

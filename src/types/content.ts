@@ -737,8 +737,8 @@ export interface StarterGoal {
   open?: string
   /** Parameters for the opened panel. */
   params?: Record<string, unknown>
-  /** Tapping the chip walks to `[venue]` or `[venue, spot]`. */
-  go?: string[]
+  /** Tapping the chip walks to `[venue]` or `[venue, spot]` (the HUD chip's ChipTarget). */
+  go?: [venue: string, spot?: string]
   /** Tapping the chip goes to the player's workplace (or opens Jobs without one). */
   workplace?: boolean
   /** The activity the chip points at (with `go`). */
@@ -846,7 +846,7 @@ export interface ActivitySuccessOutcome extends OutcomeBlock {
   /** What a later success gives when `once` was already used. */
   repeat?: OutcomeBlock
   /** Registry event emitted on success with `{ venue }` (currently 'startup.funded'). */
-  event?: string
+  event?: 'startup.funded'
 }
 
 /** Chance outcome rolled when a venue activity completes (ACTIVITY_OUTCOMES[activityId]). */

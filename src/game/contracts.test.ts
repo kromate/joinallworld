@@ -7,57 +7,89 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, isDeparting, occupiesVenue, activeMoves } from '../life.ts';
 import { registerSystem, systems, activeHandler, undeclaredKeys, emit } from './registry.ts';
-import { makeContext, makeRng, keyedSeed, sha256Hex } from './util.ts';
+import { makeContext, makeRng, keyedSeed, sha256Hex, isRecord } from './util.ts';
 import { rebuildCatalogue, usedShare, isMetered, MAX_LOCKED_SECONDS } from './systems/activities.ts';
 import { statementOf } from './systems/wallet.ts';
 import { VENUES } from './content/venues.ts';
+import type { ActionBody } from '../types/actions.ts';
+import type { ActivityPlacement } from '../types/content.ts';
+import type { AttachedActivity, EngineEvent, SystemDefinition } from '../types/registry.ts';
+import type { ActionOutcome, ActivityAction, LifeContext, LifeContextInit, LifeState } from '../types/life.ts';
 
 const NOW = Date.UTC(2026, 0, 5, 9); // Monday 10:00 in Lagos
 const CITY = 'lagos';
-const where = { venue: 'park', spot: 'contract', spotLabel: 'Contract stall' };
-const startPaid = { id: 'contract-booth', label: 'Contract Booth', duration: 10, cost: 100, chargeOn: 'start', effects: { fun: 5 }, where };
-const meteredLater = { id: 'contract-massage', label: 'Contract Massage', duration: 10, cost: 100, effectsPerSecond: { energy: 1 }, where };
-const meteredFirst = { id: 'contract-sauna', label: 'Contract Sauna', duration: 10, cost: 200, chargeOn: 'start', effectsPerSecond: { hygiene: 2 }, where };
-const meteredSunk = { id: 'contract-ride', label: 'Contract Ride', duration: 10, cost: 60, chargeOn: 'start', refundOnCancel: false, xpPerSecond: { charisma: 1 }, where };
-const freeRest = { id: 'contract-rest', label: 'Contract Rest', duration: 10, effectsPerSecond: { energy: 2 }, where };
-const lumpLater = { id: 'contract-meal', label: 'Contract Meal', duration: 10, cost: 300, effects: { hunger: 20 }, where };
+const where: ActivityPlacement = { venue: 'park', spot: 'contract', spotLabel: 'Contract stall' };
+const startPaid: AttachedActivity = { id: 'contract-booth', label: 'Contract Booth', duration: 10, cost: 100, chargeOn: 'start', effects: { fun: 5 }, where };
+const meteredLater: AttachedActivity = { id: 'contract-massage', label: 'Contract Massage', duration: 10, cost: 100, effectsPerSecond: { energy: 1 }, where };
+const meteredFirst: AttachedActivity = { id: 'contract-sauna', label: 'Contract Sauna', duration: 10, cost: 200, chargeOn: 'start', effectsPerSecond: { hygiene: 2 }, where };
+const meteredSunk: AttachedActivity = { id: 'contract-ride', label: 'Contract Ride', duration: 10, cost: 60, chargeOn: 'start', refundOnCancel: false, xpPerSecond: { charisma: 1 }, where };
+const freeRest: AttachedActivity = { id: 'contract-rest', label: 'Contract Rest', duration: 10, effectsPerSecond: { energy: 2 }, where };
+const lumpLater: AttachedActivity = { id: 'contract-meal', label: 'Contract Meal', duration: 10, cost: 300, effects: { hunger: 20 }, where };
 
-registerSystem({
+/** A life as the test-only 'contract' system sees it: its own slice, plus the keys it writes without declaring them. */
+interface ContractLife extends LifeState {
+  contract: { kept: number; surcharge: boolean; leakOnAdvance?: boolean };
+  strayFromSanitize?: number;
+  strayFromAction?: number;
+  strayFromAdvance?: boolean;
+}
+/** An action or event name that only this test registers, so it is not in the engine's typed maps. */
+type TestOutcome = ActionOutcome;
+
+// The test systems below are deliberately outside the typed maps (their ids, actions, events and timed-action kinds exist
+// only here), so each definition crosses the registry boundary through one cast.
+const asSystem = (def: object): SystemDefinition => def as unknown as SystemDefinition;
+/** emit() for an event name only this test knows. */
+const emitTest = (state: LifeState, event: string, data: object, ctx: LifeContextInit): void => emit(state, event as EngineEvent, data as never, makeContext(ctx));
+/** dispatch() for an action type only this test knows (or a malformed body): the engine's own validation is what is under test. */
+const dispatchTest = (state: LifeState, body: { type: string; payload?: object; actionId?: string }, ctx: LifeContextInit): ActionOutcome => dispatch(state, body as unknown as ActionBody, ctx);
+
+registerSystem(asSystem({
   id: 'contract',
   stateKeys: ['contract'],
-  sanitize(input, state) {
-    state.contract = { kept: Number.isSafeInteger(input.contract?.kept) ? input.contract.kept : 0, surcharge: input.contract?.surcharge === true };
+  sanitize(input: Record<string, unknown>, state: ContractLife) {
+    const saved = isRecord(input.contract) ? input.contract : {};
+    state.contract = { kept: typeof saved.kept === 'number' && Number.isSafeInteger(saved.kept) ? saved.kept : 0, surcharge: saved.surcharge === true };
     if (input.contractLeak === 'sanitize') state.strayFromSanitize = 1; // a sanitize that writes a key it never declared
   },
   actions: {
-    'contract.keep'(state) { state.contract.kept += 1; return { ok: true, code: 'kept', state }; },
-    'contract.leak'(state) { state.strayFromAction = 42; return { ok: true, code: 'leaked', state }; },
-    'contract.arm'(state) { state.contract.leakOnAdvance = true; return { ok: true, code: 'armed', state }; },
-    'contract.roll'(state, payload, ctx) { state.message = JSON.stringify([ctx.rng(), ctx.rng(), Object.keys(ctx).sort()]); return { ok: true, code: 'rolled', state }; },
-    'contract.teleport'(state) { state.activeAction = { kind: 'contract-sneak', id: 'library', duration: 5, remaining: 5 }; return { ok: true, code: 'started', state }; },
-    'contract.stroll'(state) { state.activeAction = { kind: 'contract-stroll', id: 'library', duration: 5, remaining: 5 }; return { ok: true, code: 'started', state }; },
+    'contract.keep'(state: ContractLife): TestOutcome { state.contract.kept += 1; return { ok: true, code: 'kept', state }; },
+    'contract.leak'(state: ContractLife): TestOutcome { state.strayFromAction = 42; return { ok: true, code: 'leaked', state }; },
+    'contract.arm'(state: ContractLife): TestOutcome { state.contract.leakOnAdvance = true; return { ok: true, code: 'armed', state }; },
+    'contract.roll'(state: ContractLife, _payload: unknown, ctx: LifeContext): TestOutcome { state.message = JSON.stringify([ctx.rng(), ctx.rng(), Object.keys(ctx).sort()]); return { ok: true, code: 'rolled', state }; },
+    'contract.teleport'(state: LifeState): TestOutcome { Object.assign(state, { activeAction: { kind: 'contract-sneak', id: 'library', duration: 5, remaining: 5 } }); // a kind outside ActiveKind
+      return { ok: true, code: 'started', state }; },
+    'contract.stroll'(state: LifeState): TestOutcome { Object.assign(state, { activeAction: { kind: 'contract-stroll', id: 'library', duration: 5, remaining: 5 } }); // a kind outside ActiveKind
+      return { ok: true, code: 'started', state }; },
   },
-  advance(state) { if (state.contract.leakOnAdvance) state.strayFromAdvance = true; },
-  on: { 'contract.echo': (state, data, ctx) => emit(state, 'contract.echo', data, ctx) }, // a listener that re-emits what it hears: a loop
-  modifiers: { 'activity.cost': (value, state, { def }) => (state.contract?.surcharge && def.id === 'contract-booth' ? value + 50 : value) },
+  advance(state: ContractLife) { if (state.contract.leakOnAdvance) state.strayFromAdvance = true; },
+  on: { 'contract.echo': (state: ContractLife, data: object, ctx: LifeContext) => emitTest(state, 'contract.echo', data, ctx) }, // a listener that re-emits what it hears: a loop
+  modifiers: { 'activity.cost': (value: number, state: ContractLife, { def }: { def: { id: string } }) => (state.contract?.surcharge && def.id === 'contract-booth' ? value + 50 : value) },
   activities: [startPaid, meteredLater, meteredFirst, meteredSunk, freeRest, lumpLater],
   active: {
     // Declared honestly: a timed action that takes the player somewhere else.
-    'contract-stroll': { moves: true, sanitize: (value) => (Object.hasOwn(VENUES, value.id) ? {} : null), complete(state, active) { state.location = active.id; state.spot = null; } },
+    'contract-stroll': { moves: true, sanitize: (value: { id: string }) => (Object.hasOwn(VENUES, value.id) ? {} : null), complete(state: { location: string; spot: string | null }, active: { id: string }) { state.location = active.id; state.spot = null; } },
     // Declared wrongly: it moves the player but says it does not. The engine must refuse to complete it.
-    'contract-sneak': { moves: false, sanitize: () => ({}), complete(state, active) { state.location = active.id; state.spot = null; } },
+    'contract-sneak': { moves: false, sanitize: () => ({}), complete(state: { location: string; spot: string | null }, active: { id: string }) { state.location = active.id; state.spot = null; } },
   },
-});
+}));
 rebuildCatalogue();
 
-const at = (now = NOW) => ({ now, cityId: CITY });
+const at = (now = NOW): LifeContextInit => ({ now, cityId: CITY });
 /** The context of the server loading its OWN save (life-service.js settleCity): the only one allowed to settle money at load. */
-const stored = (now = NOW) => ({ ...at(now), trustedSave: true });
-const fresh = (saved = {}) => createLife({ spot: 'contract', needs: { hunger: 50, energy: 50, fun: 50, social: 50, hygiene: 50, bladder: 50 }, ...saved }, at());
-const start = (state, id) => dispatch(state, { type: 'activity', payload: { id } }, at());
-const run = (state, seconds) => advanceLife(state, seconds, at(NOW + seconds * 1000));
-const cancel = (state, seconds) => dispatch(state, { type: 'cancel' }, at(NOW + seconds * 1000));
-const lines = (state) => state.ledger.map((line) => [line.amount, line.reason]);
+const stored = (now = NOW): LifeContextInit => ({ ...at(now), trustedSave: true });
+const fresh = (saved: Record<string, unknown> = {}): ContractLife => createLife({ spot: 'contract', needs: { hunger: 50, energy: 50, fun: 50, social: 50, hygiene: 50, bladder: 50 }, ...saved }, at()) as ContractLife;
+const start = (state: LifeState, id: string) => dispatch(state, { type: 'activity', payload: { id } }, at());
+const run = (state: LifeState, seconds: number) => advanceLife(state, seconds, at(NOW + seconds * 1000));
+const cancel = (state: LifeState, seconds: number) => dispatch(state, { type: 'cancel' }, at(NOW + seconds * 1000));
+const lines = (state: LifeState) => state.ledger.map((line) => [line.amount, line.reason]);
+
+/** The running timed action, narrowed to an activity (the only kind that carries `paid`). */
+const activityOf = (state: LifeState): ActivityAction => {
+  const active = state.activeAction;
+  assert.ok(active && active.kind === 'activity', 'an activity is running');
+  return active;
+};
 
 // ---- paid per-second gains are always paid for -------------------------------------------------
 
@@ -89,7 +121,7 @@ test('a metered activity charged on completion costs the time used when it is st
 test('a metered activity charged at the start refunds only the unused part; a sunk cost refunds nothing', () => {
   const state = fresh();
   start(state, 'contract-sauna');
-  assert.deepEqual([state.cash, state.activeAction.paid], [4800, 200]);
+  assert.deepEqual([state.cash, activityOf(state).paid], [4800, 200]);
   run(state, 3);
   cancel(state, 3);
   assert.equal(state.cash, 4940, '₦200 × 3 ÷ 10 = ₦60 used, ₦140 back');
@@ -145,15 +177,15 @@ test('a metered activity that can no longer be paid in full at the end takes wha
 
 test('a key nobody declared is refused the moment it is written: in an action, in a settlement and in sanitize', () => {
   const state = fresh();
-  assert.throws(() => dispatch(state, { type: 'contract.leak' }, at()), /Undeclared state key "strayFromAction" after action "contract.leak"/);
+  assert.throws(() => dispatchTest(state, { type: 'contract.leak' }, at()), /Undeclared state key "strayFromAction" after action "contract.leak"/);
   const settling = fresh();
-  assert.equal(dispatch(settling, { type: 'contract.arm' }, at()).code, 'armed');
+  assert.equal(dispatchTest(settling, { type: 'contract.arm' }, at()).code, 'armed');
   assert.throws(() => advanceLife(settling, 1, at(NOW + 1000)), /Undeclared state key "strayFromAdvance" after advanceLife/);
   assert.throws(() => createLife({ contractLeak: 'sanitize' }, at()), /System "contract" wrote state key "strayFromSanitize" in sanitize\(\) without declaring it/);
   // A declared slice written by an action survives the reload it would otherwise be lost at.
   const kept = fresh();
-  dispatch(kept, { type: 'contract.keep' }, at());
-  assert.equal(createLife(structuredClone(kept), at()).contract.kept, 1);
+  dispatchTest(kept, { type: 'contract.keep' }, at());
+  assert.equal((createLife(structuredClone(kept), at()) as ContractLife).contract.kept, 1);
   assert.deepEqual(undeclaredKeys(kept), []);
   assert.deepEqual(undeclaredKeys({ ...kept, extra: 1 }), ['extra']);
 });
@@ -172,7 +204,7 @@ test('a start-charged activity whose definition changed is refunded through the 
   t.after(() => { startPaid.duration = 10; startPaid.cost = 100; rebuildCatalogue(); });
   const state = fresh();
   start(state, 'contract-booth');
-  assert.deepEqual([state.cash, state.activeAction.paid], [4900, 100]);
+  assert.deepEqual([state.cash, activityOf(state).paid], [4900, 100]);
   const saved = structuredClone(state);
   startPaid.duration = 20; startPaid.cost = 40; rebuildCatalogue(); // a deploy changed the activity: longer and cheaper
   // Anything that is not the server's own save is only cleaned up: no money moves, so no input can mint a refund.
@@ -199,11 +231,11 @@ test('a start-charged activity whose venue or definition is gone is refunded fro
   assert.deepEqual([moved.activeAction, moved.cash], [null, 5000]);
   // The activity id is not in the catalogue at all: the label is unknown; the amount is the one the server stored at the start.
   const gone = structuredClone(state);
-  gone.activeAction.id = 'contract-removed';
+  activityOf(gone).id = 'contract-removed';
   const loaded = createLife(structuredClone(gone), stored(NOW + 1000));
   assert.equal(createLife(structuredClone(gone), at(NOW + 1000)).cash, 4900, 'the same save from anywhere else refunds nothing');
   assert.deepEqual([loaded.activeAction, loaded.cash], [null, 5000]);
-  assert.equal(loaded.ledger.at(-1).reason, 'Refund: an activity (no longer available)');
+  assert.equal(loaded.ledger.at(-1)?.reason, 'Refund: an activity (no longer available)');
   // Input that only CLAIMS a payment gets nothing — it is not the server's save, whatever it says it paid.
   const forged = createLife({ spot: 'contract', activeAction: { kind: 'activity', id: 'contract-removed', duration: 10, remaining: 5, paid: 4000 } }, at());
   assert.deepEqual([forged.activeAction, forged.cash, forged.ledger.length], [null, 5000, 0]);
@@ -211,15 +243,15 @@ test('a start-charged activity whose venue or definition is gone is refunded fro
   assert.deepEqual([inflated.activeAction, inflated.cash, inflated.ledger.length], [null, 5000, 0], 'also for a known activity');
   // And while such an action is still valid, a claimed amount above the price is cut down to it.
   const running = createLife({ spot: 'contract', activeAction: { kind: 'activity', id: 'contract-booth', duration: 10, remaining: 5, paid: 4000 } }, at());
-  assert.equal(running.activeAction.paid, 100);
+  assert.equal(activityOf(running).paid, 100);
 });
 
 test('the amount charged at the start is kept through a reload even when a modifier raised it above the listed price', () => {
   const state = fresh({ contract: { surcharge: true } });
   start(state, 'contract-booth');
-  assert.deepEqual([state.cash, state.activeAction.paid], [4850, 150], 'the adjusted price was charged');
+  assert.deepEqual([state.cash, activityOf(state).paid], [4850, 150], 'the adjusted price was charged');
   const loaded = createLife(structuredClone(state), at(NOW + 1000));
-  assert.equal(loaded.activeAction.paid, 150, 'not dropped for being above the listed ₦100');
+  assert.equal(activityOf(loaded).paid, 150, 'not dropped for being above the listed ₦100');
   cancel(loaded, 1);
   assert.equal(loaded.cash, 5000, 'and the whole ₦150 is refunded');
 });
@@ -233,13 +265,13 @@ test('invalidation settles a metered activity like an early stop: unused part re
   assert.deepEqual([a.activeAction, a.cash], [null, 4920], '₦200 paid, 4 of 10 seconds used: ₦120 back');
   const b = createLife(structuredClone(massage), stored(NOW + 4000));
   assert.deepEqual([b.activeAction, b.cash], [null, 4960], '4 of 10 seconds at ₦100: ₦40');
-  assert.equal(b.ledger.at(-1).reason, 'Contract Massage (stopped early)');
+  assert.equal(b.ledger.at(-1)?.reason, 'Contract Massage (stopped early)');
 });
 
 // ---- randomness cannot be worked out from what a client knows -------------------------------------
 
 test('a salted context keys the generator with a secret that is not in the context', () => {
-  const roll = (salt, actionId = '1:a') => JSON.parse(dispatch(fresh(), { type: 'contract.roll', actionId }, { ...at(), actionId, ...(salt ? { salt } : {}) }).state.message);
+  const roll = (salt: string | null, actionId = '1:a') => JSON.parse(dispatchTest(fresh(), { type: 'contract.roll', actionId }, { ...at(), actionId, ...(salt ? { salt } : {}) }).state.message);
   const [first, second, keys] = roll('secret-salt-0000-0001');
   assert.deepEqual(keys, ['actionId', 'cityId', 'now', 'rng'], 'the salt is consumed: no system can read it');
   assert.deepEqual(roll('secret-salt-0000-0001').slice(0, 2), [first, second], 'the same action on the same life rolls the same dice');
@@ -250,7 +282,7 @@ test('a salted context keys the generator with a secret that is not in the conte
   assert.notEqual(guess(), first);
   assert.deepEqual(roll(null).slice(0, 1), [makeRng(`${CITY}|action|1:a`)()], 'without a salt (tests, the browser preview) the engine is unchanged');
   // Settlements and creation are keyed the same way.
-  const settled = (salt) => { const ctx = makeContext({ now: NOW, cityId: CITY, seed: 'settle|1|2', salt }); return ctx.rng(); };
+  const settled = (salt: string | undefined) => { const ctx = makeContext({ now: NOW, cityId: CITY, seed: 'settle|1|2', salt }); return ctx.rng(); };
   assert.notEqual(settled('secret-salt-0000-0001'), settled('secret-salt-0000-0002'));
   assert.notEqual(settled('secret-salt-0000-0001'), settled(undefined));
 });
@@ -276,12 +308,12 @@ test('every registered timed action declares whether it moves the player, and th
   for (const system of systems()) for (const [kind, handler] of Object.entries(system.active || {})) {
     assert.equal(typeof handler.moves, 'boolean', `${system.id} · ${kind}`);
   }
-  assert.deepEqual(['travel', 'commute', 'activity', 'call'].map((kind) => [kind, activeHandler(kind).moves]), [['travel', true], ['commute', true], ['activity', false], ['call', false]]);
-  assert.throws(() => registerSystem({ id: 'silent', stateKeys: [], sanitize() {}, active: { glide: { sanitize: () => ({}), complete() {} } } }), /Active kind "glide" must declare moves: true or false/);
+  assert.deepEqual(['travel', 'commute', 'activity', 'call'].map((kind) => [kind, activeHandler(kind)?.moves]), [['travel', true], ['commute', true], ['activity', false], ['call', false]]);
+  assert.throws(() => registerSystem(asSystem({ id: 'silent', stateKeys: [], sanitize() {}, active: { glide: { sanitize: () => ({}), complete() {} } } })), /Active kind "glide" must declare moves: true or false/);
   assert.equal(activeHandler('glide'), undefined, 'a refused kind is not registered');
   // A kind that says it does not move the player cannot move them.
   const sneaky = fresh();
-  dispatch(sneaky, { type: 'contract.teleport' }, at());
+  dispatchTest(sneaky, { type: 'contract.teleport' }, at());
   assert.equal(isDeparting(sneaky), false);
   assert.throws(() => advanceLife(sneaky, 5, at(NOW + 5000)), /Active kind "contract-sneak" changed the location but is not declared moves: true/);
 });
@@ -290,12 +322,12 @@ test('isDeparting is true for every moving kind — a trip, the commute, a new k
   const idle = fresh();
   assert.deepEqual([isDeparting(idle), occupiesVenue(idle, 'park'), occupiesVenue(idle, 'library')], [false, true, false]);
   const trip = fresh(); dispatch(trip, { type: 'travel', payload: { id: 'library', mode: 'trek' } }, at());
-  assert.deepEqual([trip.activeAction.kind, trip.location, isDeparting(trip), occupiesVenue(trip, 'park')], ['travel', 'park', true, false]);
+  assert.deepEqual([trip.activeAction?.kind, trip.location, isDeparting(trip), occupiesVenue(trip, 'park')], ['travel', 'park', true, false]);
   const commuter = createLife({ location: 'home', spot: 'bedroom' }, at());
   assert.equal(dispatch(commuter, { type: 'apply-job', payload: { id: 'tech' } }, at()).ok, true);
-  assert.deepEqual([commuter.activeAction.kind, commuter.location, isDeparting(commuter), occupiesVenue(commuter, 'home')], ['commute', 'home', true, false]);
+  assert.deepEqual([commuter.activeAction?.kind, commuter.location, isDeparting(commuter), occupiesVenue(commuter, 'home')], ['commute', 'home', true, false]);
   // A kind added later is covered by its declaration alone: nothing else has to learn its name.
-  const stroller = fresh(); dispatch(stroller, { type: 'contract.stroll' }, at());
+  const stroller = fresh(); dispatchTest(stroller, { type: 'contract.stroll' }, at());
   assert.deepEqual([isDeparting(stroller), occupiesVenue(stroller, 'park')], [true, false]);
   advanceLife(stroller, 5, at(NOW + 5000));
   assert.deepEqual([stroller.location, isDeparting(stroller), occupiesVenue(stroller, 'library')], ['library', false, true]);
@@ -303,8 +335,8 @@ test('isDeparting is true for every moving kind — a trip, the commute, a new k
   assert.deepEqual([isDeparting(busy), occupiesVenue(busy, 'park')], [false, true], 'an activity keeps the player in the venue');
   // A kind nobody registered is treated as moving: unknown is never "provably here".
   assert.equal(activeMoves('warp'), true);
-  assert.equal(isDeparting({ location: 'park', activeAction: { kind: 'warp' } }), true);
-  assert.deepEqual([isDeparting(null), isDeparting({}), occupiesVenue(null, 'park'), occupiesVenue(idle, undefined)], [false, false, false, false]);
+  assert.equal(isDeparting({ location: 'park', activeAction: { kind: 'warp' } } as unknown as LifeState) /* a kind nobody registered */, true);
+  assert.deepEqual([isDeparting(null), isDeparting({} as unknown as LifeState), occupiesVenue(null, 'park'), occupiesVenue(idle, undefined)], [false, false, false, false]);
   // Cancelling a departure puts the player back in the venue they never left.
   cancel(trip, 1); cancel(commuter, 1);
   assert.deepEqual([occupiesVenue(trip, 'park'), occupiesVenue(commuter, 'home')], [true, true]);
@@ -314,24 +346,26 @@ test('isDeparting is true for every moving kind — a trip, the commute, a new k
 
 test('an event loop between systems is an error, not a silently dropped event', () => {
   const state = fresh();
-  assert.throws(() => emit(state, 'contract.echo', {}, at()), /Event "contract.echo" was emitted 8 listeners deep/);
+  assert.throws(() => emitTest(state, 'contract.echo', {}, at()), /Event "contract.echo" was emitted 8 listeners deep/);
   // The depth counter is restored afterwards: ordinary events still work.
-  assert.doesNotThrow(() => emit(state, 'contract.unheard', {}, at()));
-  assert.equal(dispatch(state, { type: 'contract.keep' }, at()).code, 'kept');
+  assert.doesNotThrow(() => emitTest(state, 'contract.unheard', {}, at()));
+  assert.equal(dispatchTest(state, { type: 'contract.keep' }, at()).code, 'kept');
 });
 
 test('the catalogue refuses an activity without a real duration and a long activity that cannot be cancelled', (t) => {
-  const extra = [];
-  registerSystem({ id: 'contract-bad-content', stateKeys: [], sanitize() {}, get activities() { return extra; } });
+  const extra: object[] = [];
+  registerSystem(asSystem({ id: 'contract-bad-content', stateKeys: [], sanitize() {}, get activities() { return extra; } }));
   t.after(() => { extra.length = 0; rebuildCatalogue(); });
   const where2 = { venue: 'park', spot: 'contract' };
-  for (const [def, pattern] of [
+  // Deliberately malformed content (no duration, zero, infinite, negative choice): typed loosely on purpose.
+  const bad: [{ id: string; [field: string]: unknown }, RegExp][] = [
     [{ id: 'bad-endless', label: 'Endless', where: where2 }, /Activity bad-endless needs a duration/],
     [{ id: 'bad-zero', label: 'Zero', duration: 0, where: where2 }, /needs a duration/],
     [{ id: 'bad-infinite', label: 'Infinite', duration: Infinity, where: where2 }, /needs a duration/],
     [{ id: 'bad-choice', label: 'Choice', duration: 5, choices: [{ id: 'a', label: 'A', duration: -1 }], where: where2 }, /needs a duration/],
     [{ id: 'bad-locked', label: 'Locked', duration: MAX_LOCKED_SECONDS + 1, cancellable: false, where: where2 }, /cannot be cancelled, so it may last at most 300 seconds/],
-  ]) {
+  ];
+  for (const [def, pattern] of bad) {
     extra.length = 0; extra.push(def);
     assert.throws(() => rebuildCatalogue(), pattern, def.id);
   }

@@ -6,7 +6,9 @@
  */
 
 /** Table games (src/tables/**). There are NO stakes: a win is paid by the game, never by the loser. */
-export const TABLE_REWARDS = Object.freeze({
+import type { ReferralRules, TableRewards } from '../../types/content.ts'
+
+export const TABLE_REWARDS: Readonly<TableRewards> = Object.freeze({
   /** Naira for a counted win against at least one real player. A loss, a draw or a bot game pays nothing. */
   win: 150,
   /** Paid wins per Lagos day, per life. */
@@ -18,7 +20,7 @@ export const TABLE_REWARDS = Object.freeze({
 });
 
 /** Referral: both sides are rewarded only after the newcomer has really played. */
-export const REFERRAL = Object.freeze({
+export const REFERRAL: Readonly<ReferralRules> = Object.freeze({
   /** To the newcomer, once they have been paid for work on `welcomeWorkDays` Lagos day(s). */
   welcome: 1000, welcomeWorkDays: 1,
   /** To the inviter, once the newcomer has been paid for work on `countWorkDays` different Lagos days. */

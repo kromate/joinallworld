@@ -3,35 +3,73 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife, migrate, STATE_VERSION, VENUES, actionTypes, spotsOf } from '../life.ts';
 import { registerSystem, systems, emit, modify } from './registry.ts';
-import { makeContext, makeRng } from './util.ts';
+import { makeContext, makeRng, isRecord } from './util.ts';
 import { lagosTime, isOpen, minutesUntilOpen, formatClock } from './clock.ts';
 import { rebuildCatalogue } from './systems/activities.ts';
 import { NEEDS, DECAY_FLOOR, OFFLINE_DECAY_CAP_SECONDS, NEED_DECAY_PER_HOUR } from './systems/needs.ts';
 import { credit, debit, addMoodlet, moodOf, addSkillXp, skillLevel, setSkillLevel, xpForLevel, addItem, removeItems, countItem, SKILLS } from './api.ts';
 import { statementOf, reasonGroup, LEDGER_LIMIT, LEDGER_DAYS, LEDGER_DAY_GROUPS } from './systems/wallet.ts';
+import type { ActionBody } from '../types/actions.ts';
+import type { EngineEvent, ModifierKey, SystemDefinition } from '../types/registry.ts';
+import type { ActionOutcome, ActivityAction, LedgerDay, LedgerLine, LifeContext, LifeContextInit, LifeState, NeedId } from '../types/life.ts';
 
+// addSkillXp only passes its context on to modifiers and listeners; the engine tolerates none, so the original calls gave none.
+const NO_CTX = undefined as unknown as LifeContext;
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8); // 09:00 in Lagos (UTC+1), a Monday
-const at = (now, seed = 'test') => makeContext({ now, cityId: 'lagos', seed });
+const at = (now: number, seed = 'test'): LifeContext => makeContext({ now, cityId: 'lagos', seed });
+
+/** A value a test needs to be there: fails the test, with a message, instead of being read as `undefined`/`null`. */
+const found = <T>(value: T | null | undefined, what: string): T => { assert.ok(value !== null && value !== undefined, `${what} exists`); return value; };
+/** The reason a refused action gave. */
+const reasonOf = (result: ActionOutcome): string => { assert.equal(result.ok, false); return found(result.ok ? undefined : result.reason, 'a reason'); };
+/** The running timed action, narrowed to an activity (the only kind that carries `paid` and `choice`). */
+const activityOf = (state: LifeState): ActivityAction => {
+  const active = state.activeAction;
+  assert.ok(active && active.kind === 'activity', 'an activity is running');
+  return active;
+};
+/** The newest ledger line. */
+const lastLine = (state: LifeState) => found(state.ledger.at(-1), 'a ledger line');
+
+/** A life as the test-only 'probe' system sees it: its own slice, plus keys it never declared (`admin`). */
+interface ProbeLife extends LifeState {
+  probe: { pings: number; boost: boolean; veto: boolean; seconds?: number };
+}
+// The probe system and the names below exist only in this file, so they are outside the typed registry maps: each crosses
+// the registry boundary through one cast, and the engine's own validation is what the tests then exercise.
+const asSystem = (def: object): SystemDefinition => def as unknown as SystemDefinition;
+const dispatchTest = (state: LifeState, body: { type: string; payload?: object; actionId?: string; id?: unknown; mode?: unknown }, ctx?: LifeContextInit): ActionOutcome => dispatch(state, body as unknown as ActionBody, ctx);
+const emitTest = (state: LifeState, event: string, data: object, ctx: LifeContext): void => emit(state, event as EngineEvent, data as never, ctx);
+const modifyTest = (state: LifeState, key: string, base: unknown, data: object, ctx: LifeContext): unknown => modify(state, key as ModifierKey, base as never, data as never, ctx);
+/** createLife with nothing saved: the default life. */
+const blank = (ctx?: LifeContextInit): ProbeLife => createLife(undefined, ctx) as ProbeLife;
 
 // A test-only system: exercises the contract exactly as a feature owner would use it.
-const seen = [];
-registerSystem({
+const seen: unknown[][] = [];
+registerSystem(asSystem({
   id: 'probe',
   stateKeys: ['probe'],
   // Everything advance() and the actions write is rebuilt here, `seconds` included: a field sanitize does not rebuild is lost at the next load.
-  sanitize(input, state) { state.probe = { pings: Number.isSafeInteger(input.probe?.pings) && input.probe.pings >= 0 ? input.probe.pings : 0, boost: input.probe?.boost === true, veto: input.probe?.veto === true,
-    ...(Number.isFinite(input.probe?.seconds) && input.probe.seconds > 0 ? { seconds: input.probe.seconds } : {}) }; },
-  actions: {
-    ping(state, payload) { state.probe.pings += payload.by === 2 ? 2 : 1; return { ok: true, code: 'pinged', state }; },
-    roll(state, payload, ctx) { state.message = String(ctx.rng()); return { ok: true, code: 'rolled', state }; },
+  sanitize(input: Record<string, unknown>, state: ProbeLife) {
+    const saved = isRecord(input.probe) ? input.probe : {}; // untrusted saved input
+    const { pings, seconds } = saved;
+    state.probe = { pings: typeof pings === 'number' && Number.isSafeInteger(pings) && pings >= 0 ? pings : 0, boost: saved.boost === true, veto: saved.veto === true,
+      ...(typeof seconds === 'number' && Number.isFinite(seconds) && seconds > 0 ? { seconds } : {}) };
   },
-  advance(state, dt) { state.probe.seconds = (state.probe.seconds || 0) + dt; },
-  view(state) { return { pings: state.probe.pings }; },
-  on: { 'activity.completed': (state, data) => seen.push(['completed', data.id, data.tags, data.choice]), 'wallet.changed': (state, data) => seen.push(['wallet', data.amount, data.reason]) },
+  actions: {
+    ping(state: ProbeLife, payload: Record<string, unknown>): ActionOutcome { state.probe.pings += payload.by === 2 ? 2 : 1; return { ok: true, code: 'pinged', state }; },
+    roll(state: LifeState, _payload: unknown, ctx: LifeContext): ActionOutcome { state.message = String(ctx.rng()); return { ok: true, code: 'rolled', state }; },
+  },
+  advance(state: ProbeLife, dt: number) { state.probe.seconds = (state.probe.seconds || 0) + dt; },
+  view(state: ProbeLife) { return { pings: state.probe.pings }; },
+  on: {
+    'activity.completed': (_state: LifeState, data: { id: string; tags: string[]; choice: string | null }) => seen.push(['completed', data.id, data.tags, data.choice]),
+    'wallet.changed': (_state: LifeState, data: { amount: number; reason: string }) => seen.push(['wallet', data.amount, data.reason]),
+  },
   modifiers: {
-    'skills.xpRate': (value, state) => (state.probe.boost ? value * 2 : value),
-    'needs.decayRate': (value, state, { need }) => (state.probe.boost && need === 'hunger' ? 0 : value),
-    'activity.block': (value, state, { def }) => value || (state.probe.veto && def.id === 'test-meal' ? { code: 'probe_veto', reason: 'The probe says no.' } : null),
+    'skills.xpRate': (value: number, state: ProbeLife) => (state.probe.boost ? value * 2 : value),
+    'needs.decayRate': (value: number, state: ProbeLife, { need }: { need: NeedId }) => (state.probe.boost && need === 'hunger' ? 0 : value),
+    'activity.block': (value: unknown, state: ProbeLife, { def }: { def: { id: string } }) => value || (state.probe.veto && def.id === 'test-meal' ? { code: 'probe_veto', reason: 'The probe says no.' } : null),
   },
   activities: [
     { id: 'test-meal', label: 'Test Meal', duration: 8, cost: 550, effects: { fun: 10 }, tags: ['food'], where: { venue: 'park', spot: 'drinks' } },
@@ -43,37 +81,37 @@ registerSystem({
     { id: 'test-office', label: 'Test Office', duration: 5, hours: { open: 9, close: 17, days: [1, 2, 3, 4, 5] }, where: { venue: 'park', spot: 'drinks' } },
     { id: 'test-choice', label: 'Test Choice', duration: 9, choices: [{ id: 'poem', label: 'Poem', duration: 3, effects: { fun: 7 } }, { id: 'song', label: 'Song', cost: 50, chargeOn: 'start', effects: { social: 9 } }], where: { venue: 'park', spot: 'stall', spotLabel: 'Test stall' } },
   ],
-});
+}));
 rebuildCatalogue();
-const atDrinks = (saved = {}, now = MONDAY_9AM) => createLife({ spot: 'drinks', ...saved }, at(now));
+const atDrinks = (saved: Record<string, unknown> = {}, now = MONDAY_9AM): ProbeLife => createLife({ spot: 'drinks', ...saved }, at(now)) as ProbeLife;
 
 test('registry: every system declares disjoint state keys and sanitize writes only those', () => {
   const keys = systems().flatMap(system => system.stateKeys);
   assert.equal(new Set(keys).size, keys.length);
-  assert.deepEqual(Object.keys(createLife()).sort(), [...keys].sort());
-  assert.throws(() => registerSystem({ id: 'thief', stateKeys: ['cash'], sanitize() {} }), /owned by wallet/);
-  assert.throws(() => registerSystem({ id: 'probe', stateKeys: [], sanitize() {} }), /duplicate/i);
-  assert.throws(() => registerSystem({ id: 'clash', stateKeys: [], sanitize() {}, actions: { travel() {} } }), /already registered/);
+  assert.deepEqual(Object.keys(blank()).sort(), [...keys].sort());
+  assert.throws(() => registerSystem(asSystem({ id: 'thief', stateKeys: ['cash'], sanitize() {} })), /owned by wallet/);
+  assert.throws(() => registerSystem(asSystem({ id: 'probe', stateKeys: [], sanitize() {} })), /duplicate/i);
+  assert.throws(() => registerSystem(asSystem({ id: 'clash', stateKeys: [], sanitize() {}, actions: { travel() {} } })), /already registered/);
   for (const id of ['core', 'wallet', 'inventory', 'needs', 'skills', 'activities', 'travel', 'health', 'career', 'economy', 'home', 'property', 'onboarding', 'goals', 'social', 'civic']) assert.ok(systems().some(system => system.id === id), id);
 });
 
 test('registry dispatch: routes by type, folds legacy id/mode into the payload and rejects unknown types', () => {
-  const state = createLife();
-  assert.ok(['activity', 'spot', 'cancel', 'travel', 'apply-job', 'ping'].every(type => actionTypes().includes(type)));
-  assert.equal(dispatch(state, { type: 'ping' }).code, 'pinged');
-  assert.equal(dispatch(state, { type: 'ping', payload: { by: 2 } }).code, 'pinged');
+  const state = blank();
+  assert.ok(['activity', 'spot', 'cancel', 'travel', 'apply-job', 'ping'].every(type => (actionTypes() as string[]).includes(type)));
+  assert.equal(dispatchTest(state, { type: 'ping' }).code, 'pinged');
+  assert.equal(dispatchTest(state, { type: 'ping', payload: { by: 2 } }).code, 'pinged');
   assert.equal(state.probe.pings, 3);
-  assert.equal(viewLife(state).probe.pings, 3);
+  assert.equal((viewLife(state) as unknown as { probe: { pings: number } }).probe.pings /* a view the probe system adds */, 3);
   assert.equal(dispatch(state, { type: 'travel', id: 'library', mode: 'cab' }).code, 'started');
-  const other = createLife();
+  const other = blank();
   assert.equal(dispatch(other, { type: 'travel', payload: { id: 'library', mode: 'cab' } }).code, 'started');
   assert.deepEqual(other.activeAction, state.activeAction);
-  assert.throws(() => dispatch(state, { type: 'nope' }), /Invalid action type/);
-  assert.throws(() => dispatch(state, { type: 'constructor' }), /Invalid action type/);
+  assert.throws(() => dispatchTest(state, { type: 'nope' }), /Invalid action type/);
+  assert.throws(() => dispatchTest(state, { type: 'constructor' }), /Invalid action type/);
 });
 
 test('ctx.rng is deterministic per action ID and differs between IDs', () => {
-  const roll = id => dispatch(createLife(), { type: 'roll', actionId: id }, { now: 5, cityId: 'lagos', actionId: id }).state.message;
+  const roll = (id: string) => dispatchTest(blank(), { type: 'roll', actionId: id }, { now: 5, cityId: 'lagos', actionId: id }).state.message;
   assert.equal(roll('1:a'), roll('1:a'));
   assert.notEqual(roll('1:a'), roll('1:b'));
   const a = makeRng('seed'), b = makeRng('seed');
@@ -91,7 +129,7 @@ test('sanitize rejects hostile saves: every field falls back to a safe default',
     job: 'president', completedShifts: -3, homeOwned: 'yes', probe: { pings: 1e99 },
     activeAction: { kind: 'activity', id: 'helper-shift', duration: 20, remaining: 0.001 }, admin: true, constructor: { prototype: {} },
   };
-  const state = createLife(hostile, at(1000));
+  const state = createLife(hostile, at(1000)) as ProbeLife & { admin?: unknown };
   assert.equal(state.cash, 5000); assert.equal(state.name, 'New Lagosian'); assert.equal(state.message, ''); assert.equal(state.t, 1000);
   assert.equal(state.location, 'park'); assert.equal(state.spot, 'amphitheatre');
   assert.deepEqual(state.needs, { hunger: 50, energy: 100, fun: 0, social: 50, hygiene: 50, bladder: 50 });
@@ -109,7 +147,7 @@ test('sanitize rejects hostile saves: every field falls back to a safe default',
   for (const active of [{ kind: 'warp', id: 'home', duration: 5, remaining: 1 }, { kind: 'travel', id: 'park', duration: 5, remaining: 1 }, { kind: 'travel', id: 'library', duration: 500, remaining: 1 }, { kind: 'activity', id: 'garri', duration: 5, remaining: 2 }, { kind: 'activity', id: 'test-choice', duration: 3, remaining: 1, choice: 'nope' }]) {
     assert.equal(createLife({ activeAction: active }).activeAction, null, JSON.stringify(active));
   }
-  assert.equal(createLife({ spot: 'trees', activeAction: { kind: 'activity', id: 'chill', duration: 11, remaining: 5, paid: 999, extra: 1 } }).activeAction.paid, undefined);
+  assert.equal(activityOf(createLife({ spot: 'trees', activeAction: { kind: 'activity', id: 'chill', duration: 11, remaining: 5, paid: 999, extra: 1 } })).paid, undefined);
 });
 
 test('createLife is idempotent and never aliases its input', () => {
@@ -117,7 +155,7 @@ test('createLife is idempotent and never aliases its input', () => {
   addMoodlet(first, { id: 'calm', label: 'Calm', value: 3 }, at(50));
   const second = createLife(first, at(999));
   assert.deepEqual(second, first);
-  second.needs.fun = 1; second.inventory.rice = 9; second.ledger.push({});
+  second.needs.fun = 1; second.inventory.rice = 9; second.ledger.push({} as unknown as LedgerLine); // deliberately malformed line
   assert.equal(first.needs.fun, 50); assert.equal(first.inventory.rice, 2); assert.equal(first.ledger.length, 0);
 });
 
@@ -128,7 +166,7 @@ test('migration: a current-format (pre-registry) save loads without loss', () =>
   assert.equal(migrate(saved).v, STATE_VERSION);
   const state = createLife(saved, at(MONDAY_9AM));
   assert.equal(state.v, 1); assert.equal(state.t, MONDAY_9AM);
-  for (const key of ['cash', 'name', 'homeOwned', 'job', 'completedShifts', 'needs', 'location', 'spot', 'activeAction', 'message']) assert.deepEqual(state[key], saved[key], key);
+  for (const key of ['cash', 'name', 'homeOwned', 'job', 'completedShifts', 'needs', 'location', 'spot', 'activeAction', 'message']) assert.deepEqual(state[key as keyof LifeState], saved[key as keyof typeof saved], key);
   // New slices start at their defaults.
   assert.deepEqual(state.ledger, []); assert.deepEqual(state.inventory, {}); assert.deepEqual(state.moodlets, []); assert.equal(state.skills.hustle, 0);
   advanceLife(state, 12.5, at(MONDAY_9AM + 12500));
@@ -142,7 +180,7 @@ test('migration: a current-format (pre-registry) save loads without loss', () =>
 
 test('needs: six needs in fixed order decay slowly in whole points, with a floor and an offline cap', () => {
   assert.deepEqual([...NEEDS], ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder']);
-  assert.deepEqual(Object.keys(createLife().needs), [...NEEDS]);
+  assert.deepEqual(Object.keys(blank().needs), [...NEEDS]);
   const hour = createLife(null, at(0));
   advanceLife(hour, 3600, at(3600000));
   for (const need of NEEDS) assert.equal(hour.needs[need], 50 - NEED_DECAY_PER_HOUR[need], need);
@@ -152,7 +190,7 @@ test('needs: six needs in fixed order decay slowly in whole points, with a floor
   assert.deepEqual(stepped.needs, hour.needs);
   // Short play sessions do not disturb exact activity arithmetic.
   const brief = createLife(null, at(0)); advanceLife(brief, 120, at(120000));
-  assert.deepEqual(brief.needs, createLife().needs);
+  assert.deepEqual(brief.needs, blank().needs);
   // Offline cap: thirty days away costs exactly what the cap allows, no more.
   const away = createLife({ needs: Object.fromEntries(NEEDS.map(need => [need, 100])) }, at(0));
   const capped = createLife(away, at(0));
@@ -173,11 +211,12 @@ test('needs: six needs in fixed order decay slowly in whole points, with a floor
 test('needs never trap a player: home is a free trek away and restores without prerequisites', () => {
   const state = createLife({ cash: 0, needs: Object.fromEntries(NEEDS.map(need => [need, 0])) }, at(MONDAY_9AM));
   assert.equal(dispatch(state, { type: 'travel', payload: { id: 'home', mode: 'trek' } }, at(MONDAY_9AM)).ok, true);
-  assert.equal(state.activeAction.duration, 18, 'the trek home from Freedom Park crosses the lagoon');
+  assert.equal(found(state.activeAction, 'the trek').duration, 18, 'the trek home from Freedom Park crosses the lagoon');
   advanceLife(state, 18, at(MONDAY_9AM + 18000));
   assert.equal(state.location, 'home');
   const free = spotsOf('home').flatMap(spot => spot.activities).filter(def => !def.unavailable && !def.cost && !def.minimumNeeds && !def.requiresJob && !def.requiresSkill && !def.consumes && !def.hours);
-  for (const need of ['hunger', 'energy', 'hygiene']) assert.ok(free.some(def => (def.effects?.[need] ?? 0) > 0 || (def.effectsPerSecond?.[need] ?? 0) > 0), `free ${need} recovery at home`);
+  const recovered: NeedId[] = ['hunger', 'energy', 'hygiene'];
+  for (const need of recovered) assert.ok(free.some(def => (def.effects?.[need] ?? 0) > 0 || (def.effectsPerSecond?.[need] ?? 0) > 0), `free ${need} recovery at home`);
   assert.equal(VENUES.home.hours, undefined);
 });
 
@@ -201,15 +240,15 @@ test('moodlets expire, low needs add feelings, and mood is derived', () => {
 
 test('skills: nine skills, XP to level, rate modifier hook and level-up event', () => {
   assert.deepEqual([...SKILLS], ['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography']);
-  const state = createLife();
+  const state = blank();
   assert.equal(skillLevel(state, 'coding'), 0);
-  assert.equal(addSkillXp(state, 'coding', 99), 0); assert.equal(addSkillXp(state, 'coding', 1), 1);
-  assert.equal(addSkillXp(state, 'coding', 1e9), 10); assert.equal(state.skills.coding, xpForLevel(10));
-  assert.equal(addSkillXp(state, 'hacking', 50), -1); assert.equal(addSkillXp(state, 'music', -5), -1);
+  assert.equal(addSkillXp(state, 'coding', 99, NO_CTX), 0); assert.equal(addSkillXp(state, 'coding', 1, NO_CTX), 1);
+  assert.equal(addSkillXp(state, 'coding', 1e9, NO_CTX), 10); assert.equal(state.skills.coding, xpForLevel(10));
+  assert.equal(addSkillXp(state, 'hacking', 50, NO_CTX), -1); assert.equal(addSkillXp(state, 'music', -5, NO_CTX), -1);
   assert.equal(setSkillLevel(state, 'hustle', 2), true); assert.equal(skillLevel(state, 'hustle'), 2);
   setSkillLevel(state, 'hustle', 1); assert.equal(skillLevel(state, 'hustle'), 2, 'never lowers');
   const boosted = createLife({ probe: { boost: true } });
-  addSkillXp(boosted, 'dance', 50); assert.equal(boosted.skills.dance, 100); assert.equal(skillLevel(boosted, 'dance'), 1);
+  addSkillXp(boosted, 'dance', 50, NO_CTX); assert.equal(boosted.skills.dance, 100); assert.equal(skillLevel(boosted, 'dance'), 1);
   const view = viewLife(state).skills;
   assert.deepEqual(view.hustle, { xp: 300, level: 2, next: 600, progress: 0 }); assert.equal(view.coding.next, null);
 });
@@ -226,14 +265,14 @@ test('wallet ledger: integer naira, overflow-safe, capped log that explains ever
   assert.deepEqual(state.ledger, [{ at: 20, amount: 250, reason: 'Gift', balance: 5250 }, { at: 30, amount: -50, reason: 'Snack', balance: 5200 }]);
   assert.equal(debit(state, 6000, 'Bill', at(50), { partial: true }), 5200); assert.equal(state.cash, 0);
   for (let i = 0; i < 70; i++) credit(state, 1, `Tip ${i}`, at(100 + i));
-  assert.equal(state.ledger.length, LEDGER_LIMIT); assert.equal(LEDGER_LIMIT, 60); assert.equal(state.ledger.at(-1).reason, 'Tip 69'); assert.equal(state.ledger.at(-1).balance, 70);
-  assert.equal(viewLife(state).wallet.ledger[0].reason, 'Tip 69', 'view lists newest first');
+  assert.equal(state.ledger.length, LEDGER_LIMIT); assert.equal(LEDGER_LIMIT, 60); assert.equal(lastLine(state).reason, 'Tip 69'); assert.equal(lastLine(state).balance, 70);
+  assert.equal(found(viewLife(state).wallet.ledger[0], 'a ledger line').reason, 'Tip 69', 'view lists newest first');
   // The lines that scrolled away are still accounted for in the day's summary, and the statement adds up.
   const statement = statementOf(state);
   assert.deepEqual(statement.days.map((day) => [day.open, day.in, day.out, day.close, day.changes]), [[5000, 320, 5250, 70, 73]]);
   assert.deepEqual([statement.opening.balance, statement.closing, statement.totals.net, statement.reconciled, statement.problems], [5000, 70, -4930, true, []]);
   assert.equal(statement.linesOpening, 10, 'the kept lines start after the first thirteen changes');
-  assert.equal(statement.days[0].groups.reduce((sum, group) => sum + group.net, 0), -4930);
+  assert.equal(found(statement.days[0], 'a statement day').groups.reduce((sum, group) => sum + group.net, 0), -4930);
   // Game actions record their reason too.
   const traveller = createLife(null, at(MONDAY_9AM));
   dispatch(traveller, { type: 'travel', payload: { id: 'library', mode: 'cab' } }, at(MONDAY_9AM));
@@ -241,7 +280,7 @@ test('wallet ledger: integer naira, overflow-safe, capped log that explains ever
 });
 
 test('inventory: counted items with atomic removal', () => {
-  const state = createLife();
+  const state = blank();
   assert.equal(addItem(state, 'rice', 3), true); assert.equal(addItem(state, 'Bad Id', 1), false); assert.equal(addItem(state, 'rice', 0), false); assert.equal(addItem(state, 'rice', 9999), false);
   assert.equal(removeItems(state, { rice: 2, pepper: 1 }), false); assert.equal(countItem(state, 'rice'), 3);
   assert.equal(removeItems(state, { rice: 3 }), true); assert.deepEqual(state.inventory, {});
@@ -251,14 +290,14 @@ test('activity chargeOn complete (default): nothing is charged at start or on ca
   seen.length = 0;
   const state = atDrinks();
   assert.equal(dispatch(state, { type: 'activity', payload: { id: 'test-meal' } }, at(MONDAY_9AM)).code, 'started');
-  assert.equal(state.cash, 5000); assert.equal(state.activeAction.paid, undefined);
+  assert.equal(state.cash, 5000); assert.equal(activityOf(state).paid, undefined);
   assert.equal(dispatch(state, { type: 'cancel' }, at(MONDAY_9AM)).code, 'cancelled');
   advanceLife(state, 100, at(MONDAY_9AM + 100000));
   assert.equal(state.cash, 5000); assert.equal(state.needs.fun, 50); assert.deepEqual(state.ledger, []);
   dispatch(state, { type: 'activity', payload: { id: 'test-meal' } }, at(MONDAY_9AM));
   advanceLife(state, 7, at(MONDAY_9AM + 7000)); assert.equal(state.cash, 5000);
   advanceLife(state, 1, at(MONDAY_9AM + 8000));
-  assert.equal(state.cash, 4450); assert.equal(state.needs.fun, 60); assert.equal(state.ledger.at(-1).reason, 'Test Meal'); assert.equal(state.ledger.at(-1).amount, -550);
+  assert.equal(state.cash, 4450); assert.equal(state.needs.fun, 60); assert.equal(lastLine(state).reason, 'Test Meal'); assert.equal(lastLine(state).amount, -550);
   assert.deepEqual(seen, [['wallet', -550, 'Test Meal'], ['completed', 'test-meal', ['food'], null]]);
   // Re-checked at completion: if the cash is gone by then, no charge and no effects, with a clear message.
   const drained = atDrinks();
@@ -270,13 +309,13 @@ test('activity chargeOn complete (default): nothing is charged at start or on ca
   assert.deepEqual(drained.ledger.map(entry => entry.reason), ['Rent']);
   const poor = atDrinks({ cash: 549 });
   const refused = dispatch(poor, { type: 'activity', payload: { id: 'test-meal' } }, at(MONDAY_9AM));
-  assert.equal(refused.code, 'insufficient_funds'); assert.match(refused.reason, /₦550.*₦549/); assert.equal(poor.message, refused.reason);
+  assert.equal(refused.code, 'insufficient_funds'); assert.match(reasonOf(refused), /₦550.*₦549/); assert.equal(poor.message, reasonOf(refused));
 });
 
 test('activity chargeOn start: debited once up front, refunded in full on cancel unless refundOnCancel is false', () => {
   const state = atDrinks();
   dispatch(state, { type: 'activity', payload: { id: 'test-show' } }, at(MONDAY_9AM));
-  assert.equal(state.cash, 4600, 'wallet is already debited while the activity runs'); assert.equal(state.activeAction.paid, 400);
+  assert.equal(state.cash, 4600, 'wallet is already debited while the activity runs'); assert.equal(activityOf(state).paid, 400);
   const reloaded = createLife(JSON.parse(JSON.stringify(state)), at(MONDAY_9AM));
   assert.deepEqual(reloaded.activeAction, state.activeAction);
   dispatch(state, { type: 'cancel' }, at(MONDAY_9AM));
@@ -290,7 +329,7 @@ test('activity chargeOn start: debited once up front, refunded in full on cancel
   const locked = atDrinks();
   dispatch(locked, { type: 'activity', payload: { id: 'test-locked' } }, at(MONDAY_9AM));
   const cancel = dispatch(locked, { type: 'cancel' }, at(MONDAY_9AM));
-  assert.equal(cancel.code, 'not_cancellable'); assert.ok(cancel.reason); assert.ok(locked.activeAction);
+  assert.equal(cancel.code, 'not_cancellable'); assert.ok(reasonOf(cancel)); assert.ok(locked.activeAction);
 });
 
 test('per-second accrual: gains accrue while running and an early stop keeps them', () => {
@@ -309,29 +348,29 @@ test('per-second accrual: gains accrue while running and an early stop keeps the
 });
 
 test('blocked starts return a machine code and a reason naming the unmet prerequisite', () => {
-  const start = (state, id, now = MONDAY_9AM, payload = {}) => dispatch(state, { type: 'activity', payload: { id, ...payload } }, at(now));
+  const start = (state: LifeState, id: string, now = MONDAY_9AM, payload: object = {}) => dispatch(state, { type: 'activity', payload: { id, ...payload } }, at(now));
   const skill = start(atDrinks(), 'test-gig');
-  assert.equal(skill.code, 'skill_required'); assert.match(skill.reason, /Music level 2 \(yours is 0\)/);
+  assert.equal(skill.code, 'skill_required'); assert.match(reasonOf(skill), /Music level 2 \(yours is 0\)/);
   const items = start(atDrinks({ inventory: { rice: 1 } }), 'test-cook');
-  assert.equal(items.code, 'missing_items'); assert.match(items.reason, /1 × rice, 1 × pepper/);
+  assert.equal(items.code, 'missing_items'); assert.match(reasonOf(items), /1 × rice, 1 × pepper/);
   const sunday = MONDAY_9AM - 86400000;
   const closed = start(atDrinks({}, sunday), 'test-office', sunday);
-  assert.equal(closed.code, 'closed'); assert.match(closed.reason, /Freedom Park is closed right now\. Opens in 24h 0m\./);
+  assert.equal(closed.code, 'closed'); assert.match(reasonOf(closed), /Freedom Park is closed right now\. Opens in 24h 0m\./);
   assert.equal(start(atDrinks({}, MONDAY_9AM + 8 * 3600000), 'test-office', MONDAY_9AM + 8 * 3600000).code, 'closed');
   assert.equal(start(atDrinks(), 'test-office').code, 'started');
   const veto = start(atDrinks({ probe: { veto: true } }), 'test-meal');
-  assert.deepEqual([veto.code, veto.reason], ['probe_veto', 'The probe says no.']);
+  assert.deepEqual([veto.code, reasonOf(veto)], ['probe_veto', 'The probe says no.']);
   const work = createLife({ spot: 'work', needs: { energy: 19, hunger: 5 } }, at(MONDAY_9AM));
-  const job = start(work, 'helper-shift'); assert.equal(job.code, 'job_required'); assert.match(job.reason, /Community helper job/);
+  const job = start(work, 'helper-shift'); assert.equal(job.code, 'job_required'); assert.match(reasonOf(job), /Community helper job/);
   dispatch(work, { type: 'apply-job', payload: { id: 'community-helper' } }, at(MONDAY_9AM));
-  const needs = start(work, 'helper-shift'); assert.equal(needs.code, 'needs_required'); assert.match(needs.reason, /Energy 20\+ \(you have 19\) and Hunger 20\+ \(you have 5\)/);
-  const wrongSpot = start(createLife(), 'chill'); assert.equal(wrongSpot.code, 'unavailable'); assert.ok(wrongSpot.reason);
+  const needs = start(work, 'helper-shift'); assert.equal(needs.code, 'needs_required'); assert.match(reasonOf(needs), /Energy 20\+ \(you have 19\) and Hunger 20\+ \(you have 5\)/);
+  const wrongSpot = start(blank(), 'chill'); assert.equal(wrongSpot.code, 'unavailable'); assert.ok(reasonOf(wrongSpot));
   const busy = atDrinks(); start(busy, 'test-office'); assert.equal(start(busy, 'test-meal').code, 'busy');
   // The view carries the same reason for each card so the UI can show it before a tap.
   const cards = viewLife(atDrinks(), at(sunday)).activities.cards;
-  assert.equal(cards.find(card => card.id === 'test-office').blocked.code, 'closed');
-  assert.equal(cards.find(card => card.id === 'test-gig').blocked.code, 'skill_required');
-  assert.equal(cards.find(card => card.id === 'test-meal').blocked, null);
+  assert.equal(found(found(cards.find(card => card.id === 'test-office'), 'the office card').blocked, 'a block').code, 'closed');
+  assert.equal(found(found(cards.find(card => card.id === 'test-gig'), 'the gig card').blocked, 'a block').code, 'skill_required');
+  assert.equal(found(cards.find(card => card.id === 'test-meal'), 'the meal card').blocked, null);
 });
 
 test('inventory consumption, production and completion moodlets', () => {
@@ -352,26 +391,26 @@ test('choice activities and system-contributed spots', () => {
   assert.equal(dispatch(state, { type: 'activity', payload: { id: 'test-choice', choice: 'opera' } }, at(MONDAY_9AM)).code, 'choice_required');
   assert.equal(dispatch(state, { type: 'activity', payload: { id: 'test-choice', choice: 'poem' } }, at(MONDAY_9AM)).code, 'started');
   assert.deepEqual(state.activeAction, { kind: 'activity', id: 'test-choice', duration: 3, remaining: 3, choice: 'poem' });
-  assert.equal(viewLife(state, at(MONDAY_9AM)).activities.active.label, 'Test Choice: Poem');
+  assert.equal(found(viewLife(state, at(MONDAY_9AM)).activities.active, 'an active card').label, 'Test Choice: Poem');
   const reloaded = createLife(JSON.parse(JSON.stringify(state)), at(MONDAY_9AM));
   advanceLife(reloaded, 3, at(MONDAY_9AM + 3000)); assert.equal(reloaded.needs.fun, 57);
   dispatch(reloaded, { type: 'activity', payload: { id: 'test-choice', choice: 'song' } }, at(MONDAY_9AM + 3000));
-  assert.equal(reloaded.cash, 4950); assert.equal(reloaded.activeAction.duration, 9);
+  assert.equal(reloaded.cash, 4950); assert.equal(found(reloaded.activeAction, 'the song').duration, 9);
 });
 
 test('advance runs every system whether or not an action is active, and tracks state.t', () => {
   const state = createLife(null, at(1000));
   assert.equal(advanceLife(state, 30, at(31000)).code, 'idle');
-  assert.equal(state.probe.seconds, 30); assert.equal(state.t, 31000);
+  assert.equal((state as ProbeLife).probe.seconds, 30); assert.equal(state.t, 31000);
   advanceLife(state, 2); assert.equal(state.t, 33000, 'without ctx the clock follows dt');
-  for (const dt of [NaN, -1, 0, Infinity, '5']) assert.equal(advanceLife(state, dt).code, 'invalid_time');
+  for (const dt of [NaN, -1, 0, Infinity, '5' as unknown as number /* hostile: not a number */]) assert.equal(advanceLife(state, dt).code, 'invalid_time');
   assert.equal(state.t, 33000);
 });
 
 test('event bus and modifiers reach every system and tolerate unknown names', () => {
-  const state = createLife();
-  assert.doesNotThrow(() => emit(state, 'nobody.listens', { any: 1 }, at(0)));
-  assert.equal(modify(state, 'nobody.modifies', 42, {}, at(0)), 42);
+  const state = blank();
+  assert.doesNotThrow(() => emitTest(state, 'nobody.listens', { any: 1 }, at(0)));
+  assert.equal(modifyTest(state, 'nobody.modifies', 42, {}, at(0)), 42);
   state.probe.boost = true;
   assert.equal(modify(state, 'skills.xpRate', 1, { skill: 'dance' }, at(0)), 2);
 });
@@ -416,17 +455,24 @@ test('wallet history: full recent lines, a summary per Lagos day, bounded, and a
   const statement = statementOf(state);
   assert.equal(statement.reconciled, true); assert.deepEqual(statement.problems, []);
   assert.equal(statement.opening.balance + statement.totals.net, state.cash);
-  assert.equal(statement.opening.day, state.ledgerDays[0].day);
-  assert.equal(statement.lines.at(-1).balance, state.cash);
+  assert.equal(statement.opening.day, found(state.ledgerDays[0], 'a ledger day').day);
+  assert.equal(found(statement.lines.at(-1), 'a statement line').balance, state.cash);
   // A reload keeps every summary and line exactly.
   const again = createLife(structuredClone(state), at(start + 51 * DAY));
   assert.deepEqual(again.ledgerDays, state.ledgerDays); assert.deepEqual(again.ledger, state.ledger); assert.equal(statementOf(again).reconciled, true);
   // A save from before the summaries existed gets them rebuilt from its lines.
   const { ledgerDays, ...older } = structuredClone(state);
   const rebuilt = createLife(older, at(start + 51 * DAY));
-  assert.equal(statementOf(rebuilt).reconciled, true); assert.equal(rebuilt.ledgerDays.at(-1).close, state.cash); assert.ok(rebuilt.ledgerDays.length >= 1);
+  assert.equal(statementOf(rebuilt).reconciled, true); assert.equal(found(rebuilt.ledgerDays.at(-1), 'a ledger day').close, state.cash); assert.ok(rebuilt.ledgerDays.length >= 1);
+  /** The saved day summaries of a damaged copy. */
+  const days = (s: { ledgerDays: unknown }) => s.ledgerDays as LedgerDay[];
   // Summaries that do not add up, or do not end at the balance, are thrown away and rebuilt — never trusted.
-  for (const damage of [(s) => { s.ledgerDays[3].in += 5; }, (s) => { s.ledgerDays.at(-1).close += 1; }, (s) => { s.ledgerDays[2].by = { x: ['a', 1] }; }, (s) => { s.ledgerDays = 'x'; }, (s) => { s.ledgerDays[5].day = s.ledgerDays[4].day; }]) {
+  // Each one damages a copy of the saved summaries in a different way (hence the loosely typed `s`).
+  const damages: ((s: { ledgerDays: unknown }) => void)[] = [
+    (s) => { found(days(s)[3], 'a day').in += 5; }, (s) => { found(days(s).at(-1), 'a day').close += 1; }, (s) => { Object.assign(found(days(s)[2], 'a day'), { by: { x: ['a', 1] } }); },
+    (s) => { s.ledgerDays = 'x'; }, (s) => { found(days(s)[5], 'a day').day = found(days(s)[4], 'a day').day; },
+  ];
+  for (const damage of damages) {
     const copy = structuredClone(state); damage(copy);
     const fixed = createLife(copy, at(start + 51 * DAY));
     assert.equal(statementOf(fixed).reconciled, true); assert.equal(fixed.cash, state.cash);
@@ -434,10 +480,10 @@ test('wallet history: full recent lines, a summary per Lagos day, bounded, and a
   // A balance that does not match its own history is corrected IN the history.
   const tampered = structuredClone(state); tampered.cash += 777;
   const shown = createLife(tampered, at(start + 51 * DAY));
-  assert.deepEqual([shown.ledger.at(-1).amount, shown.ledger.at(-1).reason, shown.ledger.at(-1).balance], [777, 'Balance correction (no record of this change)', state.cash + 777]);
+  assert.deepEqual([lastLine(shown).amount, lastLine(shown).reason, lastLine(shown).balance], [777, 'Balance correction (no record of this change)', state.cash + 777]);
   assert.equal(statementOf(shown).reconciled, true);
   assert.deepEqual(['Rent: Yaba self-contain (due Sat 10 Jan)', 'Danfo to Freedom Park', 'Goal: Eat something', 'Bought Plastic chair', 'Transfer from Ada', 'Refund: Test Show', 'Tech shift', 'Groceries: 2 × Rice', '', 'Billboard · Marina · 7 days'].map(reasonGroup),
     ['Rent', 'Danfo', 'Goal', 'Bought', 'Transfer from', 'Refund', 'Tech shift', 'Groceries', 'Other', 'Billboard']);
   const view = viewLife(state).wallet;
-  assert.equal(view.days[0].day, state.ledgerDays.at(-1).day, 'the view lists the newest day first'); assert.equal(view.statement.reconciled, true);
+  assert.equal(found(view.days[0], 'a view day').day, found(state.ledgerDays.at(-1), 'a ledger day').day, 'the view lists the newest day first'); assert.equal(view.statement.reconciled, true);
 });

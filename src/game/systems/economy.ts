@@ -56,9 +56,14 @@
  *          'deposit.closed' { id, amount, interest }
  */
 import { emit } from '../registry.ts';
-import { fail, isId, isRecord, naira, ok, safeCount } from '../util.ts';
+import { fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, lagosDayStart, LAGOS_OFFSET_MS, WEEKDAYS } from '../clock.ts';
 import { addMoodlet, canAfford, canCredit, credit, debit, removeMoodlet } from '../api.ts';
+import type { ActionMap } from '../../types/actions.ts';
+import type { DepositTerm, LoanTerms, RentEntry } from '../../types/content.ts';
+import type { Deposit, DepositTermId, EconomyState, HouseId, LifeContext, LifeState } from '../../types/life.ts';
+import type { EngineEventMap, NoticeKind, SystemDefinition, TypedActionHandler } from '../../types/registry.ts';
+import type { EconomyView } from '../../types/view.ts';
 
 const DAY_MS = 86400000;
 
@@ -69,10 +74,10 @@ export const RENTS = Object.freeze({
   lekki: { id: 'lekki', label: 'Lekki mini-flat', rent: 17000 },
   ikoyi: { id: 'ikoyi', label: 'Ikoyi duplex', rent: 250000 },
   banana: { id: 'banana', label: 'Banana Island mansion', rent: 1500000 },
-});
+} satisfies Record<HouseId, RentEntry>);
 
 /** Loan figures observed in the reference game. */
-export const LOAN = Object.freeze({ principal: 60000, total: 72000, weekly: 12000 });
+export const LOAN = Object.freeze({ principal: 60000, total: 72000, weekly: 12000 } satisfies LoanTerms);
 /** Original beta values. */
 export const LOAN_LATE_FEE = 500;
 export const MAX_LOAN_FEES = 4;
@@ -85,46 +90,48 @@ export const DEPOSIT_TERMS = Object.freeze({
   d1: { id: 'd1', label: '1 day', days: 1, bps: 50 },
   d3: { id: 'd3', label: '3 days', days: 3, bps: 200 },
   d7: { id: 'd7', label: '7 days', days: 7, bps: 500 },
-});
+} satisfies Record<DepositTermId, DepositTerm>);
 export const DEPOSIT_MIN = 1000;
 export const DEPOSIT_MAX = 50000;
 export const DEPOSIT_MAX_OPEN = 3;
 export const DEPOSIT_TOTAL_CAP = 100000;
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const nowOf = (state, ctx) => (Number.isFinite(ctx?.now) ? ctx.now : state.t);
+const nowOf = (state: LifeState, ctx?: LifeContext): number => { const now = ctx?.now; return finite(now) ? now : state.t; };
 
 /** Number of the billing week: increases by one at every Saturday 00:00 Lagos time. */
-export const billingWeek = (ms) => Math.floor((lagosTime(ms).day - 2) / 7);
+export const billingWeek = (ms: number): number => Math.floor((lagosTime(ms).day - 2) / 7);
 /** Server ms of the Saturday that starts billing week `week`. */
-export const dueAt = (week) => lagosDayStart(week * 7 + 2);
+export const dueAt = (week: number): number => lagosDayStart(week * 7 + 2);
 /** "Sat 10 Oct" in Lagos time. */
-export function dateLabel(ms) {
+export function dateLabel(ms: number): string {
   const local = new Date(ms + LAGOS_OFFSET_MS);
-  return `${WEEKDAYS[local.getUTCDay()].slice(0, 3)} ${local.getUTCDate()} ${MONTHS[local.getUTCMonth()]}`;
+  return `${(WEEKDAYS[local.getUTCDay()] ?? '').slice(0, 3)} ${local.getUTCDate()} ${MONTHS[local.getUTCMonth()]}`; // getUTCDay is 0–6
 }
 
-const houseOf = (id) => (typeof id === 'string' && Object.hasOwn(RENTS, id) ? RENTS[id] : null);
-const idOf = (value) => (isRecord(value) ? value.id : value);
-const interestOf = (deposit) => Math.floor((deposit.amount * DEPOSIT_TERMS[deposit.term].bps) / 10000);
-const maturesAt = (deposit) => deposit.openedAt + DEPOSIT_TERMS[deposit.term].days * DAY_MS;
-const lockedTotal = (economy) => economy.deposits.reduce((sum, deposit) => sum + deposit.amount, 0);
-const arrearsCap = (house) => Math.round(house.rent * MAX_ARREARS_WEEKS * (1 + LATE_FEE_PERCENT / 100));
-const lateFee = (house) => Math.round((house.rent * LATE_FEE_PERCENT) / 100);
+const houseOf = (id: unknown): RentEntry | null => (typeof id === 'string' && Object.hasOwn(RENTS, id) ? RENTS[id as HouseId] : null); // hasOwn proved the key
+const idOf = (value: unknown): unknown => (isRecord(value) ? value.id : value);
+/** What interest and maturity need of a deposit (a deposit being priced for display has no id yet). */
+type PricedDeposit = Pick<Deposit, 'amount' | 'term'>;
+const interestOf = (deposit: PricedDeposit): number => Math.floor((deposit.amount * DEPOSIT_TERMS[deposit.term].bps) / 10000);
+const maturesAt = (deposit: Deposit): number => deposit.openedAt + DEPOSIT_TERMS[deposit.term].days * DAY_MS;
+const lockedTotal = (economy: EconomyState): number => economy.deposits.reduce((sum, deposit) => sum + deposit.amount, 0);
+const arrearsCap = (house: RentEntry): number => Math.round(house.rent * MAX_ARREARS_WEEKS * (1 + LATE_FEE_PERCENT / 100));
+const lateFee = (house: RentEntry): number => Math.round((house.rent * LATE_FEE_PERCENT) / 100);
 
-const note = (state, kind, text, ctx) => emit(state, 'notice.posted', { kind, text }, ctx);
+const note = (state: LifeState, kind: NoticeKind, text: string, ctx: LifeContext): void => emit(state, 'notice.posted', { kind, text }, ctx);
 
-function startBilling(state, ctx) {
+function startBilling(state: LifeState, ctx: LifeContext): void {
   if (state.economy.billedWeek === null) state.economy.billedWeek = billingWeek(nowOf(state, ctx));
 }
 
-function setArrearsFeeling(state, ctx) {
+function setArrearsFeeling(state: LifeState, ctx: LifeContext): void {
   if (state.economy.rent.arrears > 0) addMoodlet(state, { id: 'rent-arrears', label: 'Owing rent', value: -8 }, ctx); // original beta value
   else removeMoodlet(state, 'rent-arrears');
 }
 
 /** Settle one Saturday: arrears, then this week's rent, then the loan instalment. */
-function bill(state, week, ctx) {
+function bill(state: LifeState, week: number, ctx: LifeContext): void {
   const economy = state.economy, rent = economy.rent, house = houseOf(rent.house);
   const due = dateLabel(dueAt(week));
   if (house) {
@@ -168,6 +175,9 @@ function bill(state, week, ctx) {
   }
 }
 
+const isDepositTerm = (value: unknown): value is DepositTermId => typeof value === 'string' && Object.hasOwn(DEPOSIT_TERMS, value);
+const isSafeInt = (value: unknown): value is number => Number.isSafeInteger(value);
+
 const actions = {
   'economy.pay-loan'(state, payload, ctx) {
     const loan = state.economy.loan;
@@ -201,10 +211,10 @@ const actions = {
   },
   'economy.open-deposit'(state, payload, ctx) {
     const economy = state.economy;
-    const term = typeof payload.term === 'string' && Object.hasOwn(DEPOSIT_TERMS, payload.term) ? DEPOSIT_TERMS[payload.term] : null;
+    const term = isDepositTerm(payload.term) ? DEPOSIT_TERMS[payload.term] : null;
     if (!term) return fail(state, 'invalid_term', 'Choose a 1, 3 or 7 day term.');
     const amount = payload.amount;
-    if (!Number.isSafeInteger(amount) || amount < DEPOSIT_MIN || amount > DEPOSIT_MAX) {
+    if (typeof amount !== 'number' || !Number.isSafeInteger(amount) || amount < DEPOSIT_MIN || amount > DEPOSIT_MAX) {
       return fail(state, 'invalid_amount', `A deposit must be a whole amount from ${naira(DEPOSIT_MIN)} to ${naira(DEPOSIT_MAX)}.`);
     }
     if (economy.rent.arrears > 0) return fail(state, 'rent_arrears', `Pay your ${naira(economy.rent.arrears)} rent arrears in Phone → Bank before opening a deposit.`);
@@ -225,8 +235,8 @@ const actions = {
   'economy.close-deposit'(state, payload, ctx) {
     const economy = state.economy;
     const index = economy.deposits.findIndex((deposit) => deposit.id === payload.id);
-    if (index < 0) return fail(state, 'no_deposit', 'That deposit is not open. It may already have been paid out.');
     const deposit = economy.deposits[index];
+    if (index < 0 || deposit === undefined) return fail(state, 'no_deposit', 'That deposit is not open. It may already have been paid out.');
     const matured = nowOf(state, ctx) >= maturesAt(deposit);
     const interest = matured ? interestOf(deposit) : 0;
     if (!canCredit(state, deposit.amount + interest)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
@@ -236,16 +246,17 @@ const actions = {
     emit(state, 'deposit.closed', { id: deposit.id, amount: deposit.amount, interest }, ctx);
     return ok(state, 'deposit_closed');
   },
-};
+} satisfies NonNullable<SystemDefinition<'economy'>['actions']>;
 
-function sanitizeDeposits(saved, now) {
-  const deposits = [], seen = new Set();
+function sanitizeDeposits(saved: unknown, now: number): Deposit[] {
+  const deposits: Deposit[] = [], seen = new Set<string>();
   let total = 0;
-  for (const item of Array.isArray(saved) ? saved.slice(0, 50) : []) {
+  const items: unknown[] = Array.isArray(saved) ? saved.slice(0, 50) : [];
+  for (const item of items) {
     if (deposits.length >= DEPOSIT_MAX_OPEN) break;
-    if (!isRecord(item) || !isId(item.id) || seen.has(item.id) || typeof item.term !== 'string' || !Object.hasOwn(DEPOSIT_TERMS, item.term)) continue;
-    if (!Number.isSafeInteger(item.amount) || item.amount < DEPOSIT_MIN || item.amount > DEPOSIT_MAX || total + item.amount > DEPOSIT_TOTAL_CAP) continue;
-    if (!Number.isFinite(item.openedAt) || item.openedAt < 0 || item.openedAt > now) continue;
+    if (!isRecord(item) || !isId(item.id) || seen.has(item.id) || !isDepositTerm(item.term)) continue;
+    if (typeof item.amount !== 'number' || !Number.isSafeInteger(item.amount) || item.amount < DEPOSIT_MIN || item.amount > DEPOSIT_MAX || total + item.amount > DEPOSIT_TOTAL_CAP) continue;
+    if (!finite(item.openedAt) || item.openedAt < 0 || item.openedAt > now) continue;
     seen.add(item.id);
     total += item.amount;
     deposits.push({ id: item.id, amount: item.amount, term: item.term, openedAt: item.openedAt });
@@ -262,12 +273,13 @@ export default {
     const house = houseOf(rent.house);
     const loan = isRecord(saved.loan) ? saved.loan : null;
     const maxLeft = LOAN.total + LOAN_LATE_FEE * MAX_LOAN_FEES;
-    const validLoan = loan && safeCount(loan.left) && loan.left <= maxLeft;
-    const fees = validLoan && Number.isInteger(loan.fees) && loan.fees >= 0 && loan.fees <= MAX_LOAN_FEES ? loan.fees : 0;
+    const left = loan && safeCount(loan.left) && loan.left <= maxLeft ? loan.left : null; // the saved balance, when it is a valid one
+    const validLoan = loan !== null && left !== null;
+    const fees = validLoan && finite(loan.fees) && Number.isInteger(loan.fees) && loan.fees >= 0 && loan.fees <= MAX_LOAN_FEES ? loan.fees : 0;
     // Saved times are checked against the later of the server clock and the save's own clock.
-    const now = Math.max(Number.isFinite(ctx?.now) ? ctx.now : 0, state.t);
+    const now = Math.max(finite(ctx?.now) ? ctx.now : 0, state.t);
     state.economy = {
-      billedWeek: Number.isSafeInteger(saved.billedWeek) ? Math.min(saved.billedWeek, billingWeek(now)) : null,
+      billedWeek: isSafeInt(saved.billedWeek) ? Math.min(saved.billedWeek, billingWeek(now)) : null,
       started: saved.started === true,
       rent: {
         house: house?.id ?? null,
@@ -275,13 +287,13 @@ export default {
         missed: house && safeCount(rent.missed) ? Math.min(rent.missed, 1000) : 0,
       },
       loan: validLoan ? {
-        left: Math.min(loan.left, LOAN.total + LOAN_LATE_FEE * fees),
-        prepaid: safeCount(loan.prepaid) ? Math.min(loan.prepaid, Math.ceil(loan.left / LOAN.weekly)) : 0,
+        left: Math.min(left, LOAN.total + LOAN_LATE_FEE * fees),
+        prepaid: safeCount(loan.prepaid) ? Math.min(loan.prepaid, Math.ceil(left / LOAN.weekly)) : 0,
         fees,
       } : null,
       deposits: sanitizeDeposits(saved.deposits, now),
       seq: safeCount(saved.seq) ? saved.seq : 0,
-      reminded: Number.isSafeInteger(saved.reminded) ? Math.min(saved.reminded, billingWeek(now) + 1) : null,
+      reminded: isSafeInt(saved.reminded) ? Math.min(saved.reminded, billingWeek(now) + 1) : null,
     };
   },
   actions,
@@ -292,13 +304,13 @@ export default {
       if (house) economy.rent.house = house.id;
       if (!economy.started) {
         economy.started = true;
-        const lottery = data?.lottery, id = idOf(lottery);
+        const lottery: unknown = data?.lottery, id = idOf(lottery); // saved lives and tests may carry a lottery object
         const hasLoan = (typeof id === 'string' && id.toLowerCase().includes('lapo')) || (isRecord(lottery) && Boolean(lottery.loan));
         if (hasLoan && !economy.loan) economy.loan = { left: LOAN.total, prepaid: 0, fees: 0 };
       }
       if (economy.rent.house || economy.loan) startBilling(state, ctx);
     },
-    /** Living in a house the player built (systems/estate.js): the weekly rent stops; back in a rented home it starts again. */
+    /** Living in a house the player built (systems/estate.ts): the weekly rent stops; back in a rented home it starts again. */
     'home.owned'(state, data, ctx) {
       if (data?.living === true) { state.economy.rent.house = null; state.economy.rent.missed = 0; return; }
       const house = houseOf(idOf(data?.house));
@@ -317,7 +329,7 @@ export default {
     const economy = state.economy, now = nowOf(state, ctx);
     for (let index = economy.deposits.length - 1; index >= 0; index--) {
       const deposit = economy.deposits[index];
-      if (now < maturesAt(deposit)) continue;
+      if (deposit === undefined || now < maturesAt(deposit)) continue; // index is inside the list
       const interest = interestOf(deposit);
       if (!credit(state, deposit.amount + interest, `Fixed deposit matured: ${naira(deposit.amount)} + ${naira(interest)} interest`, ctx)) continue;
       economy.deposits.splice(index, 1);
@@ -339,14 +351,14 @@ export default {
     economy.billedWeek = current;
     for (let week = first; week <= current; week++) bill(state, week, ctx);
   },
-  view(state, ctx) {
+  view(state, ctx): EconomyView {
     const economy = state.economy, now = nowOf(state, ctx);
     const house = houseOf(economy.rent.house);
     const nextDue = dueAt(billingWeek(now) + 1);
     const nextDueLabel = dateLabel(nextDue);
     const loan = economy.loan;
     const instalment = loan ? Math.min(LOAN.weekly, loan.left) : 0;
-    const short = (amount) => `You have ${naira(state.cash)}; this needs ${naira(amount)}.`;
+    const short = (amount: number): string => `You have ${naira(state.cash)}; this needs ${naira(amount)}.`;
     const locked = lockedTotal(economy);
     const room = Math.max(0, DEPOSIT_TOTAL_CAP - locked);
     const depositBlock = economy.rent.arrears > 0 ? `Pay your ${naira(economy.rent.arrears)} rent arrears first.`
@@ -390,10 +402,10 @@ export default {
         terms: Object.values(DEPOSIT_TERMS).map((term) => ({ id: term.id, label: term.label, days: term.days, percent: term.bps / 100 })),
         amounts: [1000, 5000, 10000, 25000, 50000].map((amount) => ({
           amount,
-          payouts: Object.fromEntries(Object.values(DEPOSIT_TERMS).map((term) => [term.id, amount + interestOf({ amount, term: term.id })])),
+          payouts: Object.fromEntries(Object.values(DEPOSIT_TERMS).map((term) => [term.id, amount + interestOf({ amount, term: term.id })])) as Record<DepositTermId, number>, // one entry per term
           blocked: depositBlock ?? (amount > room ? `Only ${naira(room)} more can be locked.` : !canAfford(state, amount) ? `You have ${naira(state.cash)}.` : null),
         })),
       },
     };
   },
-};
+} satisfies SystemDefinition<'economy'>;

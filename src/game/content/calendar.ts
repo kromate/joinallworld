@@ -1,24 +1,26 @@
 /**
  * OWNER: growth
  * The events calendar. Plain data only: adding or moving an event is a change to this file and
- * needs no code. All times are Lagos wall-clock time (src/game/clock.js). Original design.
+ * needs no code. All times are Lagos wall-clock time (src/game/clock.ts). Original design.
  *
  * AN EVENT
  *   id       unique id
  *   title    what the player reads;  blurb  one line about it
- *   venue    a venue id from content/venues.js — where it happens
+ *   venue    a venue id from content/venues.ts — where it happens
  *   icon     a glyph name from the icon set
  *   when     ONE of:
  *     { weekday: 0–6, from: hour, to: hour }   every week (0 = Sunday). `to` ≤ `from` runs past midnight
  *     { start: 'YYYY-MM-DD', end: 'YYYY-MM-DD', from?: hour, to?: hour }   dated, both days included;
  *                                                with hours, only between them on each of those days
- *   spray    true: guests may "spray" naira here (a pure money sink — see systems/events.js)
+ *   spray    true: guests may "spray" naira here (a pure money sink — see systems/events.ts)
  *   table    optional table-game id this event features
  *
  * An event has no effect on prices, pay or needs: being there counts for missions, and that is
  * all. Nothing here is removed for ever — dated events come back each year with a new row.
  */
-export const EVENTS_CALENDAR = Object.freeze([
+import type { CalendarEvent, SprayRules } from '../../types/content.ts'
+
+export const EVENTS_CALENDAR: readonly CalendarEvent[] = Object.freeze([
   { id: 'trivia-night', title: 'Who Sabi? trivia night', blurb: 'Gather at the rooftop and argue about the answers.', venue: 'rooftop', icon: 'star', when: { weekday: 3, from: 20, to: 22 } },
   { id: 'club-night', title: 'Friday club night', blurb: 'Quilox fills up. Buy a shout-out and dance.', venue: 'quilox', icon: 'music', when: { weekday: 5, from: 20, to: 2 } },
   { id: 'owambe', title: 'Saturday owambe', blurb: 'Aso-ebi, jollof and spraying at Freedom Park.', venue: 'park', icon: 'gift', when: { weekday: 6, from: 14, to: 19 }, spray: true },
@@ -33,4 +35,4 @@ export const EVENTS_CALENDAR = Object.freeze([
 ]);
 
 /** Spraying: a sink. Money leaves the wallet for Social and Fun; nobody receives it. */
-export const SPRAY = Object.freeze({ amounts: [200, 500, 1000], perDay: 5000, social: 6, fun: 4 });
+export const SPRAY: Readonly<SprayRules> = Object.freeze({ amounts: [200, 500, 1000], perDay: 5000, social: 6, fun: 4 });

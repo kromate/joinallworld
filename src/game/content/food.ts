@@ -21,7 +21,10 @@
  * ORIGINAL RULE — interruptions never cost food: ingredients are taken when the meal is
  * finished, together with its effects. Cancelling, or closing the game mid-cook, uses nothing.
  */
-export const INGREDIENTS = {
+import type { ItemId } from '../../types/life.ts'
+import type { IngredientDefinition, RecipeDefinition } from '../../types/content.ts'
+
+export const INGREDIENTS: Record<ItemId, IngredientDefinition> = {
   rice: { id: 'rice', label: 'Long-grain Rice', icon: '🍚', start: 2, price: 600, pack: 3 },
   'tomato-paste': { id: 'tomato-paste', label: 'Tomato Paste', icon: '🥫', start: 2, price: 300, pack: 3 },
   seasoning: { id: 'seasoning', label: 'Seasoning Cubes', icon: '🧂', start: 6, price: 200, pack: 10 },
@@ -49,7 +52,7 @@ export const MAX_PACKS_PER_ORDER = 20;
 
 const amounts = 'Station, duration and skill lock as observed in the reference game; need amounts and XP are original beta values.';
 
-export const RECIPES = {
+export const RECIPES: Record<string, RecipeDefinition> = {
   'soak-garri': {
     id: 'soak-garri', label: 'Soak Garri & Sugar', icon: '🥣', station: 'cooler', duration: 5,
     ingredients: { garri: 1, sugar: 1 }, effects: { hunger: 35 }, note: amounts,

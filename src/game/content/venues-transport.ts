@@ -1,7 +1,7 @@
 /**
  * OWNER: world
  * The airport at Ikeja and the refinery in the Lekki Free Zone: two venues of the catalogue in
- * src/game/content/venues.js (same shape — see the header there), kept in their own file.
+ * src/game/content/venues.ts (same shape — see the header there), kept in their own file.
  *
  * Provenance: everything here is an original beta value — names, hours, durations, prices,
  * effects, pay and cooldowns. Nothing was observed in the reference game.
@@ -10,17 +10,18 @@
  * cost, a cooldown and a place in the GIG_DAILY_LIMIT paid gigs a Lagos day allows.
  *
  * The airport's Travel desk does not sell tickets. Travel between cities is the country map's
- * business (systems/estate.js 'estate.relocate', over CITY_LINKS); the desk only reads the
+ * business (systems/estate.ts 'estate.relocate', over CITY_LINKS); the desk only reads the
  * flights that already exist there and says which cities they wait for.
  */
 import { CITY_RULES, linksFrom } from './world.ts';
+import type { VenueDefinition } from '../../types/content.ts';
 
-const list = (names) => (names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0] ?? '');
+const list = (names: string[]): string => (names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0] ?? '');
 /** Cities a flight out of Lagos is defined for (CITY_LINKS) but that are not open yet. */
 const waiting = [...new Set(linksFrom('lagos').filter((link) => link.mode === 'air' && CITY_RULES[link.to]?.status !== 'open').map((link) => CITY_RULES[link.to].name))];
 const flightsLine = waiting.length ? `Flights to ${list(waiting)} begin when those cities open` : 'Flights to other cities leave from the country map';
 
-export const AIRPORT = {
+export const AIRPORT: VenueDefinition = {
   id: 'airport', label: 'Airport', district: 'Ikeja', icon: '✈️', category: 'fun', beta: true,
   description: 'The terminal at Ikeja: check-in queues, a wall of glass on the runway and somebody’s whole family at Arrivals. Open all day and all night.',
   zone: 'mainland', map: { x: 7, y: 13 }, scene: { kind: 'airport' },
@@ -52,7 +53,7 @@ export const AIRPORT = {
   },
 };
 
-export const REFINERY = {
+export const REFINERY: VenueDefinition = {
   id: 'refinery', label: 'Refinery', district: 'Lekki Free Zone', icon: '🏭', category: 'work', beta: true,
   description: 'Tanks, columns and a flare you can see from the expressway. Sign in at the gate, keep your hard hat on.',
   hours: { open: 6, close: 22 },

@@ -22,7 +22,7 @@
  *   - WORKPLACE HOURS. A shift itself ignores opening hours (staff inside can clock in at any
  *     hour), but getting there does not: travel and the commute are refused while the venue is
  *     closed. Every track's venue is open at some time on each of its work days (asserted in
- *     career.test.js), and the Jobs and Career screens show the venue's hours next to the
+ *     career.test.ts), and the Jobs and Career screens show the venue's hours next to the
  *     schedule using the same label as the map (clock.openingInfo).
  *   - Switching tracks restarts at level 1 and 50% performance. 'apply-job' never switches: a
  *     switch is its own action, so no client can skip the warning by accident.
@@ -68,60 +68,82 @@
  *   'commute' { id: venue }   the automatic commute; free, cancellable, COMMUTE_SECONDS long
  */
 import { emit, modify } from '../registry.ts';
-import { cap, clamp, fail, isRecord, naira, ok, safeCount } from '../util.ts';
+import { cap, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, openingInfo, WEEKDAYS } from '../clock.ts';
 import { addMoodlet, arrive, skillLevel, spotsOf } from '../api.ts';
 import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIFT, HELPER_COOLDOWN_SECONDS } from '../content/jobs.ts';
 import { VENUES, venueLabel } from '../content/venues.ts';
+import type { LadderRung, JobDefinition, TrackJobDefinition } from '../../types/content.ts';
+import type { ActionMap } from '../../types/actions.ts';
+import type { ActionOutcome, CareerState, JobId, LifeContext, LifeState, NeedId } from '../../types/life.ts';
+import type { SystemDefinition } from '../../types/registry.ts';
+import type { CareerStep, CareerView, JobListing, PromotionTarget, ShiftStatusCode } from '../../types/view.ts';
 
 /** Seconds the automatic commute takes (original beta value). */
 export const COMMUTE_SECONDS = 5;
 const SHORT_DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const CHIP_LETTERS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-const jobOf = (id) => (typeof id === 'string' && Object.hasOwn(JOBS, id) ? JOBS[id] : null);
+/** Today's shift status: see shiftStatus. `next` is the one "Next shift: …" label. */
+export type ShiftStatus =
+  | { code: Extract<ShiftStatusCode, 'available' | 'orientation'>; canWork: true; text: string; next: string }
+  | { code: Extract<ShiftStatusCode, 'no_job' | 'working' | 'shift_done' | 'day_off'>; canWork: false; text: string; next: string }
+
+const jobOf = (id: unknown): JobDefinition | null => (typeof id === 'string' && Object.hasOwn(JOBS, id) ? JOBS[id as JobId] : null); // hasOwn proved the key
 /** A job can only be held while its workplace venue is part of this build. */
-export const workplaceOpen = (job) => Object.hasOwn(VENUES, job.workplace.venue);
-const placeName = (job, ctx) => (workplaceOpen(job) ? venueLabel(job.workplace.venue, ctx?.cityId) : job.workplaceName);
+export const workplaceOpen = (job: JobDefinition): boolean => Object.hasOwn(VENUES, job.workplace.venue);
+const placeName = (job: JobDefinition, ctx?: LifeContext): string => (workplaceOpen(job) ? venueLabel(job.workplace.venue, ctx?.cityId ?? '') : job.workplaceName); // no city: no city-specific label
 /** The label of the workplace spot as the venue panel shows it (an existing venue spot keeps its own name). */
-const spotName = (job) => spotsOf(job.workplace.venue).find((spot) => spot.id === job.workplace.spot)?.label || 'Work';
-const nowOf = (state, ctx) => (Number.isFinite(ctx?.now) ? ctx.now : state.t);
-const rung = (job, level) => job.ladder[clamp(level, 1, job.ladder.length) - 1];
-const freshCareer = () => ({ level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, oriented: false });
-const dayIndex = (value) => (Number.isSafeInteger(value) ? value : null);
+const spotName = (job: JobDefinition): string => spotsOf(job.workplace.venue).find((spot) => spot.id === job.workplace.spot)?.label || 'Work';
+const nowOf = (state: LifeState, ctx?: LifeContext): number => { const now = ctx?.now; return finite(now) ? now : state.t; };
+/** The ladder rung at an index that is always inside the ladder (six rungs, level clamped); a missing rung would have thrown on the first read. */
+const ladderRung = (job: TrackJobDefinition, index: number): LadderRung => {
+  const found = job.ladder[index];
+  if (found === undefined) throw new RangeError(`No ladder rung ${index} for ${job.id}`);
+  return found;
+};
+/** The track behind a job id that names one (a shift's `careerTrack`); a job without a ladder would have thrown at its first read. */
+const trackOf = (id: JobId): TrackJobDefinition => {
+  const job = JOBS[id];
+  if (!job.track) throw new TypeError(`${id} has no career ladder`);
+  return job;
+};
+const rung = (job: TrackJobDefinition, level: number): LadderRung => ladderRung(job, clamp(level, 1, job.ladder.length) - 1);
+const freshCareer = (): CareerState => ({ level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, oriented: false });
+const dayIndex = (value: unknown): number | null => (Number.isSafeInteger(value) ? (value as number) : null); // isSafeInteger proved the number
 
 /** "Mon–Fri" for a consecutive run (weeks start on Monday and may wrap to Sunday), else a list. */
-export function daysText(days) {
+export function daysText(days: readonly number[]): string {
   const sorted = [...days].sort((a, b) => ((a + 6) % 7) - ((b + 6) % 7));
-  const run = sorted.every((day, index) => index === 0 || (day + 6) % 7 === ((sorted[index - 1] + 6) % 7) + 1);
-  return run && sorted.length > 2 ? `${SHORT_DAYS[sorted[0]]}–${SHORT_DAYS[sorted.at(-1)]}` : sorted.map((day) => SHORT_DAYS[day]).join(', ');
+  const run = sorted.every((day, index) => index === 0 || (day + 6) % 7 === (((sorted[index - 1] ?? 0) + 6) % 7) + 1); // index > 0 here, so the previous day exists
+  return run && sorted.length > 2 ? `${SHORT_DAYS[sorted[0] ?? 0]}–${SHORT_DAYS[sorted.at(-1) ?? 0]}` : sorted.map((day) => SHORT_DAYS[day]).join(', '); // run && length > 2: both ends exist
 }
 
 /**
  * The single schedule sentence for a job. The Jobs list, the your-job card and the Career tab
  * all show this string, so two screens can never disagree about when a job is worked.
  */
-export function scheduleText(job) {
+export function scheduleText(job: JobDefinition): string {
   if (!job.track) return `One shift every ${HELPER_COOLDOWN_SECONDS / 3600} hours, any day`;
   return `One paid shift per work day, any time · ${job.days.length} days a week (${daysText(job.days)})`;
 }
 
 /** Opening state of a job's workplace venue (null hours = always open). */
-const workplaceOpening = (job, state, ctx) => openingInfo(VENUES[job.workplace.venue]?.hours, nowOf(state, ctx));
+const workplaceOpening = (job: JobDefinition, state: LifeState, ctx?: LifeContext) => openingInfo(VENUES[job.workplace.venue]?.hours, nowOf(state, ctx));
 /**
  * The single workplace-hours sentence, shown next to the schedule in Jobs and Career. The hours
  * come from the same clock.openingInfo label the map card uses.
  */
-export function workplaceHoursText(job, ctx) {
+export function workplaceHoursText(job: JobDefinition, ctx?: LifeContext): string {
   if (!workplaceOpen(job)) return `${cap(job.workplaceName)} is not open in this build yet.`;
   const hours = openingInfo(VENUES[job.workplace.venue].hours, 0);
   return hours.always ? `${placeName(job, ctx)} · Open 24 hours` : `${placeName(job, ctx)} · Open ${hours.hours} — you can only travel there while it is open`;
 }
 
-function nextWorkDay(job, weekday) {
+function nextWorkDay(job: TrackJobDefinition, weekday: number): string {
   for (let offset = 1; offset <= 7; offset++) {
     const day = (weekday + offset) % 7;
-    if (job.days.includes(day)) return offset === 1 ? `tomorrow (${WEEKDAYS[day]})` : WEEKDAYS[day];
+    if (job.days.includes(day)) return offset === 1 ? `tomorrow (${WEEKDAYS[day]})` : WEEKDAYS[day] ?? ''; // day is 0–6
   }
   return 'your next work day';
 }
@@ -131,7 +153,7 @@ function nextWorkDay(job, weekday) {
  * → { code: 'no_job'|'working'|'available'|'orientation'|'shift_done'|'day_off', canWork, text, next }
  *   `next` is the one "Next shift: …" label shown everywhere.
  */
-export function shiftStatus(state, ctx) {
+export function shiftStatus(state: LifeState, ctx?: LifeContext): ShiftStatus {
   const job = jobOf(state.job);
   if (!job) return { code: 'no_job', canWork: false, text: 'No job yet.', next: 'after you apply for a job' };
   if (!job.track) return { code: 'available', canWork: true, text: `Starter job: a shift at any hour, then a ${HELPER_COOLDOWN_SECONDS / 3600}-hour break before the next one.`, next: 'now' };
@@ -152,22 +174,23 @@ export function shiftStatus(state, ctx) {
   return { code: 'day_off', canWork: false, next: upcoming, text: `Day off today (${WEEKDAYS[today.weekday]}). Next shift: ${upcoming}.` };
 }
 
-const shortNeeds = (state, job) => Object.entries(job.shift.minimumNeeds || {}).filter(([need, minimum]) => state.needs[need] < minimum);
+// Object.entries widens the need ids to string; the keys of a NeedMap are need ids.
+const shortNeeds = (state: LifeState, job: JobDefinition): [NeedId, number][] => (Object.entries(job.shift.minimumNeeds || {}) as [NeedId, number][]).filter(([need, minimum]) => state.needs[need] < minimum);
 
 /** What the next promotion needs, or null at the top of the ladder / without a track. */
-function nextPromotion(state, job) {
+function nextPromotion(state: LifeState, job: JobDefinition | null): PromotionTarget | null {
   if (!job?.track || state.career.level >= job.ladder.length) return null;
-  const target = job.ladder[state.career.level];
+  const target = ladderRung(job, state.career.level);
   const have = skillLevel(state, job.skill);
   const performanceMet = state.career.performance >= 100, skillMet = have >= target.skillLevel;
   return { role: target.role, pay: target.pay, level: state.career.level + 1, skill: job.skill, skillLevel: target.skillLevel, have, performanceMet, skillMet,
     text: `Next: ${target.role} (${naira(target.pay)} per shift) — reach 100% performance with ${cap(job.skill)} level ${target.skillLevel}. You have ${Math.floor(state.career.performance)}% and ${cap(job.skill)} ${have}.` };
 }
 
-function tryPromote(state, ctx) {
+function tryPromote(state: LifeState, ctx: LifeContext): boolean {
   const job = jobOf(state.job);
   const next = nextPromotion(state, job);
-  if (!next || !next.performanceMet || !next.skillMet) return false;
+  if (!job?.track || !next || !next.performanceMet || !next.skillMet) return false; // a promotion target exists only for a track job
   state.career.level = next.level;
   state.career.performance = START_PERFORMANCE;
   state.message = `Promoted to ${next.role}! ${job.label} shifts now pay ${naira(next.pay)}.`;
@@ -178,7 +201,7 @@ function tryPromote(state, ctx) {
 }
 
 /** "Go automatically": start the free commute if a shift is waiting. At most once per Lagos day. */
-function maybeCommute(state, ctx) {
+function maybeCommute(state: LifeState, ctx: LifeContext): boolean {
   const job = jobOf(state.job);
   if (!job?.track || !state.career.auto || state.activeAction || !workplaceOpen(job) || state.location === job.workplace.venue) return false;
   const today = lagosTime(nowOf(state, ctx)).day;
@@ -192,7 +215,9 @@ function maybeCommute(state, ctx) {
   return true;
 }
 
-function apply(state, payload, ctx, switching = false) {
+function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext): ActionOutcome<ActionMap['apply-job']['ok'], ActionMap['apply-job']['fail']>;
+function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext, switching: true): ActionOutcome<ActionMap['career.switch']['ok'], ActionMap['career.switch']['fail']>;
+function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext, switching = false): ActionOutcome<ActionMap['apply-job' | 'career.switch']['ok'], ActionMap['apply-job' | 'career.switch']['fail']> {
   if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before applying.');
   const job = jobOf(payload?.id);
   if (!job) return fail(state, 'invalid_job', 'Choose a job from the Jobs list.');
@@ -204,7 +229,7 @@ function apply(state, payload, ctx, switching = false) {
   const old = jobOf(state.job);
   if (switching && !old) return fail(state, 'no_job', 'You have no job to switch from. Use Apply instead.');
   if (old && !switching) {
-    return fail(state, 'confirm_switch', `Switching to ${job.label} ends your ${old.label} job: you start ${job.track ? `as ${job.ladder[0].role} at ${START_PERFORMANCE}% performance` : 'in the starter job, which has no ladder,'} and lose your ${old.label} level and performance. Confirm the switch to continue.`);
+    return fail(state, 'confirm_switch', `Switching to ${job.label} ends your ${old.label} job: you start ${job.track ? `as ${ladderRung(job, 0).role} at ${START_PERFORMANCE}% performance` : 'in the starter job, which has no ladder,'} and lose your ${old.label} level and performance. Confirm the switch to continue.`);
   }
   if (old) emit(state, 'job.quit', { job: old.id }, ctx);
   state.job = job.id;
@@ -213,14 +238,14 @@ function apply(state, payload, ctx, switching = false) {
   if (!job.track) state.message = `${job.label} job accepted. Visit your workplace to work a shift.`;
   else {
     const status = shiftStatus(state, ctx);
-    state.message = `Hired as ${job.ladder[0].role} (${job.label}), ${naira(job.ladder[0].pay)} per shift at ${place}. ${status.canWork ? 'You can work your first shift today.' : `Next shift: ${status.next}.`}`;
+    state.message = `Hired as ${ladderRung(job, 0).role} (${job.label}), ${naira(ladderRung(job, 0).pay)} per shift at ${place}. ${status.canWork ? 'You can work your first shift today.' : `Next shift: ${status.next}.`}`;
   }
   emit(state, 'job.applied', { job: job.id, ...(job.track ? { maxLevel: job.ladder.length } : {}) }, ctx);
   maybeCommute(state, ctx);
   return ok(state, old ? 'switched' : 'applied');
 }
 
-function quit(state, payload, ctx) {
+function quit(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const job = jobOf(state.job);
   if (!job) return fail(state, 'no_job', 'You do not have a job to quit.');
   if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before quitting.');
@@ -231,7 +256,7 @@ function quit(state, payload, ctx) {
   return ok(state, 'quit');
 }
 
-function setAuto(state, payload) {
+function setAuto(state: LifeState, payload: Record<string, unknown>) {
   if (typeof payload?.on !== 'boolean') return fail(state, 'invalid_setting', 'Choose on or off for Go automatically.');
   state.career.auto = payload.on;
   state.message = payload.on ? 'Go automatically is on: you will head to work when a shift is available.' : 'Go automatically is off: use Go to work when you are ready.';
@@ -239,7 +264,7 @@ function setAuto(state, payload) {
 }
 
 /** The player's next step, in one sentence, with where to send them. */
-function nextStep(state, ctx, job, status) {
+function nextStep(state: LifeState, ctx: LifeContext, job: JobDefinition | null, status: ShiftStatus): CareerStep {
   if (!job) return { kind: 'apply', text: 'Pick a job and tap Apply. Applying is free and you can work your first shift the same day.' };
   const shift = job.shift, place = placeName(job, ctx), pay = payOf(state, job);
   if (status.code === 'working') return { kind: 'wait', text: `Shift in progress: ${naira(pay)} arrives when it finishes. Cancelling earns nothing.` };
@@ -260,7 +285,7 @@ function nextStep(state, ctx, job, status) {
   return { kind: 'start', text: `You are at work. Close this and tap “${shift.label}” to start. ${facts}` };
 }
 
-const payOf = (state, job) => (job.track ? rung(job, state.career.level).pay : job.shift.reward);
+const payOf = (state: LifeState, job: JobDefinition): number => (job.track ? rung(job, state.career.level).pay : job.shift.reward ?? 0); // the starter shift always defines its reward
 
 export default {
   id: 'career',
@@ -273,8 +298,8 @@ export default {
     const held = jobOf(state.job);
     const career = freshCareer();
     if (held?.track) {
-      career.level = Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= held.ladder.length ? saved.level : 1;
-      career.performance = Number.isFinite(saved.performance) ? clamp(saved.performance) : START_PERFORMANCE;
+      career.level = finite(saved.level) && Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= held.ladder.length ? saved.level : 1;
+      career.performance = finite(saved.performance) ? clamp(saved.performance) : START_PERFORMANCE;
     }
     career.shifts = safeCount(saved.shifts) ? saved.shifts : 0;
     career.auto = saved.auto !== false;
@@ -307,7 +332,7 @@ export default {
     },
   },
   modifiers: {
-    'activity.reward': (value, state, { def }) => (def?.careerTrack && state.job === def.careerTrack ? rung(JOBS[def.careerTrack], state.career.level).pay : value),
+    'activity.reward': (value, state, { def }) => (def?.careerTrack && state.job === def.careerTrack ? rung(trackOf(def.careerTrack), state.career.level).pay : value),
     'activity.block'(value, state, { def }, ctx) {
       if (value || !def?.requiresJob) return value;
       if (state.completedShifts >= Number.MAX_SAFE_INTEGER) return { code: 'balance_limit', reason: 'Your shift count has reached its supported limit.' };
@@ -344,11 +369,12 @@ export default {
       }
     },
     'skill.levelup'(state, { skill }, ctx) {
-      if (jobOf(state.job)?.skill === skill) tryPromote(state, ctx);
+      const job = jobOf(state.job);
+      if (job?.track && job.skill === skill) tryPromote(state, ctx); // only a track has a skill
     },
   },
   advance(state, dt, ctx) { maybeCommute(state, ctx); },
-  view(state, ctx) {
+  view(state, ctx): CareerView {
     const job = jobOf(state.job);
     const status = shiftStatus(state, ctx);
     const today = lagosTime(nowOf(state, ctx));
@@ -370,15 +396,15 @@ export default {
       performance: job?.track ? Math.floor(career.performance) : null,
       shifts: career.shifts,
       schedule: job ? scheduleText(job) : null,
-      chips: CHIP_LETTERS.map((letter, weekday) => ({ letter, name: WEEKDAYS[weekday], work: job ? (job.track ? job.days.includes(weekday) : true) : false, today: weekday === today.weekday })),
-      today: { code: status.code, canWork: status.canWork, text: status.text, weekday: WEEKDAYS[today.weekday] },
+      chips: CHIP_LETTERS.map((letter, weekday) => ({ letter, name: WEEKDAYS[weekday] ?? '', work: job ? (job.track ? job.days.includes(weekday) : true) : false, today: weekday === today.weekday })),
+      today: { code: status.code, canWork: status.canWork, text: status.text, weekday: WEEKDAYS[today.weekday] ?? '' },
       nextShift: job ? `Next shift: ${status.next}` : null,
       next: nextPromotion(state, job),
       topOfLadder: Boolean(job?.track && career.level >= job.ladder.length),
       auto: career.auto,
       workplace: job ? { venue: job.workplace.venue, spot: job.workplace.spot, label: placeName(job, ctx), open: workplaceOpening(job, state, ctx).open, status: workplaceOpening(job, state, ctx).status } : null,
       hours: job ? workplaceHoursText(job, ctx) : null,
-      shift: job ? { id: job.shift.id, label: job.shift.label, duration: job.shift.duration, minimumNeeds: job.shift.minimumNeeds, effects: job.shift.effects, xp: job.shift.xp || {} } : null,
+      shift: job ? { id: job.shift.id, label: job.shift.label, duration: job.shift.duration, minimumNeeds: job.shift.minimumNeeds ?? {}, effects: job.shift.effects ?? {}, xp: job.shift.xp || {} } : null, // every shipped shift defines both; see CareerView.shift
       step: nextStep(state, ctx, job, status),
       busy: Boolean(state.activeAction),
       rules: [
@@ -388,7 +414,7 @@ export default {
         'You are paid when the shift finishes. Cancelling earns nothing and costs nothing.',
         `Each shift adds about ${PERFORMANCE_PER_SHIFT}% performance; it never drops. Promotion needs 100% plus the track skill.`,
       ],
-      jobs: Object.values(JOBS).map((item) => {
+      jobs: Object.values(JOBS).map((item): JobListing => {
         const open = workplaceOpen(item), current = state.job === item.id;
         const blocked = current ? null
           : !open ? `${cap(item.workplaceName)} is not open in this build yet.`
@@ -396,19 +422,19 @@ export default {
           : null;
         return {
           id: item.id, label: item.label, icon: item.icon || '💼', track: Boolean(item.track), beta: Boolean(item.beta), current,
-          entryRole: item.track ? item.ladder[0].role : item.label,
-          pay: item.track ? item.ladder[0].pay : item.shift.reward,
-          topRole: item.track ? item.ladder.at(-1).role : null,
+          entryRole: item.track ? ladderRung(item, 0).role : item.label,
+          pay: item.track ? ladderRung(item, 0).pay : item.shift.reward ?? 0, // the starter shift always defines its reward
+          topRole: item.track ? ladderRung(item, item.ladder.length - 1).role : null,
           summary: item.summary || '', schedule: scheduleText(item), hours: workplaceHoursText(item, ctx),
-          skill: item.skill ?? null, duration: item.shift.duration,
+          skill: item.track ? item.skill : null, duration: item.shift.duration,
           workplace: placeName(item, ctx), blocked,
           // The workplace venue's id (null while it is not in this build) and whether it is open at this moment.
           venue: open ? item.workplace.venue : null, openNow: open ? workplaceOpening(item, state, ctx).open : false,
-          switchWarning: job && !current ? `You will leave ${job.label}${job.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? item.ladder[0].role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,
+          switchWarning: job && !current ? `You will leave ${job.label}${job.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? ladderRung(item, 0).role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,
         };
       }),
     };
   },
-};
+} satisfies SystemDefinition<'career'>;
 
 export { TRACKS, MAX_CAREER_LEVEL };

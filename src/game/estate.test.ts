@@ -3,19 +3,27 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife } from '../life.ts';
 import { hasPlace } from './systems/estate.ts';
-import { makeContext } from './util.ts';
+import { makeContext, isRecord } from './util.ts';
+import type { ActionBody } from '../types/actions.ts';
+import type { ActionOutcome, LifeContext, LifeContextInit, LifeState, WorldCityId } from '../types/life.ts';
 import { HOUSES } from './content/housing.ts';
 import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_CAPACITY, LGA_RULES, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cleanStyle, lgaOf, lgaOfDistrict, moveLevy, packStyle, stylePrice, tierCost, unpackStyle } from './content/world.ts';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8), DAY = 86400000;
-const at = (now = MONDAY_9AM, seed = 'estate', extra = {}) => makeContext({ now, cityId: 'lagos', seed, ...extra });
-const act = (state, type, payload, ctx = at()) => dispatch(state, { type, payload }, ctx);
+const at = (now = MONDAY_9AM, seed = 'estate', extra: LifeContextInit = {}): LifeContext => makeContext({ now, cityId: 'lagos', seed, ...extra });
+/** A value a test needs to be there: fails the test, with a message, instead of being read as `undefined`/`null`. */
+const found = <T>(value: T | null | undefined, what: string): T => { assert.ok(value !== null && value !== undefined, `${what} exists`); return value; };
+/** The reason a refused action gave. */
+const reasonOf = (result: ActionOutcome): string => { assert.equal(result.ok, false); return found(result.ok ? undefined : result.reason, 'a reason'); };
+// Payloads here include deliberately wrong ones (an unknown local government, extra fields a client might send), so the typed
+// action body is crossed once, here: the engine's own validation is what is being tested.
+const act = (state: LifeState, type: string, payload: object, ctx: LifeContext = at()): ActionOutcome => dispatch(state, { type, payload } as unknown as ActionBody, ctx);
 const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
 /**
  * A life taken through creation (which knows nothing of local governments), then — as the settle-in
  * card does — given its local government and, with `own`, moved into the house that comes with it.
  */
-function onboard({ house = 'yaba', lga = null, own = false, via } = {}, outcome = 'lapo-baby') {
+function onboard({ house = 'yaba', lga = null, own = false, via }: { house?: string; lga?: string | null; own?: boolean; via?: string } = {}, outcome = 'lapo-baby') {
   const state = createLife(null, at(MONDAY_9AM, 'new', { isNew: true, requireOnboarding: true }));
   act(state, 'onboarding.look', { look: LOOK }); act(state, 'onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }); act(state, 'onboarding.dream', { dream: 'yaba-unicorn' });
   for (let i = 0; i < 500 && state.onboarding.lottery?.id !== outcome; i++) { state.onboarding.lottery = null; act(state, 'onboarding.lottery', {}, at(MONDAY_9AM, `roll-${i}`)); }
@@ -25,8 +33,8 @@ function onboard({ house = 'yaba', lga = null, own = false, via } = {}, outcome 
   return { state, result };
 }
 /** cash = what the life was seeded with + every ledger line: no naira from nowhere. */
-const conserved = (state, seed) => assert.equal(state.cash, seed + state.ledger.reduce((sum, line) => sum + line.amount, 0));
-const settle = (state, to) => advanceLife(state, (to - state.t) / 1000, at(to, `settle-${to}`));
+const conserved = (state: LifeState, seed: number) => assert.equal(state.cash, seed + state.ledger.reduce((sum, line) => sum + line.amount, 0));
+const settle = (state: LifeState, to: number) => advanceLife(state, (to - state.t) / 1000, at(to, `settle-${to}`));
 
 test('the twenty local governments of Lagos: ids, prices and capacity are data; addresses are deterministic', () => {
   assert.equal(LAGOS_LGAS.length, 20);
@@ -39,13 +47,14 @@ test('the twenty local governments of Lagos: ids, prices and capacity are data; 
   assert.equal(addressKey('ikeja', 41, 2 * ESTATE.plots + 6), 'ikeja/41/2/6');
   assert.equal(addressLabel('lagos', 'ikeja', 41, 2 * ESTATE.plots + 6), 'Plot 7, Street 3, Estate 42, Ikeja');
   // Dear land makes building dear; the plot itself is free.
-  assert.ok(tierCost('lagos', 'eti-osa', 'bq') > tierCost('lagos', 'ikeja', 'bq') && tierCost('lagos', 'ikeja', 'bq') > tierCost('lagos', 'badagry', 'bq'));
+  const bqCost = (lga: string) => found(tierCost('lagos', lga, 'bq'), `a price in ${lga}`);
+  assert.ok(bqCost('eti-osa') > bqCost('ikeja') && bqCost('ikeja') > bqCost('badagry'));
   assert.equal(tierCost('lagos', 'badagry', 'starter'), 0);
   assert.equal(moveLevy('lagos', 'eti-osa', 'badagry', 'villa'), 0);
 });
 
 test('a house style is a few small numbers: it packs into one integer and back, and only priced options cost', () => {
-  for (const field of STYLE_FIELDS) assert.ok(HOUSE_STYLE[field].length >= 2 && !HOUSE_STYLE[field][0].price, `${field} has a free default`);
+  for (const field of STYLE_FIELDS) assert.ok(HOUSE_STYLE[field].length >= 2 && !found(HOUSE_STYLE[field][0], `${field} default`).price, `${field} has a free default`);
   const style = { shape: 3, wall: 7, roof: 5, door: 2, windows: 3, fence: 1, yard: 6, sign: 1 };
   for (const tier of TIER_ORDER) assert.deepEqual(unpackStyle(packStyle(style, tier)), { tier, style });
   assert.ok(packStyle(style, 'villa') < 2 ** 21);
@@ -96,7 +105,7 @@ test('changing local government: once every seven days, and an upgraded house pa
   const { state } = onboard({ house: 'mushin', own: true, lga: 'badagry' });
   assert.equal(act(state, 'estate.set-lga', { lga: 'nowhere' }).code, 'invalid_lga');
   const refused = act(state, 'estate.set-lga', { lga: 'ikeja' });
-  assert.equal(refused.code, 'lga_cooldown'); assert.match(refused.reason, /once every 7 days.*7 days/);
+  assert.equal(refused.code, 'lga_cooldown'); assert.match(reasonOf(refused), /once every 7 days.*7 days/);
   const later = MONDAY_9AM + LGA_RULES.changeCooldownDays * DAY;
   settle(state, later);
   assert.equal(act(state, 'estate.set-lga', { lga: 'ikeja' }, at(later)).code, 'lga_set');
@@ -121,7 +130,7 @@ test('the server-only plot assignment: refused to a player, idempotent, and the 
   assert.equal(act(state, 'estate.assign', { lga: 'ikeja', estate: 0, plot: 3 }, server).code, 'assigned');
   assert.equal(act(state, 'estate.assign', { lga: 'ikeja', estate: 0, plot: 3 }, server).code, 'unchanged');
   assert.deepEqual([state.estate.plot, state.estate.old], [{ lga: 'ikeja', estate: 0, plot: 3 }, null]);
-  assert.equal(viewLife(state, at()).estate.plot.address, 'Plot 4, Street 1, Estate 1, Ikeja');
+  assert.equal(found(viewLife(state, at()).estate.plot, 'a plot').address, 'Plot 4, Street 1, Estate 1, Ikeja');
   state.estate.lga = 'mushin';
   act(state, 'estate.assign', { lga: 'mushin', estate: 2, plot: 9 }, server);
   assert.deepEqual(state.estate.old, { lga: 'ikeja', estate: 0, plot: 3 });
@@ -138,7 +147,7 @@ test('styling: free options cost nothing, priced ones are charged through the le
   assert.equal(act(state, 'estate.style', { style: { wall: 99 } }).code, 'invalid_style');
   assert.equal(act(state, 'estate.style', { style: { shape: 2, fence: 3 } }).code, 'styled');
   assert.equal(state.cash, cash - 5000 - 4000);
-  assert.equal(state.ledger.at(-1).reason, 'House styling');
+  assert.equal(state.ledger.at(-1)?.reason, 'House styling');
   assert.equal(viewLife(state, at()).estate.packed, packStyle(state.estate.style, 'starter'));
   state.cash = 0; state.ledger = []; // (a broke life for the refusal)
   const broke = createLife({ ...state, cash: 100 }, at());
@@ -147,7 +156,7 @@ test('styling: free options cost nothing, priced ones are charged through the le
 
 test('upgrading: paid once, built on server time even while away, then ground rent on Saturdays; the room grows without losing furniture', () => {
   const { state } = onboard({ house: 'mushin', own: true, lga: 'badagry' }, 'ajebutter');
-  const seed = 5000, cost = tierCost('lagos', 'badagry', 'bq'), cash = state.cash;
+  const seed = 5000, cost = found(tierCost('lagos', 'badagry', 'bq'), 'a price'), cash = state.cash;
   assert.equal(act(state, 'estate.upgrade', { to: 'starter' }).code, 'not_an_upgrade');
   assert.equal(act(state, 'estate.upgrade', { to: 'palace' }).code, 'invalid_tier');
   assert.equal(act(state, 'estate.upgrade', { to: 'bq' }).code, 'upgrade_started');
@@ -155,18 +164,19 @@ test('upgrading: paid once, built on server time even while away, then ground re
   assert.equal(act(state, 'estate.upgrade', { to: 'bungalow' }).code, 'upgrade_running');
   assert.equal(act(state, 'estate.set-lga', { lga: 'epe' }).code, 'lga_cooldown');
   const view = viewLife(state, at(MONDAY_9AM + 300000)).estate;
-  assert.deepEqual([view.upgrade.to, view.upgrade.remaining, Math.round(view.upgrade.progress * 100)], ['bq', 300, 50]);
+  const upgrade = found(view.upgrade, 'an upgrade in view');
+  assert.deepEqual([upgrade.to, upgrade.remaining, Math.round(upgrade.progress * 100)], ['bq', 300, 50]);
   assert.equal(state.estate.tier, 'starter');
   const items = state.home.items.length;
   // The player closes the game; an hour later the server settles the life: the house is finished.
   settle(state, MONDAY_9AM + 3600000);
   assert.deepEqual([state.estate.tier, state.estate.upgrade], ['bq', null]);
   assert.equal(state.home.items.length, items);
-  assert.match(state.social.notices.findLast((notice) => notice.kind === 'house').text, /Two-room house .* is finished/);
+  assert.match(found(state.social.notices.findLast((notice) => notice.kind === 'house'), 'a house notice').text, /Two-room house .* is finished/);
   // Saturday: ground rent, by its own ledger line; never weekly rent.
   settle(state, MONDAY_9AM + 6 * DAY);
   assert.equal(state.ledger.filter((line) => line.reason === 'Ground rent: Two-room house').length, 1);
-  assert.equal(state.ledger.at(-1).amount, -HOUSE_TIERS.bq.groundRent);
+  assert.equal(state.ledger.at(-1)?.amount, -HOUSE_TIERS.bq.groundRent);
   conserved(state, seed);
   assert.deepEqual(createLife(state, at(state.t)), state, 'nothing in the slice is lost at the next load');
 });
@@ -188,34 +198,37 @@ test('renting stays a choice: moving to a rented home restarts the weekly rent, 
 
 test('cities connect as data, and a trip to a city that is not open is refused with the reason and charges nothing', () => {
   assert.equal(CITY_RULES.lagos.status, 'open');
-  for (const id of ['ibadan', 'abuja', 'port-harcourt']) assert.equal(CITY_RULES[id].status, 'soon');
+  const soon: WorldCityId[] = ['ibadan', 'abuja', 'port-harcourt'];
+  for (const id of soon) assert.equal(CITY_RULES[id].status, 'soon');
   for (const link of CITY_LINKS) { assert.ok(CITY_RULES[link.a] && CITY_RULES[link.b] && ['road', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   const cash = state.cash;
   const refused = act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' });
-  assert.equal(refused.code, 'city_not_open'); assert.match(refused.reason, /Ibadan is not open yet/);
+  assert.equal(refused.code, 'city_not_open'); assert.match(reasonOf(refused), /Ibadan is not open yet/);
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'air' }).code, 'no_route');
   assert.equal(act(state, 'estate.relocate', { to: 'lagos', mode: 'road' }).code, 'invalid_city');
   assert.equal(state.cash, cash); assert.equal(state.activeAction, null);
   const links = viewLife(state, at()).estate.links;
-  assert.equal(links.length, 5); assert.equal(links.every((link) => !link.open && /not open yet/.test(link.blocked)), true);
+  assert.equal(links.length, 5); assert.equal(links.every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
 });
 
 test('one character between cities: money, skills and people travel; the home left behind is kept and found again on return', () => {
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
-  const open = { openCities: ['ibadan'] }, server = at(MONDAY_9AM, 'server', { internal: true });
+  const open: LifeContextInit = { openCities: ['ibadan'] }, server = at(MONDAY_9AM, 'server', { internal: true });
   act(state, 'estate.assign', { lga: 'ikeja', estate: 4, plot: 20 }, server);
   act(state, 'estate.style', { style: { wall: 3 } });
-  state.skills.tech = { ...(state.skills.tech || {}), level: 3 };
+  // The slice is { skill: xp }, so an object under 'tech' (not even a SkillId) is not the real shape; kept as the original test wrote it.
+  const skillBag: Record<string, unknown> = state.skills;
+  skillBag.tech = { ...(isRecord(skillBag.tech) ? skillBag.tech : {}), level: 3 };
   const skills = structuredClone(state.skills), cash = state.cash, look = structuredClone(state.onboarding.look);
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at(MONDAY_9AM, 'go', open)).code, 'departed');
   assert.equal(state.cash, cash - 3500);
   assert.equal(act(state, 'cancel', {}).code, 'no_cancel');
-  assert.deepEqual([state.activeAction.kind, state.estate.city], ['intercity', 'lagos']);
+  assert.deepEqual([state.activeAction?.kind, state.estate.city], ['intercity', 'lagos']);
   settle(state, MONDAY_9AM + 121000);
   assert.deepEqual([state.estate.city, state.location, state.activeAction, state.estate.plot], ['ibadan', 'home', null, null]);
-  assert.deepEqual(state.estate.away.lagos.plot, { lga: 'ikeja', estate: 4, plot: 20 });
-  assert.equal(state.estate.away.lagos.style.wall, 3);
+  assert.deepEqual(found(state.estate.away.lagos, 'the home left in lagos').plot, { lga: 'ikeja', estate: 4, plot: 20 });
+  assert.equal(found(state.estate.away.lagos, 'the home left in lagos').style.wall, 3);
   assert.deepEqual([state.skills, state.onboarding.look, state.cash], [skills, look, cash - 3500]);
   // The stored state survives a load in its new city, and comes home to exactly what was left.
   const reloaded = createLife(state, makeContext({ now: state.t, cityId: 'ibadan', seed: 'load' }));
@@ -233,9 +246,10 @@ test('hostile saves: every field of the slice is rebuilt or dropped', () => {
     upgrade: { to: 'villa', cost: -5, startedAt: 0, doneAt: 1e30 }, living: 'hotel', ground: { week: 1e30, arrears: -4 }, away: { mars: {}, lagos: {}, abuja: { tier: 'villa', plot: { lga: 'x', estate: 0, plot: 0 } } }, nudged: 1 } }, at());
   const e = hostile.estate;
   assert.deepEqual([e.city, e.lga, e.lgaAt, e.lgaConfirmed, e.plot, e.old, e.tier, e.upgrade, e.living, e.ground, e.nudged], ['lagos', 'lagos-mainland', null, false, null, null, 'starter', null, 'rent', { week: null, arrears: 0 }, false]);
-  assert.deepEqual(Object.keys(e.away), ['abuja']); assert.equal(e.away.abuja.plot, null);
+  assert.deepEqual(Object.keys(e.away), ['abuja']); assert.equal(found(e.away.abuja, 'an abuja residence').plot, null);
   assert.equal(lgaOf('lagos', 'constructor'), null);
   // An upgrade can never be made to last longer than its tier allows.
   const long = createLife({ estate: { lga: 'ikeja', upgrade: { to: 'bq', cost: 60000, startedAt: MONDAY_9AM - 1000, doneAt: MONDAY_9AM + 1e12 } } }, at());
-  assert.equal(long.estate.upgrade.doneAt, long.estate.upgrade.startedAt + HOUSE_TIERS.bq.buildSeconds * 1000);
+  const longUpgrade = found(long.estate.upgrade, 'an upgrade');
+  assert.equal(longUpgrade.doneAt, longUpgrade.startedAt + HOUSE_TIERS.bq.buildSeconds * 1000);
 });

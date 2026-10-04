@@ -5,9 +5,9 @@
  * Shape of a job (other code reads `label`, `workplace` and `shift`, so keep those stable):
  *   JOBS[id] = {
  *     id, label, icon, summary, beta?,
- *     workplace: { venue, spot },        // venue id from content/venues.js; spot is always 'work'
+ *     workplace: { venue, spot },        // venue id from content/venues.ts; spot is always 'work'
  *     workplaceName,                     // display name used while the venue is not in the build
- *     shift: { ...activity definition }, // attached to the workplace spot by systems/career.js
+ *     shift: { ...activity definition }, // attached to the workplace spot by systems/career.ts
  *     // career tracks only:
  *     track: true, skill, days: [weekday 0–6], ladder: [{ role, pay, skillLevel }],
  *   }
@@ -28,11 +28,14 @@
  * HELPER_COOLDOWN_SECONDS.
  */
 
+import type { JobId, SkillId, VenueId } from '../../types/life.ts'
+import type { JobDefinition, TrackJobDefinition } from '../../types/content.ts'
+
 /**
  * Seconds between Community helper shifts (original beta value). At ₦300 a shift this caps the
  * starter job at 6 shifts — ₦1,800 — per Lagos day even when played round the clock, below the
  * lowest career entry pay (₦2,400 for one shift), so it can never out-earn a career track.
- * Enforced through the activity `cooldown` field (systems/travel.js).
+ * Enforced through the activity `cooldown` field (systems/travel.ts).
  */
 export const HELPER_COOLDOWN_SECONDS = 4 * 3600;
 /** Seconds a career shift takes (original beta value). */
@@ -61,11 +64,26 @@ export const SKILL_GATES = Object.freeze([0, 1, 2, 4, 6, 8]);
 const ANY_TIME = Object.freeze({ open: 0, close: 24 });
 const WEEKDAYS_MON_FRI = [1, 2, 3, 4, 5];
 
-function track({ id, label, icon, skill, venue, workplaceName, days, entryPay, roles, summary }) {
+/** The arguments of `track()`: one career track as written below. */
+interface TrackSpec {
+  id: JobId
+  label: string
+  icon: string
+  skill: SkillId
+  venue: VenueId
+  workplaceName: string
+  days: number[]
+  entryPay: number
+  roles: string[]
+  summary: string
+}
+
+function track({ id, label, icon, skill, venue, workplaceName, days, entryPay, roles, summary }: TrackSpec): TrackJobDefinition {
   const ladder = roles.map((role, index) => ({
     role,
-    pay: Math.round((entryPay * PAY_CURVE[index]) / 100) * 100,
-    skillLevel: SKILL_GATES[index],
+    // roles always has six entries, so both lookups are in range.
+    pay: Math.round((entryPay * (PAY_CURVE[index] ?? 0)) / 100) * 100,
+    skillLevel: SKILL_GATES[index] ?? 0,
   }));
   return {
     id, label, icon, skill, days, ladder, summary, workplaceName, track: true,
@@ -79,7 +97,7 @@ function track({ id, label, icon, skill, venue, workplaceName, days, entryPay, r
   };
 }
 
-export const JOBS = {
+export const JOBS: Record<JobId, JobDefinition> = {
   'community-helper': {
     id: 'community-helper', label: 'Community helper', beta: true,
     summary: 'Help at the park’s Community desk.',
@@ -164,5 +182,5 @@ export const JOBS = {
 };
 
 /** The fourteen career tracks, in listing order. */
-export const TRACKS = Object.values(JOBS).filter((job) => job.track);
+export const TRACKS = Object.values(JOBS).filter((job): job is TrackJobDefinition => job.track === true);
 export const MAX_CAREER_LEVEL = PAY_CURVE.length;

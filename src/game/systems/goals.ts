@@ -50,6 +50,10 @@
  * Every cash reward goes through the wallet with its own ledger line ("Goal: Freshen up").
  * A starter goal pays exactly once: the chain index moves on before the reward is credited.
  */
+import type {
+  ActivityDefinition, ActiveWish, ChipTarget, DreamId, GoalChip, GoalsView, LifeContext, LifeState, LotteryId, NeedId, PerkDefinition, PerkId, SpotDefinition,
+  StarterGoal, StarterGoalCondition, StarterGoalId, SystemDefinition, VenueId, WishDefinition,
+} from '../../types/index.ts';
 import { emit, modify, occupiesVenue } from '../registry.ts';
 import { cap, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -67,24 +71,42 @@ const BESTIE_LIMIT = 16;
 const MAX_STARS = 1000000;
 const PITCH_TAG = 'startup-pitch';
 /** Relationship tiers (ids used by the social system's 'relationship.changed') that count as a best friend. */
-const BEST_TIERS = ['paddy', 'bae'];
-const perkById = Object.fromEntries(PERKS.map((perk) => [perk.id, perk]));
-const wishById = Object.fromEntries(WISHES.map((wish) => [wish.id, wish]));
-const goalIds = STARTER_GOALS.map((goal) => goal.id);
-const nowOf = (state, ctx) => (finite(ctx?.now) ? ctx.now : state.t);
-const today = (state, ctx) => lagosTime(nowOf(state, ctx)).day;
-const count = (value, max = Number.MAX_SAFE_INTEGER) => (safeCount(value) ? Math.min(value, max) : 0);
+const BEST_TIERS: readonly unknown[] = ['paddy', 'bae'];
+const perkById: Record<string, PerkDefinition> = Object.fromEntries(PERKS.map((perk) => [perk.id, perk]));
+const wishById: Record<string, WishDefinition> = Object.fromEntries(WISHES.map((wish) => [wish.id, wish]));
+const goalIds: readonly string[] = STARTER_GOALS.map((goal) => goal.id);
+/** A wish by id; every id passed is an active wish's (the original read a property of undefined, a TypeError, otherwise). */
+const wishOf = (id: string): WishDefinition => {
+  const wish = wishById[id];
+  if (!wish) throw new TypeError(`No wish ${id}`);
+  return wish;
+};
+/** A starter goal by index; every index passed is below STARTER_GOALS.length (the original read a property of undefined otherwise). */
+const goalAt = (index: number): StarterGoal => {
+  const goal = STARTER_GOALS[index];
+  if (!goal) throw new TypeError(`No starter goal ${index}`);
+  return goal;
+};
+const isDream = (value: unknown): value is DreamId => typeof value === 'string' && Object.hasOwn(DREAMS, value);
+const isLottery = (value: unknown): value is LotteryId => typeof value === 'string' && Object.hasOwn(LOTTERY, value);
+/** The part of a context these helpers read: tests and sanitize pass `{ now }` alone. */
+interface Clock { now?: number }
+/** Event data: read defensively, tests and other owners may emit partial data. */
+type Data = Record<string, unknown>
+const nowOf = (state: LifeState, ctx?: Clock): number => (finite(ctx?.now) ? ctx.now : state.t);
+const today = (state: LifeState, ctx?: Clock): number => lagosTime(nowOf(state, ctx)).day;
+const count = (value: unknown, max = Number.MAX_SAFE_INTEGER): number => (safeCount(value) ? Math.min(value, max) : 0);
 
-function note(state, text) {
+function note(state: LifeState, text: string): void {
   const g = state.goals;
   g.seq += 1;
   g.feed.push({ n: g.seq, text });
   if (g.feed.length > FEED_LIMIT) g.feed.splice(0, g.feed.length - FEED_LIMIT);
 }
-function addStars(state, amount) { state.goals.stars = Math.min(MAX_STARS, state.goals.stars + amount); }
+function addStars(state: LifeState, amount: number): void { state.goals.stars = Math.min(MAX_STARS, state.goals.stars + amount); }
 
 // ---- starter chain ------------------------------------------------------------------------
-function goalMet(state, goal) {
+function goalMet(state: LifeState, goal: StarterGoal): boolean {
   if (state.goals.seen.includes(goal.id)) return true;
   if (goal.done.hasJob && state.job) return true;
   return Boolean(goal.done.venue) && occupiesVenue(state, goal.done.venue);
@@ -93,13 +115,13 @@ function goalMet(state, goal) {
 // Rewards raise wallet events that land back here. The outer loop already pays every goal that
 // is due, so nested calls return at once instead of nesting one event deeper per goal.
 let chaining = false;
-function progressChain(state, ctx) {
+function progressChain(state: LifeState, ctx: LifeContext): void {
   const g = state.goals;
   if (chaining || !g.started) return;
   chaining = true;
   try {
-    while (g.chain < STARTER_GOALS.length && goalMet(state, STARTER_GOALS[g.chain])) {
-      const goal = STARTER_GOALS[g.chain];
+    while (g.chain < STARTER_GOALS.length && goalMet(state, goalAt(g.chain))) {
+      const goal = goalAt(g.chain);
       g.chain += 1; // move on first: whatever the reward triggers can never pay this goal again
       g.seen = g.seen.filter((id) => goalIds.indexOf(id) >= g.chain);
       addStars(state, goal.stars);
@@ -110,10 +132,10 @@ function progressChain(state, ctx) {
   } finally { chaining = false; }
 }
 
-function markSeen(state, test) {
+function markSeen(state: LifeState, test: (done: StarterGoalCondition, goal: StarterGoal) => boolean): void {
   const g = state.goals;
   for (let i = g.chain; i < STARTER_GOALS.length; i++) {
-    const goal = STARTER_GOALS[i];
+    const goal = goalAt(i);
     if (goal.done.fresh && i !== g.chain) continue; // counts only while it is the current goal
     if (!g.seen.includes(goal.id) && test(goal.done, goal)) g.seen.push(goal.id);
   }
@@ -126,23 +148,25 @@ function markSeen(state, test) {
  * is closed, say) — a free, unpaid pastime that is not work. So the goal is completed by what the chip asked for, a
  * paid gig or a shift never ticks it by accident, and a player is never left with a goal that cannot be met.
  */
-function intended(state, goal, data, ctx) {
+function intended(state: LifeState, goal: StarterGoal, data: Data | undefined, ctx: LifeContext): boolean {
   if (data?.id === goal.done.activity) return true;
   if (!goal.here) return false;
   const def = data?.def;
-  if (!def || def.cost || def.reward || def.requiresJob || def.home) return false;
+  if (!isRecord(def) || def.cost || def.reward || def.requiresJob || def.home) return false;
+  if (!goal.go) throw new TypeError('A goal done here has a place to go'); // the original read goal.go[0] of undefined
   if (state.location !== goal.go[0]) return true;
   const named = spotsOf(goal.go[0]).flatMap((spot) => spot.activities).find((item) => item.id === goal.done.activity);
   return !named || Boolean(blockReason(state, named, goal.go[0], ctx));
 }
 
 // ---- wishes -------------------------------------------------------------------------------
-const wishTarget = (wish) => (wish.on === 'earn' ? wish.amount : wish.count ?? 1);
-const activityFits = (wish, def, spotId) => Boolean(def) && ((wish.activity && def.id === wish.activity) || (wish.spot && spotId === wish.spot)
-  || (Array.isArray(wish.tags) && Array.isArray(def.tags) && wish.tags.some((tag) => def.tags.includes(tag))));
+const wishTarget = (wish: WishDefinition): number => (wish.on === 'earn' ? wish.amount : 'count' in wish ? wish.count ?? 1 : 1);
+/** `def` is a whole activity, or the `{ id, tags }` of one that just finished. */
+const activityFits = (wish: Extract<WishDefinition, { on: 'activity' }>, def: { id?: unknown; tags?: readonly unknown[] }, spotId: unknown): boolean => Boolean(def) && ((wish.activity && def.id === wish.activity) || (wish.spot && spotId === wish.spot)
+  || (Array.isArray(wish.tags) && Array.isArray(def.tags) && wish.tags.some((tag) => def.tags?.includes(tag))));
 
 /** A wish is only handed out while the game actually contains a way to fulfil it. */
-function attainable(state, wish) {
+function attainable(state: LifeState, wish: WishDefinition): boolean {
   if (wish.on === 'visit') return Object.hasOwn(VENUES, wish.venue) && state.location !== wish.venue;
   if (wish.on !== 'activity') return true;
   if (!Object.hasOwn(VENUES, wish.venue)) return false;
@@ -150,15 +174,16 @@ function attainable(state, wish) {
 }
 
 /** Next wish for a free slot: random with `rng`, first in pool order without. Null if the pool is exhausted. */
-function pickWish(state, rng, avoid) {
+function pickWish(state: LifeState, rng?: () => number, avoid?: string): ActiveWish | null {
   const active = new Set(state.goals.wishes.map((wish) => wish.id));
   const pool = WISHES.filter((wish) => !active.has(wish.id) && wish.id !== avoid && attainable(state, wish));
   if (!pool.length) return null;
   const wish = rng ? pool[Math.floor(rng() * pool.length) % pool.length] : pool[0];
+  if (!wish) return null; // the pool is not empty and the index is in range
   return { id: wish.id, n: 0, day: today(state) };
 }
 
-function fillWishes(state, ctx) {
+function fillWishes(state: LifeState, ctx: Clock & { rng?: () => number }): void {
   const g = state.goals;
   while (g.wishes.length < WISH_SLOTS) {
     const next = pickWish(state, ctx?.rng);
@@ -168,8 +193,8 @@ function fillWishes(state, ctx) {
   }
 }
 
-function grantWish(state, slot, ctx) {
-  const g = state.goals, wish = wishById[g.wishes[slot].id];
+function grantWish(state: LifeState, slot: number, ctx: LifeContext): void {
+  const g = state.goals, wish = wishOf(g.wishes[slot]?.id ?? ''); // slot is the index of an active wish
   const stars = WISH_STARS + g.perks.reduce((sum, id) => sum + (perkById[id]?.wishBonus ?? 0), 0);
   addStars(state, stars);
   g.granted = count(g.granted + 1);
@@ -180,7 +205,7 @@ function grantWish(state, slot, ctx) {
 }
 
 /** Add progress to every active wish that `test` accepts; grant those that reach their target. */
-function bumpWishes(state, ctx, test, amount = 1) {
+function bumpWishes(state: LifeState, ctx: LifeContext, test: (wish: WishDefinition) => boolean, amount = 1): void {
   const g = state.goals, day = today(state, ctx);
   for (const entry of [...g.wishes]) {
     const wish = wishById[entry.id];
@@ -193,7 +218,7 @@ function bumpWishes(state, ctx, test, amount = 1) {
 }
 
 // ---- dream --------------------------------------------------------------------------------
-function skillFraction(state, skill) {
+function skillFraction(state: LifeState, skill: 'music' | 'coding'): number {
   const xp = state.skills?.[skill] ?? 0, level = skillLevel(state, skill);
   if (level >= MAX_LEVEL) return MAX_LEVEL;
   const floor = xpForLevel(level), next = xpForLevel(level + 1);
@@ -201,20 +226,21 @@ function skillFraction(state, skill) {
 }
 
 /** Dream progress 0–1 (original beta formulas; the completion conditions themselves were observed). */
-export function dreamProgress(state) {
+export function dreamProgress(state: LifeState): number {
   const g = state.goals, s = g.stats, T = DREAM_TARGETS;
-  const value = {
+  const table: Record<DreamId, () => number> = {
     'oga-at-the-top': () => s.level / (s.levelCap || T.careerTopLevel),
     'lekki-landlord': () => Math.max(0, state.cash + s.assets - s.debt) / T.netWorth,
     'afrobeats-star': () => skillFraction(state, 'music') / MAX_LEVEL,
     'everybodys-padi': () => (Math.min(T.bestFriends, s.friends) + Math.min(T.bestFriends, s.best)) / (2 * T.bestFriends),
     'yaba-unicorn': () => (s.funded ? 1 : Math.min(0.85, 0.6 * Math.min(1, skillFraction(state, 'coding') / T.codingLevel)
       + 0.2 * Math.min(1, skillLevel(state, 'hustle') / T.hustleLevel) + (s.cchub ? 0.05 : 0))),
-  }[g.dream];
+  };
+  const value = g.dream ? table[g.dream] : undefined;
   return value ? Math.min(1, Math.max(0, value())) : 0;
 }
 
-function checkDream(state, ctx) {
+function checkDream(state: LifeState, ctx: LifeContext): void {
   const g = state.goals;
   if (!g.dream || g.dreamDone || dreamProgress(state) < 1) return;
   g.dreamDone = true; // set first: the reward's own wallet event must not pay it again
@@ -226,15 +252,15 @@ function checkDream(state, ctx) {
 
 // ---- events -------------------------------------------------------------------------------
 /** Record the size of the career ladder when an event carries it. Returns true if it did. */
-function ladderSize(state, data) {
+function ladderSize(state: LifeState, data: Data | undefined): boolean {
   if (!safeCount(data?.maxLevel) || data.maxLevel <= 0) return false;
   state.goals.stats.levelCap = Math.min(data.maxLevel, 100);
   return true;
 }
 
-const friendKey = (data) => [data?.id, data?.friend, data?.npc, data?.player].find((id) => typeof id === 'string' && id.length > 0 && id.length <= 80) ?? null;
+const friendKey = (data: Data | undefined): string | null => [data?.id, data?.friend, data?.npc, data?.player].find((id): id is string => typeof id === 'string' && id.length > 0 && id.length <= 80) ?? null;
 /** Count one best friend; the same friend id is never counted twice. */
-function countBest(state, data) {
+function countBest(state: LifeState, data: Data | undefined): void {
   const g = state.goals, key = friendKey(data);
   if (key) {
     if (g.besties.includes(key)) return;
@@ -245,16 +271,17 @@ function countBest(state, data) {
 
 const EARNING_EXCLUDED = /^(Refund|Start cash)/;
 
-function arrived(state, venue, ctx) {
+function arrived(state: LifeState, venue: unknown, ctx: LifeContext): void {
   if (typeof venue !== 'string') return;
   if (venue === 'cchub') state.goals.stats.cchub = true;
   markSeen(state, (done) => done.venue === venue);
   bumpWishes(state, ctx, (wish) => wish.on === 'visit' && wish.venue === venue);
 }
 
-const HANDLERS = {
+type Handler = (state: LifeState, data: Data, ctx: LifeContext) => void;
+const HANDLERS: Record<string, Handler | undefined> = {
   'activity.completed'(state, data, ctx) {
-    const tags = Array.isArray(data?.tags) ? data.tags : [];
+    const tags: unknown[] = Array.isArray(data?.tags) ? data.tags : [];
     const def = { id: data?.id, tags };
     markSeen(state, (done, goal) => typeof done.activity === 'string' && intended(state, goal, data, ctx));
     markSeen(state, (done) => Array.isArray(done.tags) && done.tags.some((tag) => tags.includes(tag)));
@@ -301,15 +328,16 @@ const HANDLERS = {
     const g = state.goals;
     // A life that was never a guest starts its chain here, at the first home goal (the opening goals are the quick start's).
     if (!g.started) { g.started = true; g.chain = Math.max(g.chain, STARTER_INTRO); }
-    if (typeof data?.dream === 'string' && Object.hasOwn(DREAMS, data.dream)) g.dream = data.dream;
-    const owed = data?.loan?.owed ?? LOTTERY[data?.lottery]?.loan?.owed;
+    if (isDream(data?.dream)) g.dream = data.dream;
+    const loan = data?.loan, lottery = data?.lottery;
+    const owed = (isRecord(loan) ? loan.owed : undefined) ?? (isLottery(lottery) ? LOTTERY[lottery].loan?.owed : undefined);
     if (safeCount(owed)) g.stats.debt = owed;
   },
 };
 const EVENTS = ['activity.completed', 'meal.eaten', 'item.bought', 'house.moved', 'car.bought', 'job.applied', 'shift.completed', 'promotion', 'rent.paid',
   'loan.paid', 'npc.greeted', 'friend.made', 'friend.best', 'relationship.changed', 'travel.arrived', 'venue.visited', 'wallet.changed', 'skill.levelup', 'life.started', 'stars.granted'];
 
-function handle(event, state, data, ctx) {
+function handle(event: string, state: LifeState, data: Data, ctx: LifeContext): void {
   HANDLERS[event]?.(state, data, ctx);
   markSeen(state, (done) => Array.isArray(done.events) && done.events.includes(event));
   bumpWishes(state, ctx, (wish) => wish.on === 'event' && wish.event === event);
@@ -318,14 +346,16 @@ function handle(event, state, data, ctx) {
 }
 
 // ---- the chip: current starter goal, then a rolling next step -----------------------------
-const NEED_STEP = { hunger: ['🍲', 'Eat something'], energy: ['🛏️', 'Get some rest'], fun: ['🎉', 'Have some fun'], social: ['💬', 'Talk to someone'],
+const NEED_STEP: Record<NeedId, [icon: string, title: string]> = { hunger: ['🍲', 'Eat something'], energy: ['🛏️', 'Get some rest'], fun: ['🎉', 'Have some fun'], social: ['💬', 'Talk to someone'],
   hygiene: ['🫧', 'Freshen up'], bladder: ['🚽', 'Use the toilet'] };
 
 /** The free, startable activity that raises `need` the most: Home first, then any other venue. */
-function recovery(state, need, ctx) {
-  const gain = (def) => (def.effects?.[need] ?? 0) + (def.effectsPerSecond?.[need] ?? 0) * (def.duration ?? 0);
-  for (const venue of ['home', ...Object.keys(VENUES).filter((id) => id !== 'home')]) {
-    let best = null;
+interface Recovery { venue: VenueId; spot: SpotDefinition; fix: ActivityDefinition }
+function recovery(state: LifeState, need: NeedId, ctx: LifeContext): Recovery | null {
+  const gain = (def: ActivityDefinition): number => (def.effects?.[need] ?? 0) + (def.effectsPerSecond?.[need] ?? 0) * (def.duration ?? 0);
+  const venues: VenueId[] = ['home', ...Object.keys(VENUES).filter((id): id is VenueId => id !== 'home')]; // the keys of VENUES are venue ids
+  for (const venue of venues) {
+    let best: Recovery | null = null;
     for (const spot of spotsOf(venue)) {
       for (const def of spot.activities) {
         if (def.unavailable || def.cost || def.requiresJob || def.requiresSkill || def.choices
@@ -340,8 +370,8 @@ function recovery(state, need, ctx) {
   return null;
 }
 /** The shortest free activity that can be started right now in the venue the player is in, or null. */
-function quickest(state, ctx) {
-  let best = null;
+function quickest(state: LifeState, ctx: LifeContext): { spot: SpotDefinition; def: ActivityDefinition } | null {
+  let best: { spot: SpotDefinition; def: ActivityDefinition } | null = null;
   for (const spot of spotsOf(state.location)) {
     for (const def of spot.activities) {
       if (def.unavailable || def.cost || def.reward || def.requiresJob || def.requiresSkill || def.choices || def.home || Object.keys(def.minimumNeeds || {}).length || !(def.duration > 0)) continue;
@@ -351,25 +381,27 @@ function quickest(state, ctx) {
   }
   return best;
 }
-const workplaceOf = (state) => { const at = JOBS[state.job]?.workplace; return typeof at?.venue === 'string' ? [at.venue, at.spot] : null; };
-const homeSpot = (id) => (spotsOf('home').some((spot) => spot.id === id) ? ['home', id] : ['home']);
+const workplaceOf = (state: LifeState): ChipTarget | null => { const at = state.job ? JOBS[state.job]?.workplace : undefined; return typeof at?.venue === 'string' ? [at.venue, at.spot] : null; };
+const homeSpot = (id: string | undefined): ChipTarget => (spotsOf('home').some((spot) => spot.id === id) ? ['home', id] : ['home']);
 
-function chipOf(state, ctx) {
+function chipOf(state: LifeState, ctx: LifeContext): GoalChip {
   const g = state.goals;
   if (state.onboarding && !state.onboarding.done && state.onboarding.stage !== 'guest') {
     return { kind: 'create', icon: '✨', title: 'Create your Sim', hint: 'Choose your look, personality, dream and home', open: 'onboarding' };
   }
   const goal = g.started ? STARTER_GOALS[g.chain] : null;
   if (goal) {
-    const chip = { kind: 'goal', id: goal.id, icon: goal.icon, title: goal.title, hint: goal.hint, reward: `+${naira(goal.cash)} +${goal.stars}✨`,
+    const chip: Extract<GoalChip, { kind: 'goal' }> = { kind: 'goal', id: goal.id, icon: goal.icon, title: goal.title, hint: goal.hint, reward: `+${naira(goal.cash)} +${goal.stars}✨`,
       step: g.chain + 1, of: STARTER_GOALS.length };
     if (goal.here) {
       // Wherever the guest stands: the goal's own spot at its venue, otherwise the quickest free thing to do right here.
+      if (!goal.go) throw new TypeError('A goal done here has a place to go'); // the original read goal.go[0] of undefined
       if (state.location === goal.go[0]) return { ...chip, go: goal.go, activity: goal.activity };
       const near = quickest(state, ctx);
       return near ? { ...chip, title: 'Do something fun', hint: `${near.spot.label} → ${near.def.label} · takes ${near.def.duration} seconds`, go: [state.location, near.spot.id], activity: near.def.id } : { ...chip, go: goal.go };
     }
-    if (goal.workplace) return { ...chip, ...(workplaceOf(state) ? { go: workplaceOf(state) } : { open: 'jobs' }) };
+    const workplace = workplaceOf(state);
+    if (goal.workplace) return { ...chip, ...(workplace ? { go: workplace } : { open: 'jobs' }) };
     if (goal.open === 'buy' && state.location !== 'home') return { ...chip, go: ['home'] };
     // A goal that needs other people cannot be met at home (a player who settled in before saying hello is standing there):
     // the one line of guidance says so and points at the way out, instead of opening a list with nobody in it.
@@ -386,13 +418,14 @@ function chipOf(state, ctx) {
   const perk = PERKS.filter((item) => !g.perks.includes(item.id) && item.cost <= g.stars).sort((a, b) => a.cost - b.cost)[0];
   if (perk) return { kind: 'guide', icon: '✨', title: 'Spend your stars', hint: `${perk.label} costs ${perk.cost}✨ — you have ${g.stars}✨`, open: 'goals' };
   if (!state.job) return { kind: 'guide', icon: '💼', title: 'Find a job', hint: 'Open Phone → Jobs', open: 'jobs' };
-  const wish = wishById[g.wishes[0]?.id];
+  const firstWish = g.wishes[0], wish = firstWish ? wishById[firstWish.id] : undefined;
   if (wish) return { kind: 'guide', icon: wish.icon, title: wish.label, hint: `${wish.hint} · +${WISH_STARS}✨`, open: 'goals' };
   if (g.dream && !g.dreamDone) return { kind: 'guide', icon: DREAMS[g.dream].icon, title: DREAMS[g.dream].label, hint: `${Math.floor(dreamProgress(state) * 100)}% · ${DREAMS[g.dream].goal}`, open: 'goals' };
-  return { kind: 'guide', icon: '💼', title: 'Work a shift', hint: 'Earn towards your next upgrade', ...(workplaceOf(state) ? { go: workplaceOf(state) } : { open: 'jobs' }) };
+  const workplace = workplaceOf(state);
+  return { kind: 'guide', icon: '💼', title: 'Work a shift', hint: 'Earn towards your next upgrade', ...(workplace ? { go: workplace } : { open: 'jobs' }) };
 }
 
-function rerollsOf(state, ctx) {
+function rerollsOf(state: LifeState, ctx: LifeContext) {
   const r = state.goals.rerolls, used = r.day === today(state, ctx) ? r.used : 0;
   return { used, left: Math.max(0, WISH_REROLLS_PER_DAY - used), max: WISH_REROLLS_PER_DAY };
 }
@@ -415,70 +448,70 @@ const actions = {
   },
   'goals.reroll-wish'(state, payload, ctx) {
     const g = state.goals, slot = payload?.slot;
-    if (!Number.isInteger(slot) || slot < 0 || slot >= g.wishes.length) return fail(state, 'invalid_wish', 'Choose one of your active wishes to re-roll.');
+    if (typeof slot !== 'number' || !Number.isInteger(slot) || slot < 0 || slot >= g.wishes.length) return fail(state, 'invalid_wish', 'Choose one of your active wishes to re-roll.');
     if (rerollsOf(state, ctx).left <= 0) {
       return fail(state, 'no_rerolls', `You have used all ${WISH_REROLLS_PER_DAY} wish re-rolls for today. They reset at midnight, Lagos time.`);
     }
-    const old = wishById[g.wishes[slot].id];
+    const current = g.wishes[slot], old = current ? wishById[current.id] : undefined; // slot is in range
     const next = pickWish(state, ctx?.rng, old?.id);
     if (!next) return fail(state, 'no_other_wish', 'No other wish is available right now. Finish one of your wishes to see new ones.');
     next.day = today(state, ctx);
     g.wishes[slot] = next;
     g.rerolls = { day: today(state, ctx), used: rerollsOf(state, ctx).used + 1 };
-    state.message = `New wish: ${wishById[next.id].label}.`;
+    state.message = `New wish: ${wishOf(next.id).label}.`;
     return ok(state, 'rerolled');
   },
   'goals.set-dream'(state, payload, ctx) {
     const g = state.goals;
     if (g.dream) return fail(state, 'dream_already_chosen', `Your dream is already ${DREAMS[g.dream].label}. A dream is chosen once per life.`);
-    const dream = typeof payload?.dream === 'string' && Object.hasOwn(DREAMS, payload.dream) ? DREAMS[payload.dream] : null;
+    const dreamId = payload?.dream, dream = isDream(dreamId) ? DREAMS[dreamId] : null;
     if (!dream) return fail(state, 'invalid_dream', `Choose one dream: ${Object.values(DREAMS).map((item) => item.label).join(', ')}.`);
     g.dream = dream.id;
     state.message = `Dream chosen: ${dream.label}.`;
     checkDream(state, ctx);
     return ok(state, 'dream_saved');
   },
-};
+} satisfies NonNullable<SystemDefinition<'goals'>['actions']>;
 
-const pitchReady = (state) => skillLevel(state, 'hustle') >= DREAM_TARGETS.hustleLevel;
+const pitchReady = (state: LifeState): boolean => skillLevel(state, 'hustle') >= DREAM_TARGETS.hustleLevel;
 
 export default {
   id: 'goals',
   stateKeys: ['goals'],
   sanitize(input, state, ctx) {
-    const raw = isRecord(input.goals) ? input.goals : {};
-    const stats = isRecord(raw.stats) ? raw.stats : {};
-    const ids = (value, valid, max) => [...new Set((Array.isArray(value) ? value.slice(0, 100) : []).filter((id) => typeof id === 'string' && valid(id)))].slice(0, max);
+    const raw: Record<string, unknown> = isRecord(input.goals) ? input.goals : {};
+    const stats: Record<string, unknown> = isRecord(raw.stats) ? raw.stats : {};
+    const ids = <T extends string>(value: unknown, valid: (id: string) => id is T, max: number): T[] => [...new Set((Array.isArray(value) ? value.slice(0, 100) : []).filter((id): id is T => typeof id === 'string' && valid(id)))].slice(0, max);
     const guest = state.onboarding?.stage === 'guest';
     // A chain saved in the order before the quick start counts from "Eat something": move it past the opening goals.
     const shift = raw.cv === 2 || raw.started !== true ? 0 : STARTER_INTRO;
-    const chain = Number.isInteger(raw.chain) ? Math.min(Math.max(raw.chain, 0) + shift, STARTER_GOALS.length) : 0;
-    const dream = typeof raw.dream === 'string' && Object.hasOwn(DREAMS, raw.dream) ? raw.dream : state.onboarding?.done ? state.onboarding.dream ?? null : null;
+    const chain = typeof raw.chain === 'number' && Number.isInteger(raw.chain) ? Math.min(Math.max(raw.chain, 0) + shift, STARTER_GOALS.length) : 0;
+    const dream = isDream(raw.dream) ? raw.dream : state.onboarding?.done ? state.onboarding.dream ?? null : null;
     const seq = count(raw.seq);
     state.goals = {
       started: raw.started === true || guest,
       chain,
       cv: 2,
-      seen: ids(raw.seen, (id) => goalIds.indexOf(id) >= chain, STARTER_GOALS.length),
+      seen: ids(raw.seen, (id): id is StarterGoalId => goalIds.indexOf(id) >= chain, STARTER_GOALS.length),
       stars: count(raw.stars, MAX_STARS),
-      perks: ids(raw.perks, (id) => Object.hasOwn(perkById, id), PERKS.length),
+      perks: ids(raw.perks, (id): id is PerkId => Object.hasOwn(perkById, id), PERKS.length),
       wishes: [],
-      rerolls: isRecord(raw.rerolls) && Number.isInteger(raw.rerolls.day) && safeCount(raw.rerolls.used) ? { day: raw.rerolls.day, used: Math.min(raw.rerolls.used, WISH_REROLLS_PER_DAY) } : { day: 0, used: 0 },
+      rerolls: isRecord(raw.rerolls) && typeof raw.rerolls.day === 'number' && Number.isInteger(raw.rerolls.day) && safeCount(raw.rerolls.used) ? { day: raw.rerolls.day, used: Math.min(raw.rerolls.used, WISH_REROLLS_PER_DAY) } : { day: 0, used: 0 },
       granted: count(raw.granted),
       dream,
       dreamDone: Boolean(dream) && raw.dreamDone === true,
       stats: { friends: count(stats.friends, 999), best: count(stats.best, 999), level: count(stats.level, 100), levelCap: count(stats.levelCap, 100),
         assets: count(stats.assets), debt: count(stats.debt), cchub: stats.cchub === true, funded: stats.funded === true },
-      besties: ids(raw.besties, (id) => id.length > 0 && id.length <= 80, BESTIE_LIMIT),
+      besties: ids(raw.besties, (id): id is string => id.length > 0 && id.length <= 80, BESTIE_LIMIT),
       seq,
-      feed: (Array.isArray(raw.feed) ? raw.feed.slice(-FEED_LIMIT) : []).filter((item) => isRecord(item) && safeCount(item.n) && item.n <= seq && typeof item.text === 'string')
+      feed: (Array.isArray(raw.feed) ? raw.feed.slice(-FEED_LIMIT) : []).filter((item): item is Record<string, unknown> & { n: number; text: string } => isRecord(item) && safeCount(item.n) && item.n <= seq && typeof item.text === 'string')
         .map((item) => ({ n: item.n, text: item.text.slice(0, 160) })),
     };
-    const seenWish = new Set();
+    const seenWish = new Set<string>();
     for (const item of Array.isArray(raw.wishes) ? raw.wishes.slice(0, WISH_SLOTS * 4) : []) {
-      if (!isRecord(item) || !Object.hasOwn(wishById, item.id) || seenWish.has(item.id) || state.goals.wishes.length >= WISH_SLOTS) continue;
+      if (!isRecord(item) || typeof item.id !== 'string' || !Object.hasOwn(wishById, item.id) || seenWish.has(item.id) || state.goals.wishes.length >= WISH_SLOTS) continue;
       seenWish.add(item.id);
-      state.goals.wishes.push({ id: item.id, n: count(item.n), day: Number.isInteger(item.day) ? item.day : today(state, ctx) });
+      state.goals.wishes.push({ id: item.id, n: count(item.n), day: typeof item.day === 'number' && Number.isInteger(item.day) ? item.day : today(state, ctx) });
     }
     // First wishes are the first attainable ones in pool order (no randomness), so every new life starts alike.
     fillWishes(state, { now: ctx?.now });
@@ -489,9 +522,9 @@ export default {
     progressChain(state, ctx);
     checkDream(state, ctx);
   },
-  on: Object.fromEntries(EVENTS.map((event) => [event, (state, data, ctx) => handle(event, state, data, ctx)])),
+  on: Object.fromEntries(EVENTS.map((event) => [event, (state: LifeState, data: Data, ctx: LifeContext) => handle(event, state, data, ctx)])),
   modifiers: {
-    ...fxModifiers((state) => state.goals.perks.map((id) => perkById[id]?.fx)),
+    ...fxModifiers((state: LifeState) => state.goals.perks.map((id) => perkById[id]?.fx)),
     'career.autoCommute'(value, state) {
       const g = state.goals;
       return value && !(g.started && g.chain < STARTER_GOALS.findIndex((goal) => goal.workplace));
@@ -522,7 +555,7 @@ export default {
           blocked: owned ? 'Owned' : g.stars < perk.cost ? `Needs ${perk.cost}✨ — you have ${g.stars}✨ (${perk.cost - g.stars} more)` : null };
       }),
       wishes: g.wishes.map((entry, slot) => {
-        const wish = wishById[entry.id], target = wishTarget(wish);
+        const wish = wishOf(entry.id), target = wishTarget(wish);
         const n = wish.on === 'earn' && entry.day !== day ? 0 : Math.min(entry.n, target);
         return { slot, id: wish.id, label: wish.label, hint: wish.hint, icon: wish.icon, stars: WISH_STARS, progress: n, target, money: wish.on === 'earn', beta: Boolean(wish.beta) };
       }),
@@ -533,5 +566,4 @@ export default {
       feed: g.feed.map((item) => ({ ...item })),
       seq: g.seq,
     };
-  },
-};
+  },} satisfies SystemDefinition<'goals'>;

@@ -9,7 +9,7 @@
  *   welcomed  boolean — this life has received its one referral welcome gift
  *   referrals { week, paid, total } — referral rewards paid this Lagos week and for life
  *
- * ACTIONS — both SERVER ONLY (registry.js): run by server/routes/growth.js through ctx.act inside
+ * ACTIONS — both SERVER ONLY (registry.ts): run by server/routes/growth.ts through ctx.act inside
  * the store transaction that records the other half (a finished match, a referral), so a player
  * can never call one directly.
  *   'growth.table-result' { game, label, won, human, counted }
@@ -26,17 +26,20 @@ import { cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '.
 import { lagosTime } from '../clock.ts';
 import { canCredit, credit } from '../api.ts';
 import { REFERRAL, TABLE_REWARDS } from '../content/growth.ts';
+import type { ActionType } from '../../types/actions.ts';
+import type { LifeContext, LifeState } from '../../types/life.ts';
+import type { ServerOnlyAction, SystemDefinition, TypedActionHandler } from '../../types/registry.ts';
 
-const nowOf = (state, ctx) => (finite(ctx?.now) && ctx.now > 0 ? ctx.now : state.t);
-const serverOnly = (run, where) => ({ serverOnly: true, run, refusal: `This is completed by the server ${where}. Nothing was changed.` });
+const nowOf = (state: LifeState, ctx: LifeContext): number => (finite(ctx?.now) && ctx.now > 0 ? ctx.now : state.t);
+const serverOnly = <T extends ActionType>(run: TypedActionHandler<T>, where: string): ServerOnlyAction<T> => ({ serverOnly: true, run, refusal: `This is completed by the server ${where}. Nothing was changed.` });
 
-function today(state, ctx) {
+function today(state: LifeState, ctx: LifeContext): LifeState['growth']['tables'] {
   const day = lagosTime(nowOf(state, ctx)).day, tables = state.growth.tables;
   if (tables.day !== day) { tables.day = day; tables.paid = 0; tables.bots = 0; }
   return tables;
 }
 
-export function tableResult(state, payload, ctx) {
+export const tableResult: TypedActionHandler<'growth.table-result'> = (state, payload, ctx) => {
   const tables = today(state, ctx);
   const game = isId(payload?.game) ? payload.game : 'game', label = cleanText(payload?.label, 24, 'a table game');
   const won = payload?.won === true, human = payload?.human === true, counted = payload?.counted === true;
@@ -53,9 +56,9 @@ export function tableResult(state, payload, ctx) {
   if (credited) emit(state, 'table.played', { game, won, human, paid }, ctx);
   state.message = paid ? `You won at ${label}: +${naira(paid)}.` : won ? `You won at ${label}.` : `Game over at ${label}.`;
   return ok(state, paid ? 'paid' : credited ? 'counted' : 'for_fun');
-}
+};
 
-export function referralGift(state, payload, ctx) {
+export const referralGift: TypedActionHandler<'growth.referral'> = (state, payload, ctx) => {
   const book = state.growth, name = cleanText(payload?.name, 24, 'a friend');
   if (payload?.kind === 'welcome') {
     if (book.welcomed) return fail(state, 'already_welcomed', 'This life already had its welcome gift.');
@@ -78,14 +81,14 @@ export function referralGift(state, payload, ctx) {
     return ok(state, 'rewarded');
   }
   return fail(state, 'invalid_gift', 'Unknown referral step.');
-}
+};
 
 export default {
   id: 'growth',
   stateKeys: ['growth'],
   sanitize(input, state) {
     const saved = isRecord(input.growth) ? input.growth : {}, tables = isRecord(saved.tables) ? saved.tables : {}, refs = isRecord(saved.referrals) ? saved.referrals : {};
-    const count = (value, max = Number.MAX_SAFE_INTEGER) => (safeCount(value) && value <= max ? value : 0);
+    const count = (value: unknown, max = Number.MAX_SAFE_INTEGER): number => (safeCount(value) && value <= max ? value : 0);
     state.growth = {
       tables: { day: count(tables.day), paid: count(tables.paid, TABLE_REWARDS.paidWinsPerDay), bots: count(tables.bots, TABLE_REWARDS.botCreditsPerDay), played: count(tables.played), won: count(tables.won) },
       welcomed: saved.welcomed === true,
@@ -93,8 +96,8 @@ export default {
     };
   },
   actions: {
-    'growth.table-result': serverOnly(tableResult, 'when a table game ends'),
-    'growth.referral': serverOnly(referralGift, 'when a referral counts'),
+    'growth.table-result': serverOnly<'growth.table-result'>(tableResult, 'when a table game ends'),
+    'growth.referral': serverOnly<'growth.referral'>(referralGift, 'when a referral counts'),
   },
   view(state, ctx) {
     const day = lagosTime(nowOf(state, ctx)).day, week = lagosTime(nowOf(state, ctx)).week, book = state.growth;
@@ -105,4 +108,4 @@ export default {
         welcome: REFERRAL.welcome, reward: REFERRAL.reward, rewardStars: REFERRAL.rewardStars },
     };
   },
-};
+} satisfies SystemDefinition<'growth'>;

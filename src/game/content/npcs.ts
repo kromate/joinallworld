@@ -14,15 +14,20 @@
  * a "Paddy Mi" (best friend) status. The tier names in between and every other threshold are
  * original beta values. Bae is not a points tier: it is a status two real players agree on.
  */
+import type { FamilyId, NpcId } from '../../types/life.ts'
+import type {
+  FamilyCallRules, FamilyMember, NpcAction, NpcDefinition, PlayerAction, TierDefinition, TransferLimits,
+} from '../../types/content.ts'
+
 export const MAX_CLOSENESS = 100;
 export const BAE_UNLOCK = 40; // observed in the reference game
-export const TIERS = [
+export const TIERS: TierDefinition[] = [
   { id: 'stranger', label: 'Stranger', min: 0, beta: true },
   { id: 'acquaintance', label: 'Acquaintance', min: 5, beta: true },
   { id: 'friend', label: 'Friend', min: 20, beta: true },
   { id: 'paddy', label: 'Paddy Mi', min: BAE_UNLOCK, note: 'Name observed; sharing the 40-point Bae threshold is an original beta choice.', beta: true },
 ];
-export const BAE_TIER = { id: 'bae', label: 'Bae' };
+export const BAE_TIER = { id: 'bae', label: 'Bae' } as const;
 
 /** Interactions per person per Lagos day before they have "heard enough" (original beta value). */
 export const DAILY_INTERACTIONS = 4;
@@ -38,7 +43,7 @@ export const MAX_RELATIONSHIPS = 200;
  *   success   { base } percent chance (before skill and closeness); `bonus` effects and the
  *             closeness points are only granted when it lands
  */
-export const NPC_ACTIONS = [
+export const NPC_ACTIONS: NpcAction[] = [
   { id: 'hello', label: 'Say Hello', icon: '👋', duration: 6, effects: { social: 12, fun: 2 }, xp: { charisma: 5 }, points: 2,
     note: 'Effects observed in the reference game; duration, XP and points are original beta values.' },
   { id: 'gist', label: 'Gist', icon: '🗣️', duration: 10, effects: { social: 10, fun: 6 }, xp: { charisma: 8 }, points: 3, beta: true },
@@ -54,7 +59,7 @@ export const NPC_ACTIONS = [
  * observed in the reference game; all numbers are original beta values (the reference showed a
  * different joke chance per target, formula unknown). These are instant and limited per day.
  */
-export const PLAYER_ACTIONS = [
+export const PLAYER_ACTIONS: PlayerAction[] = [
   { id: 'hello', label: 'Say Hello', icon: '👋', effects: { social: 10 }, xp: { charisma: 4 }, points: 2, beta: true },
   { id: 'gist', label: 'Gist', icon: '🗣️', effects: { social: 8, fun: 5 }, xp: { charisma: 6 }, points: 3, beta: true },
   { id: 'joke', label: 'Crack Joke', icon: '😂', effects: { social: 3, fun: 2 }, bonus: { social: 4, fun: 7 }, xp: { charisma: 5, comedy: 5 }, points: 5, success: { base: 60 }, beta: true },
@@ -72,7 +77,7 @@ export const JOKE_FORMULA = { perCharismaLevel: 2, perClosenessPoint: 0.4, min: 
  * Where each regular stands in their venue's scene: a landmark key of that scene kind
  * (src/scene/venues-*.js). Original placement; a regular without one joins the general crowd.
  */
-const NPC_PLACES = {
+const NPC_PLACES: Record<string, string> = {
   amaka: 'counter', 'baba-sege': 'table', kunle: 'trees', 'mama-ronke': 'drinks', zainab: 'lounge', deji: 'bar',
   tega: 'desks', halima: 'pitch', 'femi-sax': 'stage', yeni: 'floor', 'oga-tunde': 'benches', chidi: 'banter',
   'iya-bose': 'produce', emeka: 'gadgets', 'coach-bayo': 'weights', ngozi: 'treadmills', 'mrs-okafor': 'reception', dapo: 'lounge',
@@ -83,8 +88,8 @@ const NPC_PLACES = {
   'protocol-segun': 'steps', 'madam-secretary': 'office',
   'agent-bimpe': 'desk', 'porter-sule': 'arrivals', 'engineer-chioma': 'control', 'driver-mustapha': 'loading',
 };
-const npc = (id, venue, name, role, emoji, quotes, extra = { beta: true }) => ({ id, venue, name, role, emoji, quotes, ...extra });
-export const NPCS = Object.fromEntries([
+const npc = (id: NpcId, venue: string, name: string, role: string, emoji: string, quotes: string[], extra: Pick<NpcDefinition, 'beta' | 'note'> = { beta: true }): Omit<NpcDefinition, 'at'> => ({ id, venue, name, role, emoji, quotes, ...extra });
+export const NPCS: Record<NpcId, NpcDefinition> = Object.fromEntries([
   npc('amaka', 'amala-shitta', 'Amaka', 'Serving', '👩🏾‍🍳', ['Extra meat is extra money, no vex.', 'This pot has fed half of Surulere today.', 'You look like somebody that skipped breakfast.'], { note: 'Name and role observed in the reference game; quotes are original.' }),
   npc('baba-sege', 'amala-shitta', 'Baba Sege', 'Regular customer', '👴🏾', ['I have eaten here since before you were born.', 'Abula first, wahala later.'],),
   npc('kunle', 'park', 'Kunle', 'Sketching by the trees', '🧑🏾‍🎨', ['Sit small, let me draw your shadow.', 'Art no dey rush. Lagos dey rush.', 'This breeze is the only free thing left.']),
@@ -142,7 +147,7 @@ export const NPCS = Object.fromEntries([
  *   every call: `effects`; the first call to each member per Lagos day also gives `first`, the
  *   XP and the check-in moodlet.
  */
-export const FAMILY = {
+export const FAMILY: Record<FamilyId, FamilyMember> = {
   mummy: { id: 'mummy', name: 'Mummy', relation: 'Mother', emoji: '👩🏾', line: 'Picks up on the first ring', contact: true,
     quotes: ['Have you eaten?', 'Remember the child of whom you are.', 'Call your father too.'], note: 'Contact observed in the reference game; all values are original.', beta: true },
   daddy: { id: 'daddy', name: 'Daddy', relation: 'Father', emoji: '👨🏾', line: 'Short calls, big advice',
@@ -152,7 +157,7 @@ export const FAMILY = {
   grandma: { id: 'grandma', name: 'Grandma', relation: 'Grandmother', emoji: '👵🏾', line: 'Prays before she says hello',
     quotes: ['You will not see shame.', 'Come home for Christmas.'], beta: true },
 };
-export const FAMILY_CALL = { duration: 8, effects: { social: 2 }, first: { social: 8 }, xp: { charisma: 2 },
+export const FAMILY_CALL: FamilyCallRules = { duration: 8, effects: { social: 2 }, first: { social: 8 }, xp: { charisma: 2 },
   moodlet: { id: 'family-checkin', label: 'Checked in with family', value: 5, duration: 6 * 3600 }, beta: true };
 
 /**
@@ -160,7 +165,7 @@ export const FAMILY_CALL = { duration: 8, effects: { social: 2 }, first: { socia
  * reference game's own rules were not observed and players reported that easy gifts made work
  * pointless). A life can never give away more than it has earned from paid work.
  */
-export const TRANSFER_LIMITS = {
+export const TRANSFER_LIMITS: TransferLimits = {
   min: 100, maxPerTransfer: 5000, dailyAmount: 10000, dailyCount: 3, dailyReceive: 20000,
   minEarned: 1000, minAccountAgeMs: 24 * 3600 * 1000, minFriendshipMs: 3600 * 1000, beta: true,
 };

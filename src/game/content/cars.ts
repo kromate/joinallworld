@@ -12,7 +12,10 @@
  * is marked `priceReported`. Vehicle names and nicknames are original; fuel cost and speed were
  * never observed, so every entry carries `beta: true` for those two fields.
  */
-export const CARS = {
+import type { CarId } from '../../types/life.ts'
+import type { CarDefinition, TravelModeDefinition } from '../../types/content.ts'
+
+export const CARS: Record<CarId, CarDefinition> = {
   'agama-150': { id: 'agama-150', label: 'Agama 150 Motorbike', nickname: 'Your own okada', icon: '🏍️', price: 350000, fuel: 30, speed: 0.75, beta: true },
   'tokunbo-saloon': { id: 'tokunbo-saloon', label: 'Tokunbo Saloon ’08', nickname: 'First-car feeling', icon: '🚗', price: 900000, fuel: 60, speed: 0.7, beta: true },
   'oga-sedan': { id: 'oga-sedan', label: 'Oga Sedan', nickname: 'Smooth operator', icon: '🚗', price: 1800000, fuel: 80, speed: 0.65, beta: true },
@@ -25,10 +28,11 @@ export const CARS = {
 };
 
 /** Dealer order (cheapest first). */
-export const CAR_ORDER = Object.keys(CARS);
+// Object.keys is string[]; the keys of CARS are exactly the CarId union.
+export const CAR_ORDER = Object.keys(CARS) as CarId[];
 
 /** Share of the price returned when a car is sold back to the dealer (original beta value). */
 export const CAR_RESALE_RATE = 0.6;
 
 /** The travel mode an owned car adds (via the 'travel.modes' modifier). */
-export const CAR_MODE = { id: 'car', label: 'Drive', icon: '🚗' };
+export const CAR_MODE = { id: 'car', label: 'Drive', icon: '🚗' } satisfies Pick<TravelModeDefinition, 'id' | 'label' | 'icon'>;

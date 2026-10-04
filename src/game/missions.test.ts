@@ -1,10 +1,13 @@
 // OWNER: growth — tests for the missions, events and growth systems and the events calendar.
-// Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.js.
+// Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife, spotsOf, VENUES } from '../life.ts';
 import { makeContext } from './util.ts';
 import { lagosTime, lagosDayStart } from './clock.ts';
+import type { ActionBody, ActionResult, ActionType } from '../types/actions.ts';
+import type { CalendarEvent } from '../types/content.ts';
+import type { LifeContext, LifeContextInit, LifeState } from '../types/life.ts';
 import { dealMissions } from './systems/missions.ts';
 import { DAILY_MISSIONS, WEEKLY_MISSIONS, MISSION_REWARDS, MISSION_KINDS, STAMP_CARD } from './content/missions.ts';
 import { EVENTS_CALENDAR, SPRAY } from './content/calendar.ts';
@@ -16,37 +19,46 @@ const HOUR = 3600000, DAY = 86400000;
 const NOW = Date.UTC(2026, 0, 5, 8);
 const TODAY = lagosTime(NOW).day, WEEK = lagosTime(NOW).week;
 let seq = 0;
-const ctxAt = (now, extra = {}) => { const actionId = `m-${++seq}`; return makeContext({ now, cityId: 'lagos', seed: actionId, actionId, ...extra }); };
-const entries = (...ids) => ids.map((id) => ({ id, n: 0, marks: [], claimed: false }));
+const ctxAt = (now: number, extra: LifeContextInit = {}): LifeContext => { const actionId = `m-${++seq}`; return makeContext({ now, cityId: 'lagos', seed: actionId, actionId, ...extra }); };
+const entries = (...ids: string[]) => ids.map((id) => ({ id, n: 0, marks: [], claimed: false }));
+/** The reason of a refused action ('' for a success or a refusal without one). */
+const why = (result: { ok: boolean; reason?: string }): string => result.reason ?? '';
+/** Narrows a lookup that must have found something. */
+function need<T>(value: T | null | undefined, what = 'expected a value'): T { assert.ok(value, what); return value; }
+/** A life and the clock the test has moved it to. */
+interface Game { state: LifeState; now: number }
+type Activity = ReturnType<typeof spotsOf>[number]['activities'][number];
 
 /** A life with a chosen set of missions for today, standing at home with money. */
-function life({ daily = [], weekly = [], ...saved } = {}) {
+function life({ daily = [], weekly = [], ...saved }: { daily?: string[]; weekly?: string[]; [key: string]: unknown } = {}): Game {
   const state = createLife({ cash: 50000, location: 'home', spot: 'kitchen', missions: { seed: 7, day: TODAY, week: WEEK, daily: entries(...daily), weekly: entries(...weekly) }, ...saved }, ctxAt(NOW));
   state.t = NOW;
   return { state, now: NOW };
 }
-const act = (game, type, payload, extra) => dispatch(game.state, { type, payload }, ctxAt(game.now, extra));
-function pass(game, seconds) { game.now += seconds * 1000; advanceLife(game.state, seconds, ctxAt(game.now)); game.state.t = game.now; }
-function finish(game) { let guard = 0; while (game.state.activeAction && guard++ < 10) pass(game, Math.ceil(game.state.activeAction.remaining) + 1); }
-function travel(game, venue) { const result = act(game, 'travel', { id: venue, mode: 'trek' }); assert.equal(result.ok, true, `travel to ${venue}: ${result.reason}`); finish(game); if (game.state.travel?.event) act(game, 'world.roadside', { choice: 'walk-on' }); assert.equal(game.state.location, venue); }
-function run(game, spot, wanted) {
+// The payload is deliberately `unknown`: several tests send hostile (malformed) input to prove the server-side validation.
+const act = <T extends ActionType>(game: Game, type: T, payload?: unknown, extra?: LifeContextInit): ActionResult<T> =>
+  dispatch(game.state, { type, payload } as unknown as ActionBody<T>, ctxAt(game.now, extra));
+function pass(game: Game, seconds: number) { game.now += seconds * 1000; advanceLife(game.state, seconds, ctxAt(game.now)); game.state.t = game.now; }
+function finish(game: Game) { let guard = 0; while (game.state.activeAction && guard++ < 10) pass(game, Math.ceil(game.state.activeAction.remaining) + 1); }
+function travel(game: Game, venue: string) { const result = act(game, 'travel', { id: venue, mode: 'trek' }); assert.equal(result.ok, true, `travel to ${venue}: ${why(result)}`); finish(game); if (game.state.travel?.event) act(game, 'world.roadside', { choice: 'walk-on' }); assert.equal(game.state.location, venue); }
+function run(game: Game, spot: string, wanted: (def: Activity) => boolean) {
   if (game.state.spot !== spot) assert.equal(act(game, 'spot', { id: spot }).ok, true);
-  const def = spotsOf(game.state.location).find((item) => item.id === spot).activities.find(wanted);
+  const def = need(spotsOf(game.state.location).find((item) => item.id === spot)).activities.find(wanted);
   assert.ok(def, `an activity at ${game.state.location}/${spot}`);
-  const started = act(game, 'activity', { id: def.id, ...(def.choices ? { choice: def.choices[0].id } : {}) });
-  assert.equal(started.ok, true, `${def.id}: ${started.reason}`);
+  const started = act(game, 'activity', { id: def.id, ...(def.choices ? { choice: need(def.choices[0]).id } : {}) });
+  assert.equal(started.ok, true, `${def.id}: ${why(started)}`);
   finish(game);
   return def;
 }
-const view = (game) => viewLife(game.state, ctxAt(game.now));
-const mission = (game, id) => [...view(game).missions.daily, ...view(game).missions.weekly].find((item) => item.id === id);
-const ledger = (game, prefix) => game.state.ledger.filter((line) => line.reason.startsWith(prefix));
+const view = (game: Game) => viewLife(game.state, ctxAt(game.now));
+const mission = (game: Game, id: string) => need([...view(game).missions.daily, ...view(game).missions.weekly].find((item) => item.id === id), id);
+const ledger = (game: Game, prefix: string) => game.state.ledger.filter((line) => line.reason.startsWith(prefix));
 
 test('missions: a set is one mission of each kind, the same for the same life and day, and only what can be done', () => {
   const { state } = life();
   const first = dealMissions(state, 'daily', TODAY, ctxAt(NOW)), again = dealMissions(state, 'daily', TODAY, ctxAt(NOW));
   assert.deepEqual(first, again);
-  assert.deepEqual(first.map((entry) => DAILY_MISSIONS.find((def) => def.id === entry.id).kind), MISSION_KINDS);
+  assert.deepEqual(first.map((entry) => need(DAILY_MISSIONS.find((def) => def.id === entry.id)).kind), MISSION_KINDS);
   assert.equal(dealMissions(state, 'weekly', WEEK, ctxAt(NOW)).length, MISSION_REWARDS.weekly.slots);
   // Across many days: a life without a job is never asked to finish a shift, and "show up at an event" is dealt only on a day with one.
   const ids = new Set();
@@ -83,7 +95,7 @@ test('missions: real play completes a mission exactly once, a claim pays once, a
   travel(game, 'home'); travel(game, 'park');
   assert.equal(mission(game, 'd-two-places').n, 1, 'arriving at the park again does not count twice, and home never counts');
   // Say hello to two regulars at the park.
-  for (const def of spotsOf('park').find((spot) => spot.id === 'people').activities.filter((item) => item.social?.action === 'hello').slice(0, 2)) {
+  for (const def of need(spotsOf('park').find((spot) => spot.id === 'people')).activities.filter((item) => item.social?.action === 'hello').slice(0, 2)) {
     assert.equal(act(game, 'spot', { id: 'people' }).ok || game.state.spot === 'people', true);
     assert.equal(act(game, 'activity', { id: def.id }).ok, true); finish(game);
   }
@@ -115,7 +127,7 @@ test('missions: an unclaimed mission lapses at midnight, weekly progress survive
   // One swap of an unfinished mission; a finished one cannot be swapped; a second swap is refused.
   assert.equal(act(game, 'missions.reroll', { id: 'd-meal' }).code, 'already_done');
   assert.equal(act(game, 'missions.reroll', { id: 'd-greet' }).code, 'rerolled');
-  const swapped = view(game).missions.daily[2];
+  const swapped = need(view(game).missions.daily[2]);
   assert.ok(swapped.id !== 'd-greet' && swapped.kind === 'social' && swapped.n === 0);
   assert.equal(act(game, 'missions.reroll', { id: 'd-two-places' }).code, 'no_rerolls');
   // Midnight: yesterday's finished-but-unclaimed mission is gone; nothing is paid for it.
@@ -158,7 +170,7 @@ test('missions: hostile saved input is rebuilt to a valid slice', () => {
     const state = createLife({ missions }, ctxAt(NOW));
     const book = state.missions;
     assert.ok(Number.isInteger(book.seed) && book.seed >= 0);
-    assert.ok(book.daily.length <= 3 && book.daily.every((entry) => DAILY_MISSIONS.some((def) => def.id === entry.id) && entry.n <= (DAILY_MISSIONS.find((def) => def.id === entry.id).count ?? 1)));
+    assert.ok(book.daily.length <= 3 && book.daily.every((entry) => DAILY_MISSIONS.some((def) => def.id === entry.id) && entry.n <= (DAILY_MISSIONS.find((def) => def.id === entry.id)?.count ?? 1)));
     assert.ok(book.weekly.every((entry) => WEEKLY_MISSIONS.some((def) => def.id === entry.id)));
     assert.equal(new Set(book.daily.map((entry) => entry.id)).size, book.daily.length);
     assert.ok(book.daily.every((entry) => !entry.claimed || entry.n >= 1), 'an unfinished mission is never stored as claimed');
@@ -171,27 +183,27 @@ test('missions: hostile saved input is rebuilt to a valid slice', () => {
 test('calendar: weekly events recur on Lagos time, also across midnight; dated events hold their days; a closed venue never hosts', () => {
   const friday = lagosDayStart(TODAY + 4); // Monday + 4
   assert.equal(lagosTime(friday).weekday, 5);
-  const club = (at) => eventsAt(at).some((event) => event.id === 'club-night');
+  const club = (at: number) => eventsAt(at).some((event) => event.id === 'club-night');
   assert.deepEqual([club(friday + 19.9 * HOUR), club(friday + 20 * HOUR), club(friday + 25.5 * HOUR), club(friday + 26 * HOUR)], [false, true, true, false], 'Friday 20:00 to Saturday 02:00');
   assert.equal(club(friday + 7 * DAY + 21 * HOUR), true, 'and again the next Friday');
   assert.equal(club(friday - DAY + 21 * HOUR), false, 'not on Thursday');
-  const live = eventsAt(friday + 25 * HOUR).find((event) => event.id === 'club-night');
+  const live = need(eventsAt(friday + 25 * HOUR).find((event) => event.id === 'club-night'));
   assert.deepEqual([live.start, live.end, live.key], [friday + 20 * HOUR, friday + 26 * HOUR, `club-night:${TODAY + 4}`]);
   // Dated: Felabration, 12–18 October 2026, 17:00–23:00 each day.
-  const first = dayOfDate('2026-10-12');
-  const fela = (at) => eventsAt(at).some((event) => event.id === 'felabration-2026');
+  const first = need(dayOfDate('2026-10-12'));
+  const fela = (at: number) => eventsAt(at).some((event) => event.id === 'felabration-2026');
   assert.deepEqual([fela(lagosDayStart(first) + 18 * HOUR), fela(lagosDayStart(first + 6) + 22 * HOUR), fela(lagosDayStart(first + 7) + 18 * HOUR), fela(lagosDayStart(first - 1) + 18 * HOUR), fela(lagosDayStart(first) + 12 * HOUR)],
     [true, true, false, false, false]);
   assert.deepEqual([dayOfDate('2026-02-30'), dayOfDate('nope'), dayOfDate(null)], [null, null, null]);
   // The week ahead is in order and every row names a real venue.
   const week = upcomingEvents(NOW, 7);
-  assert.ok(week.length >= 6 && week.every((event, index) => Object.hasOwn(VENUES, event.venue) && (index === 0 || week[index - 1].start <= event.start)));
+  assert.ok(week.length >= 6 && week.every((event, index) => Object.hasOwn(VENUES, event.venue) && (index === 0 || need(week[index - 1]).start <= event.start)));
   for (const event of EVENTS_CALENDAR) assert.ok(Object.hasOwn(VENUES, event.venue), `${event.id} is at a real venue`);
   // A venue that is closed for the whole event never hosts it; one that is open does.
   const shut = [{ id: 'late-vote', title: 'Late vote', blurb: 'x', venue: 'polling-unit', icon: 'star', when: { weekday: 1, from: 21, to: 23 } },
     { id: 'early-vote', title: 'Early vote', blurb: 'x', venue: 'polling-unit', icon: 'star', when: { weekday: 1, from: 9, to: 11 } }];
   assert.deepEqual(eventsBetween(NOW, NOW + DAY, 'lagos', shut).map((event) => event.id), ['early-vote']);
-  assert.deepEqual([occurrenceOn({ id: 'x', when: {} }, TODAY), occurrenceOn(null, TODAY), eventsBetween(NaN, 5), eventsBetween(5, 5)], [null, null, [], []]);
+  assert.deepEqual([occurrenceOn({ id: 'x', when: {} } as unknown as CalendarEvent, TODAY) /* hostile: an event with no schedule */, occurrenceOn(null, TODAY), eventsBetween(NaN, 5), eventsBetween(5, 5)], [null, null, [], []]);
   const ics = eventIcs(live, 'https://example.test/');
   assert.ok(ics.startsWith('BEGIN:VCALENDAR\r\n') && ics.includes('SUMMARY:Allworld: Friday club night') && ics.includes(`UID:club-night:${TODAY + 4}@allworld`) && /DTSTART:\d{8}T\d{6}Z/.test(ics));
 });
@@ -226,10 +238,10 @@ test('events: being there counts once per occurrence; spraying is a capped sink 
 
 test('growth: table results and referral gifts are server-only, pay inside their caps and never twice over them', () => {
   const game = life({ daily: ['d-meal', 'd-two-places', 'd-table'], weekly: ['w-meals', 'w-places', 'w-tables'] });
-  const server = (type, payload) => act(game, type, payload, { internal: true });
+  const server = <T extends ActionType>(type: T, payload?: unknown) => act(game, type, payload, { internal: true });
   const win = { game: 'whot', label: 'Whot', won: true, human: true, counted: true };
   // A player cannot run either action: only the server can.
-  for (const type of ['growth.table-result', 'growth.referral']) assert.equal(act(game, type, win).code, 'server_only');
+  for (const type of ['growth.table-result', 'growth.referral'] as const) assert.equal(act(game, type, win).code, 'server_only');
   assert.equal(ledger(game, 'Table win').length, 0);
   // Four paid wins a day; the fifth counts as played and pays nothing.
   for (let i = 0; i < TABLE_REWARDS.paidWinsPerDay; i++) assert.equal(server('growth.table-result', win).code, 'paid');

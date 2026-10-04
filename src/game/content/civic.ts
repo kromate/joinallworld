@@ -10,7 +10,9 @@
  */
 
 /** Weekly election cycle on Lagos time. Weekdays: 0 = Sunday … 6 = Saturday. Original beta rules. */
-export const ELECTION = {
+import type { AdColour, AdIcon, BillboardContent, District, ElectionRules, HuntContent, RadioContent, SeaPlotContent } from '../../types/content.ts'
+
+export const ELECTION: ElectionRules = {
   beta: true,
   nominationWeekdays: [1, 2, 3], // Monday–Wednesday: candidates declare
   votingWeekdays: [4, 5, 6], // Thursday–Saturday: one vote per player
@@ -36,7 +38,7 @@ export const STATE_HOUSE_TEXT = {
 };
 
 /** Fixed creative choices for billboards and sea plots: no uploads and no links in this wave. */
-export const AD_COLOURS = [
+export const AD_COLOURS: AdColour[] = [
   { id: 'green', label: 'Green', bg: '#256b45', ink: '#ffffff' },
   { id: 'gold', label: 'Gold', bg: '#e8a643', ink: '#20232c' },
   { id: 'red', label: 'Red', bg: '#b23a2e', ink: '#ffffff' },
@@ -47,7 +49,7 @@ export const AD_COLOURS = [
   { id: 'white', label: 'White', bg: '#ffffff', ink: '#20232c' },
 ];
 
-export const AD_ICONS = [
+export const AD_ICONS: AdIcon[] = [
   { id: 'star', icon: '⭐' }, { id: 'shop', icon: '🛍️' }, { id: 'food', icon: '🍲' }, { id: 'music', icon: '🎵' },
   { id: 'phone', icon: '📱' }, { id: 'car', icon: '🚗' }, { id: 'house', icon: '🏠' }, { id: 'heart', icon: '❤️' },
   { id: 'crown', icon: '👑' }, { id: 'fire', icon: '🔥' }, { id: 'ball', icon: '⚽' }, { id: 'book', icon: '📚' },
@@ -60,7 +62,7 @@ export const AD_TEXT = { min: 2, max: 40 };
  * Roadside billboard slots. `near` is a venue id so a map can anchor the board beside that
  * venue; `road` is the Lagos display name. Slots, price and period are original beta values.
  */
-export const BILLBOARDS = {
+export const BILLBOARDS: BillboardContent = {
   beta: true,
   price: 1500,
   days: 7,
@@ -86,7 +88,7 @@ export const BILLBOARDS = {
  * is nearest the shore. Observed in the reference game: plots "from ₦100 a plot" that float
  * "for 30 days". Grid size, the dearer shore rows and the per-player cap are original beta values.
  */
-export const SEA_PLOTS = {
+export const SEA_PLOTS: SeaPlotContent = {
   observed: ['price', 'days'],
   price: 100,
   days: 30,
@@ -102,7 +104,7 @@ export const SEA_PLOTS = {
  * next prize ₦3,000". The mechanic behind it was not observed; gems per day, where they hide,
  * how they are found and the once-a-day claim are original beta design.
  */
-export const HUNT = {
+export const HUNT: HuntContent = {
   observed: ['prize', 'label'],
   label: 'Daily gem hunt',
   prize: 3000,
@@ -110,7 +112,7 @@ export const HUNT = {
 };
 
 /** Club radio shout-outs: title and artist text only — no audio and no links. Original beta values. */
-export const RADIO = {
+export const RADIO: RadioContent = {
   beta: true,
   venues: ['quilox', 'library', 'shrine', 'rooftop'],
   price: 500,
@@ -124,19 +126,19 @@ export const RADIO = {
 };
 
 /** Home districts, keyed by house id (the home owner stores which one a player lives in). Names as observed. */
-export const DISTRICTS = [
+export const DISTRICTS: District[] = [
   { id: 'mushin', label: 'Mushin' },
   { id: 'yaba', label: 'Yaba' },
   { id: 'lekki', label: 'Lekki Phase 1' },
   { id: 'ikoyi', label: 'Ikoyi' },
   { id: 'banana', label: 'Banana Island' },
 ];
-export const UNKNOWN_DISTRICT = { id: 'unknown', label: 'District not set yet' };
-/** A resident who lives in their own house on a plot (the house everyone is given: systems/estate.js) rents in no district. Original beta label. */
-export const OWN_DISTRICT = { id: 'own', label: 'In their own house' };
+export const UNKNOWN_DISTRICT: District = { id: 'unknown', label: 'District not set yet' };
+/** A resident who lives in their own house on a plot (the house everyone is given: systems/estate.ts) rents in no district. Original beta label. */
+export const OWN_DISTRICT: District = { id: 'own', label: 'In their own house' };
 
 /** What the people of each city are called in counters; other cities fall back to "<City> residents". */
-export const DEMONYMS = { lagos: 'Lagosians' };
+export const DEMONYMS: Record<string, string> = { lagos: 'Lagosians' };
 
 export const NEIGHBOURS = { beta: true, perDistrict: 60, total: 200 };
 export const RICH_LIST = { beta: true, size: 20 };

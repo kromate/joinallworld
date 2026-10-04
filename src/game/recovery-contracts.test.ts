@@ -3,26 +3,40 @@ import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife } from '../life.ts';
 import { registerSystem } from './registry.ts';
 import { rebuildCatalogue } from './systems/activities.ts';
+import type { ActionBody } from '../types/actions.ts';
+import type { ActivityAction, LifeContextInit, LifeState } from '../types/life.ts';
+import type { AttachedActivity, SavedInput, SystemDefinition } from '../types/registry.ts';
 
-const ctx = { now: 100000, cityId: 'lagos' };
-const trusted = { ...ctx, trustedSave: true };
-const paid = { id: 'recovery-paid', label: 'Recovery paid', duration: 10, cost: 100,
+const ctx: LifeContextInit = { now: 100000, cityId: 'lagos' };
+const trusted: LifeContextInit = { ...ctx, trustedSave: true };
+const paid: AttachedActivity = { id: 'recovery-paid', label: 'Recovery paid', duration: 10, cost: 100,
   chargeOn: 'start', where: { venue: 'park', spot: 'drinks' } };
-const gradual = { id: 'recovery-gradual', label: 'Recovery gradual', duration: 10, cost: 100,
+const gradual: AttachedActivity = { id: 'recovery-gradual', label: 'Recovery gradual', duration: 10, cost: 100,
   chargeOn: 'start', refundOnCancel: false, effectsPerSecond: { energy: 1 },
   where: { venue: 'park', spot: 'drinks' } };
+/** A life as the test-only probe system writes to it: keys the engine does not know. */
+type ProbeLife = LifeState & { recoveryProbe?: object; undeclaredRecoveryValue?: number };
+/** The probe system's sanitizer, kept loose: its id, state keys and action type exist only in this test. */
+type ProbeSanitize = (input: SavedInput, state: ProbeLife) => void;
+/** The probe system is deliberately outside the typed maps (its id, state keys and action exist only here), so the definition crosses the registry boundary through one cast. */
 const owner = registerSystem({ id: 'recovery-probe', stateKeys: ['recoveryProbe'],
-  sanitize(input, state) { state.recoveryProbe = {}; },
+  sanitize(input: SavedInput, state: ProbeLife) { state.recoveryProbe = {}; },
   actions: {
-    'recovery-undeclared'(state) { state.undeclaredRecoveryValue = 42; return { ok: true, state }; },
+    'recovery-undeclared'(state: ProbeLife) { state.undeclaredRecoveryValue = 42; return { ok: true, state }; },
   },
-  modifiers: { 'activity.cost': (cost, state, { def }) => def.id === paid.id ? cost * 2 : cost },
+  modifiers: { 'activity.cost': (cost: number, state: LifeState, { def }: { def: { id: string } }) => def.id === paid.id ? cost * 2 : cost },
   activities: [paid, gradual],
-});
+} as unknown as SystemDefinition);
 rebuildCatalogue();
-const fresh = () => createLife({ spot: 'drinks' }, ctx);
-const start = (state, id) => dispatch(state, { type: 'activity', id }, ctx);
-const copy = (state) => JSON.parse(JSON.stringify(state));
+const fresh = (): LifeState => createLife({ spot: 'drinks' }, ctx);
+const start = (state: LifeState, id: string) => dispatch(state, { type: 'activity', id }, ctx);
+const copy = (state: unknown) => JSON.parse(JSON.stringify(state));
+/** The running timed action, narrowed to an activity (the only kind that carries `paid`). */
+const activityOf = (state: LifeState): ActivityAction => {
+  const active = state.activeAction;
+  assert.ok(active && active.kind === 'activity', 'an activity is running');
+  return active;
+};
 
 // DESIGN CONFLICT (kept visible, not run). The navigation lane forbids a priced activity with per-second
 // gains unless it is charged at the start and never refunded: such a definition makes rebuildCatalogue throw.
@@ -60,11 +74,12 @@ test('a nonrefundable start charge keeps its per-second gains and its price when
 
 test('undeclared runtime and sanitizer writes fail before disappearing on hydration', () => {
   const state = fresh();
-  assert.throws(() => dispatch(state, { type: 'recovery-undeclared' }, ctx), /Undeclared state key/);
+  assert.throws(() => dispatch(state, { type: 'recovery-undeclared' } as unknown as ActionBody, ctx), /Undeclared state key/);
   assert.equal(Object.hasOwn(state, 'undeclaredRecoveryValue'), false);
   const original = owner.sanitize;
   try {
-    owner.sanitize = (input, output) => { output.undeclaredRecoveryValue = 1; };
+    const leaking: ProbeSanitize = (input, output) => { output.undeclaredRecoveryValue = 1; };
+    owner.sanitize = leaking as SystemDefinition['sanitize']; // the probe writes a key nobody declared
     assert.throws(fresh, /Undeclared state key/);
   } finally { owner.sanitize = original; }
   assert.deepEqual(createLife(state, ctx), state);
@@ -74,18 +89,18 @@ test('trusted invalidation refunds actual modified payment exactly once after de
   const state = fresh();
   assert.equal(start(state, paid.id).ok, true);
   assert.equal(state.cash, 4800);
-  assert.equal(state.activeAction.paid, 200);
+  assert.equal(activityOf(state).paid, 200);
   try {
     paid.cost = 1;
     const stillValid = createLife(copy(state), trusted);
-    assert.equal(stillValid.activeAction.paid, 200);
+    assert.equal(activityOf(stillValid).paid, 200);
     dispatch(stillValid, { type: 'cancel' }, ctx);
     assert.equal(stillValid.cash, 5000);
     paid.duration = 20;
     const refunded = createLife(copy(state), trusted);
     assert.equal(refunded.activeAction, null);
     assert.equal(refunded.cash, 5000);
-    assert.equal(refunded.ledger.at(-1).amount, 200);
+    assert.equal(refunded.ledger.at(-1)?.amount, 200);
     assert.deepEqual(createLife(copy(refunded), trusted), refunded);
     assert.equal(createLife(copy(state), ctx).cash, 4800, 'untrusted hydrate cannot mint a refund');
   } finally { paid.cost = 100; paid.duration = 10; rebuildCatalogue(); }

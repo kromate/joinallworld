@@ -192,7 +192,7 @@ export interface EngineEventMap {
 
   // -- events --
   /** An activity finished at a venue while a calendar event was on there; once per occurrence. */
-  'event.attended': { id: string; venue: VenueId }
+  'event.attended': { id: string; venue: string }
   'event.sprayed': { id: string; amount: number }
 
   // -- growth --
@@ -345,7 +345,7 @@ export interface ActiveKindHandler<A extends ActiveAction = ActiveAction> {
   /** The action ran to its end. `state.activeAction` is already null. */
   complete(state: LifeState, active: A, ctx: LifeContext): void
   /** The player cancels. Return a failure to refuse the cancel; anything falsy lets it go through. */
-  cancel?(state: LifeState, active: A, ctx: LifeContext): ActionFailure | null | undefined | void
+  cancel?(state: LifeState, active: A, ctx: LifeContext): ActionFailure<'not_cancellable' | 'no_cancel'> | null | undefined | void
 }
 
 // ---- the system definition ----------------------------------------------------------------

@@ -5,14 +5,14 @@
  * State keys
  *   homeOwned  legacy boolean carried from existing saves (kept loading, otherwise unused)
  *   property   { house, cars, car }
- *     house  id from content/housing.js — where the player lives. Other systems read
+ *     house  id from content/housing.ts — where the player lives. Other systems read
  *            `state.property.house`; the weekly rent is HOUSES[state.property.house].rent
- *     cars   ids from content/cars.js the player owns (each at most once)
+ *     cars   ids from content/cars.ts the player owns (each at most once)
  *     car    the owned car currently driven, or null
  *
  * Actions (every refusal carries a code and a reason)
  *   'property.house-move' { id }   pay the landlord and agent (the house's moveIn, 3 × weekly rent) and
- *                         move. Furniture moves with you — systems/home.js re-fits it.
+ *                         move. Furniture moves with you — systems/home.ts re-fits it.
  *   'property.car-buy'    { id }   buy a car at modify('shop.price', price, { item, kind: 'car' })
  *   'property.car-use'    { id }   choose which owned car to drive
  *   'property.car-sell'   { id }   sell an owned car back for CAR_RESALE_RATE of its list price
@@ -21,7 +21,7 @@
  * Listens 'life.started' { house }             sets the starting house at the end of onboarding (free)
  *
  * Modifiers implemented here (the travel system calls them; without an owned car they change nothing)
- *   'travel.modes'     base: the list of offered mode ids (what systems/travel.js passes — 'car' is
+ *   'travel.modes'     base: the list of offered mode ids (what systems/travel.ts passes — 'car' is
  *                      appended), or a list / map of mode objects.
  *                      Adds { id: 'car', label, icon, fare: <fuel>, fuelOnly: true, car: <car id> }.
  *   'travel.fare'      data { mode, destination } — for mode 'car' the fare is the car's fuel cost
@@ -30,20 +30,25 @@
  * Moving house is a landlord-and-agent fee, not a shop purchase, so it is not discounted.
  */
 import { emit, modify } from '../registry.ts';
-import { busy, fail, isRecord, naira, ok } from '../util.ts';
+import { busy, fail, finite, isRecord, naira, ok } from '../util.ts';
 import { canAfford, canCredit, credit, debit } from '../api.ts';
 import { HOUSES, HOUSE_ORDER, DEFAULT_HOUSE } from '../content/housing.ts';
 import { CARS, CAR_ORDER, CAR_MODE, CAR_RESALE_RATE } from '../content/cars.ts';
+import type { CarDefinition, HouseDefinition } from '../../types/content.ts';
+import type { CarId, HouseId, LifeContext, LifeState, TravelModeId } from '../../types/life.ts';
+import type { SystemDefinition } from '../../types/registry.ts';
+import type { PropertyView } from '../../types/view.ts';
 
-const houseOf = (id) => (typeof id === 'string' && Object.hasOwn(HOUSES, id) ? HOUSES[id] : null);
-const carOf = (id) => (typeof id === 'string' && Object.hasOwn(CARS, id) ? CARS[id] : null);
-const drivenCar = (state) => carOf(state.property?.car);
-const whole = (value, fallback) => (Number.isFinite(value) ? Math.max(0, Math.round(value)) : fallback);
-const carPrice = (state, car, ctx) => whole(modify(state, 'shop.price', car.price, { item: car, kind: 'car' }, ctx), car.price);
-const resale = (car) => Math.floor(car.price * CAR_RESALE_RATE);
-const shortBy = (state, cost) => `It costs ${naira(cost)}; you have ${naira(state.cash)} (${naira(cost - state.cash)} short).`;
+const houseOf = (id: unknown): HouseDefinition | null => (typeof id === 'string' && Object.hasOwn(HOUSES, id) ? HOUSES[id as HouseId] : null); // hasOwn proved the key
+const carOf = (id: unknown): CarDefinition | null => (typeof id === 'string' && Object.hasOwn(CARS, id) ? CARS[id as CarId] : null); // hasOwn proved the key
+const isCarId = (id: unknown): id is CarId => carOf(id) !== null;
+const drivenCar = (state: LifeState): CarDefinition | null => carOf(state.property?.car);
+const whole = (value: unknown, fallback: number): number => (finite(value) ? Math.max(0, Math.round(value)) : fallback);
+const carPrice = (state: LifeState, car: CarDefinition, ctx: LifeContext): number => whole(modify(state, 'shop.price', car.price, { item: car, kind: 'car' }, ctx), car.price);
+const resale = (car: CarDefinition): number => Math.floor(car.price * CAR_RESALE_RATE);
+const shortBy = (state: LifeState, cost: number): string => `It costs ${naira(cost)}; you have ${naira(state.cash)} (${naira(cost - state.cash)} short).`;
 
-function moveHouse(state, payload, ctx) {
+function moveHouse(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = busy(state, 'Finish or cancel your current action before moving house.');
   if (blocked) return blocked;
   const house = houseOf(payload?.id);
@@ -58,7 +63,7 @@ function moveHouse(state, payload, ctx) {
   return ok(state, 'moved');
 }
 
-function buyCar(state, payload, ctx) {
+function buyCar(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = busy(state, 'Finish or cancel your current action before buying a car.');
   if (blocked) return blocked;
   const car = carOf(payload?.id);
@@ -74,7 +79,7 @@ function buyCar(state, payload, ctx) {
   return ok(state, 'bought');
 }
 
-function useCar(state, payload) {
+function useCar(state: LifeState, payload: Record<string, unknown>) {
   const blocked = busy(state, 'Finish or cancel your current action before switching cars.');
   if (blocked) return blocked;
   const car = carOf(payload?.id);
@@ -84,7 +89,7 @@ function useCar(state, payload) {
   return ok(state, 'selected');
 }
 
-function sellCar(state, payload, ctx) {
+function sellCar(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = busy(state, 'Finish or cancel your current action before selling a car.');
   if (blocked) return blocked;
   const car = carOf(payload?.id);
@@ -99,7 +104,7 @@ function sellCar(state, payload, ctx) {
   return ok(state, 'sold');
 }
 
-function carMode(car) {
+function carMode(car: CarDefinition) {
   return { ...CAR_MODE, label: `Drive · ${car.label}`, icon: car.icon, fare: car.fuel, fuelOnly: true, car: car.id };
 }
 
@@ -109,11 +114,12 @@ export default {
   sanitize(input, state) {
     state.homeOwned = input.homeOwned === true;
     const saved = isRecord(input.property) ? input.property : {};
-    const cars = [...new Set((Array.isArray(saved.cars) ? saved.cars : []).filter((id) => carOf(id)))];
+    const listed: unknown[] = Array.isArray(saved.cars) ? saved.cars : [];
+    const cars = [...new Set(listed.filter(isCarId))];
     state.property = {
       house: houseOf(saved.house)?.id ?? DEFAULT_HOUSE,
       cars,
-      car: cars.includes(saved.car) ? saved.car : cars.at(-1) ?? null,
+      car: isCarId(saved.car) && cars.includes(saved.car) ? saved.car : cars.at(-1) ?? null,
     };
   },
   actions: { 'property.house-move': moveHouse, 'property.car-buy': buyCar, 'property.car-use': useCar, 'property.car-sell': sellCar },
@@ -121,10 +127,11 @@ export default {
     /** End of onboarding: live in the chosen house. Free — the move-in fee is for later moves. */
     'life.started'(state, data) {
       // The house arrives as an id string; an object carrying `id` is accepted too.
-      const house = houseOf(typeof data?.house === 'string' ? data.house : data?.house?.id);
+      const given: unknown = data?.house; // the event types a StartHomeId; an object carrying `id` is accepted too
+      const house = houseOf(typeof given === 'string' ? given : isRecord(given) ? given.id : undefined);
       if (house) state.property.house = house.id;
     },
-    /** Arriving in another city (systems/estate.js): the rented home there becomes the current one. */
+    /** Arriving in another city (systems/estate.ts): the rented home there becomes the current one. */
     'house.moved'(state, data) {
       const house = data?.from === 'away' ? houseOf(data.house) : null;
       if (house) state.property.house = house.id;
@@ -135,9 +142,11 @@ export default {
       const car = drivenCar(state);
       if (!car) return value;
       // The travel system asks with a list of mode ids; adding 'car' offers the own-car mode.
-      if (Array.isArray(value) && value.every((mode) => typeof mode === 'string')) return [...value.filter((mode) => mode !== CAR_MODE.id), CAR_MODE.id];
-      if (Array.isArray(value)) return [...value.filter((mode) => mode?.id !== CAR_MODE.id), carMode(car)];
-      if (isRecord(value)) return { ...value, [CAR_MODE.id]: carMode(car) };
+      if (Array.isArray(value) && value.every((mode: unknown) => typeof mode === 'string')) return [...value.filter((mode) => mode !== CAR_MODE.id), CAR_MODE.id];
+      // Dead branches (the travel system never passes mode objects; see ModifierMap 'travel.modes'): kept as they were.
+      const offered: unknown = value;
+      if (Array.isArray(offered)) return [...offered.filter((mode: unknown) => !isRecord(mode) || mode.id !== CAR_MODE.id), carMode(car)] as unknown as TravelModeId[]; // not a list of ids
+      if (isRecord(offered)) return { ...offered, [CAR_MODE.id]: carMode(car) } as unknown as TravelModeId[]; // not a list of ids
       return value;
     },
     'travel.fare'(value, state, data) {
@@ -150,7 +159,7 @@ export default {
     },
   },
   advance() {},
-  view(state, ctx) {
+  view(state, ctx): PropertyView {
     const current = HOUSES[state.property.house];
     const index = HOUSE_ORDER.indexOf(current.id);
     return {
@@ -171,4 +180,4 @@ export default {
       }),
     };
   },
-};
+} satisfies SystemDefinition<'property'>;

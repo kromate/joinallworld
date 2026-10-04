@@ -2,7 +2,7 @@
  * OWNER: world
  * Venue catalogue: venue → district, opening hours, map position, spots → activities, scene.
  *
- * Shape (see systems/activities.js for the full activity definition format):
+ * Shape (see systems/activities.ts for the full activity definition format):
  *   VENUES[id] = {
  *     id, label, district, icon, description,
  *     category,                                // key of VENUE_CATEGORIES (map filter bar)
@@ -20,20 +20,24 @@
  * CITY_LABELS overrides display names per city; ids and rules are shared between cities.
  *
  * Extra activity fields understood by the world systems (any owner may use them):
- *   cooldown         seconds before the same activity can be started again (systems/travel.js)
- *   requiresMoodlet  id of a feeling the player must currently have; requiresReason is the text shown otherwise (systems/travel.js)
- *   clears           [moodletId, ...] removed on completion (systems/travel.js)
- *   requiresIllness  true = only while sick (systems/health.js)
- *   tags 'cure' / 'checkup' / 'immunity' are acted on by systems/health.js
+ *   cooldown         seconds before the same activity can be started again (systems/travel.ts)
+ *   requiresMoodlet  id of a feeling the player must currently have; requiresReason is the text shown otherwise (systems/travel.ts)
+ *   clears           [moodletId, ...] removed on completion (systems/travel.ts)
+ *   requiresIllness  true = only while sick (systems/health.ts)
+ *   tags 'cure' / 'checkup' / 'immunity' are acted on by systems/health.ts
  *
  * Provenance: `beta: true` marks an entry whose numbers are original beta values. Where a
  * `note` says so, the name, duration or price was observed in the reference game and only the
  * effect amounts are original. Entries without `beta` follow what was observed. Opening hours
  * are original beta values except where a comment says otherwise. Earning activities are
  * bounded three ways, so none of them can be repeated without limit: a cooldown, a need cost,
- * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.js).
+ * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.ts).
  */
 import { AIRPORT, REFINERY } from './venues-transport.ts';
+import type { HouseId, VenueId, WorldCityId } from '../../types/life.ts';
+import type {
+  CityMapNames, CityVenueLabel, ComingSoonDefinition, HomeMapSpot, SceneKind, VenueCategory, VenueCategoryId, VenueDefinition,
+} from '../../types/content.ts';
 
 /**
  * Paid gigs a player may finish per Lagos day, over all venues together (original beta value).
@@ -49,11 +53,11 @@ export const GIG_DAILY_LIMIT = 8;
 const seenCard = 'Duration and price as observed in the reference game; effect amounts are original beta values.';
 const seenName = 'Name seen in the reference game; duration, price and effects are original beta values.';
 
-export const SCENE_KINDS = Object.freeze(['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
+export const SCENE_KINDS: readonly SceneKind[] = Object.freeze(['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
   'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'home']);
 
 /** Map filter bar. */
-export const VENUE_CATEGORIES = {
+export const VENUE_CATEGORIES: Record<VenueCategoryId, VenueCategory> = {
   food: { id: 'food', label: 'Food' },
   fun: { id: 'fun', label: 'Fun & culture' },
   nightlife: { id: 'nightlife', label: 'Nightlife' },
@@ -62,7 +66,7 @@ export const VENUE_CATEGORIES = {
   civic: { id: 'civic', label: 'Civic' },
 };
 
-export const VENUES = {
+export const VENUES: Record<VenueId, VenueDefinition> = {
   park: {
     id: 'park', label: 'Freedom Park', district: 'Lagos Island', icon: '🌳', category: 'fun',
     description: 'A place to relax, enjoy art and meet your city.',
@@ -134,7 +138,7 @@ export const VENUES = {
     spots: {
       kitchen: { id: 'kitchen', label: 'Kitchen', icon: '🥣', activities: [
         // The free fallback behind the cooler's Soak Garri & Sugar: listed only when that cannot be made
-        // (systems/home.js), so nobody is ever stuck hungry with an empty kitchen. The id is kept for old saves.
+        // (systems/home.ts), so nobody is ever stuck hungry with an empty kitchen. The id is kept for old saves.
         { id: 'garri', label: 'Eat Dry Garri', icon: '🥣', duration: 5, cost: 0, effects: { hunger: 20 }, tags: ['food'], beta: true,
           note: 'Original beta fallback: free, no ingredients, +20 hunger. Duration as observed for soaking garri in the reference game.' },
       ] },
@@ -279,13 +283,13 @@ export const VENUES = {
           effects: { energy: -12, fun: -4 }, xp: { coding: 20, hustle: 10 }, cooldown: 600, tags: ['gig'], beta: true, note: seenName },
         { id: 'hub-hack-atm', label: 'Hack an ATM', icon: '🏧', duration: 12, requiresSkill: { id: 'coding', level: 6 }, minimumNeeds: { energy: 20 },
           effects: { energy: -8 }, xp: { coding: 20 }, cooldown: 1200, tags: ['risky'], beta: true,
-          note: 'Name seen in the reference game. The gamble (see ACTIVITY_OUTCOMES in content/events.js) is an original beta rule.' },
+          note: 'Name seen in the reference game. The gamble (see ACTIVITY_OUTCOMES in content/events.ts) is an original beta rule.' },
       ] },
       stage: { id: 'stage', label: 'Pitch stage', icon: '📈', caption: 'Three minutes, one slide deck', activities: [
         { id: 'hub-meetup', label: 'Attend Tech Meetup', icon: '🤝', duration: 11, cost: 0, effects: { social: 12 }, xp: { coding: 12, charisma: 6 }, tags: ['social', 'training'], beta: true, note: seenName },
         { id: 'hub-pitch', label: 'Pitch Your Startup', icon: '📈', duration: 14, cost: 1000, requiresSkill: { id: 'coding', level: 4 }, minimumNeeds: { energy: 20 },
           effects: { energy: -8 }, xp: { charisma: 20, hustle: 20 }, cooldown: 900, tags: ['pitch', 'startup'], beta: true,
-          note: 'Name seen in the reference game. The outcome roll (see ACTIVITY_OUTCOMES in content/events.js) is an original beta rule.' },
+          note: 'Name seen in the reference game. The outcome roll (see ACTIVITY_OUTCOMES in content/events.ts) is an original beta rule.' },
         { id: 'hub-hackathon', label: 'Weekend Hackathon', icon: '🏁', duration: 20, requiresSkill: { id: 'coding', level: 3 }, reward: 2500, minimumNeeds: { energy: 35 },
           hours: { open: 8, close: 22, days: [0, 6] }, effects: { energy: -20, hunger: -8 }, xp: { coding: 60 }, cooldown: 3600, tags: ['performance'], beta: true, note: seenName },
       ] },
@@ -701,7 +705,7 @@ export const VENUES = {
       ] },
     },
   },
-  // The airport at Ikeja and the refinery in the Lekki Free Zone: src/game/content/venues-transport.js.
+  // The airport at Ikeja and the refinery in the Lekki Free Zone: src/game/content/venues-transport.ts.
   airport: AIRPORT,
   refinery: REFINERY,
 };
@@ -711,15 +715,15 @@ export const VENUES = {
  * No place in Lagos is waiting now — the airport and the refinery are venues — but the mechanism
  * stays for the next one: the travel rules refuse it ('coming_soon') and both maps mark it.
  */
-export const COMING_SOON = {};
+export const COMING_SOON: Record<string, ComingSoonDefinition> = {};
 
 /**
- * Where the Home pin sits for each house (ids from content/housing.js). The travel system
+ * Where the Home pin sits for each house (ids from content/housing.ts). The travel system
  * learns the house from the 'life.started' { house } and 'house.moved' { id } events; until
  * then it uses DEFAULT_HOME. Positions are original beta values.
  */
-export const DEFAULT_HOME = 'yaba';
-export const HOME_SPOTS = {
+export const DEFAULT_HOME: HouseId = 'yaba';
+export const HOME_SPOTS: Record<HouseId, HomeMapSpot> = {
   mushin: { district: 'Mushin', zone: 'mainland', map: { x: 27, y: 33 } },
   yaba: { district: 'Yaba', zone: 'mainland', map: { x: 53, y: 29 } },
   lekki: { district: 'Lekki Phase 1', zone: 'east', map: { x: 94, y: 92 } },
@@ -728,13 +732,13 @@ export const HOME_SPOTS = {
 };
 
 /** Map backdrop labels per city. Ibadan reuses the Lagos layout with its own names. */
-export const CITY_MAPS = {
+export const CITY_MAPS: Partial<Record<WorldCityId, CityMapNames>> = {
   lagos: { north: 'MAINLAND', south: 'ISLAND', east: 'LEKKI', water: 'LAGOS LAGOON', sea: 'ATLANTIC OCEAN', bridges: ['Third Mainland Bridge', 'Carter Bridge', 'Link Bridge'] },
   ibadan: { north: 'BODIJA SIDE', south: 'DUGBE SIDE', east: 'AKOBO', water: 'OGUNPA RIVER', sea: 'ELEYELE LAKE', bridges: ['Mokola Flyover', 'Ogunpa Bridge', 'Iwo Road Bridge'] },
 };
 
 /** Per-city display overrides. Rules, ids and activities are shared. */
-export const CITY_LABELS = {
+export const CITY_LABELS: Partial<Record<WorldCityId, Partial<Record<VenueId, CityVenueLabel>>>> = {
   ibadan: {
     park: { label: 'Agodi Gardens', district: 'Agodi' },
     library: { label: 'City Reading Room', district: 'Bodija' },
@@ -763,5 +767,8 @@ export const CITY_LABELS = {
   },
 };
 
-export const venueLabel = (venueId, cityId) => CITY_LABELS[cityId]?.[venueId]?.label ?? VENUES[venueId]?.label ?? COMING_SOON[venueId]?.label ?? venueId;
-export const venueDistrict = (venueId, cityId) => CITY_LABELS[cityId]?.[venueId]?.district ?? VENUES[venueId]?.district ?? COMING_SOON[venueId]?.district ?? '';
+// The same tables read by an arbitrary (possibly unknown) id, as the callers do.
+const cityLabelsById: Record<string, Record<string, CityVenueLabel | undefined> | undefined> = CITY_LABELS;
+const venuesById: Record<string, VenueDefinition | undefined> = VENUES;
+export const venueLabel = (venueId: string, cityId: string): string => cityLabelsById[cityId]?.[venueId]?.label ?? venuesById[venueId]?.label ?? COMING_SOON[venueId]?.label ?? venueId;
+export const venueDistrict = (venueId: string, cityId: string): string => cityLabelsById[cityId]?.[venueId]?.district ?? venuesById[venueId]?.district ?? COMING_SOON[venueId]?.district ?? '';

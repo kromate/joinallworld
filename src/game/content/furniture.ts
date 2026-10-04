@@ -18,7 +18,12 @@
  * catalogue was never opened. The nine category tabs follow the reference (the ninth was cut
  * off on screen and is assumed to be Pets).
  */
-export const CATEGORIES = [
+import type { FurnitureId } from '../../types/life.ts'
+import type {
+  FurnitureCategory, FurnitureDefinition, FurnitureKind, FurnitureKindInfo, HomeActivityDefinition, HomeSpotMeta, StarterFurnitureEntry,
+} from '../../types/content.ts'
+
+export const CATEGORIES: FurnitureCategory[] = [
   { id: 'sleep', label: 'Sleep', icon: '🛏️' },
   { id: 'kitchen', label: 'Kitchen', icon: '🍳' },
   { id: 'bath', label: 'Bath', icon: '🪣' },
@@ -31,17 +36,17 @@ export const CATEGORIES = [
 ];
 
 /** Positive effects and XP are multiplied by this, by star rating (original beta values). */
-export const STAR_MULTIPLIER = [0.8, 1, 1.25, 1.5, 1.8];
+export const STAR_MULTIPLIER: number[] = [0.8, 1, 1.25, 1.5, 1.8];
 
 /** Share of the list price returned when furniture is sold (original beta value). */
 export const SELL_REFUND_RATE = 0.5;
 
 /** Objects of these kinds work 20% better while a generator or inverter is in the room (original beta rule). */
-export const POWERED_KINDS = ['tv', 'console', 'desk', 'keys'];
+export const POWERED_KINDS: FurnitureKind[] = ['tv', 'console', 'desk', 'keys'];
 export const POWER_BONUS = 1.2;
 
 /** kind → the home spot its actions appear at, and how to name it in a "you need one" message. */
-export const KINDS = {
+export const KINDS: Record<FurnitureKind, FurnitureKindInfo> = {
   bed: { spot: 'bedroom', needs: 'a bed' },
   cooler: { spot: 'kitchen', needs: 'a cooler box or fridge' },
   stove: { spot: 'kitchen', needs: 'a stove or cooker' },
@@ -68,14 +73,14 @@ export const KINDS = {
 };
 
 /** Home spots this owner adds beside the ported kitchen, bathroom and bedroom. */
-export const HOME_SPOTS = {
+export const HOME_SPOTS: Record<'living' | 'study', HomeSpotMeta> = {
   living: { label: 'Sitting area', icon: '🛋️' },
   study: { label: 'Skills corner', icon: '📚' },
 };
 
 const B = true; // beta: original value
 
-export const FURNITURE = {
+export const FURNITURE: Record<FurnitureId, FurnitureDefinition> = {
   // ---- Sleep ----
   'sleeping-mat': { id: 'sleeping-mat', label: 'Raffia Sleeping Mat', category: 'sleep', kind: 'bed', w: 1, h: 2, stars: 0, price: 1500, icon: '🧺', shape: 'mat', color: '#c9a45c', blurb: 'Roll it out, roll it up. Your back keeps the receipts.', beta: B },
   'spring-bed': { id: 'spring-bed', label: 'Spring Bed', category: 'sleep', kind: 'bed', w: 1, h: 2, stars: 1, price: 6000, icon: '🛏️', shape: 'bed', color: '#8fa7c4', blurb: 'A real frame and a mattress with opinions.', beta: B },
@@ -150,7 +155,7 @@ export const FURNITURE = {
  * exact arrangement is original. Wall items give a wall slot as `x` (rot 0 = back wall) or
  * `y` (rot 1 = side wall).
  */
-export const STARTER_FURNITURE = [
+export const STARTER_FURNITURE: StarterFurnitureEntry[] = [
   { item: 'spring-bed', x: 0, y: 0, rot: 0 },
   { item: 'radio-stool', x: 1, y: 0, rot: 0 },
   { item: 'kerosene-stove', x: 3, y: 0, rot: 0 },
@@ -167,12 +172,12 @@ export const STARTER_FURNITURE = [
 ];
 
 /**
- * Actions furniture offers, run by the shared activity engine (see systems/activities.js for
+ * Actions furniture offers, run by the shared activity engine (see systems/activities.ts for
  * the definition format). `needs` is the furniture kind that must be placed in the room. The
  * engine-wide activity id is `home-<id>`.
  * All amounts are original beta values unless the note says otherwise.
  */
-export const HOME_ACTIVITIES = [
+export const HOME_ACTIVITIES: HomeActivityDefinition[] = [
   { id: 'sleep', label: 'Sleep', icon: '😴', needs: 'bed', duration: 36, effectsPerSecond: { energy: 2.5 }, tags: ['sleep'],
     note: 'Duration as observed in the reference game; energy rises gradually and waking early keeps what was gained. The rate is an original beta value.' },
   { id: 'stay-in-bed', label: 'Stay in Bed', icon: '🛌', needs: 'bed', duration: 36, effectsPerSecond: { energy: 1.2, fun: 0.6 }, tags: ['sleep'],
@@ -198,4 +203,4 @@ export const HOME_ACTIVITIES = [
  * Activities defined elsewhere (the ported home spots) that a placed object improves:
  * activity id → furniture kind whose star rating scales it.
  */
-export const PORTED_ACTIVITY_KIND = { nap: 'bed', bath: 'bath' };
+export const PORTED_ACTIVITY_KIND = { nap: 'bed', bath: 'bath' } satisfies Record<string, FurnitureKind>;

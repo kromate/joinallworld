@@ -21,7 +21,9 @@
  *   A daily mission pays ₦250 and a weekly one ₦1,000, once, when claimed: at most ₦750 a Lagos
  *   day and ₦3,000 a Lagos week. Completing all three of a set adds stars, which are not money.
  */
-export const MISSION_REWARDS = Object.freeze({
+import type { DayTitle, MissionDefinition, MissionKind, MissionRewards, StampCard } from '../../types/content.ts'
+
+export const MISSION_REWARDS: Readonly<MissionRewards> = Object.freeze({
   daily: { cash: 250, setStars: 2, slots: 3 },
   weekly: { cash: 1000, setStars: 5, slots: 3 },
   /** Free swaps of one unfinished daily mission per Lagos day. */
@@ -29,18 +31,18 @@ export const MISSION_REWARDS = Object.freeze({
 });
 
 /** The weekly card: one stamp per Lagos day with any counted activity. `need` stamps pay `stars` once a week. */
-export const STAMP_CARD = Object.freeze({ need: 4, stars: 3 });
+export const STAMP_CARD: Readonly<StampCard> = Object.freeze({ need: 4, stars: 3 });
 
 /** Titles for days lived actively in the city. The count only ever goes up. */
-export const DAY_TITLES = Object.freeze([
+export const DAY_TITLES: readonly DayTitle[] = Object.freeze([
   { id: 'settled', days: 7, label: 'Settled in' },
   { id: 'lagosian', days: 30, label: 'True Lagosian' },
   { id: 'city-elder', days: 100, label: 'City elder' },
 ]);
 /** Earned by finishing a whole weekly set; kept for good. */
-export const WEEK_TITLE = Object.freeze({ id: 'week-finisher', label: 'Week finisher' });
+export const WEEK_TITLE: Readonly<Omit<DayTitle, 'days'>> = Object.freeze({ id: 'week-finisher', label: 'Week finisher' });
 
-export const DAILY_MISSIONS = Object.freeze([
+export const DAILY_MISSIONS: readonly MissionDefinition[] = Object.freeze([
   { id: 'd-meal', kind: 'life', label: 'Eat a proper meal', hint: 'Cook at home or eat out', on: 'tag', tags: ['food'], go: ['home', 'kitchen'] },
   { id: 'd-shift', kind: 'life', label: 'Finish a shift', hint: 'Go to work and see it through', on: 'event', event: 'shift.completed', needs: 'job', open: 'career' },
   { id: 'd-paid', kind: 'life', label: 'Get paid for something', hint: 'A shift or any paid gig', on: 'paid', open: 'jobs' },
@@ -59,7 +61,7 @@ export const DAILY_MISSIONS = Object.freeze([
   { id: 'd-event', kind: 'social', label: 'Show up at an event', hint: 'See what is on in Events', on: 'event', event: 'event.attended', needs: 'event', open: 'events' },
 ]);
 
-export const WEEKLY_MISSIONS = Object.freeze([
+export const WEEKLY_MISSIONS: readonly MissionDefinition[] = Object.freeze([
   { id: 'w-work', kind: 'life', label: 'Get paid on four different days', hint: 'One paid shift or gig a day counts', on: 'event', event: 'work.day', count: 4, open: 'career' },
   { id: 'w-meals', kind: 'life', label: 'Eat ten meals', hint: 'Home cooking counts', on: 'tag', tags: ['food'], count: 10, go: ['home', 'kitchen'] },
   { id: 'w-places', kind: 'discovery', label: 'Visit six different places', hint: 'Each place counts once this week', on: 'venue', fresh: true, count: 6, open: 'map' },
@@ -70,4 +72,4 @@ export const WEEKLY_MISSIONS = Object.freeze([
   { id: 'w-events', kind: 'social', label: 'Show up at two events', hint: 'See what is on in Events', on: 'event', event: 'event.attended', count: 2, open: 'events' },
 ]);
 
-export const MISSION_KINDS = Object.freeze(['life', 'discovery', 'social']);
+export const MISSION_KINDS: readonly MissionKind[] = Object.freeze(['life', 'discovery', 'social']);

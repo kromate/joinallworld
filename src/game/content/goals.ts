@@ -4,7 +4,7 @@
  *
  * Provenance: `beta: true` marks an original beta value; `betaFields` lists the original
  * fields of an otherwise observed entry. Everything else follows what was observed in the
- * reference game. Perk effect data (`fx`) uses the format documented in content/traits.js.
+ * reference game. Perk effect data (`fx`) uses the format documented in content/traits.ts.
  */
 
 /**
@@ -12,7 +12,7 @@
  * and one star, exactly once.
  *   done   how the goal completes: `events` (any of these registry events), `tags` (an
  *          'activity.completed' carrying any of these tags), `activity` (that activity finished —
- *          or, with `here`, the free thing the chip pointed at instead: see systems/goals.js firstFun),
+ *          or, with `here`, the free thing the chip pointed at instead: see systems/goals.ts firstFun),
  *          `venue` (arriving at or visiting it),
  *          `hasJob` (already employed when the goal comes up)
  *          `fresh: true` — the condition only counts while this goal is the current one (so the
@@ -26,7 +26,9 @@
  * the home); the home goals follow. STARTER_INTRO is how many goals come before the first one that
  * needs a home — a life that never was a guest starts the chain there, as it always did.
  */
-export const STARTER_GOALS = [
+import type { PerkDefinition, StarterGoal, WishDefinition } from '../../types/content.ts'
+
+export const STARTER_GOALS: StarterGoal[] = [
   // The three quick-start goals and their rewards are original beta values.
   { id: 'first-fun', title: 'Play a round of Ayo', hint: 'Under the trees · takes 7 seconds', icon: '🎲', cash: 500, stars: 1, beta: true,
     done: { activity: 'play-ayo' }, go: ['park', 'trees'], activity: 'play-ayo', here: true },
@@ -72,7 +74,7 @@ export const WISH_STARS = 3;
 export const WISH_SLOTS = 3;
 /** Original beta value: free re-rolls per Lagos day. */
 export const WISH_REROLLS_PER_DAY = 3;
-export const WISHES = [
+export const WISHES: WishDefinition[] = [
   { id: 'earn-15k', label: 'Make ₦15,000 today', hint: 'Shifts and goal rewards before midnight all count', icon: '💰', on: 'earn', amount: 15000 },
   { id: 'park-art', label: 'See art at Freedom Park', hint: 'Map → Freedom Park → Art gallery', icon: '🖼️', on: 'activity', venue: 'park', spot: 'art', tags: ['art'] },
   { id: 'palms-movie', label: 'See a movie at The Palms', hint: 'Map → The Palms → cinema', icon: '🎬', on: 'activity', venue: 'palms', tags: ['movie', 'cinema'] },
@@ -95,7 +97,7 @@ export const WISHES = [
  * Perks, bought once each with stars. The first eight (name, cost, effect) were observed.
  * The rest fill the grid up to the reported 25-star top tier and are original beta content.
  */
-export const PERKS = [
+export const PERKS: PerkDefinition[] = [
   { id: 'steel-bladder', label: 'Steel Bladder', icon: '🚽', cost: 6, effect: 'Bladder drops 30% slower', fx: { decay: { bladder: 0.7 } } },
   { id: 'iron-belle', label: 'Iron Belle', icon: '🍲', cost: 8, effect: 'Hunger drops 25% slower', fx: { decay: { hunger: 0.75 } } },
   { id: 'early-bird', label: 'Early Bird', icon: '🌅', cost: 8, effect: 'Energy drops 25% slower', fx: { decay: { energy: 0.75 } } },

@@ -8,32 +8,35 @@
  */
 import { esc, glyph } from '../ui/dom.js';
 import { SHAPES, SHAPE_NAMES, SPECIAL, cardName } from './whot.ts';
+import type { Card, WhotView } from './whot.ts';
+import type { TableStateFrame } from '../types/growth.ts';
 
 /** One card face. `attrs` makes it a button. */
-function card(item, { attrs = '', small = false, dim = false } = {}) {
+function card(item: Card, { attrs = '', small = false, dim = false }: { attrs?: string; small?: boolean; dim?: boolean } = {}): string {
   const whot = item.s === 'whot', label = `${cardName(item)}${SPECIAL[item.n] && !whot ? `, ${SPECIAL[item.n]}` : ''}`;
   const face = `<span class="wh-n">${whot ? '20' : item.n}</span><span class="wh-s" aria-hidden="true">${whot ? '<b>WHOT</b>' : glyph(item.s)}</span>${SPECIAL[item.n] && !whot ? `<small>${esc(SPECIAL[item.n])}</small>` : ''}`;
   const cls = `wh-card is-${item.s}${small ? ' is-small' : ''}${dim ? ' is-dim' : ''}`;
   return attrs ? `<button class="${cls}" ${attrs} aria-label="${esc(label)}">${face}</button>` : `<span class="${cls}" role="img" aria-label="${esc(label)}">${face}</span>`;
 }
-const backs = (count) => `<span class="wh-backs" aria-hidden="true">${'<i></i>'.repeat(Math.min(count, 6))}</span>`;
+const backs = (count: number): string => `<span class="wh-backs" aria-hidden="true">${'<i></i>'.repeat(Math.min(count, 6))}</span>`;
 
 /**
- * @param {object} state  the server's table-state  @param {{ choosing: number | null }} ui  the Whot card waiting for a shape
- * @param {number} now  the server time at this draw (for the turn clock)
+ * @param state  the server's table-state  @param ui  the Whot card waiting for a shape
+ * @param now  the server time at this draw (for the turn clock)
  */
-export function whotBoard(state, ui, now = 0) {
-  const view = state.view, seats = state.table.seats, me = state.you, over = state.table.status === 'over';
+export function whotBoard(state: TableStateFrame, ui: { choosing: number | null }, now = 0): string {
+  const view = state.view as WhotView, // the server's view of this game (src/tables/whot.ts view)
+    seats = state.table.seats, me = state.you, over = state.table.status === 'over';
   const myTurn = me !== null && state.toMove.includes(me);
   const others = seats.map((seat, index) => ({ seat, index })).filter(({ index }) => index !== me);
   const players = others.map(({ seat, index }) => `<li class="wh-player${view.turn === index ? ' is-turn' : ''}${seat.left || view.out[index] ? ' is-out' : ''}"><b>${esc(seat.name)}</b>
-    ${over && view.shown ? `<span class="wh-shown">${view.shown[index].map((item) => card(item, { small: true })).join('') || '<small>no cards</small>'}</span>` : `${backs(view.counts[index])}<small>${view.counts[index]} card${view.counts[index] === 1 ? '' : 's'}${view.said[index] ? ' · <em>Last card!</em>' : ''}${seat.away ? ' · away' : ''}${seat.left ? ' · left' : ''}</small>`}</li>`).join('');
-  const need = view.pick ? `<p class="wh-need is-warn">${myTurn ? `Answer with a ${view.pickBy}, or pick ${view.pick}` : `${esc(seats[view.turn]?.name ?? 'Next')} must answer or pick ${view.pick}`}</p>`
+    ${over && view.shown ? `<span class="wh-shown">${(view.shown[index] ?? []).map((item) => card(item, { small: true })).join('') || '<small>no cards</small>'}</span>` : `${backs(view.counts[index] ?? 0)}<small>${view.counts[index]} card${view.counts[index] === 1 ? '' : 's'}${view.said[index] ? ' · <em>Last card!</em>' : ''}${seat.away ? ' · away' : ''}${seat.left ? ' · left' : ''}</small>`}</li>`).join('');
+  const need = view.pick ? `<p class="wh-need is-warn">${myTurn ? `Answer with a ${view.pickBy}, or pick ${view.pick}` : `${esc(seats[view.turn ?? -1]?.name ?? 'Next')} must answer or pick ${view.pick}`}</p>`
     : view.call ? `<p class="wh-need">${esc(SHAPE_NAMES[view.call])}s were called ${glyph(view.call, 'ui-glyph')}</p>` : '';
   // The bar starts where the turn's time really is (by the server's clock) and runs out with it.
   const left = state.clock ? Math.max(0, (state.clock.deadline - Math.max(now, state.clock.now)) / 1000) : 0;
   const clock = state.clock && !over ? `<div class="wh-clock" aria-hidden="true"><i style="animation-duration:${Math.max(1, Math.round(left))}s;--from:${Math.min(1, left / state.clock.seconds).toFixed(2)}" data-n="${state.n}"></i></div>` : '';
-  const turnLine = over ? '' : `<p class="wh-turn" role="status">${myTurn ? 'Your turn' : view.turn === null ? '' : `${esc(seats[view.turn].name)} is playing…`}</p>`;
+  const turnLine = over ? '' : `<p class="wh-turn" role="status">${myTurn ? 'Your turn' : view.turn === null ? '' : `${esc(seats[view.turn]?.name)} is playing…`}</p>`;
   let hand = '';
   if (view.hand) {
     const cards = view.hand.map((item, index) => {
@@ -52,14 +55,15 @@ export function whotBoard(state, ui, now = 0) {
 }
 
 /** Wire a drawn board. `play(move)` sends a move; `ui` is the panel's own small state. */
-export function bindWhot(root, state, ui, play, redraw) {
-  for (const node of root.querySelectorAll('[data-wh-card]')) node.addEventListener('click', () => {
-    const index = Number(node.dataset.whCard), item = state.view.hand[index];
+export function bindWhot(root: HTMLElement, state: TableStateFrame, ui: { choosing: number | null }, play: (move: object) => void, redraw: () => void): void {
+  const hand = (): Card[] => (state.view as WhotView).hand ?? []; // the server's view of this game; the buttons exist only for a hand
+  for (const node of root.querySelectorAll<HTMLElement>('[data-wh-card]')) node.addEventListener('click', () => {
+    const index = Number(node.dataset.whCard), item = hand()[index];
     // A Whot needs a shape, unless it is the last card.
-    if (item.s === 'whot' && state.view.hand.length > 1) { ui.choosing = index; redraw(); return; }
+    if (item?.s === 'whot' && hand().length > 1) { ui.choosing = index; redraw(); return; }
     ui.choosing = null; play({ t: 'play', i: index });
   });
-  for (const node of root.querySelectorAll('[data-wh-shape]')) node.addEventListener('click', () => { const index = ui.choosing; ui.choosing = null; play({ t: 'play', i: index, shape: node.dataset.whShape }); });
+  for (const node of root.querySelectorAll<HTMLElement>('[data-wh-shape]')) node.addEventListener('click', () => { const index = ui.choosing; ui.choosing = null; play({ t: 'play', i: index, shape: node.dataset.whShape }); });
   root.querySelector('[data-wh-cancel]')?.addEventListener('click', () => { ui.choosing = null; redraw(); });
   root.querySelector('[data-wh-draw]')?.addEventListener('click', () => { ui.choosing = null; play({ t: 'draw' }); });
 }

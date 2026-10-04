@@ -8,7 +8,9 @@
  * healthy one) was also observed. Causes, chances, durations, prices and the weather cycle
  * were not, and are original beta values.
  */
-export const HEALTH = {
+import type { HealthContent } from '../../types/content.ts'
+
+export const HEALTH: HealthContent = {
   feelings: {
     soaked: { id: 'soaked', label: 'Soaked by Rain', value: -8, duration: 600, text: 'The rain gave no warning.' },
     sick: { id: 'very-sick', label: 'Very Sick', value: -35, text: 'You need a doctor. Go to the General Hospital.' },
@@ -47,7 +49,7 @@ export const HEALTH = {
     immunitySeconds: { cure: 1800, agbo: 1800, vitamins: 7200 },
   },
 
-  /** Listed in the Health app. `activity` ids live in content/venues.js; agbo is a roadside event. */
+  /** Listed in the Health app. `activity` ids live in content/venues.ts; agbo is a roadside event. */
   cures: [
     { id: 'doctor', label: 'See the Doctor', where: 'hospital', spot: 'clinic', activity: 'hospital-doctor', text: 'Quick and certain.' },
     { id: 'free-clinic', label: 'Queue at the Free Clinic', where: 'hospital', spot: 'ward', activity: 'hospital-free', text: 'Costs nothing but a long wait. Always available.' },

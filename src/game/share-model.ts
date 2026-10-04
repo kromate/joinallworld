@@ -11,44 +11,35 @@
  * EMOJI. The game draws no emoji on its own screens. Text that LEAVES the game for a chat app is
  * the one exception (the owner's decision): squares and a few symbols are the native format there.
  *
- * @typedef {'invite'|'house'|'missions'|'week'|'table'|'event'} ShareKind
- * @typedef {object} ShareFacts
- * @property {ShareKind} kind
- * @property {string} name        the sharer's display name
- * @property {string} [district]  home district label, e.g. "Yaba"
- * @property {string} [city]      city name, e.g. "Lagos"
- * @property {number} [done]      missions finished today (missions)
- * @property {number} [total]     missions in the set (missions)
- * @property {number} [days]      days lived actively (missions, week)
- * @property {number} [stamps]    days played this week (week)
- * @property {string} [title]     the sharer's current title (missions, week)
- * @property {string} [game]      table game label, e.g. "Whot" (table)
- * @property {boolean} [won]      (table)
- * @property {string} [event]     event title (event);  @property {string} [venue] venue label (event, table)
- * @property {string} [tableId]   a table to land beside (table): makes the share an invitation to that table
+ * ShareKind and ShareFacts (the fields of a facts record and what each means) are in src/types/growth.ts.
  */
-export const SHARE_KINDS = Object.freeze(['invite', 'house', 'missions', 'week', 'table', 'event']);
+import { isRecord } from './util.ts';
+import type { ShareFacts, ShareKind } from '../types/growth.ts';
+
+export const SHARE_KINDS: readonly ShareKind[] = Object.freeze(['invite', 'house', 'missions', 'week', 'table', 'event']);
+const KIND_NAMES: readonly string[] = SHARE_KINDS;
+const isKind = (value: unknown): value is ShareKind => typeof value === 'string' && KIND_NAMES.includes(value);
 export const BRAND = 'Allworld';
 export const TAGLINE = 'Your city story. Live in Lagos, with real people.';
 
-const clip = (value, max) => { const text = String(value ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim(); return text.length > max ? `${text.slice(0, max - 1)}…` : text; };
-const count = (value, max = 100000) => (Number.isSafeInteger(value) && value >= 0 ? Math.min(value, max) : 0);
-const days = (n) => `${n} day${n === 1 ? '' : 's'}`;
+const clip = (value: unknown, max: number): string => { const text = String(value ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim(); return text.length > max ? `${text.slice(0, max - 1)}…` : text; };
+const count = (value: unknown, max = 100000): number => (typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? Math.min(value, max) : 0);
+const days = (n: number): string => `${n} day${n === 1 ? '' : 's'}`;
 
 /** A facts record reduced to known fields of bounded size. Unknown kinds become 'invite'. */
-export function cleanFacts(facts) {
-  const kind = SHARE_KINDS.includes(facts?.kind) ? facts.kind : 'invite';
-  return { kind, name: clip(facts?.name, 24) || 'A Lagosian', district: clip(facts?.district, 24), city: clip(facts?.city, 24) || 'Lagos',
-    done: count(facts?.done, 9), total: count(facts?.total, 9), days: count(facts?.days), stamps: count(facts?.stamps, 7), title: clip(facts?.title, 24),
-    game: clip(facts?.game, 24), won: facts?.won === true, event: clip(facts?.event, 48), venue: clip(facts?.venue, 32),
-    tableId: typeof facts?.tableId === 'string' && /^[a-z0-9-]{1,40}$/.test(facts.tableId) ? facts.tableId : '' };
+export function cleanFacts(input: unknown): ShareFacts {
+  const facts: Record<string, unknown> = isRecord(input) ? input : {};
+  const kind = isKind(facts.kind) ? facts.kind : 'invite';
+  return { kind, name: clip(facts.name, 24) || 'A Lagosian', district: clip(facts.district, 24), city: clip(facts.city, 24) || 'Lagos',
+    done: count(facts.done, 9), total: count(facts.total, 9), days: count(facts.days), stamps: count(facts.stamps, 7), title: clip(facts.title, 24),
+    game: clip(facts.game, 24), won: facts.won === true, event: clip(facts.event, 48), venue: clip(facts.venue, 32),
+    tableId: typeof facts.tableId === 'string' && /^[a-z0-9-]{1,40}$/.test(facts.tableId) ? facts.tableId : '' };
 }
 
 /**
  * Title and description for the link preview (Open Graph). Plain text; the page escapes it.
- * @param {ShareFacts} facts  @returns {{ title: string, description: string }}
  */
-export function sharePreview(facts) {
+export function sharePreview(facts: unknown): { title: string; description: string } {
   const f = cleanFacts(facts), place = f.district ? `${f.district}, ${f.city}` : f.city;
   switch (f.kind) {
     case 'house': return { title: `Come to ${f.name}’s house in ${place}`, description: `Knock at the door in ${BRAND}. No sign-up: pick a name and walk in.` };
@@ -64,10 +55,10 @@ export function sharePreview(facts) {
 const SQUARE = { on: '🟩', off: '⬜' };
 /**
  * The text that leaves the game. The link is always the last line on its own, so it can be removed.
- * @param {ShareFacts} facts  @param {string} link  absolute URL of the share page
+ * `facts` is a ShareFacts record (cleaned here again); `link` is the absolute URL of the share page.
  */
-export function shareText(facts, link = '') {
-  const f = cleanFacts(facts), lines = [];
+export function shareText(facts: unknown, link = ''): string {
+  const f = cleanFacts(facts), lines: string[] = [];
   if (f.kind === 'missions') {
     const total = f.total || 3;
     lines.push(`${BRAND} · day ${f.days} in ${f.city}`, `${SQUARE.on.repeat(Math.min(f.done, total))}${SQUARE.off.repeat(Math.max(0, total - f.done))} ${f.done}/${total} missions`);
@@ -82,13 +73,17 @@ export function shareText(facts, link = '') {
   return lines.join('\n');
 }
 
-/**
- * What the picture card shows: plain fields for the canvas painter (src/ui/share.js).
- * @returns {{ kicker: string, headline: string, lines: string[], squares: boolean[], footer: string }}
- */
-export function shareCard(facts) {
+/** What the picture card shows: plain fields for the canvas painter (src/ui/share.js). */
+export interface ShareCard {
+  kicker: string
+  headline: string
+  lines: string[]
+  squares: boolean[]
+  footer: string
+}
+export function shareCard(facts: unknown): ShareCard {
   const f = cleanFacts(facts), place = f.district ? `${f.district}, ${f.city}` : f.city;
-  const base = { kicker: BRAND.toUpperCase(), squares: [], footer: 'Play free in your browser' };
+  const base: Pick<ShareCard, 'kicker' | 'squares' | 'footer'> = { kicker: BRAND.toUpperCase(), squares: [], footer: 'Play free in your browser' };
   if (f.kind === 'missions') return { ...base, headline: `${f.done}/${f.total || 3} missions today`, lines: [f.name, `${days(f.days)} in ${f.city}`, ...(f.title ? [f.title] : [])], squares: Array.from({ length: f.total || 3 }, (_, index) => index < f.done) };
   if (f.kind === 'week') return { ...base, headline: `My week in ${f.city}`, lines: [f.name, `${f.stamps} of 7 days played`, `${days(f.days)} in the city`], squares: Array.from({ length: 7 }, (_, index) => index < f.stamps) };
   if (f.kind === 'table') return { ...base, headline: f.tableId ? `Come and play ${f.game}` : f.won ? `Won at ${f.game}` : `At the ${f.game} table`, lines: [f.name, f.venue || place, f.tableId ? 'A seat is open' : 'Come and play me'] };
@@ -98,12 +93,12 @@ export function shareCard(facts) {
 }
 
 const CODE = /^[a-z0-9]{8,16}$/;
-export const isShareCode = (value) => typeof value === 'string' && CODE.test(value);
+export const isShareCode = (value: unknown): boolean => typeof value === 'string' && CODE.test(value);
 /** The share code in a link or a bare code (`…/s/<code>`, `?ref=<code>`, `?s=<code>`), or null. */
-export function shareCodeFrom(text) {
+export function shareCodeFrom(text: unknown): string | null {
   const match = /(?:\/s\/|[?&](?:s|ref)=|^)([a-z0-9]{8,16})(?:[/?#&]|$)/.exec(String(text ?? '').trim());
-  return match ? match[1] : null;
+  return match ? match[1] ?? null : null; // group 1 always takes part in a match
 }
 /** Where a button for one channel points. `text` already ends with the link. */
-export const whatsappUrl = (text) => `https://wa.me/?text=${encodeURIComponent(text)}`;
-export const xUrl = (text) => `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+export const whatsappUrl = (text: string): string => `https://wa.me/?text=${encodeURIComponent(text)}`;
+export const xUrl = (text: string): string => `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;

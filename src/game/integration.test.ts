@@ -1,10 +1,15 @@
 // OWNER: foundation — tests for the seams between the career, character, home and world systems.
-// Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.js.
+// Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLife, dispatch, advanceLife, viewLife, spotsOf, actionTypes } from '../life.ts';
+import { createLife, dispatch, advanceLife, viewLife, spotsOf, actionTypes, NEEDS } from '../life.ts';
 import { registerSystem, systems, serverOnlyReason, emit } from './registry.ts';
-import { makeContext } from './util.ts';
+import { isRecord, makeContext } from './util.ts';
+import type { ActionBody, ActionResult, ActionType } from '../types/actions.ts';
+import type { Block } from '../types/content.ts';
+import type { ActionOutcome, ActiveAction, LifeContext, LifeContextInit, LifeState, Look, VenueId } from '../types/life.ts';
+import type { GoalChip } from '../types/view.ts';
+import type { SystemDefinition } from '../types/registry.ts';
 import { isOpen, lagosDayStart, lagosTime, openingInfo } from './clock.ts';
 import { arrive, addSkillXp, xpForLevel } from './api.ts';
 import { VENUES } from './content/venues.ts';
@@ -17,22 +22,53 @@ import { NPCS } from './content/npcs.ts';
 import { workplaceHoursText, scheduleText } from './systems/career.ts';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8); // 09:00 in Lagos
-const at = (now = MONDAY_9AM, seed = 'seam', extra = {}) => makeContext({ now, cityId: 'lagos', seed, ...extra });
-const act = (state, type, payload, ctx = at()) => dispatch(state, { type, payload }, ctx);
+const at = (now = MONDAY_9AM, seed = 'seam', extra: LifeContextInit = {}): LifeContext => makeContext({ now, cityId: 'lagos', seed, ...extra });
+// The payload is deliberately `unknown`: several tests send hostile (malformed) input to prove the server-side validation.
+const act = <T extends ActionType>(state: LifeState, type: T, payload?: unknown, ctx: LifeContext = at()): ActionResult<T> =>
+  dispatch(state, { type, payload } as unknown as ActionBody<T>, ctx);
+/** dispatch for an action type that is only known as text (every registered type, or one that does not exist). */
+const send = (state: LifeState, body: { type: string; payload?: unknown }, ctx: LifeContext = at()): ActionOutcome =>
+  (dispatch as unknown as (state: LifeState, body: { type: string; payload?: unknown }, ctx: LifeContext) => ActionOutcome)(state, body, ctx);
+/** The reason of a refused action ('' for a success or a refusal without one). */
+const why = (result: { ok: boolean; reason?: string }): string => result.reason ?? '';
+/** Narrows a lookup that must have found something. */
+function need<T>(value: T | null | undefined, what = 'expected a value'): T { assert.ok(value, what); return value; }
+/** The timed action, read through a function so a preceding `assert.equal(state.activeAction, null)` does not narrow it away. */
+const activeOf = (state: LifeState): ActiveAction | null => state.activeAction;
+type GoalStep = Extract<GoalChip, { kind: 'goal' }>;
+/** The goal chip of a life, which must be a goal. */
+function goalChip(state: LifeState, ctx: LifeContext = at()): GoalStep {
+  const chip = viewLife(state, ctx).goals.chip;
+  if (chip.kind !== 'goal') assert.fail(`expected a goal chip, got ${chip.kind}`);
+  return chip;
+}
+const isVenue = (value: string): value is VenueId => Object.hasOwn(VENUES, value);
+/** Action calls as [type, payload] pairs, typed so a table of hostile payloads infers as pairs. */
+const calls = (...entries: [string, unknown][]): [string, unknown][] => entries;
+/** A registered system, for the tests that hook into it. */
+const system = (id: string): SystemDefinition => need(systems().find((item) => item.id === id), id);
 /** The starting homes a life's rolled outcome allows, { [houseId]: startCash }. */
-const LOTTERY_HOMES = (state) => Object.fromEntries(viewLife(state, at()).onboarding.homes.filter((home) => !home.locked).map((home) => [home.id, home.startCash]));
+const LOTTERY_HOMES = (state: LifeState): Record<string, number | null> => Object.fromEntries(viewLife(state, at()).onboarding.homes.filter((home) => !home.locked).map((home) => [home.id, home.startCash]));
+const LOOK: Look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
 
 // A stand-in for a later owner's system: registered last, it records events and can veto actions.
-const heard = [];
-registerSystem({
+// Its id and state key are not in the SystemId union and its veto code is not an ActionVetoCode, so it is built
+// against a widened shape and registered through one cast.
+const heard: Record<string, unknown>[] = [];
+type ProbeSystem = Omit<SystemDefinition<'seamprobe'>, 'modifiers'> & {
+  modifiers: { 'action.block'(value: Block | null, state: LifeState, data: { type: string }): Block | null };
+};
+const frozen = (state: LifeState): boolean => { const slice: unknown = Reflect.get(state, 'seamprobe'); return isRecord(slice) && slice.frozen === true; };
+const probe: ProbeSystem = {
   id: 'seamprobe', stateKeys: ['seamprobe'],
-  sanitize(input, state) { state.seamprobe = { frozen: input.seamprobe?.frozen === true }; },
+  sanitize(input, state) { Reflect.set(state, 'seamprobe', { frozen: isRecord(input.seamprobe) && input.seamprobe.frozen === true }); },
   on: { 'travel.arrived': (state, data) => heard.push({ ...data }) },
-  modifiers: { 'action.block': (value, state, data) => value || (state.seamprobe.frozen && data.type !== 'cancel' ? { code: 'frozen', reason: `Frozen: ${data.type} is not possible right now.` } : null) },
-});
+  modifiers: { 'action.block': (value, state, data) => value || (frozen(state) && data.type !== 'cancel' ? { code: 'frozen', reason: `Frozen: ${data.type} is not possible right now.` } : null) },
+};
+registerSystem(probe as unknown as SystemDefinition);
 
-function onboard(state, { house = 'yaba', traits = ['musical', 'tech-bro-or-sis'], dream = 'yaba-unicorn', outcome = 'lapo-baby' } = {}) {
-  const look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
+function onboard(state: LifeState, { house = 'yaba', traits = ['musical', 'tech-bro-or-sis'], dream = 'yaba-unicorn', outcome = 'lapo-baby' } = {}): LifeState {
+  const look = LOOK;
   assert.equal(act(state, 'onboarding.look', { look }).code, 'look_saved');
   assert.equal(act(state, 'onboarding.traits', { traits }).code, 'traits_saved');
   assert.equal(act(state, 'onboarding.dream', { dream }).code, 'dream_saved');
@@ -40,28 +76,28 @@ function onboard(state, { house = 'yaba', traits = ['musical', 'tech-bro-or-sis'
     state.onboarding.lottery = null;
     act(state, 'onboarding.lottery', {}, at(MONDAY_9AM, `roll-${i}`));
   }
-  assert.equal(state.onboarding.lottery.id, outcome);
+  assert.equal(need(state.onboarding.lottery).id, outcome);
   const moved = act(state, 'onboarding.home', { house });
-  assert.equal(moved.code, 'life_started', moved.reason);
+  assert.equal(moved.code, 'life_started', why(moved));
   return state;
 }
 
 test('travel.arrived carries { venue, from, mode } for every listener, and arrive accepts a target spot', () => {
-  assert.equal(systems().find((system) => system.id === 'travel').on['travel.arrived'], undefined, 'travel no longer patches the payload from its own listener');
+  assert.equal(need(system('travel').on)['travel.arrived'], undefined, 'travel no longer patches the payload from its own listener');
   heard.length = 0;
   const state = createLife({}, at());
   act(state, 'travel', { id: 'library', mode: 'okada' });
   advanceLife(state, 5, at(MONDAY_9AM + 5000));
   assert.deepEqual(heard, [{ venue: 'library', from: 'park', mode: 'okada' }]);
   // Systems registered before travel receive the very same payload object, so they see the mode too.
-  const first = [];
-  const career = systems().find((system) => system.id === 'career');
-  const original = career.on['travel.arrived'];
-  career.on['travel.arrived'] = (s, data) => first.push({ ...data });
+  const first: Record<string, unknown>[] = [];
+  const careerHooks = need(system('career').on);
+  const original = careerHooks['travel.arrived'];
+  careerHooks['travel.arrived'] = (s, data) => { first.push({ ...data }); };
   try {
     act(state, 'travel', { id: 'park', mode: 'trek' }, at(MONDAY_9AM + 5000));
     advanceLife(state, 12, at(MONDAY_9AM + 17000));
-  } finally { if (original) career.on['travel.arrived'] = original; else delete career.on['travel.arrived']; }
+  } finally { if (original) careerHooks['travel.arrived'] = original; else delete careerHooks['travel.arrived']; }
   assert.deepEqual(first, [{ venue: 'park', from: 'library', mode: 'trek' }]);
 
   heard.length = 0;
@@ -79,7 +115,7 @@ test('the automatic commute lands on the work spot and only starts while the wor
   assert.equal(state.activeAction, null, 'CcHub is closed at 3 AM, so nobody is sent there');
   assert.match(viewLife(state, at(Date.UTC(2026, 0, 5, 2))).career.step.text, /CcHub is closed right now: it opens 8AM/);
   advanceLife(state, 60, at(Date.UTC(2026, 0, 5, 7, 1))); // 8:01 AM
-  assert.deepEqual([state.activeAction?.kind, state.activeAction?.id], ['commute', 'cchub']);
+  assert.deepEqual([activeOf(state)?.kind, activeOf(state)?.id], ['commute', 'cchub']);
   advanceLife(state, 5, at(Date.UTC(2026, 0, 5, 7, 1, 5)));
   assert.deepEqual([state.location, state.spot], ['cchub', 'work']);
   assert.ok(viewLife(state, at(Date.UTC(2026, 0, 5, 7, 2))).activities.cards.some((card) => card.id === 'tech-shift' && !card.blocked));
@@ -89,14 +125,14 @@ test('action.block lets any system veto any action with a code and a reason', ()
   const state = createLife({ seamprobe: { frozen: true } }, at());
   for (const type of actionTypes().filter((name) => name !== 'cancel')) {
     // A server-only action is refused before any veto when a player sends it, so it is vetoed on the server's path.
-    const result = dispatch(state, { type, payload: {} }, serverOnlyReason(type) ? { ...at(), internal: true } : at());
-    assert.deepEqual([result.ok, result.code, result.reason], [false, 'frozen', `Frozen: ${type} is not possible right now.`], type);
+    const result = send(state, { type, payload: {} }, serverOnlyReason(type) ? { ...at(), internal: true } : at());
+    assert.deepEqual([result.ok, result.code, why(result)], [false, 'frozen', `Frozen: ${type} is not possible right now.`], type);
   }
-  for (const type of actionTypes().filter((name) => serverOnlyReason(name))) assert.equal(dispatch(createLife(null, at()), { type, payload: {} }, at()).code, 'server_only', type);
+  for (const type of actionTypes().filter((name) => serverOnlyReason(name))) assert.equal(send(createLife(null, at()), { type, payload: {} }).code, 'server_only', type);
   assert.ok(actionTypes().filter((type) => serverOnlyReason(type)).length >= 5, 'social and civic declare their server-only actions through the registry');
   assert.equal(state.message, `Frozen: ${actionTypes().filter((name) => name !== 'cancel').at(-1)} is not possible right now.`);
   assert.equal(act(state, 'cancel').code, 'idle', 'an action the veto lets through reaches its handler');
-  assert.throws(() => dispatch(state, { type: 'no-such-action' }, at()), /Invalid action type/);
+  assert.throws(() => send(state, { type: 'no-such-action' }), /Invalid action type/);
 });
 
 test('quick start: a guest life is held only until its look is confirmed, then plays in public and never reaches a home state', () => {
@@ -104,11 +140,11 @@ test('quick start: a guest life is held only until its look is confirmed, then p
   assert.deepEqual([state.onboarding.stage, state.onboarding.required, state.onboarding.done, state.onboarding.bornAt], ['guest', true, false, MONDAY_9AM]);
   assert.equal(createLife(null, at(MONDAY_9AM, 'old-name', { isNew: true, requireOnboarding: true })).onboarding.stage, 'guest', 'the older context name still makes a guest');
   assert.equal(viewLife(state, at()).onboarding.required, true);
-  for (const [type, payload] of [['spot', { id: 'trees' }], ['activity', { id: 'chill' }], ['travel', { id: 'home', mode: 'trek' }], ['apply-job', { id: 'tech' }],
-    ['home.grocery-buy', { id: 'rice' }], ['goals.reroll-wish', { slot: 0 }], ['economy.pay-rent', {}], ['cancel', {}]]) {
-    const result = act(state, type, payload);
+  for (const [type, payload] of calls(['spot', { id: 'trees' }], ['activity', { id: 'chill' }], ['travel', { id: 'home', mode: 'trek' }], ['apply-job', { id: 'tech' }],
+    ['home.grocery-buy', { id: 'rice' }], ['goals.reroll-wish', { slot: 0 }], ['economy.pay-rent', {}], ['cancel', {}])) {
+    const result = send(state, { type, payload });
     assert.deepEqual([result.ok, result.code], [false, 'onboarding_required'], type);
-    assert.match(result.reason, /Choose your look and tap Play first/);
+    assert.match(why(result), /Choose your look and tap Play first/);
   }
   assert.deepEqual([state.location, state.cash, state.job, state.activeAction], ['park', 5000, null, null], 'nothing changed');
   // A reload keeps the rule; the client cannot drop it by saving and restoring.
@@ -116,23 +152,23 @@ test('quick start: a guest life is held only until its look is confirmed, then p
   assert.deepEqual([restored.onboarding.required, restored.onboarding.stage], [true, 'guest']);
   assert.equal(act(restored, 'spot', { id: 'trees' }).code, 'onboarding_required');
   // The quick start: a look, strictly validated. Then the guest plays.
-  const look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
+  const look = LOOK;
   for (const bad of [undefined, {}, { look: { ...look, hair: 'gele' } }, { look: { ...look, outfit: 'agbada' } }, { look: { ...look, skin: '#fff' } }]) assert.equal(act(restored, 'onboarding.quick-start', bad).code, 'invalid_look');
   assert.equal(restored.onboarding.required, true);
   const played = act(restored, 'onboarding.quick-start', { look });
   assert.deepEqual([played.code, restored.onboarding.required, restored.onboarding.stage, restored.onboarding.step, restored.spot], ['playing', false, 'guest', 1, 'trees']);
   assert.deepEqual(restored.needs, { hunger: 80, energy: 85, fun: 70, social: 60, hygiene: 75, bladder: 70 }, 'the starting needs are handed out at the quick start');
-  let chip = viewLife(restored, at()).goals.chip;
+  let chip = goalChip(restored);
   assert.deepEqual([chip.kind, chip.id, chip.step, chip.go, chip.activity], ['goal', 'first-fun', 1, ['park', 'trees'], 'play-ayo'], 'the first goal is the public first activity');
   assert.equal(act(restored, 'activity', { id: 'play-ayo' }).code, 'started');
   advanceLife(restored, 7, at(MONDAY_9AM + 7000));
   assert.deepEqual([restored.cash, restored.goals.stars, restored.goals.chain, restored.onboarding.firstAt, restored.onboarding.activities], [5500, 1, 1, MONDAY_9AM + 7000, 1]);
   // Nothing that needs a home is reachable, and nothing the economy takes as settled exists.
-  for (const [type, payload] of [['travel', { id: 'home', mode: 'trek' }], ['home.grocery-buy', { id: 'rice' }], ['home.furniture-buy', { item: 'plastic-chair', x: 0, y: 0, rot: 0 }],
-    ['home.kitchen-unpack', {}], ['property.house-move', { id: 'mushin' }]]) {
-    const result = act(restored, type, payload);
+  for (const [type, payload] of calls(['travel', { id: 'home', mode: 'trek' }], ['home.grocery-buy', { id: 'rice' }], ['home.furniture-buy', { item: 'plastic-chair', x: 0, y: 0, rot: 0 }],
+    ['home.kitchen-unpack', {}], ['property.house-move', { id: 'mushin' }])) {
+    const result = send(restored, { type, payload });
     assert.deepEqual([result.ok, result.code], [false, 'settle_required'], type);
-    assert.match(result.reason, /Settle in to get your home/);
+    assert.match(why(result), /Settle in to get your home/);
   }
   assert.equal(act(restored, 'economy.pay-rent', {}).ok, false);
   assert.deepEqual([restored.economy.rent.house, restored.economy.loan, restored.economy.billedWeek, restored.economy.started, restored.location, restored.home.stocked], [null, null, null, false, 'park', false]);
@@ -149,14 +185,14 @@ test('quick start: a guest life is held only until its look is confirmed, then p
   assert.deepEqual([restored.location, restored.onboarding.done, restored.onboarding.stage, viewLife(restored, at()).onboarding.required], ['home', true, 'settled', false]);
   assert.equal(restored.cash, 96000 + (before - 5000), 'the old flow’s start cash plus what the guest earned: nothing lost, nothing counted twice');
   assert.deepEqual(restored.goals.seen, ['settle-in'], 'Settle in is paid when the chain reaches it');
-  chip = viewLife(restored, at()).goals.chip;
+  chip = goalChip(restored);
   assert.deepEqual([chip.kind, chip.id], ['goal', 'say-hello'], 'the chain carries on where the guest was');
   assert.equal(act(restored, 'spot', { id: 'bathroom' }).code, 'selected');
 });
 
 test('a life the old enforced flow left half-way resumes as a guest with every choice it had made', () => {
-  const look = { body: 'man', hair: 'afro', outfit: 'hoodie', fabric: 'ankara', skin: 'skin-6', hairColor: 'auburn', outfitColor: 'teal', bottomsColor: 'cream' };
-  const old = (onboarding) => createLife({ v: 1, cash: 5000, location: 'park', onboarding: { done: false, legacy: false, required: true, seed: 5000, bonusAt: 0, completedAt: null, wardrobe: null, house: null, lottery: null, dream: null, traits: [], look, ...onboarding } }, at());
+  const look: Look = { body: 'man', hair: 'afro', outfit: 'hoodie', fabric: 'ankara', skin: 'skin-6', hairColor: 'auburn', outfitColor: 'teal', bottomsColor: 'cream' };
+  const old = (onboarding: Record<string, unknown>) => createLife({ v: 1, cash: 5000, location: 'park', onboarding: { done: false, legacy: false, required: true, seed: 5000, bonusAt: 0, completedAt: null, wardrobe: null, house: null, lottery: null, dream: null, traits: [], look, ...onboarding } }, at());
   // Still on the Look step: held until the look is confirmed, as before — by the quick start or the old look action.
   const fresh = old({ step: 0 });
   assert.deepEqual([fresh.onboarding.stage, fresh.onboarding.required, fresh.goals.started], ['guest', true, true]);
@@ -209,8 +245,8 @@ test('all fourteen career tracks can be applied for, show a work spot, and can b
     }
     // One label for the hours: the Jobs card, the your-job card and the Career tab show the map card's text.
     const view = viewLife(state, at());
-    const card = view.career.jobs.find((item) => item.id === job.id);
-    const mapHours = view.travel.destinations.find((item) => item.id === job.workplace.venue).hours;
+    const card = need(view.career.jobs.find((item) => item.id === job.id));
+    const mapHours = need(view.travel.destinations.find((item) => item.id === job.workplace.venue)).hours;
     assert.equal(card.hours, workplaceHoursText(job, at())); assert.equal(view.career.hours, card.hours);
     assert.ok(card.hours.includes(mapHours === 'Open 24 hours' ? 'Open 24 hours' : `Open ${mapHours}`), `${job.id}: ${card.hours} uses the map label ${mapHours}`);
     assert.equal(openingInfo(hours, 0).hours, mapHours);
@@ -231,7 +267,7 @@ test('"Make a new friend" completes when a regular is greeted — the real thing
   const state = onboard(createLife(null, at(MONDAY_9AM, 'friend', { isNew: true })));
   state.goals.chain = STARTER_GOALS.findIndex((goal) => goal.id === 'make-a-friend');
   const cash = state.cash;
-  const chip = viewLife(state, at()).goals.chip;
+  const chip = goalChip(state);
   // At home there is nobody to meet: the one line of guidance points the way out…
   assert.deepEqual([chip.title, chip.open, chip.params], ['Make a new friend', 'map', { destination: 'park' }]);
   // …and out in public it opens the people who are there.
@@ -249,7 +285,7 @@ test('"Make a new friend" completes when a regular is greeted — the real thing
   advanceLife(state, 6, at(MONDAY_9AM + 15000));
   assert.deepEqual([state.needs.social - before.social, state.needs.fun - before.fun], [12, 2]);
   assert.equal(state.cash, cash + 1500);
-  assert.equal(state.ledger.at(-1).reason, 'Goal: Make a new friend');
+  assert.equal(need(state.ledger.at(-1)).reason, 'Goal: Make a new friend');
   assert.equal(viewLife(state, at()).goals.chip.title, 'Work a shift');
   assert.equal(act(state, 'activity', { id: 'npc-amaka-hello' }, at(MONDAY_9AM + 16000)).code, 'started');
   advanceLife(state, 6, at(MONDAY_9AM + 22000));
@@ -261,8 +297,9 @@ test('the dream "best friends with 4 people" is driven by the social system’s 
   state.goals.chain = STARTER_GOALS.length; state.goals.dream = 'everybodys-padi';
   // Nothing is emitted by hand: each step is a real interaction with a regular, starting just below a tier.
   let now = MONDAY_9AM;
-  const meet = (id, action, points) => {
-    state.location = NPCS[id].venue; state.spot = 'people';
+  const meet = (id: string, action: string, points: number) => {
+    const venue = need(NPCS[id]).venue; assert.ok(isVenue(venue), venue);
+    state.location = venue; state.spot = 'people';
     state.social.rel[id] = { p: points, d: 0, n: 0, npc: true, at: 0 };
     assert.equal(act(state, 'activity', { id: `npc-${id}-${action}` }, at(now, `${id}-${action}-${points}`)).code, 'started');
     now += 12000; advanceLife(state, 12, at(now));
@@ -274,7 +311,7 @@ test('the dream "best friends with 4 people" is driven by the social system’s 
   }
   assert.deepEqual([state.goals.stats.friends, state.goals.stats.best, state.goals.besties.length], [4, 4, 4]);
   assert.equal(state.goals.dreamDone, true);
-  assert.equal(viewLife(state, at()).goals.dream.percent, 100);
+  assert.equal(need(viewLife(state, at()).goals.dream).percent, 100);
   meet('kunle', 'hello', 60);
   assert.equal(state.goals.stats.best, 4, 'the same best friend is never counted twice');
 });
@@ -285,20 +322,20 @@ test('the Groceries price shown is the price charged; the Buy discount covers fu
   state.goals.perks.push('connected');
   const view = viewLife(state, at());
   assert.deepEqual(view.home.groceries.rice, { 1: { price: 540, list: 600 }, 3: { price: 1620, list: 1800 } });
-  for (const [id, packs] of [['rice', 1], ['rice', 3], ['spinach', 3], ['chicken', 1]]) {
+  for (const [id, packs] of [['rice', 1], ['rice', 3], ['spinach', 3], ['chicken', 1]] as const) {
     const before = state.cash;
     assert.equal(act(state, 'home.grocery-buy', { id, packs }).code, 'delivered');
-    assert.equal(before - state.cash, view.home.groceries[id][packs].price, `${packs} × ${id}`);
-    assert.ok(view.home.groceries[id][packs].price < INGREDIENTS[id].price * packs);
+    assert.equal(before - state.cash, need(need(view.home.groceries[id])[packs]).price, `${packs} × ${id}`);
+    assert.ok(need(need(view.home.groceries[id])[packs]).price < need(INGREDIENTS[id]).price * packs);
   }
   assert.equal(view.home.prices['plastic-chair'], 450);
-  const car = view.property.cars.find((item) => item.id === 'agama-150');
+  const car = need(view.property.cars.find((item) => item.id === 'agama-150'));
   assert.deepEqual([car.price, car.listPrice], [CARS['agama-150'].price, CARS['agama-150'].price], 'no discount on a car');
 });
 
 test('an owned car is offered as a travel mode and costs fuel only', () => {
   const state = createLife({ cash: 1000, location: 'home', property: { house: 'yaba', cars: ['agama-150'], car: 'agama-150' } }, at());
-  const card = viewLife(state, at()).travel.destinations.find((item) => item.id === 'cchub');
+  const card = need(viewLife(state, at()).travel.destinations.find((item) => item.id === 'cchub'));
   const car = card.modes.find((mode) => mode.id === 'car');
   assert.ok(car, 'the car is offered'); assert.equal(car.fare, CARS['agama-150'].fuel); assert.equal(car.fuel, true);
   assert.equal(act(state, 'travel', { id: 'cchub', mode: 'car' }).code, 'started');
@@ -311,23 +348,23 @@ test('the Home header data: the house name and district come from the housing co
   const state = onboard(createLife(null, at(MONDAY_9AM, 'house', { isNew: true })), { house: 'mushin' });
   const view = viewLife(state, at());
   assert.deepEqual([view.property.house.label, view.property.house.district], [HOUSES.mushin.label, 'Mushin']);
-  assert.equal(view.travel.destinations.find((item) => item.id === 'home').district, 'Mushin');
+  assert.equal(need(view.travel.destinations.find((item) => item.id === 'home')).district, 'Mushin');
 });
 
 test('the starter helper job cannot outpace a career track', () => {
-  const helper = JOBS['community-helper'];
+  const helper = need(JOBS['community-helper']);
   assert.equal(helper.shift.cooldown, 4 * 3600);
   assert.equal(helper.shift.beta, true);
-  const perDay = Math.floor(86400 / helper.shift.cooldown) * helper.shift.reward;
-  for (const job of TRACKS) assert.ok(perDay < job.ladder[0].pay, `${job.id}: one entry shift (${job.ladder[0].pay}) beats a whole day of helper shifts (${perDay})`);
+  const perDay = Math.floor(86400 / helper.shift.cooldown) * need(helper.shift.reward);
+  for (const job of TRACKS) assert.ok(perDay < need(job.ladder[0]).pay, `${job.id}: one entry shift (${need(job.ladder[0]).pay}) beats a whole day of helper shifts (${perDay})`);
 });
 
 test('one Updates feed: rent due, paid and missed, loan paid and missed, promotion, illness and Governor news all arrive through notice.posted', () => {
   const DAY = 86400000;
   const state = onboard(createLife(null, at(MONDAY_9AM, 'updates', { isNew: true })));
-  // The house system posts its own line once an upgrade is affordable (src/game/systems/estate.js); this test is about the bills.
+  // The house system posts its own line once an upgrade is affordable (src/game/systems/estate.ts); this test is about the bills.
   const kinds = () => state.social.notices.map((notice) => notice.kind).filter((kind) => kind !== 'house');
-  const last = (kind) => state.social.notices.findLast((notice) => notice.kind === kind)?.text;
+  const last = (kind: string): string => state.social.notices.findLast((notice) => notice.kind === kind)?.text ?? '';
   assert.deepEqual(kinds(), [], 'moving in posts nothing');
   // Friday: one reminder naming what falls due at midnight — and only one, however often the life settles.
   const friday = MONDAY_9AM + 4 * DAY;
@@ -369,12 +406,12 @@ test('one Updates feed: rent due, paid and missed, loan paid and missed, promoti
   const news = [{ id: 'result-2936', title: 'Ada is the new Governor of Lagos', text: 'Elected with 1 of 1 vote.', at: saturday + 8 * DAY },
     { id: 'announcement-a1', title: 'Governor Ada announced', text: 'Sanitation day is <b>Saturday</b>', at: saturday + 8 * DAY + 1000 },
     { id: 'nominations-2900', title: 'Nominations are open', text: 'Old news', at: MONDAY_9AM - 30 * DAY }, { id: '<script>', title: 'x', at: 1 }, null];
-  assert.equal(dispatch(state, { type: 'civic.news', payload: { items: news } }, at(saturday + 9 * DAY)).code, 'server_only');
+  assert.equal(send(state, { type: 'civic.news', payload: { items: news } }, at(saturday + 9 * DAY)).code, 'server_only'); // hostile items (null, no `at`)
   const server = { ...at(saturday + 9 * DAY), internal: true };
-  assert.equal(dispatch(state, { type: 'civic.news', payload: { items: news } }, server).code, 'posted');
+  assert.equal(send(state, { type: 'civic.news', payload: { items: news } }, server).code, 'posted');
   assert.deepEqual(state.social.notices.slice(-2).map((notice) => [notice.kind, notice.text]), [['gov', 'Ada is the new Governor of Lagos: Elected with 1 of 1 vote.'], ['gov', 'Governor Ada announced: Sanitation day is <b>Saturday</b>']]);
   assert.deepEqual(state.civic.news, ['nominations-2900', 'result-2936', 'announcement-a1'], 'news from before the life is marked seen without being posted');
-  assert.equal(dispatch(state, { type: 'civic.news', payload: { items: news } }, server).code, 'nothing_new');
+  assert.equal(send(state, { type: 'civic.news', payload: { items: news } }, server).code, 'nothing_new');
   assert.equal(kinds().filter((kind) => kind === 'gov').length, 2);
   // The feed is bounded and survives a save round trip unchanged.
   assert.ok(state.social.notices.length <= 20);
@@ -385,18 +422,18 @@ test('gift cap in the merged economy: start cash, the loan principal, goal rewar
   const FRIEND = '11111111-2222-4333-8444-555555555555';
   const state = onboard(createLife(null, at(MONDAY_9AM, 'gifts', { isNew: true })));
   let now = MONDAY_9AM;
-  const server = (seed) => ({ ...at(now, seed), internal: true });
-  const gift = (amount, seed = `gift-${amount}-${now}`) => dispatch(state, { type: 'social.server', payload: { op: 'transfer-out', to: FRIEND, name: 'Bola', amount } }, server(seed));
-  const run = (id, seconds) => { assert.equal(act(state, 'activity', { id }, at(now, id)).code, 'started', id); now += seconds * 1000; advanceLife(state, seconds, at(now)); };
+  const server = (seed: string): LifeContext => ({ ...at(now, seed), internal: true });
+  const gift = (amount: number, seed = `gift-${amount}-${now}`) => dispatch(state, { type: 'social.server', payload: { op: 'transfer-out', to: FRIEND, name: 'Bola', amount } }, server(seed));
+  const run = (id: string, seconds: number) => { assert.equal(act(state, 'activity', { id }, at(now, id)).code, 'started', id); now += seconds * 1000; advanceLife(state, seconds, at(now)); };
   // ₦96,000 in hand — ₦60,000 of it borrowed — and none of it may be given away.
-  assert.deepEqual([state.cash, state.social.earned, state.economy.loan.left], [96000, 0, 72000]);
+  assert.deepEqual([state.cash, state.social.earned, need(state.economy.loan).left], [96000, 0, 72000]);
   let refused = gift(500);
-  assert.equal(refused.code, 'earn_first'); assert.match(refused.reason, /Earn at least ₦1,000 from paid work.*you have earned ₦0/);
+  assert.equal(refused.code, 'earn_first'); assert.match(why(refused), /Earn at least ₦1,000 from paid work.*you have earned ₦0/);
   // Starter goals pay ₦500 and ₦1,000 each: rewards, not wages.
   state.spot = 'kitchen'; run('home-soak-garri', 5);
-  assert.equal(state.ledger.at(-1).reason, 'Goal: Eat something'); assert.equal(state.social.earned, 0);
+  assert.equal(need(state.ledger.at(-1)).reason, 'Goal: Eat something'); assert.equal(state.social.earned, 0);
   // A gem-hunt prize, a furniture sale and a matured deposit are not wages either.
-  for (const gem of state.civic.hunt.gems) gem.found = true;
+  for (const gem of need(state.civic.hunt).gems) gem.found = true;
   assert.equal(act(state, 'civic.hunt-claim', {}, at(now)).code, 'claimed');
   assert.equal(act(state, 'economy.open-deposit', { amount: 10000, term: 'd1' }, at(now)).code, 'deposit_opened');
   assert.equal(act(state, 'economy.close-deposit', { id: 'fd-1' }, at(now)).code, 'deposit_closed');
@@ -409,22 +446,22 @@ test('gift cap in the merged economy: start cash, the loan principal, goal rewar
   if (state.activeAction) { now += 6000; advanceLife(state, 6, at(now)); } // the automatic commute, if it started
   state.location = 'cchub'; state.spot = 'work'; state.activeAction = null;
   run('tech-shift', JOBS.tech.shift.duration);
-  assert.equal(state.ledger.findLast((entry) => entry.reason === 'Tech shift').amount, 3600);
+  assert.equal(need(state.ledger.findLast((entry) => entry.reason === 'Tech shift')).amount, 3600);
   assert.equal(state.social.earned, 3600, 'shift pay is earned from work');
   assert.equal(viewLife(state, at(now)).social.transfer.leftToday, 3600);
   // The cap is what was earned — not the ₦100,000 in the wallet.
   refused = gift(4000);
-  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(refused.reason, /You can still give ₦3,600/);
+  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(why(refused), /You can still give ₦3,600/);
   assert.equal(gift(3000).code, 'sent');
   refused = gift(700);
-  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(refused.reason, /You can still give ₦600/);
+  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(why(refused), /You can still give ₦600/);
   // A paid gig counts too: Freelance Gig at the hot desks pays through the same activity engine.
-  const gig = spotsOf('cchub').flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def }))).find((item) => item.def.reward > 0 && !item.def.requiresJob && !item.def.requiresSkill);
+  const gig = spotsOf('cchub').flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def }))).find((item) => (item.def.reward ?? 0) > 0 && !item.def.requiresJob && !item.def.requiresSkill);
   if (gig) {
-    state.spot = gig.spot; for (const need of Object.keys(state.needs)) state.needs[need] = 90;
+    state.spot = gig.spot; for (const key of NEEDS) state.needs[key] = 90;
     const before = state.social.earned;
     run(gig.def.id, gig.def.duration);
-    assert.equal(state.social.earned, before + gig.def.reward, `${gig.def.label} is paid work`);
+    assert.equal(state.social.earned, before + (gig.def.reward ?? 0), `${gig.def.label} is paid work`);
   }
   // A returned gift restores the room it used, and repaying the loan changes nothing about what was earned.
   const earned = state.social.earned;

@@ -32,6 +32,8 @@ const client = createClient({
 });
 
 const venue = createVenueWorld($('venue-scene'), { location: client.state.location });
+/** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
+const showPlayer = () => venue.setPlayer({ look: client.state.onboarding?.look, seed: client.session?.id ?? 'you', name: client.state.name || client.identity.name });
 const world = createWorldMap($('map-scene'), { onSelectCity: (city) => shell.open('city', { city: city.id }) });
 const cityMap = createCityMap($('city-scene'), { onSelectVenue: (venueId) => shell.open('map', { destination: venueId }) });
 world.setCity(client.cityId);
@@ -81,6 +83,7 @@ function accepted(state, previous) {
   // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
   if (roomJoinNeeded(previous, state)) community?.join(client.cityId, state.location);
   venue.setState(state);
+  showPlayer();
   cityMap.setState(state);
   render();
   if (pendingRoute && !state.activeAction) {

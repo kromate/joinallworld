@@ -1,7 +1,8 @@
 /**
  * OWNER: home
  * The home interior. Same builder contract as src/scene/venue-scenes.js:
- *   buildHomeScene(kit, venue) → { group, background, camera, update(state) → boolean }
+ *   buildHomeScene(kit, venue) → { group, background, camera, update(state) → boolean,
+ *                                  setPlayer, setCrowd, tags, dispose }
  *
  * WHAT IT DRAWS
  *   An isometric-style room on a checkerboard grid (grid × grid tiles for the player's house),
@@ -9,6 +10,9 @@
  *   as a simple low-poly shape at its tile and rotation. Wall items hang on the two walls.
  *   The object the player picked gets a yellow marker; in Buy mode the placement ghost gets a
  *   green (valid) or red (invalid) footprint.
+ *   The player's own avatar (state.onboarding.look, drawn by src/scene/characters.js) stands
+ *   beside the furniture of the spot they chose — or by the door — and guests the host has let
+ *   in (setCrowd) stand just inside the door. Avatars are one merged mesh, rebuilt on change.
  *
  * STATIC RENDERING
  *   No requestAnimationFrame, no timers. Geometry is rebuilt only when the room, the furniture
@@ -28,6 +32,8 @@
  * are resolved with the exact camera the host used.
  */
 import { FURNITURE, KINDS } from '../game/content/furniture.js';
+import { createBatch, sceneMaterials, releaseObjects } from './build.js';
+import { drawAvatar } from './characters.js';
 import { HOUSES, DEFAULT_HOUSE } from '../game/content/housing.js';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.js';
 
@@ -36,6 +42,9 @@ const WALL_HEIGHT = 3.4;
 const WALL_ITEM_Y = 1.95;
 const SHIFT = -2.5;      // the room sits up-screen so the bottom panels do not cover it
 const WOOD = '#7a5c40', DARK = '#33373d', WHITE = '#f3f1ea', STEEL = '#9aa3a8';
+/** An avatar is 2.45 units tall in venue scale; furniture here is modelled one unit per tile (about a metre). */
+const AVATAR_SCALE = 0.72;
+export const MAX_GUESTS_SHOWN = 5;
 
 const legs = (b, w, d, h, c = WOOD) => { for (const x of [-w / 2, w / 2]) for (const z of [-d / 2, d / 2]) b.box(x, h / 2, z, 0.06, h, 0.06, c); };
 
@@ -148,8 +157,8 @@ const SHAPES = {
 export function buildHomeScene(kit) {
   const { THREE } = kit;
   const group = new THREE.Group();
-  const room = new THREE.Group(), furniture = new THREE.Group(), overlay = new THREE.Group();
-  group.add(room, furniture, overlay);
+  const room = new THREE.Group(), furniture = new THREE.Group(), overlay = new THREE.Group(), people = new THREE.Group();
+  group.add(room, furniture, overlay, people);
   group.position.set(SHIFT, 0, SHIFT);
   const glow = new THREE.PointLight('#ffe3b0', 26, 18, 1.5);
   glow.position.set(-1, 3, -1);
@@ -157,6 +166,8 @@ export function buildHomeScene(kit) {
 
   let grid = 0, tile = 1, drawn = '', lastState = null, camera = null, canvas = null, status = '', undrawn = false;
   let ui = { selected: null, ghost: null, buy: false };
+  let who = { look: undefined, seed: 'you', name: 'You', pose: null }, guests = [], tagList = [], peopleKey = '';
+  const actorMeshes = [];
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   const tools = (parent) => ({
     box: (x, y, z, w, h, d, c, lit) => kit.box(x, y, z, w, h, d, c, parent, lit),
@@ -251,6 +262,63 @@ export function buildHomeScene(kit) {
 
   const signature = (state) => JSON.stringify([state?.property?.house, state?.home?.items, state?.spot, ui]);
 
+  /** Tiles a standing figure may use: not under furniture. `taken` holds "x,y" keys. */
+  function freeTiles(items) {
+    const taken = new Set();
+    for (const item of items) {
+      const def = FURNITURE[item?.itemId];
+      if (!def || def.wall || def.shape === 'rug' || def.shape === 'mat') continue;
+      const size = footprint(def, item.rot);
+      for (let dx = 0; dx < size.w; dx++) for (let dy = 0; dy < size.h; dy++) taken.add(`${item.x + dx},${item.y + dy}`);
+    }
+    return taken;
+  }
+  /** Where the player stands: on a free tile next to the first object of the chosen spot, else just inside the door. */
+  function standing(state, taken) {
+    const items = Array.isArray(state?.home?.items) ? state.home.items : [];
+    const door = { x: 0, y: doorSlot(grid) };
+    const target = items.find((item) => KINDS[FURNITURE[item?.itemId]?.kind]?.spot === state?.spot && !FURNITURE[item.itemId].wall);
+    const centre = target ? (() => { const size = footprint(FURNITURE[target.itemId], target.rot); return { x: target.x + (size.w - 1) / 2, y: target.y + (size.h - 1) / 2 }; })() : door;
+    let best = null;
+    for (let x = 0; x < grid; x++) for (let y = 0; y < grid; y++) {
+      if (taken.has(`${x},${y}`)) continue;
+      const distance = Math.hypot(x - centre.x, y - centre.y);
+      if (!best || distance < best.distance) best = { x, y, distance };
+    }
+    const tileAt = best || door;
+    return { x: tileAt.x, y: tileAt.y, ry: Math.atan2(centre.x - tileAt.x, centre.y - tileAt.y) || 0 };
+  }
+  /** Rebuild the avatars (one merged mesh) if the people, their place or the room changed. Returns true when it did. */
+  function refreshPeople(state) {
+    const taken = freeTiles(Array.isArray(state?.home?.items) ? state.home.items : []);
+    const mine = standing(state, taken);
+    const active = state?.location === 'home' || state?.location == null ? state?.activeAction : null;
+    const pose = who.pose || (!active ? 'stand' : active.kind === 'travel' || active.kind === 'commute' ? 'walk' : 'work');
+    const next = JSON.stringify([grid, mine, pose, who.look ?? state?.onboarding?.look ?? null, who.seed, who.name, guests]);
+    if (next === peopleKey) return false;
+    peopleKey = next;
+    releaseObjects(actorMeshes);
+    taken.add(`${mine.x},${mine.y}`);
+    const scale = tile * AVATAR_SCALE;
+    const batch = createBatch(THREE);
+    const drawn = drawAvatar(batch, who.look ?? state?.onboarding?.look ?? null, { x: along(mine.x), y: 0.03, z: along(mine.y), ry: mine.ry, pose, seed: who.seed, scale, marker: 'crown' });
+    tagList = [{ id: 'self', name: who.name, kind: 'self', text: who.name, marker: 'crown', colour: '#ffd34d', position: { x: along(mine.x), y: drawn.top, z: along(mine.y) } }];
+    // Guests wait on the free tiles nearest the door.
+    const door = { x: 0, y: doorSlot(grid) }, spare = [];
+    for (let x = 0; x < grid; x++) for (let y = 0; y < grid; y++) if (!taken.has(`${x},${y}`)) spare.push({ x, y, d: Math.hypot(x - door.x, y - door.y) });
+    spare.sort((a, b) => a.d - b.d);
+    const placed = guests.slice(0, Math.min(MAX_GUESTS_SHOWN, spare.length)).map((guest, index) => ({ ...guest, x: along(spare[index].x), y: 0.03, z: along(spare[index].y), ry: Math.PI / 2, scale }));
+    for (const [index, person] of placed.entries()) {
+      const figure = drawAvatar(batch, person.look ?? null, { x: person.x, y: person.y, z: person.z, ry: person.ry, pose: 'stand', seed: person.seed ?? person.id, scale, marker: person.kind === 'npc' ? 'npc' : 'player' });
+      const name = String(person.name ?? '');
+      tagList.push({ id: String(person.id ?? `guest-${index}`), name, kind: person.kind === 'npc' ? 'npc' : 'player', text: person.kind === 'npc' ? name : `@${name}`, marker: person.kind === 'npc' ? 'dot' : 'tag',
+        colour: person.kind === 'npc' ? '#58d68a' : '#6fb4ff', position: { x: person.x, y: figure.top, z: person.z } });
+    }
+    const builtBatch = batch.build(sceneMaterials(kit));
+    for (const mesh of builtBatch.meshes) { mesh.name = `home-people-${mesh.name}`; people.add(mesh); actorMeshes.push(mesh); }
+    return true;
+  }
+
   /** Rebuild if anything visible changed. Returns true when it did. */
   function refresh(state) {
     const next = signature(state);
@@ -285,14 +353,15 @@ export function buildHomeScene(kit) {
     canvas.addEventListener('click', onPick);
   }
 
-  globalThis.window?.addEventListener?.('jaw:home-ui', (event) => {
+  const onUi = (event) => {
     const detail = event.detail || {};
     ui = { selected: typeof detail.selected === 'string' ? detail.selected : null, buy: detail.buy === true, ghost: detail.ghost && FURNITURE[detail.ghost.itemId] ? { ...detail.ghost } : null };
     if (detail.retry) { drawn = ''; status = ''; }
     // Rebuild now so the frame the sender asks the host for shows it; drawing stays the host's job.
     // `undrawn` makes the next update() report a change unless a frame has been drawn meanwhile.
     if (lastState && refresh(lastState)) undrawn = true;
-  });
+  };
+  globalThis.window?.addEventListener?.('jaw:home-ui', onUi);
 
   grid = HOUSES[DEFAULT_HOUSE].grid; tile = ROOM / grid;
   buildRoom();
@@ -304,9 +373,31 @@ export function buildHomeScene(kit) {
     update(state) {
       const first = lastState === null;
       lastState = state;
-      const changed = refresh(state) || first || undrawn;
+      const room = refresh(state);
+      const changed = refreshPeople(state) || room || first || undrawn;
       undrawn = false;
       return changed;
+    },
+    /** The player's avatar: { look, seed, name, pose? }. Returns true when it changed what is drawn. */
+    setPlayer({ look, seed, name, pose } = {}) {
+      who = { look, seed: seed ?? 'you', name: String(name ?? 'You'), pose: pose || null };
+      return refreshPeople(lastState);
+    },
+    /** Guests the host let in, standing by the door: [{ id, name, look?, seed? }]. */
+    setCrowd(list) {
+      guests = (Array.isArray(list) ? list : []).filter((person) => person && typeof person === 'object').slice(0, MAX_GUESTS_SHOWN)
+        .map((person) => ({ id: person.id, name: person.name, kind: person.kind, look: person.look ?? null, seed: person.seed ?? person.id }));
+      refreshPeople(lastState);
+      return tagList.slice(1);
+    },
+    tags: () => tagList.map((tag) => ({ ...tag })),
+    /** Free the avatars and stop listening; the room's own meshes use the kit's shared geometry. */
+    dispose() {
+      releaseObjects(actorMeshes);
+      globalThis.window?.removeEventListener?.('jaw:home-ui', onUi);
+      canvas?.removeEventListener?.('click', onPick);
+      canvas = null;
+      group.parent?.remove(group);
     },
   };
 }

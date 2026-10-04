@@ -155,8 +155,8 @@ export function createBatch(THREE) {
 
 const resources = new WeakMap();
 /**
- * Per-kit shared resources: the three scene materials plus a registry of things to free when
- * the host disposes the kit. The host only knows kit.dispose(), so the first call wraps it.
+ * Per-kit shared resources: the three scene materials plus a registry of scenes and avatars the
+ * host has not disposed itself. Both are freed through kit.onDispose().
  */
 export function kitResources(kit) {
   let entry = resources.get(kit);
@@ -170,15 +170,12 @@ export function kitResources(kit) {
     const disposers = new Set();
     entry = { materials, disposers };
     resources.set(kit, entry);
-    const disposeKit = kit.dispose;
-    kit.dispose = () => {
+    kit.onDispose(() => {
       for (const dispose of [...disposers]) dispose();
       disposers.clear();
       Object.values(materials).forEach((material) => material.dispose());
       resources.delete(kit);
-      kit.dispose = disposeKit;
-      disposeKit?.call(kit);
-    };
+    });
   }
   return entry;
 }

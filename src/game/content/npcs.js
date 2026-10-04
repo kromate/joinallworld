@@ -64,10 +64,24 @@ export const PLAYER_ACTIONS = [
 export const JOKE_FORMULA = { perCharismaLevel: 2, perClosenessPoint: 0.4, min: 5, max: 95, beta: true };
 
 /**
- * The cast: two regulars per venue, placed by venue id. A venue that does not exist in the
- * running build simply has no cast. "Amaka — Serving" at the buka was observed in the
+ * The cast: two regulars per venue, placed by venue id (`at` is where they stand in its scene).
+ * A venue that does not exist in the running build simply has no cast. "Amaka — Serving" at the buka was observed in the
  * reference game; every other name, role and every quote line is original.
  */
+/**
+ * Where each regular stands in their venue's scene: a landmark key of that scene kind
+ * (src/scene/venues-*.js). Original placement; a regular without one joins the general crowd.
+ */
+const NPC_PLACES = {
+  amaka: 'counter', 'baba-sege': 'table', kunle: 'trees', 'mama-ronke': 'drinks', zainab: 'lounge', deji: 'bar',
+  tega: 'desks', halima: 'pitch', 'femi-sax': 'stage', yeni: 'floor', 'oga-tunde': 'benches', chidi: 'banter',
+  'iya-bose': 'produce', emeka: 'gadgets', 'coach-bayo': 'weights', ngozi: 'treadmills', 'mrs-okafor': 'reception', dapo: 'lounge',
+  'dj-kay': 'dj', 'simi-vip': 'bookcase', 'ranger-musa': 'gate', tolu: 'tower', aisha: 'shops', uche: 'cinema',
+  'captain-jide': 'water', blessing: 'bar', 'nurse-kemi': 'reception', 'papa-john': 'waiting', 'mama-bisi': 'chair', funke: 'dryer',
+  somto: 'view', lola: 'lounge', 'sergeant-audu': 'desk', 'corporal-ife': 'bench', 'sister-grace': 'choir', 'usher-ben': 'pews',
+  'alhaji-sani': 'prayer', 'mallam-isa': 'mihrab', 'oap-tobi': 'studio', 'sound-ada': 'control', 'agent-wale': 'queue', 'mrs-bello': 'officials',
+  'protocol-segun': 'steps', 'madam-secretary': 'office',
+};
 const npc = (id, venue, name, role, emoji, quotes, extra = { beta: true }) => ({ id, venue, name, role, emoji, quotes, ...extra });
 export const NPCS = Object.fromEntries([
   npc('amaka', 'amala-shitta', 'Amaka', 'Serving', '👩🏾‍🍳', ['Extra meat is extra money, no vex.', 'This pot has fed half of Surulere today.', 'You look like somebody that skipped breakfast.'], { note: 'Name and role observed in the reference game; quotes are original.' }),
@@ -114,7 +128,7 @@ export const NPCS = Object.fromEntries([
   npc('mrs-bello', 'polling-unit', 'Mrs Bello', 'Electoral officer', '📋', ['Queue here. One person, one line.', 'Ink on the finger, then you may go.']),
   npc('protocol-segun', 'state-house', 'Segun', 'Protocol officer', '🕴🏾', ['His Excellency is in a meeting.', 'Do you have an appointment?']),
   npc('madam-secretary', 'state-house', 'Madam Abike', 'Secretary', '🗂️', ['Drop your letter, we will get back to you.', 'The file is on the table.']),
-].map((entry) => [entry.id, entry]));
+].map((entry) => [entry.id, { ...entry, at: NPC_PLACES[entry.id] ?? null }]));
 
 /**
  * Family and phone contacts (original beta feature). A "Mummy" contact who can be called was

@@ -1,11 +1,12 @@
 /**
  * OWNER: scenes
- * Development-only scene viewer (see harness.html). It mirrors the host's renderer, camera and
- * light setup, builds one scene kind from the query string and draws it once per change.
+ * Development-only scene viewer (see harness.html). It uses the host's renderer and camera
+ * settings and the host's own lights (createHostLights), builds one scene kind from the query string and draws it once per change.
  * Nothing here runs in the game: the production build does not include this page.
  */
 import { createKit } from './kit.js';
 import { buildVenueScene, KINDS, TIMES } from './venue-scenes.js';
+import { createHostLights } from '../venue-world.js';
 
 const params = new URLSearchParams(location.search);
 const settings = {
@@ -27,14 +28,7 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 stage.appendChild(renderer.domElement);
 const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 150);
-scene.add(new THREE.HemisphereLight('#bdd4e7', '#273e2b', 1.6));
-const sun = new THREE.DirectionalLight('#c7dbec', 1.4);
-sun.position.set(-12, 25, 8);
-sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048);
-Object.assign(sun.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 70 });
-sun.shadow.normalBias = 0.04;
-scene.add(sun);
+const lights = createHostLights(THREE, scene);
 
 let entry = null, renderCount = 0;
 const names = ['Ada', 'Tunde', 'Zainab', 'Chidi', 'Bisi', 'Emeka', 'Kemi', 'Sani', 'Ngozi', 'Femi', 'Amaka', 'Yusuf'];
@@ -47,6 +41,7 @@ function draw() {
   camera.lookAt(0, 0.7, 0);
   camera.updateProjectionMatrix();
   renderer.setSize(width, height, false);
+  lights.apply(entry.lighting());
   renderer.setClearColor(entry.background);
   renderer.render(scene, camera);
   renderCount += 1;

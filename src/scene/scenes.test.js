@@ -9,7 +9,10 @@ import { SCENES, KINDS, TIMES, LIGHTING, MAX_CROWD, DEFAULT_CAMERA, buildVenueSc
 import { LOOK_OPTIONS, POSES, normalizeLook, drawAvatar, buildAvatar, buildCrowd, appearanceToLook } from './characters.js';
 import { createBatch, sceneMaterials } from './build.js';
 import { sign, textWidth, table, chair, bench, stall, speaker, screen, plant, palm, lampPost, signBoard } from './props.js';
-import { createVenueWorld } from '../venue-world.js';
+import { createVenueWorld, createHostLights, sceneVenue, HOST_LIGHTING } from '../venue-world.js';
+import { VENUES } from '../game/content/venues.js';
+import { NPCS } from '../game/content/npcs.js';
+import { spotsOf } from '../life.js';
 
 const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse'];
 const TRIANGLE_BUDGET = 15000, DRAW_CALL_BUDGET = 60;
@@ -71,23 +74,26 @@ test('each scene builds within budget with a full crowd, and disposes without le
   assert.equal(report.length, EXPECTED_KINDS.length + 3);
 });
 
-test('hiding a scene frees its geometry and showing it rebuilds the same scene', () => {
+test('dispose() frees a scene’s geometry, a rebuild gives the same scene, and the kit frees what the host never disposed', () => {
   const leaked = trackGeometries((live) => {
     const kit = createKit();
     const base = live.size;
     const entry = SCENES.market(kit, venueOf('market'));
     const shown = entry.stats();
     assert.ok(live.size > base);
+    // Hiding is only hiding: a scene no longer watches group.visible to learn about the host.
     entry.group.visible = false;
     assert.equal(entry.group.visible, false);
-    assert.equal(live.size, base, 'hidden scene holds no geometry');
+    assert.ok(live.size > base, 'a hidden scene keeps its geometry until the host disposes it');
+    entry.dispose();
+    assert.equal(live.size, base, 'a disposed scene holds no geometry');
     assert.equal(entry.group.children.length, 0);
     assert.equal(entry.stats().triangles, 0);
-    assert.ok(entry.anchors.people, 'anchors stay available while hidden');
-    entry.group.visible = true;
-    assert.deepEqual(entry.stats(), shown);
+    assert.ok(entry.anchors.people, 'anchors stay readable after dispose');
+    const again = SCENES.market(kit, venueOf('market'));
+    assert.deepEqual(again.stats(), shown, 'the next visit builds the same scene');
     kit.dispose();
-    assert.equal(entry.group.children.length, 0, 'kit.dispose() frees scenes the host never disposed');
+    assert.equal(again.group.children.length, 0, 'kit.dispose() frees scenes the host never disposed');
   });
   assert.equal(leaked.size, 0);
 });
@@ -113,12 +119,16 @@ test('unknown kinds fall back to the generic plaza; variants change the scene', 
   const club = buildVenueScene(kit, venueOf('club')).stats().triangles;
   const speakeasy = buildVenueScene(kit, venueOf('club', { variant: 'speakeasy' })).stats().triangles;
   assert.notEqual(club, speakeasy);
-  assert.equal(buildVenueScene(kit, { id: 'library', scene: { kind: 'club' } }).stats().triangles, speakeasy, 'the library venue is the speakeasy');
-  assert.equal(buildVenueScene(kit, venueOf('library')).stats().triangles, speakeasy);
+  // The variant is declared by the venue content, never guessed from the venue id.
+  assert.equal(buildVenueScene(kit, { id: 'library', scene: { kind: 'club' } }).stats().triangles, club, 'no id-based default');
+  assert.equal(VENUES.library.scene.variant, 'speakeasy');
+  assert.equal(buildVenueScene(kit, VENUES.library).stats().triangles > 1500, true);
+  assert.equal(buildVenueScene(kit, venueOf('library')).stats().triangles, speakeasy, 'the `library` kind alias is still the speakeasy');
   const church = buildVenueScene(kit, venueOf('worship')).stats().triangles;
   const mosque = buildVenueScene(kit, venueOf('worship', { variant: 'mosque' })).stats().triangles;
   assert.notEqual(church, mosque);
-  assert.equal(buildVenueScene(kit, { id: 'mosque', scene: { kind: 'worship' } }).stats().triangles, mosque);
+  assert.equal(buildVenueScene(kit, { id: 'mosque', scene: { kind: 'worship' } }).stats().triangles, church, 'no id-based default');
+  assert.deepEqual([VENUES.mosque.scene.variant, VENUES.church.scene.variant], ['mosque', 'church']);
   assert.equal(buildVenueScene(kit, venueOf('worship', { variant: 'church' })).stats().triangles, church);
   kit.dispose();
 });
@@ -183,7 +193,7 @@ test('update(state) reports a change only when something visible changed', () =>
   kit.dispose();
 });
 
-test('lighting presets exist for every mood and time and are applied to the host lights while showing', () => {
+test('lighting presets exist for every mood and time; the scene reports its preset and the host applies it', () => {
   for (const mood of ['outdoor', 'indoor', 'club']) for (const time of TIMES) {
     const preset = LIGHTING[mood][time];
     assert.ok(preset.sky.length === 2 && preset.hemi.length === 3 && preset.sun.length === 3 && preset.glow > 0 && preset.lamps > 0, `${mood} ${time}`);
@@ -192,22 +202,46 @@ test('lighting presets exist for every mood and time and are applied to the host
   assert.ok(LIGHTING.outdoor.night.hemi[2] < LIGHTING.outdoor.day.hemi[2]);
   const kit = createKit();
   const scene = new THREE.Scene();
-  const hemi = new THREE.HemisphereLight('#bdd4e7', '#273e2b', 1.6), sun = new THREE.DirectionalLight('#c7dbec', 1.4);
-  sun.position.set(-12, 25, 8);
-  scene.add(hemi, sun);
+  const lights = createHostLights(THREE, scene);
   const entry = buildVenueScene(kit, venueOf('rooftop', { time: 'night' }));
-  entry.group.visible = false;
   scene.add(entry.group);
-  assert.equal(hemi.intensity, 1.6, 'a hidden scene leaves the host lights alone');
-  entry.group.visible = true;
-  assert.equal(hemi.intensity, LIGHTING.outdoor.night.hemi[2]);
-  assert.equal(sun.intensity, LIGHTING.outdoor.night.sun[1]);
-  assert.equal(sceneMaterials(kit).glow.color.r, LIGHTING.outdoor.night.glow);
-  entry.group.visible = false;
-  assert.equal(hemi.intensity, 1.6);
-  assert.equal(sun.intensity, 1.4);
-  assert.deepEqual(sun.position.toArray(), [-12, 25, 8]);
-  assert.equal(`#${hemi.color.getHexString()}`, '#bdd4e7');
+  assert.equal(entry.lighting(), LIGHTING.outdoor.night);
+  assert.equal(lights.hemi.intensity, HOST_LIGHTING.hemi[2], 'a scene never reaches into the host: the lights are untouched until the host applies the preset');
+  assert.equal(sceneMaterials(kit).glow.color.r, LIGHTING.outdoor.night.glow, 'its own lit surfaces follow the time of day');
+  lights.apply(entry.lighting());
+  assert.equal(lights.hemi.intensity, LIGHTING.outdoor.night.hemi[2]);
+  assert.equal(lights.sun.intensity, LIGHTING.outdoor.night.sun[1]);
+  lights.apply(undefined);
+  assert.equal(lights.hemi.intensity, 1.6); assert.equal(lights.sun.intensity, 1.4);
+  assert.deepEqual(lights.sun.position.toArray(), [-12, 25, 8]);
+  assert.equal(`#${lights.hemi.color.getHexString()}`, '#bdd4e7');
+  kit.dispose();
+});
+
+test('every spot of every venue stands at a landmark of its scene, and every regular has a place', () => {
+  const kit = createKit();
+  for (const venue of Object.values(VENUES)) {
+    if (venue.scene.kind === 'home') continue;
+    const seen = sceneVenue(venue.id);
+    assert.deepEqual(seen.scene.spots.map((spot) => spot.id), spotsOf(venue.id).map((spot) => spot.id), `${venue.id}: spots added by other systems are passed to the scene`);
+    const entry = buildVenueScene(kit, seen);
+    for (const spot of seen.scene.spots) assert.ok(entry.anchors[spot.id]?.landmark, `${venue.id}.${spot.id} is on open floor`);
+    for (const [spot, landmark] of Object.entries(venue.scene.anchors || {})) {
+      assert.ok(seen.scene.spots.some((item) => item.id === spot), `${venue.id}: anchor hint for unknown spot ${spot}`);
+      assert.equal(entry.anchors[spot].landmark, landmark, `${venue.id}.${spot}`);
+    }
+    for (const npc of Object.values(NPCS).filter((item) => item.venue === venue.id)) assert.ok(entry.anchors[npc.at]?.landmark, `${npc.id} stands at ${npc.at}`);
+    entry.dispose();
+  }
+  // A running activity takes the pose of the spot it happens at; leaving shows the avatar walking.
+  const park = buildVenueScene(kit, sceneVenue('park'));
+  assert.equal(park.update({ location: 'park', spot: 'trees' }), true);
+  const standing = park.tags()[0].position;
+  assert.equal(park.update({ location: 'park', spot: 'trees', activeAction: { kind: 'activity', id: 'chill' } }), true, 'starting an activity redraws the avatar');
+  const sitting = park.tags()[0].position;
+  assert.ok(sitting.y < standing.y && (sitting.x !== standing.x || sitting.z !== standing.z), 'chilling under the trees sits on the bench');
+  assert.equal(park.update({ location: 'park', spot: 'trees', activeAction: { kind: 'travel', id: 'home' } }), true);
+  assert.deepEqual([park.tags()[0].position.x, park.tags()[0].position.z], [standing.x, standing.z], 'a traveller is not posed at the bench');
   kit.dispose();
 });
 

@@ -10,7 +10,9 @@
  *     zone: 'mainland' | 'island' | 'east',    // landmass; crossing the lagoon is a long trip
  *     map: { x, y },                           // position in percent of the city map (1000 × 700 units)
  *     ambient: [line, ...],                    // rotating one-liners for the venue card
- *     scene: { kind },                         // read by src/scene/venue-scenes.js
+ *     scene: { kind, variant?, anchors? },     // read by src/scene/venue-scenes.js. `variant` picks the look where one kind has
+ *                                              // several (club: speakeasy; worship: church | mosque). `anchors` pins a spot id —
+ *                                              // including spots other systems add, such as 'work' — to a landmark of the scene.
  *     spots: { [spotId]: { id, label, icon?, caption?, activities: [activityDef, ...] } },
  *   }
  * The first spot of a venue is where a player stands on arrival. Other systems (jobs, home
@@ -87,7 +89,7 @@ export const VENUES = {
     id: 'library', label: 'The Library', district: 'Victoria Island', icon: '📚', category: 'nightlife',
     description: 'A lounge hidden behind a wall of books: low lights, cocktails and a dance floor that never closes.',
     // observed open in the small hours; it stays open round the clock here
-    zone: 'island', map: { x: 64, y: 82 }, scene: { kind: 'club' },
+    zone: 'island', map: { x: 64, y: 82 }, scene: { kind: 'club', variant: 'speakeasy' },
     ambient: ['Somebody just found the right book', 'The DJ is easing into amapiano', 'Candles flicker along the shelves', 'A birthday crew is filling the lounge'],
     spots: {
       bookcase: { id: 'bookcase', label: 'Secret bookcase', icon: '📚', caption: 'One of these books is a door handle', activities: [
@@ -134,7 +136,7 @@ export const VENUES = {
   radio: {
     id: 'radio', label: 'Naija Radio', district: 'Ikeja', icon: '📻', category: 'work',
     description: 'The station the whole city argues with. Walk in, call in, or get on air.',
-    zone: 'mainland', map: { x: 16, y: 27 }, scene: { kind: 'radio' },
+    zone: 'mainland', map: { x: 16, y: 27 }, scene: { kind: 'radio', anchors: { reception: 'lounge', studio: 'studio', booth: 'control', newsroom: 'news' } },
     ambient: ['The ON AIR light is red', 'A caller is shouting about traffic', 'Jingle rehearsal down the corridor', 'The newsroom printer has jammed again'],
     spots: {
       reception: { id: 'reception', label: 'Reception', icon: '🛎️', caption: 'Sign the visitors’ book', activities: [
@@ -164,7 +166,7 @@ export const VENUES = {
     id: 'shrine', label: 'Afrika Shrine', district: 'Ikeja', icon: '🎷', category: 'nightlife',
     description: 'Afrobeat’s home ground. Horns, drums, yabis and a dance floor that never empties.',
     hours: { open: 16, close: 5 },
-    zone: 'mainland', map: { x: 26, y: 13 }, scene: { kind: 'shrine' },
+    zone: 'mainland', map: { x: 26, y: 13 }, scene: { kind: 'shrine', anchors: { yard: 'grill', work: 'backstage' } },
     ambient: ['The horn section is tuning up', 'Somebody is preaching about the government', 'The drums have started a call and response', 'Suya smoke is drifting over the yard'],
     spots: {
       stage: { id: 'stage', label: 'Main stage', icon: '🎷', caption: 'The band never really stops', activities: [
@@ -194,7 +196,7 @@ export const VENUES = {
     id: 'viewing-centre', label: 'Viewing Centre', district: 'Ojuelegba', icon: '⚽', category: 'fun',
     description: 'Plastic chairs, one giant screen and two hundred head coaches.',
     hours: { open: 10, close: 2 },
-    zone: 'mainland', map: { x: 35, y: 28 }, scene: { kind: 'viewing' },
+    zone: 'mainland', map: { x: 35, y: 28 }, scene: { kind: 'viewing', anchors: { screen: 'benches', benches: 'banter', pitch: 'gate', kiosk: 'snacks', work: 'gate' } },
     ambient: ['The generator just kicked in — the match is safe', 'Someone is insisting it was offside', 'A late goal just sent chairs flying', 'The kiosk boy is weaving through with cold drinks'],
     spots: {
       screen: { id: 'screen', label: 'Big screen', icon: '📺', caption: 'Front row or nothing', activities: [
@@ -222,7 +224,7 @@ export const VENUES = {
     id: 'amala-shitta', label: 'Amala Shitta', district: 'Surulere', icon: '🍲', category: 'food',
     description: 'A famous Surulere buka: amala, gbegiri and ewedu, and a queue that is half the fun.',
     // observed open in the small hours, so it never closes here
-    zone: 'mainland', map: { x: 44, y: 13 }, scene: { kind: 'buka' },
+    zone: 'mainland', map: { x: 44, y: 13 }, scene: { kind: 'buka', anchors: { work: 'wash' } },
     ambient: ['“Add extra pepper” — a regular, loudly', 'A new pot of ewedu has just landed', 'Fuji is playing on a small radio', 'The line is long, but it is moving'],
     spots: {
       counter: { id: 'counter', label: 'Buka counter', icon: '🍲', caption: 'Point at what you want', activities: [
@@ -252,7 +254,7 @@ export const VENUES = {
     id: 'cchub', label: 'CcHub', district: 'Yaba', icon: '💻', category: 'work',
     description: 'The centre of Yaba’s tech scene: quick Wi-Fi and even quicker founders.',
     hours: { open: 8, close: 22 }, // 8AM opening observed in the reference game; closing time is an original beta value
-    zone: 'mainland', map: { x: 62, y: 13 }, scene: { kind: 'hub' },
+    zone: 'mainland', map: { x: 62, y: 13 }, scene: { kind: 'hub', anchors: { stage: 'pitch', 'pitch-room': 'pitch', cafe: 'coffee', work: 'whiteboard' } },
     ambient: ['Someone just shipped to production on a Friday', 'A founder is drawing boxes on the whiteboard', 'The Wi-Fi is flying today', 'Demo day posters are going up'],
     spots: {
       desks: { id: 'desks', label: 'Hot desks', icon: '💻', caption: 'Find a socket, claim a chair', activities: [
@@ -282,7 +284,7 @@ export const VENUES = {
   hospital: {
     id: 'hospital', label: 'General Hospital', district: 'Gbagada', icon: '🏥', category: 'care',
     description: 'Doctors, a pharmacy and a free clinic. Open all day and all night.',
-    zone: 'mainland', map: { x: 72, y: 28 }, scene: { kind: 'hospital' },
+    zone: 'mainland', map: { x: 72, y: 28 }, scene: { kind: 'hospital', anchors: { clinic: 'doctor', work: 'reception' } },
     ambient: ['A nurse is calling the next number', 'The corridor smells of disinfectant', 'Someone’s auntie brought food for the whole ward', 'The pharmacy shutter just went up'],
     spots: {
       clinic: { id: 'clinic', label: 'Outpatient clinic', icon: '🩺', caption: 'Take a number, take a seat', activities: [
@@ -307,7 +309,7 @@ export const VENUES = {
     id: 'salon', label: 'Mama Bisi’s Salon', district: 'Bariga', icon: '💇🏾', category: 'care',
     description: 'Braids, cuts, nails and every piece of news in the neighbourhood.',
     hours: { open: 8, close: 20 },
-    zone: 'mainland', map: { x: 83, y: 14 }, scene: { kind: 'salon' },
+    zone: 'mainland', map: { x: 83, y: 14 }, scene: { kind: 'salon', anchors: { bench: 'dryer' } },
     ambient: ['The dryer is roaring', 'Mama Bisi is telling the story again', 'Someone is choosing between three shades of attachment', 'Nollywood is playing on the wall TV'],
     spots: {
       chairs: { id: 'chairs', label: 'Styling chairs', icon: '💇🏾', caption: 'Sit still — this will take a while', activities: [
@@ -336,7 +338,7 @@ export const VENUES = {
     id: 'church', label: 'Church', district: 'Lagos Island', icon: '⛪', category: 'care',
     description: 'A cool, quiet nave, a loud choir and jollof after service.',
     hours: { open: 6, close: 21 },
-    zone: 'island', map: { x: 11, y: 58 }, scene: { kind: 'worship' },
+    zone: 'island', map: { x: 11, y: 58 }, scene: { kind: 'worship', variant: 'church', anchors: { hall: 'offering' } },
     ambient: ['The organist is practising', 'Ushers are arranging the offering baskets', 'Choir robes are being ironed', 'A harmattan breeze moves through the louvres'],
     spots: {
       pews: { id: 'pews', label: 'Pews', icon: '⛪', caption: 'Find a seat near the fan', activities: [
@@ -363,7 +365,7 @@ export const VENUES = {
     id: 'mosque', label: 'Mosque', district: 'Lagos Island', icon: '🕌', category: 'care',
     description: 'A wide, calm prayer hall, running water for ablution and a shaded courtyard.',
     hours: { open: 5, close: 22 },
-    zone: 'island', map: { x: 17, y: 70 }, scene: { kind: 'worship' },
+    zone: 'island', map: { x: 17, y: 70 }, scene: { kind: 'worship', variant: 'mosque', anchors: { hall: 'prayer', courtyard: 'charity' } },
     ambient: ['Sandals are lined up at the door', 'The call to prayer carries over the rooftops', 'Children are reciting in the courtyard', 'Someone is sharing dates from a tray'],
     spots: {
       hall: { id: 'hall', label: 'Prayer hall', icon: '🕌', caption: 'Shoes off, phone silent', activities: [
@@ -389,7 +391,7 @@ export const VENUES = {
     id: 'market', label: 'Market', district: 'Lagos Island', icon: '🧺', category: 'work',
     description: 'Fabric, pepper, plastics and noise. Bring your haggling voice.',
     hours: { open: 6, close: 20 },
-    zone: 'island', map: { x: 24, y: 82 }, scene: { kind: 'market' },
+    zone: 'island', map: { x: 24, y: 82 }, scene: { kind: 'market', anchors: { stalls: 'fabric', food: 'produce', spice: 'provisions', wholesale: 'porter', work: 'gadgets' } },
     ambient: ['“Customer! Come and see!”', 'A wheelbarrow is forcing its way through', 'New lace just arrived on the third row', 'Somebody is counting change very slowly'],
     spots: {
       stalls: { id: 'stalls', label: 'Fabric stalls', icon: '🧵', caption: 'Ankara to the ceiling', activities: [
@@ -421,7 +423,7 @@ export const VENUES = {
   police: {
     id: 'police', label: 'Police Station', district: 'Lagos Island', icon: '🚓', category: 'civic',
     description: 'A front desk, a parade yard and a community room. Sort things out properly.',
-    zone: 'island', map: { x: 31, y: 58 }, scene: { kind: 'police' },
+    zone: 'island', map: { x: 31, y: 58 }, scene: { kind: 'police', anchors: { yard: 'people', community: 'board' } },
     ambient: ['The desk sergeant is writing in a very large book', 'Boots are drumming in the yard', 'A ceiling fan is losing its battle', 'Somebody came to report a missing goat'],
     spots: {
       desk: { id: 'desk', label: 'Front desk', icon: '📒', caption: 'State your name and business', activities: [
@@ -445,7 +447,7 @@ export const VENUES = {
     id: 'polling-unit', label: 'Polling Unit', district: 'Lagos Island', icon: '🗳️', category: 'civic',
     description: 'A canopy, a table and a queue with opinions. Where the city chooses.',
     hours: { open: 8, close: 18 },
-    zone: 'island', map: { x: 38, y: 70 }, scene: { kind: 'polling' },
+    zone: 'island', map: { x: 38, y: 70 }, scene: { kind: 'polling', anchors: { table: 'officials', canopy: 'results' } },
     ambient: ['Agents are comparing their lists', 'The queue has an unofficial chairman', 'Somebody brought a stool from home', 'Ink pads are drying in the sun'],
     spots: {
       queue: { id: 'queue', label: 'The queue', icon: '🧍🏾', caption: 'No shunting', activities: [
@@ -468,7 +470,7 @@ export const VENUES = {
     id: 'state-house', label: 'Lagos State House', district: 'Marina', icon: '🏛️', category: 'civic',
     description: 'White columns facing the lagoon. Tours, town halls and the Governor’s business.',
     hours: { open: 9, close: 17 },
-    zone: 'island', map: { x: 35, y: 95 }, scene: { kind: 'statehouse' },
+    zone: 'island', map: { x: 35, y: 95 }, scene: { kind: 'statehouse', anchors: { gate: 'steps', gallery: 'office', gardens: 'gardens', press: 'podium' } },
     ambient: ['A convoy is idling at the gate', 'Gardeners are trimming the hedges', 'A town hall notice is pinned to the board', 'Press crews are setting up tripods'],
     spots: {
       gate: { id: 'gate', label: 'Front gate', icon: '🚪', caption: 'Visitors sign in here', activities: [
@@ -494,7 +496,7 @@ export const VENUES = {
     id: 'i-fitness', label: 'i-Fitness', district: 'Victoria Island', icon: '🏋🏾', category: 'care',
     description: 'Weights, classes and mirrors. Leg day is every day.',
     hours: { open: 5, close: 23 },
-    zone: 'island', map: { x: 52, y: 58 }, scene: { kind: 'gym' },
+    zone: 'island', map: { x: 52, y: 58 }, scene: { kind: 'gym', anchors: { studio: 'mats', bar: 'desk', showers: 'desk', work: 'treadmills' } },
     ambient: ['Someone just dropped a very heavy bar', 'The aerobics class is counting in Yoruba', 'A trainer is shouting “one more!”', 'The smoothie blender is screaming'],
     spots: {
       weights: { id: 'weights', label: 'Weights floor', icon: '🏋🏾', caption: 'Re-rack your plates', activities: [
@@ -520,7 +522,7 @@ export const VENUES = {
     id: 'office', label: 'Office', district: 'Marina', icon: '🏢', category: 'work',
     description: 'Marina Towers: glass, lifts, lanyards and the best air-conditioning on the island.',
     hours: { open: 7, close: 20 },
-    zone: 'island', map: { x: 58, y: 70 }, scene: { kind: 'office' },
+    zone: 'island', map: { x: 58, y: 70 }, scene: { kind: 'office', anchors: { lobby: 'reception', canteen: 'lounge', floor: 'desks', work: 'desks' } },
     ambient: ['The lift is stuck on the ninth floor again', 'Someone is on a very loud speakerphone', 'Security is checking ID cards', 'A printer is producing somebody’s wedding invitations'],
     spots: {
       lobby: { id: 'lobby', label: 'Lobby', icon: '🛗', caption: 'Lanyards and marble', activities: [
@@ -549,7 +551,7 @@ export const VENUES = {
     id: 'quilox', label: 'Quilox', district: 'Victoria Island', icon: '🪩', category: 'nightlife',
     description: 'The big-night-out club: lasers, sparklers and tables that cost more than rent.',
     hours: { open: 20, close: 6 },
-    zone: 'island', map: { x: 70, y: 58 }, scene: { kind: 'club' },
+    zone: 'island', map: { x: 70, y: 58 }, scene: { kind: 'club', anchors: { rope: 'bookcase', vip: 'lounge', work: 'dj' } },
     ambient: ['Sparklers are heading for a VIP table', 'The bouncer is reading a very short list', 'The bass is rearranging people’s organs', 'Somebody just sprayed a whole bundle'],
     spots: {
       rope: { id: 'rope', label: 'Velvet rope', icon: '🚧', caption: 'Dress well, smile at the bouncer', activities: [
@@ -577,7 +579,7 @@ export const VENUES = {
     id: 'rooftop', label: 'Ivory Rooftop', district: 'Victoria Island', icon: '🌇', category: 'nightlife',
     description: 'A terrace above the island: sunset, grills, a pool and people who came to be seen.',
     hours: { open: 12, close: 2 },
-    zone: 'island', map: { x: 76, y: 70 }, scene: { kind: 'rooftop' },
+    zone: 'island', map: { x: 76, y: 70 }, scene: { kind: 'rooftop', anchors: { stage: 'dj', work: 'view' } },
     ambient: ['The skyline is turning orange', 'A saxophonist is warming up', 'Ring lights are out in force', 'The grill man is fanning the coals'],
     spots: {
       terrace: { id: 'terrace', label: 'Terrace', icon: '🌇', caption: 'Best view on the island', activities: [
@@ -631,7 +633,7 @@ export const VENUES = {
     id: 'palms', label: 'The Palms', district: 'Lekki', icon: '🛍️', category: 'fun',
     description: 'The mall: a cinema, a food court, shops and the coldest air in Lekki.',
     hours: { open: 9, close: 22 },
-    zone: 'east', map: { x: 93, y: 69 }, scene: { kind: 'mall' },
+    zone: 'east', map: { x: 93, y: 69 }, scene: { kind: 'mall', anchors: { arcade: 'tech', work: 'shops' } },
     ambient: ['The cinema queue is curling round the corner', 'A toddler has escaped on the escalator', 'Somebody is doing a photoshoot by the fountain', 'There is a sale, allegedly'],
     spots: {
       cinema: { id: 'cinema', label: 'Cinema', icon: '🎬', caption: 'Now showing: three Nollywood premieres', activities: [
@@ -659,7 +661,7 @@ export const VENUES = {
   beach: {
     id: 'beach', label: 'Beach', district: 'Lekki', icon: '🏖️', category: 'fun',
     description: 'Atlantic waves, cabanas, horses and grilled fish. Never closes.',
-    zone: 'east', map: { x: 89, y: 82 }, scene: { kind: 'beach' },
+    zone: 'east', map: { x: 89, y: 82 }, scene: { kind: 'beach', anchors: { grill: 'bar' } },
     ambient: ['The tide is coming in', 'A horse is posing for photographs', 'Fish is hissing on the grill', 'Somebody’s speaker is louder than the sea'],
     spots: {
       shore: { id: 'shore', label: 'Shoreline', icon: '🌊', caption: 'Wet sand, loud waves', activities: [

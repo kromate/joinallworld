@@ -18,22 +18,28 @@
  * fixes the lighting; otherwise it follows Lagos time from state.t), spots: [{ id, label }]
  * (defaults to the venue's own spots), look, seed }.
  *
+ * venue.scene.anchors: { [spotId]: landmarkKey } pins a spot to one of the scene's landmarks;
+ * spots without a hint are matched by their id and label, and only then take what is left.
+ *
  * BATTERY RULE. Scenes are static: no requestAnimationFrame, timers or per-frame work, and a
  * scene never renders by itself. A venue is baked into a few merged meshes (src/scene/build.js);
  * state changes rebuild only the small "actors" batch (your avatar, the crowd, the spot ring)
- * and report true so the host draws exactly one frame. Hiding a scene (group.visible = false,
- * which is what the host does on a location change) frees its geometry; showing it rebuilds it.
+ * and report true so the host draws exactly one frame. The host (src/venue-world.js) calls
+ * dispose() when the player leaves the venue, which frees every geometry the scene made.
  *
- * Extensions on the returned entry (all optional for the host):
+ * What the host does with an entry (every member is optional for the host):
+ *   lighting()                  the preset in use (LIGHTING[mood][time]); the HOST applies hemi
+ *                               and sun to its own lights. A scene never touches the host.
+ *   background                  re-read by the host whenever update() returns true
  *   kind, mood                  resolved kind and lighting mood ('outdoor' | 'indoor' | 'club')
  *   anchors[spotId] → { x, y, z, ry, landmark }   where a spot is in the scene; also keyed by landmark
  *   time                        current 'day' | 'dusk' | 'night'
- *   lighting()                  the preset in use (LIGHTING[mood][time])
  *   setTime(time) / setSpot(id) / setPlayer({ look, seed, pose, name }) → boolean (changed)
  *   setCrowd(people) → tags     other players and NPCs; see buildCrowd in characters.js
  *   tags()                      name-tag data for you and the crowd, for the DOM layer
  *   stats()                     { triangles, meshes, drawCalls, lights, geometries }
- *   dispose()                   free everything and detach from the parent
+ *   dispose()                   free everything and detach from the parent (the host calls it on
+ *                               a location change and when it is disposed itself)
  */
 import { createBatch, kitResources, releaseObjects, GLOW } from './build.js';
 import { drawAvatar, drawCrowd } from './characters.js';
@@ -83,36 +89,7 @@ export const lightingFor = (mood, time) => (LIGHTING[mood] || LIGHTING.outdoor)[
 const DEFS = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES };
 /** Kinds that are another kind with a default variant. */
 const ALIASES = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };
-const VARIANT_BY_VENUE = { library: 'speakeasy', mosque: 'mosque', church: 'church' };
 export const KINDS = Object.freeze(Object.keys(DEFS).filter((kind) => kind !== 'generic'));
-
-// Host lights are borrowed while one of these scenes is showing and put back when it hides.
-const borrowed = new WeakMap();
-function hostLights(group) {
-  const scene = group.parent;
-  if (!scene) return null;
-  const hemi = scene.children.find((child) => child.isHemisphereLight), sun = scene.children.find((child) => child.isDirectionalLight);
-  return hemi && sun ? { scene, hemi, sun } : null;
-}
-function applyHostLighting(group, preset) {
-  const lights = hostLights(group);
-  if (!lights) return;
-  const { scene, hemi, sun } = lights;
-  if (!borrowed.has(scene)) {
-    borrowed.set(scene, { hemi: [hemi.color.clone(), hemi.groundColor.clone(), hemi.intensity], sun: [sun.color.clone(), sun.intensity, sun.position.clone()] });
-  }
-  hemi.color.set(preset.hemi[0]); hemi.groundColor.set(preset.hemi[1]); hemi.intensity = preset.hemi[2];
-  sun.color.set(preset.sun[0]); sun.intensity = preset.sun[1]; sun.position.set(...preset.sun[2]);
-}
-function restoreHostLighting(group) {
-  const lights = hostLights(group);
-  const saved = lights && borrowed.get(lights.scene);
-  if (!saved) return;
-  const { scene, hemi, sun } = lights;
-  hemi.color.copy(saved.hemi[0]); hemi.groundColor.copy(saved.hemi[1]); hemi.intensity = saved.hemi[2];
-  sun.color.copy(saved.sun[0]); sun.intensity = saved.sun[1]; sun.position.copy(saved.sun[2]);
-  borrowed.delete(scene);
-}
 
 function skyDome(kit, materials) {
   const { THREE } = kit;
@@ -135,16 +112,25 @@ function paintSky(THREE, mesh, [horizon, zenith]) {
   color.needsUpdate = true;
 }
 
-/** Match venue spots to the landmarks a scene offers; leftovers take unused landmarks, then spare ground. */
-function resolveAnchors(landmarks, spots, spare) {
+/**
+ * Match venue spots to the landmarks a scene offers: an explicit hint first (several spots may
+ * share one landmark), then the spot's id and label; leftovers take unused landmarks, then spare ground.
+ */
+function resolveAnchors(landmarks, spots, spare, hints = {}) {
   const anchors = {}, used = new Set();
   const place = (landmark) => ({ x: landmark.x, y: landmark.y || 0, z: landmark.z, ry: landmark.ry || 0, landmark: landmark.key, act: landmark.act || null });
   for (const landmark of landmarks) anchors[landmark.key] = place(landmark);
-  const pending = [];
+  const pending = [], unhinted = [];
   for (const spot of spots) {
     if (!spot || typeof spot.id !== 'string') continue;
+    const wanted = Object.hasOwn(hints, spot.id) ? hints[spot.id] : spot.anchor;
+    const pinned = typeof wanted === 'string' ? landmarks.find((landmark) => landmark.key === wanted) : null;
+    if (pinned) { used.add(pinned.key); anchors[spot.id] = place(pinned); } else unhinted.push(spot);
+  }
+  for (const spot of unhinted) {
     const text = `${spot.id} ${spot.label || ''}`.toLowerCase();
-    const match = landmarks.find((landmark) => !used.has(landmark.key) && landmark.key === spot.id)
+    // A spot named exactly like a landmark always gets it, even when a hint also sends another spot there.
+    const match = landmarks.find((landmark) => landmark.key === spot.id)
       || landmarks.find((landmark) => !used.has(landmark.key) && landmark.match?.test(text));
     if (match) { used.add(match.key); anchors[spot.id] = place(match); } else pending.push(spot);
   }
@@ -158,7 +144,7 @@ function resolveAnchors(landmarks, spots, spare) {
     return { x: x + ring * 0.9, y: 0, z: z + ring * 0.9, ry: 0, landmark: null, act: null };
   };
   for (const spot of pending) anchors[spot.id] = fallback();
-  return { anchors, fallback };
+  return { anchors, fallback, hint: (id) => (typeof hints[id] === 'string' && landmarks.find((landmark) => landmark.key === hints[id])) || null, place };
 }
 
 function createEntry(kit, venue, def, kind, defaultVariant) {
@@ -169,7 +155,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   const spots = Array.isArray(options.spots) ? options.spots : Object.values(venue?.spots || {});
   const context = {
     kind, venue, spots,
-    variant: typeof options.variant === 'string' ? options.variant : defaultVariant || VARIANT_BY_VENUE[venue?.id] || null,
+    variant: typeof options.variant === 'string' ? options.variant : defaultVariant || null,
     accent: typeof options.palette === 'string' && /^#[0-9a-f]{6}$/i.test(options.palette) ? options.palette : def.accent || '#e0a43a',
     label: String(venue?.label || kind),
   };
@@ -183,7 +169,8 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     spot: null, look: options.look ?? null, lookKey: JSON.stringify(options.look ?? null), seed: options.seed ?? 'you', name: 'You',
     pose: 'stand', poseFixed: false, crowd: [],
   };
-  let layout = null, resolved = null, live = false, visible = true, disposed = false;
+  const hints = options.anchors && typeof options.anchors === 'object' ? options.anchors : {};
+  let layout = null, resolved = null, live = false, disposed = false;
   const staticObjects = [], actorObjects = [];
   let staticTriangles = 0, actorTriangles = 0, crowdTags = [], selfTag = null, sky = null;
 
@@ -194,7 +181,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     layout.crowd ||= [];
     layout.spare ||= [[0, 4], [3, 5], [-3, 5], [5, 2], [-5, 2], [0, 7]];
     if (!resolved) {
-      resolved = resolveAnchors(layout.spots, spots, layout.spare);
+      resolved = resolveAnchors(layout.spots, spots, layout.spare, hints);
       view.spot = spots.find((spot) => spot && resolved.anchors[spot.id])?.id ?? layout.spots[0]?.key ?? null;
     }
     for (const landmark of layout.spots) spotMarker(batch, landmark.x, landmark.z, context.accent, landmark.y || 0);
@@ -202,7 +189,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   }
   function anchorFor(id) {
     if (id == null) return null;
-    if (!resolved.anchors[id]) resolved.anchors[id] = resolved.fallback();
+    if (!resolved.anchors[id]) { const pinned = resolved.hint(id); resolved.anchors[id] = pinned ? resolved.place(pinned) : resolved.fallback(); }
     return resolved.anchors[id];
   }
   function placeCrowd(people) {
@@ -223,9 +210,9 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     releaseObjects(actorObjects);
     const batch = createBatch(THREE);
     const anchor = anchorFor(view.spot) || { x: 0, y: 0, z: 3, ry: 0 };
-    const acting = view.pose !== 'stand' && !view.poseFixed && anchor.act ? anchor.act : null;
+    const acting = view.pose === 'busy' && !view.poseFixed && anchor.act ? anchor.act : null;
     const at = { x: acting?.x ?? anchor.x, y: acting?.y ?? anchor.y, z: acting?.z ?? anchor.z, ry: acting?.ry ?? anchor.ry };
-    const pose = view.poseFixed ? view.pose : acting ? acting.pose || 'work' : view.pose === 'stand' ? 'stand' : 'work';
+    const pose = view.poseFixed ? view.pose : acting ? acting.pose || 'work' : view.pose === 'stand' || view.pose === 'walk' ? view.pose : 'work';
     batch.cyl(anchor.x, anchor.y + 0.12, anchor.z, 0.82, 0.1, context.accent, { seg: 16, open: true, ...GLOW });
     batch.disc(anchor.x, anchor.y + 0.115, anchor.z, 0.7, '#fff3c4', { seg: 16, ...GLOW });
     const drawn = drawAvatar(batch, view.look, { ...at, pose, seat: acting?.seat, seed: view.seed, marker: 'crown' });
@@ -240,7 +227,6 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     shared.materials.glow.color.setScalar(preset.glow);
     for (const object of staticObjects) if (object.isPointLight) object.intensity = object.userData.intensity * preset.lamps;
     if (sky) paintSky(THREE, sky, preset.sky);
-    applyHostLighting(group, preset);
   }
   function realise() {
     if (live || disposed) return;
@@ -260,19 +246,6 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     sky = null;
     live = false;
   }
-
-  // The host shows and hides a venue by toggling group.visible; that is the only signal a
-  // scene gets on a location change, so geometry is freed and rebuilt from it.
-  Object.defineProperty(group, 'visible', {
-    configurable: true, enumerable: true,
-    get: () => visible,
-    set(value) {
-      const next = !!value;
-      if (next === visible) return;
-      visible = next;
-      if (next) { realise(); applyLighting(); } else { restoreHostLighting(group); release(); }
-    },
-  });
 
   const refresh = () => { if (live) buildActors(); return true; };
   const entry = {
@@ -332,13 +305,17 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       const look = state.onboarding?.look;
       if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; actors = true; } }
       if (typeof state.name === 'string' && state.name && state.name !== view.name) { view.name = state.name; if (selfTag) selfTag = { ...selfTag, name: view.name, text: view.name }; }
-      if (!view.poseFixed) { const pose = here && state.activeAction ? 'busy' : 'stand'; if (pose !== view.pose) { view.pose = pose; actors = true; } }
+      // A running activity uses the spot's own pose (anchor.act); on the way out the avatar is walking.
+      if (!view.poseFixed) {
+        const active = here ? state.activeAction : null;
+        const pose = !active ? 'stand' : active.kind === 'travel' || active.kind === 'commute' ? 'walk' : 'busy';
+        if (pose !== view.pose) { view.pose = pose; actors = true; }
+      }
       if (live) { if (actors) buildActors(); if (changed) applyLighting(); }
       return changed || actors;
     },
     dispose() {
       if (disposed) return;
-      restoreHostLighting(group);
       release();
       disposed = true;
       shared.disposers.delete(entry.dispose);

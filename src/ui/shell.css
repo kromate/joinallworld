@@ -115,3 +115,10 @@ body>.life-toasts{position:fixed;z-index:40;pointer-events:none;font-family:'DM 
 @media(max-width:540px){#life-dialog{box-sizing:border-box;width:calc(100% - 20px);padding:22px 16px}}
 /* Small screens: while the activity cards are open the HUD chips and status line step aside so nothing overlaps. */
 @media(max-width:540px){.life-ui.is-expanded .life-hud,.life-ui.is-expanded .life-help,.life-ui.is-expanded .life-bottom>.life-message{display:none}}
+
+/* Name tags over the venue scene (src/venue-world.js). Positioned by the host when it draws a frame. */
+.scene-tags{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.scene-tag{position:absolute;transform:translate(-50%,-100%);padding:2px 7px;border:0;border-radius:999px;font:700 11px/1.3 var(--font,"DM Sans",Arial,sans-serif);white-space:nowrap;max-width:140px;overflow:hidden;text-overflow:ellipsis;pointer-events:auto;cursor:pointer;background:rgba(18,32,48,.78);color:#bfe0ff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.scene-tag.is-npc{background:transparent;box-shadow:none;color:#58d68a;font-size:15px;padding:6px 8px;text-shadow:0 0 3px rgba(0,0,0,.7)}
+.scene-tag.is-self{background:transparent;box-shadow:none;color:#ffd34d;font-size:17px;pointer-events:none;cursor:default;text-shadow:0 0 3px rgba(0,0,0,.7)}
+.scene-tag:focus-visible{outline:2px solid #fff;outline-offset:1px}

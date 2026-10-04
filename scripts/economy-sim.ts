@@ -2,7 +2,7 @@
  * Economy simulation: scripted players on a virtual clock, played through the real rules engine
  * (createLife / dispatch / advanceLife — nothing here sets cash, needs or skills by hand).
  *
- *   node scripts/economy-sim.mjs [--days 30] [--horizon 365] [--track tech]
+ *   node scripts/economy-sim.ts [--days 30] [--horizon 365] [--track tech]
  *
  * WHAT IT PLAYS
  *   For every birth-lottery outcome, one life per strategy in the start the game offers a new player — `own`: the free
@@ -40,6 +40,7 @@
  * The assertions that encode the design intent are in src/game/economy.test.js.
  * Everything here is deterministic: the same arguments give the same table.
  */
+import { makeContext } from '../src/game/util.ts';
 import { createLife, dispatch, advanceLife, viewLife } from '../src/life.ts';
 import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../src/game/clock.ts';
 import { blockReason, spotsOf, skillLevel } from '../src/game/api.ts';
@@ -57,6 +58,17 @@ import { PROGRAMMES, LECTURE_SLOTS, semesterOf } from '../src/campus/unilag/curr
 import { CAMPUS_JOBS } from '../src/campus/unilag/student.ts';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import type { ActionBody, ActionOutcome, ActivityDefinition, LedgerLine, LifeContextInit, LifeState, LifeView, Look, StartHomeId, VenueId } from '../src/types/index.ts';
+
+type Json = Record<string, unknown>;
+/** Every venue id, in content order. */
+const VENUE_IDS = Object.keys(VENUES) as VenueId[];
+
+/** Narrow away null and undefined; the script fails here, as a property read on the missing value would. */
+function must<T>(value: T | null | undefined, what = 'value'): T {
+  if (value === null || value === undefined) throw new TypeError(`${what} is missing`);
+  return value;
+}
 
 const CITY = 'lagos';
 /** The local government a simulated new player picks at settle-in (mid-priced mainland land). */
@@ -67,23 +79,26 @@ const DAY = 86400000;
 /** Monday 5 January 2026, 00:00 Lagos time. */
 export const SIM_START = lagosDayStart(lagosTime(Date.UTC(2026, 0, 5, 9)).day);
 export const CHECKPOINTS = [1, 3, 7, 14, 30];
-const LOOK = { body: 'woman', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
-const TRAITS = ['smooth-talker', 'clean-pikin'];
+const LOOK: Look = { body: 'woman', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
+const TRAITS: string[] = ['smooth-talker', 'clean-pikin'];
 const DREAM = 'everybodys-padi';
-export const CHEAPEST_CAR = CARS[CAR_ORDER[0]];
+export const CHEAPEST_CAR = must(CARS[must(CAR_ORDER[0])]);
+
+/** One startable paid activity: where it is and its definition. */
+export interface Gig { venue: VenueId; spot: string; def: ActivityDefinition }
 
 /** Every paid activity a player without a job can do: [{ venue, spot, def }]. */
-export const GIGS = Object.keys(VENUES).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities
-  .filter((def) => def.reward > 0 && !def.requiresJob && !def.unavailable).map((def) => ({ venue, spot: spot.id, def }))));
-const LABELS = new Map(Object.keys(VENUES).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities.map((def) => [def.label, def]))));
+export const GIGS: Gig[] = VENUE_IDS.flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities
+  .filter((def) => (def.reward ?? 0) > 0 && !def.requiresJob && !def.unavailable).map((def) => ({ venue, spot: spot.id, def }))));
+const LABELS = new Map(VENUE_IDS.flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities.map((def) => [def.label, def]))));
 const EVENT_TITLES = new Set(Object.values(EVENTS).map((event) => event.title));
 const CAMPUS_JOB_REASONS = new Set(Object.values(CAMPUS_JOBS).map((job) => `UNILAG ${job.label}`));
 /** The programme the simulated student reads, and the best-paid campus job. */
 export const SIM_PROGRAMME = 'computer';
-const SIM_CAMPUS_JOB = Object.values(CAMPUS_JOBS).sort((a, b) => b.pay - a.pay)[0];
+const SIM_CAMPUS_JOB = must(Object.values(CAMPUS_JOBS).sort((a, b) => b.pay - a.pay)[0]);
 
 /** Which column of the report a ledger line belongs to. */
-export function categoryOf(line) {
+export function categoryOf(line: LedgerLine): string {
   const reason = line.reason;
   if (reason.startsWith('Start cash')) return 'start';
   if (reason.startsWith('Rent') || reason.startsWith('Ground rent')) return 'rent';
@@ -102,20 +117,35 @@ export function categoryOf(line) {
   if (reason.startsWith('Groceries')) return 'food';
   if (reason.startsWith('Landlord and agent') || reason.startsWith('Bought') || reason.startsWith('Sold') || reason.startsWith('Boutique') || reason.startsWith('House upgrade') || reason === 'House styling' || reason.startsWith('Moving your ')) return 'purchases';
   if (EVENT_TITLES.has(reason)) return 'events';
-  const def = LABELS.get(reason) ?? LABELS.get(reason.replace(/^Refund: /, '').split(': ')[0]);
+  const def = LABELS.get(reason) ?? LABELS.get(reason.replace(/^Refund: /, '').split(': ')[0] ?? '');
   if (def?.requiresJob) return 'wages';
-  if (def?.reward > 0 && line.amount > 0) return 'gigs';
+  if ((def?.reward ?? 0) > 0 && line.amount > 0) return 'gigs';
   if (def?.tags?.some((tag) => tag === 'food' || tag === 'drink')) return 'food';
   if (def) return line.amount > 0 ? 'gigs' : 'leisure';
   return 'other';
 }
 
 /** One simulated life. Every change goes through dispatch() or advanceLife(). */
+export interface PlayerOptions { lottery: string; house: string; start?: number }
+type Ctx = LifeContextInit & { now: number; cityId: string; actionId: string };
+
 export class Player {
-  constructor({ lottery, house, start = SIM_START + 9 * 3600000 }) {
+  now: number;
+  seq: number;
+  /** Every ledger line ever written, in order. */
+  lines: LedgerLine[];
+  activeSeconds: number;
+  /** Refusal codes and how often each came up. */
+  refusals: Record<string, number>;
+  state: LifeState;
+  seed: number;
+  lastLine: LedgerLine | undefined;
+  /** Set by simulate() at the start of each day: the active seconds already spent. */
+  dayStartSeconds = 0;
+  constructor({ lottery, house, start = SIM_START + 9 * 3600000 }: PlayerOptions) {
     this.now = start;
     this.seq = 0;
-    this.lines = [];      // every ledger line ever written, in order
+    this.lines = [];
     this.activeSeconds = 0;
     this.refusals = {};
     // A new player as the quick start makes one: a guest in Freedom Park who plays the two opening
@@ -124,7 +154,7 @@ export class Player {
     this.seed = this.state.cash;
     this.must('onboarding.quick-start', { look: LOOK });
     this.run('trees', 'play-ayo');
-    this.run('people', `npc-${Object.values(NPCS).find((npc) => npc.venue === 'park').id}-hello`);
+    this.run('people', `npc-${must(Object.values(NPCS).find((npc) => npc.venue === 'park')).id}-hello`);
     this.must('onboarding.traits', { traits: TRAITS });
     this.must('onboarding.dream', { dream: DREAM });
     // The roll depends on the action id: try ids, on a copy, until this one rolls the wanted outcome.
@@ -132,31 +162,35 @@ export class Player {
     for (let i = 0; i < 5000 && !rolled; i++) {
       const actionId = `lottery-${i}`;
       const copy = createLife(structuredClone(this.state), { now: this.now, cityId: CITY });
-      dispatch(copy, { type: 'onboarding.lottery', payload: {}, actionId }, { now: this.now, cityId: CITY, actionId });
+      this.dispatchOn(copy, 'onboarding.lottery', {}, { now: this.now, cityId: CITY, actionId });
       if (copy.onboarding.lottery?.id !== lottery) continue;
-      dispatch(this.state, { type: 'onboarding.lottery', payload: {}, actionId }, { now: this.now, cityId: CITY, actionId });
+      this.dispatchOn(this.state, 'onboarding.lottery', {}, { now: this.now, cityId: CITY, actionId });
       rolled = this.state.onboarding.lottery?.id === lottery;
     }
     if (!rolled) throw new Error(`No action id rolled ${lottery}`);
     this.must('onboarding.home', house === OWN ? { lga: SIM_LGA, via: 'manual' } : { house });
   }
-  ctx() { const actionId = `sim-${++this.seq}`; return { now: this.now, cityId: CITY, actionId }; }
-  do(type, payload = {}) {
+  /** dispatch() with an action type and payload that are only known as strings here. */
+  dispatchOn(state: LifeState, type: string, payload: Json, ctx: Ctx): ActionOutcome {
+    return dispatch(state, { type, payload, actionId: ctx.actionId } as unknown as ActionBody, ctx);
+  }
+  ctx(): Ctx { const actionId = `sim-${++this.seq}`; return { now: this.now, cityId: CITY, actionId }; }
+  do(type: string, payload: Json = {}) {
     const ctx = this.ctx();
-    const result = dispatch(this.state, { type, payload, actionId: ctx.actionId }, ctx);
+    const result = this.dispatchOn(this.state, type, payload, ctx);
     if (!result.ok) this.refusals[result.code] = (this.refusals[result.code] ?? 0) + 1;
     this.collectAll();
     return result;
   }
   /** An action only the server may run (a finished table game, a referral gift): the same dispatch, with server authority. */
-  server(type, payload = {}) {
+  server(type: string, payload: Json = {}) {
     const ctx = { ...this.ctx(), internal: true };
-    const result = dispatch(this.state, { type, payload, actionId: ctx.actionId }, ctx);
+    const result = this.dispatchOn(this.state, type, payload, ctx);
     if (!result.ok) this.refusals[result.code] = (this.refusals[result.code] ?? 0) + 1;
     this.collectAll();
     return result;
   }
-  must(type, payload) { const result = this.do(type, payload); if (!result.ok) throw new Error(`${type} refused: ${result.code} ${result.reason ?? ''}`); return result; }
+  must(type: string, payload?: Json) { const result = this.do(type, payload); if (!result.ok) throw new Error(`${type} refused: ${result.code} ${result.reason ?? ''}`); return result; }
   /** Pick up the ledger lines written since the last call (the engine itself keeps only the newest 60). */
   collectAll() {
     const count = this.state.ledger.length;
@@ -168,7 +202,7 @@ export class Player {
     this.lastLine = last;
   }
   /** Let `seconds` pass in one settlement. `active` counts it as time the player spent playing. */
-  pass(seconds, active = true) {
+  pass(seconds: number, active = true) {
     if (seconds <= 0) return;
     this.now += seconds * 1000;
     advanceLife(this.state, seconds, { now: this.now, cityId: CITY });
@@ -176,18 +210,18 @@ export class Player {
     this.collectAll();
   }
   /** Finish whatever timed action is running (the automatic commute starts by itself). */
-  settle() { let guard = 0; while (this.state.activeAction && guard++ < 10) this.pass(this.state.activeAction.remaining); }
-  awayUntil(ms) { if (ms > this.now) this.pass((ms - this.now) / 1000, false); }
+  settle() { let guard = 0; while (this.state.activeAction && guard++ < 10) this.pass(must(this.state.activeAction).remaining); }
+  awayUntil(ms: number) { if (ms > this.now) this.pass((ms - this.now) / 1000, false); }
   view() { return viewLife(this.state, { now: this.now, cityId: CITY }); }
-  answerEvent(pocket) {
+  answerEvent(pocket: boolean) {
     const pending = this.state.travel.event;
     if (!pending) return;
     const event = EVENTS[pending.id];
-    const choice = (pocket && event.choices.find((item) => item.reward > 0 && !item.cost && !item.check)) || event.choices.at(-1);
-    this.do('world.roadside', { choice: choice.id });
+    const choice = (pocket && event.choices.find((item) => (item.reward ?? 0) > 0 && !item.cost && !item.check)) || event.choices.at(-1);
+    this.do('world.roadside', { choice: must(choice).id });
   }
   /** Travel and arrive. Falls back to the free trek when the fare cannot be paid. Returns false if the venue is closed. */
-  travel(venue, mode = 'danfo', { pocket = false } = {}) {
+  travel(venue: string, mode = 'danfo', { pocket = false }: { pocket?: boolean } = {}) {
     this.settle();
     if (this.state.location === venue) return true;
     let result = this.do('travel', { id: venue, mode });
@@ -198,7 +232,7 @@ export class Player {
     return this.state.location === venue;
   }
   /** Stand at a spot and run one activity to completion. Returns the dispatch result of the start. */
-  run(spot, id, choice) {
+  run(spot: string, id: string, choice?: string) {
     this.settle();
     if (this.state.spot !== spot) { const moved = this.do('spot', { id: spot }); if (!moved.ok) return moved; }
     const started = this.do('activity', { id, ...(choice ? { choice } : {}) });
@@ -206,13 +240,13 @@ export class Player {
     return started;
   }
   /** Free upkeep at home: eat, wash, rest. Returns false only if home could not be reached. */
-  upkeep({ hunger = 60, hygiene = 45, energy = 70, mode = 'danfo' } = {}) {
+  upkeep({ hunger = 60, hygiene = 45, energy = 70, mode = 'danfo' }: { hunger?: number; hygiene?: number; energy?: number; mode?: string } = {}) {
     if (!this.travel('home', mode)) return false;
     let guard = 0;
     while (this.state.needs.hunger < hunger && guard++ < 6) {
       this.do('spot', { id: 'kitchen' });
       const cards = this.view().activities.cards.filter((card) => !card.blocked && !card.choices && card.cost === 0 && (card.effects?.hunger ?? 0) > 0);
-      const best = cards.sort((a, b) => b.effects.hunger / b.duration - a.effects.hunger / a.duration)[0];
+      const best = cards.sort((a, b) => (b.effects?.hunger ?? 0) / b.duration - (a.effects?.hunger ?? 0) / a.duration)[0];
       if (!best || !this.run('kitchen', best.id).ok) break;
     }
     if (this.state.needs.hygiene < hygiene) this.run('bathroom', 'bath');
@@ -226,17 +260,17 @@ export class Player {
   }
 }
 
-const dayStart = (index) => SIM_START + index * DAY;
-const careerOf = (player) => JOBS[player.state.job];
+const dayStart = (index: number) => SIM_START + index * DAY;
+const careerOf = (player: Player) => (player.state.job ? JOBS[player.state.job] : undefined);
 
 /** The first week's tutorial goals a new player is walked through (those the strategy can meet). */
-function firstSitting(player, job) {
+function firstSitting(player: Player, job: string | null) {
   player.run('kitchen', player.view().activities.cards.find((card) => !card.blocked && (card.effects?.hunger ?? 0) > 0)?.id ?? 'garri');
   player.run('bathroom', 'bath');
   if (job) player.must('apply-job', { id: job });
 }
 
-function workShift(player) {
+function workShift(player: Player) {
   const job = careerOf(player);
   if (!job) return false;
   player.settle();
@@ -251,14 +285,14 @@ function workShift(player) {
 }
 
 /** Every gig that can be started right now from somewhere, best pay per second first. */
-function gigsNow(player) {
-  const ctx = { now: player.now, cityId: CITY };
+function gigsNow(player: Player) {
+  const ctx = makeContext({ now: player.now, cityId: CITY });
   return GIGS.filter(({ venue, def }) => isOpen(VENUES[venue].hours, player.now) && !blockReason(player.state, def, venue, ctx))
-    .sort((a, b) => b.def.reward / b.def.duration - a.def.reward / a.def.duration);
+    .sort((a, b) => (b.def.reward ?? 0) / b.def.duration - (a.def.reward ?? 0) / a.def.duration);
 }
 
 /** Do gigs until the day's active seconds (everything played today, upkeep and travel included) reach `budgetSeconds`. */
-function gigSitting(player, budgetSeconds, { pocket = false } = {}) {
+function gigSitting(player: Player, budgetSeconds: number, { pocket = false }: { pocket?: boolean } = {}) {
   const limit = player.dayStartSeconds + budgetSeconds;
   let stalled = 0;
   while (player.activeSeconds < limit && stalled < 3) {
@@ -278,22 +312,22 @@ function gigSitting(player, budgetSeconds, { pocket = false } = {}) {
   }
 }
 
-function gemHunt(player) {
+function gemHunt(player: Player) {
   const hunt = player.state.civic.hunt;
   if (!hunt || hunt.claimed) return;
   for (const gem of hunt.gems) {
     if (gem.found) continue;
     if (!isOpen(VENUES[gem.venue].hours, player.now) || !player.travel(gem.venue)) continue;
     if (gem.kind === 'visit') { if (gem.spot && player.state.spot !== gem.spot) player.do('spot', { id: gem.spot }); player.do('civic.hunt-search'); continue; }
-    const ctx = { now: player.now, cityId: CITY };
+    const ctx = makeContext({ now: player.now, cityId: CITY });
     const free = spotsOf(gem.venue).flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def })))
-      .filter(({ def }) => !def.choices && !def.requiresJob && !(def.cost > 0) && !blockReason(player.state, def, gem.venue, ctx)).sort((a, b) => a.def.duration - b.def.duration)[0];
+      .filter(({ def }) => !def.choices && !def.requiresJob && !((def.cost ?? 0) > 0) && !blockReason(player.state, def, gem.venue, ctx)).sort((a, b) => a.def.duration - b.def.duration)[0];
     if (free) player.run(free.spot, free.def.id);
   }
-  if (player.state.civic.hunt.gems.every((gem) => gem.found)) player.do('civic.hunt-claim');
+  if (must(player.state.civic.hunt).gems.every((gem) => gem.found)) player.do('civic.hunt-claim');
 }
 
-function keepDeposits(player) {
+function keepDeposits(player: Player) {
   const view = player.view().economy;
   const buffer = view.weeklyBills * 2 + 10000;
   let spare = Math.min(player.state.cash - buffer, view.savings.room, 50000);
@@ -305,25 +339,25 @@ function keepDeposits(player) {
 }
 
 /** The cheapest startable activity anywhere open that satisfies `wanted(def)`; goes there and runs it. */
-function doSomewhere(player, wanted) {
-  const ctx = { now: player.now, cityId: CITY };
-  const options = Object.keys(VENUES).filter((venue) => isOpen(VENUES[venue].hours, player.now)).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities
-    .filter((def) => !def.choices && !def.requiresJob && !(def.cost > 300) && wanted(def) && !blockReason(player.state, def, venue, ctx)).map((def) => ({ venue, spot: spot.id, def }))));
+function doSomewhere(player: Player, wanted: (def: ActivityDefinition) => boolean) {
+  const ctx = makeContext({ now: player.now, cityId: CITY });
+  const options = VENUE_IDS.filter((venue) => isOpen(VENUES[venue].hours, player.now)).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities
+    .filter((def) => !def.choices && !def.requiresJob && !((def.cost ?? 0) > 300) && wanted(def) && !blockReason(player.state, def, venue, ctx)).map((def) => ({ venue, spot: spot.id, def }))));
   const next = options.find((item) => item.venue === player.state.location) ?? options.sort((a, b) => (a.def.cost ?? 0) - (b.def.cost ?? 0) || a.def.duration - b.def.duration)[0];
-  return Boolean(next) && player.travel(next.venue) && player.run(next.spot, next.def.id).ok;
+  return next !== undefined && player.travel(next.venue) && player.run(next.spot, next.def.id).ok;
 }
 
 /** Work through today's and this week's missions as a determined player would, then collect every finished one. */
-function missionRun(player) {
+function missionRun(player: Player) {
   const pending = () => { const view = player.view().missions; return [...view.daily, ...view.weekly].filter((mission) => !mission.done); };
-  const def = (id) => [...DAILY_MISSIONS, ...WEEKLY_MISSIONS].find((mission) => mission.id === id);
+  const def = (id: string) => [...DAILY_MISSIONS, ...WEEKLY_MISSIONS].find((mission) => mission.id === id);
   let guard = 0;
   for (const mission of pending()) {
-    const rule = def(mission.id);
+    const rule = must(def(mission.id));
     for (let left = mission.count - mission.n; left > 0 && guard++ < 40; left--) {
       if (player.state.needs.energy < 35 || player.state.needs.hunger < 30) player.upkeep({ energy: 80, hunger: 70 });
       if (rule.on === 'venue') {
-        const fresh = Object.keys(VENUES).find((venue) => venue !== 'home' && venue !== player.state.location && isOpen(VENUES[venue].hours, player.now) && !player.state.missions.visited.list.includes(venue));
+        const fresh = VENUE_IDS.find((venue) => venue !== 'home' && venue !== player.state.location && isOpen(VENUES[venue].hours, player.now) && !player.state.missions.visited.list.includes(venue));
         if (!fresh || !player.travel(fresh)) break;
       } else if (rule.on === 'tag') { if (!doSomewhere(player, (item) => (item.tags ?? []).some((tag) => rule.tags.includes(tag)))) break; }
       else if (rule.on === 'event' && rule.event === 'npc.greeted') { if (!doSomewhere(player, (item) => item.social?.action === 'hello')) break; }
@@ -339,22 +373,22 @@ function missionRun(player) {
  * One day of a UNILAG student's campus life, through the same actions the Campus app sends. Admission needs Coding
  * (or Charisma) level 1; a semester is seven Lagos days of lectures in their slots, then the tests, then it is closed.
  */
-function studentDay(player) {
+function studentDay(player: Player) {
   const student = () => player.state.unilagStudent;
   if (student().status === 'graduated' || !PROGRAMMES[SIM_PROGRAMME]) return;
   if (!player.travel('unilag')) return;
-  const at = (spot) => player.state.spot === spot || player.do('spot', { id: spot }).ok;
-  const task = (type, payload) => { const started = player.do(type, payload); if (started.ok) player.settle(); return started; };
+  const at = (spot: string) => player.state.spot === spot || player.do('spot', { id: spot }).ok;
+  const task = (type: string, payload?: Json) => { const started = player.do(type, payload); if (started.ok) player.settle(); return started; };
   for (let read = 0; read < 12 && skillLevel(player.state, 'coding') < 1 && skillLevel(player.state, 'charisma') < 1; read++) if (!player.run('library', 'read-library').ok) break;
   if (['none', 'dropped'].includes(student().status) && at('senate')) player.do('unilag.apply', { programme: SIM_PROGRAMME });
   if (student().status === 'admitted' && at('senate')) player.do('unilag.matriculate');
   if (student().status === 'matriculated' && !student().term && at('senate')) {
     const number = student().records.some((record) => record.semester === 1 && record.passed) ? 2 : 1;
-    if (player.do('unilag.register-semester', { courses: semesterOf(SIM_PROGRAMME, number).courses.map((course) => course.id) }).ok) player.do('unilag.hostel.allocate', { hall: 'mariere' });
+    if (player.do('unilag.register-semester', { courses: must(semesterOf(SIM_PROGRAMME, number)).courses.map((course) => course.id) }).ok) player.do('unilag.hostel.allocate', { hall: 'mariere' });
   }
   const term = student().term, spot = PROGRAMMES[SIM_PROGRAMME].spot;
   if (term && student().status === 'studying') {
-    const courses = semesterOf(SIM_PROGRAMME, term.semester).courses, today = lagosTime(player.now).day;
+    const courses = must(semesterOf(SIM_PROGRAMME, term.semester)).courses, today = lagosTime(player.now).day;
     if (today < term.deadlineDay) {
       // Every course's lecture in its own slot (the morning ones first), then its assignment, once.
       for (const course of [...courses].sort((a, b) => LECTURE_SLOTS[a.slot].open - LECTURE_SLOTS[b.slot].open)) {
@@ -362,14 +396,24 @@ function studentDay(player) {
         if (player.now < opens) player.awayUntil(opens + 60000);
         if (player.now < closes - 60000 && at(spot)) task('unilag.lecture', { course: course.id });
       }
-      for (const course of courses) if (student().term.assessments[course.id].assignment === null && at(spot)) task('unilag.assignment', { course: course.id });
+      for (const course of courses) if (must(must(student().term).assessments[course.id]).assignment === null && at(spot)) task('unilag.assignment', { course: course.id });
     } else {
-      for (const course of courses) if (student().term.assessments[course.id].test === null && at(spot)) task('unilag.test', { course: course.id });
+      for (const course of courses) if (must(must(student().term).assessments[course.id]).test === null && at(spot)) task('unilag.test', { course: course.id });
       player.do('unilag.close-semester');
     }
   }
   // One paid campus job a Lagos day, for a current student.
   if (student().studentId && ['matriculated', 'studying'].includes(student().status) && at(SIM_CAMPUS_JOB.spot)) task('unilag.job', { id: SIM_CAMPUS_JOB.id });
+}
+
+/** What a strategy is told about the run. */
+export interface SimOptions { track: string; budget: number; mixBudget: number }
+/** One way of playing a day. */
+export interface Strategy {
+  label: string;
+  /** The first sitting, before day one. */
+  first?: (player: Player, options: SimOptions) => void;
+  day(player: Player, index: number, options: SimOptions): void;
 }
 
 export const STRATEGIES = {
@@ -444,26 +488,46 @@ export const STRATEGIES = {
       player.upkeep({ mode: 'trek' });
     },
   },
-};
+} satisfies Record<string, Strategy>;
+export type StrategyId = keyof typeof STRATEGIES;
 
 /** Every start the birth lottery allows: [{ lottery, house }] — the own starter house first, then each rented home. */
-export const STARTS = Object.values(LOTTERY).flatMap((outcome) => [OWN, ...Object.keys(START_HOMES).filter((house) => !outcome.locked?.[house] && outcome.startCash[house] !== undefined)]
+export const STARTS = Object.values(LOTTERY).flatMap((outcome) => [OWN, ...(Object.keys(START_HOMES) as StartHomeId[]).filter((house) => !outcome.locked?.[house] && outcome.startCash[house] !== undefined)]
   .map((house) => ({ lottery: outcome.id, house })));
 
 /**
  * Play one life. Returns the report row. `days` is the reported period; the life is played on to
  * `horizon` days only to find when the next house and the cheapest car first became affordable.
  */
-export function simulate({ lottery, house, strategy, days = 30, horizon = days, track = 'tech', budget = 300, mixBudget = 1800 }) {
-  const plan = STRATEGIES[strategy];
-  const options = { track, budget, mixBudget };
+export interface SimulateOptions { lottery: string; house: string; strategy: StrategyId; days?: number; horizon?: number; track?: string; budget?: number; mixBudget?: number }
+/** One line of the report. The fields from `final` on are set once the reported day is reached. */
+export interface Row {
+  lottery: string; house: string; strategy: StrategyId; label: string; track: string | null; startCash: number;
+  netWorth: Record<number, number>; cash: Record<number, number>; firstPromotionDay: number | null; rentMissedWeeks: number; minCash: number;
+  nextHouse: string | null; nextHouseDay: number | null; carDay: number | null; activePerDay: number;
+  final?: { cash: number; netWorth: number; arrears: number; loanLeft: number; level: number; needs: Record<string, number>; job: string | null };
+  flows?: Record<string, number>;
+  ledgerSum?: number;
+  seed?: number;
+  credits?: (LedgerLine & { category: string })[];
+  unknown?: string[];
+  conserved?: boolean;
+  refusals?: Record<string, number>;
+  student?: { status: string; records: { semester: number; passed: boolean; gpa: number; scholarship: unknown }[]; jobDays: number };
+  player?: Player;
+}
+export function simulate({ lottery, house, strategy, days = 30, horizon = days, track = 'tech', budget = 300, mixBudget = 1800 }: SimulateOptions): Row {
+  const plan: Strategy = STRATEGIES[strategy];
+  const options: SimOptions = { track, budget, mixBudget };
   const player = new Player({ lottery, house });
   const startCash = player.state.cash;
   // The next house: for a renter the next rented tier; for an owner the first upgrade of their own house (its price in their
   // local government, and its weekly ground rent).
-  const nextHouse = house === OWN ? { id: TIER_ORDER[1], moveIn: tierCost(CITY, SIM_LGA, TIER_ORDER[1]), rent: HOUSE_TIERS[TIER_ORDER[1]].groundRent }
-    : HOUSES[HOUSE_ORDER[HOUSE_ORDER.indexOf(house) + 1]] ?? null;
-  const row = { lottery, house, strategy, label: plan.label, track: plan === STRATEGIES.career || plan === STRATEGIES.optimal || plan === STRATEGIES.social ? track : null, startCash,
+  const upgradeTier = must(TIER_ORDER[1]);
+  const followingHouse = HOUSE_ORDER[HOUSE_ORDER.indexOf(house as (typeof HOUSE_ORDER)[number]) + 1];
+  const nextHouse = house === OWN ? { id: upgradeTier, moveIn: tierCost(CITY, SIM_LGA, upgradeTier), rent: must(HOUSE_TIERS[upgradeTier]).groundRent }
+    : (followingHouse === undefined ? undefined : HOUSES[followingHouse]) ?? null;
+  const row: Row = { lottery, house, strategy, label: plan.label, track: plan === STRATEGIES.career || plan === STRATEGIES.optimal || plan === STRATEGIES.social ? track : null, startCash,
     netWorth: {}, cash: {}, firstPromotionDay: null, rentMissedWeeks: 0, minCash: startCash, nextHouse: nextHouse?.id ?? null, nextHouseDay: null, carDay: null, activePerDay: 0 };
   plan.first?.(player, options);
   let level = player.state.career.level, missed = player.state.economy.rent.missed;
@@ -481,13 +545,13 @@ export function simulate({ lottery, house, strategy, days = 30, horizon = days, 
     if (day <= days) row.minCash = Math.min(row.minCash, ...player.lines.map((line) => line.balance));
     if (CHECKPOINTS.includes(day) && day <= days) { row.netWorth[day] = player.netWorth(); row.cash[day] = player.state.cash; }
     // "Affordable" means the move-in cost plus four weeks of the new rent, not just the fee on the day.
-    if (nextHouse && row.nextHouseDay === null && player.state.cash >= nextHouse.moveIn + 4 * nextHouse.rent) row.nextHouseDay = day;
+    if (nextHouse && row.nextHouseDay === null && player.state.cash >= (nextHouse.moveIn ?? 0) + 4 * nextHouse.rent) row.nextHouseDay = day;
     if (row.carDay === null && player.state.cash >= CHEAPEST_CAR.price) row.carDay = day;
     if (day === days) {
       row.final = { cash: player.state.cash, netWorth: player.netWorth(), arrears: player.state.economy.rent.arrears, loanLeft: player.state.economy.loan?.left ?? 0,
         level: player.state.career.level, needs: { ...player.state.needs }, job: player.state.job };
       row.activePerDay = Math.round(player.activeSeconds / days);
-      const flows = {};
+      const flows: Record<string, number> = {};
       for (const line of player.lines) { const category = categoryOf(line); flows[category] = (flows[category] ?? 0) + line.amount; }
       row.flows = flows;
       row.ledgerSum = player.lines.reduce((sum, line) => sum + line.amount, 0);
@@ -505,12 +569,12 @@ export function simulate({ lottery, house, strategy, days = 30, horizon = days, 
   return row;
 }
 
-const naira = (value) => (value === undefined || value === null ? '—' : `${value < 0 ? '−' : ''}₦${Math.abs(Math.round(value)).toLocaleString('en-NG')}`);
-const short = (value) => (value === undefined || value === null ? '—' : Math.abs(value) >= 1e6 ? `${(value / 1e6).toFixed(2)}m` : Math.abs(value) >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value));
+const naira = (value: number | null | undefined) => (value === undefined || value === null ? '—' : `${value < 0 ? '−' : ''}₦${Math.abs(Math.round(value)).toLocaleString('en-NG')}`);
+const short = (value: number | null | undefined) => (value === undefined || value === null ? '—' : Math.abs(value) >= 1e6 ? `${(value / 1e6).toFixed(2)}m` : Math.abs(value) >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value));
 
 /** The whole table: every start × every strategy. */
-export function runEconomy({ days = 30, horizon = 365, track = 'tech', strategies = Object.keys(STRATEGIES) } = {}) {
-  const rows = [];
+export function runEconomy({ days = 30, horizon = 365, track = 'tech', strategies = Object.keys(STRATEGIES) as StrategyId[] }: { days?: number; horizon?: number; track?: string; strategies?: StrategyId[] } = {}): Row[] {
+  const rows: Row[] = [];
   for (const start of STARTS) {
     const career = simulate({ ...start, strategy: 'career', days, horizon, track });
     for (const strategy of strategies) {
@@ -521,26 +585,26 @@ export function runEconomy({ days = 30, horizon = 365, track = 'tech', strategie
   return rows;
 }
 
-export function formatTable(rows) {
+export function formatTable(rows: Row[]): string {
   const head = ['start', 'strategy', 'start ₦', ...CHECKPOINTS.map((day) => `d${day}`), 'wages', 'gigs', 'goals', 'hunt', 'missn', 'tables', 'refer', 'campus', 'food', 'transp', 'rent', 'loan', 'promo', 'rent ok', 'act s/d', 'next house', 'car'];
-  const lines = rows.map((row) => [`${row.lottery}/${row.house}`, `${row.label}${row.track ? ` (${row.track})` : ''}`, short(row.startCash), ...CHECKPOINTS.map((day) => short(row.netWorth[day])),
-    short(row.flows.wages ?? 0), short(row.flows.gigs ?? 0), short(row.flows.goals ?? 0), short(row.flows.hunt ?? 0), short(row.flows.missions ?? 0), short(row.flows.tables ?? 0), short(row.flows.referral ?? 0), short((row.flows.campusFees ?? 0) + (row.flows.campusPay ?? 0)), short(row.flows.food ?? 0), short(row.flows.transport ?? 0), short(row.flows.rent ?? 0), short(row.flows.loan ?? 0),
+  const lines = rows.map((row): string[] => { const flows = must(row.flows); return [`${row.lottery}/${row.house}`, `${row.label}${row.track ? ` (${row.track})` : ''}`, short(row.startCash), ...CHECKPOINTS.map((day) => short(row.netWorth[day])),
+    short(flows.wages ?? 0), short(flows.gigs ?? 0), short(flows.goals ?? 0), short(flows.hunt ?? 0), short(flows.missions ?? 0), short(flows.tables ?? 0), short(flows.referral ?? 0), short((flows.campusFees ?? 0) + (flows.campusPay ?? 0)), short(flows.food ?? 0), short(flows.transport ?? 0), short(flows.rent ?? 0), short(flows.loan ?? 0),
     row.firstPromotionDay ? `d${row.firstPromotionDay}` : '—', row.rentMissedWeeks ? `missed ${row.rentMissedWeeks}` : 'yes', String(row.activePerDay),
-    row.nextHouse ? (row.nextHouseDay ? `${row.nextHouse} d${row.nextHouseDay}` : `${row.nextHouse} —`) : 'top', row.carDay ? `d${row.carDay}` : '—']);
-  const widths = head.map((title, column) => Math.max(title.length, ...lines.map((line) => line[column].length)));
-  const format = (cells) => cells.map((cell, column) => (column < 2 ? cell.padEnd(widths[column]) : cell.padStart(widths[column]))).join('  ');
+    row.nextHouse ? (row.nextHouseDay ? `${row.nextHouse} d${row.nextHouseDay}` : `${row.nextHouse} —`) : 'top', row.carDay ? `d${row.carDay}` : '—']; });
+  const widths = head.map((title, column) => Math.max(title.length, ...lines.map((line) => (line[column] ?? '').length)));
+  const format = (cells: string[]) => cells.map((cell, column) => (column < 2 ? cell.padEnd(widths[column] ?? 0) : cell.padStart(widths[column] ?? 0))).join('  ');
   return [format(head), widths.map((width) => '-'.repeat(width)).join('  '), ...lines.map(format)].join('\n');
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
-  const option = (name, fallback) => { const at = args.indexOf(`--${name}`); return at >= 0 ? args[at + 1] : fallback; };
-  const days = Number(option('days', 30)), horizon = Number(option('horizon', 365)), track = option('track', 'tech');
+  const option = (name: string, fallback: string | number) => { const at = args.indexOf(`--${name}`); return at >= 0 ? args[at + 1] : fallback; };
+  const days = Number(option('days', 30)), horizon = Number(option('horizon', 365)), track = String(option('track', 'tech'));
   const rows = runEconomy({ days, horizon, track });
   console.log(`Economy simulation · ${days} Lagos days from Monday 5 January 2026 · career track ${track} · milestones searched to day ${horizon}`);
   console.log('Net worth = cash + deposits − loan left − rent arrears. Flows are 30-day totals in naira; costs are negative. "act s/d" = active seconds a day.');
   console.log(formatTable(rows));
-  const bad = rows.filter((row) => !row.conserved || row.unknown.length);
+  const bad = rows.filter((row) => !row.conserved || must(row.unknown).length);
   console.log(bad.length ? `NOT CONSERVED or unknown reasons in ${bad.length} rows: ${JSON.stringify(bad.map((row) => [row.lottery, row.house, row.strategy, row.unknown]))}` : `Conservation: cash = seed + Σ ledger in all ${rows.length} lives; every ledger reason is classified.`);
-  console.log(`Next house = move-in + 4 weeks' rent: ${HOUSE_ORDER.map((id) => `${id} ${naira(HOUSES[id].moveIn + 4 * HOUSES[id].rent)}`).join(' · ')} · own house upgrade (${TIER_ORDER[1]} in ${SIM_LGA}) ${naira(tierCost(CITY, SIM_LGA, TIER_ORDER[1]) + 4 * HOUSE_TIERS[TIER_ORDER[1]].groundRent)} · cheapest car ${naira(CHEAPEST_CAR.price)}`);
+  console.log(`Next house = move-in + 4 weeks' rent: ${HOUSE_ORDER.map((id) => `${id} ${naira((must(HOUSES[id]).moveIn ?? 0) + 4 * must(HOUSES[id]).rent)}`).join(' · ')} · own house upgrade (${TIER_ORDER[1]} in ${SIM_LGA}) ${naira((tierCost(CITY, SIM_LGA, must(TIER_ORDER[1])) ?? 0) + 4 * must(HOUSE_TIERS[must(TIER_ORDER[1])]).groundRent)} · cheapest car ${naira(CHEAPEST_CAR.price)}`);
 }

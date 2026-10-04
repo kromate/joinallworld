@@ -203,7 +203,7 @@ export const START_NEEDS: Record<NeedId, number> = { hunger: 80, energy: 85, fun
 // `ownCash` (original beta value) is the start cash of a life that settles into the free starter house on its own plot
 // (systems/estate.ts) instead of a rented home. It is the outcome's Mushin start — the same 6 × 6 room, without the ₦2,400
 // weekly rent — except for Ajebutter: ₦200,000, not ₦230,000, because with no rent to pay the larger sum let the starter job
-// alone reach the cheapest car inside 150 days (scripts/economy-sim.mjs; asserted in src/game/economy.test.js).
+// alone reach the cheapest car inside 150 days (scripts/economy-sim.ts; asserted in src/game/economy.test.js).
 export const LOTTERY: Record<LotteryId, LotteryOutcome> = {
   'lapo-baby': {
     id: 'lapo-baby', label: 'LAPO Baby', icon: '🧾', tagline: 'Nothing handed over, everything earned.', odds: 50, betaFields: ['odds', 'tagline'],

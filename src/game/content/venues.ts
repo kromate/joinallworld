@@ -43,7 +43,7 @@ import type {
 /**
  * Paid gigs a player may finish per Lagos day, over all venues together (original beta value).
  * A gig is any venue activity that pays — a `reward`, or a chance of one — and is not a job's
- * shift. scripts/economy-sim.mjs showed why it is needed: on cooldowns alone, touring every gig
+ * shift. scripts/economy-sim.ts showed why it is needed: on cooldowns alone, touring every gig
  * all day earned about ₦1,000,000 a day against ₦3,600 for a first career shift. With eight, an
  * unskilled player's gigs come to roughly one entry-level shift for several times the effort,
  * and a skilled player's to roughly one mid-career shift: a useful second income, never the only

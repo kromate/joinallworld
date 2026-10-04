@@ -9,7 +9,7 @@
  *   server/routes/core.js       session, life, action, voice configuration, health
  *   server/protocol.js          validation shared with the Cloudflare Worker
  *   server/ws/rooms.js          venue rooms: join, move, voice-state, signal, chat
- *   deploy/cloudflare-worker.js the second host. It builds the same server context and runs the SAME route and socket
+ *   deploy/cloudflare-worker.ts the second host. It builds the same server context and runs the SAME route and socket
  *                               registries (server/routes/index.js, server/ws/index.js), so it answers every route and
  *                               accepts every frame below; the few places it still differs are marked `WORKER:`
  *
@@ -213,7 +213,7 @@ export interface CoreHttpRoutes {
     response: VoiceConfigResponse
     /**
      * Node: 403 room_membership_required, 429 voice_config_rate_limited, 503 voice_config_unavailable.
-     * WORKER: answered by the host itself (the bounded relay test, deploy/turn-provider.js): the same refusals, plus 429 relay_test_limit.
+     * WORKER: answered by the host itself (the bounded relay test, deploy/turn-provider.ts): the same refusals, plus 429 relay_test_limit.
      */
     // INCONSISTENT: the two hosts use different codes AND statuses for "not in a room" and "too many requests".
     errors: HostErrorCode | SessionErrorCode | 'room_membership_required' | 'voice_config_rate_limited' | 'voice_config_unavailable' | 'join_required' | 'relay_test_limit'

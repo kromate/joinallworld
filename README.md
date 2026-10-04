@@ -90,7 +90,7 @@ Error monitoring (Sentry) and product analytics (PostHog) are built in and **do 
 **Local preview.** Telemetry does not run on `localhost` unless `TELEMETRY_DEBUG=1`. To see exactly what would be sent without any account or key, point the game at the bundled stand-in, which records everything and talks to nobody:
 
 ```sh
-node scripts/telemetry-capture.mjs &          # a local stand-in for Sentry and PostHog on 127.0.0.1:3361
+node scripts/telemetry-capture.ts &          # a local stand-in for Sentry and PostHog on 127.0.0.1:3361
 npm run build
 TELEMETRY_ENV=dev TELEMETRY_DEBUG=1 BUILD_ID=local \
 SENTRY_DSN_CLIENT=http://client@127.0.0.1:3361/11 SENTRY_DSN_SERVER=http://server@127.0.0.1:3361/22 \
@@ -114,7 +114,7 @@ The token comes from the environment and is never written anywhere; `--strip-onl
 
 **Under 18.** The age answer is stored in one place (the growth collection, `POST /api/growth/consent`). "Under 18" switches analytics off as well as e-mail and push: the server forgets any Accept it held, `GET /api/telemetry/config` and `POST /api/telemetry/consent` tell the browser (`under18: true`), and the page announces the answer the moment it is given (`jaw:age`).
 
-**Cloudflare adapter.** `deploy/cloudflare-worker.js` does not serve `/api/telemetry/*` yet: on the Worker the page is told nothing and telemetry stays off. `server/telemetry/` uses only `fetch` and Web APIs so the Worker can adopt it.
+**Cloudflare adapter.** `deploy/cloudflare-worker.ts` does not serve `/api/telemetry/*` yet: on the Worker the page is told nothing and telemetry stays off. `server/telemetry/` uses only `fetch` and Web APIs so the Worker can adopt it.
 
 ### Without the server
 
@@ -267,7 +267,7 @@ Pages outside `/api/` (`ctx.pages`, written by the host itself with fixed header
 
 **What is stored about one player.** In `sessions` (keyed by the cookie secret, which is stored nowhere else): the nickname, the public id, when the session expires, one life per city (cash, needs, the ledger, goals, missions, the look, traits and dream, the birth lottery, the **local government id**, the plot and the house's style and size, friends' ids, and so on — everything the rules engine keeps) and the receipts of recent requests. In `growth`, under the public id: the share links they made, who referred them and whom they referred, up to four salted hashes of device tokens, the **age answer** (`adult` or `minor`) with the two channel switches, an **optional e-mail address** (only after the consent box was ticked; deleted by unsubscribing, by "Delete my address", by an under-18 answer, or after 60 days unseen), **push subscriptions** (a browser vendor's endpoint and two keys; deleted by switching notifications off or when the push service says the subscription is gone), table ratings, and for 31 days a first-day / last-day / funnel-step record for the operator's cohort table. In `social`, `civic`, `moderation` and `support`: what those features need, by public id. In the world registry: the public id, the name and the house. In memory only, never on disk: the analytics choice the browser reported, live table games, and the per-address counters of the rate limits. Never stored: a position (the local government is worked out on the device), an IP address, voice audio, venue chat.
 
-**Every environment variable.** The server reads: `PORT`, `DATA_DIR`, `SESSION_TTL_DAYS`, `TRUST_PROXY`, `MODERATOR_TOKEN`, `VOTES_PER_ADDRESS`, `VOTE_CAP_MODE`, `HEARTBEAT_SECONDS`, `STORE_WRITE_MB_PER_S`, `BUILD_ID`, `PUBLIC_ORIGIN` (the table under [Production build](#production-build)); for messages outside the game, and only through an allowlist (`ctx.env`): `ZEPTOMAIL_AUTH`, `EMAIL_FROM_ADDRESS`, `EMAIL_FROM_NAME`, `EMAIL_CONTACT_LINE`, `EMAIL_DAILY_CAP`, `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `PUSH_DAILY_CAP`, `WHATSAPP_CHANNEL_URL`; for telemetry: `TELEMETRY_ENV`, `SENTRY_DSN_CLIENT`, `SENTRY_DSN_SERVER`, `POSTHOG_KEY`, `POSTHOG_HOST`, `TELEMETRY_DEBUG`, `TELEMETRY_CONSENT_AT`, `TELEMETRY_REPLAY_ON_ERROR`, `TELEMETRY_SLOW_MS` (the table under [Telemetry](#telemetry-off-unless-configured)). Build and tooling only, never read by a running server: `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` (`npm run sentry:sourcemaps`), `DEV_PORT` (`npm run dev`), `CAPTURE_PORT` (`scripts/telemetry-capture.mjs`). The Worker's own bindings (`TURN_KEY_ID`, `TURN_API_TOKEN`, `TURN_TEST_PUBLIC_IDS`, `ASSETS`, `JOINALLWORLD`) are in `wrangler.jsonc`. `STORE_MODE` is no longer used. An outside request (`ctx.fetch`: the mail provider, a browser's push service) must be HTTPS, never follows a redirect and is cut off after 15 seconds.
+**Every environment variable.** The server reads: `PORT`, `DATA_DIR`, `SESSION_TTL_DAYS`, `TRUST_PROXY`, `MODERATOR_TOKEN`, `VOTES_PER_ADDRESS`, `VOTE_CAP_MODE`, `HEARTBEAT_SECONDS`, `STORE_WRITE_MB_PER_S`, `BUILD_ID`, `PUBLIC_ORIGIN` (the table under [Production build](#production-build)); for messages outside the game, and only through an allowlist (`ctx.env`): `ZEPTOMAIL_AUTH`, `EMAIL_FROM_ADDRESS`, `EMAIL_FROM_NAME`, `EMAIL_CONTACT_LINE`, `EMAIL_DAILY_CAP`, `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `PUSH_DAILY_CAP`, `WHATSAPP_CHANNEL_URL`; for telemetry: `TELEMETRY_ENV`, `SENTRY_DSN_CLIENT`, `SENTRY_DSN_SERVER`, `POSTHOG_KEY`, `POSTHOG_HOST`, `TELEMETRY_DEBUG`, `TELEMETRY_CONSENT_AT`, `TELEMETRY_REPLAY_ON_ERROR`, `TELEMETRY_SLOW_MS` (the table under [Telemetry](#telemetry-off-unless-configured)). Build and tooling only, never read by a running server: `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` (`npm run sentry:sourcemaps`), `DEV_PORT` (`npm run dev`), `CAPTURE_PORT` (`scripts/telemetry-capture.ts`). The Worker's own bindings (`TURN_KEY_ID`, `TURN_API_TOKEN`, `TURN_TEST_PUBLIC_IDS`, `ASSETS`, `JOINALLWORLD`) are in `wrangler.jsonc`. `STORE_MODE` is no longer used. An outside request (`ctx.fetch`: the mail provider, a browser's push service) must be HTTPS, never follows a redirect and is cut off after 15 seconds.
 
 **Consent, in one place.** *E-mail*: an age answer of 18 or older, then an unticked box with the full sentence, then a confirmation e-mail whose link opens a page with a button (a GET confirms nothing). *Push*: the same age answer, the game's own explanation, then the browser's prompt. *Analytics*: one sheet with identical Accept and Reject buttons, shown after the first reward; Do Not Track, Global Privacy Control and an under-18 answer are a Reject. *Error reports* carry no personal data and are not asked about. The exact words are in [SECURITY.md](SECURITY.md).
 
@@ -275,12 +275,12 @@ Pages outside `/api/` (`ctx.pages`, written by the host itself with fixed header
 
 ### The Worker host
 
-`deploy/cloudflare-worker.js` builds the same server context as `server/server.js` (the parts both share are in `server/host-context.js`) and hands it to the same registries. What is specific to the host:
+`deploy/cloudflare-worker.ts` builds the same server context as `server/server.js` (the parts both share are in `server/host-context.js`) and hands it to the same registries. What is specific to the host:
 
 | | Node (`server/server.js`) | Worker (`deploy/`) |
 | --- | --- | --- |
-| Main store | one JSON file, group commit (`server/store.js`) | SQLite tables of one Durable Object (`sqlite-store.js`): `sessions`, `action_receipts`, `once_receipts`, `archived_lives`, `collections` + `collection_parts`. One SQL transaction per write, durable before it is acknowledged |
-| World shards | one append-only file per local government (`server/world/shards.js`) | rows of `world_shards` (`sqlite-shards.js`), through the same store code (`server/world/shard-core.js`): the same bounded reads, group commit and compaction |
+| Main store | one JSON file, group commit (`server/store.js`) | SQLite tables of one Durable Object (`sqlite-store.ts`): `sessions`, `action_receipts`, `once_receipts`, `archived_lives`, `collections` + `collection_parts`. One SQL transaction per write, durable before it is acknowledged |
+| World shards | one append-only file per local government (`server/world/shards.js`) | rows of `world_shards` (`sqlite-shards.ts`), through the same store code (`server/world/shard-core.js`): the same bounded reads, group commit and compaction |
 | Keys the server makes (push, link signing) | `DATA_DIR/keys/*.json`, mode 0600 | rows of `host_keys` in the object's own storage |
 | Rate limits | in memory | the `rate_limits` table (they survive a sleep) |
 | Sockets | `ws`, protocol ping | hibernating WebSockets; what a socket carries is its attachment, and the modules get each socket back (`restore`) when the object wakes. An application `heartbeat` frame is answered by every browser socket with `heartbeat-ack` |
@@ -289,8 +289,8 @@ Pages outside `/api/` (`ctx.pages`, written by the host itself with fixed header
 | Pages `/s/:code`, `/e/*` | written by the host | the Worker sends those paths to the object; same fixed headers |
 | The game's own page | default preview image made absolute | the same, from `PUBLIC_ORIGIN` or the request's host |
 | Operator routes | bearer token, `MODERATOR_TOKEN` | the same; off unless the `MODERATOR_TOKEN` secret is set |
-| Voice relay | `voiceConfigProvider` (none by default) | the bounded two-tester relay test (`turn-provider.js`) |
-| The original Allworld character | — | `/old-character.html` on the apex host only (`legacy-bridge.js`) |
+| Voice relay | `voiceConfigProvider` (none by default) | the bounded two-tester relay test (`turn-provider.ts`) |
+| The original Allworld character | — | `/old-character.html` on the apex host only (`legacy-bridge.ts`) |
 | Stopping | one shutdown order | nothing to flush: every acknowledged write is already durable |
 
 What does not carry over, or fails closed, on the Worker:
@@ -446,7 +446,7 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `src/ui/keys.js`, `dom.js`, `tokens.css`, `shell.css` | Keyboard shortcut map, template helpers, shared design tokens (including the play column, `--play-x`), shell styles |
 | `src/ui/attention.js`, `controls.js`, `controls.css` | The attention system (the one next step, the pointer, announcements) and the shared control kit (fields, listbox select, buttons, layout utilities) |
 | `src/scene/look.js`, `reward.js` | Renderer colour and tone mapping, sky, ground and the device tier; the reward chips and confetti |
-| `next.html`, `src/app/`, `src/types/`, `server/types.ts`, `tsconfig/`, `scripts/typecheck.mjs`, `docs/MIGRATION-VUE-TS.md` | The Vue 3 + TypeScript groundwork: see [Vue and TypeScript migration](#vue-and-typescript-migration) |
+| `next.html`, `src/app/`, `src/types/`, `server/types.ts`, `tsconfig/`, `scripts/typecheck.ts`, `docs/MIGRATION-VUE-TS.md` | The Vue 3 + TypeScript groundwork: see [Vue and TypeScript migration](#vue-and-typescript-migration) |
 | `src/venue-world.js` | Three.js host for venue and home scenes: walking, the orbit camera, sight lines, spot markers, other players' positions and name tags. Draws only while something moves; idle is zero frames |
 | `src/scene/` | Procedural geometry: `venue-scenes.js` (one scene per venue kind), `venues-*.js`, `home-scene.js`, `characters.js` (avatars), `avatar-preview.js` (the creator's turning figure), `avatar-rig.js` (detail level and walk cycle, feature-detected), `crowd.js` (who stands in a scene, from real data), `movement.js` (walk grid, paths, avoidance, position reports), `camera-controls.js`, `camera-collision.js`, `controls.js` (on-screen pad and hint), `motion-loop.js`, `props.js`, `build.js`, `kit.js` |
 | `src/map3d/` | The 3D miniature city map: `regions.js` (countries and cities), `cities/` (one data pack per city), `roads.js`, `city-build.js`, `landmarks.js`, `camera.js`, `labels.js`, `overlays.js`, `trip.js`, `actor.js`, `vehicles.js` |
@@ -468,7 +468,7 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `src/lazy-load.js` | Loads a late chunk (the community panel) with a truthful state and bounded retries |
 | `src/telemetry/` | Error monitoring and product analytics, off unless configured. `index.js` is the facade (the only part in the first download); `core.js` (consent, queues, funnel), `sentry.js` / `posthog.js` (the only files that import an SDK), `consent-ui.js` and `what-we-collect.js` (the sheet and its words) are lazy chunks; `events.js` is the event catalogue; `scrub.js`, `clean.js`, `policy.js`, `funnel.js` are the pure rules, shared with the server |
 | `server/telemetry/` | The server side: `config.js` (environment), `transport.js` (bounded queue, `fetch` to PostHog's batch API and Sentry's envelope endpoint), `instrument.js` (what routes, socket replies and room snapshots mean as events), `routes.js` (`/api/telemetry/*`) |
-| `scripts/sentry-sourcemaps.mjs`, `scripts/telemetry-capture.mjs` | Source-map upload (`npm run sentry:sourcemaps`); a local stand-in for both services that records what would be sent |
+| `scripts/sentry-sourcemaps.ts`, `scripts/telemetry-capture.ts` | Source-map upload (`npm run sentry:sourcemaps`); a local stand-in for both services that records what would be sent |
 | `server/auth.js`, `server/routes/auth.js` | Inert placeholders for accounts; device sessions remain the only identity |
 | `src/game/systems/missions.js`, `events.js`, `growth.js`, `src/game/content/missions.js`, `calendar.js`, `growth.js` | Missions and the stamp card; event attendance and spraying; the server-only credits for table wins and referral gifts. Content is plain data |
 | `src/game/calendar.js`, `digest.js`, `outreach.js`, `share-model.js` | Pure functions shared by server and client: what is on when; the away card and the weekly digest; when a message may be sent, the address check and the consent wording; what a share says |
@@ -476,21 +476,21 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `server/growth/`, `server/routes/growth.js`, `growth-mod.js`, `server/ws/tables.js` | Share links and the preview page, referral, metrics, the table service, outreach (e-mail through `email/zeptomail.js`, web push in `webpush.js`); their routes, operator routes and socket messages |
 | `src/ui/panels/missions.js`, `events.js`, `refer.js`, `touch.js`, `tables.js`, `away-chip.js`, `tables-chip.js`, `growth-client.js`, `src/ui/share.js`, `push-client.js` | The growth apps and chips, the share painter and the push subscription |
 | `public/` | `og/allworld.jpg` (link-preview image), `manifest.webmanifest`, `icons/`, `sw.js` (notifications only) |
-| `scripts/first-day.mjs` | The scripted first day (`npm run first-day`), also run by `server/first-day.test.js` |
-| `scripts/first-minute.mjs` | The scripted first minute (`npm run first-minute`), also run by `server/first-minute.test.js` |
+| `scripts/first-day.ts` | The scripted first day (`npm run first-day`), also run by `server/first-day.test.js` |
+| `scripts/first-minute.ts` | The scripted first minute (`npm run first-minute`), also run by `server/first-minute.test.js` |
 | `src/quick-start/` | The first minute's client logic. In the first download: `model.js` (pure: the landing of a link — `joinIdFrom`, `linkParts`, the banner words — when to offer settling in, the funnel) and `entry.js` (what the device keeps, the one place a link is read, the device token, and the funnel events). Fetched with the landing screen: `look-model.js` (pure: name suggestions, presets, starter looks, the draft) and `draft.js` |
-| `scripts/new-player.mjs` | The new-player journey (`npm run new-player`), also run by `server/new-player.test.js` |
-| `scripts/world-load.mjs` | The world layer's load test (`npm run world-load`) |
+| `scripts/new-player.ts` | The new-player journey (`npm run new-player`), also run by `server/new-player.test.js` |
+| `scripts/world-load.ts` | The world layer's load test (`npm run world-load`) |
 | `server/host-context.js` | What both hosts do the same way when they build the server context: the settings a module may read, the bounded outside request, `ctx.act` under a receipt, session archiving, page headers |
 | `src/campus/unilag/`, `src/campus/shared/`, `server/routes/campus.js`, `src/ui/panels/campus.js` | The UNILAG campus: layout and walk grids, the scene and its own host (`host.js` behind `world-adapter.js`), three engine systems (student, community, shuttle), the shared election routes and the Campus app. `campus.html` is its development preview |
 | `src/models/`, `models.html` | The procedural model library and its workshop (development only). `integration/flags.js` is the one place its opt-in flags are read |
-| `deploy/` | The Worker host: `cloudflare-worker.js`, `sqlite-store.js`, `sqlite-shards.js`, `legacy-bridge.js`, `turn-provider.js`, their tests, `local.mjs` (run it on this machine) and pinned tooling |
+| `deploy/` | The Worker host: `cloudflare-worker.ts`, `sqlite-store.ts`, `sqlite-shards.ts`, `legacy-bridge.ts`, `turn-provider.ts`, their tests, `local.ts` (run it on this machine) and pinned tooling |
 | `server/world/`, `server/routes/world.js`, `server/ws/world.js` | The plot registry: one append-only shard per local government (`shard-core.js` is the store, `shards.js` its file backend; `registry.js`), the service that keeps it in step with the lives and allocates plots (`service.js`), the read-only routes, and the online count per local government |
 | `src/game/systems/estate.js`, `src/game/content/world.js` | Where a life lives: its local government, its plot, its house (style, tier, upgrades, ground rent), living in it or renting; the twenty local governments, land prices and the estate grid |
 | `src/ui/panels/lga-card.js`, `world-panels.js`, `src/map3d/` | The local-government card (and its section of the settle-in Home card), the local-government page and house card, and the 3D city map that draws estates and houses |
-| `scripts/two-players.mjs` | The scripted two players (`npm run two-players`), also run by `server/two-players.test.js` |
-| `scripts/economy-sim.mjs` | The balance simulation (`npm run economy`); its assertions are `src/game/economy.test.js` |
-| `scripts/load.mjs` | The local load test (`npm run load`) |
+| `scripts/two-players.ts` | The scripted two players (`npm run two-players`), also run by `server/two-players.test.js` |
+| `scripts/economy-sim.ts` | The balance simulation (`npm run economy`); its assertions are `src/game/economy.test.js` |
+| `scripts/load.ts` | The local load test (`npm run load`) |
 | `**/*.test.js`, `server/test-fixture.js` | `node --test` suites (one per owner under `src/game/`, plus `integration.test.js` for the seams between them) and the shared server fixture |
 
 The only registered placeholders left are the accounts files (`server/auth.js`, `server/routes/auth.js`, `src/ui/panels/account.js`): they mark where a reviewed accounts design would live, not that one exists. [What works today](#what-works-today) is the list of working features.

@@ -21,7 +21,7 @@
  * outcomes it documents (LAPO Baby at birth, the puddle on the trek home), so it uses the
  * test-only hook in server/life-service.js: this process — which IS the server here — fixes the
  * salt its one life is given (FIRST_DAY_SALT). No request can do that. If content changes and
- * those outcomes stop coming up, `node scripts/first-day.mjs --find-salt` prints a salt that works.
+ * those outcomes stop coming up, `node scripts/first-day.ts --find-salt` prints a salt that works.
  *
  * Plain Node, no dependencies. `runFirstDay({ log })` is also run by server/first-day.test.js.
  */
@@ -40,17 +40,45 @@ import { findFreeSpot } from '../src/game/home-layout.ts';
 import { FURNITURE } from '../src/game/content/furniture.ts';
 import { HOUSE_TIERS } from '../src/game/content/world.ts';
 import { EVENTS } from '../src/game/content/events.ts';
+import type { AddressInfo } from 'node:net';
+import type { Server } from 'node:http';
+import type { LifeState, NeedId } from '../src/types/index.ts';
+import type { ActionResponse, LifeResponse } from '../src/types/protocol.ts';
+
+/** What this script uses of the server (server/server.js is still untyped JavaScript). */
+interface FirstDayServer extends Server { store: { close(): Promise<void> } }
+type Json = Record<string, unknown>;
+interface Http<T> { status: number; headers: Headers; json: T }
+interface SentBody { actionId: string; cityId: string; type: string; payload?: Json }
+/** The fields of GET /api/world/me this script reads. */
+interface WorldMe { placed: boolean; lga: string; plot?: { lga: string } }
+/** The error body the action route answers with on a refusal. */
+interface ErrorBody { error?: string }
+export interface FirstDayOptions { log?: (line: string) => void; salt?: string }
+export interface FirstDayResult { steps: number; cash: number }
+
+/** Narrow away null and undefined; the script fails here, as a property read on the missing value would. */
+function must<T>(value: T | null | undefined, what = 'value'): T {
+  if (value === null || value === undefined) throw new TypeError(`${what} is missing`);
+  return value;
+}
 
 const CITY = 'lagos';
 /** The local government this player picks when he settles in: his free starter house stands on a plot there. */
 const LGA = 'lagos-mainland';
-const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
-const naira = (value) => `₦${value.toLocaleString('en-NG')}`;
-const needsOf = (state) => NEEDS.map((need) => state.needs[need]);
+const NEEDS: NeedId[] = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
+const naira = (value: number) => `₦${value.toLocaleString('en-NG')}`;
+const needsOf = (state: LifeState) => NEEDS.map((need) => state.needs[need]);
+/** The goal chip, which carries a step and a target only while the goal chain is running. */
+function goalChip(view: ReturnType<typeof viewLife>) {
+  const chip = view.goals.chip;
+  if (chip.kind !== 'goal') throw new TypeError(`the goal chip is a ${chip.kind} chip, not a goal`);
+  return chip;
+}
 const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
 
 /** Monday 5 January 2026, 10:00 in Lagos, moved forward to the first 20-minute block that is dry and stays dry. */
-function dryMondayMorning() {
+function dryMondayMorning(): number {
   let start = Date.UTC(2026, 0, 5, 9);
   while ([0, 1, 2].some((block) => weatherAt(start + block * 20 * 60000, CITY).raining)) start += 20 * 60000;
   return start;
@@ -59,48 +87,49 @@ function dryMondayMorning() {
 /** The salt this run's life is created with (see the header). Found with --find-salt. */
 export const FIRST_DAY_SALT = 'first-day-salt-0036';
 
-export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } = {}) {
+export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT }: FirstDayOptions = {}): Promise<FirstDayResult> {
   const dataDir = await mkdtemp(join(tmpdir(), 'joinallworld-first-day-'));
   let time = dryMondayMorning();
-  let server, base, cookie, ids = 0, step = 0;
+  let server: FirstDayServer | undefined, base = '', cookie: string | undefined, ids = 0, step = 0;
   const serverOptions = { dataDir, now: () => time, distDir: join(dataDir, 'no-dist') };
 
   async function boot() {
-    server = await createServer(serverOptions);
-    server.listen(0, '127.0.0.1');
-    await once(server, 'listening');
-    base = `http://127.0.0.1:${server.address().port}`;
+    const booted = await createServer(serverOptions) as unknown as FirstDayServer;
+    server = booted;
+    booted.listen(0, '127.0.0.1');
+    await once(booted, 'listening');
+    base = `http://127.0.0.1:${(booted.address() as AddressInfo).port}`;
   }
   // A graceful stop writes anything not yet on disk (the server does the same on SIGTERM).
-  async function halt() { server.closeAllConnections(); await new Promise((done) => server.close(done)); await server.store.close(); }
-  async function http(path, body) {
+  async function halt() { const running = server; if (!running) return; running.closeAllConnections(); await new Promise<void>((done) => running.close(() => done())); await running.store.close(); }
+  async function http<T = Json>(path: string, body?: unknown): Promise<Http<T>> {
     const response = await fetch(base + path, { method: body ? 'POST' : 'GET', body: body ? JSON.stringify(body) : undefined,
       headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) } });
-    return { status: response.status, headers: response.headers, json: await response.json() };
+    return { status: response.status, headers: response.headers, json: await response.json() as T };
   }
   /** A fresh, valid action ID: "<server ms>:<uuid>". The uuid counts up so the run is reproducible. */
   const nextId = () => `${time}:00000000-0000-4000-8000-${String(++ids).padStart(12, '0')}`;
-  async function send(body) {
-    const { status, json } = await http('/api/action', body);
+  async function send(body: SentBody): Promise<ActionResponse> {
+    const { status, json } = await http<ActionResponse>('/api/action', body);
     assert.equal(status, 200, `${body.type}: HTTP ${status} ${JSON.stringify(json)}`);
     stable(json.state, body.type);
     return json;
   }
-  const action = (type, payload) => send({ actionId: nextId(), cityId: CITY, type, ...(payload ? { payload } : {}) });
-  async function ok(type, payload, code) {
+  const action = (type: string, payload?: Json) => send({ actionId: nextId(), cityId: CITY, type, ...(payload ? { payload } : {}) });
+  async function ok(type: string, payload: Json | undefined, code?: string) {
     const result = await action(type, payload);
     assert.equal(result.ok, true, `${type} was refused: ${result.code} — ${result.state.message}`);
     if (code) assert.equal(result.code, code, type);
     return result.state;
   }
   /** Every state the server returns must survive a reload unchanged: nothing a system wrote may be lost at the next load. */
-  const stable = (state, what) => { assert.deepEqual(createLife(structuredClone(state), { now: time, cityId: CITY }), state, `${what}: reloading the returned state changes nothing`); return state; };
-  const life = async () => stable((await http(`/api/life?city=${CITY}`)).json.state, 'GET /api/life');
+  const stable = (state: LifeState, what: string) => { assert.deepEqual(createLife(structuredClone(state), { now: time, cityId: CITY }), state, `${what}: reloading the returned state changes nothing`); return state; };
+  const life = async () => stable((await http<LifeResponse>(`/api/life?city=${CITY}`)).json.state, 'GET /api/life');
   /** Let server time pass, then read the settled life. */
-  async function wait(seconds) { time += seconds * 1000; return life(); }
-  const view = (state) => viewLife(createLife(state, { now: time, cityId: CITY }), { now: time, cityId: CITY });
-  const say = (title, state, note = '') => log(`${String(++step).padStart(2, '0')}  ${title.padEnd(46)} ${naira(state.cash).padStart(9)}  H/E/F/S/Hy/B ${needsOf(state).join('/')}${note ? `  · ${note}` : ''}`);
-  const check = (state, cash, needs, label) => {
+  async function wait(seconds: number) { time += seconds * 1000; return life(); }
+  const view = (state: LifeState) => viewLife(createLife(state, { now: time, cityId: CITY }), { now: time, cityId: CITY });
+  const say = (title: string, state: LifeState, note = '') => log(`${String(++step).padStart(2, '0')}  ${title.padEnd(46)} ${naira(state.cash).padStart(9)}  H/E/F/S/Hy/B ${needsOf(state).join('/')}${note ? `  · ${note}` : ''}`);
+  const check = (state: LifeState, cash: number, needs: number[], label: string) => {
     assert.equal(state.cash, cash, `${label}: wallet`);
     assert.deepEqual(needsOf(state), needs, `${label}: needs (hunger, energy, fun, social, hygiene, bladder)`);
   };
@@ -109,24 +138,25 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
    * never costs money. Which event comes up is decided by the server from the trip's settlement, so it
    * is reported with whatever that answer does to the needs (read from the event content).
    */
-  async function travel(id, mode, fare, label) {
+  async function travel(id: string, mode: string, fare: number, label: string) {
     const before = (await life()).cash;
     const started = await ok('travel', { id, mode }, 'started');
     assert.equal(started.cash, before - fare, `${label}: the fare is charged at departure`);
     assert.equal(started.location !== id, true);
-    let state = await wait(started.activeAction.duration);
+    let state = await wait(must(started.activeAction).duration);
     assert.equal(state.location, id, `${label}: arrived`);
     let event = '';
     if (state.travel.event) {
-      const offer = view(state).travel.event;
+      const offer = must(view(state).travel.event);
+      const lastChoice = must(offer.choices.at(-1));
       const cash = state.cash;
-      state = await ok('world.roadside', { choice: offer.choices.at(-1).id }, 'resolved');
+      state = await ok('world.roadside', { choice: lastChoice.id }, 'resolved');
       assert.equal(state.cash, cash, 'declining a roadside offer is free');
-      const effects = EVENTS[offer.id].choices.at(-1).effects || {};
-      const cost = Object.entries(effects).map(([need, amount]) => `${need[0].toUpperCase()}${need.slice(1)} ${amount > 0 ? '+' : '−'}${Math.abs(amount)}`).join(', ');
-      event = `roadside “${offer.title}” answered “${offer.choices.at(-1).label}”${cost ? ` (${cost})` : ''}`;
+      const effects = must(must(EVENTS[offer.id]).choices.at(-1)).effects || {};
+      const cost = Object.entries(effects).map(([need, amount]) => `${need.charAt(0).toUpperCase()}${need.slice(1)} ${amount > 0 ? '+' : '−'}${Math.abs(amount)}`).join(', ');
+      event = `roadside “${offer.title}” answered “${lastChoice.label}”${cost ? ` (${cost})` : ''}`;
     }
-    return { state, seconds: started.activeAction.duration, event };
+    return { state, seconds: must(started.activeAction).duration, event };
   }
 
   try {
@@ -136,7 +166,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     // ---- a new device session, as the quick start opens it: a name, then a look --------------
     const opened = await http('/api/session', { name: 'Tunde', onboarding: true });
     assert.equal(opened.status, 200);
-    cookie = opened.headers.get('set-cookie').split(';')[0];
+    cookie = must(opened.headers.get('set-cookie')).split(';')[0];
     // The server (this process) fixes the salt of the life it is about to create. Test-only hook; see the header.
     useSaltSourceForTests(() => salt);
     let state = await life();
@@ -146,23 +176,23 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     state = await ok('onboarding.quick-start', { look: LOOK }, 'playing');
     check(state, 5000, [80, 85, 70, 60, 75, 70], 'quick start');
     let shown = view(state);
-    assert.deepEqual([state.location, state.spot, shown.onboarding.guest, shown.goals.chip.title, shown.goals.chip.step, shown.goals.chip.go], ['park', 'trees', true, 'Play a round of Ayo', 1, ['park', 'trees']]);
+    assert.deepEqual([state.location, state.spot, shown.onboarding.guest, shown.goals.chip.title, goalChip(shown).step, goalChip(shown).go], ['park', 'trees', true, 'Play a round of Ayo', 1, ['park', 'trees']]);
     say('quick start: Tunde is in Freedom Park, a guest', state, 'no traits, dream, lottery or home asked; first goal “Play a round of Ayo”');
 
     // ---- goal 1: something enjoyable right where he stands -----------------------------------
     await ok('activity', { id: 'play-ayo' }, 'started');
     state = await wait(7);
     check(state, 5500, [80, 85, 78, 68, 75, 70], 'ayo');
-    assert.deepEqual([state.goals.stars, state.ledger.at(-1).reason, state.onboarding.firstAt - state.onboarding.bornAt], [1, 'Goal: Play a round of Ayo', 7000]);
+    assert.deepEqual([state.goals.stars, must(state.ledger.at(-1)).reason, must(state.onboarding.firstAt) - must(state.onboarding.bornAt)], [1, 'Goal: Play a round of Ayo', 7000]);
     say('Play Ayo under the trees (7s)', state, 'Fun +8, Social +8, goal 1 +₦500 +1✨ — 7 seconds after landing');
 
     // ---- goal 2: say hello to one of the park's regulars --------------------------------------
-    const regular = view(state).social.here[0];
+    const regular = must(view(state).social.here[0]);
     await ok('spot', { id: 'people' }, 'selected');
     await ok('activity', { id: `npc-${regular.id}-hello` }, 'started');
     state = await wait(6);
     check(state, 6000, [80, 85, 80, 80, 75, 70], 'hello');
-    assert.deepEqual([state.goals.stars, state.ledger.at(-1).reason, view(state).goals.chip.title, view(state).goals.chip.open], [2, 'Goal: Say hello to someone', 'Settle in', 'onboarding']);
+    assert.deepEqual([state.goals.stars, must(state.ledger.at(-1)).reason, view(state).goals.chip.title, view(state).goals.chip.open], [2, 'Goal: Say hello to someone', 'Settle in', 'onboarding']);
     say(`Say Hello to ${regular.name} in the park (6s)`, state, 'Social +12, Fun +2, goal 2 +₦500 +1✨; next: “Settle in”');
 
     // ---- a guest has no home: the home-only actions say so, and nothing is billed ---------------
@@ -179,7 +209,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     // be found by trying IDs. Under this run's fixed salt it is the outcome observed in the reference game.
     const rollId = nextId();
     const rolled = await send({ actionId: rollId, cityId: CITY, type: 'onboarding.lottery', payload: {} });
-    assert.deepEqual([rolled.code, rolled.state.onboarding.lottery.id], ['rolled', 'lapo-baby'], 'the fixed salt rolls LAPO Baby (if content changed, run with --find-salt)');
+    assert.deepEqual([rolled.code, must(rolled.state.onboarding.lottery).id], ['rolled', 'lapo-baby'], 'the fixed salt rolls LAPO Baby (if content changed, run with --find-salt)');
     const noPlace = await action('onboarding.home', {});
     assert.deepEqual([noPlace.ok, noPlace.code], [false, 'lga_required'], 'settling in needs a local government: that is where the house stands');
     state = await ok('onboarding.home', { lga: LGA, via: 'manual' }, 'life_started');
@@ -187,13 +217,13 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     check(state, 78000, [80, 85, 80, 80, 75, 70], 'move in');
     shown = view(state);
     assert.deepEqual([state.location, state.estate.lga, state.estate.lgaConfirmed, state.estate.living, state.estate.tier, shown.onboarding.mood.word, shown.skills.hustle.level, state.goals.stars], ['home', LGA, true, 'own', 'starter', 'Very Happy', 2, 3]);
-    assert.deepEqual([shown.economy.loan.left, shown.economy.loan.weekly, state.economy.rent.house], [72000, 12000, null], 'the loan is his; there is no rent on his own house');
+    assert.deepEqual([must(shown.economy.loan).left, must(shown.economy.loan).weekly, state.economy.rent.house], [72000, 12000, null], 'the loan is his; there is no rent on his own house');
     // The server sets a plot aside for him in that local government as soon as the choice is saved.
-    const mine = (await http(`/api/world/me?city=${CITY}`)).json;
+    const mine = (await http<WorldMe>(`/api/world/me?city=${CITY}`)).json;
     assert.deepEqual([mine.placed, mine.lga, mine.plot?.lga], [true, LGA, LGA]);
     state = await life();
     assert.deepEqual(state.estate.plot, mine.plot, 'the plot is recorded in the life');
-    assert.deepEqual([shown.goals.chip.kind, shown.goals.chip.title, shown.goals.chip.step], ['goal', 'Eat something', 4]);
+    assert.deepEqual([shown.goals.chip.kind, shown.goals.chip.title, goalChip(shown).step], ['goal', 'Eat something', 4]);
     assert.deepEqual(shown.goals.wishes.map((wish) => wish.label), ['Make ₦15,000 today', 'See art at Freedom Park', 'See a movie at The Palms']);
     assert.deepEqual(state.inventory, { rice: 2, 'tomato-paste': 2, seasoning: 6, 'veg-oil': 4, garri: 4, sugar: 5, noodles: 3, eggs: 6, bread: 2, zobo: 1, plantain: 2 });
     assert.deepEqual(state.ledger.slice(-2).map((entry) => [entry.amount, entry.reason]), [[71000, 'Start cash · Starter house, Lagos Mainland (includes ₦60,000 LAPO loan)'], [1000, 'Goal: Settle in']]);
@@ -204,7 +234,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     await ok('activity', { id: 'home-soak-garri' }, 'started');
     state = await wait(5);
     check(state, 78500, [100, 85, 80, 80, 75, 70], 'soak garri');
-    assert.deepEqual([state.inventory.garri, state.inventory.sugar, state.goals.stars, state.ledger.at(-1).reason], [3, 4, 4, 'Goal: Eat something']);
+    assert.deepEqual([state.inventory.garri, state.inventory.sugar, state.goals.stars, must(state.ledger.at(-1)).reason], [3, 4, 4, 'Goal: Eat something']);
     say('Soak Garri & Sugar from the cooler (5s)', state, 'goal 4 +₦500 +1✨, garri 4→3, sugar 5→4');
 
     // ---- goal 5: bucket bath — start, cancel, then to completion ----------------------------
@@ -217,7 +247,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     await ok('activity', { id: 'bath' }, 'started');
     state = await wait(6);
     check(state, 79000, [100, 85, 80, 80, 100, 70], 'bath');
-    assert.deepEqual([view(state).onboarding.mood.word, state.goals.stars, state.ledger.at(-1).reason], ['Very Happy', 5, 'Goal: Freshen up']);
+    assert.deepEqual([view(state).onboarding.mood.word, state.goals.stars, must(state.ledger.at(-1)).reason], ['Very Happy', 5, 'Goal: Freshen up']);
     say('bucket bath to completion (6s)', state, 'goal 5 +₦500 +1✨, mood Very Happy');
 
     // ---- goal 6: Jobs → apply for Tech --------------------------------------------------------
@@ -234,7 +264,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     // ---- goal 7: Buy → place a plastic chair --------------------------------------------------
     const chair = FURNITURE['plastic-chair'];
     assert.equal(view(state).home.prices['plastic-chair'], 500);
-    const tile = findFreeSpot(HOUSE_TIERS.starter.grid, state.home.items, chair);
+    const tile = findFreeSpot(HOUSE_TIERS.starter.grid, state.home.items, must(chair));
     const chairsBefore = state.home.items.filter((item) => item.itemId === 'plastic-chair').length;
     const chairBody = { actionId: nextId(), cityId: CITY, type: 'home.furniture-buy', payload: { item: 'plastic-chair', ...tile } };
     const bought = await send(chairBody);
@@ -249,7 +279,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     let trip = await travel('amala-shitta', 'danfo', 150, 'Danfo to Amala Shitta');
     state = trip.state;
     check(state, 81850, [100, 85, 80, 80, 100, 70], 'arrive Amala Shitta');
-    assert.deepEqual([state.goals.stars, state.ledger.at(-1).reason, state.ledger.at(-2).reason], [8, 'Goal: Visit the buka', 'Danfo to Amala Shitta']);
+    assert.deepEqual([state.goals.stars, must(state.ledger.at(-1)).reason, must(state.ledger.at(-2)).reason], [8, 'Goal: Visit the buka', 'Danfo to Amala Shitta']);
     say(`Danfo Home → Amala Shitta (${trip.seconds}s)`, state, `fare −₦150 at departure, goal 8 +₦1,500 +1✨${trip.event ? `, ${trip.event}` : ''}`);
 
     // ---- a paid meal: start, cancel, then to completion ----------------------------------------
@@ -271,30 +301,30 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     assert.deepEqual([view(state).goals.chip.title, view(state).goals.chip.hint], ['Make a new friend', 'Tap someone at a venue']);
     await ok('spot', { id: 'people' }, 'selected');
     const hello = await ok('activity', { id: 'npc-amaka-hello' }, 'started');
-    assert.equal(hello.activeAction.duration, 6);
+    assert.equal(must(hello.activeAction).duration, 6);
     state = await wait(6);
     // Observed effect of Say Hello: Social +12, Fun +2 (80 → 92, 90 → 92).
     check(state, 82800, [100, 85, 92, 92, 100, 70], 'say hello');
-    assert.deepEqual([state.goals.stars, state.ledger.at(-1).reason], [9, 'Goal: Make a new friend']);
-    assert.deepEqual([state.social.rel.amaka.p, state.social.rel.amaka.npc], [2, true]);
+    assert.deepEqual([state.goals.stars, must(state.ledger.at(-1)).reason], [9, 'Goal: Make a new friend']);
+    assert.deepEqual([must(state.social.rel.amaka).p, must(state.social.rel.amaka).npc], [2, true]);
     say('Say Hello to Amaka at the buka (6s)', state, 'Social +12, Fun +2, goal 9 +₦1,500 +1✨, closeness with Amaka 0→2');
 
     // ---- goal 10: the tutorial now asks for a shift, so "Go automatically" starts the free commute ---
     assert.equal(view(state).goals.chip.title, 'Work a shift');
     assert.deepEqual([state.activeAction?.kind, state.activeAction?.id, state.career.auto], ['commute', 'cchub', true]);
     assert.match(state.message, /^Go automatically: heading to CcHub for today’s shift/);
-    const commute = state.activeAction.duration;
+    const commute = must(state.activeAction).duration;
     state = await wait(commute);
     assert.deepEqual([state.location, state.spot, state.activeAction], ['cchub', 'work', null]);
     check(state, 82800, [100, 85, 92, 92, 100, 70], 'arrive CcHub');
     const shift = await ok('activity', { id: 'tech-shift' }, 'started');
     assert.equal(shift.cash, 82800, 'a shift pays on completion');
-    state = await wait(shift.activeAction.duration);
+    state = await wait(must(shift.activeAction).duration);
     check(state, 88400, [88, 65, 92, 92, 100, 70], 'shift');
     shown = view(state);
     assert.deepEqual([shown.career.performance, state.completedShifts, state.goals.stars, state.goals.chain], [60, 1, 10, 10]);
     assert.deepEqual(state.ledger.slice(-2).map((entry) => [entry.amount, entry.reason]), [[3600, 'Tech shift'], [2000, 'Goal: Work a shift']]);
-    say(`automatic commute to CcHub (${commute}s), Tech shift (${shift.activeAction.duration}s)`, state, 'no fare, pay +₦3,600 in the ledger, performance 50→60%, goal 10 +₦2,000 +1✨');
+    say(`automatic commute to CcHub (${commute}s), Tech shift (${must(shift.activeAction).duration}s)`, state, 'no fare, pay +₦3,600 in the ledger, performance 50→60%, goal 10 +₦2,000 +1✨');
 
     // ---- trek home; decline any roadside offer ---------------------------------------------------
     assert.equal(weatherAt(time + 20000, CITY).raining, false, 'the trek happens in dry weather');
@@ -309,7 +339,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     await ok('spot', { id: 'bedroom' }, 'selected');
     await ok('activity', { id: 'nap' }, 'started');
     state = await wait(8);
-    assert.equal(state.activeAction.id, 'nap');
+    assert.equal(must(state.activeAction).id, 'nap');
     state = await ok('cancel', undefined, 'cancelled');
     check(state, 88400, [88, 71, 92, 92, 90, 70], 'nap woken early');
     assert.equal(state.message, 'Tunde woke up. The rest you got is kept.', 'waking is not "Action cancelled."');
@@ -341,7 +371,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     check(replay.state, 88400, [100, 71, 92, 92, 90, 70], 'replay');
     assert.equal(replay.state.home.items.filter((item) => item.itemId === 'plastic-chair').length, chairsBefore + 1);
     assert.equal(replay.state.ledger.filter((entry) => entry.reason === 'Bought Plastic Chair').length, 1);
-    const conflict = await http('/api/action', { ...chairBody, payload: { item: 'velvet-sofa', ...tile } });
+    const conflict = await http<ErrorBody>('/api/action', { ...chairBody, payload: { item: 'velvet-sofa', ...tile } });
     assert.deepEqual([conflict.status, conflict.json.error], [409, 'action_id_conflict'], 'the same ID with different contents is rejected');
     say('replayed the chair purchase (same action ID)', replay.state, 'duplicate: no second charge, no second chair');
 
@@ -355,13 +385,13 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } =
     // However long the player was away, one settlement applies at most four hours of need decay
     // (hunger 6, energy 4, fun 5, social 4, hygiene 3, bladder 8 points an hour).
     check(state, 76400, [76, 55, 72, 76, 78, 38], 'Saturday');
-    assert.equal(view(state).economy.loan.left, 60000);
+    assert.equal(must(view(state).economy.loan).left, 60000);
     say('Saturday 00:00: the loan instalment, and no rent', state, 'loan −₦12,000 with a ledger line; loan ₦60,000 left; he lives in his own starter house, so no rent is due');
     await wait(3600);
     const later = await wait(86350); // Sunday
     assert.equal(later.ledger.filter((entry) => /^(Rent|Loan repayment)/.test(entry.reason)).length, 1, 'not collected again on later settlements that week');
     assert.equal(later.cash, 76400);
-    const stale = await http('/api/action', chairBody);
+    const stale = await http<ErrorBody>('/api/action', chairBody);
     assert.deepEqual([stale.status, stale.json.error], [409, 'action_expired'], 'an action ID older than 24 hours is refused');
     say('a day later: nothing collected twice', later, 'wallet unchanged; the week-old action ID is refused as expired');
     state = later;

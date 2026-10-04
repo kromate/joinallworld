@@ -90,7 +90,7 @@ export interface SessionRecord {
   once?: Record<TimedId, OnceReceipt>
 }
 /**
- * WORKER: what deploy/cloudflare-worker.js stores in its `sessions` table. Action receipts live
+ * WORKER: what deploy/cloudflare-worker.ts stores in its `sessions` table. Action receipts live
  * in their own SQL table (without `type`), and there is no `once` and no `onboarding`.
  */
 export type WorkerSessionRecord = Pick<SessionRecord, 'secret' | 'publicId' | 'name' | 'expiresAt' | 'cities'>

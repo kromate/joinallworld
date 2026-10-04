@@ -51,7 +51,7 @@ export const START_PERFORMANCE = 50;
 export const PERFORMANCE_PER_SHIFT = 10;
 /**
  * Pay of each ladder level as a multiple of entry pay, rounded to ₦100 (original beta values).
- * The top two rungs were 5.5 and 9. scripts/economy-sim.mjs showed that no career could then
+ * The top two rungs were 5.5 and 9. scripts/economy-sim.ts showed that no career could then
  * pay the fourth house's observed rent (₦250,000 a week against at most ₦227,000), so that house
  * and everything above it was unreachable by working. At 7 and 16 the median track's top level
  * earns that rent in a week; the fifth house stays beyond wages alone.

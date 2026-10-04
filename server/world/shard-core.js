@@ -2,7 +2,7 @@
  * OWNER: world
  * SHARD STORE — one append-only log per shard, opened lazily. This file is the store itself and is portable (no Node
  * imports): where a log is kept is a BACKEND. server/world/shards.js keeps each one in a file (the Node host);
- * deploy/sqlite-shards.js keeps them in the Durable Object's SQLite (the Worker host). Both run this same code, so the
+ * deploy/sqlite-shards.ts keeps them in the Durable Object's SQLite (the Worker host). Both run this same code, so the
  * guarantee, the bounded reads, the group commit and the compaction below are the same on both hosts.
  *
  * The main store (server/store.js) is one JSON document rewritten whole; it cannot hold a hundred

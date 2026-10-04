@@ -158,7 +158,7 @@
  *   ctx.waitUntil?.(promise)               work that outlives the request that started it (a message being sent, a registry sync):
  *                                          a host that could stop between requests (the Worker) keeps itself up for it; Node does nothing.
  *   ctx.shards                             the world's shard store (server/world/shard-core.js): one append-only log per local
- *                                          government — a file on Node (world/shards.js), SQLite rows on the Worker (deploy/sqlite-shards.js) —
+ *                                          government — a file on Node (world/shards.js), SQLite rows on the Worker (deploy/sqlite-shards.ts) —
  *                                          used only through the world service (server/world/service.js)
  *   ctx.randomId()                         a random UUID (for salts and ids; not a clock, not a secret store)
  *   ctx.on(event, fn) / ctx.emit(event, data)   in-process events between server modules. The

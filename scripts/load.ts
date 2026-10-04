@@ -1,7 +1,7 @@
 /**
  * Local load test: N simulated players against an in-process server.
  *
- *   node scripts/load.mjs [--players 100] [--seconds 10] [--poll-ms 1000] [--action-ms 2000]
+ *   node scripts/load.ts [--players 100] [--seconds 10] [--poll-ms 1000] [--action-ms 2000]
  *
  * METHOD
  *   A fresh server is started on a temporary data directory with the real clock.
@@ -25,18 +25,37 @@ import { mkdtemp, rm, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { once } from 'node:events';
+import type { AddressInfo } from 'node:net';
+import type { Server } from 'node:http';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { createServer } from '../server/server.js';
 
-const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
-const quantile = (sorted, q) => (sorted.length ? sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] : NaN);
-const round = (value) => (Number.isFinite(value) ? Math.round(value * 10) / 10 : null);
+/** Counters the store keeps (server/store.js is untyped). */
+interface StoreStats { writes: number; bytes: number; transactions: number }
+interface LoadServer extends Server {
+  store: { stats(): StoreStats; flush(): Promise<void>; close(): Promise<void> };
+}
+interface Person { headers: Record<string, string>; step: number }
+type Kind = 'action' | 'poll';
+export interface LoadSettings { players?: number; seconds?: number; pollMs?: number; actionMs?: number }
+interface Summary { count: number; p50: number | null; p95: number | null; max: number | null }
+export interface LoadResult {
+  players: number; seconds: number; pollMs: number; actionMs: number;
+  action: Summary; poll: Summary;
+  writes: number; megabytesWritten: number | null; transactions: number; fileKilobytes: number; errors: number; codes: Record<string, number>;
+}
+/** The fields of a reply this script reads. */
+interface Reply { code?: string; error?: string }
 
-function summary(samples) {
+const sleep = (ms: number) => new Promise<void>((done) => setTimeout(done, ms));
+const quantile = (sorted: number[], q: number) => (sorted.length ? (sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] ?? NaN) : NaN);
+const round = (value: number) => (Number.isFinite(value) ? Math.round(value * 10) / 10 : null);
+
+function summary(samples: number[]): Summary {
   const sorted = [...samples].sort((a, b) => a - b);
-  return { count: sorted.length, p50: round(quantile(sorted, 0.5)), p95: round(quantile(sorted, 0.95)), max: round(sorted.at(-1)) };
+  return { count: sorted.length, p50: round(quantile(sorted, 0.5)), p95: round(quantile(sorted, 0.95)), max: round(sorted.at(-1) ?? NaN) };
 }
 
 /** What one simulated player sends, in order, over and over. Every step is valid from the state the previous one leaves. */
@@ -49,38 +68,40 @@ const SCRIPT = [
   { type: 'travel', payload: { id: 'park', mode: 'trek' } },
 ];
 
-export async function runLoad({ players = 100, seconds = 10, pollMs = 1000, actionMs = 2000 } = {}) {
+export async function runLoad({ players = 100, seconds = 10, pollMs = 1000, actionMs = 2000 }: LoadSettings = {}): Promise<LoadResult> {
   const dataDir = await mkdtemp(join(tmpdir(), 'joinallworld-load-'));
-  const server = await createServer({ dataDir, distDir: join(dataDir, 'no-dist'), trustProxy: true });
+  const server = await createServer({ dataDir, distDir: join(dataDir, 'no-dist'), trustProxy: true }) as unknown as LoadServer;
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
-  const base = `http://127.0.0.1:${server.address().port}`;
-  const latencies = { action: [], poll: [] }, codes = {};
+  const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
+  const latencies: Record<Kind, number[]> = { action: [], poll: [] }, codes: Record<string, number> = {};
   let errors = 0;
   try {
-    async function call(kind, path, body, headers) {
+    async function call(kind: Kind | null, path: string, body: unknown, headers: Record<string, string>): Promise<{ response: Response | null; json: Reply | null }> {
       const started = performance.now();
       try {
         const response = await fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined });
-        const json = await response.json();
+        const json = await response.json() as Reply;
         if (kind) latencies[kind].push(performance.now() - started);
         if (response.status !== 200) errors += 1;
         return { response, json };
       } catch { errors += 1; return { response: null, json: null }; }
     }
-    const people = [];
+    const people: Person[] = [];
     for (let index = 0; index < players; index++) {
       const address = `10.${(index >> 16) & 255}.${(index >> 8) & 255}.${index & 255}`;
       const { response } = await call(null, '/api/session', { name: `Player ${index + 1}` }, { 'X-Forwarded-For': address });
-      people.push({ headers: { Cookie: response.headers.get('set-cookie').split(';')[0], 'X-Forwarded-For': address }, step: index % SCRIPT.length });
+      // A failed session request stops the run (the original crashed with a TypeError on `response.headers`).
+      if (!response) throw new TypeError('session request failed');
+      people.push({ headers: { Cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '', 'X-Forwarded-For': address }, step: index % SCRIPT.length });
     }
     const setup = server.store.stats();
     const until = performance.now() + seconds * 1000;
-    const jitter = (ms) => ms * (0.5 + Math.random());
-    async function poller(person) {
+    const jitter = (ms: number) => ms * (0.5 + Math.random());
+    async function poller(person: Person) {
       await sleep(Math.random() * pollMs);
       while (performance.now() < until) { await call('poll', '/api/life?city=lagos', null, person.headers); await sleep(jitter(pollMs)); }
     }
-    async function actor(person) {
+    async function actor(person: Person) {
       await sleep(Math.random() * actionMs);
       while (performance.now() < until) {
         const step = SCRIPT[person.step++ % SCRIPT.length];
@@ -110,7 +131,7 @@ export async function runLoad({ players = 100, seconds = 10, pollMs = 1000, acti
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
-  const option = (name, fallback) => { const at = args.indexOf(`--${name}`); return at >= 0 ? args[at + 1] : fallback; };
+  const option = (name: string, fallback: number) => { const at = args.indexOf(`--${name}`); return at >= 0 ? args[at + 1] : fallback; };
   const settings = { players: Number(option('players', 100)), seconds: Number(option('seconds', 10)), pollMs: Number(option('poll-ms', 1000)), actionMs: Number(option('action-ms', 2000)) };
   console.log(`Load test · ${settings.players} players · ${settings.seconds}s · a poll every ~${settings.pollMs}ms and an action every ~${settings.actionMs}ms per player · loopback, in-process`);
   console.log(['actions', 'act p50', 'act p95', 'act max', 'polls', 'poll p50', 'poll p95', 'writes', 'MB written', 'file KB', 'errors'].join(' | '));

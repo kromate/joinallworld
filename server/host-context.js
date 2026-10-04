@@ -1,7 +1,7 @@
 /**
  * OWNER: foundation
  * WHAT BOTH HOSTS DO THE SAME WAY. The Node host (server/server.js) and the Cloudflare Worker host
- * (deploy/cloudflare-worker.js) each build the server context documented in routes/index.js. The parts
+ * (deploy/cloudflare-worker.ts) each build the server context documented in routes/index.js. The parts
  * of it that do not depend on the host — which settings a module may read, how an outside request is
  * bounded, when ctx.act may spend, which sessions are archived, which response headers a route may set —
  * are here, once, so the two hosts cannot drift apart. Portable: no Node imports.

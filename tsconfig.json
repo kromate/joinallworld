@@ -1,8 +1,8 @@
 {
   // For editors: one program over the whole tree, so Vue and TypeScript tooling works in any file.
   // `npm run typecheck` does not use it. It checks each project in tsconfig/ under the globals of
-  // the runtime that executes it (scripts/typecheck.mjs).
+  // the runtime that executes it (scripts/typecheck.ts).
   "extends": "./tsconfig.base.json",
   "compilerOptions": { "lib": ["ES2023", "DOM", "DOM.Iterable"], "types": ["node", "vite/client"] },
-  "include": ["src/**/*", "server/**/*", "scripts/**/*", "env.d.ts", "vite.config.js"]
+  "include": ["src/**/*", "server/**/*", "scripts/**/*", "env.d.ts", "vite.config.ts"]
 }

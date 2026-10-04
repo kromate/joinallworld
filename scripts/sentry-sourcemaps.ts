@@ -26,6 +26,7 @@
  * the game.
  */
 import { readdir, rm, stat } from 'node:fs/promises';
+import type { Dirent } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { resolve, join } from 'node:path';
 
@@ -34,9 +35,9 @@ const flags = new Set(process.argv.slice(2));
 const dist = resolve('dist');
 const assets = join(dist, 'assets');
 
-async function mapsIn(dir) {
-  const found = [];
-  let entries = [];
+async function mapsIn(dir: string): Promise<string[]> {
+  const found: string[] = [];
+  let entries: Dirent[] = [];
   try { entries = await readdir(dir, { withFileTypes: true }); } catch { return found; }
   for (const entry of entries) {
     const path = join(dir, entry.name);
@@ -45,8 +46,8 @@ async function mapsIn(dir) {
   }
   return found;
 }
-function fail(message) { console.error(`sentry:sourcemaps — ${message}`); process.exit(1); }
-function cli(args) {
+function fail(message: string): never { console.error(`sentry:sourcemaps — ${message}`); process.exit(1); }
+function cli(args: string[]): void {
   // The token travels in the environment only; argv (visible in a process list) carries no secret.
   const result = spawnSync('npx', ['--yes', CLI, ...args], { stdio: 'inherit', env: process.env });
   if (result.status !== 0) fail(`the Sentry CLI failed (${args.slice(0, 2).join(' ')}). Nothing was deleted.`);
@@ -54,7 +55,7 @@ function cli(args) {
 
 const maps = await mapsIn(dist);
 if (!maps.length) fail('no source maps in dist/. Run `npm run build` first (the build writes hidden source maps).');
-const bytes = (await Promise.all(maps.map((path) => stat(path)))).reduce((sum, info) => sum + info.size, 0);
+const bytes = (await Promise.all(maps.map((path: string) => stat(path)))).reduce((sum, info) => sum + info.size, 0);
 console.log(`sentry:sourcemaps — ${maps.length} source maps in dist/ (${(bytes / 1048576).toFixed(1)} MB).`);
 
 if (!flags.has('--strip-only')) {
@@ -77,6 +78,6 @@ if (!flags.has('--strip-only')) {
 }
 
 if (!flags.has('--keep-maps')) {
-  await Promise.all(maps.map((path) => rm(path, { force: true })));
+  await Promise.all(maps.map((path: string) => rm(path, { force: true })));
   console.log(`sentry:sourcemaps — removed ${maps.length} .map files from dist/: they are not deployed.`);
 }

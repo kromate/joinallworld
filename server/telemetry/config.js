@@ -20,7 +20,7 @@
  *   TELEMETRY_SLOW_MS        a request slower than this may be sampled as a slow transaction (default 1000)
  *
  * The owner's source-map upload token (SENTRY_AUTH_TOKEN) is NOT read here: only
- * scripts/sentry-sourcemaps.mjs uses it, at build time, and it never reaches a running server.
+ * scripts/sentry-sourcemaps.ts uses it, at build time, and it never reaches a running server.
  */
 export const ENVIRONMENTS = Object.freeze(['production', 'staging', 'dev']);
 export const DEFAULT_POSTHOG_HOST = 'https://us.i.posthog.com';

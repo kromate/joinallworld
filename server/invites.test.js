@@ -1,7 +1,7 @@
 // INVITATIONS AND SHARING ON THE NODE HOST, in one place: the house link, ?join=, the share page a crawler reads, the
 // first message of a new chat, knock and let-in. The same sequence runs against the Worker runtime in
-// deploy/cloudflare.test.mjs ("Invitations on the Worker", "Combined game on the Worker"); the referral payout and the
-// table invite are played end to end by scripts/new-player.mjs on Node and by the combined-game test on the Worker.
+// deploy/cloudflare.test.ts ("Invitations on the Worker", "Combined game on the Worker"); the referral payout and the
+// table invite are played end to end by scripts/new-player.ts on Node and by the combined-game test on the Worker.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';

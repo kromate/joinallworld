@@ -410,7 +410,7 @@ test('scene sources hold no frame loops or timers, and the dev harness is not a 
     const code = (await readFile(new URL(file, import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
     assert.doesNotMatch(code, banned, file);
   }
-  const config = await readFile(new URL('../../vite.config.js', import.meta.url), 'utf8');
+  const config = await readFile(new URL('../../vite.config.ts', import.meta.url), 'utf8');
   assert.doesNotMatch(config, /harness/);
   assert.doesNotMatch(await readFile(new URL('../../index.html', import.meta.url), 'utf8'), /harness/);
 });

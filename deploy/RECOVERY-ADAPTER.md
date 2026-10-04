@@ -31,7 +31,7 @@ The Worker sends an application heartbeat because its hibernating socket API doe
 
 ## Verification and staging scope
 
-The deployment owner's external evidence folder records exact commands/results. `deploy/sqlite-store.test.mjs` injects SQL and durability failures. `deploy/cloudflare.test.mjs` runs Miniflare, Node/Worker sequence comparison, SQL debit/feature rollback, restart/hibernation and authority checks. No full feature or capacity equivalence is claimed from these bounded sequences.
+The deployment owner's external evidence folder records exact commands/results. `deploy/sqlite-store.test.ts` injects SQL and durability failures. `deploy/cloudflare.test.ts` runs Miniflare, Node/Worker sequence comparison, SQL debit/feature rollback, restart/hibernation and authority checks. No full feature or capacity equivalence is claimed from these bounded sequences.
 
 A local esbuild process stalled in this environment. The explicit test-only `JOINALLWORLD_BUNDLER_ROLLUP=1` switch uses Rollup to bundle the identical Worker source into Miniflare. Vite's native config loader produced the real assets. These results do not replace the normal pinned esbuild/Wrangler CI/package gate.
 

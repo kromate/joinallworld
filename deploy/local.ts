@@ -15,24 +15,32 @@ import { rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
-import { createServer, connect } from 'node:net';
+import { createServer, connect, type Socket } from 'node:net';
 import { fileURLToPath } from 'node:url';
 import { OUTREACH_ENV } from '../server/host-context.js';
 
+/** The few pieces of the pinned tooling (miniflare, esbuild) this runner uses. */
+interface MiniflareHandle { ready: Promise<URL>; dispose(): Promise<void> }
+interface MiniflareTooling {
+  Miniflare: new (options: Record<string, unknown>) => MiniflareHandle
+  convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown>
+}
+interface EsbuildTooling { build(options: Record<string, unknown>): Promise<unknown> }
+
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const require = createRequire(resolve(process.env.JOINALLWORLD_TOOLS || join(root, 'deploy/tooling'), 'package.json'));
-const { Miniflare, convertV4MiniflareOptions } = require('miniflare');
-const { build } = require('esbuild');
+const { Miniflare, convertV4MiniflareOptions } = require('miniflare') as MiniflareTooling;
+const { build } = require('esbuild') as EsbuildTooling;
 
 const port = Number(process.env.PORT) || 8787;
 const scratch = await mkdtemp(join(tmpdir(), 'allworld-worker-'));
 const storage = process.env.DATA_DIR ? resolve(process.env.DATA_DIR) : join(scratch, 'storage');
 await mkdir(storage, { recursive: true });
 const bundle = join(scratch, 'worker.mjs');
-await build({ entryPoints: [join(root, 'deploy/cloudflare-worker.js')], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'], logLevel: 'error' });
-const bindings = { BUILD_ID: process.env.BUILD_ID || 'local' };
-for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', ...OUTREACH_ENV]) if (process.env[name]) bindings[name] = process.env[name];
-const options = { name: 'allworld-local', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
+await build({ entryPoints: [join(root, 'deploy/cloudflare-worker.ts')], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'], logLevel: 'error' });
+const bindings: Record<string, string> = { BUILD_ID: process.env.BUILD_ID || 'local' };
+for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', ...OUTREACH_ENV]) { const value = process.env[name]; if (value) bindings[name] = value; }
+const options: Record<string, unknown> = { name: 'allworld-local', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
   durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: storage, bindings,
   // The same asset rules as wrangler.jsonc: the Worker runs first, and an unknown path is the game's own page.
   assets: { directory: join(root, 'dist'), binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
@@ -40,7 +48,7 @@ const options = { name: 'allworld-local', script: await readFile(bundle, 'utf8')
 // (HTTP and WebSocket alike, byte for byte). So stopping whatever listens on the port stops everything, in order.
 const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: storage, host: '127.0.0.1', port: 0 });
 const inner = await mf.ready;
-const front = createServer((socket) => {
+const front = createServer((socket: Socket) => {
   const upstream = connect(Number(inner.port), '127.0.0.1');
   socket.pipe(upstream).pipe(socket);
   for (const end of [socket, upstream]) end.on('error', () => { socket.destroy(); upstream.destroy(); });

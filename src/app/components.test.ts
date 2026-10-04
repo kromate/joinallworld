@@ -38,7 +38,7 @@ async function render(path: string, props: Record<string, unknown> = {}): Promis
 before(async () => {
   // The store creates its client from the page's fetch: point it at the fake server before any module loads.
   globalThis.fetch = server.fetch
-  vite = await createServer({ root, configFile: `${root}vite.config.js`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   social = (await load<{ social: SocialClientState }>('/src/app/legacy/social.ts')).social
   assert.equal(await app.game.connect(), true)

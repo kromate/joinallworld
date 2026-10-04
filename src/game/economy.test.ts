@@ -1,11 +1,11 @@
-// Design intent of the economy, checked against scripts/economy-sim.mjs — scripted lives played
+// Design intent of the economy, checked against scripts/economy-sim.ts — scripted lives played
 // through the real rules engine on a virtual clock. If a content change breaks one of these, the
 // change is the thing to question, not the assertion.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { UNILAG_BETA_RULES } from '../campus/unilag/curriculum.ts';
 import { CAMPUS_JOBS } from '../campus/unilag/student.ts';
-import * as economySim from '../../scripts/economy-sim.mjs';
+import * as economySim from '../../scripts/economy-sim.ts';
 import { lagosTime } from './clock.ts';
 import { GIG_DAILY_LIMIT } from './content/venues.ts';
 import { TRACKS, HELPER_COOLDOWN_SECONDS } from './content/jobs.ts';
@@ -17,7 +17,7 @@ import type { LifeState, ActionOutcome } from '../types/life.ts';
 import { RENTS, LOAN, LOAN_LATE_FEE, MAX_LOAN_FEES, MAX_ARREARS_WEEKS, LATE_FEE_PERCENT, DEPOSIT_TOTAL_CAP, DEPOSIT_TERMS } from './systems/economy.ts';
 
 /**
- * The part of scripts/economy-sim.mjs this file uses. The script is untyped JavaScript, so its exports are described here
+ * The part of scripts/economy-sim.ts this file uses. The script is untyped JavaScript, so its exports are described here
  * (rows are the objects `simulate` returns, filled in as the run reaches its `days`).
  */
 interface SimLine { amount: number; reason: string; balance: number; at: number }

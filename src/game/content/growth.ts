@@ -2,7 +2,7 @@
  * OWNER: growth
  * Numbers for the growth features that pay or count: table-game wins and referrals.
  * Plain data only. Every figure is an original design and is played through the balance
- * simulation (scripts/economy-sim.mjs, strategy "social") before it ships.
+ * simulation (scripts/economy-sim.ts, strategy "social") before it ships.
  */
 
 /** Table games (src/tables/**). There are NO stakes: a win is paid by the game, never by the loser. */

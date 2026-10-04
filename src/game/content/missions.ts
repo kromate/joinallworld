@@ -17,7 +17,7 @@
  *   needs   optional gate, checked when missions are dealt: 'job' (the life has a job)
  *   open / go   what the Go button does: open a panel, or walk to [venue, spot?]
  *
- * NUMBERS (see RESEARCH-GROWTH.md §4.1 and scripts/economy-sim.mjs, strategy "social")
+ * NUMBERS (see RESEARCH-GROWTH.md §4.1 and scripts/economy-sim.ts, strategy "social")
  *   A daily mission pays ₦250 and a weekly one ₦1,000, once, when claimed: at most ₦750 a Lagos
  *   day and ₦3,000 a Lagos week. Completing all three of a set adds stars, which are not money.
  */

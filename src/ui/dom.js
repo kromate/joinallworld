@@ -37,8 +37,9 @@ export const icon = (name) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill=
 /**
  * The one empty state every panel uses: what is missing, and the next step.
  * `action` is ready-made HTML (a button with data-open / data-action), already escaped by the caller.
+ * `compact: true` is the small, left-aligned form for an empty list inside a longer screen.
  */
-export const empty = (emoji, title, text = '', action = '') => `<div class="ui-empty"><span aria-hidden="true">${esc(emoji)}</span><h3>${esc(title)}</h3>${text ? `<p>${esc(text)}</p>` : ''}${action}</div>`;
+export const empty = (emoji, title, text = '', action = '', { compact = false } = {}) => `<div class="ui-empty${compact ? ' is-compact' : ''}"><span aria-hidden="true">${esc(emoji)}</span><h3>${esc(title)}</h3>${text ? `<p>${esc(text)}</p>` : ''}${action}</div>`;
 
 /** Standard body for a panel that has no content yet. */
 export const placeholder = (title, text = 'Coming soon.') => `<div class="ui-placeholder"><h3>${esc(title)}</h3><p>${esc(text)}</p></div>`;

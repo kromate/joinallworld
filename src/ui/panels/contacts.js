@@ -5,7 +5,7 @@
  * The panel contract is at the top of src/ui/shell.js. All names are escaped.
  */
 import { esc, json, empty } from '../dom.js';
-import { presenceText } from '../../game/social-model.js';
+import { PRESENCE, presenceText } from '../../game/social-model.js';
 import { S, bindCommon, gate, call } from './social-client.js';
 
 const ui = { find: '', results: null, finding: false };
@@ -24,7 +24,7 @@ export default {
     const mummy = social.family.find((member) => member.contact);
     const met = social.relationships.filter((rel) => rel.npc);
     const blocked = gate(view);
-    const friends = blocked ? blocked : S.me.friends.length ? S.me.friends.map((friend) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">🧑🏾</span><div><strong>${esc(friend.name)}</strong><small>Friend · ${esc(presenceText(friend, (id) => venueName(view, id)))}</small></div><span class="social-actions"><button class="social-btn is-primary" data-open="messages" data-params="${json({ to: friend.id, name: friend.name })}">Chat</button></span></div>`).join('') : '';
+    const friends = blocked ? blocked : S.me.friends.length ? S.me.friends.map((friend) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">🧑🏾<i class="social-dot is-${PRESENCE[friend.status]?.dot ?? 'off'}" title="${esc(PRESENCE[friend.status]?.hint ?? '')}"></i></span><div><strong>${esc(friend.name)}</strong><small class="social-presence is-${esc(PRESENCE[friend.status] ? friend.status : 'offline')}">Friend · ${esc(presenceText(friend, (id) => venueName(view, id), view.now))}</small></div><span class="social-actions"><button class="social-btn is-primary" data-open="messages" data-params="${json({ to: friend.id, name: friend.name })}">Chat</button></span></div>`).join('') : '';
     const results = ui.finding ? '<p class="social-note">Searching…</p>' : ui.results === null ? '' : ui.results.error ? `<p class="social-note is-warn">${esc(ui.results.error)}</p>`
       : ui.results.length ? ui.results.map((player) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">🧑🏾</span><div><strong>${esc(player.name)}</strong><small>Real player${player.friend ? ' · Friend' : ''} · #${esc(player.id.slice(0, 6))}</small></div><span class="social-actions"><button class="social-btn" data-open="person" data-params="${json({ player: player.id, name: player.name })}">View</button></span></div>`).join('')
         : '<p class="social-note">Nobody found with that name.</p>';

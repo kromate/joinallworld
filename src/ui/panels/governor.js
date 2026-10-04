@@ -6,12 +6,14 @@
  * and announce — every disabled control here shows that reason. The app is a form (`live: false`).
  * The weekly cycle and all eligibility rules are original beta design.
  */
-import { esc, money } from '../dom.js';
+import { esc, money, empty } from '../dom.js';
 import { ELECTION, STATE_HOUSE_TEXT } from '../../game/content/civic.js';
 import { button, busy, dateTime, count, entry, load, put, send, stale, status, until } from './civic-ui.js';
 
 const PANEL = 'governor';
 const draft = { slogan: '', announcement: '' };
+/** The last vote the server refused — { key, code, reason } — kept beside the ballot until a vote counts. */
+let refusal = null;
 const key = (view) => `gov:${view.cityId}`;
 const path = (view) => `/api/civic/gov?city=${view.cityId}`;
 const PHASES = { nominations: 'Nominations are open', voting: 'Polls are open', results: 'Results day' };
@@ -27,21 +29,28 @@ function seat(data, view) {
 }
 
 function announcements(data) {
-  if (!data.announcements.length) return '<p class="civic-note">No announcements from the Governor yet.</p>';
+  if (!data.announcements.length) return empty('📣', 'No announcements yet', data.governor ? 'When the Governor posts to the city, it appears here.' : 'There is no Governor to post one. The next election decides who can.', '', { compact: true });
   return `<ul class="civic-list">${data.announcements.map((item) => `<li><span>${esc(item.text)}<small>Governor ${esc(item.by.name)} · ${esc(dateTime(item.at))}</small></span></li>`).join('')}</ul>`;
 }
 
 function updates(view) {
   const notices = entry(`pulse:${view.cityId}`).data?.notices ?? [];
-  if (!notices.length) return '<p class="civic-note">No civic updates this week.</p>';
+  if (!notices.length) return empty('🗞️', 'No civic updates this week', 'Election results and city notices are listed here as they happen.', '', { compact: true });
   return `<ul class="civic-list">${notices.map((item) => `<li><span><strong>${esc(item.title)}</strong><small>${esc(item.text)} · ${esc(dateTime(item.at))}</small></span></li>`).join('')}</ul>`;
 }
 
-const checks = (list) => `<ul class="civic-checks">${list.map((item) => `<li class="${item.met ? 'is-met' : 'is-unmet'}">${item.met ? '✓' : '✗'} ${esc(item.label)} — ${esc(item.detail)}</li>`).join('')}</ul>`;
+/** Where an unmet requirement can be worked on, by check id: `work` (code 'work_days') is earned through paid shifts and gigs. */
+const CHECK_NEXT = { work: '<button class="civic-link" data-open="jobs">Open Jobs to find paid work</button>' };
+/** The eligibility checklist: each requirement as its own row — met or not, what it is, where the player stands, and the next step. */
+const checks = (list) => `<ul class="civic-checks">${list.map((item) => `<li class="${item.met ? 'is-met' : 'is-unmet'}"><i role="img" aria-label="${item.met ? 'Met' : 'Not met'}">${item.met ? '✓' : '✗'}</i><div><strong>${esc(item.label)}</strong><small>${esc(item.detail)}</small>${item.met ? '' : CHECK_NEXT[item.id] ?? ''}</div></li>`).join('')}</ul>`;
+/** A refused vote stays on screen (a toast is gone in seconds): what happened, and the server's reason. */
+const REFUSAL_TITLES = { address_vote_limit: 'This network connection has reached its vote limit' };
+const refusalNote = (view) => (refusal && refusal.key === key(view)
+  ? `<div class="civic-refusal" role="alert"><strong>${esc(REFUSAL_TITLES[refusal.code] ?? 'Your vote was not counted')}</strong><p>${esc(refusal.reason)}</p></div>` : '');
 
 function ballot(data, view, state) {
   const you = data.you, election = data.election, voting = data.phase === 'voting';
-  if (!election.candidates.length) return `<p class="civic-note">${data.phase === 'nominations' ? 'Nobody has declared yet. Be the first.' : 'Nobody stood in this election.'}</p>`;
+  if (!election.candidates.length) return data.phase === 'nominations' ? empty('🗳️', 'Nobody has declared yet', 'Be the first: see what you need under “Run for office” below.') : empty('🗳️', 'Nobody stood in this election', 'Nominations open again on Monday, Lagos time.');
   const top = Math.max(1, ...election.candidates.map((item) => item.votes));
   const elsewhere = you?.vote.code === 'wrong_place';
   const rows = election.candidates.map((item) => {
@@ -53,7 +62,7 @@ function ballot(data, view, state) {
     return `<div class="governor-candidate"><div class="governor-phase"><strong>${esc(item.name)}${item.you ? ' (you)' : ''}</strong>${data.phase === 'nominations' ? '' : `<span>${count(item.votes)} vote${item.votes === 1 ? '' : 's'}</span>`}</div><q>${esc(item.slogan)}</q>${data.phase === 'nominations' ? '' : `<div class="governor-bar" aria-hidden="true"><i style="width:${Math.round((item.votes / top) * 100)}%"></i></div>`}${control}</div>`;
   }).join('');
   const go = elsewhere && voting ? button('Go to the Polling Unit', `data-gov-go="${esc(data.rules.pollingVenue)}"`, { reason: state.activeAction ? 'Finish your current action first.' : '' }) : '';
-  return `${rows}${go}${voting ? `<p class="civic-note">${count(election.totalVotes)} vote${election.totalVotes === 1 ? '' : 's'} cast so far. One vote per player; it cannot be changed.</p>` : ''}`;
+  return `${rows}${go}${voting && !election.yourVote ? refusalNote(view) : ''}${voting ? `<p class="civic-note">${count(election.totalVotes)} vote${election.totalVotes === 1 ? '' : 's'} cast so far. One vote per player; it cannot be changed.</p>` : ''}`;
 }
 
 function runForOffice(data, view) {
@@ -91,7 +100,7 @@ const app = {
       <h3>Governor’s announcements</h3>${announcements(data)}
       <h3>Updates</h3>${updates(view)}
       ${button('Refresh', 'data-civic-retry', { working: item.loading })}
-      <p class="civic-beta">Beta: the election cycle and rules are original to this game — live here ${esc(rules.minDaysToRun)} Lagos days to run and ${esc(rules.minDaysToVote)} to vote, a ${money(rules.filingFee)} in-game filing fee that is not refunded, at most ${esc(rules.maxCandidates)} candidates, ties go to whoever declared first. A device session is not a verified person, so treat results as a game, not a poll. Updates appear in the game only; there are no push notifications.</p>`;
+      <p class="civic-beta">Beta: the election cycle and rules are original to this game — live here ${esc(rules.minDaysToRun)} Lagos days to run and ${esc(rules.minDaysToVote)} to vote, be paid for work on ${esc(rules.minWorkDays ?? ELECTION.minWorkDays)} different Lagos days for either,${rules.votesPerAddress > 0 ? ` at most ${esc(rules.votesPerAddress)} votes counted from one network connection,` : ''} a ${money(rules.filingFee)} in-game filing fee that is not refunded, at most ${esc(rules.maxCandidates)} candidates, ties go to whoever declared first. A device session is not a verified person, so treat results as a game, not a poll. Updates appear in the game only; there are no push notifications.</p>`;
   },
   bind(root, api) {
     const view = api.view(), again = () => api.open(PANEL);
@@ -108,7 +117,13 @@ const app = {
       done(result);
     });
     for (const node of root.querySelectorAll('[data-gov-vote]')) {
-      node.addEventListener('click', async () => done(await send(api, `vote:${node.dataset.govVote}`, '/api/civic/gov/vote', { candidate: node.dataset.govVote }, { panel: PANEL, success: 'Your vote was counted.' })));
+      node.addEventListener('click', async () => {
+        const result = await send(api, `vote:${node.dataset.govVote}`, '/api/civic/gov/vote', { candidate: node.dataset.govVote }, { panel: PANEL, success: 'Your vote was counted.' });
+        // A refusal the server explained (the per-connection vote limit, a missing requirement) stays beside the ballot.
+        if (result.ok) refusal = null;
+        else if (result.reason && result.code !== 'busy' && result.code !== 'offline') refusal = { key: key(api.view()), code: result.code, reason: result.reason };
+        done(result);
+      });
     }
     root.querySelector('[data-gov-announce]')?.addEventListener('click', async () => {
       if ([...draft.announcement.trim()].length < ELECTION.announcement.min) { api.toast('Write your announcement first.', 'error'); text?.focus(); return; }

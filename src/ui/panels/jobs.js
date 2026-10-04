@@ -26,11 +26,8 @@ function stepButton(step) {
 }
 
 const fact = (emoji, text, tone = '') => `<li class="${tone}"><span aria-hidden="true">${emoji}</span>${esc(text)}</li>`;
-/** Is this job's workplace open right now? From the same travel data the map uses; null when it cannot be told. */
-function openNow(job, view) {
-  const place = view.travel?.destinations?.find((item) => item.label === job.workplace);
-  return place ? place.open : null;
-}
+/** Is this job's workplace open right now? The career view says so itself (`venue` is null while the workplace is not in this build). */
+const openNow = (job) => (job.venue ? job.openNow : null);
 
 function mine(career, connected) {
   const lock = connected ? '' : `disabled title="${esc(OFFLINE)}"`;
@@ -52,7 +49,7 @@ function track(job, career, connected, view) {
   else if (!career.employed) control = `<button class="ui-button is-primary" data-action="apply-job" data-payload="${json({ id: job.id })}">Apply — free, hired at once</button>`;
   else if (asking === job.id) control = `<div class="jobs-confirm"><p>${esc(job.switchWarning)}</p><div class="jobs-row"><button class="ui-button is-primary" data-action="career.switch" data-payload="${json({ id: job.id })}">Confirm switch</button><button class="ui-button" data-jobs-ask="">Keep current job</button></div></div>`;
   else control = `<button class="ui-button" data-jobs-ask="${esc(job.id)}">Switch to this job</button>`;
-  const open = openNow(job, view);
+  const open = openNow(job);
   return `<article class="jobs-track ${job.current ? 'is-current' : ''}"><header class="jobs-head"><span class="jobs-icon" aria-hidden="true">${esc(job.icon)}</span><div><h3>${esc(job.label)}${job.current ? ' <span class="jobs-badge is-mine">Your job</span>' : ''}${job.track ? '' : ' <span class="jobs-badge">Starter</span>'}</h3><p>${job.track ? `Start as ${esc(job.entryRole)}` : 'No ladder · work any day'}</p></div><b class="jobs-pay">${money(job.pay)}<small>per shift</small></b></header>
     <ul class="jobs-facts">${fact('🗓️', job.schedule)}${fact('🕘', job.hours, open === null ? '' : open ? 'is-open' : 'is-closed')}${open === null ? '' : fact(open ? '🟢' : '🌙', open ? 'Open now' : 'Closed now', open ? 'is-open' : 'is-closed')}${job.track ? fact('🎓', `Skill: ${cap(job.skill)}`) : ''}${fact('⏱️', `${job.duration}s shift`)}</ul>
     <p class="jobs-summary">${esc(job.summary)}${job.track ? ` Top role: ${esc(job.topRole)}.` : ''}</p>${control}</article>`;
@@ -67,7 +64,7 @@ export default {
     // Lead with the player's job, or with the next step towards one. Workplaces that are open now come first.
     const lead = career.employed ? mine(career, connected)
       : `<section class="jobs-mine" aria-label="Your next step"><p class="jobs-eyebrow">NO JOB YET</p><p class="jobs-step"><span aria-hidden="true">👉</span> ${esc(career.step.text)}</p><p class="jobs-note">Jobs whose workplace is open right now are listed first.</p></section>`;
-    const rank = (job) => (job.current ? 0 : openNow(job, view) === false ? 2 : 1);
+    const rank = (job) => (job.current ? 0 : openNow(job) === false ? 2 : 1);
     const jobs = career.jobs.map((job, index) => ({ job, index })).sort((a, b) => rank(a.job) - rank(b.job) || a.index - b.index).map((item) => item.job);
     const rules = `<details class="ui-details"><summary>How work works</summary><ul class="jobs-rules">${career.rules.map((rule) => `<li>${esc(rule)}</li>`).join('')}<li>Shift rules, pay above the first role and work days are original beta values.</li></ul></details>`;
     return `${lead}${rules}<h3 class="jobs-title">${career.employed ? 'Other jobs' : 'Pick a job'}</h3>${jobs.filter((job) => !job.current).map((job) => track(job, career, connected, view)).join('')}`;

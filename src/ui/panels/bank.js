@@ -8,7 +8,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './bank.css';
-import { esc, money, json } from '../dom.js';
+import { esc, money, json, empty } from '../dom.js';
 import { formatClock } from '../../game/clock.js';
 
 const OFFLINE = 'Offline: read-only until you reconnect.';
@@ -39,6 +39,6 @@ export default {
       ? `<p class="bank-summary">Due every Saturday: <strong>${money(economy.weeklyBills)}</strong>. Next collection ${esc(economy.nextDueLabel)}.${career.weeklyPay ? ` Your job pays up to ${money(career.weeklyPay)} a week.` : career.employed ? '' : ' You have no job yet — open Jobs to start earning.'}</p>`
       : '<p class="bank-summary">No weekly bills yet.</p>';
     const locked = economy.savings.locked;
-    return `<p class="bank-balance">Balance <strong>${money(state.cash)}</strong></p>${offline ? `<p class="bank-why">${esc(offline)}</p>` : ''}${bills}${rentCard(economy.rent, offline)}${loanCard(economy.loan, offline)}<section class="bank-card"><h3>Savings <b>${money(locked)} locked</b></h3><p class="bank-note">Fixed deposits pay a small, capped interest (beta).</p><button class="ui-button bank-link" data-open="invest">Open Invest</button></section><h3>Recent transactions</h3>${rows ? `<ul class="ui-ledger">${rows}</ul><p class="bank-note">The last ${esc(view.wallet.ledger.length)} changes to your balance, newest first.</p>` : '<p class="bank-note">No transactions yet. Every fare, purchase, wage and payment will be listed here with its reason.</p>'}`;
+    return `<p class="bank-balance">Balance <strong>${money(state.cash)}</strong></p>${offline ? `<p class="bank-why">${esc(offline)}</p>` : ''}${bills}${rentCard(economy.rent, offline)}${loanCard(economy.loan, offline)}<section class="bank-card"><h3>Savings <b>${money(locked)} locked</b></h3><p class="bank-note">Fixed deposits pay a small, capped interest (beta).</p><button class="ui-button bank-link" data-open="invest">Open Invest</button></section><h3>Recent transactions</h3>${rows ? `<ul class="ui-ledger">${rows}</ul><p class="bank-note">${view.wallet.ledger.length === 1 ? 'The only change to your balance so far.' : `The last ${esc(view.wallet.ledger.length)} changes to your balance, newest first.`}</p>` : empty('🧾', 'No transactions yet', 'Every fare, purchase, wage and payment will be listed here with its reason.', '', { compact: true })}`;
   },
 };

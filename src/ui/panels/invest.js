@@ -8,7 +8,7 @@
  * Actions: 'economy.open-deposit' { amount, term } and 'economy.close-deposit' { id }. The panel contract is at the top of src/ui/shell.js.
  */
 import './invest.css';
-import { esc, money, json } from '../dom.js';
+import { esc, money, json, empty } from '../dom.js';
 import { formatClock } from '../../game/clock.js';
 
 /** UI-only state: the chosen amount and the deposit whose early close is being confirmed. */
@@ -31,7 +31,7 @@ export default {
         : `<button class="ui-button" data-invest-close="${esc(deposit.id)}">Close early (no interest)</button>`;
       return `<section class="invest-card"><div class="invest-row"><h3>${money(deposit.amount)} · ${esc(deposit.termLabel)}</h3><b>+${money(deposit.interest)}</b></div><p>Pays ${money(deposit.payout)} into your balance automatically on ${esc(deposit.maturesLabel)} (${esc(formatClock(deposit.maturesAt))}).</p>${confirm}</section>`;
     }).join('');
-    return `<p class="invest-intro"><span class="invest-beta">BETA</span> Fixed deposits: lock some cash, get it back with a small fixed interest when the term ends — even if you are away. No risk and no luck involved.</p><p class="invest-note">Balance ${money(state.cash)} · ${money(savings.locked)} of ${money(savings.cap)} locked · up to ${esc(savings.maxOpen)} deposits at once. Rates and limits are original beta values.</p><section class="invest-card"><h3>Open a deposit</h3><p>How much?</p><div class="invest-amounts" role="group" aria-label="Deposit amount">${amounts}</div><div class="invest-terms">${terms}</div>${blocked ? `<p class="invest-why">${esc(blocked)}</p>` : ''}</section><h3>Your deposits</h3>${open || '<p class="invest-note">No open deposits.</p>'}`;
+    return `<p class="invest-intro"><span class="invest-beta">BETA</span> Fixed deposits: lock some cash, get it back with a small fixed interest when the term ends — even if you are away. No risk and no luck involved.</p><p class="invest-note">Balance ${money(state.cash)} · ${money(savings.locked)} of ${money(savings.cap)} locked · up to ${esc(savings.maxOpen)} deposits at once. Rates and limits are original beta values.</p><section class="invest-card"><h3>Open a deposit</h3><p>How much?</p><div class="invest-amounts" role="group" aria-label="Deposit amount">${amounts}</div><div class="invest-terms">${terms}</div>${blocked ? `<p class="invest-why">${esc(blocked)}</p>` : ''}</section><h3>Your deposits</h3>${open || empty('📊', 'No open deposits', 'Pick an amount and a term above. The money comes back by itself, with interest, when the term ends.', '', { compact: true })}`;
   },
   bind(root, api) {
     for (const button of root.querySelectorAll('[data-invest-amount]')) button.addEventListener('click', () => { chosen = Number(button.dataset.investAmount); api.refresh(); });

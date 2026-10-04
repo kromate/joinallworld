@@ -204,8 +204,21 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const body = document.createElement('span'); body.textContent = text;
     item.append(mark, body);
     el.toasts.append(item);
+    placeToasts();
     while (el.toasts.children.length > MAX_TOASTS) el.toasts.firstChild.remove();
     setTimeout(() => item.remove(), Math.min(7000, 2800 + text.length * 40));
+  }
+  /**
+   * On a phone (and any window too narrow to keep them clear of the left column) toasts sit just
+   * under the always-visible HUD rows — the needs strip, the alerts and the goal line — so even two
+   * of them never cover those. Measured when a toast appears; nothing runs on a timer.
+   */
+  function placeToasts() {
+    const narrow = globalThis.matchMedia?.('(max-width: 1000px)').matches;
+    const rows = narrow && !dialog.open ? [el.sidebar.querySelector('.life-quick'), el.slots.alert, el.slots.goal] : [];
+    const bottom = Math.max(0, ...rows.map((node) => node?.getBoundingClientRect().bottom || 0));
+    if (bottom > 0) el.toasts.style.setProperty('--toast-top', `${Math.round(bottom + 6)}px`);
+    else el.toasts.style.removeProperty('--toast-top');
   }
   /**
    * Toasts must never be covered: a modal dialog sits in the browser's top layer, so they move
@@ -382,17 +395,19 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const price = card.reward > 0 ? `+${money(card.reward)}` : card.cost > 0 ? money(card.cost) : 'Free';
     const unmet = Object.entries(card.minimumNeeds || {}).filter(([need, minimum]) => state.needs[need] < minimum).map(([need, minimum]) => `${cap(need)} ${Math.floor(state.needs[need])}/${minimum}`);
     const why = unavailable ? (card.requiresSkill ? `Needs ${cap(card.requiresSkill.id)} level ${card.requiresSkill.level}` : 'Unavailable in this preview')
-      : unmet.length ? `Needs ${unmet.join(', ')}` : blocked ? blocked.reason : offline ? 'Offline — reconnect to start' : '';
+      : unmet.length ? `Needs ${unmet.join(', ')}` : blocked?.code === 'gig_limit' ? 'Today’s gigs are done · back at midnight' : blocked ? blocked.reason : offline ? 'Offline — reconnect to start' : '';
     const busyWhy = !why && busy ? 'Finish or cancel what you are doing first' : '';
+    // The card shows the short line; the tooltip and the screen-reader label carry the server's full sentence.
+    const full = blocked?.code === 'gig_limit' ? blocked.reason : why || busyWhy;
     const foot = why ? `<span class="life-lock">🔒 ${esc(why)}</span>`
       : `<span class="life-tags">${effectTags(card).map((tag) => `<span${tag.cost ? ' class="is-cost"' : tag.beta ? ' class="is-beta"' : ''}>${esc(tag.text)}</span>`).join('')}</span>`;
     const inner = `<span class="life-action-head"><span class="life-action-emoji" aria-hidden="true">${esc(card.icon || '✨')}</span><span class="life-action-title">${esc(card.label)}</span></span><span class="life-action-meta"><span>◷ ${esc(card.duration)}s</span><strong class="${card.reward > 0 ? 'is-earn' : card.cost > 0 ? 'is-cost' : ''}">${price}</strong></span>${foot}`;
     const classes = `life-action ${unavailable ? 'is-unavailable' : why ? 'is-blocked' : busy ? 'is-busy' : ''}`;
-    const label = `${esc(card.label)}, ${esc(card.duration)} seconds, ${esc(price)}${why || busyWhy ? `. ${esc(why || busyWhy)}` : ''}`;
+    const label = `${esc(card.label)}, ${esc(card.duration)} seconds, ${esc(price)}${full ? `. ${esc(full)}` : ''}`;
     if (card.choices && !unavailable) {
-      return `<div class="${classes} has-choices" role="group" aria-label="${label}">${inner}<span class="life-choices">${card.choices.map((choice) => `<button data-start="${esc(card.id)}" data-choice="${esc(choice.id)}" ${disabled ? `disabled title="${esc(why || busyWhy)}"` : ''}>${esc(choice.label)}</button>`).join('')}</span></div>`;
+      return `<div class="${classes} has-choices" role="group" aria-label="${label}">${inner}<span class="life-choices">${card.choices.map((choice) => `<button data-start="${esc(card.id)}" data-choice="${esc(choice.id)}" ${disabled ? `disabled title="${esc(full)}"` : ''}>${esc(choice.label)}</button>`).join('')}</span></div>`;
     }
-    return `<button class="${classes}" data-start="${esc(card.id)}" ${disabled ? 'disabled' : ''} title="${esc(why || busyWhy)}" aria-label="${label}">${inner}</button>`;
+    return `<button class="${classes}" data-start="${esc(card.id)}" ${disabled ? 'disabled' : ''} title="${esc(full)}" aria-label="${label}">${inner}</button>`;
   }
   function venuePanel() {
     const venue = view.venues.find((item) => item.id === state.location) || { label: state.location, district: '' };
@@ -407,9 +422,13 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const ambient = view.travel?.destinations?.find((item) => item.id === state.location)?.ambient;
     const line = !view.connected ? 'Offline · read-only until you reconnect' : `${privateHome ? '🔒 Private · ' : ''}${ambient || spot?.caption || 'Explore at your own pace'}`;
     const busyNote = state.activeAction && expanded ? '<p class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>' : '';
+    // Where this spot lists paid gigs, the day's counter sits above them (view.travel.gigs; the limit is the server's).
+    const gigs = view.travel?.gigs, gigIds = view.travel?.gigsHere || [];
+    const gigNote = expanded && gigs && activities.cards.some((card) => gigIds.includes(card.id))
+      ? `<p class="life-actions-note life-gigs${gigs.left ? '' : ' is-out'}" role="note" title="Paid gigs are limited each Lagos day. Your job’s shift does not count."><b>Gigs today: ${esc(gigs.used)}/${esc(gigs.limit)}</b> · ${gigs.left ? `${esc(gigs.left)} left` : 'open again at midnight, Lagos time'}</p>` : '';
     const cards = activities.cards.length ? activities.cards.map(activityCard).join('')
       : `<div class="ui-empty is-inline"><p>${spot ? 'Nothing to do at this spot yet.' : 'Pick a spot above to see what you can do there.'}</p></div>`;
-    return `<section class="life-venue-panel" aria-label="Current venue"><header class="life-venue-header"><button class="life-avatar" data-open="sim" aria-label="Open your Sim: profile, needs, goals and skills">👤</button><div class="life-venue-heading"><h1>${esc(venue.icon || '')} ${esc(title)} <span>· ${esc(district)}</span></h1><p>${esc(line)}</p></div>${privateHome || !view.connected ? '' : `<button class="life-icon-button" data-community aria-label="Open community chat" title="Community chat">${icon('chat')}</button>`}<button class="life-icon-button" data-open="map" aria-label="Open map" title="Map (M)">${icon('map')}</button></header><div class="life-spots"><button class="life-expand ${expanded ? 'is-expanded' : ''}" data-toggle-activities aria-expanded="${expanded}" aria-label="${expanded ? 'Hide' : 'Show'} activities" title="Activities (T)">${icon('chevron')}</button>${spots.map((item, i) => `<button class="${item.id === state.spot ? 'is-selected' : ''}" data-spot="${esc(item.id)}" aria-pressed="${item.id === state.spot}" title="Shortcut ${i + 1}">${esc(item.icon || '')} ${esc(item.label)}</button>`).join('')}${privateHome || spots.some((item) => item.id === 'people') ? '' : '<button data-community>👥 People</button>'}</div>${expanded ? `${busyNote}<div class="life-actions">${cards}</div>` : ''}</section>`;
+    return `<section class="life-venue-panel" aria-label="Current venue"><header class="life-venue-header"><button class="life-avatar" data-open="sim" aria-label="Open your Sim: profile, needs, goals and skills">👤</button><div class="life-venue-heading"><h1>${esc(venue.icon || '')} ${esc(title)} <span>· ${esc(district)}</span></h1><p>${esc(line)}</p></div>${privateHome || !view.connected ? '' : `<button class="life-icon-button" data-community aria-label="Open community chat" title="Community chat">${icon('chat')}</button>`}<button class="life-icon-button" data-open="map" aria-label="Open map" title="Map (M)">${icon('map')}</button></header><div class="life-spots"><button class="life-expand ${expanded ? 'is-expanded' : ''}" data-toggle-activities aria-expanded="${expanded}" aria-label="${expanded ? 'Hide' : 'Show'} activities" title="Activities (T)">${icon('chevron')}</button>${spots.map((item, i) => `<button class="${item.id === state.spot ? 'is-selected' : ''}" data-spot="${esc(item.id)}" aria-pressed="${item.id === state.spot}" title="Shortcut ${i + 1}">${esc(item.icon || '')} ${esc(item.label)}</button>`).join('')}${privateHome || spots.some((item) => item.id === 'people') ? '' : '<button data-community>👥 People</button>'}</div>${expanded ? `${busyNote}${gigNote}<div class="life-actions">${cards}</div>` : ''}</section>`;
   }
   const isTrip = (active) => active?.kind === 'travel' || active?.kind === 'commute';
   const placeOf = (id) => { const venue = view.venues.find((item) => item.id === id); return venue ? { icon: venue.icon || '📍', label: id === 'home' ? 'Home' : venue.label } : { icon: '📍', label: 'your destination' }; };
@@ -419,11 +438,15 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
    */
   function travelHtml() {
     const active = state.activeAction, commute = active.kind === 'commute';
-    const from = placeOf(state.location), to = placeOf(active.id);
+    // view.travel.active carries where the trip started and the fare charged at departure (null on an older save).
+    const trip = commute ? null : view.travel?.active;
+    const from = placeOf(trip?.from ?? state.location), to = placeOf(active.id);
     const how = view.travel?.modes?.find((item) => item.id === active.mode) || (commute ? { icon: '💼', label: 'Commute to work' } : active.mode === 'car' ? { icon: '🚗', label: 'Your car' } : { icon: '🧭', label: 'On the way' });
     const rule = commute ? `Cancel to stay at ${from.label}. The commute is free, so nothing is lost.`
+      : Number.isFinite(trip?.fare) ? (trip.fare > 0 ? `Cancel to stay at ${from.label}. The ${money(trip.fare)} ${active.mode === 'car' ? 'fuel' : 'fare'} you paid is not refunded.` : `Cancel to stay at ${from.label}. This trip was free, so nothing is lost.`)
       : how.fare > 0 || active.mode === 'car' ? `Cancel to stay at ${from.label}. The fare you paid is not refunded.` : `Cancel to stay at ${from.label}. Nothing was charged.`;
-    return `<section class="life-travel" aria-label="Travelling to ${esc(to.label)}"><div class="life-travel-route"><span class="life-travel-place"><i aria-hidden="true">${esc(from.icon)}</i><b>${esc(from.label)}</b><small>From</small></span><span class="life-travel-mode"><i aria-hidden="true">${esc(how.icon)}</i><small>${esc(how.label)}</small></span><span class="life-travel-place"><i aria-hidden="true">${esc(to.icon)}</i><b>${esc(to.label)}</b><small>To</small></span></div><progress max="1" value="0" data-progress aria-label="Trip progress"></progress><div class="life-travel-foot"><strong data-remaining></strong><button data-cancel aria-label="Cancel the trip and stay at ${esc(from.label)}">Cancel trip</button></div><p class="life-progress-note">${esc(rule)}</p></section>`;
+    const paid = Number.isFinite(trip?.fare) ? `<small class="life-travel-fare">${trip.fare > 0 ? `${money(trip.fare)} paid` : 'Free'}</small>` : '';
+    return `<section class="life-travel" aria-label="Travelling to ${esc(to.label)}"><div class="life-travel-route"><span class="life-travel-place"><i aria-hidden="true">${esc(from.icon)}</i><b>${esc(from.label)}</b><small>From</small></span><span class="life-travel-mode"><i aria-hidden="true">${esc(how.icon)}</i><small>${esc(how.label)}</small>${paid}</span><span class="life-travel-place"><i aria-hidden="true">${esc(to.icon)}</i><b>${esc(to.label)}</b><small>To</small></span></div><progress max="1" value="0" data-progress aria-label="Trip progress"></progress><div class="life-travel-foot"><strong data-remaining></strong><button data-cancel aria-label="Cancel the trip and stay at ${esc(from.label)}">Cancel trip</button></div><p class="life-progress-note">${esc(rule)}</p></section>`;
   }
   function progressHtml() {
     const active = state.activeAction;
@@ -456,7 +479,13 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const goal = view.goals?.chip;
     if (!goal || goal.kind !== 'goal' || goal.step > COACH_GOALS) return null;
     const active = state.activeAction;
-    if (active) return isTrip(active) ? null : { text: 'Nice. It finishes by itself — watch the bar.', target: null };
+    if (active) {
+      if (isTrip(active)) return null;
+      // Only the goal's own activity (one started at the goal's spot) is cheered on; anything else is named as a detour.
+      const [goalVenue, goalSpot] = goal.go || [];
+      const forGoal = Boolean(goalSpot) && state.location === goalVenue && state.spot === goalSpot;
+      return { text: forGoal ? 'Nice. It finishes by itself — watch the bar.' : 'This is not part of the goal. Let it finish or cancel it, then carry on.', target: null };
+    }
     if (goal.go) {
       const [venueId, spotId] = goal.go;
       if (state.location !== venueId) return { text: `Go ${venueId === 'home' ? 'Home' : 'there'} first: tap ${venueId === 'home' ? 'Home' : 'Map'}.`, target: `[data-nav="${venueId === 'home' ? 'home' : 'map'}"]` };

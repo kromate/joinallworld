@@ -11,7 +11,10 @@
 button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);background:none;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:52px}
 .social-avatar{flex:none;width:40px;height:40px;border-radius:var(--r-round);background:var(--c-green-soft);display:grid;place-items:center;font-size:20px;position:relative}
 .social-dot{position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;border:2px solid #fff;background:#b9bec4}
-.social-dot.is-on{background:var(--c-green)}.social-dot.is-away{background:var(--c-amber)}.social-dot.is-wait{background:var(--c-amber);opacity:.6}
+.social-dot.is-on{background:var(--c-green)}.social-dot.is-away{background:var(--c-amber)}
+/* Reconnecting is its own state: a hollow amber ring and amber words, never the grey of offline. */
+.social-dot.is-wait{background:#fff;border-color:var(--c-amber)}
+.social-presence.is-reconnecting{color:var(--c-amber-dark);font-weight:600}
 .social-actions{display:flex;flex-wrap:wrap;gap:6px;flex:none!important}
 .social-btn{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:18px;padding:8px 12px;min-height:var(--tap);font:600 12px var(--font);cursor:pointer}
 .social-btn.is-primary{background:var(--c-green-dark);color:#fff}.social-btn.is-danger{color:var(--c-red)}

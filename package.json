@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "test": "node --test",
+    "test": "node --test src/*.test.js server/*.test.js",
     "start": "node server/server.js",
-    "start:server": "node server/server.js"
+    "start:server": "node server/server.js",
+    "test:edge": "node --test deploy/cloudflare.test.mjs"
   },
   "dependencies": {
     "three": "^0.180.0",

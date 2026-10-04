@@ -16,3 +16,15 @@ export const ui = reactive<{
 
 function deviceStorage(): Storage | null { try { return globalThis.localStorage ?? null } catch { return null } }
 export const noticeMarks = createNoticeMarks(deviceStorage())
+
+/** Another conversation (or the list) is on screen: the group list closes and the old draft is not carried over. */
+export function showConversation(key: string | null): void {
+  ui.open = key; ui.manage = false; ui.draft = ''
+}
+/** The draft to send, or null when there is nothing to send. Taking it clears the field. */
+export function takeDraft(): string | null {
+  const body = ui.draft.trim()
+  if (!body || !ui.open) return null
+  ui.draft = ''
+  return body
+}

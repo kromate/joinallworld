@@ -5,8 +5,13 @@ TypeScript in steps, and it ships at every step. This document is the plan: what
 conventions, the order, how each step is checked, and what everyone working on the code has to do
 in the meantime.
 
-Steps 0 and 1 are done on `parity/vue-ts`. Steps 2 to 8 start at the freeze point
-([below](#the-freeze-point)).
+**Where it stands.** The shell switch has happened: `index.html` is the Vue application
+(`src/app/main.ts`) and it is the only shell. There is no `next.html`, no `src/life-main.js`, no
+`src/ui/shell.js`, no `src/ui/panels/*.js` and no legacy-panel adapter, and no `?legacy=` flag.
+The client, the campus, the model library, the scripts, `deploy/` and `vite.config.ts` are strict
+TypeScript; `server/` is the JavaScript that remains. Sections below that describe the legacy
+panels, the adapter or `next.html` are the plan as it was written, kept for the reasoning; the
+current layout and rules are in "Target layout" and "Conventions".
 
 ## What exists now
 
@@ -15,14 +20,11 @@ Steps 0 and 1 are done on `parity/vue-ts`. Steps 2 to 8 start at the freeze poin
 | Tooling | `tsconfig.base.json`, `tsconfig/*.json`, `scripts/typecheck.ts`, `vite.config.ts` | Done |
 | Types for the engine, the protocol and the server | `src/types/*.ts`, `server/types.ts` | Done, as new files |
 | Type check of the existing JavaScript | `tsconfig/baseline.json` | Running, against a baseline |
-| The Vue shell | `next.html` → `src/app/` | Playable beside the existing shell, from the landing screen of a new device on (the quick start). Invite, share and table links are handled only by the existing shell |
-| Adapter for existing panels | `src/app/legacy/LegacyPanel.vue`, `src/app/state/panels.ts` | Done |
-| Converted screens | Bank, Messages, Report a problem, the top bar, the needs strip | Done as new files |
-| Converted engine modules | `src/game/clock.ts`, `src/game/systems/wallet.ts` | Twins of the `.js`, held equal by tests |
-
-`index.html` still starts `src/life-main.js`. No existing source file has been renamed or
-rewritten. Three existing files were edited: `package.json`, `vite.config.ts` (the Vue plugin and
-the second entry) and `.github/workflows/ci.yml` (the typecheck step).
+| The Vue shell | `index.html` → `src/app/` | The one shell: landing, quick start, venue, Phone, sheets, Campus, Community |
+| Screens | `src/app/features/**` | Every panel is a Vue component; `src/app/features/panels.ts` registers them |
+| Client, campus, models | `src/**`, `src/campus/**`, `src/models/**` | Strict `.ts`, no `any` |
+| Scripts, deploy, Vite | `scripts/*.ts`, `deploy/*.ts`, `vite.config.ts` | `.ts` |
+| Server | `server/**` | Still JavaScript, checked against `tsconfig/baseline.json` |
 
 ## Tooling
 
@@ -30,8 +32,8 @@ the second entry) and `.github/workflows/ci.yml` (the typecheck step).
 
 ```sh
 npm run typecheck   # vue-tsc --noEmit over five projects, against the baseline
-npm test            # node --test, .js and .ts test files together
-npm run build       # index.html, next.html and voice-test.html
+npm test            # node --test, .ts test files (and the server's .js ones) together
+npm run build       # index.html (voice-test.html is a development fixture, not a build input)
 ```
 
 ### Type-check projects
@@ -124,7 +126,6 @@ after the freeze. There is no UI kit, no CSS framework, no state library and no 
 ## Target layout
 
 ```
-next.html → index.html at step 8
 src/
   app/                  the Vue application
     main.ts  App.vue
@@ -132,7 +133,6 @@ src/
     ui/                 base components and format.ts
     features/<area>/    one folder per screen: BankApp.vue, bankModel.ts, …
     scene/              components that own a canvas: ScenePane.vue, MapPane.vue
-    legacy/             LegacyPanel.vue and the typed boundary to JavaScript (deleted at step 8)
     types/              client and panel contracts
     testing/            fakeServer.ts
   game/                 the rules engine (.ts after step 2)
@@ -142,8 +142,8 @@ server/                 the Node server (.ts after step 3); types.ts
 deploy/                 the Worker (the deploy owner's)
 ```
 
-At step 8 `src/ui/` is empty and removed, `src/app/legacy/` is deleted, and the types in
-`src/types/` that describe one module move into that module.
+`src/ui/` keeps what the Vue shell shares (tokens, controls, attention, keys, the Phone's glyphs and the panels'
+stylesheets). The types in `src/types/` that describe one module may move into that module.
 
 ## Conventions
 
@@ -168,7 +168,7 @@ They follow the owner's other project, so the two read as one author's.
   answer assigns a new object. Components read it and call `command()`.
 - **Composables** are named `use…` and return refs. A composable that creates a timer, a listener,
   an observer or a Three.js object releases it in `onBeforeUnmount`.
-- **Imports** carry their extension. Only `src/app/legacy/` imports a `.js` module.
+- **Imports** carry their extension, the real one (`.ts`, `.vue`); only `server/` is `.js`.
 - **Text.** The game is "Allworld" wherever a player reads it. Text a player typed is rendered as
   text (`{{ }}`), never with `v-html`. `v-html` is used in one place, `GameIcon`, for the icon
   set's own static SVG.
@@ -200,7 +200,7 @@ checks below, not calendar time.
 | 2 | Engine and protocol to `.ts` | 37 files, 7,800 lines | 4–5 days | Medium |
 | 3 | Server to `.ts` | 29 files, 5,200 lines, plus 6 scripts | 4–5 days | Medium |
 | 4 | Client transport to `.ts` | 3 files, about 800 lines | 2 days | Medium |
-| 5 | Shell switch: Vue shell becomes `index.html` | the chrome still on legacy CSS | 3–4 days | High |
+| 5 | Shell switch: Vue shell becomes `index.html` | done | — | — |
 | 6 | Panels to SFCs, group by group | 53 files, 4,100 lines | 10–12 days | Low each |
 | 7 | Scenes and maps | 34 files, 11,100 lines | 6–8 days | High |
 | 8 | Community (chat and voice), then delete the adapter | 1 file, 495 lines | 3–4 days | Highest |
@@ -257,8 +257,8 @@ two-browser message exchange.
 
 ### Step 5: the shell switch
 
-The Vue shell becomes what `index.html` serves; `src/life-main.js` and `src/ui/shell.js` are kept
-one release behind `legacy.html`, then deleted.
+Done: the Vue shell is what `index.html` serves and `src/life-main.js` and `src/ui/shell.js` are deleted
+(no `legacy.html` was kept).
 
 **Before the switch** the Vue shell must host everything the existing one does. Missing today:
 
@@ -312,21 +312,15 @@ two polls and a phone open and close, and a visual pass of every venue kind.
 
 `src/community.js` last and by itself. See [Community](#community-chat-and-voice).
 
-Then: delete `src/app/legacy/`, `src/ui/`, `tsconfig/baseline.json` and the baseline logic in
-`scripts/typecheck.ts`; turn off `allowJs`; rename `next.html` to `index.html`.
+Then, once `server/` is converted: delete `tsconfig/baseline.json` and the baseline logic in
+`scripts/typecheck.ts`, and turn off `allowJs`. (`src/app/legacy/` is already deleted and `next.html` is `index.html`.)
 
 ## From HTML strings to components
 
-There is no flag day. The Vue shell lists panels from one registry
-(`src/app/state/panels.ts`), and a panel in it is one of two kinds:
-
-- an **existing panel** `{ id, title, placement, render(state, view, api) → html, bind, keys }`,
-  shown by `LegacyPanel.vue`;
-- a **Vue panel**, registered with `definePanel({ id, title, placement, group, badge, component })`.
-
-Both carry the same static metadata, so the Phone grid, the Sim tabs and the HUD slots never ask
-which kind they have. A Vue panel with the id of an existing panel takes its place in the same
-position. `?legacy=bank,messages` (or `?legacy=all`) keeps the existing ones, for comparison.
+The Vue shell lists panels from one registry (`src/app/state/panels.ts`), and every panel in it is a Vue
+panel, registered with `definePanel({ id, title, placement, group, badge, component })`. The legacy
+`{ render, bind, keys }` panel kind and its adapter (`LegacyPanel.vue`) no longer exist; what follows
+is the contract the adapter kept, which the Vue panels now keep themselves.
 
 `LegacyPanel.vue` keeps every promise the existing shell makes to a panel:
 
@@ -529,9 +523,7 @@ Nothing now. `deploy/**` and `wrangler.jsonc` are untouched and `npm run test:ed
   `../server/life-service.js` and `../src/life.js`: change the three specifiers to `.ts` in the
   same commit that renames them. No bundler configuration is needed (checked with wrangler
   4.147.0). The edge test does the same for its imports.
-- **Assets.** `dist/` now also holds `next.html`. With
-  `not_found_handling: single-page-application` it is served at `/next.html`. To keep the preview
-  off a public host, exclude it at release or leave it; it talks to the same API.
+- **Assets.** `dist/` holds `index.html` only (no `next.html`).
 - **Step 5.** `index.html` starts the Vue shell. Nothing to change in the Worker.
 - **Type-check the Worker.** The `worker` project already does, against
   `@cloudflare/workers-types`. Converting the Worker file itself to `.ts` is the deploy owner's
@@ -587,6 +579,6 @@ From that commit:
 | DOM test dependencies | Not yet. Revisit at step 6 |
 | Vite 7 or 8 | Stay on 7 until the freeze, then upgrade alone |
 | `engines.node` | Raise to `>=22.18.0` at step 3 |
-| `next.html` on the public host | Leave it out of public releases until step 5 |
+| `next.html` on the public host | Gone: `index.html` is the Vue app |
 | `@cloudflare/workers-types`, or generated `wrangler types` | The package now; switch to the generated file (the other project's way) if the deploy owner prefers |
 | When to freeze | When the four branches are merged and green |

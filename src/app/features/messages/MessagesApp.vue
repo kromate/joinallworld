@@ -27,7 +27,7 @@ import { linkWords } from '../../../ui/link.ts'
 import GlyphText from '../kit/GlyphText.vue'
 import LinkButton from '../growth/LinkButton.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
-import { noticeMarks, ui } from './messagesState.ts'
+import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
 
 const props = defineProps<{ params?: unknown }>()
@@ -48,7 +48,7 @@ const time = (at: number): string => formatClock(at).split('· ')[1] ?? ''
 
 // ---- what is open --------------------------------------------------------------------------
 function setOpen(key: string | null): void {
-  ui.open = key; social.openConv = key; ui.manage = false; ui.draft = ''
+  showConversation(key); social.openConv = key
   if (key) void nextTick(() => draftField.value?.focus())
 }
 // Opened from a person card, a contact or a notification: { to, name } | { conv } | { tab }.
@@ -108,9 +108,10 @@ function back(): void {
 }
 function reloadThread(): void { const current = ui.open ? social.threads.get(ui.open) : undefined; if (current && ui.open) { current.error = null; void openThread(ui.open) } }
 function submitDraft(): void {
-  const body = ui.draft.trim(), key = ui.open
-  if (!body || !key || readOnly.value) return
-  ui.draft = ''
+  const key = ui.open
+  if (!key || readOnly.value) return
+  const body = takeDraft()
+  if (!body) return
   // Shows at once as "Sending…"; the outbox turns it into sent, or failed with a Retry.
   send(key, targetOf(key), body)
   draftField.value?.focus()

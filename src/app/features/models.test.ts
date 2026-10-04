@@ -1,6 +1,6 @@
 // The logic behind the converted screens, without a browser: what the HUD says for each
 // connection state, what an activity card shows, the Bank's badge, the Messages counts and
-// notification lines, the coach, the panel registry and the Phone's home screen, and the Report a
+// notification lines, the panel registry and the Phone's home screen, and the Report a
 // problem form end to end against a fake server.
 import assert from 'node:assert/strict'
 import test from 'node:test'
@@ -14,7 +14,6 @@ import { buildRegistry, definePanel } from '../state/panels.ts'
 import { createFakeServer, memoryStorage } from '../testing/fakeServer.ts'
 import { cap, hueOf, initialOf, money, plural, signedMoney } from '../ui/format.ts'
 import { billsDue, billsLine, loanReasons, loanRule, rentStanding } from './bank/bankModel.ts'
-import { COACH_GOALS, coachStep } from './hud/coachModel.ts'
 import { LINKS, cashDelta, hudNotice, linkWording, moodOf, needFlash, savedPill } from './hud/hudModel.ts'
 import { createNoticeMarks, lastLine, messagesBadge, notificationLines, readOnlyReason, targetOf, threadTitle, unreadChats, unreadUpdates, updateLines, updatesCount } from './messages/messagesModel.ts'
 import { DOCK, badgeText, battery, dockApps, listedApps, notificationsOf, phonePages } from './phone/phoneModel.ts'
@@ -172,27 +171,6 @@ test('messages: which notices were read is kept per city on this device', () => 
   assert.equal(createNoticeMarks(storage).seen('lagos'), 200, 'it survives a reload')
   assert.equal(createNoticeMarks(memoryStorage({ 'joinallworld-notices-seen': '[not json' })).seen('lagos'), 0)
   assert.equal(createNoticeMarks(null).mark('lagos', notices), true, 'without storage it is remembered for this visit')
-})
-
-test('coach: names the next control for the first goals, then stops', async () => {
-  const { game } = await connected()
-  const input = { off: false, clean: false, mode: 'venue', expanded: false, panelOf: () => undefined }
-  const state = game.state.value, view = game.view.value
-  const chip = view.goals.chip
-  assert.ok(chip && chip.kind === 'goal' && chip.step <= COACH_GOALS && chip.go, 'a new life starts on a goal that walks somewhere')
-  const first = coachStep(state, view, input)
-  assert.ok(first?.target)
-  assert.equal(coachStep(state, view, { ...input, off: true }), null)
-  assert.equal(coachStep(state, view, { ...input, clean: true }), null)
-  assert.equal(coachStep(state, view, { ...input, mode: 'map' }), null)
-  assert.equal(coachStep(state, { ...view, connected: false }, input), null)
-  assert.equal(coachStep(state, { ...view, goals: { ...view.goals, chip: { ...chip, step: COACH_GOALS + 1 } } }, input), null)
-  const [venue, spot] = chip.go
-  const there: LifeState = { ...state, location: venue as LifeState['location'], spot: spot ?? state.spot }
-  assert.equal(coachStep(there, view, { ...input, expanded: true })?.target, '.life-action:not(:disabled):not(.is-blocked)')
-  assert.equal(coachStep({ ...there, activeAction: { kind: 'activity', id: 'x', duration: 5, remaining: 5 } as LifeState['activeAction'] }, view, input)?.text, 'Nice. It finishes by itself — watch the bar.')
-  const phoneGoal = { ...view, goals: { ...view.goals, chip: { kind: 'goal' as const, id: chip.id, icon: '', title: 'Find work', hint: '', reward: '', step: 2, of: 7, open: 'jobs' } } }
-  assert.deepEqual(coachStep(state, phoneGoal, { ...input, panelOf: () => ({ id: 'jobs', title: 'Jobs', placement: 'phone' }) }), { text: 'Open Phone, then Jobs.', target: '[data-nav="phone"]', app: 'jobs' })
 })
 
 const component = { render: () => null }

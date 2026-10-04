@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { FetchJson } from '../../types/client.ts'
 import type { CivicNotice } from '../../../types/civic.ts'
-import { civicNews, createCivic, createStore, requestSlot, setLegacyBridge } from './civicCore.ts'
+import { civicNews, createCivic, createStore, requestSlot } from './civicCore.ts'
 import type { CivicDeps } from './civicCore.ts'
 
 function setup(options: { connected?: boolean; answer?: (path: string, body: unknown) => unknown | Promise<unknown> } = {}) {
@@ -142,16 +142,3 @@ test('city news: new to this life and not read yet; opening the Governor app rea
   assert.equal(civicNews({ cityId: 'lagos' }, { civic: { since: null } }, store), 0)
 })
 
-test('city news: the pulse the existing chip loaded counts until this client has its own', () => {
-  const { store } = setup()
-  setLegacyBridge({ pulse: () => ({ notices: [{ id: 'n', kind: 'result', at: 500, title: 't', text: '' }] }), put: () => {} })
-  try { assert.equal(civicNews({ cityId: 'lagos' }, { civic: { since: 0 } }, store), 1) } finally { setLegacyBridge(null) }
-})
-
-test('put is mirrored to the existing cache the city map reads', () => {
-  const { civic } = setup()
-  const mirrored: [string, unknown][] = []
-  setLegacyBridge({ pulse: () => null, put: (key, data) => { mirrored.push([key, data]) } })
-  try { civic.put('ads:lagos', { sea: 1 }) } finally { setLegacyBridge(null) }
-  assert.deepEqual(mirrored, [['ads:lagos', { sea: 1 }]])
-})

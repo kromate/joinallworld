@@ -23,14 +23,6 @@ export const requestSlot = (): RequestSlot => ({ what: null, id: null })
 /** What a write resolves with: the server's answer, or the refusal made here. Never rejects. */
 export type SendResult = { ok: boolean; code: string; reason?: string } & Record<string, unknown>
 
-// ---- the legacy cache --------------------------------------------------------------------------
-// The city map (src/ui/panels/map.js) and the chips that are not converted yet still read the
-// cache of civic-ui.js. The bridge keeps what a write returned in sync, and lets the Governor
-// badge read the pulse the existing chip loads. Installed by register.ts; absent in tests.
-export interface LegacyBridge { pulse(cityId: string): { notices?: readonly CivicNotice[] } | null; put(key: string, data: unknown): void }
-let bridge: LegacyBridge | null = null
-export const setLegacyBridge = (next: LegacyBridge | null): void => { bridge = next }
-
 // ---- city news the player has read ---------------------------------------------------------------
 
 const NEWS_KEY = 'joinallworld-civic-news-read'
@@ -74,7 +66,7 @@ const entryOf = <T>(store: CivicStore, key: string): CivicEntry<T> => {
 
 function newestNotice(store: CivicStore, cityId: string): readonly Pick<CivicNotice, 'at'>[] {
   const own = (store.cache.get(pulseKey(cityId))?.data as { notices?: readonly CivicNotice[] } | null)?.notices
-  return own ?? bridge?.pulse(cityId)?.notices ?? []
+  return own ?? []
 }
 /**
  * City news (a new Governor, an announcement) that is new to THIS life and that the player has not
@@ -108,7 +100,6 @@ export function createCivic(deps: CivicDeps, store: CivicStore = sharedStore) {
   const entry = <T>(key: string): CivicEntry<T> => entryOf<T>(store, key)
   const put = <T>(key: string, data: T): void => {
     Object.assign(entryOf<T>(store, key), { data, at: now(), error: null })
-    bridge?.put(key, data)
   }
   const busy = (tag: string): boolean => store.pending.has(tag)
 

@@ -21,6 +21,7 @@ import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
 import { buildSocketHandlers } from './ws/index.ts';
 import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
+import { siteFile } from './site-files.ts';
 import telemetryRoutes from './telemetry/routes.ts';
 import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue } from './protocol.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
@@ -362,6 +363,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         // A registered prefix that renders nothing is not a page: a POST has nowhere else to go, a GET falls through to the game.
         if (method === 'POST') throw fail(405, 'method_not_allowed');
         at = null;
+      }
+      // The manifest and the sitemap are made by code (site-files.ts), not shipped as files: the release package admits neither extension.
+      const site = siteFile(url.pathname, publicOrigin(req));
+      if (site) {
+        res.writeHead(200, { 'Content-Type': site.type, 'X-Content-Type-Options': 'nosniff' });
+        res.end(method === 'HEAD' ? undefined : site.body);
+        return;
       }
       const root = resolve(distDir);
       let path = resolve(root, `.${decodeURIComponent(url.pathname)}`);

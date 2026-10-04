@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { test } from 'node:test';
 import { absolutePreviewImage, SITE_ORIGIN } from './host-context.ts';
+import { siteFile } from './site-files.ts';
 
 const root = new URL('../', import.meta.url);
 const read = (path: string): Promise<string> => readFile(new URL(path, root), 'utf8');
@@ -56,12 +57,20 @@ test('the host writes the page for its own origin: canonical, og:url, og:image a
   assert.equal(absolutePreviewImage(html, ''), html, 'with no origin the page is unchanged');
 });
 
+test('the sitemap and the manifest are code, not files: the release package admits neither extension', async () => {
+  for (const name of ['sitemap.xml', 'manifest.webmanifest']) await assert.rejects(stat(new URL(`public/${name}`, root)), { code: 'ENOENT' }, name);
+  assert.match(await read('index.html'), /<link rel="manifest" href="\/manifest\.webmanifest">/);
+  assert.deepEqual([siteFile('/manifest.webmanifest', '')?.type, siteFile('/sitemap.xml', '')?.type, siteFile('/robots.txt', ''), siteFile('/sitemap.xml/', '')], ['application/manifest+json', 'application/xml; charset=utf-8', undefined, undefined]);
+  assert.ok(siteFile('/sitemap.xml', 'https://play.example')?.body.includes('<loc>https://play.example/</loc>'));
+  assert.ok(siteFile('/sitemap.xml', '')?.body.includes(`<loc>${SITE_ORIGIN}/</loc>`), 'with no usable origin the site\'s own is named');
+});
+
 test('public files: robots.txt, sitemap.xml, manifest and the images they name', async () => {
-  const robots = await read('public/robots.txt'), sitemap = await read('public/sitemap.xml');
+  const robots = await read('public/robots.txt'), sitemap = siteFile('/sitemap.xml', SITE_ORIGIN)?.body ?? '';
   assert.match(robots, /^User-agent: \*\nAllow: \/\n/); assert.match(robots, /Disallow: \/api\/\nDisallow: \/s\/\nDisallow: \/e\//);
   assert.match(robots, new RegExp(`Sitemap: ${SITE_ORIGIN}/sitemap\\.xml`));
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), [`${SITE_ORIGIN}/`]);
-  const manifest = JSON.parse(await read('public/manifest.webmanifest')) as { name: string; short_name: string; lang: string; start_url: string; display: string; theme_color: string; background_color: string; icons: { src: string; purpose: string; sizes: string }[] };
+  const manifest = JSON.parse(siteFile('/manifest.webmanifest', '')?.body ?? '') as { name: string; short_name: string; lang: string; start_url: string; display: string; theme_color: string; background_color: string; icons: { src: string; purpose: string; sizes: string }[] };
   assert.deepEqual([manifest.name, manifest.short_name, manifest.lang, manifest.start_url, manifest.display, manifest.theme_color, manifest.background_color], ['Allworld', 'Allworld', 'en-NG', '/', 'standalone', '#183b2a', '#183b2a']);
   assert.ok(manifest.icons.some(icon => icon.purpose === 'maskable') && manifest.icons.some(icon => icon.purpose === 'any' && icon.sizes === '512x512') && manifest.icons.some(icon => icon.sizes === '192x192'));
   for (const icon of manifest.icons) assert.ok((await stat(new URL(`public${icon.src}`, root))).size > 0, icon.src);

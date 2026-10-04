@@ -605,9 +605,16 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   assert.deepEqual(ld.map(item => item['@type']), ['VideoGame', 'WebSite']); assert.ok(ld.every(item => item.url === `${ORIGIN}/`));
   const robots = await f.fetch('/robots.txt'), sitemap = await f.fetch('/sitemap.xml');
   assert.deepEqual([robots.status, sitemap.status], [200, 200]);
-  assert.match(robots.headers.get('content-type') as string, /^text\/plain/); assert.match(sitemap.headers.get('content-type') as string, /xml/);
-  assert.match(await robots.text(), /Disallow: \/api\/[\s\S]*Sitemap: /); assert.match(await sitemap.text(), /<loc>https:\/\/joinallworld\.com\/<\/loc>/);
-  assert.match((await f.fetch('/manifest.webmanifest')).headers.get('content-type') as string, /manifest|json/);
+  assert.match(robots.headers.get('content-type') as string, /^text\/plain/); assert.equal(sitemap.headers.get('content-type'), 'application/xml; charset=utf-8');
+  assert.match(await robots.text(), /Disallow: \/api\/[\s\S]*Sitemap: /);
+  // The sitemap and the manifest are made by code on this host (server/site-files.ts), not served as assets; the sitemap names the public origin.
+  assert.equal(await sitemap.text(), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${ORIGIN}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>\n</urlset>\n`);
+  const manifest = await f.fetch('/manifest.webmanifest');
+  assert.deepEqual([manifest.status, manifest.headers.get('content-type'), manifest.headers.get('x-content-type-options')], [200, 'application/manifest+json', 'nosniff']);
+  assert.deepEqual(Object.keys(JSON.parse(await manifest.text()) as object).slice(0, 3), ['name', 'short_name', 'description']);
+  const head = await f.fetch('/sitemap.xml', { method: 'HEAD' });
+  assert.deepEqual([head.status, head.headers.get('content-type'), await head.text()], [200, 'application/xml; charset=utf-8', '']);
+  assert.equal((await f.fetch('/sitemap.xml', { method: 'POST' })).status, 405);
   assert.match(html, /<meta name="robots" content="noindex, nofollow">/); assert.match(html, new RegExp(`<link rel="canonical" href="${ORIGIN}/s/${code}">`)); assert.equal(page.headers.get('x-robots-tag'), 'noindex, nofollow');
   // The landing reads the link with the same pure functions the browser runs.
   const url = new URL(target, ORIGIN), link = { join: joinIdFrom(url.pathname, url.search), ...linkParts(url.pathname, url.search) };

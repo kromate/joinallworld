@@ -60,7 +60,7 @@ function perks(view) {
 
 export default [
   {
-    id: 'goal-chip', title: 'Current goal', icon: '🎯', placement: 'hud', order: 10,
+    id: 'goal-chip', title: 'Current goal', icon: '🎯', placement: 'hud', slot: 'goal', order: 10,
     render(state, view) { return chip(state, view); },
     bind(root, api) {
       root.querySelector('[data-goal-go]')?.addEventListener('click', (event) => api.goTo(...JSON.parse(event.currentTarget.dataset.goalGo)));

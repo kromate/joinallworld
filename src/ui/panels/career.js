@@ -7,7 +7,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './career.css';
-import { esc, money, json, meter, cap } from '../dom.js';
+import { esc, money, json, meter, cap, empty } from '../dom.js';
 
 const mark = (met, text) => `<span class="${met ? 'is-met' : 'is-unmet'}">${met ? '✓' : '✗'} ${esc(text)}</span>`;
 
@@ -16,7 +16,7 @@ export default {
   render(state, view) {
     const career = view.career;
     if (!career.employed) {
-      return `<div class="career-empty"><p>No job yet. Find one in the Jobs app on your phone — applying is free and you can work the same day.</p><button class="ui-button is-primary" data-open="jobs">Open Jobs</button></div>`;
+      return empty('💼', 'No job yet', 'Find one in the Jobs app — applying is free and you can work the same day.', '<button class="ui-button is-primary" data-open="jobs">Open Jobs</button>');
     }
     const next = career.next;
     const promotion = !career.isTrack ? '<p class="career-next">The starter job has no promotions. Pick a career track in Jobs to climb a ladder.</p>'

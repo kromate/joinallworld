@@ -10,7 +10,7 @@
  * the world map (the city picker) instead — the host reads it on every render.
  *
  * The Map panel talks to this module through one window event, 'jaw:map-ui', with detail
- * { layer?: 'city' | 'world', filter?: string, selected?: venueId | null,
+ * { layer?: 'city' | 'world', filter?: string, selected?: venueId | null, layout?: true (the panel changed size),
  *   layers?: { billboards, sea, neighbours, gov }   which civic overlays to draw
  *   ads?, neighbours?, gov? }                        the server responses they are drawn from
  *
@@ -25,8 +25,19 @@
  * Every piece of player text here is set with textContent, never as markup, and no ad is a
  * link or a button: nothing a player typed can be clicked.
  *
- * Static rendering only: the DOM is built once per city and class names change when the
- * state does. No requestAnimationFrame loop, no timers.
+ * PAN AND ZOOM. The whole city is fitted into the part of the screen the HUD and the Map panel
+ * leave free when the map opens. Drag pans, a pinch or the wheel zooms about the point under
+ * the fingers or the cursor, and the + / − / fit / find-me buttons do the same for anyone who
+ * cannot. From the keyboard (forwarded by the shell as 'jaw:key'): arrows pan, + and − zoom,
+ * 0 fits the city again. Zooming changes the size of the map, never of the pins: a label is
+ * always the same readable size, and at a small scale only Home, where you are and the
+ * selected place keep their labels (every pin is still a button with its full name). Labels of
+ * pins near the left or right edge grow inwards, so none is cut off. Panning is clamped so the
+ * city can never be dragged out of view.
+ *
+ * Static rendering only: the DOM is built once per city; class names change when the state
+ * does and the transform changes when the player pans or zooms. No frame loop, no timers —
+ * every redraw is the direct result of one input event.
  * Pins are real buttons in west-to-east reading order, so the map is keyboard reachable.
  * A link with ?venue=<id> opens that venue's card once the life has loaded.
  */
@@ -71,30 +82,191 @@ function backdrop(names) {
 }
 
 const HOMES_SHOWN = 12;
+const W = 1000, H = 700;          // the map's own units (venue positions are percentages of this)
+const LABEL_WIDTH = 720;          // below this many CSS pixels of map width, only the important labels show
+const MAX_WIDTH = 2200;           // the furthest zoom, as map width in CSS pixels
+const MARGIN = 28;                // how far past the free area the city may be dragged
+const DRAG_START = 6;             // pixels a pointer must travel before a press becomes a drag
 const make = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
+const ICON = (path) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 
 export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {} } = {}) {
-  let cityId = 'lagos', state = null, layer = 'city', filter = 'all', selected = null, signature = '', centred = '', built = false;
+  let cityId = 'lagos', state = null, layer = 'city', filter = 'all', selected = null, signature = '', built = false;
   let layers = { billboards: false, sea: false, neighbours: false, gov: false }, overlay = { ads: null, neighbours: null, gov: null }, overlayKey = '', seaPending = false;
+  // The view: `scale` is CSS pixels per map unit, (x, y) is where the map's top-left corner sits in the container.
+  let scale = 0, x = 0, y = 0, fitted = false, userMoved = false, shown = '';
   let deepLink = null;
   try { deepLink = new URLSearchParams(window.location.search).get('venue'); } catch { deepLink = null; }
   const root = document.createElement('div');
   root.className = 'cmap';
   container.appendChild(root);
+  let view = null, worldNode = null, canvas = null, controls = {};
 
   const homeSpot = () => HOME_SPOTS[Object.hasOwn(HOME_SPOTS, state?.travel?.home) ? state.travel.home : DEFAULT_HOME];
   const places = () => [
     ...Object.values(VENUES).map((venue) => (venue.id === 'home' ? { ...venue, map: homeSpot().map, district: homeSpot().district, kind: 'home' } : { ...venue, kind: 'venue' })),
     ...Object.values(COMING_SOON).map((place) => ({ ...place, kind: 'soon' })),
   ].sort((a, b) => a.map.x - b.map.x || a.map.y - b.map.y);
+  const pointOf = (id) => (id === 'home' ? homeSpot().map : (VENUES[id] || COMING_SOON[id])?.map);
 
   function build() {
     const names = CITY_MAPS[cityId] || CITY_MAPS.lagos;
-    root.innerHTML = `<div class="cmap-scroll"><div class="cmap-canvas" role="group" aria-label="Map of the city. Choose a place to see it and travel there.">${backdrop(names)}${places().map((place) =>
-      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div>`;
-    built = true; signature = ''; overlayKey = '';
+    root.innerHTML = `<div class="cmap-view"><div class="cmap-world"><div class="cmap-canvas" role="group" aria-label="Map of the city. Choose a place to see it and travel there. Drag to move the map; plus and minus zoom; zero shows the whole city.">${backdrop(names)}${places().map((place) =>
+      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
+      <div class="cmap-controls" role="group" aria-label="Map view"><button type="button" data-cmap="in" aria-label="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-cmap="out" aria-label="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" data-cmap="fit" aria-label="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}</button><button type="button" data-cmap="me" aria-label="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>`;
+    view = root.querySelector('.cmap-view'); worldNode = root.querySelector('.cmap-world'); canvas = root.querySelector('.cmap-canvas');
+    controls = Object.fromEntries([...root.querySelectorAll('[data-cmap]')].map((node) => [node.dataset.cmap, node]));
+    built = true; signature = ''; overlayKey = ''; fitted = false; userMoved = false; shown = '';
     update();
     drawOverlays();
+    if (!container.hidden) fit();
+  }
+
+  // ---- the view: fit, clamp, pan, zoom -------------------------------------------------------
+
+  /** The part of the container nothing covers: below the top bar, above the nav, clear of the Map panel. */
+  function freeRect() {
+    const page = container.getBoundingClientRect();
+    const box = (selector) => { const rect = document.querySelector(selector)?.getBoundingClientRect(); return rect && rect.height ? rect : null; };
+    const bar = box('.life-status'), nav = box('.life-nav'), panel = box('.map-panel');
+    const isWide = page.width > 720;
+    // Labels hang below their pins, so the bottom keeps room for the lowest one; a wide screen keeps the view controls clear.
+    let left = 10, right = isWide ? 66 : 10, top = (bar ? bar.bottom - page.top : 56) + 10, bottom = (nav ? page.bottom - nav.top : 70) + 34;
+    if (panel) {
+      if (isWide) left = Math.max(left, panel.right - page.left + 14);            // docked at the side on a wide screen
+      // A bottom sheet on a phone. A sheet that fills most of the screen (the open list) is in front of the map, not beside it.
+      else if (panel.height < page.height * 0.6) bottom = Math.max(bottom, page.bottom - panel.top + 34);
+    }
+    const width = Math.max(120, page.width - left - right), height = Math.max(120, page.height - top - bottom);
+    return { left, top, width, height, right: left + width, bottom: top + height };
+  }
+  const fitScale = (free = freeRect()) => Math.min((free.width - 16) / W, (free.height - 16) / H);
+  const worldHeight = () => (worldNode ? Math.max(H * scale, worldNode.offsetHeight) : H * scale);
+
+  /** Keep the city in the free area: centred while it is smaller than it, otherwise never dragged past its edges. */
+  function clamp(free = freeRect()) {
+    const width = W * scale, height = worldHeight();
+    x = width <= free.width ? free.left + (free.width - width) / 2 : Math.min(free.left + MARGIN, Math.max(free.right - MARGIN - width, x));
+    y = height <= free.height ? free.top + (free.height - height) / 2 : Math.min(free.top + MARGIN, Math.max(free.bottom - MARGIN - height, y));
+  }
+  /** Write the view to the DOM. Called from input handlers only. */
+  function apply() {
+    if (!built) return;
+    const free = freeRect(), smallest = fitScale(free);
+    // Size first: the clamp below measures the world (city plus sea plots) at its new size.
+    const size = `${Math.round(W * scale)}px`;
+    if (canvas.style.width !== size) {
+      canvas.style.width = size;
+      canvas.style.height = `${Math.round(H * scale)}px`;
+      worldNode.style.width = size;
+    }
+    clamp(free);
+    const next = `${scale.toFixed(4)}|${Math.round(x)}|${Math.round(y)}|${userMoved}`;
+    if (next === shown) return;
+    shown = next;
+    worldNode.style.transform = `translate(${Math.round(x)}px,${Math.round(y)}px)`;
+    root.classList.toggle('is-compact', W * scale < LABEL_WIDTH);
+    const atFit = scale <= smallest * 1.01, atMax = W * scale >= MAX_WIDTH - 1;
+    setControl(controls.out, atFit, 'Zoom out', 'Already showing the whole city');
+    setControl(controls.fit, atFit && !userMoved, 'Show the whole city', 'Already showing the whole city');
+    setControl(controls.in, atMax, 'Zoom in', 'Already zoomed in as far as the map goes');
+  }
+  // A control that cannot do anything right now stays focusable and says why, instead of going dead.
+  function setControl(node, off, label, why) {
+    if (!node) return;
+    node.setAttribute('aria-disabled', String(off));
+    node.title = off ? why : label;
+    node.setAttribute('aria-label', off ? `${label}. ${why}` : label);
+  }
+  function fit() {
+    if (!built || container.hidden) return;
+    const free = freeRect();
+    scale = fitScale(free); x = 0; y = 0;
+    fitted = true; userMoved = false;
+    // With the sea plots showing, the city sits at the top and the sea is a drag away.
+    apply();
+  }
+  /** Zoom by `factor` keeping the map point under (cx, cy) — container pixels — where it is. */
+  function zoomAt(factor, cx, cy) {
+    if (!fitted) fit();
+    const free = freeRect();
+    const next = Math.min(MAX_WIDTH / W, Math.max(fitScale(free), scale * factor));
+    if (Math.abs(next - scale) < 1e-6) return;
+    const px = cx ?? free.left + free.width / 2, py = cy ?? free.top + free.height / 2;
+    x = px - ((px - x) / scale) * next;
+    y = py - ((py - y) / scale) * next;
+    scale = next; userMoved = true;
+    apply();
+  }
+  function panBy(dx, dy) { if (!fitted) fit(); x += dx; y += dy; userMoved = true; apply(); }
+  /** Bring a place into the free area, moving the map as little as possible. `centre` puts it in the middle instead. */
+  function reveal(id, centre = false) {
+    const point = pointOf(id);
+    if (!built || container.hidden || !point) return;
+    if (!fitted) fit();
+    const free = freeRect(), px = x + (point.x / 100) * W * scale, py = y + (point.y / 100) * H * scale;
+    const padX = Math.min(90, free.width / 3), padY = Math.min(70, free.height / 3);
+    if (centre) { x += free.left + free.width / 2 - px; y += free.top + free.height / 2 - py; }
+    else {
+      if (px < free.left + padX) x += free.left + padX - px; else if (px > free.right - padX) x += free.right - padX - px;
+      if (py < free.top + padY) y += free.top + padY - py; else if (py > free.bottom - padY) y += free.bottom - padY - py;
+    }
+    apply();
+  }
+
+  const pointers = new Map();
+  let drag = null, pinch = null, suppressClick = false;
+  function local(event) { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; }
+  function onPointerDown(event) {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    pointers.set(event.pointerId, local(event));
+    // A fresh press starts clean: only the click that ends a drag or a pinch is swallowed (see onClick).
+    if (pointers.size === 1) { suppressClick = false; drag = { id: event.pointerId, from: local(event), x, y, moved: false }; pinch = null; }
+    else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, scale };
+      drag = null; suppressClick = true;
+    }
+  }
+  function onPointerMove(event) {
+    if (!pointers.has(event.pointerId)) return;
+    const at = local(event);
+    pointers.set(event.pointerId, at);
+    if (pinch && pointers.size >= 2) {
+      const [a, b] = [...pointers.values()];
+      const distance = Math.hypot(a.x - b.x, a.y - b.y) || 1;
+      zoomAt((pinch.scale * distance / pinch.distance) / scale, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      return;
+    }
+    if (!drag || drag.id !== event.pointerId) return;
+    const dx = at.x - drag.from.x, dy = at.y - drag.from.y;
+    if (!drag.moved && Math.hypot(dx, dy) < DRAG_START) return;
+    if (!drag.moved) { drag.moved = true; suppressClick = true; root.classList.add('is-dragging'); try { view.setPointerCapture(event.pointerId); } catch { /* the pointer is already gone */ } }
+    x = drag.x + dx; y = drag.y + dy; userMoved = true;
+    apply();
+  }
+  function onPointerUp(event) {
+    pointers.delete(event.pointerId);
+    if (pointers.size < 2) pinch = null;
+    if (drag?.id === event.pointerId) { drag = null; root.classList.remove('is-dragging'); }
+  }
+  function onWheel(event) {
+    event.preventDefault();
+    const at = local(event);
+    zoomAt(Math.exp(-event.deltaY * (event.ctrlKey ? 0.01 : 0.0018)), at.x, at.y);
+  }
+  /** Keyboard, forwarded by the shell: arrows pan, + and − zoom, 0 fits. Only while the map is the screen in front. */
+  function onKey(event) {
+    const { action, mode } = event.detail || {};
+    if (mode !== 'map' || container.hidden || layer !== 'city') return;
+    const step = 90;
+    if (action === 'move-left') panBy(step, 0); else if (action === 'move-right') panBy(-step, 0);
+    else if (action === 'move-up') panBy(0, step); else if (action === 'move-down') panBy(0, -step);
+    else if (action === 'zoom-in') zoomAt(1.3); else if (action === 'zoom-out') zoomAt(1 / 1.3); else if (action === 'zoom-fit') fit();
+  }
+  function onControl(name) {
+    if (name === 'in') zoomAt(1.4); else if (name === 'out') zoomAt(1 / 1.4); else if (name === 'fit') fit();
+    else if (name === 'me' && state) { if (W * scale < LABEL_WIDTH) { scale = Math.min(MAX_WIDTH / W, LABEL_WIDTH / W * 1.05); userMoved = true; } reveal(state.location, true); }
   }
 
   /** Reflect the state in class names and labels. Touches the DOM only when something changed. */
@@ -109,18 +281,25 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     for (const pin of root.querySelectorAll('.cmap-pin')) {
       const id = pin.dataset.venue, venue = VENUES[id], soon = !venue;
       const here = state?.location === id, open = venue ? isOpen(venue.hours, now) : false;
-      if (id === 'home') { pin.style.left = `${home.map.x}%`; pin.style.top = `${home.map.y}%`; }
-      else { const place = venue || COMING_SOON[id]; pin.style.left = `${place.map.x}%`; pin.style.top = `${place.map.y}%`; }
+      const place = id === 'home' ? home.map : (venue || COMING_SOON[id]).map;
+      pin.style.left = `${place.x}%`; pin.style.top = `${place.y}%`;
+      // A label near the left or right edge grows inwards, so it is never cut off.
+      pin.classList.toggle('is-edge-left', place.x < 13);
+      pin.classList.toggle('is-edge-right', place.x > 87);
       const dimmed = filter === 'open' ? !open : filter !== 'all' && pin.dataset.category !== filter && id !== 'home';
       pin.classList.toggle('is-here', here);
       pin.classList.toggle('is-going', going === id);
       pin.classList.toggle('is-closed', !soon && !open);
       pin.classList.toggle('is-dimmed', dimmed && !here);
       pin.classList.toggle('is-selected', selected === id);
-      const note = soon ? 'Coming soon' : here ? 'You are here' : going === id ? 'On the way' : open ? '' : 'Closed';
-      pin.querySelector('.cmap-pin-note').textContent = note;
+      const status = soon ? 'Coming soon' : here ? 'You are here' : going === id ? 'On the way' : open ? '' : 'Closed';
+      // Closed is shown calmly: a grey pin and one quiet word, not a badge on every door.
+      const note = pin.querySelector('.cmap-pin-note');
+      note.textContent = status;
+      note.className = `cmap-pin-note${status === 'Closed' ? ' is-quiet' : ''}`;
       const district = id === 'home' ? home.district : venueDistrict(id, cityId);
-      pin.setAttribute('aria-label', `${id === 'home' ? 'Home' : venueLabel(id, cityId)}, ${district}${note ? `, ${note.toLowerCase()}` : ', open now'}`);
+      pin.setAttribute('aria-label', `${id === 'home' ? 'Home' : venueLabel(id, cityId)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
+      pin.title = `${id === 'home' ? 'Home' : venueLabel(id, cityId)}${status ? ` · ${status}` : ''}`;
       if (here) pin.setAttribute('aria-current', 'location'); else pin.removeAttribute('aria-current');
     }
   }
@@ -189,6 +368,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     for (const pin of root.querySelectorAll('.cmap-pin')) pin.classList.toggle('is-gov', layers.gov && ['state-house', 'polling-unit'].includes(pin.dataset.venue));
     // Sea plots: a block of open water below the city.
     seaHost.hidden = !(layers.sea && ads);
+    shown = ''; // the world's height changes with the sea plots
     if (layers.sea && ads) {
       const sea = ads.sea, taken = new Map(sea.plots.map((plot) => [plot.slot, plot]));
       const grid = make('div', 'cmap-sea-grid');
@@ -210,16 +390,10 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     } else seaHost.replaceChildren();
   }
 
-  function centre(id, force = false) {
-    if (!built || container.hidden || (!force && centred === id)) return;
-    const pin = root.querySelector(`.cmap-pin[data-venue="${CSS.escape(id)}"]`), scroller = root.querySelector('.cmap-scroll');
-    if (!pin || !scroller || !scroller.clientWidth) return;
-    centred = id;
-    scroller.scrollLeft = pin.offsetLeft - scroller.clientWidth / 2;
-    scroller.scrollTop = pin.offsetTop - scroller.clientHeight * 0.4; // the Map panel covers the lower part of the screen
-  }
-
   function onClick(event) {
+    const control = event.target.closest('[data-cmap]');
+    if (control) { if (control.getAttribute('aria-disabled') !== 'true') onControl(control.dataset.cmap); return; }
+    if (suppressClick) { suppressClick = false; event.preventDefault(); return; }
     const house = event.target.closest('[data-neighbour]');
     if (house) { onSelectNeighbour({ id: house.dataset.neighbour, name: house.dataset.name }); return; }
     const pin = event.target.closest('.cmap-pin');
@@ -234,25 +408,41 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     const detail = event.detail || {};
     if (detail.layer === 'city' || detail.layer === 'world') layer = detail.layer;
     if (typeof detail.filter === 'string') filter = detail.filter;
-    if ('selected' in detail) { selected = detail.selected || null; if (selected) centre(selected, true); }
+    const picked = 'selected' in detail && detail.selected && detail.selected !== selected;
+    if ('selected' in detail) selected = detail.selected || null;
     const seaWasOff = !layers.sea;
     if (detail.layers && typeof detail.layers === 'object') layers = { billboards: detail.layers.billboards === true, sea: detail.layers.sea === true, neighbours: detail.layers.neighbours === true, gov: detail.layers.gov === true };
     for (const key of ['ads', 'neighbours', 'gov']) if (key in detail) overlay[key] = detail[key] && typeof detail[key] === 'object' ? detail[key] : null;
     update();
     drawOverlays();
+    if (container.hidden) return;
+    // The panel changed size (collapsed, expanded, a card opened): the free area moved with it.
+    if (!fitted || (detail.layout && !userMoved)) fit(); else apply();
+    if (selected && (picked || detail.layout)) reveal(selected);
     // Turning the Sea layer on brings the plots into view once they are drawn.
-    const sea = root.querySelector('[data-sea]'), scroller = root.querySelector('.cmap-scroll');
-    if (layers.sea && sea && scroller && !sea.hidden && (seaWasOff || seaPending)) { scroller.scrollTop = Math.max(0, sea.offsetTop - 170); seaPending = false; }
-    else if (layers.sea && seaWasOff) seaPending = true;
+    const sea = root.querySelector('[data-sea]');
+    if (layers.sea && sea && !sea.hidden && (seaWasOff || seaPending)) {
+      seaPending = false;
+      if (W * scale < 640) scale = 640 / W;
+      const free = freeRect();
+      y = free.top + 40 - sea.offsetTop; userMoved = true;
+      apply();
+    } else if (layers.sea && seaWasOff) seaPending = true;
     if (!layers.sea) seaPending = false;
   }
   root.addEventListener('click', onClick);
+  root.addEventListener('pointerdown', onPointerDown);
+  root.addEventListener('pointermove', onPointerMove);
+  root.addEventListener('pointerup', onPointerUp);
+  root.addEventListener('pointercancel', onPointerUp);
+  root.addEventListener('wheel', onWheel, { passive: false });
   window.addEventListener('jaw:map-ui', onUi);
+  window.addEventListener('jaw:key', onKey);
   build();
 
   return {
     get ready() { return layer === 'city'; },
-    setCity(id) { if (id !== cityId || !built) { cityId = id; build(); } layer = 'city'; centred = ''; },
+    setCity(id) { if (id !== cityId || !built) { cityId = id; build(); } layer = 'city'; },
     setState(next) {
       state = next;
       update();
@@ -263,7 +453,14 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
         if (Object.hasOwn(VENUES, id) || Object.hasOwn(COMING_SOON, id)) { selected = id; update(); onSelectVenue(id); }
       }
     },
-    resize() { if (state) centre(selected || state.location); },
-    destroy() { root.removeEventListener('click', onClick); window.removeEventListener('jaw:map-ui', onUi); root.remove(); },
+    /** The container was shown or changed size: fit the city the first time, afterwards only keep it in bounds. */
+    resize() {
+      if (!built || container.hidden) return;
+      if (!fitted || !userMoved) fit(); else apply();
+      if (selected) reveal(selected);
+    },
+    /** For tests and diagnostics: the current view. */
+    view: () => ({ scale, x, y, fitted, compact: W * scale < LABEL_WIDTH }),
+    destroy() { root.removeEventListener('click', onClick); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:key', onKey); root.remove(); },
   };
 }

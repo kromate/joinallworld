@@ -1,5 +1,5 @@
 /* Goal chip (HUD) and the Goals tab of the Sim sheet. */
-.goal-chip em{display:block;font-style:normal;font-size:9px;color:var(--c-green-dark);margin-top:1px}
+.goal-chip em{display:block;font-style:normal;font-size:10px;font-weight:600;color:var(--c-green-dark);margin-top:1px;white-space:nowrap}
 .goal-chip.is-create{background:#fff8df;border-color:#ecc95b!important}
 .goals-root{display:grid;gap:var(--s-3);font-family:var(--font)}
 .goals-root section{min-width:0}

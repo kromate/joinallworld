@@ -4,7 +4,7 @@
  * friends — and Find a player.
  * The panel contract is at the top of src/ui/shell.js. All names are escaped.
  */
-import { esc, json } from '../dom.js';
+import { esc, json, empty } from '../dom.js';
 import { presenceText } from '../../game/social-model.js';
 import { S, bindCommon, gate, call } from './social-client.js';
 
@@ -31,7 +31,7 @@ export default {
     return `<div class="social-row"><span class="social-avatar" aria-hidden="true">${esc(mummy.emoji)}</span><div><strong>${esc(mummy.name)}</strong><small>${esc(mummy.line)}${mummy.calledToday ? ' · checked in today' : ''}</small></div><span class="social-actions">${callButton(state, view, mummy)}</span></div>
       <h3>Find a player</h3><form class="social-form" data-k-find><input name="q" maxlength="36" placeholder="Player name" aria-label="Find a player by name" value="${esc(ui.find)}" autocomplete="off" ${view.connected ? '' : 'disabled'}><button class="social-btn" ${view.connected ? '' : 'disabled'}>Find</button></form>${view.connected ? '' : '<span class="social-why">You are offline. Reconnect to search.</span>'}${results}
       <h3>Saved contacts</h3>${friends}${met.map((rel) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">${esc(rel.emoji)}</span><div><strong>${esc(rel.name)}</strong><small>${esc(rel.role)} · NPC · ${esc(rel.tierLabel)}</small></div><span class="social-actions"><button class="social-btn" data-open="person" data-params="${json({ npc: rel.id })}">View</button></span></div>`).join('')}
-      ${!met.length && !(S.me?.friends.length) ? '<p class="social-note">Meet people around town to save their numbers.</p>' : ''}<p class="preview-note">Names are not unique: check the short code after # when two players share a name.</p>`;
+      ${!met.length && !(S.me?.friends.length) ? empty('📇', 'No saved contacts yet', 'Meet people around town to save their numbers.', '<button class="ui-button" data-open="map">Open the map</button>') : ''}<p class="preview-note">Names are not unique: check the short code after # when two players share a name.</p>`;
   },
   bind(root, api) {
     bindCommon(root, api);

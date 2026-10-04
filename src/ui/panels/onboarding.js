@@ -12,7 +12,7 @@
 import './onboarding.css';
 import { esc, money, icon } from '../dom.js';
 import { TRAITS, TRAITS_REQUIRED, DREAMS, ONBOARDING_STEPS, RENT_NOTE, LOTTERY_NOTE } from '../../game/content/traits.js';
-import { avatarSvg, lookEditor, chooseLook } from './look-ui.js';
+import { avatarSvg, lookEditor, chooseLook, lookLabel } from './look-ui.js';
 
 const ID = 'onboarding';
 const LAST = ONBOARDING_STEPS.length - 1;
@@ -27,25 +27,28 @@ function sync(state, view) {
   error = ''; pending = '';
 }
 
-const primary = (label, { action, disabled = false } = {}) => `<button type="button" class="ui-button is-primary ob-primary" data-ob="${action ?? ''}" data-key="primary" ${disabled || pending ? 'disabled' : ''}>${esc(pending || label)}</button>`;
+/** The step's one primary action, in a footer that stays at the bottom of the sheet with its own background, so it never sits on top of an option. `why` says what is still missing. */
+const primary = (label, { action, disabled = false, why = '' } = {}) => `<div class="ob-foot">${why && !pending ? `<p class="ob-foot-why">${esc(why)}</p>` : ''}<button type="button" class="ui-button is-primary ob-primary" data-ob="${action ?? ''}" data-key="primary" ${disabled || pending ? 'disabled' : ''}>${esc(pending || label)}</button></div>`;
 
 function stepBody(state, view) {
   const o = view.onboarding, name = view.name;
   if (shown === 0) {
-    return `<div class="ob-split"><div class="look-stage">${avatarSvg(draft.look, { size: 150 })}</div><div>${lookEditor(draft.look)}</div></div>
-      ${primary('Next', { action: 'look' })}`;
+    // The preview stays in view while the options scroll, with the choices written out under it.
+    const wearing = [draft.look.body, draft.look.hair, draft.look.outfit, draft.look.fabric].filter(Boolean).map((id) => { const text = String(lookLabel(id)); return text.charAt(0).toUpperCase() + text.slice(1); }).join(' · ');
+    return `<div class="ob-split"><div class="look-stage ob-stage">${avatarSvg(draft.look, { size: 150 })}<p class="ob-wearing">${esc(wearing)}</p></div><div>${lookEditor(draft.look)}</div></div>
+      ${primary('Next: personality', { action: 'look' })}`;
   }
   if (shown === 1) {
     const left = TRAITS_REQUIRED - draft.traits.length;
     return `<p class="ob-lead">Choose ${TRAITS_REQUIRED} traits. Each one changes how ${esc(name)} plays.</p>
       <div class="ob-grid">${Object.values(TRAITS).map((trait) => `<button type="button" class="ob-card" data-trait="${esc(trait.id)}" data-key="trait:${esc(trait.id)}" aria-pressed="${draft.traits.includes(trait.id)}"><span class="ob-card-icon" aria-hidden="true">${trait.icon}</span><strong>${esc(trait.label)}</strong><small>${esc(trait.blurb)}</small><ul>${trait.effects.map((line) => `<li>${esc(line)}</li>`).join('')}</ul></button>`).join('')}</div>
       <p class="preview-note">Trait strengths are original beta values. Picking a third trait swaps out your first pick.</p>
-      ${primary(left > 0 ? `Choose ${left} more` : 'Continue', { action: 'traits', disabled: left > 0 })}`;
+      ${primary(left > 0 ? `Choose ${left} more` : 'Next: your dream', { action: 'traits', disabled: left > 0, why: left > 0 ? `${draft.traits.length} of ${TRAITS_REQUIRED} traits chosen.` : '' })}`;
   }
   if (shown === 2) {
     return `<p class="ob-lead">What is ${esc(name)}’s big dream?</p>
       <div class="ob-list">${Object.values(DREAMS).map((dream) => `<button type="button" class="ob-card is-row" data-dream="${esc(dream.id)}" data-key="dream:${esc(dream.id)}" aria-pressed="${draft.dream === dream.id}"><span class="ob-card-icon" aria-hidden="true">${dream.icon}</span><span><strong>${esc(dream.label)}</strong><small>${esc(dream.goal)}</small><small class="ob-faint">${esc(dream.measure)}</small></span></button>`).join('')}</div>
-      ${primary(draft.dream ? 'Continue' : 'Choose a dream', { action: 'dream', disabled: !draft.dream })}`;
+      ${primary(draft.dream ? 'Next: birth lottery' : 'Choose a dream', { action: 'dream', disabled: !draft.dream, why: draft.dream ? '' : 'Tap one of the dreams above to continue.' })}`;
   }
   if (shown === 3) {
     const outcome = o.lottery;
@@ -61,7 +64,7 @@ function stepBody(state, view) {
     <div class="ob-list">${o.homes.map((home) => `<button type="button" class="ob-card is-row ob-home" data-house="${esc(home.id)}" data-key="house:${esc(home.id)}" aria-pressed="${draft.house === home.id && !home.locked}" ${home.locked ? 'disabled' : ''}><span class="ob-card-icon" aria-hidden="true">${home.icon}</span><span><em class="ob-tag">${esc(home.tag)}</em><strong>${esc(home.label)} · ${esc(home.district)}</strong><small>${esc(home.blurb)}</small>${home.locked
     ? `<small class="ob-locked">🔒 ${esc(home.locked)}</small>`
     : `<small class="ob-money">Start with ${money(home.startCash)} · rent ${money(home.rent)} a week</small>`}</span></button>`).join('')}</div>
-    ${primary(chosen ? 'Move in' : 'Choose a home', { action: 'home', disabled: !chosen })}`;
+    ${primary(chosen ? `Move in to ${chosen.label}` : 'Choose a home', { action: 'home', disabled: !chosen, why: chosen ? '' : 'Tap one of the homes above to continue.' })}`;
 }
 
 export default {
@@ -75,9 +78,10 @@ export default {
       return `<div class="ob-root ob-done"><div class="look-stage">${avatarSvg(o.look, { size: 120 })}</div><h3>${esc(view.name)} is ready</h3><p>${o.legacy ? 'This life started before character creation existed, so nothing was changed.' : 'Your Sim has moved in.'} You can change your look any time in Sim → Profile.</p><button type="button" class="ui-button is-primary" data-open="profile">Edit look</button> <button type="button" class="ui-button" data-close>Close</button></div>`;
     }
     sync(state, view);
-    const steps = ONBOARDING_STEPS.map((step, index) => `<li class="${index < o.step ? 'is-done' : ''} ${index === shown ? 'is-current' : ''}" ${index === shown ? 'aria-current="step"' : ''}><span>${esc(step.label)}</span></li>`).join('');
+    // Every step is numbered and named; finished ones are ticked and the current one is spelled out.
+    const steps = ONBOARDING_STEPS.map((step, index) => `<li class="${index < o.step ? 'is-done' : ''} ${index === shown ? 'is-current' : ''}" ${index === shown ? 'aria-current="step"' : ''}><i aria-hidden="true">${index < o.step && index !== shown ? '✓' : index + 1}</i><span>${esc(step.label)}</span></li>`).join('');
     const offline = view.connected ? '' : '<p class="ob-error" role="alert">You are offline. Your choices are kept here, but nothing is saved until you reconnect.</p>';
-    return `<div class="ob-root"><div class="ob-head">${shown > 0 ? `<button type="button" class="sheet-back" data-ob="back" data-key="back" aria-label="Back to ${esc(ONBOARDING_STEPS[shown - 1].label)}">${icon('back')}</button>` : '<span class="ob-head-gap"></span>'}<div><strong>Step ${shown + 1} of ${ONBOARDING_STEPS.length} · ${esc(ONBOARDING_STEPS[shown].label)}</strong><ol class="ob-steps" aria-label="Progress">${steps}</ol></div>${shown === 0 ? `<button type="button" class="ui-button ob-shuffle" data-ob="shuffle" data-key="shuffle" ${pending ? `disabled title="${esc(pending)}"` : ''}>🎲 Shuffle</button>` : ''}</div>
+    return `<div class="ob-root"><div class="ob-head">${shown > 0 ? `<button type="button" class="sheet-back" data-ob="back" data-key="back" aria-label="Back to ${esc(ONBOARDING_STEPS[shown - 1].label)}">${icon('back')}</button>` : ''}<div class="ob-head-main"><strong>Step ${shown + 1} of ${ONBOARDING_STEPS.length} · ${esc(ONBOARDING_STEPS[shown].label)}</strong><ol class="ob-steps" aria-label="Progress">${steps}</ol></div>${shown === 0 ? `<button type="button" class="ui-button ob-shuffle" data-ob="shuffle" data-key="shuffle" ${pending ? `disabled title="${esc(pending)}"` : ''}>🎲 Shuffle</button>` : ''}</div>
       ${offline}${error ? `<p class="ob-error" role="alert">${esc(error)}</p>` : ''}${stepBody(state, view)}</div>`;
   },
   bind(root, api) {

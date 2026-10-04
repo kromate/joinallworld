@@ -48,7 +48,7 @@ const profile = {
     const create = o.done ? '' : '<p class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" data-open="onboarding">Create your Sim</button></p>';
     return `<form class="sim-profile" data-profile novalidate>${create}<div class="sim-profile-top"><div class="look-stage">${avatarSvg(draft.look, { size: 110 })}</div><div><label class="sim-field">Display name<input name="name" maxlength="24" autocomplete="nickname" value="${esc(draft.name)}" data-key="name"></label><p class="sim-hint">${esc(view.city.name)} · shown to other players. 3–24 characters.</p><ul class="sim-about">${about}</ul></div></div>
       <h3>Appearance</h3><p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>${lookEditor(draft.look, { owned: o.wardrobe })}
-      ${error ? `<p class="sim-error" role="alert">${esc(error)}</p>` : ''}<button class="ui-button is-primary sim-save" data-save data-key="save" ${save.disabled ? 'disabled' : ''}>${esc(save.label)}</button></form>`;
+      ${error ? `<p class="sim-error" role="alert">${esc(error)}</p>` : ''}<div class="sim-save-bar"><button class="ui-button is-primary sim-save" data-save data-key="save" ${save.disabled ? 'disabled' : ''}>${esc(save.label)}</button></div></form>`;
   },
   bind(root, api) {
     const form = root.querySelector('[data-profile]');

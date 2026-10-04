@@ -55,7 +55,7 @@ import type { GrowthCollection, RouteContext, SessionRecord, WsConnection } from
 export const TUNING = { botDelayMs: 900, awayForfeitMs: 120000, resetMs: 45000, missesToForfeit: 3, maxSockets: 40, logLines: 30, minMovesEach: 2, keepAwakeMs: 45000 };
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const refuse = (code: string, reason: string) => Object.assign(new Error(code), { reason });
-const ready = (state: LifeState | null | undefined): state is LifeState => state !== undefined && state !== null && !(state.onboarding?.required === true && state.onboarding.done !== true);
+const ready = (state: LifeState | null | undefined): state is LifeState => Boolean(state) && !(state?.onboarding?.required === true && state.onboarding.done !== true);
 const messageOf = (error: unknown): unknown => (typeof error === 'object' && error !== null && 'message' in error ? error.message : undefined);
 
 // ---- one game, with its state type hidden ---------------------------------------------------------
@@ -67,6 +67,8 @@ const messageOf = (error: unknown): unknown => (typeof error === 'object' && err
 /** A move already read by its game's parseMove: it can be described and played, and has a JSON form for retry detection. */
 interface ParsedMove {
   readonly json: string
+  /** What the retry check compares with the last move's `json`: JSON.stringify of the parsed move itself, which is undefined for an undefined move (so such a move is never taken as a retry), as before. */
+  readonly retryKey: string | undefined
   /** The log line for this move by `seat`, from the state before it. */
   describe(seat: number): string
   /** Apply it (the rules throw RulesError for an illegal one); returns the log lines it earned: the move itself, then any report. */
@@ -106,13 +108,17 @@ function gameOf<State extends TableState, Move, View>(rules: TableRules<State, M
       let state: State = rules.start(seats, rng, cleanOptions(rules, options));
       const parseMove = (input: unknown): ParsedMove => {
         const move = rules.parseMove(input);
+        // JSON.stringify(undefined) is undefined at run time though typed string.
+        const retryKey: string | undefined = JSON.stringify(move);
         return {
           json: JSON.stringify(move ?? null),
+          retryKey,
           describe: (seat) => rules.describe(state, seat, move),
           play(seat, moveRng) {
             const line = rules.describe(state, seat, move), before = state;
             state = rules.apply(before, seat, move, moveRng);
-            return [line, ...(rules.report?.(before, state) ?? [])];
+            // An empty description logs the clock line, as before.
+            return [line || `{${seat}} ran out of time`, ...(rules.report?.(before, state) ?? [])];
           },
         };
       };
@@ -317,8 +323,9 @@ function buildService(ctx: RouteContext) {
   /** The match is over: say so, and record what it earned — once, in one saved transaction. */
   async function finish(table: Table): Promise<void> {
     const match = matchOf(table), outcome = match.engine.outcome(), t = now();
-    if (!outcome) return; // pump only calls this once the rules say the game is over
     table.status = 'over'; table.endedAt = t;
+    // pump only calls this once the rules say the game is over; the original read `outcome.reason` here and threw.
+    if (!outcome) throw new Error(`Table ${table.key} finished without an outcome`);
     const humans = table.seats.map((seat, index) => ({ seat, index })).filter(({ seat }) => !seat.bot);
     // Moves a player really made: one the clock made for them does not count as playing.
     const calledOff = outcome.reason === 'forfeit' && humans.some(({ seat }) => (seat.moves ?? 0) < TUNING.minMovesEach);
@@ -445,8 +452,9 @@ function buildService(ctx: RouteContext) {
       if (table.seats.length + bots < table.game.seats.min) throw refuse('need_players', `This game needs ${table.game.seats.min} players. Wait for someone, or play with a bot.`);
       for (let i = 0; i < bots; i++) table.seats.push({ id: `bot-${i}`, name: `${BOT_NAMES[i]} (bot)`, bot: true, away: 0 });
       const seed = `${ctx.randomId()}${ctx.randomId()}`;
+      const matchId = ctx.randomId();
       const engine = table.game.start(table.seats.length, makeRng(`${seed}|deal`), table.options);
-      const match: Match = { id: ctx.randomId(), seed, n: 0, log: [], last: null, deadline: now() + table.game.turnSeconds * 1000, botAt: null, engine };
+      const match: Match = { id: matchId, seed, n: 0, log: [], last: null, deadline: now() + table.game.turnSeconds * 1000, botAt: null, engine };
       table.match = match; table.status = 'playing'; table.result = null;
       for (const seat of table.seats) { seat.misses = 0; seat.moves = 0; seat.left = false; }
       match.botAt = engine.toMove().some((index) => seatOf(table, index).bot) ? now() + TUNING.botDelayMs : null;
@@ -468,7 +476,7 @@ function buildService(ctx: RouteContext) {
       let move: ParsedMove;
       try { move = match.engine.parseMove(message.move); } catch (error) { if (error instanceof RulesError) throw refuse('invalid_move', error.message); throw error; }
       // A retry of the move just made: answer with the state as it is and apply nothing.
-      if (n === match.n - 1 && match.last?.seat === seat && match.last.n === n && match.last.move === move.json) { ctx.send(ws, { ...stateFor(table, id), repeat: true }); return; }
+      if (n === match.n - 1 && match.last?.seat === seat && match.last.n === n && match.last.move === move.retryKey) { ctx.send(ws, { ...stateFor(table, id), repeat: true }); return; }
       if (n !== match.n) throw refuse('stale_move', 'The game moved on before that reached the table. Look again and play.');
       if (!match.engine.toMove().includes(seat)) throw refuse('not_your_turn', 'It is not your turn.');
       try { applyMove(table, seat, move); } catch (error) { if (error instanceof RulesError) throw refuse('illegal_move', error.message); throw error; }

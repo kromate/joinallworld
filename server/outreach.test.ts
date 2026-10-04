@@ -288,6 +288,10 @@ test('provider failures: a 4xx is never retried, a 5xx and a timeout are retried
   assert.deepEqual(await attempt([500]), [false, RETRIES, 'http_500']);
   assert.deepEqual(await attempt([Object.assign(new Error('x'), { name: 'TimeoutError' })]), [false, RETRIES, 'timeout']);
   assert.deepEqual(await attempt([new Error('socket')]), [false, RETRIES, 'network']);
+  // An answer without a numeric status was never a thrown network error: it is neither success nor an HTTP code, and is retried.
+  const noStatus = await sendMail({ env, fetch: async () => ({}) }, { to: 'ada@example.com', subject: 's', text: 't', html: '<p>t</p>' }, { pause: async () => {} });
+  assert.deepEqual([noStatus.ok, noStatus.status, noStatus.attempts, noStatus.error], [false, undefined, RETRIES, 'http_undefined']);
+  assert.deepEqual(await attempt([new Error('socket')]), [false, RETRIES, 'network'], 'a rejected fetch is still a network error');
   assert.deepEqual(await sendMail({ env: () => '', fetch: async () => { throw new Error('must not be called'); } }, { to: 'a@b.cd', subject: 's', text: 't', html: 't' }), { ok: false, status: 0, attempts: 0, error: 'not_configured' });
 
   // Through the server: the provider refuses the digest. It is logged as failed with the status only, and not tried again that day.
@@ -377,6 +381,14 @@ test('push: adults only and only on request; the same rules and exactly-once; a 
   const outcome = async (status: number | Error, headers: Record<string, string> = {}) => sendPush({ now: () => 1700000000000, fetch: async () => { if (status instanceof Error) throw status; return { status, headers: new Map(Object.entries(headers)) }; } }, sub, { title: 't' }, { keys, subject: 'mailto:a@b.cd' });
   assert.deepEqual([await outcome(201), await outcome(404), await outcome(410), await outcome(429, { 'retry-after': '30' }), await outcome(400), await outcome(503), (await outcome(new Error('down'))).retry],
     [{ ok: true }, { ok: false, gone: true, status: 404 }, { ok: false, gone: true, status: 410 }, { ok: false, status: 429, retryAfter: 30 }, { ok: false, status: 400 }, { ok: false, retry: true, status: 503 }, true]);
+});
+
+test('sendPush: an answer without a numeric status fails as it did, without being a retryable network error', async () => {
+  const keys = await generateKeys(), sub = must(cleanSubscription(subscription()), 'a subscription');
+  const send = (answer: unknown) => sendPush({ now: () => 1700000000000, fetch: async () => answer }, sub, { title: 't' }, { keys, subject: 'mailto:a@b.cd' });
+  assert.deepEqual(await send({}), { ok: false, status: undefined });
+  assert.deepEqual(await send({ status: 'nope' }), { ok: false, status: undefined });
+  assert.equal((await send(null)).retry, true, 'a null answer is still a network failure');
 });
 
 test('templates: plain text and HTML say the same, everything is escaped, and the WhatsApp Channel link is shown only when it is one', async (t) => {

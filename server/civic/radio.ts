@@ -22,7 +22,10 @@ export function validateSong(input: unknown): { ok: false; code: string; reason:
   return { ok: true, song: { title: title.text, artist: artist.text } };
 }
 
-const pending = (city: CivicCityRecord, venueId: string, now: number): ShoutoutRecord[] => (city.radio.queues[venueId] ?? []).filter((entry) => entry.endsAt > now);
+const pending = (city: CivicCityRecord, venueId: string, now: number): ShoutoutRecord[] => {
+  const queue: unknown = city.radio.queues[venueId];
+  return (Array.isArray(queue) ? (queue as ShoutoutRecord[]) : []).filter((entry) => entry.endsAt > now);
+};
 const dailyCount = (city: CivicCityRecord, playerId: string, day: number): number => {
   const entry = city.radio.daily[playerId];
   return entry && entry.day === day ? entry.n : 0;

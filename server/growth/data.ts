@@ -61,21 +61,24 @@ export function sweep(g: GrowthCollection, now: number): void {
   if (now - g.sweptAt < LIMITS.sweepMs) return;
   g.sweptAt = now;
   const oldShare = now - LIMITS.shareDays * 86400000, idle = now - LIMITS.idleDays * 86400000;
-  for (const [code, share] of Object.entries(g.shares)) if (!(share.at >= oldShare)) delete g.shares[code];
+  for (const [code, share] of Object.entries(g.shares)) if (!(((share as GrowthCollection['shares'][string] | null | undefined)?.at ?? NaN) >= oldShare)) delete g.shares[code];
   for (const [id, player] of Object.entries(g.players)) {
-    if (player.seen >= idle) continue;
+    if (((player as GrowthCollection['players'][string] | null | undefined)?.seen ?? NaN) >= idle) continue;
     delete g.players[id];
   }
 }
 
 /**
  * An answer to ctx.fetch (typed `unknown` there) as the part of a Response the senders read.
- * Throws like reading `.status` of a non-object always did, so the callers' catch still answers 'network'.
+ * Throws only for null/undefined (reading `.status` of those always threw, so the callers' catch answers 'network');
+ * any other value without a numeric status yields `status: undefined`, as before.
  */
 export function outboundResponse(value: unknown): OutboundResponse {
-  if (value === null || typeof value !== 'object' || !('status' in value) || typeof value.status !== 'number') throw new TypeError('The outside request did not answer with a response');
+  if (value === null || value === undefined) throw new TypeError('The outside request did not answer with a response');
+  const status = typeof value === 'object' && 'status' in value && typeof value.status === 'number' ? value.status : undefined;
+  if (typeof value !== 'object') return { status };
   const source = 'headers' in value ? value.headers : undefined;
   const get = source !== null && typeof source === 'object' && 'get' in source ? source.get : undefined;
-  if (typeof get !== 'function') return { status: value.status };
-  return { status: value.status, headers: { get: (name: string): string | null => { const found: unknown = Reflect.apply(get, source, [name]); return typeof found === 'string' ? found : null; } } };
+  if (typeof get !== 'function') return { status };
+  return { status, headers: { get: (name: string): string | null => { const found: unknown = Reflect.apply(get, source, [name]); return typeof found === 'string' ? found : null; } } };
 }

@@ -24,9 +24,8 @@ export function validateCreative(input: unknown): { ok: false; code: string; rea
   const line = cleanLine(field(input, 'text'), { min: AD_TEXT.min, max: AD_TEXT.max, what: 'Ad text' });
   if (!line.ok) return line;
   const colour = field(input, 'colour'), icon = field(input, 'icon');
-  if (typeof colour !== 'string' || typeof icon !== 'string') return { ok: false, code: 'invalid_colour', reason: 'Choose one of the listed colours.' };
-  if (!AD_COLOURS.some((item) => item.id === colour)) return { ok: false, code: 'invalid_colour', reason: 'Choose one of the listed colours.' };
-  if (!AD_ICONS.some((item) => item.id === icon)) return { ok: false, code: 'invalid_icon', reason: 'Choose one of the listed icons.' };
+  if (typeof colour !== 'string' || !AD_COLOURS.some((item) => item.id === colour)) return { ok: false, code: 'invalid_colour', reason: 'Choose one of the listed colours.' };
+  if (typeof icon !== 'string' || !AD_ICONS.some((item) => item.id === icon)) return { ok: false, code: 'invalid_icon', reason: 'Choose one of the listed icons.' };
   return { ok: true, creative: { text: line.text, colour, icon } };
 }
 

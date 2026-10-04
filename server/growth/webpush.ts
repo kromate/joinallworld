@@ -131,9 +131,10 @@ export async function sendPush(
     const response: OutboundResponse = outboundResponse(await ctx.fetch(subscription.endpoint, { method: 'POST', body, signal: globalThis.AbortSignal?.timeout?.(10000),
       headers: { Authorization: await vapidAuthorization(subscription.endpoint, keys, subject, ctx.now()), 'Content-Encoding': 'aes128gcm', 'Content-Type': 'application/octet-stream',
         TTL: String(ttl), Urgency: urgency, ...(topic ? { Topic: topic } : {}) } }));
-    if (response.status >= 200 && response.status < 300) return { ok: true };
-    if (response.status === 404 || response.status === 410) return { ok: false, gone: true, status: response.status };
-    if (response.status === 429) { const wait = Number(response.headers?.get('retry-after')); return { ok: false, status: 429, retryAfter: Number.isFinite(wait) && wait > 0 ? Math.min(wait, 86400) : 60 }; }
-    return response.status >= 500 ? { ok: false, retry: true, status: response.status } : { ok: false, status: response.status };
+    const status = response.status;
+    if (status !== undefined && status >= 200 && status < 300) return { ok: true };
+    if (status === 404 || status === 410) return { ok: false, gone: true, status };
+    if (status === 429) { const wait = Number(response.headers?.get('retry-after')); return { ok: false, status: 429, retryAfter: Number.isFinite(wait) && wait > 0 ? Math.min(wait, 86400) : 60 }; }
+    return status !== undefined && status >= 500 ? { ok: false, retry: true, status } : { ok: false, status };
   } catch (error) { return { ok: false, retry: true, status: 0, error: String((error instanceof Error ? error.name : undefined) || 'network') }; }
 }

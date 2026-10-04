@@ -205,6 +205,8 @@ test('election life actions are server-only and local receipts have no cash effe
   assert.equal(p.act('unilag.election.nominate', {}, { internal: true }).code, 'already_candidate');
   p.at(localAt(3, 10));
   assert.equal(p.act('unilag.election.vote', { candidate: '__proto__' }, { internal: true }).code, 'invalid_candidate');
+  // A non-string id is refused: the JavaScript coerced it (PUBLIC_ID.test(12) read "12"); the typed guard needs a string. Intentional.
+  assert.equal(p.act('unilag.election.vote', { candidate: 12 }, { internal: true }).code, 'invalid_candidate');
   assert.equal(p.act('unilag.election.vote', { candidate: 'ada' }, { internal: true }).code, 'voted');
   assert.equal(p.act('unilag.election.vote', { candidate: 'bola' }, { internal: true }).code, 'already_voted');
   assert.equal(p.state.cash, cash);

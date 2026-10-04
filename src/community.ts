@@ -639,7 +639,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     destroyed = true
     if (reconnectTimer !== null) clearTimeout(reconnectTimer)
     leaveVoice()
-    if (socket) { socket.onclose = null; socket.onmessage = null; socket.close(); socket = null }
+    if (socket) { socket.onopen = null; socket.onclose = null; socket.onmessage = null; socket.onerror = null; socket.close(); socket = null }
     cleanups.forEach((remove) => remove())
     members = []; memberRows = []; announce(); emit(); listeners.clear()
   }

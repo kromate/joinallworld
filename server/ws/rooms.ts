@@ -198,7 +198,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   /** The stored life of a session in the city a room key names, if that is one of the server's cities. */
   const lifeIn = (session: SessionRecord, city: string): LifeState | undefined => {
     const cityId = ctx.cityIds.find((item) => item === city);
-    return cityId === undefined ? undefined : session.cities[cityId]?.state;
+    return cityId === undefined ? undefined : (session.cities as SessionRecord['cities'] | undefined)?.[cityId]?.state;
   };
   /**
    * Until when (server ms) is this player an accepted guest of that host, or 0 if they are not.

@@ -57,7 +57,7 @@ const SESSION_GAP_MS = 30 * 60000;
 const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const AGES: readonly ConsentView['age'][] = ['adult', 'minor'];
 
-const ready = (state: LifeState | undefined): boolean => state !== undefined && !(state.onboarding?.required === true && state.onboarding.done !== true);
+const ready = (state: LifeState | null | undefined): boolean => Boolean(state) && !(state?.onboarding?.required === true && state.onboarding.done !== true);
 /** What the caller may see of their own consent. */
 const consentView = (player: GrowthPlayerRecord | null | undefined): ConsentView | null => (player?.consent ? { age: player.consent.age, push: player.consent.push === true, email: player.consent.email === true, at: player.consent.at } : null);
 

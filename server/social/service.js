@@ -141,8 +141,9 @@ export function socialService(ctx) {
 
   /** Register/refresh the caller, run housekeeping and apply anything owed to their life. */
   function enter(db, session) {
-    // A session whose lives must all still be created has not arrived in any city: it is not
-    // registered as a player, so nobody can find, message or befriend it yet.
+    // A session whose lives are all still held for the quick start (state.onboarding.required: Play has not
+    // been confirmed) has not arrived in any city: it is not registered as a player, so nobody can find,
+    // message or befriend it yet. A guest who has tapped Play is in the city like anyone else.
     const lives = Object.values(session.cities || {}).map((entry) => entry?.state?.onboarding).filter(Boolean);
     if (lives.length ? lives.every((o) => o.required === true && o.done !== true) : session.onboarding === true) throw ctx.fail(403, 'onboarding_required');
     const s = col(db), id = session.publicId, t = now();
@@ -192,7 +193,7 @@ export function socialService(ctx) {
   function act(session, cityId, op, payload, actionId, guard) {
     return ctx.act(ctx.settle(session, cityId), { type: 'social.server', cityId, actionId, payload: { ...payload, op }, ...(guard ? { stateGuard: guard } : {}) });
   }
-  /** Has this session a created life in that city? (A life still in character creation does not count.) */
+  /** Has this session a life in that city that has arrived? (One still held for the quick start does not count; a guest who is playing does.) */
   const hasLife = (session, cityId) => {
     const state = session?.cities?.[cityId]?.state;
     return Boolean(state) && !(state.onboarding?.required === true && state.onboarding.done !== true);

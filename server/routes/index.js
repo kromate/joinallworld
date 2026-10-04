@@ -144,6 +144,9 @@
  *                                          HTML page outside /api/ (the link-preview page /s/<code>). No script may run on it and it
  *                                          sets no cookie; `origin` is PUBLIC_ORIGIN or the request's own host. Absent on a host
  *                                          that does not serve pages (use ctx.pages?.set).
+ *   ctx.env(name) / ctx.fetch / ctx.keyFile(name, make)   for the one module that reaches outside the game (server/growth/
+ *                                          outreach.js): a fixed list of settings, an outside request, and a secret this server makes
+ *                                          for itself and keeps in DATA_DIR/keys with mode 0600. A page may also be POSTed to (`method`).
  *   ctx.startup                            array of promises the host awaits before it takes requests
  *                                          (a module loading an in-memory index pushes its load here)
  *   ctx.randomId()                         a random UUID (for salts and ids; not a clock, not a secret store)

@@ -234,11 +234,9 @@ test('consent: the age question comes first, under-18 is never offered outside m
   const ada = await player('Ada', 1), kid = await player('Kid', 2);
   assert.equal((await post('/api/growth/consent', { cityId: 'lagos', push: true }, ada)).status, 400, 'no age, no consent');
   assert.equal((await post('/api/growth/consent', { cityId: 'lagos', age: 'adult', push: 'yes' }, ada)).status, 400);
-  const adult = await post('/api/growth/consent', { cityId: 'lagos', age: 'adult', push: true }, ada);
-  assert.deepEqual([adult.ok, adult.consent.age, adult.consent.push, adult.consent.email], [true, 'adult', true, false]);
-  assert.equal((await hello(ada, 1)).consent.push, true);
-  const off = await post('/api/growth/consent', { cityId: 'lagos', age: 'adult' }, ada);
-  assert.deepEqual([off.consent.push, off.consent.email], [false, false], 'leaving a channel out switches it off');
+  const adult = await post('/api/growth/consent', { cityId: 'lagos', age: 'adult', push: true, email: true }, ada);
+  assert.deepEqual([adult.ok, adult.consent.age, adult.consent.push, adult.consent.email], [true, 'adult', false, false], 'saying the age switches nothing on: each channel has its own step');
+  assert.deepEqual([(await hello(ada, 1)).consent.push, (await hello(ada, 1)).contact.email], [false, null]);
   const minor = await post('/api/growth/consent', { cityId: 'lagos', age: 'minor', push: true, email: true }, kid);
   assert.deepEqual([minor.ok, minor.code, minor.consent.push, minor.consent.email], [false, 'under_18', false, false]);
   const retry = await post('/api/growth/consent', { cityId: 'lagos', age: 'adult', email: true }, kid);

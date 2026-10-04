@@ -7,9 +7,14 @@
  *
  *   GET /api/mod/growth/metrics?days=    daily totals and retention cohorts (server/growth/metrics.js).
  *                                        Carries no player id, no address and nothing a player typed.
+ *   GET /api/mod/growth/outreach         e-mail and push: configured or dry-run, opt-ins, sent today against the cap, the last
+ *                                        error, the last 100 log lines and the last dry-run previews. No address, endpoint or id.
+ *   POST /api/mod/growth/outreach/switch { channel: 'email' | 'push', off: boolean }   the kill switch of one channel
+ *   POST /api/mod/growth/outreach/run    {}   run the schedule now
  */
 import { growthOf } from '../growth/data.js';
 import { report } from '../growth/metrics.js';
+import { outreachService } from '../growth/outreach.js';
 
 const FAILED_PER_ADDRESS = 10, FAILED_TOTAL = 100, FAILED_WINDOW_MS = 600000, OPERATOR_PER_MINUTE = 60;
 
@@ -30,7 +35,12 @@ export function operatorGuard(ctx) {
 
 export default function growthOperatorRoutes(ctx) {
   const operator = operatorGuard(ctx);
+  const outreach = outreachService(ctx);
   return {
+    'GET /api/mod/growth/outreach': operator((db) => outreach.operatorView(growthOf(ctx, db))),
+    'POST /api/mod/growth/outreach/switch': operator((db, request, body) => outreach.setSwitch(growthOf(ctx, db), body.channel, body.off), { write: true }),
+    // Run the schedule now instead of at the next minute (the same rules, caps and quiet hours apply).
+    'POST /api/mod/growth/outreach/run': async (request) => { const guarded = await operator(() => ({}))(request); return { ...guarded, body: await outreach.tick({ force: true }) }; },
     'GET /api/mod/growth/metrics': operator((db, request) => {
       const days = Number(request.query.get('days'));
       return report(growthOf(ctx, db), ctx.now(), { days: Number.isSafeInteger(days) && days > 0 ? days : 35 });

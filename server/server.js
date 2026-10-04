@@ -6,7 +6,7 @@
  */
 import http from 'node:http';
 import { randomUUID, createHash, timingSafeEqual } from 'node:crypto';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile, stat, writeFile, mkdir, chmod } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -60,6 +60,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   voteCapMode = process.env.VOTE_CAP_MODE || 'flag',
   log = (line) => console.error(line),
   receiptLimits, // { perPlayer, global, lightPerPlayer, lightGlobal } for ctx.once (server/routes/once.js); the defaults are the documented numbers
+  env = process.env, // where ctx.env reads the outreach settings from (a test passes its own object)
+  fetch: outbound = globalThis.fetch, // the one way a module makes an outside request (a test passes a fake)
   publicOrigin: givenOrigin = process.env.PUBLIC_ORIGIN, // e.g. https://play.example — used for absolute links in previews
   buildId = process.env.BUILD_ID || packageVersion() } = {}) {
   const configuredOrigin = typeof givenOrigin === 'string' && /^https?:\/\/[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(givenOrigin) ? givenOrigin : '';
@@ -97,6 +99,22 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // Rotate credentials created by versions that exposed the cookie as a public ID.
     for (const secret of sessionKeys(db, session => !session.publicId || !Number.isFinite(session.expiresAt) || session.expiresAt <= now())) archiveSession(db, secret, db.sessions[secret]);
   });
+  const OUTREACH_ENV = ['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'EMAIL_FROM_NAME', 'EMAIL_CONTACT_LINE', 'EMAIL_DAILY_CAP', 'WHATSAPP_CHANNEL_URL', 'VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT', 'PUSH_DAILY_CAP'];
+  const keyFiles = new Map();
+  /** A secret made once by `make()` and kept beside the data file, readable by the server's user only. Never logged. */
+  function keyFile(name, make) {
+    if (!/^[a-z][a-z0-9-]{0,31}$/.test(name)) return Promise.reject(new Error('Invalid key file name'));
+    if (!keyFiles.has(name)) keyFiles.set(name, (async () => {
+      const dir = resolve(dataDir, 'keys'), file = resolve(dir, `${name}.json`);
+      try { return JSON.parse(await readFile(file, 'utf8')); } catch { /* not made yet */ }
+      const value = await make();
+      await mkdir(dir, { recursive: true, mode: 0o700 });
+      await writeFile(file, JSON.stringify(value), { mode: 0o600 });
+      await chmod(file, 0o600);
+      return value;
+    })().catch((error) => { keyFiles.delete(name); throw error; }));
+    return keyFiles.get(name);
+  }
   const limits = new Map();
   /**
    * In-memory rate limiter: at most `count` calls per `windowMs` for one key. Each entry remembers its
@@ -233,18 +251,21 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (sent && typeof result.after === 'function') { try { await result.after(); } catch (error) { log(`After-response step of ${req.method} ${route.key} failed: ${firstLine(error)}`); } }
         return;
       }
-      if (!['GET', 'HEAD'].includes(req.method)) throw fail(405, 'method_not_allowed');
+      const paged = [...ctx.pages.keys()].some(prefix => url.pathname.startsWith(prefix));
+      if (!['GET', 'HEAD'].includes(req.method) && !(paged && req.method === 'POST')) throw fail(405, 'method_not_allowed');
       // PAGES: a module may serve one small HTML page for a path prefix outside /api/ (ctx.pages — the link-preview
       // page /s/<code>, routes/growth.js). The page gets the path, the query and the public origin, never the request;
       // it may not set cookies, and it is sent with a policy that allows no script at all.
       for (const [prefix, render] of ctx.pages) {
         if (!url.pathname.startsWith(prefix)) continue;
         if (!allow(`http:${addressOf(req)}`, 600)) throw fail(429, 'rate_limited');
-        const page = await render({ path: url.pathname, query: url.searchParams, origin: publicOrigin(req), ip: addressOf(req) });
-        if (!page || typeof page.html !== 'string') break;
+        // A POST to a page carries no body the page may read (the one use is an unsubscribe link: RFC 8058 posts a fixed form).
+        if (req.method === 'POST') req.resume();
+        const page = await render({ path: url.pathname, query: url.searchParams, origin: publicOrigin(req), ip: addressOf(req), method: req.method });
+        if (!page || typeof page.html !== 'string') { if (req.method === 'POST') throw fail(405, 'method_not_allowed'); break; }
         if (res.headersSent || res.writableEnded) return;
-        res.writeHead(Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=300',
-          'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'" });
+        res.writeHead(Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': page.cache === false || req.method === 'POST' ? 'no-store' : 'public, max-age=300',
+          'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'self'" });
         res.end(req.method === 'HEAD' ? undefined : page.html);
         return;
       }
@@ -328,7 +349,15 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     checks: {},
     // Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })).
     pages: new Map(),
-    config: { sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
+    // OUTSIDE THE GAME (server/growth/outreach.js). Three small capabilities, so that module stays free of Node built-ins:
+    //   env(name)          one of the settings below, or '' — nothing else of the environment is reachable
+    //   fetch(url, init)   an outside request (the mail provider, a browser's push service)
+    //   keyFile(name, make) → Promise<object>   a secret this server makes for itself (signing key, push keys), kept in
+    //                      DATA_DIR/keys/<name>.json with file mode 0600 and never in the data file or a response
+    env: (name) => (OUTREACH_ENV.includes(name) && typeof env?.[name] === 'string' ? env[name] : ''),
+    fetch: (...args) => outbound(...args),
+    keyFile,
+    config: { publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup: [],
     core: {

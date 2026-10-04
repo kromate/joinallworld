@@ -17,7 +17,13 @@
  *   POST /api/growth/share          { cityId, kind, event? }   make (or find again) a share link of the caller's own facts
  *   GET  /api/growth/share/:code                          what a link is about (no session needed): kind, the sharer's public id and name
  *   POST /api/growth/referral/link  { cityId, code, device }   attach the caller's new life to the owner of a share link
- *   POST /api/growth/consent        { age, push?, email? }     the age question and what may be sent (nothing is sent by this build's default configuration)
+ *   POST /api/growth/consent        { age, push?: false, email?: false }   the age question; `false` switches a channel off and deletes what it stored
+ *   POST /api/growth/email          { email, consent: true }   store a consented address and send its confirmation (adults only)
+ *   POST /api/growth/email/remove   { cityId }                 delete the caller's address
+ *   GET  /api/growth/push/key                                  the server's VAPID public key
+ *   POST /api/growth/push/subscribe { cityId, subscription, consent: true }   store a browser's push subscription (adults only)
+ *   POST /api/growth/push/unsubscribe { cityId, endpoint? }    delete one or all of the caller's subscriptions
+ *   GET|POST /e/confirm?t=  ·  GET|POST /e/unsub?t=            the pages a link in an e-mail opens (signed token; POST does it)
  *   POST /api/growth/client         { signals: [name] }   a browser says something about itself from a fixed list (metrics only)
  *   GET  /s/<code>                                        the link-preview page (HTML, no script; see server/growth/share.js)
  *
@@ -34,6 +40,8 @@ import { growthOf, playerOf, sweep, LIMITS } from '../growth/data.js';
 import { createShare, findShare, sharePageHtml } from '../growth/share.js';
 import { referralService } from '../growth/referral.js';
 import { CLIENT_SIGNALS, count, prune, touch } from '../growth/metrics.js';
+import { outreachService } from '../growth/outreach.js';
+import { mailPage } from '../growth/email/templates.js';
 
 const SESSION_GAP_MS = 30 * 60000;
 const CITY_NAMES = { lagos: 'Lagos', ibadan: 'Ibadan' };
@@ -45,6 +53,7 @@ const consentView = (player) => (player?.consent ? { age: player.consent.age, pu
 
 export default function growthRoutes(ctx) {
   const referral = referralService(ctx);
+  const outreach = outreachService(ctx);
   const city = (value) => { if (!ctx.cityIds.includes(value)) throw ctx.fail(400, 'invalid_city'); return value; };
 
   /** Authenticate, rate limit, find the caller's created life in the city (never creating one), and run `call`. */
@@ -83,6 +92,25 @@ export default function growthRoutes(ctx) {
     return { status: share ? 200 : 404, html: sharePageHtml(share, code, origin) };
   });
 
+  // The pages a link in an e-mail opens. A GET only ever shows a button: mail scanners follow links, so nothing is
+  // confirmed or removed until the button — or a mail program's one-click unsubscribe (RFC 8058) — POSTs.
+  ctx.pages?.set('/e/', async ({ path, query, ip, method }) => {
+    const value = query.get('t') ?? '', action = `${path}?t=${encodeURIComponent(value)}`;
+    if (!ctx.allow(`growth:mail-page:${ip}`, 30)) return { status: 429, cache: false, html: mailPage({ title: 'Too many tries', text: 'Wait a minute and open the link again.' }) };
+    if (path === '/e/confirm') {
+      if (method !== 'POST') return { cache: false, html: mailPage({ title: 'Confirm your e-mail', text: 'Press the button to let Allworld e-mail you: at most one message a day and three a week.', button: 'Yes, e-mail me', action }) };
+      const done = await outreach.confirmEmail(value);
+      // One answer for every kind of bad link, so a link says nothing about who has an address here.
+      return { status: done.ok ? 200 : 400, cache: false, html: mailPage(done.ok ? { title: 'You are in', text: 'Your e-mail is confirmed. You can switch it off any time in the game: Phone, Stay in touch.' } : { title: 'That link does not work', text: 'It may have expired or already been replaced. Ask for a new one in the game: Phone, Stay in touch.' }) };
+    }
+    if (path === '/e/unsub') {
+      if (method !== 'POST') return { cache: false, html: mailPage({ title: 'Stop Allworld e-mails?', text: 'One tap and your address is deleted. Your game is not affected.', button: 'Unsubscribe', action }) };
+      const done = await outreach.unsubscribe(value);
+      return { status: done.ok ? 200 : 400, cache: false, html: mailPage(done.ok ? { title: 'You are unsubscribed', text: 'Your address has been deleted. Allworld will not e-mail you again.' } : { title: 'That link does not work', text: 'You can also stop e-mails in the game: Phone, Stay in touch.' }) };
+    }
+    return { status: 404, cache: false, html: mailPage({ title: 'Nothing here', text: 'That page does not exist.' }) };
+  });
+
   return {
     'POST /api/growth/hello': route(({ g, session, state, cityId, body }) => {
       const now = ctx.now(), id = session.publicId;
@@ -101,7 +129,8 @@ export default function growthRoutes(ctx) {
       const refs = referral.view(g, id, view.growth);
       const digest = composeDigest({ name: session.name, city: CITY_NAMES[cityId] ?? cityId, missions: view.missions, events,
         referral: { counted: refs.counted, waiting: refs.waiting }, lines: (state.social?.notices ?? []).slice(-6).map((notice) => ({ text: notice.text, at: notice.at, group: 'sim' })) });
-      return { ok: true, material, ...(material ? { state } : {}), away: { hours: Math.round(hoursAway * 10) / 10, since }, referral: refs, consent: consentView(player), events,
+      const out = outreach.mine(g, id);
+      return { ok: true, material, ...(material ? { state } : {}), channel: out.channel, contact: out, away: { hours: Math.round(hoursAway * 10) / 10, since }, referral: refs, consent: consentView(player), events,
         // What a weekly message would say. This build sends nothing outside the game: it is shown in the in-game inbox only.
         digest: { ...digest, delivery: 'dry-run' }, sharesLeft: Math.max(0, LIMITS.sharesPerDay - (player.shares.day === lagosTime(now).day ? player.shares.n : 0)) };
     }, { durable: (result) => result?.material === true }),
@@ -125,16 +154,30 @@ export default function growthRoutes(ctx) {
       for (const key of ['push', 'email']) if (body[key] !== undefined && typeof body[key] !== 'boolean') throw ctx.fail(400, 'invalid_consent');
       // An age once given as under 18 is not raised by asking again on the same life.
       const age = player.consent?.age === 'minor' ? 'minor' : body.age;
-      const wants = { push: body.push === true, email: body.email === true };
-      if (age === 'minor' && (wants.push || wants.email)) {
+      // Saying the age switches nothing on. A channel goes on only by its own step (confirming an address, granting a
+      // notification); `false` here switches one off and deletes what was stored for it.
+      if (age === 'minor' || body.email === false) outreach.dropContact(g, session.publicId, 'removed');
+      if (age === 'minor' || body.push === false) outreach.unsubscribePush(g, session.publicId);
+      if (age === 'minor' && (body.push === true || body.email === true)) {
         if (player.consent?.age !== 'minor') count(g, now, 'consent.minor');
         player.consent = { age, push: false, email: false, at: now };
         return { ok: false, code: 'under_18', reason: 'Messages outside the game are only for players who are 18 or older. Everything inside the game still works.', consent: consentView(player) };
       }
       if (!player.consent || player.consent.age !== age) count(g, now, `consent.${age}`);
-      player.consent = { age, push: age === 'adult' && wants.push, email: age === 'adult' && wants.email, at: now };
+      player.consent = { age, push: age === 'adult' && player.consent?.push === true, email: age === 'adult' && player.consent?.email === true, at: now };
       return { ok: true, code: 'saved', consent: consentView(player) };
     }),
+
+    // E-mail: store a consented address and send its confirmation (double opt-in). See server/growth/outreach.js.
+    'POST /api/growth/email': async (request) => ({ body: await outreach.requestEmail(request, await request.json()), renew: true }),
+    'POST /api/growth/email/remove': route(({ g, session }) => ({ ok: true, code: 'removed', removed: outreach.dropContact(g, session.publicId, 'removed') })),
+    // Web push: the server's public key, then a subscription the browser made with it.
+    'GET /api/growth/push/key': async (request) => {
+      if (!ctx.allow(`growth:push-key:${request.ip}`, 30)) throw ctx.fail(429, 'rate_limited');
+      return { body: { ok: true, publicKey: await outreach.publicKey() }, headers: { 'Cache-Control': 'no-store' } };
+    },
+    'POST /api/growth/push/subscribe': route(({ g, session, body }) => outreach.subscribe(g, session, body)),
+    'POST /api/growth/push/unsubscribe': route(({ g, session, body }) => outreach.unsubscribePush(g, session.publicId, body.endpoint)),
 
     'POST /api/growth/client': async (request) => {
       const body = await request.json();

@@ -1,0 +1,76 @@
+/**
+ * The static head of the game's page and the files a crawler fetches: what index.html says about the game, that its
+ * JSON-LD parses, that the share image really is 1200x630 and small, and that the manifest and robots files agree.
+ */
+import assert from 'node:assert/strict';
+import { readFile, stat } from 'node:fs/promises';
+import { test } from 'node:test';
+import { absolutePreviewImage, SITE_ORIGIN } from './host-context.ts';
+
+const root = new URL('../', import.meta.url);
+const read = (path: string): Promise<string> => readFile(new URL(path, root), 'utf8');
+const tag = (html: string, key: string): string | undefined => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
+
+test('index.html head: one title, one description, a canonical, Open Graph and Twitter tags, robots, icons', async () => {
+  const html = await read('index.html'), head = html.slice(0, html.indexOf('</head>'));
+  assert.match(html, /^<!doctype html><html lang="en">/);
+  const titles = [...head.matchAll(/<title>([^<]*)<\/title>/g)].map(match => match[1] ?? '');
+  assert.equal(titles.length, 1);
+  assert.ok((titles[0] ?? '').length > 10 && (titles[0] ?? '').length <= 60, titles[0]);
+  const description = tag(head, 'description') ?? '';
+  assert.ok(description.length > 50 && description.length <= 155, `${description.length}`);
+  assert.ok(!/joinallworld/i.test(head.replace(/https:\/\/joinallworld\.com/g, '')), 'the player-visible name is Allworld');
+  assert.equal(tag(head, 'robots'), 'index,follow');
+  assert.equal(tag(head, 'theme-color'), '#183b2a');
+  assert.match(head, new RegExp(`<link rel="canonical" href="${SITE_ORIGIN}/">`));
+  const og = Object.fromEntries(['og:title', 'og:description', 'og:type', 'og:url', 'og:site_name', 'og:locale', 'og:image', 'og:image:width', 'og:image:height', 'og:image:alt'].map(key => [key, tag(head, key)]));
+  assert.deepEqual([og['og:type'], og['og:url'], og['og:site_name'], og['og:locale'], og['og:image'], og['og:image:width'], og['og:image:height']],
+    ['website', `${SITE_ORIGIN}/`, 'Allworld', 'en_NG', `${SITE_ORIGIN}/og/allworld.png`, '1200', '630']);
+  assert.equal(og['og:title'], titles[0]); assert.equal(og['og:description'], description); assert.ok(og['og:image:alt']);
+  assert.deepEqual([tag(head, 'twitter:card'), tag(head, 'twitter:title'), tag(head, 'twitter:description'), tag(head, 'twitter:image')], ['summary_large_image', titles[0], description, `${SITE_ORIGIN}/og/allworld.png`]);
+  for (const rel of ['manifest', 'icon', 'apple-touch-icon']) assert.match(head, new RegExp(`<link rel="${rel}" href="/`));
+  assert.match(head, /href="\/favicon\.svg" type="image\/svg\+xml"/); assert.match(head, /href="\/icons\/favicon-32\.png" type="image\/png"/);
+  assert.match(html, /<noscript>.*Allworld.*Lagos.*<\/noscript>/);
+});
+
+test('index.html JSON-LD parses: a VideoGame and a WebSite', async () => {
+  const html = await read('index.html');
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)].map(match => JSON.parse(match[1] ?? '') as Record<string, unknown>[]);
+  const [game, site] = blocks.flat();
+  assert.equal(blocks.length, 1);
+  assert.ok(game && site);
+  assert.deepEqual([game['@type'], game.name, game.gamePlatform, game.applicationCategory, game.operatingSystem, game.inLanguage], ['VideoGame', 'Allworld', 'Web browser', 'Game', 'Any', 'en']);
+  assert.deepEqual([(game.offers as { price: string }).price, game.url, game.image], ['0', `${SITE_ORIGIN}/`, `${SITE_ORIGIN}/og/allworld.png`]);
+  assert.ok(typeof game.description === 'string' && game.genre);
+  assert.deepEqual([site['@type'], site.name, site.url], ['WebSite', 'Allworld', `${SITE_ORIGIN}/`]);
+  assert.equal(JSON.stringify(blocks).includes('"price":"0"'), true);
+});
+
+test('the host writes the page for its own origin: canonical, og:url, og:image and JSON-LD', async () => {
+  const html = await read('index.html'), local = absolutePreviewImage(html, 'http://localhost:3699');
+  assert.ok(!local.includes('joinallworld.com'));
+  assert.match(local, /<link rel="canonical" href="http:\/\/localhost:3699\/">/);
+  assert.equal(tag(local, 'og:image'), 'http://localhost:3699/og/allworld.png');
+  const ld = /<script type="application\/ld\+json">([^<]*)<\/script>/.exec(local)?.[1] ?? '';
+  assert.doesNotThrow(() => JSON.parse(ld));
+  assert.equal(absolutePreviewImage(html, ''), html, 'with no origin the page is unchanged');
+});
+
+test('public files: robots.txt, sitemap.xml, manifest and the images they name', async () => {
+  const robots = await read('public/robots.txt'), sitemap = await read('public/sitemap.xml');
+  assert.match(robots, /^User-agent: \*\nAllow: \/\n/); assert.match(robots, /Disallow: \/api\/\nDisallow: \/s\/\nDisallow: \/e\//);
+  assert.match(robots, new RegExp(`Sitemap: ${SITE_ORIGIN}/sitemap\\.xml`));
+  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), [`${SITE_ORIGIN}/`]);
+  const manifest = JSON.parse(await read('public/manifest.webmanifest')) as { name: string; short_name: string; lang: string; start_url: string; display: string; theme_color: string; background_color: string; icons: { src: string; purpose: string; sizes: string }[] };
+  assert.deepEqual([manifest.name, manifest.short_name, manifest.lang, manifest.start_url, manifest.display, manifest.theme_color, manifest.background_color], ['Allworld', 'Allworld', 'en-NG', '/', 'standalone', '#183b2a', '#183b2a']);
+  assert.ok(manifest.icons.some(icon => icon.purpose === 'maskable') && manifest.icons.some(icon => icon.purpose === 'any' && icon.sizes === '512x512') && manifest.icons.some(icon => icon.sizes === '192x192'));
+  for (const icon of manifest.icons) assert.ok((await stat(new URL(`public${icon.src}`, root))).size > 0, icon.src);
+  const png = await readFile(new URL('public/og/allworld.png', root));
+  assert.equal(png.subarray(1, 4).toString(), 'PNG');
+  assert.deepEqual([png.readUInt32BE(16), png.readUInt32BE(20)], [1200, 630]);
+  assert.ok(png.length < 300 * 1024, `${png.length} bytes`);
+});
+
+test('the workshop pages are not for search engines', async () => {
+  for (const page of ['campus.html', 'models.html', 'voice-test.html']) assert.match(await read(page), /<meta name="robots" content="noindex,nofollow">/, page);
+});

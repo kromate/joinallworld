@@ -585,7 +585,7 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   const meta = (key: string) => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
   assert.match(meta('og:title') as string, /Ada/); assert.match(meta('og:title') as string, /Whot/);
   assert.deepEqual([meta('og:type'), meta('og:site_name'), meta('og:url'), meta('og:image'), meta('twitter:card'), meta('twitter:image')],
-    ['website', 'Allworld', `${ORIGIN}/s/${code}`, `${ORIGIN}/og/allworld.jpg`, 'summary_large_image', `${ORIGIN}/og/allworld.jpg`]);
+    ['website', 'Allworld', `${ORIGIN}/s/${code}`, `${ORIGIN}/og/allworld.png`, 'summary_large_image', `${ORIGIN}/og/allworld.png`]);
   const target = (/<meta http-equiv="refresh" content="0;url=([^"]+)"/.exec(html) as RegExpExecArray)[1]?.replaceAll('&amp;', '&');
   assert.equal(target, `/?join=${ada.id}&ref=${code}&table=${TABLE}`);
   assert.equal((await f.fetch(`/s/${code}`, { method: 'HEAD' })).status, 200);
@@ -596,8 +596,19 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   assert.equal(joinIdFrom(`/v/${ada.id}`, ''), ada.id);
   // The game's own page, as a crawler receives it from the Worker: the default preview image is absolute.
   const home = await (await f.fetch('/')).text();
-  assert.match(home, /<meta property="og:image" content="https:\/\/play\.example\/og\/allworld\.jpg"/);
-  assert.equal((await f.fetch('/og/allworld.jpg')).status, 200);
+  assert.match(home, /<meta property="og:image" content="https:\/\/play\.example\/og\/allworld\.png"/);
+  assert.equal((await f.fetch('/og/allworld.png')).status, 200);
+  const headOf = (name: string) => new RegExp(`<(?:meta|link) (?:(?:property|name|rel)="${name}") (?:content|href)="([^"]*)"`).exec(home)?.[1];
+  assert.equal(headOf('canonical'), `${ORIGIN}/`); assert.equal(headOf('og:url'), `${ORIGIN}/`); assert.equal(headOf('og:image'), `${ORIGIN}/og/allworld.png`); assert.equal(headOf('twitter:image'), `${ORIGIN}/og/allworld.png`);
+  assert.ok(/<title>[^<]{1,60}<\/title>/.test(home) && (headOf('description') ?? '').length <= 155 && headOf('robots') === 'index,follow' && !home.includes('joinallworld.com'));
+  const ld = [...home.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)].flatMap(m => JSON.parse(m[1] as string) as { '@type': string; url: string }[]);
+  assert.deepEqual(ld.map(item => item['@type']), ['VideoGame', 'WebSite']); assert.ok(ld.every(item => item.url === `${ORIGIN}/`));
+  const robots = await f.fetch('/robots.txt'), sitemap = await f.fetch('/sitemap.xml');
+  assert.deepEqual([robots.status, sitemap.status], [200, 200]);
+  assert.match(robots.headers.get('content-type') as string, /^text\/plain/); assert.match(sitemap.headers.get('content-type') as string, /xml/);
+  assert.match(await robots.text(), /Disallow: \/api\/[\s\S]*Sitemap: /); assert.match(await sitemap.text(), /<loc>https:\/\/joinallworld\.com\/<\/loc>/);
+  assert.match((await f.fetch('/manifest.webmanifest')).headers.get('content-type') as string, /manifest|json/);
+  assert.match(html, /<meta name="robots" content="noindex, nofollow">/); assert.match(html, new RegExp(`<link rel="canonical" href="${ORIGIN}/s/${code}">`)); assert.equal(page.headers.get('x-robots-tag'), 'noindex, nofollow');
   // The landing reads the link with the same pure functions the browser runs.
   const url = new URL(target, ORIGIN), link = { join: joinIdFrom(url.pathname, url.search), ...linkParts(url.pathname, url.search) };
   assert.deepEqual(link, { join: ada.id, ref: code, table: TABLE });
@@ -800,6 +811,7 @@ test('Worker host surface: operator routes are off without the token and bearer-
   assert.deepEqual([confirm.status, confirm.headers.get('x-frame-options'), confirm.headers.get('cache-control')], [200, 'DENY', 'no-store']);
   const posted = await plain.fetch('/e/confirm?t=not-a-token', { method: 'POST' });
   assert.equal(posted.status, 400); assert.ok(!/<script/i.test(await posted.text()));
+  assert.equal(confirm.headers.get('x-robots-tag'), 'noindex, nofollow'); assert.match(await confirm.text(), /<meta name="robots" content="noindex, nofollow">/);
   assert.equal((await plain.fetch('/assets/nothing', { method: 'POST' })).status, 405, 'no other path outside /api/ takes a POST');
   // A problem report: exactly once for its client id.
   const report = { cityId: CITY, category: 'bug', text: 'The danfo did not stop.', clientId: `${Date.now()}:${randomUUID()}` };

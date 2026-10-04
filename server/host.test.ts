@@ -270,6 +270,7 @@ test('pages (/s/, /e/) are served by the host like any route: one answer, the sa
   assert.deepEqual([page.status, await page.text()], [200, '<p>one</p>']);
   assert.deepEqual([page.headers.get('content-type'), page.headers.get('x-content-type-options'), page.headers.get('referrer-policy'), page.headers.get('x-frame-options'), page.headers.get('cache-control'), page.headers.get('set-cookie')],
     ['text/html; charset=utf-8', 'nosniff', 'no-referrer', 'DENY', 'public, max-age=300', null]);
+  assert.equal(page.headers.get('x-robots-tag'), 'noindex, nofollow', 'a page a module serves is never indexed');
   const csp = page.headers.get('content-security-policy') ?? '';
   assert.match(csp, /default-src 'none'/); assert.match(csp, /frame-ancestors 'none'/); assert.ok(!/script-src/.test(csp), 'no script may run on a page');
   // The page is handed the path, the query, the origin, the address and the method — never the request, a header or a cookie.
@@ -333,23 +334,28 @@ test('static files: a source map is never served, and the game page carries an a
   const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
   t.after(() => rm(dist, { recursive: true, force: true }));
   await mkdir(join(dist, 'assets'));
-  const page = '<!doctype html><head><meta property="og:image" content="/og/allworld.jpg"><meta name="twitter:image" content="/og/allworld.jpg"><meta property="og:image:alt" content="/og/not-an-image"><link rel="icon" href="/icons/icon-192.png"></head><body>game</body>';
+  const page = '<!doctype html><head><link rel="canonical" href="https://joinallworld.com/"><meta property="og:url" content="https://joinallworld.com/"><meta property="og:image" content="/og/allworld.png"><meta name="twitter:image" content="/og/allworld.png"><meta property="og:image:alt" content="/og/not-an-image"><link rel="icon" href="/icons/icon-192.png"></head><body>game</body>';
   await writeFile(join(dist, 'index.html'), page);
   await writeFile(join(dist, 'assets', 'app.js'), 'console.log(1)');
+  await writeFile(join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\n');
+  await writeFile(join(dist, 'sitemap.xml'), '<urlset></urlset>');
   await writeFile(join(dist, 'assets', 'app.js.map'), '{"sources":["../../src/secret.js"]}');
   const f = await fixture(t, { distDir: dist, publicOrigin: 'https://play.example' });
   const get = (path: string, headers?: HeadersInit) => fetch(`${f.base}${path}`, { headers });
   assert.deepEqual([(await get('/assets/app.js')).status, (await get('/assets/app.js.map')).status, (await get('/anything.map')).status], [200, 404, 404]);
   assert.deepEqual(await (await get('/assets/app.js.map')).json(), { error: 'not_found' });
-  const expected = page.replaceAll('content="/og/allworld.jpg"', 'content="https://play.example/og/allworld.jpg"');
+  const expected = page.replaceAll('content="/og/allworld.png"', 'content="https://play.example/og/allworld.png"').replaceAll('https://joinallworld.com/', 'https://play.example/');
+  const robots = await get('/robots.txt'), sitemap = await get('/sitemap.xml');
+  assert.deepEqual([robots.status, robots.headers.get('content-type'), sitemap.status, sitemap.headers.get('content-type')], [200, 'text/plain; charset=utf-8', 200, 'application/xml; charset=utf-8']);
   // The index, and every path that falls back to it (an invite link, a share link on a host without the page).
   for (const path of ['/', '/index.html', '/v/11111111-1111-4111-8111-111111111111', '/some/deep/link']) assert.equal(await (await get(path)).text(), expected, path);
   assert.ok(expected.includes('content="/og/not-an-image"') && expected.includes('href="/icons/icon-192.png"'), 'only the two preview-image tags are rewritten');
   // Without PUBLIC_ORIGIN the request's own host is used — and only if it is made of host characters.
   const g = await fixture(t, { distDir: dist, publicOrigin: '' });
-  assert.ok((await (await fetch(`${g.base}/`)).text()).includes(`content="${g.base}/og/allworld.jpg"`));
+  const own = await (await fetch(`${g.base}/`)).text();
+  assert.ok(own.includes(`content="${g.base}/og/allworld.png"`) && own.includes(`<link rel="canonical" href="${g.base}/">`) && own.includes(`<meta property="og:url" content="${g.base}/">`) && !own.includes('joinallworld.com'), 'canonical and og:url follow the host, like og:image');
   const h = await fixture(t, { distDir: dist, publicOrigin: 'javascript:alert(1)//' });
-  assert.ok((await (await fetch(`${h.base}/`)).text()).includes(`content="${h.base}/og/allworld.jpg"`), 'a PUBLIC_ORIGIN that is not an origin is ignored');
+  assert.ok((await (await fetch(`${h.base}/`)).text()).includes(`content="${h.base}/og/allworld.png"`), 'a PUBLIC_ORIGIN that is not an origin is ignored');
 });
 
 test('shutdown has one order: modules finish, the world and the store are written, telemetry goes last — and each step runs once', async (t) => {

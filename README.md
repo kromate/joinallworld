@@ -167,12 +167,12 @@ Every cap on what the data file can hold:
 
 | Players | Store | Actions answered | Action p50 / p95 | Poll p50 / p95 | File writes | MB written |
 | --- | --- | --- | --- | --- | --- | --- |
-| 100 | legacy | 504 | 7.7 / 16.5 ms | 7.7 / 17.3 ms | 1,501 | 586 |
-| 100 | grouped | 508 | 6.8 / 14.9 ms | 1.6 / 5.7 ms | 506 | 185 |
-| 300 | legacy | 708 | 4,073 / 4,668 ms | 3,901 / 4,670 ms | 1,693 | 1,702 |
-| 300 | grouped | 1,490 | 18.5 / 32.7 ms | 0.7 / 6.8 ms | 421 | 440 |
-| 500 | legacy | 784 | 9,035 / 16,074 ms | 6,507 / 15,988 ms | 1,839 | 2,792 |
-| 500 | grouped | 2,489 | 26.0 / 49.8 ms | 0.6 / 9.3 ms | 271 | 457 |
+| 100 | legacy | 512 | 8.5 / 21.1 ms | 8.3 / 19.7 ms | 1,501 | 588 |
+| 100 | grouped | 515 | 5.8 / 14.9 ms | 1.5 / 5.6 ms | 500 | 185 |
+| 300 | legacy | 703 | 4,084 / 4,499 ms | 3,917 / 4,505 ms | 1,677 | 1,678 |
+| 300 | grouped | 1,501 | 19.3 / 33.8 ms | 0.8 / 6.9 ms | 405 | 426 |
+| 500 | legacy | 776 | 8,903 / 15,317 ms | 6,241 / 15,283 ms | 1,842 | 2,808 |
+| 500 | grouped | 2,531 | 28.8 / 51.7 ms | 0.7 / 9.0 ms | 257 | 448 |
 
 This says what happened on that machine with young lives and a data file of 0.4–2.2 MB. It is not a capacity claim: a slow disk, a real network, long-lived sessions or a much larger file will behave differently. At 300 and 500 players the legacy store could not keep up at all, which is why its players sent fewer actions.
 

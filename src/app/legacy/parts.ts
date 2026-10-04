@@ -48,3 +48,15 @@ export const setWallpaper = setWallpaperJs as unknown as (id: string) => boolean
 
 /** Escape text for the HTML pieces above (src/ui/dom.js esc). */
 export const escapeHtml = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' })[char] ?? char)
+
+// ---- the goal chip's offer to settle in -------------------------------------------------------
+import { nextNudge as nextNudgeJs, nudged as nudgedJs } from '../../quick-start/model.js'
+import { keepNudges as keepNudgesJs, nudgesOf as nudgesOfJs } from '../../quick-start/entry.js'
+/** What was offered before on this device: how many times, which reasons, and the Lagos day of the last. */
+export interface NudgeMemory { count: number; reasons: string[]; day: number | null }
+export interface NudgeFacts { guest: boolean; activities: number; firstAt: number | null; busy: boolean; day: number }
+/** The reason to offer settling in now ('first-reward', 'third-activity', 'next-day'), or null. */
+export const nextNudge = nextNudgeJs as unknown as (facts: NudgeFacts, memory: NudgeMemory) => string | null
+export const nudged = nudgedJs as unknown as (memory: NudgeMemory, reason: string, day: number) => NudgeMemory
+export const nudgesOf = nudgesOfJs as unknown as (life: string) => NudgeMemory
+export const keepNudges = keepNudgesJs as unknown as (life: string, value: NudgeMemory) => void

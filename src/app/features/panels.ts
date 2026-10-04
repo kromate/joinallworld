@@ -9,6 +9,7 @@ import { social } from '../legacy/social.ts'
 import { billsDue } from './bank/bankModel.ts'
 import { messagesBadge, notificationLines } from './messages/messagesModel.ts'
 import { noticeMarks } from './messages/messagesState.ts'
+import { scene as homeScene } from './home/homeState.ts'
 
 export const bank = definePanel({
   id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14, group: 'money',
@@ -101,4 +102,33 @@ export const boutique = definePanel({
   component: defineAsyncComponent(() => import('./life/BoutiqueApp.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique]
+export const healthChip = definePanel({
+  id: 'health-chip', title: 'Health', placement: 'hud', slot: 'alert', order: 6,
+  component: defineAsyncComponent(() => import('./life/HealthChip.vue')),
+})
+
+export const weatherChip = definePanel({
+  id: 'weather-chip', title: 'Weather', placement: 'hud', order: 6,
+  component: defineAsyncComponent(() => import('./life/WeatherChip.vue')),
+})
+
+export const goalChip = definePanel({
+  id: 'goal-chip', title: 'Current goal', icon: 'goals', placement: 'hud', slot: 'goal', order: 10,
+  component: defineAsyncComponent(() => import('./life/GoalChip.vue')),
+})
+
+export const homeChip = definePanel({
+  id: 'home-chip', title: 'Home', icon: 'home', placement: 'hud', order: 20,
+  /** A room that could not be drawn is something to act on (Try again); otherwise the chip is information for the tray. */
+  slot: () => (homeScene.status === 'error' ? 'alert' : 'hud'),
+  component: defineAsyncComponent(() => import('./home/HomeChip.vue')),
+})
+
+export const buy = definePanel({
+  id: 'buy', title: 'Buy', placement: 'nav',
+  /** Buy is only available at home; elsewhere the nav button is disabled with this reason. */
+  enabled: (state) => state.location === 'home' || 'Go home to buy furniture',
+  component: defineAsyncComponent(() => import('./home/BuyMode.vue')),
+})
+
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy]

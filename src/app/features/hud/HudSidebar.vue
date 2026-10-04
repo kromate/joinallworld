@@ -1,17 +1,16 @@
 <script setup lang="ts">
 // The HUD column: the needs strip, More and Clean screen, then the HUD chips in their slots —
 // alerts (something to act on now), the single goal line, and the tray behind More — and the More
-// menu. The chips are panels with placement 'hud'; all of them are still existing panels, shown
-// through LegacyPanel. A chip asks for attention by carrying the class `is-active`, which is
+// menu. The chips are panels with placement 'hud', of either kind: an existing panel through
+// LegacyPanel, a Vue component as itself (HudChip.vue). A chip asks for attention by carrying the class `is-active`, which is
 // counted into the badge on More.
 //
 // The column's layout still comes from the existing stylesheet (src/ui/shell.css, .life-sidebar
 // and below): it moves into this component when the chips it lays out are converted.
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
-import type { HudSlot, LegacyPanel as LegacyPanelType, Panel } from '../../types/panel.ts'
-import { isVuePanel } from '../../types/panel.ts'
+import type { HudSlot, Panel } from '../../types/panel.ts'
 import { useApp } from '../../state/app.ts'
-import LegacyPanel from '../../legacy/LegacyPanel.vue'
+import HudChip from './HudChip.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import NeedsStrip from './NeedsStrip.vue'
 import { linkWording } from './hudModel.ts'
@@ -20,13 +19,13 @@ const { game, shell, menu, toggleCommunity } = useApp()
 const ui = shell.ui
 const view = game.view
 const SLOTS: readonly HudSlot[] = ['alert', 'goal', 'hud']
-const chips = shell.placed('hud').filter((panel): panel is LegacyPanelType => !isVuePanel(panel))
+const chips = shell.placed('hud')
 /** Where a chip goes right now: a panel may decide per state (a knock at the door is an alert, an empty inbox is not). */
 function slotOf(panel: Panel): HudSlot {
   void shell.legacyTick.value
   try { return (typeof panel.slot === 'function' ? panel.slot(game.state.value, shell.viewFor()) : panel.slot) ?? 'hud' } catch { return 'hud' }
 }
-const bySlot = computed(() => Object.fromEntries(SLOTS.map((slot) => [slot, chips.filter((panel) => slotOf(panel) === slot)])) as Record<HudSlot, LegacyPanelType[]>)
+const bySlot = computed(() => Object.fromEntries(SLOTS.map((slot) => [slot, chips.filter((panel) => slotOf(panel) === slot)])) as Record<HudSlot, Panel[]>)
 /** A chip that rendered nothing takes no room. */
 const empty = reactive<Record<string, boolean>>({})
 const tray = ref<HTMLElement | null>(null)
@@ -58,10 +57,10 @@ function pick(id: string): void { ui.trayOpen = false; menu(id) }
       </button>
     </div>
     <template v-if="!ui.clean">
-      <div class="life-alerts"><LegacyPanel v-for="panel in bySlot.alert" v-show="!empty[panel.id]" :key="panel.id" :panel="panel" @rendered="onRendered(panel.id, $event)" /></div>
-      <div class="life-goal"><LegacyPanel v-for="panel in bySlot.goal" v-show="!empty[panel.id]" :key="panel.id" :panel="panel" @rendered="onRendered(panel.id, $event)" /></div>
+      <div class="life-alerts"><HudChip v-for="panel in bySlot.alert" v-show="!empty[panel.id]" :key="panel.id" :panel="panel" @rendered="onRendered(panel.id, $event)" /></div>
+      <div class="life-goal"><HudChip v-for="panel in bySlot.goal" v-show="!empty[panel.id]" :key="panel.id" :panel="panel" @rendered="onRendered(panel.id, $event)" /></div>
       <div id="life-tray" class="life-tray">
-        <div ref="tray" class="life-hud"><LegacyPanel v-for="panel in bySlot.hud" v-show="!empty[panel.id]" :key="panel.id" :panel="panel" @rendered="onRendered(panel.id, $event)" /></div>
+        <div ref="tray" class="life-hud"><HudChip v-for="panel in bySlot.hud" v-show="!empty[panel.id]" :key="panel.id" :panel="panel" @rendered="onRendered(panel.id, $event)" /></div>
         <div class="life-menu">
           <p class="life-brand"><strong><span>Allworld</span></strong><small>{{ link ? link.menu : 'City beta' }}</small></p>
           <button type="button" @click="pick('city')"><span aria-hidden="true"><GameIcon name="globe" :size="19" /></span><span><b>{{ view.city?.name || 'City' }}</b><small>Switch city on the world map</small></span></button>

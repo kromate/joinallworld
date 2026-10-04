@@ -123,7 +123,7 @@ export default {
       const result = await api.command(type, payload);
       pending = '';
       if (result.ok) then?.();
-      else error = result.code === 'offline' ? 'You are still offline, so this step cannot be saved yet. Nothing is lost — try again when you are back online.' : result.reason || 'That could not be saved. Check your connection and try again.';
+      else error = result.code === 'offline' || !api.view().connected ? 'You are still offline, so this step cannot be saved yet. Nothing is lost — try again when you are back online.' : result.reason || 'That could not be saved. Check your connection and try again.';
       return result;
     };
     root.addEventListener('click', async (event) => {

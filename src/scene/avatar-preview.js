@@ -39,8 +39,8 @@ export const previewStats = { live: 0, created: 0, disposed: 0 };
 export class PreviewUnavailable extends Error {}
 
 const FRAMES = {
-  body: { y: 1.4, height: 3.1, width: 1.9 },
-  head: { y: 2.2, height: 2.0, width: 1.3 }, // head and shoulders, with room above for the stage's buttons
+  body: { y: 1.44, height: 3.2, width: 1.9 },
+  head: { y: 2.14, height: 1.85, width: 1.3 }, // head and shoulders, with room above for the stage's buttons
 };
 const FOV = 26, START_YAW = -0.42, DRAG_SPEED = 0.011, KEY_STEP = Math.PI / 12, MAX_PIXEL_RATIO = 2;
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));

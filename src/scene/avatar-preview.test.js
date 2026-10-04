@@ -183,7 +183,7 @@ test('a lost context stops drawing and tells the caller; without WebGL the previ
 test('the camera frames the whole Sim at any stage shape', () => {
   const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 60);
   for (const aspect of [0.6, 1, 520 / 256, 3]) {
-    frameCamera(camera, { y: 1.4, height: 3.1, width: 1.9 }, aspect); camera.updateMatrixWorld();
+    frameCamera(camera, { y: 1.44, height: 3.2, width: 1.9 }, aspect); camera.updateMatrixWorld();
     for (const [x, y] of [[0, -0.1], [0, 2.9], [-0.9, 1.4], [0.9, 1.4]]) {
       const p = new THREE.Vector3(x, y, 0).project(camera);
       assert.ok(Math.abs(p.x) <= 1.001 && Math.abs(p.y) <= 1.001, `(${x}, ${y}) is in view at aspect ${aspect}`);

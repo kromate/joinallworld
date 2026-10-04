@@ -1,21 +1,67 @@
-.awm{height:100%;min-height:420px;display:flex;flex-direction:column;background:#f6f8f5;color:#243f35;font-family:inherit;overflow:hidden}.awm *{box-sizing:border-box}
-.awm-heading,.awm-destinations{width:100%;max-width:680px;margin:0 auto}
-.awm-heading{padding:22px 20px 14px}.awm-heading h2{font-size:24px;line-height:1.2;letter-spacing:-.6px;margin:0 0 5px}.awm-heading p{font-size:13px;color:#78867d;margin:0}
-.awm-viewport{position:relative;flex:0 1 auto;width:calc(100% - 40px);max-width:640px;aspect-ratio:1000/480;min-height:180px;margin:0 auto;border:1px solid #dfe7df;border-radius:16px;overflow:hidden;background:#eef3ee}
-.awm-svg{display:block;width:100%;height:100%;touch-action:none;cursor:grab;outline:none}.awm-svg.is-dragging{cursor:grabbing}.awm-svg:focus-visible{outline:3px solid #537e68;outline-offset:-4px}
-.awm-land{fill:none;stroke:#a9c0b0;stroke-width:5;stroke-linecap:round;pointer-events:none}
-.awm-pin{cursor:pointer;outline:none}.awm-pin-hit{fill:transparent}.awm-pin-ring{fill:#fff;stroke:#c9d8cb;stroke-width:1}.awm-pin-dot{fill:#fff;stroke:#3f7556;stroke-width:2}
-.awm-pin-name{fill:#2f4e3d;font-size:12px;font-family:inherit;font-weight:700;stroke:#eef3ee;stroke-width:4;stroke-linejoin:round;paint-order:stroke}
-.awm-pin.is-current .awm-pin-dot{fill:#2f6a4b;stroke:#2f6a4b}.awm-pin:hover .awm-pin-ring,.awm-pin:focus-visible .awm-pin-ring{stroke:#c98f2e;stroke-width:3}
-.awm-controls{position:absolute;right:10px;bottom:10px;display:flex;gap:2px;padding:3px;background:#fffffff0;border:1px solid #dfe7df;border-radius:11px}
-.awm-controls button{width:30px;height:30px;border:0;border-radius:8px;background:transparent;color:#446458;font-size:18px;cursor:pointer;line-height:1;display:grid;place-items:center;font-family:inherit}.awm-controls button:hover{background:#e8f0e8}.awm-controls button:focus-visible{outline:2px solid #568264;outline-offset:1px}.awm-controls button:disabled{opacity:.3;cursor:default}
-.awm-zoom{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.awm-destinations{padding:14px 20px 20px}.awm-destinations-title{color:#6f7f74;font-size:12px;font-weight:600;margin-bottom:9px}
-.awm-city-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.awm-city{font-family:inherit;text-align:left;background:#fff;display:flex;align-items:center;gap:11px;min-height:58px;border:1px solid #e0e7dd;border-radius:13px;padding:10px 13px;cursor:pointer;color:#294235;transition:background .15s,border-color .15s}.awm-city:hover{background:#edf3e9;border-color:#a6bba4}.awm-city:focus-visible{outline:3px solid #729676;outline-offset:2px}.awm-city.is-current{background:#eef4e9;border-color:#a8be9d}
-.awm-city-dot{width:12px;height:12px;flex:none;border-radius:50%;background:#fff;border:2px solid #3f7556}.awm-city.is-current .awm-city-dot{background:#2f6a4b;border-color:#2f6a4b}
-.awm-city-copy{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}.awm-city-copy strong{font-size:15px}.awm-city-copy>span{font-size:11px;color:#6f7d72}
-.awm-travel{font-size:11px;color:#55704f;font-weight:650;white-space:nowrap}
-@media(max-width:700px){.awm-heading{padding:20px 14px 12px}.awm-heading h2{font-size:22px}.awm-viewport{width:calc(100% - 24px);border-radius:14px}.awm-land{stroke-width:6.5;stroke:#9db7a5}.awm-controls{right:8px;bottom:8px}.awm-controls button{width:34px;height:34px}.awm-destinations{padding:12px 12px 16px}.awm-city-list{grid-template-columns:1fr;gap:8px}.awm-city{min-height:52px;padding:9px 12px}}
-@media(prefers-reduced-motion:reduce){.awm-city{transition:none}}
-.awm{box-sizing:border-box}
+/* The country map (src/world-map.js): a tilted relief of the country, a standing marker per city, and the same cities as a list. Classes are prefixed wm-. */
+.wm{position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr);gap:8px 18px;padding:74px 18px 150px;background:radial-gradient(120% 90% at 50% 20%,#d6f0f8 0,#9fd3e8 55%,#6fb4d4 100%);font-family:var(--font,'DM Sans',Arial,sans-serif);color:#20232c}
+.wm *{box-sizing:border-box}
+.wm-head{grid-column:1;align-self:start;padding-left:6px}
+.wm-head h2{margin:0;font-size:30px;line-height:1.1;letter-spacing:-.02em;color:#173b2a}
+.wm-head p{margin:4px 0 0;font-size:13px;color:#2f5a6b;max-width:360px}
+.wm-stage{grid-column:1;grid-row:2;display:grid;place-items:center;min-height:0;perspective:1500px;perspective-origin:50% 20%}
+.wm-board{position:relative;width:min(100%,760px);max-height:100%;transform:rotateX(50deg);transform-style:preserve-3d;filter:drop-shadow(0 34px 26px #0b2b3a47)}
+.wm-svg{display:block;width:100%;height:100%;overflow:visible}
+.wm-pins{position:absolute;inset:0;transform-style:preserve-3d}
+/* A marker stands up out of the tilted board: it is turned back to face the screen about its foot. */
+.wm-pin{position:absolute;display:grid;justify-items:center;padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer;transform:translate(-50%,-100%) rotateX(-50deg);transform-origin:50% 100%;-webkit-tap-highlight-color:transparent}
+.wm-pin-label{order:1;display:grid;justify-items:center;padding:6px 13px 7px;border-radius:14px;background:#fff;box-shadow:0 5px 16px #0b2b3a40;white-space:nowrap}
+.wm-pin-label b{font-size:17px;line-height:1.15}
+.wm-pin-label small{font-size:11px;font-weight:700;color:#7a5a12}
+.wm-pin-stem{order:2;width:3px;height:46px;background:linear-gradient(#fff,#ffffffb3)}
+.wm-pin-dot{order:3;width:18px;height:18px;margin-bottom:-9px;border-radius:50%;background:#e8a643;border:4px solid #fff;box-shadow:0 2px 6px #0006}
+.wm-pin.is-here .wm-pin-label,.wm-pin.is-enter .wm-pin-label{background:#256b45;color:#fff}
+.wm-pin.is-here small,.wm-pin.is-enter small{color:#d8eedd}
+.wm-pin.is-here .wm-pin-dot{background:#256b45;box-shadow:0 0 0 7px #256b4540,0 2px 6px #0006}
+.wm-pin.is-here .wm-pin-stem{height:74px}
+.wm-pin.is-preview .wm-pin-dot{background:#2b5fa8}.wm-pin.is-preview small{color:#2b5fa8}
+.wm-pin.is-soon .wm-pin-label{background:#fff7dc}
+.wm-pin.is-selected .wm-pin-label{outline:3px solid #20232c;outline-offset:2px}
+/* Two cities close together: their labels lean apart instead of covering each other */
+.wm-pin.is-left .wm-pin-label{transform:translateX(-46%)}
+.wm-pin.is-right .wm-pin-label{transform:translateX(36%)}
+
+.wm-side{grid-column:2;grid-row:1/3;align-self:start;display:grid;gap:10px;max-height:100%;overflow-y:auto;padding:12px;border-radius:24px;background:#fbfbfaf2;border:1px solid #fff;box-shadow:0 4px 18px #0000001f}
+.wm-cities{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.wm-city{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:6px 10px;border:2px solid transparent;border-radius:16px;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.wm-city:hover{background:#f1f3f2}
+.wm-city.is-selected{border-color:#256b45;background:#edf4ee}
+.wm-city:focus-visible,.wm-go:focus-visible{outline:3px solid #14532d;outline-offset:2px}
+.wm-city-dot{flex:none;width:12px;height:12px;border-radius:50%;background:#e8a643}
+.wm-city.is-here .wm-city-dot,.wm-city.is-enter .wm-city-dot{background:#256b45}
+.wm-city.is-preview .wm-city-dot{background:#2b5fa8}
+.wm-city-text{flex:1;min-width:0;display:grid}
+.wm-city-text b{font-size:15px}.wm-city-text small{font-size:12px;color:#5f6770}
+.wm-city em{flex:none;font-style:normal;font-size:11px;font-weight:700;padding:4px 9px;border-radius:10px;background:#fff6dc;color:#7a5a12}
+.wm-city.is-here em,.wm-city.is-enter em{background:#edf4ee;color:#256b45}
+.wm-city.is-preview em{background:#e8effa;color:#2b5fa8}
+.wm-detail{display:grid;gap:8px;padding:12px;border-radius:16px;background:#fff;border:1px solid #e4e5e3}
+.wm-detail h3{margin:0;display:flex;align-items:center;gap:8px;font-size:17px}
+.wm-detail h3 span{font-size:11px;font-weight:700;padding:3px 8px;border-radius:9px;background:#fff6dc;color:#7a5a12}
+.wm-detail.is-here h3 span,.wm-detail.is-enter h3 span{background:#edf4ee;color:#256b45}
+.wm-detail.is-preview h3 span{background:#e8effa;color:#2b5fa8}
+.wm-detail p{margin:0;font-size:13px;line-height:1.45;color:#3d444d}
+.wm-detail .wm-wait{font-size:12px;color:#5f6770}
+.wm-go{min-height:46px;padding:0 18px;border:0;border-radius:23px;background:#256b45;color:#fff;font:700 14px var(--font,'DM Sans',Arial,sans-serif);cursor:pointer}
+.wm-more{margin:0;padding:0 4px;font-size:11px;line-height:1.4;color:#5f6770}
+
+/* A phone: the country on top, the cities as one card under it, clear of the bar above and the panel below */
+@media(max-width:720px){
+  .wm{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(150px,1fr) auto;gap:4px;padding:112px 10px 172px}
+  .wm-head h2{font-size:22px}.wm-head p{font-size:12px}
+  .wm-stage{grid-row:2}
+  .wm-board{width:min(100%,430px)}
+  .wm-pin-label{padding:4px 9px 5px}.wm-pin-label b{font-size:13px}.wm-pin-label small{font-size:10px}
+  .wm-pin-stem{height:28px}.wm-pin.is-here .wm-pin-stem{height:46px}
+  .wm-side{grid-column:1;grid-row:3;max-height:38dvh;padding:8px;border-radius:20px;gap:6px}
+  .wm-cities{grid-template-columns:1fr 1fr}
+  .wm-city{min-height:46px;padding:4px 6px;gap:6px;flex-wrap:wrap}
+  .wm-city em{display:none}.wm-city-text b{font-size:13px}.wm-city-text small{font-size:10px}
+  .wm-detail{padding:9px}.wm-detail h3{font-size:15px}.wm-detail p{font-size:12px}
+  .wm-more{display:none}
+}

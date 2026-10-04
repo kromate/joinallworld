@@ -6,7 +6,7 @@
  */
 import { esc, money, json, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
-import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from '../../game/content/civic.js';
+import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from '../../game/content/civic.ts';
 import { button, busy, dateTime, entry, load, put, send, stale, status, requestId, requestDone } from './civic-ui.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 

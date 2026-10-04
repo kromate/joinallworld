@@ -5,7 +5,7 @@
  */
 import { esc, money, mark } from '../dom.js';
 import { count, entry, load, stale } from './civic-ui.js';
-import { isDeparting } from '../../game/registry.js';
+import { isDeparting } from '../../game/registry.ts';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { linkWords } from '../link.js';
 

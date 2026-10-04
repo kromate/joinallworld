@@ -14,7 +14,7 @@ import './statement.css';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { esc, money, json, empty, ledgerRow } from '../dom.js';
 import { linkWords } from '../link.js';
-import { formatClock, lagosDayStart, WEEKDAYS } from '../../game/clock.js';
+import { formatClock, lagosDayStart, WEEKDAYS } from '../../game/clock.ts';
 
 let checked = null; // { cityId, closing, at, ok, text }
 let busy = false;

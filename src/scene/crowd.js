@@ -17,7 +17,7 @@
  * The result is what the scene host's setCrowd() takes; it is compared by value there, so
  * calling this again with unchanged data never causes a frame.
  */
-import { isDeparting } from '../game/registry.js';
+import { isDeparting } from '../game/registry.ts';
 /** The room protocol's bounds (server/protocol.js POSITION_BOUNDS); the scene keeps a figure on its own floor. */
 const SCENE_REACH = 20;
 export const CROWD_LIMIT = 12; // equals MAX_CROWD in venue-scenes.js (asserted in crowd.test.js)

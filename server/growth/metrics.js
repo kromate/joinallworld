@@ -32,8 +32,8 @@
  *   table.started.<game> · table.finished.<game> · table.abandoned.<game> · table.human · table.bot
  *   consent.adult · consent.minor · client.<signal> (webgl-missing, opera-mini, save-data, slow-start)
  */
-import { lagosTime } from '../../src/game/clock.js';
-import { STARTER_GOALS } from '../../src/game/content/goals.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { STARTER_GOALS } from '../../src/game/content/goals.ts';
 
 export const KEEP = Object.freeze({ days: 400, cohorts: 120, window: 31, lives: 50000 });
 export const RETENTION_DAYS = Object.freeze([1, 3, 7, 14, 30]);

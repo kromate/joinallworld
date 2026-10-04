@@ -8,7 +8,7 @@
  */
 import { esc, money, empty, avatar, mark } from '../dom.js';
 import { linkWords } from '../link.js';
-import { ELECTION, STATE_HOUSE_TEXT } from '../../game/content/civic.js';
+import { ELECTION, STATE_HOUSE_TEXT } from '../../game/content/civic.ts';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { button, busy, dateTime, count, entry, load, put, send, stale, status, until, requestId, requestDone, markCivicNewsRead } from './civic-ui.js';
 

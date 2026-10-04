@@ -41,7 +41,7 @@
  * open. captureLink() reads all three once, before anything rewrites the address, and src/life-main.js handles them in that
  * order after the quick start — one banner, then the table.
  */
-import { nudgeMemory, joinIdFrom, linkParts } from './model.js';
+import { nudgeMemory, joinIdFrom, linkParts } from './model.ts';
 
 const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed', table: 'joinallworld-quick-table', ref: 'allworld-ref' };
 const REF_KEEP_MS = 7 * 86400000;

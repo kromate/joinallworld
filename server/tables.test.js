@@ -5,8 +5,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.js';
 import { TUNING } from './growth/tables.js';
-import { TABLE_REWARDS } from '../src/game/content/growth.js';
-import { TABLES } from '../src/tables/places.js';
+import { TABLE_REWARDS } from '../src/game/content/growth.ts';
+import { TABLES } from '../src/tables/places.ts';
 
 const DAY = 86400000;
 TUNING.botDelayMs = 0; // bots answer at once, so a test never waits on a timer

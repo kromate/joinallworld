@@ -6,7 +6,7 @@ import * as ts from './clock.ts'
 import type { OpeningHours } from './clock.ts'
 // At run time this is the JavaScript module. The type checker reads clock.ts for it (a sibling
 // .ts wins over .js), which is what gives every JavaScript importer of clock.js its types.
-import * as js from './clock.js'
+import * as js from './clock.ts'
 
 const START = Date.UTC(2026, 0, 5, 0, 0)
 const SCHEDULES: (OpeningHours | null)[] = [

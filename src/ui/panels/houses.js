@@ -10,7 +10,7 @@ import './houses.css';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { esc, money, json } from '../dom.js';
 import { linkWords } from '../link.js';
-import { MOVE_IN_WEEKS } from '../../game/content/housing.js';
+import { MOVE_IN_WEEKS } from '../../game/content/housing.ts';
 
 /**
  * A drawn picture of a house tier: the higher the tier, the wider and taller the building and the

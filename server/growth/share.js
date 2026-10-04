@@ -11,17 +11,17 @@
  * An unknown or expired code gives the game's general preview and leads to the game.
  */
 import { UUID_PATTERN } from '../protocol.js';
-import { lagosTime } from '../../src/game/clock.js';
-import { viewLife } from '../../src/life.js';
-import { DISTRICTS } from '../../src/game/content/civic.js';
-import { lgaOf } from '../../src/game/content/world.js';
-import { hasPlace } from '../../src/game/systems/estate.js';
-import { isGuestLife } from '../../src/game/systems/onboarding.js';
-import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.js';
-import { eventsBetween } from '../../src/game/calendar.js';
-import { venueLabel } from '../../src/game/content/venues.js';
-import { tableById } from '../../src/tables/places.js';
-import { GAMES } from '../../src/tables/games.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { viewLife } from '../../src/life.ts';
+import { DISTRICTS } from '../../src/game/content/civic.ts';
+import { lgaOf } from '../../src/game/content/world.ts';
+import { hasPlace } from '../../src/game/systems/estate.ts';
+import { isGuestLife } from '../../src/game/systems/onboarding.ts';
+import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.ts';
+import { eventsBetween } from '../../src/game/calendar.ts';
+import { venueLabel } from '../../src/game/content/venues.ts';
+import { tableById } from '../../src/tables/places.ts';
+import { GAMES } from '../../src/tables/games.ts';
 import { LIMITS, playerOf, sweep } from './data.js';
 import { count } from './metrics.js';
 

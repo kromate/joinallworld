@@ -6,7 +6,7 @@
  */
 import { esc, json, empty, avatar } from '../dom.js';
 import { linkWords } from '../link.js';
-import { PRESENCE, presenceText } from '../../game/social-model.js';
+import { PRESENCE, presenceText } from '../../game/social-model.ts';
 import { S, bindCommon, gate, call } from './social-client.js';
 
 const ui = { find: '', results: null, finding: false };

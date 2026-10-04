@@ -6,7 +6,7 @@
  * no timer of its own, so a new shout-out can take up to a poll interval to appear.
  */
 import { esc, mark } from '../dom.js';
-import { RADIO } from '../../game/content/civic.js';
+import { RADIO } from '../../game/content/civic.ts';
 import { entry, load } from './civic-ui.js';
 
 export const PANEL = 'radio';

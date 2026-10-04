@@ -11,8 +11,8 @@ import { fixture } from './test-fixture.js';
 import { createServer } from './server.js';
 import { presenceOf } from './social/presence.js';
 import { isSharedAddress } from './protocol.js';
-import { statementOf } from '../src/game/systems/wallet.js';
-import { createLife } from '../src/life.js';
+import { statementOf } from '../src/game/systems/wallet.ts';
+import { createLife } from '../src/life.ts';
 
 const TOKEN = 'operator-token-for-tests-0123456789';
 const DAY = 86400000, HOUR = 3600000;

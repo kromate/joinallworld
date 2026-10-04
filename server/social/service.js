@@ -51,9 +51,9 @@
  * committed() raises 'blocks-changed' { a, b }.
  */
 import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.js';
-import { lagosTime } from '../../src/game/clock.js';
-import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.js';
-import { venueLabel, VENUES } from '../../src/game/content/venues.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
+import { venueLabel, VENUES } from '../../src/game/content/venues.ts';
 import { presenceOf, describeRoom } from './presence.js';
 import { screenText } from '../moderation/text.js';
 

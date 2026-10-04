@@ -28,7 +28,7 @@
  */
 import { createBatch } from '../scene/build.js';
 import { leanGeometry } from './city-build.js';
-import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, HOUSE_TIERS, unpackStyle } from '../game/content/world.js';
+import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, HOUSE_TIERS, unpackStyle } from '../game/content/world.ts';
 import { estateLayout } from './estates.js';
 import { lgaAt } from './lga.js';
 

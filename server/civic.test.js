@@ -6,9 +6,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.js';
-import { VENUES } from '../src/game/content/venues.js';
-import { isOpen, minutesUntilOpen } from '../src/game/clock.js';
-import { spotsOf } from '../src/game/api.js';
+import { VENUES } from '../src/game/content/venues.ts';
+import { isOpen, minutesUntilOpen } from '../src/game/clock.ts';
+import { spotsOf } from '../src/game/api.ts';
 
 const DAY = 86400000;
 const START = 100000; // the fixture's clock starts on a Thursday, 01:01 Lagos time

@@ -12,7 +12,7 @@ import { newMemo, sessionStarted, stateEvents } from './funnel.js';
 import { consentHtml } from './consent-ui.js';
 import { CONSENT, whatWeCollect, regionWords } from './what-we-collect.js';
 import { EVENTS, TRACKED_EVENTS } from './events.js';
-import { createLife } from '../life.js';
+import { createLife } from '../life.ts';
 
 const PUBLIC = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10';
 const CONFIG = { enabled: true, env: 'production', release: 'build-7', debug: false, sentry: { dsn: 'https://abc@o1.ingest.example/7', replayOnError: false }, posthog: { key: 'phc_testkey123', host: 'https://us.i.posthog.com', consentAt: 'reward' } };
@@ -520,7 +520,7 @@ test('the derived events read nothing from an unrelated previous state', () => {
 test('every event the game’s screens report is in the catalogue, with every property it carries — and nothing is defined twice', () => {
   const root = new URL('../', import.meta.url);
   const files = [];
-  const walk = (dir) => { for (const entry of readdirSync(new URL(dir, root), { withFileTypes: true })) { if (entry.isDirectory()) walk(`${dir}${entry.name}/`); else if (entry.name.endsWith('.js') && !entry.name.endsWith('.test.js')) files.push(`${dir}${entry.name}`); } };
+  const walk = (dir) => { for (const entry of readdirSync(new URL(dir, root), { withFileTypes: true })) { if (entry.isDirectory()) walk(`${dir}${entry.name}/`); else if ((entry.name.endsWith('.js') || entry.name.endsWith('.ts')) && !/\.test\.[jt]s$/.test(entry.name)) files.push(`${dir}${entry.name}`); } };
   for (const dir of ['ui/', 'quick-start/', 'tables/', 'map3d/', 'scene/']) walk(dir);
   files.push('life-main.js', 'client.js');
   const reported = new Map();
@@ -532,7 +532,7 @@ test('every event the game’s screens report is in the catalogue, with every pr
       reported.get(match[1]).files.add(file); for (const key of keys) reported.get(match[1]).keys.add(key);
     }
     // Events built as data and reported by the entry: { name: '…', props: { … } }, and the settle-in steps of src/quick-start/model.js.
-    for (const match of [...text.matchAll(/name: '([a-z0-9_]+)', props: \{/g), ...(file === 'quick-start/model.js' ? text.matchAll(/\d: '(settle_[a-z_]+)'/g) : [])]) { if (!reported.has(match[1])) reported.set(match[1], { files: new Set(), keys: new Set() }); reported.get(match[1]).files.add(file); }
+    for (const match of [...text.matchAll(/name: '([a-z0-9_]+)', props: \{/g), ...(file === 'quick-start/model.ts' ? text.matchAll(/\d: '(settle_[a-z_]+)'/g) : [])]) { if (!reported.has(match[1])) reported.set(match[1], { files: new Set(), keys: new Set() }); reported.get(match[1]).files.add(file); }
   }
   // The funnel events of src/quick-start/model.js are built as data and reported by life-main.
   for (const name of ['arrived', 'first_activity_started', 'first_activity_completed', 'settle_traits_done', 'settle_dream_done', 'settle_lottery_done', 'save_character_done']) assert.ok(reported.has(name), name);

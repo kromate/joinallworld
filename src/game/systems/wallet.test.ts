@@ -6,9 +6,9 @@ import test from 'node:test'
 import * as ts from './wallet.ts'
 import type { LedgerDay, WalletState } from './wallet.ts'
 // At run time this is wallet.js (see clock.test.ts for why the type checker reads wallet.ts for it).
-import * as js from './wallet.js'
-import { makeContext, makeRng } from '../util.js'
-import { createLife, viewLife } from '../../life.js'
+import * as js from './wallet.ts'
+import { makeContext, makeRng } from '../util.ts'
+import { createLife, viewLife } from '../../life.ts'
 
 const DAY = 86400000
 const START = Date.UTC(2026, 0, 5, 8)

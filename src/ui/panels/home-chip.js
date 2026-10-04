@@ -19,11 +19,11 @@
 import './buy.css';
 import { esc, mark, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
-import { FURNITURE, KINDS } from '../../game/content/furniture.js';
-import { homeOf } from '../../game/content/housing.js';
-import { HOUSE_TIERS } from '../../game/content/world.js';
-import { checkPlacement, nudge } from '../../game/home-layout.js';
-import { isDeparting } from '../../game/registry.js';
+import { FURNITURE, KINDS } from '../../game/content/furniture.ts';
+import { homeOf } from '../../game/content/housing.ts';
+import { HOUSE_TIERS } from '../../game/content/world.ts';
+import { checkPlacement, nudge } from '../../game/home-layout.ts';
+import { isDeparting } from '../../game/registry.ts';
 
 /**
  * Shared with ./buy.js.

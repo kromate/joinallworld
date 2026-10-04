@@ -10,9 +10,9 @@ import { LOOK_OPTIONS, POSES, normalizeLook, drawAvatar, buildAvatar, buildCrowd
 import { createBatch, sceneMaterials } from './build.js';
 import { sign, textWidth, table, chair, bench, stall, speaker, screen, plant, palm, lampPost, signBoard } from './props.js';
 import { createVenueWorld, createHostLights, sceneVenue, HOST_LIGHTING } from '../venue-world.js';
-import { VENUES } from '../game/content/venues.js';
-import { NPCS } from '../game/content/npcs.js';
-import { spotsOf } from '../life.js';
+import { VENUES } from '../game/content/venues.ts';
+import { NPCS } from '../game/content/npcs.ts';
+import { spotsOf } from '../life.ts';
 
 const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery'];
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail (up to ~2,700 triangles, once), on top.
@@ -408,7 +408,7 @@ test('scene sources hold no frame loops or timers, and the dev harness is not a 
 });
 
 test('every game table stands in its venue’s scene: on free floor, reachable from the door, clear of markers and of each other', async () => {
-  const { TABLES, tablesAt } = await import('../tables/places.js');
+  const { TABLES, tablesAt } = await import('../tables/places.ts');
   const { TABLE_CLEAR, TABLE_REACH, TABLE_PLACES } = await import('./venue-scenes.js');
   const kit = createKit();
   const venues = [...new Set(TABLES.map((table) => table.venue))];

@@ -7,9 +7,9 @@
  * no timer of its own, so a new shout-out can take up to a poll interval to appear.
  */
 import { esc, money } from '../dom.js';
-import { RADIO } from '../../game/content/civic.js';
+import { RADIO } from '../../game/content/civic.ts';
 import { button, busy, entry, load, put, send, stale, status, until } from './civic-ui.js';
-import { isDeparting } from '../../game/registry.js';
+import { isDeparting } from '../../game/registry.ts';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { linkWords } from '../link.js';
 import { PANEL, inClub, key, path, schedule, song } from './radio-banner.js';

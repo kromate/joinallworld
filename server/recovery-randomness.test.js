@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {registerSystem} from '../src/game/registry.js';
-import {createLife} from '../src/life.js';
+import {registerSystem} from '../src/game/registry.ts';
+import {createLife} from '../src/life.ts';
 import {applyLifeAction} from './life-service.js';
 registerSystem({id:'randomness-probe',stateKeys:[],sanitize(){},actions:{'randomness-probe':(state,payload,ctx)=>({ok:true,code:'rolled',roll:ctx.rng(),state})}});
 test('portable server action uses server entropy, not client-selected action IDs',()=>{

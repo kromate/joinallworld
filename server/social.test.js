@@ -8,8 +8,8 @@ import { join } from 'node:path';
 import { fixture } from './test-fixture.js';
 import { LIMITS } from './social/service.js';
 import { RECONNECT_GRACE_MS } from './social/presence.js';
-import { SHIFT_SECONDS } from '../src/game/content/jobs.js';
-import { DEFAULT_LOOK } from '../src/game/content/traits.js';
+import { SHIFT_SECONDS } from '../src/game/content/jobs.ts';
+import { DEFAULT_LOOK } from '../src/game/content/traits.ts';
 
 const HOUR = 3600000;
 const get = async (f, path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };

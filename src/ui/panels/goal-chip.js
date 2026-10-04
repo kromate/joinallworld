@@ -12,7 +12,7 @@
  */
 import './goals.css';
 import { esc, json, iconFor, withGlyphs } from '../dom.js';
-import { nextNudge, nudged } from '../../quick-start/model.js';
+import { nextNudge, nudged } from '../../quick-start/model.ts';
 import { nudgesOf, keepNudges } from '../../quick-start/entry.js';
 
 let lastSeq = null, offeredTo = null, nudging = false;

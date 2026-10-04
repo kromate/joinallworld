@@ -3,14 +3,14 @@
 // they used to be the only users of is still there for the next place — checked with a made-up one.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLife, dispatch, advanceLife, viewLife, spotsOf } from './life.js';
-import { makeContext } from './game/util.js';
-import { isOpen } from './game/clock.js';
-import { VENUES, COMING_SOON, VENUE_CATEGORIES, GIG_DAILY_LIMIT } from './game/content/venues.js';
-import { AIRPORT, REFINERY } from './game/content/venues-transport.js';
-import { CITY_LINKS, CITY_RULES } from './game/content/world.js';
-import { quote, isGig, travelBlock } from './game/systems/travel.js';
-import { weatherAt } from './game/systems/health.js';
+import { createLife, dispatch, advanceLife, viewLife, spotsOf } from './life.ts';
+import { makeContext } from './game/util.ts';
+import { isOpen } from './game/clock.ts';
+import { VENUES, COMING_SOON, VENUE_CATEGORIES, GIG_DAILY_LIMIT } from './game/content/venues.ts';
+import { AIRPORT, REFINERY } from './game/content/venues-transport.ts';
+import { CITY_LINKS, CITY_RULES } from './game/content/world.ts';
+import { quote, isGig, travelBlock } from './game/systems/travel.ts';
+import { weatherAt } from './game/systems/health.ts';
 import { createKit } from './scene/kit.js';
 import { buildVenueScene, WALK, SPOT_REACH } from './scene/venue-scenes.js';
 import { createWalker } from './scene/movement.js';

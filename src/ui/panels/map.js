@@ -34,7 +34,7 @@
 import './map.css';
 import { esc, json, icon, mark, iconFor } from '../dom.js';
 import { linkWords, linkButton } from '../link.js';
-import { VENUE_CATEGORIES } from '../../game/content/venues.js';
+import { VENUE_CATEGORIES } from '../../game/content/venues.ts';
 import { chosenMode, fareText, fixButton, goBlock, modeIcon, statusClass, tripInfo, tripLine } from './world-ui.js';
 import { entry, load } from './civic-ui.js';
 

@@ -2,8 +2,8 @@
 // A shout-out is a title and an artist as plain text. Nothing is played: there is no audio and
 // no link. Each entry gets a fixed slot on server time, so "now playing" is derived, not ticked.
 // Portable and pure: functions take the city's civic data and a time.
-import { lagosTime } from '../../src/game/clock.js';
-import { RADIO } from '../../src/game/content/civic.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { RADIO } from '../../src/game/content/civic.ts';
 import { cleanLine } from './text.js';
 
 export const isClub = (venueId) => RADIO.venues.includes(venueId);

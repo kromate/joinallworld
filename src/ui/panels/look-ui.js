@@ -21,7 +21,7 @@
  */
 import './look-ui.css';
 import { esc, money, mark } from '../dom.js';
-import { APPEARANCE, BOUTIQUE_PRICES } from '../../game/content/traits.js';
+import { APPEARANCE, BOUTIQUE_PRICES } from '../../game/content/traits.ts';
 
 const hexOf = (group, id) => APPEARANCE[group].find((swatch) => swatch.id === id)?.hex ?? '#888888';
 export const lookLabel = (id) => APPEARANCE.labels[id] ?? id;

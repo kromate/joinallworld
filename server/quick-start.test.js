@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.js';
-import { JOIN_WINDOW_MS } from '../src/game/systems/onboarding.js';
+import { JOIN_WINDOW_MS } from '../src/game/systems/onboarding.ts';
 
 const LOOK = { body: 'woman', hair: 'braids', outfit: 'casual', fabric: 'ankara', skin: 'skin-6', hairColor: 'soft-black', outfitColor: 'orange', bottomsColor: 'teal' };
 async function open(f, name) {

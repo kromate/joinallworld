@@ -9,11 +9,11 @@ import './tables.css';
 import { esc, json, money, mark, empty, section } from '../dom.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { linkWords } from '../link.js';
-import { isDeparting } from '../../game/registry.js';
-import { tableById, GAME_LABELS } from '../../tables/places.js';
-import { T, start, openTable, closeTable, sit, leave, begin, again, play, setOption, reconnect, refreshList } from '../../tables/client.js';
-import { whotBoard, bindWhot, whotRules } from '../../tables/whot-board.js';
-import { penaltyBoard, bindPenalty, penaltyRules } from '../../tables/penalty-board.js';
+import { isDeparting } from '../../game/registry.ts';
+import { tableById, GAME_LABELS } from '../../tables/places.ts';
+import { T, start, openTable, closeTable, sit, leave, begin, again, play, setOption, reconnect, refreshList } from '../../tables/client.ts';
+import { whotBoard, bindWhot, whotRules } from '../../tables/whot-board.ts';
+import { penaltyBoard, bindPenalty, penaltyRules } from '../../tables/penalty-board.ts';
 import { G, share } from './growth-client.js';
 
 const ui = { choosing: null, params: null };

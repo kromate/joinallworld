@@ -15,28 +15,28 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { actionTypes, advanceLife, createLife, dispatch, makeContext, spotsOf, viewLife } from '../life.js'
-import { serverOnlyReason, systems } from '../game/registry.js'
-import { CITY_LABELS, CITY_MAPS, COMING_SOON, HOME_SPOTS, SCENE_KINDS, VENUE_CATEGORIES, VENUES } from '../game/content/venues.js'
-import { ALL_MODES, FARE_BANDS, TRAVEL_MODES } from '../game/content/travel.js'
-import { JOBS } from '../game/content/jobs.js'
-import { CATEGORIES, FURNITURE, HOME_ACTIVITIES, HOME_SPOTS as FURNITURE_HOME_SPOTS, KINDS, STARTER_FURNITURE } from '../game/content/furniture.js'
-import { INGREDIENTS, RECIPES } from '../game/content/food.js'
-import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, TRAITS } from '../game/content/traits.js'
-import { CARS } from '../game/content/cars.js'
-import { HOUSES } from '../game/content/housing.js'
-import { FAMILY, FAMILY_CALL, NPC_ACTIONS, NPCS, PLAYER_ACTIONS, TIERS, TRANSFER_LIMITS } from '../game/content/npcs.js'
-import { PERKS, STARTER_GOALS, WISHES } from '../game/content/goals.js'
-import { ACTIVITY_OUTCOMES, EVENTS } from '../game/content/events.js'
-import { HEALTH } from '../game/content/health.js'
-import { AD_COLOURS, AD_ICONS, BILLBOARDS, DISTRICTS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../game/content/civic.js'
-import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, linksFrom } from '../game/content/world.js'
-import { DAILY_MISSIONS, DAY_TITLES, MISSION_KINDS, MISSION_REWARDS, STAMP_CARD, WEEKLY_MISSIONS, WEEK_TITLE } from '../game/content/missions.js'
-import { EVENTS_CALENDAR, SPRAY } from '../game/content/calendar.js'
-import { REFERRAL, TABLE_REWARDS } from '../game/content/growth.js'
-import { DEPOSIT_TERMS, LOAN, RENTS } from '../game/systems/economy.js'
-import { NEEDS } from '../game/systems/needs.js'
-import { SKILLS } from '../game/systems/skills.js'
+import { actionTypes, advanceLife, createLife, dispatch, makeContext, spotsOf, viewLife } from '../life.ts'
+import { serverOnlyReason, systems } from '../game/registry.ts'
+import { CITY_LABELS, CITY_MAPS, COMING_SOON, HOME_SPOTS, SCENE_KINDS, VENUE_CATEGORIES, VENUES } from '../game/content/venues.ts'
+import { ALL_MODES, FARE_BANDS, TRAVEL_MODES } from '../game/content/travel.ts'
+import { JOBS } from '../game/content/jobs.ts'
+import { CATEGORIES, FURNITURE, HOME_ACTIVITIES, HOME_SPOTS as FURNITURE_HOME_SPOTS, KINDS, STARTER_FURNITURE } from '../game/content/furniture.ts'
+import { INGREDIENTS, RECIPES } from '../game/content/food.ts'
+import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, TRAITS } from '../game/content/traits.ts'
+import { CARS } from '../game/content/cars.ts'
+import { HOUSES } from '../game/content/housing.ts'
+import { FAMILY, FAMILY_CALL, NPC_ACTIONS, NPCS, PLAYER_ACTIONS, TIERS, TRANSFER_LIMITS } from '../game/content/npcs.ts'
+import { PERKS, STARTER_GOALS, WISHES } from '../game/content/goals.ts'
+import { ACTIVITY_OUTCOMES, EVENTS } from '../game/content/events.ts'
+import { HEALTH } from '../game/content/health.ts'
+import { AD_COLOURS, AD_ICONS, BILLBOARDS, DISTRICTS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../game/content/civic.ts'
+import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, linksFrom } from '../game/content/world.ts'
+import { DAILY_MISSIONS, DAY_TITLES, MISSION_KINDS, MISSION_REWARDS, STAMP_CARD, WEEKLY_MISSIONS, WEEK_TITLE } from '../game/content/missions.ts'
+import { EVENTS_CALENDAR, SPRAY } from '../game/content/calendar.ts'
+import { REFERRAL, TABLE_REWARDS } from '../game/content/growth.ts'
+import { DEPOSIT_TERMS, LOAN, RENTS } from '../game/systems/economy.ts'
+import { NEEDS } from '../game/systems/needs.ts'
+import { SKILLS } from '../game/systems/skills.ts'
 import { ACTION_TYPES, INBOUND_ACTIONS, SERVER_ONLY_ACTIONS, SOCIAL_SERVER_OPS } from './actions.ts'
 import type { ActionPayload, ActionResult, ActionType, InboundActionType, ServerOnlyActionType, SocialServerOp } from './actions.ts'
 import type {
@@ -631,11 +631,11 @@ test('a running timed action shows in the views that describe it', () => {
 
 // ---- registry: events and modifier keys ---------------------------------------------------
 
-/** Every non-test .js file of the rules engine, as text. */
+/** Every non-test .ts file of the rules engine, as text. */
 function engineSource(): string {
   const root = fileURLToPath(new URL('../game/', import.meta.url))
-  const files = (readdirSync(root, { recursive: true }) as string[]).filter((file) => file.endsWith('.js') && !file.endsWith('.test.js'))
-  return [...files.map((file) => readFileSync(`${root}${file}`, 'utf8')), readFileSync(fileURLToPath(new URL('../life.js', import.meta.url)), 'utf8')].join('\n')
+  const files = (readdirSync(root, { recursive: true }) as string[]).filter((file) => file.endsWith('.ts') && !file.endsWith('.test.ts'))
+  return [...files.map((file) => readFileSync(`${root}${file}`, 'utf8')), readFileSync(fileURLToPath(new URL('../life.ts', import.meta.url)), 'utf8')].join('\n')
 }
 const namesIn = (source: string, pattern: RegExp): string[] => [...new Set([...source.matchAll(pattern)].map((match) => match[1] ?? ''))].sort()
 

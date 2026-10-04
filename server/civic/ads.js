@@ -2,8 +2,8 @@
 // A creative is a short text line, a colour and an icon from fixed sets. There are no uploaded
 // images and no links, so a map can draw every ad procedurally from one response.
 // Portable and pure: functions take the city's civic data and a time.
-import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from '../../src/game/content/civic.js';
-import { adSlot } from '../../src/game/systems/civic.js';
+import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from '../../src/game/content/civic.ts';
+import { adSlot } from '../../src/game/systems/civic.ts';
 import { cleanLine } from './text.js';
 
 const DAY_MS = 86400000;

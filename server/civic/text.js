@@ -1,6 +1,6 @@
 // OWNER: civic — validation of every line of player text the civic features store.
 // Portable: no Node-only imports. Rendering code must still escape these values.
-import { cleanText } from '../../src/game/util.js';
+import { cleanText } from '../../src/game/util.ts';
 import { screenText } from '../moderation/text.js';
 
 // Zero-width and bidirectional-override characters can hide or reorder what a reader sees.

@@ -9,7 +9,7 @@ import './cars.css';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { esc, money, json } from '../dom.js';
 import { linkWords } from '../link.js';
-import { CAR_RESALE_RATE } from '../../game/content/cars.js';
+import { CAR_RESALE_RATE } from '../../game/content/cars.ts';
 
 /**
  * A drawn picture of a vehicle: a silhouette by kind (bike, saloon, SUV, coupé) in a colour of its

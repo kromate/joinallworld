@@ -2,7 +2,7 @@ import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from '.
 import { DurableObject } from 'cloudflare:workers';
 import { CITY_IDS, SESSION_TTL_MS, MAX_VOICE_MEMBERS, UUID_PATTERN, protocolError, validateName, validateActionPayload, publicSession, isSameOrigin, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, archivedLife, renewSession, venueRoomKey, validatePosition, withinVoiceDistance, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.js';
 import { settleCity, applyLifeAction } from '../server/life-service.js';
-import { VENUES } from '../src/life.js';
+import { VENUES } from '../src/life.ts';
 
 const json = (status, value, headers = {}) => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers } });
 const cookieId = request => (request.headers.get('cookie') || '').split(';').map(x => x.trim()).find(x => x.startsWith('sid='))?.slice(4);

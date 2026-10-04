@@ -12,8 +12,8 @@ import { estateLayout, plotAt } from './estates.js';
 import { createHouses, DETAIL_BUDGET } from './houses.js';
 import { createWorldData, ESTATES_KEPT } from './world-data.js';
 import { COUNTRIES, cityEntry } from './regions.js';
-import { VENUES, COMING_SOON } from '../game/content/venues.js';
-import { CITY_LINKS, CITY_RULES, ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE, packStyle } from '../game/content/world.js';
+import { VENUES, COMING_SOON } from '../game/content/venues.ts';
+import { CITY_LINKS, CITY_RULES, ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE, packStyle } from '../game/content/world.ts';
 
 const network = buildNetwork(pack), kit = createKit();
 const city = buildCity(kit, pack, network, { venues: VENUES, soon: COMING_SOON });

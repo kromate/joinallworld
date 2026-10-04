@@ -7,8 +7,8 @@
  */
 import { esc, json, money, mark, empty } from '../dom.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { upcomingEvents, eventIcs } from '../../game/calendar.js';
-import { isDeparting } from '../../game/registry.js';
+import { upcomingEvents, eventIcs } from '../../game/calendar.ts';
+import { isDeparting } from '../../game/registry.ts';
 import { G, load, share, span, until, channelLink } from './growth-client.js';
 
 const list = (view) => upcomingEvents(view.now, 7, view.cityId);

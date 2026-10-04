@@ -23,7 +23,7 @@
  * city has (the port, the airfield and the tank farm around the airport and refinery landmarks, Eko Atlantic).
  */
 
-import { LAGOS_LGAS } from '../../game/content/world.js';
+import { LAGOS_LGAS } from '../../game/content/world.ts';
 
 export const id = 'lagos';
 export const name = 'Lagos';

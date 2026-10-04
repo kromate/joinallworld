@@ -16,7 +16,7 @@
  *   plotAt(layout, x, z)      → { estate, plot } under the point, or null
  * Pure maths: no Three.js, no DOM. Layouts are cached per pack.
  */
-import { ESTATE } from '../game/content/world.js';
+import { ESTATE } from '../game/content/world.ts';
 import { landOf, scan } from './lga.js';
 
 const cache = new WeakMap();

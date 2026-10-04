@@ -3,9 +3,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createClient, outgoing, TEXT, STORAGE_KEY, roomJoinNeeded } from './client.js';
-import { dispatch } from './life.js';
-import { START_HOMES, TRAITS, DREAMS } from './game/content/traits.js';
-import { createLife } from './life.js';
+import { dispatch } from './life.ts';
+import { START_HOMES, TRAITS, DREAMS } from './game/content/traits.ts';
+import { createLife } from './life.ts';
 
 function harness({ online = true } = {}) {
   const calls = [], statuses = [], changes = [];

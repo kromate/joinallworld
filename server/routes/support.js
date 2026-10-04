@@ -16,7 +16,7 @@
  * they are still there after a reload. Operators read and answer reports through /api/mod/.
  */
 import { supportService } from '../support/service.js';
-import { statementOf } from '../../src/game/systems/wallet.js';
+import { statementOf } from '../../src/game/systems/wallet.ts';
 import { outcomeKey } from './core.js';
 
 export default function supportRoutes(ctx) {

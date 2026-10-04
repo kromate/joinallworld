@@ -12,8 +12,8 @@
  */
 import { esc, json, money, empty, avatar, mark, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
-import { NPCS } from '../../game/content/npcs.js';
-import { PRESENCE, presenceText, roomSummary } from '../../game/social-model.js';
+import { NPCS } from '../../game/content/npcs.ts';
+import { PRESENCE, presenceText, roomSummary } from '../../game/social-model.ts';
 import { S, start, bindCommon, gate, perform, loadPeople, loadProfile, cityId, newClientId, refreshLife } from './social-client.js';
 
 const STALE_MS = 20000;

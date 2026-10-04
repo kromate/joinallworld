@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { crowdList, playersHere, CROWD_LIMIT } from './crowd.js';
 import { MAX_CROWD } from './venue-scenes.js';
-import { createLife, viewLife } from '../life.js';
+import { createLife, viewLife } from '../life.ts';
 
 const ME = '11111111-2222-4333-8444-555555555555';
 const player = (n, more = {}) => ({ id: `0000000${n}-2222-4333-8444-555555555555`, name: `Player ${n}`, friend: false, ...more });

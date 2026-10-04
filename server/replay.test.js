@@ -8,9 +8,9 @@ import { join } from 'node:path';
 import { once } from 'node:events';
 import { fixture } from './test-fixture.js';
 import { createServer } from './server.js';
-import { makeRng } from '../src/game/util.js';
-import { spotsOf } from '../src/life.js';
-import { VENUES } from '../src/game/content/venues.js';
+import { makeRng } from '../src/game/util.ts';
+import { spotsOf } from '../src/life.ts';
+import { VENUES } from '../src/game/content/venues.ts';
 
 const pick = (rng, list) => list[Math.floor(rng() * list.length)];
 

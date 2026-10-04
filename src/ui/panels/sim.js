@@ -11,7 +11,7 @@ import { renderLgaCard, bindLgaCard } from './lga-card.js';
 import './sim.css';
 import { esc, cap, money, mark, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
-import { TRAITS, DREAMS, START_HOMES } from '../../game/content/traits.js';
+import { TRAITS, DREAMS, START_HOMES } from '../../game/content/traits.ts';
 import { lookStage, lookEditor, chooseLook, sameLook, lookSummary, lookTabClick, mountLookPreview } from './look-ui.js';
 
 const SEGMENTS = 10;

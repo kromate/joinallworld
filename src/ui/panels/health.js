@@ -9,7 +9,7 @@
  */
 import './health.css';
 import { esc, json, money, mark, iconFor } from '../dom.js';
-import { VENUES } from '../../game/content/venues.js';
+import { VENUES } from '../../game/content/venues.ts';
 
 function cureRow(cure, state, view) {
   const def = cure.activity ? Object.values(VENUES[cure.where].spots).flatMap((spot) => spot.activities).find((item) => item.id === cure.activity) : null;

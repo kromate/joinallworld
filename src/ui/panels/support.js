@@ -16,7 +16,7 @@
 import './support.css';
 import { esc, empty, skeleton } from '../dom.js';
 import { linkWords } from '../link.js';
-import { formatClock } from '../../game/clock.js';
+import { formatClock } from '../../game/clock.ts';
 import { noteReports, markReportsRead, noteFiled } from '../phone/reports.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 

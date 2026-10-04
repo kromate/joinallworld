@@ -10,8 +10,8 @@ import { createMotionLoop } from './motion-loop.js';
 import { SCENES, KINDS, WALK, WALK_DEFAULT, SPOT_REACH, buildVenueScene } from './venue-scenes.js';
 import { buildHomeScene } from './home-scene.js';
 import { sceneVenue } from '../venue-world.js';
-import { VENUES } from '../game/content/venues.js';
-import { createLife } from '../life.js';
+import { VENUES } from '../game/content/venues.ts';
+import { createLife } from '../life.ts';
 
 const near = (a, b, epsilon = 1e-6) => Math.abs(a - b) <= epsilon;
 /** Run a walker until it stops; returns the seconds it took. */

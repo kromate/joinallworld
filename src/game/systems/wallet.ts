@@ -13,8 +13,8 @@
  *   ledger      the last LEDGER_LIMIT changes in full, newest last
  *   ledgerDays  one summary per Lagos day on which the balance changed, newest last
  */
-import { emit } from '../registry.js'
-import { cleanText } from '../util.js'
+import { emit } from '../registry.ts'
+import { cleanText } from '../util.ts'
 import { lagosTime } from '../clock.ts'
 
 export const STARTING_CASH = 5000 // original beta value

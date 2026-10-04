@@ -88,8 +88,8 @@ import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './s
 import { createSceneControls } from './scene/controls.js';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.js';
 import { buildHomeScene } from './scene/home-scene.js';
-import { VENUES } from './game/content/venues.js';
-import { spotsOf } from './life.js';
+import { VENUES } from './game/content/venues.ts';
+import { spotsOf } from './life.ts';
 
 /**
  * The host's default lighting. hemi: [sky, ground, intensity] — the ground colour is the light that

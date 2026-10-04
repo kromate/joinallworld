@@ -11,7 +11,7 @@ import { fixture } from './test-fixture.js';
 import { createServer } from './server.js';
 import { ONCE } from './routes/once.js';
 import { ROUTE_MODULES } from './routes/index.js';
-import { registerSystem } from '../src/game/registry.js';
+import { registerSystem } from '../src/game/registry.ts';
 
 const HOUR = 3600000, DAY = 86400000;
 const get = async (f, path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };

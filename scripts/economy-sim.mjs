@@ -36,19 +36,19 @@
  * The assertions that encode the design intent are in src/game/economy.test.js.
  * Everything here is deterministic: the same arguments give the same table.
  */
-import { createLife, dispatch, advanceLife, viewLife } from '../src/life.js';
-import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../src/game/clock.js';
-import { blockReason, spotsOf, skillLevel } from '../src/game/api.js';
-import { VENUES } from '../src/game/content/venues.js';
-import { JOBS } from '../src/game/content/jobs.js';
-import { NPCS } from '../src/game/content/npcs.js';
-import { LOTTERY, START_HOMES } from '../src/game/content/traits.js';
-import { HOUSES, HOUSE_ORDER } from '../src/game/content/housing.js';
-import { CARS, CAR_ORDER } from '../src/game/content/cars.js';
-import { HOUSE_TIERS, TIER_ORDER, tierCost } from '../src/game/content/world.js';
-import { EVENTS } from '../src/game/content/events.js';
-import { DAILY_MISSIONS, WEEKLY_MISSIONS } from '../src/game/content/missions.js';
-import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.js';
+import { createLife, dispatch, advanceLife, viewLife } from '../src/life.ts';
+import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../src/game/clock.ts';
+import { blockReason, spotsOf, skillLevel } from '../src/game/api.ts';
+import { VENUES } from '../src/game/content/venues.ts';
+import { JOBS } from '../src/game/content/jobs.ts';
+import { NPCS } from '../src/game/content/npcs.ts';
+import { LOTTERY, START_HOMES } from '../src/game/content/traits.ts';
+import { HOUSES, HOUSE_ORDER } from '../src/game/content/housing.ts';
+import { CARS, CAR_ORDER } from '../src/game/content/cars.ts';
+import { HOUSE_TIERS, TIER_ORDER, tierCost } from '../src/game/content/world.ts';
+import { EVENTS } from '../src/game/content/events.ts';
+import { DAILY_MISSIONS, WEEKLY_MISSIONS } from '../src/game/content/missions.ts';
+import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.ts';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 

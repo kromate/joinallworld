@@ -5,7 +5,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import * as THREE from 'three';
 import { createVenueWorld, HOST_LIGHTING } from './venue-world.js';
 import { LIGHTING, MAX_CROWD } from './scene/venue-scenes.js';
-import { createLife } from './life.js';
+import { createLife } from './life.ts';
 
 function stubRenderer() {
   const calls = { render: 0 };
@@ -561,8 +561,8 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
 // ---- the finished camera and walking: every venue, sight lines, other players, markers ------------
 
 test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit all the way round, zoom to both limits — and the loop always stops', async () => {
-  const { VENUES } = await import('./game/content/venues.js');
-  const { spotsOf } = await import('./life.js');
+  const { VENUES } = await import('./game/content/venues.ts');
+  const { spotsOf } = await import('./life.ts');
   const report = [];
   for (const id of Object.keys(VENUES)) {
     const bench = motionBench({ location: id });

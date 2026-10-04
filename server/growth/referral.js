@@ -30,9 +30,9 @@
  *     determined farmer is the price: two real days of shifts per account for ₦1,500, twenty times.
  *   - Reward money cannot be passed on: gifts between players only move money earned from work.
  */
-import { lagosTime } from '../../src/game/clock.js';
-import { REFERRAL } from '../../src/game/content/growth.js';
-import { isShareCode } from '../../src/game/share-model.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { REFERRAL } from '../../src/game/content/growth.ts';
+import { isShareCode } from '../../src/game/share-model.ts';
 import { keyed, LIMITS, playerOf } from './data.js';
 import { findShare } from './share.js';
 import { count } from './metrics.js';

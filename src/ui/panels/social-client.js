@@ -13,7 +13,7 @@
  * bounded reconnect back-off and single follow-up checks.
  */
 import './social.css';
-import { createOutbox, mergeMessages, inviteIdFrom, freshSocial, SEND_TIMEOUT_MS } from '../../game/social-model.js';
+import { createOutbox, mergeMessages, inviteIdFrom, freshSocial, SEND_TIMEOUT_MS } from '../../game/social-model.ts';
 import { linkWords, linkButton } from '../link.js';
 
 const MAX_ATTEMPTS = 6;

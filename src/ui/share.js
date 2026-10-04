@@ -8,7 +8,7 @@
  * The card is drawn once per share, on demand, from the game's own colours and the page's font.
  * No image is downloaded for it and no loop runs.
  */
-import { shareCard, shareText, whatsappUrl, xUrl } from '../game/share-model.js';
+import { shareCard, shareText, whatsappUrl, xUrl } from '../game/share-model.ts';
 
 export const CARD_SIZE = 1080;
 const FONT = '"DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';

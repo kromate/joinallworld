@@ -1,6 +1,6 @@
 // Portable protocol rules shared by the Node server and the Cloudflare worker.
 // No Node-only imports here (no node:*, ws or fs): the worker bundles this file as-is.
-import { hasAction, isDeparting, occupiesVenue } from '../src/life.js';
+import { hasAction, isDeparting, occupiesVenue } from '../src/life.ts';
 import { screenText } from './moderation/text.js';
 
 export const MAX_PAYLOAD_BYTES = 2048;

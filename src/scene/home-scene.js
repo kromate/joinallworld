@@ -44,14 +44,14 @@
  * The camera and canvas are learned from the renderer at draw time (onBeforeRender), so taps
  * are resolved with the exact camera the host used.
  */
-import { FURNITURE, KINDS } from '../game/content/furniture.js';
+import { FURNITURE, KINDS } from '../game/content/furniture.ts';
 import { createBatch, sceneMaterials, releaseObjects } from './build.js';
 import { drawAvatar, buildAvatar, POSES } from './characters.js';
 import { playerOptions, rigOf } from './avatar-rig.js';
 import { createWalkGrid } from './movement.js';
-import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.js';
-import { HOUSE_DESIGNS } from '../game/content/world.js';
-import { footprint, windowSlot, doorSlot } from '../game/home-layout.js';
+import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
+import { HOUSE_DESIGNS } from '../game/content/world.ts';
+import { footprint, windowSlot, doorSlot } from '../game/home-layout.ts';
 
 const ROOM = 10;         // world units along each wall, whatever the grid size
 const WALL_HEIGHT = 3.4;

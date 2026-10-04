@@ -32,11 +32,11 @@
  * (src/game/systems/growth.js), with the record that makes a repeat harmless written in the same
  * transaction. A share pays nothing. See server/growth/referral.js for the referral rules.
  */
-import { viewLife } from '../../src/life.js';
-import { lagosTime } from '../../src/game/clock.js';
-import { upcomingEvents } from '../../src/game/calendar.js';
-import { composeDigest } from '../../src/game/digest.js';
-import { isShareCode } from '../../src/game/share-model.js';
+import { viewLife } from '../../src/life.ts';
+import { lagosTime } from '../../src/game/clock.ts';
+import { upcomingEvents } from '../../src/game/calendar.ts';
+import { composeDigest } from '../../src/game/digest.ts';
+import { isShareCode } from '../../src/game/share-model.ts';
 import { growthOf, playerOf, sweep, LIMITS } from '../growth/data.js';
 import { createShare, findShare, sharePageHtml } from '../growth/share.js';
 import { referralService } from '../growth/referral.js';

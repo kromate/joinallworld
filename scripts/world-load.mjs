@@ -32,10 +32,10 @@ import { join } from 'node:path';
 import { once } from 'node:events';
 import { randomUUID } from 'node:crypto';
 import { createServer } from '../server/server.js';
-import { lagosTime } from '../src/game/clock.js';
+import { lagosTime } from '../src/game/clock.ts';
 import { createShardStore } from '../server/world/shards.js';
 import * as registry from '../server/world/registry.js';
-import { ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE } from '../src/game/content/world.js';
+import { ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE } from '../src/game/content/world.ts';
 
 const arg = (name, fallback) => { const at = process.argv.indexOf(`--${name}`); return at > 0 ? Number(process.argv[at + 1]) : fallback; };
 const RESIDENTS = arg('residents', 100000), PLAYERS = arg('players', 200), SECONDS = arg('seconds', 8), CITY_TOTAL = 2_000_000;

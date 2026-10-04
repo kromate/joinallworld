@@ -1,4 +1,4 @@
-// Adapted from the user-supplied parity/shots/shot.mjs headless CDP workflow.
+// Headless CDP screenshot workflow. Set CHROME_PATH to a headless Chromium or Chrome binary.
 import { spawn } from 'node:child_process';
 import { mkdir, mkdtemp, rm, writeFile, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -10,7 +10,8 @@ interface LifeResponse{state:{name:string;cash:number;onboarding:{look:unknown}}
 const root=process.cwd(),out=resolve(root,'src/models/evidence/integration'),cache=resolve(root,'src/models/.cache');
 await mkdir(out,{recursive:true});await mkdir(cache,{recursive:true});
 const profile=await mkdtemp(resolve(cache,'model-chrome-'));
-const chrome=spawn('/Users/anthonyakpan/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-arm64/chrome-headless-shell',
+const chromeBin=process.env.CHROME_PATH;if(!chromeBin)throw new Error('Set CHROME_PATH to a headless Chromium or Chrome binary');
+const chrome=spawn(chromeBin,
   ['--remote-debugging-port=3409',`--user-data-dir=${profile}`,'--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader','--hide-scrollbars','about:blank'],{stdio:'ignore'});
 /** One message from the Chrome DevTools Protocol socket. */
 interface CdpMessage{id?:number;result?:unknown;error?:unknown;method?:string;params?:{exceptionDetails:{text:string;exception?:{description?:string}}}}

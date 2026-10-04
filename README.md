@@ -505,7 +505,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Third-party data and dependency licences are listed in [NOTICE.md](NOTICE.md).
 
 Direct dependencies: [Three.js](https://threejs.org/) (MIT), [Vite](https://vite.dev/) (MIT), [ws](https://github.com/websockets/ws) (MIT), [Vue](https://vuejs.org/) (MIT), and — downloaded by a browser only when telemetry is configured — [@sentry/browser](https://github.com/getsentry/sentry-javascript) (MIT) and [posthog-js](https://github.com/PostHog/posthog-js) (Apache-2.0 and MIT). The server sends telemetry with `fetch` and has no SDK. All scene and city-map geometry is written in code.
 

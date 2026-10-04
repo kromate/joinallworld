@@ -555,30 +555,27 @@ Four branches are changing the JavaScript now. Until the freeze:
    `node scripts/typecheck.ts --update` and commit the baseline with the merge.
 6. **If `src/types/engine.test.ts` or `protocol.test.ts` fails after your change, that is the
    point**: you added an action, a state key, a view key, a route or a frame. Add it to the type
-   it names. The merge of `parity/owner` into this branch tripped two (the session's `cities`, the
+   it names. Merging the main game into this branch tripped two (the session's `cities`, the
    beta looks) and each was a two-line fix.
 7. **If you change what a panel in `features/panels.ts` shows** (Bank, Messages, Report a
-   problem), say so: the Vue version has to follow. After the `parity/owner` merge it took one
+   problem), say so: the Vue version has to follow. After that merge it took one
    commit to bring the three up to date.
 8. **Do not change the panel contract, `createClient`'s options, or the scene host's public
    methods** without saying so: the Vue shell is typed against them.
 
 ## The freeze point
 
-Steps 2 to 8 rename and rewrite existing files, so they cannot run under four moving branches.
+Steps 2 to 8 rename and rewrite existing files, so they cannot run while other branches are still changing the same files.
 
-**The freeze is the moment `parity/owner`, `parity/world-scale`, the design branch and the
-missions and mini-games branch are merged into one combined build that passes every check above.**
+**The freeze is the moment all in-flight feature branches are merged into one build that passes every check above.**
 From that commit:
 
-1. merge it into `parity/vue-ts`, follow the conformance tests, re-record the baseline;
+1. merge it into this branch, follow the conformance tests, re-record the baseline;
 2. no branch edits `src/game/**`, `server/protocol.ts` or `server/life-service.ts` until step 2
-   lands (about a week);
+   lands;
 3. after that, each step freezes only the files it names, and says so the day before.
 
-`parity/vue-ts` already contains `parity/owner` at `c5e803e`.
-
-## Decisions for the owner
+## Open decisions
 
 | Decision | Recommendation |
 |---|---|

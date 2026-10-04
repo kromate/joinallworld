@@ -73,7 +73,7 @@ test('scrubEvent rebuilds a Sentry event from allowed fields: hostile data in an
       { category: 'console', message: CHAT }, { category: 'ui.click', message: 'button[title="Ada Obi"]' }, { category: 'fetch', data: { url: '/api/social/search?q=Ada+Obi' } },
       { category: 'ui.input', message: CHAT }, { category: 'navigation', data: { to: '/?invite=abc123' } },
     ],
-    server_name: 'anthonys-macbook.local', modules: { ws: '8' }, sdk: { name: 'sentry.javascript.browser', version: '11.4.0', integrations: ['x'] },
+    server_name: 'dev-laptop.local', modules: { ws: '8' }, sdk: { name: 'sentry.javascript.browser', version: '11.4.0', integrations: ['x'] },
   };
   const event = scrubEvent(hostile, { userId: PUBLIC });
   assert.ok(event);

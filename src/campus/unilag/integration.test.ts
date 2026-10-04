@@ -14,7 +14,7 @@ import community from './games.ts';
 import shuttle from './shuttle.ts';
 import {PROGRAMMES} from './curriculum.ts';
 
-// This is the integration the parity owner must perform in the real registry.
+// This is the integration a host must perform in the real registry.
 VENUES.unilag=UNILAG_VENUE;Object.assign(NPCS,CAMPUS_NPCS);
 const {createLife,dispatch:dispatchTyped,advanceLife,viewLife}=await import('../../life.ts');
 /** Loose on purpose, like a request body. */

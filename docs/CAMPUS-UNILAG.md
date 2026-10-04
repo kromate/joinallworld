@@ -1,6 +1,6 @@
 # UNILAG Akoka research ledger
 
-Status: research completed before implementation. The isolated `astra/unilag` work is being integrated into current main on `codex/unilag-main`, following the explicit integration/merge request. The source branch base was `c5e803e`; the integration base is main `2079f78`. This is a fictional Allworld beta, not university software or a real admission service.
+Status: research completed and campus integrated into the game. This is a fictional Allworld beta, not university software or a real admission service.
 
 Checked: 4 October 2026 (Africa/Lagos)
 
@@ -80,34 +80,33 @@ Queen Amina is separate from New Hall and lies south of Education. Clinical/Dent
 
 ## Delivery tracker
 
-All SHAs are immutable, local-only, cumulative commits on `astra/unilag`. No branch was merged, rebased or pushed. The gates/core commit includes the larger campus data so later units share one coordinate system.
+The campus was built in six cumulative units. The gates/core unit includes the larger campus data so later units share one coordinate system.
 
-| Unit | Outcome and evidence level | Immutable source SHA |
-|---|---|---|
-| 1 | Research ledger, layout, gate/core walking preview; browser inspected | `82f0534a50c3ae7676fd9be2100c6eca19479e1b` |
-| 2 | Zone residency, full resident budgets, exact routing and disposal checks | `0a606480ce7632ecf9b3f495e27a6d832842c027` |
-| 3 | Visitor activities, discovery content, 12 fictional NPCs; catalogue checks | `1fa82b5087bd6f7e96e0a6331972c1d3d71fa044` |
-| 4 | Seven programmes, student progression/fees/storage/jobs; engine checks | `bb7df7f82b73c03d541cf378ab30db0ad872b970` |
-| 5 | Games, visitor trail, clubs/events, shared election/leaderboard/goal reducers | `fb3b5accb51b0142746b40511c2db1a82e7b44aa` |
-| 6 | Shuttle, city landmark, continuous roads, pool collision, real combined engine integration probe | `8487a78509c7059e14e19961b22d23a7ecdee176` |
+| Unit | Outcome and evidence level |
+|---|---|
+| 1 | Research ledger, layout, gate/core walking preview; browser inspected |
+| 2 | Zone residency, full resident budgets, exact routing and disposal checks |
+| 3 | Visitor activities, discovery content, 12 fictional NPCs; catalogue checks |
+| 4 | Seven programmes, student progression/fees/storage/jobs; engine checks |
+| 5 | Games, visitor trail, clubs/events, shared election/leaderboard/goal reducers |
+| 6 | Shuttle, city landmark, continuous roads, pool collision, real combined engine integration probe |
 
-The code units are locally verified. Parity host wiring, real shared-store persistence, real device performance and unresolved campus fidelity items are open. These are not production completion claims.
+The code units are verified locally. Real shared-store persistence, real device performance and unresolved campus fidelity items are open. These are not production completion claims.
 
-## Original handoff requests (superseded by main integration)
+## Host wiring requirements
 
-The campus lane does not edit existing files. The parity owner must register `UNILAG_VENUE` in the venue catalogue, `buildUnilag` for scene kind `unilag`, and campus systems in the registry. The preview is isolated from the game server; no production delivery is claimed.
+The campus modules do not edit existing game files. The host must register `UNILAG_VENUE` in the venue catalogue, `buildUnilag` for scene kind `unilag`, and campus systems in the registry. The preview is isolated from the game server; no production delivery is claimed.
 
 The current `src/scene/crowd.ts` clamps positions to 20 units, and the server position protocol is venue-sized. Campus positions need a per-venue range and walk validation using campus bounds, without weakening other venue validation. Host walking should use the scene's coarse-plus-fine `walk.grid.path` adapter. Camera occlusion receives `walk.solids` including heights. Campus LOD changes only from `setPosition`/`walk.move`, never a timer.
 
-The owner must wire the Campus phone app to the student view, the existing Bank phone app at `access-bank`, existing shared table games at Student Union, transactional shared elections/leaderboards, city travel arrival at Main Gate, and analytics events at the UI host. The campus rule modules emit domain events and do not dispatch DOM events. Integration event example: `window.dispatchEvent(new CustomEvent('jaw:track', {detail:{name, props}}))`.
+The host must wire the Campus phone app to the student view, the existing Bank phone app at `access-bank`, existing shared table games at Student Union, transactional shared elections/leaderboards, city travel arrival at Main Gate, and analytics events at the UI host. The campus rule modules emit domain events and do not dispatch DOM events. Integration event example: `window.dispatchEvent(new CustomEvent('jaw:track', {detail:{name, props}}))`.
 
 ## Local development
 
-Existing dependencies are reused from the owner checkout; no new npm dependencies or package-file edits. Run `node ../JoinAllworld/node_modules/vite/bin/vite.js --config src/campus/unilag/preview.config.ts` from this worktree. Preview: `http://127.0.0.1:3410/campus.html`. Only ports 3410 and the private screenshot browser port 3419 belong to this task. Port 3300 is untouched.
+Existing dependencies are reused; no new npm dependencies or package-file edits. Run `npx vite --config src/campus/unilag/preview.config.ts` from the repository root. Preview: `http://127.0.0.1:3410/campus.html`. The preview uses port 3410 and the private screenshot browser uses port 3419.
 
-Node checks use `NODE_OPTIONS='--import ./src/campus/shared/resolve-local.mjs'` to resolve the owner's existing three/vite/ws packages. `capture.mjs` adapts the supplied private headless harness, removes its own browser profile, and records real renderer counts, exceptions, phone overflow and idle frame count. Software GL is not a measurement of Android frame rate.
+Node checks use `NODE_OPTIONS='--import ./src/campus/shared/resolve-local.mjs'` to resolve the existing three/vite/ws packages. `capture.ts` is a private headless screenshot harness: set `CHROME_PATH` to a headless Chromium or Chrome binary before running it. It removes its own browser profile, and records real renderer counts, exceptions, phone overflow and idle frame count. Software GL is not a measurement of Android frame rate.
 
-Routing: Luna handled two bounded research units and content. Sol handled layout/navigation and rules/shuttle units. Parent owns architectural decisions, integration, geometry, interactive inspection and acceptance. Retries and outcomes are in this chat; token/currency cost is unavailable and no cost saving is claimed.
 
 ## Initial scene verification
 
@@ -127,17 +126,17 @@ Routing: Luna handled two bounded research units and content. Sol handled layout
 | `shuttle.js` | default system `unilagShuttle`, `SHUTTLE_STOPS`, `shuttleRoute`, `shuttlePose`, `buildShuttle` | Fare/timer authority and host-driven visible ride |
 | `landmark.ts` | `MAP_PLACEMENT`, `buildUnilagLandmark` | Lagos map miniature; x15/z-42, footprint14x10, approximate mainland presentation coordinates |
 
-Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The combined `integration.test.js` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. The isolated source lane did not edit registry files; the main integration below now registers these systems.
+Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The `integration.test.js` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. The isolated source lane did not edit registry files; the main integration below now registers these systems.
 
 Host travel arrives at `main-gate`. Call `walk.move(x,y,z,ry)` or `setPosition(x,z)` when the player moves. `walk.grid.path` routes through portals and rejects partial A* fallback results. Render only in the host's bounded motion loop. Supply the player's recorded appearance through `setPlayer`. Labels are plain text; DOM consumers must use `textContent`. `tags()` includes landmarks and a capped 12-person crowd. Scene, shuttle and landmark provide disposal hooks and share kit materials. `lighting()` returns the host's tuple shape, not preview-specific objects.
 
-The scene has level floors and `raised: []`. Auditorium/grandstand/room layouts are open-front interpretations. It does not claim surveyed steps, ramps, storeys or accessibility geometry. Camera solids carry heights; host occluder ghosting remains the existing owner's responsibility. The preview performs inexpensive bounding-box label occlusion. Its controls, grid and fake-clock shuttle are developer tools, never a client route to grant currency or progress.
+The scene has level floors and `raised: []`. Auditorium/grandstand/room layouts are open-front interpretations. It does not claim surveyed steps, ramps, storeys or accessibility geometry. Camera solids carry heights; host occluder ghosting remains the host's responsibility. The preview performs inexpensive bounding-box label occlusion. Its controls, grid and fake-clock shuttle are developer tools, never a client route to grant currency or progress.
 
 The shuttle follows the connected beta road graph. Its first/last walking connectors are exported separately. `shuttlePose` describes the vehicle on the road, from authoritative remaining/duration or a supplied server time; the host must animate the walk to/from the stop using those connectors, preserve venue room membership, and show cancellation returning to the origin. The preview demonstrates the road ride without charging a real game wallet. Stops are `main-gate`, `new-hall-shopping`, `senate`, `engineering`, `sports-centre`, `second-gate`, `dli-building`, `lagoon-front`.
 
 The Jobs hook currently gives +1 positive `career.performance` only for an existing matching track. Computer/EEE map to Tech, English to Teaching, Business/Economics to Banking. Mechanical and Civil emit the degree event with a null career track, because there is no matching engineering career in this baseline. The owner must add an appropriate career mapping; a mechanical degree is not falsely treated as a Fitness job qualification.
 
-The shared election/leaderboard/goal functions never persist their own shared state. The route owner must derive identity from its authenticated life, execute reducers and server-only life receipts within the same durable transaction, and use domain events for scores. Client payloads must never supply trusted `authority`, results, faculty or hall. Weekly caps are finite. Quiz answers are absent from views but are readable in shared source; this is a casual game, not a secure examination platform.
+The shared election/leaderboard/goal functions never persist their own shared state. The route handler must derive identity from its authenticated life, execute reducers and server-only life receipts within the same durable transaction, and use domain events for scores. Client payloads must never supply trusted `authority`, results, faculty or hall. Weekly caps are finite. Quiz answers are absent from views but are readable in shared source; this is a casual game, not a secure examination platform.
 
 ## Original beta numbers
 
@@ -165,23 +164,21 @@ All are in-game values, unrelated to real admissions, fees, degrees or hostel al
 
 ## Final local verification
 
-Source under test: `8487a78509c7059e14e19961b22d23a7ecdee176`.
-
 - Campus-specific Node tests: **34 passed**. This includes actual venue + NPC loading order with all three campus systems, fees/ledger conservation, active-action save/reload, once-only job rewards, admission through graduation, failed/cancelled paths, hostile-save bounds, games/reducers and every exact route.
 - Existing full suite: **535 passed, 4 skipped, 0 failed**, 539 tests discovered. The skipped cases belong to the existing suite, not claimed as passed.
-- Existing edge suite: **14 passed** using installed tooling via `JOINALLWORLD_TOOLS=/Users/anthonyakpan/Desktop/JoinAllworld/deploy/tooling`. The final campus additions do not register in the production edge entry.
+- Existing edge suite: **14 passed** using installed tooling via `JOINALLWORLD_TOOLS=<repo>/deploy/tooling`. The final campus additions do not register in the production edge entry.
 - App entry build and standalone campus preview build both passed. Only dependency resolution/output paths were supplied by the campus build wrappers; existing source/config/package files remain unchanged. Vite reports the existing large Three.js bundle warning. The isolated checkout has no dependency installation of its own.
 - Worst complete resident scene observed by the geometry probe: **37,450 triangles,37 draw calls**, including twelve crowd figures and distant silhouettes. Two visible navigation rings add80 triangles/two calls; the shuttle adds244 triangles/two calls. Conservative combined bound: **37,774 triangles,41 calls**, under60,000/60. City landmark is936 triangles/two calls. No real-time shadow maps.
 - Geometry disposal probe counts one disposal for each observed scene resource across zone changes; kit-owned shared materials remain until kit disposal. Repeated movement within a zone builds no geometry.
 - Headless Chromium/SwiftShader at1280x800 and390x844: zero recorded runtime exceptions; phone scrollWidth390; idle frame count stable. A real browser path from Senate to Library reached the exact anchor and stopped rendering. This is not a hardware Android FPS measurement.
 
-Commands and full logs are in `src/campus/unilag/evidence/`. The app build used `npm run build -- --config src/campus/unilag/app-build.config.ts --configLoader native --outDir dist`, with owner Vite on PATH and the local resolver in NODE_OPTIONS. `npm test` uses that same resolver. Edge tests use JOINALLWORLD_TOOLS. Generated build output is ignored and is not a source modification.
+Commands and full logs are in `src/campus/unilag/evidence/`. The app build used `npm run build -- --config src/campus/unilag/app-build.config.ts --configLoader native --outDir dist`, with Vite on PATH and the local resolver in NODE_OPTIONS. `npm test` uses that same resolver. Edge tests use JOINALLWORLD_TOOLS. Generated build output is ignored and is not a source modification.
 
 ## Screenshots inspected and fidelity review
 
-Evidence directory: `/Users/anthonyakpan/Desktop/JoinAllworld-astra-unilag/src/campus/unilag/evidence/`.
+Evidence directory: `src/campus/unilag/evidence/` (ignored by git; regenerate with the capture tool).
 
-The parent inspected `contact-day.png` and `contact-night.png`, which cover Main Gate, New Hall/2001, academic core/Senate, Sports, Medical/Central Gardens, Engineering/Science, Second Gate, DLI, South Campus, Lagoon Front, Library, Access Bank, Mariere room and auditorium. Individual images are `<landmark>-day.png` and `<landmark>-night.png`; DLI uses `dli-building`. The South zone is `south-day.png` / `south-night.png`.
+The reviewed images include `contact-day.png` and `contact-night.png`, which cover Main Gate, New Hall/2001, academic core/Senate, Sports, Medical/Central Gardens, Engineering/Science, Second Gate, DLI, South Campus, Lagoon Front, Library, Access Bank, Mariere room and auditorium. Individual images are `<landmark>-day.png` and `<landmark>-night.png`; DLI uses `dli-building`. The South zone is `south-day.png` / `south-night.png`.
 
 Additional inspected files: `phone-senate.png`, `phone-hall-interior-grid.png`, `shuttle-midpoint.png`, plus direct full-size Senate, Library, cafeteria and Lagoon Front images. `render-report.json` records counts, exact walking endpoint, phone width and exceptions. Research map/PDF material is kept only in ignored `evidence/reference/`, never imported as runtime art.
 
@@ -191,9 +188,8 @@ Observed limits: many faculty/hall exteriors remain simple massing with signs; t
 
 ## Main integration, 4 October 2026
 
-The requested campus commits were cherry-picked onto current main instead of merging their old parity base wholesale. The old source branch diverged by 167 commits and a direct merge would replace unrelated release fixes. `codex/unilag-main` contains the campus changes and targeted integration only. Current main is rechecked before merge so concurrent work is preserved.
+The campus was integrated into the game as targeted changes rather than a wholesale merge of the older base, so unrelated release fixes are preserved.
 
-Implemented wiring: venue/NPC registration before social catalogue evaluation; three campus systems in the game registry; lazy Campus phone app with Overview, Study, Residence and Community; dedicated campus walking host behind the existing venue API; live server-timed shuttle; mini-map and touch controls; actual room positions with campus-only walkability bounds; Lagos map destination and Lagos-only travel; authenticated transactional shared election routes and server-saved score/goal projections. Ordinary venue rendering and position bounds remain on their existing implementations. Required walking/pose code is isolated under `src/campus/shared` rather than importing the whole parity engine.
 
 Shared routes are `GET /api/campus?city=lagos`, `POST /api/campus/nominate` and `POST /api/campus/vote`. POST bodies include cityId and the existing timestamp:UUID actionId; vote also includes candidateId. The server derives identity from the stored life, uses the existing durable command/receipt transaction, and commits a ballot together with the per-life receipt. Invalid candidates roll both back. Shared standings derive from server-saved bounded game records, never client-submitted points.
 
@@ -203,7 +199,7 @@ Current main has an SVG city map, so the live entry is its UNILAG pin; the expor
 
 ### Final integration verification
 
-Concurrent main commit `7c2c911` added consent-gated telemetry during this task. It was merged into the integration branch as `dcd1abd`, preserving its client instrumentation, Worker routes, release fixes and package state. Campus source integration commit: `242d13d`.
+Consent-gated telemetry landed alongside the campus work and was merged with its client instrumentation, Worker routes, release fixes and package state preserved.
 
 Browser verification exposed and fixed a client hydration bug: `createClient` rebuilt server snapshots with a zero-time context, removing valid in-flight shuttles and current quizzes. Hydration now uses the snapshot's server time and city. Two new client tests cover an active shuttle/polling and a quiz with a skewed local wall clock. No server-only trust flag or local reward grant was added.
 
@@ -211,15 +207,15 @@ Actual integrated browser proof at390x844: the Engineering-to-Lagoon Front shutt
 
 A real two-WebSocket test joins two campus lives at the main gate, broadcasts x120/z-160 to both peers, and rejects x360/z0 in the lagoon. Ordinary venue bounds still reject coordinates beyond20. Shared route tests prove identity-derived nominations, replay receipts, invalid-vote rollback, public-action rejection and server-saved leaderboards.
 
-Acceptance evidence lives in the integration checkout `/Users/anthonyakpan/.codex/worktrees/8053/JoinAllworld/src/campus/unilag/evidence/`: `integrated-campus-overview.png`, `integrated-study.png`, `integrated-registered.png`, `integrated-hostel.png`, `integrated-walk-library.png`, `integrated-shuttle-moving.png` and `integrated-shuttle-arrived.png`. The last screenshot includes the deliberately enabled diagnostics overlay; the normal game has no such overlay. The parent inspected these images.
+Acceptance screenshots (regenerated locally under the ignored `src/campus/unilag/evidence/`): `integrated-campus-overview.png`, `integrated-study.png`, `integrated-registered.png`, `integrated-hostel.png`, `integrated-walk-library.png`, `integrated-shuttle-moving.png` and `integrated-shuttle-arrived.png`. The last screenshot includes the deliberately enabled diagnostics overlay; the normal game has no such overlay.
 
 Final combined checks: full test suite435 passed; edge suite28 passed; production Vite build passed, with the pre-existing large-chunk warning. These are local checks. The source-only main merge does not deploy the app or assert Android hardware performance.
 
-## In the combined game (branch `combine/all`)
+## Wiring in the current game
 
-Everything above describes the campus as it was built on `astra/unilag` and integrated into the earlier `main`. In the combined game it is wired against the newer registries; where the two differ, this section is the truth.
+Everything above describes the campus as first built. In the current game it is wired against the newer registries; where the two differ, this section is the truth.
 
-| Seam | In the combined game |
+| Seam | In the current game |
 | --- | --- |
 | Venue catalogue | `unilag` is the 26th place (25 venues and the campus), Lagos only (`cities: ['lagos']`: other cities neither list nor accept it). It has no `hours`: open at any hour. |
 | Engine systems | `unilagStudent`, `unilagCommunity`, `unilagShuttle` are registered after `growth`. A guest of the quick start is refused every student action (apply, matriculate, register, lecture, assignment, test, close, defer, resume, drop, hostel, campus job, election) with `settle_required` — `GUEST_CAMPUS` in `src/game/systems/onboarding.ts`; visiting, the trail, the games and the shuttle stay open. |

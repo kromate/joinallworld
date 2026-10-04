@@ -1,36 +1,36 @@
 # Allworld procedural model library
 
-## In the combined game (branch `combine/all`)
+## Current status in the game
 
-This document was written on `astra/models`, where the library was wired into an older copy of the game. The combined game keeps its own, newer implementations as the running game; what follows says exactly what of this branch is in use. Everything below this section describes the `astra/models` branch as it was delivered.
+The model library was first wired into an earlier build of the game. The current game keeps its own, newer implementations as the running game; this section says exactly what of the library is in use. Everything below it describes the library and its integration as first delivered.
 
-| Part of this branch | In the combined game |
+| Part of the library | In the current game |
 | --- | --- |
 | The library: `src/models/{vehicles,people,environment,geo}`, its tests, measurements, provenance, research notes | **Adopted whole.** Tested by `npm test` (34 tests). Loaded by nothing in the game unless a flag below is on. |
 | The workshop: `models.html`, `src/models/preview.ts`, `src/models/tooling/**` | **Adopted whole**, development only (not a build input). The `game-dev.ts` / `integration-*.json` runner drove the old integrated preview and is kept for reference. |
-| Trip vehicles on the 3D city map (`17b7c00`, `src/models/integration/scene-models.ts`) | **Available, OFF by default.** `?models=vehicles` makes the travelling player ride a model-library vehicle (danfo, keke, okada, cab, own car) on real seat anchors, with wheels, steering and day/night lights. Its code is fetched only then (`src/map3d/index.ts` → `createMap3D({ travelVehicle })` → `createActor`). Off, the game draws its own batch-drawn vehicle exactly as before. A model vehicle is at most 1,500 triangles and 8 draw calls (asserted); the game's own is one mesh, which is why it stays the default until the map's draw-call budget has been measured on a phone with the flag on. |
-| Avatars through the scene contracts (`9886a6f`: `src/scene/characters.ts` replaced by a facade over `src/models/people`) | **Not wired.** The game's avatar system was rebuilt after this branch forked (three detail levels, a rig, walk and jog cycles, accessories, the creator) and is what every scene, the creator and the Boutique are verified against. `src/models/people` remains in the library and the workshop. The byte-for-byte "legacy" copies this branch made (`characters-legacy.js`, `world-map-legacy.js`) are not kept: the game's current files are the running implementations. |
-| Home / market landmarks, the canoe and the lagoon water material in the city (`17b7c00`, `src/map3d/city-build.ts`) | **Not wired.** The city build was rewritten since (local governments, estates, houses, the airport and refinery, the UNILAG campus); `src/models/environment` remains in the library and the workshop. |
-| The geographic explorer with Kenya (`cc8db0d`: `src/world-map.ts` replaced, `src/models/integration/geography-view.ts`) | **Not wired.** The game has its own world → Africa → Nigeria atlas with inter-city travel wired to the server. `src/models/geo` (world, Africa, Nigeria, Kenya, with the Kenya geoBoundaries attribution in `geo/provenance.json`) remains in the library and the workshop; `geography-view.js` is kept as the adapter a later integration would start from. |
+| Trip vehicles on the 3D city map (`src/models/integration/scene-models.ts`) | **Available, OFF by default.** `?models=vehicles` makes the travelling player ride a model-library vehicle (danfo, keke, okada, cab, own car) on real seat anchors, with wheels, steering and day/night lights. Its code is fetched only then (`src/map3d/index.ts` → `createMap3D({ travelVehicle })` → `createActor`). Off, the game draws its own batch-drawn vehicle exactly as before. A model vehicle is at most 1,500 triangles and 8 draw calls (asserted); the game's own is one mesh, which is why it stays the default until the map's draw-call budget has been measured on a phone with the flag on. |
+| Avatars through the scene contracts (`src/scene/characters.ts` replaced by a facade over `src/models/people`) | **Not wired.** The game's avatar system was rebuilt after this branch forked (three detail levels, a rig, walk and jog cycles, accessories, the creator) and is what every scene, the creator and the Boutique are verified against. `src/models/people` remains in the library and the workshop. The byte-for-byte "legacy" copies this branch made (`characters-legacy.js`, `world-map-legacy.js`) are not kept: the game's current files are the running implementations. |
+| Home / market landmarks, the canoe and the lagoon water material in the city (`src/map3d/city-build.ts`) | **Not wired.** The city build was rewritten since (local governments, estates, houses, the airport and refinery, the UNILAG campus); `src/models/environment` remains in the library and the workshop. |
+| The geographic explorer with Kenya (`src/world-map.ts` replaced, `src/models/integration/geography-view.ts`) | **Not wired.** The game has its own world → Africa → Nigeria atlas with inter-city travel wired to the server. `src/models/geo` (world, Africa, Nigeria, Kenya, with the Kenya geoBoundaries attribution in `geo/provenance.json`) remains in the library and the workshop; `geography-view.js` is kept as the adapter a later integration would start from. |
 
 `src/models/integration/flags.ts` is the one place a flag is read. The old `?models=legacy` switch no longer exists: legacy is simply the default.
 
-Implemented on 4 October 2026 in `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models`, branch `astra/models`, based on `c5e803e`. Game consumer integration was added in this branch after Anthony explicitly requested it. The shared owner/main worktrees were not edited. No merge, rebase, push, deployment, downloaded 3D model, image texture, font, or new npm dependency is part of this delivery.
+Implemented on 4 October 2026, including the game consumer integration. No downloaded 3D model, image texture, font or new npm dependency is part of this delivery.
 
 ## Current delivery
 
 The local library includes 15 vehicles, 11 buildings/water models, a compatible procedural avatar, and world/Africa/Nigeria/Kenya map models. `models.html` is a dev-only workshop. The production Vite inputs remain unchanged.
 
-| Unit | Immutable implementation commit | State |
-| --- | --- | --- |
-| Vehicles, buildings, water | `3bae5aba98787e12495baa067ba6a0e2699c5c75` | Implemented; headless and local browser checked |
-| People | `bc59adc637ad7d0ac1d44265cd308412be39f152` | Implemented; trait, budget, pose, ownership, and contact-sheet checks |
-| Geography | `503a244caffd0b46b632de02dac4d2352af13558` | Implemented; sourced geometry, picking, routes, framing, sizes checked |
-| Workshop and verification tooling | `3d31c9a42653fcf861d8240c620d0edea3b87d33` | Local preview and evidence records |
-| Local game consumer integration | See the integration commits below | Verified in the actual local game on port 3401 |
-| Shared owner branch / production / real Android device | Pending | No merge/deployment; physical-device frame-time and mobile-data proof remain pending |
+| Unit | State |
+| --- | --- |
+| Vehicles, buildings, water | Implemented; headless and local browser checked |
+| People | Implemented; trait, budget, pose, ownership, and contact-sheet checks |
+| Geography | Implemented; sourced geometry, picking, routes, framing, sizes checked |
+| Workshop and verification tooling | Local preview and evidence records |
+| Local game consumer integration | Verified in the actual local game on port 3401 |
+| Main build / production / real Android device | Pending | No merge/deployment; physical-device frame-time and mobile-data proof remain pending |
 
-The Kenya dataset exception is approved by Anthony in this chat. Kenya uses the attributed geoBoundaries release. Other outlines remain Natural Earth public-domain data. Road paths are explicitly **schematic travel corridors**, not surveyed highway alignments or navigation routes. Imported free 3D candidates remain research references.
+The Kenya dataset is an attributed exception to the public-domain-only rule. Kenya uses the attributed geoBoundaries release. Other outlines remain Natural Earth public-domain data. Road paths are explicitly **schematic travel corridors**, not surveyed highway alignments or navigation routes. Imported free 3D candidates remain research references.
 
 ## Integrated game preview
 
@@ -40,10 +40,10 @@ Integration commits:
 
 | Consumer | Immutable commit | Result |
 | --- | --- | --- |
-| Scene avatars and appearance compatibility | `9886a6f079e82193b313e7bc8447b1d219794133` | The new avatar is the default in creator, home, venue, and crowd consumers; exact saved swatch colours and legacy normalized-look shape are preserved. |
-| Trip vehicles, Home/market, canoe, water | `17b7c008241ad142bf12611be72a2e06c5212593` | Supported player trips use new street models and real seat anchors. Home/market landmarks, a lagoon canoe, and water material are mounted in the actual city. |
-| Geographic explorer and access gates | `cc8db0d8d18af06eb672e7e7b29899e0f037de3b` | World/continent/country/state exploration, Kenya counties, accessible city controls, canvas picking/dragging, and SVG fallback. |
-| Isolated preview and browser checks | `e51b8c6703f9772f7a13df0fcf0c9451e4387804` | Dedicated local game runner, repeatable user-path script, and verification record. |
+| Scene avatars and appearance compatibility | The new avatar is the default in creator, home, venue, and crowd consumers; exact saved swatch colours and legacy normalized-look shape are preserved. |
+| Trip vehicles, Home/market, canoe, water | Supported player trips use new street models and real seat anchors. Home/market landmarks, a lagoon canoe, and water material are mounted in the actual city. |
+| Geographic explorer and access gates | World/continent/country/state exploration, Kenya counties, accessible city controls, canvas picking/dragging, and SVG fallback. |
+| Isolated preview and browser checks | Dedicated local game runner, repeatable user-path script, and verification record. |
 
 Use `?models=legacy` for the retained comparison implementation. The original character and world-map files were copied byte-for-byte before replacement. `?map=2d` and the existing Simple map preference also apply to the new world explorer. A WebGL failure uses the same geography data in an SVG view.
 
@@ -51,7 +51,7 @@ Player transport covers the game's existing danfo, keke, okada, cab, owned-car, 
 
 City integration is deliberately bounded to real consumer locations. The new compound house is the movable Home landmark; the market has the new stall; a model canoe joins the existing boat layer. The water material comes from the lagoon model while the actual city's contours, coastline, collision map, and shimmer texture remain the host's. This does not claim that all eleven catalogue environment models replace every existing venue.
 
-The geographic explorer keeps `cityAccess()` as the entry authority. Previewing Kenya, a state, or another country never creates a playable city. Live route callbacks, if supplied by the later owner host, are checked against its offered/unblocked route and the city gate. Country corridors remain labelled schematic. Kenya attribution and its license link are visible in the game.
+The geographic explorer keeps `cityAccess()` as the entry authority. Previewing Kenya, a state, or another country never creates a playable city. Live route callbacks, if supplied by the host, are checked against its offered/unblocked route and the city gate. Country corridors remain labelled schematic. Kenya attribution and its license link are visible in the game.
 
 Verification on 4 October 2026:
 
@@ -59,7 +59,7 @@ Verification on 4 October 2026:
 - Focused integration/map/panel suite: **26 passed**. The avatar preview and scene suite also passed after preserving saved normalization and updating obsolete detail/rig expectations.
 - The scene draw-call ceiling stays **60**. The structural mesh allowance rises by four for the new elbow/knee parts; that change is explicit in the scene test. The city measures 42,162 triangles / 22 calls at rest and 43,074 / 22 with moving traffic, under its existing 60,000-triangle / 40-call limits.
 - Production build passed with the original production inputs and the dependency-aware config wrapper. The workshop remains excluded from production input. The existing large-chunk warning remains.
-- Edge suite: **14 passed** against a private snapshot of the unchanged server/deploy sources with the newly built integrated assets. The snapshot keeps generated root `dist` out of other worktrees.
+- Edge suite: **14 passed** against a private snapshot of the unchanged server/deploy sources with the newly built integrated assets. The snapshot keeps generated root `dist` out of the source tree.
 - Actual browser path: Home → city map → world/country explorer → Kenya → world → Africa → Nigeria → Lagos state → playable Lagos map → choose Market → choose Danfo → travel → arrival → reload.
 - Kenya showed **47 counties and zero city-entry buttons**. A real pointer drag reached the 3D canvas. The world render counter stayed **2 → 2** over the sampled idle interval.
 - The completed danfo trip charged **₦200** in the local test life. The server and reload both showed `location: market`, no active trip, and the same player name/look. This was isolated game currency, not a production account.
@@ -70,7 +70,7 @@ The compact committed record is `src/models/evidence/integration/verification.js
 Run the integrated preview:
 
 ```sh
-MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types src/models/tooling/game-dev.ts
+MODELS_DEPENDENCY_ROOT=<repo> node --experimental-strip-types src/models/tooling/game-dev.ts
 ```
 
 Reproduce the default and fallback browser paths with the preview running:
@@ -80,7 +80,7 @@ MODEL_QA_LOCATION=market node --experimental-strip-types src/models/tooling/inte
 MODEL_QA_QUERY='?map=2d' node --experimental-strip-types src/models/tooling/integration-browser.ts src/models/tooling/fallback-steps.json
 ```
 
-This integration is on `astra/models`, based on `c5e803e`. The later `parity/owner` / `parity/integrate-2` branches add estate/world-service/table work that is not included here. Port the narrow consumer changes onto those newer files rather than overwriting them. Shared-owner merging, deployment, and physical Android/mobile-data testing remain unperformed.
+This integration targets the earlier build of the game. Later estate, world-service and table work is not included here, so port the narrow consumer changes onto the newer files rather than overwriting them. Merging into the main build, deployment, and physical Android/mobile-data testing remain unperformed.
 
 ## Open the workshop
 
@@ -89,8 +89,8 @@ The current local preview is `http://127.0.0.1:3400/models.html`. It supports ev
 On this machine, reuse the existing Three.js r180 and Vite installation without creating a root dependency link:
 
 ```sh
-cd /Users/anthonyakpan/Desktop/JoinAllworld-astra-models
-MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types src/models/tooling/dev.ts
+cd <repo>
+MODELS_DEPENDENCY_ROOT=<repo> node --experimental-strip-types src/models/tooling/dev.ts
 ```
 
 Only ports 3400–3409 are accepted by this runner. It runs the workshop only, without the game API/server. It ignores its own cache/evidence writes to avoid screenshot-triggered reloads. If dependencies are installed normally in a future checkout, omit `MODELS_DEPENDENCY_ROOT`.
@@ -142,7 +142,7 @@ A route owns its line/anchor but does not own a vehicle the host attaches. Camer
 
 ## Measured rendering and data budgets
 
-Counts below include model geometry and instanced triangles, excluding preview lights, separate route markers, and other models. The workshop additionally shows actual renderer totals. All counts are reproducible with `MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types src/models/tooling/measure.ts`. The JSON record is `src/models/evidence/measurements.json`.
+Counts below include model geometry and instanced triangles, excluding preview lights, separate route markers, and other models. The workshop additionally shows actual renderer totals. All counts are reproducible with `MODELS_DEPENDENCY_ROOT=<repo> node --experimental-strip-types src/models/tooling/measure.ts`. The JSON record is `src/models/evidence/measurements.json`.
 
 Vehicle cells are triangles / draw calls. The hard ceilings are 250 / 1,500 / 8,000 triangles. Route lettering changes the count within the tested limit.
 
@@ -197,17 +197,17 @@ World includes countries and territories. Africa includes 56 features, including
 
 - Main `npm test`: 534 tests total, 530 passed, four skipped, zero failures. The final focused model run passed 29/29 after visual corrections.
 - Production `npm run build`: passed with a dependency-aware config wrapper and output redirected into `src/models/.cache/build`. It kept the original production inputs, so the workshop is not bundled into the game.
-- Edge suite: 14/14 passed. The test fixture hardcodes a root `dist` path; to respect the write lane, it ran on a private `git archive c5e803e` snapshot under `.cache/edge-workspace`, with the newly built assets linked as that snapshot’s `dist`. Existing game/deploy files are byte-identical to that base. The installed `deploy/tooling` dependencies were reused through `JOINALLWORLD_TOOLS`.
+- Edge suite: 14/14 passed. The test fixture hardcodes a root `dist` path; to respect the write lane, it ran on a private `git archive` snapshot under `.cache/edge-workspace`, with the newly built assets linked as that snapshot’s `dist`. Existing game/deploy files are byte-identical to that base. The installed `deploy/tooling` dependencies were reused through `JOINALLWORLD_TOOLS`.
 - Browser verification used the user-provided headless Chromium/CDP approach. Captures reported no JS exceptions and stable idle render counters. Actual model renderer counts matched metadata when no separately owned route traveller was present.
 - Twelve repeated kiosk detail changes ended with the same live renderer geometry count, 1 → 1. An avatar pose change retained its geometry allocation. Nigeria → Lagos drilldown worked; the 390px viewport had no horizontal overflow. These are bounded local checks, not a universal GPU-leak or physical-Android proof.
 
 Focused tests:
 
 ```sh
-MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types --import ./src/models/tooling/register-dependencies.ts --test src/models/vehicles/*.test.ts src/models/people/*.test.ts src/models/environment/*.test.ts src/models/geo/*.test.ts
+MODELS_DEPENDENCY_ROOT=<repo> node --experimental-strip-types --import ./src/models/tooling/register-dependencies.ts --test src/models/vehicles/*.test.ts src/models/people/*.test.ts src/models/environment/*.test.ts src/models/geo/*.test.ts
 ```
 
-Screenshots are local ignored files under `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models/src/models/evidence/`. JSON measurements and browser check results are committed. Representative paths:
+Screenshots are local ignored files under `src/models/evidence/`. JSON measurements and browser check results are committed. Representative paths:
 
 - `vehicles-map-grid.png`, `vehicles-street-grid.png`, `vehicles-showcase-grid.png`.
 - `environment-map-grid.png`, `environment-street-grid.png`, `environment-showcase-grid.png`.
@@ -230,20 +230,19 @@ The capture tool uses the existing local Chromium binary, owns port 3409 while r
 
 Add geometry to the appropriate domain builder/registry and keep the same public wrapper. Share materials and instance repeated geometry. Dispose temporary construction geometry after merging, and release instanced-mesh resources as well as their geometry/materials. Extend the existing parameter-driven pose function rather than creating a render loop. New geo datasets need closed nondegenerate rings, stable unique IDs, and explicit provenance; `buildCountry` accepts data without changes to its geometry logic.
 
-Remaining handoff items for the parity owner:
+Remaining integration items:
 
-1. Port the already-wired actor and city changes onto the newer estate/world-service branch, then retest that branch’s scene scale, collision bounds, and vehicle seating.
+1. Port the already-wired actor and city changes onto the newer estate/world-service code, then retest its scene scale, collision bounds, and vehicle seating.
 2. Preserve the implemented avatar facade and comparison flag when porting. Keep batched low-detail crowds and the legacy `buildAvatar` return shape.
 3. Carry the implemented geographic explorer into the newer host while preserving its live cross-city route callbacks and city-entry rules. Keep scene-wide budgets in addition to per-model limits.
-4. Preserve the Kenya geoBoundaries attribution and license link from `geo/provenance.json` in any distributed game. Anthony’s exception applies to this dataset, not to unrestricted new asset imports.
+4. Preserve the Kenya geoBoundaries attribution and license link from `geo/provenance.json` in any distributed game. The attributed-dataset exception applies to this dataset, not to unrestricted new asset imports.
 5. Retain the visible schematic-route label. Accurate highway geometry, surveyed lane counts, and map-specific bridge placements still need a separately approved/licensed source. The reusable bridge model is implemented.
-6. Run the actual host paths and representative Android hardware/mobile-data checks before a production claim. The local game integration is verified above; it has not been merged into the separate owner’s running build.
+6. Run the actual host paths and representative Android hardware/mobile-data checks before a production claim. The local game integration is verified above; it has not been merged into the main running build.
 
-Three Sol workers implemented the disjoint vehicle, people, and environment units; a Luna researcher checked Kenya provenance. The parent implemented geography, preview/tooling, integration, and visual QA. Revision passes are reflected in the tests and commits above. Per-agent elapsed time, tokens, and money were not exposed.
 
 ## Research archive
 
-The following source comparison was completed before implementation. Candidate assets were researched and previewed, not imported. Kenya’s earlier public-domain-only blocker is superseded by Anthony’s explicit attributed-dataset approval; the Natural Earth audit correctly remains eight old Kenyan provinces and was not used for county geometry.
+The following source comparison was completed before implementation. Candidate assets were researched and previewed, not imported. Kenya’s earlier public-domain-only blocker is superseded by the attributed-dataset exception; the Natural Earth audit correctly remains eight old Kenyan provinces and was not used for county geometry.
 ## Free vehicle candidates
 
 Hard triangle ceilings from the brief: map 250, street 1,500, showcase 8,000. An advertised count below a ceiling is only a candidate; materials, moving parts, seat anchors, loading, and memory still need inspection. Unknown counts are not a pass. Unless stated otherwise, free download is advertised but the archive was not downloaded.
@@ -293,7 +292,7 @@ No researched free pack proves complete coverage of every existing hair/outfit/a
 
 The [Kenney support page](https://kenney.nl/support) confirms that its asset-page downloads use CC0 and attribution is optional. CC0 is the clearest fit for freely reusable library assets. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) also permits commercial adaptation and redistribution, with credit, the license link, and an indication of changes. An asset's exact license still needs to be recorded; platform-wide assumptions are insufficient.
 
-Quaternius's current [QAL v1.0](https://quaternius.com/license.html), dated 28 August 2026, allows use in finished commercial products but prohibits distributing the assets as standalone assets, including modified versions. Several older pack pages still explicitly say CC0. The site says license changes do not apply retroactively. This handoff records the discrepancy without deciding which terms govern an unacquired archive. Preserve its bundled license and acquisition evidence before selecting it. A reusable public model library and an integrated game are different distribution contexts under QAL.
+Quaternius's current [QAL v1.0](https://quaternius.com/license.html), dated 28 August 2026, allows use in finished commercial products but prohibits distributing the assets as standalone assets, including modified versions. Several older pack pages still explicitly say CC0. The site says license changes do not apply retroactively. This note records the discrepancy without deciding which terms govern an unacquired archive. Preserve its bundled license and acquisition evidence before selecting it. A reusable public model library and an integrated game are different distribution contexts under QAL.
 
 OSAHL's BOSS terms permit use within larger original works while restricting direct asset distribution and specified uses. Its name does not imply CC0 or unrestricted source redistribution. MPFB's bundled graphical assets have a different license from its program code. These distinctions matter more than a marketplace's “free” label.
 

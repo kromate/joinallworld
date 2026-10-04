@@ -1,4 +1,4 @@
-/** Dev-only screenshot probe adapted from the parity owner's shots/shot.mjs.
+/** Dev-only screenshot probe. Set CHROME_PATH to a headless Chromium binary.
  * A private Chromium instance, no server session, no user-browser profile.
  */
 import {spawn} from 'node:child_process';
@@ -6,7 +6,7 @@ import {mkdirSync,mkdtempSync,writeFileSync,rmSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 const output=fileURLToPath(new URL('./evidence/',import.meta.url));mkdirSync(output,{recursive:true});
 const profile=mkdtempSync(output+'.chromium-');
-const bin='/Users/anthonyakpan/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-arm64/chrome-headless-shell';
+const bin=process.env.CHROME_PATH;if(!bin)throw new Error('Set CHROME_PATH to a headless Chromium or Chrome binary');
 const chrome=spawn(bin,['--remote-debugging-port=3419',`--user-data-dir=${profile}`,'--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader','--hide-scrollbars','about:blank'],{stdio:'ignore'});
 interface CdpResult { data?: string; result?: { value?: unknown }; exceptionDetails?: { text: string; exception?: { description?: string } } }
 interface CdpMessage { id?: number; method?: string; params: { exceptionDetails: unknown }; result?: CdpResult; error?: CdpResult }

@@ -39,7 +39,7 @@
 .life-ui .map-world{justify-self:start}
 
 /* Venue card */
-.map-card{max-height:calc(100dvh - 170px);overflow-y:auto;padding:var(--s-3)}
+.map-card{grid-template-columns:minmax(0,1fr);max-height:calc(100dvh - 170px);overflow-y:auto;padding:var(--s-3)}
 .map-card-head{display:flex;align-items:center;gap:var(--s-2)}
 .map-card-head>div{flex:1;min-width:0}
 .map-card-head h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

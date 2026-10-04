@@ -12,7 +12,7 @@ Requires Node.js `>=22.12.0`.
 
 ```sh
 npm install
-npm test          # life model, persistence and Node server suites
+npm test          # rules engine, client model and Node server suites
 ```
 
 ### Development
@@ -53,6 +53,7 @@ The client still loads if the server is unreachable, but it is **read-only**: it
 - **A separate life per city**, held on the server. Cash, needs, location and the action in progress are changed only by the server and settled against server time, so an action finishes even if you close the tab.
 - **Home and park activities:** Chill (11 seconds, energy +4, fun +10), Garri (5 seconds, hunger +20), Bath (6 seconds, hygiene +25), and Nap (15 seconds, energy +2 per second). Home amounts are explicit beta choices where the exact general formula was not observed. Nap retains accrued energy when stopped. Home travel uses free trek; other transport options have preview fares.
 - **Community helper job.** Apply in Phone → Jobs, go straight to the community desk, and work a 20-second shift for ₦300. Requires Energy and Hunger of at least 20; completion uses 10 Energy and 5 Hunger. Cancellation gives no reward. These are original beta rules, not a reproduced career schedule.
+- **Needs, mood and a transaction log.** Six needs fall slowly in real time (never below 10 on their own, and at most four hours' worth while you are away). Mood is derived from needs and feelings. Every cash change is recorded with its reason and shown in Phone → Bank.
 - **Idempotent actions.** Every action carries a client-generated ID. A repeat returns the recorded outcome instead of charging twice, and reusing an ID for a different action is rejected.
 - **Device sessions.** A random secret in an `HttpOnly` cookie plus a nickname. This identifies a browser, not a person — it is not an account. Sessions expire, and there is no way to recover one.
 - **Community panel.** Public venues have live presence and text chat; home rooms are isolated per device identity. You can only join the room for the venue your character is actually in.
@@ -65,7 +66,7 @@ The client still loads if the server is unreachable, but it is **read-only**: it
 - **Very little content.** One venue has no activities, and most activities at the other are listed but disabled.
 - **No accounts.** No passwords, sign-in, account recovery or moving a life between devices.
 - **No moderation.** No blocking, reporting or chat filtering.
-- Skills, purchasable property and elections are not implemented; only the starter Community helper job is available. The home is a starter interior, not a property market.
+- Skills exist in the rules engine but nothing in the game grants skill experience yet. Purchasable property and elections are not implemented; only the starter Community helper job is available. Most Phone apps and Sim tabs are placeholders. The home is a starter interior, not a property market.
 - **Node storage is one JSON file** on the server's disk. The optional Cloudflare adapter uses SQLite Durable Objects; deployment configuration is included in `wrangler.jsonc`.
 
 ### Cloudflare adapter checks
@@ -80,23 +81,35 @@ The edge suite uses pinned local tooling and the built static files. Running it 
 
 ## Reference behaviour is provisional
 
-Some labels, prices and timings follow what was observed in a public Lagos city-life game. Only values marked as observed in `src/life.js` are treated as verified; everything else — starting cash, starting needs, travel time, cancellation rules — is a placeholder and is flagged as such in the code. Unseen mechanics are not claimed as replicas, and this project does not claim parity with any reference.
+Some labels, prices and timings follow what was observed in a public Lagos city-life game. Content under `src/game/content/` marks original beta values with `beta: true`; only unmarked values follow what was observed. Everything else — starting cash, starting needs, need decay, travel time, when a paid activity is charged, cancellation rules — is an original beta choice and is flagged as such in the code. Unseen mechanics are not claimed as replicas, and this project does not claim parity with any reference.
 
 ## Layout
 
 | Path | Purpose |
 | --- | --- |
-| `index.html`, `src/life-main.js` | Client entry |
-| `src/life.js` | Life rules shared by client and server: venues, activities, travel |
-| `src/life-ui.js`, `src/venue-world.js` | Interface and the Three.js venue scene |
-| `src/world-map.js` | SVG world map and city picker |
+| `index.html`, `src/life-main.js` | Client entry: wires the client model, shell, scenes and community panel |
+| `src/client.js` | Browser-side mirror of the server-held life and all networking; read-only while offline |
+| `src/life.js` | Public entry to the rules engine shared by server, worker and client: `createLife`, `dispatch`, `advanceLife`, `viewLife` |
+| `src/game/registry.js` | System registry, event bus and modifiers — **the contract for adding a game system** |
+| `src/game/systems/` | One file per system. Core: `core`, `wallet`, `inventory`, `needs`, `skills`, `activities`. Feature systems: `travel`, `health`, `career`, `economy`, `property`, `home`, `onboarding`, `goals`, `social`, `civic`. `index.js` registers them all |
+| `src/game/content/` | Plain-data content: venues, travel, jobs, furniture, food, housing, cars, traits, goals, NPCs, civic, health, events |
+| `src/game/api.js`, `util.js`, `clock.js` | Core functions feature systems may call, shared helpers, and Lagos wall-clock time |
+| `src/ui/shell.js` | HUD, bottom nav, venue panel, Phone, Sim sheet, toasts — **the contract for adding a panel** |
+| `src/ui/panels/` | One file per panel (Phone apps, nav panels, HUD chips, Sim tabs, modals). `index.js` registers them all |
+| `src/ui/keys.js`, `dom.js`, `tokens.css`, `shell.css` | Keyboard shortcut map, template helpers, shared design tokens, shell styles |
+| `src/venue-world.js` | Thin Three.js host: renders a venue scene on demand only |
+| `src/scene/` | Procedural geometry: `venue-scenes.js` (one scene per venue kind), `home-scene.js`, `characters.js`, `props.js`, `kit.js` |
+| `src/world-map.js`, `src/city-map.js` | SVG world map and city picker; in-city map (placeholder) |
 | `src/community.js` | Room presence, chat and voice |
-| `server/server.js` | HTTP API, static files, WebSocket rooms |
-| `server/protocol.js`, `server/life-service.js` | Validation and life-settlement logic, kept free of I/O |
-| `server/store.js` | Serialised JSON file store |
-| `src/*.test.js`, `server/*.test.js` | `node --test` suites |
+| `server/server.js` | Node host: HTTP and WebSocket plumbing, static files, server context |
+| `server/routes/` | HTTP endpoints. `index.js` is the route registry — **the contract for adding a route**; `core.js` holds session, life, action and voice-config |
+| `server/ws/` | WebSocket message types. `index.js` is the registry; `rooms.js` holds presence, movement, chat, voice state and signalling |
+| `server/protocol.js`, `server/life-service.js` | Validation, idempotency and settlement logic, free of I/O and shared with the Cloudflare adapter |
+| `server/store.js` | Serialised JSON file store behind a two-method `transact`/`read` interface |
+| `server/auth.js`, `server/routes/auth.js` | Inert placeholders for accounts; device sessions remain the only identity |
+| `**/*.test.js`, `server/test-fixture.js` | `node --test` suites and the shared server fixture |
 
-`prototype.html`, `src/main.js`, `src/game.js`, `src/world.js`, `src/persistence.js` and `src/style.css` are an early experiment from the start of this build. They are not the production entry, are not included in `npm run build`, and may be removed.
+Many feature files are registered placeholders: they define where a feature will live, not that it exists. [What works today](#what-works-today) is the list of working features.
 
 ## Contributing and security
 
@@ -106,4 +119,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 
 MIT — see [LICENSE](LICENSE).
 
-Direct dependencies: [Three.js](https://threejs.org/) (MIT), [Vite](https://vite.dev/) (MIT), [ws](https://github.com/websockets/ws) (MIT). All scene and map geometry is written in code. The client names the DM Sans typeface and falls back to a system sans-serif when it is not installed; only the early experiment's stylesheet loads it from Google Fonts (SIL Open Font License).
+Direct dependencies: [Three.js](https://threejs.org/) (MIT), [Vite](https://vite.dev/) (MIT), [ws](https://github.com/websockets/ws) (MIT). All scene and map geometry is written in code. The client names the DM Sans typeface and falls back to a system sans-serif when it is not installed; nothing is loaded from a font service.

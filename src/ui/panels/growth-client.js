@@ -1,0 +1,129 @@
+/**
+ * OWNER: growth
+ * Browser-side state shared by the growth panels (Missions, Events, Bring a friend, Stay in touch,
+ * the away card). Not a panel: it is imported by them and is not registered in panels/index.js.
+ *
+ * It says hello to /api/growth/hello when a growth panel is drawn and the last answer is older
+ * than five minutes (never from a timer), remembers a share code the page was opened with until
+ * the life exists, attaches it once, and prepares shares. Pure decisions live in
+ * src/game/share-model.js and src/game/digest.js; this file is the glue.
+ *
+ * ON THIS DEVICE (localStorage)
+ *   allworld-device   a random token made once per browser. It is sent with hello and with a
+ *                     referral link and is only ever kept on the server as a salted hash; it lets
+ *                     the server refuse "a new life on the same phone through your own link".
+ *   allworld-ref      a share code waiting to be attached ({ code, at }), dropped after a week
+ *   allworld-away     the server time of the hello whose away card was dismissed
+ */
+import './growth.css';
+import '../phone/icons-growth.js';
+import { shareCodeFrom } from '../../game/share-model.js';
+/** The canvas painter and the share-sheet calls are fetched the first time something is shared, not with the first download. */
+const sharing = () => import('../share.js');
+
+const HELLO_MAX_AGE = 5 * 60000, REF_KEEP_MS = 7 * 86400000;
+export const G = {
+  api: null, hello: null, at: 0, loading: false, error: null,
+  /** A share being shown in the share sheet: { facts, prepared } | null. */
+  sharing: null, busy: null,
+  /** Where the page's share link came from, once known: { kind, by: { id, name } } | null. */
+  landing: null,
+};
+let started = false, linking = false;
+
+const store = { get(key) { try { return JSON.parse(window.localStorage.getItem(key)); } catch { return null; } }, set(key, value) { try { window.localStorage.setItem(key, JSON.stringify(value)); } catch { /* this visit only */ } },
+  drop(key) { try { window.localStorage.removeItem(key); } catch { /* nothing to drop */ } } };
+const randomToken = () => { const bytes = crypto.getRandomValues(new Uint8Array(16)); return [...bytes].map((byte) => byte.toString(16).padStart(2, '0')).join(''); };
+export function deviceToken() {
+  let token = store.get('allworld-device');
+  if (typeof token !== 'string' || !/^[A-Za-z0-9-]{16,64}$/.test(token)) { token = randomToken(); store.set('allworld-device', token); }
+  return token;
+}
+const ready = (view) => Boolean(view?.connected) && view.onboarding?.required !== true;
+const refresh = () => G.api?.refresh();
+
+/** One POST. Never throws: a failure comes back as { ok: false, code, reason }. */
+export async function call(path, body) {
+  try { return await G.api.fetchJson(path, body ? { method: 'POST', body: { cityId: G.api.view().cityId, ...body } } : undefined); }
+  catch (error) {
+    return { ok: false, code: error.code || 'network', transport: !error.status,
+      reason: error.reason || (error.status === 429 ? 'Too many requests. Wait a minute and try again.' : error.status === 401 ? 'Your device session expired. Reconnect to continue.' : 'The server could not be reached. Nothing was changed; try again.') };
+  }
+}
+
+/** Attach the share code this page was opened with, once the life exists. */
+async function attach() {
+  const pending = store.get('allworld-ref');
+  if (linking || !pending?.code) return;
+  if (!(Date.now() - pending.at < REF_KEEP_MS)) { store.drop('allworld-ref'); return; }
+  linking = true;
+  const about = await call(`/api/growth/share/${encodeURIComponent(pending.code)}`);
+  if (about.ok) G.landing = { kind: about.kind, by: about.by };
+  const result = await call('/api/growth/referral/link', { code: pending.code, device: deviceToken() });
+  linking = false;
+  if (result.transport) return; // try again at the next hello
+  store.drop('allworld-ref');
+  if (result.ok && !result.duplicate) G.api.toast(`You came through ${result.by}’s link. Get to work and you both get a gift.`, 'good');
+  // A link to someone's house or invite leads to their door, whether or not it counted as a referral.
+  if (about.ok && about.by?.id && about.by.id !== G.api.view().session?.id && ['house', 'invite'].includes(about.kind)) G.api.open('invite', { host: about.by.id });
+  void load(G.api, { force: true });
+}
+
+/** Say hello unless a fresh answer is here. Called from bind(), so only when something was drawn. */
+export async function load(api, { force = false } = {}) {
+  G.api = api;
+  if (!started) {
+    started = true;
+    const code = shareCodeFrom(location.search) || shareCodeFrom(location.pathname);
+    if (code) { store.set('allworld-ref', { code, at: Date.now() }); try { history.replaceState(null, '', '/'); } catch { /* the address stays */ } }
+  }
+  if (G.loading || !ready(api.view())) return;
+  if (!force && G.at && Date.now() - G.at < HELLO_MAX_AGE) return;
+  G.loading = true;
+  const result = await call('/api/growth/hello', { device: deviceToken() });
+  G.loading = false; G.at = Date.now();
+  if (result.ok) { G.hello = result; G.error = null; if (result.state) void api.command('missions.refresh'); }
+  else G.error = result.reason;
+  refresh();
+  if (result.ok) void attach();
+}
+
+/** Make a share link, paint the card and open the share sheet panel. */
+export async function share(api, kind, extra = {}) {
+  G.api = api;
+  if (G.busy) return;
+  if (!ready(api.view())) { api.toast('Sharing needs a connection to the server.', 'error'); return; }
+  G.busy = kind; refresh();
+  const made = await call('/api/growth/share', { kind, ...extra });
+  if (!made.ok) { G.busy = null; api.toast(made.reason || 'That could not be shared.', 'error'); refresh(); return; }
+  const prepared = await (await sharing()).prepareShare(made.share.facts, `${location.origin}${made.share.path}`);
+  if (G.sharing?.prepared.url) URL.revokeObjectURL(G.sharing.prepared.url);
+  G.sharing = { facts: made.share.facts, prepared };
+  G.busy = null;
+  api.open('share-sheet');
+}
+/** The share sheet's own buttons. */
+export async function shareNow(api) {
+  if (!G.sharing) return;
+  const outcome = await (await sharing()).systemShare(G.sharing.prepared);
+  void call('/api/growth/client', { signals: [outcome === 'unavailable' ? 'share-fallback' : 'share-sheet'] });
+  if (outcome === 'unavailable') api.toast('This browser has no share sheet. Use WhatsApp, X or Copy below.', 'info');
+}
+export async function copyShare(api) { if (G.sharing) api.toast((await (await sharing()).copyText(G.sharing.prepared.text)) ? 'Copied. Paste it into any chat.' : 'Could not copy. Press and hold the text to copy it yourself.', 'good'); }
+
+/** Was this hello's away card dismissed on this device? */
+export const awayDismissed = () => Boolean(G.hello) && store.get('allworld-away') === G.hello.away.since;
+export function dismissAway() { if (G.hello) store.set('allworld-away', G.hello.away.since); refresh(); }
+
+// ---- small formatting helpers shared by the growth panels --------------------------------------
+/** "2d 4h", "3h 12m", "5m" until a server time. */
+export function until(at, now) {
+  const minutes = Math.max(0, Math.ceil((at - now) / 60000));
+  if (minutes >= 2880) return `${Math.floor(minutes / 1440)}d ${Math.floor((minutes % 1440) / 60)}h`;
+  if (minutes >= 60) return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
+  return `${minutes}m`;
+}
+const DAY_TIME = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', hour: 'numeric', minute: '2-digit', hour12: true });
+const CLOCK = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', hour: 'numeric', minute: '2-digit', hour12: true });
+/** "Fri, 8:00 pm – 2:00 am" in Lagos time. */
+export const span = (start, end) => `${DAY_TIME.format(new Date(start))} – ${CLOCK.format(new Date(end))}`;

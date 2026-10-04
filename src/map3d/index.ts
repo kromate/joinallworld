@@ -25,7 +25,7 @@ import type { FetchJson, WorldData } from './world-data.ts';
 import '../city-map.css';
 import './map3d.css';
 import { hasCityPack, loadCityPack } from './regions.ts';
-import { modelFlags } from '../models/integration/flags.js';
+import { modelFlags } from '../models/integration/flags.ts';
 import { createMap3D, detailOf, webglAvailable } from './map3d.ts';
 import { createMap2D } from './map2d.ts';
 import { createWorldData } from './world-data.ts';
@@ -132,7 +132,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
       try {
         const pack = await loadCityPack(cityId);
         // Model-library trip vehicles are an opt-in (?models=vehicles): their code is fetched only then.
-        const vehicleBuilder = modelFlags().vehicles ? (await import('../models/integration/scene-models.js').catch(() => null))?.buildTravelVehicle ?? null : null;
+        const vehicleBuilder = modelFlags().vehicles ? (await import('../models/integration/scene-models.ts').catch(() => null))?.buildTravelVehicle ?? null : null;
         const travelVehicle = vehicleBuilder as unknown as TravelVehicleBuilder | null; // trust boundary: the model library is JavaScript
         if (ticket !== mounting) return;
         impl?.destroy(); impl = null;

@@ -1,4 +1,4 @@
-import './register-dependencies.mjs';
+import './register-dependencies.ts';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 

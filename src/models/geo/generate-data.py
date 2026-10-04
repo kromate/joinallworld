@@ -187,7 +187,7 @@ def write(name, features, limit, extras=None):
         content = 'export default ' + json.dumps(data, separators=(',', ':'), ensure_ascii=False) + ';\n'
         size = len(content.encode())
         if size <= limit:
-            (ROOT / 'data' / (name + '.js')).write_text(content)
+            (ROOT / 'data' / (name + '.ts')).write_text(content)
             print(json.dumps({'chunk': name, 'features': len(features), 'bytes': size, 'limit': limit, 'tolerance': tolerance}), flush=True)
             return
     raise RuntimeError(f'{name} exceeds {limit} bytes: {size}')

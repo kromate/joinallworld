@@ -7,13 +7,13 @@ This document was written on `astra/models`, where the library was wired into an
 | Part of this branch | In the combined game |
 | --- | --- |
 | The library: `src/models/{vehicles,people,environment,geo}`, its tests, measurements, provenance, research notes | **Adopted whole.** Tested by `npm test` (34 tests). Loaded by nothing in the game unless a flag below is on. |
-| The workshop: `models.html`, `src/models/preview.js`, `src/models/tooling/**` | **Adopted whole**, development only (not a build input). The `game-dev.mjs` / `integration-*.json` runner drove the old integrated preview and is kept for reference. |
-| Trip vehicles on the 3D city map (`17b7c00`, `src/models/integration/scene-models.js`) | **Available, OFF by default.** `?models=vehicles` makes the travelling player ride a model-library vehicle (danfo, keke, okada, cab, own car) on real seat anchors, with wheels, steering and day/night lights. Its code is fetched only then (`src/map3d/index.js` → `createMap3D({ travelVehicle })` → `createActor`). Off, the game draws its own batch-drawn vehicle exactly as before. A model vehicle is at most 1,500 triangles and 8 draw calls (asserted); the game's own is one mesh, which is why it stays the default until the map's draw-call budget has been measured on a phone with the flag on. |
+| The workshop: `models.html`, `src/models/preview.ts`, `src/models/tooling/**` | **Adopted whole**, development only (not a build input). The `game-dev.ts` / `integration-*.json` runner drove the old integrated preview and is kept for reference. |
+| Trip vehicles on the 3D city map (`17b7c00`, `src/models/integration/scene-models.ts`) | **Available, OFF by default.** `?models=vehicles` makes the travelling player ride a model-library vehicle (danfo, keke, okada, cab, own car) on real seat anchors, with wheels, steering and day/night lights. Its code is fetched only then (`src/map3d/index.js` → `createMap3D({ travelVehicle })` → `createActor`). Off, the game draws its own batch-drawn vehicle exactly as before. A model vehicle is at most 1,500 triangles and 8 draw calls (asserted); the game's own is one mesh, which is why it stays the default until the map's draw-call budget has been measured on a phone with the flag on. |
 | Avatars through the scene contracts (`9886a6f`: `src/scene/characters.js` replaced by a facade over `src/models/people`) | **Not wired.** The game's avatar system was rebuilt after this branch forked (three detail levels, a rig, walk and jog cycles, accessories, the creator) and is what every scene, the creator and the Boutique are verified against. `src/models/people` remains in the library and the workshop. The byte-for-byte "legacy" copies this branch made (`characters-legacy.js`, `world-map-legacy.js`) are not kept: the game's current files are the running implementations. |
 | Home / market landmarks, the canoe and the lagoon water material in the city (`17b7c00`, `src/map3d/city-build.js`) | **Not wired.** The city build was rewritten since (local governments, estates, houses, the airport and refinery, the UNILAG campus); `src/models/environment` remains in the library and the workshop. |
-| The geographic explorer with Kenya (`cc8db0d`: `src/world-map.js` replaced, `src/models/integration/geography-view.js`) | **Not wired.** The game has its own world → Africa → Nigeria atlas with inter-city travel wired to the server. `src/models/geo` (world, Africa, Nigeria, Kenya, with the Kenya geoBoundaries attribution in `geo/provenance.json`) remains in the library and the workshop; `geography-view.js` is kept as the adapter a later integration would start from. |
+| The geographic explorer with Kenya (`cc8db0d`: `src/world-map.js` replaced, `src/models/integration/geography-view.ts`) | **Not wired.** The game has its own world → Africa → Nigeria atlas with inter-city travel wired to the server. `src/models/geo` (world, Africa, Nigeria, Kenya, with the Kenya geoBoundaries attribution in `geo/provenance.json`) remains in the library and the workshop; `geography-view.js` is kept as the adapter a later integration would start from. |
 
-`src/models/integration/flags.js` is the one place a flag is read. The old `?models=legacy` switch no longer exists: legacy is simply the default.
+`src/models/integration/flags.ts` is the one place a flag is read. The old `?models=legacy` switch no longer exists: legacy is simply the default.
 
 Implemented on 4 October 2026 in `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models`, branch `astra/models`, based on `c5e803e`. Game consumer integration was added in this branch after Anthony explicitly requested it. The shared owner/main worktrees were not edited. No merge, rebase, push, deployment, downloaded 3D model, image texture, font, or new npm dependency is part of this delivery.
 
@@ -70,14 +70,14 @@ The compact committed record is `src/models/evidence/integration/verification.js
 Run the integrated preview:
 
 ```sh
-MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node src/models/tooling/game-dev.mjs
+MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types src/models/tooling/game-dev.ts
 ```
 
 Reproduce the default and fallback browser paths with the preview running:
 
 ```sh
-MODEL_QA_LOCATION=market node src/models/tooling/integration-browser.mjs src/models/tooling/integration-steps.json
-MODEL_QA_QUERY='?map=2d' node src/models/tooling/integration-browser.mjs src/models/tooling/fallback-steps.json
+MODEL_QA_LOCATION=market node --experimental-strip-types src/models/tooling/integration-browser.ts src/models/tooling/integration-steps.json
+MODEL_QA_QUERY='?map=2d' node --experimental-strip-types src/models/tooling/integration-browser.ts src/models/tooling/fallback-steps.json
 ```
 
 This integration is on `astra/models`, based on `c5e803e`. The later `parity/owner` / `parity/integrate-2` branches add estate/world-service/table work that is not included here. Port the narrow consumer changes onto those newer files rather than overwriting them. Shared-owner merging, deployment, and physical Android/mobile-data testing remain unperformed.
@@ -90,14 +90,14 @@ On this machine, reuse the existing Three.js r180 and Vite installation without 
 
 ```sh
 cd /Users/anthonyakpan/Desktop/JoinAllworld-astra-models
-MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node src/models/tooling/dev.mjs
+MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types src/models/tooling/dev.ts
 ```
 
 Only ports 3400–3409 are accepted by this runner. It runs the workshop only, without the game API/server. It ignores its own cache/evidence writes to avoid screenshot-triggered reloads. If dependencies are installed normally in a future checkout, omit `MODELS_DEPENDENCY_ROOT`.
 
 ## Public API
 
-Import from `src/models/index.js`, or directly from a domain entry to keep loading narrow. Geography data is lazy-loaded separately. All model code is plain JavaScript ES modules; geometry construction needs no DOM or WebGL. The preview and tooling are the explicit DOM/Node exceptions.
+Import from `src/models/index.ts`, or directly from a domain entry to keep loading narrow. Geography data is lazy-loaded separately. All model code is strict TypeScript ES modules (erasable syntax only); geometry construction needs no DOM or WebGL. The preview and tooling are the explicit DOM/Node exceptions.
 
 | Domain | Exports / contract |
 | --- | --- |
@@ -111,7 +111,7 @@ The facade aliases people/environment detail lists as `PEOPLE_DETAILS` and `ENVI
 Vehicles face +Z, with +Y up. Their driver, door, and passenger-seat anchors are `Object3D` nodes; door anchors move with the door. Wheel rotations use supplied distance. Steering, doors, bounce, brake lights, and indicators reset from stored base transforms. The `time` builder option is `day`/`night`; pose `time` is numeric seconds. Avatar poses accept normalized `stride` and numeric `time`. Water pose modifies existing position and normal buffers. None of these functions starts a timer or owns an animation loop.
 
 ```js
-import { buildVehicle, poseVehicle } from './src/models/vehicles/index.js';
+import { buildVehicle, poseVehicle } from './src/models/vehicles/index.ts';
 const danfo = buildVehicle('danfo', { detail: 'street', route: 'YABA', time: 'day' });
 scene.add(danfo.object3D);
 poseVehicle(danfo, { distance: 10, steering: 0.15, door: 0.5, time: 2 });
@@ -125,7 +125,7 @@ Map coordinates are `[longitude, latitude]`. `model.pick({lon, lat})` returns a 
 
 ```js
 import * as THREE from 'three';
-import { loadGeography, buildGeography, buildRoute, transitionCamera } from './src/models/geo/index.js';
+import { loadGeography, buildGeography, buildRoute, transitionCamera } from './src/models/geo/index.ts';
 const data = await loadGeography('nigeria');
 const map = buildGeography(data);
 map.highlight('NG-LA', true);
@@ -142,7 +142,7 @@ A route owns its line/anchor but does not own a vehicle the host attaches. Camer
 
 ## Measured rendering and data budgets
 
-Counts below include model geometry and instanced triangles, excluding preview lights, separate route markers, and other models. The workshop additionally shows actual renderer totals. All counts are reproducible with `MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node src/models/tooling/measure.mjs`. The JSON record is `src/models/evidence/measurements.json`.
+Counts below include model geometry and instanced triangles, excluding preview lights, separate route markers, and other models. The workshop additionally shows actual renderer totals. All counts are reproducible with `MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types src/models/tooling/measure.ts`. The JSON record is `src/models/evidence/measurements.json`.
 
 Vehicle cells are triangles / draw calls. The hard ceilings are 250 / 1,500 / 8,000 triangles. Route lettering changes the count within the tested limit.
 
@@ -204,7 +204,7 @@ World includes countries and territories. Africa includes 56 features, including
 Focused tests:
 
 ```sh
-MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --import ./src/models/tooling/register-dependencies.mjs --test src/models/vehicles/*.test.js src/models/people/*.test.js src/models/environment/*.test.js src/models/geo/*.test.js
+MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --experimental-strip-types --import ./src/models/tooling/register-dependencies.ts --test src/models/vehicles/*.test.ts src/models/people/*.test.ts src/models/environment/*.test.ts src/models/geo/*.test.ts
 ```
 
 Screenshots are local ignored files under `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models/src/models/evidence/`. JSON measurements and browser check results are committed. Representative paths:
@@ -221,7 +221,7 @@ The parent inspected the main fleet/building/map views and representative contac
 Regenerate contact sheets in bounded pages by body type:
 
 ```sh
-node src/models/tooling/capture.mjs vehicles:street:grid environment:showcase:grid people:high:hair:woman people:high:hair:man geo:street:single:nigeria --interactions
+node --experimental-strip-types src/models/tooling/capture.ts vehicles:street:grid environment:showcase:grid people:high:hair:woman people:high:hair:man geo:street:single:nigeria --interactions
 ```
 
 The capture tool uses the existing local Chromium binary, owns port 3409 while running, and removes its temporary profile. It has per-command timeouts. The ordinary preview stays on 3400.

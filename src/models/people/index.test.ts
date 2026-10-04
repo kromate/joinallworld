@@ -3,24 +3,28 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { createBatch, sceneMaterials } from '../../scene/build.ts';
 import { APPEARANCE } from '../../game/content/traits.ts';
-import { DETAILS, LOOK_OPTIONS, POSES, buildAvatar, buildPerson, drawAvatar, normalizeLook, poseAvatar } from './index.js';
+import { DETAILS, LOOK_OPTIONS, POSES, buildAvatar, buildPerson, drawAvatar, normalizeLook, poseAvatar } from './index.ts';
+import type { Kit } from '../../scene/kit.ts';
+import type { AvatarLookInput, AvatarRig, DrawBatch, Marker } from './index.ts';
 
 function makeKit() {
-  const callbacks = [];
-  return {
+  const callbacks: (() => void)[] = [];
+  const stub = {
     THREE,
-    onDispose(callback) { callbacks.push(callback); },
-    dispose() { while (callbacks.length) callbacks.pop()(); },
+    onDispose(callback: () => void) { callbacks.push(callback); },
+    dispose() { while (callbacks.length) callbacks.pop()!(); },
   };
+  // Test stub: avatars only use THREE and onDispose, so it is deliberately not a full scene Kit.
+  return stub as unknown as Kit & typeof stub;
 }
 
-function triangleCount(look, detail, marker = 'crown') {
+function triangleCount(look: AvatarLookInput, detail: string, marker: Marker = 'crown') {
   const batch = createBatch(THREE);
-  drawAvatar(batch, look, { detail, marker, seed: 'budget' });
+  drawAvatar(batch as unknown as DrawBatch, look, { detail, marker, seed: 'budget' });
   return batch.triangles;
 }
 
-function keys(values) { return values.map((value) => String(value.id ?? value).toLowerCase().replace(/[^a-z0-9]/g, '')); }
+function keys(values: readonly unknown[]) { return values.map((value) => String((value as { id?: unknown }).id ?? value).toLowerCase().replace(/[^a-z0-9]/g, '')); }
 
 test('normalization accepts every saved trait id and keeps seeded fallbacks deterministic', () => {
   const hair = {
@@ -55,8 +59,8 @@ test('normalization accepts every saved trait id and keeps seeded fallbacks dete
 
 test('every look family stays inside its complete detail budget', () => {
   assert.deepEqual([...DETAILS], ['low', 'medium', 'high']);
-  const limits = { low: 600, medium: 2500, high: 25000 };
-  const ranges = { low: [Infinity, 0], medium: [Infinity, 0], high: [Infinity, 0] };
+  const limits: Record<string, number> = { low: 600, medium: 2500, high: 25000 };
+  const ranges: Record<string, number[]> = { low: [Infinity, 0], medium: [Infinity, 0], high: [Infinity, 0] };
   const loaded = [
     [],
     ['glasses', 'earrings', 'watch', 'beads', 'backpack'],
@@ -67,31 +71,31 @@ test('every look family stays inside its complete detail budget', () => {
   for (const body of LOOK_OPTIONS.body) for (const hair of LOOK_OPTIONS.hair[body]) for (const outfit of LOOK_OPTIONS.outfit[body]) for (const fabric of LOOK_OPTIONS.fabric) for (const accessoryList of loaded) {
     for (const detail of DETAILS) {
       const count = triangleCount({ body, hair, outfit, fabric, accessories: accessoryList }, detail);
-      ranges[detail][0] = Math.min(ranges[detail][0], count);
-      ranges[detail][1] = Math.max(ranges[detail][1], count);
-      assert.ok(count <= limits[detail], `${detail} ${body}/${hair}/${outfit}/${fabric}/${accessoryList.join('+')}: ${count}`);
+      ranges[detail]![0] = Math.min(ranges[detail]![0]!, count);
+      ranges[detail]![1] = Math.max(ranges[detail]![1]!, count);
+      assert.ok(count <= limits[detail]!, `${detail} ${body}/${hair}/${outfit}/${fabric}/${accessoryList.join('+')}: ${count}`);
     }
   }
   // Low is the tight tier. Exercise every allowed subset of up to five accessories against each
   // hair silhouette on the measured worst clothing/fabric combination.
   const ids = LOOK_OPTIONS.accessories;
   for (const body of LOOK_OPTIONS.body) for (const hair of LOOK_OPTIONS.hair[body]) for (let mask = 0; mask < 2 ** ids.length; mask++) {
-    const accessoryList = [];
-    for (let i = 0; i < ids.length; i++) if ((mask >> i) & 1) accessoryList.push(ids[i]);
+    const accessoryList: string[] = [];
+    for (let i = 0; i < ids.length; i++) if ((mask >> i) & 1) accessoryList.push(ids[i]!);
     if (accessoryList.length > APPEARANCE.accessoryLimit) continue;
-    const outfit = LOOK_OPTIONS.outfit[body].includes('jersey') ? 'jersey' : LOOK_OPTIONS.outfit[body][0];
+    const outfit = LOOK_OPTIONS.outfit[body].includes('jersey') ? 'jersey' : LOOK_OPTIONS.outfit[body][0]!;
     const count = triangleCount({ body, hair, outfit, fabric: 'asooke', accessories: accessoryList }, 'low');
     assert.ok(count <= 600, `low worst accessories ${body}/${hair}/${accessoryList.join('+')}: ${count}`);
-    ranges.low[0] = Math.min(ranges.low[0], count);
-    ranges.low[1] = Math.max(ranges.low[1], count);
+    ranges.low![0] = Math.min(ranges.low![0]!, count);
+    ranges.low![1] = Math.max(ranges.low![1]!, count);
   }
-  assert.ok(ranges.low[1] > 450, JSON.stringify(ranges));
-  assert.ok(ranges.medium[0] > ranges.low[1], JSON.stringify(ranges));
-  assert.ok(ranges.high[0] > ranges.medium[1], JSON.stringify(ranges));
+  assert.ok(ranges.low![1]! > 450, JSON.stringify(ranges));
+  assert.ok(ranges.medium![0]! > ranges.low![1]!, JSON.stringify(ranges));
+  assert.ok(ranges.high![0]! > ranges.medium![1]!, JSON.stringify(ranges));
 });
 
 test('standalone and legacy builders preserve return shapes, hierarchy, draw calls, and body variance', () => {
-  const look = { body: 'woman', hair: 'braids', outfit: 'owambe', fabric: 'ankara', accessories: ['earrings', 'chain'] };
+  const look: AvatarLookInput = { body: 'woman', hair: 'braids', outfit: 'owambe', fabric: 'ankara', accessories: ['earrings', 'chain'] };
   const standalone = buildPerson(look, { detail: 'high' });
   assert.equal(standalone.object3D.userData, standalone.userData);
   assert.ok(standalone.object3D.isGroup);
@@ -99,7 +103,7 @@ test('standalone and legacy builders preserve return shapes, hierarchy, draw cal
   assert.equal(standalone.userData.drawCalls, 1);
   const bounds = new THREE.Box3().setFromObject(standalone.object3D, true);
   assert.ok(bounds.min.y > -0.1 && bounds.max.y > 2.5 && bounds.max.y < 3.1, `${bounds.min.y}..${bounds.max.y}`);
-  standalone.object3D.traverse((object) => { if (object.isMesh) assert.deepEqual([object.castShadow, object.receiveShadow], [false, false]); });
+  standalone.object3D.traverse((object) => { if (object instanceof THREE.Mesh) assert.deepEqual([object.castShadow, object.receiveShadow], [false, false]); });
 
   const short = buildPerson({ ...look, height: 'short', build: 'slim' }, { detail: 'medium' });
   const tall = buildPerson({ ...look, height: 'tall', build: 'broad' }, { detail: 'medium' });
@@ -111,13 +115,15 @@ test('standalone and legacy builders preserve return shapes, hierarchy, draw cal
   const kit = makeKit();
   const avatar = buildAvatar(kit, look, { detail: 'medium', rig: true, marker: 'crown' });
   assert.ok(avatar.isGroup);
-  assert.deepEqual(Object.keys(avatar.userData.parts).sort(), ['armL', 'armR', 'body', 'head', 'legL', 'legR', 'torso']);
-  assert.equal(avatar.userData.parts.armL.parent, avatar.userData.parts.torso);
-  assert.equal(avatar.userData.parts.legL.parent, avatar.userData.parts.body);
-  assert.equal(avatar.userData.rig.elbowL.parent, avatar.userData.parts.armL);
-  assert.equal(avatar.userData.rig.kneeL.parent, avatar.userData.parts.legL);
+  const parts = avatar.userData.parts as Record<string, THREE.Group>;
+  const avatarRig = avatar.userData.rig as AvatarRig;
+  assert.deepEqual(Object.keys(parts).sort(), ['armL', 'armR', 'body', 'head', 'legL', 'legR', 'torso']);
+  assert.equal(parts.armL!.parent, parts.torso);
+  assert.equal(parts.legL!.parent, parts.body);
+  assert.equal(avatarRig.elbowL.parent, parts.armL);
+  assert.equal(avatarRig.kneeL.parent, parts.legL);
   assert.ok(avatar.userData.drawCalls >= 10);
-  avatar.traverse((object) => { if (object.isMesh) assert.deepEqual([object.castShadow, object.receiveShadow], [false, false]); });
+  avatar.traverse((object) => { if (object instanceof THREE.Mesh) assert.deepEqual([object.castShadow, object.receiveShadow], [false, false]); });
 
   for (const item of [standalone, short, tall]) item.userData.dispose();
   avatar.userData.dispose();
@@ -127,12 +133,12 @@ test('standalone and legacy builders preserve return shapes, hierarchy, draw cal
 test('all poses reset deterministically and change only existing rig transforms', () => {
   assert.deepEqual([...POSES], ['stand', 'walk', 'jog', 'sit', 'wave', 'dance', 'work', 'eat', 'phone', 'relax']);
   const { object3D: avatar, userData } = buildPerson({ body: 'man', hair: 'fade', outfit: 'hoodie', fabric: 'plain' }, { detail: 'medium', rig: true, x: 2, y: 3, z: -4, ry: 0.7 });
-  const rig = userData.rig;
+  const rig = userData.rig!;
   const root = [avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y];
-  const geometry = [];
-  avatar.traverse((object) => { if (object.geometry) geometry.push(object.geometry.uuid); });
+  const geometry: string[] = [];
+  avatar.traverse((object) => { const g = (object as Partial<THREE.Mesh>).geometry; if (g) geometry.push(g.uuid); });
   const snapshot = () => ['body', 'torso', 'head', 'armL', 'armR', 'elbowL', 'elbowR', 'legL', 'legR', 'kneeL', 'kneeR'].flatMap((name) => {
-    const part = rig[name];
+    const part = rig[name as keyof AvatarRig];
     return [part.position.x, part.position.y, part.position.z, part.rotation.x, part.rotation.y, part.rotation.z];
   });
   poseAvatar(avatar, { pose: 'stand', time: 0 });
@@ -150,8 +156,8 @@ test('all poses reset deterministically and change only existing rig transforms'
   assert.ok(rig.body.position.y < -0.25 && rig.kneeL.rotation.x > 1);
   poseAvatar(avatar, { pose: 'wave', time: 0.3 });
   assert.ok(Math.abs(rig.elbowL.rotation.y) > 0.1 && Math.abs(rig.armL.rotation.z) > 2);
-  const after = [];
-  avatar.traverse((object) => { if (object.geometry) after.push(object.geometry.uuid); });
+  const after: string[] = [];
+  avatar.traverse((object) => { const g = (object as Partial<THREE.Mesh>).geometry; if (g) after.push(g.uuid); });
   assert.deepEqual(after, geometry, 'posing neither rebuilds nor replaces geometry');
   assert.deepEqual([avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y], root, 'posing never moves or turns the avatar root');
   userData.dispose();
@@ -159,9 +165,9 @@ test('all poses reset deterministically and change only existing rig transforms'
 
 test('disposal is idempotent, owns standalone resources, and leaves host materials to the kit', () => {
   const standalone = buildPerson({ body: 'woman', hair: 'gele', outfit: 'owambe', fabric: 'asooke' }, { detail: 'high', rig: true, marker: 'crown' });
-  const geometries = new Set();
-  const materials = new Set();
-  standalone.object3D.traverse((object) => { if (object.geometry) geometries.add(object.geometry); if (object.material) materials.add(object.material); });
+  const geometries = new Set<THREE.BufferGeometry>();
+  const materials = new Set<THREE.Material>();
+  standalone.object3D.traverse((object) => { const m = object as Partial<THREE.Mesh>; if (m.geometry) geometries.add(m.geometry); if (m.material) materials.add(m.material as THREE.Material); });
   let geometryEvents = 0, materialEvents = 0;
   for (const geometry of geometries) geometry.addEventListener('dispose', () => geometryEvents++);
   for (const material of materials) material.addEventListener('dispose', () => materialEvents++);
@@ -174,7 +180,7 @@ test('disposal is idempotent, owns standalone resources, and leaves host materia
   const kit = makeKit();
   const borrowed = sceneMaterials(kit);
   let borrowedEvents = 0;
-  for (const material of Object.values(borrowed)) material.addEventListener('dispose', () => borrowedEvents++);
+  for (const material of Object.values(borrowed) as THREE.Material[]) material.addEventListener('dispose', () => borrowedEvents++);
   const avatar = buildAvatar(kit, { body: 'man', hair: 'afro', outfit: 'agbada' }, { detail: 'high' });
   avatar.userData.dispose();
   avatar.userData.dispose();

@@ -10,83 +10,114 @@
  */
 import * as THREE from 'three';
 import { GLOW, createBatch, hash, kitResources, sceneMaterials } from '../../scene/build.ts';
+import type { Kit } from '../../scene/kit.ts';
+import type { BatchLayer, SceneMaterials } from '../../scene/types.ts';
 
-/** @typedef {'woman'|'man'} BodyId */
-/** @typedef {'low'|'medium'|'high'} Detail */
-/** @typedef {'stand'|'walk'|'jog'|'sit'|'wave'|'dance'|'work'|'eat'|'phone'|'relax'} PoseId */
-/**
- * @typedef {Object} AvatarLookInput
- * @property {unknown} [body]
- * @property {unknown} [gender]
- * @property {unknown} [hair]
- * @property {unknown} [hairstyle]
- * @property {unknown} [outfit]
- * @property {unknown} [fabric]
- * @property {unknown} [skin]
- * @property {unknown} [skinTone]
- * @property {unknown} [hairColor]
- * @property {unknown} [outfitColor]
- * @property {unknown} [bottomsColor]
- * @property {unknown[]} [accessories]
- * @property {unknown} [face]
- * @property {unknown} [expression]
- * @property {unknown} [height] A multiplier, or `short`, `average`, or `tall`.
- * @property {unknown} [build] A multiplier, or `slim`, `average`, `broad`, or `soft`.
- * @property {unknown} [seed]
- * @property {unknown} [id]
- */
-/**
- * @typedef {Object} AvatarLook
- * @property {BodyId} body
- * @property {string} hair
- * @property {string} outfit
- * @property {string} fabric
- * @property {string} skin
- * @property {string} hairColor
- * @property {string} outfitColor
- * @property {string} bottomsColor
- * @property {string[]} accessories
- * @property {string} face
- * @property {string} expression
- * @property {number} height
- * @property {number} build
- */
-/**
- * @typedef {Object} DrawOptions
- * @property {number} [x]
- * @property {number} [y]
- * @property {number} [z]
- * @property {number} [ry]
- * @property {PoseId|string} [pose]
- * @property {number} [stride] Normalized gait phase; values wrap into 0..1.
- * @property {number} [time] Host-supplied seconds for gesture motion.
- * @property {number} [seat] Seat height for a baked sitting pose.
- * @property {unknown} [seed]
- * @property {number} [scale]
- * @property {'crown'|'npc'|'player'|null} [marker]
- * @property {Detail|string} [detail]
- */
-/**
- * @typedef {Object} BuildOptions
- * @property {number} [x]
- * @property {number} [y]
- * @property {number} [z]
- * @property {number} [ry]
- * @property {boolean} [rig]
- * @property {Detail|string} [detail]
- * @property {'crown'|'npc'|'player'|null} [marker]
- * @property {PoseId|string} [pose]
- * @property {number} [stride]
- * @property {number} [time]
- * @property {unknown} [seed]
- * @property {number} [scale]
- */
+export type BodyId = 'woman' | 'man';
+export type Detail = 'low' | 'medium' | 'high';
+export type PoseId = 'stand' | 'walk' | 'jog' | 'sit' | 'wave' | 'dance' | 'work' | 'eat' | 'phone' | 'relax';
+export type Marker = 'crown' | 'npc' | 'player';
+export interface AvatarLookInput {
+  body?: unknown;
+  gender?: unknown;
+  hair?: unknown;
+  hairstyle?: unknown;
+  outfit?: unknown;
+  fabric?: unknown;
+  skin?: unknown;
+  skinTone?: unknown;
+  hairColor?: unknown;
+  outfitColor?: unknown;
+  bottomsColor?: unknown;
+  accessories?: unknown[];
+  face?: unknown;
+  expression?: unknown;
+  /** A multiplier, or `short`, `average`, or `tall`. */
+  height?: unknown;
+  /** A multiplier, or `slim`, `average`, `broad`, or `soft`. */
+  build?: unknown;
+  seed?: unknown;
+  id?: unknown;
+}
+export interface AvatarLook {
+  body: BodyId;
+  hair: string;
+  outfit: string;
+  fabric: string;
+  skin: string;
+  hairColor: string;
+  outfitColor: string;
+  bottomsColor: string;
+  accessories: string[];
+  face: string;
+  expression: string;
+  height: number;
+  build: number;
+}
+export interface DrawOptions {
+  x?: number;
+  y?: number;
+  z?: number;
+  ry?: number;
+  pose?: PoseId | string;
+  /** Normalized gait phase; values wrap into 0..1. */
+  stride?: number;
+  /** Host-supplied seconds for gesture motion. */
+  time?: number;
+  /** Seat height for a baked sitting pose. */
+  seat?: number;
+  seed?: unknown;
+  scale?: number;
+  marker?: Marker | null;
+  detail?: Detail | string;
+}
+export interface BuildOptions {
+  x?: number;
+  y?: number;
+  z?: number;
+  ry?: number;
+  rig?: boolean;
+  detail?: Detail | string;
+  marker?: Marker | null;
+  pose?: PoseId | string;
+  stride?: number;
+  time?: number;
+  seat?: number;
+  seed?: unknown;
+  scale?: number;
+}
+/** Shape options the scene batch understands (see scene/build.js). */
+export interface ShapeOptions { seg?: number; top?: number; rx?: number; ry?: number; rz?: number; sx?: number; sz?: number; open?: boolean; layer?: BatchLayer; part?: string }
+/** The subset of the scene batch (`createBatch`) that avatar drawing uses. */
+export interface DrawBatch {
+  box: (x: number, y: number, z: number, w: number, h: number, d: number, colour: string, o?: ShapeOptions) => unknown;
+  cyl: (x: number, y: number, z: number, r: number, h: number, colour: string, o?: ShapeOptions) => unknown;
+  cone: (x: number, y: number, z: number, r: number, h: number, colour: string, o?: ShapeOptions) => unknown;
+  ball: (x: number, y: number, z: number, rx: number, ry: number, rz: number, colour: string, o?: ShapeOptions) => unknown;
+  ico: (x: number, y: number, z: number, rx: number, ry: number, rz: number, colour: string, o?: ShapeOptions) => unknown;
+  quad: (x: number, y: number, z: number, w: number, h: number, colour: string, o?: ShapeOptions) => unknown;
+  at: (x: number, y: number, z: number, ry: number, draw: (b: DrawBatch) => void, rx?: number, rz?: number, scale?: number) => unknown;
+  /** Present on rig batches only. */
+  node?: (name: string, x: number, y: number, z: number, draw: (b: DrawBatch) => void) => unknown;
+}
+type SceneBatch = ReturnType<typeof createBatch>;
+type Swatch = Readonly<{ id: string, hex: string }>;
+interface Rotation { x?: number | undefined; y?: number | undefined; z?: number | undefined }
+interface OutfitStyle { sleeve: string; legs: string; shoe: string; collar?: boolean; gown?: boolean; vest?: boolean; helmet?: boolean; hood?: boolean; bulk?: number; open?: boolean; sport?: boolean; tunic?: boolean; robe?: boolean; dress?: boolean }
+type Pose = Record<'armR' | 'armL' | 'elbowR' | 'elbowL' | 'legR' | 'legL' | 'kneeR' | 'kneeL' | 'torsoX' | 'torsoY' | 'bodyY' | 'bodyX', number> & Partial<Record<'armRZ' | 'armLZ' | 'elbowRY' | 'elbowLY' | 'headY' | 'headZ', number>>;
+/** A rigged avatar's controllable joints. */
+export interface AvatarRig { body: THREE.Group; torso: THREE.Group; head: THREE.Group; armL: THREE.Group; armR: THREE.Group; legL: THREE.Group; legR: THREE.Group; elbowL: THREE.Group; elbowR: THREE.Group; kneeL: THREE.Group; kneeR: THREE.Group }
+export interface AvatarUserData {
+  look: AvatarLook; top: number; triangles: number; drawCalls: number; dispose: () => void;
+  parts?: Record<string, THREE.Group | undefined>; rig?: AvatarRig; seat?: number;
+}
+export type SceneKit = Kit;
 
-const swatches = (values) => values.map(([id, hex]) => Object.freeze({ id, hex }));
+const swatches = (values: [string, string][]): Swatch[] => values.map(([id, hex]) => Object.freeze({ id, hex }));
 
 /** Public option ids accepted by normalizeLook and the preview UI. */
 export const LOOK_OPTIONS = Object.freeze({
-  body: Object.freeze(['woman', 'man']),
+  body: Object.freeze(['woman', 'man'] as BodyId[]),
   hair: Object.freeze({
     woman: Object.freeze(['braids', 'afro', 'bun', 'ponytail', 'long', 'locs', 'lowcut', 'gele', 'classic', 'cornrows', 'twists', 'bantuknots']),
     man: Object.freeze(['lowcut', 'bald', 'curls', 'afro', 'locs', 'braids', 'classic', 'fade', 'cornrows', 'twists']),
@@ -105,40 +136,40 @@ export const LOOK_OPTIONS = Object.freeze({
 });
 
 /** Detail ids in increasing cost order. */
-export const DETAILS = Object.freeze(['low', 'medium', 'high']);
+export const DETAILS = Object.freeze(['low', 'medium', 'high'] as const);
 /** Every deterministic pose accepted by poseAvatar and the preview. */
-export const POSES = Object.freeze(['stand', 'walk', 'jog', 'sit', 'wave', 'dance', 'work', 'eat', 'phone', 'relax']);
+export const POSES = Object.freeze(['stand', 'walk', 'jog', 'sit', 'wave', 'dance', 'work', 'eat', 'phone', 'relax'] as const);
 /** Legacy part names. Rigs also expose private elbow and knee nodes through userData.rig. */
-export const PARTS = Object.freeze(['body', 'torso', 'head', 'armL', 'armR', 'legL', 'legR']);
+export const PARTS = Object.freeze(['body', 'torso', 'head', 'armL', 'armR', 'legL', 'legR'] as const);
 
-const ACCESSORY_SLOTS = Object.freeze({ glasses: 'eyes', sunglasses: 'eyes', cap: 'head', headwrap: 'head', fila: 'head', earrings: 'ears', chain: 'neck', watch: 'wrist', beads: 'hand', backpack: 'carry', handbag: 'carry' });
-const GAME_SKIN = Object.freeze({ skin1: '#e0ac7e', skin2: '#c98e62', skin3: '#b0764c', skin4: '#96603c', skin5: '#7a4a2c', skin6: '#5e3620', skin7: '#3f2416' });
-const HEIGHTS = Object.freeze({ short: 0.9, average: 1, tall: 1.1 });
-const BUILDS = Object.freeze({ slim: 0.84, average: 1, broad: 1.17, soft: 1.1 });
-const SEEDED_ACCESSORIES = Object.freeze([[], [], [], ['glasses'], ['cap'], [], ['backpack'], ['watch'], [], ['sunglasses'], ['handbag'], []]);
-const ALIASES = Object.freeze({ female: 'woman', f: 'woman', girl: 'woman', male: 'man', m: 'man', boy: 'man', asoke: 'asooke', lowcut: 'lowcut', bantuknot: 'bantuknots', bantuknots: 'bantuknots', site: 'sitework', workwear: 'sitework', smart: 'office' });
-const key = (value) => String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
-const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+const ACCESSORY_SLOTS: Readonly<Record<string, string>> = Object.freeze({ glasses: 'eyes', sunglasses: 'eyes', cap: 'head', headwrap: 'head', fila: 'head', earrings: 'ears', chain: 'neck', watch: 'wrist', beads: 'hand', backpack: 'carry', handbag: 'carry' });
+const GAME_SKIN: Readonly<Record<string, string>> = Object.freeze({ skin1: '#e0ac7e', skin2: '#c98e62', skin3: '#b0764c', skin4: '#96603c', skin5: '#7a4a2c', skin6: '#5e3620', skin7: '#3f2416' });
+const HEIGHTS: Readonly<Record<string, number>> = Object.freeze({ short: 0.9, average: 1, tall: 1.1 });
+const BUILDS: Readonly<Record<string, number>> = Object.freeze({ slim: 0.84, average: 1, broad: 1.17, soft: 1.1 });
+const SEEDED_ACCESSORIES: readonly string[][] = Object.freeze([[], [], [], ['glasses'], ['cap'], [], ['backpack'], ['watch'], [], ['sunglasses'], ['handbag'], []]);
+const ALIASES: Readonly<Record<string, string>> = Object.freeze({ female: 'woman', f: 'woman', girl: 'woman', male: 'man', m: 'man', boy: 'man', asoke: 'asooke', lowcut: 'lowcut', bantuknot: 'bantuknots', bantuknots: 'bantuknots', site: 'sitework', workwear: 'sitework', smart: 'office' });
+const key = (value: unknown) => String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
-function option(value, list, fallback) {
+function option(value: unknown, list: readonly string[], fallback: number): string {
   const wanted = ALIASES[key(value)] || key(value);
-  return list.includes(wanted) ? wanted : list[fallback % list.length];
+  return list.includes(wanted) ? wanted : list[fallback % list.length]!;
 }
-function colour(value, palette, fallback) {
+function colour(value: unknown, palette: readonly Swatch[], fallback: number): string {
   if (typeof value === 'string' && /^#[\da-f]{6}$/i.test(value.trim())) return value.trim().toLowerCase();
-  if (Number.isInteger(value) && value >= 0 && value < palette.length) return palette[value].hex;
+  if (typeof value === 'number' && Number.isInteger(value) && value >= 0 && value < palette.length) return palette[value]!.hex;
   const wanted = key(value);
   const found = palette.find((entry) => entry.id === wanted);
-  return found?.hex || GAME_SKIN[wanted] || palette[fallback % palette.length].hex;
+  return found?.hex || GAME_SKIN[wanted] || palette[fallback % palette.length]!.hex;
 }
-function dimension(value, words, fallback, min, max) {
+function dimension(value: unknown, words: Readonly<Record<string, number>>, fallback: number, min: number, max: number): number {
   const named = words[key(value)];
   if (named) return named;
   return Number.isFinite(value) ? clamp(Number(value), min, max) : fallback;
 }
-function accessories(value) {
-  const used = new Set();
-  const result = [];
+function accessories(value: unknown): string[] {
+  const used = new Set<string>();
+  const result: string[] = [];
   for (const item of Array.isArray(value) ? value : []) {
     const id = key(item);
     const slot = ACCESSORY_SLOTS[id];
@@ -153,23 +184,19 @@ function accessories(value) {
  * Normalize saved or partial appearance data. Unknown values choose a deterministic fallback from
  * `seed`; known legacy punctuation variants such as `low-cut`, `site-work`, and `aso-oke` survive.
  * A recorded look wears only its recorded accessories. A missing look may receive a seeded extra.
- *
- * @param {AvatarLookInput|null|undefined} look
- * @param {unknown} [seed]
- * @returns {AvatarLook}
  */
-export function normalizeLook(look, seed) {
-  const source = look && typeof look === 'object' ? look : {};
+export function normalizeLook(look?: AvatarLookInput | null, seed?: unknown): AvatarLook {
+  const source: AvatarLookInput = look && typeof look === 'object' ? look : {};
   const recorded = Object.keys(source).length > 0;
   const base = seed ?? source.seed ?? source.id ?? 'allworld';
-  const pick = (name) => hash(`${base}:${name}`);
-  const body = /** @type {BodyId} */ (option(source.body ?? source.gender, LOOK_OPTIONS.body, pick('body')));
+  const pick = (name: string) => hash(`${base}:${name}`);
+  const body = option(source.body ?? source.gender, LOOK_OPTIONS.body, pick('body')) as BodyId;
   const outfitList = LOOK_OPTIONS.outfit[body];
   const outfitColor = colour(source.outfitColor, LOOK_OPTIONS.outfitColor, pick('outfitColor'));
   let bottomSeed = pick('bottomsColor');
-  if (LOOK_OPTIONS.outfitColor[bottomSeed % LOOK_OPTIONS.outfitColor.length].hex === outfitColor) bottomSeed += 7;
+  if (LOOK_OPTIONS.outfitColor[bottomSeed % LOOK_OPTIONS.outfitColor.length]!.hex === outfitColor) bottomSeed += 7;
   const everyday = outfitList.filter((id) => id !== 'sitework');
-  const outfitFallback = pick('outfit') % 9 === 0 ? outfitList.indexOf('sitework') : outfitList.indexOf(everyday[pick('outfit') % everyday.length]);
+  const outfitFallback = pick('outfit') % 9 === 0 ? outfitList.indexOf('sitework') : outfitList.indexOf(everyday[pick('outfit') % everyday.length]!);
   return {
     body,
     hair: option(source.hair ?? source.hairstyle, LOOK_OPTIONS.hair[body], pick('hair')),
@@ -195,7 +222,7 @@ const INK = '#241916';
 const EYE_WHITE = '#f4efe6';
 const GOLD = '#d9b048';
 const CLOTH_WHITE = '#f3f0e8';
-const OUTFITS = Object.freeze({
+const OUTFITS: Readonly<Record<string, OutfitStyle>> & { readonly casual: OutfitStyle } = Object.freeze({
   casual: { sleeve: 'short', legs: 'trousers', shoe: 'sneaker' },
   office: { sleeve: 'long', legs: 'trousers', shoe: 'dress', collar: true },
   owambe: { sleeve: 'wide', legs: 'wrapper', shoe: 'heel', gown: true },
@@ -207,26 +234,26 @@ const OUTFITS = Object.freeze({
   agbada: { sleeve: 'wide', legs: 'trousers', shoe: 'dress', tunic: true, robe: true },
   gown: { sleeve: 'cap', legs: 'dress', shoe: 'heel', dress: true },
 });
-const SHOES = Object.freeze({ sneaker: '#313846', dress: '#211b1a', heel: '#b99132', boot: '#725636', slide: '#3a342e' });
+const SHOES: Readonly<Record<string, string>> & { readonly sneaker: string, readonly heel: string } = Object.freeze({ sneaker: '#313846', dress: '#211b1a', heel: '#b99132', boot: '#725636', slide: '#3a342e' });
 
-const channels = (hex) => { const n = Number.parseInt(hex.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
-const hex = (values) => `#${values.map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
-const mix = (a, b, amount) => { const aa = channels(a); const bb = channels(b); return hex(aa.map((value, index) => value + (bb[index] - value) * amount)); };
-const shade = (value, amount) => hex(channels(value).map((channel) => amount >= 0 ? channel + (255 - channel) * amount : channel * (1 + amount)));
-const fabricPalette = (look) => {
+const channels = (hex: string): [number, number, number] => { const n = Number.parseInt(hex.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+const hex = (values: number[]) => `#${values.map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
+const mix = (a: string, b: string, amount: number) => { const aa = channels(a); const bb = channels(b); return hex(aa.map((value, index) => value + (bb[index]! - value) * amount)); };
+const shade = (value: string, amount: number) => hex(channels(value).map((channel) => amount >= 0 ? channel + (255 - channel) * amount : channel * (1 + amount)));
+const fabricPalette = (look: AvatarLook): [string, string, string] => {
   const at = Math.max(0, LOOK_OPTIONS.outfitColor.findIndex((entry) => entry.hex === look.outfitColor));
-  const next = (step) => LOOK_OPTIONS.outfitColor[(at + step) % LOOK_OPTIONS.outfitColor.length].hex;
+  const next = (step: number) => LOOK_OPTIONS.outfitColor[(at + step) % LOOK_OPTIONS.outfitColor.length]!.hex;
   if (look.fabric === 'ankara') return [look.outfitColor, next(3), next(7)];
   if (look.fabric === 'adire') return [shade(look.outfitColor, -0.2), '#e4e9ef', shade(look.outfitColor, -0.48)];
   if (look.fabric === 'asooke') return [look.outfitColor, '#e2c15a', shade(look.outfitColor, -0.42)];
   return [look.outfitColor, look.outfitColor, look.outfitColor];
 };
 
-function detailOf(value) { return DETAILS.includes(value) ? value : 'low'; }
-function segments(detail) { return detail === 'high' ? 16 : detail === 'medium' ? 7 : 3; }
+function detailOf(value: unknown): Detail { return (DETAILS as readonly unknown[]).includes(value) ? value as Detail : 'low'; }
+function segments(detail: Detail) { return detail === 'high' ? 16 : detail === 'medium' ? 7 : 3; }
 
-function gait(pose, stride) {
-  const phase = ((Number.isFinite(stride) ? stride : 0.25) % 1 + 1) % 1 * TAU;
+function gait(pose: string, stride: number | undefined): Pose {
+  const phase = ((Number.isFinite(stride) ? stride! : 0.25) % 1 + 1) % 1 * TAU;
   const jog = pose === 'jog';
   const swing = Math.sin(phase);
   const reach = jog ? 0.76 : 0.48;
@@ -239,11 +266,11 @@ function gait(pose, stride) {
     torsoX: jog ? 0.14 : 0.055, torsoY: -swing * 0.07, bodyY: (jog ? 0.042 : 0.022) * Math.cos(phase * 2), bodyX: 0,
   };
 }
-function bakedPose(pose, stride, time = 0) {
+function bakedPose(pose: string, stride: number | undefined, time = 0): Pose {
   if (pose === 'walk' || pose === 'jog') return gait(pose, stride);
   const wave = Math.sin(time * 7) * 0.25;
   const beat = Math.sin(time * 4);
-  const value = { armR: 0.04, armL: -0.04, elbowR: -0.18, elbowL: -0.18, legR: 0.02, legL: -0.02, kneeR: 0, kneeL: 0, torsoX: 0, torsoY: 0, bodyY: 0, bodyX: 0 };
+  const value: Pose = { armR: 0.04, armL: -0.04, elbowR: -0.18, elbowL: -0.18, legR: 0.02, legL: -0.02, kneeR: 0, kneeL: 0, torsoX: 0, torsoY: 0, bodyY: 0, bodyX: 0 };
   if (pose === 'sit') Object.assign(value, { armR: -0.32, armL: -0.32, elbowR: -0.85, elbowL: -0.85, legR: -1.48, legL: -1.48, kneeR: 1.48, kneeL: 1.48, torsoX: -0.04 });
   else if (pose === 'wave') Object.assign(value, { armL: -0.18, elbowL: -1.15, armLZ: -2.35, elbowLY: wave });
   else if (pose === 'dance') Object.assign(value, { armR: -0.45 - beat * 0.15, armL: -0.95 + beat * 0.2, armRZ: 1.8, armLZ: -0.8, elbowR: -0.75, elbowL: -1.1, legR: -0.25, legL: 0.16, kneeR: 0.55, torsoY: beat * 0.16, bodyY: Math.abs(beat) * 0.035 });
@@ -255,27 +282,28 @@ function bakedPose(pose, stride, time = 0) {
   return value;
 }
 
-function at(b, x, y, z, rotation, draw) {
+function at(b: DrawBatch, x: number, y: number, z: number, rotation: Rotation | null, draw: (b: DrawBatch) => void): void {
   const rx = rotation?.x || 0, ry = rotation?.y || 0, rz = rotation?.z || 0;
   b.at(x, y, z, ry, () => draw(b), rx, rz);
 }
-function node(b, name, x, y, z, rotation, draw) {
+function node(b: DrawBatch, name: string, x: number, y: number, z: number, rotation: Rotation | null, draw: (b: DrawBatch) => void): void {
   if (typeof b.node === 'function') b.node(name, x, y, z, draw);
   else at(b, x, y, z, rotation, draw);
 }
-function tube(b, y, length, topRadius, bottomRadius, color, seg, extra) {
+function tube(b: DrawBatch, y: number, length: number, topRadius: number, bottomRadius: number, color: string, seg: number, extra?: ShapeOptions): void {
   b.cyl(0, y - length / 2, 0, bottomRadius, length, color, { seg, top: topRadius / bottomRadius, ...extra });
 }
-function sphereCluster(b, points, color, seg) {
-  for (const point of points) b.ball(point[0], point[1], point[2], point[3], point[4] ?? point[3], point[5] ?? point[3], color, { seg });
+function sphereCluster(b: DrawBatch, points: number[][], color: string, seg: number): void {
+  for (const point of points) b.ball(point[0]!, point[1]!, point[2]!, point[3]!, point[4] ?? point[3]!, point[5] ?? point[3]!, color, { seg });
 }
-function rod(b, a, c, radius, color, seg) {
+type Vec3 = [number, number, number];
+function rod(b: DrawBatch, a: Vec3, c: Vec3, radius: number, color: string, seg: number): void {
   const dx = c[0] - a[0], dy = c[1] - a[1], dz = c[2] - a[2];
   const length = Math.hypot(dx, dy, dz) || 1e-6;
   b.cyl((a[0] + c[0]) / 2, (a[1] + c[1]) / 2, (a[2] + c[2]) / 2, radius, length, color, { seg, rx: Math.acos(clamp(dy / length, -1, 1)), ry: Math.atan2(dx, dz) });
 }
 
-function drawFabric(b, look, radius, y0, y1, aspect, detail) {
+function drawFabric(b: DrawBatch, look: AvatarLook, radius: number, y0: number, y1: number, aspect: number, detail: Detail): void {
   if (look.fabric === 'plain') return;
   const colors = fabricPalette(look);
   if (detail === 'low') {
@@ -313,7 +341,7 @@ function drawFabric(b, look, radius, y0, y1, aspect, detail) {
   if (look.fabric === 'adire') for (let row = 1; row < rows; row++) b.cyl(0, y0 + row / rows * (y1 - y0), 0, radius * 1.01, 0.012, colors[1], { seg: Math.max(6, around * 2), sz: aspect, open: true });
 }
 
-function drawHead(b, look, detail) {
+function drawHead(b: DrawBatch, look: AvatarLook, detail: Detail): void {
   const seg = segments(detail);
   const featureSeg = detail === 'high' ? 14 : 6;
   const minorSeg = detail === 'high' ? 8 : 5;
@@ -354,7 +382,7 @@ function drawHead(b, look, detail) {
   if (look.expression === 'grin') b.quad(0, 0.145, 0.237, 0.095, 0.018, EYE_WHITE);
 }
 
-function drawHair(b, look, detail, covered = false) {
+function drawHair(b: DrawBatch, look: AvatarLook, detail: Detail, covered = false): void {
   if (look.hair === 'bald') return;
   const c = look.hairColor;
   const hi = mix(c, '#6a4635', 0.28);
@@ -427,7 +455,7 @@ function drawHair(b, look, detail, covered = false) {
     return;
   }
   if (look.hair === 'curls' || look.hair === 'classic') {
-    const points = [];
+    const points: number[][] = [];
     const rings = detail === 'high' ? 3 : detail === 'medium' ? 2 : 1;
     for (let ring = 0; ring < rings; ring++) {
       const count = ring === 0 ? 8 : ring === 1 ? 6 : 4;
@@ -461,7 +489,7 @@ function drawHair(b, look, detail, covered = false) {
         for (const x of [-0.12, -0.04, 0.04, 0.12]) rod(b, [x, 0.43, 0.214], [x * 0.35, 0.625 - Math.abs(x) * 0.15, -0.12], 0.006, mix(look.skin, c, 0.45), 5);
       }
     }
-    const count = covered
+    const count: number = covered
       ? (detail === 'high' ? 8 : detail === 'medium' ? 5 : 2)
       : look.hair === 'twists' ? (detail === 'high' ? 9 : detail === 'medium' ? 6 : 3) : detail === 'high' ? 11 : detail === 'medium' ? 7 : 3;
     for (let i = 0; i < count; i++) {
@@ -485,14 +513,14 @@ function drawHair(b, look, detail, covered = false) {
   }
   if (look.hair === 'long') { b.ball(0, 0.08, -0.19, 0.31, 0.52, 0.16, c, { seg }); return; }
   if (look.hair === 'bantuknots') {
-    const knots = [[0, 0.75, -0.03], [-0.18, 0.65, 0.02], [0.18, 0.65, 0.02], [-0.17, 0.62, -0.17], [0.17, 0.62, -0.17]];
+    const knots: Vec3[] = [[0, 0.75, -0.03], [-0.18, 0.65, 0.02], [0.18, 0.65, 0.02], [-0.17, 0.62, -0.17], [0.17, 0.62, -0.17]];
     if (detail === 'low') for (const p of knots.slice(0, 3)) b.cone(p[0], p[1], p[2], 0.075, 0.12, c, { seg: 3, top: 0.55 });
     else for (const p of knots) { b.cyl(p[0], p[1], p[2], 0.065, 0.1, c, { seg: detail === 'high' ? 6 : 5, top: 0.65 }); b.ball(p[0], p[1] + 0.055, p[2], 0.075, 0.065, 0.075, hi, { seg: detail === 'high' ? 7 : 6 }); }
     return;
   }
 }
 
-function drawHeadwearAndFaceAccessories(b, look, detail) {
+function drawHeadwearAndFaceAccessories(b: DrawBatch, look: AvatarLook, detail: Detail): void {
   const headwear = look.accessories.find((id) => ACCESSORY_SLOTS[id] === 'head');
   const cloth = fabricPalette(look)[1];
   if (headwear === 'cap') { b.ball(0, 0.53, -0.015, 0.285, 0.19, 0.27, cloth, { seg: segments(detail) }); b.box(0, 0.49, 0.285, 0.31, 0.035, 0.23, cloth); }
@@ -517,7 +545,7 @@ function drawHeadwearAndFaceAccessories(b, look, detail) {
   }
 }
 
-function drawHand(b, look, detail, side) {
+function drawHand(b: DrawBatch, look: AvatarLook, detail: Detail, side: number): void {
   const seg = detail === 'high' ? 7 : detail === 'medium' ? 8 : 6;
   b.ball(0, -0.075, 0, 0.075, 0.105, 0.05, look.skin, { seg });
   if (detail === 'high') {
@@ -530,7 +558,7 @@ function drawHand(b, look, detail, side) {
   }
 }
 
-function drawArm(b, look, detail, side, pose) {
+function drawArm(b: DrawBatch, look: AvatarLook, detail: Detail, side: number, pose: Pose): void {
   const style = OUTFITS[look.outfit] || OUTFITS.casual;
   const seg = segments(detail);
   const cloth = look.outfitColor;
@@ -556,14 +584,14 @@ function drawArm(b, look, detail, side, pose) {
   });
 }
 
-function drawFoot(b, look, detail, shoe) {
+function drawFoot(b: DrawBatch, look: AvatarLook, detail: Detail, shoe: string): void {
   const seg = segments(detail);
   b.ball(0, -0.06, 0.085, 0.115, 0.075, 0.205, SHOES[shoe] || SHOES.sneaker, { seg, rx: -0.08 });
   if (shoe === 'sneaker') b.box(0, -0.105, 0.1, 0.22, 0.035, 0.34, CLOTH_WHITE);
   if (shoe === 'heel') b.box(0, -0.125, -0.035, 0.055, 0.12, 0.055, SHOES.heel);
 }
 
-function drawLeg(b, look, detail, side, pose) {
+function drawLeg(b: DrawBatch, look: AvatarLook, detail: Detail, side: number, pose: Pose): void {
   const style = OUTFITS[look.outfit] || OUTFITS.casual;
   const seg = segments(detail);
   const bare = style.legs === 'shorts';
@@ -579,7 +607,7 @@ function drawLeg(b, look, detail, side, pose) {
   });
 }
 
-function drawTorso(b, look, detail) {
+function drawTorso(b: DrawBatch, look: AvatarLook, detail: Detail): void {
   const style = OUTFITS[look.outfit] || OUTFITS.casual;
   const seg = segments(detail);
   const woman = look.body === 'woman';
@@ -590,9 +618,9 @@ function drawTorso(b, look, detail) {
   const depth = (woman ? 0.72 : 0.64);
   const colors = fabricPalette(look);
   const bulk = style.bulk || 0;
-  const rings = [[-0.05, hip + bulk], [0.22, waist + bulk], [0.5, shoulder * 0.92 + bulk], [0.65, shoulder + bulk], [0.73, 0.12 + bulk]];
+  const rings: [number, number][] = [[-0.05, hip + bulk], [0.22, waist + bulk], [0.5, shoulder * 0.92 + bulk], [0.65, shoulder + bulk], [0.73, 0.12 + bulk]];
   for (let i = 0; i < rings.length - 1; i++) {
-    const a = rings[i], c = rings[i + 1];
+    const a = rings[i]!, c = rings[i + 1]!;
     b.cyl(0, (a[0] + c[0]) / 2, 0, a[1], c[0] - a[0], i % 3 === 1 && look.fabric !== 'plain' ? colors[1] : colors[0], { seg, top: c[1] / a[1], sz: depth });
   }
   if (style.tunic) b.cyl(0, -0.22, 0, hip + 0.035, 0.5, colors[0], { seg, top: 0.88, sz: Math.max(depth, 0.82), open: false });
@@ -617,7 +645,7 @@ function drawTorso(b, look, detail) {
   if (look.accessories.includes('handbag')) { b.box(woman ? 0.39 : -0.39, -0.08, 0.04, 0.3, 0.34, 0.13, colors[2]); if (detail === 'high') b.cyl(woman ? 0.39 : -0.39, 0.16, 0.04, 0.12, 0.018, GOLD, { seg: 8, rx: Math.PI / 2, sx: 1.3 }); }
 }
 
-function drawHipsAndLowerGarment(b, look, detail) {
+function drawHipsAndLowerGarment(b: DrawBatch, look: AvatarLook, detail: Detail): void {
   const style = OUTFITS[look.outfit] || OUTFITS.casual;
   const seg = segments(detail);
   const hip = (look.body === 'woman' ? 0.27 : 0.245) * look.build;
@@ -628,14 +656,14 @@ function drawHipsAndLowerGarment(b, look, detail) {
   } else b.cyl(0, -0.04, 0, hip, 0.18, look.bottomsColor, { seg, top: 0.94, sz: 0.72 });
 }
 
-function drawMarker(b, marker, top) {
+function drawMarker(b: DrawBatch, marker: Marker | null, top: number): void {
   if (marker === 'crown') {
     for (const x of [-0.08, 0, 0.08]) b.quad(x, top + 0.23 + (x === 0 ? 0.03 : 0), 0, 0.085, 0.16, '#ffd34d', { rz: Math.PI / 4, ...GLOW });
   } else if (marker === 'npc') b.ico(0, top + 0.18, 0, 0.11, 0.11, 0.11, '#58d68a', GLOW);
   else if (marker === 'player') b.ico(0, top + 0.18, 0, 0.1, 0.13, 0.1, '#6fb4ff', GLOW);
 }
 
-function drawFigure(b, look, detail, pose, marker) {
+function drawFigure(b: DrawBatch, look: AvatarLook, detail: Detail, pose: Pose, marker: Marker | null): void {
   const shoulderX = (look.body === 'woman' ? 0.25 : 0.31) * look.build;
   node(b, 'body', 0, pose.bodyY || 0, 0, { x: pose.bodyX }, (body) => {
     at(body, 0, HIP_Y, 0, null, (hips) => drawHipsAndLowerGarment(hips, look, detail));
@@ -665,29 +693,32 @@ function drawFigure(b, look, detail, pose, marker) {
 /**
  * Draw one avatar into a compatible scene batch. The function returns the normalized look and the
  * world-space label height. Triangle cost includes every garment, accessory, finger, and marker.
- *
- * @param {ReturnType<typeof createBatch>|Object} batch
- * @param {AvatarLookInput|null|undefined} input
- * @param {DrawOptions} [options]
- * @returns {{look: AvatarLook, top: number}}
  */
-export function drawAvatar(batch, input, options = {}) {
+export function drawAvatar(batch: DrawBatch, input?: AvatarLookInput | null, options: DrawOptions = {}): { look: AvatarLook, top: number } {
   const { x = 0, y = 0, z = 0, ry = 0, pose = 'stand', stride, time = 0, seat = 0.6, seed, scale = 1, marker = null } = options;
   const detail = detailOf(options.detail);
   const look = normalizeLook(input, seed);
-  const joints = bakedPose(POSES.includes(pose) ? pose : 'stand', stride, time);
+  const joints = bakedPose((POSES as readonly string[]).includes(pose) ? pose : 'stand', stride, time);
   const sittingLift = pose === 'sit' ? seat + 0.11 - HIP_Y : 0;
   const bodyScale = scale * look.height;
   batch.at(x, y + sittingLift * bodyScale, z, ry, () => drawFigure(batch, look, detail, joints, marker), 0, 0, bodyScale);
   return { look, top: y + (marker ? 3.2 : 2.91) * bodyScale + sittingLift * bodyScale };
 }
 
-function createRigBatch(Three) {
-  const records = new Map();
-  const root = { name: 'root', batch: createBatch(Three), parent: null, pivot: { x: 0, y: 0, z: 0 } };
+interface RigRecord { name: string; batch: SceneBatch; parent: string | null; pivot: { x: number, y: number, z: number } }
+interface RigBatch extends DrawBatch {
+  isBatch: true;
+  node: NonNullable<DrawBatch['node']>;
+  readonly triangles: number;
+  records: Map<string, RigRecord>;
+}
+
+function createRigBatch(Three: typeof THREE): RigBatch {
+  const records = new Map<string, RigRecord>();
+  const root: RigRecord = { name: 'root', batch: createBatch(Three), parent: null, pivot: { x: 0, y: 0, z: 0 } };
   records.set('root', root);
   let current = root;
-  const rig = {
+  const rig: RigBatch = {
     isBatch: true,
     node(name, x, y, z, draw) {
       let record = records.get(name);
@@ -702,13 +733,20 @@ function createRigBatch(Three) {
     },
     get triangles() { let total = 0; for (const record of records.values()) total += record.batch.triangles; return total; },
     records,
+    // Shape methods are forwarded to the active record's batch below (box, cyl, cone, ball, ico, quad, disc, light, world).
+    box: () => undefined, cyl: () => undefined, cone: () => undefined, ball: () => undefined, ico: () => undefined, quad: () => undefined,
+    at: () => undefined,
   };
-  for (const name of ['box', 'cyl', 'cone', 'ball', 'ico', 'quad', 'disc', 'light', 'world']) rig[name] = (...args) => current.batch[name](...args);
+  // Forwarded by name, so the batch is reached through an untyped method table.
+  const forward = rig as unknown as Record<string, (...args: unknown[]) => unknown>;
+  for (const name of ['box', 'cyl', 'cone', 'ball', 'ico', 'quad', 'disc', 'light', 'world']) forward[name] = (...args: unknown[]) => (current.batch as unknown as Record<string, (...args: unknown[]) => unknown>)[name]!(...args);
   rig.at = (x, y, z, ry, draw, rx = 0, rz = 0, scale = 1) => { current.batch.at(x, y, z, ry, () => draw(rig), rx, rz, scale); return rig; };
   return rig;
 }
 
-function removeAndDispose(objects, group, ownedMaterials, unregister) {
+type Meshes = THREE.Mesh[];
+type Materials = Record<keyof SceneMaterials, THREE.Material>;
+function removeAndDispose(objects: Meshes, group: THREE.Group, ownedMaterials: Materials | null, unregister: (() => void) | null): () => void {
   let disposed = false;
   return () => {
     if (disposed) return;
@@ -722,14 +760,14 @@ function removeAndDispose(objects, group, ownedMaterials, unregister) {
   };
 }
 
-function buildWithMaterials(materials, input, options, register, ownedMaterials) {
+function buildWithMaterials(materials: Materials, input: AvatarLookInput | null | undefined, options: BuildOptions, register: Set<() => void> | null, ownedMaterials: Materials | null): THREE.Group {
   const { x = 0, y = 0, z = 0, ry = 0, rig = false, scale = 1, pose = 'stand', stride, time = 0, ...rest } = options;
   const group = new THREE.Group();
   group.position.set(x, y, z);
   group.rotation.y = ry;
   group.scale.setScalar(scale);
-  const objects = [];
-  const addMeshes = (target, built) => {
+  const objects: Meshes = [];
+  const addMeshes = (target: THREE.Object3D, built: { meshes: THREE.Mesh[] }) => {
     for (const mesh of built.meshes) { mesh.castShadow = false; mesh.receiveShadow = false; objects.push(mesh); target.add(mesh); }
   };
   if (!rig) {
@@ -737,7 +775,7 @@ function buildWithMaterials(materials, input, options, register, ownedMaterials)
     const drawn = drawAvatar(batch, input, { ...rest, pose, stride, time, scale: 1 });
     const built = batch.build(materials);
     addMeshes(group, built);
-    let dispose;
+    let dispose: () => void = () => undefined;
     const unregister = register ? () => register.delete(dispose) : null;
     dispose = removeAndDispose(objects, group, ownedMaterials, unregister);
     register?.add(dispose);
@@ -749,11 +787,11 @@ function buildWithMaterials(materials, input, options, register, ownedMaterials)
   group.scale.setScalar(scale * look.height);
   const rigBatch = createRigBatch(THREE);
   drawFigure(rigBatch, look, detail, bakedPose('stand', 0, 0), rest.marker ?? null);
-  const nodes = new Map();
+  const nodes = new Map<string, THREE.Group>();
   nodes.set('root', group);
   for (const [name, record] of rigBatch.records) {
     if (name === 'root') continue;
-    const parent = nodes.get(record.parent) || group;
+    const parent = (record.parent === null ? undefined : nodes.get(record.parent)) || group;
     const holder = new THREE.Group();
     holder.name = name;
     holder.rotation.order = 'YXZ';
@@ -770,7 +808,7 @@ function buildWithMaterials(materials, input, options, register, ownedMaterials)
   }
   const parts = { body: nodes.get('body'), torso: nodes.get('torso'), head: nodes.get('head'), armL: nodes.get('armL'), armR: nodes.get('armR'), legL: nodes.get('legL'), legR: nodes.get('legR') };
   const controls = { ...parts, elbowL: nodes.get('elbowL'), elbowR: nodes.get('elbowR'), kneeL: nodes.get('kneeL'), kneeR: nodes.get('kneeR') };
-  let dispose;
+  let dispose: () => void = () => undefined;
   const unregister = register ? () => register.delete(dispose) : null;
   dispose = removeAndDispose(objects, group, ownedMaterials, unregister);
   register?.add(dispose);
@@ -781,19 +819,14 @@ function buildWithMaterials(materials, input, options, register, ownedMaterials)
 /**
  * Legacy drop-in builder. Returns a THREE.Group and borrows the host kit's shared materials.
  * `group.userData.dispose()` frees only this avatar's geometry and is safe to call repeatedly.
- *
- * @param {{THREE: typeof THREE, onDispose: (callback: () => void) => void}} kit
- * @param {AvatarLookInput|null|undefined} look
- * @param {BuildOptions} [options]
- * @returns {THREE.Group}
  */
-export function buildAvatar(kit, look, options = {}) {
+export function buildAvatar(kit: SceneKit, look?: AvatarLookInput | null, options: BuildOptions = {}): THREE.Group {
   if (!kit?.THREE || typeof kit.onDispose !== 'function') throw new TypeError('buildAvatar requires a scene kit');
   const resources = kitResources(kit);
   return buildWithMaterials(sceneMaterials(kit), look, options, resources.disposers, null);
 }
 
-function standaloneMaterials() {
+function standaloneMaterials(): Materials {
   return {
     solid: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.72, metalness: 0, transparent: false }),
     glow: new THREE.MeshBasicMaterial({ vertexColors: true, transparent: false }),
@@ -804,31 +837,23 @@ function standaloneMaterials() {
 /**
  * Standalone builder for model previews and tools that have no scene kit. It imports Three.js,
  * creates its own opaque materials, and returns both the object and its ownership metadata.
- *
- * @param {AvatarLookInput|null|undefined} look
- * @param {BuildOptions} [options]
- * @returns {{object3D: THREE.Group, userData: {look: AvatarLook, top: number, triangles: number, drawCalls: number, dispose: () => void, parts?: Object}}}
  */
-export function buildPerson(look, options = {}) {
+export function buildPerson(look?: AvatarLookInput | null, options: BuildOptions = {}): { object3D: THREE.Group, userData: AvatarUserData } {
   const materials = standaloneMaterials();
   const object3D = buildWithMaterials(materials, look, options, null, materials);
-  return { object3D, userData: object3D.userData };
+  return { object3D, userData: object3D.userData as AvatarUserData };
 }
 
 /**
  * Reset and pose a rigged avatar using only existing transforms. The host supplies `time`; this
  * function does not schedule frames and allocates no objects or arrays while posing.
- *
- * @param {THREE.Group} avatar
- * @param {{pose?: PoseId|string, stride?: number, time?: number}} [options]
- * @returns {THREE.Group}
  */
-export function poseAvatar(avatar, options = {}) {
-  const rig = avatar?.userData?.rig;
+export function poseAvatar(avatar: THREE.Group, options: { pose?: PoseId | string, stride?: number, time?: number } = {}): THREE.Group {
+  const rig = avatar?.userData?.rig as AvatarRig | undefined;
   if (!rig) return avatar;
-  const pose = POSES.includes(options.pose) ? options.pose : 'stand';
-  const stride = Number.isFinite(options.stride) ? options.stride : 0.25;
-  const time = Number.isFinite(options.time) ? options.time : 0;
+  const pose = (POSES as readonly unknown[]).includes(options.pose) ? options.pose : 'stand';
+  const stride = Number.isFinite(options.stride) ? options.stride! : 0.25;
+  const time = Number.isFinite(options.time) ? options.time! : 0;
   const phase = ((stride % 1) + 1) % 1 * TAU;
   const swing = Math.sin(phase);
   const cosine = Math.cos(phase);

@@ -3,7 +3,7 @@
  * Food and nightlife venues: buka, club (and its speakeasy variant), viewing centre, music
  * shrine and mall. Scene definition format: see venues-outdoor.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
 import {
   room, table, chair, stool, bench, sofa, counter, speaker, screen, plant, shelf, kiosk, crate, laptop, rug, bottles, pot,
   ropeLine, stringLights, door, sign, landmark, extra,

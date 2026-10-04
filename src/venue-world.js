@@ -77,13 +77,13 @@
  *                          scene's floor were larger than the room protocol's ±20 (none is today);
  *                          setCrowd() takes other players' { x, z } in the same units.
  */
-import { createKit } from './scene/kit.js';
+import { createKit } from './scene/kit.ts';
 import { createOrbit, followShare } from './scene/camera-controls.js';
 import { createOccluders, resolve as resolveCollision } from './scene/camera-collision.js';
-import { sceneMaterials } from './scene/build.js';
+import { sceneMaterials } from './scene/build.ts';
 import { createMotionLoop } from './scene/motion-loop.js';
 import { rewardChips, cheer } from './scene/reward.js';
-import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.js';
+import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.ts';
 import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.js';
 import { createSceneControls } from './scene/controls.js';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.js';

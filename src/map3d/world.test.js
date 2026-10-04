@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createKit } from '../scene/kit.js';
+import { createKit } from '../scene/kit.ts';
 import pack from './cities/lagos.js';
 import { buildNetwork, pointInPolygon } from './roads.js';
 import { buildCity } from './city-build.js';

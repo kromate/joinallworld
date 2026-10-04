@@ -36,7 +36,7 @@
  * Rules for everything under src/scene/: procedural geometry only, no downloaded models or
  * textures, no animation loops — the host (src/venue-world.js) draws on demand.
  */
-import { createBatch, sceneMaterials, kitResources, releaseObjects, hash, GLOW } from './build.js';
+import { createBatch, sceneMaterials, kitResources, releaseObjects, hash, GLOW } from './build.ts';
 
 const swatches = (entries) => entries.map(([id, hex]) => ({ id, hex }));
 export const LOOK_OPTIONS = Object.freeze({

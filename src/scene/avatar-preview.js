@@ -30,7 +30,7 @@
  * caller can show its 2D figure; if no WebGL context can be made at all, createAvatarPreview
  * throws PreviewUnavailable before Three.js is asked for one.
  */
-import { createKit } from './kit.js';
+import { createKit } from './kit.ts';
 import { buildAvatar } from './characters.js';
 
 export const ANIMATION_LIMIT_MS = 600;

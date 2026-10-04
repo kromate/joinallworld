@@ -10,7 +10,7 @@
  *   spare  [x, z] places for spots that match no landmark
  * The camera looks in from the front right (+x, +z), so tall things go to the back and left.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
 import {
   ground, table, chair, stool, bench, counter, stall, speaker, plant, palm, leafTree, tallTree, bush, lampPost, kiosk, crate,
   column, flag, parasol, ropeLine, stringLights, fence, windowPane, door, sofa, sign, signBoard, car, bottles, landmark, extra,

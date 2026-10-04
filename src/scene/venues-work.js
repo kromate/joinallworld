@@ -3,7 +3,7 @@
  * Work and self-care venues: tech hub, office tower, gym, salon and radio station.
  * Scene definition format: see venues-outdoor.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
 import {
   room, table, chair, stool, bench, sofa, counter, speaker, screen, plant, shelf, desk, laptop, rug, bottles, windowPane,
   door, sign, landmark, extra,

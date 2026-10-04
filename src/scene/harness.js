@@ -4,10 +4,10 @@
  * settings and the host's own lights (createHostLights), builds one scene kind from the query string and draws it once per change.
  * Nothing here runs in the game: the production build does not include this page.
  */
-import { createKit } from './kit.js';
+import { createKit } from './kit.ts';
 import { buildVenueScene, KINDS, TIMES } from './venue-scenes.js';
 import { createHostLights } from '../venue-world.js';
-import { applyRendererLook, renderTier, createSky } from './look.js';
+import { applyRendererLook, renderTier, createSky } from './look.ts';
 
 const params = new URLSearchParams(location.search);
 const settings = {

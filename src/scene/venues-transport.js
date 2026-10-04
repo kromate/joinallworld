@@ -3,7 +3,7 @@
  * The airport terminal and the refinery yard. Scene definition format: see venues-outdoor.js.
  * Their walkable descriptions (WALK) are with the other kinds in venue-scenes.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
 import {
   ground, table, chair, bench, counter, plant, lampPost, kiosk, ropeLine, fence, rug, sign, landmark, extra,
   WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,

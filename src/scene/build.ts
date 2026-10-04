@@ -25,13 +25,19 @@
  * Materials are three per kit, shared by every scene and avatar, and are freed with the kit.
  */
 
-const templates = new Map();
-function template(key, make) {
+import type * as THREE from 'three';
+import type { Batch, BatchLayer, BatchOptions, BatchResult, Colour, LightSpec, SceneMaterials, ThreeModule } from './types.ts';
+import type { Kit } from './kit.ts';
+
+interface Template { pos: Float32Array; nor: Float32Array; idx: number[] }
+interface LayerData { pos: number[]; nor: number[]; col: number[]; idx: number[] }
+const templates = new Map<string, Template>();
+function template(key: string, make: () => THREE.BufferGeometry): Template {
   let entry = templates.get(key);
   if (!entry) {
     const geometry = make();
-    const pos = Float32Array.from(geometry.attributes.position.array);
-    const nor = Float32Array.from(geometry.attributes.normal.array);
+    const pos = Float32Array.from(geometry.attributes.position!.array);
+    const nor = Float32Array.from(geometry.attributes.normal!.array);
     const idx = geometry.index ? Array.from(geometry.index.array) : Array.from({ length: pos.length / 3 }, (_, i) => i);
     geometry.dispose();
     entry = { pos, nor, idx };
@@ -40,22 +46,22 @@ function template(key, make) {
   return entry;
 }
 
-export const GLOW = Object.freeze({ layer: 'glow' });
-export const GLASS = Object.freeze({ layer: 'glass' });
+export const GLOW: Readonly<{ layer: 'glow' }> = Object.freeze({ layer: 'glow' as const });
+export const GLASS: Readonly<{ layer: 'glass' }> = Object.freeze({ layer: 'glass' as const });
 
-export function createBatch(THREE) {
-  const layer = () => ({ pos: [], nor: [], col: [], idx: [] });
-  const layers = { solid: layer(), glow: layer(), glass: layer() };
-  const BASE = ['solid', 'glow', 'glass'];
+export function createBatch(THREE: ThreeModule): Batch {
+  const layer = (): LayerData => ({ pos: [], nor: [], col: [], idx: [] });
+  const layers: Record<string, LayerData> = { solid: layer(), glow: layer(), glass: layer() };
+  const BASE: string[] = ['solid', 'glow', 'glass'];
   /** The vertex store for a layer, or for one named part of it (made the first time the part is drawn). */
-  const store = (name, part) => { if (!part) return layers[name]; const key = `${name}@${part}`; return (layers[key] ||= layer()); };
+  const store = (name: string, part: string | undefined): LayerData => { if (!part) return layers[name]!; const key = `${name}@${part}`; return (layers[key] ||= layer()); };
   const stack = [new THREE.Matrix4()];
-  const lights = [];
-  const colours = new Map();
+  const lights: LightSpec[] = [];
+  const colours = new Map<Colour, [number, number, number]>();
   const m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), p = new THREE.Vector3(), s = new THREE.Vector3();
   const n3 = new THREE.Matrix3(), v = new THREE.Vector3(), tint = new THREE.Color();
 
-  function rgb(colour) {
+  function rgb(colour: Colour): [number, number, number] {
     let value = colours.get(colour);
     if (!value) {
       tint.set(colour);
@@ -64,27 +70,27 @@ export function createBatch(THREE) {
     }
     return value;
   }
-  function add(shape, x, y, z, sx, sy, sz, colour, o) {
+  function add(shape: Template, x: number, y: number, z: number, sx: number, sy: number, sz: number, colour: Colour, o?: BatchOptions) {
     e.set(o?.rx || 0, o?.ry || 0, o?.rz || 0, 'YXZ');
-    m.compose(p.set(x, y, z), q.setFromEuler(e), s.set(sx, sy, sz)).premultiply(stack[stack.length - 1]);
+    m.compose(p.set(x, y, z), q.setFromEuler(e), s.set(sx, sy, sz)).premultiply(stack[stack.length - 1]!);
     n3.getNormalMatrix(m);
-    const target = store(Object.hasOwn(layers, o?.layer) && BASE.includes(o.layer) ? o.layer : 'solid', o?.part);
+    const target = store(Object.hasOwn(layers, o?.layer as string) && BASE.includes(o?.layer as string) ? o!.layer! : 'solid', o?.part);
     const base = target.pos.length / 3;
     const [r, g, bl] = rgb(colour);
     const { pos, nor, idx } = shape;
     for (let i = 0; i < pos.length; i += 3) {
-      v.set(pos[i], pos[i + 1], pos[i + 2]).applyMatrix4(m);
+      v.set(pos[i]!, pos[i + 1]!, pos[i + 2]!).applyMatrix4(m);
       target.pos.push(v.x, v.y, v.z);
-      v.set(nor[i], nor[i + 1], nor[i + 2]).applyMatrix3(n3).normalize();
+      v.set(nor[i]!, nor[i + 1]!, nor[i + 2]!).applyMatrix3(n3).normalize();
       target.nor.push(v.x, v.y, v.z);
       target.col.push(r, g, bl);
     }
-    for (let i = 0; i < idx.length; i++) target.idx.push(base + idx[i]);
+    for (let i = 0; i < idx.length; i++) target.idx.push(base + idx[i]!);
   }
   const boxShape = () => template('box', () => new THREE.BoxGeometry(1, 1, 1));
-  const cylShape = (top, seg, open) => template(`cyl:${top}:${seg}:${open}`, () => new THREE.CylinderGeometry(top, 1, 1, seg, 1, open));
+  const cylShape = (top: number, seg: number, open: boolean) => template(`cyl:${top}:${seg}:${open}`, () => new THREE.CylinderGeometry(top, 1, 1, seg, 1, open));
 
-  const batch = {
+  const batch: Batch = {
     isBatch: true,
     /** box(x, y, z, width, height, depth, colour, options?) — centred on x, y, z */
     box(x, y, z, w, h, d, colour, o) { add(boxShape(), x, y, z, w, h, d, colour, o); return batch; },
@@ -115,29 +121,29 @@ export function createBatch(THREE) {
     at(x, y, z, ry, draw, rx = 0, rz = 0, scale = 1) {
       e.set(rx, ry || 0, rz, 'YXZ');
       const local = new THREE.Matrix4().compose(p.set(x, y, z), q.setFromEuler(e), s.set(scale, scale, scale));
-      stack.push(local.premultiply(stack[stack.length - 1]));
+      stack.push(local.premultiply(stack[stack.length - 1]!));
       try { draw(batch); } finally { stack.pop(); }
       return batch;
     },
     /** Ask for a point light at a position in the current local space. */
     light(x, y, z, colour, intensity = 20, distance = 12) {
-      v.set(x, y, z).applyMatrix4(stack[stack.length - 1]);
+      v.set(x, y, z).applyMatrix4(stack[stack.length - 1]!);
       lights.push({ x: v.x, y: v.y, z: v.z, colour, intensity, distance });
       return batch;
     },
     /** Where a local point ends up in scene space — for anchors recorded while drawing. */
-    world(x, y, z) { v.set(x, y, z).applyMatrix4(stack[stack.length - 1]); return { x: v.x, y: v.y, z: v.z }; },
-    get triangles() { let count = 0; for (const data of Object.values(layers)) count += data.idx.length; return count / 3; },
+    world(x, y, z) { v.set(x, y, z).applyMatrix4(stack[stack.length - 1]!); return { x: v.x, y: v.y, z: v.z }; },
+    get triangles(): number { let count = 0; for (const data of Object.values(layers)) count += data.idx.length; return count / 3; },
     /** Bake the batch into meshes. `materials` comes from sceneMaterials(kit). */
-    build(materials) {
-      const meshes = [];
+    build(materials: SceneMaterials): BatchResult {
+      const meshes: THREE.Mesh[] = [];
       let triangles = 0;
       // The three shared layers first, then each part's own meshes.
       const keys = [...BASE, ...Object.keys(layers).filter((key) => !BASE.includes(key)).sort()];
       for (const key of keys) {
-        const data = layers[key];
+        const data = layers[key]!;
         if (!data.idx.length) continue;
-        const [name, part] = key.split('@');
+        const [name, part] = key.split('@') as [BatchLayer, string | undefined];
         const geometry = new THREE.BufferGeometry();
         geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(data.pos), 3));
         geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(data.nor), 3));
@@ -164,21 +170,22 @@ export function createBatch(THREE) {
   return batch;
 }
 
-const resources = new WeakMap();
+export interface KitResources { materials: SceneMaterials; disposers: Set<() => void> }
+const resources = new WeakMap<Kit, KitResources>();
 /**
  * Per-kit shared resources: the three scene materials plus a registry of scenes and avatars the
  * host has not disposed itself. Both are freed through kit.onDispose().
  */
-export function kitResources(kit) {
+export function kitResources(kit: Kit): KitResources {
   let entry = resources.get(kit);
   if (!entry) {
     const { THREE } = kit;
-    const materials = {
+    const materials: SceneMaterials = {
       solid: kit.matte ? new THREE.MeshLambertMaterial({ vertexColors: true }) : new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.9, metalness: 0 }),
       glow: new THREE.MeshBasicMaterial({ vertexColors: true }),
       glass: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.25, metalness: 0, transparent: true, opacity: 0.62, depthWrite: false }),
     };
-    const disposers = new Set();
+    const disposers = new Set<() => void>();
     entry = { materials, disposers };
     resources.set(kit, entry);
     kit.onDispose(() => {
@@ -190,10 +197,12 @@ export function kitResources(kit) {
   }
   return entry;
 }
-export const sceneMaterials = (kit) => kitResources(kit).materials;
+export const sceneMaterials = (kit: Kit): SceneMaterials => kitResources(kit).materials;
 
 /** Remove meshes and lights from their parent and free their geometry. Materials are shared and stay. */
-export function releaseObjects(objects) {
+/** Anything with a parent, maybe a geometry, maybe a dispose(): meshes and lights. */
+export type Releasable = THREE.Object3D & { geometry?: THREE.BufferGeometry; dispose?: () => void };
+export function releaseObjects(objects: Releasable[]): void {
   for (const object of objects) {
     object.parent?.remove(object);
     object.geometry?.dispose();
@@ -203,7 +212,7 @@ export function releaseObjects(objects) {
 }
 
 /** Small deterministic string hash (FNV-1a) for seeded choices. */
-export function hash(text) {
+export function hash(text: unknown): number {
   let value = 2166136261;
   const source = String(text ?? '');
   for (let i = 0; i < source.length; i++) value = Math.imul(value ^ source.charCodeAt(i), 16777619);

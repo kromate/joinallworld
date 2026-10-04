@@ -3,7 +3,7 @@
  * Civic venues: hospital, police station and places of worship (church and mosque variants).
  * Scene definition format: see venues-outdoor.js.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
 import {
   room, table, chair, stool, bench, counter, screen, plant, shelf, bed, desk, laptop, rug, column, flag, windowPane, door, sign, landmark, extra,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,

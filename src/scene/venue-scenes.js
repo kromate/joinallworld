@@ -65,7 +65,7 @@
  *   dispose()                   free everything and detach from the parent (the host calls it on
  *                               a location change and when it is disposed itself)
  */
-import { createBatch, kitResources, releaseObjects, GLOW } from './build.js';
+import { createBatch, kitResources, releaseObjects, GLOW } from './build.ts';
 import { buildAvatar, drawCrowd } from './characters.js';
 import { playerOptions, rigOf } from './avatar-rig.js';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.js';

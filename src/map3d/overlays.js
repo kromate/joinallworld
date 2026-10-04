@@ -19,7 +19,7 @@
  *
  *   createOverlays(kit, city) → { group, set(layers, data) → changed, chips() → [...], triangles, dispose() }
  */
-import { createBatch, sceneMaterials } from '../scene/build.js';
+import { createBatch, sceneMaterials } from '../scene/build.ts';
 import { sign } from '../scene/props.js';
 import { PLINTH as PLINTH_UNIT } from './landmarks.js';
 import { WATER_Y, LANDMARK_SCALE, leanGeometry } from './city-build.js';

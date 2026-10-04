@@ -5,9 +5,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import * as THREE from 'three';
 import { createAvatarPreview, previewStats, frameCamera, ANIMATION_LIMIT_MS, PreviewUnavailable } from './avatar-preview.js';
-import { createBatch } from './build.js';
+import { createBatch } from './build.ts';
 import { LOOK_OPTIONS, DETAILS, POSES, PARTS, ACCESSORY_SLOTS, drawAvatar, buildAvatar, poseAvatar, normalizeLook } from './characters.js';
-import { createKit } from './kit.js';
+import { createKit } from './kit.ts';
 
 function fakeCanvas() {
   const handlers = new Map();

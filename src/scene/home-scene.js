@@ -45,7 +45,7 @@
  * are resolved with the exact camera the host used.
  */
 import { FURNITURE, KINDS } from '../game/content/furniture.js';
-import { createBatch, sceneMaterials, releaseObjects } from './build.js';
+import { createBatch, sceneMaterials, releaseObjects } from './build.ts';
 import { drawAvatar, buildAvatar, POSES } from './characters.js';
 import { playerOptions, rigOf } from './avatar-rig.js';
 import { createWalkGrid } from './movement.js';

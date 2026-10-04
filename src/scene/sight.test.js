@@ -3,8 +3,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import { createKit } from './kit.js';
-import { createBatch } from './build.js';
+import { createKit } from './kit.ts';
+import { createBatch } from './build.ts';
 import { createOccluders, resolve, CAMERA_GAP, PULL_FROM_ZOOM } from './camera-collision.js';
 import { createOrbit } from './camera-controls.js';
 import { createWalkGrid, createWalker, footprintRecorder, AVATAR_RADIUS, WALL_REACH } from './movement.js';

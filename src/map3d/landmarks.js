@@ -10,7 +10,7 @@
  * at the origin facing +z (the road); the builder places and turns it. Everything fits the
  * plinth, PLINTH × PLINTH units, whose top is at y = BASE.
  */
-import { GLOW, GLASS } from '../scene/build.js';
+import { GLOW, GLASS } from '../scene/build.ts';
 import { sign } from '../scene/props.js';
 
 export const PLINTH = 6.6;

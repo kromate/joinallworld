@@ -2,8 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import { createKit } from './kit.js';
-import { createBatch } from './build.js';
+import { createKit } from './kit.ts';
+import { createBatch } from './build.ts';
 import { createWalkGrid, createWalker, createPositionReporter, footprintRecorder, turnTowards, WALK_SPEED, JOG_SPEED } from './movement.js';
 import { createOrbit, followShare, PITCH_MIN, PITCH_MAX } from './camera-controls.js';
 import { createMotionLoop } from './motion-loop.js';

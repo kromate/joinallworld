@@ -7,7 +7,7 @@
  * Scale: a person is about 2.45 tall, a seat 0.6, a table 1.05, a counter 1.35, a wall 5.5.
  * `tree` and `lamp` at the bottom are the original kit-based props, kept for other callers.
  */
-import { GLOW, GLASS } from './build.js';
+import { GLOW, GLASS } from './build.ts';
 import { drawAvatar } from './characters.js';
 
 export const WOOD = '#8a6644', WOOD_DARK = '#5f4630', WOOD_LIGHT = '#b08a5c', METAL = '#7d858c', METAL_DARK = '#3d444b';

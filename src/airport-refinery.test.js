@@ -11,7 +11,7 @@ import { AIRPORT, REFINERY } from './game/content/venues-transport.js';
 import { CITY_LINKS, CITY_RULES } from './game/content/world.js';
 import { quote, isGig, travelBlock } from './game/systems/travel.js';
 import { weatherAt } from './game/systems/health.js';
-import { createKit } from './scene/kit.js';
+import { createKit } from './scene/kit.ts';
 import { buildVenueScene, WALK, SPOT_REACH } from './scene/venue-scenes.js';
 import { createWalker } from './scene/movement.js';
 import { sceneVenue } from './venue-world.js';

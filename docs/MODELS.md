@@ -1,6 +1,6 @@
 # Allworld procedural model library
 
-Implemented on 4 October 2026 in `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models`, branch `astra/models`, based on `c5e803e`. The owner game files are unchanged. No merge, rebase, push, deployment, downloaded 3D model, image texture, font, or new npm dependency is part of this delivery.
+Implemented on 4 October 2026 in `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models`, branch `astra/models`, based on `c5e803e`. Game consumer integration was added in this branch after Anthony explicitly requested it. The shared owner/main worktrees were not edited. No merge, rebase, push, deployment, downloaded 3D model, image texture, font, or new npm dependency is part of this delivery.
 
 ## Current delivery
 
@@ -12,9 +12,60 @@ The local library includes 15 vehicles, 11 buildings/water models, a compatible 
 | People | `bc59adc637ad7d0ac1d44265cd308412be39f152` | Implemented; trait, budget, pose, ownership, and contact-sheet checks |
 | Geography | `503a244caffd0b46b632de02dac4d2352af13558` | Implemented; sourced geometry, picking, routes, framing, sizes checked |
 | Workshop and verification tooling | `3d31c9a42653fcf861d8240c620d0edea3b87d33` | Local preview and evidence records |
-| Owner-game integration / real Android device | Not performed | Owner mounts the library; real-device frame-time and mobile-data proof remain pending |
+| Local game consumer integration | See the integration commits below | Verified in the actual local game on port 3401 |
+| Shared owner branch / production / real Android device | Pending | No merge/deployment; physical-device frame-time and mobile-data proof remain pending |
 
 The Kenya dataset exception is approved by Anthony in this chat. Kenya uses the attributed geoBoundaries release. Other outlines remain Natural Earth public-domain data. Road paths are explicitly **schematic travel corridors**, not surveyed highway alignments or navigation routes. Imported free 3D candidates remain research references.
+
+## Integrated game preview
+
+Open `http://127.0.0.1:3401/` to play the integrated local game. Port 3400 remains the standalone model workshop. The new preview has its own data store and `models_sid` cookie, so its guest sessions cannot replace the owner's `sid` cookie on another port. Its API listens on 3402. No current owner/main checkout or running owner server was changed.
+
+Integration commits:
+
+| Consumer | Immutable commit | Result |
+| --- | --- | --- |
+| Scene avatars and appearance compatibility | `9886a6f079e82193b313e7bc8447b1d219794133` | The new avatar is the default in creator, home, venue, and crowd consumers; exact saved swatch colours and legacy normalized-look shape are preserved. |
+| Trip vehicles, Home/market, canoe, water | `17b7c008241ad142bf12611be72a2e06c5212593` | Supported player trips use new street models and real seat anchors. Home/market landmarks, a lagoon canoe, and water material are mounted in the actual city. |
+| Geographic explorer and access gates | `cc8db0d8d18af06eb672e7e7b29899e0f037de3b` | World/continent/country/state exploration, Kenya counties, accessible city controls, canvas picking/dragging, and SVG fallback. |
+| Isolated preview and browser checks | `e51b8c6703f9772f7a13df0fcf0c9451e4387804` | Dedicated local game runner, repeatable user-path script, and verification record. |
+
+Use `?models=legacy` for the retained comparison implementation. The original character and world-map files were copied byte-for-byte before replacement. `?map=2d` and the existing Simple map preference also apply to the new world explorer. A WebGL failure uses the same geography data in an SVG view.
+
+Player transport covers the game's existing danfo, keke, okada, cab, owned-car, and staff-bus paths. Additional catalogue vehicles remain available for future game content. The seated avatar uses the vehicle's passenger anchor and a 0.62 scale. Vehicle swaps and day/night changes preserve the same passenger geometry; the owning actor disposes each old model once. Pose records are reused; repeated identical route samples retain identical steering. Steering between distinct samples follows the preceding route heading, while the standalone model pose API remains parameter-driven.
+
+City integration is deliberately bounded to real consumer locations. The new compound house is the movable Home landmark; the market has the new stall; a model canoe joins the existing boat layer. The water material comes from the lagoon model while the actual city's contours, coastline, collision map, and shimmer texture remain the host's. This does not claim that all eleven catalogue environment models replace every existing venue.
+
+The geographic explorer keeps `cityAccess()` as the entry authority. Previewing Kenya, a state, or another country never creates a playable city. Live route callbacks, if supplied by the later owner host, are checked against its offered/unblocked route and the city gate. Country corridors remain labelled schematic. Kenya attribution and its license link are visible in the game.
+
+Verification on 4 October 2026:
+
+- Full main suite: **536 passed, four skipped, zero failures**, 540 total.
+- Focused integration/map/panel suite: **26 passed**. The avatar preview and scene suite also passed after preserving saved normalization and updating obsolete detail/rig expectations.
+- The scene draw-call ceiling stays **60**. The structural mesh allowance rises by four for the new elbow/knee parts; that change is explicit in the scene test. The city measures 42,162 triangles / 22 calls at rest and 43,074 / 22 with moving traffic, under its existing 60,000-triangle / 40-call limits.
+- Production build passed with the original production inputs and the dependency-aware config wrapper. The workshop remains excluded from production input. The existing large-chunk warning remains.
+- Edge suite: **14 passed** against a private snapshot of the unchanged server/deploy sources with the newly built integrated assets. The snapshot keeps generated root `dist` out of other worktrees.
+- Actual browser path: Home → city map → world/country explorer → Kenya → world → Africa → Nigeria → Lagos state → playable Lagos map → choose Market → choose Danfo → travel → arrival → reload.
+- Kenya showed **47 counties and zero city-entry buttons**. A real pointer drag reached the 3D canvas. The world render counter stayed **2 → 2** over the sampled idle interval.
+- The completed danfo trip charged **₦200** in the local test life. The server and reload both showed `location: market`, no active trip, and the same player name/look. This was isolated game currency, not a production account.
+- The explicit Simple map path displayed all **47 county SVG paths**, with no city-entry action. Default and fallback browser runs recorded **no uncaught JavaScript exceptions**. Mobile views were inspected at 390×844.
+
+The compact committed record is `src/models/evidence/integration/verification.json`. Screenshots and detailed browser records are local ignored evidence under `src/models/evidence/integration/`: `home.png`, `city-map.png`, `kenya.png`, `world-mobile.png`, `lagos-state.png`, `danfo-trip.png`, `trip-closeup.png`, `arrival.png`, `venue-mobile.png`, and `fallback-mobile.png`. A normal randomized roadside offer can appear after arrival; it does not prevent the saved Market arrival.
+
+Run the integrated preview:
+
+```sh
+MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node src/models/tooling/game-dev.mjs
+```
+
+Reproduce the default and fallback browser paths with the preview running:
+
+```sh
+MODEL_QA_LOCATION=market node src/models/tooling/integration-browser.mjs src/models/tooling/integration-steps.json
+MODEL_QA_QUERY='?map=2d' node src/models/tooling/integration-browser.mjs src/models/tooling/fallback-steps.json
+```
+
+This integration is on `astra/models`, based on `c5e803e`. The later `parity/owner` / `parity/integrate-2` branches add estate/world-service/table work that is not included here. Port the narrow consumer changes onto those newer files rather than overwriting them. Shared-owner merging, deployment, and physical Android/mobile-data testing remain unperformed.
 
 ## Open the workshop
 
@@ -164,14 +215,14 @@ The capture tool uses the existing local Chromium binary, owns port 3409 while r
 
 Add geometry to the appropriate domain builder/registry and keep the same public wrapper. Share materials and instance repeated geometry. Dispose temporary construction geometry after merging, and release instanced-mesh resources as well as their geometry/materials. Extend the existing parameter-driven pose function rather than creating a render loop. New geo datasets need closed nondegenerate rings, stable unique IDs, and explicit provenance; `buildCountry` accepts data without changes to its geometry logic.
 
-Integration requests for the parity owner:
+Remaining handoff items for the parity owner:
 
-1. Mount vehicles/environment models in the map and venue scenes. Confirm the world-unit scale, actor seat offsets, collision bounds, and doors in actual gameplay. The standalone workshop does not prove collision or passenger seating in the owner’s scene.
-2. Switch the avatar behind the planned comparison flag, using the legacy `buildAvatar` return shape and `drawAvatar` batch path. Use batched low-detail crowds; reserve rigged/high-detail people for the player/preview.
-3. Mount the lazy geography levels and use the exposed feature/city anchors. Keep scene-wide geometry/draw-call limits in addition to per-model limits.
+1. Port the already-wired actor and city changes onto the newer estate/world-service branch, then retest that branch’s scene scale, collision bounds, and vehicle seating.
+2. Preserve the implemented avatar facade and comparison flag when porting. Keep batched low-detail crowds and the legacy `buildAvatar` return shape.
+3. Carry the implemented geographic explorer into the newer host while preserving its live cross-city route callbacks and city-entry rules. Keep scene-wide budgets in addition to per-model limits.
 4. Preserve the Kenya geoBoundaries attribution and license link from `geo/provenance.json` in any distributed game. Anthony’s exception applies to this dataset, not to unrestricted new asset imports.
 5. Retain the visible schematic-route label. Accurate highway geometry, surveyed lane counts, and map-specific bridge placements still need a separately approved/licensed source. The reusable bridge model is implemented.
-6. Run the actual host paths and representative Android hardware/mobile-data checks before a production claim. The library has not been merged or mounted into the owner’s running game.
+6. Run the actual host paths and representative Android hardware/mobile-data checks before a production claim. The local game integration is verified above; it has not been merged into the separate owner’s running build.
 
 Three Sol workers implemented the disjoint vehicle, people, and environment units; a Luna researcher checked Kenya provenance. The parent implemented geography, preview/tooling, integration, and visual QA. Revision passes are reflected in the tests and commits above. Per-agent elapsed time, tokens, and money were not exposed.
 

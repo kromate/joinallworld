@@ -4,6 +4,7 @@ import { createKit } from '../../scene/kit.js';
 import { createWalker } from '../../scene/movement.js';
 import { createMotionLoop } from '../../scene/motion-loop.js';
 import { buildUnilag } from './scene.js';
+import { CAMPUS_NPCS } from './content.js';
 import { BUILDINGS, ZONES, ROADS, ANCHORS, ENTRANCE } from './layout.js';
 
 const $=id=>document.getElementById(id);
@@ -12,6 +13,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enable
 renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;
 const world=new THREE.Scene(),camera=new THREE.PerspectiveCamera(48,1,.1,1800),kit=createKit(),campus=buildUnilag(kit);
 world.add(campus.group);
+campus.setCrowd(Object.values(CAMPUS_NPCS).map(npc=>{const a=ANCHORS[npc.at];const at=campus.walk.grid.nearest(a.x+3,a.z+3);return {...npc,name:npc.name+' · '+npc.role,...at};}));
 const hemi=new THREE.HemisphereLight('#c6e0e6','#68765a',2),sun=new THREE.DirectionalLight('#fff0d2',2.4);
 sun.position.set(80,140,50);world.add(hemi,sun);
 const walker=createWalker({speed:8,jogSpeed:18});walker.setGrid(campus.walk.grid);walker.place(ENTRANCE.x,ENTRANCE.z,0);

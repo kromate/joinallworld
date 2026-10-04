@@ -7,7 +7,7 @@
  * Rules and validation live on the server (server/civic) and in src/game/systems/civic.js.
  */
 import './civic.css';
-import { esc } from '../dom.js';
+import { esc, skeleton } from '../dom.js';
 
 const cache = new Map();
 const pending = new Set();
@@ -54,7 +54,7 @@ export const busy = (tag) => pending.has(tag);
  */
 export async function send(api, tag, path, body, { panel = null, success = '' } = {}) {
   if (pending.has(tag)) return { ok: false, code: 'busy' };
-  if (!api.view()?.connected) { api.toast('You are offline. Reconnect, then try again — nothing was sent.', 'error'); return { ok: false, code: 'offline' }; }
+  if (!api.view()?.connected) { api.toast('Not connected. Nothing was sent — try again when the connection is back.', 'error'); return { ok: false, code: 'offline' }; }
   pending.add(tag);
   rerender(api, panel);
   let result;
@@ -85,6 +85,27 @@ export function requestId(api, slot, contents) {
 }
 export function requestDone(slot, result) { if (result?.ok) { slot.what = null; slot.id = null; } }
 
+const NEWS_KEY = 'joinallworld-civic-news-read';
+let newsRead = null;
+function newsReadAt(cityId) {
+  if (!newsRead) { try { newsRead = JSON.parse(window.localStorage.getItem(NEWS_KEY)) || {}; } catch { newsRead = {}; } }
+  return Number(newsRead[cityId]) || 0;
+}
+/** City news (a new Governor, an announcement) the player has not opened the Governor app for yet: its badge on the Phone. */
+export function civicNews(view) {
+  const notices = cache.get(`pulse:${view.cityId}`)?.data?.notices ?? [];
+  const read = newsReadAt(view.cityId);
+  return notices.filter((item) => item.at > read).length;
+}
+/** The Governor app is on screen: its news is read. */
+export function markCivicNewsRead(view) {
+  const newest = Math.max(0, ...(cache.get(`pulse:${view.cityId}`)?.data?.notices ?? []).map((item) => item.at));
+  if (newest <= newsReadAt(view.cityId)) return false;
+  newsRead[view.cityId] = newest;
+  try { window.localStorage.setItem(NEWS_KEY, JSON.stringify(newsRead)); } catch { /* read for this visit only */ }
+  return true;
+}
+
 /** "2d 4h", "3h 12m", "5m" until a server time. */
 export function until(at, now) {
   const minutes = Math.max(0, Math.ceil((at - now) / 60000));
@@ -100,9 +121,9 @@ export const count = (value) => Math.round(Number(value) || 0).toLocaleString('e
 /** Standard loading / offline / error states for a cached response. Returns '' when data is ready. */
 export function status(item, view, { retry = 'data-civic-retry' } = {}) {
   if (item.data) return '';
-  if (!view.connected) return '<p class="civic-note">You are offline. This needs the server — reconnect to load it.</p>';
-  if (item.error) return `<p class="ui-error" role="alert">Could not load this: ${esc(item.error)}</p><button class="ui-button" ${retry}>Try again</button>`;
-  return '<p class="civic-note" role="status">Loading…</p>';
+  if (!view.connected) return '<div class="ui-empty is-compact"><span aria-hidden="true">📡</span><h3>Not connected</h3><p>This screen is loaded from the server. It will appear when the connection is back.</p></div>';
+  if (item.error) return `<div class="ui-empty is-compact" role="alert"><span aria-hidden="true">📡</span><h3>This did not load</h3><p>${esc(item.error)}</p><button class="ui-button is-small" ${retry}>Try again</button></div>`;
+  return skeleton(4);
 }
 /** A small line under stale data when the last refresh failed. */
 export const stale = (item) => (item.data && item.error ? `<p class="ui-error" role="alert">Could not refresh: ${esc(item.error)} Showing the last loaded copy.</p>` : '');

@@ -1,21 +1,21 @@
 /* Health app and HUD chip. Classes are prefixed health-. */
-.health-status{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;background:var(--c-green-soft)}
-.health-status>span{font-size:32px;line-height:1}
-.health-status h3{margin:0 0 2px;font-size:16px}
-.health-status p{margin:0;font-size:13px!important;line-height:1.45!important}
-.health-status.is-rundown{background:#fdf1d8}
-.health-status.is-sick{background:#fbe3dc}
-.health-feelings{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px}
-.health-feelings li{font-size:12px;padding:5px 10px;border-radius:12px;background:var(--c-fill)}
-.health-feelings span{color:var(--c-muted)}
-.health-weather{font-size:13px!important;margin:0}
-.health-cures{list-style:none;padding:0;margin:0;display:grid;gap:6px}
-.health-cures li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid var(--c-line);border-radius:16px}
-.health-cures li>div{flex:1 1 180px;min-width:0;display:grid;gap:2px}
-.health-cures b{font-size:14px}
-.health-cures small,.health-here{font-size:12px;color:var(--c-muted)}
-.health-cures .ui-button{padding:9px 14px;font-size:12px}
-.health-chip{display:flex;align-items:center;gap:8px;width:100%;min-height:var(--tap);padding:8px 12px;border-radius:20px;background:var(--c-surface);border:1px solid #fff!important;text-align:left;font-size:11px}
+.health-status{display:flex;gap:14px;align-items:center;margin-bottom:var(--s-2);padding:16px;border-radius:var(--r-lg);background:linear-gradient(150deg,#2fa866,#1d6b43);color:#fff;box-shadow:var(--e-1)}
+.health-status>span{flex:none;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#ffffff33;font-size:30px;line-height:1}
+.health-status h3{margin:0 0 2px!important;font-size:19px!important;letter-spacing:0!important;text-transform:none!important;color:#fff!important}
+.health-status p{margin:0!important;font-size:13px!important;line-height:1.4!important;opacity:.95}
+.health-status.is-rundown{background:linear-gradient(150deg,#e8a643,#b8731a)}
+.health-status.is-sick{background:linear-gradient(150deg,#e5553f,#9c2b1c)}
+.health-feelings{margin:0 0 var(--s-3)}
+.health-risk .ui-bar{display:block;margin:6px 0}
+.ui-bar.is-low i{background:#d9822b}
+.health-advice{list-style:none;margin:0 0 var(--s-2);padding:var(--s-3) var(--s-4);border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring);display:grid;gap:8px;font-size:13px;line-height:1.4}
+.health-advice li{position:relative;padding-left:20px}
+.health-advice li::before{content:'';position:absolute;left:2px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--app-tint,var(--c-green))}
+.health-cures .ui-row{align-items:flex-start}
+.health-cures .ui-row-body>b{white-space:normal}
+.health-cures .ui-button{justify-self:start;margin-top:6px}
+.health-here{font-size:12px;font-weight:600;color:var(--c-green-dark);margin-top:4px}
+.health-chip{display:flex;align-items:center;gap:8px;width:100%;min-height:var(--tap);padding:8px 12px;border-radius:var(--r-chip);background:var(--c-surface);border:1px solid #fff!important;box-shadow:var(--e-2);text-align:left;font-size:12px}
 .health-chip>span{font-size:18px}
 .health-chip.is-sick{background:#a3271b;color:#fff!important;border-color:#a3271b!important}
 .health-chip.is-rundown{background:#fdf1d8;border-color:#e8c46a!important}

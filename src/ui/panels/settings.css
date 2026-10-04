@@ -1,10 +1,13 @@
-/* Settings tab (src/ui/panels/settings.js). Values come from ../tokens.css. */
-.settings-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:var(--s-2);padding:10px 0;border-bottom:1px solid var(--c-line);min-height:var(--tap);cursor:pointer}
-.settings-row strong{display:block;font-size:14px}
-.settings-row small{display:block;font-size:12px;color:var(--c-muted)}
-.settings-row input{width:28px;height:28px;margin:8px;accent-color:var(--c-green-dark);cursor:pointer}
-.settings-state{min-width:26px;font-size:12px;font-weight:700;color:var(--c-muted)}
-.settings-note{font-size:12px!important;color:var(--c-muted);margin:var(--s-2) 0!important}
+/* Settings (src/ui/panels/settings.js): a Sim tab and a Phone app. Values come from ../tokens.css. */
+.settings-row{cursor:pointer;position:relative}
+.settings-row input{position:absolute;opacity:0;width:46px;height:28px;right:14px;margin:0;cursor:pointer}
+.settings-row input:focus-visible+.ui-switch{outline:var(--focus);outline-offset:2px}
+.settings-state{min-width:22px;font-size:12px;font-weight:700;color:var(--c-muted);text-align:right}
+.settings-note{font-size:12px!important;line-height:1.45!important;color:var(--c-muted);margin:var(--s-2) 4px!important}
 .settings-note strong{color:var(--c-ink)}
-.settings-list{margin:0 0 var(--s-2);padding-left:18px;font-size:12px;line-height:1.55;color:var(--c-ink)}
-.settings-actions{display:flex;flex-wrap:wrap;gap:6px}
+.settings-list{margin:0 0 var(--s-2);padding:var(--s-3) var(--s-4) var(--s-3) 32px;border-radius:var(--r-md);background:var(--c-fill);font-size:12px;line-height:1.55;color:var(--c-ink-2)}
+.settings-walls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s-2)}
+.settings-wall{position:relative;aspect-ratio:9/15;min-height:var(--tap);padding:0;border:0;border-radius:var(--r-sm);overflow:hidden;cursor:pointer;box-shadow:var(--e-1);color:#fff}
+.settings-wall span{color:#fff;position:absolute;left:0;right:0;bottom:0;padding:14px 4px 6px;background:linear-gradient(transparent,#000000a6);font:600 10.5px var(--font);line-height:1.2;text-align:center}
+.settings-wall[aria-pressed=true]{outline:3px solid var(--c-ink);outline-offset:2px}
+.settings-wall[aria-pressed=true]::after{content:'';position:absolute;top:6px;right:6px;width:18px;height:18px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d6b43' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}

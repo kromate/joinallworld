@@ -117,7 +117,7 @@ function buildView() {
   const now = client.serverNow(), cityId = client.cityId;
   return {
     ...viewLife(client.state, { now, cityId }),
-    cityId, city: CITIES[cityId], connected: client.online, session: client.session, net, storage: client.storage,
+    cityId, city: CITIES[cityId], connected: client.online, link: client.link, session: client.session, net, storage: client.storage,
     // The life's own name (the server keeps it equal to the session nickname), so a rename shows as soon as the next state arrives.
     name: client.state.name || client.identity.name, now,
     clock: clockFormat.format(new Date(now)).replace(',', ' ·'),
@@ -319,10 +319,13 @@ function menu(id) {
 }
 
 window.addEventListener('jaw:start-life', (event) => { if (event.detail?.name) client.identity.name = event.detail.name; connect(true); });
+window.addEventListener('jaw:reconnect', () => connect());
 window.addEventListener('jaw:switch-city', (event) => switchCity(event.detail.city));
 $('close-life-dialog').onclick = () => shell.close();
 $('community-close').onclick = () => toggleCommunity(false);
 window.addEventListener('resize', refreshScene);
+// The device got its network back: try the connection once, by itself (an event, not a timer).
+window.addEventListener('online', () => { if (!client.online && (client.link === 'offline' || client.link === 'unreachable')) connect(); });
 window.addEventListener('pagehide', () => { community?.destroy(); client.stop(); });
 document.addEventListener('visibilitychange', () => { if (document.hidden) client.stop(); else if (client.online) client.refresh(); });
 

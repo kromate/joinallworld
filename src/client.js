@@ -59,9 +59,20 @@ const IDLE_POLL_MS = 60000;
  *   onNeedName(problem?)             no session yet: ask for a nickname, then call connect(true).
  *                                    `problem` { code, reason, name } is set when the server refused the nickname just tried.
  *   onSession(session)               a session was established or replaced
+ *   isOnline()            → false when the device itself has no network (navigator.onLine)
+ *
+ * client.link says WHY the game is or is not playable, so the UI never calls two different things
+ * "offline":
+ *   'connecting'   a connection attempt is in flight
+ *   'online'       connected; the server holds this life
+ *   'new'          the server is up and this browser has never had a life here (ask for a nickname)
+ *   'expired'      the server is up but does not know this browser's session (401): its data was
+ *                  reset or the session ran out, while a life is still cached on this device
+ *   'offline'      this device has no network
+ *   'unreachable'  the device is online but the server did not answer (down, timed out, 5xx)
  */
 export function createClient({ fetch = globalThis.fetch?.bind(globalThis), storage, now = Date.now, setTimeout: later = globalThis.setTimeout, clearTimeout: cancel = globalThis.clearTimeout,
-  randomUUID = () => uuid(), isHidden = () => false, onChange = () => {}, onStatus = () => {}, onSessionExpired = () => {}, onNeedName = () => {}, onSession = () => {} } = {}) {
+  randomUUID = () => uuid(), isHidden = () => false, isOnline = () => globalThis.navigator?.onLine !== false, onChange = () => {}, onStatus = () => {}, onSessionExpired = () => {}, onNeedName = () => {}, onSession = () => {} } = {}) {
   let saved;
   try { saved = JSON.parse(storage?.getItem(STORAGE_KEY)); } catch {}
   const client = {
@@ -69,7 +80,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     cityId: Object.hasOwn(CITIES, saved?.cityId) ? saved.cityId : 'lagos',
     identity: { name: saved?.identity?.name || 'New Lagosian' },
     hasSavedIdentity: Boolean(saved?.identity),
-    session: null, ready: false, busy: false, serverTimeOffset: 0,
+    session: null, ready: false, busy: false, serverTimeOffset: 0, link: 'connecting',
     serverNow: () => Math.round(now() + client.serverTimeOffset),
     /**
      * A retry key the server accepts for exactly-once writes: `<server ms>:<uuid>`, the same form as
@@ -128,12 +139,14 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     schedule();
   }
   function expired() {
-    client.ready = false; client.session = null; cancel(pollTimer);
+    client.ready = false; client.session = null; client.link = 'expired'; cancel(pollTimer);
     status('Device session expired · saved preview preserved', true);
     onSessionExpired();
   }
+  /** The request did not get an answer worth having: the device is offline, or the server is not reachable. */
+  const down = () => (isOnline() ? 'unreachable' : 'offline');
   function lost(error, text) {
-    client.ready = false;
+    client.ready = false; client.link = down();
     status(text || error.message, true);
     onChange(client.state, client.state);
   }
@@ -157,6 +170,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   }
 
   async function connect(createNew = false) {
+    client.link = 'connecting';
     status('Connecting…');
     try {
       let response;
@@ -167,6 +181,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
         catch (error) {
           if (error.status !== 401) throw error;
           if (client.hasSavedIdentity) { expired(); return false; }
+          client.link = 'new';
           status('Choose a nickname to connect');
           onNeedName();
           return false;
@@ -174,6 +189,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       }
       client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = true;
       onSession(client.session, createNew);
+      client.link = 'online';
       accept((await api(`/api/life?city=${client.cityId}`)).state);
       status('Connected · progress saved');
       return true;
@@ -181,11 +197,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       client.ready = false;
       // The server refused the nickname (not allowed, malformed, or the player is muted): back to the form, with its reason.
       if (createNew && NAME_REFUSALS.includes(error.code)) {
+        client.link = 'new';
         status('Choose a different nickname to connect', true);
         onChange(client.state, client.state);
         onNeedName({ code: error.code, reason: error.reason || NAME_TEXT[error.code], name: client.identity.name });
         return false;
       }
+      client.link = error.status === 401 ? 'expired' : down();
       status(error.status === 401 ? 'Session expired · reconnect to review your options' : 'Connection unavailable · changes paused', true);
       onChange(client.state, client.state);
       return false;

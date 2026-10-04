@@ -7,7 +7,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './career.css';
-import { esc, money, json, meter, cap, empty } from '../dom.js';
+import { esc, money, json, cap, empty } from '../dom.js';
 
 const mark = (met, text) => `<span class="${met ? 'is-met' : 'is-unmet'}">${met ? '✓' : '✗'} ${esc(text)}</span>`;
 
@@ -26,7 +26,12 @@ export default {
     const action = step.kind === 'go' ? `<button class="ui-button is-primary" data-career-go="${json([step.venue, step.spot])}">Go to work</button>`
       : step.kind === 'home' ? `<button class="ui-button is-primary" data-career-go="${json(['home'])}">Go home to eat and rest</button>`
       : step.kind === 'start' ? '<button class="ui-button is-primary" data-close>Close and start shift</button>' : '';
-    return `<div class="career-head"><h3>${esc(career.icon)} ${esc(career.label)}${career.isTrack ? ` · Level ${esc(career.level)} · ${esc(career.role)}` : ''}</h3><p><strong>${money(career.pay)} per shift</strong> at ${esc(career.workplace.label)}</p><p class="career-schedule">${esc(career.schedule)}</p><p class="career-hours">🕘 ${esc(career.hours)}</p></div>${career.isTrack ? meter('Performance', career.performance, 0) : ''}${promotion}<ul class="career-chips" aria-label="Work days">${career.chips.map((chip) => `<li class="${chip.work ? 'is-work' : ''} ${chip.today ? 'is-today' : ''}" title="${esc(chip.name)}: ${chip.work ? 'work day' : 'day off'}${chip.today ? ' (today)' : ''}" aria-label="${esc(chip.name)}: ${chip.work ? 'work day' : 'day off'}${chip.today ? ', today' : ''}">${esc(chip.letter)}</li>`).join('')}</ul><p class="career-legend">Green = work day · ring = today (${esc(career.today.weekday)}, Lagos time)</p><p class="career-status ${career.today.canWork ? 'is-open' : ''}">${esc(career.today.text)}</p><p class="career-step">${esc(step.kind === 'wait' && step.text === career.today.text ? career.nextShift : step.text)}</p><div class="career-actions">${action}<button class="ui-button" data-open="jobs">Jobs: switch or quit</button></div>${view.connected === false ? '<p class="career-why">Offline: read-only until you reconnect.</p>' : ''}<ul class="career-rules">${career.rules.map((rule) => `<li>${esc(rule)}</li>`).join('')}</ul>`;
+    const promotionCard = career.isTrack ? `<section class="ui-card career-card"><h3>Performance <b>${esc(career.performance)}%</b></h3><div class="ui-bar" role="meter" aria-label="Performance" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(career.performance)}"><i style="width:${Math.max(0, Math.min(100, career.performance))}%"></i></div>${promotion}</section>` : promotion;
+    return `<section class="ui-hero career-hero"><small>${esc(career.icon)} ${esc(career.label)}${career.isTrack ? ` · Level ${esc(career.level)}` : ''}</small><strong>${career.isTrack ? esc(career.role) : 'Starter job'}</strong><p><b>${money(career.pay)} per shift</b> at ${esc(career.workplace.label)}</p></section>
+      <p class="career-status ${career.today.canWork ? 'is-open' : ''}">${esc(career.today.text)}</p><p class="career-step">${esc(step.kind === 'wait' && step.text === career.today.text ? career.nextShift : step.text)}</p><div class="career-actions">${action}<button class="ui-button" data-open="jobs">Jobs: switch or quit</button></div>${view.connected === false ? '<p class="ui-why">Not connected: read-only until the connection is back.</p>' : ''}
+      ${promotionCard}
+      <section class="ui-card career-card"><h3>Work days</h3><p class="career-schedule">${esc(career.schedule)}</p><ul class="career-chips" aria-label="Work days">${career.chips.map((chip) => `<li class="${chip.work ? 'is-work' : ''} ${chip.today ? 'is-today' : ''}" title="${esc(chip.name)}: ${chip.work ? 'work day' : 'day off'}${chip.today ? ' (today)' : ''}" aria-label="${esc(chip.name)}: ${chip.work ? 'work day' : 'day off'}${chip.today ? ', today' : ''}">${esc(chip.letter)}</li>`).join('')}</ul><p class="career-legend">Filled = work day · ring = today (${esc(career.today.weekday)}, Lagos time)</p><p class="career-hours">${esc(career.hours)}</p></section>
+      <details class="ui-details"><summary>How work works</summary><ul class="career-rules">${career.rules.map((rule) => `<li>${esc(rule)}</li>`).join('')}</ul></details>`;
   },
   bind(root, api) {
     for (const button of root.querySelectorAll('[data-career-go]')) {

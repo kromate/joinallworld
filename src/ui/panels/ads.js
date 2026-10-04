@@ -23,14 +23,14 @@ const board = (ad) => `<div class="ads-preview" style="background:${esc(colourOf
 
 /** Why the Rent button is off, or ''. The server checks all of this again. */
 function rentWhy(state, view, price, owned, limit, noun) {
-  if (!view.connected) return 'Offline: reconnect to rent.';
+  if (!view.connected) return 'Not connected: you cannot rent right now.';
   if (owned >= limit) return `You already rent ${limit} ${noun}, the most allowed at once.`;
   if (state.cash < price) return `Costs ${money(price)}; you have ${money(state.cash)}.`;
   return '';
 }
 
 function form() {
-  return `<div class="civic-form"><label>Ad text (${AD_TEXT.min}–${AD_TEXT.max} characters, no links)<input data-ads-text maxlength="${AD_TEXT.max}" value="${esc(draft.text)}" autocomplete="off" placeholder="Mama Put — best jollof on the island"></label>
+  return `<div class="civic-form is-card"><label>Ad text (${AD_TEXT.min}–${AD_TEXT.max} characters, no links)<input data-ads-text maxlength="${AD_TEXT.max}" value="${esc(draft.text)}" autocomplete="off" placeholder="Mama Put — best jollof on the island"></label>
     <div><span class="civic-note">Colour</span><div class="ads-swatches" role="group" aria-label="Ad colour">${AD_COLOURS.map((item) => `<button data-ads-colour="${esc(item.id)}" aria-pressed="${item.id === draft.colour}" aria-label="${esc(item.label)}" title="${esc(item.label)}" style="background:${esc(item.bg)}"></button>`).join('')}</div></div>
     <div><span class="civic-note">Icon</span><div class="ads-swatches" role="group" aria-label="Ad icon">${AD_ICONS.map((item) => `<button data-ads-icon="${esc(item.id)}" aria-pressed="${item.id === draft.icon}" aria-label="${esc(item.id)}">${esc(item.icon)}</button>`).join('')}</div></div>
     <div data-ads-preview><span class="civic-note">Preview</span>${board({ ...draft, text: draft.text.trim() || 'Your ad text' })}</div></div>`;
@@ -42,11 +42,11 @@ function billboards(state, view, data) {
     const place = view.venues.find((venue) => venue.id === slot.near);
     const where = view.cityId === 'lagos' ? slot.road : `Roadside ${slot.slot.slice(3)}`;
     const head = `<strong>${esc(where)}</strong><small>${place ? `Near ${esc(place.label)}` : 'Roadside'}</small>`;
-    if (!slot.ad) return `<li><span>${head}</span>${button(`Rent · ${money(slot.price)}`, `data-ads-rent="${json({ kind: 'billboard', slot: slot.slot })}"`, { primary: true, working: busy(`rent:${slot.slot}`), reason: rentWhy(state, view, slot.price, owned, data.billboards.maxPerPlayer, 'billboards') })}</li>`;
+    if (!slot.ad) return `<li class="ads-slot"><span>${head}</span>${button(`Rent · ${money(slot.price)}`, `data-ads-rent="${json({ kind: 'billboard', slot: slot.slot })}"`, { primary: true, working: busy(`rent:${slot.slot}`), reason: rentWhy(state, view, slot.price, owned, data.billboards.maxPerPlayer, 'billboards') })}</li>`;
     const until = `until ${esc(dateTime(slot.ad.expiresAt))}`;
-    return `<li><span>${head}${board(slot.ad)}<small>${slot.ad.mine ? `Yours ${until}` : `Rented by ${esc(slot.ad.by.name)} ${until}`}</small></span>${slot.ad.mine ? button('Take down', `data-ads-remove="${json({ kind: 'billboard', slot: slot.slot })}"`, { working: busy(`remove:${slot.slot}`), reason: view.connected ? '' : 'Offline.' }) : ''}</li>`;
+    return `<li class="ads-slot is-taken"><span>${head}${board(slot.ad)}<small>${slot.ad.mine ? `Yours ${until}` : `Rented by ${esc(slot.ad.by.name)} ${until}`}</small></span>${slot.ad.mine ? button('Take down', `data-ads-remove="${json({ kind: 'billboard', slot: slot.slot })}"`, { working: busy(`remove:${slot.slot}`), reason: view.connected ? '' : 'Not connected.' }) : ''}</li>`;
   }).join('');
-  return `<p class="civic-note">A billboard costs ${money(data.billboards.price)} for ${esc(data.billboards.days)} days. You can hold ${esc(data.billboards.maxPerPlayer)} at a time; taking one down early is not refunded.</p><ul class="civic-list">${rows}</ul>`;
+  return `<p class="civic-note">A billboard costs ${money(data.billboards.price)} for ${esc(data.billboards.days)} days. You can hold ${esc(data.billboards.maxPerPlayer)} at a time; taking one down early is not refunded.</p><ul class="civic-list is-card">${rows}</ul>`;
 }
 
 function sea(state, view, data) {
@@ -61,12 +61,12 @@ function sea(state, view, data) {
   const price = plot.row < data.sea.shoreRows ? data.sea.shorePrice : data.sea.price;
   const options = (size, value) => Array.from({ length: size }, (_, i) => `<option value="${i}" ${i === value ? 'selected' : ''}>${i + 1}</option>`).join('');
   const chosen = ad
-    ? `${board(ad)}<p class="civic-note">${ad.mine ? 'Yours' : `Rented by ${esc(ad.by.name)}`} until ${esc(dateTime(ad.expiresAt))}.</p>${ad.mine ? button('Take down', `data-ads-remove="${json({ kind: 'sea', slot })}"`, { working: busy(`remove:${slot}`), reason: view.connected ? '' : 'Offline.' }) : button(`Rent · ${money(price)}`, 'data-ads-none', { reason: 'This plot is taken. Pick a free one.' })}`
+    ? `${board(ad)}<p class="civic-note">${ad.mine ? 'Yours' : `Rented by ${esc(ad.by.name)}`} until ${esc(dateTime(ad.expiresAt))}.</p>${ad.mine ? button('Take down', `data-ads-remove="${json({ kind: 'sea', slot })}"`, { working: busy(`remove:${slot}`), reason: view.connected ? '' : 'Not connected.' }) : button(`Rent · ${money(price)}`, 'data-ads-none', { reason: 'This plot is taken. Pick a free one.' })}`
     : button(`Rent this plot · ${money(price)}`, `data-ads-rent="${json({ kind: 'sea', slot })}"`, { primary: true, working: busy(`rent:${slot}`), reason: rentWhy(state, view, price, owned, data.sea.maxPerPlayer, 'sea plots') });
   return `<p class="civic-note">Rent a patch of sea from ${money(data.sea.price)} a plot: your ad floats there for ${esc(data.sea.days)} days. The ${esc(data.sea.shoreRows)} rows nearest the shore cost ${money(data.sea.shorePrice)}. ${esc(data.sea.plots.length)} of ${esc(data.sea.rows * data.sea.cols)} plots are rented; you hold ${esc(owned)} of ${esc(data.sea.maxPerPlayer)}.</p>
     <div class="ads-sea" role="group" aria-label="Sea plots">${cells.join('')}</div>
     <div class="civic-form ads-pick"><label>Row<select data-ads-row>${options(SEA_PLOTS.rows, plot.row)}</select></label><label>Column<select data-ads-col>${options(SEA_PLOTS.cols, plot.col)}</select></label></div>
-    <h3>Plot ${plot.row + 1}·${plot.col + 1}</h3>${chosen}`;
+    <h3 class="ui-section">Plot ${plot.row + 1}·${plot.col + 1}</h3><div class="civic-actions is-stack">${chosen}</div>`;
 }
 
 export default {
@@ -75,9 +75,9 @@ export default {
     // Opened from the map with { tab: 'billboard' | 'sea' }.
     if (view.params && view.params !== seenParams) { seenParams = view.params; if (view.params.tab === 'sea' || view.params.tab === 'billboard') tab = view.params.tab; }
     const item = entry(key(view)), data = item.data;
-    const tabs = `<div class="civic-tabs" role="group" aria-label="Ad type"><button data-ads-tab="billboard" aria-pressed="${tab === 'billboard'}">Billboards</button><button data-ads-tab="sea" aria-pressed="${tab === 'sea'}">Sea plots</button></div>`;
-    const body = data ? `${stale(item)}${form()}${tab === 'sea' ? sea(state, view, data) : billboards(state, view, data)} ${button('Refresh', 'data-civic-retry', { working: item.loading })}` : status(item, view);
-    return `${tabs}<p class="civic-note">Balance ${money(state.cash)}</p>${body}
+    const tabs = `<div class="ui-seg" role="group" aria-label="Ad type"><button data-ads-tab="billboard" aria-pressed="${tab === 'billboard'}">Billboards</button><button data-ads-tab="sea" aria-pressed="${tab === 'sea'}">Sea plots</button></div>`;
+    const body = data ? `${stale(item)}${form()}${tab === 'sea' ? sea(state, view, data) : billboards(state, view, data)}<div class="civic-actions">${button('Refresh', 'data-civic-retry', { working: item.loading })}</div>` : status(item, view);
+    return `${tabs}<p class="civic-note">Balance <b>${money(state.cash)}</b></p>${body}
       <p class="civic-beta">Beta limitation: an ad is one line of text, a colour and an icon. Picture uploads and links are switched off until moderation exists, and ad text is never clickable. Rent is paid in in-game naira only. Ads are drawn on the city map behind its Billboards and Sea layers; they are never links. Billboard pricing and the sea grid are original beta values (${esc(BILLBOARDS.slots.length)} billboard slots).</p>`;
   },
   bind(root, api) {

@@ -27,28 +27,28 @@ const song = (item) => `${item.title} — ${item.artist}`;
 
 
 const app = {
-  id: PANEL, title: 'Radio', icon: '📻', placement: 'phone', order: 46, live: false,
+  id: PANEL, title: 'Radio', icon: '📻', placement: 'phone', order: 46, live: false, group: 'city',
   render(state, view) {
     const clubs = view.venues.filter((venue) => RADIO.venues.includes(venue.id));
     const beta = `<p class="civic-beta">Beta limitation: a shout-out is text only — a song title and an artist. No audio is played and links are not allowed. It costs ${money(RADIO.price)} of in-game naira, plays for ${esc(RADIO.slotSeconds)} seconds on the club banner, and each player gets ${esc(RADIO.perPlayerPerDay)} a day. These are original beta values.</p>`;
     if (!inClub(state)) {
       const here = view.venues.find((venue) => venue.id === state.location)?.label ?? 'here';
-      const list = clubs.length ? clubs.map((venue) => button(`Go to ${venue.label}`, `data-radio-go="${esc(venue.id)}"`, { reason: !view.connected ? 'Offline.' : state.activeAction ? 'Finish your current action first.' : '' })).join('') : '<p class="civic-note">No club is open in this city yet.</p>';
-      return `<p class="civic-headline">Club radio plays inside clubs.</p><p>You are ${isDeparting(state) ? 'on the road' : `at ${esc(here)}`}. Walk into a club to see what is playing and to buy a shout-out for your song.</p>${list}${beta}`;
+      const list = clubs.length ? clubs.map((venue) => button(`Go to ${venue.label}`, `data-radio-go="${esc(venue.id)}"`, { reason: !view.connected ? 'Not connected.' : state.activeAction ? 'Finish your current action first.' : '' })).join('') : '<p class="civic-note">No club is open in this city yet.</p>';
+      return `<section class="radio-now is-off"><small>${esc(RADIO.label)}</small><strong>Off air here</strong><small>You are ${isDeparting(state) ? 'on the road' : `at ${esc(here)}`}. Club radio plays inside clubs: walk in to see what is on and buy a shout-out for your song.</small><span class="radio-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></section><div class="civic-actions is-stack">${list}</div>${beta}`;
     }
     const venue = view.venues.find((item) => item.id === state.location);
     const item = entry(key(view, state.location)), data = item.data;
     if (!data) return `${status(item, view)}${beta}`;
     const { playing, queue } = schedule(data, view.now);
-    const why = !view.connected ? 'Offline: reconnect to buy a shout-out.'
+    const why = !view.connected ? 'Not connected: you cannot buy a shout-out right now.'
       : data.usedToday >= data.perDay ? `You have used all ${data.perDay} shout-outs today. They reset at midnight, Lagos time.`
           : queue.length + (playing ? 1 : 0) >= data.queueMax ? 'The queue is full. Try again in a few minutes.'
             : state.cash < data.price ? `Costs ${money(data.price)}; you have ${money(state.cash)}.` : '';
-    return `<div class="radio-now"><small>${esc(RADIO.label)} · ${esc(venue?.label ?? '')}</small><strong>${playing ? esc(song(playing)) : 'Nothing is playing'}</strong><small>${playing ? `Shout-out from @${esc(playing.by.name)} · about ${esc(until(playing.endsAt, view.now))} left` : 'Be the first: play your song here.'}</small></div>${stale(item)}
-      <h3>Up next (${esc(queue.length)})</h3>${queue.length ? `<ol class="civic-list">${queue.map((entryItem) => `<li class="${entryItem.mine ? 'is-you' : ''}"><span>${esc(song(entryItem))}<small>@${esc(entryItem.by.name)}${entryItem.mine ? ' (you)' : ''} · in about ${esc(until(entryItem.startsAt, view.now))}</small></span></li>`).join('')}</ol>` : '<p class="civic-note">The queue is empty.</p>'}
-      <h3>${esc(RADIO.cta)}</h3>
-      <div class="civic-form"><label>Song title<input data-radio-title maxlength="${RADIO.titleMax}" value="${esc(draft.title)}" autocomplete="off"></label><label>Artist<input data-radio-artist maxlength="${RADIO.artistMax}" value="${esc(draft.artist)}" autocomplete="off"></label></div>
-      ${button(`Buy shout-out · ${money(data.price)}`, 'data-radio-buy', { primary: true, working: busy('shoutout'), reason: why })} ${button('Refresh', 'data-civic-retry', { working: item.loading })}
+    return `<section class="radio-now${playing ? ' is-on' : ''}"><small>${esc(RADIO.label)} · ${esc(venue?.label ?? '')}</small><strong>${playing ? esc(song(playing)) : 'Nothing is playing'}</strong><small>${playing ? `Shout-out from @${esc(playing.by.name)} · about ${esc(until(playing.endsAt, view.now))} left` : 'Be the first: play your song here.'}</small><span class="radio-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></section>${stale(item)}
+      <h3 class="ui-section">Up next<small>${esc(queue.length)} in the queue</small></h3>${queue.length ? `<ol class="ui-rows">${queue.map((entryItem, index) => `<li class="ui-row${entryItem.mine ? ' is-you' : ''}"><span class="ui-row-icon is-round" aria-hidden="true">${index + 1}</span><span class="ui-row-body"><b>${esc(song(entryItem))}</b><small>@${esc(entryItem.by.name)}${entryItem.mine ? ' (you)' : ''} · in about ${esc(until(entryItem.startsAt, view.now))}</small></span></li>`).join('')}</ol>` : '<p class="civic-note">The queue is empty.</p>'}
+      <h3 class="ui-section">${esc(RADIO.cta)}</h3>
+      <div class="civic-form is-card"><label>Song title<input data-radio-title maxlength="${RADIO.titleMax}" value="${esc(draft.title)}" autocomplete="off"></label><label>Artist<input data-radio-artist maxlength="${RADIO.artistMax}" value="${esc(draft.artist)}" autocomplete="off"></label></div>
+      <div class="civic-actions">${button(`Buy shout-out · ${money(data.price)}`, 'data-radio-buy', { primary: true, working: busy('shoutout'), reason: why })}${button('Refresh', 'data-civic-retry', { working: item.loading })}</div>
       <p class="civic-note">Balance ${money(state.cash)} · ${esc(data.usedToday)} of ${esc(data.perDay)} shout-outs used today.</p>${beta}`;
   },
   bind(root, api) {

@@ -187,6 +187,7 @@ test('cities connect as data, and each city that is coming soon has a preview on
   const soon = Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'soon');
   assert.deepEqual(soon.map((item) => item.id), ['ibadan', 'abuja', 'port-harcourt']);
   for (const item of soon) { assert.equal(item.preview.length, 3); assert.equal(CITY_RULES[item.id].status, 'soon'); assert.ok(CITY_LINKS.some((link) => link.a === item.id || link.b === item.id)); }
-  const map = readFileSync(new URL('../world-map.js', import.meta.url), 'utf8');
-  assert.match(map, /data-wm-travel=/); assert.match(map, /is not open yet, so nothing leaves for it/);
+  // The atlas shows a route's Travel button only when the server would let it leave; otherwise it says why (src/map3d/geo).
+  const atlas = readFileSync(new URL('./geo/atlas.js', import.meta.url), 'utf8'), info = readFileSync(new URL('./geo/info.js', import.meta.url), 'utf8');
+  assert.match(atlas, /data-atlas-travel=/); assert.match(info, /is not open yet, so nothing leaves for it/);
 });

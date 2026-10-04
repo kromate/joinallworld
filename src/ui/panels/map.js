@@ -96,7 +96,8 @@ function overview(state, view) {
 }
 
 function worldLayer(view) {
-  return `<div class="map-panel map-worldbar"><header class="map-top"><div><h1>Nigeria</h1><p>${esc(view.city?.name || 'Lagos')} is open. More cities are on the way.</p></div><button class="map-chip-button" data-map-layer="city">← ${esc(view.city?.name || 'City')} map</button></header></div>`;
+  // The atlas (src/map3d/geo/atlas.js) carries its own breadcrumb, list and sheet; the panel only names the screen for assistive technology.
+  return `<h1 class="ui-sr">World map. ${esc(view.city?.name || 'Lagos')} is open; everything else is coming soon.</h1>`;
 }
 
 function card(state, view, item) {
@@ -202,6 +203,8 @@ const mapPanel = {
   },
   /** Esc with a venue card open goes back to the map; a second Esc leaves the Map. */
   keys(action, api) {
+    // On the world map Esc belongs to the atlas first: it closes its sheet, then goes up one level.
+    if (action === 'cancel' && layer === 'world') { const offer = new CustomEvent('jaw:atlas-escape', { cancelable: true }); window.dispatchEvent(offer); return offer.defaultPrevented; }
     if (action !== 'cancel' || !destination || layer !== 'city') return false;
     destination = null; api.refresh(); tell({ selected: null, layout: true });
     return true;

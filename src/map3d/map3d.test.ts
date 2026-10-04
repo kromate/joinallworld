@@ -7,6 +7,8 @@ import { bridgeRamp, buildNetwork, pointAt, pointInPolygon, roundPolygon } from 
 import { tripOf, createTripClock, tripPose, tripShares, TRIP_LOOKS } from './trip.ts';
 import type { TripMode, TripSource } from './trip.ts';
 import { createMap3D, timeOfDay } from './map3d.ts';
+import { createActor } from './actor.ts';
+import { createKit } from '../scene/kit.ts';
 import type { MapRenderer } from './map3d.ts';
 import type * as THREE from 'three';
 import { LANDMARK_KINDS } from './landmarks.ts';
@@ -495,4 +497,31 @@ test('Three.js and the map stay out of the entry chunk, and only the 3D map may 
     if (name !== 'map3d.ts') assert.doesNotMatch(code, /requestAnimationFrame/, name);
   }
   assert.doesNotMatch((await readFile('src/map3d/map3d.ts', 'utf8')), /shadowMap\.enabled = true/, 'no real-time shadow maps');
+});
+
+test('an actor disposes completely: its geometry and materials are freed, its group leaves the scene, and a second dispose does nothing', () => {
+  const kit = createKit();
+  const actor = createActor(kit);
+  actor.setPlayer({ seed: 'dispose', look: { body: 'woman', hair: 'braids', outfit: 'casual' } });
+  actor.setMode('danfo');
+  const scene = new kit.THREE.Group();
+  scene.add(actor.group);
+  const resources = new Set<THREE.BufferGeometry | THREE.Material>();
+  actor.group.traverse((object) => {
+    const { geometry, material } = object as Partial<THREE.Mesh>;
+    if (geometry) resources.add(geometry);
+    if (Array.isArray(material)) material.forEach((item) => resources.add(item)); else if (material) resources.add(material);
+  });
+  const freed = new Set<unknown>();
+  for (const resource of resources) resource.addEventListener('dispose', () => { freed.add(resource); });
+  assert.equal(actor.group.parent, scene);
+  actor.dispose();
+  assert.equal(actor.group.parent, null, 'the group is detached');
+  const dot = actor.group.getObjectByName('actor-dot') as THREE.Mesh, ring = actor.group.getObjectByName('actor-ring') as THREE.Mesh;
+  assert.ok(freed.has(dot.geometry) && freed.has(dot.material) && freed.has(ring.geometry) && freed.has(ring.material), 'the dot and ring are freed');
+  const after = freed.size;
+  assert.ok(after > 4, 'the avatar frames are freed too');
+  actor.dispose();
+  assert.equal(freed.size, after, 'disposing twice does nothing more');
+  kit.dispose();
 });

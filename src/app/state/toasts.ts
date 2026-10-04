@@ -1,0 +1,34 @@
+// Toasts: one line of feedback under the top bar. At most two show at once (the oldest gives
+// way), and a text that is already showing is not repeated: a stronger kind just recolours it.
+import { ref } from 'vue'
+import type { ToastKind } from '../types/panel.ts'
+
+export interface ToastItem { id: number; text: string; kind: ToastKind }
+
+export const MAX_TOASTS = 2
+const KINDS: readonly ToastKind[] = ['info', 'good', 'earn', 'spend', 'error']
+/** How long a toast stays: longer for a longer sentence, never more than seven seconds. */
+export const toastLifetime = (text: string): number => Math.min(7000, 2800 + text.length * 40)
+
+export function createToasts(later: (run: () => void, ms: number) => unknown = (run, ms) => setTimeout(run, ms)) {
+  const items = ref<ToastItem[]>([])
+  let nextId = 1
+  function dismiss(id: number): void { items.value = items.value.filter((item) => item.id !== id) }
+  function toast(text: unknown, kind: ToastKind = 'info'): void {
+    if (!text) return
+    const body = String(text)
+    let tone: ToastKind = KINDS.includes(kind) ? kind : 'info'
+    if (tone === 'good' && /\+₦/.test(body)) tone = 'earn'
+    const showing = items.value.find((item) => item.text === body)
+    if (showing) { if (tone !== 'info') showing.kind = tone; return }
+    const item: ToastItem = { id: nextId++, text: body, kind: tone }
+    items.value = [...items.value, item].slice(-MAX_TOASTS)
+    later(() => dismiss(item.id), toastLifetime(body))
+  }
+  return { items, toast, dismiss }
+}
+
+const shared = createToasts()
+export const toasts = shared.items
+export const toast = shared.toast
+export const dismissToast = shared.dismiss

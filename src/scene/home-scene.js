@@ -29,6 +29,7 @@
  *   renderCount stays honest.
  *
  * EVENTS (window CustomEvents; the Buy panel is the other end)
+ *   in   'jaw:mode'        detail { mode } — the shell's view; in 'buy' a tap picks at once
  *   in   'jaw:home-ui'     detail { selected: objectId | null, buy: boolean, ghost: { itemId, x, y, rot, valid } | null, retry? }
  *                          UI-only state to draw. The sender then asks the host for a frame
  *                          (a Buy panel refresh or the next accepted state does that).
@@ -429,7 +430,7 @@ export function buildHomeScene(kit) {
   function use(id, cell) { window.dispatchEvent(new CustomEvent('jaw:home-pick', { detail: { id: id ?? null, cell: cell ?? null } })); }
   function onPick(event) {
     // Outside Buy mode the host walks the avatar to the furniture first, then calls use().
-    if (driven && !ui.buy) return;
+    if (driven && !buying()) return;
     const hit = pickAt(event.clientX, event.clientY);
     if (hit) use(hit.id, hit.cell);
   }
@@ -448,6 +449,12 @@ export function buildHomeScene(kit) {
     if (lastState && refresh(lastState)) undrawn = true;
   };
   globalThis.window?.addEventListener?.('jaw:home-ui', onUi);
+  // The Buy panel says `buy` only when it has something to draw; the shell's view is known the moment Buy opens.
+  // (A scene built while Buy is already open reads the view the shell wrote on its root element.)
+  let shellMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
+  const onMode = (event) => { shellMode = event.detail?.mode || 'venue'; };
+  const buying = () => ui.buy || shellMode === 'buy';
+  globalThis.window?.addEventListener?.('jaw:mode', onMode);
 
   grid = HOUSES[DEFAULT_HOUSE].grid; tile = ROOM / grid;
   buildRoom();
@@ -478,7 +485,7 @@ export function buildHomeScene(kit) {
     },
     tags: () => (selfTag ? [selfTag, ...guestTags] : [...guestTags]),
     /** True in Buy mode: taps place and pick furniture, and the host does not walk the avatar. */
-    get placing() { return ui.buy; },
+    get placing() { return buying(); },
     pickAt, use,
     /** Floor furniture and where it stands, for diagnostics: [{ id, itemId, x, z }] (centre of the footprint). */
     objects() {
@@ -526,6 +533,7 @@ export function buildHomeScene(kit) {
       goalMark = null;
       clearFigures();
       globalThis.window?.removeEventListener?.('jaw:home-ui', onUi);
+      globalThis.window?.removeEventListener?.('jaw:mode', onMode);
       canvas?.removeEventListener?.('click', onPick);
       canvas = null;
       group.parent?.remove(group);

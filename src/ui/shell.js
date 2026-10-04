@@ -9,8 +9,9 @@
  *
  * THE SCENE AND THE KEYS: walking and the scene camera belong to the scene host
  * (src/venue-world.js). The shell only routes: in the venue view with no sheet open it forwards
- * the movement and camera keys as 'jaw:key' / 'jaw:key-up' window events, and it sends the `spot`
- * action when the scene reports ('jaw:scene-spot') that the avatar has walked up to a spot.
+ * the movement and camera keys as 'jaw:key' / 'jaw:key-up' window events, it announces the view
+ * it is in ('jaw:mode': venue | buy | map), and it sends the `spot` action when the scene reports
+ * ('jaw:scene-spot') that the avatar has walked up to a spot.
  *
  * THE HUD IS SMALL ON PURPOSE: the scene is the hero. Always visible are one top bar, the six
  * need bars as a slim strip, and one goal line. Every other HUD chip lives in the tray behind
@@ -292,6 +293,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   function setMode(next, params) {
     mode = next === 'venue' || byId.get(next)?.placement === 'nav' ? next : 'venue';
     modeParams = params ?? null;
+    // The scene host walks the avatar on a tap only in the venue view (Buy mode and the map keep their own taps).
+    window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode } }));
     host.onMode(mode, params);
   }
 

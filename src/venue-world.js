@@ -50,6 +50,8 @@
  *                          venue view: move-* / walk-* walk, look-* orbit, zoom-in / zoom-out /
  *                          zoom-fit zoom and recentre. Ignored on the map and while a sheet is open.
  *   in   'jaw:key-up'      { action } — a held key was released
+ *   in   'jaw:mode'        { mode } — the shell's view: a tap walks the avatar only in 'venue'
+ *                          (Buy mode keeps its own taps for placing and picking furniture)
  *   out  'jaw:scene-spot'  { id, open } — the avatar is at this spot; `open` = it was sent there
  *                          on purpose, so the shell also shows the spot's activities
  *   out  'jaw:avatar-move' { x, z, location } — where the avatar stands, at most three times a
@@ -149,7 +151,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   const held = { up: false, down: false, left: false, right: false, jog: false, lookLeft: false, lookRight: false, lookUp: false, lookDown: false };
   const stick = { x: 0, z: 0, jog: false };
   let locked = false, restKey = '', restWas = { spot: null, busy: false, leaving: false }, stride = 0, wasMoving = false, restPose = null;
-  let nearSpot = null, expected = null, dwell = null, lastSpotAt = -Infinity, spotList = [], avatarY = 0, fresh = false;
+  let nearSpot = null, expected = null, dwell = null, lastSpotAt = -Infinity, spotList = [], avatarY = 0, fresh = false, uiMode = 'venue';
   const walkOf = () => current?.walk || null;
   const report = createPositionReporter((x, z) => {
     onMove?.({ x, z, location: currentLocation });
@@ -224,7 +226,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     let bob = 0;
     if (walker.moving) {
       if (!wasMoving) { clearDwell(); controls?.hint(null); }
-      stride += dt * (walker.mode === 'keys' && (held.jog || stick.jog) ? 9 : 6.5);
+      stride += dt * (walker.jogging ? 9 : 6.5);
       // Two prebuilt figures alternate for the stride; nothing is built while walking.
       walk.gait(still || Math.floor(stride) % 2 === 0);
       if (!still) bob = Math.abs(Math.sin(stride * Math.PI)) * 0.06 * walk.scale;
@@ -430,22 +432,27 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   /** A tap that was not a drag: walk to what was tapped, then do what tapping it does. */
   function tap(event) {
     const walk = walkOf();
-    if (!walk || !walk.grid || locked || current.placing || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return false;
+    if (!walk || !walk.grid || locked || uiMode !== 'venue' || current.placing || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return false;
     controls?.hint(null);
     current.group.updateMatrixWorld(true);
-    // A person: their figure on screen, feet to head.
+    // A person: their figure on screen, feet to head. A tap on the legs may be meant for a spot marker behind them.
+    let who = null, onLegs = false;
     for (const person of walk.people()) {
       screenOf(person.x, 0, person.z, pixel); screenOf(person.x, person.top, person.z, pixelTop);
       const tall = Math.max(18, pixel.y - pixelTop.y);
       if (event.clientY < pixelTop.y - 6 || event.clientY > pixel.y + 6 || Math.abs(event.clientX - pixel.x) > tall * 0.24 + 6) continue;
+      who = person; onLegs = event.clientY > pixel.y - tall * 0.3;
+      break;
+    }
+    const meet = (person) => {
       const side = Math.atan2(walker.x - person.x, walker.z - person.z), reach = 1.5 * walk.scale;
       const stand = walk.grid.nearest(person.x + Math.sin(side) * reach, person.z + Math.cos(side) * reach);
-      if (!stand) return false;
-      return walkTo(stand.x, stand.z, { face: Math.atan2(person.x - stand.x, person.z - stand.z), then: () => onTag?.({ id: person.id, kind: person.kind }) });
-    }
+      return stand ? walkTo(stand.x, stand.z, { face: Math.atan2(person.x - stand.x, person.z - stand.z), then: () => onTag?.({ id: person.id, kind: person.kind }) }) : false;
+    };
+    if (who && !onLegs) return meet(who);
     // Furniture at home: walk up to it, then use it.
     const hit = current.pickAt?.(event.clientX, event.clientY);
-    if (hit?.id) {
+    if (hit?.id && !who) {
       const cx = hit.rect ? (hit.rect[0] + hit.rect[2]) / 2 : hit.x, cz = hit.rect ? (hit.rect[1] + hit.rect[3]) / 2 : hit.z;
       const stand = Number.isFinite(cx) ? walk.grid.nearest(cx, cz) : null;
       if (!stand) { current.use(hit.id, hit.cell); return true; }
@@ -460,6 +467,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       if (Math.hypot(pixel.x - event.clientX, pixel.y - event.clientY) < 26) distance = Math.min(distance, 0.5);
       if (distance < closest) { closest = distance; chosen = spot; }
     }
+    // Someone's legs in front of a marker: the marker wins only when the tap is right on it.
+    if (who && !(chosen && closest <= 0.75)) return meet(who);
     if (chosen) { const id = chosen.id; return walkTo(chosen.x, chosen.z, { exact: true, face: chosen.ry, mark: true, then: () => requestSpot(id, true) }); }
     return at ? walkTo(at.x, at.z, { mark: true }) : false;
   }
@@ -494,6 +503,10 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if (Object.hasOwn(WALK_KEYS, action)) held[WALK_KEYS[action]] = false;
     else if (Object.hasOwn(LOOK_KEYS, action)) held[LOOK_KEYS[action]] = false;
   }
+  function onMode(event) { uiMode = event.detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
+  // Created after the shell: start from the view the shell wrote on its root element.
+  uiMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
+  win?.addEventListener?.('jaw:mode', onMode);
   win?.addEventListener?.('jaw:key', onKey);
   win?.addEventListener?.('jaw:key-up', onKeyUp);
   win?.addEventListener?.('blur', dropInput);
@@ -691,7 +704,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       loop.dispose(); clearDwell();
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
-      win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
+      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
       controls?.dispose();
       if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
       for (const entry of built.values()) entry.dispose?.();

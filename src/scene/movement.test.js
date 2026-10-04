@@ -132,6 +132,11 @@ test('the walker follows a path, hops to an exact place off the floor, calls arr
   walker.input(-1, 0); walker.step(1 / 60, 0);
   assert.equal(walker.mode, 'keys'); walker.input(0, 0); run(walker);
   assert.equal(arrived, 2);
+  // A long way is jogged — also while the host keeps reporting "no keys held" every frame — a short one is walked.
+  const open = createWalkGrid({ bounds: [-20, -20, 20, 20] });
+  const timed = (distance) => { const w = createWalker(); w.setGrid(open); w.place(0, 0, 0); w.goTo(distance, 0); let t = 0; do { w.input(0, 0, false); t += 1 / 60; } while (w.step(1 / 60, 0) && t < 60); return t; };
+  assert.ok(Math.abs(timed(4) - 4 / WALK_SPEED) < 0.1, 'four units: walked');
+  assert.ok(Math.abs(timed(16) - 16 / JOG_SPEED) < 0.1, 'sixteen units: jogged');
   // Reduced motion / no frame loop: the path is simply finished.
   walker.place(-5, 0, 0); walker.goTo(5, 0, { arrive: () => { arrived += 1; }, face: 2 });
   assert.equal(walker.finishNow(), true);

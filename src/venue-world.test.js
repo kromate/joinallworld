@@ -514,6 +514,17 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
     const moved = world.diagnostics().avatar;
     assert.ok(Math.hypot(moved.x - spawn.avatar.x, moved.z - spawn.avatar.z) > 0.8, 'walks in the room');
     assert.equal(world.diagnostics().loop.running, false);
+    // Buy mode keeps its own taps: a click on the floor walks nowhere (the scene's own picking handles it).
+    const floor = world.diagnostics().tags[0];
+    const click = (x, y) => { bench.send('pointerdown', { clientX: x, clientY: y }); bench.send('pointerup', { clientX: x, clientY: y }); bench.send('click', { clientX: x, clientY: y }); };
+    globalThis.window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'buy' } }));
+    click(floor.x + 60, floor.y + 110);
+    assert.deepEqual([bench.queued(), world.diagnostics().avatar.mode], [0, 'idle'], 'Buy mode: a tap does not walk the avatar');
+    globalThis.window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'venue' } }));
+    click(floor.x + 60, floor.y + 110);
+    assert.equal(world.diagnostics().avatar.mode, 'path', 'back in the room view: the same tap walks');
+    bench.pump(3000);
+    assert.equal(world.diagnostics().loop.running, false);
     // Hold every direction for a long time: the avatar never leaves the room.
     for (const action of ['walk-up', 'walk-left', 'walk-down', 'walk-right']) {
       bench.key(action); bench.pump(300); bench.keyUp(action); bench.pump(400);

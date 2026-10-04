@@ -25,6 +25,7 @@ const CSS = `
 .scene-controls.is-touch .scene-stick{display:block}
 .scene-stick i{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(0,0,0,.3);pointer-events:none}
 .scene-hint{position:absolute;left:50%;top:var(--sc-top);transform:translateX(-50%);display:flex;align-items:center;gap:6px;max-width:calc(100% - 24px);padding:6px 6px 6px 12px;border-radius:999px;background:rgba(18,32,28,.84);color:#fff;pointer-events:auto;box-shadow:0 2px 8px rgba(0,0,0,.25);text-align:center}
+.scene-controls.is-narrow .scene-hint{top:auto;bottom:calc(var(--sc-bottom) + 122px)}
 .scene-hint[hidden]{display:none}
 .scene-hint button{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font:700 16px/1 system-ui,sans-serif;cursor:pointer;padding:0}
 body:has(.life-ui.is-clean) .scene-pad,body:has(.life-ui.is-clean) .scene-hint{display:none}
@@ -107,6 +108,8 @@ export function createSceneControls(container, { onZoom, onRecentre, onStick } =
     place({ top = 0, bottom = 0, wide = false } = {}) {
       root.style.setProperty('--sc-top', `${Math.round(top + 8)}px`);
       root.style.setProperty('--sc-bottom', `${Math.round(wide ? 16 : bottom + 10)}px`);
+      // On a narrow screen the rows under the top bar (needs, alerts, the goal line) are the HUD's: the hint sits above the controls instead.
+      root.classList.toggle('is-narrow', !wide);
     },
     touch(on) { root.classList.toggle('is-touch', Boolean(on)); },
     get isTouch() { return root.classList.contains('is-touch'); },

@@ -256,7 +256,7 @@ export function turnTowards(from, to) {
  *   walker.step(dt, cameraYaw, snap?) → bool   advance; true while still moving or turning
  */
 export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) {
-  let grid = null, inputX = 0, inputZ = 0, jog = false;
+  let grid = null, inputX = 0, inputZ = 0, jog = false, routeJog = false;
   let route = null, routeIndex = 0, finish = null, face = null, arrive = null, turning = false;
   const walker = {
     x: 0, z: 0, ry: 0, moving: false, mode: 'idle', speed, jogSpeed, blocked: false,
@@ -273,6 +273,8 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
       if (inputX || inputZ) { route = null; finish = null; face = null; arrive = null; }
     },
     get hasInput() { return inputX !== 0 || inputZ !== 0; },
+    /** True while the avatar is going faster than a walk (Shift, a full push of the joystick, a long path). */
+    get jogging() { return route ? routeJog : jog && (inputX !== 0 || inputZ !== 0); },
     goTo(x, z, options = {}) {
       if (!grid || !Number.isFinite(x) || !Number.isFinite(z)) return false;
       const waypoints = grid.path(walker.x, walker.z, x, z);
@@ -288,7 +290,7 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
       // A long way (across the venue) is jogged, so being sent somewhere never takes long.
       let length = 0, fromX = walker.x, fromZ = walker.z;
       for (const next of route) { length += Math.hypot(next.x - fromX, next.z - fromZ); fromX = next.x; fromZ = next.z; }
-      jog = options.jog === undefined ? length > LONG_WALK : Boolean(options.jog);
+      routeJog = options.jog === undefined ? length > LONG_WALK : Boolean(options.jog);
       inputX = 0; inputZ = 0; turning = false;
       walker.mode = 'path'; walker.moving = true;
       return true;
@@ -308,7 +310,7 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
     step(dt, cameraYaw = 0, snap = false) {
       walker.blocked = false;
       if (route) {
-        let left = (jog ? walker.jogSpeed : walker.speed) * dt;
+        let left = (routeJog ? walker.jogSpeed : walker.speed) * dt;
         while (left > 0 && route) {
           const hop = routeIndex >= route.length;
           const next = hop ? finish : route[routeIndex];

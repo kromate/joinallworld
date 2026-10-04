@@ -96,7 +96,7 @@ test('player text: trimmed, control and invisible characters removed, length-lim
   assert.equal(cleanLine('x'.repeat(61), { max: 60 }).code, 'text_too_long');
   assert.equal(cleanLine('x'.repeat(5000), { max: 60 }).code, 'text_too_long');
   for (const value of [5, null, undefined, {}, ['a']]) assert.equal(cleanLine(value).code, 'text_required');
-  for (const link of ['visit https://evil.example', 'WWW.spam.ng now', 'buy at shop.com', 'bit.ly/x']) assert.equal(cleanLine(link).code, 'links_not_allowed', link);
+  for (const link of ['visit https://evil.example', 'WWW.spam.ng now', 'buy at shop.com', 'bit.ly/x', 'listen at x.com', 'X.NG']) assert.equal(cleanLine(link).code, 'links_not_allowed', link);
   assert.equal(cleanLine('<img src=x onerror=alert(1)>').ok, true, 'markup is stored as text and escaped when rendered');
   assert.match(cleanLine('ab', { min: 3, what: 'Your slogan' }).reason, /Your slogan must be at least 3/);
 });

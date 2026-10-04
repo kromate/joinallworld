@@ -6,7 +6,7 @@ import { cleanText } from '../../src/game/util.js';
 const INVISIBLE = /[\u00ad\u200b-\u200f\u2028-\u202f\u2060-\u206f\ufeff]/g;
 // No links in this wave: nothing a player types is ever rendered as clickable, and anything
 // that reads like an address is refused so the text cannot be used to advertise one either.
-const LINK = /(https?:\/\/|www\.|\b[a-z0-9-]{2,}\.(com|net|org|ng|io|co|xyz|app|gg|me|ly|tv|info|biz|link|shop|site|online)\b)/i;
+const LINK = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|net|org|ng|io|co|xyz|app|gg|me|ly|tv|info|biz|link|shop|site|online)\b)/i;
 
 /**
  * One short line of player text. Returns { ok: true, text } or { ok: false, code, reason }.

@@ -49,11 +49,16 @@ export function buildUnilag(kit, venue = {}) {
     }),
   };
   Object.values(instanceGeometries).forEach(g => ownedGeometry.add(g));
-  const player = buildAvatar(kit, { body: 'woman', outfit: 'casual', outfitColor: 'ochre', skin: 'skin-5' }, { detail: 'low', rig: true, scale: .75, seed: 'campus-visitor' });
+  let player = buildAvatar(kit, { body: 'woman', outfit: 'casual', outfitColor: 'ochre', skin: 'skin-5' }, { detail: 'low', rig: true, scale: .75, seed: 'campus-visitor' });
   group.add(player);
   let current = null, time = venue.scene?.time || 'day', disposed = false, crowd = [], crowdMesh = null;
   let rebuilds = 0;
   const position = { ...ENTRANCE };
+  let playerKey='';
+  const markerGeometry = new THREE.RingGeometry(.7,.82,20);markerGeometry.rotateX(-Math.PI/2);ownedGeometry.add(markerGeometry);
+  const nearMarker=new THREE.Mesh(markerGeometry,kit.material('#f0c060',true)),goalMarker=new THREE.Mesh(markerGeometry,kit.material('#89b7c2',true));
+  nearMarker.visible=goalMarker.visible=false;group.add(nearMarker,goalMarker);
+  const moveMark=(mark,at)=>{mark.visible=!!at;if(at)mark.position.set(at.x,.12,at.z);return true;};
   const decorations = new Map();
   // Props live on conservative blocked perimeter strips. They cannot obstruct a route.
   for (const zone of ZONES) {
@@ -154,7 +159,8 @@ export function buildUnilag(kit, venue = {}) {
     syncCrowd();return true;
   }
   const walk={
-    entrance:[ENTRANCE.x,ENTRANCE.z,ENTRANCE.ry],open:true,avatar:player,raised:[],
+    entrance:[ENTRANCE.x,ENTRANCE.z,ENTRANCE.ry],open:true,avatar:player,raised:[],scale:.75,
+    get centre(){return [position.x,.7,position.z];},
     get grid(){return {
       bounds:[-300,-240,340,240],free:(x,z)=>{const zone=nav.zoneAt(x,z);return !!zone&&nav.grids.get(zone.id).free(x,z);},
       path:(ax,az,bx,bz)=>nav.route({x:ax,z:az},{x:bx,z:bz}),
@@ -163,9 +169,10 @@ export function buildUnilag(kit, venue = {}) {
     solids:BUILDINGS.flatMap(b=>footprintOf(b).map(([x0,z0,x1,z1])=>[x0,0,z0,x1,b.h,z1])),
     move(x,y,z,ry){setPosition(x,z);player.rotation.y=ry;},
     drive(){},rest(){poseAvatar(player,{pose:'stand'});},
-    gait(step,phase){poseAvatar(player,{pose:'walk',stride:{phase,step}});},
+    gait(step,phase){poseAvatar(player,{pose:'walk',stride:phase/(Math.PI*2)});},
     pose(name){poseAvatar(player,{pose:name});},heightAt:()=>0,
-    near:id=>ANCHORS[id],goal:(x,z)=>walk.grid.nearest(x,z),spots:()=>ANCHORS,people:()=>crowd,
+    near:at=>moveMark(nearMarker,at),goal:(x,z)=>moveMark(goalMarker,Number.isFinite(x)&&Number.isFinite(z)?{x,z}:null),
+    spots:()=>Object.entries(ANCHORS).map(([id,a])=>({id,...a,approach:null,steps:[]})),people:()=>crowd.map(p=>({...p,kind:p.kind||'player',top:2.3})),
   };
   const scene={group,kind:'unilag',mood:'outdoor',anchors:ANCHORS,walk,navigation:nav,
     camera:{landscape:[22,20,26],portrait:[26,30,34]},
@@ -173,10 +180,14 @@ export function buildUnilag(kit, venue = {}) {
     get time(){return time;},get zone(){return current;},get position(){return {...position};},
     update(state){const hour=lagosTime(state?.t??0).hour;return scene.setTime(venue.scene?.time||(hour<6||hour>=19?'night':hour>=17?'dusk':'day'));},
     setTime(value){if(!['day','dusk','night'].includes(value)||time===value)return false;time=value;return true;},
-    lighting(){return {hemi:{sky:scene.background,ground:'#68765a',intensity:time==='night'?.7:2},sun:{color:time==='night'?'#96b5da':'#fff0d2',intensity:time==='night'?.5:2.4,position:[80,140,50]}};},
+    lighting(){return {hemi:[scene.background,'#68765a',time==='night'?.9:2],sun:[time==='night'?'#96b5da':'#fff0d2',time==='night'?.65:2.4,[80,140,50]]};},
     setPosition,
     setSpot(id){const at=ANCHORS[id];return !!at&&setPosition(at.x,at.z);},
-    setPlayer({look,pose='stand'}={}){poseAvatar(player,{pose});return true;},
+    setPlayer({look,seed='campus-visitor',pose='stand'}={}){
+      const key=JSON.stringify([look,seed]);
+      if(look&&key!==playerKey){playerKey=key;player.userData.dispose();player=buildAvatar(kit,look,{detail:'low',rig:true,scale:.75,seed});group.add(player);player.position.set(position.x,0,position.z);walk.avatar=player;}
+      poseAvatar(player,{pose});return true;
+    },
     setCrowd(people){
       crowd=(Array.isArray(people)?people:[]).slice(0,CAMPUS_BUDGET.crowd).flatMap(p=>{
         const at=Number.isFinite(p.x)&&Number.isFinite(p.z)?p:ANCHORS[p.spot];

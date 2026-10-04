@@ -82,8 +82,8 @@ Queen Amina is separate from New Hall and lies south of Education. Clinical/Dent
 
 | Unit | Requested outcome | State | Immutable source SHA |
 |---|---|---|---|
-| 1 | Research, layout, gate and academic core preview | Verified in browser at desktop and 390x844; commit recorded in final handoff | Pending |
-| 2 | Whole campus zoning, LOD, paths and budgets | Local implementation under verification | Pending |
+| 1 | Research, layout, gate and academic core preview | Verified in browser at desktop and 390x844 | `82f0534` |
+| 2 | Whole campus zoning, LOD, paths and budgets | Ten connected zones; full resident/crowd budgets and disposal verified | Pending |
 | 3 | Visitor activities and NPCs | Content and focused checks complete | Pending |
 | 4 | Student system, Engineering | Engine checks complete; parent integration review in progress | Pending |
 | 5 | Games, events, leaderboards | Implementing | Pending |
@@ -104,3 +104,7 @@ Existing dependencies are reused from the owner checkout; no new npm dependencie
 Node checks use `NODE_OPTIONS='--import ./src/campus/shared/resolve-local.mjs'` to resolve the owner's existing three/vite/ws packages. `capture.mjs` adapts the supplied private headless harness, removes its own browser profile, and records real renderer counts, exceptions, phone overflow and idle frame count. Software GL is not a measurement of Android frame rate.
 
 Routing: Luna handled two bounded research units and content. Sol handled layout/navigation and rules/shuttle units. Parent owns architectural decisions, integration, geometry, interactive inspection and acceptance. Retries and outcomes are in this chat; token/currency cost is unavailable and no cost saving is claimed.
+
+## Initial scene verification
+
+`scene.test.js` verifies every resident-zone combination, every landmark route with rendered decoration footprints, shoreline rejection, same-zone geometry reuse, and exactly-once disposal of observed geometries. Worst resident count at this checkpoint: 38,610 triangles and 37 calls with 12 crowd figures. Near/goal markers can add 80 triangles and two calls; the hard limits remain 60,000 and 60. Host-facing spot arrays, lighting tuples, avatar appearance replacement and camera centre/scale match the existing scene contract.

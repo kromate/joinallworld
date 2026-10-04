@@ -27,11 +27,21 @@
  * tick) or when the phone is opened. Each region is written only when its HTML changed, so a
  * minute passing never rebuilds the icon grid, moves the page or steals focus. Motion is CSS
  * transitions on open and on entering/leaving an app, switched off by prefers-reduced-motion.
+ *
+ * CLOSING. The shell closes the phone by calling unmount() and then dialog.close(), in one turn, so
+ * the dialog is gone at once: Esc, the Close pill, a tap outside, the nav and Community all close it
+ * reliably and none of them waits for an animation. The animation is decoration on top of that:
+ * unmount() moves the device out of the dialog into a "ghost" layer on the page (inert, hidden from
+ * assistive technology, deaf to the pointer) that slides down and fades with one CSS animation and
+ * removes itself when it ends. No timer. It is skipped under prefers-reduced-motion, when the
+ * dialog is no longer on screen, and when another sheet (a required panel, a non-phone sheet) takes
+ * the dialog over — then the phone is simply gone.
  * The 3D scene is not touched: opening, paging and closing the phone draw no scene frame.
  */
 import './phone.css';
 import { esc, json } from '../dom.js';
-import { appIcon, glyph, glyphFor, tintOf } from './icons.js';
+import { glyph, glyphFor } from './icons.js';
+import { appIcon, tintOf } from './icons-more.js';
 import { getWallpaper } from './wallpapers.js';
 import { checkReports } from './reports.js';
 
@@ -56,6 +66,7 @@ export function createPhone({ dialog, content, panels, host }) {
   const html = new WeakMap();
   let el = null, state = null, view = null, sheet = null;
   let page = 0, shade = false, wide = false, lastApp = null, shown = '', focusNext = null;
+  let ghost = null;
 
   const set = (target, next) => { if (html.get(target) === next) return false; html.set(target, next); target.innerHTML = next; return true; };
   const byId = (id) => panels.find((panel) => panel.id === id);
@@ -167,6 +178,7 @@ export function createPhone({ dialog, content, panels, host }) {
         <button class="ph-homebar" data-open="phone" aria-label="Home screen" tabindex="-1"></button>
       </div>
     </div></div>`;
+    dropGhost(); // opened again while the last one was still leaving: there is only ever one phone
     const device = content.querySelector('.ph');
     const part = (name) => device.querySelector(`[data-ph="${name}"]`);
     el = { device, status: part('status'), home: part('home'), time: part('time'), date: part('date'), notifs: part('notifs'), pages: part('pages'), dots: part('dots'), dock: part('dock'), shade: part('shade'), app: part('app'), bar: part('bar'), body: part('body') };
@@ -175,8 +187,40 @@ export function createPhone({ dialog, content, panels, host }) {
     shown = ''; shade = false;
     if (host.api) checkReports(host.api); // opening the phone is the moment to look for a moderator's reply
   }
-  function unmount() {
+  function dropGhost() { ghost?.remove(); ghost = null; }
+  /**
+   * The close animation (see CLOSING above): hand the device to a ghost layer that leaves by itself.
+   * Purely visual — whatever happens here, the caller has already let go of the phone.
+   */
+  function leave() {
+    const stage = content.querySelector('.ph-stage');
+    const box = stage?.getBoundingClientRect();
+    if (!box || box.width < 2 || box.height < 2) return; // the dialog is already off screen
+    if (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const scrollTop = el.body.scrollTop, scrollLeft = el.pages.scrollLeft;
+    dropGhost();
+    const layer = document.createElement('div');
+    layer.id = 'ph-ghost';
+    layer.setAttribute('aria-hidden', 'true');
+    layer.inert = true;
+    stage.style.cssText = `left:${box.left}px;top:${box.top}px;width:${box.width}px;height:${box.height}px`;
+    layer.append(stage); // moved, not copied: nothing is drawn twice
+    (dialog.parentNode || document.body).append(layer);
+    // Moving a scroller resets it: put the screen back where it was so nothing jumps as it leaves.
+    const body = stage.querySelector('[data-ph="body"]'), pages = stage.querySelector('[data-ph="pages"]');
+    if (body) { body.scrollTop = scrollTop; body.removeAttribute('data-panel'); } // a picture of the app, not the app
+    if (pages) pages.scrollLeft = scrollLeft;
+    ghost = layer;
+    const done = (event) => { if (event.target !== stage) return; layer.remove(); if (ghost === layer) ghost = null; };
+    layer.addEventListener('animationend', done);
+    layer.addEventListener('animationcancel', done);
+    // No animation to wait for (a stylesheet switched it off): do not leave a phone lying on the page.
+    if (getComputedStyle(stage).animationName === 'none') dropGhost();
+  }
+  /** `animate: false` when the dialog stays open for another sheet. The shell's own calls animate. */
+  function unmount(animate = true) {
     if (!el) return;
+    if (animate) { try { leave(); } catch (error) { console.error('Phone close animation failed:', error); dropGhost(); } }
     el = null; shown = ''; lastApp = null; shade = false; sheet = null;
     dialog.removeAttribute('data-phone');
     html.delete(content);
@@ -212,7 +256,7 @@ export function createPhone({ dialog, content, panels, host }) {
    * panel itself asked (api.refresh / api.open). Returns false when the sheet is not the phone's.
    */
   function render(nextState, nextView, nextSheet, force = false) {
-    if (!hosts(nextSheet)) { unmount(); return false; }
+    if (!hosts(nextSheet)) { unmount(false); return false; }
     state = nextState; view = nextView; sheet = nextSheet;
     const opening = !el;
     if (opening) mount();
@@ -351,13 +395,15 @@ export function createPhone({ dialog, content, panels, host }) {
   dialog.addEventListener('click', onClick);
 
   return {
-    hosts, render, unmount, back,
+    hosts, render, back,
+    /** The phone is closing (the shell calls this, then closes the dialog). Animated; see CLOSING above. */
+    unmount: () => unmount(true),
     /** Put the keyboard focus where the current view expects it (called once the dialog is showing). */
     focus: focusView,
     /** True while the phone is on screen (home or an app). */
     get open() { return Boolean(el); },
     /** Which app icon gets the focus the next time the home screen shows. */
     focusOn(id) { focusNext = id; },
-    destroy() { dialog.removeEventListener('keydown', onKeydown); dialog.removeEventListener('click', onClick); unmount(); },
+    destroy() { dialog.removeEventListener('keydown', onKeydown); dialog.removeEventListener('click', onClick); unmount(false); dropGhost(); },
   };
 }

@@ -6,7 +6,9 @@
  * Every disabled Move button says what is missing (view.property.houses[].blocked).
  */
 import './houses.css';
+import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { esc, money, json } from '../dom.js';
+import { linkWords } from '../link.js';
 import { MOVE_IN_WEEKS } from '../../game/content/housing.js';
 
 /**
@@ -31,12 +33,12 @@ function houseArt(tier, grid) {
 }
 
 export default {
-  id: 'houses', title: 'Houses', icon: '🏘️', placement: 'phone', order: 30,
+  id: 'houses', title: 'Houses', placement: 'phone', order: 30,
   render(state, view) {
     const property = view.property;
     if (!property) return '<p class="ui-error">Houses could not be loaded. Close this app and open it again.</p>';
     const next = property.houses.find((house) => house.id === property.nextHouse);
-    const offline = view.connected ? '' : 'Not connected — moving needs the server';
+    const offline = view.connected ? '' : `${linkWords(view).short} — moving needs the server`;
     const cards = property.houses.map((house, tier) => {
       const reason = house.current ? '' : offline || house.blocked || '';
       return `<article class="houses-card ${house.current ? 'is-current' : ''}">${houseArt(tier, house.grid)}<div class="houses-body"><header><h3>${esc(house.label)}<small>${esc(house.district)}</small></h3>${house.current ? '<span class="ui-chip is-good">You live here</span>' : house.tag ? `<span class="ui-chip">${esc(house.tag)}</span>` : ''}</header><p>${esc(house.description)}</p><dl><div><dt>Room</dt><dd>${house.grid} × ${house.grid}</dd></div><div><dt>Rent / week</dt><dd>${money(house.rent)}</dd></div><div><dt>Move in</dt><dd class="${house.current ? '' : house.affordable ? 'is-afford' : 'is-short'}">${money(house.moveIn)}</dd></div></dl>${house.current ? ''
@@ -44,6 +46,7 @@ export default {
     }).join('');
     const progress = next ? Math.max(0, Math.min(100, Math.round((state.cash / next.moveIn) * 100))) : 100;
     return `<section class="ui-hero houses-hero"><small>${next ? 'Next step up' : 'Top of the ladder'}</small><strong>${next ? `${esc(next.label)}, ${esc(next.district)}` : 'The grandest house in the city'}</strong>${next ? `<div class="houses-progress" role="meter" aria-label="Saved towards the move" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><i style="width:${progress}%"></i></div><p>${next.affordable ? 'You can afford the move.' : `${money(next.moveIn - state.cash)} to go · you have ${money(state.cash)}`}</p>` : '<p>You live here already.</p>'}</section>
-      <p class="ui-note">Pay the landlord and the agent — ${MOVE_IN_WEEKS} weeks of rent up front — and your furniture moves with you. Anything that does not fit the new room waits in Buy → Storage.</p>${cards}<p class="preview-note">Rents and move-in costs follow the reference game; the Yaba room size and move-in cost are beta estimates.</p>`;
+      <p class="ui-note houses-note">Moving in costs ${MOVE_IN_WEEKS} weeks of rent up front. Rent is then due every Saturday.</p>${how('houses-rules', ruleList([`The move-in cost pays the landlord and the agent: ${MOVE_IN_WEEKS} weeks of rent, up front.`, 'Your furniture moves with you. Anything that does not fit the new room waits in Buy → Storage.', 'From then on the new rent is collected every Saturday (see Bank).', 'Rents and move-in costs follow the reference game; the Yaba room size and move-in cost are beta estimates.']), 'How moving works', true)}<div class="houses-list">${cards}</div>`;
   },
+  bind(root, api) { bindHow(root, api); },
 };

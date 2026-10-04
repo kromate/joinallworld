@@ -19,3 +19,7 @@
 .statement-sums .is-in,.statement-flow .is-in,.statement-groups .is-in{color:var(--c-green-dark)}
 .statement-sums .is-out,.statement-flow .is-out,.statement-groups .is-out{color:var(--c-red)}
 .statement-wrong{margin-top:var(--s-3)}
+/* Expanded on a desktop: days side by side, and the two buttons stop spanning the whole width. */
+.ph.is-wide .statement-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--s-2);align-items:start}
+.ph.is-wide .statement-days>li{margin:0}
+.ph.is-wide .statement-check,.ph.is-wide .statement-wrong{max-width:360px}

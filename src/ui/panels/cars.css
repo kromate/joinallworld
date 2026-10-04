@@ -1,6 +1,12 @@
 /* Cars app. Class names are prefixed with the panel id. */
 .cars-hero{--hero:var(--app-tint,#334155)}
 .cars-hero strong{font-size:20px}
+/* One vehicle per row on a phone; a grid when the phone is expanded on a desktop. */
+.cars-list{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-3);margin-top:var(--s-2)}
+.cars-list .cars-card{margin:0;display:flex;flex-direction:column}
+.cars-list .cars-body{flex:1;display:flex;flex-direction:column}
+.cars-list .cars-facts{margin-bottom:auto;padding-bottom:var(--s-3)}
+.ph.is-wide .cars-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 .cars-card{margin:0 0 var(--s-3);border-radius:var(--r-lg);background:#fff;box-shadow:var(--e-1),var(--ring);overflow:hidden}
 .cars-card.is-owned{box-shadow:var(--e-1),inset 0 0 0 2px var(--c-green)}
 .cars-art{display:block;width:100%;height:96px}

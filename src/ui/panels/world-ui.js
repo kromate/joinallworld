@@ -4,7 +4,17 @@
  * registered. Everything is derived from view.travel (systems/travel.js), so the map card and
  * the Ride app can never disagree about a fare, a trip time or why a trip is refused.
  */
-import { esc, money, cap } from '../dom.js';
+import { esc, money, cap, iconFor } from '../dom.js';
+import { linkWords, linkAttrs } from '../link.js';
+
+/** What follows "…, so the trip cannot start." for each connection state: the way out, truthfully. */
+const LINK_NEXT = {
+  offline: 'Reconnect and Go will work again — nothing changes until then.',
+  unreachable: 'Your life is safe there. Reconnect and Go will work again.',
+  expired: 'Start a new life, or try again.',
+  new: 'Choose a nickname to start a session on this device, then travel.',
+  connecting: 'Go will work in a moment.',
+};
 
 export const signed = (amount) => (amount > 0 ? `+${amount}` : `−${-amount}`);
 export const needsLine = (needs) => Object.entries(needs || {}).map(([need, amount]) => `${signed(amount)} ${cap(need)}`).join(', ');
@@ -30,16 +40,20 @@ export function chosenMode(destination, wanted, fallback = 'danfo') {
  * Why Go is disabled, as { code, label, reason, fix? }, or null when the trip can start.
  * `label` is short enough for the button; `reason` is the full sentence shown beside it, and it
  * always says what to do about it. `fix` is the one-tap way out where there is one:
- *   { kind: 'reconnect' }                    offline or an expired session → reconnect (the host's own Reconnect)
+ *   { kind: 'reconnect', attrs }             not connected → the action of that connection state (src/ui/link.js): try
+ *                                            again when the device is offline or the server does not answer, the
+ *                                            session panel when there is no life yet or the saved one is gone
  *   { kind: 'cancel', label }                busy → cancel what is running
  *   { kind: 'mode', mode: 'trek', label }    not enough cash → go on foot, which is free
  *   { kind: 'enter', label }                 already there → go inside
  */
 export function goBlock(state, view, destination, mode) {
   if (!view.connected) {
-    return { code: 'offline', label: 'Offline', fix: { kind: 'reconnect', label: view.session ? 'Reconnect' : 'Reconnect to travel' },
-      reason: view.session ? 'You are offline, so the trip cannot start. Reconnect and Go will work again — nothing changes while you are offline.'
-        : 'Your session on this device is not connected. Reconnect to carry on with your saved life, then travel.' };
+    // `code` stays 'offline' (it is a code, not wording); the words say which of the five states this really is.
+    // A host that reports no `link` and has no session is a device with no life yet ('new'), not an unreachable server.
+    const words = linkWords(!view.link && view.session === null ? 'new' : view), waiting = words.state === 'new' || words.state === 'connecting';
+    return { code: 'offline', link: words.state, label: words.short, fix: words.action ? { kind: 'reconnect', label: words.action.label, attrs: linkAttrs(words.action) } : null,
+      reason: waiting ? `${words.why} ${LINK_NEXT[words.state]}` : `${words.why.replace(/\.$/, '')}, so the trip cannot start. ${LINK_NEXT[words.state]}` };
   }
   const blocked = destination.blocked || mode?.blocked;
   if (blocked) {
@@ -71,21 +85,21 @@ export function goBlock(state, view, destination, mode) {
 export function fixButton(block, className = 'map-fix') {
   const fix = block?.fix;
   if (!fix) return '';
-  const attribute = fix.kind === 'reconnect' ? 'data-menu="reconnect"' : fix.kind === 'cancel' ? 'data-cancel' : fix.kind === 'enter' ? 'data-close' : `data-travel-mode="${esc(fix.mode)}"`;
+  const attribute = fix.kind === 'reconnect' ? fix.attrs || 'data-menu="reconnect"' : fix.kind === 'cancel' ? 'data-cancel' : fix.kind === 'enter' ? 'data-close' : `data-travel-mode="${esc(fix.mode)}"`;
   return `<button class="${className}" ${attribute}>${esc(fix.label)}</button>`;
 }
 
 /**
- * The trip in progress, for the trip bar: { from, to, mode: { icon, label }, fare, remaining, duration, fraction, rule } or null.
+ * The trip in progress, for the trip bar: { from, to, mode: { id, label }, fare, remaining, duration, fraction, rule } or null.
  * Everything is the server's: where it started, how, what was paid and how long is left.
  */
 export function tripInfo(state, view) {
   const active = state.activeAction;
   if (!active || (active.kind !== 'travel' && active.kind !== 'commute')) return null;
   const commute = active.kind === 'commute', trip = commute ? null : view.travel?.active;
-  const place = (id) => view.travel?.destinations?.find((item) => item.id === id) || { id, label: id, icon: '📍' };
+  const place = (id) => view.travel?.destinations?.find((item) => item.id === id) || { id, label: id };
   const from = place(trip?.from ?? state.location), to = place(active.id);
-  const mode = commute ? { id: 'commute', icon: '💼', label: 'Commute to work' } : view.travel?.modes?.find((item) => item.id === active.mode) || (active.mode === 'car' ? { id: 'car', icon: '🚗', label: 'Your car' } : { id: 'danfo', icon: '🧭', label: 'On the way' });
+  const mode = commute ? { id: 'commute', label: 'Commute to work' } : view.travel?.modes?.find((item) => item.id === active.mode) || (active.mode === 'car' ? { id: 'car', label: 'Your car' } : { id: 'unknown', label: 'On the way' });
   const fare = Number.isFinite(trip?.fare) ? trip.fare : null;
   const rule = commute ? `Cancel to stay at ${from.label}. Nothing was charged for the commute.`
     : fare === null ? `Cancel to stay at ${from.label}. A fare already paid is not refunded.`
@@ -95,4 +109,6 @@ export function tripInfo(state, view) {
 }
 
 export const statusClass = (destination) => (destination.kind === 'soon' ? 'is-soon' : destination.open ? 'is-open' : 'is-closed');
-export const placeName = (destination) => `${esc(destination.icon || '📍')} ${esc(destination.label)}`;
+export const placeName = (destination) => `${iconFor('venue', destination.id, destination.icon)} ${esc(destination.label)}`;
+/** The glyph of a way of travelling (a travel mode of view.travel, the commute, your own car). */
+export const modeIcon = (mode) => iconFor('mode', mode?.id, mode?.icon);

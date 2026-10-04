@@ -2,8 +2,11 @@
  * OWNER: foundation — feature owners never edit this file.
  * The panel registry. The panel contract is at the top of src/ui/shell.js.
  *
- * EAGER panels are imported here and are part of the first download: everything the first
- * paint needs (the session gate, the HUD chips, the two nav panels).
+ * EAGER panels are imported here and are part of the first download: only what the first paint
+ * needs — the session gate and the HUD chips (goal, home, inbox, gem hunt, club radio, health,
+ * weather, the roadside prompt). A chip's file holds the chip alone; the app or sheet it opens is a lazy
+ * panel like any other (inbox.js → messages.js, hunt-chip.js → hunt.js, home-chip.js → buy.js, roadside-chip.js → map.js …).
+ * The two nav panels, Map and Buy, are lazy too: the Map's own 3D code is fetched on first open anyway.
  *
  * LAZY panels are listed here as STATIC METADATA ONLY — id, title, icon, placement, order and
  * `live` — and their code lives in a group module under ./groups/ that is fetched with a
@@ -20,13 +23,13 @@
  */
 import session from './session.js';
 import city from './city.js';
-import map from './map.js';
-import health from './health.js';
-import buy from './buy.js';
-import goals from './goals.js';
-import messages from './messages.js';
-import hunt from './hunt.js';
-import radio from './radio.js';
+import roadsideChip from './roadside-chip.js';
+import healthChips from './health-chips.js';
+import homeChip from './home-chip.js';
+import goalChip from './goal-chip.js';
+import inbox, { messagesBadge, notifications } from './inbox.js';
+import huntChip from './hunt-chip.js';
+import radioBanner from './radio-banner.js';
 import { S as social } from './social-client.js';
 import { civicNews } from './civic-ui.js';
 import { reportReplies } from '../phone/reports.js';
@@ -75,8 +78,8 @@ export function buildPanels(modules) {
  *   short   a shorter label under the icon when the title is long
  *   phone   true = a Sim tab that is also an app on the home screen (it opens in the phone from there)
  *   badge   (state, view) → count for the red badge, from data already in the view (never a fetch)
- * Icons and colours come from src/ui/phone/icons.js by panel id; `icon` here is the emoji used in
- * the Sim sheet's tabs and the coach.
+ * Icons come from the icon set by panel id (glyphFor in src/ui/phone/icons.js; the Phone's colours are in
+ * icons-more.js). A panel sets `icon` only to name a different glyph. No emoji anywhere.
  */
 /** Rent that is overdue or that the balance will not cover, and a loan instalment the balance will not cover. */
 const billsDue = (state, view) => {
@@ -88,48 +91,64 @@ const requestsWaiting = () => (social.me?.requests.in.length || 0) + (social.me?
 const knocksWaiting = () => social.me?.house.knocks.length || 0;
 
 const money = lazyGroup(() => import('./groups/money.js'), [
-  { id: 'jobs', title: 'Jobs', icon: '💼', placement: 'phone', order: 10, group: 'money' },
-  { id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14, group: 'money', badge: billsDue },
-  { id: 'groceries', title: 'Groceries', icon: '🛒', placement: 'phone', order: 16, group: 'life' },
-  { id: 'ride', title: 'Ride', icon: '🚕', placement: 'phone', order: 18, group: 'life', badge: (state, view) => (view.travel?.event ? 1 : 0) },
-  { id: 'houses', title: 'Houses', icon: '🏘️', placement: 'phone', order: 30, group: 'life' },
-  { id: 'boutique', title: 'Boutique', icon: '👗', placement: 'phone', order: 32, group: 'life' },
-  { id: 'cars', title: 'Cars', icon: '🚗', placement: 'phone', order: 34, group: 'life' },
-  { id: 'invest', title: 'Invest', icon: '📊', placement: 'phone', order: 50, group: 'money' },
+  { id: 'jobs', title: 'Jobs', placement: 'phone', order: 10, group: 'money' },
+  { id: 'bank', title: 'Bank', placement: 'phone', order: 14, group: 'money', badge: billsDue },
+  { id: 'groceries', title: 'Groceries', placement: 'phone', order: 16, group: 'life' },
+  { id: 'ride', title: 'Ride', placement: 'phone', order: 18, group: 'life', badge: (state, view) => (view.travel?.event ? 1 : 0) },
+  { id: 'houses', title: 'Houses', placement: 'phone', order: 30, group: 'life' },
+  { id: 'boutique', title: 'Boutique', placement: 'phone', order: 32, group: 'life' },
+  { id: 'cars', title: 'Cars', placement: 'phone', order: 34, group: 'life' },
+  { id: 'invest', title: 'Invest', placement: 'phone', order: 50, group: 'money' },
 ]);
 const sim = lazyGroup(() => import('./groups/sim.js'), [
-  { id: 'profile', title: 'Profile', icon: '👤', placement: 'sim-tab', order: 10, live: false },
-  { id: 'needs', title: 'Needs', icon: '❤️', placement: 'sim-tab', order: 20 },
-  { id: 'skills', title: 'Skills', icon: '🎓', placement: 'sim-tab', order: 40 },
-  { id: 'people', title: 'People', icon: '👥', placement: 'sim-tab', order: 50, phone: true, group: 'people', badge: requestsWaiting },
-  { id: 'person', title: 'Person', icon: '🧑🏾', placement: 'modal' },
-  { id: 'career', title: 'Career', icon: '📈', placement: 'sim-tab', order: 60, phone: true, group: 'money' },
-  { id: 'settings', title: 'Settings', icon: '⚙️', placement: 'sim-tab', order: 70, phone: true, group: 'life' },
+  { id: 'profile', title: 'Profile', placement: 'sim-tab', order: 10, live: false },
+  { id: 'needs', title: 'Needs', placement: 'sim-tab', order: 20 },
+  { id: 'goals', title: 'Goals', placement: 'sim-tab', order: 30, phone: true, group: 'life' },
+  { id: 'skills', title: 'Skills', placement: 'sim-tab', order: 40 },
+  { id: 'people', title: 'People', placement: 'sim-tab', order: 50, phone: true, group: 'people', badge: requestsWaiting },
+  { id: 'person', title: 'Person', placement: 'modal' },
+  { id: 'career', title: 'Career', placement: 'sim-tab', order: 60, phone: true, group: 'money' },
+  { id: 'settings', title: 'Settings', placement: 'sim-tab', order: 70, phone: true, group: 'life' },
 ]);
 const socialApps = lazyGroup(() => import('./groups/social.js'), [
-  { id: 'contacts', title: 'Contacts', icon: '📇', placement: 'phone', order: 20, group: 'people' },
-  { id: 'family', title: 'Family', icon: '👪', placement: 'phone', order: 36, group: 'people' },
-  { id: 'invite', title: 'Invite', icon: '🏠', placement: 'phone', order: 38, group: 'people', badge: knocksWaiting },
+  // Messages: the badge and the notification lines are static (./inbox.js), so they work before the app's code is here.
+  { id: 'messages', title: 'Messages', placement: 'phone', order: 12, group: 'people', badge: messagesBadge, notifications },
+  { id: 'contacts', title: 'Contacts', placement: 'phone', order: 20, group: 'people' },
+  { id: 'family', title: 'Family', placement: 'phone', order: 36, group: 'people' },
+  { id: 'invite', title: 'Invite', placement: 'phone', order: 38, group: 'people', badge: knocksWaiting },
 ]);
 const civic = lazyGroup(() => import('./groups/civic.js'), [
-  { id: 'governor', title: 'Governor', icon: '🏛️', placement: 'phone', order: 40, live: false, group: 'city', badge: (state, view) => civicNews(view) },
-  { id: 'state-house', title: 'State House', icon: '🏛️', placement: 'modal' },
-  { id: 'neighbours', title: 'Neighbours', icon: '🏡', placement: 'phone', order: 42, group: 'city' },
-  { id: 'ads', title: 'Billboards', icon: '📢', placement: 'phone', order: 44, live: false, group: 'city' },
-  { id: 'richlist', title: 'Rich List', icon: '🏆', placement: 'phone', order: 48, group: 'money' },
+  { id: 'governor', title: 'Governor', placement: 'phone', order: 40, live: false, group: 'city', badge: (state, view) => civicNews(view, state) },
+  { id: 'state-house', title: 'State House', placement: 'modal' },
+  { id: 'neighbours', title: 'Neighbours', placement: 'phone', order: 42, group: 'city' },
+  { id: 'ads', title: 'Billboards', placement: 'phone', order: 44, live: false, group: 'city' },
+  { id: 'hunt-sheet', title: 'Gem hunt', placement: 'phone', order: 45, group: 'city', badge: (state, view) => (view.civic?.hunt?.canClaim ? 1 : 0) },
+  { id: 'radio', title: 'Radio', placement: 'phone', order: 46, live: false, group: 'city' },
+  { id: 'richlist', title: 'Rich List', placement: 'phone', order: 48, group: 'money' },
 ]);
 const trust = lazyGroup(() => import('./groups/trust.js'), [
-  { id: 'statement', title: 'Statement', icon: '🧾', placement: 'phone', order: 15, group: 'money' },
-  { id: 'support', title: 'Report a problem', short: 'Report', icon: '🛟', placement: 'phone', order: 96, live: false, group: 'city', badge: () => reportReplies() },
+  { id: 'statement', title: 'Statement', placement: 'phone', order: 15, group: 'money' },
+  { id: 'support', title: 'Report a problem', short: 'Report', placement: 'phone', order: 96, live: false, group: 'city', badge: () => reportReplies() },
 ]);
 const start = lazyGroup(() => import('./groups/start.js'), [
   // `required` must answer before the code is here: a brand-new life is held in character creation.
-  { id: 'onboarding', title: 'Create your Sim', icon: '✨', placement: 'modal', live: false,
+  { id: 'onboarding', title: 'Create your Sim', placement: 'modal', live: false,
     required: (state, view) => (view.onboarding?.required ? 'Finish creating your Sim to start playing.' : null) },
-  { id: 'account', title: 'Account', icon: '🔑', placement: 'modal' },
+  { id: 'account', title: 'Account', placement: 'modal' },
+]);
+const life = lazyGroup(() => import('./groups/life.js'), [
+  { id: 'health', title: 'Health', placement: 'phone', order: 22, group: 'life', badge: (state, view) => (view.health?.sick || view.health?.rundown ? 1 : 0) },
+]);
+const map = lazyGroup(() => import('./groups/map.js'), [
+  { id: 'map', title: 'Map', placement: 'nav' },
+  { id: 'roadside', title: 'On the road', placement: 'modal' },
+]);
+const home = lazyGroup(() => import('./groups/home.js'), [
+  // `enabled` must answer before the code is here: Buy is only available at home, and the nav button says why elsewhere.
+  { id: 'buy', title: 'Buy', placement: 'nav', enabled: (state) => state.location === 'home' || 'Go home to buy furniture' },
 ]);
 
-export const PANELS = buildPanels([session, city, map, health, buy, goals, messages, hunt, radio, money, sim, socialApps, civic, trust, start]);
+export const PANELS = buildPanels([session, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

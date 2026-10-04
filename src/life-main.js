@@ -16,6 +16,13 @@
  * Until a piece arrives its callers simply skip it (`venue?.…`), and it is given the current
  * state the moment it exists, so nothing depends on load order.
  *
+ * WHERE PEOPLE STAND. In a public venue the avatar's place in the scene IS the player's place in
+ * the room: the scene host reports it (onMove — at most three times a second, only when it moved),
+ * it goes to the community module's moveTo(x, z), the server puts it in the room's `presence`, and
+ * what comes back through the module's onMembers is drawn in the scene (other players as figures
+ * at their own places) AND is what proximity voice measures. One position, one source. Home is
+ * private and reports nothing. Nothing here enables voice: that is the Join voice button alone.
+ *
  * TRAVEL IS SHOWN ON THE MAP. Whatever started a trip (the map card, the Ride app, Go to work),
  * the moment the server reports it the Map becomes the screen in front and shows the trip; when
  * the server reports the arrival the map shows it for a moment and then the venue comes up. The
@@ -24,6 +31,7 @@
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
 import { createLazyLoader } from './lazy-load.js';
 import { createShell } from './ui/shell.js';
+import { linkWords } from './ui/link.js';
 import { PANELS, sessionGate } from './ui/panels/index.js';
 import { S as social, loadPeople, onPeople } from './ui/panels/social-client.js';
 import { crowdList, playersHere } from './scene/crowd.js';
@@ -34,6 +42,8 @@ import { venueLabel, venueDistrict } from './game/content/venues.js';
 const $ = (id) => document.getElementById(id);
 let storage; try { storage = window.localStorage; } catch {}
 let community = null, pendingRoute = null, connecting = false;
+/** Where the other players in this venue room stand, as the room reports it: { [publicId]: { x, z } }. */
+let positions = {};
 let shell = null, venue = null, cityMap = null, world = null, mapsLoading = null;
 /** The connection status line: shown in the top bar's saved indicator and in the More menu. */
 let net = { text: 'Connecting…', error: false };
@@ -48,7 +58,7 @@ const client = createClient({
   isHidden: () => document.hidden,
   onStatus: status,
   onChange: accepted,
-  onSessionExpired() { community?.destroy(); community = null; render(); shell.open(sessionGate().id, { reason: 'expired' }); },
+  onSessionExpired() { community?.destroy(); community = null; positions = {}; render(); shell.open(sessionGate().id, { reason: 'expired' }); },
   onNeedName(problem) { shell.open(sessionGate().id, { reason: 'new', problem: problem ?? null }); },
 });
 
@@ -64,9 +74,28 @@ const showPlayer = () => { venue?.setPlayer(playerLook()); cityMap?.setPlayer(pl
 function showCrowd() {
   const state = client.state;
   const npcs = isDeparting(state) ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location);
-  venue?.setCrowd(crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id }));
+  venue?.setCrowd(crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id, positions }));
 }
 onPeople(showCrowd);
+
+/** Tell the room where the avatar stands right now (the scene itself reports only while it moves). Public venues only. */
+function reportPlace() {
+  const at = venue?.position?.();
+  if (!at || !community || at.location !== client.state.location || at.location === 'home' || isDeparting(client.state)) return;
+  community.moveTo(at.x, at.z);
+}
+/** The room's member list arrived (or emptied): draw the others where they stand, and make sure the room knows where we do. */
+function onMembers({ self, members }) {
+  const next = {};
+  let listed = false, placed = false;
+  for (const member of members) {
+    if (member.id === self) { listed = true; placed = Boolean(member.position); continue; }
+    if (member.position) next[member.id] = member.position;
+  }
+  positions = next;
+  showCrowd();
+  if (listed && !placed) reportPlace();
+}
 
 /** The 3D scene: fetched once the HUD is up. A device that cannot draw it still gets the whole game. */
 async function loadScene() {
@@ -76,13 +105,16 @@ async function loadScene() {
       // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
       if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') });
       else if (tag.kind === 'player') shell.open('person', { player: tag.id });
-    } });
+    },
+    // The avatar moved: that is where the player stands in the room (presence, and so proximity voice).
+    onMove: (at) => { if (at.location === client.state.location && at.location !== 'home' && !isDeparting(client.state)) community?.moveTo(at.x, at.z); } });
     $('scene-wait')?.remove();
     venue.setState(client.state);
     showPlayer();
     showCrowd();
     venue.resize();
     layoutScene();
+    reportPlace();
     // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
     // (Nothing is built or drawn until the Map opens.)
     void import('./map3d/index.js').catch(() => {});
@@ -107,6 +139,7 @@ function loadMaps() {
       onEnterCity: (cityId) => switchCity(cityId),
       held: heldCities,
     });
+    heldShown = heldCities().join();
     cityMap = cityModule.createCityView($('city-scene'), {
       cityId: client.cityId,
       onSelectVenue: (venueId) => shell.open('map', { destination: venueId }),
@@ -167,6 +200,8 @@ function render() {
   $('map-scene').hidden = !mapOpen || !worldLayer;
   $('city-scene').hidden = !mapOpen || worldLayer;
   shell.render(state, buildView());
+  // The country map shows which cities this player holds: redrawn when that list changes (a session arrived, a city was entered).
+  if (world && heldCities().join() !== heldShown) { heldShown = heldCities().join(); world.refresh(); }
   // Told after the shell has drawn, so the map measures the panel it shares the screen with. Hidden, it draws nothing.
   cityMap?.setShown(mapOpen && !worldLayer);
 }
@@ -176,14 +211,23 @@ function layoutScene() {
   const overlay = $('life-overlay'), box = (selector) => overlay.querySelector(selector)?.getBoundingClientRect();
   const stack = box('.life-bottom'), quick = box('.life-quick'), bar = box('.life-status'), page = overlay.getBoundingClientRect();
   const phone = page.width <= 720;
-  venue.setInsets({ top: ((phone ? quick?.bottom : bar?.bottom) || bar?.bottom || page.top) - page.top, bottom: stack?.height ? page.bottom - stack.top : 0 });
+  // On a phone the rows under the top bar (needs, alerts, the goal line) are the HUD's: the scene's one-time hint sits under the last of them.
+  const rows = phone ? Math.max(0, ...['.life-quick', '.life-alerts', '.life-goal'].map((selector) => { const row = box(selector); return row && row.height ? row.bottom : 0; })) : 0;
+  venue.setInsets({ top: ((phone ? quick?.bottom : bar?.bottom) || bar?.bottom || page.top) - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 });
 }
 function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.resize(); } else venue?.resize(); }
 
-/** The cities this device has had a life in, so the country map can offer a "coming soon" city only to someone who already lives there. */
+/**
+ * The cities this player has a life in, so the country map can offer a "coming soon" city only to
+ * someone who already lives there. The server says so in the session response (session.cities),
+ * which makes it true on every device. Only a server that does not report it yet (an older host)
+ * falls back to what this browser remembers.
+ */
 const HELD_KEY = 'joinallworld-cities';
-function heldCities() { try { const list = JSON.parse(storage.getItem(HELD_KEY) || '[]'); return Array.isArray(list) ? list.filter((id) => typeof id === 'string') : []; } catch { return []; } }
-function noteCity(id) { try { const list = heldCities(); if (!list.includes(id)) storage.setItem(HELD_KEY, JSON.stringify([...list, id])); } catch { /* remembered for this visit only */ } }
+function rememberedCities() { try { const list = JSON.parse(storage.getItem(HELD_KEY) || '[]'); return Array.isArray(list) ? list.filter((id) => typeof id === 'string') : []; } catch { return []; } }
+function heldCities() { const held = client.session?.cities; return Array.isArray(held) ? held.filter((id) => typeof id === 'string') : rememberedCities(); }
+function noteCity(id) { try { const list = rememberedCities(); if (!list.includes(id)) storage.setItem(HELD_KEY, JSON.stringify([...list, id])); } catch { /* remembered for this visit only */ } }
+let heldShown = '';
 
 let shownTrip = '';
 function showVenue() {
@@ -281,9 +325,11 @@ function showCommunityRecovery(startProblem = null) {
     : load.status === 'retrying' ? `Trying again by itself in ${Math.round(load.retryInMs / 1000)} s (attempt ${load.attempt + 1} of ${load.attempts}).`
       : load.status === 'failed' ? 'It was tried several times and is no longer being retried. Reload to try again.' : 'Its code loaded but it could not start.';
   content.innerHTML = `<section data-community-recovery aria-label="Community unavailable"><h2>Community could not load</h2><p>Your saved city life is still available. Check your connection, then try community again.</p><p role="status">${next}</p><p><button type="button" class="ui-button is-primary" data-community-reload>Reload and retry</button> <button type="button" class="ui-button" data-community-retry${waiting ? ' disabled' : ''}>Try again</button></p></section>`;
-  content.querySelector('[data-community-retry]').onclick = () => { if (!client.online) shell.toast('You are offline. Reconnect to open the community.', 'error'); else void startCommunity(); };
+  content.querySelector('[data-community-retry]').onclick = () => { if (!client.online) shell.toast(notConnected('open the community'), 'error'); else void startCommunity(); };
   content.querySelector('[data-community-reload]').onclick = () => window.location.reload();
 }
+/** Why something cannot be done right now, in the words of the real connection state — "offline" only when this device has no network. */
+const notConnected = (what) => linkWords(client.link)?.cannot(what) || `You are not connected yet, so you cannot ${what}. Try again in a moment.`;
 let startingCommunity = false;
 /** Create the community panel once its code is here and the client is connected. Safe to call any number of times. */
 async function startCommunity() {
@@ -293,6 +339,9 @@ async function startCommunity() {
     const module = await communityCode.load();
     if (!module || community || !client.online) return;
     community = await module.createCommunity($('community-content'), { cityId: client.cityId, venueId: client.state.location,
+      onMembers,
+      // The panel's Walk buttons walk the avatar; its new place comes back through onMove like any other step.
+      onStep: (dx, dz) => venue?.walkBy?.(dx, dz) === true,
       onStatus: (s) => { if (s.status === 'offline') status('Community disconnected · reconnect in panel', true); else if (s.connected) status('Connected · progress saved'); } });
     watchChatRefusals($('community-content'));
     render();
@@ -306,7 +355,7 @@ async function startCommunity() {
 function toggleCommunity(force) {
   if (client.state.location === 'home') { shell.toast('Your home is private. Visit a public venue to meet people.'); return; }
   if (!community) {
-    if (!client.online) { shell.toast('You are offline. Reconnect to open the community.', 'error'); return; }
+    if (!client.online) { shell.toast(notConnected('open the community'), 'error'); return; }
     // Not loaded: the panel itself says so and offers the retry (showCommunityRecovery). While the
     // first attempt is still in flight there is nothing to show yet, only to wait for.
     if (!$('community-content').querySelector('[data-community-recovery]')) {
@@ -342,7 +391,7 @@ async function connect(createNew = false) {
   if (connecting) return;
   connecting = true;
   try {
-    if (createNew) { community?.destroy(); community = null; }
+    if (createNew) { community?.destroy(); community = null; positions = {}; }
     const ok = await client.connect(createNew);
     render();
     // Not awaited: a slow or failing community chunk must not hold up the game or block a later Reconnect.
@@ -366,9 +415,6 @@ function menu(id) {
   if (id === 'reconnect') connect();
   // The country map: the city you are in, and the cities that are coming soon.
   else if (id === 'city') showMapLayer('world');
-  // "Use my location" only ever chose between Lagos and Ibadan. With one open city there is nothing to choose, so the
-  // device's location is no longer asked for; the entry (still drawn by the shell's menu, hidden by src/city-map.css) opens the country map.
-  else if (id === 'locate') showMapLayer('world');
 }
 
 window.addEventListener('jaw:start-life', (event) => { if (event.detail?.name) client.identity.name = event.detail.name; connect(true); });

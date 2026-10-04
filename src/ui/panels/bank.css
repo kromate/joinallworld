@@ -15,3 +15,8 @@
 .bank-actions{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-2)}
 .bank-actions .ui-button{flex:1 1 140px}
 .bank-why{color:var(--c-red);font-size:12px!important;margin:4px 0 0!important}
+/* Rent and loan: stacked on a phone, side by side when the phone is expanded on a desktop. */
+.bank-cards{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-2);margin:0 0 var(--s-2);align-items:start}
+.bank-cards .bank-card{margin:0}
+.ph.is-wide .bank-cards{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.ph.is-wide .bank-quick{max-width:520px}

@@ -3,6 +3,13 @@
 .houses-hero strong{font-size:20px}
 .houses-progress{height:8px;margin-top:8px;border-radius:8px;background:#ffffff40;overflow:hidden}
 .houses-progress i{display:block;height:100%;border-radius:8px;background:#fff}
+.houses-note{margin-bottom:0!important}
+/* One house per row on a phone; a grid when the phone is expanded on a desktop (the drawing keeps its shape). */
+.houses-list{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-3);margin-top:var(--s-2)}
+.houses-list .houses-card{margin:0;display:flex;flex-direction:column}
+.houses-list .houses-body{flex:1;display:flex;flex-direction:column}
+.houses-list .houses-body>dl{margin-top:auto}
+.ph.is-wide .houses-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 .houses-card{margin:0 0 var(--s-3);border-radius:var(--r-lg);background:#fff;box-shadow:var(--e-1),var(--ring);overflow:hidden}
 .houses-card.is-current{box-shadow:var(--e-1),inset 0 0 0 2px var(--c-green)}
 .houses-art{display:block;width:100%;height:104px}

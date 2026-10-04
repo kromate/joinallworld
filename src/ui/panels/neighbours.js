@@ -5,13 +5,15 @@
  * that player's card (the social 'person' panel): chat, add friend, knock at their house.
  */
 import { esc, json, avatar } from '../dom.js';
+import { linkWords } from '../link.js';
 import { button, busy, count, entry, load, send, stale, status } from './civic-ui.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.js';
 
 const key = (view) => `hood:${view.cityId}`;
 const path = (view) => `/api/civic/neighbours?city=${view.cityId}`;
 
 export default {
-  id: 'neighbours', title: 'Neighbours', icon: '🏡', placement: 'phone', order: 42,
+  id: 'neighbours', title: 'Neighbours', placement: 'phone', order: 42,
   render(state, view) {
     const item = entry(key(view)), data = item.data;
     if (!data) return status(item, view);
@@ -22,10 +24,11 @@ export default {
     }).join('');
     const unset = data.districts.some((group) => group.id === 'unknown');
     return `<section class="ui-hero"><small>${esc(view.city.name)} directory</small><strong>${count(data.total)} home${data.total === 1 ? '' : 's'}</strong><p>${count(data.online)} online now${data.hidden ? ' · your home is hidden' : ''}</p></section>${stale(item)}${groups || '<p class="civic-note">Nobody has checked in yet.</p>'}
-      <div class="civic-actions">${button(data.hidden ? 'List my home in the directory' : 'Hide my home from the directory', 'data-hood-toggle', { working: busy('prefs'), reason: view.connected ? '' : 'Not connected: this needs the server.' })}${button('Refresh', 'data-civic-retry', { working: item.loading })}</div>
-      <p class="civic-beta">Beta: these are real counts of players who have opened the game since this feature shipped. “Online now” means a live connection at the moment this list was loaded.${unset ? ' Districts fill in once players choose a house.' : ''} Homes are drawn on the city map behind the Neighbours layer.</p>`;
+      <div class="civic-actions">${button(data.hidden ? 'List my home in the directory' : 'Hide my home from the directory', 'data-hood-toggle', { working: busy('prefs'), reason: view.connected ? '' : linkWords(view).cannot('change this') })}${button('Refresh', 'data-civic-retry', { working: item.loading })}</div>
+      ${how('neighbours-rules', ruleList(['These are real counts of players who have opened the game since this feature shipped (beta).', '“Online now” means a live connection at the moment this list was loaded.', unset ? 'Districts fill in once players choose a house.' : '', 'Homes are drawn on the city map behind the Neighbours layer.', 'Hiding your home takes you off this list and off that map layer.']), 'How the directory works', true)}`;
   },
   bind(root, api) {
+    bindHow(root, api);
     const view = api.view();
     load(api, key(view), path(view), { maxAge: 30000 });
     root.querySelector('[data-civic-retry]')?.addEventListener('click', () => load(api, key(api.view()), path(api.view()), { force: true }));

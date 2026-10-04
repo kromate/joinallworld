@@ -11,6 +11,6 @@
 import { placeholder } from '../dom.js';
 
 export default {
-  id: 'account', title: 'Account', icon: '🔑', placement: 'modal',
+  id: 'account', title: 'Account', placement: 'modal',
   render() { return placeholder('Account', 'Accounts are not available yet. Your progress is saved to this device session.'); },
 };

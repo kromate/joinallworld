@@ -208,26 +208,14 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--c-nig
 .life-progress-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--c-green-soft);font-size:18px}
 .life-progress strong,.life-progress small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .life-progress small{font-size:11px;color:var(--c-muted);font-variant-numeric:tabular-nums}
-.life-ui .life-progress button,.life-ui .life-travel button{min-height:var(--tap);padding:0 16px;border-radius:999px;background:var(--c-ink);color:#fff;font-size:12px;font-weight:600}
-.life-progress progress,.life-travel progress{grid-column:1/-1;width:100%;height:8px;-webkit-appearance:none;appearance:none;border:0;border-radius:8px;overflow:hidden;background:#dfe5e0;color:#2f8a57}
+.life-ui .life-progress button{min-height:var(--tap);padding:0 16px;border-radius:999px;background:var(--c-ink);color:#fff;font-size:12px;font-weight:600}
+.life-progress progress{grid-column:1/-1;width:100%;height:8px;-webkit-appearance:none;appearance:none;border:0;border-radius:8px;overflow:hidden;background:#dfe5e0;color:#2f8a57}
 .life-ui progress::-webkit-progress-bar{background:#dfe5e0}
 .life-ui progress::-webkit-progress-value{background:#2f8a57;border-radius:8px;transition:width .3s linear}
 .life-ui progress::-moz-progress-bar{background:#2f8a57;border-radius:8px}
 .life-progress-note{grid-column:1/-1;font-size:11px;color:var(--c-muted)}
 
 /* Travel view (replaces the venue panel for the length of a trip) */
-.life-travel{width:100%;max-width:460px;display:grid;gap:10px;padding:14px 14px 12px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-sheet);box-shadow:var(--shadow);pointer-events:auto}
-.life-travel-route{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;text-align:center}
-.life-travel-place{display:grid;justify-items:center;gap:1px;min-width:0}
-.life-travel-place i,.life-travel-mode i{font-style:normal;font-size:26px;line-height:1.1}
-.life-travel-place b{max-width:100%;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.life-travel-place small{order:-1;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c-muted)}
-.life-travel-mode{display:grid;justify-items:center;gap:2px;padding:6px 12px;border-radius:14px;background:var(--c-green-soft);color:var(--c-green-dark)}
-.life-travel-mode i{font-size:22px}
-.life-travel-mode small{font-size:11px;font-weight:700}
-.life-travel-mode .life-travel-fare{font-weight:600;color:var(--c-ink)}
-.life-travel-foot{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.life-travel-foot strong{font-size:16px;font-variant-numeric:tabular-nums}
 
 /* Bottom nav */
 .life-nav{display:flex;gap:3px;width:min(430px,100%);padding:5px;background:var(--c-surface);border:1px solid #fff;border-radius:26px;box-shadow:var(--e-2);pointer-events:auto}
@@ -407,7 +395,6 @@ button.ui-row:hover{background:#f7f9f8}
 #life-dialog form label{display:grid;gap:6px;font-size:13px;font-weight:600;margin-bottom:12px}
 #life-dialog form input{font:inherit;font-weight:400;padding:10px 12px;min-height:var(--tap);border:1px solid #cfd5d1;border-radius:var(--r-sm)}
 #life-dialog input:focus,#life-dialog textarea:focus,#life-dialog select:focus{border-color:var(--c-green-dark)}
-.city-primary{border:0;background:var(--c-green-dark);color:#fff;padding:12px 20px;font:600 14px var(--font);min-height:var(--tap);border-radius:var(--r-pill);cursor:pointer}
 #city-places{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 #city-places button{border:0;background:var(--c-green-soft);color:var(--c-ink);padding:8px 12px;min-height:var(--tap);border-radius:18px;cursor:pointer;font:600 12px var(--font)}
 /* Inside the Phone the page is grey and the pieces are white cards */
@@ -482,3 +469,21 @@ button.ui-row:hover{background:#f7f9f8}
   .life-delta.is-up,.life-delta.is-down{animation:life-delta-still 3.4s steps(1,end)}
   @keyframes life-delta-still{0%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
 }
+
+/* ---- glyphs in place of emoji: spacing where a glyph sits before a label ---------------------- */
+.life-spots button svg.ui-glyph,.sim-tabs button svg.ui-glyph{margin-right:6px;opacity:.85}
+.life-venue-heading h1 svg.ui-glyph{margin-right:2px;color:var(--c-green-dark)}
+.life-ui .life-venue-heading p svg.ui-glyph,.life-ui .life-lock svg.ui-glyph,.life-ui .life-action-meta svg.ui-glyph{width:1.05em;height:1.05em;vertical-align:-.16em}
+.life-mood svg.ui-glyph{margin-right:4px}
+.life-avatar,.sim-avatar{color:#35566a}
+.life-action-emoji,.life-progress-icon,.life-job>span{color:var(--c-ink-2)}
+.life-coach>span{color:var(--c-amber-dark)}
+.sheet-head h2{display:flex;align-items:center;gap:8px;min-width:0}
+.sheet-head h2>span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.sheet-head h2 svg.ui-glyph{color:var(--c-green-dark)}
+.sheet-lock svg.ui-glyph{margin-top:1px}
+.life-toast span svg.ui-glyph{display:inline-block;width:1.15em;height:1.15em}
+.ui-empty>span{color:var(--c-muted)}
+.help-steps span kbd{display:inline-block}
+.help-move li{padding:10px 12px}
+.sheet-body h3#help-move{margin-top:var(--s-3)}

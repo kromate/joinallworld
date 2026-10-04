@@ -1,5 +1,6 @@
 // Small string-template helpers shared by the shell and every panel.
 import { glyph } from './phone/icons.js';
+import { iconFor, withGlyphs, stripLeadEmoji } from './icon-map.js';
 
 /** Escape text for HTML content and attribute values. Use it on EVERY dynamic value. */
 export const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -28,7 +29,7 @@ const ICONS = {
   fit: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
   list: '<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
 };
-/** An inline SVG icon by name: one of the marks above, else a glyph of the game's icon set (home, map, phone, buy, back, close, …). */
+/** An inline SVG icon by name: one of the marks above, else a glyph of the game's icon set (home, map, phone, buy, back, close, …). Sized by the CSS of where it sits. */
 export const icon = (name) => (ICONS[name] ? `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]}</svg>` : glyph(name));
 
 /**
@@ -40,12 +41,16 @@ export const skeleton = (rows = 3, label = 'Loading') => `<div class="ui-skeleto
 /** A section title inside an app: small, quiet, above a card or a list. */
 export const section = (title, extra = '') => `<h3 class="ui-section">${esc(title)}${extra}</h3>`;
 
+/** A glyph that sizes itself to the text around it (1.2em): for a glyph inside a line, a heading, a chip or a button label. */
+export const mark = (name) => glyph(name, 'ui-glyph');
+
 /**
  * The one empty state every panel uses: what is missing, and the next step.
+ * `icon` is a glyph name ('search', 'messages', 'statement' …) — never an emoji.
  * `action` is ready-made HTML (a button with data-open / data-action), already escaped by the caller.
  * `compact: true` is the small, left-aligned form for an empty list inside a longer screen.
  */
-export const empty = (emoji, title, text = '', action = '', { compact = false } = {}) => `<div class="ui-empty${compact ? ' is-compact' : ''}"><span aria-hidden="true">${esc(emoji)}</span><h3>${esc(title)}</h3>${text ? `<p>${esc(text)}</p>` : ''}${action}</div>`;
+export const empty = (icon, title, text = '', action = '', { compact = false } = {}) => `<div class="ui-empty${compact ? ' is-compact' : ''}"><span aria-hidden="true">${iconFor('empty', null, icon)}</span><h3>${esc(title)}</h3>${text ? `<p>${esc(text)}</p>` : ''}${action}</div>`;
 
 /** Standard body for a panel that has no content yet. */
 export const placeholder = (title, text = 'Coming soon.') => `<div class="ui-placeholder"><h3>${esc(title)}</h3><p>${esc(text)}</p></div>`;
@@ -66,4 +71,4 @@ export const ledgerRow = (reason, sub, amount) => `<li class="ui-row"><span clas
 
 /** The trailing chevron of a row that opens something. */
 export const chevron = () => glyph('chevron');
-export { glyph };
+export { glyph, iconFor, withGlyphs, stripLeadEmoji };

@@ -6,8 +6,10 @@
  * and announce — every disabled control here shows that reason. The app is a form (`live: false`).
  * The weekly cycle and all eligibility rules are original beta design.
  */
-import { esc, money, empty, avatar } from '../dom.js';
+import { esc, money, empty, avatar, mark } from '../dom.js';
+import { linkWords } from '../link.js';
 import { ELECTION, STATE_HOUSE_TEXT } from '../../game/content/civic.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { button, busy, dateTime, count, entry, load, put, send, stale, status, until, requestId, requestDone, markCivicNewsRead } from './civic-ui.js';
 
 const PANEL = 'governor';
@@ -30,20 +32,20 @@ function seat(data, view) {
 }
 
 function announcements(data) {
-  if (!data.announcements.length) return empty('📣', 'No announcements yet', data.governor ? 'When the Governor posts to the city, it appears here.' : 'There is no Governor to post one. The next election decides who can.', '', { compact: true });
-  return `<ul class="ui-rows">${data.announcements.map((item) => `<li class="ui-row governor-news"><span class="ui-row-icon is-round" aria-hidden="true">📣</span><span class="ui-row-body"><b>${esc(item.text)}</b><small>Governor ${esc(item.by.name)} · ${esc(dateTime(item.at))}</small></span></li>`).join('')}</ul>`;
+  if (!data.announcements.length) return empty('megaphone', 'No announcements yet', data.governor ? 'When the Governor posts to the city, it appears here.' : 'There is no Governor to post one. The next election decides who can.', '', { compact: true });
+  return `<ul class="ui-rows">${data.announcements.map((item) => `<li class="ui-row governor-news"><span class="ui-row-icon is-round" aria-hidden="true">${mark('megaphone')}</span><span class="ui-row-body"><b>${esc(item.text)}</b><small>Governor ${esc(item.by.name)} · ${esc(dateTime(item.at))}</small></span></li>`).join('')}</ul>`;
 }
 
 function updates(view) {
   const notices = entry(`pulse:${view.cityId}`).data?.notices ?? [];
-  if (!notices.length) return empty('🗞️', 'No civic updates this week', 'Election results and city notices are listed here as they happen.', '', { compact: true });
-  return `<ul class="ui-rows">${notices.map((item) => `<li class="ui-row governor-news"><span class="ui-row-icon is-round" aria-hidden="true">🗞️</span><span class="ui-row-body"><b>${esc(item.title)}</b><small>${esc(item.text)} · ${esc(dateTime(item.at))}</small></span></li>`).join('')}</ul>`;
+  if (!notices.length) return empty('statement', 'No civic updates this week', 'Election results and city notices are listed here as they happen.', '', { compact: true });
+  return `<ul class="ui-rows">${notices.map((item) => `<li class="ui-row governor-news"><span class="ui-row-icon is-round" aria-hidden="true">${mark('statement')}</span><span class="ui-row-body"><b>${esc(item.title)}</b><small>${esc(item.text)} · ${esc(dateTime(item.at))}</small></span></li>`).join('')}</ul>`;
 }
 
 /** Where an unmet requirement can be worked on, by check id: `work` (code 'work_days') is earned through paid shifts and gigs. */
 const CHECK_NEXT = { work: '<button class="civic-link" data-open="jobs">Open Jobs to find paid work</button>' };
 /** The eligibility checklist: each requirement as its own row — met or not, what it is, where the player stands, and the next step. */
-const checks = (list) => `<ul class="civic-checks">${list.map((item) => `<li class="${item.met ? 'is-met' : 'is-unmet'}"><i role="img" aria-label="${item.met ? 'Met' : 'Not met'}">${item.met ? '✓' : '✗'}</i><div><strong>${esc(item.label)}</strong><small>${esc(item.detail)}</small>${item.met ? '' : CHECK_NEXT[item.id] ?? ''}</div></li>`).join('')}</ul>`;
+const checks = (list) => `<ul class="civic-checks">${list.map((item) => `<li class="${item.met ? 'is-met' : 'is-unmet'}"><i role="img" aria-label="${item.met ? 'Met' : 'Not met'}">${mark(item.met ? 'check' : 'close')}</i><div><strong>${esc(item.label)}</strong><small>${esc(item.detail)}</small>${item.met ? '' : CHECK_NEXT[item.id] ?? ''}</div></li>`).join('')}</ul>`;
 /** A refused vote stays on screen (a toast is gone in seconds): what happened, and the server's reason. */
 const REFUSAL_TITLES = { address_vote_limit: 'This network connection has reached its vote limit' };
 const refusalNote = (view) => (refusal && refusal.key === key(view)
@@ -51,41 +53,58 @@ const refusalNote = (view) => (refusal && refusal.key === key(view)
 
 function ballot(data, view, state) {
   const you = data.you, election = data.election, voting = data.phase === 'voting';
-  if (!election.candidates.length) return data.phase === 'nominations' ? empty('🗳️', 'Nobody has declared yet', 'Be the first: see what you need under “Run for office” below.') : empty('🗳️', 'Nobody stood in this election', 'Nominations open again on Monday, Lagos time.');
+  if (!election.candidates.length) return data.phase === 'nominations' ? empty('ballot', 'Nobody has declared yet', 'Be the first: see what you need under “Run for office” below.') : empty('ballot', 'Nobody stood in this election', 'Nominations open again on Monday, Lagos time.');
   const top = Math.max(1, ...election.candidates.map((item) => item.votes));
   const elsewhere = you?.vote.code === 'wrong_place';
   const rows = election.candidates.map((item) => {
     const chosen = election.yourVote === item.id;
-    const why = !view.connected ? 'Not connected: you cannot vote right now.' : !you ? 'Connect to vote.' : you.vote.ok ? '' : you.vote.reason;
+    const why = !view.connected ? linkWords(view).cannot('vote') : !you ? 'Connect to vote.' : you.vote.ok ? '' : you.vote.reason;
     const control = chosen ? '<span class="ui-chip is-good">Your vote</span>'
       : election.yourVote || data.phase === 'results' ? ''
         : button(`Vote for ${item.name}`, `data-gov-vote="${esc(item.id)}"`, { primary: voting, working: busy(`vote:${item.id}`), reason: why });
     return `<div class="governor-candidate${chosen ? ' is-chosen' : ''}"><div class="governor-who">${avatar(item.name, item.id)}<strong>${esc(item.name)}${item.you ? ' (you)' : ''}</strong>${data.phase === 'nominations' ? '' : `<span>${count(item.votes)} vote${item.votes === 1 ? '' : 's'}</span>`}</div><q>${esc(item.slogan)}</q>${data.phase === 'nominations' ? '' : `<div class="governor-bar" aria-hidden="true"><i style="width:${Math.round((item.votes / top) * 100)}%"></i></div>`}${control}</div>`;
   }).join('');
   const go = elsewhere && voting ? button('Go to the Polling Unit', `data-gov-go="${esc(data.rules.pollingVenue)}"`, { reason: state.activeAction ? 'Finish your current action first.' : '' }) : '';
-  return `${rows}${go}${voting && !election.yourVote ? refusalNote(view) : ''}${voting ? `<p class="civic-note">${count(election.totalVotes)} vote${election.totalVotes === 1 ? '' : 's'} cast so far. One vote per player; it cannot be changed.</p>` : ''}`;
+  return `<div class="governor-ballot">${rows}</div>${go}${voting && !election.yourVote ? refusalNote(view) : ''}${voting ? `<p class="civic-note">${count(election.totalVotes)} vote${election.totalVotes === 1 ? '' : 's'} cast so far. One vote per player; it cannot be changed.</p>` : ''}`;
 }
 
 function runForOffice(data, view) {
   const you = data.you;
   if (!you) return '<p class="civic-note">Connect to see whether you can run.</p>';
-  if (you.isCandidate) return '<p class="civic-note">✓ You are on this week’s ballot. Voting runs Thursday to Saturday, Lagos time.</p>';
-  const why = !view.connected ? 'Not connected: you cannot run right now.' : !you.run.ok ? you.run.reason : '';
+  if (you.isCandidate) return `<p class="civic-note">${mark('check')} You are on this week’s ballot. Voting runs Thursday to Saturday, Lagos time.</p>`;
+  const why = !view.connected ? linkWords(view).cannot('run') : !you.run.ok ? you.run.reason : '';
   return `<p class="civic-note">What you need to run, and where you stand:</p>${checks(you.run.checks)}
     <div class="civic-form"><label>Your slogan (${ELECTION.sloganMin}–${ELECTION.sloganMax} characters, no links)<input data-gov-slogan maxlength="${ELECTION.sloganMax}" value="${esc(draft.slogan)}" autocomplete="off"></label></div>
-    ${button(`Run for Governor · ${money(data.rules.filingFee)}`, 'data-gov-run', { primary: data.phase === 'nominations', working: busy('run'), reason: why })}`;
+    ${button(`Run for Governor · ${money(data.rules.filingFee)}`, 'data-gov-run', { primary: data.phase === 'nominations', working: busy('run'), reason: why })}<p class="civic-note">The ${money(data.rules.filingFee)} filing fee is not refunded.</p>`;
+}
+
+/** Every election rule, one line each: the body of "How elections work". Plain text; escaped where it is drawn. */
+function electionRules(rules) {
+  const work = rules.minWorkDays ?? ELECTION.minWorkDays;
+  const days = (n) => `${n} Lagos day${Number(n) === 1 ? '' : 's'}`;
+  return [
+    'Every week: nominations Monday–Wednesday, voting Thursday–Saturday, and on Sunday the winner takes office for seven days (Lagos time).',
+    rules.pollingVenue ? 'Votes are cast at the Polling Unit.' : 'The Polling Unit is not built in this city yet, so for now you vote from this app.',
+    `To run: live here ${days(rules.minDaysToRun)} and be paid for work on ${work === 1 ? 'one Lagos day' : `${work} different Lagos days`}.`,
+    `To vote: live here ${days(rules.minDaysToVote)} and be paid for work on ${work === 1 ? 'one Lagos day' : `${work} different Lagos days`}.`,
+    `Running costs a ${money(rules.filingFee)} in-game filing fee that is not refunded. At most ${rules.maxCandidates} candidates; ties go to whoever declared first.`,
+    `One vote per player; it cannot be changed.${rules.votesPerAddress > 0 ? ` At most ${rules.votesPerAddress} votes are counted from one network connection.` : ''}`,
+    'A device session is not a verified person, so treat results as a game, not a poll.',
+    'Updates appear in the game only; there are no push notifications.',
+    'The election cycle and these rules are original to this game (beta).',
+  ];
 }
 
 function office(data, view) {
   const you = data.you;
   if (!you?.isGovernor) return '';
-  const why = !view.connected ? 'Not connected: you cannot post right now.' : !you.announce.ok ? you.announce.reason : '';
+  const why = !view.connected ? linkWords(view).cannot('post') : !you.announce.ok ? you.announce.reason : '';
   return `<h3 class="ui-section">Governor’s desk</h3><div class="civic-form is-card"><label>Announcement to the city (up to ${ELECTION.announcement.max} characters, no links)<textarea data-gov-text maxlength="${ELECTION.announcement.max}" rows="3">${esc(draft.announcement)}</textarea></label></div>
     ${button('Post announcement', 'data-gov-announce', { primary: true, working: busy('announce'), reason: why })}<p class="civic-note">Up to ${esc(data.rules.announcementsPerDay)} a day, at least an hour apart. Everyone sees it in Updates.</p>`;
 }
 
 const app = {
-  id: PANEL, title: 'Governor', icon: '🏛️', placement: 'phone', order: 40, live: false,
+  id: PANEL, title: 'Governor', placement: 'phone', order: 40, live: false,
   render(state, view) {
     const item = entry(key(view)), data = item.data;
     if (!data) return status(item, view);
@@ -93,7 +112,7 @@ const app = {
     return `${seat(data, view)}${stale(item)}
       <section class="governor-cycle" aria-label="This week’s election"><ol>${[['nominations', 'Nominations', 'Mon–Wed'], ['voting', 'Voting', 'Thu–Sat'], ['results', 'Results', 'Sunday']].map(([id, label, days]) => `<li class="${id === data.phase ? 'is-now' : ''}"${id === data.phase ? ' aria-current="step"' : ''}><b>${label}</b><small>${days}</small></li>`).join('')}</ol>
         <p><strong>${esc(PHASES[data.phase])}</strong><span>${esc(NEXT[data.phase])} in <b>${esc(until(data.phaseEndsAt, view.now))}</b> · ${esc(dateTime(data.phaseEndsAt))}</span></p></section>
-      <p class="civic-note">Every week: nominations Monday–Wednesday, voting Thursday–Saturday, and on Sunday the winner takes office for seven days (Lagos time).${rules.pollingVenue ? ' Votes are cast at the Polling Unit.' : ' The Polling Unit is not built in this city yet, so for now you vote from this app.'}</p>
+      <p class="civic-note">${rules.pollingVenue ? 'Votes are cast in person at the Polling Unit.' : 'For now you vote from this app.'}</p>${how('governor-rules', ruleList(electionRules(rules)), 'How elections work', true)}
       <h3 class="ui-section">${data.phase === 'results' ? 'This week’s result' : 'Candidates'}</h3>${ballot(data, view, state)}
       ${data.phase === 'results' && data.lastResult ? `<p class="civic-note">${data.lastResult.winner ? `${esc(data.lastResult.winner.name)} won with ${count(data.lastResult.winner.votes)} of ${count(data.lastResult.totalVotes)} votes.` : data.lastResult.candidates ? 'Nobody voted, so nobody took office.' : 'Nobody stood, so the seat stays empty.'}</p>` : ''}
       ${data.you && data.phase === 'voting' && !data.election.yourVote ? `<p class="civic-note">What you need to vote:</p>${checks(data.you.vote.checks)}` : ''}
@@ -101,11 +120,11 @@ const app = {
       ${office(data, view)}
       <h3 class="ui-section">Governor’s announcements</h3>${announcements(data)}
       <h3 class="ui-section">Updates</h3>${updates(view)}
-      <div class="civic-actions">${button('Refresh', 'data-civic-retry', { working: item.loading })}</div>
-      <p class="civic-beta">Beta: the election cycle and rules are original to this game — live here ${esc(rules.minDaysToRun)} Lagos days to run and ${esc(rules.minDaysToVote)} to vote, be paid for work on ${esc(rules.minWorkDays ?? ELECTION.minWorkDays)} different Lagos days for either,${rules.votesPerAddress > 0 ? ` at most ${esc(rules.votesPerAddress)} votes counted from one network connection,` : ''} a ${money(rules.filingFee)} in-game filing fee that is not refunded, at most ${esc(rules.maxCandidates)} candidates, ties go to whoever declared first. A device session is not a verified person, so treat results as a game, not a poll. Updates appear in the game only; there are no push notifications.</p>`;
+      <div class="civic-actions">${button('Refresh', 'data-civic-retry', { working: item.loading })}</div>`;
   },
   bind(root, api) {
     const view = api.view(), again = () => api.open(PANEL);
+    bindHow(root, api);
     markCivicNewsRead(view); // the city's news is on this screen: the Phone badge clears
     load(api, key(view), path(view), { maxAge: 20000, panel: PANEL });
     const done = (result) => { if (result.gov) put(key(api.view()), result.gov); if (document.querySelector(`dialog [data-panel="${PANEL}"]`)?.closest('dialog')?.open) again(); if (result.gov) api.refresh(); };
@@ -141,7 +160,7 @@ const app = {
 
 /** The State House sheet: opened with api.open('state-house'), e.g. from the State House on the map. */
 const stateHouse = {
-  id: 'state-house', title: 'State House', icon: '🏛️', placement: 'modal',
+  id: 'state-house', title: 'State House', placement: 'modal',
   render(state, view) {
     const item = entry(key(view)), data = item.data;
     if (!data) return status(item, view);

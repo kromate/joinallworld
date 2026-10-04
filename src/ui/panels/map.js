@@ -18,7 +18,8 @@
  *                    Open with a destination: api.open('map', { destination: venueId }); with the
  *                    country map: api.open('map', { layer: 'world' }).
  *   'roadside'       modal with the pending roadside choice (state.travel.event).
- *   'roadside-chip'  HUD chip shown while a choice is pending; it opens the modal once by itself.
+ *   The HUD chip shown while a choice is pending ('roadside-chip') is ./roadside-chip.js.
+ * This file is fetched the first time the Map (or the roadside prompt) is opened: the map panel group.
  *
  * Everything shown comes from view.travel (src/game/systems/travel.js). The panel talks to the
  * city map through the window event 'jaw:map-ui' { layer?, filter?, selected?, layers?, ads?,
@@ -31,25 +32,25 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './map.css';
-import { esc, json, icon } from '../dom.js';
+import { esc, json, icon, mark, iconFor } from '../dom.js';
+import { linkWords, linkButton } from '../link.js';
 import { VENUE_CATEGORIES } from '../../game/content/venues.js';
-import { chosenMode, fareText, fixButton, goBlock, statusClass, tripInfo, tripLine } from './world-ui.js';
+import { chosenMode, fareText, fixButton, goBlock, modeIcon, statusClass, tripInfo, tripLine } from './world-ui.js';
 import { entry, load } from './civic-ui.js';
 
 const FILTERS = [{ id: 'all', label: 'All' }, { id: 'open', label: 'Open now' }, ...Object.values(VENUE_CATEGORIES)];
 const CHIP_LIMIT = 9;
 
 let destination = null, mode = null, seenParams = null, filter = 'all', layer = 'city', lastCity = null, showAll = false;
-let shownEvent = '';
 /** UI-only: is the list of places open (null = not chosen yet: open on a wide screen, a handle on a phone), is "About" open, and the last layout the map was told about. */
 let listOpen = null, aboutOpen = false, lastLayout = '';
 const layers = { moving: false, billboards: false, sea: false, neighbours: false, gov: false };
 const LAYERS = [
-  { id: 'moving', label: '🚐 Moving', note: 'Street traffic — decoration only, it changes nothing in the game.' },
-  { id: 'billboards', label: '📢 Billboards', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'billboard' }, action: 'Rent a billboard' },
-  { id: 'sea', label: '🌊 Sea', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'sea' }, action: 'Rent a sea plot' },
-  { id: 'neighbours', label: '🏡 Neighbours', key: 'hood', path: 'neighbours', open: 'neighbours', action: 'Open Neighbours' },
-  { id: 'gov', label: '🏛️ Gov', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
+  { id: 'moving', label: 'Moving', icon: 'bus', note: 'Street traffic — decoration only, it changes nothing in the game.' },
+  { id: 'billboards', label: 'Billboards', icon: 'megaphone', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'billboard' }, action: 'Rent a billboard' },
+  { id: 'sea', label: 'Sea', icon: 'wave', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'sea' }, action: 'Rent a sea plot' },
+  { id: 'neighbours', label: 'Neighbours', icon: 'home', key: 'hood', path: 'neighbours', open: 'neighbours', action: 'Open Neighbours' },
+  { id: 'gov', label: 'Gov', icon: 'governor', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
 ];
 const cacheKey = (item, view) => `${item.key}:${view.cityId}`;
 const DATA_LAYERS = LAYERS.filter((item) => item.path);
@@ -65,19 +66,20 @@ function overview(state, view) {
   const places = view.travel.destinations.filter(matches);
   const open = isListOpen();
   const trip = state.activeAction?.kind === 'travel' ? view.travel.destinations.find((item) => item.id === state.activeAction.id) : null;
-  const line = trip ? `On the way to ${trip.label}…` : `${weather ? `${weather.icon} ${weather.label} · ` : ''}${all.filter((item) => item.open).length} of ${all.length} places open`;
+  const line = trip ? `On the way to ${trip.label}…` : `${weather ? `${weather.label} · ` : ''}${all.filter((item) => item.open).length} of ${all.length} places open`;
+  const sky = !trip && weather ? `${iconFor('weather', weather.id, weather.icon)} ` : '';
   // The handle is the whole sheet when collapsed: the map behind it stays fully in view.
-  const handle = `<button class="map-handle" data-map-sheet aria-expanded="${open}" aria-controls="map-list"><span class="map-grip" aria-hidden="true"></span><span class="map-handle-text"><b>${esc(view.city?.name || 'City')} map</b><small>${esc(line)}</small></span><span class="map-handle-cta">${icon('list')}<span>${open ? 'Hide list' : 'List'}</span></span></button>`;
+  const handle = `<button class="map-handle" data-map-sheet aria-expanded="${open}" aria-controls="map-list"><span class="map-grip" aria-hidden="true"></span><span class="map-handle-text"><b>${esc(view.city?.name || 'City')} map</b><small>${sky}${esc(line)}</small></span><span class="map-handle-cta">${icon('list')}<span>${open ? 'Hide list' : 'List'}</span></span></button>`;
   const filters = `<div class="map-filters" role="group" aria-label="Filter places">${FILTERS.map((item) => `<button data-map-filter="${esc(item.id)}" aria-pressed="${item.id === filter}" class="${item.id === filter ? 'is-selected' : ''}">${esc(item.label)}</button>`).join('')}</div>`;
   // The stamp makes the panel re-bind when a layer's data arrives, which is when the map is told.
   const on = LAYERS.filter((item) => layers[item.id]);
   const stamp = on.map((item) => `${item.id}:${item.path ? entry(cacheKey(item, view)).at : ''}`).join('|');
-  const layerRow = `<div class="map-filters map-layers" role="group" aria-label="Map layers" data-map-stamp="${esc(stamp)}">${LAYERS.map((item) => `<button data-map-layer-toggle="${esc(item.id)}" aria-pressed="${layers[item.id]}" class="${layers[item.id] ? 'is-selected' : ''}">${esc(item.label)}</button>`).join('')}</div>`;
+  const layerRow = `<div class="map-filters map-layers" role="group" aria-label="Map layers" data-map-stamp="${esc(stamp)}">${LAYERS.map((item) => `<button data-map-layer-toggle="${esc(item.id)}" aria-pressed="${layers[item.id]}" class="${layers[item.id] ? 'is-selected' : ''}">${mark(item.icon)}<span>${esc(item.label)}</span></button>`).join('')}</div>`;
   const layerNotes = on.map((item) => {
     if (!item.path) return `<div class="map-layer-note"><span>${esc(item.note)}</span></div>`;
     const cached = entry(cacheKey(item, view));
-    const status = cached.data ? '' : !view.connected ? 'Offline: reconnect to load this layer.' : cached.error ? `Could not load: ${cached.error}` : 'Loading…';
-    if (!cached.data && !view.connected) return `<div class="map-layer-note"><span>${esc(status)}</span><button class="map-chip-button" data-menu="reconnect">Reconnect</button></div>`;
+    const status = cached.data ? '' : !view.connected ? `${linkWords(view).why} This layer cannot be loaded right now.` : cached.error ? `Could not load: ${cached.error}` : 'Loading…';
+    if (!cached.data && !view.connected) return `<div class="map-layer-note"><span>${esc(status)}</span>${linkButton(view, 'map-chip-button')}</div>`;
     const summary = !cached.data ? status : item.id === 'billboards' ? `${cached.data.billboards.slots.filter((slot) => slot.ad).length} of ${cached.data.billboards.slots.length} billboards rented`
       : item.id === 'sea' ? `${cached.data.sea.plots.length} sea plot${cached.data.sea.plots.length === 1 ? '' : 's'} rented · shown in the water below the city`
         : item.id === 'neighbours' ? `${cached.data.total} home${cached.data.total === 1 ? '' : 's'}, ${cached.data.online} online`
@@ -86,10 +88,10 @@ function overview(state, view) {
   }).join('');
   // The list is the alternative to the pins: every place, with where it is and whether it is open.
   const list = places.length
-    ? `<ul class="map-list" aria-label="Places">${places.map((item) => `<li><button data-map-pick="${esc(item.id)}" class="${statusClass(item)}${item.here ? ' is-here' : ''}"><span aria-hidden="true">${esc(item.icon)}</span><span class="map-list-text"><b>${esc(item.label)}</b><small>${esc(item.district)}</small></span><em>${esc(item.here ? 'You are here' : item.open ? 'Open' : 'Closed')}</em></button></li>`).join('')}</ul>`
-    : `<div class="ui-empty"><span aria-hidden="true">🔎</span><h3>Nothing matches “${esc(FILTERS.find((item) => item.id === filter)?.label || filter)}” right now</h3><p>Closed places open again later in the day.</p><button class="ui-button is-primary" data-map-filter="all">Show every place</button></div>`;
+    ? `<ul class="map-list" aria-label="Places">${places.map((item) => `<li><button data-map-pick="${esc(item.id)}" class="${statusClass(item)}${item.here ? ' is-here' : ''}"><span aria-hidden="true">${iconFor('venue', item.id, item.icon)}</span><span class="map-list-text"><b>${esc(item.label)}</b><small>${esc(item.district)}</small></span><em>${esc(item.here ? 'You are here' : item.open ? 'Open' : 'Closed')}</em></button></li>`).join('')}</ul>`
+    : `<div class="ui-empty"><span aria-hidden="true">${mark('search')}</span><h3>Nothing matches “${esc(FILTERS.find((item) => item.id === filter)?.label || filter)}” right now</h3><p>Closed places open again later in the day.</p><button class="ui-button is-primary" data-map-filter="all">Show every place</button></div>`;
   // What a switched-on layer shows stays readable with the list closed, where the layer itself is in view.
-  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}${open ? '' : layerNotes}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">🇳🇬 Nigeria map · more cities soon</button></div></div>`;
+  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}${open ? '' : layerNotes}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">${mark('globe')}<span>Nigeria map · more cities soon</span></button></div></div>`;
 }
 
 function worldLayer(view) {
@@ -104,19 +106,19 @@ function card(state, view, item) {
   const tiles = item.modes.map((option) => {
     // A tile is dead only when no mode can go there (closed, already here). Being busy or offline is said once, on the card.
     const off = item.blocked;
-    return `<button data-map-mode="${esc(option.id)}" aria-pressed="${option === chosen}" class="${option === chosen ? 'is-selected' : ''}${option.blocked && !off ? ' is-short' : ''}" ${off ? `disabled title="${esc(off.reason)}"` : `title="${esc(option.blurb || '')}"`} aria-label="${esc(option.label)}, ${esc(fareText(option))}, ${esc(option.seconds)} seconds"><span aria-hidden="true">${esc(option.icon)}</span><b>${esc(option.label)}</b><small>${esc(fareText(option))}</small><small class="map-mode-time">${esc(option.seconds)}s</small></button>`;
+    return `<button data-map-mode="${esc(option.id)}" aria-pressed="${option === chosen}" class="${option === chosen ? 'is-selected' : ''}${option.blocked && !off ? ' is-short' : ''}" ${off ? `disabled title="${esc(off.reason)}"` : `title="${esc(option.blurb || '')}"`} aria-label="${esc(option.label)}, ${esc(fareText(option))}, ${esc(option.seconds)} seconds"><span aria-hidden="true">${modeIcon(option)}</span><b>${esc(option.label)}</b><small>${esc(fareText(option))}</small><small class="map-mode-time">${esc(option.seconds)}s</small></button>`;
   }).join('');
   const about = item.description || chips.length
     ? `<details class="ui-details map-about" ${aboutOpen ? 'open' : ''}><summary>About${item.preview.length ? ` · ${item.preview.length} things to do` : ''}</summary><p class="map-desc">${esc(item.description || '')}</p>${item.ambient ? `<p class="map-ambient">${esc(item.ambient)}</p>` : ''}${chips.length ? `<div class="map-chips" aria-label="Things to do here">${chips.map((label) => `<span>${esc(label)}</span>`).join('')}${more > 0 ? `<button data-map-more>+${more} more</button>` : ''}</div>` : ''}</details>` : '';
   return `<div class="map-panel map-card" role="region" aria-label="${esc(item.label)}">
-    <header class="map-card-head"><button class="life-icon-button" data-map-pick="" aria-label="Back to the map and the list of places">${icon('back')}</button><span class="map-card-icon" aria-hidden="true">${esc(item.icon || '📍')}</span><div><h1>${esc(item.label)}</h1><p>${esc(item.district)}${item.band ? ` · ${esc(item.band)}` : ''}</p></div>
-      <button class="life-icon-button" data-map-share="${esc(item.id)}" aria-label="Copy a link to ${esc(item.label)}" title="Copy a link to ${esc(item.label)}">🔗</button></header>
+    <header class="map-card-head"><button class="life-icon-button" data-map-pick="" aria-label="Back to the map and the list of places">${icon('back')}</button><span class="map-card-icon" aria-hidden="true">${iconFor('venue', item.id, item.icon)}</span><div><h1>${esc(item.label)}</h1><p>${esc(item.district)}${item.band ? ` · ${esc(item.band)}` : ''}</p></div>
+      <button class="life-icon-button" data-map-share="${esc(item.id)}" aria-label="Copy a link to ${esc(item.label)}" title="Copy a link to ${esc(item.label)}">${icon('link')}</button></header>
     <p class="map-status ${statusClass(item)}"><b>${esc(item.status)}</b>${item.open && item.hours !== item.status ? ` <span>${esc(item.hours)}</span>` : ''}</p>
     ${item.modes.length ? `<div class="map-modes" role="group" aria-label="How to travel">${tiles}</div>` : ''}
     ${chosen && !item.blocked ? `<p class="map-trip">${esc(tripLine(chosen))}</p>` : ''}
     ${block ? `<div class="map-why is-${esc(block.code)}" role="note"><p>${esc(block.reason)}</p>${fixButton(block)}</div>` : ''}
     <button class="map-go" ${block || !chosen ? `disabled aria-label="Cannot go: ${esc(block?.label || 'unavailable')}"` : `data-action="travel" data-payload="${json({ id: item.id, mode: chosen.id })}"`}>${block ? esc(block.label) : `Go · ${esc(fareText(chosen))} <span aria-hidden="true">→</span>`}</button>
-    ${item.id === 'state-house' ? '<button class="map-chip-button" data-open="state-house">🏛️ Who governs? Open the State House</button>' : item.id === 'polling-unit' ? '<button class="map-chip-button" data-open="governor">🗳️ Election: candidates, voting and results</button>' : ''}
+    ${item.id === 'state-house' ? `<button class="map-chip-button" data-open="state-house">${mark('governor')}<span>Who governs? Open the State House</span></button>` : item.id === 'polling-unit' ? `<button class="map-chip-button" data-open="governor">${mark('ballot')}<span>Election: candidates, voting and results</span></button>` : ''}
     ${about}
   </div>`;
 }
@@ -130,7 +132,7 @@ function tripBar(state, view) {
   const trip = tripInfo(state, view), left = Math.ceil(trip.remaining);
   const paid = trip.fare === null ? '' : trip.fare > 0 ? ` · ${fareText({ fare: trip.fare })} paid` : ' · Free';
   return `<div class="map-panel map-trip" role="group" aria-label="Travelling to ${esc(trip.to.label)}">
-    <div class="map-trip-row"><span class="map-trip-mode" aria-hidden="true">${esc(trip.mode.icon)}</span>
+    <div class="map-trip-row"><span class="map-trip-mode" aria-hidden="true">${modeIcon(trip.mode)}</span>
       <div class="map-trip-text"><b>${esc(trip.from.label)} <span aria-hidden="true">→</span><span class="ui-sr"> to </span> ${esc(trip.to.label)}</b><small>${esc(trip.mode.label)}${esc(paid)} · <strong>${left}s left</strong></small></div>
       <button class="map-trip-cancel" data-cancel aria-label="Cancel the trip and stay at ${esc(trip.from.label)}">Cancel</button></div>
     <div class="map-trip-track" role="progressbar" aria-label="Trip progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(trip.fraction * 100)}"><i style="--from:${(trip.fraction * 100).toFixed(1)}%;animation-duration:${Math.max(0.05, trip.remaining).toFixed(2)}s"></i></div>
@@ -138,7 +140,7 @@ function tripBar(state, view) {
 }
 
 const mapPanel = {
-  id: 'map', title: 'Map', icon: '🗺️', placement: 'nav',
+  id: 'map', title: 'Map', placement: 'nav',
   render(state, view) {
     if (view.cityId !== lastCity) { lastCity = view.cityId; layer = 'city'; destination = null; }
     if (view.params && view.params !== seenParams) {
@@ -206,30 +208,15 @@ const mapPanel = {
 };
 
 const roadsidePanel = {
-  id: 'roadside', title: 'On the road', icon: '🛣️', placement: 'modal',
+  id: 'roadside', title: 'On the road', placement: 'modal',
   render(state, view) {
     const event = view.travel.event;
     if (!event) return `<p>Nothing is waiting for you by the roadside right now.</p><p>${esc(state.message || '')}</p><button class="ui-button is-primary" data-close>Carry on</button>`;
-    return `<div class="map-event"><p class="map-event-icon" aria-hidden="true">${esc(event.icon)}</p><h3>${esc(event.title)}</h3><p>${esc(event.text)}</p>
+    return `<div class="map-event"><p class="map-event-icon" aria-hidden="true">${iconFor('event', event.id, event.icon)}</p><h3>${esc(event.title)}</h3><p>${esc(event.text)}</p>
       <div class="map-event-choices">${event.choices.map((choice) => `<button class="ui-button" data-action="world.roadside" data-payload="${json({ choice: choice.id })}" data-then="close" ${choice.blocked || !view.connected ? 'disabled' : ''}>
-        <b>${esc(choice.label)}${choice.cost ? ` · ${esc(fareText({ fare: choice.cost }))}` : ''}</b><small>${esc(choice.hint || '')}${choice.chance !== null ? ` · ${esc(choice.chance)}% chance` : ''}</small>${choice.blocked ? `<small class="map-event-why">${esc(choice.blocked.reason)}</small>` : !view.connected ? '<small class="map-event-why">Offline — reconnect to answer.</small>' : ''}</button>`).join('')}</div>
+        <b>${esc(choice.label)}${choice.cost ? ` · ${esc(fareText({ fare: choice.cost }))}` : ''}</b><small>${esc(choice.hint || '')}${choice.chance !== null ? ` · ${esc(choice.chance)}% chance` : ''}</small>${choice.blocked ? `<small class="map-event-why">${esc(choice.blocked.reason)}</small>` : !view.connected ? `<small class="map-event-why">${esc(linkWords(view).short)} — you cannot answer right now.</small>` : ''}</button>`).join('')}</div>
       <p class="preview-note">Not answering is fine: this passes when you travel again${event.expiresIn ? `, or in about ${Math.max(1, Math.ceil(event.expiresIn / 60))} min` : ''}.</p></div>`;
   },
 };
 
-const roadsideChip = {
-  id: 'roadside-chip', title: 'On the road', placement: 'hud', slot: 'alert', order: 5,
-  render(state, view) {
-    const event = view.travel?.event;
-    return event ? `<button class="map-event-chip" data-open="roadside" data-event-key="${esc(`${event.id}:${event.at}`)}"><span aria-hidden="true">${esc(event.icon)}</span><span><b>${esc(event.title)}</b><small>Tap to answer</small></span></button>` : '';
-  },
-  bind(root, api) {
-    const key = root.querySelector('[data-event-key]')?.dataset.eventKey;
-    if (!key || key === shownEvent) return;
-    shownEvent = key;
-    // Raise the prompt once per event, after this render pass, and never over another open sheet.
-    queueMicrotask(() => { if (!document.querySelector('dialog[open]')) api.open('roadside'); });
-  },
-};
-
-export default [mapPanel, roadsidePanel, roadsideChip];
+export default [mapPanel, roadsidePanel];

@@ -7,7 +7,9 @@
  * Rules and validation live on the server (server/civic) and in src/game/systems/civic.js.
  */
 import './civic.css';
-import { esc, skeleton } from '../dom.js';
+import { unseenNews } from '../phone/logic.js';
+import { esc, skeleton, mark } from '../dom.js';
+import { linkWords, linkButton } from '../link.js';
 
 const cache = new Map();
 const pending = new Set();
@@ -54,7 +56,7 @@ export const busy = (tag) => pending.has(tag);
  */
 export async function send(api, tag, path, body, { panel = null, success = '' } = {}) {
   if (pending.has(tag)) return { ok: false, code: 'busy' };
-  if (!api.view()?.connected) { api.toast('Not connected. Nothing was sent — try again when the connection is back.', 'error'); return { ok: false, code: 'offline' }; }
+  if (!api.view()?.connected) { api.toast(`${linkWords(api.view()).why} Nothing was sent.`, 'error'); return { ok: false, code: 'offline' }; }
   pending.add(tag);
   rerender(api, panel);
   let result;
@@ -91,11 +93,14 @@ function newsReadAt(cityId) {
   if (!newsRead) { try { newsRead = JSON.parse(window.localStorage.getItem(NEWS_KEY)) || {}; } catch { newsRead = {}; } }
   return Number(newsRead[cityId]) || 0;
 }
-/** City news (a new Governor, an announcement) the player has not opened the Governor app for yet: its badge on the Phone. */
-export function civicNews(view) {
+/**
+ * City news (a new Governor, an announcement) that is new to THIS life and that the player has not
+ * opened the Governor app for yet: its badge on the Phone. News from before the life began in the
+ * city (state.civic.since) never counts, so a brand-new life starts with no badge.
+ */
+export function civicNews(view, state) {
   const notices = cache.get(`pulse:${view.cityId}`)?.data?.notices ?? [];
-  const read = newsReadAt(view.cityId);
-  return notices.filter((item) => item.at > read).length;
+  return unseenNews(notices, { readAt: newsReadAt(view.cityId), since: state?.civic?.since });
 }
 /** The Governor app is on screen: its news is read. */
 export function markCivicNewsRead(view) {
@@ -121,8 +126,8 @@ export const count = (value) => Math.round(Number(value) || 0).toLocaleString('e
 /** Standard loading / offline / error states for a cached response. Returns '' when data is ready. */
 export function status(item, view, { retry = 'data-civic-retry' } = {}) {
   if (item.data) return '';
-  if (!view.connected) return '<div class="ui-empty is-compact"><span aria-hidden="true">📡</span><h3>Not connected</h3><p>This screen is loaded from the server. It will appear when the connection is back.</p></div>';
-  if (item.error) return `<div class="ui-empty is-compact" role="alert"><span aria-hidden="true">📡</span><h3>This did not load</h3><p>${esc(item.error)}</p><button class="ui-button is-small" ${retry}>Try again</button></div>`;
+  if (!view.connected) { const words = linkWords(view); return `<div class="ui-empty is-compact"><span aria-hidden="true">${mark('cloud-off')}</span><h3>${esc(words.short)}</h3><p>${esc(words.why)} This screen is loaded from the server, so it cannot be shown right now.</p>${linkButton(view, 'ui-button is-small')}</div>`; }
+  if (item.error) return `<div class="ui-empty is-compact" role="alert"><span aria-hidden="true">${mark('cloud-off')}</span><h3>This did not load</h3><p>${esc(item.error)}</p><button class="ui-button is-small" ${retry}>Try again</button></div>`;
   return skeleton(4);
 }
 /** A small line under stale data when the last refresh failed. */

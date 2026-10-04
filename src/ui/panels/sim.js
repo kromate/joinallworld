@@ -8,11 +8,11 @@
  * POST /api/session; the look is saved with the 'onboarding.set-look' action. Needs and Skills are live.
  */
 import './sim.css';
-import { esc, cap, money } from '../dom.js';
+import { esc, cap, money, mark, iconFor } from '../dom.js';
+import { linkWords } from '../link.js';
 import { TRAITS, DREAMS, START_HOMES } from '../../game/content/traits.js';
 import { lookStage, lookEditor, chooseLook, sameLook, lookSummary, lookTabClick, mountLookPreview } from './look-ui.js';
 
-const NEED_ICONS = { hunger: '🍲', energy: '⚡', fun: '🎉', social: '💬', hygiene: '🫧', bladder: '🚻' };
 const SEGMENTS = 10;
 let draft = null, saved = null, error = '', pending = false, focusKey = '';
 
@@ -25,7 +25,7 @@ function sync(state) {
 }
 const nameProblem = (name) => (name.trim().length < 3 ? 'A display name needs at least 3 characters.' : name.trim().length > 24 ? 'A display name can be at most 24 characters.' : '');
 function saveState(state, view) {
-  if (!view.connected) return { disabled: true, label: 'Offline — reconnect to save' };
+  if (!view.connected) return { disabled: true, label: `${linkWords(view).short} — cannot save right now` };
   if (pending) return { disabled: true, label: 'Saving…' };
   if (!view.onboarding.done) return { disabled: true, label: 'Finish creating your Sim first' };
   if (draft.name.trim() === state.name && sameLook(draft.look, state.onboarding.look)) return { disabled: true, label: 'No changes yet' };
@@ -34,15 +34,15 @@ function saveState(state, view) {
 }
 
 const profile = {
-  id: 'profile', title: 'Profile', icon: '👤', placement: 'sim-tab', order: 10, live: false,
+  id: 'profile', title: 'Profile', placement: 'sim-tab', order: 10, live: false,
   render(state, view) {
     sync(state);
     const o = view.onboarding, save = saveState(state, view);
     const home = START_HOMES[o.house];
     const about = [
-      o.traits.length ? `<li><b>Traits</b> ${o.traits.map((id) => `${TRAITS[id].icon} ${esc(TRAITS[id].label)}`).join(' · ')}</li>` : '',
-      o.dream ? `<li><b>Dream</b> ${DREAMS[o.dream].icon} ${esc(DREAMS[o.dream].label)}</li>` : '',
-      o.lottery ? `<li><b>Born</b> ${o.lottery.icon} ${esc(o.lottery.label)}</li>` : '',
+      o.traits.length ? `<li><b>Traits</b> ${o.traits.map((id) => `${iconFor('trait', id, TRAITS[id].icon)} ${esc(TRAITS[id].label)}`).join(' · ')}</li>` : '',
+      o.dream ? `<li><b>Dream</b> ${iconFor('dream', o.dream, DREAMS[o.dream].icon)} ${esc(DREAMS[o.dream].label)}</li>` : '',
+      o.lottery ? `<li><b>Born</b> ${iconFor('lottery', o.lottery.id, o.lottery.icon)} ${esc(o.lottery.label)}</li>` : '',
       `<li><b>Home</b> ${home ? `${esc(home.label)}, ${esc(home.district)}` : 'Your home'} · <button type="button" class="sim-link" data-open="houses">See houses</button></li>`,
     ].join('');
     const create = o.done ? '' : '<p class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" data-open="onboarding">Create your Sim</button></p>';
@@ -98,23 +98,23 @@ const profile = {
 };
 
 const needs = {
-  id: 'needs', title: 'Needs', icon: '❤️', placement: 'sim-tab', order: 20,
+  id: 'needs', title: 'Needs', placement: 'sim-tab', order: 20,
   render(state, view) {
     const { mood, feelings } = view.onboarding;
     const bars = view.needs.order.map((need) => {
       const value = Math.round(state.needs[need]), level = value >= 60 ? 'high' : value >= 30 ? 'mid' : 'low';
-      return `<div class="sim-need-row is-${level}"><span><i aria-hidden="true">${NEED_ICONS[need] ?? ''}</i> ${cap(need)}</span><div role="meter" aria-label="${cap(need)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${value}"><i style="width:${value}%"></i></div><b>${value}%</b></div>`;
+      return `<div class="sim-need-row is-${level}"><span><i aria-hidden="true">${iconFor('need', need)}</i> ${cap(need)}</span><div role="meter" aria-label="${cap(need)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${value}"><i style="width:${value}%"></i></div><b>${value}%</b></div>`;
     }).join('');
     const total = feelings.reduce((sum, feeling) => sum + feeling.value, 0);
     const list = feelings.map((feeling) => `<li><span><strong>${esc(feeling.label)}</strong>${feeling.line ? `<small>${esc(feeling.line)}</small>` : ''}</span><b class="${feeling.value < 0 ? 'is-bad' : 'is-good'}">${feeling.value < 0 ? '−' : '+'}${Math.abs(feeling.value)}</b></li>`).join('');
-    return `<div class="sim-needs"><p class="sim-mood is-${esc(mood.tone)}"><span aria-hidden="true">${mood.icon}</span> <strong>${esc(mood.word)}</strong><small>Mood score ${mood.score} of 100</small></p>${bars}
+    return `<div class="sim-needs"><p class="sim-mood is-${esc(mood.tone)}"><span aria-hidden="true">${iconFor('mood', mood.tone, mood.icon)}</span> <strong>${esc(mood.word)}</strong><small>Mood score ${mood.score} of 100</small></p>${bars}
       <h3>Feelings</h3>${list ? `<ul class="sim-feelings">${list}</ul><p class="sim-hint">Feelings add ${total < 0 ? '−' : '+'}${Math.abs(total)} to your mood.</p>` : '<p class="sim-hint">Nothing in particular right now. Low needs and big moments show up here.</p>'}
       <p class="preview-note">Mood is the average of the six needs plus your feelings. The word thresholds (Very Happy 78, Happy 62, Fine 45, Uneasy 25) are original beta values. Needs fall slowly over real time and never below 10 on their own.</p></div>`;
   },
 };
 
 const skills = {
-  id: 'skills', title: 'Skills', icon: '🎓', placement: 'sim-tab', order: 40,
+  id: 'skills', title: 'Skills', placement: 'sim-tab', order: 40,
   render(state, view) {
     const rows = Object.entries(view.skills).map(([skill, info]) => {
       const segments = Array.from({ length: SEGMENTS }, (_, index) => {

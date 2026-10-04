@@ -635,8 +635,10 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     await step('telemetry', () => telemetry.close());
   })());
   server.close = (callback?: (error?: Error) => void) => { closeHttp((error) => { flush().finally(() => callback?.(error)); }); return server; };
+  // Attached before the startup work is awaited, as before: nothing that runs during startup can find them missing.
+  const running = Object.assign(server, { wss, beat, store, shards, world, telemetry, flush });
   await Promise.all(startup.splice(0));
-  return Object.assign(server, { wss, beat, store, shards, world, telemetry, flush });
+  return running;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

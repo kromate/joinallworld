@@ -27,6 +27,9 @@ import goals from './goals.js';
 import messages from './messages.js';
 import hunt from './hunt.js';
 import radio from './radio.js';
+import { S as social } from './social-client.js';
+import { civicNews } from './civic-ui.js';
+import { reportReplies } from '../phone/reports.js';
 
 const PLACEMENTS = ['phone', 'nav', 'hud', 'sim-tab', 'modal'];
 const RESERVED = ['phone', 'sim', 'help', 'home', 'venue'];
@@ -66,40 +69,58 @@ export function buildPanels(modules) {
   return panels.map((panel, index) => ({ panel, index })).sort((a, b) => (a.panel.order ?? 100) - (b.panel.order ?? 100) || a.index - b.index).map((entry) => entry.panel);
 }
 
+/*
+ * PHONE METADATA (all static, so the home screen is complete before any group has loaded):
+ *   group   where the icon sits on the home screen: 'life' | 'money' | 'people' | 'city'
+ *   short   a shorter label under the icon when the title is long
+ *   phone   true = a Sim tab that is also an app on the home screen (it opens in the phone from there)
+ *   badge   (state, view) → count for the red badge, from data already in the view (never a fetch)
+ * Icons and colours come from src/ui/phone/icons.js by panel id; `icon` here is the emoji used in
+ * the Sim sheet's tabs and the coach.
+ */
+/** Rent that is overdue or that the balance will not cover, and a loan instalment the balance will not cover. */
+const billsDue = (state, view) => {
+  const { rent, loan } = view.economy || {};
+  return (rent?.warning ? 1 : 0) + (loan && !loan.cleared && !loan.prepaid && loan.weekBlocked ? 1 : 0);
+};
+/** Friend and Bae requests waiting for an answer; knocks at the door. */
+const requestsWaiting = () => (social.me?.requests.in.length || 0) + (social.me?.baeRequests.length || 0);
+const knocksWaiting = () => social.me?.house.knocks.length || 0;
+
 const money = lazyGroup(() => import('./groups/money.js'), [
-  { id: 'jobs', title: 'Jobs', icon: '💼', placement: 'phone', order: 10 },
-  { id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14 },
-  { id: 'groceries', title: 'Groceries', icon: '🛒', placement: 'phone', order: 16 },
-  { id: 'ride', title: 'Ride', icon: '🚕', placement: 'phone', order: 18 },
-  { id: 'houses', title: 'Houses', icon: '🏘️', placement: 'phone', order: 30 },
-  { id: 'boutique', title: 'Boutique', icon: '👗', placement: 'phone', order: 32 },
-  { id: 'cars', title: 'Cars', icon: '🚗', placement: 'phone', order: 34 },
-  { id: 'invest', title: 'Invest', icon: '📊', placement: 'phone', order: 50 },
+  { id: 'jobs', title: 'Jobs', icon: '💼', placement: 'phone', order: 10, group: 'money' },
+  { id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14, group: 'money', badge: billsDue },
+  { id: 'groceries', title: 'Groceries', icon: '🛒', placement: 'phone', order: 16, group: 'life' },
+  { id: 'ride', title: 'Ride', icon: '🚕', placement: 'phone', order: 18, group: 'life', badge: (state, view) => (view.travel?.event ? 1 : 0) },
+  { id: 'houses', title: 'Houses', icon: '🏘️', placement: 'phone', order: 30, group: 'life' },
+  { id: 'boutique', title: 'Boutique', icon: '👗', placement: 'phone', order: 32, group: 'life' },
+  { id: 'cars', title: 'Cars', icon: '🚗', placement: 'phone', order: 34, group: 'life' },
+  { id: 'invest', title: 'Invest', icon: '📊', placement: 'phone', order: 50, group: 'money' },
 ]);
 const sim = lazyGroup(() => import('./groups/sim.js'), [
   { id: 'profile', title: 'Profile', icon: '👤', placement: 'sim-tab', order: 10, live: false },
   { id: 'needs', title: 'Needs', icon: '❤️', placement: 'sim-tab', order: 20 },
   { id: 'skills', title: 'Skills', icon: '🎓', placement: 'sim-tab', order: 40 },
-  { id: 'people', title: 'People', icon: '👥', placement: 'sim-tab', order: 50 },
+  { id: 'people', title: 'People', icon: '👥', placement: 'sim-tab', order: 50, phone: true, group: 'people', badge: requestsWaiting },
   { id: 'person', title: 'Person', icon: '🧑🏾', placement: 'modal' },
-  { id: 'career', title: 'Career', icon: '📈', placement: 'sim-tab', order: 60 },
-  { id: 'settings', title: 'Settings', icon: '⚙️', placement: 'sim-tab', order: 70 },
+  { id: 'career', title: 'Career', icon: '📈', placement: 'sim-tab', order: 60, phone: true, group: 'money' },
+  { id: 'settings', title: 'Settings', icon: '⚙️', placement: 'sim-tab', order: 70, phone: true, group: 'life' },
 ]);
-const social = lazyGroup(() => import('./groups/social.js'), [
-  { id: 'contacts', title: 'Contacts', icon: '📇', placement: 'phone', order: 20 },
-  { id: 'family', title: 'Family', icon: '👪', placement: 'phone', order: 36 },
-  { id: 'invite', title: 'Invite', icon: '🏠', placement: 'phone', order: 38 },
+const socialApps = lazyGroup(() => import('./groups/social.js'), [
+  { id: 'contacts', title: 'Contacts', icon: '📇', placement: 'phone', order: 20, group: 'people' },
+  { id: 'family', title: 'Family', icon: '👪', placement: 'phone', order: 36, group: 'people' },
+  { id: 'invite', title: 'Invite', icon: '🏠', placement: 'phone', order: 38, group: 'people', badge: knocksWaiting },
 ]);
 const civic = lazyGroup(() => import('./groups/civic.js'), [
-  { id: 'governor', title: 'Governor', icon: '🏛️', placement: 'phone', order: 40, live: false },
+  { id: 'governor', title: 'Governor', icon: '🏛️', placement: 'phone', order: 40, live: false, group: 'city', badge: (state, view) => civicNews(view) },
   { id: 'state-house', title: 'State House', icon: '🏛️', placement: 'modal' },
-  { id: 'neighbours', title: 'Neighbours', icon: '🏡', placement: 'phone', order: 42 },
-  { id: 'ads', title: 'Billboards', icon: '📢', placement: 'phone', order: 44, live: false },
-  { id: 'richlist', title: 'Rich List', icon: '🏆', placement: 'phone', order: 48 },
+  { id: 'neighbours', title: 'Neighbours', icon: '🏡', placement: 'phone', order: 42, group: 'city' },
+  { id: 'ads', title: 'Billboards', icon: '📢', placement: 'phone', order: 44, live: false, group: 'city' },
+  { id: 'richlist', title: 'Rich List', icon: '🏆', placement: 'phone', order: 48, group: 'money' },
 ]);
 const trust = lazyGroup(() => import('./groups/trust.js'), [
-  { id: 'statement', title: 'Statement', icon: '🧾', placement: 'phone', order: 15 },
-  { id: 'support', title: 'Report a problem', icon: '🛟', placement: 'phone', order: 96, live: false },
+  { id: 'statement', title: 'Statement', icon: '🧾', placement: 'phone', order: 15, group: 'money' },
+  { id: 'support', title: 'Report a problem', short: 'Report', icon: '🛟', placement: 'phone', order: 96, live: false, group: 'city', badge: () => reportReplies() },
 ]);
 const start = lazyGroup(() => import('./groups/start.js'), [
   // `required` must answer before the code is here: a brand-new life is held in character creation.
@@ -108,7 +129,7 @@ const start = lazyGroup(() => import('./groups/start.js'), [
   { id: 'account', title: 'Account', icon: '🔑', placement: 'modal' },
 ]);
 
-export const PANELS = buildPanels([session, city, map, health, buy, goals, messages, hunt, radio, money, sim, social, civic, trust, start]);
+export const PANELS = buildPanels([session, city, map, health, buy, goals, messages, hunt, radio, money, sim, socialApps, civic, trust, start]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

@@ -4,8 +4,10 @@
  * OWNER: foundation. The shell owns the HUD (top bar: clock, mood, name, saved state, wallet;
  * the needs strip; the goal line; the "More" tray and the Clean-screen toggle), the bottom nav
  * (Home / Buy / Map / Phone), the venue panel (spot rail, activity cards, progress + cancel),
- * the travel view, the first-session coach, toasts, the Phone app grid, the Sim sheet and its
+ * the travel view, the first-session coach, toasts, the connection notice, the Sim sheet and its
  * tabs, the keyboard map (src/ui/keys.js) and the help overlay. Everything else is a panel.
+ * The Phone — the device, its home screen and the frame every app opens in — is drawn by
+ * src/ui/phone/phone.js; the shell only decides which sheet is open and hands it over.
  *
  * THE HUD IS SMALL ON PURPOSE: the scene is the hero. Always visible are one top bar, the six
  * need bars as a slim strip, and one goal line. Every other HUD chip lives in the tray behind
@@ -24,7 +26,14 @@
  *   export default {
  *     id: 'jobs',                 // unique; also the target of api.open('jobs') and data-open="jobs"
  *     title: 'Jobs',
- *     icon: '💼',                 // emoji or short text shown in the Phone grid / tab
+ *     icon: '💼',                 // emoji or short text shown in a Sim tab and the coach (the Phone draws
+ *                                 //   its own icon for the id: src/ui/phone/icons.js)
+ *     group: 'money',             // optional, Phone apps: 'life' | 'money' | 'people' | 'city' on the home screen
+ *     phone: true,                // optional: a Sim tab that is also listed as a Phone app
+ *     badge(state, view) {},      // optional: the count for the red badge on the Phone icon, from data
+ *                                 //   already in the view (never a fetch); falsy = no badge
+ *     notifications(state, view) {}, // optional: lines for the Phone's notification list,
+ *                                 //   [{ id, at, text, fresh, app, params? }] — `app` is the panel a tap opens
  *     placement: 'phone',         // see PLACEMENTS
  *     order: 20,                  // optional sort key within its placement (default 100)
  *     slot: 'goal',               // optional, 'hud' panels only: 'goal' = the single goal line,
@@ -48,7 +57,10 @@
  *   };
  *
  * PLACEMENTS
- *   'phone'    an app in the Phone grid; opens in the sheet with a back button
+ *   'phone'    an app on the Phone's home screen. It always opens INSIDE the phone — also when it
+ *              is opened by api.open(id) from a HUD chip, a toast or another app (a deep link) —
+ *              and anything opened while the phone is up stays in the phone. Esc goes back one
+ *              level: app → home screen → closed (a panel's keys('cancel') still gets Esc first).
  *   'nav'      bound to the bottom-nav button with the same id ('buy', 'map'); renders inline
  *              above the nav while the scene stays visible (no modal)
  *   'hud'      a HUD chip (see `slot`); return '' to hide it. Add the class `is-active` to the
@@ -62,6 +74,10 @@
  *            cityId, city: { id, name, region }, connected, session: { id, name } | null,
  *            name, now (server ms), mode, venues: [{ id, label, district, icon, description }],
  *            net: { text, error } (the connection status line),
+ *            link: 'connecting' | 'online' | 'new' | 'expired' | 'offline' | 'unreachable' — WHY the game
+ *                  is or is not playable (src/client.js). `connected` is still the one flag to test for
+ *                  "can anything change"; use `link` only to word the reason truthfully ("Offline" is
+ *                  said only for 'offline': the device itself has no network),
  *            storage: null | { reason } (the server said it cannot save right now),
  *            params (whatever was passed to api.open(id, params)) }
  *   Return an HTML string. Escape every dynamic value with esc() from ../dom.js.
@@ -101,7 +117,9 @@
  *   command, fetchJson, goTo, toggleCommunity, redrawScene — behind the api calls above
  *   onMode(mode, params)          a nav panel was entered or left
  *   onRender()                    the shell finished a render pass (the HUD may have changed size)
- *   menu(id)                      an entry of the More menu: 'city' | 'locate' | 'reconnect'
+ *   menu(id)                      an entry of the More menu: 'city' | 'locate' | 'reconnect' (also "Try again"
+ *                                 in the connection notice). "Start a new life" in that notice dispatches the
+ *                                 window event 'jaw:start-life', the same one the session panel sends.
  *
  * RULES
  *   - Panels never change state locally and never fetch /api/action themselves: the server is
@@ -117,17 +135,40 @@
  */
 import './tokens.css';
 import './shell.css';
-import { esc, money, cap, icon, json } from './dom.js';
+import { esc, money, cap, icon, json, skeleton } from './dom.js';
 import { shortcutFor, shortcutRows } from './keys.js';
+import { glyph } from './phone/icons.js';
 
-const NEED_ICONS = { hunger: '🍲', energy: '⚡', fun: '🎉', social: '💬', hygiene: '🫧', bladder: '🚻' };
+const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
 const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone']];
 const MAX_TOASTS = 2;
-const TOAST_ICONS = { info: '💬', good: '✅', earn: '💰', spend: '💸', error: '🚫' };
+const TOAST_KINDS = ['info', 'good', 'earn', 'spend', 'error'];
 /** The first-session coach points at the next control for this many starter goals, then stops. */
 const COACH_GOALS = 3;
 const COACH_KEY = 'joinallworld-coach-off';
-const LOADING = '<div class="ui-loading" role="status">Loading…</div>';
+const LOADING = skeleton();
+/**
+ * CONNECTION STATES (view.link, from src/client.js). Each has its own truthful wording: the word
+ * "Offline" is used only when this device has no network. `pill` is the top bar's short label;
+ * the notice under the top bar says what happened and offers the one action that resolves it.
+ */
+const LINKS = {
+  connecting: { pill: 'Connecting…', icon: 'refresh', tone: 'wait', menu: 'Connecting…' },
+  new: { pill: 'Not started', icon: 'person', tone: 'wait', menu: 'Choose a nickname to start', gate: 'new' },
+  expired: { pill: 'Saved life not found', icon: 'cloud-off', tone: 'off', menu: 'Saved life not found · read-only', gate: 'expired',
+    title: 'This device’s saved life is no longer on this server',
+    text: 'The server is up, but it has no record of the life this browser remembers: its data was reset, or the session ran out. What you see is the copy kept on this device, read-only.',
+    actions: [['Start a new life', 'data-new-life', true], ['Try again', 'data-menu="reconnect"', false]] },
+  offline: { pill: 'No internet', icon: 'cloud-off', tone: 'off', menu: 'No internet · read-only',
+    title: 'You are offline',
+    text: 'This device has no internet connection. You are looking at the last saved copy; nothing changes until you are back online.',
+    actions: [['Try again', 'data-menu="reconnect"', true]] },
+  unreachable: { pill: 'Server unreachable', icon: 'cloud-off', tone: 'off', menu: 'Server unreachable · read-only',
+    title: 'The game server is not answering',
+    text: 'Your device is online, but the server could not be reached. Your life is safe there; this is the last copy kept on this device, read-only.',
+    actions: [['Try again', 'data-menu="reconnect"', true]] },
+};
+const STORAGE_NOTICE = { title: 'The server cannot save right now', actions: [['Check again', 'data-menu="reconnect"', true]] };
 
 export function createShell({ root, dialog, dialogContent, panels, host }) {
   let state = null, view = null, mode = 'venue', lastMode = 'venue', modeParams = null, expanded = false, sheet = null, lastSpotKey = '', forced = false;
@@ -141,9 +182,11 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   const gate = (panel) => { const value = panel.enabled?.(state, view); return value === undefined || value === true ? null : String(value || 'Unavailable right now'); };
 
   root.classList.add('life-ui');
-  root.innerHTML = `<section class="life-status" aria-label="Player status"><span class="life-clock" data-clock></span><span class="life-mood" data-mood></span><button class="life-status-profile" data-open="sim" data-name></button><span class="life-saved-slot" data-saved></span><button class="life-cash" data-open="bank" data-cash></button><span class="life-delta" data-delta aria-hidden="true"></span></section>
+  root.innerHTML = `<p class="life-wordmark" aria-label="JoinAllworld"><i aria-hidden="true">${glyph('globe')}</i><span>Join<b>Allworld</b></span></p>
+    <section class="life-status" aria-label="Player status"><i class="life-status-mark" aria-hidden="true">${glyph('globe')}</i><span class="life-clock" data-clock></span><span class="life-mood" data-mood></span><button class="life-status-profile" data-open="sim" data-name></button><span class="life-saved-slot" data-saved></span><button class="life-cash" data-open="bank" data-cash></button><span class="life-delta" data-delta aria-hidden="true"></span></section>
+    <div class="life-notice" data-notice role="status"></div>
     <aside class="life-sidebar" aria-label="Needs, goal and more">
-      <div class="life-quick"><div class="life-needs" role="group" aria-label="Your needs">${Object.entries(NEED_ICONS).map(([id, emoji]) => `<div class="life-need" title="${cap(id)}"><span aria-hidden="true">${emoji}</span><div role="meter" aria-label="${cap(id)}" aria-valuemin="0" aria-valuemax="100" data-need="${id}"><i></i></div></div>`).join('')}</div>
+      <div class="life-quick"><div class="life-needs" role="group" aria-label="Your needs">${NEEDS.map((id) => `<div class="life-need" title="${cap(id)}"><span aria-hidden="true">${glyph(id)}</span><div role="meter" aria-label="${cap(id)}" aria-valuemin="0" aria-valuemax="100" data-need="${id}"><i></i></div></div>`).join('')}</div>
         <button class="life-round" data-tray-toggle aria-expanded="false" aria-controls="life-tray" aria-label="More: weather, messages, city and help" title="More">${icon('menu')}<b class="life-badge" data-badge hidden></b></button>
         <button class="life-round" data-clean aria-pressed="false" aria-label="Clean screen: hide the panels and show only the scene" title="Clean screen (X)">${icon('eye')}</button></div>
       <div class="life-alerts" data-slot="alert"></div>
@@ -156,7 +199,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   const el = { clock: $('[data-clock]'), mood: $('[data-mood]'), name: $('[data-name]'), cash: $('[data-cash]'), delta: $('[data-delta]'), saved: $('[data-saved]'),
     toasts: $('[data-toasts]'), bottom: $('[data-bottom]'), progress: $('[data-slot="progress"]'), main: $('[data-slot="main"]'), nav: $('[data-slot="nav"]'), coach: $('[data-slot="coach"]'),
     slots: { alert: $('[data-slot="alert"]'), goal: $('[data-slot="goal"]'), hud: $('[data-slot="hud"]') }, menu: $('[data-slot="menu"]'),
-    tray: $('[data-tray-toggle]'), badge: $('[data-badge]'), clean: $('[data-clean]'), sidebar: $('.life-sidebar') };
+    tray: $('[data-tray-toggle]'), badge: $('[data-badge]'), clean: $('[data-clean]'), sidebar: $('.life-sidebar'), notice: $('[data-notice]') };
 
   /** Write HTML only when it changed, so per-second updates never rebuild or reflow unchanged parts. */
   function setHtml(target, next) {
@@ -198,13 +241,13 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (!text) return;
     text = String(text);
     if (kind === 'good' && /\+₦/.test(text)) kind = 'earn';
-    const tone = Object.hasOwn(TOAST_ICONS, kind) ? kind : 'info';
+    const tone = TOAST_KINDS.includes(kind) ? kind : 'info';
     const showing = [...el.toasts.children].find((node) => node.dataset.text === text);
-    if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.textContent = TOAST_ICONS[tone]; } return; }
+    if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.innerHTML = glyph(tone); } return; }
     const item = document.createElement('div');
     item.className = `life-toast is-${tone}`;
     item.dataset.text = text;
-    const mark = document.createElement('span'); mark.setAttribute('aria-hidden', 'true'); mark.textContent = TOAST_ICONS[tone];
+    const mark = document.createElement('span'); mark.setAttribute('aria-hidden', 'true'); mark.innerHTML = glyph(tone);
     const body = document.createElement('span'); body.textContent = text;
     item.append(mark, body);
     el.toasts.append(item);
@@ -219,7 +262,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
    */
   function placeToasts() {
     const narrow = globalThis.matchMedia?.('(max-width: 1000px)').matches;
-    const rows = narrow && !dialog.open ? [el.sidebar.querySelector('.life-quick'), el.slots.alert, el.slots.goal] : [];
+    const rows = dialog.open ? [] : [el.notice, ...(narrow ? [el.sidebar.querySelector('.life-quick'), el.slots.alert, el.slots.goal] : [])];
     const bottom = Math.max(0, ...rows.map((node) => node?.getBoundingClientRect().bottom || 0));
     if (bottom > 0) el.toasts.style.setProperty('--toast-top', `${Math.round(bottom + 6)}px`);
     else el.toasts.style.removeProperty('--toast-top');
@@ -234,6 +277,24 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
   mountToasts();
 
+  /**
+   * The in-game phone: the home screen and every app opened inside it are drawn by
+   * src/ui/phone/phone.js. Its code is not part of the first download: it is fetched as soon as the
+   * shell exists (the HUD is already on screen) and stands in for this placeholder when it arrives.
+   * A Phone sheet asked for before then is opened the moment the code is here.
+   */
+  let escAt = 0, phoneLoading = null;
+  let phone = { open: false, ready: false, hosts: () => false, render: () => false, unmount() {}, back: () => false, focus() {}, destroy() {} };
+  function loadPhone() {
+    phoneLoading ??= import('./phone/phone.js').then((module) => {
+      phone = module.createPhone({ dialog, content: dialogContent, panels,
+        host: { api, panelHtml: (panel, params) => panelHtml(panel, params), bindPanels: (container, params) => bindPanels(container, params), open: (id, params) => open(id, params), close: () => close(), helpHtml: () => helpHtml() } });
+      phone.ready = true;
+    }).catch((error) => { phoneLoading = null; throw error; });
+    return phoneLoading;
+  }
+  loadPhone().catch((error) => console.error('The phone could not be loaded:', error));
+
   /** The reason the open sheet may not be closed yet (a panel whose required() still returns one), or null. */
   function lockOf() {
     if (sheet?.kind !== 'panel' || !state || !view) return null;
@@ -247,7 +308,14 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   function open(id, params) {
     const lock = lockOf(), before = sheetKey();
     if (lock && id !== lock.panel.id && byId.get(id)?.role !== 'session-gate') { toast(lock.reason); return false; }
-    if (id === 'phone' || id === 'help') sheet = { kind: id };
+    // The phone's code is still on its way: open this as soon as it is here (it is requested at start, so this is rare).
+    if (!phone.ready && (id === 'phone' || byId.get(id)?.placement === 'phone')) {
+      loadPhone().then(() => open(id, params), () => toast('The phone could not be loaded. Check your connection and try again.', 'error'));
+      return true;
+    }
+    // Anything opened while the phone is up stays in the phone (see src/ui/phone/phone.js).
+    const inPhone = phone.hosts(sheet);
+    if (id === 'phone' || id === 'help') sheet = { kind: id, from: inPhone ? 'phone' : null };
     else if (id === 'sim') sheet = { kind: 'sim', tab: params?.tab || sheet?.tab || placed('sim-tab')[0]?.id };
     else {
       const panel = byId.get(id);
@@ -256,20 +324,20 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       if (reason) { toast(reason, 'error'); return false; }
       if (panel.placement === 'nav') { closeDialog(); setTray(false); setMode(id, params); return true; }
       if (panel.placement === 'hud') return false;
-      if (panel.placement === 'sim-tab') sheet = { kind: 'sim', tab: id, params };
-      else sheet = { kind: 'panel', id, params, from: sheet?.kind === 'phone' || sheet?.from === 'phone' ? 'phone' : null };
+      if (panel.placement === 'sim-tab' && !inPhone) sheet = { kind: 'sim', tab: id, params };
+      else sheet = { kind: 'panel', id, params, from: inPhone ? 'phone' : null };
     }
     setTray(false);
     html.delete(dialogContent);
     renderSheet();
     if (state) renderCoach();
-    if (!dialog.open) dialog.showModal();
+    if (!dialog.open) { dialog.showModal(); phone.focus(); }
     // A different screen starts at its top; a form that redraws itself by re-opening keeps its place.
     if (sheetKey() !== before) dialogContent.scrollTop = 0;
     mountToasts();
     return true;
   }
-  function closeDialog() { sheet = null; if (dialog.open) dialog.close(); mountToasts(); }
+  function closeDialog() { sheet = null; phone.unmount(); if (dialog.open) dialog.close(); mountToasts(); }
   function close() {
     const lock = lockOf();
     if (lock) { toast(lock.reason); return; }
@@ -278,11 +346,21 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
   // Esc on a modal dialog raises 'cancel'; a required panel refuses it. Browsers let a second Esc
   // through regardless, so a required panel that gets closed is put straight back.
-  dialog.addEventListener('cancel', (event) => { const lock = lockOf(); if (lock) { event.preventDefault(); toast(lock.reason); } });
-  dialog.addEventListener('close', () => {
-    if (lockOf()) { html.delete(dialogContent); renderSheet(); dialog.showModal(); mountToasts(); return; }
-    sheet = null; html.delete(dialogContent); mountToasts();
+  dialog.addEventListener('cancel', (event) => {
+    const lock = lockOf();
+    if (lock) { event.preventDefault(); toast(lock.reason); }
+    // The phone goes back one level per Esc / back gesture. The keydown handler usually got there first (escAt).
+    else if (phone.open) { event.preventDefault(); if (performance.now() - escAt > 120) phone.back(); }
   });
+  dialog.addEventListener('close', () => {
+    if (dialog.open) return; // closed and opened again in the same turn: the new sheet stands
+    if (lockOf()) { html.delete(dialogContent); renderSheet(); dialog.showModal(); mountToasts(); return; }
+    sheet = null; phone.unmount(); html.delete(dialogContent); mountToasts();
+  });
+  // A tap outside the sheet (or outside the phone) closes it; a press that began inside does not.
+  let pressedOutside = false;
+  dialog.addEventListener('pointerdown', (event) => { pressedOutside = event.target === dialog; });
+  dialog.addEventListener('click', (event) => { if (event.target === dialog && pressedOutside) close(); pressedOutside = false; });
 
   function setMode(next, params) {
     mode = next === 'venue' || byId.get(next)?.placement === 'nav' ? next : 'venue';
@@ -312,13 +390,25 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
 
   const sheetHead = (title, { back = false, extra = '' } = {}) => `<header class="sheet-head">${back ? `<button class="sheet-back" data-open="phone" aria-label="Back to phone">${icon('back')}</button>` : ''}${extra}<h2>${title}</h2></header>`;
 
+  /** How to play: the Help app in the phone, and the help sheet (the ? key) outside it. */
+  function helpHtml() {
+    const card = (name, title, text) => `<li><i aria-hidden="true">${glyph(name)}</i><div><b>${title}</b><span>${text}</span></div></li>`;
+    return `<ul class="help-steps">${card('home', 'Do things', 'Pick a spot in the venue panel, then an activity. It takes real seconds and finishes on the server even if you close the tab.')}${card('map', 'Go places', 'Open the Map to travel. Every fare, trip time and closing hour is shown before you go.')}${card('phone', 'Use your phone', 'Jobs, Bank, Messages and every other app live in the Phone (P). Red badges mean something is waiting.')}${card('person', 'Look after your Sim', 'The six bars are your needs. Tap your avatar for your profile, goals, skills and people.')}</ul>
+      <p class="help-note">The <b>More</b> button holds the weather, the gem hunt, messages and the city switch. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p>
+      <p class="help-note">${view.connected ? 'Your progress is saved on this server under this device session. It is not a password-protected account, so keep your cookies.' : 'You are not connected: what you see is the last saved copy, and nothing changes until the connection is back.'}</p>
+      <h3>Keyboard</h3><dl class="help-keys">${shortcutRows().map((row) => `<div><dt><kbd>${esc(row.label)}</kbd></dt><dd>${esc(row.description)}</dd></div>`).join('')}</dl>
+      <button class="ui-button is-block" data-open="support">Report a problem</button>`;
+  }
+
   function renderSheet(force = true) {
     if (!sheet || !state) return;
+    // The Phone — its home screen, its apps and Help opened from it — draws itself (src/ui/phone/phone.js).
+    const wasPhone = phone.open;
+    if (phone.render(state, view, sheet, force)) { dialog.removeAttribute('data-locked'); return; }
+    if (wasPhone) html.delete(dialogContent);
     let body = '';
-    if (sheet.kind === 'phone') {
-      body = `${sheetHead('Phone')}<div class="phone-grid">${placed('phone').map((panel) => { const reason = gate(panel); return `<button class="phone-app" data-open="${esc(panel.id)}" ${reason ? `disabled title="${esc(reason)}"` : ''}><span aria-hidden="true">${esc(panel.icon || '📱')}</span>${esc(panel.title)}</button>`; }).join('')}<button class="phone-app" data-community><span aria-hidden="true">💬</span>Community</button><button class="phone-app" data-open="help"><span aria-hidden="true">❓</span>Help</button></div>`;
-    } else if (sheet.kind === 'help') {
-      body = `${sheetHead('How to play')}<div class="sheet-body"><p>Pick a spot in the venue panel, then an activity. Activities take real seconds and finish on the server even if you close the tab. Open Map to travel, Phone for apps, and your avatar for your Sim.</p><p>The <b>☰ More</b> button holds the weather, the gem hunt, messages, the city switch and this help. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p><p>${view.connected ? 'Your progress is saved on this server under this device session — it is not a password-protected account, so keep your cookies.' : 'You are offline: what you see is the last saved state, and nothing changes until you reconnect.'}</p><h3>Keyboard</h3><dl class="help-keys">${shortcutRows().map((row) => `<div><dt><kbd>${esc(row.label)}</kbd></dt><dd>${esc(row.description)}</dd></div>`).join('')}</dl></div>`;
+    if (sheet.kind === 'help') {
+      body = `${sheetHead('How to play')}<div class="sheet-body">${helpHtml()}</div>`;
     } else if (sheet.kind === 'sim') {
       const tabs = placed('sim-tab');
       const current = tabs.find((panel) => panel.id === sheet.tab) || tabs[0];
@@ -347,14 +437,33 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
 
   // ---- HUD (shell-owned) ----------------------------------------------------------------
+  /** The connection state the view reports; older hosts that send none are read from `connected`. */
+  const linkOf = () => (view.connected ? 'online' : Object.hasOwn(LINKS, view.link) ? view.link : 'unreachable');
   function renderSaved() {
     if (!view) return;
-    const net = view.net?.text || '';
-    setHtml(el.saved, !view.connected
-      ? `<button class="life-saved is-off" data-menu="reconnect" title="${esc(net)}"><i aria-hidden="true">⚠</i><span>Offline · Reconnect</span></button>`
-      : view.storage ? `<span class="life-saved is-off is-unsaved" role="status" title="${esc(view.storage.reason)}"><i aria-hidden="true">⚠</i><span>Not saving</span></span>`
-      : saving > 0 ? '<span class="life-saved is-saving" title="Sending your action to the server"><i aria-hidden="true">↻</i><span>Saving…</span></span>'
-        : `<span class="life-saved is-ok" title="${esc(net || 'Progress saved on the server')}"><i aria-hidden="true">✓</i><span>Saved</span></span>`);
+    const net = view.net?.text || '', link = LINKS[linkOf()];
+    const pill = (tone, name, text, title) => `<span class="life-saved is-${tone}" role="status" title="${esc(title)}"><i aria-hidden="true">${glyph(name)}</i><span>${esc(text)}</span></span>`;
+    setHtml(el.saved, link
+      ? link.tone === 'wait' && !link.gate ? pill('saving', link.icon, link.pill, net)
+        : `<button class="life-saved is-off${link.tone === 'wait' ? ' is-wait' : ''}" ${link.gate ? `data-open-gate="${link.gate}"` : 'data-menu="reconnect"'} title="${esc(net)}"><i aria-hidden="true">${glyph(link.icon)}</i><span>${esc(link.pill)}</span></button>`
+      : view.storage ? pill('off is-unsaved', 'error', 'Not saving', view.storage.reason)
+        : saving > 0 ? pill('saving', 'refresh', 'Saving…', 'Sending your action to the server')
+          : pill('ok', 'good', 'Saved', net || 'Progress saved on the server'));
+    renderNotice();
+  }
+  /**
+   * The notice under the top bar: shown for as long as the game cannot be played or saved, with
+   * what happened in plain words and the action that resolves it. It is measured once when it
+   * changes so the HUD column starts below it.
+   */
+  function renderNotice() {
+    const link = LINKS[linkOf()];
+    const info = link?.title ? link : !link && view.storage ? { ...STORAGE_NOTICE, text: `${view.storage.reason} You are still connected; nothing new is kept until it can save again.` } : null;
+    const body = info ? `<i aria-hidden="true">${glyph(link ? 'cloud-off' : 'error')}</i><div><strong>${esc(info.title)}</strong><p>${esc(info.text)}</p></div><span class="life-notice-actions">${info.actions.map(([label, attrs, primary]) => `<button class="ui-button${primary ? ' is-primary' : ''}" ${attrs}>${esc(label)}</button>`).join('')}</span>` : '';
+    if (!setHtml(el.notice, body)) return;
+    el.notice.classList.toggle('is-storage', Boolean(info) && !link);
+    root.classList.toggle('has-notice', Boolean(info));
+    root.style.setProperty('--notice-h', info ? `${Math.ceil(el.notice.getBoundingClientRect().height)}px` : '0px');
   }
   function setTray(next) {
     if (trayOpen === next) return;
@@ -372,12 +481,13 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
   function menuHtml() {
     const atHome = state.location === 'home', net = view.net || {};
-    return `<p class="life-brand"><strong>Join<span>Allworld</span></strong><small>${view.connected ? 'City beta' : 'Offline · read-only'}</small></p>
-      <button data-menu="city"><span aria-hidden="true">🌍</span><span><b>${esc(view.city?.name || 'City')}</b><small>Switch city on the world map</small></span></button>
-      <button data-menu="locate"><span aria-hidden="true">📍</span><span><b>Use my location</b><small>Find the nearest city</small></span></button>
-      <button data-community><span aria-hidden="true">💬</span><span><b>Community</b><small>${atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue'}</small></span></button>
-      <button data-open="help"><span aria-hidden="true">❓</span><span><b>How to play</b><small>Tips and keyboard shortcuts</small></span></button>
-      <p class="life-net ${net.error ? 'is-error' : ''}" role="status">${esc(net.text || '')}</p>${view.connected ? '' : '<button class="life-menu-retry" data-menu="reconnect">Reconnect</button>'}`;
+    const link = LINKS[linkOf()];
+    return `<p class="life-brand"><strong>Join<span>Allworld</span></strong><small>${esc(link ? link.menu : 'City beta')}</small></p>
+      <button data-menu="city"><span aria-hidden="true">${glyph('globe')}</span><span><b>${esc(view.city?.name || 'City')}</b><small>Switch city on the world map</small></span></button>
+      <button data-menu="locate"><span aria-hidden="true">${glyph('pin')}</span><span><b>Use my location</b><small>Find the nearest city</small></span></button>
+      <button data-community><span aria-hidden="true">${glyph('community')}</span><span><b>Community</b><small>${atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue'}</small></span></button>
+      <button data-open="help"><span aria-hidden="true">${glyph('help')}</span><span><b>How to play</b><small>Tips and keyboard shortcuts</small></span></button>
+      <p class="life-net ${net.error ? 'is-error' : ''}" role="status">${esc(net.text || '')}</p>${link && link.tone === 'off' ? '<button class="life-menu-retry" data-menu="reconnect">Try again</button>' : ''}`;
   }
 
   // ---- venue panel (shell-owned) --------------------------------------------------------
@@ -400,7 +510,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const price = card.reward > 0 ? `+${money(card.reward)}` : card.cost > 0 ? money(card.cost) : 'Free';
     const unmet = Object.entries(card.minimumNeeds || {}).filter(([need, minimum]) => state.needs[need] < minimum).map(([need, minimum]) => `${cap(need)} ${Math.floor(state.needs[need])}/${minimum}`);
     const why = unavailable ? (card.requiresSkill ? `Needs ${cap(card.requiresSkill.id)} level ${card.requiresSkill.level}` : 'Unavailable in this preview')
-      : unmet.length ? `Needs ${unmet.join(', ')}` : blocked?.code === 'gig_limit' ? 'Today’s gigs are done · back at midnight' : blocked ? blocked.reason : offline ? 'Offline — reconnect to start' : '';
+      : unmet.length ? `Needs ${unmet.join(', ')}` : blocked?.code === 'gig_limit' ? 'Today’s gigs are done · back at midnight' : blocked ? blocked.reason : offline ? 'Not connected — cannot start now' : '';
     const busyWhy = !why && busy ? 'Finish or cancel what you are doing first' : '';
     // The card shows the short line; the tooltip and the screen-reader label carry the server's full sentence.
     const full = blocked?.code === 'gig_limit' ? blocked.reason : why || busyWhy;
@@ -425,7 +535,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const house = privateHome ? view.property?.house : null;
     const title = house?.label || venue.label, district = house?.district || venue.district;
     const ambient = view.travel?.destinations?.find((item) => item.id === state.location)?.ambient;
-    const line = !view.connected ? 'Offline · read-only until you reconnect' : `${privateHome ? '🔒 Private · ' : ''}${ambient || spot?.caption || 'Explore at your own pace'}`;
+    const line = !view.connected ? (LINKS[linkOf()]?.menu || 'Not connected · read-only') : `${privateHome ? '🔒 Private · ' : ''}${ambient || spot?.caption || 'Explore at your own pace'}`;
     const busyNote = state.activeAction && expanded ? '<p class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>' : '';
     // Where this spot lists paid gigs, the day's counter sits above them (view.travel.gigs; the limit is the server's).
     const gigs = view.travel?.gigs, gigIds = view.travel?.gigsHere || [];
@@ -510,7 +620,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     setHtml(el.coach, step ? `<div class="life-coach" role="note"><span aria-hidden="true">👉</span><p><b>Goal ${esc(goal.step)} of ${esc(goal.of)} · ${esc(goal.title)}</b>${esc(step.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
     for (const node of [...root.querySelectorAll('.is-coach'), ...dialogContent.querySelectorAll('.is-coach')]) node.classList.remove('is-coach');
     if (step?.target) root.querySelector(step.target)?.classList.add('is-coach');
-    if (step?.app && sheet?.kind === 'phone') dialogContent.querySelector(`[data-open="${step.app}"]`)?.classList.add('is-coach');
+    if (step?.app && sheet?.kind === 'phone') dialogContent.querySelector(`[data-ph-app="${step.app}"]`)?.classList.add('is-coach');
   }
 
   // ---- render ---------------------------------------------------------------------------
@@ -526,7 +636,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     el.mood.classList.toggle('is-uneasy', mood.tone === 'warn');
     el.mood.classList.toggle('is-bad', mood.tone === 'bad');
     el.mood.classList.toggle('is-neutral', mood.tone === 'neutral');
-    setText(el.name, `👤 ${state.name}`);
+    if (el.name.dataset.shown !== state.name) { el.name.dataset.shown = state.name; el.name.innerHTML = `${glyph('person')}<span>${esc(state.name)}</span>`; }
     renderSaved();
 
     // Wallet: a change is flashed and written out with its reason from the ledger.
@@ -630,7 +740,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   // ---- input ----------------------------------------------------------------------------
   function parse(text) { try { return text ? JSON.parse(text) : undefined; } catch { return undefined; } }
   async function onClick(event) {
-    const target = event.target.closest('[data-start],[data-cancel],[data-spot],[data-nav],[data-toggle-activities],[data-community],[data-tab],[data-action],[data-open],[data-close],[data-menu],[data-tray-toggle],[data-clean],[data-coach-off],[data-retry-panel]');
+    const target = event.target.closest('[data-start],[data-cancel],[data-spot],[data-nav],[data-toggle-activities],[data-community],[data-tab],[data-action],[data-open],[data-close],[data-menu],[data-tray-toggle],[data-clean],[data-coach-off],[data-retry-panel],[data-new-life],[data-open-gate]');
     if (!target || target.disabled || !(root.contains(target) || dialog.contains(target))) return;
     const data = target.dataset;
     if ('trayToggle' in data) { setTray(!trayOpen); return; }
@@ -638,6 +748,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if ('coachOff' in data) { coachOff = true; try { globalThis.localStorage?.setItem(COACH_KEY, '1'); } catch { /* still off for this visit */ } api.refresh(); return; }
     if ('retryPanel' in data) { const panel = byId.get(data.retryPanel); if (panel) { panel.failed = false; api.refresh(); } return; }
     if ('menu' in data) { setTray(false); host.menu?.(data.menu); return; }
+    // The connection notice: one tap starts a new life (the same event the session panel sends), or opens the session panel.
+    if ('newLife' in data) { window.dispatchEvent(new CustomEvent('jaw:start-life', { detail: { name: null } })); return; }
+    if ('openGate' in data) { const gatePanel = panels.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || byId.get('session'); if (gatePanel) open(gatePanel.id, { reason: data.openGate }); return; }
     if ('start' in data) { expanded = false; await api.command('activity', { id: data.start, ...(data.choice ? { choice: data.choice } : {}) }); }
     else if ('cancel' in data) await api.command('cancel');
     else if ('spot' in data) { expanded = true; await api.command('spot', { id: data.spot }); api.refresh(); }
@@ -692,6 +805,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       let handled = false;
       try { handled = showing()?.keys?.('cancel', api) === true; } catch (error) { console.error('Panel failed to handle Esc:', error); }
       if (handled) { event.preventDefault(); return; }
+      // In the phone Esc goes back one level: notifications → app → home screen → closed.
+      if (phone.open) { event.preventDefault(); escAt = performance.now(); phone.back(); return; }
       if (sheet || mode !== 'venue') close();
       else if (trayOpen) setTray(false);
       else if (clean) { setClean(false); api.refresh(); }
@@ -703,7 +818,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     else if (verb === 'toggle') { if (mode === 'venue') { if (clean) setClean(false); expanded = !expanded; api.refresh(); } }
     else if (verb === 'spot') { const spot = view.activities.spots[Number(arg) - 1]; if (spot && mode === 'venue' && !state.activeAction) { expanded = true; api.command('spot', { id: spot.id }).then(api.refresh); } }
     else if (verb === 'open') {
-      const isOpen = (sheet?.kind === arg) || (sheet?.kind === 'panel' && sheet.id === arg) || (sheet?.kind === 'sim' && sheet.tab === arg) || mode === arg;
+      const isOpen = (sheet?.kind === arg) || (sheet?.kind === 'panel' && sheet.id === arg) || (sheet?.kind === 'sim' && sheet.tab === arg) || mode === arg || (arg === 'phone' && phone.open);
       if (isOpen) close(); else open(arg);
     }
   }
@@ -717,6 +832,6 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     get mode() { return mode; },
     setMode,
     setExpanded(value) { expanded = Boolean(value); },
-    destroy() { el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); root.replaceChildren(); root.classList.remove('life-ui'); },
+    destroy() { phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

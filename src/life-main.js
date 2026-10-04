@@ -41,15 +41,16 @@ function refreshScene(){if(view.mode==='map')world.resize();else venue.resize()}
 function setMode(mode){view.mode=mode;view.selectedDestination=null;render();refreshScene()}
 function accept(next){const oldLocation=state.location;state=createLife(next);if(oldLocation!==state.location){venue.setLocation(state.location);view.mode='venue';community?.join(cityId,state.location)}save();render();if(oldLocation!==state.location)refreshScene();scheduleProgress();if(pendingWorkRoute&&state.location==='park'&&!state.activeAction){pendingWorkRoute=false;view.expanded=true;void command('spot','work')}}
 async function command(type,id,mode){
- if(busy)return;
+ if(busy){if(type==='travel')pendingWorkRoute=false;return false;}
  if(type==='cancel')pendingWorkRoute=false;
- if(!serverReady||!serverSession){status('Reconnect to save your action. Changes are paused while offline.',true);return}
+ if(!serverReady||!serverSession){if(type==='travel')pendingWorkRoute=false;status('Reconnect to save your action. Changes are paused while offline.',true);return false;}
  busy=true;
  try{
   const response=await api('/api/action',{method:'POST',body:JSON.stringify({actionId:Math.round(Date.now()+serverTimeOffset)+':'+crypto.randomUUID(),cityId,type,id,mode})});
   accept(response.state);
-  if(!response.ok)status(state.message,true);
- }catch(error){if(error.status===401)expiredSession();else{serverReady=false;status(error.message,true);render()}}
+  if(!response.ok){if(type==='travel')pendingWorkRoute=false;status(state.message,true)}
+  return response.ok;
+ }catch(error){if(type==='travel')pendingWorkRoute=false;if(error.status===401)expiredSession();else{serverReady=false;status(error.message,true);render()}return false;}
  finally{busy=false}
 }
 
@@ -59,7 +60,7 @@ const ui=createLifeUI($('life-overlay'),{
  onSpot:id=>{if(VENUES[state.location].spots[id]){view.expanded=true;command('spot',id)}},
  onNavigate:destination=>{if(destination==='map')setMode('map');else if(destination==='home'){setMode('venue');if(state.location!=='home')command('travel','home','trek')}else if(destination==='phone')openPhone()},
  onTravel:(destination,mode)=>{view.selectedDestination=null;command('travel',destination,mode)},
- onPanel:panel=>{if(panel==='first-activity'){if(state.location==='home'){view.expanded=true;command('spot','kitchen')}else if(state.location!=='park'){setMode('map');view.selectedDestination=destinations()[0];render()}else if(!state.job)openJobs();else if(state.needs.energy<20||state.needs.hunger<20){setMode('venue');command('travel','home','trek')}else{view.expanded=true;command('spot','work')}}else if(panel==='activities'){view.expanded=!view.expanded;render()}else if(panel==='sim')openSim();else if(panel==='jobs')openPhone();else if(panel==='people')toggleCommunity();else notice('Your first few minutes','Choose Under the trees, then Chill. The activity takes 11 seconds and restores Energy and Fun. Open Map to choose Lagos or Ibadan, or visit another place. Use Community to meet people in the same place. Voice starts only when you choose Join voice.')},
+ onPanel:(panel,intent)=>{if(panel==='first-activity'){if(state.activeAction)return;if(intent==='bedroom'||intent==='kitchen'){view.expanded=true;command('spot',intent)}else if(intent==='work'){setMode('venue');if(state.location==='park'){view.expanded=true;command('spot','work')}else{pendingWorkRoute=true;command('travel','park','trek')}}else if(intent==='home'){setMode('venue');command('travel','home','trek')}else if(intent==='jobs')openJobs();else{setMode('map');view.selectedDestination=destinations()[0];render()}}else if(panel==='activities'){view.expanded=!view.expanded;render()}else if(panel==='sim')openSim();else if(panel==='jobs')openPhone();else if(panel==='people')toggleCommunity();else notice('Your first few minutes','Choose Under the trees, then Chill. The activity takes 11 seconds and restores Energy and Fun. Open Map to choose Lagos or Ibadan, or visit another place. Use Community to meet people in the same place. Voice starts only when you choose Join voice.')},
 });
 function openSim(){modal(`<h2>Your Sim</h2><p>${escapeText(identity.name)} · ${cities[cityId].name}</p>`+Object.entries(state.needs).map(([key,value])=>`<div class="sim-need"><span>${key[0].toUpperCase()+key.slice(1)}</span><meter min="0" max="100" value="${value}"></meter><b>${Math.round(value)}</b></div>`).join('')+'<p class="preview-note">Mood thresholds and starting values are provisional beta settings.</p>')}
 function openPhone(){modal('<h2>Phone</h2><div class="phone-menu"><button id="phone-jobs">💼 Jobs</button><button id="phone-community">Community</button><button id="phone-help">Saved progress</button></div>');$('phone-community').onclick=()=>{dialog.close();toggleCommunity(true)};$('phone-jobs').onclick=openJobs;$('phone-help').onclick=()=>notice('Your progress',serverSession?'Your device session is saved on this server. Actions and cash settle together, and duplicate requests cannot charge twice. This is a device identity, not a password-protected account. Do not clear cookies if you want to keep this identity.':'You are in a local preview. Browser storage keeps this preview on this device. Connect to the server to create a separate saved device session.')}

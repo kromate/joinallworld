@@ -54,6 +54,11 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#182a25;fon
 .life-progress-note{grid-column:1/-1;font-size:11px;color:#5b655f}
 @media(max-width:540px){.life-bottom.has-progress .life-venue-panel{max-height:calc(100dvh - 430px)}}
 
+/* A disabled card keeps its explanation readable; only the decorative parts are dimmed. */
+.life-ui .life-action:disabled{opacity:1}
+.life-action:disabled .life-action-meta,.life-action:disabled .life-action-title,.life-action:disabled .life-tags>span:not(.life-locked){opacity:.5}
+.life-action.is-blocked{border-color:#e3c7a6!important;box-shadow:none}
+
 .life-job.is-active{background:#eef8f1;border-color:#8fc7a4!important}.life-ui .life-job:disabled{opacity:1;cursor:default}
 
 /* Dialog primary actions: readable contrast and a full touch target. */

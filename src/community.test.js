@@ -170,7 +170,7 @@ test('community microphone safeguards, spatial playback, and multi-tab venue rev
   revokedWs.close();const socketCount=WS.instances.length;await els['.community-retry'].fire('click');assert.equal(WS.instances.length,socketCount,'Reconnect cannot automatically rejoin revoked room');
   revokedApi.join('lagos','park');assert.equal(WS.instances.length,socketCount+1,'explicit legitimate room join can reconnect same room');
   const renewedWs=WS.instances.at(-1);renewedWs.open();renewedWs.receive({type:'presence',members:[{id:'a',name:'Alex',enabled:false}]});
-  assert.equal(els['.community-join-voice'].disabled,false);assert.equal(revokedFactoryCalls,1,'membership renewal never automatically recaptures audio');
+  assert.equal(els['.community-join-voice'].disabled,false);assert.equal(els['.community-connection'].textContent,'Connected','explicit same-room recovery restores connection label');assert.equal(revokedFactoryCalls,1,'membership renewal never automatically recaptures audio');
   assert.equal(renewedWs.sent.filter(message=>message.type==='chat').length,0,'stale pending chat never retries after renewed membership');
   revokedApi.destroy();
 });

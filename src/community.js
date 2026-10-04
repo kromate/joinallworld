@@ -273,7 +273,9 @@ function closePlaybackContext() {
     if (message.type === 'presence') {
       const wasRevoked = roomRevoked; members = message.members || [];
       if (roomRevoked && !members.some((member) => member.id === session?.id)) return;
-      roomRevoked = false; if (wasRevoked) { feedback(''); el.connection.textContent = connected ? 'Connected' : 'Connecting…'; } el.compose.querySelector('input').disabled = false; el.compose.querySelector('button').disabled = false;
+      roomRevoked = false; if (wasRevoked) feedback('');
+      if (connected && members.some((member) => member.id === session?.id)) el.connection.textContent = 'Connected';
+      el.compose.querySelector('input').disabled = false; el.compose.querySelector('button').disabled = false;
       rejectedPeers.clear(); roomReady = true; renderMembers(); retryPending(); syncPeers(); voiceStatus();
     } else if (message.type === 'chat') {
       if (seen.has(message.id)) return;

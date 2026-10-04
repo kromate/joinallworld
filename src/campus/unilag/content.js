@@ -10,6 +10,14 @@ import { ANCHORS } from './layout.js';
 
 const betaNote = 'Original beta value for the fictional campus layer; not a university policy.';
 
+/** @typedef {Record<string, number>} NumericMap */
+/** @typedef {{id:string,label:string,icon:string,duration:number,cost:number,effects:NumericMap,xp:NumericMap,tags:string[],cooldown?:number,beta:boolean,note:string}} BetaActivity */
+/** @typedef {{id:string,label:string,caption:string,activities:BetaActivity[],integration?:{requested:string}}} CampusSpot */
+/** @typedef {{id:string,venue:string,name:string,role:string,emoji:string,quotes:string[],at:string,beta:boolean}} CampusNpc */
+/** @typedef {{id:string,label:string,description:string,venue:string,spot:string}} DiscoveryItem */
+/** @typedef {{id:string,label:string,district:string,icon:string,description:string,category:string,zone:string,map:{x:number,y:number},scene:{kind:string},hours:{open:number,close:number},ambient:string[],spots:Record<string,CampusSpot>,beta:boolean,note:string}} CampusVenue */
+
+/** @param {string} id @param {string} label @returns {BetaActivity} */
 const photograph = (id, label) => ({
   id: `photograph-${id}`,
   label: `Photograph ${label}`,
@@ -24,6 +32,7 @@ const photograph = (id, label) => ({
   note: betaNote,
 });
 
+/** @param {string} id @param {string} label @param {string} caption @param {BetaActivity[]} [activities] @returns {CampusSpot} */
 const spot = (id, label, caption, activities = []) => ({
   id,
   label,
@@ -31,10 +40,12 @@ const spot = (id, label, caption, activities = []) => ({
   activities: [photograph(id, label), ...activities],
 });
 
+/** @param {string} id @param {string} label @param {string} icon @param {number} duration @param {number} cost @param {NumericMap} effects @param {NumericMap} xp @param {string[]} tags @param {string} [note] @returns {BetaActivity} */
 const activity = (id, label, icon, duration, cost, effects, xp, tags, note = betaNote) => ({
   id, label, icon, duration, cost, effects, xp, tags, beta: true, note,
 });
 
+/** @type {Record<string, BetaActivity[]>} */
 const special = {
   cafeteria: [activity('eat-2001-cafeteria', 'Eat at 2001 Cafeteria', '🍛', 8, 350, { hunger: 30 }, {}, ['food'])],
   library: [activity('read-library', 'Read and practise coding', '📚', 12, 0, { energy: -3, fun: 5 }, { coding: 8 }, ['study'])],
@@ -52,13 +63,14 @@ const special = {
   'central-mosque': [activity('mosque-worship', 'Worship at the mosque', '🕌', 12, 0, { fun: 8, social: 6 }, {}, ['worship'])],
 };
 
-/** @type {Record<string, {id:string,label:string,caption:string,activities:object[]}>} */
+/** @type {Record<string, CampusSpot>} */
 export const spots = Object.fromEntries(Object.entries(ANCHORS).map(([id, anchor]) => [
   id,
   spot(id, anchor.label, `A beta campus landmark at ${anchor.label}.`, special[id] ?? []),
 ]));
 
 // These links describe existing phone surfaces. The bank landmark does not implement deposits.
+/** @type {Readonly<{bank:{id:string,label:string,target:string}}>} */
 export const UI_LINKS = Object.freeze({
   bank: Object.freeze({ id: 'bank', label: 'Open Bank in phone', target: 'phone://bank' }),
 });
@@ -67,7 +79,7 @@ export const UI_LINKS = Object.freeze({
 spots['student-union'].caption = 'Meet friends, join a club or take a seat at the tables.';
 spots['student-union'].integration = Object.freeze({ requested: 'table-game-framework' });
 
-/** @type {{id:string,label:string,description:string,venue:string,spot:string}[]} */
+/** @type {ReadonlyArray<DiscoveryItem>} */
 export const DISCOVERY_TRAIL = Object.freeze([
   { id: 'main-gate', label: 'Enter through Main Gate', description: 'Start the Akoka walk.', venue: 'unilag', spot: 'main-gate' },
   { id: 'new-hall', label: 'Find New Hall', description: 'Visit the northern residence zone.', venue: 'unilag', spot: 'cafeteria' },
@@ -79,7 +91,7 @@ export const DISCOVERY_TRAIL = Object.freeze([
   { id: 'student-union', label: 'Find Student Union', description: 'Meet the students by the tables.', venue: 'unilag', spot: 'student-union' },
 ]);
 
-/** @type {Record<string, {id:string,venue:string,name:string,role:string,emoji:string,quotes:string[],at:string,beta:boolean}>} */
+/** @type {Record<string, CampusNpc>} */
 export const CAMPUS_NPCS = Object.fromEntries([
   ['aunty-ngozi', { id: 'aunty-ngozi', venue: 'unilag', name: 'Aunty Ngozi', role: 'Food seller at 2001', emoji: '👩🏾', quotes: ['The queue moves when you greet people.', 'Eat first, then face the lecture.'], at: 'cafeteria', beta: true }],
   ['tunde-code', { id: 'tunde-code', venue: 'unilag', name: 'Tunde', role: 'Engineering student', emoji: '🧑🏾‍💻', quotes: ['The bug is somewhere in the cable.', 'Try the smaller loop first.'], at: 'engineering', beta: true }],
@@ -92,9 +104,10 @@ export const CAMPUS_NPCS = Object.fromEntries([
 ]);
 
 /** Plain-text share label for the campus discovery card; no HTML is generated. */
+/** @param {DiscoveryItem|undefined} trail @returns {string} */
 export const shareLabel = (trail) => `Share ${trail?.label ?? 'UNILAG discovery'}`;
 
-/** @type {{id:string,label:string,district:string,category:string,zone:string,map:{x:number,y:number},scene:{kind:string},hours:{open:number,close:number},spots:typeof spots,beta:boolean,note:string}} */
+/** @type {CampusVenue} */
 export const UNILAG_VENUE = {
   id: 'unilag',
   label: 'University of Lagos',

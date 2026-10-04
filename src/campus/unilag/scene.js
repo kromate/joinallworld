@@ -60,6 +60,7 @@ export function buildUnilag(kit, venue = {}) {
   nearMarker.visible=goalMarker.visible=false;group.add(nearMarker,goalMarker);
   const moveMark=(mark,at)=>{mark.visible=!!at;if(at)mark.position.set(at.x,.12,at.z);return true;};
   const decorations = new Map();
+  const clearOfRoad=(x,z,margin)=>ROADS.every(road=>road.points.slice(1).every(([bx,bz],i)=>{const [ax,az]=road.points[i],dx=bx-ax,dz=bz-az,t=Math.max(0,Math.min(1,((x-ax)*dx+(z-az)*dz)/(dx*dx+dz*dz||1)));return Math.hypot(x-ax-dx*t,z-az-dz*t)>road.width/2+margin;}));
   // Props live on conservative blocked perimeter strips. They cannot obstruct a route.
   for (const zone of ZONES) {
     const [x0,z0,x1,z1] = zone.bounds;
@@ -67,7 +68,7 @@ export function buildUnilag(kit, venue = {}) {
     const grid = navigation.grids.get(zone.id);
     for (let i = 0; i < 28; i++) {
       const x = x0 + 10 + (i * 47 % Math.max(1,x1-x0-20)), z = z0 + 8 + (i * 61 % Math.max(1,z1-z0-16));
-      if (grid?.free(x,z) && !Object.values(ANCHORS).some(a=>Math.hypot(a.x-x,a.z-z)<10) && !BUILDINGS.some(b => Math.abs(x-b.x)<b.w/2+5 && Math.abs(z-b.z)<b.d/2+5)) {
+      if (grid?.free(x,z) && clearOfRoad(x,z,4) && !Object.values(ANCHORS).some(a=>Math.hypot(a.x-x,a.z-z)<10) && !BUILDINGS.some(b => Math.abs(x-b.x)<b.w/2+5 && Math.abs(z-b.z)<b.d/2+5)) {
         items.tree.push({x,y:0,z});
       }
     }
@@ -75,7 +76,7 @@ export function buildUnilag(kit, venue = {}) {
     const first = BUILDINGS.find(b => b.zone===zone.id && !b.interior && b.kind !== 'gate' && b.kind !== 'open-space');
     if(first) {
       // These are parked on a visual forecourt, exported as additional obstacles below.
-      for(let i=0;i<3;i++) items.car.push({x:first.x-first.w/2+3+i*4,y:0,z:first.z+first.d/2+8});
+      for(let i=0;i<3;i++){const x=first.x-first.w/2+3+i*4,z=first.z+first.d/2+8;if(clearOfRoad(x,z,3))items.car.push({x,y:0,z});}
     }
     for (const p of zone.portals.slice(0,2)) {
       const x=p.at.x+5,z=p.at.z+5;

@@ -24,6 +24,12 @@ export function drawBuilding(batch, b, detail, windows) {
     }
     return;
   }
+  if (b.id === 'swimming-pool') {
+    box(0,.02,0,w+2,.04,d+2,'#d4d7c0');
+    box(0,.06,0,w,.04,d,'#539cae');
+    for(let lane=-2;lane<=2;lane++)box(lane*w/6,.095,0,.08,.025,d,'#eef0cc');
+    return;
+  }
   if (b.kind === 'sports' || b.kind === 'court') {
     box(0, .025, 0, w, .05, d, b.kind === 'sports' ? '#629362' : '#bd7353');
     for (const side of [-1, 1]) {

@@ -222,7 +222,7 @@ export const BUILDINGS = [
  * @type {Record<string, CampusAnchor>}
  */
 export const ANCHORS = Object.fromEntries(BUILDINGS.map((building) => {
-  const openSpace = building.kind === 'open-space';
+  const openSpace = building.kind === 'open-space' && !['swimming-pool','amphitheatre'].includes(building.id);
   const z = openSpace
     ? building.z
     : building.z + building.d / 2 + (building.interior ? -1.25 : 1.25);
@@ -233,6 +233,8 @@ export const ANCHORS = Object.fromEntries(BUILDINGS.map((building) => {
   }];
 }));
 
+ANCHORS.people = {...ANCHORS['student-union'],id:'people',label:'Campus people'};
+
 /**
  * Broad visual road guides. Walking is allowed throughout campus zones; these
  * routes document the intended portal approaches and are kept clear of solid
@@ -241,13 +243,15 @@ export const ANCHORS = Object.fromEntries(BUILDINGS.map((building) => {
 export const ROADS = [
   { id: 'main-gate-approach', label: 'Main Gate Approach', kind: 'road', width: 4, points: [[-286, -90], [-286, -122], [-200, -122], [-200, -160], [-100, -160]] },
   { id: 'northern-spine', label: 'Northern Spine', kind: 'road', width: 6, points: [[-100, -160], [0, -160], [120, -160], [120, -110], [295, -110], [295, -160], [330, -160]] },
-  { id: 'western-spine', label: 'Western Spine', kind: 'road', width: 6, points: [[-200, -80], [-200, 45], [-215, 45], [-215, 78], [-200, 80]] },
+  { id: 'western-spine', label: 'Western Spine', kind: 'road', width: 6, points: [[-200, -80], [-200, 0], [-200, 45], [-215, 45], [-215, 78], [-200, 80]] },
   { id: 'second-gate-approach', label: 'Second Gate Approach', kind: 'road', width: 4, points: [[-282, 232], [-282, 200], [-215, 200], [-215, 150], [-100, 150], [-100, 160]] },
-  { id: 'central-spine', label: 'Central Spine', kind: 'road', width: 6, points: [[0, -80], [0, 15], [-20, 15], [-20, 55], [0, 55], [0, 80]] },
-  { id: 'eastern-spine', label: 'Eastern Spine', kind: 'road', width: 6, points: [[200, -80], [190, -70], [190, 10], [170, 10], [170, 55], [190, 65], [200, 80]] },
-  { id: 'middle-crossing', label: 'Middle Crossing', kind: 'road', width: 6, points: [[-200, 0], [-100, 0], [0, 0], [100, 0], [170, 0], [200, 0], [300, 0], [330, 0]] },
+  { id: 'central-spine', label: 'Central Spine', kind: 'road', width: 6, points: [[0, -80], [0, 0], [0, 15], [-20, 15], [-20, 55], [0, 55], [0, 80]] },
+  { id: 'eastern-spine', label: 'Eastern Spine', kind: 'road', width: 6, points: [[200, -80], [190, -70], [190, 0], [190, 10], [170, 10], [170, 55], [190, 65], [200, 80]] },
+  { id: 'middle-crossing', label: 'Middle Crossing', kind: 'road', width: 6, points: [[-200, 0], [-100, 0], [0, 0], [100, 0], [170, 0], [190, 0], [200, 0], [300, 0], [330, 0]] },
   { id: 'southern-crossing', label: 'Southern Crossing', kind: 'road', width: 6, points: [[-100, 160], [-90, 150], [0, 150], [90, 150], [100, 160], [200, 160], [300, 160], [330, 160]] },
   { id: 'beta-new-hall-link', label: 'Beta Campus Link', kind: 'road', width: 6, points: [[0, -160], [0, -80]], source: 'Synthetic internal beta road; not real-world navigation data' },
+  { id: 'beta-main-west-link', label: 'Beta Campus Link', kind: 'road', width: 6, points: [[-200, -122], [-200, -80]], source: 'Synthetic internal beta road; not real-world navigation data' },
+  { id: 'beta-new-hall-services', label: 'Beta Campus Link', kind: 'road', width: 6, points: [[0, -80], [0, -90], [90, -90], [120, -110]], source: 'Synthetic internal beta road; not real-world navigation data' },
   { id: 'beta-southwest-link', label: 'Beta Campus Link', kind: 'road', width: 6, points: [[-200, 80], [-215, 95], [-215, 150]], source: 'Synthetic internal beta road; not real-world navigation data' },
   { id: 'beta-southeast-link', label: 'Beta Campus Link', kind: 'road', width: 6, points: [[200, 80], [200, 160]], source: 'Synthetic internal beta road; not real-world navigation data' },
   { id: 'beta-lagoon-link', label: 'Beta Lagoon Link', kind: 'road', width: 6, points: [[330, -160], [330, 0], [330, 160]], source: 'Synthetic internal beta road; not real-world navigation data' },

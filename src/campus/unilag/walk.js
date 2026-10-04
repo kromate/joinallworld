@@ -20,6 +20,9 @@ export function footprintOf(building) {
   const { x, z, w, d, kind, interior } = building;
   const x0 = x - w / 2, x1 = x + w / 2;
   const z0 = z - d / 2, z1 = z + d / 2;
+  if (building.id === 'swimming-pool') return [[x0,z0,x1,z1]];
+  if (building.id === 'amphitheatre') return [[x-w/2,z-7.5,x+w/2,z+.8]];
+  if (building.id === 'sports-centre') return [[x-w*.4,z-d/2-5.5,x+w*.4,z-d/2-1.5],...[-1,1].flatMap(side=>[-3,3].map(offset=>[x+side*(w/2-1)-.2,z+offset-.2,x+side*(w/2-1)+.2,z+offset+.2]))];
   if (kind === 'open-space') return [];
   if (kind === 'gate') {
     const pillarWidth = w * 0.15;

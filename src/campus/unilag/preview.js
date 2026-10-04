@@ -4,6 +4,7 @@ import { createKit } from '../../scene/kit.js';
 import { createWalker } from '../../scene/movement.js';
 import { createMotionLoop } from '../../scene/motion-loop.js';
 import { buildUnilag } from './scene.js';
+import { buildShuttle, SHUTTLE_STOPS, shuttleRoute, shuttlePose } from './shuttle.js';
 import { CAMPUS_NPCS } from './content.js';
 import { BUILDINGS, ZONES, ROADS, ANCHORS, ENTRANCE } from './layout.js';
 
@@ -16,12 +17,16 @@ world.add(campus.group);
 campus.setCrowd(Object.values(CAMPUS_NPCS).map(npc=>{const a=ANCHORS[npc.at];const at=campus.walk.grid.nearest(a.x+3,a.z+3);return {...npc,name:npc.name+' · '+npc.role,...at};}));
 const hemi=new THREE.HemisphereLight('#c6e0e6','#68765a',2),sun=new THREE.DirectionalLight('#fff0d2',2.4);
 sun.position.set(80,140,50);world.add(hemi,sun);
+const bus=buildShuttle(kit);bus.group.visible=false;world.add(bus.group);
 const walker=createWalker({speed:8,jogSpeed:18});walker.setGrid(campus.walk.grid);walker.place(ENTRANCE.x,ENTRANCE.z,0);
 let yaw=.55,tilt=.62,distance=64,gridVisible=false,frameCount=0,phase=0,trip=null;
 const keys=new Set(),labels=new Map(),map=$('map'),ctx=map.getContext('2d');
-const screenPoint=new THREE.Vector3(),labelRay=new THREE.Raycaster(),rayStart=new THREE.Vector3(),rayDirection=new THREE.Vector3();
+const screenPoint=new THREE.Vector3(),labelRay=new THREE.Raycaster(),rayStart=new THREE.Vector3(),rayDirection=new THREE.Vector3(),hitPoint=new THREE.Vector3();
+const occluders=campus.walk.solids.map(([x0,y0,z0,x1,y1,z1])=>new THREE.Box3(new THREE.Vector3(x0,y0,z0),new THREE.Vector3(x1,y1,z1)));
 for(const b of BUILDINGS){const opt=document.createElement('option');opt.value=b.id;opt.textContent=b.label;$('destination').append(opt);}
 $('destination').value='senate';
+for(const zone of ZONES){const o=document.createElement('option');o.value=zone.id;o.textContent=zone.label;$('zone').append(o);}
+for(const stop of SHUTTLE_STOPS){const o=document.createElement('option');o.value=stop.id;o.textContent=stop.label;$('shuttle-to').append(o);}$('shuttle-to').value='senate';
 
 function drawMap(){
   const scaleX=map.width/700,scaleZ=map.height/480;
@@ -49,7 +54,7 @@ function draw(){
   for(const tag of visible){
     rayStart.copy(camera.position);rayDirection.set(tag.position.x,tag.position.y,tag.position.z).sub(rayStart);
     const tagDistance=rayDirection.length();labelRay.set(rayStart,rayDirection.normalize());labelRay.far=tagDistance-.7;
-    if(labelRay.intersectObject(campus.group,true).length)continue;
+    if(occluders.some(box=>labelRay.ray.intersectBox(box,hitPoint)&&hitPoint.distanceTo(rayStart)<tagDistance-.7))continue;
     screenPoint.set(tag.position.x,tag.position.y,tag.position.z).project(camera);
     const x=(screenPoint.x+1)*innerWidth/2,y=(1-screenPoint.y)*innerHeight/2;
     if(screenPoint.z>1||x<20||x>innerWidth-20||y<170||y>innerHeight-210||placed.some(p=>Math.abs(p.x-x)<100&&Math.abs(p.y-y)<28))continue;
@@ -58,9 +63,12 @@ function draw(){
   }
   const stats=campus.stats();$('stats').textContent=`${renderer.info.render.triangles.toLocaleString()} triangles · ${renderer.info.render.calls} calls · ${stats.resident.length} detailed zones`;
   $('motion').textContent=`${frameCount} frames · ${loop.running?'Moving':'Idle'}`;
+  $('zone').value=campus.zone;
   $('zone-name').textContent=ZONES.find(z=>z.id===campus.zone)?.label||'Campus';drawMap();
 }
 const loop=createMotionLoop(dt=>{
+  if(trip){trip.active.remaining=Math.max(0,trip.active.remaining-dt);const at=shuttlePose(trip.active);showTrip(at);draw();if(trip.active.remaining<=0){const destination=trip.to;trip=null;bus.group.visible=false;campus.walk.avatar.visible=true;jump(destination);$('status').textContent='Shuttle preview arrived. No game balance was changed.';return false;}return true;}
+
   walker.input(Number(keys.has('d')||keys.has('ArrowRight'))-Number(keys.has('a')||keys.has('ArrowLeft')),Number(keys.has('w')||keys.has('ArrowUp'))-Number(keys.has('s')||keys.has('ArrowDown')),keys.has('Shift'));
   // Calling input(0,0) preserves the walker's existing path.
   const moved=walker.step(dt,yaw);phase+=dt*(walker.jogging?9:5);
@@ -68,8 +76,18 @@ const loop=createMotionLoop(dt=>{
   if(!moved)campus.walk.rest();draw();return moved||walker.hasInput;
 },{onHidden(){keys.clear();walker.stop();},onVisible(){draw();}});
 function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();draw();}
-function jump(id){const a=ANCHORS[id];if(!a)return false;loop.stop();walker.stop();if(!campus.setSpot(id))return false;walker.place(a.x,a.z,a.ry);distance=id==='senate'?125:48;draw();return true;}
-function go(id){const a=ANCHORS[id];if(a&&walker.goTo(a.x,a.z,{arrive(){ $('status').textContent=`You reached ${a.label}.`; }})){ $('status').textContent=`Walking to ${a.label}…`;loop.wake();return true;}$('status').textContent='That destination is not reachable from here.';return false;}
+function jump(id){trip=null;bus.group.visible=false;campus.walk.avatar.visible=true;const a=ANCHORS[id];if(!a)return false;loop.stop();walker.stop();if(!campus.setSpot(id))return false;walker.place(a.x,a.z,a.ry);$('destination').value=id;yaw=id==='lagoon-front'?-Math.PI/2:.55;tilt=id==='lagoon-front'?.38:.62;distance=id==='senate'?125:id==='lagoon-front'?75:48;draw();return true;}
+function go(id){trip=null;bus.group.visible=false;campus.walk.avatar.visible=true;const a=ANCHORS[id];if(a&&walker.goTo(a.x,a.z,{arrive(){ $('status').textContent=`You reached ${a.label}.`; }})){ $('status').textContent=`Walking to ${a.label}…`;loop.wake();return true;}$('status').textContent='That destination is not reachable from here.';return false;}
+function showTrip(at){if(!at)return;walker.place(at.x,at.z,at.ry);campus.setPosition(at.x,at.z);bus.group.visible=true;campus.walk.avatar.visible=false;bus.group.position.set(at.x,.2,at.z);bus.group.rotation.y=at.ry;}
+function ridePreview(destination,progress=null){
+ const from=[...SHUTTLE_STOPS].filter(s=>s.id!==destination).sort((a,b)=>Math.hypot(a.anchor.x-walker.x,a.anchor.z-walker.z)-Math.hypot(b.anchor.x-walker.x,b.anchor.z-walker.z))[0];
+ const route=from&&shuttleRoute(from.id,destination);if(!route)return false;loop.stop();walker.stop();keys.clear();
+ const active={origin:from.id,dest:destination,duration:route.duration,remaining:route.duration};trip={to:destination,active};distance=46;
+ $('status').textContent=`Shuttle preview · ${from.label} to ${SHUTTLE_STOPS.find(s=>s.id===destination).label}`;
+ if(progress!==null){active.remaining=route.duration*(1-progress);showTrip(shuttlePose(active));draw();}else loop.wake();return true;
+}
+$('ride').onclick=()=>ridePreview($('shuttle-to').value);
+$('zone').onchange=()=>{const z=ZONES.find(z=>z.id===$('zone').value),p=campus.navigation.grids.get(z.id).nearest((z.bounds[0]+z.bounds[2])/2,(z.bounds[1]+z.bounds[3])/2);loop.stop();walker.stop();trip=null;bus.group.visible=false;campus.walk.avatar.visible=true;walker.place(p.x,p.z,0);campus.setPosition(p.x,p.z);draw();};
 $('walk').onclick=()=>go($('destination').value);
 $('jump').onclick=()=>{jump($('destination').value);$('status').textContent='Preview position changed. Use Walk there to follow a route.';};
 $('destination').onchange=drawMap;
@@ -87,5 +105,5 @@ $('world').addEventListener('wheel',e=>{e.preventDefault();distance=Math.max(14,
 for(const button of document.querySelectorAll('[data-move]')){const key={up:'w',left:'a',right:'d',down:'s'}[button.dataset.move];button.onpointerdown=e=>{e.preventDefault();button.setPointerCapture(e.pointerId);keys.add(key);loop.wake();};button.onpointerup=button.onpointercancel=()=>keys.delete(key);}
 map.onclick=e=>{const r=map.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*700-300,z=(e.clientY-r.top)/r.height*480-240;const at=campus.walk.grid.nearest(x,z);if(at&&walker.goTo(at.x,at.z))loop.wake();else $('status').textContent='Choose a walkable part of campus.';};
 // Inspection interface exists only on the dev page, with no game-server writes.
-globalThis.campusPreview={campus,walker,renderer,jump,go,draw,setTime(value){campus.setTime(value);$('time').value=value;draw();},get frames(){return frameCount;},get idle(){return !loop.running;},setView(values){if(Number.isFinite(values.yaw))yaw=values.yaw;if(Number.isFinite(values.tilt))tilt=values.tilt;if(Number.isFinite(values.distance))distance=values.distance;draw();},dispose(){loop.dispose();campus.dispose();kit.dispose();renderer.dispose();}};
+globalThis.campusPreview={campus,walker,renderer,jump,go,draw,ridePreview,setTime(value){campus.setTime(value);$('time').value=value;draw();},get frames(){return frameCount;},get idle(){return !loop.running;},setView(values){if(Number.isFinite(values.yaw))yaw=values.yaw;if(Number.isFinite(values.tilt))tilt=values.tilt;if(Number.isFinite(values.distance))distance=values.distance;draw();},dispose(){loop.dispose();campus.dispose();bus.dispose();kit.dispose();renderer.dispose();}};
 resize();

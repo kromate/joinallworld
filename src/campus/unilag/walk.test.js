@@ -9,7 +9,8 @@ const campusZones = ZONES;
 
 test('all building anchors are exact, free destinations in their declared zones', () => {
   const anchors = Object.values(ANCHORS);
-  assert.equal(anchors.length, BUILDINGS.length);
+  assert.ok(anchors.length >= BUILDINGS.length);
+  assert.deepEqual([ANCHORS.people.x,ANCHORS.people.z],[ANCHORS['student-union'].x,ANCHORS['student-union'].z]);
   for (const anchor of anchors) {
     assert.equal(walk.zoneAt(anchor.x, anchor.z)?.id, anchor.zone, anchor.id);
     assert.equal(walk.grids.get(anchor.zone)?.free(anchor.x, anchor.z), true, anchor.id);

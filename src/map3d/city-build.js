@@ -25,6 +25,8 @@ import { sign, textWidth } from '../scene/props.js';
 import { drawLandmark, PLINTH } from './landmarks.js';
 import { miniVehicle, boat } from './vehicles.js';
 import { roundPolygon, pointInPolygon } from './roads.js';
+import { modelLibraryEnabled } from '../models/integration/flags.js';
+import { buildCityEnvironment, buildCityWaterVehicle, createCityWaterMaterial, setCityWaterTime } from '../models/integration/scene-models.js';
 
 export const WATER_Y = -0.5;
 /** Landmarks are drawn a little larger than life, so each can be told apart on a view of the whole city. */
@@ -152,15 +154,17 @@ function offsetPolygon(polygon, distance) {
 
 export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   const { THREE } = kit;
+  const useModels = modelLibraryEnabled();
   const shared = sceneMaterials(kit);
   const rng = mulberry(hash(`city:${pack.id}`));
   const group = new THREE.Group();
   group.name = `city:${pack.id}`;
   const own = [];                                   // geometries and materials this city must free
   const keep = (thing) => { own.push(thing); return thing; };
+  const waterMap = keep(waterTexture(THREE));
   const materials = {
     ground: keep(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 })),
-    water: keep(new THREE.MeshStandardMaterial({ color: CITY_LIGHT.day.water, roughness: 0.42, metalness: 0.05, map: keep(waterTexture(THREE)) })),
+    water: keep(useModels ? createCityWaterMaterial(waterMap) : new THREE.MeshStandardMaterial({ color: CITY_LIGHT.day.water, roughness: 0.42, metalness: 0.05, map: waterMap })),
     board: keep(new THREE.MeshStandardMaterial({ color: '#2c4a52', roughness: 1 })),
     waves: keep(new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.5, depthWrite: false })),
     windows: keep(new THREE.MeshBasicMaterial({ vertexColors: true, color: CITY_LIGHT.day.windows })),
@@ -168,6 +172,8 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     instanced: keep(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.92, metalness: 0 })),
   };
   let triangles = 0;
+  const sceneModels = [];
+  const keepModel = (model) => { sceneModels.push(model); triangles += model.triangles; return model; };
   const add = (mesh, name, order = 0) => { mesh.name = name; mesh.renderOrder = order; mesh.matrixAutoUpdate = false; mesh.updateMatrix(); keep(mesh.geometry); group.add(mesh); return mesh; };
   const count = (mesh) => { triangles += (mesh.geometry.index.count / 3) * (mesh.isInstancedMesh ? mesh.count : 1); return mesh; };
 
@@ -291,7 +297,15 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     const venue = venues[id], node = network.places[id];
     if (!venue || !node) continue;
     let top = 4;
-    g.at(node.x, 0, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
+    if (useModels && id === 'market' && venue.scene?.kind === 'market') {
+      const market = keepModel(buildCityEnvironment('market-stall', { scale: 1.05 }));
+      market.object3D.position.set(node.x, 0, node.z);
+      market.object3D.rotation.y = node.ry;
+      group.add(market.object3D);
+      top = market.top;
+    } else {
+      g.at(node.x, 0, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
+    }
     places[id] = { id, kind: 'venue', x: spot.x, z: spot.z, ry: node.ry, top, gate: node.gate };
     shadows.push({ x: spot.x + 0.7, z: spot.z + 0.55, w: LOT + 1.3, d: LOT + 1.3, ry: node.ry });
     clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
@@ -311,7 +325,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   }
   const homeBatch = createBatch(THREE), homeWindows = createBatch(THREE);
   const hg = { b: homeBatch, w: homeWindows, at: (x, y, z, ry, draw) => draw(hg) };
-  const homeTop = drawLandmark(hg, 'home').top * LANDMARK_SCALE;
+  const legacyHomeTop = drawLandmark(hg, 'home').top * LANDMARK_SCALE;
 
   // ---- district plates, laid on the ground or lettered on the water ---------------------------
   const plates = [];
@@ -332,7 +346,15 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   for (let i = 0, placed = 0; i < 400 && placed < 16; i++) {
     const x = minX + 8 + rng() * (width - 16), z = minZ + 8 + rng() * (maxZ - minZ - 16);
     if (onAnyLand(x, z) || network.roads.some((road) => road.bridge && road.points.some((point) => Math.hypot(point.x - x, point.z - z) < 5)) || plates.some((plate) => inBox(x, z, plate.box))) continue;
-    boat(b, x, z, rng() * Math.PI * 2, hulls[placed % hulls.length], placed % 3 !== 0);
+    const ry = rng() * Math.PI * 2;
+    if (useModels && placed === 0) {
+      const canoe = keepModel(buildCityWaterVehicle('canoe'));
+      canoe.object3D.position.set(x, WATER_Y, z);
+      canoe.object3D.rotation.y = ry;
+      group.add(canoe.object3D);
+    } else {
+      boat(b, x, z, ry, hulls[placed % hulls.length], placed % 3 !== 0);
+    }
     placed += 1;
   }
 
@@ -493,9 +515,16 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   // The Home landmark: its own two small meshes in a group that is moved to the player's lot.
   const home = new THREE.Group();
   home.name = 'home';
-  for (const mesh of homeBatch.build(shared).meshes) { mesh.castShadow = false; mesh.receiveShadow = false; keep(mesh.geometry); triangles += mesh.geometry.index.count / 3; home.add(mesh); }
-  const homeWindowMesh = homeWindows.build({ solid: materials.windows, glow: materials.windows, glass: materials.windows }).meshes[0];
-  if (homeWindowMesh) { homeWindowMesh.castShadow = false; keep(homeWindowMesh.geometry); triangles += homeWindowMesh.geometry.index.count / 3; home.add(homeWindowMesh); }
+  let homeTop = legacyHomeTop;
+  if (useModels) {
+    const house = keepModel(buildCityEnvironment('compound-house', { scale: 0.86 }));
+    home.add(house.object3D);
+    homeTop = house.top;
+  } else {
+    for (const mesh of homeBatch.build(shared).meshes) { mesh.castShadow = false; mesh.receiveShadow = false; keep(mesh.geometry); triangles += mesh.geometry.index.count / 3; home.add(mesh); }
+    const homeWindowMesh = homeWindows.build({ solid: materials.windows, glow: materials.windows, glass: materials.windows }).meshes[0];
+    if (homeWindowMesh) { homeWindowMesh.castShadow = false; keep(homeWindowMesh.geometry); triangles += homeWindowMesh.geometry.index.count / 3; home.add(homeWindowMesh); }
+  }
   group.add(home);
   let homeId = null;
   function setHome(house) {
@@ -503,13 +532,14 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     if (id === homeId) return false;
     homeId = id;
     const node = network.places[`home:${id}`], spot = pack.homes[id];
-    home.position.set(spot.x, 0, spot.z); home.rotation.y = node.ry; home.scale.setScalar(LANDMARK_SCALE);
+    home.position.set(spot.x, 0, spot.z); home.rotation.y = node.ry; home.scale.setScalar(useModels ? 1 : LANDMARK_SCALE);
     places.home = { id: 'home', kind: 'home', house: id, district: spot.district, x: spot.x, z: spot.z, ry: node.ry, top: homeTop, gate: node.gate };
     return true;
   }
   setHome(null);
 
   let time = 'day';
+  let disposed = false;
   return {
     group, places, materials, pack,
     get triangles() { return triangles; },
@@ -520,7 +550,9 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     setTime(next) {
       const preset = CITY_LIGHT[next] || CITY_LIGHT.day;
       time = CITY_LIGHT[next] ? next : 'day';
-      materials.water.color.set(preset.water); materials.windows.color.set(preset.windows);
+      if (!useModels || !setCityWaterTime(materials.water, time)) materials.water.color.set(preset.water);
+      materials.windows.color.set(preset.windows);
+      for (const model of sceneModels) model.setTime(time);
       materials.waves.opacity = preset.waves; materials.shadow.opacity = preset.shadow;
       return preset;
     },
@@ -529,11 +561,16 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     /** Only ever called from a running frame loop: nothing here moves while the map is idle. */
     animate(seconds) {
       waves.position.x = Math.sin(seconds * 0.5) * 0.9; waves.position.z = Math.cos(seconds * 0.37) * 0.35; waves.updateMatrix();
+      for (const model of sceneModels) model.animate?.(seconds);
       if (trafficOn) placeTraffic(seconds);
     },
     dispose() {
+      if (disposed) return;
+      disposed = true;
+      for (const model of sceneModels) model.dispose();
       for (const thing of own) thing.dispose?.();
       group.parent?.remove(group);
+      sceneModels.length = 0;
       own.length = 0;
     },
   };

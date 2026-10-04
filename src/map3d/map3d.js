@@ -203,6 +203,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     if (next === time) return false;
     time = next;
     const preset = city.setTime(next);
+    actor.setTime?.(next);
     hemi.color.set(preset.hemi[0]); hemi.groundColor.set(preset.hemi[1]); hemi.intensity = preset.hemi[2];
     sun.color.set(preset.sun[0]); sun.intensity = preset.sun[1]; sun.position.set(...preset.sun[2]);
     if (root) { root.dataset.time = next; root.style.background = `linear-gradient(${preset.sky[0]}, ${preset.sky[1]})`; }

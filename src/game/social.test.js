@@ -341,3 +341,24 @@ test('outbox: pending → sent or failed, retry keeps the client id, a confirmed
   assert.equal(inviteIdFrom(`https://example.test/v/${PLAYER}`), PLAYER); assert.equal(inviteIdFrom(`/?v=${PLAYER}&x=1`), PLAYER); assert.equal(inviteIdFrom(PLAYER.toUpperCase()), PLAYER);
   for (const junk of ['', 'javascript:alert(1)', '/v/not-an-id', `${PLAYER}0`, null]) assert.equal(inviteIdFrom(junk), null);
 });
+
+test('a changed device session starts from a blank social state: nothing of the previous identity is left to show', async () => {
+  const { freshSocial, createOutbox } = await import('./social-model.js');
+  // What a browser holds after playing as one identity…
+  const S = { api: {}, socket: 'open', linkHost: null, ...freshSocial() };
+  Object.assign(S, { me: { name: 'Ada', friends: [{ id: 'bola' }], requests: { in: [{ id: 'x' }] }, conversations: [{ id: 'c1', unread: 2 }] }, people: { players: [{ id: 'bola' }] }, peopleAt: 5, error: 'old', openConv: 'c1',
+    knock: { host: 'bola', status: 'knocking' }, houseRoom: { host: 'bola', members: [] } });
+  S.threads.set('c1', { messages: [{ body: 'secret' }], loaded: true }); S.profiles.set('bola', { name: 'Bola' });
+  const outbox = createOutbox();
+  outbox.add('c1', 'unsent words', 'client-1', 1);
+  // …is all gone when the session changes (src/ui/panels/social-client.js resetSocial does exactly this).
+  Object.assign(S, freshSocial()); outbox.clear();
+  assert.deepEqual([S.me, S.people, S.peopleAt, S.error, S.openConv, S.knock, S.houseRoom, S.loading, S.peopleLoading], [null, null, 0, null, null, null, null, false, false]);
+  assert.deepEqual([S.threads.size, S.profiles.size, outbox.get('client-1'), outbox.thread('c1', []).length], [0, 0, null, 0]);
+  assert.notEqual(freshSocial().threads, freshSocial().threads, 'each reset gets its own maps');
+  const source = (await import('node:fs')).readFileSync(new URL('../ui/panels/social-client.js', import.meta.url), 'utf8');
+  assert.match(source, /export function resetSocial\(\) \{\n  Object\.assign\(S, freshSocial\(\)\);\n  outbox\.clear\(\);/);
+  const main = (await import('node:fs')).readFileSync(new URL('../life-main.js', import.meta.url), 'utf8');
+  assert.match(main, /onSession\(session, isNew\) \{ sessionChanged\(/, 'the entry resets on every session the client reports');
+  assert.match(main, /onSessionExpired\(\) \{[^\n]*sessionChanged\(null\)/, 'and when the saved life is gone');
+});

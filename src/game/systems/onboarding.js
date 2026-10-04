@@ -63,7 +63,7 @@
  *   A life in another city is a separate life and rolls separately unless seeded the same way.
  *
  * ACTIONS (each failure names what is missing in `reason`)
- *   'onboarding.quick-start' { look }                   guests only: confirm the look and start playing. Sets the
+ *   'onboarding.quick-start' { look, joining? }         guests only: confirm the look and start playing. Sets the
  *                                                       START_NEEDS, stands the Sim at the venue's welcome spot
  *                                                       and lifts `required`. Repeating it only changes the look.
  *   'onboarding.arrive' { venue }  SERVER ONLY          a guest who came by an invite is put in the inviter's
@@ -301,7 +301,8 @@ const actions = {
       const spot = WELCOME_SPOT[state.location];
       if (spot && !state.activeAction && spotsOf(state.location).some((item) => item.id === spot)) state.spot = spot;
     }
-    state.message = `Welcome to ${VENUES[state.location]?.label ?? 'the city'}, ${state.name}.`;
+    // A visitor who came by a friend's link is welcomed by the one banner that says who they are joining (`joining`).
+    state.message = payload?.joining === true ? '' : `Welcome to ${VENUES[state.location]?.label ?? 'the city'}, ${state.name}.`;
     return ok(state, 'playing');
   },
   'onboarding.arrive': { serverOnly: true, refusal: 'Joining a friend is done from their invite link.', run(state, payload, ctx) {
@@ -315,7 +316,7 @@ const actions = {
     if (stop) return stop;
     o.joined = true;
     if (state.location !== venue) arrive(state, venue, ctx, { mode: null });
-    state.message = `You are at ${VENUES[venue].label}.`;
+    state.message = ''; // the client's one banner says where they are and whom they joined
     return ok(state, 'joined');
   } },
   'onboarding.look'(state, payload, ctx) {

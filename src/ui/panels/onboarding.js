@@ -18,12 +18,19 @@
  *     id: 'area',
  *     render(state, view, draft) → html      drawn under the homes; escape everything; use data-extra="<id>"
  *                                            on its buttons and keep its own choice in draft.extra[id]
- *     click(target, draft) → boolean         a click inside it; return true when it changed the draft
+ *     click(target, draft, { api, redraw }) → boolean   a click inside it; return true when it changed the draft
+ *     bind?(root, api, draft, redraw)        after each draw, for anything that is not a click (a <select>)
+ *     done?(draft)                           the move-in was accepted with its payload
  *     ready(draft) → null | 'what is missing'   the Move in button stays off, with this sentence, until null
  *     payload(draft) → object                merged into the 'onboarding.home' payload ({ house, stay, … });
  *                                            the server-side rule that reads it is the adding owner's
  *   });
- * Sections are drawn in list order. With none registered the card is exactly the home choice.
+ * Sections are drawn in list order. The local-government choice (./lga-card.js lgaHomeExtra) is registered by the group
+ * module (./groups/start.js).
+ *
+ * THE HOME A NEW LIFE GETS is its own: the free starter house on a plot in the local government it chooses here — no weekly
+ * rent — with the start cash of its birth lottery. The rented homes (Mushin, Yaba, Lekki…) are not offered on this card: they
+ * are the Houses app's alternative, for after moving in. The rule is 'onboarding.home' { lga, via } (systems/onboarding.js).
  *
  * Every step is confirmed by a server action (see src/game/systems/onboarding.js); this file
  * only keeps the draft being edited. The panel is not live, so a poll never wipes a draft:
@@ -39,7 +46,7 @@
 import './onboarding.css';
 import { esc, money, icon, mark, iconFor } from '../dom.js';
 import { linkWords, linkButton } from '../link.js';
-import { TRAITS, TRAITS_REQUIRED, DREAMS, DREAM_REWARD, ONBOARDING_STEPS, RENT_NOTE, LOTTERY_NOTE } from '../../game/content/traits.js';
+import { TRAITS, TRAITS_REQUIRED, DREAMS, DREAM_REWARD, ONBOARDING_STEPS, LOTTERY_NOTE } from '../../game/content/traits.js';
 import { APPEARANCE } from '../../game/content/traits.js';
 import { track } from '../../quick-start/entry.js';
 import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocusBody, mountLookPreview, randomLook, sameLook, starterWardrobe, hairOptions, outfitOptions } from './look-ui.js';
@@ -118,17 +125,16 @@ function stepBody(state, view) {
     return [withSim(view, `<div class="ob-lottery"><span class="ob-card-icon" aria-hidden="true">${iconFor('lottery', outcome.id, outcome.icon)}</span><h3>${esc(outcome.label)}</h3><p>${esc(outcome.tagline)}</p><ul>${outcome.bullets.map((line) => `<li>${esc(line)}</li>`).join('')}</ul>${outcome.beta ? '<p class="preview-note">Original beta outcome.</p>' : ''}</div>
       <p class="preview-note">${esc(LOTTERY_NOTE)}</p>`), primary('Choose where to live', { action: 'to-home' })];
   }
-  const chosen = o.homes.find((home) => home.id === draft.house && !home.locked);
   const extras = HOME_EXTRAS.map((extra) => `<div class="ob-extra" data-extra-root="${esc(extra.id)}">${extra.render(state, view, draft)}</div>`).join('');
   const missing = HOME_EXTRAS.map((extra) => extra.ready?.(draft)).find((reason) => typeof reason === 'string' && reason) ?? '';
-  const seed = state.onboarding.seed;
-  const kept = o.guest && state.cash !== seed ? ` You keep the ${money(state.cash)} you have now${chosen ? `: start cash tops your wallet up to ${money(chosen.startCash + state.cash - seed)}` : ''}.` : '';
-  return [withSim(view, `<p class="ob-lead"><b>Choose your home — it comes furnished, with your start cash.</b> Where will ${esc(name)} live? ${esc(RENT_NOTE)}${esc(kept)}</p>
-    <div class="ob-list">${o.homes.map((home) => `<button type="button" class="ob-card is-row ob-home" data-house="${esc(home.id)}" data-key="house:${esc(home.id)}" aria-pressed="${draft.house === home.id && !home.locked}" ${home.locked ? 'disabled' : ''}><span class="ob-card-icon" aria-hidden="true">${iconFor('home', home.id, home.icon)}</span><span><em class="ob-tag">${esc(home.tag)}</em><strong>${esc(home.label)} · ${esc(home.district)}</strong><small>${esc(home.blurb)}</small>${home.locked
-    ? `<small class="ob-locked">${mark('lock')} ${esc(home.locked)}</small>`
-    : `<small class="ob-money">Start with ${money(home.startCash)} · rent ${money(home.rent)} a week</small>`}</span></button>`).join('')}</div>${extras}`),
-    primary(chosen ? `Move in to ${chosen.label}` : 'Choose a home', { action: 'home', disabled: !chosen || Boolean(missing), why: chosen ? missing : 'Tap one of the homes above to continue.',
-      also: chosen && !missing && o.guest && state.location !== 'home' ? `<button type="button" class="ui-button ob-stay" data-ob="home-stay" data-key="stay" ${pending ? 'disabled' : ''}>Move in, but stay here for now</button>` : '' })];
+  const seed = state.onboarding.seed, start = o.own?.startCash ?? null;
+  const area = view.estate?.lgas?.find((item) => item.id === draft.extra.area?.lga)?.name ?? '';
+  const kept = o.guest && state.cash !== seed && start !== null ? ` You keep the ${money(state.cash)} you have now: start cash tops your wallet up to ${money(Math.max(start, seed) + state.cash - seed)}.` : '';
+  return [withSim(view, `<p class="ob-lead"><b>Your own house — free, furnished, with your start cash.</b> Everyone in this city gets a starter house on their own plot. Where will ${esc(name)} live?${esc(kept)}</p>
+    <div class="ob-list"><div class="ob-card is-row ob-home is-own"><span class="ob-card-icon" aria-hidden="true">${iconFor('home', 'own', '🏠')}</span><span><em class="ob-tag">Yours</em><strong>Starter house${area ? ` · ${esc(area)}` : ''}</strong><small>One good room on your own plot, furnished, with food in the kitchen.</small><small class="ob-money">${start !== null ? `Start with ${money(start)} · ` : ''}no rent</small></span></div></div>${extras}
+    <p class="preview-note">Prefer to rent? Homes in Mushin, Yaba and Lekki are in Phone → Houses once you have moved in. You keep your own house either way.</p>`),
+    primary(missing ? 'Choose your local government' : `Move in${area ? ` to ${area}` : ''}`, { action: 'home', disabled: Boolean(missing), why: missing,
+      also: !missing && o.guest && state.location !== 'home' ? `<button type="button" class="ui-button ob-stay" data-ob="home-stay" data-key="stay" ${pending ? 'disabled' : ''}>Move in, but stay here for now</button>` : '' })];
 }
 
 export default {
@@ -163,6 +169,7 @@ export default {
     const redraw = () => { if (document.querySelector('.ob-root')) api.refresh(); };
     if (focusKey) root.querySelector(`[data-key="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true });
     mountLookPreview(root, draft?.look ?? api.view().onboarding.look, { name: api.view().name });
+    if (draft && shown === LAST) for (const extra of HOME_EXTRAS) extra.bind?.(root, api, draft, redraw);
     // One funnel event per time the sheet is put in front of a guest (a redraw of the same opening is not another offer).
     if (api.view().onboarding.guest && !offered && draft) {
       offered = true;
@@ -178,7 +185,7 @@ export default {
       return result;
     };
     root.addEventListener('click', async (event) => {
-      const target = event.target.closest('[data-look],[data-look-tab],[data-trait],[data-dream],[data-house],[data-ob],[data-extra]');
+      const target = event.target.closest('[data-look],[data-look-tab],[data-trait],[data-dream],[data-ob],[data-extra]');
       if (!target || target.disabled || !draft) return;
       focusKey = target.dataset.key || '';
       const data = target.dataset;
@@ -188,8 +195,7 @@ export default {
         if (draft.traits.includes(data.trait)) draft.traits = draft.traits.filter((id) => id !== data.trait);
         else draft.traits = [...draft.traits, data.trait].slice(-TRAITS_REQUIRED);
       } else if ('dream' in data) draft.dream = data.dream;
-      else if ('house' in data) draft.house = data.house;
-      else if ('extra' in data) { HOME_EXTRAS.find((extra) => extra.id === target.closest('[data-extra-root]')?.dataset.extraRoot)?.click?.(target, draft); }
+      else if ('extra' in data) { HOME_EXTRAS.find((extra) => extra.id === target.closest('[data-extra-root]')?.dataset.extraRoot)?.click?.(target, draft, { api, redraw }); }
       else if (data.ob === 'back') { shown = Math.max(firstStep(api.view()), shown - 1); error = ''; }
       else if (data.ob === 'to-home') shown = LAST;
       else if (data.ob === 'shuffle') {
@@ -204,8 +210,9 @@ export default {
       else if (data.ob === 'lottery') await send('Rolling…', 'onboarding.lottery', {});
       else if (data.ob === 'home' || data.ob === 'home-stay') {
         const extra = Object.assign({}, ...HOME_EXTRAS.map((item) => item.payload?.(draft) ?? {}));
-        const result = await send('Moving in…', 'onboarding.home', { ...extra, house: draft.house, ...(data.ob === 'home-stay' ? { stay: true } : {}) });
-        if (result.ok) { draft = null; focusKey = ''; api.close(); api.toast(api.state().message, 'good'); return; }
+        const result = await send('Moving in…', 'onboarding.home', { ...extra, ...(data.ob === 'home-stay' ? { stay: true } : {}) });
+        // The server's own sentence ("Welcome to …") is the one confirmation: the shell shows it as a toast when the state arrives.
+        if (result.ok) { for (const item of HOME_EXTRAS) item.done?.(draft); draft = null; focusKey = ''; api.close(); return; }
       }
       redraw();
     });

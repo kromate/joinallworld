@@ -17,7 +17,8 @@
  * The draft is kept on the device as it is edited, so a reload in the middle of the form loses
  * nothing. Reasons it opens with (view.params.reason):
  *   'new'      no session on this device yet
- *   'expired'  the server no longer knows this device's session: ./session.js's own sheet, unchanged
+ *   (a session the server no longer knows is not this screen's: src/life-main.js opens ./session.js's own sheet,
+ *   headed "Your city life", for it)
  *   (none)     opened by the shell because the life is still held for its look (view.onboarding.required):
  *              the same screen, for a life whose Play never reached the server — or a life the old
  *              enforced flow left on its first step
@@ -25,10 +26,9 @@
 import './quick-start.css';
 import { esc, mark } from '../dom.js';
 import { linkWords, linkButton } from '../link.js';
-import session from './session.js';
 import { lookStage, lookEditor, chooseLook, lookTabClick, lookFocusBody, mountLookPreview, starterWardrobe, avatarSvg } from './look-ui.js';
 import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, starterLook } from '../../quick-start/model.js';
-import { quickDraft, keepDraft, keepPlay, joinTarget, track, play, firstLanding } from '../../quick-start/entry.js';
+import { quickDraft, keepDraft, keepPlay, joinTarget, pendingRef, track, play, firstLanding } from '../../quick-start/entry.js';
 import { APPEARANCE } from '../../game/content/traits.js';
 
 const ID = 'quick-start';
@@ -39,7 +39,7 @@ const held = (view) => view.onboarding?.required === true && view.connected;
 function landing(state, view) {
   const draft = quickDraft(view.name === 'New Lagosian' ? undefined : view.name);
   const problem = view.params?.problem;
-  const words = linkWords(view), invited = Boolean(joinTarget());
+  const words = linkWords(view), invited = Boolean(joinTarget() || pendingRef());
   const shown = error || problem?.reason || '';
   const tools = `<button type="button" class="look-tool is-main qs-shuffle" data-qs="shuffle" data-key="shuffle">${mark('game')} Shuffle</button>`;
   const presets = PRESETS.map((preset) => `<button type="button" class="qs-preset" data-qs-preset="${esc(preset.id)}" data-key="preset:${esc(preset.id)}" aria-pressed="${draft.preset === preset.id}" aria-label="${esc(preset.label)} character">${avatarSvg(preset.look, { size: 30, label: '' })}${esc(preset.label)}</button>`).join('');
@@ -62,15 +62,13 @@ export default {
   /** A life whose look the server has not confirmed is held here — unless its Play is being sent right now. */
   required(state, view) { return held(view) && !play.sending ? 'Choose your look and tap Play to start.' : null; },
   render(state, view) {
-    if (view.params?.reason === 'expired') return session.render(state, view);
     return landing(state, view);
   },
   bind(root, api, params) {
     const view = api.view();
-    if (params?.reason === 'expired') { session.bind(root, api); return; }
     const draft = () => quickDraft();
     // Once per device, not once per page load: a reload in the middle of the form is the same landing.
-    if (!landed) { landed = true; if (!held(view) && firstLanding()) track('landed', { join: Boolean(joinTarget()) }); }
+    if (!landed) { landed = true; if (!held(view) && firstLanding()) track('landed', { join: Boolean(joinTarget() || pendingRef()) }); }
     mountLookPreview(root, draft().look, { name: draft().name });
     // Play is where the keyboard starts (Enter plays); after a tap the focus goes back to what was tapped.
     root.querySelector(`[data-key="${CSS.escape(focusKey || 'play')}"]`)?.focus({ preventScroll: true });
@@ -86,7 +84,8 @@ export default {
       if (!look) { keepDraft({ look: presetLook(PRESETS[0].id), preset: PRESETS[0].id }); error = 'That character could not be used. Here is another — tap Play again.'; api.refresh(); return; }
       error = ''; focusKey = '';
       keepDraft({ name });
-      keepPlay({ look });
+      // `joining`: a link is waiting, so the server holds back its "Welcome to …" line — the one banner says it instead.
+      keepPlay({ look, ...(joinTarget() || pendingRef() ? { joining: true } : {}) });
       track('named', { edited: draft().nameEdited, length: name.length });
       track('quick_look_done', { shuffles: draft().shuffles, preset: draft().preset, edited: more });
       track('play_tapped', { taps });

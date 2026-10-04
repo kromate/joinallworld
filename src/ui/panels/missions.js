@@ -38,6 +38,8 @@ const panel = {
   render(state, view) {
     const m = view.missions;
     if (!m) return '<p>Missions are not available right now.</p>';
+    // A guest of the quick start follows the starter goals first: one line of guidance at a time.
+    if (m.locked) return `<section class="ui-hero gr-hero"><small>Missions</small><strong>Settle in first</strong><p>${esc(m.locked)}</p></section><button class="ui-button is-primary is-block" data-open="onboarding">Settle in</button>`;
     if (!m.daily.length && !m.weekly.length) return `<p class="gr-note">${view.connected ? 'Today’s missions are being dealt…' : esc(linkWords(view).why)}</p>`;
     const dots = m.daily.map((mission) => `<i class="${mission.done ? 'is-on' : ''}"></i>`).join('');
     const stamps = Array.from({ length: 7 }, (_, index) => `<i class="${index < m.stamps.days ? 'is-on' : index === m.stamps.need - 1 ? 'is-goal' : ''}">${index < m.stamps.days ? mark('good') : ''}</i>`).join('');

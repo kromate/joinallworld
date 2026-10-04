@@ -33,8 +33,9 @@
  * the session is opened (POST /api/session), the look is confirmed by the 'onboarding.quick-start'
  * action under an action id that is kept on the device until the server has answered — so a
  * double tap, a retry on a bad connection and a reload are all the same one start — and the
- * player is standing in a public venue. A link that points at a player (/v/<id>, ?join=<id>) is
- * then answered by POST /api/social/join and shown as one banner ("You’re joining Ada"). The funnel
+ * player is standing in a public venue. A link is then handled in ONE place (landJoin): the player it points at (/v/<id>,
+ * ?join=<id>) is joined (POST /api/social/join), its share code (?ref=<code>) is attached as a referral, both are said in one
+ * banner ("You’re joining Ada"), and a table it names (?table=<id>) is opened in the Tables app. The funnel
  * events ('jaw:track') are reported from the server's own state as it changes (see accepted()).
  */
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
@@ -42,13 +43,14 @@ import { createLazyLoader } from './lazy-load.js';
 import { createShell } from './ui/shell.js';
 import { linkWords } from './ui/link.js';
 import { PANELS, sessionGate } from './ui/panels/index.js';
-import { S as social, loadPeople, onPeople, takeLinkHost } from './ui/panels/social-client.js';
+import { S as social, loadPeople, onPeople, takeLinkHost, resetSocial } from './ui/panels/social-client.js';
 import { crowdList, playersHere } from './scene/crowd.js';
 import { NPCS } from './game/content/npcs.js';
 import { viewLife, VENUES, isDeparting } from './life.js';
 import { venueLabel, venueDistrict } from './game/content/venues.js';
-import { funnelSnap, funnelEvents, joinBanner } from './quick-start/model.js';
-import { pendingPlay, keepPlay, forgetDraft, joinTarget, forgetJoin, track, play } from './quick-start/entry.js';
+import { funnelSnap, funnelEvents, joinBanner, linkBanner } from './quick-start/model.js';
+import { pendingPlay, keepPlay, forgetDraft, joinTarget, forgetJoin, track, play, captureLink, pendingRef, forgetRef, pendingTable, forgetTable, deviceToken } from './quick-start/entry.js';
+import { tableById } from './tables/places.js';
 import { telemetry } from './telemetry/index.js';
 
 const $ = (id) => document.getElementById(id);
@@ -70,10 +72,26 @@ const client = createClient({
   isHidden: () => document.hidden,
   onStatus: status,
   onChange: accepted,
-  onSessionExpired() { community?.destroy(); community = null; positions = {}; render(); shell.open(sessionGate().id, { reason: 'expired' }); },
+  // The saved life is gone: its own sheet says so ("Your city life"), not the welcome of the landing screen.
+  onSessionExpired() { community?.destroy(); community = null; positions = {}; sessionChanged(null); render(); shell.open('session', { reason: 'expired' }); },
   onNeedName(problem) { telemetry.needName(); shell.open(sessionGate().id, { reason: 'new', problem: problem ?? null }); },
-  onSession(session, isNew) { telemetry.session(session, isNew, client.serverNow()); },
+  onSession(session, isNew) { sessionChanged(session?.id ?? null); telemetry.session(session, isNew, client.serverNow()); },
 });
+
+/**
+ * The device session is another identity now (a new life was started, or the old one is gone): whatever the browser holds
+ * about people — friends, requests, threads, the growth hello, a seat at a table — belonged to the previous one and is
+ * dropped before anything is drawn for the new one. A reconnection of the same session changes nothing.
+ */
+let sessionId;
+function sessionChanged(id) {
+  if (sessionId === id) return;
+  const first = sessionId === undefined;
+  sessionId = id;
+  if (first) return; // the first session of this page: nothing was held for anyone else
+  resetSocial();
+  window.dispatchEvent(new CustomEvent('jaw:session', { detail: { id } }));
+}
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
 const playerLook = () => ({ look: client.state.onboarding?.look, seed: client.session?.id ?? 'you', name: client.state.name || client.identity.name });
@@ -472,7 +490,9 @@ async function firstMinute() {
     const actionId = kept.actionId ?? client.newId();
     if (!kept.actionId) keepPlay({ ...kept, actionId });
     play.sending = true;
-    const result = await client.command('onboarding.quick-start', { look: kept.look }, { actionId });
+    // `joining` was decided when Play was tapped and is kept with the look, so every retry sends the very same request.
+    const result = await client.command('onboarding.quick-start', { look: kept.look, ...(kept.joining ? { joining: true } : {}) }, { actionId });
+    if (result.ok && kept.joining) owedWelcome = true;
     play.sending = false;
     if (result.ok) { keepPlay(null); shell.setExpanded(true); if (shell.isOpen(sessionGate().id)) shell.close(); }
     else if (result.code === 'invalid_look' || result.code === 'action_id_conflict' || result.code === 'action_expired') { keepPlay(null); shell.open(sessionGate().id, { problem: { reason: 'That character could not be saved. Choose again and tap Play.' } }); }
@@ -482,29 +502,63 @@ async function firstMinute() {
   if (!client.state.onboarding.required) await landJoin();
 }
 
-/** An invite link: ask the server how the player it points at can be joined, and say so in one banner. */
-let joining = false;
+/**
+ * THE LANDING OF A LINK — the one place an invite, share or table link is handled, after the quick start (or at once for a
+ * player who already has a life). In order:
+ *   1. the share code (`ref`) is attached to the caller's life as a referral (POST /api/growth/referral/link). It pays
+ *      nobody now: both gifts wait for paid work on real Lagos days (server/growth/referral.js). A link that had no `join`
+ *      names its sharer here, and that is who is joined.
+ *   2. a brand-new guest is put beside the player the link points at (POST /api/social/join): in their venue, or told they
+ *      are at home (Knock), out or offline. A player who has already settled in gets the Invite app on that house instead.
+ *   3. ONE banner says all of it ("You’re joining Ada … Work a paid shift and you both get a gift."). There is no
+ *      welcome toast beside it: the quick start said nothing because it knew a banner was coming.
+ *   4. a table the link named is opened in the Tables app.
+ * What is kept on the device (the id, the code, the table) is dropped as each is answered; with no answer (the connection
+ * dropped) it stays and is tried again at the next connection.
+ */
+let joining = false, owedWelcome = false;
 async function landJoin() {
-  const host = joinTarget();
-  if (!host || joining || !client.online) return;
-  // A settled player's link is handled as it always was: the Invite app opens on that house (src/ui/panels/social-client.js).
-  if (client.state.onboarding?.stage !== 'guest' || host === client.session?.id) { forgetJoin(); return; }
+  let host = joinTarget();
+  const ref = pendingRef(), table = pendingTable();
+  if ((!host && !ref && !table && !owedWelcome) || joining || !client.online) return;
   joining = true;
-  // This landing handles the link: the address is cleaned (the id is kept on the device until it is answered) and the Invite app is not opened for it.
-  try { history.replaceState(null, '', '/'); } catch { /* the address stays as it was */ }
+  const guest = client.state.onboarding?.stage === 'guest' && !client.state.onboarding.done;
+  const kind = table ? 'table' : ref ? 'share' : 'house';
+  // This landing handles the link: the address is cleaned (what it carried is kept on the device until it is answered) and
+  // the Invite app is not opened for it by anyone else.
+  try { if (location.pathname !== '/' || location.search) history.replaceState(null, '', '/'); } catch { /* the address stays as it was */ }
   takeLinkHost();
+  if (host === client.session?.id) { forgetJoin(); host = null; }
+  let banner = null, gift = false, sharer = null;
   try {
-    const answer = await client.fetchJson('/api/social/join', { method: 'POST', body: { host, cityId: client.cityId } });
-    forgetJoin();
-    track('join_landed', { code: answer.code ?? 'refused' });
-    const banner = joinBanner(answer, (id) => venueLabel(id, client.cityId));
-    if (!banner) return;
-    if (answer.code === 'joined') await client.refresh();
-    showBanner(banner, banner.knock ? { label: 'Knock', run: () => shell.open('invite', { host }) } : null);
+    if (ref) {
+      const about = host ? null : await client.fetchJson(`/api/growth/share/${encodeURIComponent(ref)}`);
+      if (about?.ok && about.by?.id && about.by.id !== client.session?.id) { host = about.by.id; sharer = about.by.name; }
+      const linked = await client.fetchJson('/api/growth/referral/link', { method: 'POST', body: { cityId: client.cityId, code: ref, device: deviceToken() } });
+      forgetRef();
+      if (linked.ok && !linked.duplicate) { gift = true; sharer = linked.by ?? sharer; track('invite_joined', { kind }); }
+    }
+    if (host && guest) {
+      const answer = await client.fetchJson('/api/social/join', { method: 'POST', body: { host, cityId: client.cityId } });
+      forgetJoin();
+      track('join_landed', { code: answer.code ?? 'refused' });
+      if (answer.code === 'joined' || answer.code === 'here') track('invite_colocated', { kind });
+      banner = joinBanner(answer, (id) => venueLabel(id, client.cityId), { gift });
+      if (answer.code === 'joined') await client.refresh();
+    } else if (host) { forgetJoin(); shell.open('invite', { host }); }
   } catch (error) {
-    // No answer: the link is kept and tried again at the next connection. A refusal that will not change is dropped.
-    if (error.status && error.status < 500) forgetJoin();
-  } finally { joining = false; }
+    // No answer: what is kept is tried again at the next connection. A refusal that will not change is dropped.
+    if (error.status && error.status < 500) { forgetJoin(); forgetRef(); }
+    else { joining = false; return; }
+  }
+  joining = false;
+  if (!banner && gift) banner = linkBanner(sharer || 'a friend');
+  // A table the link named: the Tables app opens on it (the banner is shown over it).
+  if (table) { forgetTable(); if (tableById(table)) shell.open('tables', { table }); }
+  if (banner) showBanner(banner, banner.knock && !table ? { label: 'Knock', run: () => shell.open('invite', { host }) } : null);
+  // Nobody could be joined after all: the welcome the quick start held back is said now, once.
+  else if (owedWelcome && guest) shell.toast(`Welcome to ${venueLabel(client.state.location, client.cityId)}, ${client.state.name || client.identity.name}.`);
+  owedWelcome = false;
 }
 
 /** One banner over the scene (built with textContent: a player's name is never markup). It leaves when closed or after 12 s. */
@@ -515,7 +569,8 @@ function showBanner({ tone, title, text }, action) {
   strong.textContent = title; small.textContent = text; words.append(strong, small); node.append(words);
   if (action) { const button = document.createElement('button'); button.className = 'ui-button is-primary is-small'; button.textContent = action.label; button.onclick = () => { node.remove(); action.run(); }; node.append(button); }
   const close = document.createElement('button'); close.className = 'qs-banner-close'; close.setAttribute('aria-label', 'Dismiss'); close.textContent = '×'; close.onclick = () => node.remove(); node.append(close);
-  document.body.append(node);
+  // Over an open sheet (the Tables app a table link opened) the banner goes inside the dialog, which is the top layer.
+  (dialog.open ? dialog : document.body).append(node);
   setTimeout(() => node.remove(), 12000);
 }
 
@@ -580,6 +635,8 @@ if (new URLSearchParams(location.search).has('diagnostics')) {
 
 render();
 telemetry.hudReady();
+// The link this page was opened with is read once, here, before anything rewrites the address.
+{ const link = captureLink(); if (link.join || link.ref || link.table) track('invite_opened', { kind: link.table ? 'table' : link.ref ? 'share' : 'house', has_session: client.hasSavedIdentity === true }); }
 connect();
 // The scene (Three.js and every scene module) starts downloading only now, with the HUD already on screen and usable.
 setTimeout(loadScene, 0);

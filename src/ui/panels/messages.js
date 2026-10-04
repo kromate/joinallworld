@@ -19,6 +19,7 @@ import { linkWords } from '../link.js';
 import { unreadChats, unreadUpdates, freshNotices, noticesSeen, markNoticesSeen, notifications, messagesBadge } from './inbox.js';
 import { formatClock } from '../../game/clock.js';
 import { S, bindCommon, gate, socketNote, call, perform, sync, openThread, threadView, send, retry, discard, cityId, newClientId } from './social-client.js';
+import { channelLink, load as loadGrowth } from './growth-client.js';
 
 const ui = { tab: 'chats', open: null, draft: '', find: '', results: null, finding: false, group: null, manage: false, focus: null };
 
@@ -104,7 +105,7 @@ const app = {
     if (S.openConv !== ui.open) ui.open = S.openConv; // a new chat received its real conversation id
     if (ui.open) return `${socketNote()}${threadHtml(view)}`;
     const chats = unreadChats(), updates = unreadUpdates() + S.me.requests.in.length + S.me.baeRequests.length + freshNotices(view);
-    return `${socketNote()}<div class="ui-seg" role="tablist"><button role="tab" aria-selected="${ui.tab === 'chats'}" class="${ui.tab === 'chats' ? 'is-selected' : ''}" data-m-tab="chats">Chats${chats ? `<span class="social-badge">${chats}</span>` : ''}</button><button role="tab" aria-selected="${ui.tab === 'updates'}" class="${ui.tab === 'updates' ? 'is-selected' : ''}" data-m-tab="updates">Updates${updates ? `<span class="social-badge">${updates}</span>` : ''}</button></div>${ui.tab === 'chats' ? chatsHtml() : updatesHtml(view)}`;
+    return `${socketNote()}<div class="ui-seg" role="tablist"><button role="tab" aria-selected="${ui.tab === 'chats'}" class="${ui.tab === 'chats' ? 'is-selected' : ''}" data-m-tab="chats">Chats${chats ? `<span class="social-badge">${chats}</span>` : ''}</button><button role="tab" aria-selected="${ui.tab === 'updates'}" class="${ui.tab === 'updates' ? 'is-selected' : ''}" data-m-tab="updates">Updates${updates ? `<span class="social-badge">${updates}</span>` : ''}</button></div>${ui.tab === 'chats' ? chatsHtml() : updatesHtml(view)}${channelLink('Follow Allworld on WhatsApp', 'ui-button is-block msg-foot')}`;
   },
   /** Esc inside a conversation goes back to the list first; the next Esc leaves the app. */
   keys(action, api) {
@@ -113,6 +114,7 @@ const app = {
     return true;
   },
   bind(root, api) {
+    void loadGrowth(api); // the footer's WhatsApp link comes with the growth hello (asked for at most every five minutes)
     bindCommon(root, api);
     // Reading the Updates tab marks the life's notices as seen; the ones that were new stay marked "New" while it is open.
     if (ui.tab === 'updates' && !ui.open && S.me) { if (ui.noticesSeenBefore === undefined) ui.noticesSeenBefore = noticesSeen(api.view()); markNoticesSeen(api.view()); } else ui.noticesSeenBefore = undefined;

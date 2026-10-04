@@ -4,24 +4,26 @@
  * the away card). Not a panel: it is imported by them and is not registered in panels/index.js.
  *
  * It says hello to /api/growth/hello when a growth panel is drawn and the last answer is older
- * than five minutes (never from a timer), remembers a share code the page was opened with until
- * the life exists, attaches it once, and prepares shares. Pure decisions live in
+ * than five minutes (never from a timer), and prepares shares. The link a page was opened with — the
+ * player to join, the share code to attach as a referral, the table to open — is read and handled in ONE
+ * place, the landing (src/quick-start/entry.js captureLink, src/life-main.js landJoin); nothing here reads the address. Pure decisions live in
  * src/game/share-model.js and src/game/digest.js; this file is the glue.
  *
  * ON THIS DEVICE (localStorage)
  *   allworld-device   a random token made once per browser. It is sent with hello and with a
  *                     referral link and is only ever kept on the server as a salted hash; it lets
  *                     the server refuse "a new life on the same phone through your own link".
- *   allworld-ref      a share code waiting to be attached ({ code, at }), dropped after a week
+ *   allworld-ref      a share code waiting to be attached ({ code, at }), dropped after a week (written and attached by the landing)
  *   allworld-away     the server time of the hello whose away card was dismissed
  */
 import './growth.css';
 import '../phone/icons-growth.js';
-import { shareCodeFrom } from '../../game/share-model.js';
+import { deviceToken } from '../../quick-start/entry.js';
+export { deviceToken };
 /** The canvas painter and the share-sheet calls are fetched the first time something is shared, not with the first download. */
 const sharing = () => import('../share.js');
 
-const HELLO_MAX_AGE = 5 * 60000, REF_KEEP_MS = 7 * 86400000;
+const HELLO_MAX_AGE = 5 * 60000;
 export const G = {
   api: null, hello: null, at: 0, loading: false, error: null,
   /** A share being shown in the share sheet: { facts, prepared } | null. */
@@ -29,16 +31,9 @@ export const G = {
   /** Where the page's share link came from, once known: { kind, by: { id, name } } | null. */
   landing: null,
 };
-let started = false, linking = false;
 
 const store = { get(key) { try { return JSON.parse(window.localStorage.getItem(key)); } catch { return null; } }, set(key, value) { try { window.localStorage.setItem(key, JSON.stringify(value)); } catch { /* this visit only */ } },
   drop(key) { try { window.localStorage.removeItem(key); } catch { /* nothing to drop */ } } };
-const randomToken = () => { const bytes = crypto.getRandomValues(new Uint8Array(16)); return [...bytes].map((byte) => byte.toString(16).padStart(2, '0')).join(''); };
-export function deviceToken() {
-  let token = store.get('allworld-device');
-  if (typeof token !== 'string' || !/^[A-Za-z0-9-]{16,64}$/.test(token)) { token = randomToken(); store.set('allworld-device', token); }
-  return token;
-}
 /**
  * Product events for whatever analytics the game has (a separate facade listens): a decoupled DOM event, never an SDK
  * call. Props are fixed small values — a kind, an id from the game's own content, a result. Never a name, a message,
@@ -46,6 +41,8 @@ export function deviceToken() {
  */
 export function track(name, props = {}) { try { window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name, props } })); } catch { /* no listener is fine */ } }
 const ready = (view) => Boolean(view?.connected) && view.onboarding?.required !== true;
+// The device session changed: what was loaded belonged to the previous identity.
+try { window.addEventListener('jaw:session', () => { if (G.sharing?.prepared.url) URL.revokeObjectURL(G.sharing.prepared.url); Object.assign(G, { hello: null, at: 0, loading: false, error: null, sharing: null, busy: null, landing: null }); }); } catch { /* not a browser */ }
 const refresh = () => G.api?.refresh();
 
 /** One POST. Never throws: a failure comes back as { ok: false, code, reason }. */
@@ -57,39 +54,9 @@ export async function call(path, body) {
   }
 }
 
-/** Attach the share code this page was opened with, once the life exists. */
-async function attach() {
-  const pending = store.get('allworld-ref');
-  if (linking || !pending?.code) return;
-  if (!(Date.now() - pending.at < REF_KEEP_MS)) { store.drop('allworld-ref'); return; }
-  linking = true;
-  const about = await call(`/api/growth/share/${encodeURIComponent(pending.code)}`);
-  if (about.ok) G.landing = { kind: about.kind, by: about.by };
-  const result = await call('/api/growth/referral/link', { code: pending.code, device: deviceToken() });
-  linking = false;
-  if (result.transport) return; // try again at the next hello
-  store.drop('allworld-ref');
-  if (result.ok && !result.duplicate) track('invite_joined');
-  if (result.ok && !result.duplicate) G.api.toast(`You came through ${result.by}’s link. Get to work and you both get a gift.`, 'good');
-  // Placing the visitor with the sharer is the landing hook's job (`?join=<publicId>`). Until that hook is in this build,
-  // a link to someone's house or invite at least leads to their door.
-  if (!window.__jawJoinHandled && about.ok && about.by?.id && about.by.id !== G.api.view().session?.id && ['house', 'invite'].includes(about.kind)) G.api.open('invite', { host: about.by.id });
-  void load(G.api, { force: true });
-}
-
 /** Say hello unless a fresh answer is here. Called from bind(), so only when something was drawn. */
 export async function load(api, { force = false } = {}) {
   G.api = api;
-  if (!started) {
-    started = true;
-    const code = shareCodeFrom(location.search) || shareCodeFrom(location.pathname);
-    // `ref` (or the older `s`) is the share code. `join` and `table` belong to the game's landing hook, which places a
-    // new visitor with the sharer; they are left in the address for it.
-    if (code) {
-      store.set('allworld-ref', { code, at: Date.now() }); track('share_link_opened'); track('invite_opened');
-      try { const url = new URL(location.href); url.searchParams.delete('ref'); url.searchParams.delete('s'); history.replaceState(null, '', `${url.pathname === '/' || url.pathname.startsWith('/s/') ? '/' : url.pathname}${url.search}`); } catch { /* the address stays */ }
-    }
-  }
   if (G.loading || !ready(api.view())) return;
   if (!force && G.at && Date.now() - G.at < HELLO_MAX_AGE) return;
   G.loading = true;
@@ -99,7 +66,6 @@ export async function load(api, { force = false } = {}) {
   if (result.ok) { if ((result.referral?.paid?.paidTotal ?? 0) > (G.hello?.referral?.paid?.paidTotal ?? Infinity)) track('referral_rewarded'); G.hello = result; G.error = null; if (result.state) void api.command('missions.refresh'); }
   else G.error = result.reason;
   refresh();
-  if (result.ok) void attach();
 }
 
 /** Make a share link, paint the card and open the share sheet panel. */
@@ -125,6 +91,14 @@ export async function shareNow(api) {
   if (outcome === 'unavailable') api.toast('This browser has no share sheet. Use WhatsApp, X or Copy below.', 'info');
 }
 export async function copyShare(api) { if (G.sharing) api.toast((await (await sharing()).copyText(G.sharing.prepared.text)) ? 'Copied. Paste it into any chat.' : 'Could not copy. Press and hold the text to copy it yourself.', 'good'); }
+
+/**
+ * The link to the owner's WhatsApp Channel, wherever a panel wants it (Events, Stay in touch, Settings, the Messages
+ * footer): one place, drawn only when the server says a channel is configured (the hello's `channel`). Following it is
+ * between the player and WhatsApp: an ordinary link, opened in a new tab, with nothing sent from the game.
+ */
+export const channelLink = (label = 'Follow Allworld on WhatsApp', cls = 'ui-button is-block') => (typeof G.hello?.channel === 'string' && /^https:\/\//.test(G.hello.channel)
+  ? `<a class="${cls} gr-channel" href="${G.hello.channel.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))}" target="_blank" rel="noopener noreferrer">${label}</a>` : '');
 
 /** Was this hello's away card dismissed on this device? */
 export const awayDismissed = () => Boolean(G.hello) && store.get('allworld-away') === G.hello.away.since;

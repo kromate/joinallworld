@@ -690,6 +690,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     }
     lastNeeds = needs;
 
+    // A guest's first minutes show ONE line of guidance (the goal): every other chip waits behind "More", on any screen.
+    root.classList.toggle('is-guest', Boolean(view.onboarding?.guest));
     const hud = placed('hud');
     for (const [slot, target] of Object.entries(el.slots)) {
       const chips = hud.filter((panel) => slotOf(panel) === slot).map((panel) => { const body = panelHtml(panel); return body ? `<div data-panel="${esc(panel.id)}">${body}</div>` : ''; }).join('');
@@ -778,7 +780,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if ('menu' in data) { setTray(false); host.menu?.(data.menu); return; }
     // The connection notice: one tap starts a new life (the same event the session panel sends), or opens the session panel.
     if ('newLife' in data) { window.dispatchEvent(new CustomEvent('jaw:start-life', { detail: { name: null } })); return; }
-    if ('openGate' in data) { const gatePanel = panels.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || byId.get('session'); if (gatePanel) open(gatePanel.id, { reason: data.openGate }); return; }
+    // A saved life the server no longer knows has its own sheet (the foundation's 'session' panel); everything else is the gate's.
+    if ('openGate' in data) { const gatePanel = (data.openGate === 'expired' ? null : panels.find((panel) => panel.role === 'session-gate' && panel.id !== 'session')) || byId.get('session'); if (gatePanel) open(gatePanel.id, { reason: data.openGate }); return; }
     if ('start' in data) { expanded = false; await api.command('activity', { id: data.start, ...(data.choice ? { choice: data.choice } : {}) }); }
     else if ('cancel' in data) await api.command('cancel');
     else if ('spot' in data) { expanded = true; await api.command('spot', { id: data.spot }); api.refresh(); }

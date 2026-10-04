@@ -13,7 +13,7 @@
  * bounded reconnect back-off and single follow-up checks.
  */
 import './social.css';
-import { createOutbox, mergeMessages, inviteIdFrom, SEND_TIMEOUT_MS } from '../../game/social-model.js';
+import { createOutbox, mergeMessages, inviteIdFrom, freshSocial, SEND_TIMEOUT_MS } from '../../game/social-model.js';
 import { linkWords, linkButton } from '../link.js';
 
 const MAX_ATTEMPTS = 6;
@@ -239,6 +239,22 @@ function connectSocket() {
 }
 /** Manual reconnect after the automatic attempts ran out. */
 export function reconnect() { attempts = 0; connectSocket(); refresh(); }
+
+/**
+ * The device session changed (a new life was started, or the old one is gone): everything this file holds belonged to the
+ * previous identity. It is dropped at once — friends, requests, threads, profiles, a knock, the house room and unsent
+ * messages — and the socket (opened with the old cookie) is closed so the next one is the new identity's.
+ */
+export function resetSocial() {
+  Object.assign(S, freshSocial());
+  outbox.clear();
+  joiningHouse = null; syncing = false; dirty = false; peopleDirty = false; profileVersion += 1; attempts = 0;
+  clearTimeout(timer); timer = null;
+  const old = ws; ws = null;
+  S.socket = 'idle';
+  try { old?.close(); } catch { /* already closed */ }
+  peopleChanged();
+}
 
 /** The landing of a brand-new visitor handled the invite link itself (src/life-main.js landJoin): do not also open the Invite app for it. */
 export function takeLinkHost() { const host = S.linkHost; S.linkHost = null; return host; }

@@ -134,12 +134,33 @@ export function joinIdFrom(pathname, search) {
   return match ? match[1].toLowerCase() : null;
 }
 /**
+ * The other two things a link may carry: a share code (`?ref=<code>`, the older `?s=<code>`, or the path `/s/<code>` on a
+ * host that serves the game for it) and a table id (`?table=<id>`). Shapes only — the server decides what they mean.
+ * @param {string} pathname @param {string} search
+ * @returns {{ ref: string | null, table: string | null }}
+ */
+export function linkParts(pathname, search) {
+  const ref = /^\/s\/([a-z0-9]{8,16})(?:[/?#]|$)/.exec(String(pathname ?? '')) ?? /[?&](?:ref|s)=([a-z0-9]{8,16})(?:[&#]|$)/.exec(String(search ?? ''));
+  const table = /[?&]table=([a-z0-9-]{1,40})(?:[&#]|$)/.exec(String(search ?? ''));
+  return { ref: ref ? ref[1] : null, table: table ? table[1] : null };
+}
+/**
  * What the banner says for an answer of POST /api/social/join.
  * @param {{ ok?: boolean, code?: string, host?: { name?: string }, venue?: string } | null} answer
  * @param {(venueId: string) => string} venueLabel
+ * @param {{ gift?: boolean }} [extra]  gift: the visitor's life was attached to the sharer's link as a referral just now
  * @returns {{ tone: 'good' | 'info', title: string, text: string, knock: boolean } | null}
  */
-export function joinBanner(answer, venueLabel) {
+export function joinBanner(answer, venueLabel, { gift = false } = {}) {
+  const banner = joinWords(answer, venueLabel);
+  // The referral rides in the same banner: one message says who was joined and what the link is worth.
+  return banner && gift ? { ...banner, text: `${banner.text} ${GIFT_LINE}` } : banner;
+}
+/** What a visitor who came through a friend's link is told about the gift: it is paid only after real work. */
+export const GIFT_LINE = 'Work a paid shift and you both get a gift.';
+/** The banner for a share link whose owner could not be joined (no `join` answer): it still says whose link it was. */
+export const linkBanner = (name) => ({ tone: 'good', title: `You came through ${name}’s link`, text: GIFT_LINE, knock: false });
+function joinWords(answer, venueLabel) {
   const name = typeof answer?.host?.name === 'string' && answer.host.name ? answer.host.name : null;
   if (!answer?.ok || !name) return null;
   const title = `You’re joining ${name}`;

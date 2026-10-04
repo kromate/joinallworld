@@ -29,6 +29,8 @@ export function mergeMessages(existing, incoming) {
 export function createOutbox() {
   const entries = new Map();
   return {
+    /** Forget everything (the device session changed: these were another identity's messages). */
+    clear() { entries.clear(); },
     add(key, body, clientId, now) {
       const entry = { clientId, key, body, at: now, status: 'pending', tries: 1, reason: null, code: null };
       entries.set(clientId, entry);
@@ -109,3 +111,11 @@ export function inviteIdFrom(text) {
   const match = /(?:\/v\/|[?&](?:v|join)=|^)([0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})(?:[/?#&]|$)/i.exec(String(text ?? '').trim());
   return match ? match[1].toLowerCase() : null;
 }
+
+/**
+ * The social state of a browser that knows nobody yet: what the social client starts with, and what it goes back to when
+ * the device session changes (a new life, an expired one) — so a new identity can never be shown the previous one's friends,
+ * requests, threads, profiles, knocks or house room, not even for the moment before the first answer arrives.
+ */
+export const freshSocial = () => ({ me: null, loading: false, error: null, people: null, peopleAt: 0, peopleLoading: false,
+  threads: new Map(), profiles: new Map(), openConv: null, knock: null, houseRoom: null });

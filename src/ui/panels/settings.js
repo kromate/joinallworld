@@ -14,6 +14,7 @@
 import './settings.css';
 import { esc, chevron, mark } from '../dom.js';
 import { linkWords } from '../link.js';
+import { channelLink, load as loadGrowth } from './growth-client.js';
 import { WALLPAPERS, getWallpaper, setWallpaper } from '../phone/wallpapers.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 
@@ -62,11 +63,16 @@ export default {
       <h3 class="ui-section">Privacy</h3>
       <div class="ui-rows">${link('neighbours', 'neighbours', 'Neighbours directory', 'Hide or list your home')}${link('richlist', 'richlist', 'Rich List', 'Hide or show your balance')}${link('people', 'people', 'People and blocks', 'Blocked players are listed there')}<button class="ui-row" data-privacy-analytics><span class="ui-row-icon" aria-hidden="true">${mark('id')}</span><span class="ui-row-body"><b>Analytics and error reports</b><small>What we collect, and your choice</small></span><span class="ui-row-end">${chevron()}</span></button></div>
       <h3 class="ui-section">Accounts</h3>
-      <p class="settings-note">Accounts (sign up, log in, recovery email, moving a life to another device) are not part of this build. Notifications outside the game are not available either: news arrives in Phone → Messages → Updates.</p>
+      <p class="settings-note">Accounts (sign up, log in, recovery email, moving a life to another device) are not part of this build.</p>
+      <h3 class="ui-section">Outside the game</h3>
+      <div class="ui-rows">${link('touch', 'bell', 'Stay in touch', 'Notifications and e-mail: off until you switch them on')}</div>
+      ${channelLink()}
+      <p class="settings-note">The game never contacts you unless you ask. News always arrives in Phone → Messages → Updates.</p>
       <div class="ui-rows">${link('support', 'support', 'Report a problem', 'File a report and get a receipt')}</div>`;
   },
   bind(root, api) {
     bindHow(root, api);
+    void loadGrowth(api);
     // Opens the telemetry sheet (src/telemetry): what is collected and the Accept / Reject choice for this device.
     root.querySelector('[data-privacy-analytics]')?.addEventListener('click', () => window.dispatchEvent(new CustomEvent('jaw:privacy')));
     for (const button of root.querySelectorAll('[data-wallpaper]')) {

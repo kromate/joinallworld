@@ -1,7 +1,7 @@
 // OWNER: quick start — the pure client logic of the first minute (./model.js).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom, joinIdFrom, joinBanner,
+import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom, joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE,
   NUDGE_CAP, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.js';
 import { checkLook } from '../game/systems/onboarding.js';
 import { validateName } from '../../server/protocol.js';
@@ -113,4 +113,22 @@ test('funnel events come from the server state, once each', () => {
   assert.equal(dispatch(state, { type: 'onboarding.home', payload: { house, stay: true } }, at(25000, 'h')).code, 'life_started'); step();
   assert.deepEqual(names, ['arrived', 'first_activity_started', 'first_activity_completed', 'settle_traits_done', 'settle_dream_done', 'settle_lottery_done', 'save_character_done']);
   assert.deepEqual(funnelEvents(funnelSnap(null), funnelSnap(undefined)), []);
+});
+
+test('one landing: a link’s share code and table are read by shape, and the referral rides in the one banner', () => {
+  const host = '11111111-1111-4111-8111-111111111111';
+  assert.deepEqual(linkParts('/', `?join=${host}&ref=abcdef0123&table=buka-corner`), { ref: 'abcdef0123', table: 'buka-corner' });
+  assert.deepEqual(linkParts('/s/abcdef0123', ''), { ref: 'abcdef0123', table: null }, 'a host that serves the game for /s/<code> still lands the code');
+  assert.deepEqual(linkParts('/', '?s=abcdef0123'), { ref: 'abcdef0123', table: null }, 'the older query form');
+  for (const search of ['?ref=<script>', '?ref=ABCDEF0123', '?ref=short', '?table=../../etc', '?table=Buka', `?table=${'a'.repeat(41)}`, '?ref=abcdef0123x-']) {
+    assert.deepEqual(linkParts('/', search), { ref: null, table: null }, search);
+  }
+  assert.equal(joinIdFrom('/', `?join=${host}&ref=abcdef0123&table=buka-corner`), host, 'the same link still names the player to join');
+  const label = () => 'Amala Shitta', joined = { ok: true, code: 'joined', host: { name: 'Ada' }, venue: 'amala-shitta' };
+  const plain = joinBanner(joined, label), gift = joinBanner(joined, label, { gift: true });
+  assert.equal(plain.title, 'You’re joining Ada'); assert.equal(gift.title, plain.title);
+  assert.equal(gift.text, `${plain.text} ${GIFT_LINE}`, 'one banner: where they are, and what the link is worth');
+  assert.match(GIFT_LINE, /paid shift/, 'the gift is promised only for real work');
+  assert.equal(joinBanner({ ok: false }, label, { gift: true }), null);
+  assert.deepEqual(linkBanner('Ada'), { tone: 'good', title: 'You came through Ada’s link', text: GIFT_LINE, knock: false });
 });

@@ -9,7 +9,7 @@ import { esc, json, money, mark, empty } from '../dom.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { upcomingEvents, eventIcs } from '../../game/calendar.js';
 import { isDeparting } from '../../game/registry.js';
-import { G, load, share, span, until } from './growth-client.js';
+import { G, load, share, span, until, channelLink } from './growth-client.js';
 
 const list = (view) => upcomingEvents(view.now, 7, view.cityId);
 
@@ -34,7 +34,7 @@ const panel = {
   },
   render(state, view) {
     const events = list(view), live = events.filter((event) => event.live), later = events.filter((event) => !event.live);
-    const channel = G.hello?.channel ? `<a class="ui-button is-block" href="${esc(G.hello.channel)}" target="_blank" rel="noopener noreferrer">Follow Allworld on WhatsApp</a><p class="gr-note">The owner posts what is on tonight there. It opens WhatsApp; the game sends you nothing.</p>` : '';
+    const channel = G.hello?.channel ? `${channelLink()}<p class="gr-note">The owner posts what is on tonight there. It opens WhatsApp; the game sends you nothing.</p>` : '';
     return `${live.length ? live.map((event) => card(event, state, view)).join('') : empty('calendar', 'Nothing is on right now', later[0] ? `Next: ${later[0].title}, ${span(later[0].start, later[0].end)}.` : 'Check back soon.', '', { compact: true })}
       ${later.length ? `<h3 class="ui-section">Coming up<small>next 7 days</small></h3>${later.map((event) => card(event, state, view)).join('')}` : ''}${channel}
       ${how('events-rules', ruleList(['Events happen at a place and a time, on Lagos time. Be there and finish any activity to count as attending.', 'An event changes no price and no pay. Being there counts for missions.',

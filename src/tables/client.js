@@ -89,6 +89,16 @@ function connect() {
   socket.onerror = () => {};
 }
 
+// The device session changed: the socket was opened with the previous identity's cookie, and the seat and results were theirs.
+try {
+  window.addEventListener('jaw:session', () => {
+    if (timer) { clearTimeout(timer); timer = null; }
+    const old = ws; ws = null; attempts = 0;
+    Object.assign(T, { socket: 'idle', list: null, listAt: 0, tableId: null, state: null, error: null, pending: false, claimed: null, ratings: null });
+    try { old?.close(); } catch { /* already closed */ }
+  });
+} catch { /* not a browser */ }
+
 /** Called from the Tables app's bind(): idempotent. */
 export function start(api) {
   T.api = api;

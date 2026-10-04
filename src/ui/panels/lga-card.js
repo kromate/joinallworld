@@ -9,6 +9,10 @@
  *                                                       `redraw` re-renders the host (default api.refresh();
  *                                                       a `live: false` sheet passes () => api.open(its id))
  *   track(name, props)                                  the decoupled analytics event ('jaw:track')
+ *   lgaHomeExtra                                        the same choice as a section of the settle-in Home card
+ *                                                       (src/ui/panels/onboarding.js HOME_EXTRAS): there nothing is sent
+ *                                                       by the card — the choice rides in the 'onboarding.home' payload
+ *                                                       ({ lga, via }), so settling in and taking a house are one step
  *
  * THE ACTION is the ordinary game action 'estate.set-lga' { lga, via } (src/game/systems/estate.js):
  * validated on the server, applied once per action id, and the free house on a plot is allocated
@@ -75,7 +79,7 @@ export function bindLgaCard(root, api, { onChosen = () => {}, redraw = () => api
     ui.sending = false;
     if (result?.ok) {
       Object.assign(ui, { found: null, picking: false, note: '' });
-      track('lga_chosen', { method: via === 'device' ? 'device' : 'manual' });
+      track('lga_chosen', { method: via === 'device' ? 'device' : 'manual', lga });
       // The server allocates the house now; the maps are told what they cached is stale.
       window.dispatchEvent(new CustomEvent('jaw:world-changed'));
       onChosen(lga);
@@ -100,3 +104,53 @@ async function find(api, redraw) {
     else { ui.note = `You do not seem to be in ${pack.name} right now. Pick the local government you call home.`; ui.picking = true; }
   } catch (error) { ui.note = WHY[error?.code] || WHY[2]; ui.picking = true; } finally { ui.finding = false; }
 }
+
+/**
+ * THE SAME CHOICE AT SETTLE-IN, as a section of the "Make this life yours" Home card (see HOME_EXTRAS in ./onboarding.js).
+ * The player finds their local government on the device or picks it from the list; the choice is kept in the sheet's draft
+ * (draft.extra.area = { lga, via }) and sent with the move-in — never before, so a guest who closes the sheet has taken nothing.
+ * The privacy rule is the one above: a position never leaves find().
+ */
+export const lgaHomeExtra = {
+  id: 'area',
+  render(state, view, draft) {
+    const e = view.estate;
+    if (!e?.lgas?.length) return '';
+    const picked = e.lgas.find((item) => item.id === draft.extra.area?.lga) ?? null;
+    const found = ui.found && !picked ? `<div class="world-found" role="status"><p>${ui.found.sure ? 'You are in' : 'Nearest to you is'} <b>${esc(ui.found.name)}</b>. Is that right?</p>
+      <div class="world-row"><button type="button" class="ui-button is-primary" data-extra="yes" data-key="area:yes">Yes, ${esc(ui.found.name)}</button><button type="button" class="ui-button" data-extra="no" data-key="area:no">No, let me pick</button></div></div>` : '';
+    const chosen = picked ? `<p class="world-now" role="status"><b>${esc(picked.name)}</b><small>${esc(picked.line)}</small></p>` : '';
+    return `<section class="world-card is-compact" data-lga-card><h3>Your local government</h3>
+      <p class="ui-note">Your house stands on a plot in the local government you choose. You can move to another one later (once every ${e.change.cooldownDays} days).</p>
+      ${chosen}${found}
+      <button type="button" class="ui-button is-block" data-extra="find" data-key="area:find" ${ui.finding ? 'disabled' : ''}>${ui.finding ? 'Finding…' : 'Find my local government'}</button>
+      <p class="ui-note">Worked out on this device. Your position is never sent or stored — only the local government you confirm.</p>
+      <label class="world-field">Or choose from the ${e.lgas.length} local governments of ${esc(e.cityName)}
+        <select data-lga-pick data-key="area:pick"><option value="">Choose…</option>${e.lgas.map((item) => `<option value="${esc(item.id)}" ${item.id === picked?.id ? 'selected' : ''}>${esc(item.name)}</option>`).join('')}</select></label>
+      ${ui.note ? `<p class="ui-why" role="status">${esc(ui.note)}</p>` : ''}</section>`;
+  },
+  /** A tap inside the section. Finding is asynchronous: the sheet is redrawn again when the answer is in. */
+  click(target, draft, { api, redraw } = {}) {
+    const what = target.dataset.extra;
+    if (what === 'yes' && ui.found) { draft.extra.area = { lga: ui.found.id, via: 'device' }; Object.assign(ui, { found: null, note: '' }); return true; }
+    if (what === 'no') { Object.assign(ui, { found: null, note: '' }); return true; }
+    if (what === 'find' && api) { delete draft.extra.area; void find(api, redraw).then(redraw); return true; }
+    return false;
+  },
+  /** The list is a <select>: its change is the manual choice. */
+  bind(root, api, draft, redraw) {
+    root.querySelector('[data-extra-root="area"] [data-lga-pick]')?.addEventListener('change', (event) => {
+      const lga = event.target.value;
+      if (lga) draft.extra.area = { lga, via: 'manual' }; else delete draft.extra.area;
+      Object.assign(ui, { found: null, note: '' });
+      redraw();
+    });
+  },
+  ready: (draft) => (draft.extra.area?.lga ? null : 'Choose your local government to continue.'),
+  payload: (draft) => (draft.extra.area?.lga ? { lga: draft.extra.area.lga, via: draft.extra.area.via === 'device' ? 'device' : 'manual' } : {}),
+  /** Told when the move-in was accepted: the analytics event, and the maps are told what they cached is stale. */
+  done(draft) {
+    track('lga_chosen', { method: draft.extra.area?.via === 'device' ? 'device' : 'manual', lga: draft.extra.area?.lga });
+    try { window.dispatchEvent(new CustomEvent('jaw:world-changed')); } catch { /* no window */ }
+  },
+};

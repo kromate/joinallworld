@@ -26,7 +26,7 @@ const EMAIL = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
 const TOKEN = /^[A-Za-z0-9][A-Za-z0-9_.:+-]{0,63}$/;
 /** A route template as the server registers it ("POST /api/social/house/:host"): fixed words, never a real id. */
 const ROUTE = /^(GET|POST|PUT|PATCH|DELETE|WS) [A-Za-z0-9\-_/:.]{1,80}$/;
-const KEY = /^[a-z$][a-z0-9_]{0,39}$/;
+const KEY = /^[a-z][a-z0-9_]{0,39}$/;
 /** Property names that are refused whatever they hold. */
 const DENIED_KEYS = new Set(['name', 'nickname', 'username', 'display_name', 'text', 'body', 'message', 'chat', 'content', 'draft', 'note', 'title', 'reason',
   'email', 'phone', 'x', 'y', 'z', 'lat', 'lng', 'lon', 'latitude', 'longitude', 'position', 'pos', 'coords', 'coordinates', 'location_exact',
@@ -56,8 +56,9 @@ export function scrubText(value, limit = MAX_TEXT) {
   text = text.slice(0, 2000)
     .replace(/(["'`])((?:(?!\1)[^\n]){0,400})\1/g, (whole, quote, inner) => (/\s/.test(inner) || inner.length > 40 || /[@,;!?]/.test(inner) ? `${quote}[text]${quote}` : whole))
     .replace(EMAIL, '[email]')
-    .replace(/\b(sid|token|secret|password|authorization|cookie)\s*[=:]\s*\S+/gi, '$1=[redacted]')
+    .replace(/\b(authorization|set-cookie|cookie)\s*[=:][^\n]*/gi, '$1=[redacted]')
     .replace(/\bBearer\s+\S+/gi, 'Bearer [redacted]')
+    .replace(/\b(sid|token|secret|password|passwd|api_key|apikey)\s*[=:]\s*\S+/gi, '$1=[redacted]')
     .replace(UUID, '[id]')
     .replace(/([a-z][a-z0-9+.-]*:\/\/[^\s?#"'<>]*)[?#][^\s"'<>]*/gi, '$1')
     .replace(/(\/[A-Za-z0-9_\-./]*)\?[^\s"'<>]*/g, '$1')

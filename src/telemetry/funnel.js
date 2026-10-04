@@ -49,7 +49,7 @@ export function stateEvents(previous, next, memo, { now, baseline = false, pendi
   const o = next?.onboarding, before = previous?.onboarding;
   const session = () => since(memo.t.session, now);
   if (!o) return events;
-  if (!baseline && before && !before.done && o.step > before.step) {
+  if (!baseline && before && !before.done && !o.legacy && o.step > before.step) {
     for (let index = before.step; index < Math.min(o.step, STEPS.length); index += 1) {
       if (once(memo, `step${index}`)) events.push(['character_step_completed', { step: STEPS[index], step_index: index, ms_in_step: since(memo.t.step, now), ms_since_session: session() }]);
     }

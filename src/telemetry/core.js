@@ -42,7 +42,7 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   const plan = clientPlan(config, win?.location?.hostname);
   /** 'on' when at least one service may run in this browser, otherwise 'off' (nothing is kept, nothing loads). */
   const mode = plan.sentry || plan.posthog ? 'on' : 'off';
-  let sentry = null, posthog = null, posthogLoading = null, sheetOpen = false, asked = false;
+  let sentry = null, posthog = null, posthogLoading = null, sheetOpen = false, asked = false, viewed = false;
   /** Analytics events and errors waiting for their SDK (or for the player's answer). */
   const events = [], errors = [], crumbs = [];
   let user = null, traits = {}, under18 = false;
@@ -95,7 +95,7 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
     posthogLoading = loaders.posthog().then((module) => {
       if (consent() !== 'granted') return; // the answer changed while the chunk was on its way
       posthog = module.startPosthog({ ...config.posthog, release: config.release, env: config.env, distinctId: user, location: win.location });
-      emit('$pageview');
+      if (!viewed) { viewed = true; emit('$pageview'); } // one view per page load, however often the choice changes
       flush();
       daily();
     }).catch((error) => { posthogLoading = null; report(error, { chunk: 'posthog' }); });

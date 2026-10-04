@@ -24,6 +24,14 @@
  *       429 receipt_quota, and when `global` unexpired receipts exist on the server everyone gets
  *       503 receipts_full — in both cases BEFORE run(), so nothing is charged, with a reason that
  *       says to try again later.
+ *     - TWO ALLOWANCES, COUNTED SEPARATELY, so that something free and frequent can never use up
+ *       the room that money needs. Receipts of a LIGHT kind (LIGHT_KINDS: a player-to-player
+ *       interaction — no money moves) count against `lightPerPlayer` / `lightGlobal`; every other
+ *       kind, and a stored receipt of a kind this build does not know, counts as money against
+ *       `perPlayer` / `global`. Any number of light receipts leaves a transfer, a rent or a
+ *       shout-out unaffected, and the reverse. Both classes are kept for the same window (the id's
+ *       own time is what makes dropping a receipt safe), and one id is one request whatever its
+ *       kind: reusing a money id for an interaction, or the reverse, is 409 client_id_conflict.
  *     - Only an outcome that happened is recorded. If run() returns { ok: false } it changed
  *       nothing (that is the convention for a refusal), so no receipt is kept and the same id may
  *       be tried again. If run() throws, the transaction aborts and nothing is kept either.
@@ -39,13 +47,18 @@ import { UUID_PATTERN, canonicalJson, hash53, actionFingerprint, pruneReceipts, 
 
 /** Every number this helper enforces. */
 export const ONCE = Object.freeze({
-  perPlayer: 2000,     // unexpired social/civic receipts one player may hold
-  global: 200000,      // unexpired social/civic receipts on the whole server
+  perPlayer: 2000,     // unexpired money receipts (every kind that is not light) one player may hold
+  global: 200000,      // unexpired money receipts on the whole server
+  lightPerPlayer: 2000,   // unexpired light receipts (LIGHT_KINDS) one player may hold
+  lightGlobal: 200000,    // unexpired light receipts on the whole server
   futureMs: 30000,     // how far ahead of the server clock an id's time may be
   recountMs: 60000,    // how often the server-wide count is taken again from the stored sessions
   resultBytes: 2048,   // largest stored result
   fingerprintMax: 96,  // longest stored fingerprint
 });
+/** Kinds where no money moves. They have their own allowance; anything else is counted as money. */
+export const LIGHT_KINDS = Object.freeze(['interact']);
+const isLight = (kind) => LIGHT_KINDS.includes(kind);
 /** Action receipts kept per session inside the action window; a full history answers 429 until old ones expire. */
 export const MAX_RECEIPTS = 10000;
 
@@ -62,9 +75,10 @@ const reasoned = (status, code, reason) => Object.assign(fail(status, code), { r
 
 export function createOnce({ now, windowMs, limits = {} }) {
   const perPlayer = limits.perPlayer ?? ONCE.perPlayer, global = limits.global ?? ONCE.global;
-  for (const value of [perPlayer, global]) if (!Number.isSafeInteger(value) || value < 1) throw new Error('Invalid receipt limits');
+  const lightPerPlayer = limits.lightPerPlayer ?? ONCE.lightPerPlayer, lightGlobal = limits.lightGlobal ?? ONCE.lightGlobal;
+  for (const value of [perPlayer, global, lightPerPlayer, lightGlobal]) if (!Number.isSafeInteger(value) || value < 1) throw new Error('Invalid receipt limits');
   let depth = 0; // > 0 while a run() is executing: ctx.act may spend there
-  let counted = { at: -Infinity, total: 0 };
+  let counted = { at: -Infinity, money: 0, light: 0 };
 
   /** The time inside a client id, or a thrown 400/409. Call it before the transaction to refuse early. */
   function onceId(id) {
@@ -76,15 +90,16 @@ export function createOnce({ now, windowMs, limits = {} }) {
     return at;
   }
   const live = (receipt, time) => Number.isFinite(receipt?.at) && receipt.at >= time - windowMs;
-  /** Unexpired receipts on the whole server: counted from the stored sessions, then kept current by adding. */
-  function total(db) {
+  /** Unexpired receipts of one class on the whole server: counted from the stored sessions, then kept current by adding. */
+  function total(db, light) {
     const time = now();
-    if (time - counted.at < ONCE.recountMs && time >= counted.at) return counted.total;
-    let sum = 0;
-    const count = (record) => { if (isRecord(record?.once)) for (const receipt of Object.values(record.once)) if (live(receipt, time)) sum += 1; return false; };
-    if (db.$store) db.$store.scanSessions(count); else Object.values(db.sessions).forEach(count);
-    counted = { at: time, total: sum };
-    return sum;
+    if (!(time - counted.at < ONCE.recountMs && time >= counted.at)) {
+      const sum = { at: time, money: 0, light: 0 };
+      const count = (record) => { if (isRecord(record?.once)) for (const receipt of Object.values(record.once)) if (live(receipt, time)) sum[isLight(receipt.kind) ? 'light' : 'money'] += 1; return false; };
+      if (db.$store) db.$store.scanSessions(count); else Object.values(db.sessions).forEach(count);
+      counted = sum;
+    }
+    return light ? counted.light : counted.money;
   }
 
   function once(db, session, { id, kind, fingerprint }, run) {
@@ -100,8 +115,12 @@ export function createOnce({ now, windowMs, limits = {} }) {
       if (old.kind !== kind || old.fp !== fp) throw fail(409, 'client_id_conflict');
       return { ...old.result, duplicate: true };
     }
-    if (Object.keys(receipts).length >= perPlayer) throw reasoned(429, 'receipt_quota', 'You have done this too many times in the last 24 hours. Nothing was charged. Try again later.');
-    if (total(db) >= global) throw reasoned(503, 'receipts_full', 'The server is too busy to take this safely right now. Nothing was charged. Try again later.');
+    // Room is counted per class: light receipts never use up the room money needs, nor the reverse.
+    const light = isLight(kind);
+    let mine = 0;
+    for (const receipt of Object.values(receipts)) if (isLight(receipt?.kind) === light) mine += 1;
+    if (mine >= (light ? lightPerPlayer : perPlayer)) throw reasoned(429, 'receipt_quota', 'You have done this too many times in the last 24 hours. Nothing was charged. Try again later.');
+    if (total(db, light) >= (light ? lightGlobal : global)) throw reasoned(503, 'receipts_full', 'The server is too busy to take this safely right now. Nothing was charged. Try again later.');
     depth += 1;
     let result;
     try { result = run(at); } finally { depth -= 1; }
@@ -110,7 +129,7 @@ export function createOnce({ now, windowMs, limits = {} }) {
     const text = JSON.stringify(result);
     if (text.length > ONCE.resultBytes) throw new Error(`ctx.once(${kind}): the stored result is ${text.length} bytes; keep it under ${ONCE.resultBytes}`);
     receipts[id] = { at, kind, fp, result: JSON.parse(text) };
-    counted.total += 1;
+    counted[light ? 'light' : 'money'] += 1;
     return result;
   }
 

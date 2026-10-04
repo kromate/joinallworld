@@ -111,8 +111,8 @@ test('gifts at capacity: an unexpired receipt is never evicted; a full player or
   assert.equal((await post(f, '/api/social/transfers', gift, ada)).code, 'sent');
   assert.deepEqual(await balances(), [9500, 10500, 10000]);
 
-  // Ada fills her own quota with other receipted things (interactions that happened: seeded as stored receipts).
-  await f.server.store.transact((db) => { const mine = sessionOf(db, ada).once; for (let i = 0; i < 2; i++) mine[`${f.now()}:${randomUUID()}`] = { at: f.now(), kind: 'interact', fp: 'seeded', result: { ok: true, code: 'interacted' } }; });
+  // Ada fills her own money quota with other paid things (seeded as stored receipts). Interactions would not count: they have their own allowance.
+  await f.server.store.transact((db) => { const mine = sessionOf(db, ada).once; for (let i = 0; i < 2; i++) mine[`${f.now()}:${randomUUID()}`] = { at: f.now(), kind: 'civic.shoutout', fp: 'seeded', result: { ok: true, code: 'queued' } }; });
   const refused = await post(f, '/api/social/transfers', { ...gift, clientId: f.id(), amount: 100 }, ada);
   assert.deepEqual([refused.status, refused.error], [429, 'receipt_quota']);
   assert.match(refused.reason, /Nothing was charged/);

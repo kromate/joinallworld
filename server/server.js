@@ -59,7 +59,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   votesPerAddress = Number(process.env.VOTES_PER_ADDRESS ?? 3),
   voteCapMode = process.env.VOTE_CAP_MODE || 'flag',
   log = (line) => console.error(line),
-  receiptLimits, // { perPlayer, global } for ctx.once (server/routes/once.js); the defaults are the documented numbers
+  receiptLimits, // { perPlayer, global, lightPerPlayer, lightGlobal } for ctx.once (server/routes/once.js); the defaults are the documented numbers
   buildId = process.env.BUILD_ID || packageVersion() } = {}) {
   const store = providedStore || await createStore(dataDir, { ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');

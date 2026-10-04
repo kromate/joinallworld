@@ -179,7 +179,7 @@ Every cap on what the data file can hold:
 | --- | --- |
 | Active device sessions | 10,000 (`maxActiveSessions`); further sign-ups get 503 |
 | Action receipts per session | 10,000 within the 24-hour action window, then 429 until old ones expire; each stores a fingerprint of at most 96 characters |
-| Gift, interaction, group and paid civic receipts | 2,000 unexpired per player and 200,000 on the server, each kept exactly 24 hours from the time in its id and never dropped earlier; a stored result is at most 2 KB |
+| Gift, interaction, group and paid civic receipts | Two allowances counted separately, so interactions can never use up the room money needs: 2,000 unexpired per player and 200,000 on the server for player interactions, and the same again for everything else (gifts, groups, reports, paid civic requests). Each is kept exactly 24 hours from the time in its id and never dropped earlier; a stored result is at most 2 KB |
 | Wallet history per life | 60 lines + 35 daily summaries of at most 9 reason groups |
 | Archived lives | one per expired session **that had a life**; a session that never finished character creation is deleted, not archived. Lived lives are never deleted automatically, so this grows with the number of players who ever played |
 | Social | 200 friends, 30 pending requests, 200 blocks, 100 conversations and 20 groups per player; 200 messages per conversation; 50 updates per player; 2,000 player reports; 50 pending life effects per player (a gift is never the one dropped) and an unclaimed gift returns to its sender after 7 days; players idle 45 days are forgotten |

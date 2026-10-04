@@ -86,10 +86,10 @@ async function transferSetup(t, receiptLimits) {
   /** The receipt ids one player holds (adapted: session.once instead of db.social.receipts). */
   const receipts = (who) => store.read((db) => Object.keys(session(db, who).once ?? {}));
   const total = async () => (await Promise.all([a, b, c].map(receipts))).flat().length;
-  /** SEEDED: `count` receipts in `who`'s own record, written at `at` (the id carries the same time, as a real one does). */
+  /** SEEDED: `count` monetary transfer receipts in `who`'s own record, written at `at` (the id carries the same time, as a real one does). */
   const fill = (who, count, at) => store.transact((db) => {
     const record = session(db, who); record.once ||= {};
-    for (let i = 0; i < count; i++) record.once[`${at}:00000000-0000-4000-8000-${String(i).padStart(12, '0')}`] = { at, kind: 'interact', fp: 'synthetic', result: { ok: true, code: 'probe' } };
+    for (let i = 0; i < count; i++) record.once[`${at}:00000000-0000-4000-8000-${String(i).padStart(12, '0')}`] = { at, kind: 'transfer', fp: 'synthetic', result: { ok: true, code: 'probe' } };
   });
   return { ...h, a, b, c, balances, receipts, total, fill };
 }

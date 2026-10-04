@@ -175,3 +175,14 @@ test('every “How it works” in an app keeps its state, and the Bank keeps cos
   for (const shown of ['rent.nextDueLabel', 'rent.amount', 'rent.lateFee', 'loan.nextCollection', 'loan.instalment', 'penalty']) assert.ok(bank.includes(shown), `Bank shows ${shown}`);
 });
 
+
+test('a panel opened inside the phone keeps the phone full width: no #life-dialog:has() width rule may beat #life-dialog[data-phone]', async () => {
+  const { readdir } = await import('node:fs/promises');
+  const dir = new URL('../panels/', import.meta.url);
+  for (const file of (await readdir(dir)).filter((name) => name.endsWith('.css'))) {
+    const css = await readFile(new URL(file, dir), 'utf8');
+    for (const rule of css.matchAll(/(#life-dialog:has\([^{]*)\{([^}]*)\}/g)) {
+      if (/(^|;)\s*width\s*:/.test(rule[2]!)) assert.match(rule[1]!, /:not\(\[data-phone\]\)/, `${file}: ${rule[1]}`);
+    }
+  }
+});

@@ -1,5 +1,5 @@
 /* Character creation. The dialog is widened on larger screens so the preview sits beside the options. */
-#life-dialog:has(.ob-root){width:min(980px,calc(100% - 24px))}
+#life-dialog:not([data-phone]):has(.ob-root){width:min(980px,calc(100% - 24px))}
 .ob-root{display:grid;gap:var(--s-3);font-family:var(--font);color:var(--c-ink)}
 .ob-head{display:flex;align-items:center;gap:var(--s-2)}
 .ob-head-main{flex:1;min-width:0}

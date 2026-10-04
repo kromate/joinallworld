@@ -25,6 +25,7 @@ import ActionProgress from './features/venue/ActionProgress.vue'
 import BottomNav from './features/nav/BottomNav.vue'
 import PanelHost from './features/phone/PanelHost.vue'
 import SheetHost from './features/phone/SheetHost.vue'
+import CommunityHost from './features/community/CommunityHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
 
@@ -149,6 +150,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
     </div>
   </div>
   <SheetHost />
+  <CommunityHost />
   <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
   <ToastStack :host="sheetOpen ? '#life-dialog' : 'body'" />
 </template>

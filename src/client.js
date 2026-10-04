@@ -12,7 +12,15 @@ export const CITIES = Object.freeze({ lagos: { id: 'lagos', name: 'Lagos', regio
 export const STORAGE_KEY = 'joinallworld-life-v1';
 export const TEXT = Object.freeze({
   connectionLost: 'Connection lost. Reconnect to check your saved progress.',
-  offlinePaused: 'Reconnect to save your action. Changes are paused while offline.',
+  offlinePaused: 'This device has no internet. Nothing changes until you are back online.',
+  /** Why an action was not sent, by connection state (client.link): only 'offline' says the device is offline. */
+  paused: Object.freeze({
+    offline: 'This device has no internet. Nothing changes until you are back online.',
+    unreachable: 'The game server is not answering. Nothing changes until it can be reached again.',
+    expired: 'This device’s saved life is no longer on the server. Start a new life to play.',
+    new: 'Choose a nickname to start playing.',
+    connecting: 'Still connecting. Try again in a moment.',
+  }),
   outOfSync: 'Your action time was out of sync. Reconnect and try again.',
   notSaving: 'The server cannot save right now. What you see is the last saved state; nothing new is being kept.',
   cityNote: (cityName) => `More places and activities are coming to ${cityName}.`,
@@ -191,6 +199,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       onSession(client.session, createNew);
       client.link = 'online';
       accept((await api(`/api/life?city=${client.cityId}`)).state);
+      holdCity(client.cityId);
       status('Connected · progress saved');
       return true;
     } catch (error) {
@@ -211,13 +220,24 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   }
 
   /**
+   * session.cities — which cities this session has a life in, as the server's session response says
+   * (about the caller only; an older server sends none, and then the list stays absent). Asking for
+   * a city's life creates it, so the list is kept current here without another request.
+   */
+  function holdCity(id) {
+    const held = client.session?.cities;
+    if (Array.isArray(held) && !held.includes(id)) client.session = { ...client.session, cities: [...held, id] };
+  }
+
+  /**
    * Send one action. Resolves { ok, code, reason? }. Offline or busy: nothing is sent and
    * nothing changes ({ ok: false, code: 'offline' | 'busy' }). Each call carries a fresh
    * idempotent action ID stamped with server time.
    */
   async function command(type, payload) {
     if (client.busy) return { ok: false, code: 'busy' };
-    if (!client.online) { status(TEXT.offlinePaused, true); return { ok: false, code: 'offline', reason: TEXT.offlinePaused }; }
+    // `code: 'offline'` is the machine code for "not sent"; the sentence says which of the reasons it really is.
+    if (!client.online) { const reason = TEXT.paused[client.link] || TEXT.paused.unreachable; status(reason, true); return { ok: false, code: 'offline', reason }; }
     client.busy = true;
     try {
       const body = { actionId: client.newId(), cityId: client.cityId, type };
@@ -243,6 +263,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       const data = await api(`/api/life?city=${id}`);
       client.cityId = id;
       accept(data.state);
+      holdCity(id);
       return { ok: true, code: 'switched' };
     } catch (error) {
       if (error.status === 401) expired(); else status(error.message, true);

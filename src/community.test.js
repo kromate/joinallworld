@@ -125,6 +125,8 @@ test('community microphone safeguards, spatial playback, and multi-tab venue rev
   syntheticWs.receive({type:'presence',members:[{id:'a',name:'Alex',enabled:true,position:{x:0,z:0}},{id:'b',name:'Bea',enabled:true,position:{x:6,z:0}}]});
   assert.equal((await syntheticApi.getDiagnostics()).peers[0].gain,.5,'half-range halves receive gain');assert.equal((await syntheticApi.getDiagnostics()).peers[0].rms,.125,'post-gain analyser amplitude halves');
   await els['.community-east'].fire('click');assert.deepEqual(syntheticWs.sent.at(-1),{type:'move',x:2,z:0});
+  assert.equal(syntheticApi.moveTo(0,0),true);assert.deepEqual(syntheticWs.sent.at(-1),{type:'move',x:0.01,z:0},'a reported position is never exactly the origin, which means "not reported yet"');
+  assert.equal(syntheticApi.moveTo(40,-40),true);assert.deepEqual(syntheticWs.sent.at(-1),{type:'move',x:20,z:-20},'reports are kept inside the server bounds');
   assert.deepEqual((await syntheticApi.getDiagnostics()).position,{x:0,z:0},'move never optimistically overrides server position');
   const nearPeer=PC.all.at(-1);
   syntheticWs.receive({type:'presence',members:[{id:'a',name:'Alex',enabled:true,position:{x:0,z:0}},{id:'b',name:'Bea',enabled:true,position:{x:13,z:0}}]});
@@ -173,4 +175,58 @@ test('community microphone safeguards, spatial playback, and multi-tab venue rev
   assert.equal(els['.community-join-voice'].disabled,false);assert.equal(els['.community-connection'].textContent,'Connected','explicit same-room recovery restores connection label');assert.equal(revokedFactoryCalls,1,'membership renewal never automatically recaptures audio');
   assert.equal(renewedWs.sent.filter(message=>message.type==='chat').length,0,'stale pending chat never retries after renewed membership');
   revokedApi.destroy();
+});
+
+test('positions: the game moves the avatar, the room reports everyone back, and none of it touches the microphone', async (t) => {
+  const globalNames = ['document', 'window', 'location', 'fetch', 'navigator', 'WebSocket', 'RTCPeerConnection'];
+  const originalGlobals = new Map(globalNames.map((name) => [name, Object.getOwnPropertyDescriptor(globalThis, name)]));
+  let api = null;
+  t.after(() => { try { api?.destroy(); } finally { for (const [name, descriptor] of originalGlobals) { if (descriptor) Object.defineProperty(globalThis, name, descriptor); else delete globalThis[name]; } } });
+  class Element {
+    constructor(){this.events={};this.children=[];this.hidden=false;this.value='';this.textContent='';this.attrs={};this.style={};}
+    addEventListener(n,fn){this.events[n]=fn;} removeEventListener(n){delete this.events[n];}
+    setAttribute(n,v){this.attrs[n]=v;} append(...els){this.children.push(...els);} replaceChildren(...els){this.children=[...els];} remove(){}
+    get firstElementChild(){return this.children[0];} querySelector(s){return this.selectors?.[s];}
+    async fire(n){return this.events[n]?.({preventDefault(){}});}
+  }
+  const names=['connection','room','name','content','members','count','messages','compose','join-voice','mute','leave-voice','voice-status','audio','feedback','retry','device','position','north','south','west','east','network-note','playback-note','proximity','voice','chat','private-note'];
+  const els=Object.fromEntries(names.map(n=>[`.community-${n}`,new Element()]));
+  els['#community-microphone']=new Element();
+  els['.community-name'].selectors={input:new Element(),button:new Element()};els['.community-compose'].selectors={input:new Element(),button:new Element()};
+  const container=new Element();container.selectors=els;
+  globalThis.document={createElement(){return new Element();}};
+  globalThis.window=new Element();window.RTCPeerConnection=function(){};
+  globalThis.location={protocol:'http:',host:'localhost:5173'};
+  globalThis.fetch=async()=>({ok:true,json:async()=>({session:{id:'a',name:'Alex'}})});
+  let mediaCalls=0;
+  Object.defineProperty(globalThis,'navigator',{value:{mediaDevices:{getUserMedia:async()=>{mediaCalls++;throw new Error('must not be asked');}}},configurable:true});
+  class WS {static OPEN=1;static CONNECTING=0;static instances=[];constructor(){this.readyState=0;this.sent=[];WS.instances.push(this);}send(s){this.sent.push(JSON.parse(s));}close(){this.readyState=3;this.onclose?.();}open(){this.readyState=1;this.onopen();}receive(data){this.onmessage({data:JSON.stringify(data)});}}
+  globalThis.WebSocket=WS;
+  const source=(await readFile(new URL('./community.js', import.meta.url), 'utf8')).replace("import './community.css';", '') + '\n//# sourceURL=community-positions-under-test.js';
+  const {createCommunity}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+  const seen=[], steps=[]; let walks=true;
+  api=await createCommunity(container,{onMembers:(list)=>seen.push(list),onStep:(dx,dz)=>{steps.push([dx,dz]);return walks;}});
+  const ws=WS.instances.at(-1);
+  assert.equal(api.moveTo(3,4),false,'no room yet: nothing is sent');
+  ws.open();
+  ws.receive({type:'presence',members:[{id:'a',name:'Alex',enabled:false,muted:true,position:{x:0,z:0}},{id:'b',name:'Bea',enabled:false,muted:true,position:{x:6,z:-2}}]});
+  assert.deepEqual(seen.at(-1),{self:'a',members:[{id:'a',name:'Alex',position:null},{id:'b',name:'Bea',position:{x:6,z:-2}}]},'the game is told who is here and where; the origin means "not reported yet"');
+  assert.equal(api.moveTo(3.25,-4.5),true);assert.deepEqual(ws.sent.at(-1),{type:'move',x:3.25,z:-4.5},'the scene position is what the room is told');
+  ws.receive({type:'presence',members:[{id:'a',name:'Alex',enabled:false,muted:true,position:{x:3.25,z:-4.5}},{id:'b',name:'Bea',enabled:true,muted:false,position:{x:6,z:-2}}]});
+  assert.deepEqual(seen.at(-1).members[0].position,{x:3.25,z:-4.5});
+  assert.match(els['.community-position'].textContent,/1 of 1 person in voice is within range/,'the panel says who is in range of where you stand');
+  // The Walk buttons ask the game to walk the avatar; only without a scene do they move the voice position directly.
+  const before=ws.sent.length;
+  await els['.community-north'].fire('click');await els['.community-east'].fire('click');
+  assert.deepEqual(steps,[[0,-2],[2,0]]);assert.equal(ws.sent.length,before,'the game walked: the panel itself sent nothing');
+  walks=false;await els['.community-west'].fire('click');
+  assert.deepEqual(ws.sent.at(-1),{type:'move',x:1.25,z:-4.5},'no scene: the button moves the voice position as before');
+  // Revocation empties the list for the game, refuses further moves and never touched the microphone.
+  ws.receive({type:'error',code:'venue_mismatch',error:'venue_mismatch'});
+  assert.deepEqual(seen.at(-1),{self:'a',members:[]},'a revoked room has nobody in it');
+  assert.equal(api.moveTo(1,1),false,'a revoked room accepts no position');
+  const sent=ws.sent.length;await els['.community-north'].fire('click');assert.equal(ws.sent.length,sent,'nor does a Walk button reach it');
+  assert.equal(mediaCalls,0,'positions never ask for the microphone');
+  assert.ok(ws.sent.every((message)=>message.type!=='voice-state'||message.enabled===false),'and never enable voice');
+  api.destroy();assert.deepEqual(seen.at(-1),{self:'a',members:[]});api=null;
 });

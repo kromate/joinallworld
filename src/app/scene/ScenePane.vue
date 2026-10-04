@@ -15,6 +15,7 @@
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../state/app.ts'
 import { loadSceneWorld } from './loaders.ts'
+import { landingCodeSettled } from '../features/start/warmLanding.ts'
 import { telemetry } from '../../telemetry/index.ts'
 
 const props = defineProps<{
@@ -50,6 +51,7 @@ onMounted(() => {
   // After the first paint: the scene starts downloading with the HUD already on screen and usable.
   setTimeout(async () => {
     try {
+      await landingCodeSettled() // a new device is looking at the landing's 3D preview: its code goes first
       const createVenueWorld = await loadSceneWorld()
       if (disposed || !container.value) return
       const venue = createVenueWorld(container.value, { location: game.state.value.location, onTag(tag) {

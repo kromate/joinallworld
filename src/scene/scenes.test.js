@@ -14,7 +14,7 @@ import { VENUES } from '../game/content/venues.js';
 import { NPCS } from '../game/content/npcs.js';
 import { spotsOf } from '../life.js';
 
-const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse'];
+const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery'];
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail (up to ~2,700 triangles, once), on top.
 const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
@@ -398,7 +398,7 @@ test('the host draws one frame per real change and none while a venue scene is i
 test('scene sources hold no frame loops or timers, and the dev harness is not a build input', async () => {
   // Assembled from parts so this file does not itself contain the words the host's own source scan looks for.
   const banned = new RegExp([['request', 'Animation', 'Frame'], ['set', 'Animation', 'Loop'], ['set', 'Interval'], ['set', 'Timeout'], ['Texture', 'Loader'], ['GLTF', 'Loader'], ['new ', 'Image'], ['\\.png'], ['\\.jpg'], ['\\.glb'], ['\\.gltf'], ['fetch', '\\(']].map((parts) => parts.join('')).join('|'));
-  for (const file of ['build.js', 'characters.js', 'props.js', 'venue-scenes.js', 'venues-outdoor.js', 'venues-social.js', 'venues-work.js', 'venues-civic.js', 'harness.js', 'harness.html']) {
+  for (const file of ['build.js', 'characters.js', 'props.js', 'venue-scenes.js', 'venues-outdoor.js', 'venues-social.js', 'venues-work.js', 'venues-civic.js', 'venues-transport.js', 'harness.js', 'harness.html']) {
     const code = (await readFile(new URL(file, import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
     assert.doesNotMatch(code, banned, file);
   }

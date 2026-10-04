@@ -5,8 +5,8 @@
 // system). Every disabled button says what is missing.
 import { computed } from 'vue'
 import type { CarId } from '../../../types/life.ts'
-import { CAR_RESALE_RATE } from '../../../game/content/cars.js'
 import { useApp } from '../../state/app.ts'
+import { CAR_RESALE_RATE } from '../../legacy/content.ts'
 import { linkWords } from '../../legacy/modules.ts'
 import { money } from '../../ui/format.ts'
 import HowItWorks from '../../ui/HowItWorks.vue'

@@ -13,14 +13,13 @@
 // out) ordering stops there, the refusal is shown, and what was not bought stays in the basket.
 // Prices and pack sizes are original beta values (content/food.js).
 import { computed, nextTick, ref } from 'vue'
-import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../../game/content/food.js'
 import { useApp } from '../../state/app.ts'
+import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../legacy/content.ts'
 import { linkWords } from '../../legacy/modules.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { MAX_PACKS, groceriesRules, items, lineTotal, orderReason, orderedLine, quickBuy, quoteOf } from './groceriesModel.ts'
-import type { Ingredient } from './groceriesModel.ts'
 import { basket } from './groceriesState.ts'
 
 defineProps<{ params?: unknown }>()
@@ -28,9 +27,9 @@ defineProps<{ params?: unknown }>()
 const { game, command } = useApp()
 const view = game.view
 const state = game.state
-const catalogue: Record<string, Ingredient> = INGREDIENTS
-const recipes: Record<string, { label: string; ingredients: Record<string, number> }> = RECIPES
-const order: string[] = INGREDIENT_ORDER
+const catalogue = INGREDIENTS
+const recipes = RECIPES
+const order = INGREDIENT_ORDER
 const usedBy = Object.fromEntries(order.map((id) => [id, Object.values(recipes).filter((recipe) => id in recipe.ingredients).map((recipe) => recipe.label)]))
 
 const ordering = ref(false)

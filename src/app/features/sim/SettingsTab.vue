@@ -9,6 +9,8 @@
 // There is no account section: accounts are a separate proposal that is not merged. The panel
 // explains what a device session is instead, so nobody mistakes it for a password-protected account.
 import { computed, onMounted, reactive, ref } from 'vue'
+// The wallpaper tiles are drawn by the phone's stylesheet; the phone's code may not have been fetched yet.
+import '../../../ui/phone/phone.css'
 import { useApp } from '../../state/app.ts'
 import LegacyPanel from '../../legacy/LegacyPanel.vue'
 import { linkWords } from '../../legacy/modules.ts'

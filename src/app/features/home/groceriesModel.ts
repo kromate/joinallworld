@@ -1,8 +1,8 @@
 // What the Groceries app decides, worked out from view.home.groceries. Pure, so it is tested
 // without a browser. Every price is the amount the server will charge after discounts.
 import type { HomeView } from '../../../types/view.ts'
+import type { IngredientContent } from '../../legacy/content.ts'
 
-export interface Ingredient { id: string; label: string; icon: string; price: number; pack: number }
 export type Quote = { price: number; list: number }
 
 export const MAX_PACKS = 9
@@ -11,12 +11,12 @@ export const MAX_PACKS = 9
 export const split = (packs: number): number[] => [...Array<number>(Math.floor(packs / 3)).fill(3), ...Array<number>(packs % 3).fill(1)]
 
 /** The server's quote for `packs` of an ingredient, else the catalogue price. */
-export function quoteOf(groceries: HomeView['groceries'] | undefined, item: Pick<Ingredient, 'id' | 'price'>, packs: number): Quote {
+export function quoteOf(groceries: HomeView['groceries'] | undefined, item: Pick<IngredientContent, 'id' | 'price'>, packs: number): Quote {
   return groceries?.[item.id]?.[packs] ?? { price: item.price * packs, list: item.price * packs }
 }
 
 /** What `packs` of an ingredient cost, in the pack sizes the server quotes. */
-export const lineTotal = (groceries: HomeView['groceries'] | undefined, item: Pick<Ingredient, 'id' | 'price'>, packs: number): number =>
+export const lineTotal = (groceries: HomeView['groceries'] | undefined, item: Pick<IngredientContent, 'id' | 'price'>, packs: number): number =>
   split(packs).reduce((sum, size) => sum + quoteOf(groceries, item, size).price, 0)
 
 /** The one-tap "Buy 1 pack" decision: the price on the button, and why it cannot be sent ('' when it can). */

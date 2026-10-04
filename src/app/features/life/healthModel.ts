@@ -2,6 +2,7 @@
 // The rules are the engine's (systems/health.js).
 import type { HealthCure } from '../../../types/content.ts'
 import type { HealthView } from '../../../types/view.ts'
+import type { VenueSpots } from '../../legacy/content.ts'
 
 export type HealthTone = 'is-sick' | 'is-rundown' | 'is-well'
 
@@ -21,8 +22,6 @@ export const resistanceOf = (strain: number): number => Math.round((1 - strain) 
 /** The glyph id of the status mark. */
 export const statusIcon = (health: Pick<HealthView, 'sick' | 'rundown'>): 'sick' | 'rundown' | 'well' => (health.sick ? 'sick' : health.rundown ? 'rundown' : 'well')
 
-export interface ActivityLike { id: string; cost?: number; duration: number }
-export interface VenueLike { spots: Record<string, { activities: ActivityLike[] }> }
 
 export interface CureLine {
   id: string
@@ -37,7 +36,7 @@ export interface CureLine {
 }
 
 /** One cure with its price (free, or from the activity that cures) and where to get it. */
-export function cureLine(cure: HealthCure, cash: number, venues: Readonly<Record<string, VenueLike>>): CureLine {
+export function cureLine(cure: HealthCure, cash: number, venues: Readonly<Record<string, VenueSpots>>): CureLine {
   const def = cure.activity && cure.where ? Object.values(venues[cure.where]?.spots ?? {}).flatMap((spot) => spot.activities).find((item) => item.id === cure.activity) ?? null : null
   const cost = def ? def.cost || 0 : cure.cost || 0
   return { id: cure.id, label: cure.label, price: cost ? `₦${Math.round(cost).toLocaleString('en-NG')}` : 'Free', time: def ? ` · ${def.duration}s` : '', short: cost > cash, text: cure.text, place: cure.where }

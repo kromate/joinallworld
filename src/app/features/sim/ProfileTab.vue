@@ -7,8 +7,8 @@
 // other panels (src/ui/panels/look-ui.js, lga-card.js); they are hosted through
 // src/app/legacy/parts.ts and redrawn when the draft changes.
 import { computed, nextTick, onBeforeUnmount, watch } from 'vue'
-import { DREAMS, START_HOMES, TRAITS } from '../../../game/content/traits.js'
 import { useApp } from '../../state/app.ts'
+import { DREAMS, START_HOMES, TRAITS } from '../../legacy/content.ts'
 import LegacyPanel from '../../legacy/LegacyPanel.vue'
 import { linkWords } from '../../legacy/modules.ts'
 import { bindLgaCard, chooseLook, escapeHtml, hosted, lookEditor, lookStage, lookSummary, lookTabClick, mountLookPreview, renderLgaCard, sameLook } from '../../legacy/parts.ts'
@@ -21,8 +21,7 @@ defineProps<{ params?: unknown }>()
 const { game, shell, legacy, command } = useApp()
 const state = game.state
 const view = game.view
-const content = (group: unknown) => group as Record<string, { label: string; icon: string; district?: string } | undefined>
-const traits = content(TRAITS), dreams = content(DREAMS), homes = content(START_HOMES)
+const traits = TRAITS, dreams = DREAMS, homes = START_HOMES
 
 /** The draft is rebuilt whenever the saved name or look changes underneath it. */
 function sync(): void {

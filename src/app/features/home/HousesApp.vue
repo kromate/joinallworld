@@ -6,9 +6,9 @@
 //
 // "Your own house" at the top is still the world panels' section (src/app/legacy/myHouse.ts).
 import { computed } from 'vue'
-import { MOVE_IN_WEEKS } from '../../../game/content/housing.js'
 import { useApp } from '../../state/app.ts'
 import LegacyPanel from '../../legacy/LegacyPanel.vue'
+import { MOVE_IN_WEEKS } from '../../legacy/content.ts'
 import { MY_HOUSE } from '../../legacy/myHouse.ts'
 import { linkWords } from '../../legacy/modules.ts'
 import { money } from '../../ui/format.ts'

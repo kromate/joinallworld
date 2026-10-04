@@ -261,8 +261,11 @@ export function worldOf(ctx) {
       const name = shardOf(cityId, lga);
       if (online) {
         // Who is online here, from the in-memory presence set: a page of it, never a scan of residents.
-        const ids = [...(onlineIn.get(name) ?? [])].slice(0, 400), start = Number.isSafeInteger(after) && after > 0 ? after : 0;
-        const slice = ids.slice(start, start + registry.PAGE.people);
+        // Walks the set only as far as this page (at most 400 + 25 entries), however many are online.
+        const set = onlineIn.get(name) ?? new Set(), start = Number.isSafeInteger(after) && after > 0 ? Math.min(after, 400) : 0, slice = [];
+        let seen = 0;
+        for (const id of set) { if (seen++ < start) continue; slice.push(id); if (slice.length >= registry.PAGE.people) break; }
+        const ids = { length: Math.min(set.size, 400 + registry.PAGE.people) };
         const items = await shards.read(name, (state) => slice.map((id) => registry.person(state, id, viewerId)).filter(Boolean));
         return { items: items.map((item) => ({ ...item, online: ctx.online(item.id), you: item.id === viewerId })), next: start + slice.length < ids.length ? start + slice.length : null };
       }

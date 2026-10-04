@@ -78,7 +78,7 @@ export default function growthRoutes(ctx) {
       if (!found) return null;
       found.opened = Math.min(Number.MAX_SAFE_INTEGER, (found.opened ?? 0) + 1);
       count(g, ctx.now(), 'share.opened');
-      return { facts: found.facts };
+      return { facts: found.facts, by: found.by };
     }, { durable: false }).catch(() => null);
     return { status: share ? 200 : 404, html: sharePageHtml(share, code, origin) };
   });

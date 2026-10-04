@@ -96,9 +96,9 @@ export function shareCard(facts) {
 
 const CODE = /^[a-z0-9]{8,16}$/;
 export const isShareCode = (value) => typeof value === 'string' && CODE.test(value);
-/** The share code in a link or a bare code (`…/s/<code>`, `?s=<code>`), or null. */
+/** The share code in a link or a bare code (`…/s/<code>`, `?ref=<code>`, `?s=<code>`), or null. */
 export function shareCodeFrom(text) {
-  const match = /(?:\/s\/|[?&]s=|^)([a-z0-9]{8,16})(?:[/?#&]|$)/.exec(String(text ?? '').trim());
+  const match = /(?:\/s\/|[?&](?:s|ref)=|^)([a-z0-9]{8,16})(?:[/?#&]|$)/.exec(String(text ?? '').trim());
   return match ? match[1] : null;
 }
 /** Where a button for one channel points. `text` already ends with the link. */

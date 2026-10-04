@@ -8,7 +8,7 @@
 import { esc, json, money, mark, section } from '../dom.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { linkWords } from '../link.js';
-import { G, load, share, until } from './growth-client.js';
+import { G, load, share, until, track } from './growth-client.js';
 
 const KIND_ICON = { life: 'home', discovery: 'compass', social: 'people' };
 
@@ -62,7 +62,7 @@ const panel = {
     const each = (selector, handler) => { for (const node of root.querySelectorAll(selector)) node.addEventListener('click', () => handler(node)); };
     each('[data-m-claim]', async (node) => {
       const result = await api.command('missions.claim', { id: node.dataset.mClaim });
-      if (result.ok) api.toast(api.state().message || 'Mission collected.', 'earn');
+      if (result.ok) { api.toast(api.state().message || 'Mission collected.', 'earn'); track('mission_completed', { kind: api.view().missions?.daily.concat(api.view().missions.weekly).find((item) => item.id === node.dataset.mClaim)?.kind ?? 'unknown' }); }
     });
     each('[data-m-swap]', async (node) => { const result = await api.command('missions.reroll', { id: node.dataset.mSwap }); if (result.ok) api.toast(api.state().message || 'Swapped.', 'info'); });
     each('[data-m-go]', (node) => { const [venue, spot] = JSON.parse(node.dataset.mGo); api.close(); api.goTo(venue, spot); });

@@ -83,8 +83,8 @@ test('share page: a crawler that runs no script gets correct Open Graph tags, es
   assert.deepEqual([tag('og:image:width'), tag('og:image:height'), tag('twitter:card'), tag('og:type')], ['1200', '630', 'summary_large_image', 'website']);
   assert.ok(html.indexOf('og:title') < html.indexOf('</head>') && html.indexOf('</head>') < 300000, 'the tags are in <head>, well inside the first 300 KB');
   assert.equal(/<script/i.test(html), false, 'no script: the preview does not depend on one');
-  assert.match(html, new RegExp(`<meta http-equiv="refresh" content="0;url=/\\?s=${share.code}">`));
-  assert.match(html, new RegExp(`<a href="/\\?s=${share.code}">Open Allworld</a>`));
+  assert.ok(html.includes(`<meta http-equiv="refresh" content="0;url=/?join=${ada.id}&amp;ref=${share.code}">`), 'people are sent to the landing hook with the sharer and the share code');
+  assert.ok(html.includes(`<a href="/?join=${ada.id}&amp;ref=${share.code}">Open Allworld</a>`));
   // An unknown, malformed or hostile code gives the general preview and never echoes the path.
   for (const path of ['/s/zzzzzzzzzz', '/s/%3Cscript%3Ealert(1)%3C/script%3E', '/s/', '/s/AAAA"onload="x']) {
     const other = await fetch(f.base + path);
@@ -95,7 +95,7 @@ test('share page: a crawler that runs no script gets correct Open Graph tags, es
     assert.match(text, /content="0;url=\/"/);
   }
   // The page is pure: hostile facts and a hostile origin cannot put markup into it.
-  const hostile = sharePageHtml({ facts: cleanFacts({ kind: 'invite', name: '"><img src=x onerror=1>', district: '<i>' }) }, 'abcdefghij', 'https://evil.example/"><script>');
+  const hostile = sharePageHtml({ by: '"><script>', facts: cleanFacts({ kind: 'invite', name: '"><img src=x onerror=1>', district: '<i>' }) }, 'abcdefghij', 'https://evil.example/"><script>');
   assert.equal(/<img|<i>|<script|evil\.example/.test(hostile), false);
   assert.match(hostile, /og:image" content="\/og\/allworld\.jpg"/);
   // Opened links are counted for the operator.
@@ -114,7 +114,7 @@ test('share model: the text has the link on its own last line, the card is plain
     const preview = sharePreview({ kind, name: 'x'.repeat(200), event: 'e'.repeat(200) });
     assert.ok(preview.title.length <= 120 && preview.description.length <= 200 && shareText({ kind, name: 'Ada' }, 'L').endsWith('\nL'));
   }
-  assert.deepEqual(['https://x.example/s/abc123defg', '/?s=abc123defg&x=1', 'abc123defg', '/s/ABC', 'nope', null].map(shareCodeFrom), ['abc123defg', 'abc123defg', 'abc123defg', null, null, null]);
+  assert.deepEqual(['https://x.example/s/abc123defg', '/?s=abc123defg&x=1', '?join=11111111-2222-4333-8444-555555555555&ref=abc123defg', 'abc123defg', '/s/ABC', 'nope', null].map(shareCodeFrom), ['abc123defg', 'abc123defg', 'abc123defg', 'abc123defg', null, null, null]);
 });
 
 test('referral: both sides are paid once, only after real play; own link, a second link, the same device and an old life are refused', async (t) => {

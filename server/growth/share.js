@@ -5,11 +5,12 @@
  *
  * THE PAGE (/s/<code>) is static HTML with Open Graph and Twitter tags in <head>: the crawlers of
  * WhatsApp, X, Telegram and Facebook do not run JavaScript, so a page that needs a script shows an
- * empty preview. A person who opens it is sent on to the game (`/?s=<code>`) by a meta refresh and
+ * empty preview. A person who opens it is sent on to the game (`/?join=<publicId>&ref=<code>`) by a meta refresh and
  * has an ordinary link as well; no script runs on the page at all. Every value written into it is
  * escaped, and the only player-chosen text is the sharer's name, which the text filter has passed.
  * An unknown or expired code gives the game's general preview and leads to the game.
  */
+import { UUID_PATTERN } from '../protocol.js';
 import { lagosTime } from '../../src/game/clock.js';
 import { viewLife } from '../../src/life.js';
 import { DISTRICTS } from '../../src/game/content/civic.js';
@@ -82,7 +83,10 @@ export const safeOrigin = (origin) => (typeof origin === 'string' && /^https?:\/
 export function sharePageHtml(share, code, origin = '') {
   const base = safeOrigin(origin);
   const preview = share ? sharePreview(share.facts) : { title: `${BRAND} · Your city story`, description: TAGLINE };
-  const target = share && isShareCode(code) ? `/?s=${code}` : '/';
+  // People are sent on to the game's own landing hook: `join` places a new visitor with the sharer (their venue, their
+  // door, or a table), `ref` is this share code, which the game attaches as a referral once the visitor's life exists.
+  const table = share?.facts?.tableId && /^[a-z0-9-]{1,40}$/.test(share.facts.tableId) ? `&table=${share.facts.tableId}` : '';
+  const target = share && isShareCode(code) && UUID_PATTERN.test(share.by ?? '') ? `/?join=${share.by}&ref=${code}${table}` : '/';
   const url = `${base}${share && isShareCode(code) ? `/s/${code}` : '/'}`, image = `${base}${OG_IMAGE}`;
   const title = esc(preview.title), description = esc(preview.description);
   return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title>

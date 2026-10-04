@@ -39,6 +39,12 @@ export function deviceToken() {
   if (typeof token !== 'string' || !/^[A-Za-z0-9-]{16,64}$/.test(token)) { token = randomToken(); store.set('allworld-device', token); }
   return token;
 }
+/**
+ * Product events for whatever analytics the game has (a separate facade listens): a decoupled DOM event, never an SDK
+ * call. Props are fixed small values — a kind, an id from the game's own content, a result. Never a name, a message,
+ * an address or a position.
+ */
+export function track(name, props = {}) { try { window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name, props } })); } catch { /* no listener is fine */ } }
 const ready = (view) => Boolean(view?.connected) && view.onboarding?.required !== true;
 const refresh = () => G.api?.refresh();
 
@@ -63,9 +69,11 @@ async function attach() {
   linking = false;
   if (result.transport) return; // try again at the next hello
   store.drop('allworld-ref');
+  if (result.ok && !result.duplicate) track('invite_joined');
   if (result.ok && !result.duplicate) G.api.toast(`You came through ${result.by}’s link. Get to work and you both get a gift.`, 'good');
-  // A link to someone's house or invite leads to their door, whether or not it counted as a referral.
-  if (about.ok && about.by?.id && about.by.id !== G.api.view().session?.id && ['house', 'invite'].includes(about.kind)) G.api.open('invite', { host: about.by.id });
+  // Placing the visitor with the sharer is the landing hook's job (`?join=<publicId>`). Until that hook is in this build,
+  // a link to someone's house or invite at least leads to their door.
+  if (!window.__jawJoinHandled && about.ok && about.by?.id && about.by.id !== G.api.view().session?.id && ['house', 'invite'].includes(about.kind)) G.api.open('invite', { host: about.by.id });
   void load(G.api, { force: true });
 }
 
@@ -75,14 +83,19 @@ export async function load(api, { force = false } = {}) {
   if (!started) {
     started = true;
     const code = shareCodeFrom(location.search) || shareCodeFrom(location.pathname);
-    if (code) { store.set('allworld-ref', { code, at: Date.now() }); try { history.replaceState(null, '', '/'); } catch { /* the address stays */ } }
+    // `ref` (or the older `s`) is the share code. `join` and `table` belong to the game's landing hook, which places a
+    // new visitor with the sharer; they are left in the address for it.
+    if (code) {
+      store.set('allworld-ref', { code, at: Date.now() }); track('share_link_opened'); track('invite_opened');
+      try { const url = new URL(location.href); url.searchParams.delete('ref'); url.searchParams.delete('s'); history.replaceState(null, '', `${url.pathname === '/' || url.pathname.startsWith('/s/') ? '/' : url.pathname}${url.search}`); } catch { /* the address stays */ }
+    }
   }
   if (G.loading || !ready(api.view())) return;
   if (!force && G.at && Date.now() - G.at < HELLO_MAX_AGE) return;
   G.loading = true;
   const result = await call('/api/growth/hello', { device: deviceToken() });
   G.loading = false; G.at = Date.now();
-  if (result.ok) { G.hello = result; G.error = null; if (result.state) void api.command('missions.refresh'); }
+  if (result.ok) { if ((result.referral?.paid?.paidTotal ?? 0) > (G.hello?.referral?.paid?.paidTotal ?? Infinity)) track('referral_rewarded'); G.hello = result; G.error = null; if (result.state) void api.command('missions.refresh'); }
   else G.error = result.reason;
   refresh();
   if (result.ok) void attach();
@@ -99,6 +112,7 @@ export async function share(api, kind, extra = {}) {
   const prepared = await (await sharing()).prepareShare(made.share.facts, `${location.origin}${made.share.path}`);
   if (G.sharing?.prepared.url) URL.revokeObjectURL(G.sharing.prepared.url);
   G.sharing = { facts: made.share.facts, prepared };
+  track('share_card_created', { kind }); if (kind === 'invite' || kind === 'house' || kind === 'table') track('invite_created');
   G.busy = null;
   api.open('share-sheet');
 }

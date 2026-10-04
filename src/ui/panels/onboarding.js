@@ -46,8 +46,8 @@
 import './onboarding.css';
 import { esc, money, icon, mark, iconFor } from '../dom.js';
 import { linkWords, linkButton } from '../link.js';
-import { TRAITS, TRAITS_REQUIRED, DREAMS, DREAM_REWARD, ONBOARDING_STEPS, LOTTERY_NOTE } from '../../game/content/traits.js';
-import { APPEARANCE } from '../../game/content/traits.js';
+import { TRAITS, TRAITS_REQUIRED, DREAMS, DREAM_REWARD, ONBOARDING_STEPS, LOTTERY_NOTE } from '../../game/content/traits.ts';
+import { APPEARANCE } from '../../game/content/traits.ts';
 import { track } from '../../quick-start/entry.js';
 import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocusBody, mountLookPreview, randomLook, sameLook, starterWardrobe, hairOptions, outfitOptions } from './look-ui.js';
 

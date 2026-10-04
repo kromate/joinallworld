@@ -13,7 +13,7 @@
 //   node scripts/typecheck.mjs --summary       print the totals recorded in the baseline
 //
 // Each project checks the files it owns under the globals of the runtime that executes them:
-//   engine  src/game, src/life.js, src/types    no DOM, no Node (it runs in three runtimes)
+//   engine  src/game, src/life.ts, src/types    no DOM, no Node (it runs in three runtimes)
 //   client  the rest of src/                    DOM + Vite
 //   server  server/, scripts/, vite.config.js   Node
 //   worker  deploy/*.js and the two server modules the Worker imports     Workers runtime
@@ -27,7 +27,7 @@ import { fileURLToPath } from 'node:url'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const baselinePath = join(root, 'tsconfig', 'baseline.json')
 const isTest = (file) => /\.test\.(js|ts|mjs)$/.test(file)
-const isEngine = (file) => file.startsWith('src/game/') || file === 'src/life.js' || file.startsWith('src/types/')
+const isEngine = (file) => file.startsWith('src/game/') || file === 'src/life.ts' || file.startsWith('src/types/')
 
 /** Which files each project answers for. */
 export const PROJECTS = {

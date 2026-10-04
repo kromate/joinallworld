@@ -6,7 +6,7 @@
  * without a session, command() refuses, sends nothing and changes nothing — the cached state
  * is shown read-only until the server is reachable again.
  */
-import { createLife, isDeparting } from './life.js';
+import { createLife, isDeparting } from './life.ts';
 
 export const CITIES = Object.freeze({ lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State' }, ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State' } });
 export const STORAGE_KEY = 'joinallworld-life-v1';

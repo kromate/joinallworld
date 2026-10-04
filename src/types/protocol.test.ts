@@ -38,7 +38,7 @@ import {
   WORLD_CITY_LGA_KEYS, WORLD_HOUSES_RESPONSE_KEYS, WORLD_LGA_RESPONSE_KEYS, WORLD_ME_RESPONSE_KEYS, WORLD_OWN_HOUSE_KEYS, WORLD_PERSON_KEYS,
 } from './world.ts'
 import { LGA_IDS } from './life.ts'
-import { SHARE_KINDS as ENGINE_SHARE_KINDS } from '../game/share-model.js'
+import { SHARE_KINDS as ENGINE_SHARE_KINDS } from '../game/share-model.ts'
 import { CLIENT_SIGNALS as SERVER_CLIENT_SIGNALS, FUNNEL_ORDER } from '../../server/growth/metrics.js'
 import { COLLECTION_NAMES, DATABASE_KEYS } from '../../server/types.ts'
 import type { ActionReceipt, CityLifeRecord, GrowthCollection, GrowthPlayerRecord, OnceReceipt, SessionRecord, ShareRecord } from '../../server/types.ts'

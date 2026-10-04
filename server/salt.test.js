@@ -12,10 +12,10 @@ import { randomUUID } from 'node:crypto';
 import { fixture } from './test-fixture.js';
 import { createServer } from './server.js';
 import { settleCity, applyLifeAction, useSaltSourceForTests } from './life-service.js';
-import { createLife, dispatch } from '../src/life.js';
-import { registerSystem } from '../src/game/registry.js';
-import { makeRng } from '../src/game/util.js';
-import { EVENTS } from '../src/game/content/events.js';
+import { createLife, dispatch } from '../src/life.ts';
+import { registerSystem } from '../src/game/registry.ts';
+import { makeRng } from '../src/game/util.ts';
+import { EVENTS } from '../src/game/content/events.ts';
 
 const NOW = Date.UTC(2026, 0, 5, 9);
 const SALT = /^[0-9a-f]{32}$/;

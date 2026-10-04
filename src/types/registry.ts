@@ -3,7 +3,7 @@
  * src/game/registry.js; this file is its shape: what a system file default-exports, the events
  * systems emit to one another, and the modifier keys they fold values through.
  */
-import type { ActionType, ActionVetoCode, ActivityVetoCode } from './actions.ts'
+import type { ActionMap, ActionType, ActionVetoCode, ActivityVetoCode } from './actions.ts'
 import type {
   ActivityDefinition, Block, CarDefinition, FurnitureDefinition, IngredientDefinition, ResolvedActivity, RouteBand,
 } from './content.ts'
@@ -192,7 +192,7 @@ export interface EngineEventMap {
 
   // -- events --
   /** An activity finished at a venue while a calendar event was on there; once per occurrence. */
-  'event.attended': { id: string; venue: VenueId }
+  'event.attended': { id: string; venue: string }
   'event.sprayed': { id: string; amount: number }
 
   // -- growth --
@@ -298,13 +298,20 @@ export type Modifier<K extends ModifierKey = ModifierKey> = (
 /** A player action handler. `payload` is an untrusted plain object: validate every field. */
 export type ActionHandler = (state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) => ActionOutcome
 
+/** The handler of action type `T`: its result codes are the ones `ActionMap[T]` lists. */
+export type TypedActionHandler<T extends ActionType> = (
+  state: LifeState,
+  payload: Record<string, unknown>,
+  ctx: LifeContext,
+) => ActionOutcome<ActionMap[T]['ok'], ActionMap[T]['fail']>
+
 /**
  * A server-only action: one half of a change whose other half lives in shared storage.
  * dispatch() refuses it with 'server_only' (changing nothing) unless ctx.internal === true.
  */
-export interface ServerOnlyAction {
+export interface ServerOnlyAction<T extends ActionType = ActionType> {
   serverOnly: true
-  run: ActionHandler
+  run: TypedActionHandler<T>
   /** The refusal sentence; a default one is used when absent. */
   refusal?: string
 }
@@ -338,7 +345,7 @@ export interface ActiveKindHandler<A extends ActiveAction = ActiveAction> {
   /** The action ran to its end. `state.activeAction` is already null. */
   complete(state: LifeState, active: A, ctx: LifeContext): void
   /** The player cancels. Return a failure to refuse the cancel; anything falsy lets it go through. */
-  cancel?(state: LifeState, active: A, ctx: LifeContext): ActionFailure | null | undefined | void
+  cancel?(state: LifeState, active: A, ctx: LifeContext): ActionFailure<'not_cancellable' | 'no_cancel'> | null | undefined | void
 }
 
 // ---- the system definition ----------------------------------------------------------------
@@ -364,7 +371,7 @@ export interface SystemDefinition<Id extends string = SystemId> {
    */
   sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void
   /** Keyed by the `type` sent to POST /api/action. */
-  actions?: Record<string, ActionHandler | ServerOnlyAction>
+  actions?: { [T in ActionType]?: TypedActionHandler<T> | ServerOnlyAction<T> }
   /** Called on every settlement with the elapsed seconds (possibly days' worth). ctx.now is the END of the interval. */
   advance?(state: LifeState, dtSeconds: number, ctx: LifeContext): void
   /** Derived, display-only data returned as `view[id]`. Must not mutate state. */

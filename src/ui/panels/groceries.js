@@ -20,7 +20,7 @@ import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { quickBuy } from '../phone/logic.js';
 import { esc, money, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
-import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../game/content/food.js';
+import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../game/content/food.ts';
 
 const USED_BY = Object.fromEntries(INGREDIENT_ORDER.map((id) => [id, Object.values(RECIPES).filter((recipe) => id in recipe.ingredients).map((recipe) => recipe.label)]));
 const MAX_PACKS = 9;

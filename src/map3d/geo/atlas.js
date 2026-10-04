@@ -32,7 +32,7 @@ import * as THREE from 'three';
 import { createRig } from '../camera.js';
 import { createTripClock } from '../trip.js';
 import { AFRICA_GROUPS, ATLAS_LEVELS, CONTINENTS, ZONES, cityEntry, plannedRoutes, regionEntry, stateOfCity } from '../regions.js';
-import { CITY_LINKS } from '../../game/content/world.js';
+import { CITY_LINKS } from '../../game/content/world.ts';
 import { EXTENT, project, relLon, unproject } from './projection.js';
 import { decodeTopology } from './topo.js';
 import { createPicker } from './pick.js';

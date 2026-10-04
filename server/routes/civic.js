@@ -54,11 +54,11 @@
  *   GET  /api/civic/richlist    { city, week, size, balances, earners, you, counters }
  *   POST /api/civic/prefs        { richList?: boolean, directory?: boolean }  (true = listed) → { ok, prefs: { richList, directory } }
  */
-import { isGuestLife } from '../../src/game/systems/onboarding.js';
-import { makeContext } from '../../src/game/util.js';
-import { VENUES } from '../../src/game/content/venues.js';
-import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.js';
-import { civicEligibility } from '../../src/game/systems/civic.js';
+import { isGuestLife } from '../../src/game/systems/onboarding.ts';
+import { makeContext } from '../../src/game/util.ts';
+import { VENUES } from '../../src/game/content/venues.ts';
+import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.ts';
+import { civicEligibility } from '../../src/game/systems/civic.ts';
 import { cityOf, emptyCivic, nextId } from '../civic/data.js';
 import { cleanLine } from '../civic/text.js';
 import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapNotice, govView, notices, vote, voteBlock } from '../civic/elections.js';

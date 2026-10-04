@@ -3,11 +3,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.js';
-import { REFERRAL } from '../src/game/content/growth.js';
+import { REFERRAL } from '../src/game/content/growth.ts';
 import { LIMITS } from './growth/data.js';
 import { sharePageHtml } from './growth/share.js';
-import { shareText, sharePreview, shareCard, shareCodeFrom, cleanFacts } from '../src/game/share-model.js';
-import { awayCard, composeDigest, topLines, DIGEST } from '../src/game/digest.js';
+import { shareText, sharePreview, shareCard, shareCodeFrom, cleanFacts } from '../src/game/share-model.ts';
+import { awayCard, composeDigest, topLines, DIGEST } from '../src/game/digest.ts';
 
 const DAY = 86400000;
 const TOKEN = 'operator-token-for-growth-tests-0123456789';
@@ -283,7 +283,7 @@ test('metrics count each thing once under one name, follow the merged first minu
   // The bit positions of the steps lives are already counted under never move: a new step is added at the end.
   assert.deepEqual(FUNNEL.map((step) => step.id), ['onboarded', 'goal-1', 'job', 'shift', 'goals-done', 'mission', 'table', 'day-two-work', 'settled']);
   assert.deepEqual([...FUNNEL_ORDER].sort(), FUNNEL.map((step) => step.id).sort());
-  const chain = (await import('../src/game/content/goals.js')).STARTER_GOALS.length;
+  const chain = (await import('../src/game/content/goals.ts')).STARTER_GOALS.length;
   const done = FUNNEL.find((step) => step.id === 'goals-done');
   assert.deepEqual([chain, done.reached({ goals: { chain: 7 } }), done.reached({ goals: { chain } })], [10, false, true], 'the whole starter chain, not the old seven goals');
   // A new visitor as the quick start makes one: a guest is "onboarded" (arrived) once Play is confirmed, "settled" only after settling in.

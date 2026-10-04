@@ -20,7 +20,7 @@
  *   routes: RouteInfo[], routesFrom: string | null, planned: string | null, wait: string | null, action: RegionAction | null }} RegionInfo
  */
 import { AFRICA_GROUPS, CONTINENTS, ZONES, cityAccess, cityEntry, regionEntry } from '../regions.js';
-import { CITY_LINKS, CITY_RULES } from '../../game/content/world.js';
+import { CITY_LINKS, CITY_RULES } from '../../game/content/world.ts';
 
 const TYPES = { country: 'Country', territory: 'Territory', continent: 'Continent' };
 const STATUS_RANK = { open: 0, planned: 1, soon: 2 };

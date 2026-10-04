@@ -18,8 +18,8 @@
 import './buy.css';
 import { esc, money, json, mark, icon, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
-import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../game/content/furniture.js';
-import { findFreeSpot, nudge, turn } from '../../game/home-layout.js';
+import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../game/content/furniture.ts';
+import { findFreeSpot, nudge, turn } from '../../game/home-layout.ts';
 import { H, houseOf, itemsOf, objectOf, whyNot, show, stars } from './home-chip.js';
 
 const MOVES = { 'move-up': [0, -1], 'move-down': [0, 1], 'move-left': [-1, 0], 'move-right': [1, 0] };

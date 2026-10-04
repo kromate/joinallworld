@@ -50,7 +50,7 @@ export const setWallpaper = setWallpaperJs as unknown as (id: string) => boolean
 export const escapeHtml = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' })[char] ?? char)
 
 // ---- the goal chip's offer to settle in -------------------------------------------------------
-import { nextNudge as nextNudgeJs, nudged as nudgedJs } from '../../quick-start/model.js'
+import { nextNudge as nextNudgeJs, nudged as nudgedJs } from '../../quick-start/model.ts'
 import { keepNudges as keepNudgesJs, nudgesOf as nudgesOfJs } from '../../quick-start/entry.js'
 /** What was offered before on this device: how many times, which reasons, and the Lagos day of the last. */
 export interface NudgeMemory { count: number; reasons: string[]; day: number | null }

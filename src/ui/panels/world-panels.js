@@ -14,7 +14,7 @@
 import './world.css';
 import { esc, json, money, avatar, skeleton, mark } from '../dom.js';
 import { linkWords } from '../link.js';
-import { HOUSE_STYLE, HOUSE_TIERS, STYLE_FIELDS, addressLabel, lgaOf, unpackStyle } from '../../game/content/world.js';
+import { HOUSE_STYLE, HOUSE_TIERS, STYLE_FIELDS, addressLabel, lgaOf, unpackStyle } from '../../game/content/world.ts';
 import { renderLgaCard, bindLgaCard, track } from './lga-card.js';
 
 const count = (value) => Number(value || 0).toLocaleString('en-NG');

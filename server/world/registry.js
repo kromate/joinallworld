@@ -26,7 +26,7 @@
  *   directory and search   one binary search in the sorted name index, then ≤ PAGE.scan entries
  *   adding a resident      one binary search and one insertion into that index
  */
-import { ESTATE, PLOTS_PER_ESTATE, LGA_CAPACITY } from '../../src/game/content/world.js';
+import { ESTATE, PLOTS_PER_ESTATE, LGA_CAPACITY } from '../../src/game/content/world.ts';
 
 export const PAGE = Object.freeze({ people: 25, houses: 98, scan: 200, estates: 128 });
 export const metrics = { steps: 0 };

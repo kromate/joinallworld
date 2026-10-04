@@ -11,7 +11,7 @@ import './invest.css';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { esc, money, json, empty } from '../dom.js';
 import { linkWords } from '../link.js';
-import { formatClock } from '../../game/clock.js';
+import { formatClock } from '../../game/clock.ts';
 
 /** UI-only state: the chosen amount and the deposit whose early close is being confirmed. */
 let chosen = 5000;

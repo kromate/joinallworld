@@ -10,7 +10,7 @@
 import './bank.css';
 import { esc, money, json, empty, ledgerRow, chevron, mark } from '../dom.js';
 import { linkWords } from '../link.js';
-import { formatClock } from '../../game/clock.js';
+import { formatClock } from '../../game/clock.ts';
 import { how, rules, bindHow } from '../phone/how.js';
 
 

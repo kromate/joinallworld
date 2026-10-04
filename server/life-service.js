@@ -1,5 +1,5 @@
 // Portable settlement logic shared by the Node server and the Cloudflare worker (no I/O).
-import { createLife, advanceLife, dispatch, hasAction, VENUES } from '../src/life.js';
+import { createLife, advanceLife, dispatch, hasAction, VENUES } from '../src/life.ts';
 
 export { VENUES };
 

@@ -10,6 +10,10 @@ import { billsDue } from './bank/bankModel.ts'
 import { messagesBadge, notificationLines } from './messages/messagesModel.ts'
 import { noticeMarks } from './messages/messagesState.ts'
 import { scene as homeScene } from './home/homeState.ts'
+import { CIVIC_APPS, CIVIC_HUD } from './civic/register.ts'
+import { GROWTH_HUD_PANELS, GROWTH_PANELS } from './growth/register.ts'
+import { TABLES_PANELS } from './tables/register.ts'
+import { WORLD_PANELS } from './world/register.ts'
 
 export const bank = definePanel({
   id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14, group: 'money',
@@ -131,4 +135,4 @@ export const buy = definePanel({
   component: defineAsyncComponent(() => import('./home/BuyMode.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy]
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...WORLD_PANELS]

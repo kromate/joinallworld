@@ -31,7 +31,7 @@ import { lookStage, lookEditor, chooseLook, lookTabClick, lookFocusBody, mountLo
 import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, starterLook } from '../../quick-start/look-model.js';
 import { quickDraft, keepDraft, firstLanding } from '../../quick-start/draft.js';
 import { keepPlay, joinTarget, pendingRef, track, play } from '../../quick-start/entry.js';
-import { APPEARANCE } from '../../game/content/traits.js';
+import { APPEARANCE } from '../../game/content/traits.ts';
 
 const ID = 'quick-start';
 let more = false, error = '', taps = 0, landed = false, focusKey = '';

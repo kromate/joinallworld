@@ -9,7 +9,7 @@
  *   outfitColor: string, bottomsColor: string, accessories?: string[], face?: string, expression?: string }} Look
  * @typedef {{ name: string, look: Look, landedAt: number, nameEdited: boolean, shuffles: number, preset: string | null }} Draft
  */
-import { APPEARANCE, ACCESSORY_BASICS } from '../game/content/traits.js';
+import { APPEARANCE, ACCESSORY_BASICS } from '../game/content/traits.ts';
 
 // ---- names ---------------------------------------------------------------------------------
 /** Friendly suggestions for the name field: "<mood> <name>", always 3–24 ordinary characters. */

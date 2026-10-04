@@ -31,11 +31,11 @@ import { fileURLToPath } from 'node:url';
 import { WebSocket } from 'ws';
 import { createServer } from '../server/server.js';
 import { useSaltSourceForTests } from '../server/life-service.js';
-import { createLife, viewLife } from '../src/life.js';
-import { VENUES } from '../src/game/content/venues.js';
-import { NPCS } from '../src/game/content/npcs.js';
-import { EVENTS } from '../src/game/content/events.js';
-import { isOpen, minutesUntilOpen, lagosTime } from '../src/game/clock.js';
+import { createLife, viewLife } from '../src/life.ts';
+import { VENUES } from '../src/game/content/venues.ts';
+import { NPCS } from '../src/game/content/npcs.ts';
+import { EVENTS } from '../src/game/content/events.ts';
+import { isOpen, minutesUntilOpen, lagosTime } from '../src/game/clock.ts';
 
 const CITY = 'lagos';
 const HOUR = 3600000, DAY = 24 * HOUR;

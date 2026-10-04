@@ -1,10 +1,6 @@
 // Lagos wall-clock helpers. Opening hours, job schedules and weekly billing run on real
 // Africa/Lagos time. Lagos is UTC+1 all year (no daylight saving), so this is plain
 // arithmetic: pure, deterministic and identical on the server, the worker and the client.
-//
-// TypeScript twin of clock.js, kept beside it until the engine is converted (docs/MIGRATION-VUE-TS.md,
-// step 2). The running game still loads clock.js; this file is loaded by the new shell and by tests,
-// and clock.test.ts holds the two to the same answers.
 
 export const LAGOS_OFFSET_MS = 3600000
 const DAY_MS = 86400000
@@ -99,7 +95,7 @@ const waitLabel = (minutes: number): string => (minutes >= 60 ? `${Math.floor(mi
 
 /**
  * Opening state of a place's hours at `now`, with the one label every screen shows (map card,
- * Ride app, Jobs and Career). Shared by systems/travel.js and systems/career.js so a venue's
+ * Ride app, Jobs and Career). Shared by systems/travel.ts and systems/career.ts so a venue's
  * hours can never be described two ways.
  */
 export function openingInfo(hours: OpeningHours | null | undefined, now: number): OpeningInfo {

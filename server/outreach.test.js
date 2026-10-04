@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { stat } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.js';
-import { OUTREACH, EMAIL_CONSENT, planMessage, checkEmail, maskEmail, channelUrl, inQuietHours } from '../src/game/outreach.js';
+import { OUTREACH, EMAIL_CONSENT, planMessage, checkEmail, maskEmail, channelUrl, inQuietHours } from '../src/game/outreach.ts';
 import { b64u, encrypt, cleanSubscription, validEndpoint, generateKeys, vapidAuthorization, sendPush } from './growth/webpush.js';
 import { sendMail, ENDPOINT, RETRIES } from './growth/email/zeptomail.js';
 import { confirmMail, awayMail, weekMail } from './growth/email/templates.js';

@@ -10,7 +10,7 @@
 import { esc } from '../dom.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { linkWords } from '../link.js';
-import { EMAIL_CONSENT, PUSH_CONSENT } from '../../game/outreach.js';
+import { EMAIL_CONSENT, PUSH_CONSENT } from '../../game/outreach.ts';
 import { G, load, call, track, announceAge } from './growth-client.js';
 
 const ui = { busy: null, email: '', tick: false, pushAsk: false, note: null };

@@ -6,8 +6,8 @@
 //   Thursday–Saturday  voting        one vote per player, live tally
 //   Sunday             results       polls closed; the winner's seven-day term begins at 00:00
 // The winner is derived from the stored ballot every time, so nothing has to "run" at midnight.
-import { lagosTime, lagosDayStart } from '../../src/game/clock.js';
-import { ELECTION } from '../../src/game/content/civic.js';
+import { lagosTime, lagosDayStart } from '../../src/game/clock.ts';
+import { ELECTION } from '../../src/game/content/civic.ts';
 
 const DAY_MS = 86400000;
 const mondayOf = (week) => 7 * week - 3;

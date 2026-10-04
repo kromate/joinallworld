@@ -11,7 +11,7 @@ import { join } from 'node:path';
 import { fixture } from './test-fixture.js';
 import { ROUTE_MODULES } from './routes/index.js';
 import { canOccupyVenue, canJoinVenue, isDeparting } from './protocol.js';
-import { createLife, dispatch } from '../src/life.js';
+import { createLife, dispatch } from '../src/life.ts';
 import { roomJoinNeeded } from '../src/client.js';
 
 const MONDAY_10AM = Date.UTC(2026, 0, 5, 9); // Lagos is UTC+1: the workplace (open 08:00–22:00) is open

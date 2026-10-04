@@ -15,28 +15,28 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { actionTypes, advanceLife, createLife, dispatch, makeContext, spotsOf, viewLife } from '../life.js'
-import { serverOnlyReason, systems } from '../game/registry.js'
-import { CITY_LABELS, CITY_MAPS, COMING_SOON, HOME_SPOTS, SCENE_KINDS, VENUE_CATEGORIES, VENUES } from '../game/content/venues.js'
-import { ALL_MODES, FARE_BANDS, TRAVEL_MODES } from '../game/content/travel.js'
-import { JOBS } from '../game/content/jobs.js'
-import { CATEGORIES, FURNITURE, HOME_ACTIVITIES, HOME_SPOTS as FURNITURE_HOME_SPOTS, KINDS, STARTER_FURNITURE } from '../game/content/furniture.js'
-import { INGREDIENTS, RECIPES } from '../game/content/food.js'
-import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, TRAITS } from '../game/content/traits.js'
-import { CARS } from '../game/content/cars.js'
-import { HOUSES } from '../game/content/housing.js'
-import { FAMILY, FAMILY_CALL, NPC_ACTIONS, NPCS, PLAYER_ACTIONS, TIERS, TRANSFER_LIMITS } from '../game/content/npcs.js'
-import { PERKS, STARTER_GOALS, WISHES } from '../game/content/goals.js'
-import { ACTIVITY_OUTCOMES, EVENTS } from '../game/content/events.js'
-import { HEALTH } from '../game/content/health.js'
-import { AD_COLOURS, AD_ICONS, BILLBOARDS, DISTRICTS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../game/content/civic.js'
-import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, linksFrom } from '../game/content/world.js'
-import { DAILY_MISSIONS, DAY_TITLES, MISSION_KINDS, MISSION_REWARDS, STAMP_CARD, WEEKLY_MISSIONS, WEEK_TITLE } from '../game/content/missions.js'
-import { EVENTS_CALENDAR, SPRAY } from '../game/content/calendar.js'
-import { REFERRAL, TABLE_REWARDS } from '../game/content/growth.js'
-import { DEPOSIT_TERMS, LOAN, RENTS } from '../game/systems/economy.js'
-import { NEEDS } from '../game/systems/needs.js'
-import { SKILLS } from '../game/systems/skills.js'
+import { actionTypes, advanceLife, createLife, dispatch, makeContext, spotsOf, viewLife } from '../life.ts'
+import { serverOnlyReason, systems } from '../game/registry.ts'
+import { CITY_LABELS, CITY_MAPS, COMING_SOON, HOME_SPOTS, SCENE_KINDS, VENUE_CATEGORIES, VENUES } from '../game/content/venues.ts'
+import { ALL_MODES, FARE_BANDS, TRAVEL_MODES } from '../game/content/travel.ts'
+import { JOBS } from '../game/content/jobs.ts'
+import { CATEGORIES, FURNITURE, HOME_ACTIVITIES, HOME_SPOTS as FURNITURE_HOME_SPOTS, KINDS, STARTER_FURNITURE } from '../game/content/furniture.ts'
+import { INGREDIENTS, RECIPES } from '../game/content/food.ts'
+import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, TRAITS } from '../game/content/traits.ts'
+import { CARS } from '../game/content/cars.ts'
+import { HOUSES } from '../game/content/housing.ts'
+import { FAMILY, FAMILY_CALL, NPC_ACTIONS, NPCS, PLAYER_ACTIONS, TIERS, TRANSFER_LIMITS } from '../game/content/npcs.ts'
+import { PERKS, STARTER_GOALS, WISHES } from '../game/content/goals.ts'
+import { ACTIVITY_OUTCOMES, EVENTS } from '../game/content/events.ts'
+import { HEALTH } from '../game/content/health.ts'
+import { AD_COLOURS, AD_ICONS, BILLBOARDS, DISTRICTS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../game/content/civic.ts'
+import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, linksFrom } from '../game/content/world.ts'
+import { DAILY_MISSIONS, DAY_TITLES, MISSION_KINDS, MISSION_REWARDS, STAMP_CARD, WEEKLY_MISSIONS, WEEK_TITLE } from '../game/content/missions.ts'
+import { EVENTS_CALENDAR, SPRAY } from '../game/content/calendar.ts'
+import { REFERRAL, TABLE_REWARDS } from '../game/content/growth.ts'
+import { DEPOSIT_TERMS, LOAN, RENTS } from '../game/systems/economy.ts'
+import { NEEDS } from '../game/systems/needs.ts'
+import { SKILLS } from '../game/systems/skills.ts'
 import { ACTION_TYPES, INBOUND_ACTIONS, SERVER_ONLY_ACTIONS, SOCIAL_SERVER_OPS } from './actions.ts'
 import type { ActionPayload, ActionResult, ActionType, InboundActionType, ServerOnlyActionType, SocialServerOp } from './actions.ts'
 import type {
@@ -62,6 +62,9 @@ import { CONTENT_EVENT_NAMES, EVENT_NAMES, MODIFIER_KEYS, UNEMITTED_LISTENED_EVE
 import type { EngineEvent, ModifierKey } from './registry.ts'
 import { TRAVEL_DESTINATION_KEYS, VIEW_FIELD_KEYS, VIEW_KEYS } from './view.ts'
 import type { LifeView, TravelDestination } from './view.ts'
+
+/** dispatch() with a body the types would refuse: these tests send every action type, and unknown operations, on purpose. */
+const dispatchLoose = dispatch as unknown as (state: LifeState, body: { type: string; payload?: Record<string, unknown> }, ctx?: LifeContextInit) => unknown
 
 // ---- compile-time helpers -----------------------------------------------------------------
 
@@ -426,7 +429,7 @@ test('SERVER_ONLY_ACTIONS is exactly the set the registry refuses without ctx.in
   assert.deepEqual(sorted(serverOnly), sorted(SERVER_ONLY_ACTIONS))
   const state = life(null, at())
   for (const type of SERVER_ONLY_ACTIONS) {
-    const refused = dispatch(state, { type, payload: {} }, at()) as { ok: boolean; code: string; reason?: string }
+    const refused = dispatchLoose(state, { type, payload: {} }, at()) as { ok: boolean; code: string; reason?: string }
     assert.deepEqual([refused.ok, refused.code, typeof refused.reason], [false, 'server_only', 'string'], type)
   }
 })
@@ -434,10 +437,10 @@ test('SERVER_ONLY_ACTIONS is exactly the set the registry refuses without ctx.in
 test('every operation in SOCIAL_SERVER_OPS exists in social.server', () => {
   const internal: LifeContext = { ...at(), internal: true }
   for (const op of SOCIAL_SERVER_OPS) {
-    const result = dispatch(life(null, at()), { type: 'social.server', payload: { op } }, internal) as { code: string }
+    const result = dispatchLoose(life(null, at()), { type: 'social.server', payload: { op } }, internal) as { code: string }
     assert.notEqual(result.code, 'invalid_operation', op)
   }
-  const unknown = dispatch(life(null, at()), { type: 'social.server', payload: { op: 'no-such-op' } }, internal) as { code: string }
+  const unknown = dispatchLoose(life(null, at()), { type: 'social.server', payload: { op: 'no-such-op' } }, internal) as { code: string }
   assert.equal(unknown.code, 'invalid_operation')
 })
 
@@ -464,7 +467,7 @@ test('a guest whose look is not confirmed vetoes every action outside onboarding
     const state = life(null, { ...at(), isNew: true, [flag]: true })
     assert.deepEqual([state.onboarding.stage, state.onboarding.required, state.onboarding.bornAt], ['guest', true, MONDAY_9AM], flag)
     for (const type of ACTION_TYPES) {
-      const result = dispatch(state, { type, payload: {} }, { ...at(), internal: true }) as { code: string }
+      const result = dispatchLoose(state, { type, payload: {} }, { ...at(), internal: true }) as { code: string }
       // The two post-creation actions return the same code from their own handler (mustBeDone), not from the veto.
       const ownGuard = type === 'onboarding.set-look' || type === 'onboarding.boutique-buy'
       const passes = (type.startsWith('onboarding.') && !ownGuard) || (INBOUND_ACTIONS as readonly string[]).includes(type)
@@ -483,7 +486,7 @@ test('a guest who is playing is refused exactly what needs a home, until it sett
   checkState(state, 'guest')
   for (const type of ACTION_TYPES) {
     const payload = type === 'travel' ? { id: 'home', mode: 'trek' } : {}
-    const result = dispatch(state, { type, payload }, { ...at(), internal: true }) as { code: string }
+    const result = dispatchLoose(state, { type, payload }, { ...at(), internal: true }) as { code: string }
     const needsHome = type.startsWith('home.') || type.startsWith('estate.') || type === 'property.house-move' || type === 'travel'
     assert.equal(result.code === 'settle_required', needsHome, `${type}: ${result.code}`)
     // The wardrobe and the Boutique open once there is a home: their own handler says so with this code (mustBeDone).
@@ -538,7 +541,7 @@ test('LIFE_STATE_KEYS equals the top-level keys of a fresh life', () => {
 })
 
 test('SYSTEM_STATE_KEYS equals every registered system and its stateKeys, in order', () => {
-  const registered = systems() as { id: string; stateKeys: string[] }[]
+  const registered = systems() as readonly { id: string; stateKeys: readonly string[] }[]
   assert.deepEqual(registered.map((system) => system.id), Object.keys(SYSTEM_STATE_KEYS))
   for (const system of registered) assert.deepEqual(system.stateKeys, SYSTEM_STATE_KEYS[system.id as SystemId], system.id)
   assert.deepEqual(sorted(Object.values(SYSTEM_STATE_KEYS).flat()), [...LIFE_STATE_KEYS])
@@ -631,11 +634,11 @@ test('a running timed action shows in the views that describe it', () => {
 
 // ---- registry: events and modifier keys ---------------------------------------------------
 
-/** Every non-test .js file of the rules engine, as text. */
+/** Every non-test .ts file of the rules engine, as text. */
 function engineSource(): string {
   const root = fileURLToPath(new URL('../game/', import.meta.url))
-  const files = (readdirSync(root, { recursive: true }) as string[]).filter((file) => file.endsWith('.js') && !file.endsWith('.test.js'))
-  return [...files.map((file) => readFileSync(`${root}${file}`, 'utf8')), readFileSync(fileURLToPath(new URL('../life.js', import.meta.url)), 'utf8')].join('\n')
+  const files = (readdirSync(root, { recursive: true }) as string[]).filter((file) => file.endsWith('.ts') && !file.endsWith('.test.ts'))
+  return [...files.map((file) => readFileSync(`${root}${file}`, 'utf8')), readFileSync(fileURLToPath(new URL('../life.ts', import.meta.url)), 'utf8')].join('\n')
 }
 const namesIn = (source: string, pattern: RegExp): string[] => [...new Set([...source.matchAll(pattern)].map((match) => match[1] ?? ''))].sort()
 
@@ -806,7 +809,7 @@ test('every field used by a venue, a spot, an activity or a job is declared in c
 
   const starterFields = ['id', 'label', 'icon', 'summary', 'workplace', 'workplaceName', 'shift', 'beta']
   const trackFields = [...starterFields, 'track', 'skill', 'days', 'ladder']
-  for (const job of Object.values(JOBS) as Record<string, unknown>[]) {
+  for (const job of Object.values(JOBS) as unknown as Record<string, unknown>[]) {
     assert.deepEqual(undeclared(job, job.track ? trackFields : starterFields), [], `job ${String(job.id)}`)
     assert.deepEqual(undeclared(job.shift as object, activityFields), [], `shift of ${String(job.id)}`)
     assert.deepEqual(keys(job.workplace as object), ['spot', 'venue'], `workplace of ${String(job.id)}`)
@@ -836,7 +839,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
   declared<StarterGoal>()(['id', 'title', 'hint', 'icon', 'cash', 'stars', 'done', 'open', 'params', 'go', 'workplace', 'activity', 'here', 'beta', 'betaFields'])(STARTER_GOALS, 'starter goal')
   declared<PerkDefinition>()(['id', 'label', 'icon', 'cost', 'effect', 'fx', 'wishBonus', 'beta', 'betaFields'])(PERKS, 'perk')
   declared<RoadsideEvent>()(['id', 'icon', 'title', 'text', 'modes', 'weight', 'choices', 'oncePerDay', 'beta'])(Object.values(EVENTS), 'roadside event')
-  for (const npc of Object.values(NPCS) as Record<string, unknown>[]) {
+  for (const npc of Object.values(NPCS) as unknown as Record<string, unknown>[]) {
     assert.deepEqual([typeof npc.id, typeof npc.venue, typeof npc.name, typeof npc.role, typeof npc.emoji, Array.isArray(npc.quotes)], ['string', 'string', 'string', 'string', 'string', true], String(npc.id))
     assert.ok(npc.at === null || typeof npc.at === 'string', String(npc.id))
   }

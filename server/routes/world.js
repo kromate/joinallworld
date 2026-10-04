@@ -32,9 +32,9 @@
  *        { items: [{ id, name, home, estate?, plot?, online, you }], next }   25 a page; `q` is a name prefix
  *        of at least two characters; `online=1` lists who is online now instead.
  */
-import { ESTATE, lgaOf } from '../../src/game/content/world.js';
+import { ESTATE, lgaOf } from '../../src/game/content/world.ts';
 import { worldOf } from '../world/service.js';
-import { hasPlace } from '../../src/game/systems/estate.js';
+import { hasPlace } from '../../src/game/systems/estate.ts';
 import { PAGE, fold } from '../world/registry.js';
 
 export default function worldRoutes(ctx) {

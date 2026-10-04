@@ -8,7 +8,7 @@
  * avatar to be seen in or on it. The danfo and the keke come with a driver, the okada with its rider.
  * miniVehicle(b, kind) draws the few-triangle version used for the instanced street traffic.
  */
-import { GLOW, GLASS } from '../scene/build.js';
+import { GLOW, GLASS } from '../scene/build.ts';
 
 const TYRE = '#1d1f23', YELLOW = '#f4c21b', BLACK = '#1f2226', CHROME = '#c9ced3', LAMP = '#fff2c2', TAIL = '#ff5a4a';
 const wheel = (b, x, y, z, r = 0.38, w = 0.26) => { b.cyl(x, y, z, r, w, TYRE, { seg: 8, rz: Math.PI / 2 }); b.cyl(x, y, z, r * 0.45, w + 0.02, '#8a9097', { seg: 6, rz: Math.PI / 2 }); };

@@ -85,7 +85,7 @@
  */
 import { MAX_VOICE_MEMBERS, UUID_PATTERN, canOccupyVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
 import { VENUES, watchLives } from '../life-service.js';
-import { checkLook } from '../../src/game/systems/onboarding.js';
+import { checkLook } from '../../src/game/systems/onboarding.ts';
 import { screenText } from '../moderation/text.js';
 
 /** The longest a guest's entitlement is remembered between checks (and never past the visit's expiry). */

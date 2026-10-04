@@ -10,9 +10,9 @@ import { LANDMARK_KINDS } from './landmarks.js';
 import { avatarBox, labelShift, nearPoints } from './labels.js';
 import { shimmer } from './city-build.js';
 import pack from './cities/lagos.js';
-import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.js';
-import { ALL_MODES } from '../game/content/travel.js';
-import { createLife, viewLife } from '../life.js';
+import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.ts';
+import { ALL_MODES } from '../game/content/travel.ts';
+import { createLife, viewLife } from '../life.ts';
 import { goBlock, tripInfo, chosenMode } from '../ui/panels/world-ui.js';
 
 const NOON = Date.UTC(2026, 0, 5, 11), NIGHT = Date.UTC(2026, 0, 5, 22);

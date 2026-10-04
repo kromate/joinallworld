@@ -11,7 +11,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
-import { linkWords, markReportsRead, noteFiled, noteReports } from '../../legacy/modules.ts'
+import { linkWords } from '../../legacy/modules.ts'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import BaseButton from '../../ui/BaseButton.vue'
 import BaseChip from '../../ui/BaseChip.vue'
@@ -19,8 +19,8 @@ import EmptyState from '../../ui/EmptyState.vue'
 import HeroCard from '../../ui/HeroCard.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import SkeletonRows from '../../ui/SkeletonRows.vue'
-import { CATEGORY_LABELS, DEFAULT_LIMITS, STATUS_LABELS, createSupport, statusTone } from './supportModel.ts'
-import type { Support } from './supportModel.ts'
+import { CATEGORY_LABELS, DEFAULT_LIMITS, STATUS_LABELS, SENT_WITH_RULES, statusTone, textProblem } from './supportModel.ts'
+import { useSupport } from './useSupport.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game } = useApp()
@@ -39,30 +39,18 @@ watch(() => props.params, (params) => { support.preset((params as { category?: u
 onMounted(() => { if (!list.value) void support.load() })
 
 async function send(): Promise<void> {
-  const filed = await support.submit()
-  const said = notice.value
-  if (said) game.toast(filed ? said.text.split('. ')[0] + '.' : said.text, filed ? 'good' : 'error')
+  // Too little text is said in the notice and the field only: no toast, as in the existing panel.
+  const tooShort = textProblem(draft.text.trim()) !== null
+  const receipt = await support.submit()
+  if (!tooShort) {
+    if (receipt) game.toast(`Report ${support.lastReceipt.value} received.`, 'good')
+    else if (notice.value) game.toast(notice.value.text, 'error')
+  }
   await nextTick()
-  if (filed) noticeLine.value?.focus(); else textField.value?.focus()
+  if (receipt) noticeLine.value?.focus(); else textField.value?.focus()
 }
 </script>
 
-<script lang="ts">
-// One form per page: the draft outlives the component (closing the phone does not lose the text).
-let shared: Support | null = null
-function useSupport(): Support {
-  const { game, shell } = useApp()
-  shared ??= createSupport({
-    fetchJson: game.fetchJson,
-    newId: game.newId,
-    cityId: () => game.cityId.value,
-    // The red badge on the Phone icon counts replies not read yet; the player is reading them now.
-    onLoaded(reports) { noteReports(reports); if (reports.length) noteFiled(); markReportsRead(); shell.bump() },
-    onFiled: noteFiled,
-  })
-  return shared
-}
-</script>
 
 <template>
   <div class="report">
@@ -80,7 +68,7 @@ function useSupport(): Support {
         <textarea ref="textField" v-model="draft.text" name="text" rows="5" :maxlength="limit" placeholder="What you did, what you expected, what you saw instead." :disabled="offline" :aria-invalid="notice?.kind === 'error' ? 'true' : undefined" aria-describedby="report-sent-with report-notice" />
       </label>
       <div id="report-sent-with" class="report-fine">Your recent actions and wallet lines are attached automatically. Your device’s secret never is.</div>
-      <HowItWorks id="support-sent" label="What is sent, and what happens next" :rules="['Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines.', 'Your device’s secret is never included.', 'The report is filed on this server and you get a receipt number at once. No e-mail or other account is needed.']" />
+      <HowItWorks id="support-sent" label="What is sent, and what happens next" :rules="SENT_WITH_RULES" />
       <div class="report-send">
         <BaseButton variant="primary" block type="submit" :disabled="offline || sending">{{ sending ? 'Sending…' : 'Send report' }}</BaseButton>
         <small v-if="offline">{{ offlineWhy }} A report cannot be sent right now. What you typed is kept.</small>
@@ -110,7 +98,7 @@ function useSupport(): Support {
 <style scoped>
 .report-hero { --hero: var(--app-tint, #dc5a0c); }
 .report-hero :deep(strong) { font-size: 20px; }
-.report-form { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
+.report-form { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
 .report-form label { display: flex; flex-direction: column; gap: 5px; margin: 0; font-size: 13px; font-weight: 600; }
 .report-form select, .report-form textarea { width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid #cfd5d1; border-radius: var(--r-sm); background: #fff; color: var(--c-ink); font: 400 14px var(--font); }
 .report-form select:focus-visible, .report-form textarea:focus-visible { outline: var(--focus); outline-offset: 2px; }

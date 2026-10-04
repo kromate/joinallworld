@@ -17,7 +17,7 @@
 import { esc, json, empty, avatar, glyph, mark, iconFor, withGlyphs } from '../dom.js';
 import { linkWords } from '../link.js';
 import { unreadChats, unreadUpdates, freshNotices, noticesSeen, markNoticesSeen, notifications, messagesBadge } from './inbox.js';
-import { formatClock } from '../../game/clock.js';
+import { formatClock } from '../../game/clock.ts';
 import { S, bindCommon, gate, socketNote, call, perform, sync, openThread, threadView, send, retry, discard, cityId, newClientId } from './social-client.js';
 import { channelLink, load as loadGrowth } from './growth-client.js';
 

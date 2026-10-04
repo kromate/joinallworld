@@ -34,13 +34,13 @@
  * NO STAKES. Nothing is wagered. A win against a real player is paid by the game, inside the
  * caps of src/game/content/growth.js; the same two players' games count three times a day.
  */
-import { lagosTime } from '../../src/game/clock.js';
-import { makeRng } from '../../src/game/util.js';
-import { TABLE_REWARDS } from '../../src/game/content/growth.js';
-import { venueLabel } from '../../src/game/content/venues.js';
-import { TABLES, BOT_NAMES, tableById } from '../../src/tables/places.js';
-import { GAMES } from '../../src/tables/games.js';
-import { RulesError, RATING, cleanOptions, eloChange, withNames } from '../../src/tables/rules.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { makeRng } from '../../src/game/util.ts';
+import { TABLE_REWARDS } from '../../src/game/content/growth.ts';
+import { venueLabel } from '../../src/game/content/venues.ts';
+import { TABLES, BOT_NAMES, tableById } from '../../src/tables/places.ts';
+import { GAMES } from '../../src/tables/games.ts';
+import { RulesError, RATING, cleanOptions, eloChange, withNames } from '../../src/tables/rules.ts';
 import { canOccupyVenue } from '../protocol.js';
 import { growthOf, playerOf } from './data.js';
 import { count } from './metrics.js';

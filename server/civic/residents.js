@@ -4,8 +4,8 @@
 // such request refreshes their entry from the server-held life. Nothing here is client-supplied.
 // Portable and pure: functions take the city's civic data, a time, and (for presence) the
 // foundation's online(publicId) check.
-import { lagosTime } from '../../src/game/clock.js';
-import { DISTRICTS, UNKNOWN_DISTRICT, OWN_DISTRICT, NEIGHBOURS, RICH_LIST } from '../../src/game/content/civic.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { DISTRICTS, UNKNOWN_DISTRICT, OWN_DISTRICT, NEIGHBOURS, RICH_LIST } from '../../src/game/content/civic.ts';
 
 const PRUNE_EVERY_MS = 3600000;
 const count = (value) => (Number.isSafeInteger(value) && value >= 0 ? value : 0);

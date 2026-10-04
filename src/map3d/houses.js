@@ -26,9 +26,9 @@
  *   }
  * Pure geometry work on typed arrays: it runs under `node --test` without a WebGL context.
  */
-import { createBatch } from '../scene/build.js';
+import { createBatch } from '../scene/build.ts';
 import { leanGeometry } from './city-build.js';
-import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, HOUSE_TIERS, unpackStyle } from '../game/content/world.js';
+import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, HOUSE_TIERS, unpackStyle } from '../game/content/world.ts';
 import { estateLayout } from './estates.js';
 import { lgaAt } from './lga.js';
 

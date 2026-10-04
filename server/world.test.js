@@ -11,8 +11,8 @@ import { createServer } from './server.js';
 import { createShardStore } from './world/shards.js';
 import * as registry from './world/registry.js';
 import { currentCity } from './world/service.js';
-import { createLife } from '../src/life.js';
-import { PLOTS_PER_ESTATE, packStyle } from '../src/game/content/world.js';
+import { createLife } from '../src/life.ts';
+import { PLOTS_PER_ESTATE, packStyle } from '../src/game/content/world.ts';
 
 const get = async (f, path, who) => { const res = await f.request(path, null, who.cookie); return { status: res.status, ...(await res.json()) }; };
 const life = (f, who) => get(f, '/api/life?city=lagos', who).then((body) => body.state);

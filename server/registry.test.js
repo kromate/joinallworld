@@ -9,8 +9,8 @@ import { fixture } from './test-fixture.js';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.js';
 import { buildSocketHandlers, WS_MODULES } from './ws/index.js';
 import { actionFingerprint, canonicalJson, collection, validateActionPayload, MAX_PAYLOAD_BYTES } from './protocol.js';
-import { actionTypes } from '../src/life.js';
-import { serverOnlyReason, registerSystem } from '../src/game/registry.js';
+import { actionTypes } from '../src/life.ts';
+import { serverOnlyReason, registerSystem } from '../src/game/registry.ts';
 
 /** A feature-style route module written only against the documented contract. */
 function guestbookRoutes(ctx) {
@@ -288,8 +288,8 @@ test('an old-format saved life survives the refactor: state, timers, per-city en
 test('modules shared with the Cloudflare worker stay portable: no Node-only imports', async () => {
   const { readdir } = await import('node:fs/promises');
   const walk = async dir => (await Promise.all((await readdir(dir, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(`${dir}/${entry.name}`) : [`${dir}/${entry.name}`]))).flat();
-  const shared = ['server/protocol.js', 'server/life-service.js', 'server/auth.js', 'src/life.js', ...(await walk('server/routes')), ...(await walk('server/ws')),
-    ...(await walk('src/game')).filter(file => file.endsWith('.js') && !file.endsWith('.test.js'))];
+  const shared = ['server/protocol.js', 'server/life-service.js', 'server/auth.js', 'src/life.ts', ...(await walk('server/routes')), ...(await walk('server/ws')),
+    ...(await walk('src/game')).filter(file => file.endsWith('.ts') && !file.endsWith('.test.ts'))];
   assert.ok(shared.length > 40);
   for (const file of shared) {
     const code = (await readFile(file, 'utf8')).replace(/\/\*[\s\S]*?\*\/|^\s*\/\/.*$/gm, '');

@@ -30,9 +30,9 @@
  * `prefers-reduced-motion`: no camera eases and no frame loop for the trip — it is a line with a
  * dot on it, moved each time the server reports progress.
  */
-import { createKit } from '../scene/kit.js';
-import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.js';
-import { openingInfo, lagosTime } from '../game/clock.js';
+import { createKit } from '../scene/kit.ts';
+import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.ts';
+import { openingInfo, lagosTime } from '../game/clock.ts';
 import { buildNetwork } from './roads.js';
 import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.js';
 import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.js';

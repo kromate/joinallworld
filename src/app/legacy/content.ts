@@ -1,14 +1,14 @@
 // The typed boundary to the game's content tables and the pure home-layout rules that the Vue
 // panels read (src/game/content/*.js, src/game/home-layout.js). Every cast is here; a table gets
 // real types when its file is converted, and its lines are deleted.
-import { MOVE_IN_WEEKS as MOVE_IN_WEEKS_JS, homeOf as homeOfJs } from '../../game/content/housing.js'
-import { CAR_RESALE_RATE as CAR_RESALE_RATE_JS } from '../../game/content/cars.js'
-import { INGREDIENTS as INGREDIENTS_JS, INGREDIENT_ORDER as INGREDIENT_ORDER_JS, RECIPES as RECIPES_JS } from '../../game/content/food.js'
-import { VENUES as VENUE_CONTENT_JS } from '../../game/content/venues.js'
-import { DREAMS as DREAMS_JS, START_HOMES as START_HOMES_JS, TRAITS as TRAITS_JS } from '../../game/content/traits.js'
-import { CATEGORIES as CATEGORIES_JS, FURNITURE as FURNITURE_JS, KINDS as KINDS_JS, SELL_REFUND_RATE as SELL_REFUND_RATE_JS, STAR_MULTIPLIER as STAR_MULTIPLIER_JS } from '../../game/content/furniture.js'
-import { HOUSE_TIERS as HOUSE_TIERS_JS } from '../../game/content/world.js'
-import { checkPlacement as checkPlacementJs, findFreeSpot as findFreeSpotJs, nudge as nudgeJs, turn as turnJs } from '../../game/home-layout.js'
+import { MOVE_IN_WEEKS as MOVE_IN_WEEKS_JS, homeOf as homeOfJs } from '../../game/content/housing.ts'
+import { CAR_RESALE_RATE as CAR_RESALE_RATE_JS } from '../../game/content/cars.ts'
+import { INGREDIENTS as INGREDIENTS_JS, INGREDIENT_ORDER as INGREDIENT_ORDER_JS, RECIPES as RECIPES_JS } from '../../game/content/food.ts'
+import { VENUES as VENUE_CONTENT_JS } from '../../game/content/venues.ts'
+import { DREAMS as DREAMS_JS, START_HOMES as START_HOMES_JS, TRAITS as TRAITS_JS } from '../../game/content/traits.ts'
+import { CATEGORIES as CATEGORIES_JS, FURNITURE as FURNITURE_JS, KINDS as KINDS_JS, SELL_REFUND_RATE as SELL_REFUND_RATE_JS, STAR_MULTIPLIER as STAR_MULTIPLIER_JS } from '../../game/content/furniture.ts'
+import { HOUSE_TIERS as HOUSE_TIERS_JS } from '../../game/content/world.ts'
+import { checkPlacement as checkPlacementJs, findFreeSpot as findFreeSpotJs, nudge as nudgeJs, turn as turnJs } from '../../game/home-layout.ts'
 import type { FurnitureCategory, FurnitureDefinition, FurnitureKindInfo } from '../../types/content.ts'
 import type { LifeState, PlacedItem } from '../../types/life.ts'
 

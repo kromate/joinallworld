@@ -34,12 +34,12 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { createServer } from '../server/server.js';
 import { useSaltSourceForTests } from '../server/life-service.js';
-import { createLife, viewLife } from '../src/life.js';
-import { weatherAt } from '../src/game/systems/health.js';
-import { findFreeSpot } from '../src/game/home-layout.js';
-import { FURNITURE } from '../src/game/content/furniture.js';
-import { HOUSE_TIERS } from '../src/game/content/world.js';
-import { EVENTS } from '../src/game/content/events.js';
+import { createLife, viewLife } from '../src/life.ts';
+import { weatherAt } from '../src/game/systems/health.ts';
+import { findFreeSpot } from '../src/game/home-layout.ts';
+import { FURNITURE } from '../src/game/content/furniture.ts';
+import { HOUSE_TIERS } from '../src/game/content/world.ts';
+import { EVENTS } from '../src/game/content/events.ts';
 
 const CITY = 'lagos';
 /** The local government this player picks when he settles in: his free starter house stands on a plot there. */

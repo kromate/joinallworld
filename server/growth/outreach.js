@@ -34,11 +34,11 @@
  * exactly as it would be sent and kept as a preview (the player sees theirs in Stay in touch; the
  * operator sees the last few). The log says 'dry-run'. Nothing leaves the server.
  */
-import { viewLife } from '../../src/life.js';
-import { lagosTime } from '../../src/game/clock.js';
-import { upcomingEvents } from '../../src/game/calendar.js';
-import { composeDigest } from '../../src/game/digest.js';
-import { OUTREACH, channelUrl, checkEmail, inQuietHours, maskEmail, planMessage } from '../../src/game/outreach.js';
+import { viewLife } from '../../src/life.ts';
+import { lagosTime } from '../../src/game/clock.ts';
+import { upcomingEvents } from '../../src/game/calendar.ts';
+import { composeDigest } from '../../src/game/digest.ts';
+import { OUTREACH, channelUrl, checkEmail, inQuietHours, maskEmail, planMessage } from '../../src/game/outreach.ts';
 import { UUID_PATTERN } from '../protocol.js';
 import { growthOf, playerOf } from './data.js';
 import { count } from './metrics.js';

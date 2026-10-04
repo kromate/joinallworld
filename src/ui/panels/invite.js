@@ -8,7 +8,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import { esc, json, avatar, glyph } from '../dom.js';
-import { inviteIdFrom } from '../../game/social-model.js';
+import { inviteIdFrom } from '../../game/social-model.ts';
 import { S, bindCommon, gate, call, perform, sync, cityId } from './social-client.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 

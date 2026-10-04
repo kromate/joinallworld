@@ -38,9 +38,9 @@
  *
  * Portable: no Node imports. One service per server context (worldOf).
  */
-import { lagosTime } from '../../src/game/clock.js';
-import { ESTATE, PLOTS_PER_ESTATE, cityRules, lgaOf, lgasOf, packStyle } from '../../src/game/content/world.js';
-import { hasPlace } from '../../src/game/systems/estate.js';
+import { lagosTime } from '../../src/game/clock.ts';
+import { ESTATE, PLOTS_PER_ESTATE, cityRules, lgaOf, lgasOf, packStyle } from '../../src/game/content/world.ts';
+import { hasPlace } from '../../src/game/systems/estate.ts';
 import { watchLives } from '../life-service.js';
 import * as registry from './registry.js';
 

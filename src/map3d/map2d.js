@@ -19,10 +19,10 @@
  * placed from the server's own `remaining ÷ duration` each time a state arrives.
  * Player text (ads) is written with textContent only and is never a link or a button.
  */
-import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.js';
-import { openingInfo } from '../game/clock.js';
-import { isDeparting } from '../game/registry.js';
-import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, unpackStyle } from '../game/content/world.js';
+import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.ts';
+import { openingInfo } from '../game/clock.ts';
+import { isDeparting } from '../game/registry.ts';
+import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, unpackStyle } from '../game/content/world.ts';
 import { iconFor } from '../ui/icon-map.js';
 import { buildNetwork, pointAt } from './roads.js';
 import { flatModel, flatSvg } from './flat.js';

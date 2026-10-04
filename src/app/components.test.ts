@@ -198,7 +198,7 @@ test('Phone: the home screen lists Vue panels and existing panels side by side',
   const html = await render('/src/app/features/phone/PhoneDevice.vue')
   for (const id of ['bank', 'messages', 'support', 'jobs', 'groceries', 'governor', 'career', 'help', 'community']) assert.match(html, new RegExp(`data-ph-app="${id}"`), `${id} is on the home screen`)
   const kinds = Object.fromEntries(app.panels.map((panel) => [panel.id, 'kind' in panel ? 'vue' : 'existing']))
-  assert.deepEqual([kinds.bank, kinds.messages, kinds.support, kinds.jobs, kinds.groceries, kinds.governor], ['vue', 'vue', 'vue', 'vue', 'vue', 'existing'])
+  assert.deepEqual([kinds.bank, kinds.messages, kinds.support, kinds.jobs, kinds.groceries, kinds.ride], ['vue', 'vue', 'vue', 'vue', 'vue', 'existing'])
   assert.match(html, /role="img" aria-label="Connected to the game server"/)
   assert.match(html, new RegExp(`aria-label="Battery: your Sim’s Energy is ${Math.round(app.game.state.value.needs.energy)}%"`))
   assert.match(html, /<section class="ph-app"[^>]*inert/, 'no app is open, so the app layer cannot be reached')

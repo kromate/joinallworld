@@ -3,19 +3,16 @@
  * The only place cash changes. Integer naira, never negative, overflow-safe, with a transaction
  * history that can always explain the balance.
  *
- * TypeScript twin of wallet.js, kept beside it until the engine is converted
- * (docs/MIGRATION-VUE-TS.md, step 2). The running game registers wallet.js; this file is loaded by
- * tests and by the new shell's Bank app, and wallet.test.ts holds the two to the same results. The
- * rules and the reasons for them are in the header of wallet.js and are not repeated here.
- *
  * State keys
  *   cash        integer ≥ 0
  *   ledger      the last LEDGER_LIMIT changes in full, newest last
  *   ledgerDays  one summary per Lagos day on which the balance changed, newest last
  */
-import { emit } from '../registry.js'
-import { cleanText } from '../util.js'
+import { emit } from '../registry.ts'
+import { cleanText } from '../util.ts'
 import { lagosTime } from '../clock.ts'
+import type { SystemDefinition } from '../../types/registry.ts'
+import type { LedgerDay, LedgerLine, LifeContext, LifeState } from '../../types/life.ts'
 
 export const STARTING_CASH = 5000 // original beta value
 /** Full lines kept (original beta value; was 30). */
@@ -28,32 +25,11 @@ export const CORRECTION_REASON = 'Balance correction (no record of this change)'
 const OTHER = 'Other'
 const GROUP_MAX = 28
 
-/** One change of the balance. `balance` is the balance after it; `amount` is negative for money out. */
-export interface LedgerLine {
-  at: number
-  amount: number
-  reason: string
-  balance: number
-}
+export type { LedgerDay, LedgerLine }
 /** `[net, count]` for one reason group on one day. */
-export type LedgerGroup = [net: number, count: number]
-/** One Lagos day on which the balance changed. `open + in − out = close`; `n` is the number of changes. */
-export interface LedgerDay {
-  day: number
-  open: number
-  close: number
-  in: number
-  out: number
-  n: number
-  by: Record<string, LedgerGroup>
-}
-/** The part of a life the wallet reads and writes. `t` is the core system's: the time the life was last settled to. */
-export interface WalletState {
-  t: number
-  cash: number
-  ledger: LedgerLine[]
-  ledgerDays: LedgerDay[]
-}
+export type LedgerGroup = LedgerDay['by'][string]
+/** A life, of which the wallet reads and writes `t` (the core system's: the time it was last settled to) and its own three keys. */
+export type WalletState = LifeState
 /** What a wallet function needs from the engine context: the time of the change. */
 export interface WalletContext {
   now?: number
@@ -155,7 +131,8 @@ function record(state: WalletState, amount: number, reason: string, ctx?: Wallet
   state.ledger.push(line)
   if (state.ledger.length > LEDGER_LIMIT) state.ledger.splice(0, state.ledger.length - LEDGER_LIMIT)
   addToDay(state, line.at, amount, line.balance, line.reason)
-  emit(state, 'wallet.changed', { amount, reason, balance: state.cash }, ctx)
+  // `ctx` is the engine's context at runtime and absent only in unit tests; WalletContext names just the part the wallet reads.
+  emit(state, 'wallet.changed', { amount, reason, balance: state.cash }, ctx as LifeContext)
 }
 
 export const canAfford = (state: WalletState, amount: number): boolean => validAmount(amount) && state.cash >= amount
@@ -283,4 +260,4 @@ export default {
     return { cash: state.cash, ledger: state.ledger.slice().reverse(), days: statement.days.slice().reverse(),
       statement: { opening: statement.opening, closing: statement.closing, totals: statement.totals, reconciled: statement.reconciled, problems: statement.problems, kept: statement.kept, linesOpening: statement.linesOpening } }
   },
-}
+} satisfies SystemDefinition<'wallet'>

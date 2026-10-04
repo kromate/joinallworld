@@ -23,6 +23,6 @@ onBeforeUnmount(() => { watcher?.disconnect(); watcher = null })
 </script>
 
 <template>
-  <div v-if="isVuePanel(panel)" ref="box" :data-panel="panel.id"><component :is="panel.component" /></div>
+  <div v-if="isVuePanel(panel)" ref="box" :data-panel="panel.id"><Suspense><component :is="panel.component" /></Suspense></div>
   <LegacyPanel v-else :panel="panel" @rendered="emit('rendered', $event)" />
 </template>

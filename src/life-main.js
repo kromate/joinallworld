@@ -44,13 +44,13 @@ import { createShell } from './ui/shell.js';
 import { linkWords } from './ui/link.js';
 import { PANELS, sessionGate } from './ui/panels/index.js';
 import { S as social, loadPeople, onPeople, takeLinkHost, resetSocial } from './ui/panels/social-client.js';
-import { crowdList, playersHere } from './scene/crowd.js';
-import { NPCS } from './game/content/npcs.js';
-import { viewLife, VENUES, isDeparting } from './life.js';
-import { venueLabel, venueDistrict } from './game/content/venues.js';
-import { funnelSnap, funnelEvents, joinBanner, linkBanner } from './quick-start/model.js';
+import { crowdList, playersHere } from './scene/crowd.ts';
+import { NPCS } from './game/content/npcs.ts';
+import { viewLife, VENUES, isDeparting } from './life.ts';
+import { venueLabel, venueDistrict } from './game/content/venues.ts';
+import { funnelSnap, funnelEvents, joinBanner, linkBanner } from './quick-start/model.ts';
 import { pendingPlay, keepPlay, forgetDraft, joinTarget, forgetJoin, track, play, captureLink, pendingRef, forgetRef, pendingTable, forgetTable, deviceToken } from './quick-start/entry.js';
-import { tableById } from './tables/places.js';
+import { tableById } from './tables/places.ts';
 import { telemetry } from './telemetry/index.js';
 
 const $ = (id) => document.getElementById(id);
@@ -135,7 +135,7 @@ function onMembers({ self, members }) {
 /** The 3D scene: fetched once the HUD is up. A device that cannot draw it still gets the whole game. */
 async function loadScene() {
   try {
-    const { createVenueWorld } = await import('./venue-world.js');
+    const { createVenueWorld } = await import('./venue-world.ts');
     venue = createVenueWorld($('venue-scene'), { location: client.state.location, onTag: (tag) => {
       // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
       if (tag.kind === 'goal') void goTo(client.state.location, tag.id.replace(/^goal:/, ''));

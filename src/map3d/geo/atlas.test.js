@@ -14,7 +14,7 @@ import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, 
 import { listOrder, regionInfo } from './info.js';
 import { createAtlas } from './atlas.js';
 import { ATLAS, ATLAS_LEVELS, ZONES, AFRICA_GROUPS, canEnter, cityEntry, plannedRoutes, regionEntry, regionStatus, stateOfCity, MORE_REGIONS } from '../regions.js';
-import { CITY_LINKS } from '../../game/content/world.js';
+import { CITY_LINKS } from '../../game/content/world.ts';
 
 const here = (name) => new URL(name, import.meta.url);
 const world = decodeTopology(WORLD), africa = decodeTopology(AFRICA), nigeria = decodeTopology(NIGERIA), around = decodeTopology(AROUND);

@@ -7,7 +7,7 @@
 //
 // The column's layout still comes from the existing stylesheet (src/ui/shell.css, .life-sidebar
 // and below): it moves into this component when the chips it lays out are converted.
-import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import type { HudSlot, Panel } from '../../types/panel.ts'
 import { useApp } from '../../state/app.ts'
 import HudChip from './HudChip.vue'
@@ -34,6 +34,10 @@ function onRendered(id: string, isEmpty: boolean): void {
   empty[id] = isEmpty
   void nextTick(() => { waiting.value = tray.value?.querySelectorAll('.is-active').length ?? 0 })
 }
+/** Vue chips draw into the tray themselves (a chip with nothing to say renders a comment), so the count is taken after any of them may have changed. */
+function recount(): void { void nextTick(() => { waiting.value = tray.value?.querySelectorAll('.is-active').length ?? 0 }) }
+watch([game.state, shell.legacyTick], recount, { flush: 'post' })
+onMounted(recount)
 const link = computed(() => linkWording(view.value))
 const atHome = computed(() => game.state.value.location === 'home')
 

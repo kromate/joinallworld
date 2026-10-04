@@ -21,7 +21,7 @@
  */
 import './look-ui.css';
 import { esc, money, mark } from '../dom.js';
-import { APPEARANCE, BOUTIQUE_PRICES } from '../../game/content/traits.js';
+import { APPEARANCE, BOUTIQUE_PRICES } from '../../game/content/traits.ts';
 
 const hexOf = (group, id) => APPEARANCE[group].find((swatch) => swatch.id === id)?.hex ?? '#888888';
 export const lookLabel = (id) => APPEARANCE.labels[id] ?? id;
@@ -267,7 +267,7 @@ export function mountLookPreview(root, look, { name = 'Your Sim' } = {}) {
   });
   if (unavailable) { stage.dataset.mode = '2d'; return; }
   if (scene3d) { show(); return; }
-  loading ??= import('../../scene/avatar-preview.js');
+  loading ??= import('../../scene/avatar-preview.ts');
   loading.then((module) => { scene3d = module; if (wanted?.host.isConnected) show(); },
     () => { loading = null; if (wanted?.stage.isConnected) wanted.stage.dataset.mode = '2d'; });
 }

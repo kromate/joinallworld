@@ -7,8 +7,8 @@
  */
 import { esc, json, mark } from '../dom.js';
 import '../phone/icon-tables.js';
-import { isDeparting } from '../../game/registry.js';
-import { tablesAt, GAME_LABELS } from '../../tables/places.js';
+import { isDeparting } from '../../game/registry.ts';
+import { tablesAt, GAME_LABELS } from '../../tables/places.ts';
 
 const chip = {
   id: 'tables-chip', title: 'Table here', icon: 'tables', placement: 'hud', order: 25,

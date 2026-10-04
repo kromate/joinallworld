@@ -11,6 +11,12 @@ export const CATEGORY_LABELS: Readonly<Record<SupportCategory, string>> = { mone
 export const STATUS_LABELS: Readonly<Record<SupportStatus, string>> = { received: 'Received — waiting for a moderator', reviewing: 'Being looked at', resolved: 'Resolved', dismissed: 'Closed without action' }
 export const DEFAULT_LIMITS: SupportLimits = { text: 600, open: 5 }
 export const MIN_TEXT = 3
+export const SENT_WITH_RULES: readonly string[] = [
+  'Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines.',
+  'Your device’s secret is never included.',
+  'The report is filed on this server and you get a receipt number at once — no e-mail or other account is needed.',
+  'Its status and any reply from a moderator appear under “Your reports”, and as a red badge on this app.',
+]
 
 export const isCategory = (value: unknown): value is SupportCategory => typeof value === 'string' && Object.hasOwn(CATEGORY_LABELS, value)
 export const statusTone = (status: SupportStatus): 'good' | 'neutral' | 'warn' => (status === 'resolved' ? 'good' : status === 'dismissed' ? 'neutral' : 'warn')
@@ -38,6 +44,8 @@ export function createSupport(deps: SupportDeps) {
   const loading = ref(false)
   const sending = ref(false)
   const notice = shallowRef<SupportNotice | null>(null)
+  /** The id of the report filed last, for the toast. */
+  const lastReceipt = ref('')
 
   async function load(): Promise<void> {
     if (loading.value) return
@@ -69,6 +77,7 @@ export function createSupport(deps: SupportDeps) {
       const body: FileReportBody = { cityId: deps.cityId(), category: draft.category, text, clientId: draft.clientId as FileReportBody['clientId'] }
       const reply = await deps.fetchJson<FileReportResponse>('/api/support/reports', { method: 'POST', body })
       if (reply.ok) {
+        lastReceipt.value = reply.receipt.id
         notice.value = { kind: 'good', text: `Report ${reply.receipt.id} was received. Its status will appear below; you can close this page.` }
         draft.text = ''; draft.clientId = null
         deps.onFiled?.()
@@ -83,6 +92,6 @@ export function createSupport(deps: SupportDeps) {
     return false
   }
 
-  return { draft, list, loading, sending, notice, load, preset, submit, reload(): void { list.value = null; void load() } }
+  return { draft, list, loading, sending, notice, lastReceipt, load, preset, submit, reload(): void { list.value = null; void load() } }
 }
 export type Support = ReturnType<typeof createSupport>

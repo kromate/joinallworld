@@ -9,8 +9,17 @@
  * client does (POST /api/session, GET /api/life, POST /api/action). Every step asserts the
  * exact wallet and need values and prints one transcript line. Nothing here reaches into the
  * rules engine to change state: the engine is imported only to read derived display data
- * (mood word, goal chip, prices) from the state the server returned, and to find an action ID
- * whose birth-lottery roll is the outcome this run needs.
+ * (mood word, goal chip, prices) from the state the server returned, to check after every step
+ * that reloading the returned state changes nothing, and to rehearse the birth lottery.
+ *
+ * THE RANDOM OUTCOMES IN THIS SCRIPT. On a real server nobody can choose a roll: every random
+ * outcome is keyed with a secret salt the server creates for each life and never sends out, so
+ * trying action IDs against a copy of the rules (what this script used to do for the birth
+ * lottery) no longer says anything about what the server will roll. The run still needs the
+ * outcomes it documents (LAPO Baby at birth, the puddle on the trek home), so it uses the
+ * test-only hook in server/life-service.js: this process — which IS the server here — fixes the
+ * salt its one life is given (FIRST_DAY_SALT). No request can do that. If content changes and
+ * those outcomes stop coming up, `node scripts/first-day.mjs --find-salt` prints a salt that works.
  *
  * Plain Node, no dependencies. `runFirstDay({ log })` is also run by server/first-day.test.js.
  */
@@ -22,7 +31,8 @@ import { once } from 'node:events';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { createServer } from '../server/server.js';
-import { createLife, dispatch, viewLife } from '../src/life.js';
+import { useSaltSourceForTests } from '../server/life-service.js';
+import { createLife, viewLife } from '../src/life.js';
 import { weatherAt } from '../src/game/systems/health.js';
 import { findFreeSpot } from '../src/game/home-layout.js';
 import { FURNITURE } from '../src/game/content/furniture.js';
@@ -42,7 +52,10 @@ function dryMondayMorning() {
   return start;
 }
 
-export async function runFirstDay({ log = console.log } = {}) {
+/** The salt this run's life is created with (see the header). Found with --find-salt. */
+export const FIRST_DAY_SALT = 'first-day-salt-0044';
+
+export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT } = {}) {
   const dataDir = await mkdtemp(join(tmpdir(), 'joinallworld-first-day-'));
   let time = dryMondayMorning();
   let server, base, cookie, ids = 0, step = 0;
@@ -66,6 +79,7 @@ export async function runFirstDay({ log = console.log } = {}) {
   async function send(body) {
     const { status, json } = await http('/api/action', body);
     assert.equal(status, 200, `${body.type}: HTTP ${status} ${JSON.stringify(json)}`);
+    stable(json.state, body.type);
     return json;
   }
   const action = (type, payload) => send({ actionId: nextId(), cityId: CITY, type, ...(payload ? { payload } : {}) });
@@ -75,7 +89,9 @@ export async function runFirstDay({ log = console.log } = {}) {
     if (code) assert.equal(result.code, code, type);
     return result.state;
   }
-  const life = async () => (await http(`/api/life?city=${CITY}`)).json.state;
+  /** Every state the server returns must survive a reload unchanged: nothing a system wrote may be lost at the next load. */
+  const stable = (state, what) => { assert.deepEqual(createLife(structuredClone(state), { now: time, cityId: CITY }), state, `${what}: reloading the returned state changes nothing`); return state; };
+  const life = async () => stable((await http(`/api/life?city=${CITY}`)).json.state, 'GET /api/life');
   /** Let server time pass, then read the settled life. */
   async function wait(seconds) { time += seconds * 1000; return life(); }
   const view = (state) => viewLife(createLife(state, { now: time, cityId: CITY }), { now: time, cityId: CITY });
@@ -117,6 +133,8 @@ export async function runFirstDay({ log = console.log } = {}) {
     const opened = await http('/api/session', { name: 'Tunde', onboarding: true });
     assert.equal(opened.status, 200);
     cookie = opened.headers.get('set-cookie').split(';')[0];
+    // The server (this process) fixes the salt of the life it is about to create. Test-only hook; see the header.
+    useSaltSourceForTests(() => salt);
     let state = await life();
     assert.deepEqual([state.onboarding.required, state.onboarding.done, state.cash], [true, false, 5000]);
     const early = await action('travel', { id: 'home', mode: 'trek' });
@@ -127,18 +145,11 @@ export async function runFirstDay({ log = console.log } = {}) {
     await ok('onboarding.look', { look: LOOK }, 'look_saved');
     await ok('onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }, 'traits_saved');
     state = await ok('onboarding.dream', { dream: 'yaba-unicorn' }, 'dream_saved');
-    // The roll is decided by the action ID and the server clock. Find an ID that rolls the
-    // outcome observed in the reference game by running the same pure rule on a copy.
-    let rollId = null;
-    for (let i = 0; i < 200 && !rollId; i++) {
-      const candidate = nextId();
-      const copy = createLife(state, { now: time, cityId: CITY });
-      dispatch(copy, { type: 'onboarding.lottery', payload: {}, actionId: candidate }, { now: time, cityId: CITY, actionId: candidate });
-      if (copy.onboarding.lottery?.id === 'lapo-baby') rollId = candidate;
-    }
-    assert.ok(rollId, 'an action ID that rolls LAPO Baby exists');
+    // The roll is decided by the action ID, the server clock and the life's secret salt: it cannot
+    // be found by trying IDs. Under this run's fixed salt it is the outcome observed in the reference game.
+    const rollId = nextId();
     const rolled = await send({ actionId: rollId, cityId: CITY, type: 'onboarding.lottery', payload: {} });
-    assert.deepEqual([rolled.code, rolled.state.onboarding.lottery.id], ['rolled', 'lapo-baby']);
+    assert.deepEqual([rolled.code, rolled.state.onboarding.lottery.id], ['rolled', 'lapo-baby'], 'the fixed salt rolls LAPO Baby (if content changed, run with --find-salt)');
     state = await ok('onboarding.home', { house: 'yaba' }, 'life_started');
     check(state, 96000, [80, 85, 70, 60, 75, 70], 'move in');
     let shown = view(state);
@@ -325,11 +336,21 @@ export async function runFirstDay({ log = console.log } = {}) {
     log(`First day complete: ${step} steps, final wallet ${naira(state.cash)}.`);
     return { steps: step, cash: state.cash };
   } finally {
+    useSaltSourceForTests(); // back to random salts for anything else in this process
     if (server?.listening) await halt();
     await rm(dataDir, { recursive: true, force: true });
   }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  runFirstDay().catch((error) => { console.error(`\nFIRST DAY FAILED: ${error.message}`); process.exitCode = 1; });
+  if (process.argv.includes('--find-salt')) {
+    // Maintenance: try salts until the whole run holds, and print the first that does.
+    let found = null;
+    for (let i = 0; i < 5000 && !found; i++) {
+      const salt = `first-day-salt-${String(i).padStart(4, '0')}`;
+      try { await runFirstDay({ log: () => {}, salt }); found = salt; } catch { /* not this one */ }
+    }
+    console.log(found ? `FIRST_DAY_SALT = '${found}'` : 'No salt in the first 5,000 makes the run hold: the script itself needs updating.');
+    process.exitCode = found ? 0 : 1;
+  } else runFirstDay().catch((error) => { console.error(`\nFIRST DAY FAILED: ${error.message}`); process.exitCode = 1; });
 }

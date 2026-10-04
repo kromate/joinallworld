@@ -96,7 +96,7 @@ const app = {
   bind(root, api) {
     const view = api.view(), again = () => api.open(PANEL);
     load(api, key(view), path(view), { maxAge: 20000, panel: PANEL });
-    const done = (result) => { if (result.gov) put(key(api.view()), result.gov); if (document.querySelector(`dialog [data-panel="${PANEL}"]`)?.closest('dialog')?.open) again(); };
+    const done = (result) => { if (result.gov) put(key(api.view()), result.gov); if (document.querySelector(`dialog [data-panel="${PANEL}"]`)?.closest('dialog')?.open) again(); if (result.gov) api.refresh(); };
     root.querySelector('[data-civic-retry]')?.addEventListener('click', () => load(api, key(api.view()), path(api.view()), { force: true, panel: PANEL }));
     const slogan = root.querySelector('[data-gov-slogan]'), text = root.querySelector('[data-gov-text]');
     slogan?.addEventListener('input', () => { draft.slogan = slogan.value; });

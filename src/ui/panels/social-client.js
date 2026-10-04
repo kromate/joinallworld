@@ -14,6 +14,7 @@
  */
 import './social.css';
 import { createOutbox, mergeMessages, inviteIdFrom, SEND_TIMEOUT_MS } from '../../game/social-model.js';
+import { uuid } from '../dom.js';
 
 const MAX_ATTEMPTS = 6;
 export const outbox = createOutbox();
@@ -38,7 +39,7 @@ const refresh = () => S.api?.refresh();
 // Until a new life has finished character creation it is not in the city: the social features stay closed.
 const connected = () => { const view = S.api?.view(); return Boolean(view?.connected) && view.onboarding?.required !== true; };
 export const cityId = () => S.api.view().cityId;
-export const newClientId = () => `c-${globalThis.crypto.randomUUID()}`;
+export const newClientId = () => `c-${uuid()}`;
 
 /** One request. Never throws: a failure comes back as { ok: false, code, reason }. */
 export async function call(path, body) {

@@ -113,4 +113,5 @@ export default {
   },
 };
 
-function rerenderSoon(api) { if (document.querySelector(`dialog [data-panel="${PANEL}"]`)?.closest('dialog')?.open) api.open(PANEL); }
+/** Redraw this sheet, and everything behind it: the city map draws the same cached listing. */
+function rerenderSoon(api) { if (document.querySelector(`dialog [data-panel="${PANEL}"]`)?.closest('dialog')?.open) api.open(PANEL); api.refresh(); }

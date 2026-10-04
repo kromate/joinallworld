@@ -100,3 +100,12 @@ test('city sheet footnote uses the current city-specific text', async () => {
   assert.doesNotMatch(city, /original starter city pack/);
   assert.equal(TEXT.cityNote('Lagos'), 'More places and activities are coming to Lagos.');
 });
+
+test('uuid() works without crypto.randomUUID, as on a plain-HTTP LAN origin', async () => {
+  const { uuid } = await import('./client.js');
+  const pattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+  const insecure = { getRandomValues: (bytes) => globalThis.crypto.getRandomValues(bytes) };
+  const ids = new Set(Array.from({ length: 50 }, () => uuid(insecure)));
+  assert.equal(ids.size, 50); for (const id of ids) assert.match(id, pattern);
+  assert.match(uuid(), pattern);
+});

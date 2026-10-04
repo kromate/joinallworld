@@ -6,7 +6,7 @@
  * The banner follows the server's schedule whenever the HUD is redrawn (each state poll); it runs
  * no timer of its own, so a new shout-out can take up to a poll interval to appear.
  */
-import { esc, money } from '../dom.js';
+import { esc, money, uuid } from '../dom.js';
 import { RADIO } from '../../game/content/civic.js';
 import { button, busy, entry, load, put, send, stale, status, until } from './civic-ui.js';
 
@@ -23,7 +23,7 @@ function schedule(data, now) {
   return { playing, queue: all.filter((item) => item !== playing) };
 }
 const song = (item) => `${item.title} — ${item.artist}`;
-const newRequestId = () => { try { return window.crypto.randomUUID(); } catch { return `r-${Date.now()}-${Math.floor(Math.random() * 1e9)}`; } };
+const newRequestId = () => uuid();
 
 const app = {
   id: PANEL, title: 'Radio', icon: '📻', placement: 'phone', order: 46, live: false,
@@ -67,6 +67,7 @@ const app = {
       if (result.radio) put(key(api.view(), result.radio.venue), result.radio);
       if (result.ok) { draft.title = ''; draft.artist = ''; draft.requestId = null; }
       if (result.radio && document.querySelector(`dialog [data-panel="${PANEL}"]`)?.closest('dialog')?.open) again();
+      if (result.radio) api.refresh(); // the club banner behind the sheet shows the same queue
     });
   },
 };

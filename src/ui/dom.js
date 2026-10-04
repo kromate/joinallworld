@@ -4,6 +4,14 @@
 export const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export const money = (value) => `₦${Math.round(Number(value) || 0).toLocaleString('en-NG')}`;
 export const cap = (id) => `${id[0].toUpperCase()}${id.slice(1)}`;
+/** A version-4 UUID that also works outside secure contexts (plain HTTP on a LAN), where crypto.randomUUID is missing. */
+export function uuid() {
+  if (typeof globalThis.crypto?.randomUUID === 'function') return globalThis.crypto.randomUUID();
+  const bytes = globalThis.crypto.getRandomValues(new Uint8Array(16));
+  bytes[6] = (bytes[6] & 0x0f) | 0x40; bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
 /** JSON for a data-payload / data-params attribute. */
 export const json = (value) => esc(JSON.stringify(value));
 

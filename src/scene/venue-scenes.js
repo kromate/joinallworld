@@ -199,7 +199,9 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       const at = person.spot != null && resolved.anchors[person.spot];
       if (at) {
         const turn = index * 2.4;
-        return { ...person, x: at.x + Math.sin(turn) * 1.3, y: at.y, z: at.z + Math.cos(turn) * 1.3, ry: person.ry ?? turn + Math.PI };
+        // Far enough from the anchor that someone standing at it (you, perhaps) and this person do not overlap.
+        const reach = 1.9, angle = turn + 0.9;
+        return { ...person, x: at.x + Math.sin(angle) * reach, y: at.y, z: at.z + Math.cos(angle) * reach, ry: person.ry ?? angle + Math.PI };
       }
       if (index < slots.length) { const [x, z, ry = 0, y = 0] = slots[index]; return { ...person, x, y, z, ry: person.ry ?? ry }; }
       const turn = index * 2.4, radius = 1.6 + (index % 3) * 0.7;

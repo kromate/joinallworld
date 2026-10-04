@@ -56,7 +56,7 @@ function overview(state, view) {
     const cached = entry(cacheKey(item, view));
     const status = cached.data ? '' : !view.connected ? 'Offline: reconnect to load this layer.' : cached.error ? `Could not load: ${cached.error}` : 'Loading…';
     const summary = !cached.data ? status : item.id === 'billboards' ? `${cached.data.billboards.slots.filter((slot) => slot.ad).length} of ${cached.data.billboards.slots.length} billboards rented`
-      : item.id === 'sea' ? `${cached.data.sea.plots.length} sea plots rented · shown in the water below the city`
+      : item.id === 'sea' ? `${cached.data.sea.plots.length} sea plot${cached.data.sea.plots.length === 1 ? '' : 's'} rented · shown in the water below the city`
         : item.id === 'neighbours' ? `${cached.data.total} home${cached.data.total === 1 ? '' : 's'}, ${cached.data.online} online`
           : cached.data.governor ? `Governor ${cached.data.governor.name}` : 'No Governor yet';
     return `<div class="map-layer-note"><span>${esc(summary)}</span><button class="map-chip-button" data-open="${esc(item.open)}" ${item.params ? `data-params="${json(item.params)}"` : ''}>${esc(item.action)}</button></div>`;

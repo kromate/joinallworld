@@ -21,7 +21,9 @@ const ui = { tab: 'chats', open: null, draft: '', find: '', results: null, findi
 
 function setOpen(key) { ui.open = key; S.openConv = key; ui.manage = false; ui.draft = ''; ui.focus = key ? 'draft' : null; }
 const convOf = (key) => S.me?.conversations.find((conv) => conv.id === key) || null;
-const unreadUpdates = () => (S.me?.updates || []).filter((update) => !update.read).length;
+// A waiting friend or Bae request is counted once, as a request, not again as the update that announced it.
+const REQUEST_KINDS = ['friend-request', 'bae-request'];
+const unreadUpdates = () => (S.me?.updates || []).filter((update) => !update.read && !REQUEST_KINDS.includes(update.kind)).length;
 const unreadChats = () => (S.me?.conversations || []).reduce((sum, conv) => sum + conv.unread, 0);
 const time = (at) => formatClock(at).split('· ')[1] ?? '';
 
@@ -144,7 +146,7 @@ const app = {
     field?.addEventListener('input', () => { ui.draft = field.value; });
     field?.addEventListener('blur', () => { ui.focus = null; });
     field?.addEventListener('focus', () => { ui.focus = 'draft'; });
-    on('[data-m-tab]', 'click', (event) => { ui.tab = event.currentTarget.dataset.mTab; if (ui.tab === 'updates' && unreadUpdates()) void call('/api/social/updates/read', {}).then(sync); api.refresh(); });
+    on('[data-m-tab]', 'click', (event) => { ui.tab = event.currentTarget.dataset.mTab; if (ui.tab === 'updates' && (S.me?.updates || []).some((update) => !update.read)) void call('/api/social/updates/read', {}).then(sync); api.refresh(); });
     on('[data-m-open]', 'click', (event) => { setOpen(event.currentTarget.dataset.mOpen); void openThread(ui.open); api.refresh(); });
     on('[data-m-back]', 'click', () => { setOpen(null); void sync(); api.refresh(); });
     on('[data-m-reload]', 'click', () => { S.threads.get(ui.open).error = null; void openThread(ui.open); });

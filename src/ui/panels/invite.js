@@ -27,7 +27,8 @@ function visitHtml(view) {
   if (ui.loading) return '<p class="social-note">Finding that house…</p>';
   if (!ui.house) return '';
   if (ui.house.error) return `<p class="social-note is-warn">${esc(ui.house.error)}</p>`;
-  const house = ui.house.house, knock = S.knock?.host === house.host.id ? S.knock : null;
+  // Once you are inside, the overview's copy of the house is the current one; the looked-up copy predates the answer.
+  const house = S.me.visiting?.host.id === ui.house.house.host.id ? S.me.visiting : ui.house.house, knock = S.knock?.host === house.host.id ? S.knock : null;
   if (house.role === 'host') return '<p class="social-note">That is your own house. Share the link with someone else.</p>';
   const inside = house.role === 'guest' || knock?.status === 'accepted';
   const waiting = knock && (knock.status === 'knocking' || knock.status === 'sending') && (knock.status === 'sending' || knock.expiresAt > view.now);

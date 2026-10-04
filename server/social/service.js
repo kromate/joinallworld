@@ -395,11 +395,22 @@ export function socialService(ctx) {
       if (list.blocks.length) Object.defineProperty(result, BLOCKS, { value: list.blocks.splice(0), enumerable: false });
       return result;
     },
+    /**
+     * Bring the in-memory block index in line with a transaction that has just COMMITTED. Passed
+     * to the store as `committed`, so it runs even if the write that follows fails — otherwise a
+     * stored block could go unenforced in venue rooms until a restart. Safe to call twice.
+     */
+    committed(result) {
+      const changes = result?.[BLOCKS];
+      if (!changes || changes.applied) return;
+      changes.applied = true;
+      for (const change of changes) { applyBlockChange(change); if (change[2]) ctx.emit?.('blocks-changed', { a: change[1], b: change[2] }); }
+    },
     /** Send the pushes a committed result collected, and strip them from what the caller sees. */
     deliver(result) {
       // Visits that ended in the committed transaction: the room module drops those guests from the host's Home room now.
       for (const [hostId, guestId] of result?.[ENDED] ?? []) ctx.emit?.('visit-ended', { hostId, guestId });
-      for (const change of result?.[BLOCKS] ?? []) { applyBlockChange(change); if (change[2]) ctx.emit?.('blocks-changed', { a: change[1], b: change[2] }); }
+      service.committed(result); // a store without the `committed` hook: apply the block changes now
       if (!result || !Array.isArray(result.push)) return result;
       const { push, ...rest } = result;
       for (const [to, message] of push) ctx.push(to, message);

@@ -41,7 +41,7 @@ export default function socialSocket(ctx) {
       const session = ctx.core.sessionOf(ws, db);
       if (!session || session.expiresAt <= ctx.now()) throw Error('device_session_required');
       return service.finish(db, call(db, session));
-    });
+    }, { committed: (value) => service.committed(value) });
     return service.deliver(result);
   }
   /** Tell a player's friends that they connected or dropped. Best effort; never blocks the socket. */
@@ -51,8 +51,12 @@ export default function socialSocket(ctx) {
       .catch(() => {});
   }
   // The foundation announces room changes in-process; pass a nudge to the members' watching sockets.
-  ctx.on?.('room-changed', ({ room, cityId, venueId, members }) => {
-    for (const id of members) for (const ws of presence.sockets(id)) if (ws.peopleWatch === true && ws.room !== room) ctx.send(ws, { type: 'people-changed', cityId, venueId });
+  ctx.on?.('room-changed', ({ room, cityId, venueId, members, cause }) => {
+    for (const id of members) {
+      // A player the cause is hidden from (a blocked pair) is not nudged: their list has not changed.
+      if (cause && cause !== id && ctx.checks?.blocked?.(cause, id) === true) continue;
+      for (const ws of presence.sockets(id)) if (ws.peopleWatch === true && ws.room !== room) ctx.send(ws, { type: 'people-changed', cityId, venueId });
+    }
   });
   // The room module admits a guest to a host's Home room only if this says so (see server/ws/rooms.js).
   if (ctx.checks) ctx.checks.homeGuest = (db, guestId, hostId, cityId) => service.homeGuest(db, guestId, hostId, cityId);

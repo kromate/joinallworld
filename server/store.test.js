@@ -118,6 +118,24 @@ test('grouped: close writes what is pending, and an unreadable file is refused a
   await assert.rejects(createStore(dir, { mode: 'grouped' }), /Invalid device database/);
 });
 
+test('grouped: a failed write rejects the caller, tells `committed` first, and the change reaches the disk with the next write', async (t) => {
+  const { store, dir, file } = await temp(t);
+  await store.transact((db) => { db.sessions.a = session('pa'); });
+  const { rm: remove, mkdir } = await import('node:fs/promises');
+  await remove(dir, { recursive: true, force: true }); // every write now fails
+  const seen = [];
+  await assert.rejects(store.transact((db) => { db.sessions.a.name = 'during the outage'; return 'value'; }, { committed: (value) => seen.push(value) }), /ENOENT/);
+  assert.deepEqual(seen, ['value'], 'the commit listener ran although the write failed');
+  assert.equal(await store.read((db) => db.sessions.a.name).catch(() => 'unreadable'), 'unreadable', 'a read does not hand out state that is not on disk');
+  await mkdir(dir, { recursive: true });
+  await store.transact((db) => { db.sessions.b = session('pb'); });
+  const stored = await file();
+  assert.deepEqual([stored.sessions.a.name, stored.sessions.b.publicId], ['during the outage', 'pb'], 'nothing committed in memory is lost once writes work again');
+  // An aborted transaction never calls the listener.
+  await assert.rejects(store.transact(() => { throw new Error('abort'); }, { committed: () => seen.push('no') }), /abort/);
+  assert.deepEqual(seen, ['value']);
+});
+
 test('grouped: the write budget paces whole-file rewrites without delaying a lone write', async (t) => {
   const { store } = await temp(t, { writeMegabytesPerSecond: 0.001 }); // 1 byte per ms: a 2 kB file may be rewritten every ~2 s at most
   await store.transact((db) => { db.sessions.a = session('pa', { name: 'x'.repeat(100) }); });

@@ -11,8 +11,9 @@
  *   - Not tied to the page's origin (a header a browser never sends by itself cannot be forged
  *     cross-site), so curl works. No CORS headers are sent, so a web page on another origin
  *     cannot read a response even with the token.
- *   - Rate limited per address: 60 requests a minute, and 10 failed tokens per 10 minutes, after
- *     which that address is answered 429 until the window passes.
+ *   - Rate limited per address: 60 authenticated requests a minute, and 10 requests without the
+ *     right token per 10 minutes, after which tokenless requests from that address get 429 until
+ *     the window passes. The two are counted separately.
  *   - A device session gives no access here, and nothing here reads or returns a session secret.
  *
  * READ (GET)
@@ -52,15 +53,18 @@ export default function moderationRoutes(ctx) {
   /** Guard, parse, run inside one transaction, then push what the change told players. */
   const guarded = (handler, { write = false } = {}) => async (request) => {
     if (!ctx.config.moderation) throw ctx.fail(404, 'not_found');
-    if (!ctx.allow(`mod:${request.ip}`, 60)) throw ctx.fail(429, 'rate_limited');
     if (!request.moderator()) {
-      // Count failures only, so a working operator is never locked out by their own traffic.
+      // Requests without the token are counted on their own, so neither guessing nor a hostile page
+      // sending tokenless requests from the operator's browser can use up the operator's budget.
       if (!ctx.allow(`mod-fail:${request.ip}`, 10, 600000)) throw ctx.fail(429, 'rate_limited');
       throw ctx.fail(401, 'moderator_token_required');
     }
+    if (!ctx.allow(`mod:${request.ip}`, 60)) throw ctx.fail(429, 'rate_limited');
     const body = request.method === 'POST' ? await request.json() : {};
     if (!write) return { body: await ctx.store.read((db) => handler(db, request, body)), headers: { 'Cache-Control': 'no-store' } };
-    const result = await ctx.store.transact((db) => social.finish(db, handler(db, request, body)));
+    // The in-memory copies (mutes, blocks) follow the commit itself, not the write that follows it.
+    const result = await ctx.store.transact((db) => social.finish(db, handler(db, request, body)),
+      { committed: (value) => { if (value?.mutes) moderation.sync(value.mutes); social.committed(value); } });
     if (result?.mutes) moderation.sync(result.mutes);
     const { mutes, ...rest } = social.deliver(result) ?? {};
     return { body: rest };

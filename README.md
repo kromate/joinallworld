@@ -146,7 +146,7 @@ Stored collections in the one data document (`devices.json` on Node): `sessions`
 
 ### Storage and limits
 
-How the Node store writes (`server/store.js`): a transaction copies only the sessions it touches and is all-or-nothing; an **action, message, payment or report is on disk before it is answered**; transactions that commit while a write is in flight share the next one; a poll whose settlement produced no outcome (no cash moved, nothing finished, nobody arrived) is answered from memory and written within one second; whole-file writes are paced by a byte budget. A graceful stop (`SIGTERM`, `SIGINT`) writes whatever is pending. After a crash, at most the last second of outcome-free polls is recomputed from the stored state.
+How the Node store writes (`server/store.js`): a transaction copies only the sessions it touches and is all-or-nothing; an **action, message, payment or report is on disk before it is answered**; transactions that commit while a write is in flight share the next one; a poll whose settlement produced no outcome (no cash moved, nothing finished, nobody arrived) is answered from memory and written within one second; whole-file writes are paced by a byte budget. A graceful stop (`SIGTERM`, `SIGINT`) writes whatever is pending. After a crash, at most the last second or so of outcome-free polls is recomputed from the stored state. If a write fails, the waiting requests get an error and the change is written when the disk recovers (SECURITY.md, "What saved means").
 
 Every cap on what the data file can hold:
 

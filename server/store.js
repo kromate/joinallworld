@@ -3,8 +3,9 @@ import { join } from 'node:path';
 
 /**
  * JSON file store (Node only). The storage interface the rest of the server relies on is just:
- *   transact(fn(db), { durable = true }?) → Promise<result>   serialised read-modify-write; a throw discards changes
- *                                                             (`durable` is a boolean, or a function of the result)
+ *   transact(fn(db), { durable = true, committed }?) → Promise<result>   serialised read-modify-write; a throw discards changes
+ *                                                             (`durable` is a boolean, or a function of the result;
+ *                                                             `committed(result)` runs once the change is in memory)
  *   read(fn(db))                          → Promise<result>   read-only snapshot
  * over one JSON document `{ version, sessions, archivedLives?, <namespaced collections> }`.
  * Route and ws modules reach their own collection with collection(db, name) from protocol.js,
@@ -17,13 +18,22 @@ import { join } from 'node:path';
  *   is still all-or-nothing and a read can never change stored data.
  *
  *   DURABLE transactions (the default) resolve only after a file write that contains them has
- *   been renamed into place — exactly the guarantee the previous store gave: an acknowledged
- *   action, receipt, message or payment is on disk. Transactions that commit while a write is in
- *   flight share the next write (group commit), so N concurrent actions cost about two writes,
- *   not N.
+ *   been renamed into place: an acknowledged action, receipt, message or payment is on disk, as
+ *   it was with the previous store. Transactions that commit while a write is in flight share the
+ *   next write (group commit), so N concurrent actions cost about two writes, not N.
+ *
+ *   ONE DIFFERENCE FROM THE PREVIOUS STORE: a transaction is committed in memory before its
+ *   write. If that write then fails (a full disk), the caller's promise rejects — nothing is
+ *   acknowledged — but the change stays in memory and reaches the disk with the next successful
+ *   write; the previous store dropped it. For an action this is what the idempotency receipt is
+ *   for: the retry is answered "already applied". Anything a caller keeps in memory about the
+ *   document (an index, a cache) must therefore be updated when the transaction COMMITS, not
+ *   when its promise resolves: pass `committed(result)`, which runs right after the commit,
+ *   whatever happens to the write.
  *
  *   LAZY transactions ({ durable: false }) commit in memory and resolve at once; the file catches
- *   up with the next durable write or within `lazyFlushMs` (default 1 s), whichever is first. They
+ *   up with the next durable write or about `lazyFlushMs` (default 1 s) later, whichever is first
+ *   (plus any write-budget pause; a failed lazy write is tried again after the same interval). They
  *   are for requests that acknowledge nothing — a poll that only settles the clock. After a crash
  *   such a settlement is simply computed again from the last stored state. A request that turns
  *   out to have done something a player could see as an outcome (money moved, an activity
@@ -37,8 +47,10 @@ import { join } from 'node:path';
  *   noticeably (400 KB → 8 ms); a large one trades a little action latency (at most 2 s) for a disk
  *   that is not rewritten hundreds of times a second. Commits arriving in the pause share one write.
  *
- *   Only what changed is re-serialised: each session's JSON text is cached and reused until a
- *   committed transaction touches that session.
+ *   Only what a committed transaction touched is re-serialised: each session's JSON text is cached
+ *   and reused until a committed transaction reads or writes that session. (Touching counts even
+ *   if nothing changed, and a collection other than sessions is copied and re-serialised whole.)
+ *   Values handed back by a transaction are the stored objects: callers must not change them.
  *
  * mode 'legacy' (STORE_MODE=legacy) is the previous implementation, kept verbatim as a fallback
  * and as the baseline for scripts/load.mjs: every transact clones and rewrites the whole file.
@@ -81,7 +93,7 @@ export async function createStore(dataDir, { mode = process.env.STORE_MODE === '
   if (mode === 'legacy') {
     let pending = Promise.resolve();
     return {
-      transact(operation) {
+      transact(operation, { committed } = {}) {
         const work = pending.then(async () => {
           stats.transactions += 1;
           const next = structuredClone(database);
@@ -89,6 +101,7 @@ export async function createStore(dataDir, { mode = process.env.STORE_MODE === '
           try { value = await operation(next); } catch (error) { stats.aborted += 1; throw error; }
           await writeOut(JSON.stringify(next));
           database = next;
+          try { committed?.(value); } catch (error) { console.error('Commit listener failed:', error.message); }
           return value;
         });
         pending = work.catch(() => {});
@@ -268,13 +281,15 @@ export async function createStore(dataDir, { mode = process.env.STORE_MODE === '
     if (lazyTimer || closed) return;
     lazyTimer = setTimeout(() => {
       lazyTimer = null;
-      if (flushedSeq < commitSeq) onDisk(commitSeq).catch((error) => { if (error?.code !== 'ENOENT') console.error('Store write failed:', error.message); });
+      if (flushedSeq >= commitSeq) return;
+      // A failed lazy write is not given up on: it is tried again after the same interval.
+      onDisk(commitSeq).catch((error) => { if (error?.code !== 'ENOENT') console.error('Store write failed:', error.message); scheduleLazy(); });
     }, lazyFlushMs);
     lazyTimer.unref?.();
   }
 
   return {
-    transact(operation, { durable = true } = {}) {
+    transact(operation, { durable = true, committed } = {}) {
       const work = queue.then(async () => {
         stats.transactions += 1;
         const view = open();
@@ -284,6 +299,8 @@ export async function createStore(dataDir, { mode = process.env.STORE_MODE === '
         // whether it acknowledged anything (a poll that completed an activity did; a quiet one did not).
         const wait = typeof durable === 'function' ? durable(value) !== false : durable !== false;
         if (view.commit()) { commitSeq += 1; if (wait) durableSeq = commitSeq; }
+        // The document in memory has changed: let the caller bring its own in-memory indexes in line now.
+        try { committed?.(value); } catch (error) { console.error('Commit listener failed:', error.message); }
         return { value, seq: commitSeq, wait };
       });
       queue = work.catch(() => {});

@@ -58,8 +58,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   if (!Number.isSafeInteger(votesPerAddress) || votesPerAddress < 0) throw new Error('Invalid VOTES_PER_ADDRESS');
   // The operator token never leaves this closure: only its digest is kept, it is compared in
   // constant time, and nothing here logs it. Unset (or too short to be a real secret) = no moderator surface.
-  const moderatorDigest = typeof moderatorToken === 'string' && moderatorToken.length >= 24 ? sha256(moderatorToken) : null;
-  if (typeof moderatorToken === 'string' && moderatorToken && !moderatorDigest) console.error('MODERATOR_TOKEN is shorter than 24 characters: the moderator routes stay disabled.');
+  // It must be something a Bearer header can carry: 24–512 printable ASCII characters without spaces.
+  const moderatorDigest = typeof moderatorToken === 'string' && /^[\x21-\x7e]{24,512}$/.test(moderatorToken) ? sha256(moderatorToken) : null;
+  if (typeof moderatorToken === 'string' && moderatorToken && !moderatorDigest) console.error('MODERATOR_TOKEN must be 24 to 512 printable ASCII characters without spaces: the moderator routes stay disabled.');
   moderatorToken = undefined;
   /** A session with nothing in it — no city, or only lives still waiting for character creation — has no life to keep. */
   const hasLife = (session) => Object.values(session.cities || {}).some(entry => entry?.state && !(entry.state.onboarding?.required === true && entry.state.onboarding.done !== true));
@@ -104,7 +105,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   };
   const settle = (session, city) => settleCity(session, city, now());
   function cookieHeader(req, secret) {
-    const secure = req.socket.encrypted || (process.env.TRUST_PROXY === '1' && req.headers['x-forwarded-proto'] === 'https');
+    const secure = req.socket.encrypted || (trustProxy && req.headers['x-forwarded-proto'] === 'https');
     return `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${Math.floor(sessionTtlMs / 1000)}${secure ? '; Secure' : ''}`;
   }
   function renewedHeaders(req) {
@@ -323,7 +324,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // close(callback) reports back only once the store has written everything, so "the server has
   // stopped" always means "the data file is complete" — for a restart, a test or a shutdown script.
   const closeHttp = server.close.bind(server);
-  server.close = (callback) => closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).finally(() => callback?.(error)); });
+  server.close = (callback) => { closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).finally(() => callback?.(error)); }); return server; };
   await Promise.all(ctx.startup.splice(0));
   return server;
 }

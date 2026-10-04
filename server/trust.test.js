@@ -47,6 +47,8 @@ test('operator routes: off without a token; with one, only a bearer header opens
   assert.equal((await fetch(`${off.base}/api/mod/overview`, { headers: { Authorization: `Bearer ${TOKEN}` } })).status, 404, 'no MODERATOR_TOKEN: the routes do not exist');
   const short = await fixture(t, { moderatorToken: 'too-short' });
   assert.equal((await fetch(`${short.base}/api/mod/overview`, { headers: { Authorization: 'Bearer too-short' } })).status, 404, 'a token under 24 characters does not enable anything');
+  const spaced = await fixture(t, { moderatorToken: 'a token with spaces in it 0123456789' });
+  assert.equal((await fetch(`${spaced.base}/api/mod/overview`, { headers: { Authorization: 'Bearer a token with spaces in it 0123456789' } })).status, 404, 'nor does one a Bearer header cannot carry');
 
   const { f, mod, database } = await harness(t);
   const ada = await f.device('Ada');
@@ -213,6 +215,14 @@ test('a blocked player is not seen, heard or signalled in a public venue — per
   assert.deepEqual(await seen(c), ['Ada', 'Bola', 'Chidi'], 'everyone else sees both');
   assert.deepEqual((await get('/api/social/people?city=lagos', ada)).players.map((player) => player.name), ['Chidi']);
   assert.deepEqual((await get('/api/social/people?city=lagos', bola)).players.map((player) => player.name), ['Chidi']);
+  // Movement: a move by one of the pair sends the other NO frame at all (not even an unchanged list),
+  // so the first presence Bola receives next is the one caused by Chidi's move.
+  a.ws.send(JSON.stringify({ type: 'move', x: 5, z: 5 }));
+  let adaMoved; for (let i = 0; i < 20 && !adaMoved; i++) { const message = await c.next(); if (message.type === 'presence') adaMoved = message.members.find((member) => member.name === 'Ada').position; }
+  assert.deepEqual(adaMoved, { x: 5, z: 5 }, 'Chidi saw Ada move');
+  c.ws.send(JSON.stringify({ type: 'move', x: 3, z: 0 }));
+  const next = await until(b, 'presence');
+  assert.deepEqual(next.members.map((member) => [member.name, member.position.x]).sort(), [['Bola', 0], ['Chidi', 3]], 'Bola’s next frame is Chidi’s move: Ada’s produced nothing for him');
   // Chat: Bola's line reaches Chidi and Bola, never Ada. Chidi's next line proves Ada's socket got nothing in between.
   b.ws.send(JSON.stringify({ type: 'chat', body: 'from Bola', clientId: 'b-1' }));
   assert.equal((await until(c, 'chat')).body, 'from Bola'); assert.equal((await until(b, 'chat')).body, 'from Bola');

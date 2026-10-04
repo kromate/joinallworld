@@ -1,0 +1,6 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": { "lib": ["ES2023"], "types": [] },
+  "include": ["../src/game/**/*", "../src/life.js", "../src/types/**/*.ts"],
+  "exclude": ["../**/*.test.js", "../**/*.test.ts"]
+}

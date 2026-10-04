@@ -14,6 +14,7 @@ import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.js';
 import { settleCity, applyLifeAction } from './life-service.js';
 import { buildRoutes } from './routes/index.js';
+import { createOnce } from './routes/once.js';
 import { buildSocketHandlers } from './ws/index.js';
 import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canJoinVenue } from './protocol.js';
 
@@ -32,6 +33,10 @@ function clientAddress(req, trustProxy) {
   return forwarded && forwarded.length <= 64 && /^[0-9a-fA-F:.]+$/.test(forwarded) ? forwarded : direct;
 }
 const sha256 = value => createHash('sha256').update(String(value)).digest();
+/** The first line of an error's message, for the log. Never throws, whatever was thrown at us. */
+function firstLine(error) {
+  try { return String(error?.message ?? error).split('\n')[0].slice(0, 300); } catch { return 'unprintable error'; }
+}
 function packageVersion() {
   try { return JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version || '0'; } catch { return '0'; }
 }
@@ -46,16 +51,20 @@ async function jsonBody(req) {
 }
 
 export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions = 10000, voiceConfigProvider, store: providedStore, routes: routeModules, wsModules,
-  storeMode, lazyFlushMs,
+  lazyFlushMs,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
   trustProxy = process.env.TRUST_PROXY === '1',
   votesPerAddress = Number(process.env.VOTES_PER_ADDRESS ?? 3),
+  voteCapMode = process.env.VOTE_CAP_MODE || 'flag',
+  log = (line) => console.error(line),
+  receiptLimits, // { perPlayer, global } for ctx.once (server/routes/once.js); the defaults are the documented numbers
   buildId = process.env.BUILD_ID || packageVersion() } = {}) {
-  const store = providedStore || await createStore(dataDir, { ...(storeMode ? { mode: storeMode } : {}), ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
+  const store = providedStore || await createStore(dataDir, { ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');
   if (!Number.isFinite(heartbeatMs) || heartbeatMs < 1000 || heartbeatMs > 60000) throw new Error('Invalid heartbeat interval');
   if (!Number.isSafeInteger(votesPerAddress) || votesPerAddress < 0) throw new Error('Invalid VOTES_PER_ADDRESS');
+  if (!['flag', 'refuse'].includes(voteCapMode)) throw new Error('Invalid VOTE_CAP_MODE (use "flag" or "refuse")');
   // The operator token never leaves this closure: only its digest is kept, it is compared in
   // constant time, and nothing here logs it. Unset (or too short to be a real secret) = no moderator surface.
   // It must be something a Bearer header can carry: 24–512 printable ASCII characters without spaces.
@@ -86,13 +95,19 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     for (const secret of sessionKeys(db, session => !session.publicId || !Number.isFinite(session.expiresAt) || session.expiresAt <= now())) archiveSession(db, secret, db.sessions[secret]);
   });
   const limits = new Map();
+  /**
+   * In-memory rate limiter: at most `count` calls per `windowMs` for one key. Each entry remembers its
+   * own window, so making room never forgets a long window early (the 10-minute failed-token window
+   * must not be cut short by a burst of one-minute keys). With 10,000 live keys a new key is refused,
+   * except the operator's own budget (`mod:`), which a flood of other keys must not be able to lock out.
+   */
   function allow(key, count = 120, windowMs = 60000) {
     const time = now();
-    if (limits.size > 10000) for (const [id, entry] of limits) if (time - entry.start >= windowMs) limits.delete(id);
+    if (limits.size > 10000) for (const [id, entry] of limits) if (time - entry.start >= entry.windowMs || time < entry.start) limits.delete(id);
     const entry = limits.get(key);
-    if (!entry || time - entry.start >= windowMs) {
-      if (!entry && limits.size >= 10000) return false;
-      limits.set(key, { start: time, count: 1 }); return true;
+    if (!entry || time - entry.start >= entry.windowMs || time < entry.start) {
+      if (!entry && limits.size >= 10000 && !String(key).startsWith('mod:')) return false;
+      limits.set(key, { start: time, count: 1, windowMs }); return true;
     }
     return ++entry.count <= count;
   }
@@ -103,7 +118,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     if (renew) renewSession(session, now(), sessionTtlMs);
     return session;
   };
-  const settle = (session, city) => settleCity(session, city, now());
+  // Which stored session a settled life belongs to, so ctx.act can find that player's receipts.
+  const ownerOf = new WeakMap();
+  const settle = (session, city) => { const state = settleCity(session, city, now()); ownerOf.set(state, session); return state; };
+  const receipts = createOnce({ now, windowMs: actionWindowMs, limits: receiptLimits });
+  /** True from a failed write of the data file until the next successful one. Reads still work then; saving does not. */
+  const storageFailing = () => { try { return store.stats?.().failing === true; } catch { return false; } };
   function cookieHeader(req, secret) {
     const secure = req.socket.encrypted || (trustProxy && req.headers['x-forwarded-proto'] === 'https');
     return `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${Math.floor(sessionTtlMs / 1000)}${secure ? '; Secure' : ''}`;
@@ -120,11 +140,43 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     const match = /^Bearer ([\x21-\x7e]{1,512})$/.exec(req.headers.authorization || '');
     return Boolean(match) && timingSafeEqual(sha256(match[1]), moderatorDigest);
   }
-  function reply(res, status, body, headers = {}) {
-    res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...headers });
-    res.end(JSON.stringify(body));
+  /** Response headers a route may set. Anything else a module returns is dropped. */
+  const ROUTE_HEADERS = new Map([['set-cookie', 'Set-Cookie'], ['cache-control', 'Cache-Control'], ['retry-after', 'Retry-After']]);
+  function routeHeaders(headers) {
+    const kept = {};
+    if (headers && typeof headers === 'object') for (const [name, value] of Object.entries(headers)) {
+      const known = ROUTE_HEADERS.get(String(name).toLowerCase());
+      if (known && (typeof value === 'string' || (Array.isArray(value) && value.every(item => typeof item === 'string')))) kept[known] = value;
+    }
+    return kept;
   }
-  const server = http.createServer(async (req, res) => {
+  /**
+   * The ONLY place an API response is written. It answers at most once per request: the body is
+   * turned into text BEFORE any header is sent, so a body that cannot be serialised becomes one
+   * generic 500 instead of a half-written reply, and a second call for the same response (a
+   * handler that fails after it was answered) does nothing. It never throws. Returns whether it wrote.
+   */
+  function reply(res, status, body, headers = {}) {
+    if (res.headersSent || res.writableEnded || res.destroyed) return false;
+    let text, code = Number.isInteger(status) && status >= 200 && status <= 599 ? status : 500, extra = headers;
+    try { text = JSON.stringify(code === status ? body ?? {} : { error: 'internal_error' }); if (typeof text !== 'string') throw new TypeError('The response body is not JSON'); }
+    catch (error) { log(`Response could not be serialised: ${firstLine(error)}`); code = 500; text = '{"error":"internal_error"}'; extra = {}; }
+    try {
+      try { res.writeHead(code, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...extra }); }
+      catch (error) {
+        // A header value Node refuses (a control character). Nothing has been sent yet: answer generically.
+        log(`Response headers were refused: ${error?.code || error?.message}`);
+        if (res.headersSent) { res.destroy(); return false; }
+        text = '{"error":"internal_error"}';
+        res.writeHead(500, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
+      }
+      res.end(text);
+      return true;
+    } catch (error) { log(`Response could not be written: ${error?.code || error?.message}`); try { res.destroy(); } catch {} return false; }
+  }
+  // Nothing a request does may escape as an unhandled rejection: the last line of defence closes the connection.
+  const server = http.createServer((req, res) => { handle(req, res).catch(() => { try { res.destroy(); } catch {} }); });
+  async function handle(req, res) {
     try {
       const url = new URL(req.url, 'http://localhost');
       if (url.pathname.startsWith('/api/')) {
@@ -133,7 +185,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         const operator = url.pathname.startsWith('/api/mod/');
         if (!operator && !sameOrigin(req)) throw fail(403, 'origin_rejected');
         const ip = addressOf(req);
-        if (!allow(`http:${ip}`, 600)) throw fail(429, 'rate_limited');
+        // A request carrying the operator's token has its own budget (routes/moderation.js), so other
+        // clients behind the same address cannot use up the operator's share of the general limit.
+        if (!(operator && isModerator(req)) && !allow(`http:${ip}`, 600)) throw fail(429, 'rate_limited');
         const route = routes.match(req.method, url.pathname);
         if (!route) throw fail(404, 'not_found');
         const request = {
@@ -146,11 +200,17 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           // Foundation-only: the cookie secret and the raw request, used by core routes for cookies and room checks.
           secret: cookieId(req), raw: req,
         };
-        const result = await route.handler(request) || {};
+        const returned = await route.handler(request);
+        const result = returned && typeof returned === 'object' ? returned : {};
         const status = result.status || 200;
-        const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body) ? { ...result.body, serverTime: now() } : result.body ?? {};
-        reply(res, status, payload, { ...(result.renew ? renewedHeaders(req) : {}), ...result.headers });
-        result.after?.();
+        // While the data file cannot be written, every success says so: what the player sees is what
+        // is stored, and nothing new is being saved.
+        const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body)
+          ? { ...result.body, serverTime: now(), ...(storageFailing() ? { storage: 'failing' } : {}) } : result.body ?? {};
+        const sent = reply(res, status, payload, { ...(result.renew === true ? renewedHeaders(req) : {}), ...routeHeaders(result.headers) });
+        // `after` runs once the answer is out. Whatever it does, the request is already answered: a
+        // failure in it is logged and goes no further.
+        if (sent && typeof result.after === 'function') { try { await result.after(); } catch (error) { log(`After-response step of ${req.method} ${route.key} failed: ${firstLine(error)}`); } }
         return;
       }
       if (!['GET', 'HEAD'].includes(req.method)) throw fail(405, 'method_not_allowed');
@@ -159,14 +219,20 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       if (path !== root && !path.startsWith(root + sep)) throw fail(403, 'invalid_path');
       try { if (!(await stat(path)).isFile()) path = resolve(root, 'index.html'); } catch { path = resolve(root, 'index.html'); }
       const bytes = await readFile(path);
+      if (res.headersSent || res.writableEnded) return;
       res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'X-Content-Type-Options': 'nosniff' });
       res.end(req.method === 'HEAD' ? undefined : bytes);
-    } catch (error) {
-      if (!error.status && error.code !== 'ENOENT') console.error('Request failed:', error.message);
-      reply(res, error.status || (error.code === 'ENOENT' ? 404 : 500), { error: error.status ? error.code : error.code === 'ENOENT' ? 'build_required' : 'internal_error',
-        ...(error.status && typeof error.reason === 'string' ? { reason: error.reason } : {}) });
+    } catch (thrown) {
+      // Only the first line of the message is logged: never a header, a cookie or a body.
+      const error = thrown && typeof thrown === 'object' ? thrown : { message: thrown };
+      const known = Number.isInteger(error.status) && typeof error.code === 'string';
+      if (!known && error.code !== 'ENOENT') log(`Request failed: ${firstLine(error)}`);
+      reply(res, known ? error.status : error.code === 'ENOENT' ? 404 : 500, { error: known ? error.code : error.code === 'ENOENT' ? 'build_required' : 'internal_error',
+        ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}) });
     }
-  });
+  }
+  // A client that goes away mid-request must never take the process with it.
+  server.on('clientError', (error, socket) => { try { if (socket.writable) socket.end('HTTP/1.1 400 Bad Request\r\nConnection: close\r\n\r\n'); else socket.destroy(); } catch {} });
   const wss = new WebSocketServer({ noServer: true, maxPayload: 16384 });
   const PONG_GRACE_MS = Math.min(5000, Math.floor(heartbeatMs / 2));
   const unresponsive = ws => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= PONG_GRACE_MS;
@@ -185,7 +251,26 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     settle,
     // Server authority: ctx.act may run server-only actions (internal: true). Route modules call it
     // with action types they name themselves, never with a type taken from a request.
-    act: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId, internal: true }),
+    // EVERY ctx.act must be safe to retry, and the host checks it rather than trusting the caller:
+    //   - inside ctx.once(...) (or another ctx.act) the surrounding receipt covers it;
+    //   - with `stateGuard: '<why a repeat cannot apply twice>'` the caller declares that stored state
+    //     checked in the same transaction makes it once-only (a ballot entry, a queue it removes from);
+    //   - otherwise `actionId` must be an action id (`<ms>:<uuid>`, normally the request's) and the life
+    //     must come from ctx.settle: the same receipt steps as POST /api/action run, and a repeat
+    //     returns { ok, code, state, duplicate: true } without running the action again.
+    // Anything else throws, so a route cannot spend without a receipt by accident.
+    act(state, body) {
+      const { stateGuard, ...action } = body;
+      const run = () => applyLifeAction(state, action, { now: now(), cityId: action.cityId, actionId: action.actionId, internal: true });
+      if (receipts.active() || (typeof stateGuard === 'string' && stateGuard.trim().length >= 12)) return run();
+      const session = ownerOf.get(state);
+      if (!session || action.actionId === undefined) throw new Error(`ctx.act(${action.type}) has no receipt: call it inside ctx.once, pass the request's actionId, or state its stateGuard`);
+      const result = receipts.action(session, action, run);
+      return result.duplicate ? { ...result, state } : result;
+    },
+    // Exactly-once for a write that carries a client id — see server/routes/once.js.
+    once: receipts.once,
+    onceId: receipts.onceId,
     push(publicId, message) {
       let sent = 0;
       for (const ws of wss.clients) if (ws.session?.id === publicId && ws.readyState === WebSocket.OPEN) { send(ws, message); sent += 1; }
@@ -207,7 +292,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // Checks one module provides for another. checks.homeGuest is set by the social module and
     // read by ws/rooms.js; while it is absent, nobody can join another player's Home room.
     checks: {},
-    config: { sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, heartbeatMs, moderation: Boolean(moderatorDigest) },
+    config: { sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup: [],
     core: {
@@ -224,6 +309,41 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       sessionOf: (ws, db) => db.sessions[ws.secret],
       // What POST /api/action runs: a player's own request, with no server authority.
       playerAct: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }),
+      // The receipt steps of an action, shared by POST /api/action and ctx.act (server/routes/once.js).
+      actionOnce: receipts.action,
+      storageFailing,
+      log,
+      // Room hooks. The room module (ws/rooms.js) replaces these three; the defaults keep the core
+      // routes working when a host is built without it (a test that passes its own wsModules):
+      // nobody is in a room, so there is nothing to drop, rename or confirm.
+      validateMemberships: async () => {},
+      refreshNames: () => {},
+      roomStillValid: () => false,
+      /**
+       * ROOM REVALIDATION — call it in a `finally` after ANY request that may have settled or changed
+       * a life, whether its transaction resolved or was rejected. It never throws.
+       *   known = { city, state, publicId }   the life as the resolved transaction left it, or
+       *   known = null                        the transaction failed (nothing was saved), or the route
+       *                                       does not have the state: the STORED life is read instead.
+       * Every room the player's sockets are in is then checked against that life.
+       * SEAM: the engine owner's shared `revalidate(publicId)` replaces the body of this function;
+       * the call sites (routes/core.js, routes/social.js, routes/civic.js) stay as they are.
+       */
+      async revalidate(secret, known = null) {
+        try {
+          if (typeof secret !== 'string') return;
+          const cities = new Set();
+          for (const ws of wss.clients) if (ws.secret === secret && ws.room) cities.add(ws.room.split(':')[0]);
+          if (known) { await ctx.core.validateMemberships(secret, known.city, known.state, known.publicId); cities.delete(known.city); }
+          if (!cities.size) return;
+          const stored = await store.read(db => {
+            const session = db.sessions[secret];
+            return session ? { publicId: session.publicId, states: Object.fromEntries([...cities].map(city => [city, session.cities?.[city]?.state ?? null])) } : null;
+          });
+          if (!stored) return;
+          for (const city of cities) if (stored.states[city]) await ctx.core.validateMemberships(secret, city, stored.states[city], stored.publicId);
+        } catch (error) { log(`Room revalidation failed: ${firstLine(error)}`); }
+      },
     },
   };
   const sockets = buildSocketHandlers(ctx, wsModules);
@@ -231,7 +351,10 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   server.on('upgrade', async (req, socket, head) => {
     try {
       if (req.url !== '/socket' || !req.headers.origin || !sameOrigin(req) || !allow(`upgrade:${addressOf(req)}`, 60)) throw Error('Rejected');
-      const session = await store.transact(db => sessionFor(req, db, true));
+      // Connecting renews the session. While the data file cannot be written the renewal is skipped
+      // (it was undone) and the stored session is used as it is: presence and chat keep working.
+      const session = await store.transact(db => sessionFor(req, db, true))
+        .catch(error => { if (error?.code !== 'storage_unavailable') throw error; return store.read(db => sessionFor(req, db, false)); });
       if (!session) throw Error('Unauthorized');
       if (wss.clients.size >= 1024 || [...wss.clients].filter(ws => ws.session.id === session.publicId).length >= 8) throw Error('Connection capacity');
       req.renewedCookie = cookieHeader(req, session.secret);
@@ -264,6 +387,10 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       for (const peer of wss.clients) if (peer.secret === ws.secret) {
         peer.expiresAt = expiration; peer.lastSessionRenewedAt = now();
       }
+    } catch (error) {
+      // The renewal could not be saved, so it did not happen: the socket keeps its current expiry
+      // and the message is still handled. It is tried again with the next message.
+      if (error?.code !== 'storage_unavailable') throw error;
     } finally { if (socketRenewals.get(ws.secret) === pending) socketRenewals.delete(ws.secret); }
   }
   wss.on('connection', ws => {
@@ -287,7 +414,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       try {
         if (ws.expiresAt <= now()) { ws.close(1008, 'Device session expired'); return; }
         if (ws.readyState !== WebSocket.OPEN) return;
-        message = JSON.parse(raw.toString());
+        try { message = JSON.parse(raw.toString()); } catch { throw Error('invalid_message'); }
         if (!message || typeof message !== 'object') throw Error('invalid_message');
         await renewSocketSession(ws);
         const entry = typeof message.type === 'string' ? sockets.messages.get(message.type) : undefined;
@@ -295,7 +422,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (!entry) throw Error(ws.room ? 'invalid_message' : 'join_required');
         if (entry.room && !ws.room) throw Error('join_required');
         await entry.handle(ws, message);
-      } catch (error) { send(ws, { type: 'error', code: error.message, error: error.message, ...(typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
+      } catch (thrown) {
+        // Only a machine code goes to the client. Anything else (a TypeError's text, a file path) is logged here instead.
+        const text = firstLine(thrown);
+        const coded = /^[a-z][a-z0-9_]{1,63}$/.test(text);
+        if (!coded) log(`Socket message failed: ${text}`);
+        const error = coded ? thrown : { message: 'internal_error' };
+        send(ws, { type: 'error', code: error.message, error: error.message, ...(typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));
     });
   });
@@ -330,6 +463,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  if (process.env.STORE_MODE) console.error('STORE_MODE is no longer used: there is one store. See "Storage and limits" in the README.');
   const server = await createServer();
   // Write anything not yet on disk before the process leaves.
   for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { server.store.close?.().catch(() => {}).finally(() => process.exit(0)); });

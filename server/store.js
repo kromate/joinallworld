@@ -50,7 +50,9 @@ import { join } from 'node:path';
  *
  *   read() never writes and works on copies. It waits for the durable changes it could have seen
  *   to reach the file; if they are undone instead it runs again against what is left. Reads keep
- *   working while writes fail.
+ *   working while writes fail. "Could have seen" is decided by what was touched: a read (or a
+ *   waitForObserved transaction) of one session waits only for unsaved changes to that session or
+ *   to a collection it also touched; one that scanned every session waits for all of them.
  *
  *   NO ALIASING. Everything applied to the document is deep-frozen. A value a transaction hands
  *   back may be one of those stored objects, so changing it afterwards throws instead of silently
@@ -144,16 +146,18 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
   function open() {
     const keyed = {}; // name → { copies: Map, deleted: Set, created: boolean, proxy }
     const parts = new Map(), removed = new Set();
+    let scanned = false; // looked across every session (a scan, a lookup by public id, a key listing)
+    const peeked = new Set(); // asked "is it there?" without reading it
     function keyedPart(name) {
       if (keyed[name]) return keyed[name];
       const part = { copies: new Map(), deleted: new Set(), created: false };
       const source = () => (isRecord(base[name]) ? base[name] : {});
-      const has = (key) => typeof key === 'string' && !part.deleted.has(key) && (part.copies.has(key) || Object.hasOwn(source(), key));
+      const has = (key) => { if (typeof key !== 'string') return false; peeked.add(`${name}/${key}`); return !part.deleted.has(key) && (part.copies.has(key) || Object.hasOwn(source(), key)); };
       part.proxy = new Proxy({}, {
         get(target, key) {
           if (typeof key !== 'string' || part.deleted.has(key)) return undefined;
           if (part.copies.has(key)) return part.copies.get(key);
-          if (!Object.hasOwn(source(), key)) return undefined;
+          if (!Object.hasOwn(source(), key)) { peeked.add(`${name}/${key}`); return undefined; }
           const copy = structuredClone(source()[key]);
           part.copies.set(key, copy);
           return copy;
@@ -161,7 +165,7 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
         set(target, key, value) { if (typeof key !== 'string') return false; part.copies.set(key, value); part.deleted.delete(key); return true; },
         has: (target, key) => has(key),
         deleteProperty(target, key) { if (typeof key !== 'string') return true; part.copies.delete(key); if (Object.hasOwn(source(), key)) part.deleted.add(key); return true; },
-        ownKeys() { return [...Object.keys(source()).filter((key) => !part.deleted.has(key)), ...[...part.copies.keys()].filter((key) => !Object.hasOwn(source(), key))]; },
+        ownKeys() { scanned = true; return [...Object.keys(source()).filter((key) => !part.deleted.has(key)), ...[...part.copies.keys()].filter((key) => !Object.hasOwn(source(), key))]; },
         // The value is fetched through get(); the descriptor only has to say "an enumerable own property".
         getOwnPropertyDescriptor: (target, key) => (has(key) ? { value: undefined, writable: true, enumerable: true, configurable: true } : undefined),
         defineProperty: () => false,
@@ -173,12 +177,14 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
     const helpers = Object.freeze({
       /** Keys of sessions whose record satisfies `predicate`. Records are shown as stored: do not change them. */
       scanSessions(predicate) {
+        scanned = true;
         const part = keyedPart('sessions'), found = [];
         for (const [key, record] of Object.entries(base.sessions)) if (!part.deleted.has(key) && predicate(part.copies.get(key) ?? record, key)) found.push(key);
         for (const [key, record] of part.copies) if (!Object.hasOwn(base.sessions, key) && predicate(record, key)) found.push(key);
         return found;
       },
       sessionKeyByPublicId(id) {
+        scanned = true;
         const part = keyedPart('sessions');
         for (const [key, record] of part.copies) if (record?.publicId === id) return key;
         const key = keyOfPublicId.get(id);
@@ -192,7 +198,7 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
         if (key === 'version') return base.version;
         if (KEYED.includes(key)) return keyedExists(key) ? keyedPart(key).proxy : undefined;
         if (parts.has(key)) return parts.get(key);
-        if (!Object.hasOwn(base, key)) return undefined;
+        if (!Object.hasOwn(base, key)) { peeked.add(key); return undefined; }
         const copy = structuredClone(base[key]);
         parts.set(key, copy);
         return copy;
@@ -213,9 +219,10 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
         parts.set(key, value);
         return true;
       },
-      has: (target, key) => typeof key === 'string' && !removed.has(key) && (key === 'version' || (KEYED.includes(key) ? keyedExists(key) : parts.has(key) || Object.hasOwn(base, key))),
+      has: (target, key) => { if (typeof key === 'string') peeked.add(key); return typeof key === 'string' && !removed.has(key) && (key === 'version' || (KEYED.includes(key) ? keyedExists(key) : parts.has(key) || Object.hasOwn(base, key))); },
       deleteProperty(target, key) { if (typeof key !== 'string' || key === 'version' || key === 'sessions') return false; parts.delete(key); delete keyed[key]; removed.add(key); return true; },
       ownKeys() {
+        scanned = true;
         const keys = new Set(['version']);
         for (const key of Object.keys(base)) keys.add(key);
         for (const key of parts.keys()) keys.add(key);
@@ -247,7 +254,18 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
       for (const [key, value] of parts) { restoreTop(key, Object.hasOwn(base, key), base[key]); base[key] = deepFreeze(value); partText.delete(key); }
       return undo.length ? undo : null;
     }
-    return { db, commit };
+    /**
+     * What this view has looked at, as names like 'sessions/<key>' or 'social' — or null when it
+     * looked across all sessions. Used to decide which unsaved changes of others it may have seen.
+     */
+    function touched() {
+      if (scanned) return null;
+      const names = new Set([...parts.keys(), ...removed, ...peeked]);
+      for (const name of KEYED) if (removed.has(name)) return null;
+      for (const name of KEYED) { const part = keyed[name]; if (!part) continue; if (part.created) return null; for (const key of part.copies.keys()) names.add(`${name}/${key}`); for (const key of part.deleted) names.add(`${name}/${key}`); }
+      return names;
+    }
+    return { db, commit, touched };
   }
 
   function serialise() {
@@ -277,14 +295,34 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
   // epoch: counts undo passes; work that started in an earlier epoch may have read state that is gone.
   let commitSeq = 0, durableSeq = 0, flushedSeq = 0, epoch = 0, flushing = null, lazyTimer = null, closed = false;
   let nextFlushAt = 0, lastError = null, lastLogAt = -Infinity, unlogged = 0;
-  const pending = []; // applied, not yet in the file, oldest first: { seq, undo, hook, value }
+  const pending = []; // applied, not yet in the file, oldest first: { seq, undo, hook, value, durable, names }
+  /**
+   * The newest unsaved change someone is waiting on (a durable one) that a view may have seen:
+   * one that touched something the view touched. A view that looked across all sessions may have
+   * seen any of them.
+   */
+  function observedBy(names) {
+    if (names === null) return durableSeq;
+    if (!pending.length) return 0;
+    const list = [...names];
+    let seq = 0;
+    for (const entry of pending) if (entry.durable && entry.seq > seq && (entry.names === null || list.some((name) => entry.names.has(name)))) seq = entry.seq;
+    return seq;
+  }
   const waiters = []; // { seq, resolve, reject } — callers waiting for change `seq` to be in the file
+  /** A listener must never be able to stop the store: whatever it throws is logged and dropped. */
+  function runHook(hook, value) {
+    if (!hook) return;
+    try { hook(value); } catch (error) { try { log(`Commit listener failed: ${String(error?.message ?? error).split('\n')[0]}`); } catch { /* nor may the logger */ } }
+  }
 
   function noteFailure(error) {
     lastError = error; stats.writeFailures += 1; stats.failing = true; stats.lastFailureAt = now();
     // One line per failure burst, then at most one every 30 s with a count: an outage must not flood the log.
-    if (now() - lastLogAt >= 30000 || now() < lastLogAt) { log(`Store write failed (${error?.code || 'error'}): ${error?.message}${unlogged ? ` — and ${unlogged} more since the last line` : ''}. Unsaved changes were undone.`); lastLogAt = now(); unlogged = 0; }
-    else unlogged += 1;
+    try {
+      if (now() - lastLogAt >= 30000 || now() < lastLogAt) { log(`Store write failed (${error?.code || 'error'}): ${error?.message}${unlogged ? ` — and ${unlogged} more since the last line` : ''}. Unsaved changes were undone.`); lastLogAt = now(); unlogged = 0; }
+      else unlogged += 1;
+    } catch { /* a failing logger must not stop the undo that follows */ }
   }
   /** The write holding every change up to `upto` is in the file. */
   function settle(upto) {
@@ -292,7 +330,7 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
     stats.failing = false;
     while (pending.length && pending[0].seq <= upto) {
       const entry = pending.shift();
-      if (entry.hook) { try { entry.hook(entry.value); } catch (error) { log(`Commit listener failed: ${error.message}`); } }
+      runHook(entry.hook, entry.value);
     }
     release();
   }
@@ -338,8 +376,6 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
     pump();
     return promise;
   }
-  const runHook = (hook, value) => { if (hook) { try { hook(value); } catch (error) { log(`Commit listener failed: ${error.message}`); } } };
-
   return {
     transact(operation, { durable = true, committed, waitForObserved = false } = {}) {
       const work = queue.then(async () => {
@@ -352,10 +388,11 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
         // `durable` may be a function of the result, so a request can decide after it has run
         // whether it acknowledged anything (a poll that completed an activity did; a quiet one did not).
         const wait = typeof durable === 'function' ? durable(value) !== false : durable !== false;
-        const observed = durableSeq; // durable changes of earlier transactions this one may have read
+        const names = view.touched();
+        const observed = observedBy(names); // unsaved durable changes of earlier transactions this one may have read
         const undo = view.commit();
         let seq = null;
-        if (undo) { seq = commitSeq += 1; pending.push({ seq, undo, hook: committed, value }); if (wait) durableSeq = seq; }
+        if (undo) { seq = commitSeq += 1; pending.push({ seq, undo, hook: committed, value, durable: wait, names }); if (wait) durableSeq = seq; }
         return { value, wait, seq, observed };
       });
       queue = work.catch(() => {});
@@ -370,7 +407,7 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
     read(operation) {
       stats.reads += 1;
       const attempt = (tries) => {
-        const work = queue.then(async () => { const began = epoch; const value = await operation(open().db); return { value, seq: durableSeq, stale: epoch !== began }; });
+        const work = queue.then(async () => { const began = epoch, view = open(); const value = await operation(view.db); return { value, seq: observedBy(view.touched()), stale: epoch !== began }; });
         queue = work.catch(() => {});
         return work.then(async ({ value, seq, stale }) => {
           if (!stale) { try { await onDisk(seq); return value; } catch (error) { if (error?.code !== 'storage_unavailable') throw error; } }

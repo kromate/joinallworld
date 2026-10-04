@@ -53,7 +53,8 @@ export async function runTwoPlayers({ log = console.log } = {}) {
 
   const say = (title, note = '') => log(`${String(++step).padStart(2, '0')}  ${title.padEnd(64)}${note ? `· ${note}` : ''}`);
   const stamp = () => { const t = lagosTime(time); return `${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][t.weekday]} ${String(t.hour).padStart(2, '0')}:${String(t.minute).padStart(2, '0')}`; };
-  const clientId = () => `c-two-players-${String(++ids).padStart(6, '0')}`;
+  // Client ids and request ids are made the way the browser makes them: server time, then a UUID (server/routes/once.js).
+  const clientId = () => `${time}:00000000-0000-4000-8000-${String(++ids).padStart(12, '0')}`;
   const nextAction = () => `${time}:00000000-0000-4000-8000-${String(++ids).padStart(12, '0')}`;
 
   async function http(path, body, who) {
@@ -277,7 +278,7 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     // Old enough, but paid for work on one day only (Saturday): the server says exactly what is missing.
     assert.deepEqual([gov.phase, gov.you.days, gov.you.run.ok, gov.you.run.code], ['nominations', 2, false, 'work_days']);
     assert.match(gov.you.run.reason, /paid for work on 1 day\. Finish a paid shift or gig on 1 more day/);
-    assert.equal((await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Light for every street' }, ada)).code, 'work_days');
+    assert.equal((await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Light for every street', requestId: clientId() }, ada)).code, 'work_days');
     await ok(ada, 'spot', { id: 'drinks' }, 'selected');
     const lunch = await ok(ada, 'activity', { id: 'park-palmwine' }, 'started');
     wait(lunch.activeAction.duration * 1000);
@@ -290,9 +291,9 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     gov = await get(`/api/civic/gov?city=${CITY}`, ada);
     assert.deepEqual([gov.phase, gov.you.days, gov.you.run.ok], ['nominations', 2, true]);
     const fee = (await life(ada)).cash;
-    const declared = await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Light for every street' }, ada);
+    const declared = await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Light for every street', requestId: clientId() }, ada);
     assert.deepEqual([declared.code, declared.state.cash, declared.state.ledger.at(-1).reason], ['declared', fee - 2000, 'Governorship filing fee']);
-    assert.equal((await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Again' }, ada)).code, 'already_candidate');
+    assert.equal((await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Again', requestId: clientId() }, ada)).code, 'already_candidate');
     assert.equal((await act(ada, 'civic.run', {})).code, 'server_only', 'the fee cannot be paid outside the election route');
     assert.equal((await post('/api/civic/gov/vote', { cityId: CITY, candidate: ada.id }, bola)).code, 'polls_closed');
     say('Monday: Ada declares for Governor', `refused until she had been paid for work on two different days; filing fee ₦2,000 paid once (${naira(declared.state.cash)}); voting is not open yet`);
@@ -376,9 +377,9 @@ export async function runTwoPlayers({ log = console.log } = {}) {
 
     // ---- 11. Bola rents a sea plot; it is in the public ads listing ---------------------------------
     const seaBefore = (await life(bola)).cash;
-    const rented = await post('/api/civic/ads/rent', { cityId: CITY, kind: 'sea', slot: 'sea-3-4', text: 'Bola Fabrics', colour: 'gold', icon: 'shop', link: 'https://example.com', image: 'x' }, bola);
+    const rented = await post('/api/civic/ads/rent', { cityId: CITY, kind: 'sea', slot: 'sea-3-4', text: 'Bola Fabrics', colour: 'gold', icon: 'shop', link: 'https://example.com', image: 'x', requestId: clientId() }, bola);
     assert.deepEqual([rented.code, rented.state.cash], ['rented', seaBefore - 100]);
-    assert.equal((await post('/api/civic/ads/rent', { cityId: CITY, kind: 'sea', slot: 'sea-3-4', text: 'Ada Books', colour: 'blue', icon: 'book' }, ada)).code, 'slot_taken');
+    assert.equal((await post('/api/civic/ads/rent', { cityId: CITY, kind: 'sea', slot: 'sea-3-4', text: 'Ada Books', colour: 'blue', icon: 'book', requestId: clientId() }, ada)).code, 'slot_taken');
     const ads = await get(`/api/civic/ads?city=${CITY}`);
     assert.deepEqual(ads.sea.plots.map((plot) => [plot.slot, plot.row, plot.col, plot.text, plot.colour, plot.icon, plot.by.name, plot.mine]), [['sea-3-4', 3, 4, 'Bola Fabrics', 'gold', 'shop', 'Bola', false]]);
     assert.deepEqual(Object.keys(ads.sea.plots[0]).sort(), ['at', 'by', 'col', 'colour', 'expiresAt', 'icon', 'mine', 'price', 'row', 'slot', 'text'], 'text, colour and icon only: no link, no image');

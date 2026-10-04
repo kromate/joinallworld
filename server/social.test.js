@@ -12,7 +12,6 @@ import { SHIFT_SECONDS } from '../src/game/content/jobs.js';
 import { DEFAULT_LOOK } from '../src/game/content/traits.js';
 
 const HOUR = 3600000;
-const cid = () => `c-${randomUUID()}`;
 const get = async (f, path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };
 const post = async (f, path, body, who) => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json()) }; };
 const database = async (f) => JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8'));
@@ -60,7 +59,7 @@ async function earn(f, device) {
 test('social routes need a device session and a same-origin request', async t => {
   const f = await fixture(t);
   for (const path of ['/api/social/me', '/api/social/people?city=lagos', '/api/social/conversations', '/api/social/search?q=ada']) assert.equal((await get(f, path)).status, 401, path);
-  assert.equal((await post(f, '/api/social/messages', { to: randomUUID(), body: 'hi', clientId: cid() })).error, 'device_session_required');
+  assert.equal((await post(f, '/api/social/messages', { to: randomUUID(), body: 'hi', clientId: f.id() })).error, 'device_session_required');
   const ada = await f.device('Ada');
   const hostile = await fetch(`${f.base}/api/social/me`, { headers: { Cookie: ada.cookie, Origin: 'https://evil.example' } });
   assert.equal(hostile.status, 403);
@@ -97,6 +96,8 @@ test('find a player, friend request → accept exactly once, friend.made lands i
   // Ada had no socket open: her life learns of the friendship on her next request.
   me = await get(f, '/api/social/me', ada);
   assert.deepEqual(me.friends.map((friend) => [friend.id, friend.status]), [[bola.id, 'away']]);
+  // She had no life yet either. Nothing is created to hold the friendship: it waits until she has one.
+  await get(f, '/api/life?city=lagos', ada); await get(f, '/api/social/me', ada);
   const adaLife = (await get(f, '/api/life?city=lagos', ada)).state, bolaLife = (await get(f, '/api/life?city=lagos', bola)).state;
   assert.equal(adaLife.social.rel[bola.id].friend, true); assert.equal(adaLife.social.rel[bola.id].name, 'Bola');
   assert.equal(bolaLife.social.rel[ada.id].friend, true);
@@ -115,7 +116,7 @@ test('find a player, friend request → accept exactly once, friend.made lands i
 test('messages: pending → sent, retry with the same client id never duplicates, offline recipients fetch on open', async t => {
   const f = await fixture(t);
   const [ada, bola] = await people(f, ['Ada', 'Bola']);
-  const id = cid();
+  const id = f.id();
   const sent = await post(f, '/api/social/messages', { to: bola.id, body: '  How far?  ', clientId: id }, ada);
   assert.equal(sent.code, 'sent'); assert.equal(sent.message.body, 'How far?'); assert.equal(sent.message.clientId, id); assert.equal(sent.message.seq, 1);
   // The reply was lost: the client retries the same client id. Same message back, nothing stored twice.
@@ -130,7 +131,7 @@ test('messages: pending → sent, retry with the same client id never duplicates
   assert.equal((await post(f, `/api/social/conversations/${sent.conv.id}/read`, {}, bola)).conv.unread, 0);
   // Live delivery over the socket, once, when the recipient is online.
   const a = await f.socket(ada), b = await f.socket(bola);
-  const reply = cid();
+  const reply = f.id();
   b.ws.send(JSON.stringify({ type: 'dm-send', conv: sent.conv.id, body: 'I dey o', clientId: reply }));
   b.ws.send(JSON.stringify({ type: 'dm-send', conv: sent.conv.id, body: 'I dey o', clientId: reply }));
   const live = await until(a, 'dm');
@@ -145,13 +146,13 @@ test('messages: pending → sent, retry with the same client id never duplicates
   b.ws.send(JSON.stringify({ type: 'dm-read', conv: sent.conv.id }));
   assert.equal((await until(b, 'dm-read-ok')).conv.unread, 0);
   // Malformed input.
-  for (const body of ['', '   ', 'bad\u0007bell', 'x'.repeat(501), 7, null]) assert.equal((await post(f, '/api/social/messages', { to: bola.id, body, clientId: cid() }, ada)).status, 400, String(body));
+  for (const body of ['', '   ', 'bad\u0007bell', 'x'.repeat(501), 7, null]) assert.equal((await post(f, '/api/social/messages', { to: bola.id, body, clientId: f.id() }, ada)).status, 400, String(body));
   for (const clientId of ['short', 'has space in it', 'x'.repeat(81), undefined]) assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: 'hi', clientId }, ada)).status, 400);
-  assert.equal((await post(f, '/api/social/messages', { conv: `dm.${randomUUID()}.${randomUUID()}`, body: 'hi', clientId: cid() }, ada)).code, 'not_a_member');
+  assert.equal((await post(f, '/api/social/messages', { conv: `dm.${randomUUID()}.${randomUUID()}`, body: 'hi', clientId: f.id() }, ada)).code, 'not_a_member');
   assert.equal((await get(f, `/api/social/conversations/${sent.conv.id}`, await f.device('Eve'))).code, 'not_a_member');
   // History is bounded.
   f.advance(120000);
-  for (let i = 0; i < 2; i++) await post(f, '/api/social/messages', { conv: sent.conv.id, body: `m${i}`, clientId: cid() }, ada);
+  for (let i = 0; i < 2; i++) await post(f, '/api/social/messages', { conv: sent.conv.id, body: `m${i}`, clientId: f.id() }, ada);
   const stored = (await database(f)).social.convs[sent.conv.id];
   assert.ok(stored.messages.length <= LIMITS.history); assert.equal(stored.seq, 4);
   assert.ok(!JSON.stringify((await database(f)).social).includes(ada.cookie.slice(4)), 'the cookie secret is never stored in the social collection');
@@ -160,22 +161,22 @@ test('messages: pending → sent, retry with the same client id never duplicates
 test('anti-spam: strangers get three messages until a reply, and the per-minute limit fails softly', async t => {
   const f = await fixture(t);
   const [ada, bola] = await people(f, ['Ada', 'Bola']);
-  for (let i = 0; i < 3; i++) assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: `hey ${i}`, clientId: cid() }, ada)).code, 'sent');
-  const waiting = await post(f, '/api/social/messages', { to: bola.id, body: 'hello??', clientId: cid() }, ada);
+  for (let i = 0; i < 3; i++) assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: `hey ${i}`, clientId: f.id() }, ada)).code, 'sent');
+  const waiting = await post(f, '/api/social/messages', { to: bola.id, body: 'hello??', clientId: f.id() }, ada);
   assert.equal(waiting.code, 'awaiting_reply'); assert.match(waiting.reason, /Bola has not replied yet/);
-  await post(f, '/api/social/messages', { to: ada.id, body: 'who be this', clientId: cid() }, bola);
+  await post(f, '/api/social/messages', { to: ada.id, body: 'who be this', clientId: f.id() }, bola);
   let limited = null;
-  for (let i = 0; i < 30 && !limited; i++) { const res = await post(f, '/api/social/messages', { to: bola.id, body: `spam ${i}`, clientId: cid() }, ada); if (!res.ok) limited = res; }
+  for (let i = 0; i < 30 && !limited; i++) { const res = await post(f, '/api/social/messages', { to: bola.id, body: `spam ${i}`, clientId: f.id() }, ada); if (!res.ok) limited = res; }
   assert.equal(limited.code, 'rate_limited'); assert.match(limited.reason, /too quickly/);
   f.advance(61000);
-  assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: 'calm now', clientId: cid() }, ada)).code, 'sent');
+  assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: 'calm now', clientId: f.id() }, ada)).code, 'sent');
 });
 
 test('block hides both players from each other and stops DMs and knocks; reports leave a receipt', async t => {
   const f = await fixture(t);
   const [ada, bola] = await people(f, ['Ada', 'Bola']);
   await befriend(f, ada, bola);
-  const hello = await post(f, '/api/social/messages', { to: ada.id, body: 'buy my coin', clientId: cid() }, bola);
+  const hello = await post(f, '/api/social/messages', { to: ada.id, body: 'buy my coin', clientId: f.id() }, bola);
   const a = await f.joinRoom(ada), b = await f.joinRoom(bola);
   assert.deepEqual((await get(f, '/api/social/people?city=lagos', ada)).players.map((player) => player.id), [bola.id]);
 
@@ -187,12 +188,12 @@ test('block hides both players from each other and stops DMs and knocks; reports
   for (const [who, target] of [[ada, bola], [bola, ada]]) {
     assert.deepEqual((await get(f, '/api/social/people?city=lagos', who)).players, []);
     assert.deepEqual((await get(f, `/api/social/search?q=${target.name.toLowerCase()}`, who)).results, []);
-    assert.equal((await post(f, '/api/social/messages', { to: target.id, body: 'hi', clientId: cid() }, who)).code, 'blocked');
+    assert.equal((await post(f, '/api/social/messages', { to: target.id, body: 'hi', clientId: f.id() }, who)).code, 'blocked');
     assert.equal((await post(f, '/api/social/friends/request', { to: target.id, cityId: 'lagos' }, who)).code, 'blocked');
     assert.equal((await post(f, '/api/social/house/knock', { host: target.id, cityId: 'lagos' }, who)).code, 'blocked');
   }
   assert.equal((await get(f, `/api/social/players/${ada.id}`, bola)).code, 'unknown_player');
-  assert.equal((await post(f, '/api/social/messages', { conv: hello.conv.id, body: 'hi', clientId: cid() }, bola)).code, 'blocked');
+  assert.equal((await post(f, '/api/social/messages', { conv: hello.conv.id, body: 'hi', clientId: f.id() }, bola)).code, 'blocked');
 
   const report = await post(f, '/api/social/reports', { id: bola.id, reason: 'spam', text: 'Keeps advertising.' }, ada);
   assert.equal(report.code, 'reported'); assert.match(report.receipt.id, /^R-\d+$/); assert.equal(report.receipt.status, 'received');
@@ -322,9 +323,9 @@ test('house invite: knock needs the host at home, is accepted exactly once, caps
   assert.deepEqual((await get(f, '/api/social/people?city=lagos', host)).players.map((player) => player.id), [guest.id]);
   assert.equal((await knock(guest)).code, 'inside');
   // House chat reaches exactly the people inside.
-  const said = await post(f, '/api/social/messages', { conv: `h.${host.id}`, body: 'Welcome!', clientId: cid() }, host);
+  const said = await post(f, '/api/social/messages', { conv: `h.${host.id}`, body: 'Welcome!', clientId: f.id() }, host);
   assert.equal(said.code, 'sent'); assert.equal((await until(g, 'dm')).conv.kind, 'house');
-  assert.equal((await post(f, '/api/social/messages', { conv: `h.${host.id}`, body: 'let me in', clientId: cid() }, others[0])).code, 'not_a_member');
+  assert.equal((await post(f, '/api/social/messages', { conv: `h.${host.id}`, body: 'let me in', clientId: f.id() }, others[0])).code, 'not_a_member');
 
   // Not now → cooldown; then fill the house.
   await knock(others[0]);
@@ -358,23 +359,23 @@ test('groups: friends only, capped, owner manages members, leaving hands over or
   const f = await fixture(t);
   const [ada, bola, chi, dayo] = await people(f, ['Ada', 'Bola', 'Chidi', 'Dayo']);
   await befriend(f, ada, bola); await befriend(f, ada, chi);
-  const create = cid();
-  assert.equal((await post(f, '/api/social/groups', { name: 'Owambe', members: [bola.id, dayo.id], clientId: cid() }, ada)).code, 'friends_only');
+  const create = f.id();
+  assert.equal((await post(f, '/api/social/groups', { name: 'Owambe', members: [bola.id, dayo.id], clientId: f.id() }, ada)).code, 'friends_only');
   const made = await post(f, '/api/social/groups', { name: ' Owambe crew ', members: [bola.id], clientId: create }, ada);
   assert.equal(made.code, 'created'); assert.equal(made.conv.name, 'Owambe crew'); assert.equal(made.conv.members.length, 2);
   assert.equal((await post(f, '/api/social/groups', { name: 'Owambe crew', members: [bola.id], clientId: create }, ada)).duplicate, true);
   const gid = made.conv.id;
   assert.equal((await get(f, '/api/social/me', bola)).updates[0].kind, 'group-added');
-  assert.equal((await post(f, '/api/social/messages', { conv: gid, body: 'Who is bringing jollof?', clientId: cid() }, bola)).code, 'sent');
+  assert.equal((await post(f, '/api/social/messages', { conv: gid, body: 'Who is bringing jollof?', clientId: f.id() }, bola)).code, 'sent');
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'rename', name: 'Takeover' }, bola)).code, 'owner_only');
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'rename', name: 'Owambe 2026' }, ada)).conv.name, 'Owambe 2026');
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'add', id: dayo.id }, ada)).code, 'friends_only');
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'add', id: chi.id }, ada)).conv.members.length, 3);
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'remove', id: chi.id }, ada)).conv.members.length, 2);
-  assert.equal((await post(f, '/api/social/messages', { conv: gid, body: 'still here?', clientId: cid() }, chi)).code, 'not_a_member');
+  assert.equal((await post(f, '/api/social/messages', { conv: gid, body: 'still here?', clientId: f.id() }, chi)).code, 'not_a_member');
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'explode' }, ada)).status, 400);
-  assert.equal((await post(f, '/api/social/groups', { name: 'Big', members: Array.from({ length: LIMITS.groupSize }, () => randomUUID()), clientId: cid() }, ada)).code, 'group_full');
-  assert.equal((await post(f, '/api/social/groups', { name: 'x'.repeat(33), members: [], clientId: cid() }, ada)).status, 400);
+  assert.equal((await post(f, '/api/social/groups', { name: 'Big', members: Array.from({ length: LIMITS.groupSize }, () => randomUUID()), clientId: f.id() }, ada)).code, 'group_full');
+  assert.equal((await post(f, '/api/social/groups', { name: 'x'.repeat(33), members: [], clientId: f.id() }, ada)).status, 400);
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'leave' }, ada)).code, 'left');
   const left = (await get(f, '/api/social/conversations', bola)).conversations.find((conv) => conv.id === gid);
   assert.equal(left.owner, bola.id); assert.equal(left.last.body, 'Ada left.');
@@ -385,7 +386,7 @@ test('groups: friends only, capped, owner manages members, leaving hands over or
 test('transfers: friends only, aged accounts, earned money, atomic, in both ledgers, idempotent', async t => {
   const f = await fixture(t);
   const [ada, bola, chi] = await people(f, ['Ada', 'Bola', 'Chi']);
-  const send = (body, who = ada) => post(f, '/api/social/transfers', { to: bola.id, amount: 500, cityId: 'lagos', clientId: cid(), ...body }, who);
+  const send = (body, who = ada) => post(f, '/api/social/transfers', { to: bola.id, amount: 500, cityId: 'lagos', clientId: f.id(), ...body }, who);
   let refused = await send();
   assert.equal(refused.code, 'friends_only'); assert.match(refused.reason, /Add Bola as a friend first/);
   await befriend(f, ada, bola); await befriend(f, ada, chi);
@@ -400,7 +401,7 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   assert.equal((await send({ cityId: 'atlantis' })).status, 400);
 
   // Bola is offline: the debit and the stored credit commit together; he is paid on his next request.
-  const id = cid();
+  const id = f.id();
   const sent = await send({ clientId: id });
   assert.deepEqual([sent.code, sent.amount, sent.credited, sent.balance], ['sent', 500, false, 7500]);
   const db = await database(f);
@@ -427,7 +428,7 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   assert.equal((await send({ amount: 100 })).code, 'sent');
   assert.equal((await send({ amount: 100 })).code, 'daily_transfer_limit');
   // A gift cannot be passed straight on: it is not earnings.
-  assert.equal((await post(f, '/api/social/transfers', { to: ada.id, amount: 500, cityId: 'lagos', clientId: cid() }, bola)).code, 'earn_first');
+  assert.equal((await post(f, '/api/social/transfers', { to: ada.id, amount: 500, cityId: 'lagos', clientId: f.id() }, bola)).code, 'earn_first');
   // Money is conserved: 3 lives × ₦5,000 + ₦3,000 earned.
   bolaLife = (await get(f, '/api/life?city=lagos', bola)).state;
   const total = (await get(f, '/api/life?city=lagos', ada)).state.cash + bolaLife.cash + (await get(f, '/api/life?city=lagos', chi)).state.cash;
@@ -440,13 +441,13 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
 test('player interactions need both players in the same venue room; Bae opens at closeness 40', async t => {
   const f = await fixture(t);
   const [ada, bola] = await people(f, ['Ada', 'Bola']);
-  const act = (body = {}) => post(f, `/api/social/players/${bola.id}/interact`, { action: 'hello', cityId: 'lagos', clientId: cid(), ...body }, ada);
+  const act = (body = {}) => post(f, `/api/social/players/${bola.id}/interact`, { action: 'hello', cityId: 'lagos', clientId: f.id(), ...body }, ada);
   assert.equal((await act()).code, 'not_joined');
   const a = await f.joinRoom(ada);
   const away = await act();
   assert.equal(away.code, 'not_here'); assert.match(away.reason, /Bola is not at Freedom Park with you/);
   const b = await f.joinRoom(bola);
-  const id = cid();
+  const id = f.id();
   const hello = await act({ clientId: id });
   assert.equal(hello.code, 'interacted'); assert.equal(hello.closeness, 2);
   assert.deepEqual((await until(b, 'people-interaction')).from, { id: ada.id, name: 'Ada' });
@@ -467,7 +468,7 @@ test('nothing sent to another player contains a secret, and hostile ids cannot r
   const [ada, bola] = await people(f, ['Ada', 'Bola']);
   await befriend(f, ada, bola);
   const b = await f.socket(bola);
-  await post(f, '/api/social/messages', { to: bola.id, body: '<img src=x onerror=alert(1)>', clientId: cid() }, ada);
+  await post(f, '/api/social/messages', { to: bola.id, body: '<img src=x onerror=alert(1)>', clientId: f.id() }, ada);
   const pushed = await until(b, 'dm');
   assert.equal(pushed.message.body, '<img src=x onerror=alert(1)>', 'stored as text; the client escapes on render');
   const seen = JSON.stringify([pushed, await get(f, '/api/social/me', bola), await get(f, `/api/social/players/${ada.id}`, bola), await get(f, '/api/social/people?city=lagos', bola)]);
@@ -487,7 +488,7 @@ test('Bae: asked once closeness reaches 40, accepted once, both lives agree, eit
   await befriend(f, ada, bola); await befriend(f, chi, bola);
   await f.joinRoom(ada); await f.joinRoom(bola);
   for (let day = 0; day < 4; day++) {
-    for (let i = 0; i < 4; i++) assert.equal((await post(f, `/api/social/players/${bola.id}/interact`, { action: 'gist', cityId: 'lagos', clientId: cid() }, ada)).code, 'interacted');
+    for (let i = 0; i < 4; i++) assert.equal((await post(f, `/api/social/players/${bola.id}/interact`, { action: 'gist', cityId: 'lagos', clientId: f.id() }, ada)).code, 'interacted');
     f.advance(24 * HOUR);
   }
   assert.equal((await post(f, '/api/social/bae/ask', { id: chi.id, cityId: 'lagos' }, ada)).code, 'friends_only');
@@ -510,7 +511,7 @@ test('a gift nobody collects goes back to the sender after a week; nothing is lo
   await befriend(f, ada, bola);
   await earn(f, ada);
   f.advance(24 * HOUR);
-  assert.equal((await post(f, '/api/social/transfers', { to: bola.id, amount: 700, cityId: 'lagos', clientId: cid() }, ada)).credited, false);
+  assert.equal((await post(f, '/api/social/transfers', { to: bola.id, amount: 700, cityId: 'lagos', clientId: f.id() }, ada)).credited, false);
   assert.equal((await get(f, '/api/life?city=lagos', ada)).state.cash, 7300);
   f.advance(LIMITS.escrowMs + HOUR);
   await get(f, '/api/social/me', ada); await get(f, '/api/social/me', ada);

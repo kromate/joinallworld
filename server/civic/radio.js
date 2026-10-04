@@ -7,9 +7,6 @@ import { RADIO } from '../../src/game/content/civic.js';
 import { cleanLine } from './text.js';
 
 export const isClub = (venueId) => RADIO.venues.includes(venueId);
-const REQUEST_ID = /^[A-Za-z0-9-]{8,64}$/;
-export const validRequestId = (value) => (typeof value === 'string' && REQUEST_ID.test(value) ? value : null);
-
 /** Validate a song. Returns { ok: true, song: { title, artist } } or { ok: false, code, reason }. */
 export function validateSong(input) {
   const title = cleanLine(input?.title, { min: 1, max: RADIO.titleMax, what: 'Song title' });
@@ -21,11 +18,6 @@ export function validateSong(input) {
 
 const pending = (city, venueId, now) => (Array.isArray(city.radio.queues[venueId]) ? city.radio.queues[venueId] : []).filter((entry) => entry.endsAt > now);
 const dailyCount = (city, playerId, day) => (city.radio.daily[playerId]?.day === day ? city.radio.daily[playerId].n : 0);
-
-/** A shout-out this player already bought with the same request id (a retried request), if any. */
-export function findRequest(city, venueId, now, playerId, requestId) {
-  return requestId ? pending(city, venueId, now).find((entry) => entry.by.id === playerId && entry.requestId === requestId) ?? null : null;
-}
 
 /** Why the player cannot queue a shout-out in this venue now, or null. Location and wallet are checked by the rules engine. */
 export function shoutBlock(city, now, playerId, venueId) {

@@ -11,9 +11,13 @@
  *   - Not tied to the page's origin (a header a browser never sends by itself cannot be forged
  *     cross-site), so curl works. No CORS headers are sent, so a web page on another origin
  *     cannot read a response even with the token.
- *   - Rate limited per address: 60 authenticated requests a minute, and 10 requests without the
- *     right token per 10 minutes, after which tokenless requests from that address get 429 until
- *     the window passes. The two are counted separately.
+ *   - Rate limited. WITH the right token: 60 requests a minute per address, and nothing else — such
+ *     a request skips the host's general per-address limit, so other clients behind the same
+ *     address (a proxy without TRUST_PROXY) cannot use up the operator's budget, and it never
+ *     touches the failed-attempt counters. WITHOUT the right token: the general per-address limit,
+ *     then 10 per address and 100 in total per 10 minutes, after which such requests get 429 until
+ *     the window passes. What protects the token is its length (24+ characters); the counters only
+ *     keep guessing slow and quiet. Anyone holding the token is the operator: there is no second factor.
  *   - A device session gives no access here, and nothing here reads or returns a session secret.
  *
  * READ (GET)
@@ -43,6 +47,8 @@ import { liveShoutouts, removeShoutout } from '../civic/radio.js';
 import { removeAnnouncement } from '../civic/elections.js';
 
 const CONTROL = /[\u0000-\u001f\u007f]/;
+/** Requests without the right token: per address and in total, per 10 minutes. Requests with it: per address, per minute. */
+export const FAILED_PER_ADDRESS = 10, FAILED_TOTAL = 100, FAILED_WINDOW_MS = 600000, OPERATOR_PER_MINUTE = 60;
 
 export default function moderationRoutes(ctx) {
   const moderation = moderationService(ctx);
@@ -56,10 +62,12 @@ export default function moderationRoutes(ctx) {
     if (!request.moderator()) {
       // Requests without the token are counted on their own, so neither guessing nor a hostile page
       // sending tokenless requests from the operator's browser can use up the operator's budget.
-      if (!ctx.allow(`mod-fail:${request.ip}`, 10, 600000)) throw ctx.fail(429, 'rate_limited');
+      // Per address, and across all addresses together, so guessing from many addresses is bounded too.
+      // A request that DOES carry the token never reaches either counter.
+      if (!ctx.allow(`mod-fail:${request.ip}`, FAILED_PER_ADDRESS, FAILED_WINDOW_MS) || !ctx.allow('mod-fail:all', FAILED_TOTAL, FAILED_WINDOW_MS)) throw ctx.fail(429, 'rate_limited');
       throw ctx.fail(401, 'moderator_token_required');
     }
-    if (!ctx.allow(`mod:${request.ip}`, 60)) throw ctx.fail(429, 'rate_limited');
+    if (!ctx.allow(`mod:${request.ip}`, OPERATOR_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
     const body = request.method === 'POST' ? await request.json() : {};
     if (!write) return { body: await ctx.store.read((db) => handler(db, request, body)), headers: { 'Cache-Control': 'no-store' } };
     // The in-memory copies (mutes, blocks) follow the commit itself, not the write that follows it.

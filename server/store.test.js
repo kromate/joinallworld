@@ -1,29 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm, writeFile, rename } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createStore } from './store.js';
+import { flakyDisk } from './test-fixture.js';
 
-/**
- * File calls a test can break: `disk.fail = 'ENOSPC'` makes every write fail from then on,
- * `disk.hold()` makes the next write wait until the returned function is called.
- */
-function flakyDisk() {
-  const disk = { fail: null, gate: null, writes: 0, log: [] };
-  disk.hold = () => { let open; const gate = disk.gate = new Promise((done) => { open = done; }); return () => { if (disk.gate === gate) disk.gate = null; open(); }; };
-  disk.io = {
-    async writeFile(...args) {
-      disk.writes += 1;
-      const gate = disk.gate;
-      if (gate) await gate;
-      if (disk.fail) throw Object.assign(new Error(`${disk.fail}: injected write failure`), { code: disk.fail });
-      return writeFile(...args);
-    },
-    rename,
-  };
-  return disk;
-}
 async function temp(t, options) {
   const dir = await mkdtemp(join(tmpdir(), 'joinallworld-store-'));
   const store = await createStore(dir, options);

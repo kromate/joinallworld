@@ -24,8 +24,10 @@ const spots = computed(() => activities.value.spots.filter((spot) => !privateHom
 const spot = computed(() => spots.value.find((item) => item.id === state.value.spot))
 // Home shows the player's own house.
 const house = computed(() => (privateHome.value ? view.value.property?.house : null))
-const title = computed(() => house.value?.label || venue.value.label)
-const district = computed(() => house.value?.district || venue.value.district)
+// A life living in its own house is told so, with the local government it chose (the same rule as src/ui/shell.js).
+const own = computed(() => (privateHome.value && state.value.estate?.living === 'own' && view.value.estate?.lgaConfirmed && view.value.estate.tier && view.value.estate.lga ? view.value.estate : null))
+const title = computed(() => own.value?.tier.label || house.value?.label || venue.value.label)
+const district = computed(() => own.value?.lga?.name || house.value?.district || venue.value.district)
 const line = computed(() => {
   if (!view.value.connected) return linkWording(view.value)?.menu ?? 'Not connected · read-only'
   const ambient = view.value.travel?.destinations?.find((item) => item.id === state.value.location)?.ambient

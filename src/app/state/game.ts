@@ -91,7 +91,10 @@ export function createGame(options: GameOptions = {}): Game {
     onChange(next, previous) { publish(); announce(next); emit('accepted', next, previous) },
     onSessionExpired() { publish(); emit('expired') },
     onNeedName(problem) { publish(); emit('needName', problem ?? null) },
-    onSession(session, created) { publish(); emit('session', session, created) },
+    // The session is known a moment before its life is (GET /api/life follows): 'connected' is published with that life,
+    // not here, so no panel is drawn as connected over the placeholder state (the goal chip would offer character creation
+    // to a life that has long moved in).
+    onSession(session, created) { publish(false); emit('session', session, created) },
   })
 
   const state = shallowRef<LifeState>(client.state)
@@ -103,13 +106,13 @@ export function createGame(options: GameOptions = {}): Game {
   const connected = computed(() => online.value)
 
   /** Copy what the client model holds into the refs. Cheap: each ref only notifies when its value changed. */
-  function publish(): void {
+  function publish(withOnline = true): void {
     state.value = client.state
     link.value = client.link
     storage.value = client.storage
     session.value = client.session
     cityId.value = client.cityId
-    online.value = client.online
+    if (withOnline) online.value = client.online
   }
 
   /** What the server last said becomes a toast when it changes; it never sits on the scene. */

@@ -63,7 +63,7 @@ export async function loadVenueWorld(): Promise<(container: HTMLElement, options
   return module.createVenueWorld as unknown as (container: HTMLElement, options?: VenueWorldOptions) => VenueWorld
 }
 export async function loadMaps(): Promise<{ createCityView: (container: HTMLElement, options?: CityViewOptions) => CityView; createWorldMap: (container: HTMLElement, options?: WorldMapOptions) => WorldMap }> {
-  const [city, world] = await Promise.all([import('../../map3d/index.js'), import('../../world-map.js')])
+  const [city, world] = await Promise.all([import('../../map3d/index.ts'), import('../../world-map.ts')])
   return {
     createCityView: city.createCityView as unknown as (container: HTMLElement, options?: CityViewOptions) => CityView,
     createWorldMap: world.createWorldMap as unknown as (container: HTMLElement, options?: WorldMapOptions) => WorldMap,

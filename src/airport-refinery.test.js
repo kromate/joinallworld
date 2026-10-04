@@ -15,12 +15,12 @@ import { createKit } from './scene/kit.js';
 import { buildVenueScene, WALK, SPOT_REACH } from './scene/venue-scenes.js';
 import { createWalker } from './scene/movement.js';
 import { sceneVenue } from './venue-world.js';
-import pack from './map3d/cities/lagos.js';
-import { buildNetwork } from './map3d/roads.js';
-import { buildCity } from './map3d/city-build.js';
-import { flatModel, flatSvg } from './map3d/flat.js';
-import { lgaAt } from './map3d/lga.js';
-import { LANDMARK_KINDS } from './map3d/landmarks.js';
+import pack from './map3d/cities/lagos.ts';
+import { buildNetwork } from './map3d/roads.ts';
+import { buildCity } from './map3d/city-build.ts';
+import { flatModel, flatSvg } from './map3d/flat.ts';
+import { lgaAt } from './map3d/lga.ts';
+import { LANDMARK_KINDS } from './map3d/landmarks.ts';
 import { goBlock, chosenMode, statusClass } from './ui/panels/world-ui.js';
 
 const IDS = ['airport', 'refinery'];

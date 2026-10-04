@@ -27,8 +27,8 @@
 import './world.css';
 import { mark, esc, money } from '../dom.js';
 import { linkWords } from '../link.js';
-import { loadCityPack, hasCityPack } from '../../map3d/regions.js';
-import { resolveLga } from '../../map3d/lga.js';
+import { loadCityPack, hasCityPack } from '../../map3d/regions.ts';
+import { resolveLga } from '../../map3d/lga.ts';
 
 /** Analytics, decoupled: whoever listens to 'jaw:track' records it. Never a name, never a coordinate. */
 export function track(name, props = {}) {

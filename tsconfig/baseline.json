@@ -1928,10 +1928,18 @@
   "test": {
    "deploy/cloudflare.test.mjs": {
     "TS18046": 1,
+    "TS18047": 13,
+    "TS18048": 2,
     "TS2307": 1,
-    "TS7005": 5,
-    "TS7006": 28,
-    "TS7034": 4
+    "TS2339": 7,
+    "TS2345": 2,
+    "TS2353": 2,
+    "TS2531": 1,
+    "TS2532": 1,
+    "TS7005": 6,
+    "TS7006": 90,
+    "TS7034": 5,
+    "TS7053": 1
    },
    "deploy/legacy-bridge.test.mjs": {
     "TS2345": 1,
@@ -2037,6 +2045,13 @@
     "TS7006": 43,
     "TS7031": 5,
     "TS7034": 8
+   },
+   "server/invites.test.js": {
+    "TS2339": 1,
+    "TS2345": 2,
+    "TS2531": 2,
+    "TS2532": 1,
+    "TS7006": 13
    },
    "server/moderation/text.test.js": {
     "TS18046": 3,

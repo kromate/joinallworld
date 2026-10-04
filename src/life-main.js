@@ -215,7 +215,8 @@ function layoutScene() {
   const rows = phone ? Math.max(0, ...['.life-quick', '.life-alerts', '.life-goal'].map((selector) => { const row = box(selector); return row && row.height ? row.bottom : 0; })) : 0;
   venue.setInsets({ top: ((phone ? quick?.bottom : bar?.bottom) || bar?.bottom || page.top) - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 });
 }
-function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.resize(); } else venue?.resize(); }
+// A resize (or a phone being turned) moves the HUD: measure it again before the scene is re-framed, so the controls and the camera use the new free area at once.
+function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.resize(); } else { layoutScene(); venue?.resize(); } }
 
 /**
  * The cities this player has a life in, so the country map can offer a "coming soon" city only to

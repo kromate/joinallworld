@@ -58,6 +58,7 @@ const CSS = `
 .scene-hint button{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font:700 16px/1 system-ui,sans-serif;cursor:pointer;padding:0}
 body:has(.life-ui.is-clean) .scene-pad,body:has(.life-ui.is-clean) .scene-hint{display:none}
 body.map-open .scene-controls{display:none}
+@media (max-height:520px){.scene-controls.is-narrow .scene-hint,.scene-controls.is-narrow.is-touch .scene-hint{top:var(--sc-top);bottom:auto;left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 240px)}}
 @media (prefers-reduced-motion:reduce){.scene-pad button:active{transform:none}.scene-reward span{animation:scene-reward-still 1.6s steps(1,end) forwards;animation-delay:0s!important}}
 `;
 const ICON_HOME = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/></svg>';

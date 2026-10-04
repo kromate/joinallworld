@@ -32,8 +32,10 @@ import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, HOUSE_TIERS, unpackStyle } from 
 import { estateLayout } from './estates.js';
 import { lgaAt } from './lga.js';
 
-export const BINS = 5;
-export const DETAIL_BUDGET = 25000;
+export const BINS = 4;
+// With the city itself (about 45,000 triangles), the far blocks and the pads, this keeps the whole frame under 60,000:
+// one full estate of 196 houses, or several that are filling up.
+export const DETAIL_BUDGET = 10000;
 export const PAD_DISTANCE = 150;
 const MAX_DETAILED = 9;
 const SHAPES = HOUSE_STYLE.shape.map((shape) => shape.id);
@@ -52,14 +54,14 @@ export function createHouses(kit, pack) {
   const unit = (draw) => { const batch = createBatch(THREE); draw(batch); return batch.build({ solid: lit, glow: lit, glass: lit }).meshes[0].geometry; };
   // One unit house: 1 wide, 1 deep, walls 1 high; the roof sits on top. Everything is white and takes its colour per instance.
   const geometries = {
-    walls: unit((u) => u.box(0, 0.5, 0, 1, 1, 1, '#ffffff')),
+    walls: leanGeometry(THREE, 'box'),
     door: unit((u) => u.quad(0, 0.3, 0.506, 0.24, 0.6, '#ffffff')),
     glass: unit((u) => { u.quad(-0.3, 0.58, 0.506, 0.2, 0.26, '#ffffff'); u.quad(0.3, 0.58, 0.506, 0.2, 0.26, '#ffffff'); }),
     // Roofs: a ridge (a three-sided prism lying along the house), a pyramid, a slab, two small pyramids. Twelve triangles or so each.
-    gable: unit((u) => u.cyl(0, 0.16, 0, 0.66, 1.12, '#ffffff', { seg: 3, rx: Math.PI / 2, rz: Math.PI, sz: 0.62 })),
-    hip: unit((u) => u.cone(0, 0.24, 0, 0.82, 0.48, '#ffffff', { seg: 4, ry: Math.PI / 4 })),
+    gable: leanGeometry(THREE, 'gable'),
+    hip: leanGeometry(THREE, 'pyramid'),
     flat: unit((u) => u.box(0, 0.06, 0, 1.1, 0.12, 1.1, '#ffffff')),
-    twin: unit((u) => { for (const z of [-0.26, 0.26]) u.cone(0, 0.2, z, 0.46, 0.4, '#ffffff', { seg: 4, ry: Math.PI / 4, sx: 1.6 }); }),
+    twin: (() => { const a = leanGeometry(THREE, 'gable'); a.scale(0.5, 0.9, 1); const left = a.clone().translate(-0.28, 0, 0), right = a.translate(0.28, 0, 0); const merged = new THREE.BufferGeometry(); for (const name of ['position', 'normal', 'color']) merged.setAttribute(name, new THREE.BufferAttribute(Float32Array.from([...left.attributes[name].array, ...right.attributes[name].array]), 3)); const n = left.attributes.position.count; merged.setIndex([...left.index.array, ...Array.from(right.index.array, (i) => i + n)]); left.dispose(); right.dispose(); return merged; })(),
     fence: unit((u) => { for (const [x, z, ry] of [[0, 0.5, 0], [0, -0.5, Math.PI], [0.5, 0, Math.PI / 2], [-0.5, 0, -Math.PI / 2]]) u.quad(x, 0.11, z, 1, 0.22, '#ffffff', { ry }); }),
     green: unit((u) => u.cone(0, 0.42, 0, 0.3, 0.84, '#ffffff', { seg: 4 })),
     box: unit((u) => u.box(0, 0.2, 0, 0.3, 0.4, 0.3, '#ffffff')),

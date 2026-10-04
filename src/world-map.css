@@ -67,3 +67,17 @@
   .wm-detail{padding:9px}.wm-detail h3{font-size:15px}.wm-detail p{font-size:12px}
   .wm-more{display:none}
 }
+
+/* City previews and the links between cities */
+.wm-preview{margin:6px 0 8px;padding-left:18px;font-size:13px;line-height:1.45}
+.wm-routes{margin-top:10px;padding-top:10px;border-top:1px solid #0001}
+.wm-routes h4{margin:0 0 6px;font-size:13px}
+.wm-routes ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.wm-routes li{display:grid;grid-template-columns:1fr auto;gap:4px 8px;align-items:center}
+.wm-routes li span{display:grid;gap:1px}
+.wm-routes li small{font-size:11px;color:#59616b}
+.wm-routes li .wm-wait{grid-column:1/-1;margin:0}
+.wm-go.is-small{min-height:36px;padding:0 12px;font-size:12px}
+.wm-go[disabled]{opacity:.5;cursor:default}
+
+.wm-routes li b{font-size:13px;line-height:1.25}

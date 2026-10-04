@@ -171,7 +171,8 @@ export function createMap2D(container, { pack, cityId = pack.id, world = null, o
           if (cell.x + half < a.x || cell.x - half > b.x || cell.z + half < a.z || cell.z - half > b.z) continue;
           const houses = occ?.[i] ?? 0, big = layout.pitch(i) * scale >= HOUSE_PIXELS;
           if (big) { detail.push({ lga: lga.id, estate: i, cell, layout, far: Math.hypot(cell.x - centre.x, cell.z - centre.z), houses }); continue; }
-          if (!houses && i !== 0 && cell.size * scale < 5) continue;
+          // An empty estate is only drawn once it is big enough to read as a plot of ground (the growing edge), not as graph paper.
+          if (!houses && cell.size * scale < 14) continue;
           // Density: the estate as one pad, redder the fuller it is.
           const at = project(cell.x - half * 0.92, cell.z - half * 0.92), fill = houses / PLOTS_PER_ESTATE;
           paint.fillStyle = houses ? `rgb(${Math.round(239 - 58 * (0.2 + fill * 0.65))},${Math.round(227 - 138 * (0.2 + fill * 0.65))},${Math.round(198 - 138 * (0.2 + fill * 0.65))})` : '#d3dfb6';
@@ -425,7 +426,7 @@ export function createMap2D(container, { pack, cityId = pack.id, world = null, o
     arrive(done) { done(); },
     worldChanged() { updatePlates(); if (scale) apply(); },
     setFriends(ids) { friends = new Set(ids || []); if (scale) apply(); },
-    focusEstate(lga, estate) { const cell = estateLayout(pack, lga)?.cells[estate]; if (!cell || !measure()) return; scale = clamp(free().width / (cell.size * 1.25), fitScale(), MAX_SCALE); centreOn(cell.x, cell.z); userMoved = true; apply(); },
+    focusEstate(lga, estate) { const cell = estateLayout(pack, lga)?.cells[estate]; if (!cell || !measure()) return; scale = clamp(Math.min(free().width, free().height) / (cell.size * 1.15), fitScale(), MAX_SCALE); centreOn(cell.x, cell.z); userMoved = true; apply(); },
     focusPlot(plot) { if (!plot || !pack.lgas?.some((lga) => lga.id === plot.lga) || !measure()) return; const layoutOf = estateLayout(pack, plot.lga), cell = layoutOf.cells[plot.estate], at = layoutOf.plot(plot.estate, plot.plot); scale = clamp(free().width / (cell.size * 0.9), fitScale(), MAX_SCALE); centreOn(at.x, at.z); userMoved = true; apply(); },
     focusLga(id) { const lga = pack.lgas?.find((item) => item.id === id); if (!lga || !measure()) return; const xs = lga.polygon.map((point) => clamp(point[0], fit.minX, fit.maxX)), zs = lga.polygon.map((point) => clamp(point[1], fit.minZ, fit.maxZ)); scale = Math.min(free().width / (Math.max(...xs) - Math.min(...xs) + 6), free().height / (Math.max(...zs) - Math.min(...zs) + 6)); centreOn((Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...zs) + Math.max(...zs)) / 2); userMoved = true; apply(); },
     select(id) { choose(id); },

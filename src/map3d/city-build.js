@@ -153,6 +153,11 @@ export function leanGeometry(THREE, kind) {
     face([[a, 1, b], [b, 1, b], [b, 1, a], [a, 1, a]], [0, 1, 0]);
     face([[a, 0, b], [b, 0, b], [b, 1, b], [a, 1, b]], [0, 0, 1]); face([[b, 0, a], [a, 0, a], [a, 1, a], [b, 1, a]], [0, 0, -1]);
     face([[b, 0, b], [b, 0, a], [b, 1, a], [b, 1, b]], [1, 0, 0]); face([[a, 0, a], [a, 0, b], [a, 1, b], [a, 1, a]], [-1, 0, 0]);
+  } else if (kind === 'gable') {
+    // A ridge roof: two slopes and two gable ends, the ridge running front to back. It sits on a unit house (y = 0 is the eaves).
+    const r = 0.58, d = 0.56, h = 0.46, k = Math.hypot(h, r);
+    face([[-r, 0, d], [0, h, d], [0, h, -d], [-r, 0, -d]], [-h / k, r / k, 0]); face([[r, 0, -d], [0, h, -d], [0, h, d], [r, 0, d]], [h / k, r / k, 0]);
+    face([[-r, 0, d], [r, 0, d], [0, h, d]], [0, 0, 1]); face([[r, 0, -d], [-r, 0, -d], [0, h, -d]], [0, 0, -1]);
   } else {
     const r = 0.56, h = 0.6, k = Math.hypot(h, r);
     face([[-r, 0, r], [r, 0, r], [0, h, 0]], [0, r / k, h / k]); face([[r, 0, -r], [-r, 0, -r], [0, h, 0]], [0, r / k, -h / k]);

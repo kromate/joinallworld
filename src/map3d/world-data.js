@@ -46,7 +46,7 @@ export function createWorldData({ fetchJson, cityId = 'lagos', onChange = () => 
     const key = `${lga}/${number}`;
     let entry = estates.get(key);
     if (!entry) {
-      estates.set(key, entry = { houses: null, at: 0, loading: false, used: 0 });
+      estates.set(key, entry = { houses: null, at: 0, loading: false, used: ++tick });
       // The least recently used estates make room.
       if (estates.size > ESTATES_KEPT) for (const [old] of [...estates].sort((a, b) => a[1].used - b[1].used).slice(0, estates.size - ESTATES_KEPT)) if (old !== key) estates.delete(old);
     }

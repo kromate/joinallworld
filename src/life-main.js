@@ -76,7 +76,7 @@ function showCrowd() {
   const npcs = isDeparting(state) ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location);
   venue?.setCrowd(crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id, positions }));
 }
-let lastPlot = null;
+let lastPlot = null, followingCity = false;
 onPeople(showCrowd);
 // Friends' houses are named on the map (public ids only).
 const showFriends = () => cityMap?.setFriends((social.me?.friends || []).map((friend) => friend.id));
@@ -141,6 +141,9 @@ function loadMaps() {
     world = worldModule.createWorldMap($('map-scene'), {
       onOpenCity: () => showMapLayer('city'),
       onEnterCity: (cityId) => switchCity(cityId),
+      // One character travels between cities: an ordinary game action, refused with its reason while the city is not open.
+      onTravel: (to, mode) => command('estate.relocate', { to, mode }),
+      routes: () => (client.state ? viewLife(client.state, { now: client.state.t, cityId: client.cityId }).estate?.links ?? null : null),
       held: heldCities,
     });
     heldShown = heldCities().join();
@@ -268,6 +271,13 @@ function accepted(state, previous) {
   venue?.setState(state);
   showPlayer();
   showCrowd();
+  // One character: the life has arrived in another city. The server files it under that city (asked for here, so it is
+  // done before the new city's life is requested), then the game follows it there.
+  if (state?.estate?.city && state.estate.city !== client.cityId && !followingCity) {
+    followingCity = true;
+    const to = state.estate.city;
+    client.fetchJson(`/api/world/me?city=${client.cityId}`).catch(() => {}).finally(() => { followingCity = false; switchCity(to); });
+  }
   // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
   const plotKey = state?.estate?.plot ? `${state.estate.plot.lga}/${state.estate.plot.estate}/${state.estate.plot.plot}` : '';
   if (plotKey !== lastPlot) { if (plotKey && lastPlot !== null) { window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name: 'house_allocated', props: {} } })); window.dispatchEvent(new CustomEvent('jaw:world-changed')); } lastPlot = plotKey; }

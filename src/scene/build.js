@@ -174,7 +174,7 @@ export function kitResources(kit) {
   if (!entry) {
     const { THREE } = kit;
     const materials = {
-      solid: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.9, metalness: 0 }),
+      solid: kit.matte ? new THREE.MeshLambertMaterial({ vertexColors: true }) : new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.9, metalness: 0 }),
       glow: new THREE.MeshBasicMaterial({ vertexColors: true }),
       glass: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.25, metalness: 0, transparent: true, opacity: 0.62, depthWrite: false }),
     };

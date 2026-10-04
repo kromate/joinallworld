@@ -82,7 +82,7 @@ import { createOrbit, followShare } from './scene/camera-controls.js';
 import { createOccluders, resolve as resolveCollision } from './scene/camera-collision.js';
 import { sceneMaterials } from './scene/build.js';
 import { createMotionLoop } from './scene/motion-loop.js';
-import { applyRendererLook, renderTier, createSky, createGround, mixHex } from './scene/look.js';
+import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.js';
 import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.js';
 import { createSceneControls } from './scene/controls.js';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH } from './scene/venue-scenes.js';
@@ -194,7 +194,8 @@ function ghostPatch(uniforms) {
 }
 
 export function createVenueWorld(container, { location = 'park', renderer: providedRenderer, onTag, onSpot, onMove } = {}) {
-  const kit = createKit();
+  // Cheaper scenery (Lambert in place of Standard) is behind a flag, default off: see matteScenery() in scene/look.js.
+  const kit = createKit({ matte: matteScenery() });
   const { THREE } = kit;
   const scene = new THREE.Scene();
   const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true });
@@ -1016,7 +1017,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
         textures: renderer.info?.memory.textures,
         location: currentLocation, background, scenes: built.size, crowd: crowd.length,
         lighting: { hemi: lights.hemi.intensity, sun: lights.sun.intensity, sky: `#${lights.hemi.color.getHexString()}` },
-        tier: tier.name, pixelRatio: renderer.getPixelRatio?.(), shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
+        tier: tier.name, matte: kit.matte, pixelRatio: renderer.getPixelRatio?.(), shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
         tags: shownTags.map((tag) => ({ ...tag })),
       };
     },

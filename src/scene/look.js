@@ -22,6 +22,20 @@
 export const PHONE_TIER = Object.freeze({ name: 'phone', pixelRatio: 1.5, shadowMap: 1024, softShadows: false });
 export const WIDE_TIER = Object.freeze({ name: 'wide', pixelRatio: 2, shadowMap: 2048, softShadows: true });
 
+/**
+ * FOR REVIEW, DEFAULT OFF: cheaper scenery. With the flag on, the kit's per-colour materials and the
+ * merged scene material are MeshLambertMaterial instead of MeshStandardMaterial — the same matte look
+ * without the per-pixel roughness/specular work. Turn it on with ?matte in the address, or
+ * localStorage['joinallworld-matte'] = '1'; ?matte=0 turns it off again for that page.
+ */
+export function matteScenery(win = globalThis) {
+  try {
+    const query = new URLSearchParams(win.location?.search || '');
+    if (query.has('matte')) return query.get('matte') !== '0';
+    return win.localStorage?.getItem('joinallworld-matte') === '1';
+  } catch { return false; }
+}
+
 /** The render tier for this device. */
 export function renderTier(win = globalThis) {
   const coarse = win.matchMedia?.('(pointer: coarse)').matches === true;

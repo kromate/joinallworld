@@ -13,7 +13,8 @@
  */
 import * as THREE from 'three';
 
-export function createKit() {
+/** matte: build Lambert materials instead of Standard ones (the cheaper-scenery flag, src/scene/look.js matteScenery(); default off). */
+export function createKit({ matte = false } = {}) {
   const materials = new Map();
   const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
   const sphereGeometry = new THREE.SphereGeometry(1, 9, 7);
@@ -24,7 +25,8 @@ export function createKit() {
   function material(color, glow = false) {
     const key = `${color}:${glow}`;
     if (!materials.has(key)) {
-      const made = new THREE.MeshStandardMaterial({ color, roughness: 0.92, ...(glow ? { emissive: color, emissiveIntensity: 1.3 } : {}) });
+      const made = matte ? new THREE.MeshLambertMaterial({ color, ...(glow ? { emissive: color, emissiveIntensity: 1.3 } : {}) })
+        : new THREE.MeshStandardMaterial({ color, roughness: 0.92, ...(glow ? { emissive: color, emissiveIntensity: 1.3 } : {}) });
       prepare?.(made);
       materials.set(key, made);
     }
@@ -41,7 +43,7 @@ export function createKit() {
   }
   const cleanups = new Set();
   return {
-    THREE, material, mesh, boxGeometry, sphereGeometry, cylinderGeometry, crownGeometry,
+    THREE, matte, material, mesh, boxGeometry, sphereGeometry, cylinderGeometry, crownGeometry,
     /** Run `fn` when the kit is disposed. Returns a function that withdraws it. */
     onDispose(fn) { cleanups.add(fn); return () => cleanups.delete(fn); },
     /** Run `fn(material)` on every material the kit has made and on each one it makes from now on (the host's see-through patch). */

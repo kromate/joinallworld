@@ -13,10 +13,12 @@ import { fileURLToPath } from 'node:url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.js';
 import { settleCity, applyLifeAction } from './life-service.js';
-import { buildRoutes } from './routes/index.js';
+import { buildRoutes, ROUTE_MODULES } from './routes/index.js';
 import { executeCommand } from './routes/core.js';
 import { createOnce } from './routes/once.js';
 import { buildSocketHandlers } from './ws/index.js';
+import { createServerTelemetry, useTelemetry } from './telemetry/index.js';
+import telemetryRoutes from './telemetry/routes.js';
 import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canOccupyVenue } from './protocol.js';
 
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
@@ -60,7 +62,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   voteCapMode = process.env.VOTE_CAP_MODE || 'flag',
   log = (line) => console.error(line),
   receiptLimits, // { perPlayer, global, lightPerPlayer, lightGlobal } for ctx.once (server/routes/once.js); the defaults are the documented numbers
-  buildId = process.env.BUILD_ID || packageVersion() } = {}) {
+  buildId = process.env.BUILD_ID || packageVersion(),
+  // Error monitoring and analytics (server/telemetry): off, and doing nothing at all, unless its environment keys are set.
+  telemetry = createServerTelemetry({ env: process.env, buildId, now, log }) } = {}) {
   const store = providedStore || await createStore(dataDir, { ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');
   if (!Number.isFinite(heartbeatMs) || heartbeatMs < 1000 || heartbeatMs > 60000) throw new Error('Invalid heartbeat interval');
@@ -178,6 +182,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // Nothing a request does may escape as an unhandled rejection: the last line of defence closes the connection.
   const server = http.createServer((req, res) => { handle(req, res).catch(() => { try { res.destroy(); } catch {} }); });
   async function handle(req, res) {
+    let at = null; // the matched route and its request, for telemetry (a template and codes, never the URL or the body)
     try {
       const url = new URL(req.url, 'http://localhost');
       if (url.pathname.startsWith('/api/')) {
@@ -195,8 +200,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           method: req.method, path: url.pathname, params: route.params, query: url.searchParams, ip,
           /** True only for a request carrying the operator's bearer token (never a cookie or a query value). */
           moderator: () => isModerator(req),
-          json: () => jsonBody(req),
-          session: (db, { renew = false } = {}) => sessionFor(req, db, renew),
+          json: () => jsonBody(req).then(body => (request.body = body)),
+          session: (db, { renew = false } = {}) => { const session = sessionFor(req, db, renew); if (session) request.publicId = session.publicId; return session; },
           requireSession(db, options) { const session = this.session(db, options); if (!session) throw fail(401, 'device_session_required'); return session; },
           // Foundation-only: the cookie secret and the raw request, used by core routes for cookies and room checks.
           secret: cookieId(req), raw: req,
@@ -206,6 +211,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         // every room that player's sockets are in is re-checked against the STORED lives. The player is
         // identified by their own sockets, so a request from a device with no socket costs nothing.
         let returned;
+        at = { key: route.key, request, began: performance.now() };
         try { returned = await route.handler(request); }
         finally { for (const publicId of new Set([...wss.clients].filter(ws => ws.secret === request.secret && ws.room).map(ws => ws.session.id))) await ctx.core.revalidate(publicId); }
         const result = returned && typeof returned === 'object' ? returned : {};
@@ -215,6 +221,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body)
           ? { ...result.body, serverTime: now(), ...(storageFailing() ? { storage: 'failing' } : {}) } : result.body ?? {};
         const sent = reply(res, status, payload, { ...(result.renew === true ? renewedHeaders(req) : {}), ...routeHeaders(result.headers) });
+        telemetry.http({ method: req.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.type, code: result.body?.code } });
         // `after` runs once the answer is out. Whatever it does, the request is already answered: a
         // failure in it is logged and goes no further.
         if (sent && typeof result.after === 'function') { try { await result.after(); } catch (error) { log(`After-response step of ${req.method} ${route.key} failed: ${firstLine(error)}`); } }
@@ -224,6 +231,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const root = resolve(distDir);
       let path = resolve(root, `.${decodeURIComponent(url.pathname)}`);
       if (path !== root && !path.startsWith(root + sep)) throw fail(403, 'invalid_path');
+      if (extname(path) === '.map') throw fail(404, 'not_found'); // source maps are uploaded to Sentry, never served
       try { if (!(await stat(path)).isFile()) path = resolve(root, 'index.html'); } catch { path = resolve(root, 'index.html'); }
       const bytes = await readFile(path);
       if (res.headersSent || res.writableEnded) return;
@@ -234,6 +242,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const error = thrown && typeof thrown === 'object' ? thrown : { message: thrown };
       const known = Number.isInteger(error.status) && typeof error.code === 'string';
       if (!known && error.code !== 'ENOENT') log(`Request failed: ${firstLine(error)}`);
+      telemetry.httpFailed(thrown, { method: req.method, route: at?.key, status: known ? error.status : error.code === 'ENOENT' ? 404 : 500, code: known ? error.code : undefined, action: { type: at?.request.body?.type }, publicId: at?.request.publicId });
       reply(res, known ? error.status : error.code === 'ENOENT' ? 404 : 500, { error: known ? error.code : error.code === 'ENOENT' ? 'build_required' : 'internal_error',
         ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}) });
     }
@@ -243,7 +252,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const wss = new WebSocketServer({ noServer: true, maxPayload: 16384 });
   const PONG_GRACE_MS = Math.min(5000, Math.floor(heartbeatMs / 2));
   const unresponsive = ws => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= PONG_GRACE_MS;
-  const send = (ws, message) => { if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(message)); };
+  const send = (ws, message) => { if (ws.readyState === WebSocket.OPEN) { ws.send(JSON.stringify(message)); telemetry.socketOut(ws, message); } };
   /**
    * The server context handed to every route and ws module. Documented in routes/index.js.
    * `core` holds foundation internals (cookies, sockets, room checks); feature modules use the rest.
@@ -251,7 +260,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // In-process events between server modules (never sent to a client by the host itself).
   const listeners = new Map();
   const ctx = {
-    store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS,
+    store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS, telemetry,
     randomId: () => randomUUID(),
     on(event, fn) { if (!listeners.has(event)) listeners.set(event, []); listeners.get(event).push(fn); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, error.message); } } },
@@ -334,7 +343,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // One game action for the caller, exactly once, with everything it changed saved together (routes/core.js).
   ctx.command = (request, body, options) => executeCommand(ctx, request, body, options);
   const sockets = buildSocketHandlers(ctx, wsModules);
-  const routes = buildRoutes(ctx, routeModules);
+  const routes = buildRoutes(ctx, routeModules || [...ROUTE_MODULES, telemetryRoutes]);
+  telemetry.attach(ctx);
   server.on('upgrade', async (req, socket, head) => {
     try {
       if (req.url !== '/socket' || !req.headers.origin || !sameOrigin(req) || !allow(`upgrade:${addressOf(req)}`, 60)) throw Error('Rejected');
@@ -384,7 +394,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     ws.alive = true; ws.pingedAt = 0; ws.seenAt = now();
     ws.on('pong', () => { ws.alive = true; ws.seenAt = Math.max(now(), ws.pingedAt); });
     ws.on('error', () => {});
-    ws.on('close', () => sockets.close(ws));
+    ws.on('close', () => { telemetry.socketClosed(ws); sockets.close(ws); });
     let messages = Promise.resolve();
     ws.on('message', (raw, binary) => {
       if (binary || !allow(`ws:${ws.session.id}`, 600)) {
@@ -409,6 +419,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (!entry) throw Error(ws.room ? 'invalid_message' : 'join_required');
         if (entry.room && !ws.room) throw Error('join_required');
         await entry.handle(ws, message);
+        telemetry.socketIn(ws, message);
       } catch (thrown) {
         // Only a machine code goes to the client. Anything else (a TypeError's text, a file path) is logged here instead.
         // A coded refusal may carry the sentence the server wrote for the player (`reason`); it is repeated as `message`,
@@ -416,6 +427,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         const text = firstLine(thrown);
         const coded = /^[a-z][a-z0-9_]{1,63}$/.test(text);
         if (!coded) log(`Socket message failed: ${text}`);
+        telemetry.socketFailed(ws, message?.type, text, coded, thrown);
         const error = coded ? thrown : { message: 'internal_error' };
         send(ws, { type: 'error', code: error.message, error: error.message, ...(typeof error.reason === 'string' ? { reason: error.reason, message: error.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));
@@ -442,11 +454,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   server.wss = wss;
   server.beat = beat; // tests drive the heartbeat directly instead of waiting for the timer
   server.store = store;
+  server.telemetry = telemetry;
   server.on('close', () => { clearInterval(heartbeat); for (const ws of wss.clients) ws.terminate(); wss.close(); });
   // close(callback) reports back only once the store has written everything, so "the server has
   // stopped" always means "the data file is complete" — for a restart, a test or a shutdown script.
   const closeHttp = server.close.bind(server);
-  server.close = (callback) => { closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).finally(() => callback?.(error)); }); return server; };
+  server.close = (callback) => { closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).then(() => telemetry.close()).finally(() => callback?.(error)); }); return server; };
   await Promise.all(ctx.startup.splice(0));
   return server;
 }
@@ -454,7 +467,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.env.STORE_MODE) console.error('STORE_MODE is no longer used: there is one store. See "Storage and limits" in the README.');
   const server = await createServer();
-  // Write anything not yet on disk before the process leaves.
-  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { server.store.close?.().catch(() => {}).finally(() => process.exit(0)); });
+  const telemetry = useTelemetry(server.telemetry);
+  // Write anything not yet on disk — and send any telemetry still queued — before the process leaves.
+  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { server.store.close?.().catch(() => {}).then(() => telemetry.close()).finally(() => process.exit(0)); });
+  // Only with error monitoring on: a crash is reported before the process exits as it would have anyway.
+  if (telemetry.enabled) for (const event of ['uncaughtException', 'unhandledRejection']) process.once(event, (error) => { console.error(error); telemetry.captureError(error, { source: event, level: 'fatal' }); telemetry.close().finally(() => process.exit(1)); });
+  telemetry.started();
   server.listen(Number(process.env.PORT) || 3001, '0.0.0.0', () => console.log(`Allworld server listening on ${server.address().port}`));
 }

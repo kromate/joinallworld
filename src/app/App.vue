@@ -25,6 +25,7 @@ import ActionProgress from './features/venue/ActionProgress.vue'
 import BottomNav from './features/nav/BottomNav.vue'
 import PanelHost from './features/phone/PanelHost.vue'
 import SheetHost from './features/phone/SheetHost.vue'
+import { createPageLifecycle } from './state/pageLifecycle.ts'
 import CommunityHost from './features/community/CommunityHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
@@ -108,13 +109,16 @@ const onReconnect = (): void => menu('reconnect')
 const onSwitchCity = (event: Event): void => { const city = (event as CustomEvent<{ city?: string }>).detail?.city; if (city) void switchCity(city) }
 // The device got its network back: try the connection once, by itself (an event, not a timer).
 const onOnline = (): void => { if (!game.connected.value && (game.link.value === 'offline' || game.link.value === 'unreachable')) void connect() }
-const onPageHide = (): void => { community.destroy(); game.stop() }
+const lifecycle = createPageLifecycle(game, community)
+const onPageHide = (): void => lifecycle.onPageHide()
+// Restored from the back/forward cache: the socket was closed on pagehide, so bring the community back (voice stays off).
+const onPageShow = (event: Event): void => lifecycle.onPageShow(event as PageTransitionEvent)
 const onVisibility = (): void => { if (document.hidden) game.stop(); else void game.refresh() }
 
 const listeners: [EventTarget, string, EventListener][] = [
   [window, 'keydown', onKey as EventListener], [window, 'keyup', onKeyUp as EventListener], [window, 'jaw:scene-spot', onSceneSpot],
   [window, 'jaw:start-life', onStartLife], [window, 'jaw:quick-start', onQuickStart], [window, 'jaw:reconnect', onReconnect], [window, 'jaw:switch-city', onSwitchCity],
-  [window, 'online', onOnline], [window, 'pagehide', onPageHide], [document, 'visibilitychange', onVisibility],
+  [window, 'online', onOnline], [window, 'pagehide', onPageHide], [window, 'pageshow', onPageShow], [document, 'visibilitychange', onVisibility],
 ]
 onMounted(() => {
   for (const [target, type, listener] of listeners) target.addEventListener(type, listener)

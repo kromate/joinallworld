@@ -364,6 +364,7 @@ export default {
         terms: Object.values(DEPOSIT_TERMS).map((term) => ({ id: term.id, label: term.label, days: term.days, percent: term.bps / 100 })),
         amounts: [1000, 5000, 10000, 25000, 50000].map((amount) => ({
           amount,
+          payouts: Object.fromEntries(Object.values(DEPOSIT_TERMS).map((term) => [term.id, amount + interestOf({ amount, term: term.id })])),
           blocked: depositBlock ?? (amount > room ? `Only ${naira(room)} more can be locked.` : !canAfford(state, amount) ? `You have ${naira(state.cash)}.` : null),
         })),
       },

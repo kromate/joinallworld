@@ -64,7 +64,7 @@
 import { emit, modify } from '../registry.js';
 import { cap, clamp, fail, isRecord, naira, ok, safeCount } from '../util.js';
 import { lagosTime, WEEKDAYS } from '../clock.js';
-import { addMoodlet, arrive, skillLevel } from '../api.js';
+import { addMoodlet, arrive, skillLevel, spotsOf } from '../api.js';
 import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIFT } from '../content/jobs.js';
 import { VENUES, venueLabel } from '../content/venues.js';
 
@@ -77,6 +77,8 @@ const jobOf = (id) => (typeof id === 'string' && Object.hasOwn(JOBS, id) ? JOBS[
 /** A job can only be held while its workplace venue is part of this build. */
 export const workplaceOpen = (job) => Object.hasOwn(VENUES, job.workplace.venue);
 const placeName = (job, ctx) => (workplaceOpen(job) ? venueLabel(job.workplace.venue, ctx?.cityId) : job.workplaceName);
+/** The label of the workplace spot as the venue panel shows it (an existing venue spot keeps its own name). */
+const spotName = (job) => spotsOf(job.workplace.venue).find((spot) => spot.id === job.workplace.spot)?.label || 'Work';
 const nowOf = (state, ctx) => (Number.isFinite(ctx?.now) ? ctx.now : state.t);
 const rung = (job, level) => job.ladder[clamp(level, 1, job.ladder.length) - 1];
 const freshCareer = () => ({ level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, oriented: false });
@@ -179,7 +181,7 @@ function apply(state, payload, ctx) {
   if (!workplaceOpen(job)) return fail(state, 'workplace_unavailable', `${job.label} is based at ${job.workplaceName}, which is not open in this build yet. Choose a track whose workplace is on the map.`);
   const old = jobOf(state.job);
   if (old && payload.confirm !== true) {
-    return fail(state, 'confirm_switch', `Switching to ${job.label} ends your ${old.label} job: you start as ${job.track ? job.ladder[0].role : job.label} at ${START_PERFORMANCE}% performance and lose your ${old.label} level and performance. Confirm the switch to continue.`);
+    return fail(state, 'confirm_switch', `Switching to ${job.label} ends your ${old.label} job: you start ${job.track ? `as ${job.ladder[0].role} at ${START_PERFORMANCE}% performance` : 'in the starter job, which has no ladder,'} and lose your ${old.label} level and performance. Confirm the switch to continue.`);
   }
   if (old) emit(state, 'job.quit', { job: old.id }, ctx);
   state.job = job.id;
@@ -228,7 +230,7 @@ function nextStep(state, ctx, job, status) {
   if (!job) return { kind: 'apply', text: 'Pick a track in Phone → Jobs and tap Apply. Applying is free and you can work your first shift the same day.' };
   const shift = job.shift, place = placeName(job, ctx), pay = payOf(state, job);
   if (status.code === 'working') return { kind: 'wait', text: `Shift in progress: ${naira(pay)} arrives when it finishes. Cancelling earns nothing.` };
-  if (state.activeAction?.kind === 'commute') return { kind: 'wait', text: `On your way to ${place}. Open the Work spot when you arrive.` };
+  if (state.activeAction?.kind === 'commute') return { kind: 'wait', text: `On your way to ${place}. Open the ${spotName(job)} spot when you arrive.` };
   if (!status.canWork) return { kind: 'wait', text: status.text };
   const short = shortNeeds(state, job);
   if (short.length) {
@@ -236,8 +238,8 @@ function nextStep(state, ctx, job, status) {
   }
   const facts = `It takes ${shift.duration} seconds and pays ${naira(pay)}.`;
   if (state.activeAction) return { kind: 'wait', text: `Finish what you are doing, then go to ${place} for today’s shift. ${facts}` };
-  if (state.location !== job.workplace.venue) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `Go to ${place} and open the Work spot to start today’s shift. ${facts}` };
-  if (state.spot !== job.workplace.spot) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `You are at ${place}. Open the Work spot to start today’s shift. ${facts}` };
+  if (state.location !== job.workplace.venue) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `Go to ${place} and open the ${spotName(job)} spot to start today’s shift. ${facts}` };
+  if (state.spot !== job.workplace.spot) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `You are at ${place}. Open the ${spotName(job)} spot to start today’s shift. ${facts}` };
   return { kind: 'start', text: `You are at work. Close this and tap “${shift.label}” to start. ${facts}` };
 }
 
@@ -279,7 +281,7 @@ export default {
       complete(state, active, ctx) {
         if (!arrive(state, active.id, ctx)) return;
         const job = jobOf(state.job);
-        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}. Open the Work spot to start ${job ? `your ${job.label} shift` : 'your shift'}.`;
+        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}. Open the ${job ? spotName(job) : 'Work'} spot to start ${job ? `your ${job.label} shift` : 'your shift'}.`;
       },
     },
   },
@@ -366,7 +368,7 @@ export default {
       jobs: Object.values(JOBS).map((item) => {
         const open = workplaceOpen(item), current = state.job === item.id;
         const blocked = current ? null
-          : !open ? `${item.workplaceName} is not open in this build yet.`
+          : !open ? `${cap(item.workplaceName)} is not open in this build yet.`
           : state.activeAction ? 'Finish or cancel your current action first.'
           : null;
         return {

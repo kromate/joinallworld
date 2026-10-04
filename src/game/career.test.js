@@ -146,7 +146,7 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
   let view = player.view().career;
   assert.deepEqual([view.level, view.role, view.pay, view.performance, view.auto], [1, 'Lesson Teacher', 3000, START_PERFORMANCE, true]);
   assert.equal(view.today.code, 'available'); assert.equal(view.nextShift, 'Next shift: now');
-  assert.equal(view.step.kind, 'go'); assert.match(view.step.text, /Work spot.*40 seconds.*₦3,000/);
+  assert.equal(view.step.kind, 'go'); assert.match(view.step.text, /Open the Community desk spot.*40 seconds.*₦3,000/);
   assert.match(view.next.text, /Next: Class Teacher \(₦4,500 per shift\) — reach 100% performance with Charisma level 1/);
 
   player.act('spot', { id: 'work' });
@@ -284,7 +284,7 @@ test('switching needs confirmation and restarts the ladder; quitting clears it; 
   assert.equal(player.shift().code, 'started');
   const cash = player.state.cash;
   const refused = player.act('apply-job', { id: 'community-helper' });
-  assert.equal(refused.code, 'confirm_switch'); assert.match(refused.reason, /lose your Teaching level and performance/);
+  assert.equal(refused.code, 'confirm_switch'); assert.match(refused.reason, /starter job, which has no ladder, and lose your Teaching level and performance/);
   assert.equal(player.state.job, 'teaching'); assert.equal(player.state.career.level, 3);
   assert.match(player.view().career.jobs.find((job) => job.id === 'community-helper').switchWarning, /leave Teaching \(level 3, 90% performance\)/);
   assert.equal(player.act('apply-job', { id: 'community-helper', confirm: true }).code, 'switched');
@@ -320,7 +320,7 @@ test('Go automatically starts one free, cancellable commute per Lagos day and on
   assert.deepEqual(resumed.activeAction, player.state.activeAction, 'a commute survives a reload');
   player.step(COMMUTE_SECONDS);
   assert.equal(player.state.location, 'park'); assert.equal(player.state.activeAction, null); assert.equal(player.state.cash, 5000);
-  assert.match(player.state.message, /Open the Work spot/);
+  assert.match(player.state.message, /Open the Community desk spot to start your Teaching shift/);
   // Leaving again the same day does not drag the player back.
   player.state.location = 'home'; player.state.spot = 'kitchen';
   player.step(600);

@@ -6,12 +6,13 @@
  */
 import { esc, money, json } from '../dom.js';
 import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from '../../game/content/civic.js';
-import { button, busy, dateTime, entry, load, put, send, stale, status } from './civic-ui.js';
+import { button, busy, dateTime, entry, load, put, send, stale, status, requestId, requestDone } from './civic-ui.js';
 
 const PANEL = 'ads';
 let tab = 'billboard';
 const draft = { text: '', colour: AD_COLOURS[0].id, icon: AD_ICONS[0].id };
 let plot = { row: 4, col: 4 };
+const rentRequest = { what: null, id: null }; // the id of the rent being asked for, kept for a retry
 let seenParams = null;
 
 const key = (view) => `ads:${view.cityId}`;
@@ -100,7 +101,9 @@ export default {
       else if (hit('rent') && !hit('rent').disabled) {
         const target = JSON.parse(hit('rent').dataset.adsRent);
         if ([...draft.text.trim()].length < AD_TEXT.min) { api.toast(`Write your ad text first (at least ${AD_TEXT.min} characters). Nothing was charged.`, 'error'); root.querySelector('[data-ads-text]')?.focus(); return; }
-        const result = await send(api, `rent:${target.slot}`, '/api/civic/ads/rent', { ...target, text: draft.text, colour: draft.colour, icon: draft.icon }, { panel: PANEL, success: 'Your ad is up.' });
+        const order = { ...target, text: draft.text, colour: draft.colour, icon: draft.icon };
+        const result = await send(api, `rent:${target.slot}`, '/api/civic/ads/rent', { ...order, requestId: requestId(api, rentRequest, [api.view().cityId, order]) }, { panel: PANEL, success: 'Your ad is up.' });
+        requestDone(rentRequest, result);
         if (result.ads) put(key(api.view()), result.ads);
         if (result.ok) draft.text = '';
         if (result.ads || result.ok) rerenderSoon(api);

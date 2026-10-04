@@ -71,6 +71,20 @@ export async function send(api, tag, path, body, { panel = null, success = '' } 
   return result;
 }
 
+/**
+ * The request id of a paid civic request (rent, stand for office): `<server ms>:<uuid>`, the form
+ * the server requires. `slot` is a module-level object the panel keeps; the id is reused for as
+ * long as the request's contents are the same, so pressing the button again after a lost answer
+ * repeats the SAME request (applied once), and changing anything makes a new one. Call
+ * `done(slot, result)` afterwards: an applied request forgets its id.
+ */
+export function requestId(api, slot, contents) {
+  const what = JSON.stringify(contents);
+  if (slot.what !== what || !slot.id) { slot.what = what; slot.id = api.newId(); }
+  return slot.id;
+}
+export function requestDone(slot, result) { if (result?.ok) { slot.what = null; slot.id = null; } }
+
 /** "2d 4h", "3h 12m", "5m" until a server time. */
 export function until(at, now) {
   const minutes = Math.max(0, Math.ceil((at - now) / 60000));

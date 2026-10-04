@@ -9,6 +9,7 @@
  */
 import { esc, money } from '../dom.js';
 import { count, entry, load, put, stale } from './civic-ui.js';
+import { isDeparting } from '../../game/registry.js';
 
 const SEEN_KEY = 'joinallworld-civic-seen';
 let lastFound = null;
@@ -23,7 +24,7 @@ function unseen(notices) {
   return Array.isArray(seen) ? fresh : [];
 }
 
-const travelling = (state) => state.activeAction?.kind === 'travel';
+const travelling = (state) => isDeparting(state); // a trip or the commute: in no venue
 
 const chip = {
   id: 'hunt', title: 'Daily hunt', icon: '💎', placement: 'hud', order: 20,

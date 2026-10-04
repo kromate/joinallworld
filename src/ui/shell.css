@@ -32,6 +32,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--c-nig
 .life-saved.is-saving i{background:var(--c-amber-soft);color:var(--c-amber-dark)}
 .life-ui button.life-saved.is-off{min-height:34px;padding:0 12px 0 6px;border-radius:999px;background:#fbe3dc;color:#8a2417}
 .life-saved.is-off i{background:#a3271b;color:#fff}
+.life-saved.is-unsaved{min-height:34px;padding:0 12px 0 6px;border-radius:999px;background:#fbe3dc;color:#8a2417}
 .life-ui button.life-cash{position:relative;min-height:36px;padding:0 14px;border-radius:999px;background:var(--c-ink);color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
 .life-cash::after{content:'';position:absolute;inset:-4px -2px}
 .life-cash.is-up{animation:life-flash-up 1.1s ease-out}

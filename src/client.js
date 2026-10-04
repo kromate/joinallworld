@@ -14,6 +14,7 @@ export const TEXT = Object.freeze({
   connectionLost: 'Connection lost. Reconnect to check your saved progress.',
   offlinePaused: 'Reconnect to save your action. Changes are paused while offline.',
   outOfSync: 'Your action time was out of sync. Reconnect and try again.',
+  notSaving: 'The server cannot save right now. What you see is the last saved state; nothing new is being kept.',
   cityNote: (cityName) => `More places and activities are coming to ${cityName}.`,
 });
 /**
@@ -70,6 +71,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     hasSavedIdentity: Boolean(saved?.identity),
     session: null, ready: false, busy: false, serverTimeOffset: 0,
     serverNow: () => Math.round(now() + client.serverTimeOffset),
+    /**
+     * A retry key the server accepts for exactly-once writes: `<server ms>:<uuid>`, the same form as
+     * an action ID. Make ONE per thing the player does and send the same one again on a retry.
+     */
+    newId: () => `${client.serverNow()}:${randomUUID()}`,
+    /** null while the server is saving normally; { reason } from the moment it says it cannot (storage: "failing", or 503 storage_unavailable). */
+    storage: null,
     get online() { return client.ready && Boolean(client.session); },
     api, fetchJson: api, connect, command, switchCity, refresh, schedule, stop,
   };
@@ -94,6 +102,15 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     let payload;
     try { payload = await response.json(); } catch { throw Error('Server returned an unreadable response'); }
     if (Number.isFinite(payload.serverTime)) client.serverTimeOffset = payload.serverTime - now();
+    // What the server says about its own storage, shown as it is: a success carrying storage "failing"
+    // and a 503 storage_unavailable both mean nothing is being saved; any other success means it is.
+    const unsaved = payload.storage === 'failing' || (response.status === 503 && (payload.error === 'storage_unavailable' || payload.code === 'storage_unavailable'));
+    if (unsaved || response.ok) {
+      const next = unsaved ? { reason: typeof payload.reason === 'string' && payload.reason ? payload.reason : TEXT.notSaving } : null;
+      const changed = Boolean(next) !== Boolean(client.storage) || (next && next.reason !== client.storage.reason);
+      client.storage = next;
+      if (changed) { status(next ? next.reason : 'Connected · progress saved', Boolean(next)); onChange(client.state, client.state); }
+    }
     if (!response.ok) {
       const error = Error(payload.error === 'action_expired' ? TEXT.outOfSync : payload.error || payload.message || 'Connection failed');
       error.status = response.status; error.code = payload.code || payload.error;
@@ -132,7 +149,11 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   async function refresh(lostText = 'Reconnect to refresh progress') {
     if (!client.online) return false;
     try { accept((await api(`/api/life?city=${client.cityId}`)).state); return true; }
-    catch (error) { if (error.status === 401) expired(); else lost(error, lostText); return false; }
+    catch (error) {
+      // The server answered, it just could not save this settlement: still connected, try again at the next poll.
+      if (error.code === 'storage_unavailable') { schedule(); return false; }
+      if (error.status === 401) expired(); else lost(error, lostText); return false;
+    }
   }
 
   async function connect(createNew = false) {
@@ -181,13 +202,15 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (!client.online) { status(TEXT.offlinePaused, true); return { ok: false, code: 'offline', reason: TEXT.offlinePaused }; }
     client.busy = true;
     try {
-      const body = { actionId: `${client.serverNow()}:${randomUUID()}`, cityId: client.cityId, type };
+      const body = { actionId: client.newId(), cityId: client.cityId, type };
       if (payload !== undefined && payload !== null) body.payload = payload;
       const response = await api('/api/action', { method: 'POST', body });
       accept(response.state);
       if (!response.ok && client.state.message) status(client.state.message, true);
       return { ok: response.ok, code: response.code, reason: response.ok ? undefined : client.state.message };
     } catch (error) {
+      // Not saved means not done (the server undid it): the player is still connected and may try again.
+      if (error.code === 'storage_unavailable') return { ok: false, code: error.code, reason: error.reason || TEXT.notSaving };
       if (error.status === 401) expired(); else lost(error);
       return { ok: false, code: error.code || 'network', reason: error.message };
     } finally { client.busy = false; }

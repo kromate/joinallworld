@@ -62,6 +62,7 @@
  *            cityId, city: { id, name, region }, connected, session: { id, name } | null,
  *            name, now (server ms), mode, venues: [{ id, label, district, icon, description }],
  *            net: { text, error } (the connection status line),
+ *            storage: null | { reason } (the server said it cannot save right now),
  *            params (whatever was passed to api.open(id, params)) }
  *   Return an HTML string. Escape every dynamic value with esc() from ../dom.js.
  *   The shell re-renders a showing panel when state changes and only touches the DOM if the
@@ -82,6 +83,8 @@
  *   api.toast(text, kind?)        top-centre toast; kind: 'info' | 'good' | 'earn' | 'spend' | 'error'.
  *                                 At most two show at once; the same text is never shown twice.
  *   api.fetchJson(path, { method, body, headers }?) → Promise<object>; rejects Error{ status, code }
+ *   api.newId()                   a retry key for an exactly-once write: `<server ms>:<uuid>` (the action-id
+ *                                 form the server requires). One per thing the player does; reuse it on a retry.
  *   api.refresh()                 re-render now (after changing your own module-level UI state);
  *                                 this also redraws a showing `live: false` panel
  *   api.redrawScene()             ask the host to draw one frame of the 3D scene now (after a
@@ -178,6 +181,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     open, close,
     toast,
     fetchJson: (path, options) => host.fetchJson(path, options),
+    newId: () => host.newId(),
     refresh: () => { forced = true; try { render(state, view); } finally { forced = false; } },
     redrawScene: () => host.redrawScene?.(),
     goTo: (venueId, spotId) => host.goTo(venueId, spotId),
@@ -348,6 +352,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const net = view.net?.text || '';
     setHtml(el.saved, !view.connected
       ? `<button class="life-saved is-off" data-menu="reconnect" title="${esc(net)}"><i aria-hidden="true">⚠</i><span>Offline · Reconnect</span></button>`
+      : view.storage ? `<span class="life-saved is-off is-unsaved" role="status" title="${esc(view.storage.reason)}"><i aria-hidden="true">⚠</i><span>Not saving</span></span>`
       : saving > 0 ? '<span class="life-saved is-saving" title="Sending your action to the server"><i aria-hidden="true">↻</i><span>Saving…</span></span>'
         : `<span class="life-saved is-ok" title="${esc(net || 'Progress saved on the server')}"><i aria-hidden="true">✓</i><span>Saved</span></span>`);
   }

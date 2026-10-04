@@ -14,7 +14,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './support.css';
-import { esc, uuid, empty } from '../dom.js';
+import { esc, empty } from '../dom.js';
 import { formatClock } from '../../game/clock.js';
 
 const LABELS = { money: 'Money or balance', stuck: 'I am stuck', messages: 'Messages or invites', people: 'Another player', bug: 'Something is broken', other: 'Something else' };
@@ -79,7 +79,7 @@ export default {
       const text = draft.text.trim();
       if (text.length < 3) { notice = { kind: 'error', text: 'Write a few words about what happened, then send.' }; redraw(api); document.querySelector('[data-support-form]')?.elements.text.focus(); return; }
       // One id per report, reused if the send has to be retried, so a retry can never file it twice.
-      draft.clientId ||= `support-${uuid()}`;
+      draft.clientId ||= api.newId();
       sending = true; notice = null; redraw(api);
       try {
         const reply = await api.fetchJson('/api/support/reports', { method: 'POST', body: { cityId: api.view().cityId, category: draft.category, text, clientId: draft.clientId } });

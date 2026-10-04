@@ -8,10 +8,11 @@
  */
 import { esc, money, empty } from '../dom.js';
 import { ELECTION, STATE_HOUSE_TEXT } from '../../game/content/civic.js';
-import { button, busy, dateTime, count, entry, load, put, send, stale, status, until } from './civic-ui.js';
+import { button, busy, dateTime, count, entry, load, put, send, stale, status, until, requestId, requestDone } from './civic-ui.js';
 
 const PANEL = 'governor';
 const draft = { slogan: '', announcement: '' };
+const runRequest = { what: null, id: null }; // the id of the candidacy being filed, kept for a retry
 /** The last vote the server refused — { key, code, reason } — kept beside the ballot until a vote counts. */
 let refusal = null;
 const key = (view) => `gov:${view.cityId}`;
@@ -112,7 +113,8 @@ const app = {
     text?.addEventListener('input', () => { draft.announcement = text.value; });
     root.querySelector('[data-gov-run]')?.addEventListener('click', async () => {
       if ([...draft.slogan.trim()].length < ELECTION.sloganMin) { api.toast(`Write a slogan first (${ELECTION.sloganMin}–${ELECTION.sloganMax} characters). Nothing was charged.`, 'error'); slogan?.focus(); return; }
-      const result = await send(api, 'run', '/api/civic/gov/run', { slogan: draft.slogan }, { panel: PANEL, success: 'You are on the ballot.' });
+      const result = await send(api, 'run', '/api/civic/gov/run', { slogan: draft.slogan, requestId: requestId(api, runRequest, [api.view().cityId, draft.slogan]) }, { panel: PANEL, success: 'You are on the ballot.' });
+      requestDone(runRequest, result);
       if (result.ok) draft.slogan = '';
       done(result);
     });

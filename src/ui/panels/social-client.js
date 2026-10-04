@@ -14,7 +14,6 @@
  */
 import './social.css';
 import { createOutbox, mergeMessages, inviteIdFrom, SEND_TIMEOUT_MS } from '../../game/social-model.js';
-import { uuid } from '../dom.js';
 
 const MAX_ATTEMPTS = 6;
 export const outbox = createOutbox();
@@ -39,7 +38,8 @@ const refresh = () => S.api?.refresh();
 // Until a new life has finished character creation it is not in the city: the social features stay closed.
 const connected = () => { const view = S.api?.view(); return Boolean(view?.connected) && view.onboarding?.required !== true; };
 export const cityId = () => S.api.view().cityId;
-export const newClientId = () => `c-${uuid()}`;
+/** A retry key in the form the server's exactly-once writes require: `<server ms>:<uuid>` (also valid as a message's clientId). */
+export const newClientId = () => S.api.newId();
 
 /** One request. Never throws: a failure comes back as { ok: false, code, reason }. */
 export async function call(path, body) {
@@ -47,6 +47,7 @@ export async function call(path, body) {
   catch (error) {
     // A refusal the server explained (blocked wording, a mute) is shown in its own words.
     const reason = error.reason && error.status >= 400 && error.status < 500 && error.status !== 401 && error.status !== 429 ? error.reason
+      : error.status === 503 && error.reason ? error.reason // the server could not save (or take) this: its own sentence says nothing was changed
       : error.status === 429 ? 'Too many requests. Wait a minute and try again.'
       : error.status === 401 ? 'Your device session expired. Reconnect to continue.'
         : error.code === 'onboarding_required' ? 'Finish creating your Sim first. People and messages open once you have moved in.'

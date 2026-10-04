@@ -24,6 +24,7 @@ import { esc, money, json } from '../dom.js';
 import { CATEGORIES, FURNITURE, KINDS, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../game/content/furniture.js';
 import { HOUSES, DEFAULT_HOUSE } from '../../game/content/housing.js';
 import { checkPlacement, findFreeSpot, footprint, nudge, turn } from '../../game/home-layout.js';
+import { isDeparting } from '../../game/registry.js';
 
 const MOVES = { 'move-up': [0, -1], 'move-down': [0, 1], 'move-left': [-1, 0], 'move-right': [1, 0] };
 const HINT = 'Arrow keys move · R rotates · Enter places · Esc cancels';
@@ -246,7 +247,7 @@ const homeChip = {
     // Leaving Buy mode or the house cancels a placement and clears the marker.
     if (left || (state.location !== 'home' && (ghost || selected)) || (selected && !chosen)) { ghost = null; selected = null; show(false); }
     const house = houseOf(state);
-    const heading = state.activeAction?.kind === 'travel' && state.activeAction.id === 'home';
+    const heading = isDeparting(state) && state.activeAction.id === 'home';
     if (state.location !== 'home') return heading ? `<div class="home-chip"><strong>🏠 Heading home…</strong><small>${esc(house.label)} · ${esc(house.district)}</small></div>` : '';
     if (buying) return '';
     const status = roomStatus(state, view);

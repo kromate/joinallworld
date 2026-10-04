@@ -147,3 +147,40 @@ test('a nickname the server refuses comes back to the form with the server’s r
   reply = json(400, { error: 'name_not_allowed', reason });
   await assert.rejects(client.fetchJson('/api/session', { method: 'POST', body: { name: 'x' } }), (error) => error.status === 400 && error.code === 'name_not_allowed' && error.reason === reason);
 });
+
+test('retry keys have the timed form the server requires, stamped with server time', async () => {
+  const h = harness();
+  await h.client.connect();
+  assert.equal(h.client.newId(), '5000:11111111-1111-4111-8111-111111111111', 'server time (5000), not the device clock (1000)');
+  await h.client.command('travel', { id: 'library', mode: 'cab' });
+  assert.equal(h.calls.at(-1)[2].actionId, h.client.newId(), 'the same helper stamps action IDs');
+});
+
+test('what the server says about its storage is shown as it is: failing, the 503 reason, and saving again', async () => {
+  const statuses = [], changes = [];
+  const life = createLife({ name: 'Ada' });
+  let mode = 'ok';
+  const json = (status, body) => ({ ok: status < 300, status, json: async () => body });
+  const refused = { error: 'storage_unavailable', reason: 'The server could not save this, so nothing was changed. Try again in a moment.' };
+  const fetch = async (path) => {
+    if (path === '/api/session') return json(200, { session: { id: 'public-1', name: 'Ada' }, serverTime: 5000 });
+    if (path === '/api/action') return mode === 'ok' ? json(200, { ok: true, code: 'started', state: life, serverTime: 5000 }) : json(503, refused);
+    return json(200, { state: life, serverTime: 5000, ...(mode === 'failing' ? { storage: 'failing' } : {}) });
+  };
+  const client = createClient({ fetch, now: () => 1000, setTimeout: () => 0, clearTimeout: () => {}, storage: { getItem: () => null, setItem: () => {} },
+    onStatus: (text, error) => statuses.push([text, error]), onChange: (state) => changes.push(state) });
+  await client.connect();
+  assert.equal(client.storage, null);
+  mode = 'failing';
+  const result = await client.command('spot', { id: 'trees' });
+  assert.deepEqual(result, { ok: false, code: 'storage_unavailable', reason: refused.reason }, 'the action is reported as not done, in the server’s words');
+  assert.equal(client.online, true, 'the player is not offline: the server answered');
+  assert.deepEqual(client.storage, { reason: refused.reason });
+  assert.deepEqual(statuses.at(-1), [refused.reason, true]);
+  await client.refresh();
+  assert.deepEqual(client.storage, { reason: TEXT.notSaving }, 'a success that carries storage "failing" keeps the indicator on');
+  mode = 'ok';
+  await client.refresh();
+  assert.equal(client.storage, null, 'and the next ordinary success clears it');
+  assert.deepEqual(statuses.at(-1), ['Connected · progress saved', false]);
+});

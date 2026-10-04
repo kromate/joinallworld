@@ -6,9 +6,10 @@
  * The banner follows the server's schedule whenever the HUD is redrawn (each state poll); it runs
  * no timer of its own, so a new shout-out can take up to a poll interval to appear.
  */
-import { esc, money, uuid } from '../dom.js';
+import { esc, money } from '../dom.js';
 import { RADIO } from '../../game/content/civic.js';
 import { button, busy, entry, load, put, send, stale, status, until } from './civic-ui.js';
+import { isDeparting } from '../../game/registry.js';
 
 const PANEL = 'radio';
 const draft = { title: '', artist: '', requestId: null };
@@ -23,7 +24,7 @@ function schedule(data, now) {
   return { playing, queue: all.filter((item) => item !== playing) };
 }
 const song = (item) => `${item.title} — ${item.artist}`;
-const newRequestId = () => uuid();
+
 
 const app = {
   id: PANEL, title: 'Radio', icon: '📻', placement: 'phone', order: 46, live: false,
@@ -33,7 +34,7 @@ const app = {
     if (!inClub(state)) {
       const here = view.venues.find((venue) => venue.id === state.location)?.label ?? 'here';
       const list = clubs.length ? clubs.map((venue) => button(`Go to ${venue.label}`, `data-radio-go="${esc(venue.id)}"`, { reason: !view.connected ? 'Offline.' : state.activeAction ? 'Finish your current action first.' : '' })).join('') : '<p class="civic-note">No club is open in this city yet.</p>';
-      return `<p class="civic-headline">Club radio plays inside clubs.</p><p>You are ${state.activeAction?.kind === 'travel' ? 'on the road' : `at ${esc(here)}`}. Walk into a club to see what is playing and to buy a shout-out for your song.</p>${list}${beta}`;
+      return `<p class="civic-headline">Club radio plays inside clubs.</p><p>You are ${isDeparting(state) ? 'on the road' : `at ${esc(here)}`}. Walk into a club to see what is playing and to buy a shout-out for your song.</p>${list}${beta}`;
     }
     const venue = view.venues.find((item) => item.id === state.location);
     const item = entry(key(view, state.location)), data = item.data;
@@ -62,7 +63,7 @@ const app = {
     root.querySelector('[data-radio-buy]')?.addEventListener('click', async () => {
       if (!draft.title.trim() || !draft.artist.trim()) { api.toast('Enter a song title and an artist first. Nothing was charged.', 'error'); root.querySelector(draft.title.trim() ? '[data-radio-artist]' : '[data-radio-title]')?.focus(); return; }
       // The same request id is reused if this attempt has to be retried, so it cannot be charged twice.
-      draft.requestId ||= newRequestId();
+      draft.requestId ||= api.newId(); // one id per shout-out, kept for a retry
       const result = await send(api, 'shoutout', '/api/civic/radio/shoutout', { title: draft.title, artist: draft.artist, requestId: draft.requestId }, { panel: PANEL, success: 'Your shout-out is in the queue.' });
       if (result.radio) put(key(api.view(), result.radio.venue), result.radio);
       if (result.ok) { draft.title = ''; draft.artist = ''; draft.requestId = null; }

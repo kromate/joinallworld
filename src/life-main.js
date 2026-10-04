@@ -22,7 +22,7 @@ import { PANELS, sessionGate } from './ui/panels/index.js';
 import { S as social, loadPeople, onPeople } from './ui/panels/social-client.js';
 import { crowdList, playersHere } from './scene/crowd.js';
 import { NPCS } from './game/content/npcs.js';
-import { viewLife, VENUES } from './life.js';
+import { viewLife, VENUES, isDeparting } from './life.js';
 import { venueLabel, venueDistrict } from './game/content/venues.js';
 
 const $ = (id) => document.getElementById(id);
@@ -53,7 +53,7 @@ const showPlayer = () => venue?.setPlayer({ look: client.state.onboarding?.look,
  */
 function showCrowd() {
   const state = client.state;
-  const npcs = state.activeAction?.kind === 'travel' ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location);
+  const npcs = isDeparting(state) ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location);
   venue?.setCrowd(crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id }));
 }
 onPeople(showCrowd);
@@ -109,7 +109,7 @@ function loadMaps() {
 const dialog = $('life-dialog');
 shell = createShell({
   root: $('life-overlay'), dialog, dialogContent: $('life-dialog-content'), panels: PANELS,
-  host: { command, fetchJson: client.fetchJson, goTo, toggleCommunity, menu, onRender: () => layoutScene(), redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) { if (mode === 'map') loadMaps(); render(); refreshScene(); } },
+  host: { command, fetchJson: client.fetchJson, newId: client.newId, goTo, toggleCommunity, menu, onRender: () => layoutScene(), redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) { if (mode === 'map') loadMaps(); render(); refreshScene(); } },
 });
 
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
@@ -117,7 +117,7 @@ function buildView() {
   const now = client.serverNow(), cityId = client.cityId;
   return {
     ...viewLife(client.state, { now, cityId }),
-    cityId, city: CITIES[cityId], connected: client.online, session: client.session, net,
+    cityId, city: CITIES[cityId], connected: client.online, session: client.session, net, storage: client.storage,
     // The life's own name (the server keeps it equal to the session nickname), so a rename shows as soon as the next state arrives.
     name: client.state.name || client.identity.name, now,
     clock: clockFormat.format(new Date(now)).replace(',', ' ·'),

@@ -9,6 +9,7 @@
  * The result is what the scene host's setCrowd() takes; it is compared by value there, so
  * calling this again with unchanged data never causes a frame.
  */
+import { isDeparting } from '../game/registry.js';
 export const CROWD_LIMIT = 12; // equals MAX_CROWD in venue-scenes.js (asserted in crowd.test.js)
 
 export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_LIMIT } = {}) {
@@ -29,6 +30,6 @@ export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_
 /** The server's listing, if it is for the venue and city the player is in right now; otherwise nobody. */
 export function playersHere(listing, state, cityId) {
   if (!listing || listing.error || listing.venue !== state?.location || listing.cityId !== cityId) return [];
-  if (state.activeAction?.kind === 'travel') return [];
+  if (isDeparting(state)) return []; // in transit (a trip, the commute): the player is in no venue
   return Array.isArray(listing.players) ? listing.players : [];
 }

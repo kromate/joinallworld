@@ -1,0 +1,16 @@
+/* Bank app. Class names are prefixed with the panel id. */
+.bank-card{border:1px solid var(--c-line);border-radius:18px;padding:var(--s-3) var(--s-4);margin:var(--s-2) 0}
+.bank-card h3{margin:0 0 4px!important;font-size:15px;display:flex;justify-content:space-between;gap:var(--s-2);align-items:baseline}
+.bank-card h3 b{font-size:var(--t-title);white-space:nowrap}
+.bank-card p{margin:5px 0;font-size:var(--t-body)}
+.bank-card.is-warning{border-color:var(--c-amber);background:#fdf6ea}
+.bank-warning{color:var(--c-red);font-weight:600}
+.bank-note{color:var(--c-muted);font-size:12px!important}
+.bank-bar{height:8px;border-radius:8px;background:#e8e9ea;overflow:hidden;margin:var(--s-2) 0}
+.bank-bar i{display:block;height:100%;background:var(--c-green);border-radius:8px}
+.bank-actions{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-2)}
+.bank-actions .ui-button{flex:1 1 150px}
+.bank-actions .ui-button:disabled{opacity:.5;cursor:not-allowed}
+.bank-why{color:var(--c-red);font-size:12px!important;margin:4px 0 0!important}
+.bank-summary{font-size:var(--t-body);margin:var(--s-1) 0 var(--s-2)}
+.bank-link{width:100%}

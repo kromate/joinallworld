@@ -1,0 +1,16 @@
+/* Invest app. Class names are prefixed with the panel id. */
+.invest-intro{font-size:var(--t-body);margin:0 0 var(--s-2)}
+.invest-beta{display:inline-block;border-radius:var(--r-chip);padding:2px 8px;background:#fbf1e3;color:var(--c-red);font-size:var(--t-small);font-weight:700;vertical-align:middle}
+.invest-card{border:1px solid var(--c-line);border-radius:18px;padding:var(--s-3) var(--s-4);margin:var(--s-2) 0}
+.invest-card h3{margin:0 0 4px!important;font-size:15px}
+.invest-card p{margin:5px 0;font-size:var(--t-body)}
+.invest-amounts,.invest-terms{display:flex;flex-wrap:wrap;gap:6px;margin:var(--s-2) 0}
+.invest-amounts button{border:1px solid var(--c-line);background:var(--c-surface-solid);border-radius:var(--r-chip);padding:9px 12px;min-height:var(--tap);font:600 12px var(--font);cursor:pointer;color:var(--c-ink)}
+.invest-amounts button[aria-pressed=true]{background:var(--c-ink);color:#fff;border-color:var(--c-ink)}
+.invest-amounts button:disabled,.invest-terms button:disabled{opacity:.5;cursor:not-allowed}
+.invest-terms .ui-button{flex:1 1 100%;text-align:left;display:flex;justify-content:space-between;gap:var(--s-2)}
+.invest-why{color:var(--c-red);font-size:12px!important;margin:4px 0 0!important}
+.invest-note{color:var(--c-muted);font-size:12px!important}
+.invest-row{display:flex;justify-content:space-between;gap:var(--s-2);align-items:baseline}
+.invest-card .ui-button{width:100%;margin-top:var(--s-2)}
+.invest-confirm{border-radius:14px;background:#fbf1e3;padding:var(--s-2) var(--s-3);margin-top:var(--s-2)}

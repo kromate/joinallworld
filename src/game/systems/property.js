@@ -49,7 +49,7 @@ function moveHouse(state, payload, ctx) {
   const house = houseOf(payload?.id);
   if (!house) return fail(state, 'invalid_house', 'Choose a house from the Houses list.');
   const from = state.property.house;
-  if (from === house.id) return fail(state, 'already_home', `You already live in the ${house.label} in ${house.district}.`);
+  if (from === house.id && state.estate?.living !== 'own') return fail(state, 'already_home', `You already live in the ${house.label} in ${house.district}.`);
   if (!canAfford(state, house.moveIn)) return fail(state, 'insufficient_funds', `Moving to the ${house.label} needs the landlord and agent paid first. ${shortBy(state, house.moveIn)}`);
   debit(state, house.moveIn, `Landlord and agent: ${house.label}, ${house.district}`, ctx);
   state.property.house = house.id;
@@ -124,6 +124,11 @@ export default {
       const house = houseOf(typeof data?.house === 'string' ? data.house : data?.house?.id);
       if (house) state.property.house = house.id;
     },
+    /** Arriving in another city (systems/estate.js): the rented home there becomes the current one. */
+    'house.moved'(state, data) {
+      const house = data?.from === 'away' ? houseOf(data.house) : null;
+      if (house) state.property.house = house.id;
+    },
   },
   modifiers: {
     'travel.modes'(value, state) {
@@ -153,7 +158,7 @@ export default {
       rent: current.rent,
       houses: HOUSE_ORDER.map((id) => {
         const house = HOUSES[id];
-        const here = id === current.id;
+        const here = id === current.id && state.estate?.living !== 'own';
         return { ...house, current: here, affordable: state.cash >= house.moveIn,
           blocked: here ? 'You live here' : state.activeAction ? 'Finish your current action first' : state.cash < house.moveIn ? `Need ${naira(house.moveIn - state.cash)} more` : null };
       }),

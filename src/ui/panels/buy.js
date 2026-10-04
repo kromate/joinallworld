@@ -22,7 +22,8 @@
 import './buy.css';
 import { esc, money, json } from '../dom.js';
 import { CATEGORIES, FURNITURE, KINDS, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../game/content/furniture.js';
-import { HOUSES, DEFAULT_HOUSE } from '../../game/content/housing.js';
+import { homeOf } from '../../game/content/housing.js';
+import { HOUSE_DESIGNS } from '../../game/content/world.js';
 import { checkPlacement, findFreeSpot, footprint, nudge, turn } from '../../game/home-layout.js';
 import { isDeparting } from '../../game/registry.js';
 
@@ -39,7 +40,7 @@ let kitchenOpen = false;
 let scene = { status: 'loading', placed: 0 };
 let sent = '';
 
-const houseOf = (state) => HOUSES[state.property?.house] ?? HOUSES[DEFAULT_HOUSE];
+const houseOf = (state) => homeOf(state, HOUSE_DESIGNS);
 const itemsOf = (state) => (Array.isArray(state.home?.items) ? state.home.items : []);
 const stars = (count) => (count ? '★'.repeat(count) : '');
 const size = (def) => (def.wall ? 'wall' : `${def.w}×${def.h}`);

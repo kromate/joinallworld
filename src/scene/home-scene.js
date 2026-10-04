@@ -44,7 +44,8 @@ import { FURNITURE, KINDS } from '../game/content/furniture.js';
 import { createBatch, sceneMaterials, releaseObjects } from './build.js';
 import { drawAvatar, buildAvatar, POSES } from './characters.js';
 import { createWalkGrid } from './movement.js';
-import { HOUSES, DEFAULT_HOUSE } from '../game/content/housing.js';
+import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.js';
+import { HOUSE_DESIGNS } from '../game/content/world.js';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.js';
 
 const ROOM = 10;         // world units along each wall, whatever the grid size
@@ -254,7 +255,7 @@ export function buildHomeScene(kit) {
   }
 
   function rebuild(state) {
-    const house = HOUSES[state?.property?.house] ?? HOUSES[DEFAULT_HOUSE];
+    const house = homeOf(state, HOUSE_DESIGNS);   // the rented tier, or the design of the house the player built
     if (house.grid !== grid) { grid = house.grid; tile = ROOM / grid; buildRoom(); }
     furniture.clear(); overlay.clear();
     const items = Array.isArray(state?.home?.items) ? state.home.items : [];

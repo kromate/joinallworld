@@ -64,6 +64,7 @@ import { emit } from '../registry.js';
 import { busy, fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.js';
 import { arrive, canAfford, changeNeeds, credit, debit, moodOf, feelingsOf, setSkillLevel } from '../api.js';
 import { bonusNeeds, fxModifiers } from '../character-effects.js';
+import { lgaOf } from '../content/world.js';
 import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, FEELING_LINES, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, START_NEEDS,
   TRAITS, TRAITS_REQUIRED, WARDROBE_BASICS, ACCESSORY_BASICS } from '../content/traits.js';
 
@@ -281,11 +282,19 @@ const actions = {
     const blocked = notDone(state) || needStep(state, 4) || busy(state, 'Finish or cancel your current action before moving in.');
     if (blocked) return blocked;
     const o = state.onboarding, outcome = outcomeOf(state);
-    const home = typeof payload?.house === 'string' && Object.hasOwn(START_HOMES, payload.house) ? START_HOMES[payload.house] : null;
+    // `own: true` starts the life in the house everyone has on their own plot (systems/estate.js): no tenancy and
+    // no weekly rent. It carries the start cash of the cheapest starting home this outcome allows.
+    const own = payload?.own === true;
+    const home = own ? Object.values(START_HOMES).find((item) => !homeLock(outcome, item.id)) ?? null
+      : typeof payload?.house === 'string' && Object.hasOwn(START_HOMES, payload.house) ? START_HOMES[payload.house] : null;
     if (!home) return fail(state, 'invalid_house', `Choose a starting home: ${Object.values(START_HOMES).map((item) => `${item.label} (${item.district})`).join(', ')}.`);
     const locked = homeLock(outcome, home.id);
     if (locked) return fail(state, 'house_locked', locked);
     if (o.traits.length !== TRAITS_REQUIRED || !o.dream) return fail(state, 'step_required', 'Choose your two traits and a dream before moving in.');
+    // The local government is optional here (it is guessed from the home when left out), but a given one must be real.
+    // Only its id arrives: where the player actually is never reaches the server (src/ui/panels/lga-ui.js).
+    const lga = payload?.lga === undefined || payload?.lga === null ? null : lgaOf(ctx.cityId, payload.lga);
+    if (payload?.lga !== undefined && payload?.lga !== null && !lga) return fail(state, 'invalid_lga', 'Choose your local government from the list.');
     const startCash = outcome.startCash[home.id];
     const grant = Math.max(0, startCash - o.seed);
     if (!Number.isSafeInteger(state.cash + grant)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
@@ -294,11 +303,11 @@ const actions = {
     o.wardrobe = wardrobeOf(o.wardrobe, o.look);
     for (const [skill, level] of Object.entries(outcome.skills || {})) setSkillLevel(state, skill, level);
     changeNeeds(state, Object.fromEntries(Object.entries(START_NEEDS).map(([need, value]) => [need, value - state.needs[need]])));
-    credit(state, grant, `Start cash · ${home.label}, ${home.district}${outcome.loan ? ` (includes ${naira(outcome.loan.principal)} LAPO loan)` : ''}`, ctx);
+    credit(state, grant, `Start cash · ${own ? 'your own house' : `${home.label}, ${home.district}`}${outcome.loan ? ` (includes ${naira(outcome.loan.principal)} LAPO loan)` : ''}`, ctx);
     arrive(state, 'home', ctx, { mode: null });
-    emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: outcome.id, house: home.id,
+    emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: outcome.id, house: home.id, ...(lga ? { lga: lga.id, lgaVia: payload.lgaVia === 'device' ? 'device' : 'manual' } : {}), ...(own ? { own: true } : {}),
       look: { ...o.look, ...(o.look.accessories ? { accessories: [...o.look.accessories] } : {}) }, loan: outcome.loan ? { ...outcome.loan } : null, rent: home.rent, startCash }, ctx);
-    state.message = `Welcome to ${home.district}. You moved into your ${home.label} with ${naira(state.cash)}.`;
+    state.message = own ? `Welcome home. You moved into your own starter house${lga ? ` in ${lga.name}` : ''} with ${naira(state.cash)} — no weekly rent.` : `Welcome to ${home.district}. You moved into your ${home.label} with ${naira(state.cash)}.`;
     return ok(state, 'life_started');
   },
   'onboarding.set-look'(state, payload) {
@@ -418,6 +427,8 @@ export default {
     return {
       done: o.done, legacy: o.legacy, required: o.required && !o.done, step: o.step, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
       lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery.at } : null,
+      /** The start in your own house: the start cash of the cheapest starting home this outcome allows, and no weekly rent. */
+      ownStart: (() => { const home = outcome ? Object.values(START_HOMES).find((item) => !homeLock(outcome, item.id)) : null; return home ? { startCash: outcome.startCash[home.id] } : null; })(),
       homes: Object.values(START_HOMES).map((home) => {
         const locked = outcome ? homeLock(outcome, home.id) : null;
         return { ...home, startCash: outcome && !locked ? outcome.startCash[home.id] : null, locked };

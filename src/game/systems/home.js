@@ -61,7 +61,8 @@ import { busy, fail, isRecord, naira, ok } from '../util.js';
 import { addItem, addMoodlet, addSkillXp, canAfford, canCredit, changeNeeds, countItem, credit, debit, findActivity, hasItems, removeItems } from '../api.js';
 import { FURNITURE, HOME_ACTIVITIES, HOME_SPOTS, KINDS, PORTED_ACTIVITY_KIND, POWERED_KINDS, POWER_BONUS, SELL_REFUND_RATE, STAR_MULTIPLIER, STARTER_FURNITURE } from '../content/furniture.js';
 import { INGREDIENTS, INGREDIENT_ORDER, MAX_PACKS_PER_ORDER, RECIPES } from '../content/food.js';
-import { HOUSES, DEFAULT_HOUSE } from '../content/housing.js';
+import { HOUSES, DEFAULT_HOUSE, homeOf } from '../content/housing.js';
+import { HOUSE_DESIGNS } from '../content/world.js';
 import { MAX_PLACED, MAX_STORED_PER_ITEM, checkPlacement, doorSlot, fitInto, normalise, starterLayout, windowSlot } from '../home-layout.js';
 
 const HOME = 'home';
@@ -73,7 +74,8 @@ const AMBIENCE_MINIMUM = 3;
 
 const itemOf = (id) => (typeof id === 'string' && Object.hasOwn(FURNITURE, id) ? FURNITURE[id] : null);
 const ingredientOf = (id) => (typeof id === 'string' && Object.hasOwn(INGREDIENTS, id) ? INGREDIENTS[id] : null);
-export const gridOf = (state) => (HOUSES[state.property?.house] ?? HOUSES[DEFAULT_HOUSE]).grid;
+/** The room's size: the rented tier's, or the design's while the player lives in a house they built. */
+export const gridOf = (state) => homeOf(state, HOUSE_DESIGNS).grid;
 const whole = (value, fallback) => (Number.isFinite(value) ? Math.max(0, Math.round(value)) : fallback);
 const priceOf = (state, item, ctx) => whole(modify(state, 'shop.price', item.price, { item, kind: 'furniture' }, ctx), item.price);
 const refundOf = (item) => Math.floor(item.price * SELL_REFUND_RATE);

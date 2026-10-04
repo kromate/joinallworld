@@ -261,7 +261,8 @@ test('the starter helper job cannot outpace a career track', () => {
 test('one Updates feed: rent due, paid and missed, loan paid and missed, promotion, illness and Governor news all arrive through notice.posted', () => {
   const DAY = 86400000;
   const state = onboard(createLife(null, at(MONDAY_9AM, 'updates', { isNew: true })));
-  const kinds = () => state.social.notices.map((notice) => notice.kind);
+  // The house system posts its own line once an upgrade is affordable (src/game/systems/estate.js); this test is about the bills.
+  const kinds = () => state.social.notices.map((notice) => notice.kind).filter((kind) => kind !== 'house');
   const last = (kind) => state.social.notices.findLast((notice) => notice.kind === kind)?.text;
   assert.deepEqual(kinds(), [], 'moving in posts nothing');
   // Friday: one reminder naming what falls due at midnight — and only one, however often the life settles.

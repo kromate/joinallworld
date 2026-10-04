@@ -236,6 +236,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   if (spotHint) { spotHint.className = 'scene-spot-hint'; spotHint.hidden = true; }
 
   const built = new Map();
+  let prepared = null;
   let current = null, currentLocation = null, renderCount = 0, lastState = null, size = { width: 0, height: 0 };
   let player = {}, crowd = [], crowdKey = '[]', background = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
   let tagSource = [], shownTags = [], tagNodes = [], tagShape = '', tagsRead = true;
@@ -877,7 +878,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const offset = current.group.position;
     current.look(camera.position.x - offset.x, camera.position.z - offset.z);
   }
-  function renderScene() { lookIn(); aimGhost(); lights.aim(camera, orbit.now.x, orbit.now.y, orbit.now.z); renderer.render(scene, camera); renderCount += 1; projectTags(); }
+  // A scene that is not on screen (the map is in front) is not drawn: it is drawn when it is shown again (resize()).
+  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x, orbit.now.y, orbit.now.z); renderer.render(scene, camera); renderCount += 1; projectTags(); }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
   function sceneFor(id) {
@@ -1013,6 +1015,20 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   setLocation(location);
   return {
     update() { renderScene(); },
+    get location() { return currentLocation; },
+    /**
+     * Build a venue's scene ahead of time (a trip to it has just started), so arriving only has to
+     * show it: the build is the long part, and it is better spent while the trip is setting off than
+     * at the moment the place is revealed. Nothing is drawn. One scene at most is kept ready; a
+     * different one, or a trip that ended elsewhere, frees it.
+     */
+    prepare(id) {
+      if (!VENUES[id] || id === currentLocation) return false;
+      if (prepared && prepared !== id && prepared !== currentLocation) { const old = built.get(prepared); if (old) { old.dispose?.(); scene.remove(old.group); built.delete(prepared); } }
+      prepared = id;
+      sceneFor(id);
+      return true;
+    },
     diagnostics() {
       return {
         renderCount,

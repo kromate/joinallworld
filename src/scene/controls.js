@@ -27,12 +27,12 @@ const STYLE_ID = 'scene-controls-style';
 const HINT_KEY = 'joinallworld-move-hint';
 const CSS = `
 .scene-controls{position:absolute;inset:0;pointer-events:none;z-index:2;font:600 12px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;--sc-top:76px;--sc-bottom:16px}
-.scene-pad{position:absolute;right:max(10px,env(safe-area-inset-right));bottom:var(--sc-bottom);display:grid;gap:6px;pointer-events:none}
+.scene-pad{position:absolute;right:calc(max(10px,env(safe-area-inset-right)) + var(--play-x,0px));bottom:var(--sc-bottom);display:grid;gap:6px;pointer-events:none}
 .scene-pad button{pointer-events:auto;width:44px;height:44px;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(250,252,249,.9);color:#1d2a26;font:700 20px/1 system-ui,sans-serif;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);-webkit-tap-highlight-color:transparent;touch-action:manipulation;padding:0}
 .scene-pad button:active{background:#fff;transform:scale(.95)}
 .scene-pad button:focus-visible,.scene-hint button:focus-visible{outline:3px solid #ffd34d;outline-offset:2px}
 .scene-pad svg{width:20px;height:20px;display:block}
-.scene-stick{position:absolute;left:max(12px,env(safe-area-inset-left));bottom:var(--sc-bottom);width:104px;height:104px;border-radius:50%;background:rgba(18,32,28,.3);border:2px solid rgba(255,255,255,.6);pointer-events:auto;touch-action:none;display:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.scene-stick{position:absolute;left:calc(max(12px,env(safe-area-inset-left)) + var(--play-x,0px));bottom:var(--sc-bottom);width:104px;height:104px;border-radius:50%;background:rgba(18,32,28,.3);border:2px solid rgba(255,255,255,.6);pointer-events:auto;touch-action:none;display:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 .scene-controls.is-touch .scene-stick{display:block}
 .scene-stick i{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(0,0,0,.3);pointer-events:none}
 .scene-hint{position:absolute;left:50%;top:var(--sc-top);transform:translateX(-50%);display:flex;align-items:center;gap:6px;max-width:calc(100% - 24px);padding:6px 6px 6px 12px;border-radius:999px;background:rgba(18,32,28,.84);color:#fff;pointer-events:auto;box-shadow:0 2px 8px rgba(0,0,0,.25);text-align:center}

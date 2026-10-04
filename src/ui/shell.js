@@ -159,9 +159,9 @@ const MAX_TOASTS = 2;
 /** A need under this is low (shown on a phone's HUD, marked beside its bar); under the second it is critical. */
 const LOW_NEED = 35, CRITICAL_NEED = 20;
 const TOAST_KINDS = ['info', 'good', 'earn', 'spend', 'error'];
-/** The first-session coach points at the next control for this many starter goals, then stops. */
-const COACH_GOALS = 3;
 const COACH_KEY = 'joinallworld-coach-off';
+/** How many times each situational pointer has been acted on (it retires after a few: attention.js TAPER). */
+const SEEN_KEY = 'joinallworld-hints-seen';
 const LOADING = skeleton();
 /**
  * CONNECTION STATES (view.link, from src/client.js). Each has its own truthful wording: the word
@@ -190,7 +190,12 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   let state = null, view = null, mode = 'venue', lastMode = 'venue', modeParams = null, expanded = false, sheet = null, lastSpotKey = '', forced = false;
   let trayOpen = false, clean = false, saving = 0, lastCash = null, lastNeeds = null, lastMessage = null, lastLife = '', coachOff = false;
   let wasExpanded = false;
-  try { coachOff = globalThis.localStorage?.getItem(COACH_KEY) === '1'; } catch { coachOff = false; }
+  const readHints = () => { try { coachOff = globalThis.localStorage?.getItem(COACH_KEY) === '1'; } catch { coachOff = false; } };
+  readHints();
+  // The attention system: its code arrives just after the first paint; until then nothing is pointed at.
+  let attn = null, attention = null, stepId = '', lastClick = null, seen = {}, wasBusy = '', lastPlace = null, lastWaiting = 0;
+  try { seen = JSON.parse(globalThis.localStorage?.getItem(SEEN_KEY)) || {}; } catch { seen = {}; }
+  import('./attention.js').then((module) => { attn = module; attention = module.createAttention({ root, dialog }); if (state) api.refresh(); }, () => {});
   const html = new WeakMap();
   const byId = new Map(panels.map((panel) => [panel.id, panel]));
   const placed = (placement) => panels.filter((panel) => panel.placement === placement);
@@ -206,12 +211,11 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       <div class="life-quick"><div class="life-needs" role="group" aria-label="Your needs">${NEEDS.map((id) => `<div class="life-need" title="${cap(id)}"><span aria-hidden="true">${glyph(id)}</span><div role="meter" aria-label="${cap(id)}" aria-valuemin="0" aria-valuemax="100" data-need="${id}"><i></i></div></div>`).join('')}</div>
         <button class="life-round" data-tray-toggle aria-expanded="false" aria-controls="life-tray" aria-label="More: weather, messages, city and help" title="More">${icon('menu')}<b class="life-badge" data-badge hidden></b></button>
         <button class="life-round" data-clean aria-pressed="false" aria-label="Clean screen: hide the panels and show only the scene" title="Clean screen (X)">${icon('eye')}</button></div>
-      <div class="life-alerts" data-slot="alert"></div>
       <div class="life-goal" data-slot="goal"></div>
       <div class="life-tray" id="life-tray"><div class="life-hud" data-slot="hud"></div><div class="life-menu" data-slot="menu"></div></div>
     </aside>
     <div class="life-toasts" data-toasts role="status" aria-live="polite"></div>
-    <div class="life-bottom" data-bottom><div data-slot="coach"></div><div data-slot="progress"></div><div data-slot="main"></div><nav class="life-nav" aria-label="Main navigation" data-slot="nav"></nav></div>`;
+    <div class="life-bottom" data-bottom><div data-slot="coach"></div><div class="life-alerts" data-slot="alert"></div><div data-slot="progress"></div><div data-slot="main"></div><nav class="life-nav" aria-label="Main navigation" data-slot="nav"></nav></div>`;
   const $ = (selector) => root.querySelector(selector);
   const el = { clock: $('[data-clock]'), mood: $('[data-mood]'), name: $('[data-name]'), cash: $('[data-cash]'), delta: $('[data-delta]'), saved: $('[data-saved]'),
     toasts: $('[data-toasts]'), bottom: $('[data-bottom]'), progress: $('[data-slot="progress"]'), main: $('[data-slot="main"]'), nav: $('[data-slot="nav"]'), coach: $('[data-slot="coach"]'),
@@ -283,7 +287,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
    */
   function placeToasts() {
     const narrow = globalThis.matchMedia?.('(max-width: 1000px)').matches;
-    const rows = dialog.open ? [] : [el.notice, ...(narrow ? [el.sidebar.querySelector('.life-quick'), el.slots.alert, el.slots.goal] : [])];
+    const rows = dialog.open ? [] : [el.notice, ...(narrow ? [el.sidebar.querySelector('.life-quick'), el.slots.goal] : [])];
     const bottom = Math.max(0, ...rows.map((node) => node?.getBoundingClientRect().bottom || 0));
     if (bottom > 0) el.toasts.style.setProperty('--toast-top', `${Math.round(bottom + 6)}px`);
     else el.toasts.style.removeProperty('--toast-top');
@@ -617,45 +621,55 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
 
   /**
-   * First-session coach: for the first COACH_GOALS starter goals it names the next control and
-   * rings it. It is silent once those goals are done, when dismissed, and whenever a sheet,
-   * the map or Buy mode is in front. → { text, target (selector within root) } | null
+   * GUIDANCE (src/ui/attention.js, fetched right after the first paint): the one next step, if there
+   * is one, is ringed — and spelled out in the coach line for the first starter goals, or in a small
+   * bubble with an arrow when the control is a long way from where the player last clicked. It is
+   * silent on a Clean screen, with Hints off (Settings, or the × on the coach line), and it tapers:
+   * each situational pointer (Go on the map, where the trip card is, a roadside prompt) is shown a
+   * few times and then retired. One pointer at a time.
    */
-  function coachStep() {
-    if (coachOff || clean || mode !== 'venue' || !view.connected || view.onboarding?.required) return null;
-    const goal = view.goals?.chip;
-    if (!goal || goal.kind !== 'goal' || goal.step > COACH_GOALS) return null;
-    const active = state.activeAction;
-    if (active) {
-      if (isTrip(active)) return null;
-      // Only the goal's own activity (one started at the goal's spot) is cheered on; anything else is named as a detour.
-      const [goalVenue, goalSpot] = goal.go || [];
-      const forGoal = Boolean(goalSpot) && state.location === goalVenue && state.spot === goalSpot;
-      return { text: forGoal ? 'Nice. It finishes by itself — watch the bar.' : 'This is not part of the goal. Let it finish or cancel it, then carry on.', target: null };
-    }
-    if (goal.go) {
-      const [venueId, spotId] = goal.go;
-      if (state.location !== venueId) return { text: `Go ${venueId === 'home' ? 'Home' : 'there'} first: tap ${venueId === 'home' ? 'Home' : 'Map'}.`, target: `[data-nav="${venueId === 'home' ? 'home' : 'map'}"]` };
-      const spot = view.activities.spots.find((item) => item.id === spotId);
-      if (spot && (state.spot !== spotId || !expanded)) return { text: `Tap ${spot.label} to see what you can do.`, target: `[data-spot="${spotId}"]` };
-      return { text: `Pick one. ${goal.hint}.`, target: '.life-action:not(:disabled):not(.is-blocked)' };
-    }
-    if (goal.open) {
-      const app = byId.get(goal.open);
-      if (app?.placement === 'phone') return { text: `Open Phone, then ${app.title}.`, target: '[data-nav="phone"]', app: app.id };
-      if (app?.placement === 'nav') return { text: `Tap ${app.title}.`, target: `[data-nav="${goal.open}"]` };
-    }
-    return null;
+  function stepNow() {
+    if (!attn) return null;
+    return attn.nextStep({ state, view, mode, expanded, clean, hintsOff: coachOff, sheet: sheet?.kind || null, seen, apps: (id) => byId.get(id), picked: mode === 'map' && Boolean(el.main.querySelector('.map-go:not(:disabled)')) });
   }
   function renderCoach() {
-    const step = coachStep(), goal = view.goals?.chip;
+    const step = stepNow(), coach = step?.id === 'goal' && step.bubble ? step : null;
+    // A step that was showing and is now gone (or replaced) was acted on: count it, so the situational pointers taper off.
+    if (stepId && stepId !== 'goal' && stepId !== step?.id) { seen[stepId] = (seen[stepId] || 0) + 1; try { globalThis.localStorage?.setItem(SEEN_KEY, JSON.stringify(seen)); } catch { /* counted for this visit */ } }
+    stepId = step?.id || '';
     // One line of guidance at a time: while the coach is talking, a phone's HUD drops the goal chip that says the same thing.
-    root.classList.toggle('has-coach', Boolean(step));
-    setHtml(el.coach, step ? `<div class="life-coach" role="note"><span aria-hidden="true">${mark('pointer')}</span><p><b>Goal ${esc(goal.step)} of ${esc(goal.of)} · ${esc(goal.title)}</b>${esc(step.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
-    for (const node of [...root.querySelectorAll('.is-coach'), ...dialogContent.querySelectorAll('.is-coach')]) node.classList.remove('is-coach');
-    if (step?.target) root.querySelector(step.target)?.classList.add('is-coach');
+    root.classList.toggle('has-coach', Boolean(coach));
+    setHtml(el.coach, coach ? `<div class="life-coach" role="note"><span aria-hidden="true">${mark('pointer')}</span><p><b>${esc(coach.title)}</b>${esc(coach.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
+    for (const node of dialogContent.querySelectorAll('.is-coach')) node.classList.remove('is-coach');
+    if (!attention) return;
+    const recent = lastClick && Date.now() - lastClick.at < 6000 ? lastClick : null;
+    // The coach line already says a goal step; only the situational pointers get a bubble of their own.
+    attention.point(step?.target || null, { text: step && !coach && step.bubble ? step.text : '', from: recent });
     if (step?.app && sheet?.kind === 'phone') dialogContent.querySelector(`[data-ph-app="${step.app}"]`)?.classList.add('is-coach');
   }
+
+  /**
+   * CAUSE → EFFECT, and things that happen elsewhere. A status card that has just appeared (an
+   * activity's progress, a trip) slides in from the control that started it, so the eye follows it
+   * to the bottom-centre stack. A change the player may not be looking at — money, a need turning
+   * low, something new waiting in More, arriving somewhere — gets a brief pill near the middle that
+   * points at it (and is said for screen readers). All one-shot CSS; nothing is drawn in the scene.
+   */
+  function notice(needs) {
+    if (!attention) { lastPlace = state.location; return; }
+    const active = state.activeAction, busy = active ? `${active.kind}:${active.id}` : '';
+    if (busy && busy !== wasBusy && lastClick && Date.now() - lastClick.at < 2500) attention.arrive(isTrip(active) && mode === 'map' ? el.main : el.progress, lastClick);
+    wasBusy = busy;
+    if (!view.connected) return;
+    if (lastPlace !== null && lastPlace !== state.location && !active) attention.announce(`You are at ${placeOf(state.location).label}`, { at: '.life-venue-heading', kind: 'good' });
+    lastPlace = state.location;
+    for (const need of view.needs.order) if (noticeNeeds?.[need] >= LOW_NEED && needs[need] < LOW_NEED) attention.announce(`${cap(need)} is low`, { at: el.mood, kind: 'warn' });
+    noticeNeeds = needs;
+    const waiting = el.slots.hud.querySelectorAll('.is-active').length;
+    if (waiting > lastWaiting && !trayOpen) attention.announce('Something new is waiting in More', { at: el.tray });
+    lastWaiting = waiting;
+  }
+  let noticeNeeds = null;
 
   // ---- render ---------------------------------------------------------------------------
   function render(nextState, nextView) {
@@ -681,6 +695,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       el.delta.textContent = `${change > 0 ? '+' : '−'}${money(Math.abs(change))}${entry && entry.amount === change ? ` · ${entry.reason}` : ''}`;
       flash(el.delta, change > 0 ? 'is-up' : 'is-down');
       flash(el.cash, change > 0 ? 'is-up' : 'is-down');
+      // Off the venue view (the map, a sheet) nothing else says it where the player is looking: a brief pill near the middle does.
+      if (mode !== 'venue' || dialog.open) attention?.announce(el.delta.textContent, { at: el.cash, kind: change > 0 ? 'good' : 'spend' });
     }
     if (view.connected) lastCash = state.cash;
 
@@ -755,6 +771,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     lastMode = mode;
     setHtml(el.nav, navHtml());
     renderSheet(forced);
+    notice(needs);
     renderCoach();
     // A panel that must be completed opens by itself (and comes back if anything replaced it).
     if (view.connected) {
@@ -789,7 +806,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const data = target.dataset;
     if ('trayToggle' in data) { setTray(!trayOpen); return; }
     if ('clean' in data) { setClean(!clean); api.refresh(); return; }
-    if ('coachOff' in data) { coachOff = true; try { globalThis.localStorage?.setItem(COACH_KEY, '1'); } catch { /* still off for this visit */ } api.refresh(); return; }
+    if ('coachOff' in data) { coachOff = true; attention?.clear(); try { globalThis.localStorage?.setItem(COACH_KEY, '1'); } catch { /* still off for this visit */ } api.refresh(); return; }
     if ('retryPanel' in data) { const panel = byId.get(data.retryPanel); if (panel) { panel.failed = false; api.refresh(); } return; }
     if ('menu' in data) { setTray(false); host.menu?.(data.menu); return; }
     // The connection notice: one tap starts a new life (the same event the session panel sends), or opens the session panel.
@@ -812,7 +829,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     else if ('close' in data) close();
   }
   /** A tap anywhere outside the tray closes it. */
-  function onOutside(event) { if (trayOpen && !el.sidebar.contains(event.target)) setTray(false); }
+  function onOutside(event) {
+    lastClick = { x: event.clientX, y: event.clientY, at: Date.now() }; if (trayOpen && !el.sidebar.contains(event.target)) setTray(false); }
   function navigate(id) {
     if (clean) setClean(false);
     if (id === 'phone') open('phone');
@@ -892,12 +910,15 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   window.addEventListener('keydown', onKey);
   window.addEventListener('keyup', onKeyUp);
   window.addEventListener('jaw:scene-spot', onSceneSpot);
+  // Settings → Hints was switched: read it again and redraw.
+  const onHints = () => { readHints(); if (state) api.refresh(); };
+  window.addEventListener('jaw:hints', onHints);
 
   return {
     api, render, open, close, toast,
     get mode() { return mode; },
     setMode,
     setExpanded(value) { expanded = Boolean(value); },
-    destroy() { offGlyphs(); phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
+    destroy() { attention?.destroy(); window.removeEventListener('jaw:hints', onHints); offGlyphs(); phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

@@ -116,8 +116,10 @@ async function loadScene() {
     venue.setState(client.state);
     showPlayer();
     showCrowd();
-    venue.resize();
     layoutScene();
+    venue.resize();
+    // The first frame is in the canvas: bring it up with the same short fade as an arrival, over the calm backdrop — never a flash.
+    $('venue-scene').classList.add('is-arriving');
     reportPlace();
     // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
     // (Nothing is built or drawn until the Map opens.)
@@ -224,7 +226,7 @@ function layoutScene() {
   const stack = box('.life-bottom'), quick = box('.life-quick'), bar = box('.life-status'), page = overlay.getBoundingClientRect();
   const phone = page.width <= 720;
   // On a phone the rows under the top bar (needs, alerts, the goal line) are the HUD's: the scene's one-time hint sits under the last of them.
-  const rows = phone ? Math.max(0, ...['.life-quick', '.life-alerts', '.life-goal'].map((selector) => { const row = box(selector); return row && row.height ? row.bottom : 0; })) : 0;
+  const rows = phone ? Math.max(0, ...['.life-quick', '.life-goal'].map((selector) => { const row = box(selector); return row && row.height ? row.bottom : 0; })) : 0;
   venue.setInsets({ top: ((phone ? quick?.bottom : bar?.bottom) || bar?.bottom || page.top) - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 });
 }
 // A resize (or a phone being turned) moves the HUD: measure it again before the scene is re-framed, so the controls and the camera use the new free area at once.
@@ -259,6 +261,9 @@ function accepted(state, previous) {
   // player who then opens another screen (Buy, a Phone app) is not pulled back; leaving that screen returns to the map.
   const trip = tripKey(state);
   if (trip && trip !== shownTrip && shell.mode !== 'map') shell.setMode('map');
+  // The trip has just set off: build the place it is going to now (once, a moment after the trip bar has appeared), so
+  // arriving is a reveal and not a wait. Nothing is drawn; the map is what is on screen.
+  if (trip && trip !== shownTrip && state.activeAction?.kind === 'travel') { const to = state.activeAction.id; setTimeout(() => { if (tripKey(client.state) === trip) venue?.prepare(to); }, 450); }
   shownTrip = trip;
   if (moved) {
     venue?.setLocation(state.location);

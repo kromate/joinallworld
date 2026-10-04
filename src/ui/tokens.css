@@ -39,6 +39,10 @@
   /* status: orange for low, vermilion for critical (distinct from the green for people who cannot tell red from green), always with a mark */
   --c-low: #c97a10;
   --c-critical: #b3402a;
+  /* THE PLAY COLUMN. On a very wide screen the controls do not scatter to the far corners: everything the player reads or
+     taps sits inside a centred column at most 1600px wide, and --play-x is how far that column's edge is from the window's.
+     The 3D scene and the map still use the full width behind it. */
+  --play-x: max(0px, calc((100vw - 1600px) / 2));
   /* spacing */
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
   /* radii */

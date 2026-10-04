@@ -159,7 +159,7 @@ const growth = lazyGroup(() => import('./groups/growth.js'), [
   { id: 'events', title: 'Events', placement: 'phone', order: 41, group: 'city', tint: GROWTH_TINTS.events, badge: (state, view) => (growthLive(view).length ? 1 : 0) },
   { id: 'refer', title: 'Bring a friend', short: 'Friends', placement: 'phone', order: 39, group: 'people', tint: GROWTH_TINTS.refer },
   { id: 'touch', title: 'Stay in touch', short: 'In touch', placement: 'phone', order: 94, group: 'life', tint: GROWTH_TINTS.touch, live: false },
-  { id: 'share-sheet', title: 'Share', placement: 'modal', live: false },
+  { id: 'share-sheet', title: 'Share', icon: 'share', placement: 'modal', live: false },
 ]);
 
 const tableApps = lazyGroup(() => import('./groups/tables.js'), [

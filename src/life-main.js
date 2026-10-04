@@ -214,6 +214,8 @@ function render() {
   shell.render(state, buildView());
   // The country map shows which cities this player holds: redrawn when that list changes (a session arrived, a city was entered).
   if (world && heldCities().join() !== heldShown) { heldShown = heldCities().join(); world.refresh(); }
+  // A trip between cities is drawn on the world map, where the server's timer says it is.
+  world?.setState?.(state);
   // Told after the shell has drawn, so the map measures the panel it shares the screen with. Hidden, it draws nothing.
   cityMap?.setShown(mapOpen && !worldLayer);
 }

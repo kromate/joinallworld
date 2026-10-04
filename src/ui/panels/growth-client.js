@@ -95,6 +95,7 @@ export async function load(api, { force = false } = {}) {
   G.loading = true;
   const result = await call('/api/growth/hello', { device: deviceToken() });
   G.loading = false; G.at = Date.now();
+  if (result.ok && result.contact?.email?.confirmed && G.hello && !G.hello.contact?.email?.confirmed) track('email_optin_confirmed');
   if (result.ok) { if ((result.referral?.paid?.paidTotal ?? 0) > (G.hello?.referral?.paid?.paidTotal ?? Infinity)) track('referral_rewarded'); G.hello = result; G.error = null; if (result.state) void api.command('missions.refresh'); }
   else G.error = result.reason;
   refresh();

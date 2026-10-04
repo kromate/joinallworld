@@ -80,7 +80,9 @@ const mapPanel = {
     const item = view.travel.destinations.find((entry) => entry.id === destination);
     return item ? card(state, view, item) : overview(state, view);
   },
-  bind(root, api) {
+  bind(root, api, params) {
+    // Opened for a place (the Home tab, a goal chip, "Go to work"): highlight it on the city map too.
+    if (params?.destination && params.destination === destination) tell({ selected: destination });
     root.addEventListener('click', async (event) => {
       const hit = (name) => event.target.closest(`[data-map-${name}]`);
       const pick = hit('pick'), choose = hit('mode'), chip = hit('filter'), swap = hit('layer'), share = hit('share');

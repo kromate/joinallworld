@@ -1,7 +1,9 @@
 /**
  * OWNER: character
  * Character creation flow: Look → Personality → Dream → Birth lottery → Home.
- * Open with api.open('onboarding'); the goal chip offers it to a new life.
+ * Open with api.open('onboarding'); the goal chip offers it to a new life. For a life the server
+ * marks as required (view.onboarding.required) the shell opens it by itself and it cannot be
+ * dismissed until the Sim has moved in; a life that predates character creation never sees it.
  *
  * Every step is confirmed by a server action (see src/game/systems/onboarding.js); this file
  * only keeps the draft being edited. The panel is not live, so a poll never wipes a draft:
@@ -64,6 +66,8 @@ function stepBody(state, view) {
 
 export default {
   id: ID, title: 'Create your Sim', icon: '✨', placement: 'modal', live: false,
+  /** A brand-new life must be created before anything else: the shell opens this by itself and keeps it open. */
+  required(state, view) { return view.onboarding?.required ? 'Finish creating your Sim to start playing. This cannot be skipped, and nothing else works until you have moved in.' : null; },
   render(state, view) {
     const o = view.onboarding;
     if (o.done) {

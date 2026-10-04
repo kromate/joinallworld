@@ -40,7 +40,7 @@ cityMap.setCity(client.cityId);
 const dialog = $('life-dialog');
 const shell = createShell({
   root: $('life-overlay'), dialog, dialogContent: $('life-dialog-content'), panels: PANELS,
-  host: { command, fetchJson: client.fetchJson, goTo, toggleCommunity, onMode() { render(); refreshScene(); } },
+  host: { command, fetchJson: client.fetchJson, goTo, toggleCommunity, redrawScene: () => { if (shell.mode !== 'map') venue.update(); }, onMode() { render(); refreshScene(); } },
 });
 
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
@@ -48,7 +48,9 @@ function buildView() {
   const now = client.serverNow(), cityId = client.cityId;
   return {
     ...viewLife(client.state, { now, cityId }),
-    cityId, city: CITIES[cityId], connected: client.online, session: client.session, name: client.identity.name, now,
+    cityId, city: CITIES[cityId], connected: client.online, session: client.session,
+    // The life's own name (the server keeps it equal to the session nickname), so a rename shows as soon as the next state arrives.
+    name: client.state.name || client.identity.name, now,
     clock: clockFormat.format(new Date(now)).replace(',', ' ·'),
     venues: Object.values(VENUES).map((item) => ({ id: item.id, label: venueLabel(item.id, cityId), district: venueDistrict(item.id, cityId), icon: item.icon, description: item.description })),
   };
@@ -71,7 +73,11 @@ function refreshScene() { if (shell.mode === 'map') { world.resize(); cityMap.re
 /** Called after every accepted server state. */
 function accepted(state, previous) {
   const moved = previous.location !== state.location;
-  if (moved) { venue.setLocation(state.location); if (shell.mode !== 'venue') shell.setMode('venue'); }
+  if (moved) {
+    venue.setLocation(state.location);
+    if (shell.mode !== 'venue') shell.setMode('venue');
+    if (pendingRoute && pendingRoute.venue !== state.location) pendingRoute = null; // went somewhere else instead
+  }
   // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
   if (roomJoinNeeded(previous, state)) community?.join(client.cityId, state.location);
   venue.setState(state);
@@ -92,15 +98,19 @@ async function command(type, payload) {
   return result;
 }
 
-/** Walk (free trek) to a venue and stand at a spot once there. */
+/**
+ * Go to a venue and stand at a spot there. Already there: select the spot. Elsewhere: open the
+ * Map travel card for the venue (mode tiles, Danfo selected) — a trip is never started on the
+ * player's behalf — and remember the spot for when they arrive.
+ */
 async function goTo(venueId, spotId) {
-  if (shell.mode !== 'venue') shell.setMode('venue');
   if (client.state.location === venueId) {
+    if (shell.mode !== 'venue') shell.setMode('venue');
     if (spotId) { shell.setExpanded(true); await command('spot', { id: spotId }); render(); }
     return;
   }
   pendingRoute = { venue: venueId, spot: spotId };
-  await command('travel', { id: venueId, mode: 'trek' });
+  shell.open('map', { destination: venueId });
 }
 
 function toggleCommunity(force) {
@@ -134,7 +144,7 @@ async function switchCity(id) {
 
 window.addEventListener('jaw:start-life', (event) => { if (event.detail?.name) client.identity.name = event.detail.name; connect(true); });
 window.addEventListener('jaw:switch-city', (event) => switchCity(event.detail.city));
-$('close-life-dialog').onclick = () => dialog.close();
+$('close-life-dialog').onclick = () => shell.close();
 $('city-switch').onclick = () => { shell.setMode('map'); shell.open('city', { city: client.cityId }); };
 $('community-toggle').onclick = () => toggleCommunity();
 $('community-close').onclick = () => toggleCommunity(false);

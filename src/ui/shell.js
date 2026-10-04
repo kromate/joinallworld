@@ -21,9 +21,17 @@
  *     live: true,                 // optional; false = do not re-render on every state update
  *                                 //   (use for forms; call api.refresh() yourself)
  *     enabled(state, view) {},    // optional; return true, or a string reason to disable the entry
+ *     required(state, view) {},   // optional ('modal' panels); return a string reason while the panel MUST
+ *                                 //   be completed: the shell opens it by itself, shows the reason, and
+ *                                 //   Esc, the close button and other sheets do nothing until it returns
+ *                                 //   nothing (used by character creation for a brand-new life)
  *     render(state, view, api) → html string,
- *     bind(root, api) {},         // optional; called after each (re)render with the panel's root element
- *     keys(action, api) {},       // optional; receives 'key:*' shortcuts while this panel is showing
+ *     bind(root, api, params) {}, // optional; called after each (re)render with the panel's root element
+ *                                 //   and the params it was opened with
+ *     keys(action, api) {},       // optional; receives 'key:*' shortcuts while this panel is showing, and
+ *                                 //   'cancel' when Esc is pressed — return true to say "handled" (the
+ *                                 //   shell then does not close the panel: e.g. Esc cancels a placement
+ *                                 //   first, and only a second Esc leaves Buy mode)
  *   };
  *
  * PLACEMENTS
@@ -59,8 +67,15 @@
  *   api.close()                   close the sheet, or return a nav panel to the venue view
  *   api.toast(text, kind?)        top-centre toast; kind: 'info' | 'good' | 'error'
  *   api.fetchJson(path, { method, body, headers }?) → Promise<object>; rejects Error{ status, code }
- *   api.refresh()                 re-render now (after changing your own module-level UI state)
- *   api.goTo(venueId, spotId?)    travel (free trek) to a venue and stand at a spot on arrival
+ *   api.refresh()                 re-render now (after changing your own module-level UI state);
+ *                                 this also redraws a showing `live: false` panel
+ *   api.redrawScene()             ask the host to draw one frame of the 3D scene now (after a
+ *                                 window event changed what a scene shows). On demand only: never
+ *                                 call it from a timer or a loop.
+ *   api.goTo(venueId, spotId?)    go to a venue and stand at a spot there. Already at the venue:
+ *                                 just select the spot. Elsewhere: open the Map travel card for it
+ *                                 (mode tiles, Danfo selected) — it never starts a trip by itself;
+ *                                 the spot is selected on arrival.
  *   api.toggleCommunity(force?)   show/hide the existing community (presence/chat/voice) panel
  *   api.state() / api.view()      the latest state and view, for use inside bind/keys handlers
  *
@@ -86,7 +101,7 @@ const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone'
 const TOAST_MS = 4000;
 
 export function createShell({ root, dialog, dialogContent, panels, host }) {
-  let state = null, view = null, mode = 'venue', lastMode = 'venue', modeParams = null, expanded = false, sheet = null, lastSpotKey = '';
+  let state = null, view = null, mode = 'venue', lastMode = 'venue', modeParams = null, expanded = false, sheet = null, lastSpotKey = '', forced = false;
   const html = new WeakMap();
   const byId = new Map(panels.map((panel) => [panel.id, panel]));
   const placed = (placement) => panels.filter((panel) => panel.placement === placement);
@@ -117,7 +132,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     open, close,
     toast,
     fetchJson: (path, options) => host.fetchJson(path, options),
-    refresh: () => render(state, view),
+    refresh: () => { forced = true; try { render(state, view); } finally { forced = false; } },
+    redrawScene: () => host.redrawScene?.(),
     goTo: (venueId, spotId) => host.goTo(venueId, spotId),
     toggleCommunity: (force) => host.toggleCommunity(force),
     state: () => state,
@@ -133,9 +149,24 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     while (el.toasts.children.length > 3) el.toasts.firstChild.remove();
     setTimeout(() => item.remove(), TOAST_MS);
   }
+  /** A modal dialog sits in the browser's top layer, above everything else: toasts move into it while it is open. */
+  function mountToasts() {
+    const home = dialog.open ? dialog : root;
+    if (el.toasts.parentNode !== home) home.append(el.toasts);
+  }
+
+  /** The reason the open sheet may not be closed yet (a panel whose required() still returns one), or null. */
+  function lockOf() {
+    if (sheet?.kind !== 'panel' || !state || !view) return null;
+    const panel = byId.get(sheet.id);
+    const reason = panel?.required?.(state, panelView(sheet.params));
+    return typeof reason === 'string' && reason ? { panel, reason } : null;
+  }
 
   // ---- sheets (dialog) ------------------------------------------------------------------
   function open(id, params) {
+    const lock = lockOf();
+    if (lock && id !== lock.panel.id && byId.get(id)?.role !== 'session-gate') { toast(lock.reason); return false; }
     if (id === 'phone' || id === 'help') sheet = { kind: id };
     else if (id === 'sim') sheet = { kind: 'sim', tab: params?.tab || sheet?.tab || placed('sim-tab')[0]?.id };
     else {
@@ -151,14 +182,23 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     html.delete(dialogContent);
     renderSheet();
     if (!dialog.open) dialog.showModal();
+    mountToasts();
     return true;
   }
-  function closeDialog() { sheet = null; if (dialog.open) dialog.close(); }
+  function closeDialog() { sheet = null; if (dialog.open) dialog.close(); mountToasts(); }
   function close() {
+    const lock = lockOf();
+    if (lock) { toast(lock.reason); return; }
     if (sheet) closeDialog();
     else if (mode !== 'venue') setMode('venue');
   }
-  dialog.addEventListener('close', () => { sheet = null; html.delete(dialogContent); });
+  // Esc on a modal dialog raises 'cancel'; a required panel refuses it. Browsers let a second Esc
+  // through regardless, so a required panel that gets closed is put straight back.
+  dialog.addEventListener('cancel', (event) => { const lock = lockOf(); if (lock) { event.preventDefault(); toast(lock.reason); } });
+  dialog.addEventListener('close', () => {
+    if (lockOf()) { html.delete(dialogContent); renderSheet(); dialog.showModal(); mountToasts(); return; }
+    sheet = null; html.delete(dialogContent); mountToasts();
+  });
 
   function setMode(next, params) {
     mode = next === 'venue' || byId.get(next)?.placement === 'nav' ? next : 'venue';
@@ -171,10 +211,10 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     try { return panel.render(state, panelView(params), api) ?? ''; }
     catch (error) { console.error(`Panel ${panel.id} failed to render:`, error); return '<p class="ui-error">This screen could not be shown.</p>'; }
   }
-  function bindPanels(container) {
+  function bindPanels(container, params) {
     for (const node of container.querySelectorAll('[data-panel]')) {
       const panel = byId.get(node.dataset.panel);
-      try { panel?.bind?.(node, api); } catch (error) { console.error(`Panel ${node.dataset.panel} failed to bind:`, error); }
+      try { panel?.bind?.(node, api, params ?? null); } catch (error) { console.error(`Panel ${node.dataset.panel} failed to bind:`, error); }
     }
   }
 
@@ -190,13 +230,21 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       const current = tabs.find((panel) => panel.id === sheet.tab) || tabs[0];
       const feeling = view.needs?.feelings?.[0];
       if (current && current.live === false && !force) return;
-      body = `<header class="sheet-head sim-head"><span class="sim-avatar" aria-hidden="true">👤</span><div><h2>${esc(view.name)}</h2><p>${esc(view.needs?.mood?.label ?? '')}${feeling ? ` · ${esc(feeling.label)}` : ''}</p></div></header><div class="sim-tabs" role="tablist">${tabs.map((panel) => `<button role="tab" aria-selected="${panel === current}" class="${panel === current ? 'is-selected' : ''}" data-tab="${esc(panel.id)}">${esc(panel.title)}</button>`).join('')}</div><div class="sheet-body" role="tabpanel" data-panel="${esc(current?.id ?? '')}">${current ? panelHtml(current, sheet.params) : ''}</div>`;
+      body = `<header class="sheet-head sim-head"><span class="sim-avatar" aria-hidden="true">👤</span><div><h2>${esc(state.name)}</h2><p>${esc(moodOf().word)}${feeling ? ` · ${esc(feeling.label)}` : ''}</p></div></header><div class="sim-tabs" role="tablist">${tabs.map((panel) => `<button role="tab" aria-selected="${panel === current}" class="${panel === current ? 'is-selected' : ''}" data-tab="${esc(panel.id)}">${esc(panel.title)}</button>`).join('')}</div><div class="sheet-body" role="tabpanel" data-panel="${esc(current?.id ?? '')}">${current ? panelHtml(current, sheet.params) : ''}</div>`;
     } else {
       const panel = byId.get(sheet.id);
       if (panel.live === false && !force) return;
-      body = `<header class="sheet-head">${sheet.from === 'phone' ? `<button class="sheet-back" data-open="phone" aria-label="Back to phone">${icon('back')}</button>` : ''}<h2>${esc(panel.icon || '')} ${esc(panel.title)}</h2></header><div class="sheet-body" data-panel="${esc(panel.id)}">${panelHtml(panel, sheet.params)}</div>`;
+      const lock = lockOf();
+      body = `<header class="sheet-head">${sheet.from === 'phone' ? `<button class="sheet-back" data-open="phone" aria-label="Back to phone">${icon('back')}</button>` : ''}<h2>${esc(panel.icon || '')} ${esc(panel.title)}</h2></header>${lock ? `<p class="sheet-lock" role="note">🔒 ${esc(lock.reason)}</p>` : ''}<div class="sheet-body" data-panel="${esc(panel.id)}">${panelHtml(panel, sheet.params)}</div>`;
     }
-    if (setHtml(dialogContent, body)) bindPanels(dialogContent);
+    dialog.toggleAttribute('data-locked', Boolean(lockOf()));
+    if (setHtml(dialogContent, body)) bindPanels(dialogContent, sheet.params);
+  }
+
+  /** The mood word shown in the HUD and the Sim header: the character system's five words, else the core label. */
+  function moodOf() {
+    const mood = view.onboarding?.mood;
+    return mood?.word ? mood : { word: view.needs.mood.label, icon: view.needs.mood.icon, tone: view.needs.mood.score < 25 ? 'bad' : view.needs.mood.score < 45 ? 'warn' : 'good', score: view.needs.mood.score };
   }
 
   // ---- venue panel (shell-owned) --------------------------------------------------------
@@ -228,14 +276,21 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const activities = view.activities;
     const spots = activities.spots.filter((spot) => !privateHome || spot.id !== 'people');
     const spot = spots.find((item) => item.id === state.spot);
-    return `<section class="life-venue-panel" aria-label="Current venue"><header class="life-venue-header"><button class="life-avatar" data-open="sim" aria-label="Open your profile">👤</button><div class="life-venue-heading"><h1>${esc(venue.icon || '')} ${esc(venue.label)} <span>· ${esc(venue.district)}</span></h1><p>${esc(spot?.caption || 'Explore at your own pace')}</p></div><button class="life-icon-button" data-open="map" aria-label="Open map">${icon('map')}</button><button class="life-icon-button" data-open="help" aria-label="Help">?</button></header><div class="life-chat">${privateHome ? '<span class="life-private-home">🔒 Your private home</span>' : view.connected ? '<button class="life-community-chat" data-community><span>💬 Open community chat</span><span aria-hidden="true">→</span></button>' : '<span class="life-private-home">Offline · read-only until you reconnect</span>'}</div><div class="life-spots"><button class="life-expand ${expanded ? 'is-expanded' : ''}" data-toggle-activities aria-expanded="${expanded}" aria-label="${expanded ? 'Collapse' : 'Expand'} activities">${icon('chevron')}</button>${spots.map((item, i) => `<button class="${item.id === state.spot ? 'is-selected' : ''}" data-spot="${esc(item.id)}" title="Shortcut ${i + 1}">${esc(item.icon || '')} ${esc(item.label)}</button>`).join('')}${privateHome || spots.some((item) => item.id === 'people') ? '' : '<button data-community>👥 People</button>'}</div>${expanded ? `<div class="life-actions">${activities.cards.length ? activities.cards.map(activityCard).join('') : '<p class="life-empty">No activities at this spot yet.</p>'}</div>` : ''}</section>`;
+    // Home shows the player's own house; the line under the name is the venue's ambient line, which
+    // changes only when the view is rebuilt (a state update or an action) — there is no timer.
+    const house = privateHome ? view.property?.house : null;
+    const title = house?.label || venue.label, district = house?.district || venue.district;
+    const ambient = view.travel?.destinations?.find((item) => item.id === state.location)?.ambient;
+    return `<section class="life-venue-panel" aria-label="Current venue"><header class="life-venue-header"><button class="life-avatar" data-open="sim" aria-label="Open your profile">👤</button><div class="life-venue-heading"><h1>${esc(venue.icon || '')} ${esc(title)} <span>· ${esc(district)}</span></h1><p>${esc(ambient || spot?.caption || 'Explore at your own pace')}</p></div><button class="life-icon-button" data-open="map" aria-label="Open map">${icon('map')}</button><button class="life-icon-button" data-open="help" aria-label="Help">?</button></header><div class="life-chat">${privateHome ? '<span class="life-private-home">🔒 Your private home</span>' : view.connected ? '<button class="life-community-chat" data-community><span>💬 Open community chat</span><span aria-hidden="true">→</span></button>' : '<span class="life-private-home">Offline · read-only until you reconnect</span>'}</div><div class="life-spots"><button class="life-expand ${expanded ? 'is-expanded' : ''}" data-toggle-activities aria-expanded="${expanded}" aria-label="${expanded ? 'Collapse' : 'Expand'} activities">${icon('chevron')}</button>${spots.map((item, i) => `<button class="${item.id === state.spot ? 'is-selected' : ''}" data-spot="${esc(item.id)}" title="Shortcut ${i + 1}">${esc(item.icon || '')} ${esc(item.label)}</button>`).join('')}${privateHome || spots.some((item) => item.id === 'people') ? '' : '<button data-community>👥 People</button>'}</div>${expanded ? `<div class="life-actions">${activities.cards.length ? activities.cards.map(activityCard).join('') : '<p class="life-empty">No activities at this spot yet.</p>'}</div>` : ''}</section>`;
   }
   function progressHtml() {
     const active = state.activeAction;
     if (!active) return '';
     const activity = view.activities.active;
-    const destination = active.kind === 'travel' ? view.venues.find((item) => item.id === active.id) : null;
-    const name = activity?.label || (destination ? `Travelling to ${destination.label}` : 'Action in progress');
+    // Timed actions that are not activities name themselves by kind; the id is the venue they head for.
+    const destination = activity ? null : view.venues.find((item) => item.id === active.id);
+    const place = destination ? (destination.id === 'home' ? 'Home' : destination.label) : 'your destination';
+    const name = activity?.label || (active.kind === 'travel' ? `Travelling to ${place}` : active.kind === 'commute' ? `Commuting to work · ${place}` : destination ? `On the way to ${place}` : 'Action in progress');
     const paid = activity?.reward > 0;
     return `<section class="life-progress" aria-label="Current activity"><div><strong>${esc(name)}</strong><small data-remaining></small></div><button data-cancel ${activity && !activity.cancellable ? 'disabled' : ''} aria-label="${paid ? 'Cancel shift. Cancelling earns nothing' : 'Cancel current activity'}">Cancel</button><progress max="1" value="0" data-progress aria-label="Activity progress"></progress>${paid ? `<p class="life-progress-note">Pays ${money(activity.reward)} when finished. Cancelling earns nothing.</p>` : ''}</section>`;
   }
@@ -253,10 +308,12 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     state = nextState; view = nextView;
     if (!state || !view) return;
     setText(el.clock, view.clock);
-    const mood = view.needs.mood;
-    setText(el.mood, `${mood.icon} ${mood.label}`);
-    el.mood.classList.toggle('is-uneasy', mood.score < 45);
-    setText(el.name, `👤 ${view.name}`);
+    const mood = moodOf();
+    setText(el.mood, `${mood.icon} ${mood.word}`);
+    el.mood.classList.toggle('is-uneasy', mood.tone === 'warn');
+    el.mood.classList.toggle('is-bad', mood.tone === 'bad');
+    el.mood.classList.toggle('is-neutral', mood.tone === 'neutral');
+    setText(el.name, `👤 ${state.name}`);
     setText(el.cash, money(state.cash));
     setText(el.identity, view.connected ? 'City beta' : 'Offline · read-only');
     for (const need of view.needs.order) {
@@ -284,14 +341,19 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const rail = el.main.querySelector('.life-spots');
     const railLeft = rail?.scrollLeft || 0;
     const mainHtml = navPanel ? `<section class="life-sheet" aria-label="${esc(navPanel.title)}" data-panel="${esc(navPanel.id)}">${panelHtml(navPanel, modeParams)}</section>` : venuePanel();
-    if (navPanel?.live === false && html.has(el.main) && lastMode === mode) { /* static nav panel: leave as is */ }
+    if (navPanel?.live === false && html.has(el.main) && lastMode === mode && !forced) { /* static nav panel: leave as is until api.refresh() */ }
     else if (setHtml(el.main, mainHtml)) {
-      if (navPanel) bindPanels(el.main);
+      if (navPanel) bindPanels(el.main, modeParams);
       else { if (!rail) lastSpotKey = ''; restoreRail(railLeft); }
     }
     lastMode = mode;
     setHtml(el.nav, navHtml());
-    renderSheet(false);
+    renderSheet(forced);
+    // A panel that must be completed opens by itself (and comes back if anything replaced it).
+    if (view.connected) {
+      const must = panels.find((panel) => panel.placement === 'modal' && typeof panel.required?.(state, panelView()) === 'string');
+      if (must && !(sheet?.kind === 'panel' && (sheet.id === must.id || byId.get(sheet.id)?.role === 'session-gate'))) { sheet = null; open(must.id); }
+    }
   }
 
   /** Rebuilding resets the spot rail: keep the scroll position and reveal a newly selected spot. */
@@ -332,7 +394,12 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
   function navigate(id) {
     if (id === 'phone') open('phone');
-    else if (id === 'home') { closeDialog(); setMode('venue'); if (state.location !== 'home' && !state.activeAction) api.goTo('home'); }
+    else if (id === 'home') {
+      // At home (or already on the way somewhere): show the scene. Elsewhere: the travel card for Home, never a silent trek.
+      closeDialog();
+      const moving = state.activeAction?.kind === 'travel' || state.activeAction?.kind === 'commute';
+      if (state.location === 'home' || moving) setMode('venue'); else api.goTo('home');
+    }
     else if (mode === id) setMode('venue');
     else open(id);
   }
@@ -347,6 +414,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const shortcut = shortcutFor(event);
     if (!shortcut || !state) return;
     const [verb, arg] = shortcut.run.split(':');
+    const lock = lockOf();
+    if (lock) { if (verb === 'close') toast(lock.reason); return; } // nothing but the required panel responds
     if (verb === 'key') {
       if (event.key === 'Enter' && event.target.matches?.('button, a, summary')) return;
       showing()?.keys?.(arg, api);
@@ -354,7 +423,13 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       return;
     }
     if (dialog.open && verb !== 'close' && verb !== 'open' && verb !== 'help') return;
-    if (verb === 'close') { if (sheet || mode !== 'venue') close(); else if (expanded) { expanded = false; api.refresh(); } }
+    if (verb === 'close') {
+      // The showing panel gets Esc first ('cancel'); if it handled it, nothing is closed.
+      let handled = false;
+      try { handled = showing()?.keys?.('cancel', api) === true; } catch (error) { console.error('Panel failed to handle Esc:', error); }
+      if (handled) { event.preventDefault(); return; }
+      if (sheet || mode !== 'venue') close(); else if (expanded) { expanded = false; api.refresh(); }
+    }
     else if (verb === 'help') open('help');
     else if (verb === 'nav') navigate(arg);
     else if (verb === 'toggle') { if (mode === 'venue') { expanded = !expanded; api.refresh(); } }

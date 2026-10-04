@@ -6,7 +6,8 @@
  * placement panel (ghost, arrows, rotate, Place, Cancel) and the selected-object panel (Move,
  * Store, Sell). It renders inline above the bottom nav while the home scene stays visible.
  * Shortcuts arrive through keys(action): move-up/down/left/right, rotate, place, sell, catalogue.
- * Esc is the shell's own "close" and leaves Buy mode, which also cancels a placement.
+ * Esc arrives as keys('cancel'): it cancels a placement first; with nothing being placed the
+ * shell handles it and leaves Buy mode.
  *
  * 'home-chip' (HUD chip) — shown at home: which house this is, the room's loading / empty /
  * error state, the object the player tapped, and the shared kitchen inventory with a shortcut
@@ -45,7 +46,7 @@ const refund = (def) => Math.floor(def.price * SELL_REFUND_RATE);
 const objectOf = (state, id) => itemsOf(state).find((item) => item.id === id);
 const whyNot = (state, value = ghost) => checkPlacement(houseOf(state).grid, itemsOf(state), FURNITURE[value.itemId], value.x, value.y, value.rot, value.objectId ?? null);
 
-/** Tell the scene what to draw. In Buy mode also ask the host for a frame (re-opening the nav panel redraws the scene). */
+/** Tell the scene what to draw, then redraw this panel and ask the host for one frame of the scene. */
 function show(redraw = true) {
   const state = api?.state();
   if (!state) return;
@@ -53,7 +54,8 @@ function show(redraw = true) {
   const next = JSON.stringify(detail);
   if (next !== sent) { sent = next; window.dispatchEvent(new CustomEvent('jaw:home-ui', { detail })); }
   if (!redraw) return;
-  if (inBuy) api.open('buy'); else api.refresh();
+  api.refresh();
+  api.redrawScene();
 }
 
 function startGhost(state, source, itemId, objectId) {
@@ -205,7 +207,12 @@ const buy = {
     });
   },
   keys(action) {
-    if (!api) return;
+    if (!api) return false;
+    if (action === 'cancel') {
+      if (!ghost) return false; // nothing being placed: let the shell leave Buy mode
+      ghost = null; show();
+      return true;
+    }
     if (action in MOVES || action === 'rotate') move(action);
     else if (action === 'place') place();
     else if (action === 'sell') sell();

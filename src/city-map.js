@@ -1,8 +1,17 @@
 /**
  * OWNER: world
- * In-city map: a static schematic of the city (mainland, island, lagoon, bridges) with one
+ * The simple city map: a flat schematic of the city (mainland, island, lagoon, bridges) with one
  * labelled pin per venue, a Home pin and coming-soon pins. It is drawn behind the Map panel
  * (src/ui/panels/map.js), which holds the filter bar and the venue card.
+ *
+ * WHEN IT IS USED: the 3D miniature (src/map3d) is the city map wherever it can run. This one is
+ * the fallback where WebGL is unavailable or its context is lost, the map of a city that has no
+ * 3D pack yet, and the player's own choice ("Simple map"). src/map3d/index.js decides and swaps;
+ * both maps answer to the same contract below.
+ *
+ * A TRIP is shown here too, without any animation loop: a line from where the trip started to
+ * where it is going and a dot on it, placed from the server's own `remaining ÷ duration` every
+ * time a state arrives (a CSS animation carries it to the end over the seconds left).
  *
  * Contract (src/life-main.js calls exactly this):
  *   createCityMap(container, { onSelectVenue(venueId) }) → { setCity(cityId), setState(state), resize(), destroy(), ready }
@@ -55,13 +64,14 @@ const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&
 function backdrop(names) {
   const palm = (x, y) => `<g transform="translate(${x} ${y})"><path d="M0 0v-16" stroke="#7b6a4d" stroke-width="2.4"/><path d="M0-16c-9-6-15-3-18 2m18-2c9-6 15-3 18 2m-18-2c-3-9-10-11-15-9m15 9c3-9 10-11 15-9" fill="none" stroke="#3d8a5a" stroke-width="3" stroke-linecap="round"/></g>`;
   return `<svg class="cmap-art" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <rect width="1000" height="700" fill="#9ccfe0"/>
-    <path d="M0 0h1000v262c-60 22-130 8-200 16-90 10-150 34-250 26-110-9-180-40-290-30C170 281 80 300 0 286Z" fill="#dfe8c9"/>
-    <path d="M22 388c50-22 130-18 210-22 110-6 190 10 300 6 100-4 190-22 286-8 14 60 12 190-6 296-90 22-200 14-300 18-150 6-330 10-470-4-34-90-40-200-20-286Z" fill="#e6ecd2"/>
-    <path d="M852 352c44-14 98-10 134 4 12 100 10 220-2 318-42 12-98 12-136 0-12-104-10-226 4-322Z" fill="#e2ead0"/>
+    <rect width="1000" height="700" fill="#7cc3dc"/>
+    <g fill="none" stroke="#f3e6b8" stroke-width="10" stroke-linejoin="round"><path d="M0 0h1000v262c-60 22-130 8-200 16-90 10-150 34-250 26-110-9-180-40-290-30C170 281 80 300 0 286Z"/><path d="M22 388c50-22 130-18 210-22 110-6 190 10 300 6 100-4 190-22 286-8 14 60 12 190-6 296-90 22-200 14-300 18-150 6-330 10-470-4-34-90-40-200-20-286Z"/><path d="M852 352c44-14 98-10 134 4 12 100 10 220-2 318-42 12-98 12-136 0-12-104-10-226 4-322Z"/></g>
+    <path d="M0 0h1000v262c-60 22-130 8-200 16-90 10-150 34-250 26-110-9-180-40-290-30C170 281 80 300 0 286Z" fill="#c3d99e"/>
+    <path d="M22 388c50-22 130-18 210-22 110-6 190 10 300 6 100-4 190-22 286-8 14 60 12 190-6 296-90 22-200 14-300 18-150 6-330 10-470-4-34-90-40-200-20-286Z" fill="#cbdfa8"/>
+    <path d="M852 352c44-14 98-10 134 4 12 100 10 220-2 318-42 12-98 12-136 0-12-104-10-226 4-322Z" fill="#c6dca2"/>
     <path d="M24 62c30-12 70-10 96 2 6 40 4 76-4 104-30 10-66 8-92-2-8-36-8-72 0-104Z" fill="#f1e2ac" stroke="#d9b24a" stroke-width="2" stroke-dasharray="8 6"/>
     <path d="M18 620c34-10 96-8 124 4 6 22 4 44-4 62-40 8-90 8-122-2-6-22-6-44 2-64Z" fill="#f1e2ac" stroke="#d9b24a" stroke-width="2" stroke-dasharray="8 6"/>
-    <g fill="none" stroke="#fbfaf2" stroke-linecap="round" stroke-linejoin="round">
+    <g fill="none" stroke="#6a6f78" stroke-linecap="round" stroke-linejoin="round">
       <path d="M40 150c140-40 300 30 470 0s300-50 450-20" stroke-width="9"/>
       <path d="M150 70c20 60 10 140 30 200M440 40c-10 70 20 150 0 250M720 50c10 70-20 150 0 220" stroke-width="6"/>
       <path d="M60 470c160-20 300 30 460 0s200-30 290-10" stroke-width="9"/>
@@ -69,17 +79,17 @@ function backdrop(names) {
       <path d="M250 380c10 90-10 190 10 300M520 380c-10 90 20 200 0 300" stroke-width="6"/>
       <path d="M910 370c-10 100 20 200 0 300" stroke-width="7"/>
     </g>
-    <g stroke="#f5f1df" stroke-width="12" stroke-linecap="round"><path d="M250 284v100"/><path d="M620 300v74"/><path d="M806 500h52"/></g>
-    <g stroke="#b9ad8a" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"><path d="M250 284v100"/><path d="M620 300v74"/><path d="M806 500h52"/></g>
+    <g stroke="#efe9da" stroke-width="15" stroke-linecap="round"><path d="M250 284v100"/><path d="M620 300v74"/><path d="M806 500h52"/></g>
+    <g stroke="#6a6f78" stroke-width="8" stroke-linecap="butt"><path d="M250 280v108"/><path d="M620 296v82"/><path d="M802 500h60"/></g>
     ${[[70, 240], [330, 250], [560, 262], [900, 236], [120, 430], [420, 420], [700, 430], [640, 660], [300, 664], [960, 420], [950, 640]].map(([x, y]) => palm(x, y)).join('')}
     <g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"><path d="M90 330q14-8 28 0t28 0M430 344q14-8 28 0t28 0M700 322q14-8 28 0t28 0"/></g>
     <g font-family="DM Sans, Arial, sans-serif" font-weight="800" letter-spacing="5" text-anchor="middle">
-      <text x="500" y="226" font-size="24" fill="#66785a" fill-opacity=".5">${esc(names.north)}</text>
-      <text x="420" y="340" font-size="17" fill="#2f6f86" fill-opacity=".75">${esc(names.water)}</text>
-      <text x="420" y="540" font-size="24" fill="#66785a" fill-opacity=".5">${esc(names.south)}</text>
-      <text x="918" y="470" font-size="15" fill="#66785a" fill-opacity=".6" letter-spacing="3">${esc(names.east)}</text>
+      <text x="500" y="226" font-size="24" fill="#4f6a45" fill-opacity=".55">${esc(names.north)}</text>
+      <text x="420" y="340" font-size="17" fill="#f1fbff" fill-opacity=".95">${esc(names.water)}</text>
+      <text x="420" y="540" font-size="24" fill="#4f6a45" fill-opacity=".55">${esc(names.south)}</text>
+      <text x="918" y="470" font-size="15" fill="#4f6a45" fill-opacity=".65" letter-spacing="3">${esc(names.east)}</text>
     </g>
-    <g font-family="DM Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#6b6247">
+    <g font-family="DM Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#f1fbff">
       <text x="238" y="322" text-anchor="end">${esc(names.bridges[0])}</text><text x="632" y="344">${esc(names.bridges[1])}</text><text x="832" y="492" text-anchor="middle">${esc(names.bridges[2])}</text>
     </g>
   </svg>`;
@@ -102,7 +112,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   // The view: `scale` is CSS pixels per map unit, (x, y) is where the map's top-left corner sits in the container.
   // `closeUp` is true while the view is the closer opening view of a small screen (see open()).
   let scale = 0, x = 0, y = 0, fitted = false, userMoved = false, closeUp = false, shown = '', dock = '';
-  let deepLink = null;
+  let deepLink = null, tripKey = '';
   try { deepLink = new URLSearchParams(window.location.search).get('venue'); } catch { deepLink = null; }
   const root = document.createElement('div');
   root.className = 'cmap';
@@ -119,12 +129,12 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   function build() {
     const names = CITY_MAPS[cityId] || CITY_MAPS.lagos;
     root.innerHTML = `<div class="cmap-view"><div class="cmap-world"><div class="cmap-canvas" role="group" aria-label="Map of the city. Choose a place to see it and travel there. Drag to move the map; plus and minus zoom; zero shows the whole city.">${backdrop(names)}${places().map((place) =>
-      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
+      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-trip" data-trip aria-hidden="true"></div><div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
       <div class="cmap-controls" role="group" aria-label="Map view"><button type="button" data-cmap="in" aria-label="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-cmap="out" aria-label="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" class="cmap-fit" data-cmap="fit" aria-label="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" data-cmap="me" aria-label="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>
       <p class="cmap-hint" data-hint ${hintSeen ? 'hidden' : ''}>Drag to look around. Choose a place to travel there.</p>`;
     view = root.querySelector('.cmap-view'); worldNode = root.querySelector('.cmap-world'); canvas = root.querySelector('.cmap-canvas');
     controls = Object.fromEntries([...root.querySelectorAll('[data-cmap]')].map((node) => [node.dataset.cmap, node]));
-    built = true; signature = ''; overlayKey = ''; fitted = false; userMoved = false; closeUp = false; shown = ''; dock = '';
+    built = true; signature = ''; overlayKey = ''; tripKey = ''; fitted = false; userMoved = false; closeUp = false; shown = ''; dock = '';
     pointers.clear(); drag = null; pinch = null; suppressClick = false; root.classList.remove('is-dragging');
     update();
     drawOverlays();
@@ -183,6 +193,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     if (place !== dock) {
       dock = place;
       root.style.setProperty('--cmap-dock', `${Math.round(free.sheet) + 8}px`);
+      container.style.setProperty('--map-dock', `${Math.round(free.sheet) + 8}px`);
       root.style.setProperty('--cmap-free-left', `${Math.round(free.left)}px`);
       root.style.setProperty('--cmap-free-top', `${Math.round(free.top)}px`);
     }
@@ -375,6 +386,21 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     }
   }
 
+  /** The trip in progress: a line and a dot, placed from the server's remaining ÷ duration. No script moves it. */
+  function drawTrip() {
+    if (!built) return;
+    const host = root.querySelector('[data-trip]'), active = state?.activeAction;
+    const trip = active && (active.kind === 'travel' || active.kind === 'commute') ? active : null;
+    const from = trip && pointOf(state.location), to = trip && pointOf(trip.id);
+    const next = from && to ? `${state.location}|${trip.id}|${trip.remaining}|${trip.duration}` : '';
+    if (next === tripKey) return;
+    tripKey = next;
+    if (!next) { host.replaceChildren(); return; }
+    const done = Math.max(0, Math.min(1, 1 - trip.remaining / (trip.duration || 1)));
+    const x = from.x + (to.x - from.x) * done, y = from.y + (to.y - from.y) * done;
+    host.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}"/></svg><span class="cmap-trip-dot" style="--x0:${x.toFixed(2)}%;--y0:${y.toFixed(2)}%;--x1:${to.x}%;--y1:${to.y}%;animation-duration:${Math.max(0.05, trip.remaining).toFixed(2)}s"></span>`;
+  }
+
   /** Rebuild the civic overlays when a layer or its data changed. Static: nothing here moves by itself. */
   function drawOverlays() {
     if (!built) return;
@@ -526,6 +552,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
       const after = pointOf(state?.location) || homeSpot().map;
       if (closeUp && !userMoved && (before.x !== after.x || before.y !== after.y)) fitted = false;
       update();
+      drawTrip();
       if (!fitted && built && !container.hidden) open();
       drawOverlays();
       // A shared link opens its venue card once, after the life has loaded.
@@ -540,6 +567,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
       if (!fitted) open(); else if (!userMoved && !closeUp) fit(); else apply();
       if (selected) reveal(selected);
     },
+    kind: '2d',
     /** For tests and diagnostics: the current view. */
     view: () => ({ scale, x, y, fitted, closeUp, compact: W * scale < LABEL_WIDTH }),
     destroy() { root.removeEventListener('click', onClick); window.removeEventListener('pointerup', onPointerUp); window.removeEventListener('pointercancel', onPointerUp); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:key', onKey); root.remove(); },

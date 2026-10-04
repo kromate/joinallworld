@@ -1,0 +1,89 @@
+/* The 3D city map (src/map3d/map3d.js): a canvas, the place labels over it and the view buttons. Classes are prefixed m3-. */
+.m3{position:absolute;inset:0;overflow:hidden;background:linear-gradient(#cfeaf5,#8fcbe6);font-family:var(--font,'DM Sans',Arial,sans-serif);color:#20232c;touch-action:none;-webkit-user-select:none;user-select:none;cursor:grab}
+.m3 *{box-sizing:border-box}
+.m3.is-dragging{cursor:grabbing}
+.m3-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.m3-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+
+/* A place label: icon and name in one pill, its note on a second line. It is a button with a 44px touch target. */
+.m3-label{position:absolute;left:0;top:0;z-index:2;display:flex;align-items:center;gap:6px;min-height:30px;max-width:190px;padding:3px 10px 3px 3px;border:0;border-radius:17px;background:#fffffff7;color:#20232c;font:inherit;line-height:1.15;text-align:left;box-shadow:0 2px 8px #0b2b3a40;cursor:pointer;pointer-events:auto;will-change:transform;-webkit-tap-highlight-color:transparent}
+.m3-label::before{content:"";position:absolute;inset:-8px -4px}
+.m3-label::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:9px;margin-left:-1px;background:#ffffffd9;box-shadow:0 0 2px #0b2b3a66}
+.m3-label-icon{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#edf4ee;font-size:14px;line-height:1}
+.m3-label-text{display:grid;min-width:0}
+.m3-label b{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m3-label small{font-size:10px;font-weight:600;color:#59616b;white-space:nowrap}
+.m3-label small:empty{display:none}
+.m3-label:focus-visible{outline:3px solid #14532d;outline-offset:2px;z-index:9}
+.m3-label.is-hover,.m3-label:hover{z-index:8;box-shadow:0 0 0 2px #e8a643,0 3px 10px #0b2b3a55}
+/* Home: always the same green pill */
+.m3-label.is-home{background:#256b45;color:#fff;z-index:4}
+.m3-label.is-home .m3-label-icon{background:#fff}
+.m3-label.is-home small{color:#d8eedd}
+/* Closed: calm and grey, still tappable — the card says when it opens */
+.m3-label.is-closed{background:#f1f3f2e6;color:#59616b;box-shadow:0 1px 4px #0b2b3a26}
+.m3-label.is-closed b{font-weight:600}
+.m3-label.is-closed .m3-label-icon{background:#e2e5e4;filter:grayscale(1);opacity:.8}
+.m3-label.is-soon{background:#ffe9a6;color:#4d3a05;background-image:repeating-linear-gradient(135deg,#0000 0 8px,#f2c23040 8px 16px)}
+.m3-label.is-soon small{color:#6b5312}
+.m3-label.is-soon .m3-label-icon{background:#fff3c4}
+/* Where you are, where you are going, what is selected */
+.m3-label.is-here{z-index:6;box-shadow:0 0 0 3px #e8a643,0 3px 10px #0b2b3a55}
+.m3-label.is-here small{color:#8a5a12;font-weight:700}
+.m3-label.is-home.is-here small{color:#ffe2a8}
+.m3-label.is-going{z-index:6;box-shadow:0 0 0 2px #256b45,0 3px 10px #0b2b3a55}
+.m3-label.is-going small{color:#256b45;font-weight:700}
+.m3-label.is-selected{z-index:7;background:#20232c;color:#fff}
+.m3-label.is-selected small{color:#d7dbe0}
+.m3-label.is-selected .m3-label-icon{filter:none;opacity:1;background:#fff}
+.m3-label.is-gov{box-shadow:0 0 0 3px #6a3fa0,0 3px 10px #0b2b3a55}
+.m3-label.is-dimmed{opacity:.38}
+.m3-label.is-dimmed:hover,.m3-label.is-dimmed:focus-visible{opacity:1}
+/* Far out: smaller pills, so more of the names fit */
+.m3.is-far .m3-label{min-height:24px;padding:2px 8px 2px 2px;gap:4px}
+.m3.is-far .m3-label b{font-size:11px}
+.m3.is-far .m3-label-icon{width:20px;height:20px;font-size:12px}
+/* Crowded: the name gives way to the icon alone (the button keeps its full name for assistive technology) */
+.m3-label.is-compact{padding:3px;min-height:0;z-index:0}
+.m3-label.is-compact .m3-label-text{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.m3-label.is-compact::after{height:6px}
+.m3[data-time=night] .m3-label{box-shadow:0 2px 10px #000a}
+
+/* The traveller's tag, above the avatar for the length of a trip */
+.m3-you{position:absolute;left:0;top:0;z-index:9;padding:2px 9px 3px;border-radius:11px;background:#ffb224;color:#20232c;font-size:11px;font-weight:800;line-height:1.2;box-shadow:0 0 0 2px #fff,0 2px 8px #0b2b3a66;pointer-events:none;will-change:transform}
+.m3-you::after{content:"";position:absolute;left:50%;top:100%;margin-left:-5px;border:5px solid #0000;border-top-color:#fff}
+.m3-you[hidden]{display:none}
+
+/* Layer chips: what a billboard or a sea plot says, the homes of an estate, the Governor. Ads are text only — never a link or a button. */
+.m3-chip{position:absolute;left:0;top:0;display:flex;align-items:center;gap:4px;max-width:150px;padding:3px 8px;border-radius:8px;background:#fffffff2;color:#20232c;font-size:10px;font-weight:700;line-height:1.2;box-shadow:0 2px 6px #0b2b3a40;pointer-events:none;will-change:transform}
+.m3-chip-icon{flex:none;font-size:12px;line-height:1}
+.m3-chip-text{overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+.m3-chip.is-board{border:2px solid #20232c;border-radius:6px;box-shadow:0 3px 0 #20232c}
+.m3-chip.is-board-free{padding:2px 5px;background:#fffffff0;border:1px dashed #8a7a4a;box-shadow:none}
+.m3-chip.is-plot{max-width:96px;padding:2px 6px;font-size:9px}
+.m3-chip.is-title{background:#2f6f86;color:#fff;font-size:11px;letter-spacing:.04em}
+.m3-chip.is-gov{background:#3b2a6b;color:#fff;font-size:11px;padding:4px 10px;border-radius:11px;max-width:220px}
+.m3-chip.is-hood{flex-wrap:wrap;justify-content:center;max-width:190px;background:#256b45;color:#fff;border-radius:11px;padding:4px 9px;pointer-events:auto}
+.m3-chip.is-hood .m3-chip-text{-webkit-line-clamp:1}
+.m3-chip-homes{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;width:100%;margin-top:2px}
+.m3-house{position:relative;display:grid;place-items:center;width:28px;height:28px;padding:0;border:0;border-radius:8px;background:#fffffff2;font-size:14px;line-height:1}
+button.m3-house{cursor:pointer}
+.m3-house::before{content:"";position:absolute;inset:-8px}
+.m3-house.is-online::after{content:"";position:absolute;right:-1px;top:-1px;width:8px;height:8px;border-radius:50%;background:#2fbf71;border:2px solid #fff}
+.m3-house.is-you{background:#ffe9b0}
+.m3-house:focus-visible{outline:3px solid #fff;outline-offset:1px}
+.m3-chip-more{align-self:center;padding:0 4px;font-size:10px}
+
+/* View buttons: zoom in, zoom out, whole city, find me */
+.m3-controls{position:absolute;right:14px;bottom:104px;display:grid;gap:6px;justify-items:end;z-index:8}
+.m3-controls button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid #fff;border-radius:50%;background:#fffffff5;color:#20232c;box-shadow:0 2px 8px #0003;cursor:pointer;touch-action:manipulation}
+.m3-controls button svg{width:20px;height:20px}
+.m3-controls button:focus-visible{outline:3px solid #14532d;outline-offset:2px}
+.m3-controls button.m3-fit{display:flex;align-items:center;gap:6px;width:auto;padding:0 14px 0 12px;border-radius:22px;font-family:inherit;font-size:12px;font-weight:700;line-height:1;white-space:nowrap}
+.m3-hint{position:absolute;left:var(--m3-left,10px);top:var(--m3-top,66px);z-index:7;margin:0 0 0 4px;max-width:calc(100% - 20px);padding:7px 12px;border-radius:14px;background:#20242ae6;color:#fff;font-size:12px;font-weight:600;line-height:1.3;pointer-events:none}
+@media(max-width:720px){
+  .m3-controls{right:8px;bottom:calc(var(--m3-dock,150px) + 4px);grid-auto-flow:column;align-items:center}
+  .m3-controls button.m3-fit span{display:none}
+  .m3-controls button.m3-fit{width:44px;padding:0;border-radius:50%;justify-content:center}
+  .m3-hint{font-size:11px}
+}

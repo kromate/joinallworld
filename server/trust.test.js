@@ -140,6 +140,9 @@ test('reports reach an operator; a mute silences text everywhere and leaves the 
   const ad = await post('/api/civic/ads/rent', { cityId: 'lagos', kind: 'billboard', slot: 'bb-01', text: 'Gold here', colour: 'gold', icon: 'star' }, bola);
   assert.deepEqual([ad.ok, ad.code, ad.state.cash], [false, 'muted', before.state.cash], 'a refused ad charges nothing');
   assert.equal((await post('/api/social/groups', { name: 'Gold club', members: [], clientId: clientId() }, bola)).code, 'muted');
+  const rename = await post('/api/session', { name: 'Gold Seller' }, bola);
+  assert.deepEqual([rename.status, rename.error], [403, 'muted']); assert.match(rename.reason, /A moderator has muted you until/);
+  assert.equal((await post('/api/session', { name: 'Bola' }, bola)).status, 200, 'keeping the same name still renews the session');
   // …and nothing else changed: same session, same life, still playable, still able to read and to ask for help.
   const after = await get('/api/life?city=lagos', bola);
   assert.equal(after.status, 200); assert.equal(after.state.cash, before.state.cash); assert.deepEqual(after.state.ledger, before.state.ledger);

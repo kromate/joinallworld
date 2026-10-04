@@ -27,7 +27,7 @@
  *   }
  *
  * PATHS   must start with /api/<your area>/ (auth → /api/auth/, social → /api/social/,
- *         civic → /api/civic/). A ":name" segment captures into request.params. A duplicate
+ *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/). A ":name" segment captures into request.params. A duplicate
  *         "METHOD /path" aborts start-up.
  *
  * REQUEST (portable — no Node req/res, so the same module can run in the Worker later)
@@ -35,18 +35,31 @@
  *   request.json()                      → Promise<object>; rejects 415/413/400 (body ≤ 8 KB)
  *   request.session(db, { renew })      → the caller's device session record, or undefined
  *   request.requireSession(db, { renew }) → the session, or throws 401 device_session_required
- *   request.ip                          → remote address, for ctx.allow keys only
- * Before your handler runs the host has already rejected cross-origin requests (403) and
- * applied the per-address rate limit (429).
+ *   request.ip                          → the client address (see clientAddress in server.js: the socket's
+ *                                         address, or with TRUST_PROXY=1 the right-most X-Forwarded-For
+ *                                         entry). For ctx.allow keys and the vote cap only; never store it.
+ *   request.moderator()                 → true only when the request carries the operator's bearer token.
+ *                                         Used by routes/moderation.js; nothing else should need it.
+ * Before your handler runs the host has already rejected cross-origin requests (403) — for every
+ * path except /api/mod/, which authenticates with that bearer header instead — and applied the
+ * per-address rate limit (429).
  *
  * RESPONSE   return { status = 200, body, headers?, renew? }. The host JSON-encodes the body,
  *   adds `serverTime` to every success, and with `renew: true` re-issues the sliding session
  *   cookie. To fail, `throw ctx.fail(status, 'machine_code')` → `{ "error": "machine_code" }`.
+ *   An error that carries a string `reason` is answered `{ "error": code, "reason": sentence }`.
  *
  * CONTEXT (ctx)
- *   ctx.store.transact(fn(db)) → Promise   serialised read-modify-write of the whole document;
- *                                          throw inside fn to abort without saving
- *   ctx.store.read(fn(db))     → Promise   read-only snapshot
+ *   ctx.store.transact(fn(db), { durable }?) → Promise   serialised read-modify-write of the whole document;
+ *                                          throw inside fn to abort without saving. By default it
+ *                                          resolves only once the change is on disk. Pass
+ *                                          { durable: false } — or a function of the result — ONLY for
+ *                                          a request that acknowledges nothing a player could see as an
+ *                                          outcome (see server/store.js); such a change is written within
+ *                                          a second instead. Another transaction may run between your
+ *                                          commit and your `await` resuming: never keep per-request data
+ *                                          in module-level variables across it.
+ *   ctx.store.read(fn(db))     → Promise   read-only snapshot (changes made to it are discarded)
  *       This two-method interface is the entire storage contract: route modules must not
  *       assume a JSON file. Anything that offers transact/read over one JSON-like document
  *       (e.g. a Durable Object) can host them.
@@ -71,14 +84,26 @@
  *                                          sets ctx.checks.homeGuest(db, guestId, hostId, cityId) →
  *                                          boolean; ws/rooms.js asks it before admitting a guest to a
  *                                          host's Home room and refuses everyone while it is absent.
+ *                                          It also sets ctx.checks.blocked(a, b) → boolean (either has
+ *                                          blocked the other; in memory). The moderation module sets
+ *                                          ctx.checks.muted(publicId) → null | { code: 'muted', reason, until }.
+ *                                          Ask both before delivering or storing player text.
+ *   ctx.startup                            array of promises the host awaits before it takes requests
+ *                                          (a module loading an in-memory index pushes its load here)
+ *   ctx.randomId()                         a random UUID (for salts and ids; not a clock, not a secret store)
  *   ctx.on(event, fn) / ctx.emit(event, data)   in-process events between server modules. The
  *                                          foundation raises 'room-changed' { room, cityId, venueId,
  *                                          members: [publicId] } when a venue room's membership or
  *                                          a member's name changes. Nothing is sent to clients by it.
  *                                          The social module raises 'visit-ended' { hostId, guestId }
  *                                          when a house visit ends; ws/rooms.js then drops that guest
- *                                          from the host's Home room at once.
- *   ctx.config                             { sessionTtlMs, actionWindowMs, maxActiveSessions }
+ *                                          from the host's Home room at once, and 'blocks-changed' { a, b }
+ *                                          when a block or unblock was committed. The host raises
+ *                                          'heartbeat' { now } on every beat; ws/rooms.js raises
+ *                                          'guest-expired' { hostId, guestId, cityId } when a beat ends a visit.
+ *   ctx.config                             { sessionTtlMs, actionWindowMs, maxActiveSessions, buildId,
+ *                                            votesPerAddress, heartbeatMs, moderation: boolean }
+ *                                          (the operator token itself is not in the context)
  *   ctx.core                               foundation internals — not for feature modules
  *
  * RULES

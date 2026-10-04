@@ -32,7 +32,8 @@
  *                Everything in it is untrusted — validate each field.
  *   To look up the sender's stored session inside a transaction: ctx.core.sessionOf(ws, db).
  * ERRORS   `throw Error('machine_code')` → the sender receives
- *          { type: 'error', code: 'machine_code', error: 'machine_code' }.
+ *          { type: 'error', code: 'machine_code', error: 'machine_code' }. Give the error a string
+ *          `reason` (Object.assign(Error(code), { reason })) and it is sent along as `reason`.
  * The host has already applied the per-identity rate limit (600 messages/minute), rejected
  * expired sessions and serialised messages per socket (your handler finishes before the
  * same socket's next message starts).

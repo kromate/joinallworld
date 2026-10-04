@@ -5,6 +5,8 @@
  * POST /api/session accepts `onboarding: true` when it CREATES a session: lives of that session
  * must finish character creation before any other action (see life-service.js settleCity). The
  * field is ignored for an existing session, so a rename can neither add nor remove the rule.
+ * A name must pass the text filter (protocol.js validateName → 400 name_not_allowed with a reason),
+ * and a player an operator has muted cannot rename (403 muted with the reason).
  * POST /api/action runs the action through core.playerAct, without the `internal` flag that
  * ctx.act carries, so a server-only action type (src/game/registry.js) is always refused here.
  */
@@ -39,6 +41,9 @@ export default function coreRoutes(ctx) {
           const { secret, publicId } = core.newIdentity();
           current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {}, ...(body.onboarding === true ? { onboarding: true } : {}) };
         }
+        // A muted player cannot put text in front of others by renaming either. The session itself is renewed as usual.
+        const mute = current.name !== name ? ctx.checks?.muted?.(current.publicId) : null;
+        if (mute) throw Object.assign(fail(403, 'muted'), { reason: mute.reason });
         current.name = name;
         current.expiresAt = now() + config.sessionTtlMs;
         return { secret: current.secret, session: publicSession(current) };

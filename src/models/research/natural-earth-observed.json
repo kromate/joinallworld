@@ -1,0 +1,27 @@
+{
+  "observedDate": "2026-10-04",
+  "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_1_states_provinces.geojson",
+  "revision": "ca96624a56bd078437bca8184e78163e5039ad19",
+  "bytes": 40726851,
+  "sha256": "22d0e3ad85eb3e27f17cabf8ba2d50e554fbc27a87796ff891d958185da62fb5",
+  "countries": [
+    {
+      "country": "NGA",
+      "features": 37,
+      "requiredFeatures": 37,
+      "countMatchesBrief": true,
+      "minifiedSubsetBytes": 234510,
+      "notes": "36 states and FCT present. Source spells Nasarawa as Nassarawa and classifies FCT as State. Count alone does not validate borders or names."
+    },
+    {
+      "country": "KEN",
+      "features": 8,
+      "requiredFeatures": 47,
+      "countMatchesBrief": false,
+      "minifiedSubsetBytes": 117288,
+      "names": ["Rift Valley", "Eastern", "North-Eastern", "Coast", "Nyanza", "Western", "Nairobi", "Central"],
+      "notes": "Former provinces, not the 47 counties required by the brief."
+    }
+  ],
+  "measurement": "Country-filtered GeoJSON with all original properties. Python json.dumps with compact separators and default ASCII escaping, UTF-8 byte count. No simplification, compression, or runtime chunk generation. Raw source was read in memory and not committed."
+}

@@ -59,7 +59,7 @@ export function webglAvailable(doc = globalThis.document) {
   try { const canvas = doc.createElement('canvas'); return Boolean(canvas.getContext('webgl2') || canvas.getContext('webgl')); } catch { return false; }
 }
 
-export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
+export function createMap3D(container, { pack, cityId = pack?.id, travelVehicle = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
   world = null, onSelectLga = () => {}, onSelectHouse = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden } = {}) {
@@ -83,7 +83,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   scene.add(overlays.group);
   const houses = createHouses(kit, pack);
   scene.add(houses.group);
-  const actor = createActor(kit);
+  const actor = createActor(kit, { travelVehicle });
   scene.add(actor.group);
   const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
   const ringOf = (colour, opacity) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };
@@ -280,6 +280,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     if (next === time) return false;
     time = next;
     const preset = city.setTime(next);
+    actor.setTime?.(next); // model-library trip vehicles have day and night lights; a no-op otherwise
     hemi.color.set(preset.hemi[0]); hemi.groundColor.set(preset.hemi[1]); hemi.intensity = preset.hemi[2];
     sun.color.set(preset.sun[0]); sun.intensity = preset.sun[1]; sun.position.set(...preset.sun[2]);
     if (root) { root.dataset.time = next; root.style.background = `linear-gradient(${preset.sky[0]}, ${preset.sky[1]})`; }

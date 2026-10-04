@@ -386,9 +386,10 @@
     "TS7053": 2
    },
    "src/map3d/actor.js": {
-    "TS7005": 22,
+    "TS2349": 1,
+    "TS7005": 26,
     "TS7006": 16,
-    "TS7034": 4,
+    "TS7034": 5,
     "TS7053": 1
    },
    "src/map3d/camera.js": {
@@ -498,7 +499,7 @@
     "TS7053": 4
    },
    "src/map3d/index.js": {
-    "TS2322": 3,
+    "TS2322": 4,
     "TS2339": 8,
     "TS2554": 1,
     "TS7005": 34,
@@ -583,6 +584,129 @@
     "TS7006": 10,
     "TS7031": 1,
     "TS7034": 1
+   },
+   "src/models/environment/geometry.js": {
+    "TS2339": 6,
+    "TS2345": 2,
+    "TS2538": 19,
+    "TS7006": 37,
+    "TS7031": 6
+   },
+   "src/models/environment/index.js": {
+    "TS18047": 1,
+    "TS18048": 6,
+    "TS2322": 2,
+    "TS2339": 7,
+    "TS2345": 5,
+    "TS2538": 2,
+    "TS7005": 1,
+    "TS7006": 5,
+    "TS7034": 1,
+    "TS7053": 2
+   },
+   "src/models/geo/index.js": {
+    "TS18048": 96,
+    "TS2322": 13,
+    "TS2339": 14,
+    "TS2345": 8,
+    "TS2488": 1,
+    "TS2532": 34,
+    "TS2538": 3,
+    "TS7005": 4,
+    "TS7006": 20,
+    "TS7034": 4,
+    "TS7053": 12
+   },
+   "src/models/integration/flags.js": {
+    "TS7005": 1,
+    "TS7006": 1,
+    "TS7034": 1
+   },
+   "src/models/integration/geography-view.js": {
+    "TS2554": 3,
+    "TS7005": 24,
+    "TS7006": 16,
+    "TS7031": 2,
+    "TS7034": 5
+   },
+   "src/models/integration/scene-models.js": {
+    "TS18048": 2,
+    "TS2322": 4,
+    "TS2339": 9,
+    "TS7005": 8,
+    "TS7006": 10,
+    "TS7034": 4,
+    "TS7053": 2
+   },
+   "src/models/people/index.js": {
+    "TS18048": 12,
+    "TS2339": 2,
+    "TS2345": 2,
+    "TS2367": 1,
+    "TS2532": 3,
+    "TS2739": 1,
+    "TS7005": 4,
+    "TS7006": 151,
+    "TS7019": 1,
+    "TS7031": 2,
+    "TS7034": 3,
+    "TS7053": 14
+   },
+   "src/models/preview.js": {
+    "TS18046": 1,
+    "TS18047": 2,
+    "TS2322": 3,
+    "TS2339": 60,
+    "TS2345": 1,
+    "TS2531": 63,
+    "TS7005": 12,
+    "TS7006": 7,
+    "TS7034": 3,
+    "TS7053": 8
+   },
+   "src/models/tooling/capture.mjs": {
+    "TS2345": 1,
+    "TS7005": 6,
+    "TS7006": 6,
+    "TS7034": 2
+   },
+   "src/models/tooling/game-dev.mjs": {
+    "TS2339": 2,
+    "TS7006": 5
+   },
+   "src/models/tooling/integration-browser.mjs": {
+    "TS18048": 4,
+    "TS2531": 1,
+    "TS2769": 3,
+    "TS7005": 6,
+    "TS7006": 8,
+    "TS7034": 2
+   },
+   "src/models/tooling/measure.mjs": {
+    "TS2322": 1,
+    "TS2345": 1,
+    "TS7006": 1,
+    "TS7053": 6
+   },
+   "src/models/tooling/register-dependencies.mjs": {
+    "TS18046": 1
+   },
+   "src/models/vehicles/geometry.js": {
+    "TS18048": 10,
+    "TS2532": 16,
+    "TS2538": 1,
+    "TS7005": 1,
+    "TS7006": 9,
+    "TS7034": 1
+   },
+   "src/models/vehicles/index.js": {
+    "TS18048": 42,
+    "TS2339": 32,
+    "TS2345": 2,
+    "TS2532": 20,
+    "TS7005": 2,
+    "TS7006": 3,
+    "TS7034": 2
    },
    "src/quick-start/draft.js": {
     "TS2322": 1,
@@ -2397,6 +2521,50 @@
     "TS7006": 13,
     "TS7034": 2,
     "TS7053": 6
+   },
+   "src/models/environment/environment.test.js": {
+    "TS18048": 17,
+    "TS2322": 3,
+    "TS2339": 13,
+    "TS2345": 1,
+    "TS7006": 1,
+    "TS7053": 5
+   },
+   "src/models/geo/geo.test.js": {
+    "TS18048": 6,
+    "TS2322": 4,
+    "TS2339": 9,
+    "TS2345": 3,
+    "TS2365": 1,
+    "TS2532": 7,
+    "TS2538": 1,
+    "TS7006": 4
+   },
+   "src/models/integration/scene.integration.test.js": {
+    "TS18047": 2,
+    "TS2322": 1,
+    "TS2339": 6,
+    "TS7006": 5
+   },
+   "src/models/people/index.test.js": {
+    "TS2322": 1,
+    "TS2339": 11,
+    "TS2345": 2,
+    "TS2532": 5,
+    "TS7005": 3,
+    "TS7006": 5,
+    "TS7034": 3,
+    "TS7053": 16
+   },
+   "src/models/vehicles/vehicles.test.js": {
+    "TS18047": 5,
+    "TS18048": 6,
+    "TS2322": 2,
+    "TS2339": 11,
+    "TS2345": 10,
+    "TS7005": 2,
+    "TS7034": 1,
+    "TS7053": 5
    },
    "src/quick-start/model.test.js": {
     "TS18047": 8,

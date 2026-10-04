@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Allworld model workshop</title>
+  <link rel="stylesheet" href="/src/models/preview.css">
+</head>
+<body>
+  <header><a href="/models.html" class="brand">Allworld<span>Model workshop</span></a><p>Made for the streets. Built for a phone.</p><output id="summary">Loading models…</output></header>
+  <nav aria-label="Model categories">
+    <button data-category="vehicles" aria-pressed="true">Vehicles</button><button data-category="people">People</button><button data-category="environment">Buildings &amp; water</button><button data-category="geo">Maps</button>
+  </nav>
+  <main>
+    <aside aria-label="Preview controls">
+      <label>Model<select id="model"></select></label>
+      <fieldset><legend>Detail</legend><div id="details"><button data-detail="map">Map</button><button data-detail="street" aria-pressed="true">Street</button><button data-detail="showcase">Showcase</button></div></fieldset>
+      <label>Lighting<select id="time"><option value="day">Day</option><option value="night">Night</option></select></label>
+      <label>View<select id="view"><option value="perspective">Three-quarter</option><option value="front">Front</option><option value="side">Side</option><option value="back">Back</option><option value="top">Above</option></select></label>
+      <label>Colour<input id="colour" type="color" value="#f5c21b"></label>
+      <label class="check"><input id="custom-colour" type="checkbox"> Override model colour</label>
+      <label class="vehicle-control">Route board<input id="routeboard" maxlength="14" value="YABA"></label>
+      <label class="people-control">Hair<select id="hair"></select></label>
+      <label class="people-control">Outfit<select id="outfit"></select></label>
+      <label class="people-control">Fabric<select id="fabric"><option>plain</option><option>ankara</option><option>adire</option><option>asooke</option></select></label>
+      <label class="people-control">Skin<select id="skin"><option value="skin-7">Ebony</option><option value="skin-4">Brown</option><option value="skin-1">Light</option></select></label>
+      <label class="people-control">Pose<select id="pose"><option>stand</option><option>walk</option><option>jog</option><option>sit</option><option>wave</option><option>dance</option><option>work</option><option>eat</option><option>phone</option></select></label>
+      <label>Animation scrub <output id="phasevalue">0.00</output><input id="phase" type="range" min="0" max="1" step="0.01" value="0"></label>
+      <label class="vehicle-control">Door <input id="door" type="range" min="0" max="1" step="0.01" value="0"></label>
+      <label class="vehicle-control">Steering <input id="steering" type="range" min="-0.6" max="0.6" step="0.01" value="0"></label>
+      <label class="vehicle-control check"><input id="brake" type="checkbox"> Brake lights</label>
+      <label class="geo-control">Select a region<select id="feature"><option value="">Whole map</option></select></label>
+      <button class="geo-control" id="open-region">Open selected region</button>
+      <button class="geo-control" id="whole-map">Back to whole map</button>
+      <label class="geo-control check"><input id="zoom" type="checkbox"> Scrub camera into region</label>
+      <label class="geo-control check"><input id="flight" type="checkbox"> Flight arc</label>
+      <label class="check"><input id="grid" type="checkbox"> Show all models</label>
+      <label class="people-control">Contact sheet<select id="sheet"><option value="">None</option><option value="hair">Every hairstyle</option><option value="outfit">Every outfit</option></select></label>
+      <button id="reset">Reset view</button>
+      <p class="help">Drag to turn. Scroll to zoom. Nothing animates until you move the scrubber.</p>
+    </aside>
+    <section id="stage" aria-label="3D model previews"><div id="gallery"></div><div id="error" role="alert" hidden></div></section>
+  </main>
+  <footer><span id="note">Original procedural geometry. No downloaded model or image texture.</span><span id="render-status">Waiting for first render</span></footer>
+  <script type="module" src="/src/models/preview.js"></script>
+</body>
+</html>

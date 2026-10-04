@@ -1,0 +1,52 @@
+{
+  "baseRevision": "8521754",
+  "date": "2026-10-04",
+  "preview": "http://127.0.0.1:3401/",
+  "mainTests": {
+    "passed": 536,
+    "skipped": 4,
+    "failed": 0
+  },
+  "focusedTests": {
+    "passed": 26,
+    "failed": 0
+  },
+  "edgeTests": {
+    "passed": 14,
+    "failed": 0
+  },
+  "productionBuild": "passed",
+  "browser": {
+    "exceptions": [],
+    "cookieIsolated": true,
+    "countryGate": {
+      "goButtons": 0,
+      "counties": 47
+    },
+    "canvasPointer": {
+      "renderCount": 2
+    },
+    "idle": {
+      "before": "2",
+      "after": "2"
+    },
+    "arrival": {
+      "location": "market",
+      "active": null,
+      "cash": 95800
+    },
+    "reloadedLocation": "market",
+    "fareCharged": 200,
+    "identityAndLookPersisted": true,
+    "simpleMapExceptions": [],
+    "simpleMapKenya": {
+      "geography": "kenya",
+      "renderer": "svg"
+    }
+  },
+  "limits": [
+    "Browser checks used headless Chromium with software WebGL, not a physical Android phone.",
+    "Integration is on astra/models based on c5e803e; not merged into the later parity owner/integrate-2 work.",
+    "Country roads remain schematic, with no expansion of playable cities."
+  ]
+}

@@ -1,0 +1,109 @@
+[
+  {
+    "name": "city-map",
+    "js": "document.querySelector('[data-nav=map]').click()",
+    "wait": 1500
+  },
+  {
+    "name": "world-open",
+    "js": "const h=document.querySelector('[data-map-sheet]');if(h.getAttribute('aria-expanded')!=='true')h.click(); const b=document.querySelector('[data-map-layer=world]');if(!b.getBoundingClientRect().width)throw new Error('World entry not visible');b.click()",
+    "wait": 1700
+  },
+  {
+    "name": "kenya",
+    "js": "document.querySelector('[data-wm-level=kenya]').click()",
+    "wait": 800
+  },
+  {
+    "name": "kenya-gate",
+    "js": "(()=>{const goButtons=document.querySelectorAll('.wm [data-wm-go]').length,countyCount=document.querySelectorAll('[data-wm-region] option').length;if(goButtons!==0||countyCount!==48)throw new Error('Kenya access/count contract failed');return {goButtons,counties:countyCount-1};})()"
+  },
+  {
+    "name": "world-drag",
+    "drag": true,
+    "wait": 150
+  },
+  {
+    "name": "world-drag-proof",
+    "js": "(()=>{const count=Number(document.querySelector('.wm-model-stage').dataset.renderCount);if(count<2)throw new Error('Map drag did not reach the canvas');return {renderCount:count};})()"
+  },
+  {
+    "name": "world-idle",
+    "js": "(async()=>{const n=document.querySelector('.wm-model-stage');const before=n.dataset.renderCount;await new Promise(r=>setTimeout(r,1200));if(before!==n.dataset.renderCount)throw new Error('World rendered while idle');return {before,after:n.dataset.renderCount}})()"
+  },
+  {
+    "name": "world-mobile",
+    "size": [
+      390,
+      844
+    ],
+    "js": "document.querySelector('[data-wm-level=kenya]').click()",
+    "wait": 600
+  },
+  {
+    "name": "desktop-return",
+    "size": [
+      1280,
+      900
+    ],
+    "wait": 200
+  },
+  {
+    "name": "world",
+    "js": "document.querySelector('[data-wm-level=world]').click()",
+    "wait": 800
+  },
+  {
+    "name": "africa",
+    "js": "document.querySelector('[data-wm-level=africa]').click()",
+    "wait": 800
+  },
+  {
+    "name": "nigeria",
+    "js": "document.querySelector('[data-wm-level=nigeria]').click()",
+    "wait": 800
+  },
+  {
+    "name": "lagos-state",
+    "js": "const s=document.querySelector('[data-wm-region]');s.value='NG-LA';s.dispatchEvent(new Event('change',{bubbles:true}));document.querySelector('[data-wm-explore]').click()",
+    "wait": 800
+  },
+  {
+    "name": "city-return",
+    "js": "document.querySelector('[data-wm-go=lagos]').click()",
+    "wait": 800
+  },
+  {
+    "name": "destination",
+    "js": "const pin=Array.from(document.querySelectorAll('button')).find(b=>b.getAttribute('aria-label')?.startsWith('Market,')&&b.getBoundingClientRect().width);if(!pin)throw new Error('Market marker not visible');pin.click()",
+    "wait": 350
+  },
+  {
+    "name": "danfo-choice",
+    "js": "document.querySelector('[data-map-mode=danfo]').click()",
+    "wait": 200
+  },
+  {
+    "name": "danfo-trip",
+    "js": "const go=document.querySelector('[data-action=travel]');if(!go||go.disabled)throw new Error('Travel unavailable');go.click()",
+    "wait": 2600
+  },
+  {
+    "name": "trip-closeup",
+    "js": "Array.from(document.querySelectorAll('button')).find(b=>b.getAttribute('aria-label')?.startsWith('Find me')).click()",
+    "wait": 700
+  },
+  {
+    "name": "arrival",
+    "js": "(async()=>{await new Promise(r=>setTimeout(r,18000));const state=await fetch('/api/life?city=lagos').then(r=>r.json()).then(x=>x.state);if(state.location!=='market'||state.activeAction)throw new Error('Trip did not settle');return {location:state.location,active:state.activeAction,cash:state.cash};})()",
+    "wait": 500
+  },
+  {
+    "name": "venue-mobile",
+    "size": [
+      390,
+      844
+    ],
+    "wait": 600
+  }
+]

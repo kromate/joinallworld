@@ -18,7 +18,7 @@ const START = Date.UTC(2026, 0, 5, 8); // Monday 9:00 AM in Lagos.
 VENUES.unilag = UNILAG_VENUE;
 
 const events = [];
-registerSystem(studentSystem);
+
 registerSystem({
   id: 'unilagStudentTestProbe', stateKeys: [], sanitize() {}, actions: {}, advance() {},
   on: { 'campus.graduated': (state, data) => events.push(structuredClone(data)) },

@@ -1,5 +1,5 @@
 import { createBatch, sceneMaterials, kitResources, releaseObjects } from '../../scene/build.js';
-import { buildAvatar, poseAvatar } from '../../scene/characters.js';
+import { buildAvatar, poseAvatar } from '../shared/characters.js';
 import { lagosTime } from '../../game/clock.js';
 import { ZONES, BUILDINGS, ROADS, ANCHORS, ENTRANCE } from './layout.js';
 import { createCampusWalk, footprintOf } from './walk.js';
@@ -191,11 +191,12 @@ export function buildUnilag(kit, venue = {}) {
     },
     setCrowd(people){
       crowd=(Array.isArray(people)?people:[]).slice(0,CAMPUS_BUDGET.crowd).flatMap(p=>{
-        const at=Number.isFinite(p.x)&&Number.isFinite(p.z)?p:ANCHORS[p.spot];
-        return at&&walk.grid.free(at.x,at.z)?[{id:String(p.id),name:String(p.name??''),x:at.x,z:at.z}]:[];
+        const anchor=ANCHORS[p.spot];
+        const at=Number.isFinite(p.x)&&Number.isFinite(p.z)?p:anchor?walk.grid.nearest(anchor.x+3,anchor.z+3):null;
+        return at&&walk.grid.free(at.x,at.z)?[{id:String(p.id),name:String(p.name??''),kind:p.kind==='npc'?'npc':'player',x:at.x,z:at.z}]:[];
       });syncCrowd();return scene.tags();
     },
-    tags(){return BUILDINGS.filter(b=>resident.get(b.zone)?.detail===2).map(b=>({id:b.id,name:b.label,kind:'landmark',position:{x:b.x,y:3.9,z:b.z+b.d/2+.4}})).concat(crowd.map(p=>({...p,kind:'player',position:{x:p.x,y:2.3,z:p.z}})));},
+    tags(){return BUILDINGS.filter(b=>resident.get(b.zone)?.detail===2).map(b=>({id:b.id,name:b.label,kind:'landmark',position:{x:b.x,y:3.9,z:b.z+b.d/2+.4}})).concat(crowd.map(p=>({...p,kind:p.kind||'player',position:{x:p.x,y:2.3,z:p.z}})));},
     stats(){return {...measureScene(group),zone:current,resident:[...resident].filter(([,v])=>v.detail===2).map(([id])=>id),rebuilds};},
     dispose(){if(disposed)return;disposed=true;registry.delete(scene.dispose);for(const part of resident.values())part.dispose();resident.clear();releaseObjects(terrainMeshes);player.userData.dispose();if(crowdMesh){crowdMesh.removeFromParent();crowdMesh.dispose();}for(const g of ownedGeometry)g.dispose();ownedGeometry.clear();group.removeFromParent();group.clear();},
   };

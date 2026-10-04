@@ -1,3 +1,4 @@
+import { buildUnilag } from '../campus/unilag/scene.js';
 /**
  * OWNER: scenes
  * One procedural scene per `scene.kind` declared in src/game/content/venues.js.
@@ -338,5 +339,6 @@ export const SCENES = Object.fromEntries([
 /** Build the scene for a venue; unknown or missing kinds get the generic plaza. */
 export function buildVenueScene(kit, venue) {
   const kind = venue?.scene?.kind;
+  if(kind === 'unilag')return buildUnilag(kit,venue);
   return (Object.hasOwn(SCENES, kind) ? SCENES[kind] : SCENES.generic)(kit, venue);
 }

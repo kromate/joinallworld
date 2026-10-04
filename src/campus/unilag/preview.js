@@ -1,8 +1,8 @@
 /** Dev-only host. All rendering and input lives here; rules modules stay pure. */
 import * as THREE from 'three';
 import { createKit } from '../../scene/kit.js';
-import { createWalker } from '../../scene/movement.js';
-import { createMotionLoop } from '../../scene/motion-loop.js';
+import { createWalker } from '../shared/movement.js';
+import { createMotionLoop } from '../shared/motion-loop.js';
 import { buildUnilag } from './scene.js';
 import { buildShuttle, SHUTTLE_STOPS, shuttleRoute, shuttlePose } from './shuttle.js';
 import { CAMPUS_NPCS } from './content.js';

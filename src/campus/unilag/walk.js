@@ -1,4 +1,4 @@
-import { createWalkGrid } from '../../scene/movement.js';
+import { createWalkGrid } from '../shared/movement.js';
 import { BUILDINGS, ZONES } from './layout.js';
 
 const WALL = 1;

@@ -25,8 +25,8 @@ const localAt = (dayOffset, hour, minute = 0, second = 0) => MONDAY_9 + dayOffse
 VENUES.unilag = UNILAG_VENUE;
 
 const seen = [];
-registerSystem(studentSystem);
-registerSystem(gamesSystem);
+
+
 registerSystem({
   id: 'unilagGamesTestProbe', stateKeys: [], sanitize() {}, actions: {}, advance() {},
   on: {

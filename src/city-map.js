@@ -110,7 +110,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
 
   const homeSpot = () => HOME_SPOTS[Object.hasOwn(HOME_SPOTS, state?.travel?.home) ? state.travel.home : DEFAULT_HOME];
   const places = () => [
-    ...Object.values(VENUES).map((venue) => (venue.id === 'home' ? { ...venue, map: homeSpot().map, district: homeSpot().district, kind: 'home' } : { ...venue, kind: 'venue' })),
+    ...Object.values(VENUES).filter(venue=>!venue.cities||venue.cities.includes(cityId)).map((venue) => (venue.id === 'home' ? { ...venue, map: homeSpot().map, district: homeSpot().district, kind: 'home' } : { ...venue, kind: 'venue' })),
     ...Object.values(COMING_SOON).map((place) => ({ ...place, kind: 'soon' })),
   ].sort((a, b) => a.map.x - b.map.x || a.map.y - b.map.y);
   const pointOf = (id) => (id === 'home' ? homeSpot().map : (VENUES[id] || COMING_SOON[id])?.map);

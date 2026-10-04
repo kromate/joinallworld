@@ -1,3 +1,4 @@
+import { UNILAG_VENUE } from '../../campus/unilag/content.js';
 /**
  * OWNER: world
  * Venue catalogue: venue → district, opening hours, map position, spots → activities, scene.
@@ -48,7 +49,7 @@ export const GIG_DAILY_LIMIT = 8;
 const seenCard = 'Duration and price as observed in the reference game; effect amounts are original beta values.';
 const seenName = 'Name seen in the reference game; duration, price and effects are original beta values.';
 
-export const SCENE_KINDS = Object.freeze(['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
+export const SCENE_KINDS = Object.freeze(['unilag', 'park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
   'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'home']);
 
 /** Map filter bar. */
@@ -700,6 +701,7 @@ export const VENUES = {
       ] },
     },
   },
+  unilag: UNILAG_VENUE,
 };
 
 /** Shown on the map but not enterable yet. */

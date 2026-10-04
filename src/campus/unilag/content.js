@@ -37,7 +37,7 @@ const spot = (id, label, caption, activities = []) => ({
   id,
   label,
   caption,
-  activities: [photograph(id, label), ...activities],
+  activities: id === 'people' ? activities : [photograph(id, label), ...activities],
 });
 
 /** @param {string} id @param {string} label @param {string} icon @param {number} duration @param {number} cost @param {NumericMap} effects @param {NumericMap} xp @param {string[]} tags @param {string} [note] @returns {BetaActivity} */
@@ -110,6 +110,7 @@ export const shareLabel = (trail) => `Share ${trail?.label ?? 'UNILAG discovery'
 /** @type {CampusVenue} */
 export const UNILAG_VENUE = {
   id: 'unilag',
+  cities: ['lagos'],
   label: 'University of Lagos',
   district: 'Akoka, Lagos Mainland',
   icon: '🎓',

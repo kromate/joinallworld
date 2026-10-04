@@ -16,7 +16,7 @@ import {PROGRAMMES} from './curriculum.js';
 // This is the integration the parity owner must perform in the real registry.
 VENUES.unilag=UNILAG_VENUE;Object.assign(NPCS,CAMPUS_NPCS);
 const {createLife,dispatch,advanceLife,viewLife}=await import('../../life.js');
-registerSystem(student);registerSystem(community);registerSystem(shuttle);rebuildCatalogue();
+rebuildCatalogue();
 
 test('actual campus content and all three systems survive a shuttle, enrolment, job and reload',()=>{
  let now=Date.UTC(2026,9,5,8),serial=0;

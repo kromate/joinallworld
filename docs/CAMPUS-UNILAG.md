@@ -1,6 +1,6 @@
 # UNILAG Akoka research ledger
 
-Status: research completed before implementation. Local procedural preview and isolated campus modules are in development on `astra/unilag`, based on `c5e803e`. Production registration belongs to the parity owner. This is a fictional Allworld beta, not university software or a real admission service.
+Status: research completed before implementation. The isolated `astra/unilag` work is being integrated into current main on `codex/unilag-main`, following the explicit integration/merge request. The source branch base was `c5e803e`; the integration base is main `2079f78`. This is a fictional Allworld beta, not university software or a real admission service.
 
 Checked: 4 October 2026 (Africa/Lagos)
 
@@ -188,3 +188,15 @@ Additional inspected files: `phone-senate.png`, `phone-hall-interior-grid.png`, 
 Observed matches: cream/red Senate tower grid over lower entrance block; Library canopy and vertical fins; gate central sign and side canopies; red cafeteria seating; hall room beds/storage; covered blue sports seating; visible water and a procedural Third Mainland Bridge silhouette from the lagoon-facing camera. All lettering and geometry are authored primitives.
 
 Observed limits: many faculty/hall exteriors remain simple massing with signs; the campus is sparse compared with the real tree canopy and pedestrian density; roof profiles and low-confidence placements need further reference review; the Second Gate uses a generic gate interpretation; the straight shoreline and bridge are heavily simplified. The preview uses darkened ambient lighting at night without baked local light pools. The phone has usable touch controls but a substantial developer control panel. Full replica fidelity and real phone performance remain open acceptance items, not completed claims.
+
+## Main integration, 4 October 2026
+
+The requested campus commits were cherry-picked onto current main instead of merging their old parity base wholesale. The old source branch diverged by 167 commits and a direct merge would replace unrelated release fixes. `codex/unilag-main` contains the campus changes and targeted integration only. Current main is rechecked before merge so concurrent work is preserved.
+
+Implemented wiring: venue/NPC registration before social catalogue evaluation; three campus systems in the game registry; lazy Campus phone app with Overview, Study, Residence and Community; dedicated campus walking host behind the existing venue API; live server-timed shuttle; mini-map and touch controls; actual room positions with campus-only walkability bounds; Lagos map destination and Lagos-only travel; authenticated transactional shared election routes and server-saved score/goal projections. Ordinary venue rendering and position bounds remain on their existing implementations. Required walking/pose code is isolated under `src/campus/shared` rather than importing the whole parity engine.
+
+Shared routes are `GET /api/campus?city=lagos`, `POST /api/campus/nominate` and `POST /api/campus/vote`. POST bodies include cityId and the existing timestamp:UUID actionId; vote also includes candidateId. The server derives identity from the stored life, uses the existing durable command/receipt transaction, and commits a ballot together with the per-life receipt. Invalid candidates roll both back. Shared standings derive from server-saved bounded game records, never client-submitted points.
+
+Browser acceptance on the integrated app at390x844: admission, matriculation, four Computer Engineering courses, Mariere room allocation, expected balance5000-200-1100-300=3400; Library walking destination and idle frame count unchanged at308 across two reads. These use a seeded private QA life on an isolated local server, not an existing user account. Screenshot evidence is under this checkout's ignored `src/campus/unilag/evidence`.
+
+Current main has an SVG city map, so the live entry is its UNILAG pin; the exported three-dimensional map landmark remains available for the separate 3D-map upgrade. No shared table-game framework exists on this main baseline; the Whot table attachment metadata is retained without advertising a playable table. Shuttle road animation is connected; pedestrian boarding/alighting connector animation remains a visual refinement. Real-device Android performance and the recorded campus fidelity limitations are unchanged. No remote push or deployment is part of this merge request.

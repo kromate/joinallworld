@@ -25,6 +25,7 @@ import { venueLabel, venueDistrict } from './game/content/venues.js';
 const $ = (id) => document.getElementById(id);
 let storage; try { storage = window.localStorage; } catch {}
 let community = null, pendingRoute = null, connecting = false, communityLoadFailed = false;
+let roomMembers = [], campusPositionPending = false;
 let shell = null, venue = null, cityMap = null, world = null, mapsLoading = null;
 /** The connection status line: shown in the top bar's saved indicator and in the More menu. */
 let net = { text: 'Connecting…', error: false };
@@ -51,19 +52,33 @@ const showPlayer = () => venue?.setPlayer({ look: client.state.onboarding?.look,
 function showCrowd() {
   const state = client.state;
   const npcs = ['travel', 'commute'].includes(state.activeAction?.kind) ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location);
-  venue?.setCrowd(crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id }));
+  const positions = new Map(roomMembers.flatMap((member) => {
+    const at = member?.position;
+    return typeof member?.id === 'string' && Number.isFinite(at?.x) && Number.isFinite(at?.z) ? [[member.id, at]] : [];
+  }));
+  const people = crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id })
+    .map((person) => person.kind === 'player' && positions.has(person.id) ? { ...person, ...positions.get(person.id) } : person);
+  venue?.setCrowd(people);
 }
 onPeople(showCrowd);
+
+/** Presence movement never changes the life. If the room is still joining, the next state or member list retries it. */
+function reportCampusPosition(position = venue?.position?.()) {
+  if (client.state.location !== 'unilag' || position?.location !== 'unilag') return false;
+  const sent = community?.moveTo(position.x, position.z) === true;
+  campusPositionPending = !sent;
+  return sent;
+}
 
 /** The 3D scene: fetched once the HUD is up. A device that cannot draw it still gets the whole game. */
 async function loadScene() {
   try {
-    const { createVenueWorld } = await import('./venue-world.js');
-    venue = createVenueWorld($('venue-scene'), { location: client.state.location, onTag: (tag) => {
+    const { createWorldAdapter } = await import('./campus/unilag/world-adapter.js');
+    venue = createWorldAdapter($('venue-scene'), { location: client.state.location, onTag: (tag) => {
       // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
       if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') });
       else if (tag.kind === 'player') shell.open('person', { player: tag.id });
-    } });
+    }, onSpot: ({ id }) => commitSpot(id), onMove: reportCampusPosition, now: () => client.serverNow() });
     $('scene-wait')?.remove();
     venue.setState(client.state);
     showPlayer();
@@ -146,17 +161,23 @@ function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.
 function accepted(state, previous) {
   const moved = previous.location !== state.location;
   if (moved) {
+    roomMembers = [];
     venue?.setLocation(state.location);
     if (shell.mode !== 'venue') shell.setMode('venue');
     if (pendingRoute && pendingRoute.venue !== state.location) pendingRoute = null; // went somewhere else instead
   }
   // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
+  const rejoin = roomJoinNeeded(previous, state);
   if (roomJoinNeeded(previous, state)) community?.join(client.cityId, state.location);
+  if (rejoin) {
+    campusPositionPending = state.location === 'unilag';
+  }
   venue?.setState(state);
   showPlayer();
   showCrowd();
   cityMap?.setState(state);
   render();
+  if (campusPositionPending) reportCampusPosition();
   // Arrived somewhere (or a trip ended): read who is here once; later changes are pushed by the server.
   if (roomJoinNeeded(previous, state) && client.online) void loadPeople();
   if (pendingRoute && !state.activeAction) {
@@ -166,12 +187,27 @@ function accepted(state, previous) {
   }
 }
 
-async function command(type, payload) {
+async function sendCommand(type, payload) {
   if (type === 'cancel') pendingRoute = null;
   const result = await client.command(type, payload);
   if (!result.ok && result.reason && result.code !== 'busy') shell.toast(result.reason, 'error');
   if (!result.ok && type === 'travel') pendingRoute = null;
   return result;
+}
+
+/** The campus host calls this only after the avatar reaches the requested landmark. */
+async function commitSpot(id) {
+  const result = await sendCommand('spot', { id });
+  if (result.ok) shell.setExpanded(true);
+  render();
+  return result;
+}
+
+async function command(type, payload) {
+  if (type === 'spot' && client.state.location === 'unilag' && venue?.walkTo && typeof payload?.id === 'string') {
+    return venue.walkTo(payload.id);
+  }
+  return sendCommand(type, payload);
 }
 
 /**
@@ -204,8 +240,14 @@ async function connect(createNew = false) {
     if (ok && !community) {
       const [{ createCommunity }] = await Promise.all([import('./community.js'), import('./community.css')]);
       community = await createCommunity($('community-content'), { cityId: client.cityId, venueId: client.state.location,
-        onStatus: (s) => { if (s.status === 'offline') status('Community disconnected · reconnect in panel', true); else if (s.connected) status('Connected · progress saved'); } });
+        onStatus: (s) => { if (s.status === 'offline') status('Community disconnected · reconnect in panel', true); else if (s.connected) status('Connected · progress saved'); },
+        onMembers: (members) => {
+          roomMembers = Array.isArray(members) ? members : [];
+          showCrowd();
+          if (client.state.location === 'unilag' && campusPositionPending) reportCampusPosition();
+        } });
       communityLoadFailed = false;
+      if (client.state.location === 'unilag') { campusPositionPending = true; reportCampusPosition(); }
     }
     render();
   } catch (error) {
@@ -223,7 +265,9 @@ async function switchCity(id) {
   const result = await client.switchCity(id);
   if (!result.ok) { if (result.reason) shell.toast(result.reason, 'error'); return; }
   world?.setCity(id); cityMap?.setCity(id);
+  roomMembers = [];
   community?.join(id, client.state.location);
+  campusPositionPending = client.state.location === 'unilag';
   venue?.setLocation(client.state.location);
   shell.setMode('venue');
   shell.open('city', { city: id });

@@ -233,6 +233,7 @@ export const ANCHORS = Object.fromEntries(BUILDINGS.map((building) => {
   }];
 }));
 
+for(const anchor of Object.values(ANCHORS))anchor.landmark=anchor.building;
 ANCHORS.people = {...ANCHORS['student-union'],id:'people',label:'Campus people'};
 
 /**

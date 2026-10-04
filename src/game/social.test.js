@@ -75,7 +75,7 @@ test('NPC interactions are activities at the People spot of every public venue',
   assert.equal(spotsOf('park')[0].id, Object.keys(VENUES.park.spots)[0], 'the arrival spot is unchanged');
   for (const venue of Object.keys(VENUES).filter((id) => id !== 'home')) {
     const locals = Object.values(NPCS).filter((npc) => npc.venue === venue);
-    assert.equal(locals.length, 2, `${venue} has two regulars`);
+    assert.equal(locals.length, venue === 'unilag' ? 12 : 2, `${venue} has its registered regulars`);
     const spot = spotsOf(venue).find((item) => item.id === 'people');
     assert.equal(spot.activities.length, locals.length * NPC_ACTIONS.length, `${venue}: every regular offers every interaction`);
     const view = viewLife(createLife({ location: venue }, ctxAt()), ctxAt()).social;

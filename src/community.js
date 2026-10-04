@@ -1,6 +1,6 @@
 import './community.css';
 
-export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
+export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
   container.innerHTML = `<section class="community" aria-label="Local community">
     <header class="community-header"><div><span class="community-eyebrow">People nearby</span><h2>Community</h2></div><span class="community-connection" role="status">Connecting…</span></header>
     <p class="community-room"></p>
@@ -56,7 +56,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   function nearby(member) { return room.venueId !== 'home' && !rejectedPeers.has(member?.id) && member?.enabled && member.id !== session?.id && distanceTo(member) < VOICE_RADIUS; }
   function moveTo(x, z) {
     if (!roomReady || room.venueId === 'home' || !Number.isFinite(x) || !Number.isFinite(z)) return false;
-    return send({ type: 'move', x: Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), z: Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z)) });
+    return send({ type: 'move', x: room.venueId === 'unilag' ? x : Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), z: room.venueId === 'unilag' ? z : Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z)) });
   }
   function step(dx, dz) {
     const self = validPosition(members.find((person) => person.id === session?.id));
@@ -69,12 +69,12 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     for (const button of [el.north, el.south, el.west, el.east]) button.disabled = !roomReady || !self;
     if (self) {
       const range = document.createElement('span'); range.className = 'community-hearing-range';
-      range.style.left = `${(self.x + SPACE_BOUND) * 2.5}%`; range.style.top = `${(self.z + SPACE_BOUND) * 2.5}%`; el.positionMap.append(range);
+      range.style.left = `${room.venueId==='unilag'?(self.x+300)/7:(self.x+SPACE_BOUND)*2.5}%`; range.style.top = `${room.venueId==='unilag'?(self.z+240)/4.8:(self.z+SPACE_BOUND)*2.5}%`; el.positionMap.append(range);
     }
     for (const member of members) {
       const position = validPosition(member); if (!position) continue;
       const pin = document.createElement('span'); pin.className = `community-position-pin${member.id === session?.id ? ' is-self' : ''}${member.enabled ? ' is-speaking' : ''}`;
-      pin.style.left = `${(position.x + SPACE_BOUND) * 2.5}%`; pin.style.top = `${(position.z + SPACE_BOUND) * 2.5}%`;
+      pin.style.left = `${room.venueId==='unilag'?(position.x+300)/7:(position.x+SPACE_BOUND)*2.5}%`; pin.style.top = `${room.venueId==='unilag'?(position.z+240)/4.8:(position.z+SPACE_BOUND)*2.5}%`;
       pin.textContent = member.id === session?.id ? 'You' : member.name;
       pin.title = `${member.name}: ${position.x.toFixed(1)}, ${position.z.toFixed(1)}${member.id !== session?.id ? ` · ${distanceTo(member).toFixed(1)} units away` : ''}`;
       el.positionMap.append(pin);
@@ -100,6 +100,9 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     return true;
   }
   function renderMembers() {
+    onMembers(members.map(member=>({...member,position:member.position?{...member.position}:null})));
+    const campus = room.venueId === 'unilag';
+    for(const button of [el.north,el.south,el.east,el.west])button.disabled=campus;
     el.members.replaceChildren();
     el.count.textContent = String(members.length);
     for (const member of members) {

@@ -129,6 +129,7 @@ export { openingInfo };
  * Codes: invalid_travel · coming_soon · already_here · travel_mode_unavailable · closed · insufficient_funds
  */
 export function travelBlock(state, destination, modeId, ctx) {
+  if(destination === 'unilag' && ctx?.cityId !== 'lagos')return {code:'campus_lagos_only',reason:'UNILAG is in Lagos. Choose Lagos from the world map to visit.'};
   if (typeof destination === 'string' && Object.hasOwn(COMING_SOON, destination)) {
     return { code: 'coming_soon', reason: `${venueLabel(destination, ctx?.cityId)} is not open yet — it is coming soon.` };
   }
@@ -315,7 +316,7 @@ function destinationCard(state, venue, ctx) {
   const opening = openingInfo(venue.hours, now);
   const place = placeOf(state, id);
   // Reasons that do not depend on the mode are worked out once and shared by every tile.
-  const base = here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
+  const base = id === 'unilag' && ctx.cityId !== 'lagos' ? travelBlock(state,id,'trek',ctx) : here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
   return {
     id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? HOME_SPOTS[homeId(state)].district : venueDistrict(id, ctx.cityId),
     icon: venue.icon, description: venue.description, category: venue.category, x: place.x, y: place.y, zone: place.zone,
@@ -330,7 +331,7 @@ function destinationCard(state, venue, ctx) {
 
 function view(state, ctx) {
   const pending = state.travel.event && EVENTS[state.travel.event.id];
-  const venues = Object.values(VENUES).map((venue) => destinationCard(state, venue, ctx));
+  const venues = Object.values(VENUES).filter(venue=>!venue.cities||venue.cities.includes(ctx.cityId)).map((venue) => destinationCard(state, venue, ctx));
   const soon = Object.values(COMING_SOON).map((place) => ({
     id: place.id, kind: 'soon', label: venueLabel(place.id, ctx.cityId), district: venueDistrict(place.id, ctx.cityId), icon: place.icon, description: place.description,
     category: 'soon', x: place.map.x, y: place.map.y, zone: place.zone, here: false, visited: false, open: false, hours: 'Coming soon', status: 'Coming soon',

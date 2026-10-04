@@ -22,5 +22,9 @@ import goals from './goals.js';
 import social from './social.js';
 import civic from './civic.js';
 
-export const SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, home, onboarding, goals, social, civic];
+import unilagStudent from '../../campus/unilag/student.js';
+import unilagCommunity from '../../campus/unilag/games.js';
+import unilagShuttle from '../../campus/unilag/shuttle.js';
+
+export const SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, home, onboarding, goals, social, civic, unilagStudent, unilagCommunity, unilagShuttle];
 for (const system of SYSTEMS) registerSystem(system);

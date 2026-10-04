@@ -1,3 +1,5 @@
+import { createCampusWalk } from '../src/campus/unilag/walk.js';
+import { ENTRANCE } from '../src/campus/unilag/layout.js';
 // Portable protocol rules shared by the Node server and the Cloudflare worker.
 // No Node-only imports here (no node:*, ws or fs): the worker bundles this file as-is.
 import { hasAction } from '../src/life.js';
@@ -97,7 +99,15 @@ export const VOICE_RADIUS = 12;
 export const POSITION_BOUNDS = Object.freeze({ min: -20, max: 20 });
 export const STUN_ONLY_CONFIG = Object.freeze({ iceServers: Object.freeze([{ urls: 'stun:stun.l.google.com:19302' }]), turnConfigured: false, mode: 'stun-only' });
 
-export function validatePosition(value) {
+let campusWalk;
+export function initialVenuePosition(venueId) { return venueId === 'unilag' ? {x:ENTRANCE.x,z:ENTRANCE.z} : {x:0,z:0}; }
+export function validatePosition(value, venueId) {
+  if (venueId === 'unilag') {
+    campusWalk ??= createCampusWalk();
+    const zone = value && campusWalk.zoneAt(value.x,value.z);
+    if(!zone || !campusWalk.grids.get(zone.id).free(value.x,value.z)) throw protocolError(400,'invalid_position');
+    return {x:value.x,z:value.z};
+  }
   if (!value || !Number.isFinite(value.x) || !Number.isFinite(value.z)
     || value.x < POSITION_BOUNDS.min || value.x > POSITION_BOUNDS.max
     || value.z < POSITION_BOUNDS.min || value.z > POSITION_BOUNDS.max) throw protocolError(400, 'invalid_position');

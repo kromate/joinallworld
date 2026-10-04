@@ -49,7 +49,7 @@
  * The module then raises 'guest-expired' { hostId, guestId, cityId } for the social module to
  * close the stored visit.
  */
-import { MAX_VOICE_MEMBERS, UUID_PATTERN, canJoinVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
+import { MAX_VOICE_MEMBERS, UUID_PATTERN, canJoinVenue, initialVenuePosition, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
 import { VENUES } from '../life-service.js';
 import { checkLook } from '../../src/game/systems/onboarding.js';
 import { screenText } from '../moderation/text.js';
@@ -210,7 +210,7 @@ export default function roomSocket(ctx) {
           entered = true;
           if (!core.isOpen(ws)) return;
           const room = venueRoomKey(message.cityId, message.venueId, visiting ? hostId : ws.session.id);
-          leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.room = room; ws.look = look;
+          leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = initialVenuePosition(room.split(':')[1]); ws.lastMoves = []; ws.room = room; ws.look = look;
           if (!rooms.has(room)) rooms.set(room, new Set());
           rooms.get(room).add(ws); presence(room, ws.session.id); roomChanged(room, null, ws.session.id);
         };
@@ -238,7 +238,7 @@ export default function roomSocket(ctx) {
         admit(result); // a store that takes no commit listener: admit now
       },
       move: { room: true, handle(ws, message) {
-        const position = validatePosition(message);
+        const position = validatePosition(message, ws.room?.split(':')[1]);
         ws.lastMoves = ws.lastMoves.filter(time => time > now() - 1000);
         if (ws.lastMoves.length >= 5) throw Error('move_rate_limited');
         ws.lastMoves.push(now());

@@ -114,3 +114,6 @@ export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-
 import statement from './statement.js';
 import support from './support.js';
 PANELS.splice(0, PANELS.length, ...buildPanels([...PANELS, statement, support]));
+
+const campus = lazyGroup(() => import('./campus.js'), [{id:'campus',title:'Campus',icon:'🎓',placement:'phone',order:26}]);
+PANELS.splice(0,PANELS.length,...buildPanels([...PANELS,...campus]));

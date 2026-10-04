@@ -144,13 +144,14 @@
  *   fixture(t, { routes: [myModule], wsModules: [myWs] }) replaces the registered modules.
  */
 import core from './core.js';
+import campus from './campus.js';
 import auth from './auth.js';
 import social from './social.js';
 import civic from './civic.js';
 import support from './support.js';
 import moderation from './moderation.js';
 
-export const ROUTE_MODULES = [core, auth, social, civic, support, moderation];
+export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, campus];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /** Build the lookup. Returns { match(method, pathname) → { handler, params } | null, keys }. */

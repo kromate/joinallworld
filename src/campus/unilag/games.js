@@ -144,7 +144,8 @@ function normalizedDay(value) {
     const score = value.games?.[id];
     if (Number.isSafeInteger(score) && score >= 0 && score <= GAME_SCORE_CAPS[id]) games[id] = score;
   }
-  return { day: value.day, games, volunteered: value.volunteered === true };
+  const teams={};for(const game of GAME_IDS){const team=value.teams?.[game];if(team&&STUDENT_ID.test(team.studentId)&&CAMPUS_FACULTIES.includes(team.faculty)&&(team.hall===null||CAMPUS_HALLS.includes(team.hall)))teams[game]={studentId:team.studentId,faculty:team.faculty,hall:team.hall};}
+  return { day: value.day, games, ...(Object.keys(teams).length?{teams}:{}), volunteered: value.volunteered === true };
 }
 
 function sanitize(input, state, ctx) {
@@ -185,6 +186,7 @@ function dayRecord(community, day) {
 function scoreEvent(state, game, score, day, ctx) {
   const profile = currentStudent(state);
   if (!profile) return false;
+  const record=dayRecord(state.unilagCommunity,day);record.teams??={};record.teams[game]={studentId:profile.studentId,faculty:profile.faculty,hall:profile.hall};
   emit(state, 'campus.game.scored', { studentId: profile.studentId, game, score, day, faculty: profile.faculty, hall: profile.hall }, ctx);
   return true;
 }

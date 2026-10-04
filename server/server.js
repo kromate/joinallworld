@@ -13,9 +13,11 @@ import { fileURLToPath } from 'node:url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.js';
 import { settleCity, applyLifeAction } from './life-service.js';
-import { buildRoutes } from './routes/index.js';
+import { buildRoutes, ROUTE_MODULES } from './routes/index.js';
 import { executeCommand } from './routes/core.js';
 import { buildSocketHandlers } from './ws/index.js';
+import { createServerTelemetry, useTelemetry } from './telemetry/index.js';
+import telemetryRoutes from './telemetry/routes.js';
 import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canJoinVenue } from './protocol.js';
 
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
@@ -52,7 +54,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   moderatorToken = process.env.MODERATOR_TOKEN,
   trustProxy = process.env.TRUST_PROXY === '1',
   votesPerAddress = Number(process.env.VOTES_PER_ADDRESS ?? 3),
-  buildId = process.env.BUILD_ID || packageVersion() } = {}) {
+  buildId = process.env.BUILD_ID || packageVersion(),
+  telemetry = createServerTelemetry({ env: process.env, buildId, now, log: line => console.error(line) }) } = {}) {
   const store = providedStore || await createStore(dataDir, { ...(storeMode ? { mode: storeMode } : {}), ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');
   if (!Number.isFinite(heartbeatMs) || heartbeatMs < 1000 || heartbeatMs > 60000) throw new Error('Invalid heartbeat interval');
@@ -127,6 +130,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     res.end(encoded);
   }
   const server = http.createServer(async (req, res) => {
+    let at = null;
     try {
       const url = new URL(req.url, 'http://localhost');
       if (url.pathname.startsWith('/api/')) {
@@ -142,16 +146,18 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           method: req.method, path: url.pathname, params: route.params, query: url.searchParams, ip,
           /** True only for a request carrying the operator's bearer token (never a cookie or a query value). */
           moderator: () => isModerator(req),
-          json: () => jsonBody(req),
-          session: (db, { renew = false } = {}) => sessionFor(req, db, renew),
+          json: () => jsonBody(req).then(body => (request.body = body)),
+          session: (db, { renew = false } = {}) => { const session = sessionFor(req, db, renew); if (session) request.publicId = session.publicId; return session; },
           requireSession(db, options) { const session = this.session(db, options); if (!session) throw fail(401, 'device_session_required'); return session; },
           // Foundation-only: the cookie secret and the raw request, used by core routes for cookies and room checks.
           secret: cookieId(req), raw: req,
         };
+        at = { key: route.key, request, began: performance.now() };
         const result = await route.handler(request) || {};
         const status = result.status || 200;
         const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body) ? { ...result.body, serverTime: now() } : result.body ?? {};
         reply(res, status, payload, { ...(result.renew ? renewedHeaders(req) : {}), ...result.headers });
+        telemetry.http({ method: req.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.type, code: result.body?.code } });
         if (result.after) Promise.resolve().then(() => result.after()).catch(error => console.error('After-response hook failed:', error.message));
         return;
       }
@@ -159,12 +165,14 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const root = resolve(distDir);
       let path = resolve(root, `.${decodeURIComponent(url.pathname)}`);
       if (path !== root && !path.startsWith(root + sep)) throw fail(403, 'invalid_path');
+      if (extname(path) === '.map') throw fail(404, 'not_found');
       try { if (!(await stat(path)).isFile()) path = resolve(root, 'index.html'); } catch { path = resolve(root, 'index.html'); }
       const bytes = await readFile(path);
       res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'X-Content-Type-Options': 'nosniff' });
       res.end(req.method === 'HEAD' ? undefined : bytes);
     } catch (error) {
       if (!error.status && error.code !== 'ENOENT') console.error('Request failed:', error.message);
+      telemetry.httpFailed(error, { method: req.method, route: at?.key, status: error.status || (error.code === 'ENOENT' ? 404 : 500), code: error.status ? error.code : undefined, body: at?.request.body, publicId: at?.request.publicId });
       if (res.headersSent) { res.end(); return; }
       reply(res, error.status || (error.code === 'ENOENT' ? 404 : 500), { error: error.status ? error.code : error.code === 'ENOENT' ? 'build_required' : 'internal_error',
         ...(error.status && typeof error.reason === 'string' ? { reason: error.reason } : {}) });
@@ -173,7 +181,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const wss = new WebSocketServer({ noServer: true, maxPayload: 16384 });
   const PONG_GRACE_MS = Math.min(5000, Math.floor(heartbeatMs / 2));
   const unresponsive = ws => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= PONG_GRACE_MS;
-  const send = (ws, message) => { if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(message)); };
+  const send = (ws, message) => { if (ws.readyState === WebSocket.OPEN) { ws.send(JSON.stringify(message)); telemetry.socketOut(ws, message); } };
   /**
    * The server context handed to every route and ws module. Documented in routes/index.js.
    * `core` holds foundation internals (cookies, sockets, room checks); feature modules use the rest.
@@ -181,7 +189,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // In-process events between server modules (never sent to a client by the host itself).
   const listeners = new Map();
   const ctx = {
-    store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS,
+    store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS, telemetry,
     randomId: () => randomUUID(),
     on(event, fn) { if (!listeners.has(event)) listeners.set(event, []); listeners.get(event).push(fn); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, error.message); } } },
@@ -234,7 +242,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   };
   ctx.command = (request, body, options) => executeCommand(ctx, request, body, options);
   const sockets = buildSocketHandlers(ctx, wsModules);
-  const routes = buildRoutes(ctx, routeModules);
+  const routes = buildRoutes(ctx, routeModules || [...ROUTE_MODULES, telemetryRoutes]);
+  telemetry.attach(ctx);
   server.on('upgrade', async (req, socket, head) => {
     try {
       if (req.url !== '/socket' || !req.headers.origin || !sameOrigin(req) || !allow(`upgrade:${addressOf(req)}`, 60)) throw Error('Rejected');
@@ -277,7 +286,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     ws.alive = true; ws.pingedAt = 0; ws.seenAt = now();
     ws.on('pong', () => { ws.alive = true; ws.seenAt = Math.max(now(), ws.pingedAt); });
     ws.on('error', () => {});
-    ws.on('close', () => sockets.close(ws));
+    ws.on('close', () => { telemetry.socketClosed(ws); sockets.close(ws); });
     let messages = Promise.resolve();
     ws.on('message', (raw, binary) => {
       if (binary || !allow(`ws:${ws.session.id}`, 600)) {
@@ -302,7 +311,14 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (!entry) throw Error(ws.room ? 'invalid_message' : 'join_required');
         if (entry.room && !ws.room) throw Error('join_required');
         await entry.handle(ws, message);
-      } catch (error) { send(ws, { type: 'error', code: error.message, error: error.message, ...(typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
+        telemetry.socketIn(ws, message);
+      } catch (error) {
+        const text = String(error?.message ?? error).split('\n')[0].slice(0, 300);
+        const coded = /^[a-z][a-z0-9_]{1,63}$/.test(text);
+        telemetry.socketFailed(ws, message, text, coded, error);
+        if (!coded) console.error(`Socket message failed: ${text}`);
+        const safeError = coded ? error : { message: 'internal_error' };
+        send(ws, { type: 'error', code: safeError.message, error: safeError.message, ...(typeof safeError.reason === 'string' ? { reason: safeError.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));
     });
   });
@@ -327,18 +343,21 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   server.wss = wss;
   server.beat = beat; // tests drive the heartbeat directly instead of waiting for the timer
   server.store = store;
+  server.telemetry = telemetry;
   server.on('close', () => { clearInterval(heartbeat); for (const ws of wss.clients) ws.terminate(); wss.close(); });
   // close(callback) reports back only once the store has written everything, so "the server has
   // stopped" always means "the data file is complete" — for a restart, a test or a shutdown script.
   const closeHttp = server.close.bind(server);
-  server.close = (callback) => { closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).finally(() => callback?.(error)); }); return server; };
+  server.close = (callback) => { closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).then(() => telemetry.close()).finally(() => callback?.(error)); }); return server; };
   await Promise.all(ctx.startup.splice(0));
   return server;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const server = await createServer();
-  // Write anything not yet on disk before the process leaves.
-  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { server.store.close?.().catch(() => {}).finally(() => process.exit(0)); });
+  const telemetry = useTelemetry(server.telemetry);
+  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { server.store.close?.().catch(() => {}).then(() => telemetry.close()).finally(() => process.exit(0)); });
+  if (telemetry.enabled) for (const event of ['uncaughtException', 'unhandledRejection']) process.once(event, (error) => { console.error(error); telemetry.captureError(error, { source: event, level: 'fatal' }); telemetry.close().finally(() => process.exit(1)); });
+  telemetry.started();
   server.listen(Number(process.env.PORT) || 3001, '0.0.0.0', () => console.log(`JoinAllworld server listening on ${server.address().port}`));
 }

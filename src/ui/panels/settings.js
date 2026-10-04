@@ -57,11 +57,12 @@ export default {
       </ul>
       <h3>Privacy</h3>
       <p class="settings-note">You can hide your home from the Neighbours directory and your balance from the Rich List. Blocked players are listed in People.</p>
-      <span class="settings-actions"><button class="ui-button" data-open="neighbours">Neighbours directory</button><button class="ui-button" data-open="richlist">Rich List</button><button class="ui-button" data-open="people">People &amp; blocks</button></span>
+      <span class="settings-actions"><button class="ui-button" data-open="neighbours">Neighbours directory</button><button class="ui-button" data-open="richlist">Rich List</button><button class="ui-button" data-open="people">People &amp; blocks</button><button class="ui-button" data-privacy-analytics>Analytics and error reports</button></span>
       <h3>Accounts</h3>
       <p class="settings-note">Accounts (sign up, log in, recovery email, moving a life to another device) are not part of this build. Notifications outside the game are not available either: news arrives in Phone → Messages → Updates.</p>`;
   },
   bind(root, api) {
+    root.querySelector('[data-privacy-analytics]')?.addEventListener('click', () => window.dispatchEvent(new CustomEvent('jaw:privacy')));
     for (const input of root.querySelectorAll('[data-setting]')) {
       input.addEventListener('change', () => {
         save({ ...settings(), [input.dataset.setting]: input.checked });

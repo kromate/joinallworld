@@ -29,5 +29,6 @@ export async function fixture(t, options = {}) {
     return { ws, next: () => queue.length ? Promise.resolve(queue.shift()) : new Promise((resolve, reject) => { const timeout = setTimeout(() => reject(Error('Message timeout')), 2000); waiting.push(message => { clearTimeout(timeout); resolve(message); }); }) };
   }
   async function joinRoom(device) { const peer = await socket(device); peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await peer.next(); return peer; }
-  return { base, request, device, action, socket, joinRoom, advance: ms => { time += ms; }, dir, server, now: () => time, flush: () => server.store.flush() };
+  const id = () => `${time}:${randomUUID()}`;
+  return { base, request, device, action, socket, joinRoom, id, advance: ms => { time += ms; }, dir, server, now: () => time, flush: () => server.store.flush() };
 }

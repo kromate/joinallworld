@@ -49,7 +49,7 @@ async function fixture(t, overrides = {}) {
   }
   const storage = () => mf.unsafeGetDurableObjectStorage('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1' });
   const upgrade = headers => mf.dispatchFetch(origin + '/socket', { headers: { upgrade: 'websocket', ...headers } });
-  return { request, device, action, life, socket, storage, upgrade, origin, hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { for (const socket of sockets) socket.close(); await mf.dispose(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true }); await mf.ready; } };
+  return { atHost: (host,path,method='GET') => mf.dispatchFetch(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { for (const socket of sockets) socket.close(); await mf.dispose(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true }); await mf.ready; } };
 }
 
 test('Cloudflare: public IDs, origin isolation, atomic duplicate fare, replay window and restart durability', async t => {
@@ -348,4 +348,15 @@ test('Review B3: heartbeat acknowledgements hit the frame limiter before session
  await storage.exec('UPDATE sessions SET value=? WHERE secret=?','malformed-json',a.cookie.slice(4));
  x.send({type:'heartbeat-ack'});assert.equal((await x.next()).code,'rate_limited');
  assert.equal((await storage.exec('SELECT count FROM rate_limits WHERE key=?',`ws:${a.id}`))[0].count,601);
+});
+
+
+test('Continuity preparation: old-character bridge is apex-only, safe-method-only and uncached',async t=>{
+ const f=await fixture(t);
+ const response=await f.atHost('https://joinallworld.com','/old-character.html');assert.equal(response.status,200);
+ assert.equal(response.headers.get('cache-control'),'private, no-store');assert.equal(response.headers.get('referrer-policy'),'no-referrer');assert.match(response.headers.get('content-security-policy'),/connect-src https:\/\/v1\.joinallworld\.com/);
+ assert.match(await response.text(),/Continue with my character/);
+ const head=await f.atHost('https://joinallworld.com','/old-character.html','HEAD');assert.equal(head.status,200);assert.equal(await head.text(),'');
+ assert.equal((await f.atHost('https://joinallworld.com','/old-character.html','POST')).status,405);
+ assert.equal((await f.atHost('https://joinallworld.test','/old-character.html')).status,404);
 });

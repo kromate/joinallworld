@@ -1,3 +1,4 @@
+import { oldCharacterLanding } from './legacy-bridge.js';
 import { DurableObject } from 'cloudflare:workers';
 import { createSqliteStore } from './sqlite-store.js';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.js';
@@ -48,6 +49,10 @@ export default {
       return env.JOINALLWORLD.getByName('joinallworld-v1').fetch(request);
     }
     if (!['GET', 'HEAD'].includes(request.method)) return json(405, { error: 'method_not_allowed' });
+    if (url.pathname === '/old-character.html') {
+      if (url.origin !== 'https://joinallworld.com') return json(404, { error: 'not_found' });
+      return oldCharacterLanding(request.method === 'HEAD');
+    }
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
     headers.set('x-content-type-options', 'nosniff');

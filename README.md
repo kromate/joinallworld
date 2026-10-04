@@ -62,6 +62,50 @@ npm start         # serves dist/, the API and the WebSocket from one process
 
 The server does not terminate TLS. Read [SECURITY.md](SECURITY.md) before exposing it to anyone.
 
+### Telemetry (off unless configured)
+
+Error monitoring (Sentry) and product analytics (PostHog) are built in and **do nothing until they are configured**. With none of the variables below set, the game makes no request to either service, runs no SDK code and does not download one: the page asks its own server once (`GET /api/telemetry/config`), is told `{ "enabled": false }`, and stops. What is collected, and the player's choice, are described in [SECURITY.md](SECURITY.md#telemetry).
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `TELEMETRY_ENV` | unset | `production`, `staging` or `dev`. **Required** once any key below is set; without it telemetry stays off and the server says so in one log line. `dev` stays off too, unless `TELEMETRY_DEBUG=1` |
+| `SENTRY_DSN_CLIENT` | unset | DSN of the **browser** Sentry project. Public: it is sent to the browser |
+| `SENTRY_DSN_SERVER` | unset | DSN of the **server** Sentry project. Never sent to the browser |
+| `POSTHOG_KEY` | unset | The PostHog **project API key** (`phc_…`). Public: it is sent to the browser. A personal API key (`phx_…`) is a secret and is refused |
+| `POSTHOG_HOST` | `https://us.i.posthog.com` | PostHog ingestion host. Use `https://eu.i.posthog.com` for a project in the EU cloud |
+| `BUILD_ID` | package version | The release every event and error is tagged with (and the release source maps are uploaded for) |
+| `TELEMETRY_DEBUG` | unset | `1`: also run on `localhost` / private addresses and with `TELEMETRY_ENV=dev`, and accept `http://` endpoints. For testing the wiring only |
+| `TELEMETRY_CONSENT_AT` | `named` | When the consent sheet is first shown: `named` (right after the nickname is accepted, before character creation) or `landing` (at once). See the note below |
+| `TELEMETRY_REPLAY_ON_ERROR` | unset | `1`: opt in to Sentry session replay for sessions that hit an error. All text and inputs are masked and no canvas is recorded. Off by default; its code is a separate chunk that is not downloaded otherwise |
+| `TELEMETRY_SLOW_MS` | `1000` | An API request slower than this may be reported as a slow transaction (1 in 5 of them) |
+
+**Production.** Set `TELEMETRY_ENV=production`, the two DSNs, `POSTHOG_KEY` (and `POSTHOG_HOST` for an EU project) and `BUILD_ID` in the server's environment, then switch on the project-side settings listed in SECURITY.md. Nothing is configured at build time, so one build serves every environment.
+
+**Local preview.** Telemetry does not run on `localhost` unless `TELEMETRY_DEBUG=1`. To see exactly what would be sent without any account or key, point the game at the bundled stand-in, which records everything and talks to nobody:
+
+```sh
+node scripts/telemetry-capture.mjs &          # a local stand-in for Sentry and PostHog on 127.0.0.1:3361
+npm run build
+TELEMETRY_ENV=dev TELEMETRY_DEBUG=1 BUILD_ID=local \
+SENTRY_DSN_CLIENT=http://client@127.0.0.1:3361/11 SENTRY_DSN_SERVER=http://server@127.0.0.1:3361/22 \
+POSTHOG_KEY=phc_local_capture POSTHOG_HOST=http://127.0.0.1:3361 npm start
+curl -s http://127.0.0.1:3361/__captured      # everything recorded so far
+```
+
+**Source maps.** `npm run build` writes hidden source maps (no reference to them in the served files). Before deploying, upload them and remove them from `dist/`:
+
+```sh
+BUILD_ID=<release> SENTRY_AUTH_TOKEN=<token> SENTRY_ORG=<org slug> SENTRY_PROJECT=<browser project slug> npm run sentry:sourcemaps
+```
+
+The token comes from the environment and is never written anywhere; `--strip-only` deletes the maps without uploading. Maps are never served in any case: the Node server answers 404 for `*.map`, and `public/.assetsignore` keeps them out of the Worker's assets.
+
+**How it fits together.** `src/telemetry/index.js` is the facade — `track(name, props)`, `screen(name)`, `identify(publicId, traits)`, `setGroup('lga', id)`, `captureError(error, context)`, `setConsent(choice)` — and the only telemetry code in the first download (about 2 kB). It is safe to call anywhere and never throws. Code that should not import it can dispatch a DOM event instead: `window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name, props } }))`. Everything else (`core.js`, the two SDK wrappers, the consent sheet) is fetched as separate chunks after the first scene is drawn, and only if the server says telemetry is configured; the PostHog chunk only after the player chose Accept. Every event name, its properties, when it fires and why is in `src/telemetry/events.js`. The server side is `server/telemetry/` — `track(publicId, name, props)` and `captureError(error, context)` over a bounded queue sent with plain `fetch`, never on a request's path, flushed on shutdown.
+
+**When the consent sheet is shown.** By default (`named`) a new player is asked right after their nickname is accepted: `landed` and `named` wait in memory and are sent only if the answer is Accept. A visitor who leaves before choosing a nickname is therefore never counted, so the landing → named step cannot be measured. `TELEMETRY_CONSENT_AT=landing` asks on first paint instead and makes that step measurable, at the cost of a question before the game has been seen.
+
+**Cloudflare adapter.** `deploy/cloudflare-worker.js` does not serve `/api/telemetry/*` yet: on the Worker the page is told nothing and telemetry stays off. `server/telemetry/` uses only `fetch` and Web APIs so the Worker can adopt it.
+
 ### Without the server
 
 The client still loads if the server is unreachable, but it is **read-only**: it shows the last state cached in the browser, and no action, travel or city switch is applied. There is no offline play and nothing is granted locally. Use the retry control once the server is back.
@@ -173,6 +217,7 @@ HTTP routes (all under the per-address rate limit, and all except `/api/mod/*` u
 | Growth | `POST /api/growth/hello` · `POST /api/growth/share` · `GET /api/growth/share/:code` · `POST /api/growth/referral/link` · `POST /api/growth/consent` · `POST /api/growth/email` · `POST /api/growth/email/remove` · `GET /api/growth/push/key` · `POST /api/growth/push/subscribe` · `POST /api/growth/push/unsubscribe` · `POST /api/growth/tables/claim` · `POST /api/growth/client` — and the pages `GET /s/:code` (link preview), `GET`/`POST /e/confirm`, `GET`/`POST /e/unsub` |
 | Growth, operator | `GET /api/mod/growth/metrics` · `GET /api/mod/growth/outreach` · `POST /api/mod/growth/outreach/switch` · `POST /api/mod/growth/outreach/run` — bearer token only, 404 unless `MODERATOR_TOKEN` is set |
 | Operator | `GET /api/mod/overview` · `GET /api/mod/reports` · `GET /api/mod/problems` · `GET /api/mod/mutes` · `GET /api/mod/content` · `GET /api/mod/audit` · `POST /api/mod/reports/:id/dismiss` · `POST /api/mod/problems/:id/status` · `POST /api/mod/mutes` · `POST /api/mod/mutes/:id/lift` · `POST /api/mod/content/remove` — bearer token only, 404 unless `MODERATOR_TOKEN` is set |
+| Telemetry | `GET /api/telemetry/config` (what the browser may load: public keys only, or `{ enabled: false }`; reads no session) · `POST /api/telemetry/consent` (`{ analytics }`: the player's Accept or Reject, kept in memory) |
 | Accounts | none (`/api/auth/*` is reserved and answers 404) |
 
 WebSocket messages on `/socket` (`server/ws/`):
@@ -313,6 +358,9 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `server/store.js` | JSON file store behind a two-method `transact`/`read` interface: copy-on-touch transactions, shared durable writes that are undone if they fail, lazy polls, frozen stored state, a write budget |
 | `server/routes/once.js` | The exactly-once helper behind `ctx.once`, `ctx.act` and `POST /api/action`: mandatory timed ids, conflicts, expiry, quotas without eviction |
 | `src/lazy-load.js` | Loads a late chunk (the community panel) with a truthful state and bounded retries |
+| `src/telemetry/` | Error monitoring and product analytics, off unless configured. `index.js` is the facade (the only part in the first download); `core.js` (consent, queues, funnel), `sentry.js` / `posthog.js` (the only files that import an SDK), `consent-ui.js` and `what-we-collect.js` (the sheet and its words) are lazy chunks; `events.js` is the event catalogue; `scrub.js`, `clean.js`, `policy.js`, `funnel.js` are the pure rules, shared with the server |
+| `server/telemetry/` | The server side: `config.js` (environment), `transport.js` (bounded queue, `fetch` to PostHog's batch API and Sentry's envelope endpoint), `instrument.js` (what routes, socket replies and room snapshots mean as events), `routes.js` (`/api/telemetry/*`) |
+| `scripts/sentry-sourcemaps.mjs`, `scripts/telemetry-capture.mjs` | Source-map upload (`npm run sentry:sourcemaps`); a local stand-in for both services that records what would be sent |
 | `server/auth.js`, `server/routes/auth.js` | Inert placeholders for accounts; device sessions remain the only identity |
 | `src/game/systems/missions.js`, `events.js`, `growth.js`, `src/game/content/missions.js`, `calendar.js`, `growth.js` | Missions and the stamp card; event attendance and spraying; the server-only credits for table wins and referral gifts. Content is plain data |
 | `src/game/calendar.js`, `digest.js`, `outreach.js`, `share-model.js` | Pure functions shared by server and client: what is on when; the away card and the weekly digest; when a message may be sent, the address check and the consent wording; what a share says |
@@ -338,4 +386,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 
 MIT — see [LICENSE](LICENSE).
 
-Direct dependencies: [Three.js](https://threejs.org/) (MIT), [Vite](https://vite.dev/) (MIT), [ws](https://github.com/websockets/ws) (MIT). All scene and map geometry is written in code. The client names the DM Sans typeface and falls back to a system sans-serif when it is not installed; nothing is loaded from a font service.
+Direct dependencies: [Three.js](https://threejs.org/) (MIT), [Vite](https://vite.dev/) (MIT), [ws](https://github.com/websockets/ws) (MIT), and — downloaded by a browser only when telemetry is configured — [@sentry/browser](https://github.com/getsentry/sentry-javascript) (MIT) and [posthog-js](https://github.com/PostHog/posthog-js) (Apache-2.0 and MIT). The server sends telemetry with `fetch` and has no SDK. All scene and map geometry is written in code. The client names the DM Sans typeface and falls back to a system sans-serif when it is not installed; nothing is loaded from a font service.

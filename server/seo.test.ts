@@ -32,6 +32,8 @@ test('index.html head: one title, one description, a canonical, Open Graph and T
   for (const rel of ['manifest', 'icon', 'apple-touch-icon']) assert.match(head, new RegExp(`<link rel="${rel}" href="/`));
   assert.match(head, /href="\/favicon\.svg" type="image\/svg\+xml"/); assert.match(head, /href="\/icons\/favicon-32\.png" type="image\/png"/);
   assert.match(html, /<noscript>.*Allworld.*Lagos.*<\/noscript>/);
+  assert.ok(!/Lagos life/i.test(head), 'the home page head does not present the game as a Lagos life'); assert.ok(!/Lagos/.test(titles[0] ?? ''), 'the title leads with the world, not a city');
+  assert.ok(!/Lagos/.test(og['og:image:alt'] ?? ''), 'the share image does not mention Lagos');
 });
 
 test('index.html JSON-LD parses: a VideoGame and a WebSite', async () => {

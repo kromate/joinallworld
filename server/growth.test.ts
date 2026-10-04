@@ -112,7 +112,8 @@ test('share page: a crawler that runs no script gets correct Open Graph tags, es
     const other = await fetch(f.base + path);
     const text = await other.text();
     assert.equal(other.status, 404, path);
-    assert.match(text, /<meta property="og:title" content="Allworld: a free Lagos life game in your browser">/);
+    assert.match(text, /<meta property="og:title" content="Allworld: a digital world you can live in">/);
+    assert.ok(!/Lagos life/i.test(text) && text.includes('A whole world to live in.'), 'the default preview does not present the game as a Lagos life');
     assert.equal(/alert|onload/i.test(text), false);
     assert.match(text, /content="0;url=\/"/);
   }

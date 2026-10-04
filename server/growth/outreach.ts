@@ -226,7 +226,7 @@ function buildService(ctx: RouteContext) {
       if (welcome) contact.welcomed = true; // claimed here, so the welcome is attempted once
       if (first) count(g, now(), 'email.confirmed');
       const session = ctx.core.sessionByPublicId?.(db, claim.id);
-      return { ok: true, welcome, email: contact.email, nonce: contact.nonce, name: session?.name ?? 'Lagosian' };
+      return { ok: true, welcome, email: contact.email, nonce: contact.nonce, name: session?.name ?? 'friend' };
     });
     if (done.ok && done.welcome) await deliverMail(claim.id, 'welcome', done.email, { ...welcomeMail({ name: done.name, contact: contactLine(), ...(await links(claim.id, done.nonce)) }), headers: listHeaders((await links(claim.id, done.nonce)).unsubscribeUrl) });
     return { ok: done.ok };

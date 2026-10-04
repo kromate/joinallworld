@@ -23,7 +23,7 @@ interface Reply {
 const isRecord = (value: unknown): value is Frame => typeof value === 'object' && value !== null;
 const replyOf = (body: unknown, status: number): Reply => ({ ...(isRecord(body) ? body : {}), status });
 const CITY = 'lagos', ORIGIN = 'https://play.example';
-const INDEX = '<!doctype html><html><head><title>Allworld • Your city story</title><meta property="og:image" content="/og/allworld.png"><meta name="twitter:image" content="/og/allworld.png"></head><body></body></html>';
+const INDEX = '<!doctype html><html><head><title>Allworld • A whole world to live in</title><meta property="og:image" content="/og/allworld.png"><meta name="twitter:image" content="/og/allworld.png"></head><body></body></html>';
 
 async function setup(t: Parameters<typeof fixture>[0]) {
   const dist = await mkdtemp(join(tmpdir(), 'joinallworld-invites-dist-'));

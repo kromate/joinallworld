@@ -119,7 +119,7 @@ function onEditorTap(event: MouseEvent): void {
 
 <template>
   <div ref="root" class="qs-root" data-qs-root>
-    <p class="qs-lead"><b>Jump into a Nigerian world with your friends.</b>Start playing in seconds. Build your life as you go.</p>
+    <p class="qs-lead"><b>Step into a world to live in, with your friends.</b>Start playing in seconds. Build your life as you go.</p>
     <p v-if="invited()" class="qs-join" role="status"><span aria-hidden="true"><GameIcon name="invite" inline /></span><span><strong>A friend invited you.</strong>Tap Play and you land where they are.</span></p>
     <p v-if="showNote && words" class="qs-note" role="status"><span aria-hidden="true"><GameIcon name="cloud-off" inline /></span><span><strong>{{ words.short }}</strong>{{ words.why }} Your character is kept on this device.</span><LinkAction class-name="ui-button is-small" /></p>
     <p v-if="shown" class="qs-error" role="alert">{{ shown }}</p>

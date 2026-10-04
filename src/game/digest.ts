@@ -124,7 +124,7 @@ export function composeDigest({ name, city = 'Lagos', missions = null, events = 
   for (const mission of missions?.daily ?? []) if (!mission.done && tasks.length < DIGEST.tasks) tasks.push({ text: mission.label, app: mission.open ?? 'missions' });
   if (!tasks.length) tasks.push({ text: 'Open Missions and pick one thing for today', app: 'missions' });
   return {
-    subject: `Your week in ${city}, ${clip(name, 24) || 'Lagosian'}`,
+    subject: `Your week in ${city}, ${clip(name, 24) || 'friend'}`,
     greeting: `Here is what is waiting in ${city}.`,
     lines: top.lines.map((line) => line.text), more: top.more, tasks,
     footer: 'You get this at most once a week, only if you asked for it. One tap stops it.',

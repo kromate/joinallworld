@@ -9,7 +9,8 @@
     "test": "node --test \"src/**/*.test.js\" \"server/**/*.test.js\"",
     "start": "node server/server.js",
     "start:server": "node server/server.js",
-    "test:edge": "node --test deploy/*.test.mjs"
+    "test:edge": "node --test deploy/*.test.mjs",
+    "first-day": "node scripts/first-day.mjs"
   },
   "dependencies": {
     "three": "^0.180.0",

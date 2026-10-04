@@ -84,7 +84,7 @@ import { sceneMaterials } from './scene/build.js';
 import { createMotionLoop } from './scene/motion-loop.js';
 import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.js';
 import { createSceneControls } from './scene/controls.js';
-import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH } from './scene/venue-scenes.js';
+import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.js';
 import { buildHomeScene } from './scene/home-scene.js';
 import { VENUES } from './game/content/venues.js';
 import { spotsOf } from './life.js';
@@ -188,7 +188,11 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       // A drag that began on a tag turned the camera: it is not a click on the tag.
       if (suppressClick && event.detail !== 0) return;
       const node = event.target.closest?.('[data-tag]');
-      if (node) onTag?.({ id: node.dataset.tag, kind: node.dataset.kind });
+      if (!node) return;
+      // A table's tag is the table: the avatar walks up to it, and arriving opens it (no frame loop: it is simply there).
+      const thing = node.dataset.kind === 'table' ? thingList.find((item) => item.id === node.dataset.tag) : null;
+      if (thing) { if (!(uiMode === 'venue' && !locked && walkToThing(thing))) onTag?.({ id: thing.id, kind: thing.kind }); else if (!loop.running) renderScene(); return; }
+      onTag?.({ id: node.dataset.tag, kind: node.dataset.kind });
     });
     // A press on a tag is followed like a press on the scene, so dragging from a tag orbits the camera.
     tagLayer.addEventListener('pointerdown', (event) => { if (event.target.closest?.('[data-tag]')) pointerDown(event, false); });
@@ -196,6 +200,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     for (const type of ['pointerup', 'pointercancel']) tagLayer.addEventListener(type, (event) => pointerEnd(event));
   }
   let goal = null; // { venue, spot, text } — the spot the current goal points at (setGoal)
+  /** What stands in this venue to be walked up to (walk.things(): the game tables), and the one the avatar is standing at. */
+  let thingList = [], atThing = null, thingDwell = null;
   const spotHint = tagLayer ? globalThis.document.createElement('span') : null;
   if (spotHint) { spotHint.className = 'scene-spot-hint'; spotHint.hidden = true; }
 
@@ -280,10 +286,31 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     win?.dispatchEvent?.(new CustomEvent('jaw:scene-spot', { detail: { id, open } }));
     return true;
   }
+  /** The table (walk.things()) the avatar is within reach of, or null. */
+  function nearestThing() {
+    let best = null, bestDistance = TABLE_REACH;
+    for (const thing of thingList) { const distance = Math.hypot(thing.x - walker.x, thing.z - walker.z); if (distance < bestDistance) { bestDistance = distance; best = thing; } }
+    return best;
+  }
+  /**
+   * WALKING UP TO A TABLE OPENS IT. When the avatar comes to rest beside a game table it had not been standing at, the
+   * table is reported through onTag (kind 'table') after the same short dwell a spot takes — once: it is not reported
+   * again until the avatar has walked away from it and come back. A walk that was sent to the table by a tap reports it
+   * on arrival (`then`), and that counts as having been there. Never while an activity runs or the scene is locked.
+   */
+  function restedAtThing() {
+    if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
+    const thing = locked || uiMode !== 'venue' || lastState?.activeAction ? null : nearestThing();
+    if (!thing) { atThing = null; return; }
+    if (atThing === thing.id || typeof setTimeout !== 'function') return;
+    const id = thing.id, kind = thing.kind;
+    thingDwell = setTimeout(() => { thingDwell = null; if (!walker.moving && nearestThing()?.id === id && atThing !== id) { atThing = id; onTag?.({ id, kind }); } }, DWELL_MS);
+  }
   /** The avatar came to rest: after a short dwell beside a spot, that spot is selected. */
   function rested() {
     report.rest(walker.x, walker.z, Date.now());
     clearDwell();
+    restedAtThing();
     if (locked || !nearSpot || nearSpot.id === lastState?.spot || typeof setTimeout !== 'function') return;
     const id = nearSpot.id;
     // Wandering between two spots must not spam the server: requests of this kind are spaced out, so the dwell waits.
@@ -312,7 +339,9 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const more = walker.step(dt, orbit.azimuth, still);
     let bob = 0;
     if (walker.moving) {
-      if (!wasMoving) { clearDwell(); controls?.hint(null); }
+      if (!wasMoving) { clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; } controls?.hint(null); }
+      // Walked away from the table it stood at: coming back to it opens it again.
+      if (atThing && !thingList.some((thing) => thing.id === atThing && Math.hypot(thing.x - walker.x, thing.z - walker.z) < TABLE_REACH + 0.8)) atThing = null;
       stride += dt * (walker.jogging ? 9 : 6.5);
       // Two prebuilt figures alternate for the stride; nothing is built while walking.
       walk.gait(still || Math.floor(stride) % 2 === 0, still ? 0 : stride * Math.PI, walker.jogging);
@@ -405,7 +434,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function enterScene() {
     const walk = walkOf();
     walker.stop(); clearDwell(); report.reset();
-    expected = null; nearSpot = null; restPose = null; wasMoving = false; stride = 0; spotList = []; perch = null; setHover(null);
+    expected = null; nearSpot = null; restPose = null; wasMoving = false; stride = 0; spotList = []; thingList = []; atThing = null; perch = null; setHover(null);
+    if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
     stick.x = 0; stick.z = 0; stick.jog = false;
     walker.setGrid(walk?.grid || null);
     walker.others = walk?.people() || null;
@@ -414,6 +444,9 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if (!walk) { locked = false; restKey = ''; return; }
     walk.drive(true);
     spotList = walk.spots();
+    thingList = walk.things?.() || [];
+    // Arriving beside a table is not walking up to it: it opens when the player goes to it.
+    atThing = null;
     walker.speed = WALK_SPEED * clamp(walk.scale, 0.6, 1); walker.jogSpeed = JOG_SPEED * clamp(walk.scale, 0.6, 1);
     walker.reach = 0.66 * walk.scale;
     const rest = walk.rest();
@@ -630,6 +663,13 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       if (clientY < pixelTop.y - 6 || clientY > pixel.y + 6 || Math.abs(clientX - pixel.x) > tall * 0.24 + 6) continue;
       return { type: 'person', person };
     }
+    // A game table: its footprint on the screen (as wide as it is, as tall as it stands).
+    for (const thing of thingList) {
+      screenOf(thing.x, 0, thing.z, pixel); screenOf(thing.x, thing.top, thing.z, pixelTop);
+      const tall = Math.max(16, pixel.y - pixelTop.y), wide = tall * (thing.r / thing.top);
+      if (clientY < pixelTop.y - 6 || clientY > pixel.y + wide * 0.45 || Math.abs(clientX - pixel.x) > wide + 6) continue;
+      return { type: 'thing', thing };
+    }
     if (chosen) return { type: 'spot', spot: chosen };
     const hit = current.pickAt?.(clientX, clientY);
     if (hit?.id) return { type: 'object', hit };
@@ -638,6 +678,19 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     let beside = null, nearest = 1.25;
     for (const spot of spotList) { const distance = Math.hypot(spot.x - at.x, spot.z - at.z); if (distance < nearest) { nearest = distance; beside = spot; } }
     return beside ? { type: 'spot', spot: beside } : { type: 'floor', at };
+  }
+  /** Walk up to a game table — to the free place beside it nearest the avatar — face it, and report it (onTag, kind 'table'). */
+  function walkToThing(thing) {
+    const walk = walkOf();
+    if (!walk?.grid) return false;
+    const side = Math.atan2(walker.x - thing.x, walker.z - thing.z), reach = thing.r + 0.5;
+    let stand = null;
+    // The side the avatar is on first, then round the table: the first free place it can stand at.
+    for (let step = 0; step < 12 && !stand; step++) { const angle = side + (step % 2 ? -1 : 1) * Math.ceil(step / 2) * (Math.PI / 6), x = thing.x + Math.sin(angle) * reach, z = thing.z + Math.cos(angle) * reach; if (walk.grid.free(x, z)) stand = { x, z }; }
+    stand ||= walk.grid.nearest(thing.x + Math.sin(side) * reach, thing.z + Math.cos(side) * reach);
+    if (!stand) return false;
+    const id = thing.id, kind = thing.kind;
+    return walkTo(stand.x, stand.z, { face: Math.atan2(thing.x - stand.x, thing.z - stand.z), then: () => { atThing = id; onTag?.({ id, kind }); } });
   }
   /** A tap that was not a drag: walk to what was tapped, then do what tapping it does. */
   function tap(event) {
@@ -656,6 +709,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       const stand = walk.grid.nearest(person.x + Math.sin(side) * reach, person.z + Math.cos(side) * reach);
       return stand ? walkTo(stand.x, stand.z, { face: Math.atan2(person.x - stand.x, person.z - stand.z), then: () => onTag?.({ id: person.id, kind: person.kind }) }) : false;
     }
+    if (target.type === 'thing') return walkToThing(target.thing);
     if (target.type === 'object') {
       // Furniture at home: walk up to it, then use it.
       const hit = target.hit;
@@ -668,11 +722,11 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   }
   /** Show what a click would pick: a marker lights up and names itself, a person's tag is outlined. One frame per change; nothing while the pointer rests. */
   function setHover(next) {
-    const key = next ? `${next.type}:${next.spot?.id ?? next.person?.id ?? ''}` : '';
+    const key = next ? `${next.type}:${next.spot?.id ?? next.person?.id ?? next.thing?.id ?? ''}` : '';
     if (key === (hover?.key ?? '')) return false;
-    hover = next ? { key, type: next.type, spot: next.spot || null, person: next.person || null } : null;
+    hover = next ? { key, type: next.type, spot: next.spot || null, person: next.person || null, thing: next.thing || null } : null;
     if (canvas.style && !pointers.size) canvas.style.cursor = hover && hover.type !== 'floor' ? 'pointer' : 'grab';
-    for (const node of tagNodes) node.classList?.toggle('is-hover', hover?.type === 'person' && node.dataset.tag === hover.person.id);
+    for (const node of tagNodes) node.classList?.toggle('is-hover', (hover?.type === 'person' && node.dataset.tag === hover.person.id) || (hover?.type === 'thing' && node.dataset.tag === hover.thing.id));
     if (spotHint) { spotHint.hidden = hover?.type !== 'spot'; if (hover?.type === 'spot') spotHint.textContent = hover.spot.label || hover.spot.id; }
     showNear();
     return true;
@@ -764,7 +818,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
         else if (tag.marker === 'dot') node.appendChild(globalThis.document.createElement('i'));
         else node.textContent = tag.text;
         node.title = tag.kind === 'self' ? 'You' : tag.name;
-        node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'goal' ? `Your goal: ${tag.name}. Walk there` : tag.kind === 'npc' ? `${tag.name}, a local` : `${tag.name}, a player`);
+        node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'goal' ? `Your goal: ${tag.name}. Walk there` : tag.kind === 'table' ? `${tag.name}. Walk up to sit, watch or invite a friend` : tag.kind === 'npc' ? `${tag.name}, a local` : `${tag.name}, a player`);
         node.jawX = NaN; node.jawY = NaN; node.jawShown = true;
         return node;
       });
@@ -789,7 +843,9 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const spot = spotList.find((item) => item.id === goal.spot);
     return spot ? [{ id: `goal:${spot.id}`, kind: 'goal', text: goal.text, name: goal.text, position: { x: spot.x, y: (spot.y ?? 0) + 2.4, z: spot.z } }] : [];
   }
-  function readTags() { tagSource = [...(current?.tags?.() || []), ...goalTag()]; tagsRead = true; }
+  /** One tag over each game table that stands here: its game and its name. A tap on it walks the avatar there. */
+  const thingTags = () => thingList.map((thing) => ({ id: thing.id, kind: thing.kind, text: thing.label, name: thing.label, position: { x: thing.x, y: thing.top + 0.55, z: thing.z } }));
+  function readTags() { tagSource = [...(current?.tags?.() || []), ...thingTags(), ...goalTag()]; tagsRead = true; }
   /** Tell the scene where the camera is, so a room can hide the walls it is behind. Flips visibility only. */
   function lookIn() {
     if (!current?.look) return;
@@ -919,6 +975,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
           limits: { pitch: [0.1, Math.round((Math.PI / 2 - 0.07) * 1000) / 1000], zoom: [Math.round(orbit.limits.zoomMin * 1000) / 1000, Math.round(orbit.limits.zoomMax * 1000) / 1000], azimuth: orbit.limits.azimuth } },
         // Where each spot and person is on the canvas (CSS pixels) — what a tap on it has to hit.
         spots: spotList.map((spot) => { current.group.updateMatrixWorld(true); const at = screenOf(spot.x, spot.y + 0.1, spot.z, { x: 0, y: 0 }); return { id: spot.id, x: spot.x, z: spot.z, px: Math.round(at.x), py: Math.round(at.y), selected: spot.id === lastState?.spot }; }),
+        things: thingList.map((thing) => { current.group.updateMatrixWorld(true); const at = screenOf(thing.x, thing.top * 0.5, thing.z, { x: 0, y: 0 }); return { id: thing.id, kind: thing.kind, label: thing.label, x: thing.x, z: thing.z, px: Math.round(at.x), py: Math.round(at.y), at: atThing === thing.id }; }),
         people: (walkOf()?.people() || []).map((person) => { const at = screenOf(person.x, person.top * 0.5, person.z, { x: 0, y: 0 }); return { id: person.id, kind: person.kind, x: person.x, z: person.z, px: Math.round(at.x), py: Math.round(at.y) }; }),
         objects: (current?.objects?.() || []).map((item) => { const at = screenOf(item.x, 0.35, item.z, { x: 0, y: 0 }); return { id: item.id, itemId: item.itemId, x: item.x, z: item.z, px: Math.round(at.x), py: Math.round(at.y) }; }),
         drawCalls: renderer.info?.render.calls,
@@ -973,7 +1030,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     /** Where the avatar stands right now, in presence units: { x, z, location } — what onMove reports while it moves. */
     position() { const k = presenceScale(); return { x: Math.round(walker.x * k * 100) / 100, z: Math.round(walker.z * k * 100) / 100, location: currentLocation }; },
     dispose() {
-      loop.dispose(); clearDwell();
+      loop.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
       win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);

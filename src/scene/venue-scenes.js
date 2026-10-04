@@ -43,6 +43,8 @@
  *                               open, avatar, drive(on), rest(), spots(), people(), move(x, y, z, ry),
  *                               pose(name, seat), gait(step, phase), heightAt(x, z), near(spot),
  *                               goal(x, z), solids } — see WALK below and src/scene/movement.js
+ *   walk.things()               what else can be walked up to and tapped: the game tables that stand in this venue
+ *                               (TABLES below) — [{ id: 'table:<id>', kind: 'table', x, z, top, r, label }], fixed for the scene
  *   look(x, z) → boolean        the camera is at (x, z) in the scene's own coordinates: a room hides
  *                               whichever wall the camera has gone behind, with everything that
  *                               hangs on it (dollhouse-style), so the camera may orbit all the way
@@ -67,7 +69,8 @@ import { createBatch, kitResources, releaseObjects, GLOW } from './build.js';
 import { buildAvatar, drawCrowd } from './characters.js';
 import { playerOptions, rigOf } from './avatar-rig.js';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.js';
-import { spotMarker } from './props.js';
+import { spotMarker, gameTable } from './props.js';
+import { tablesAt, GAME_LABELS } from '../tables/places.js';
 import { lagosTime } from '../game/clock.js';
 import * as outdoor from './venues-outdoor.js';
 import * as social from './venues-social.js';
@@ -201,6 +204,33 @@ export const WALK = Object.freeze({
   buka: indoors(), club: indoors(), viewing: indoors(), shrine: indoors(), mall: indoors(), hub: indoors(), office: indoors(),
   gym: indoors(), salon: indoors(), radio: indoors(), hospital: indoors(), police: indoors(), worship: indoors(),
 });
+/**
+ * GAME TABLES IN THE SCENE. Every table of src/tables/places.js stands in its venue: a visible table (props.js gameTable)
+ * on free floor, solid like any furniture (its footprint is recorded with the rest), listed in walk.things() so the host
+ * can walk the avatar up to it and open it. WHERE: `venue.scene.anchors['table:<id>']` may pin a table to one of the
+ * scene's landmarks; otherwise it takes the first of its preferred places below ([x, z], tried in order: the table's own, then the scene kind's) that is
+ * free — clear of every wall, prop, spot marker and the ground in front of one, of the entrance and of the other tables —
+ * and, failing those, the nearest free place found in widening rings. The places are checked in src/scene/scenes.test.js
+ * for every table of every venue: free floor around it, a way to it from the entrance, no marker covered.
+ */
+export const TABLE_PLACES = Object.freeze({
+  // By table id (src/tables/places.js): where that table belongs in its room — the goal by the pitch, the corner table in the corner.
+  'buka-corner': [[-7.4, 5.2], [7.6, 4.6]], 'buka-door': [[-3.2, 6.2], [4.4, 5.6], [-8.6, 0.9]],
+  'park-bench': [[9.7, 2.9], [9.6, 6.4]], 'park-goal': [[-9.6, 1.8], [-10.6, 0.4]],
+  'rooftop-lounge': [[0.5, -1.5], [6.6, 3.6]],
+  'viewing-whot': [[-4.6, 6.6], [-7.0, 7.3]], 'viewing-goal': [[9.0, 4.6], [4.9, 7.0]],
+  'beach-goal': [[9.6, 5.6], [-9.6, 6.2]],
+  // By scene kind: for a table added later, before it is given a place of its own.
+  buka: [[7.6, 4.6], [-7.4, 5.2], [7.8, -1.4], [-7.6, 0.6]],
+  park: [[9.6, 6.4], [-9.8, 6.8], [10.4, -1.6], [-10.6, 0.4]],
+  rooftop: [[6.6, 3.6], [-6.8, 4.0], [6.8, -2.2]],
+  viewing: [[7.8, 5.0], [-7.6, 5.4], [8.0, 0.2], [-7.8, 0.8]],
+  beach: [[9.4, 5.8], [-9.6, 6.2], [10.2, -0.6]],
+});
+const TABLE_FALLBACK = Object.freeze([[7.5, 4.5], [-7.5, 4.5], [7.5, -1], [-7.5, -1], [0, 5]]);
+/** A table's clear ground: nothing else within this radius of its centre (it is 0.9 across, with stools to 1.6). */
+export const TABLE_CLEAR = 1.9, TABLE_REACH = 2.5;
+
 /** How far from a spot's anchor the avatar counts as standing at it. */
 export const SPOT_REACH = 1.5;
 /**
@@ -251,6 +281,8 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   const figures = new Map();
   let shownFigure = null, standFigure = null, strideFigure = null, driven = false;
   const marks = { ring: null, near: null, goal: null };
+  /** The game tables that stand here: [{ id, kind: 'table', table, game, x, z, top, r, label }] (see TABLE_PLACES). */
+  const tableList = [];
 
   function drawStatic() {
     const recorder = footprintRecorder(createBatch(THREE));
@@ -265,14 +297,60 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       view.spot = spots.find((spot) => spot && resolved.anchors[spot.id])?.id ?? layout.spots[0]?.key ?? null;
     }
     for (const landmark of layout.spots) spotMarker(batch, landmark.x, landmark.z, context.accent, landmark.y || 0);
+    placeTables(recorder);
+    footprints = recorder.shapes();
     return batch;
+  }
+  /** The walk grid for this kind's walkable description and a set of recorded footprints. */
+  function gridFor(shapes) {
+    const data = Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT;
+    const floor = shapes?.floor;
+    const bounds = data.bounds || (floor ? [floor[0] + 1.3, floor[1] + 1.3, floor[2] - 1.3, floor[3] - 1.3] : [-10, -8, 10, 8]);
+    return { data, bounds, grid: createWalkGrid({ bounds, block: [...(shapes?.block || []), ...(data.block || [])], clear: data.clear || [] }) };
+  }
+  /**
+   * Stand each of this venue's game tables on free floor and draw it (see TABLE_PLACES). Decided once per scene — a rebuild
+   * (the time of day changed) draws them where they already are — from the floor as it is BEFORE the tables: what the
+   * scene's own builder drew.
+   */
+  function placeTables(recorder) {
+    const wanted = tablesAt(venue?.id);
+    if (!wanted.length) return;
+    if (!tableList.length) {
+      const before = gridFor(recorder.shapes()), free = before.grid, door = before.data.entrance || [(before.bounds[0] + before.bounds[2]) / 2, before.bounds[3] - 0.8];
+      // Free all round, off every marker and the ground in front of one, away from the door and from the other tables.
+      const fits = (x, z) => {
+        if (Math.hypot(x - door[0], z - door[1]) < 3.2 || tableList.some((other) => Math.hypot(other.x - x, other.z - z) < TABLE_CLEAR * 2 + 0.6)) return false;
+        let standing = 0;
+        for (let step = 0; step < 12; step++) {
+          const angle = (step / 12) * Math.PI * 2;
+          if (!free.free(x + Math.sin(angle) * TABLE_CLEAR, z + Math.cos(angle) * TABLE_CLEAR)) return false;
+          if (free.free(x + Math.sin(angle) * TABLE_REACH, z + Math.cos(angle) * TABLE_REACH)) standing += 1;   // where someone walking up to it stands
+        }
+        if (standing < 9) return false;
+        return free.free(x, z) && offMarkers(x, z) && markerList().every((at) => Math.hypot(at.x - x, at.z - z) > TABLE_CLEAR + 0.9);
+      };
+      wanted.forEach((table, index) => {
+        const places = [...(TABLE_PLACES[table.id] || []), ...(TABLE_PLACES[kind] || TABLE_FALLBACK)], own = TABLE_PLACES[table.id] ? 0 : index;
+        const pinned = resolved.hint(`table:${table.id}`);
+        let at = pinned && fits(pinned.x, pinned.z) ? { x: pinned.x, z: pinned.z } : null;
+        for (let i = 0; i < places.length && !at; i++) { const [x, z] = places[(own + i) % places.length]; if (fits(x, z)) at = { x, z }; }
+        for (let ring = 1; ring <= 40 && !at; ring++) {
+          const [cx, cz] = places[own % places.length], radius = ring * 0.5;
+          for (let step = 0; step < 20 && !at; step++) { const angle = (step / 20) * Math.PI * 2 + ring * 0.31, x = cx + Math.sin(angle) * radius, z = cz + Math.cos(angle) * radius; if (fits(x, z)) at = { x: Math.round(x * 10) / 10, z: Math.round(z * 10) / 10 }; }
+        }
+        // A venue with no room left for a table simply has none in the scene: the Phone's Tables app still lists it.
+        if (at) tableList.push({ id: `table:${table.id}`, kind: 'table', table: table.id, game: table.game, x: at.x, z: at.z, top: 1.7, r: 1.6, label: `${GAME_LABELS[table.game] ?? table.game} · ${table.label}` });
+      });
+    }
+    markers = null; // read again when the crowd is placed: the list was only borrowed here
+    // Turned a little so that two tables in one room do not look stamped, and the goal faces the room's middle.
+    for (const item of tableList) gameTable(recorder.batch, item.x, item.z, { game: item.game, accent: context.accent, ry: item.game === 'penalty' ? Math.atan2(-item.x, -item.z) + Math.PI : (item.x + item.z) * 0.37 });
   }
   /** The floor as a grid, from this kind's walkable description and the footprints of what was drawn. */
   function buildGrid() {
-    const data = Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT;
-    const floor = footprints?.floor;
-    const bounds = data.bounds || (floor ? [floor[0] + 1.3, floor[1] + 1.3, floor[2] - 1.3, floor[3] - 1.3] : [-10, -8, 10, 8]);
-    grid = createWalkGrid({ bounds, block: [...(footprints?.block || []), ...(data.block || [])], clear: data.clear || [] });
+    const made = gridFor(footprints), data = made.data, bounds = made.bounds;
+    grid = made.grid;
     const wanted = data.entrance || [(bounds[0] + bounds[2]) / 2, bounds[3] - 0.8];
     const at = grid.nearest(wanted[0], wanted[1]) || { x: wanted[0], z: wanted[1] };
     entrance = { x: at.x, y: 0, z: at.z, ry: Math.PI };
@@ -594,6 +672,8 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     rest,
     /** The spots the server knows, with where they are: [{ id, label, x, y, z, ry, approach }] (approach: the foot of the steps up to a raised spot, or null). */
     spots() { return spots.filter((spot) => spot && typeof spot.id === 'string').map((spot) => { const at = anchorFor(spot.id); return { id: spot.id, label: String(spot.label ?? spot.id), x: at.x, y: at.y, z: at.z, ry: at.ry, approach: at.approach || null, steps: at.steps || [] }; }); },
+    /** The game tables that stand in this venue (see TABLE_PLACES): fixed for the life of the scene. */
+    things() { return tableList; },
     /** People standing in the scene, for taps and for walking round them: [{ id, kind, x, z, top }]. The same objects until the crowd changes; a moving player's entry moves with them. */
     people() { return peopleList; },
     /** Boxes [x0, y0, z0, x1, y1, z1] of what can hide the avatar from the camera (camera-collision.js). */

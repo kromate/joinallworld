@@ -139,6 +139,8 @@ async function loadScene() {
     venue = createVenueWorld($('venue-scene'), { location: client.state.location, onTag: (tag) => {
       // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
       if (tag.kind === 'goal') void goTo(client.state.location, tag.id.replace(/^goal:/, ''));
+      // A game table in the venue (walked up to, or tapped): the Tables app opens on that table — sit, watch or invite.
+      else if (tag.kind === 'table') shell.open('tables', { table: tag.id.replace(/^table:/, '') });
       else if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') });
       else if (tag.kind === 'player') shell.open('person', { player: tag.id });
     },

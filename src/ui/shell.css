@@ -415,6 +415,8 @@ button.ui-row:hover{background:#f7f9f8}
 .scene-tag{position:absolute;transform:translate(-50%,-100%);padding:2px 7px;border:0;border-radius:999px;font:700 11px/1.3 var(--font);white-space:nowrap;max-width:140px;overflow:hidden;text-overflow:ellipsis;pointer-events:auto;cursor:pointer;background:rgba(18,32,48,.82);color:#d6ebff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
 .scene-tag.is-npc{background:transparent;box-shadow:none;color:#58d68a;font-size:15px;padding:6px 8px;text-shadow:0 0 3px rgba(0,0,0,.7)}
 .scene-tag.is-self{background:transparent;box-shadow:none;color:#ffd34d;font-size:17px;pointer-events:none;cursor:default;text-shadow:0 0 3px rgba(0,0,0,.7)}
+.scene-tag.is-table{background:rgba(24,59,42,.9);color:#fff3c4;max-width:190px}
+.scene-tag.is-table.is-hover{outline:2px solid #fff3c4;outline-offset:1px}
 .scene-tag:focus-visible{outline:2px solid #fff;outline-offset:1px}
 
 /* ---- world map (city picker) behind the Map panel ----------------------------------------- */

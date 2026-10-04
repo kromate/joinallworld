@@ -319,6 +319,34 @@ export function spotMarker(b, x, z, color = '#f2d27a', y = 0) {
   b.disc(x, y + 0.095, z, 0.42, '#3b3f46', { seg: 14 });
 }
 
+/**
+ * A GAME TABLE — the place a table of src/tables/places.js stands in a venue (venue-scenes.js puts one on free floor for
+ * each). Drawn into the venue's own batch: no draw call of its own, about 150 triangles.
+ *   'whot'      a low round table with a felt top, a fan of cards and four stools
+ *   'penalty'   a small goal frame with a net line, a penalty spot and a ball
+ * `accent` is the venue's accent colour (the felt, the goal's bar), so the table belongs to its room.
+ */
+export function gameTable(b, x, z, { game = 'whot', ry = 0, accent = '#2f8f55' } = {}) {
+  b.at(x, 0, z, ry, () => {
+    if (game === 'penalty') {
+      for (const side of [-1.15, 1.15]) b.box(side, 0.8, -0.5, 0.1, 1.6, 0.1, WHITE);
+      b.box(0, 1.62, -0.5, 2.4, 0.1, 0.1, accent);
+      b.box(0, 0.8, -0.82, 2.3, 1.5, 0.04, '#dfe6ea', GLASS);
+      b.disc(0, 0.09, 0.55, 0.14, WHITE, { seg: 8 });
+      b.ball(0, 0.25, 0.55, 0.19, 0.19, 0.19, '#f4f2ea');
+      return;
+    }
+    b.cyl(0, 0.82, 0, 0.9, 0.1, WOOD_DARK, { seg: 12 });
+    b.disc(0, 0.875, 0, 0.8, accent, { seg: 12 });
+    b.cyl(0, 0.4, 0, 0.14, 0.8, WOOD_DARK, { seg: 6 });
+    b.cyl(0, 0.04, 0, 0.45, 0.08, WOOD_DARK, { seg: 8 });
+    // The deck and a fan of cards: Whot is played with circles, triangles, crosses, squares and stars.
+    b.box(0.28, 0.9, 0.05, 0.22, 0.05, 0.32, '#b23a2e');
+    [['#f6f2e4', -0.34, -0.1, 0.5], ['#f6f2e4', -0.18, -0.2, 0.2], ['#f1d27a', -0.02, -0.24, -0.1]].forEach(([colour, cx, cz, turn]) => b.box(cx, 0.89, cz, 0.2, 0.012, 0.3, colour, { ry: turn }));
+    for (let i = 0; i < 4; i++) { const angle = Math.PI / 4 + (i * Math.PI) / 2; stool(b, Math.sin(angle) * 1.35, Math.cos(angle) * 1.35, { h: 0.55, r: 0.27 }); }
+  });
+}
+
 /** Small serving kiosk with a roof, hatch, counter and an optional fascia text. */
 export function kiosk(b, x, z, { ry = 0, w = 3.6, color = '#c69a4e', roof = '#b5483f', fascia = '#e2bb62', text, textColor = '#3a2a1a' } = {}) {
   b.at(x, 0, z, ry, () => {

@@ -60,7 +60,9 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     assert.equal(world.setCrowd(people(4)), true);
     assert.equal(count(), 3, 'a crowd arrived: one frame');
     const tags = world.diagnostics().tags;
-    assert.deepEqual(tags.map((tag) => [tag.kind, tag.marker]), [['self', 'crown'], ['player', 'tag'], ['npc', 'dot'], ['player', 'tag'], ['npc', 'dot']]);
+    assert.deepEqual(tags.filter((tag) => tag.kind !== 'table').map((tag) => [tag.kind, tag.marker]), [['self', 'crown'], ['player', 'tag'], ['npc', 'dot'], ['player', 'tag'], ['npc', 'dot']]);
+    // The park's two game tables stand in the scene and are named (part of the scene, like its spots: they cost no frame of their own).
+    assert.deepEqual(tags.filter((tag) => tag.kind === 'table').map((tag) => tag.text), ['Whot · Bench under the trees', 'Penalties · Kickabout corner']);
     assert.deepEqual([tags[0].text, tags[1].text, tags[2].name], ['Ada', '@Player 0', 'Local 1']);
     assert.ok(tags.every((tag) => Number.isFinite(tag.x) && Number.isFinite(tag.y)), 'every tag has a screen position');
     assert.ok(tags.filter((tag) => tag.visible).length >= 4, 'tags are projected inside the 390 × 844 view');
@@ -71,8 +73,9 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     assert.equal(renderer.calls.render, 3); assert.equal(frames, 0); assert.equal(timers, 0);
     // The crowd is capped, and a changed crowd costs exactly one frame.
     assert.equal(world.setCrowd(people(40)), true);
-    assert.equal(count(), 4); assert.equal(world.diagnostics().tags.length, MAX_CROWD + 1); assert.equal(world.diagnostics().crowd, MAX_CROWD);
-    world.setCrowd([]); assert.equal(count(), 5); assert.equal(world.diagnostics().tags.length, 1);
+    const people_ = (list) => list.filter((tag) => tag.kind !== 'table');
+    assert.equal(count(), 4); assert.equal(people_(world.diagnostics().tags).length, MAX_CROWD + 1); assert.equal(world.diagnostics().crowd, MAX_CROWD);
+    world.setCrowd([]); assert.equal(count(), 5); assert.equal(people_(world.diagnostics().tags).length, 1);
     // Night falls: the scene reports a change, and the host re-reads its lighting and background.
     const day = world.diagnostics().background;
     world.setState({ location: 'park', spot: 'amphitheatre', t: MIDNIGHT, name: 'Ada' });
@@ -799,5 +802,57 @@ test('where the avatar stands is reported in presence units, on request and whil
     assert.equal(world.walkBy(NaN, 1), false);
     globalThis.window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode: 'map' } }));
     assert.equal(world.walkBy(1, 0), false, 'not while another screen is in front');
+  } finally { bench.restore(); }
+});
+
+test('game tables can be walked up to: a tap walks there and opens it on arrival, resting beside one opens it once, and it costs no idle frame', async () => {
+  const bench = motionBench();
+  try {
+    const { world } = bench;
+    world.setState(PARK);
+    const things = () => world.diagnostics().things, avatar = () => world.diagnostics().avatar;
+    assert.deepEqual(things().map((thing) => [thing.id, thing.kind, thing.at]), [['table:park-bench', 'table', false], ['table:park-goal', 'table', false]]);
+    const table = things()[0];
+    const away = () => Math.hypot(avatar().x - table.x, avatar().z - table.z);
+    assert.ok(away() > 6, 'the avatar starts at the entrance, not at a table');
+    // Idle with tables in the room: nothing runs.
+    const idle = world.diagnostics().renderCount;
+    await new Promise((resolve) => setTimeout(resolve, 120));
+    assert.deepEqual([bench.pump(20), world.diagnostics().renderCount, bench.tagged.length], [0, idle, 0], 'a table is part of the scene: no frame, no timer, nothing reported');
+
+    // 1. Tap the table: the avatar walks up to it, and only on arrival is the table reported (which opens the Tables app).
+    bench.send('pointerdown', { clientX: table.px, clientY: table.py }); bench.send('pointerup', { clientX: table.px, clientY: table.py });
+    bench.send('click', { clientX: table.px, clientY: table.py });
+    assert.deepEqual([bench.tagged.length, avatar().mode, bench.spots.length], [0, 'path', 0], 'nothing is opened before the avatar gets there, and a table is not a spot');
+    bench.pump(3000);
+    assert.deepEqual(bench.tagged, [{ id: 'table:park-bench', kind: 'table' }]);
+    assert.ok(away() > 1.2 && away() < 2.6, `standing beside the table, not on it (${away().toFixed(2)} away)`);
+    assert.deepEqual([things()[0].at, avatar().moving, bench.queued()], [true, false, 0], 'at the table, and the loop has stopped');
+    // Staying there, a state poll and the dwell passing report nothing more.
+    world.setState({ ...PARK, t: NOON + 5000 });
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    assert.equal(bench.tagged.length, 1, 'it is opened once, not every time the player stands there');
+
+    // 2. Walk away, then walk back beside it without tapping it (the keyboard way): after a short dwell it opens again, once.
+    assert.equal(world.walkBy(-6, 3), true); bench.pump(3000);
+    assert.ok(away() > 3.3); assert.equal(things()[0].at, false, 'walked away from it');
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    assert.equal(bench.tagged.length, 1, 'resting somewhere else opens nothing');
+    const here = avatar();
+    assert.equal(world.walkBy(table.x - 2.1 - here.x, table.z + 0.4 - here.z), true); bench.pump(3000);
+    assert.ok(away() < 2.5, `came to rest beside it (${away().toFixed(2)} away)`);
+    assert.equal(bench.tagged.length, 1, 'not at the very moment of stopping');
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    assert.deepEqual(bench.tagged.slice(1), [{ id: 'table:park-bench', kind: 'table' }], 'after the dwell, once');
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    assert.equal(bench.tagged.length, 2);
+
+    // 3. While an activity runs the scene is locked: a tap on a table does nothing.
+    world.setState({ ...PARK, t: NOON + 9000, activeAction: { kind: 'activity', id: 'chill', duration: 11, remaining: 11 } });
+    bench.pump(600);
+    const far = things()[1];
+    bench.send('pointerdown', { clientX: far.px, clientY: far.py }); bench.send('pointerup', { clientX: far.px, clientY: far.py }); bench.send('click', { clientX: far.px, clientY: far.py });
+    bench.pump(600);
+    assert.equal(bench.tagged.length, 2);
   } finally { bench.restore(); }
 });

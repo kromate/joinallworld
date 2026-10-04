@@ -406,3 +406,53 @@ test('scene sources hold no frame loops or timers, and the dev harness is not a 
   assert.doesNotMatch(config, /harness/);
   assert.doesNotMatch(await readFile(new URL('../../index.html', import.meta.url), 'utf8'), /harness/);
 });
+
+test('every game table stands in its venue’s scene: on free floor, reachable from the door, clear of markers and of each other', async () => {
+  const { TABLES, tablesAt } = await import('../tables/places.js');
+  const { TABLE_CLEAR, TABLE_REACH, TABLE_PLACES } = await import('./venue-scenes.js');
+  const kit = createKit();
+  const venues = [...new Set(TABLES.map((table) => table.venue))];
+  assert.deepEqual(venues.sort(), ['amala-shitta', 'beach', 'park', 'rooftop', 'viewing-centre']);
+  const seen = [];
+  for (const id of venues) {
+    const venue = sceneVenue(id) ?? VENUES[id];
+    const parent = new THREE.Scene();
+    const bare = buildVenueScene(kit, { ...venue, id: `${id}-without-tables` }), bareTriangles = bare.stats().triangles;
+    bare.dispose();
+    const entry = buildVenueScene(kit, venue);
+    parent.add(entry.group);
+    const things = entry.walk.things(), wanted = tablesAt(id), grid = entry.walk.grid, door = entry.walk.entrance;
+    assert.deepEqual(things.map((thing) => thing.id), wanted.map((table) => `table:${table.id}`), `${id}: every table of the venue has a place in the scene`);
+    assert.ok(Object.hasOwn(TABLE_PLACES, entry.kind), `${id}: the ${entry.kind} scene has preferred table places`);
+    for (const thing of things) {
+      seen.push(thing.id);
+      assert.deepEqual([thing.kind, typeof thing.label, thing.top > 1 && thing.r > 1], ['table', 'string', true]);
+      // The table itself is solid (the avatar walks round it)…
+      assert.equal(grid.free(thing.x, thing.z), false, `${thing.id}: the table is an obstacle`);
+      // …with standing room all round it, and a way there from the door.
+      const stands = Array.from({ length: 12 }, (_, step) => { const angle = (step / 12) * Math.PI * 2; return [thing.x + Math.sin(angle) * TABLE_REACH, thing.z + Math.cos(angle) * TABLE_REACH]; }).filter(([x, z]) => grid.free(x, z));
+      assert.ok(stands.length >= 8, `${thing.id}: ${stands.length} of 12 places beside it are free`);
+      assert.ok(stands.some(([x, z]) => grid.path(door.x, door.z, x, z)?.length > 0), `${thing.id}: can be walked to from the entrance`);
+      assert.ok(Math.hypot(thing.x - door.x, thing.z - door.z) > 3, `${thing.id}: not in the doorway`);
+      // No spot marker is covered or crowded by it, and no two tables touch.
+      for (const spot of entry.walk.spots()) assert.ok(Math.hypot(spot.x - thing.x, spot.z - thing.z) > TABLE_CLEAR + 0.8, `${thing.id} stands clear of the ${spot.id} marker`);
+      for (const other of things) if (other !== thing) assert.ok(Math.hypot(other.x - thing.x, other.z - thing.z) > TABLE_CLEAR * 2, `${thing.id} and ${other.id} do not touch`);
+    }
+    // Every spot is still reachable with the tables in the room.
+    for (const spot of entry.walk.spots()) { const at = grid.nearest(spot.approach?.x ?? spot.x, spot.approach?.z ?? spot.z); assert.ok(at && grid.path(door.x, door.z, at.x, at.z)?.length > 0, `${id}: ${spot.id} is still reachable`); }
+    // The tables are part of the venue's own batch: a few hundred triangles, no mesh or draw call of their own, inside the budget.
+    const stats = entry.stats();
+    assert.ok(stats.triangles - bareTriangles > 60 * things.length && stats.triangles - bareTriangles < 420 * things.length, `${id}: ${things.length} tables cost ${stats.triangles - bareTriangles} triangles`);
+    assert.ok(stats.triangles < TRIANGLE_BUDGET && stats.drawCalls <= DRAW_CALL_BUDGET, `${id}: ${stats.triangles} triangles, ${stats.drawCalls} draw calls`);
+    // A rebuild (night falls) leaves them where they are.
+    const before = things.map((thing) => [thing.x, thing.z]);
+    entry.setTime('night'); entry.setTime('day');
+    assert.deepEqual(entry.walk.things().map((thing) => [thing.x, thing.z]), before);
+    entry.dispose();
+  }
+  assert.equal(seen.length, TABLES.length, 'all eight tables stand somewhere');
+  // A venue without a table has nothing extra.
+  const library = buildVenueScene(kit, sceneVenue('library') ?? VENUES.library);
+  assert.deepEqual(library.walk.things(), []);
+  library.dispose();
+});

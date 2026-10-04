@@ -154,6 +154,16 @@ test('styling: free options cost nothing, priced ones are charged through the le
   assert.equal(act(broke, 'estate.style', { style: { yard: 6 } }).code, 'insufficient_funds');
 });
 
+test('upgrading in a city with no local governments is refused, not thrown, and costs nothing', () => {
+  const { state } = onboard({ house: 'mushin', own: true, lga: 'badagry' }, 'ajebutter');
+  const cash = state.cash;
+  state.estate.city = 'ibadan' as typeof state.estate.city; // a city that has no local governments yet
+  const refused = act(state, 'estate.upgrade', { to: 'bq' });
+  assert.equal(refused.ok, false);
+  assert.equal(refused.code, 'insufficient_funds', 'the refusal the action already has for a house that cannot be paid for');
+  assert.deepEqual([state.cash, state.estate.upgrade], [cash, null]);
+});
+
 test('upgrading: paid once, built on server time even while away, then ground rent on Saturdays; the room grows without losing furniture', () => {
   const { state } = onboard({ house: 'mushin', own: true, lga: 'badagry' }, 'ajebutter');
   const seed = 5000, cost = found(tierCost('lagos', 'badagry', 'bq'), 'a price'), cash = state.cash;

@@ -67,7 +67,7 @@ export function reportReplies(): number {
 export function markReportsRead(): boolean {
   const before = reportReplies();
   const known = load();
-  for (const report of latest) known[String(report.id)] = report.updatedAt;
+  for (const report of latest) known[String(report.id)] = report.updatedAt ?? 0;
   try { globalThis.localStorage?.setItem(KEY, JSON.stringify(known)); } catch { /* read for this visit only */ }
   return before > 0;
 }

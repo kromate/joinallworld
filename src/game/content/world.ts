@@ -39,7 +39,7 @@ export const LGA_CAPACITY = ESTATE.estates * PLOTS_PER_ESTATE;
 /** A local government as written below: `beta` and an empty `districts` are filled in. */
 type LgaSeed = Omit<LgaDefinition, 'beta' | 'districts'> & { districts?: HouseId[] };
 
-export const LAGOS_LGAS: LgaDefinition[] = ([
+export const LAGOS_LGAS: readonly LgaDefinition[] = Object.freeze([
   { id: 'agege', name: 'Agege', zone: 'mainland', land: 120000, line: 'Bread at dawn, a stadium at dusk and a market that never quite closes.' },
   { id: 'ajeromi-ifelodun', name: 'Ajeromi-Ifelodun', zone: 'mainland', land: 100000, line: 'Ajegunle: crowded, loud and proud — where footballers and musicians come from.' },
   { id: 'alimosho', name: 'Alimosho', zone: 'mainland', land: 90000, line: 'The biggest of them all: Ikotun, Egbeda, Ipaja and estates as far as you can see.' },
@@ -181,7 +181,7 @@ const cityRulesById: Readonly<Record<string, CityRules | undefined>> = CITY_RULE
 const tiersById: Readonly<Record<string, HouseTierDefinition | undefined>> = HOUSE_TIERS;
 export const cityRules = (cityId: unknown): CityRules | null => (typeof cityId === 'string' && Object.hasOwn(CITY_RULES, cityId) ? cityRulesById[cityId] ?? null : null);
 /** The local governments (or the local equivalent) of a city. */
-export const lgasOf = (cityId: unknown): LgaDefinition[] => cityRules(cityId)?.units ?? [];
+export const lgasOf = (cityId: unknown): readonly LgaDefinition[] => cityRules(cityId)?.units ?? [];
 export const lgaOf = (cityId: unknown, id: unknown): LgaDefinition | null => (typeof id === 'string' ? lgasOf(cityId).find((lga) => lga.id === id) ?? null : null);
 /** The local government a rented-home district lies in, or the city's first as a last resort. */
 export function lgaOfDistrict(cityId: unknown, district: string): LgaDefinition | null {

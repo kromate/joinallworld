@@ -484,7 +484,7 @@ steps named.
 | C5 | `src/life-main.js:382` | `pagehide` destroys the community panel but keeps the reference; a page restored from the back/forward cache has an empty panel until reload | Low–medium | 5 |
 | W1 | `deploy/cloudflare-worker.ts:158` | Room membership is revalidated with `kind === 'travel'`, so a commuting life stays in its room. `server/protocol.ts` forbids that comparison | Medium | deploy owner |
 | W2 | `deploy/cloudflare-worker.ts:318` | Venue chat on the Worker has no text filter and no mute | Medium | deploy owner |
-| S1 | `server/server.ts:394,420` | The `to` echo on signal errors compares a public id with the cookie secret, so it is always true | Low | 3 |
+| S1 | `server/server.ts` (`echoable`) | The `to` echo on signal errors compared a public id with the cookie secret, so it was always true. Fixed: it is echoed only for a uuid that is neither the caller's own public id nor the secret (test in `server/server.test.ts`) | Low | fixed |
 | E1 | `src/life.ts:108`, `systems/onboarding.js` (`INBOUND`) | The onboarding veto also blocked server-only actions. Since fixed for the deliveries TO a life (a gift or friendship, a referral gift, a table result pass the hold); every other server-only action is still vetoed like a player's | Low | 2 |
 | E2 | `content/events.js:120`, `systems/goals.js:236` | Two unrelated "startup funded" mechanisms; the event one emits has no listener | Medium | 2 |
 | E3 | `systems/home.js:146` | Moving furniture without `rot` resets its rotation to 0 | Low | 2 |

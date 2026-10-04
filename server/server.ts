@@ -541,6 +541,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       if (fieldOf(error, 'code') !== 'storage_unavailable') throw error;
     } finally { if (socketRenewals.get(ws.secret) === pending) socketRenewals.delete(ws.secret); }
   }
+  /** A signal's `to` may be echoed in an error only when it is a public id other than the caller's own; the cookie secret is never echoed. */
+  const echoable = (ws: Connection, to: unknown): to is string => typeof to === 'string' && uuid.test(to) && to !== ws.session.id && to !== ws.secret;
   wss.on('connection', (socketOfConnection: WebSocket) => {
     const ws = socketOfConnection as Connection;
     ws.alive = true; ws.pingedAt = 0; ws.seenAt = now();
@@ -554,8 +556,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         try { parsed = JSON.parse(raw.toString()); } catch {}
         const rejected: Record<string, unknown> = isObject(parsed) ? parsed : {};
         send(ws, { type: 'error', code: 'rate_limited', error: 'rate_limited',
-          // BUG: `to` is a public id but is compared with the cookie secret, so the test is always true (presumably meant ws.session.id)
-          ...(rejected.type === 'signal' && typeof rejected.to === 'string' && uuid.test(rejected.to) && rejected.to !== ws.secret ? { to: rejected.to } : {}),
+          ...(rejected.type === 'signal' && echoable(ws, rejected.to) ? { to: rejected.to } : {}),
           ...(rejected.type === 'chat' && typeof rejected.clientId === 'string' && rejected.clientId.length <= 80 ? { clientId: rejected.clientId } : {}) });
         ws.close(1008, 'Rate limit'); return;
       }
@@ -588,8 +589,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         // The code is whatever machine code the module threw (it matched the shape above); an uncoded message is never sent.
         const code = typeof error.message === 'string' ? { code: error.message as SocketErrorCode, error: error.message as SocketErrorCode } : {};
         send(ws, { type: 'error', ...code as { code: SocketErrorCode; error: SocketErrorCode }, ...(typeof error.reason === 'string' ? { reason: error.reason, message: error.reason } : {}),
-          // BUG: `to` is a public id but is compared with the cookie secret, so the test is always true (presumably meant ws.session.id)
-          ...(given.type === 'signal' && typeof given.to === 'string' && uuid.test(given.to) && given.to !== ws.secret ? { to: given.to } : {}), ...(given.type === 'chat' && typeof given.clientId === 'string' && given.clientId.length <= 80 ? { clientId: given.clientId } : {}) }); }
+          ...(given.type === 'signal' && echoable(ws, given.to) ? { to: given.to } : {}), ...(given.type === 'chat' && typeof given.clientId === 'string' && given.clientId.length <= 80 ? { clientId: given.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));
     });
   });

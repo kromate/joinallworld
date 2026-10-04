@@ -18,8 +18,8 @@ import { useSocialScreen } from './useSocialScreen.ts'
 defineProps<{ params?: unknown }>()
 const { game, shell, client, state, view, gate, action, runAction, retryLoad, cannot } = useSocialScreen()
 const social = computed(() => view.value.social)
-// BUG: the existing panel reads `mummy.name` without checking, so a life whose family list has no
-// contact throws and the panel shows its error line. Here the card is left out instead.
+// The earlier panel read `mummy.name` unchecked, so a life whose family list had no contact threw and showed its
+// error line. Here the card is left out instead (tested in socialComponents.test.ts).
 const mummy = computed(() => social.value.family.find((member) => member.contact) ?? null)
 const met = computed(() => social.value.relationships.filter((rel) => rel.npc))
 const note = computed(() => callNote({ connected: view.value.connected, cannot: cannot('call'), busy: Boolean(game.state.value.activeAction) }))

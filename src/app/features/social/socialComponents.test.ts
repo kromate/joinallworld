@@ -107,6 +107,22 @@ test('Contacts: Mummy first with a Call, the search, friends with their presence
   client.state.me = null
 })
 
+test('Contacts: a life whose family list has no contact leaves the family card out instead of failing', async () => {
+  const { FAMILY } = await load<{ FAMILY: Record<string, { contact?: boolean }> }>('/src/game/content/npcs.ts')
+  const before = app.game.state.value, contact = FAMILY.mummy!.contact
+  client.state.me = overview()
+  try {
+    delete FAMILY.mummy!.contact
+    app.game.state.value = { ...before } // the view is recomputed from the state
+    assert.equal(app.game.view.value.social.family.some((member) => member.contact), false)
+    const html = await render('/src/app/features/social/ContactsApp.vue')
+    const words = text(html)
+    assert.ok(words.startsWith('Find a player'), words.slice(0, 80))
+    assert.ok(!words.includes('Mummy') && !words.includes('checked in today'), words.slice(0, 200))
+    assert.ok(words.includes('Saved contacts'))
+  } finally { if (contact) FAMILY.mummy!.contact = contact; app.game.state.value = { ...before }; client.state.me = null }
+})
+
 test('Contacts: found players are listed with their short code and a View button', async () => {
   const { contactsUi } = await load<{ contactsUi: { find: string; results: unknown; finding: boolean } }>('/src/app/features/social/socialState.ts')
   client.state.me = overview()

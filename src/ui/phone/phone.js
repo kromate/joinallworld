@@ -251,7 +251,8 @@ export function createPhone({ dialog, content, panels, host }) {
   }
   /** The page in view after a swipe: only the dots change. Fires on user scrolling, never on a timer. */
   function onScroll() {
-    const width = el?.pages.clientWidth || 1;
+    if (!el) return; // a scroll event still in flight when the phone closed
+    const width = el.pages.clientWidth || 1;
     const next = Math.max(0, Math.min(PAGES.length - 1, Math.round(el.pages.scrollLeft / width)));
     if (next !== page) { page = next; set(el.dots, dotsHtml()); }
   }

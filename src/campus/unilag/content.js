@@ -15,7 +15,7 @@ const betaNote = 'Original beta value for the fictional campus layer; not a univ
 /** @typedef {{id:string,label:string,caption:string,activities:BetaActivity[],integration?:{requested:string}}} CampusSpot */
 /** @typedef {{id:string,venue:string,name:string,role:string,emoji:string,quotes:string[],at:string,beta:boolean}} CampusNpc */
 /** @typedef {{id:string,label:string,description:string,venue:string,spot:string}} DiscoveryItem */
-/** @typedef {{id:string,label:string,district:string,icon:string,description:string,category:string,zone:string,map:{x:number,y:number},scene:{kind:string},hours:{open:number,close:number},ambient:string[],spots:Record<string,CampusSpot>,beta:boolean,note:string}} CampusVenue */
+/** @typedef {{id:string,label:string,district:string,icon:string,description:string,category:string,zone:string,map:{x:number,y:number},scene:{kind:string},cities:string[],hours?:{open:number,close:number},ambient:string[],spots:Record<string,CampusSpot>,beta:boolean,note:string}} CampusVenue */
 
 /** @param {string} id @param {string} label @returns {BetaActivity} */
 const photograph = (id, label) => ({
@@ -120,10 +120,10 @@ export const UNILAG_VENUE = {
   zone: 'mainland',
   map: { x: 56, y: 30 },
   scene: { kind: 'unilag' },
-  hours: { open: 0, close: 24 },
+  // No `hours`: the campus is open at any hour (a venue with hours shows "closes at…"; lectures keep their own slots).
   spots,
   beta: true,
-  note: 'Opening hours, map position, activities and effects are original beta values.',
+  note: 'Map position, activities and effects are original beta values.',
 };
 
 

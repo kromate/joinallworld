@@ -3,7 +3,8 @@
  * selected tab and form choices between renders.
  */
 import './campus.css';
-import { esc, json, money, uuid } from '../dom.js';
+import { esc, json, money, uuid, glyph } from '../dom.js';
+import { glyphOfEmoji } from '../icon-map.js';
 import { lagosTime } from '../../game/clock.js';
 import { DISCOVERY_TRAIL, spots } from '../../campus/unilag/content.js';
 import { LECTURE_SLOTS, PROGRAMMES } from '../../campus/unilag/curriculum.js';
@@ -12,6 +13,13 @@ import { CAMPUS_JOBS, HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS } from '../../campus/un
 import { SHUTTLE_STOPS } from '../../campus/unilag/shuttle.js';
 
 const PANEL = 'campus';
+/**
+ * The game draws its own glyphs instead of emoji (src/ui/phone/icons.js). The campus content and cards were written with
+ * emoji as their icons, in text positions only — never inside an attribute — so the finished html is passed through once:
+ * each emoji becomes its drawn glyph (the mortarboard when the set has no closer one).
+ */
+const EMOJI = /\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic}|[\u{1F3FB}-\u{1F3FF}])*/gu;
+export const drawn = (html) => String(html).replace(EMOJI, (emoji) => glyph(glyphOfEmoji(emoji) || 'campus', 'ui-glyph'));
 const TABS = Object.freeze([
   ['overview', 'Overview'],
   ['study', 'Study'],
@@ -404,7 +412,7 @@ const campus = {
     } else if (!student?.programme?.id) choices.studentProgramme = '';
     const body = choices.tab === 'study' ? study(state, view) : choices.tab === 'residence' ? residence(state, view)
       : choices.tab === 'community' ? community(state, view) : overview(state, view);
-    return `${campusHeader(state, view)}${tabs()}<section class="campus-body" data-campus-section="${esc(choices.tab)}">${body}</section>`;
+    return drawn(`${campusHeader(state, view)}${tabs()}<section class="campus-body" data-campus-section="${esc(choices.tab)}">${body}</section>`);
   },
   bind(root, api) {
     loadShared(api);

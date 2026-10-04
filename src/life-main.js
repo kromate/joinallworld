@@ -214,8 +214,10 @@ function loadMaps() {
     cityMap.setPlayer(playerLook());
     showFriends();
     cityMap.setState(client.state);
-    render();
+    // What the Map was asked for while its code was on the way (the country map, a filter) is replayed BEFORE the first
+    // draw, so the layer that was asked for is the one in front.
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }));
+    render();
     refreshScene();
   }).catch((error) => { mapsLoading = null; telemetry.chunkFailed('map', error); console.error('The map could not be loaded:', error); shell.toast('The map could not be loaded. Check your connection and open it again.', 'error'); });
   return mapsLoading;
@@ -353,6 +355,12 @@ function accepted(state, previous) {
   // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
   const plotKey = state?.estate?.plot ? `${state.estate.plot.lga}/${state.estate.plot.estate}/${state.estate.plot.plot}` : '';
   if (plotKey !== lastPlot) { if (plotKey && lastPlot !== null) { window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name: 'house_allocated', props: {} } })); window.dispatchEvent(new CustomEvent('jaw:world-changed')); } lastPlot = plotKey; }
+  // The campus, from the server's own state: enrolment and graduation are told to analytics once each, as they happen (the programme id only).
+  const studied = previous?.unilagStudent?.status, studies = state?.unilagStudent?.status;
+  if (studied !== studies && studied !== undefined) {
+    const event = studies === 'matriculated' && studied === 'admitted' ? { name: 'campus_enrolled', props: { programme: state.unilagStudent.programme } } : studies === 'graduated' ? { name: 'campus_graduated', props: { programme: state.unilagStudent.programme } } : null;
+    if (event) window.dispatchEvent(new CustomEvent('jaw:track', { detail: event }));
+  }
   cityMap?.setState(state);
   render();
   // Arrived somewhere (or a trip ended): read who is here once; later changes are pushed by the server.

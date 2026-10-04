@@ -214,3 +214,24 @@ A real two-WebSocket test joins two campus lives at the main gate, broadcasts x1
 Acceptance evidence lives in the integration checkout `/Users/anthonyakpan/.codex/worktrees/8053/JoinAllworld/src/campus/unilag/evidence/`: `integrated-campus-overview.png`, `integrated-study.png`, `integrated-registered.png`, `integrated-hostel.png`, `integrated-walk-library.png`, `integrated-shuttle-moving.png` and `integrated-shuttle-arrived.png`. The last screenshot includes the deliberately enabled diagnostics overlay; the normal game has no such overlay. The parent inspected these images.
 
 Final combined checks: full test suite435 passed; edge suite28 passed; production Vite build passed, with the pre-existing large-chunk warning. These are local checks. The source-only main merge does not deploy the app or assert Android hardware performance.
+
+## In the combined game (branch `combine/all`)
+
+Everything above describes the campus as it was built on `astra/unilag` and integrated into the earlier `main`. In the combined game it is wired against the newer registries; where the two differ, this section is the truth.
+
+| Seam | In the combined game |
+| --- | --- |
+| Venue catalogue | `unilag` is the 26th place (25 venues and the campus), Lagos only (`cities: ['lagos']`: other cities neither list nor accept it). It has no `hours`: open at any hour. |
+| Engine systems | `unilagStudent`, `unilagCommunity`, `unilagShuttle` are registered after `growth`. A guest of the quick start is refused every student action (apply, matriculate, register, lecture, assignment, test, close, defer, resume, drop, hostel, campus job, election) with `settle_required` — `GUEST_CAMPUS` in `src/game/systems/onboarding.js`; visiting, the trail, the games and the shuttle stay open. |
+| Map | A site in the Lagos city pack at Akoka (`src/map3d/cities/lagos.js`, inside the Lagos Mainland local government) with a landmark kind of its own (`src/map3d/landmarks.js` `unilag`: Senate House and the main gate, in the city's merged batch). The flat map is the same pack from above. `landmark.js` here remains for the standalone preview. |
+| Scene host | `src/campus/unilag/host.js` behind `world-adapter.js`, which the entry file talks to for every venue. The campus host is fetched only when the player is at the campus (or a trip to it has set off). `src/campus/shared/{characters,movement,motion-loop}.js` were copies of the game's own modules and are gone: the campus uses `src/scene/characters.js`, `src/scene/movement.js` and `src/scene/motion-loop.js`. Only `shared/geometry.js` and `shared/signs.js` remain. |
+| Selecting a landmark | The `spot` action is sent when the avatar arrives (`walkToSpot`, then `commitSpot` in `src/life-main.js`), from the panel's spot pills, the Campus app and a landmark's name tag alike. |
+| Presence | Campus coordinates on the wire, valid only on walkable ground (`server/protocol.js validatePosition(value, 'unilag')`); a join starts at the main gate. Every other venue keeps ±20. |
+| Table games | The two Student Union tables are rows of the one table registry (`src/tables/places.js`: `union-whot-1`, `union-whot-2`) and are played through the shared table framework from the Tables app and the "table here" chip. They are not drawn in the campus scene. |
+| Campus app | A lazy phone app (`src/ui/panels/groups/campus.js`), in the City group with a drawn mortarboard; its emoji are drawn as the game's glyphs. |
+| Shared routes | `GET /api/campus`, `POST /api/campus/nominate`, `POST /api/campus/vote` on both hosts, exactly once through `ctx.command` (the ballot is saved with the action receipt). Stored: the `campus` collection (one weekly election). |
+| Analytics | `campus_enrolled` and `campus_graduated` through `jaw:track`, from the server's own state (`src/telemetry/events.js`). |
+| Economy | `npm run economy` plays a student on every start; `src/game/economy.test.js` asserts fees (₦3,000 for the degree), one paid campus job a Lagos day and one scholarship at most. |
+| Types | `src/types/campus.ts`. |
+
+Known limits carried over: the leaderboard projection reads every session on each `GET /api/campus` (rate limited per player, not cached); `campus.*` engine events have no listener; `campus-shuttle` is the one campus action outside the `unilag.` namespace.

@@ -539,7 +539,7 @@ test('every event the game’s screens report is in the catalogue, with every pr
   assert.ok(reported.size >= 30, `the scan found the game's events (${reported.size})`);
   for (const [name, found] of reported) {
     assert.ok(EVENTS[name], `${name} (reported in ${[...found.files].join(', ')}) is not in the catalogue`);
-    assert.ok(['quick-start', 'world', 'growth'].includes(EVENTS[name].from), `${name} is reported by a screen, so it must not also be derived by telemetry`);
+    assert.ok(['quick-start', 'world', 'growth', 'campus'].includes(EVENTS[name].from), `${name} is reported by a screen, so it must not also be derived by telemetry`);
     for (const key of found.keys) assert.ok(Object.hasOwn(EVENTS[name].props, key), `${name}.${key} would be dropped: it is not in the catalogue`);
   }
   // …and the other way round: nothing is catalogued as a screen's event that no screen reports.

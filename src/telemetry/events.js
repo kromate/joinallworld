@@ -10,7 +10,7 @@
  *
  * ONE SOURCE PER EVENT. `from` names the one place that reports it: 'quick-start' (the first minute and the landing of a
  * link: src/quick-start/entry.js track), 'world' (where you live), 'growth' (missions, tables, sharing, outreach) — all
- * three arrive as `jaw:track` DOM events — 'client' (derived here from the server's states: ./funnel.js and ./core.js) and
+ * three arrive as `jaw:track` DOM events, as do those of 'campus' (the UNILAG campus: src/life-main.js, from the server's state) — 'client' (derived here from the server's states: ./funnel.js and ./core.js) and
  * 'server' (server/telemetry/instrument.js). src/telemetry/telemetry.test.js reads the game's sources and fails if a
  * `track('…')` call names an event that is not listed here, or carries a property this list would drop.
  *
@@ -23,7 +23,7 @@
  * @property {Record<string, PropType>} props   allowed properties and their types
  * @property {string} when                      when it fires (and how often)
  * @property {string} why                       the question it answers
- * @property {'client' | 'server' | 'quick-start' | 'world' | 'growth'} from   the one place that reports it (see ONE SOURCE PER EVENT)
+ * @property {'client' | 'server' | 'quick-start' | 'world' | 'growth' | 'campus'} from   the one place that reports it (see ONE SOURCE PER EVENT)
  */
 
 /** @type {Record<string, EventSpec>} */
@@ -59,6 +59,10 @@ export const EVENTS = {
 
   // ---- Where you live (the world layer: src/ui/panels/lga-card.js, world-panels.js, src/life-main.js)
   lga_chosen: { from: 'world', props: { method: 'string', lga: 'string' }, when: 'A local government was chosen or changed (method: device | manual; lga: its id, one of a fixed list — never a position).', why: 'How people choose where they live; which areas fill.' },
+  // ---- The UNILAG campus (src/life-main.js, from the server's own state as it changes; the programme id only)
+  campus_enrolled: { from: 'campus', props: { programme: 'string' }, when: 'Once per enrolment: the server matriculated this life as a UNILAG student.', why: 'How many visitors to the campus become students.' },
+  campus_graduated: { from: 'campus', props: { programme: 'string' }, when: 'Once per degree: the server recorded the graduation.', why: 'How many students finish the two semesters.' },
+
   house_allocated: { from: 'world', props: {}, when: 'The server set a plot aside for this life (or moved it). No address.', why: 'Settle-in ends with a house on the map.' },
   house_styled: { from: 'world', props: {}, when: 'The look of the player’s house was changed.', why: 'Is house styling used?' },
   estate_viewed: { from: 'world', props: { lga: 'string' }, when: 'A local government’s page (its estates and residents directory) was opened.', why: 'Do people look around their area?' },
@@ -113,7 +117,7 @@ export const ACTIVATION_FUNNEL = Object.freeze(['landed', 'play_tapped', 'arrive
 export const INVITE_FUNNEL = Object.freeze(['invite_created', 'invite_opened', 'invite_joined', 'invite_colocated', 'referral_rewarded']);
 
 /** The events that reach the facade as `jaw:track` DOM events from the game's own screens (everything not derived or server-side). */
-export const TRACKED_EVENTS = Object.freeze(Object.keys(EVENTS).filter((name) => ['quick-start', 'world', 'growth'].includes(EVENTS[name].from)));
+export const TRACKED_EVENTS = Object.freeze(Object.keys(EVENTS).filter((name) => ['quick-start', 'world', 'growth', 'campus'].includes(EVENTS[name].from)));
 
 /** The property names an event may carry, or null for an event that is not in the catalogue. */
 export function allowedProps(name) { return Object.hasOwn(EVENTS, name) ? Object.keys(EVENTS[name].props) : null; }

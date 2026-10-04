@@ -107,7 +107,7 @@ test('the catalogue: every event is named and described, and its properties pass
   for (const [name, spec] of Object.entries(EVENTS)) {
     assert.ok(isEventName(name), name);
     assert.ok(spec.when.length > 10 && spec.why.length > 5, `${name} says when and why`);
-    assert.ok(['client', 'server', 'quick-start', 'world', 'growth'].includes(spec.from), name);
+    assert.ok(['client', 'server', 'quick-start', 'world', 'growth', 'campus'].includes(spec.from), name);
     const sample = Object.fromEntries(Object.entries(spec.props).map(([key, type]) => [key, type === 'number' ? 1 : type === 'boolean' ? true : 'word']));
     assert.deepEqual(checkProps(name, sample, scrubProps), sample, `${name}: a catalogued property is refused by the scrubber`);
   }

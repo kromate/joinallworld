@@ -22,6 +22,9 @@ import onboarding from './onboarding.js';
 import goals from './goals.js';
 import social from './social.js';
 import civic from './civic.js';
+import missions from './missions.js';
+import events from './events.js';
+import growth from './growth.js';
 
-export const SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, onboarding, goals, social, civic];
+export const SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, onboarding, goals, social, civic, missions, events, growth];
 for (const system of SYSTEMS) registerSystem(system);

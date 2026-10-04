@@ -9,6 +9,8 @@ import { GIG_DAILY_LIMIT } from './content/venues.js';
 import { TRACKS, HELPER_COOLDOWN_SECONDS } from './content/jobs.js';
 import { HOUSES } from './content/housing.js';
 import { HUNT } from './content/civic.js';
+import { MISSION_REWARDS } from './content/missions.js';
+import { REFERRAL, TABLE_REWARDS } from './content/growth.js';
 import { RENTS, LOAN, LOAN_LATE_FEE, MAX_LOAN_FEES, MAX_ARREARS_WEEKS, LATE_FEE_PERCENT, DEPOSIT_TOTAL_CAP, DEPOSIT_TERMS } from './systems/economy.js';
 
 const DAYS = 30, HORIZON = 200;
@@ -29,7 +31,7 @@ test('economy: the table covers every start and strategy, deterministically', ()
 });
 
 test('economy: no strategy creates money from nothing', () => {
-  const sources = new Set(['start', 'wages', 'gigs', 'goals', 'hunt', 'savings', 'events', 'purchases']);
+  const sources = new Set(['start', 'wages', 'gigs', 'goals', 'hunt', 'savings', 'events', 'purchases', 'missions', 'tables', 'referral']);
   for (const row of rows) {
     assert.equal(row.conserved, true, `${at(row)}: cash = seed + Σ ledger`);
     assert.deepEqual(row.unknown, [], `${at(row)}: every ledger reason is one the report knows`);
@@ -62,6 +64,8 @@ test('economy: every repeatable source of money has a daily cap that holds in pl
       if (kind === 'hunt') assert.equal(count, 1, `${at(row)}: one gem prize a day`);
       if (kind === 'wages') assert.ok(count <= (row.strategy === 'helper' ? 86400 / HELPER_COOLDOWN_SECONDS : 1), `${at(row)}: ${count} paid shifts in one day`);
       if (kind === 'A wallet on the ground') assert.equal(count, 1, `${at(row)}: one found wallet a day`);
+      if (kind === 'tables') assert.ok(count <= TABLE_REWARDS.paidWinsPerDay, `${at(row)}: ${count} paid table wins in one day`);
+      if (kind === 'missions') assert.ok(count <= MISSION_REWARDS.daily.slots + MISSION_REWARDS.weekly.slots, `${at(row)}: ${count} missions paid in one day`);
     }
     const hunt = row.flows.hunt ?? 0;
     assert.ok(hunt <= DAYS * HUNT.prize, at(row));
@@ -161,4 +165,33 @@ test('economy: nothing overflows, even after a year of the best mix', () => {
   assert.ok(Object.values(state.inventory).every((count) => Number.isSafeInteger(count) && count > 0));
   assert.ok(state.ledger.length <= 60 && state.ledgerDays.length <= 35, 'the history stays bounded');
   assert.equal(categoryOf({ reason: 'Tech shift', amount: 1 }), 'wages');
+});
+
+test('economy: missions, table wins and referrals stay inside their budget even with every cap reached', () => {
+  const dailyMissions = MISSION_REWARDS.daily.slots * MISSION_REWARDS.daily.cash, weeklyMissions = MISSION_REWARDS.weekly.slots * MISSION_REWARDS.weekly.cash;
+  const dailyTables = TABLE_REWARDS.paidWinsPerDay * TABLE_REWARDS.win;
+  for (const career of of('career')) {
+    const social = of('social').find((row) => row.lottery === career.lottery && row.house === career.house);
+    const mix = of('optimal').find((row) => row.lottery === career.lottery && row.house === career.house);
+    const { missions = 0, tables = 0, referral = 0 } = social.flows;
+    assert.ok(missions > 0 && tables > 0 && referral > 0, `${at(social)}: the strategy really exercises all three (${missions}, ${tables}, ${referral})`);
+    assert.ok(missions <= DAYS * dailyMissions + Math.ceil(DAYS / 7) * weeklyMissions, `${at(social)}: missions ₦${missions} are within three a day and three a week`);
+    assert.equal(tables, DAYS * dailyTables, `${at(social)}: exactly ${TABLE_REWARDS.paidWinsPerDay} table wins a day were paid; the fifth never was`);
+    assert.equal(referral, REFERRAL.welcome + REFERRAL.paidLifetime * REFERRAL.reward, `${at(social)}: one welcome gift and ${REFERRAL.paidLifetime} referral rewards for life, however many were tried`);
+    assert.ok((social.refusals.referral_week_cap ?? 0) > 0 && (social.refusals.referral_lifetime_cap ?? 0) > 0 && (social.refusals.already_welcomed ?? 0) === 0, `${at(social)}: the weekly and lifetime referral caps both refused something`);
+    // Per week no more than the weekly cap was paid, whatever was attempted.
+    const perWeek = {};
+    for (const line of social.credits) if (line.category === 'referral' && line.reason.startsWith('Referral')) perWeek[lagosTime(line.at).week] = (perWeek[lagosTime(line.at).week] ?? 0) + 1;
+    assert.ok(Object.values(perWeek).every((count) => count <= REFERRAL.paidPerWeek), `${at(social)}: at most ${REFERRAL.paidPerWeek} referral rewards in a week`);
+    // The budget: at the caps the new sources together stay below 60% of what the same month of work paid, and a
+    // player who maxes all of them is still behind one who works, hunts gems and gigs.
+    assert.ok(missions + tables + referral <= 0.6 * career.flows.wages, `${at(social)}: new sources ₦${missions + tables + referral} vs wages ₦${career.flows.wages}`);
+    assert.ok(social.flows.wages >= 0.6 * (social.flows.wages + missions + tables + referral), `${at(social)}: wages stay the larger part of a social player's income`);
+    assert.ok(social.netWorth[30] <= mix.netWorth[30], `${at(social)}: ₦${social.netWorth[30]} does not overtake the best mix ₦${mix.netWorth[30]}`);
+    assert.equal(social.rentMissedWeeks, 0, at(social));
+  }
+  // The day's ceiling from the content alone: under a third of an entry-level day's pay on the median track.
+  const entry = TRACKS.map((track) => track.ladder[0].pay).sort((a, b) => a - b)[Math.floor(TRACKS.length / 2)];
+  assert.ok(dailyMissions + dailyTables <= 1350, `daily ceiling ₦${dailyMissions + dailyTables}`);
+  assert.ok(entry > 0 && dailyMissions + dailyTables <= 0.5 * entry, `₦${dailyMissions + dailyTables} a day against an entry-level shift of ₦${entry}`);
 });

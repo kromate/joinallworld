@@ -34,6 +34,9 @@ import radioBanner from './radio-banner.js';
 import { S as social } from './social-client.js';
 import { civicNews } from './civic-ui.js';
 import { reportReplies } from '../phone/reports.js';
+import awayChip from './away-chip.js';
+import tablesChip from './tables-chip.js';
+import { GROWTH_TINTS } from '../phone/icons-growth.js';
 
 const PLACEMENTS = ['phone', 'nav', 'hud', 'sim-tab', 'modal'];
 const RESERVED = ['phone', 'sim', 'help', 'home', 'venue'];
@@ -152,7 +155,22 @@ const home = lazyGroup(() => import('./groups/home.js'), [
   { id: 'buy', title: 'Buy', placement: 'nav', enabled: (state) => state.location === 'home' || 'Go home to buy furniture' },
 ]);
 
-export const PANELS = buildPanels([session, quickStart, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels]);
+// Growth apps (OWNER: growth). Badges and notification lines are computed from the life's own view, so they work before the group has loaded.
+const growthLive = (view) => (view.events?.live ?? []).filter((event) => !event.attended);
+const growth = lazyGroup(() => import('./groups/growth.js'), [
+  { id: 'missions', title: 'Missions', placement: 'phone', order: 11, group: 'life', tint: GROWTH_TINTS.missions, badge: (state, view) => view.missions?.claimable || 0,
+    notifications: (state, view) => (view.connected && view.missions?.claimable ? [{ id: `missions:${view.missions.day}:${view.missions.claimable}`, at: view.now, fresh: true, app: 'missions', text: `${view.missions.claimable} finished mission${view.missions.claimable === 1 ? '' : 's'} to collect` }] : []) },
+  { id: 'events', title: 'Events', placement: 'phone', order: 41, group: 'city', tint: GROWTH_TINTS.events, badge: (state, view) => (growthLive(view).length ? 1 : 0) },
+  { id: 'refer', title: 'Bring a friend', short: 'Friends', placement: 'phone', order: 39, group: 'people', tint: GROWTH_TINTS.refer },
+  { id: 'touch', title: 'Stay in touch', short: 'In touch', placement: 'phone', order: 94, group: 'life', tint: GROWTH_TINTS.touch, live: false },
+  { id: 'share-sheet', title: 'Share', icon: 'share', placement: 'modal', live: false },
+]);
+
+const tableApps = lazyGroup(() => import('./groups/tables.js'), [
+  { id: 'tables', title: 'Tables', placement: 'phone', order: 43, group: 'city', tint: GROWTH_TINTS.tables },
+]);
+
+export const PANELS = buildPanels([session, quickStart, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, awayChip, tablesChip, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels, growth, tableApps]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

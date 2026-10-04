@@ -84,7 +84,7 @@ test('route registry rejects duplicate and malformed routes at start-up and list
   const CORE = ['GET /api/health', 'GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/session'];
   for (const key of CORE) assert.ok(keys.includes(key), `core route ${key} is registered`);
   // Every module registers only under its own namespace; the core module is exactly the core set.
-  const NAMESPACES = ['', '/api/auth/', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/'];
+  const NAMESPACES = ['', '/api/auth/', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/growth/', '/api/mod/growth/'];
   assert.equal(ROUTE_MODULES.length, NAMESPACES.length);
   ROUTE_MODULES.forEach((module, index) => {
     const own = Object.keys(module(ctx) || {});
@@ -136,7 +136,7 @@ test('socket registry rejects duplicate or malformed message types and lists the
   for (const type of CORE) assert.ok(types.includes(type), `core message type ${type} is registered`);
   // The rooms module owns exactly the core types; every other type carries its owner's prefix.
   assert.deepEqual(Object.keys(WS_MODULES[0](ctx).messages).sort(), CORE);
-  for (const type of types.filter((item) => !CORE.includes(item))) assert.match(type, /^(dm|group|friend|invite|people)-/, `${type} is not prefixed with its area`);
+  for (const type of types.filter((item) => !CORE.includes(item))) assert.match(type, /^(dm|group|friend|invite|people|table)-/, `${type} is not prefixed with its area`);
   assert.throws(() => buildSocketHandlers(ctx, [...WS_MODULES, () => ({ messages: { chat: () => {} } })]), /Duplicate socket message type/);
   assert.throws(() => buildSocketHandlers(ctx, [() => ({ messages: { 'Bad Type': () => {} } })]), /Invalid socket message handler/);
   assert.throws(() => buildSocketHandlers(ctx, [() => ({ messages: { ping: { room: true } } })]), /Invalid socket message handler/);
@@ -202,7 +202,7 @@ test('server-only actions: the public /api/action can never run one; a route mod
   assert.throws(() => registerSystem({ id: 'bad-server-only', stateKeys: [], sanitize() {}, actions: { 'bad.thing': { serverOnly: true } } }), /needs a handler function/);
   assert.throws(() => registerSystem({ id: 'bad-plain', stateKeys: [], sanitize() {}, actions: { 'bad.other': { run() {} } } }), /needs a handler function/);
   const serverOnly = actionTypes().filter((type) => serverOnlyReason(type));
-  assert.deepEqual(serverOnly.sort(), ['civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server']);
+  assert.deepEqual(serverOnly.sort(), ['civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote', 'estate.assign', 'estate.released', 'growth.referral', 'growth.table-result', 'onboarding.arrive', 'social.server']);
   /** A route written against the contract: it names the type itself and runs it with server authority. */
   const grantRoutes = (ctx) => ({
     'POST /api/grant/gift': async (request) => ({ body: await ctx.store.transact(db => {

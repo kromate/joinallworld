@@ -275,6 +275,8 @@ const HANDLERS = {
     if (!safeCount(data?.amount) || data.amount <= 0 || EARNING_EXCLUDED.test(String(data.reason ?? ''))) return;
     bumpWishes(state, ctx, (wish) => wish.on === 'earn', data.amount);
   },
+  // Stars another system awards (missions, the stamp card): bounded per grant, counted like any other star.
+  'stars.granted'(state, data) { if (safeCount(data?.amount) && data.amount <= 50) addStars(state, data.amount); },
   'life.started'(state, data) {
     const g = state.goals;
     // A life that was never a guest starts its chain here, at the first home goal (the opening goals are the quick start's).
@@ -285,7 +287,7 @@ const HANDLERS = {
   },
 };
 const EVENTS = ['activity.completed', 'meal.eaten', 'item.bought', 'house.moved', 'car.bought', 'job.applied', 'shift.completed', 'promotion', 'rent.paid',
-  'loan.paid', 'npc.greeted', 'friend.made', 'friend.best', 'relationship.changed', 'travel.arrived', 'venue.visited', 'wallet.changed', 'skill.levelup', 'life.started'];
+  'loan.paid', 'npc.greeted', 'friend.made', 'friend.best', 'relationship.changed', 'travel.arrived', 'venue.visited', 'wallet.changed', 'skill.levelup', 'life.started', 'stars.granted'];
 
 function handle(event, state, data, ctx) {
   HANDLERS[event]?.(state, data, ctx);

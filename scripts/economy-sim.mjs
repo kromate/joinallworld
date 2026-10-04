@@ -17,6 +17,11 @@
  *               `gig` gets the same budget the career player actually used; `gig-all-day` gets 16 hours.
  *     optimal   the career routine, then the daily gem hunt, then gigs up to 30 active minutes a day,
  *               pockets a found wallet, and keeps spare cash in 7-day deposits.
+ *     social    the career routine plus everything the growth features pay, pushed to their caps: every
+ *               mission that can be finished is finished and claimed, five table games a day are won
+ *               against real players (the fifth is past the paid cap), the referral welcome gift is
+ *               taken, and six friends a week are referred (one more than the weekly cap) until the
+ *               lifetime cap. It is the worst case for the new faucets, not a typical player.
  *   Sessions start at 09:00 Lagos time (or when the workplace opens). Away time is settled in one
  *   step, as the server does for a player who was offline.
  *
@@ -40,6 +45,8 @@ import { LOTTERY, START_HOMES } from '../src/game/content/traits.js';
 import { HOUSES, HOUSE_ORDER } from '../src/game/content/housing.js';
 import { CARS, CAR_ORDER } from '../src/game/content/cars.js';
 import { EVENTS } from '../src/game/content/events.js';
+import { DAILY_MISSIONS, WEEKLY_MISSIONS } from '../src/game/content/missions.js';
+import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.js';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
@@ -67,6 +74,10 @@ export function categoryOf(line) {
   if (reason.startsWith('Loan')) return 'loan';
   if (reason.startsWith('Goal:') || reason.startsWith('Dream achieved') || reason.startsWith('Startup funding')) return 'goals';
   if (reason === 'Daily gem hunt prize') return 'hunt';
+  if (reason.startsWith('Mission: ')) return 'missions';
+  if (reason.startsWith('Table win: ')) return 'tables';
+  if (reason.startsWith('Welcome gift') || reason.startsWith('Referral reward')) return 'referral';
+  if (reason.startsWith('Sprayed at ')) return 'leisure';
   if (reason.startsWith('Fixed deposit')) return 'savings';
   if (/^(Danfo|Keke|Okada|Cab|Trek|Fuel) to /.test(reason)) return 'transport';
   if (reason.startsWith('Groceries')) return 'food';
@@ -113,6 +124,14 @@ export class Player {
   ctx() { const actionId = `sim-${++this.seq}`; return { now: this.now, cityId: CITY, actionId }; }
   do(type, payload = {}) {
     const ctx = this.ctx();
+    const result = dispatch(this.state, { type, payload, actionId: ctx.actionId }, ctx);
+    if (!result.ok) this.refusals[result.code] = (this.refusals[result.code] ?? 0) + 1;
+    this.collectAll();
+    return result;
+  }
+  /** An action only the server may run (a finished table game, a referral gift): the same dispatch, with server authority. */
+  server(type, payload = {}) {
+    const ctx = { ...this.ctx(), internal: true };
     const result = dispatch(this.state, { type, payload, actionId: ctx.actionId }, ctx);
     if (!result.ok) this.refusals[result.code] = (this.refusals[result.code] ?? 0) + 1;
     this.collectAll();
@@ -266,6 +285,37 @@ function keepDeposits(player) {
   }
 }
 
+/** The cheapest startable activity anywhere open that satisfies `wanted(def)`; goes there and runs it. */
+function doSomewhere(player, wanted) {
+  const ctx = { now: player.now, cityId: CITY };
+  const options = Object.keys(VENUES).filter((venue) => isOpen(VENUES[venue].hours, player.now)).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities
+    .filter((def) => !def.choices && !def.requiresJob && !(def.cost > 300) && wanted(def) && !blockReason(player.state, def, venue, ctx)).map((def) => ({ venue, spot: spot.id, def }))));
+  const next = options.find((item) => item.venue === player.state.location) ?? options.sort((a, b) => (a.def.cost ?? 0) - (b.def.cost ?? 0) || a.def.duration - b.def.duration)[0];
+  return Boolean(next) && player.travel(next.venue) && player.run(next.spot, next.def.id).ok;
+}
+
+/** Work through today's and this week's missions as a determined player would, then collect every finished one. */
+function missionRun(player) {
+  const pending = () => { const view = player.view().missions; return [...view.daily, ...view.weekly].filter((mission) => !mission.done); };
+  const def = (id) => [...DAILY_MISSIONS, ...WEEKLY_MISSIONS].find((mission) => mission.id === id);
+  let guard = 0;
+  for (const mission of pending()) {
+    const rule = def(mission.id);
+    for (let left = mission.count - mission.n; left > 0 && guard++ < 40; left--) {
+      if (player.state.needs.energy < 35 || player.state.needs.hunger < 30) player.upkeep({ energy: 80, hunger: 70 });
+      if (rule.on === 'venue') {
+        const fresh = Object.keys(VENUES).find((venue) => venue !== 'home' && venue !== player.state.location && isOpen(VENUES[venue].hours, player.now) && !player.state.missions.visited.list.includes(venue));
+        if (!fresh || !player.travel(fresh)) break;
+      } else if (rule.on === 'tag') { if (!doSomewhere(player, (item) => (item.tags ?? []).some((tag) => rule.tags.includes(tag)))) break; }
+      else if (rule.on === 'event' && rule.event === 'npc.greeted') { if (!doSomewhere(player, (item) => item.social?.action === 'hello')) break; }
+      else if (rule.on === 'event' && rule.event === 'gem.found') { gemHunt(player); break; }
+      else break; // shifts, wishes, friends, tables and events come from the rest of the day
+    }
+  }
+  const view = player.view().missions;
+  for (const mission of [...view.daily, ...view.weekly]) if (mission.done && !mission.claimed) player.do('missions.claim', { id: mission.id });
+}
+
 export const STRATEGIES = {
   idle: { label: 'idle', day() {} },
   helper: {
@@ -312,6 +362,20 @@ export const STRATEGIES = {
       keepDeposits(player);
     },
   },
+  social: {
+    label: 'social (caps)',
+    first: (player, options) => firstSitting(player, options.track),
+    day(player, index) {
+      player.upkeep();
+      if (player.view().career.today.canWork) workShift(player);
+      // Five wins against real players: the fifth is beyond the paid cap. Then the referral gifts, one over each cap.
+      for (let game = 0; game < TABLE_REWARDS.paidWinsPerDay + 1; game++) player.server('growth.table-result', { game: 'whot', label: 'Whot', won: true, human: true, counted: true });
+      if (index === 1) player.server('growth.referral', { kind: 'welcome', name: 'Ada' });
+      if (index % 7 === 2) for (let friend = 0; friend < REFERRAL.paidPerWeek + 1; friend++) player.server('growth.referral', { kind: 'reward', name: 'Tunde' });
+      missionRun(player);
+      player.upkeep({ energy: 50 });
+    },
+  },
 };
 
 /** Every start the birth lottery allows: [{ lottery, house }]. */
@@ -328,7 +392,7 @@ export function simulate({ lottery, house, strategy, days = 30, horizon = days, 
   const player = new Player({ lottery, house });
   const startCash = player.state.cash;
   const nextHouse = HOUSES[HOUSE_ORDER[HOUSE_ORDER.indexOf(house) + 1]] ?? null;
-  const row = { lottery, house, strategy, label: plan.label, track: plan === STRATEGIES.career || plan === STRATEGIES.optimal ? track : null, startCash,
+  const row = { lottery, house, strategy, label: plan.label, track: plan === STRATEGIES.career || plan === STRATEGIES.optimal || plan === STRATEGIES.social ? track : null, startCash,
     netWorth: {}, cash: {}, firstPromotionDay: null, rentMissedWeeks: 0, minCash: startCash, nextHouse: nextHouse?.id ?? null, nextHouseDay: null, carDay: null, activePerDay: 0 };
   plan.first?.(player, options);
   let level = player.state.career.level, missed = player.state.economy.rent.missed;
@@ -386,9 +450,9 @@ export function runEconomy({ days = 30, horizon = 365, track = 'tech', strategie
 }
 
 export function formatTable(rows) {
-  const head = ['start', 'strategy', 'start ₦', ...CHECKPOINTS.map((day) => `d${day}`), 'wages', 'gigs', 'goals', 'hunt', 'food', 'transp', 'rent', 'loan', 'promo', 'rent ok', 'act s/d', 'next house', 'car'];
+  const head = ['start', 'strategy', 'start ₦', ...CHECKPOINTS.map((day) => `d${day}`), 'wages', 'gigs', 'goals', 'hunt', 'missn', 'tables', 'refer', 'food', 'transp', 'rent', 'loan', 'promo', 'rent ok', 'act s/d', 'next house', 'car'];
   const lines = rows.map((row) => [`${row.lottery}/${row.house}`, `${row.label}${row.track ? ` (${row.track})` : ''}`, short(row.startCash), ...CHECKPOINTS.map((day) => short(row.netWorth[day])),
-    short(row.flows.wages ?? 0), short(row.flows.gigs ?? 0), short(row.flows.goals ?? 0), short(row.flows.hunt ?? 0), short(row.flows.food ?? 0), short(row.flows.transport ?? 0), short(row.flows.rent ?? 0), short(row.flows.loan ?? 0),
+    short(row.flows.wages ?? 0), short(row.flows.gigs ?? 0), short(row.flows.goals ?? 0), short(row.flows.hunt ?? 0), short(row.flows.missions ?? 0), short(row.flows.tables ?? 0), short(row.flows.referral ?? 0), short(row.flows.food ?? 0), short(row.flows.transport ?? 0), short(row.flows.rent ?? 0), short(row.flows.loan ?? 0),
     row.firstPromotionDay ? `d${row.firstPromotionDay}` : '—', row.rentMissedWeeks ? `missed ${row.rentMissedWeeks}` : 'yes', String(row.activePerDay),
     row.nextHouse ? (row.nextHouseDay ? `${row.nextHouse} d${row.nextHouseDay}` : `${row.nextHouse} —`) : 'top', row.carDay ? `d${row.carDay}` : '—']);
   const widths = head.map((title, column) => Math.max(title.length, ...lines.map((line) => line[column].length)));

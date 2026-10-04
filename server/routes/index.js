@@ -30,7 +30,8 @@
  *   }
  *
  * PATHS   must start with /api/<your area>/ (auth → /api/auth/, social → /api/social/,
- *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/, world → /api/world/). A ":name" segment captures into request.params. A duplicate
+ *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/, world → /api/world/, growth → /api/growth/ and,
+ *         for its operator view, /api/mod/growth/). A ":name" segment captures into request.params. A duplicate
  *         "METHOD /path" aborts start-up.
  *
  * REQUEST (portable — no Node req/res, so the same module can run in the Worker later)
@@ -139,6 +140,13 @@
  *                                          blocked the other; in memory). The moderation module sets
  *                                          ctx.checks.muted(publicId) → null | { code: 'muted', reason, until }.
  *                                          Ask both before delivering or storing player text.
+ *   ctx.pages                              Map of path prefix → async ({ path, query, origin, ip }) => ({ status, html }): one small
+ *                                          HTML page outside /api/ (the link-preview page /s/<code>). No script may run on it and it
+ *                                          sets no cookie; `origin` is PUBLIC_ORIGIN or the request's own host. Absent on a host
+ *                                          that does not serve pages (use ctx.pages?.set).
+ *   ctx.env(name) / ctx.fetch / ctx.keyFile(name, make)   for the one module that reaches outside the game (server/growth/
+ *                                          outreach.js): a fixed list of settings, an outside request, and a secret this server makes
+ *                                          for itself and keeps in DATA_DIR/keys with mode 0600. A page may also be POSTed to (`method`).
  *   ctx.startup                            array of promises the host awaits before it takes requests
  *                                          (a module loading an in-memory index pushes its load here)
  *   ctx.shards                             the world's shard store (server/world/shards.js): one append-only file per local
@@ -186,8 +194,10 @@ import civic from './civic.js';
 import support from './support.js';
 import moderation from './moderation.js';
 import world from './world.js';
+import growth from './growth.js';
+import growthMod from './growth-mod.js';
 
-export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, world];
+export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, world, growth, growthMod];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /** Build the lookup. Returns { match(method, pathname) → { handler, params } | null, keys }. */

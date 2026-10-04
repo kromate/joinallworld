@@ -8,8 +8,8 @@
 // disables the buttons that would repeat it. Player names are text, never markup.
 import { computed, onMounted, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { isDeparting } from '../../legacy/engine.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { isDeparting } from '../../../life.ts'
+import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import BaseChip from '../../ui/BaseChip.vue'
 import EmptyState from '../../ui/EmptyState.vue'

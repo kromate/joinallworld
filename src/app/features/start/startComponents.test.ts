@@ -135,13 +135,22 @@ test('the session sheet: a nickname form for a new device, the reason in words w
   const form = await render('SessionApp', { params: { reason: 'new', problem: { reason: 'Pick another name.', name: 'Bad' } } })
   const words = text(form)
   assert.ok(words.includes('Start your city life') && words.includes('There is no password and no e-mail'))
-  assert.match(form, /<p class="ui-error" role="alert">Pick another name\.<\/p>/)
+  assert.match(form, /<p class="ui-error" role="alert"[^>]*>Pick another name\.<\/p>/)
   assert.match(form, /<input[^>]*value="Bad"[^>]*name="name"[^>]*minlength="3"[^>]*maxlength="24"[^>]*required/)
   const gone = await render('SessionApp', { params: { reason: 'expired' } })
   const sentence = text(gone)
   assert.ok(sentence.includes('This device’s saved life is no longer on this server'))
   assert.ok(sentence.includes('Start a new life') && sentence.includes('Try again') && sentence.includes('nothing can change'))
   assert.ok(!sentence.includes('offline'), 'it never says offline')
+})
+
+// Port of src/ui/panels/session.test.js.
+test('fresh and expired entry offer ordinary navigation to the old-character bridge', async () => {
+  for (const reason of ['new', 'expired']) {
+    const html = await render('SessionApp', { params: { reason } })
+    assert.match(html, /href="https:\/\/joinallworld\.com\/old-character\.html"/)
+    assert.match(text(html), /separate saves/)
+  }
 })
 
 test('the account placeholder says accounts are not available', async () => {

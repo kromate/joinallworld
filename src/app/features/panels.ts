@@ -4,14 +4,15 @@
 import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../state/panels.ts'
 import type { VuePanel } from '../types/panel.ts'
-import { reportReplies } from '../legacy/modules.ts'
-import { social } from '../legacy/social.ts'
+import { reportReplies } from '../../ui/phone/reports.ts'
+import { social } from './social/useSocial.ts'
 import { billsDue } from './bank/bankModel.ts'
 import { messagesBadge, notificationLines } from './messages/messagesModel.ts'
 import { noticeMarks } from './messages/messagesState.ts'
 import { scene as homeScene } from './home/homeState.ts'
 import { CIVIC_APPS, CIVIC_HUD } from './civic/register.ts'
 import { GROWTH_HUD_PANELS, GROWTH_PANELS } from './growth/register.ts'
+import { CAMPUS_PANELS } from './campus/register.ts'
 import { TABLES_PANELS } from './tables/register.ts'
 import { WORLD_PANELS } from './world/register.ts'
 import { SOCIAL_PANELS } from './social/register.ts'
@@ -138,4 +139,4 @@ export const buy = definePanel({
   component: defineAsyncComponent(() => import('./home/BuyMode.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS]
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...CAMPUS_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS]

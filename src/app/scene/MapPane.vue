@@ -7,9 +7,12 @@
 // Like the venue scene, the maps draw on demand: hidden, the city map draws nothing.
 import { onBeforeUnmount, ref, watch } from 'vue'
 import { useApp } from '../state/app.ts'
-import { loadMaps } from '../legacy/scene.ts'
+import { loadMaps } from './loaders.ts'
+import { viewLife } from '../../life.ts'
+import { telemetry } from '../../telemetry/index.ts'
+import type { CityLinkMode, WorldCityId } from '../../types/life.ts'
 
-const { game, shell, scene, switchCity, playerLook, heldCities } = useApp()
+const { game, shell, scene, switchCity, playerLook, heldCities, command, showMapLayer, showFriends } = useApp()
 const cityBox = ref<HTMLElement | null>(null)
 const worldBox = ref<HTMLElement | null>(null)
 /** Which layer is in front: the country map while the city map says it is not ready. */
@@ -31,12 +34,23 @@ function show(): void {
 function load(): Promise<void> {
   loading ??= loadMaps().then(({ createCityView, createWorldMap }) => {
     if (!cityBox.value || !worldBox.value) return
-    scene.world.value = createWorldMap(worldBox.value, { onOpenCity: () => { worldLayer.value = false; shell.open('map', { layer: 'city' }) }, onEnterCity: (cityId) => { void switchCity(cityId) }, held: heldCities })
+    scene.world.value = createWorldMap(worldBox.value, {
+      onOpenCity: () => { worldLayer.value = false; showMapLayer('city') },
+      onEnterCity: (cityId) => { void switchCity(cityId) },
+      // One character travels between cities: an ordinary game action, refused with its reason while the city is not open.
+      onTravel: (to, mode) => { void command('estate.relocate', { to: to as WorldCityId, mode: mode as CityLinkMode }) }, // (the Atlas names the ids; the server validates them)
+      routes: () => viewLife(game.state.value, { now: game.state.value.t, cityId: game.cityId.value }).estate?.links ?? null,
+      held: heldCities,
+    })
     const city = createCityView(cityBox.value, {
       cityId: game.cityId.value,
       onSelectVenue: (venueId) => { shell.open('map', { destination: venueId }) },
       onSelectGov: () => { shell.open('state-house') },
       onSelectNeighbour: (player) => { shell.open('person', { player: player.id, name: player.name }) },
+      // The world layer: a local government opens its page, a house its owner's card; the maps fetch only what is in view.
+      onSelectLga: (lga) => { shell.open('lga', { lga }) },
+      onSelectHouse: (house) => { shell.open('house-card', { house }) },
+      fetchJson: game.fetchJson,
       // The avatar reached the door: ask the server for the arrival now rather than at its next poll.
       onTripDue: () => { void game.refresh() },
       onNotice: (text) => game.toast(text),
@@ -45,10 +59,11 @@ function load(): Promise<void> {
     window.removeEventListener('jaw:map-ui', keepMapUi)
     scene.world.value.setCity(game.cityId.value)
     city.setPlayer(playerLook())
+    showFriends()
     city.setState(game.state.value)
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }))
     show()
-  }).catch((error: unknown) => { loading = null; console.error('The map could not be loaded:', error); game.toast('The map could not be loaded. Check your connection and open it again.', 'error') })
+  }).catch((error: unknown) => { loading = null; telemetry.chunkFailed('map', error); console.error('The map could not be loaded:', error); game.toast('The map could not be loaded. Check your connection and open it again.', 'error') })
   return loading
 }
 watch(scene.mapsWanted, (wanted) => { if (wanted) void load() }, { immediate: true, flush: 'post' })

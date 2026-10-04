@@ -14,9 +14,9 @@
 // green/red state uses the same pure rules (src/game/home-layout.js) so the player sees the answer
 // before pressing Place.
 import { computed } from 'vue'
-import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../legacy/content.ts'
+import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../../game/content/furniture.ts'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import StarRating from './StarRating.vue'

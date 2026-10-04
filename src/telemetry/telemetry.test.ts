@@ -99,7 +99,7 @@ test('only the three wrapper files import an SDK, and the facade imports nothing
   // The core reaches the SDK wrappers and the sheet only through import(): each stays its own chunk.
   assert.ok(importsOf('core.ts').every((name) => ['./policy.ts', './funnel.ts'].includes(name)));
   // The game's entry reaches telemetry through the facade only.
-  assert.deepEqual(importsOf('../life-main.js').filter((name) => name.includes('telemetry')), ['./telemetry/index.ts']);
+  for (const file of ['../app/main.ts', '../app/state/game.ts', '../app/state/app.ts']) assert.ok(importsOf(file).filter((name) => name.includes('telemetry')).every((name) => name.endsWith('telemetry/index.ts')), `${file} reaches telemetry through the facade only`);
 });
 
 test('nothing configured: no SDK code is loaded, nothing is fetched but the game’s own config, and nothing is kept', async () => {
@@ -361,8 +361,8 @@ test('the age answer has one home: "under 18" from the server’s configuration,
   telemetry.track('activity_completed', { activity_id: 'jog' }); telemetry.setConsent('granted'); await tick();
   assert.deepEqual([log.stopped, log.sent.length], [1, before], 'off, and an "adult" afterwards does not switch it back on');
   // The game's two places that hold the answer both announce it.
-  const growthClient = readFileSync(new URL('../ui/panels/growth-client.js', import.meta.url), 'utf8'), touch = readFileSync(new URL('../ui/panels/touch.js', import.meta.url), 'utf8');
-  assert.match(growthClient, /announceAge\(result\.consent\?\.age\)/); assert.match(touch, /announceAge\(result\.consent\?\.age\)/);
+  const growthStore = readFileSync(new URL('../app/features/growth/growthStore.ts', import.meta.url), 'utf8'), touch = readFileSync(new URL('../app/features/growth/TouchApp.vue', import.meta.url), 'utf8');
+  assert.match(growthStore, /announceAge\(result\.consent\?\.age\)/); assert.match(touch, /announceAge\('consent' in result \? result\.consent\?\.age : undefined\)/);
 });
 
 test('the local government becomes a coarse group once it is chosen — never the game’s guess, never a guest’s', async () => {
@@ -543,9 +543,9 @@ test('the derived events read nothing from an unrelated previous state', () => {
 test('every event the game’s screens report is in the catalogue, with every property it carries — and nothing is defined twice', () => {
   const root = new URL('../', import.meta.url);
   const files: string[] = [];
-  const walk = (dir: string): void => { for (const entry of readdirSync(new URL(dir, root), { withFileTypes: true })) { if (entry.isDirectory()) walk(`${dir}${entry.name}/`); else if ((entry.name.endsWith('.js') || entry.name.endsWith('.ts')) && !/\.test\.[jt]s$/.test(entry.name)) files.push(`${dir}${entry.name}`); } };
-  for (const dir of ['ui/', 'quick-start/', 'tables/', 'map3d/', 'scene/']) walk(dir);
-  files.push('life-main.js', 'client.ts');
+  const walk = (dir: string): void => { for (const entry of readdirSync(new URL(dir, root), { withFileTypes: true })) { if (entry.isDirectory()) walk(`${dir}${entry.name}/`); else if ((entry.name.endsWith('.js') || entry.name.endsWith('.ts') || entry.name.endsWith('.vue')) && !/\.test\.[jt]s$/.test(entry.name)) files.push(`${dir}${entry.name}`); } };
+  for (const dir of ['ui/', 'quick-start/', 'tables/', 'map3d/', 'scene/', 'app/']) walk(dir);
+  files.push('client.ts');
   const reported = new Map<string, { files: Set<string>, keys: Set<string> }>();
   for (const file of files) {
     const text = readFileSync(new URL(file, root), 'utf8');
@@ -555,9 +555,9 @@ test('every event the game’s screens report is in the catalogue, with every pr
       reported.get(match[1]!)!.files.add(file); for (const key of keys) reported.get(match[1]!)!.keys.add(key);
     }
     // Events built as data and reported by the entry: { name: '…', props: { … } }, and the settle-in steps of src/quick-start/model.js.
-    for (const match of [...text.matchAll(/name: '([a-z0-9_]+)', props: \{/g), ...(file === 'quick-start/model.ts' ? text.matchAll(/\d: '(settle_[a-z_]+)'/g) : [])]) { if (!reported.has(match[1]!)) reported.set(match[1]!, { files: new Set(), keys: new Set() }); reported.get(match[1]!)!.files.add(file); }
+    for (const match of [...text.matchAll(/name: '([a-z0-9_]+)', props: \{/g), ...text.matchAll(/events\.push\('([a-z0-9_]+)'\)/g), ...(file === 'quick-start/model.ts' ? text.matchAll(/\d: '(settle_[a-z_]+)'/g) : [])]) { if (!reported.has(match[1]!)) reported.set(match[1]!, { files: new Set(), keys: new Set() }); reported.get(match[1]!)!.files.add(file); }
   }
-  // The funnel events of src/quick-start/model.js are built as data and reported by life-main.
+  // The funnel events of src/quick-start/model.js are built as data and reported by the application (src/app/state/app.ts).
   for (const name of ['arrived', 'first_activity_started', 'first_activity_completed', 'settle_traits_done', 'settle_dream_done', 'settle_lottery_done', 'save_character_done']) assert.ok(reported.has(name), name);
   assert.ok(reported.size >= 30, `the scan found the game's events (${reported.size})`);
   for (const [name, found] of reported) {

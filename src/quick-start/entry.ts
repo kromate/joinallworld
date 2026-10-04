@@ -45,8 +45,8 @@ import type { Look } from '../types/life.ts';
 import { nudgeMemory, joinIdFrom, linkParts } from './model.ts';
 import type { Draft, NudgeMemory } from './model.ts';
 
-/** What the device kept for a tapped Play: the look, and the action id once it exists. */
-export interface PendingPlay { look: Look; actionId?: string }
+/** What the device kept for a tapped Play: the look, and the action id once it exists. `joining` was decided when Play was tapped (an invite link is waiting). */
+export interface PendingPlay { look: Look; actionId?: string; joining?: boolean }
 /** The share code a link carried, with when it was kept (ms). */
 interface KeptRef { code: string; at: number }
 /** What the address carried, for the funnel. */

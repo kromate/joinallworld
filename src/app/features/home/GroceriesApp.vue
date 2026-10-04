@@ -14,8 +14,8 @@
 // Prices and pack sizes are original beta values (content/food.js).
 import { computed, nextTick, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../legacy/content.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../../game/content/food.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'

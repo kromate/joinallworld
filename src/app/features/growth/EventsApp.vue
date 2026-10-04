@@ -4,7 +4,7 @@
 // The list is computed from the server's clock (src/game/calendar.js), with no request.
 import { computed, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { isDeparting } from '../../legacy/engine.ts'
+import { isDeparting } from '../../../life.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'

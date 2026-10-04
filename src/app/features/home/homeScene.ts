@@ -6,7 +6,9 @@
 //             'jaw:home-scene'  { status, placed } — ready / empty / error
 import { watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { KINDS, houseOf, nudge, turn } from '../../legacy/content.ts'
+import { KINDS } from '../../../game/content/furniture.ts'
+import { houseOf } from './houseOf.ts'
+import { nudge, turn } from '../../../game/home-layout.ts'
 import { MOVES, defOf, homeUi, objectOf, startGhost, whyNot } from './buyModel.ts'
 import type { Ghost, GhostSource } from './buyModel.ts'
 import { H, scene } from './homeState.ts'
@@ -17,11 +19,11 @@ let started = false
 
 /** Tell the scene what to draw, then ask the host for one frame of it. */
 export function show(redraw = true): void {
-  const { game, legacy } = useApp()
+  const { game, api } = useApp()
   const detail = homeUi(game.state.value, H)
   const next = JSON.stringify(detail)
   if (next !== sent) { sent = next; window.dispatchEvent(new CustomEvent('jaw:home-ui', { detail })) }
-  if (redraw) legacy.api.redrawScene()
+  if (redraw) api.redrawScene()
 }
 
 function onPick(event: Event): void {

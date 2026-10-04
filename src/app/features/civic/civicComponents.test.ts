@@ -300,14 +300,16 @@ test('Radio: off air outside a club, with a way into each club; inside, the queu
   assert.equal(text(await render('RadioBanner')), '', 'no banner outside a club')
 })
 
-test('registration: each civic Vue panel carries the static metadata of the existing panel it replaces', async () => {
+test('registration: each civic Vue panel carries the static metadata the Phone, the Sim and the HUD list it by', async () => {
   const { CIVIC_PANELS } = await load<{ CIVIC_PANELS: readonly Record<string, unknown>[] }>('/src/app/features/civic/register.ts')
-  const { LEGACY_PANELS } = await load<{ LEGACY_PANELS: readonly Record<string, unknown>[] }>('/src/app/legacy/modules.ts')
   assert.deepEqual(CIVIC_PANELS.map((panel) => panel.id), ['governor', 'state-house', 'neighbours', 'ads', 'hunt-sheet', 'radio', 'richlist', 'hunt', 'radio-banner'])
+  const expected: Record<string, [string, string, number | undefined, string | undefined]> = {
+    governor: ['Governor', 'phone', 40, 'city'], 'state-house': ['State House', 'modal', undefined, undefined], neighbours: ['Neighbours', 'phone', 42, 'city'], ads: ['Billboards', 'phone', 44, 'city'],
+    'hunt-sheet': ['Gem hunt', 'phone', 45, 'city'], radio: ['Radio', 'phone', 46, 'city'], richlist: ['Rich List', 'phone', 48, 'money'],
+  }
   for (const panel of CIVIC_PANELS) {
-    const old = LEGACY_PANELS.find((item) => item.id === panel.id)
-    assert.ok(old, `${String(panel.id)} replaces an existing panel`)
-    for (const field of ['title', 'icon', 'placement', 'order', 'live', 'group', 'short', 'tint', 'slot']) assert.equal(panel[field], old[field], `${String(panel.id)}.${field}`)
-    assert.equal(typeof panel.badge, typeof old.badge, `${String(panel.id)}.badge`)
+    const want = expected[String(panel.id)]
+    if (want) assert.deepEqual([panel.title, panel.placement, panel.order, panel.group], want, String(panel.id))
+    else assert.equal(panel.placement, 'hud', `${String(panel.id)} is a HUD chip`)
   }
 })

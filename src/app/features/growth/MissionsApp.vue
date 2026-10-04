@@ -7,7 +7,7 @@
 // the server answers, and the answer — not the press — changes the numbers.
 import { computed, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'

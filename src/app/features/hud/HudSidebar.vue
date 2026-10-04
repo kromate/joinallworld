@@ -15,7 +15,7 @@ import GameIcon from '../../ui/GameIcon.vue'
 import NeedsStrip from './NeedsStrip.vue'
 import { linkWording } from './hudModel.ts'
 
-const { game, shell, menu, toggleCommunity } = useApp()
+const { game, shell, menu, community } = useApp()
 const ui = shell.ui
 const view = game.view
 const SLOTS: readonly HudSlot[] = ['alert', 'goal', 'hud']
@@ -68,7 +68,7 @@ function pick(id: string): void { ui.trayOpen = false; menu(id) }
         <div class="life-menu">
           <p class="life-brand"><strong><span>Allworld</span></strong><small>{{ link ? link.menu : 'City beta' }}</small></p>
           <button type="button" @click="pick('city')"><span aria-hidden="true"><GameIcon name="globe" :size="19" /></span><span><b>{{ view.city?.name || 'City' }}</b><small>Switch city on the world map</small></span></button>
-          <button type="button" @click="ui.trayOpen = false; toggleCommunity()"><span aria-hidden="true"><GameIcon name="community" :size="19" /></span><span><b>Community</b><small>{{ atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue' }}</small></span></button>
+          <button type="button" @click="ui.trayOpen = false; community.toggle(true)"><span aria-hidden="true"><GameIcon name="community" :size="19" /></span><span><b>Community</b><small>{{ atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue' }}</small></span></button>
           <button type="button" @click="shell.open('help')"><span aria-hidden="true"><GameIcon name="help" :size="19" /></span><span><b>How to play</b><small>Tips and keyboard shortcuts</small></span></button>
           <p class="life-net" :class="{ 'is-error': view.net.error }" role="status">{{ view.net.text }}</p>
           <button v-if="link?.tone === 'off'" class="life-menu-retry" type="button" @click="pick('reconnect')">Try again</button>

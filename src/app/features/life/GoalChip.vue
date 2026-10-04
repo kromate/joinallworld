@@ -10,12 +10,13 @@
 // The Goals tab of the Sim sheet is GoalsTab.vue. All rules live in src/game/systems/goals.js.
 import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { keepNudges, nextNudge, nudged, nudgesOf } from '../../legacy/parts.ts'
+import { keepNudges, nudgesOf } from '../../../quick-start/entry.ts'
+import { nextNudge, nudged } from '../../../quick-start/model.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import GlyphText from '../kit/GlyphText.vue'
 import { chipAction, chipLabel, lagosDay, newFeed, rememberSeq } from './goalChipModel.ts'
 
-const { game, shell, goTo, toggleCommunity } = useApp()
+const { game, shell, goTo, community } = useApp()
 const view = game.view
 const step = computed(() => view.value.goals.chip)
 
@@ -29,7 +30,7 @@ function press(): void {
   const action = chipAction(step.value)
   if (action.kind === 'open') shell.open(action.id, action.params)
   else if (action.kind === 'go') void goTo(action.venue, action.spot)
-  else { shell.closeSheet(); shell.ui.trayOpen = false; toggleCommunity() }
+  else { shell.closeSheet(); shell.ui.trayOpen = false; community.toggle(true) }
 }
 
 /** What the chip's own markup depends on: the old chip did its bookkeeping when this changed, not on every state. */

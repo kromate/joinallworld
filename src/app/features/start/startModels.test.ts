@@ -9,7 +9,7 @@ import {
   DRAFT_KEY, dreamFoot, failureText, firstStep, homeFoot, homeMissing, homePayload, introFor, keepLook, keptCash, lookFoot, lotteryFoot, reasonOf, storedLook, toggleTrait, traitsFoot, triggerOf,
 } from './onboardingModel.ts'
 import { LOOK_REFUSED, PLAY_HELD, held, planPlay, problemOf, quickStartRequired, showsLinkNote, shownError } from './quickStartModel.ts'
-import { nicknameOf } from './sessionModel.ts'
+import { nicknameOf, sessionRequired } from './sessionModel.ts'
 import { PRESETS, presetLook, starterLook } from './startBoundary.ts'
 
 const base: Look = { body: 'woman', hair: 'braids', outfit: 'owambe', fabric: 'ankara', skin: 'skin-4', hairColor: 'black', outfitColor: 'gold', bottomsColor: 'violet' }
@@ -232,4 +232,12 @@ test('a refused name is put in the draft once; after that the field follows the 
   assert.equal(refusedNameToKeep({ name: 'Ad' }, 'Ad'), null, 'already in the draft: nothing to do')
   assert.equal(refusedNameToKeep({}, 'Adaeze'), null)
   assert.equal(refusedNameToKeep(null, 'Adaeze'), null)
+})
+
+// Port of src/ui/panels/session.test.js (the first test; the old-character link is in startComponents.test.ts).
+test('fresh nickname entry is mandatory only until connection; expired saved previews stay dismissible', () => {
+  assert.equal(typeof sessionRequired({ reason: 'new' }, false), 'string')
+  assert.equal(sessionRequired({ reason: 'new' }, true), null)
+  assert.equal(sessionRequired({ reason: 'expired' }, false), null)
+  assert.equal(sessionRequired(undefined, false), null)
 })

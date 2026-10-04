@@ -11,9 +11,6 @@ import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { civicNews } from './civicCore.ts'
-import { installLegacyCivicBridge } from './legacyCivic.ts'
-
-installLegacyCivicBridge()
 
 export const governor = definePanel({
   id: 'governor', title: 'Governor', placement: 'phone', order: 40, live: false, group: 'city',

@@ -8,7 +8,7 @@
 import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
-import { social } from '../../legacy/social.ts'
+import { social } from './useSocial.ts'
 import { knocksWaiting, requestsWaiting } from './socialModel.ts'
 
 export const people = definePanel({

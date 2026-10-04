@@ -7,10 +7,10 @@ import test from 'node:test'
 import type { LifeState } from '../../types/life.ts'
 import type { SocialOverview } from '../../types/social.ts'
 import type { ActivityCard, LoanCard } from '../../types/view.ts'
-import type { LegacyPanel, PanelView } from '../types/panel.ts'
+import type { PanelMeta, PanelView } from '../types/panel.ts'
 import { LINK_STATES } from '../types/client.ts'
 import { createGame } from '../state/game.ts'
-import { buildRegistry, definePanel, legacyChoice } from '../state/panels.ts'
+import { buildRegistry, definePanel } from '../state/panels.ts'
 import { createFakeServer, memoryStorage } from '../testing/fakeServer.ts'
 import { cap, hueOf, initialOf, money, plural, signedMoney } from '../ui/format.ts'
 import { billsDue, billsLine, loanReasons, loanRule, rentStanding } from './bank/bankModel.ts'
@@ -195,32 +195,29 @@ test('coach: names the next control for the first goals, then stops', async () =
   assert.deepEqual(coachStep(state, phoneGoal, { ...input, panelOf: () => ({ id: 'jobs', title: 'Jobs', placement: 'phone' }) }), { text: 'Open Phone, then Jobs.', target: '[data-nav="phone"]', app: 'jobs' })
 })
 
-const legacy = (id: string, extra: Partial<LegacyPanel> = {}): LegacyPanel => ({ id, title: id, placement: 'phone', render: () => `<p>${id}</p>`, ...extra })
 const component = { render: () => null }
+/** A panel with only its static metadata, as the registry lists it. */
+const plain = (id: string, extra: Partial<PanelMeta> = {}) => definePanel({ id, title: id, placement: 'phone', component, ...extra })
 
-test('registry: a Vue panel takes the place of the existing panel with its id', () => {
-  const existing = [legacy('messages', { order: 12, group: 'people' }), legacy('bank', { order: 14, group: 'money' }), legacy('jobs', { order: 10, group: 'money' }), legacy('needs', { placement: 'sim-tab', order: 20 })]
-  const bank = definePanel({ id: 'bank', title: 'Bank', placement: 'phone', order: 14, group: 'money', component })
-  const fresh = definePanel({ id: 'wallet-tips', title: 'Tips', placement: 'phone', order: 13, component })
-  const built = buildRegistry(existing, [bank, fresh])
-  assert.deepEqual(built.map((panel) => panel.id), ['jobs', 'messages', 'wallet-tips', 'bank', 'needs'], 'sorted by order, existing position kept')
+test('registry: sorted by order, one id once, shell ids reserved, a known placement', () => {
+  const bank = plain('bank', { order: 14, group: 'money' })
+  const built = buildRegistry([plain('messages', { order: 12, group: 'people' }), bank, plain('jobs', { order: 10, group: 'money' }), plain('needs', { placement: 'sim-tab', order: 20 }), plain('wallet-tips', { order: 13 })])
+  assert.deepEqual(built.map((panel) => panel.id), ['jobs', 'messages', 'wallet-tips', 'bank', 'needs'], 'sorted by order, listing order breaks ties')
   assert.equal(built.find((panel) => panel.id === 'bank'), bank)
-  assert.equal(buildRegistry(existing, [bank], legacyChoice('?legacy=bank')).find((panel) => panel.id === 'bank'), existing[1], '?legacy=bank keeps the existing one')
-  assert.equal(buildRegistry(existing, [bank, fresh], legacyChoice('?legacy=all')).length, existing.length, '?legacy=all shows no Vue panel at all')
-  assert.deepEqual([legacyChoice('').all, legacyChoice('?legacy').all, [...legacyChoice('?legacy=bank, messages').ids]], [false, true, ['bank', 'messages']])
-  assert.throws(() => buildRegistry(existing, [definePanel({ id: 'phone', title: 'x', placement: 'phone', component })]), /reserved/)
-  assert.throws(() => buildRegistry([...existing, legacy('jobs')], []), /Duplicate/)
-  assert.throws(() => buildRegistry([legacy('x', { placement: 'nowhere' as LegacyPanel['placement'] })], []), /Invalid panel/)
+  assert.throws(() => buildRegistry([plain('phone')]), /reserved/)
+  assert.throws(() => buildRegistry([plain('jobs'), plain('jobs')]), /Duplicate/)
+  assert.throws(() => buildRegistry([plain('x', { placement: 'nowhere' as PanelMeta['placement'] })]), /Invalid panel/)
 })
 
-test('phone: the home screen lists both kinds of panel from their static metadata', async () => {
+test('phone: the home screen lists the panels from their static metadata', async () => {
   const { state, view } = await connected()
   const panels = buildRegistry([
-    legacy('messages', { order: 12, group: 'people', badge: () => 3 }), legacy('jobs', { order: 10, group: 'money' }), legacy('ride', { order: 18, group: 'life' }),
-    legacy('groceries', { order: 16, group: 'life' }), legacy('governor', { order: 40, group: 'city', badge: () => 'new!' }), legacy('mystery', { order: 99 }),
-    legacy('career', { placement: 'sim-tab', phone: true, group: 'money', order: 60 }), legacy('needs', { placement: 'sim-tab' }), legacy('city', { placement: 'modal' }),
-    legacy('pending-app', { order: 50, group: 'money', pending: true, badge: () => { throw new Error('not loaded') } }),
-  ], [definePanel({ id: 'bank', title: 'Bank', placement: 'phone', order: 14, group: 'money', badge: () => 120, notifications: () => [{ id: 'b', at: 5, text: 'Rent due', fresh: true, app: 'bank' }], component })])
+    plain('messages', { order: 12, group: 'people', badge: () => 3 }), plain('jobs', { order: 10, group: 'money' }), plain('ride', { order: 18, group: 'life' }),
+    plain('groceries', { order: 16, group: 'life' }), plain('governor', { order: 40, group: 'city', badge: () => 'new!' }), plain('mystery', { order: 99 }),
+    plain('career', { placement: 'sim-tab', phone: true, group: 'money', order: 60 }), plain('needs', { placement: 'sim-tab' }), plain('city', { placement: 'modal' }),
+    plain('pending-app', { order: 50, group: 'money', badge: () => { throw new Error('not loaded') } }),
+    definePanel({ id: 'bank', title: 'Bank', placement: 'phone', order: 14, group: 'money', badge: () => 120, notifications: () => [{ id: 'b', at: 5, text: 'Rent due', fresh: true, app: 'bank' }], component }),
+  ])
   assert.deepEqual(listedApps(panels).map((app) => app.id), ['jobs', 'messages', 'bank', 'groceries', 'ride', 'governor', 'pending-app', 'career', 'mystery'], 'Phone apps and Sim tabs marked phone: true')
   assert.deepEqual(dockApps(panels).map((app) => app.id), DOCK)
   const pages = phonePages(panels)

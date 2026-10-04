@@ -111,22 +111,9 @@ export interface PanelMeta {
   required?(state: LifeState, view: PanelView): string | null | undefined
 }
 
-/** An existing HTML-string panel. */
-export interface LegacyPanel extends PanelMeta {
-  render(state: LifeState, view: PanelView, api: PanelApi): string | null | undefined
-  /** Called after each (re)render with the panel's root element and the params it was opened with. */
-  bind?(root: HTMLElement, api: PanelApi, params: unknown): void
-  /** 'key:*' shortcuts while showing, and 'cancel' for Esc. Return true to say "handled". */
-  keys?(action: string, api: PanelApi): boolean | void
-  /** A lazy panel whose group has not arrived. */
-  pending?: boolean
-  load?(): Promise<void>
-  failed?: boolean
-}
-
 /** Props every Vue panel component receives. */
 export interface PanelProps { params?: unknown }
-/** What a Vue panel component may expose for the shell: the same key hook a legacy panel has. */
+/** What a Vue panel component may expose for the shell: a key hook ('key:*' shortcuts, and 'cancel' for Esc; true = handled). */
 export interface PanelExposed { keys?(action: string): boolean | void }
 
 /** A panel written as a Vue component. */
@@ -136,8 +123,7 @@ export interface VuePanel extends PanelMeta {
   component: Component
 }
 
-export type Panel = LegacyPanel | VuePanel
-export const isVuePanel = (panel: Panel): panel is VuePanel => 'kind' in panel && panel.kind === 'vue'
+export type Panel = VuePanel
 
 /** Which sheet is open in the dialog. `from: 'phone'` keeps what was opened from the phone inside it. */
 export type Sheet =

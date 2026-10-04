@@ -118,7 +118,7 @@ test('the Cloudflare Worker runs the shared registries: the same routes and fram
   assert.deepEqual(sorted(frameTypesIn(source)), sorted(['chat', 'error', 'heartbeat']), 'the host builds only the error frame, its heartbeat, and a retried chat line from its receipt')
   assert.deepEqual(sorted(WORKER_SERVER_FRAME_TYPES), sorted([...SERVER_FRAME_TYPES, 'heartbeat']))
   // Every browser socket answers the heartbeat.
-  for (const file of ['src/community.js', 'src/ui/panels/social-client.js', 'src/tables/client.ts']) assert.match(await readFile(join(root, file), 'utf8'), /type: 'heartbeat-ack'/, file)
+  for (const file of ['src/community.ts', 'src/app/features/social/socialClient.ts', 'src/tables/client.ts']) assert.match(await readFile(join(root, file), 'utf8'), /type: 'heartbeat-ack'/, file)
   // The documented addition to the health answer (WorkerHealthResponse).
   assert.match(source, /\{ transport: 'cloudflare', buildId: /)
 })

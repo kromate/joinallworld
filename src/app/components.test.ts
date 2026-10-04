@@ -17,7 +17,7 @@ import type { Component } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import type { SocialOverview } from '../types/social.ts'
 import type { App } from './state/app.ts'
-import type { SocialClientState } from './legacy/social.ts'
+import type { SocialState as SocialClientState } from './features/social/useSocial.ts'
 import { createFakeServer } from './testing/fakeServer.ts'
 
 const root = fileURLToPath(new URL('../..', import.meta.url))
@@ -40,7 +40,7 @@ before(async () => {
   globalThis.fetch = server.fetch
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
-  social = (await load<{ social: SocialClientState }>('/src/app/legacy/social.ts')).social
+  social = (await load<{ social: SocialClientState }>('/src/app/features/social/useSocial.ts')).social
   assert.equal(await app.game.connect(), true)
   app.game.stop()
 })
@@ -153,11 +153,11 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
   let posted: Record<string, unknown> | null = null
   server.route('POST /api/social/messages', (request) => { posted = request.body; return new Promise((resolve) => { answer = resolve }) })
   server.route('GET /api/social/me', () => ({ status: 200, body: social.me }))
-  const { send } = await load<{ send: (key: string, target: { conv: string }, body: string) => void }>('/src/app/legacy/social.ts')
+  const { send } = await load<{ send: (key: string, target: { conv: string }, body: string) => void }>('/src/app/features/social/useSocial.ts')
   const { ui } = await load<{ ui: { open: string | null } }>('/src/app/features/messages/messagesState.ts')
   // Under Node there is no page and no WebSocket: the social client is given the api and nothing more.
   const { attach } = await load<{ attach: (api: unknown) => void }>('/src/app/features/social/useSocial.ts')
-  attach(app.legacy.api)
+  attach(app.api)
   ui.open = 'dm.ada.me'
   try {
     let html = await render(messages)

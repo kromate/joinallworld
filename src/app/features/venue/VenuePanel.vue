@@ -13,7 +13,7 @@ import GameIcon from '../../ui/GameIcon.vue'
 import { linkWording } from '../hud/hudModel.ts'
 import { activityFace, effectTags } from './venueModel.ts'
 
-const { game, shell, command, toggleCommunity } = useApp()
+const { game, shell, command, community } = useApp()
 const ui = shell.ui
 const state = game.state
 const view = game.view
@@ -72,13 +72,13 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
     <header class="life-venue-header">
       <button class="life-avatar" type="button" aria-label="Open your Sim: profile, needs, goals and skills" @click="shell.open('sim')"><GameIcon inline name="person" /></button>
       <div class="life-venue-heading"><h1><GameIcon inline kind="venue" :id="venue.id" :emoji="venue.icon" /> {{ title }} <span>· {{ district }}</span></h1><p><GameIcon v-if="privateHome && view.connected" inline name="lock" />{{ line }}</p></div>
-      <button v-if="!privateHome && view.connected" class="life-icon-button" type="button" aria-label="Open community chat" title="Community chat" @click="toggleCommunity()"><GameIcon name="chat" /></button>
+      <button v-if="!privateHome && view.connected" class="life-icon-button" type="button" aria-label="Open community chat" title="Community chat" @click="community.toggle(true)"><GameIcon name="chat" /></button>
       <button class="life-icon-button" type="button" aria-label="Open map" title="Map (M)" @click="shell.open('map')"><GameIcon name="map" /></button>
     </header>
     <div ref="rail" class="life-spots">
       <button class="life-expand" :class="{ 'is-expanded': ui.expanded }" type="button" :aria-expanded="ui.expanded" :aria-label="`${ui.expanded ? 'Hide' : 'Show'} activities`" title="Activities (T)" @click="ui.expanded = !ui.expanded"><GameIcon name="chevron-down" /></button>
       <button v-for="(item, index) in spots" :key="item.id" type="button" :data-spot="item.id" :class="{ 'is-selected': item.id === state.spot }" :aria-pressed="item.id === state.spot" :aria-busy="pending === `spot:${item.id}`" :title="`Shortcut ${index + 1}`" @click="selectSpot(item.id)"><GameIcon inline kind="spot" :id="item.id" :emoji="item.icon" /><span>{{ item.label }}</span></button>
-      <button v-if="!privateHome && !spots.some((item) => item.id === 'people')" type="button" @click="toggleCommunity()"><GameIcon inline name="people" /><span>People</span></button>
+      <button v-if="!privateHome && !spots.some((item) => item.id === 'people')" type="button" @click="community.toggle(true)"><GameIcon inline name="people" /><span>People</span></button>
     </div>
     <template v-if="ui.expanded">
       <p v-if="state.activeAction" class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>

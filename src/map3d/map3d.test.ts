@@ -18,7 +18,7 @@ import pack from './cities/lagos.ts';
 import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.ts';
 import { ALL_MODES } from '../game/content/travel.ts';
 import { createLife, viewLife } from '../life.ts';
-import { goBlock, tripInfo, chosenMode } from '../ui/panels/world-ui.js';
+import { goBlock, tripInfo, chosenMode } from '../app/features/travel/travelModel.ts';
 
 const NOON = Date.UTC(2026, 0, 5, 11), NIGHT = Date.UTC(2026, 0, 5, 22);
 const network = buildNetwork(pack);
@@ -483,10 +483,11 @@ test('why a trip is refused is always said with what to do about it', () => {
 });
 
 test('Three.js and the map stay out of the entry chunk, and only the 3D map may run a frame loop', async () => {
-  const main = await readFile('src/life-main.js', 'utf8');
-  assert.doesNotMatch(main, /^import .*(map3d|three|city-map|world-map)/m, 'the entry file imports no map code statically');
-  assert.match(main, /import\('\.\/map3d\/index\.ts'\)/);
-  for (const file of ['src/ui/panels/map.js', 'src/ui/panels/ride.js', 'src/ui/panels/world-ui.js']) assert.doesNotMatch(await readFile(file, 'utf8'), /^import[^;]*(map3d|'three')/m, `${file} is in the first download and must not pull the map in`);
+  for (const file of ['src/app/main.ts', 'src/app/App.vue', 'src/app/state/app.ts', 'src/app/scene/ScenePane.vue', 'src/app/scene/MapPane.vue']) assert.doesNotMatch(await readFile(file, 'utf8'), /^import (?!type ).*(map3d|three|city-map|world-map)/m, `${file} imports no map code statically`);
+  const loaders = await readFile('src/app/scene/loaders.ts', 'utf8');
+  assert.match(loaders, /import\('\.\.\/\.\.\/map3d\/index\.ts'\)/);
+  assert.match(await readFile('src/app/scene/ScenePane.vue', 'utf8'), /import\('\.\.\/\.\.\/map3d\/index\.ts'\)/, 'the map code is fetched ahead once the scene is up');
+  for (const file of ['src/app/features/travel/MapApp.vue', 'src/app/features/travel/RideApp.vue', 'src/app/features/travel/travelModel.ts']) assert.doesNotMatch(await readFile(file, 'utf8'), /^import[^;]*(map3d|'three')/m, `${file} is in the first download and must not pull the map in`);
   // The loop lives in one place — the host — where it is tied to motion. Everything else under src/map3d draws when asked.
   for (const name of (await readdir('src/map3d')).filter((item) => item.endsWith('.ts') && !item.endsWith('.test.ts'))) {
     const code = (await readFile(`src/map3d/${name}`, 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');

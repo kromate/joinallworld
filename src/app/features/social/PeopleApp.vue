@@ -9,7 +9,7 @@ import '../../../ui/panels/social.css'
 import { computed, watch } from 'vue'
 import { roomSummary, presenceText } from '../../../game/social-model.ts'
 import type { PeopleListing } from '../../../types/social.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -51,7 +51,7 @@ const answer = async (from: string, accept: boolean): Promise<void> => {
   client.refreshLife()
 }
 const unblock = (id: string): Promise<unknown> => client.perform('/api/social/unblock', { id }, 'Unblocked')
-function openVenueChat(): void { shell.close(); app.legacy.api.toggleCommunity(true) }
+function openVenueChat(): void { shell.close(); app.community.toggle(true) }
 </script>
 
 <template>

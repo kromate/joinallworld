@@ -14,7 +14,8 @@
 // draw the scene still gets the whole game.
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../state/app.ts'
-import { loadVenueWorld } from '../legacy/scene.ts'
+import { loadSceneWorld } from './loaders.ts'
+import { telemetry } from '../../telemetry/index.ts'
 
 const props = defineProps<{
   /** Elements whose bottom edge marks how far the HUD covers the top of the scene. */
@@ -25,7 +26,7 @@ const props = defineProps<{
   rows: () => (Element | null)[]
   hidden: boolean
 }>()
-const { game, shell, scene, showPlayer, showCrowd } = useApp()
+const { game, shell, scene, showPlayer, showCrowd, showGoal, reportPlace, onMove, commitSpot, goTo } = useApp()
 const container = ref<HTMLElement | null>(null)
 const failed = ref(false)
 const waiting = ref(true)
@@ -49,24 +50,40 @@ onMounted(() => {
   // After the first paint: the scene starts downloading with the HUD already on screen and usable.
   setTimeout(async () => {
     try {
-      const createVenueWorld = await loadVenueWorld()
+      const createVenueWorld = await loadSceneWorld()
       if (disposed || !container.value) return
       const venue = createVenueWorld(container.value, { location: game.state.value.location, onTag(tag) {
         // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
-        if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') })
+        if (tag.kind === 'goal') void goTo(game.state.value.location, tag.id.replace(/^goal:/, ''))
+        // A game table in the venue (walked up to, or tapped): the Tables app opens on that table — sit, watch or invite.
+        else if (tag.kind === 'table') shell.open('tables', { table: tag.id.replace(/^table:/, '') })
+        else if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') })
         else if (tag.kind === 'player') shell.open('person', { player: tag.id })
-      } })
+      },
+      // The avatar moved: that is where the player stands in the room (presence, and so proximity voice).
+      onMove,
+      // The campus: its host walks the avatar to a landmark and then asks for the game's ordinary `spot` action; its shuttle runs on server time.
+      commitSpot: ({ id }: { id: string }) => commitSpot(id), now: () => game.serverNow(),
+      onHost: () => { layout(); reportPlace() } })
       scene.venue.value = venue
       waiting.value = false
       venue.setState(game.state.value)
-      showPlayer(); showCrowd()
+      showPlayer(); showCrowd(); showGoal()
       venue.resize()
       layout()
+      // The first frame is in the canvas: bring it up with the same short fade as an arrival, over the calm backdrop — never a flash.
+      container.value.classList.add('is-arriving')
+      reportPlace()
+      telemetry.sceneReady(true, container.value.querySelector('canvas'))
+      // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
+      // (Nothing is built or drawn until the Map opens.)
+      void import('../../map3d/index.ts').catch(() => undefined)
       // The HUD changed size (activities opened, Clean screen, a trip): re-centre the scene. An observer, not a timer.
       observer = new ResizeObserver(layout)
       for (const node of [...props.top(), ...props.rows(), props.bottom()]) if (node) observer.observe(node)
     } catch (error) {
       console.error('The scene could not be started:', error)
+      telemetry.chunkFailed('scene', error); telemetry.sceneReady(false)
       failed.value = true
     }
   }, 0)

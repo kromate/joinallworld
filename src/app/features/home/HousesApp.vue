@@ -7,8 +7,8 @@
 // "Your own house" at the top is MyHouse.vue (src/app/features/travel/).
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { MOVE_IN_WEEKS } from '../../legacy/content.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { MOVE_IN_WEEKS } from '../../../game/content/housing.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { useAct } from '../kit/act.ts'

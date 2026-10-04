@@ -2,7 +2,6 @@
 // The rules are the engine's (systems/health.js).
 import type { HealthCure } from '../../../types/content.ts'
 import type { HealthView } from '../../../types/view.ts'
-import type { VenueSpots } from '../../legacy/content.ts'
 
 export type HealthTone = 'is-sick' | 'is-rundown' | 'is-well'
 
@@ -36,6 +35,9 @@ export interface CureLine {
 }
 
 /** One cure with its price (free, or from the activity that cures) and where to get it. */
+/** The part of a venue the cure is priced from: its spots and their activities (content/venues.ts VENUES). */
+export interface VenueSpots { spots: Readonly<Record<string, { activities: readonly { id: string; cost?: number; duration: number }[] }>> }
+
 export function cureLine(cure: HealthCure, cash: number, venues: Readonly<Record<string, VenueSpots>>): CureLine {
   const def = cure.activity && cure.where ? Object.values(venues[cure.where]?.spots ?? {}).flatMap((spot) => spot.activities).find((item) => item.id === cure.activity) ?? null : null
   const cost = def ? def.cost || 0 : cure.cost || 0

@@ -3,7 +3,7 @@
 // under `node --test`; src/app/legacy/modules.ts, which has the same cast, pulls in the panel
 // registry and cannot be loaded there). When link.js is converted these lines are deleted.
 import { LINK_STATES as LINK_STATES_JS, linkWords as linkWordsJs } from '../../../ui/link.ts'
-import type { LinkWords } from '../../legacy/modules.ts'
+import type { LinkWords } from '../../../ui/link.ts'
 
 export type { LinkWords }
 /** The one thing that resolves a connection problem: try again (the shell menu), or the session panel. */

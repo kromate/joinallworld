@@ -2,6 +2,7 @@
 // way), and a text that is already showing is not repeated: a stronger kind just recolours it.
 import { ref } from 'vue'
 import type { ToastKind } from '../types/panel.ts'
+import { stripLeadEmoji } from '../../ui/dom.ts'
 
 export interface ToastItem { id: number; text: string; kind: ToastKind }
 
@@ -19,6 +20,15 @@ export function createToasts(later: (run: () => void, ms: number) => unknown = (
     const body = String(text)
     let tone: ToastKind = KINDS.includes(kind) ? kind : 'info'
     if (tone === 'good' && /\+₦/.test(body)) tone = 'earn'
+    // A finished goal: the scene host answers with a sub-second burst of confetti (src/scene/reward.ts).
+    const plain = (text: string): string => stripLeadEmoji(text) || text
+    const isGoal = /^goal complete/i.test(plain(body))
+    if (isGoal) globalThis.window?.dispatchEvent(new CustomEvent('jaw:cheer'))
+    // One line for one thing: a goal's own toast says what was done and what it paid, so the plain "… completed." line of
+    // the same moment gives way to it — whichever of the two arrives first.
+    const isDone = tone === 'info' && / completed\.$/.test(body)
+    if (isDone && items.value.some((item) => /^goal complete/i.test(plain(item.text)))) return
+    if (isGoal) items.value = items.value.filter((item) => !(item.kind === 'info' && / completed\.$/.test(item.text)))
     const showing = items.value.find((item) => item.text === body)
     if (showing) { if (tone !== 'info') showing.kind = tone; return }
     const item: ToastItem = { id: nextId++, text: body, kind: tone }

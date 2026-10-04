@@ -8,7 +8,7 @@
 // is applied: pressing again after a lost answer repeats the SAME request, so it is charged once.
 import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { isDeparting } from '../../legacy/engine.ts'
+import { isDeparting } from '../../../life.ts'
 import type { RadioView } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
 import HowItWorks from '../../ui/HowItWorks.vue'

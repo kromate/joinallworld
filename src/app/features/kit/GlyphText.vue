@@ -3,7 +3,7 @@
 // content such as "+₦500 +1✨" carries an emoji as plain text, and nothing on screen shows the
 // emoji itself. Text marks (→ · − ₦) and emoji without a glyph are left as they are.
 import { computed } from 'vue'
-import { glyphNameFor } from '../../legacy/modules.ts'
+import { glyphNameFor } from '../../../ui/icon-map.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { glyphParts } from './glyphText.ts'
 

@@ -14,15 +14,17 @@
 import '../../../ui/phone/phone.css'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { glyphFor } from '../../legacy/modules.ts'
-import { checkReports, getWallpaper, tintOf } from '../../legacy/phone.ts'
+import { glyphFor } from '../../../ui/phone/icons.ts'
+import { checkReports } from '../../../ui/phone/reports.ts'
+import { getWallpaper } from '../../../ui/phone/wallpapers.ts'
+import { tintOf } from '../../../ui/phone/icons-more.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HelpBody from '../help/HelpBody.vue'
 import PanelHost from './PanelHost.vue'
 import { PAGES, SHADE_MAX, badgeText, battery, dockApps, notificationsOf, phonePages } from './phoneModel.ts'
 import type { PhoneApp } from './phoneModel.ts'
 
-const { game, shell, legacy, toggleCommunity } = useApp()
+const { game, shell, api, community } = useApp()
 const state = game.state
 const lagos = (options: Intl.DateTimeFormatOptions): Intl.DateTimeFormat => new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Lagos', ...options })
 const TIME = lagos({ hour: '2-digit', minute: '2-digit', hour12: false })
@@ -90,7 +92,7 @@ watch(() => app.value?.id ?? '', (id) => {
 })
 onMounted(() => {
   // Opening the phone is the moment to look for a moderator's reply to a report (at most once a minute).
-  checkReports(legacy.api)
+  checkReports(api)
   void nextTick(focusView)
 })
 function setShade(next: boolean): void {
@@ -99,7 +101,7 @@ function setShade(next: boolean): void {
 }
 
 function openApp(item: PhoneApp): void {
-  if (item.builtIn === 'community') { shell.closeSheet(); toggleCommunity(); return }
+  if (item.builtIn === 'community') { shell.closeSheet(); community.toggle(true); return }
   shell.open(item.id)
 }
 function openNote(line: { app: string; open?: string; params?: unknown }): void { shell.open(line.open || line.app, line.params) }

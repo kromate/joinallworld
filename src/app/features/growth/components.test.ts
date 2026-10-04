@@ -14,7 +14,7 @@ import { renderToString } from 'vue/server-renderer'
 import type { SocialOverview } from '../../../types/social.ts'
 import type { Digest, ReferralView } from '../../../types/growth.ts'
 import type { App } from '../../state/app.ts'
-import type { SocialClientState } from '../../legacy/social.ts'
+import type { SocialState as SocialClientState } from '../social/useSocial.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
 import type { Growth } from './growthStore.ts'
 import type { HelloOk } from './growthModel.ts'
@@ -49,7 +49,7 @@ before(async () => {
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   growth = (await load<{ useGrowth: () => Growth }>('/src/app/features/growth/useGrowth.ts')).useGrowth()
-  social = (await load<{ social: SocialClientState }>('/src/app/legacy/social.ts')).social
+  social = (await load<{ social: SocialClientState }>('/src/app/features/social/useSocial.ts')).social
   assert.equal(await app.game.connect(), true)
   app.game.stop()
 })

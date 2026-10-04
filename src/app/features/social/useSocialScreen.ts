@@ -2,13 +2,13 @@
 // the gate it shows until the overview has loaded, and the one-tap way out of a connection state.
 import { computed, onMounted } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import { gateOf } from './socialModel.ts'
 import { useSocial } from './useSocial.ts'
 
 export function useSocialScreen() {
   const app = useApp()
-  const { game, shell, legacy } = app
+  const { game, shell, api } = app
   const client = useSocial()
   const view = game.view
   const gate = computed(() => gateOf({
@@ -29,6 +29,6 @@ export function useSocialScreen() {
   function retryLoad(): void { client.state.error = null; void client.sync() }
   /** Why nothing can be changed, as a sentence for `what` ('call', 'search'); '' when connected. */
   const cannot = (what: string): string => (view.value.connected ? '' : linkWords(view.value)?.cannot(what) ?? 'Not connected.')
-  onMounted(() => client.start(legacy.api))
+  onMounted(() => client.start(api))
   return { app, game, shell, client, state: client.state, view, gate, action, runAction, retryLoad, cannot }
 }

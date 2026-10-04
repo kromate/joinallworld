@@ -4,14 +4,13 @@
 // It is a form with a draft (profileState.ts). The display name is the device-session nickname,
 // renamed through POST /api/session; the look is saved with the 'onboarding.set-look' action.
 // The preview and the appearance editor are the look components of the start feature
-// (LookStage, LookEditor); the local-government card is still an existing piece drawn by
-// lga-card.js, hosted through src/app/legacy/parts.ts and redrawn when the draft changes.
+// (LookStage, LookEditor); the local-government card is
+// the world feature's LgaCard.
 import { computed, nextTick, onBeforeUnmount, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { DREAMS, START_HOMES, TRAITS } from '../../legacy/content.ts'
-import LegacyPanel from '../../legacy/LegacyPanel.vue'
-import { linkWords } from '../../legacy/modules.ts'
-import { bindLgaCard, hosted, renderLgaCard } from '../../legacy/parts.ts'
+import { DREAMS, START_HOMES, TRAITS } from '../../../game/content/traits.ts'
+import { linkWords } from '../../../ui/link.ts'
+import LgaCard from '../world/LgaCard.vue'
 import LookEditor from '../start/LookEditor.vue'
 import LookStage from '../start/LookStage.vue'
 import { chooseLook, lookSummary, sameLook } from '../start/lookModel.ts'
@@ -22,7 +21,7 @@ import { draft, form, saved } from './profileState.ts'
 
 defineProps<{ params?: unknown }>()
 
-const { game, shell, legacy, command } = useApp()
+const { game, shell, command } = useApp()
 const state = game.state
 const view = game.view
 const traits = TRAITS, dreams = DREAMS, homes = START_HOMES
@@ -44,12 +43,9 @@ const save = computed(() => saveState({
 }))
 const home = computed(() => (onboarding.value.house ? homes[onboarding.value.house] : undefined))
 
-const lga = hosted('profile-lga', (s, v) => (v.onboarding.done ? renderLgaCard(s, v) : ''), (root, api) => bindLgaCard(root, api, { redraw: () => legacy.api.refresh() }))
-
 let focusKey = ''
-/** The card was redrawn: the keyboard stays where it was. */
+/** The form was redrawn: the keyboard stays where it was. */
 function redraw(): void {
-  legacy.api.refresh()
   if (focusKey) void nextTick(() => document.querySelector<HTMLElement>(`[data-profile] [data-key="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true }))
 }
 function onChoose(field: LookField, value: string): void {
@@ -57,7 +53,7 @@ function onChoose(field: LookField, value: string): void {
   draft.value = { ...current.value, look: chooseLook(current.value.look, field, value, view.value.onboarding.wardrobe) }
 }
 // A saved change from elsewhere replaces the draft: the pieces draw it again.
-watch([() => state.value.name, () => state.value.onboarding.look], () => { sync(); legacy.api.refresh() })
+watch([() => state.value.name, () => state.value.onboarding.look], () => { sync() })
 onBeforeUnmount(() => { focusKey = '' })
 
 async function submit(): Promise<void> {
@@ -97,7 +93,7 @@ async function submit(): Promise<void> {
     <h3>Appearance</h3>
     <p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>
     <LookEditor :look="current.look" :owned="onboarding.wardrobe" @choose="onChoose" />
-    <LegacyPanel :panel="lga" />
+    <LgaCard v-if="onboarding.done" />
     <p v-if="form.error" class="sim-error" role="alert">{{ form.error }}</p>
     <div class="sim-save-bar"><button type="submit" class="ui-button is-primary sim-save" data-key="save" :disabled="save.disabled">{{ save.label }}</button></div>
   </form>

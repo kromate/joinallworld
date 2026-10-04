@@ -5,7 +5,7 @@
 import { computed, onMounted, watch } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { linkWords } from '../../legacy/modules.ts'
+import { linkWords } from '../../../ui/link.ts'
 import type { CivicEntry, Civic } from './civicCore.ts'
 import { createCivic } from './civicCore.ts'
 
@@ -13,7 +13,7 @@ let shared: Civic | null = null
 /** The one civic client of the page: one cache, one set of pending writes. */
 export function useCivic(): Civic {
   if (!shared) {
-    const { game, legacy } = useApp()
+    const { game, api } = useApp()
     shared = createCivic({
       fetchJson: game.fetchJson,
       refresh: () => game.command('civic.refresh'),
@@ -23,7 +23,7 @@ export function useCivic(): Civic {
       cityId: () => game.cityId.value,
       linkWhy: () => linkWords(game.view.value)?.why ?? 'Not connected.',
       // The city map and the chips that are not converted yet draw the same listings.
-      changed: () => legacy.api.refresh(),
+      changed: () => api.refresh(),
     })
   }
   return shared

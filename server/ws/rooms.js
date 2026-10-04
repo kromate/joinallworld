@@ -9,6 +9,10 @@
  * ctx.checks.homeGuest(db, senderPublicId, hostId, cityId) — provided by the social module —
  * says the sender is an accepted, unexpired guest of that host and the host's life is at home.
  * The room key is built from the validated hostId, so the message cannot name any other room.
+ * A join (as a guest or to one's own venue) puts the socket in the room only once everything its
+ * check read is in the data file — never on a host's accept that is still being written and may
+ * yet be undone. A join whose basis was undone by a failed write is answered
+ * 'storage_unavailable' and may be sent again.
  * A guest whose visit expired, was ended or whose host left home is dropped with 'visit_ended'
  * (see MEMBERSHIP below for when that is checked). A host who leaves home empties their Home room
  * of guests, and a 'visit-ended' event drops one guest at once.
@@ -342,7 +346,14 @@ export default function roomSocket(ctx) {
           // A guest is admitted by the social module's server-side guest list, never by their own location;
           // everyone else only to the venue their life occupies (not while departing).
           return { until: visiting ? guestUntil(db, session.publicId, hostId, message.cityId) : canOccupyVenue(state, message.venueId) ? Infinity : 0, look };
-        }, { durable: false }); // a join acknowledges nothing; not waiting for the disk keeps the check and the admission together
+        // ADMISSION FOLLOWS WHAT IS IN THE FILE. The check can read a permission that is applied in
+        // memory but not yet written (a host's "let them in", an arrival). `waitForObserved` holds the
+        // join until those changes are in the file and rejects it ('storage_unavailable') if their
+        // write failed and they were undone — so there is no presence, chat or signalling on a
+        // permission that never became real. The join writes nothing of its own to wait for, and with
+        // nothing unwritten beneath it it is answered at once. Whatever took the permission away in
+        // the meantime is caught below: by the absent-host check and by verify() after admission.
+        }, { durable: false, waitForObserved: true });
         const room = venueRoomKey(message.cityId, message.venueId, visiting ? hostId : ws.session.id);
         // A guest cannot come back into a Home room its host has been missing from for longer than the grace period.
         if (!until || (visiting && hostAbsent(room, hostId))) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');

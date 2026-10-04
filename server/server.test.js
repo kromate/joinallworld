@@ -233,6 +233,8 @@ test('movement keeps JSON unchanged between at-most-minute session renewals', as
   x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await x.next();
   const filesystem = await import('node:fs/promises');
   const signature = async () => { const info = await filesystem.stat(join(f.dir, 'devices.json'), { bigint: true }); return `${info.ino}:${info.mtimeNs}`; };
+  // Joining settled the life, and the world service then recorded the plot it allocated: let that write land first.
+  await f.server.world.idle(); await f.flush();
   const baseline = await signature();
   for (let i = 0; i < 5; i++) { x.ws.send(JSON.stringify({ type: 'move', x: i, z: 0 })); await x.next(); assert.equal(await signature(), baseline); }
   f.advance(60000); x.ws.send(JSON.stringify({ type: 'move', x: 5, z: 0 })); await x.next();

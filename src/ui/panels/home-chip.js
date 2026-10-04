@@ -20,7 +20,8 @@ import './buy.css';
 import { esc, mark, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
 import { FURNITURE, KINDS } from '../../game/content/furniture.js';
-import { HOUSES, DEFAULT_HOUSE } from '../../game/content/housing.js';
+import { homeOf } from '../../game/content/housing.js';
+import { HOUSE_TIERS } from '../../game/content/world.js';
 import { checkPlacement, nudge } from '../../game/home-layout.js';
 import { isDeparting } from '../../game/registry.js';
 
@@ -37,7 +38,8 @@ let kitchenOpen = false;
 let scene = { status: 'loading', placed: 0 };
 let sent = '';
 
-export const houseOf = (state) => HOUSES[state.property?.house] ?? HOUSES[DEFAULT_HOUSE];
+/** The house the room is laid out for: the rented tier, or the player's own house while they live in it. */
+export const houseOf = (state) => homeOf(state, HOUSE_TIERS);
 export const itemsOf = (state) => (Array.isArray(state.home?.items) ? state.home.items : []);
 /** A star rating drawn with the star glyph: `count` filled stars, or ''. */
 export const stars = (count) => (count ? `<span class="buy-star" role="img" aria-label="${count} star${count === 1 ? '' : 's'}">${mark('star').repeat(count)}</span>` : '');

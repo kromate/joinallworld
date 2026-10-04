@@ -1,0 +1,36 @@
+/* OWNER: world — the local-government card, the local-government page, the house card and "your house". */
+.world-card{display:grid;gap:10px;padding:14px;border:1px solid #dfe5e1;border-radius:16px;background:#fff}
+.world-card h3{margin:0;font-size:15px}
+.world-card.is-compact{padding:10px}
+.world-now{display:grid;gap:2px;margin:0}
+.world-now b{font-size:17px}
+.world-now small{color:#59616b;font-size:12px}
+.world-row{display:flex;flex-wrap:wrap;gap:8px}
+.world-row .ui-button{flex:1 1 140px}
+.world-field{display:grid;gap:6px;font-size:13px;font-weight:600}
+.world-field select,.world-field input{width:100%;min-height:44px;padding:0 12px;border:1px solid #c9d2cc;border-radius:12px;background:#fff;font:inherit;font-weight:500;color:inherit}
+.world-found{display:grid;gap:8px;padding:10px;border-radius:12px;background:#edf4ee}
+.world-found p{margin:0}
+.world-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0;padding:0;list-style:none}
+.world-stats li{display:grid;gap:2px;padding:10px;border-radius:12px;background:#f3f5f4;text-align:center}
+.world-stats b{font-size:17px}
+.world-stats small{font-size:11px;color:#59616b}
+.world-people{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.world-people .ui-row{align-items:center}
+.world-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#c2c8cc;margin-right:6px}
+.world-dot.is-on{background:#33d17a}
+.world-house{display:block;width:100%;max-width:220px;height:auto;margin:0 auto}
+.world-swatches{display:flex;flex-wrap:wrap;gap:6px}
+.world-swatch{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border:1px solid #c9d2cc;border-radius:18px;background:#fff;font:inherit;font-size:12px;font-weight:600;color:inherit;cursor:pointer}
+.world-swatch i{width:16px;height:16px;border-radius:50%;border:1px solid #0002}
+.world-swatch.is-chosen{border-color:#14532d;box-shadow:0 0 0 2px #14532d}
+.world-swatch:focus-visible{outline:3px solid #14532d;outline-offset:2px}
+.world-style{display:grid;gap:6px}
+.world-style>b{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#59616b}
+.world-tiers{display:grid;gap:8px}
+.world-tier{display:grid;gap:6px;padding:12px;border:1px solid #dfe5e1;border-radius:14px;background:#fff}
+.world-tier header{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.world-tier h4{margin:0;font-size:14px}
+.world-tier p{margin:0;font-size:12px;color:#59616b}
+.world-bar{height:8px;border-radius:4px;background:#e4e9e6;overflow:hidden}
+.world-bar i{display:block;height:100%;background:#256b45}

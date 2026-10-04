@@ -143,12 +143,16 @@ const map = lazyGroup(() => import('./groups/map.js'), [
   { id: 'map', title: 'Map', placement: 'nav' },
   { id: 'roadside', title: 'On the road', placement: 'modal' },
 ]);
+const worldPanels = lazyGroup(() => import('./groups/world.js'), [
+  { id: 'lga', title: 'Local government', placement: 'modal', live: false },
+  { id: 'house-card', title: 'House', placement: 'modal' },
+]);
 const home = lazyGroup(() => import('./groups/home.js'), [
   // `enabled` must answer before the code is here: Buy is only available at home, and the nav button says why elsewhere.
   { id: 'buy', title: 'Buy', placement: 'nav', enabled: (state) => state.location === 'home' || 'Go home to buy furniture' },
 ]);
 
-export const PANELS = buildPanels([session, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life]);
+export const PANELS = buildPanels([session, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

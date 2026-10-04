@@ -10,7 +10,8 @@
  *   3D   the city has a pack in the region registry (src/map3d/regions.js), WebGL is available and
  *        the player has not asked for the simple map
  *   2D   otherwise — and at once if the WebGL context is lost. The 2D map is also the choice of
- *        the "Simple map" button, kept in localStorage; it is the plainest, lightest view.
+ *        the "Simple map" button, kept in localStorage; it is the plainest, lightest view. It is
+ *        the SAME city pack seen from above (src/map3d/map2d.js, flat.js), not a second drawing.
  *
  * ONE HEAVY CONTEXT AT A TIME: the venue scene has its own WebGL context and draws only on
  * demand; so does the map, and only while it is shown. When the map has been out of sight for
@@ -21,11 +22,13 @@ import '../city-map.css';
 import './map3d.css';
 import { hasCityPack, loadCityPack } from './regions.js';
 import { createMap3D, webglAvailable } from './map3d.js';
+import { createMap2D } from './map2d.js';
+import { createWorldData } from './world-data.js';
 
 const PREFERENCE_KEY = 'joinallworld-map';
 const RELEASE_MS = 120000;
 
-export function createCityView(container, { cityId: firstCity = 'lagos', onSelectVenue, onSelectGov, onSelectNeighbour, onTripDue, onNotice = () => {} } = {}) {
+export function createCityView(container, { cityId: firstCity = 'lagos', onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse, fetchJson = null, onTripDue, onNotice = () => {} } = {}) {
   let cityId = firstCity, state = null, player = null, impl = null, kind = null, layer = 'city', shown = false, mounting = 0, releaseTimer = null, released = false, brokenGl = false;
   let simple = false;
   try { simple = globalThis.localStorage?.getItem(PREFERENCE_KEY) === '2d' || new URLSearchParams(globalThis.location.search).get('map') === '2d'; } catch { simple = false; }
@@ -34,6 +37,15 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
   const ui = {};                                   // everything the Map panel has said, replayed to a map mounted later
   const onUi = (event) => { const detail = event.detail || {}; if (detail.layer === 'city' || detail.layer === 'world') layer = detail.layer; const { layout, ...rest } = detail; Object.assign(ui, rest); };
   window.addEventListener('jaw:map-ui', onUi);
+  // Houses and residents for the part of the city in view: one cache, shared by whichever map is mounted (src/map3d/world-data.js).
+  let friends = [];
+  const world = fetchJson ? createWorldData({ fetchJson, cityId: firstCity, onChange: () => impl?.worldChanged?.() }) : null;
+  // A panel says the player's own place in the world changed (their local government, their house): what is cached is stale.
+  const onWorld = () => { world?.stale(); if (shown) void world?.loadCity(true); };
+  // A panel asks the map to show something: { plot } | { lga } | { lga, estate }.
+  const onFocus = (event) => { const detail = event.detail || {}; if (detail.plot) impl?.focusPlot?.(detail.plot); else if (detail.estate !== undefined) impl?.focusEstate?.(detail.lga, detail.estate); else if (detail.lga) impl?.focusLga?.(detail.lga); };
+  window.addEventListener('jaw:world-changed', onWorld);
+  window.addEventListener('jaw:map-focus', onFocus);
 
   // The switch between the two maps: a real button, at the same place on both.
   const toggle = document.createElement('button');
@@ -52,7 +64,7 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
     container.dataset.map = kind || '';
   }
 
-  const callbacks = { onSelectVenue, onSelectGov, onSelectNeighbour };
+  const callbacks = { onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse };
   async function mount() {
     const ticket = ++mounting;
     const want3d = !simple && !brokenGl && hasCityPack(cityId) && webglAvailable();
@@ -62,7 +74,7 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
         const pack = await loadCityPack(cityId);
         if (ticket !== mounting) return;
         impl?.destroy(); impl = null;
-        next = createMap3D(container, { pack, cityId, ...callbacks, onTripDue, deepLink, onContextLost: () => { brokenGl = true; onNotice('The 3D map stopped on this device. Showing the simple map instead.'); void mount(); } });
+        next = createMap3D(container, { pack, cityId, world, ...callbacks, onTripDue, deepLink, onContextLost: () => { brokenGl = true; onNotice('The 3D map stopped on this device. Showing the simple map instead.'); void mount(); } });
         nextKind = '3d';
       } catch (error) {
         console.error('The 3D map could not start; using the simple map:', error);
@@ -70,17 +82,25 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
       }
     }
     if (!next) {
-      const { createCityMap } = await import('../city-map.js');
+      // The flat map is drawn from the same city pack as the 3D one (src/map3d/map2d.js). Only a city that
+      // has no pack at all (a legacy preview) falls back to the old hand-drawn schematic, which a pack never reaches.
+      const pack = hasCityPack(cityId) ? await loadCityPack(cityId).catch(() => null) : null;
       if (ticket !== mounting) return;
-      impl?.destroy(); impl = null;
-      next = createCityMap(container, callbacks);
-      next.setCity(cityId);
+      if (pack) { impl?.destroy(); impl = null; next = createMap2D(container, { pack, cityId, world, ...callbacks, deepLink }); }
+      else {
+        const { createCityMap } = await import('../city-map.js');
+        if (ticket !== mounting) return;
+        impl?.destroy(); impl = null;
+        next = createCityMap(container, callbacks);
+        next.setCity(cityId);
+      }
       nextKind = '2d';
     }
     deepLink = null;
     impl = next; kind = nextKind; released = false;
     label();
     impl.setPlayer?.(player);
+    impl.setFriends?.(friends);
     if (state) impl.setState(state);
     if (Object.keys(ui).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: { ...ui, layout: true } }));
     impl.resize();
@@ -96,7 +116,10 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
     get kind() { return kind; },
     /** Resolves once the first map is on screen. */
     started: null,
-    setCity(id) { layer = 'city'; if (id === cityId && impl) { impl.setCity?.(id); return; } cityId = id; void mount(); },
+    setCity(id) { layer = 'city'; if (id === cityId && impl) { impl.setCity?.(id); return; } cityId = id; world?.drop(id); void mount(); },
+    /** Public ids of the player's friends: their houses are named on the map. */
+    setFriends(ids) { friends = Array.isArray(ids) ? ids : []; impl?.setFriends?.(friends); },
+    world,
     setState(next) { state = next; impl?.setState(next); },
     setPlayer(next) { player = next; impl?.setPlayer?.(next); },
     /** The host says whether the city map is the screen in front. Hidden, it draws nothing and soon lets go of the GPU. */
@@ -104,7 +127,7 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
       if (next === shown) return;
       shown = next;
       clearTimeout(releaseTimer); releaseTimer = null;
-      if (shown) { if (released) void mount(); else impl?.resize(); }
+      if (shown) { void world?.loadCity(); if (released) void mount(); else impl?.resize(); }
       else { impl?.resize(); releaseTimer = setTimeout(release, RELEASE_MS); }
     },
     resize() { impl?.resize(); },
@@ -112,7 +135,7 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
     arrive(done) { if (impl?.arrive && shown) impl.arrive(done); else done(); },
     diagnostics() { return impl?.diagnostics ? impl.diagnostics() : { kind: kind || 'none', renderCount: 0, released, view: impl?.view?.() }; },
     get map() { return impl; },
-    destroy() { mounting += 1; clearTimeout(releaseTimer); window.removeEventListener('jaw:map-ui', onUi); impl?.destroy(); toggle.remove(); },
+    destroy() { mounting += 1; clearTimeout(releaseTimer); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:world-changed', onWorld); window.removeEventListener('jaw:map-focus', onFocus); impl?.destroy(); toggle.remove(); },
   };
   view.started = mount();
   return view;

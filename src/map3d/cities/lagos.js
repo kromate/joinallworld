@@ -10,6 +10,9 @@
  *          and Eko bridges to the mainland
  *   south  Victoria Island and the Lekki peninsula running east, the Lekki–Ikoyi link bridge,
  *          the beach and the Atlantic
+ *   edges  the outer local governments, compressed towards the edges of the board: Alimosho, Ojo
+ *          and Badagry in the west, Ifako-Ijaiye and Agege along the top, Ikorodu round the lagoon to
+ *          the north-east, Ibeju-Lekki at the end of the peninsula and Epe across the Lekki lagoon
  *
  * UNITS: x runs east, z runs south, y is up. One unit is roughly a small house. Venue ids are the
  * ones in src/game/content/venues.js; the server's fare bands still use the positions there —
@@ -20,19 +23,24 @@
  * city has (the port, the airport and refinery building sites, Eko Atlantic).
  */
 
+import { LAGOS_LGAS } from '../../game/content/world.js';
+
 export const id = 'lagos';
 export const name = 'Lagos';
 
 /** The board. `fit` is what "the whole city" frames (the land, not the open sea); `sea` is the open-water block the sea-plot layer uses. */
-export const bounds = { minX: -134, maxX: 136, minZ: -94, maxZ: 62, fit: { minX: -122, maxX: 124, minZ: -80, maxZ: 46 }, sea: { x0: 24, x1: 92, z0: 50, z1: 92 } };
+export const bounds = { minX: -176, maxX: 190, minZ: -116, maxZ: 62, fit: { minX: -166, maxX: 180, minZ: -104, maxZ: 46 }, sea: { x0: 24, x1: 92, z0: 50, z1: 92 } };
 
 /** Land masses as control polygons [x, z]; the builder rounds the corners. `kind` picks the ground colour. */
 export const land = [
-  { id: 'mainland', kind: 'mainland', points: [[-126, -86], [48, -86], [46, -68], [38, -54], [30, -44], [26, -30], [22, -18], [10, -11], [-12, -11], [-30, -11], [-44, -10], [-50, -2], [-52, 10], [-60, 18], [-80, 18], [-94, 12], [-126, 12]] },
+  // The mainland runs west to Badagry and, round the top of the lagoon, north-east to Ikorodu.
+  { id: 'mainland', kind: 'mainland', points: [[-166, -106], [152, -106], [158, -86], [140, -68], [106, -70], [84, -80], [66, -90], [53, -93], [48, -84], [46, -68], [38, -54], [30, -44], [26, -30], [22, -18], [10, -11], [-12, -11], [-30, -11], [-44, -10], [-50, -2], [-52, 10], [-60, 18], [-80, 18], [-94, 12], [-126, 12], [-138, 14], [-152, 18], [-166, 13]] },
   { id: 'island', kind: 'island', points: [[-42, 2], [-20, 0], [4, 0], [26, -3], [46, -3], [56, 3], [55, 13], [44, 20], [10, 20], [-20, 21], [-40, 19], [-46, 10]] },
   { id: 'banana', kind: 'estate', points: [[47, -13], [58, -18], [72, -16], [75, -8], [62, -3.5], [49, -4.5]] },
-  { id: 'vi', kind: 'island', points: [[-14, 27], [10, 26], [34, 26], [50, 26], [60, 22], [76, 16], [100, 13], [127, 14], [128, 40], [90, 40.5], [40, 40.5], [0, 40.5], [-12, 39], [-17, 34]] },
-  { id: 'beach', kind: 'sand', points: [[-13, 38], [128, 38], [129, 46], [60, 46.5], [-10, 46]] },
+  { id: 'vi', kind: 'island', points: [[-14, 27], [10, 26], [34, 26], [50, 26], [60, 22], [76, 16], [100, 13], [127, 14], [146, 11], [166, 10], [180, 14], [181, 40], [90, 40.5], [40, 40.5], [0, 40.5], [-12, 39], [-17, 34]] },
+  { id: 'beach', kind: 'sand', points: [[-13, 38], [181, 38], [182, 46], [60, 46.5], [-10, 46]] },
+  // Epe, on the far shore of the Lekki lagoon.
+  { id: 'epe', kind: 'mainland', points: [[138, -46], [162, -50], [180, -42], [182, -14], [168, -4], [144, -6], [134, -22]] },
   { id: 'tarkwa', kind: 'sand', points: [[-104, 32], [-76, 30], [-54, 33], [-55, 38], [-80, 37.5], [-104, 38]] },
   { id: 'eko-atlantic', kind: 'sand', points: [[-12, 46], [14, 46], [16, 56], [-10, 56]] },
 ];
@@ -69,6 +77,13 @@ export const roads = [
   { id: 'link-landing', name: 'Admiralty Way', major: true, points: [[63, 23], [63.8, 26], [64, 29]] },
   { id: 'ozumba', name: 'Lekki–Epe Expressway', major: true, points: [[-10, 30], [10, 29], [30, 29], [48, 30], [64, 29], [84, 30], [104, 29]] },
   { id: 'beach-road', name: 'Beach Road', points: [[84, 30], [89, 35], [92, 38]] },
+  // Out to the far local governments: west to Badagry, round the lagoon to Ikorodu, east to Ibeju-Lekki and over to Epe
+  { id: 'badagry-expressway', name: 'Lagos–Badagry Expressway', major: true, points: [[-98, -34], [-112, -30], [-130, -26], [-148, -20], [-162, -10]] },
+  { id: 'lasu-road', name: 'LASU–Iba Road', points: [[-130, -26], [-138, -52], [-146, -78], [-150, -96]] },
+  { id: 'ikorodu-north', name: 'Ikorodu Road', major: true, points: [[-20, -82], [-8, -94], [20, -99], [56, -99], [92, -92], [124, -84]] },
+  { id: 'lekki-epe', name: 'Lekki–Epe Expressway', major: true, points: [[104, 29], [130, 27], [152, 26], [172, 27]] },
+  { id: 'epe-bridge', name: 'Epe Bridge', bridge: 1.5, points: [[152, 26], [152.6, 20], [153.4, 14], [154.2, 8], [155.2, 2], [156.2, -3], [157, -8]] },
+  { id: 'epe-road', name: 'Epe Road', points: [[157, -8], [158, -20], [160, -34]] },
 ];
 
 /** Where each venue's landmark stands. Ids are venue ids (src/game/content/venues.js). */
@@ -95,11 +110,11 @@ export const soon = {
 
 /** District name plates laid on the ground: [x, z, size]. `water` plates are lettered straight onto the water. */
 export const districts = [
-  { name: 'IKEJA', x: -68, z: -70, size: 2.6 }, { name: 'MUSHIN', x: -34, z: -45, size: 2.2 }, { name: 'SURULERE', x: -76, z: -22, size: 2.2 },
-  { name: 'YABA', x: 10, z: -19.5, size: 2.2 }, { name: 'GBAGADA', x: -6, z: -72, size: 2 }, { name: 'APAPA', x: -100, z: 6, size: 2.2 },
-  { name: 'LAGOS ISLAND', x: -14, z: 23, size: 1.6, water: true }, { name: 'IKOYI', x: 40, z: 4.6, size: 1.7 }, { name: 'BANANA ISLAND', x: 92, z: -12, size: 1.3, water: true },
+  // Neighbourhoods and waters. The local governments have their own name plates (`lgas` below), so they are not repeated here.
+  { name: 'YABA', x: 10, z: -19.5, size: 2 }, { name: 'GBAGADA', x: -6, z: -72, size: 2 },
+  { name: 'IKOYI', x: 40, z: 4.6, size: 1.7 }, { name: 'BANANA ISLAND', x: 92, z: -12, size: 1.3, water: true },
   { name: 'VICTORIA ISLAND', x: 30, z: 33.5, size: 1.5 }, { name: 'LEKKI', x: 86, z: 34.5, size: 2.2 },
-  { name: 'LAGOS LAGOON', x: 86, z: -34, size: 3.4, water: true }, { name: 'ATLANTIC OCEAN', x: -66, z: 50, size: 3, water: true },
+  { name: 'LAGOS LAGOON', x: 88, z: -40, size: 3.4, water: true }, { name: 'LEKKI LAGOON', x: 132, z: -1, size: 1.4, water: true }, { name: 'ATLANTIC OCEAN', x: -66, z: 50, size: 3, water: true },
   { name: 'THIRD MAINLAND BRIDGE', x: 62, z: -50, size: 1.2, water: true }, { name: 'LINK BRIDGE', x: 68, z: 10.5, size: 1.1, water: true },
 ];
 
@@ -123,12 +138,55 @@ export const fabric = [
   { box: [46, -19, 76, -3], style: 'villas' },               // Banana Island
   { box: [-18, 25, 56, 42], style: 'towers' },               // Victoria Island
   { box: [56, 12, 104, 42], style: 'villas' },               // Lekki
+  { box: [-166, -106, -126, 20], style: 'dense' },           // Alimosho, Ojo, Badagry
+  { box: [-126, -106, 60, -86], style: 'dense' },            // Ifako-Ijaiye, Agege, Kosofe
+  { box: [60, -110, 160, -62], style: 'dense' },             // Ikorodu
+  { box: [104, 8, 182, 42], style: 'villas' },               // Ibeju-Lekki
+  { box: [132, -50, 182, -4], style: 'villas' },             // Epe
 ];
 
 /** Home estates for the Neighbours layer: where each district's player homes are drawn. */
 export const estates = {
   mushin: { x: -80, z: -47, cols: 6 }, yaba: { x: -16, z: -50, cols: 6 }, lekki: { x: 54, z: 32.5, cols: 6 }, ikoyi: { x: 11.5, z: 12.5, cols: 6 }, banana: { x: 52, z: -13, cols: 4, max: 8 },
 };
+
+/**
+ * THE LOCAL GOVERNMENTS, as geometry. Ids, names, prices and character lines are in
+ * src/game/content/world.js (LAGOS_LGAS) and are merged in below; a test asserts the two lists match.
+ *   polygon  the boundary in map units [x, z]: our own stylised shapes, placed as the real ones lie
+ *            relative to each other. A boundary may run out over water; both maps draw it on land only.
+ *   plate    where its name plate stands [x, z]
+ *   tint     its colour on the "LGAs" layer
+ *   geo      for finding a player's local government ON THEIR DEVICE (src/map3d/lga.js resolveLga):
+ *            c = a rough centre [latitude, longitude], box = a rough bounding rectangle
+ *            [south, west, north, east]. Hand-drawn from general knowledge, good to a few kilometres:
+ *            near a boundary it can name the neighbour, which is why the player confirms the answer.
+ */
+const LGA_SHAPES = {
+  alimosho: { polygon: [[-168, -108], [-124, -108], [-124, -46], [-168, -46]], plate: [-146, -70], tint: '#e8c27a', geo: { c: [6.584, 3.257], box: [6.50, 3.18, 6.67, 3.30] } },
+  'ifako-ijaiye': { polygon: [[-124, -108], [-80, -108], [-80, -84], [-124, -84]], plate: [-102, -96], tint: '#9ecf8a', geo: { c: [6.685, 3.289], box: [6.64, 3.25, 6.71, 3.33] } },
+  agege: { polygon: [[-80, -108], [-38, -108], [-38, -84], [-80, -84]], plate: [-59, -96], tint: '#f0a58e', geo: { c: [6.622, 3.325], box: [6.60, 3.29, 6.65, 3.34] } },
+  ikeja: { polygon: [[-124, -84], [-38, -84], [-38, -48], [-124, -48]], plate: [-64, -74], tint: '#8fc4e6', geo: { c: [6.596, 3.342], box: [6.56, 3.31, 6.64, 3.38] } },
+  kosofe: { polygon: [[-38, -108], [62, -108], [62, -58], [-38, -58]], plate: [10, -78], tint: '#cdb4e8', geo: { c: [6.582, 3.415], box: [6.55, 3.37, 6.63, 3.46] } },
+  ikorodu: { polygon: [[62, -112], [162, -112], [162, -58], [62, -58]], plate: [112, -88], tint: '#f2d27a', geo: { c: [6.619, 3.510], box: [6.54, 3.45, 6.72, 3.72] } },
+  somolu: { polygon: [[-4, -58], [52, -58], [52, -48], [-4, -48]], plate: [14, -53], tint: '#8ed2c4', geo: { c: [6.540, 3.384], box: [6.52, 3.37, 6.56, 3.40] } },
+  mushin: { polygon: [[-62, -48], [-38, -48], [-38, -58], [-4, -58], [-4, -28], [-62, -28]], plate: [-30, -41], tint: '#f0b872', geo: { c: [6.528, 3.354], box: [6.51, 3.33, 6.55, 3.37] } },
+  'oshodi-isolo': { polygon: [[-124, -48], [-62, -48], [-62, -28], [-124, -28]], plate: [-92, -41], tint: '#b9d98a', geo: { c: [6.540, 3.312], box: [6.50, 3.29, 6.57, 3.34] } },
+  'lagos-mainland': { polygon: [[-4, -48], [44, -48], [28, -6], [-22, -6], [-22, -28], [-4, -28]], plate: [12, -24], tint: '#9db8f0', geo: { c: [6.506, 3.378], box: [6.47, 3.36, 6.53, 3.41] } },
+  surulere: { polygon: [[-84, -28], [-22, -28], [-22, -6], [-84, -6]], plate: [-66, -20], tint: '#e8a0c0', geo: { c: [6.500, 3.348], box: [6.48, 3.33, 6.52, 3.37] } },
+  apapa: { polygon: [[-84, -6], [-40, -6], [-40, 24], [-84, 24]], plate: [-66, -1], tint: '#b8c4d2', geo: { c: [6.449, 3.359], box: [6.42, 3.34, 6.46, 3.39] } },
+  'ajeromi-ifelodun': { polygon: [[-104, -28], [-84, -28], [-84, 24], [-104, 24]], plate: [-94, -4], tint: '#f2c48a', geo: { c: [6.455, 3.334], box: [6.43, 3.31, 6.47, 3.35] } },
+  'amuwo-odofin': { polygon: [[-124, -28], [-104, -28], [-104, 24], [-124, 24]], plate: [-114, -6], tint: '#a6d8b0', geo: { c: [6.446, 3.268], box: [6.40, 3.22, 6.48, 3.32] } },
+  ojo: { polygon: [[-146, -46], [-124, -46], [-124, 24], [-146, 24]], plate: [-135, -10], tint: '#d8b0e0', geo: { c: [6.463, 3.168], box: [6.42, 3.10, 6.52, 3.22] } },
+  badagry: { polygon: [[-168, -46], [-146, -46], [-146, 24], [-168, 24]], plate: [-157, -10], tint: '#8fd0d8', geo: { c: [6.432, 2.887], box: [6.38, 2.70, 6.52, 3.10] } },
+  'lagos-island': { polygon: [[-50, -6], [22, -6], [22, 24], [-50, 24]], plate: [-22, 10], tint: '#f0d08a', geo: { c: [6.455, 3.394], box: [6.44, 3.37, 6.47, 3.41] } },
+  'eti-osa': { polygon: [[22, -6], [44, -6], [44, -22], [78, -22], [78, 0], [60, 2], [60, 12], [104, 12], [104, 48], [20, 48], [20, 60], [-20, 60], [-20, 24], [22, 24]], plate: [46, 33], tint: '#9ad0a8', geo: { c: [6.459, 3.601], box: [6.40, 3.40, 6.48, 3.72] } },
+  'ibeju-lekki': { polygon: [[104, 6], [184, 6], [184, 48], [104, 48]], plate: [146, 33], tint: '#e8b8a0', geo: { c: [6.467, 3.865], box: [6.37, 3.72, 6.52, 4.36] } },
+  epe: { polygon: [[130, -52], [184, -52], [184, 0], [130, 0]], plate: [158, -26], tint: '#b0c8f0', geo: { c: [6.586, 3.983], box: [6.50, 3.80, 6.72, 4.36] } },
+};
+/** The rough box of Lagos State [south, west, north, east]: a position outside it is "not in Lagos". */
+export const geo = { box: [6.36, 2.69, 6.73, 4.37] };
+export const lgas = LAGOS_LGAS.map((lga) => ({ id: lga.id, name: lga.name, line: lga.line, land: lga.land, districts: lga.districts, ...LGA_SHAPES[lga.id] }));
 
 const STRIPE = ['#f2c230', '#22252a'];
 
@@ -229,4 +287,4 @@ export function decorate(b, { rng }) {
   }
 }
 
-export default { id, name, bounds, land, roads, sites, homes, soon, districts, zones, fabric, estates, decorate };
+export default { id, name, bounds, land, roads, sites, homes, soon, districts, zones, fabric, estates, lgas, geo, decorate };

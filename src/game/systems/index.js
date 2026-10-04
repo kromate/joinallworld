@@ -16,11 +16,12 @@ import travel from './travel.js';
 import health from './health.js';
 import economy from './economy.js';
 import property from './property.js';
+import estate from './estate.js';
 import home from './home.js';
 import onboarding from './onboarding.js';
 import goals from './goals.js';
 import social from './social.js';
 import civic from './civic.js';
 
-export const SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, home, onboarding, goals, social, civic];
+export const SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, onboarding, goals, social, civic];
 for (const system of SYSTEMS) registerSystem(system);

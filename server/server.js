@@ -8,10 +8,13 @@ import http from 'node:http';
 import { randomUUID, createHash, timingSafeEqual } from 'node:crypto';
 import { readFile, stat } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
-import { resolve, extname, sep } from 'node:path';
+import { resolve, extname, sep, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.js';
+import { createShardStore } from './world/shards.js';
+import * as worldRegistry from './world/registry.js';
+import { worldOf } from './world/service.js';
 import { settleCity, applyLifeAction } from './life-service.js';
 import { buildRoutes } from './routes/index.js';
 import { executeCommand } from './routes/core.js';
@@ -52,7 +55,7 @@ async function jsonBody(req) {
 }
 
 export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions = 10000, voiceConfigProvider, store: providedStore, routes: routeModules, wsModules,
-  lazyFlushMs,
+  lazyFlushMs, shardIo,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
   trustProxy = process.env.TRUST_PROXY === '1',
@@ -62,6 +65,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   receiptLimits, // { perPlayer, global, lightPerPlayer, lightGlobal } for ctx.once (server/routes/once.js); the defaults are the documented numbers
   buildId = process.env.BUILD_ID || packageVersion() } = {}) {
   const store = providedStore || await createStore(dataDir, { ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
+  // The world registry: one append-only shard file per local government, beside the main data file.
+  const shards = await createShardStore(join(dataDir, 'world'), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log, ...(shardIo ? { io: shardIo } : {}) });
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');
   if (!Number.isFinite(heartbeatMs) || heartbeatMs < 1000 || heartbeatMs > 60000) throw new Error('Invalid heartbeat interval');
   if (!Number.isSafeInteger(votesPerAddress) || votesPerAddress < 0) throw new Error('Invalid VOTES_PER_ADDRESS');
@@ -251,7 +256,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // In-process events between server modules (never sent to a client by the host itself).
   const listeners = new Map();
   const ctx = {
-    store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS,
+    store, shards, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS,
     randomId: () => randomUUID(),
     on(event, fn) { if (!listeners.has(event)) listeners.set(event, []); listeners.get(event).push(fn); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, error.message); } } },
@@ -442,11 +447,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   server.wss = wss;
   server.beat = beat; // tests drive the heartbeat directly instead of waiting for the timer
   server.store = store;
+  server.shards = shards;
+  server.world = worldOf(ctx);
   server.on('close', () => { clearInterval(heartbeat); for (const ws of wss.clients) ws.terminate(); wss.close(); });
   // close(callback) reports back only once the store has written everything, so "the server has
   // stopped" always means "the data file is complete" — for a restart, a test or a shutdown script.
   const closeHttp = server.close.bind(server);
-  server.close = (callback) => { closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).finally(() => callback?.(error)); }); return server; };
+  server.close = (callback) => { closeHttp((error) => { Promise.resolve(server.world.idle()).then(() => server.world.saveMeta()).then(() => shards.close()).catch(() => {}).then(() => store.close?.()).catch(() => {}).finally(() => callback?.(error)); }); return server; };
   await Promise.all(ctx.startup.splice(0));
   return server;
 }
@@ -455,6 +462,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (process.env.STORE_MODE) console.error('STORE_MODE is no longer used: there is one store. See "Storage and limits" in the README.');
   const server = await createServer();
   // Write anything not yet on disk before the process leaves.
-  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { server.store.close?.().catch(() => {}).finally(() => process.exit(0)); });
+  for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { Promise.resolve(server.world.saveMeta()).then(() => server.shards.close()).catch(() => {}).then(() => server.store.close?.()).catch(() => {}).finally(() => process.exit(0)); });
   server.listen(Number(process.env.PORT) || 3001, '0.0.0.0', () => console.log(`Allworld server listening on ${server.address().port}`));
 }

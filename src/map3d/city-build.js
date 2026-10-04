@@ -25,6 +25,8 @@ import { sign, textWidth } from '../scene/props.js';
 import { drawLandmark, PLINTH } from './landmarks.js';
 import { miniVehicle, boat } from './vehicles.js';
 import { roundPolygon, pointInPolygon } from './roads.js';
+import { rasterLgas } from './lga.js';
+import { estateLayout } from './estates.js';
 
 export const WATER_Y = -0.5;
 /** Landmarks are drawn a little larger than life, so each can be told apart on a view of the whole city. */
@@ -137,6 +139,36 @@ function waterTexture(THREE, size = 128) {
   texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4;
   texture.needsUpdate = true;
   return texture;
+}
+
+/**
+ * Lean unit shapes for things drawn hundreds of times: a box without its underside (10 triangles)
+ * and a four-sided pyramid without a base (4). White, so an instance colour is the colour.
+ */
+export function leanGeometry(THREE, kind) {
+  const pos = [], nor = [], idx = [];
+  const face = (points, normal) => { const base = pos.length / 3; for (const point of points) { pos.push(...point); nor.push(...normal); } for (let i = 1; i < points.length - 1; i++) idx.push(base, base + i, base + i + 1); };
+  if (kind === 'box') {
+    const a = -0.5, b = 0.5;
+    face([[a, 1, b], [b, 1, b], [b, 1, a], [a, 1, a]], [0, 1, 0]);
+    face([[a, 0, b], [b, 0, b], [b, 1, b], [a, 1, b]], [0, 0, 1]); face([[b, 0, a], [a, 0, a], [a, 1, a], [b, 1, a]], [0, 0, -1]);
+    face([[b, 0, b], [b, 0, a], [b, 1, a], [b, 1, b]], [1, 0, 0]); face([[a, 0, a], [a, 0, b], [a, 1, b], [a, 1, a]], [-1, 0, 0]);
+  } else if (kind === 'gable') {
+    // A ridge roof: two slopes and two gable ends, the ridge running front to back. It sits on a unit house (y = 0 is the eaves).
+    const r = 0.58, d = 0.56, h = 0.46, k = Math.hypot(h, r);
+    face([[-r, 0, d], [0, h, d], [0, h, -d], [-r, 0, -d]], [-h / k, r / k, 0]); face([[r, 0, -d], [0, h, -d], [0, h, d], [r, 0, d]], [h / k, r / k, 0]);
+    face([[-r, 0, d], [r, 0, d], [0, h, d]], [0, 0, 1]); face([[r, 0, -d], [-r, 0, -d], [0, h, -d]], [0, 0, -1]);
+  } else {
+    const r = 0.56, h = 0.6, k = Math.hypot(h, r);
+    face([[-r, 0, r], [r, 0, r], [0, h, 0]], [0, r / k, h / k]); face([[r, 0, -r], [-r, 0, -r], [0, h, 0]], [0, r / k, -h / k]);
+    face([[r, 0, r], [r, 0, -r], [0, h, 0]], [h / k, r / k, 0]); face([[-r, 0, -r], [-r, 0, r], [0, h, 0]], [-h / k, r / k, 0]);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+  geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(nor), 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(pos.length).fill(1), 3));
+  geometry.setIndex(idx);
+  return geometry;
 }
 
 /** Push a polygon's outline outwards by `distance`. */
@@ -338,7 +370,9 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
 
   // ---- the fabric: houses, blocks, towers, trees and palms ------------------------------------
   const roadDistance = (x, z) => { let best = Infinity; for (const segment of segments) { const d = segmentDistance(x, z, segment.a, segment.b) - segment.half; if (d < best) best = d; } return best; };
-  const blocked = (x, z, pad) => clear.some((circle) => Math.hypot(circle.x - x, circle.z - z) < circle.r + pad)
+  // The first estate of every local government is open ground for its residents' houses.
+  const fronts = (pack.lgas || []).map((lga) => estateLayout(pack, lga.id).cells[0]);
+  const blocked = (x, z, pad) => fronts.some((cell) => Math.abs(x - cell.x) < cell.size / 2 + pad + 0.6 && Math.abs(z - cell.z) < cell.size / 2 + pad + 0.6) || clear.some((circle) => Math.hypot(circle.x - x, circle.z - z) < circle.r + pad)
     || (pack.zones || []).some((zone) => inBox(x, z, [zone[0] - pad, zone[1] - pad, zone[2] + pad, zone[3] + pad]))
     || plates.some((plate) => !plate.water && inBox(x, z, [plate.box[0] - pad, plate.box[1] - pad, plate.box[2] + pad, plate.box[3] + pad]))
     || Object.values(pack.estates || {}).some((estate) => inBox(x, z, [estate.x - 1.6 - pad, estate.z - 1.6 - pad, estate.x + (estate.cols - 1) * 2.7 + 1.6 + pad, estate.z + (Math.ceil((estate.max ?? 18) / estate.cols) - 1) * 3 + 1.6 + pad]));
@@ -386,7 +420,8 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     }
   }
   const thin = (list, cap) => { if (list.length <= cap) return list; const step = list.length / cap; return Array.from({ length: cap }, (_, i) => list[Math.floor(i * step)]); };
-  const HOUSE_CAP = 560, TOWER_CAP = 150, TREE_CAP = 330, PALM_CAP = 90;
+  // The decorative fabric is thinner than it could be on purpose: the houses that matter are the players' own (src/map3d/houses.js), and they need room in the budget.
+  const HOUSE_CAP = 420, TOWER_CAP = 150, TREE_CAP = 330, PALM_CAP = 90;
   const fabric = { houses: thin(houses, HOUSE_CAP), towers: thin(towers, TOWER_CAP), trees: thin(trees, TREE_CAP), palms: thin(palms, PALM_CAP) };
 
   const dummy = new THREE.Object3D(), tint = new THREE.Color();
@@ -407,10 +442,10 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     return mesh;
   }
   const upright = (item, object, sx = item.sx, sy = item.sy, sz = item.sz) => { object.position.set(item.x, item.y || 0, item.z); object.rotation.set(0, item.ry || 0, 0); object.scale.set(sx, sy, sz); };
-  instanced('house-walls', unit((u) => u.box(0, 0.5, 0, 1, 1, 1, '#ffffff')), materials.instanced, fabric.houses, (item, o) => upright(item, o), (item) => item.wall);
-  instanced('house-roofs', unit((u) => u.cyl(0, 0.3, 0, 0.78, 0.6, '#ffffff', { seg: 4, top: 0.08, ry: Math.PI / 4 })), materials.instanced, fabric.houses,
+  instanced('house-walls', leanGeometry(THREE, 'box'), materials.instanced, fabric.houses, (item, o) => upright(item, o), (item) => item.wall);
+  instanced('house-roofs', leanGeometry(THREE, 'pyramid'), materials.instanced, fabric.houses,
     (item, o) => { o.position.set(item.x, item.sy, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.sx, 0.9 + item.sy * 0.25, item.sz); }, (item) => item.roof);
-  instanced('house-windows', unit((u) => { u.quad(0.18, 0.55, 0.506, 0.26, 0.3, '#ffe6ae'); u.quad(0.506, 0.55, -0.1, 0.26, 0.3, '#fff4d6', { ry: Math.PI / 2 }); u.quad(-0.2, 0.55, -0.506, 0.26, 0.3, '#ffd98a', { ry: Math.PI }); }, materials.windows),
+  instanced('house-windows', unit((u) => { u.quad(0.18, 0.55, 0.506, 0.26, 0.3, '#ffe6ae'); u.quad(0.506, 0.55, -0.1, 0.26, 0.3, '#fff4d6', { ry: Math.PI / 2 }); }, materials.windows),
     materials.windows, fabric.houses, (item, o) => upright(item, o));
   instanced('towers', unit((u) => { u.box(0, 0.5, 0, 1, 1, 1, '#ffffff'); u.box(0, 1.01, 0, 0.7, 0.03, 0.7, '#c9ced3'); }), materials.instanced, fabric.towers, (item, o) => upright(item, o), (item) => item.colour);
   instanced('tower-windows', unit((u) => {
@@ -420,7 +455,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
       u.quad(Math.sin(ry) * 0.506, 0.2 + floor * 0.2, Math.cos(ry) * 0.506, 0.78, 0.085, tones[(floor * 5 + face * 3) % tones.length], { ry });
     }
   }, materials.windows), materials.windows, fabric.towers, (item, o) => upright(item, o));
-  instanced('trees', unit((u) => { u.cyl(0, 0.45, 0, 0.13, 0.9, '#6b4f36', { seg: 5 }); u.ico(0, 1.45, 0, 0.85, 0.95, 0.85, '#ffffff'); }), materials.instanced, fabric.trees,
+  instanced('trees', unit((u) => { u.cyl(0, 0.45, 0, 0.13, 0.9, '#6b4f36', { seg: 4, open: true }); u.ico(0, 1.45, 0, 0.85, 0.95, 0.85, '#ffffff'); }), materials.instanced, fabric.trees,
     (item, o) => upright(item, o, item.s, item.s, item.s), (item) => ['#3f8a57', '#4f9a5f', '#2c6b4a', '#5aa55f', '#3a7d4f'][Math.floor(item.ry * 7) % 5]);
   instanced('palms', unit((u) => {
     u.cyl(0, 1.5, 0, 0.11, 3.0, '#8a7250', { seg: 5, top: 0.7 });
@@ -498,10 +533,23 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   if (homeWindowMesh) { homeWindowMesh.castShadow = false; keep(homeWindowMesh.geometry); triangles += homeWindowMesh.geometry.index.count / 3; home.add(homeWindowMesh); }
   group.add(home);
   let homeId = null;
-  function setHome(house) {
+  /**
+   * Where Home is: the rented home of a district (the landmark stands on its lot), or — `own` =
+   * { x, z, label } — the player's own house on its plot, where the landmark makes way for the
+   * estate's houses and Home is just the place the label points at.
+   */
+  function setHome(house, own = null) {
+    if (own) {
+      const key = `own:${own.x.toFixed(2)}:${own.z.toFixed(2)}`;
+      if (key === homeId) return false;
+      homeId = key; home.visible = false;
+      const node = network.attachPlace('home:own', { x: own.x, z: own.z });
+      places.home = { id: 'home', kind: 'home', house: 'own', district: own.label, x: own.x, z: own.z, ry: node.ry, top: own.top ?? 1, gate: node.gate, own: true };
+      return true;
+    }
     const id = Object.hasOwn(pack.homes, house) ? house : Object.keys(pack.homes)[0];
     if (id === homeId) return false;
-    homeId = id;
+    homeId = id; home.visible = true;
     const node = network.places[`home:${id}`], spot = pack.homes[id];
     home.position.set(spot.x, 0, spot.z); home.rotation.y = node.ry; home.scale.setScalar(LANDMARK_SCALE);
     places.home = { id: 'home', kind: 'home', house: id, district: spot.district, x: spot.x, z: spot.z, ry: node.ry, top: homeTop, gate: node.gate };
@@ -509,13 +557,41 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   }
   setHome(null);
 
+  // ---- the local governments: one flat layer of tints and boundary lines, drawn on land only ----------------
+  let lgaMesh = null, lgaOwn;
+  if (pack.lgas?.length) {
+    const material = keep(new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+    const plane = new THREE.PlaneGeometry(maxX - minX, maxZ - minZ);
+    plane.rotateX(-Math.PI / 2);
+    lgaMesh = new THREE.Mesh(plane, material);
+    lgaMesh.position.set((minX + maxX) / 2, 0.012, (minZ + maxZ) / 2);
+    lgaMesh.visible = false;
+    count(add(lgaMesh, 'lgas', 1));
+  }
+  /** Show or hide the local-government layer; `own` is the player's, drawn brighter with a firmer line. Returns true when it changed. */
+  function setLgas(on, own = null) {
+    if (!lgaMesh) return false;
+    let changed = lgaMesh.visible !== Boolean(on);
+    lgaMesh.visible = Boolean(on);
+    if (on && (own !== lgaOwn || !lgaMesh.material.map)) {
+      lgaOwn = own;
+      const image = rasterLgas(pack, { scale: 2, own });
+      lgaMesh.material.map?.dispose();
+      const texture = new THREE.DataTexture(image.data, image.width, image.height, THREE.RGBAFormat);
+      texture.magFilter = THREE.LinearFilter; texture.minFilter = THREE.LinearFilter; texture.colorSpace = THREE.SRGBColorSpace; texture.flipY = true; texture.needsUpdate = true;
+      lgaMesh.material.map = texture; lgaMesh.material.needsUpdate = true;
+      changed = true;
+    }
+    return changed;
+  }
+
   let time = 'day';
   return {
     group, places, materials, pack,
     get triangles() { return triangles; },
     counts: { houses: fabric.houses.length, towers: fabric.towers.length, trees: fabric.trees.length, palms: fabric.palms.length, vehicles: traffic.length, shadows: shadows.length },
     get time() { return time; },
-    setHome,
+    setHome, setLgas, fronts,
     /** Lighting that belongs to the city's own materials. The host applies hemi, sun and sky. */
     setTime(next) {
       const preset = CITY_LIGHT[next] || CITY_LIGHT.day;
@@ -532,6 +608,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
       if (trafficOn) placeTraffic(seconds);
     },
     dispose() {
+      lgaMesh?.material.map?.dispose();
       for (const thing of own) thing.dispose?.();
       group.parent?.remove(group);
       own.length = 0;

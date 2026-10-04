@@ -77,8 +77,9 @@
  */
 import rooms from './rooms.js';
 import social from './social.js';
+import world from './world.js';
 
-export const WS_MODULES = [rooms, social];
+export const WS_MODULES = [rooms, social, world];
 
 const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'];
 

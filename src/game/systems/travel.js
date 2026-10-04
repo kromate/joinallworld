@@ -67,6 +67,7 @@ import { emit, modify } from '../registry.js';
 import { busy, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.js';
 import { openingInfo } from '../clock.js';
 import { arrive, canAfford, credit, debit, changeNeeds, addSkillXp, addMoodlet, removeMoodlet, skillLevel, feelingsOf, findActivity, spotsOf, NEEDS } from '../api.js';
+import { lgaOf } from '../content/world.js';
 import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict } from '../content/venues.js';
 import { lagosTime } from '../clock.js';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, TRAVEL_DURATION } from '../content/travel.js';
@@ -83,6 +84,8 @@ const homeId = (state) => (Object.hasOwn(HOME_SPOTS, state?.travel?.home) ? stat
 
 /** Map position and landmass of a venue; Home depends on which house the player lives in. */
 export function placeOf(state, venueId) {
+  // Home in a house the player built: the landmass of its local government; the middle of the map for distance.
+  if (venueId === 'home' && state?.estate?.living === 'own') return { x: 50, y: 50, zone: lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.zone ?? 'mainland' };
   const place = venueId === 'home' ? HOME_SPOTS[homeId(state)] : VENUES[venueId] || COMING_SOON[venueId];
   return place ? { x: place.map.x, y: place.map.y, zone: place.zone } : null;
 }
@@ -321,7 +324,7 @@ function destinationCard(state, venue, ctx) {
   // Reasons that do not depend on the mode are worked out once and shared by every tile.
   const base = here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
   return {
-    id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? HOME_SPOTS[homeId(state)].district : venueDistrict(id, ctx.cityId),
+    id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? (state.estate?.living === 'own' ? lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.name ?? 'Your house' : HOME_SPOTS[homeId(state)].district) : venueDistrict(id, ctx.cityId),
     icon: venue.icon, description: venue.description, category: venue.category, x: place.x, y: place.y, zone: place.zone,
     here, visited: state.travel.visited.includes(id), open: opening.open, hours: opening.hours, status: opening.status,
     band: here ? null : BAND_LABELS[routeBand(state, state.location, id)],

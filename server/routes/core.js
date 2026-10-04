@@ -55,6 +55,7 @@ export async function executeCommand(ctx, request, body, { internal = false, sco
   const { outcome, publicId } = await store.transact(db => {
     const session = request.requireSession(db, { renew: true });
     validateActionPayload(body, now(), config.actionWindowMs);
+    ctx.checks?.cityGate?.(session, body.cityId);
     const state = settle(session, body.cityId);
     const result = core.actionOnce(session, body, () => {
       const done = internal === true ? ctx.act(state, body) : core.playerAct(state, body);
@@ -149,6 +150,8 @@ export default function coreRoutes(ctx) {
       // never shows a player something that a failed write then takes back.
       const { state, publicId } = await store.transact(db => {
         const session = request.requireSession(db, { renew: true });
+        // A character that travelled to another city has no life left in this one (server/world/service.js).
+        ctx.checks?.cityGate?.(session, city);
         const before = outcomeKey(session.cities?.[city]?.state);
         const state = settle(session, city);
         return { state, publicId: session.publicId, material: before !== outcomeKey(state) };

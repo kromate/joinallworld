@@ -38,11 +38,16 @@ import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.js';
 import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.js';
 import { createActor } from './actor.js';
 import { createOverlays } from './overlays.js';
+import { createHouses } from './houses.js';
+import { estateLayout, plotAt } from './estates.js';
+import { lgaAt } from './lga.js';
 import { tripOf, createTripClock, tripPose } from './trip.js';
 import { PLINTH as PLINTH_UNIT } from './landmarks.js';
 import { avatarBox, labelShift, nearPoints } from './labels.js';
 import { iconFor } from '../ui/icon-map.js';
 
+/** How close the camera may come: near enough to tell the houses of a compact estate apart. */
+const CLOSEST = 3;
 const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34, PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
 let hintSeen = false;             // the how-to line shows until the player first moves the map, picks a place or travels
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
@@ -55,6 +60,7 @@ export function webglAvailable(doc = globalThis.document) {
 }
 
 export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
+  world = null, onSelectLga = () => {}, onSelectHouse = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden } = {}) {
   const doc = globalThis.document?.createElement ? globalThis.document : null;
@@ -75,11 +81,16 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   scene.add(city.group);
   const overlays = createOverlays(kit, city);
   scene.add(overlays.group);
+  const houses = createHouses(kit, pack);
+  scene.add(houses.group);
   const actor = createActor(kit);
   scene.add(actor.group);
-  const rig = createRig(THREE, camera, { minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
+  const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
   const ringOf = (colour, opacity) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };
   const selectRing = ringOf('#14532d', 0.95), hoverRing = ringOf('#e8a643', 0.9);
+  // The player's own plot: a ring that stays big enough to find from any distance.
+  const ownRing = new THREE.Mesh(new THREE.RingGeometry(0.62, 0.8, 32), new THREE.MeshBasicMaterial({ color: '#e8a643', transparent: true, opacity: 0.95, depthWrite: false }));
+  ownRing.rotation.x = -Math.PI / 2; ownRing.renderOrder = 3; ownRing.visible = false; scene.add(ownRing);
   const routeMaterial = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.9, depthWrite: false });
   let routeLine = null;
 
@@ -102,7 +113,10 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
 
   // ---- state ----------------------------------------------------------------------------------
   let state = null, layer = 'city', filter = 'all', selected = null, hovered = null, destroyed = false, lost = false;
-  let layers = { billboards: false, sea: false, neighbours: false, gov: false, moving: false }, data = { ads: null, neighbours: null, gov: null };
+  let layers = { billboards: false, sea: false, neighbours: false, gov: false, moving: false, lgas: true, homes: true }, data = { ads: null, neighbours: null, gov: null };
+  // The world: local governments and the houses on their estates (src/map3d/houses.js, world-data.js).
+  const plates = new Map(), tags = [];
+  let friends = new Set(), summaryShown = null, hoverHouse = null, mine = null, pixels = 1;
   let size = { width: 0, height: 0 }, insets = { left: 0, top: 0, right: 0, bottom: 0 }, opened = false, userMoved = false, time = null, labelKey = '', chipKey = '';
   let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs = [], gaps = [];
   let trip = null, route = null, returning = null, settling = false, pendingArrive = null, dueAt = -Infinity, tripCamera = true, pose = null;
@@ -130,11 +144,74 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   }
   function draw(t = now()) {
     // The player's piece grows as the view pulls back, so it can always be found — and a trip always followed.
-    actor.setSize(clamp(rig.view.distance / 62, 1.2, 4));
+    actor.setSize(clamp(rig.view.distance / 62, rig.view.distance < 34 ? Math.max(0.12, rig.view.distance / 62) : 1.2, 4));
+    syncWorld();
     renderer.render(scene, camera);
     renderCount += 1;
     placeLabels();
     frameMs.push(now() - t); if (frameMs.length > 120) frameMs.shift();
+  }
+
+  // ---- the world: local governments and houses ---------------------------------------------------
+  const hasWorld = Boolean(pack.lgas?.length);
+  const ownPlot = () => { const plot = state?.estate?.plot; return plot && pack.lgas?.some((lga) => lga.id === plot.lga) ? plot : null; };
+  const plotPoint = (plot) => estateLayout(pack, plot.lga).plot(plot.estate, plot.plot);
+  /** Choose the level of detail for this view and say which estates are wanted. Cheap when nothing changed. */
+  function syncWorld() {
+    if (!hasWorld) return;
+    pixels = size.height / (2 * Math.tan((camera.fov * Math.PI) / 360) * rig.view.distance || 1);
+    const summary = world?.summary() ?? null;
+    if (summary !== summaryShown) { summaryShown = summary; houses.setSummary(summary); updatePlates(); }
+    houses.update({ x: rig.view.x, z: rig.view.z, distance: rig.view.distance, pixels }, world, { own: ownPlot(), serverNow: state?.t ?? 0, visible: layers.homes });
+    const own = layers.homes ? ownPlot() : null;
+    ownRing.visible = Boolean(own);
+    if (own) { const at = plotPoint(own), pitch = estateLayout(pack, own.lga).pitch(own.estate); ownRing.position.set(at.x, 0.05, at.z); ownRing.scale.setScalar(Math.max(pitch * 0.85, 9 / pixels)); }
+  }
+  function updatePlates() {
+    const own = state?.estate?.lga ?? null;
+    for (const [id, plate] of plates) {
+      const counts = summaryShown?.get(id);
+      plate.note.textContent = counts ? `${counts.houses.toLocaleString('en-NG')} home${counts.houses === 1 ? '' : 's'}${counts.online ? ` · ${counts.online.toLocaleString('en-NG')} online` : ''}` : '';
+      plate.node.classList.toggle('is-own', id === own);
+      plate.node.setAttribute('aria-label', `${plate.lga.name} local government${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
+    }
+  }
+  /** The house under a point of the ground, if its estate is drawn as houses: { lga, estate, plot, house }. */
+  function houseAtGround(point) {
+    if (!point || !layers.homes) return null;
+    const lga = lgaAt(pack, point.x, point.z);
+    if (!lga) return null;
+    const layout = estateLayout(pack, lga), hit = plotAt(layout, point.x, point.z);
+    if (!hit) return { lga, layout, estate: -1 };
+    const drawn = houses.detailed().some((item) => item.lga === lga && item.estate === hit.estate);
+    const house = drawn && hit.plot >= 0 ? world?.estate(lga, hit.estate)?.houses.get(hit.plot) ?? null : null;
+    return { lga, layout, estate: hit.estate, plot: hit.plot, drawn, house };
+  }
+  const groundOf = (event) => { const n = toNdc(local(event)); return rig.groundAt(n.x, n.y); };
+  /** A tap that hit no building: a house opens its owner's card, an estate is flown into, a local government opens its page. */
+  function worldTap(event) {
+    if (!hasWorld) return false;
+    const point = groundOf(event), hit = houseAtGround(point);
+    const lga = hit?.lga ?? (point ? lgaAt(pack, point.x, point.z) : null);
+    if (!lga) return false;
+    dismissHint();
+    if (hit?.house) {
+      const house = hit.house;
+      onSelectHouse({ lga, estate: hit.estate, plot: hit.plot, id: house.id ?? null, name: house.name ?? null, online: Boolean(house.online), you: Boolean(house.you), style: house.s, upgrading: house.u > (state?.t ?? 0) });
+      return true;
+    }
+    const occupied = hit && hit.estate >= 0 && ((summaryShown?.get(lga)?.occ?.[hit.estate] ?? 0) > 0 || hit.estate === 0);
+    if (occupied && !hit.drawn) { api.focusEstate(lga, hit.estate); return true; }
+    if (layers.lgas) { onSelectLga(lga); return true; }
+    return false;
+  }
+  function houseHover(event) {
+    const hit = hasWorld && !event.target.closest?.('[data-m3],.m3-chip,.m3-lga') ? houseAtGround(groundOf(event)) : null;
+    const next = hit?.house ? { lga: hit.lga, estate: hit.estate, plot: hit.plot, text: hit.house.you ? 'Your house' : hit.house.name ? `${hit.house.name}${hit.house.online ? ' · online' : ''}` : 'A neighbour (not listed)' } : null;
+    if ((next && hoverHouse && next.lga === hoverHouse.lga && next.estate === hoverHouse.estate && next.plot === hoverHouse.plot) || (!next && !hoverHouse)) return;
+    hoverHouse = next;
+    if (root && !hovered) root.style.cursor = next ? 'pointer' : '';
+    request();
   }
 
   // ---- the trip ----------------------------------------------------------------------------------
@@ -227,6 +304,17 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       labels.set(place.id, { node, name, note, width: 80, height: 30, priority: 0, shift: 0 });
     }
     // The traveller's own tag: it rides above the avatar for the length of a trip.
+    for (const lga of pack.lgas || []) {
+      const node = doc.createElement('button');
+      node.type = 'button'; node.className = 'm3-lga'; node.dataset.lga = lga.id; node.hidden = true;
+      const name = doc.createElement('b'), note = doc.createElement('small');
+      name.textContent = lga.name;
+      node.append(name, note);
+      labelLayer.append(node);
+      plates.set(lga.id, { node, note, lga });
+    }
+    // House tags: the hovered house, your own, and friends' — a handful of nodes, however many houses there are.
+    for (let i = 0; i < 14; i++) { const node = doc.createElement('div'); node.className = 'm3-tag'; node.hidden = true; node.setAttribute('aria-hidden', 'true'); labelLayer.append(node); tags.push(node); }
     you = doc.createElement('div');
     you.className = 'm3-you'; you.hidden = true; you.setAttribute('aria-hidden', 'true'); you.textContent = 'You';
     labelLayer.append(you);
@@ -328,6 +416,29 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     }
     const far = rig.view.distance > 230;
     if (root.classList.contains('is-far') !== far) root.classList.toggle('is-far', far);
+    // Local-government name plates stand on the ground at their plate point; near the houses they step back.
+    for (const { node, lga } of plates.values()) {
+      const at = project(lga.plate[0], 0.1, lga.plate[1]);
+      const visible = layers.lgas && at.front && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && rig.view.distance > 26;
+      if (node.hidden === visible) node.hidden = !visible;
+      if (visible) node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-50%)`;
+    }
+    // House tags: yours, the one under the pointer, friends' in the estates drawn as houses.
+    const wanted = [], own = layers.homes ? ownPlot() : null;
+    if (own && !city.places.home.own) wanted.push({ ...own, text: 'Your house', kind: 'own' });
+    if (hoverHouse) wanted.push({ ...hoverHouse, kind: 'hover' });
+    if (layers.homes && friends.size) for (const item of houses.detailed()) {
+      for (const house of world?.estate(item.lga, item.estate)?.houses.values() ?? []) if (house.id && friends.has(house.id) && wanted.length < tags.length) wanted.push({ lga: item.lga, estate: item.estate, plot: house.p, text: house.name, kind: house.online ? 'friend is-online' : 'friend' });
+    }
+    tags.forEach((node, i) => {
+      const item = wanted[i], spot = item ? plotPoint(item) : null, at = spot ? project(spot.x, estateLayout(pack, item.lga).pitch(item.estate) * 0.9, spot.z) : null;
+      const visible = Boolean(at?.front) && at.x > 0 && at.x < size.width && at.y > insets.top && at.y < size.height;
+      if (node.hidden === visible) node.hidden = !visible;
+      if (!visible) return;
+      if (node.textContent !== item.text) node.textContent = item.text;
+      node.className = `m3-tag is-${item.kind}`;
+      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
+    });
     // "Find me" lights up while the player's piece is out of sight, or (on a phone) the view has pulled well back from it.
     const away = !feet?.front || feet.x < insets.left || feet.x > size.width - insets.right || feet.y < insets.top || feet.y > size.height - insets.bottom + 40 || (size.width <= 720 && nearDistance > 0 && rig.view.distance > nearDistance * 1.7);
     if (root.classList.contains('is-away') !== away) root.classList.toggle('is-away', away);
@@ -439,7 +550,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   function onPointerMove(event) {
     const at = local(event);
     if (!pointers.has(event.pointerId)) {
-      if (event.pointerType === 'mouse' && !event.buttons) hover(event.target.closest?.('.m3-label')?.dataset.venue || (event.target.closest?.('[data-m3],.m3-chip') ? null : pick(event.clientX, event.clientY, 22)));
+      if (event.pointerType === 'mouse' && !event.buttons) { houseHover(event); hover(event.target.closest?.('.m3-label')?.dataset.venue || (event.target.closest?.('[data-m3],.m3-chip') ? null : pick(event.clientX, event.clientY, 22))); }
       return;
     }
     pointers.set(event.pointerId, at);
@@ -484,7 +595,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     const id = pick(event.clientX, event.clientY), at = now();
     if (id && lastTap.id === id && at - lastTap.at < DOUBLE_TAP_MS) { focus(id); lastTap = { id: null, at: 0 }; return; }
     lastTap = { id, at };
-    if (id) choose(id);
+    if (id) choose(id); else if (worldTap(event)) request();
   }
   function hover(id) {
     if (id === hovered) return;
@@ -508,6 +619,8 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     if (control) { onControl(control.dataset.m3); return; }
     const house = event.target.closest?.('[data-neighbour]');
     if (house) { onSelectNeighbour({ id: house.dataset.neighbour, name: house.dataset.name }); return; }
+    const plate = event.target.closest?.('.m3-lga');
+    if (plate && !suppressClick) { onSelectLga(plate.dataset.lga); return; }
     const label = event.target.closest?.('.m3-label');
     // Only the pointer click that ends a drag or a pinch is swallowed; a keyboard click (detail 0) always goes through.
     if (suppressClick) { suppressClick = false; if (event.detail !== 0) return; }
@@ -542,7 +655,8 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     const picked = 'selected' in detail && detail.selected && detail.selected !== selected;
     if ('selected' in detail) setSelected(detail.selected && city.places[detail.selected] ? detail.selected : null);
     const seaWasOff = !layers.sea;
-    if (detail.layers && typeof detail.layers === 'object') layers = { billboards: detail.layers.billboards === true, sea: detail.layers.sea === true, neighbours: detail.layers.neighbours === true, gov: detail.layers.gov === true, moving: detail.layers.moving === true };
+    if (detail.layers && typeof detail.layers === 'object') layers = { billboards: detail.layers.billboards === true, sea: detail.layers.sea === true, neighbours: detail.layers.neighbours === true, gov: detail.layers.gov === true, moving: detail.layers.moving === true, lgas: detail.layers.lgas !== false, homes: detail.layers.homes !== false };
+    city.setLgas(layers.lgas, state?.estate?.lga ?? null);
     for (const key of ['ads', 'neighbours', 'gov']) if (key in detail) data[key] = detail[key] && typeof detail[key] === 'object' ? detail[key] : null;
     city.setTraffic(layers.moving);
     if (overlays.set(layers, data)) syncChips();
@@ -578,7 +692,10 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     get ready() { return layer === 'city'; },
     setState(next) {
       state = next;
-      let changed = city.setHome(state?.travel?.home);
+      // Home is the rented home's lot — or, for a player living in their own house, the plot it stands on.
+      const plot = ownPlot(), living = state?.estate?.living === 'own' && plot;
+      let changed = living ? city.setHome(null, { ...plotPoint(plot), label: pack.lgas.find((lga) => lga.id === plot.lga)?.name ?? 'Your house', top: Math.max(0.6, estateLayout(pack, plot.lga).pitch(plot.estate) * 1.1) }) : city.setHome(state?.travel?.home);
+      if (hasWorld && city.setLgas(layers.lgas, state?.estate?.lga ?? null)) { changed = true; updatePlates(); }
       if (changed) { labelKey = ''; if (overlays.set(layers, data)) syncChips(); }
       changed = applyTime(heldTime || timeOfDay(state?.t ?? 0)) || changed;
       const nextTrip = tripOf(state);
@@ -601,6 +718,15 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       if (deepLink) { const id = deepLink; deepLink = null; if (city.places[id]) choose(id); }
       request();
     },
+    /** The world data changed (the city summary or an estate arrived): draw it. */
+    worldChanged() { if (world?.summary() !== summaryShown) updatePlates(); request(); },
+    /** Public ids of the player's friends, so their houses can be named on the map. */
+    setFriends(ids) { friends = new Set(ids || []); request(); },
+    /** Fly to an estate so that its houses can be told apart. */
+    focusEstate(lga, estate) { const cell = estateLayout(pack, lga)?.cells[estate]; if (!cell) return; grab(); motion({ x: cell.x, z: cell.z, distance: clamp(cell.size * 3.4, CLOSEST, 90) }, 0.7); },
+    focusPlot(plot) { if (!plot || !pack.lgas?.some((lga) => lga.id === plot.lga)) return; const at = plotPoint(plot), cell = estateLayout(pack, plot.lga).cells[plot.estate]; grab(); motion({ x: at.x, z: at.z, distance: clamp(cell.size * 2.2, CLOSEST, 60) }, 0.7); },
+    focusLga(id) { const lga = pack.lgas?.find((item) => item.id === id); if (!lga) return; grab(); motion(rig.framing(lga.polygon.map(([x, z]) => ({ x, z, y: 0 })).filter((point) => point.x >= pack.bounds.fit.minX - 4 && point.x <= pack.bounds.fit.maxX + 4), { pad: 1.05, min: 50 }), 0.7); },
+    houses,
     setPlayer(player) { if (actor.setPlayer(player)) { if (!trip && state) standHere(); request(); } },
     /** The page's visibility changed (the host of a test calls this; in a browser the document's own event does). */
     visibility: onVisibility,
@@ -619,6 +745,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       const mid = (list) => (list.length ? list[Math.floor(list.length / 2)] : 0);
       return { kind: '3d', renderCount, frames: frameCount, loop: Boolean(rafId), time, reducedMotion, lost,
         triangles: info.triangles ?? 0, calls: info.calls ?? 0, cityTriangles: city.triangles, overlayTriangles: overlays.triangles, counts: city.counts,
+        houses: { level: houses.level, ...houses.counts(), cached: world?.size?.() ?? 0 }, pixels,
         view: { ...rig.view }, frameMs: { median: mid(sorted), max: sorted.at(-1) ?? 0 }, frameGapMs: { median: mid(gap), max: gap.at(-1) ?? 0 },
         trip: trip ? { ...trip, progress: clock.progress(now()), remaining: clock.remaining(now()), shown: pose?.progress ?? null, phase: pose?.phase ?? null, bridge: pose?.bridge ?? null, distance: pose?.distance ?? null, length: route?.length ?? null, bridges: route?.bridges ?? [], x: pose?.x, z: pose?.z, settling, returning: Boolean(returning) } : null,
         selected, layers: { ...layers }, labels: [...labels].map(([id, label]) => ({ id, text: label.name.textContent, note: label.note.textContent, hidden: label.node.hidden, compact: label.node.classList.contains('is-compact') })) };
@@ -632,7 +759,8 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       if (routeLine) routeLine.geometry.dispose();
       routeMaterial.dispose();
       for (const ring of [selectRing, hoverRing]) { ring.geometry.dispose(); ring.material.dispose(); }
-      actor.dispose(); overlays.dispose(); city.dispose(); kit.dispose();
+      ownRing.geometry.dispose(); ownRing.material.dispose();
+      actor.dispose(); overlays.dispose(); houses.dispose(); city.dispose(); kit.dispose();
       if (!providedRenderer) { renderer.dispose(); renderer.forceContextLoss?.(); }
       root?.remove();
       const done = pendingArrive; pendingArrive = null; done?.();

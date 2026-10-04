@@ -5,6 +5,7 @@
  * action; furniture moves with the player and anything that does not fit goes to storage.
  * Every disabled Move button says what is missing (view.property.houses[].blocked).
  */
+import { renderMyHouse, bindMyHouse } from './world-panels.js';
 import './houses.css';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { esc, money, json } from '../dom.js';
@@ -45,8 +46,8 @@ export default {
         : `<button class="ui-button is-primary is-block" data-action="property.house-move" data-payload="${json({ id: house.id })}" ${reason ? 'disabled' : ''}>Move in · ${money(house.moveIn)}</button>${reason ? `<p class="ui-why">${esc(reason)}</p>` : ''}`}</div></article>`;
     }).join('');
     const progress = next ? Math.max(0, Math.min(100, Math.round((state.cash / next.moveIn) * 100))) : 100;
-    return `<section class="ui-hero houses-hero"><small>${next ? 'Next step up' : 'Top of the ladder'}</small><strong>${next ? `${esc(next.label)}, ${esc(next.district)}` : 'The grandest house in the city'}</strong>${next ? `<div class="houses-progress" role="meter" aria-label="Saved towards the move" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><i style="width:${progress}%"></i></div><p>${next.affordable ? 'You can afford the move.' : `${money(next.moveIn - state.cash)} to go · you have ${money(state.cash)}`}</p>` : '<p>You live here already.</p>'}</section>
+    return `${renderMyHouse(state, view)}<h3 class="ui-section">Homes to rent</h3><section class="ui-hero houses-hero"><small>${next ? 'Next step up' : 'Top of the ladder'}</small><strong>${next ? `${esc(next.label)}, ${esc(next.district)}` : 'The grandest house in the city'}</strong>${next ? `<div class="houses-progress" role="meter" aria-label="Saved towards the move" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><i style="width:${progress}%"></i></div><p>${next.affordable ? 'You can afford the move.' : `${money(next.moveIn - state.cash)} to go · you have ${money(state.cash)}`}</p>` : '<p>You live here already.</p>'}</section>
       <p class="ui-note houses-note">Moving in costs ${MOVE_IN_WEEKS} weeks of rent up front. Rent is then due every Saturday.</p>${how('houses-rules', ruleList([`The move-in cost pays the landlord and the agent: ${MOVE_IN_WEEKS} weeks of rent, up front.`, 'Your furniture moves with you. Anything that does not fit the new room waits in Buy → Storage.', 'From then on the new rent is collected every Saturday (see Bank).', 'Rents and move-in costs follow the reference game; the Yaba room size and move-in cost are beta estimates.']), 'How moving works', true)}<div class="houses-list">${cards}</div>`;
   },
-  bind(root, api) { bindHow(root, api); },
+  bind(root, api) { bindHow(root, api); bindMyHouse(root); },
 };

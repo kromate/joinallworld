@@ -49,5 +49,17 @@ export const HOUSING = HOUSES;
 /** Order shown in the Houses app (cheapest first). */
 export const HOUSE_ORDER = ['mushin', 'yaba', 'lekki', 'ikoyi', 'banana'];
 
+/**
+ * The house the room is laid out for: the tier of the player's own house while they live in it
+ * (state.estate, systems/estate.js — pass HOUSE_TIERS of content/world.js), otherwise the rented tier.
+ * → { grid, label, district, owned }
+ */
+export function homeOf(state, designs = null) {
+  const design = state?.estate?.living === 'own' && designs ? designs[state.estate.tier] : null;
+  if (design) return { id: 'own', grid: design.grid, label: design.label, district: 'Your own house', owned: true };
+  const house = HOUSES[state?.property?.house] ?? HOUSES[DEFAULT_HOUSE];
+  return { ...house, owned: false };
+}
+
 /** Where a life lives until onboarding says otherwise (the balanced start). */
 export const DEFAULT_HOUSE = 'yaba';

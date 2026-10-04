@@ -16,6 +16,7 @@
  *          'soon'      shown on the country map with its teaser; cannot be entered
  * stand    'low' | 'high': how tall the city's marker stands on the country map, for two cities
  *          too close together for both labels to sit at the same height
+ * preview  what a city that is coming soon will hold: three plain lines for its card on the country map
  * legacy   true when the server already keeps lives for this city although it is shown as coming
  *          soon. Only a player who already has such a life is offered it, labelled "Preview".
  */
@@ -36,11 +37,14 @@ export const COUNTRIES = Object.freeze({
       lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State', status: 'playable', lon: 3.38, lat: 6.52, stand: 'low',
         teaser: 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', pack: () => import('./cities/lagos.js') },
       ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State', status: 'soon', legacy: true, lon: 3.95, lat: 7.38, stand: 'high',
-        teaser: 'Seven hills of brown roofs, Cocoa House and the best amala in the country.', pack: null },
+        teaser: 'Seven hills of brown roofs, Cocoa House and the best amala in the country.', pack: null,
+        preview: ['Dugbe and Cocoa House', 'Bodija market and the University of Ibadan', 'Mapo Hall on its hill'] },
       abuja: { id: 'abuja', name: 'Abuja', region: 'Federal Capital Territory', status: 'soon', lon: 7.49, lat: 9.06,
-        teaser: 'The capital under Aso Rock: wide roads, big offices and bigger politics.', pack: null },
+        teaser: 'The capital under Aso Rock: wide roads, big offices and bigger politics.', pack: null,
+        preview: ['The Three Arms Zone under Aso Rock', 'Wuse market and Jabi Lake', 'Garki, Maitama and the long expressways'] },
       'port-harcourt': { id: 'port-harcourt', name: 'Port Harcourt', region: 'Rivers State', status: 'soon', lon: 7.03, lat: 4.82,
-        teaser: 'The Garden City: oil money, bole and fish, and creeks that run to the sea.', pack: null },
+        teaser: 'The Garden City: oil money, bole and fish, and creeks that run to the sea.', pack: null,
+        preview: ['Old GRA and the Garden City roundabouts', 'Mile One market and the waterfront', 'The creeks down to Bonny'] },
     },
   },
 });

@@ -298,6 +298,14 @@ export default {
       }
       if (economy.rent.house || economy.loan) startBilling(state, ctx);
     },
+    /** Living in a house the player built (systems/estate.js): the weekly rent stops; back in a rented home it starts again. */
+    'home.owned'(state, data, ctx) {
+      if (data?.living === true) { state.economy.rent.house = null; state.economy.rent.missed = 0; return; }
+      const house = houseOf(idOf(data?.house));
+      if (!house) return;
+      state.economy.rent.house = house.id;
+      startBilling(state, ctx);
+    },
     'house.moved'(state, data, ctx) {
       const house = houseOf(idOf(data?.id ?? data?.house));
       if (!house) return;

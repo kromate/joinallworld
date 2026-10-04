@@ -21,6 +21,8 @@ export function createRig(THREE, camera, bounds) {
   const view = { x: 0, z: 0, yaw: 0, pitch: DEFAULT_PITCH, distance: 220 };
   let goal = null, spin = 0, size = { width: 1, height: 1 }, free = { left: 0, top: 0, right: 0, bottom: 0 }, maxDistance = 400;
   // `bounds.fit` is what "the whole city" means (the land); the bounds themselves are how far the view may wander (the board).
+  // How close the view may come: near enough to see a single house of an estate.
+  const floor = bounds.minDistance ?? MIN_DISTANCE;
   const whole = bounds.fit || bounds;
   const centre = { x: (whole.minX + whole.maxX) / 2, z: (whole.minZ + whole.maxZ) / 2 };
   const roam = { minX: whole.minX, maxX: whole.maxX, minZ: whole.minZ, maxZ: Math.max(whole.maxZ, bounds.roamZ ?? whole.maxZ) };
@@ -28,7 +30,7 @@ export function createRig(THREE, camera, bounds) {
 
   function limit(target) {
     target.pitch = clamp(target.pitch, PITCH_MIN, PITCH_MAX);
-    target.distance = clamp(target.distance, MIN_DISTANCE, maxDistance);
+    target.distance = clamp(target.distance, floor, maxDistance);
     // What is looked at never leaves the land (plus the sea plots), so the city cannot be dragged out of sight.
     target.x = clamp(target.x, roam.minX, roam.maxX); target.z = clamp(target.z, roam.minZ, roam.maxZ);
     return target;
@@ -39,7 +41,7 @@ export function createRig(THREE, camera, bounds) {
     camera.position.set(view.x + Math.sin(view.yaw) * flat, Math.sin(view.pitch) * view.distance, view.z + Math.cos(view.yaw) * flat);
     camera.up.set(0, 1, 0);
     camera.lookAt(view.x, 0, view.z);
-    camera.near = Math.max(1, view.distance * 0.05); camera.far = view.distance * 4 + 600;
+    camera.near = Math.max(0.2, view.distance * 0.05); camera.far = view.distance * 4 + 600;
     camera.aspect = size.width / size.height;
     // Shift the picture so the looked-at point sits in the middle of the free part of the canvas.
     const dx = (free.left - free.right) / 2, dy = (free.top - free.bottom) / 2;
@@ -53,7 +55,7 @@ export function createRig(THREE, camera, bounds) {
   /** The distance at which every point fits in the free part, looking at (x, z) with this yaw and pitch. */
   function distanceFor(points, x, z, yaw, pitch, pad = 1) {
     const saved = { ...view }, share = freeShare();
-    let low = MIN_DISTANCE * 0.5, high = 1400;
+    let low = Math.min(floor, MIN_DISTANCE * 0.5), high = 1400;
     for (let i = 0; i < 22; i++) {
       const mid = (low + high) / 2;
       Object.assign(view, { x, z, yaw, pitch, distance: mid });
@@ -101,7 +103,7 @@ export function createRig(THREE, camera, bounds) {
     /** Zoom by `factor` (< 1 closer) keeping the ground under (ndcX, ndcY) where it is. */
     zoomAt(factor, nx = null, ny = null) {
       goal = null; spin = 0;
-      const before = nx === null ? null : groundAt(nx, ny), next = clamp(view.distance * factor, MIN_DISTANCE, maxDistance), ratio = next / view.distance;
+      const before = nx === null ? null : groundAt(nx, ny), next = clamp(view.distance * factor, floor, maxDistance), ratio = next / view.distance;
       if (before) { view.x = before.x + (view.x - before.x) * ratio; view.z = before.z + (view.z - before.z) * ratio; }
       view.distance = next;
       apply();
@@ -117,7 +119,7 @@ export function createRig(THREE, camera, bounds) {
     framing(points, { pad = 1.35, min = 60 } = {}) {
       const xs = points.map((point) => point.x), zs = points.map((point) => point.z);
       const x = (Math.min(...xs) + Math.max(...xs)) / 2, z = (Math.min(...zs) + Math.max(...zs)) / 2;
-      return { x, z, distance: clamp(Math.max(min, distanceFor(points.map((point) => ({ ...point, y: 4 })), x, z, view.yaw, view.pitch, pad)), MIN_DISTANCE, maxDistance) };
+      return { x, z, distance: clamp(Math.max(min, distanceFor(points.map((point) => ({ ...point, y: point.y ?? 4 })), x, z, view.yaw, view.pitch, pad)), floor, maxDistance) };
     },
     get moving() { return Boolean(goal) || spin !== 0; },
     /** Advance an ease or the inertia by dt seconds. Returns true while something is still moving. */

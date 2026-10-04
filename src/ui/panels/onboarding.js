@@ -1,9 +1,29 @@
 /**
  * OWNER: character
- * Character creation flow: Look → Personality → Dream → Birth lottery → Home.
- * Open with api.open('onboarding'); the goal chip offers it to a new life. For a life the server
- * marks as required (view.onboarding.required) the shell opens it by itself and it cannot be
- * dismissed until the Sim has moved in; a life that predates character creation never sees it.
+ * "MAKE THIS LIFE YOURS" — settling in: Personality → Dream → Birth lottery → Home, as short cards.
+ * It is OFFERED, never forced: a guest of the quick start (./quick-start.js) is already playing, and
+ * this sheet opens after their first reward, from the "Settle in" goal, and when they tap Home or
+ * Buy (the shell opens it with params.why). Every card has "Not now": the sheet closes, play goes
+ * on, and it resumes at the same card next time because each step is saved by the server. Nothing
+ * earned before settling in is lost; moving in is what creates the home, the rent and the start cash.
+ * params: { nudge?: 'first-reward' | 'third-activity' | 'next-day', why?: 'home' | 'buy' }.
+ *
+ * A life that never was a guest and has no character yet (view.onboarding.guest false, done false)
+ * gets the same sheet with the Look step in front, as before. A life that predates character
+ * creation never sees it.
+ *
+ * THE HOME CARD HAS A SLOT. `HOME_EXTRAS` (exported below) is a list other owners add a section to —
+ * the local-government choice, say — without editing this file's flow:
+ *   HOME_EXTRAS.push({
+ *     id: 'area',
+ *     render(state, view, draft) → html      drawn under the homes; escape everything; use data-extra="<id>"
+ *                                            on its buttons and keep its own choice in draft.extra[id]
+ *     click(target, draft) → boolean         a click inside it; return true when it changed the draft
+ *     ready(draft) → null | 'what is missing'   the Move in button stays off, with this sentence, until null
+ *     payload(draft) → object                merged into the 'onboarding.home' payload ({ house, stay, … });
+ *                                            the server-side rule that reads it is the adding owner's
+ *   });
+ * Sections are drawn in list order. With none registered the card is exactly the home choice.
  *
  * Every step is confirmed by a server action (see src/game/systems/onboarding.js); this file
  * only keeps the draft being edited. The panel is not live, so a poll never wipes a draft:
@@ -19,14 +39,19 @@
 import './onboarding.css';
 import { esc, money, icon, mark, iconFor } from '../dom.js';
 import { linkWords, linkButton } from '../link.js';
-import { TRAITS, TRAITS_REQUIRED, DREAMS, ONBOARDING_STEPS, RENT_NOTE, LOTTERY_NOTE } from '../../game/content/traits.js';
+import { TRAITS, TRAITS_REQUIRED, DREAMS, DREAM_REWARD, ONBOARDING_STEPS, RENT_NOTE, LOTTERY_NOTE } from '../../game/content/traits.js';
 import { APPEARANCE } from '../../game/content/traits.js';
+import { track } from '../../quick-start/entry.js';
 import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocusBody, mountLookPreview, randomLook, sameLook, starterWardrobe, hairOptions, outfitOptions } from './look-ui.js';
 
 const ID = 'onboarding';
 const LAST = ONBOARDING_STEPS.length - 1;
 const DRAFT_KEY = 'joinallworld-look-draft';
-let draft = null, shown = 0, error = '', pending = '', focusKey = '', owner = null, undo = null;
+let draft = null, shown = 0, error = '', pending = '', focusKey = '', owner = null, undo = null, offered = null;
+/** Extra sections of the Home card, added by other owners (see the header). */
+export const HOME_EXTRAS = [];
+/** The first card a life sees: a guest's look is already chosen. */
+const firstStep = (view) => (view.onboarding.guest ? 1 : 0);
 
 /** The look kept on this device for `key`, if every part of it is still a valid choice. */
 function storedLook(key) {
@@ -51,13 +76,15 @@ function sync(state, view) {
   const o = state.onboarding, key = `${view.session?.id ?? 'local'}:${view.cityId}`;
   if (draft && owner === key) return;
   owner = key;
-  draft = { look: (o.step === 0 && storedLook(key)) || { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house };
-  shown = Math.min(o.step, LAST);
+  draft = { look: (o.step === 0 && storedLook(key)) || { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house, extra: {} };
+  shown = Math.max(firstStep(view), Math.min(o.step, LAST));
   error = ''; pending = ''; undo = null;
 }
 
 /** The step's one primary action, in a footer that stays at the bottom of the sheet with its own background, so it never sits on top of an option. `why` says what is still missing. */
-const primary = (label, { action, disabled = false, why = '' } = {}) => `<div class="ob-foot">${why && !pending ? `<p class="ob-foot-why">${esc(why)}</p>` : ''}<button type="button" class="ui-button is-primary ob-primary" data-ob="${action ?? ''}" data-key="primary" ${disabled || pending ? 'disabled' : ''}>${esc(pending || label)}</button></div>`;
+const primary = (label, { action, disabled = false, why = '', also = '' } = {}) => `<div class="ob-foot">${why && !pending ? `<p class="ob-foot-why">${esc(why)}</p>` : ''}<button type="button" class="ui-button is-primary ob-primary" data-ob="${action ?? ''}" data-key="primary" ${disabled || pending ? 'disabled' : ''}>${esc(pending || label)}</button>${also}${later}</div>`;
+/** "Not now": on every card of a guest's sheet. Set per render. */
+let later = '';
 
 /** The Sim beside a later step: a small preview with the name and what they wear. */
 const withSim = (view, body) => `<div class="ob-with-sim"><aside class="ob-sim">${lookStage(draft.look, { variant: 'mini', name: view.name })}<p><strong>${esc(view.name)}</strong><small>${esc(lookSummary(draft.look))}</small></p></aside><div class="ob-step">${body}</div></div>`;
@@ -72,37 +99,40 @@ function stepBody(state, view) {
   }
   if (shown === 1) {
     const left = TRAITS_REQUIRED - draft.traits.length;
-    return [withSim(view, `<p class="ob-lead">Choose ${TRAITS_REQUIRED} traits. Each one changes how ${esc(name)} plays.</p>
+    return [withSim(view, `<p class="ob-lead"><b>Pick ${TRAITS_REQUIRED} traits — each one is a boost.</b> They change how ${esc(name)} plays from the moment you move in.</p>
       <div class="ob-grid">${Object.values(TRAITS).map((trait) => `<button type="button" class="ob-card" data-trait="${esc(trait.id)}" data-key="trait:${esc(trait.id)}" aria-pressed="${draft.traits.includes(trait.id)}"><span class="ob-card-icon" aria-hidden="true">${iconFor('trait', trait.id, trait.icon)}</span><strong>${esc(trait.label)}</strong><small>${esc(trait.blurb)}</small><ul>${trait.effects.map((line) => `<li>${esc(line)}</li>`).join('')}</ul></button>`).join('')}</div>
       <p class="preview-note">Trait strengths are original beta values. Picking a third trait swaps out your first pick.</p>`),
       primary(left > 0 ? `Choose ${left} more` : 'Next: your dream', { action: 'traits', disabled: left > 0, why: left > 0 ? `${draft.traits.length} of ${TRAITS_REQUIRED} traits chosen.` : '' })];
   }
   if (shown === 2) {
-    return [withSim(view, `<p class="ob-lead">What is ${esc(name)}’s big dream?</p>
+    return [withSim(view, `<p class="ob-lead"><b>Choose a dream — reaching it pays ${money(DREAM_REWARD.cash)} and ${DREAM_REWARD.stars} stars.</b> What is ${esc(name)}’s big dream?</p>
       <div class="ob-list">${Object.values(DREAMS).map((dream) => `<button type="button" class="ob-card is-row" data-dream="${esc(dream.id)}" data-key="dream:${esc(dream.id)}" aria-pressed="${draft.dream === dream.id}"><span class="ob-card-icon" aria-hidden="true">${iconFor('dream', dream.id, dream.icon)}</span><span><strong>${esc(dream.label)}</strong><small>${esc(dream.goal)}</small><small class="ob-faint">${esc(dream.measure)}</small></span></button>`).join('')}</div>`),
       primary(draft.dream ? 'Next: birth lottery' : 'Choose a dream', { action: 'dream', disabled: !draft.dream, why: draft.dream ? '' : 'Tap one of the dreams above to continue.' })];
   }
   if (shown === 3) {
     const outcome = o.lottery;
     if (!outcome) {
-      return [withSim(view, `<p class="ob-lead">Everyone in this city is born into something. Roll once to find out what ${esc(name)} starts with.</p>
+      return [withSim(view, `<p class="ob-lead"><b>Roll the birth lottery — it decides your start cash.</b> Everyone in this city is born into something. Roll once to find out what ${esc(name)} starts with.</p>
         <div class="ob-lottery is-waiting" aria-hidden="true">${mark('game')}</div><p class="preview-note">${esc(LOTTERY_NOTE)}</p>`), primary('Roll the birth lottery', { action: 'lottery' })];
     }
     return [withSim(view, `<div class="ob-lottery"><span class="ob-card-icon" aria-hidden="true">${iconFor('lottery', outcome.id, outcome.icon)}</span><h3>${esc(outcome.label)}</h3><p>${esc(outcome.tagline)}</p><ul>${outcome.bullets.map((line) => `<li>${esc(line)}</li>`).join('')}</ul>${outcome.beta ? '<p class="preview-note">Original beta outcome.</p>' : ''}</div>
       <p class="preview-note">${esc(LOTTERY_NOTE)}</p>`), primary('Choose where to live', { action: 'to-home' })];
   }
   const chosen = o.homes.find((home) => home.id === draft.house && !home.locked);
-  return [withSim(view, `<p class="ob-lead">Where will ${esc(name)} live? ${esc(RENT_NOTE)}</p>
+  const extras = HOME_EXTRAS.map((extra) => `<div class="ob-extra" data-extra-root="${esc(extra.id)}">${extra.render(state, view, draft)}</div>`).join('');
+  const missing = HOME_EXTRAS.map((extra) => extra.ready?.(draft)).find((reason) => typeof reason === 'string' && reason) ?? '';
+  const seed = state.onboarding.seed;
+  const kept = o.guest && state.cash !== seed ? ` You keep the ${money(state.cash)} you have now${chosen ? `: start cash tops your wallet up to ${money(chosen.startCash + state.cash - seed)}` : ''}.` : '';
+  return [withSim(view, `<p class="ob-lead"><b>Choose your home — it comes furnished, with your start cash.</b> Where will ${esc(name)} live? ${esc(RENT_NOTE)}${esc(kept)}</p>
     <div class="ob-list">${o.homes.map((home) => `<button type="button" class="ob-card is-row ob-home" data-house="${esc(home.id)}" data-key="house:${esc(home.id)}" aria-pressed="${draft.house === home.id && !home.locked}" ${home.locked ? 'disabled' : ''}><span class="ob-card-icon" aria-hidden="true">${iconFor('home', home.id, home.icon)}</span><span><em class="ob-tag">${esc(home.tag)}</em><strong>${esc(home.label)} · ${esc(home.district)}</strong><small>${esc(home.blurb)}</small>${home.locked
     ? `<small class="ob-locked">${mark('lock')} ${esc(home.locked)}</small>`
-    : `<small class="ob-money">Start with ${money(home.startCash)} · rent ${money(home.rent)} a week</small>`}</span></button>`).join('')}</div>`),
-    primary(chosen ? `Move in to ${chosen.label}` : 'Choose a home', { action: 'home', disabled: !chosen, why: chosen ? '' : 'Tap one of the homes above to continue.' })];
+    : `<small class="ob-money">Start with ${money(home.startCash)} · rent ${money(home.rent)} a week</small>`}</span></button>`).join('')}</div>${extras}`),
+    primary(chosen ? `Move in to ${chosen.label}` : 'Choose a home', { action: 'home', disabled: !chosen || Boolean(missing), why: chosen ? missing : 'Tap one of the homes above to continue.',
+      also: chosen && !missing && o.guest && state.location !== 'home' ? `<button type="button" class="ui-button ob-stay" data-ob="home-stay" data-key="stay" ${pending ? 'disabled' : ''}>Move in, but stay here for now</button>` : '' })];
 }
 
 export default {
-  id: ID, title: 'Create your Sim', placement: 'modal', live: false,
-  /** A brand-new life must be created before anything else: the shell opens this by itself and keeps it open. */
-  required(state, view) { return view.onboarding?.required ? 'Finish creating your Sim to start playing. This cannot be skipped, and nothing else works until you have moved in.' : null; },
+  id: ID, title: 'Make this life yours', placement: 'modal', live: false,
   render(state, view) {
     const o = view.onboarding;
     if (o.done) {
@@ -110,13 +140,21 @@ export default {
       return `<div class="ob-root ob-done">${lookStage(o.look, { variant: 'wide', name: view.name })}<h3>${esc(view.name)} is ready</h3><p>${o.legacy ? 'This life started before character creation existed, so nothing was changed.' : 'Your Sim has moved in.'} You can change your look any time in Sim → Profile.</p><button type="button" class="ui-button is-primary" data-open="profile">Edit look</button> <button type="button" class="ui-button" data-close>Close</button></div>`;
     }
     sync(state, view);
+    const first = firstStep(view), count = ONBOARDING_STEPS.length - first;
+    shown = Math.max(first, shown);
+    later = o.guest ? '<button type="button" class="ui-button ob-later" data-close data-key="later">Not now — keep playing</button>' : '';
+    // Why the sheet opened, said once at the top: the reward that was just earned, or the home-only thing that was tapped.
+    const why = view.params?.why, nudge = view.params?.nudge;
+    const intro = !o.guest ? '' : why ? `<p class="ob-intro"><span aria-hidden="true">${mark('home')}</span><span><strong>Settle in to get your home.</strong>${why === 'buy' ? 'Buy mode furnishes your own room.' : 'You are a guest in the city for now.'} A few quick choices and it is yours — everything you have earned is kept.</span></p>`
+      : nudge === 'first-reward' ? `<p class="ob-intro is-reward"><span aria-hidden="true">${mark('star')}</span><span><strong>Nice start, ${esc(view.name)}! You have ${money(state.cash)} and ${view.goals?.stars ?? 0} ${view.goals?.stars === 1 ? 'star' : 'stars'}.</strong>Save this character: a few quick choices give it traits, a dream, start cash and a home. Everything you have earned is kept.</span></p>`
+        : nudge ? `<p class="ob-intro"><span aria-hidden="true">${mark('star')}</span><span><strong>Ready to make this life yours?</strong>A few quick choices give ${esc(view.name)} traits, a dream, start cash and a home. Everything you have earned is kept.</span></p>` : '';
     // Every step is numbered and named; finished ones are ticked and the current one is spelled out.
-    const steps = ONBOARDING_STEPS.map((step, index) => `<li class="${index < o.step ? 'is-done' : ''} ${index === shown ? 'is-current' : ''}" ${index === shown ? 'aria-current="step"' : ''}><i aria-hidden="true">${index < o.step && index !== shown ? '✓' : index + 1}</i><span>${esc(step.label)}</span></li>`).join('');
+    const steps = ONBOARDING_STEPS.map((step, index) => (index < first ? '' : `<li class="${index < o.step ? 'is-done' : ''} ${index === shown ? 'is-current' : ''}" ${index === shown ? 'aria-current="step"' : ''}><i aria-hidden="true">${index < o.step && index !== shown ? '✓' : index + 1 - first}</i><span>${esc(step.label)}</span></li>`)).join('');
     const words = linkWords(view);
     // The real connection state in its own words ("No internet", "Server unreachable" …), with the action that fixes it.
     const offline = !words ? '' : `<p class="ob-note" role="status"><span aria-hidden="true">${mark('cloud-off')}</span><span><strong>${esc(words.short)} — keep going.</strong> ${esc(words.why)} Your choices are kept on this device and are saved as soon as you are connected again.</span>${linkButton(view, 'ui-button is-small ob-note-action')}</p>`;
     const [content, footer] = stepBody(state, view);
-    return `<div class="ob-root" data-step="${shown}"><div class="ob-head">${shown > 0 ? `<button type="button" class="sheet-back" data-ob="back" data-key="back" aria-label="Back to ${esc(ONBOARDING_STEPS[shown - 1].label)}">${icon('back')}</button>` : ''}<div class="ob-head-main"><strong>Step ${shown + 1} of ${ONBOARDING_STEPS.length} · ${esc(ONBOARDING_STEPS[shown].label)}</strong><ol class="ob-steps" aria-label="Progress">${steps}</ol></div></div>
+    return `<div class="ob-root" data-step="${shown}">${intro}<div class="ob-head">${shown > first ? `<button type="button" class="sheet-back" data-ob="back" data-key="back" aria-label="Back to ${esc(ONBOARDING_STEPS[shown - 1].label)}">${icon('back')}</button>` : ''}<div class="ob-head-main"><strong>Step ${shown + 1 - first} of ${count} · ${esc(ONBOARDING_STEPS[shown].label)}</strong><ol class="ob-steps" aria-label="Progress">${steps}</ol></div></div>
       ${offline}${error ? `<p class="ob-error" role="alert">${esc(error)}</p>` : ''}${content}${footer}</div>`;
   },
   bind(root, api) {
@@ -124,6 +162,9 @@ export default {
     const redraw = () => { if (document.querySelector('.ob-root')) api.open(ID); };
     if (focusKey) root.querySelector(`[data-key="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true });
     mountLookPreview(root, draft?.look ?? api.view().onboarding.look, { name: api.view().name });
+    // One funnel event per time the sheet is put in front of a guest (a redraw of the same opening is not another offer).
+    const opened = api.view().params ?? null;
+    if (api.view().onboarding.guest && opened !== offered && draft) { offered = opened ?? {}; track('save_character_offered', { reason: opened?.nudge ?? opened?.why ?? 'asked', step: api.view().onboarding.step }); }
     const send = async (label, type, payload, then) => {
       pending = label; error = ''; redraw();
       const result = await api.command(type, payload);
@@ -133,7 +174,7 @@ export default {
       return result;
     };
     root.addEventListener('click', async (event) => {
-      const target = event.target.closest('[data-look],[data-look-tab],[data-trait],[data-dream],[data-house],[data-ob]');
+      const target = event.target.closest('[data-look],[data-look-tab],[data-trait],[data-dream],[data-house],[data-ob],[data-extra]');
       if (!target || target.disabled || !draft) return;
       focusKey = target.dataset.key || '';
       const data = target.dataset;
@@ -144,7 +185,8 @@ export default {
         else draft.traits = [...draft.traits, data.trait].slice(-TRAITS_REQUIRED);
       } else if ('dream' in data) draft.dream = data.dream;
       else if ('house' in data) draft.house = data.house;
-      else if (data.ob === 'back') { shown = Math.max(0, shown - 1); error = ''; }
+      else if ('extra' in data) { HOME_EXTRAS.find((extra) => extra.id === target.closest('[data-extra-root]')?.dataset.extraRoot)?.click?.(target, draft); }
+      else if (data.ob === 'back') { shown = Math.max(firstStep(api.view()), shown - 1); error = ''; }
       else if (data.ob === 'to-home') shown = LAST;
       else if (data.ob === 'shuffle') {
         // Picked here, from the lists the server validates; never the same look twice in a row.
@@ -156,8 +198,9 @@ export default {
       else if (data.ob === 'traits') await send('Saving…', 'onboarding.traits', { traits: draft.traits }, () => { shown = 2; });
       else if (data.ob === 'dream') await send('Saving…', 'onboarding.dream', { dream: draft.dream }, () => { shown = 3; });
       else if (data.ob === 'lottery') await send('Rolling…', 'onboarding.lottery', {});
-      else if (data.ob === 'home') {
-        const result = await send('Moving in…', 'onboarding.home', { house: draft.house });
+      else if (data.ob === 'home' || data.ob === 'home-stay') {
+        const extra = Object.assign({}, ...HOME_EXTRAS.map((item) => item.payload?.(draft) ?? {}));
+        const result = await send('Moving in…', 'onboarding.home', { ...extra, house: draft.house, ...(data.ob === 'home-stay' ? { stay: true } : {}) });
         if (result.ok) { draft = null; focusKey = ''; api.close(); api.toast(api.state().message, 'good'); return; }
       }
       redraw();

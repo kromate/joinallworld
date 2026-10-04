@@ -195,6 +195,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     tagLayer.addEventListener('pointermove', (event) => pointerMove(event));
     for (const type of ['pointerup', 'pointercancel']) tagLayer.addEventListener(type, (event) => pointerEnd(event));
   }
+  let goal = null; // { venue, spot, text } — the spot the current goal points at (setGoal)
   const spotHint = tagLayer ? globalThis.document.createElement('span') : null;
   if (spotHint) { spotHint.className = 'scene-spot-hint'; spotHint.hidden = true; }
 
@@ -763,7 +764,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
         else if (tag.marker === 'dot') node.appendChild(globalThis.document.createElement('i'));
         else node.textContent = tag.text;
         node.title = tag.kind === 'self' ? 'You' : tag.name;
-        node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'npc' ? `${tag.name}, a local` : `${tag.name}, a player`);
+        node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'goal' ? `Your goal: ${tag.name}. Walk there` : tag.kind === 'npc' ? `${tag.name}, a local` : `${tag.name}, a player`);
         node.jawX = NaN; node.jawY = NaN; node.jawShown = true;
         return node;
       });
@@ -782,7 +783,13 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       if (node.jawY !== tag.y) { node.jawY = tag.y; node.style.top = `${tag.y}px`; }
     }
   }
-  function readTags() { tagSource = current?.tags?.() || []; tagsRead = true; }
+  /** The goal's flag: one tag over the spot the current goal points at, while the player is in that venue (setGoal). */
+  function goalTag() {
+    if (!goal || goal.venue !== currentLocation) return [];
+    const spot = spotList.find((item) => item.id === goal.spot);
+    return spot ? [{ id: `goal:${spot.id}`, kind: 'goal', text: goal.text, name: goal.text, position: { x: spot.x, y: (spot.y ?? 0) + 2.4, z: spot.z } }] : [];
+  }
+  function readTags() { tagSource = [...(current?.tags?.() || []), ...goalTag()]; tagsRead = true; }
   /** Tell the scene where the camera is, so a room can hide the walls it is behind. Flips visibility only. */
   function lookIn() {
     if (!current?.look) return;
@@ -939,6 +946,19 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     setLocation,
     setState,
     setPlayer,
+    /**
+     * Flag the spot the current goal points at: { venue, spot, text }, or null for none. Drawn as one
+     * DOM tag (kind 'goal') while the player is in that venue; a tap on it goes through onTag like a
+     * name tag. One frame, and only when the flag changed.
+     */
+    setGoal(next) {
+      const value = next && typeof next.venue === 'string' && typeof next.spot === 'string' ? { venue: next.venue, spot: next.spot, text: String(next.text ?? '').slice(0, 40) } : null;
+      if (JSON.stringify(value) === JSON.stringify(goal)) return false;
+      goal = value;
+      readTags();
+      if (!loop.running) renderScene();
+      return true;
+    },
     setCrowd,
     /** Camera and walking, for the on-screen controls and for tests. */
     zoom, recentre,

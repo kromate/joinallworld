@@ -240,6 +240,9 @@ function connectSocket() {
 /** Manual reconnect after the automatic attempts ran out. */
 export function reconnect() { attempts = 0; connectSocket(); refresh(); }
 
+/** The landing of a brand-new visitor handled the invite link itself (src/life-main.js landJoin): do not also open the Invite app for it. */
+export function takeLinkHost() { const host = S.linkHost; S.linkHost = null; return host; }
+
 /** Called from every social panel's bind(): idempotent. */
 export function start(api) {
   S.api = api;

@@ -21,7 +21,7 @@ export default {
         <p>The server is running, but it has no record of the life this browser remembers. That happens when the server’s data was reset, or when a session is not used for 30 days.</p>
         <p>What you see behind this sheet is the copy kept on this device: you can look, but nothing can change.</p></div>
         <div class="session-actions"><button class="ui-button is-primary is-block" data-session-new>Start a new life</button><button class="ui-button is-block" data-session-retry>Try again</button></div>
-        <p class="session-note">Starting a new life keeps your nickname${view.name && view.name !== 'New Lagosian' ? ` (${esc(view.name)})` : ''} and begins from character creation. The old life cannot be brought back from this device.</p>`;
+        <p class="session-note">Starting a new life keeps your nickname${view.name && view.name !== 'New Lagosian' ? ` (${esc(view.name)})` : ''} and begins with a quick character and a fresh start in the city. The old life cannot be brought back from this device.</p>`;
     }
     const problem = view.params?.problem;
     return `<div class="session-card"><h3>Start your city life</h3><p>Choose a nickname for this device. There is no password and no e-mail: a cookie in this browser is the key to your life.</p></div>

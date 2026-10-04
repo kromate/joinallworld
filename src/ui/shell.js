@@ -633,7 +633,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       if (state.location !== venueId) return { text: `Go ${venueId === 'home' ? 'Home' : 'there'} first: tap ${venueId === 'home' ? 'Home' : 'Map'}.`, target: `[data-nav="${venueId === 'home' ? 'home' : 'map'}"]` };
       const spot = view.activities.spots.find((item) => item.id === spotId);
       if (spot && (state.spot !== spotId || !expanded)) return { text: `Tap ${spot.label} to see what you can do.`, target: `[data-spot="${spotId}"]` };
-      return { text: `Pick one. ${goal.hint}.`, target: '.life-action:not(:disabled):not(.is-blocked)' };
+      // A goal that names its activity rings that card; otherwise the first one that can be started.
+      const own = goal.activity && root.querySelector(`[data-start="${goal.activity}"]`) ? `[data-start="${goal.activity}"]` : null;
+      return { text: own ? `Tap it: ${goal.hint}.` : `Pick one. ${goal.hint}.`, target: own ?? '.life-action:not(:disabled):not(.is-blocked)' };
     }
     if (goal.open) {
       const app = byId.get(goal.open);
@@ -783,6 +785,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     else if ('toggleActivities' in data) { expanded = !expanded; api.refresh(); }
     else if ('community' in data) { closeDialog(); setTray(false); api.toggleCommunity(true); }
     else if ('tab' in data) { sheet = { kind: 'sim', tab: data.tab }; renderSheet(); dialogContent.scrollTop = 0; }
+    // A guest of the quick start has no home yet: Home and Buy say so and offer settling in, one tap away.
+    else if ('nav' in data && view.onboarding?.guest && (data.nav === 'home' || data.nav === 'buy')) open('onboarding', { why: data.nav });
     else if ('nav' in data) { if (data.why) toast(data.why, 'error'); else navigate(data.nav); }
     else if ('action' in data) {
       const result = await api.command(data.action, parse(data.payload));
@@ -880,6 +884,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     get mode() { return mode; },
     setMode,
     setExpanded(value) { expanded = Boolean(value); },
+    /** Is this panel the sheet in front? */
+    isOpen(id) { return sheet?.kind === 'panel' && sheet.id === id; },
     destroy() { offGlyphs(); phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

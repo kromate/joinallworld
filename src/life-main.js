@@ -8,12 +8,15 @@
  * entry chunk. Everything heavy is fetched after the HUD is on screen and usable:
  *   - the 3D scene host with Three.js and every scene module   (loadScene, straight after start)
  *   - the city map and the world map                           (first time the Map opens)
- *   - the community panel                                      (after the first connection)
+ *   - the community panel                                      (after the first connection; if its
+ *     chunk does not arrive the status line says so, it is retried with a bounded backoff —
+ *     src/lazy-load.js — and Community / Reconnect retry at once)
  *   - the lazy panel groups                                    (src/ui/panels/index.js)
  * Until a piece arrives its callers simply skip it (`venue?.…`), and it is given the current
  * state the moment it exists, so nothing depends on load order.
  */
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
+import { createLazyLoader } from './lazy-load.js';
 import { createShell } from './ui/shell.js';
 import { PANELS, sessionGate } from './ui/panels/index.js';
 import { S as social, loadPeople, onPeople } from './ui/panels/social-client.js';
@@ -189,9 +192,47 @@ async function goTo(venueId, spotId) {
   shell.open('map', { destination: venueId });
 }
 
+/**
+ * The community panel's code, fetched after the first connection. The chunk can fail to arrive (a
+ * dropped connection, a deploy in between): the loader then retries by itself after 1, 2, 4, 8 and
+ * 16 seconds and stops. The status line always says which of these is true — it never reads
+ * "connecting" for something that is not being tried.
+ */
+const communityCode = createLazyLoader(() => Promise.all([import('./community.js'), import('./community.css')]).then(([module]) => module), {
+  onState(state) {
+    if (state.status === 'retrying') status(`Community did not load · retrying in ${Math.round(state.retryInMs / 1000)} s (attempt ${state.attempt + 1} of ${state.attempts})`, true);
+    else if (state.status === 'failed') status('Community is unavailable · it did not load. Open Community to retry', true);
+    // A retry that succeeded by itself: bring the panel up now, without waiting for the player.
+    else if (state.status === 'ready') void startCommunity();
+  },
+});
+let startingCommunity = false;
+/** Create the community panel once its code is here and the client is connected. Safe to call any number of times. */
+async function startCommunity() {
+  if (community || startingCommunity || !client.online) return;
+  startingCommunity = true;
+  try {
+    const module = await communityCode.load();
+    if (!module || community || !client.online) return;
+    community = await module.createCommunity($('community-content'), { cityId: client.cityId, venueId: client.state.location,
+      onStatus: (s) => { if (s.status === 'offline') status('Community disconnected · reconnect in panel', true); else if (s.connected) status('Connected · progress saved'); } });
+    render();
+  } catch (error) {
+    console.error('The community panel could not be started:', error);
+    status('Community is unavailable · it could not start. Open Community to retry', true);
+  } finally { startingCommunity = false; }
+}
+
 function toggleCommunity(force) {
   if (client.state.location === 'home') { shell.toast('Your home is private. Visit a public venue to meet people.'); return; }
-  if (!community) { shell.toast(client.online ? 'Community is still connecting. Try again in a moment.' : 'You are offline. Reconnect to open the community.', 'error'); return; }
+  if (!community) {
+    if (!client.online) { shell.toast('You are offline. Reconnect to open the community.', 'error'); return; }
+    const load = communityCode.state;
+    if (load.status === 'retrying' || load.status === 'failed') shell.toast('Community did not load. Trying again now…', 'error');
+    else shell.toast('Community is still loading. Try again in a moment.');
+    void startCommunity(); // a manual retry: starts at once, or joins the attempt already in flight
+    return;
+  }
   $('community-panel').hidden = typeof force === 'boolean' ? !force : !$('community-panel').hidden;
 }
 
@@ -201,14 +242,9 @@ async function connect(createNew = false) {
   try {
     if (createNew) { community?.destroy(); community = null; }
     const ok = await client.connect(createNew);
-    if (ok && !community) {
-      const [{ createCommunity }] = await Promise.all([import('./community.js'), import('./community.css')]);
-      community = await createCommunity($('community-content'), { cityId: client.cityId, venueId: client.state.location,
-        onStatus: (s) => { if (s.status === 'offline') status('Community disconnected · reconnect in panel', true); else if (s.connected) status('Connected · progress saved'); } });
-    }
     render();
-  } catch (error) {
-    console.error('The community panel could not be started:', error);
+    // Not awaited: a slow or failing community chunk must not hold up the game or block a later Reconnect.
+    if (ok) void startCommunity();
   } finally { connecting = false; }
 }
 

@@ -194,7 +194,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   const readHints = () => { try { coachOff = globalThis.localStorage?.getItem(COACH_KEY) === '1'; } catch { coachOff = false; } };
   readHints();
   // The attention system: its code arrives just after the first paint; until then nothing is pointed at.
-  let attn = null, attention = null, stepId = '', lastClick = null, seen = {}, wasBusy = '', lastPlace = null, lastWaiting = 0;
+  let attn = null, attention = null, stepId = '', lastClick = null, seen = {}, wasBusy = '', lastWaiting = 0;
   try { seen = JSON.parse(globalThis.localStorage?.getItem(SEEN_KEY)) || {}; } catch { seen = {}; }
   import('./attention.js').then((module) => { attn = module; attention = module.createAttention({ root, dialog }); if (state) api.refresh(); }, () => {});
   const html = new WeakMap();
@@ -665,17 +665,15 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
    * CAUSE → EFFECT, and things that happen elsewhere. A status card that has just appeared (an
    * activity's progress, a trip) slides in from the control that started it, so the eye follows it
    * to the bottom-centre stack. A change the player may not be looking at — money, a need turning
-   * low, something new waiting in More, arriving somewhere — gets a brief pill near the middle that
+   * low, something new waiting in More — gets a brief pill near the middle that
    * points at it (and is said for screen readers). All one-shot CSS; nothing is drawn in the scene.
    */
   function notice(needs) {
-    if (!attention) { lastPlace = state.location; return; }
+    if (!attention) return;
     const active = state.activeAction, busy = active ? `${active.kind}:${active.id}` : '';
     if (busy && busy !== wasBusy && lastClick && Date.now() - lastClick.at < 2500) attention.arrive(isTrip(active) && mode === 'map' ? el.main : el.progress, lastClick);
     wasBusy = busy;
     if (!view.connected) return;
-    if (lastPlace !== null && lastPlace !== state.location && !active) attention.announce(`You are at ${placeOf(state.location).label}`, { at: '.life-venue-heading', kind: 'good' });
-    lastPlace = state.location;
     for (const need of view.needs.order) if (noticeNeeds?.[need] >= LOW_NEED && needs[need] < LOW_NEED) attention.announce(`${cap(need)} is low`, { at: el.mood, kind: 'warn' });
     noticeNeeds = needs;
     const waiting = el.slots.hud.querySelectorAll('.is-active').length;

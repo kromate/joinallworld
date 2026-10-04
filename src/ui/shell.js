@@ -266,6 +266,11 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const tone = TOAST_KINDS.includes(kind) ? kind : 'info';
     // A finished goal: the scene host answers with a sub-second burst of confetti (src/scene/reward.js).
     if (/^goal complete/i.test(stripLeadEmoji(text) || text)) window.dispatchEvent(new CustomEvent('jaw:cheer'));
+    // One line for one thing: a goal's own toast says what was done and what it paid, so the plain "… completed." line of
+    // the same moment gives way to it — whichever of the two arrives first.
+    const isGoal = /^goal complete/i.test(stripLeadEmoji(text) || text), isDone = tone === 'info' && / completed\.$/.test(text);
+    if (isDone && [...el.toasts.children].some((node) => /^goal complete/i.test(stripLeadEmoji(node.dataset.text) || node.dataset.text))) return;
+    if (isGoal) for (const node of [...el.toasts.children]) if (node.classList.contains('is-info') && / completed\.$/.test(node.dataset.text)) node.remove();
     const showing = [...el.toasts.children].find((node) => node.dataset.text === text);
     if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.innerHTML = glyph(tone); } return; }
     // The toast carries its own glyph: an emoji the text starts with is dropped, one inside it is drawn as a glyph.
@@ -288,7 +293,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
    */
   function placeToasts() {
     const narrow = globalThis.matchMedia?.('(max-width: 1000px)').matches;
-    const rows = dialog.open ? [] : [el.notice, ...(narrow ? [el.sidebar.querySelector('.life-quick'), el.slots.goal] : [])];
+    // (The two round buttons — More and Clean screen — stand in that row on a phone even when the goal line is hidden.)
+    const rows = dialog.open ? [] : [el.notice, ...(narrow ? [el.sidebar.querySelector('.life-quick'), el.slots.goal, el.tray] : [])];
     const bottom = Math.max(0, ...rows.map((node) => node?.getBoundingClientRect().bottom || 0));
     if (bottom > 0) el.toasts.style.setProperty('--toast-top', `${Math.round(bottom + 6)}px`);
     else el.toasts.style.removeProperty('--toast-top');
@@ -592,8 +598,11 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const spot = spots.find((item) => item.id === state.spot);
     // Home shows the player's own house; the line under the name is the venue's ambient line, which
     // changes only when the view is rebuilt (a state update or an action) — there is no timer.
+    // A life living in its own house (the free starter house, or a bigger one on the same plot) is told so, with the local
+    // government it chose — not the rented room whose floor plan it borrows.
     const house = privateHome ? view.property?.house : null;
-    const title = house?.label || venue.label, district = house?.district || venue.district;
+    const own = privateHome && state.estate?.living === 'own' && view.estate?.lgaConfirmed && view.estate.tier && view.estate.lga ? view.estate : null;
+    const title = own?.tier.label || house?.label || venue.label, district = own?.lga.name || house?.district || venue.district;
     const ambient = view.travel?.destinations?.find((item) => item.id === state.location)?.ambient;
     const line = !view.connected ? (LINKS[linkOf()]?.menu || 'Not connected · read-only') : `${privateHome ? 'Private · ' : ''}${ambient || spot?.caption || 'Explore at your own pace'}`;
     const lineMark = privateHome && view.connected ? `${mark('lock')} ` : '';
@@ -703,7 +712,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (el.cash.textContent !== cashText) { el.cash.textContent = cashText; el.cash.setAttribute('aria-label', `Wallet ${cashText}. Open the bank and your transactions`); }
     if (lastCash !== null && view.connected && state.cash !== lastCash) {
       const change = state.cash - lastCash, entry = view.wallet?.ledger?.[0];
-      el.delta.textContent = `${change > 0 ? '+' : '−'}${money(Math.abs(change))}${entry && entry.amount === change ? ` · ${entry.reason}` : ''}`;
+      // The amount, then its reason in a part of its own: a phone shows the amount only, as a small badge under the wallet (shell.css).
+      el.delta.textContent = `${change > 0 ? '+' : '−'}${money(Math.abs(change))}`;
+      if (entry && entry.amount === change) { const why = document.createElement('span'); why.className = 'life-delta-why'; why.textContent = ` · ${entry.reason}`; el.delta.append(why); }
       flash(el.delta, change > 0 ? 'is-up' : 'is-down');
       flash(el.cash, change > 0 ? 'is-up' : 'is-down');
       // Off the venue view (the map, a sheet) nothing else says it where the player is looking: a brief pill near the middle does.

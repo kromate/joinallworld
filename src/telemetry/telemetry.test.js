@@ -33,7 +33,8 @@ function fakeWindow({ hostname = 'play.example', nav = {}, stored = null, config
     dispatch(type, detail) { for (const fn of [...(listeners.get(type) ?? [])]) fn({ type, detail }); },
     listening: (type) => listeners.get(type)?.size ?? 0,
     openDialog: null,
-    document: { hidden: true, addEventListener() {}, removeEventListener() {}, querySelector: (selector) => (selector === 'dialog[open]' ? win.openDialog : null) },
+    docListeners: new Map(),
+    document: { hidden: true, addEventListener(type, fn) { win.docListeners.set(type, fn); }, removeEventListener(type) { win.docListeners.delete(type); }, querySelector: (selector) => (selector === 'dialog[open]' ? win.openDialog : null) },
     setTimeout(fn) { win.timers.push(fn); return win.timers.length; },
     requestAnimationFrame() {},
     async fetch(url, options = {}) {
@@ -287,12 +288,21 @@ test('consent timing: never during the first minute — after the first reward, 
   assert.equal(await step(rewardedBusy, rewarded, 30000), 1, 'then, once');
   assert.deepEqual([log.sheets[0].source, log.sheets[0].state.consent], ['sheet', 'unset']);
   assert.equal(await step(rewarded, rewarded, 40000), 1, 'and never a second time');
-  // A returning player (settled, or a life that never was a guest) is past the first minute: asked at their first state.
+  // A returning player (settled, or a life that never was a guest) is past the first minute — but is not asked on arrival
+  // (an invite, a table or an arrival sheet may be on its way): a few seconds into the visit, at the next quiet state.
   const back = running();
   back.core.session({ id: PUBLIC }, false, 5); await tick();
   assert.equal(back.log.sheets.length, 0);
-  back.core.state(createLife(), createLife(), client(null, { now: 60 })); await tick();
+  const home = createLife();
+  back.core.state(home, createLife(), client(null, { now: 60 })); await tick();
+  assert.equal(back.log.sheets.length, 0, 'not at their first state');
+  back.core.screen('map');
+  back.core.state(structuredClone(home), home, client(null, { now: 9000 })); await tick();
+  assert.equal(back.log.sheets.length, 0, 'not on the map (a trip, a picked place)');
+  back.core.screen('venue');
+  back.core.state(structuredClone(home), home, client(null, { now: 9500 })); await tick();
   assert.equal(back.log.sheets.length, 1);
+  assert.equal(back.log.sheets[0].giveWay, true, 'and it steps aside if the game opens a sheet of its own');
   const answered = running({ stored: { consent: 'denied', at: 1 } });
   answered.core.session({ id: PUBLIC }, false, 5); answered.core.state(createLife(), structuredClone(createLife()), client(null, { now: 60 })); await tick();
   assert.equal(answered.log.sheets.length, 0);
@@ -612,4 +622,53 @@ test('jaw:track: another branch can emit an event without importing anything', a
   assert.deepEqual(log.identified, [PUBLIC]); assert.deepEqual(log.groups, [['lga', 'ikeja']]);
   win.dispatch('jaw:track', { name: 'invite_joined', props: { kind: 'house', minutes_since_opened: 3 } });
   assert.deepEqual(log.sent.at(-1).props, { kind: 'house' }, 'a property the catalogue does not list is dropped');
+});
+
+test('consent queueing: the question steps aside for a sheet of the game’s, is asked again after it closes, and never inside a flow', async () => {
+  // It was showing when the game opened a sheet (an invite link, say): the sheet resolves 'later' with no answer recorded.
+  const { win, log, core } = running();
+  const home = createLife();
+  const at = async (now) => { core.state(structuredClone(home), home, client(null, { now })); await tick(); await tick(); return log.sheets.length; };
+  core.session({ id: PUBLIC }, false, 5); await tick();
+  assert.equal(await at(100), 0);
+  log.answer = 'later';
+  assert.equal(await at(6000), 1);
+  assert.equal(core.consent, 'unset', 'stepping aside is not an answer');
+  assert.equal(win.saved(), null, 'and nothing is remembered');
+  // The game's sheet is open: nothing is asked, however many states arrive.
+  win.openDialog = {};
+  assert.equal(await at(7000), 1);
+  // It closes — and another opens straight away (a flow): the look a moment later sees it and waits on.
+  const closed = win.docListeners.get('close');
+  assert.equal(typeof closed, 'function');
+  closed({ target: { id: 'life-dialog' } });
+  assert.equal(log.sheets.length, 1, 'not at the instant of closing');
+  assert.equal(win.timers.length, 1, 'one look, a moment later');
+  win.timers.shift()(); await tick(); await tick();
+  assert.equal(log.sheets.length, 1, 'the next sheet of the flow is open: still waiting');
+  // The flow ends: the last sheet closes and nothing else opens.
+  win.openDialog = null;
+  closed({ target: { id: 'life-dialog' } }); closed({ target: { id: 'life-dialog' } });
+  assert.equal(win.timers.length, 1, 'two closes in a row are one look');
+  log.answer = 'denied';
+  win.timers.shift()(); await tick(); await tick();
+  assert.equal(log.sheets.length, 2, 'asked again, once it is quiet');
+  assert.equal(core.consent, 'denied');
+  // Its own closing is not a reason to ask again.
+  closed({ target: { id: 'jaw-consent' } });
+  assert.equal(win.timers.length, 0);
+  // The seconds after settling in belong to the new home.
+  const fresh = running();
+  const settled = createLife(); settled.onboarding.completedAt = 50_000;
+  fresh.core.session({ id: PUBLIC }, false, 5); await tick();
+  fresh.core.state(settled, createLife(), client(null, { now: 40_000 })); await tick();
+  fresh.core.state(structuredClone(settled), settled, client(null, { now: 52_000 })); await tick();
+  assert.equal(fresh.log.sheets.length, 0, 'not in the seconds after settling in');
+  fresh.core.state(structuredClone(settled), settled, client(null, { now: 56_000 })); await tick();
+  assert.equal(fresh.log.sheets.length, 1);
+});
+
+test('the consent question is worded for the quick start: no step it names is one a player may never reach before being asked', () => {
+  assert.doesNotMatch(CONSENT.ask, /creating a Sim/i);
+  assert.match(CONSENT.ask, /tap Play/);
 });

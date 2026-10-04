@@ -117,6 +117,8 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 @media(min-width:721px) and (max-width:1239px) and (max-height:840px),(min-width:1240px) and (max-height:610px){.is-tray-open .life-hud{display:none}}
 /* A guest of the quick start: the chip column is folded behind "More" on a wide screen too (on a phone it always is), so the goal line is the one thing asking for attention. */
 @media(min-width:721px){.is-guest:not(.is-tray-open) .life-hud{display:none}}
+/* ONE line of guidance, on every screen: while the coach line is talking (the first starter goals) it carries the goal's name and what to tap, so the goal chip that says the same thing waits. It is back the moment the coach is silent or dismissed. */
+.has-coach[data-mode=venue] .life-goal{display:none}
 .life-menu{display:none}
 /* On a wide screen the open menu takes its place in the column, right under the needs strip, and the chips move down: it never lies on top of them. */
 .is-tray-open .life-menu{display:grid;gap:2px;order:-1;padding:8px;background:var(--c-surface-solid);border-radius:var(--r-lg);box-shadow:var(--e-2);pointer-events:auto}
@@ -478,8 +480,10 @@ button.ui-row:hover{background:#f7f9f8}
   .life-toasts{top:var(--toast-top,74px)}
   .life-bottom{width:calc(100% - 16px);bottom:max(8px,env(safe-area-inset-bottom));gap:6px}
   .life-venue-panel{border-radius:22px}
-  /* The wallet's change note sits beside the two round buttons, not under them. */
-  .life-delta{right:104px;top:calc(100% + 10px)}
+  /* The wallet's change note is a small badge on the bar's lower edge, under the wallet: the amount only (its reason is in the
+     toast and in the Bank), so it never lies over the goal line or the two round buttons below. */
+  .life-delta{right:10px;top:calc(100% - 11px);z-index:1}
+  .life-delta-why{display:none}
   /* Collapsed, the card is the place's name and its spots; the ambient line comes back with the activities. */
   :not(.is-expanded)>.life-bottom .life-venue-heading p{display:none}
   :not(.is-expanded)>.life-bottom .life-venue-header{margin-bottom:4px}

@@ -57,6 +57,8 @@ const CSS = `
 @keyframes scene-reward-still{0%,80%{opacity:1}100%{opacity:0}}
 .scene-hint button{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font:700 16px/1 system-ui,sans-serif;cursor:pointer;padding:0}
 body:has(.life-ui.is-clean) .scene-pad,body:has(.life-ui.is-clean) .scene-hint{display:none}
+/* One line of guidance at a time: while the goal coach is talking (the first starter goals), the camera and walking lesson waits its turn. */
+body:has(.life-ui.has-coach) .scene-hint{display:none}
 body.map-open .scene-controls{display:none}
 @media (max-height:520px){.scene-controls.is-narrow .scene-hint,.scene-controls.is-narrow.is-touch .scene-hint{top:var(--sc-top);bottom:auto;left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 240px)}}
 @media (prefers-reduced-motion:reduce){.scene-pad button:active{transform:none}.scene-reward span{animation:scene-reward-still 1.6s steps(1,end) forwards;animation-delay:0s!important}}

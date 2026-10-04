@@ -51,6 +51,8 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   let user = null, traits = {}, under18 = config?.under18 === true;
   /** Has this life had its first reward (or is it past its first minutes)? The consent question waits for it. */
   let rewarded = false, rewardedAt = null, lastLga = null;
+  /** Which screen is in front ('venue' | 'map' | 'buy' | …): the question is only asked on the venue screen. */
+  let screenNow = 'venue';
   /** The player's nickname, kept in memory for one purpose: taking it OUT of error messages. It is never sent. */
   let nickname = null;
   const groups = {};
@@ -179,31 +181,45 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   }
 
   /** The consent sheet, or (from Settings) the same sheet showing the current choice. */
-  function openSheet(source) {
+  function openSheet(source, giveWay = false) {
     if (sheetOpen || !win?.document) return;
     sheetOpen = true;
-    loaders.consent().then((module) => module.showConsent({
-      document: win.document, source, host: config?.posthog?.host,
-      state: { analytics: mode === 'on' && plan.posthog, errors: mode === 'on' && plan.sentry, consent: consent(), signal: privacySignal(win.navigator, win), under18 },
-      onChoice: (choice) => setConsent(choice, source),
-    })).catch(() => {}).finally(() => { sheetOpen = false; });
+    loaders.consent().then((module) => {
+      // The chunk took a moment: a sheet of the game's may have opened meanwhile. The question waits for it to close.
+      if (giveWay && !quiet()) return 'later';
+      return module.showConsent({
+        document: win.document, source, host: config?.posthog?.host, giveWay,
+        state: { analytics: mode === 'on' && plan.posthog, errors: mode === 'on' && plan.sentry, consent: consent(), signal: privacySignal(win.navigator, win), under18 },
+        onChoice: (choice) => setConsent(choice, source),
+      });
+    // 'later': it stepped aside for a sheet of the game's without an answer. It is asked again when that sheet has closed.
+    }).then((result) => { if (result === 'later' && source === 'sheet') asked = false; }).catch(() => {}).finally(() => { sheetOpen = false; });
   }
+  /** Is nothing else in front? No sheet (any open dialog) and the venue screen — not the map with a trip, not Buy mode. */
+  const quiet = () => { try { return screenNow === 'venue' && !win.document.querySelector('dialog[open]'); } catch { return false; } };
   /**
    * Ask once, at the configured moment. 'reward' (the default): never during the first-minute flow — only once the life has
-   * had its first reward (or is past its first minutes), a few seconds later so the reward and the "Make this life yours"
-   * offer come first, and only while no other sheet is open and nothing is running. 'landing': at once (an operator's choice).
+   * had its first reward, a few seconds later so the reward and the "Make this life yours" offer come first; a returning
+   * player is not asked on arrival either, but a few seconds into the visit (their invite, arrival or table sheet comes first).
+   * And only in a quiet moment: no other sheet open, nothing running, the venue screen in front, not while creating a
+   * character and not in the seconds after settling in. If a sheet of the game's opens while the question is still up, the
+   * question steps aside and is asked again when that sheet has closed. 'landing': at once (an operator's choice).
    */
   const ASK_AFTER_REWARD_MS = 5000;
   function maybeAsk(state, serverNow) {
-    if (asked || mode !== 'on' || !plan.posthog || consent() !== 'unset') return;
-    if (config.posthog.consentAt !== 'landing') {
+    if (asked || sheetOpen || mode !== 'on' || !plan.posthog || consent() !== 'unset') return;
+    const waits = config.posthog.consentAt !== 'landing';
+    if (waits) {
       if (!user || !rewarded) return;
       if (rewardedAt !== null && Number.isFinite(serverNow) && serverNow - rewardedAt < ASK_AFTER_REWARD_MS) return;
-      if (state?.activeAction) return;
-      try { if (win.document.querySelector('dialog[open]')) return; } catch { return; }
+      const o = state?.onboarding;
+      if (state?.activeAction || o?.required === true) return;
+      // Just settled in: the new home comes first.
+      if (o && Number.isFinite(o.completedAt) && Number.isFinite(serverNow) && serverNow - o.completedAt < ASK_AFTER_REWARD_MS) return;
+      if (!quiet()) return;
     }
     asked = true;
-    openSheet('sheet');
+    openSheet('sheet', waits);
   }
   /** The player is under 18: analytics is off for good on this page, what was waiting is dropped, the SDK is stopped. */
   function minor() {
@@ -218,8 +234,15 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   const onPreloadError = () => { api.chunkFailed('preload'); };
   /** The last accepted state and its server time: the consent question is looked at again when a sheet closes. */
   let seen = null;
-  // A sheet was closed (the settle-in offer, say): if the question was only waiting for that, it is asked now — an event, not a timer.
-  const onSheetClosed = (event) => { if (event?.target?.id !== 'jaw-consent' && seen) { try { maybeAsk(seen.state, seen.now + Math.max(0, wall() - seen.at)); } catch { /* never throws */ } } };
+  // A sheet was closed (the settle-in offer, say): if the question was only waiting for that, it is asked — but not inside a
+  // flow. One sheet often closes so the next can open (a step of settling in, an app opening from a card), so the look is
+  // taken a moment later, once, and every condition is checked again then: another sheet open, or something running, and it waits on.
+  const AFTER_CLOSE_MS = 600;
+  let recheck = null;
+  const onSheetClosed = (event) => {
+    if (event?.target?.id === 'jaw-consent' || !seen || recheck !== null) return;
+    try { recheck = win.setTimeout(() => { recheck = null; try { if (seen) maybeAsk(seen.state, seen.now + Math.max(0, wall() - seen.at)); } catch { /* never throws */ } }, AFTER_CLOSE_MS); } catch { recheck = null; }
+  };
   if (mode === 'on') {
     try { win.addEventListener('vite:preloadError', onPreloadError); win.document.addEventListener('webglcontextlost', onContextLost, true); win.document.addEventListener('close', onSheetClosed, true); } catch { /* not a browser (tests) */ }
   }
@@ -230,7 +253,7 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   const api = {
     // ---- the public facade ----------------------------------------------------------------------
     track: safe((name, props) => { if (typeof name === 'string') emit(name, props && typeof props === 'object' ? { ...props } : {}); }),
-    screen: safe((name) => { if (typeof name !== 'string') return; emit('screen_view', { screen: name }); crumb('screen', { screen: name }); }),
+    screen: safe((name) => { if (typeof name !== 'string') return; screenNow = name; emit('screen_view', { screen: name }); crumb('screen', { screen: name }); }),
     /** `publicId` is the session's PUBLIC id — never the cookie. `traits.under18: true` switches analytics off. */
     identify: safe((publicId, more) => {
       user = typeof publicId === 'string' ? publicId : null;
@@ -276,7 +299,9 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
       if (lga && lga !== lastLga) { lastLga = lga; api.setGroup('lga', lga); }
       // The consent question waits for the first reward of a new life; a life past its first minutes may be asked now.
       const o = next.onboarding, guest = o?.stage === 'guest' && o.done !== true;
-      if (!rewarded && o && o.required !== true && (!guest || Number.isFinite(o.firstAt))) { rewarded = true; rewardedAt = guest ? o.firstAt : null; }
+      // (A returning player — settled, or a guest already past the first reward when this page loaded — waits the same few
+      // seconds from the first state this page saw, so the question never lands on their arrival.)
+      if (!rewarded && o && o.required !== true && (!guest || Number.isFinite(o.firstAt))) { rewarded = true; rewardedAt = guest && !first ? o.firstAt : Number.isFinite(client.now) ? client.now : null; }
       seen = { state: next, now: client.now, at: wall() };
       maybeAsk(next, client.now);
       if (found.length && consent() === 'granted') persist();

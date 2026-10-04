@@ -7,9 +7,13 @@
  * opens the full text in place. From Settings the same sheet shows the choice in force and lets
  * the player change it.
  *
- * It is a native <dialog> opened with showModal(), so it sits above the game's own sheet and the
- * rest of the page cannot be reached with the keyboard while it is open. If the game opens its own
- * dialog afterwards (character creation does, by itself), this one is raised above it again.
+ * It is a native <dialog> opened with showModal(), so the rest of the page cannot be reached with
+ * the keyboard while it is open. It is never asked over another sheet (src/telemetry/core.js waits
+ * for a quiet moment). If the game then opens a sheet of its own while the question is still
+ * unanswered (an invite link, an arrival, a table), the question STEPS ASIDE — `giveWay: true`:
+ * the sheet closes without an answer and resolves 'later', and the core asks again once that sheet
+ * has closed. Without giveWay (Settings, which opens it from inside the game's sheet, and an
+ * operator's "ask on the landing screen") it is raised above the game's sheet instead.
  */
 import { CONSENT, whatWeCollect } from './what-we-collect.js';
 
@@ -53,10 +57,11 @@ export function consentHtml({ source = 'sheet', state = {}, open = false, host =
 }
 
 /**
- * Show the sheet. Resolves with the choice ('granted' | 'denied') or null when it was only closed.
- * @param {{ document: Document, source?: 'sheet' | 'settings', state?: object, host?: string, onChoice?: (choice: string) => void }} options
+ * Show the sheet. Resolves with the choice ('granted' | 'denied'), null when it was only closed, or
+ * 'later' when it stepped aside for a sheet of the game's (giveWay) and has to be asked again.
+ * @param {{ document: Document, source?: 'sheet' | 'settings', state?: object, host?: string, giveWay?: boolean, onChoice?: (choice: string) => void }} options
  */
-export function showConsent({ document: doc, source = 'sheet', state = {}, host = '', onChoice = () => {} }) {
+export function showConsent({ document: doc, source = 'sheet', state = {}, host = '', giveWay = false, onChoice = () => {} }) {
   return new Promise((resolve) => {
     if (!doc.getElementById('jaw-consent-style')) { const style = doc.createElement('style'); style.id = 'jaw-consent-style'; style.textContent = STYLE; doc.head.append(style); }
     doc.getElementById('jaw-consent')?.remove();
@@ -69,14 +74,14 @@ export function showConsent({ document: doc, source = 'sheet', state = {}, host 
     doc.body.append(dialog);
     const returnFocus = doc.activeElement;
     const raise = () => { if (dialog.isConnected) { dialog.close(); dialog.showModal(); } };
-    // The game's own sheet opened after this one: come back to the front, so the question can be answered.
+    // The game's own sheet opened after this one: step aside for it and be asked again later (giveWay), or come back to the front.
     const other = doc.getElementById('life-dialog');
-    const watch = other && typeof MutationObserver === 'function' ? new MutationObserver(() => { if (other.open && dialog.open) raise(); }) : null;
+    const watch = other && typeof MutationObserver === 'function' ? new MutationObserver(() => { if (other.open && dialog.open) { if (giveWay) finish('later'); else raise(); } }) : null;
     watch?.observe(other, { attributes: true, attributeFilter: ['open'] });
     const finish = (choice) => {
       watch?.disconnect();
       dialog.close(); dialog.remove();
-      if (choice) onChoice(choice);
+      if (choice && choice !== 'later') onChoice(choice);
       try { returnFocus?.focus?.({ preventScroll: true }); } catch { /* the element is gone */ }
       resolve(choice);
     };

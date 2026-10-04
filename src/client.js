@@ -58,6 +58,18 @@ const ACTIVE_POLL_MS = 1000;
 const IDLE_POLL_MS = 60000;
 
 /**
+ * What this client may send for an action. One rule today: SETTLING IN ('onboarding.home') carries the local government
+ * and nothing else — { lga, via?, stay? }. The rules still accept the older rented-home form { house } from old scripts and
+ * the Worker (src/game/systems/onboarding.js), but the game's own client cannot send it: a `house` (or any other key) put
+ * in that payload by a panel never leaves the device, and the server then answers 'lga_required'.
+ */
+const MOVE_IN_KEYS = ['lga', 'via', 'stay'];
+export function outgoing(type, payload) {
+  if (type !== 'onboarding.home' || !payload || typeof payload !== 'object') return payload;
+  return Object.fromEntries(MOVE_IN_KEYS.filter((key) => payload[key] !== undefined).map((key) => [key, payload[key]]));
+}
+
+/**
  * @param {object} options
  *   fetch, storage, now, setTimeout, clearTimeout, randomUUID — injectable for tests
  *   isHidden()            → true while the page is hidden (polling pauses)
@@ -243,7 +255,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     client.busy = true;
     try {
       const body = { actionId: typeof options?.actionId === 'string' ? options.actionId : client.newId(), cityId: client.cityId, type };
-      if (payload !== undefined && payload !== null) body.payload = payload;
+      if (payload !== undefined && payload !== null) body.payload = outgoing(type, payload);
       const response = await api('/api/action', { method: 'POST', body });
       accept(response.state);
       if (!response.ok && client.state.message) status(client.state.message, true);

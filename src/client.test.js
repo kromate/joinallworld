@@ -2,7 +2,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createClient, TEXT, STORAGE_KEY, roomJoinNeeded } from './client.js';
+import { createClient, outgoing, TEXT, STORAGE_KEY, roomJoinNeeded } from './client.js';
+import { dispatch } from './life.js';
+import { START_HOMES, TRAITS, DREAMS } from './game/content/traits.js';
 import { createLife } from './life.js';
 
 function harness({ online = true } = {}) {
@@ -222,4 +224,33 @@ test('client.link says why the game is not playable: expired, new, offline and u
   assert.equal(await dropped.connect(), true);
   await dropped.command('cancel');
   assert.equal(dropped.link, 'expired');
+});
+
+test('settling in: the game’s own client cannot send the legacy rented-home payload — the rules still accept it from old scripts', async () => {
+  // The client: whatever a panel puts in the payload, only { lga, via, stay } leave the device.
+  const h = harness();
+  await h.client.connect(); h.calls.length = 0;
+  await h.client.command('onboarding.home', { house: 'mushin', lga: 'ikeja', via: 'manual', stay: true, extra: 1 });
+  assert.deepEqual(h.calls[0][2].payload, { lga: 'ikeja', via: 'manual', stay: true });
+  h.calls.length = 0;
+  await h.client.command('onboarding.home', { house: 'mushin' });
+  assert.deepEqual(h.calls[0][2].payload, {}, 'a rented home alone is sent as nothing: the server answers lga_required');
+  assert.deepEqual(outgoing('onboarding.home', { house: 'yaba', via: 'device' }), { via: 'device' });
+  // Every other action is sent as written.
+  const travel = { id: 'library', mode: 'cab', house: 'x' };
+  assert.equal(outgoing('travel', travel), travel);
+  // The rules: an old script (or the Worker) that still sends { house } is served as before, and {} is refused.
+  const house = Object.keys(START_HOMES)[0];
+  const ready = () => {
+    const life = createLife(null, { now: 1000, cityId: 'lagos', isNew: true, quickStart: true });
+    const send = (type, payload, id) => dispatch(life, { type, payload, actionId: id }, { now: 1000, cityId: 'lagos', actionId: id });
+    send('onboarding.quick-start', { look: life.onboarding.look }, 'play');
+    send('onboarding.traits', { traits: Object.keys(TRAITS).slice(0, 2) }, 'traits'); send('onboarding.dream', { dream: Object.keys(DREAMS)[0] }, 'dream');
+    return { life, send };
+  };
+  const probe = ready();
+  probe.send('onboarding.lottery', {}, 'lottery');
+  assert.equal(probe.send('onboarding.home', outgoing('onboarding.home', { house }), 'home-client').code, 'lga_required', 'what the client would send for { house }');
+  const legacy = probe.send('onboarding.home', { house }, 'home-legacy');
+  assert.ok(legacy.code === 'life_started' || legacy.code === 'house_locked', `the legacy payload is still understood (${legacy.code})`);
 });

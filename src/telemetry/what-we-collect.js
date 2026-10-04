@@ -5,7 +5,7 @@
  */
 export const CONSENT = Object.freeze({
   title: 'Help improve Allworld?',
-  ask: 'May we count how the game is used on this device? For example: how many players finish creating a Sim, take a first trip or come back the next day. It shows us what is confusing or broken.',
+  ask: 'May we count how the game is used on this device? For example: how many players tap Play, finish their first activity, take a first trip or come back the next day. It shows us what is confusing or broken.',
   optional: 'This is optional. The game is exactly the same whichever you choose, and you can change your mind at any time in Sim → Settings → Privacy.',
   accept: 'Accept',
   reject: 'Reject',

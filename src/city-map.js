@@ -232,6 +232,11 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     // Show map, not open water: keep the city edge to edge wherever it is bigger than the free area.
     x = width >= free.width ? Math.min(free.left, Math.max(free.right - width, x)) : free.left + (free.width - width) / 2;
     y = height >= free.height ? Math.min(free.top, Math.max(free.bottom - height, y)) : free.top + (free.height - height) / 2;
+    // Where the player is always wins over filling the screen: its pin and name stay well inside the free area.
+    const px = x + (point.x / 100) * width, py = y + (point.y / 100) * height;
+    const padX = Math.min(96, free.width / 3), padTop = Math.min(64, free.height / 4), padBottom = Math.min(96, free.height / 3);
+    if (px < free.left + padX) x += free.left + padX - px; else if (px > free.right - padX) x += free.right - padX - px;
+    if (py < free.top + padTop) y += free.top + padTop - py; else if (py > free.bottom - padBottom) y += free.bottom - padBottom - py;
     fitted = true; userMoved = false; closeUp = true;
     apply();
   }
@@ -515,9 +520,13 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     setCity(id) { if (id !== cityId || !built) { cityId = id; build(); } layer = 'city'; },
     setState(next) {
       // The player went somewhere: an untouched closer view opens on the new place the next time the map shows.
-      if (closeUp && !userMoved && state && next && next.location !== state.location) fitted = false;
+      // The same goes for the saved life arriving after the map opened: the player's home may be in another district.
+      const before = pointOf(state?.location) || homeSpot().map;
       state = next;
+      const after = pointOf(state?.location) || homeSpot().map;
+      if (closeUp && !userMoved && (before.x !== after.x || before.y !== after.y)) fitted = false;
       update();
+      if (!fitted && built && !container.hidden) open();
       drawOverlays();
       // A shared link opens its venue card once, after the life has loaded.
       if (deepLink) {

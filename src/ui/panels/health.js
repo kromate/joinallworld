@@ -1,16 +1,14 @@
 /**
  * OWNER: world
- * Health app and the HUD health warning.
+ * Health app. The HUD's health warning and weather chips are ./health-chips.js.
  *
  *   'health'       Phone app: how you are, the weather, how close you are to falling sick,
  *                  what to do about it, and every cure with its price and where to get it.
- *   'health-chip'  HUD alert, shown only when there is something to act on: sick or run down.
- *   'weather-chip' HUD tray chip: the weather now (and the rain warning). Both open the Health app.
  * Everything shown comes from view.health (src/game/systems/health.js) and view.travel.
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './health.css';
-import { esc, json, money } from '../dom.js';
+import { esc, json, money, mark, iconFor } from '../dom.js';
 import { VENUES } from '../../game/content/venues.js';
 
 function cureRow(cure, state, view) {
@@ -27,7 +25,7 @@ function cureRow(cure, state, view) {
 }
 
 const healthPanel = {
-  id: 'health', title: 'Health', icon: '🩺', placement: 'phone', order: 22, group: 'life',
+  id: 'health', title: 'Health', placement: 'phone', order: 22, group: 'life',
   /** Sick or run down: something to act on. */
   badge: (state, view) => (view.health?.sick || view.health?.rundown ? 1 : 0),
   render(state, view) {
@@ -40,32 +38,13 @@ const healthPanel = {
         : health.immune ? `You are protected from falling sick for about ${health.immuneMinutes} more min.` : 'Nothing is wrong.';
     const feelings = health.feelings.map((feeling) => `<li class="ui-chip ${feeling.value > 0 ? 'is-good' : 'is-bad'}">${esc(feeling.label)} ${feeling.value > 0 ? '+' : '−'}${Math.abs(feeling.value)} mood</li>`).join('');
     const resistance = Math.round((1 - health.strain) * 100);
-    return `<section class="health-status ${tone}"><span aria-hidden="true">${health.sick ? '🤒' : health.rundown ? '🧼' : '💪🏾'}</span><div><h3>${esc(health.status)}</h3><p>${esc(summary)}</p></div></section>
+    return `<section class="health-status ${tone}"><span aria-hidden="true">${iconFor('health', health.sick ? 'sick' : health.rundown ? 'rundown' : 'well')}</span><div><h3>${esc(health.status)}</h3><p>${esc(summary)}</p></div></section>
       ${feelings ? `<ul class="ui-chips health-feelings">${feelings}</ul>` : ''}
-      <div class="ui-rows"><div class="ui-row"><span class="ui-row-icon" aria-hidden="true">${esc(health.weather.icon)}</span><span class="ui-row-body"><b>${esc(health.weather.label)} · about ${esc(health.weather.minutesLeft)} more min</b><small>${esc(health.weather.text)}</small></span></div>
-        <div class="ui-row health-risk"><span class="ui-row-icon" aria-hidden="true">🛡️</span><span class="ui-row-body"><b>${health.sick ? 'Already sick' : 'Resistance'} <span class="ui-chip ${resistance < 50 ? 'is-warn' : 'is-good'}">${resistance}%</span></b><span class="ui-bar${resistance < 50 ? ' is-low' : ''}" role="meter" aria-label="${health.sick ? 'Already sick' : 'Resistance'}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${resistance}"><i style="width:${Math.max(0, Math.min(100, resistance))}%"></i></span><small>Drops while Hunger or Hygiene is under 15 and you keep playing. Time away does not count. At zero you fall sick.</small></span></div></div>
+      <div class="ui-rows"><div class="ui-row"><span class="ui-row-icon" aria-hidden="true">${iconFor('weather', health.weather.id, health.weather.icon)}</span><span class="ui-row-body"><b>${esc(health.weather.label)} · about ${esc(health.weather.minutesLeft)} more min</b><small>${esc(health.weather.text)}</small></span></div>
+        <div class="ui-row health-risk"><span class="ui-row-icon" aria-hidden="true">${mark('shield')}</span><span class="ui-row-body"><b>${health.sick ? 'Already sick' : 'Resistance'} <span class="ui-chip ${resistance < 50 ? 'is-warn' : 'is-good'}">${resistance}%</span></b><span class="ui-bar${resistance < 50 ? ' is-low' : ''}" role="meter" aria-label="${health.sick ? 'Already sick' : 'Resistance'}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${resistance}"><i style="width:${Math.max(0, Math.min(100, resistance))}%"></i></span><small>Drops while Hunger or Hygiene is under 15 and you keep playing. Time away does not count. At zero you fall sick.</small></span></div></div>
       <h3 class="ui-section">What to do</h3><ul class="health-advice">${health.advice.map((line) => `<li>${esc(line)}</li>`).join('')}</ul>
       <h3 class="ui-section">${health.sick ? 'Ways to get well' : 'If you ever fall sick'}</h3><ul class="ui-rows health-cures">${health.cures.map((cure) => cureRow(cure, state, view)).join('')}</ul>`;
   },
 };
 
-/** Something to act on now (sick, run down) stays in view; the weather is information and lives in the tray. */
-const chip = (warning) => `<button class="health-chip is-${esc(warning.level)}" data-open="health" aria-label="${esc(warning.text)}. Open the Health app."><span aria-hidden="true">${esc(warning.icon)}</span><b>${esc(warning.text)}</b></button>`;
-const healthChip = {
-  id: 'health-chip', title: 'Health', placement: 'hud', slot: 'alert', order: 6,
-  render(state, view) {
-    const warning = view.health?.warning;
-    return warning && warning.level !== 'rain' ? chip(warning) : '';
-  },
-};
-const weatherChip = {
-  id: 'weather-chip', title: 'Weather', placement: 'hud', order: 6,
-  render(state, view) {
-    const health = view.health, warning = health?.warning;
-    if (warning?.level === 'rain') return chip(warning);
-    const sky = health?.weather;
-    return sky ? `<button class="health-chip" data-open="health" aria-label="Weather: ${esc(sky.label)}. Open the Health app."><span aria-hidden="true">${esc(sky.icon)}</span><b>${esc(sky.label)}</b></button>` : '';
-  },
-};
-
-export default [healthPanel, healthChip, weatherChip];
+export default [healthPanel];

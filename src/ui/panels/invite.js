@@ -10,6 +10,7 @@
 import { esc, json, avatar, glyph } from '../dom.js';
 import { inviteIdFrom } from '../../game/social-model.js';
 import { S, bindCommon, gate, call, perform, sync, cityId } from './social-client.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.js';
 
 const ui = { paste: '', host: null, house: null, loading: false, params: null };
 const STATUS = { home: 'At home', out: 'Online, but not at home', reconnecting: 'Reconnecting…', offline: 'Offline' };
@@ -43,7 +44,7 @@ function visitHtml(view) {
 }
 
 export default {
-  id: 'invite', title: 'Invite', icon: '🏠', placement: 'phone', order: 38,
+  id: 'invite', title: 'Invite', placement: 'phone', order: 38,
   render(state, view) {
     // Opened from an invite link: api.open('invite', { host }).
     if (view.params?.host && view.params !== ui.params) { ui.params = view.params; ui.pending = view.params.host; }
@@ -53,16 +54,17 @@ export default {
     const link = `${typeof location === 'undefined' ? '' : location.origin}${me.invitePath}`;
     const knocks = house.knocks.map((knock) => `<div class="social-row is-ask">${avatar(knock.from.name, knock.from.id)}<div><strong>${esc(knock.from.name)}</strong><small>is knocking${knock.expiresAt <= view.now ? ' · expired' : ''}</small></div><span class="social-actions"><button class="social-btn is-primary" data-i-answer="${json({ visitor: knock.from.id, answer: 'accept' })}" ${house.guests.length >= house.capacity ? 'disabled' : ''}>Let them in</button><button class="social-btn" data-i-answer="${json({ visitor: knock.from.id, answer: 'decline' })}">Not now</button></span></div>${house.guests.length >= house.capacity ? `<span class="social-why">Your house is full (${house.capacity} guests). Ask someone to leave first.</span>` : ''}`).join('');
     const guests = house.guests.map((guest) => `<div class="social-row">${avatar(guest.name, guest.id)}<div><strong>${esc(guest.name)}</strong><small>Inside · the visit ends after 30 minutes, or when you go out</small></div><span class="social-actions"><button class="social-btn" data-i-remove="${esc(guest.id)}">Ask to leave</button></span></div>`).join('');
-    const visiting = me.visiting ? `<h3 class="ui-section">You are visiting</h3><div class="social-list"><div class="social-row"><span class="social-avatar" aria-hidden="true">🏠</span><div><strong>${esc(me.visiting.host.name)}’s house</strong><small>${esc(STATUS[me.visiting.hostStatus] ?? '')} · ${me.visiting.guests.length}/${me.visiting.capacity} guests · ${S.houseRoom?.host === me.visiting.host.id ? `in the room now: ${esc(S.houseRoom.members.map((member) => member.name).join(', '))}` : 'joining the room…'}</small></div><span class="social-actions"><button class="social-btn is-primary" data-open="messages" data-params="${json({ conv: `h.${me.visiting.host.id}` })}">House chat</button><button class="social-btn" data-i-leave="${esc(me.visiting.host.id)}">Leave</button></span></div></div>` : '';
+    const visiting = me.visiting ? `<h3 class="ui-section">You are visiting</h3><div class="social-list"><div class="social-row"><span class="social-avatar" aria-hidden="true">${glyph('home', 'ui-glyph')}</span><div><strong>${esc(me.visiting.host.name)}’s house</strong><small>${esc(STATUS[me.visiting.hostStatus] ?? '')} · ${me.visiting.guests.length}/${me.visiting.capacity} guests · ${S.houseRoom?.host === me.visiting.host.id ? `in the room now: ${esc(S.houseRoom.members.map((member) => member.name).join(', '))}` : 'joining the room…'}</small></div><span class="social-actions"><button class="social-btn is-primary" data-open="messages" data-params="${json({ conv: `h.${me.visiting.host.id}` })}">House chat</button><button class="social-btn" data-i-leave="${esc(me.visiting.host.id)}">Leave</button></span></div></div>` : '';
     return `<section class="invite-card" aria-label="Your house link"><span class="invite-mark" aria-hidden="true">${glyph('invite')}</span><small>Your house link</small><strong>${esc(state.name)}’s place</strong><output class="social-code" data-i-link>${esc(link)}</output>
         <button class="ui-button is-block" data-i-copy>Copy link</button><p>${house.guests.length} of ${house.capacity} guests inside · ${state.location === 'home' ? 'you are home, knocks will ring' : 'you are out, so knocks will not ring'}</p></section>
-      <p class="ui-note">Anyone with the link can knock while you are at home. You decide who comes in.</p>
+      <p class="ui-note">Share the link: people knock, you decide who comes in. A visit lasts up to 30 minutes.</p>
       ${knocks ? `<h3 class="ui-section">At your door</h3><div class="social-list">${knocks}</div>` : ''}<h3 class="ui-section">Guests<small>${house.guests.length}/${house.capacity}</small></h3>${guests ? `<div class="social-list">${guests}</div>` : '<p class="social-note">Nobody is visiting.</p>'}
       ${house.conv ? `<button class="ui-button is-block" data-open="messages" data-params="${json({ conv: house.conv })}">Open house chat</button>` : ''}${visiting}
       <h3 class="ui-section">Visit a house</h3><form class="social-form is-search" data-i-visit><input name="link" maxlength="200" placeholder="Paste a house link" aria-label="House link" value="${esc(ui.paste)}" autocomplete="off"><button class="social-btn">Find</button></form>${visitHtml(view)}
-      <p class="preview-note">Beta: a guest joins the host’s home room (the host sees them standing by the door), and everyone inside shares the guest list and the house chat. A visit ends after 30 minutes, when the guest leaves or is asked to, or when the host goes out. Guests do not see the host’s furniture yet, and there is no voice in a house visit from this screen.</p>`;
+      ${how('invite-rules', ruleList(['Anyone with the link can knock while you are at home. You decide who comes in.', 'A guest joins the host’s home room (the host sees them standing by the door), and everyone inside shares the guest list and the house chat.', 'A visit ends after 30 minutes, when the guest leaves or is asked to, or when the host goes out.', 'Beta: guests do not see the host’s furniture yet, and there is no voice in a house visit from this screen.']), 'How visits work', true)}`;
   },
   bind(root, api) {
+    bindHow(root, api);
     bindCommon(root, api);
     if (ui.pending && S.me) { const host = ui.pending; ui.pending = null; void lookUp(api, host); }
     const each = (selector, handler) => { for (const node of root.querySelectorAll(selector)) node.addEventListener('click', () => handler(node)); };

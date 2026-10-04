@@ -13,6 +13,9 @@
  * PLAYER TEXT NEVER BECOMES GEOMETRY OR MARKUP. The 3D part of an ad is only a coloured board or
  * tile; its words are returned from chips() as plain strings, and the host writes them into DOM
  * nodes with textContent. Nothing an ad says is a link or a button.
+ * A chip's ICON is never player text: `glyph` is ready-made SVG of the game's own icon set (src/ui/icon-map.js),
+ * chosen from the ad's icon id, and is the one field the host may write as markup. `icon` (the palette's emoji)
+ * is kept only as the plain-text fallback.
  *
  *   createOverlays(kit, city) → { group, set(layers, data) → changed, chips() → [...], triangles, dispose() }
  */
@@ -20,6 +23,7 @@ import { createBatch, sceneMaterials } from '../scene/build.js';
 import { sign } from '../scene/props.js';
 import { PLINTH as PLINTH_UNIT } from './landmarks.js';
 import { WATER_Y, LANDMARK_SCALE } from './city-build.js';
+import { iconFor } from '../ui/icon-map.js';
 
 const HOUSES_PER_ESTATE = 18, HOMES_LISTED = 6, PLOT_CHIPS = 36;
 const GOV = '#6a3fa0', PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
@@ -42,7 +46,8 @@ export function createOverlays(kit, city) {
   }
   const push = (mesh, name) => { mesh.name = name; mesh.castShadow = false; mesh.receiveShadow = false; mesh.frustumCulled = false; group.add(mesh); parts.push(mesh); triangles += (mesh.geometry.index.count / 3) * (mesh.isInstancedMesh ? mesh.count : 1); return mesh; };
   const colourOf = (ads, id) => ads?.palette?.colours?.find((item) => item.id === id) || { bg: '#256b45', ink: '#ffffff' };
-  const iconOf = (ads, id) => ads?.palette?.icons?.find((item) => item.id === id)?.icon || '⭐';
+  const iconOf = (ads, id) => ads?.palette?.icons?.find((item) => item.id === id)?.icon || '';
+  const glyphOf = (ads, id) => iconFor('ad', id, iconOf(ads, id));
 
   function billboards(ads) {
     const b = createBatch(THREE);
@@ -59,8 +64,8 @@ export function createOverlays(kit, city) {
       if (slot.ad) b.box(x, 2.82, z + 0.12, 3.4, 0.14, 0.02, colour.ink);
       else sign(b, x, 3.5, z + 0.12, 'FOR RENT', { size: 0.3, color: '#8a7a4a' });
       chipList.push(slot.ad
-        ? { key: `board:${slot.slot}`, kind: 'board', x, y: 4.7, z, icon: iconOf(ads, slot.ad.icon), text: slot.ad.text, bg: colour.bg, ink: colour.ink, label: `Billboard on ${slot.road}: ${slot.ad.text}, by ${slot.ad.by.name}` }
-        : { key: `board:${slot.slot}`, kind: 'board-free', x, y: 4.7, z, icon: '📢', text: '', label: `Billboard on ${slot.road}: for rent` });
+        ? { key: `board:${slot.slot}`, kind: 'board', x, y: 4.7, z, icon: iconOf(ads, slot.ad.icon), glyph: glyphOf(ads, slot.ad.icon), text: slot.ad.text, bg: colour.bg, ink: colour.ink, label: `Billboard on ${slot.road}: ${slot.ad.text}, by ${slot.ad.by.name}` }
+        : { key: `board:${slot.slot}`, kind: 'board-free', x, y: 4.7, z, icon: '', glyph: iconFor('ad', 'megaphone'), text: 'For rent', label: `Billboard on ${slot.road}: for rent` });
     }
     for (const mesh of b.build(shared).meshes) push(mesh, `billboards-${mesh.name}`);
   }
@@ -81,12 +86,12 @@ export function createOverlays(kit, city) {
       i += 1;
       if (plot && chipList.length < 200) {
         const colour = colourOf(ads, plot.colour);
-        chipList.push({ key: `plot:${plot.slot}`, kind: 'plot', x, y: WATER_Y + 0.9, z, icon: iconOf(ads, plot.icon), text: plot.text, bg: colour.bg, ink: colour.ink, label: `Sea plot ${row + 1}·${col + 1}: ${plot.text}, by ${plot.by.name}` });
+        chipList.push({ key: `plot:${plot.slot}`, kind: 'plot', x, y: WATER_Y + 0.9, z, icon: iconOf(ads, plot.icon), glyph: glyphOf(ads, plot.icon), text: plot.text, bg: colour.bg, ink: colour.ink, label: `Sea plot ${row + 1}·${col + 1}: ${plot.text}, by ${plot.by.name}` });
       }
     }
     mesh.instanceMatrix.needsUpdate = true; mesh.instanceColor.needsUpdate = true;
     push(mesh, 'sea-plots');
-    chipList.push({ key: 'sea-title', kind: 'title', x: (area.x0 + area.x1) / 2, y: 0.5, z: area.z0 - 2.5, icon: '🌊', text: `Sea plots · ${grid.plots.length} of ${grid.rows * grid.cols} rented`, label: `Sea plots: ${grid.plots.length} of ${grid.rows * grid.cols} rented` });
+    chipList.push({ key: 'sea-title', kind: 'title', x: (area.x0 + area.x1) / 2, y: 0.5, z: area.z0 - 2.5, icon: '', glyph: iconFor('spot', null, 'wave'), text: `Sea plots · ${grid.plots.length} of ${grid.rows * grid.cols} rented`, label: `Sea plots: ${grid.plots.length} of ${grid.rows * grid.cols} rented` });
     // Only so many chips are worth drawing at once; the nearest to the shore keep theirs.
     let plots = 0;
     chipList = chipList.filter((chip) => chip.kind !== 'plot' || (plots += 1) <= PLOT_CHIPS);
@@ -110,7 +115,7 @@ export function createOverlays(kit, city) {
       }
       const rows = Math.ceil(shown / estate.cols);
       chipList.push({ key: `hood:${district.id}`, kind: 'hood', x: estate.x + (Math.min(shown, estate.cols) - 1) * 1.35, y: 3.2, z: estate.z + (rows - 1) * 1.5,
-        icon: '🏡', text: `${district.label} · ${district.count} home${district.count === 1 ? '' : 's'} · ${district.online} online`,
+        icon: '', glyph: iconFor('house', null, 'home'), homeGlyph: iconFor('house', null, 'home'), text: `${district.label} · ${district.count} home${district.count === 1 ? '' : 's'} · ${district.online} online`,
         homes: district.homes.slice(0, HOMES_LISTED).map((home) => ({ id: home.id, name: home.name, online: Boolean(home.online), you: Boolean(home.you) })), more: Math.max(0, district.count - Math.min(district.homes.length, HOMES_LISTED)) });
     }
     if (!homes.length) { geometry.dispose(); lit.dispose(); return; }
@@ -136,7 +141,7 @@ export function createOverlays(kit, city) {
     }
     const seat = city.places['state-house'];
     // `lift` raises the chip (in pixels) clear of the State House's own label, at every zoom.
-    if (seat) chipList.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, y: seat.top + 0.5, z: seat.z, icon: '🏛️', text: data.governor ? `Governor ${data.governor.name}` : 'No Governor yet', label: data.governor ? `The Governor is ${data.governor.name}` : 'There is no Governor yet' });
+    if (seat) chipList.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, y: seat.top + 0.5, z: seat.z, icon: '', glyph: iconFor('panel', 'governor'), text: data.governor ? `Governor ${data.governor.name}` : 'No Governor yet', label: data.governor ? `The Governor is ${data.governor.name}` : 'There is no Governor yet' });
   }
 
   return {

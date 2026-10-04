@@ -59,6 +59,43 @@ export const APPEARANCE = {
     gele: 'Gele', classic: 'Classic', bald: 'Bald', curls: 'Curls',
     casual: 'Casual', office: 'Office', owambe: 'Owambe', 'site-work': 'Site work', hoodie: 'Hoodie', chill: 'Chill',
     plain: 'Plain', ankara: 'Ankara', adire: 'Adire', 'aso-oke': 'Aso-oke',
+    // Original beta additions
+    cornrows: 'Cornrows', twists: 'Twists', 'bantu-knots': 'Bantu knots', fade: 'Fade',
+    jersey: 'Jersey', kaftan: 'Kaftan', gown: 'Gown', agbada: 'Agbada',
+    glasses: 'Glasses', sunglasses: 'Sunglasses', cap: 'Cap', headwrap: 'Headwrap', fila: 'Fila', earrings: 'Earrings', chain: 'Chain',
+    watch: 'Wristwatch', beads: 'Beads', backpack: 'Backpack', handbag: 'Handbag',
+    oval: 'Oval', round: 'Round', long: 'Long', smile: 'Smile', neutral: 'Calm', grin: 'Grin',
+  },
+  /**
+   * Original beta additions (add-only; the lists above stay exactly as observed). A body's styles
+   * are its list above followed by its list here.
+   */
+  extra: {
+    beta: true,
+    hair: { woman: ['cornrows', 'twists', 'bantu-knots'], man: ['fade', 'cornrows', 'twists'] },
+    outfits: { woman: ['jersey', 'kaftan', 'gown'], man: ['jersey', 'kaftan', 'agbada'] },
+  },
+  /**
+   * Accessories: an optional list on a look (`look.accessories`), at most `accessoryLimit` and at
+   * most one per slot. Original beta list.
+   */
+  accessories: [
+    { id: 'glasses', slot: 'eyes' }, { id: 'sunglasses', slot: 'eyes' },
+    { id: 'cap', slot: 'head' }, { id: 'headwrap', slot: 'head' }, { id: 'fila', slot: 'head' },
+    { id: 'earrings', slot: 'ears' }, { id: 'chain', slot: 'neck' }, { id: 'watch', slot: 'wrist' }, { id: 'beads', slot: 'hand' },
+    { id: 'backpack', slot: 'carry' }, { id: 'handbag', slot: 'carry' },
+  ],
+  accessoryLimit: 5,
+  /** Optional on a look (`look.face`, `look.expression`); the first of each is the default. Free. Original beta lists. */
+  faces: ['oval', 'round', 'long'],
+  expressions: ['smile', 'neutral', 'grin'],
+  /**
+   * Styles that cannot be chosen (or shuffled) while creating a character: they are bought in the
+   * Boutique after moving in. Everything else that is offered is free at creation. Original beta choice.
+   */
+  boutiqueOnly: {
+    hair: ['twists', 'bantu-knots'], outfit: ['kaftan', 'gown', 'agbada'],
+    accessories: ['sunglasses', 'headwrap', 'fila', 'chain', 'beads', 'backpack', 'handbag'],
   },
 };
 
@@ -70,13 +107,17 @@ export const DEFAULT_LOOK = {
 
 /** Items every Sim owns without buying them (valid for both bodies). Original beta choice. */
 export const WARDROBE_BASICS = { hair: ['low-cut'], outfit: ['casual'], fabric: ['plain'] };
+/** Accessories every Sim owns without buying them: the ones offered at creation. Original beta choice. */
+export const ACCESSORY_BASICS = ['glasses', 'cap', 'earrings', 'watch'];
 
 /** Boutique prices in naira. Every price is an original beta value. */
 export const BOUTIQUE_PRICES = {
   beta: true,
-  hair: { 'low-cut': 0, bald: 500, bun: 2000, ponytail: 2000, afro: 2500, classic: 2500, curls: 3000, braids: 3500, long: 4000, locs: 4500, gele: 6000 },
-  outfit: { casual: 0, chill: 4000, 'site-work': 5000, hoodie: 6000, office: 8000, owambe: 15000 },
+  hair: { 'low-cut': 0, bald: 500, bun: 2000, ponytail: 2000, afro: 2500, classic: 2500, curls: 3000, braids: 3500, long: 4000, locs: 4500, gele: 6000,
+    fade: 1500, cornrows: 3000, twists: 3500, 'bantu-knots': 3000 },
+  outfit: { casual: 0, chill: 4000, 'site-work': 5000, hoodie: 6000, office: 8000, owambe: 15000, jersey: 5000, kaftan: 12000, gown: 10000, agbada: 25000 },
   fabric: { plain: 0, ankara: 5000, adire: 7000, 'aso-oke': 12000 },
+  accessories: { glasses: 0, cap: 0, earrings: 0, watch: 0, beads: 1500, headwrap: 1500, sunglasses: 2500, fila: 3000, backpack: 4000, chain: 6000, handbag: 7000 },
 };
 
 // ---- Traits (choose exactly two) ---------------------------------------------------------

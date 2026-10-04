@@ -20,7 +20,11 @@
  *     keys   camera-relative input (forward = away from the camera), sliding along obstacles
  *     path   waypoints from grid.path() (A* over the grid, then straightened by line of sight)
  *     hop    a short straight move on to or off a place that is not on the walkable floor (a seat,
- *            a stage) — how a spot's own anchor is reached when it sits inside an obstacle
+ *            a stage) — how a spot's own anchor is reached when it sits inside an obstacle. A raised
+ *            place declares an APPROACH point (the foot of its steps): the path ends there and the
+ *            hop starts there, so the avatar steps up where the steps are instead of through a rail
+ *   others soft circle avoidance: the walker slides round other figures (walker.others) instead of
+ *            walking through them, and is never trapped by them — see avoid() below
  *   step() allocates nothing and returns true while there is still motion, which is what keeps the
  *   host's frame loop alive — and lets it stop the moment the avatar arrives.
  */
@@ -195,19 +199,36 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
 
 /**
  * Wrap a geometry batch so that every primitive drawn through it also leaves its ground footprint.
- * Returns { batch (use it exactly like the one given), shapes() → { floor, block } }.
+ * Returns { batch (use it exactly like the one given), shapes() → { floor, block, solids, walls } }.
  *   floor   [minX, minZ, maxX, maxZ] of the largest flat slab at ground level (the venue's floor)
  *   block   rectangles of everything that rises above ankle height and starts below chest height
  *           (what hangs overhead — awnings, tree crowns, signs — is walked under), plus water
+ *   solids  [x0, y0, z0, x1, y1, z1] boxes of everything bulky enough to hide the avatar from the
+ *           camera (tree crowns, kiosks, shelves, people) — WITH heights; what the camera's line to
+ *           the avatar is tested against (src/scene/camera-collision.js)
+ *   walls   { backZ, leftX } | null — set when the builder declared a room (batch.walls). Whatever
+ *           is drawn wholly inside the strip along a wall (the wall itself, its trim, windows,
+ *           boards, a shelf against it) is baked as that wall's PART ('wallBack' / 'wallLeft' —
+ *           see build.js), so the scene can hide the wall, with what hangs on it, when the camera
+ *           goes round behind it. Parts are never camera solids: a hidden wall hides nothing.
  */
+export const WALL_REACH = 0.75;
 export function footprintRecorder(inner, { low = 0.34, high = 1.2 } = {}) {
-  const block = [];
-  let floor = null, floorArea = 0;
+  const block = [], solids = [];
+  let floor = null, floorArea = 0, walls = null;
+  /** Records one primitive's footprint; returns the options to draw it with (the same, or with its wall part). */
   function note(x, y, z, hx, hy, hz, o, flat = false) {
     const c = Math.cos(o?.ry || 0), s = Math.sin(o?.ry || 0);
+    // A primitive tipped over (a ring or a sign laid against a wall) has other extents: turn its corners the way the batch does (Y, then X, then Z).
+    const tipped = Boolean(o?.rx || o?.rz), cx = Math.cos(o?.rx || 0), sx0 = Math.sin(o?.rx || 0), cz = Math.cos(o?.rz || 0), sz0 = Math.sin(o?.rz || 0);
     let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     for (let i = 0; i < 8; i++) {
-      const sx = i & 1 ? hx : -hx, sy = i & 2 ? hy : -hy, sz = i & 4 ? hz : -hz;
+      let sx = i & 1 ? hx : -hx, sy = i & 2 ? hy : -hy, sz = i & 4 ? hz : -hz;
+      if (tipped) {
+        const ax = sx * cz - sy * sz0, ay = sx * sz0 + sy * cz;          // about Z
+        const by = ay * cx - sz * sx0, bz = ay * sx0 + sz * cx;          // about X
+        sx = ax; sy = by; sz = bz;
+      }
       const p = inner.world(x + sx * c + sz * s, y + sy, z - sx * s + sz * c);
       x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); z0 = Math.min(z0, p.z); z1 = Math.max(z1, p.z); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y);
     }
@@ -216,23 +237,30 @@ export function footprintRecorder(inner, { low = 0.34, high = 1.2 } = {}) {
     if (!glass && !flat && y1 > -0.06 && y1 <= 0.2 && area > floorArea) { floorArea = area; floor = [x0, z0, x1, z1]; }
     if (y0 < high && y1 > low) block.push([x0, z0, x1, z1]);
     else if (glass && y1 <= low && y1 > -0.2 && area > 6) block.push([x0, z0, x1, z1]); // water lying on the ground
+    // Wholly inside the strip along a declared wall: it belongs to that wall and hides with it.
+    const part = !walls || o?.part ? null : z1 <= walls.backZ + WALL_REACH ? 'wallBack' : x1 <= walls.leftX + WALL_REACH ? 'wallLeft' : null;
+    if (part) return { ...o, part };
+    if (!flat && !glass && !o?.part && y1 > 0.9 && y1 - y0 > 0.4 && Math.min(x1 - x0, z1 - z0) > 0.25 && area < 80) solids.push([x0, y0, z0, x1, y1, z1]);
+    return o;
   }
   const batch = {
     isBatch: true,
-    box(x, y, z, w, h, d, colour, o) { note(x, y, z, w / 2, h / 2, d / 2, o); inner.box(x, y, z, w, h, d, colour, o); return batch; },
-    cyl(x, y, z, r, h, colour, o) { note(x, y, z, r * (o?.sx || 1), h / 2, r * (o?.sz || 1), o); inner.cyl(x, y, z, r, h, colour, o); return batch; },
+    box(x, y, z, w, h, d, colour, o) { inner.box(x, y, z, w, h, d, colour, note(x, y, z, w / 2, h / 2, d / 2, o)); return batch; },
+    cyl(x, y, z, r, h, colour, o) { inner.cyl(x, y, z, r, h, colour, note(x, y, z, r * (o?.sx || 1), h / 2, r * (o?.sz || 1), o)); return batch; },
     cone(x, y, z, r, h, colour, o) { return batch.cyl(x, y, z, r, h, colour, { ...o, top: 0 }); },
-    ball(x, y, z, rx, ry, rz, colour, o) { note(x, y, z, rx, ry, rz, o); inner.ball(x, y, z, rx, ry, rz, colour, o); return batch; },
-    ico(x, y, z, rx, ry, rz, colour, o) { note(x, y, z, rx, ry, rz, o); inner.ico(x, y, z, rx, ry, rz, colour, o); return batch; },
-    quad(x, y, z, w, h, colour, o) { note(x, y, z, w / 2, h / 2, 0.02, o); inner.quad(x, y, z, w, h, colour, o); return batch; },
-    disc(x, y, z, r, colour, o) { note(x, y, z, r * (o?.sx || 1), 0.01, r * (o?.sz || 1), o, true); inner.disc(x, y, z, r, colour, o); return batch; },
+    ball(x, y, z, rx, ry, rz, colour, o) { inner.ball(x, y, z, rx, ry, rz, colour, note(x, y, z, rx, ry, rz, o)); return batch; },
+    ico(x, y, z, rx, ry, rz, colour, o) { inner.ico(x, y, z, rx, ry, rz, colour, note(x, y, z, rx, ry, rz, o)); return batch; },
+    quad(x, y, z, w, h, colour, o) { inner.quad(x, y, z, w, h, colour, note(x, y, z, w / 2, h / 2, 0.02, o)); return batch; },
+    disc(x, y, z, r, colour, o) { inner.disc(x, y, z, r, colour, note(x, y, z, r * (o?.sx || 1), 0.01, r * (o?.sz || 1), o, true)); return batch; },
     at(x, y, z, ry, draw, rx, rz, scale) { inner.at(x, y, z, ry, () => draw(batch), rx, rz, scale); return batch; },
     light(...args) { inner.light(...args); return batch; },
+    /** The builder's room: a back wall along z = −d / 2 and a left wall along x = −w / 2 (props.js room()). */
+    walls({ w, d } = {}) { if (Number.isFinite(w) && Number.isFinite(d)) walls = { backZ: -d / 2, leftX: -w / 2 }; return batch; },
     world: (x, y, z) => inner.world(x, y, z),
     get triangles() { return inner.triangles; },
     build: (materials) => inner.build(materials),
   };
-  return { batch, shapes: () => ({ floor, block }) };
+  return { batch, shapes: () => ({ floor, block, solids, walls }) };
 }
 
 /** Shortest signed turn from one heading to another. */
@@ -250,83 +278,177 @@ export function turnTowards(from, to) {
  *   walker.input(right, forward, jog)          held movement keys / joystick, each −1…1, relative to the camera
  *   walker.goTo(x, z, { exact, face, arrive }) walk a path there. exact: finish with a straight hop to
  *                                              exactly (x, z) even if that place is off the walkable floor;
- *                                              face: heading to take on arrival; arrive(): called once there;
+ *                                              via: { x, z } the approach point the path ends at before that
+ *                                              hop; leave: { x, z } where to step back on to the floor first
+ *                                              when the avatar stands off it; face: heading to take on
+ *                                              arrival; arrive(): called once there;
  *                                              jog: true / false (default: jog when the path is long)
+ *   walker.others = [{ x, z }, ...]            other figures to keep clear of (live objects; may move)
+ *   walker.reach                               how close two figures' centres may come (default 2 radii)
  *   walker.stop()                              drop the path and the input
  *   walker.step(dt, cameraYaw, snap?) → bool   advance; true while still moving or turning
  */
 export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) {
   let grid = null, inputX = 0, inputZ = 0, jog = false, routeJog = false;
-  let route = null, routeIndex = 0, finish = null, face = null, arrive = null, turning = false;
+  let route = null, routeIndex = 0, face = null, arrive = null, turning = false;
+  let stuck = 0, ghost = false, nearest = Infinity;
+  /**
+   * Keep clear of the other figures. Called after the avatar has moved from (fromX, fromZ): each
+   * figure closer than `reach` pushes it straight back out, never by more than it just walked — so
+   * walking AT someone goes nowhere (a soft block) and walking past them slides round. Head-on, a
+   * sideways share is added so a path bends round a person instead of stopping in front of them.
+   * A push never leaves the floor. And nobody is ever trapped: making no headway against the crowd
+   * for 0.4 s lets the avatar pass through until it is clear of everyone again.
+   */
+  function avoid(fromX, fromZ, dt) {
+    const others = walker.others;
+    if (!others || !others.length) { stuck = 0; return; }
+    const reach = walker.reach, moved = Math.hypot(walker.x - fromX, walker.z - fromZ);
+    let touching = false, pushX = 0, pushZ = 0;
+    for (let i = 0; i < others.length; i++) {
+      const other = others[i];
+      let dx = walker.x - other.x, dz = walker.z - other.z;
+      const distance = Math.hypot(dx, dz);
+      if (distance >= reach) continue;
+      touching = true;
+      if (ghost) continue;
+      if (distance < 1e-4) { dx = Math.sin(walker.ry); dz = Math.cos(walker.ry); } else { dx /= distance; dz /= distance; }
+      const depth = reach - distance;
+      pushX += dx * depth; pushZ += dz * depth;
+      // Head-on (the push points back along the heading): add a turn to the side the figure is not on.
+      if (Number.isFinite(walker.heading)) {
+        const hx = Math.sin(walker.heading), hz = Math.cos(walker.heading);
+        if (dx * hx + dz * hz < -0.7) { const side = dx * hz - dz * hx >= 0 ? 1 : -1; pushX += hz * side * depth; pushZ += -hx * side * depth; }
+      }
+    }
+    if (!touching) { ghost = false; stuck = 0; return; }
+    if (ghost) return;
+    const size = Math.hypot(pushX, pushZ), limit = Math.max(moved, 1e-3) * 1.05;
+    if (size > 1e-6) {
+      const scale = Math.min(1, limit / size);
+      const nx = walker.x + pushX * scale, nz = walker.z + pushZ * scale;
+      if (!grid || grid.free(nx, nz)) { walker.x = nx; walker.z = nz; }
+      else if (grid.free(nx, walker.z)) walker.x = nx;
+      else if (grid.free(walker.x, nz)) walker.z = nz;
+    }
+    // Headway: is the avatar getting anywhere in the direction it wants to go? (Being shoved sideways is not headway.)
+    // If the crowd has held it for a moment, let it through.
+    if (route) {
+      // On a path: is it getting any nearer to where it is going?
+      const end = route[route.length - 1], gap = Math.hypot(end.x - walker.x, end.z - walker.z);
+      if (gap < nearest - 0.01) { nearest = gap; stuck = 0; } else stuck += dt;
+    } else {
+      const gained = Number.isFinite(walker.heading) ? (walker.x - fromX) * Math.sin(walker.heading) + (walker.z - fromZ) * Math.cos(walker.heading) : Math.hypot(walker.x - fromX, walker.z - fromZ);
+      stuck = gained < moved * 0.35 ? stuck + dt : Math.max(0, stuck - dt * 2);
+    }
+    if (stuck > 0.4) { ghost = true; stuck = 0; }
+  }
+  const reset = () => { route = null; routeIndex = 0; face = null; arrive = null; turning = false; walker.moving = false; walker.mode = 'idle'; };
+  const point = (value) => (value && Number.isFinite(value.x) && Number.isFinite(value.z) ? value : null);
+  /** A list of off-floor points ({ x, z } or [{ x, z }, ...]) as hop nodes. */
+  const hops = (value) => (Array.isArray(value) ? value : [value]).map(point).filter(Boolean).map((at) => ({ x: at.x, z: at.z, hop: true }));
   const walker = {
-    x: 0, z: 0, ry: 0, moving: false, mode: 'idle', speed, jogSpeed, blocked: false,
+    x: 0, z: 0, ry: 0, moving: false, mode: 'idle', speed, jogSpeed, blocked: false, others: null, reach: AVATAR_RADIUS * 2,
+    /** True while the avatar is being let through a crowd that had boxed it in. */
+    get passing() { return ghost; },
+    /** True while the avatar is on a hop (stepping on to or off a place that is not on the walkable floor). */
+    get hopping() { return Boolean(route) && routeIndex < route.length && route[routeIndex].hop === true; },
     setGrid(next) { grid = next || null; },
     get grid() { return grid; },
-    get target() { return route ? (finish || route[route.length - 1]) : null; },
+    get target() { const end = route ? route[route.length - 1] : null; return end ? { x: end.x, z: end.z } : null; },
     place(x, z, ry) {
       walker.x = x; walker.z = z; if (Number.isFinite(ry)) walker.ry = ry;
       walker.heading = NaN;
-      route = null; finish = null; face = null; arrive = null; turning = false; walker.moving = false; walker.mode = 'idle';
+      reset(); stuck = 0; ghost = false;
     },
     input(right, forward, fast = false) {
       inputX = Math.max(-1, Math.min(1, Number(right) || 0)); inputZ = Math.max(-1, Math.min(1, Number(forward) || 0)); jog = Boolean(fast);
-      if (inputX || inputZ) { route = null; finish = null; face = null; arrive = null; }
+      if (inputX || inputZ) { route = null; face = null; arrive = null; }
     },
     get hasInput() { return inputX !== 0 || inputZ !== 0; },
     /** True while the avatar is going faster than a walk (Shift, a full push of the joystick, a long path). */
     get jogging() { return route ? routeJog : jog && (inputX !== 0 || inputZ !== 0); },
+    /**
+     * Walk to (x, z). The route is: [off the place it stands on (options.leave)] → a path over the
+     * floor → [up the approach (options.via, then options.steps)] → [a last hop to exactly (x, z)].
+     *   exact   finish with a straight hop to exactly (x, z) even if that is off the walkable floor
+     *   via     { x, z } the approach point on the floor the path ends at before the hop
+     *   steps   [{ x, z }, ...] further points of the way up, walked in order after `via` (a stair
+     *           top, a platform, a bridge end) — all off the floor
+     *   leave   { x, z } | [{ x, z }, ...] the way back down from where the avatar stands, ending
+     *           on the floor; without it an avatar that is off the floor steps to the nearest free place
+     */
     goTo(x, z, options = {}) {
       if (!grid || !Number.isFinite(x) || !Number.isFinite(z)) return false;
-      const waypoints = grid.path(walker.x, walker.z, x, z);
+      const nodes = [];
+      let fromX = walker.x, fromZ = walker.z;
+      if (!grid.free(walker.x, walker.z)) {
+        const down = options.leave ? hops(options.leave) : [];
+        if (down.length) {
+          // The last point of the way down is on the floor: walked to like any waypoint.
+          const foot = grid.nearest(down[down.length - 1].x, down[down.length - 1].z);
+          down.pop();
+          nodes.push(...down);
+          if (foot) nodes.push({ x: foot.x, z: foot.z, hop: true });
+        } else { const back = grid.nearest(walker.x, walker.z); if (back) nodes.push({ x: back.x, z: back.z, hop: true }); }
+        if (nodes.length) { fromX = nodes[nodes.length - 1].x; fromZ = nodes[nodes.length - 1].z; }
+      }
+      // A raised or walled-in place is approached at its approach point: the path ends there, the hop starts there.
+      const via = point(options.via) ? grid.nearest(options.via.x, options.via.z) : null;
+      const aim = via || { x, z };
+      const waypoints = grid.path(fromX, fromZ, aim.x, aim.z);
       if (!waypoints) return false;
-      // Standing off the floor (on a seat, a stage): step back on to it first.
-      const start = grid.free(walker.x, walker.z) ? null : grid.nearest(walker.x, walker.z);
-      route = start ? [start, ...waypoints] : waypoints;
-      routeIndex = 0;
-      const end = route[route.length - 1];
-      finish = options.exact && Math.hypot(end.x - x, end.z - z) > 0.05 ? { x, z } : null;
+      for (const next of waypoints) nodes.push({ x: next.x, z: next.z, hop: false });
+      if (via && options.steps) nodes.push(...hops(options.steps));
+      const end = nodes.length ? nodes[nodes.length - 1] : walker;
+      if ((options.exact || via) && Math.hypot(end.x - x, end.z - z) > 0.05) nodes.push({ x, z, hop: true });
+      if (!nodes.length) return false; // already there
+      route = nodes; routeIndex = 0; nearest = Infinity; stuck = 0;
       face = Number.isFinite(options.face) ? options.face : null;
       arrive = typeof options.arrive === 'function' ? options.arrive : null;
       // A long way (across the venue) is jogged, so being sent somewhere never takes long.
-      let length = 0, fromX = walker.x, fromZ = walker.z;
-      for (const next of route) { length += Math.hypot(next.x - fromX, next.z - fromZ); fromX = next.x; fromZ = next.z; }
+      let length = 0, lastX = walker.x, lastZ = walker.z;
+      for (const next of route) { length += Math.hypot(next.x - lastX, next.z - lastZ); lastX = next.x; lastZ = next.z; }
       routeJog = options.jog === undefined ? length > LONG_WALK : Boolean(options.jog);
       inputX = 0; inputZ = 0; turning = false;
       walker.mode = 'path'; walker.moving = true;
       return true;
     },
-    stop() { route = null; finish = null; face = null; arrive = null; inputX = 0; inputZ = 0; turning = false; walker.moving = false; walker.mode = 'idle'; },
+    stop() { reset(); inputX = 0; inputZ = 0; },
     /** Jump to the end of the current path (reduced motion, or no frame loop available). */
     finishNow() {
       if (!route) return false;
-      const end = finish || route[route.length - 1];
+      const end = route[route.length - 1];
       walker.x = end.x; walker.z = end.z;
       if (face !== null) walker.ry = face;
       const done = arrive;
-      route = null; finish = null; face = null; arrive = null; turning = false; walker.moving = false; walker.mode = 'idle';
+      reset();
       done?.();
       return true;
     },
     step(dt, cameraYaw = 0, snap = false) {
       walker.blocked = false;
+      const fromX = walker.x, fromZ = walker.z;
+      let hopped = false;
       if (route) {
         let left = (routeJog ? walker.jogSpeed : walker.speed) * dt;
         while (left > 0 && route) {
-          const hop = routeIndex >= route.length;
-          const next = hop ? finish : route[routeIndex];
+          const next = route[routeIndex];
           if (!next) { route = null; break; }
+          if (next.hop) hopped = true;
           const dx = next.x - walker.x, dz = next.z - walker.z, distance = Math.hypot(dx, dz);
           if (distance > 1e-4) walker.heading = Math.atan2(dx, dz);
           if (distance <= left) {
             walker.x = next.x; walker.z = next.z; left -= distance;
-            if (hop) { route = null; finish = null; } else { routeIndex += 1; if (routeIndex >= route.length && !finish) route = null; }
+            routeIndex += 1;
+            if (routeIndex >= route.length) route = null;
           } else { walker.x += (dx / distance) * left; walker.z += (dz / distance) * left; left = 0; }
         }
         if (!route) {
-          const done = arrive; arrive = null;
-          walker.mode = 'idle'; walker.moving = false; turning = face !== null;
-          if (turning) walker.heading = face;
-          face = null;
+          const done = arrive, facing = face;
+          reset();
+          turning = facing !== null;
+          if (turning) walker.heading = facing;
           done?.();
         } else walker.moving = true;
       } else if (inputX || inputZ) {
@@ -348,11 +470,14 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
             const move = Math.min(distance, pace);
             walker.x += (dx / distance) * move; walker.z += (dz / distance) * move;
           }
+          hopped = true;
         }
         else if (vx && grid.free(nx, walker.z)) { walker.x = nx; walker.blocked = !vz; }       // slide along a wall
         else if (vz && grid.free(walker.x, nz)) { walker.z = nz; walker.blocked = !vx; }
         else walker.blocked = true;
       } else if (walker.mode === 'keys') { walker.mode = 'idle'; walker.moving = false; }
+      // Other figures are walked round, not through — except on a hop on to a seat or a stage, which is exact.
+      if (walker.moving && !hopped && !snap) avoid(fromX, fromZ, dt);
       // Turn to face where the avatar is heading.
       if (Number.isFinite(walker.heading)) {
         const delta = turnTowards(walker.ry, walker.heading);
@@ -388,6 +513,14 @@ export function createPositionReporter(send, { perSecond = 3, minStep = 0.25 } =
   return {
     report,
     flush(now) { return Number.isFinite(waitingX) ? report(waitingX, waitingZ, Math.max(now, lastAt + gap)) : false; },
+    /** The avatar came to rest at (x, z): others must see it exactly there, however recently the last report went. */
+    rest(x, z, now) {
+      waitingX = NaN;
+      if (!Number.isFinite(x) || !Number.isFinite(z) || Math.hypot(x - lastX, z - lastZ) < 0.02) return false;
+      lastAt = now; lastX = x; lastZ = z;
+      send(Math.round(x * 100) / 100, Math.round(z * 100) / 100);
+      return true;
+    },
     reset() { lastAt = -Infinity; lastX = NaN; lastZ = NaN; waitingX = NaN; },
   };
 }

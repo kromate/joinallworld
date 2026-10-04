@@ -65,6 +65,15 @@ function nearestOnSegment(x, z, a, b) {
   return { x: px, z: pz, t, distance: Math.hypot(x - px, z - pz) };
 }
 
+/** A bridge deck is sampled this finely, so its ramps are curves and not a few flat plates. */
+const BRIDGE_STEP = 1.25;
+/**
+ * The share of a bridge's length each ramp takes. A ramp is about four times as long as the deck
+ * is high (and never a stub) — a slope a road could have — so a short, high bridge is an arch (its ramps nearly meet
+ * in the middle) and a long one keeps a level deck. It never meets the road at a kink.
+ */
+export const bridgeRamp = (height, length) => Math.min(0.46, Math.max(0.24, Math.max(5, height * 4.2) / (length || 1)));
+
 export function buildNetwork(pack, { door = 4.7 } = {}) {
   const nodes = new Map();
   const node = (x, y, z) => {
@@ -79,12 +88,13 @@ export function buildNetwork(pack, { door = 4.7 } = {}) {
   };
 
   const roads = pack.roads.map((road) => {
-    const flat = smoothLine(road.points, road.bridge ? 2 : 3);
+    const flat = smoothLine(road.points, road.bridge ? BRIDGE_STEP : 3);
     let total = 0;
     const run = flat.map((point, i) => { if (i) total += Math.hypot(point[0] - flat[i - 1][0], point[1] - flat[i - 1][1]); return total; });
+    const ramp = road.bridge ? bridgeRamp(road.bridge, total) : 0;
     const points = flat.map(([x, z], i) => {
       const t = total ? run[i] / total : 0;
-      return { x, z, y: road.bridge ? road.bridge * smoothstep(0, 0.24, t) * (1 - smoothstep(0.76, 1, t)) : 0 };
+      return { x, z, y: road.bridge ? road.bridge * smoothstep(0, ramp, t) * (1 - smoothstep(1 - ramp, 1, t)) : 0 };
     });
     for (let i = 1; i < points.length; i++) {
       link(node(points[i - 1].x, points[i - 1].y, points[i - 1].z), node(points[i].x, points[i].y, points[i].z), { road: road.id, bridge: road.bridge ? road.id : null, cost: road.major ? 1 : 1.2 });

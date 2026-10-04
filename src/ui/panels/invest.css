@@ -18,3 +18,8 @@
 .invest-row{display:flex;justify-content:space-between;gap:var(--s-2);align-items:center}
 .invest-card .ui-button.is-small{margin-top:var(--s-2)}
 .invest-card .ui-confirm{margin-top:var(--s-2)}
+/* Expanded on a desktop: the three terms sit side by side. */
+.ph.is-wide .invest-terms{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ph.is-wide .invest-term{flex-direction:column;align-items:flex-start;padding:12px 14px}
+.ph.is-wide .invest-get{text-align:left}
+.ph.is-wide .invest-amounts{max-width:520px}

@@ -15,6 +15,8 @@ export const WHITE = '#ece8dc', BLACK = '#22252a', LEAF = '#3f8a57', LEAF_DARK =
 
 /** Floor slab with a back wall (−z) and a left wall (−x); the camera looks in from the front right. */
 export function room(b, { w = 24, d = 20, h = 5.5, floor = '#b9a98c', wall = '#d8cdb4', side = wall, trim = '#8b7a62', base = '#5a5148' } = {}) {
+  // Tell the recorder where the two walls are: they, and what is drawn against them, become parts the scene can hide (movement.js).
+  b.walls?.({ w, d });
   b.box(0, -0.25, 0, w + 1, 0.5, d + 1, base);
   b.box(0, 0.02, 0, w, 0.06, d, floor);
   b.box(0, h / 2, -d / 2 - 0.2, w + 0.8, h, 0.4, wall);

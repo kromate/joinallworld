@@ -20,13 +20,30 @@
  * previewDiagnostics() reports its render counter.
  */
 import './look-ui.css';
-import { esc, money } from '../dom.js';
+import { esc, money, mark } from '../dom.js';
 import { APPEARANCE, BOUTIQUE_PRICES } from '../../game/content/traits.js';
 
 const hexOf = (group, id) => APPEARANCE[group].find((swatch) => swatch.id === id)?.hex ?? '#888888';
 export const lookLabel = (id) => APPEARANCE.labels[id] ?? id;
-export const hairOptions = (body) => APPEARANCE.hair[body] ?? [];
-export const outfitOptions = (body) => APPEARANCE.outfits[body] ?? [];
+export const hairOptions = (body) => [...(APPEARANCE.hair[body] ?? []), ...(APPEARANCE.extra.hair[body] ?? [])];
+export const outfitOptions = (body) => [...(APPEARANCE.outfits[body] ?? []), ...(APPEARANCE.extra.outfits[body] ?? [])];
+const SLOT = Object.fromEntries(APPEARANCE.accessories.map((item) => [item.id, item.slot]));
+const worn = (look) => (Array.isArray(look.accessories) ? look.accessories : []);
+/** The accessories of `look` with `id` put on: it replaces whatever shares its slot; at the limit the oldest gives way. */
+export function withAccessory(look, id) {
+  const kept = worn(look).filter((other) => other !== id && SLOT[other] !== SLOT[id]);
+  return [...kept.slice(Math.max(0, kept.length - (APPEARANCE.accessoryLimit - 1))), id];
+}
+export const withoutAccessory = (look, id) => worn(look).filter((other) => other !== id);
+/**
+ * What a Sim may wear while it is being created: everything offered except the styles sold only
+ * in the Boutique. The same shape as a wardrobe, so the editor locks the rest the same way.
+ */
+export function starterWardrobe() {
+  const free = (kind, ids) => ids.filter((id) => !APPEARANCE.boutiqueOnly[kind].includes(id));
+  return { hair: free('hair', [...new Set(APPEARANCE.bodies.flatMap((body) => hairOptions(body.id)))]), outfit: free('outfit', [...new Set(APPEARANCE.bodies.flatMap((body) => outfitOptions(body.id)))]),
+    fabric: [...APPEARANCE.fabrics], accessories: free('accessories', APPEARANCE.accessories.map((item) => item.id)) };
+}
 
 function hairShapes(style, colour) {
   const cap = `<path d="M38 46a22 22 0 0 1 44 0c-6-9-14-12-22-12s-16 3-22 12Z" fill="${colour}"/>`;
@@ -84,8 +101,9 @@ export function avatarSvg(look, { size = 150, label = 'Preview of your Sim' } = 
  * `owned` — a wardrobe — is given). The server validates the result either way.
  */
 export function chooseLook(look, group, value, owned) {
+  lastField = group === 'accessories' ? (['eyes', 'head', 'ears', 'neck'].includes(SLOT[value]) ? 'hair' : 'body') : group; zoomOverride = null;
+  if (group === 'accessories') return { ...look, accessories: worn(look).includes(value) ? withoutAccessory(look, value) : withAccessory(look, value) };
   const next = { ...look, [group]: value };
-  lastField = group; zoomOverride = null;
   if (group !== 'body') return next;
   const fit = (kind, options) => (options.includes(next[kind]) && (!owned || owned[kind].includes(next[kind])) ? next[kind]
     : options.find((id) => !owned || owned[kind].includes(id)) ?? options[0]);
@@ -96,34 +114,44 @@ export function chooseLook(look, group, value, owned) {
 
 const titled = (id) => { const text = String(lookLabel(id)); return text.charAt(0).toUpperCase() + text.slice(1); };
 const swatchLabel = (group, id) => APPEARANCE[group].find((swatch) => swatch.id === id)?.label ?? id;
-/** "Woman · Braids · Owambe · Ankara" */
-export const lookSummary = (look) => [look.body, look.hair, look.outfit, look.fabric].filter(Boolean).map(titled).join(' · ');
+/** "Woman · Braids · Owambe · Ankara · Glasses" */
+export const lookSummary = (look) => [look.body, look.hair, look.outfit, look.fabric, ...worn(look)].filter(Boolean).map(titled).join(' · ');
 /** The preview's text alternative: everything the picture shows, in words. */
 export function lookAlt(look, name = 'Your Sim') {
-  return `${name}: ${titled(look.body)}, ${swatchLabel('skin', look.skin).toLowerCase()} skin, ${titled(look.hair).toLowerCase()} hairstyle in ${swatchLabel('hairColours', look.hairColor).toLowerCase()}, ${titled(look.outfit).toLowerCase()} outfit in ${titled(look.fabric).toLowerCase()} ${swatchLabel('outfitColours', look.outfitColor).toLowerCase()}, ${swatchLabel('outfitColours', look.bottomsColor).toLowerCase()} bottoms.`;
+  return `${name}: ${titled(look.body)}, ${swatchLabel('skin', look.skin).toLowerCase()} skin, ${titled(look.hair).toLowerCase()} hairstyle in ${swatchLabel('hairColours', look.hairColor).toLowerCase()}, ${titled(look.outfit).toLowerCase()} outfit in ${titled(look.fabric).toLowerCase()} ${swatchLabel('outfitColours', look.outfitColor).toLowerCase()}, ${swatchLabel('outfitColours', look.bottomsColor).toLowerCase()} bottoms${worn(look).length ? `, wearing ${worn(look).map((id) => titled(id).toLowerCase()).join(', ')}` : ''}.`;
 }
 /** The look as the scene code takes it: style ids as they are, colours as hex values. */
-export const sceneLook = (look) => ({ body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, skin: hexOf('skin', look.skin),
+export const sceneLook = (look) => ({ body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, accessories: [...worn(look)], face: look.face ?? APPEARANCE.faces[0], expression: look.expression ?? APPEARANCE.expressions[0], skin: hexOf('skin', look.skin),
   hairColor: hexOf('hairColours', look.hairColor), outfitColor: hexOf('outfitColours', look.outfitColor), bottomsColor: hexOf('outfitColours', look.bottomsColor) });
-/** A random valid look (the same choices the server's own shuffle makes). `random` returns 0 ≤ n < 1. */
+/**
+ * A random look a new Sim may wear: nothing that is sold only in the Boutique, and up to two of
+ * the free accessories. `random` returns 0 ≤ n < 1.
+ */
 export function randomLook(random = Math.random) {
   const pick = (list) => list[Math.min(list.length - 1, Math.floor(random() * list.length))];
-  const body = pick(APPEARANCE.bodies).id;
-  return { body, hair: pick(APPEARANCE.hair[body]), outfit: pick(APPEARANCE.outfits[body]), fabric: pick(APPEARANCE.fabrics), skin: pick(APPEARANCE.skin).id,
-    hairColor: pick(APPEARANCE.hairColours).id, outfitColor: pick(APPEARANCE.outfitColours).id, bottomsColor: pick(APPEARANCE.outfitColours).id };
+  const free = starterWardrobe(), body = pick(APPEARANCE.bodies).id;
+  let look = { body, hair: pick(hairOptions(body).filter((id) => free.hair.includes(id))), outfit: pick(outfitOptions(body).filter((id) => free.outfit.includes(id))), fabric: pick(APPEARANCE.fabrics),
+    skin: pick(APPEARANCE.skin).id, hairColor: pick(APPEARANCE.hairColours).id, outfitColor: pick(APPEARANCE.outfitColours).id, bottomsColor: pick(APPEARANCE.outfitColours).id,
+    accessories: [], face: pick(APPEARANCE.faces), expression: pick(APPEARANCE.expressions) };
+  for (let count = Math.floor(random() * 3); count > 0; count--) look = { ...look, accessories: withAccessory(look, pick(free.accessories)) };
+  return look;
 }
 
 // ---- Editor ----------------------------------------------------------------------------------
 // Tabs group the options by what they change. `focus` is where the preview looks while a tab is open.
 const SECTIONS = [
-  { id: 'body', title: 'Body', icon: '🧍', focus: 'body', groups: [['chips', 'body', 'Body type'], ['swatches', 'skin', 'Skin tone', 'skin']] },
-  { id: 'hair', title: 'Hair', icon: '💇', focus: 'head', groups: [['chips', 'hair', 'Hairstyle'], ['swatches', 'hairColor', 'Hair colour', 'hairColours']] },
-  { id: 'outfit', title: 'Outfit', icon: '👕', focus: 'body', groups: [['chips', 'outfit', 'Outfit'], ['chips', 'fabric', 'Fabric']] },
-  { id: 'colours', title: 'Colours', icon: '🎨', focus: 'body', groups: [['swatches', 'outfitColor', 'Outfit colour', 'outfitColours'], ['swatches', 'bottomsColor', 'Bottoms colour', 'outfitColours']] },
+  { id: 'body', title: 'Body', icon: 'person', focus: 'body', groups: [['chips', 'body', 'Body type'], ['swatches', 'skin', 'Skin tone', 'skin'], ['chips', 'face', 'Face shape'], ['chips', 'expression', 'Expression']] },
+  { id: 'hair', title: 'Hair', icon: 'scissors', focus: 'head', groups: [['chips', 'hair', 'Hairstyle'], ['swatches', 'hairColor', 'Hair colour', 'hairColours']] },
+  { id: 'outfit', title: 'Outfit', icon: 'boutique', focus: 'body', groups: [['chips', 'outfit', 'Outfit'], ['chips', 'fabric', 'Fabric']] },
+  { id: 'colours', title: 'Colours', icon: 'frame', focus: 'body', groups: [['swatches', 'outfitColor', 'Outfit colour', 'outfitColours'], ['swatches', 'bottomsColor', 'Bottoms colour', 'outfitColours']] },
+  { id: 'extras', title: 'Extras', icon: 'crown', focus: 'body', groups: [['chips', 'accessories', `Accessories · up to ${APPEARANCE.accessoryLimit}, tap again to take one off`]] },
 ];
-const HEAD_FIELDS = new Set(['hair', 'hairColor', 'skin']);
+const HEAD_FIELDS = new Set(['hair', 'hairColor', 'skin', 'face', 'expression']);
 let section = 'body', lastField = null, zoomOverride = null;
-const optionsOf = (field, look) => (field === 'body' ? APPEARANCE.bodies.map((item) => item.id) : field === 'hair' ? hairOptions(look.body) : field === 'outfit' ? outfitOptions(look.body) : APPEARANCE.fabrics);
+const optionsOf = (field, look) => (field === 'body' ? APPEARANCE.bodies.map((item) => item.id) : field === 'hair' ? hairOptions(look.body) : field === 'outfit' ? outfitOptions(look.body)
+  : field === 'accessories' ? APPEARANCE.accessories.map((item) => item.id) : field === 'face' ? APPEARANCE.faces : field === 'expression' ? APPEARANCE.expressions : APPEARANCE.fabrics);
+/** Whether `id` is what the look has for `field` (optional fields fall back to their default; accessories are a list). */
+const chosen = (look, field, id) => (field === 'accessories' ? worn(look).includes(id) : (look[field] ?? (field === 'face' ? APPEARANCE.faces[0] : field === 'expression' ? APPEARANCE.expressions[0] : undefined)) === id);
 
 /** Where the preview should look now: head and shoulders while hair, face or skin is being changed. */
 export function lookFocus() {
@@ -150,11 +178,11 @@ export function lookTabClick(target) {
 export function lookEditor(look, { owned = null } = {}) {
   const current = SECTIONS.find((item) => item.id === section) ?? SECTIONS[0];
   const chips = (field, title) => `<fieldset class="look-group"><legend>${title}</legend><div class="look-chips">${optionsOf(field, look).map((id) => {
-    const why = owned && owned[field] && !owned[field].includes(id) ? `Boutique · ${money(BOUTIQUE_PRICES[field][id])}` : '';
-    return `<button type="button" class="look-chip" data-look="${field}" data-value="${esc(id)}" data-key="${field}:${esc(id)}" aria-pressed="${look[field] === id}" ${why ? `disabled title="${esc(why)}"` : ''}>${esc(titled(id))}${why ? `<small>🔒 ${esc(why)}</small>` : ''}</button>`;
+    const why = owned && owned[field] && !owned[field].includes(id) && !chosen(look, field, id) ? `Boutique · ${money(BOUTIQUE_PRICES[field][id])}` : '';
+    return `<button type="button" class="look-chip" data-look="${field}" data-value="${esc(id)}" data-key="${field}:${esc(id)}" aria-pressed="${chosen(look, field, id)}" ${why ? `disabled title="${esc(why)}"` : ''}>${esc(titled(id))}${why ? `<small>${mark('lock')} ${esc(why)}</small>` : ''}</button>`;
   }).join('')}</div></fieldset>`;
   const swatches = (field, title, group) => `<fieldset class="look-group"><legend>${title} <b>${esc(swatchLabel(group, look[field]))}</b></legend><div class="look-swatches">${APPEARANCE[group].map((swatch) => `<button type="button" class="look-swatch" data-look="${field}" data-value="${esc(swatch.id)}" data-key="${field}:${esc(swatch.id)}" aria-pressed="${look[field] === swatch.id}" aria-label="${esc(title)}: ${esc(swatch.label)}" style="--swatch:${swatch.hex}"><i aria-hidden="true">${look[field] === swatch.id ? '✓' : ''}</i><span>${esc(swatch.label)}</span></button>`).join('')}</div></fieldset>`;
-  const tabs = SECTIONS.map((item) => `<button type="button" role="tab" class="look-tab" id="look-tab-${item.id}" data-look-tab="${item.id}" data-key="tab:${item.id}" aria-selected="${item === current}" aria-controls="look-panel"><span aria-hidden="true">${item.icon}</span>${item.title}</button>`).join('');
+  const tabs = SECTIONS.map((item) => `<button type="button" role="tab" class="look-tab" id="look-tab-${item.id}" data-look-tab="${item.id}" data-key="tab:${item.id}" aria-selected="${item === current}" aria-controls="look-panel"><span aria-hidden="true">${mark(item.icon)}</span>${item.title}${item.id === 'extras' && worn(look).length ? `<b>${worn(look).length}</b>` : ''}</button>`).join('');
   const groups = current.groups.map(([kind, field, title, group]) => (kind === 'chips' ? chips(field, title) : swatches(field, title, group))).join('');
   return `<div class="look-editor"><div class="look-tabs" role="tablist" aria-label="What to change">${tabs}</div><div class="look-panel" id="look-panel" role="tabpanel" aria-labelledby="look-tab-${current.id}">${groups}</div></div>`;
 }
@@ -166,16 +194,15 @@ try { spun = globalThis.localStorage?.getItem(SPUN_KEY) === '1'; } catch { spun 
 
 /**
  * Stage markup. variant: 'hero' (the creator), 'wide' (Profile, Boutique) or 'mini' (beside the
- * later creation steps). `tools` is extra, already-escaped HTML laid over the stage (Shuffle…).
+ * later creation steps). The controls sit in a row under the stage, never over the character:
+ * the Face / Full body switch, `caption` and `tools` (both already-escaped HTML).
  */
-export function lookStage(look, { variant = 'hero', name = 'Your Sim', tools = '', caption = '', zoom = variant !== 'mini' } = {}) {
-  const focus = lookFocus();
-  return `<div class="look-stage is-${variant}" data-look-stage data-mode="loading" ${spun ? 'data-spun' : ''}>
+export function lookStage(look, { variant = 'hero', name = 'Your Sim', tools = '', caption = '' } = {}) {
+  const focus = lookFocus(), mini = variant === 'mini';
+  return `<div class="look-view is-${variant}"><div class="look-stage" data-look-stage data-mode="loading" ${spun ? 'data-spun' : ''}>
     <div class="look-stage-view" data-look-canvas>${avatarSvg(look, { size: 150, label: lookAlt(look, name) })}</div>
-    ${zoom ? `<button type="button" class="look-zoom" data-look-zoom aria-pressed="${focus === 'head'}" title="Switch between full body and face">${focus === 'head' ? '🧍 Full body' : '🔍 Face'}</button>` : ''}
-    ${tools ? `<div class="look-tools">${tools}</div>` : ''}
-    ${variant === 'mini' ? '' : '<p class="look-hint" aria-hidden="true">↔ Drag to spin</p>'}
-    ${caption ? `<p class="look-caption">${caption}</p>` : ''}</div>`;
+    ${mini ? '' : '<p class="look-hint" aria-hidden="true">↔ Drag to spin</p>'}</div>
+    ${mini ? '' : `<div class="look-bar"><button type="button" class="look-tool" data-look-zoom aria-pressed="${focus === 'head'}" title="Switch between full body and face">${focus === 'head' ? `${mark('person')} Full body` : `${mark('search')} Face`}</button><p class="look-caption">${caption}</p>${tools}</div>`}</div>`;
 }
 
 let scene3d = null, loading = null, preview = null, unavailable = false, wanted = null, watcher = null, watchedDialog = null, lastShown = '';
@@ -228,13 +255,14 @@ function show() {
 export function mountLookPreview(root, look, { name = 'Your Sim' } = {}) {
   const stage = root?.querySelector?.('[data-look-stage]');
   if (!stage) { releaseLookPreview(); return; }
+  const view = stage.closest('.look-view') ?? stage;
   const host = stage.querySelector('[data-look-canvas]'), drawn = sceneLook(look), key = JSON.stringify(drawn);
   wanted = { stage, host, look: drawn, focus: lookFocus(), react: lastShown !== '' && lastShown !== key, label: `${lookAlt(look, name)} Drag, or use the left and right arrow keys, to turn.` };
   lastShown = key;
-  stage.querySelector('[data-look-zoom]')?.addEventListener('click', (event) => {
+  view.querySelector('[data-look-zoom]')?.addEventListener('click', (event) => {
     zoomOverride = lookFocus() === 'head' ? 'body' : 'head';
     const button = event.currentTarget, head = zoomOverride === 'head';
-    button.setAttribute('aria-pressed', String(head)); button.textContent = head ? '🧍 Full body' : '🔍 Face';
+    button.setAttribute('aria-pressed', String(head)); button.innerHTML = head ? `${mark('person')} Full body` : `${mark('search')} Face`;
     preview?.setFocus(zoomOverride);
   });
   if (unavailable) { stage.dataset.mode = '2d'; return; }
@@ -244,4 +272,7 @@ export function mountLookPreview(root, look, { name = 'Your Sim' } = {}) {
     () => { loading = null; if (wanted?.stage.isConnected) wanted.stage.dataset.mode = '2d'; });
 }
 
-export const sameLook = (a, b) => Object.keys(a).every((field) => a[field] === b[field]);
+/** The same look, whatever order the accessories are in and whether or not the optional fields are spelled out. */
+const canonical = (look) => JSON.stringify([look.body, look.hair, look.outfit, look.fabric, look.skin, look.hairColor, look.outfitColor, look.bottomsColor,
+  [...worn(look)].sort(), look.face ?? APPEARANCE.faces[0], look.expression ?? APPEARANCE.expressions[0]]);
+export const sameLook = (a, b) => canonical(a) === canonical(b);

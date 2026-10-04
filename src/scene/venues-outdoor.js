@@ -451,15 +451,26 @@ const walk = {
     signBoard(b, -4.6, 8.4, 'TRAIL', { y: 1.5, size: 0.26, board: '#5a4630', color: '#f0e2b8' });
     const mid = [(towers[0][0] + towers[1][0]) / 2, decks[0], (towers[0][2] + towers[1][2]) / 2];
     const heading = Math.atan2(towers[1][0] - towers[0][0], towers[1][2] - towers[0][2]);
+    // The way up: the stair's foot (on the ground), its top, then platform to platform along the bridges.
+    const flat = (tower) => [tower[0], tower[2]];
+    const stairFoot = [-8, 11.3], stairTop = [-8, 7.3];
+    const raised = [{ ramp: [-8, 10.9, 0, -8, 7.3, towers[0][1]], half: 0.7 }, ...towers.map(([x, h, z]) => ({ disc: [x, z, 1.7], y: h }))];
+    for (let i = 0; i < 3; i++) {
+      const a = edge(towers[i], towers[i + 1]), c = edge(towers[i + 1], towers[i]);
+      // decks[i] is the height of the deck's middle: the sag is what that is below the straight line.
+      raised.push({ ramp: [a[0], a[2], a[1], c[0], c[2], c[1]], half: 0.75, sag: Math.max(0, (a[1] + c[1]) / 2 - decks[i]) });
+    }
     return {
       spots: [
         landmark('gate', /gate|ticket|entry|entrance|start|pay|guide|ranger/, -9.6, -1.4, -HALF),
-        landmark('bridge', /bridge|walk|canopy|cross|suspend|rope/, mid[0], mid[2], heading, { y: mid[1] }),
-        landmark('tower', /tower|lookout|view|top|bird|photo|selfie/, towers[2][0], towers[2][2] + 0.7, 0, { y: towers[2][1] }),
+        // Both are reached the way a visitor would: up the stair to the first platform, then along the walkway.
+        landmark('bridge', /bridge|walk|canopy|cross|suspend|rope/, mid[0], mid[2], heading, { y: mid[1], approach: [stairFoot, stairTop, flat(towers[0])] }),
+        landmark('tower', /tower|lookout|view|top|bird|photo|selfie/, towers[2][0], towers[2][2] + 0.7, 0, { y: towers[2][1], approach: [stairFoot, stairTop, flat(towers[0]), flat(towers[1]), flat(towers[2])] }),
         landmark('trail', /trail|forest|floor|nature|monkey|feed|hike|jog/, 1.6, 7.4, HALF, { act: { pose: 'walk' } }),
         landmark('picnic', /picnic|rest|eat|snack|chill|relax/, 7.6, 8.4, -HALF, { act: { pose: 'sit', x: 6.2, z: 10.6, ry: PI, seat: 0.6 } }),
         landmark('people', /people|crowd|meet/, 0.6, 9.6, 0),
       ],
+      raised,
       crowd: [[2, 10.4, 0.4], [-1.2, 8.6, -0.5], [3.2, 8.4, 2.4], [-3.6, 9.8, 1.2], [-9.4, 0.6, 2], [-6.4, 4.6, 2.2], [9.4, 7, -1], [-0.4, 5.4, 0.6], [4.6, 5.6, 2.2], [11, 9.4, -0.6], [-10.6, 8.6, 1], [8.2, 11, 0.2]],
     };
   },
@@ -519,12 +530,14 @@ const statehouse = {
       spots: [
         landmark('podium', /podium|speech|address|press|rally|campaign|declare|announce/, 0, -1.5, 0, { y: 0.2, act: { pose: 'wave' } }),
         landmark('steps', /step|stair|protest|petition|photo|tour/, -4.4, -2.4, PI),
-        landmark('office', /office|governor|door|inside|meeting|sign|bill|budget|cabinet|work|job/, 0, -7.6, PI, { y: 0.83 }),
+        landmark('office', /office|governor|door|inside|meeting|sign|bill|budget|cabinet|work|job/, 0, -7.6, PI, { y: 0.83, approach: [0, -2.9] }),
         landmark('gardens', /garden|lawn|flag|gate|guard|fountain/, 9.6, 3.6, PI),
         landmark('people', /people|crowd|meet/, 4.2, 6.6, 0),
       ],
       crowd: [[2.4, 7.6, 0.4], [-0.8, 6.8, -0.5], [5.6, 4.6, 2.4], [-3.6, 7.4, 1.2], [-5.6, 1.6, 2.6], [5.6, -1.6, -2.4], [-2.4, 9.6, 0.6], [1.2, 10.2, 0.2], [-6.2, 5.4, 1.6], [6.4, 8.6, -0.6], [-4.6, -0.6, 2.2], [3.4, 0.4, 2.8]],
       spare: [[-6, 8], [6, 9], [-3, 10.4], [3.4, 9.8]],
+      // The portico landing is climbed by its steps (up the carpet, between the middle columns); the podium is one low step.
+      raised: [{ rect: [-7.5, -9.5, 7.5, -4.9], y: 0.83, lip: 1.75 }, { rect: [-1.6, -2.3, 1.6, -0.1], y: 0.2, lip: 0.25 }],
     };
   },
 };

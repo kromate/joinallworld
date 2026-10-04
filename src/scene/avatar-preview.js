@@ -12,7 +12,7 @@
  *   preview.rotate(radians)            turn the character (arrow keys do this when the canvas has focus)
  *   preview.resize()                   re-measure the host; one frame if the size changed
  *   preview.attach(host)               move the canvas into another host element
- *   preview.diagnostics()              { renderCount, frames, animating, live, lost, disposed, triangles, yaw, focus }
+ *   preview.diagnostics()              { renderCount, frames, animating, live, lost, disposed, triangles, yaw, focus, lastRenderMs }
  *   preview.dispose()                  free the renderer, geometry, materials and the WebGL context
  *
  * BATTERY RULE: there is no render loop. A frame is drawn when the look, the focus or the size
@@ -39,20 +39,21 @@ export const previewStats = { live: 0, created: 0, disposed: 0 };
 export class PreviewUnavailable extends Error {}
 
 const FRAMES = {
-  body: { y: 1.44, height: 3.2, width: 1.9 },
-  head: { y: 2.14, height: 1.85, width: 1.3 }, // head and shoulders, with room above for the stage's buttons
+  body: { y: 1.47, height: 3.22, width: 1.9 },
+  head: { y: 2.26, height: 1.62, width: 1.5 }, // head and shoulders, with room for the tallest hair, a gele or a hat // head and shoulders, with room above for the stage's buttons
 };
-const FOV = 26, START_YAW = -0.42, DRAG_SPEED = 0.011, KEY_STEP = Math.PI / 12, MAX_PIXEL_RATIO = 2;
+const FOV = 26, START_YAW = -0.42, DRAG_SPEED = 0.011, KEY_STEP = Math.PI / 12, MAX_PIXEL_RATIO = 2.5;
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
 const ease = (t) => 1 - (1 - t) ** 3;
 let current = null;
 
 /** Key, fill and rim lights for a character on a pale backdrop. Returns the lights it added. */
 export function lightStage(THREE, scene) {
-  const hemi = new THREE.HemisphereLight('#ffffff', '#c9b8a4', 1.25);
-  const key = new THREE.DirectionalLight('#fff3e2', 2.3); key.position.set(2.6, 4.6, 4.2);
-  const fill = new THREE.DirectionalLight('#cfe0ff', 0.75); fill.position.set(-4, 2.2, 2.6);
-  const rim = new THREE.DirectionalLight('#ffffff', 1.5); rim.position.set(-1.6, 3.6, -4.2);
+  // Tuned on the whole skin range: enough light from the front that the darkest tones keep their features.
+  const hemi = new THREE.HemisphereLight('#ffffff', '#d9c9b6', 1.55);
+  const key = new THREE.DirectionalLight('#fff3e2', 2.5); key.position.set(2.4, 3.6, 5);
+  const fill = new THREE.DirectionalLight('#d6e4ff', 1.1); fill.position.set(-4, 2.4, 3.4);
+  const rim = new THREE.DirectionalLight('#ffffff', 1.7); rim.position.set(-1.8, 3.8, -4.2);
   const lights = [hemi, key, fill, rim];
   lights.forEach((light) => scene.add(light));
   return lights;
@@ -67,15 +68,17 @@ export function buildGround(THREE) {
   disc.rotation.x = -Math.PI / 2;
   const rim = new THREE.Mesh(keep(new THREE.CircleGeometry(1.4, 56)), keep(new THREE.MeshStandardMaterial({ color: '#aeb4c0', roughness: 1 })));
   rim.rotation.x = -Math.PI / 2; rim.position.y = -0.012;
-  const size = 64, data = new Uint8Array(size * size * 4);
+  // Two soft blobs: a wide faint one for the body and a tight dark one where the feet touch.
+  const size = 96, data = new Uint8Array(size * size * 4);
   for (let j = 0; j < size; j++) for (let i = 0; i < size; i++) {
-    const d = Math.hypot((i + 0.5) / size - 0.5, (j + 0.5) / size - 0.5) * 2, alpha = clamp(1 - d, 0, 1) ** 1.6;
-    data.set([20, 24, 34, Math.round(alpha * 150)], (j * size + i) * 4);
+    const d = Math.hypot((i + 0.5) / size - 0.5, (j + 0.5) / size - 0.5) * 2;
+    const wide = clamp(1 - d, 0, 1) ** 1.8 * 95, tight = clamp(1 - d / 0.42, 0, 1) ** 1.3 * 120;
+    data.set([18, 22, 32, Math.round(Math.min(190, wide + tight))], (j * size + i) * 4);
   }
   const texture = keep(new THREE.DataTexture(data, size, size, THREE.RGBAFormat));
   texture.magFilter = THREE.LinearFilter; texture.minFilter = THREE.LinearFilter; texture.needsUpdate = true;
-  const shadow = new THREE.Mesh(keep(new THREE.PlaneGeometry(1.5, 1.2)), keep(new THREE.MeshBasicMaterial({ map: texture, transparent: true, depthWrite: false })));
-  shadow.rotation.x = -Math.PI / 2; shadow.position.set(0, 0.006, 0.02);
+  const shadow = new THREE.Mesh(keep(new THREE.PlaneGeometry(1.7, 1.35)), keep(new THREE.MeshBasicMaterial({ map: texture, transparent: true, depthWrite: false })));
+  shadow.rotation.x = -Math.PI / 2; shadow.position.set(0, 0.006, 0.03);
   group.add(rim, disc, shadow);
   return { group, dispose() { group.parent?.remove(group); disposables.forEach((item) => item.dispose()); disposables.length = 0; } };
 }
@@ -133,7 +136,7 @@ export function createAvatarPreview(host, options = {}) {
   const turntable = new THREE.Group();
   scene.add(ground.group, turntable);
 
-  let avatar = null, lookKey = '', renderCount = 0, frames = 0, disposed = false, lost = false;
+  let avatar = null, lookKey = '', renderCount = 0, frames = 0, disposed = false, lost = false, lastMs = 0;
   let yaw = START_YAW, zoom = options.focus === 'head' ? 1 : 0, focus = options.focus === 'head' ? 'head' : 'body';
   let size = { width: 0, height: 0 }, frameId = 0;
   const tweens = new Map(); // name → { start, duration, step(t, dt) → false to stop early, last }
@@ -146,7 +149,9 @@ export function createAvatarPreview(host, options = {}) {
     if (disposed || lost || !size.width || !size.height) return;
     turntable.rotation.y = yaw + (turntable.userData.swing || 0);
     frame();
+    const started = now();
     renderer.render(scene, camera);
+    lastMs = now() - started;
     renderCount += 1;
     if (canvas.dataset) canvas.dataset.renders = String(renderCount);
   }
@@ -192,7 +197,7 @@ export function createAvatarPreview(host, options = {}) {
     if (key === lookKey) return false;
     lookKey = key;
     avatar?.userData.dispose();
-    avatar = buildAvatar(kit, look, { detail: 'high', pose: 'stand', seed: 'preview' });
+    avatar = buildAvatar(kit, look, { detail: 'high', pose: 'relax', seed: 'preview' });
     turntable.add(avatar);
     if (react && !reduced) {
       // A small turn and settle, so a change is felt as well as seen.
@@ -275,7 +280,7 @@ export function createAvatarPreview(host, options = {}) {
   const api = {
     canvas, setLook, setFocus, rotate, resize, attach,
     setLabel(text) { canvas.setAttribute?.('aria-label', String(text ?? '')); },
-    diagnostics: () => ({ renderCount, frames, animating: tweens.size > 0 || frameId !== 0, live: previewStats.live, lost, disposed, triangles: avatar?.userData.triangles ?? 0, yaw, focus }),
+    diagnostics: () => ({ renderCount, frames, animating: tweens.size > 0 || frameId !== 0, live: previewStats.live, lost, disposed, triangles: avatar?.userData.triangles ?? 0, yaw, focus, lastRenderMs: Math.round(lastMs * 10) / 10 }),
     dispose() {
       if (disposed) return;
       disposed = true;

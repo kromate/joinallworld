@@ -14,7 +14,7 @@
 import { esc } from '../dom.js';
 
 export default {
-  id: 'session', title: 'Your city life', icon: '🌍', placement: 'modal', role: 'session-gate', live: false,
+  id: 'session', title: 'Your city life', placement: 'modal', role: 'session-gate', live: false,
   render(state, view) {
     if (view.params?.reason === 'expired') {
       return `<div class="session-card is-warn"><h3>This device’s saved life is no longer on this server</h3>

@@ -1,12 +1,25 @@
 import './community.css';
 
-export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
+/**
+ * WHERE YOU STAND IS ONE THING. The room's `presence` carries each member's position, and the voice
+ * rules below (who is `nearby`, the gain, which peers exist) read those positions and nothing else.
+ * The position itself comes from the game: the entry file passes the avatar's place in the venue
+ * scene to moveTo(x, z), and reads everyone's place back through onMembers to draw them in the scene.
+ *   onMembers({ self, members: [{ id, name, position: { x, z } | null }] })   after every presence
+ *       message and whenever the list empties (disconnect, room change, revocation, destroy).
+ *       `position` is null until that member has reported one (the server's origin means "not yet").
+ *   onStep(dx, dz) → true when the game walked the avatar by that much (the four "Walk" buttons here
+ *       are the keyboard-accessible way to move without the scene). When it is absent or returns
+ *       false — the scene could not be drawn — the buttons move the voice position directly, as before.
+ * Nothing here enables the microphone: voice starts only from the Join voice button.
+ */
+export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, onStep = null, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
   container.innerHTML = `<section class="community" aria-label="Local community">
     <header class="community-header"><div><span class="community-eyebrow">People nearby</span><h2>Community</h2></div><span class="community-connection" role="status">Connecting…</span></header>
     <p class="community-room"></p>
     <form class="community-name"><label for="community-nickname">Choose a device nickname</label><div class="community-input-row"><input id="community-nickname" name="name" required minlength="3" maxlength="24" autocomplete="nickname" placeholder="Your name"><button>Join room</button></div><p>This nickname is saved on this device. It is not a verified identity.</p></form>
     <p class="community-private-note" hidden>Your home is private to this device session. Public nearby voice and community chat are available at shared venues.</p><div class="community-content" hidden><div class="community-presence"><h3>In this room <span class="community-count">0</span></h3><ul class="community-members" aria-label="Room members"></ul></div>
-    <div class="community-proximity"><h3>Nearby voice</h3><p class="community-position" role="status">Waiting for your venue position…</p><div class="community-position-map" role="img" aria-label="People in venue voice space"></div><div class="community-movement" aria-label="Move within venue voice space"><button type="button" class="community-north" aria-label="Move north two units">↑ North</button><button type="button" class="community-west" aria-label="Move west two units">← West</button><button type="button" class="community-south" aria-label="Move south two units">↓ South</button><button type="button" class="community-east" aria-label="Move east two units">East →</button></div><p class="community-position-note">Move in this venue voice space. Nearby voices fade with distance and stop at 12 units. This map does not move the scene’s characters.</p></div><div class="community-voice"><div class="community-voice-top"><h3>Voice circle</h3><button class="community-join-voice" type="button">Join voice</button><button class="community-mute" type="button" hidden>Mute mic</button><button class="community-leave-voice" type="button" hidden>Leave voice</button></div><p class="community-voice-status" role="status">Your microphone is off. Join voice to request access.</p><div class="community-device" hidden><label for="community-microphone">Microphone</label><select id="community-microphone" aria-label="Microphone device"></select><small>Device changes apply the next time you join voice.</small></div><p class="community-playback-note" hidden></p><p class="community-network-note">Relay availability is checked when you join voice. Microphone starts muted.</p><div class="community-audio"></div></div>
+    <div class="community-proximity"><h3>Nearby voice</h3><p class="community-position" role="status">Waiting for your place in the venue…</p><p class="community-position-note">Voice follows where your character stands. Walk closer to hear someone: voices fade with distance and stop at 12 steps.</p><div class="community-movement" role="group" aria-label="Walk your character"><button type="button" class="community-north" aria-label="Walk two steps away from the entrance">↑ Walk up</button><button type="button" class="community-west" aria-label="Walk two steps left">← Left</button><button type="button" class="community-south" aria-label="Walk two steps towards the entrance">↓ Down</button><button type="button" class="community-east" aria-label="Walk two steps right">Right →</button></div></div><div class="community-voice"><div class="community-voice-top"><h3>Voice circle</h3><button class="community-join-voice" type="button">Join voice</button><button class="community-mute" type="button" hidden>Mute mic</button><button class="community-leave-voice" type="button" hidden>Leave voice</button></div><p class="community-voice-status" role="status">Your microphone is off. Join voice to request access.</p><div class="community-device" hidden><label for="community-microphone">Microphone</label><select id="community-microphone" aria-label="Microphone device"></select><small>Device changes apply the next time you join voice.</small></div><p class="community-playback-note" hidden></p><p class="community-network-note">Relay availability is checked when you join voice. Microphone starts muted.</p><div class="community-audio"></div></div>
     <div class="community-chat"><h3>Room chat</h3><ol class="community-messages" aria-label="Room messages" aria-live="polite" aria-relevant="additions"></ol><form class="community-compose"><label class="community-sr-only" for="community-message">Message this room</label><div class="community-input-row"><input id="community-message" maxlength="500" required autocomplete="off" placeholder="Say hello to this room…"><button>Send</button></div></form></div></div>
     <div class="community-feedback" role="status"></div><button class="community-retry" type="button" hidden>Reconnect</button>
   </section>`;
@@ -16,7 +29,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     members: $('.community-members'), count: $('.community-count'), messages: $('.community-messages'), compose: $('.community-compose'),
     join: $('.community-join-voice'), mute: $('.community-mute'), leave: $('.community-leave-voice'), voice: $('.community-voice-status'),
     proximity: $('.community-proximity'), voiceSection: $('.community-voice'), chatSection: $('.community-chat'), privateNote: $('.community-private-note'),
-    position: $('.community-position'), positionMap: $('.community-position-map'), north: $('.community-north'), south: $('.community-south'), west: $('.community-west'), east: $('.community-east'), relay: $('.community-network-note'), playbackNote: $('.community-playback-note'),
+    position: $('.community-position'), north: $('.community-north'), south: $('.community-south'), west: $('.community-west'), east: $('.community-east'), relay: $('.community-network-note'), playbackNote: $('.community-playback-note'),
     audio: $('.community-audio'), device: $('.community-device'), deviceSelect: $('#community-microphone'), feedback: $('.community-feedback'), retry: $('.community-retry'),
   };
   let room = { cityId, venueId }, session = null, socket = null, members = [], stream = null;
@@ -56,31 +69,33 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   function nearby(member) { return room.venueId !== 'home' && !rejectedPeers.has(member?.id) && member?.enabled && member.id !== session?.id && distanceTo(member) < VOICE_RADIUS; }
   function moveTo(x, z) {
     if (!roomReady || room.venueId === 'home' || !Number.isFinite(x) || !Number.isFinite(z)) return false;
-    return send({ type: 'move', x: Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), z: Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z)) });
+    const mx = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), mz = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z));
+    // Exactly the origin means "not reported yet" (see reported()): a player standing there reports a hair beside it.
+    return send({ type: 'move', x: mx === 0 && mz === 0 ? 0.01 : mx, z: mz });
   }
+  /** A "Walk" button: the game walks the avatar (its new place comes back through moveTo); without a scene the voice position moves directly. */
   function step(dx, dz) {
+    if (!roomReady || room.venueId === 'home') return;
+    let walked = false;
+    try { walked = typeof onStep === 'function' && onStep(dx, dz) === true; } catch { walked = false; }
+    if (walked) return;
     const self = validPosition(members.find((person) => person.id === session?.id));
     if (self) moveTo(self.x + dx, self.z + dz);
   }
+  /** The origin is where the server puts everyone on joining: it means "has not reported a position yet". */
+  const reported = (member) => { const position = validPosition(member); return position && (position.x !== 0 || position.z !== 0) ? { x: position.x, z: position.z } : null; };
+  /** Tell the game who is here and where each one stands (see the header). Never throws into the room code. */
+  function announce() {
+    try { onMembers({ self: session?.id ?? null, members: members.map((member) => ({ id: member.id, name: member.name, position: reported(member) })) }); } catch { /* the game's own problem */ }
+  }
   function renderPosition() {
-    el.positionMap.replaceChildren();
     const self = validPosition(members.find((person) => person.id === session?.id));
-    el.position.textContent = self ? `Your voice position: ${self.x.toFixed(1)}, ${self.z.toFixed(1)} · range ${VOICE_RADIUS} units` : 'Waiting for your venue position…';
+    const inVoice = members.filter((member) => member.enabled && member.id !== session?.id);
+    const near = inVoice.filter((member) => distanceTo(member) < VOICE_RADIUS).length;
+    el.position.textContent = !self ? 'Waiting for your place in the venue…'
+      : inVoice.length ? `${near} of ${inVoice.length} ${inVoice.length === 1 ? 'person' : 'people'} in voice ${near === 1 && inVoice.length === 1 ? 'is' : 'are'} within range of where you stand.`
+        : 'Nobody else is in voice here yet.';
     for (const button of [el.north, el.south, el.west, el.east]) button.disabled = !roomReady || !self;
-    if (self) {
-      const range = document.createElement('span'); range.className = 'community-hearing-range';
-      range.style.left = `${(self.x + SPACE_BOUND) * 2.5}%`; range.style.top = `${(self.z + SPACE_BOUND) * 2.5}%`; el.positionMap.append(range);
-    }
-    for (const member of members) {
-      const position = validPosition(member); if (!position) continue;
-      const pin = document.createElement('span'); pin.className = `community-position-pin${member.id === session?.id ? ' is-self' : ''}${member.enabled ? ' is-speaking' : ''}`;
-      pin.style.left = `${(position.x + SPACE_BOUND) * 2.5}%`; pin.style.top = `${(position.z + SPACE_BOUND) * 2.5}%`;
-      pin.textContent = member.id === session?.id ? 'You' : member.name;
-      pin.title = `${member.name}: ${position.x.toFixed(1)}, ${position.z.toFixed(1)}${member.id !== session?.id ? ` · ${distanceTo(member).toFixed(1)} units away` : ''}`;
-      el.positionMap.append(pin);
-    }
-    const labels = members.filter(validPosition).map((member) => `${member.name} at ${member.position.x}, ${member.position.z}`);
-    el.positionMap.setAttribute('aria-label', `Venue voice space, north at top. ${labels.join('; ')}`);
   }
   async function ensureVoiceConfig(generation) {
     const expired = iceConfig?.expiresAt && Date.now() >= iceConfig.expiresAt;
@@ -111,6 +126,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
       li.append(name, state); el.members.append(li);
     }
     renderPosition();
+    announce();
   }
   function voiceStatus() {
     el.join.hidden = voice; el.join.disabled = joiningVoice || !roomReady;
@@ -123,7 +139,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     }
     const active = [...peers.values()].filter((peer) => peer.pc.connectionState === 'connected').length;
     const failed = [...peers.values()].some((peer) => ['failed', 'disconnected'].includes(peer.pc.connectionState));
-    el.voice.textContent = `${sourceLabel} ${muted ? 'muted.' : 'on.'} ${failed ? 'A peer connection has been interrupted; leave and rejoin to retry.' : active ? `Connected to ${active} ${active === 1 ? 'person' : 'people'}.` : peers.size ? 'Connecting to nearby people…' : 'No one in voice is within 12 units. Move closer on the venue map.'}`;
+    el.voice.textContent = `${sourceLabel} ${muted ? 'muted.' : 'on.'} ${failed ? 'A peer connection has been interrupted; leave and rejoin to retry.' : active ? `Connected to ${active} ${active === 1 ? 'person' : 'people'}.` : peers.size ? 'Connecting to nearby people…' : 'No one in voice is within 12 steps. Walk closer to someone in the venue.'}`;
   }
   function closePeer(id) {
     const peer = peers.get(id); if (!peer) return;
@@ -473,6 +489,7 @@ function closePlaybackContext() {
       if (destroyed) return; destroyed = true; clearTimeout(reconnectTimer); leaveVoice();
       if (socket) { socket.onclose = null; socket.onmessage = null; socket.close(); socket = null; }
       listeners.forEach((remove) => remove()); container.replaceChildren();
+      members = []; announce();
     },
   };
 }

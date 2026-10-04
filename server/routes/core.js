@@ -74,6 +74,14 @@ export default function coreRoutes(ctx) {
   const { store, now, fail, allow, settle, core, config } = ctx;
   /** For a request that only reads: when the renewal could not be saved, answer from the stored data instead. */
   const unsaved = (fallback) => (error) => { if (error?.code !== 'storage_unavailable') throw error; return fallback(); };
+  /**
+   * The caller's OWN session as the session routes answer it: the public identity plus `cities`,
+   * the ids of the cities this session has a life in — so a returning player is recognised on any
+   * device (the country map offers a "coming soon" city only to someone who already lives there).
+   * It is about the caller only and goes to the caller only: publicSession() — what sockets, chat
+   * and every other player see — is unchanged and never carries it.
+   */
+  const ownSession = (session) => ({ ...publicSession(session), cities: ctx.cityIds.filter(id => Boolean(session.cities?.[id]?.state)) });
   return {
     // Which build is serving, for a local preview or a deploy check. No session is read or created.
     'GET /api/health': () => ({ body: { ok: true, build: config.buildId } }),
@@ -94,19 +102,19 @@ export default function coreRoutes(ctx) {
         // name in front of other players: a different name is refused, and the SAME name is not
         // written or announced again either.
         const mute = created ? null : ctx.checks?.muted?.(current.publicId) ?? null;
-        if (mute) return { secret: current.secret, session: publicSession(current), mute, refused: current.name !== name };
+        if (mute) return { secret: current.secret, session: publicSession(current), own: ownSession(current), mute, refused: current.name !== name };
         current.name = name;
-        return { secret: current.secret, session: publicSession(current) };
+        return { secret: current.secret, session: publicSession(current), own: ownSession(current) };
       });
       if (result.refused) throw Object.assign(fail(403, 'muted'), { reason: result.mute.reason });
-      return { body: { session: result.session }, headers: { 'Set-Cookie': core.cookieHeader(request, result.secret) }, ...(result.mute ? {} : { after: () => core.refreshNames(result.session) }) };
+      return { body: { session: result.own }, headers: { 'Set-Cookie': core.cookieHeader(request, result.secret) }, ...(result.mute ? {} : { after: () => core.refreshNames(result.session) }) };
     },
     'GET /api/session': async (request) => {
       let renewed = true;
       const session = await store.transact(db => request.session(db, { renew: true }))
         .catch(unsaved(() => { renewed = false; return store.read(db => request.session(db)); }));
       if (!session) throw fail(401, 'device_session_required');
-      return { body: { session: publicSession(session) }, renew: renewed };
+      return { body: { session: ownSession(session) }, renew: renewed };
     },
     'GET /api/voice-config': async (request) => {
       const check = (renew) => (db) => {

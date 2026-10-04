@@ -9,8 +9,16 @@
  * Clean screen (the shell's `is-clean` class) hides everything here except the joystick.
  * Nothing here runs on a timer: the joystick only reports pointer events to the host.
  *
+ * THE HINT is shown once, in a place that covers nothing the player needs: on a wide screen a pill
+ * under the top bar; on a phone a compact one-line strip directly under the HUD's own rows (the
+ * host passes where those end as `hintTop`), never over the avatar. It goes away for good on the
+ * first input of any kind — a drag, a tap, a key, the stick — or its × button.
+ *
+ * This file also carries the few styles the scene's name tags need beyond the shell's (the crown and
+ * dot marks, the hover state, the spot label shown while the pointer is on a marker).
+ *
  * createSceneControls(container, { onZoom(direction), onRecentre(), onStick(x, forward, jog) })
- *   → { place({ top, bottom, wide }), touch(on), hint(text | null), dispose() }, or null without a DOM.
+ *   → { place({ top, bottom, wide, hintTop }), touch(on), hint(text | null), dispose() }, or null without a DOM.
  */
 const STYLE_ID = 'scene-controls-style';
 const HINT_KEY = 'joinallworld-move-hint';
@@ -25,7 +33,15 @@ const CSS = `
 .scene-controls.is-touch .scene-stick{display:block}
 .scene-stick i{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(0,0,0,.3);pointer-events:none}
 .scene-hint{position:absolute;left:50%;top:var(--sc-top);transform:translateX(-50%);display:flex;align-items:center;gap:6px;max-width:calc(100% - 24px);padding:6px 6px 6px 12px;border-radius:999px;background:rgba(18,32,28,.84);color:#fff;pointer-events:auto;box-shadow:0 2px 8px rgba(0,0,0,.25);text-align:center}
-.scene-controls.is-narrow .scene-hint{top:auto;bottom:calc(var(--sc-bottom) + 122px)}
+.scene-controls.is-narrow .scene-hint{top:var(--sc-hint,var(--sc-top));left:8px;right:8px;transform:none;max-width:none;justify-content:space-between;padding:3px 4px 3px 10px;border-radius:10px;font-size:11px;line-height:1.25;text-align:left;background:rgba(18,32,28,.78);pointer-events:none}
+.scene-controls.is-narrow .scene-hint span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scene-controls.is-narrow .scene-hint button{pointer-events:auto;width:28px;height:28px;font-size:14px}
+.scene-tag{touch-action:none;user-select:none;-webkit-user-select:none}
+.scene-tag.is-hover{outline:2px solid #ffd34d;outline-offset:1px}
+.scene-tag svg{display:block;width:18px;height:18px}
+.scene-tag i{display:block;width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 3px rgba(0,0,0,.7)}
+.scene-spot-hint{position:absolute;transform:translate(-50%,-100%);margin-top:-14px;padding:3px 9px;border-radius:999px;background:rgba(255,211,77,.96);color:#2a2410;font:700 12px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;white-space:nowrap;pointer-events:none;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.scene-spot-hint[hidden]{display:none}
 .scene-hint[hidden]{display:none}
 .scene-hint button{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font:700 16px/1 system-ui,sans-serif;cursor:pointer;padding:0}
 body:has(.life-ui.is-clean) .scene-pad,body:has(.life-ui.is-clean) .scene-hint{display:none}
@@ -105,10 +121,11 @@ export function createSceneControls(container, { onZoom, onRecentre, onStick } =
   return {
     root,
     /** Where the HUD leaves room: CSS pixels covered at the top and the bottom; wide = the bottom corners are free. */
-    place({ top = 0, bottom = 0, wide = false } = {}) {
+    place({ top = 0, bottom = 0, wide = false, hintTop = 0 } = {}) {
       root.style.setProperty('--sc-top', `${Math.round(top + 8)}px`);
       root.style.setProperty('--sc-bottom', `${Math.round(wide ? 16 : bottom + 10)}px`);
-      // On a narrow screen the rows under the top bar (needs, alerts, the goal line) are the HUD's: the hint sits above the controls instead.
+      // On a narrow screen the rows under the top bar (needs, alerts, the goal line) are the HUD's: the hint is a thin strip right under them.
+      root.style.setProperty('--sc-hint', `${Math.round(Math.max(top, hintTop) + 6)}px`);
       root.classList.toggle('is-narrow', !wide);
     },
     touch(on) { root.classList.toggle('is-touch', Boolean(on)); },

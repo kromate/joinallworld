@@ -57,6 +57,7 @@ import './city-map.css';
 import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, CITY_MAPS, venueLabel, venueDistrict } from './game/content/venues.js';
 import { isOpen } from './game/clock.js';
 import { isDeparting } from './game/registry.js';
+import { iconFor } from './ui/icon-map.js';
 
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -129,7 +130,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   function build() {
     const names = CITY_MAPS[cityId] || CITY_MAPS.lagos;
     root.innerHTML = `<div class="cmap-view"><div class="cmap-world"><div class="cmap-canvas" role="group" aria-label="Map of the city. Choose a place to see it and travel there. Drag to move the map; plus and minus zoom; zero shows the whole city.">${backdrop(names)}${places().map((place) =>
-      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-trip" data-trip aria-hidden="true"></div><div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
+      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${iconFor('venue', place.id, place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-trip" data-trip aria-hidden="true"></div><div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
       <div class="cmap-controls" role="group" aria-label="Map view"><button type="button" data-cmap="in" aria-label="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-cmap="out" aria-label="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" class="cmap-fit" data-cmap="fit" aria-label="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" data-cmap="me" aria-label="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>
       <p class="cmap-hint" data-hint ${hintSeen ? 'hidden' : ''}>Drag to look around. Choose a place to travel there.</p>`;
     view = root.querySelector('.cmap-view'); worldNode = root.querySelector('.cmap-world'); canvas = root.querySelector('.cmap-canvas');
@@ -411,7 +412,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     const host = root.querySelector('[data-overlay]'), seaHost = root.querySelector('[data-sea]');
     const nodes = [];
     const ads = overlay.ads, colourOf = (id) => ads?.palette?.colours?.find((item) => item.id === id) || { bg: '#256b45', ink: '#ffffff' };
-    const iconOf = (id) => ads?.palette?.icons?.find((item) => item.id === id)?.icon || '⭐';
+    const boardIcon = (className, id) => { const node = make('span', className); node.innerHTML = iconFor('ad', id, ads?.palette?.icons?.find((item) => item.id === id)?.icon); return node; };
     if (layers.billboards && ads) {
       for (const slot of ads.billboards.slots) {
         const venue = VENUES[slot.near];
@@ -422,7 +423,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
         if (slot.ad) {
           const colour = colourOf(slot.ad.colour);
           board.style.background = colour.bg; board.style.color = colour.ink;
-          board.append(make('span', 'cmap-board-icon', iconOf(slot.ad.icon)), make('span', 'cmap-board-text', slot.ad.text));
+          board.append(boardIcon('cmap-board-icon', slot.ad.icon), make('span', 'cmap-board-text', slot.ad.text));
           board.setAttribute('aria-label', `Billboard on ${slot.road}: ${slot.ad.text}, by ${slot.ad.by.name}`);
         } else {
           board.append(make('span', 'cmap-board-text', 'Billboard for rent'));
@@ -441,7 +442,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
         hood.append(make('span', 'cmap-hood-label', `${group.label} · ${group.count} home${group.count === 1 ? '' : 's'} · ${group.online} online`));
         const row = make('div', 'cmap-hood-homes');
         for (const item of group.homes.slice(0, HOMES_SHOWN)) {
-          const house = make(item.you ? 'span' : 'button', `cmap-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`, '🏠');
+          const house = make(item.you ? 'span' : 'button', `cmap-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`); house.innerHTML = iconFor('house', null, 'home');
           house.title = item.you ? `${item.name} (you)` : item.name;
           house.setAttribute('aria-label', `${item.name}${item.you ? ' (you)' : ''}, ${item.online ? 'online now' : 'not online'}`);
           if (!item.you) { house.type = 'button'; house.dataset.neighbour = item.id; house.dataset.name = item.name; }
@@ -476,7 +477,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
         if (plot) {
           const colour = colourOf(plot.colour);
           cell.style.background = colour.bg; cell.style.color = colour.ink;
-          cell.append(make('span', 'cmap-plot-icon', iconOf(plot.icon)), make('span', 'cmap-plot-text', plot.text));
+          cell.append(boardIcon('cmap-plot-icon', plot.icon), make('span', 'cmap-plot-text', plot.text));
           cell.setAttribute('role', 'img'); cell.setAttribute('aria-label', `Sea plot ${row + 1}·${col + 1}: ${plot.text}, by ${plot.by.name}`);
           cell.title = `${plot.text} — ${plot.by.name}`;
         }

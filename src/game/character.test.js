@@ -575,8 +575,8 @@ test('boutique and look editing: styles cost cash, colours are free, every refus
   const state = started({ outcome: 'civil-servant', house: 'yaba', look: LOOK });
   const cash = state.cash;
   const shop = () => viewLife(state, at()).onboarding.boutique;
-  assert.deepEqual(shop().filter(item => item.kind === 'hair').map(item => item.id), APPEARANCE.hair.man, 'the shop lists styles for the current body');
-  assert.deepEqual(shop().filter(item => item.owned).map(item => item.id), ['low-cut', 'afro', 'casual', 'hoodie', 'plain', 'ankara']);
+  assert.deepEqual(shop().filter(item => item.kind === 'hair').map(item => item.id), [...APPEARANCE.hair.man, ...APPEARANCE.extra.hair.man], 'the shop lists styles for the current body');
+  assert.deepEqual(shop().filter(item => item.owned && item.kind !== 'accessories').map(item => item.id), ['low-cut', 'afro', 'casual', 'hoodie', 'plain', 'ankara']);
   const locs = act(state, 'onboarding.boutique-buy', { kind: 'hair', id: 'locs' });
   assert.equal(locs.code, 'bought'); assert.equal(state.cash, cash - BOUTIQUE_PRICES.hair.locs); assert.equal(state.onboarding.look.hair, 'locs');
   assert.deepEqual([state.ledger.at(-1).amount, state.ledger.at(-1).reason], [-4500, 'Boutique: Locs hairstyle']);

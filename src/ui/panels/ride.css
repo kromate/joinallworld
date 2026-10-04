@@ -6,7 +6,10 @@
 .ride-modes button span{font-size:20px;line-height:1}
 .ride-modes button.is-selected{border-color:var(--c-green-dark);background:var(--c-green-soft)}
 .ride-modes button:focus-visible,.ride-go:focus-visible{outline:3px solid #247a49;outline-offset:2px}
-.ride-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.ride-list{list-style:none;margin:var(--s-2) 0 0;padding:0;display:grid;gap:6px}
+/* Expanded on a desktop: two columns of places, and the mode picker stops stretching. */
+.ph.is-wide .ride-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ph.is-wide .ride-modes{max-width:520px}
 .ride-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--c-line);border-radius:16px}
 .ride-row.is-closed{background:var(--c-fill)}
 .ride-icon{flex:none;width:36px;height:36px;border-radius:12px;background:var(--c-green-soft);display:grid;place-items:center;font-size:19px}
@@ -19,5 +22,5 @@
 .ride-notice{display:grid;gap:8px;margin:0 0 var(--s-2);padding:10px 12px;border-radius:14px;background:var(--c-red-soft);color:#7a3c12;font-size:13px}
 .ride-notice p{margin:0;font-size:13px!important}
 .ride-fix{justify-self:start;min-height:var(--tap);padding:0 16px;border:0;border-radius:999px;background:var(--c-ink);color:#fff;font:700 12px var(--font);cursor:pointer}
-.ride-fix.is-small{min-height:32px;margin-top:4px;padding:0 12px;background:var(--c-green-soft);color:var(--c-green-dark)}
+.ride-fix.is-small{min-height:40px;margin-top:4px;padding:0 12px;background:var(--c-green-soft);color:var(--c-green-dark)}
 .ride-fix:focus-visible{outline:3px solid #247a49;outline-offset:2px}

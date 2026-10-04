@@ -4,6 +4,16 @@
 .civic-actions{display:flex;flex-wrap:wrap;gap:var(--s-2);margin:var(--s-3) 0 0}
 .civic-actions .civic-action{flex:1 1 140px;display:grid;margin:0}
 .civic-actions.is-stack{display:grid}
+/* Expanded on a desktop: stacked buttons pair up, checklists and candidates sit side by side. */
+.ph.is-wide .civic-actions.is-stack{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.ph.is-wide .civic-checks{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ph.is-wide .civic-form input,.ph.is-wide .civic-form select{max-width:460px}
+.ph.is-wide .ads-swatches{max-width:520px}
+.governor-ballot{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-2);margin-bottom:var(--s-2)}
+.governor-ballot .governor-candidate{margin:0;align-content:start}
+.ph.is-wide .governor-ballot{grid-template-columns:repeat(2,minmax(0,1fr))}
+.richlist-boards{display:grid;grid-template-columns:minmax(0,1fr);column-gap:var(--s-3)}
+.ph.is-wide .richlist-boards{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
 .civic-action{display:inline-grid;gap:3px;justify-items:stretch;vertical-align:top;margin:2px 6px 2px 0}
 .civic-action .ui-button:disabled{opacity:.5;cursor:not-allowed}
 .civic-why{font-size:12px;line-height:1.35;color:var(--c-red)}

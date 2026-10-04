@@ -8,36 +8,42 @@
  * is bought or changed until Buy or Wear is pressed.
  */
 import './boutique.css';
-import { esc, money, json } from '../dom.js';
-import { lookStage, lookSummary, mountLookPreview } from './look-ui.js';
+import { esc, money, json, mark } from '../dom.js';
+import { linkWords } from '../link.js';
+import { lookStage, lookSummary, mountLookPreview, withAccessory, withoutAccessory } from './look-ui.js';
 
-const SECTIONS = [['hair', 'Hairstyles'], ['outfit', 'Outfits'], ['fabric', 'Fabrics']];
+const SECTIONS = [['hair', 'Hairstyles'], ['outfit', 'Outfits'], ['fabric', 'Fabrics'], ['accessories', 'Accessories']];
+/** `look` wearing `item`: a style replaces the one worn; an accessory is added (and replaces one in the same slot). */
+const wearing = (look, item) => (item.kind === 'accessories' ? { ...look, accessories: withAccessory(look, item.id) } : { ...look, [item.kind]: item.id });
 let trying = null; // { kind, id } being tried on, or null
 
 /** The look on the preview: what is worn, plus the item being tried on while it is still on offer for this body. */
 function shownLook(o) {
   const item = trying && o.boutique.find((entry) => entry.kind === trying.kind && entry.id === trying.id && !entry.wearing);
-  return item ? { look: { ...o.look, [item.kind]: item.id }, item } : { look: o.look, item: null };
+  return item ? { look: wearing(o.look, item), item } : { look: o.look, item: null };
 }
 
 export default {
-  id: 'boutique', title: 'Boutique', icon: '👗', placement: 'phone', order: 32,
+  id: 'boutique', title: 'Boutique', placement: 'phone', order: 32,
   render(state, view) {
-    const o = view.onboarding, offline = view.connected ? '' : 'Offline — reconnect to shop';
+    const o = view.onboarding, words = linkWords(view), offline = words ? `${words.short} — you cannot shop right now` : '';
     const { look, item: tried } = shownLook(o);
     const card = (item) => {
       const on = tried === item;
-      const tryOn = item.wearing ? '' : `<button type="button" class="ui-button boutique-try" data-try="${json({ kind: item.kind, id: item.id })}" data-key="try:${esc(item.kind)}:${esc(item.id)}" aria-pressed="${on}">${on ? '✓ Trying on' : 'Try on'}</button>`;
+      const tryOn = item.wearing ? '' : `<button type="button" class="ui-button boutique-try" data-try="${json({ kind: item.kind, id: item.id })}" data-key="try:${esc(item.kind)}:${esc(item.id)}" aria-pressed="${on}">${on ? `${mark('check')} Trying on` : 'Try on'}</button>`;
       let control;
-      if (item.wearing) control = '<em class="boutique-state">✓ Wearing</em>';
+      if (item.wearing && item.kind === 'accessories') {
+        const why = offline || (o.done ? '' : 'Finish creating your Sim first.');
+        control = `<button class="ui-button" data-action="onboarding.set-look" data-payload="${json({ look: { ...o.look, accessories: withoutAccessory(o.look, item.id) } })}" ${why ? 'disabled' : ''}>${mark('check')} Wearing · take off</button>${why ? `<small class="boutique-why">${esc(why)}</small>` : ''}`;
+      } else if (item.wearing) control = `<em class="boutique-state">${mark('check')} Wearing</em>`;
       else if (item.owned) {
         const why = offline || (o.done ? '' : 'Finish creating your Sim first.');
-        control = `<button class="ui-button ${why ? '' : 'is-primary'}" data-action="onboarding.set-look" data-payload="${json({ look: { ...o.look, [item.kind]: item.id } })}" ${why ? 'disabled' : ''}>Wear</button>${why ? `<small class="boutique-why">${esc(why)}</small>` : ''}`;
+        control = `<button class="ui-button ${why ? '' : 'is-primary'}" data-action="onboarding.set-look" data-payload="${json({ look: wearing(o.look, item) })}" ${why ? 'disabled' : ''}>Wear</button>${why ? `<small class="boutique-why">${esc(why)}</small>` : ''}`;
       } else {
         const why = offline || item.blocked || '';
         control = `<button class="ui-button ${why ? '' : 'is-primary'}" data-action="onboarding.boutique-buy" data-payload="${json({ kind: item.kind, id: item.id })}" ${why ? 'disabled' : ''}>Buy · ${money(item.price)}</button>${why ? `<small class="boutique-why">${esc(why)}</small>` : ''}`;
       }
-      return `<article class="boutique-item ${item.wearing ? 'is-wearing' : ''} ${on ? 'is-trying' : ''}"><strong>${esc(item.label)}</strong><small>${item.wearing ? 'On your Sim now' : item.owned ? 'In your wardrobe' : money(item.price)}</small>${tryOn}${control}</article>`;
+      return `<article class="boutique-item ${item.wearing ? 'is-wearing' : ''} ${on ? 'is-trying' : ''}"><strong>${esc(item.label)}</strong><small>${item.wearing ? 'On your Sim now' : item.owned ? (item.price ? 'In your wardrobe' : 'Free · yours') : money(item.price)}</small>${tryOn}${control}</article>`;
     };
     const sections = SECTIONS.map(([kind, title]) => `<h3>${title}</h3><div class="boutique-grid">${o.boutique.filter((item) => item.kind === kind).map(card).join('')}</div>`).join('');
     const tools = tried ? '<button type="button" class="look-tool" data-try="null" data-key="try:none">↶ Back to my look</button>' : '';

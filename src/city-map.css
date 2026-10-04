@@ -1,0 +1,33 @@
+/* City map (src/city-map.js). The canvas keeps the 1000 × 700 proportions of the venue positions;
+   on a narrow screen it stays wide enough to read and the scroller pans it. */
+.cmap{position:absolute;inset:0;background:#9ccfe0;font-family:'DM Sans',Arial,sans-serif;color:#20232c}
+.cmap *{box-sizing:border-box}
+.cmap-scroll{position:absolute;inset:0;overflow:auto;padding:150px 16px 300px;overscroll-behavior:contain;scrollbar-width:thin}
+.cmap-canvas{position:relative;width:max(100%,900px);max-width:1280px;aspect-ratio:1000/700;margin:0 auto;border-radius:22px;overflow:visible}
+.cmap-art{position:absolute;inset:0;width:100%;height:100%;display:block;border-radius:22px;box-shadow:0 8px 40px #0b2b3a33}
+.cmap-pin{position:absolute;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:2px;min-width:44px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit;z-index:1}
+.cmap-pin-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px 12px 12px 3px;background:#fff;border:2px solid #2f6a4b;font-size:18px;line-height:1;box-shadow:0 3px 8px #0003}
+.cmap-pin-name{max-width:132px;padding:3px 9px;border-radius:12px;background:#fffffff2;font-size:12px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 1px 4px #0002}
+.cmap-pin-note{font-size:10px;font-weight:700;line-height:1.2;padding:1px 7px;border-radius:9px;background:#20242ad9;color:#fff}
+.cmap-pin-note:empty{display:none}
+.cmap-pin:hover{z-index:3}.cmap-pin:hover .cmap-pin-icon{border-color:#c98f2e}
+.cmap-pin:focus-visible{outline:none;z-index:4}
+.cmap-pin:focus-visible .cmap-pin-icon,.cmap-pin:focus-visible .cmap-pin-name{outline:3px solid #14532d;outline-offset:2px}
+.cmap-pin.is-home .cmap-pin-icon{background:#256b45;border-color:#fff;border-radius:50%}
+.cmap-pin.is-home .cmap-pin-name{background:#256b45;color:#fff}
+.cmap-pin.is-soon .cmap-pin-icon{background:#fff3c4;border:2px dashed #a8761a;filter:grayscale(.3)}
+.cmap-pin.is-soon .cmap-pin-name{background:repeating-linear-gradient(135deg,#ffe38a 0 8px,#ffd24a 8px 16px);color:#4d3a05}
+.cmap-pin.is-soon .cmap-pin-note{background:#4d3a05}
+.cmap-pin.is-closed .cmap-pin-icon{border-color:#8a8f96;filter:grayscale(1);opacity:.8}
+.cmap-pin.is-closed .cmap-pin-name{color:#555c64}
+.cmap-pin.is-closed .cmap-pin-note{background:#6b4a2a}
+.cmap-pin.is-here{z-index:2}
+.cmap-pin.is-here .cmap-pin-icon{border-color:#e8a643;box-shadow:0 0 0 5px #e8a64359,0 3px 8px #0003}
+.cmap-pin.is-here .cmap-pin-note{background:#a2621a}
+.cmap-pin.is-going .cmap-pin-icon{border-style:dashed;border-color:#256b45}
+.cmap-pin.is-selected .cmap-pin-icon{border-color:#14532d;box-shadow:0 0 0 4px #14532d40,0 3px 8px #0003}
+.cmap-pin.is-selected .cmap-pin-name{background:#20232c;color:#fff}
+.cmap-pin.is-dimmed{opacity:.32}
+.cmap-pin.is-dimmed:hover,.cmap-pin.is-dimmed:focus-visible{opacity:1}
+@media(min-width:901px){.cmap-scroll{padding:96px 24px 250px}.cmap-pin-name{font-size:13px;max-width:160px}}
+@media(max-width:540px){.cmap-scroll{padding:160px 12px 330px}.cmap-canvas{width:880px}}

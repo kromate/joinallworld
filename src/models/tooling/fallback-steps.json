@@ -1,0 +1,29 @@
+[
+  {
+    "name": "fallback-city",
+    "js": "document.querySelector('[data-nav=map]').click()",
+    "wait": 900
+  },
+  {
+    "name": "fallback-world",
+    "js": "const h=document.querySelector('[data-map-sheet]');if(h.getAttribute('aria-expanded')!=='true')h.click();const b=document.querySelector('[data-map-layer=world]');if(!b.getBoundingClientRect().width)throw new Error('World entry not visible');b.click()",
+    "wait": 1100
+  },
+  {
+    "name": "fallback-kenya",
+    "js": "document.querySelector('[data-wm-level=kenya]').click()",
+    "wait": 600
+  },
+  {
+    "name": "fallback-proof",
+    "js": "(()=>{const stage=document.querySelector('.wm-model-stage'),svg=document.querySelector('.wm-model-flat');if(stage.dataset.renderer!=='svg'||svg.hasAttribute('hidden')||svg.children.length!==47)throw new Error('Flat map not usable');return {renderer:stage.dataset.renderer,features:svg.children.length,goButtons:document.querySelectorAll('.wm [data-wm-go]').length};})()"
+  },
+  {
+    "name": "fallback-mobile",
+    "size": [
+      390,
+      844
+    ],
+    "wait": 500
+  }
+]

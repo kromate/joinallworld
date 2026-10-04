@@ -11,8 +11,8 @@
  *
  * The Sim is on screen through the whole flow: the Look step is a character creator (a large 3D
  * preview with Shuffle and Undo, option tabs beside it — under it on a phone, where the preview
- * stays pinned), and the later steps keep a small preview beside their choices. Shuffle is done
- * here, from the same option lists the server validates; the look reaches the server with
+ * stays pinned), and the later steps keep a small preview beside their choices. Styles sold only in
+ * the Boutique are shown locked. Shuffle is done here, from the same option lists the server validates; the look reaches the server with
  * "Next". The look being edited is also kept in localStorage, so it survives a reload or a spell
  * offline and is saved when the step is confirmed.
  */
@@ -20,7 +20,7 @@ import './onboarding.css';
 import { esc, money, icon } from '../dom.js';
 import { TRAITS, TRAITS_REQUIRED, DREAMS, ONBOARDING_STEPS, RENT_NOTE, LOTTERY_NOTE } from '../../game/content/traits.js';
 import { APPEARANCE } from '../../game/content/traits.js';
-import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocusBody, mountLookPreview, randomLook, sameLook } from './look-ui.js';
+import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocusBody, mountLookPreview, randomLook, sameLook, starterWardrobe, hairOptions, outfitOptions } from './look-ui.js';
 
 const ID = 'onboarding';
 const LAST = ONBOARDING_STEPS.length - 1;
@@ -34,9 +34,12 @@ function storedLook(key) {
     const look = saved?.owner === key ? saved.look : null;
     if (!look || !APPEARANCE.bodies.some((body) => body.id === look.body)) return null;
     const has = (group, id) => APPEARANCE[group].some((swatch) => swatch.id === id);
-    const valid = APPEARANCE.hair[look.body].includes(look.hair) && APPEARANCE.outfits[look.body].includes(look.outfit) && APPEARANCE.fabrics.includes(look.fabric)
-      && has('skin', look.skin) && has('hairColours', look.hairColor) && has('outfitColours', look.outfitColor) && has('outfitColours', look.bottomsColor);
-    return valid ? { body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, skin: look.skin, hairColor: look.hairColor, outfitColor: look.outfitColor, bottomsColor: look.bottomsColor } : null;
+    const free = starterWardrobe(), extras = Array.isArray(look.accessories) ? look.accessories : [];
+    const valid = hairOptions(look.body).includes(look.hair) && free.hair.includes(look.hair) && outfitOptions(look.body).includes(look.outfit) && free.outfit.includes(look.outfit) && APPEARANCE.fabrics.includes(look.fabric)
+      && has('skin', look.skin) && has('hairColours', look.hairColor) && has('outfitColours', look.outfitColor) && has('outfitColours', look.bottomsColor)
+      && extras.length <= APPEARANCE.accessoryLimit && extras.every((id) => free.accessories.includes(id)) && new Set(extras.map((id) => APPEARANCE.accessories.find((item) => item.id === id).slot)).size === extras.length;
+    return valid ? { body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, skin: look.skin, hairColor: look.hairColor, outfitColor: look.outfitColor, bottomsColor: look.bottomsColor,
+      accessories: [...extras], face: APPEARANCE.faces.includes(look.face) ? look.face : APPEARANCE.faces[0], expression: APPEARANCE.expressions.includes(look.expression) ? look.expression : APPEARANCE.expressions[0] } : null;
   } catch { return null; }
 }
 function storeLook(look) {
@@ -62,8 +65,8 @@ const withSim = (view, body) => `<div class="ob-with-sim"><aside class="ob-sim">
 function stepBody(state, view) {
   const o = view.onboarding, name = view.name;
   if (shown === 0) {
-    const tools = `<button type="button" class="look-tool is-main" data-ob="shuffle" data-key="shuffle" ${pending ? 'disabled' : ''}>🎲 Shuffle</button><button type="button" class="look-tool" data-ob="undo" data-key="undo" ${undo && !pending ? '' : 'disabled'} aria-label="Undo the last shuffle">↶ Undo</button>`;
-    return [`<div class="ob-creator"><div class="ob-hero">${lookStage(draft.look, { variant: 'hero', name, tools })}<p class="ob-wearing">${esc(lookSummary(draft.look))}</p></div><div class="ob-options">${lookEditor(draft.look)}</div></div>`,
+    const tools = `<button type="button" class="look-tool" data-ob="undo" data-key="undo" ${undo && !pending ? '' : 'disabled'} aria-label="Undo the last shuffle">↶ Undo</button><button type="button" class="look-tool is-main" data-ob="shuffle" data-key="shuffle" ${pending ? 'disabled' : ''}>🎲 Shuffle</button>`;
+    return [`<div class="ob-creator"><div class="ob-hero">${lookStage(draft.look, { variant: 'hero', name, tools, caption: esc(lookSummary(draft.look)) })}</div><div class="ob-options">${lookEditor(draft.look, { owned: starterWardrobe() })}</div></div>`,
       primary('Looks good — next: personality', { action: 'look', why: view.connected ? 'Still to choose: 2 traits, a dream, the birth lottery and a home.' : 'Offline: your look is kept on this device and is saved when you reconnect.' })];
   }
   if (shown === 1) {
@@ -132,7 +135,7 @@ export default {
       focusKey = target.dataset.key || '';
       const data = target.dataset;
       if (lookTabClick(target)) { redraw(); return; }
-      if ('look' in data) { draft.look = chooseLook(draft.look, data.look, data.value); storeLook(draft.look); }
+      if ('look' in data) { draft.look = chooseLook(draft.look, data.look, data.value, starterWardrobe()); storeLook(draft.look); }
       else if ('trait' in data) {
         if (draft.traits.includes(data.trait)) draft.traits = draft.traits.filter((id) => id !== data.trait);
         else draft.traits = [...draft.traits, data.trait].slice(-TRAITS_REQUIRED);

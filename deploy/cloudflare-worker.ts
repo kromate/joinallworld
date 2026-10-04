@@ -134,6 +134,13 @@ export default {
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
     headers.set('x-content-type-options', 'nosniff');
+    // A hashed build file that is gone (an old tab after a deploy): the binding's single-page fallback answers index.html, which a
+    // dynamic import cannot use. Under /assets/ that is a 404, never the page.
+    const inAssets = assetPath.startsWith('/assets/');
+    if (inAssets && (response.status === 404 || response.headers.get('content-type')?.includes('text/html'))) {
+      return new Response(request.method === 'HEAD' ? null : 'Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' } });
+    }
+    if (inAssets && response.status === 200) headers.set('cache-control', 'public, max-age=31536000, immutable'); // hashed: the name changes when the content does
     if (!headers.get('content-type')?.includes('text/html')) return new Response(response.body, { status: response.status, headers });
     headers.set('cache-control', 'no-cache');
     if (request.method === 'HEAD' || response.status !== 200) return new Response(response.body, { status: response.status, headers });

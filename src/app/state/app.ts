@@ -5,6 +5,7 @@
 // was heading for" — expressed over the stores instead of over the DOM. The 3D hosts register
 // themselves here (ScenePane, MapPane) so those rules can reach them; until one has loaded its
 // callers skip it, exactly as before, and it is given the current state the moment it exists.
+import { noteChunkFailure } from './updateNotice.ts'
 import { shallowRef } from 'vue'
 import type { LifeState } from '../../types/life.ts'
 import type { Panel, PanelApi, ShellMode, VuePanel } from '../types/panel.ts'
@@ -132,7 +133,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     toast: (text, kind) => game.toast(text, kind),
     onMembers,
     walkBy: (dx, dz) => scene.venue.value?.walkBy?.(dx, dz) === true,
-    telemetry: { chunkFailed: (name, error) => { telemetry.chunkFailed(name as never, error) }, captureError: (error, context) => { telemetry.captureError(error, context) } },
+    telemetry: { chunkFailed: (name, error) => { telemetry.chunkFailed(name as never, error); void noteChunkFailure() }, captureError: (error, context) => { telemetry.captureError(error, context) } },
   })
 
   function showVenue(): void {

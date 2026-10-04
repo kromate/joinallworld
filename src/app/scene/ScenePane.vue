@@ -17,6 +17,7 @@ import { useApp } from '../state/app.ts'
 import { loadSceneWorld } from './loaders.ts'
 import { landingCodeSettled } from '../features/start/warmLanding.ts'
 import { telemetry } from '../../telemetry/index.ts'
+import { noteChunkFailure } from '../state/updateNotice.ts'
 
 const props = defineProps<{
   /** Elements whose bottom edge marks how far the HUD covers the top of the scene. */
@@ -85,7 +86,7 @@ onMounted(() => {
       for (const node of [...props.top(), ...props.rows(), props.bottom()]) if (node) observer.observe(node)
     } catch (error) {
       console.error('The scene could not be started:', error)
-      telemetry.chunkFailed('scene', error); telemetry.sceneReady(false)
+      telemetry.chunkFailed('scene', error); void noteChunkFailure(); telemetry.sceneReady(false)
       failed.value = true
     }
   }, 0)

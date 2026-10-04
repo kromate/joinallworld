@@ -10,6 +10,7 @@ import { useApp } from '../state/app.ts'
 import { loadMaps } from './loaders.ts'
 import { viewLife } from '../../life.ts'
 import { telemetry } from '../../telemetry/index.ts'
+import { noteChunkFailure } from '../state/updateNotice.ts'
 import type { CityLinkMode, WorldCityId } from '../../types/life.ts'
 
 const { game, shell, scene, switchCity, playerLook, heldCities, command, showMapLayer, showFriends } = useApp()
@@ -63,7 +64,7 @@ function load(): Promise<void> {
     city.setState(game.state.value)
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }))
     show()
-  }).catch((error: unknown) => { loading = null; telemetry.chunkFailed('map', error); console.error('The map could not be loaded:', error); game.toast('The map could not be loaded. Check your connection and open it again.', 'error') })
+  }).catch((error: unknown) => { loading = null; telemetry.chunkFailed('map', error); void noteChunkFailure(); console.error('The map could not be loaded:', error); game.toast('The map could not be loaded. Check your connection and open it again.', 'error') })
   return loading
 }
 watch(scene.mapsWanted, (wanted) => { if (wanted) void load() }, { immediate: true, flush: 'post' })

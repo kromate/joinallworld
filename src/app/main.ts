@@ -4,11 +4,14 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { useApp } from './state/app.ts'
 import { telemetry } from '../telemetry/index.ts'
+import { isChunkLoadError, noteChunkFailure } from './state/updateNotice.ts'
 import { warmLanding } from './features/start/warmLanding.ts'
 
 warmLanding() // a device that has never played opens on the landing: fetch its code now, not after the first paint
 const app = createApp(App)
-app.config.errorHandler = (error, _instance, info) => { console.error(`The shell failed in ${info}:`, error) }
+app.config.errorHandler = (error, _instance, info) => { console.error(`The shell failed in ${info}:`, error); if (isChunkLoadError(error)) void noteChunkFailure() }
+// A lazy chunk that no longer exists (the app was updated while this tab was open): see state/updateNotice.ts.
+window.addEventListener('vite:preloadError', () => { void noteChunkFailure() })
 app.mount('#app')
 // The HUD is on screen: the first telemetry mark (the facade keeps it until, and unless, telemetry is configured).
 telemetry.hudReady()

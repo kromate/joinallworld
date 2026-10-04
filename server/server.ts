@@ -375,12 +375,21 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       let path = resolve(root, `.${decodeURIComponent(url.pathname)}`);
       if (path !== root && !path.startsWith(root + sep)) throw fail(403, 'invalid_path');
       if (extname(path) === '.map') throw fail(404, 'not_found'); // source maps are uploaded to Sentry, never served
-      try { if (!(await stat(path)).isFile()) path = resolve(root, 'index.html'); } catch { path = resolve(root, 'index.html'); }
+      // A hashed build file that is gone (an old tab after a deploy) is a 404, never the app page: a dynamic import of it must fail clearly.
+      const inAssets = url.pathname.startsWith('/assets/');
+      let found = true;
+      try { if (!(await stat(path)).isFile()) found = false; } catch { found = false; }
+      if (!found) {
+        if (inAssets) { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' }); res.end(method === 'HEAD' ? undefined : 'Not found'); return; }
+        path = resolve(root, 'index.html');
+      }
       // The game's own page: its default link-preview image is made absolute here, from PUBLIC_ORIGIN (or this request's own
       // host when that is not set), because the crawlers of chat apps do not resolve a relative og:image.
       const bytes = path === resolve(root, 'index.html') ? Buffer.from(await serveIndex(req, path)) : await readFile(path);
       if (res.headersSent || res.writableEnded) return;
-      res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'X-Content-Type-Options': 'nosniff' });
+      // Hashed files under /assets/ never change: cached for a year. The page itself is revalidated every time.
+      const cache = inAssets ? 'public, max-age=31536000, immutable' : path === resolve(root, 'index.html') ? 'no-cache' : 'public, max-age=3600';
+      res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': cache, 'X-Content-Type-Options': 'nosniff' });
       res.end(method === 'HEAD' ? undefined : bytes);
     } catch (thrown) {
       // Only the first line of the message is logged: never a header, a cookie or a body.

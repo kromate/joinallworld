@@ -10,6 +10,7 @@ import socialRoutes, { canHost } from './routes/social.js';
 import socialSocket from './ws/social.js';
 import { LIMITS } from './social/service.js';
 import { RECONNECT_GRACE_MS } from './social/presence.js';
+import { SHIFT_SECONDS } from '../src/game/content/jobs.js';
 
 const HOUR = 3600000;
 const cid = () => `c-${randomUUID()}`;
@@ -37,17 +38,23 @@ async function people(f, names) {
 }
 async function goHome(f, device) {
   await f.action(device.cookie, { type: 'travel', id: 'home', mode: 'trek' });
-  f.advance(5000);
+  f.advance(20000); // the longest trek in the merged city is 18 seconds
   const peer = await f.socket(device);
   peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' }));
   await until(peer, 'presence');
   return peer;
 }
-/** Four starter shifts: ₦1,200 earned from paid work. */
+/**
+ * One paid career shift: ₦3,000 earned from work. (The branch earned with four back-to-back
+ * starter shifts; the merged career rules give that job a four-hour break, so a Teaching shift
+ * at Freedom Park — open all day, where a new life starts — is the honest way to earn here.)
+ */
 async function earn(f, device) {
-  await f.action(device.cookie, { type: 'apply-job', id: 'community-helper' });
+  assert.equal((await f.action(device.cookie, { type: 'apply-job', id: 'teaching' })).code, 'applied');
   await f.action(device.cookie, { type: 'spot', id: 'work' });
-  for (let i = 0; i < 4; i++) { assert.equal((await f.action(device.cookie, { type: 'activity', id: 'helper-shift' })).code, 'started'); f.advance(20000); }
+  const started = await f.action(device.cookie, { type: 'activity', id: 'teaching-shift' });
+  assert.equal(started.code, 'started', started.reason);
+  f.advance(SHIFT_SECONDS * 1000);
   return (await get(f, '/api/life?city=lagos', device)).state;
 }
 
@@ -229,7 +236,7 @@ test('presence is truthful: two clients agree, leaving shows at once, a dropped 
   assert.deepEqual(await view(ada), ['joined', []]);
   assert.deepEqual(await view(bola), ['travelling', []]);
   assert.deepEqual(await status(ada), ['away', undefined]);
-  f.advance(5000);
+  f.advance(20000);
   b.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'library' }));
   await until(b, 'presence');
   assert.deepEqual(await status(ada), ['online', 'library']);
@@ -352,7 +359,7 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   refused = await send();
   assert.equal(refused.code, 'account_too_new'); assert.match(refused.reason, /24 hours/);
   const earned = await earn(f, ada);
-  assert.equal(earned.cash, 6200); assert.equal(earned.social.earned, 1200);
+  assert.equal(earned.cash, 8000); assert.equal(earned.social.earned, 3000);
   f.advance(24 * HOUR);
   for (const amount of [0, -5, 2.5, '500', null, 1e21]) assert.equal((await send({ amount })).status, 400, String(amount));
   assert.equal((await send({ amount: 50 })).code, 'amount_too_small');
@@ -362,14 +369,14 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   // Bola is offline: the debit and the stored credit commit together; he is paid on his next request.
   const id = cid();
   const sent = await send({ clientId: id });
-  assert.deepEqual([sent.code, sent.amount, sent.credited, sent.balance], ['sent', 500, false, 5700]);
+  assert.deepEqual([sent.code, sent.amount, sent.credited, sent.balance], ['sent', 500, false, 7500]);
   const db = await database(f);
   assert.equal(db.social.pending[bola.id][0].payload.amount, 500);
   const replay = await send({ clientId: id });
-  assert.deepEqual([replay.code, replay.duplicate, replay.balance], ['sent', true, 5700]);
+  assert.deepEqual([replay.code, replay.duplicate, replay.balance], ['sent', true, 7500]);
   assert.equal((await send({ clientId: id, amount: 600 })).status, 409);
   const adaLife = (await get(f, '/api/life?city=lagos', ada)).state;
-  assert.equal(adaLife.cash, 5700); assert.deepEqual([adaLife.ledger.at(-1).amount, adaLife.ledger.at(-1).reason], [-500, 'Transfer to Bola']);
+  assert.equal(adaLife.cash, 7500); assert.deepEqual([adaLife.ledger.at(-1).amount, adaLife.ledger.at(-1).reason], [-500, 'Transfer to Bola']);
   await get(f, '/api/social/me', bola); await get(f, '/api/social/me', bola);
   let bolaLife = (await get(f, '/api/life?city=lagos', bola)).state;
   assert.equal(bolaLife.cash, 5500, 'credited exactly once');
@@ -382,16 +389,16 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   assert.equal(live.credited, true);
   assert.deepEqual([(await until(b, 'transfer')).amount, (await get(f, '/api/life?city=lagos', bola)).state.cash], [400, 5900]);
   // Only earned money can be given, and only three gifts a day.
-  refused = await send({ amount: 400 });
-  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(refused.reason, /You can still give ₦300/);
+  refused = await send({ amount: 2200 });
+  assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(refused.reason, /You can still give ₦2,100/);
   assert.equal((await send({ amount: 100 })).code, 'sent');
   assert.equal((await send({ amount: 100 })).code, 'daily_transfer_limit');
   // A gift cannot be passed straight on: it is not earnings.
   assert.equal((await post(f, '/api/social/transfers', { to: ada.id, amount: 500, cityId: 'lagos', clientId: cid() }, bola)).code, 'earn_first');
-  // Money is conserved: 3 lives × ₦5,000 + ₦1,200 earned.
+  // Money is conserved: 3 lives × ₦5,000 + ₦3,000 earned.
   bolaLife = (await get(f, '/api/life?city=lagos', bola)).state;
   const total = (await get(f, '/api/life?city=lagos', ada)).state.cash + bolaLife.cash + (await get(f, '/api/life?city=lagos', chi)).state.cash;
-  assert.equal(total, 16200);
+  assert.equal(total, 18000);
   // The life action behind it cannot be called from the client.
   const direct = await f.action(bola.cookie, { type: 'social.server', payload: { op: 'transfer-in', from: ada.id, name: 'Ada', amount: 5000 } });
   assert.equal(direct.code, 'server_only'); assert.equal(direct.state.cash, bolaLife.cash);
@@ -471,11 +478,11 @@ test('a gift nobody collects goes back to the sender after a week; nothing is lo
   await earn(f, ada);
   f.advance(24 * HOUR);
   assert.equal((await post(f, '/api/social/transfers', { to: bola.id, amount: 700, cityId: 'lagos', clientId: cid() }, ada)).credited, false);
-  assert.equal((await get(f, '/api/life?city=lagos', ada)).state.cash, 5500);
+  assert.equal((await get(f, '/api/life?city=lagos', ada)).state.cash, 7300);
   f.advance(LIMITS.escrowMs + HOUR);
   await get(f, '/api/social/me', ada); await get(f, '/api/social/me', ada);
   const life = (await get(f, '/api/life?city=lagos', ada)).state;
-  assert.equal(life.cash, 6200); assert.equal(life.ledger.at(-1).reason, 'Refund: transfer to Bola');
+  assert.equal(life.cash, 8000); assert.equal(life.ledger.at(-1).reason, 'Refund: transfer to Bola');
   await get(f, '/api/social/me', bola);
   assert.equal((await get(f, '/api/life?city=lagos', bola)).state.cash, 5000);
   assert.deepEqual((await database(f)).social.pending, {});

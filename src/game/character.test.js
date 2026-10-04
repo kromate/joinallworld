@@ -404,8 +404,8 @@ test('after the chain the chip is a rolling next step that is always attainable'
   state.needs.energy = 90;
   assert.deepEqual([chip().title, chip().go], ['Eat something', ['home', 'kitchen']]);
   state.needs.hunger = 90; state.needs.social = 5;
-  // The city now has a free social activity that needs no furniture, so the guide points at it.
-  assert.deepEqual([chip().title, chip().hint, chip().go], ['Talk to someone', 'Freedom Park → Drinks kiosk → Gist with the Kiosk Lady', ['park', 'drinks']]);
+  // The city's regulars can be greeted for free, and Say Hello raises Social the most, so the guide points at a person.
+  assert.deepEqual([chip().title, chip().hint, chip().go], ['Talk to someone', 'Freedom Park → People → Say Hello · Kunle', ['park', 'people']]);
 });
 
 test('wishes: three active, +3 stars each, replaced when granted, re-rolls limited per day with a reason', () => {

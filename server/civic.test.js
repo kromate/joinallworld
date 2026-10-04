@@ -6,10 +6,14 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.js';
+import { VENUES } from '../src/game/content/venues.js';
+import { isOpen, minutesUntilOpen } from '../src/game/clock.js';
+import { spotsOf } from '../src/game/api.js';
 
 const DAY = 86400000;
 const START = 100000; // the fixture's clock starts on a Thursday, 01:01 Lagos time
 const MONDAY = 4 * DAY - 3600000; // the following Monday, 00:00 Lagos time
+const HOUR = 3600000;
 
 async function harness(t) {
   const f = await fixture(t);
@@ -67,7 +71,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   assert.equal(gov.phase, 'voting'); assert.equal(gov.you.run.ok, false); assert.equal(gov.you.run.code, 'nominations_closed');
   assert.equal(gov.you.vote.ok, false); assert.match(gov.you.vote.reason, /Nobody is on the ballot/);
   assert.deepEqual(gov.you.run.checks.map((item) => [item.id, item.met]), [['days', false], ['fee', true]], 'eligibility is stated up front');
-  assert.equal(gov.rules.filingFee, 2000); assert.equal(gov.rules.pollingVenue, null);
+  assert.equal(gov.rules.filingFee, 2000); assert.equal(gov.rules.pollingVenue, 'polling-unit', 'the merged city has a Polling Unit, so votes are cast there');
   const tooEarly = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all' }, ada);
   assert.equal(tooEarly.ok, false); assert.equal(tooEarly.code, 'nominations_closed'); assert.match(tooEarly.reason, /Monday/); assert.equal(tooEarly.state.cash, 5000);
 
@@ -93,9 +97,18 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   const notYet = await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, chidi);
   assert.equal(notYet.code, 'polls_closed'); assert.match(notYet.reason, /Thursday to Saturday/);
 
-  // Thursday: voting. One vote per player, enforced on the server.
+  // Thursday: voting. One vote per player, enforced on the server, cast in person at the Polling Unit (open 8AM–6PM).
   goTo(MONDAY + 3 * DAY + 60000);
   const eve = await f.device('Eve');
+  const closed = await f.action(ada.cookie, { type: 'travel', payload: { id: 'polling-unit', mode: 'trek' } });
+  assert.equal(closed.code, 'closed'); assert.match(closed.reason, /opens 8AM/);
+  const fromAfar = await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: bola.id }, ada);
+  assert.equal(fromAfar.code, 'wrong_place'); assert.match(fromAfar.reason, /Travel to Polling Unit/); assert.equal(fromAfar.gov.election.yourVote, null);
+  goTo(MONDAY + 3 * DAY + 9 * HOUR);
+  for (const device of [ada, bola]) assert.equal((await f.action(device.cookie, { type: 'travel', payload: { id: 'polling-unit', mode: 'trek' } })).ok, true);
+  assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: bola.id }, ada)).code, 'wrong_place', 'still on the road');
+  wait(20000);
+  assert.equal((await get('/api/civic/gov?city=lagos', ada)).you.vote.ok, true);
   assert.equal((await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Late entry' }, chidi)).code, 'nominations_closed');
   assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, eve)).code, 'too_new');
   for (const candidate of [chidi.id, 'nobody', '__proto__', 5, null, undefined]) assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate }, chidi)).code, 'unknown_candidate', String(candidate));
@@ -193,7 +206,7 @@ test('billboards and sea plots: rented with in-game naira, text + colour + icon 
 });
 
 test('daily gem hunt: found through play, real city counter, prize paid through the ledger exactly once a day', async t => {
-  const { f, get, post, life, wait } = await harness(t);
+  const { f, get, post, life, wait, now } = await harness(t);
   const ada = await f.device('Ada'), bola = await f.device('Bola');
   let hunt = await get('/api/civic/hunt?city=lagos');
   assert.deepEqual([hunt.found, hunt.today, hunt.prize, hunt.gemsPerDay, hunt.you], [0, 0, 3000, 3, null]);
@@ -202,29 +215,44 @@ test('daily gem hunt: found through play, real city counter, prize paid through 
   wait(1000);
   let state = await life(ada);
   assert.equal(state.civic.hunt.gems.length, 3);
-  for (let index = 0; index < 3; index++) {
+  // Opening hours and 4–18 second trips: take gems whose venue is open first, wait for the rest to open.
+  const day = state.civic.hunt.day;
+  for (let round = 0; round < 3; round++) {
     state = await life(ada);
-    const gem = state.civic.hunt.gems[index];
-    if (gem.found) continue;
+    const left = state.civic.hunt.gems.filter((item) => !item.found);
+    if (!left.length) break;
+    const clock = now();
+    let gem = left.find((item) => isOpen(VENUES[item.venue].hours, clock));
+    if (!gem) {
+      gem = left.reduce((best, item) => (minutesUntilOpen(VENUES[item.venue].hours, clock) < minutesUntilOpen(VENUES[best.venue].hours, clock) ? item : best));
+      assert.equal((await f.action(ada.cookie, { type: 'travel', payload: { id: gem.venue, mode: 'trek' } })).code, 'closed');
+      wait(minutesUntilOpen(VENUES[gem.venue].hours, clock) * 60000);
+    }
+    const index = state.civic.hunt.gems.findIndex((item) => item.venue === gem.venue && item.spot === gem.spot && item.kind === gem.kind);
     if (state.location !== gem.venue) {
       assert.equal((await f.action(ada.cookie, { type: 'travel', payload: { id: gem.venue, mode: 'trek' } })).ok, true);
       assert.equal((await f.action(ada.cookie, { type: 'civic.hunt-search' })).code, 'travelling');
-      wait(6000);
+      wait(20000);
       state = await life(ada);
+      assert.equal(state.location, gem.venue);
       if (state.civic.hunt.gems[index].found) continue;
     }
     if (gem.kind === 'activity') {
       const stuck = await f.action(ada.cookie, { type: 'civic.hunt-search' });
       assert.equal(stuck.code, 'activity_needed'); assert.match(stuck.reason, /Finish any activity/);
-      await f.action(ada.cookie, { type: 'spot', payload: { id: 'trees' } });
-      assert.equal((await f.action(ada.cookie, { type: 'activity', payload: { id: 'chill' } })).ok, true);
+      // Every venue has regulars to greet: a free activity that shakes the gem loose.
+      const hello = spotsOf(gem.venue).find((spot) => spot.id === 'people').activities.find((def) => def.id.endsWith('-hello'));
+      await f.action(ada.cookie, { type: 'spot', payload: { id: 'people' } });
+      assert.equal((await f.action(ada.cookie, { type: 'activity', payload: { id: hello.id } })).ok, true);
       wait(12000);
     } else {
       if (gem.spot && state.spot !== gem.spot) await f.action(ada.cookie, { type: 'spot', payload: { id: gem.spot } });
       const search = await f.action(ada.cookie, { type: 'civic.hunt-search' });
       assert.equal(search.ok, true, JSON.stringify(search.reason)); assert.equal(search.code, 'found');
     }
-    assert.equal((await life(ada)).civic.hunt.gems[index].found, true, JSON.stringify(gem));
+    state = await life(ada);
+    assert.equal(state.civic.hunt.gems[index].found, true, JSON.stringify(gem));
+    assert.equal(state.civic.hunt.day, day, 'all three were reachable within one Lagos day');
   }
   const done = await f.action(ada.cookie, { type: 'civic.hunt-search' });
   assert.equal(done.code, 'hunt_complete'); assert.match(done.reason, /Claim your ₦3,000 prize/);
@@ -259,7 +287,7 @@ test('club radio: bought in a club with in-game naira, queued on server time, re
   assert.equal((await get('/api/civic/radio?city=lagos&venue=park')).club, false);
   for (const device of [ada, bola]) await f.action(device.cookie, { type: 'travel', payload: { id: 'library', mode: 'trek' } });
   assert.equal((await post('/api/civic/radio/shoutout', { cityId: 'lagos', title: 'Water', artist: 'Tyla' }, ada)).code, 'not_in_club', 'still on the road');
-  wait(6000);
+  wait(20000); // a trek takes up to 18 seconds in the merged city
   for (const [song, code] of [[{ title: '', artist: 'Tyla' }, 'text_too_short'], [{ title: 'Water' }, 'text_required'], [{ title: 'x'.repeat(41), artist: 'Tyla' }, 'text_too_long'], [{ title: 'Water', artist: 'listen at tyla.com' }, 'links_not_allowed']]) {
     const refused = await post('/api/civic/radio/shoutout', { cityId: 'lagos', ...song }, ada);
     assert.equal(refused.code, code); assert.ok(refused.reason); assert.equal(refused.state.cash, 5000);
@@ -306,10 +334,11 @@ test('neighbours, rich list and counters: real counts, truthful presence, opt-ou
   assert.deepEqual(pulse.counters, { players: 3, online: 1, visits: 3 });
   let hood = await get('/api/civic/neighbours?city=lagos', ada);
   assert.equal(hood.demonym, 'Lagosians'); assert.equal(hood.total, 3); assert.equal(hood.online, 1); assert.equal(hood.hidden, false);
-  const unknown = hood.districts.find((group) => group.id === 'unknown');
-  assert.equal(unknown.label, 'District not set yet'); assert.equal(unknown.count, 3);
-  assert.deepEqual(unknown.homes.map((home) => [home.name, home.online, home.you]), [['Ada', false, true], ['Bola', true, false], ['Chidi', false, false]]);
-  assert.deepEqual(hood.districts.map((group) => group.id), ['mushin', 'yaba', 'lekki', 'ikoyi', 'banana', 'unknown']);
+  // Every life in the merged game lives somewhere (the default house is in Yaba), so nobody is "not set".
+  const yaba = hood.districts.find((group) => group.id === 'yaba');
+  assert.equal(yaba.label, 'Yaba'); assert.equal(yaba.count, 3);
+  assert.deepEqual(yaba.homes.map((home) => [home.name, home.online, home.you]), [['Ada', false, true], ['Bola', true, false], ['Chidi', false, false]]);
+  assert.deepEqual(hood.districts.map((group) => group.id), ['mushin', 'yaba', 'lekki', 'ikoyi', 'banana']);
   peer.ws.close(); await new Promise((resolve) => peer.ws.once('close', resolve)); await new Promise((resolve) => setTimeout(resolve, 30));
   wait(6000);
   assert.equal((await get('/api/civic/neighbours?city=lagos', ada)).online, 0, 'presence drops when the connection closes');

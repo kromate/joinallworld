@@ -4,7 +4,9 @@ import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { createLife, dispatch, advanceLife, viewLife, actionTypes } from '../../src/life.js';
 import { makeContext } from '../../src/game/util.js';
-import { lagosTime, lagosDayStart } from '../../src/game/clock.js';
+import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../../src/game/clock.js';
+import { blockReason, spotsOf } from '../../src/game/api.js';
+import { VENUES } from '../../src/game/content/venues.js';
 import { systems } from '../../src/game/registry.js';
 import { ELECTION, HUNT, RADIO, SEA_PLOTS, BILLBOARDS, AD_COLOURS, AD_ICONS } from '../../src/game/content/civic.js';
 import { SERVER_GRANT, adSlot, gemsFor, searchForGem, claimHuntPrize, fileCandidacy, castVote, payForAd, payForShoutout, civicEligibility } from '../../src/game/systems/civic.js';
@@ -155,6 +157,8 @@ test('residents: counts are real, presence comes from the online check, opt-outs
   const data = city(), ttl = 30 * DAY, online = (id) => id === 'ada';
   const rich = life(); rich.cash = 90000; rich.civic.week = { week: lagosTime(MONDAY).week, earned: 700 }; rich.civic.gems = 2;
   const poor = life(); poor.cash = 10; poor.property = { house: 'yaba' };
+  assert.equal(houseOf(rich), 'yaba', 'in the merged game every life has a house; the default is the Yaba self-contain');
+  delete rich.property; // a save from before houses existed has no district yet
   assert.equal(houseOf(poor), 'yaba'); assert.equal(houseOf(rich), null); assert.equal(houseOf({ property: { house: '__proto__' } }), null); assert.equal(houseOf(null), null);
   checkIn(data, MONDAY, { id: 'ada', name: 'Ada' }, rich, ttl);
   checkIn(data, MONDAY, { id: 'bola', name: 'Bola' }, poor, ttl);
@@ -243,20 +247,41 @@ test('gem hunt: deterministic per player and day, found by searching and by acti
   const events = [];
   const listener = systems().find((item) => item.id === 'goals');
   listener.on = { ...listener.on, 'gem.found': (s, data) => events.push(['gem', data.prize, data.found]), 'hunt.claimed': (s, data) => events.push(['claim', data.prize]) };
-  for (const gem of hunt.gems) {
-    if (gem.found) continue;
+  // The merged city has opening hours and trips of 4–18 seconds: take the gems whose venue is open
+  // first, wait (within the same Lagos day) for the others to open, and give every trip time to end.
+  const openNow = (gem) => isOpen(VENUES[gem.venue].hours, now);
+  const settle = (seconds) => { now += seconds * 1000; advanceLife(state, seconds, at(now)); };
+  /** A free activity with no requirements that can start here right now: [spotId, activityId]. */
+  const anyActivity = (venue) => {
+    for (const spot of spotsOf(venue)) for (const def of spot.activities) {
+      if (def.cost || def.choices || def.requiresJob || def.requiresSkill || def.reward || blockReason(state, def, venue, at(now))) continue;
+      return [spot.id, def.id];
+    }
+    return null;
+  };
+  for (let left = hunt.gems.filter((gem) => !gem.found); left.length; left = hunt.gems.filter((gem) => !gem.found)) {
+    let gem = left.find(openNow);
+    if (!gem) {
+      gem = left.reduce((best, item) => (minutesUntilOpen(VENUES[item.venue].hours, now) < minutesUntilOpen(VENUES[best.venue].hours, now) ? item : best));
+      const refused = dispatch(state, { type: 'travel', payload: { id: gem.venue, mode: 'trek' } }, at(now, 'closed'));
+      assert.equal(refused.code, 'closed', 'a gem behind a closed door waits for opening time'); assert.match(refused.reason, /opens/);
+      settle(minutesUntilOpen(VENUES[gem.venue].hours, now) * 60);
+      assert.equal(lagosTime(now).day, hunt.day, 'every venue opens at some point of the same Lagos day');
+    }
     if (state.location !== gem.venue) {
       assert.match(searchForGem(state, {}, at(now)).code, /nothing_here|wrong_spot|activity_needed/);
       assert.equal(dispatch(state, { type: 'travel', payload: { id: gem.venue, mode: 'trek' } }, at(now, `go${gem.venue}`)).ok, true);
       assert.equal(searchForGem(state, {}, at(now)).code, 'travelling');
-      now += 6000; advanceLife(state, 6, at(now));
+      settle(20);
+      assert.equal(state.location, gem.venue, 'the longest trek is 18 seconds');
     }
     if (gem.found) continue; // found on arrival
     if (gem.kind === 'activity') {
       assert.equal(searchForGem(state, {}, at(now)).code, 'activity_needed');
-      assert.equal(dispatch(state, { type: 'spot', payload: { id: 'trees' } }, at(now)).ok, true);
-      assert.equal(dispatch(state, { type: 'activity', payload: { id: 'chill' } }, at(now, 'chill')).ok, true);
-      now += 11000; advanceLife(state, 11, at(now));
+      const [spot, activity] = anyActivity(gem.venue);
+      if (state.spot !== spot) assert.equal(dispatch(state, { type: 'spot', payload: { id: spot } }, at(now)).ok, true);
+      assert.equal(dispatch(state, { type: 'activity', payload: { id: activity } }, at(now, activity)).ok, true);
+      settle(60);
     } else {
       if (gem.spot && state.spot !== gem.spot) {
         const elsewhere = searchForGem(state, {}, at(now));
@@ -287,11 +312,16 @@ test('gem hunt: deterministic per player and day, found by searching and by acti
 test('civic payments: every refusal names what is missing and charges nothing', () => {
   const state = life();
   const fresh = civicEligibility(state, at(MONDAY));
-  assert.equal(fresh.days, 0); assert.equal(fresh.run[0].met, false); assert.equal(fresh.run[1].met, true); assert.equal(fresh.pollingVenue, null);
+  assert.equal(fresh.days, 0); assert.equal(fresh.run[0].met, false); assert.equal(fresh.run[1].met, true); assert.equal(fresh.pollingVenue, 'polling-unit');
   const early = fileCandidacy(state, {}, at(MONDAY));
   assert.equal(early.code, 'too_new'); assert.match(early.reason, /at least 2 Lagos days/); assert.equal(state.cash, 5000);
   assert.equal(castVote(state, {}, at(MONDAY)).code, 'too_new');
+  // The Polling Unit exists in the merged city, so a vote is cast there and nowhere else.
+  const elsewhere = castVote(state, {}, at(MONDAY + DAY));
+  assert.equal(elsewhere.code, 'wrong_place'); assert.match(elsewhere.reason, /Travel to Polling Unit/);
+  state.location = 'polling-unit';
   assert.equal(castVote(state, {}, at(MONDAY + DAY)).code, 'voted');
+  state.location = 'park';
   const later = at(MONDAY + 2 * DAY);
   assert.equal(fileCandidacy(state, {}, later).code, 'declared');
   assert.equal(state.cash, 5000 - ELECTION.filingFee); assert.equal(state.ledger.at(-1).reason, 'Governorship filing fee'); assert.equal(state.ledger.at(-1).amount, -ELECTION.filingFee);

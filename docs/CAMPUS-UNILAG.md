@@ -76,18 +76,22 @@ Discarded evidence: a conference-organiser map put an alleged Senate campus cent
 
 Coordinates in `layout.js` use x east and z south over a 600 by 480 unit compressed campus, plus the lagoon promenade. They are deliberately authored placements. Confidence flags refer to source relationships, not metre accuracy. Ten zones preserve major compass relationships. Roads connect navigable public areas; their widths, bends and shuttle route are beta choices, not a verified current shuttle service. Water starts east of x=340 and cannot be walked on.
 
-Queen Amina is separate from New Hall and lies south of Education. Clinical/Dental/Basic Medical buildings were excluded from Akoka because the evidence does not place those faculties here. No Dan Fodio residence hall was invented. Student Union and Bookshop exist in campus inventories, but their internal placement remains low confidence. The arrangement of halls within New Hall, exact Second Gate form, lecture theatre floorplans, Access Bank frontage, amphitheatre seating, and DLI compound boundaries need stronger visual evidence. Femi Gbajabiamila Hall is in the current official list but is not placed without location evidence. Henry Carr, bank branches beyond Access, a separately modelled pool/cricket oval, and actual terrain/shoreline contours remain geometry gaps.
+Queen Amina is separate from New Hall and lies south of Education. Clinical/Dental/Basic Medical buildings were excluded from Akoka because the evidence does not place those faculties here. No Dan Fodio residence hall was invented. Student Union and Bookshop exist in campus inventories, but their internal placement remains low confidence. The arrangement of halls within New Hall, exact Second Gate form, lecture theatre floorplans, Access Bank frontage, amphitheatre seating, and DLI compound boundaries need stronger visual evidence. Femi Gbajabiamila Hall is in the current official list but is not placed without location evidence. Henry Carr, Wema and UBA were subsequently added from the corroborated locations, and the swimming pool has a separate blocked water footprint. Ecobank, First Bank and GTBank frontage positions, the cricket oval, actual ring-road curves/roundabout geometry, and terrain/shoreline contours remain geometry gaps. The core study layout is a stylised beta and is not a complete surveyed replica.
 
 ## Delivery tracker
 
-| Unit | Requested outcome | State | Immutable source SHA |
-|---|---|---|---|
-| 1 | Research, layout, gate and academic core preview | Verified in browser at desktop and 390x844 | `82f0534` |
-| 2 | Whole campus zoning, LOD, paths and budgets | Ten connected zones; full resident/crowd budgets and disposal verified | Pending |
-| 3 | Visitor activities and NPCs | Content and focused checks complete | Pending |
-| 4 | Student system, Engineering | Engine checks complete; parent integration review in progress | Pending |
-| 5 | Games, events, leaderboards | Implementing | Pending |
-| 6 | Map landmark and shuttle | Implementing | Pending |
+All SHAs are immutable, local-only, cumulative commits on `astra/unilag`. No branch was merged, rebased or pushed. The gates/core commit includes the larger campus data so later units share one coordinate system.
+
+| Unit | Outcome and evidence level | Immutable source SHA |
+|---|---|---|
+| 1 | Research ledger, layout, gate/core walking preview; browser inspected | `82f0534a50c3ae7676fd9be2100c6eca19479e1b` |
+| 2 | Zone residency, full resident budgets, exact routing and disposal checks | `0a606480ce7632ecf9b3f495e27a6d832842c027` |
+| 3 | Visitor activities, discovery content, 12 fictional NPCs; catalogue checks | `1fa82b5087bd6f7e96e0a6331972c1d3d71fa044` |
+| 4 | Seven programmes, student progression/fees/storage/jobs; engine checks | `bb7df7f82b73c03d541cf378ab30db0ad872b970` |
+| 5 | Games, visitor trail, clubs/events, shared election/leaderboard/goal reducers | `fb3b5accb51b0142746b40511c2db1a82e7b44aa` |
+| 6 | Shuttle, city landmark, continuous roads, pool collision, real combined engine integration probe | `8487a78509c7059e14e19961b22d23a7ecdee176` |
+
+The code units are locally verified. Parity host wiring, real shared-store persistence, real device performance and unresolved campus fidelity items are open. These are not production completion claims.
 
 ## Integration requests
 
@@ -108,3 +112,79 @@ Routing: Luna handled two bounded research units and content. Sol handled layout
 ## Initial scene verification
 
 `scene.test.js` verifies every resident-zone combination, every landmark route with rendered decoration footprints, shoreline rejection, same-zone geometry reuse, and exactly-once disposal of observed geometries. Worst resident count at this checkpoint: 38,610 triangles and 37 calls with 12 crowd figures. Near/goal markers can add 80 triangles and two calls; the hard limits remain 60,000 and 60. Host-facing spot arrays, lighting tuples, avatar appearance replacement and camera centre/scale match the existing scene contract.
+
+## Exported API and loading order
+
+| Module | Public entry points | Consumer |
+|---|---|---|
+| `layout.js` | `LAYOUT`, `ZONES`, `BUILDINGS`, `ROADS`, `ANCHORS`, `ENTRANCE` | 45 named landmarks; 46 spot anchors including the shared People spot; ten zones |
+| `walk.js` | `createCampusWalk(extraFootprints?)`, `footprintOf` | Per-zone grids plus exact coarse-portal/fine-grid routes |
+| `scene.js` | `buildUnilag(kit, venue?)`, `CAMPUS_BUDGET` | Scene factory; position-driven two-level residency; full host walk contract |
+| `content.js` | `UNILAG_VENUE`, `CAMPUS_NPCS`, `DISCOVERY_TRAIL`, `UI_LINKS`, `shareLabel` | Venue catalogue, NPC catalogue, Bank app link and discovery copy |
+| `curriculum.js` | `PROGRAMMES`, `LECTURE_SLOTS`, `UNILAG_BETA_RULES`, programme/course lookups | Campus app course registration and timetable |
+| `student.js` | default system `unilagStudent`, `graduationOf`, `gradeOf`, `allocatedHostelSpot` | Server rules and read-only ID/results/hostel view |
+| `games.js` | default system `unilagCommunity`, `eventsAt`, election reducers, leaderboard reducers, `campusTeamStandings`, `creditCampusGoal` | Server-owned campus community and shared store |
+| `shuttle.js` | default system `unilagShuttle`, `SHUTTLE_STOPS`, `shuttleRoute`, `shuttlePose`, `buildShuttle` | Fare/timer authority and host-driven visible ride |
+| `landmark.js` | `MAP_PLACEMENT`, `buildUnilagLandmark` | Lagos map miniature; x15/z-42, footprint14x10, approximate mainland presentation coordinates |
+
+Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The combined `integration.test.js` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. No production registry file is edited by this lane.
+
+Host travel arrives at `main-gate`. Call `walk.move(x,y,z,ry)` or `setPosition(x,z)` when the player moves. `walk.grid.path` routes through portals and rejects partial A* fallback results. Render only in the host's bounded motion loop. Supply the player's recorded appearance through `setPlayer`. Labels are plain text; DOM consumers must use `textContent`. `tags()` includes landmarks and a capped 12-person crowd. Scene, shuttle and landmark provide disposal hooks and share kit materials. `lighting()` returns the host's tuple shape, not preview-specific objects.
+
+The scene has level floors and `raised: []`. Auditorium/grandstand/room layouts are open-front interpretations. It does not claim surveyed steps, ramps, storeys or accessibility geometry. Camera solids carry heights; host occluder ghosting remains the existing owner's responsibility. The preview performs inexpensive bounding-box label occlusion. Its controls, grid and fake-clock shuttle are developer tools, never a client route to grant currency or progress.
+
+The shuttle follows the connected beta road graph. Its first/last walking connectors are exported separately. `shuttlePose` describes the vehicle on the road, from authoritative remaining/duration or a supplied server time; the host must animate the walk to/from the stop using those connectors, preserve venue room membership, and show cancellation returning to the origin. The preview demonstrates the road ride without charging a real game wallet. Stops are `main-gate`, `new-hall-shopping`, `senate`, `engineering`, `sports-centre`, `second-gate`, `dli-building`, `lagoon-front`.
+
+The Jobs hook currently gives +1 positive `career.performance` only for an existing matching track. Computer/EEE map to Tech, English to Teaching, Business/Economics to Banking. Mechanical and Civil emit the degree event with a null career track, because there is no matching engineering career in this baseline. The owner must add an appropriate career mapping; a mechanical degree is not falsely treated as a Fitness job qualification.
+
+The shared election/leaderboard/goal functions never persist their own shared state. The route owner must derive identity from its authenticated life, execute reducers and server-only life receipts within the same durable transaction, and use domain events for scores. Client payloads must never supply trusted `authority`, results, faculty or hall. Weekly caps are finite. Quiz answers are absent from views but are readable in shared source; this is a casual game, not a secure examination platform.
+
+## Original beta numbers
+
+All are in-game values, unrelated to real admissions, fees, degrees or hostel allocation.
+
+| Rule | Original beta value |
+|---|---|
+| Admission | Coding or Charisma level1; application fee ₦200 |
+| Semester | Two semesters per game degree; seven Lagos calendar days each; six total recorded attempts |
+| Programme coverage | Four Engineering programmes with four courses/semester; English, Business and Economics with two/semester; 44 authored game course IDs |
+| Fees | ₦1,000 tuition + ₦100 levy per registration; ₦300 hostel allocation per attempt |
+| Study | Official slots09:00–11:00 or14:00–16:00 Lagos; night study20:00–22:00; lecture30s; assessment45s |
+| Study caps | Seven attendance days/course; 28 study sessions/course; 5XP per completed session; night study gives no attendance |
+| Results | Attendance20%, assignment30%, test50%; five-point grade scale; CGPA≥2 to pass; tests may be completed after the lecture deadline to avoid trapping a student |
+| Scholarship | ₦200 once per life for a passed semester GPA≥4; limit survives dropout/reapplication |
+| Campus jobs | Library₦150, lab₦200, tutor₦250; 60s; one paid campus job per Lagos start-day across all jobs |
+| Hostel | 60s sleep gives20 Energy; 20 stored items; allowlisted inventory transfers; actual allocated hall required |
+| Shuttle | ₦50 nonrefundable fare; speed8 world units/s, duration1–120s; eight stops |
+| Community | Zero cash rewards; five penalty kicks, 15s; 55% success per kick using ctx.rng; one scored result/game/day |
+| Trail | Eight visitor landmarks, each recorded once; shareable plain-text result; no admission required |
+| Clubs / goals | Up to3 clubs; one volunteering contribution/life/day; shared weekly target200 |
+| Elections | Monday–Wednesday nominations, Thursday–Saturday voting, Sunday results;16 candidates,2,048 ballots; one ballot/student/week |
+| Leaderboards |2,048 bounded records/week; once per life/day/game; individual, faculty and hall aggregation |
+| Scheduled gatherings | Freshers Monday; quiz Friday18:00–21:00; convocation Sunday14:00–18:00 Lagos |
+
+## Final local verification
+
+Source under test: `8487a78509c7059e14e19961b22d23a7ecdee176`.
+
+- Campus-specific Node tests: **34 passed**. This includes actual venue + NPC loading order with all three campus systems, fees/ledger conservation, active-action save/reload, once-only job rewards, admission through graduation, failed/cancelled paths, hostile-save bounds, games/reducers and every exact route.
+- Existing full suite: **535 passed, 4 skipped, 0 failed**, 539 tests discovered. The skipped cases belong to the existing suite, not claimed as passed.
+- Existing edge suite: **14 passed** using installed tooling via `JOINALLWORLD_TOOLS=/Users/anthonyakpan/Desktop/JoinAllworld/deploy/tooling`. The final campus additions do not register in the production edge entry.
+- App entry build and standalone campus preview build both passed. Only dependency resolution/output paths were supplied by the campus build wrappers; existing source/config/package files remain unchanged. Vite reports the existing large Three.js bundle warning. The isolated checkout has no dependency installation of its own.
+- Worst complete resident scene observed by the geometry probe: **37,450 triangles,37 draw calls**, including twelve crowd figures and distant silhouettes. Two visible navigation rings add80 triangles/two calls; the shuttle adds244 triangles/two calls. Conservative combined bound: **37,774 triangles,41 calls**, under60,000/60. City landmark is936 triangles/two calls. No real-time shadow maps.
+- Geometry disposal probe counts one disposal for each observed scene resource across zone changes; kit-owned shared materials remain until kit disposal. Repeated movement within a zone builds no geometry.
+- Headless Chromium/SwiftShader at1280x800 and390x844: zero recorded runtime exceptions; phone scrollWidth390; idle frame count stable. A real browser path from Senate to Library reached the exact anchor and stopped rendering. This is not a hardware Android FPS measurement.
+
+Commands and full logs are in `src/campus/unilag/evidence/`. The app build used `npm run build -- --config src/campus/unilag/app-build.config.mjs --configLoader native --outDir dist`, with owner Vite on PATH and the local resolver in NODE_OPTIONS. `npm test` uses that same resolver. Edge tests use JOINALLWORLD_TOOLS. Generated build output is ignored and is not a source modification.
+
+## Screenshots inspected and fidelity review
+
+Evidence directory: `/Users/anthonyakpan/Desktop/JoinAllworld-astra-unilag/src/campus/unilag/evidence/`.
+
+The parent inspected `contact-day.png` and `contact-night.png`, which cover Main Gate, New Hall/2001, academic core/Senate, Sports, Medical/Central Gardens, Engineering/Science, Second Gate, DLI, South Campus, Lagoon Front, Library, Access Bank, Mariere room and auditorium. Individual images are `<landmark>-day.png` and `<landmark>-night.png`; DLI uses `dli-building`. The South zone is `south-day.png` / `south-night.png`.
+
+Additional inspected files: `phone-senate.png`, `phone-hall-interior-grid.png`, `shuttle-midpoint.png`, plus direct full-size Senate, Library, cafeteria and Lagoon Front images. `render-report.json` records counts, exact walking endpoint, phone width and exceptions. Research map/PDF material is kept only in ignored `evidence/reference/`, never imported as runtime art.
+
+Observed matches: cream/red Senate tower grid over lower entrance block; Library canopy and vertical fins; gate central sign and side canopies; red cafeteria seating; hall room beds/storage; covered blue sports seating; visible water and a procedural Third Mainland Bridge silhouette from the lagoon-facing camera. All lettering and geometry are authored primitives.
+
+Observed limits: many faculty/hall exteriors remain simple massing with signs; the campus is sparse compared with the real tree canopy and pedestrian density; roof profiles and low-confidence placements need further reference review; the Second Gate uses a generic gate interpretation; the straight shoreline and bridge are heavily simplified. The preview uses darkened ambient lighting at night without baked local light pools. The phone has usable touch controls but a substantial developer control panel. Full replica fidelity and real phone performance remain open acceptance items, not completed claims.

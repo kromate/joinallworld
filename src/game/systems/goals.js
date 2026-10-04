@@ -18,8 +18,9 @@
  *   dream      dream id | null;  dreamDone  boolean (its reward was paid)
  *   stats      { friends, best, level, levelCap, assets, debt, cchub, funded } — what the dream
  *              formulas measure, collected from other systems' events
- *   besties    [id] — best friends already counted, so a friend reported both as
- *              'friend.made' { best: true } and as 'friend.best' counts once (events that carry
+ *   besties    [id] — best friends already counted, so a friend reported as 'friend.made'
+ *              { best: true }, as 'friend.best' and by every 'relationship.changed' { tier: 'paddy' }
+ *              at or above that tier counts once (events that carry
  *              no id — `id`, `friend`, `npc` or `player` — cannot be told apart and each count)
  *   seq, feed  feed = last few [{ n, text }] announcements (goal complete, wish granted, …);
  *              n counts up from seq so the UI can toast each one once
@@ -31,7 +32,7 @@
  *
  * LISTENS TO  activity.completed, meal.eaten, item.bought, job.applied, shift.completed,
  *   promotion { job, level, role, top?, maxLevel? }, loan.paid, npc.greeted,
- *   friend.made { id?, best? }, friend.best { id? }, travel.arrived, venue.visited, wallet.changed, skill.levelup, life.started.
+ *   friend.made { id?, best? }, friend.best { id? }, relationship.changed { id, value, tier }, travel.arrived, venue.visited, wallet.changed, skill.levelup, life.started.
  *   Also registered, with no effect yet: house.moved, car.bought, rent.paid.
  * EMITS  'goal.completed' { id, cash, stars } · 'wish.granted' { id, stars } ·
  *        'perk.bought' { id, cost } · 'dream.completed' { id }
@@ -56,6 +57,8 @@ const FEED_LIMIT = 8;
 const BESTIE_LIMIT = 16;
 const MAX_STARS = 1000000;
 const PITCH_TAG = 'startup-pitch';
+/** Relationship tiers (ids used by the social system's 'relationship.changed') that count as a best friend. */
+const BEST_TIERS = ['paddy', 'bae'];
 const perkById = Object.fromEntries(PERKS.map((perk) => [perk.id, perk]));
 const wishById = Object.fromEntries(WISHES.map((wish) => [wish.id, wish]));
 const goalIds = STARTER_GOALS.map((goal) => goal.id);
@@ -226,7 +229,7 @@ const HANDLERS = {
   'activity.completed'(state, data, ctx) {
     const tags = Array.isArray(data?.tags) ? data.tags : [];
     const def = { id: data?.id, tags };
-    markSeen(state, (done) => Array.isArray(done.tags) && done.tags.some((tag) => tags.includes(tag)) && (!done.away || state.location !== 'home'));
+    markSeen(state, (done) => Array.isArray(done.tags) && done.tags.some((tag) => tags.includes(tag)));
     bumpWishes(state, ctx, (wish) => wish.on === 'activity' && state.location === wish.venue && activityFits(wish, def, state.spot));
     if (tags.includes(PITCH_TAG) && !state.goals.stats.funded) {
       state.goals.stats.funded = true;
@@ -256,6 +259,8 @@ const HANDLERS = {
     if (data?.best === true) countBest(state, data);
   },
   'friend.best'(state, data) { countBest(state, data); },
+  // The social system reports closeness with the tier it has reached: Paddy Mi (or Bae) is a best friend.
+  'relationship.changed'(state, data) { if (BEST_TIERS.includes(data?.tier)) countBest(state, data); },
   'travel.arrived'(state, data, ctx) { arrived(state, data?.venue, ctx); },
   'venue.visited'(state, data, ctx) { arrived(state, data?.venue, ctx); },
   'wallet.changed'(state, data, ctx) {
@@ -271,7 +276,7 @@ const HANDLERS = {
   },
 };
 const EVENTS = ['activity.completed', 'meal.eaten', 'item.bought', 'house.moved', 'car.bought', 'job.applied', 'shift.completed', 'promotion', 'rent.paid',
-  'loan.paid', 'npc.greeted', 'friend.made', 'friend.best', 'travel.arrived', 'venue.visited', 'wallet.changed', 'skill.levelup', 'life.started'];
+  'loan.paid', 'npc.greeted', 'friend.made', 'friend.best', 'relationship.changed', 'travel.arrived', 'venue.visited', 'wallet.changed', 'skill.levelup', 'life.started'];
 
 function handle(event, state, data, ctx) {
   HANDLERS[event]?.(state, data, ctx);

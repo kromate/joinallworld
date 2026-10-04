@@ -3,9 +3,19 @@
  * Venue rooms: presence, movement, text chat, voice state and proximity-gated signalling.
  * Behaviour is unchanged from the pre-registry server. Public venues share one room per
  * city; Home rooms are keyed per identity, so a home is never shared between devices.
+ *
+ * LOOK. On join the server records the joining life's appearance on the socket (ws.look) from the
+ * server-held state, re-validated against the appearance option lists (checkLook): eight option
+ * ids, nothing a client sent. It is not added to `presence` (which is re-sent on every move); the
+ * social module's who-is-here listing carries it so other players' avatars can be drawn.
+ * ROOM-CHANGED. When a room's membership or a member's name changes, this module raises the
+ * server event 'room-changed' { room, cityId, venueId, members: [publicId] } (ctx.emit). It sends
+ * nothing itself, so the room protocol is unchanged; the social module turns the event into a
+ * nudge for sockets that asked to watch who is here.
  */
 import { MAX_VOICE_MEMBERS, canJoinVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
 import { VENUES } from '../life-service.js';
+import { checkLook } from '../../src/game/systems/onboarding.js';
 
 export default function roomSocket(ctx) {
   const { store, now, allow, settle, send, core } = ctx;
@@ -20,6 +30,13 @@ export default function roomSocket(ctx) {
     }
     for (const ws of rooms.get(room) || []) send(ws, { type: 'presence', members: [...members.values()] });
   }
+  /** Announce (inside the server only) that who is in `room` changed. `also` is someone who just left. */
+  function roomChanged(room, also) {
+    const members = new Set([...(rooms.get(room) || [])].map(ws => ws.session.id));
+    if (also) members.add(also);
+    const [cityId, venueId] = room.split(':');
+    ctx.emit?.('room-changed', { room, cityId, venueId, members: [...members] });
+  }
   function leave(ws) {
     if (!ws.room) return;
     const room = ws.room;
@@ -27,6 +44,7 @@ export default function roomSocket(ctx) {
     if (!rooms.get(room)?.size) rooms.delete(room);
     ws.room = null;
     presence(room);
+    roomChanged(room, ws.session.id);
   }
   /** Drop sockets whose room no longer matches where the server says the player is. */
   core.validateMemberships = (secret, city, state) => {
@@ -39,7 +57,7 @@ export default function roomSocket(ctx) {
   core.refreshNames = (session) => {
     const changed = new Set();
     for (const ws of core.sockets()) if (ws.session.id === session.id) { ws.session.name = session.name; ws.expiresAt = now() + ctx.config.sessionTtlMs; ws.lastSessionRenewedAt = now(); if (ws.room) changed.add(ws.room); }
-    for (const room of changed) presence(room);
+    for (const room of changed) { presence(room); roomChanged(room); }
   };
 
   return {
@@ -48,23 +66,25 @@ export default function roomSocket(ctx) {
       ws.voice = { enabled: false, muted: true };
       ws.position = { x: 0, z: 0 };
       ws.lastMoves = [];
+      ws.look = null;
     },
     close: leave,
     messages: {
       async join(ws, message) {
         if (!ctx.cityIds.includes(message.cityId) || typeof message.venueId !== 'string' || !Object.hasOwn(VENUES, message.venueId)) throw Error('invalid_room');
-        const allowed = await store.transact(db => {
+        const { allowed, look } = await store.transact(db => {
           const session = core.sessionOf(ws, db);
           if (!session || session.expiresAt <= now()) throw Error('device_session_required');
           const state = settle(session, message.cityId);
-          return canJoinVenue(state, message.venueId);
+          // The look comes from the server-held life and is validated again: option ids only.
+          return { allowed: canJoinVenue(state, message.venueId), look: checkLook(state.onboarding?.look).look ?? null };
         });
         if (!allowed) throw Error('venue_mismatch');
         if (!core.isOpen(ws)) return;
         const room = venueRoomKey(message.cityId, message.venueId, ws.session.id);
-        leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.room = room;
+        leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.room = room; ws.look = look;
         if (!rooms.has(room)) rooms.set(room, new Set());
-        rooms.get(room).add(ws); presence(room);
+        rooms.get(room).add(ws); presence(room); roomChanged(room);
       },
       move: { room: true, handle(ws, message) {
         const position = validatePosition(message);

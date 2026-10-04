@@ -58,12 +58,16 @@ export function presenceOf(ctx) {
       return { state: closedAt !== undefined && ctx.now() - closedAt < RECONNECT_GRACE_MS ? 'reconnecting' : 'offline', rooms: [] };
     },
     isIn: (id, room) => live(id).some((ws) => ws.room === room),
-    /** Everyone the foundation currently has in `room`, one entry per player. */
+    /**
+     * Everyone the foundation currently has in `room`, one entry per player. `look` is the
+     * appearance the room module recorded from that player's server-held life when they joined
+     * (eight option ids, or null) — never anything a client supplied.
+     */
     inRoom(room) {
       const members = [];
       for (const id of sockets.keys()) {
         const ws = live(id).find((socket) => socket.room === room);
-        if (ws) members.push({ id, name: ws.session.name });
+        if (ws) members.push({ id, name: ws.session.name, look: ws.look ?? null });
       }
       return members;
     },

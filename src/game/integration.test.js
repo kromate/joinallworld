@@ -13,6 +13,7 @@ import { INGREDIENTS } from './content/food.js';
 import { CARS } from './content/cars.js';
 import { HOUSES } from './content/housing.js';
 import { STARTER_GOALS } from './content/goals.js';
+import { NPCS } from './content/npcs.js';
 import { workplaceHoursText, scheduleText } from './systems/career.js';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8); // 09:00 in Lagos
@@ -166,21 +167,52 @@ test('a new life starts with the three observed wishes now that their venues exi
   assert.ok(spotsOf('park').some((spot) => spot.id === 'art' && spot.activities.some((def) => (def.tags || []).includes('art'))));
 });
 
-test('"Make a new friend" completes from a social activity at a venue until the social system is merged, never from one at home', () => {
+test('"Make a new friend" completes when a regular is greeted — the real thing, not any social-tagged activity', () => {
   const state = onboard(createLife(null, at(MONDAY_9AM, 'friend', { isNew: true })));
   state.goals.chain = STARTER_GOALS.findIndex((goal) => goal.id === 'make-a-friend');
   const cash = state.cash;
-  // A social-tagged activity at home does not count…
-  const completed = systems().find((system) => system.id === 'goals').on['activity.completed'];
-  completed(state, { id: 'home-play-pet', def: {}, tags: ['fun', 'social', 'home'] }, at());
-  assert.equal(state.cash, cash);
-  // …one at a venue does.
+  const chip = viewLife(state, at()).goals.chip;
+  assert.deepEqual([chip.title, chip.hint, chip.open], ['Make a new friend', 'Tap someone at a venue', 'people']);
+  // The interim rule is gone: a social-tagged activity, at home or at a venue, is not a friend.
   state.location = 'amala-shitta'; state.spot = 'kitchen';
   assert.equal(act(state, 'activity', { id: 'buka-gist' }).code, 'started');
   advanceLife(state, 8, at(MONDAY_9AM + 8000));
+  assert.equal(state.cash, cash, 'gisting with Mama is nice, but it is not the goal');
+  // Say Hello to Amaka at the People spot: Social +12, Fun +2 as observed, and the goal pays once.
+  const before = { ...state.needs };
+  assert.equal(act(state, 'spot', { id: 'people' }).code, 'selected');
+  assert.equal(act(state, 'activity', { id: 'npc-amaka-hello' }, at(MONDAY_9AM + 9000)).code, 'started');
+  advanceLife(state, 6, at(MONDAY_9AM + 15000));
+  assert.deepEqual([state.needs.social - before.social, state.needs.fun - before.fun], [12, 2]);
   assert.equal(state.cash, cash + 1500);
   assert.equal(state.ledger.at(-1).reason, 'Goal: Make a new friend');
   assert.equal(viewLife(state, at()).goals.chip.title, 'Work a shift');
+  assert.equal(act(state, 'activity', { id: 'npc-amaka-hello' }, at(MONDAY_9AM + 16000)).code, 'started');
+  advanceLife(state, 6, at(MONDAY_9AM + 22000));
+  assert.equal(state.cash, cash + 1500, 'greeting again pays nothing more');
+});
+
+test('the dream "best friends with 4 people" is driven by the social system’s own events and tiers', () => {
+  const state = onboard(createLife(null, at(MONDAY_9AM, 'padi', { isNew: true })));
+  state.goals.chain = STARTER_GOALS.length; state.goals.dream = 'everybodys-padi';
+  // Nothing is emitted by hand: each step is a real interaction with a regular, starting just below a tier.
+  let now = MONDAY_9AM;
+  const meet = (id, action, points) => {
+    state.location = NPCS[id].venue; state.spot = 'people';
+    state.social.rel[id] = { p: points, d: 0, n: 0, npc: true, at: 0 };
+    assert.equal(act(state, 'activity', { id: `npc-${id}-${action}` }, at(now, `${id}-${action}-${points}`)).code, 'started');
+    now += 12000; advanceLife(state, 12, at(now));
+  };
+  for (const id of ['kunle', 'mama-ronke', 'amaka', 'baba-sege']) {
+    assert.equal(state.goals.dreamDone, false);
+    meet(id, 'gist', 18);  // 18 → 21: Friend ('friend.made')
+    meet(id, 'hello', 38); // 38 → 40: Paddy Mi ('relationship.changed' with tier 'paddy')
+  }
+  assert.deepEqual([state.goals.stats.friends, state.goals.stats.best, state.goals.besties.length], [4, 4, 4]);
+  assert.equal(state.goals.dreamDone, true);
+  assert.equal(viewLife(state, at()).goals.dream.percent, 100);
+  meet('kunle', 'hello', 60);
+  assert.equal(state.goals.stats.best, 4, 'the same best friend is never counted twice');
 });
 
 test('the Groceries price shown is the price charged; the Buy discount covers furniture and groceries but never cars', () => {

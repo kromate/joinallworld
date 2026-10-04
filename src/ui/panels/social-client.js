@@ -26,7 +26,11 @@ export const S = {
   knock: null,          // my own knock: { host, name, status: 'sending' | 'knocking' | 'accepted' | 'declined' | 'failed', reason, expiresAt }
   linkHost: null,       // house id from an invite link that has not been handled yet
 };
-let ws = null, attempts = 0, timer = null, started = false, syncing = false, dirty = false;
+let ws = null, attempts = 0, timer = null, started = false, syncing = false, dirty = false, peopleDirty = false;
+const peopleWatchers = new Set();
+/** Call `fn` whenever the who-is-here listing changes (the scene host draws its crowd from it). */
+export function onPeople(fn) { peopleWatchers.add(fn); return () => peopleWatchers.delete(fn); }
+const peopleChanged = () => { for (const fn of peopleWatchers) { try { fn(S.people); } catch (error) { console.error('People watcher failed:', error); } } };
 
 const refresh = () => S.api?.refresh();
 const connected = () => Boolean(S.api?.view()?.connected);
@@ -70,14 +74,20 @@ export async function sync() {
 }
 
 export async function loadPeople() {
-  if (!connected() || S.peopleLoading) return;
+  if (!connected()) return;
+  // A change that arrives while a read is in flight is read again afterwards, never dropped.
+  if (S.peopleLoading) { peopleDirty = true; return; }
   S.peopleLoading = true;
   const result = await call(`/api/social/people?city=${encodeURIComponent(cityId())}`);
   S.peopleLoading = false;
   S.people = result.ok ? result : { error: result.reason };
   S.peopleAt = S.api.view().now;
+  peopleChanged();
   refresh();
+  if (peopleDirty) { peopleDirty = false; void loadPeople(); }
 }
+/** Ask the server to tell this socket when who-is-here changes (it answers with the current listing). */
+function watchPeople() { if (ws?.readyState === 1 && connected()) ws.send(JSON.stringify({ type: 'people-list', cityId: cityId() })); }
 
 export async function loadProfile(id) {
   const result = await call(`/api/social/players/${encodeURIComponent(id)}`);
@@ -153,6 +163,11 @@ function receive(event) {
     if (S.me) S.me.updates = [message.update, ...S.me.updates.filter((item) => item.id !== message.update.id)];
     S.api.toast(String(message.update.text ?? ''));
     refresh();
+  } else if (type === 'people' && message.ok) {
+    S.people = message; S.peopleAt = S.api.view().now;
+    peopleChanged(); refresh();
+  } else if (type === 'people-changed') {
+    void loadPeople();
   } else if (type === 'people-presence') {
     const friend = S.me?.friends.find((item) => item.id === message.id);
     if (friend) { friend.status = message.status === 'online' ? 'away' : 'reconnecting'; delete friend.venue; refresh(); }
@@ -176,7 +191,7 @@ function connectSocket() {
   if (ws || !connected()) return;
   S.socket = attempts ? 'reconnecting' : 'connecting';
   const current = ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/socket`);
-  current.onopen = () => { attempts = 0; S.socket = 'open'; for (const id of S.threads.keys()) if (S.threads.get(id).loaded) void openThread(id); void sync(); };
+  current.onopen = () => { attempts = 0; S.socket = 'open'; for (const id of S.threads.keys()) if (S.threads.get(id).loaded) void openThread(id); void sync(); watchPeople(); };
   current.onmessage = receive;
   current.onclose = () => {
     if (ws !== current) return;

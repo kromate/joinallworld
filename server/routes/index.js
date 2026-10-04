@@ -66,6 +66,10 @@
  *   ctx.publicSession(session)             → { id, name } — the ONLY identity you may expose
  *   ctx.push(publicId, message)            → number of open sockets the message was sent to
  *   ctx.online(publicId)                   → boolean
+ *   ctx.on(event, fn) / ctx.emit(event, data)   in-process events between server modules. The
+ *                                          foundation raises 'room-changed' { room, cityId, venueId,
+ *                                          members: [publicId] } when a venue room's membership or
+ *                                          a member's name changes. Nothing is sent to clients by it.
  *   ctx.config                             { sessionTtlMs, actionWindowMs, maxActiveSessions }
  *   ctx.core                               foundation internals — not for feature modules
  *

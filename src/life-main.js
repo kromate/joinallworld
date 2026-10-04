@@ -11,6 +11,9 @@ import { createCommunity } from './community.js';
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
 import { createShell } from './ui/shell.js';
 import { PANELS, sessionGate } from './ui/panels/index.js';
+import { S as social, loadPeople, onPeople } from './ui/panels/social-client.js';
+import { crowdList, playersHere } from './scene/crowd.js';
+import { NPCS } from './game/content/npcs.js';
 import { viewLife, VENUES } from './life.js';
 import { venueLabel, venueDistrict } from './game/content/venues.js';
 import './world-map.css';
@@ -31,13 +34,29 @@ const client = createClient({
   onNeedName() { shell.open(sessionGate().id, { reason: 'new' }); },
 });
 
-const venue = createVenueWorld($('venue-scene'), { location: client.state.location });
+const venue = createVenueWorld($('venue-scene'), { location: client.state.location, onTag: (tag) => {
+  // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
+  if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') });
+  else if (tag.kind === 'player') shell.open('person', { player: tag.id });
+} });
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
 const showPlayer = () => venue.setPlayer({ look: client.state.onboarding?.look, seed: client.session?.id ?? 'you', name: client.state.name || client.identity.name });
 const world = createWorldMap($('map-scene'), { onSelectCity: (city) => shell.open('city', { city: city.id }) });
 const cityMap = createCityMap($('city-scene'), { onSelectVenue: (venueId) => shell.open('map', { destination: venueId }) });
 world.setCity(client.cityId);
 cityMap.setCity(client.cityId);
+
+/**
+ * The crowd in the scene, from real data only: the server's who-is-here listing for this venue
+ * room and the venue's regulars. Called when the state or the listing changes; the host compares
+ * the list by value, so an unchanged crowd never draws a frame.
+ */
+function showCrowd() {
+  const state = client.state;
+  const npcs = state.activeAction?.kind === 'travel' ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location);
+  venue.setCrowd(crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id }));
+}
+onPeople(showCrowd);
 
 const dialog = $('life-dialog');
 const shell = createShell({
@@ -84,8 +103,11 @@ function accepted(state, previous) {
   if (roomJoinNeeded(previous, state)) community?.join(client.cityId, state.location);
   venue.setState(state);
   showPlayer();
+  showCrowd();
   cityMap.setState(state);
   render();
+  // Arrived somewhere (or a trip ended): read who is here once; later changes are pushed by the server.
+  if (roomJoinNeeded(previous, state) && client.online) void loadPeople();
   if (pendingRoute && !state.activeAction) {
     const route = pendingRoute;
     if (state.location === route.venue) { pendingRoute = null; if (route.spot) { shell.setExpanded(true); void command('spot', { id: route.spot }); } }

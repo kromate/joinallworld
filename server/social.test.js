@@ -9,6 +9,7 @@ import { fixture } from './test-fixture.js';
 import { LIMITS } from './social/service.js';
 import { RECONNECT_GRACE_MS } from './social/presence.js';
 import { SHIFT_SECONDS } from '../src/game/content/jobs.js';
+import { DEFAULT_LOOK } from '../src/game/content/traits.js';
 
 const HOUR = 3600000;
 const cid = () => `c-${randomUUID()}`;
@@ -247,6 +248,42 @@ test('presence is truthful: two clients agree, leaving shows at once, a dropped 
   assert.equal((await until(a, 'people-presence')).status, 'reconnecting');
   f.advance(RECONNECT_GRACE_MS + 1);
   assert.deepEqual(await status(ada), ['offline', undefined]);
+});
+
+test('who-is-here carries each player’s server-held look, and a watching socket is nudged when the room changes', async t => {
+  const f = await fixture(t);
+  const [ada, bola] = await people(f, ['Ada', 'Bola']);
+  // Bola's life is a created character: the look is whatever the server stored through onboarding.
+  const look = { body: 'woman', hair: 'afro', outfit: 'owambe', fabric: 'ankara', skin: 'skin-2', hairColor: 'auburn', outfitColor: 'gold', bottomsColor: 'teal' };
+  assert.equal((await f.action(bola.cookie, { type: 'onboarding.look', payload: { look } })).code, 'look_saved');
+  const a = await f.joinRoom(ada);
+  const watcher = await f.socket(ada); // a second socket of Ada's that is in no room, as the browser's social socket is
+  const b = await f.socket(bola);
+  // A client cannot supply a look: whatever the join message carries is ignored.
+  b.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park', look: { body: '<img>', hair: 'x'.repeat(5000) }, name: 'Mallory' }));
+  const joined = await until(b, 'presence');
+  assert.deepEqual(Object.keys(joined.members[0]).sort(), ['enabled', 'id', 'muted', 'name', 'position'], 'the room presence message itself is unchanged');
+  watcher.ws.send(JSON.stringify({ type: 'people-list', cityId: 'lagos' }));
+  const listing = await until(watcher, 'people');
+  assert.deepEqual(listing.players.map((player) => [player.id, player.name, player.here]), [[bola.id, 'Bola', true]]);
+  assert.deepEqual(listing.players[0].look, look);
+  assert.deepEqual(Object.keys(listing.players[0]).sort(), ['friend', 'here', 'id', 'incoming', 'look', 'name', 'requested']);
+  assert.deepEqual((await get(f, '/api/social/people?city=lagos', bola)).players[0].look, DEFAULT_LOOK, 'Ada never created a character: she has the default look');
+  // Bola leaves for the Library: Ada's watching socket is nudged — with no member data — and re-reads.
+  await f.action(bola.cookie, { type: 'travel', id: 'library', mode: 'trek' });
+  assert.deepEqual(await until(watcher, 'people-changed'), { type: 'people-changed', cityId: 'lagos', venueId: 'park' });
+  assert.deepEqual((await get(f, '/api/social/people?city=lagos', ada)).players, []);
+  // A socket that never asked is not sent anything: the room socket only sees the room's own messages.
+  const quiet = await f.socket(ada);
+  f.advance(20000);
+  b.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
+  assert.equal((await b.next()).code, 'venue_mismatch');
+  b.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'library' })); await until(b, 'presence');
+  quiet.ws.send(JSON.stringify({ type: 'dm-read', conv: 'dm.x' }));
+  assert.equal((await quiet.next()).type, 'error', 'the first thing the quiet socket hears is the answer to its own message');
+  const seen = JSON.stringify([listing, joined]);
+  assert.ok(!seen.includes(ada.cookie.slice(4)) && !seen.includes(bola.cookie.slice(4)));
+  a.ws.close();
 });
 
 test('house invite: knock needs the host at home, is accepted exactly once, caps at five guests, and expires', async t => {

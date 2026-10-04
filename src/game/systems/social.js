@@ -15,8 +15,8 @@
  *   notices   [{ id, kind, text, at }]   system notices shown in Messages → Updates
  *
  * NPC interactions are ordinary activities ('npc-<npc>-<action>') at the venue's People spot,
- * run by the foundation's activity engine (core 'activity' to start, 'cancel' to stop). They are
- * attached to venues that have spots of their own.
+ * run by the foundation's activity engine (core 'activity' to start, 'cancel' to stop). Every
+ * public venue has its regulars, so every public venue has a People spot.
  *
  * Actions
  *   'social.call'   { id }    phone a family contact (timed action kind 'call'; works anywhere)
@@ -244,11 +244,10 @@ export function serverOp(state, op, payload, ctx) {
 }
 
 // ---- content → activities ------------------------------------------------------------------------
-// A venue with no spots of its own is not ready for visitors yet (its owner has not built it), so
-// nothing is attached there; the cast and the phone appear as soon as the venue gains spots.
-const hasSpots = (venueId) => Object.keys(VENUES[venueId]?.spots || {}).length > 0;
+// The cast of every public venue in this build. Their interactions attach at that venue's People
+// spot, which the activity engine creates where the venue content does not declare one.
 const cast = Object.values(NPCS).filter((npc) => Object.hasOwn(VENUES, npc.venue) && npc.venue !== 'home');
-const activities = cast.filter((npc) => hasSpots(npc.venue)).flatMap((npc) => NPC_ACTIONS.map((action) => ({
+const activities = cast.flatMap((npc) => NPC_ACTIONS.map((action) => ({
   id: activityId(npc.id, action.id), label: `${action.label} · ${npc.name}`, icon: action.icon, duration: action.duration, cost: action.cost || 0,
   effects: action.effects, xp: action.xp, tags: ['social'], beta: Boolean(action.beta || npc.beta), note: action.note,
   social: { npc: npc.id, action: action.id },
@@ -278,10 +277,10 @@ function npcSummary(state, npc, day, ctx) {
   const points = rel?.p ?? 0, index = tierIndex(points), next = TIERS[index + 1] || null;
   const left = Math.max(0, DAILY_INTERACTIONS - usedToday(rel, day));
   return {
-    id: npc.id, name: npc.name, role: npc.role, emoji: npc.emoji, npc: true, beta: Boolean(npc.beta),
+    id: npc.id, name: npc.name, role: npc.role, emoji: npc.emoji, npc: true, beta: Boolean(npc.beta), at: npc.at ?? null,
     quote: npc.quotes[(day + npc.id.length) % npc.quotes.length],
     points, tier: TIERS[index].id, tierLabel: TIERS[index].label, next: next ? { label: next.label, min: next.min } : null, left,
-    blocked: !hasSpots(npc.venue) ? 'This venue is not open for activities in this build yet.' : left ? null : `${npc.name} has heard enough from you today. Come back tomorrow.`,
+    blocked: left ? null : `${npc.name} has heard enough from you today. Come back tomorrow.`,
     actions: NPC_ACTIONS.map((action) => ({ id: action.id, activity: activityId(npc.id, action.id), label: action.label, icon: action.icon, duration: action.duration,
       cost: action.cost || 0, tags: Object.keys({ ...action.effects, ...action.bonus }), chance: action.success ? jokeChance(state, npc.id, action, true, ctx) : null })),
   };

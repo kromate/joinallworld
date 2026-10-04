@@ -11,7 +11,7 @@
  * The starter chain, in order. Each goal pays its cash through the wallet (with a ledger line)
  * and one star, exactly once.
  *   done   how the goal completes: `events` (any of these registry events), `tags` (an
- *          'activity.completed' carrying any of these tags; with `away: true` only outside Home),
+ *          'activity.completed' carrying any of these tags),
  *          `venue` (arriving at or visiting it),
  *          `hasJob` (already employed when the goal comes up)
  *   open / params / go   what tapping the goal chip does: open a panel, or walk to [venue, spot]
@@ -28,11 +28,11 @@ export const STARTER_GOALS = [
   // The reference game paid this goal on arrival, but the amount was never seen on its own.
   { id: 'visit-buka', title: 'Visit the buka', hint: 'Open Map → Amala Shitta', icon: '🍛', cash: 1500, stars: 1, betaFields: ['cash'],
     done: { venue: 'amala-shitta' }, open: 'map', params: { destination: 'amala-shitta' } },
-  // INTERIM: people cannot be tapped until the social system is merged. Until then any completed
-  // activity tagged 'social' away from home also counts, and the hint says so (the observed hint
-  // was "Tap someone at a venue"). Remove `tags`, `away`, `open` and restore the hint with social.
-  { id: 'make-a-friend', title: 'Make a new friend', hint: 'Gist with someone at any venue', icon: '👋', cash: 1500, stars: 1, interim: true,
-    done: { events: ['npc.greeted', 'friend.made'], tags: ['social'], away: true }, open: 'map' },
+  // Completes when you greet one of a venue's regulars (Say Hello) or make a friend. The observed
+  // reference paid this goal on an NPC Say Hello. Tapping the chip opens Sim → People, which
+  // lists who is here; at home it says to go out first.
+  { id: 'make-a-friend', title: 'Make a new friend', hint: 'Tap someone at a venue', icon: '👋', cash: 1500, stars: 1,
+    done: { events: ['npc.greeted', 'friend.made'] }, open: 'people' },
   // Only the title and hint of the last goal were observed; its reward is an original beta value.
   { id: 'work-a-shift', title: 'Work a shift', hint: 'Leave for work on time', icon: '⏰', cash: 2000, stars: 1, betaFields: ['cash', 'stars'],
     done: { events: ['shift.completed'] }, workplace: true },

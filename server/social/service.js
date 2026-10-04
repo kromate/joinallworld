@@ -363,10 +363,13 @@ export function socialService(ctx) {
       const travelling = state.activeAction?.kind === 'travel';
       const room = venueRoomKey(cityId, state.location, id);
       const joined = !travelling && presence.isIn(id, room);
-      const card = (member) => ({ ...pub(s, member), friend: areFriends(s, id, member), requested: Boolean(p.out[member]), incoming: Boolean(p.in[member]) });
+      // `look` (appearance option ids) and `here` come from the room module's own record of who is in the room.
+      const inRoom = new Map(presence.inRoom(room).map((member) => [member.id, member]));
+      const card = (member) => ({ ...pub(s, member), friend: areFriends(s, id, member), requested: Boolean(p.out[member]), incoming: Boolean(p.in[member]),
+        look: inRoom.get(member)?.look ?? null, here: inRoom.has(member) });
       let players = [];
       if (state.location === 'home') players = Object.keys(pruneHouse(s, id)?.guests || {}).map(card);
-      else if (joined) players = presence.inRoom(room).filter((member) => member.id !== id && s.players[member.id] && !blockedEither(s, id, member.id)).map((member) => card(member.id));
+      else if (joined) players = [...inRoom.values()].filter((member) => member.id !== id && s.players[member.id] && !blockedEither(s, id, member.id)).map((member) => card(member.id));
       return yes('ok', { cityId, venue: state.location, self: travelling ? 'travelling' : joined ? 'joined' : 'not_joined', players, count: players.length });
     },
     search(db, session, query) {

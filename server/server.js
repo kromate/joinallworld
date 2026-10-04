@@ -118,8 +118,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
    * The server context handed to every route and ws module. Documented in routes/index.js.
    * `core` holds foundation internals (cookies, sockets, room checks); feature modules use the rest.
    */
+  // In-process events between server modules (never sent to a client by the host itself).
+  const listeners = new Map();
   const ctx = {
     store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS,
+    on(event, fn) { if (!listeners.has(event)) listeners.set(event, []); listeners.get(event).push(fn); },
+    emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, error.message); } } },
     settle,
     // Server authority: ctx.act may run server-only actions (internal: true). Route modules call it
     // with action types they name themselves, never with a type taken from a request.

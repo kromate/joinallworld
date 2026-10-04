@@ -7,7 +7,8 @@
  *   dm-send        { to | conv, body, clientId }   → dm-sent { clientId, conv, message, duplicate? }
  *                                                   | dm-failed { clientId, code, reason }
  *   dm-read        { conv, seq? }                  → dm-read-ok { conv }
- *   people-list    { cityId }                      → people { venue, self, players, count }
+ *   people-list    { cityId }                      → people { venue, self, players, count }; the socket
+ *                                                   is then also told when that changes (people-changed)
  *   friend-request { to, cityId }                  → friend-result { ok, code, reason?, player? }
  *   friend-answer  { from, accept, cityId }        → friend-result { … }
  *   invite-knock   { host, cityId }                → invite-result { op: 'knock', ok, code, reason?, expiresAt? }
@@ -18,6 +19,9 @@
  *   social-sync       {}                           something of yours changed server-side: re-read /api/social/me
  *   friend-request    { from }      friend-accepted { by }
  *   people-presence   { id, status }               a friend connected or dropped ('online' | 'reconnecting')
+ *   people-changed    { cityId, venueId }          who shares your venue room changed — re-read people-list.
+ *                                                  Sent only to sockets that have asked people-list, and
+ *                                                  carries no member data.
  *   people-interaction{ from, action, label, landed }
  *   invite-knock      { from, expiresAt }          invite-answer { host, answer, house }      invite-house { house }
  *   transfer          { from, amount, credited }
@@ -46,6 +50,10 @@ export default function socialSocket(ctx) {
       .then((friends) => { for (const friend of friends) ctx.push(friend, { type: 'people-presence', id, status }); })
       .catch(() => {});
   }
+  // The foundation announces room changes in-process; pass a nudge to the members' watching sockets.
+  ctx.on?.('room-changed', ({ room, cityId, venueId, members }) => {
+    for (const id of members) for (const ws of presence.sockets(id)) if (ws.peopleWatch === true && ws.room !== room) ctx.send(ws, { type: 'people-changed', cityId, venueId });
+  });
   const echo = (message) => (typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {});
 
   return {
@@ -76,6 +84,7 @@ export default function socialSocket(ctx) {
       async 'people-list'(ws, message) {
         if (!ctx.allow(`social:people:${ws.session.id}`, 60)) throw Error('rate_limited');
         const result = await run(ws, (db, session) => service.people(db, session, message.cityId));
+        ws.peopleWatch = true;
         ctx.send(ws, { type: 'people', ...result });
       },
       async 'friend-request'(ws, message) {

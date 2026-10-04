@@ -322,7 +322,7 @@ test('traits and lottery outcomes change play through the modifier keys', () => 
 test('starter goals pay the observed rewards from events, once each, with a ledger line and a toast', () => {
   assert.deepEqual(STARTER_GOALS.map(goal => [goal.title, goal.hint, goal.cash, goal.stars]), [
     ['Eat something', 'Tap the cooler or stove', 500, 1], ['Freshen up', 'Tap the bucket or shower', 500, 1], ['Get a job', 'Open Phone → Jobs', 1000, 1],
-    ['Buy something new', 'Open Buy and place an item', 1000, 1], ['Visit the buka', 'Open Map → Amala Shitta', 1500, 1], ['Make a new friend', 'Gist with someone at any venue', 1500, 1],
+    ['Buy something new', 'Open Buy and place an item', 1000, 1], ['Visit the buka', 'Open Map → Amala Shitta', 1500, 1], ['Make a new friend', 'Tap someone at a venue', 1500, 1],
     ['Work a shift', 'Leave for work on time', 2000, 1]]);
   assert.deepEqual(STARTER_GOALS.filter(goal => goal.betaFields).map(goal => goal.id), ['visit-buka', 'work-a-shift']);
 

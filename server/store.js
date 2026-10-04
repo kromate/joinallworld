@@ -309,6 +309,7 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
     for (const entry of pending) if (entry.durable && entry.seq > seq && (entry.names === null || list.some((name) => entry.names.has(name)))) seq = entry.seq;
     return seq;
   }
+  const lost = []; // { from, to, epoch }: change numbers undone by the pass that started `epoch`, newest last (bounded)
   const waiters = []; // { seq, resolve, reject } — callers waiting for change `seq` to be in the file
   /** A listener must never be able to stop the store: whatever it throws is logged and dropped. */
   function runHook(hook, value) {
@@ -339,7 +340,10 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
   function undoAll(error) {
     for (let i = pending.length - 1; i >= 0; i--) { const steps = pending[i].undo; for (let j = steps.length - 1; j >= 0; j--) steps[j](); }
     stats.undone += pending.length;
+    // Remember which changes were taken back: a caller whose change (or whose read) was applied but who has
+    // not yet asked for it to be on disk must be told it is gone, not that it is saved (see onDisk).
     pending.length = 0; epoch += 1;
+    if (commitSeq > flushedSeq) { lost.push({ from: flushedSeq + 1, to: commitSeq, epoch }); if (lost.length > 64) lost.shift(); }
     flushedSeq = commitSeq; durableSeq = commitSeq; // memory is the file again
     const failure = storageError(error);
     for (const waiter of waiters.splice(0)) waiter.reject(failure);
@@ -370,7 +374,10 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
     lazyTimer.unref?.();
   }
   /** Resolve once change `seq` is in the file; reject (storage_unavailable) if it was undone instead. */
-  function onDisk(seq) {
+  function onDisk(seq, began = epoch) {
+    // After an undo `flushedSeq` jumps to `commitSeq` ("memory is the file again"), so a change that was undone
+    // AFTER the caller started (`began`, the caller's epoch) must be recognised by its own number: it was never written.
+    if (lost.some((range) => range.epoch > began && seq >= range.from && seq <= range.to)) return Promise.reject(storageError(lastError));
     if (seq <= flushedSeq) return Promise.resolve();
     const promise = new Promise((resolve, reject) => waiters.push({ seq, resolve, reject }));
     pump();
@@ -393,24 +400,24 @@ export async function createStore(dataDir, { lazyFlushMs = 1000, writeMegabytesP
         const undo = view.commit();
         let seq = null;
         if (undo) { seq = commitSeq += 1; pending.push({ seq, undo, hook: committed, value, durable: wait, names }); if (wait) durableSeq = seq; }
-        return { value, wait, seq, observed };
+        return { value, wait, seq, observed, began };
       });
       queue = work.catch(() => {});
-      return work.then(async ({ value, wait, seq, observed }) => {
-        if (wait) { await onDisk(seq ?? observed); if (seq === null) runHook(committed, value); return value; }
+      return work.then(async ({ value, wait, seq, observed, began }) => {
+        if (wait) { await onDisk(seq ?? observed, began); if (seq === null) runHook(committed, value); return value; }
         stats.lazy += 1;
         if (seq === null) runHook(committed, value); else pump();
-        if (waitForObserved) await onDisk(observed);
+        if (waitForObserved) await onDisk(observed, began);
         return value;
       });
     },
     read(operation) {
       stats.reads += 1;
       const attempt = (tries) => {
-        const work = queue.then(async () => { const began = epoch, view = open(); const value = await operation(view.db); return { value, seq: observedBy(view.touched()), stale: epoch !== began }; });
+        const work = queue.then(async () => { const began = epoch, view = open(); const value = await operation(view.db); return { value, seq: observedBy(view.touched()), stale: epoch !== began, began }; });
         queue = work.catch(() => {});
-        return work.then(async ({ value, seq, stale }) => {
-          if (!stale) { try { await onDisk(seq); return value; } catch (error) { if (error?.code !== 'storage_unavailable') throw error; } }
+        return work.then(async ({ value, seq, stale, began }) => {
+          if (!stale) { try { await onDisk(seq, began); return value; } catch (error) { if (error?.code !== 'storage_unavailable') throw error; } }
           // What this read saw was undone by a failed write: answer from what is actually stored.
           if (tries >= 3) throw storageError(lastError);
           return attempt(tries + 1);

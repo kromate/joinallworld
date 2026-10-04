@@ -215,6 +215,30 @@ test('a failed write: a read that saw the unsaved change is answered from what i
   assert.equal(await store.read((db) => db.sessions.a.cash), 5000);
 });
 
+test('a write that fails at once: a read or transaction applied just before the undo is never answered as saved', async (t) => {
+  // No hold on the disk here: the write is refused within a few microtasks, so the undo can run after a
+  // queued read (or transaction) has looked at the unsaved change but before it asks whether that is on disk.
+  const disk = flakyDisk();
+  const { store } = await temp(t, { io: disk.io, log: () => {} });
+  await store.transact((db) => { db.sessions.a = session('pa', { cash: 5000 }); });
+  for (let round = 0; round < 25; round++) {
+    disk.fail = 'ENOSPC';
+    const debit = store.transact((db) => { db.sessions.a.cash -= 500; });
+    const read = store.read((db) => db.sessions.a.cash);
+    const second = store.transact((db) => { db.sessions.a.cash -= 1; return db.sessions.a.cash; });
+    const poll = store.transact((db) => db.sessions.a.cash, { durable: false, waitForObserved: true });
+    await assert.rejects(debit, unavailable);
+    assert.equal(await read, 5000, 'never the 4,500 that was taken back');
+    // Whatever order the queue ran them in, each either failed or acted on the stored 5,000.
+    const [two, three] = await Promise.allSettled([second, poll]);
+    if (two.status === 'fulfilled') assert.equal(two.value, 4999); else assert.ok(unavailable(two.reason));
+    if (three.status === 'fulfilled') assert.ok([5000, 4999].includes(three.value)); else assert.ok(unavailable(three.reason));
+    disk.fail = null;
+    await store.transact((db) => { db.sessions.a.cash = 5000; });
+    assert.equal((await store.read((db) => db.sessions.a.cash)), 5000);
+  }
+});
+
 test('a commit listener runs once the change is in the file, in order, before the caller resumes', async (t) => {
   const disk = flakyDisk();
   const { store, file } = await temp(t, { io: disk.io, lazyFlushMs: 30 });

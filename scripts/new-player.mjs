@@ -119,6 +119,10 @@ export async function runNewPlayer({ log = console.log, saltPrefix = SALT_PREFIX
   async function paidWork(who) {
     if ((await life(who)).location !== 'park') await travel(who, 'park', 'trek');
     if (!(await life(who)).job) await ok(who, 'apply-job', { id: 'community-helper' }, 'applied');
+    // A guest has no bed. The Whot game above is dealt by the server at random and can be long or short, the trek costs
+    // energy and a roadside event may too: someone who arrives too tired for the shift (it needs Energy 20) rests under
+    // the trees first, as a player would, so the run does not depend on how the cards fell.
+    for (let rests = 0; rests < 8 && (await life(who)).needs.energy < 30; rests++) await run(who, 'trees', 'chill');
     return run(who, 'work', 'helper-shift');
   }
 

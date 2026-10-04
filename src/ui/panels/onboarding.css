@@ -91,3 +91,6 @@
 .ob-later,.ob-stay{width:100%;min-height:var(--tap)}
 .ob-later{background:none;border-color:transparent;color:var(--c-muted);text-decoration:underline;text-underline-offset:3px}
 .ob-extra{display:grid;gap:var(--s-2);min-width:0}
+/* Inside the phone the app bar sits above the scrolling body, so the pinned preview starts at the body's own top (not 62-70px below it). */
+#life-dialog[data-phone] .ob-sim,#life-dialog[data-phone] .ob-hero{top:-14px;padding-top:18px}
+@media(max-width:759px){#life-dialog[data-phone] .ob-options .look-tabs{top:calc(44px + clamp(190px,30dvh,260px))}}

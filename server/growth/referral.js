@@ -92,7 +92,8 @@ export function referralService(ctx) {
     me.ref = { by: share.by, code: body.code, at: now, welcomed: false, counted: false };
     inviter.invited[id] = { name: session.name, at: now, state: 'joined', device };
     share.joined = Math.min(Number.MAX_SAFE_INTEGER, (share.joined ?? 0) + 1);
-    count(g, now, 'referral.linked'); count(g, now, 'share.joined');
+    // One act, one counter: the share keeps its own `joined` number; the day's total is referral.linked.
+    count(g, now, 'referral.linked');
     return { ok: true, code: 'linked', by: share.facts?.name ?? 'a friend' };
   }
 

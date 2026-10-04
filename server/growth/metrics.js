@@ -14,28 +14,47 @@
  * Nothing here is ever sent to a player. It is read only through GET /api/mod/growth/metrics,
  * with the operator token.
  *
- * COUNTERS  active (lives seen that day) · sessions (a hello after 30 quiet minutes) · new
- *   funnel.onboarded · funnel.goal-1 … funnel.goals-done · funnel.job · funnel.shift ·
- *   funnel.mission · funnel.table · share.made.<kind> · share.opened · share.joined ·
- *   referral.linked · referral.welcomed · referral.counted · referral.paid · referral.refused.<why>
+ * FIRST-PARTY, AND INDEPENDENT OF TELEMETRY. These numbers are counted here whether or not Sentry/PostHog is configured
+ * (server/telemetry): they need no consent sheet because they hold no person, and they are the operator's fallback when
+ * analytics is off, refused or blocked. They are never forwarded to PostHog and PostHog's events are never added to them,
+ * so the two can be read side by side without one inflating the other; the report says which of the two it is (`source`).
+ *
+ * COUNTERS — each thing is counted under ONE name, once
+ *   active (lives inside their 31-day window seen that day, once a day each) · active-untracked (older lives, once a
+ *   day each: the two add up to everyone seen that day) · sessions (a hello after 30 quiet minutes) · new
+ *   funnel.onboarded (arrived in the city: Play was confirmed) · funnel.goal-1 · funnel.settled (settled in: has a local
+ *   government and a house) · funnel.job · funnel.shift · funnel.goals-done (the whole starter chain) · funnel.mission ·
+ *   funnel.table · funnel.day-two-work — each once per life
+ *   share.made.<kind> · share.opened (the preview page /s/<code> was fetched with GET: people AND the link-preview
+ *   crawlers of chat apps, so it is an upper bound on people) ·
+ *   referral.linked (a new life was attached to a sharer's link; the same act is not counted again under a share name) ·
+ *   referral.welcomed · referral.counted · referral.paid · referral.refused.<why>
  *   table.started.<game> · table.finished.<game> · table.abandoned.<game> · table.human · table.bot
  *   consent.adult · consent.minor · client.<signal> (webgl-missing, opera-mini, save-data, slow-start)
  */
 import { lagosTime } from '../../src/game/clock.js';
+import { STARTER_GOALS } from '../../src/game/content/goals.js';
 
 export const KEEP = Object.freeze({ days: 400, cohorts: 120, window: 31, lives: 50000 });
 export const RETENTION_DAYS = Object.freeze([1, 3, 7, 14, 30]);
-/** Funnel steps, in order. `reached(state)` is read from the server's own copy of the life. */
+/**
+ * Funnel steps. `reached(state)` is read from the server's own copy of the life. A life's steps are kept as a bit mask BY
+ * POSITION in this list, so a step is only ever ADDED AT THE END: inserting one would shift the bits of lives already
+ * followed and count them a second time. FUNNEL_ORDER is the order a person reads them in.
+ */
 export const FUNNEL = Object.freeze([
   { id: 'onboarded', reached: (state) => !(state.onboarding?.required === true && state.onboarding.done !== true) },
   { id: 'goal-1', reached: (state) => (state.goals?.chain ?? 0) >= 1 },
   { id: 'job', reached: (state) => Boolean(state.job) },
   { id: 'shift', reached: (state) => (state.civic?.work?.days ?? 0) >= 1 },
-  { id: 'goals-done', reached: (state) => (state.goals?.chain ?? 0) >= 7 },
+  { id: 'goals-done', reached: (state) => (state.goals?.chain ?? 0) >= STARTER_GOALS.length },
   { id: 'mission', reached: (state) => (state.missions?.claimed ?? 0) >= 1 },
   { id: 'table', reached: (state) => (state.growth?.tables?.played ?? 0) >= 1 },
   { id: 'day-two-work', reached: (state) => (state.civic?.work?.days ?? 0) >= 2 },
+  // Added with the quick start: a guest who settled in (a local government and a house). At the end — see above.
+  { id: 'settled', reached: (state) => state.onboarding?.done === true },
 ]);
+export const FUNNEL_ORDER = Object.freeze(['onboarded', 'goal-1', 'settled', 'job', 'shift', 'goals-done', 'mission', 'table', 'day-two-work']);
 /** Signals a browser may report about itself (see POST /api/growth/client). A fixed list: nothing free-form is counted. */
 export const CLIENT_SIGNALS = Object.freeze(['webgl-missing', 'opera-mini', 'save-data', 'slow-start', 'installed', 'share-sheet', 'share-fallback']);
 const COUNTER = /^[a-z0-9][a-z0-9.-]{0,47}$/;
@@ -56,14 +75,18 @@ export function count(g, now, name, n = 1) {
   today[name] = Math.min(Number.MAX_SAFE_INTEGER, (today[name] ?? 0) + n);
 }
 
-/** A life was seen: count it once for today, once for each retention day it reaches, and once per funnel step. */
-export function touch(g, now, publicId, state) {
+/**
+ * A life was seen: count it once for today, once for each retention day it reaches, and once per funnel step.
+ * `lastSeen`: when this player was last seen before now (server ms, or null) — so a life too old to be followed is still
+ * counted once a day and not once per visit.
+ */
+export function touch(g, now, publicId, state, lastSeen = null) {
   const m = book(g), day = lagosTime(now).day;
   const first = lagosTime(Number.isFinite(state?.civic?.since) ? state.civic.since : now).day;
   let life = Object.hasOwn(m.lives, publicId) ? m.lives[publicId] : null;
   if (!life) {
     // Only a life still inside its window is followed; an old life is counted as active and nothing else.
-    if (day - first > KEEP.window - 1 || Object.keys(m.lives).length >= KEEP.lives) { count(g, now, 'active-untracked'); return; }
+    if (day - first > KEEP.window - 1 || Object.keys(m.lives).length >= KEEP.lives) { if (!Number.isFinite(lastSeen) || lagosTime(lastSeen).day !== day) count(g, now, 'active-untracked'); return; }
     life = m.lives[publicId] = { first, last: null, steps: 0 };
     const cohort = (m.cohorts[first] ||= { size: 0, r: {} });
     cohort.size += 1;
@@ -104,6 +127,7 @@ export function report(g, now, { days = 35 } = {}) {
   });
   const totals = {};
   for (const row of daily) for (const [name, value] of Object.entries(row)) if (name !== 'day' && name !== 'date') totals[name] = (totals[name] ?? 0) + value;
-  return { generatedAt: now, timezone: 'Africa/Lagos', days: daily, cohorts, totals, tracked: Object.keys(m.lives).length,
+  const funnel = FUNNEL_ORDER.map((id) => ({ step: id, lives: totals[`funnel.${id}`] ?? 0 }));
+  return { generatedAt: now, timezone: 'Africa/Lagos', source: 'first-party', days: daily, cohorts, totals, funnel, tracked: Object.keys(m.lives).length,
     retention: { daily: `${KEEP.days} days`, cohorts: `${KEEP.cohorts} days`, perLife: `${KEEP.window} days, then deleted` } };
 }

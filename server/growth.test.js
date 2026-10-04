@@ -276,3 +276,61 @@ test('metrics: operator only, daily totals and cohorts counted once per life per
   assert.equal((await closed.request('/api/mod/growth/metrics')).status, 404);
   assert.ok(LIMITS.sharesPerDay === 20);
 });
+
+test('metrics count each thing once under one name, follow the merged first minute, and do not depend on telemetry', async (t) => {
+  const { f, post, hello, mod } = await harness(t);
+  const { FUNNEL, FUNNEL_ORDER, touch } = await import('./growth/metrics.js');
+  // The bit positions of the steps lives are already counted under never move: a new step is added at the end.
+  assert.deepEqual(FUNNEL.map((step) => step.id), ['onboarded', 'goal-1', 'job', 'shift', 'goals-done', 'mission', 'table', 'day-two-work', 'settled']);
+  assert.deepEqual([...FUNNEL_ORDER].sort(), FUNNEL.map((step) => step.id).sort());
+  const chain = (await import('../src/game/content/goals.js')).STARTER_GOALS.length;
+  const done = FUNNEL.find((step) => step.id === 'goals-done');
+  assert.deepEqual([chain, done.reached({ goals: { chain: 7 } }), done.reached({ goals: { chain } })], [10, false, true], 'the whole starter chain, not the old seven goals');
+  // A new visitor as the quick start makes one: a guest is "onboarded" (arrived) once Play is confirmed, "settled" only after settling in.
+  const opened = await f.request('/api/session', { name: 'Ngozi', onboarding: true });
+  const ngozi = { cookie: opened.headers.get('set-cookie').split(';')[0], ...(await opened.json()).session };
+  await f.request('/api/life?city=lagos', null, ngozi.cookie);
+  assert.equal((await hello(ngozi, 7)).code, 'not_ready', 'a life still held for its look is not counted at all');
+  const look = { body: 'woman', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
+  assert.equal((await f.action(ngozi.cookie, { type: 'onboarding.quick-start', payload: { look } })).code, 'playing');
+  for (let i = 0; i < 3; i++) await hello(ngozi, 7);
+  let report = await mod('/api/mod/growth/metrics');
+  assert.deepEqual([report.totals.new, report.totals.active, report.totals['funnel.onboarded'], report.totals['funnel.settled'], report.totals['funnel.goal-1']], [1, 1, 1, undefined, undefined]);
+  assert.equal((await f.action(ngozi.cookie, { type: 'activity', payload: { id: 'play-ayo' } })).ok, true); f.advance(8000);
+  for (const [type, payload] of [['onboarding.traits', { traits: ['musical', 'clean-pikin'] }], ['onboarding.dream', { dream: 'afrobeats-star' }], ['onboarding.lottery', {}], ['onboarding.home', { lga: 'ikeja', stay: true }]]) assert.equal((await f.action(ngozi.cookie, { type, payload })).ok, true, type);
+  for (let i = 0; i < 3; i++) await hello(ngozi, 7);
+  report = await mod('/api/mod/growth/metrics');
+  assert.deepEqual([report.totals.new, report.totals.active, report.totals['funnel.onboarded'], report.totals['funnel.goal-1'], report.totals['funnel.settled']], [1, 1, 1, 1, 1], 'six hellos: one life, one active day, each step once');
+  assert.deepEqual(report.funnel.map((row) => row.step), FUNNEL_ORDER);
+  assert.deepEqual(report.funnel.slice(0, 3).map((row) => row.lives), [1, 1, 1]);
+  // The report says what it is, and whether analytics is running beside it. Here telemetry is not configured at all.
+  assert.deepEqual([report.source, report.analytics], ['first-party', 'not-configured']);
+  // One act, one counter: a referral link is `referral.linked`, never also a share counter; a HEAD is not an opening.
+  const ada = await f.device('Ada'); await f.request('/api/life?city=lagos', null, ada.cookie); await hello(ada, 1);
+  const share = await post('/api/growth/share', { cityId: 'lagos', kind: 'invite' }, ada);
+  assert.equal((await fetch(`${f.base}${share.share.path}`, { method: 'HEAD' })).status, 200);
+  assert.equal((await fetch(`${f.base}${share.share.path}`)).status, 200);
+  assert.equal((await post('/api/growth/referral/link', { cityId: 'lagos', code: share.share.code, device: 'device-token-0000007' }, ngozi)).code, 'linked');
+  report = await mod('/api/mod/growth/metrics');
+  assert.deepEqual([report.totals['share.opened'], report.totals['referral.linked'], report.totals['share.joined']], [1, 1, undefined]);
+  // A life too old to be followed is counted once a day, not once per visit.
+  const g = { metrics: {} }, old = { civic: { since: 0 } }, day = 86400000, at = 100 * day;
+  touch(g, at, 'old-life', old, null); touch(g, at + 1000, 'old-life', old, at); touch(g, at + 2000, 'old-life', old, at + 1000);
+  touch(g, at + day, 'old-life', old, at + 2000);
+  assert.deepEqual(Object.values(g.metrics.days).map((row) => row['active-untracked']), [1, 1]);
+});
+
+test('the operator’s numbers are the same with telemetry configured: nothing is forwarded, added or required', async (t) => {
+  const { createServerTelemetry } = await import('./telemetry/index.js');
+  const sent = [];
+  const telemetry = createServerTelemetry({ env: { TELEMETRY_ENV: 'production', POSTHOG_KEY: 'phc_projectkey123', SENTRY_DSN_SERVER: 'https://serverkey@o1.ingest.sentry.example/42' }, fetch: async (url, init) => { sent.push(String(init?.body ?? '')); return { ok: true, status: 200, text: async () => '' }; }, now: () => 0, flushMs: 60000 });
+  const { f, hello, work, player, mod } = await harness(t, { telemetry });
+  const ada = await player('Ada', 1);
+  await work(ada); for (let i = 0; i < 3; i++) await hello(ada, 1);
+  const report = await mod('/api/mod/growth/metrics');
+  assert.deepEqual([report.analytics, report.source, report.totals.new, report.totals.active, report.totals['funnel.onboarded'], report.totals['funnel.shift']], ['also-configured', 'first-party', 1, 1, 1, 1]);
+  await telemetry.flush();
+  const out = sent.join('\n');
+  for (const counter of ['funnel.onboarded', 'funnel.shift', 'share.opened', 'active-untracked']) assert.ok(!out.includes(counter), `${counter} is not sent to analytics`);
+  assert.ok(!out.includes(ada.id), 'and nothing is recorded for a player who has not accepted analytics');
+});

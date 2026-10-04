@@ -43,7 +43,9 @@ export default function growthOperatorRoutes(ctx) {
     'POST /api/mod/growth/outreach/run': async (request) => { const guarded = await operator(() => ({}))(request); return { ...guarded, body: await outreach.tick({ force: true }) }; },
     'GET /api/mod/growth/metrics': operator((db, request) => {
       const days = Number(request.query.get('days'));
-      return report(growthOf(ctx, db), ctx.now(), { days: Number.isSafeInteger(days) && days > 0 ? days : 35 });
+      // `analytics` says whether product analytics (PostHog) is ALSO running on this server. These first-party numbers do not
+      // depend on it and are never mixed with it: they are the same with telemetry configured, unconfigured or refused.
+      return { ...report(growthOf(ctx, db), ctx.now(), { days: Number.isSafeInteger(days) && days > 0 ? days : 35 }), analytics: ctx.telemetry?.enabled === true ? 'also-configured' : 'not-configured' };
     }),
   };
 }

@@ -83,7 +83,7 @@ export default function growthRoutes(ctx) {
 
   // The link-preview page. `ctx.pages` is the host's hook for a path outside /api/ (server.js); a host
   // without it (the Worker today) serves the game's own index.html for /s/<code> instead.
-  ctx.pages?.set('/s/', async ({ path, origin, ip }) => {
+  ctx.pages?.set('/s/', async ({ path, origin, ip, method }) => {
     const code = path.slice(3).replace(/\/$/, '');
     if (!ctx.allow(`growth:page:${ip}`, LIMITS.sharePagePerMinute)) return { status: 429, html: sharePageHtml(null, '', origin) };
     if (!isShareCode(code)) return { status: 404, html: sharePageHtml(null, '', origin) };
@@ -91,6 +91,8 @@ export default function growthRoutes(ctx) {
     const share = await ctx.store.transact((db) => {
       const g = growthOf(ctx, db), found = findShare(g, code, ctx.now());
       if (!found) return null;
+      // A HEAD (a crawler checking the link before it fetches it) is not an opening: only a GET is counted, once.
+      if (method !== 'GET') return { facts: found.facts, by: found.by };
       found.opened = Math.min(Number.MAX_SAFE_INTEGER, (found.opened ?? 0) + 1);
       count(g, ctx.now(), 'share.opened');
       return { facts: found.facts, by: found.by };
@@ -128,7 +130,7 @@ export default function growthRoutes(ctx) {
       const since = player.seen || null;
       player.seen = now;
       if (body.device !== undefined) referral.noteDevice(g, player, body.device);
-      touch(g, now, id, state);
+      touch(g, now, id, state, since);
       const material = referral.settle(g, session, state, cityId);
       const view = viewLife(state, { now, cityId });
       const events = upcomingEvents(now, 7, cityId).slice(0, 12);

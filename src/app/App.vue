@@ -52,7 +52,7 @@ function onKey(event: KeyboardEvent): void {
   if (!shortcut) return
   const [verb = '', arg = ''] = shortcut.run.split(':')
   const lock = shell.lockOf()
-  if (lock) { if (verb === 'close') game.toast(lock.reason); return } // nothing but the required panel responds
+  if (lock) { if (verb === 'close') { event.preventDefault(); game.toast(lock.reason) } return } // nothing but the required panel responds
   const open = sheetOpen.value
   if (verb === 'key') {
     if (event.key === 'Enter' && target?.matches('button, a, summary')) return
@@ -66,8 +66,8 @@ function onKey(event: KeyboardEvent): void {
     if (mode.value === 'venue' && !open) { if (arg !== 'jog') event.preventDefault(); window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action: `${verb}-${arg}`, mode: mode.value, jog: event.shiftKey } })) }
     return
   }
-  // Esc with a sheet open is the dialog's own (SheetHost): one place decides what Esc closes.
-  if (open && verb === 'close') return
+  // Esc with a sheet open: SheetHost decides what it closes (a chat goes back to its list, an app to the home screen).
+  if (open && verb === 'close') { event.preventDefault(); shell.escape.run?.(); return }
   if (open && verb !== 'open' && verb !== 'help') return
   if (verb === 'close') {
     if (shell.panelKeys('cancel')) { event.preventDefault(); return }

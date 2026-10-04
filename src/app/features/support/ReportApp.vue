@@ -80,7 +80,7 @@ function useSupport(): Support {
         <textarea ref="textField" v-model="draft.text" name="text" rows="5" :maxlength="limit" placeholder="What you did, what you expected, what you saw instead." :disabled="offline" :aria-invalid="notice?.kind === 'error' ? 'true' : undefined" aria-describedby="report-sent-with report-notice" />
       </label>
       <div id="report-sent-with" class="report-fine">Your recent actions and wallet lines are attached automatically. Your device’s secret never is.</div>
-      <HowItWorks id="support-sent" :rules="['Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines.', 'Your device’s secret is never included.', 'The report is filed on this server and you get a receipt number at once. No e-mail or other account is needed.']" />
+      <HowItWorks id="support-sent" label="What is sent, and what happens next" :rules="['Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines.', 'Your device’s secret is never included.', 'The report is filed on this server and you get a receipt number at once. No e-mail or other account is needed.']" />
       <div class="report-send">
         <BaseButton variant="primary" block type="submit" :disabled="offline || sending">{{ sending ? 'Sending…' : 'Send report' }}</BaseButton>
         <small v-if="offline">{{ offlineWhy }} A report cannot be sent right now. What you typed is kept.</small>
@@ -110,7 +110,7 @@ function useSupport(): Support {
 <style scoped>
 .report-hero { --hero: var(--app-tint, #dc5a0c); }
 .report-hero :deep(strong) { font-size: 20px; }
-.report-form { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
+.report-form { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
 .report-form label { display: flex; flex-direction: column; gap: 5px; margin: 0; font-size: 13px; font-weight: 600; }
 .report-form select, .report-form textarea { width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid #cfd5d1; border-radius: var(--r-sm); background: #fff; color: var(--c-ink); font: 400 14px var(--font); }
 .report-form select:focus-visible, .report-form textarea:focus-visible { outline: var(--focus); outline-offset: 2px; }
@@ -118,6 +118,7 @@ function useSupport(): Support {
 .report-form textarea[aria-invalid='true'] { border-color: var(--c-red); }
 .report-fine { font-size: 12px; line-height: 1.45; color: var(--c-muted); }
 .report-send { display: grid; gap: 4px; }
+.report-send :deep(.is-primary) { background: var(--app-tint, var(--c-green-dark)); }
 .report-send small { color: var(--c-red); font-size: 12px; }
 .report-good, .report-error { padding: 9px 12px; border-radius: var(--r-sm); font-size: 13px; font-weight: 600; line-height: 1.4; }
 .report-good { background: var(--c-green-soft); color: var(--c-green-dark); }

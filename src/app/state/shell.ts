@@ -26,6 +26,8 @@ export function createShell(game: Game, panels: readonly Panel[], hooks: ShellHo
   const legacyTick = ref(0)
   /** The key hook of each panel on screen, by id (set by PanelHost). */
   const keyHandlers = new Map<string, (action: string) => boolean>()
+  /** What Esc does while a sheet is open (set by SheetHost): one place decides what Esc closes. */
+  const escape: { run: (() => void) | null } = { run: null }
   const state = (): LifeState => game.state.value
   const viewFor = (params: unknown = null): PanelView => ({ ...game.view.value, mode: game.mode.value, params: params ?? null })
 
@@ -124,7 +126,7 @@ export function createShell(game: Game, panels: readonly Panel[], hooks: ShellHo
   }
 
   return {
-    panels, byId, sheet, modeParams, ui, legacyTick, inPhone, keyHandlers,
+    panels, byId, sheet, modeParams, ui, legacyTick, inPhone, keyHandlers, escape,
     /** Offer a key to the panel in front. True when it handled it. */
     panelKeys(action: string): boolean {
       const panel = showing()

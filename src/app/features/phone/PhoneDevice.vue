@@ -80,6 +80,9 @@ function focusView(): void {
   const owner = icon?.closest<HTMLElement>('[data-ph-page]')
   if (owner) goPage(Number(owner.dataset.phPage))
   icon?.focus({ preventScroll: true })
+  // The home screen may still be on its way back in (it is not focusable until its transition
+  // starts): if the focus did not land, it is tried once more on the next frame. One frame, not a loop.
+  if (icon && document.activeElement !== icon) requestAnimationFrame(() => { if (!app.value && !shade.value) icon.focus({ preventScroll: true }) })
 }
 watch(() => app.value?.id ?? '', (id) => {
   if (id) { lastApp.value = id; shade.value = false }

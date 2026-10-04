@@ -10,7 +10,7 @@
 //
 // The dialog keeps the id `life-dialog`: existing panels and the phone's stylesheet are written
 // against it. It goes when the last of them is converted.
-import { computed, defineAsyncComponent, nextTick, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import AppBar from '../../ui/AppBar.vue'
 import BaseSheet from '../../ui/BaseSheet.vue'
@@ -38,6 +38,11 @@ function onClose(by: 'escape' | 'backdrop' | 'button'): void {
   }
   shell.close()
 }
+// Esc is taken at the key (App.vue) and run here, so the browser's own dialog closing never sees it:
+// a browser lets only one Esc in a row be refused, and going back level by level needs several.
+// The dialog's `cancel` event still arrives for the back gesture, and lands in the same function.
+shell.escape.run = () => { if (lock.value) refused(); else onClose('escape') }
+onBeforeUnmount(() => { shell.escape.run = null })
 function refused(): void { const reason = lock.value?.reason; if (reason) game.toast(reason) }
 // A different screen starts at its top.
 watch(() => (sheet.value ? `${sheet.value.kind}:${sheet.value.kind === 'panel' ? sheet.value.id : sheet.value.kind === 'sim' ? sheet.value.tab : ''}` : ''), () => { void nextTick(() => { if (content.value) content.value.scrollTop = 0 }) })

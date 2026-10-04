@@ -82,7 +82,13 @@ const draftField = ref<HTMLInputElement | null>(null)
 watch(items, () => { void nextTick(() => { const box = threadBox.value; if (box) box.scrollTop = box.scrollHeight }) }, { flush: 'post' })
 
 function openConversation(key: string): void { setOpen(key); void openThread(key) }
-function back(): void { setOpen(null); void sync() }
+const rootBox = ref<HTMLElement | null>(null)
+/** Back to the list. The keyboard goes to the conversation that was open, so it is never left on nothing. */
+function back(): void {
+  const was = ui.open
+  setOpen(null); void sync()
+  void nextTick(() => { const list = rootBox.value; (Array.from(list?.querySelectorAll<HTMLElement>('[data-conv]') ?? []).find((row) => row.dataset.conv === was) ?? list?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]'))?.focus() })
+}
 function reloadThread(): void { const current = thread.value; if (current && ui.open) { current.error = null; void openThread(ui.open) } }
 function submitDraft(): void {
   const body = ui.draft.trim(), key = ui.open
@@ -166,7 +172,7 @@ defineExpose({
 </script>
 
 <template>
-  <div class="messages" :class="{ 'panel-fill': Boolean(ui.open) && !gate }">
+  <div ref="rootBox" class="messages" :class="{ 'panel-fill': Boolean(ui.open) && !gate }">
     <div v-if="gate" class="messages-note" :class="{ 'is-warn': gate.warn }" role="status">
       {{ gate.text }} <button v-if="gate.retry" class="messages-link" type="button" @click="social.error = null; sync()">Retry</button>
     </div>
@@ -280,7 +286,7 @@ defineExpose({
           </form>
 
           <ListRows v-if="me.conversations.length" label="Chats">
-            <ListRow v-for="item in me.conversations" :key="item.id" as="button" :title="item.name" :sub="lastLine(item, me.me.id)" :unread="item.unread > 0" @click="openConversation(item.id)">
+            <ListRow v-for="item in me.conversations" :key="item.id" as="button" :data-conv="item.id" :title="item.name" :sub="lastLine(item, me.me.id)" :unread="item.unread > 0" @click="openConversation(item.id)">
               <template #icon>
                 <RowMark v-if="item.kind === 'group'" round>👥</RowMark>
                 <RowMark v-else-if="item.kind === 'house'" round>🏠</RowMark>

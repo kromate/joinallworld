@@ -18,10 +18,11 @@ let asking = null;
 
 const OFFLINE = 'Offline: read-only until you reconnect.';
 
-function stepButton(step) {
+function stepButton(step, shift, connected) {
   if (step.kind === 'go') return `<button class="ui-button is-primary" data-jobs-go="${json([step.venue, step.spot])}">Go to work</button>`;
   if (step.kind === 'home') return `<button class="ui-button is-primary" data-jobs-go="${json(['home'])}">Go home to eat and rest</button>`;
-  if (step.kind === 'start') return '<button class="ui-button is-primary" data-close>Close and start shift</button>';
+  // The button starts the shift itself (it used to only close the sheet, leaving the player to find the activity).
+  if (step.kind === 'start' && shift) return `<button class="ui-button is-primary" data-action="activity" data-payload="${json({ id: shift.id })}" data-then="close" ${connected ? '' : 'disabled'}>Start shift</button>`;
   return '';
 }
 
@@ -39,7 +40,7 @@ function mine(career, connected) {
     : '';
   return `<section class="jobs-mine" aria-label="Your job"><p class="jobs-eyebrow">YOUR JOB</p><header class="jobs-head"><span class="jobs-icon" aria-hidden="true">${esc(career.icon)}</span><div><h3>${esc(career.role)}</h3><p>${career.isTrack ? `${esc(career.label)} · level ${esc(career.level)} of ${esc(career.levels)}` : 'Starter job'}</p></div><b class="jobs-pay">${money(career.pay)}<small>per shift</small></b></header>
     <ul class="jobs-facts">${fact('🗓️', career.schedule)}${fact('🕘', career.hours, career.workplace.open ? 'is-open' : 'is-closed')}${career.isTrack ? fact('📈', `Performance ${career.performance}%`) : ''}</ul>
-    <p class="jobs-step"><span aria-hidden="true">👉</span> ${esc(career.step.text)}</p>${stepButton(career.step)}${auto}${quit}${connected ? '' : `<p class="jobs-why">${esc(OFFLINE)}</p>`}</section>`;
+    <p class="jobs-step"><span aria-hidden="true">👉</span> ${esc(career.step.text)}</p>${stepButton(career.step, career.shift, connected)}${auto}${quit}${connected ? '' : `<p class="jobs-why">${esc(OFFLINE)}</p>`}</section>`;
 }
 
 function track(job, career, connected, view) {

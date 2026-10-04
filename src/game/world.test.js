@@ -6,11 +6,11 @@ import { createLife, dispatch, advanceLife, viewLife, spotsOf } from '../life.js
 import { registerSystem, systems } from './registry.js';
 import { makeContext } from './util.js';
 import { isOpen } from './clock.js';
-import { VENUES, COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES, HOME_SPOTS, CITY_LABELS, CITY_MAPS, venueLabel } from './content/venues.js';
+import { VENUES, COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES, HOME_SPOTS, CITY_LABELS, CITY_MAPS, GIG_DAILY_LIMIT, venueLabel } from './content/venues.js';
 import { TRAVEL_MODES, ALL_MODES, DEFAULT_MODE, TRAVEL_DURATION } from './content/travel.js';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from './content/events.js';
 import { HEALTH } from './content/health.js';
-import { quote, routeBand, openingInfo, travelBlock, modesFor } from './systems/travel.js';
+import { quote, routeBand, openingInfo, travelBlock, modesFor, isGig } from './systems/travel.js';
 import { weatherAt } from './systems/health.js';
 
 // A stand-in for other owners' systems: it contributes the modifiers the world systems call
@@ -66,10 +66,13 @@ test('world systems are registered and survive hostile saves', () => {
   }
   const hostile = createLife({
     travel: { home: '__proto__', event: { id: 'constructor', at: 1 }, lastTrip: { mode: 'jetpack', from: 'park', to: 'moon' }, visited: ['park', 'park', 'moon', 5, { id: 'x' }], trips: -4,
-      cooldowns: { 'buka-help': MONDAY_NOON + 9e12, chill: MONDAY_NOON + 5000, nope: 1, 'hub-pitch': 'soon' }, funded: 'yes', admin: true },
+      cooldowns: { 'buka-help': MONDAY_NOON + 9e12, chill: MONDAY_NOON + 5000, nope: 1, 'hub-pitch': 'soon' }, funded: 'yes', admin: true,
+      gigs: { day: 3, count: -9e9 }, eventDays: { wallet: 'never', agbo: 5, constructor: 1 } },
     health: { sick: 'true', cause: 'curse', since: 'never', strain: 9e9, immuneUntil: 9e15, extra: 1 },
   }, at(MONDAY_NOON));
-  assert.deepEqual(hostile.travel, { home: 'yaba', event: null, lastTrip: null, visited: ['park'], trips: 0, cooldowns: { 'buka-help': MONDAY_NOON + 300000 }, funded: false });
+  assert.deepEqual(hostile.travel, { home: 'yaba', event: null, lastTrip: null, visited: ['park'], trips: 0, cooldowns: { 'buka-help': MONDAY_NOON + 300000 }, funded: false,
+    gigs: { day: 0, count: 0 }, eventDays: {} });
+  assert.deepEqual(createLife({ travel: { gigs: { day: 7, count: 99 }, eventDays: { wallet: 7 } } }, at(MONDAY_NOON)).travel.gigs, { day: 7, count: GIG_DAILY_LIMIT }, 'a saved count can never exceed the limit');
   assert.deepEqual(hostile.health, { sick: false, cause: null, since: null, strain: HEALTH.illness.neglectSeconds, immuneUntil: MONDAY_NOON + 7200000 });
   const sick = createLife({ health: { sick: true, cause: 'curse', since: MONDAY_NOON + HOUR } }, at(MONDAY_NOON));
   assert.deepEqual([sick.health.cause, sick.health.since], ['neglect', MONDAY_NOON], 'a future start time is pulled back to now');
@@ -537,4 +540,67 @@ test('chance activities: the startup pitch pays its grant once; the ATM gamble c
   go(booked, 'police', 'cab', DRY_NOON + 60000);
   assert.equal(run(booked, 'police-service', DRY_NOON + 120000).ok, true);
   assert.equal(booked.moodlets.some((moodlet) => moodlet.id === 'booked'), false);
+});
+
+test('daily gig limit: paid gigs across the whole city stop at the limit and reopen at Lagos midnight; shifts are untouched', () => {
+  const start = MONDAY_NOON;
+  let now = start;
+  const state = createLife(null, at(now));
+  state.needs.energy = 100; state.needs.hunger = 100;
+  const act = (type, payload) => dispatch(state, { type, payload, actionId: `gig-${now}-${type}` }, at(now, `gig-${now}`));
+  const wait = (seconds) => { now += seconds * 1000; advanceLife(state, seconds, at(now)); };
+  const gigs = Object.keys(VENUES).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities.filter((def) => def.reward > 0 && !def.requiresJob && !def.requiresSkill && !def.hours).map((def) => ({ venue, spot: spot.id, def }))));
+  assert.ok(gigs.length > GIG_DAILY_LIMIT, 'there are more unskilled gigs than the daily limit');
+  assert.ok(gigs.every(({ def }) => isGig(def)));
+  assert.equal(isGig(VENUES.park.spots.trees.activities[0]), false, 'an unpaid activity is not a gig');
+  assert.equal(isGig({ id: 'hub-hack-atm' }), true, 'a repeatable gamble that pays counts');
+  assert.equal(isGig({ id: 'hub-pitch' }), false, 'a once-in-a-life grant does not');
+  assert.equal(isGig({ id: 'x', reward: 300, requiresJob: 'community-helper' }), false, 'nor does a job shift');
+  let done = 0, refused = null;
+  for (const gig of gigs) {
+    if (!isOpen(VENUES[gig.venue].hours, now)) continue;
+    state.needs.energy = 100; state.needs.hunger = 100;
+    if (state.location !== gig.venue) { assert.equal(act('travel', { id: gig.venue, mode: 'trek' }).ok, true); wait(state.activeAction.remaining); }
+    assert.equal(act('spot', { id: gig.spot }).ok, true);
+    const cash = state.cash;
+    const started = act('activity', { id: gig.def.id });
+    if (!started.ok) { refused = started; assert.equal(state.cash, cash); break; }
+    wait(gig.def.duration);
+    assert.equal(state.cash, cash + gig.def.reward);
+    done += 1;
+    assert.deepEqual(viewLife(state, at(now)).travel.gigs, { limit: GIG_DAILY_LIMIT, used: done, left: GIG_DAILY_LIMIT - done });
+  }
+  assert.equal(done, GIG_DAILY_LIMIT);
+  assert.equal(refused.code, 'gig_limit'); assert.match(refused.reason, /today’s 8 paid gigs\. Gigs open again at midnight, Lagos time\. Your job’s shift is not affected\./);
+  const card = viewLife(state, at(now)).activities.cards.find((item) => item.reward > 0);
+  assert.equal(card.blocked.code, 'gig_limit', 'the card itself says why it is closed');
+  // The starter job's shift still pays today.
+  if (state.location !== 'park') { act('travel', { id: 'park', mode: 'trek' }); wait(state.activeAction.remaining); }
+  act('apply-job', { id: 'community-helper' }); act('spot', { id: 'work' });
+  const before = state.cash;
+  assert.equal(act('activity', { id: 'helper-shift' }).ok, true); wait(20);
+  assert.equal(state.cash, before + 300);
+  // After Lagos midnight the count starts again.
+  wait(13 * 3600);
+  assert.equal(viewLife(state, at(now)).travel.gigs.used, 0);
+});
+
+test('a found wallet is offered at most once per Lagos day', () => {
+  assert.equal(EVENTS.wallet.oncePerDay, true);
+  assert.deepEqual(Object.values(EVENTS).filter((event) => event.choices.some((choice) => choice.reward >= 100 || choice.check?.success?.reward >= 100)).map((event) => event.id), ['wallet'], 'it is the only event that pays');
+  let now = MONDAY_NOON, wallets = 0, trips = 0;
+  const state = createLife(null, at(now));
+  const firstDay = Math.floor((now + 3600000) / 86400000);
+  while (trips < 600) {
+    const day = Math.floor((now + 3600000) / 86400000);
+    if (day !== firstDay) break;
+    state.needs.energy = 100;
+    const result = dispatch(state, { type: 'travel', payload: { id: state.location === 'park' ? 'library' : 'park', mode: 'trek' }, actionId: `w-${trips}` }, at(now, `w-${trips}`));
+    assert.equal(result.ok, true);
+    const seconds = state.activeAction.remaining; now += seconds * 1000; advanceLife(state, seconds, at(now, `w-${trips}`)); trips += 1;
+    if (state.travel.event?.id === 'wallet') wallets += 1;
+  }
+  assert.ok(trips > 200, `${trips} treks in one afternoon`);
+  assert.equal(wallets, 1, 'one wallet, however far you walk');
+  assert.equal(state.travel.eventDays.wallet, firstDay);
 });

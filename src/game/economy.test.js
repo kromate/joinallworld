@@ -1,0 +1,162 @@
+// Design intent of the economy, checked against scripts/economy-sim.mjs — scripted lives played
+// through the real rules engine on a virtual clock. If a content change breaks one of these, the
+// change is the thing to question, not the assertion.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { runEconomy, simulate, Player, STARTS, STRATEGIES, GIGS, CHECKPOINTS, CHEAPEST_CAR, categoryOf } from '../../scripts/economy-sim.mjs';
+import { lagosTime } from './clock.js';
+import { GIG_DAILY_LIMIT } from './content/venues.js';
+import { TRACKS, HELPER_COOLDOWN_SECONDS } from './content/jobs.js';
+import { HOUSES } from './content/housing.js';
+import { HUNT } from './content/civic.js';
+import { RENTS, LOAN, LOAN_LATE_FEE, MAX_LOAN_FEES, MAX_ARREARS_WEEKS, LATE_FEE_PERCENT, DEPOSIT_TOTAL_CAP, DEPOSIT_TERMS } from './systems/economy.js';
+
+const DAYS = 30, HORIZON = 200;
+const rows = runEconomy({ days: DAYS, horizon: HORIZON, track: 'tech' });
+const of = (strategy) => rows.filter((row) => row.strategy === strategy);
+const at = (row) => `${row.lottery}/${row.house} ${row.strategy}`;
+const weeklyEntry = (track) => track.ladder[0].pay * track.days.length;
+const lowestTrack = [...TRACKS].sort((a, b) => weeklyEntry(a) - weeklyEntry(b))[0];
+
+test('economy: the table covers every start and strategy, deterministically', () => {
+  assert.equal(rows.length, STARTS.length * Object.keys(STRATEGIES).length);
+  assert.deepEqual(STARTS.map((start) => `${start.lottery}/${start.house}`), ['lapo-baby/mushin', 'lapo-baby/yaba', 'civil-servant/mushin', 'civil-servant/yaba', 'civil-servant/lekki',
+    'street-smart/mushin', 'street-smart/yaba', 'ajebutter/mushin', 'ajebutter/yaba', 'ajebutter/lekki']);
+  for (const row of rows) assert.deepEqual(Object.keys(row.netWorth).map(Number), CHECKPOINTS, at(row));
+  const again = simulate({ lottery: 'lapo-baby', house: 'yaba', strategy: 'optimal', days: DAYS, horizon: DAYS });
+  const first = simulate({ lottery: 'lapo-baby', house: 'yaba', strategy: 'optimal', days: DAYS, horizon: DAYS });
+  assert.deepEqual([again.netWorth, again.flows, again.ledgerSum], [first.netWorth, first.flows, first.ledgerSum], 'the same life twice gives the same numbers');
+});
+
+test('economy: no strategy creates money from nothing', () => {
+  const sources = new Set(['start', 'wages', 'gigs', 'goals', 'hunt', 'savings', 'events', 'purchases']);
+  for (const row of rows) {
+    assert.equal(row.conserved, true, `${at(row)}: cash = seed + Σ ledger`);
+    assert.deepEqual(row.unknown, [], `${at(row)}: every ledger reason is one the report knows`);
+    assert.ok(row.minCash >= 0, `${at(row)}: cash never went below zero`);
+    for (const line of row.credits) assert.ok(sources.has(line.category), `${at(row)}: unexpected credit “${line.reason}” (${line.category})`);
+    assert.equal(row.credits.filter((line) => line.category === 'start').length, 1, `${at(row)}: start cash is paid once`);
+    assert.ok((row.flows.goals ?? 0) <= 8000, `${at(row)}: starter goals pay at most ₦8,000 in total`);
+    // Deposits: what comes back is what went in plus capped interest — never more than a week's best rate on the cap, per week.
+    const interest = row.flows.savings ?? 0;
+    assert.ok(interest <= Math.ceil(DAYS / 7) * DEPOSIT_TOTAL_CAP * DEPOSIT_TERMS.d7.bps / 10000, `${at(row)}: deposit interest is bounded (${interest})`);
+  }
+  for (const row of of('idle')) {
+    assert.deepEqual(row.credits.map((line) => line.category), ['start'], `${at(row)}: an idle life is credited nothing after its start cash`);
+    assert.deepEqual([row.flows.wages ?? 0, row.flows.gigs ?? 0, row.flows.hunt ?? 0], [0, 0, 0]);
+  }
+});
+
+test('economy: every repeatable source of money has a daily cap that holds in play', () => {
+  for (const row of rows) {
+    const perDay = {};
+    for (const line of row.credits) {
+      const key = `${lagosTime(line.at).day}|${line.category === 'events' ? line.reason : line.category}`;
+      perDay[key] = (perDay[key] ?? 0) + 1;
+    }
+    for (const [key, count] of Object.entries(perDay)) {
+      const kind = key.split('|')[1];
+      if (kind === 'gigs') assert.ok(count <= GIG_DAILY_LIMIT, `${at(row)}: ${count} paid gigs in one day`);
+      if (kind === 'hunt') assert.equal(count, 1, `${at(row)}: one gem prize a day`);
+      if (kind === 'wages') assert.ok(count <= (row.strategy === 'helper' ? 86400 / HELPER_COOLDOWN_SECONDS : 1), `${at(row)}: ${count} paid shifts in one day`);
+      if (kind === 'A wallet on the ground') assert.equal(count, 1, `${at(row)}: one found wallet a day`);
+    }
+    const hunt = row.flows.hunt ?? 0;
+    assert.ok(hunt <= DAYS * HUNT.prize, at(row));
+  }
+  assert.ok(GIGS.length >= 40, 'the gig catalogue is what the limit is spread over');
+  assert.ok(of('gig-all-day').every((row) => (row.refusals.gig_limit ?? 0) === 0 && row.activePerDay < 600), 'a grinder stops when the day’s gigs are done instead of hammering the limit');
+});
+
+test('economy: a diligent career player stays solvent on every start, including the hardest, on the best and the worst-paid track', () => {
+  for (const row of of('career')) {
+    assert.equal(row.rentMissedWeeks, 0, `${at(row)}: rent was paid every Saturday`);
+    assert.equal(row.final.arrears, 0, at(row));
+    assert.ok(row.minCash > 0, at(row));
+    assert.ok(row.firstPromotionDay !== null && row.firstPromotionDay <= 10, `${at(row)}: first promotion by day 10 (was day ${row.firstPromotionDay})`);
+    assert.ok(row.netWorth[30] > row.netWorth[1], `${at(row)}: a month of work leaves the player better off`);
+  }
+  // The hardest start is the one an idle life drains fastest relative to what it began with.
+  const hardest = [...of('idle')].sort((a, b) => a.netWorth[30] - b.netWorth[30])[0];
+  assert.deepEqual([hardest.lottery, hardest.house], ['lapo-baby', 'mushin']);
+  for (const start of [{ lottery: 'lapo-baby', house: 'mushin' }, { lottery: 'lapo-baby', house: 'yaba' }, { lottery: 'street-smart', house: 'yaba' }]) {
+    const worst = simulate({ ...start, strategy: 'career', days: DAYS, horizon: DAYS, track: lowestTrack.id });
+    assert.deepEqual([worst.rentMissedWeeks, worst.final.arrears, worst.minCash > 0, worst.conserved], [0, 0, true, true], `${start.lottery}/${start.house} on ${lowestTrack.id}`);
+    assert.ok(worst.final.loanLeft <= LOAN.total - 4 * LOAN.weekly || start.lottery !== 'lapo-baby', 'the loan is being repaid on schedule');
+  }
+});
+
+test('economy: gigs never beat a career at equal effort, and an all-day grinder stays within 1.5× of it', () => {
+  for (const career of of('career')) {
+    const same = (strategy) => of(strategy).find((row) => row.lottery === career.lottery && row.house === career.house);
+    const equal = same('gig'), allDay = same('gig-all-day'), helper = same('helper'), mix = same('optimal');
+    assert.ok(equal.activePerDay <= career.activePerDay * 1.15, `${at(equal)}: “equal effort” really is (${equal.activePerDay}s vs ${career.activePerDay}s a day)`);
+    assert.ok((equal.flows.gigs ?? 0) <= career.flows.wages, `${at(equal)}: gigs ₦${equal.flows.gigs} vs wages ₦${career.flows.wages} for the same active time`);
+    assert.ok((allDay.flows.gigs ?? 0) <= 1.5 * career.flows.wages, `${at(allDay)}: all-day gigs ₦${allDay.flows.gigs} vs wages ₦${career.flows.wages}`);
+    assert.ok(helper.flows.wages <= career.flows.wages / 3, `${at(helper)}: the starter job never rivals a career`);
+    assert.ok(mix.netWorth[30] >= career.netWorth[30] && mix.netWorth[30] >= allDay.netWorth[30], `${at(mix)}: working AND gigging beats either alone`);
+    assert.ok(mix.flows.wages >= 0.35 * (mix.flows.wages + mix.flows.gigs + mix.flows.hunt), `${at(mix)}: even for the best mix, wages stay a large share of income`);
+  }
+});
+
+test('economy: an idle or broke player is never stuck — free food, wash, rest and work always exist, and debt is bounded', () => {
+  for (const start of STARTS) {
+    const player = new Player(start);
+    // Idle for twenty weeks: one settlement a day, nothing else.
+    for (let day = 1; day <= 140; day++) player.awayUntil(player.now + 86400000);
+    const { economy, cash, needs } = player.state;
+    assert.ok(Number.isSafeInteger(cash) && cash >= 0, `${start.lottery}/${start.house}: cash ${cash}`);
+    const house = RENTS[economy.rent.house];
+    assert.ok(economy.rent.arrears <= Math.round(house.rent * MAX_ARREARS_WEEKS * (1 + LATE_FEE_PERCENT / 100)), 'rent arrears are capped');
+    assert.ok((economy.loan?.left ?? 0) <= LOAN.total + LOAN_LATE_FEE * MAX_LOAN_FEES, 'the loan can never grow past its total plus the capped fees');
+    assert.ok(Object.values(needs).every((value) => value >= 10), 'needs never decay below the floor on their own');
+    assert.equal(player.state.property.house, start.house, 'nobody is evicted');
+    // Recovery with whatever is left, spending nothing: walk home, eat, wash, rest, then earn.
+    const before = player.state.cash, spent = () => player.lines.filter((line) => line.amount < 0 && line.at > player.returnedAt).length;
+    player.returnedAt = player.now - 1;
+    assert.equal(player.travel('home', 'trek'), true, 'home is always reachable on foot');
+    const hunger = player.state.needs.hunger, hygiene = player.state.needs.hygiene, energy = player.state.needs.energy;
+    assert.equal(player.upkeep({ hunger: 90, hygiene: 90, energy: 90, mode: 'trek' }), true);
+    assert.ok(player.state.needs.hunger > hunger && player.state.needs.hygiene > hygiene && player.state.needs.energy > energy, 'free food, a free wash and free rest all worked');
+    assert.equal(spent(), 0, 'and cost nothing');
+    assert.equal(player.do('apply-job', { id: 'community-helper' }).ok, true);
+    assert.equal(player.travel('park', 'trek'), true);
+    assert.equal(player.run('work', 'helper-shift').ok, true, 'a paid shift can be worked at once, at any hour');
+    assert.deepEqual([player.lines.some((line) => line.reason === 'Community helper shift' && line.amount === 300), spent()], [true, 0], 'the first naira is earned without spending one');
+    assert.ok(player.state.cash >= before + 300);
+    // And a month of the career routine from there clears what is owed or is clearly on the way to it.
+    const owed = player.state.economy.rent.arrears;
+    assert.equal(player.do('career.switch', { id: 'tech' }).ok, true);
+    for (let day = 0; day < 35; day++) { player.awayUntil(Math.ceil(player.now / 86400000) * 86400000 + 8 * 3600000); STRATEGIES.career.day(player); player.settle(); }
+    assert.ok(player.state.economy.rent.arrears < Math.max(owed, 1) || owed === 0, `${start.lottery}/${start.house}: arrears fell from ${owed} to ${player.state.economy.rent.arrears}`);
+    assert.ok(player.state.cash > before, 'and the player is better off than when they came back');
+  }
+});
+
+test('economy: the next house and the cheapest car are reachable on a sane timescale; the fourth house is reachable by working', () => {
+  for (const row of of('career')) {
+    if (row.house !== 'lekki') assert.ok(row.nextHouseDay !== null && row.nextHouseDay <= 45, `${at(row)}: next house (${row.nextHouse}) affordable by day 45, was ${row.nextHouseDay}`);
+    else assert.ok(row.nextHouseDay !== null && row.nextHouseDay <= HORIZON, `${at(row)}: the fourth house within ${HORIZON} days, was ${row.nextHouseDay}`);
+    assert.ok(row.carDay !== null && row.carDay <= 90, `${at(row)}: the ${CHEAPEST_CAR.label} within 90 days of daily shifts, was ${row.carDay}`);
+    assert.ok(row.carDay >= 20, `${at(row)}: and not handed over in the first weeks`);
+  }
+  for (const row of of('optimal')) assert.ok(row.carDay !== null && row.carDay >= 14 && row.carDay <= 45, `${at(row)}: best mix buys the first car in weeks, not days (${row.carDay})`);
+  for (const row of of('helper')) assert.ok(row.carDay === null || row.carDay > 150, `${at(row)}: the starter job alone is not a way to a car`);
+  // The top of the ladder can carry the fourth house's rent on the median track (see PAY_CURVE in content/jobs.js).
+  const topWeekly = TRACKS.map((track) => track.ladder.at(-1).pay * track.days.length).sort((a, b) => a - b);
+  assert.ok(topWeekly[Math.floor(topWeekly.length / 2)] >= HOUSES.ikoyi.rent, `median top-level weekly pay ₦${topWeekly[Math.floor(topWeekly.length / 2)]} vs Ikoyi rent ₦${HOUSES.ikoyi.rent}`);
+});
+
+test('economy: nothing overflows, even after a year of the best mix', () => {
+  for (const row of rows) for (const value of [...Object.values(row.netWorth), ...Object.values(row.cash), row.ledgerSum, row.final.cash]) assert.ok(Number.isSafeInteger(value), `${at(row)}: ${value}`);
+  const year = simulate({ lottery: 'ajebutter', house: 'lekki', strategy: 'optimal', days: 365, horizon: 365 });
+  assert.equal(year.conserved, true);
+  assert.ok(Number.isSafeInteger(year.final.cash) && year.final.cash < 1e9, `a year of the best mix ends at ₦${year.final.cash}`);
+  assert.ok(Object.values(year.final.needs).every((value) => value >= 0 && value <= 100));
+  assert.equal(year.final.level, 6, 'and reaches the top of the ladder');
+  const state = year.player.state;
+  assert.ok(Object.values(state.skills).every((xp) => Number.isFinite(xp) && xp >= 0 && xp <= 5500));
+  assert.ok(Object.values(state.inventory).every((count) => Number.isSafeInteger(count) && count > 0));
+  assert.ok(state.ledger.length <= 60 && state.ledgerDays.length <= 35, 'the history stays bounded');
+  assert.equal(categoryOf({ reason: 'Tech shift', amount: 1 }), 'wages');
+});

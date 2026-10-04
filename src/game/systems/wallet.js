@@ -55,7 +55,7 @@ export function reasonGroup(reason) {
   const known = PREFIXES.find((prefix) => text.startsWith(prefix));
   if (known) return known;
   const cut = text.split(/:| · | \(| to | × /)[0].trim();
-  return (cut || OTHER).slice(0, GROUP_MAX);
+  return (cut || OTHER).slice(0, GROUP_MAX).trim() || OTHER;
 }
 
 function addToDay(state, at, amount, balance, reason) {

@@ -319,7 +319,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   server.wss = wss;
   server.beat = beat; // tests drive the heartbeat directly instead of waiting for the timer
   server.store = store;
-  server.on('close', () => { clearInterval(heartbeat); for (const ws of wss.clients) ws.terminate(); wss.close(); store.close?.().catch(() => {}); });
+  server.on('close', () => { clearInterval(heartbeat); for (const ws of wss.clients) ws.terminate(); wss.close(); });
+  // close(callback) reports back only once the store has written everything, so "the server has
+  // stopped" always means "the data file is complete" — for a restart, a test or a shutdown script.
+  const closeHttp = server.close.bind(server);
+  server.close = (callback) => closeHttp((error) => { Promise.resolve(store.close?.()).catch(() => {}).finally(() => callback?.(error)); });
   await Promise.all(ctx.startup.splice(0));
   return server;
 }

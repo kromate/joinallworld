@@ -3,15 +3,19 @@
 //
 // It is a form with a draft (profileState.ts). The display name is the device-session nickname,
 // renamed through POST /api/session; the look is saved with the 'onboarding.set-look' action.
-// The preview, the appearance editor and the local-government card are existing pieces drawn by
-// other panels (src/ui/panels/look-ui.js, lga-card.js); they are hosted through
-// src/app/legacy/parts.ts and redrawn when the draft changes.
+// The preview and the appearance editor are the look components of the start feature
+// (LookStage, LookEditor); the local-government card is still an existing piece drawn by
+// lga-card.js, hosted through src/app/legacy/parts.ts and redrawn when the draft changes.
 import { computed, nextTick, onBeforeUnmount, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { DREAMS, START_HOMES, TRAITS } from '../../legacy/content.ts'
 import LegacyPanel from '../../legacy/LegacyPanel.vue'
 import { linkWords } from '../../legacy/modules.ts'
-import { bindLgaCard, chooseLook, escapeHtml, hosted, lookEditor, lookStage, lookSummary, lookTabClick, mountLookPreview, renderLgaCard, sameLook } from '../../legacy/parts.ts'
+import { bindLgaCard, hosted, renderLgaCard } from '../../legacy/parts.ts'
+import LookEditor from '../start/LookEditor.vue'
+import LookStage from '../start/LookStage.vue'
+import { chooseLook, lookSummary, sameLook } from '../start/lookModel.ts'
+import type { LookField } from '../start/lookModel.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { saveFailure, saveState } from './profileModel.ts'
 import { draft, form, saved } from './profileState.ts'
@@ -40,26 +44,17 @@ const save = computed(() => saveState({
 }))
 const home = computed(() => (onboarding.value.house ? homes[onboarding.value.house] : undefined))
 
-// The existing pieces: they read the draft when they are drawn.
-const stage = hosted('profile-stage',
-  () => (current.value ? lookStage(current.value.look, { variant: 'wide', name: state.value.name, caption: escapeHtml(lookSummary(current.value.look)) }) : ''),
-  (root) => { if (current.value) mountLookPreview(root, current.value.look, { name: state.value.name }) })
-const editor = hosted('profile-editor', () => (current.value ? lookEditor(current.value.look, { owned: onboarding.value.wardrobe }) : ''))
 const lga = hosted('profile-lga', (s, v) => (v.onboarding.done ? renderLgaCard(s, v) : ''), (root, api) => bindLgaCard(root, api, { redraw: () => legacy.api.refresh() }))
 
 let focusKey = ''
-/** The editor was redrawn: the keyboard stays where it was. */
+/** The card was redrawn: the keyboard stays where it was. */
 function redraw(): void {
   legacy.api.refresh()
   if (focusKey) void nextTick(() => document.querySelector<HTMLElement>(`[data-profile] [data-key="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true }))
 }
-function onEditorClick(event: MouseEvent): void {
-  const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-look],[data-look-tab]') : null
-  if (!target || (target instanceof HTMLButtonElement && target.disabled) || !current.value) return
-  focusKey = target.dataset.key ?? ''
-  if (lookTabClick(target)) { redraw(); return }
-  draft.value = { ...current.value, look: chooseLook(current.value.look, target.dataset.look ?? '', target.dataset.value ?? '', view.value.onboarding.wardrobe) }
-  redraw()
+function onChoose(field: LookField, value: string): void {
+  if (!current.value) return
+  draft.value = { ...current.value, look: chooseLook(current.value.look, field, value, view.value.onboarding.wardrobe) }
 }
 // A saved change from elsewhere replaces the draft: the pieces draw it again.
 watch([() => state.value.name, () => state.value.onboarding.look], () => { sync(); legacy.api.refresh() })
@@ -86,7 +81,7 @@ async function submit(): Promise<void> {
   <form v-if="current" class="sim-profile" data-profile novalidate @submit.prevent="submit()">
     <p v-if="!onboarding.done && onboarding.guest" class="sim-note">You are a guest in the city: no traits, dream or home yet. <button type="button" class="sim-link" @click="shell.open('onboarding')">Make this life yours</button> — everything you have earned is kept.</p>
     <p v-else-if="!onboarding.done" class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" @click="shell.open('onboarding')">Create your Sim</button></p>
-    <LegacyPanel class="sim-stage" :panel="stage" />
+    <LookStage class="sim-stage" :look="current.look" variant="wide" :name="state.name" :caption="lookSummary(current.look)" />
     <div class="sim-profile-top">
       <div>
         <label class="sim-field">Display name<input v-model="current.name" name="name" maxlength="24" autocomplete="nickname" data-key="name"></label>
@@ -101,7 +96,7 @@ async function submit(): Promise<void> {
     </div>
     <h3>Appearance</h3>
     <p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>
-    <div @click="onEditorClick"><LegacyPanel :panel="editor" /></div>
+    <LookEditor :look="current.look" :owned="onboarding.wardrobe" @choose="onChoose" />
     <LegacyPanel :panel="lga" />
     <p v-if="form.error" class="sim-error" role="alert">{{ form.error }}</p>
     <div class="sim-save-bar"><button type="submit" class="ui-button is-primary sim-save" data-key="save" :disabled="save.disabled">{{ save.label }}</button></div>

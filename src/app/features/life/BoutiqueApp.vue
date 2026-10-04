@@ -6,13 +6,13 @@
 // The 3D preview at the top shows your Sim. "Try on" puts an item on the preview only — nothing is
 // bought or changed until Buy or Wear is pressed. The preview is the look stage of the character
 // panels (src/ui/panels/look-ui.js), hosted through src/app/legacy/parts.ts.
-import { computed, watch } from 'vue'
+import { computed } from 'vue'
 import type { AccessoryId, Look } from '../../../types/life.ts'
 import type { BoutiqueItem } from '../../../types/view.ts'
 import { useApp } from '../../state/app.ts'
-import LegacyPanel from '../../legacy/LegacyPanel.vue'
 import { linkWords } from '../../legacy/modules.ts'
-import { escapeHtml, hosted, lookStage, lookSummary, mountLookPreview, withAccessory, withoutAccessory } from '../../legacy/parts.ts'
+import LookStage from '../start/LookStage.vue'
+import { lookSummary, withAccessory, withoutAccessory } from '../start/lookModel.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useAct } from '../kit/act.ts'
@@ -31,18 +31,7 @@ const shown = computed<Look>(() => (tried.value ? wearing(onboarding.value.look,
 const caption = computed(() => (tried.value ? `Trying on: ${tried.value.label}${tried.value.owned ? '' : ` · ${money(tried.value.price)}`}` : lookSummary(onboarding.value.look)))
 const sections = computed(() => SECTIONS.map(([kind, title]) => ({ kind, title, items: onboarding.value.boutique.filter((item) => item.kind === kind) })))
 
-const BACK = '<button type="button" class="look-tool" data-try="null" data-key="try:none">↶ Back to my look</button>'
-const stage = hosted('boutique-stage',
-  () => lookStage(shown.value, { variant: 'wide', name: view.value.name, tools: tried.value ? BACK : '', caption: escapeHtml(caption.value) }),
-  (root) => mountLookPreview(root, shown.value, { name: view.value.name }))
-// The preview is drawn again when the item being tried changes.
-watch(trying, () => legacy.api.refresh())
-
 function tryOn(item: BoutiqueItem): void { trying.value = nextTrying(trying.value, { kind: item.kind, id: item.id }) }
-/** The "Back to my look" button lives in the hosted stage. */
-function onStageClick(event: MouseEvent): void {
-  if (event.target instanceof Element && event.target.closest('[data-try]')) trying.value = null
-}
 const wear = (item: BoutiqueItem): Promise<boolean> => act(`wear:${item.kind}:${item.id}`, () => command('onboarding.set-look', { look: wearing(onboarding.value.look, item, withAccessory) }))
 const takeOff = (item: BoutiqueItem): Promise<boolean> => act(`off:${item.id}`, () => command('onboarding.set-look', { look: { ...onboarding.value.look, accessories: withoutAccessory(onboarding.value.look, item.id as AccessoryId) } }))
 const buy = (item: BoutiqueItem): Promise<boolean> => act(`buy:${item.kind}:${item.id}`, () => command('onboarding.boutique-buy', { kind: item.kind, id: item.id }))
@@ -52,7 +41,9 @@ const isTrying = (item: BoutiqueItem): boolean => tried.value === item
 <template>
   <div class="boutique-root">
     <div class="boutique-top">
-      <div @click="onStageClick"><LegacyPanel :panel="stage" /></div>
+      <LookStage :look="shown" variant="wide" :name="view.name" :caption="caption">
+        <template v-if="tried" #tools><button type="button" class="look-tool" data-try="null" data-key="try:none" @click="trying = null">↶ Back to my look</button></template>
+      </LookStage>
       <p>Wallet <strong>{{ money(game.state.value.cash) }}</strong><small>Try anything on first. Buying puts it on straight away and keeps it in your wardrobe. Styles shown fit your current body; colours are free in Sim → Profile.</small></p>
     </div>
     <template v-for="section in sections" :key="section.kind">

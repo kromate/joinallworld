@@ -4,16 +4,15 @@
 // action; furniture moves with the player and anything that does not fit goes to storage.
 // Every disabled Move button says what is missing (view.property.houses[].blocked).
 //
-// "Your own house" at the top is still the world panels' section (src/app/legacy/myHouse.ts).
+// "Your own house" at the top is MyHouse.vue (src/app/features/travel/).
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
-import LegacyPanel from '../../legacy/LegacyPanel.vue'
 import { MOVE_IN_WEEKS } from '../../legacy/content.ts'
-import { MY_HOUSE } from '../../legacy/myHouse.ts'
 import { linkWords } from '../../legacy/modules.ts'
 import { money } from '../../ui/format.ts'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { useAct } from '../kit/act.ts'
+import MyHouse from '../travel/MyHouse.vue'
 import HouseArt from './HouseArt.vue'
 import { housesRules, moveReason, nextHouse, savedPercent } from './homeModel.ts'
 import type { HouseId } from '../../../types/life.ts'
@@ -34,7 +33,7 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
 <template>
   <p v-if="!property" class="ui-error">Houses could not be loaded. Close this app and open it again.</p>
   <div v-else class="houses-app">
-    <LegacyPanel :panel="MY_HOUSE" />
+    <MyHouse />
     <h3 class="ui-section">Homes to rent</h3>
     <section class="ui-hero houses-hero">
       <small>{{ next ? 'Next step up' : 'Top of the ladder' }}</small>

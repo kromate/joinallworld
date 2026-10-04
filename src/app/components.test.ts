@@ -156,7 +156,8 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
   const { send } = await load<{ send: (key: string, target: { conv: string }, body: string) => void }>('/src/app/legacy/social.ts')
   const { ui } = await load<{ ui: { open: string | null } }>('/src/app/features/messages/messagesState.ts')
   // Under Node there is no page and no WebSocket: the social client is given the api and nothing more.
-  social.api = app.legacy.api
+  const { attach } = await load<{ attach: (api: unknown) => void }>('/src/app/features/social/useSocial.ts')
+  attach(app.legacy.api)
   ui.open = 'dm.ada.me'
   try {
     let html = await render(messages)
@@ -194,11 +195,11 @@ test('Report a problem: the form, what is sent with it, and the empty list', asy
   assert.match(html, /role="status" aria-label="Loading your reports"/, 'the list is fetched when the app is shown, not before')
 })
 
-test('Phone: the home screen lists Vue panels and existing panels side by side', async () => {
+test('Phone: the home screen lists the Vue panels', async () => {
   const html = await render('/src/app/features/phone/PhoneDevice.vue')
   for (const id of ['bank', 'messages', 'support', 'jobs', 'groceries', 'governor', 'career', 'help', 'community']) assert.match(html, new RegExp(`data-ph-app="${id}"`), `${id} is on the home screen`)
   const kinds = Object.fromEntries(app.panels.map((panel) => [panel.id, 'kind' in panel ? 'vue' : 'existing']))
-  assert.deepEqual([kinds.bank, kinds.messages, kinds.support, kinds.jobs, kinds.groceries, kinds.ride], ['vue', 'vue', 'vue', 'vue', 'vue', 'existing'])
+  assert.deepEqual([kinds.bank, kinds.messages, kinds.support, kinds.jobs, kinds.groceries, kinds.ride], ['vue', 'vue', 'vue', 'vue', 'vue', 'vue'])
   assert.match(html, /role="img" aria-label="Connected to the game server"/)
   assert.match(html, new RegExp(`aria-label="Battery: your Sim’s Energy is ${Math.round(app.game.state.value.needs.energy)}%"`))
   assert.match(html, /<section class="ph-app"[^>]*inert/, 'no app is open, so the app layer cannot be reached')

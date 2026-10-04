@@ -14,6 +14,9 @@ import { CIVIC_APPS, CIVIC_HUD } from './civic/register.ts'
 import { GROWTH_HUD_PANELS, GROWTH_PANELS } from './growth/register.ts'
 import { TABLES_PANELS } from './tables/register.ts'
 import { WORLD_PANELS } from './world/register.ts'
+import { SOCIAL_PANELS } from './social/register.ts'
+import { START_PANELS } from './start/register.ts'
+import { TRAVEL_PANELS } from './travel/register.ts'
 
 export const bank = definePanel({
   id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14, group: 'money',
@@ -135,4 +138,4 @@ export const buy = definePanel({
   component: defineAsyncComponent(() => import('./home/BuyMode.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...WORLD_PANELS]
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS]

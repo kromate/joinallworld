@@ -9,10 +9,13 @@ import { shallowRef } from 'vue'
 import type { LifeState } from '../../types/life.ts'
 import type { Panel, ShellMode, VuePanel } from '../types/panel.ts'
 import type { CityView, PlayerLook, VenueWorld, WorldMap } from '../legacy/scene.ts'
-import { NPCS, isDeparting, roomJoinNeeded } from '../legacy/engine.ts'
+import { NPCS, isDeparting, roomJoinNeeded, venueLabel } from '../legacy/engine.ts'
 import { LEGACY_PANELS, crowdList, linkWords, playersHere } from '../legacy/modules.ts'
-import { forgetDraft, keepPlay, pendingPlay, play } from '../legacy/quickStart.ts'
-import { loadPeople, onPeople, social } from '../legacy/social.ts'
+import { captureLink, forgetDraft, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingPlay, pendingRef, pendingTable, play, track } from '../legacy/quickStart.ts'
+import { deviceToken } from '../features/growth/boundary.ts'
+import { createLanding } from '../features/landing/landingStore.ts'
+import { tableById } from '../../tables/places.ts'
+import { loadPeople, onPeople, social, takeLinkHost } from '../legacy/social.ts'
 import { createLegacyHost } from '../legacy/api.ts'
 import { createDeclarativeHandler } from '../legacy/declarative.ts'
 import { useGame } from './game.ts'
@@ -41,6 +44,8 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
     /** Asked for by the shell the first time the Map opens. */
     mapsWanted: shallowRef(false),
   }
+  // The link this page was opened with is read once, here, before anything rewrites the address.
+  { const link = captureLink(); if (link.join || link.ref || link.table) track('invite_opened', { kind: link.table ? 'table' : link.ref ? 'share' : 'house', has_session: game.client.hasSavedIdentity === true }) }
   let pendingRoute: { venue: string; spot?: string } | null = null
   let shownTrip = ''
 
@@ -116,6 +121,28 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
   game.on('expired', () => { const gate = shell.sessionGate('expired'); if (gate) shell.open(gate.id, { reason: 'expired' }) })
   game.on('needName', (problem) => { const gate = shell.sessionGate('new'); if (gate) shell.open(gate.id, { reason: 'new', problem }) })
 
+  /** The landing of an invite, share or table link (features/landing): handled once, after the quick start. */
+  const landing = createLanding({
+    fetchJson: game.fetchJson,
+    online: () => game.connected.value,
+    cityId: () => game.cityId.value,
+    sessionId: () => game.session.value?.id ?? null,
+    isGuest: () => game.state.value.onboarding?.stage === 'guest' && !game.state.value.onboarding.done,
+    refresh: () => game.refresh(),
+    open: (id, params) => shell.open(id, params),
+    toast: (text) => game.toast(text),
+    venueLabel: (id) => venueLabel(id, game.cityId.value),
+    welcomeText: () => `Welcome to ${venueLabel(game.state.value.location, game.cityId.value)}, ${game.state.value.name || game.client.identity.name}.`,
+    tableExists: (id) => tableById(id) !== null,
+    deviceToken,
+    track,
+    cleanAddress() { try { if (location.pathname !== '/' || location.search) history.replaceState(null, '', '/') } catch { /* the address stays as it was */ } },
+    takeLinkHost: () => { takeLinkHost() },
+    joinTarget, forgetJoin, pendingRef, forgetRef, pendingTable, forgetTable,
+    setTimeout: (run, ms) => globalThis.setTimeout(run, ms),
+    clearTimeout: (handle) => globalThis.clearTimeout(handle as number),
+  })
+
   /** Open the landing screen again with one sentence about what went wrong; the name and character are still on the device. */
   function reopenLanding(reason: string, name?: string | null): void {
     const gate = shell.sessionGate('new')
@@ -127,11 +154,11 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
    * (state.onboarding.required); the look the landing screen kept on the device is confirmed by one
    * 'onboarding.quick-start' action whose id is made once and reused by every retry, so the server
    * applies it exactly once. Safe to call any number of times.
-   * (What src/life-main.js does next — an invite, share or table link — is not hosted by this shell yet.)
+   * Then an invite, share or table link is landed (features/landing).
    */
   async function firstMinute(): Promise<void> {
     const onboarding = game.state.value.onboarding
-    if (onboarding.done || onboarding.stage !== 'guest') { play.sending = false; if (onboarding.done) forgetDraft(); return }
+    if (onboarding.done || onboarding.stage !== 'guest') { play.sending = false; if (onboarding.done) forgetDraft(); await landing.land(); return }
     const kept = pendingPlay()
     if (!onboarding.required || !kept) { play.sending = false; if (!onboarding.required) keepPlay(null); return }
     const actionId = kept.actionId ?? game.newId()
@@ -139,6 +166,7 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
     play.sending = true
     const result = await game.resend(actionId, 'onboarding.quick-start', { look: kept.look, ...(kept.joining ? { joining: true } : {}) })
     play.sending = false
+    if (result.ok && kept.joining) landing.owe()
     if (result.ok) {
       keepPlay(null)
       shell.ui.expanded = true
@@ -149,6 +177,7 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
       reopenLanding('That character could not be saved. Choose again and tap Play.')
     } else if (game.connected.value) reopenLanding(result.reason || 'Your character could not be saved yet. Tap Play to try again — nothing is lost.')
     shell.enforceRequired()
+    if (!game.state.value.onboarding.required) await landing.land()
   }
   /** Connect (or reconnect), then finish what the first minute left open. */
   async function connect(createNew = false, name: string | null = null): Promise<boolean> {
@@ -229,7 +258,7 @@ function createApp(game: Game, native: readonly VuePanel[], search: string) {
   legacy.api.command = command
   const onDeclarativeClick = createDeclarativeHandler({ ...game, command }, shell, { toggleCommunity, menu, startLife })
 
-  return { game, panels, shell, legacy, scene, command, connect, quickStart, goTo, menu, startLife, switchCity, toggleCommunity, showMapLayer, showPlayer, showCrowd, heldCities, onDeclarativeClick, playerLook }
+  return { game, panels, shell, landing, legacy, scene, command, connect, quickStart, goTo, menu, startLife, switchCity, toggleCommunity, showMapLayer, showPlayer, showCrowd, heldCities, onDeclarativeClick, playerLook }
 }
 export type App = ReturnType<typeof createApp>
 

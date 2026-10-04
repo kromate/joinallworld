@@ -6,7 +6,13 @@
  *   t             server ms this state was last settled to
  *   activeAction  null | { kind, id, duration, remaining, ...kind-specific }
  * Timed actions are driven here; what a kind means is supplied by whichever system
- * registers `active: { [kind]: { sanitize, tick?, complete, cancel? } }`.
+ * registers `active: { [kind]: { moves, sanitize, tick?, complete, cancel?, invalidated? } }`
+ * (the contract is in registry.js).
+ *
+ * A SAVED ACTION THAT IS NO LONGER VALID (its definition changed, its venue is gone) is dropped at
+ * load. Before it is dropped the kind's `invalidated` hook runs, so whatever the player paid when
+ * it started is returned through the wallet ledger. The action is gone from the state afterwards,
+ * so the hook can never run twice for one action.
  */
 import { activeHandler, emit } from '../registry.js';
 import { finite, isRecord, ok, fail } from '../util.js';
@@ -22,8 +28,10 @@ export function sanitizeActive(input, state, ctx) {
   state.activeAction = null;
   if (!isRecord(value) || !finite(value.remaining) || value.remaining <= 0 || !finite(value.duration)
     || value.duration <= 0 || value.remaining > value.duration || typeof value.id !== 'string') return;
-  const extra = activeHandler(value.kind)?.sanitize(value, state, ctx);
+  const handler = activeHandler(value.kind);
+  const extra = handler?.sanitize(value, state, ctx);
   if (extra) state.activeAction = { kind: value.kind, id: value.id, duration: value.duration, remaining: value.remaining, ...extra };
+  else handler?.invalidated?.(state, value, ctx);
 }
 
 /** Advance the timed action. Returns 'idle' | 'advanced' | 'completed'. */
@@ -35,7 +43,11 @@ export function advanceActive(state, dt, ctx) {
   active.remaining = Math.max(0, active.remaining - dt);
   if (active.remaining > 0) return 'advanced';
   state.activeAction = null;
+  const from = state.location;
   handler?.complete(state, active, ctx);
+  // A kind that moves the player must say so (`moves: true`): room membership and voice are
+  // revoked from that declaration while the action runs, not from what it does at the end.
+  if (state.location !== from && handler?.moves !== true) throw new Error(`Active kind "${active.kind}" changed the location but is not declared moves: true.`);
   return 'completed';
 }
 
@@ -55,10 +67,13 @@ export default {
     cancel(state, payload, ctx) {
       const active = state.activeAction;
       if (!active) return fail(state, 'idle');
-      const refused = activeHandler(active.kind)?.cancel?.(state, active, ctx);
-      if (refused) return refused;
-      state.activeAction = null;
+      // The message is set first so the kind's handler can replace it (an early stop that was
+      // charged for the time used says so); a refusal puts its own reason there.
+      const before = state.message;
       state.message = 'Action cancelled.';
+      const refused = activeHandler(active.kind)?.cancel?.(state, active, ctx);
+      if (refused) { if (state.message === 'Action cancelled.') state.message = before; return refused; }
+      state.activeAction = null;
       emit(state, 'action.cancelled', { kind: active.kind, id: active.id }, ctx);
       return ok(state, 'cancelled');
     },

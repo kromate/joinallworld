@@ -331,6 +331,7 @@ export default {
 
   active: {
     call: {
+      moves: false,
       sanitize: (value) => (Object.hasOwn(FAMILY, value.id) && value.duration === FAMILY_CALL.duration ? {} : null),
       complete(state, active, ctx) { familyCall(state, FAMILY[active.id], ctx); },
     },

@@ -45,7 +45,7 @@
  * Every cash reward goes through the wallet with its own ledger line ("Goal: Freshen up").
  * A starter goal pays exactly once: the chain index moves on before the reward is credited.
  */
-import { emit, modify } from '../registry.js';
+import { emit, modify, occupiesVenue } from '../registry.js';
 import { cap, fail, finite, isRecord, naira, ok, safeCount } from '../util.js';
 import { lagosTime } from '../clock.js';
 import { blockReason, credit, MAX_LEVEL, NEEDS, skillLevel, spotsOf, xpForLevel } from '../api.js';
@@ -80,7 +80,7 @@ function addStars(state, amount) { state.goals.stars = Math.min(MAX_STARS, state
 function goalMet(state, goal) {
   if (state.goals.seen.includes(goal.id)) return true;
   if (goal.done.hasJob && state.job) return true;
-  return Boolean(goal.done.venue) && state.location === goal.done.venue && state.activeAction?.kind !== 'travel';
+  return Boolean(goal.done.venue) && occupiesVenue(state, goal.done.venue);
 }
 
 // Rewards raise wallet events that land back here. The outer loop already pays every goal that

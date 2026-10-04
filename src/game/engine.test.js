@@ -18,7 +18,9 @@ const seen = [];
 registerSystem({
   id: 'probe',
   stateKeys: ['probe'],
-  sanitize(input, state) { state.probe = { pings: Number.isSafeInteger(input.probe?.pings) && input.probe.pings >= 0 ? input.probe.pings : 0, boost: input.probe?.boost === true, veto: input.probe?.veto === true }; },
+  // Everything advance() and the actions write is rebuilt here, `seconds` included: a field sanitize does not rebuild is lost at the next load.
+  sanitize(input, state) { state.probe = { pings: Number.isSafeInteger(input.probe?.pings) && input.probe.pings >= 0 ? input.probe.pings : 0, boost: input.probe?.boost === true, veto: input.probe?.veto === true,
+    ...(Number.isFinite(input.probe?.seconds) && input.probe.seconds > 0 ? { seconds: input.probe.seconds } : {}) }; },
   actions: {
     ping(state, payload) { state.probe.pings += payload.by === 2 ? 2 : 1; return { ok: true, code: 'pinged', state }; },
     roll(state, payload, ctx) { state.message = String(ctx.rng()); return { ok: true, code: 'rolled', state }; },

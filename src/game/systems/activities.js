@@ -23,10 +23,13 @@
  *                       'start' — debited when it starts.
  *                       Original beta choice: when the reference game takes the money (somewhere
  *                       between start and completion) is unverified. Either way the player must be
- *                       able to afford it at the start, and a cancel never costs anything.
- *   refundOnCancel      for chargeOn 'start': default true (cancel refunds in full); set false
- *                       for a deliberately sunk cost
- *   cancellable         false to forbid cancelling (default true)
+ *                       able to afford it at the start, and cancelling an activity that gives
+ *                       nothing until it finishes never costs anything.
+ *   refundOnCancel      for chargeOn 'start': default true (cancel refunds in full — or, for a
+ *                       metered activity, the unused part; see METERED below); set false for a
+ *                       deliberately sunk cost
+ *   cancellable         false to forbid cancelling (default true); such an activity may last at most
+ *                       MAX_LOCKED_SECONDS — checked when the catalogue is built
  *   effects             { need: delta } applied once on completion
  *   effectsPerSecond    { need: rate } accrued while running; an early stop KEEPS what accrued
  *   reward              naira credited on completion (modify('activity.reward', reward, { def }))
@@ -54,13 +57,30 @@
  *
  * CANCEL SEMANTICS
  *   Completion effects, reward, XP and `produces` are skipped. Per-second gains already
- *   accrued are kept. A complete-charged cost is never charged. A start-charged cost is
- *   refunded in full unless refundOnCancel is false. Consumed items are not returned.
+ *   accrued are kept. For an activity WITHOUT per-second gains nothing has been delivered yet,
+ *   so a complete-charged cost is not charged and a start-charged cost is refunded in full
+ *   (unless refundOnCancel is false). Consumed items are not returned.
+ *
+ * METERED ACTIVITIES — a price together with effectsPerSecond or xpPerSecond (original rule)
+ *   What has accrued is always paid for. Stopping early costs the price in proportion to the
+ *   time used, rounded up to a whole naira: price × elapsed ÷ duration.
+ *     chargeOn 'complete'  the used part is debited at the cancel (as much of it as the wallet
+ *                          holds, if cash has dropped since the start)
+ *     chargeOn 'start'     the unused part is refunded (nothing with refundOnCancel: false)
+ *   Finishing costs the whole price, as for any activity. A FREE metered activity (sleep, a nap)
+ *   is unchanged: waking early keeps the Energy gained and costs nothing.
  *
  * COMPLETION WITHOUT FUNDS
  *   A complete-charged price is re-checked when the activity finishes. If cash has dropped
- *   below it meanwhile (a bill fell due), the activity ends with no charge and none of its
- *   completion effects, and state.message says why.
+ *   below it meanwhile (a bill fell due), the activity ends with none of its completion effects,
+ *   and state.message says why. Nothing is charged — except for a metered activity, whose
+ *   per-second gains were already delivered: it takes what the wallet holds towards the price.
+ *
+ * AN ACTIVITY INVALIDATED AT LOAD (its definition changed, it left this venue, the job is gone)
+ *   is settled like an early stop and then dropped: a start-charged price comes back through the
+ *   ledger as "Refund: …" (for a metered activity, the unused part), and a metered
+ *   complete-charged activity whose price is still known is charged for the time used. This
+ *   happens exactly once: the action is no longer in the state afterwards.
  */
 import { emit, modify, systems } from '../registry.js';
 import { busy, cap, fail, isRecord, naira, ok } from '../util.js';
@@ -72,6 +92,8 @@ import { changeNeeds, addMoodlet } from './needs.js';
 import { addSkillXp, skillLevel } from './skills.js';
 import { addItem, countItem, hasItems, removeItems } from './inventory.js';
 
+/** The longest a non-cancellable activity may run (original beta value): the player cannot leave it, so it must be short. */
+export const MAX_LOCKED_SECONDS = 300;
 let catalogue = null;
 
 /** Rebuild the merged venue/spot/activity index (tests that register extra systems call this). */
@@ -80,6 +102,12 @@ export function rebuildCatalogue() {
   const venues = {};
   const add = (venue, spot, def) => {
     if (byId.has(def.id)) throw new Error(`Duplicate activity id: ${def.id}`);
+    // A timed action must end: every variant needs a real duration, and one the player cannot
+    // cancel may only hold them for MAX_LOCKED_SECONDS.
+    for (const variant of def.choices ? def.choices.map((choice) => ({ ...def, ...choice })) : [def]) {
+      if (!Number.isFinite(variant.duration) || variant.duration <= 0) throw new Error(`Activity ${def.id} needs a duration in seconds`);
+      if (variant.cancellable === false && variant.duration > MAX_LOCKED_SECONDS) throw new Error(`Activity ${def.id} cannot be cancelled, so it may last at most ${MAX_LOCKED_SECONDS} seconds`);
+    }
     byId.set(def.id, { def, venue, spot: spot.id });
     spot.activities.push(def);
   };
@@ -163,6 +191,32 @@ export function blockReason(state, def, venueId, ctx) {
 const whole = (value) => Math.max(0, Math.round(Number(value) || 0));
 const costOf = (state, def, ctx) => whole(modify(state, 'activity.cost', def.cost || 0, { def }, ctx));
 const rewardOf = (state, def, ctx) => whole(modify(state, 'activity.reward', def.reward || 0, { def }, ctx));
+/** Does the activity hand out gains while it runs (so an early stop has already delivered something)? */
+export const isMetered = (def) => Object.keys(def?.effectsPerSecond || {}).length > 0 || Object.keys(def?.xpPerSecond || {}).length > 0;
+/** The part of `price` owed for the time an action has run: price × elapsed ÷ duration, rounded up, never above the price. */
+export function usedShare(price, action) {
+  const elapsed = Math.min(action.duration, Math.max(0, action.duration - action.remaining));
+  return Math.min(price, Math.max(0, Math.ceil(price * elapsed / action.duration - 1e-9)));
+}
+/** The most a running activity can have been charged at its start: the listed price or the adjusted one, whichever is higher. */
+const paidLimit = (state, def, ctx) => Math.max(whole(def.cost), costOf(state, def, ctx));
+
+/**
+ * Settle the money side of an activity that stops before it finishes (a cancel, or a saved action
+ * that is no longer valid). Returns { charged, refunded } in naira. See CANCEL SEMANTICS.
+ */
+function settleEarlyStop(state, def, action, ctx, why = '') {
+  const metered = isMetered(def);
+  if (action.paid) {
+    if (def.refundOnCancel === false) return { charged: 0, refunded: 0 };
+    const refund = action.paid - (metered ? usedShare(action.paid, action) : 0);
+    return { charged: 0, refunded: refund > 0 && credit(state, refund, `Refund: ${def.label}${why}`, ctx) ? refund : 0 };
+  }
+  if (!metered || def.chargeOn === 'start') return { charged: 0, refunded: 0 };
+  const owed = usedShare(costOf(state, def, ctx), action);
+  const taken = owed > 0 ? debit(state, owed, `${def.label} (stopped early)`, ctx, { partial: true }) : 0;
+  return { charged: taken || 0, refunded: 0 };
+}
 
 function start(state, payload, ctx) {
   const blocked = busy(state);
@@ -187,13 +241,35 @@ function start(state, payload, ctx) {
 }
 
 const active = {
-  sanitize(value, state) {
+  moves: false,
+  sanitize(value, state, ctx) {
     const entry = findActivity(value.id);
     const def = entry && resolve(entry.def, value.choice);
     if (!def || entry.venue !== state.location || def.unavailable || value.duration !== def.duration
       || (def.requiresJob && state.job !== def.requiresJob)) return null;
-    const paid = Number.isSafeInteger(value.paid) && value.paid > 0 && value.paid <= Math.max(def.cost || 0, 0) ? value.paid : 0;
+    // What was charged at the start is the ADJUSTED price (modify 'activity.cost'), which may be
+    // above the listed one; a saved amount beyond both is cut down to the limit, never dropped.
+    const paid = def.chargeOn === 'start' && Number.isSafeInteger(value.paid) && value.paid > 0 ? Math.min(value.paid, paidLimit(state, def, ctx)) : 0;
     return { ...(def.choice ? { choice: def.choice } : {}), ...(paid ? { paid } : {}) };
+  },
+  /**
+   * The saved activity can no longer run. Give back what was paid at its start (through the
+   * ledger), or charge a metered one for the time used. When the definition itself is gone the
+   * saved amount is only returned if the ledger still shows that charge.
+   */
+  invalidated(state, value, ctx) {
+    const entry = findActivity(value.id);
+    const def = entry && (resolve(entry.def, value.choice) || entry.def);
+    const saved = Number.isSafeInteger(value.paid) && value.paid > 0 ? value.paid : 0;
+    const inLedger = saved > 0 && state.ledger.some((line) => line.amount === -saved);
+    const paid = !saved ? 0 : inLedger ? saved : def?.chargeOn === 'start' ? Math.min(saved, paidLimit(state, def, ctx)) : 0;
+    const label = def?.label ?? 'an activity';
+    // The elapsed time is measured against the duration the action was started with.
+    const action = { duration: value.duration, remaining: value.remaining, ...(paid ? { paid } : {}) };
+    const { charged, refunded } = settleEarlyStop(state, def ?? { label }, action, ctx, ' (no longer available)');
+    // Only a change to the wallet is announced; an action that simply cannot resume is dropped quietly, as before.
+    if (refunded) state.message = `${cap(label)} is no longer available here, so it was stopped and ${naira(refunded)} was refunded.`;
+    else if (charged) state.message = `${cap(label)} is no longer available here, so it was stopped. You paid ${naira(charged)} for the time used.`;
   },
   tick(state, action, elapsed, ctx) {
     const def = resolve(findActivity(action.id).def, action.choice);
@@ -205,7 +281,10 @@ const active = {
     if (def.chargeOn !== 'start') {
       const cost = costOf(state, def, ctx);
       if (!debit(state, cost, def.label, ctx)) {
-        state.message = `${def.label} ended without effect: it costs ${naira(cost)} and you now have ${naira(state.cash)}. Nothing was charged.`;
+        // A metered activity has already delivered its per-second gains: it takes what is there.
+        const taken = isMetered(def) ? debit(state, cost, `${def.label} (part paid)`, ctx, { partial: true }) || 0 : 0;
+        state.message = taken ? `${def.label} ended without its finishing effect: it costs ${naira(cost)} and you only had ${naira(taken)}, which paid for the time used.`
+          : `${def.label} ended without effect: it costs ${naira(cost)} and you now have ${naira(state.cash)}. Nothing was charged.`;
         emit(state, 'activity.unpaid', { id: def.id, def }, ctx);
         return;
       }
@@ -222,7 +301,9 @@ const active = {
   cancel(state, action, ctx) {
     const def = resolve(findActivity(action.id).def, action.choice);
     if (def.cancellable === false) return fail(state, 'not_cancellable', `${def.label} cannot be cancelled once started.`);
-    if (def.refundOnCancel !== false && action.paid) credit(state, action.paid, `Refund: ${def.label}`, ctx);
+    const { charged, refunded } = settleEarlyStop(state, def, action, ctx);
+    if (charged) state.message = `${def.label} stopped early. You paid ${naira(charged)} for the time used.`;
+    else if (refunded && refunded < action.paid) state.message = `${def.label} stopped early. ${naira(refunded)} was refunded for the unused time.`;
     return null;
   },
 };

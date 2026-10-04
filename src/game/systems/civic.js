@@ -42,7 +42,7 @@
  *        'radio.shoutout'     { venue, price }
  * Listens: 'activity.completed', 'wallet.changed'.
  */
-import { emit } from '../registry.js';
+import { emit, isDeparting } from '../registry.js';
 import { fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.js';
 import { lagosTime } from '../clock.js';
 import { canAfford, canCredit, credit, debit, spotsOf } from '../api.js';
@@ -51,7 +51,8 @@ import { BILLBOARDS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../content/civic.j
 
 const KINDS = ['visit', 'activity'];
 const nowOf = (state, ctx) => (finite(ctx?.now) && ctx.now > 0 ? ctx.now : state.t);
-const travelling = (state) => state.activeAction?.kind === 'travel';
+/** On the way out of a venue by any means (a trip, the commute): the shared departing predicate. */
+const travelling = (state) => isDeparting(state);
 const startable = (def) => !def.unavailable && !def.requiresJob && !def.requiresSkill;
 
 /** Every place a gem may hide: each spot of each venue except Home (a venue without spots counts once). */

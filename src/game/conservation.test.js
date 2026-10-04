@@ -105,13 +105,16 @@ function play(seedName, steps, check) {
       if (!result.ok && serverOnlyReason(next.type)) assert.equal(result.code, 'server_only');
     }
     collect();
-    check?.(state, opening + sum, i, next);
+    check?.(state, opening + sum, i, next, now);
   }
   return { state, trace, opening, sum, now };
 }
 
-function invariants(state, expectedCash, index, next) {
+function invariants(state, expectedCash, index, next, now) {
   const where = `step ${index} ${JSON.stringify(next).slice(0, 120)}`;
+  // A reload (what the server does before every settlement) changes nothing — after EVERY step, so
+  // a field some system wrote without declaring or rebuilding it is caught where it was written.
+  assert.deepEqual(createLife(structuredClone(state), { now, cityId: CITY }), state, `sanitize is a fixed point at ${where}`);
   assert.equal(state.cash, expectedCash, `cash equals start + Σ ledger at ${where}`);
   assert.ok(Number.isSafeInteger(state.cash) && state.cash >= 0, `cash ${state.cash} at ${where}`);
   for (const [item, count] of Object.entries(state.inventory)) assert.ok(Number.isSafeInteger(count) && count > 0 && count <= MAX_STACK, `inventory ${item}=${count} at ${where}`);

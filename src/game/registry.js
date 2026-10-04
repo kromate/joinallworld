@@ -15,7 +15,11 @@
  *
  *   export default {
  *     id: 'career',                       // unique; also the default state slice name
- *     stateKeys: ['career'],              // every top-level state key this system writes
+ *     stateKeys: ['career'],              // every top-level state key this system writes. ENFORCED:
+ *                                         // createLife, dispatch and advanceLife throw if a system
+ *                                         // leaves a top-level key on the state that nobody declared
+ *                                         // (it would vanish at the next load), and sanitize() may only
+ *                                         // add keys its own system declared. See STATE below.
  *
  *     // Rebuild this system's slice from UNTRUSTED saved input. `input` is the raw saved
  *     // object (already migrated to the current state.v); `state` is the fresh state being
@@ -56,15 +60,30 @@
  *
  *     // Optional handlers for kinds of timed action held in state.activeAction
  *     // ({ kind, id, duration, remaining, ... }). Only one timed action runs at a time.
- *     active: { travel: { sanitize(value, state, ctx), tick?(state, active, elapsedSeconds, ctx),
- *                         complete(state, active, ctx), cancel?(state, active, ctx) } },
+ *     //   moves        REQUIRED boolean. true = this kind takes the player out of the venue they
+ *     //                are in (a trip, a commute): while it runs the player is DEPARTING, which the
+ *     //                servers use to end venue-room membership and voice (isDeparting below).
+ *     //                Registration refuses a kind that does not say, and the engine refuses to let
+ *     //                a kind declared `moves: false` change state.location when it completes.
+ *     //   sanitize     return the kind-specific fields to keep, or null when the saved action is
+ *     //                no longer valid (it is then dropped)
+ *     //   invalidated  optional: called at load when sanitize returned null, so a kind that took
+ *     //                something at the start (a price) can give it back. Runs at most once per
+ *     //                action, because the action is gone from the state afterwards.
+ *     active: { travel: { moves: true, sanitize(value, state, ctx), tick?(state, active, elapsedSeconds, ctx),
+ *                         complete(state, active, ctx), cancel?(state, active, ctx),
+ *                         invalidated?(state, value, ctx) } },
  *   };
  *
  * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId?, requireOnboarding?, internal? }`:
  *   now     server time in ms — the only clock you may read (see clock.js for Lagos time)
  *   cityId  the city this life belongs to
  *   rng     () => float in [0,1), seeded from the action ID or the settlement interval, so
- *           a replayed request or a re-run test produces the same outcome
+ *           a replayed request or a re-run test produces the same outcome. On a server the seed
+ *           is also keyed with a secret held per life (server/life-service.js) that no client
+ *           ever sees, so a player cannot work out an outcome in advance or pick an action ID
+ *           that produces the one they want. The secret is consumed by makeContext and is not
+ *           part of ctx: a system cannot read it, store it or show it.
  *
  * WHAT YOU MAY IMPORT (inside src/game/)
  *   registry.js (emit, modify), util.js, clock.js, api.js (core systems' public functions:
@@ -81,6 +100,11 @@
  *   activeAction/name/message → core/activities). `state.v` is the global schema version,
  *   owned by src/life.js; do not bump it. If you change the shape of your own slice, make
  *   your sanitize() accept the older shape — that is your migration.
+ *   A top-level key outside every system's stateKeys cannot be written silently: the engine
+ *   throws `Undeclared state key` the moment an action, a settlement or a load leaves one behind.
+ *   Inside your own slice, anything your sanitize() does not rebuild is lost at the next load;
+ *   test it by asserting createLife(state) deep-equals state after your actions (the conservation
+ *   and first-day tests do this for every shipped system after every step).
  *
  * CROSS-SYSTEM HOOKS — systems never import each other
  * ----------------------------------------------------
@@ -128,6 +152,14 @@
  *   'travel.fare'      data { mode, destination }  base fare
  * Owners add their own names as `<system>.<thing>` (e.g. 'shop.price', 'friend.made') and
  * list them in their file header. Listeners must tolerate events they do not know.
+ * emit() may be called from a listener, but only MAX_EMIT_DEPTH (8) deep: beyond that it throws,
+ * because an event that is silently dropped leaves systems disagreeing about what happened.
+ *
+ * RANDOM CHANCES IN advance()
+ *   Clients poll about once a second while something is running and once a minute otherwise, so
+ *   advance() runs at whatever rhythm the player's browser chooses. A chance rolled "per call"
+ *   would therefore depend on how often someone polls. Roll per EVENT (an arrival, a completed
+ *   activity) or scale the chance with the elapsed seconds (1 − (1 − p)^dt), never per call.
  *
  * HOW TO TEST
  *   node --test picks up src/** and server/** `*.test.js`. Your pre-created test file imports the
@@ -146,6 +178,7 @@ const byId = new Map();
 const actionTable = new Map();
 const serverOnlyTable = new Map();
 const activeTable = new Map();
+const declaredKeys = new Set();
 const MAX_EMIT_DEPTH = 8;
 const SERVER_ONLY_REASON = 'That step is completed by the game server from its own screen. Nothing was changed.';
 let depth = 0;
@@ -167,8 +200,14 @@ export function registerSystem(def) {
   }
   for (const kind of Object.keys(def.active || {})) {
     if (activeTable.has(kind)) throw new Error(`Active kind "${kind}" is already registered`);
-    activeTable.set(kind, def.active[kind]);
+    const handler = def.active[kind];
+    // Whether a timed action takes the player out of their venue is never left to a default:
+    // room membership and voice depend on it (isDeparting), so every kind must say.
+    if (typeof handler?.moves !== 'boolean') throw new Error(`Active kind "${kind}" must declare moves: true or false`);
+    if (typeof handler.sanitize !== 'function' || typeof handler.complete !== 'function') throw new Error(`Active kind "${kind}" needs sanitize and complete`);
   }
+  for (const kind of Object.keys(def.active || {})) activeTable.set(kind, def.active[kind]);
+  for (const key of def.stateKeys) declaredKeys.add(key);
   order.push(def);
   byId.set(def.id, def);
   return def;
@@ -183,10 +222,46 @@ export const actionHandler = (type) => actionTable.get(type);
 export const serverOnlyReason = (type) => (typeof type === 'string' && serverOnlyTable.has(type) ? serverOnlyTable.get(type) : null);
 export const activeHandler = (kind) => (typeof kind === 'string' ? activeTable.get(kind) : undefined);
 
+/**
+ * Does a timed action of this kind take the player out of the venue they are in? Declared by the
+ * kind's handler (`moves`). A kind nobody registered is treated as moving: unknown means "not
+ * provably here".
+ */
+export const activeMoves = (kind) => activeHandler(kind)?.moves !== false;
+/**
+ * THE departing predicate. True while the life's timed action is one that moves the player (a
+ * trip, the automatic commute, any future kind registered with `moves: true`). A departing player
+ * is still recorded at the venue they are leaving (state.location changes on arrival) but is no
+ * longer in it: no venue room, no voice, no "people here". Everything that asks "is this player
+ * really at their location?" uses this — never a comparison with one kind's name.
+ */
+export const isDeparting = (state) => Boolean(state?.activeAction) && activeMoves(state.activeAction.kind);
+/** Is the player in `venueId` right now — recorded there and not on their way out? */
+export const occupiesVenue = (state, venueId) => Boolean(state) && typeof venueId === 'string' && state.location === venueId && !isDeparting(state);
+
+/** Top-level keys on `state` that no registered system declared. Empty for every valid state. */
+export function undeclaredKeys(state) {
+  const found = [];
+  for (const key of Object.keys(state)) if (!declaredKeys.has(key)) found.push(key);
+  return found;
+}
+/**
+ * Refuse a state that carries a key nobody declared. Such a key would survive until the next load
+ * and then disappear without a trace; throwing here turns that into a failure at the moment of the
+ * write, in the first test (or request) that reaches it. `where` names what just ran.
+ */
+export function assertDeclared(state, where) {
+  for (const key of Object.keys(state)) {
+    if (!declaredKeys.has(key)) throw new Error(`Undeclared state key "${key}" after ${where}: add it to the owning system's stateKeys and rebuild it in sanitize(), or it is lost at the next load.`);
+  }
+}
+
 /** Notify every system, in registration order. Listeners may mutate state and emit further events.
  * Listeners always receive an object: anything else is replaced with {} so they can destructure safely. */
 export function emit(state, event, data, ctx) {
-  if (depth >= MAX_EMIT_DEPTH) return;
+  // Listeners emitting from listeners this deep is a loop, not a design: dropping the event
+  // silently would leave some systems updated and others not, so it is an error instead.
+  if (depth >= MAX_EMIT_DEPTH) throw new Error(`Event "${event}" was emitted ${MAX_EMIT_DEPTH} listeners deep: an event loop between systems.`);
   const payload = data !== null && typeof data === 'object' && !Array.isArray(data) ? data : {};
   depth += 1;
   try {

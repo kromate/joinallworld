@@ -1,8 +1,23 @@
 /**
  * OWNER: character
- * Shared pieces for the character panels (onboarding, Sim → Profile, Boutique): a static SVG
- * figure that reflects a look, and the look editor. Not a panel and not registered; the 3D
- * avatar is drawn elsewhere from the same `state.onboarding.look`.
+ * Shared pieces for the character panels (onboarding, Sim → Profile, Boutique):
+ *
+ *   lookStage(look, options)        markup for the preview stage (a placeholder the 3D canvas moves into)
+ *   mountLookPreview(root, look)    call from bind(): shows the 3D preview in the stage inside `root`
+ *   lookEditor(look, options)       the option tabs (Body, Hair, Outfit, Colours)
+ *   lookTabClick(target)            call from a click handler: switches tab; true if it did
+ *   chooseLook, sameLook, randomLook, lookLabel, lookSummary, avatarSvg
+ *
+ * THE PREVIEW is src/scene/avatar-preview.js: a Three.js canvas drawn on demand only (no render
+ * loop). Its code and Three.js are fetched with a dynamic import the first time a stage is
+ * shown, so neither is part of the first download. Until it arrives the stage shows a still
+ * silhouette; if WebGL is not available, or the context is lost, it shows the flat 2D figure
+ * (avatarSvg) instead and nothing is reported as an error.
+ *
+ * ONE CONTEXT: there is one preview for the whole app. Panels redraw by replacing their HTML, so
+ * the canvas is kept here and moved into each new stage; it is disposed (renderer, geometry,
+ * materials, WebGL context) as soon as its stage leaves the page or the sheet is closed.
+ * previewDiagnostics() reports its render counter.
  */
 import './look-ui.css';
 import { esc, money } from '../dom.js';
@@ -70,6 +85,7 @@ export function avatarSvg(look, { size = 150, label = 'Preview of your Sim' } = 
  */
 export function chooseLook(look, group, value, owned) {
   const next = { ...look, [group]: value };
+  lastField = group; zoomOverride = null;
   if (group !== 'body') return next;
   const fit = (kind, options) => (options.includes(next[kind]) && (!owned || owned[kind].includes(next[kind])) ? next[kind]
     : options.find((id) => !owned || owned[kind].includes(id)) ?? options[0]);
@@ -78,22 +94,154 @@ export function chooseLook(look, group, value, owned) {
   return next;
 }
 
-const GROUPS = [
-  ['hair', 'Hairstyle', (look) => hairOptions(look.body)], ['outfit', 'Outfit', (look) => outfitOptions(look.body)], ['fabric', 'Fabric', () => APPEARANCE.fabrics],
+const titled = (id) => { const text = String(lookLabel(id)); return text.charAt(0).toUpperCase() + text.slice(1); };
+const swatchLabel = (group, id) => APPEARANCE[group].find((swatch) => swatch.id === id)?.label ?? id;
+/** "Woman · Braids · Owambe · Ankara" */
+export const lookSummary = (look) => [look.body, look.hair, look.outfit, look.fabric].filter(Boolean).map(titled).join(' · ');
+/** The preview's text alternative: everything the picture shows, in words. */
+export function lookAlt(look, name = 'Your Sim') {
+  return `${name}: ${titled(look.body)}, ${swatchLabel('skin', look.skin).toLowerCase()} skin, ${titled(look.hair).toLowerCase()} hairstyle in ${swatchLabel('hairColours', look.hairColor).toLowerCase()}, ${titled(look.outfit).toLowerCase()} outfit in ${titled(look.fabric).toLowerCase()} ${swatchLabel('outfitColours', look.outfitColor).toLowerCase()}, ${swatchLabel('outfitColours', look.bottomsColor).toLowerCase()} bottoms.`;
+}
+/** The look as the scene code takes it: style ids as they are, colours as hex values. */
+export const sceneLook = (look) => ({ body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, skin: hexOf('skin', look.skin),
+  hairColor: hexOf('hairColours', look.hairColor), outfitColor: hexOf('outfitColours', look.outfitColor), bottomsColor: hexOf('outfitColours', look.bottomsColor) });
+/** A random valid look (the same choices the server's own shuffle makes). `random` returns 0 ≤ n < 1. */
+export function randomLook(random = Math.random) {
+  const pick = (list) => list[Math.min(list.length - 1, Math.floor(random() * list.length))];
+  const body = pick(APPEARANCE.bodies).id;
+  return { body, hair: pick(APPEARANCE.hair[body]), outfit: pick(APPEARANCE.outfits[body]), fabric: pick(APPEARANCE.fabrics), skin: pick(APPEARANCE.skin).id,
+    hairColor: pick(APPEARANCE.hairColours).id, outfitColor: pick(APPEARANCE.outfitColours).id, bottomsColor: pick(APPEARANCE.outfitColours).id };
+}
+
+// ---- Editor ----------------------------------------------------------------------------------
+// Tabs group the options by what they change. `focus` is where the preview looks while a tab is open.
+const SECTIONS = [
+  { id: 'body', title: 'Body', icon: '🧍', focus: 'body', groups: [['chips', 'body', 'Body type'], ['swatches', 'skin', 'Skin tone', 'skin']] },
+  { id: 'hair', title: 'Hair', icon: '💇', focus: 'head', groups: [['chips', 'hair', 'Hairstyle'], ['swatches', 'hairColor', 'Hair colour', 'hairColours']] },
+  { id: 'outfit', title: 'Outfit', icon: '👕', focus: 'body', groups: [['chips', 'outfit', 'Outfit'], ['chips', 'fabric', 'Fabric']] },
+  { id: 'colours', title: 'Colours', icon: '🎨', focus: 'body', groups: [['swatches', 'outfitColor', 'Outfit colour', 'outfitColours'], ['swatches', 'bottomsColor', 'Bottoms colour', 'outfitColours']] },
 ];
-const SWATCHES = [['skin', 'Skin tone', 'skin'], ['hairColor', 'Hair colour', 'hairColours'], ['outfitColor', 'Outfit colour', 'outfitColours'], ['bottomsColor', 'Bottoms colour', 'outfitColours']];
+const HEAD_FIELDS = new Set(['hair', 'hairColor', 'skin']);
+let section = 'body', lastField = null, zoomOverride = null;
+const optionsOf = (field, look) => (field === 'body' ? APPEARANCE.bodies.map((item) => item.id) : field === 'hair' ? hairOptions(look.body) : field === 'outfit' ? outfitOptions(look.body) : APPEARANCE.fabrics);
+
+/** Where the preview should look now: head and shoulders while hair, face or skin is being changed. */
+export function lookFocus() {
+  if (zoomOverride) return zoomOverride;
+  if (lastField) return HEAD_FIELDS.has(lastField) ? 'head' : 'body';
+  return SECTIONS.find((item) => item.id === section)?.focus ?? 'body';
+}
+/** Show the whole Sim again (after a shuffle, say), whatever was last being changed. */
+export function lookFocusBody() { lastField = 'body'; zoomOverride = null; }
+/** Handle a click on a look tab (call with the clicked element). Returns true when it was one. */
+export function lookTabClick(target) {
+  const tab = target?.closest?.('[data-look-tab]');
+  if (!tab) return false;
+  section = SECTIONS.some((item) => item.id === tab.dataset.lookTab) ? tab.dataset.lookTab : 'body';
+  lastField = null; zoomOverride = null;
+  return true;
+}
 
 /**
- * Look editor markup. Buttons carry data-look="<field>" data-value="<id>" (and data-key for
- * focus restoring). With `owned` (a wardrobe), styles not owned are disabled and say where to buy them.
+ * Look editor markup: a tab row and the open tab's options. Option buttons carry
+ * data-look="<field>" data-value="<id>"; tabs carry data-look-tab="<id>"; all carry data-key for
+ * focus restoring. With `owned` (a wardrobe), styles not owned are disabled and say where to buy them.
  */
 export function lookEditor(look, { owned = null } = {}) {
-  const chip = (field, id, text, disabledWhy) => `<button type="button" class="look-chip" data-look="${field}" data-value="${esc(id)}" data-key="${field}:${esc(id)}" aria-pressed="${look[field] === id}" ${disabledWhy ? `disabled title="${esc(disabledWhy)}"` : ''}>${esc(text)}${disabledWhy ? `<small>🔒 ${esc(disabledWhy)}</small>` : ''}</button>`;
-  const body = `<fieldset class="look-group"><legend>Body</legend><div class="look-chips">${APPEARANCE.bodies.map((item) => chip('body', item.id, item.label)).join('')}</div></fieldset>`;
-  const styles = GROUPS.map(([field, title, options]) => `<fieldset class="look-group"><legend>${title}</legend><div class="look-chips">${options(look).map((id) => chip(field, id, lookLabel(id),
-    owned && !owned[field].includes(id) ? `Boutique · ${money(BOUTIQUE_PRICES[field][id])}` : '')).join('')}</div></fieldset>`).join('');
-  const swatches = SWATCHES.map(([field, title, group]) => `<fieldset class="look-group"><legend>${title}</legend><div class="look-swatches">${APPEARANCE[group].map((swatch) => `<button type="button" class="look-swatch" data-look="${field}" data-value="${esc(swatch.id)}" data-key="${field}:${esc(swatch.id)}" aria-pressed="${look[field] === swatch.id}" aria-label="${esc(title)}: ${esc(swatch.label)}" title="${esc(swatch.label)}" style="--swatch:${swatch.hex}">${look[field] === swatch.id ? '✓' : ''}</button>`).join('')}</div></fieldset>`).join('');
-  return `<div class="look-editor">${body}${styles}${swatches}</div>`;
+  const current = SECTIONS.find((item) => item.id === section) ?? SECTIONS[0];
+  const chips = (field, title) => `<fieldset class="look-group"><legend>${title}</legend><div class="look-chips">${optionsOf(field, look).map((id) => {
+    const why = owned && owned[field] && !owned[field].includes(id) ? `Boutique · ${money(BOUTIQUE_PRICES[field][id])}` : '';
+    return `<button type="button" class="look-chip" data-look="${field}" data-value="${esc(id)}" data-key="${field}:${esc(id)}" aria-pressed="${look[field] === id}" ${why ? `disabled title="${esc(why)}"` : ''}>${esc(titled(id))}${why ? `<small>🔒 ${esc(why)}</small>` : ''}</button>`;
+  }).join('')}</div></fieldset>`;
+  const swatches = (field, title, group) => `<fieldset class="look-group"><legend>${title} <b>${esc(swatchLabel(group, look[field]))}</b></legend><div class="look-swatches">${APPEARANCE[group].map((swatch) => `<button type="button" class="look-swatch" data-look="${field}" data-value="${esc(swatch.id)}" data-key="${field}:${esc(swatch.id)}" aria-pressed="${look[field] === swatch.id}" aria-label="${esc(title)}: ${esc(swatch.label)}" style="--swatch:${swatch.hex}"><i aria-hidden="true">${look[field] === swatch.id ? '✓' : ''}</i><span>${esc(swatch.label)}</span></button>`).join('')}</div></fieldset>`;
+  const tabs = SECTIONS.map((item) => `<button type="button" role="tab" class="look-tab" id="look-tab-${item.id}" data-look-tab="${item.id}" data-key="tab:${item.id}" aria-selected="${item === current}" aria-controls="look-panel"><span aria-hidden="true">${item.icon}</span>${item.title}</button>`).join('');
+  const groups = current.groups.map(([kind, field, title, group]) => (kind === 'chips' ? chips(field, title) : swatches(field, title, group))).join('');
+  return `<div class="look-editor"><div class="look-tabs" role="tablist" aria-label="What to change">${tabs}</div><div class="look-panel" id="look-panel" role="tabpanel" aria-labelledby="look-tab-${current.id}">${groups}</div></div>`;
+}
+
+// ---- Preview stage -------------------------------------------------------------------------------
+const SPUN_KEY = 'joinallworld-spun';
+let spun = false;
+try { spun = globalThis.localStorage?.getItem(SPUN_KEY) === '1'; } catch { spun = false; }
+
+/**
+ * Stage markup. variant: 'hero' (the creator), 'wide' (Profile, Boutique) or 'mini' (beside the
+ * later creation steps). `tools` is extra, already-escaped HTML laid over the stage (Shuffle…).
+ */
+export function lookStage(look, { variant = 'hero', name = 'Your Sim', tools = '', caption = '', zoom = variant !== 'mini' } = {}) {
+  const focus = lookFocus();
+  return `<div class="look-stage is-${variant}" data-look-stage data-mode="loading" ${spun ? 'data-spun' : ''}>
+    <div class="look-stage-view" data-look-canvas>${avatarSvg(look, { size: 150, label: lookAlt(look, name) })}</div>
+    ${zoom ? `<button type="button" class="look-zoom" data-look-zoom aria-pressed="${focus === 'head'}" title="Switch between full body and face">${focus === 'head' ? '🧍 Full body' : '🔍 Face'}</button>` : ''}
+    ${tools ? `<div class="look-tools">${tools}</div>` : ''}
+    ${variant === 'mini' ? '' : '<p class="look-hint" aria-hidden="true">↔ Drag to spin</p>'}
+    ${caption ? `<p class="look-caption">${caption}</p>` : ''}</div>`;
+}
+
+let scene3d = null, loading = null, preview = null, unavailable = false, wanted = null, watcher = null, watchedDialog = null, lastShown = '';
+/** { renderCount, frames, animating, live, … } of the preview that is alive, or null. For tests and checks. */
+export const previewDiagnostics = () => (preview ? preview.diagnostics() : null);
+if (typeof window !== 'undefined') window.__lookPreview = previewDiagnostics;
+
+/** Free the preview and its WebGL context. Safe to call at any time. */
+export function releaseLookPreview() {
+  preview?.dispose(); preview = null; lastShown = '';
+  watcher?.disconnect(); watcher = null;
+}
+function onDialogClose(event) { const dialog = event.currentTarget; queueMicrotask(() => { if (!dialog.open) releaseLookPreview(); }); }
+function watch(stage) {
+  // The preview lives exactly as long as its stage is on the page and its sheet is open.
+  if (!watcher) {
+    watcher = new MutationObserver(() => { if (preview && !preview.canvas.isConnected) releaseLookPreview(); });
+    watcher.observe(document.body, { childList: true, subtree: true });
+  }
+  const dialog = stage.closest('dialog');
+  if (dialog && dialog !== watchedDialog) { watchedDialog?.removeEventListener('close', onDialogClose); watchedDialog = dialog; dialog.addEventListener('close', onDialogClose); }
+}
+function show() {
+  const { stage, host, look, focus, react, label } = wanted;
+  if (!host.isConnected) return;
+  try {
+    if (!preview) {
+      preview = scene3d.createAvatarPreview(host, { look, focus, label,
+        onSpin() { if (spun) return; spun = true; try { localStorage.setItem(SPUN_KEY, '1'); } catch { /* private mode */ } document.querySelectorAll('[data-look-stage]').forEach((node) => node.setAttribute('data-spun', '')); },
+        onLost() { releaseLookPreview(); document.querySelectorAll('[data-look-stage]').forEach((node) => { node.dataset.mode = '2d'; }); } });
+    } else {
+      preview.attach(host);
+      preview.setLook(look, { react });
+      preview.setFocus(focus);
+      preview.setLabel(label);
+    }
+    stage.dataset.mode = '3d';
+    watch(stage);
+  } catch (error) {
+    // No WebGL (or it failed to start): keep the flat figure and do not try again this session.
+    releaseLookPreview(); unavailable = true; stage.dataset.mode = '2d';
+    if (!scene3d || !(error instanceof scene3d.PreviewUnavailable)) console.warn('The 3D preview is not available; showing the 2D figure.', error);
+  }
+}
+/**
+ * Show the 3D preview of `look` in the stage inside `root` (call from a panel's bind()). The first
+ * call downloads the preview code; later calls move the existing canvas and update it, costing one
+ * frame only when something changed. A root without a stage releases the preview.
+ */
+export function mountLookPreview(root, look, { name = 'Your Sim' } = {}) {
+  const stage = root?.querySelector?.('[data-look-stage]');
+  if (!stage) { releaseLookPreview(); return; }
+  const host = stage.querySelector('[data-look-canvas]'), drawn = sceneLook(look), key = JSON.stringify(drawn);
+  wanted = { stage, host, look: drawn, focus: lookFocus(), react: lastShown !== '' && lastShown !== key, label: `${lookAlt(look, name)} Drag, or use the left and right arrow keys, to turn.` };
+  lastShown = key;
+  stage.querySelector('[data-look-zoom]')?.addEventListener('click', (event) => {
+    zoomOverride = lookFocus() === 'head' ? 'body' : 'head';
+    const button = event.currentTarget, head = zoomOverride === 'head';
+    button.setAttribute('aria-pressed', String(head)); button.textContent = head ? '🧍 Full body' : '🔍 Face';
+    preview?.setFocus(zoomOverride);
+  });
+  if (unavailable) { stage.dataset.mode = '2d'; return; }
+  if (scene3d) { show(); return; }
+  loading ??= import('../../scene/avatar-preview.js');
+  loading.then((module) => { scene3d = module; if (wanted?.host.isConnected) show(); },
+    () => { loading = null; if (wanted?.stage.isConnected) wanted.stage.dataset.mode = '2d'; });
 }
 
 export const sameLook = (a, b) => Object.keys(a).every((field) => a[field] === b[field]);

@@ -1,7 +1,8 @@
 /* Sim sheet tabs: Profile, Needs, Skills. */
 .sim-profile{display:grid;gap:var(--s-3);font-family:var(--font)}
 .sim-profile h3{margin:0}
-.sim-profile-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s-3);align-items:start}
+.sim-profile-top{display:grid;gap:var(--s-3);align-items:start}
+.sim-profile>.look-stage{position:sticky;top:62px;z-index:2;box-shadow:0 0 0 9px #fff,0 18px 12px -10px #0004}
 .sim-field{display:grid;gap:6px;font-size:13px;font-weight:600}
 .sim-field input{font:inherit;font-weight:400;padding:10px 12px;border:1px solid #cfd4cf;border-radius:12px;min-height:var(--tap);width:100%;box-sizing:border-box}
 .sim-hint{margin:4px 0 0!important;font-size:12px!important;color:var(--c-muted)}
@@ -35,4 +36,4 @@
 .sim-segments{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
 .sim-segments>i{display:block;height:12px;border-radius:4px;background:#e8e9ea;overflow:hidden}
 .sim-segments b{display:block;height:100%;background:var(--c-green)}
-@media(max-width:420px){.sim-skill{grid-template-columns:1fr}.sim-need-row{grid-template-columns:88px minmax(0,1fr) 40px}.sim-profile-top{grid-template-columns:1fr}.sim-profile-top .look-stage{justify-self:center}}
+@media(max-width:420px){.sim-skill{grid-template-columns:1fr}.sim-need-row{grid-template-columns:88px minmax(0,1fr) 40px}}

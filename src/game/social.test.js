@@ -292,3 +292,39 @@ test('any system can post a notice for the Updates tab', async () => {
   assert.equal(state.social.notices.length, 20);
   assert.equal(viewLife(state, ctxAt()).social.notices[0].text, 'n29');
 });
+
+test('outbox: pending → sent or failed, retry keeps the client id, a confirmed message never shows twice', async () => {
+  const { createOutbox, mergeMessages, presenceText, roomSummary, inviteIdFrom, SEND_TIMEOUT_MS, FAILURE_TEXT } = await import('./social-model.js');
+  const outbox = createOutbox();
+  const first = outbox.add('dm.a.b', 'How far?', 'c-00000001', 1000);
+  assert.deepEqual([first.status, first.tries], ['pending', 1]);
+  assert.deepEqual(outbox.thread('dm.a.b', []).map((item) => [item.body, item.status]), [['How far?', 'pending']]);
+  assert.deepEqual(outbox.thread('dm.other', []), []);
+  // No answer: it fails visibly instead of stalling, and can be retried under the same id.
+  assert.equal(outbox.expire(1000 + SEND_TIMEOUT_MS - 1), false);
+  assert.equal(outbox.expire(1000 + SEND_TIMEOUT_MS), true);
+  assert.deepEqual([first.status, first.reason, first.code], ['failed', FAILURE_TEXT, 'timeout']);
+  assert.equal(outbox.retry('c-unknown', 0), null);
+  const again = outbox.retry('c-00000001', 20000);
+  assert.deepEqual([again.clientId, again.status, again.tries], ['c-00000001', 'pending', 2]);
+  assert.equal(outbox.retry('c-00000001', 20001), null, 'a pending message cannot be sent a second time');
+  // The server shows the message (even if our own reply was lost): the local copy goes away.
+  const server = [{ seq: 1, body: 'How far?', clientId: 'c-00000001' }];
+  assert.deepEqual(outbox.thread('dm.a.b', server), server); assert.equal(outbox.size(), 0);
+  // A refusal keeps the text with its reason.
+  outbox.add('dm.a.b', 'again', 'c-00000002', 30000);
+  outbox.fail('c-00000002', 'Bola has not replied yet.', 'awaiting_reply');
+  assert.deepEqual(outbox.thread('dm.a.b', server).map((item) => item.status ?? 'sent'), ['sent', 'failed']);
+  outbox.add('to:x', 'new chat', 'c-00000003', 40000); outbox.rekey('to:x', 'dm.a.x');
+  assert.equal(outbox.thread('dm.a.x', []).length, 1);
+  assert.deepEqual(mergeMessages([{ seq: 2, body: 'b' }, { seq: 1, body: 'a' }], [{ seq: 2, body: 'b' }, { seq: 3, body: 'c' }, null, { seq: 'x' }]).map((item) => item.seq), [1, 2, 3]);
+
+  assert.equal(presenceText({ status: 'online', venue: 'park' }, () => 'Freedom Park'), 'Online · Freedom Park');
+  assert.equal(presenceText({ status: 'online', venue: 'home' }), 'Online · at home');
+  assert.deepEqual(['away', 'reconnecting', 'offline', 'nonsense'].map((status) => presenceText({ status })), ['Away', 'Reconnecting…', 'Offline', 'Offline']);
+  assert.match(roomSummary({ venue: 'park', self: 'not_joined', count: 0 }, 'Freedom Park'), /cannot see you here yet/);
+  assert.match(roomSummary({ venue: 'park', self: 'joined', count: 1 }, 'Freedom Park'), /^1 other player here/);
+  assert.match(roomSummary(null, 'x'), /Checking/);
+  assert.equal(inviteIdFrom(`https://example.test/v/${PLAYER}`), PLAYER); assert.equal(inviteIdFrom(`/?v=${PLAYER}&x=1`), PLAYER); assert.equal(inviteIdFrom(PLAYER.toUpperCase()), PLAYER);
+  for (const junk of ['', 'javascript:alert(1)', '/v/not-an-id', `${PLAYER}0`, null]) assert.equal(inviteIdFrom(junk), null);
+});

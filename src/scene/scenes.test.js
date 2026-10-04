@@ -259,6 +259,7 @@ test('looks are normalised deterministically and tolerate missing or unknown fie
   assert.ok(new Set(seeds).size > 30, 'different players look different');
   assert.deepEqual(normalizeLook({ body: 'Woman', hair: 'Low cut', outfit: 'Site work', fabric: 'Aso-oke', skin: 6, hairColor: 'Purple', outfitColor: 'Gold', bottomsColor: '#ABCDEF' }), {
     body: 'woman', hair: 'lowcut', outfit: 'sitework', fabric: 'asooke', skin: LOOK_OPTIONS.skin[6].hex, hairColor: '#7a4bb0', outfitColor: '#d6a83a', bottomsColor: '#abcdef',
+    accessories: [], face: 'oval', expression: 'smile',
   });
   assert.equal(normalizeLook({ body: 'man', hair: 'gele', outfit: 'owambe' }, 's').body, 'man');
   assert.ok(LOOK_OPTIONS.hair.man.includes(normalizeLook({ body: 'man', hair: 'gele' }, 's').hair), 'options not offered for a body fall back');

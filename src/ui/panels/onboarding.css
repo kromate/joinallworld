@@ -24,7 +24,6 @@
 /* The Look step: the preview is the hero, the option tabs sit beside it (under it on a phone). */
 .ob-creator{display:grid;gap:var(--s-3);min-width:0}
 .ob-options{min-width:0}
-.ob-wearing{margin:6px 0 0!important;font-size:12px!important;line-height:1.3!important;font-weight:600;color:#3d444d;text-align:center}
 /* Later steps: the Sim stays beside the choices. */
 .ob-with-sim{display:grid;gap:var(--s-3);min-width:0}
 .ob-step{display:grid;gap:var(--s-3);min-width:0;align-content:start}
@@ -32,7 +31,7 @@
 .ob-sim p{margin:0!important;line-height:1.3!important;min-width:0}
 .ob-sim strong{display:block;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ob-sim small{display:block;font-size:11px;color:var(--c-muted)}
-.ob-done .look-stage{width:100%}
+.ob-done .look-view{width:100%}
 .ob-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-2)}
 .ob-list{display:grid;gap:var(--s-2)}
 .ob-card{display:grid;gap:3px;text-align:left;border:1px solid var(--c-line);background:var(--c-surface-solid);color:var(--c-ink);border-radius:18px;padding:12px;font:inherit;cursor:pointer;min-height:var(--tap)}
@@ -61,19 +60,19 @@
 .ob-done h3{margin:0}
 @media(min-width:760px){
   .ob-creator{grid-template-columns:minmax(0,11fr) minmax(0,10fr);align-items:start}
-  .ob-hero{position:sticky;top:70px;--stage-h:clamp(280px,calc(min(88dvh,780px) - 312px),520px)}
+  .ob-hero{position:sticky;top:70px;--stage-h:clamp(260px,calc(min(88dvh,780px) - 338px),500px)}
   .ob-with-sim{grid-template-columns:200px minmax(0,1fr);align-items:start}
   .ob-sim{position:sticky;top:70px;text-align:center}
-  .ob-sim .look-stage{height:250px}
+  .ob-sim .look-view .look-stage{height:250px}
 }
 @media(max-width:759px){
   /* Phone: the preview stays pinned under the sheet header and the tab row under it, while the options scroll. */
   .ob-creator{gap:0}
-  .ob-hero{position:sticky;top:62px;z-index:2;--stage-h:clamp(200px,32dvh,270px);padding-bottom:8px;background:#fff}
-  .ob-wearing{display:none}
-  .ob-options .look-tabs{position:sticky;top:calc(70px + clamp(200px,32dvh,270px));z-index:2;box-shadow:0 0 0 6px #fff,0 10px 10px -8px #0003}
+  .ob-hero{position:sticky;top:62px;z-index:2;--stage-h:clamp(190px,30dvh,260px);padding-bottom:8px;background:#fff}
+  .ob-hero .look-caption{visibility:hidden}
+  .ob-options .look-tabs{position:sticky;top:calc(120px + clamp(190px,30dvh,260px));z-index:2;box-shadow:0 0 0 6px #fff,0 10px 10px -8px #0003}
   .ob-sim{position:sticky;top:62px;z-index:2;grid-template-columns:76px minmax(0,1fr);align-items:center;gap:var(--s-3);padding:4px 0 8px;background:#fff;box-shadow:0 8px 8px -8px #0003}
-  .ob-sim .look-stage{height:92px;min-height:0;border-radius:16px}
+  .ob-sim .look-view .look-stage{height:92px;min-height:0;border-radius:16px}
   .ob-steps li:not(.is-current) span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
   .ob-steps li.is-current{flex:none}.ob-steps li.is-current::after{min-width:10px;width:10px;flex:none}
 }

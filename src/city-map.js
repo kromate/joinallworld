@@ -32,8 +32,9 @@
  * 0 fits the city again. Zooming changes the size of the map, never of the pins: a label is
  * always the same readable size, and at a small scale only Home, where you are and the
  * selected place keep their labels (every pin is still a button with its full name). Labels of
- * pins near the left or right edge grow inwards, so none is cut off. Panning is clamped so the
- * city can never be dragged out of view.
+ * pins near the left or right edge grow inwards, so none is cut off. The map can be dragged at
+ * every zoom, including the whole-city view; most of it always stays on screen, and "whole city"
+ * (or zooming all the way out) centres it again. Two fingers pan and zoom together.
  *
  * Static rendering only: the DOM is built once per city; class names change when the state
  * does and the transform changes when the player pans or zooms. No frame loop, no timers —
@@ -85,7 +86,7 @@ const HOMES_SHOWN = 12;
 const W = 1000, H = 700;          // the map's own units (venue positions are percentages of this)
 const LABEL_WIDTH = 720;          // below this many CSS pixels of map width, only the important labels show
 const MAX_WIDTH = 2200;           // the furthest zoom, as map width in CSS pixels
-const MARGIN = 28;                // how far past the free area the city may be dragged
+const KEEP = 0.6;                 // the share of the map (or of the free area, if smaller) that must stay in view
 const DRAG_START = 6;             // pixels a pointer must travel before a press becomes a drag
 const make = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
 const ICON = (path) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
@@ -117,6 +118,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     view = root.querySelector('.cmap-view'); worldNode = root.querySelector('.cmap-world'); canvas = root.querySelector('.cmap-canvas');
     controls = Object.fromEntries([...root.querySelectorAll('[data-cmap]')].map((node) => [node.dataset.cmap, node]));
     built = true; signature = ''; overlayKey = ''; fitted = false; userMoved = false; shown = '';
+    pointers.clear(); drag = null; pinch = null; suppressClick = false; root.classList.remove('is-dragging');
     update();
     drawOverlays();
     if (!container.hidden) fit();
@@ -143,11 +145,12 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   const fitScale = (free = freeRect()) => Math.min((free.width - 16) / W, (free.height - 16) / H);
   const worldHeight = () => (worldNode ? Math.max(H * scale, worldNode.offsetHeight) : H * scale);
 
-  /** Keep the city in the free area: centred while it is smaller than it, otherwise never dragged past its edges. */
+  /** Keep the city in reach: it can be dragged freely, but most of it always stays inside the free area. */
   function clamp(free = freeRect()) {
     const width = W * scale, height = worldHeight();
-    x = width <= free.width ? free.left + (free.width - width) / 2 : Math.min(free.left + MARGIN, Math.max(free.right - MARGIN - width, x));
-    y = height <= free.height ? free.top + (free.height - height) / 2 : Math.min(free.top + MARGIN, Math.max(free.bottom - MARGIN - height, y));
+    const keepX = Math.min(width, free.width) * KEEP, keepY = Math.min(height, free.height) * KEEP;
+    x = Math.min(free.right - keepX, Math.max(free.left + keepX - width, x));
+    y = Math.min(free.bottom - keepY, Math.max(free.top + keepY - height, y));
   }
   /** Write the view to the DOM. Called from input handlers only. */
   function apply() {
@@ -181,17 +184,23 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   function fit() {
     if (!built || container.hidden) return;
     const free = freeRect();
-    scale = fitScale(free); x = 0; y = 0;
-    fitted = true; userMoved = false;
+    scale = fitScale(free);
+    x = free.left + (free.width - W * scale) / 2;
     // With the sea plots showing, the city sits at the top and the sea is a drag away.
+    const sea = root.querySelector('[data-sea]');
+    y = sea && !sea.hidden ? free.top + 8 : free.top + (free.height - H * scale) / 2;
+    fitted = true; userMoved = false;
     apply();
   }
   /** Zoom by `factor` keeping the map point under (cx, cy) — container pixels — where it is. */
   function zoomAt(factor, cx, cy) {
     if (!fitted) fit();
     const free = freeRect();
-    const next = Math.min(MAX_WIDTH / W, Math.max(fitScale(free), scale * factor));
-    if (Math.abs(next - scale) < 1e-6) return;
+    const smallest = fitScale(free);
+    const next = Math.min(MAX_WIDTH / W, Math.max(smallest, scale * factor));
+    if (Math.abs(next - scale) < 1e-6) { apply(); return; }
+    // Zooming all the way out lands on the centred whole-city view.
+    if (next <= smallest * 1.001) { fit(); return; }
     const px = cx ?? free.left + free.width / 2, py = cy ?? free.top + free.height / 2;
     x = px - ((px - x) / scale) * next;
     y = py - ((py - y) / scale) * next;
@@ -219,13 +228,17 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   function local(event) { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; }
   function onPointerDown(event) {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (event.target.closest('[data-cmap]')) return; // the view buttons are not a place to start a drag
+    // A primary pointer means no other finger is down: forget any press whose release was never seen,
+    // so a lost pointerup can not leave the map stuck in a one-finger "pinch".
+    if (event.isPrimary) pointers.clear();
     pointers.set(event.pointerId, local(event));
     // A fresh press starts clean: only the click that ends a drag or a pinch is swallowed (see onClick).
     if (pointers.size === 1) { suppressClick = false; drag = { id: event.pointerId, from: local(event), x, y, moved: false }; pinch = null; }
     else if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
-      pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, scale };
-      drag = null; suppressClick = true;
+      pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, scale, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 } };
+      drag = null; suppressClick = true; root.classList.add('is-dragging');
     }
   }
   function onPointerMove(event) {
@@ -234,8 +247,10 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     pointers.set(event.pointerId, at);
     if (pinch && pointers.size >= 2) {
       const [a, b] = [...pointers.values()];
-      const distance = Math.hypot(a.x - b.x, a.y - b.y) || 1;
-      zoomAt((pinch.scale * distance / pinch.distance) / scale, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      const distance = Math.hypot(a.x - b.x, a.y - b.y) || 1, mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      // Two fingers move the map as well as zoom it.
+      x += mid.x - pinch.mid.x; y += mid.y - pinch.mid.y; pinch.mid = mid; userMoved = true;
+      zoomAt((pinch.scale * distance / pinch.distance) / scale, mid.x, mid.y);
       return;
     }
     if (!drag || drag.id !== event.pointerId) return;
@@ -246,14 +261,22 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     apply();
   }
   function onPointerUp(event) {
-    pointers.delete(event.pointerId);
-    if (pointers.size < 2) pinch = null;
-    if (drag?.id === event.pointerId) { drag = null; root.classList.remove('is-dragging'); }
+    if (!pointers.delete(event.pointerId)) return;
+    if (drag?.id === event.pointerId) drag = null;
+    if (pinch && pointers.size < 2) {
+      pinch = null;
+      // One finger lifted: the one still down carries on as a drag, without a jump.
+      const [rest] = [...pointers.entries()];
+      if (rest) drag = { id: rest[0], from: rest[1], x, y, moved: true };
+    }
+    if (!pointers.size) root.classList.remove('is-dragging');
   }
   function onWheel(event) {
     event.preventDefault();
     const at = local(event);
-    zoomAt(Math.exp(-event.deltaY * (event.ctrlKey ? 0.01 : 0.0018)), at.x, at.y);
+    // Line and page based wheels (deltaMode 1 and 2) report far smaller numbers than pixel based ones.
+    const delta = event.deltaY * (event.deltaMode === 1 ? 32 : event.deltaMode === 2 ? 320 : 1);
+    zoomAt(Math.exp(-Math.max(-240, Math.min(240, delta)) * (event.ctrlKey ? 0.01 : 0.0018)), at.x, at.y);
   }
   /** Keyboard, forwarded by the shell: arrows pan, + and − zoom, 0 fits. Only while the map is the screen in front. */
   function onKey(event) {
@@ -393,7 +416,8 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   function onClick(event) {
     const control = event.target.closest('[data-cmap]');
     if (control) { if (control.getAttribute('aria-disabled') !== 'true') onControl(control.dataset.cmap); return; }
-    if (suppressClick) { suppressClick = false; event.preventDefault(); return; }
+    // Only the pointer click that ends a drag or pinch is swallowed; a keyboard click (detail 0) always goes through.
+    if (suppressClick) { suppressClick = false; if (event.detail !== 0) { event.preventDefault(); return; } }
     const house = event.target.closest('[data-neighbour]');
     if (house) { onSelectNeighbour({ id: house.dataset.neighbour, name: house.dataset.name }); return; }
     const pin = event.target.closest('.cmap-pin');
@@ -433,8 +457,9 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   root.addEventListener('click', onClick);
   root.addEventListener('pointerdown', onPointerDown);
   root.addEventListener('pointermove', onPointerMove);
-  root.addEventListener('pointerup', onPointerUp);
-  root.addEventListener('pointercancel', onPointerUp);
+  // Releases are heard on the window, so one that happens off the map (or after a rebuild) still ends the gesture.
+  window.addEventListener('pointerup', onPointerUp);
+  window.addEventListener('pointercancel', onPointerUp);
   root.addEventListener('wheel', onWheel, { passive: false });
   window.addEventListener('jaw:map-ui', onUi);
   window.addEventListener('jaw:key', onKey);
@@ -461,6 +486,6 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     },
     /** For tests and diagnostics: the current view. */
     view: () => ({ scale, x, y, fitted, compact: W * scale < LABEL_WIDTH }),
-    destroy() { root.removeEventListener('click', onClick); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:key', onKey); root.remove(); },
+    destroy() { root.removeEventListener('click', onClick); window.removeEventListener('pointerup', onPointerUp); window.removeEventListener('pointercancel', onPointerUp); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:key', onKey); root.remove(); },
   };
 }

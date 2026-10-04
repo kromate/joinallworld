@@ -21,14 +21,13 @@ npm run load        # N simulated players against an in-process server: latency 
 
 ### Development
 
-Run the game server and the Vite dev server in two terminals:
+Start the complete local game with one command:
 
 ```sh
-npm run start:server    # API and WebSocket on port 3001
-npm run dev             # client on http://127.0.0.1:5173/
+npm run dev             # game, API and WebSocket at http://127.0.0.1:5173/
 ```
 
-Vite proxies `/api` and `/socket` to `127.0.0.1:3001`.
+The launcher starts a dedicated API on a free loopback port and connects Vite to it. Set `DEV_PORT` to use a different frontend port. It fails clearly if that port is already occupied and stops both servers when you press Ctrl+C. `npm run start:server` remains available for running the API separately.
 
 ### Production build
 

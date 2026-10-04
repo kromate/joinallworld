@@ -34,6 +34,8 @@ export default function coreRoutes(ctx) {
   /** For a request that only reads: when the renewal could not be saved, answer from the stored data instead. */
   const unsaved = (fallback) => (error) => { if (error?.code !== 'storage_unavailable') throw error; return fallback(); };
   return {
+    // Which build is serving, for a local preview or a deploy check. No session is read or created.
+    'GET /api/health': () => ({ body: { ok: true, build: config.buildId } }),
     'POST /api/session': async (request) => {
       const body = await request.json();
       const name = validateName(body.name);

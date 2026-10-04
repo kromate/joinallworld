@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
+    "dev": "node scripts/dev.mjs",
     "build": "vite build",
     "test": "node --test \"src/**/*.test.js\" \"server/**/*.test.js\"",
     "start": "node server/server.js",

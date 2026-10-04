@@ -90,6 +90,81 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   let current = null, currentLocation = null, renderCount = 0, lastState = null, size = { width: 0, height: 0 };
   let player = {}, crowd = [], crowdKey = '[]', shownTags = [], tagKey = '', background = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
   const point = new THREE.Vector3();
+  const orbit = { yaw: 0, tilt: 0, zoom: 1 };
+  const pointers = new Map();
+  let suppressClick = false;
+  const canvas = renderer.domElement;
+  const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
+  const previousTouchAction = canvas.style?.touchAction;
+  const previousCursor = canvas.style?.cursor;
+  if (canvas.style) { canvas.style.touchAction = 'none'; canvas.style.cursor = 'grab'; }
+  function releasePointers() {
+    for (const id of pointers.keys()) { try { canvas.releasePointerCapture?.(id); } catch {} }
+    pointers.clear();
+    if (canvas.style) canvas.style.cursor = 'grab';
+  }
+  function resetView() {
+    releasePointers();
+    suppressClick = false;
+    orbit.yaw = 0; orbit.tilt = 0; orbit.zoom = 1;
+  }
+  function redrawView() { frame(); renderScene(); }
+  function pointerDown(event) {
+    if (event.button !== 0 || pointers.size >= 2) return;
+    if (!pointers.size) suppressClick = false;
+    else suppressClick = true;
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY });
+    try { canvas.setPointerCapture?.(event.pointerId); } catch {}
+    if (canvas.style) canvas.style.cursor = 'grabbing';
+  }
+  function pointerMove(event) {
+    const previous = pointers.get(event.pointerId);
+    if (!previous) return;
+    const next = { ...previous, x: event.clientX, y: event.clientY };
+    if (!suppressClick && pointers.size === 1) {
+      if (Math.hypot(next.x - previous.startX, next.y - previous.startY) < 6) return;
+      suppressClick = true;
+    }
+    if (next.x === previous.x && next.y === previous.y) return;
+    if (pointers.size === 2) {
+      const other = [...pointers.entries()].find(([id]) => id !== event.pointerId)[1];
+      const before = Math.hypot(previous.x - other.x, previous.y - other.y);
+      const after = Math.hypot(next.x - other.x, next.y - other.y);
+      if (before > 4 && after > 4) orbit.zoom = clamp(orbit.zoom * after / before, 0.65, 2);
+    } else {
+      orbit.yaw -= (next.x - previous.x) * 0.006;
+      orbit.tilt = clamp(orbit.tilt + (next.y - previous.y) * 0.004, -0.5, 0.5);
+    }
+    pointers.set(event.pointerId, next);
+    event.preventDefault();
+    redrawView();
+  }
+  function pointerEnd(event) {
+    pointers.delete(event.pointerId);
+    try { canvas.releasePointerCapture?.(event.pointerId); } catch {}
+    if (!pointers.size && canvas.style) canvas.style.cursor = 'grab';
+  }
+  function wheel(event) {
+    if (!Number.isFinite(event.deltaY)) return;
+    event.preventDefault();
+    const units = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? size.height : 1;
+    const zoom = clamp(orbit.zoom * Math.exp(clamp(-event.deltaY * units * 0.001, -1, 1)), 0.65, 2);
+    if (zoom === orbit.zoom) return;
+    orbit.zoom = zoom;
+    redrawView();
+  }
+  const controls = { pointerdown: pointerDown, pointermove: pointerMove, pointerup: pointerEnd,
+    pointercancel: pointerEnd, lostpointercapture: pointerEnd, wheel,
+    click(event) {
+      if (!suppressClick || event.detail === 0) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    },
+    dblclick(event) {
+      if (suppressClick && event.detail > 0) return;
+      resetView(); redrawView();
+    } };
+  for (const [type, listener] of Object.entries(controls)) canvas.addEventListener?.(type, listener, { passive: false, capture: type === 'click' });
 
   /** Project the current scene's tags through the camera. Runs with every frame the host draws — never on its own. */
   function projectTags() {
@@ -145,11 +220,18 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const portrait = camera.aspect < 0.85;
     const view = current?.camera || DEFAULT_CAMERA;
     camera.position.set(...(portrait ? view.portrait : view.landscape));
+    if (orbit.yaw || orbit.tilt) {
+      const offset = new THREE.Spherical().setFromVector3(camera.position.clone().sub(new THREE.Vector3(0, 0.7, 0)));
+      offset.theta += orbit.yaw;
+      offset.phi = clamp(offset.phi + orbit.tilt, 0.25, Math.PI / 2 - 0.1);
+      camera.position.setFromSpherical(offset).add(new THREE.Vector3(0, 0.7, 0));
+    }
     camera.fov = portrait ? 48 : 43;
     camera.lookAt(0, 0.7, 0);
     // Centre the scene in what the HUD leaves free; on a wide screen also step back a little when little is left.
     const free = Math.max(160, height - insets.top - insets.bottom);
     camera.zoom = portrait ? 1 : Math.max(0.74, Math.min(1, free / (height * 0.6)));
+    camera.zoom *= orbit.zoom;
     // Scenes are composed a little above the point the camera looks at (walls and props rise from the floor).
     const shift = insets.top || insets.bottom ? Math.round((insets.bottom - insets.top) / 2 - height * 0.06 * camera.zoom) : 0;
     if (shift && width > 0 && height > 0) camera.setViewOffset(width, height, 0, shift, width, height); else camera.clearViewOffset();
@@ -164,6 +246,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       current.group.visible = false;
       if (typeof current.dispose === 'function') { current.dispose(); scene.remove(current.group); built.delete(currentLocation); }
     }
+    resetView();
     currentLocation = id;
     current = sceneFor(id);
     current.group.visible = true;
@@ -224,6 +307,9 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     setPlayer,
     setCrowd,
     dispose() {
+      releasePointers();
+      for (const [type, listener] of Object.entries(controls)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
+      if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
       for (const entry of built.values()) entry.dispose?.();
       built.clear();
       kit.dispose();

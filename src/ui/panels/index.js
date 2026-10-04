@@ -53,3 +53,9 @@ export const PANELS = buildPanels([session, city, map, ride, health, jobs, caree
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');
+
+// Trust pass panels (Statement, Report a problem). Registered on their own lines so the lists
+// above stay untouched; buildPanels re-validates ids and re-sorts by `order`.
+import statement from './statement.js';
+import support from './support.js';
+PANELS.splice(0, PANELS.length, ...buildPanels([...PANELS, statement, support]));

@@ -96,4 +96,9 @@ export const settings = definePanel({
   component: defineAsyncComponent(() => import('./sim/SettingsTab.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings]
+export const boutique = definePanel({
+  id: 'boutique', title: 'Boutique', placement: 'phone', order: 32, group: 'life',
+  component: defineAsyncComponent(() => import('./life/BoutiqueApp.vue')),
+})
+
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique]

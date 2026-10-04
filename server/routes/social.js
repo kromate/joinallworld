@@ -38,7 +38,7 @@
  *   POST /api/social/transfers           { to, amount, cityId, clientId }
  * The friends list is part of GET /api/social/me.
  */
-import { socialService } from '../social/service.js';
+import { socialService, MATERIAL } from '../social/service.js';
 
 export const HTTP_PER_MINUTE = 240;
 
@@ -47,11 +47,13 @@ export default function socialRoutes(ctx) {
   /** Wrap a service call: parse the body, authenticate, rate limit, transact, then push. */
   const route = (call) => async (request) => {
     const body = request.method === 'POST' ? await request.json() : {};
+    // Every POST is durable before it is answered. A GET that only registered the caller need not
+    // wait for the disk; one that applied something owed to their life (a gift, a friendship) does.
     const result = await ctx.store.transact((db) => {
       const session = request.requireSession(db, { renew: true });
       if (!ctx.allow(`social:http:${session.publicId}`, HTTP_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
-      return call(db, session, body, request);
-    });
+      return service.finish(db, call(db, session, body, request));
+    }, { durable: (value) => request.method !== 'GET' || value?.[MATERIAL] === true });
     return { body: service.deliver(result), renew: true };
   };
   const after = (request) => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };

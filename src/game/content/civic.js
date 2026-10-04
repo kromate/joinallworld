@@ -18,6 +18,7 @@ export const ELECTION = {
   termDays: 7,
   minDaysToRun: 2, // Lagos calendar days lived in the city
   minDaysToVote: 1,
+  minWorkDays: 2, // different Lagos days with paid work (a shift or a gig) before voting or running — original beta value
   filingFee: 2000, // in-game naira, not refunded
   sloganMin: 3,
   sloganMax: 60,

@@ -54,7 +54,8 @@ export async function runFirstDay({ log = console.log } = {}) {
     await once(server, 'listening');
     base = `http://127.0.0.1:${server.address().port}`;
   }
-  async function halt() { server.closeAllConnections(); await new Promise((done) => server.close(done)); }
+  // A graceful stop writes anything not yet on disk (the server does the same on SIGTERM).
+  async function halt() { server.closeAllConnections(); await new Promise((done) => server.close(done)); await server.store.close(); }
   async function http(path, body) {
     const response = await fetch(base + path, { method: body ? 'POST' : 'GET', body: body ? JSON.stringify(body) : undefined,
       headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) } });

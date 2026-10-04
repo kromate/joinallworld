@@ -26,10 +26,26 @@
  * server event 'room-changed' { room, cityId, venueId, members: [publicId] } (ctx.emit). It sends
  * nothing itself, so the room protocol is unchanged; the social module turns the event into a
  * nudge for sockets that asked to watch who is here.
+ *
+ * BLOCKS, PER RECIPIENT. Two players of whom either has blocked the other (ctx.checks.blocked, the
+ * social module's in-memory index) do not exist for each other in a public room: each is left out
+ * of the `presence` list sent to the other, a chat line from one is not delivered to the other,
+ * and signalling between them is refused exactly as if the peer were not in the room. Everyone
+ * else in the room sees and hears both. Nothing tells either player that the other is present.
+ * CHAT TEXT. A chat line passes the text filter (server/moderation/text.js) and the sender's mute
+ * state (ctx.checks.muted). A refused line is answered with an `error` carrying the code
+ * ('text_blocked' | 'muted'), a `reason` sentence and the line's clientId; it is delivered to nobody.
+ * GUEST EXPIRY ON THE HEARTBEAT. On every host heartbeat (ctx.on('heartbeat')) each socket that is
+ * visiting a host's Home room is re-checked against the guest list. A visit that ran out, or whose
+ * host is no longer at home, is dropped then — so a guest who never polls leaves at most one
+ * heartbeat interval (10 s by default) after the visit ends, not at the host's next request.
+ * The module then raises 'guest-expired' { hostId, guestId, cityId } for the social module to
+ * close the stored visit.
  */
 import { MAX_VOICE_MEMBERS, UUID_PATTERN, canJoinVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
 import { VENUES } from '../life-service.js';
 import { checkLook } from '../../src/game/systems/onboarding.js';
+import { screenText } from '../moderation/text.js';
 
 export default function roomSocket(ctx) {
   const { store, now, allow, settle, send, core } = ctx;
@@ -42,8 +58,20 @@ export default function roomSocket(ctx) {
       const old = members.get(ws.session.id);
       members.set(ws.session.id, { ...ws.session, position: { ...ws.position }, enabled: (old?.enabled || ws.voice.enabled), muted: old ? old.muted && ws.voice.muted : ws.voice.muted });
     }
-    for (const ws of rooms.get(room) || []) send(ws, { type: 'presence', members: [...members.values()] });
+    const everyone = [...members.values()];
+    // Only filter when somebody has blocked somebody: the common case sends one shared list.
+    const hide = ctx.checks?.anyBlocks?.() === true ? ctx.checks.blocked : null;
+    for (const ws of rooms.get(room) || []) {
+      send(ws, { type: 'presence', members: hide ? everyone.filter(member => member.id === ws.session.id || !hide(ws.session.id, member.id)) : everyone });
+    }
   }
+  const hidden = (a, b) => a !== b && ctx.checks?.blocked?.(a, b) === true;
+  // A block or unblock changes who each of the two can see: re-send presence where either is.
+  ctx.on?.('blocks-changed', ({ a, b }) => {
+    const touched = new Set();
+    for (const ws of core.sockets()) if (ws.room && (ws.session?.id === a || ws.session?.id === b)) touched.add(ws.room);
+    for (const room of touched) presence(room);
+  });
   /** Announce (inside the server only) that who is in `room` changed. `also` is someone who just left. */
   function roomChanged(room, also) {
     const members = new Set([...(rooms.get(room) || [])].map(ws => ws.session.id));
@@ -101,6 +129,24 @@ export default function roomSocket(ctx) {
     if (hostId) return isGuest(db, session.publicId, hostId, city);
     return canJoinVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, session.publicId);
   };
+  // Heartbeat: end expired visits on time. Guests are looked up from the sockets actually in a Home room.
+  let sweeping = false;
+  async function sweepGuests() {
+    if (sweeping) return;
+    const visiting = core.sockets().map(ws => ({ ws, room: ws.room, city: (ws.room || '').split(':')[0] })).filter(item => visitedHost(item.ws, item.city));
+    if (!visiting.length) return;
+    sweeping = true;
+    try {
+      const allowed = await store.read(db => visiting.map(({ ws, city }) => isGuest(db, ws.session.id, visitedHost(ws, city), city)));
+      visiting.forEach(({ ws, room, city }, index) => {
+        if (allowed[index] || ws.room !== room) return;
+        const hostId = visitedHost(ws, city);
+        drop(ws, 'visit_ended');
+        ctx.emit?.('guest-expired', { hostId, guestId: ws.session.id, cityId: city });
+      });
+    } finally { sweeping = false; }
+  }
+  ctx.on?.('heartbeat', () => { sweepGuests().catch(() => {}); });
   // A visit the social module ended (left, removed, blocked): that guest leaves the host's Home room at once.
   ctx.on?.('visit-ended', ({ hostId, guestId }) => {
     for (const ws of core.sockets()) if (ws.session?.id === guestId && ws.room?.endsWith(`:home:${hostId}`)) drop(ws, 'visit_ended');
@@ -161,7 +207,8 @@ export default function roomSocket(ctx) {
       } },
       signal: { room: true, handle(ws, message) {
         if (typeof message.to !== 'string' || !message.data || typeof message.data !== 'object' || JSON.stringify(message.data).length > 12000) throw Error('invalid_signal');
-        const peers = [...rooms.get(ws.room)].filter(peer => peer.session.id === message.to && peer !== ws);
+        // A blocked pair cannot signal: the answer is the same as for a peer who is not there.
+        const peers = hidden(ws.session.id, message.to) ? [] : [...rooms.get(ws.room)].filter(peer => peer.session.id === message.to && peer !== ws);
         if (!peers.length) throw Error('peer_not_in_room');
         const nearby = peers.filter(peer => withinVoiceDistance(ws.position, peer.position));
         if (!nearby.length) throw Error('peer_out_of_range');
@@ -175,9 +222,12 @@ export default function roomSocket(ctx) {
         const key = `${ws.session.id}:${ws.room}`;
         const history = chatHistory.get(key) || new Map();
         if (clientId && history.has(clientId)) { send(ws, history.get(clientId)); return; }
+        // Refused, never altered: a muted sender or a blocked text gets a reason and nobody receives the line.
+        const refusal = ctx.checks?.muted?.(ws.session.id) ?? screenText(body, { what: 'Your message' });
+        if (refusal) throw Object.assign(Error(refusal.code), { reason: refusal.reason });
         const chat = { type: 'chat', id: core.newId(), clientId, from: { ...ws.session }, body, at: now() };
         if (clientId) { history.set(clientId, chat); if (history.size > 100) history.delete(history.keys().next().value); chatHistory.set(key, history); }
-        for (const peer of rooms.get(ws.room)) send(peer, chat);
+        for (const peer of rooms.get(ws.room)) if (!hidden(ws.session.id, peer.session.id)) send(peer, chat);
       } },
     },
   };

@@ -103,8 +103,10 @@ import core from './core.js';
 import auth from './auth.js';
 import social from './social.js';
 import civic from './civic.js';
+import support from './support.js';
+import moderation from './moderation.js';
 
-export const ROUTE_MODULES = [core, auth, social, civic];
+export const ROUTE_MODULES = [core, auth, social, civic, support, moderation];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /** Build the lookup. Returns { match(method, pathname) → { handler, params } | null, keys }. */

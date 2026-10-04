@@ -40,7 +40,7 @@ export default function socialSocket(ctx) {
     const result = await ctx.store.transact((db) => {
       const session = ctx.core.sessionOf(ws, db);
       if (!session || session.expiresAt <= ctx.now()) throw Error('device_session_required');
-      return call(db, session);
+      return service.finish(db, call(db, session));
     });
     return service.deliver(result);
   }
@@ -58,7 +58,11 @@ export default function socialSocket(ctx) {
   if (ctx.checks) ctx.checks.homeGuest = (db, guestId, hostId, cityId) => service.homeGuest(db, guestId, hostId, cityId);
   // A host whose life left home has no visitors: when the room module empties their Home room, end the visits too.
   ctx.on?.('home-closed', ({ hostId }) => {
-    ctx.store.transact((db) => service.closeHouse(db, hostId)).then((result) => service.deliver(result)).catch(() => {});
+    ctx.store.transact((db) => service.finish(db, service.closeHouse(db, hostId))).then((result) => service.deliver(result)).catch(() => {});
+  });
+  // The room module dropped a guest on the heartbeat (the visit ran out): close the stored visit and tell both sides.
+  ctx.on?.('guest-expired', ({ hostId }) => {
+    ctx.store.transact((db) => service.finish(db, service.expireVisits(db, hostId))).then((result) => service.deliver(result)).catch(() => {});
   });
   const echo = (message) => (typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {});
 

@@ -98,8 +98,41 @@ export function voteBlock(city, now, playerId, candidateId) {
   return null;
 }
 
-export function vote(city, now, playerId, candidateId) {
-  electionOf(city, phaseAt(now).week).votes[playerId] = candidateId;
+/**
+ * `addressKey` (optional) is a pseudonymous key for the network address the vote came from; the
+ * election keeps a count per key so the route can apply the per-address soft cap. Counts of
+ * earlier elections are dropped here, so they live for one election only.
+ */
+export function vote(city, now, playerId, candidateId, addressKey = null) {
+  const week = phaseAt(now).week, election = electionOf(city, week);
+  election.votes[playerId] = candidateId;
+  for (const [key, other] of Object.entries(city.gov.elections)) if (Number(key) !== week && other) { delete other.addr; delete other.capLogged; }
+  if (typeof addressKey === 'string' && addressKey) {
+    if (election.addr === null || typeof election.addr !== 'object' || Array.isArray(election.addr)) election.addr = {};
+    election.addr[addressKey] = (Number.isSafeInteger(election.addr[addressKey]) ? election.addr[addressKey] : 0) + 1;
+  }
+}
+
+/** Votes already counted from this address key in the current election. */
+export function addressVotes(city, now, addressKey) {
+  const count = electionOf(city, phaseAt(now).week)?.addr?.[addressKey];
+  return Number.isSafeInteger(count) && count > 0 ? count : 0;
+}
+
+/** True the first time it is asked for this key in the current election (so the audit trail gets one line, not one per attempt). */
+export function firstCapNotice(city, now, addressKey) {
+  const election = electionOf(city, phaseAt(now).week);
+  if (!election) return false;
+  if (election.capLogged === null || typeof election.capLogged !== 'object' || Array.isArray(election.capLogged)) election.capLogged = {};
+  if (election.capLogged[addressKey]) return false;
+  election.capLogged[addressKey] = true;
+  return true;
+}
+
+/** Operator removal of one announcement. Returns it, or null. */
+export function removeAnnouncement(city, id) {
+  const index = city.gov.announcements.findIndex((item) => item.id === id);
+  return index < 0 ? null : city.gov.announcements.splice(index, 1)[0];
 }
 
 /** Why the player cannot post a Governor's announcement right now, or null. */

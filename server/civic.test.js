@@ -70,10 +70,22 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   let gov = await get('/api/civic/gov?city=lagos', ada);
   assert.equal(gov.phase, 'voting'); assert.equal(gov.you.run.ok, false); assert.equal(gov.you.run.code, 'nominations_closed');
   assert.equal(gov.you.vote.ok, false); assert.match(gov.you.vote.reason, /Nobody is on the ballot/);
-  assert.deepEqual(gov.you.run.checks.map((item) => [item.id, item.met]), [['days', false], ['fee', true]], 'eligibility is stated up front');
+  assert.deepEqual(gov.you.run.checks.map((item) => [item.id, item.met]), [['days', false], ['fee', true], ['work', false]], 'eligibility is stated up front');
   assert.equal(gov.rules.filingFee, 2000); assert.equal(gov.rules.pollingVenue, 'polling-unit', 'the merged city has a Polling Unit, so votes are cast there');
   const tooEarly = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all' }, ada);
   assert.equal(tooEarly.ok, false); assert.equal(tooEarly.code, 'nominations_closed'); assert.match(tooEarly.reason, /Monday/); assert.equal(tooEarly.state.cash, 5000);
+  // Ada and Bola are paid for work on two different Lagos days (Thursday and Friday); Chidi never works.
+  const workShift = async (device) => {
+    await f.action(device.cookie, { type: 'apply-job', payload: { id: 'community-helper' } });
+    await f.action(device.cookie, { type: 'spot', payload: { id: 'work' } });
+    const started = await f.action(device.cookie, { type: 'activity', payload: { id: 'helper-shift' } });
+    assert.equal(started.ok, true, started.reason);
+    wait(21000);
+    return life(device);
+  };
+  for (const device of [ada, bola]) assert.equal((await workShift(device)).civic.work.days, 1);
+  goTo(START + DAY);
+  for (const device of [ada, bola]) assert.deepEqual([(await workShift(device)).civic.work.days, (await life(device)).cash], [2, 5600]);
 
   // Monday: nominations.
   goTo(MONDAY + 60000);
@@ -82,18 +94,20 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   assert.equal(gov.phase, 'nominations'); assert.equal(gov.phaseEndsAt, MONDAY + 3 * DAY); assert.equal(gov.you.run.ok, true); assert.equal(gov.you.days, 4);
   for (const [slogan, code] of [['', 'text_too_short'], ['ab', 'text_too_short'], ['x'.repeat(61), 'text_too_long'], ['vote at www.ada.ng', 'links_not_allowed'], [undefined, 'text_required'], [{ a: 1 }, 'text_required']]) {
     const refused = await post('/api/civic/gov/run', { cityId: 'lagos', slogan }, ada);
-    assert.equal(refused.ok, false); assert.equal(refused.code, code, String(slogan)); assert.ok(refused.reason); assert.equal(refused.state.cash, 5000);
+    assert.equal(refused.ok, false); assert.equal(refused.code, code, String(slogan)); assert.ok(refused.reason); assert.equal(refused.state.cash, 5600);
   }
   const newcomer = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'New broom' }, dayo);
   assert.equal(newcomer.code, 'too_new'); assert.match(newcomer.reason, /at least 2 Lagos days/); assert.equal(newcomer.state.cash, 5000);
   const declared = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: '  Light <b>for</b> all  ' }, ada);
-  assert.equal(declared.ok, true); assert.equal(declared.code, 'declared'); assert.equal(declared.state.cash, 3000);
-  assert.deepEqual(declared.state.ledger.at(-1), { at: MONDAY + 60000, amount: -2000, reason: 'Governorship filing fee', balance: 3000 });
+  assert.equal(declared.ok, true); assert.equal(declared.code, 'declared'); assert.equal(declared.state.cash, 3600);
+  assert.deepEqual(declared.state.ledger.at(-1), { at: MONDAY + 60000, amount: -2000, reason: 'Governorship filing fee', balance: 3600 });
   assert.deepEqual(declared.gov.election.candidates, [{ id: ada.id, name: 'Ada', slogan: 'Light <b>for</b> all', votes: 0, you: true }]);
   const twice = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all' }, ada);
-  assert.equal(twice.code, 'already_candidate'); assert.equal(twice.state.cash, 3000, 'a repeat is never charged again');
+  assert.equal(twice.code, 'already_candidate'); assert.equal(twice.state.cash, 3600, 'a repeat is never charged again');
   wait(1000);
   assert.equal((await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Roads first' }, bola)).ok, true);
+  const idle = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Never worked a day' }, chidi);
+  assert.equal(idle.code, 'work_days'); assert.match(idle.reason, /paid for work on at least 2 different Lagos days/); assert.equal(idle.state.cash, 5000, 'age alone does not qualify, and nothing is charged');
   const notYet = await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, chidi);
   assert.equal(notYet.code, 'polls_closed'); assert.match(notYet.reason, /Thursday to Saturday/);
 
@@ -114,7 +128,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   for (const candidate of [chidi.id, 'nobody', '__proto__', 5, null, undefined]) assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate }, chidi)).code, 'unknown_candidate', String(candidate));
   const voted = await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: bola.id }, ada);
   assert.equal(voted.ok, true); assert.equal(voted.gov.election.yourVote, bola.id); assert.equal(voted.gov.you.vote.code, 'already_voted');
-  assert.equal(voted.state.cash, 3000, 'voting is free');
+  assert.equal(voted.state.cash, 3600, 'voting is free');
   assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, bola)).ok, true);
   const [again, parallel] = await Promise.all([post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, ada), post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, ada)]);
   assert.equal(again.code, 'already_voted'); assert.equal(parallel.code, 'already_voted');

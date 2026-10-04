@@ -111,6 +111,14 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     }
     return state;
   }
+  /** One Community helper shift at Freedom Park (the player is already there and already has the job). */
+  async function helperShift(who) {
+    await ok(who, 'spot', { id: 'work' }, 'selected');
+    const shift = await ok(who, 'activity', { id: 'helper-shift' }, 'started');
+    wait(shift.activeAction.duration * 1000);
+    return life(who);
+  }
+
   async function joinRoom(peer, venueId) { peer.send({ type: 'join', cityId: CITY, venueId }); return peer.until('presence'); }
 
   async function create(name) {
@@ -200,6 +208,7 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     assert.equal((await liveB.until('error')).code, 'not_a_guest', 'a friend is not a guest');
     assert.equal((await post('/api/social/house/knock', { host: ada.id, cityId: CITY }, bola)).code, 'host_not_home');
     await travel(ada, 'home');
+    roomA.drain(); // presence messages from the park are still queued; wait for the one this join produces
     await joinRoom(roomA, 'home');
     const knock = await post('/api/social/house/knock', { host: ada.id, cityId: CITY }, bola);
     assert.equal(knock.code, 'knocking');
@@ -257,11 +266,28 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     assert.equal((await liveB.until('transfer')).amount, 1500);
     assert.ok((await get('/api/social/me', bola)).updates.some((update) => update.text === 'Ada sent you ₦1,500.'));
     assert.equal((await post('/api/social/transfers', { to: ada.id, amount: 500, cityId: CITY, clientId: clientId() }, bola)).code, 'earn_first', 'a gift is not wages: Bola cannot pass it on');
+    // Bola takes the starter job and works his first paid shift: Sunday is his first day worked.
+    await ok(bola, 'apply-job', { id: 'community-helper' }, 'applied');
+    assert.equal((await helperShift(bola)).civic.work.days, 1);
     say('Ada earns ₦3,000 teaching and, a day later, sends Bola ₦1,500', `refused while her account was under a day old and above what she earned; one debit (${naira(afterA.cash)}), one credit (${naira(afterB.cash)})`);
 
     // ---- 7. Monday: Ada declares for Governor ------------------------------------------------------
     goTo(at(5, 9));
     let gov = await get(`/api/civic/gov?city=${CITY}`, ada);
+    // Old enough, but paid for work on one day only (Saturday): the server says exactly what is missing.
+    assert.deepEqual([gov.phase, gov.you.days, gov.you.run.ok, gov.you.run.code], ['nominations', 2, false, 'work_days']);
+    assert.match(gov.you.run.reason, /paid for work on 1 day\. Finish a paid shift or gig on 1 more day/);
+    assert.equal((await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Light for every street' }, ada)).code, 'work_days');
+    await ok(ada, 'spot', { id: 'drinks' }, 'selected');
+    const lunch = await ok(ada, 'activity', { id: 'park-palmwine' }, 'started');
+    wait(lunch.activeAction.duration * 1000);
+    await life(ada);
+    await ok(ada, 'spot', { id: 'work' }, 'selected');
+    const monday = await ok(ada, 'activity', { id: 'teaching-shift' }, 'started');
+    wait(monday.activeAction.duration * 1000);
+    assert.equal((await life(ada)).civic.work.days, 2);
+    assert.equal((await helperShift(bola)).civic.work.days, 2, 'Bola’s second day worked');
+    gov = await get(`/api/civic/gov?city=${CITY}`, ada);
     assert.deepEqual([gov.phase, gov.you.days, gov.you.run.ok], ['nominations', 2, true]);
     const fee = (await life(ada)).cash;
     const declared = await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Light for every street' }, ada);
@@ -269,7 +295,7 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     assert.equal((await post('/api/civic/gov/run', { cityId: CITY, slogan: 'Again' }, ada)).code, 'already_candidate');
     assert.equal((await act(ada, 'civic.run', {})).code, 'server_only', 'the fee cannot be paid outside the election route');
     assert.equal((await post('/api/civic/gov/vote', { cityId: CITY, candidate: ada.id }, bola)).code, 'polls_closed');
-    say('Monday: Ada declares for Governor', `filing fee ₦2,000 paid once (${naira(declared.state.cash)}); voting is not open yet`);
+    say('Monday: Ada declares for Governor', `refused until she had been paid for work on two different days; filing fee ₦2,000 paid once (${naira(declared.state.cash)}); voting is not open yet`);
 
     // ---- 8. Tuesday: Bola completes the daily gem hunt and is paid once ------------------------------
     goTo(at(6, 9));
@@ -371,6 +397,7 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     for (const ws of sockets) ws.terminate();
     server.closeAllConnections();
     await new Promise((done) => server.close(done));
+    await server.store.close();
     await rm(dataDir, { recursive: true, force: true });
   }
 }

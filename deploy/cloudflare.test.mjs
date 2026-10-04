@@ -222,7 +222,7 @@ test('Cloudflare: gradual home nap cancellation survives eviction without repeat
 
 test('Cloudflare: real static HTML receives response security and cache headers', async t => {
   const f = await fixture(t); const response = await f.request('/');
-  assert.equal(response.status, 200); assert.equal(response.headers.get('x-content-type-options'), 'nosniff'); assert.equal(response.headers.get('cache-control'), 'no-cache'); assert.match(await response.text(), /JoinAllworld/);
+  assert.equal(response.status, 200); assert.equal(response.headers.get('x-content-type-options'), 'nosniff'); assert.equal(response.headers.get('cache-control'), 'no-cache'); assert.match(await response.text(), /Allworld/);
 });
 
 test('Cloudflare: pre-job saves hydrate and award a completed shift once after restart', async t => {

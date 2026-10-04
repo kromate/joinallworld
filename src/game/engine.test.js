@@ -168,7 +168,8 @@ test('needs: six needs in fixed order decay slowly in whole points, with a floor
 test('needs never trap a player: home is a free trek away and restores without prerequisites', () => {
   const state = createLife({ cash: 0, needs: Object.fromEntries(NEEDS.map(need => [need, 0])) }, at(MONDAY_9AM));
   assert.equal(dispatch(state, { type: 'travel', payload: { id: 'home', mode: 'trek' } }, at(MONDAY_9AM)).ok, true);
-  advanceLife(state, 5, at(MONDAY_9AM + 5000));
+  assert.equal(state.activeAction.duration, 18, 'the trek home from Freedom Park crosses the lagoon');
+  advanceLife(state, 18, at(MONDAY_9AM + 18000));
   assert.equal(state.location, 'home');
   const free = spotsOf('home').flatMap(spot => spot.activities).filter(def => !def.unavailable && !def.cost && !def.minimumNeeds && !def.requiresJob && !def.requiresSkill && !def.consumes && !def.hours);
   for (const need of ['hunger', 'energy', 'hygiene']) assert.ok(free.some(def => (def.effects?.[need] ?? 0) > 0 || (def.effectsPerSecond?.[need] ?? 0) > 0), `free ${need} recovery at home`);

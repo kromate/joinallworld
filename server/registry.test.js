@@ -214,7 +214,8 @@ test('an old-format saved life survives the refactor: state, timers, per-city en
   for (const key of ['cash', 'name', 'homeOwned', 'job', 'completedShifts', 'needs', 'location', 'spot', 'activeAction', 'message']) assert.deepEqual(loaded[key], lagos[key], `lagos.${key}`);
   assert.equal(loaded.v, 1); assert.equal(loaded.t, 100000);
   const other = await life('ibadan');
-  for (const key of ['cash', 'name', 'homeOwned', 'job', 'completedShifts', 'needs', 'location', 'spot', 'activeAction']) assert.deepEqual(other[key], ibadan[key], `ibadan.${key}`);
+  for (const key of ['cash', 'name', 'homeOwned', 'job', 'completedShifts', 'needs', 'location', 'activeAction']) assert.deepEqual(other[key], ibadan[key], `ibadan.${key}`);
+  assert.equal(other.spot, 'bookcase', 'a save from before the Library had spots stands at its first spot');
   // The stored receipt still replays as a duplicate (same fingerprint format) and a different body still conflicts.
   const replay = await fetch(`${base}/api/action`, { method: 'POST', headers, body: JSON.stringify({ actionId: oldId, cityId: 'lagos', type: 'activity', id: 'helper-shift' }) });
   const replayed = await replay.json(); assert.equal(replayed.duplicate, true); assert.equal(replayed.code, 'started'); assert.equal(replayed.state.cash, 4321);

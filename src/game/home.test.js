@@ -241,8 +241,8 @@ test('starter kitchen: stocked once on arriving home, at life.started, or by unp
   const state = createLife({ cash: 100 }, ctx);
   assert.deepEqual(state.inventory, {});
   act(state, 'travel', { id: 'home', mode: 'trek' });
-  run(state, 5);
-  assert.equal(state.location, 'home'); assert.equal(state.message, 'Arrived at Home.');
+  run(state, state.activeAction.duration); // the trek from Freedom Park crosses the lagoon
+  assert.equal(state.location, 'home'); assert.match(state.message, /^Arrived at Home\./);
   assert.deepEqual(state.inventory, START_KITCHEN); assert.equal(state.home.stocked, true);
   state.inventory.rice = 0;
   emit(state, 'travel.arrived', { venue: 'home', from: 'park' }, ctx);

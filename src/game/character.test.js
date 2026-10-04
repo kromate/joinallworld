@@ -404,7 +404,8 @@ test('after the chain the chip is a rolling next step that is always attainable'
   state.needs.energy = 90;
   assert.deepEqual([chip().title, chip().go], ['Eat something', ['home', 'kitchen']]);
   state.needs.hunger = 90; state.needs.social = 5;
-  assert.equal(chip().title, 'Talk to someone'); assert.match(chip().hint, /Social is low \(5%\)/);
+  // The city now has a free social activity that needs no furniture, so the guide points at it.
+  assert.deepEqual([chip().title, chip().hint, chip().go], ['Talk to someone', 'Freedom Park → Drinks kiosk → Gist with the Kiosk Lady', ['park', 'drinks']]);
 });
 
 test('wishes: three active, +3 stars each, replaced when granted, re-rolls limited per day with a reason', () => {
@@ -413,15 +414,16 @@ test('wishes: three active, +3 stars each, replaced when granted, re-rolls limit
   const state = started();
   const wishes = () => viewLife(state, at()).goals.wishes;
   assert.equal(wishes().length, 3); assert.ok(wishes().every(wish => wish.stars === 3));
-  // Only wishes this build can actually fulfil are handed out.
-  assert.deepEqual(state.goals.wishes.map(wish => wish.id), ['earn-15k', 'work-shift', 'park-chill']);
+  // Every venue is on the map now, so a new life starts with the three observed wishes.
+  assert.deepEqual(state.goals.wishes.map(wish => wish.id), ['earn-15k', 'park-art', 'palms-movie']);
 
-  // A real activity grants one: chill under the trees at the park.
+  // A real activity grants one: see the exhibition in the Freedom Park gallery (trek from Home, 18 s).
   state.goals.chain = STARTER_GOALS.length;
-  act(state, 'travel', { id: 'park', mode: 'trek' }); advanceLife(state, 5, at(START + 5000));
-  act(state, 'spot', { id: 'trees' }); act(state, 'activity', { id: 'chill' }, at(START + 5000)); advanceLife(state, 11, at(START + 16000));
-  assert.equal(state.goals.stars, 3); assert.equal(state.goals.granted, 1); assert.equal(state.goals.feed.at(-1).text, 'Wish granted: Chill under the trees · +3✨');
-  assert.equal(wishes().length, 3); assert.ok(!state.goals.wishes.some(wish => wish.id === 'park-chill'), 'a granted wish is replaced by a different one');
+  act(state, 'travel', { id: 'park', mode: 'trek' }, at(START)); advanceLife(state, 18, at(START + 18000));
+  assert.equal(state.location, 'park');
+  act(state, 'spot', { id: 'art' }); assert.equal(act(state, 'activity', { id: 'see-art' }, at(START + 18000)).code, 'started'); advanceLife(state, 10, at(START + 28000));
+  assert.equal(state.goals.stars, 3); assert.equal(state.goals.granted, 1); assert.equal(state.goals.feed.at(-1).text, 'Wish granted: See art at Freedom Park · +3✨');
+  assert.equal(wishes().length, 3); assert.ok(!state.goals.wishes.some(wish => wish.id === 'park-art'), 'a granted wish is replaced by a different one');
   assert.equal(new Set(state.goals.wishes.map(wish => wish.id)).size, 3);
 
   // Counted wishes and the daily earnings wish.
@@ -490,8 +492,9 @@ test('perks: the eight observed ones, original ones up to 25 stars, bought once 
   buy('lucky-star');
   assert.equal(state.goals.stars, 0); assert.equal(state.goals.perks.length, PERKS.length);
   assert.ok(viewLife(state, at()).goals.perks.every(perk => perk.owned && perk.blocked === 'Owned'));
-  // Real effects: the cab to the library is 20% cheaper, the helper shift pays 10% more, a wish gives 4 stars.
-  act(state, 'travel', { id: 'library', mode: 'cab' }); assert.equal(state.ledger.at(-1).amount, -320);
+  // Real effects: the cab to the library is 20% cheaper and a wish gives 4 stars.
+  // Home (Yaba) → The Library crosses the lagoon, so the cab is the ₦550 far-band fare before the discount.
+  act(state, 'travel', { id: 'library', mode: 'cab' }); assert.equal(state.ledger.at(-1).amount, -440);
   state.goals.wishes = [{ id: 'new-item', n: 0, day: 0 }, { id: 'earn-15k', n: 0, day: 0 }, { id: 'work-shift', n: 0, day: 0 }];
   emit(state, 'item.bought', { id: 'x', price: 100 }, at()); assert.equal(state.goals.stars, 4);
   assert.deepEqual(createLife(structuredClone(state), at()), state);

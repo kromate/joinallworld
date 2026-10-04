@@ -349,7 +349,8 @@ test('roadside events: deterministic, pending in state, resolved by an action', 
   }
   for (const mode of Object.keys(ALL_MODES)) assert.ok(Object.values(EVENTS).some((event) => event.modes.includes(mode)), `${mode} has events`);
   const { state, seed } = trekUntil('agbo');
-  const replay = createLife(null, at(DRY_NOON)); go(replay, 'library', 'trek', DRY_NOON, seed);
+  // Both lives are built the same way (from an empty save), so only the seed can make them differ.
+  const replay = createLife({}, at(DRY_NOON)); go(replay, 'library', 'trek', DRY_NOON, seed);
   assert.deepEqual(replay, state, 'the same seed gives the same trip');
   assert.deepEqual(state.travel.event, { id: 'agbo', at: DRY_NOON + 12000 }); assert.match(state.message, /Iya Agbo by the road — choose what to do\.$/);
   const offer = viewLife(state, at(DRY_NOON + 20000)).travel.event;

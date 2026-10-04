@@ -570,6 +570,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     renderCoach();
     // A panel that must be completed opens by itself (and comes back if anything replaced it).
     if (view.connected) {
+      // A first-time nickname gate stays locked until the server has accepted the session.
+      // Release it here so required character creation can take over without another click.
+      if (sheet?.kind === 'panel' && sheet.params?.reason === 'new' && byId.get(sheet.id)?.role === 'session-gate') closeDialog();
       const must = panels.find((panel) => panel.placement === 'modal' && typeof panel.required?.(state, panelView()) === 'string');
       if (must && !(sheet?.kind === 'panel' && (sheet.id === must.id || byId.get(sheet.id)?.role === 'session-gate'))) { sheet = null; open(must.id); }
     }

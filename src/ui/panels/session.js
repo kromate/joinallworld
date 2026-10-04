@@ -7,6 +7,10 @@ import { esc } from '../dom.js';
 
 export default {
   id: 'session', title: 'Your city life', icon: '🌍', placement: 'modal', role: 'session-gate', live: false,
+  required(state, view) {
+    return view.params?.reason === 'new' && !view.connected
+      ? 'Choose a nickname and start your life before creating your Sim.' : null;
+  },
   render(state, view) {
     if (view.params?.reason === 'expired') {
       return '<h3>Your device session has expired</h3><p>Your saved preview is still on this browser. The server has retained the old life, but recovery is not available yet. Starting a new life creates a separate identity.</p><button class="ui-button" data-close>Keep my saved preview</button> <button class="ui-button is-primary" data-session-new>Start a separate new life</button>';

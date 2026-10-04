@@ -66,10 +66,18 @@
  *   ctx.publicSession(session)             → { id, name } — the ONLY identity you may expose
  *   ctx.push(publicId, message)            → number of open sockets the message was sent to
  *   ctx.online(publicId)                   → boolean
+ *   ctx.atHome(db, publicId, cityId)       → boolean: that player's stored life is at Home (read-only)
+ *   ctx.checks                             checks one module provides for another. The social module
+ *                                          sets ctx.checks.homeGuest(db, guestId, hostId, cityId) →
+ *                                          boolean; ws/rooms.js asks it before admitting a guest to a
+ *                                          host's Home room and refuses everyone while it is absent.
  *   ctx.on(event, fn) / ctx.emit(event, data)   in-process events between server modules. The
  *                                          foundation raises 'room-changed' { room, cityId, venueId,
  *                                          members: [publicId] } when a venue room's membership or
  *                                          a member's name changes. Nothing is sent to clients by it.
+ *                                          The social module raises 'visit-ended' { hostId, guestId }
+ *                                          when a house visit ends; ws/rooms.js then drops that guest
+ *                                          from the host's Home room at once.
  *   ctx.config                             { sessionTtlMs, actionWindowMs, maxActiveSessions }
  *   ctx.core                               foundation internals — not for feature modules
  *

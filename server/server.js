@@ -14,7 +14,7 @@ import { createStore } from './store.js';
 import { settleCity, applyLifeAction } from './life-service.js';
 import { buildRoutes } from './routes/index.js';
 import { buildSocketHandlers } from './ws/index.js';
-import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection } from './protocol.js';
+import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canJoinVenue } from './protocol.js';
 
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
 const cookieId = (req) => (req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith('sid='))?.slice(4);
@@ -134,6 +134,19 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       return sent;
     },
     online: (publicId) => [...wss.clients].some(ws => ws.session?.id === publicId && ws.readyState === WebSocket.OPEN),
+    /**
+     * Whether a player's stored life in a city is at Home (same rule as joining the Home room).
+     * Read-only: nothing is settled, so a trip that has ended but not been settled yet reads as "not home".
+     */
+    atHome(db, publicId, cityId) {
+      if (typeof publicId !== 'string' || !CITY_IDS.includes(cityId)) return false;
+      const session = Object.values(db.sessions).find(item => item.publicId === publicId && item.expiresAt > now());
+      const state = session?.cities?.[cityId]?.state;
+      return Boolean(state) && canJoinVenue(state, 'home');
+    },
+    // Checks one module provides for another. checks.homeGuest is set by the social module and
+    // read by ws/rooms.js; while it is absent, nobody can join another player's Home room.
+    checks: {},
     config: { sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider },
     core: {
       archiveSession,

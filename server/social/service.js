@@ -18,7 +18,10 @@
  *               visiting: hostId|null, recv: { day, amount }, chats: { day, count } } }
  *   convs     { [convId]: { id, kind: 'dm'|'group'|'house', members: [id], name?, owner?, cid?, seq, created,
  *               messages: [{ seq, from: id|null, body, at, cid?, sys? }] } }      (bounded history)
- *   houses    { [hostId]: { knocks: { visitorId: { at, expires, status, cityId } }, guests: { id: { since, expires } } } }
+ *   houses    { [hostId]: { knocks: { visitorId: { at, expires, status, cityId } }, guests: { id: { since, expires, cityId } } } }
+ *             A visit lasts until it expires, the guest leaves or is removed, either blocks the other,
+ *             or the HOST'S LIFE LEAVES HOME (ctx.atHome). homeGuest() is the one answer to "may this
+ *             player be in that host's Home room?"; the room module asks it on join and on re-validation.
  *   pending   { [publicId]: [{ n, at, cityId, payload, keep, refund? }] }  life effects owed to a player who was
  *             offline (a gift waiting to be credited, a friendship to record); applied on their next request
  *   receipts  { ['<publicId>|<clientId>']: { at, kind, fp, result } }       idempotency for non-message writes
@@ -57,6 +60,7 @@ export function socialService(ctx) {
   if (cached) return cached;
   const presence = presenceOf(ctx);
   const now = () => ctx.now();
+  const ended = []; // [hostId, guestId] visits ended in the transaction being run; announced by deliver()
   const bad = (code) => ctx.fail(400, code);
 
   // ---- input validation (throws 400) ---------------------------------------------------------
@@ -71,8 +75,10 @@ export function socialService(ctx) {
   const convId = (value) => { if (typeof value !== 'string' || !CONV_ID.test(value)) throw bad('invalid_conversation'); return value; };
 
   // ---- collection ----------------------------------------------------------------------------
+  const dbOf = new WeakMap(); // collection → the db it came from, for ctx.atHome inside pruneHouse
   function col(db) {
     const s = ctx.collection(db, 'social');
+    dbOf.set(s, db);
     for (const key of ['players', 'convs', 'houses', 'pending', 'receipts']) if (!isRecord(s[key])) s[key] = {};
     if (!Array.isArray(s.reports)) s.reports = [];
     if (!Number.isSafeInteger(s.seq)) s.seq = 0;
@@ -84,6 +90,7 @@ export function socialService(ctx) {
 
   /** Register/refresh the caller, run housekeeping and apply anything owed to their life. */
   function enter(db, session) {
+    ended.length = 0; // anything left over belongs to a transaction that was aborted or only read
     const s = col(db), id = session.publicId, t = now();
     const p = s.players[id] ||= { name: session.name, first: t, seen: t, friends: {}, in: {}, out: {}, blocked: {}, convs: {}, updates: [], reports: [],
       baeIn: {}, bae: null, visiting: null, recv: { day: 0, amount: 0 }, chats: { day: 0, count: 0 } };
@@ -107,8 +114,10 @@ export function socialService(ctx) {
     if (status.state !== 'online') return { status: status.state };
     if (!status.rooms.length) return { status: 'away' };
     if (!detailed) return { status: 'online' };
-    const room = describeRoom(status.rooms[0]);
-    return { status: 'online', cityId: room.cityId, venue: room.venue };
+    // Their own venue room says where they are; a socket in someone else's Home room is a visit, not "at home".
+    const rooms = status.rooms.map(describeRoom);
+    const own = rooms.find((room) => !room.home || room.hostId === id);
+    return own ? { status: 'online', cityId: own.cityId, venue: own.venue } : { status: 'online', cityId: rooms[0].cityId, venue: 'visit' };
   }
 
   function notify(s, to, kind, message, data, push) {
@@ -256,6 +265,12 @@ export function socialService(ctx) {
   }
 
   // ---- houses --------------------------------------------------------------------------------
+  /** Is the host's stored life at home in the visit's city? Without the host helper (a bare context) visits are not tied to it. */
+  function hostAtHome(s, hostId, cityId) {
+    const db = dbOf.get(s);
+    if (typeof ctx.atHome !== 'function' || !db) return true;
+    return cityId ? ctx.atHome(db, hostId, cityId) : ctx.cityIds.some((city) => ctx.atHome(db, hostId, city));
+  }
   function pruneHouse(s, hostId) {
     const house = s.houses[hostId];
     if (!house) return null;
@@ -265,9 +280,11 @@ export function socialService(ctx) {
     }
     let changed = false;
     for (const [guest, visit] of Object.entries(house.guests)) {
-      if (visit.expires > t && s.players[guest] && !blockedEither(s, hostId, guest)) continue;
+      // A visit ends when it expires, when either blocks the other, and when the host is no longer at home.
+      if (visit.expires > t && s.players[guest] && !blockedEither(s, hostId, guest) && hostAtHome(s, hostId, visit.cityId)) continue;
       delete house.guests[guest]; changed = true;
       if (s.players[guest]?.visiting === hostId) s.players[guest].visiting = null;
+      ended.push([hostId, guest]);
     }
     if (changed) syncHouseConv(s, hostId);
     if (!Object.keys(house.knocks).length && !Object.keys(house.guests).length) { delete s.houses[hostId]; return null; }
@@ -290,9 +307,10 @@ export function socialService(ctx) {
   function houseView(s, hostId, viewer) {
     const house = pruneHouse(s, hostId);
     const guests = Object.entries(house?.guests || {}).map(([id, visit]) => ({ ...pub(s, id), since: visit.since, expiresAt: visit.expires }));
+    const cityId = house?.guests[viewer]?.cityId ?? Object.values(house?.guests || {})[0]?.cityId ?? null;
     const role = viewer === hostId ? 'host' : house?.guests[viewer] ? 'guest' : 'none';
     const host = presence.status(hostId);
-    return { host: pub(s, hostId), capacity: LIMITS.guests, guests, role, conv: guests.length && role !== 'none' ? `h.${hostId}` : null,
+    return { host: pub(s, hostId), capacity: LIMITS.guests, guests, role, cityId, conv: guests.length && role !== 'none' ? `h.${hostId}` : null,
       hostStatus: host.state !== 'online' ? host.state : host.rooms.some((room) => describeRoom(room).hostId === hostId) ? 'home' : 'out',
       knocks: role === 'host' ? Object.entries(house?.knocks || {}).filter(([, knock]) => knock.status === 'pending').map(([id, knock]) => ({ from: pub(s, id), at: knock.at, expiresAt: knock.expires })) : [] };
   }
@@ -301,6 +319,7 @@ export function socialService(ctx) {
     if (!house?.guests[guest]) return false;
     delete house.guests[guest];
     if (s.players[guest]?.visiting === hostId) s.players[guest].visiting = null;
+    ended.push([hostId, guest]);
     syncHouseConv(s, hostId);
     pruneHouse(s, hostId);
     return true;
@@ -322,6 +341,8 @@ export function socialService(ctx) {
     presence,
     /** Send the pushes a committed result collected, and strip them from what the caller sees. */
     deliver(result) {
+      // Visits that ended in the committed transaction: the room module drops those guests from the host's Home room now.
+      for (const [hostId, guestId] of ended.splice(0)) ctx.emit?.('visit-ended', { hostId, guestId });
       if (!result || !Array.isArray(result.push)) return result;
       const { push, ...rest } = result;
       for (const [to, message] of push) ctx.push(to, message);
@@ -332,6 +353,7 @@ export function socialService(ctx) {
     me(db, session) {
       const { s, p, id } = enter(db, session);
       const person = (other) => ({ ...pub(s, other), ...whereabouts(other, true) });
+      const visit = p.visiting ? houseView(s, p.visiting, id) : null; // prunes first, so an ended visit is never reported
       return yes('ok', {
         me: { id, name: p.name, since: p.first },
         friends: Object.entries(p.friends).map(([other, since]) => ({ ...person(other), since, bae: p.bae === other })).sort((a, b) => a.name.localeCompare(b.name)),
@@ -343,7 +365,7 @@ export function socialService(ctx) {
         updates: p.updates.slice().reverse(),
         reports: p.reports.slice().reverse(),
         house: houseView(s, id, id),
-        visiting: p.visiting && s.houses[p.visiting]?.guests[id] ? houseView(s, p.visiting, id) : null,
+        visiting: visit?.role === 'guest' ? visit : null,
         invitePath: `/v/${id}`,
         limits: { body: LIMITS.body, groupSize: LIMITS.groupSize, groupName: LIMITS.groupName, guests: LIMITS.guests, reportText: LIMITS.reportText, reasons: REPORT_REASONS },
       });
@@ -606,6 +628,33 @@ export function socialService(ctx) {
       return yes('updated', { conv: summary(s, conv, id), push });
     },
 
+    /**
+     * The room module's question: may `guestId` be in `hostId`'s Home room in `cityId` right now?
+     * True only for an accepted visit that has not expired or been ended, between two players who
+     * have not blocked each other, while the host's life is at home in that city.
+     */
+    homeGuest(db, guestId, hostId, cityId) {
+      if (typeof guestId !== 'string' || typeof hostId !== 'string' || guestId === hostId) return false;
+      const s = col(db);
+      if (!Object.hasOwn(s.players, guestId) || !Object.hasOwn(s.players, hostId) || !Object.hasOwn(s.houses, hostId)) return false;
+      const visit = pruneHouse(s, hostId)?.guests[guestId];
+      return Boolean(visit) && visit.cityId === cityId;
+    },
+    /** The host's life left home: end every visit, tell the guests, and return the pushes. */
+    closeHouse(db, hostId) {
+      const s = col(db);
+      const before = Object.keys(s.houses[hostId]?.guests || {});
+      if (!before.length) return yes('closed', { push: [] });
+      pruneHouse(s, hostId);
+      const push = [];
+      for (const guest of before.filter((id) => !s.houses[hostId]?.guests[id])) {
+        push.push([guest, { type: 'invite-house', house: houseView(s, hostId, guest) }]);
+        notify(s, guest, 'invite-answer', `${pub(s, hostId).name} went out, so your visit ended.`, { host: hostId }, push);
+      }
+      push.push([hostId, { type: 'invite-house', house: houseView(s, hostId, hostId) }]);
+      return yes('closed', { push });
+    },
+
     // ---- house invites: knock → let in / not now -----------------------------------------------
     house(db, session, rawHost) {
       const hostId = uuid(rawHost);
@@ -654,10 +703,11 @@ export function socialService(ctx) {
       }
       const push = [];
       if (body.answer === 'accept') {
+        if (!hostAtHome(s, id, knock.cityId)) return no('host_not_home', 'You are not at home, so nobody can come in. Go home first, then let them in.');
         if (Object.keys(house.guests).length >= LIMITS.guests) return no('house_full', `Your house is full (${LIMITS.guests} guests). Ask someone to leave first.`);
         const visiting = s.players[visitor]?.visiting;
         if (visiting && visiting !== id && endVisit(s, visiting, visitor)) housePush(s, visiting, push);
-        house.guests[visitor] = { since: now(), expires: now() + LIMITS.visitMs };
+        house.guests[visitor] = { since: now(), expires: now() + LIMITS.visitMs, cityId: knock.cityId };
         if (s.players[visitor]) s.players[visitor].visiting = id;
         syncHouseConv(s, id);
         fanOut(s, s.convs[`h.${id}`], append(s, s.convs[`h.${id}`], null, `${pub(s, visitor).name} came in.`, null, true), push, null);

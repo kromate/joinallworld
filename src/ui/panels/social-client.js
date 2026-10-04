@@ -25,7 +25,9 @@ export const S = {
   openConv: null,       // conversation currently on screen (messages are marked read as they arrive)
   knock: null,          // my own knock: { host, name, status: 'sending' | 'knocking' | 'accepted' | 'declined' | 'failed', reason, expiresAt }
   linkHost: null,       // house id from an invite link that has not been handled yet
+  houseRoom: null,      // { host, members: [{ id, name }] } while this socket is in a host's Home room as a guest
 };
+let joiningHouse = null;
 let ws = null, attempts = 0, timer = null, started = false, syncing = false, dirty = false, peopleDirty = false;
 const peopleWatchers = new Set();
 /** Call `fn` whenever the who-is-here listing changes (the scene host draws its crowd from it). */
@@ -68,7 +70,7 @@ export async function sync() {
   syncing = true; S.loading = !S.me;
   const result = await call('/api/social/me');
   syncing = false; S.loading = false;
-  if (result.ok) { S.me = result; S.error = null; } else S.error = result.reason;
+  if (result.ok) { S.me = result; S.error = null; joinHouse(); } else S.error = result.reason;
   refresh();
   if (dirty) { dirty = false; void sync(); }
 }
@@ -146,6 +148,19 @@ export function retry(clientId) {
 }
 export function discard(clientId) { outbox.discard(clientId); refresh(); }
 
+/**
+ * While the server lists an accepted visit, this socket joins the HOST's Home room (the server
+ * admits it only from its own guest list). That gives truthful presence in the house; the house
+ * chat itself is the conversation in Messages. Presence and text only: nothing here touches voice.
+ */
+function joinHouse() {
+  const visit = S.me?.visiting;
+  if (!visit || !visit.cityId) { if (S.houseRoom) { S.houseRoom = null; } joiningHouse = null; return; }
+  if (S.houseRoom?.host === visit.host.id || joiningHouse === visit.host.id || ws?.readyState !== 1) return;
+  joiningHouse = visit.host.id;
+  ws.send(JSON.stringify({ type: 'join', cityId: visit.cityId, venueId: 'home', hostId: visit.host.id }));
+}
+
 // ---- live pushes ----------------------------------------------------------------------------
 function receive(event) {
   let message; try { message = JSON.parse(event.data); } catch { return; }
@@ -163,6 +178,12 @@ function receive(event) {
     if (S.me) S.me.updates = [message.update, ...S.me.updates.filter((item) => item.id !== message.update.id)];
     S.api.toast(String(message.update.text ?? ''));
     refresh();
+  } else if (type === 'presence' && Array.isArray(message.members)) {
+    // Only ever received for a host's Home room this socket joined as a guest.
+    if (joiningHouse || S.houseRoom) { S.houseRoom = { host: joiningHouse ?? S.houseRoom.host, members: message.members.map((member) => ({ id: member.id, name: member.name })) }; joiningHouse = null; refresh(); }
+  } else if (type === 'error' && ['visit_ended', 'not_a_guest', 'venue_mismatch'].includes(message.code)) {
+    S.houseRoom = null; joiningHouse = null;
+    void sync();
   } else if (type === 'people' && message.ok) {
     S.people = message; S.peopleAt = S.api.view().now;
     peopleChanged(); refresh();
@@ -195,7 +216,7 @@ function connectSocket() {
   current.onmessage = receive;
   current.onclose = () => {
     if (ws !== current) return;
-    ws = null;
+    ws = null; S.houseRoom = null; joiningHouse = null;
     if (connected() && attempts < MAX_ATTEMPTS) { S.socket = 'reconnecting'; timer = setTimeout(connectSocket, Math.min(1000 * 2 ** attempts, 15000)); attempts += 1; }
     else S.socket = 'offline';
     refresh();

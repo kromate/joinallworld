@@ -8,7 +8,7 @@
  * POST /api/action runs the action through core.playerAct, without the `internal` flag that
  * ctx.act carries, so a server-only action type (src/game/registry.js) is always refused here.
  */
-import { validateName, validateActionPayload, publicSession, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig, venueRoomKey } from '../protocol.js';
+import { validateName, validateActionPayload, publicSession, actionFingerprint, pruneReceipts, readReceipt, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.js';
 
 export default function coreRoutes(ctx) {
   const { store, now, fail, allow, settle, core, config } = ctx;
@@ -42,7 +42,8 @@ export default function coreRoutes(ctx) {
           if (ws.session.id !== current.publicId || !core.isOpen(ws) || !ws.room || ws.expiresAt <= now()) return false;
           const city = ws.room.split(':')[0];
           const state = settle(current, city);
-          return canJoinVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, current.publicId);
+          // The player's own venue room, or a host's Home room they are still a guest of.
+          return core.roomStillValid(ws, db, current, city, state);
         });
         if (!live) throw fail(403, 'room_membership_required');
         return current;
@@ -58,15 +59,17 @@ export default function coreRoutes(ctx) {
     'GET /api/life': async (request) => {
       const city = request.query.get('city');
       if (!ctx.cityIds.includes(city)) throw fail(400, 'invalid_city');
-      const state = await store.transact(db => settle(request.requireSession(db, { renew: true }), city));
-      await core.validateMemberships(request.secret, city, state);
+      const { state, publicId } = await store.transact(db => { const session = request.requireSession(db, { renew: true }); return { state: settle(session, city), publicId: session.publicId }; });
+      await core.validateMemberships(request.secret, city, state, publicId);
       return { body: { state }, renew: true };
     },
     'POST /api/action': async (request) => {
       const body = await request.json();
       const actionAt = validateActionPayload(body, now(), config.actionWindowMs);
+      let publicId;
       const outcome = await store.transact(db => {
         const session = request.requireSession(db, { renew: true });
+        publicId = session.publicId;
         validateActionPayload(body, now(), config.actionWindowMs);
         pruneReceipts(session.actions, now(), config.actionWindowMs);
         const state = settle(session, body.cityId);
@@ -78,7 +81,7 @@ export default function coreRoutes(ctx) {
         session.actions[body.actionId] = { actionAt, fingerprint, ok: result.ok, code: result.code };
         return result;
       });
-      await core.validateMemberships(request.secret, body.cityId, outcome.state);
+      await core.validateMemberships(request.secret, body.cityId, outcome.state, publicId);
       return { body: outcome, renew: true };
     },
   };

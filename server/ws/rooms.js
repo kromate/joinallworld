@@ -4,6 +4,18 @@
  * Behaviour is unchanged from the pre-registry server. Public venues share one room per
  * city; Home rooms are keyed per identity, so a home is never shared between devices.
  *
+ * GUESTS IN A HOST'S HOME ROOM. `join` accepts { venueId: 'home', hostId }. For a hostId other
+ * than the sender's own id the server admits the socket to the HOST's Home room only if
+ * ctx.checks.homeGuest(db, senderPublicId, hostId, cityId) — provided by the social module —
+ * says the sender is an accepted, unexpired guest of that host and the host's life is at home.
+ * The room key is built from the validated hostId, so the message cannot name any other room.
+ * Membership is re-validated on the same schedule as every venue membership (the guest's own
+ * GET /api/life and POST /api/action — and the host's, for the guests in their room); a guest
+ * whose visit expired, was ended or whose host left home is dropped with 'visit_ended'. A host who leaves home empties their Home room of
+ * guests at their own next validation, and a 'visit-ended' event drops one guest at once.
+ * Inside the room a guest is an ordinary member: same chat, same proximity-gated signalling,
+ * same voice cap, and — as for everyone — voice off and muted on join. Nothing enables it.
+ *
  * LOOK. On join the server records the joining life's appearance on the socket (ws.look) from the
  * server-held state, re-validated against the appearance option lists (checkLook): eight option
  * ids, nothing a client sent. It is not added to `presence` (which is re-sent on every move); the
@@ -13,7 +25,7 @@
  * nothing itself, so the room protocol is unchanged; the social module turns the event into a
  * nudge for sockets that asked to watch who is here.
  */
-import { MAX_VOICE_MEMBERS, canJoinVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
+import { MAX_VOICE_MEMBERS, UUID_PATTERN, canJoinVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
 import { VENUES } from '../life-service.js';
 import { checkLook } from '../../src/game/systems/onboarding.js';
 
@@ -46,14 +58,51 @@ export default function roomSocket(ctx) {
     presence(room);
     roomChanged(room, ws.session.id);
   }
-  /** Drop sockets whose room no longer matches where the server says the player is. */
-  core.validateMemberships = (secret, city, state) => {
-    for (const ws of core.sockets()) if (ws.secret === secret && ws.room?.startsWith(`${city}:`)
-      && (ws.room !== venueRoomKey(city, state.location, ws.session.id) || state.activeAction?.kind === 'travel')) {
-      leave(ws); ws.voice = { enabled: false, muted: true };
-      send(ws, { type: 'error', code: 'venue_mismatch', error: 'venue_mismatch' });
-    }
+  function drop(ws, code) {
+    leave(ws); ws.voice = { enabled: false, muted: true };
+    send(ws, { type: 'error', code, error: code });
+  }
+  /** The host id of the Home room a socket is visiting as a guest, or null (also null in its own Home room). */
+  const visitedHost = (ws, city) => {
+    const [roomCity, venue, owner] = (ws.room || '').split(':');
+    return roomCity === city && venue === 'home' && owner && owner !== ws.session.id ? owner : null;
   };
+  const isGuest = (db, guestId, hostId, city) => ctx.checks?.homeGuest?.(db, guestId, hostId, city) === true;
+  /**
+   * Drop sockets whose room no longer matches where the server says the player is. A socket
+   * visiting a host's Home room is checked against the guest list instead of the player's own
+   * location. `publicId` is the player's public id; when their own life is not at home, their
+   * Home room is emptied of guests.
+   */
+  core.validateMemberships = async (secret, city, state, publicId) => {
+    const visiting = [];
+    for (const ws of core.sockets()) {
+      if (ws.secret !== secret || !ws.room?.startsWith(`${city}:`)) continue;
+      if (visitedHost(ws, city)) { visiting.push(ws); continue; }
+      if (ws.room !== venueRoomKey(city, state.location, ws.session.id) || state.activeAction?.kind === 'travel') drop(ws, 'venue_mismatch');
+    }
+    if (typeof publicId === 'string') {
+      const home = venueRoomKey(city, 'home', publicId);
+      const guests = [...(rooms.get(home) || [])].filter(ws => ws.session.id !== publicId);
+      if (!canJoinVenue(state, 'home')) {
+        for (const ws of guests) drop(ws, 'visit_ended');
+        if (guests.length) ctx.emit?.('home-closed', { hostId: publicId, cityId: city });
+      } else visiting.push(...guests); // the host's own validation also re-checks the guests in their room
+    }
+    if (!visiting.length) return;
+    const allowed = await store.read(db => visiting.map(ws => isGuest(db, ws.session.id, visitedHost(ws, city), city)));
+    visiting.forEach((ws, index) => { if (!allowed[index] && visitedHost(ws, city)) drop(ws, 'visit_ended'); });
+  };
+  /** Is this socket's room one the server would admit it to right now? Used by the voice-config route. */
+  core.roomStillValid = (ws, db, session, city, state) => {
+    const hostId = visitedHost(ws, city);
+    if (hostId) return isGuest(db, session.publicId, hostId, city);
+    return canJoinVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, session.publicId);
+  };
+  // A visit the social module ended (left, removed, blocked): that guest leaves the host's Home room at once.
+  ctx.on?.('visit-ended', ({ hostId, guestId }) => {
+    for (const ws of core.sockets()) if (ws.session?.id === guestId && ws.room?.endsWith(`:home:${hostId}`)) drop(ws, 'visit_ended');
+  });
   core.refreshNames = (session) => {
     const changed = new Set();
     for (const ws of core.sockets()) if (ws.session.id === session.id) { ws.session.name = session.name; ws.expiresAt = now() + ctx.config.sessionTtlMs; ws.lastSessionRenewedAt = now(); if (ws.room) changed.add(ws.room); }
@@ -72,16 +121,22 @@ export default function roomSocket(ctx) {
     messages: {
       async join(ws, message) {
         if (!ctx.cityIds.includes(message.cityId) || typeof message.venueId !== 'string' || !Object.hasOwn(VENUES, message.venueId)) throw Error('invalid_room');
+        // hostId is only meaningful for Home, and only as a well-formed public id.
+        if (message.hostId !== undefined && (message.venueId !== 'home' || typeof message.hostId !== 'string' || !UUID_PATTERN.test(message.hostId))) throw Error('invalid_room');
+        const hostId = message.hostId === undefined ? null : message.hostId.toLowerCase();
+        const visiting = hostId !== null && hostId !== ws.session.id;
         const { allowed, look } = await store.transact(db => {
           const session = core.sessionOf(ws, db);
           if (!session || session.expiresAt <= now()) throw Error('device_session_required');
           const state = settle(session, message.cityId);
           // The look comes from the server-held life and is validated again: option ids only.
-          return { allowed: canJoinVenue(state, message.venueId), look: checkLook(state.onboarding?.look).look ?? null };
+          const look = checkLook(state.onboarding?.look).look ?? null;
+          // A guest is admitted by the social module's server-side guest list, never by their own location.
+          return { allowed: visiting ? isGuest(db, session.publicId, hostId, message.cityId) : canJoinVenue(state, message.venueId), look };
         });
-        if (!allowed) throw Error('venue_mismatch');
+        if (!allowed) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');
         if (!core.isOpen(ws)) return;
-        const room = venueRoomKey(message.cityId, message.venueId, ws.session.id);
+        const room = venueRoomKey(message.cityId, message.venueId, visiting ? hostId : ws.session.id);
         leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.room = room; ws.look = look;
         if (!rooms.has(room)) rooms.set(room, new Set());
         rooms.get(room).add(ws); presence(room); roomChanged(room);

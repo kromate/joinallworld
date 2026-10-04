@@ -73,11 +73,11 @@ export const PRESENCE = Object.freeze({
   offline: { label: 'Offline', dot: 'off', hint: 'Not connected.' },
 });
 
-/** "Online · Freedom Park", "Online · at home", "Away", "Reconnecting…", "Offline". */
+/** "Online · Freedom Park", "Online · at home", "Online · visiting a friend", "Away", "Reconnecting…", "Offline". */
 export function presenceText(person, venueName = (id) => id) {
   const entry = PRESENCE[person?.status] || PRESENCE.offline;
   if (person?.status !== 'online' || !person.venue) return entry.label;
-  return `${entry.label} · ${person.venue === 'home' ? 'at home' : venueName(person.venue)}`;
+  return `${entry.label} · ${person.venue === 'home' ? 'at home' : person.venue === 'visit' ? 'visiting a friend' : venueName(person.venue)}`;
 }
 
 /** The line above the people list: what the count means and why it may be empty. */

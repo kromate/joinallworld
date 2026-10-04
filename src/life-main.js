@@ -76,7 +76,11 @@ function showCrowd() {
   const npcs = isDeparting(state) ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location);
   venue?.setCrowd(crowdList({ players: playersHere(social.people, state, client.cityId), npcs, selfId: client.session?.id, positions }));
 }
+let lastPlot = null;
 onPeople(showCrowd);
+// Friends' houses are named on the map (public ids only).
+const showFriends = () => cityMap?.setFriends((social.me?.friends || []).map((friend) => friend.id));
+onPeople(showFriends);
 
 /** Tell the room where the avatar stands right now (the scene itself reports only while it moves). Public venues only. */
 function reportPlace() {
@@ -156,6 +160,7 @@ function loadMaps() {
     window.removeEventListener('jaw:map-ui', keepMapUi);
     world.setCity(client.cityId);
     cityMap.setPlayer(playerLook());
+    showFriends();
     cityMap.setState(client.state);
     render();
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }));
@@ -263,6 +268,9 @@ function accepted(state, previous) {
   venue?.setState(state);
   showPlayer();
   showCrowd();
+  // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
+  const plotKey = state?.estate?.plot ? `${state.estate.plot.lga}/${state.estate.plot.estate}/${state.estate.plot.plot}` : '';
+  if (plotKey !== lastPlot) { if (plotKey && lastPlot !== null) { window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name: 'house_allocated', props: {} } })); window.dispatchEvent(new CustomEvent('jaw:world-changed')); } lastPlot = plotKey; }
   cityMap?.setState(state);
   render();
   // Arrived somewhere (or a trip ended): read who is here once; later changes are pushed by the server.

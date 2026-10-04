@@ -7,6 +7,7 @@
  * (api.open('profile')). The display name is the device-session nickname, renamed through
  * POST /api/session; the look is saved with the 'onboarding.set-look' action. Needs and Skills are live.
  */
+import { renderLgaCard, bindLgaCard } from './lga-card.js';
 import './sim.css';
 import { esc, cap, money, mark, iconFor } from '../dom.js';
 import { linkWords } from '../link.js';
@@ -48,12 +49,14 @@ const profile = {
     const create = o.done ? '' : '<p class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" data-open="onboarding">Create your Sim</button></p>';
     return `<form class="sim-profile" data-profile novalidate>${create}${lookStage(draft.look, { variant: 'wide', name: state.name, caption: esc(lookSummary(draft.look)) })}<div class="sim-profile-top"><div><label class="sim-field">Display name<input name="name" maxlength="24" autocomplete="nickname" value="${esc(draft.name)}" data-key="name"></label><p class="sim-hint">${esc(view.city.name)} · shown to other players. 3–24 characters.</p><ul class="sim-about">${about}</ul></div></div>
       <h3>Appearance</h3><p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>${lookEditor(draft.look, { owned: o.wardrobe })}
+      ${o.done ? renderLgaCard(state, view) : ''}
       ${error ? `<p class="sim-error" role="alert">${esc(error)}</p>` : ''}<div class="sim-save-bar"><button class="ui-button is-primary sim-save" data-save data-key="save" ${save.disabled ? 'disabled' : ''}>${esc(save.label)}</button></div></form>`;
   },
   bind(root, api) {
     const form = root.querySelector('[data-profile]');
     if (!form) return;
     const redraw = () => { if (document.querySelector('[data-profile]')) api.open('profile'); };
+    bindLgaCard(root, api, { redraw });
     if (focusKey && focusKey !== 'name') root.querySelector(`[data-key="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true });
     mountLookPreview(root, draft.look, { name: api.state().name });
     const button = form.querySelector('[data-save]');

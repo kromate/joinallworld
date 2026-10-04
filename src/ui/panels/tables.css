@@ -1,0 +1,54 @@
+/* The game tables and the Whot board. Values come from ../tokens.css. */
+.tb-title{margin:6px 0 10px;font-size:17px;line-height:1.2}
+.tb-title small{display:block;font-weight:400;font-size:12px;color:var(--c-muted)}
+.tb-start{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tb-start .ui-button{flex:1 1 auto;min-height:var(--tap,44px)}
+.tb-option{display:grid;gap:4px;font-size:13px;margin:8px 0}
+.tb-option select{min-height:var(--tap,44px);border-radius:12px;border:1px solid var(--c-line);padding:0 10px;font:inherit;background:#fff}
+.tb-result.is-won{background:var(--c-green-soft)}
+.wh-table{background:#1d4a34;border-radius:20px;padding:12px;color:#fff;display:grid;gap:10px;margin:0 0 var(--s-3)}
+.wh-players{list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.wh-player{flex:1 1 30%;min-width:0;background:rgba(255,255,255,.1);border-radius:12px;padding:8px;font-size:12px;display:grid;gap:4px;border:2px solid transparent}
+.wh-player b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+.wh-player.is-turn{border-color:#e8a643;background:rgba(232,166,67,.18)}
+.wh-player.is-out{opacity:.5}
+.wh-player em{color:#ffd27a;font-style:normal;font-weight:700}
+.wh-backs{display:flex}
+.wh-backs i{width:14px;height:20px;border-radius:3px;background:#b23a2e;border:1px solid rgba(255,255,255,.7);margin-right:-6px;display:block}
+.wh-shown{display:flex;flex-wrap:wrap;gap:3px}
+.wh-centre{display:flex;justify-content:center;gap:22px;align-items:flex-end;padding:6px 0}
+.wh-centre small{display:block;text-align:center;font-size:11px;opacity:.85;margin-top:4px}
+.wh-card{width:58px;height:82px;border-radius:9px;background:#fff;color:#8f1d1d;border:0;position:relative;display:grid;place-items:center;font:inherit;padding:0;box-shadow:0 2px 6px rgba(0,0,0,.28);flex:none;cursor:pointer;transition:transform .12s var(--ease,ease)}
+.wh-card .wh-n{position:absolute;top:4px;left:6px;font-size:15px;font-weight:800;line-height:1}
+.wh-card .wh-s svg{width:30px;height:30px}
+.wh-card .wh-s b{font-size:12px;letter-spacing:.5px;font-weight:900}
+.wh-card small{position:absolute;bottom:3px;left:0;right:0;text-align:center;font-size:8px;line-height:1;font-weight:700;color:#5b6472}
+.wh-card.is-whot{background:#8f1d1d;color:#fff}
+.wh-card.is-back{background:repeating-linear-gradient(45deg,#b23a2e 0 6px,#8f1d1d 6px 12px);border:2px solid #fff;cursor:default}
+.wh-card.is-small{width:26px;height:36px;border-radius:5px;box-shadow:none;cursor:default}
+.wh-card.is-small .wh-n{font-size:10px;top:2px;left:3px}
+.wh-card.is-small .wh-s svg{width:13px;height:13px}
+.wh-card.is-small .wh-s b{font-size:6px}
+.wh-card.is-small small{display:none}
+button.wh-card:not(:disabled){outline:3px solid #e8a643;transform:translateY(-6px)}
+button.wh-card:disabled{cursor:default}
+.wh-card.is-dim{opacity:.55}
+button.wh-card:focus-visible{outline:3px solid #fff}
+.wh-need{margin:0;text-align:center;font-size:13px;font-weight:700}
+.wh-need.is-warn{color:#ffd27a}
+.wh-need .ui-glyph{width:18px;height:18px;vertical-align:-4px}
+.wh-turn{margin:0;text-align:center;font-size:15px;font-weight:800;min-height:22px}
+.wh-clock{height:5px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
+.wh-clock i{display:block;height:100%;background:#e8a643;transform-origin:left;animation:wh-run linear forwards}
+@keyframes wh-run{from{transform:scaleX(var(--from,1))}to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.wh-clock i{animation:none}button.wh-card:not(:disabled){transform:none}}
+.wh-mine{background:rgba(255,255,255,.1);border-radius:14px;padding:12px 8px 8px;display:grid;gap:10px}
+.wh-hand{display:flex;gap:6px;overflow-x:auto;padding:8px 4px 4px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.wh-hand .wh-card{scroll-snap-align:center}
+.wh-picker{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#fff;color:var(--c-ink);border-radius:12px;padding:8px}
+.wh-picker .ui-button{min-height:var(--tap,44px)}
+.wh-picker .ui-glyph{width:18px;height:18px;vertical-align:-4px;color:#8f1d1d}
+.wh-log{list-style:none;margin:0;padding:0;font-size:12px;line-height:1.5;opacity:.9}
+.wh-log li:last-child{font-weight:700;opacity:1}
+.wh-table .gr-note{color:rgba(255,255,255,.85)}
+.ph.is-wide .wh-card{width:68px;height:96px}

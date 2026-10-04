@@ -34,6 +34,7 @@ import { S as social } from './social-client.js';
 import { civicNews } from './civic-ui.js';
 import { reportReplies } from '../phone/reports.js';
 import awayChip from './away-chip.js';
+import tablesChip from './tables-chip.js';
 import { GROWTH_TINTS } from '../phone/icons-growth.js';
 
 const PLACEMENTS = ['phone', 'nav', 'hud', 'sim-tab', 'modal'];
@@ -161,7 +162,11 @@ const growth = lazyGroup(() => import('./groups/growth.js'), [
   { id: 'share-sheet', title: 'Share', placement: 'modal', live: false },
 ]);
 
-export const PANELS = buildPanels([session, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, awayChip, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, growth]);
+const tableApps = lazyGroup(() => import('./groups/tables.js'), [
+  { id: 'tables', title: 'Tables', placement: 'phone', order: 43, group: 'city', tint: GROWTH_TINTS.tables },
+]);
+
+export const PANELS = buildPanels([session, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, awayChip, tablesChip, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, growth, tableApps]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

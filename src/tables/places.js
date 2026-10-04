@@ -1,13 +1,12 @@
 /**
  * OWNER: growth
- * Where the game tables stand, and the registry of games. Plain data plus the rules objects.
+ * Where the game tables stand. Plain data only (the rules are in ./games.js, so a screen that
+ * only needs to know "is there a table here?" does not download any game).
  * A table belongs to a venue: you sit at it only while your Sim is in that venue; anyone in the
- * city may watch. Adding a table is one row here; adding a game is one rules file (./rules.js).
+ * city may watch. Adding a table is one row here; adding a game is one rules file (./rules.js)
+ * and one line in ./games.js.
  */
-import whot from './whot.js';
-
-/** @type {Record<string, import('./rules.js').TableRules>} */
-export const GAMES = Object.freeze({ whot });
+export const GAME_LABELS = Object.freeze({ whot: 'Whot', penalty: 'Penalties' });
 
 /**
  * id      unique within a city;  venue  a venue id from src/game/content/venues.js
@@ -20,7 +19,7 @@ export const TABLES = Object.freeze([
   { id: 'park-bench', venue: 'park', game: 'whot', label: 'Bench under the trees', seats: 4 },
   { id: 'rooftop-lounge', venue: 'rooftop', game: 'whot', label: 'Lounge table', seats: 4 },
   { id: 'viewing-whot', venue: 'viewing-centre', game: 'whot', label: 'Back-row table', seats: 4 },
-].filter((table) => Object.hasOwn(GAMES, table.game)));
+]);
 
 export const tableById = (id) => TABLES.find((table) => table.id === id) ?? null;
 export const tablesAt = (venue) => TABLES.filter((table) => table.venue === venue);

@@ -6,8 +6,6 @@ import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.js';
-import socialRoutes, { canHost } from './routes/social.js';
-import socialSocket from './ws/social.js';
 import { LIMITS } from './social/service.js';
 import { RECONNECT_GRACE_MS } from './social/presence.js';
 import { SHIFT_SECONDS } from '../src/game/content/jobs.js';
@@ -58,9 +56,7 @@ async function earn(f, device) {
   return (await get(f, '/api/life?city=lagos', device)).state;
 }
 
-test('social routes need a device session, a same-origin request and a host that can store', async t => {
-  assert.equal(canHost({ core: {}, config: {}, store: {}, cityIds: [] }), false);
-  assert.deepEqual(socialRoutes({ store: {} }), {}); assert.deepEqual(socialSocket({ store: {} }), { messages: {} });
+test('social routes need a device session and a same-origin request', async t => {
   const f = await fixture(t);
   for (const path of ['/api/social/me', '/api/social/people?city=lagos', '/api/social/conversations', '/api/social/search?q=ada']) assert.equal((await get(f, path)).status, 401, path);
   assert.equal((await post(f, '/api/social/messages', { to: randomUUID(), body: 'hi', clientId: cid() })).error, 'device_session_required');

@@ -21,11 +21,11 @@
  * Actions
  *   'social.call'   { id }    phone a family contact (timed action kind 'call'; works anywhere)
  *   'social.sync'   {}        no-op: lets the client re-read the life after a server-side change
- *   'social.server' { op, … } SERVER ONLY. Refused unless the payload carries the SERVER_ONLY
- *                   symbol key, which a JSON request body can never contain. Called through
- *                   ctx.act by server/social/service.js once the server has checked the other
- *                   player (friendship, presence, limits): transfers, friendships,
- *                   player-to-player interactions and Bae.
+ *   'social.server' { op, … } SERVER ONLY (declared `serverOnly`, see registry.js): refused with
+ *                   'server_only' on POST /api/action. Run through ctx.act by
+ *                   server/social/service.js once the server has checked the other player
+ *                   (friendship, presence, limits): transfers, friendships, player-to-player
+ *                   interactions and Bae.
  *
  * Emits
  *   'npc.greeted'          { npc }
@@ -53,8 +53,6 @@ import { NPCS, NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_TIER, BAE_UNLOCK, MAX_CLO
   JOKE_FORMULA, FAMILY, FAMILY_CALL, TRANSFER_LIMITS } from '../content/npcs.js';
 
 export const MAX_NOTICES = 20;
-/** Capability for server-only operations: a symbol key cannot arrive in a JSON request body. */
-export const SERVER_ONLY = Symbol('social.server');
 const FRIEND_INDEX = TIERS.findIndex((tier) => tier.id === 'friend');
 
 const dayOf = (state, ctx) => lagosTime(finite(ctx?.now) ? ctx.now : state.t).day;
@@ -325,10 +323,8 @@ export default {
       return ok(state, 'calling');
     },
     'social.sync': (state) => ok(state, 'synced'),
-    'social.server'(state, payload, ctx) {
-      if (payload[SERVER_ONLY] !== true) return fail(state, 'server_only', 'That can only be done through the People and Messages screens.');
-      return serverOp(state, payload.op, payload, ctx);
-    },
+    'social.server': { serverOnly: true, refusal: 'That can only be done through the People and Messages screens.',
+      run: (state, payload, ctx) => serverOp(state, payload.op, payload, ctx) },
   },
 
   active: {

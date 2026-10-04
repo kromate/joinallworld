@@ -36,18 +36,13 @@
  *   POST /api/social/bae/answer          { from, accept, cityId }
  *   POST /api/social/bae/end             { cityId }
  *   POST /api/social/transfers           { to, amount, cityId, clientId }
- * (GET /api/social/friends is deliberately not a route: the friends list is part of /me.)
+ * The friends list is part of GET /api/social/me.
  */
 import { socialService } from '../social/service.js';
 
 export const HTTP_PER_MINUTE = 240;
 
-/** A host that cannot store, settle lives and push has nothing to offer these routes. */
-export const canHost = (ctx) => ['transact', 'read'].every((method) => typeof ctx?.store?.[method] === 'function')
-  && ['collection', 'settle', 'act', 'allow', 'now', 'push', 'fail'].every((method) => typeof ctx[method] === 'function');
-
 export default function socialRoutes(ctx) {
-  if (!canHost(ctx)) return {};
   const service = socialService(ctx);
   /** Wrap a service call: parse the body, authenticate, rate limit, transact, then push. */
   const route = (call) => async (request) => {

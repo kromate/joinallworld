@@ -10,6 +10,7 @@ import { buildRoutes, ROUTE_MODULES } from './routes/index.js';
 import { buildSocketHandlers, WS_MODULES } from './ws/index.js';
 import { actionFingerprint, canonicalJson, collection, validateActionPayload, MAX_PAYLOAD_BYTES } from './protocol.js';
 import { actionTypes } from '../src/life.js';
+import { serverOnlyReason, registerSystem } from '../src/game/registry.js';
 
 /** A feature-style route module written only against the documented contract. */
 function guestbookRoutes(ctx) {
@@ -76,8 +77,19 @@ test('route registry: a module gets storage, sessions, settlement, actions and p
 
 test('route registry rejects duplicate and malformed routes at start-up and lists the core routes', () => {
   const ctx = { core: {}, config: {}, store: {}, cityIds: [] };
-  const core = buildRoutes(ctx).keys.sort();
-  assert.deepEqual(core, ['GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/session'], 'stub modules add no endpoints');
+  const keys = buildRoutes(ctx).keys;
+  const CORE = ['GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/session'];
+  for (const key of CORE) assert.ok(keys.includes(key), `core route ${key} is registered`);
+  // Every module registers only under its own namespace; the core module is exactly the core set.
+  const NAMESPACES = ['', '/api/auth/', '/api/social/', '/api/civic/'];
+  assert.equal(ROUTE_MODULES.length, NAMESPACES.length);
+  ROUTE_MODULES.forEach((module, index) => {
+    const own = Object.keys(module(ctx) || {});
+    if (index === 0) assert.deepEqual(own.sort(), CORE);
+    else for (const key of own) assert.ok(key.split(' ')[1].startsWith(NAMESPACES[index]), `${key} is outside ${NAMESPACES[index]}`);
+  });
+  assert.equal(keys.length, new Set(keys).size);
+  assert.ok(keys.some((key) => key.startsWith('GET /api/social/')) && keys.some((key) => key.startsWith('GET /api/civic/')), 'feature modules register against any host context, with no shim');
   assert.throws(() => buildRoutes(ctx, [() => ({ 'GET /api/x': () => {} }), () => ({ 'GET /api/x': () => {} })]), /Duplicate route/);
   assert.throws(() => buildRoutes(ctx, [() => ({ 'GET /api/x/:id': () => {} }), () => ({ 'GET /api/x/:id': () => {} })]), /Duplicate route/);
   for (const key of ['GET /other/x', 'FETCH /api/x', 'GET /api/x y', '/api/x']) assert.throws(() => buildRoutes(ctx, [() => ({ [key]: () => {} })]), /Invalid route/, key);
@@ -90,7 +102,7 @@ test('route registry rejects duplicate and malformed routes at start-up and list
 
 test('authentication stubs are inert: registered, no endpoint, device sessions unchanged', async t => {
   const f = await fixture(t);
-  for (const [path, body] of [['/api/auth/signup', { username: 'ada', password: 'secret12' }], ['/api/auth/login', { username: 'ada', password: 'secret12' }], ['/api/auth/logout', {}], ['/api/auth/session', null], ['/api/social/friends', null], ['/api/civic/governor', null]]) {
+  for (const [path, body] of [['/api/auth/signup', { username: 'ada', password: 'secret12' }], ['/api/auth/login', { username: 'ada', password: 'secret12' }], ['/api/auth/logout', {}], ['/api/auth/session', null]]) {
     const response = await f.request(path, body); assert.equal(response.status, 404, path); assert.equal(response.headers.get('set-cookie'), null);
   }
   const auth = await import('./auth.js'); assert.equal(auth.ACCOUNTS_ENABLED, false);
@@ -116,7 +128,12 @@ test('socket registry: room-free and room-only handlers, error replies, open/clo
 
 test('socket registry rejects duplicate or malformed message types and lists the core types', () => {
   const ctx = { core: {}, config: {}, store: {}, cityIds: [] };
-  assert.deepEqual([...buildSocketHandlers(ctx).messages.keys()].sort(), ['chat', 'join', 'move', 'signal', 'voice-state'], 'stub modules add no message types');
+  const CORE = ['chat', 'join', 'move', 'signal', 'voice-state'];
+  const types = [...buildSocketHandlers(ctx).messages.keys()];
+  for (const type of CORE) assert.ok(types.includes(type), `core message type ${type} is registered`);
+  // The rooms module owns exactly the core types; every other type carries its owner's prefix.
+  assert.deepEqual(Object.keys(WS_MODULES[0](ctx).messages).sort(), CORE);
+  for (const type of types.filter((item) => !CORE.includes(item))) assert.match(type, /^(dm|group|friend|invite|people)-/, `${type} is not prefixed with its area`);
   assert.throws(() => buildSocketHandlers(ctx, [...WS_MODULES, () => ({ messages: { chat: () => {} } })]), /Duplicate socket message type/);
   assert.throws(() => buildSocketHandlers(ctx, [() => ({ messages: { 'Bad Type': () => {} } })]), /Invalid socket message handler/);
   assert.throws(() => buildSocketHandlers(ctx, [() => ({ messages: { ping: { room: true } } })]), /Invalid socket message handler/);
@@ -176,6 +193,37 @@ test('action envelope: types come from the registry and payloads are size-limite
   assert.equal((await (await send({ type: 'spot', payload: { id: 'trees' } })).json()).code, 'selected');
   for (const type of ['activity', 'apply-job', 'cancel', 'spot', 'travel']) assert.ok(actionTypes().includes(type), type);
   assert.throws(() => validateActionPayload({ cityId: 'lagos', type: 'spot', actionId: `100000:${randomUUID()}`, payload: { self: 1n } }, 100000), { code: 'invalid_payload' });
+});
+
+test('server-only actions: the public /api/action can never run one; a route module reaches them through ctx.act', async t => {
+  assert.throws(() => registerSystem({ id: 'bad-server-only', stateKeys: [], sanitize() {}, actions: { 'bad.thing': { serverOnly: true } } }), /needs a handler function/);
+  assert.throws(() => registerSystem({ id: 'bad-plain', stateKeys: [], sanitize() {}, actions: { 'bad.other': { run() {} } } }), /needs a handler function/);
+  const serverOnly = actionTypes().filter((type) => serverOnlyReason(type));
+  assert.deepEqual(serverOnly.sort(), ['civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote', 'social.server']);
+  /** A route written against the contract: it names the type itself and runs it with server authority. */
+  const grantRoutes = (ctx) => ({
+    'POST /api/grant/gift': async (request) => ({ body: await ctx.store.transact(db => {
+      const life = ctx.settle(request.requireSession(db), 'lagos');
+      const result = ctx.act(life, { type: 'social.server', cityId: 'lagos', payload: { op: 'transfer-in', from: '11111111-2222-4333-8444-555555555555', name: 'Server', amount: 250 } });
+      return { ok: result.ok, code: result.code, cash: life.cash };
+    }) }),
+  });
+  const f = await fixture(t, { routes: [...ROUTE_MODULES, grantRoutes] }); const a = await f.device('Ada');
+  const payloads = [{}, { op: 'transfer-in', from: '11111111-2222-4333-8444-555555555555', name: 'x', amount: 5000 }, { kind: 'sea', slot: 'sea-5-5' },
+    { internal: true, serverOnly: false, grant: true, op: 'transfer-in', from: '11111111-2222-4333-8444-555555555555', amount: 5000 }];
+  for (const type of serverOnly) for (const payload of payloads) {
+    // Every envelope field a client controls is tried, including ones named like the server's flag.
+    const response = await f.request('/api/action', { actionId: `100000:${randomUUID()}`, cityId: 'lagos', type, payload, internal: true, ctx: { internal: true } }, a.cookie);
+    const result = await response.json();
+    assert.deepEqual([response.status, result.ok, result.code, result.state.cash], [200, false, 'server_only', 5000], type);
+    assert.ok(result.reason, 'the refusal says where to go instead');
+  }
+  const stored = (await database(f)).sessions[a.cookie.slice(4)];
+  assert.equal(stored.cities.lagos.state.cash, 5000); assert.equal(stored.cities.lagos.state.ledger.length, 0);
+  // A replayed receipt of a refused server-only action stays refused.
+  const actionId = `100000:${randomUUID()}`;
+  for (let i = 0; i < 2; i++) assert.equal((await f.action(a.cookie, { actionId, type: 'civic.vote', payload: {} })).code, 'server_only');
+  assert.deepEqual(await (await f.request('/api/grant/gift', {}, a.cookie)).json(), { ok: true, code: 'received', cash: 5250, serverTime: 100000 });
 });
 
 test('fingerprints without a payload keep the pre-payload format, so stored receipts stay valid', () => {

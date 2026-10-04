@@ -16,7 +16,7 @@
  * fields that did not exist when a save was written simply start at their defaults.
  */
 import './game/systems/index.js';
-import { systems, actionHandler, hasAction, actionTypes, modify } from './game/registry.js';
+import { systems, actionHandler, hasAction, actionTypes, modify, serverOnlyReason } from './game/registry.js';
 import { fail, finite, isRecord, makeContext } from './game/util.js';
 import { STATE_VERSION, sanitizeActive, advanceActive } from './game/systems/core.js';
 import { NEEDS } from './game/systems/needs.js';
@@ -67,6 +67,8 @@ export function createLife(saved, ctx) {
  * fields are folded into the payload. Throws for an unknown type (callers validate first).
  * Before the handler runs every system may veto the action through the 'action.block' modifier
  * (data { type, payload }); a veto is an ordinary failure with its code and reason.
+ * A server-only action (registry.js) is refused with 'server_only' unless ctx.internal === true:
+ * that flag is set by the route host's ctx.act and by nothing a player can reach.
  */
 export function dispatch(state, body, ctx) {
   const handler = actionHandler(body?.type);
@@ -75,6 +77,8 @@ export function dispatch(state, body, ctx) {
   if (body.id !== undefined && payload.id === undefined) payload.id = body.id;
   if (body.mode !== undefined && payload.mode === undefined) payload.mode = body.mode;
   const context = contextFor(state, ctx, `action|${body.actionId ?? ''}`);
+  const refusal = serverOnlyReason(body.type);
+  if (refusal && context.internal !== true) return fail(state, 'server_only', refusal);
   const veto = modify(state, 'action.block', null, { type: body.type, payload }, context);
   if (isRecord(veto) && typeof veto.code === 'string') return fail(state, veto.code, typeof veto.reason === 'string' ? veto.reason : 'That is not possible right now.');
   return handler(state, payload, context);

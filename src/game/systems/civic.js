@@ -19,10 +19,10 @@
  *   'civic.refresh'      {}   roll today's hunt and return the current state (changes nothing else)
  *   'civic.run' · 'civic.vote' · 'civic.rent-ad' { kind, slot } · 'civic.shoutout'
  *       SERVER-COMPLETED: each of these is one half of a change whose other half is shared
- *       storage (a ballot, a slot, a queue). They succeed only when server/routes/civic.js runs
- *       them inside its store transaction and passes SERVER_GRANT, a value no JSON request can
- *       carry. Sent on their own through POST /api/action they are refused with `server_only`
- *       and charge nothing, so a player can never pay without receiving what was paid for.
+ *       storage (a ballot, a slot, a queue). They are declared `serverOnly` (registry.js), so
+ *       they succeed only when server/routes/civic.js runs them through ctx.act inside its store
+ *       transaction. Sent on their own through POST /api/action they are refused with
+ *       `server_only` and charge nothing, so a player can never pay without receiving what was paid for.
  *
  * Emits: 'gem.found'          { prize: 0, found, total, venue }   one gem found
  *        'hunt.claimed'       { prize }                           the daily prize was paid
@@ -162,10 +162,9 @@ export function adSlot(kind, slot) {
   return null;
 }
 
-/** Proof that an action was started by the civic routes. A symbol cannot arrive in a JSON payload. */
-export const SERVER_GRANT = Symbol('civic.server-grant');
-const serverOnly = (handler, where) => (state, payload, ctx) => (payload?.grant === SERVER_GRANT ? handler(state, payload, ctx)
-  : fail(state, 'server_only', `This step is completed by the server together with ${where}. Use ${where} instead; nothing was charged.`));
+/** A server-only action definition (registry.js) whose refusal says which screen does it properly. */
+const serverOnly = (run, where) => ({ serverOnly: true, run,
+  refusal: `This step is completed by the server together with ${where}. Use ${where} instead; nothing was charged.` });
 
 // ---- action handlers ---------------------------------------------------------------------
 

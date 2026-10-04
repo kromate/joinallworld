@@ -28,7 +28,6 @@
  */
 import { UUID_PATTERN, venueRoomKey } from '../protocol.js';
 import { lagosTime } from '../../src/game/clock.js';
-import { SERVER_ONLY } from '../../src/game/systems/social.js';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.js';
 import { venueLabel } from '../../src/game/content/venues.js';
 import { presenceOf, describeRoom } from './presence.js';
@@ -122,10 +121,10 @@ export function socialService(ctx) {
   }
 
   // ---- life effects (through the rules engine only) ------------------------------------------
-  // 'social.server' is refused unless the payload carries SERVER_ONLY, a symbol key no JSON request
-  // can contain. `actionId` seeds the outcome, so a replayed request rolls the same dice.
+  // 'social.server' is a server-only action: it runs through ctx.act and is refused on the public
+  // /api/action. `actionId` seeds the outcome, so a replayed request rolls the same dice.
   function act(session, cityId, op, payload, actionId) {
-    return ctx.act(ctx.settle(session, cityId), { type: 'social.server', cityId, actionId, payload: { ...payload, op, [SERVER_ONLY]: true } });
+    return ctx.act(ctx.settle(session, cityId), { type: 'social.server', cityId, actionId, payload: { ...payload, op } });
   }
   function onlineSession(db, id) {
     for (const ws of presence.sockets(id)) {

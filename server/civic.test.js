@@ -52,7 +52,7 @@ test('civic routes: registered under /api/civic, guarded by the host, and strict
   assert.equal((await post('/api/civic/ads/remove', { cityId: 'lagos', kind: 'image', slot: 'x' }, ada)).error, 'invalid_slot');
   // The paid civic actions exist as real action types but only complete through these routes.
   for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout']) {
-    const bare = await f.action(ada.cookie, { type, payload: { kind: 'sea', slot: 'sea-5-5', grant: 'civic.server-grant' } });
+    const bare = await f.action(ada.cookie, { type, internal: true, payload: { kind: 'sea', slot: 'sea-5-5', grant: 'civic.server-grant', internal: true } });
     assert.equal(bare.ok, false); assert.equal(bare.code, 'server_only', type); assert.equal(bare.state.cash, 5000);
   }
   assert.equal((await f.action(ada.cookie, { type: 'civic.refresh' })).code, 'refreshed');

@@ -58,7 +58,10 @@
  *   ctx.allow(key, count = 120, windowMs = 60000) → boolean   rate limiter
  *   ctx.settle(session, cityId)            → the session's life in that city, settled to now
  *   ctx.act(state, { type, payload, cityId, actionId? }) → { ok, code, state, reason? }
- *                                          run a game action server-side (inside transact)
+ *                                          run a game action server-side (inside transact). It runs
+ *                                          with server authority: actions declared `serverOnly` in
+ *                                          a game system succeed here and nowhere else. Name the
+ *                                          `type` yourself — never forward one from a request.
  *   ctx.cityIds                            valid city ids
  *   ctx.publicSession(session)             → { id, name } — the ONLY identity you may expose
  *   ctx.push(publicId, message)            → number of open sockets the message was sent to

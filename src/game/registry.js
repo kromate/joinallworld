@@ -30,6 +30,13 @@
  *     // util.js — a failure MUST name the unmet prerequisite in `reason`.
  *     actions: { 'apply-job': (state, payload, ctx) => ({ ok, code, state, reason? }) },
  *
+ *     // SERVER-ONLY ACTIONS. An action that is one half of a change whose other half lives in
+ *     // shared storage (a ballot, a gift between two players) is declared as an object instead:
+ *     //   'civic.vote': { serverOnly: true, run: (state, payload, ctx) => result, refusal?: 'sentence' }
+ *     // dispatch() refuses it with code 'server_only' (changing nothing) unless ctx.internal === true.
+ *     // Only the route host's ctx.act sets that flag, and only server code calls ctx.act; the public
+ *     // POST /api/action and the worker never do. Never pass a client-chosen `type` to ctx.act.
+ *
  *     // Called on every settlement with the elapsed seconds, whether or not a timed
  *     // action is running. dt can be large (a player returning after days): cap or
  *     // batch your own work. ctx.now is the time at the END of the interval.
@@ -53,7 +60,7 @@
  *                         complete(state, active, ctx), cancel?(state, active, ctx) } },
  *   };
  *
- * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId?, requireOnboarding? }`:
+ * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId?, requireOnboarding?, internal? }`:
  *   now     server time in ms — the only clock you may read (see clock.js for Lagos time)
  *   cityId  the city this life belongs to
  *   rng     () => float in [0,1), seeded from the action ID or the settlement interval, so
@@ -136,8 +143,10 @@
 const order = [];
 const byId = new Map();
 const actionTable = new Map();
+const serverOnlyTable = new Map();
 const activeTable = new Map();
 const MAX_EMIT_DEPTH = 8;
+const SERVER_ONLY_REASON = 'That step is completed by the game server from its own screen. Nothing was changed.';
 let depth = 0;
 
 export function registerSystem(def) {
@@ -149,7 +158,11 @@ export function registerSystem(def) {
   }
   for (const type of Object.keys(def.actions || {})) {
     if (actionTable.has(type)) throw new Error(`Action "${type}" is already registered`);
-    actionTable.set(type, def.actions[type]);
+    const entry = def.actions[type];
+    const handler = typeof entry === 'function' ? entry : entry?.serverOnly === true ? entry.run : null;
+    if (typeof handler !== 'function') throw new Error(`Action "${type}" needs a handler function, or { serverOnly: true, run }`);
+    actionTable.set(type, handler);
+    if (typeof entry !== 'function') serverOnlyTable.set(type, typeof entry.refusal === 'string' && entry.refusal ? entry.refusal : SERVER_ONLY_REASON);
   }
   for (const kind of Object.keys(def.active || {})) {
     if (activeTable.has(kind)) throw new Error(`Active kind "${kind}" is already registered`);
@@ -165,6 +178,8 @@ export const getSystem = (id) => byId.get(id);
 export const actionTypes = () => [...actionTable.keys()];
 export const hasAction = (type) => typeof type === 'string' && actionTable.has(type);
 export const actionHandler = (type) => actionTable.get(type);
+/** The refusal sentence of a server-only action type, or null for an ordinary player action. */
+export const serverOnlyReason = (type) => (typeof type === 'string' && serverOnlyTable.has(type) ? serverOnlyTable.get(type) : null);
 export const activeHandler = (kind) => (typeof kind === 'string' ? activeTable.get(kind) : undefined);
 
 /** Notify every system, in registration order. Listeners may mutate state and emit further events.

@@ -37,7 +37,7 @@
 import { makeContext } from '../../src/game/util.js';
 import { VENUES } from '../../src/game/content/venues.js';
 import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.js';
-import { civicEligibility, SERVER_GRANT } from '../../src/game/systems/civic.js';
+import { civicEligibility } from '../../src/game/systems/civic.js';
 import { cityOf, emptyCivic, nextId } from '../civic/data.js';
 import { cleanLine } from '../civic/text.js';
 import { announce, announceBlock, declare, declareBlock, govView, notices, vote, voteBlock } from '../civic/elections.js';
@@ -49,8 +49,6 @@ const CITY_NAMES = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const COUNTER_CACHE_MS = 5000;
 
 export default function civicRoutes(ctx) {
-  // A host that offers no storage or clock (for example a bare registry listing) gets no civic endpoints.
-  if (typeof ctx?.store?.transact !== 'function' || typeof ctx.now !== 'function') return {};
   const { store, fail } = ctx;
   const ttl = () => ctx.config.sessionTtlMs;
   const cityName = (cityId) => CITY_NAMES[cityId] ?? cityId;
@@ -60,7 +58,7 @@ export default function civicRoutes(ctx) {
   const civicOf = (db) => ctx.collection(db, 'civic', emptyCivic());
   const engine = (cityId, op) => makeContext({ now: ctx.now(), cityId, seed: `civic|${op}|${ctx.now()}` });
   /** Run a server-completed civic action through the rules engine, inside the caller's transaction. */
-  const act = (life, cityId, type, payload = {}) => ctx.act(life, { type, cityId, payload: { ...payload, grant: SERVER_GRANT } });
+  const act = (life, cityId, type, payload = {}) => ctx.act(life, { type, cityId, payload });
   const refused = (block, extra = {}) => ({ body: { ok: false, code: block.code, reason: block.reason, ...extra }, renew: true });
 
   /** Signed-in entry to a write: settle the life and refresh the caller's resident entry. */

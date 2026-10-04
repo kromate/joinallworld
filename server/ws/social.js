@@ -26,10 +26,8 @@
  * Nothing here touches voice, the microphone, ws.room, ws.voice or ws.position.
  */
 import { socialService } from '../social/service.js';
-import { canHost } from '../routes/social.js';
 
 export default function socialSocket(ctx) {
-  if (!canHost(ctx) || typeof ctx.send !== 'function') return { messages: {} };
   const service = socialService(ctx);
   const { presence } = service;
 

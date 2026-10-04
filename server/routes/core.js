@@ -5,6 +5,8 @@
  * POST /api/session accepts `onboarding: true` when it CREATES a session: lives of that session
  * must finish character creation before any other action (see life-service.js settleCity). The
  * field is ignored for an existing session, so a rename can neither add nor remove the rule.
+ * POST /api/action runs the action through core.playerAct, without the `internal` flag that
+ * ctx.act carries, so a server-only action type (src/game/registry.js) is always refused here.
  */
 import { validateName, validateActionPayload, publicSession, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig, venueRoomKey } from '../protocol.js';
 
@@ -72,7 +74,7 @@ export default function coreRoutes(ctx) {
         const old = readReceipt(session.actions, body);
         if (old) return { ok: old.ok, code: old.code, state, duplicate: true };
         if (Object.keys(session.actions).length >= 10000) throw fail(429, 'action_history_full');
-        const result = ctx.act(state, body);
+        const result = core.playerAct(state, body); // never ctx.act: a player's request carries no server authority
         session.actions[body.actionId] = { actionAt, fingerprint, ok: result.ok, code: result.code };
         return result;
       });

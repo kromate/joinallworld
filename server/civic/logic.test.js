@@ -9,7 +9,7 @@ import { blockReason, spotsOf } from '../../src/game/api.js';
 import { VENUES } from '../../src/game/content/venues.js';
 import { systems } from '../../src/game/registry.js';
 import { ELECTION, HUNT, RADIO, SEA_PLOTS, BILLBOARDS, AD_COLOURS, AD_ICONS } from '../../src/game/content/civic.js';
-import { SERVER_GRANT, adSlot, gemsFor, searchForGem, claimHuntPrize, fileCandidacy, castVote, payForAd, payForShoutout, civicEligibility } from '../../src/game/systems/civic.js';
+import { adSlot, gemsFor, searchForGem, claimHuntPrize, fileCandidacy, castVote, payForAd, payForShoutout, civicEligibility } from '../../src/game/systems/civic.js';
 import { cleanLine } from './text.js';
 import { cityOf, emptyCivic } from './data.js';
 import { timeline, phaseAt, tally, winnerOf, governorAt, declare, declareBlock, vote, voteBlock, announce, announceBlock, govView, notices } from './elections.js';
@@ -195,16 +195,19 @@ test('civic life state: registered, no public actions, hostile saves are rebuilt
   const system = systems().find((item) => item.id === 'civic');
   assert.deepEqual(Object.keys(system.actions).sort(), ['civic.hunt-claim', 'civic.hunt-search', 'civic.refresh', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote']);
   assert.ok(Object.keys(system.actions).every((type) => actionTypes().includes(type)));
-  // The four server-completed actions refuse a bare request — whatever a client puts in `grant` — and charge nothing.
+  // The four server-completed actions are declared serverOnly: a player's dispatch is refused whatever
+  // the payload claims (including an `internal` or `grant` field), and nothing is charged.
   for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout']) {
-    for (const grant of [undefined, true, 'civic.server-grant', 'Symbol(civic.server-grant)', {}]) {
+    assert.equal(system.actions[type].serverOnly, true, type);
+    for (const extra of [{}, { grant: true }, { grant: 'civic.server-grant' }, { internal: true }, { serverOnly: false }]) {
       const state = createLife({ t: MONDAY, location: 'library', civic: { since: 0 } }, at(MONDAY));
-      const result = dispatch(state, { type, payload: { kind: 'sea', slot: 'sea-5-5', grant } }, at(MONDAY));
+      const result = dispatch(state, { type, internal: true, payload: { kind: 'sea', slot: 'sea-5-5', ...extra } }, at(MONDAY));
       assert.equal(result.ok, false); assert.equal(result.code, 'server_only', type); assert.match(result.reason, /nothing was charged/); assert.equal(state.cash, 5000);
     }
   }
+  // Only a context marked internal — which the route host's ctx.act builds — runs them.
   const granted = createLife({ t: MONDAY, civic: { since: 0 } }, at(MONDAY));
-  assert.equal(dispatch(granted, { type: 'civic.rent-ad', payload: { kind: 'sea', slot: 'sea-5-5', grant: SERVER_GRANT } }, at(MONDAY)).code, 'rented'); assert.equal(granted.cash, 4900);
+  assert.equal(dispatch(granted, { type: 'civic.rent-ad', payload: { kind: 'sea', slot: 'sea-5-5' } }, { ...at(MONDAY), internal: true }).code, 'rented'); assert.equal(granted.cash, 4900);
   assert.equal(dispatch(granted, { type: 'civic.refresh' }, at(MONDAY)).code, 'refreshed'); assert.equal(granted.cash, 4900); assert.equal(granted.civic.hunt.gems.length, 3);
   assert.equal(dispatch(granted, { type: 'civic.hunt-claim' }, at(MONDAY)).code, 'gems_missing');
   for (const junk of ['text', 7, [], null, { seed: -1, since: 'x', gems: -4, claims: 1.5, week: { week: 'a', earned: -1 }, hunt: { day: 3, claimed: true, gems: [{ venue: '__proto__', spot: null, kind: 'visit', found: true }] } },

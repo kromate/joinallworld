@@ -6,7 +6,7 @@ import { createLife, dispatch, advanceLife, viewLife, hasAction, actionTypes, sp
 import { registerSystem } from './registry.js';
 import { rebuildCatalogue } from './systems/activities.js';
 import { makeContext } from './util.js';
-import { serverOp, SERVER_ONLY, activityId, tierOf, jokeChance } from './systems/social.js';
+import { serverOp, activityId, tierOf, jokeChance } from './systems/social.js';
 import { NPCS, NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_UNLOCK, DAILY_INTERACTIONS, FAMILY, FAMILY_CALL, TRANSFER_LIMITS } from './content/npcs.js';
 
 const NOW = Date.UTC(2026, 0, 5, 9);
@@ -57,12 +57,13 @@ test('content: every venue id has a cast, actions follow the observed list, prov
 test('actions are namespaced; server-only operations cannot be reached from a request payload', () => {
   assert.deepEqual(actionTypes().filter((type) => type.startsWith('social')).sort(), ['social.call', 'social.server', 'social.sync']);
   const state = createLife({ cash: 9000, social: { earned: 9000 } }, ctxAt());
-  // What /api/action can deliver: JSON. No JSON body can carry the symbol key.
-  for (const payload of [{ op: 'transfer-in', from: PLAYER, name: 'x', amount: 5000 }, JSON.parse(JSON.stringify({ op: 'transfer-in', from: PLAYER, amount: 5000, [SERVER_ONLY]: true, 'Symbol(social.server)': true, SERVER_ONLY: true }))]) {
-    const refused = dispatch(state, { type: 'social.server', payload }, ctxAt());
+  // 'social.server' is declared serverOnly in the registry: nothing a request body carries can run it.
+  for (const payload of [{ op: 'transfer-in', from: PLAYER, name: 'x', amount: 5000 }, { op: 'transfer-in', from: PLAYER, amount: 5000, internal: true, serverOnly: false, 'Symbol(social.server)': true }]) {
+    const refused = dispatch(state, { type: 'social.server', internal: true, payload }, ctxAt());
     assert.equal(refused.code, 'server_only'); assert.ok(refused.reason); assert.equal(state.cash, 9000);
+    assert.equal(dispatch(state, { type: 'social.server', payload }, { now: NOW, cityId: 'lagos' }).code, 'server_only', 'also without a prepared context (the worker path)');
   }
-  const allowed = dispatch(state, { type: 'social.server', payload: { op: 'transfer-in', from: PLAYER, name: 'Bola', amount: 500, [SERVER_ONLY]: true } }, ctxAt());
+  const allowed = dispatch(state, { type: 'social.server', payload: { op: 'transfer-in', from: PLAYER, name: 'Bola', amount: 500 } }, { ...ctxAt(), internal: true });
   assert.equal(allowed.code, 'received'); assert.equal(state.cash, 9500);
   assert.equal(dispatch(state, { type: 'social.sync' }, ctxAt()).code, 'synced');
 });

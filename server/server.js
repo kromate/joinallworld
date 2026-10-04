@@ -121,7 +121,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const ctx = {
     store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS,
     settle,
-    act: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }),
+    // Server authority: ctx.act may run server-only actions (internal: true). Route modules call it
+    // with action types they name themselves, never with a type taken from a request.
+    act: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId, internal: true }),
     push(publicId, message) {
       let sent = 0;
       for (const ws of wss.clients) if (ws.session?.id === publicId && ws.readyState === WebSocket.OPEN) { send(ws, message); sent += 1; }
@@ -137,6 +139,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       sockets: () => [...wss.clients],
       isOpen: (ws) => ws.readyState === WebSocket.OPEN,
       sessionOf: (ws, db) => db.sessions[ws.secret],
+      // What POST /api/action runs: a player's own request, with no server authority.
+      playerAct: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }),
     },
   };
   const sockets = buildSocketHandlers(ctx, wsModules);

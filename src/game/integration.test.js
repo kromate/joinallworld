@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife, spotsOf, actionTypes } from '../life.js';
-import { registerSystem, systems } from './registry.js';
+import { registerSystem, systems, serverOnlyReason } from './registry.js';
 import { makeContext } from './util.js';
 import { isOpen, lagosDayStart, lagosTime, openingInfo } from './clock.js';
 import { arrive } from './api.js';
@@ -85,9 +85,12 @@ test('the automatic commute lands on the work spot and only starts while the wor
 test('action.block lets any system veto any action with a code and a reason', () => {
   const state = createLife({ seamprobe: { frozen: true } }, at());
   for (const type of actionTypes().filter((name) => name !== 'cancel')) {
-    const result = dispatch(state, { type, payload: {} }, at());
+    // A server-only action is refused before any veto when a player sends it, so it is vetoed on the server's path.
+    const result = dispatch(state, { type, payload: {} }, serverOnlyReason(type) ? { ...at(), internal: true } : at());
     assert.deepEqual([result.ok, result.code, result.reason], [false, 'frozen', `Frozen: ${type} is not possible right now.`], type);
   }
+  for (const type of actionTypes().filter((name) => serverOnlyReason(name))) assert.equal(dispatch(createLife(null, at()), { type, payload: {} }, at()).code, 'server_only', type);
+  assert.ok(actionTypes().filter((type) => serverOnlyReason(type)).length >= 5, 'social and civic declare their server-only actions through the registry');
   assert.equal(state.message, `Frozen: ${actionTypes().filter((name) => name !== 'cancel').at(-1)} is not possible right now.`);
   assert.equal(act(state, 'cancel').code, 'idle', 'an action the veto lets through reaches its handler');
   assert.throws(() => dispatch(state, { type: 'no-such-action' }, at()), /Invalid action type/);

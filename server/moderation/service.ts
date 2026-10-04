@@ -30,6 +30,7 @@ export function moderationService(ctx: RouteContext): ModerationService {
   const cached = services.get(ctx);
   if (cached) return cached;
   const service = buildService(ctx);
+  services.set(ctx, service);
   return service;
 }
 
@@ -79,5 +80,6 @@ function buildService(ctx: RouteContext) {
     mutes: (db: Db) => Object.entries(active(col(db))).map(([id, mute]) => ({ id, ...mute })),
     trail: (db: Db, limit = 200) => col(db).audit.slice(-limit).reverse(),
   };
+  if (ctx.checks) ctx.checks.muted = (publicId) => service.muted(publicId);
   return service;
 }

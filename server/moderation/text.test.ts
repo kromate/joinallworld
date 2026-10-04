@@ -4,6 +4,15 @@ import { screenText, blockedCategory, normalise } from './text.ts';
 import { BLOCKED_WORDS, BLOCKED_PHRASES } from './terms.ts';
 import { validateName } from '../protocol.ts';
 import { cleanLine } from '../civic/text.ts';
+import type { LineResult } from '../civic/text.ts';
+
+/** The refusal of a line (a test that expects one fails if the line was accepted). */
+function refusal(result: LineResult): { code: string; reason: string } {
+  if (result.ok) throw new Error('expected the line to be refused');
+  return result;
+}
+
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 
 test('every listed term is refused, in plain, disguised and spelt-out forms', () => {
   for (const [word, category] of BLOCKED_WORDS) {
@@ -40,15 +49,16 @@ test('contact details and links are refused only where asked, with a reason that
   }
   for (const text of ['Vote Ada 2026', 'Buy 2 get 1 free', '₦1,000,000,000 jackpot', 'Open 24/7 since 1999', 'Best suya on 3rd Mainland', 'Big sale 10-12 Dec', 'I love TikTok dances']) assert.equal(screenText(text, { contact: true }), null, text);
   const blocked = screenText('kys', { what: 'Your message' });
+  assert.ok(blocked, 'kys is refused');
   assert.equal(blocked.code, 'text_blocked'); assert.match(blocked.reason, /^Your message was not accepted because/); assert.match(blocked.reason, /Nothing was sent or saved/);
 });
 
 test('nicknames and every civic line go through the filter', () => {
   assert.equal(validateName('  Ada  '), 'Ada');
   for (const [name, code] of [['faggot', 'name_not_allowed'], ['call 08012345678', 'name_not_allowed'], ['visit spam.com', 'name_not_allowed'], ['ab', 'invalid_name']]) {
-    assert.throws(() => validateName(name), (error) => error.status === 400 && error.code === code && (code === 'invalid_name' || typeof error.reason === 'string'), name);
+    assert.throws(() => validateName(name), (error: unknown) => isRecord(error) && error.status === 400 && error.code === code && (code === 'invalid_name' || typeof error.reason === 'string'), name);
   }
   assert.equal(cleanLine('Vote Ada', { what: 'Your slogan' }).ok, true);
-  assert.deepEqual([cleanLine('kill yourself', {}).code, cleanLine('see spam.com', {}).code, cleanLine('call 08012345678 now', {}).code], ['text_blocked', 'links_not_allowed', 'contact_not_allowed']);
-  assert.match(cleanLine('ada@example.org', { what: 'Song title' }).reason, /^Song title cannot contain/);
+  assert.deepEqual([refusal(cleanLine('kill yourself', {})).code, refusal(cleanLine('see spam.com', {})).code, refusal(cleanLine('call 08012345678 now', {})).code], ['text_blocked', 'links_not_allowed', 'contact_not_allowed']);
+  assert.match(refusal(cleanLine('ada@example.org', { what: 'Song title' })).reason, /^Song title cannot contain/);
 });

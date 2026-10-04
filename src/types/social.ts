@@ -248,12 +248,12 @@ export type LabelRefusal = TextRefusal | 'links_not_allowed' | 'contact_not_allo
 export type FriendAnswerResult =
   | Done<'accepted', { player: PlayerRef } & Repeat>
   | Done<'declined', { player: PlayerRef }>
-  | Refusal<'no_request' | 'friends_full'>
+  | Refusal<'no_request' | 'friends_full' | (string & {})>
 /** A request to someone who already asked the caller is answered as an accept. */
 export type FriendRequestResult =
   | Done<'requested' | 'already_friends', { player: PlayerRef } & Repeat>
   | FriendAnswerResult
-  | Refusal<OtherPlayerRefusal | 'rate_limited' | 'too_many_requests' | 'inbox_full' | 'friends_full'>
+  | Refusal<OtherPlayerRefusal | 'rate_limited' | 'too_many_requests' | 'inbox_full' | 'friends_full' | (string & {})>
 export type FriendRemoveResult = Done<'removed', Repeat>
 export type BlockResult = Done<'blocked', Repeat> | Refusal<'self' | 'unknown_player' | 'block_list_full'>
 export type UnblockResult = Done<'unblocked'>
@@ -261,7 +261,7 @@ export type PlayerReportResult = Done<'reported', { receipt: PlayerReportReceipt
 export type ConversationsResult = Done<'ok', { conversations: Conversation[]; unread: number }>
 /** At most 50 messages after `?after=<seq>`; `read` is the caller's read marker. */
 export type HistoryResult = Done<'ok', { conv: Conversation; messages: Message[]; read: number }> | Refusal<'not_a_member'>
-export type ReadResult = Done<'read', { conv: Conversation }> | Refusal<'not_a_member'>
+export type ReadResult = Done<'read', { conv: Conversation }> | Refusal<'not_a_member' | (string & {})>
 export type SendMessageResult =
   | Done<'sent', { conv: Conversation; message: Message } & Repeat>
   | Refusal<OtherPlayerRefusal | TextRefusal | 'not_a_member' | 'rate_limited' | 'new_chat_limit' | 'awaiting_reply'>
@@ -279,7 +279,7 @@ export type HouseResult =
 export type KnockResult =
   | Done<'inside', { house: HouseView; duplicate: true }>
   | Done<'knocking', { expiresAt: number } & Repeat>
-  | Refusal<OtherPlayerRefusal | 'knock_cooldown' | 'host_offline' | 'host_reconnecting' | 'host_not_home' | 'house_full' | 'rate_limited'>
+  | Refusal<OtherPlayerRefusal | 'knock_cooldown' | 'host_offline' | 'host_reconnecting' | 'host_not_home' | 'house_full' | 'rate_limited' | (string & {})>
 /**
  * THE INVITE LANDING: who the caller is joining and how that player can be reached right now.
  *   'joined'        the caller is a brand-new guest and the inviter is in a public venue: the guest was
@@ -298,7 +298,7 @@ export type JoinResult =
   | Refusal<'self' | 'unknown_player' | 'rate_limited'>
 export type KnockAnswerResult =
   | Done<'accepted' | 'declined', { house: HouseView } & Repeat>
-  | Refusal<'knock_expired' | 'already_answered' | 'host_not_home' | 'house_full'>
+  | Refusal<'knock_expired' | 'already_answered' | 'host_not_home' | 'house_full' | (string & {})>
 export type HouseLeaveResult = Done<'left', Repeat> | Refusal<'host_only'>
 /**
  * `code` is the rules engine's ('interacted', or another success such as a joke that flopped);

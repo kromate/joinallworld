@@ -4,6 +4,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
+import type { Device, TestSocket } from './test-fixture.ts';
+import type { TestContext } from 'node:test';
+import type { TableResultMine, TablesFrame, TableStateFrame, TableSummary } from '../src/types/growth.ts';
+import type { LifeState } from '../src/types/life.ts';
 import { TUNING } from './growth/tables.ts';
 import { TABLE_REWARDS } from '../src/game/content/growth.ts';
 import { TABLES } from '../src/tables/places.ts';
@@ -11,57 +15,77 @@ import { TABLES } from '../src/tables/places.ts';
 const DAY = 86400000;
 TUNING.botDelayMs = 0; // bots answer at once, so a test never waits on a timer
 
-async function harness(t) {
+/** A playing card of Whot. */
+interface Card { s: string; n: number }
+/** The game's own view of a table, as the tests read it: Whot hands and Penalty kicks. Fields a game or a watcher is not sent are never read. */
+interface View { hand: Card[]; playable: number[]; counts: number[]; top: Card; shown: unknown[]; kicker: number; mine: number | null; chosen: boolean[]; goals: number[]; history: unknown[] }
+/** A table-state frame as the tests read it: `view`, `result`, `clock` are read only where a game is on or has ended. */
+type State = Omit<TableStateFrame, 'view' | 'result' | 'clock'> & { view: View; result: { text: string; calledOff: boolean; winners: number[]; mine: TableResultMine }; clock: { deadline: number; now: number; seconds: number } };
+/** A frame as the socket delivered it. */
+interface Frame { type: string; repeat?: boolean; [field: string]: unknown }
+/** A refused frame. */
+interface Refusal { code: string; reason?: string }
+/** A player's socket and everything it has been sent. */
+interface Peer { who: Device; ws: TestSocket['ws']; state: State; errors: Refusal[]; all: Frame[]; lists: number; list?: TablesFrame; waiting: (() => void)[] }
+/** What POST /api/growth/tables/claim answers. */
+interface ClaimReply { status: number; results: { game: string; label: string; won: boolean; code: string }[]; ratings: Record<string, { rating: number; provisional: boolean }> }
+/** What POST /api/growth/share answers for a table. */
+interface ShareReply { status: number; share: { code: string; path: string; facts: { tableId: string; game: string; venue: string } } }
+
+async function harness(t: TestContext) {
   const f = await fixture(t, { publicOrigin: 'https://play.example' });
-  const json = async (res) => ({ status: res.status, ...(await res.json()) });
-  const post = async (path, body, who) => json(await f.request(path, body, who.cookie));
-  const life = async (who) => (await json(await f.request('/api/life?city=lagos', null, who.cookie))).state;
+  const json = async <T extends object = object>(res: Response): Promise<T & { status: number }> => ({ status: res.status, ...(await res.json()) });
+  const post = async <T extends object = object>(path: string, body: unknown, who: Device) => json<T>(await f.request(path, body, who.cookie));
+  const life = async (who: Device): Promise<LifeState> => (await json<{ state: LifeState }>(await f.request('/api/life?city=lagos', null, who.cookie))).state;
   /** A player with a life (new lives stand in Freedom Park) and one socket. */
-  async function player(name) {
+  async function player(name: string): Promise<Peer> {
     const who = await f.device(name);
     await life(who);
     await post('/api/growth/hello', { cityId: 'lagos' }, who);
     return connect(who);
   }
-  async function connect(who) {
+  async function connect(who: Device): Promise<Peer> {
     const sock = await f.socket(who);
-    const peer = { who, ws: sock.ws, state: null, errors: [], all: [], lists: 0, waiting: [] };
+    const peer: Peer = { who, ws: sock.ws, state: null as unknown as State, errors: [], all: [], lists: 0, waiting: [] }; // `state` is set by the first table-state frame
     sock.ws.on('message', (data) => {
-      const message = JSON.parse(data.toString());
+      const message: Frame = JSON.parse(data.toString());
       peer.all.push(message);
-      if (message.type === 'table-state') peer.state = message;
-      if (message.type === 'error') peer.errors.push(message);
-      if (message.type === 'tables') { peer.lists += 1; peer.list = message; for (const done of peer.waiting.splice(0)) done(); }
+      if (message.type === 'table-state') peer.state = message as unknown as State;
+      if (message.type === 'error') peer.errors.push(message as unknown as Refusal);
+      if (message.type === 'tables') { peer.lists += 1; peer.list = message as unknown as TablesFrame; for (const done of peer.waiting.splice(0)) done(); }
     });
     return peer;
   }
-  const send = (peer, type, body = {}) => peer.ws.send(JSON.stringify({ type, cityId: 'lagos', table: 'park-bench', ...body }));
+  const send = (peer: Peer, type: string, body: Record<string, unknown> = {}) => peer.ws.send(JSON.stringify({ type, cityId: 'lagos', table: 'park-bench', ...body }));
   /** Wait until the server has handled everything this socket sent (messages of one socket are handled in order). */
-  const settled = (peer) => new Promise((done) => { peer.waiting.push(done); peer.ws.send(JSON.stringify({ type: 'table-list', cityId: 'lagos', venue: 'park' })); });
-  const all = async (...peers) => { for (const peer of peers) await settled(peer); };
-  const act = async (peer, type, body, ...others) => { send(peer, type, body); await all(peer, ...others); return peer.state; };
+  const settled = (peer: Peer) => new Promise<void>((done) => { peer.waiting.push(done); peer.ws.send(JSON.stringify({ type: 'table-list', cityId: 'lagos', venue: 'park' })); });
+  const all = async (...peers: Peer[]) => { for (const peer of peers) await settled(peer); };
+  const act = async (peer: Peer, type: string, body?: Record<string, unknown>, ...others: Peer[]): Promise<State> => { send(peer, type, body); await all(peer, ...others); return peer.state; };
   /** The move a careful player makes: the first card that may be played (naming a shape for a Whot), otherwise the market. */
-  const choose = (view) => (view.playable.length ? { t: 'play', i: view.playable[0], ...(view.hand[view.playable[0]].s === 'whot' ? { shape: 'circle' } : {}) } : { t: 'draw' });
+  const choose = (view: View) => {
+    const first = view.playable[0];
+    return first !== undefined ? { t: 'play', i: first, ...(view.hand[first]?.s === 'whot' ? { shape: 'circle' } : {}) } : { t: 'draw' };
+  };
   /** Play until the game is over (or `moves` moves were made). Every peer must be seated. */
-  async function playOn(peers, moves = Infinity) {
-    for (let made = 0; made < moves && peers[0].state.table.status === 'playing'; made++) {
-      const mover = peers.find((peer) => peer.state.toMove.includes(peer.state.you));
+  async function playOn(peers: Peer[], moves = Infinity) {
+    for (let made = 0; made < moves && peers[0]?.state.table.status === 'playing'; made++) {
+      const mover = peers.find((peer) => peer.state.toMove.includes(peer.state.you ?? -1));
       assert.ok(mover, 'someone seated is to move');
       await act(mover, 'table-move', { n: mover.state.n, move: choose(mover.state.view) }, ...peers.filter((peer) => peer !== mover));
       assert.deepEqual(mover.errors, [], JSON.stringify(mover.errors.at(-1)));
     }
   }
   /** Play until both have really moved twice (a Hold On or a Suspension can give one player several turns in a row). */
-  async function bothMoveTwice(a, b) {
+  async function bothMoveTwice(a: Peer, b: Peer) {
     const made = new Map([[a, 0], [b, 0]]);
     while (a.state.table.status === 'playing' && Math.min(...made.values()) < 2) {
-      const mover = a.state.toMove.includes(a.state.you) ? a : b;
+      const mover = a.state.toMove.includes(a.state.you ?? -1) ? a : b;
       await playOn([mover, mover === a ? b : a], 1);
-      made.set(mover, made.get(mover) + 1);
+      made.set(mover, (made.get(mover) ?? 0) + 1);
     }
   }
-  const claim = (peer) => post('/api/growth/tables/claim', { cityId: 'lagos' }, peer.who);
-  const wins = async (peer) => (await life(peer.who)).ledger.filter((line) => line.reason.startsWith('Table win'));
+  const claim = (peer: Peer) => post<ClaimReply>('/api/growth/tables/claim', { cityId: 'lagos' }, peer.who);
+  const wins = async (peer: Peer) => (await life(peer.who)).ledger.filter((line) => line.reason.startsWith('Table win'));
   return { f, post, life, player, connect, send, settled, all, act, playOn, bothMoveTwice, claim, wins };
 }
 
@@ -69,11 +93,11 @@ test('tables: sit at a table in your venue, watch from anywhere, one seat per pl
   const { act, player, all } = await harness(t);
   const ada = await player('Ada'), bola = await player('Bola'), chidi = await player('Chidi');
   await all(ada);
-  assert.deepEqual(ada.list.tables.map((table) => [table.id, table.gameLabel, table.status, table.seats.length, table.max]), [['park-bench', 'Whot', 'open', 0, 4], ['park-goal', 'Penalties', 'open', 0, 2]]);
+  assert.deepEqual(ada.list?.tables.map((table) => [table.id, table.gameLabel, table.status, table.seats.length, table.max]), [['park-bench', 'Whot', 'open', 0, 4], ['park-goal', 'Penalties', 'open', 0, 2]]);
   assert.ok(TABLES.some((table) => table.venue === 'amala-shitta') && TABLES.some((table) => table.venue === 'viewing-centre'), 'the buka and the viewing centre have tables too');
   // Nobody is at the buka: sitting there is refused with the reason, watching is allowed.
   await act(ada, 'table-sit', { table: 'buka-corner' });
-  assert.deepEqual([ada.errors.at(-1).code, /Go to .* to sit at this table/.test(ada.errors.at(-1).reason)], ['not_here', true]);
+  assert.deepEqual([ada.errors.at(-1)?.code, /Go to .* to sit at this table/.test(ada.errors.at(-1)?.reason ?? '')], ['not_here', true]);
   await act(ada, 'table-watch', { table: 'buka-corner' });
   assert.deepEqual([ada.state.table.id, ada.state.you, ada.state.view], ['buka-corner', null, null]);
   for (const bad of [{ table: 'nope' }, { table: 7 }, { cityId: 'atlantis' }]) { const before = ada.errors.length; await act(ada, 'table-sit', bad); assert.equal(ada.errors.length, before + 1, JSON.stringify(bad)); }
@@ -86,7 +110,7 @@ test('tables: sit at a table in your venue, watch from anywhere, one seat per pl
   assert.deepEqual(ada.state.table.seats.map((seat) => seat.name), ['Ada', 'Bola']);
   // The rules: only the host, only before a game, only known options and values.
   await act(bola, 'table-options', { options: { hand: 6 } });
-  assert.equal(bola.errors.at(-1).code, 'not_host');
+  assert.equal(bola.errors.at(-1)?.code, 'not_host');
   await act(ada, 'table-options', { options: { hand: 4, defend: 'stack', market: 'sideways', cheat: true } }, bola);
   assert.deepEqual([ada.state.table.options, bola.state.table.options], [{ hand: 4, defend: 'stack', market: 'count' }, { hand: 4, defend: 'stack', market: 'count' }]);
   assert.deepEqual(ada.state.optionList.map((option) => [option.name, option.value]), [['hand', 4], ['defend', 'stack'], ['market', 'count']]);
@@ -94,11 +118,11 @@ test('tables: sit at a table in your venue, watch from anywhere, one seat per pl
   await act(chidi, 'table-watch', {}, ada);
   assert.deepEqual([chidi.state.you, ada.state.table.watching], [null, 1]);
   await act(chidi, 'table-start', {});
-  assert.equal(chidi.errors.at(-1).code, 'not_seated');
+  assert.equal(chidi.errors.at(-1)?.code, 'not_seated');
   // A game needs two.
   await act(bola, 'table-leave', {}, ada);
   await act(ada, 'table-start', {});
-  assert.deepEqual([ada.errors.at(-1).code, ada.state.table.status], ['need_players', 'open']);
+  assert.deepEqual([ada.errors.at(-1)?.code, ada.state.table.status], ['need_players', 'open']);
 });
 
 test('tables: a whole game of Whot between two real sockets — hidden hands, an illegal move refused, exactly-once moves, a reconnect, the result paid once', async (t) => {
@@ -112,22 +136,22 @@ test('tables: a whole game of Whot between two real sockets — hidden hands, an
   // WHAT EACH SOCKET IS SENT. Its own hand; counts for everyone else; a watcher no hand at all.
   const hands = { ada: ada.state.view.hand, bola: bola.state.view.hand };
   assert.deepEqual([hands.ada.length, hands.bola.length, ada.state.view.counts, chidi.state.view.hand, chidi.state.view.playable], [5, 5, [5, 5], null, []]);
-  const key = (card) => `"s":"${card.s}","n":${card.n}}`;
-  const leaks = (peer, cards) => { const top = key(peer.state.view.top); return cards.filter((card) => card.s !== 'whot' && key(card) !== top).some((card) => peer.all.some((message) => message.type === 'table-state' && JSON.stringify(message).includes(key(card)))); };
+  const key = (card: Card) => `"s":"${card.s}","n":${card.n}}`;
+  const leaks = (peer: Peer, cards: Card[]) => { const top = key(peer.state.view.top); return cards.filter((card) => card.s !== 'whot' && key(card) !== top).some((card) => peer.all.some((message) => message.type === 'table-state' && JSON.stringify(message).includes(key(card)))); };
   assert.equal(leaks(bola, hands.ada) || leaks(ada, hands.bola) || leaks(chidi, [...hands.ada, ...hands.bola]), false, 'no socket was ever sent a card from another hand');
   assert.equal(bola.all.concat(ada.all, chidi.all).some((message) => /"hands"|"market":\[|"seed"/.test(JSON.stringify(message))), false, 'nor the market’s order, nor the seed');
   assert.deepEqual(bola.state.view.playable, [], 'only the seat to move is told what it may play');
 
   // AN ILLEGAL MOVE is refused in words and changes nothing; so is a move out of turn, a stale number and nonsense.
   const n0 = ada.state.n, unplayable = ada.state.view.hand.findIndex((card, index) => !ada.state.view.playable.includes(index));
-  if (unplayable >= 0) { await act(ada, 'table-move', { n: n0, move: { t: 'play', i: unplayable } }); assert.deepEqual([ada.errors.at(-1).code, /does not go on|Name the shape/.test(ada.errors.at(-1).reason)], ['illegal_move', true]); }
+  if (unplayable >= 0) { await act(ada, 'table-move', { n: n0, move: { t: 'play', i: unplayable } }); assert.deepEqual([ada.errors.at(-1)?.code, /does not go on|Name the shape/.test(ada.errors.at(-1)?.reason ?? '')], ['illegal_move', true]); }
   await act(bola, 'table-move', { n: n0, move: { t: 'draw' } });
-  assert.equal(bola.errors.at(-1).code, 'not_your_turn');
+  assert.equal(bola.errors.at(-1)?.code, 'not_your_turn');
   await act(ada, 'table-move', { n: n0 + 5, move: { t: 'draw' } });
-  assert.equal(ada.errors.at(-1).code, 'stale_move');
-  for (const move of [null, 'draw', { t: 'steal' }, { t: 'play', i: 99 }, { t: 'play', i: -1 }]) { await act(ada, 'table-move', { n: n0, move }); assert.match(ada.errors.at(-1).code, /invalid_move|illegal_move/); }
+  assert.equal(ada.errors.at(-1)?.code, 'stale_move');
+  for (const move of [null, 'draw', { t: 'steal' }, { t: 'play', i: 99 }, { t: 'play', i: -1 }]) { await act(ada, 'table-move', { n: n0, move }); assert.match(ada.errors.at(-1)?.code ?? '', /invalid_move|illegal_move/); }
   await act(chidi, 'table-move', { n: n0, move: { t: 'draw' } });
-  assert.equal(chidi.errors.at(-1).code, 'not_seated');
+  assert.equal(chidi.errors.at(-1)?.code, 'not_seated');
   assert.deepEqual([ada.state.n, ada.state.view.hand, bola.state.view.counts], [n0, hands.ada, [5, 5]], 'nothing moved');
   ada.errors.length = 0; bola.errors.length = 0;
 
@@ -143,10 +167,10 @@ test('tables: a whole game of Whot between two real sockets — hidden hands, an
   bola.ws.terminate();
   await new Promise((done) => setTimeout(done, 30));
   await all(ada);
-  assert.equal(ada.state.table.seats[1].away, true, 'the table shows Bola as away, and keeps his seat');
+  assert.equal(ada.state.table.seats[1]?.away, true, 'the table shows Bola as away, and keeps his seat');
   const back = await connect(bola.who);
   await act(back, 'table-sit', {}, ada);
-  assert.deepEqual([back.state.you, back.state.view.hand, back.state.n, ada.state.table.seats[1].away], [1, before.hand, before.n, false]);
+  assert.deepEqual([back.state.you, back.state.view.hand, back.state.n, ada.state.table.seats[1]?.away], [1, before.hand, before.n, false]);
 
   // Play it out.
   await playOn([ada, back]);
@@ -161,7 +185,7 @@ test('tables: a whole game of Whot between two real sockets — hidden hands, an
     // THE RESULT IS PAID ONCE, by the winner's own claim; the loser is paid nothing; a second claim finds nothing.
     const cash = (await life(winner.who)).cash;
     const first = await claim(winner);
-    assert.deepEqual([first.results.map((item) => [item.game, item.won, item.code]), first.ratings.whot.rating, first.ratings.whot.provisional], [[['whot', true, 'paid']], 1220, true]);
+    assert.deepEqual([first.results.map((item) => [item.game, item.won, item.code]), first.ratings.whot?.rating, first.ratings.whot?.provisional], [[['whot', true, 'paid']], 1220, true]);
     assert.deepEqual([(await claim(winner)).results, (await life(winner.who)).cash - cash, (await wins(winner)).length], [[], TABLE_REWARDS.win, 1]);
     assert.deepEqual([(await claim(loser)).results.map((item) => item.code), (await wins(loser)).length], [['counted'], 0]);
   }
@@ -175,7 +199,7 @@ test('tables: a whole game of Whot between two real sockets — hidden hands, an
 test('tables: against a bot — labelled as one, plays by itself, pays nothing, and only the first bot game of a day counts for missions', async (t) => {
   const { act, player, playOn, claim, wins } = await harness(t);
   const ada = await player('Ada');
-  const codes = [];
+  const codes: (string | undefined)[] = [];
   for (let round = 0; round < 2; round++) {
     await act(ada, 'table-sit', {});
     await act(ada, 'table-start', { bots: 9 });
@@ -184,7 +208,7 @@ test('tables: against a bot — labelled as one, plays by itself, pays nothing, 
     await playOn([ada]);
     assert.deepEqual([ada.state.table.status, ada.state.result.mine.human, ada.state.result.mine.counted, ada.state.result.mine.rating], ['over', false, false, undefined]);
     assert.ok(ada.state.log.length > 3 && ada.state.log.some((line) => /\(bot\) (played|went to market|picked)/.test(line)));
-    codes.push((await claim(ada)).results[0].code);
+    codes.push((await claim(ada)).results[0]?.code);
     await act(ada, 'table-again', {});
   }
   assert.deepEqual([codes, (await wins(ada)).length], [['counted', 'for_fun'], 0]);
@@ -195,7 +219,7 @@ test('tables: the clock plays for a seat that does not move, three misses forfei
   const ada = await player('Ada'), bola = await player('Bola');
   await act(ada, 'table-sit', {}); await act(bola, 'table-sit', {}, ada);
   await act(ada, 'table-start', {}, bola);
-  const tick = async (ms) => { f.advance(ms); f.server.beat(); await new Promise((done) => setTimeout(done, 20)); await all(ada, bola); };
+  const tick = async (ms: number) => { f.advance(ms); f.server.beat(); await new Promise((done) => setTimeout(done, 20)); await all(ada, bola); };
   // 29 seconds: nothing. 31 seconds: Ada's turn is played for her (she goes to market).
   await tick(29000);
   assert.deepEqual([ada.state.n, ada.state.view.counts], [0, [5, 5]]);
@@ -218,7 +242,7 @@ test('tables: the clock plays for a seat that does not move, three misses forfei
   await act(bola, 'table-sit', {}, ada); await act(ada, 'table-sit', {}, bola);
   await act(ada, 'table-start', {}, bola);
   await bothMoveTwice(ada, bola);
-  if (ada.state.table.status === 'playing') {
+  if ((ada.state.table as TableSummary).status === 'playing') { // widened: the assertions above narrowed it to 'over'
     await act(bola, 'table-leave', {}, ada);
     assert.deepEqual([ada.state.table.status, ada.state.result.calledOff, ada.state.result.mine?.won], ['over', false, true]);
     assert.match(ada.state.result.text, /Bola left the table\. Ada wins\./);
@@ -232,8 +256,9 @@ test('tables: the clock plays for a seat that does not move, three misses forfei
 test('tables: four paid wins a day and three counted games a day against the same player, however many are played', async (t) => {
   const { f, act, player, claim, bothMoveTwice, wins, post } = await harness(t);
   const ada = await player('Ada'), bola = await player('Bola'), chidi = await player('Chidi');
+  type Outcome = [counted: boolean | null, code: string | undefined, won?: boolean];
   /** A short proper game: two moves each, then the opponent leaves and Ada wins. */
-  async function beat(opponent) {
+  async function beat(opponent: Peer): Promise<Outcome | null> {
     await act(ada, 'table-again', {}, opponent).catch(() => {});
     ada.errors.length = 0;
     await act(ada, 'table-sit', {}, opponent); await act(opponent, 'table-sit', {}, ada);
@@ -243,7 +268,7 @@ test('tables: four paid wins a day and three counted games a day against the sam
     const mine = ada.state.result.mine;
     return mine ? [mine.counted, (await claim(ada)).results[0]?.code, mine.won] : null;
   }
-  const outcomes = [];
+  const outcomes: Outcome[] = [];
   for (const opponent of [bola, bola, bola, bola, chidi, chidi]) { outcomes.push((await beat(opponent)) ?? [null, 'lost']); await claim(opponent); }
   // A game can also end by the cards before anyone leaves; those Ada lost are not in the list. What she won follows the caps:
   // against Bola only the first three games count, and after four paid wins a counted win pays nothing.
@@ -262,9 +287,9 @@ test('tables: four paid wins a day and three counted games a day against the sam
   // The next Lagos day both limits start again.
   f.advance(DAY);
   const next = await beat(bola);
-  assert.deepEqual([next[0], next[1]], [true, next[2] ? 'paid' : 'counted']);
+  assert.deepEqual([next?.[0], next?.[1]], [true, next?.[2] ? 'paid' : 'counted']);
   // A table can be shared as an invitation: the link lands beside it.
-  const shared = await post('/api/growth/share', { cityId: 'lagos', kind: 'table', table: 'park-bench' }, ada.who);
+  const shared = await post<ShareReply>('/api/growth/share', { cityId: 'lagos', kind: 'table', table: 'park-bench' }, ada.who);
   assert.deepEqual([shared.share.facts.tableId, shared.share.facts.game, shared.share.facts.venue], ['park-bench', 'Whot', 'Freedom Park']);
   const html = await (await fetch(`${f.base}${shared.share.path}`)).text();
   assert.ok(html.includes(`url=/?join=${ada.who.id}&amp;ref=${shared.share.code}&amp;table=park-bench`) && html.includes('Come and play Whot with Ada'));
@@ -277,7 +302,7 @@ test('tables: a penalty shoot-out between two real sockets and against a bot —
   const ada = await player('Ada'), bola = await player('Bola'), chidi = await player('Chidi');
   await act(ada, 'table-sit', goal); await act(bola, 'table-sit', goal, ada); await act(chidi, 'table-watch', goal);
   await act(chidi, 'table-sit', goal);
-  assert.equal(chidi.errors.at(-1).code, 'table_full', 'a shoot-out is for two');
+  assert.equal(chidi.errors.at(-1)?.code, 'table_full', 'a shoot-out is for two');
   await act(ada, 'table-start', goal, bola, chidi);
   assert.deepEqual([ada.state.toMove, ada.state.view.kicker, ada.state.clock.seconds], [[0, 1], 0, 15]);
   // Bola (in goal) chooses first. Nobody — not Ada, not the watcher — is sent his choice.
@@ -286,9 +311,9 @@ test('tables: a penalty shoot-out between two real sockets and against a bot —
   assert.equal(ada.all.concat(chidi.all).some((message) => /"picks"|"mine":2/.test(JSON.stringify(message))), false);
   // A second choice for the same kick is refused; so is a side that does not exist.
   await act(bola, 'table-move', { ...goal, n: bola.state.n, move: { z: 0 } });
-  assert.equal(bola.errors.at(-1).code, 'not_your_turn');
+  assert.equal(bola.errors.at(-1)?.code, 'not_your_turn');
   await act(ada, 'table-move', { ...goal, n: ada.state.n, move: { z: 7 } });
-  assert.equal(ada.errors.at(-1).code, 'invalid_move');
+  assert.equal(ada.errors.at(-1)?.code, 'invalid_move');
   // Ada shoots left: a goal, shown to everyone at the same moment.
   await act(ada, 'table-move', { ...goal, n: ada.state.n, move: { z: 0 } }, bola, chidi);
   for (const peer of [ada, bola, chidi]) assert.deepEqual([peer.state.view.goals, peer.state.view.history, peer.state.view.kicker, peer.state.log.at(-1)], [[1, 0], [{ kicker: 0, shot: 0, dive: 2, goal: true }], 1, 'GOAL! Ada shot left, Bola went right. 1–0']);
@@ -313,7 +338,7 @@ test('tables: a penalty shoot-out between two real sockets and against a bot —
   await act(dayo, 'table-watch', sand);
   assert.equal(dayo.state.table.venueLabel.length > 0, true);
   await act(dayo, 'table-sit', sand);
-  assert.equal(dayo.errors.at(-1).code, 'not_here', 'the beach table is at the beach');
+  assert.equal(dayo.errors.at(-1)?.code, 'not_here', 'the beach table is at the beach');
   await act(back, 'table-leave', goal); await act(bola, 'table-leave', goal); // the two get up, so the goal is free
   await act(dayo, 'table-watch', goal); await act(dayo, 'table-again', goal);
   await act(dayo, 'table-sit', goal); await act(dayo, 'table-start', { ...goal, bots: 1 });

@@ -6,35 +6,63 @@ import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.ts';
+import type { Device, TestSocket } from './test-fixture.ts';
+import type { Database } from './types.ts';
+import type { LifeState } from '../src/types/index.ts';
+import type { ServerFrame, PlayerRef } from '../src/types/protocol.ts';
+import type { Conversation, Friend, HouseView, Message, PersonCard, PersonHere, PlayerReportReceipt, SearchResult, SocialOverview, SocialUpdate } from '../src/types/social.ts';
 import { LIMITS } from './social/service.ts';
 import { RECONNECT_GRACE_MS } from './social/presence.ts';
 import { SHIFT_SECONDS } from '../src/game/content/jobs.ts';
 import { DEFAULT_LOOK } from '../src/game/content/traits.ts';
 
 const HOUR = 3600000;
-const get = async (f, path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-const post = async (f, path, body, who) => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-const database = async (f) => JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8'));
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+type Person = Device;
+/**
+ * Every field a social answer may carry (src/types/social.ts), all typed as the documented bodies. An answer that
+ * lacks one (an error answer, or a refusal) fails the test that reads it, on the missing value.
+ */
+interface Reply {
+  status: number; error: string; ok: boolean; code: string; reason: string; duplicate: boolean; push: unknown
+  me: SocialOverview['me']; invitePath: string; friends: Friend[]; requests: SocialOverview['requests']; baeRequests: SocialOverview['baeRequests']
+  bae: PlayerRef | null; blocked: SocialOverview['blocked']; conversations: Conversation[]; updates: SocialUpdate[]; reports: PlayerReportReceipt[]
+  house: HouseView; visiting: HouseView | null
+  results: SearchResult[]; players: PersonHere[]; player: PersonCard; venue: string; self: string; count: number
+  message: Message; messages: Message[]; conv: Conversation; unread: number
+  receipt: PlayerReportReceipt; state: LifeState
+  amount: number; credited: boolean; balance: number; closeness: number; expiresAt: number; serverTime: number
+}
+type Frame<T extends ServerFrame['type']> = Extract<ServerFrame, { type: T }>;
+const isDatabase = (value: unknown): value is Database => typeof value === 'object' && value !== null && 'sessions' in value;
+const answer = async (res: Response): Promise<Reply> => ({ status: res.status, ...((await res.json()) as Partial<Reply>) } as Reply);
+const get = async (f: Fixture, path: string, who?: Person): Promise<Reply> => answer(await f.request(path, null, who?.cookie));
+const post = async (f: Fixture, path: string, body: unknown, who?: Person): Promise<Reply> => answer(await f.request(path, body, who?.cookie));
+const database = async (f: Fixture): Promise<Database> => { const db: unknown = JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')); if (!isDatabase(db)) throw new Error('devices.json is not a database'); return db; };
+/** The value, or a thrown error naming it: a test that finds nothing fails on the spot, as a property read of undefined did. */
+function defined<T>(value: T | null | undefined, what = 'value'): T { if (value === null || value === undefined) throw new TypeError(`Expected ${what} to exist`); return value; }
+const socialOf = async (f: Fixture) => defined((await database(f)).social, 'db.social');
+function errorCode(frame: ServerFrame): string { if (frame.type !== 'error') throw new Error(`Expected an error frame, got ${frame.type}`); return frame.code; }
 const tick = (ms = 15) => new Promise((resolve) => setTimeout(resolve, ms));
 /** Read socket messages until one of the given type arrives. */
-async function until(peer, type) {
-  for (let i = 0; i < 300; i++) { const message = await peer.next(); if (message.type === type) return message; }
+async function until<T extends ServerFrame['type']>(peer: TestSocket, type: T): Promise<Frame<T>> {
+  for (let i = 0; i < 300; i++) { const message = await peer.next(); if (message.type === type) return message as Frame<T>; }
   throw Error(`No ${type} message`);
 }
-async function eventually(check) {
+async function eventually(check: () => Promise<unknown>): Promise<unknown> {
   for (let i = 0; i < 100; i++) { const value = await check(); if (value) return value; await tick(); }
   throw Error('Condition never became true');
 }
-async function befriend(f, a, b) {
+async function befriend(f: Fixture, a: Person, b: Person): Promise<void> {
   assert.equal((await post(f, '/api/social/friends/request', { to: b.id, cityId: 'lagos' }, a)).code, 'requested');
   assert.equal((await post(f, '/api/social/friends/answer', { from: a.id, accept: true, cityId: 'lagos' }, b)).code, 'accepted');
 }
-async function people(f, names) {
-  const devices = [];
+async function people<const N extends readonly string[]>(f: Fixture, names: N): Promise<{ [K in keyof N]: Person }> {
+  const devices: Person[] = [];
   for (const name of names) { const device = await f.device(name); await get(f, '/api/social/me', device); devices.push(device); }
-  return devices;
+  return devices as { [K in keyof N]: Person };
 }
-async function goHome(f, device) {
+async function goHome(f: Fixture, device: Person) {
   await f.action(device.cookie, { type: 'travel', id: 'home', mode: 'trek' });
   f.advance(20000); // the longest trek in the merged city is 18 seconds
   const peer = await f.socket(device);
@@ -47,7 +75,7 @@ async function goHome(f, device) {
  * starter shifts; the merged career rules give that job a four-hour break, so a Teaching shift
  * at Freedom Park — open all day, where a new life starts — is the honest way to earn here.)
  */
-async function earn(f, device) {
+async function earn(f: Fixture, device: Person): Promise<LifeState> {
   assert.equal((await f.action(device.cookie, { type: 'apply-job', id: 'teaching' })).code, 'applied');
   await f.action(device.cookie, { type: 'spot', id: 'work' });
   const started = await f.action(device.cookie, { type: 'activity', id: 'teaching-shift' });
@@ -87,7 +115,7 @@ test('find a player, friend request → accept exactly once, friend.made lands i
   assert.deepEqual((await until(b, 'friend-request')).from, { id: ada.id, name: 'Ada' });
   assert.equal((await post(f, '/api/social/friends/request', { to: bola.id, cityId: 'lagos' }, ada)).duplicate, true);
   let me = await get(f, '/api/social/me', bola);
-  assert.deepEqual(me.requests.in.map((item) => item.id), [ada.id]); assert.equal(me.updates[0].kind, 'friend-request');
+  assert.deepEqual(me.requests.in.map((item) => item.id), [ada.id]); assert.equal(defined(me.updates[0]).kind, 'friend-request');
   assert.equal((await post(f, '/api/social/friends/answer', { from: chi.id, accept: true, cityId: 'lagos' }, bola)).code, 'no_request');
 
   const accepted = await post(f, '/api/social/friends/answer', { from: ada.id, accept: true, cityId: 'lagos' }, bola);
@@ -99,8 +127,8 @@ test('find a player, friend request → accept exactly once, friend.made lands i
   // She had no life yet either. Nothing is created to hold the friendship: it waits until she has one.
   await get(f, '/api/life?city=lagos', ada); await get(f, '/api/social/me', ada);
   const adaLife = (await get(f, '/api/life?city=lagos', ada)).state, bolaLife = (await get(f, '/api/life?city=lagos', bola)).state;
-  assert.equal(adaLife.social.rel[bola.id].friend, true); assert.equal(adaLife.social.rel[bola.id].name, 'Bola');
-  assert.equal(bolaLife.social.rel[ada.id].friend, true);
+  assert.equal(defined(adaLife.social.rel[bola.id]).friend, true); assert.equal(defined(adaLife.social.rel[bola.id]).name, 'Bola');
+  assert.equal(defined(bolaLife.social.rel[ada.id]).friend, true);
   // A crossed request is accepted, not duplicated.
   await post(f, '/api/social/friends/request', { to: ada.id, cityId: 'lagos' }, chi);
   assert.equal((await post(f, '/api/social/friends/request', { to: chi.id, cityId: 'lagos' }, ada)).code, 'accepted');
@@ -110,7 +138,7 @@ test('find a player, friend request → accept exactly once, friend.made lands i
   assert.equal((await post(f, '/api/social/friends/answer', { from: dayo.id, accept: false, cityId: 'lagos' }, bola)).code, 'declined');
   assert.equal((await post(f, '/api/social/friends/remove', { id: ada.id, cityId: 'lagos' }, bola)).code, 'removed');
   assert.deepEqual((await get(f, '/api/social/me', ada)).friends.map((friend) => friend.id), [chi.id]);
-  assert.equal((await get(f, '/api/life?city=lagos', ada)).state.social.rel[bola.id].friend, undefined);
+  assert.equal(defined((await get(f, '/api/life?city=lagos', ada)).state.social.rel[bola.id]).friend, undefined);
 });
 
 test('messages: pending → sent, retry with the same client id never duplicates, offline recipients fetch on open', async t => {
@@ -125,9 +153,9 @@ test('messages: pending → sent, retry with the same client id never duplicates
   assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: 'Different', clientId: id }, ada)).status, 409);
   // Bola was offline: unread count and history are there when he opens Messages.
   let list = await get(f, '/api/social/conversations', bola);
-  assert.equal(list.unread, 1); assert.equal(list.conversations[0].name, 'Ada'); assert.equal(list.conversations[0].last.body, 'How far?');
+  assert.equal(list.unread, 1); assert.equal(defined(list.conversations[0]).name, 'Ada'); assert.equal(defined(defined(list.conversations[0]).last).body, 'How far?');
   const history = await get(f, `/api/social/conversations/${sent.conv.id}`, bola);
-  assert.deepEqual(history.messages.map((message) => [message.seq, message.body, message.from.name, message.clientId]), [[1, 'How far?', 'Ada', undefined]]);
+  assert.deepEqual(history.messages.map((message) => [message.seq, message.body, defined(message.from).name, message.clientId]), [[1, 'How far?', 'Ada', undefined]]);
   assert.equal((await post(f, `/api/social/conversations/${sent.conv.id}/read`, {}, bola)).conv.unread, 0);
   // Live delivery over the socket, once, when the recipient is online.
   const a = await f.socket(ada), b = await f.socket(bola);
@@ -144,7 +172,7 @@ test('messages: pending → sent, retry with the same client id never duplicates
   b.ws.send(JSON.stringify({ type: 'dm-send', conv: sent.conv.id, body: 'x'.repeat(501), clientId: 'c-too-long-1' }));
   assert.deepEqual(await until(b, 'dm-failed'), { type: 'dm-failed', clientId: 'c-too-long-1', code: 'invalid_message', reason: 'That message could not be sent as written.' });
   b.ws.send(JSON.stringify({ type: 'dm-read', conv: sent.conv.id }));
-  assert.equal((await until(b, 'dm-read-ok')).conv.unread, 0);
+  const readOk = await until(b, 'dm-read-ok'); assert.equal('conv' in readOk ? readOk.conv.unread : undefined, 0);
   // Malformed input.
   for (const body of ['', '   ', 'bad\u0007bell', 'x'.repeat(501), 7, null]) assert.equal((await post(f, '/api/social/messages', { to: bola.id, body, clientId: f.id() }, ada)).status, 400, String(body));
   for (const clientId of ['short', 'has space in it', 'x'.repeat(81), undefined]) assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: 'hi', clientId }, ada)).status, 400);
@@ -153,7 +181,7 @@ test('messages: pending → sent, retry with the same client id never duplicates
   // History is bounded.
   f.advance(120000);
   for (let i = 0; i < 2; i++) await post(f, '/api/social/messages', { conv: sent.conv.id, body: `m${i}`, clientId: f.id() }, ada);
-  const stored = (await database(f)).social.convs[sent.conv.id];
+  const stored = defined((await socialOf(f)).convs[sent.conv.id]);
   assert.ok(stored.messages.length <= LIMITS.history); assert.equal(stored.seq, 4);
   assert.ok(!JSON.stringify((await database(f)).social).includes(ada.cookie.slice(4)), 'the cookie secret is never stored in the social collection');
 });
@@ -165,9 +193,9 @@ test('anti-spam: strangers get three messages until a reply, and the per-minute 
   const waiting = await post(f, '/api/social/messages', { to: bola.id, body: 'hello??', clientId: f.id() }, ada);
   assert.equal(waiting.code, 'awaiting_reply'); assert.match(waiting.reason, /Bola has not replied yet/);
   await post(f, '/api/social/messages', { to: ada.id, body: 'who be this', clientId: f.id() }, bola);
-  let limited = null;
+  let limited: Reply | null = null;
   for (let i = 0; i < 30 && !limited; i++) { const res = await post(f, '/api/social/messages', { to: bola.id, body: `spam ${i}`, clientId: f.id() }, ada); if (!res.ok) limited = res; }
-  assert.equal(limited.code, 'rate_limited'); assert.match(limited.reason, /too quickly/);
+  assert.equal(defined(limited).code, 'rate_limited'); assert.match(defined(limited).reason, /too quickly/);
   f.advance(61000);
   assert.equal((await post(f, '/api/social/messages', { to: bola.id, body: 'calm now', clientId: f.id() }, ada)).code, 'sent');
 });
@@ -185,7 +213,7 @@ test('block hides both players from each other and stops DMs and knocks; reports
   const me = await get(f, '/api/social/me', ada);
   assert.deepEqual([me.friends, me.conversations, me.blocked.map((item) => item.id)], [[], [], [bola.id]]);
   assert.deepEqual((await get(f, '/api/social/me', bola)).friends, []);
-  for (const [who, target] of [[ada, bola], [bola, ada]]) {
+  for (const [who, target] of [[ada, bola], [bola, ada]] as [Person, Person][]) {
     assert.deepEqual((await get(f, '/api/social/people?city=lagos', who)).players, []);
     assert.deepEqual((await get(f, `/api/social/search?q=${target.name.toLowerCase()}`, who)).results, []);
     assert.equal((await post(f, '/api/social/messages', { to: target.id, body: 'hi', clientId: f.id() }, who)).code, 'blocked');
@@ -201,8 +229,8 @@ test('block hides both players from each other and stops DMs and knocks; reports
   assert.equal((await post(f, '/api/social/reports', { id: bola.id, reason: 'because' }, ada)).status, 400);
   assert.equal((await post(f, '/api/social/reports', { id: bola.id, reason: 'other', text: 'x'.repeat(301) }, ada)).status, 400);
   const after = await get(f, '/api/social/me', ada);
-  assert.equal(after.reports[0].id, report.receipt.id); assert.match(after.updates[0].text, /was received/);
-  const stored = (await database(f)).social.reports[0];
+  assert.equal(defined(after.reports[0]).id, report.receipt.id); assert.match(defined(after.updates[0]).text, /was received/);
+  const stored = defined((await socialOf(f)).reports[0]);
   assert.deepEqual([stored.by, stored.about, stored.reason, stored.text, stored.evidence], [ada.id, bola.id, 'spam', 'Keeps advertising.', ['buy my coin']]);
 
   assert.equal((await post(f, '/api/social/unblock', { id: bola.id }, ada)).code, 'unblocked');
@@ -214,7 +242,7 @@ test('presence is truthful: two clients agree, leaving shows at once, a dropped 
   const f = await fixture(t);
   const [ada, bola] = await people(f, ['Ada', 'Bola']);
   await befriend(f, ada, bola);
-  const status = async (viewer) => { const friend = (await get(f, '/api/social/me', viewer)).friends[0]; return [friend.status, friend.venue]; };
+  const status = async (viewer: Person) => { const friend = defined((await get(f, '/api/social/me', viewer)).friends[0]); return [friend.status, friend.venue]; };
   assert.deepEqual(await status(ada), ['offline', undefined]);
   let here = await get(f, '/api/social/people?city=lagos', ada);
   assert.deepEqual([here.venue, here.self, here.count], ['park', 'not_joined', 0], 'not in the room yet: says so instead of showing an empty venue as fact');
@@ -222,7 +250,7 @@ test('presence is truthful: two clients agree, leaving shows at once, a dropped 
   const a = await f.joinRoom(ada);
   const b = await f.joinRoom(bola);
   assert.deepEqual(await until(a, 'people-presence'), { type: 'people-presence', id: bola.id, status: 'online' });
-  const view = async (who) => { const list = await get(f, '/api/social/people?city=lagos', who); return [list.self, list.players.map((player) => player.name)]; };
+  const view = async (who: Person) => { const list = await get(f, '/api/social/people?city=lagos', who); return [list.self, list.players.map((player) => player.name)]; };
   assert.deepEqual(await view(ada), ['joined', ['Bola']]);
   assert.deepEqual(await view(bola), ['joined', ['Ada']]);
   assert.deepEqual(await status(ada), ['online', 'park']); assert.deepEqual(await status(bola), ['online', 'park']);
@@ -263,13 +291,13 @@ test('who-is-here carries each player’s server-held look, and a watching socke
   // A client cannot supply a look: whatever the join message carries is ignored.
   b.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park', look: { body: '<img>', hair: 'x'.repeat(5000) }, name: 'Mallory' }));
   const joined = await until(b, 'presence');
-  assert.deepEqual(Object.keys(joined.members[0]).sort(), ['enabled', 'id', 'muted', 'name', 'position'], 'the room presence message itself is unchanged');
+  assert.deepEqual(Object.keys(defined(joined.members[0])).sort(), ['enabled', 'id', 'muted', 'name', 'position'], 'the room presence message itself is unchanged');
   watcher.ws.send(JSON.stringify({ type: 'people-list', cityId: 'lagos' }));
   const listing = await until(watcher, 'people');
   assert.deepEqual(listing.players.map((player) => [player.id, player.name, player.here]), [[bola.id, 'Bola', true]]);
-  assert.deepEqual(listing.players[0].look, look);
-  assert.deepEqual(Object.keys(listing.players[0]).sort(), ['friend', 'here', 'id', 'incoming', 'look', 'name', 'requested']);
-  assert.deepEqual((await get(f, '/api/social/people?city=lagos', bola)).players[0].look, DEFAULT_LOOK, 'Ada never created a character: she has the default look');
+  assert.deepEqual(defined(listing.players[0]).look, look);
+  assert.deepEqual(Object.keys(defined(listing.players[0])).sort(), ['friend', 'here', 'id', 'incoming', 'look', 'name', 'requested']);
+  assert.deepEqual((await get(f, '/api/social/people?city=lagos', bola)).players[0]?.look, DEFAULT_LOOK, 'Ada never created a character: she has the default look');
   // Bola leaves for the Library: Ada's watching socket is nudged — with no member data — and re-reads.
   await f.action(bola.cookie, { type: 'travel', id: 'library', mode: 'trek' });
   assert.deepEqual(await until(watcher, 'people-changed'), { type: 'people-changed', cityId: 'lagos', venueId: 'park' });
@@ -278,7 +306,7 @@ test('who-is-here carries each player’s server-held look, and a watching socke
   const quiet = await f.socket(ada);
   f.advance(20000);
   b.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
-  assert.equal((await b.next()).code, 'venue_mismatch');
+  assert.equal(errorCode(await b.next()), 'venue_mismatch');
   b.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'library' })); await until(b, 'presence');
   quiet.ws.send(JSON.stringify({ type: 'dm-read', conv: 'dm.x' }));
   assert.equal((await quiet.next()).type, 'error', 'the first thing the quiet socket hears is the answer to its own message');
@@ -290,7 +318,7 @@ test('who-is-here carries each player’s server-held look, and a watching socke
 test('house invite: knock needs the host at home, is accepted exactly once, caps at five guests, and expires', async t => {
   const f = await fixture(t);
   const [host, guest, ...others] = await people(f, ['Host', 'Guest', 'Gst2', 'Gst3', 'Gst4', 'Gst5', 'Gst6']);
-  const knock = (who) => post(f, '/api/social/house/knock', { host: host.id, cityId: 'lagos' }, who);
+  const knock = (who: Person) => post(f, '/api/social/house/knock', { host: host.id, cityId: 'lagos' }, who);
   assert.equal((await knock(host)).code, 'self');
   let refused = await knock(guest);
   assert.equal(refused.code, 'host_offline'); assert.match(refused.reason, /Host is offline/);
@@ -319,7 +347,7 @@ test('house invite: knock needs the host at home, is accepted exactly once, caps
   const hostSide = (await get(f, `/api/social/house/${host.id}`, host)).house, guestSide = (await get(f, `/api/social/house/${host.id}`, guest)).house;
   assert.deepEqual(hostSide.guests, guestSide.guests); assert.deepEqual(hostSide.guests.map((item) => item.id), [guest.id]);
   assert.deepEqual([hostSide.role, guestSide.role, hostSide.hostStatus, guestSide.conv], ['host', 'guest', 'home', `h.${host.id}`]);
-  assert.equal((await get(f, '/api/social/me', guest)).visiting.host.id, host.id);
+  assert.equal(defined((await get(f, '/api/social/me', guest)).visiting).host.id, host.id);
   assert.deepEqual((await get(f, '/api/social/people?city=lagos', host)).players.map((player) => player.id), [guest.id]);
   assert.equal((await knock(guest)).code, 'inside');
   // House chat reaches exactly the people inside.
@@ -365,7 +393,7 @@ test('groups: friends only, capped, owner manages members, leaving hands over or
   assert.equal(made.code, 'created'); assert.equal(made.conv.name, 'Owambe crew'); assert.equal(made.conv.members.length, 2);
   assert.equal((await post(f, '/api/social/groups', { name: 'Owambe crew', members: [bola.id], clientId: create }, ada)).duplicate, true);
   const gid = made.conv.id;
-  assert.equal((await get(f, '/api/social/me', bola)).updates[0].kind, 'group-added');
+  assert.equal((await get(f, '/api/social/me', bola)).updates[0]?.kind, 'group-added');
   assert.equal((await post(f, '/api/social/messages', { conv: gid, body: 'Who is bringing jollof?', clientId: f.id() }, bola)).code, 'sent');
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'rename', name: 'Takeover' }, bola)).code, 'owner_only');
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'rename', name: 'Owambe 2026' }, ada)).conv.name, 'Owambe 2026');
@@ -378,15 +406,15 @@ test('groups: friends only, capped, owner manages members, leaving hands over or
   assert.equal((await post(f, '/api/social/groups', { name: 'x'.repeat(33), members: [], clientId: f.id() }, ada)).status, 400);
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'leave' }, ada)).code, 'left');
   const left = (await get(f, '/api/social/conversations', bola)).conversations.find((conv) => conv.id === gid);
-  assert.equal(left.owner, bola.id); assert.equal(left.last.body, 'Ada left.');
+  assert.equal(defined(left).owner, bola.id); assert.equal(defined(defined(left).last).body, 'Ada left.');
   await post(f, `/api/social/groups/${gid}`, { op: 'leave' }, bola);
-  assert.equal((await database(f)).social.convs[gid], undefined);
+  assert.equal((await socialOf(f)).convs[gid], undefined);
 });
 
 test('transfers: friends only, aged accounts, earned money, atomic, in both ledgers, idempotent', async t => {
   const f = await fixture(t);
   const [ada, bola, chi] = await people(f, ['Ada', 'Bola', 'Chi']);
-  const send = (body, who = ada) => post(f, '/api/social/transfers', { to: bola.id, amount: 500, cityId: 'lagos', clientId: f.id(), ...body }, who);
+  const send = (body: Record<string, unknown> = {}, who = ada) => post(f, '/api/social/transfers', { to: bola.id, amount: 500, cityId: 'lagos', clientId: f.id(), ...body }, who);
   let refused = await send();
   assert.equal(refused.code, 'friends_only'); assert.match(refused.reason, /Add Bola as a friend first/);
   await befriend(f, ada, bola); await befriend(f, ada, chi);
@@ -405,17 +433,17 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   const sent = await send({ clientId: id });
   assert.deepEqual([sent.code, sent.amount, sent.credited, sent.balance], ['sent', 500, false, 7500]);
   const db = await database(f);
-  assert.equal(db.social.pending[bola.id][0].payload.amount, 500);
+  const effect = defined(defined(defined(db.social).pending[bola.id])[0]).payload; assert.equal(effect.op === 'transfer-in' ? effect.amount : undefined, 500);
   const replay = await send({ clientId: id });
   assert.deepEqual([replay.code, replay.duplicate, replay.balance], ['sent', true, 7500]);
   assert.equal((await send({ clientId: id, amount: 600 })).status, 409);
   const adaLife = (await get(f, '/api/life?city=lagos', ada)).state;
-  assert.equal(adaLife.cash, 7500); assert.deepEqual([adaLife.ledger.at(-1).amount, adaLife.ledger.at(-1).reason], [-500, 'Transfer to Bola']);
+  assert.equal(adaLife.cash, 7500); assert.deepEqual([defined(adaLife.ledger.at(-1)).amount, defined(adaLife.ledger.at(-1)).reason], [-500, 'Transfer to Bola']);
   await get(f, '/api/social/me', bola); await get(f, '/api/social/me', bola);
   let bolaLife = (await get(f, '/api/life?city=lagos', bola)).state;
   assert.equal(bolaLife.cash, 5500, 'credited exactly once');
-  assert.deepEqual([bolaLife.ledger.at(-1).amount, bolaLife.ledger.at(-1).reason], [500, 'Transfer from Ada']);
-  assert.equal((await database(f)).social.pending[bola.id], undefined);
+  assert.deepEqual([defined(bolaLife.ledger.at(-1)).amount, defined(bolaLife.ledger.at(-1)).reason], [500, 'Transfer from Ada']);
+  assert.equal((await socialOf(f)).pending[bola.id], undefined);
   // Bola is online: credited in the same transaction.
   f.advance(61000);
   const b = await f.socket(bola);
@@ -453,7 +481,7 @@ test('player interactions need both players in the same venue room; Bae opens at
   assert.deepEqual((await until(b, 'people-interaction')).from, { id: ada.id, name: 'Ada' });
   assert.equal((await act({ clientId: id })).duplicate, true);
   let life = (await get(f, '/api/life?city=lagos', ada)).state;
-  assert.equal(life.needs.social, 60); assert.equal(life.social.rel[bola.id].p, 2); assert.equal(life.social.rel[bola.id].n, 1);
+  assert.equal(life.needs.social, 60); assert.equal(defined(life.social.rel[bola.id]).p, 2); assert.equal(defined(life.social.rel[bola.id]).n, 1);
   assert.equal((await act({ action: 'steal' })).status, 400);
   for (let i = 0; i < 3; i++) await act({ action: 'gist' });
   assert.equal((await act()).code, 'daily_limit');
@@ -497,7 +525,7 @@ test('Bae: asked once closeness reaches 40, accepted once, both lives agree, eit
   assert.deepEqual((await get(f, '/api/social/me', bola)).baeRequests.map((item) => item.id), [ada.id]);
   assert.equal((await post(f, '/api/social/bae/answer', { from: ada.id, accept: true, cityId: 'lagos' }, bola)).code, 'accepted');
   assert.equal((await post(f, '/api/social/bae/answer', { from: ada.id, accept: true, cityId: 'lagos' }, bola)).duplicate, true);
-  assert.equal((await get(f, '/api/social/me', ada)).bae.id, bola.id);
+  assert.equal(defined((await get(f, '/api/social/me', ada)).bae).id, bola.id);
   assert.equal((await get(f, '/api/life?city=lagos', ada)).state.social.bae, bola.id);
   assert.equal((await get(f, '/api/life?city=lagos', bola)).state.social.bae, ada.id);
   assert.equal((await post(f, '/api/social/bae/end', { cityId: 'lagos' }, bola)).code, 'ended');
@@ -516,8 +544,8 @@ test('a gift nobody collects goes back to the sender after a week; nothing is lo
   f.advance(LIMITS.escrowMs + HOUR);
   await get(f, '/api/social/me', ada); await get(f, '/api/social/me', ada);
   const life = (await get(f, '/api/life?city=lagos', ada)).state;
-  assert.equal(life.cash, 8000); assert.equal(life.ledger.at(-1).reason, 'Refund: transfer to Bola');
+  assert.equal(life.cash, 8000); assert.equal(defined(life.ledger.at(-1)).reason, 'Refund: transfer to Bola');
   await get(f, '/api/social/me', bola);
   assert.equal((await get(f, '/api/life?city=lagos', bola)).state.cash, 5000);
-  assert.deepEqual((await database(f)).social.pending, {});
+  assert.deepEqual((await socialOf(f)).pending, {});
 });

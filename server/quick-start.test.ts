@@ -4,6 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
+import type { ActionAttempt } from './test-fixture.ts';
 import { readFile } from 'node:fs/promises';
 import { JOIN_WINDOW_MS } from '../src/game/systems/onboarding.ts';
 import type { LifeState, Look } from '../src/types/index.ts';
@@ -44,7 +45,7 @@ async function settle(f: Fixture, who: { cookie: string }, extra: Frame = {}) {
   await f.action(who.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } });
   await f.action(who.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } });
   const rolled = await f.action(who.cookie, { type: 'onboarding.lottery', payload: {} });
-  const moved = await f.action(who.cookie, { type: 'onboarding.home', payload: { house: rolled.state.onboarding.lottery.id === 'ajebutter' ? 'lekki' : 'yaba', ...extra } });
+  const moved = await f.action(who.cookie, { type: 'onboarding.home', payload: { house: rolled.state.onboarding.lottery?.id === 'ajebutter' ? 'lekki' : 'yaba', ...extra } });
   assert.equal(moved.code, 'life_started');
   return moved.state;
 }
@@ -180,14 +181,14 @@ test('no path lets a guest into a settled state: every home, rent, loan and hous
   for (const fields of [{ type: 'travel', id: 'home', mode: 'trek' }, { type: 'travel', id: 'home', mode: 'danfo' }, { type: 'home.furniture-buy', payload: { item: 'plastic-chair', x: 0, y: 0, rot: 0 } },
     { type: 'home.furniture-move', payload: { id: 'f1', x: 1, y: 1, rot: 0 } }, { type: 'home.furniture-sell', payload: { id: 'f1' } }, { type: 'home.furniture-store', payload: { id: 'f1' } },
     { type: 'home.furniture-place', payload: { item: 'plastic-chair', x: 0, y: 0, rot: 0 } }, { type: 'home.grocery-buy', payload: { id: 'rice' } }, { type: 'home.kitchen-unpack' },
-    { type: 'property.house-move', payload: { id: 'mushin' } }, { type: 'property.house-move', payload: { id: 'yaba' } }]) {
+    { type: 'property.house-move', payload: { id: 'mushin' } }, { type: 'property.house-move', payload: { id: 'yaba' } }] satisfies ActionAttempt[]) {
     const result = await f.action(ada.cookie, fields);
     refused.push(result.code);
     assert.equal(result.ok, false, fields.type);
   }
   assert.deepEqual([...new Set(refused)], ['settle_required']);
   for (const fields of [{ type: 'economy.pay-rent' }, { type: 'economy.pay-loan', payload: { mode: 'all' } }, { type: 'onboarding.home', payload: { house: 'yaba' } }, { type: 'onboarding.home', payload: { house: 'yaba', stay: true } },
-    { type: 'onboarding.lottery' }, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } }, { type: 'onboarding.boutique-buy', payload: { kind: 'hair', id: 'afro' } }]) {
+    { type: 'onboarding.lottery' }, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } }, { type: 'onboarding.boutique-buy', payload: { kind: 'hair', id: 'afro' } }] satisfies ActionAttempt[]) {
     assert.equal((await f.action(ada.cookie, fields)).ok, false, `${fields.type} needs the steps before it`);
   }
   // A week later, past a Saturday: still nothing billed, nothing owed, no home.

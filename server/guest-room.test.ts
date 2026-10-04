@@ -7,23 +7,52 @@ import { fixture } from './test-fixture.ts';
 import { WS_MODULES } from './ws/index.ts';
 import { LIMITS } from './social/service.ts';
 import { venueRoomKey } from './protocol.ts';
+import type { Device, FixtureOptions, TestSocket } from './test-fixture.ts';
 
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+/** A frame the server sent, read loosely: the fields a test looks at, and `undefined` where a frame has none. */
+interface Frame {
+  type: string; code?: string; body?: string
+  members: { id: string; name: string; enabled: boolean; muted: boolean }[]
+  from: { id: string }; message: { body: string }; house: { role: string }
+}
+/** What a JSON answer may carry in these tests. */
+interface Reply {
+  status: number; ok?: boolean; code?: string; reason?: string
+  players: { id: string; here: boolean }[]
+  house: { cityId: string; guests: unknown[] }
+  visiting: { host: { id: string } } | null
+  updates: { text: string }[]
+}
+/** The people a test opened the game for after the host: callers destructure only the names they passed. */
+type Others = [Device, Device, Device];
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+function must<T>(value: T | null | undefined, what = 'value'): T {
+  if (value === null || value === undefined) throw new Error(`expected a ${what}`);
+  return value;
+}
+const reply = async (res: Response): Promise<Reply> => {
+  const body: unknown = await res.json();
+  return { ...(isRecord(body) ? body : {}), status: res.status } as Reply; // the routes' documented bodies, read loosely
+};
+/** The next frame, read loosely. */
+const next = async (peer: TestSocket): Promise<Frame> => (await peer.next()) as unknown as Frame;
 const cid = () => `c-${randomUUID()}`;
-const get = async (f, path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-const post = async (f, path, body, who) => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-async function until(peer, type) {
-  for (let i = 0; i < 300; i++) { const message = await peer.next(); if (message.type === type) return message; }
+const get = async (f: Fixture, path: string, who?: Device): Promise<Reply> => reply(await f.request(path, null, who?.cookie));
+const post = async (f: Fixture, path: string, body: object, who?: Device): Promise<Reply> => reply(await f.request(path, body, who?.cookie));
+async function until(peer: TestSocket, type: string): Promise<Frame> {
+  for (let i = 0; i < 300; i++) { const message = await next(peer); if (message.type === type) return message; }
   throw Error(`No ${type} message`);
 }
-const say = (peer, message) => peer.ws.send(JSON.stringify(message));
-const joinHome = (peer, hostId, more = {}) => say(peer, { type: 'join', cityId: 'lagos', venueId: 'home', hostId, ...more });
+const say = (peer: TestSocket, message: object) => peer.ws.send(JSON.stringify(message));
+const joinHome = (peer: TestSocket, hostId: string, more: object = {}) => say(peer, { type: 'join', cityId: 'lagos', venueId: 'home', hostId, ...more });
 
 /** Host at home with a socket in their own Home room; `names` have opened the game. */
-async function house(t, names, options) {
+async function house(t: Parameters<typeof fixture>[0], names: string[], options?: FixtureOptions) {
   const f = await fixture(t, options);
-  const devices = [];
+  const devices: Device[] = [];
   for (const name of ['Host', ...names]) { const device = await f.device(name); await get(f, '/api/social/me', device); devices.push(device); }
-  const [host, ...others] = devices;
+  const host = must(devices[0], 'host'), others = devices.slice(1) as Others;
   await f.action(host.cookie, { type: 'travel', id: 'home', mode: 'trek' });
   f.advance(20000);
   const h = await f.socket(host);
@@ -31,7 +60,7 @@ async function house(t, names, options) {
   await until(h, 'presence');
   return { f, host, h, others };
 }
-async function letIn(f, host, guest) {
+async function letIn(f: Fixture, host: Device, guest: Device) {
   assert.equal((await post(f, '/api/social/house/knock', { host: host.id, cityId: 'lagos' }, guest)).code, 'knocking');
   assert.equal((await post(f, '/api/social/house/answer', { visitor: guest.id, answer: 'accept' }, host)).code, 'accepted');
 }
@@ -46,8 +75,8 @@ test('a non-guest is refused; an accepted guest is admitted to the host’s Home
   const { f, host, h, others: [guest, stranger] } = await house(t, ['Guest', 'Stranger']);
   const g = await f.socket(guest), s = await f.socket(stranger);
   // Nobody has been let in yet: the guest-to-be and a stranger are both refused, and so is a knock that is only pending.
-  joinHome(g, host.id); assert.equal((await g.next()).code, 'not_a_guest');
-  joinHome(s, host.id); assert.equal((await s.next()).code, 'not_a_guest');
+  joinHome(g, host.id); assert.equal((await next(g)).code, 'not_a_guest');
+  joinHome(s, host.id); assert.equal((await next(s)).code, 'not_a_guest');
   assert.equal((await post(f, '/api/social/house/knock', { host: host.id, cityId: 'lagos' }, guest)).code, 'knocking');
   joinHome(g, host.id); assert.equal((await until(g, 'error')).code, 'not_a_guest', 'knocking is not being let in');
   assert.equal((await post(f, '/api/social/house/answer', { visitor: guest.id, answer: 'accept' }, host)).code, 'accepted');
@@ -66,8 +95,8 @@ test('a non-guest is refused; an accepted guest is admitted to the host’s Home
   assert.equal((await post(f, '/api/social/messages', { conv: `h.${host.id}`, body: 'Thank you', clientId: cid() }, guest)).code, 'sent');
   assert.equal((await post(f, '/api/social/messages', { conv: `h.${host.id}`, body: 'me too', clientId: cid() }, stranger)).code, 'not_a_member');
   // The stranger is still outside: no presence, no chat, and still refused.
-  joinHome(s, host.id); assert.equal((await s.next()).code, 'not_a_guest');
-  say(s, { type: 'chat', body: 'psst' }); assert.equal((await s.next()).code, 'join_required');
+  joinHome(s, host.id); assert.equal((await next(s)).code, 'not_a_guest');
+  say(s, { type: 'chat', body: 'psst' }); assert.equal((await next(s)).code, 'join_required');
   // Truthful presence: the host sees the guest in the listing for their home, and friends see a visit, not "at home".
   assert.deepEqual((await get(f, '/api/social/people?city=lagos', host)).players.map((player) => [player.id, player.here]), [[guest.id, true]]);
   assert.equal((await get(f, `/api/social/house/${host.id}`, guest)).house.cityId, 'lagos');
@@ -86,21 +115,21 @@ test('the guest rule cannot be used to enter any other private room, and a malfo
   const o = await f.socket(other); say(o, { type: 'join', cityId: 'lagos', venueId: 'home' }); await until(o, 'presence');
   const g = await f.socket(guest);
   // A guest of Host is not a guest of Other.
-  joinHome(g, other.id); assert.equal((await g.next()).code, 'not_a_guest');
+  joinHome(g, other.id); assert.equal((await next(g)).code, 'not_a_guest');
   // The visit is for Lagos: the same host id in another city is refused.
-  say(g, { type: 'join', cityId: 'ibadan', venueId: 'home', hostId: host.id }); assert.equal((await g.next()).code, 'not_a_guest');
+  say(g, { type: 'join', cityId: 'ibadan', venueId: 'home', hostId: host.id }); assert.equal((await next(g)).code, 'not_a_guest');
   // hostId is only honoured for Home, and only as a public id; nothing else can shape the room key.
-  for (const [venueId, hostId] of [['park', host.id], ['library', other.id], ['home', `${other.id}:x`], ['home', `lagos:home:${other.id}`], ['home', '__proto__'], ['home', ''], ['home', 5], ['home', null], ['home', { id: other.id }], ['home', [other.id]], ['home', 'home']]) {
+  for (const [venueId, hostId] of [['park', host.id], ['library', other.id], ['home', `${other.id}:x`], ['home', `lagos:home:${other.id}`], ['home', '__proto__'], ['home', ''], ['home', 5], ['home', null], ['home', { id: other.id }], ['home', [other.id]], ['home', 'home']] as [string, unknown][]) {
     say(g, { type: 'join', cityId: 'lagos', venueId, hostId });
-    assert.equal((await g.next()).code, 'invalid_room', JSON.stringify([venueId, hostId]));
+    assert.equal((await next(g)).code, 'invalid_room', JSON.stringify([venueId, hostId]));
   }
   // Naming yourself as host is the ordinary own-home rule: this guest's life is at the park, not at home.
-  joinHome(g, guest.id); assert.equal((await g.next()).code, 'venue_mismatch');
+  joinHome(g, guest.id); assert.equal((await next(g)).code, 'venue_mismatch');
   // Without a host id the message means "my own home", exactly as before.
-  say(g, { type: 'join', cityId: 'lagos', venueId: 'home' }); assert.equal((await g.next()).code, 'venue_mismatch');
+  say(g, { type: 'join', cityId: 'lagos', venueId: 'home' }); assert.equal((await next(g)).code, 'venue_mismatch');
   // An unknown but well-formed id, and the host's cookie secret used as an id, admit nobody.
-  joinHome(g, randomUUID()); assert.equal((await g.next()).code, 'not_a_guest');
-  joinHome(g, host.cookie.slice(4)); assert.equal((await g.next()).code, 'not_a_guest');
+  joinHome(g, randomUUID()); assert.equal((await next(g)).code, 'not_a_guest');
+  joinHome(g, host.cookie.slice(4)); assert.equal((await next(g)).code, 'not_a_guest');
   // Other's room is untouched: one member, and the guest hears nothing from it.
   say(o, { type: 'chat', body: 'alone' }); assert.equal((await until(o, 'chat')).body, 'alone');
   joinHome(g, host.id.toUpperCase());
@@ -112,11 +141,11 @@ test('the guest rule cannot be used to enter any other private room, and a malfo
 });
 
 test('without the social module nobody can be a guest: the room module refuses every host id', async t => {
-  const f = await fixture(t, { wsModules: [WS_MODULES[0]] });
+  const f = await fixture(t, { wsModules: [must(WS_MODULES[0], 'room module')] });
   const host = await f.device('Host'), guest = await f.device('Guest');
   const g = await f.socket(guest);
-  joinHome(g, host.id); assert.equal((await g.next()).code, 'not_a_guest');
-  say(g, { type: 'join', cityId: 'lagos', venueId: 'park' }); assert.equal((await g.next()).type, 'presence', 'ordinary rooms are unaffected');
+  joinHome(g, host.id); assert.equal((await next(g)).code, 'not_a_guest');
+  say(g, { type: 'join', cityId: 'lagos', venueId: 'park' }); assert.equal((await next(g)).type, 'presence', 'ordinary rooms are unaffected');
 });
 
 test('an expired or removed guest is dropped at the next validation; a guest who leaves is dropped at once', async t => {
@@ -159,7 +188,7 @@ test('the host leaving home closes the visit: guests are dropped, the guest list
   await letIn(f, host, guest);
   const g = await f.socket(guest);
   joinHome(g, host.id); await until(g, 'presence');
-  assert.equal((await get(f, '/api/social/me', guest)).visiting.host.id, host.id);
+  assert.equal((await get(f, '/api/social/me', guest)).visiting?.host.id, host.id);
   assert.equal((await post(f, '/api/social/house/knock', { host: host.id, cityId: 'lagos' }, late)).code, 'knocking');
   // The host sets off for the park. Their own room membership ends (existing rule) and so does every visit.
   assert.equal((await f.action(host.cookie, { type: 'travel', id: 'park', mode: 'trek' })).ok, true);
@@ -173,7 +202,7 @@ test('the host leaving home closes the visit: guests are dropped, the guest list
   assert.equal((await get(f, '/api/voice-config', guest)).status, 403);
   // On the road, the host cannot let the late knocker in.
   const away = await post(f, '/api/social/house/answer', { visitor: late.id, answer: 'accept' }, host);
-  assert.equal(away.ok, false); assert.equal(away.code, 'host_not_home'); assert.match(away.reason, /Go home first/);
+  assert.equal(away.ok, false); assert.equal(away.code, 'host_not_home'); assert.match(away.reason ?? '', /Go home first/);
   // Even a guest who never joined the room loses the visit: the next read of the house closes it.
   f.advance(20000);
   await f.action(host.cookie, { type: 'travel', id: 'home', mode: 'trek' }); f.advance(20000);

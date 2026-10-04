@@ -45,7 +45,7 @@ import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRec
 import { socialService, MATERIAL } from '../social/service.ts';
 
 type Service = ReturnType<typeof socialService>;
-type Outcome = Parameters<Service['finish']>[1];
+type Outcome = object;
 type Call = (db: Db, session: SessionRecord, body: Record<string, unknown>, request: RouteRequest) => Outcome;
 
 export const HTTP_PER_MINUTE = 240;
@@ -62,7 +62,7 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       const session = request.requireSession(db, { renew: true });
       if (!ctx.allow(`social:http:${session.publicId}`, HTTP_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
       return service.finish(db, call(db, session, body, request));
-    }, { durable: (value) => request.method !== 'GET' || value?.[MATERIAL] === true, waitForObserved: true, committed: (value) => service.committed(value) });
+    }, { durable: (value) => request.method !== 'GET' || typeof value === 'object' && value !== null && Reflect.get(value, MATERIAL) === true, waitForObserved: true, committed: (value) => service.committed(value) });
     return { body: service.deliver(result), renew: true };
   };
   const after = (request: RouteRequest): number => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };

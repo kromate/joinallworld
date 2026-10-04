@@ -4,8 +4,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
+import { mkdir, mkdtemp, rm, stat, writeFile } from 'node:fs/promises';
+import { once } from 'node:events';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import type { IncomingMessage, ServerResponse } from 'node:http';
 import { fixture } from './test-fixture.ts';
+import type { Device } from './test-fixture.ts';
+import { createServer } from './server.ts';
+import type { ServerOptions } from './server.ts';
+import { createStore } from './store.ts';
 import { ROUTE_MODULES } from './routes/index.ts';
+import { WS_MODULES } from './ws/index.ts';
+import type { AuditRecord, PageHandler, RouteContext, RouteHandler, RouteModule, RouteRequest, SessionRecord, WsHandlerModule } from './types.ts';
+import type { LifeState } from '../src/types/life.ts';
 import core from './routes/core.ts';
 import { outcomeKey } from './routes/core.ts';
 import { FAILED_PER_ADDRESS, FAILED_TOTAL, OPERATOR_PER_MINUTE } from './routes/moderation.ts';
@@ -14,29 +26,39 @@ const DAY = 86400000, HOUR = 3600000;
 const MONDAY = 4 * DAY - 3600000; // the Monday after the fixture's start, 00:00 Lagos time
 const TOKEN = 'operator-token-for-tests-0123456789';
 
+/** A telemetry object the host accepts: the fakes below implement only what the host calls. */
+const asTelemetry = (fake: object): NonNullable<ServerOptions['telemetry']> => fake as NonNullable<ServerOptions['telemetry']>;
+/** A handler, module or page the types would refuse: built to see the host survive it. */
+const unchecked = <T>(value: unknown): T => value as T;
+/** Answers the request itself, behind the host's back, the way a module that holds the raw Node request could. */
+const answerBehindTheHost = (request: RouteRequest): void => {
+  const raw = request.raw as IncomingMessage;
+  (raw.socket as unknown as { _httpMessage: ServerResponse })._httpMessage.writeHead(200, { 'Content-Type': 'text/plain' }).end('mine');
+};
+
 /** Route modules that do everything a route must not. The server has to survive each of them. */
-const badRoutes = () => ({
+const badRoutes: RouteModule = () => ({
   'GET /api/bad/ping': () => ({ body: { ok: true } }),
-  'GET /api/bad/circular': () => { const body = { secret: 'do-not-log-me' }; body.self = body; return { body }; },
+  'GET /api/bad/circular': () => { const body: Record<string, unknown> = { secret: 'do-not-log-me' }; body.self = body; return { body }; },
   'GET /api/bad/bigint': () => ({ body: { n: 10n } }),
   'GET /api/bad/after': () => ({ body: { ok: true }, after() { throw Error('after failed\nwith a second line'); } }),
   'GET /api/bad/after-async': () => ({ body: { ok: true }, after: async () => { throw Error('late'); } }),
   // Answers the request itself, behind the host's back, and then returns (or throws) as if it had not.
-  'GET /api/bad/already-sent': (request) => { request.raw.socket._httpMessage.writeHead(200, { 'Content-Type': 'text/plain' }).end('mine'); return { body: { ok: true }, after() { throw Error('x'); } }; },
-  'GET /api/bad/sent-then-throw': (request) => { request.raw.socket._httpMessage.writeHead(200, { 'Content-Type': 'text/plain' }).end('mine'); throw Error('after the answer'); },
+  'GET /api/bad/already-sent': (request) => { answerBehindTheHost(request); return { body: { ok: true }, after() { throw Error('x'); } }; },
+  'GET /api/bad/sent-then-throw': (request) => { answerBehindTheHost(request); throw Error('after the answer'); },
   'GET /api/bad/status': () => ({ status: 99999, body: { ok: true } }),
   'GET /api/bad/header': () => ({ body: { ok: true }, headers: { 'Set-Cookie': 'a=b\r\nX-Injected: 1', 'X-Powered-By': 'me', 'Content-Length': '1' } }),
   'GET /api/bad/throw-null': () => { throw null; },
   'GET /api/bad/throw-string': () => { throw 'plain string'; },
   'GET /api/bad/throw-odd': () => { throw { status: 'nope', code: 7, message: { toString() { throw Error('no'); } } }; },
-  'GET /api/bad/number': () => 42,
+  'GET /api/bad/number': unchecked<RouteHandler>(() => 42),
   'GET /api/bad/undefined-body': () => ({ body: undefined }),
 });
 
 test('whatever a route module does, each request gets one answer and the server keeps running', async (t) => {
-  const logs = [];
+  const logs: string[] = [];
   const f = await fixture(t, { routes: [...ROUTE_MODULES, badRoutes], log: (line) => logs.push(line) });
-  const call = async (path) => { const res = await f.request(path); const text = await res.text(); return { status: res.status, text, headers: res.headers }; };
+  const call = async (path: string) => { const res = await f.request(path); const text = await res.text(); return { status: res.status, text, headers: res.headers }; };
   const alive = async () => assert.equal((await call('/api/bad/ping')).status, 200);
   for (const path of ['circular', 'bigint']) {
     const answer = await call(`/api/bad/${path}`);
@@ -54,7 +76,7 @@ test('whatever a route module does, each request gets one answer and the server 
   await alive();
   // Real routes still work, and their own headers still get through.
   const session = await f.request('/api/session', { name: 'Ada' });
-  assert.equal(session.status, 200); assert.match(session.headers.get('set-cookie'), /^sid=/);
+  assert.equal(session.status, 200); assert.match(session.headers.get('set-cookie') ?? '', /^sid=/);
   // Logged, one line each, with nothing from the body and nothing after the first line of a message.
   assert.ok(logs.length >= 8);
   for (const line of logs) { assert.equal(line.includes('\n'), false); assert.equal(line.includes('do-not-log-me'), false); assert.equal(/sid=|Cookie/i.test(line), false); }
@@ -65,7 +87,7 @@ test('core routes work when the room module is replaced: the room hooks have def
   const f = await fixture(t, { routes: [core], wsModules: [() => ({})], log: () => {} });
   const res = await f.request('/api/session', { name: 'Contract Probe' });
   assert.equal(res.status, 200);
-  const cookie = res.headers.get('set-cookie').split(';')[0];
+  const cookie = res.headers.get('set-cookie')?.split(';')[0];
   assert.equal((await f.request('/api/session', { name: 'Renamed Probe' }, cookie)).status, 200);
   const life = await f.request('/api/life?city=lagos', null, cookie);
   assert.equal(life.status, 200);
@@ -75,9 +97,8 @@ test('core routes work when the room module is replaced: the room hooks have def
 });
 
 test('socket errors carry a machine code only; anything else is logged, not sent', async (t) => {
-  const logs = [];
-  const leaky = () => ({ messages: { 'leak-test': () => { throw new TypeError('Cannot read properties of undefined (reading /srv/data/devices.json)'); }, 'coded-test': () => { throw Object.assign(Error('not_allowed_here'), { reason: 'Because.' }); } } });
-  const { WS_MODULES } = await import('./ws/index.ts');
+  const logs: string[] = [];
+  const leaky: WsHandlerModule = () => ({ messages: { 'leak-test': () => { throw new TypeError('Cannot read properties of undefined (reading /srv/data/devices.json)'); }, 'coded-test': () => { throw Object.assign(Error('not_allowed_here'), { reason: 'Because.' }); } } });
   const f = await fixture(t, { wsModules: [...WS_MODULES, leaky], log: (line) => logs.push(line) });
   const peer = await f.socket(await f.device('Ada'));
   peer.ws.send(JSON.stringify({ type: 'leak-test' }));
@@ -87,14 +108,14 @@ test('socket errors carry a machine code only; anything else is logged, not sent
   // (the field the community panel prints). An uncoded error above carries neither.
   assert.deepEqual(await peer.next(), { type: 'error', code: 'not_allowed_here', error: 'not_allowed_here', reason: 'Because.', message: 'Because.' });
   peer.ws.send('{not json');
-  assert.equal((await peer.next()).code, 'invalid_message', 'a frame that is not JSON is a client mistake, with its own code and no log line');
+  assert.equal(Reflect.get(await peer.next(), 'code'), 'invalid_message', 'a frame that is not JSON is a client mistake, with its own code and no log line');
   assert.equal(logs.length, 1);
   assert.ok(logs.some((line) => line.includes('devices.json')), 'the detail is in the server log instead');
 });
 
 test('operator token: a valid token has its own budget that nobody else can use up; wrong tokens are capped per address and in total', async (t) => {
   const f = await fixture(t, { moderatorToken: TOKEN, trustProxy: true });
-  const mod = (token, address = '41.58.0.1') => fetch(`${f.base}/api/mod/overview`, { headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), 'X-Forwarded-For': address } });
+  const mod = (token: string, address = '41.58.0.1') => fetch(`${f.base}/api/mod/overview`, { headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), 'X-Forwarded-For': address } });
   // Other clients behind the operator's address exhaust the general per-address limit…
   let limited = 0;
   for (let i = 0; i < 620; i++) if ((await fetch(`${f.base}/api/civic/gov?city=lagos`, { headers: { 'X-Forwarded-For': '41.58.0.1' } })).status === 429) limited += 1;
@@ -104,7 +125,7 @@ test('operator token: a valid token has its own budget that nobody else can use 
   // Wrong or missing tokens from that address are already refused by the general limit.
   assert.equal((await mod('wrong-token-wrong-token-wrong-token')).status, 429);
   // From a fresh address: 401 for the first ten, then 429 — and a right token still works from there.
-  const statuses = [];
+  const statuses: number[] = [];
   for (let i = 0; i < FAILED_PER_ADDRESS + 2; i++) statuses.push((await mod(i % 2 ? '' : `guess-${i}-guess-guess-guess-guess`, '41.58.0.2')).status);
   assert.deepEqual(statuses, [...Array(FAILED_PER_ADDRESS).fill(401), 429, 429]);
   assert.equal((await mod(TOKEN, '41.58.0.2')).status, 200, 'failed attempts by others never lock the token out');
@@ -127,16 +148,21 @@ test('a muted player cannot put a name in front of others: not a new one, and th
   const ada = await f.device('Ada'), bola = await f.device('Bola');
   const a = await f.joinRoom(ada); await f.joinRoom(bola);
   // Everything Ada's socket is sent from here on, read without consuming the fixture's queue.
-  const heard = []; a.ws.on('message', (data) => heard.push(JSON.parse(data.toString())));
+  const heard: { type: string }[] = []; a.ws.on('message', (data) => heard.push(JSON.parse(data.toString())));
   const presences = async () => { await new Promise((resolve) => setTimeout(resolve, 60)); return heard.splice(0).filter((message) => message.type === 'presence').length; };
-  const mute = (minutes) => fetch(`${f.base}/api/mod/mutes`, { method: 'POST', headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ id: bola.id, minutes, reason: 'Spam' }) });
+  const mute = (minutes: number) => fetch(`${f.base}/api/mod/mutes`, { method: 'POST', headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ id: bola.id, minutes, reason: 'Spam' }) });
   await presences();
   // Before the mute, sending the same name again is announced to the room like any name refresh.
   assert.equal((await f.request('/api/session', { name: 'Bola' }, bola.cookie)).status, 200);
   assert.equal(await presences(), 1);
   assert.equal((await mute(600)).status, 200);
   await presences();
-  const before = (await f.server.store.read((db) => Object.values(db.sessions).find((item) => item.publicId === bola.id))).expiresAt;
+  const storedBola = async (): Promise<SessionRecord> => {
+    const record = await f.server.store.read((db) => Object.values(db.sessions).find((item) => item.publicId === bola.id));
+    if (!record) throw new Error('Bola has no stored session');
+    return record;
+  };
+  const before = (await storedBola()).expiresAt;
   f.advance(HOUR);
   const other = await f.request('/api/session', { name: 'Someone Else' }, bola.cookie);
   const refusal = await other.json();
@@ -144,8 +170,8 @@ test('a muted player cannot put a name in front of others: not a new one, and th
   const same = await f.request('/api/session', { name: 'Bola' }, bola.cookie);
   assert.equal(same.status, 200);
   assert.deepEqual((await same.json()).session, { id: bola.id, name: 'Bola', cities: ['lagos'] });
-  assert.match(same.headers.get('set-cookie'), /^sid=/, 'the session itself is renewed as for anyone');
-  const stored = await f.server.store.read((db) => Object.values(db.sessions).find((item) => item.publicId === bola.id));
+  assert.match(same.headers.get('set-cookie') ?? '', /^sid=/, 'the session itself is renewed as for anyone');
+  const stored = await storedBola();
   assert.equal(stored.name, 'Bola'); assert.equal(stored.expiresAt, before + HOUR, 'both requests renewed the stored session');
   assert.equal(await presences(), 0, 'nothing was announced to the room for either request');
   // A new device is a new player, not the muted one.
@@ -156,12 +182,12 @@ test('votes per address: by default a vote past the number is counted and flagge
   for (const mode of ['flag', 'refuse']) {
     const f = await fixture(t, { moderatorToken: TOKEN, trustProxy: true, votesPerAddress: 2, ...(mode === 'refuse' ? { voteCapMode: 'refuse' } : {}) });
     assert.equal(f.server.store !== undefined, true);
-    const call = async (path, body, device, address) => {
+    const call = async (path: string, body?: unknown, device?: Device, address?: string) => {
       const res = await fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(device ? { Cookie: device.cookie } : {}), ...(address ? { 'X-Forwarded-For': address } : {}) }, body: body ? JSON.stringify(body) : undefined });
       return { status: res.status, ...(await res.json()) };
     };
-    const act = (device, type, payload) => call('/api/action', { actionId: `${f.now()}:${randomUUID()}`, cityId: 'lagos', type, payload }, device);
-    const people = [];
+    const act = (device: Device, type: string, payload?: object) => call('/api/action', { actionId: `${f.now()}:${randomUUID()}`, cityId: 'lagos', type, payload }, device);
+    const people: Device[] = [];
     for (const name of ['Ada', 'Bola', 'Chidi', 'Dayo']) people.push(await f.device(name));
     const workDay = async () => {
       for (const device of people) { await act(device, 'apply-job', { id: 'community-helper' }); await act(device, 'spot', { id: 'work' }); assert.equal((await act(device, 'activity', { id: 'helper-shift' })).ok, true); }
@@ -169,22 +195,22 @@ test('votes per address: by default a vote past the number is counted and flagge
       for (const device of people) await call('/api/life?city=lagos', null, device);
     };
     await workDay(); f.advance(DAY - 21000); await workDay();
-    const [ada, bola, chidi, dayo] = people;
+    const [ada, bola, chidi, dayo] = people as [Device, Device, Device, Device];
     f.advance(MONDAY + 60000 - f.now());
     assert.equal((await call('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all', requestId: f.id() }, ada, '41.58.0.1')).code, 'declared');
     f.advance(MONDAY + 3 * DAY + 9 * HOUR - f.now());
     for (const device of people) assert.equal((await act(device, 'travel', { id: 'polling-unit', mode: 'trek' })).ok, true);
     f.advance(30000);
     const carrier = '102.89.32.7'; // one public address shared by many subscribers
-    const vote = (device) => call('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, device, carrier);
+    const vote = (device: Device) => call('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, device, carrier);
     assert.equal((await vote(ada)).code, 'voted'); assert.equal((await vote(bola)).code, 'voted');
     const third = await vote(chidi);
-    const audit = (await (await fetch(`${f.base}/api/mod/audit`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json()).audit;
+    const audit: AuditRecord[] = (await (await fetch(`${f.base}/api/mod/audit`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json()).audit;
     if (mode === 'flag') {
       assert.deepEqual([third.ok, third.code, third.gov.election.totalVotes, third.gov.election.yourVote], [true, 'voted', 3, ada.id], 'counted');
       assert.equal((await vote(dayo)).code, 'voted');
       assert.deepEqual(audit.map((line) => line.action).filter((action) => action.startsWith('vote-cap')), ['vote-cap-flag'], 'one line for the operator, not one per vote');
-      assert.match(audit.find((line) => line.action === 'vote-cap-flag').detail, /They are all being counted/);
+      assert.match(audit.find((line) => line.action === 'vote-cap-flag')?.detail ?? '', /They are all being counted/);
       assert.equal((await call('/api/civic/gov?city=lagos', null, dayo)).election.totalVotes, 4);
     } else {
       assert.deepEqual([third.ok, third.code, third.gov.election.totalVotes, third.gov.election.yourVote], [false, 'address_vote_limit', 2, null], 'refused, and shown as not cast');
@@ -197,47 +223,54 @@ test('votes per address: by default a vote past the number is counted and flagge
     }
     // Either way, a vote answered `voted` is in the data file.
     await f.flush();
-    const stored = await f.server.store.read((db) => Object.values(db.civic.cities.lagos.gov.elections).at(-1).votes);
-    assert.equal(Object.keys(stored).length, mode === 'flag' ? 4 : 3);
+    const stored = await f.server.store.read((db) => Object.values(db.civic?.cities.lagos?.gov.elections ?? {}).at(-1)?.votes);
+    assert.equal(Object.keys(stored ?? {}).length, mode === 'flag' ? 4 : 3);
   }
 });
 
 test('the poll outcome key covers what a settlement can decide by chance', () => {
-  const base = { cash: 1, ledger: [], location: 'park', activeAction: null, inventory: {}, job: null, completedShifts: 0, message: '', health: { sick: false, cause: null }, travel: { event: null }, skills: { fitness: 0 }, goals: { chain: 0, stars: 0, granted: 0, dreamDone: false } };
-  const changes = [(s) => { s.health.sick = true; }, (s) => { s.health.cause = 'rain'; }, (s) => { s.travel.event = { id: 'wallet' }; }, (s) => { s.skills.fitness = 15; }, (s) => { s.goals.stars = 1; }, (s) => { s.goals.chain = 1; }, (s) => { s.cash = 2; }, (s) => { s.message = 'x'; }];
-  for (const change of changes) { const next = structuredClone(base); change(next); assert.notEqual(outcomeKey(next), outcomeKey(base)); }
+  /** The slice of a life the outcome key reads, plus the fields the last check drifts. */
+  interface Slice { cash: number; ledger: never[]; location: string; activeAction: null; inventory: object; job: null; completedShifts: number; message: string; health: { sick: boolean; cause: string | null }; travel: { event: { id: string } | null }; skills: { fitness: number }; goals: { chain: number; stars: number; granted: number; dreamDone: boolean }; t?: number; needs?: { hunger: number } }
+  const keyOf = (slice: Slice): string => outcomeKey(slice as unknown as LifeState);
+  const base: Slice = { cash: 1, ledger: [], location: 'park', activeAction: null, inventory: {}, job: null, completedShifts: 0, message: '', health: { sick: false, cause: null }, travel: { event: null }, skills: { fitness: 0 }, goals: { chain: 0, stars: 0, granted: 0, dreamDone: false } };
+  const changes: ((s: Slice) => void)[] = [(s) => { s.health.sick = true; }, (s) => { s.health.cause = 'rain'; }, (s) => { s.travel.event = { id: 'wallet' }; }, (s) => { s.skills.fitness = 15; }, (s) => { s.goals.stars = 1; }, (s) => { s.goals.chain = 1; }, (s) => { s.cash = 2; }, (s) => { s.message = 'x'; }];
+  for (const change of changes) { const next = structuredClone(base); change(next); assert.notEqual(keyOf(next), keyOf(base)); }
   const drift = structuredClone(base); drift.t = 5; drift.needs = { hunger: 49 };
-  assert.equal(outcomeKey(drift), outcomeKey(base), 'the clock and slow need decay alone are not an outcome');
+  assert.equal(keyOf(drift), keyOf(base), 'the clock and slow need decay alone are not an outcome');
 });
 
 // ---- the merged host: pages, the outside-world capabilities, static files and shutdown ------------------------------
 
 /** A route module that registers pages which do everything a page must not, and reports what the host hands a module. */
-const pageRoutes = (seen) => (ctx) => {
+interface Seen { ctx?: RouteContext; page?: { path: string; origin: string; ip: string; method: string; extra: string[] } }
+const pageRoutes = (seen: Seen): RouteModule => (ctx) => {
   seen.ctx = ctx;
-  ctx.pages.set('/p/', async ({ path, query, origin, ip, method, ...rest }) => {
-    seen.page = { path, origin, ip: typeof ip, method, extra: Object.keys(rest) };
+  if (!ctx.pages) throw new Error('The host serves no pages');
+  // A page that returns what a page must not: the handler is handed over under the host's own type.
+  const handler = async ({ path, query, origin, ip, method, ...rest }: Parameters<PageHandler>[0]): Promise<unknown> => {
+    seen.page = { path, origin, ip: typeof ip, method, extra: Object.keys(rest) } as Seen['page'];
     if (path === '/p/throw') throw Error('page failed\nwith a second line');
     if (path === '/p/nothing') return null;
     if (path === '/p/odd') return { status: 99999, html: '<p>odd</p>', headers: { 'Set-Cookie': 'a=b', 'Content-Security-Policy': "default-src *" } };
     if (path === '/p/private') return { status: 200, cache: false, html: '<p>private</p>' };
     if (path === '/p/missing') return { status: 404, html: '<p>missing</p>' };
     return { status: 200, html: `<p>${query.get('q') === '1' ? 'one' : 'page'}</p>` };
-  });
+  };
+  ctx.pages.set('/p/', handler as PageHandler);
   return {};
 };
 
 test('pages (/s/, /e/) are served by the host like any route: one answer, the same limit, fixed headers, a template for telemetry', async (t) => {
-  const seen = {}, calls = [];
-  const telemetry = { enabled: false, attach() {}, close: async () => {}, started() {}, captureError() {}, socketIn() {}, socketOut() {}, socketClosed() {}, socketFailed() {},
-    http: (entry) => calls.push(['http', entry.method, entry.route, entry.status, Object.keys(entry).sort().join()]), httpFailed: (error, entry) => calls.push(['failed', entry.method, entry.route, entry.status, entry.code]) };
+  const seen: Seen = {}, calls: unknown[][] = [];
+  const telemetry = asTelemetry({ enabled: false, attach() {}, close: async () => {}, started() {}, captureError() {}, socketIn() {}, socketOut() {}, socketClosed() {}, socketFailed() {},
+    http: (entry: Record<string, unknown>) => calls.push(['http', entry.method, entry.route, entry.status, Object.keys(entry).sort().join()]), httpFailed: (error: unknown, entry: Record<string, unknown>) => calls.push(['failed', entry.method, entry.route, entry.status, entry.code]) });
   const f = await fixture(t, { routes: [core, pageRoutes(seen)], telemetry, log: () => {} });
-  const get = (path, init) => fetch(`${f.base}${path}`, init);
+  const get = (path: string, init?: RequestInit) => fetch(`${f.base}${path}`, init);
   const page = await get('/p/x?q=1');
   assert.deepEqual([page.status, await page.text()], [200, '<p>one</p>']);
   assert.deepEqual([page.headers.get('content-type'), page.headers.get('x-content-type-options'), page.headers.get('referrer-policy'), page.headers.get('x-frame-options'), page.headers.get('cache-control'), page.headers.get('set-cookie')],
     ['text/html; charset=utf-8', 'nosniff', 'no-referrer', 'DENY', 'public, max-age=300', null]);
-  const csp = page.headers.get('content-security-policy');
+  const csp = page.headers.get('content-security-policy') ?? '';
   assert.match(csp, /default-src 'none'/); assert.match(csp, /frame-ancestors 'none'/); assert.ok(!/script-src/.test(csp), 'no script may run on a page');
   // The page is handed the path, the query, the origin, the address and the method — never the request, a header or a cookie.
   assert.deepEqual(seen.page, { path: '/p/x', origin: f.base, ip: 'string', method: 'GET', extra: [] });
@@ -251,7 +284,7 @@ test('pages (/s/, /e/) are served by the host like any route: one answer, the sa
   const head = await get('/p/x', { method: 'HEAD' });
   assert.deepEqual([head.status, await head.text()], [200, '']);
   const posted = await get('/p/x', { method: 'POST', body: 'List-Unsubscribe=One-Click', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
-  assert.deepEqual([posted.status, posted.headers.get('cache-control'), seen.page.method], [200, 'no-store', 'POST']);
+  assert.deepEqual([posted.status, posted.headers.get('cache-control'), seen.page?.method], [200, 'no-store', 'POST']);
   assert.equal((await get('/not-a-page', { method: 'POST', body: 'x' })).status, 405, 'POST outside /api/ and outside a page is refused');
   assert.equal((await get('/p/nothing', { method: 'POST', body: 'x' })).status, 405);
   // A page that throws is one generic answer, logged by its first line only, and the server carries on.
@@ -263,18 +296,20 @@ test('pages (/s/, /e/) are served by the host like any route: one answer, the sa
   assert.ok(calls.some((call) => call[0] === 'failed' && call[2] === '/p/*' && call[3] === 500));
   assert.ok(!JSON.stringify(calls).includes('q=1') && !JSON.stringify(calls).includes('/p/x'));
   // The same per-address budget as the API: once it is used up a page is refused like any request.
-  let limited = null;
+  let limited: unknown = null;
   for (let i = 0; i < 620 && !limited; i++) { const res = await get('/p/x'); if (res.status === 429) limited = await res.json(); else await res.arrayBuffer(); }
   assert.deepEqual(limited, { error: 'rate_limited' });
 });
 
 test('ctx.env is an allowlist, ctx.fetch is https-only, bounded and follows no redirect, and key files are private', async (t) => {
-  const seen = {}, outbound = [];
+  const seen: Seen = {}, outbound: { url: string; init: RequestInit }[] = [];
   const env = { ZEPTOMAIL_AUTH: 'send-token', EMAIL_FROM_ADDRESS: 'hello@example.com', WHATSAPP_CHANNEL_URL: 'https://whatsapp.com/channel/x', MODERATOR_TOKEN: TOKEN, SENTRY_AUTH_TOKEN: 'secret', PATH: '/usr/bin', HOME: '/root', POSTHOG_KEY: 'phc_x', EMAIL_DAILY_CAP: 5 };
-  const f = await fixture(t, { routes: [core, pageRoutes(seen)], env, fetch: async (url, init) => { outbound.push({ url, init }); return { ok: true, status: 200 }; } });
+  const f = await fixture(t, { routes: [core, pageRoutes(seen)], env, fetch: async (url, init) => { outbound.push({ url, init }); return { ok: true, status: 200 } as Response; } });
   const { ctx } = seen;
+  if (!ctx) throw new Error('The route module was not handed a context');
   assert.deepEqual(['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'WHATSAPP_CHANNEL_URL'].map((name) => ctx.env(name)), ['send-token', 'hello@example.com', 'https://whatsapp.com/channel/x']);
-  for (const name of ['MODERATOR_TOKEN', 'SENTRY_AUTH_TOKEN', 'PATH', 'HOME', 'POSTHOG_KEY', 'DATA_DIR', 'constructor', '__proto__', 'toString', '', undefined, null, 7]) assert.equal(ctx.env(name), '', String(name));
+  const names: unknown[] = ['MODERATOR_TOKEN', 'SENTRY_AUTH_TOKEN', 'PATH', 'HOME', 'POSTHOG_KEY', 'DATA_DIR', 'constructor', '__proto__', 'toString', '', undefined, null, 7];
+  for (const name of names) assert.equal(ctx.env(name as string), '', String(name));
   assert.equal(ctx.env('EMAIL_DAILY_CAP'), '', 'a value that is not a string is not handed out');
   assert.equal(ctx.env('EMAIL_FROM_NAME'), '', 'an allowed name that is not set is the empty string');
   // Outside requests.
@@ -284,10 +319,9 @@ test('ctx.env is an allowlist, ctx.fetch is https-only, bounded and follows no r
   await ctx.fetch('https://api.zeptomail.com/v1.1/sg/email', { method: 'POST', body: '{}', redirect: 'follow', signal: own.signal, headers: { Authorization: 'x' } });
   await ctx.fetch('https://fcm.googleapis.com/fcm/send/abc');
   assert.deepEqual(outbound.map((call) => [call.url, call.init.redirect, call.init.signal instanceof AbortSignal, call.init.method]), [['https://api.zeptomail.com/v1.1/sg/email', 'error', true, 'POST'], ['https://fcm.googleapis.com/fcm/send/abc', 'error', true, undefined]]);
-  assert.notEqual(outbound[0].init.signal, own.signal, 'the caller’s signal is combined with the host’s time limit, not trusted alone');
-  own.abort(); assert.equal(outbound[0].init.signal.aborted, true, 'and the caller can still cancel');
+  assert.notEqual(outbound[0]?.init.signal, own.signal, 'the caller’s signal is combined with the host’s time limit, not trusted alone');
+  own.abort(); assert.equal(outbound[0]?.init.signal?.aborted, true, 'and the caller can still cancel');
   // A secret the server makes for itself: made once, readable by the server's user only, and only under a plain name.
-  const { stat } = await import('node:fs/promises'), { join } = await import('node:path');
   let made = 0;
   const first = await ctx.keyFile('test-key', async () => { made += 1; return { key: 'k1' }; }), again = await ctx.keyFile('test-key', async () => { made += 1; return { key: 'k2' }; });
   assert.deepEqual([first, again, made], [{ key: 'k1' }, { key: 'k1' }, 1]);
@@ -296,7 +330,6 @@ test('ctx.env is an allowlist, ctx.fetch is https-only, bounded and follows no r
 });
 
 test('static files: a source map is never served, and the game page carries an absolute preview image', async (t) => {
-  const { mkdtemp, writeFile, mkdir, rm } = await import('node:fs/promises'), { tmpdir } = await import('node:os'), { join } = await import('node:path');
   const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
   t.after(() => rm(dist, { recursive: true, force: true }));
   await mkdir(join(dist, 'assets'));
@@ -305,7 +338,7 @@ test('static files: a source map is never served, and the game page carries an a
   await writeFile(join(dist, 'assets', 'app.js'), 'console.log(1)');
   await writeFile(join(dist, 'assets', 'app.js.map'), '{"sources":["../../src/secret.js"]}');
   const f = await fixture(t, { distDir: dist, publicOrigin: 'https://play.example' });
-  const get = (path, headers) => fetch(`${f.base}${path}`, { headers });
+  const get = (path: string, headers?: HeadersInit) => fetch(`${f.base}${path}`, { headers });
   assert.deepEqual([(await get('/assets/app.js')).status, (await get('/assets/app.js.map')).status, (await get('/anything.map')).status], [200, 404, 404]);
   assert.deepEqual(await (await get('/assets/app.js.map')).json(), { error: 'not_found' });
   const expected = page.replaceAll('content="/og/allworld.jpg"', 'content="https://play.example/og/allworld.jpg"');
@@ -320,20 +353,19 @@ test('static files: a source map is never served, and the game page carries an a
 });
 
 test('shutdown has one order: modules finish, the world and the store are written, telemetry goes last — and each step runs once', async (t) => {
-  const order = [], { mkdtemp, rm } = await import('node:fs/promises'), { tmpdir } = await import('node:os'), { join } = await import('node:path'), { once } = await import('node:events');
-  const { createServer } = await import('./server.ts'), { createStore } = await import('./store.ts');
+  const order: string[] = [];
   const dir = await mkdtemp(join(tmpdir(), 'joinallworld-stop-'));
   t.after(() => rm(dir, { recursive: true, force: true }));
   const real = await createStore(dir);
-  const store = new Proxy(real, { get: (target, key) => (key === 'close' ? async () => { order.push('store'); return target.close(); } : Reflect.get(target, key)) });
-  const telemetry = { enabled: false, attach() {}, started() {}, captureError() {}, http() {}, httpFailed() {}, socketIn() {}, socketOut() {}, socketClosed() {}, socketFailed() {}, close: async () => { order.push('telemetry'); } };
-  const module = (ctx) => { ctx.closing.push(async () => { await new Promise((done) => setTimeout(done, 20)); order.push('module'); }); ctx.closing.push(async () => { order.push('module-that-fails'); throw Error('boom'); }); return {}; };
-  const logs = [];
+  const store = new Proxy(real, { get: (target, key) => (key === 'close' ? async () => { order.push('store'); return target.close?.(); } : Reflect.get(target, key)) });
+  const telemetry = asTelemetry({ enabled: false, attach() {}, started() {}, captureError() {}, http() {}, httpFailed() {}, socketIn() {}, socketOut() {}, socketClosed() {}, socketFailed() {}, close: async () => { order.push('telemetry'); } });
+  const module: RouteModule = (ctx) => { ctx.closing?.push(async () => { await new Promise((done) => setTimeout(done, 20)); order.push('module'); }); ctx.closing?.push(async () => { order.push('module-that-fails'); throw Error('boom'); }); return {}; };
+  const logs: string[] = [];
   const server = await createServer({ dataDir: dir, store, telemetry, routes: [core, module], log: (line) => logs.push(line) });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   const closeShards = server.shards.close.bind(server.shards);
   server.shards.close = async () => { order.push('world'); return closeShards(); };
-  await new Promise((done) => server.close(done));
+  await new Promise<void>((done) => server.close(() => done()));
   assert.deepEqual(order, ['module', 'module-that-fails', 'world', 'store', 'telemetry']);
   assert.ok(logs.some((line) => /Shutdown: a module failed: boom/.test(line)), 'a failing step is logged and does not stop the rest');
   await server.flush();

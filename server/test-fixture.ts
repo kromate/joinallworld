@@ -13,6 +13,10 @@ import type { ServerOptions, AllworldServer } from './server.ts';
 import type { TestContext } from 'node:test';
 import type { ActionResponse, PublicSession, ServerFrame, SessionResponse } from '../src/types/protocol.ts';
 import type { ActionRequest } from '../src/types/protocol.ts';
+import type { ActionType } from '../src/types/actions.ts';
+
+/** A request body a test sends on purpose in a shape the client never would (a refusal test): any fields beside the type. */
+export interface ActionAttempt { type: ActionType; [field: string]: unknown }
 
 /** File calls a test can break (see flakyDisk). */
 export interface FlakyDisk {
@@ -80,7 +84,7 @@ export async function fixture(t: TestContext, { disk, ...options }: FixtureOptio
     // The server under test answers with its documented session shape.
     return { cookie: header.split(';')[0] ?? '', ...((await res.json()) as SessionResponse).session };
   }
-  async function action(cookie: string, fields: Partial<ActionRequest> & Pick<ActionRequest, 'type'>): Promise<ActionResponse & { error?: string }> { return (await request('/api/action', { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...fields }, cookie)).json() as Promise<ActionResponse & { error?: string }>; }
+  async function action(cookie: string, fields: (Partial<ActionRequest> & Pick<ActionRequest, 'type'>) | ActionAttempt): Promise<ActionResponse & { error?: string }> { return (await request('/api/action', { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...fields }, cookie)).json() as Promise<ActionResponse & { error?: string }>; }
   async function socket(device: { cookie: string }): Promise<TestSocket> {
     const ws = new WebSocket(base.replace('http', 'ws') + '/socket', { headers: { Cookie: device.cookie, Origin: base } });
     sockets.push(ws); const queue: ServerFrame[] = []; const waiting: ((message: ServerFrame) => void)[] = [];

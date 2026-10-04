@@ -13,34 +13,95 @@ import { presenceOf } from './social/presence.ts';
 import { isSharedAddress } from './protocol.ts';
 import { statementOf } from '../src/game/systems/wallet.ts';
 import { createLife } from '../src/life.ts';
+import type { AddressInfo } from 'node:net';
+import type { Socket } from 'node:net';
+import type { Device, FixtureOptions, TestSocket } from './test-fixture.ts';
+import type { AllworldServer } from './server.ts';
+import type { Database, WsConnection, RouteContext } from './types.ts';
+import type { LifeState } from '../src/types/index.ts';
+import { WebSocket } from 'ws';
 
 const TOKEN = 'operator-token-for-tests-0123456789';
 const DAY = 86400000, HOUR = 3600000;
 const MONDAY = 4 * DAY - HOUR; // the Monday after the fixture's start (a Thursday, 01:01 Lagos time), 00:00 Lagos time
 
+/** What a JSON answer may carry in these tests (the documented bodies, read loosely); a field a route does not send reads as undefined. */
+interface ReportRow { id: string; by: string; byName: string; about: string; reason: string; text: string; evidence: string[]; status: string; note: string }
+interface ProblemRow {
+  id: string; by: string; name: string
+  context: { build: string; cityId: string; life: unknown; actions: { type: string; ok: boolean; code: string }[]; lastError: unknown; ledger: unknown }
+}
+interface Reply {
+  status: number; error?: string; reason?: string; ok?: boolean; code?: string; duplicate?: boolean
+  session: { name: string }; sessions: number; store: { writes: number }
+  state: LifeState
+  conversations: unknown[]; conv: { id: string; name: string }
+  receipt: { id: string; status: string; category: string; text: string }
+  reports: ReportRow[]; problems: ProblemRow[]
+  mute: { id: string; until: number }; mutes: { id: string; reason: string; report: string }[]
+  update: { text: string }; updates: { text: string }[]
+  audit: { n: number; at: number; action: string; target: string; from: string }[]
+  ads: { kind: string; slot: string; text: string; by: { id: string } }[]
+  removed: { text: string }
+  billboards: { slots: { slot: string; ad: unknown }[] }
+  players: { id: string; name: string; here: boolean }[]
+  player: { status: string }
+  friends: { status: string; venue?: string; seenAt?: number }[]
+  counters: { online: number }
+  house: { guests: unknown[] }
+  visiting: { host: { id: string } } | null
+  gov: { election: { totalVotes: number } }
+  election: { totalVotes: number }
+  statement: {
+    opening: { balance: number }; closing: number; reconciled: boolean; problems: unknown[]; totals: unknown
+    lines: { amount: number; reason: string; balance: number }[]
+    days: { open: number; in: number; out: number; close: number; changes: number; groups: unknown[] }[]
+    empty?: never
+  }
+  name: string; city: string
+}
+/** A frame the server sent, read loosely. */
+interface Frame {
+  type: string; code?: string; clientId?: string; reason?: string; message?: string; body?: string; from?: string
+  update: { text: string }; members: { name: string; position: { x: number; z: number } }[]
+}
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+type Headers = Record<string, string>;
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+function must<T>(value: T | null | undefined, what = 'value'): T {
+  if (value === null || value === undefined) throw new Error(`expected a ${what}`);
+  return value;
+}
+const frameOf = async (peer: TestSocket): Promise<Frame> => (await peer.next()) as unknown as Frame;
+const stats = (f: Fixture) => must(f.server.store.stats?.(), 'store stats');
+const portOf = (server: AllworldServer): number => (server.address() as AddressInfo).port;
+
 /** Stop a second server started by a test: its sockets first, or close() would wait for them for ever. */
-async function stop(server) {
+async function stop(server: AllworldServer) {
   for (const ws of server.wss.clients) ws.terminate();
   server.closeAllConnections();
-  await new Promise((done) => server.close(done));
-  await server.store.close().catch(() => {});
+  await new Promise<void>((done) => server.close(() => done()));
+  await server.store.close?.().catch(() => {});
 }
 
-async function harness(t, options = {}) {
+async function harness(t: Parameters<typeof fixture>[0], options: FixtureOptions = {}) {
   const f = await fixture(t, { moderatorToken: TOKEN, ...options });
-  const json = async (res) => ({ status: res.status, ...(await res.json()) });
-  const get = async (path, device) => json(await f.request(path, null, device?.cookie));
+  const json = async (res: Response): Promise<Reply> => {
+    const body: unknown = await res.json();
+    return { ...(isRecord(body) ? body : {}), status: res.status } as Reply; // the routes' documented bodies, read loosely
+  };
+  const get = async (path: string, device?: Device) => json(await f.request(path, null, device?.cookie));
   // Like the browser, every paid civic request carries a fresh request id unless the test names one.
   const RECEIPTED = ['/api/civic/gov/run', '/api/civic/ads/rent', '/api/civic/radio/shoutout'];
-  const post = async (path, body, device) => json(await f.request(path, RECEIPTED.includes(path) && device && body.requestId === undefined ? { ...body, requestId: f.id() } : body, device?.cookie));
-  const mod = async (path, body, headers = { Authorization: `Bearer ${TOKEN}` }) => json(await fetch(f.base + path, { method: body ? 'POST' : 'GET',
+  const post = async (path: string, body: Record<string, unknown>, device?: Device) => json(await f.request(path, RECEIPTED.includes(path) && device && body.requestId === undefined ? { ...body, requestId: f.id() } : body, device?.cookie));
+  const mod = async (path: string, body?: object | null, headers: Headers = { Authorization: `Bearer ${TOKEN}` }) => json(await fetch(f.base + path, { method: body ? 'POST' : 'GET',
     headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined }));
-  const database = async () => { await f.flush(); return JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')); };
+  const database = async (): Promise<Database> => { await f.flush(); return JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')) as Database; };
   const clientId = () => f.id();
   /** Drain a socket until a message of `type` arrives. */
-  const until = async (peer, type) => { for (let i = 0; i < 50; i++) { const message = await peer.next(); if (message.type === type) return message; } throw Error(`no ${type}`); };
+  const until = async (peer: TestSocket, type: string): Promise<Frame> => { for (let i = 0; i < 50; i++) { const message = await frameOf(peer); if (message.type === type) return message; } throw Error(`no ${type}`); };
   /** Resolve true if no message of `type` arrives shortly (a later marker message proves delivery order). */
-  const register = async (...devices) => { for (const device of devices) assert.equal((await get('/api/social/me', device)).ok, true); };
+  const register = async (...devices: Device[]) => { for (const device of devices) assert.equal((await get('/api/social/me', device)).ok, true); };
   return { f, get, post, mod, database, clientId, until, register };
 }
 
@@ -82,7 +143,7 @@ test('text filter: refused with a reason, never altered — names, venue chat, m
   const { f, get, post, clientId, until, register } = await harness(t);
   for (const [name, code] of [['faggot', 'name_not_allowed'], ['call 08012345678', 'name_not_allowed'], ['see spam.com', 'name_not_allowed']]) {
     const refused = await post('/api/session', { name });
-    assert.deepEqual([refused.status, refused.error], [400, code]); assert.match(refused.reason, /^That name /);
+    assert.deepEqual([refused.status, refused.error], [400, code]); assert.match(refused.reason ?? '', /^That name /);
   }
   const ada = await f.device('Ada'), bola = await f.device('Bola');
   const renamed = await f.request('/api/session', { name: 'retard' }, ada.cookie);
@@ -92,13 +153,13 @@ test('text filter: refused with a reason, never altered — names, venue chat, m
   // Venue chat: the sender gets an error with a reason and the client id; nobody receives the line.
   a.ws.send(JSON.stringify({ type: 'chat', body: 'you should kill yourself', clientId: 'bad-1' }));
   const refused = await until(a, 'error');
-  assert.deepEqual([refused.code, refused.clientId], ['text_blocked', 'bad-1']); assert.match(refused.reason, /^Your message was not accepted because/);
+  assert.deepEqual([refused.code, refused.clientId], ['text_blocked', 'bad-1']); assert.match(refused.reason ?? '', /^Your message was not accepted because/);
   assert.equal(refused.message, refused.reason, 'the sentence is also in `message`, the field the community panel prints');
   a.ws.send(JSON.stringify({ type: 'chat', body: 'How far? Niger State next week', clientId: 'ok-1' }));
   assert.equal((await until(b, 'chat')).body, 'How far? Niger State next week', 'the first chat line Bola receives is the clean one, unaltered');
   // Messages and group names.
   const dm = await post('/api/social/messages', { to: bola.id, body: 'k y s', clientId: clientId() }, ada);
-  assert.deepEqual([dm.status, dm.ok, dm.code], [200, false, 'text_blocked']); assert.match(dm.reason, /Nothing was sent or saved/);
+  assert.deepEqual([dm.status, dm.ok, dm.code], [200, false, 'text_blocked']); assert.match(dm.reason ?? '', /Nothing was sent or saved/);
   assert.equal((await get('/api/social/conversations', bola)).conversations.length, 0, 'nothing reached Bola');
   const link = await post('/api/social/messages', { to: bola.id, body: 'my site is example.org, plain text only', clientId: clientId() }, ada);
   assert.equal(link.code, 'sent', 'a private message may mention an address as plain text');
@@ -122,9 +183,10 @@ test('reports reach an operator; a mute silences text everywhere and leaves the 
   assert.equal(filed.code, 'reported');
   const listed = await mod('/api/mod/reports');
   assert.equal(listed.reports.length, 1);
-  assert.deepEqual([listed.reports[0].id, listed.reports[0].by, listed.reports[0].byName, listed.reports[0].about, listed.reports[0].reason, listed.reports[0].text, listed.reports[0].evidence],
+  const row = must(listed.reports[0], 'report');
+  assert.deepEqual([row.id, row.by, row.byName, row.about, row.reason, row.text, row.evidence],
     [filed.receipt.id, ada.id, 'Ada', bola.id, 'spam', 'Keeps selling gold', ['buy my gold now']]);
-  for (const [body, error] of [[{ id: 'x', minutes: 5 }, 'invalid_player'], [{ id: bola.id, minutes: 0 }, 'invalid_minutes'], [{ id: bola.id, minutes: 5, reason: 'a'.repeat(201) }, 'invalid_note'], [{ id: bola.id, minutes: 5, report: '../x' }, 'invalid_report']]) {
+  for (const [body, error] of [[{ id: 'x', minutes: 5 }, 'invalid_player'], [{ id: bola.id, minutes: 0 }, 'invalid_minutes'], [{ id: bola.id, minutes: 5, reason: 'a'.repeat(201) }, 'invalid_note'], [{ id: bola.id, minutes: 5, report: '../x' }, 'invalid_report']] as [object, string][]) {
     assert.deepEqual(await mod('/api/mod/mutes', body), { status: 400, error });
   }
   const before = await get('/api/life?city=lagos', bola);
@@ -134,19 +196,19 @@ test('reports reach an operator; a mute silences text everywhere and leaves the 
   assert.match((await until(live, 'social-update')).update.text, /^A moderator has muted you for 30 minutes: Spam in messages\. You can keep playing/);
   // The reporter sees the outcome on their own receipt.
   const mine = await get('/api/social/me', ada);
-  assert.equal(mine.reports[0].status, 'actioned'); assert.ok(mine.updates.some((update) => /a moderator acted on it/.test(update.text)));
+  assert.equal(must(mine.reports[0]).status, 'actioned'); assert.ok(mine.updates.some((update) => /a moderator acted on it/.test(update.text)));
   // Everything that posts text is refused, with the reason and the time it ends.
   const a = await f.joinRoom(ada), b = await f.joinRoom(bola); await until(a, 'presence');
   b.ws.send(JSON.stringify({ type: 'chat', body: 'hello', clientId: 'm-1' }));
   const chat = await until(b, 'error');
-  assert.deepEqual([chat.code, chat.clientId], ['muted', 'm-1']); assert.match(chat.reason, /A moderator has muted you until .* UTC \(Spam in messages\)\. You can keep playing/);
+  assert.deepEqual([chat.code, chat.clientId], ['muted', 'm-1']); assert.match(chat.reason ?? '', /A moderator has muted you until .* UTC \(Spam in messages\)\. You can keep playing/);
   const dm = await post('/api/social/messages', { to: ada.id, body: 'hello', clientId: clientId() }, bola);
   assert.deepEqual([dm.ok, dm.code], [false, 'muted']);
   const ad = await post('/api/civic/ads/rent', { cityId: 'lagos', kind: 'billboard', slot: 'bb-01', text: 'Gold here', colour: 'gold', icon: 'star' }, bola);
   assert.deepEqual([ad.ok, ad.code, ad.state.cash], [false, 'muted', before.state.cash], 'a refused ad charges nothing');
   assert.equal((await post('/api/social/groups', { name: 'Gold club', members: [], clientId: clientId() }, bola)).code, 'muted');
   const rename = await post('/api/session', { name: 'Gold Seller' }, bola);
-  assert.deepEqual([rename.status, rename.error], [403, 'muted']); assert.match(rename.reason, /A moderator has muted you until/);
+  assert.deepEqual([rename.status, rename.error], [403, 'muted']); assert.match(rename.reason ?? '', /A moderator has muted you until/);
   assert.equal((await post('/api/session', { name: 'Bola' }, bola)).status, 200, 'keeping the same name still renews the session');
   // …and nothing else changed: same session, same life, still playable, still able to read and to ask for help.
   const after = await get('/api/life?city=lagos', bola);
@@ -161,7 +223,7 @@ test('reports reach an operator; a mute silences text everywhere and leaves the 
   const again = await createServer({ dataDir: f.dir, now: f.now, moderatorToken: TOKEN, distDir: join(f.dir, 'none') });
   again.listen(0, '127.0.0.1'); await once(again, 'listening');
   t.after(() => stop(again));
-  const restarted = await (await fetch(`http://127.0.0.1:${again.address().port}/api/social/messages`, { method: 'POST', headers: { 'Content-Type': 'application/json', Cookie: bola.cookie }, body: JSON.stringify({ to: ada.id, body: 'hi', clientId: clientId() }) })).json();
+  const restarted = await (await fetch(`http://127.0.0.1:${portOf(again)}/api/social/messages`, { method: 'POST', headers: { 'Content-Type': 'application/json', Cookie: bola.cookie }, body: JSON.stringify({ to: ada.id, body: 'hi', clientId: clientId() }) })).json();
   assert.equal(restarted.code, 'muted');
   // It ends by itself, or when lifted.
   assert.equal((await mod(`/api/mod/mutes/${bola.id}/lift`, {})).code, 'lifted');
@@ -174,7 +236,7 @@ test('reports reach an operator; a mute silences text everywhere and leaves the 
   const second = await post('/api/social/reports', { id: bola.id, reason: 'other', text: '' }, ada);
   assert.equal((await mod(`/api/mod/reports/${second.receipt.id}/dismiss`, { note: 'Not against the rules' })).code, 'dismissed');
   assert.equal((await mod('/api/mod/reports/R-999/dismiss', {})).status, 404);
-  assert.equal((await get('/api/social/me', ada)).reports[0].status, 'dismissed');
+  assert.equal(must((await get('/api/social/me', ada)).reports[0]).status, 'dismissed');
   assert.deepEqual((await mod('/api/mod/reports?status=all')).reports.map((report) => report.status), ['dismissed', 'actioned']);
   const audit = (await mod('/api/mod/audit')).audit;
   assert.deepEqual(audit.map((line) => line.action), ['report-dismiss', 'mute', 'unmute', 'mute']);
@@ -192,12 +254,12 @@ test('operator can remove an ad and see live content; the owner is told and not 
   const content = await mod('/api/mod/content?city=lagos');
   assert.deepEqual(content.ads.map((ad) => [ad.kind, ad.slot, ad.text, ad.by.id]), [['billboard', 'bb-03', 'Suya at the junction', ada.id]]);
   assert.equal((await mod('/api/mod/content?city=atlantis')).error, 'invalid_city');
-  for (const [body, status] of [[{ cityId: 'lagos', kind: 'billboard', slot: 'bb-04' }, 404], [{ cityId: 'lagos', kind: 'poster', slot: 'bb-03' }, 400], [{ cityId: 'lagos', kind: 'radio', venue: '__proto__', id: 'r1' }, 404], [{ cityId: 'lagos', kind: 'announcement', id: 'a1' }, 404]]) {
+  for (const [body, status] of [[{ cityId: 'lagos', kind: 'billboard', slot: 'bb-04' }, 404], [{ cityId: 'lagos', kind: 'poster', slot: 'bb-03' }, 400], [{ cityId: 'lagos', kind: 'radio', venue: '__proto__', id: 'r1' }, 404], [{ cityId: 'lagos', kind: 'announcement', id: 'a1' }, 404]] as [object, number][]) {
     assert.equal((await mod('/api/mod/content/remove', body)).status, status, JSON.stringify(body));
   }
   const removed = await mod('/api/mod/content/remove', { cityId: 'lagos', kind: 'billboard', slot: 'bb-03', reason: 'Misleading' });
   assert.deepEqual([removed.code, removed.removed.text], ['removed', 'Suya at the junction']);
-  assert.equal((await get('/api/civic/ads?city=lagos', ada)).billboards.slots.find((slot) => slot.slot === 'bb-03').ad, null);
+  assert.equal((await get('/api/civic/ads?city=lagos', ada)).billboards.slots.find((slot) => slot.slot === 'bb-03')?.ad, null);
   assert.equal((await get('/api/life?city=lagos', ada)).state.cash, 3500, 'no refund');
   assert.ok((await get('/api/social/me', ada)).updates.some((update) => update.text === 'A moderator removed your billboard ad “Suya at the junction”: Misleading. What you paid for it is not refunded.'));
   assert.deepEqual((await mod('/api/mod/audit')).audit.map((line) => [line.action, line.target]), [['remove-billboard', 'lagos:bb-03']]);
@@ -208,11 +270,11 @@ test('a blocked player is not seen, heard or signalled in a public venue — per
   const ada = await f.device('Ada'), bola = await f.device('Bola'), chidi = await f.device('Chidi');
   await register(ada, bola, chidi);
   const a = await f.joinRoom(ada), b = await f.joinRoom(bola), c = await f.joinRoom(chidi);
-  const names = (message) => message.members.map((member) => member.name).sort();
+  const names = (message: Frame) => message.members.map((member) => member.name).sort();
   assert.deepEqual(names(await until(a, 'presence')), ['Ada', 'Bola'], 'before any block everyone is listed');
   assert.equal((await post('/api/social/block', { id: bola.id, cityId: 'lagos' }, ada)).code, 'blocked');
   // Presence is re-sent at once, each list built for its recipient.
-  const seen = async (peer) => { let last; for (let i = 0; i < 20; i++) { const message = await peer.next(); if (message.type === 'presence') { last = names(message); if (last.length < 3 || peer === c) return last; } } return last; };
+  const seen = async (peer: TestSocket) => { let last: string[] | undefined; for (let i = 0; i < 20; i++) { const message = await frameOf(peer); if (message.type === 'presence') { last = names(message); if (last.length < 3 || peer === c) return last; } } return last; };
   assert.deepEqual(await seen(a), ['Ada', 'Chidi'], 'the blocker does not see the blocked player');
   assert.deepEqual(await seen(b), ['Bola', 'Chidi'], 'and the blocked player does not see the blocker');
   assert.deepEqual(await seen(c), ['Ada', 'Bola', 'Chidi'], 'everyone else sees both');
@@ -221,7 +283,7 @@ test('a blocked player is not seen, heard or signalled in a public venue — per
   // Movement: a move by one of the pair sends the other NO frame at all (not even an unchanged list),
   // so the first presence Bola receives next is the one caused by Chidi's move.
   a.ws.send(JSON.stringify({ type: 'move', x: 5, z: 5 }));
-  let adaMoved; for (let i = 0; i < 20 && !adaMoved; i++) { const message = await c.next(); if (message.type === 'presence') adaMoved = message.members.find((member) => member.name === 'Ada').position; }
+  let adaMoved: { x: number; z: number } | undefined; for (let i = 0; i < 20 && !adaMoved; i++) { const message = await frameOf(c); if (message.type === 'presence') adaMoved = must(message.members.find((member) => member.name === 'Ada')).position; }
   assert.deepEqual(adaMoved, { x: 5, z: 5 }, 'Chidi saw Ada move');
   c.ws.send(JSON.stringify({ type: 'move', x: 3, z: 0 }));
   const next = await until(b, 'presence');
@@ -237,7 +299,7 @@ test('a blocked player is not seen, heard or signalled in a public venue — per
   c.ws.send(JSON.stringify({ type: 'chat', body: 'again', clientId: 'c-2' }));
   assert.deepEqual([(await until(b, 'chat')).body, (await until(b, 'chat')).body], ['from Chidi', 'again'], 'Bola never received Ada’s line');
   // Voice signalling between the two is refused exactly like a peer who is not there.
-  for (const [peer, to] of [[a, bola.id], [b, ada.id]]) {
+  for (const [peer, to] of [[a, bola.id], [b, ada.id]] as [TestSocket, string][]) {
     peer.ws.send(JSON.stringify({ type: 'signal', to, data: { sdp: 'offer' } }));
     assert.deepEqual([(await until(peer, 'error')).code], ['peer_not_in_room']);
   }
@@ -246,26 +308,25 @@ test('a blocked player is not seen, heard or signalled in a public venue — per
   // Unblock: they see and hear each other again.
   assert.equal((await post('/api/social/unblock', { id: bola.id }, ada)).code, 'unblocked');
   b.ws.send(JSON.stringify({ type: 'chat', body: 'peace', clientId: 'b-2' }));
-  let got; for (let i = 0; i < 20 && got !== 'peace'; i++) { const message = await a.next(); if (message.type === 'chat') got = message.body; }
+  let got: string | undefined; for (let i = 0; i < 20 && got !== 'peace'; i++) { const message = await frameOf(a); if (message.type === 'chat') got = message.body; }
   assert.equal(got, 'peace');
   // The block list is loaded at start-up, so a restart does not forget it.
   await post('/api/social/block', { id: bola.id, cityId: 'lagos' }, ada);
   const again = await createServer({ dataDir: f.dir, now: f.now, distDir: join(f.dir, 'none') });
   again.listen(0, '127.0.0.1'); await once(again, 'listening');
   t.after(() => stop(again));
-  const { WebSocket } = await import('ws');
-  const base = `http://127.0.0.1:${again.address().port}`;
-  const open = async (device) => {
+  const base = `http://127.0.0.1:${portOf(again)}`;
+  const open = async (device: Device) => {
     const ws = new WebSocket(`${base.replace('http', 'ws')}/socket`, { headers: { Cookie: device.cookie, Origin: base } });
-    const queue = []; ws.on('message', (data) => queue.push(JSON.parse(data.toString())));
+    const queue: Frame[] = []; ws.on('message', (data) => queue.push(JSON.parse(data.toString()) as Frame));
     await once(ws, 'open'); t.after(() => ws.terminate());
     ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
     return { ws, queue };
   };
   const a2 = await open(ada), b2 = await open(bola);
   await new Promise((done) => setTimeout(done, 150));
-  assert.deepEqual(b2.queue.filter((message) => message.type === 'presence').at(-1).members.map((member) => member.name), ['Bola']);
-  assert.deepEqual(a2.queue.filter((message) => message.type === 'presence').at(-1).members.map((member) => member.name), ['Ada']);
+  assert.deepEqual(must(b2.queue.filter((message) => message.type === 'presence').at(-1)).members.map((member) => member.name), ['Bola']);
+  assert.deepEqual(must(a2.queue.filter((message) => message.type === 'presence').at(-1)).members.map((member) => member.name), ['Ada']);
 });
 
 test('report a problem: a receipt with automatic context and a status the player can read later; no secret, rate limited', async (t) => {
@@ -274,7 +335,7 @@ test('report a problem: a receipt with automatic context and a status the player
   await register(ada);
   assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'money', text: 'x' })).status, 401, 'signed out: no report');
   for (const [body, error] of [[{ cityId: 'atlantis', category: 'money', text: 'abc' }, 'invalid_city'], [{ cityId: 'lagos', category: 'gossip', text: 'abc' }, 'invalid_category'],
-    [{ cityId: 'lagos', category: 'money', text: 'ab' }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'a'.repeat(601) }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'abc', clientId: 'x' }, 'invalid_client_id'], [{ cityId: 'lagos', category: 'money', text: 'abc', clientId: 'support-1b4e28ba-2fa1-41d2-883f-0016d3cca427' }, 'invalid_client_id']]) {
+    [{ cityId: 'lagos', category: 'money', text: 'ab' }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'a'.repeat(601) }, 'invalid_report_text'], [{ cityId: 'lagos', category: 'money', text: 'abc', clientId: 'x' }, 'invalid_client_id'], [{ cityId: 'lagos', category: 'money', text: 'abc', clientId: 'support-1b4e28ba-2fa1-41d2-883f-0016d3cca427' }, 'invalid_client_id']] as [Record<string, unknown>, string][]) {
     assert.deepEqual(await post('/api/support/reports', body, ada), { status: 400, error });
   }
   // The id is mandatory: without one a retry could file the report twice, so nothing is filed.
@@ -295,7 +356,7 @@ test('report a problem: a receipt with automatic context and a status the player
   const changed = await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'A different report under the same id', clientId: cid }, ada);
   assert.deepEqual([changed.status, changed.error], [409, 'client_id_conflict'], 'the same id with other contents is refused');
   // What the operator sees: the automatic context.
-  const [problem] = (await mod('/api/mod/problems')).problems;
+  const problem = must((await mod('/api/mod/problems')).problems[0], 'problem');
   assert.deepEqual([problem.id, problem.by, problem.name, problem.context.build, problem.context.cityId], ['P-1', ada.id, 'Ada', 'test-build-7', 'lagos']);
   assert.deepEqual(problem.context.life, { cash: 4600, location: 'library', spot: 'lounge', job: null, action: null, message: failed.reason });
   assert.equal(problem.context.actions.length, 10);
@@ -304,15 +365,15 @@ test('report a problem: a receipt with automatic context and a status the player
   assert.ok(problem.context.actions.slice(1).every((action) => action.type === 'spot' && action.ok && action.code === 'selected'));
   assert.deepEqual(problem.context.ledger, [{ at: 100000, amount: -400, reason: 'Cab to The Library', balance: 4600 }]);
   const db = await database();
-  assert.ok(!JSON.stringify(db.support).includes(ada.cookie.slice(4)), 'the session secret is not in the report');
-  assert.deepEqual(Object.keys(db.support.reports[0].context).sort(), ['actions', 'at', 'build', 'cityId', 'ledger', 'lastError', 'life'].sort());
+  assert.ok(!JSON.stringify(must(db.support, 'support collection')).includes(ada.cookie.slice(4)), 'the session secret is not in the report');
+  assert.deepEqual(Object.keys(must(must(db.support).reports[0]).context).sort(), ['actions', 'at', 'build', 'cityId', 'ledger', 'lastError', 'life'].sort());
   // The receipt is still there after a "reload", and its status follows what the operator does.
   assert.deepEqual((await get('/api/support/reports', ada)).reports.map((report) => [report.id, report.status, report.note]), [['P-1', 'received', '']]);
   assert.equal((await mod('/api/mod/problems/P-1/status', { status: 'banana' })).status, 400);
   assert.equal((await mod('/api/mod/problems/P-9/status', { status: 'resolved' })).status, 404);
   assert.equal((await mod('/api/mod/problems/P-1/status', { status: 'resolved', note: 'That was Saturday rent: see Phone → Statement.' })).code, 'updated');
   const mine = await get('/api/support/reports', ada);
-  assert.deepEqual([mine.reports[0].status, mine.reports[0].note], ['resolved', 'That was Saturday rent: see Phone → Statement.']);
+  assert.deepEqual([must(mine.reports[0]).status, must(mine.reports[0]).note], ['resolved', 'That was Saturday rent: see Phone → Statement.']);
   const later = await post('/api/support/reports', { cityId: 'lagos', category: 'money', text: 'My balance dropped and I do not know why', clientId: cid }, ada);
   assert.deepEqual([later.duplicate, later.receipt.id, later.receipt.status], [true, 'P-1', 'resolved'], 'a late repeat shows the report as it stands now');
   assert.ok((await get('/api/social/me', ada)).updates.some((update) => update.text.startsWith('Problem report P-1 is now “resolved”.')));
@@ -322,7 +383,7 @@ test('report a problem: a receipt with automatic context and a status the player
   assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'second', clientId: clientId() }, ada)).code, 'filed');
   assert.equal((await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'third', clientId: clientId() }, ada)).code, 'filed');
   const limited = await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'fourth', clientId: clientId() }, ada);
-  assert.deepEqual([limited.ok, limited.code], [false, 'rate_limited']); assert.match(limited.reason, /the ones you filed are kept/);
+  assert.deepEqual([limited.ok, limited.code], [false, 'rate_limited']); assert.match(limited.reason ?? '', /the ones you filed are kept/);
   assert.deepEqual((await mod('/api/mod/overview')).problems, { total: 3, open: 2 });
 });
 
@@ -361,10 +422,10 @@ test('polls do not write unless something happened; an outcome is on disk before
   assert.equal(started.ok, true);
   // The first settlement of a life is followed by one write of its own: the plot the world service allocated for it.
   await f.server.world.idle(); await f.flush();
-  const baseline = await signature(), writes = f.server.store.stats().writes;
+  const baseline = await signature(), writes = stats(f).writes;
   for (let i = 0; i < 20; i++) { f.advance(1000); assert.equal((await get('/api/life?city=lagos', ada)).status, 200); }
   assert.equal(await signature(), baseline, 'twenty quiet polls wrote nothing');
-  assert.equal(f.server.store.stats().writes, writes);
+  assert.equal(stats(f).writes, writes);
   assert.equal((await get('/api/life?city=lagos', ada)).state.t, f.now(), 'though each was answered with the settled state');
   // An action is on disk when it is answered, together with everything the polls had settled.
   assert.equal((await f.action(ada.cookie, { type: 'activity', payload: { id: 'chill' } })).code, 'started');
@@ -386,7 +447,7 @@ test('a session that never created a life leaves nothing behind; a lived life is
   f.advance(30 * DAY + 1);
   await f.device('Newcomer'); // any new session sweeps the expired ones
   const db = await database();
-  assert.deepEqual(Object.keys(db.archivedLives), [lived.id]); assert.equal(db.archivedLives[lived.id].cities.lagos.state.cash, 4600);
+  assert.deepEqual(Object.keys(must(db.archivedLives)), [lived.id]); assert.equal(must(must(must(db.archivedLives)[lived.id]).cities.lagos).state.cash, 4600);
   assert.equal(Object.keys(db.sessions).length, 1);
   assert.equal((await get('/api/life?city=lagos', lived)).status, 401);
 });
@@ -397,7 +458,7 @@ test('presence freshness: a connection that stops answering pings stops counting
   await register(ada, bola);
   await post('/api/social/friends/request', { to: bola.id, cityId: 'lagos' }, ada); await post('/api/social/friends/answer', { from: ada.id, accept: true, cityId: 'lagos' }, bola);
   const b = await f.joinRoom(bola);
-  const status = async () => (await get('/api/social/me', ada)).friends[0];
+  const status = async () => must((await get('/api/social/me', ada)).friends[0], 'friend');
   const fresh = await status();
   assert.deepEqual([fresh.status, fresh.venue, fresh.seenAt], ['online', 'park', f.now()]);
   // A healthy connection answers the ping: still online however much later we look, and seenAt moves.
@@ -407,7 +468,7 @@ test('presence freshness: a connection that stops answering pings stops counting
   assert.deepEqual([(await status()).status, (await status()).seenAt], ['online', f.now()]);
   assert.equal((await get('/api/civic/pulse?city=lagos', bola)).counters.online >= 0, true);
   // The connection dies silently: the client stops reading, so the next ping is never answered.
-  b.ws._socket.pause(); b.ws.pong = () => {};
+  (b.ws as unknown as { _socket: Socket })._socket.pause(); b.ws.pong = () => {};
   f.server.beat();
   f.advance(4000);
   assert.equal((await status()).status, 'online', 'inside the pong grace it still counts');
@@ -426,11 +487,15 @@ test('presence freshness: a connection that stops answering pings stops counting
 
 test('presence registry: unresponsive sockets are ignored, and say "reconnecting" rather than "online"', () => {
   let now = 1000;
-  const dead = new Set();
-  const ctx = { now: () => now, core: { unresponsive: (ws) => dead.has(ws) } };
+  const dead = new Set<WsConnection>();
+  // Only the clock and the unresponsive check are read: the rest of the context is not needed here.
+  const ctx = { now: () => now, core: { unresponsive: (ws: WsConnection) => dead.has(ws) } } as unknown as RouteContext;
   const presence = presenceOf(ctx);
-  const one = { session: { id: 'p', name: 'P' }, readyState: 1, expiresAt: 9e15, room: 'lagos:park', seenAt: 900 };
-  const two = { session: { id: 'p', name: 'P' }, readyState: 1, expiresAt: 9e15, room: null, seenAt: 950 };
+  const socketOf = (room: string | null, seenAt: number): WsConnection => ({
+    session: { id: 'p', name: 'P' }, readyState: 1, expiresAt: 9e15, room, seenAt,
+  }) as WsConnection; // the fields the registry reads
+  const one = socketOf('lagos:park', 900);
+  const two = socketOf(null, 950);
   presence.open(one); presence.open(two);
   assert.deepEqual(presence.status('p'), { state: 'online', rooms: ['lagos:park'], seenAt: 950 });
   dead.add(one);
@@ -458,13 +523,13 @@ test('heartbeat ends an expired house visit even when neither the guest nor the 
   assert.equal((await until(guest, 'presence')).members.length, 2);
   // A beat before the visit runs out changes nothing.
   f.advance(29 * 60000); f.server.beat(); await new Promise((done) => setTimeout(done, 80));
-  assert.equal((await get('/api/social/me', bola)).visiting.host.id, ada.id);
+  assert.equal(must((await get('/api/social/me', bola)).visiting).host.id, ada.id);
   // The visit runs out. Nobody polls, acts or sends a frame: only the heartbeat runs.
   f.advance(61000);
   f.server.beat();
   const ended = await until(guest, 'error');
   assert.equal(ended.code, 'visit_ended');
-  let alone; for (let i = 0; i < 20 && alone !== 1; i++) { const message = await host.next(); if (message.type === 'presence') alone = message.members.length; }
+  let alone: number | undefined; for (let i = 0; i < 20 && alone !== 1; i++) { const message = await frameOf(host); if (message.type === 'presence') alone = message.members.length; }
   assert.equal(alone, 1, 'the host’s room no longer lists the guest');
   // The stored visit is closed too, and both sides were told.
   await new Promise((done) => setTimeout(done, 80));
@@ -477,12 +542,13 @@ test('heartbeat ends an expired house visit even when neither the guest nor the 
 
 test('votes per address: a soft cap that refuses with a reason from a public address and only logs from a shared one', async (t) => {
   const { f, mod } = await harness(t, { trustProxy: true, votesPerAddress: 2, voteCapMode: 'refuse' });
-  const call = async (path, body, device, address) => {
+  const call = async (path: string, body: object | null, device?: Device, address?: string): Promise<Reply> => {
     const res = await fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(device ? { Cookie: device.cookie } : {}), ...(address ? { 'X-Forwarded-For': address } : {}) }, body: body ? JSON.stringify(body) : undefined });
-    return { status: res.status, ...(await res.json()) };
+    const answer: unknown = await res.json();
+    return { ...(isRecord(answer) ? answer : {}), status: res.status } as Reply;
   };
-  const act = (device, type, payload) => call('/api/action', { actionId: `${f.now()}:${randomUUID()}`, cityId: 'lagos', type, payload }, device);
-  const people = [];
+  const act = (device: Device, type: string, payload: object) => call('/api/action', { actionId: `${f.now()}:${randomUUID()}`, cityId: 'lagos', type, payload }, device);
+  const people: Device[] = [];
   for (const name of ['Ada', 'Bola', 'Chidi', 'Dayo', 'Eve', 'Femi']) people.push(await f.device(name));
   const workDay = async () => {
     for (const device of people) { await act(device, 'apply-job', { id: 'community-helper' }); await act(device, 'spot', { id: 'work' }); assert.equal((await act(device, 'activity', { id: 'helper-shift' })).ok, true); }
@@ -490,19 +556,19 @@ test('votes per address: a soft cap that refuses with a reason from a public add
     for (const device of people) await call('/api/life?city=lagos', null, device);
   };
   await workDay(); f.advance(DAY - 21000); await workDay();
-  const [ada, bola, chidi, dayo, eve, femi] = people;
+  const [ada, bola, chidi, dayo, eve, femi] = people as [Device, Device, Device, Device, Device, Device];
   f.advance(MONDAY + 60000 - f.now());
   assert.equal((await call('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all', requestId: f.id() }, ada, '41.58.0.1')).code, 'declared');
   f.advance(MONDAY + 3 * DAY + 9 * HOUR - f.now());
   for (const device of people) assert.equal((await act(device, 'travel', { id: 'polling-unit', mode: 'trek' })).ok, true);
   f.advance(30000);
-  const vote = (device, address) => call('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, device, address);
+  const vote = (device: Device, address: string) => call('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, device, address);
   // Two votes from one public address are counted; the third is refused, with the reason, and can be cast from elsewhere.
   assert.equal((await vote(ada, '41.58.0.9')).code, 'voted');
   assert.equal((await vote(bola, '8.8.8.8, 41.58.0.9')).code, 'voted', 'only the address the trusted proxy saw counts; a client-supplied entry is ignored');
   const third = await vote(chidi, '41.58.0.9');
   assert.deepEqual([third.status, third.ok, third.code, third.gov.election.totalVotes], [200, false, 'address_vote_limit', 2]);
-  assert.match(third.reason, /^2 votes have already been counted from your network connection in this election/); assert.match(third.reason, /Your vote was not counted/);
+  assert.match(third.reason ?? '', /^2 votes have already been counted from your network connection in this election/); assert.match(third.reason ?? '', /Your vote was not counted/);
   assert.notEqual(third.state.message, 'Your vote was counted.', 'a capped vote leaves no trace of having been cast in the life');
   assert.equal((await vote(chidi, '41.58.0.9')).code, 'address_vote_limit');
   assert.equal((await vote(chidi, '197.210.1.1')).code, 'voted', 'the same player can vote from another connection');
@@ -514,7 +580,7 @@ test('votes per address: a soft cap that refuses with a reason from a public add
   assert.ok(audit.every((line) => !/41\.58|10\.0\.0/.test(JSON.stringify(line))), 'the audit line carries a key, not the address');
   const db = JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8'));
   assert.ok(!/41\.58\.0\.9|10\.0\.0\.7|197\.210/.test(JSON.stringify(db.civic)), 'no address is stored with the ballot');
-  for (const [address, shared] of [['127.0.0.1', true], ['::1', true], ['::ffff:10.1.2.3', true], ['192.168.1.4', true], ['172.20.0.1', true], ['172.32.0.1', false], ['41.58.0.9', false], ['fd00::1', true], ['2a02:1::1', false], ['', true]]) {
+  for (const [address, shared] of [['127.0.0.1', true], ['::1', true], ['::ffff:10.1.2.3', true], ['192.168.1.4', true], ['172.20.0.1', true], ['172.32.0.1', false], ['41.58.0.9', false], ['fd00::1', true], ['2a02:1::1', false], ['', true]] as [string, boolean][]) {
     assert.equal(isSharedAddress(address), shared, address);
   }
 });

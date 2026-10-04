@@ -5,14 +5,21 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
 import { buildSocketHandlers, WS_MODULES } from './ws/index.ts';
+import type { PublicSession, ServerFrame } from '../src/types/protocol.ts';
+import type { ContextCore, Db, RouteContext, SessionRecord, WsConnection, WsHandlerModule, WsHandlers } from './types.ts';
+import type { LifeState } from '../src/types/index.ts';
 
-const json = async (response) => ({ status: response.status, ...(await response.json()) });
+type Dict = Record<string, unknown>;
+interface Answer { status: number; error: unknown; session: { name: string } }
+const json = async (response: Response): Promise<Answer> => ({ status: response.status, ...((await response.json()) as Dict) }) as Answer;
+/** A frame only this test's modules know; the socket types list the foundation's frames alone. */
+const custom = (frame: Dict): ServerFrame => frame as unknown as ServerFrame;
 
 test('core routes work under a replacement socket module that provides nothing', async (t) => {
   const f = await fixture(t, { wsModules: [() => ({})] });
   const opened = await f.request('/api/session', { name: 'Solo Player' });
   assert.equal(opened.status, 200, 'creating a session no longer depends on a function only the room module installed');
-  const cookie = opened.headers.get('set-cookie').split(';')[0];
+  const cookie = (opened.headers.get('set-cookie') ?? '').split(';')[0] ?? '';
   assert.equal((await json(await f.request('/api/life?city=lagos', null, cookie))).status, 200);
   const acted = await f.action(cookie, { type: 'travel', id: 'library', mode: 'trek' });
   assert.deepEqual([acted.ok, acted.code], [true, 'started']);
@@ -24,19 +31,19 @@ test('core routes work under a replacement socket module that provides nothing',
 });
 
 test('a replacement room module receives the lifecycle the foundation rooms receive', async (t) => {
-  const calls = [];
+  const calls: unknown[][] = [];
   let admit = false;
-  function customRooms(ctx) {
+  function customRooms(ctx: RouteContext): ReturnType<WsHandlerModule> {
     return {
       messages: {
-        'custom-enter': (ws) => { ws.room = 'lagos:custom'; ctx.send(ws, { type: 'custom-entered', name: ws.session.name }); },
-        'custom-name': (ws) => ctx.send(ws, { type: 'custom-name', name: ws.session.name }),
+        'custom-enter': (ws: WsConnection) => { ws.room = 'lagos:custom'; ctx.send(ws, custom({ type: 'custom-entered', name: ws.session.name })); },
+        'custom-name': (ws: WsConnection) => ctx.send(ws, custom({ type: 'custom-name', name: ws.session.name })),
       },
       lifecycle: {
-        validateMemberships(secret, cityId, state, publicId) { calls.push(['validateMemberships', typeof secret, cityId, state.location, state.activeAction?.kind ?? null, publicId]); },
-        revalidate(publicId) { calls.push(['revalidate', publicId]); },
-        roomStillValid(ws, db, session, cityId, state) { calls.push(['roomStillValid', ws.room, session.publicId, cityId, state.location]); return admit; },
-        refreshNames(session) { calls.push(['refreshNames', session.id, session.name]); },
+        validateMemberships(secret: string | undefined, cityId: string, state: LifeState, publicId?: string) { calls.push(['validateMemberships', typeof secret, cityId, state.location, state.activeAction?.kind ?? null, publicId]); },
+        revalidate(publicId: string) { calls.push(['revalidate', publicId]); },
+        roomStillValid(ws: WsConnection, _db: Db, session: SessionRecord, cityId: string, state: LifeState) { calls.push(['roomStillValid', ws.room, session.publicId, cityId, state.location]); return admit; },
+        refreshNames(session: { id: string; name: string }) { calls.push(['refreshNames', session.id, session.name]); },
       },
     };
   }
@@ -67,10 +74,10 @@ test('a replacement room module receives the lifecycle the foundation rooms rece
 });
 
 test('a module that extends the foundation rooms is called alongside them, and one failing hook does not stop the others', async (t) => {
-  const calls = [];
+  const calls: string[] = [];
   const extra = () => ({ lifecycle: {
     validateMemberships() { calls.push('extra'); },
-    revalidate(publicId) { calls.push(`revalidate:${publicId}`); },
+    revalidate(publicId: string) { calls.push(`revalidate:${publicId}`); },
     roomStillValid: () => false,
   } });
   const broken = () => ({ lifecycle: { validateMemberships() { calls.push('broken'); throw Error('hook failed'); } } });
@@ -87,23 +94,27 @@ test('a module that extends the foundation rooms is called alongside them, and o
   assert.equal(revoked, 'venue_mismatch', 'the departure was revoked all the same');
   let roster = null;
   for (let i = 0; i < 5 && !roster; i++) { const message = await b.next(); if (message.type === 'presence' && message.members.length === 1) roster = message.members; }
+  if (!roster) throw new Error('Bola was never told the room emptied');
   assert.deepEqual(roster.map((member) => member.id), [bola.id]);
   // The foundation rooms still vouch for Bola's room although the extra module does not (any module may say yes).
   assert.equal((await f.request('/api/voice-config', null, bola.cookie)).status, 200);
 });
 
 test('the registry defines the lifecycle for any module list and refuses hooks it does not know', () => {
-  const sockets = [{ session: { id: 'p1', name: 'Old' } }, { session: { id: 'p2', name: 'Other' } }];
-  const other = { core: { sockets: () => sockets }, now: () => 5000, config: { sessionTtlMs: 1000 } };
+  /** A value the registry is given only in part (it reads the few fields a bare context has). */
+  const partial = <T>(value: object): T => value as unknown as T;
+  const sockets: { session: { id: string; name: string }; expiresAt?: number }[] = [{ session: { id: 'p1', name: 'Old' } }, { session: { id: 'p2', name: 'Other' } }];
+  const core = partial<ContextCore>({ sockets: () => sockets });
+  const other = partial<RouteContext>({ core, now: () => 5000, config: { sessionTtlMs: 1000 } });
   buildSocketHandlers(other, []);
-  for (const name of ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames']) assert.equal(typeof other.core[name], 'function', name);
-  assert.equal(other.core.roomStillValid({}, {}, {}, 'lagos', {}), false, 'no module vouches for a room: not valid');
-  other.core.refreshNames({ id: 'p1', name: 'New' });
+  for (const name of ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'] as const) assert.equal(typeof other.core[name], 'function', name);
+  assert.equal(other.core.roomStillValid(partial<WsConnection>({}), partial<Db>({}), partial<SessionRecord>({}), 'lagos', partial<LifeState>({})), false, 'no module vouches for a room: not valid');
+  other.core.refreshNames({ id: 'p1', name: 'New' } as PublicSession);
   assert.deepEqual(sockets.map((ws) => [ws.session.name, ws.expiresAt ?? null]), [['New', 6000], ['Other', null]], 'the registry itself brings the player’s sockets up to date');
-  assert.doesNotThrow(() => other.core.refreshNames(undefined));
-  return Promise.all([other.core.validateMemberships('s', 'lagos', {}, 'p1'), other.core.revalidate('p1')]).then(() => {
-    assert.throws(() => buildSocketHandlers({ core: {} }, [() => ({ lifecycle: { onTeleport() {} } })]), /Invalid socket lifecycle hook: onTeleport/);
-    assert.throws(() => buildSocketHandlers({ core: {} }, [() => ({ lifecycle: { revalidate: 'yes' } })]), /Invalid socket lifecycle hook: revalidate/);
-    assert.doesNotThrow(() => buildSocketHandlers({}, [() => ({ messages: { 'bare-ping': () => {} } })]), 'a bare context (no core) still builds');
+  assert.doesNotThrow(() => other.core.refreshNames(partial<PublicSession>(undefined as never)));
+  return Promise.all([other.core.validateMemberships('s', 'lagos', partial<LifeState>({}), 'p1'), other.core.revalidate('p1')]).then(() => {
+    assert.throws(() => buildSocketHandlers(partial<RouteContext>({ core: {} }), [() => ({ lifecycle: { onTeleport() {} } } as WsHandlers)]), /Invalid socket lifecycle hook: onTeleport/);
+    assert.throws(() => buildSocketHandlers(partial<RouteContext>({ core: {} }), [() => ({ lifecycle: { revalidate: 'yes' } } as unknown as WsHandlers)]), /Invalid socket lifecycle hook: revalidate/);
+    assert.doesNotThrow(() => buildSocketHandlers(partial<RouteContext>({}), [() => ({ messages: { 'bare-ping': () => {} } })]), 'a bare context (no core) still builds');
   });
 });

@@ -89,7 +89,7 @@ const CONV_ID = /^(dm|g|h)\.[0-9a-f.-]{1,80}$/;
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const naira = (value: unknown): string => `₦${Math.round(Number(value) || 0).toLocaleString('en-NG')}`;
 const no = (code: string, reason: string, extra?: object): Refused => ({ ok: false, code, reason, ...extra });
-const yes = <C extends string, E extends object = object>(code: C, extra?: E): { ok: true; code: C } & E => ({ ok: true, code, ...extra } as { ok: true; code: C } & E);
+const yes = <C extends string, const E extends object = object>(code: C, extra?: E): { ok: true; code: C } & E => ({ ok: true, code, ...extra } as { ok: true; code: C } & E);
 /** The truthiness of `duplicate` on a result that ctx.once may have replayed. */
 const repeated = (value: object): boolean => Boolean(Reflect.get(value, 'duplicate'));
 const dmId = (a: string, b: string): string => `dm.${[a, b].sort().join('.')}`;
@@ -515,7 +515,7 @@ function buildService(ctx: RouteContext) {
       let players: ReturnType<typeof card>[] = [];
       if (state.location === 'home') players = Object.keys(pruneHouse(s, id)?.guests || {}).map(card);
       else if (joined) players = [...inRoom.values()].filter((member) => member.id !== id && s.players[member.id] && !blockedEither(s, id, member.id)).map((member) => card(member.id));
-      return yes('ok', { cityId, venue: state.location, self: travelling ? 'travelling' : joined ? 'joined' : 'not_joined', players, count: players.length });
+      return yes('ok', { cityId, venue: state.location, self: travelling ? 'travelling' as const : joined ? 'joined' as const : 'not_joined' as const, players, count: players.length });
     },
     search(db: Db, session: SessionRecord, query: unknown) {
       const { s, id } = enter(db, session);

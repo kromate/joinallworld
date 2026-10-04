@@ -9,10 +9,40 @@ import { randomUUID } from 'node:crypto';
 import { fixture } from './test-fixture.ts';
 import { LIMITS } from './social/service.ts';
 import { GUEST_RECHECK_MS, HOST_ABSENCE_GRACE_MS } from './ws/rooms.ts';
+import type { WebSocket } from 'ws';
+import type { Device, FixtureOptions } from './test-fixture.ts';
+import type { LifeState } from '../src/types/index.ts';
+
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+/** A frame the server sent, read loosely: the fields a test looks at, and `undefined` where a frame has none. */
+interface Frame { type: string; code?: string; clientId?: string; data?: { probe?: string }; members: { id: string }[] }
+/** A socket the test listens on: every frame it received, in order. */
+interface Peer { ws: WebSocket; id: string; cookie: string; log: Frame[] }
+/** What a JSON answer may carry in these tests. */
+interface Reply { status: number; ok?: boolean; code?: string; state: LifeState; visiting: string | null; updates: { text: string }[] }
+interface VisitOptions { start?: number; server?: FixtureOptions }
+interface World {
+  f: Fixture; now(): number; advance(ms: number): void
+  get(path: string, who: Device): Promise<Reply>
+  post(path: string, body: object, who: Device): Promise<Reply>
+  act(who: Device, fields: object): Promise<Reply>
+  connect(device: Device): Promise<Peer>
+}
+/** The store's counters (the real store always has them). */
+const stats = (f: Fixture) => first(f.server.store.stats?.(), 'store stats');
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+const reply = async (response: Response): Promise<Reply> => {
+  const body: unknown = await response.json();
+  return { ...(isRecord(body) ? body : {}), status: response.status } as Reply; // the routes' documented bodies, read loosely
+};
+const first = <T>(value: T | null | undefined, what: string): T => {
+  if (value === null || value === undefined) throw new Error(`expected a ${what}`);
+  return value;
+};
 
 const MONDAY_10AM = Date.UTC(2026, 0, 5, 9);
-const say = (peer, message) => peer.ws.send(JSON.stringify(message));
-async function until(peer, test, what = 'message', from = 0) {
+const say = (peer: Peer, message: object) => peer.ws.send(JSON.stringify(message));
+async function until(peer: Peer, test: (message: Frame) => boolean, what = 'message', from = 0): Promise<Frame> {
   for (let i = 0; i < 400; i++) {
     const found = peer.log.slice(from).find(test);
     if (found) return found;
@@ -20,28 +50,30 @@ async function until(peer, test, what = 'message', from = 0) {
   }
   throw Error(`No ${what}`);
 }
-const isError = (code) => (message) => message.type === 'error' && message.code === code;
+const isError = (code: string) => (message: Frame) => message.type === 'error' && message.code === code;
 
 /** A host at home with a socket in their own Home room and one accepted guest inside, on a clock the test moves. */
-async function visit(t, options = {}) {
+async function visit(t: Parameters<typeof fixture>[0], options: VisitOptions = {}) {
   let time = options.start ?? 100000;
   const f = await fixture(t, { now: () => time, ...options.server });
-  const world = { f, now: () => time, advance: (ms) => { time += ms; } };
-  world.get = async (path, who) => { const response = await f.request(path, null, who.cookie); return { status: response.status, ...(await response.json()) }; };
-  world.post = async (path, body, who) => { const response = await f.request(path, body, who.cookie); return { status: response.status, ...(await response.json()) }; };
-  world.act = (who, fields) => world.post('/api/action', { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...fields }, who);
-  world.connect = async (device) => {
-    const { ws } = await f.socket(device);
-    const peer = { ws, id: device.id, cookie: device.cookie, log: [] };
-    ws.removeAllListeners('message');
-    ws.on('message', (data) => peer.log.push(JSON.parse(data.toString())));
-    return peer;
+  const world: World = {
+    f, now: () => time, advance: (ms) => { time += ms; },
+    get: async (path, who) => reply(await f.request(path, null, who.cookie)),
+    post: async (path, body, who) => reply(await f.request(path, body, who.cookie)),
+    act: (who, fields) => world.post('/api/action', { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...fields }, who),
+    connect: async (device) => {
+      const { ws } = await f.socket(device);
+      const peer: Peer = { ws, id: device.id, cookie: device.cookie, log: [] };
+      ws.removeAllListeners('message');
+      ws.on('message', (data) => peer.log.push(JSON.parse(data.toString()) as Frame));
+      return peer;
+    },
   };
   const host = await f.device('Host'), guest = await f.device('Guest');
   for (const who of [host, guest]) assert.equal((await world.get('/api/social/me', who)).status, 200);
   const trip = await world.act(host, { type: 'travel', id: 'home', mode: 'trek' });
   assert.equal(trip.ok, true);
-  world.advance(trip.state.activeAction.duration * 1000 + 1000);
+  world.advance(first(trip.state.activeAction, 'active action').duration * 1000 + 1000);
   assert.equal((await world.get('/api/life?city=lagos', host)).state.location, 'home');
   const h = await world.connect(host), g = await world.connect(guest);
   say(h, { type: 'join', cityId: 'lagos', venueId: 'home' }); await until(h, (m) => m.type === 'presence');
@@ -50,10 +82,10 @@ async function visit(t, options = {}) {
   assert.equal((await world.post('/api/social/house/answer', { visitor: guest.id, answer: 'accept' }, host)).code, 'accepted');
   say(g, { type: 'join', cityId: 'lagos', venueId: 'home', hostId: host.id });
   await until(g, (m) => m.type === 'presence' && m.members.length === 2, 'guest admitted');
-  return Object.assign(world, { host, guest, h, g, expiresAt: acceptedAt + LIMITS.visitMs });
+  return { ...world, host, guest, h, g, expiresAt: acceptedAt + LIMITS.visitMs };
 }
 /** The guest sends one chat line and one signalling marker; report what reached the host and what the guest was told. */
-async function exchange({ h, g, host }, label) {
+async function exchange({ h, g, host }: { h: Peer; g: Peer; host: Device }, label: string) {
   const clientId = randomUUID(), heard = h.log.length, sent = g.log.length;
   say(g, { type: 'chat', clientId, body: label });
   say(g, { type: 'signal', to: host.id, data: { probe: label } });
@@ -90,14 +122,14 @@ test('an accepted guest loses the room exactly when the visit expires: the first
   say(g, { type: 'join', cityId: 'lagos', venueId: 'home', hostId: host.id });
   assert.equal((await until(g, (m) => m.type === 'error', 'join refusal', from)).code, 'not_a_guest');
   assert.equal((await world.get('/api/social/me', guest)).visiting, null);
-  assert.equal(f.server.store.stats().mode, 'grouped');
+  assert.equal(stats(f).mode, 'grouped');
 });
 
 test('a guest’s entitlement is remembered for a few seconds at most, and never past the expiry', async (t) => {
   const world = await visit(t, { server: { heartbeatMs: 60000 } });
   const { f } = world;
   assert.ok(GUEST_RECHECK_MS > 0 && GUEST_RECHECK_MS <= 5000, 'a few seconds at most');
-  const reads = () => f.server.store.stats().reads;
+  const reads = () => stats(f).reads;
   assert.deepEqual(await exchange(world, 'first'), delivered);
   const before = reads();
   assert.deepEqual(await exchange(world, 'same instant'), delivered);
@@ -155,7 +187,7 @@ test('a host with no connection in their own Home room for longer than the grace
   const world = await visit(t, { server: { heartbeatMs: 60000 } });
   const { f, g, host, guest } = world;
   assert.ok(HOST_ABSENCE_GRACE_MS >= 5000 && HOST_ABSENCE_GRACE_MS <= 60000);
-  const alone = async (label) => { // with the host away the guest's chat comes back only to the guest
+  const alone = async (label: string) => { // with the host away the guest's chat comes back only to the guest
     const clientId = randomUUID(), sent = g.log.length;
     say(g, { type: 'chat', clientId, body: label });
     const reply = await until(g, (m) => (m.type === 'chat' && m.clientId === clientId) || (m.type === 'error' && m.code === 'join_required'), 'chat answer', sent);

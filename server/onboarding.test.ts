@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.ts';
+import type { ActionAttempt } from './test-fixture.ts';
 import type { LifeState, Look } from '../src/types/index.ts';
 
 type Fixture = Awaited<ReturnType<typeof fixture>>;
@@ -54,7 +55,7 @@ async function settle(f: Fixture, device: { cookie: string }, extra: Frame = {})
   await f.action(device.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } });
   const rolled = await f.action(device.cookie, { type: 'onboarding.lottery', payload: {} });
   assert.equal(rolled.code, 'rolled');
-  return f.action(device.cookie, { type: 'onboarding.home', payload: { house: rolled.state.onboarding.lottery.id === 'ajebutter' ? 'lekki' : 'yaba', ...extra } });
+  return f.action(device.cookie, { type: 'onboarding.home', payload: { house: rolled.state.onboarding.lottery?.id === 'ajebutter' ? 'lekki' : 'yaba', ...extra } });
 }
 
 test('a session created with onboarding: true is a guest: held until its look is confirmed, then playing in public, with no home until it settles in', async t => {
@@ -63,7 +64,7 @@ test('a session created with onboarding: true is a guest: held until its look is
   const start = await life(f, ada);
   assert.deepEqual([start.onboarding.stage, start.onboarding.required, start.onboarding.done, start.location, start.cash], ['guest', true, false, 'park', 5000]);
 
-  for (const fields of [{ type: 'spot', payload: { id: 'trees' } }, { type: 'activity', id: 'chill' }, { type: 'travel', id: 'library', mode: 'trek' }, { type: 'apply-job', id: 'tech' }, { type: 'cancel' }]) {
+  for (const fields of [{ type: 'spot', payload: { id: 'trees' } }, { type: 'activity', id: 'chill' }, { type: 'travel', id: 'library', mode: 'trek' }, { type: 'apply-job', id: 'tech' }, { type: 'cancel' }] satisfies ActionAttempt[]) {
     const refused = await f.action(ada.cookie, fields);
     assert.deepEqual([refused.ok, refused.code], [false, 'onboarding_required'], fields.type);
     assert.match(refused.state.message, /Choose your look and tap Play first/);
@@ -93,7 +94,7 @@ test('a session created with onboarding: true is a guest: held until its look is
   assert.deepEqual([rewarded.cash, rewarded.goals.stars, rewarded.ledger.at(-1)?.reason, rewarded.onboarding.firstAt], [5500, 1, 'Goal: Play a round of Ayo', 107000]);
   // …and everything that needs a home is refused, so nothing the economy takes as settled can exist.
   for (const fields of [{ type: 'travel', id: 'home', mode: 'trek' }, { type: 'home.grocery-buy', payload: { id: 'rice' } }, { type: 'home.kitchen-unpack' }, { type: 'property.house-move', payload: { id: 'mushin' } },
-    { type: 'home.furniture-buy', payload: { item: 'plastic-chair', x: 0, y: 0, rot: 0 } }]) {
+    { type: 'home.furniture-buy', payload: { item: 'plastic-chair', x: 0, y: 0, rot: 0 } }] satisfies ActionAttempt[]) {
     const refused = await f.action(ada.cookie, fields);
     assert.deepEqual([refused.ok, refused.code], [false, 'settle_required'], fields.type);
   }

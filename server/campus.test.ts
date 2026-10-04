@@ -5,14 +5,30 @@ import { fixture } from './test-fixture.ts';
 import { validatePosition, initialVenuePosition } from './protocol.ts';
 import { createLife } from '../src/life.ts';
 import { lagosTime } from '../src/game/clock.ts';
+import type { Device } from './test-fixture.ts';
+import type { ServerFrame, PresenceFrame } from '../src/types/protocol.ts';
+
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+/** The campus answers read here (src/types/campus.ts), plus the shared refusal fields. */
+interface CampusBody { available?: boolean; city?: string; election?: { phase: string }; leaderboards?: { players: unknown[] }; ok?: boolean; code?: string; duplicate?: boolean; error?: string }
+const isBody = (value: unknown): value is CampusBody => typeof value === 'object' && value !== null;
+function presence(frame: ServerFrame): PresenceFrame {
+  if (frame.type !== 'presence') throw new Error(`Expected a presence frame, got ${frame.type}`);
+  return frame;
+}
+function errorCode(frame: ServerFrame): string {
+  if (frame.type !== 'error') throw new Error(`Expected an error frame, got ${frame.type}`);
+  return frame.code;
+}
 
 const MONDAY = Date.UTC(2026, 9, 5, 8);
 const THURSDAY = Date.UTC(2026, 9, 8, 8);
 const id = (now = Date.now()) => `${now}:${randomUUID()}`;
 
-async function seedStudent(f, device, { studentId, score = null } = {}) {
+async function seedStudent(f: Fixture, device: Device, { studentId, score = null }: { studentId?: string; score?: number | null } = {}): Promise<void> {
   await f.server.store.transact((db) => {
     const session = Object.values(db.sessions).find((item) => item.publicId === device.id);
+    if (!session) throw new Error('No stored session for the device');
     const day = lagosTime(f.now()).day;
     const saved = {
       name: device.name,
@@ -28,12 +44,14 @@ async function seedStudent(f, device, { studentId, score = null } = {}) {
         clubs: [], discoveries: [], trail: [], elections: { nominated: [], voted: [] },
       } }),
     };
-    session.cities = { lagos: { state: createLife(saved, { now: f.now(), cityId: 'lagos', seed: `seed-${device.id}` }), updatedAt: f.now() } };
+    session.cities = { lagos: { state: createLife(saved, { now: f.now(), cityId: 'lagos', seed: `seed-${device.id}` }), updatedAt: f.now(), salt: 'c'.repeat(32) } };
   });
 }
 
-async function json(res) {
-  return { status: res.status, body: await res.json() };
+async function json(res: Response): Promise<{ status: number; body: CampusBody }> {
+  const body: unknown = await res.json();
+  if (!isBody(body)) throw new Error('The answer is not a JSON object');
+  return { status: res.status, body };
 }
 
 test('campus read requires identity and returns the saved-game leaderboard projection', async (t) => {
@@ -48,8 +66,8 @@ test('campus read requires identity and returns the saved-game leaderboard proje
   assert.equal(result.status, 200);
   assert.equal(result.body.available, true);
   assert.equal(result.body.city, 'lagos');
-  assert.equal(result.body.election.phase, 'nominations');
-  assert.deepEqual(result.body.leaderboards.players[0], { id: ada.id, studentId: 'ULG-2026-000001', score: 4, results: 1, name: 'Ada Campus' });
+  assert.equal(result.body.election?.phase, 'nominations');
+  assert.deepEqual(result.body.leaderboards?.players[0], { id: ada.id, studentId: 'ULG-2026-000001', score: 4, results: 1, name: 'Ada Campus' });
 });
 
 test('campus nomination uses stored authority and a repeated action id is exactly once', async (t) => {
@@ -67,8 +85,8 @@ test('campus nomination uses stored authority and a repeated action id is exactl
   assert.equal(second.status, 200);
   assert.equal(second.body.duplicate, true);
   const election = await f.server.store.read((db) => db.campus?.election);
-  assert.equal(election.candidates.length, 1);
-  assert.deepEqual(election.candidates[0], {
+  assert.equal(election?.candidates.length, 1);
+  assert.deepEqual(election?.candidates[0], {
     id: ada.id, studentId: 'ULG-2026-000001', name: 'Ada Campus', faculty: 'Engineering', hall: null, at: f.now(),
   });
 });
@@ -98,9 +116,9 @@ test('campus vote rejects unknown candidates transactionally and is idempotent f
   assert.equal(first.body.code, 'voted');
   assert.equal(second.status, 200);
   assert.equal(second.body.duplicate, true);
-  const election = await f.server.store.read((db) => db.campus.election);
-  assert.equal(election.ballots.length, 1);
-  assert.deepEqual(election.ballots[0], { studentId: 'ULG-2026-000002', candidateId: ada.id, at: f.now() });
+  const election = await f.server.store.read((db) => db.campus?.election);
+  assert.equal(election?.ballots.length, 1);
+  assert.deepEqual(election?.ballots[0], { studentId: 'ULG-2026-000002', candidateId: ada.id, at: f.now() });
 });
 
 test('public action dispatch cannot invoke the server-only campus vote', async (t) => {
@@ -129,11 +147,11 @@ test('two campus room members receive full-sized movement and reject lagoon wate
   const ada=await f.device('Ada Walking'),bola=await f.device('Bola Walking');
   await seedStudent(f,ada,{studentId:'ULG-2026-000011'});await seedStudent(f,bola,{studentId:'ULG-2026-000012'});
   const a=await f.socket(ada);a.ws.send(JSON.stringify({type:'join',cityId:'lagos',venueId:'unilag'}));
-  const arrival=await a.next();assert.deepEqual(arrival.members[0].position,{x:-286,z:-112});
+  const arrival=presence(await a.next());assert.deepEqual(arrival.members[0]?.position,{x:-286,z:-112});
   const b=await f.socket(bola);b.ws.send(JSON.stringify({type:'join',cityId:'lagos',venueId:'unilag'}));await b.next();await a.next();
   a.ws.send(JSON.stringify({type:'move',x:120,z:-160}));
-  const own=await a.next(),remote=await b.next();
-  assert.deepEqual(own.members.find(p=>p.id===ada.id).position,{x:120,z:-160});
-  assert.deepEqual(remote.members.find(p=>p.id===ada.id).position,{x:120,z:-160});
-  a.ws.send(JSON.stringify({type:'move',x:360,z:0}));assert.equal((await a.next()).code,'invalid_position');
+  const own=presence(await a.next()),remote=presence(await b.next());
+  assert.deepEqual(own.members.find(p=>p.id===ada.id)?.position,{x:120,z:-160});
+  assert.deepEqual(remote.members.find(p=>p.id===ada.id)?.position,{x:120,z:-160});
+  a.ws.send(JSON.stringify({type:'move',x:360,z:0}));assert.equal(errorCode(await a.next()),'invalid_position');
 });

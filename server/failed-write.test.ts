@@ -6,32 +6,58 @@ import assert from 'node:assert/strict';
 import { once } from 'node:events';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import type { AddressInfo } from 'node:net';
 import { fixture, flakyDisk } from './test-fixture.ts';
 import { createServer } from './server.ts';
+import type { Device } from './test-fixture.ts';
+import type { Database } from './types.ts';
+import type { LifeState } from '../src/types/index.ts';
 
 const HOUR = 3600000;
 const TOKEN = 'operator-token-for-tests-0123456789';
-const get = async (f, path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-const post = async (f, path, body, who) => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-const database = async (f) => JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8'));
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+type Peer = Awaited<ReturnType<Fixture['socket']>>;
+/** A frame the server sent, read loosely: the fields a test looks at, and `undefined` where a frame has none. */
+interface Frame { type: string; data?: unknown; code?: string; body?: string; members: { id: string; enabled: boolean }[] }
+function must<T>(value: T | null | undefined, what = 'value'): T {
+  if (value === null || value === undefined) throw new Error(`expected a ${what}`);
+  return value;
+}
+/** What a JSON answer may carry in these tests; fields the route does not send read as undefined. */
+interface Reply {
+  status: number; error?: string; ok?: boolean; code?: string; reason?: string; duplicate?: boolean; storage?: string
+  state: LifeState; cash: number; blocked: unknown[]; mutes: number; store: { failing: boolean }
+}
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+const reply = async (res: Response): Promise<Reply> => {
+  const body: unknown = await res.json();
+  return { ...(isRecord(body) ? body : {}), status: res.status } as Reply; // the routes' documented bodies, read loosely
+};
+const get = async (f: Fixture, path: string, who?: Device): Promise<Reply> => reply(await f.request(path, null, who?.cookie));
+const post = async (f: Fixture, path: string, body: object, who?: Device): Promise<Reply> => reply(await f.request(path, body, who?.cookie));
+const database = async (f: Fixture): Promise<Database> => JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')) as Database;
+/** The Lagos life of a device as the data file holds it. */
+const lifeOnDisk = async (f: Fixture, who: Device): Promise<LifeState> => must(must((await database(f)).sessions[who.cookie.slice(4)], 'stored session').cities.lagos, 'stored lagos life').state;
 const tick = (ms = 20) => new Promise((resolve) => setTimeout(resolve, ms));
-async function until(peer, check) {
-  for (let i = 0; i < 300; i++) { const message = await peer.next(); if (typeof check === 'string' ? message.type === check : check(message)) return message; }
+async function until(peer: Peer, check: string | ((message: Frame) => boolean)): Promise<Frame> {
+  for (let i = 0; i < 300; i++) { const message = (await peer.next()) as unknown as Frame; if (typeof check === 'string' ? message.type === check : check(message)) return message; }
   throw Error('No such message');
 }
-const life = async (f, who) => (await get(f, '/api/life?city=lagos', who)).state;
+const life = async (f: Fixture, who: Device) => (await get(f, '/api/life?city=lagos', who)).state;
 /** Two friends old enough to send gifts, the sender holding earned money (seeded: the rules themselves stay on). */
-async function friends(f, names) {
-  const devices = [];
+async function friends(f: Fixture, names: string[]): Promise<[Device, Device]> {
+  const devices: Device[] = [];
   for (const name of names) { const device = await f.device(name); await get(f, '/api/social/me', device); await life(f, device); devices.push(device); }
-  const [a, b] = devices;
+  const a = must(devices[0], 'first friend'), b = must(devices[1], 'second friend');
   await f.server.store.transact((db) => {
-    const session = (who) => Object.values(db.sessions).find((item) => item.publicId === who.id);
-    for (const who of devices) db.social.players[who.id].first = f.now() - 25 * HOUR;
-    db.social.players[a.id].friends[b.id] = db.social.players[b.id].friends[a.id] = f.now() - 2 * HOUR;
-    const state = session(a).cities.lagos.state; state.cash = 10000; state.social.earned = 5000;
+    const session = (who: Device) => must(Object.values(db.sessions).find((item) => item.publicId === who.id), 'session');
+    const players = must(db.social, 'social collection').players;
+    const player = (who: Device) => must(players[who.id], 'social player');
+    for (const who of devices) player(who).first = f.now() - 25 * HOUR;
+    player(a).friends[b.id] = player(b).friends[a.id] = f.now() - 2 * HOUR;
+    const state = must(session(a).cities.lagos, 'lagos life').state; state.cash = 10000; state.social.earned = 5000;
   });
-  return devices;
+  return [a, b];
 }
 
 test('a departure whose write fails did not happen: 503, the life and the room are unchanged; the same action id then applies exactly once', async (t) => {
@@ -48,20 +74,20 @@ test('a departure whose write fails did not happen: 503, the life and the room a
   const action = { actionId: f.id(), cityId: 'lagos', type: 'travel', id: 'library', mode: 'danfo' };
   const failed = await post(f, '/api/action', action, A);
   assert.deepEqual([failed.status, failed.error], [503, 'storage_unavailable']);
-  assert.match(failed.reason, /nothing was changed/i);
+  assert.match(failed.reason ?? '', /nothing was changed/i);
   // Nothing happened, in memory or on disk: she has not left, was not charged, and holds no receipt.
   const during = await get(f, '/api/life?city=lagos', A);
   assert.equal(during.status, 200, 'a quiet poll still works while writes fail');
   assert.equal(during.storage, 'failing', 'and says that nothing is being saved');
   assert.deepEqual([during.state.location, during.state.activeAction, during.state.cash], ['park', null, before.cash]);
-  assert.equal(await f.server.store.read((db) => Object.values(db.sessions).find((item) => item.publicId === A.id).actions[action.actionId]), undefined);
+  assert.equal(await f.server.store.read((db) => Object.entries(must(Object.values(db.sessions).find((item) => item.publicId === A.id), 'session').actions).find(([key]) => key === action.actionId)?.[1]), undefined);
   // So the room is exactly as consistent as before: she is still a member, not revoked, and can still signal.
   a.ws.send(JSON.stringify({ type: 'signal', to: B.id, data: { probe: 'still here' } }));
   assert.deepEqual((await until(b, 'signal')).data, { probe: 'still here' });
   b.ws.send(JSON.stringify({ type: 'voice-state', enabled: false, muted: true }));
   const roster = await until(b, 'presence');
   assert.equal(roster.members.find((m) => m.id === A.id)?.enabled, true);
-  assert.equal((await database(f)).sessions[A.cookie.slice(4)].cities.lagos.state.location, 'park');
+  assert.equal((await lifeOnDisk(f, A)).location, 'park');
 
   // The disk is back. The SAME request is applied now — once.
   disk.fail = null;
@@ -75,7 +101,7 @@ test('a departure whose write fails did not happen: 503, the life and the room a
   assert.equal((await until(a, 'error')).code, 'join_required');
   const again = await post(f, '/api/action', action, A);
   assert.deepEqual([again.status, again.duplicate, again.state.cash], [200, true, before.cash - 150], 'a third send is a repeat, not a second trip');
-  assert.equal((await database(f)).sessions[A.cookie.slice(4)].cities.lagos.state.cash, before.cash - 150);
+  assert.equal((await lifeOnDisk(f, A)).cash, before.cash - 150);
   assert.equal(f.logs.filter((line) => /Store write failed/.test(line)).length, 1, 'the outage was logged once');
   assert.ok(f.logs.every((line) => !line.includes(A.cookie.slice(4))), 'no log line carries a session secret');
 });
@@ -101,7 +127,7 @@ test('an outcome that could not be saved is not shown, and a restart after the f
   const again = await createServer({ dataDir: f.dir, now: f.now, sessionTtlMs: 2592000000 });
   again.listen(0, '127.0.0.1'); await once(again, 'listening');
   t.after(async () => { again.closeAllConnections(); await new Promise((resolve) => again.close(resolve)); });
-  const call = async (path, body) => { const res = await fetch(`http://127.0.0.1:${again.address().port}${path}`, { method: body ? 'POST' : 'GET', headers: { Cookie: A.cookie, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined }); return { status: res.status, ...(await res.json()) }; };
+  const call = async (path: string, body?: object): Promise<Reply> => { const res = await fetch(`http://127.0.0.1:${(again.address() as AddressInfo).port}${path}`, { method: body ? 'POST' : 'GET', headers: { Cookie: A.cookie, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined }); return { status: res.status, ...(await res.json()) }; };
   const arrived = await call('/api/life?city=lagos');
   assert.deepEqual([arrived.status, arrived.state.location, arrived.state.cash, arrived.storage], [200, 'library', start.cash - 150, undefined], 'the acknowledged trip is there; its settlement is computed again and saved');
   const replay = await call('/api/action', trip);
@@ -115,14 +141,14 @@ test('a gift whose write fails moves no money; the same client id then moves it 
   const f = await fixture(t, { disk });
   const [ada, bola] = await friends(f, ['Ada', 'Bola']);
   const gift = { to: bola.id, amount: 500, cityId: 'lagos', clientId: f.id() };
-  const balances = async () => { await get(f, '/api/social/me', bola); return [(await life(f, ada)).cash, (await life(f, bola)).cash]; };
+  const balances = async (): Promise<[number, number]> => { await get(f, '/api/social/me', bola); return [(await life(f, ada)).cash, (await life(f, bola)).cash]; };
   const before = await balances();
   disk.fail = 'ENOSPC';
   const failed = await post(f, '/api/social/transfers', gift, ada);
   assert.deepEqual([failed.status, failed.error], [503, 'storage_unavailable']);
   disk.fail = null;
   assert.deepEqual(await balances(), before, 'no debit, no credit, nothing waiting');
-  assert.equal((await database(f)).social.pending?.[bola.id], undefined);
+  assert.equal(must((await database(f)).social, 'social collection').pending[bola.id], undefined);
   const [one, two] = await Promise.all([post(f, '/api/social/transfers', gift, ada), post(f, '/api/social/transfers', gift, ada)]);
   assert.deepEqual([one.ok, two.ok, [one.duplicate, two.duplicate].filter(Boolean).length], [true, true, 1], 'two copies racing: one applied, one repeat');
   assert.deepEqual(await balances(), [before[0] - 500, before[1] + 500]);
@@ -132,7 +158,7 @@ test('caches follow the file: a block, a mute and a house visit that could not b
   const disk = flakyDisk();
   const f = await fixture(t, { disk, moderatorToken: TOKEN, heartbeatMs: 60000 });
   const [ada, bola] = await friends(f, ['Ada', 'Bola']);
-  const mod = async (path, body) => { const res = await fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer ${TOKEN}`, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined }); return { status: res.status, ...(await res.json()) }; };
+  const mod = async (path: string, body?: object): Promise<Reply> => { const res = await fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer ${TOKEN}`, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined }); return { status: res.status, ...(await res.json()) }; };
   const a = await f.joinRoom(ada), b = await f.joinRoom(bola);
   await until(a, (m) => m.type === 'presence' && m.members.length === 2);
 

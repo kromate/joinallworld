@@ -100,8 +100,10 @@ test('civic routes: registered under /api/civic, guarded by the host, and strict
   assert.equal((await post('/api/civic/prefs', { richList: 'no' }, ada)).error, 'invalid_prefs');
   assert.equal((await post('/api/civic/ads/remove', { cityId: 'lagos', kind: 'image', slot: 'x' }, ada)).error, 'invalid_slot');
   // The paid civic actions exist as real action types but only complete through these routes.
-  for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout']) {
-    const bare = await f.action(ada.cookie, { type, internal: true, payload: { kind: 'sea', slot: 'sea-5-5', grant: 'civic.server-grant', internal: true } });
+  for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout'] as const) {
+    // `internal` is not an ActionRequest field: it is sent anyway, to show that a client cannot set it.
+    const smuggled = { type, internal: true, payload: { kind: 'sea', slot: 'sea-5-5', grant: 'civic.server-grant', internal: true } };
+    const bare = await f.action(ada.cookie, smuggled);
     assert.equal(bare.ok, false); assert.equal(bare.code, 'server_only', type); assert.equal(bare.state.cash, 5000);
   }
   assert.equal((await f.action(ada.cookie, { type: 'civic.refresh' })).code, 'refreshed');
@@ -119,7 +121,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   let gov = await get<GovResponse>('/api/civic/gov?city=lagos', ada);
   assert.equal(gov.phase, 'voting'); assert.equal(gov.you?.run.ok, false); assert.equal(codeOf(gov.you?.run), 'nominations_closed');
   assert.equal(gov.you?.vote.ok, false); assert.match(gov.you?.vote.ok === false ? gov.you.vote.reason : '', /Nobody is on the ballot/);
-  assert.deepEqual(gov.you?.run.checks ?? [].map((item) => [item.id, item.met]), [['days', false], ['fee', true], ['work', false]], 'eligibility is stated up front');
+  assert.deepEqual((gov.you?.run.checks ?? []).map((item) => [item.id, item.met]), [['days', false], ['fee', true], ['work', false]], 'eligibility is stated up front');
   assert.equal(gov.rules.filingFee, 2000); assert.equal(gov.rules.pollingVenue, 'polling-unit', 'the merged city has a Polling Unit, so votes are cast there');
   const tooEarly = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all' }, ada);
   assert.equal(tooEarly.ok, false); assert.equal(tooEarly.code, 'nominations_closed'); assert.match(reasonOf(tooEarly), /Monday/); assert.equal(tooEarly.state.cash, 5000);
@@ -171,7 +173,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   for (const device of [ada, bola]) assert.equal((await f.action(device.cookie, { type: 'travel', payload: { id: 'polling-unit', mode: 'trek' } })).ok, true);
   assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: bola.id }, ada)).code, 'wrong_place', 'still on the road');
   wait(20000);
-  assert.equal((await get<GovResponse>('/api/civic/gov?city=lagos', ada)).you.vote.ok, true);
+  assert.equal((await get<GovResponse>('/api/civic/gov?city=lagos', ada)).you?.vote.ok, true);
   assert.equal((await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Late entry' }, chidi)).code, 'nominations_closed');
   assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, eve)).code, 'too_new');
   for (const candidate of [chidi.id, 'nobody', '__proto__', 5, null, undefined]) assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate }, chidi)).code, 'unknown_candidate', String(candidate));
@@ -299,7 +301,7 @@ test('daily gem hunt: found through play, real city counter, prize paid through 
       wait(20000);
       state = await life(ada);
       assert.equal(state.location, gem.venue);
-      if (huntOf(state).gems[index].found) continue;
+      if (huntOf(state).gems[index]?.found) continue;
     }
     if (gem.kind === 'activity') {
       const stuck = await f.action(ada.cookie, { type: 'civic.hunt-search' });
@@ -315,7 +317,7 @@ test('daily gem hunt: found through play, real city counter, prize paid through 
       assert.equal(search.ok, true, JSON.stringify(search.reason)); assert.equal(search.code, 'found');
     }
     state = await life(ada);
-    assert.equal(huntOf(state).gems[index].found, true, JSON.stringify(gem));
+    assert.equal(huntOf(state).gems[index]?.found, true, JSON.stringify(gem));
     assert.equal(huntOf(state).day, day, 'all three were reachable within one Lagos day');
   }
   const done = await f.action(ada.cookie, { type: 'civic.hunt-search' });
@@ -370,7 +372,7 @@ test('club radio: bought in a club with in-game naira, queued on server time, re
   assert.deepEqual(radio.queue.map((entry) => [entry.title, entry.mine, entry.startsAt]), [['Unavailable', true, queued.entry.endsAt]]);
   assert.equal(radio.usedToday, 1); assert.equal(radio.price, 500);
   const pulse = await get<PulseResponse>('/api/civic/pulse?city=lagos', bola);
-  assert.equal(pulse.radio.playing?.title, 'Water', 'the pulse carries the banner for the club you are standing in');
+  assert.equal(pulse.radio?.playing?.title, 'Water', 'the pulse carries the banner for the club you are standing in');
   wait(61000);
   radio = await get<RadioResponse>('/api/civic/radio?city=lagos&venue=library');
   assert.equal(radio.playing?.title, 'Unavailable'); assert.deepEqual(radio.queue, []);

@@ -22,8 +22,30 @@
  *       },
  *       open(ws) {},    // optional: a socket connected (already authenticated)
  *       close(ws) {},   // optional: a socket closed
+ *       lifecycle: {},  // optional: see ROOM LIFECYCLE below
  *     };
  *   }
+ *
+ * ROOM LIFECYCLE — what the host tells socket modules about, outside socket messages
+ *   The HTTP routes change things a room depends on: a player's life moves, a name changes, a
+ *   voice configuration is asked for. The host reaches socket modules for those through four
+ *   functions on ctx.core, and THIS REGISTRY defines all four, always — whichever modules are
+ *   registered, including none. A module takes part by returning `lifecycle` hooks; the foundation
+ *   room module (rooms.js) is an ordinary participant, so a module that replaces or extends room
+ *   handling receives exactly the calls the foundation's own rooms do:
+ *     validateMemberships(secret, cityId, state, publicId)   a life was settled or acted on and
+ *                              committed: drop sockets whose room it no longer allows. May be async.
+ *     revalidate(publicId)     re-check that player's sockets against the STORED lives, whatever
+ *                              just happened (the route host calls it in a `finally`, so it also
+ *                              runs when a request failed after changing something). May be async.
+ *     roomStillValid(ws, db, session, cityId, state) → boolean   would this socket's room still be
+ *                              granted? Asked before voice configuration is handed out. The answer
+ *                              is true only if some module says so: with no room module registered
+ *                              nobody is in a room, so it is false.
+ *     refreshNames(session)    a session was created or renamed. The registry itself first brings
+ *                              every socket of that player up to date (ws.session.name and the
+ *                              renewed expiry); the hook is for re-announcing presence.
+ *   Without any hook the calls are safe no-ops, so core routes work under any set of modules.
  *
  * WHAT A HANDLER GETS
  *   ws.session   { id, name } — the sender's PUBLIC identity (id === session.publicId)
@@ -56,11 +78,17 @@ import social from './social.js';
 
 export const WS_MODULES = [rooms, social];
 
-/** Build the dispatch table. Returns { messages: Map<type, { room, handle }>, open(ws), close(ws) }. */
+const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'];
+
+/**
+ * Build the dispatch table. Returns { messages: Map<type, { room, handle }>, open(ws), close(ws) }
+ * and installs the room lifecycle functions on ctx.core (see ROOM LIFECYCLE above).
+ */
 export function buildSocketHandlers(ctx, modules = WS_MODULES) {
   const messages = new Map();
   const opens = [];
   const closes = [];
+  const hooks = Object.fromEntries(LIFECYCLE.map(name => [name, []]));
   for (const module of modules) {
     const built = module(ctx) || {};
     for (const [type, entry] of Object.entries(built.messages || {})) {
@@ -71,6 +99,33 @@ export function buildSocketHandlers(ctx, modules = WS_MODULES) {
     }
     if (built.open) opens.push(built.open);
     if (built.close) closes.push(built.close);
+    for (const [name, hook] of Object.entries(built.lifecycle || {})) {
+      if (!LIFECYCLE.includes(name) || typeof hook !== 'function') throw new Error(`Invalid socket lifecycle hook: ${name}`);
+      hooks[name].push(hook);
+    }
+  }
+  const core = ctx.core;
+  if (core && typeof core === 'object') {
+    const everySocket = () => (typeof core.sockets === 'function' ? core.sockets() : []);
+    // One failing module must not stop the others from revoking: every hook runs, then the first error is raised.
+    const runAll = async (name, args) => {
+      let failure = null;
+      for (const hook of hooks[name]) { try { await hook(...args); } catch (error) { failure ||= error; } }
+      if (failure) throw failure;
+    };
+    core.validateMemberships = (...args) => runAll('validateMemberships', args);
+    core.revalidate = (...args) => runAll('revalidate', args);
+    core.roomStillValid = (...args) => hooks.roomStillValid.some(hook => hook(...args) === true);
+    core.refreshNames = (session) => {
+      if (!session || typeof session.id !== 'string') return;
+      const renewed = typeof ctx.now === 'function' ? ctx.now() : null;
+      for (const ws of everySocket()) {
+        if (ws.session?.id !== session.id) continue;
+        ws.session.name = session.name;
+        if (renewed !== null && Number.isFinite(ctx.config?.sessionTtlMs)) { ws.expiresAt = renewed + ctx.config.sessionTtlMs; ws.lastSessionRenewedAt = renewed; }
+      }
+      for (const hook of hooks.refreshNames) { try { hook(session); } catch (error) { console.error('Socket refreshNames hook failed:', error.message); } }
+    };
   }
   return {
     messages,

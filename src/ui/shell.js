@@ -359,6 +359,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       <button data-menu="locate"><span aria-hidden="true">📍</span><span><b>Use my location</b><small>Find the nearest city</small></span></button>
       <button data-community><span aria-hidden="true">💬</span><span><b>Community</b><small>${atHome ? 'Home is private — visit a venue to chat' : 'People, chat and voice at this venue'}</small></span></button>
       <button data-open="help"><span aria-hidden="true">❓</span><span><b>How to play</b><small>Tips and keyboard shortcuts</small></span></button>
+      <a class="legacy-character-link" href="https://joinallworld.com/old-character.html"><span aria-hidden="true">🏠</span><span><b>Your original Allworld character</b><small>Open the original world · separate save</small></span></a>
       <p class="life-net ${net.error ? 'is-error' : ''}" role="status">${esc(net.text || '')}</p>${view.connected ? '' : '<button class="life-menu-retry" data-menu="reconnect">Reconnect</button>'}`;
   }
 

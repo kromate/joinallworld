@@ -66,9 +66,9 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--c-nig
 .life-tray{display:contents}
 .life-menu{display:none}
 .is-tray-open .life-menu{display:grid;gap:2px;position:absolute;top:calc(var(--tap) + 20px);left:0;right:0;z-index:5;padding:8px;background:var(--c-surface-solid);border-radius:20px;box-shadow:var(--shadow);pointer-events:auto}
-.life-menu>button{display:flex;align-items:center;gap:10px;min-height:var(--tap);padding:6px 8px;border-radius:14px;background:none;text-align:left}
-.life-menu>button:hover{background:var(--c-fill)}
-.life-menu>button>span:first-child{flex:none;width:30px;text-align:center;font-size:18px}
+.life-menu>button,.life-menu>a{display:flex;align-items:center;gap:10px;min-height:var(--tap);padding:6px 8px;border-radius:14px;background:none;text-align:left}
+.life-menu>button:hover,.life-menu>a:hover{background:var(--c-fill)}
+.life-menu>button>span:first-child,.life-menu>a>span:first-child{flex:none;width:30px;text-align:center;font-size:18px}
 .life-menu b{display:block;font-weight:600}
 .life-menu small{display:block;font-size:11px;color:var(--c-muted)}
 .life-brand{display:flex;align-items:baseline;gap:8px;padding:4px 8px 6px}
@@ -330,3 +330,7 @@ kbd{display:inline-block;min-width:26px;text-align:center;border:1px solid #cfd4
   .life-delta.is-up,.life-delta.is-down{animation:life-delta-still 3.4s steps(1,end)}
   @keyframes life-delta-still{0%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
 }
+
+.legacy-character-link{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.life-menu>a{font:inherit;text-decoration:none}
+.legacy-character-link:focus-visible{outline:3px solid var(--c-green-dark);outline-offset:3px}

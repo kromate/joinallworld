@@ -4,6 +4,7 @@
  * Unchanged behaviour: a nickname identifies a browser, not a person.
  */
 import { esc } from '../dom.js';
+const oldCharacter = '<p><a class="legacy-character-link" href="https://joinallworld.com/old-character.html">Open your original Allworld character</a></p><p>Your original world and this city life have separate saves.</p>';
 
 export default {
   id: 'session', title: 'Your city life', icon: '🌍', placement: 'modal', role: 'session-gate', live: false,
@@ -13,9 +14,9 @@ export default {
   },
   render(state, view) {
     if (view.params?.reason === 'expired') {
-      return '<h3>Your device session has expired</h3><p>Your saved preview is still on this browser. The server has retained the old life, but recovery is not available yet. Starting a new life creates a separate identity.</p><button class="ui-button" data-close>Keep my saved preview</button> <button class="ui-button is-primary" data-session-new>Start a separate new life</button>';
+      return '<h3>Your device session has expired</h3><p>Your saved preview is still on this browser. The server has retained the old life, but recovery is not available yet. Starting a new life creates a separate identity.</p><button class="ui-button" data-close>Keep my saved preview</button> <button class="ui-button is-primary" data-session-new>Start a separate new life</button>' + oldCharacter;
     }
-    return `<h3>Start your city life</h3><p>Choose a nickname for this device. This is not a verified account.</p><form data-session-form><label>Your nickname <input name="name" minlength="3" maxlength="24" required autocomplete="nickname" value="${esc(view.name === 'New Lagosian' ? '' : view.name)}"></label><button class="ui-button is-primary">Start life</button></form>`;
+    return `<h3>Start your city life</h3><p>Choose a nickname for this device. This is not a verified account.</p><form data-session-form><label>Your nickname <input name="name" minlength="3" maxlength="24" required autocomplete="nickname" value="${esc(view.name === 'New Lagosian' ? '' : view.name)}"></label><button class="ui-button is-primary">Start life</button></form>${oldCharacter}`;
   },
   bind(root, api) {
     const start = (name) => { api.close(); window.dispatchEvent(new CustomEvent('jaw:start-life', { detail: { name } })); };

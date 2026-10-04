@@ -29,11 +29,11 @@
  *   automatically at maturity on server time. Closing early returns the principal only. At most
  *   DEPOSIT_MAX_OPEN deposits and DEPOSIT_TOTAL_CAP locked at once, so interest is bounded.
  *
- * COMMANDS (sent as the 'apply-job' action with payload.do — see systems/career.js)
- *   { do: 'pay-loan', mode: 'week' | 'all' }
- *   { do: 'pay-rent' }                              pay rent arrears now
- *   { do: 'open-deposit', amount, term }            term: a DEPOSIT_TERMS id
- *   { do: 'close-deposit', id }                     early withdrawal, principal only
+ * ACTIONS
+ *   'economy.pay-loan'       { mode: 'week' | 'all' }
+ *   'economy.pay-rent'       {}                      pay rent arrears now
+ *   'economy.open-deposit'   { amount, term }        term: a DEPOSIT_TERMS id
+ *   'economy.close-deposit'  { id }                  early withdrawal, principal only
  *
  * STATE  state.economy = {
  *   billedWeek   index of the last Saturday settled | null (nothing to bill yet)
@@ -46,7 +46,6 @@
  *
  * LISTENS  'life.started' { house, lottery }   sets the rent house and, for the loan outcome, the loan
  *          'house.moved'  { id }               changes the rent from the next Saturday
- *          'economy.command'                   see COMMANDS
  * EMITS    'rent.due' { amount, house } · 'rent.paid' { amount, house, arrears } ·
  *          'rent.missed' { amount, house, arrears, missed } · 'loan.paid' { amount, left } ·
  *          'loan.missed' { amount, left } · 'deposit.opened' { id, amount, term } ·
@@ -157,8 +156,8 @@ function bill(state, week, ctx) {
   }
 }
 
-const commands = {
-  'pay-loan'(state, payload, ctx) {
+const actions = {
+  'economy.pay-loan'(state, payload, ctx) {
     const loan = state.economy.loan;
     if (!loan || loan.left <= 0) return fail(state, 'no_loan', 'You have no loan balance to pay.');
     if (payload.mode !== 'week' && payload.mode !== 'all') return fail(state, 'invalid_payment', 'Choose one instalment or the full balance.');
@@ -173,7 +172,7 @@ const commands = {
     emit(state, 'loan.paid', { amount, left: loan.left }, ctx);
     return ok(state, loan.left > 0 ? 'loan_paid' : 'loan_cleared');
   },
-  'pay-rent'(state, payload, ctx) {
+  'economy.pay-rent'(state, payload, ctx) {
     const rent = state.economy.rent, house = houseOf(rent.house);
     if (!house || rent.arrears <= 0) return fail(state, 'nothing_due', 'No rent is overdue. Rent is collected automatically every Saturday.');
     const amount = rent.arrears;
@@ -187,7 +186,7 @@ const commands = {
     emit(state, 'rent.paid', { amount, house: house.id, arrears: 0 }, ctx);
     return ok(state, 'rent_paid');
   },
-  'open-deposit'(state, payload, ctx) {
+  'economy.open-deposit'(state, payload, ctx) {
     const economy = state.economy;
     const term = typeof payload.term === 'string' && Object.hasOwn(DEPOSIT_TERMS, payload.term) ? DEPOSIT_TERMS[payload.term] : null;
     if (!term) return fail(state, 'invalid_term', 'Choose a 1, 3 or 7 day term.');
@@ -210,7 +209,7 @@ const commands = {
     emit(state, 'deposit.opened', { id: deposit.id, amount, term: term.id }, ctx);
     return ok(state, 'deposit_opened');
   },
-  'close-deposit'(state, payload, ctx) {
+  'economy.close-deposit'(state, payload, ctx) {
     const economy = state.economy;
     const index = economy.deposits.findIndex((deposit) => deposit.id === payload.id);
     if (index < 0) return fail(state, 'no_deposit', 'That deposit is not open. It may already have been paid out.');
@@ -271,7 +270,7 @@ export default {
       seq: safeCount(saved.seq) ? saved.seq : 0,
     };
   },
-  actions: {},
+  actions,
   on: {
     'life.started'(state, data, ctx) {
       const economy = state.economy;
@@ -290,10 +289,6 @@ export default {
       if (!house) return;
       state.economy.rent.house = house.id;
       startBilling(state, ctx);
-    },
-    'economy.command'(state, data, ctx) {
-      if (!isRecord(data) || !isRecord(data.reply) || typeof data.name !== 'string' || !Object.hasOwn(commands, data.name)) return;
-      data.reply.result = commands[data.name](state, isRecord(data.payload) ? data.payload : {}, ctx);
     },
   },
   advance(state, dt, ctx) {

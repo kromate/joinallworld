@@ -3,8 +3,8 @@
  * Bank app: balance, what is due each Saturday, the rent card, the loan card, savings and the
  * full recent transaction list (view.wallet.ledger, newest first) so every change is explained.
  *
- * Everything shown comes from view.economy (systems/economy.js) and view.career. Payments go
- * through the 'apply-job' action with { do: 'pay-loan', mode } or { do: 'pay-rent' }.
+ * Everything shown comes from view.economy (systems/economy.js) and view.career. Payments are the
+ * 'economy.pay-loan' { mode } and 'economy.pay-rent' actions.
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './bank.css';
@@ -13,21 +13,21 @@ import { formatClock } from '../../game/clock.js';
 
 const OFFLINE = 'Offline: read-only until you reconnect.';
 
-function pay(label, payload, blocked, primary) {
-  return `<button class="ui-button ${primary ? 'is-primary' : ''}" data-action="apply-job" data-payload="${json(payload)}" ${blocked ? `disabled title="${esc(blocked)}"` : ''}>${esc(label)}</button>`;
+function pay(label, action, payload, blocked, primary) {
+  return `<button class="ui-button ${primary ? 'is-primary' : ''}" data-action="${esc(action)}" data-payload="${json(payload)}" ${blocked ? `disabled title="${esc(blocked)}"` : ''}>${esc(label)}</button>`;
 }
 
 function rentCard(rent, offline) {
   if (!rent) return '<section class="bank-card"><h3>Rent</h3><p class="bank-note">No rent is set up: you have not moved into a rented home yet. Once you do, rent is collected here every Saturday.</p></section>';
   const blocked = offline || rent.payBlocked;
-  return `<section class="bank-card ${rent.arrears > 0 ? 'is-warning' : ''}" aria-label="Rent"><h3>Rent · ${esc(rent.label)} <b>${money(rent.amount)}/week</b></h3><p>Next due: <strong>${esc(rent.nextDueLabel)}</strong></p>${rent.warning ? `<p class="bank-warning" role="alert">⚠ ${esc(rent.warning)}</p>` : '<p>You are up to date.</p>'}${rent.arrears > 0 ? `<div class="bank-actions">${pay(`Pay ${money(rent.arrears)} rent now`, { do: 'pay-rent' }, blocked, true)}</div>${blocked ? `<p class="bank-why">${esc(blocked)}</p>` : ''}` : ''}<p class="bank-note">${esc(rent.rule)} Missed-rent rules are original beta rules.</p></section>`;
+  return `<section class="bank-card ${rent.arrears > 0 ? 'is-warning' : ''}" aria-label="Rent"><h3>Rent · ${esc(rent.label)} <b>${money(rent.amount)}/week</b></h3><p>Next due: <strong>${esc(rent.nextDueLabel)}</strong></p>${rent.warning ? `<p class="bank-warning" role="alert">⚠ ${esc(rent.warning)}</p>` : '<p>You are up to date.</p>'}${rent.arrears > 0 ? `<div class="bank-actions">${pay(`Pay ${money(rent.arrears)} rent now`, 'economy.pay-rent', {}, blocked, true)}</div>${blocked ? `<p class="bank-why">${esc(blocked)}</p>` : ''}` : ''}<p class="bank-note">${esc(rent.rule)} Missed-rent rules are original beta rules.</p></section>`;
 }
 
 function loanCard(loan, offline) {
   if (!loan) return '';
   const week = offline || loan.weekBlocked, all = offline || loan.allBlocked;
   const reasons = [...new Set([week, all].filter(Boolean))];
-  return `<section class="bank-card" aria-label="Loan"><h3>Starting loan <b>${money(loan.left)} left</b></h3><p>${money(loan.weekly)}/week · ${money(loan.paid)} of ${money(loan.total)} repaid${loan.fees ? ` (includes ${esc(loan.fees)} late fee${loan.fees > 1 ? 's' : ''})` : ''}</p><div class="bank-bar" role="meter" aria-label="Loan repaid" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(loan.progress * 100)}"><i style="width:${Math.round(loan.progress * 100)}%"></i></div><p>${esc(loan.nextCollection)}</p>${loan.cleared ? '' : `<div class="bank-actions">${pay(`Pay ${money(loan.instalment)} now`, { do: 'pay-loan', mode: 'week' }, week, true)}${pay('Pay it all off', { do: 'pay-loan', mode: 'all' }, all, false)}</div>${reasons.map((reason) => `<p class="bank-why">${esc(reason)}</p>`).join('')}<p class="bank-note">Paying one instalment now covers the next Saturday collection. ${esc(loan.rule)}</p>`}</section>`;
+  return `<section class="bank-card" aria-label="Loan"><h3>Starting loan <b>${money(loan.left)} left</b></h3><p>${money(loan.weekly)}/week · ${money(loan.paid)} of ${money(loan.total)} repaid${loan.fees ? ` (includes ${esc(loan.fees)} late fee${loan.fees > 1 ? 's' : ''})` : ''}</p><div class="bank-bar" role="meter" aria-label="Loan repaid" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(loan.progress * 100)}"><i style="width:${Math.round(loan.progress * 100)}%"></i></div><p>${esc(loan.nextCollection)}</p>${loan.cleared ? '' : `<div class="bank-actions">${pay(`Pay ${money(loan.instalment)} now`, 'economy.pay-loan', { mode: 'week' }, week, true)}${pay('Pay it all off', 'economy.pay-loan', { mode: 'all' }, all, false)}</div>${reasons.map((reason) => `<p class="bank-why">${esc(reason)}</p>`).join('')}<p class="bank-note">Paying one instalment now covers the next Saturday collection. ${esc(loan.rule)}</p>`}</section>`;
 }
 
 export default {

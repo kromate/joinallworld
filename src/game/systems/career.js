@@ -18,21 +18,19 @@
  *   - "Go automatically" (on by default): when a shift can be worked and the minimum needs are
  *     met, the server starts a free, cancellable commute to the workplace — at most once per
  *     Lagos day, and never while another timed action is running.
- *   - Switching tracks restarts at level 1 and 50% performance; the server refuses a switch
- *     that was not confirmed, so no client can skip the warning.
+ *   - Switching tracks restarts at level 1 and 50% performance. 'apply-job' never switches: a
+ *     switch is its own action, so no client can skip the warning by accident.
+ *   - One job at a time: taking a career job replaces the starter job and vice versa, so the
+ *     starter job's unlimited shifts can never be worked alongside a career.
  *   - The starter Community helper job keeps its original rules: any time, no daily limit, no
  *     ladder, no automatic commute.
  *
  * ACTIONS
- *   'apply-job' { id }                      apply (no job yet)
- *   'apply-job' { id, confirm: true }       switch from another job
- *   'apply-job' { do: '<command>', ... }    every other career and money command. The foundation
- *       pins the list of action types, so sub-commands travel inside this one action:
- *         { do: 'quit-job' }                leave the current job
- *         { do: 'set-auto-go', on: bool }   toggle "Go automatically"
- *       Commands this system does not know are offered to the rest of the engine as the
- *       'economy.command' event ({ name, payload, reply }); the handler sets reply.result.
- *       systems/economy.js answers 'pay-loan', 'pay-rent', 'open-deposit' and 'close-deposit'.
+ *   'apply-job'      { id }          apply while unemployed. Holding another job it is refused with
+ *                                    'confirm_switch'; nothing else is accepted through its payload.
+ *   'career.switch'  { id }          leave the current job for another (the confirmed switch)
+ *   'career.quit'    {}              leave the current job
+ *   'career.auto'    { on: bool }    toggle "Go automatically"
  *
  * STATE
  *   job              legacy top-level: job id | null (activities read it for requiresJob)
@@ -52,7 +50,6 @@
  *   'job.quit'        { job }
  *   'shift.completed' { job, activity, pay, level }   level and pay are those the shift was worked at
  *   'promotion'       { job, level, role }
- *   'economy.command' { name, payload, reply }        see ACTIONS
  * MODIFIERS ASKED
  *   'career.performance'  data { job, level }  base PERFORMANCE_PER_SHIFT — performance gained by a shift
  * MODIFIERS CONTRIBUTED
@@ -170,7 +167,7 @@ function maybeCommute(state, ctx) {
   return true;
 }
 
-function apply(state, payload, ctx) {
+function apply(state, payload, ctx, switching = false) {
   if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before applying.');
   const job = jobOf(payload?.id);
   if (!job) return fail(state, 'invalid_job', 'Choose a job from the Jobs list.');
@@ -180,7 +177,8 @@ function apply(state, payload, ctx) {
   }
   if (!workplaceOpen(job)) return fail(state, 'workplace_unavailable', `${job.label} is based at ${job.workplaceName}, which is not open in this build yet. Choose a track whose workplace is on the map.`);
   const old = jobOf(state.job);
-  if (old && payload.confirm !== true) {
+  if (switching && !old) return fail(state, 'no_job', 'You have no job to switch from. Use Apply instead.');
+  if (old && !switching) {
     return fail(state, 'confirm_switch', `Switching to ${job.label} ends your ${old.label} job: you start ${job.track ? `as ${job.ladder[0].role} at ${START_PERFORMANCE}% performance` : 'in the starter job, which has no ladder,'} and lose your ${old.label} level and performance. Confirm the switch to continue.`);
   }
   if (old) emit(state, 'job.quit', { job: old.id }, ctx);
@@ -197,32 +195,22 @@ function apply(state, payload, ctx) {
   return ok(state, old ? 'switched' : 'applied');
 }
 
-const commands = {
-  'quit-job'(state, payload, ctx) {
-    const job = jobOf(state.job);
-    if (!job) return fail(state, 'no_job', 'You do not have a job to quit.');
-    if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before quitting.');
-    state.job = null;
-    Object.assign(state.career, { level: 1, performance: 0, shifts: 0, shiftStartDay: null });
-    state.message = `You quit your ${job.label} job. Your level and performance in it are gone; apply again any time to start over.`;
-    emit(state, 'job.quit', { job: job.id }, ctx);
-    return ok(state, 'quit');
-  },
-  'set-auto-go'(state, payload) {
-    if (typeof payload.on !== 'boolean') return fail(state, 'invalid_setting', 'Choose on or off for Go automatically.');
-    state.career.auto = payload.on;
-    state.message = payload.on ? 'Go automatically is on: you will head to work when a shift is available.' : 'Go automatically is off: use Go to work when you are ready.';
-    return ok(state, 'auto_set');
-  },
-};
+function quit(state, payload, ctx) {
+  const job = jobOf(state.job);
+  if (!job) return fail(state, 'no_job', 'You do not have a job to quit.');
+  if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before quitting.');
+  state.job = null;
+  Object.assign(state.career, { level: 1, performance: 0, shifts: 0, shiftStartDay: null });
+  state.message = `You quit your ${job.label} job. Your level and performance in it are gone; apply again any time to start over.`;
+  emit(state, 'job.quit', { job: job.id }, ctx);
+  return ok(state, 'quit');
+}
 
-function command(state, payload, ctx) {
-  const name = payload.do;
-  if (typeof name !== 'string') return fail(state, 'invalid_command', 'That request is not recognised.');
-  if (Object.hasOwn(commands, name)) return commands[name](state, payload, ctx);
-  const reply = { result: null };
-  emit(state, 'economy.command', { name, payload, reply }, ctx);
-  return reply.result || fail(state, 'invalid_command', 'That request is not recognised.');
+function setAuto(state, payload) {
+  if (typeof payload?.on !== 'boolean') return fail(state, 'invalid_setting', 'Choose on or off for Go automatically.');
+  state.career.auto = payload.on;
+  state.message = payload.on ? 'Go automatically is on: you will head to work when a shift is available.' : 'Go automatically is off: use Go to work when you are ready.';
+  return ok(state, 'auto_set');
 }
 
 /** The player's next step, in one sentence, with where to send them. */
@@ -268,7 +256,10 @@ export default {
     state.career = career;
   },
   actions: {
-    'apply-job': (state, payload, ctx) => (isRecord(payload) && payload.do !== undefined ? command(state, payload, ctx) : apply(state, payload, ctx)),
+    'apply-job': (state, payload, ctx) => apply(state, payload, ctx),
+    'career.switch': (state, payload, ctx) => apply(state, payload, ctx, true),
+    'career.quit': quit,
+    'career.auto': setAuto,
   },
   activities: Object.values(JOBS).filter((job) => job.shift && workplaceOpen(job))
     .map((job) => ({ ...job.shift, requiresJob: job.id, where: { ...job.workplace, spotLabel: 'Work', spotIcon: '💼' } })),

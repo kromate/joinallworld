@@ -5,8 +5,7 @@
  * maturity on server time. Limits and rates come from view.economy.savings (systems/economy.js).
  * No gambling and no random outcome.
  *
- * Commands go through the 'apply-job' action: { do: 'open-deposit', amount, term } and
- * { do: 'close-deposit', id }. The panel contract is at the top of src/ui/shell.js.
+ * Actions: 'economy.open-deposit' { amount, term } and 'economy.close-deposit' { id }. The panel contract is at the top of src/ui/shell.js.
  */
 import './invest.css';
 import { esc, money, json } from '../dom.js';
@@ -25,10 +24,10 @@ export default {
     const pick = savings.amounts.find((item) => item.amount === chosen) || savings.amounts[0];
     const blocked = offline || pick.blocked;
     const amounts = savings.amounts.map((item) => `<button aria-pressed="${item.amount === pick.amount}" data-invest-amount="${esc(item.amount)}">${money(item.amount)}</button>`).join('');
-    const terms = savings.terms.map((term) => `<button class="ui-button is-primary" data-action="apply-job" data-payload="${json({ do: 'open-deposit', amount: pick.amount, term: term.id })}" ${blocked ? `disabled title="${esc(blocked)}"` : ''}><span>Lock for ${esc(term.label)} · ${esc(term.percent)}%</span><span>get ${money(pick.payouts[term.id])}</span></button>`).join('');
+    const terms = savings.terms.map((term) => `<button class="ui-button is-primary" data-action="economy.open-deposit" data-payload="${json({ amount: pick.amount, term: term.id })}" ${blocked ? `disabled title="${esc(blocked)}"` : ''}><span>Lock for ${esc(term.label)} · ${esc(term.percent)}%</span><span>get ${money(pick.payouts[term.id])}</span></button>`).join('');
     const open = economy.deposits.map((deposit) => {
       const confirm = closing === deposit.id
-        ? `<div class="invest-confirm"><p>Close early? You get your ${money(deposit.amount)} back now and give up the ${money(deposit.interest)} interest.</p><button class="ui-button" data-action="apply-job" data-payload="${json({ do: 'close-deposit', id: deposit.id })}" ${offline ? `disabled title="${esc(offline)}"` : ''}>Yes, close without interest</button><button class="ui-button is-primary" data-invest-close="">Keep it</button></div>`
+        ? `<div class="invest-confirm"><p>Close early? You get your ${money(deposit.amount)} back now and give up the ${money(deposit.interest)} interest.</p><button class="ui-button" data-action="economy.close-deposit" data-payload="${json({ id: deposit.id })}" ${offline ? `disabled title="${esc(offline)}"` : ''}>Yes, close without interest</button><button class="ui-button is-primary" data-invest-close="">Keep it</button></div>`
         : `<button class="ui-button" data-invest-close="${esc(deposit.id)}">Close early (no interest)</button>`;
       return `<section class="invest-card"><div class="invest-row"><h3>${money(deposit.amount)} · ${esc(deposit.termLabel)}</h3><b>+${money(deposit.interest)}</b></div><p>Pays ${money(deposit.payout)} into your balance automatically on ${esc(deposit.maturesLabel)} (${esc(formatClock(deposit.maturesAt))}).</p>${confirm}</section>`;
     }).join('');

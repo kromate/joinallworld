@@ -28,6 +28,8 @@ registerSystem({
 });
 const events = (name) => seen.filter(([event]) => event === name).map(([, data]) => data);
 
+const COMMANDS = { 'quit-job': 'career.quit', 'set-auto-go': 'career.auto', 'pay-loan': 'economy.pay-loan', 'pay-rent': 'economy.pay-rent', 'open-deposit': 'economy.open-deposit', 'close-deposit': 'economy.close-deposit' };
+
 /** A life with its own clock. `step` settles real seconds; `act` sends one action at the current time. */
 function life(saved = {}, start = MONDAY_9AM) {
   let now = start;
@@ -39,7 +41,7 @@ function life(saved = {}, start = MONDAY_9AM) {
     at,
     step(seconds) { now += seconds * 1000; return advanceLife(state, seconds, at()); },
     act(type, payload) { return dispatch(state, { type, payload }, at('act')); },
-    command(name, payload = {}) { return dispatch(state, { type: 'apply-job', payload: { do: name, ...payload } }, at('act')); },
+    command(name, payload = {}) { return dispatch(state, { type: COMMANDS[name], payload }, at('act')); },
     view() { return viewLife(state, at('view')); },
     rest() { state.needs.energy = 90; state.needs.hunger = 90; },
     /** Work one complete shift of the current job from wherever the player is standing. */
@@ -287,9 +289,10 @@ test('switching needs confirmation and restarts the ladder; quitting clears it; 
   assert.equal(refused.code, 'confirm_switch'); assert.match(refused.reason, /starter job, which has no ladder, and lose your Teaching level and performance/);
   assert.equal(player.state.job, 'teaching'); assert.equal(player.state.career.level, 3);
   assert.match(player.view().career.jobs.find((job) => job.id === 'community-helper').switchWarning, /leave Teaching \(level 3, 90% performance\)/);
-  assert.equal(player.act('apply-job', { id: 'community-helper', confirm: true }).code, 'switched');
+  assert.equal(player.act('apply-job', { id: 'community-helper', confirm: true }).code, 'confirm_switch', 'apply-job never switches, whatever its payload says');
+  assert.equal(player.act('career.switch', { id: 'community-helper' }).code, 'switched');
   assert.deepEqual([player.state.job, player.state.career.level, player.state.career.performance], ['community-helper', 1, 0]);
-  assert.equal(player.act('apply-job', { id: 'teaching', confirm: true }).code, 'switched');
+  assert.equal(player.act('career.switch', { id: 'teaching' }).code, 'switched');
   assert.deepEqual([player.state.career.level, player.state.career.performance], [1, START_PERFORMANCE], 'coming back starts over');
   player.state.activeAction = null; player.state.location = 'park'; player.state.spot = 'work'; player.rest();
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'shift_done', 'still one paid career shift per Lagos day');
@@ -303,10 +306,13 @@ test('switching needs confirmation and restarts the ladder; quitting clears it; 
   const working = life({ job: 'teaching', spot: 'work', career: { performance: 50 } });
   working.act('activity', { id: 'teaching-shift' });
   assert.equal(working.command('quit-job').code, 'busy');
-  for (const payload of [{ do: 'nope' }, { do: 7 }, { do: '__proto__' }, { do: 'constructor' }, { do: null }]) {
+  // apply-job accepts nothing but an application: the old tunnelled commands are plain invalid applications.
+  for (const payload of [{ do: 'quit-job' }, { do: 'pay-loan', mode: 'all' }, { do: 7 }, { do: '__proto__' }, {}]) {
     const result = dispatch(player.state, { type: 'apply-job', payload }, player.at());
-    assert.equal(result.code, 'invalid_command'); assert.ok(result.reason);
+    assert.equal(result.code, 'invalid_job'); assert.ok(result.reason); assert.equal(player.state.job, null);
   }
+  assert.equal(player.act('career.switch', { id: 'teaching' }).code, 'no_job');
+  assert.equal(player.act('career.switch', { id: 'nope' }).code, 'invalid_job');
   assert.equal(player.command('set-auto-go', { on: 'yes' }).code, 'invalid_setting');
 });
 
@@ -366,8 +372,57 @@ test('career sanitize rebuilds every field from hostile input', () => {
   assert.deepEqual(createLife(JSON.parse(JSON.stringify(valid)), ctx), valid, 'a valid save round-trips unchanged');
 });
 
-test('the foundation action list is unchanged: money and career commands travel inside apply-job', () => {
-  assert.deepEqual(actionTypes().sort(), ['activity', 'apply-job', 'cancel', 'spot', 'travel']);
+test('career and money commands are registered action types with an area prefix', () => {
+  for (const type of ['apply-job', 'career.switch', 'career.quit', 'career.auto', 'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit']) assert.ok(actionTypes().includes(type), type);
+  assert.equal(actionTypes().filter((type) => type.startsWith('career.') || type.startsWith('economy.')).length, 7);
+});
+
+test('the starter job cannot be stacked on a career job to beat the one-shift-a-day rule', () => {
+  const player = life({ job: 'community-helper', spot: 'work' });
+  assert.equal(player.shift().code, 'started'); assert.equal(player.state.cash, 5300);
+  // Taking a career job replaces the starter job: its unlimited shift is no longer available.
+  assert.equal(player.act('apply-job', { id: 'teaching' }).code, 'confirm_switch');
+  assert.equal(player.act('career.switch', { id: 'teaching' }).code, 'switched');
+  assert.equal(player.state.job, 'teaching');
+  player.state.activeAction = null; player.state.location = 'park'; player.state.spot = 'work'; player.rest();
+  const helper = player.act('activity', { id: 'helper-shift' });
+  assert.equal(helper.code, 'job_required'); assert.match(helper.reason, /Community helper job/);
+  assert.match(player.view().activities.cards.find((card) => card.id === 'helper-shift').blocked.reason, /Community helper job/);
+  assert.equal(player.shift().code, 'started'); assert.equal(player.state.cash, 8300);
+  player.rest();
+  assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'shift_done');
+  assert.equal(player.act('activity', { id: 'helper-shift' }).code, 'job_required');
+  // Going back to the starter job costs the whole career (level and performance), and returning
+  // to the career the same day still finds today's paid shift used.
+  player.state.career.level = 3;
+  assert.equal(player.act('career.switch', { id: 'community-helper' }).code, 'switched');
+  assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'job_required');
+  assert.equal(player.act('career.switch', { id: 'teaching' }).code, 'switched');
+  assert.deepEqual([player.state.career.level, player.state.career.performance], [1, START_PERFORMANCE]);
+  player.state.activeAction = null; player.state.location = 'park'; player.state.spot = 'work'; player.rest();
+  assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'shift_done');
+  assert.equal(player.state.cash, 8300);
+  // A save cannot hold both: there is a single job slot, and a career shift in progress needs that job.
+  const forged = createLife({ job: 'community-helper', location: 'park', spot: 'work', activeAction: { kind: 'activity', id: 'teaching-shift', duration: SHIFT_SECONDS, remaining: 1 } }, ctx);
+  assert.equal(forged.activeAction, null);
+});
+
+test('the exact onboarding payload — lottery "lapo-baby", house id string — creates the loan and the rent schedule', () => {
+  const player = life({ cash: 96000 });
+  assert.deepEqual([player.state.economy.loan, player.state.economy.rent.house, player.state.economy.billedWeek], [null, null, null]);
+  emit(player.state, 'life.started', { body: { skin: 2 }, traits: ['neat', 'funny'], dream: 'mogul', lottery: 'lapo-baby', house: 'yaba' }, player.at('start'));
+  assert.deepEqual(player.state.economy, { billedWeek: billingWeek(MONDAY_9AM), started: true, rent: { house: 'yaba', arrears: 0, missed: 0 }, loan: { left: 72000, prepaid: 0, fees: 0 }, deposits: [], seq: 0 });
+  assert.equal(player.state.cash, 96000); assert.equal(player.state.ledger.length, 0);
+  const view = player.view().economy;
+  assert.deepEqual([view.rent.amount, view.rent.nextDueLabel, view.loan.left, view.loan.weekly, view.weeklyBills], [6000, 'Sat 10 Jan', 72000, 12000, 18000]);
+  assert.deepEqual(createLife(JSON.parse(JSON.stringify(player.state)), player.at()).economy, player.state.economy, 'the schedule survives a reload');
+  player.step(DAY * 7);
+  assert.deepEqual(player.state.ledger.map((entry) => entry.amount), [-6000, -12000]);
+  for (const house of ['mushin', 'lekki']) {
+    const other = life({ cash: 96000 });
+    emit(other.state, 'life.started', { body: {}, traits: [], dream: 'x', lottery: 'lapo-baby', house }, other.at('start'));
+    assert.equal(other.view().economy.rent.amount, RENTS[house].rent); assert.equal(other.state.economy.loan.left, 72000);
+  }
 });
 
 // ---- economy ----------------------------------------------------------------------------
@@ -624,11 +679,11 @@ test('server: apply, shift, deposit and replayed requests settle exactly once on
   const second = await f.action(device.cookie, { type: 'activity', id: 'teaching-shift' });
   assert.equal(second.ok, false); assert.equal(second.code, 'shift_done'); assert.match(second.reason, /Next shift/);
 
-  const deposit = { actionId: `${141000}:${randomUUID()}`, type: 'apply-job', payload: { do: 'open-deposit', amount: 5000, term: 'd1' } };
+  const deposit = { actionId: `${141000}:${randomUUID()}`, type: 'economy.open-deposit', payload: { amount: 5000, term: 'd1' } };
   assert.equal((await f.action(device.cookie, deposit)).code, 'deposit_opened');
   const again = await f.action(device.cookie, deposit);
   assert.equal(again.duplicate, true); assert.equal(again.state.cash, 3000); assert.equal(again.state.economy.deposits.length, 1);
-  const refused = await f.action(device.cookie, { type: 'apply-job', payload: { do: 'pay-loan', mode: 'all' } });
+  const refused = await f.action(device.cookie, { type: 'economy.pay-loan', payload: { mode: 'all' } });
   assert.equal(refused.ok, false); assert.equal(refused.code, 'no_loan'); assert.ok(refused.reason);
   f.advance(86400000);
   const matured = await read();

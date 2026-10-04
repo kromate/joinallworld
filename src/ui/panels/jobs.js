@@ -4,8 +4,8 @@
  * career tracks with Apply / Switch.
  *
  * Everything shown comes from view.career (systems/career.js), so this file holds no rules.
- * Commands go through the 'apply-job' action: { id } to apply, { id, confirm: true } to switch,
- * { do: 'quit-job' } and { do: 'set-auto-go', on }. Switching and quitting ask first, in place.
+ * Actions: 'apply-job' { id }, 'career.switch' { id }, 'career.quit' and 'career.auto' { on }.
+ * Switching and quitting ask first, in place.
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './jobs.css';
@@ -26,10 +26,10 @@ function stepButton(step) {
 function mine(career, connected) {
   const lock = connected ? '' : `disabled title="${esc(OFFLINE)}"`;
   const quit = asking === 'quit'
-    ? `<div class="jobs-confirm"><p>Quit ${esc(career.label)}? You lose your level and performance in it. You can apply again later and start from the first role.</p><div class="jobs-row"><button class="ui-button jobs-danger" data-action="apply-job" data-payload="${json({ do: 'quit-job' })}" ${career.busy || !connected ? 'disabled' : ''}>Yes, quit</button><button class="ui-button" data-jobs-ask="">Keep my job</button></div>${career.busy ? '<p class="jobs-why">Finish or cancel your current action before quitting.</p>' : ''}</div>`
+    ? `<div class="jobs-confirm"><p>Quit ${esc(career.label)}? You lose your level and performance in it. You can apply again later and start from the first role.</p><div class="jobs-row"><button class="ui-button jobs-danger" data-action="career.quit" ${career.busy || !connected ? 'disabled' : ''}>Yes, quit</button><button class="ui-button" data-jobs-ask="">Keep my job</button></div>${career.busy ? '<p class="jobs-why">Finish or cancel your current action before quitting.</p>' : ''}</div>`
     : '<button class="ui-button" data-jobs-ask="quit">Quit job</button>';
   const auto = career.isTrack
-    ? `<button class="jobs-auto" role="switch" aria-checked="${career.auto}" data-action="apply-job" data-payload="${json({ do: 'set-auto-go', on: !career.auto })}" ${lock}><i aria-hidden="true">${career.auto ? '✓' : ''}</i><span>Go automatically</span></button><p class="jobs-note">${career.auto ? 'On: when a shift is available and you have the energy and food for it, you set off for work by yourself, once a day. You can cancel the trip.' : 'Off: you only go to work when you choose to.'}</p>`
+    ? `<button class="jobs-auto" role="switch" aria-checked="${career.auto}" data-action="career.auto" data-payload="${json({ on: !career.auto })}" ${lock}><i aria-hidden="true">${career.auto ? '✓' : ''}</i><span>Go automatically</span></button><p class="jobs-note">${career.auto ? 'On: when a shift is available and you have the energy and food for it, you set off for work by yourself, once a day. You can cancel the trip.' : 'Off: you only go to work when you choose to.'}</p>`
     : '';
   return `<section class="jobs-mine" aria-label="Your job"><p class="jobs-eyebrow">YOUR JOB</p><h3>${esc(career.icon)} ${esc(career.role)}${career.isTrack ? ` · ${esc(career.label)}` : ''}</h3><p><strong>${money(career.pay)} per shift</strong>${career.isTrack ? ` · level ${esc(career.level)} of ${esc(career.levels)} · performance ${esc(career.performance)}%` : ''} · at ${esc(career.workplace.label)}</p><p class="jobs-schedule">${esc(career.schedule)}</p><p class="jobs-step">${esc(career.step.text)}</p>${stepButton(career.step)}${auto}${quit}${connected ? '' : `<p class="jobs-why">${esc(OFFLINE)}</p>`}</section>`;
 }
@@ -39,7 +39,7 @@ function track(job, career, connected) {
   if (job.current) control = '<p class="jobs-note">This is your job. Manage it in the card at the top.</p>';
   else if (job.blocked || !connected) control = `<button class="ui-button" disabled>${career.employed ? 'Switch to this job' : 'Apply'}</button><p class="jobs-why">${esc(job.blocked || OFFLINE)}</p>`;
   else if (!career.employed) control = `<button class="ui-button is-primary" data-action="apply-job" data-payload="${json({ id: job.id })}">Apply — free, hired at once</button>`;
-  else if (asking === job.id) control = `<div class="jobs-confirm"><p>${esc(job.switchWarning)}</p><div class="jobs-row"><button class="ui-button is-primary" data-action="apply-job" data-payload="${json({ id: job.id, confirm: true })}">Confirm switch</button><button class="ui-button" data-jobs-ask="">Keep current job</button></div></div>`;
+  else if (asking === job.id) control = `<div class="jobs-confirm"><p>${esc(job.switchWarning)}</p><div class="jobs-row"><button class="ui-button is-primary" data-action="career.switch" data-payload="${json({ id: job.id })}">Confirm switch</button><button class="ui-button" data-jobs-ask="">Keep current job</button></div></div>`;
   else control = `<button class="ui-button" data-jobs-ask="${esc(job.id)}">Switch to this job</button>`;
   return `<article class="jobs-track ${job.current ? 'is-current' : ''}"><header><span class="jobs-icon" aria-hidden="true">${esc(job.icon)}</span><div><h3>${esc(job.label)} ${job.current ? '<span class="jobs-badge">Your job</span>' : ''}${job.track ? '' : '<span class="jobs-badge">Starter</span>'}</h3><p>${job.track ? `Starts as ${esc(job.entryRole)} · ` : ''}<strong>${money(job.pay)} per shift</strong></p></div></header><p>${esc(job.summary)}</p><p class="jobs-schedule">${esc(job.schedule)}</p><p class="jobs-note">${esc(job.duration)}-second shift at ${esc(job.workplace)}${job.track ? ` · promotions need ${esc(cap(job.skill))} · top role ${esc(job.topRole)}` : ' · no promotions'}</p>${control}</article>`;
 }

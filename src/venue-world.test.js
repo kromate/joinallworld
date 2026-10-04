@@ -479,6 +479,25 @@ test('spots and walking stay coherent: taps walk first, the panel walks instead 
   } finally { bench.restore(); }
 });
 
+test('walking moves transforms only: hundreds of frames of walking, turning and zooming build no geometry', () => {
+  const bench = motionBench();
+  const setIndex = THREE.BufferGeometry.prototype.setIndex, setAttribute = THREE.BufferGeometry.prototype.setAttribute;
+  let built = 0;
+  try {
+    const { world } = bench;
+    world.setState(PARK);
+    world.setCrowd(people(6));
+    THREE.BufferGeometry.prototype.setIndex = function counted(...args) { built += 1; return setIndex.apply(this, args); };
+    THREE.BufferGeometry.prototype.setAttribute = function counted(...args) { built += 1; return setAttribute.apply(this, args); };
+    bench.key('walk-up'); bench.pump(60); bench.key('walk-left'); bench.pump(60); bench.keyUp('walk-up'); bench.keyUp('walk-left');
+    bench.key('look-right'); bench.pump(30); bench.keyUp('look-right'); bench.key('zoom-in'); bench.pump(400);
+    world.walkTo(6, 4); bench.pump(2000); world.walkTo(-6, 6); bench.pump(2000);
+    world.setState({ ...PARK, spot: 'art' }); bench.pump(3000);
+    assert.ok(world.diagnostics().loop.frames > 300, `${world.diagnostics().loop.frames} frames`);
+    assert.equal(built, 0, 'not one geometry or attribute was made while moving');
+  } finally { THREE.BufferGeometry.prototype.setIndex = setIndex; THREE.BufferGeometry.prototype.setAttribute = setAttribute; bench.restore(); }
+});
+
 test('reduced motion snaps: a tap puts the avatar there in one frame and the camera never eases', () => {
   const bench = motionBench();
   try {

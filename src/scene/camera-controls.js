@@ -27,6 +27,8 @@ export const PITCH_MIN = 0.1;                 // ≈ 6° above the ground
 export const PITCH_MAX = Math.PI / 2 - 0.07;  // ≈ 86°: nearly top-down
 export const DRAG_YAW = 0.006, DRAG_PITCH = 0.005; // radians per CSS pixel
 const EASE = { turn: 18, zoom: 11, pivot: 7 };
+/** What step() eases: the two angles first (at the turning rate), then the pivot. */
+const EASED = ['yaw', 'tilt', 'x', 'y', 'z'];
 
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
 
@@ -69,22 +71,22 @@ export function createOrbit() {
       return now.yaw === goal.yaw && now.tilt === goal.tilt && now.zoom === goal.zoom && now.x === goal.x && now.y === goal.y && now.z === goal.z;
     },
     step(dt) {
+      // Allocation-free: this runs every frame of the motion loop.
+      const turn = 1 - Math.exp(-EASE.turn * dt), slide = 1 - Math.exp(-EASE.pivot * dt);
       let moving = false;
-      const ease = (key, rate, epsilon) => {
-        const delta = goal[key] - now[key];
-        if (delta === 0) return;
-        if (Math.abs(delta) < epsilon) { now[key] = goal[key]; return; }
-        now[key] += delta * (1 - Math.exp(-rate * dt));
+      for (let i = 0; i < EASED.length; i++) {
+        const key = EASED[i], delta = goal[key] - now[key];
+        if (delta === 0) continue;
+        if (Math.abs(delta) < (i < 2 ? 0.0008 : 0.004)) { now[key] = goal[key]; continue; }
+        now[key] += delta * (i < 2 ? turn : slide);
         moving = true;
-      };
-      ease('yaw', EASE.turn, 0.0008); ease('tilt', EASE.turn, 0.0008);
+      }
       // Zoom eases in proportion, so it feels the same close up and far away.
       const ratio = goal.zoom / now.zoom;
       if (ratio !== 1) {
         if (Math.abs(Math.log(ratio)) < 0.002) now.zoom = goal.zoom;
         else { now.zoom *= Math.exp(Math.log(ratio) * (1 - Math.exp(-EASE.zoom * dt))); moving = true; }
       }
-      ease('x', EASE.pivot, 0.004); ease('y', EASE.pivot, 0.004); ease('z', EASE.pivot, 0.004);
       return moving;
     },
     /** Absolute heading of the camera around the pivot right now (what "forward" is measured from). */

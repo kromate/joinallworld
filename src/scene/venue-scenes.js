@@ -211,7 +211,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   const avatar = new THREE.Group();
   avatar.name = 'avatar';
   const figures = new Map();
-  let shownFigure = null, driven = false;
+  let shownFigure = null, standFigure = null, strideFigure = null, driven = false;
   const marks = { ring: null, near: null, goal: null };
 
   function drawStatic() {
@@ -286,9 +286,9 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     }
     return entry;
   }
-  function show(pose, seat) {
-    const next = figure(pose, seat);
-    if (next === shownFigure) return false;
+  function show(pose, seat) { return showFigure(figure(pose, seat)); }
+  function showFigure(next) {
+    if (!next || next === shownFigure) return false;
     if (shownFigure) shownFigure.visible = false;
     next.visible = true;
     shownFigure = next;
@@ -297,8 +297,10 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   function clearFigures() {
     for (const entry of figures.values()) entry.userData.dispose();
     figures.clear();
-    shownFigure = null;
+    shownFigure = null; standFigure = null; strideFigure = null;
   }
+  /** The two figures of the walk cycle, built ahead so that a step only switches which one is visible. */
+  function prebuild() { standFigure = figure('stand'); strideFigure = figure('walk'); }
   /** Move the avatar (transform only) and its name tag. */
   function moveAvatar(x, y, z, ry) {
     avatar.position.set(x, y, z);
@@ -361,7 +363,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     buildGrid();
     group.add(avatar);
     buildMarks();
-    figure('stand'); figure('walk');
+    prebuild();
     live = true;
     buildActors();
     settle();
@@ -382,7 +384,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     if (!live) return;
     const pose = shownFigure ? [...figures.entries()].find(([, entry]) => entry === shownFigure)?.[0] : null;
     clearFigures();
-    figure('stand'); figure('walk');
+    prebuild();
     if (driven && pose) { const [name, seat] = pose.split(':'); show(name, seat === '' ? undefined : Number(seat)); if (selfTag) selfTag.position.y = avatar.position.y + shownFigure.userData.top; }
   }
 
@@ -409,7 +411,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     /** Resting pose ('stand', or the activity's pose) — builds that figure if it has not been needed yet. */
     pose(name, seat) { return show(name || 'stand', seat); },
     /** The two-frame walk cycle: alternate the walking and the standing figure. No geometry is built. */
-    gait(step) { return show(step ? 'walk' : 'stand'); },
+    gait(step) { return showFigure(step ? strideFigure : standFigure); },
     /** How high the floor is at a place: raised spots (a stage, a bridge) lift the avatar as it steps on. */
     heightAt(x, z) {
       let height = 0;

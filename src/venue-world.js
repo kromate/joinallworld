@@ -133,7 +133,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   const built = new Map();
   let current = null, currentLocation = null, renderCount = 0, lastState = null, size = { width: 0, height: 0 };
   let player = {}, crowd = [], crowdKey = '[]', background = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
-  let tagSource = [], shownTags = [], tagNodes = [], tagShape = '';
+  let tagSource = [], shownTags = [], tagNodes = [], tagShape = '', tagsRead = true;
   const point = new THREE.Vector3(), rayA = new THREE.Vector3(), rayB = new THREE.Vector3();
   const orbit = createOrbit();
   const walker = createWalker();
@@ -528,7 +528,6 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     camera.updateMatrixWorld(true);
     current?.group.updateMatrixWorld(true);
     if (shownTags.length !== tagSource.length) shownTags = tagSource.map(() => ({}));
-    let shape = '';
     for (let i = 0; i < tagSource.length; i++) {
       const tag = tagSource[i], shown = shownTags[i];
       point.set(tag.position.x, tag.position.y, tag.position.z);
@@ -537,9 +536,11 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       shown.id = tag.id; shown.kind = tag.kind; shown.text = tag.text; shown.name = tag.name; shown.marker = tag.marker; shown.colour = tag.colour;
       shown.x = Math.round(((point.x + 1) / 2) * size.width); shown.y = Math.round(((1 - point.y) / 2) * size.height);
       shown.visible = point.z > -1 && point.z < 1 && Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1;
-      if (tagLayer) shape += `${tag.id}\u0001${tag.kind}\u0001${tag.text}\u0001${tag.name}\u0001${tag.marker}\u0002`;
     }
     if (!tagLayer) return;
+    // Who is tagged is compared only when the list was read again — a frame of the motion loop builds no strings.
+    const shape = tagsRead ? shownTags.map((tag) => `${tag.id}\u0001${tag.kind}\u0001${tag.text}\u0001${tag.name}\u0001${tag.marker}`).join('\u0002') : tagShape;
+    tagsRead = false;
     if (shape !== tagShape) {
       tagShape = shape;
       tagNodes = shownTags.map((tag) => {
@@ -562,7 +563,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       if (node.jawY !== tag.y) { node.jawY = tag.y; node.style.top = `${tag.y}px`; }
     }
   }
-  function readTags() { tagSource = current?.tags?.() || []; }
+  function readTags() { tagSource = current?.tags?.() || []; tagsRead = true; }
   function renderScene() { renderer.render(scene, camera); renderCount += 1; projectTags(); }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */

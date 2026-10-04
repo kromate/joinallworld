@@ -400,7 +400,7 @@ test('after the chain the chip is a rolling next step that is always attainable'
   state.goals.stars = 6;
   assert.deepEqual([chip().title, chip().open], ['Spend your stars', 'goals']); assert.match(chip().hint, /Steel Bladder costs 6✨/);
   state.needs.energy = 12; state.needs.hunger = 20;
-  assert.deepEqual([chip().title, chip().hint, chip().go], ['Get some rest', 'Home → Bedroom → Take a Nap', ['home', 'bedroom']]);
+  assert.deepEqual([chip().title, chip().hint, chip().go], ['Get some rest', 'Home → Bedroom → Sleep', ['home', 'bedroom']]);
   state.needs.energy = 90;
   assert.deepEqual([chip().title, chip().go], ['Eat something', ['home', 'kitchen']]);
   state.needs.hunger = 90; state.needs.social = 5;

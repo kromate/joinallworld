@@ -365,11 +365,11 @@ export default {
         }
         emit(state, 'meal.eaten', { id: recipe.id, source: 'home' }, ctx);
       } else if (state.location === HOME && !def.home && data.tags?.includes('food')) {
-        emit(state, 'meal.eaten', { id: def.id, source: 'home' }, ctx);
+        emit(state, 'meal.eaten', { id: def.id ?? data.id, source: 'home' }, ctx);
       }
       const kind = kindOf(state, def);
       if (kind) completionBonus(state, def, qualityOf(state, kind), ctx);
-      if (state.home.boost?.id === def.id) state.home.boost.finished = true;
+      if (state.home.boost && state.home.boost.id === def.id) state.home.boost.finished = true;
     },
     'action.cancelled'(state) { state.home.boost = null; },
   },

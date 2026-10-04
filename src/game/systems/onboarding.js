@@ -300,8 +300,13 @@ export default {
   modifiers: fxModifiers(sources),
   on: {
     'activity.completed'(state, data, ctx) {
-      const tags = Array.isArray(data?.tags) ? data.tags : [];
-      if (tags.includes('food')) state.onboarding.bonusAt = finite(ctx?.now) ? ctx.now : state.t;
+      let tags = Array.isArray(data?.tags) ? data.tags : [];
+      if (tags.includes('food')) {
+        const now = finite(ctx?.now) ? ctx.now : state.t;
+        // Another system may already have reported this meal through 'meal.eaten'.
+        if (state.onboarding.bonusAt === now) tags = tags.filter((tag) => tag !== 'food');
+        state.onboarding.bonusAt = now;
+      }
       giveBonus(state, tags);
     },
     'meal.eaten'(state, data, ctx) {

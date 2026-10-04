@@ -42,7 +42,7 @@
 import { emit } from '../registry.js';
 import { cap, fail, finite, isRecord, naira, ok, safeCount } from '../util.js';
 import { lagosTime } from '../clock.js';
-import { credit, MAX_LEVEL, NEEDS, skillLevel, spotsOf, xpForLevel } from '../api.js';
+import { blockReason, credit, MAX_LEVEL, NEEDS, skillLevel, spotsOf, xpForLevel } from '../api.js';
 import { fxModifiers } from '../character-effects.js';
 import { GUIDE_LOW_NEED, PERKS, STARTER_GOALS, WISHES, WISH_REROLLS_PER_DAY, WISH_SLOTS, WISH_STARS } from '../content/goals.js';
 import { DREAMS, DREAM_REWARD, DREAM_TARGETS, LOTTERY } from '../content/traits.js';
@@ -262,14 +262,20 @@ function handle(event, state, data, ctx) {
 const NEED_STEP = { hunger: ['🍲', 'Eat something'], energy: ['🛏️', 'Get some rest'], fun: ['🎉', 'Have some fun'], social: ['💬', 'Talk to someone'],
   hygiene: ['🫧', 'Freshen up'], bladder: ['🚽', 'Use the toilet'] };
 
-/** A free, startable activity that raises `need`: Home first, then any other venue. */
+/** The free, startable activity that raises `need` the most: Home first, then any other venue. */
 function recovery(state, need) {
+  const gain = (def) => (def.effects?.[need] ?? 0) + (def.effectsPerSecond?.[need] ?? 0) * (def.duration ?? 0);
   for (const venue of ['home', ...Object.keys(VENUES).filter((id) => id !== 'home')]) {
+    let best = null;
     for (const spot of spotsOf(venue)) {
-      const fix = spot.activities.find((def) => !def.unavailable && !def.cost && !def.requiresJob && !def.requiresSkill && !def.choices
-        && !Object.keys(def.minimumNeeds || {}).length && ((def.effects?.[need] ?? 0) > 0 || (def.effectsPerSecond?.[need] ?? 0) > 0));
-      if (fix) return { venue, spot, fix };
+      for (const def of spot.activities) {
+        if (def.unavailable || def.cost || def.requiresJob || def.requiresSkill || def.choices
+          || Object.keys(def.minimumNeeds || {}).length || gain(def) <= 0) continue;
+        if (blockReason(state, def, venue)?.code === 'furniture_required') continue;
+        if (!best || gain(def) > gain(best.fix)) best = { venue, spot, fix: def };
+      }
     }
+    if (best) return best;
   }
   return null;
 }

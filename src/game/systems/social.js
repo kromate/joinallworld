@@ -36,7 +36,9 @@
  *   'transfer.received'    { from, amount }
  * Listens to
  *   'activity.completed'   its own NPC activities, and any paid activity (to count earnings)
- *   'notice.posted'        { kind?, text } — any system may emit this to add a line to Updates
+ *   'notice.posted'        { kind?, text } — any system may emit this to add a line to Updates.
+ *                          Posted by economy (rent due / paid / missed, loan paid / missed), career
+ *                          (promotion), health (illness, recovery) and civic (Governor news).
  * Modifier keys it calls (other systems contribute; base → adjusted)
  *   'social.gain'     data { id, npc, action }  closeness points about to be granted
  *   'social.success'  data { id, npc, action }  percent chance that a joke lands
@@ -162,7 +164,8 @@ const serverOps = {
       // A returned gift no longer counts against the lifetime ceiling.
       state.social.transfer.total = Math.max(0, state.social.transfer.total - amount);
     } else emit(state, 'transfer.received', { from: payload.from, amount }, ctx);
-    pushNotice(state, 'transfer', payload.refund ? `${naira(amount)} came back: ${name} could not receive it.` : `${name} sent you ${naira(amount)}.`, ctx);
+    // A received gift is announced by the server's own update to the recipient; only the refund, which has none, is noted here.
+    if (payload.refund) pushNotice(state, 'transfer', `${naira(amount)} came back: ${name} could not receive it.`, ctx);
     return ok(state, 'received');
   },
   friend(state, payload, ctx) {

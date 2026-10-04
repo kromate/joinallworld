@@ -193,11 +193,11 @@ test('a damaged civic collection is repaired instead of crashing a route', () =>
 
 test('civic life state: registered, no public actions, hostile saves are rebuilt', () => {
   const system = systems().find((item) => item.id === 'civic');
-  assert.deepEqual(Object.keys(system.actions).sort(), ['civic.hunt-claim', 'civic.hunt-search', 'civic.refresh', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote']);
+  assert.deepEqual(Object.keys(system.actions).sort(), ['civic.hunt-claim', 'civic.hunt-search', 'civic.news', 'civic.refresh', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote']);
   assert.ok(Object.keys(system.actions).every((type) => actionTypes().includes(type)));
   // The four server-completed actions are declared serverOnly: a player's dispatch is refused whatever
   // the payload claims (including an `internal` or `grant` field), and nothing is charged.
-  for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout']) {
+  for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout', 'civic.news']) {
     assert.equal(system.actions[type].serverOnly, true, type);
     for (const extra of [{}, { grant: true }, { grant: 'civic.server-grant' }, { internal: true }, { serverOnly: false }]) {
       const state = createLife({ t: MONDAY, location: 'library', civic: { since: 0 } }, at(MONDAY));

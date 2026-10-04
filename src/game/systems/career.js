@@ -56,6 +56,7 @@
  *   'job.quit'        { job }
  *   'shift.completed' { job, activity, pay, level }   level and pay are those the shift was worked at
  *   'promotion'       { job, level, role, maxLevel, top }   maxLevel = levels in the track's ladder
+ *   'notice.posted'   { kind: 'promotion', text }           a line for the Updates feed
  *   ('job.applied' and 'shift.completed' carry maxLevel too, for track jobs)
  * MODIFIERS ASKED
  *   'career.performance'  data { job, level }  base PERFORMANCE_PER_SHIFT — performance gained by a shift
@@ -171,6 +172,7 @@ function tryPromote(state, ctx) {
   state.message = `Promoted to ${next.role}! ${job.label} shifts now pay ${naira(next.pay)}.`;
   addMoodlet(state, { id: 'promoted', label: 'Promoted', value: 8, duration: 3600 }, ctx); // original beta value
   emit(state, 'promotion', { job: job.id, level: next.level, role: next.role, maxLevel: job.ladder.length, top: next.level >= job.ladder.length }, ctx);
+  emit(state, 'notice.posted', { kind: 'promotion', text: `Promoted to ${next.role} (${job.label}). Shifts now pay ${naira(next.pay)}.` }, ctx);
   return true;
 }
 

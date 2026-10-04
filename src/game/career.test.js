@@ -418,7 +418,7 @@ test('the exact onboarding payload — lottery "lapo-baby", house id string — 
   const player = life({ cash: 96000 });
   assert.deepEqual([player.state.economy.loan, player.state.economy.rent.house, player.state.economy.billedWeek], [null, null, null]);
   emit(player.state, 'life.started', { body: { skin: 2 }, traits: ['neat', 'funny'], dream: 'mogul', lottery: 'lapo-baby', house: 'yaba' }, player.at('start'));
-  assert.deepEqual(player.state.economy, { billedWeek: billingWeek(MONDAY_9AM), started: true, rent: { house: 'yaba', arrears: 0, missed: 0 }, loan: { left: 72000, prepaid: 0, fees: 0 }, deposits: [], seq: 0 });
+  assert.deepEqual(player.state.economy, { billedWeek: billingWeek(MONDAY_9AM), started: true, rent: { house: 'yaba', arrears: 0, missed: 0 }, loan: { left: 72000, prepaid: 0, fees: 0 }, deposits: [], seq: 0, reminded: null });
   assert.equal(player.state.cash, 96000); assert.equal(player.state.ledger.length, 0);
   const view = player.view().economy;
   assert.deepEqual([view.rent.amount, view.rent.nextDueLabel, view.loan.left, view.loan.weekly, view.weeklyBills], [6000, 'Sat 10 Jan', 72000, 12000, 18000]);
@@ -654,7 +654,7 @@ test('economy sanitize rebuilds every field from hostile input and cannot be use
     deposits: [{ id: 'fd-1', amount: 1e12, term: 'd1', openedAt: 0 }, { id: 'fd-2', amount: 50000, term: 'd7', openedAt: MONDAY_9AM + 9e9 }, { id: 'fd-3', amount: 5000, term: 'zz', openedAt: 0 },
       'x', null, { id: 'FD 4', amount: 5000, term: 'd1', openedAt: 0 }, { id: 'fd-5', amount: 60000, term: 'd1', openedAt: 0 }],
   } }, ctx);
-  assert.deepEqual(hostile.economy, { billedWeek: billingWeek(MONDAY_9AM), started: false, rent: { house: null, arrears: 0, missed: 0 }, loan: null, deposits: [], seq: 0 });
+  assert.deepEqual(hostile.economy, { billedWeek: billingWeek(MONDAY_9AM), started: false, rent: { house: null, arrears: 0, missed: 0 }, loan: null, deposits: [], seq: 0, reminded: null });
   const many = createLife({ t: MONDAY_9AM, economy: { rent: { house: 'yaba', arrears: 1e12, missed: 2 }, loan: { left: 80000, prepaid: 99, fees: 0 },
     deposits: Array.from({ length: 9 }, (_, i) => ({ id: `fd-${i}`, amount: 50000, term: 'd1', openedAt: 5 })).concat([{ id: 'fd-0', amount: 1000, term: 'd1', openedAt: 5 }]) } }, ctx);
   assert.equal(many.economy.deposits.length, 2, 'the total cap also binds saved deposits, and ids stay unique');

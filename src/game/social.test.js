@@ -231,7 +231,7 @@ test('transfers: only money earned from work can be given, within daily and per-
   assert.equal(receiver.ledger.at(-1).reason, 'Transfer from Ada');
   assert.deepEqual(probe.events.at(-1), ['transfer.received', { from: OTHER, amount: 4000 }]);
   assert.equal(receiver.social.earned, 0, 'a gift is not earnings, so it cannot be passed on');
-  assert.match(receiver.social.notices.at(-1).text, /Ada sent you ₦4,000/);
+  assert.deepEqual(receiver.social.notices, [], 'the gift is announced once, by the server’s update to the recipient — not a second time by the life');
   const full = createLife({ cash: Number.MAX_SAFE_INTEGER }, ctxAt());
   assert.equal(serverOp(full, 'transfer-in', { from: OTHER, name: 'Ada', amount: 100 }, ctxAt()).code, 'balance_limit');
   for (const amount of [-5, 0, 1.5, '100', null]) assert.equal(serverOp(receiver, 'transfer-in', { from: OTHER, name: 'Ada', amount }, ctxAt()).code, 'invalid_transfer');

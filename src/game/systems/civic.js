@@ -9,6 +9,8 @@
  *   since   server ms this life first existed in the city (for "days lived here")
  *   gems    lifetime gems found;  claims  lifetime daily prizes claimed
  *   week    { week, earned } — naira received in the current Monday-started Lagos week
+ *   news    [noticeId] — city news (results, phases, the Governor's announcements) already
+ *           posted to this life's Updates, newest last, so each item is posted once
  *   hunt    null | { day, claimed, gems: [{ venue, spot, kind, found }] }
  *             kind 'visit'    — stand at that spot of the venue (spot null = anywhere in it)
  *             kind 'activity' — finish any activity in the venue
@@ -17,6 +19,9 @@
  *   'civic.hunt-search'  {}   look for a gem where you stand
  *   'civic.hunt-claim'   {}   collect the daily prize once every gem is found
  *   'civic.refresh'      {}   roll today's hunt and return the current state (changes nothing else)
+ *   'civic.news' { items: [{ id, title, text, at }] }   SERVER ONLY: post city news the life has
+ *       not seen yet to its Updates feed ('notice.posted' { kind: 'gov', text }). Run by the
+ *       pulse route with the server's own notices; news older than the life itself is skipped.
  *   'civic.run' · 'civic.vote' · 'civic.rent-ad' { kind, slot } · 'civic.shoutout'
  *       SERVER-COMPLETED: each of these is one half of a change whose other half is shared
  *       storage (a ballot, a slot, a queue). They are declared `serverOnly` (registry.js), so
@@ -243,6 +248,26 @@ export function payForShoutout(state, payload, ctx) {
   return ok(state, 'queued');
 }
 
+const NEWS_LIMIT = 40;
+const NEWS_ID = /^[a-z]+-[a-z0-9-]{1,40}$/;
+
+/** Post city news this life has not been told yet. Each id is posted once; at most five a call. */
+export function postNews(state, payload, ctx) {
+  const items = Array.isArray(payload?.items) ? payload.items.slice(0, 12) : [];
+  let posted = 0;
+  for (const item of [...items].sort((a, b) => (a?.at ?? 0) - (b?.at ?? 0))) {
+    if (!isRecord(item) || typeof item.id !== 'string' || !NEWS_ID.test(item.id) || typeof item.title !== 'string' || !finite(item.at)) continue;
+    if (state.civic.news.includes(item.id)) continue;
+    state.civic.news.push(item.id);
+    // News from before this life existed is remembered as seen, not replayed.
+    if (item.at < state.civic.since || posted >= 5) continue;
+    emit(state, 'notice.posted', { kind: 'gov', text: `${item.title}${typeof item.text === 'string' && item.text ? `: ${item.text}` : ''}` }, ctx);
+    posted += 1;
+  }
+  if (state.civic.news.length > NEWS_LIMIT) state.civic.news.splice(0, state.civic.news.length - NEWS_LIMIT);
+  return ok(state, posted ? 'posted' : 'nothing_new');
+}
+
 function sanitizeHunt(value) {
   if (!isRecord(value) || !safeCount(value.day) || !Array.isArray(value.gems) || !value.gems.length || value.gems.length > HUNT.gemsPerDay) return null;
   const gems = [];
@@ -267,6 +292,7 @@ export default {
       gems: safeCount(saved.gems) ? saved.gems : 0,
       claims: safeCount(saved.claims) ? saved.claims : 0,
       week,
+      news: [...new Set((Array.isArray(saved.news) ? saved.news : []).filter((id) => typeof id === 'string' && NEWS_ID.test(id)))].slice(-NEWS_LIMIT),
       hunt: sanitizeHunt(saved.hunt),
     };
   },
@@ -274,6 +300,7 @@ export default {
     'civic.hunt-search': searchForGem,
     'civic.hunt-claim': claimHuntPrize,
     'civic.refresh'(state, payload, ctx) { roll(state, ctx); sweep(state, ctx); return ok(state, 'refreshed'); },
+    'civic.news': serverOnly(postNews, 'Phone → Governor'),
     'civic.run': serverOnly(fileCandidacy, 'Phone → Governor'),
     'civic.vote': serverOnly(castVote, 'Phone → Governor'),
     'civic.rent-ad': serverOnly(payForAd, 'Phone → Billboards'),

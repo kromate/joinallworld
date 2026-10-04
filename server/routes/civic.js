@@ -142,7 +142,14 @@ export default function civicRoutes(ctx) {
       // A signed-in pulse is the check-in that keeps the directory, the rich list and the gem
       // counter current; it is allowed a few writes a minute and is read-only beyond that.
       if (signedIn && ctx.allow(`civic:checkin:${signedIn}`, 6)) {
-        const body = await store.transact(db => { const { who, life, city, resident } = enter(db, request, cityId); counterCache.delete(cityId); return pulseBody(city, cityId, who, life, resident); });
+        const body = await store.transact(db => {
+          const { who, life, city, resident } = enter(db, request, cityId);
+          counterCache.delete(cityId);
+          // City news the resident has not been told yet goes into their own Updates feed, once.
+          const fresh = resident ? notices(city, ctx.now(), cityName(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
+          if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) });
+          return pulseBody(city, cityId, who, life, resident);
+        });
         return { body, renew: true };
       }
       return { body: await store.read(db => { const { who, life, city } = peek(db, request, cityId); return pulseBody(city, cityId, who, life, false); }) };

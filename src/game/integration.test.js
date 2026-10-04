@@ -3,10 +3,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife, spotsOf, actionTypes } from '../life.js';
-import { registerSystem, systems, serverOnlyReason } from './registry.js';
+import { registerSystem, systems, serverOnlyReason, emit } from './registry.js';
 import { makeContext } from './util.js';
 import { isOpen, lagosDayStart, lagosTime, openingInfo } from './clock.js';
-import { arrive } from './api.js';
+import { arrive, addSkillXp, xpForLevel } from './api.js';
 import { VENUES } from './content/venues.js';
 import { JOBS, TRACKS } from './content/jobs.js';
 import { INGREDIENTS } from './content/food.js';
@@ -256,4 +256,62 @@ test('the starter helper job cannot outpace a career track', () => {
   assert.equal(helper.shift.beta, true);
   const perDay = Math.floor(86400 / helper.shift.cooldown) * helper.shift.reward;
   for (const job of TRACKS) assert.ok(perDay < job.ladder[0].pay, `${job.id}: one entry shift (${job.ladder[0].pay}) beats a whole day of helper shifts (${perDay})`);
+});
+
+test('one Updates feed: rent due, paid and missed, loan paid and missed, promotion, illness and Governor news all arrive through notice.posted', () => {
+  const DAY = 86400000;
+  const state = onboard(createLife(null, at(MONDAY_9AM, 'updates', { isNew: true })));
+  const kinds = () => state.social.notices.map((notice) => notice.kind);
+  const last = (kind) => state.social.notices.findLast((notice) => notice.kind === kind)?.text;
+  assert.deepEqual(kinds(), [], 'moving in posts nothing');
+  // Friday: one reminder naming what falls due at midnight — and only one, however often the life settles.
+  const friday = MONDAY_9AM + 4 * DAY;
+  advanceLife(state, 60, at(friday)); advanceLife(state, 60, at(friday + 60000)); advanceLife(state, 3600, at(friday + 3660000));
+  assert.deepEqual(kinds(), ['rent-due']);
+  assert.match(last('rent-due'), /^Due tomorrow \(Saturday\): rent ₦6,000 and loan ₦12,000\. You have ₦96,000\.$/);
+  // Saturday: rent and the loan instalment are collected, each with its own line.
+  const saturday = lagosDayStart(lagosTime(MONDAY_9AM).day + 5) + 60000;
+  advanceLife(state, 3600, at(saturday));
+  assert.deepEqual(kinds(), ['rent-due', 'rent', 'loan']);
+  assert.match(last('rent'), /^Rent paid: ₦6,000 for your Yaba self-contain \(due Sat 10 Jan\)\.$/);
+  assert.match(last('loan'), /^Loan instalment paid: ₦12,000 \(due Sat 10 Jan\)\. ₦60,000 left\.$/);
+  assert.equal(state.cash, 78000);
+  // The next week the wallet is empty: both bills are missed and say what is owed.
+  state.cash = 0;
+  advanceLife(state, 3600, at(saturday + 6 * DAY)); // Friday
+  assert.match(last('rent-due'), /You have ₦0 — ₦18,000 short\.$/);
+  advanceLife(state, 3600, at(saturday + 7 * DAY));
+  assert.deepEqual(kinds().slice(-3), ['rent-due', 'rent-missed', 'loan-missed']);
+  assert.match(last('rent-missed'), /Rent missed: ₦6,000 was due Sat 17 Jan\. You owe ₦6,000/);
+  assert.match(last('loan-missed'), /Loan instalment missed: ₦12,000 was due Sat 17 Jan and you had ₦0\. A ₦500 fee was added\. ₦60,500 is now owed\./);
+  // An early loan payment by the player is listed too.
+  state.cash = 20000;
+  assert.equal(act(state, 'economy.pay-loan', { mode: 'week' }, at(saturday + 7 * DAY)).ok, true);
+  assert.match(last('loan'), /^You paid ₦12,000 towards your loan\. ₦48,500 left\.$/);
+  // Promotion: performance and the track skill are both met.
+  state.job = 'tech'; state.career.level = 1; state.career.performance = 100;
+  addSkillXp(state, 'coding', xpForLevel(1), at(saturday + 7 * DAY));
+  assert.equal(state.career.level, 2);
+  assert.match(last('promotion'), /^Promoted to Junior Dev \(Tech\)\. Shifts now pay ₦5,400\.$/);
+  // Illness from neglect, then a cure.
+  state.needs.hunger = 5; state.needs.hygiene = 5; state.health.strain = 1199;
+  advanceLife(state, 30, at(saturday + 7 * DAY + 30000));
+  assert.equal(state.health.sick, true);
+  assert.match(last('illness'), /^You fell sick from going hungry and unwashed/);
+  emit(state, 'health.treat', { by: 'test' }, at(saturday + 7 * DAY + 60000));
+  assert.equal(last('recovered'), 'You are well again.');
+  // Governor news is posted by the server through a server-only action: once per item, never news older than the life.
+  const news = [{ id: 'result-2936', title: 'Ada is the new Governor of Lagos', text: 'Elected with 1 of 1 vote.', at: saturday + 8 * DAY },
+    { id: 'announcement-a1', title: 'Governor Ada announced', text: 'Sanitation day is <b>Saturday</b>', at: saturday + 8 * DAY + 1000 },
+    { id: 'nominations-2900', title: 'Nominations are open', text: 'Old news', at: MONDAY_9AM - 30 * DAY }, { id: '<script>', title: 'x', at: 1 }, null];
+  assert.equal(dispatch(state, { type: 'civic.news', payload: { items: news } }, at(saturday + 9 * DAY)).code, 'server_only');
+  const server = { ...at(saturday + 9 * DAY), internal: true };
+  assert.equal(dispatch(state, { type: 'civic.news', payload: { items: news } }, server).code, 'posted');
+  assert.deepEqual(state.social.notices.slice(-2).map((notice) => [notice.kind, notice.text]), [['gov', 'Ada is the new Governor of Lagos: Elected with 1 of 1 vote.'], ['gov', 'Governor Ada announced: Sanitation day is <b>Saturday</b>']]);
+  assert.deepEqual(state.civic.news, ['nominations-2900', 'result-2936', 'announcement-a1'], 'news from before the life is marked seen without being posted');
+  assert.equal(dispatch(state, { type: 'civic.news', payload: { items: news } }, server).code, 'nothing_new');
+  assert.equal(kinds().filter((kind) => kind === 'gov').length, 2);
+  // The feed is bounded and survives a save round trip unchanged.
+  assert.ok(state.social.notices.length <= 20);
+  assert.deepEqual(createLife(structuredClone(state), at(saturday + 9 * DAY)).social.notices, state.social.notices);
 });

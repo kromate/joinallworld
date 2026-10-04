@@ -5,7 +5,11 @@
  * Chats: find a player and message them, conversation list with unread counts, groups
  * (create, rename, add/remove members, leave). Every message you send appears immediately as
  * "Sending…", then becomes sent, or "Not sent" with the reason and a Retry that can never
- * duplicate it. Updates: friend requests, knocks, gifts, report receipts and system notices.
+ * duplicate it. Updates is the game's one notice surface: friend requests, knocks, gifts and
+ * report receipts (the server's social updates) together with what the life itself posts
+ * through 'notice.posted' — rent due, paid and missed, loan payments, promotions, illness and
+ * the Governor's news — newest first. Which life notices you have already seen is remembered
+ * on this device only.
  * All text is escaped; nothing a player typed is ever rendered as markup or as a link.
  * The panel contract is at the top of src/ui/shell.js.
  */
@@ -20,6 +24,24 @@ const convOf = (key) => S.me?.conversations.find((conv) => conv.id === key) || n
 const unreadUpdates = () => (S.me?.updates || []).filter((update) => !update.read).length;
 const unreadChats = () => (S.me?.conversations || []).reduce((sum, conv) => sum + conv.unread, 0);
 const time = (at) => formatClock(at).split('· ')[1] ?? '';
+
+const NOTICE_ICONS = { 'rent-due': '🗓️', rent: '🏠', 'rent-missed': '⚠️', loan: '🏦', 'loan-missed': '⚠️', promotion: '🎉', illness: '🤒', recovered: '💪', gov: '🏛️', transfer: '💸', bae: '💞' };
+const UPDATE_ICONS = { transfer: '💸', report: '🛡️', 'friend-request': '🤝', 'friend-accepted': '🤝', 'invite-knock': '🚪', 'invite-answer': '🚪', 'group-added': '👥', 'bae-request': '💞', 'bae-answer': '💞' };
+const SEEN_KEY = 'joinallworld-notices-seen';
+let seenAt = null;
+/** Server time of the newest life notice already read on this device, per city. */
+function noticesSeen(view) {
+  if (seenAt === null) { try { seenAt = JSON.parse(window.localStorage.getItem(SEEN_KEY)) || {}; } catch { seenAt = {}; } }
+  return Number(seenAt[view.cityId]) || 0;
+}
+const freshNotices = (view) => (view.social?.notices || []).filter((notice) => notice.at > noticesSeen(view)).length;
+function markNoticesSeen(view) {
+  const newest = Math.max(0, ...(view.social?.notices || []).map((notice) => notice.at));
+  if (newest <= noticesSeen(view)) return false;
+  seenAt[view.cityId] = newest;
+  try { window.localStorage.setItem(SEEN_KEY, JSON.stringify(seenAt)); } catch {}
+  return true;
+}
 
 function bubble(item, meId, group) {
   if (item.status) {
@@ -70,10 +92,11 @@ function updatesHtml(view) {
   const requests = S.me.requests.in.map((request) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">🤝</span><div><strong>${esc(request.name)}</strong><small>wants to be friends</small></div><span class="social-actions"><button class="social-btn is-primary" data-m-friend="${json({ from: request.id, accept: true })}">Accept</button><button class="social-btn" data-m-friend="${json({ from: request.id, accept: false })}">Decline</button></span></div>`).join('');
   const bae = S.me.baeRequests.map((request) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">💞</span><div><strong>${esc(request.name)}</strong><small>asked you to be their Bae</small></div><span class="social-actions"><button class="social-btn is-primary" data-m-bae="${json({ from: request.id, accept: true })}">Yes</button><button class="social-btn" data-m-bae="${json({ from: request.id, accept: false })}">Not now</button></span></div>`).join('');
   const knocks = S.me.house.knocks.length ? `<div class="social-row"><span class="social-avatar" aria-hidden="true">🚪</span><div><strong>${esc(S.me.house.knocks.map((knock) => knock.from.name).join(', '))}</strong><small>knocking at your door</small></div><span class="social-actions"><button class="social-btn is-primary" data-open="invite">Answer</button></span></div>` : '';
-  const lines = [...S.me.updates.map((update) => ({ at: update.at, text: update.text, fresh: !update.read, icon: { transfer: '💸', report: '🛡️', 'friend-request': '🤝', 'friend-accepted': '🤝', 'invite-knock': '🚪', 'invite-answer': '🚪', 'group-added': '👥' }[update.kind] || '🔔' })),
-    ...(view.social?.notices || []).map((notice) => ({ at: notice.at, text: notice.text, icon: '📣' }))].sort((a, b) => b.at - a.at);
+  const seen = ui.noticesSeenBefore ?? noticesSeen(view);
+  const lines = [...S.me.updates.map((update) => ({ at: update.at, text: update.text, fresh: !update.read, icon: UPDATE_ICONS[update.kind] || '🔔' })),
+    ...(view.social?.notices || []).map((notice) => ({ at: notice.at, text: notice.text, fresh: notice.at > seen, icon: NOTICE_ICONS[notice.kind] || '📣' }))].sort((a, b) => b.at - a.at);
   return `${requests}${bae}${knocks}${lines.length ? lines.map((line) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">${line.icon}</span><div><strong style="white-space:normal">${esc(line.text)}</strong><small>${esc(formatClock(line.at))}${line.fresh ? ' · New' : ''}</small></div></div>`).join('')
-    : requests || bae || knocks ? '' : '<p class="social-note">Nothing yet. Friend requests, knocks at your door, gifts and notices such as rent reminders appear here.</p>'}`;
+    : requests || bae || knocks ? '' : '<p class="social-note">Nothing yet. Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the Governor appear here.</p>'}`;
 }
 
 const chip = {
@@ -82,7 +105,8 @@ const chip = {
     if (!view.connected) return '<button class="life-job" disabled><span>✉️</span><div><strong>Messages</strong><small>Offline · reconnect to read</small></div></button>';
     const knocks = S.me?.house.knocks || [];
     if (knocks.length) return `<button class="life-job is-active" data-open="invite"><span>🚪</span><div><strong>${esc(knocks[0].from.name)} is knocking</strong><small>Let them in or not now</small></div></button>`;
-    const chats = unreadChats(), updates = unreadUpdates() + (S.me?.requests.in.length || 0);
+    const chats = unreadChats(), updates = unreadUpdates() + (S.me?.requests.in.length || 0) + freshNotices(view);
+    if (view.onboarding?.required) return '';
     const hint = !S.me ? (S.error ? 'Could not load · tap to retry' : 'Loading…') : chats || updates ? [chats ? `${chats} unread` : '', updates ? `${updates} update${updates === 1 ? '' : 's'}` : ''].filter(Boolean).join(' · ') : 'No new messages';
     return `<button class="life-job ${chats || updates ? 'is-active' : ''}" data-open="messages"><span>✉️</span><div><strong>Messages</strong><small>${esc(hint)}</small></div></button>`;
   },
@@ -103,11 +127,13 @@ const app = {
     if (blocked) return blocked;
     if (S.openConv !== ui.open) ui.open = S.openConv; // a new chat received its real conversation id
     if (ui.open) return `${socketNote()}${threadHtml(view)}`;
-    const chats = unreadChats(), updates = unreadUpdates() + S.me.requests.in.length + S.me.baeRequests.length;
+    const chats = unreadChats(), updates = unreadUpdates() + S.me.requests.in.length + S.me.baeRequests.length + freshNotices(view);
     return `${socketNote()}<div class="social-tabs" role="tablist"><button role="tab" aria-selected="${ui.tab === 'chats'}" class="${ui.tab === 'chats' ? 'is-selected' : ''}" data-m-tab="chats">Chats${chats ? `<span class="social-badge">${chats}</span>` : ''}</button><button role="tab" aria-selected="${ui.tab === 'updates'}" class="${ui.tab === 'updates' ? 'is-selected' : ''}" data-m-tab="updates">Updates${updates ? `<span class="social-badge">${updates}</span>` : ''}</button></div>${ui.tab === 'chats' ? chatsHtml() : updatesHtml(view)}`;
   },
   bind(root, api) {
     bindCommon(root, api);
+    // Reading the Updates tab marks the life's notices as seen; the ones that were new stay marked "New" while it is open.
+    if (ui.tab === 'updates' && !ui.open && S.me) { if (ui.noticesSeenBefore === undefined) ui.noticesSeenBefore = noticesSeen(api.view()); markNoticesSeen(api.view()); } else ui.noticesSeenBefore = undefined;
     const on = (selector, event, handler) => { for (const node of root.querySelectorAll(selector)) node.addEventListener(event, handler); };
     const data = (event, key) => JSON.parse(event.currentTarget.dataset[key]);
     if (ui.open && !ui.open.startsWith('to:') && !S.threads.get(ui.open)?.loaded && !S.threads.get(ui.open)?.error && S.me) void openThread(ui.open);

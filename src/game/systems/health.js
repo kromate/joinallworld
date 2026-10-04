@@ -21,6 +21,7 @@
  *   strain  seconds of neglect accumulated toward falling sick (0 … illness.neglectSeconds)
  *
  * EVENTS EMITTED     'illness.started' { cause }   'illness.cured' { by }   'weather.soaked' { mode }
+ *                    'notice.posted' { kind: 'illness' | 'recovered', text }   a line for the Updates feed
  * EVENTS LISTENED    'travel.arrived' { mode }, 'activity.completed' (tags 'cure', 'checkup',
  *                    'immunity'), 'health.treat' { by }
  * MODIFIERS          'activity.block' — `requiresIllness: true` activities need you to be sick
@@ -56,6 +57,8 @@ function fallSick(state, cause, ctx) {
   state.health.strain = 0;
   addMoodlet(state, feelings.sick, ctx);
   emit(state, 'illness.started', { cause }, ctx);
+  emit(state, 'notice.posted', { kind: 'illness', text: cause === 'rain' ? 'You caught something in the rain and are very sick. See the doctor or the free clinic at the General Hospital.'
+    : 'You fell sick from going hungry and unwashed for too long. See the doctor or the free clinic at the General Hospital.' }, ctx);
   return true;
 }
 
@@ -71,6 +74,7 @@ function cure(state, by, seconds, ctx) {
   removeMoodlet(state, feelings.sick.id);
   addMoodlet(state, feelings.recovered, ctx);
   emit(state, 'illness.cured', { by }, ctx);
+  emit(state, 'notice.posted', { kind: 'recovered', text: 'You are well again.' }, ctx);
   return true;
 }
 

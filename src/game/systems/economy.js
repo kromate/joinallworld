@@ -42,10 +42,14 @@
  *   loan         null | { left, prepaid, fees }             prepaid = Saturdays already covered
  *   deposits     [{ id, amount, term, openedAt }]
  *   seq          counter for deposit ids
+ *   reminded     billing week whose Friday reminder has been posted | null
  * }
  *
  * LISTENS  'life.started' { house, lottery }   sets the rent house and, for the loan outcome, the loan
  *          'house.moved'  { id }               changes the rent from the next Saturday
+ * UPDATES  Every bill posts one line to the Updates feed through 'notice.posted' { kind, text }:
+ *          a reminder on Friday that names what falls due on Saturday ('rent-due'), then what was
+ *          paid ('rent', 'loan') or missed ('rent-missed', 'loan-missed').
  * EMITS    'rent.due' { amount, house } · 'rent.paid' { amount, house, arrears } ·
  *          'rent.missed' { amount, house, arrears, missed } · 'loan.paid' { amount, left } ·
  *          'loan.missed' { amount, left } · 'deposit.opened' { id, amount, term } ·
@@ -108,6 +112,8 @@ const lockedTotal = (economy) => economy.deposits.reduce((sum, deposit) => sum +
 const arrearsCap = (house) => Math.round(house.rent * MAX_ARREARS_WEEKS * (1 + LATE_FEE_PERCENT / 100));
 const lateFee = (house) => Math.round((house.rent * LATE_FEE_PERCENT) / 100);
 
+const note = (state, kind, text, ctx) => emit(state, 'notice.posted', { kind, text }, ctx);
+
 function startBilling(state, ctx) {
   if (state.economy.billedWeek === null) state.economy.billedWeek = billingWeek(nowOf(state, ctx));
 }
@@ -125,6 +131,7 @@ function bill(state, week, ctx) {
     if (rent.arrears > 0) {
       if (debit(state, rent.arrears, `Rent arrears: ${house.label}`, ctx)) {
         emit(state, 'rent.paid', { amount: rent.arrears, house: house.id, arrears: 0 }, ctx);
+        note(state, 'rent', `Rent arrears of ${naira(rent.arrears)} for your ${house.label} were collected. You are up to date.`, ctx);
         rent.arrears = 0;
         rent.missed = 0;
       } else rent.arrears = Math.min(arrearsCap(house), rent.arrears + lateFee(house));
@@ -132,11 +139,13 @@ function bill(state, week, ctx) {
     emit(state, 'rent.due', { amount: house.rent, house: house.id }, ctx);
     if (debit(state, house.rent, `Rent: ${house.label} (due ${due})`, ctx)) {
       emit(state, 'rent.paid', { amount: house.rent, house: house.id, arrears: rent.arrears }, ctx);
+      note(state, 'rent', `Rent paid: ${naira(house.rent)} for your ${house.label} (due ${due}).`, ctx);
     } else {
       rent.arrears = Math.min(arrearsCap(house), rent.arrears + house.rent);
       rent.missed += 1;
       state.message = `Rent missed: ${naira(house.rent)} for ${house.label} was due ${due} and you had ${naira(state.cash)}. You now owe ${naira(rent.arrears)}. Pay it in Phone → Bank before next Saturday to avoid a late fee.`;
       emit(state, 'rent.missed', { amount: house.rent, house: house.id, arrears: rent.arrears, missed: rent.missed }, ctx);
+      note(state, 'rent-missed', `Rent missed: ${naira(house.rent)} was due ${due}. You owe ${naira(rent.arrears)}; pay it in Phone → Bank before next Saturday to avoid a late fee.`, ctx);
     }
     setArrearsFeeling(state, ctx);
   }
@@ -148,9 +157,12 @@ function bill(state, week, ctx) {
       if (debit(state, amount, `Loan repayment (due ${due})`, ctx)) {
         loan.left -= amount;
         emit(state, 'loan.paid', { amount, left: loan.left }, ctx);
+        note(state, 'loan', loan.left > 0 ? `Loan instalment paid: ${naira(amount)} (due ${due}). ${naira(loan.left)} left.` : `Last loan instalment paid: ${naira(amount)}. Your loan is cleared.`, ctx);
       } else {
-        if (loan.fees < MAX_LOAN_FEES) { loan.fees += 1; loan.left += LOAN_LATE_FEE; }
+        const charged = loan.fees < MAX_LOAN_FEES;
+        if (charged) { loan.fees += 1; loan.left += LOAN_LATE_FEE; }
         emit(state, 'loan.missed', { amount, left: loan.left }, ctx);
+        note(state, 'loan-missed', `Loan instalment missed: ${naira(amount)} was due ${due} and you had ${naira(state.cash)}.${charged ? ` A ${naira(LOAN_LATE_FEE)} fee was added.` : ''} ${naira(loan.left)} is now owed.`, ctx);
       }
     }
   }
@@ -170,6 +182,7 @@ const actions = {
     else if (payload.mode === 'week') loan.prepaid = Math.min(loan.prepaid + 1, Math.ceil(loan.left / LOAN.weekly));
     state.message = loan.left > 0 ? `Paid ${naira(amount)} towards your loan. ${naira(loan.left)} left; this covers the next Saturday collection.` : 'Loan paid off in full. No more weekly collections.';
     emit(state, 'loan.paid', { amount, left: loan.left }, ctx);
+    note(state, 'loan', loan.left > 0 ? `You paid ${naira(amount)} towards your loan. ${naira(loan.left)} left.` : 'You paid off your loan in full.', ctx);
     return ok(state, loan.left > 0 ? 'loan_paid' : 'loan_cleared');
   },
   'economy.pay-rent'(state, payload, ctx) {
@@ -268,6 +281,7 @@ export default {
       } : null,
       deposits: sanitizeDeposits(saved.deposits, now),
       seq: safeCount(saved.seq) ? saved.seq : 0,
+      reminded: Number.isSafeInteger(saved.reminded) ? Math.min(saved.reminded, billingWeek(now) + 1) : null,
     };
   },
   actions,
@@ -302,6 +316,15 @@ export default {
       emit(state, 'deposit.closed', { id: deposit.id, amount: deposit.amount, interest }, ctx);
     }
     if (economy.billedWeek === null) return;
+    // Friday: one reminder of what falls due at midnight, so a bill is never a surprise.
+    if (lagosTime(now).weekday === 5 && economy.reminded !== billingWeek(now) + 1) {
+      economy.reminded = billingWeek(now) + 1;
+      const house = houseOf(economy.rent.house), loan = economy.loan;
+      const instalment = loan && loan.left > 0 && !(loan.prepaid > 0) ? Math.min(LOAN.weekly, loan.left) : 0;
+      const parts = [house ? `rent ${naira(house.rent)}` : '', instalment ? `loan ${naira(instalment)}` : ''].filter(Boolean);
+      const total = (house ? house.rent : 0) + instalment;
+      if (total > 0) note(state, 'rent-due', `Due tomorrow (Saturday): ${parts.join(' and ')}. You have ${naira(state.cash)}${state.cash < total ? ` — ${naira(total - state.cash)} short` : ''}.`, ctx);
+    }
     const current = billingWeek(now);
     if (current <= economy.billedWeek) return;
     const first = Math.max(economy.billedWeek + 1, current - MAX_CATCHUP_WEEKS + 1);

@@ -12,6 +12,10 @@
  *   - the lazy panel groups                                    (src/ui/panels/index.js)
  * Until a piece arrives its callers simply skip it (`venue?.…`), and it is given the current
  * state the moment it exists, so nothing depends on load order.
+ *
+ * TAB ORDER. In index.html the overlay (HUD, the open nav sheet, the bottom nav) comes before the
+ * scene layers, so the keyboard reaches the Map sheet before the map's pins and the scene's name
+ * tags. Stacking does not depend on that order: the overlay has its own z-index.
  */
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
 import { createShell } from './ui/shell.js';
@@ -37,7 +41,7 @@ const client = createClient({
   onStatus: status,
   onChange: accepted,
   onSessionExpired() { community?.destroy(); community = null; render(); shell.open(sessionGate().id, { reason: 'expired' }); },
-  onNeedName() { shell.open(sessionGate().id, { reason: 'new' }); },
+  onNeedName(problem) { shell.open(sessionGate().id, { reason: 'new', problem: problem ?? null }); },
 });
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
@@ -195,6 +199,26 @@ function toggleCommunity(force) {
   $('community-panel').hidden = typeof force === 'boolean' ? !force : !$('community-panel').hidden;
 }
 
+/**
+ * A venue chat line the server refused (blocked wording, or the player is muted). The community
+ * panel does not pass the refusal's code to onStatus; all it exposes is its own status line
+ * (`.community-feedback`), where it prints the sentence the server sent, and "Not sent" on the line
+ * itself. That sentence is repeated as a toast so it is seen wherever the panel is scrolled to.
+ * Event-driven (a MutationObserver on that one element): nothing runs while the game is idle.
+ */
+let chatWatch = null;
+function watchChatRefusals(container) {
+  chatWatch?.disconnect();
+  const line = container.querySelector('.community-feedback');
+  if (!line || typeof MutationObserver !== 'function') return;
+  chatWatch = new MutationObserver(() => {
+    const text = line.textContent.trim();
+    const refused = [...container.querySelectorAll('.community-messages li small')].some((node) => node.textContent === 'Not sent');
+    if (text && refused) shell.toast(text, 'error');
+  });
+  chatWatch.observe(line, { childList: true, characterData: true, subtree: true });
+}
+
 async function connect(createNew = false) {
   if (connecting) return;
   connecting = true;
@@ -205,6 +229,7 @@ async function connect(createNew = false) {
       const [{ createCommunity }] = await Promise.all([import('./community.js'), import('./community.css')]);
       community = await createCommunity($('community-content'), { cityId: client.cityId, venueId: client.state.location,
         onStatus: (s) => { if (s.status === 'offline') status('Community disconnected · reconnect in panel', true); else if (s.connected) status('Connected · progress saved'); } });
+      watchChatRefusals($('community-content'));
     }
     render();
   } catch (error) {

@@ -109,3 +109,31 @@ test('uuid() works without crypto.randomUUID, as on a plain-HTTP LAN origin', as
   assert.equal(ids.size, 50); for (const id of ids) assert.match(id, pattern);
   assert.match(uuid(), pattern);
 });
+
+test('a nickname the server refuses comes back to the form with the server’s reason; other requests keep it on the error', async () => {
+  const asked = [], statuses = [];
+  const reason = 'That name cannot contain a link or web address in this beta.';
+  const json = (status, body) => ({ ok: status < 300, status, json: async () => body });
+  let reply = json(400, { error: 'name_not_allowed', reason });
+  const fetch = async (path, options = {}) => (path === '/api/session' && options.method === 'POST' ? reply : path === '/api/session' ? json(401, { error: 'device_session_required' }) : json(404, { error: 'not_found' }));
+  const client = createClient({ fetch, now: () => 1000, setTimeout: () => 0, clearTimeout: () => {}, onStatus: (text, error) => statuses.push([text, error]), onNeedName: (problem) => asked.push(problem) });
+  client.identity.name = 'www.abc.com';
+  assert.equal(await client.connect(true), false);
+  assert.deepEqual(asked, [{ code: 'name_not_allowed', reason, name: 'www.abc.com' }]);
+  assert.deepEqual(statuses.at(-1), ['Choose a different nickname to connect', true]);
+  assert.equal(client.online, false);
+  // A muted player renaming, and a refusal that carries no sentence: still a reason the form can show.
+  reply = json(403, { error: 'muted', reason: 'A moderator has muted you until 10:00 UTC.' });
+  await client.connect(true);
+  assert.deepEqual([asked.at(-1).code, asked.at(-1).reason], ['muted', 'A moderator has muted you until 10:00 UTC.']);
+  reply = json(400, { error: 'invalid_name' });
+  await client.connect(true);
+  assert.deepEqual([asked.at(-1).code, asked.at(-1).reason], ['invalid_name', 'A nickname needs 3 to 24 ordinary characters.']);
+  // Anything else is a connection problem, not a question about the name.
+  reply = json(503, { error: 'device_capacity' });
+  await client.connect(true);
+  assert.equal(asked.length, 3);
+  // fetchJson rejects with the server's sentence attached, for panels that show it themselves (Profile rename).
+  reply = json(400, { error: 'name_not_allowed', reason });
+  await assert.rejects(client.fetchJson('/api/session', { method: 'POST', body: { name: 'x' } }), (error) => error.status === 400 && error.code === 'name_not_allowed' && error.reason === reason);
+});

@@ -45,7 +45,9 @@ export const newClientId = () => `c-${uuid()}`;
 export async function call(path, body) {
   try { return await S.api.fetchJson(path, body ? { method: 'POST', body } : undefined); }
   catch (error) {
-    const reason = error.status === 429 ? 'Too many requests. Wait a minute and try again.'
+    // A refusal the server explained (blocked wording, a mute) is shown in its own words.
+    const reason = error.reason && error.status >= 400 && error.status < 500 && error.status !== 401 && error.status !== 429 ? error.reason
+      : error.status === 429 ? 'Too many requests. Wait a minute and try again.'
       : error.status === 401 ? 'Your device session expired. Reconnect to continue.'
         : error.code === 'onboarding_required' ? 'Finish creating your Sim first. People and messages open once you have moved in.'
         : error.status === 409 ? 'That was already sent with different details. Try again.'

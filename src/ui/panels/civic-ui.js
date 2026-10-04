@@ -20,7 +20,7 @@ const MESSAGES = {
   invalid_city: 'That city is not available.',
   body_too_large: 'That is too much text.',
 };
-export const explain = (error) => MESSAGES[error?.code] || error?.message || 'The server could not be reached. Try again.';
+export const explain = (error) => error?.reason || MESSAGES[error?.code] || error?.message || 'The server could not be reached. Try again.';
 
 export const entry = (key) => cache.get(key) ?? blank();
 export const put = (key, data) => { const item = cache.get(key) ?? blank(); cache.set(key, Object.assign(item, { data, at: Date.now(), error: null })); };

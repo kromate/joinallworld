@@ -82,7 +82,12 @@ const profile = {
         if (!result.ok) error = result.reason || 'Your look could not be saved. Try again.';
         else { draft = null; api.toast('Profile saved.', 'good'); }
       } catch (problem) {
-        error = problem?.code === 'invalid_name' ? 'That display name is not allowed. Use 3–24 ordinary characters.' : `Your name could not be saved: ${problem?.message || 'connection problem'}. Try again.`;
+        // The server's own sentence when it refused the name (wording not allowed, or the player is muted).
+        error = problem?.reason ? problem.reason
+          : problem?.code === 'invalid_name' ? 'That display name is not allowed. Use 3–24 ordinary characters.'
+          : problem?.code === 'name_not_allowed' ? 'That display name is not allowed. Choose another one.'
+          : problem?.code === 'muted' ? 'A moderator has muted you, so your display name cannot be changed right now.'
+          : `Your name could not be saved: ${problem?.message || 'connection problem'}. Try again.`;
       }
       pending = false;
       redraw();

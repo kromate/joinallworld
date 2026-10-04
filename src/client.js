@@ -39,6 +39,10 @@ export function uuid(source = globalThis.crypto) {
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
+/** Refusals of POST /api/session that are about the nickname itself, and what to say when the server sent no sentence. */
+const NAME_REFUSALS = ['name_not_allowed', 'invalid_name', 'muted'];
+const NAME_TEXT = { name_not_allowed: 'That nickname is not allowed. Choose another one.', invalid_name: 'A nickname needs 3 to 24 ordinary characters.', muted: 'A moderator has muted you, so your nickname cannot be changed right now.' };
+
 const ACTIVE_POLL_MS = 1000;
 const IDLE_POLL_MS = 60000;
 
@@ -49,7 +53,8 @@ const IDLE_POLL_MS = 60000;
  *   onChange(state, previousState)   after every accepted server state
  *   onStatus(text, isError)          connection status line
  *   onSessionExpired()               the device session is gone (401)
- *   onNeedName()                     no session yet: ask for a nickname, then call connect(true)
+ *   onNeedName(problem?)             no session yet: ask for a nickname, then call connect(true).
+ *                                    `problem` { code, reason, name } is set when the server refused the nickname just tried.
  *   onSession(session)               a session was established or replaced
  */
 export function createClient({ fetch = globalThis.fetch?.bind(globalThis), storage, now = Date.now, setTimeout: later = globalThis.setTimeout, clearTimeout: cancel = globalThis.clearTimeout,
@@ -77,7 +82,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     } catch { status(client.session ? 'Server saved · browser cache unavailable' : 'Not saved · browser storage unavailable', true); }
   }
 
-  /** JSON request to the same origin. Rejects with Error{status, code}; a network failure reads as connection lost. */
+  /** JSON request to the same origin. Rejects with Error{status, code, reason?}; a network failure reads as connection lost. */
   async function api(path, options = {}) {
     let response;
     try {
@@ -90,6 +95,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (!response.ok) {
       const error = Error(payload.error === 'action_expired' ? TEXT.outOfSync : payload.error || payload.message || 'Connection failed');
       error.status = response.status; error.code = payload.code || payload.error;
+      if (typeof payload.reason === 'string' && payload.reason) error.reason = payload.reason; // the sentence the server wrote for the player
       throw error;
     }
     return payload;
@@ -150,6 +156,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       return true;
     } catch (error) {
       client.ready = false;
+      // The server refused the nickname (not allowed, malformed, or the player is muted): back to the form, with its reason.
+      if (createNew && NAME_REFUSALS.includes(error.code)) {
+        status('Choose a different nickname to connect', true);
+        onChange(client.state, client.state);
+        onNeedName({ code: error.code, reason: error.reason || NAME_TEXT[error.code], name: client.identity.name });
+        return false;
+      }
       status(error.status === 401 ? 'Session expired · reconnect to review your options' : 'Connection unavailable · changes paused', true);
       onChange(client.state, client.state);
       return false;

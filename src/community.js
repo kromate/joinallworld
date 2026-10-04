@@ -8,12 +8,13 @@ import './community.css';
  *   onMembers({ self, members: [{ id, name, position: { x, z } | null }] })   after every presence
  *       message and whenever the list empties (disconnect, room change, revocation, destroy).
  *       `position` is null until that member has reported one (the server's origin means "not yet").
+ *   venueName(venueId, cityId) → the venue's name in that city, for the room line (the panel itself knows only three).
  *   onStep(dx, dz) → true when the game walked the avatar by that much (the four "Walk" buttons here
  *       are the keyboard-accessible way to move without the scene). When it is absent or returns
  *       false — the scene could not be drawn — the buttons move the voice position directly, as before.
  * Nothing here enables the microphone: voice starts only from the Join voice button.
  */
-export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, onStep = null, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
+export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, onStep = null, venueName = null, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
   container.innerHTML = `<section class="community" aria-label="Local community">
     <header class="community-header"><div><span class="community-eyebrow">People nearby</span><h2>Community</h2></div><span class="community-connection" role="status">Connecting…</span></header>
     <p class="community-room"></p>
@@ -52,8 +53,11 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   const send = (message) => { if (socket?.readyState !== WebSocket.OPEN) return false; socket.send(JSON.stringify(message)); return true; };
   const roomLabel = () => {
     const privateHome = room.venueId === 'home';
-    const venueName = privateHome ? 'Your home (private)' : room.venueId === 'library' ? 'Library' : room.venueId === 'club' ? 'Club' : 'Park';
-    el.room.textContent = `${room.cityId === 'ibadan' ? 'Ibadan' : 'Lagos'} · ${venueName}`;
+    // The game names the venue (venueName(venueId, cityId) → its label in that city); without it, the three names this panel always knew.
+    let named = null;
+    try { named = typeof venueName === 'function' ? venueName(room.venueId, room.cityId) : null; } catch { named = null; }
+    const place = privateHome ? 'Your home (private)' : typeof named === 'string' && named ? named : room.venueId === 'library' ? 'Library' : room.venueId === 'club' ? 'Club' : 'Park';
+    el.room.textContent = `${room.cityId === 'ibadan' ? 'Ibadan' : 'Lagos'} · ${place}`;
     el.proximity.hidden = privateHome; el.voiceSection.hidden = privateHome; el.chatSection.hidden = privateHome; el.privateNote.hidden = !privateHome;
   };
   roomLabel();
@@ -97,7 +101,8 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     el.position.textContent = !self ? 'Waiting for your place in the venue…'
       : inVoice.length ? `${near} of ${inVoice.length} ${inVoice.length === 1 ? 'person' : 'people'} in voice ${near === 1 && inVoice.length === 1 ? 'is' : 'are'} within range of where you stand.`
         : 'Nobody else is in voice here yet.';
-    for (const button of [el.north, el.south, el.west, el.east]) button.disabled = !roomReady || !self;
+    // On the campus the avatar is walked in its own scene (its place arrives through moveTo): the four buttons would move the voice position alone.
+    for (const button of [el.north, el.south, el.west, el.east]) button.disabled = !roomReady || !self || room.venueId === 'unilag';
   }
   async function ensureVoiceConfig(generation) {
     const expired = iceConfig?.expiresAt && Date.now() >= iceConfig.expiresAt;

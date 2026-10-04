@@ -463,6 +463,7 @@ async function startCommunity() {
     if (!module || community || !client.online) return;
     community = await module.createCommunity($('community-content'), { cityId: client.cityId, venueId: client.state.location,
       onMembers,
+      venueName: (venueId, cityId) => venueLabel(venueId, cityId),
       // The panel's Walk buttons walk the avatar; its new place comes back through onMove like any other step.
       onStep: (dx, dz) => venue?.walkBy?.(dx, dz) === true,
       onStatus: (s) => { if (s.status === 'offline') status('Community disconnected · reconnect in panel', true); else if (s.connected) status('Connected · progress saved'); } });

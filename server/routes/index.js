@@ -30,7 +30,8 @@
  *   }
  *
  * PATHS   must start with /api/<your area>/ (auth → /api/auth/, social → /api/social/,
- *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/). A ":name" segment captures into request.params. A duplicate
+ *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/, growth → /api/growth/ and,
+ *         for its operator view, /api/mod/growth/). A ":name" segment captures into request.params. A duplicate
  *         "METHOD /path" aborts start-up.
  *
  * REQUEST (portable — no Node req/res, so the same module can run in the Worker later)
@@ -139,6 +140,10 @@
  *                                          blocked the other; in memory). The moderation module sets
  *                                          ctx.checks.muted(publicId) → null | { code: 'muted', reason, until }.
  *                                          Ask both before delivering or storing player text.
+ *   ctx.pages                              Map of path prefix → async ({ path, query, origin, ip }) => ({ status, html }): one small
+ *                                          HTML page outside /api/ (the link-preview page /s/<code>). No script may run on it and it
+ *                                          sets no cookie; `origin` is PUBLIC_ORIGIN or the request's own host. Absent on a host
+ *                                          that does not serve pages (use ctx.pages?.set).
  *   ctx.startup                            array of promises the host awaits before it takes requests
  *                                          (a module loading an in-memory index pushes its load here)
  *   ctx.randomId()                         a random UUID (for salts and ids; not a clock, not a secret store)
@@ -183,8 +188,10 @@ import social from './social.js';
 import civic from './civic.js';
 import support from './support.js';
 import moderation from './moderation.js';
+import growth from './growth.js';
+import growthMod from './growth-mod.js';
 
-export const ROUTE_MODULES = [core, auth, social, civic, support, moderation];
+export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, growth, growthMod];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /** Build the lookup. Returns { match(method, pathname) → { handler, params } | null, keys }. */

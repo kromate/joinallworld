@@ -60,7 +60,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   voteCapMode = process.env.VOTE_CAP_MODE || 'flag',
   log = (line) => console.error(line),
   receiptLimits, // { perPlayer, global, lightPerPlayer, lightGlobal } for ctx.once (server/routes/once.js); the defaults are the documented numbers
+  publicOrigin: givenOrigin = process.env.PUBLIC_ORIGIN, // e.g. https://play.example — used for absolute links in previews
   buildId = process.env.BUILD_ID || packageVersion() } = {}) {
+  const configuredOrigin = typeof givenOrigin === 'string' && /^https?:\/\/[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(givenOrigin) ? givenOrigin : '';
   const store = providedStore || await createStore(dataDir, { ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');
   if (!Number.isFinite(heartbeatMs) || heartbeatMs < 1000 || heartbeatMs > 60000) throw new Error('Invalid heartbeat interval');
@@ -135,6 +137,17 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     return { 'Set-Cookie': cookieHeader(req, secret) };
   }
   const addressOf = req => clientAddress(req, trustProxy);
+  /**
+   * The origin written into absolute links (a link preview needs absolute URLs): PUBLIC_ORIGIN when the operator set
+   * it, otherwise the request's own Host — accepted only if it is made of host characters, so nothing a client sends
+   * in that header can put markup into a page.
+   */
+  function publicOrigin(req) {
+    if (configuredOrigin) return configuredOrigin;
+    const host = String(req.headers.host || '');
+    if (!/^[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(host)) return '';
+    return `${req.socket.encrypted || (trustProxy && req.headers['x-forwarded-proto'] === 'https') ? 'https' : 'http'}://${host}`;
+  }
   /** Header-only bearer check for the operator routes. False when the feature is disabled. */
   function isModerator(req) {
     if (!moderatorDigest) return false;
@@ -221,6 +234,20 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         return;
       }
       if (!['GET', 'HEAD'].includes(req.method)) throw fail(405, 'method_not_allowed');
+      // PAGES: a module may serve one small HTML page for a path prefix outside /api/ (ctx.pages — the link-preview
+      // page /s/<code>, routes/growth.js). The page gets the path, the query and the public origin, never the request;
+      // it may not set cookies, and it is sent with a policy that allows no script at all.
+      for (const [prefix, render] of ctx.pages) {
+        if (!url.pathname.startsWith(prefix)) continue;
+        if (!allow(`http:${addressOf(req)}`, 600)) throw fail(429, 'rate_limited');
+        const page = await render({ path: url.pathname, query: url.searchParams, origin: publicOrigin(req), ip: addressOf(req) });
+        if (!page || typeof page.html !== 'string') break;
+        if (res.headersSent || res.writableEnded) return;
+        res.writeHead(Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=300',
+          'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'" });
+        res.end(req.method === 'HEAD' ? undefined : page.html);
+        return;
+      }
       const root = resolve(distDir);
       let path = resolve(root, `.${decodeURIComponent(url.pathname)}`);
       if (path !== root && !path.startsWith(root + sep)) throw fail(403, 'invalid_path');
@@ -299,6 +326,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // Checks one module provides for another. checks.homeGuest is set by the social module and
     // read by ws/rooms.js; while it is absent, nobody can join another player's Home room.
     checks: {},
+    // Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })).
+    pages: new Map(),
     config: { sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup: [],

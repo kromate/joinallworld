@@ -93,7 +93,7 @@ All SHAs are immutable, local-only, cumulative commits on `astra/unilag`. No bra
 
 The code units are locally verified. Parity host wiring, real shared-store persistence, real device performance and unresolved campus fidelity items are open. These are not production completion claims.
 
-## Integration requests
+## Original handoff requests (superseded by main integration)
 
 The campus lane does not edit existing files. The parity owner must register `UNILAG_VENUE` in the venue catalogue, `buildUnilag` for scene kind `unilag`, and campus systems in the registry. The preview is isolated from the game server; no production delivery is claimed.
 
@@ -127,7 +127,7 @@ Routing: Luna handled two bounded research units and content. Sol handled layout
 | `shuttle.js` | default system `unilagShuttle`, `SHUTTLE_STOPS`, `shuttleRoute`, `shuttlePose`, `buildShuttle` | Fare/timer authority and host-driven visible ride |
 | `landmark.js` | `MAP_PLACEMENT`, `buildUnilagLandmark` | Lagos map miniature; x15/z-42, footprint14x10, approximate mainland presentation coordinates |
 
-Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The combined `integration.test.js` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. No production registry file is edited by this lane.
+Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The combined `integration.test.js` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. The isolated source lane did not edit registry files; the main integration below now registers these systems.
 
 Host travel arrives at `main-gate`. Call `walk.move(x,y,z,ry)` or `setPosition(x,z)` when the player moves. `walk.grid.path` routes through portals and rejects partial A* fallback results. Render only in the host's bounded motion loop. Supply the player's recorded appearance through `setPlayer`. Labels are plain text; DOM consumers must use `textContent`. `tags()` includes landmarks and a capped 12-person crowd. Scene, shuttle and landmark provide disposal hooks and share kit materials. `lighting()` returns the host's tuple shape, not preview-specific objects.
 
@@ -200,3 +200,17 @@ Shared routes are `GET /api/campus?city=lagos`, `POST /api/campus/nominate` and 
 Browser acceptance on the integrated app at390x844: admission, matriculation, four Computer Engineering courses, Mariere room allocation, expected balance5000-200-1100-300=3400; Library walking destination and idle frame count unchanged at308 across two reads. These use a seeded private QA life on an isolated local server, not an existing user account. Screenshot evidence is under this checkout's ignored `src/campus/unilag/evidence`.
 
 Current main has an SVG city map, so the live entry is its UNILAG pin; the exported three-dimensional map landmark remains available for the separate 3D-map upgrade. No shared table-game framework exists on this main baseline; the Whot table attachment metadata is retained without advertising a playable table. Shuttle road animation is connected; pedestrian boarding/alighting connector animation remains a visual refinement. Real-device Android performance and the recorded campus fidelity limitations are unchanged. No remote push or deployment is part of this merge request.
+
+### Final integration verification
+
+Concurrent main commit `7c2c911` added consent-gated telemetry during this task. It was merged into the integration branch as `dcd1abd`, preserving its client instrumentation, Worker routes, release fixes and package state. Campus source integration commit: `242d13d`.
+
+Browser verification exposed and fixed a client hydration bug: `createClient` rebuilt server snapshots with a zero-time context, removing valid in-flight shuttles and current quizzes. Hydration now uses the snapshot's server time and city. Two new client tests cover an active shuttle/polling and a quiz with a skewed local wall clock. No server-only trust flag or local reward grant was added.
+
+Actual integrated browser proof at390x844: the Engineering-to-Lagoon Front shuttle ran for21 server seconds; the moving renderer reported15 calls/22,412 triangles, then the server settled at `lagoon-front`, cleared the action and incremented rides exactly once. The second ₦50 trip changed the test balance4950→4900. Arrival diagnostics showed x320/z0, unlocked walking, a stopped frame loop, and renderCount2143 unchanged across two idle reads. The page had zero recorded runtime exceptions and scrollWidth390.
+
+A real two-WebSocket test joins two campus lives at the main gate, broadcasts x120/z-160 to both peers, and rejects x360/z0 in the lagoon. Ordinary venue bounds still reject coordinates beyond20. Shared route tests prove identity-derived nominations, replay receipts, invalid-vote rollback, public-action rejection and server-saved leaderboards.
+
+Acceptance evidence lives in the integration checkout `/Users/anthonyakpan/.codex/worktrees/8053/JoinAllworld/src/campus/unilag/evidence/`: `integrated-campus-overview.png`, `integrated-study.png`, `integrated-registered.png`, `integrated-hostel.png`, `integrated-walk-library.png`, `integrated-shuttle-moving.png` and `integrated-shuttle-arrived.png`. The last screenshot includes the deliberately enabled diagnostics overlay; the normal game has no such overlay. The parent inspected these images.
+
+Final combined checks: full test suite435 passed; edge suite28 passed; production Vite build passed, with the pre-existing large-chunk warning. These are local checks. The source-only main merge does not deploy the app or assert Android hardware performance.

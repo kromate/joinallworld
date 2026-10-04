@@ -123,3 +123,17 @@ test('position validation uses campus walkability while retaining ordinary venue
   assert.throws(() => validatePosition({ x: 25, z: 0 }, 'park'), /invalid_position/);
   assert.deepEqual(validatePosition({ x: 14, z: -3.5 }, 'park'), { x: 14, z: -3.5 });
 });
+
+test('two campus room members receive full-sized movement and reject lagoon water', async t => {
+  const f=await fixture(t);f.advance(MONDAY-f.now());
+  const ada=await f.device('Ada Walking'),bola=await f.device('Bola Walking');
+  await seedStudent(f,ada,{studentId:'ULG-2026-000011'});await seedStudent(f,bola,{studentId:'ULG-2026-000012'});
+  const a=await f.socket(ada);a.ws.send(JSON.stringify({type:'join',cityId:'lagos',venueId:'unilag'}));
+  const arrival=await a.next();assert.deepEqual(arrival.members[0].position,{x:-286,z:-112});
+  const b=await f.socket(bola);b.ws.send(JSON.stringify({type:'join',cityId:'lagos',venueId:'unilag'}));await b.next();await a.next();
+  a.ws.send(JSON.stringify({type:'move',x:120,z:-160}));
+  const own=await a.next(),remote=await b.next();
+  assert.deepEqual(own.members.find(p=>p.id===ada.id).position,{x:120,z:-160});
+  assert.deepEqual(remote.members.find(p=>p.id===ada.id).position,{x:120,z:-160});
+  a.ws.send(JSON.stringify({type:'move',x:360,z:0}));assert.equal((await a.next()).code,'invalid_position');
+});

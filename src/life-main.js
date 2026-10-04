@@ -210,9 +210,10 @@ const communityCode = createLazyLoader(() => Promise.all([import('./community.js
 /**
  * What the community panel shows while its code is not here: what happened, what happens next
  * (the same bounded retries as the status line — nothing else requests the chunk), and the two
- * things the player can do. "Try again" asks the loader at once; "Reload and retry" reloads the
- * page, because a browser can keep a failed module download for the life of the page, where no
- * in-page retry can succeed. A reload keeps the saved identity and asks for no microphone access.
+ * things the player can do. "Reload and retry" comes first: a browser can keep a failed module
+ * download for the life of the page (Chromium does — the file is reachable again and the import
+ * still fails), and then no in-page retry can succeed. A reload keeps the saved identity and asks
+ * for no microphone access. "Try again" asks the loader at once, for browsers that do fetch again.
  */
 function showCommunityRecovery(startProblem = null) {
   if (community) return;
@@ -221,8 +222,8 @@ function showCommunityRecovery(startProblem = null) {
   if (!down && !(waiting && content.querySelector('[data-community-recovery]'))) return;
   const next = waiting ? 'Trying again now…'
     : load.status === 'retrying' ? `Trying again by itself in ${Math.round(load.retryInMs / 1000)} s (attempt ${load.attempt + 1} of ${load.attempts}).`
-      : load.status === 'failed' ? 'It was tried several times and is no longer being retried.' : 'Its code loaded but it could not start.';
-  content.innerHTML = `<section data-community-recovery aria-label="Community unavailable"><h2>Community could not load</h2><p>Your saved city life is still available. Check your connection, then try community again.</p><p role="status">${next}</p><p><button type="button" class="ui-button is-primary" data-community-retry${waiting ? ' disabled' : ''}>Try again</button> <button type="button" class="ui-button" data-community-reload>Reload and retry</button></p></section>`;
+      : load.status === 'failed' ? 'It was tried several times and is no longer being retried. Reload to try again.' : 'Its code loaded but it could not start.';
+  content.innerHTML = `<section data-community-recovery aria-label="Community unavailable"><h2>Community could not load</h2><p>Your saved city life is still available. Check your connection, then try community again.</p><p role="status">${next}</p><p><button type="button" class="ui-button is-primary" data-community-reload>Reload and retry</button> <button type="button" class="ui-button" data-community-retry${waiting ? ' disabled' : ''}>Try again</button></p></section>`;
   content.querySelector('[data-community-retry]').onclick = () => { if (!client.online) shell.toast('You are offline. Reconnect to open the community.', 'error'); else void startCommunity(); };
   content.querySelector('[data-community-reload]').onclick = () => window.location.reload();
 }

@@ -30,9 +30,13 @@ import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKin
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, legacy } = useApp()
 
-/** The social client is not reactive: it calls api.refresh() when it changes, which bumps this. */
+/**
+ * The social client is not reactive: it changes its objects in place and calls api.refresh(),
+ * which bumps this. So what is read from it is copied on each bump — a computed that returned the
+ * same object again would tell nobody that its contents changed.
+ */
 const tick = shell.legacyTick
-const me = computed(() => { void tick.value; return social.me })
+const me = computed(() => { void tick.value; return social.me ? { ...social.me } : null })
 const view = game.view
 const connected = game.connected
 const notices = computed(() => view.value.social?.notices ?? [])
@@ -70,7 +74,7 @@ const socket = computed(() => { void tick.value; return social.socket })
 
 // ---- the thread ----------------------------------------------------------------------------
 const conv = computed<Conversation | null>(() => (ui.open ? me.value?.conversations.find((item) => item.id === ui.open) ?? null : null))
-const thread = computed(() => { void tick.value; return ui.open ? social.threads.get(ui.open) ?? null : null })
+const thread = computed(() => { void tick.value; const now = ui.open ? social.threads.get(ui.open) : undefined; return now ? { loaded: now.loaded, error: now.error } : null })
 const items = computed(() => { void tick.value; return ui.open ? threadView(ui.open) : [] })
 const title = computed(() => (ui.open ? threadTitle(ui.open, conv.value, ui.openName) : ''))
 const readOnly = computed(() => (ui.open && me.value ? readOnlyReason(ui.open, me.value, connected.value ? null : linkWords(view.value)?.cannot('send messages') ?? 'Not connected.') : null))
@@ -89,7 +93,7 @@ function back(): void {
   setOpen(null); void sync()
   void nextTick(() => { const list = rootBox.value; (Array.from(list?.querySelectorAll<HTMLElement>('[data-conv]') ?? []).find((row) => row.dataset.conv === was) ?? list?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]'))?.focus() })
 }
-function reloadThread(): void { const current = thread.value; if (current && ui.open) { current.error = null; void openThread(ui.open) } }
+function reloadThread(): void { const current = ui.open ? social.threads.get(ui.open) : undefined; if (current && ui.open) { current.error = null; void openThread(ui.open) } }
 function submitDraft(): void {
   const body = ui.draft.trim(), key = ui.open
   if (!body || !key || readOnly.value) return

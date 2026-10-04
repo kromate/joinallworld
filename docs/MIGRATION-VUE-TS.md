@@ -357,7 +357,9 @@ position. `?legacy=bank,messages` (or `?legacy=all`) keeps the existing ones, fo
   "Paying…" on the pressed button is new.
 - **Messages** (live data, optimistic sends): the outbox logic was already pure and was reused
   unchanged. The work was the boundary: the social client is not reactive, so the component reads
-  a counter that the client's `refresh()` bumps. That goes away at step 4.
+  a counter that the client's `refresh()` bumps, and must copy what it reads on each bump: the
+  client changes its objects in place, and a computed that returns the same object again notifies
+  nobody. A thread stayed on "Loading messages…" until that was done. It goes away at step 4.
 - **Report a problem** (a form): the panel's `redraw()` that saved and restored focus and caret
   is not needed at all. Focus is moved on purpose instead: to the text field on an error, to the
   receipt on success.

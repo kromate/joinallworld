@@ -35,7 +35,7 @@
 @keyframes qs-goal{0%,100%{transform:translate(-50%,-100%) scale(1)}50%{transform:translate(-50%,-112%) scale(1.07)}}
 @media(prefers-reduced-motion:reduce){.scene-tag.is-goal{animation:none}}
 /* The settle-in offer and the invite banner over the scene. */
-.qs-banner{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 8px);transform:translateX(-50%);z-index:30;display:flex;gap:10px;align-items:center;width:min(440px,calc(100% - 16px));min-height:56px;padding:10px 12px 10px 14px;border-radius:16px;background:#fff;color:var(--c-ink);box-shadow:0 8px 28px rgba(0,0,0,.28);font-family:var(--font)}
+.qs-banner{box-sizing:border-box;position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 8px);transform:translateX(-50%);z-index:30;display:flex;gap:10px;align-items:center;width:min(440px,calc(100% - 16px));min-height:56px;padding:10px 12px 10px 14px;border-radius:16px;background:#fff;color:var(--c-ink);box-shadow:0 8px 28px rgba(0,0,0,.28);font-family:var(--font)}
 .qs-banner.is-good{border-left:5px solid var(--c-green-dark)}
 .qs-banner.is-info{border-left:5px solid #e39a1c}
 .qs-banner div{flex:1;min-width:0}

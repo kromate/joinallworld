@@ -5,13 +5,17 @@
 // Portable and pure: functions take the city's civic data, a time, and (for presence) the
 // foundation's online(publicId) check.
 import { lagosTime } from '../../src/game/clock.js';
-import { DISTRICTS, UNKNOWN_DISTRICT, NEIGHBOURS, RICH_LIST } from '../../src/game/content/civic.js';
+import { DISTRICTS, UNKNOWN_DISTRICT, OWN_DISTRICT, NEIGHBOURS, RICH_LIST } from '../../src/game/content/civic.js';
 
 const PRUNE_EVERY_MS = 3600000;
 const count = (value) => (Number.isSafeInteger(value) && value >= 0 ? value : 0);
 
-/** The house a life lives in, read defensively: the home owner's slice may not exist yet. */
+/**
+ * The home a life lives in, read defensively (a slice may not exist yet): the district of its rented home, or 'own' while it
+ * lives in its own house on its plot — then `property.house` is only the last home it rented, not where it lives.
+ */
 export function houseOf(life) {
+  if (life?.estate?.living === 'own') return OWN_DISTRICT.id;
   const id = life?.property?.house;
   return typeof id === 'string' && DISTRICTS.some((district) => district.id === id) ? id : null;
 }
@@ -69,7 +73,7 @@ export function huntCounters(city, now) {
  *   { total, online, listed, districts: [{ id, label, count, online, homes: [{ id, name, online, you }] }] }
  */
 export function neighboursView(city, now, ttlMs, online, prefs, viewerId = null) {
-  const groups = new Map([...DISTRICTS, UNKNOWN_DISTRICT].map((district) => [district.id, { id: district.id, label: district.label, count: 0, online: 0, homes: [] }]));
+  const groups = new Map([...DISTRICTS, OWN_DISTRICT, UNKNOWN_DISTRICT].map((district) => [district.id, { id: district.id, label: district.label, count: 0, online: 0, homes: [] }]));
   let total = 0, onlineTotal = 0;
   for (const [id, entry] of current(city, now, ttlMs)) {
     const group = groups.get(entry.house ?? UNKNOWN_DISTRICT.id) ?? groups.get(UNKNOWN_DISTRICT.id);
@@ -79,7 +83,7 @@ export function neighboursView(city, now, ttlMs, online, prefs, viewerId = null)
     if (prefs?.[id]?.directory !== true || id === viewerId) group.homes.push({ id, name: entry.name, online: here, you: id === viewerId, lastSeen: entry.lastSeen });
   }
   let budget = NEIGHBOURS.total, listed = 0;
-  const districts = [...groups.values()].filter((group) => group.count > 0 || group.id !== UNKNOWN_DISTRICT.id).map((group) => {
+  const districts = [...groups.values()].filter((group) => group.count > 0 || (group.id !== UNKNOWN_DISTRICT.id && group.id !== OWN_DISTRICT.id)).map((group) => {
     const homes = group.homes.sort((a, b) => b.you - a.you || b.online - a.online || b.lastSeen - a.lastSeen || (a.id < b.id ? -1 : 1))
       .slice(0, Math.min(NEIGHBOURS.perDistrict, budget)).map(({ lastSeen, ...home }) => home);
     budget -= homes.length; listed += homes.length;

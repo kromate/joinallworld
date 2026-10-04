@@ -14,6 +14,9 @@ import { UUID_PATTERN } from '../protocol.js';
 import { lagosTime } from '../../src/game/clock.js';
 import { viewLife } from '../../src/life.js';
 import { DISTRICTS } from '../../src/game/content/civic.js';
+import { lgaOf } from '../../src/game/content/world.js';
+import { hasPlace } from '../../src/game/systems/estate.js';
+import { isGuestLife } from '../../src/game/systems/onboarding.js';
 import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.js';
 import { eventsBetween } from '../../src/game/calendar.js';
 import { venueLabel } from '../../src/game/content/venues.js';
@@ -30,7 +33,10 @@ const no = (code, reason) => ({ ok: false, code, reason });
 /** The facts of a share, read from the sharer's settled life. Nothing comes from the request but the kind (and an event id). */
 export function factsFor(kind, session, state, cityId, now, player, eventId, tableId) {
   const view = viewLife(state, { now, cityId });
-  const district = DISTRICTS.find((item) => item.id === state.property?.house)?.label ?? '';
+  // Where the sharer lives: the local government of their own house, or the district of the home they rent. A guest (no
+  // home yet) and a life whose local government is only the game's guess say nothing about where they live.
+  const unit = hasPlace(state) && state.estate.living === 'own' ? lgaOf(state.estate.city, state.estate.lga) : null;
+  const district = unit ? unit.name : !isGuestLife(state) && state.estate?.living !== 'own' ? DISTRICTS.find((item) => item.id === state.property?.house)?.label ?? '' : '';
   const base = { kind, name: session.name, district, city: CITY_NAMES[cityId] ?? cityId };
   if (kind === 'missions') return { ...base, done: view.missions.dailySet.done, total: view.missions.dailySet.total || 3, days: view.missions.activeDays, title: view.missions.title ?? '' };
   if (kind === 'week') return { ...base, stamps: view.missions.stamps.days, days: view.missions.activeDays, title: view.missions.title ?? '' };

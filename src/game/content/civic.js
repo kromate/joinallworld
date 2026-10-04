@@ -132,6 +132,8 @@ export const DISTRICTS = [
   { id: 'banana', label: 'Banana Island' },
 ];
 export const UNKNOWN_DISTRICT = { id: 'unknown', label: 'District not set yet' };
+/** A resident who lives in their own house on a plot (the house everyone is given: systems/estate.js) rents in no district. Original beta label. */
+export const OWN_DISTRICT = { id: 'own', label: 'In their own house' };
 
 /** What the people of each city are called in counters; other cities fall back to "<City> residents". */
 export const DEMONYMS = { lagos: 'Lagosians' };

@@ -216,8 +216,12 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
 
   const onContextLost = (event) => { emit('webgl_context_lost', { scene: event?.target?.closest?.('.life-scene')?.id }); crumb('scene', { lost: true }); };
   const onPreloadError = () => { api.chunkFailed('preload'); };
+  /** The last accepted state and its server time: the consent question is looked at again when a sheet closes. */
+  let seen = null;
+  // A sheet was closed (the settle-in offer, say): if the question was only waiting for that, it is asked now — an event, not a timer.
+  const onSheetClosed = (event) => { if (event?.target?.id !== 'jaw-consent' && seen) { try { maybeAsk(seen.state, seen.now + Math.max(0, wall() - seen.at)); } catch { /* never throws */ } } };
   if (mode === 'on') {
-    try { win.addEventListener('vite:preloadError', onPreloadError); win.document.addEventListener('webglcontextlost', onContextLost, true); } catch { /* not a browser (tests) */ }
+    try { win.addEventListener('vite:preloadError', onPreloadError); win.document.addEventListener('webglcontextlost', onContextLost, true); win.document.addEventListener('close', onSheetClosed, true); } catch { /* not a browser (tests) */ }
   }
 
   /** Guard: nothing a caller passes, and nothing an SDK does, may reach the game as an exception. */
@@ -273,6 +277,7 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
       // The consent question waits for the first reward of a new life; a life past its first minutes may be asked now.
       const o = next.onboarding, guest = o?.stage === 'guest' && o.done !== true;
       if (!rewarded && o && o.required !== true && (!guest || Number.isFinite(o.firstAt))) { rewarded = true; rewardedAt = guest ? o.firstAt : null; }
+      seen = { state: next, now: client.now, at: wall() };
       maybeAsk(next, client.now);
       if (found.length && consent() === 'granted') persist();
       daily();

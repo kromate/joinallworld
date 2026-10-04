@@ -334,3 +334,25 @@ test('the operator’s numbers are the same with telemetry configured: nothing i
   for (const counter of ['funnel.onboarded', 'funnel.shift', 'share.opened', 'active-untracked']) assert.ok(!out.includes(counter), `${counter} is not sent to analytics`);
   assert.ok(!out.includes(ada.id), 'and nothing is recorded for a player who has not accepted analytics');
 });
+
+test('a share says where the sharer really lives: the local government of their own house, a rented district, or nothing for a guest', async (t) => {
+  const { f, post, hello } = await harness(t);
+  const look = { body: 'woman', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
+  const opened = await f.request('/api/session', { name: 'Ngozi', onboarding: true });
+  const ngozi = { cookie: opened.headers.get('set-cookie').split(';')[0], ...(await opened.json()).session };
+  await f.request('/api/life?city=lagos', null, ngozi.cookie);
+  assert.equal((await f.action(ngozi.cookie, { type: 'onboarding.quick-start', payload: { look } })).code, 'playing');
+  await hello(ngozi, 9);
+  const asGuest = await post('/api/growth/share', { cityId: 'lagos', kind: 'invite' }, ngozi);
+  assert.deepEqual([asGuest.ok, asGuest.share.facts.district], [true, ''], 'a guest has no home: the card names the city only');
+  for (const [type, payload] of [['onboarding.traits', { traits: ['musical', 'clean-pikin'] }], ['onboarding.dream', { dream: 'afrobeats-star' }], ['onboarding.lottery', {}], ['onboarding.home', { lga: 'surulere', stay: true }]]) assert.equal((await f.action(ngozi.cookie, { type, payload })).ok, true, type);
+  const settled = await post('/api/growth/share', { cityId: 'lagos', kind: 'house' }, ngozi);
+  assert.equal(settled.share.facts.district, 'Surulere', 'her own house is in Surulere — not the Yaba of a home she never rented');
+  assert.match(sharePreview(settled.share.facts).title, /Surulere, Lagos/);
+  // She rents in Mushin instead: now that is where she lives.
+  assert.equal((await f.action(ngozi.cookie, { type: 'property.house-move', payload: { id: 'mushin' } })).ok, true);
+  assert.equal((await post('/api/growth/share', { cityId: 'lagos', kind: 'house' }, ngozi)).share.facts.district, 'Mushin');
+  // And the old Neighbours directory files an owner under "In their own house", never under a district they do not rent in.
+  const { houseOf } = await import('./civic/residents.js');
+  assert.deepEqual([houseOf({ estate: { living: 'own' }, property: { house: 'yaba' } }), houseOf({ estate: { living: 'rent' }, property: { house: 'yaba' } }), houseOf({ property: { house: 'lekki' } })], ['own', 'yaba', 'lekki']);
+});

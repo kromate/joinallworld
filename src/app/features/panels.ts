@@ -9,6 +9,10 @@ import { social } from '../legacy/social.ts'
 import { billsDue } from './bank/bankModel.ts'
 import { messagesBadge, notificationLines } from './messages/messagesModel.ts'
 import { noticeMarks } from './messages/messagesState.ts'
+import { CIVIC_APPS, CIVIC_HUD } from './civic/register.ts'
+import { GROWTH_HUD_PANELS, GROWTH_PANELS } from './growth/register.ts'
+import { TABLES_PANELS } from './tables/register.ts'
+import { WORLD_PANELS } from './world/register.ts'
 
 export const bank = definePanel({
   id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14, group: 'money',
@@ -29,4 +33,4 @@ export const support = definePanel({
   component: defineAsyncComponent(() => import('./support/ReportApp.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support]
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...WORLD_PANELS]

@@ -9,8 +9,8 @@
  *   - the 3D scene host with Three.js and every scene module   (loadScene, straight after start)
  *   - the city map and the world map                           (first time the Map opens)
  *   - the community panel                                      (after the first connection; if its
- *     chunk does not arrive the status line says so, it is retried with a bounded backoff —
- *     src/lazy-load.js — and Community / Reconnect retry at once)
+ *     chunk does not arrive the status line and the community panel say so, it is retried with
+ *     a bounded backoff — src/lazy-load.js — and the panel offers Try again and Reload)
  *   - the lazy panel groups                                    (src/ui/panels/index.js)
  * Until a piece arrives its callers simply skip it (`venue?.…`), and it is given the current
  * state the moment it exists, so nothing depends on load order.
@@ -204,8 +204,28 @@ const communityCode = createLazyLoader(() => Promise.all([import('./community.js
     else if (state.status === 'failed') status('Community is unavailable · it did not load. Open Community to retry', true);
     // A retry that succeeded by itself: bring the panel up now, without waiting for the player.
     else if (state.status === 'ready') void startCommunity();
+    showCommunityRecovery();
   },
 });
+/**
+ * What the community panel shows while its code is not here: what happened, what happens next
+ * (the same bounded retries as the status line — nothing else requests the chunk), and the two
+ * things the player can do. "Try again" asks the loader at once; "Reload and retry" reloads the
+ * page, because a browser can keep a failed module download for the life of the page, where no
+ * in-page retry can succeed. A reload keeps the saved identity and asks for no microphone access.
+ */
+function showCommunityRecovery(startProblem = null) {
+  if (community) return;
+  const content = $('community-content'), load = communityCode.state;
+  const waiting = load.status === 'loading', down = load.status === 'retrying' || load.status === 'failed' || Boolean(startProblem);
+  if (!down && !(waiting && content.querySelector('[data-community-recovery]'))) return;
+  const next = waiting ? 'Trying again now…'
+    : load.status === 'retrying' ? `Trying again by itself in ${Math.round(load.retryInMs / 1000)} s (attempt ${load.attempt + 1} of ${load.attempts}).`
+      : load.status === 'failed' ? 'It was tried several times and is no longer being retried.' : 'Its code loaded but it could not start.';
+  content.innerHTML = `<section data-community-recovery aria-label="Community unavailable"><h2>Community could not load</h2><p>Your saved city life is still available. Check your connection, then try community again.</p><p role="status">${next}</p><p><button type="button" class="ui-button is-primary" data-community-retry${waiting ? ' disabled' : ''}>Try again</button> <button type="button" class="ui-button" data-community-reload>Reload and retry</button></p></section>`;
+  content.querySelector('[data-community-retry]').onclick = () => { if (!client.online) shell.toast('You are offline. Reconnect to open the community.', 'error'); else void startCommunity(); };
+  content.querySelector('[data-community-reload]').onclick = () => window.location.reload();
+}
 let startingCommunity = false;
 /** Create the community panel once its code is here and the client is connected. Safe to call any number of times. */
 async function startCommunity() {
@@ -221,6 +241,7 @@ async function startCommunity() {
   } catch (error) {
     console.error('The community panel could not be started:', error);
     status('Community is unavailable · it could not start. Open Community to retry', true);
+    showCommunityRecovery(error);
   } finally { startingCommunity = false; }
 }
 
@@ -228,11 +249,13 @@ function toggleCommunity(force) {
   if (client.state.location === 'home') { shell.toast('Your home is private. Visit a public venue to meet people.'); return; }
   if (!community) {
     if (!client.online) { shell.toast('You are offline. Reconnect to open the community.', 'error'); return; }
-    const load = communityCode.state;
-    if (load.status === 'retrying' || load.status === 'failed') shell.toast('Community did not load. Trying again now…', 'error');
-    else shell.toast('Community is still loading. Try again in a moment.');
-    void startCommunity(); // a manual retry: starts at once, or joins the attempt already in flight
-    return;
+    // Not loaded: the panel itself says so and offers the retry (showCommunityRecovery). While the
+    // first attempt is still in flight there is nothing to show yet, only to wait for.
+    if (!$('community-content').querySelector('[data-community-recovery]')) {
+      shell.toast('Community is still loading. Try again in a moment.');
+      void startCommunity(); // starts at once, or joins the attempt already in flight
+      return;
+    }
   }
   $('community-panel').hidden = typeof force === 'boolean' ? !force : !$('community-panel').hidden;
 }

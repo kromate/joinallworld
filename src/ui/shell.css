@@ -284,7 +284,7 @@ kbd{display:inline-block;min-width:26px;text-align:center;border:1px solid #cfd4
 #city-places button{border:0;background:var(--c-green-soft);color:var(--c-ink);padding:8px 12px;min-height:var(--tap);border-radius:18px;cursor:pointer;font:600 12px var(--font)}
 
 /* ---- community panel (content from src/community.js) ------------------------------------- */
-#community-panel{position:fixed;z-index:35;right:14px;top:70px;bottom:14px;width:min(380px,calc(100vw - 28px));background:#f9fbf8;border-radius:22px;box-shadow:0 10px 60px #0006;overflow:auto;padding:18px;font-family:var(--font)}
+#community-panel{box-sizing:border-box;position:fixed;z-index:35;right:14px;top:70px;bottom:14px;width:min(380px,calc(100vw - 28px));background:#f9fbf8;border-radius:22px;box-shadow:0 10px 60px #0006;overflow:auto;padding:18px;font-family:var(--font)}
 #community-close{position:sticky;float:right;top:0;margin:-8px -8px 0 0;z-index:3;display:grid;place-items:center;width:var(--tap);height:var(--tap);border:0;border-radius:50%;background:var(--c-fill);font-size:24px;line-height:1;cursor:pointer}
 
 /* ---- name tags over the venue scene (src/venue-world.js) ---------------------------------- */

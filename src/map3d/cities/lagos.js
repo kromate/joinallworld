@@ -98,7 +98,7 @@ export const districts = [
   { name: 'YABA', x: 10, z: -19.5, size: 2.2 }, { name: 'GBAGADA', x: -6, z: -72, size: 2 }, { name: 'APAPA', x: -100, z: 6, size: 2.2 },
   { name: 'LAGOS ISLAND', x: -14, z: 23, size: 1.6, water: true }, { name: 'IKOYI', x: 40, z: 4.6, size: 1.7 }, { name: 'BANANA ISLAND', x: 92, z: -12, size: 1.3, water: true },
   { name: 'VICTORIA ISLAND', x: 30, z: 33.5, size: 1.5 }, { name: 'LEKKI', x: 86, z: 34.5, size: 2.2 },
-  { name: 'LAGOS LAGOON', x: 86, z: -34, size: 3.4, water: true }, { name: 'ATLANTIC OCEAN', x: 30, z: 54, size: 3, water: true, sea: true },
+  { name: 'LAGOS LAGOON', x: 86, z: -34, size: 3.4, water: true }, { name: 'ATLANTIC OCEAN', x: -66, z: 50, size: 3, water: true },
   { name: 'THIRD MAINLAND BRIDGE', x: 62, z: -50, size: 1.2, water: true }, { name: 'LINK BRIDGE', x: 68, z: 10.5, size: 1.1, water: true },
 ];
 

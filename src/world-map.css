@@ -4,8 +4,9 @@
 .wm-head{grid-column:1;align-self:start;padding-left:6px}
 .wm-head h2{margin:0;font-size:30px;line-height:1.1;letter-spacing:-.02em;color:#173b2a}
 .wm-head p{margin:4px 0 0;font-size:13px;color:#2f5a6b;max-width:360px}
-.wm-stage{grid-column:1;grid-row:2;display:grid;place-items:center;min-height:0;perspective:1500px;perspective-origin:50% 20%}
-.wm-board{position:relative;width:min(100%,760px);max-height:100%;transform:rotateX(50deg);transform-style:preserve-3d;filter:drop-shadow(0 34px 26px #0b2b3a47)}
+.wm-stage{grid-column:1;grid-row:2;display:grid;place-items:start center;min-height:0;padding:44px 20px 0 96px;perspective:1500px;perspective-origin:50% 0}
+/* No CSS filter on the board: a filter would flatten the markers that stand on it. Its shadow is drawn inside the SVG. */
+.wm-board{position:relative;width:min(100%,700px,calc((100dvh - 300px) * 1.7));transform:rotateX(50deg);transform-origin:50% 0;transform-style:preserve-3d}
 .wm-svg{display:block;width:100%;height:100%;overflow:visible}
 .wm-pins{position:absolute;inset:0;transform-style:preserve-3d}
 /* A marker stands up out of the tilted board: it is turned back to face the screen about its foot. */
@@ -22,9 +23,9 @@
 .wm-pin.is-preview .wm-pin-dot{background:#2b5fa8}.wm-pin.is-preview small{color:#2b5fa8}
 .wm-pin.is-soon .wm-pin-label{background:#fff7dc}
 .wm-pin.is-selected .wm-pin-label{outline:3px solid #20232c;outline-offset:2px}
-/* Two cities close together: their labels lean apart instead of covering each other */
-.wm-pin.is-left .wm-pin-label{transform:translateX(-46%)}
-.wm-pin.is-right .wm-pin-label{transform:translateX(36%)}
+/* Two cities close together: one marker stands short and the other tall, so neither label covers the other */
+.wm-pin.is-low .wm-pin-stem,.wm-pin.is-low.is-here .wm-pin-stem{height:18px}
+.wm-pin.is-high .wm-pin-stem{height:104px}
 
 .wm-side{grid-column:2;grid-row:1/3;align-self:start;display:grid;gap:10px;max-height:100%;overflow-y:auto;padding:12px;border-radius:24px;background:#fbfbfaf2;border:1px solid #fff;box-shadow:0 4px 18px #0000001f}
 .wm-cities{list-style:none;margin:0;padding:0;display:grid;gap:4px}
@@ -54,10 +55,11 @@
 @media(max-width:720px){
   .wm{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(150px,1fr) auto;gap:4px;padding:112px 10px 172px}
   .wm-head h2{font-size:22px}.wm-head p{font-size:12px}
-  .wm-stage{grid-row:2}
-  .wm-board{width:min(100%,430px)}
+  .wm-stage{grid-row:2;padding:34px 6px 0 50px}
+  .wm-board{width:min(100%,430px,calc((100dvh - 470px) * 1.9))}
   .wm-pin-label{padding:4px 9px 5px}.wm-pin-label b{font-size:13px}.wm-pin-label small{font-size:10px}
   .wm-pin-stem{height:28px}.wm-pin.is-here .wm-pin-stem{height:46px}
+  .wm-pin.is-low .wm-pin-stem,.wm-pin.is-low.is-here .wm-pin-stem{height:10px}.wm-pin.is-high .wm-pin-stem{height:62px}
   .wm-side{grid-column:1;grid-row:3;max-height:38dvh;padding:8px;border-radius:20px;gap:6px}
   .wm-cities{grid-template-columns:1fr 1fr}
   .wm-city{min-height:46px;padding:4px 6px;gap:6px;flex-wrap:wrap}

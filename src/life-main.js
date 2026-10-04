@@ -100,7 +100,7 @@ window.addEventListener('jaw:map-ui', keepMapUi);
 function loadMaps() {
   mapsLoading ??= Promise.all([import('./map3d/index.js'), import('./world-map.js')]).then(([cityModule, worldModule]) => {
     world = worldModule.createWorldMap($('map-scene'), {
-      onOpenCity: () => shell.open('map', { layer: 'city' }),
+      onOpenCity: () => showMapLayer('city'),
       onEnterCity: (cityId) => switchCity(cityId),
       held: heldCities,
     });
@@ -122,6 +122,12 @@ function loadMaps() {
     refreshScene();
   }).catch((error) => { mapsLoading = null; console.error('The map could not be loaded:', error); shell.toast('The map could not be loaded. Check your connection and open it again.', 'error'); });
   return mapsLoading;
+}
+
+/** Open the Map on the city map ('city') or the country map ('world'). The maps are told first, so the right one is in front when the shell draws. */
+function showMapLayer(layer) {
+  window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: { layer } }));
+  shell.open('map', { layer });
 }
 
 const dialog = $('life-dialog');
@@ -352,10 +358,10 @@ async function switchCity(id) {
 function menu(id) {
   if (id === 'reconnect') connect();
   // The country map: the city you are in, and the cities that are coming soon.
-  else if (id === 'city') shell.open('map', { layer: 'world' });
+  else if (id === 'city') showMapLayer('world');
   // "Use my location" only ever chose between Lagos and Ibadan. With one open city there is nothing to choose, so the
   // device's location is no longer asked for; the entry (still drawn by the shell's menu, hidden by src/city-map.css) opens the country map.
-  else if (id === 'locate') shell.open('map', { layer: 'world' });
+  else if (id === 'locate') showMapLayer('world');
 }
 
 window.addEventListener('jaw:start-life', (event) => { if (event.detail?.name) client.identity.name = event.detail.name; connect(true); });

@@ -37,6 +37,7 @@ import { tripOf, createTripClock, tripPose } from './trip.js';
 import { PLINTH } from './landmarks.js';
 
 const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34;
+let hintSeen = false;             // the how-to line shows until the player first moves the map, picks a place or travels
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
 export const timeOfDay = (ms) => { const { minuteOfDay } = lagosTime(ms), hour = minuteOfDay / 60; return hour < 5.5 || hour >= 19 ? 'night' : hour < 7 || hour >= 17.5 ? 'dusk' : 'day'; };
 const ICON = (path) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
@@ -69,7 +70,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   scene.add(overlays.group);
   const actor = createActor(kit);
   scene.add(actor.group);
-  const rig = createRig(THREE, camera, { minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.sea ? pack.bounds.sea.z1 : pack.bounds.maxZ, fit: pack.bounds.fit });
+  const rig = createRig(THREE, camera, { minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
   const ringOf = (colour, opacity) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };
   const selectRing = ringOf('#14532d', 0.95), hoverRing = ringOf('#e8a643', 0.9);
   const routeMaterial = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.9, depthWrite: false });
@@ -83,7 +84,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     root.className = 'm3';
     root.innerHTML = `<div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
       <div class="m3-controls" role="group" aria-label="Map view"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" class="m3-fit" data-m3="fit" aria-label="Show the whole city" title="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" data-m3="me" aria-label="Show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>
-      <p class="m3-hint" data-m3-hint>Drag to turn the city · pinch or scroll to zoom · two fingers to move. Tap a building to go there.</p>`;
+      <p class="m3-hint" data-m3-hint ${hintSeen ? 'hidden' : ''}>Drag to turn the city · pinch or scroll to zoom · two fingers to move. Tap a building to go there.</p>`;
     root.prepend(canvas);
     canvas.classList?.add('m3-canvas');
     canvas.setAttribute?.('aria-hidden', 'true');
@@ -149,6 +150,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   }
   function startTrip(next) {
     trip = next; returning = null; settling = false; dueAt = -Infinity; tripCamera = true;
+    dismissHint();
     route = network.route(placeKey(next.from), placeKey(next.to)) || straight(next.from, next.to);
     actor.dot(reducedMotion); actor.setMode(next.mode);
     drawRoute();
@@ -366,7 +368,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     const inside = at.front && at.x > insets.left + 60 && at.x < size.width - insets.right - 60 && at.y > insets.top + 70 && at.y < size.height - insets.bottom - 40;
     if (!inside) motion({ x: place.x, z: place.z });
   }
-  function dismissHint() { if (hint && !hint.hidden) hint.hidden = true; }
+  function dismissHint() { hintSeen = true; if (hint && !hint.hidden) hint.hidden = true; }
   function pick(clientX, clientY, radius = PICK_RADIUS) {
     const page = container.getBoundingClientRect(), x = clientX - page.left, y = clientY - page.top;
     let best = null;
@@ -397,13 +399,13 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   const toNdc = (point) => ({ x: (point.x / size.width) * 2 - 1, y: -(point.y / size.height) * 2 + 1 });
   function grab() { userMoved = true; tripCamera = false; dismissHint(); }
   function onPointerDown(event) {
-    if (event.target.closest?.('[data-m3],.m3-label,.m3-chip')) return;
+    if (event.target.closest?.('[data-m3],[data-neighbour]')) return;   // the view buttons and the estate's homes are not a place to start a drag
     if (event.isPrimary) pointers.clear();
     pointers.set(event.pointerId, local(event));
     rig.hold();
-    if (pointers.size === 1) gesture = { kind: event.button === 2 || event.button === 1 || event.shiftKey ? 'pan' : 'orbit', id: event.pointerId, from: local(event), last: local(event), moved: false, spin: 0 };
-    else if (pointers.size === 2) { const [a, b] = [...pointers.values()]; gesture = { kind: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, moved: true }; grab(); }
-    try { root.setPointerCapture?.(event.pointerId); } catch { /* the pointer is already gone */ }
+    // A fresh press starts clean: only the click that ends a drag is swallowed (see onClick).
+    if (pointers.size === 1) { suppressClick = false; gesture = { kind: event.button === 2 || event.button === 1 || event.shiftKey ? 'pan' : 'orbit', id: event.pointerId, from: local(event), last: local(event), moved: false, spin: 0, at: now(), onLabel: Boolean(event.target.closest?.('.m3-label')) }; }
+    else if (pointers.size === 2) { const [a, b] = [...pointers.values()]; gesture = { kind: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, moved: true }; suppressClick = true; grab(); }
   }
   function onPointerMove(event) {
     const at = local(event);
@@ -424,10 +426,16 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     if (!gesture || gesture.id !== event.pointerId) return;
     const dx = at.x - gesture.last.x, dy = at.y - gesture.last.y;
     if (!gesture.moved && Math.hypot(at.x - gesture.from.x, at.y - gesture.from.y) < DRAG_START) return;
-    if (!gesture.moved) { gesture.moved = true; grab(); root?.classList.add('is-dragging'); }
+    // A drag may start anywhere, a label included; the pointer is captured only now, so a plain tap on a label is still its click.
+    if (!gesture.moved) { gesture.moved = true; grab(); root?.classList.add('is-dragging'); try { root.setPointerCapture?.(event.pointerId); } catch { /* the pointer is already gone */ } }
     gesture.last = at;
     if (gesture.kind === 'pan') rig.panScreen(dx, dy);
-    else { gesture.spin = -dx * 0.0052; rig.orbit(gesture.spin, dy * 0.0042); }       // the city follows the finger; dragging down tips the view over the top
+    else {
+      // The city follows the finger; dragging down tips the view over the top. The turn's speed is kept for the glide on release.
+      const turn = -dx * 0.0052, t = now(), dt = Math.max(0.008, (t - gesture.at) / 1000);
+      gesture.spin = gesture.spin * 0.5 + (turn / dt) * 0.5; gesture.at = t;
+      rig.orbit(turn, dy * 0.0042);
+    }
     request();
   }
   function onPointerUp(event) {
@@ -436,8 +444,9 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       const [rest] = [...pointers.entries()];
       gesture = rest ? { kind: 'pan', id: rest[0], from: rest[1], last: rest[1], moved: true } : null;
     } else if (gesture?.id === event.pointerId) {
-      if (gesture.moved) { suppressClick = true; if (gesture.kind === 'orbit' && !reducedMotion && event.type !== 'pointercancel') { rig.release(gesture.spin); request(); } }
-      else if (event.type !== 'pointercancel') tap(event);
+      // A flick glides on; a drag that had stopped before the finger lifted does not.
+      if (gesture.moved) { suppressClick = true; if (gesture.kind === 'orbit' && !reducedMotion && event.type !== 'pointercancel' && now() - gesture.at < 90) { rig.release(gesture.spin); request(); } }
+      else if (event.type !== 'pointercancel' && !gesture.onLabel) tap(event);        // a tap on a label is the label's own click
       gesture = null;
     }
     if (!pointers.size) root?.classList.remove('is-dragging');
@@ -471,9 +480,9 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     const house = event.target.closest?.('[data-neighbour]');
     if (house) { onSelectNeighbour({ id: house.dataset.neighbour, name: house.dataset.name }); return; }
     const label = event.target.closest?.('.m3-label');
-    if (!label) return;
-    if (suppressClick && event.detail !== 0) { suppressClick = false; return; }
-    choose(label.dataset.venue);
+    // Only the pointer click that ends a drag or a pinch is swallowed; a keyboard click (detail 0) always goes through.
+    if (suppressClick) { suppressClick = false; if (event.detail !== 0) return; }
+    if (label) choose(label.dataset.venue);
   }
   function onControl(name) {
     grab();

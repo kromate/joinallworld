@@ -47,7 +47,7 @@ export function createWorldMap(container, { onOpenCity = () => {}, onEnterCity =
     const outline = `${line(country.outline)}Z`;
     const markers = cities.map((city) => {
       const [x, y] = flat.point(city.lon, city.lat), state = access(city.id);
-      return `<button type="button" class="wm-pin is-${state}${city.id === selected ? ' is-selected' : ''} is-${city.side || 'right'}" data-wm-city="${esc(city.id)}" tabindex="-1" aria-hidden="true" style="left:${(x / flat.width * 100).toFixed(2)}%;top:${(y / flat.height * 100).toFixed(2)}%">
+      return `<button type="button" class="wm-pin is-${state}${city.id === selected ? ' is-selected' : ''}${city.stand ? ` is-${esc(city.stand)}` : ''}" data-wm-city="${esc(city.id)}" tabindex="-1" aria-hidden="true" style="left:${(x / flat.width * 100).toFixed(2)}%;top:${(y / flat.height * 100).toFixed(2)}%">
         <span class="wm-pin-stem"></span><span class="wm-pin-dot"></span><span class="wm-pin-label"><b>${esc(city.name)}</b><small>${esc(ACCESS[state].tag)}</small></span></button>`;
     }).join('');
     const cards = cities.map((city) => {
@@ -61,6 +61,7 @@ export function createWorldMap(container, { onOpenCity = () => {}, onEnterCity =
       <div class="wm-stage" aria-hidden="true"><div class="wm-board" style="aspect-ratio:${flat.width}/${flat.height.toFixed(0)}">
         <svg class="wm-svg" viewBox="0 0 ${flat.width} ${flat.height.toFixed(0)}" preserveAspectRatio="xMidYMid meet" focusable="false">
           <defs><linearGradient id="wm-land" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2d6a2"/><stop offset=".42" stop-color="#bcd596"/><stop offset="1" stop-color="#8fc07a"/></linearGradient></defs>
+          <path d="${outline}" transform="translate(14 64)" fill="#0b2b3a" opacity=".16"/>
           <path d="${outline}" transform="translate(0 26)" fill="#5d7f55"/><path d="${outline}" transform="translate(0 13)" fill="#78a065"/>
           <path d="${outline}" fill="url(#wm-land)" stroke="#f4f7e6" stroke-width="5" stroke-linejoin="round"/>
           ${country.rivers.map((river) => `<path d="${line(river)}" fill="none" stroke="#6fb9d6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>`).join('')}

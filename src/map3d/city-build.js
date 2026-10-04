@@ -33,7 +33,7 @@ const ASPHALT = '#5d626b', KERB = '#e4dfcf', DASH = '#f6f2e2', PATH = '#dcd2b6';
 export const CITY_LIGHT = Object.freeze({
   day: { sky: ['#cfeaf5', '#8fcbe6'], hemi: ['#f4fbff', '#9fb07f', 2.1], sun: ['#fff0d2', 2.5, [-70, 120, 90]], water: '#4faacb', windows: '#56748c', waves: 0.5, shadow: 0.2 },
   dusk: { sky: ['#f3b184', '#6a5c98'], hemi: ['#f6c9a8', '#5a5370', 1.45], sun: ['#ff9f5f', 1.9, [-130, 46, 40]], water: '#4a79a6', windows: '#ffd9a0', waves: 0.35, shadow: 0.24 },
-  night: { sky: ['#1b2748', '#0a1024'], hemi: ['#8ea6dc', '#18233a', 0.95], sun: ['#a9bff2', 0.85, [-60, 110, 60]], water: '#17345a', windows: '#ffffff', waves: 0.16, shadow: 0.3 },
+  night: { sky: ['#1b2748', '#0a1024'], hemi: ['#9db2e6', '#1c2a44', 1.25], sun: ['#b4c6f5', 1.0, [-60, 110, 60]], water: '#1b3d68', windows: '#ffffff', waves: 0.16, shadow: 0.3 },
 });
 
 function mulberry(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }

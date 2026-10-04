@@ -142,7 +142,7 @@ export function createOverlays(kit, city) {
     group,
     /** Draw the layers that are on and have data. Returns true when anything changed. */
     set(layers, data) {
-      const next = JSON.stringify([layers.billboards && data.ads?.billboards, layers.sea && data.ads?.sea, (layers.billboards || layers.sea) && data.ads?.palette, layers.neighbours && data.neighbours?.districts, layers.gov && (data.gov ? data.gov.governor ?? null : undefined),
+      const next = JSON.stringify([layers.billboards && data.ads?.billboards, layers.sea && data.ads?.sea, (layers.billboards || layers.sea) && data.ads?.palette, layers.neighbours && data.neighbours?.districts, layers.gov && data.gov ? { governor: data.gov.governor ?? null } : null,
         layers.neighbours ? city.places.home?.house : null]);
       if (next === key) return false;
       key = next;

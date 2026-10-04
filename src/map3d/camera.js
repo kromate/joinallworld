@@ -23,12 +23,14 @@ export function createRig(THREE, camera, bounds) {
   // `bounds.fit` is what "the whole city" means (the land); the bounds themselves are how far the view may wander (the board).
   const whole = bounds.fit || bounds;
   const centre = { x: (whole.minX + whole.maxX) / 2, z: (whole.minZ + whole.maxZ) / 2 };
+  const roam = { minX: whole.minX, maxX: whole.maxX, minZ: whole.minZ, maxZ: Math.max(whole.maxZ, bounds.roamZ ?? whole.maxZ) };
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), ground = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit = new THREE.Vector3(), probe = new THREE.Vector3();
 
   function limit(target) {
     target.pitch = clamp(target.pitch, PITCH_MIN, PITCH_MAX);
     target.distance = clamp(target.distance, MIN_DISTANCE, maxDistance);
-    target.x = clamp(target.x, bounds.minX, bounds.maxX); target.z = clamp(target.z, bounds.minZ, bounds.maxZ);
+    // What is looked at never leaves the land (plus the sea plots), so the city cannot be dragged out of sight.
+    target.x = clamp(target.x, roam.minX, roam.maxX); target.z = clamp(target.z, roam.minZ, roam.maxZ);
     return target;
   }
   function apply() {
@@ -86,9 +88,9 @@ export function createRig(THREE, camera, bounds) {
     apply,
     /** Stop any ease or inertia where it is. */
     hold() { goal = null; spin = 0; },
-    orbit(dYaw, dPitch) { goal = null; view.yaw += dYaw; view.pitch += dPitch; spin = dYaw; apply(); },
-    /** Let go after an orbit: the turn carries on for a moment. */
-    release(velocity = spin) { spin = Math.abs(velocity) > 0.002 ? clamp(velocity, -0.12, 0.12) : 0; },
+    orbit(dYaw, dPitch) { goal = null; spin = 0; view.yaw += dYaw; view.pitch += dPitch; apply(); },
+    /** Let go after an orbit: the turn carries on for a moment. `velocity` is in radians a second. */
+    release(velocity = 0) { spin = Math.abs(velocity) > 0.25 ? clamp(velocity, -2.6, 2.6) : 0; },
     pan(dx, dz) { goal = null; spin = 0; view.x += dx; view.z += dz; apply(); },
     /** Pan by screen pixels: the ground follows the fingers. */
     panScreen(px, py) {
@@ -130,9 +132,10 @@ export function createRig(THREE, camera, bounds) {
         if (goal.t >= 1) goal = null;
         apply();
       } else if (spin) {
-        view.yaw += spin * Math.min(1, dt * 60);
-        spin *= Math.pow(0.02, dt);
-        if (Math.abs(spin) < 0.0015) spin = 0;
+        // A short glide: it loses 99.9% of its speed each second, so even a hard flick turns the city less than a quarter turn more.
+        view.yaw += spin * dt;
+        spin *= Math.pow(0.001, dt);
+        if (Math.abs(spin) < 0.08) spin = 0;
         apply();
       }
       return rig.moving;

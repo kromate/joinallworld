@@ -14,6 +14,8 @@
  *
  * status   'playable'  the city can be entered and has a 3D city pack
  *          'soon'      shown on the country map with its teaser; cannot be entered
+ * stand    'low' | 'high': how tall the city's marker stands on the country map, for two cities
+ *          too close together for both labels to sit at the same height
  * legacy   true when the server already keeps lives for this city although it is shown as coming
  *          soon. Only a player who already has such a life is offered it, labelled "Preview".
  */
@@ -31,13 +33,13 @@ export const COUNTRIES = Object.freeze({
       [[13.2, 9.3], [11.6, 8.9], [10.0, 8.3], [8.5, 7.75], [6.75, 7.8]],
     ],
     cities: {
-      lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State', status: 'playable', lon: 3.38, lat: 6.52, side: 'left',
+      lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State', status: 'playable', lon: 3.38, lat: 6.52, stand: 'low',
         teaser: 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', pack: () => import('./cities/lagos.js') },
-      ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State', status: 'soon', legacy: true, lon: 3.95, lat: 7.38, side: 'right',
+      ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State', status: 'soon', legacy: true, lon: 3.95, lat: 7.38, stand: 'high',
         teaser: 'Seven hills of brown roofs, Cocoa House and the best amala in the country.', pack: null },
-      abuja: { id: 'abuja', name: 'Abuja', region: 'Federal Capital Territory', status: 'soon', lon: 7.49, lat: 9.06, side: 'right',
+      abuja: { id: 'abuja', name: 'Abuja', region: 'Federal Capital Territory', status: 'soon', lon: 7.49, lat: 9.06,
         teaser: 'The capital under Aso Rock: wide roads, big offices and bigger politics.', pack: null },
-      'port-harcourt': { id: 'port-harcourt', name: 'Port Harcourt', region: 'Rivers State', status: 'soon', lon: 7.03, lat: 4.82, side: 'right',
+      'port-harcourt': { id: 'port-harcourt', name: 'Port Harcourt', region: 'Rivers State', status: 'soon', lon: 7.03, lat: 4.82,
         teaser: 'The Garden City: oil money, bole and fish, and creeks that run to the sea.', pack: null },
     },
   },

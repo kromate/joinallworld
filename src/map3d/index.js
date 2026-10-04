@@ -21,7 +21,7 @@
 import '../city-map.css';
 import './map3d.css';
 import { hasCityPack, loadCityPack } from './regions.js';
-import { modelFlags } from '../models/integration/flags.js';
+import { modelFlags } from '../models/integration/flags.ts';
 import { createMap3D, webglAvailable } from './map3d.js';
 import { createMap2D } from './map2d.js';
 import { createWorldData } from './world-data.js';
@@ -74,7 +74,7 @@ export function createCityView(container, { cityId: firstCity = 'lagos', onSelec
       try {
         const pack = await loadCityPack(cityId);
         // Model-library trip vehicles are an opt-in (?models=vehicles): their code is fetched only then.
-        const travelVehicle = modelFlags().vehicles ? (await import('../models/integration/scene-models.js').catch(() => null))?.buildTravelVehicle ?? null : null;
+        const travelVehicle = modelFlags().vehicles ? (await import('../models/integration/scene-models.ts').catch(() => null))?.buildTravelVehicle ?? null : null;
         if (ticket !== mounting) return;
         impl?.destroy(); impl = null;
         next = createMap3D(container, { pack, cityId, world, travelVehicle, ...callbacks, onTripDue, deepLink, onContextLost: () => { brokenGl = true; onNotice('The 3D map stopped on this device. Showing the simple map instead.'); void mount(); } });

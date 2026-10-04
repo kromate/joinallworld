@@ -1,56 +1,166 @@
 import * as THREE from 'three';
-import { DETAIL, blockText, box, cylinder, geometryTriangles, mergeColored, profilePrism, torus } from './geometry.js';
+import { DETAIL, blockText, box, cylinder, geometryTriangles, mergeColored, profilePrism, torus } from './geometry.ts';
+import type { ColoredGeometry, VehicleDetail } from './geometry.ts';
 
-/** @typedef {'map' | 'street' | 'showcase'} VehicleDetail */
-/** @typedef {'day' | 'night'} VehicleTime */
-/** @typedef {'danfo' | 'keke' | 'okada' | 'cab' | 'sedan' | 'hatchback' | 'suv' | 'pickup' | 'molue' | 'brt' | 'tanker' | 'container' | 'ferry' | 'canoe' | 'airplane'} VehicleType */
+export type { ColoredGeometry, VehicleDetail };
+export type VehicleTime = 'day' | 'night';
+export type VehicleType = 'danfo' | 'keke' | 'okada' | 'cab' | 'sedan' | 'hatchback' | 'suv' | 'pickup' | 'molue' | 'brt' | 'tanker' | 'container' | 'ferry' | 'canoe' | 'airplane';
 
-/**
- * Options shared by every procedural vehicle.
- * @typedef {object} VehicleOptions
- * @property {VehicleDetail} [detail='street']
- * @property {VehicleTime} [time='day']
- * @property {THREE.ColorRepresentation} [color]
- * @property {THREE.ColorRepresentation} [colour]
- * @property {THREE.ColorRepresentation} [stripe]
- * @property {string} [route]
- */
+/** A mesh whose standard material carries the emissive intensity driven by poses. */
+export type LightMesh = THREE.Mesh<THREE.BufferGeometry, THREE.MeshStandardMaterial>;
 
-/**
- * Parameters supplied by the host on each animation sample.
- * @typedef {object} VehiclePose
- * @property {number} [distance=0] Travel distance in world units.
- * @property {number} [steering=0] Steering angle in radians.
- * @property {number} [bounce=0] Suspension or water-motion amplitude in world units.
- * @property {number} [door=0] Door progress from closed zero to open one.
- * @property {number|boolean} [brake=0] Brake-light intensity.
- * @property {'left'|'right'|'hazard'|boolean} [indicator=false]
- * @property {number} [time=0] Host time in seconds.
- */
+/** An instanced mesh whose standard material carries a pose-driven emissive intensity. */
+export type InstancedLight = THREE.InstancedMesh<THREE.BufferGeometry, THREE.MeshStandardMaterial>;
 
-/**
- * Public metadata shared by the wrapper and `object3D.userData`.
- * @typedef {object} VehicleUserData
- * @property {VehicleType} type
- * @property {VehicleDetail} detail
- * @property {number} triangles
- * @property {number} drawCalls
- * @property {() => void} dispose
- * @property {{ body: THREE.Object3D, wheels: THREE.Object3D[], wheelInstances: THREE.InstancedMesh[], steering: THREE.Object3D[], doors: THREE.Object3D[], headlights: THREE.Mesh|null, brakeLights: THREE.Mesh|null, indicators: [THREE.Mesh|null, THREE.Mesh|null] }} parts
- * @property {{ driver: THREE.Object3D, door: THREE.Object3D, seats: THREE.Object3D[] }} anchors
- */
+/** Options shared by every procedural vehicle. */
+export interface VehicleOptions {
+  detail?: VehicleDetail;
+  time?: VehicleTime;
+  color?: THREE.ColorRepresentation;
+  colour?: THREE.ColorRepresentation;
+  stripe?: THREE.ColorRepresentation;
+  route?: string;
+}
 
-/** @typedef {{ object3D: THREE.Group, userData: VehicleUserData }} VehicleModel */
+/** Parameters supplied by the host on each animation sample. */
+export interface VehiclePose {
+  /** Travel distance in world units. */
+  distance?: number;
+  /** Steering angle in radians. */
+  steering?: number;
+  /** Suspension or water-motion amplitude in world units. */
+  bounce?: number;
+  /** Door progress from closed zero to open one. */
+  door?: number;
+  /** Brake-light intensity. */
+  brake?: number | boolean;
+  indicator?: 'left' | 'right' | 'hazard' | boolean;
+  /** Host time in seconds. */
+  time?: number;
+}
 
-export const VEHICLE_TYPES = Object.freeze([
+export interface WheelState {
+  handle: THREE.Object3D;
+  x: number;
+  y: number;
+  z: number;
+  steered: boolean;
+  matrix: THREE.Matrix4;
+}
+
+export interface DoorMotion {
+  node: THREE.Object3D;
+  mode: 'hinge' | 'slide' | 'lift';
+  baseX: number;
+  baseY: number;
+  baseZ: number;
+  baseRY: number;
+  amount: number;
+}
+
+export interface VehicleParts {
+  body: THREE.Object3D;
+  wheels: THREE.Object3D[];
+  wheelInstances: THREE.InstancedMesh[];
+  steering: THREE.Object3D[];
+  doors: THREE.Object3D[];
+  headlights: InstancedLight | null;
+  brakeLights: InstancedLight | null;
+  indicators: [LightMesh | null, LightMesh | null];
+}
+
+export interface VehicleAnchors {
+  driver: THREE.Object3D;
+  door: THREE.Object3D;
+  seats: THREE.Object3D[];
+}
+
+/** Public metadata shared by the wrapper and `object3D.userData`. */
+export interface VehicleUserData {
+  type: VehicleType;
+  detail: VehicleDetail;
+  triangles: number;
+  drawCalls: number;
+  dispose: () => void;
+  parts: VehicleParts;
+  anchors: VehicleAnchors;
+}
+
+interface PoseState {
+  bodyY: number;
+  wheelRadius: number;
+  wheelStates: WheelState[];
+  wheelInstances: THREE.InstancedMesh[];
+  doorMotion: DoorMotion[];
+  floatRoll: number;
+  floatPitch: number;
+  tailBase: number;
+  indicatorBase: number;
+}
+
+interface VehicleMetadata extends VehicleUserData {
+  _pose: PoseState;
+}
+
+export interface VehicleModel {
+  object3D: THREE.Group;
+  userData: VehicleUserData;
+}
+
+type Point = readonly [number, number];
+type Profile = ReadonlyArray<Point>;
+type Vec3 = readonly [number, number, number];
+
+/** Mutable construction state discarded after finalization. */
+interface VehicleContext {
+  type: VehicleType;
+  detail: VehicleDetail;
+  time: VehicleTime;
+  quality: { radialSegments: number; text: boolean; trim: boolean };
+  root: THREE.Group;
+  body: THREE.Group;
+  staticGeometry: ColoredGeometry[];
+  geometries: THREE.BufferGeometry[];
+  materials: THREE.Material[];
+  materialCache: Map<string, THREE.MeshStandardMaterial>;
+  wheels: THREE.Object3D[];
+  wheelInstances: THREE.InstancedMesh[];
+  wheelStates: WheelState[];
+  steering: THREE.Object3D[];
+  doors: THREE.Object3D[];
+  doorMotion: DoorMotion[];
+  seats: THREE.Object3D[];
+  driver: THREE.Object3D;
+  doorAnchor: THREE.Object3D | null;
+  headlights: InstancedLight | null;
+  brakeLights: InstancedLight | null;
+  indicators: [LightMesh | null, LightMesh | null];
+  wheelRadius: number;
+}
+
+type Builder = (context: VehicleContext, options: VehicleOptions) => void;
+
+function isMesh(object: THREE.Object3D): object is THREE.Mesh {
+  return 'isMesh' in object && object.isMesh === true;
+}
+
+function isInstancedMesh(object: THREE.Mesh): object is THREE.InstancedMesh {
+  return 'isInstancedMesh' in object && object.isInstancedMesh === true;
+}
+
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value);
+}
+
+export const VEHICLE_TYPES: readonly VehicleType[] = Object.freeze([
   'danfo', 'keke', 'okada', 'cab', 'sedan', 'hatchback', 'suv', 'pickup',
   'molue', 'brt', 'tanker', 'container', 'ferry', 'canoe', 'airplane',
-]);
+] as const);
 
-export const VEHICLE_DETAILS = Object.freeze(['map', 'street', 'showcase']);
+export const VEHICLE_DETAILS: readonly VehicleDetail[] = Object.freeze(['map', 'street', 'showcase'] as const);
 
-const TYPE_SET = new Set(VEHICLE_TYPES);
-const DETAIL_SET = new Set(VEHICLE_DETAILS);
+const TYPE_SET: ReadonlySet<string> = new Set(VEHICLE_TYPES);
+const DETAIL_SET: ReadonlySet<string> = new Set(VEHICLE_DETAILS);
 const PI = Math.PI;
 const TYRE = '#191b1e';
 const HUB = '#9aa1a7';
@@ -61,45 +171,13 @@ const BLACK = '#202226';
 const LIGHT = '#fff2b0';
 const TAIL = '#c9232b';
 const AMBER = '#f29322';
-const EMPTY_POSE = Object.freeze({});
-
-/** @typedef {{ geometry: THREE.BufferGeometry, color: THREE.Color }} ColoredGeometry */
-
-/**
- * Mutable construction state discarded after finalization.
- * @typedef {object} VehicleContext
- * @property {VehicleType} type
- * @property {VehicleDetail} detail
- * @property {VehicleTime} time
- * @property {{ radialSegments: number, text: boolean, trim: boolean }} quality
- * @property {THREE.Group} root
- * @property {THREE.Group} body
- * @property {ColoredGeometry[]} staticGeometry
- * @property {THREE.BufferGeometry[]} geometries
- * @property {THREE.Material[]} materials
- * @property {Map<string, THREE.MeshStandardMaterial>} materialCache
- * @property {THREE.Object3D[]} wheels
- * @property {THREE.InstancedMesh[]} wheelInstances
- * @property {Array<{ handle: THREE.Object3D, x: number, y: number, z: number, steered: boolean, matrix: THREE.Matrix4 }>} wheelStates
- * @property {THREE.Object3D[]} steering
- * @property {THREE.Object3D[]} doors
- * @property {Array<{ node: THREE.Object3D, mode: 'hinge'|'slide'|'lift', baseX: number, baseY: number, baseZ: number, baseRY: number, amount: number }>} doorMotion
- * @property {THREE.Object3D[]} seats
- * @property {THREE.Object3D} driver
- * @property {THREE.Object3D|null} doorAnchor
- * @property {THREE.Mesh|null} headlights
- * @property {THREE.Mesh|null} brakeLights
- * @property {[THREE.Mesh|null, THREE.Mesh|null]} indicators
- * @property {number} wheelRadius
- */
+const EMPTY_POSE: Readonly<VehiclePose> = Object.freeze({});
 
 /**
  * Build one of the procedural vehicles at the origin, facing positive z.
- * @param {VehicleType} type
- * @param {VehicleOptions} [options]
- * @returns {VehicleModel}
  */
-export function buildVehicle(type, options = {}) {
+
+export function buildVehicle(type: VehicleType, options: VehicleOptions = {}): VehicleModel {
   if (!TYPE_SET.has(type)) throw new RangeError(`Unknown vehicle type: ${String(type)}`);
   const detail = options.detail === undefined ? 'street' : options.detail;
   if (!DETAIL_SET.has(detail)) throw new RangeError(`Unknown vehicle detail: ${String(detail)}`);
@@ -112,24 +190,23 @@ export function buildVehicle(type, options = {}) {
 
 /**
  * Apply a deterministic pose without creating geometry, materials, or temporary objects.
- * @param {VehicleModel|THREE.Object3D} model
- * @param {VehiclePose} [pose]
- * @returns {VehicleModel|THREE.Object3D}
  */
-export function poseVehicle(model, pose) {
+
+export function poseVehicle(model: VehicleModel | THREE.Object3D, pose?: VehiclePose): VehicleModel | THREE.Object3D {
   const object3D = model && 'object3D' in model ? model.object3D : model;
-  const data = object3D.userData;
+  const data = object3D.userData as VehicleMetadata;
   const state = data._pose;
   const values = pose || EMPTY_POSE;
-  const distance = Number.isFinite(values.distance) ? values.distance : 0;
-  const steering = Number.isFinite(values.steering) ? Math.max(-0.65, Math.min(0.65, values.steering)) : 0;
-  const bounce = Number.isFinite(values.bounce) ? Math.max(-0.25, Math.min(0.25, values.bounce)) : 0;
-  const time = Number.isFinite(values.time) ? values.time : 0;
-  const door = Number.isFinite(values.door) ? Math.max(0, Math.min(1, values.door)) : 0;
-  const brake = values.brake === true ? 1 : Number.isFinite(values.brake) ? Math.max(0, Math.min(1, values.brake)) : 0;
+  const distance = isFiniteNumber(values.distance) ? values.distance : 0;
+  const steering = isFiniteNumber(values.steering) ? Math.max(-0.65, Math.min(0.65, values.steering)) : 0;
+  const bounce = isFiniteNumber(values.bounce) ? Math.max(-0.25, Math.min(0.25, values.bounce)) : 0;
+  const time = isFiniteNumber(values.time) ? values.time : 0;
+  const door = isFiniteNumber(values.door) ? Math.max(0, Math.min(1, values.door)) : 0;
+  const brake = values.brake === true ? 1 : isFiniteNumber(values.brake) ? Math.max(0, Math.min(1, values.brake)) : 0;
   const wheelAngle = distance / state.wheelRadius;
   for (let i = 0; i < state.wheelStates.length; i += 1) {
     const wheel = state.wheelStates[i];
+    if (!wheel) continue; // in range by the loop bound; only satisfies noUncheckedIndexedAccess
     const yaw = wheel.steered ? steering : 0;
     const cosYaw = Math.cos(yaw), sinYaw = Math.sin(yaw);
     const cosRoll = Math.cos(wheelAngle), sinRoll = Math.sin(wheelAngle);
@@ -142,15 +219,16 @@ export function poseVehicle(model, pose) {
       0, 0, 0, 1,
     );
     for (let meshIndex = 0; meshIndex < state.wheelInstances.length; meshIndex += 1) {
-      state.wheelInstances[meshIndex].setMatrixAt(i, wheel.matrix);
+      state.wheelInstances[meshIndex]?.setMatrixAt(i, wheel.matrix);
     }
   }
-  for (let i = 0; i < state.wheelInstances.length; i += 1) state.wheelInstances[i].instanceMatrix.needsUpdate = true;
+  for (const instances of state.wheelInstances) instances.instanceMatrix.needsUpdate = true;
   data.parts.body.position.y = state.bodyY + bounce * Math.sin(time * 7.5);
   data.parts.body.rotation.z = state.floatRoll * bounce * Math.sin(time * 1.7);
   data.parts.body.rotation.x = state.floatPitch * bounce * Math.cos(time * 1.3);
   for (let i = 0; i < state.doorMotion.length; i += 1) {
     const motion = state.doorMotion[i];
+    if (!motion) continue; // in range by the loop bound
     motion.node.position.set(motion.baseX, motion.baseY, motion.baseZ);
     motion.node.rotation.set(0, motion.baseRY, 0);
     if (motion.mode === 'slide') motion.node.position.z = motion.baseZ - door * motion.amount;
@@ -167,12 +245,9 @@ export function poseVehicle(model, pose) {
 }
 
 /**
- * @param {VehicleType} type
- * @param {VehicleDetail} detail
- * @param {VehicleTime} time
- * @returns {VehicleContext}
  */
-function createContext(type, detail, time) {
+
+function createContext(type: VehicleType, detail: VehicleDetail, time: VehicleTime): VehicleContext {
   const root = new THREE.Group();
   root.name = `vehicle:${type}`;
   const body = new THREE.Group();
@@ -189,14 +264,9 @@ function createContext(type, detail, time) {
 }
 
 /**
- * @param {string} name
- * @param {number} x
- * @param {number} y
- * @param {number} z
- * @param {number} ry
- * @returns {THREE.Object3D}
  */
-function anchor(name, x, y, z, ry) {
+
+function anchor(name: string, x: number, y: number, z: number, ry: number): THREE.Object3D {
   const node = new THREE.Object3D();
   node.name = name;
   node.position.set(x, y, z);
@@ -205,14 +275,9 @@ function anchor(name, x, y, z, ry) {
 }
 
 /**
- * @param {VehicleContext} context
- * @param {number} x
- * @param {number} y
- * @param {number} z
- * @param {number} [ry]
- * @returns {THREE.Object3D}
  */
-function addSeat(context, x, y, z, ry = 0) {
+
+function addSeat(context: VehicleContext, x: number, y: number, z: number, ry = 0): THREE.Object3D {
   const seat = anchor(`seat:${context.seats.length}`, x, y, z, ry);
   context.body.add(seat);
   context.seats.push(seat);
@@ -220,25 +285,17 @@ function addSeat(context, x, y, z, ry = 0) {
 }
 
 /**
- * @param {VehicleContext} context
- * @param {number} x
- * @param {number} y
- * @param {number} z
- * @param {number} [ry]
- * @returns {void}
  */
-function placeDriver(context, x, y, z, ry = 0) {
+
+function placeDriver(context: VehicleContext, x: number, y: number, z: number, ry = 0): void {
   context.driver.position.set(x, y, z);
   context.driver.rotation.y = ry;
 }
 
 /**
- * @param {VehicleContext} context
- * @param {THREE.ColorRepresentation} color
- * @param {'plain'|'glass'|'light'} [kind]
- * @returns {THREE.MeshStandardMaterial}
  */
-function material(context, color, kind = 'plain') {
+
+function material(context: VehicleContext, color: THREE.ColorRepresentation, kind: 'plain' | 'glass' | 'light' = 'plain'): THREE.MeshStandardMaterial {
   const key = `${kind}:${new THREE.Color(color).getHexString()}`;
   const cached = context.materialCache.get(key);
   if (cached) return cached;
@@ -255,14 +312,9 @@ function material(context, color, kind = 'plain') {
 }
 
 /**
- * @param {VehicleContext} context
- * @param {THREE.BufferGeometry} geometry
- * @param {THREE.Material} meshMaterial
- * @param {THREE.Object3D} parent
- * @param {string} name
- * @returns {THREE.Mesh}
  */
-function mesh(context, geometry, meshMaterial, parent, name) {
+
+function mesh(context: VehicleContext, geometry: THREE.BufferGeometry, meshMaterial: THREE.Material, parent: THREE.Object3D, name: string): THREE.Mesh {
   context.geometries.push(geometry);
   const result = new THREE.Mesh(geometry, meshMaterial);
   result.name = name;
@@ -273,14 +325,9 @@ function mesh(context, geometry, meshMaterial, parent, name) {
 }
 
 /**
- * @param {VehicleContext} context
- * @param {ReadonlyArray<readonly [number, number, number]>} positions
- * @param {number} radius
- * @param {number} width
- * @param {ReadonlySet<number>} [steered]
- * @returns {void}
  */
-function addWheels(context, positions, radius, width, steered = new Set()) {
+
+function addWheels(context: VehicleContext, positions: ReadonlyArray<Vec3>, radius: number, width: number, steered: ReadonlySet<number> = new Set()): void {
   const geometry = new THREE.CylinderGeometry(radius, radius, width, context.quality.radialSegments, 1, false);
   geometry.rotateZ(PI / 2);
   context.geometries.push(geometry);
@@ -294,15 +341,17 @@ function addWheels(context, positions, radius, width, steered = new Set()) {
   context.wheelInstances.push(wheelInstances);
   context.wheelRadius = radius;
   for (let i = 0; i < positions.length; i += 1) {
+    const position = positions[i];
+    if (!position) continue; // in range by the loop bound
     const handle = new THREE.Object3D();
     handle.name = steered.has(i) ? `steering:${i}` : `wheel:${i}`;
-    handle.position.set(positions[i][0], positions[i][1], positions[i][2]);
+    handle.position.set(position[0], position[1], position[2]);
     context.root.add(handle);
     context.wheels.push(handle);
     if (steered.has(i)) context.steering.push(handle);
     context.wheelStates.push({
       handle,
-      x: positions[i][0], y: positions[i][1], z: positions[i][2],
+      x: position[0], y: position[1], z: position[2],
       steered: steered.has(i),
       matrix: new THREE.Matrix4(),
     });
@@ -323,11 +372,12 @@ function addWheels(context, positions, radius, width, steered = new Set()) {
 }
 
 /**
- * @param {VehicleContext} context
- * @param {{ x: number, y: number, z: number, width: number, height: number, depth: number, color: THREE.ColorRepresentation, mode?: 'hinge'|'slide'|'lift', amount?: number, hinge?: 'front'|'rear' }} options
- * @returns {void}
  */
-function addDoor(context, options) {
+
+function addDoor(context: VehicleContext, options: {
+  x: number; y: number; z: number; width: number; height: number; depth: number;
+  color: THREE.ColorRepresentation; mode?: 'hinge' | 'slide' | 'lift'; amount?: number; hinge?: 'front' | 'rear';
+}): void {
   const mode = options.mode || 'hinge';
   const amount = options.amount === undefined ? PI * 0.55 : options.amount;
   const hingeOffset = options.hinge === 'rear' ? options.depth / 2 : -options.depth / 2;
@@ -350,11 +400,9 @@ function addDoor(context, options) {
 }
 
 /**
- * @param {VehicleContext} context
- * @param {{ width: number, frontZ: number, rearZ: number, y: number, span?: number }} options
- * @returns {void}
  */
-function addRoadLights(context, options) {
+
+function addRoadLights(context: VehicleContext, options: { width: number; frontZ: number; rearZ: number; y: number; span?: number }): void {
   const span = options.span === undefined ? options.width * 0.31 : options.span;
   const lampGeometry = new THREE.BoxGeometry(options.width * 0.22, 0.18, 0.055);
   context.geometries.push(lampGeometry);
@@ -394,10 +442,9 @@ function addRoadLights(context, options) {
 }
 
 /**
- * @param {VehicleContext} context
- * @returns {VehicleModel}
  */
-function finish(context) {
+
+function finish(context: VehicleContext): VehicleModel {
   if (!context.doorAnchor) {
     const pivot = new THREE.Object3D();
     pivot.name = 'door-root';
@@ -414,22 +461,22 @@ function finish(context) {
   mesh(context, staticGeometry, staticMaterial, context.body, 'static-body');
   let triangles = 0;
   let drawCalls = 0;
-  const instancedMeshes = [];
+  const instancedMeshes: THREE.InstancedMesh[] = [];
   context.root.traverse((object) => {
-    if (!object.isMesh) return;
-    if (object.isInstancedMesh) instancedMeshes.push(object);
-    triangles += geometryTriangles(object.geometry) * (object.isInstancedMesh ? object.count : 1);
+    if (!isMesh(object)) return;
+    if (isInstancedMesh(object)) instancedMeshes.push(object);
+    triangles += geometryTriangles(object.geometry) * (isInstancedMesh(object) ? object.count : 1);
     drawCalls += Array.isArray(object.material) ? object.material.length : 1;
   });
   let disposed = false;
   const dispose = () => {
     if (disposed) return;
     disposed = true;
-    for (let i = 0; i < instancedMeshes.length; i += 1) instancedMeshes[i].dispose();
-    for (let i = 0; i < context.geometries.length; i += 1) context.geometries[i].dispose();
-    for (let i = 0; i < context.materials.length; i += 1) context.materials[i].dispose();
+    for (const item of instancedMeshes) item.dispose();
+    for (const item of context.geometries) item.dispose();
+    for (const item of context.materials) item.dispose();
   };
-  const parts = {
+  const parts: VehicleParts = {
     body: context.body,
     wheels: context.wheels,
     wheelInstances: context.wheelInstances,
@@ -439,8 +486,8 @@ function finish(context) {
     brakeLights: context.brakeLights,
     indicators: context.indicators,
   };
-  const anchors = { driver: context.driver, door: context.doorAnchor, seats: context.seats };
-  const metadata = {
+  const anchors: VehicleAnchors = { driver: context.driver, door: context.doorAnchor, seats: context.seats };
+  const metadata: VehicleMetadata = {
     type: context.type,
     detail: context.detail,
     triangles,
@@ -467,14 +514,9 @@ function finish(context) {
 
 /**
  * Add a windscreen that follows a side-profile slope and sits just outside it.
- * @param {ColoredGeometry[]} target
- * @param {number} width
- * @param {readonly [number, number]} lower Pair of z and y at the lower edge.
- * @param {readonly [number, number]} upper Pair of z and y at the upper edge.
- * @param {THREE.ColorRepresentation} color
- * @returns {void}
  */
-function slopedWindscreen(target, width, lower, upper, color) {
+
+function slopedWindscreen(target: ColoredGeometry[], width: number, lower: Point, upper: Point, color: THREE.ColorRepresentation): void {
   const deltaZ = upper[0] - lower[0];
   const deltaY = upper[1] - lower[1];
   const angle = Math.atan2(deltaZ, deltaY);
@@ -485,13 +527,12 @@ function slopedWindscreen(target, width, lower, upper, color) {
   box(target, 0, centerY, centerZ, width, height, 0.045, color, { rx: angle });
 }
 
-/** @param {VehicleContext} context @param {number} width @param {number} length @param {number} height @param {THREE.ColorRepresentation} bodyColor @param {'sedan'|'hatchback'|'suv'|'cab'} style */
-function buildCar(context, width, length, height, bodyColor, style) {
+function buildCar(context: VehicleContext, width: number, length: number, height: number, bodyColor: THREE.ColorRepresentation, style: 'sedan' | 'hatchback' | 'suv' | 'cab'): void {
   const front = length / 2;
   const rear = -length / 2;
   const sill = 0.45;
   const roof = style === 'suv' ? height : height - 0.05;
-  const profile = style === 'hatchback'
+  const profile: Profile = style === 'hatchback'
     ? [[rear, sill], [front, sill], [front - 0.08, 0.78], [front - 0.38, 0.96], [front - 1.14, 1.08], [front - 1.5, roof], [rear + 0.5, roof], [rear - 0.04, 0.84]]
     : style === 'suv'
       ? [[rear, sill], [front, sill], [front - 0.08, 0.88], [front - 0.48, 1.07], [front - 1.05, 1.14], [front - 1.3, roof], [rear + 0.28, roof], [rear - 0.05, 0.86]]
@@ -519,14 +560,14 @@ function buildCar(context, width, length, height, bodyColor, style) {
       box(context.staticGeometry, side * (width / 2 + 0.025), windowY, pillarZ, 0.055, windowHeight + 0.08, 0.1, bodyColor);
     }
   }
-  const windscreenLower = style === 'suv'
+  const windscreenLower: Point = style === 'suv'
     ? [front - 0.48, 1.07]
     : style === 'hatchback'
       ? [front - 0.38, 0.96]
       : style === 'cab'
         ? [front - 0.62, 1.02]
         : [front - 0.42, 0.94];
-  const windscreenUpper = style === 'suv'
+  const windscreenUpper: Point = style === 'suv'
     ? [front - 1.3, roof]
     : style === 'hatchback'
       ? [front - 1.5, roof]
@@ -568,8 +609,7 @@ function buildCar(context, width, length, height, bodyColor, style) {
   addSeat(context, width * 0.23, 0.74, -0.58);
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function danfo(context, options) {
+function danfo(context: VehicleContext, options: VehicleOptions): void {
   const yellow = options.color || options.colour || '#f2be18';
   const stripe = options.stripe || BLACK;
   profilePrism(context.staticGeometry, [[-2.35, 0.5], [2.35, 0.5], [2.3, 2.28], [1.98, 2.55], [-2.22, 2.55], [-2.4, 2.28]], 2.08, yellow);
@@ -610,8 +650,7 @@ function danfo(context, options) {
   }
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function keke(context, options) {
+function keke(context: VehicleContext, options: VehicleOptions): void {
   const yellow = options.color || options.colour || '#efbd18';
   profilePrism(context.staticGeometry, [[-1.45, 0.38], [1.36, 0.38], [1.28, 0.82], [0.7, 1.03], [0.45, 2.06], [-1.35, 2.06]], 1.52, yellow);
   box(context.staticGeometry, 0, 1.45, 0.82, 1.18, 0.75, 0.05, DARK_GLASS, { rx: -0.18 });
@@ -631,8 +670,7 @@ function keke(context, options) {
   addSeat(context, 0.38, 0.92, -0.75);
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function okada(context, options) {
+function okada(context: VehicleContext, options: VehicleOptions): void {
   const color = options.color || options.colour || '#bd302d';
   cylinder(context.staticGeometry, 0, 0.74, 0, 0.09, 1.72, CHROME, { segments: context.quality.radialSegments, rx: PI / 2, topScale: 0.8 });
   box(context.staticGeometry, 0, 0.82, -0.18, 0.3, 0.28, 1.32, color, { rx: -0.05 });
@@ -651,17 +689,12 @@ function okada(context, options) {
   addSeat(context, 0, 1.08, -0.62);
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function cab(context, options) { buildCar(context, 1.88, 4.18, 1.62, options.color || options.colour || '#f0c51d', 'cab'); }
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function sedan(context, options) { buildCar(context, 1.9, 4.35, 1.58, options.color || options.colour || '#8f2f32', 'sedan'); }
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function hatchback(context, options) { buildCar(context, 1.82, 3.75, 1.62, options.color || options.colour || '#2e6f8f', 'hatchback'); }
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function suv(context, options) { buildCar(context, 2.03, 4.45, 1.92, options.color || options.colour || '#385d4d', 'suv'); }
+function cab(context: VehicleContext, options: VehicleOptions): void { buildCar(context, 1.88, 4.18, 1.62, options.color || options.colour || '#f0c51d', 'cab'); }
+function sedan(context: VehicleContext, options: VehicleOptions): void { buildCar(context, 1.9, 4.35, 1.58, options.color || options.colour || '#8f2f32', 'sedan'); }
+function hatchback(context: VehicleContext, options: VehicleOptions): void { buildCar(context, 1.82, 3.75, 1.62, options.color || options.colour || '#2e6f8f', 'hatchback'); }
+function suv(context: VehicleContext, options: VehicleOptions): void { buildCar(context, 2.03, 4.45, 1.92, options.color || options.colour || '#385d4d', 'suv'); }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function pickup(context, options) {
+function pickup(context: VehicleContext, options: VehicleOptions): void {
   const color = options.color || options.colour || '#d2d0c8';
   profilePrism(context.staticGeometry, [[-2.35, 0.48], [2.35, 0.48], [2.25, 1.02], [1.2, 1.08], [0.7, 1.86], [-0.3, 1.86], [-0.72, 1.02], [-2.35, 1.02]], 2.0, color);
   for (const side of [-1, 1]) box(context.staticGeometry, side * 1.012, 1.48, 0.3, 0.04, 0.6, 1.02, GLASS);
@@ -691,8 +724,7 @@ function pickup(context, options) {
   addSeat(context, 0, 0.96, -1.58);
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options @param {boolean} modern */
-function bus(context, options, modern) {
+function bus(context: VehicleContext, options: VehicleOptions, modern: boolean): void {
   const color = options.color || options.colour || (modern ? '#2372ad' : '#e2b51b');
   const stripe = options.stripe || (modern ? '#d6e8ee' : '#292a2c');
   const length = modern ? 9.2 : 8.4;
@@ -730,13 +762,10 @@ function bus(context, options, modern) {
   }
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function molue(context, options) { bus(context, options, false); }
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function brt(context, options) { bus(context, options, true); }
+function molue(context: VehicleContext, options: VehicleOptions): void { bus(context, options, false); }
+function brt(context: VehicleContext, options: VehicleOptions): void { bus(context, options, true); }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options @param {'tanker'|'container'} cargo */
-function truck(context, options, cargo) {
+function truck(context: VehicleContext, options: VehicleOptions, cargo: 'tanker' | 'container'): void {
   const cabColor = options.color || options.colour || (cargo === 'tanker' ? '#d9d5c8' : '#245f8d');
   const half = 4.75;
   profilePrism(context.staticGeometry, [[0.3, 0.58], [half, 0.58], [half, 2.28], [4.42, 2.72], [2.75, 2.72], [2.35, 1.18], [0.3, 1.18]], 2.35, cabColor);
@@ -772,13 +801,10 @@ function truck(context, options, cargo) {
   addSeat(context, 0.53, 1.4, 3.55);
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function tanker(context, options) { truck(context, options, 'tanker'); }
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function container(context, options) { truck(context, options, 'container'); }
+function tanker(context: VehicleContext, options: VehicleOptions): void { truck(context, options, 'tanker'); }
+function container(context: VehicleContext, options: VehicleOptions): void { truck(context, options, 'container'); }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function ferry(context, options) {
+function ferry(context: VehicleContext, options: VehicleOptions): void {
   const color = options.color || options.colour || '#e7e2d4';
   profilePrism(context.staticGeometry, [[-4.3, 0], [4.25, 0], [3.65, 0.75], [-3.85, 0.75]], 3.0, options.stripe || '#246b89', { y: 0.05 });
   box(context.staticGeometry, 0, 0.8, -0.2, 2.75, 0.22, 6.9, color);
@@ -801,34 +827,33 @@ function ferry(context, options) {
 
 /**
  * Add an open, pointed V-hull whose plan narrows toward both ends.
- * @param {ColoredGeometry[]} target
- * @param {THREE.ColorRepresentation} color
- * @returns {void}
  */
-function canoeHull(target, color) {
-  const stations = [
+
+function canoeHull(target: ColoredGeometry[], color: THREE.ColorRepresentation): void {
+  const stations: [Vec3, Vec3, Vec3, Vec3, Vec3] = [
     [-2.8, 0.04, 0.36], [-2.15, 0.43, 0.63], [0, 0.55, 0.72],
     [2.15, 0.43, 0.63], [2.8, 0.04, 0.36],
   ];
-  const positions = [];
-  const triangle = (a, b, c) => positions.push(...a, ...b, ...c);
+  const positions: number[] = [];
+  const triangle = (a: Vec3, b: Vec3, c: Vec3): number => positions.push(...a, ...b, ...c);
   for (let index = 0; index < stations.length - 1; index += 1) {
     const current = stations[index], next = stations[index + 1];
-    const leftA = [-current[1], current[2], current[0]];
-    const leftB = [-next[1], next[2], next[0]];
-    const rightA = [current[1], current[2], current[0]];
-    const rightB = [next[1], next[2], next[0]];
-    const keelA = [0, -0.12, current[0]];
-    const keelB = [0, -0.12, next[0]];
+    if (!current || !next) continue; // in range by the loop bound
+    const leftA: Vec3 = [-current[1], current[2], current[0]];
+    const leftB: Vec3 = [-next[1], next[2], next[0]];
+    const rightA: Vec3 = [current[1], current[2], current[0]];
+    const rightB: Vec3 = [next[1], next[2], next[0]];
+    const keelA: Vec3 = [0, -0.12, current[0]];
+    const keelB: Vec3 = [0, -0.12, next[0]];
     triangle(leftA, keelA, keelB);
     triangle(leftA, keelB, leftB);
     triangle(rightA, rightB, keelB);
     triangle(rightA, keelB, keelA);
-    const innerLeftA = [-current[1] * .92, current[2] - .025, current[0]];
-    const innerLeftB = [-next[1] * .92, next[2] - .025, next[0]];
-    const innerRightA = [current[1] * .92, current[2] - .025, current[0]];
-    const innerRightB = [next[1] * .92, next[2] - .025, next[0]];
-    const innerKeelA = [0, -.075, current[0]], innerKeelB = [0, -.075, next[0]];
+    const innerLeftA: Vec3 = [-current[1] * .92, current[2] - .025, current[0]];
+    const innerLeftB: Vec3 = [-next[1] * .92, next[2] - .025, next[0]];
+    const innerRightA: Vec3 = [current[1] * .92, current[2] - .025, current[0]];
+    const innerRightB: Vec3 = [next[1] * .92, next[2] - .025, next[0]];
+    const innerKeelA: Vec3 = [0, -.075, current[0]], innerKeelB: Vec3 = [0, -.075, next[0]];
     triangle(innerLeftA, innerKeelB, innerKeelA);
     triangle(innerLeftA, innerLeftB, innerKeelB);
     triangle(innerRightA, innerKeelB, innerRightB);
@@ -836,7 +861,7 @@ function canoeHull(target, color) {
     triangle(leftA, leftB, innerLeftA); triangle(leftB, innerLeftB, innerLeftA);
     triangle(rightA, innerRightA, rightB); triangle(rightB, innerRightA, innerRightB);
   }
-  const rear = stations[0], front = stations[stations.length - 1];
+  const rear = stations[0], front = stations[4];
   triangle([-rear[1], rear[2], rear[0]], [rear[1], rear[2], rear[0]], [0, -0.12, rear[0]]);
   triangle([front[1], front[2], front[0]], [-front[1], front[2], front[0]], [0, -0.12, front[0]]);
   const geometry = new THREE.BufferGeometry();
@@ -845,8 +870,7 @@ function canoeHull(target, color) {
   target.push({ geometry, color: new THREE.Color(color) });
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function canoe(context, options) {
+function canoe(context: VehicleContext, options: VehicleOptions): void {
   const color = options.color || options.colour || '#8f542e';
   canoeHull(context.staticGeometry, color);
   box(context.staticGeometry, 0, 0.3, 0, 0.68, 0.05, 3.8, '#392b24');
@@ -862,8 +886,7 @@ function canoe(context, options) {
   addSeat(context, 0, 0.52, -0.92, PI);
 }
 
-/** @param {VehicleContext} context @param {VehicleOptions} options */
-function airplane(context, options) {
+function airplane(context: VehicleContext, options: VehicleOptions): void {
   const color = options.color || options.colour || '#e5e7e5';
   const stripe = options.stripe || '#2a6c9c';
   cylinder(context.staticGeometry, 0, 1.65, 0, 0.72, 8.8, color, { segments: context.quality.radialSegments, rx: PI / 2, topScale: 0.74 });
@@ -886,8 +909,7 @@ function airplane(context, options) {
   }
 }
 
-/** @type {Readonly<Record<VehicleType, (context: VehicleContext, options: VehicleOptions) => void>>} */
-const BUILDERS = Object.freeze({
+const BUILDERS: Readonly<Record<VehicleType, Builder>> = Object.freeze({
   danfo, keke, okada, cab, sedan, hatchback, suv, pickup, molue, brt,
   tanker, container, ferry, canoe, airplane,
 });

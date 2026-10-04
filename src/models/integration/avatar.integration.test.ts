@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { modelFlags, modelLibraryEnabled, MODEL_FLAGS } from './flags.js';
+import { modelFlags, modelLibraryEnabled, MODEL_FLAGS } from './flags.ts';
 
 test('every model-library integration is OFF by default; ?models=vehicles switches the trip vehicles on and nothing else', () => {
   assert.deepEqual(MODEL_FLAGS, ['vehicles']);
@@ -22,5 +22,5 @@ test('the running game keeps its own avatars and atlas: neither loads the model 
   }
   // The one integration point: the city view fetches the trip vehicles only when the flag is on.
   const index = await readFile(new URL('../../map3d/index.js', import.meta.url), 'utf8');
-  assert.match(index, /modelFlags\(\)\.vehicles \? \(await import\('\.\.\/models\/integration\/scene-models\.js'\)/);
+  assert.match(index, /modelFlags\(\)\.vehicles \? \(await import\('\.\.\/models\/integration\/scene-models\.ts'\)/);
 });

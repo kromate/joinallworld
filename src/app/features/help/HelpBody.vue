@@ -1,0 +1,29 @@
+<script setup lang="ts">
+// How to play: the Help app in the phone, and the help sheet (the ? key) outside it.
+import { useApp } from '../../state/app.ts'
+import { shortcutRows } from '../../legacy/modules.ts'
+import BaseButton from '../../ui/BaseButton.vue'
+import GameIcon from '../../ui/GameIcon.vue'
+
+const { game, shell } = useApp()
+const STEPS = [
+  { icon: 'home', title: 'Do things', text: 'Pick a spot in the venue panel, then an activity. It takes real seconds and finishes on the server even if you close the tab.' },
+  { icon: 'map', title: 'Go places', text: 'Open the Map to travel. Every fare, trip time and closing hour is shown before you go.' },
+  { icon: 'phone', title: 'Use your phone', text: 'Jobs, Bank, Messages and every other app live in the Phone (P). Red badges mean something is waiting.' },
+  { icon: 'person', title: 'Look after your Sim', text: 'The six bars are your needs. Tap your avatar for your profile, goals, skills and people.' },
+] as const
+const rows = shortcutRows()
+</script>
+
+<template>
+  <div class="help">
+    <ul class="help-steps">
+      <li v-for="step in STEPS" :key="step.title"><i aria-hidden="true"><GameIcon bare :name="step.icon" /></i><div><b>{{ step.title }}</b><span>{{ step.text }}</span></div></li>
+    </ul>
+    <p class="help-note">The <b>More</b> button holds the weather, the gem hunt, messages and the city switch. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p>
+    <p class="help-note">{{ game.connected.value ? 'Your progress is saved on this server under this device session. It is not a password-protected account, so keep your cookies.' : 'You are not connected: what you see is the last saved copy, and nothing changes until the connection is back.' }}</p>
+    <h3>Keyboard</h3>
+    <dl class="help-keys"><div v-for="row in rows" :key="row.label"><dt><kbd>{{ row.label }}</kbd></dt><dd>{{ row.description }}</dd></div></dl>
+    <BaseButton block @click="shell.open('support')">Report a problem</BaseButton>
+  </div>
+</template>

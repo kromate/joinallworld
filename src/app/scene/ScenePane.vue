@@ -1,0 +1,93 @@
+<script setup lang="ts">
+// The venue scene: hosts the existing Three.js scene host (src/venue-world.js) through its own
+// API. The host owns the canvas, the camera and the name tags; this component owns nothing but
+// the element it draws into and the moment it is created and disposed.
+//
+// NO RENDER LOOP WHILE IDLE. The host draws on demand, and this pane never asks for a frame of its
+// own accord: it forwards a new server state, the player's look and the crowd from the store
+// (state/app.ts does that, once per accepted state), and tells the host how much of the canvas the
+// HUD covers when — and only when — a HUD element changed size. A Vue re-render alone calls
+// nothing on the host. `?diagnostics` shows the host's frame count; it stays flat while the game
+// is idle.
+//
+// Three.js and every scene module are fetched after the HUD is on screen. A device that cannot
+// draw the scene still gets the whole game.
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useApp } from '../state/app.ts'
+import { loadVenueWorld } from '../legacy/scene.ts'
+
+const props = defineProps<{
+  /** Elements whose bottom edge marks how far the HUD covers the top of the scene. */
+  top: () => (Element | null)[]
+  /** The element whose top edge marks how far the HUD covers the bottom. */
+  bottom: () => Element | null
+  hidden: boolean
+}>()
+const { game, shell, scene, showPlayer, showCrowd } = useApp()
+const container = ref<HTMLElement | null>(null)
+const failed = ref(false)
+const waiting = ref(true)
+let observer: ResizeObserver | null = null
+let disposed = false
+
+/** Tell the scene how much of the screen the HUD covers, so it draws itself in the free part. The host redraws only if the snapped values changed. */
+function layout(): void {
+  const venue = scene.venue.value, box = container.value
+  if (!venue || !box || game.mode.value === 'map') return
+  const page = box.getBoundingClientRect()
+  const covered = Math.max(page.top, ...props.top().map((node) => node?.getBoundingClientRect().bottom ?? page.top))
+  const stack = props.bottom()?.getBoundingClientRect()
+  venue.setInsets({ top: covered - page.top, bottom: stack?.height ? page.bottom - stack.top : 0 })
+}
+const onResize = (): void => { if (game.mode.value !== 'map') scene.venue.value?.resize() }
+
+onMounted(() => {
+  // After the first paint: the scene starts downloading with the HUD already on screen and usable.
+  setTimeout(async () => {
+    try {
+      const createVenueWorld = await loadVenueWorld()
+      if (disposed || !container.value) return
+      const venue = createVenueWorld(container.value, { location: game.state.value.location, onTag(tag) {
+        // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
+        if (tag.kind === 'npc') shell.open('person', { npc: tag.id.replace(/^npc:/, '') })
+        else if (tag.kind === 'player') shell.open('person', { player: tag.id })
+      } })
+      scene.venue.value = venue
+      waiting.value = false
+      venue.setState(game.state.value)
+      showPlayer(); showCrowd()
+      venue.resize()
+      layout()
+      // The HUD changed size (activities opened, Clean screen, a trip): re-centre the scene. An observer, not a timer.
+      observer = new ResizeObserver(layout)
+      for (const node of [...props.top(), props.bottom()]) if (node) observer.observe(node)
+    } catch (error) {
+      console.error('The scene could not be started:', error)
+      failed.value = true
+    }
+  }, 0)
+  window.addEventListener('resize', onResize)
+})
+// The venue comes up after a trip with a short fade rather than a cut: one CSS animation, restarted by hand.
+watch(scene.arrivals, () => {
+  const box = container.value
+  if (!box) return
+  box.classList.remove('is-arriving'); void box.offsetWidth; box.classList.add('is-arriving')
+}, { flush: 'post' })
+// Back from the map: the canvas was hidden, so measure again.
+watch(() => props.hidden, (hidden) => { if (!hidden) { onResize(); layout() } }, { flush: 'post' })
+onBeforeUnmount(() => {
+  disposed = true
+  window.removeEventListener('resize', onResize)
+  observer?.disconnect()
+  scene.venue.value?.dispose()
+  scene.venue.value = null
+})
+defineExpose({ layout })
+</script>
+
+<template>
+  <div id="venue-scene" ref="container"  class="life-scene" :hidden="hidden">
+    <p v-if="waiting" class="scene-wait" role="status">{{ failed ? 'The 3D scene could not be drawn on this device. Everything else still works.' : 'Drawing the scene…' }}</p>
+  </div>
+</template>

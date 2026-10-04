@@ -10,5 +10,5 @@ export default defineConfig({
       '/socket': { target: 'ws://127.0.0.1:3001', ws: true },
     },
   },
-  build: { rollupOptions: { input: { app: 'index.html', voiceTest: 'voice-test.html' }, output: { manualChunks: { three: ['three'] } } } },
+  build: { rollupOptions: { input: { app: 'index.html', next: 'next.html', voiceTest: 'voice-test.html' }, output: { manualChunks: { three: ['three'] } } } },
 });

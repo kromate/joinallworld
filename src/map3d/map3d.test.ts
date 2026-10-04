@@ -277,7 +277,6 @@ test('render budget: the whole city, with every layer on and a trip running, sta
     billboards: { slots: Object.keys(pack.sites).slice(0, 12).map((near, i) => ({ slot: `bb-${i}`, near, road: 'Road', ad: i % 2 ? { text: '<b>Buy</b> <img src=x onerror=alert(1)>', colour: 'green', icon: 'star', by: { id: 'p', name: 'Ada' } } : null })) },
     sea: { rows: 16, cols: 16, shoreRows: 2, plots: Array.from({ length: 40 }, (_, i) => ({ slot: `sea-${i % 16}-${Math.floor(i / 16)}`, row: i % 16, col: Math.floor(i / 16), text: 'javascript:alert(1)', colour: 'green', icon: 'star', by: { id: 'p', name: 'Ada' } })) } };
   const neighbours = { total: 60, online: 9, districts: Object.keys(HOME_SPOTS).map((id) => ({ id, label: id, count: 30, online: 4, homes: [{ id: 'x', name: 'Ada', online: true, you: false }] })) };
-  // BUG: MapUiDetail (map2d.ts) has no `neighbours`, which the 3D map reads from the event; a non-literal object keeps the call checked.
   const ui = { layers: { moving: true, billboards: true, sea: true, neighbours: true, gov: true }, ads, neighbours, gov: { governor: null }, selected: 'park' };
   h.map.ui(ui);
   h.pump(30);

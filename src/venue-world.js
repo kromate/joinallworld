@@ -22,7 +22,8 @@ export function createVenueWorld(container, { location = 'park' } = {}) {
   scene.add(moon);
   const park = new THREE.Group();
   const library = new THREE.Group();
-  scene.add(park, library);
+  const home = new THREE.Group();
+  scene.add(park, library, home);
   const materials = new Map();
   const geometries = new Set();
   const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -47,7 +48,6 @@ export function createVenueWorld(container, { location = 'park' } = {}) {
   const box = (x, y, z, w, h, d, c, p, glow) => mesh(boxGeometry, x, y, z, w, h, d, c, p, glow);
   const round = (x, y, z, r, h, c, p, glow) => mesh(cylinderGeometry, x, y, z, r, h, r, c, p, glow);
   const sphere = (x, y, z, r, c, p) => mesh(sphereGeometry, x, y, z, r, r, r, c, p);
-  const animated = [];
   function person(x, z, shirt, pants, { seated = false, rotation = 0, skin = '#986345', hair = '#211d1c', parent = park, y = 0, gesture = false } = {}) {
     const person = new THREE.Group();
     person.position.set(x, y, z);
@@ -87,7 +87,6 @@ export function createVenueWorld(container, { location = 'park' } = {}) {
       limbs.push(arm);
     }
     if (seated) body.position.y = -0.85;
-    animated.push({ body, limbs, phase: animated.length * 1.3, seated });
     return person;
   }
   function tree(x, z, size = 1) {
@@ -166,36 +165,86 @@ export function createVenueWorld(container, { location = 'park' } = {}) {
   person(-5.6, 2.2, '#dfb665', '#475e7b', { parent: library, seated: true, y: 0.93 });
   person(5.5, 2.2, '#bd7e9b', '#454452', { parent: library, seated: true, y: 0.93, rotation: -0.2 });
   person(0, -3, '#657fb2', '#35445b', { parent: library, rotation: 0.6, gesture: true });
-  let elapsed = 0;
+  // Open walls keep the compact room readable from the overhead camera.
+  box(0, -0.22, 0, 18, 0.4, 17, '#a8987d', home);
+  box(0, 2.25, -8.3, 18, 4.5, 0.25, '#d2c8ac', home);
+  box(-8.85, 2.25, 0, 0.25, 4.5, 17, '#c1c8b3', home);
+  box(-2.8, 0.025, 0.5, 7.1, 0.05, 8.2, '#7e9b91', home);
+  box(-4.8, 0.43, -0.9, 3.7, 0.7, 5.7, '#796654', home);
+  box(-4.8, 0.9, -0.9, 3.55, 0.32, 5.5, '#ebe5d7', home);
+  box(-4.8, 1.12, 0.2, 3.58, 0.13, 3.35, '#af938a', home);
+  box(-4.8, 1.3, -3.8, 3.8, 1.5, 0.23, '#786754', home);
+  for (const x of [-5.7, -3.9]) box(x, 1.15, -2.8, 1.35, 0.2, 0.85, '#f3ead8', home);
+  box(-7.4, 0.8, -2.5, 1.2, 1.5, 1.2, '#998168', home);
+  round(-7.4, 1.82, -2.5, 0.08, 0.52, '#637269', home);
+  round(-7.4, 2.2, -2.5, 0.43, 0.37, '#efcf8f', home, true);
+  const bedsideLight = new THREE.PointLight('#ffe0ab', 12, 10, 1.6);
+  bedsideLight.position.set(-7.4, 2.2, -2.5);
+  home.add(bedsideLight);
+  for (const x of [2, 4, 6]) {
+    box(x, 0.85, -6.8, 1.95, 1.65, 2, '#8c9b83', home);
+    box(x, 1.75, -6.8, 2, 0.16, 2.1, '#ddd5bd', home);
+    box(x, 0.9, -5.76, 0.55, 0.09, 0.05, '#d6cfb7', home);
+  }
+  round(2, 1.87, -6.8, 0.5, 0.09, '#819394', home);
+  round(2, 2.15, -7.5, 0.045, 0.55, '#b6c3bb', home);
+  box(4, 1.87, -6.8, 1.25, 0.08, 1.3, '#414b49', home);
+  for (const x of [3.65, 4.35]) for (const z of [-7.15, -6.45]) round(x, 1.93, z, 0.19, 0.04, '#738077', home);
+  box(7.75, 1.7, -6.7, 1.5, 3.3, 1.8, '#aac3bf', home);
+  box(7.75, 2.35, -5.76, 1.34, 0.04, 0.06, '#789b94', home);
+  box(8.25, 1.9, -5.74, 0.06, 0.75, 0.08, '#dfebe0', home);
+  box(4, 3.35, -8.08, 2.8, 1.3, 0.15, '#7f927e', home);
+  box(4, 3.35, -7.98, 2.3, 0.85, 0.06, '#dac79d', home);
+  box(-3.8, 0.025, -6.7, 5.7, 0.05, 2.9, '#b7c6bc', home);
+  box(-0.7, 1.15, -6.7, 0.15, 2.3, 3, '#d4d5c3', home);
+  box(-5.4, 0.8, -7.65, 1.1, 1.35, 0.45, '#e5e7d9', home);
+  round(-5.4, 0.42, -6.9, 0.55, 0.8, '#e7ebdf', home);
+  round(-5.4, 0.87, -6.8, 0.6, 0.12, '#f4f4e8', home);
+  box(-2.4, 1.15, -7.5, 1.2, 0.2, 1, '#dce3d5', home);
+  box(-2.4, 2.45, -8.08, 1.3, 1.45, 0.08, '#9ab4b4', home);
+  box(3.8, 0.6, 1.4, 4.4, 0.9, 1.9, '#b19c7d', home);
+  box(3.8, 1.15, 0.6, 4.4, 1.4, 0.35, '#a38a70', home);
+  for (const x of [1.7, 5.9]) box(x, 0.95, 1.4, 0.3, 1.2, 2, '#a38a70', home);
+  round(3.8, 0.65, 4.2, 1.1, 0.16, '#d8c9ab', home);
+  round(3.8, 0.32, 4.2, 0.16, 0.6, '#796d58', home);
+  round(7.2, 0.5, 4.5, 0.6, 0.8, '#b99477', home);
+  mesh(crownGeometry, 7.2, 1.75, 4.5, 0.7, 1.35, 0.7, '#6d9273', home);
+  let currentLocation = location;
+  let renderCount = 0;
+  function renderScene() { renderer.render(scene, camera); renderCount += 1; }
   function setLocation(id) {
+    currentLocation = id;
     const indoors = ['library', 'club'].includes(id);
-    park.visible = !indoors;
+    const atHome = id === 'home';
+    park.visible = !indoors && !atHome;
     library.visible = indoors;
-    renderer.setClearColor(indoors ? '#252b3b' : '#182a25');
+    home.visible = atHome;
+    renderer.setClearColor(atHome ? '#879b8a' : indoors ? '#252b3b' : '#182a25');
   }
   function resize() {
     const { width, height } = container.getBoundingClientRect();
     camera.aspect = width / Math.max(1, height);
     const portrait = camera.aspect < 0.85;
-    camera.position.set(portrait ? 13 : 16, portrait ? 24 : 21, portrait ? 31 : 27);
+    const atHome = currentLocation === 'home';
+    camera.position.set(atHome ? 11 : portrait ? 13 : 16, atHome ? (portrait ? 19 : 16) : portrait ? 24 : 21, atHome ? (portrait ? 24 : 20) : portrait ? 31 : 27);
     camera.fov = portrait ? 48 : 43;
     camera.lookAt(0, 0.7, 0);
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
-    renderer.render(scene, camera);
+    renderScene();
   }
   setLocation(location);
   resize();
   return {
-    update(dt) {
-      elapsed += Math.min(dt, 0.06);
-      for (const { body, limbs, phase, seated } of animated) {
-        body.rotation.y = Math.sin(elapsed * 0.65 + phase) * 0.045;
-        if (!seated) body.position.y = Math.sin(elapsed * 1.4 + phase) * 0.025;
-        limbs[0].rotation.x = Math.sin(elapsed * 0.8 + phase) * 0.08;
-        limbs[1].rotation.x = Math.cos(elapsed * 0.9 + phase) * 0.055;
-      }
-      renderer.render(scene, camera);
+    update() { renderScene(); },
+    diagnostics() {
+      return {
+        renderCount,
+        drawCalls: renderer.info.render.calls,
+        triangles: renderer.info.render.triangles,
+        geometries: renderer.info.memory.geometries,
+        textures: renderer.info.memory.textures,
+      };
     },
     resize,
     setLocation,

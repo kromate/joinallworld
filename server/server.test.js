@@ -194,3 +194,99 @@ test('archived saves do not consume active capacity and remain unchanged', async
   await f.request('/api/session', null, replacement.headers.get('set-cookie').split(';')[0]);
   assert.equal(JSON.stringify((await readDatabase()).archivedLives[a.id]), preserved);
 });
+
+
+test('proximity signaling follows validated positions and exclusive radius12', async t => {
+  const f = await fixture(t); const a = await f.device('Ada'); const b = await f.device('Bola');
+  const x = await f.socket(a); const y = await f.socket(b);
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
+  assert.deepEqual((await x.next()).members[0].position, { x: 0, z: 0 });
+  y.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await x.next(); await y.next();
+  x.ws.send(JSON.stringify({ type: 'move', x: 21, z: 0 })); assert.equal((await x.next()).code, 'invalid_position');
+  x.ws.send(JSON.stringify({ type: 'move', x: 20, z: 0 }));
+  assert.deepEqual((await x.next()).members.find(member => member.id === a.id).position, { x: 20, z: 0 }); await y.next();
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { description: { type: 'offer', sdp: 'test' } } }));
+  assert.equal((await x.next()).code, 'peer_out_of_range');
+  y.ws.send(JSON.stringify({ type: 'move', x: 8, z: 0 })); await x.next(); await y.next();
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'boundary' } })); assert.equal((await x.next()).code, 'peer_out_of_range');
+  y.ws.send(JSON.stringify({ type: 'move', x: 8.1, z: 0 })); await x.next(); await y.next();
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'nearby' } })); assert.equal((await y.next()).data.candidate, 'nearby');
+  y.ws.send(JSON.stringify({ type: 'move', x: 7.9, z: 0 })); await x.next(); await y.next();
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'far' } })); assert.equal((await x.next()).code, 'peer_out_of_range');
+});
+
+test('movement accepts five updates per second and resets its rate window', async t => {
+  const f = await fixture(t); const a = await f.device('Ada'); const x = await f.socket(a);
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await x.next();
+  for (let i = 0; i < 5; i++) { x.ws.send(JSON.stringify({ type: 'move', x: i, z: 0 })); assert.equal((await x.next()).type, 'presence'); }
+  x.ws.send(JSON.stringify({ type: 'move', x: 9, z: 0 })); assert.equal((await x.next()).code, 'move_rate_limited');
+  f.advance(1001); x.ws.send(JSON.stringify({ type: 'move', x: 9, z: 0 })); assert.equal((await x.next()).members[0].position.x, 9);
+});
+
+test('voice configuration requires auth and explicitly reports absent TURN', async t => {
+  const f = await fixture(t);
+  assert.equal((await f.request('/api/voice-config')).status, 401);
+  const a = await f.device('Ada'); const response = await f.request('/api/voice-config', null, a.cookie);
+  const config = await response.json();
+  assert.equal(config.turnConfigured, false); assert.equal(config.mode, 'stun-only'); assert.equal(config.radius, 12); assert.equal(config.serverTime, 100000);
+  assert.equal(config.iceServers[0].urls, 'stun:stun.l.google.com:19302'); assert.ok(!JSON.stringify(config).includes(a.cookie.slice(4)));
+});
+
+test('short-lived TURN provider receives public identity and response strips unrelated secrets', async t => {
+  let received;
+  const f = await fixture(t, { voiceConfigProvider: async session => { received = session; return { iceServers: [{ urls: ['turn:relay.example:3478'], username: 'temporary-user', credential: 'temporary-password', providerSecret: 'hidden-api-key' }], expiresAt: 3700000, providerSecret: 'hidden-api-key' }; } });
+  const a = await f.device('Ada'); const response = await f.request('/api/voice-config', null, a.cookie); const config = await response.json();
+  assert.deepEqual(received, { id: a.id, name: 'Ada' }); assert.equal(config.turnConfigured, true); assert.equal(config.mode, 'turn'); assert.equal(config.expiresAt, 3700000);
+  assert.equal(config.iceServers[0].credential, 'temporary-password'); assert.ok(!JSON.stringify(config).includes('hidden-api-key')); assert.ok(!JSON.stringify(config).includes(a.cookie.slice(4)));
+});
+
+test('failed or expired TURN configuration returns a credential-free error', async t => {
+  const f = await fixture(t, { voiceConfigProvider: async () => { throw Error('hidden-provider-api-key'); } });
+  const a = await f.device('Ada'); const response = await f.request('/api/voice-config', null, a.cookie);
+  assert.equal(response.status, 503); assert.deepEqual(await response.json(), { error: 'voice_config_unavailable' });
+  const expired = await fixture(t, { voiceConfigProvider: async () => ({ iceServers: [{ urls: 'turn:relay.example', username: 'test', credential: 'secret' }], expiresAt: 99999 }) });
+  const b = await expired.device('Bola'); assert.equal((await expired.request('/api/voice-config', null, b.cookie)).status, 503);
+});
+
+
+test('movement keeps JSON unchanged between at-most-minute session renewals', async t => {
+  const f = await fixture(t); const a = await f.device('Ada'); const x = await f.socket(a);
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await x.next();
+  const filesystem = await import('node:fs/promises');
+  const signature = async () => { const info = await filesystem.stat(join(f.dir, 'devices.json'), { bigint: true }); return `${info.ino}:${info.mtimeNs}`; };
+  const baseline = await signature();
+  for (let i = 0; i < 5; i++) { x.ws.send(JSON.stringify({ type: 'move', x: i, z: 0 })); await x.next(); assert.equal(await signature(), baseline); }
+  f.advance(60000); x.ws.send(JSON.stringify({ type: 'move', x: 5, z: 0 })); await x.next();
+  const renewed = await signature(); assert.notEqual(renewed, baseline);
+  for (let i = 0; i < 4; i++) { x.ws.send(JSON.stringify({ type: 'move', x: i, z: 0 })); await x.next(); assert.equal(await signature(), renewed); }
+});
+
+test('departure removes room membership immediately and city switching removes prior presence', async t => {
+  const f = await fixture(t); const a = await f.device('Ada'); const b = await f.device('Bola');
+  const x = await f.socket(a); const y = await f.socket(b);
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await x.next();
+  y.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await x.next(); await y.next();
+  assert.equal((await f.action(a.cookie, { type: 'travel', id: 'library', mode: 'cab' })).ok, true);
+  assert.equal((await x.next()).code, 'venue_mismatch'); assert.equal((await y.next()).members.length, 1);
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'after departure' } })); assert.equal((await x.next()).code, 'join_required');
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await x.next()).members.length, 1);
+  y.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await x.next()).members.length, 2); await y.next();
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); assert.equal((await x.next()).code, 'venue_mismatch');
+  f.advance(6000); x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'library' }));
+  assert.equal((await y.next()).members.length, 1); assert.equal((await x.next()).members.length, 1);
+});
+
+
+test('home presence chat and signals stay isolated between device identities', async t => {
+  const f = await fixture(t); const a = await f.device('Ada'); const b = await f.device('Bola');
+  await f.action(a.cookie, { type: 'travel', id: 'home', mode: 'trek' }); await f.action(b.cookie, { type: 'travel', id: 'home', mode: 'trek' }); f.advance(6000);
+  const x = await f.socket(a); const y = await f.socket(b); const same = await f.socket(a);
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' })); assert.equal((await x.next()).members.length, 1);
+  y.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' })); assert.equal((await y.next()).members.length, 1);
+  same.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' })); assert.equal((await same.next()).members.length, 1); await x.next();
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'other home' } })); assert.equal((await x.next()).code, 'peer_not_in_room');
+  x.ws.send(JSON.stringify({ type: 'chat', body: 'Private home', clientId: 'home-chat' })); const chat = await x.next(); assert.equal((await same.next()).id, chat.id);
+  y.ws.send(JSON.stringify({ type: 'voice-state', enabled: true, muted: true })); const own = await y.next(); assert.equal(own.type, 'presence'); assert.equal(own.members[0].id, b.id);
+  assert.equal((await f.request('/api/life?city=lagos', null, a.cookie)).status, 200);
+  x.ws.send(JSON.stringify({ type: 'chat', body: 'Still home', clientId: 'home-chat-2' })); assert.equal((await x.next()).type, 'chat'); assert.equal((await same.next()).type, 'chat');
+});

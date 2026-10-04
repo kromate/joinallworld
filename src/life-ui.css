@@ -9,3 +9,32 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#182a25;fon
 .life-chat .life-community-chat{width:100%;height:36px;border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#edf4ee;color:#35764a;padding:0 13px;font-size:12px;text-align:left}.life-chat .life-community-chat:hover{background:#e2efe5}@media(max-width:540px){.life-chat .life-community-chat{height:32px;font-size:11px}}
 
 .map-open .life-identity,.map-open .life-sidebar,.map-open .life-message,.map-open .life-map-hint{display:none}.map-open .awm{padding-bottom:88px}.map-open .awm-heading{padding-top:82px}.map-open .utility-bar span{color:#3f6650}.map-open .awm-country{display:none}@media(max-width:540px){.map-open .awm-heading{padding-top:125px;padding-bottom:12px}.map-open .utility-bar{top:65px;width:100%;right:12px;max-width:calc(100% - 24px)}.map-open .awm-heading h2{font-size:22px}.map-open .awm-heading p{display:none}.map-open .awm{padding-bottom:76px}.map-open .awm-viewport,.map-open .awm-svg{min-height:210px}}
+
+/* Keep primary controls touchable and feedback visible above the scene. */
+.life-icon-button,.life-help,.life-progress button{min-width:40px;min-height:40px}
+.life-spots button{min-height:40px}.life-spots .life-expand{width:40px;min-width:40px}
+.life-chat .life-community-chat{min-height:40px}.utility-bar button,#city-places button,#community-close,#close-life-dialog{min-height:40px;min-width:40px}
+@media(max-width:540px){
+ .life-avatar,.life-icon-button{width:40px;height:40px;min-width:40px}
+ .life-help,.life-job{min-height:40px}.life-spots .life-expand{width:40px}
+ .life-venue-heading p{max-width:190px}.life-transit button{min-height:64px}
+ .life-chat .life-community-chat{height:40px}.life-progress button{min-height:40px}
+ .utility-bar{top:113px;right:12px;width:172px;gap:4px}
+ .utility-bar button{padding:7px 9px;min-height:40px}
+ .life-message{display:block;top:231px;width:calc(100% - 28px);max-width:calc(100% - 28px);max-height:74px;overflow-y:auto;pointer-events:auto;z-index:3;padding:9px 12px}
+ .life-message[hidden]{display:none}
+ .map-open .life-message{display:block;top:175px}
+ .map-open .life-message[hidden]{display:none}
+ .life-venue-panel{max-height:calc(100dvh - 320px);overflow-y:auto}
+ .life-progress{bottom:380px}
+}
+
+@media(max-width:540px){
+ .utility-bar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+ .utility-bar button{min-width:0;white-space:normal;line-height:1.2}
+ .utility-bar span{grid-column:1/-1;overflow-wrap:anywhere;margin:2px 0}
+ .life-message{top:250px}
+ .map-open .utility-bar{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .map-open .life-message{top:175px}
+}
+.map-open .life-message{display:none}

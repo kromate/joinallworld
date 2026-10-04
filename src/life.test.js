@@ -150,3 +150,86 @@ test('reload mid activity pauses offline and completion cannot award again after
   assert.equal(cancelledTravel.cash, 4600);
   assert.equal(cancelledTravel.location, 'park');
 });
+
+test('home travel uses existing free trek and preserves starting venue and paid fares', () => {
+  const state = createLife({ cash: 0 });
+  assert.equal(state.location, 'park');
+  assert.equal(VENUES.home.travelMode, 'trek');
+  assert.equal(startTravel(state, 'home', 'cab').code, 'insufficient_funds');
+  assert.equal(startTravel(state, 'home', 'trek').code, 'started');
+  advanceLife(state, 5);
+  assert.equal(state.location, 'home');
+  assert.equal(state.spot, 'kitchen');
+  assert.equal(state.cash, 0);
+});
+
+test('Garri and Bath award once only on completion and cap needs', () => {
+  for (const [id, spot, need, duration, gain] of [
+    ['garri', 'kitchen', 'hunger', 5, 20], ['bath', 'bathroom', 'hygiene', 6, 25],
+  ]) {
+    const state = createLife({ location: 'home', spot });
+    assert.equal(startActivity(state, id).code, 'started');
+    advanceLife(state, duration - 1);
+    assert.equal(state.needs[need], 50);
+    const restored = createLife(JSON.parse(JSON.stringify(state)));
+    assert.equal(restored.activeAction.remaining, 1);
+    advanceLife(restored, 1);
+    advanceLife(restored, 100);
+    assert.equal(restored.needs[need], 50 + gain);
+    const completed = createLife(JSON.parse(JSON.stringify(restored)));
+    advanceLife(completed, 100);
+    assert.equal(completed.needs[need], 50 + gain);
+    state.activeAction = null;
+    state.needs[need] = 95;
+    startActivity(state, id);
+    advanceLife(state, duration);
+    assert.equal(state.needs[need], 100);
+    startActivity(state, id);
+    advanceLife(state, duration - 1);
+    state.needs[need] = 50;
+    cancelActivity(state);
+    advanceLife(state, 100);
+    assert.equal(state.needs[need], 50);
+    assert.equal(state.cash, 5000);
+  }
+});
+
+test('Nap accrues only elapsed energy, resumes after reload and cancellation keeps progress', () => {
+  const state = createLife({ location: 'home', spot: 'bedroom', needs: { energy: 40 } });
+  startActivity(state, 'nap');
+  advanceLife(state, 4);
+  assert.equal(state.needs.energy, 48);
+  const restored = createLife(JSON.parse(JSON.stringify(state)));
+  assert.equal(restored.activeAction.remaining, 11);
+  assert.equal(restored.needs.energy, 48);
+  advanceLife(restored, 3);
+  assert.equal(restored.needs.energy, 54);
+  cancelActivity(restored);
+  advanceLife(restored, 100);
+  assert.equal(restored.needs.energy, 54);
+  advanceLife(state, 100);
+  assert.equal(state.needs.energy, 70);
+  const completed = createLife(JSON.parse(JSON.stringify(state)));
+  advanceLife(completed, 100);
+  assert.equal(completed.needs.energy, 70);
+  startActivity(completed, 'nap');
+  advanceLife(completed, 100);
+  assert.equal(completed.needs.energy, 100);
+});
+
+test('Nap is deterministic across frame sizes and invalid saved timers never replay gains', () => {
+  const single = createLife({ location: 'home', spot: 'bedroom', needs: { energy: 20 } });
+  const stepped = createLife(single);
+  startActivity(single, 'nap');
+  startActivity(stepped, 'nap');
+  advanceLife(single, 15);
+  for (let i = 0; i < 60; i++) advanceLife(stepped, 0.25);
+  assert.equal(single.needs.energy, stepped.needs.energy);
+  for (const remaining of [0, -1, 16, Infinity]) {
+    const restored = createLife({ location: 'home', needs: { energy: 35 },
+      activeAction: { kind: 'activity', id: 'nap', duration: 15, remaining } });
+    assert.equal(restored.activeAction, null);
+    advanceLife(restored, 100);
+    assert.equal(restored.needs.energy, 35);
+  }
+});

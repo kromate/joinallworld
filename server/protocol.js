@@ -43,3 +43,44 @@ export function renewSession(session, now, ttlMs = SESSION_TTL_MS) {
   session.expiresAt = now + ttlMs;
   return true;
 }
+
+
+export const VOICE_RADIUS = 12;
+export const POSITION_BOUNDS = Object.freeze({ min: -20, max: 20 });
+export const STUN_ONLY_CONFIG = Object.freeze({ iceServers: Object.freeze([{ urls: 'stun:stun.l.google.com:19302' }]), turnConfigured: false, mode: 'stun-only' });
+
+export function validatePosition(value) {
+  if (!value || !Number.isFinite(value.x) || !Number.isFinite(value.z)
+    || value.x < POSITION_BOUNDS.min || value.x > POSITION_BOUNDS.max
+    || value.z < POSITION_BOUNDS.min || value.z > POSITION_BOUNDS.max) throw protocolError(400, 'invalid_position');
+  return { x: value.x, z: value.z };
+}
+
+export function withinVoiceDistance(a, b, radius = VOICE_RADIUS) {
+  if (!a || !b || ![a.x, a.z, b.x, b.z].every(Number.isFinite)) return false;
+  return Math.hypot(a.x - b.x, a.z - b.z) < radius;
+}
+
+export function validateVoiceConfig(config, now) {
+  if (!config || !Array.isArray(config.iceServers) || config.iceServers.length > 8
+    || !Number.isFinite(config.expiresAt) || config.expiresAt <= now
+    || config.expiresAt > now + 86400000) throw protocolError(503, 'voice_config_unavailable');
+  let hasTurn = false;
+  const iceServers = config.iceServers.map(server => {
+    const urls = typeof server?.urls === 'string' ? [server.urls] : server?.urls;
+    if (!Array.isArray(urls) || !urls.length || urls.length > 8
+      || urls.some(url => typeof url !== 'string' || url.length > 512 || !/^(stun|stuns|turn|turns):[^\s]+$/.test(url))) throw protocolError(503, 'voice_config_unavailable');
+    const turn = urls.some(url => /^turns?:/.test(url));
+    if (turn && (typeof server.username !== 'string' || !server.username || server.username.length > 512
+      || typeof server.credential !== 'string' || !server.credential || server.credential.length > 4096)) throw protocolError(503, 'voice_config_unavailable');
+    hasTurn ||= turn;
+    return { urls: typeof server.urls === 'string' ? server.urls : [...urls], ...(turn ? { username: server.username, credential: server.credential } : {}) };
+  });
+  if (!hasTurn) throw protocolError(503, 'voice_config_unavailable');
+  return { iceServers, turnConfigured: true, mode: 'turn', expiresAt: config.expiresAt };
+}
+
+
+export function venueRoomKey(cityId, venueId, publicId) {
+  return venueId === 'home' ? `${cityId}:home:${publicId}` : `${cityId}:${venueId}`;
+}

@@ -8,7 +8,7 @@ import { createStore } from './store.js';
 import { VENUES } from '../src/life.js';
 import { settleCity, applyLifeAction } from './life-service.js';
 
-import { CITY_IDS, ACTION_WINDOW_MS, MAX_VOICE_MEMBERS, UUID_PATTERN as uuid, protocolError as fail, validateName, validateActionPayload, publicSession, isSameOrigin, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, archivedLife, renewSession } from './protocol.js';
+import { CITY_IDS, ACTION_WINDOW_MS, MAX_VOICE_MEMBERS, UUID_PATTERN as uuid, protocolError as fail, validateName, validateActionPayload, publicSession, isSameOrigin, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, archivedLife, renewSession, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig, validatePosition, withinVoiceDistance, venueRoomKey } from './protocol.js';
 
 const cities = new Set(CITY_IDS);
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
@@ -24,7 +24,7 @@ async function jsonBody(req) {
   try { const value = JSON.parse(body); if (!value || typeof value !== 'object' || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions = 10000 } = {}) {
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions = 10000, voiceConfigProvider } = {}) {
   const store = await createStore(dataDir);
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');
   function archiveSession(db, secret, session) {
@@ -64,7 +64,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   }
   function renewedHeaders(req) {
     const secret = cookieId(req);
-    for (const ws of wss.clients) if (ws.secret === secret) ws.expiresAt = now() + sessionTtlMs;
+    for (const ws of wss.clients) if (ws.secret === secret) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
     return { 'Set-Cookie': cookieHeader(req, secret) };
   }
   function reply(res, status, body, headers = {}) {
@@ -99,6 +99,16 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           const session = await store.transact(db => sessionFor(req, db, true));
           if (!session) throw fail(401, 'device_session_required');
           return reply(res, 200, { session: publicSession(session), serverTime: now() }, renewedHeaders(req));
+        }
+        if (url.pathname === '/api/voice-config' && req.method === 'GET') {
+          const session = await store.transact(db => sessionFor(req, db, true));
+          if (!session) throw fail(401, 'device_session_required');
+          let config = STUN_ONLY_CONFIG;
+          if (voiceConfigProvider) {
+            try { config = validateVoiceConfig(await voiceConfigProvider(publicSession(session)), now()); }
+            catch { throw fail(503, 'voice_config_unavailable'); }
+          }
+          return reply(res, 200, { ...config, radius: VOICE_RADIUS, serverTime: now() }, renewedHeaders(req));
         }
         if (url.pathname === '/api/life' && req.method === 'GET') {
           const city = url.searchParams.get('city');
@@ -156,7 +166,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     const members = new Map();
     for (const ws of rooms.get(room) || []) {
       const old = members.get(ws.session.id);
-      members.set(ws.session.id, { ...ws.session, enabled: (old?.enabled || ws.voice.enabled), muted: old ? old.muted && ws.voice.muted : ws.voice.muted });
+      members.set(ws.session.id, { ...ws.session, position: { ...ws.position }, enabled: (old?.enabled || ws.voice.enabled), muted: old ? old.muted && ws.voice.muted : ws.voice.muted });
     }
     for (const ws of rooms.get(room) || []) send(ws, { type: 'presence', members: [...members.values()] });
   }
@@ -170,14 +180,14 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   }
   function validateMemberships(secret, city, state) {
     for (const ws of wss.clients) if (ws.secret === secret && ws.room?.startsWith(`${city}:`)
-      && (ws.room !== `${city}:${state.location}` || state.activeAction?.kind === 'travel')) {
+      && (ws.room !== venueRoomKey(city, state.location, ws.session.id) || state.activeAction?.kind === 'travel')) {
       leave(ws); ws.voice = { enabled: false, muted: true };
       send(ws, { type: 'error', code: 'venue_mismatch', error: 'venue_mismatch' });
     }
   }
   function refreshNames(session) {
     const changed = new Set();
-    for (const ws of wss.clients) if (ws.session.id === session.id) { ws.session.name = session.name; ws.expiresAt = now() + sessionTtlMs; if (ws.room) changed.add(ws.room); }
+    for (const ws of wss.clients) if (ws.session.id === session.id) { ws.session.name = session.name; ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); if (ws.room) changed.add(ws.room); }
     for (const room of changed) presence(room);
   }
   server.on('upgrade', async (req, socket, head) => {
@@ -191,12 +201,34 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         ws.session = publicSession(session);
         ws.secret = session.secret;
         ws.expiresAt = session.expiresAt;
+        ws.lastSessionRenewedAt = now();
         ws.voice = { enabled: false, muted: true };
+        ws.position = { x: 0, z: 0 };
+        ws.lastMoves = [];
         wss.emit('connection', ws);
       });
     } catch { socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n'); }
   });
   wss.on('headers', (headers, req) => { if (req.renewedCookie) headers.push(`Set-Cookie: ${req.renewedCookie}`); });
+  const socketRenewals = new Map();
+  async function renewSocketSession(ws) {
+    if (now() - ws.lastSessionRenewedAt < 60000) return;
+    let pending = socketRenewals.get(ws.secret);
+    if (!pending) {
+      pending = store.transact(db => {
+        const session = db.sessions[ws.secret];
+        if (!renewSession(session, now(), sessionTtlMs)) throw Error('device_session_required');
+        return session.expiresAt;
+      });
+      socketRenewals.set(ws.secret, pending);
+    }
+    try {
+      const expiration = await pending;
+      for (const peer of wss.clients) if (peer.secret === ws.secret) {
+        peer.expiresAt = expiration; peer.lastSessionRenewedAt = now();
+      }
+    } finally { if (socketRenewals.get(ws.secret) === pending) socketRenewals.delete(ws.secret); }
+  }
   wss.on('connection', ws => {
     ws.alive = true;
     ws.on('pong', () => { ws.alive = true; });
@@ -204,7 +236,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     ws.on('close', () => leave(ws));
     let messages = Promise.resolve();
     ws.on('message', (raw, binary) => {
-      if (binary || !allow(`ws:${ws.session.id}`, 240)) {
+      if (binary || !allow(`ws:${ws.session.id}`, 600)) {
         let rejected;
         try { rejected = JSON.parse(raw.toString()); } catch {}
         send(ws, { type: 'error', code: 'rate_limited', error: 'rate_limited',
@@ -218,12 +250,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (ws.readyState !== WebSocket.OPEN) return;
         message = JSON.parse(raw.toString());
         if (!message || typeof message !== 'object') throw Error('invalid_message');
-        const expiration = await store.transact(db => {
-          const session = db.sessions[ws.secret];
-          if (!renewSession(session, now(), sessionTtlMs)) throw Error('device_session_required');
-          return session.expiresAt;
-        });
-        for (const peer of wss.clients) if (peer.secret === ws.secret) peer.expiresAt = expiration;
+        await renewSocketSession(ws);
         if (message.type === 'join') {
           if (!cities.has(message.cityId) || !Object.hasOwn(VENUES, message.venueId)) throw Error('invalid_room');
           const allowed = await store.transact(db => {
@@ -234,12 +261,20 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           });
           if (!allowed) throw Error('venue_mismatch');
           if (ws.readyState !== WebSocket.OPEN) return;
-          const room = `${message.cityId}:${message.venueId}`;
-          leave(ws); ws.voice = { enabled: false, muted: true }; ws.room = room;
+          const room = venueRoomKey(message.cityId, message.venueId, ws.session.id);
+          leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.room = room;
           if (!rooms.has(room)) rooms.set(room, new Set());
           rooms.get(room).add(ws); presence(room); return;
         }
         if (!ws.room) throw Error('join_required');
+        if (message.type === 'move') {
+          const position = validatePosition(message);
+          ws.lastMoves = ws.lastMoves.filter(time => time > now() - 1000);
+          if (ws.lastMoves.length >= 5) throw Error('move_rate_limited');
+          ws.lastMoves.push(now());
+          for (const peer of rooms.get(ws.room)) if (peer.session.id === ws.session.id) peer.position = position;
+          presence(ws.room); return;
+        }
         if (message.type === 'voice-state') {
           if (typeof message.enabled !== 'boolean' || typeof message.muted !== 'boolean') throw Error('invalid_voice_state');
           const enabled = new Set([...rooms.get(ws.room)].filter(peer => peer.voice.enabled).map(peer => peer.session.id));
@@ -250,7 +285,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           if (typeof message.to !== 'string' || !message.data || typeof message.data !== 'object' || JSON.stringify(message.data).length > 12000) throw Error('invalid_signal');
           const peers = [...rooms.get(ws.room)].filter(peer => peer.session.id === message.to && peer !== ws);
           if (!peers.length) throw Error('peer_not_in_room');
-          for (const peer of peers) send(peer, { type: 'signal', from: ws.session.id, data: message.data }); return;
+          const nearby = peers.filter(peer => withinVoiceDistance(ws.position, peer.position));
+          if (!nearby.length) throw Error('peer_out_of_range');
+          for (const peer of nearby) send(peer, { type: 'signal', from: ws.session.id, data: message.data }); return;
         }
         if (message.type === 'chat') {
           const body = typeof message.body === 'string' ? message.body.trim() : '';

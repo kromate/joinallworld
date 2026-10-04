@@ -21,12 +21,21 @@ const actions = {
   'spoken-word': { id: 'spoken-word', label: 'Spoken Word', duration: 9, cost: 0, choice: 'Choose', unavailable: true },
   'perform-comedy': { id: 'perform-comedy', label: 'Perform Comedy', duration: 11, requiredSkill: { name: 'Comedy', level: 3 }, locked: true, unavailable: true },
   'play-ayo': { id: 'play-ayo', label: 'Play Ayo', duration: 7, cost: 0, tags: ['fun', 'social'], unavailable: true },
+  garri: { id: 'garri', label: 'Eat Garri', duration: 5, cost: 0, effects: { hunger: 20 }, beta: true,
+    source: 'Home observation: Garri completed in 5 seconds, hunger 80 → 100.',
+    evidence: 'Beta extrapolation: +20 hunger for other starting values, capped at 100.' },
+  bath: { id: 'bath', label: 'Take a Bath', duration: 6, cost: 0, effects: { hygiene: 25 }, beta: true,
+    source: 'Home Bath observation supplied in this task: 6 seconds, hygiene +25.',
+    evidence: 'Completion-only hygiene +25, capped at 100; free in beta.' },
+  nap: { id: 'nap', label: 'Take a Nap', duration: 15, cost: 0, effects: {}, effectsPerSecond: { energy: 2 }, beta: true,
+    source: 'Home Nap observation: energy 75 → 91 mid-action, 98 at wake.',
+    evidence: 'Beta rate: +2 energy per elapsed second, capped at 100; accrued energy survives cancellation.' },
 };
 for (const action of Object.values(actions)) {
-  action.source = action.id === 'chill' ? 'A05: completed Freedom Park Chill observation'
+  action.source ??= action.id === 'chill' ? 'A05: completed Freedom Park Chill observation'
     : 'A05: Freedom Park activity menu observations';
   action.placeholder = Boolean(action.unavailable);
-  action.evidence = action.unavailable ? 'Label and requirements observed; completion outcome unverified.'
+  action.evidence ??= action.unavailable ? 'Label and requirements observed; completion outcome unverified.'
     : 'Completed Chill: 11 seconds, energy +4, fun +10.';
 }
 
@@ -42,9 +51,19 @@ export const VENUES = {
     },
   },
   library: { id: 'library', label: 'The Library', district: 'Victoria Island', spots: {} },
+  home: {
+    id: 'home', label: 'Home', district: 'Local beta home', beta: true,
+    source: 'Home activity observations supplied in this task',
+    travelLabel: 'Free beta travel', travelMode: 'trek',
+    spots: {
+      kitchen: { id: 'kitchen', label: 'Kitchen', actions: [actions.garri] },
+      bathroom: { id: 'bathroom', label: 'Bathroom', actions: [actions.bath] },
+      bedroom: { id: 'bedroom', label: 'Bedroom', actions: [actions.nap] },
+    },
+  },
 };
 for (const venue of Object.values(VENUES)) {
-  venue.source = venue.id === 'park' ? 'A05: Freedom Park venue and spot observations'
+  venue.source ??= venue.id === 'park' ? 'A05: Freedom Park venue and spot observations'
     : 'A06: destination menu observation';
   venue.placeholder = venue.id === 'library';
   for (const spot of Object.values(venue.spots)) {
@@ -53,11 +72,14 @@ for (const venue of Object.values(VENUES)) {
   }
 }
 
+const defaultSpot = (location) => location === 'park' ? 'amphitheatre' : location === 'home' ? 'kitchen' : null;
+
 function validActive(value, location) {
   if (!isRecord(value) || !finite(value.remaining) || value.remaining <= 0) return null;
   if (value.kind === 'activity') {
     const action = actions[value.id];
-    if (location !== 'park' || !action || action.unavailable || value.duration !== action.duration
+    const belongs = Object.values(VENUES[location].spots).some((spot) => spot.actions.includes(action));
+    if (!belongs || !action || action.unavailable || value.duration !== action.duration
       || value.remaining > action.duration) return null;
     return { kind: 'activity', id: action.id, duration: action.duration, remaining: value.remaining };
   }
@@ -89,7 +111,7 @@ export function createLife(saved) {
     homeOwned: input.homeOwned === true,
     needs,
     location,
-    spot: Object.hasOwn(spots, input.spot) ? input.spot : location === 'park' ? 'amphitheatre' : null,
+    spot: Object.hasOwn(spots, input.spot) ? input.spot : defaultSpot(location),
     activeAction: validActive(input.activeAction, location),
     message: typeof input.message === 'string' && input.message.length <= 500 ? input.message : '',
   };
@@ -116,7 +138,7 @@ export function startActivity(state, id) {
   return result(state, true, 'started');
 }
 
-/** Local-preview policy pending observation: cancel grants no effects and refunds no travel fare. */
+/** Cancel skips completion effects, keeps accrued Nap energy and refunds no travel fare (beta policy). */
 export function cancelActivity(state) {
   if (state.activeAction) {
     state.activeAction = null;
@@ -130,6 +152,12 @@ export function advanceLife(state, dt) {
   if (!finite(dt) || dt <= 0) return result(state, false, 'invalid_time');
   if (!state.activeAction) return result(state, true, 'idle');
   const active = state.activeAction;
+  const elapsed = Math.min(dt, active.remaining);
+  if (active.kind === 'activity') {
+    for (const [need, rate] of Object.entries(actions[active.id].effectsPerSecond ?? {})) {
+      state.needs[need] = clamp(state.needs[need] + rate * elapsed);
+    }
+  }
   active.remaining = Math.max(0, active.remaining - dt);
   if (active.remaining > 0) return result(state, true, 'advanced');
   state.activeAction = null;
@@ -141,7 +169,7 @@ export function advanceLife(state, dt) {
     state.message = `${action.label} completed.`;
   } else {
     state.location = active.id;
-    state.spot = active.id === 'park' ? 'amphitheatre' : null;
+    state.spot = defaultSpot(active.id);
     state.message = `Arrived at ${VENUES[active.id].label}.`;
   }
   return result(state, true, 'completed');

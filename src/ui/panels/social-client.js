@@ -181,6 +181,12 @@ function receive(event) {
     const thread = threadOf(message.conv.id);
     thread.messages = mergeMessages(thread.messages, [message.message]);
     noteConv(message.conv);
+    if (message.conv.with) {
+      // The other player can create this conversation while its empty draft is open here.
+      const provisional = `to:${message.conv.with}`;
+      if (S.openConv === provisional) S.openConv = message.conv.id;
+      outbox.rekey(provisional, message.conv.id);
+    }
     const mine = message.message.from?.id === S.me?.me.id;
     if (S.openConv === message.conv.id) { if (!mine) void markRead(message.conv.id); }
     else if (!mine && !message.message.sys) S.api.toast(`New message from ${message.message.from?.name ?? message.conv.name}`);

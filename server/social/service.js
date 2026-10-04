@@ -25,15 +25,27 @@
  *   pending   { [publicId]: [{ n, at, cityId, payload, keep, refund? }] }  life effects owed to a player who was
  *             offline (a gift waiting to be credited, a friendship to record); applied on their next request
  *   receipts  { ['<publicId>|<clientId>']: { at, kind, fp, result } }       idempotency for non-message writes
- *   reports   [{ id, by, about, aboutName, reason, text, at, status, evidence: [body] }]   for moderators
+ *   reports   [{ id, by, about, aboutName, reason, text, at, status, note?, evidence: [body] }]   for moderators
+ *             (read and answered through the operator routes — server/routes/moderation.js)
  *   seq, sweptAt
  * Only public ids are stored. The cookie secret never enters this collection or any response.
+ *
+ * TEXT. Every message body and group name passes the text filter (server/moderation/text.js) and
+ * is refused — never altered — with a reason. A player an operator has muted (ctx.checks.muted)
+ * cannot send messages or name groups until the mute ends; everything else still works for them.
+ *
+ * BLOCKS IN MEMORY. Who has blocked whom is also kept in a small in-memory index so the room
+ * module can hide two players from each other in a public venue without a store read:
+ *   ctx.checks.blocked(a, b) → true when either has blocked the other
+ * It is loaded before the server takes requests and updated by deliver() after each committed
+ * block, unblock or removal of an idle player. deliver() raises 'blocks-changed' { a, b }.
  */
 import { UUID_PATTERN, venueRoomKey } from '../protocol.js';
 import { lagosTime } from '../../src/game/clock.js';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.js';
 import { venueLabel } from '../../src/game/content/venues.js';
 import { presenceOf, describeRoom } from './presence.js';
+import { screenText } from '../moderation/text.js';
 
 /** Original beta limits. */
 export const LIMITS = Object.freeze({
@@ -54,13 +66,39 @@ const no = (code, reason, extra) => ({ ok: false, code, reason, ...extra });
 const yes = (code, extra) => ({ ok: true, code, ...extra });
 const dmId = (a, b) => `dm.${[a, b].sort().join('.')}`;
 const services = new WeakMap();
+const ENDED = Symbol('visits ended by this transaction');
+const BLOCKS = Symbol('block changes made by this transaction');
+/** Set on a result (see finish) when the transaction applied a life effect that was owed to the caller. */
+export const MATERIAL = Symbol('this transaction changed a life');
 
 export function socialService(ctx) {
   const cached = services.get(ctx);
   if (cached) return cached;
   const presence = presenceOf(ctx);
   const now = () => ctx.now();
-  const ended = []; // [hostId, guestId] visits ended in the transaction being run; announced by deliver()
+  // [hostId, guestId] visits ended by the transaction that owns a collection copy. Kept per copy (not
+  // in one shared list) because another transaction may run between this one's commit and its
+  // deliver(): finish() moves the list onto the result inside the transaction, deliver() announces it.
+  const endedOf = new WeakMap();
+  const endedIn = (s) => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = []); list.blocks = []; } return list; };
+  // ---- blocks, in memory (see header) ----------------------------------------------------------
+  const blockIndex = new Map(); // blocker → Set<blocked>
+  const blocked = (a, b) => Boolean(blockIndex.get(a)?.has(b) || blockIndex.get(b)?.has(a));
+  function applyBlockChange([op, a, b]) {
+    if (op === 'block') { if (!blockIndex.has(a)) blockIndex.set(a, new Set()); blockIndex.get(a).add(b); }
+    else if (op === 'unblock') { blockIndex.get(a)?.delete(b); if (!blockIndex.get(a)?.size) blockIndex.delete(a); }
+    else if (op === 'forget') blockIndex.delete(a);
+  }
+  if (ctx.checks) {
+    ctx.checks.blocked = blocked;
+    ctx.checks.anyBlocks = () => blockIndex.size > 0;
+  }
+  ctx.startup?.push(ctx.store.read((db) => Object.entries(db.social?.players ?? {}).map(([id, player]) => [id, Object.keys(player?.blocked ?? {})]))
+    .then((rows) => { for (const [id, list] of rows) for (const other of list) applyBlockChange(['block', id, other]); }));
+  /** null, or the refusal for a muted sender. */
+  const mutedRefusal = (id) => { const mute = ctx.checks?.muted?.(id); return mute ? no(mute.code, mute.reason) : null; };
+  /** null, or the refusal for text the filter does not accept. */
+  const screened = (value, what, contact = false) => { const verdict = screenText(value, { what, contact }); return verdict ? no(verdict.code, verdict.reason) : null; };
   const bad = (code) => ctx.fail(400, code);
 
   // ---- input validation (throws 400) ---------------------------------------------------------
@@ -90,7 +128,6 @@ export function socialService(ctx) {
 
   /** Register/refresh the caller, run housekeeping and apply anything owed to their life. */
   function enter(db, session) {
-    ended.length = 0; // anything left over belongs to a transaction that was aborted or only read
     // A session whose lives must all still be created has not arrived in any city: it is not
     // registered as a player, so nobody can find, message or befriend it yet.
     const lives = Object.values(session.cities || {}).map((entry) => entry?.state?.onboarding).filter(Boolean);
@@ -115,13 +152,14 @@ export function socialService(ctx) {
 
   function whereabouts(id, detailed) {
     const status = presence.status(id);
+    // `seenAt` is the server time it last heard from that player's connection (a frame or a ping answer).
     if (status.state !== 'online') return { status: status.state };
-    if (!status.rooms.length) return { status: 'away' };
-    if (!detailed) return { status: 'online' };
+    if (!status.rooms.length) return { status: 'away', seenAt: status.seenAt };
+    if (!detailed) return { status: 'online', seenAt: status.seenAt };
     // Their own venue room says where they are; a socket in someone else's Home room is a visit, not "at home".
     const rooms = status.rooms.map(describeRoom);
     const own = rooms.find((room) => !room.home || room.hostId === id);
-    return own ? { status: 'online', cityId: own.cityId, venue: own.venue } : { status: 'online', cityId: rooms[0].cityId, venue: 'visit' };
+    return own ? { status: 'online', seenAt: status.seenAt, cityId: own.cityId, venue: own.venue } : { status: 'online', seenAt: status.seenAt, cityId: rooms[0].cityId, venue: 'visit' };
   }
 
   function notify(s, to, kind, message, data, push) {
@@ -161,6 +199,7 @@ export function socialService(ctx) {
   function claim(s, session) {
     const queue = s.pending[session.publicId];
     if (!queue?.length) return;
+    endedIn(s).material = true; // a gift or a friendship reached this life: the request must be durable
     const left = queue.filter((effect) => !runEffect(session, effect) && effect.keep);
     if (left.length) s.pending[session.publicId] = left; else delete s.pending[session.publicId];
   }
@@ -191,6 +230,7 @@ export function socialService(ctx) {
       for (const key of Object.keys(p.out)) delete s.players[key]?.in[id];
       for (const key of Object.keys(p.convs)) leaveConv(s, s.convs[key], id, true);
       delete s.houses[id]; delete s.players[id];
+      endedIn(s).blocks.push(['forget', id]);
     }
     for (const hostId of Object.keys(s.houses)) pruneHouse(s, hostId);
   }
@@ -288,7 +328,7 @@ export function socialService(ctx) {
       if (visit.expires > t && s.players[guest] && !blockedEither(s, hostId, guest) && hostAtHome(s, hostId, visit.cityId)) continue;
       delete house.guests[guest]; changed = true;
       if (s.players[guest]?.visiting === hostId) s.players[guest].visiting = null;
-      ended.push([hostId, guest]);
+      endedIn(s).push([hostId, guest]);
     }
     if (changed) syncHouseConv(s, hostId);
     if (!Object.keys(house.knocks).length && !Object.keys(house.guests).length) { delete s.houses[hostId]; return null; }
@@ -323,7 +363,7 @@ export function socialService(ctx) {
     if (!house?.guests[guest]) return false;
     delete house.guests[guest];
     if (s.players[guest]?.visiting === hostId) s.players[guest].visiting = null;
-    ended.push([hostId, guest]);
+    endedIn(s).push([hostId, guest]);
     syncHouseConv(s, hostId);
     pruneHouse(s, hostId);
     return true;
@@ -343,10 +383,34 @@ export function socialService(ctx) {
   const service = {
     LIMITS,
     presence,
+    /**
+     * Call INSIDE the transaction, last: attaches the visits this transaction ended to its result
+     * (hidden from JSON), so deliver() can announce exactly those after the commit.
+     */
+    finish(db, result) {
+      const list = endedOf.get(ctx.collection(db, 'social'));
+      if (!list || !result || typeof result !== 'object') return result;
+      if (list.material) Object.defineProperty(result, MATERIAL, { value: true, enumerable: false });
+      if (list.length) Object.defineProperty(result, ENDED, { value: list.splice(0), enumerable: false });
+      if (list.blocks.length) Object.defineProperty(result, BLOCKS, { value: list.blocks.splice(0), enumerable: false });
+      return result;
+    },
+    /**
+     * Bring the in-memory block index in line with a transaction that has just COMMITTED. Passed
+     * to the store as `committed`, so it runs even if the write that follows fails — otherwise a
+     * stored block could go unenforced in venue rooms until a restart. Safe to call twice.
+     */
+    committed(result) {
+      const changes = result?.[BLOCKS];
+      if (!changes || changes.applied) return;
+      changes.applied = true;
+      for (const change of changes) { applyBlockChange(change); if (change[2]) ctx.emit?.('blocks-changed', { a: change[1], b: change[2] }); }
+    },
     /** Send the pushes a committed result collected, and strip them from what the caller sees. */
     deliver(result) {
       // Visits that ended in the committed transaction: the room module drops those guests from the host's Home room now.
-      for (const [hostId, guestId] of ended.splice(0)) ctx.emit?.('visit-ended', { hostId, guestId });
+      for (const [hostId, guestId] of result?.[ENDED] ?? []) ctx.emit?.('visit-ended', { hostId, guestId });
+      service.committed(result); // a store without the `committed` hook: apply the block changes now
       if (!result || !Array.isArray(result.push)) return result;
       const { push, ...rest } = result;
       for (const [to, message] of push) ctx.push(to, message);
@@ -474,6 +538,7 @@ export function socialService(ctx) {
       if (p.blocked[target]) return yes('blocked', { duplicate: true });
       if (Object.keys(p.blocked).length >= LIMITS.blocked) return no('block_list_full', `Your block list is full (${LIMITS.blocked}). Unblock someone first.`);
       p.blocked[target] = now();
+      endedIn(s).blocks.push(['block', id, target]);
       cut(s, db, id, target, cityId);
       const push = [];
       for (const [host, guest] of [[id, target], [target, id]]) if (endVisit(s, host, guest)) { housePush(s, host, push); push.push([guest, { type: 'invite-house', house: houseView(s, host, guest) }]); }
@@ -482,7 +547,8 @@ export function socialService(ctx) {
     },
     unblock(db, session, body) {
       const target = uuid(body.id);
-      const { p } = enter(db, session);
+      const { s, p, id } = enter(db, session);
+      if (p.blocked[target]) endedIn(s).blocks.push(['unblock', id, target]);
       delete p.blocked[target];
       return yes('unblocked');
     },
@@ -549,6 +615,8 @@ export function socialService(ctx) {
         if (sent.body !== message) throw ctx.fail(409, 'client_id_conflict');
         return yes('sent', { conv: summary(s, conv, id), message: messageView(s, conv, sent, id), duplicate: true });
       }
+      const refused = mutedRefusal(id) ?? screened(message, 'Your message');
+      if (refused) return refused;
       if (!ctx.allow(`social:dm:${id}`, 30)) return no('rate_limited', 'You are sending messages too quickly. Wait a moment, then retry.');
       const partner = to ?? (conv?.kind === 'dm' ? conv.members.find((member) => member !== id) : null);
       if (partner) {
@@ -581,6 +649,8 @@ export function socialService(ctx) {
       const { s, p, id } = enter(db, session);
       const existing = Object.keys(p.convs).map((key) => s.convs[key]).find((conv) => conv?.kind === 'group' && conv.creator === id && conv.cid === cid);
       if (existing) return yes('created', { conv: summary(s, existing, id), duplicate: true });
+      const refused = mutedRefusal(id) ?? screened(name, 'A group name', true);
+      if (refused) return refused;
       if (!ctx.allow(`social:group:${id}`, 5, 3600000)) return no('rate_limited', 'You have created several groups this hour. Try again later.');
       if (Object.keys(p.convs).filter((key) => s.convs[key]?.kind === 'group').length >= LIMITS.groups) return no('too_many_groups', `You can be in ${LIMITS.groups} groups. Leave one first.`);
       if (members.length + 1 > LIMITS.groupSize) return no('group_full', `A group holds ${LIMITS.groupSize} people including you.`);
@@ -609,7 +679,10 @@ export function socialService(ctx) {
       }
       if (conv.owner !== id) return no('owner_only', `Only ${pub(s, conv.owner).name}, who runs this group, can do that.`);
       if (body.op === 'rename') {
-        conv.name = text(body.name, LIMITS.groupName, 'invalid_group_name');
+        const renamed = text(body.name, LIMITS.groupName, 'invalid_group_name');
+        const refused = mutedRefusal(id) ?? screened(renamed, 'A group name', true);
+        if (refused) return refused;
+        conv.name = renamed;
         say(`${p.name} renamed the group to “${conv.name}”.`);
       } else if (body.op === 'add') {
         const member = uuid(body.id);
@@ -658,6 +731,51 @@ export function socialService(ctx) {
       push.push([hostId, { type: 'invite-house', house: houseView(s, hostId, hostId) }]);
       return yes('closed', { push });
     },
+
+    /**
+     * The heartbeat found a guest whose visit is over (it ran out, or the host is no longer home):
+     * close the stored visit too and tell both sides, so the house chat and guest list agree with the room.
+     */
+    expireVisits(db, hostId) {
+      const s = col(db);
+      const before = Object.keys(s.houses[hostId]?.guests || {});
+      if (!before.length) return yes('ok', { push: [] });
+      pruneHouse(s, hostId);
+      const push = [];
+      for (const guest of before.filter((id) => !s.houses[hostId]?.guests[id])) {
+        push.push([guest, { type: 'invite-house', house: houseView(s, hostId, guest) }]);
+        notify(s, guest, 'invite-answer', `Your visit to ${pub(s, hostId).name}’s house ended. A visit lasts ${Math.round(LIMITS.visitMs / 60000)} minutes; knock again to come back.`, { host: hostId }, push);
+      }
+      push.push([hostId, { type: 'invite-house', house: houseView(s, hostId, hostId) }]);
+      return yes('ok', { push });
+    },
+
+    // ---- operator side (server/routes/moderation.js). Never reachable with a player's session. ----
+    modReports(db, status = 'open', limit = 100) {
+      const s = col(db);
+      return s.reports.filter((report) => status === 'all' || (status === 'open' ? report.status === 'received' : report.status === status)).slice(-limit).reverse()
+        .map((report) => ({ ...report, byName: s.players[report.by]?.name ?? 'Former player', aboutNow: s.players[report.about]?.name ?? null }));
+    },
+    modReportCounts(db) { const s = col(db); return { total: s.reports.length, open: s.reports.filter((report) => report.status === 'received').length }; },
+    /** Set a report's status and tell the reporter, whose own receipt shows the same status. */
+    modSetReport(db, reportId, status, note = '') {
+      const s = col(db);
+      const report = s.reports.find((item) => item.id === reportId);
+      if (!report) return null;
+      report.status = status; report.note = note; report.updatedAt = now();
+      const receipt = s.players[report.by]?.reports.find((item) => item.id === reportId);
+      if (receipt) receipt.status = status;
+      const push = [];
+      notify(s, report.by, 'report', `Report ${report.id} about ${report.aboutName}: ${status === 'dismissed' ? 'a moderator reviewed it and took no action' : 'a moderator acted on it'}.${note ? ` Note: ${note}` : ''}`, { report: report.id }, push);
+      return { report, push };
+    },
+    /** A line in one player's Updates feed from the operator (a mute, a removed ad). */
+    modNote(db, to, text) {
+      const s = col(db), push = [];
+      notify(s, to, 'moderation', text, null, push);
+      return { push };
+    },
+    modKnows: (db, id) => Boolean(col(db).players[id]),
 
     // ---- house invites: knock → let in / not now -----------------------------------------------
     house(db, session, rawHost) {

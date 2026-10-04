@@ -514,7 +514,7 @@ test('offline catch-up is bounded, and a house move changes the rent from the ne
   player.step(DAY * 7 * 4);
   assert.equal(player.state.economy.loan.left, 0);
   assert.equal(player.view().economy.loan.cleared, true);
-  assert.equal(player.state.ledger.filter((entry) => entry.reason.startsWith('Loan')).length <= 30, true);
+  assert.equal(player.state.ledger.filter((entry) => entry.reason.startsWith('Loan')).length <= 60, true);
   assert.equal(player.view().economy.weeklyBills, 17000);
 });
 

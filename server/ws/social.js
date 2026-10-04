@@ -40,8 +40,8 @@ export default function socialSocket(ctx) {
     const result = await ctx.store.transact((db) => {
       const session = ctx.core.sessionOf(ws, db);
       if (!session || session.expiresAt <= ctx.now()) throw Error('device_session_required');
-      return call(db, session);
-    });
+      return service.finish(db, call(db, session));
+    }, { committed: (value) => service.committed(value) });
     return service.deliver(result);
   }
   /** Tell a player's friends that they connected or dropped. Best effort; never blocks the socket. */
@@ -51,14 +51,22 @@ export default function socialSocket(ctx) {
       .catch(() => {});
   }
   // The foundation announces room changes in-process; pass a nudge to the members' watching sockets.
-  ctx.on?.('room-changed', ({ room, cityId, venueId, members }) => {
-    for (const id of members) for (const ws of presence.sockets(id)) if (ws.peopleWatch === true && ws.room !== room) ctx.send(ws, { type: 'people-changed', cityId, venueId });
+  ctx.on?.('room-changed', ({ room, cityId, venueId, members, cause }) => {
+    for (const id of members) {
+      // A player the cause is hidden from (a blocked pair) is not nudged: their list has not changed.
+      if (cause && cause !== id && ctx.checks?.blocked?.(cause, id) === true) continue;
+      for (const ws of presence.sockets(id)) if (ws.peopleWatch === true && ws.room !== room) ctx.send(ws, { type: 'people-changed', cityId, venueId });
+    }
   });
   // The room module admits a guest to a host's Home room only if this says so (see server/ws/rooms.js).
   if (ctx.checks) ctx.checks.homeGuest = (db, guestId, hostId, cityId) => service.homeGuest(db, guestId, hostId, cityId);
   // A host whose life left home has no visitors: when the room module empties their Home room, end the visits too.
   ctx.on?.('home-closed', ({ hostId }) => {
-    ctx.store.transact((db) => service.closeHouse(db, hostId)).then((result) => service.deliver(result)).catch(() => {});
+    ctx.store.transact((db) => service.finish(db, service.closeHouse(db, hostId))).then((result) => service.deliver(result)).catch(() => {});
+  });
+  // The room module dropped a guest on the heartbeat (the visit ran out): close the stored visit and tell both sides.
+  ctx.on?.('guest-expired', ({ hostId }) => {
+    ctx.store.transact((db) => service.finish(db, service.expireVisits(db, hostId))).then((result) => service.deliver(result)).catch(() => {});
   });
   const echo = (message) => (typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {});
 

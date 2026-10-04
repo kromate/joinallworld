@@ -1,0 +1,19 @@
+/* Statement app. Class names are prefixed with the panel id. */
+.statement-sums{margin:0 0 var(--s-2);border:1px solid var(--c-line);border-radius:18px;padding:var(--s-2) var(--s-4)}
+.statement-sums div{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-2);padding:7px 0;border-bottom:1px solid var(--c-line)}
+.statement-sums div:last-child{border-bottom:0}
+.statement-sums dt{font-size:var(--t-body)}.statement-sums dt small{display:block;color:var(--c-muted);font-size:12px}
+.statement-sums dd{margin:0;font-weight:700;white-space:nowrap}
+.statement-total dd{font-size:var(--t-title)}
+.statement-ok{color:var(--c-green);font-size:13px;font-weight:600}
+.statement-bad{color:var(--c-red);font-size:13px;font-weight:600}
+.statement-note{color:var(--c-muted);font-size:12px}
+.statement-check{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2)}.statement-check small{color:var(--c-red);font-size:12px}
+.statement-check .ui-button:disabled{opacity:.5;cursor:not-allowed}
+.statement-days,.statement-groups{list-style:none;padding:0;margin:0}
+.statement-days>li{border:1px solid var(--c-line);border-radius:14px;padding:var(--s-2) var(--s-3);margin:var(--s-2) 0}
+.statement-day,.statement-flow{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-2);font-size:var(--t-body)}
+.statement-flow{justify-content:flex-start;margin:2px 0 4px}.statement-flow small{color:var(--c-muted);margin-left:auto}
+.statement-groups li{display:flex;justify-content:space-between;gap:var(--s-2);font-size:12px;padding:2px 0;color:var(--c-ink)}
+.statement-sums .is-in,.statement-flow .is-in,.statement-groups .is-in{color:var(--c-green)}
+.statement-sums .is-out,.statement-flow .is-out,.statement-groups .is-out{color:var(--c-red)}

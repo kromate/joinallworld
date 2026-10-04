@@ -1,6 +1,7 @@
 // Portable protocol rules shared by the Node server and the Cloudflare worker.
 // No Node-only imports here (no node:*, ws or fs): the worker bundles this file as-is.
 import { hasAction } from '../src/life.js';
+import { screenText } from './moderation/text.js';
 
 export const MAX_PAYLOAD_BYTES = 2048;
 export const CITY_IDS = Object.freeze(['lagos', 'ibadan']);
@@ -9,9 +10,29 @@ export const ACTION_WINDOW_MS = 86400000;
 export const MAX_VOICE_MEMBERS = 8;
 export const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 export const protocolError = (status, code) => Object.assign(new Error(code), { status, code });
+/** A fast 53-bit text hash (not cryptographic): compact receipt fingerprints and pseudonymous address keys. */
+export function hash53(text) {
+  let a = 0xdeadbeef ^ text.length, b = 0x41c6ce57 ^ text.length;
+  for (let i = 0; i < text.length; i++) { const c = text.charCodeAt(i); a = Math.imul(a ^ c, 2654435761); b = Math.imul(b ^ c, 1597334677); }
+  a = Math.imul(a ^ (a >>> 16), 2246822507) ^ Math.imul(b ^ (b >>> 13), 3266489909);
+  b = Math.imul(b ^ (b >>> 16), 2246822507) ^ Math.imul(a ^ (a >>> 13), 3266489909);
+  return (4294967296 * (2097151 & b) + (a >>> 0)).toString(36);
+}
+/** Loopback, private-range and link-local addresses: many people can sit behind one of these. */
+export function isSharedAddress(ip) {
+  const text = String(ip || '').toLowerCase().replace(/^::ffff:/, '');
+  return text === '' || text === 'unknown' || text === '::1' || /^(127\.|10\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.)/.test(text) || /^(fc|fd|fe80)/.test(text);
+}
+/**
+ * A nickname: 3–24 characters, no control characters, and — because every other player can see
+ * it — nothing the text filter refuses, no link and no contact detail. A refused name throws
+ * 400 `name_not_allowed` with a `reason` the player can be shown; nothing is silently changed.
+ */
 export function validateName(value) {
   const name = typeof value === 'string' ? value.trim() : '';
   if (name.length < 3 || name.length > 24 || /[\u0000-\u001f\u007f]/.test(name)) throw protocolError(400, 'invalid_name');
+  const verdict = screenText(name, { contact: true, what: 'That name' });
+  if (verdict) throw Object.assign(protocolError(400, 'name_not_allowed'), { reason: verdict.reason });
   return name;
 }
 export function parseActionId(id, now, windowMs = ACTION_WINDOW_MS) {

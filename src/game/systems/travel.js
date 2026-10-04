@@ -31,7 +31,14 @@
  *   trips      completed trips
  *   cooldowns  { [activityId]: readyAtMs }
  *   funded     true once the startup grant has been paid
+ *   gigs       { day, count }   paid gigs finished on Lagos day `day` (the daily gig limit)
+ *   eventDays  { [eventId]: day }  the Lagos day a once-a-day roadside event was last offered
  * }
+ *
+ * THE DAILY GIG LIMIT (original beta rule, GIG_DAILY_LIMIT in content/venues.js)
+ *   A gig is a venue activity that pays (a `reward`, or a chance outcome that pays more than once)
+ *   and is not a job's shift. Each one finished counts; once the day's limit is reached every gig
+ *   is refused with 'gig_limit' and a reason that says when they reopen. Job shifts are untouched.
  *
  * MODIFIER KEYS THIS SYSTEM CALLS (base → your adjusted value); data is { mode, destination, from, band }
  *   'travel.fare'      naira for the trip (for mode 'car' the base is fuel)
@@ -40,7 +47,7 @@
  *   'travel.modes'     [modeId, ...] offered for this trip; add 'car' to offer the own-car mode.
  *                      data is { destination, from }
  * MODIFIERS THIS SYSTEM CONTRIBUTES
- *   'activity.block'   enforces `cooldown` and `requiresMoodlet` on any activity definition
+ *   'activity.block'   enforces `cooldown`, `requiresMoodlet` and the daily gig limit on any activity definition
  *
  * EVENTS EMITTED
  *   'travel.arrived'     { venue, from, mode }  emitted by api.arrive(); this system passes the mode
@@ -58,7 +65,8 @@ import { emit, modify } from '../registry.js';
 import { busy, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.js';
 import { openingInfo } from '../clock.js';
 import { arrive, canAfford, credit, debit, changeNeeds, addSkillXp, addMoodlet, removeMoodlet, skillLevel, feelingsOf, findActivity, spotsOf, NEEDS } from '../api.js';
-import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, venueLabel, venueDistrict } from '../content/venues.js';
+import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict } from '../content/venues.js';
+import { lagosTime } from '../clock.js';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, TRAVEL_DURATION } from '../content/travel.js';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.js';
 
@@ -164,8 +172,14 @@ function travel(state, payload, ctx) {
 const signed = (amount) => (amount > 0 ? `+${amount}` : `−${-amount}`);
 const needsText = (needs) => Object.entries(needs).map(([need, amount]) => `${signed(amount)} ${need[0].toUpperCase()}${need.slice(1)}`).join(', ');
 
+/** Is this activity a gig for the daily limit? */
+export const isGig = (def) => Boolean(def) && !def.requiresJob && (def.reward > 0
+  || (Object.hasOwn(ACTIVITY_OUTCOMES, def.id) && ACTIVITY_OUTCOMES[def.id].success?.reward > 0 && !ACTIVITY_OUTCOMES[def.id].success.once));
+const gigsToday = (state, now) => (state.travel.gigs.day === lagosTime(now).day ? state.travel.gigs.count : 0);
+
 function pickEvent(state, modeId, ctx) {
-  const fits = Object.values(EVENTS).filter((event) => event.modes.includes(modeId));
+  const today = lagosTime(ctx.now).day;
+  const fits = Object.values(EVENTS).filter((event) => event.modes.includes(modeId) && !(event.oncePerDay && state.travel.eventDays[event.id] === today));
   if (!fits.length) return null;
   // The remedy seller always finds a sick trekker, so a cure is never down to luck.
   if (modeId === 'trek' && state.health?.sick === true) return EVENTS.agbo;
@@ -195,6 +209,7 @@ function complete(state, active, ctx) {
   emit(state, 'venue.visited', { venue: destination, first }, ctx);
   const event = trip ? pickEvent(state, modeId, ctx) : null;
   if (event) {
+    if (event.oncePerDay) state.travel.eventDays[event.id] = lagosTime(ctx.now).day;
     state.travel.event = { id: event.id, at: ctx.now };
     state.message += ` ${event.title} — choose what to do.`;
     emit(state, 'roadside.offered', { event: event.id }, ctx);
@@ -279,6 +294,8 @@ function sanitize(input, state, ctx) {
     trips: safeCount(saved.trips) ? saved.trips : 0,
     cooldowns,
     funded: saved.funded === true,
+    gigs: isRecord(saved.gigs) && safeCount(saved.gigs.day) && safeCount(saved.gigs.count) ? { day: saved.gigs.day, count: Math.min(saved.gigs.count, GIG_DAILY_LIMIT) } : { day: 0, count: 0 },
+    eventDays: Object.fromEntries(Object.entries(isRecord(saved.eventDays) ? saved.eventDays : {}).filter(([id, day]) => Object.hasOwn(EVENTS, id) && EVENTS[id].oncePerDay && safeCount(day))),
   };
 }
 
@@ -337,6 +354,7 @@ function view(state, ctx) {
       })),
     } : null,
     cooldowns: Object.fromEntries(Object.keys(state.travel.cooldowns).map((id) => [id, cooldownLeft(state, id, ctx.now)]).filter(([, left]) => left > 0)),
+    gigs: { limit: GIG_DAILY_LIMIT, used: gigsToday(state, ctx.now), left: Math.max(0, GIG_DAILY_LIMIT - gigsToday(state, ctx.now)) },
   };
 }
 
@@ -374,6 +392,10 @@ export default {
         if (ids.length >= MAX_COOLDOWNS && !Object.hasOwn(state.travel.cooldowns, def.id)) delete state.travel.cooldowns[ids[0]];
         state.travel.cooldowns[def.id] = now + def.cooldown * 1000;
       }
+      if (isGig(def)) {
+        const day = lagosTime(now).day;
+        state.travel.gigs = { day, count: Math.min(GIG_DAILY_LIMIT, gigsToday(state, now) + 1) };
+      }
       for (const id of def.clears || []) removeMoodlet(state, id);
       if (Object.hasOwn(ACTIVITY_OUTCOMES, def.id)) rollActivity(state, def.id, ACTIVITY_OUTCOMES[def.id], ctx);
     },
@@ -384,6 +406,9 @@ export default {
       if (value || !def) return value;
       const left = cooldownLeft(state, def.id, ctx?.now ?? state.t);
       if (left > 0) return { code: 'cooldown', reason: `You did this recently. ${def.label} is available again in ${left >= 60 ? `${Math.floor(left / 60)}m ${left % 60}s` : `${left}s`}.` };
+      if (isGig(def) && gigsToday(state, ctx?.now ?? state.t) >= GIG_DAILY_LIMIT) {
+        return { code: 'gig_limit', reason: `You have done today’s ${GIG_DAILY_LIMIT} paid gigs. Gigs open again at midnight, Lagos time. Your job’s shift is not affected.` };
+      }
       if (def.requiresMoodlet && !feelingsOf(state).some((feeling) => feeling.id === def.requiresMoodlet)) {
         return { code: 'not_needed', reason: def.requiresReason || 'You do not need this right now.' };
       }

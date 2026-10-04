@@ -9,7 +9,7 @@ import { blockReason, spotsOf } from '../../src/game/api.js';
 import { VENUES } from '../../src/game/content/venues.js';
 import { systems } from '../../src/game/registry.js';
 import { ELECTION, HUNT, RADIO, SEA_PLOTS, BILLBOARDS, AD_COLOURS, AD_ICONS } from '../../src/game/content/civic.js';
-import { adSlot, gemsFor, searchForGem, claimHuntPrize, fileCandidacy, castVote, payForAd, payForShoutout, civicEligibility } from '../../src/game/systems/civic.js';
+import civicSystem, { adSlot, gemsFor, searchForGem, claimHuntPrize, fileCandidacy, castVote, payForAd, payForShoutout, civicEligibility } from '../../src/game/systems/civic.js';
 import { cleanLine } from './text.js';
 import { cityOf, emptyCivic } from './data.js';
 import { timeline, phaseAt, tally, winnerOf, governorAt, declare, declareBlock, vote, voteBlock, announce, announceBlock, govView, notices } from './elections.js';
@@ -319,6 +319,11 @@ test('civic payments: every refusal names what is missing and charges nothing', 
   const early = fileCandidacy(state, {}, at(MONDAY));
   assert.equal(early.code, 'too_new'); assert.match(early.reason, /at least 2 Lagos days/); assert.equal(state.cash, 5000);
   assert.equal(castVote(state, {}, at(MONDAY)).code, 'too_new');
+  // Age is not enough: the life must have been paid for work on two different Lagos days.
+  const idle = castVote(state, {}, at(MONDAY + DAY));
+  assert.equal(idle.code, 'work_days'); assert.match(idle.reason, /paid for work on at least 2 different Lagos days/); assert.match(idle.reason, /on 2 more days/);
+  assert.equal(fileCandidacy(state, {}, at(MONDAY + 2 * DAY)).code, 'work_days'); assert.equal(state.cash, 5000, 'a refused candidacy charges nothing');
+  state.civic.work = { days: 2, last: lagosTime(MONDAY).day };
   // The Polling Unit exists in the merged city, so a vote is cast there and nowhere else.
   const elsewhere = castVote(state, {}, at(MONDAY + DAY));
   assert.equal(elsewhere.code, 'wrong_place'); assert.match(elsewhere.reason, /Travel to Polling Unit/);
@@ -352,4 +357,21 @@ test('the civic rule modules stay portable: no Node-only imports, clocks or rand
     const code = (await readFile(`server/civic/${file}`, 'utf8')).replace(/\/\*[\s\S]*?\*\/|^\s*\/\/.*$/gm, '');
     assert.doesNotMatch(code, /from\s+['"](node:|ws['"]|fs['"]|path['"]|crypto['"]|http['"])|require\(|\bprocess\.|Date\.now\(|Math\.random\(/, file);
   }
+});
+
+test('work days: one per Lagos day with a paid activity, never from unpaid ones, and hostile saves are reset', () => {
+  const state = life();
+  const paid = { def: { id: 'x', reward: 300 }, tags: [] }, unpaid = { def: { id: 'y', reward: 0 }, tags: [] };
+  const emitDone = (data, now) => civicSystem.on['activity.completed'](state, data, at(now));
+  emitDone(unpaid, MONDAY); assert.deepEqual(state.civic.work, { days: 0, last: null });
+  emitDone(paid, MONDAY); emitDone(paid, MONDAY + 3600000); emitDone(paid, MONDAY + 23 * 3600000 - 60000);
+  assert.deepEqual(state.civic.work, { days: 1, last: lagosTime(MONDAY).day }, 'any number of paid activities in one day count once');
+  assert.match(civicEligibility(state, at(MONDAY + 3600000)).vote.find((item) => item.id === 'work').detail, /on 1 more day \(today is already counted — come back tomorrow\)/);
+  emitDone(paid, MONDAY + DAY);
+  assert.equal(state.civic.work.days, 2); assert.equal(civicEligibility(state, at(MONDAY + DAY)).vote.find((item) => item.id === 'work').met, true);
+  for (const work of [{ days: 99, last: null }, { days: 0, last: 5 }, { days: -1, last: 1 }, { days: 1e9, last: 1 }, 'x', [2, 3]]) {
+    const rebuilt = createLife({ ...structuredClone(state), civic: { ...state.civic, work } }, at(MONDAY));
+    assert.deepEqual(rebuilt.civic.work, { days: 0, last: null }, JSON.stringify(work));
+  }
+  assert.deepEqual(createLife(structuredClone(state), at(MONDAY + DAY)).civic.work, state.civic.work, 'a valid record survives a reload');
 });

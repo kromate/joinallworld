@@ -47,6 +47,20 @@ export function addShoutout(city, now, who, venueId, song, id, requestId = null)
   return entry;
 }
 
+/** Operator removal of one queued or playing shout-out. Returns the removed entry, or null. The price is not refunded. */
+export function removeShoutout(city, venueId, id) {
+  const queue = Array.isArray(city.radio.queues[venueId]) ? city.radio.queues[venueId] : null;
+  const index = queue ? queue.findIndex((entry) => entry.id === id) : -1;
+  if (index < 0) return null;
+  return queue.splice(index, 1)[0];
+}
+
+/** Every shout-out still queued or playing, for the operator's listing. */
+export function liveShoutouts(city, now) {
+  return Object.entries(city.radio.queues).flatMap(([venue, queue]) => (Array.isArray(queue) ? queue : []).filter((entry) => entry.endsAt > now)
+    .map((entry) => ({ venue, id: entry.id, title: entry.title, artist: entry.artist, by: { id: entry.by.id, name: entry.by.name }, startsAt: entry.startsAt, endsAt: entry.endsAt })));
+}
+
 export const publicEntry = (entry, viewerId = null) => ({ id: entry.id, by: { id: entry.by.id, name: entry.by.name }, title: entry.title, artist: entry.artist, startsAt: entry.startsAt, endsAt: entry.endsAt, mine: entry.by.id === viewerId });
 
 /** { venue, club, playing: Entry | null, queue: [Entry], price, slotSeconds, perDay, usedToday, queueMax } */

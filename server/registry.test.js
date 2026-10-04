@@ -81,7 +81,7 @@ test('route registry rejects duplicate and malformed routes at start-up and list
   const CORE = ['GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/session'];
   for (const key of CORE) assert.ok(keys.includes(key), `core route ${key} is registered`);
   // Every module registers only under its own namespace; the core module is exactly the core set.
-  const NAMESPACES = ['', '/api/auth/', '/api/social/', '/api/civic/'];
+  const NAMESPACES = ['', '/api/auth/', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/'];
   assert.equal(ROUTE_MODULES.length, NAMESPACES.length);
   ROUTE_MODULES.forEach((module, index) => {
     const own = Object.keys(module(ctx) || {});
@@ -173,7 +173,7 @@ test('idempotent replay covers the payload: same request replays, a changed payl
   const replay = await f.action(a.cookie, body);
   assert.equal(replay.duplicate, true); assert.equal(replay.code, 'started'); assert.equal(replay.state.location, 'library'); assert.equal(replay.state.cash, 4600, 'a replay after completion still charges nothing');
   const receipt = (await database(f)).sessions[a.cookie.slice(4)].actions[actionId];
-  assert.deepEqual(Object.keys(receipt).sort(), ['actionAt', 'code', 'fingerprint', 'ok']);
+  assert.deepEqual(Object.keys(receipt).sort(), ['actionAt', 'code', 'fingerprint', 'ok', 'type']);
   // A failed action is recorded too, so its replay cannot succeed later.
   const failedId = `${106000}:${randomUUID()}`;
   const failed = await f.action(a.cookie, { actionId: failedId, type: 'activity', payload: { id: 'chill' } });

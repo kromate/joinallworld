@@ -46,8 +46,14 @@ export const SHIFT_XP = 25;
 export const START_PERFORMANCE = 50;
 /** Performance gained per completed shift before modifiers (original beta value). */
 export const PERFORMANCE_PER_SHIFT = 10;
-/** Pay of each ladder level as a multiple of entry pay, rounded to ₦100 (original beta values). */
-export const PAY_CURVE = Object.freeze([1, 1.5, 2.25, 3.5, 5.5, 9]);
+/**
+ * Pay of each ladder level as a multiple of entry pay, rounded to ₦100 (original beta values).
+ * The top two rungs were 5.5 and 9. scripts/economy-sim.mjs showed that no career could then
+ * pay the fourth house's observed rent (₦250,000 a week against at most ₦227,000), so that house
+ * and everything above it was unreachable by working. At 7 and 16 the median track's top level
+ * earns that rent in a week; the fifth house stays beyond wages alone.
+ */
+export const PAY_CURVE = Object.freeze([1, 1.5, 2.25, 3.5, 7, 16]);
 /** Track-skill level needed to reach each ladder level (level 2 = skill 1 was observed for Tech). */
 export const SKILL_GATES = Object.freeze([0, 1, 2, 4, 6, 8]);
 

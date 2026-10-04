@@ -15,6 +15,15 @@
  *   - Everything is paid in in-game naira through the wallet ledger. There is no real-money path.
  *   - Every route is rate-limited per player (or per address when signed out) on top of the
  *     host's per-address limit.
+ *   - A player an operator has muted (ctx.checks.muted) cannot post a slogan, an announcement, an
+ *     ad or a shout-out until the mute ends; the refusal says so and charges nothing.
+ *   - VOTES PER ADDRESS (soft cap, ctx.config.votesPerAddress, 0 = off). Besides one vote per
+ *     player, at most that many votes are counted from one network address in an election. The
+ *     address is kept only as a salted hash and only for the current election. From a public
+ *     address a vote over the cap is refused with a reason and written to the operator's audit
+ *     trail. From a loopback or private-range address — which means the server is seeing a shared
+ *     address (a proxy without TRUST_PROXY, a LAN) — the vote is COUNTED and only logged, because
+ *     refusing there would silence real voters.
  *   - A life that must still finish character creation is not checked in: it is absent from the
  *     neighbours directory, the rich list and the counters until it has moved in.
  *
@@ -42,7 +51,9 @@ import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.js';
 import { civicEligibility } from '../../src/game/systems/civic.js';
 import { cityOf, emptyCivic, nextId } from '../civic/data.js';
 import { cleanLine } from '../civic/text.js';
-import { announce, announceBlock, declare, declareBlock, govView, notices, vote, voteBlock } from '../civic/elections.js';
+import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapNotice, govView, notices, vote, voteBlock } from '../civic/elections.js';
+import { hash53, isSharedAddress } from '../protocol.js';
+import { moderationService } from '../moderation/service.js';
 import { AD_KINDS, adsView, removeAd, rent, rentBlock, validateCreative } from '../civic/ads.js';
 import { addShoutout, findRequest, isClub, publicEntry, radioView, shoutBlock, validateSong, validRequestId } from '../civic/radio.js';
 import { checkIn, counters, huntCounters, neighboursView, richListView } from '../civic/residents.js';
@@ -62,6 +73,20 @@ export default function civicRoutes(ctx) {
   /** Run a server-completed civic action through the rules engine, inside the caller's transaction. */
   const act = (life, cityId, type, payload = {}) => ctx.act(life, { type, cityId, payload });
   const refused = (block, extra = {}) => ({ body: { ok: false, code: block.code, reason: block.reason, ...extra }, renew: true });
+  const muted = (who) => ctx.checks?.muted?.(who.id) ?? null;
+  const moderation = moderationService(ctx);
+  /** Pseudonymous key for an address: a hash salted with a random value stored once in the civic collection. */
+  function addressKey(civic, ip) {
+    if (typeof civic.salt !== 'string' || civic.salt.length < 16) civic.salt = `${ctx.randomId?.() ?? ''}${ctx.now()}`;
+    return hash53(`${civic.salt}|${ip}`);
+  }
+  // Preferences of players who are no longer residents anywhere are dropped once an hour.
+  function prunePrefs(civic) {
+    if (ctx.now() - (Number.isFinite(civic.prefsPrunedAt) ? civic.prefsPrunedAt : 0) < 3600000) return;
+    civic.prefsPrunedAt = ctx.now();
+    const known = new Set(Object.values(civic.cities).flatMap((city) => Object.keys(city?.residents ?? {})));
+    for (const id of Object.keys(civic.prefs)) if (!known.has(id)) delete civic.prefs[id];
+  }
 
   /** Signed-in entry to a write: settle the life and refresh the caller's resident entry. */
   function enter(db, request, cityId) {
@@ -72,6 +97,7 @@ export default function civicRoutes(ctx) {
     // A life that must still be created is not a resident yet: it is in no directory, list or counter.
     const resident = !(life.onboarding?.required === true && life.onboarding.done !== true);
     if (resident) checkIn(city, ctx.now(), who, life, ttl());
+    prunePrefs(civic);
     return { session, who, life, civic, city, resident };
   }
   /** Read-only view of the same things. Works on the snapshot, so nothing it settles is saved. */
@@ -149,7 +175,7 @@ export default function civicRoutes(ctx) {
           const fresh = resident ? notices(city, ctx.now(), cityName(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
           if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) });
           return pulseBody(city, cityId, who, life, resident);
-        });
+        }, { durable: false }); // a check-in acknowledges nothing: news not yet stored is simply posted again
         return { body, renew: true };
       }
       return { body: await store.read(db => { const { who, life, city } = peek(db, request, cityId); return pulseBody(city, cityId, who, life, false); }) };
@@ -168,7 +194,7 @@ export default function civicRoutes(ctx) {
       return store.transact(db => {
         const { who, life, city } = enter(db, request, cityId);
         limit('gov-run', who.id, 12);
-        const block = declareBlock(city, ctx.now(), who.id) ?? (slogan.ok ? null : slogan);
+        const block = declareBlock(city, ctx.now(), who.id) ?? muted(who) ?? (slogan.ok ? null : slogan);
         if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life) });
         const paid = act(life, cityId, 'civic.run');
         if (!paid.ok) return refused(paid, { state: life, gov: govBody(city, cityId, who, life) });
@@ -181,13 +207,30 @@ export default function civicRoutes(ctx) {
       const body = await request.json();
       const cityId = cityParam(body.cityId);
       return store.transact(db => {
-        const { who, life, city } = enter(db, request, cityId);
+        const { who, life, civic, city } = enter(db, request, cityId);
         limit('gov-vote', who.id, 12);
         const block = voteBlock(city, ctx.now(), who.id, body.candidate);
         if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life) });
+        // Soft cap per network address (see the header). It applies only to a vote that would otherwise
+        // count — an ineligible voter is told what they are missing instead — and it is checked BEFORE the
+        // rules engine records the vote in the life, so a capped vote leaves no trace of having been cast.
+        const cap = ctx.config.votesPerAddress, key = addressKey(civic, request.ip);
+        const eligible = civicEligibility(life, engine(cityId, 'vote')).vote.every((item) => item.met);
+        if (eligible && cap > 0 && addressVotes(city, ctx.now(), key) >= cap) {
+          const shared = isSharedAddress(request.ip);
+          if (firstCapNotice(city, ctx.now(), key)) {
+            moderation.audit(db, shared ? 'vote-cap-shared' : 'vote-cap', `${cityId}:week ${govView(city, ctx.now()).election.week}`,
+              shared ? `More than ${cap} votes from one private or loopback address (key ${key}). They are being counted: the server cannot tell voters apart behind a shared address. Set TRUST_PROXY=1 behind a proxy, or raise VOTES_PER_ADDRESS.`
+                : `Votes over the cap of ${cap} from one address (key ${key}) are being refused. Raise VOTES_PER_ADDRESS if this is a shared connection.`, 'server');
+          }
+          if (!shared) {
+            return refused({ code: 'address_vote_limit', reason: `${cap} votes have already been counted from your network connection in this election, which is the most allowed from one connection. Your vote was not counted. If you share a connection (a school, an office, a hostel), ask whoever runs this server to raise the limit, or vote from another connection.` },
+              { state: life, gov: govBody(city, cityId, who, life) });
+          }
+        }
         const allowed = act(life, cityId, 'civic.vote');
         if (!allowed.ok) return refused(allowed, { state: life, gov: govBody(city, cityId, who, life) });
-        vote(city, ctx.now(), who.id, body.candidate);
+        vote(city, ctx.now(), who.id, body.candidate, key);
         return { body: { ok: true, code: 'voted', state: life, gov: govBody(city, cityId, who, life) }, renew: true };
       });
     },
@@ -198,7 +241,7 @@ export default function civicRoutes(ctx) {
       return store.transact(db => {
         const { who, life, city } = enter(db, request, cityId);
         limit('gov-announce', who.id, 6);
-        const block = announceBlock(city, ctx.now(), who.id) ?? (text.ok ? null : text);
+        const block = announceBlock(city, ctx.now(), who.id) ?? muted(who) ?? (text.ok ? null : text);
         if (block) return refused(block, { gov: govBody(city, cityId, who, life) });
         announce(city, ctx.now(), who, text.text, nextId(city, 'a'));
         return { body: { ok: true, code: 'announced', gov: govBody(city, cityId, who, life) }, renew: true };
@@ -232,7 +275,7 @@ export default function civicRoutes(ctx) {
         const { who, life, city } = enter(db, request, cityId);
         limit('ads-rent', who.id, 30);
         const ads = () => ({ city: cityId, ...adsView(city, ctx.now(), who.id) });
-        const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot) ?? (creative.ok ? null : creative);
+        const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot) ?? muted(who) ?? (creative.ok ? null : creative);
         if (block) return refused(block, { state: life, ads: ads() });
         const paid = act(life, cityId, 'civic.rent-ad', { kind: body.kind, slot: body.slot });
         if (!paid.ok) return refused(paid, { state: life, ads: ads() });
@@ -281,7 +324,7 @@ export default function civicRoutes(ctx) {
         // A retried request (same id) returns the entry it already bought instead of charging again.
         const earlier = isClub(venue) ? findRequest(city, venue, now, who.id, requestId) : null;
         if (earlier) return { body: { ok: true, code: 'queued', duplicate: true, state: life, entry: publicEntry(earlier, who.id), radio: radio() }, renew: true };
-        const block = shoutBlock(city, now, who.id, venue) ?? (song.ok ? null : song);
+        const block = shoutBlock(city, now, who.id, venue) ?? muted(who) ?? (song.ok ? null : song);
         if (block) return refused(block, { state: life, radio: radio() });
         const paid = act(life, cityId, 'civic.shoutout');
         if (!paid.ok) return refused(paid, { state: life, radio: radio() });
@@ -299,7 +342,7 @@ export default function civicRoutes(ctx) {
       const build = (civic, city, who) => ({ city: cityId, ...richListView(city, ctx.now(), ttl(), civic.prefs, who?.id ?? null), counters: cityCounters(city, cityId) });
       // Opening the list checks the viewer in first, so their own row is never stale.
       if (signedIn && ctx.allow(`civic:checkin:${signedIn}`, 6)) {
-        const body = await store.transact(db => { const { who, civic, city } = enter(db, request, cityId); counterCache.delete(cityId); return build(civic, city, who); });
+        const body = await store.transact(db => { const { who, civic, city } = enter(db, request, cityId); counterCache.delete(cityId); return build(civic, city, who); }, { durable: false });
         return { body, renew: true };
       }
       return { body: await store.read(db => { const { who, civic, city } = peek(db, request, cityId); return build(civic, city, who); }) };

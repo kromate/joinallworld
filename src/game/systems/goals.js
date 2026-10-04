@@ -349,7 +349,9 @@ function rerollsOf(state, ctx) {
 
 const actions = {
   'goals.buy-perk'(state, payload, ctx) {
-    const g = state.goals, perk = typeof payload?.id === 'string' ? perkById[payload.id] : null;
+    // Own keys only: 'constructor' or '__proto__' must not resolve to something on Object.prototype
+    // (that used to spend "undefined" stars and leave the star count as NaN until the next reload).
+    const g = state.goals, perk = typeof payload?.id === 'string' && Object.hasOwn(perkById, payload.id) ? perkById[payload.id] : null;
     if (!perk) return fail(state, 'invalid_perk', 'Choose a perk from the Goals tab.');
     if (g.perks.includes(perk.id)) return fail(state, 'already_owned', `You already own ${perk.label}.`);
     if (g.stars < perk.cost) {

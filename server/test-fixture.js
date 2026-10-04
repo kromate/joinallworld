@@ -15,7 +15,7 @@ export async function fixture(t, options = {}) {
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   const base = `http://127.0.0.1:${server.address().port}`;
   const sockets = [];
-  t.after(async () => { for (const ws of sockets) ws.terminate(); server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); await rm(dir, { recursive: true, force: true }); });
+  t.after(async () => { for (const ws of sockets) ws.terminate(); server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); await server.store?.close?.().catch(() => {}); await rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 20 }); });
   async function request(path, body, cookie) {
     return fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
   }
@@ -29,5 +29,5 @@ export async function fixture(t, options = {}) {
     return { ws, next: () => queue.length ? Promise.resolve(queue.shift()) : new Promise((resolve, reject) => { const timeout = setTimeout(() => reject(Error('Message timeout')), 2000); waiting.push(message => { clearTimeout(timeout); resolve(message); }); }) };
   }
   async function joinRoom(device) { const peer = await socket(device); peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await peer.next(); return peer; }
-  return { base, request, device, action, socket, joinRoom, advance: ms => { time += ms; }, dir };
+  return { base, request, device, action, socket, joinRoom, advance: ms => { time += ms; }, dir, server, now: () => time, flush: () => server.store.flush() };
 }

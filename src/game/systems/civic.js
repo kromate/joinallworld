@@ -9,6 +9,11 @@
  *   since   server ms this life first existed in the city (for "days lived here")
  *   gems    lifetime gems found;  claims  lifetime daily prizes claimed
  *   week    { week, earned } — naira received in the current Monday-started Lagos week
+ *   work    { days, last } — how many different Lagos days this life has been PAID FOR WORK on (a
+ *           completed activity with a reward: a shift or a gig), and the last such day. It only
+ *           ever counts up by one per Lagos day, so it cannot be farmed in a sitting. Voting and
+ *           running for Governor need ELECTION.minWorkDays of them (original beta rule): a
+ *           sock-puppet session has to be played on two separate days, not merely left to age.
  *   news    [noticeId] — city news (results, phases, the Governor's announcements) already
  *           posted to this life's Updates, newest last, so each item is posted once
  *   hunt    null | { day, claimed, gems: [{ venue, spot, kind, found }] }
@@ -142,7 +147,13 @@ export function civicEligibility(state, ctx) {
     check('fee', canAfford(state, ELECTION.filingFee), `Filing fee of ${naira(ELECTION.filingFee)} (not refunded)`,
       canAfford(state, ELECTION.filingFee) ? `You have ${naira(state.cash)}.` : `You have ${naira(state.cash)}; earn ${naira(ELECTION.filingFee - state.cash)} more.`, 'insufficient_funds'),
   ];
-  const vote = [lived(ELECTION.minDaysToVote, 'vote')];
+  // Paid work on enough different days: age alone can be waited out by an idle sock puppet.
+  const need = ELECTION.minWorkDays, worked = state.civic.work.days;
+  const working = check('work', worked >= need, `Been paid for work on at least ${need} different Lagos days`,
+    worked >= need ? `You have been paid for work on ${worked} different days.`
+      : `You have been paid for work on ${worked} day${worked === 1 ? '' : 's'}. Finish a paid shift or gig on ${need - worked} more day${need - worked === 1 ? '' : 's'}${state.civic.work.last === lagosTime(nowOf(state, ctx)).day ? ' (today is already counted — come back tomorrow)' : ''}.`, 'work_days');
+  run.push(working);
+  const vote = [lived(ELECTION.minDaysToVote, 'vote'), working];
   if (polling) {
     const there = state.location === ELECTION.pollingVenue && !travelling(state);
     vote.push(check('place', there, `Be at ${venueLabel(ELECTION.pollingVenue, city)}`,
@@ -292,6 +303,8 @@ export default {
       gems: safeCount(saved.gems) ? saved.gems : 0,
       claims: safeCount(saved.claims) ? saved.claims : 0,
       week,
+      work: isRecord(saved.work) && safeCount(saved.work.days) && saved.work.days <= 100000 && (saved.work.last === null || safeCount(saved.work.last)) && (saved.work.days === 0) === (saved.work.last === null)
+        ? { days: saved.work.days, last: saved.work.last } : { days: 0, last: null },
       news: [...new Set((Array.isArray(saved.news) ? saved.news : []).filter((id) => typeof id === 'string' && NEWS_ID.test(id)))].slice(-NEWS_LIMIT),
       hunt: sanitizeHunt(saved.hunt),
     };
@@ -308,6 +321,11 @@ export default {
   },
   on: {
     'activity.completed'(state, data, ctx) {
+      // A paid shift or gig: count today once as a day worked.
+      if (data?.def?.reward > 0) {
+        const day = lagosTime(nowOf(state, ctx)).day, work = state.civic.work;
+        if (work.last === null || day > work.last) { work.days = Math.min(100000, work.days + 1); work.last = day; }
+      }
       for (const gem of roll(state, ctx).gems) if (!gem.found && gem.kind === 'activity' && gem.venue === state.location) found(state, gem, ctx);
     },
     'wallet.changed'(state, data, ctx) {
@@ -335,6 +353,7 @@ export default {
           clue: gem.found ? 'Found' : gem.kind === 'activity' ? 'Finish any activity here to shake it loose' : 'Hidden at one of the spots here — go and search' })),
       },
       eligibility: civicEligibility(state, ctx),
+      workDays: state.civic.work.days,
       earnedThisWeek: state.civic.week.week === week ? state.civic.week.earned : 0,
       gems: state.civic.gems,
     };

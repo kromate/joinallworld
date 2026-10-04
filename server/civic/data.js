@@ -4,12 +4,15 @@
 // db.civic = {
 //   v: 1,
 //   prefs:  { [publicId]: { richList?: true, directory?: true } }      true = hidden from that list
+//   salt:   string                        random; mixed into the address keys of the vote cap
 //   cities: { [cityId]: {
 //     seq:       number                       last id issued for announcements and shout-outs
 //     visits:    number                       resident-days: +1 the first time a resident checks in on a Lagos day
 //     prunedAt:  ms
 //     residents: { [publicId]: { name, house, since, lastSeen, day, cash, week, earned, gems, claims } }
-//     gov:       { elections: { [week]: { candidates: { [publicId]: { name, slogan, at } }, votes: { [voterId]: candidateId } } },
+//     gov:       { elections: { [week]: { candidates: { [publicId]: { name, slogan, at } }, votes: { [voterId]: candidateId },
+//                                         addr?: { [addressKey]: votes }, capLogged?: { [addressKey]: true } } },
+//                  (addr and capLogged exist for the current election only; addressKey is a salted hash, never an address)
 //                  announcements: [{ id, by: { id, name }, text, at, term }] }
 //     ads:       { billboard: { [slotId]: ad }, sea: { [plotId]: ad } }    ad = { by: { id, name }, text, colour, icon, at, expiresAt }
 //     hunt:      { found, claims, byDay: { [lagosDay]: found } }

@@ -57,6 +57,21 @@ export function removeAd(city, now, playerId, kind, slot) {
   return null;
 }
 
+/** Operator removal: take down whatever is in the slot. Returns the removed ad, or null. Rent is not refunded. */
+export function takeDown(city, now, kind, slot) {
+  const current = AD_KINDS.includes(kind) && typeof slot === 'string' && Object.hasOwn(book(city, kind), slot) ? book(city, kind)[slot] : null;
+  if (!live(current, now)) return null;
+  delete book(city, kind)[slot];
+  return current;
+}
+
+/** Every live ad with its slot, for the operator's listing. */
+export function liveAds(city, now) {
+  const list = [];
+  for (const kind of AD_KINDS) for (const [slot, ad] of Object.entries(book(city, kind))) if (live(ad, now)) list.push({ kind, slot, text: ad.text, by: { id: ad.by.id, name: ad.by.name }, at: ad.at, expiresAt: ad.expiresAt });
+  return list;
+}
+
 const shown = (ad, info, viewerId) => ({ text: ad.text, colour: ad.colour, icon: ad.icon, by: { id: ad.by.id, name: ad.by.name }, at: ad.at, expiresAt: ad.expiresAt, mine: ad.by.id === viewerId, price: info.price });
 
 /**

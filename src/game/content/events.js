@@ -21,7 +21,8 @@
  * Provenance: the agbo seller (title, the ₦600 price, the two choices, appearing after a trek)
  * was observed in the reference game. Every other event, every effect amount and every
  * probability is an original beta value. Money effects are small and bounded: no choice pays
- * more than ₦500, and an event needs a trip (which costs time, and usually a fare) to appear.
+ * more than ₦500, an event needs a trip (which costs time, and usually a fare) to appear, and an
+ * event marked `oncePerDay` is offered at most once per Lagos day.
  */
 export const EVENTS = {
   agbo: {
@@ -64,7 +65,9 @@ export const EVENTS = {
     ],
   },
   wallet: {
-    id: 'wallet', icon: '👛', title: 'A wallet on the ground', modes: ['trek', 'keke'], weight: 2, beta: true,
+    // oncePerDay: the only event that can pay real money appears at most once per Lagos day, so
+    // walking up and down a road is not a way to earn (original beta rule; systems/travel.js).
+    id: 'wallet', icon: '👛', title: 'A wallet on the ground', modes: ['trek', 'keke'], weight: 2, beta: true, oncePerDay: true,
     text: 'Somebody has dropped a wallet by the roadside. There is an ID card inside, and a little cash.',
     choices: [
       { id: 'return', label: 'Hand it in at the nearest shop', hint: 'Do the right thing', effects: { social: 5 },

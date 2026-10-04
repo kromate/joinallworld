@@ -30,8 +30,20 @@
  * `note` says so, the name, duration or price was observed in the reference game and only the
  * effect amounts are original. Entries without `beta` follow what was observed. Opening hours
  * are original beta values except where a comment says otherwise. Earning activities are
- * bounded by a cooldown and a need cost, so none of them can be repeated without limit.
+ * bounded three ways, so none of them can be repeated without limit: a cooldown, a need cost,
+ * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.js).
  */
+
+/**
+ * Paid gigs a player may finish per Lagos day, over all venues together (original beta value).
+ * A gig is any venue activity that pays — a `reward`, or a chance of one — and is not a job's
+ * shift. scripts/economy-sim.mjs showed why it is needed: on cooldowns alone, touring every gig
+ * all day earned about ₦1,000,000 a day against ₦3,600 for a first career shift. With eight, an
+ * unskilled player's gigs come to roughly one entry-level shift for several times the effort,
+ * and a skilled player's to roughly one mid-career shift: a useful second income, never the only
+ * sensible one. A career shift and the Community helper shift do not count towards it.
+ */
+export const GIG_DAILY_LIMIT = 8;
 
 const seenCard = 'Duration and price as observed in the reference game; effect amounts are original beta values.';
 const seenName = 'Name seen in the reference game; duration, price and effects are original beta values.';

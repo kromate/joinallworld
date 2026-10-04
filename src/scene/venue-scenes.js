@@ -21,11 +21,13 @@
  * venue.scene.anchors: { [spotId]: landmarkKey } pins a spot to one of the scene's landmarks;
  * spots without a hint are matched by their id and label, and only then take what is left.
  *
- * BATTERY RULE. Scenes are static: no requestAnimationFrame, timers or per-frame work, and a
- * scene never renders by itself. A venue is baked into a few merged meshes (src/scene/build.js);
- * state changes rebuild only the small "actors" batch (your avatar, the crowd, the spot ring)
- * and report true so the host draws exactly one frame. The host (src/venue-world.js) calls
- * dispose() when the player leaves the venue, which frees every geometry the scene made.
+ * BATTERY RULE. Scenes are static: no frame callbacks, timers or per-frame work, and a scene
+ * never renders by itself. A venue is baked into a few merged meshes (src/scene/build.js); a
+ * crowd change rebuilds only the small "actors" batch and reports true so the host draws exactly
+ * one frame. The player's avatar, the spot ring and the walking marks are separate, prebuilt
+ * objects that are only ever MOVED (position, rotation, visibility) — walking builds no geometry.
+ * The host (src/venue-world.js) calls dispose() when the player leaves the venue, which frees
+ * every geometry the scene made.
  *
  * What the host does with an entry (every member is optional for the host):
  *   lighting()                  the preset in use (LIGHTING[mood][time]); the HOST applies hemi
@@ -37,12 +39,17 @@
  *   setTime(time) / setSpot(id) / setPlayer({ look, seed, pose, name }) → boolean (changed)
  *   setCrowd(people) → tags     other players and NPCs; see buildCrowd in characters.js
  *   tags()                      name-tag data for you and the crowd, for the DOM layer
+ *   walk                        what the host needs to walk the avatar about: { grid, entrance,
+ *                               open, avatar, drive(on), rest(), spots(), people(), move(x, y, z, ry),
+ *                               pose(name, seat), gait(step), heightAt(x, z), near(spot), goal(x, z) }
+ *                               — see WALK below and src/scene/movement.js
  *   stats()                     { triangles, meshes, drawCalls, lights, geometries }
  *   dispose()                   free everything and detach from the parent (the host calls it on
  *                               a location change and when it is disposed itself)
  */
 import { createBatch, kitResources, releaseObjects, GLOW } from './build.js';
-import { drawAvatar, drawCrowd } from './characters.js';
+import { buildAvatar, drawCrowd } from './characters.js';
+import { createWalkGrid, footprintRecorder } from './movement.js';
 import { spotMarker } from './props.js';
 import { lagosTime } from '../game/clock.js';
 import * as outdoor from './venues-outdoor.js';
@@ -147,6 +154,33 @@ function resolveAnchors(landmarks, spots, spare, hints = {}) {
   return { anchors, fallback, hint: (id) => (typeof hints[id] === 'string' && landmarks.find((landmark) => landmark.key === hints[id])) || null, place };
 }
 
+/**
+ * WALKABLE DESCRIPTION per scene kind (see src/scene/movement.js). Every kind has one; an unknown
+ * kind gets WALK_DEFAULT, whose bounds are then taken from the floor the scene actually drew.
+ *   bounds    [minX, minZ, maxX, maxZ] the avatar's centre may be in — inside the floor slab and its walls
+ *   entrance  [x, z] where the avatar appears on arrival (the open, camera side of the venue); the
+ *             nearest free place to it is used, so a prop standing there can never trap the player
+ *   block     extra obstacle rectangles [x0, z0, x1, z1] and circles [x, z, r]
+ *   clear     areas opened again after blocking
+ *   open      true: no walls, so the camera may orbit all the way round
+ * Obstacles for furniture, counters, walls, trees, standing extras and water are not listed by hand:
+ * they are the ground footprints of what the scene builder draws (footprintRecorder), so they
+ * cannot drift from the art. `block` and `clear` are for what a footprint cannot say.
+ */
+const GROUND = Object.freeze([-14.2, -12.2, 14.2, 12.2]), FLOOR = Object.freeze([-11.5, -9.5, 11.5, 9.5]);
+const outdoors = (more) => Object.freeze({ bounds: GROUND, entrance: [0, 11.4], open: true, ...more });
+const indoors = (more) => Object.freeze({ bounds: FLOOR, entrance: [0, 8.8], open: false, ...more });
+export const WALK_DEFAULT = Object.freeze({ bounds: null, entrance: null, open: true });
+export const WALK = Object.freeze({
+  park: outdoors(), market: outdoors(), beach: outdoors({ entrance: [0, 11.2] }), polling: outdoors(), walk: outdoors(), statehouse: outdoors(),
+  rooftop: outdoors({ bounds: [-10.4, -8.4, 10.4, 8.4], entrance: [0, 7.6] }),
+  generic: outdoors({ bounds: [-13.2, -11.2, 13.2, 11.2], entrance: [0, 10.4] }),
+  buka: indoors(), club: indoors(), viewing: indoors(), shrine: indoors(), mall: indoors(), hub: indoors(), office: indoors(),
+  gym: indoors(), salon: indoors(), radio: indoors(), hospital: indoors(), police: indoors(), worship: indoors(),
+});
+/** How far from a spot's anchor the avatar counts as standing at it. */
+export const SPOT_REACH = 1.5;
+
 function createEntry(kit, venue, def, kind, defaultVariant) {
   const { THREE } = kit;
   const shared = kitResources(kit);
@@ -170,13 +204,21 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     pose: 'stand', poseFixed: false, crowd: [],
   };
   const hints = options.anchors && typeof options.anchors === 'object' ? options.anchors : {};
-  let layout = null, resolved = null, live = false, disposed = false;
-  const staticObjects = [], actorObjects = [];
+  let layout = null, resolved = null, live = false, disposed = false, footprints = null, grid = null, entrance = null;
+  const staticObjects = [], actorObjects = [], markObjects = [];
   let staticTriangles = 0, actorTriangles = 0, crowdTags = [], selfTag = null, sky = null;
+  // The player's avatar is its own group, moved by its transform only: one prebuilt figure per pose.
+  const avatar = new THREE.Group();
+  avatar.name = 'avatar';
+  const figures = new Map();
+  let shownFigure = null, driven = false;
+  const marks = { ring: null, near: null, goal: null };
 
   function drawStatic() {
-    const batch = createBatch(THREE);
+    const recorder = footprintRecorder(createBatch(THREE));
+    const batch = recorder.batch;
     layout = def.build(batch, context) || {};
+    footprints = recorder.shapes();
     layout.spots ||= [];
     layout.crowd ||= [];
     layout.spare ||= [[0, 4], [3, 5], [-3, 5], [5, 2], [-5, 2], [0, 7]];
@@ -186,6 +228,16 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     }
     for (const landmark of layout.spots) spotMarker(batch, landmark.x, landmark.z, context.accent, landmark.y || 0);
     return batch;
+  }
+  /** The floor as a grid, from this kind's walkable description and the footprints of what was drawn. */
+  function buildGrid() {
+    const data = Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT;
+    const floor = footprints?.floor;
+    const bounds = data.bounds || (floor ? [floor[0] + 1.3, floor[1] + 1.3, floor[2] - 1.3, floor[3] - 1.3] : [-10, -8, 10, 8]);
+    grid = createWalkGrid({ bounds, block: [...(footprints?.block || []), ...(data.block || [])], clear: data.clear || [] });
+    const wanted = data.entrance || [(bounds[0] + bounds[2]) / 2, bounds[3] - 0.8];
+    const at = grid.nearest(wanted[0], wanted[1]) || { x: wanted[0], z: wanted[1] };
+    entrance = { x: at.x, y: 0, z: at.z, ry: Math.PI };
   }
   function anchorFor(id) {
     if (id == null) return null;
@@ -208,17 +260,85 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       return { ...person, x: base.x + Math.sin(turn) * radius, z: base.z + Math.cos(turn) * radius, ry: person.ry ?? turn + Math.PI };
     });
   }
+  /**
+   * Where the scene itself stands the avatar: at the chosen spot's anchor, or — while an activity
+   * runs there — at the place and in the pose the spot gives it (anchor.act).
+   */
+  function rest() {
+    const anchor = anchorFor(view.spot) || { x: 0, y: 0, z: 3, ry: 0 };
+    const acting = view.pose === 'busy' && !view.poseFixed && anchor.act ? anchor.act : null;
+    const pose = view.poseFixed ? view.pose : acting ? acting.pose || 'work' : view.pose === 'stand' || view.pose === 'walk' ? view.pose : 'work';
+    return {
+      spot: view.spot, x: acting?.x ?? anchor.x, y: acting?.y ?? anchor.y, z: acting?.z ?? anchor.z, ry: acting?.ry ?? anchor.ry, pose, seat: acting?.seat,
+      busy: view.pose === 'busy' && !view.poseFixed, leaving: view.pose === 'walk' && !view.poseFixed, fixed: view.poseFixed,
+      anchor,
+    };
+  }
+  /** One figure per pose, built the first time the pose is needed and kept until the look changes. */
+  function figure(pose, seat) {
+    const key = `${pose}:${seat ?? ''}`;
+    let entry = figures.get(key);
+    if (!entry) {
+      entry = buildAvatar(kit, view.look, { pose, seat, seed: view.seed, marker: 'crown' });
+      entry.visible = false;
+      avatar.add(entry);
+      figures.set(key, entry);
+    }
+    return entry;
+  }
+  function show(pose, seat) {
+    const next = figure(pose, seat);
+    if (next === shownFigure) return false;
+    if (shownFigure) shownFigure.visible = false;
+    next.visible = true;
+    shownFigure = next;
+    return true;
+  }
+  function clearFigures() {
+    for (const entry of figures.values()) entry.userData.dispose();
+    figures.clear();
+    shownFigure = null;
+  }
+  /** Move the avatar (transform only) and its name tag. */
+  function moveAvatar(x, y, z, ry) {
+    avatar.position.set(x, y, z);
+    avatar.rotation.y = ry;
+    const top = y + (shownFigure?.userData.top ?? 2.95);
+    if (driven && selfTag) { selfTag.position.x = x; selfTag.position.y = top; selfTag.position.z = z; }
+    else selfTag = { id: 'self', name: view.name, kind: 'self', text: view.name, marker: 'crown', colour: '#ffd34d', position: { x, y: top, z } };
+  }
+  function placeMark(mark, x, y, z, visible) {
+    if (!mark) return false;
+    const changed = mark.visible !== visible || (visible && (mark.position.x !== x || mark.position.y !== y || mark.position.z !== z));
+    mark.visible = visible;
+    if (visible) mark.position.set(x, y, z);
+    return changed;
+  }
+  /** The ring under the chosen spot, the lighter ring under a spot the avatar is near, and the tap-to-walk target. */
+  function buildMarks() {
+    const make = (name, draw) => {
+      const batch = createBatch(THREE);
+      draw(batch);
+      const mesh = batch.build(shared.materials).meshes[0];
+      mesh.name = `mark-${name}`; mesh.visible = false;
+      group.add(mesh); markObjects.push(mesh);
+      return mesh;
+    };
+    marks.ring = make('spot', (b) => { b.cyl(0, 0.12, 0, 0.82, 0.1, context.accent, { seg: 16, open: true, ...GLOW }); b.disc(0, 0.115, 0, 0.7, '#fff3c4', { seg: 16, ...GLOW }); });
+    marks.near = make('near', (b) => { b.cyl(0, 0.13, 0, 1.02, 0.06, '#ffffff', { seg: 20, open: true, ...GLOW }); });
+    marks.goal = make('goal', (b) => { b.cyl(0, 0.1, 0, 0.5, 0.05, '#ffffff', { seg: 14, open: true, ...GLOW }); b.disc(0, 0.09, 0, 0.16, '#ffffff', { seg: 10, ...GLOW }); });
+  }
+  /** Put the ring, the pose and — unless the host is walking the avatar itself — the avatar where the state says. */
+  function settle() {
+    const at = rest();
+    placeMark(marks.ring, at.anchor.x, at.anchor.y, at.anchor.z, true);
+    if (driven) return;
+    show(at.pose, at.seat);
+    moveAvatar(at.x, at.y, at.z, at.ry);
+  }
   function buildActors() {
     releaseObjects(actorObjects);
     const batch = createBatch(THREE);
-    const anchor = anchorFor(view.spot) || { x: 0, y: 0, z: 3, ry: 0 };
-    const acting = view.pose === 'busy' && !view.poseFixed && anchor.act ? anchor.act : null;
-    const at = { x: acting?.x ?? anchor.x, y: acting?.y ?? anchor.y, z: acting?.z ?? anchor.z, ry: acting?.ry ?? anchor.ry };
-    const pose = view.poseFixed ? view.pose : acting ? acting.pose || 'work' : view.pose === 'stand' || view.pose === 'walk' ? view.pose : 'work';
-    batch.cyl(anchor.x, anchor.y + 0.12, anchor.z, 0.82, 0.1, context.accent, { seg: 16, open: true, ...GLOW });
-    batch.disc(anchor.x, anchor.y + 0.115, anchor.z, 0.7, '#fff3c4', { seg: 16, ...GLOW });
-    const drawn = drawAvatar(batch, view.look, { ...at, pose, seat: acting?.seat, seed: view.seed, marker: 'crown' });
-    selfTag = { id: 'self', name: view.name, kind: 'self', text: view.name, marker: 'crown', colour: '#ffd34d', position: { x: at.x, y: drawn.top, z: at.z } };
     crowdTags = drawCrowd(batch, placeCrowd(view.crowd));
     const built = batch.build(shared.materials);
     actorTriangles = built.triangles;
@@ -238,20 +358,82 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     sky = skyDome(kit, shared.materials);
     group.add(sky);
     staticObjects.push(sky);
+    buildGrid();
+    group.add(avatar);
+    buildMarks();
+    figure('stand'); figure('walk');
     live = true;
     buildActors();
+    settle();
     applyLighting();
   }
   function release() {
     releaseObjects(staticObjects);
     releaseObjects(actorObjects);
+    releaseObjects(markObjects);
+    marks.ring = null; marks.near = null; marks.goal = null;
+    clearFigures();
+    avatar.parent?.remove(avatar);
     sky = null;
     live = false;
   }
+  /** The player's look changed: every pose figure is rebuilt (never while walking — a look changes in a sheet). */
+  function redress() {
+    if (!live) return;
+    const pose = shownFigure ? [...figures.entries()].find(([, entry]) => entry === shownFigure)?.[0] : null;
+    clearFigures();
+    figure('stand'); figure('walk');
+    if (driven && pose) { const [name, seat] = pose.split(':'); show(name, seat === '' ? undefined : Number(seat)); if (selfTag) selfTag.position.y = avatar.position.y + shownFigure.userData.top; }
+  }
 
-  const refresh = () => { if (live) buildActors(); return true; };
+  const triangleCount = (object) => (object.geometry?.index ? object.geometry.index.count / 3 : 0);
+  /**
+   * WALKING (driven by the host, src/venue-world.js). Until the host calls walk.drive(true) the scene
+   * stands the avatar at its spot by itself, exactly as before; once driven it only reports where
+   * the avatar should be (rest()) and the host moves it there along the floor.
+   */
+  const walk = {
+    get grid() { return grid; },
+    get entrance() { return entrance; },
+    get open() { return (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT).open !== false; },
+    scale: 1,
+    centre: [0, 0.7, 0],
+    avatar,
+    drive(on) { driven = Boolean(on); if (!driven && live) settle(); },
+    rest,
+    /** The spots the server knows, with where they are: [{ id, x, y, z, ry }]. */
+    spots() { return spots.filter((spot) => spot && typeof spot.id === 'string').map((spot) => { const at = anchorFor(spot.id); return { id: spot.id, x: at.x, y: at.y, z: at.z, ry: at.ry }; }); },
+    /** People standing in the scene, for taps: [{ id, kind, x, z, top }]. */
+    people() { return crowdTags.map((tag) => ({ id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y })); },
+    move: moveAvatar,
+    /** Resting pose ('stand', or the activity's pose) — builds that figure if it has not been needed yet. */
+    pose(name, seat) { return show(name || 'stand', seat); },
+    /** The two-frame walk cycle: alternate the walking and the standing figure. No geometry is built. */
+    gait(step) { return show(step ? 'walk' : 'stand'); },
+    /** How high the floor is at a place: raised spots (a stage, a bridge) lift the avatar as it steps on. */
+    heightAt(x, z) {
+      let height = 0;
+      for (const at of raised) {
+        const share = 1 - (Math.hypot(x - at.x, z - at.z) - 0.3) / 1.6;
+        if (share > 0) height = Math.max(height, at.y * Math.min(1, share));
+      }
+      return height;
+    },
+    near(spot) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
+    goal(x, z) { return Number.isFinite(x) ? placeMark(marks.goal, x, 0, z, true) : placeMark(marks.goal, 0, 0, 0, false); },
+  };
+  let raised = [];
+  function findRaised() {
+    raised = [];
+    for (const at of Object.values(resolved.anchors)) {
+      if (at.y > 0.05) raised.push({ x: at.x, y: at.y, z: at.z });
+      if (at.act && (at.act.y ?? at.y) > 0.05) raised.push({ x: at.act.x ?? at.x, y: at.act.y ?? at.y, z: at.act.z ?? at.z });
+    }
+  }
+
+  const refresh = () => { if (live) settle(); return true; };
   const entry = {
-    group, kind, mood,
+    group, kind, mood, walk,
     camera: def.camera || SCENE_CAMERA,
     get background() { return lightingFor(mood, view.time).sky[0]; },
     get anchors() { return resolved.anchors; },
@@ -266,16 +448,17 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     },
     setSpot(id) {
       if (typeof id !== 'string' || id === view.spot) return false;
-      anchorFor(id);
+      anchorFor(id); findRaised();
       view.spot = id;
       return refresh();
     },
     setPlayer({ look, seed, pose, name } = {}) {
-      let changed = false;
-      if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; changed = true; } }
-      if (seed !== undefined && seed !== view.seed) { view.seed = seed; changed = true; }
-      if (name !== undefined && name !== view.name) { view.name = String(name); changed = true; }
+      let changed = false, dressed = false;
+      if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; changed = true; dressed = true; } }
+      if (seed !== undefined && seed !== view.seed) { view.seed = seed; changed = true; dressed = true; }
+      if (name !== undefined && name !== view.name) { view.name = String(name); changed = true; if (selfTag) { selfTag.name = view.name; selfTag.text = view.name; } }
       if (pose !== undefined) { const next = pose || 'stand', fixed = !!pose; if (next !== view.pose || fixed !== view.poseFixed) { view.pose = next; view.poseFixed = fixed; changed = true; } }
+      if (dressed) redress();
       return changed ? refresh() : false;
     },
     setCrowd(people) {
@@ -285,9 +468,10 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     },
     tags: () => (selfTag ? [selfTag, ...crowdTags] : [...crowdTags]),
     stats() {
-      const meshes = group.children.filter((child) => child.isMesh);
+      const meshes = [];
+      group.traverseVisible((child) => { if (child.isMesh) meshes.push(child); });
       return {
-        triangles: live ? staticTriangles + actorTriangles + sky.geometry.index.count / 3 : 0,
+        triangles: live ? meshes.reduce((sum, mesh) => sum + triangleCount(mesh), 0) : 0,
         meshes: meshes.length,
         drawCalls: meshes.length + meshes.filter((mesh) => mesh.castShadow).length,
         lights: group.children.filter((child) => child.isLight).length,
@@ -297,15 +481,15 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     /** Reflect the server state: Lagos time of day, the spot you stand at, your look, and whether you are busy. */
     update(state) {
       if (!state || typeof state !== 'object') return false;
-      let changed = false, actors = false;
+      let changed = false, actors = false, dressed = false;
       if (!view.fixedTime && Number.isFinite(state.t)) {
         const time = timeOfDay(state.t);
         if (time !== view.time) { view.time = time; changed = true; }
       }
       const here = state.location == null || !venue?.id || state.location === venue.id;
-      if (here && typeof state.spot === 'string' && state.spot !== view.spot) { anchorFor(state.spot); view.spot = state.spot; actors = true; }
+      if (here && typeof state.spot === 'string' && state.spot !== view.spot) { anchorFor(state.spot); findRaised(); view.spot = state.spot; actors = true; }
       const look = state.onboarding?.look;
-      if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; actors = true; } }
+      if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; actors = true; dressed = true; } }
       if (typeof state.name === 'string' && state.name && state.name !== view.name) { view.name = state.name; if (selfTag) selfTag = { ...selfTag, name: view.name, text: view.name }; }
       // A running activity uses the spot's own pose (anchor.act); on the way out the avatar is walking.
       if (!view.poseFixed) {
@@ -313,7 +497,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
         const pose = !active ? 'stand' : active.kind === 'travel' || active.kind === 'commute' ? 'walk' : 'busy';
         if (pose !== view.pose) { view.pose = pose; actors = true; }
       }
-      if (live) { if (actors) buildActors(); if (changed) applyLighting(); }
+      if (live) { if (dressed) redress(); if (actors) settle(); if (changed) applyLighting(); }
       return changed || actors;
     },
     dispose() {
@@ -326,6 +510,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   };
   shared.disposers.add(entry.dispose);
   realise();
+  findRaised();
   return entry;
 }
 

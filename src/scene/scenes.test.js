@@ -52,7 +52,8 @@ test('each scene builds within budget with a full crowd, and disposes without le
       assert.ok(entry.group.isGroup && typeof entry.background === 'string' && entry.camera.landscape.length === 3 && entry.camera.portrait.length === 3, kind);
       assert.ok(stats.triangles > 1500, `${kind} has real geometry (${stats.triangles})`);
       assert.ok(stats.triangles < TRIANGLE_BUDGET, `${kind} triangles ${stats.triangles}`);
-      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= 8, `${kind} draw calls ${stats.drawCalls}`);
+      // Static (≤ 3) + sky + crowd (≤ 2) + the player's own figure (≤ 2) + the spot ring; the two walking marks add at most 2 more.
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= 9, `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
       assert.ok(stats.lights <= 4, `${kind} lights ${stats.lights}`);
       assert.equal(tags.length, MAX_CROWD, kind);
       for (const mesh of entry.group.children.filter((child) => child.isMesh)) {
@@ -346,7 +347,7 @@ test('a scene crowd is capped, placed and tagged; the player carries the crown',
   assert.equal(entry.tags()[0].text, 'Kromate');
   assert.equal(entry.setPlayer({ pose: 'wave' }), true);
   assert.deepEqual(entry.setCrowd([]), []);
-  assert.equal(entry.stats().meshes <= 6, true);
+  assert.equal(entry.stats().meshes <= 7, true);
   kit.dispose();
 });
 

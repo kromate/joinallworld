@@ -15,6 +15,11 @@
  *     .ph-shade            the notification list (every recent Update, each a deep link into its app)
  *     .ph-app              app bar (the app's colour, back to home, expand) + the scrolling app body
  *
+ * BESIDE THIS FILE
+ *   how.js / how.css   the "How it works" disclosure every app folds its longer rules behind
+ *   reports.js         the Report a problem badge (one look at the server when the phone opens)
+ *   logic.js           the pure decisions behind the badges, the disclosure and Groceries' Buy 1 pack
+ *
  * WHAT A PANEL CAN ADD (all optional, all static so they work before a lazy group has loaded)
  *   group: 'life' | 'money' | 'people' | 'city'   where its icon sits on the home screen
  *   tint:  '#rrggbb'                               its icon / app bar colour (default: TINTS[id])

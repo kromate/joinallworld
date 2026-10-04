@@ -641,6 +641,13 @@ export interface ContextCore {
   actionOnce(session: SessionRecord, body: ActionRequest | ActBody, run: () => ActionOutcome, options?: { authority?: string }): ActionOutcome | { ok: boolean; code: string; duplicate: true }
   storageFailing(): boolean
   log(line: string): void
+  /** True on a host that forgets what is in memory when nothing is pending (the Worker): a module that must not lose a seat keeps a timer going. Absent on Node. */
+  hibernates?: boolean
+  /**
+   * Venue-chat retry receipts kept by a host whose memory does not last (the Worker): the Map-like history of this sender in
+   * this room. Absent on Node, where ws/rooms.js keeps them in memory.
+   */
+  chatHistory?(ws: WsConnection, body: string): { has(id: string): boolean; get(id: string): unknown; set(id: string, chat: unknown): void; delete(id: string): void; keys(): Iterable<string>; readonly size: number }
   /** Kept here so the weakly-held life watcher lives as long as the server (set by rooms.js). */
   lifeWatcher?: (publicId: string, cityId: CityId, state: LifeState) => void
   // The four room lifecycle functions. The socket registry replaces the host's no-op defaults.
@@ -692,11 +699,13 @@ export interface RouteContext {
   closing?: (() => Promise<void>)[]
   /** Path prefix → page. Absent on a host that does not serve pages. */
   pages?: Map<string, PageHandler>
-  /** One of the outreach settings on the host's allowlist (server.js OUTREACH_ENV), or '' — nothing else of the environment is reachable. */
+  /** Work that outlives the request that started it: a host that could stop between requests (the Worker) keeps itself up for it; Node does nothing. */
+  waitUntil?(promise: Promise<unknown>): void
+  /** One of the outreach settings on the host's allowlist (host-context.js OUTREACH_ENV), or '' — nothing else of the environment is reachable. */
   env(name: string): string
   /** An outside request for server/growth/outreach.js: https only, never follows a redirect, cut off after 15 s. */
   fetch(url: string, init?: object): Promise<unknown>
-  /** A secret this server makes for itself (signing key, push keys), kept in DATA_DIR/keys with mode 0600. */
+  /** A secret this server makes for itself (signing key, push keys): DATA_DIR/keys with mode 0600 on Node, the Durable Object's own storage on the Worker. */
   keyFile<T extends object>(name: string, make: () => T | Promise<T>): Promise<T>
   /** Null on a host started without the shard store: the world routes then answer 503 `world_unavailable`. */
   shards: ShardStore | null
@@ -769,13 +778,17 @@ export interface WsHandlers {
   /** A socket connected (already authenticated). */
   open?(ws: WsConnection): void
   close?(ws: WsConnection): void
+  /** A host that lost its memory while the socket stayed connected hands it back with the fields it carried: rejoin your registries, announce nothing. Node never calls it. */
+  restore?(ws: WsConnection): void
   lifecycle?: WsLifecycle
 }
 /** A ws module's default export. */
 export type WsHandlerModule = (ctx: RouteContext) => WsHandlers | void
 /** What buildSocketHandlers() returns. */
 export interface WsDispatch {
-  messages: Map<string, { room: boolean; handle: WsMessageHandler }>
+  messages: Map<string, { room: boolean; handle: WsMessageHandler   /** Hand a still-connected socket back to every module after the host lost its memory (Worker only). */
+  restore(ws: WsConnection): void
+}>
   open(ws: WsConnection): void
   close(ws: WsConnection): void
 }

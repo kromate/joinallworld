@@ -349,7 +349,8 @@ export class JoinAllworldState extends DurableObject {
     const [prefix, render] = found, began = performance.now(), key = `${prefix}*`;
     try {
       const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
-      if (!this.allow(`http-ip:${ip}`, 600)) throw protocolError(429, 'rate_limited');
+      // Pages have a budget of their own, so a crawler reading link previews cannot use up an address's API allowance.
+      if (!this.allow(`page-ip:${ip}`, 600)) throw protocolError(429, 'rate_limited');
       // A POST to a page carries no body the page may read (the one use is an unsubscribe link: RFC 8058 posts a fixed form).
       if (raw.method === 'POST') { try { await raw.body?.cancel(); } catch { /* nothing to drain */ } }
       const page = await render({ path: url.pathname, query: url.searchParams, origin: publicOrigin(this.env, url), ip, method: raw.method });

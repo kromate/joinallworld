@@ -305,17 +305,21 @@ function closePlaybackContext() {
       else appendChat(message);
     } else if (message.type === 'signal') receiveSignal(message);
     else if (message.type === 'error') {
-      if ((message.error || message.code) === 'venue_mismatch') {
+      const refusal = message.error || message.code;
+      // The server refused a Home room this socket asked for: whatever else is true, no microphone stays open on a refusal.
+      if (refusal === 'not_a_guest') leaveVoice(false);
+      // The room is gone for this socket — the life left the venue, or a house visit ended: voice stops with it.
+      if (refusal === 'venue_mismatch' || refusal === 'visit_ended') {
         roomRevoked = true; roomReady = false; members = []; rejectedPeers.clear();
         clearTimeout(reconnectTimer); reconnectTimer = null; el.retry.hidden = true;
         leaveVoice(false); renderMembers();
         for (const pendingMessage of pending.values()) {
-          pendingMessage.status.textContent = 'Not sent: you moved to another place';
+          pendingMessage.status.textContent = refusal === 'visit_ended' ? 'Not sent: the visit ended' : 'Not sent: you moved to another place';
           pendingMessage.retry?.remove();
         }
         pending.clear(); el.compose.querySelector('input').disabled = true; el.compose.querySelector('button').disabled = true;
         el.connection.textContent = 'Room changed';
-        feedback('You moved to another place. Return to the game to reconnect here.');
+        feedback(refusal === 'visit_ended' ? 'The visit has ended.' : 'You moved to another place. Return to the game to reconnect here.');
         return;
       }
       const rejected = pending.get(message.clientId);

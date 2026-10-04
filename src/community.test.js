@@ -230,3 +230,11 @@ test('positions: the game moves the avatar, the room reports everyone back, and 
   assert.ok(ws.sent.every((message)=>message.type!=='voice-state'||message.enabled===false),'and never enable voice');
   api.destroy();assert.deepEqual(seen.at(-1),{self:'a',members:[]});api=null;
 });
+
+test('a visit that ended, or a Home room that was refused, never leaves voice on', async () => {
+  // The behaviour itself is exercised with a mocked socket by the audit's guest-client probe (venue_mismatch, visit_ended,
+  // not_a_guest); this keeps the two rules from being edited away.
+  const source = await readFile(new URL('./community.js', import.meta.url), 'utf8');
+  assert.match(source, /if \(refusal === 'not_a_guest'\) leaveVoice\(false\);/);
+  assert.match(source, /if \(refusal === 'venue_mismatch' \|\| refusal === 'visit_ended'\) \{\s*roomRevoked = true; roomReady = false;[^\n]*\n[^\n]*\n\s*leaveVoice\(false\);/);
+});

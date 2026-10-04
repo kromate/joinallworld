@@ -1,0 +1,141 @@
+/*
+ * THE CONTROL KIT. One set of form controls, buttons and layout pieces for every sheet, panel and
+ * Phone app, so a field in the Bank looks and behaves like a field in the local-government sheet.
+ * Values come from tokens.css. Panels use these classes (and plain <input>/<select>/<textarea>,
+ * which are styled here too) instead of their own paddings, borders and margins.
+ *
+ * SIZES     a control is 48px tall on touch, 44px with a mouse (--control-h); radius --r-sm; one
+ *           border colour; the focus ring shows on KEYBOARD focus only (:focus-visible).
+ * CONTROLS  text input · .ui-search (a field and its button as one unit) · textarea · select
+ *           (.ui-select: a button and a listbox popover, built by src/ui/controls.js from a native
+ *           <select>; on a small touch screen the native picker is kept, styled the same) ·
+ *           .ui-seg (segmented) · .ui-switch · .ui-check (checkbox / radio) · .ui-cards (radio
+ *           cards) · .ui-stepper · input[type=range]
+ * FIELD     .ui-labelled = label, control, then .ui-help or .ui-why (the reason, when it is wrong or
+ *           disabled); [aria-invalid=true] marks the control.
+ * BUTTONS   one primary per view (.is-primary) · secondary (plain .ui-button) · quiet (.is-quiet:
+ *           text and an icon, no fill) · destructive (.is-danger) · icon (.is-icon). Sizes:
+ *           .is-small, default, .is-large. .is-block = full width. Never three full-width buttons
+ *           stacked: use .ui-actions, where the primary takes the row and the others sit inline.
+ *           .is-loading shows a spinner and blocks a second press.
+ * LAYOUT    gaps come from the container, never from margins on the children:
+ *           .ui-stack (vertical; --gap, default 12) · .ui-cluster (inline, wraps; --gap 8) ·
+ *           .ui-grid (equal columns; --min 120px) · .ui-tiles (stat blocks) · .ui-section (the one
+ *           section-heading style) · paddings: sheet --pad-sheet, card --pad-card, row --pad-row.
+ */
+:root{
+  --control-h:48px;--control-border:#c5cec8;--control-bg:#fff;
+  --pad-sheet:20px;--pad-card:16px;--pad-row:12px 14px;--gap-section:24px;
+}
+@media(pointer:fine){:root{--control-h:44px}}
+
+/* ---- layout ---------------------------------------------------------------------------- */
+.ui-stack{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap,12px);align-content:start}
+.ui-stack>*,.ui-cluster>*,.ui-grid>*{margin:0!important}
+.ui-stack.is-tight{--gap:8px}.ui-stack.is-loose{--gap:20px}
+.ui-cluster{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gap,8px)}
+.ui-cluster.is-end{justify-content:flex-end}.ui-cluster.is-between{justify-content:space-between}
+.ui-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--min,120px),1fr));gap:var(--gap,8px)}
+.ui-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.ui-tiles>li{display:grid;gap:2px;padding:12px 10px;border-radius:var(--r-sm);background:var(--c-fill);text-align:center}
+.ui-tiles b{font-size:18px;line-height:1.2;font-variant-numeric:tabular-nums}
+.ui-tiles small{font-size:12px;color:var(--c-muted)}
+.ui-panel{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:var(--pad-card);border:1px solid var(--c-line);border-radius:var(--r-md);background:#fff}
+.ui-panel>*{margin:0!important}
+.ui-panel>h3{font-size:var(--t-lead)}
+
+/* ---- text: 14px body with room to breathe ------------------------------------------------ */
+#life-dialog-content{font-size:14px;line-height:1.5}
+#life-dialog-content:focus{outline:none}
+.sheet-body p{line-height:1.5}
+.ui-note{font-size:13px!important;line-height:1.5!important}
+.ui-why{font-size:13px!important}
+.ui-hero>p{font-size:14px!important;line-height:1.5!important}
+.ui-hero{padding:18px 20px!important;gap:4px!important}
+
+/* ---- fields ------------------------------------------------------------------------------ */
+.ui-labelled{display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--c-ink);margin:0}
+.ui-labelled>span:first-child,.ui-labelled>label{font:inherit}
+.ui-help{font-size:12px;font-weight:400;line-height:1.45;color:var(--c-muted);margin:0}
+#life-dialog input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),#life-dialog select,#life-dialog textarea,
+.life-ui input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.life-ui select,.life-ui textarea,
+#community-panel input:not([type=checkbox]):not([type=radio]):not([type=range]),#community-panel select,#community-panel textarea,.ui-select{
+  box-sizing:border-box;width:100%;min-height:var(--control-h);padding:0 14px;border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:var(--control-bg);color:var(--c-ink);font:500 15px/1.3 var(--font);outline:none;transition:border-color var(--m-fast) ease-out,box-shadow var(--m-fast) ease-out;-webkit-appearance:none;appearance:none}
+#life-dialog textarea,.life-ui textarea,#community-panel textarea{padding:12px 14px;min-height:96px;line-height:1.45;resize:vertical}
+#life-dialog select,.life-ui select,#community-panel select{padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2339404b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:20px}
+#life-dialog input::placeholder,#life-dialog textarea::placeholder,.life-ui input::placeholder{color:var(--c-faint);font-weight:400}
+#life-dialog input:hover:not(:disabled),#life-dialog select:hover:not(:disabled),#life-dialog textarea:hover:not(:disabled),.ui-select:hover:not(:disabled){border-color:#9aa6a0}
+#life-dialog input:focus,#life-dialog select:focus,#life-dialog textarea:focus,.life-ui input:focus,.life-ui select:focus,#community-panel input:focus,#community-panel textarea:focus,.ui-select:focus-visible,.ui-select[aria-expanded=true]{border-color:var(--c-green-dark);box-shadow:0 0 0 3px #1d6b4326}
+#life-dialog input:disabled,#life-dialog select:disabled,#life-dialog textarea:disabled,.ui-select:disabled{background:var(--c-fill);color:var(--c-muted);cursor:not-allowed}
+[aria-invalid=true]{border-color:var(--c-critical)!important;box-shadow:0 0 0 3px #b3402a22!important}
+
+/* Search: the field and its button are one control */
+.ui-search{display:flex;align-items:stretch;min-height:var(--control-h);border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:var(--control-bg);overflow:hidden;transition:border-color var(--m-fast) ease-out,box-shadow var(--m-fast) ease-out}
+.ui-search:focus-within{border-color:var(--c-green-dark);box-shadow:0 0 0 3px #1d6b4326}
+#life-dialog .ui-search input,.life-ui .ui-search input{flex:1;min-width:0;min-height:0;border:0!important;border-radius:0;box-shadow:none!important;background:none}
+.ui-search button{flex:none;display:inline-flex;align-items:center;gap:6px;padding:0 16px;border:0;border-left:1.5px solid var(--c-line);background:var(--c-fill);color:var(--c-ink);font:600 14px var(--font);cursor:pointer}
+.ui-search button:hover{background:var(--c-fill-2)}
+
+/* The older search forms (a field and a Find button side by side) are the same one-unit control. */
+.social-form.is-search{align-items:stretch;gap:0;min-height:var(--control-h);border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:var(--control-bg);overflow:hidden}
+.social-form.is-search:focus-within{border-color:var(--c-green-dark);box-shadow:0 0 0 3px #1d6b4326}
+#life-dialog .social-form.is-search input{border:0!important;border-radius:0;box-shadow:none!important;background:none;min-height:0}
+.social-form.is-search .social-btn{border-radius:0;border-left:1.5px solid var(--c-line);min-height:0;padding:0 18px}
+/* Any label that wraps a field is laid out the same way: the words, a small gap, the control. */
+#life-dialog label:has(>input:not([type=checkbox]):not([type=radio])),#life-dialog label:has(>select),#life-dialog label:has(>textarea){display:grid;gap:6px;font-size:13px;font-weight:600;line-height:1.35}
+
+/* Select: a button that opens a listbox (src/ui/controls.js) */
+.ui-select{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;cursor:pointer}
+.ui-select>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ui-select.is-empty>span{color:var(--c-faint);font-weight:400}
+.ui-select svg{flex:none;width:20px;height:20px;color:var(--c-ink-2);transition:transform var(--m-fast) ease-out}
+.ui-select[aria-expanded=true] svg{transform:rotate(180deg)}
+.ui-select-native{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;border:0!important;opacity:0;pointer-events:none}
+.ui-listbox{position:fixed;z-index:60;box-sizing:border-box;margin:0;padding:6px;list-style:none;max-height:min(320px,46dvh);overflow-y:auto;overscroll-behavior:contain;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-3),0 0 0 1px var(--c-line);font:500 15px/1.3 var(--font);color:var(--c-ink);animation:ui-listbox-in var(--m-fast) var(--ease-out)}
+.ui-listbox li{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:0 12px;border-radius:10px;cursor:pointer}
+.ui-listbox li[aria-selected=true]{font-weight:700;color:var(--c-green-dark)}
+.ui-listbox li[aria-selected=true]::after{content:'';flex:none;width:7px;height:12px;margin-right:4px;border:solid var(--c-green-dark);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translateY(-2px)}
+.ui-listbox li.is-active{background:var(--c-green-soft)}
+.ui-listbox li[aria-disabled=true]{color:var(--c-faint);cursor:not-allowed}
+@keyframes ui-listbox-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+/* Checkbox, radio, radio cards, stepper, slider */
+.ui-check{display:flex;align-items:flex-start;gap:10px;min-height:var(--tap);padding:10px 0;font-size:14px;font-weight:500;cursor:pointer}
+.ui-check input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--c-green-dark)}
+.ui-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.ui-cards>label,.ui-cards>button{display:grid;gap:2px;align-content:start;min-height:var(--control-h);padding:12px 14px;border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:#fff;font:600 14px var(--font);color:var(--c-ink);text-align:left;cursor:pointer}
+.ui-cards small{font-size:12px;font-weight:400;color:var(--c-muted)}
+.ui-cards>:has(input:checked),.ui-cards>[aria-pressed=true],.ui-cards>[aria-checked=true]{border-color:var(--c-green-dark);background:var(--c-green-soft);box-shadow:0 0 0 1px var(--c-green-dark)}
+.ui-cards input{position:absolute;opacity:0;pointer-events:none}
+.ui-stepper{display:inline-flex;align-items:stretch;min-height:var(--control-h);border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:#fff;overflow:hidden}
+.ui-stepper button{flex:none;width:var(--control-h);border:0;background:var(--c-fill);color:var(--c-ink);font:700 20px/1 var(--font);cursor:pointer}
+.ui-stepper output,.ui-stepper b{display:grid;place-items:center;min-width:56px;padding:0 10px;font:700 15px var(--font);font-variant-numeric:tabular-nums}
+#life-dialog input[type=range],.life-ui input[type=range]{width:100%;height:var(--tap);margin:0;background:none;accent-color:var(--c-green-dark)}
+
+/* ---- buttons ----------------------------------------------------------------------------- */
+.ui-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--control-h);padding:0 20px;font:600 14px/1.2 var(--font);text-align:center;text-decoration:none;white-space:nowrap}
+.ui-button.is-block{display:flex}
+.ui-button.is-small{min-height:36px;padding:0 14px;font-size:13px}
+.ui-button.is-large{min-height:54px;padding:0 26px;font-size:16px}
+.ui-button.is-primary{box-shadow:0 1px 2px #0d2b1c33}
+.ui-button.is-quiet{background:none;color:var(--c-green-dark);padding:0 12px}
+.ui-button.is-quiet:hover:enabled{background:var(--c-green-soft);filter:none}
+.ui-button.is-icon{width:var(--control-h);padding:0;border-radius:50%}
+.ui-button svg{width:18px;height:18px;flex:none}
+.ui-button.is-loading{position:relative;color:transparent!important;pointer-events:none}
+.ui-button.is-loading::after{content:'';position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px;border-radius:50%;border:2.5px solid #ffffff66;border-top-color:#fff;animation:ui-spin .7s linear infinite}
+.ui-button:not(.is-primary).is-loading::after{border-color:#1b1f2733;border-top-color:var(--c-ink)}
+@keyframes ui-spin{to{transform:rotate(1turn)}}
+/* The actions of a view: the primary takes the full row; the others share the row beneath it. */
+.ui-actions{display:flex;flex-wrap:wrap;gap:8px}
+.ui-actions>.ui-button{flex:1 1 140px}
+.ui-actions>.ui-button.is-primary{flex-basis:100%}
+.ui-actions>.ui-button.is-quiet{flex:0 0 auto}
+/* A button, a link, a tab: the ring is for the keyboard. A sheet opened with the mouse shows none at rest. */
+#life-dialog :focus:not(:focus-visible),.life-ui :focus:not(:focus-visible){outline:none}
+
+/* ---- section heading: one style everywhere ------------------------------------------------ */
+.ui-section{margin:var(--gap-section) 2px 10px!important;font-size:12px!important}
+.sheet-body>.ui-section:first-child{margin-top:8px!important}
+
+@media(prefers-reduced-motion:reduce){.ui-listbox{animation:none}.ui-button.is-loading::after{animation-duration:1.6s}}

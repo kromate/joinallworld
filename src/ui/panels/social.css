@@ -16,7 +16,8 @@
 .social-row small{color:var(--c-muted);font-size:12px}
 .social-row.is-ask{flex-wrap:wrap}
 .social-row.is-ask .social-actions{flex:1 1 100%!important;padding-left:52px}
-.social-row.is-ask .social-btn{flex:1}
+.social-row.is-ask /* .social-btn is the kit's secondary button (controls.css) under an older name */
+.social-btn{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-pill);padding:0 16px;min-height:var(--tap);font:600 14px var(--font);cursor:pointer}
 button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);background:none;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:52px}
 .social-avatar{flex:none;width:40px;height:40px;border-radius:var(--r-round);background:var(--c-fill);display:grid;place-items:center;font-size:21px;position:relative}
 .social-avatar.is-big{width:46px;height:46px;font-size:25px}
@@ -43,10 +44,10 @@ button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);back
 .social-act strong{display:block;font-size:13px}.social-act small{color:var(--c-muted);font-size:11px}
 .social-act:disabled{cursor:not-allowed;background:var(--c-fill)}.social-act:disabled strong{opacity:.55}
 .social-quote{font-style:italic;color:var(--c-muted);margin:6px 0}
-.social-form{display:flex;gap:6px;margin:8px 0}.social-form input,.social-form select,.social-field{flex:1;min-width:0;font:inherit;font-size:14px;padding:10px 14px;border:1px solid #cfd5d1;border-radius:var(--r-sm);min-height:var(--tap);box-sizing:border-box;background:#fff}
+.social-form{display:flex;gap:6px;margin:8px 0}.social-form input,.social-form select,.social-field{flex:1;min-width:0}
 .social-form.is-search{margin:0 0 var(--s-2)}
-.social-form.is-search input{border-radius:var(--r-pill);border-color:transparent;background:var(--c-fill-2)}
-.ph-appbody .social-form.is-search input{background:#fff;box-shadow:var(--ring)}
+
+
 .social-field{width:100%;margin:4px 0}
 .social-head{display:flex;align-items:center;gap:8px}.social-head h3{flex:1;margin:var(--s-3) 4px var(--s-2)!important;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .social-head .social-btn{padding:6px 14px;font-size:12px}

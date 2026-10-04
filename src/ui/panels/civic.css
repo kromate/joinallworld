@@ -38,8 +38,8 @@
 .civic-tabs button[aria-pressed=true]{background:var(--c-ink);color:#fff}
 .civic-form{display:grid;gap:var(--s-3);margin:var(--s-2) 0}
 .civic-form.is-card{padding:var(--s-3) var(--s-4) var(--s-4);border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring)}
-.civic-form label{display:grid;gap:5px;font-size:12px;font-weight:600;margin:0!important}
-.civic-form input,.civic-form textarea,.civic-form select{font:inherit;font-weight:400;font-size:14px;padding:10px 12px;border:1px solid #cfd5d1;border-radius:var(--r-sm);width:100%;box-sizing:border-box;min-height:var(--tap);background:#fff}
+.civic-form label{display:grid;gap:6px;font-size:13px;font-weight:600;margin:0!important}
+/* the fields themselves are the kit's (controls.css) */
 .civic-form .civic-note{display:block;margin:0 0 5px!important;font-weight:600;color:var(--c-ink)}
 .civic-checks{list-style:none;padding:0;margin:var(--s-1) 0 var(--s-2);display:grid;gap:6px}
 .civic-checks li{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:var(--r-sm);background:var(--c-fill)}

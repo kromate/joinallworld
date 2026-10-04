@@ -148,6 +148,7 @@
  */
 import './tokens.css';
 import './shell.css';
+import './controls.css';
 import { esc, money, cap, icon, json, skeleton, mark, iconFor, withGlyphs, stripLeadEmoji } from './dom.js';
 import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.js';
 import { glyph, glyphFor, hasGlyph, onGlyphs } from './phone/icons.js';
@@ -358,7 +359,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     html.delete(dialogContent);
     renderSheet();
     if (state) renderCoach();
-    if (!dialog.open) { dialog.showModal(); phone.focus(); }
+    // A sheet opens with focus on its body (so the keyboard scrolls it and a screen reader starts at its title), not on the
+    // close button — which is what drew a heavy ring around it at rest.
+    if (!dialog.open) { dialog.showModal(); phone.focus(); if (sheet?.kind !== 'phone') { dialogContent.tabIndex = -1; dialogContent.focus({ preventScroll: true }); } }
     // A different screen starts at its top; a form that redraws itself by re-opening keeps its place.
     if (sheetKey() !== before) dialogContent.scrollTop = 0;
     mountToasts();
@@ -409,12 +412,22 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     try { return panel.render(state, panelView(params), api) ?? ''; }
     catch (error) { console.error(`Panel ${panel.id} failed to render:`, error); return '<p class="ui-error">This screen could not be shown.</p>'; }
   }
+  /**
+   * The control kit's select (src/ui/controls.js, fetched the first time a sheet has one): every native <select> a panel
+   * draws becomes the game's own listbox; the native element stays, hidden, as the value. Runs after each (re)draw.
+   */
+  let kit = null;
+  function dress(container) {
+    if (kit) kit.enhanceSelects(container);
+    else if (container.querySelector('select')) import('./controls.js').then((module) => { kit = module; kit.enhanceSelects(dialogContent); kit.enhanceSelects(root); }, () => {});
+  }
   function bindPanels(container, params) {
     for (const node of container.querySelectorAll('[data-panel]')) {
       const panel = byId.get(node.dataset.panel);
       if (!panel || panel.pending) continue;
       try { panel.bind?.(node, api, params ?? null); } catch (error) { console.error(`Panel ${node.dataset.panel} failed to bind:`, error); }
     }
+    dress(container);
   }
 
   const sheetHead = (title, { back = false, extra = '' } = {}) => `<header class="sheet-head">${back ? `<button class="sheet-back" data-open="phone" aria-label="Back to phone">${icon('back')}</button>` : ''}${extra}<h2>${title}</h2></header>`;

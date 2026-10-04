@@ -21,7 +21,7 @@
  * `{ lga, via: 'device' }` and nothing else. The player always confirms the answer before it is sent.
  */
 import './world.css';
-import { esc, money } from '../dom.js';
+import { mark, esc, money } from '../dom.js';
 import { linkWords } from '../link.js';
 import { loadCityPack, hasCityPack } from '../../map3d/regions.js';
 import { resolveLga } from '../../map3d/lga.js';
@@ -45,18 +45,19 @@ export function renderLgaCard(state, view, { heading = 'Where you live', compact
   const offline = view.connected ? '' : `${linkWords(view).short} — this needs the server`;
   const current = e.placed && e.lga ? e.lga : null, guess = !e.placed && !e.lgaConfirmed && e.lga ? e.lga : null;
   const blocked = current && e.change.blocked ? e.change.blocked : '';
-  const list = ui.picking || (!current && !ui.found) ? `<label class="world-field">Choose from the ${e.lgas.length} local governments of ${esc(e.cityName)}
-      <select data-lga-pick ${offline || blocked ? 'disabled' : ''}><option value="">Choose…</option>${e.lgas.map((item) => `<option value="${esc(item.id)}" ${item.id === (ui.found?.id ?? guess?.id) ? 'selected' : ''}>${esc(item.name)}${current && item.levy ? ` · ${money(item.levy)} to move your house` : ''}</option>`).join('')}</select></label>
-      <button type="button" class="ui-button is-primary is-block" data-lga-send="manual" ${offline || blocked || ui.sending ? 'disabled' : ''}>${ui.sending ? 'Saving…' : current ? 'Move here' : 'This is my local government'}</button>` : '';
+  const list = ui.picking || (!current && !ui.found) ? `<label class="ui-labelled"><span>Choose from the ${e.lgas.length} local governments of ${esc(e.cityName)}</span>
+      <select data-lga-pick aria-label="Local government" ${offline || blocked ? 'disabled' : ''}><option value="">Choose…</option>${e.lgas.map((item) => `<option value="${esc(item.id)}" ${item.id === (ui.found?.id ?? guess?.id) ? 'selected' : ''}>${esc(item.name)}${current && item.levy ? ` · ${money(item.levy)} to move your house` : ''}</option>`).join('')}</select></label>
+      <button type="button" class="ui-button is-primary is-block${ui.sending ? ' is-loading' : ''}" data-lga-send="manual" ${offline || blocked || ui.sending ? 'disabled' : ''}>${ui.sending ? 'Saving…' : current ? 'Move here' : 'This is my local government'}</button>` : '';
   const found = ui.found ? `<div class="world-found" role="status"><p>${ui.found.sure ? 'You are in' : 'Nearest to you is'} <b>${esc(ui.found.name)}</b>. Is that right?</p>
-      <div class="world-row"><button type="button" class="ui-button is-primary" data-lga-send="device" ${offline || blocked || ui.sending ? 'disabled' : ''}>${ui.sending ? 'Saving…' : `Yes, ${esc(ui.found.name)}`}</button><button type="button" class="ui-button" data-lga-list>No, let me pick</button></div></div>` : '';
+      <div class="ui-actions"><button type="button" class="ui-button is-primary" data-lga-send="device" ${offline || blocked || ui.sending ? 'disabled' : ''}>${ui.sending ? 'Saving…' : `Yes, ${esc(ui.found.name)}`}</button><button type="button" class="ui-button" data-lga-list>No, let me pick</button></div></div>` : '';
   const head = current
     ? `<p class="world-now"><b>${esc(current.name)}</b><small>${esc(current.line)}</small></p>${e.plot ? `<p class="ui-note">Your house: ${esc(e.plot.address)}</p>` : '<p class="ui-note">Your plot is being set aside…</p>'}`
     : `<p class="ui-note">Pick your local government and a starter house on your own plot there is yours, free. ${guess ? `Your home is in ${esc(guess.name)}.` : ''}</p>`;
   const actions = current && !ui.picking && !ui.found
-    ? `<div class="world-row"><button type="button" class="ui-button" data-lga-list ${blocked ? 'disabled' : ''}>Change</button><button type="button" class="ui-button" data-lga-find ${blocked || ui.finding ? 'disabled' : ''}>${ui.finding ? 'Finding…' : 'Find my local government'}</button></div>${blocked ? `<p class="ui-why">${esc(blocked)}</p>` : `<p class="ui-note">You can change once every ${e.change.cooldownDays} days. Your house moves with you.</p>`}`
-    : !ui.found ? `<button type="button" class="ui-button is-block" data-lga-find ${ui.finding ? 'disabled' : ''}>${ui.finding ? 'Finding…' : 'Find my local government'}</button><p class="ui-note">Worked out on this device. Your position is never sent or stored — only the local government you confirm.</p>` : '';
-  return `<section class="world-card${compact ? ' is-compact' : ''}" data-lga-card><h3>${esc(heading)}</h3>${head}${found}${actions}${list}${ui.note ? `<p class="ui-why" role="status">${esc(ui.note)}</p>` : ''}${offline ? `<p class="ui-why">${esc(offline)}</p>` : ''}</section>`;
+    ? `<div class="ui-actions"><button type="button" class="ui-button" data-lga-list ${blocked ? 'disabled' : ''}>Change</button><button type="button" class="ui-button is-quiet" data-lga-find ${blocked || ui.finding ? 'disabled' : ''}>${ui.finding ? 'Finding…' : 'Find my local government'}</button></div>${blocked ? `<p class="ui-why">${esc(blocked)}</p>` : `<p class="ui-note">You can change once every ${e.change.cooldownDays} days. Your house moves with you.</p>`}`
+    : !ui.found ? `<div class="ui-cluster is-between"><button type="button" class="ui-button is-quiet" data-lga-find ${ui.finding ? 'disabled' : ''}>${mark('compass')}<span>${ui.finding ? 'Finding…' : 'Find it for me'}</span></button></div><p class="ui-help">Worked out on this device. Your position is never sent or stored — only the local government you confirm.</p>` : '';
+  // One primary per view: the list and "This is my local government" lead; finding it by device is the quiet way underneath.
+  return `<section class="ui-panel" data-lga-card><h3>${esc(heading)}</h3>${head}${found}${current ? `${actions}${list}` : `${list}${actions}`}${ui.note ? `<p class="ui-why" role="status">${esc(ui.note)}</p>` : ''}${offline ? `<p class="ui-why">${esc(offline)}</p>` : ''}</section>`;
 }
 
 export function bindLgaCard(root, api, { onChosen = () => {}, redraw = () => api.refresh() } = {}) {

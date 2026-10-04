@@ -463,7 +463,7 @@ if (new URLSearchParams(location.search).has('diagnostics')) {
   const output = document.createElement('pre'); output.id = 'render-diagnostics';
   button.onclick = () => { output.textContent = JSON.stringify({ ...(venue ? venue.diagnostics() : { renderCount: 0, scene: 'not loaded yet' }), map: cityMap ? cityMap.diagnostics() : 'not loaded yet', visibility: document.visibilityState, lazyPanelsWaiting: PANELS.filter((item) => item.pending).map((item) => item.id) }, null, 2); };
   // For the same diagnostics from a test harness: the map, the client and the shell mode.
-  window.__jaw = { get map() { return cityMap; }, get client() { return client; }, get mode() { return shell.mode; }, get venue() { return venue; } };
+  window.__jaw = { get map() { return cityMap; }, get client() { return client; }, get mode() { return shell.mode; }, get venue() { return venue; }, get shell() { return shell; } };
   panel.append(button, output); document.body.append(panel);
 }
 

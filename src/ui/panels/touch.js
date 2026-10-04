@@ -11,7 +11,7 @@ import { esc } from '../dom.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { linkWords } from '../link.js';
 import { EMAIL_CONSENT, PUSH_CONSENT } from '../../game/outreach.js';
-import { G, load, call, track } from './growth-client.js';
+import { G, load, call, track, announceAge } from './growth-client.js';
 
 const ui = { busy: null, email: '', tick: false, pushAsk: false, note: null };
 const push = () => import('../push-client.js');
@@ -22,6 +22,8 @@ async function saveAge(api, age) {
   const result = await call('/api/growth/consent', { age });
   ui.busy = null;
   if (result.consent && G.hello) G.hello.consent = result.consent;
+  // The one stored answer is announced: analytics follows it (under 18 → off) as e-mail and push do.
+  announceAge(result.consent?.age);
   if (!result.ok && result.code !== 'under_18') api.toast(result.reason || 'That could not be saved.', 'error');
   api.refresh();
 }

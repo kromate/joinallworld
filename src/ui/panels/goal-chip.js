@@ -51,7 +51,8 @@ export default [
         // One timer, once: the reward toast is read first, and the offer never lands on top of another sheet.
         setTimeout(() => {
           nudging = false;
-          const now = api.view(), still = now.onboarding?.guest && !api.state().activeAction && !document.getElementById('life-dialog')?.open;
+          // …nor on top of any other sheet (the analytics question is its own dialog).
+          const now = api.view(), still = now.onboarding?.guest && !api.state().activeAction && !document.querySelector('dialog[open]');
           if (!still) return; // asked again at the next change
           keepNudges(who, nudged(nudgesOf(who), reason, day));
           api.open('onboarding', { nudge: reason });

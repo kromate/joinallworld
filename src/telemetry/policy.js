@@ -18,7 +18,8 @@
  * @property {string} [release]        BUILD_ID
  * @property {boolean} [debug]         TELEMETRY_DEBUG=1: also run on localhost
  * @property {{ dsn: string, replayOnError?: boolean } | null} [sentry]
- * @property {{ key: string, host: string, consentAt?: 'landing' | 'named' } | null} [posthog]
+ * @property {{ key: string, host: string, consentAt?: 'landing' | 'reward' } | null} [posthog]
+ * @property {boolean} [under18]   the caller's stored age answer is "under 18": analytics is off for them, whatever was chosen
  */
 
 /** localhost, loopback, private and link-local addresses, and the usual development suffixes. */

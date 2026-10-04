@@ -8,6 +8,12 @@
  * here can still be sent with `jaw:track` — it then passes the generic scrubber (ids, codes,
  * numbers and booleans only) — but add it here so its properties are checked by name.
  *
+ * ONE SOURCE PER EVENT. `from` names the one place that reports it: 'quick-start' (the first minute and the landing of a
+ * link: src/quick-start/entry.js track), 'world' (where you live), 'growth' (missions, tables, sharing, outreach) — all
+ * three arrive as `jaw:track` DOM events — 'client' (derived here from the server's states: ./funnel.js and ./core.js) and
+ * 'server' (server/telemetry/instrument.js). src/telemetry/telemetry.test.js reads the game's sources and fails if a
+ * `track('…')` call names an event that is not listed here, or carries a property this list would drop.
+ *
  * Property rules, enforced by src/telemetry/scrub.js for every event: numbers, booleans and short
  * id-like words only. Never chat or message text, a nickname, an email, a position, an IP or a
  * UUID. The player is identified by the session's PUBLIC id as the distinct id, nowhere else.
@@ -17,7 +23,7 @@
  * @property {Record<string, PropType>} props   allowed properties and their types
  * @property {string} when                      when it fires (and how often)
  * @property {string} why                       the question it answers
- * @property {'client' | 'server' | 'external'} from   'external' = defined here for another branch to emit with jaw:track
+ * @property {'client' | 'server' | 'quick-start' | 'world' | 'growth'} from   the one place that reports it (see ONE SOURCE PER EVENT)
  */
 
 /** @type {Record<string, EventSpec>} */
@@ -29,26 +35,59 @@ export const EVENTS = {
   day2_return: { from: 'client', props: {}, when: 'Once per device: the first session_start on the day after first_seen_date.', why: 'Last step of the activation funnel.' },
   consent_choice: { from: 'client', props: { choice: 'string', source: 'string' }, when: 'The player chose Accept on the consent sheet or in Settings (a Reject sends nothing).', why: 'How many people accept, and from where.' },
 
-  // ---- Activation funnel and time to first activity ---------------------------------------------
-  landed: { from: 'client', props: {}, when: 'Once per device: a browser with no session was shown the nickname entry.', why: 'Top of the activation funnel.' },
-  named: { from: 'client', props: { ms_since_landed: 'number' }, when: 'Once per life: the server accepted the nickname and created the session.', why: 'Funnel step 2; the start of "time to first activity".' },
-  character_step_completed: { from: 'client', props: { step: 'string', step_index: 'number', ms_in_step: 'number', ms_since_session: 'number' }, when: 'Once per step per life: the server confirmed a character-creation step (look, traits, dream, lottery, home).', why: 'Step timings and drop-off per step of character creation.' },
-  character_done: { from: 'client', props: { ms_since_session: 'number', house: 'string', lottery: 'string', backfill: 'boolean' }, when: 'Once per life: the Sim moved in.', why: 'Funnel step 3.' },
-  activity_completed: { from: 'client', props: { activity_id: 'string', venue_id: 'string' }, when: 'Every time a timed activity ran to its end (not when cancelled).', why: 'What players actually do; engagement per venue.' },
-  first_activity: { from: 'client', props: { activity_id: 'string', venue_id: 'string', ms_since_session: 'number', ms_since_character_done: 'number' }, when: 'Once per life: the first activity_completed.', why: 'Funnel step 4 and the headline number: time to first activity.' },
-  first_travel: { from: 'client', props: { mode: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed trip.', why: 'Funnel step 5.' },
-  first_job_shift: { from: 'client', props: { job_id: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed work shift.', why: 'Funnel step 6.' },
+  // ---- The first minute (reported by the quick start: src/quick-start/entry.js; `ms` = milliseconds since this device landed)
+  landed: { from: 'quick-start', props: { join: 'boolean', ms: 'number' }, when: 'Once per device: the landing screen (a name, a quick character, Play) was shown to a browser with no session. join: it arrived by an invite or share link.', why: 'Top of the activation funnel.' },
+  named: { from: 'quick-start', props: { edited: 'boolean', length: 'number', ms: 'number' }, when: 'Play was tapped with this name. Only whether the suggestion was edited and how long the name is — never the name.', why: 'Do people keep the suggested name?' },
+  quick_look_done: { from: 'quick-start', props: { shuffles: 'number', preset: 'string', edited: 'boolean', ms: 'number' }, when: 'Play was tapped with this character: how many shuffles, which one-tap preset (if any), whether "More options" was opened.', why: 'How much character choice the landing needs.' },
+  play_tapped: { from: 'quick-start', props: { taps: 'number', ms: 'number' }, when: 'Play was tapped (taps: taps on the landing screen, Play included).', why: 'Funnel step 2; the start of "time to first reward".' },
+  arrived: { from: 'quick-start', props: { venue: 'string', ms: 'number' }, when: 'Once per life: the server confirmed the quick start and the player is standing in a public venue.', why: 'Funnel step 3: seconds from landing to being in the world.' },
+  first_activity_started: { from: 'quick-start', props: { activity: 'string', venue: 'string', ms: 'number' }, when: 'Once per life: a guest started their first activity.', why: 'Does the first goal get tapped?' },
+  first_activity_completed: { from: 'quick-start', props: { venue: 'string', server_ms: 'number', ms: 'number' }, when: 'Once per life: the first activity finished and paid (server_ms: server time from the life’s creation).', why: 'Funnel step 4 and the headline number: time to first reward.' },
+  save_character_offered: { from: 'quick-start', props: { trigger: 'string', step: 'number', ms: 'number' }, when: 'The "Make this life yours" sheet was put in front of a guest (trigger: first-reward | third-activity | next-day | home | buy | asked).', why: 'Which offer converts.' },
+  settle_traits_done: { from: 'quick-start', props: { ms: 'number' }, when: 'Once per life: the traits step of settling in was saved.', why: 'Drop-off per step of settling in.' },
+  settle_dream_done: { from: 'quick-start', props: { ms: 'number' }, when: 'Once per life: the dream step was saved.', why: 'Drop-off per step of settling in.' },
+  settle_lottery_done: { from: 'quick-start', props: { ms: 'number' }, when: 'Once per life: the birth lottery was rolled.', why: 'Drop-off per step of settling in.' },
+  save_character_done: { from: 'quick-start', props: { activities: 'number', ms: 'number' }, when: 'Once per life: the life settled in (it has its local government and its house).', why: 'Funnel step 5: guest → resident.' },
+  join_landed: { from: 'quick-start', props: { code: 'string', ms: 'number' }, when: 'A new visitor’s invite link was answered (code: joined | here | at_home | reconnecting | out | offline | refused).', why: 'How often an invite puts two people in the same place.' },
 
-  // ---- Invite → joined friend -------------------------------------------------------------------
+  // ---- After the first minute (derived by telemetry from the server’s states: src/telemetry/funnel.js)
+  activity_completed: { from: 'client', props: { activity_id: 'string', venue_id: 'string' }, when: 'Every time a timed activity ran to its end (not when cancelled).', why: 'What players actually do; engagement per venue.' },
+  first_travel: { from: 'client', props: { mode: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed trip.', why: 'Funnel step 6.' },
+  first_job_shift: { from: 'client', props: { job_id: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed work shift.', why: 'Funnel step 7.' },
+  streak_day: { from: 'client', props: { days: 'number', stamps: 'number' }, when: 'The life’s count of days lived actively went up (once per Lagos day; the count never goes down). stamps: days played this week.', why: 'Return rhythm, counted kindly: days played, not days missed.' },
+  event_joined: { from: 'client', props: { venue_id: 'string', total: 'number' }, when: 'The player showed up at an event of the calendar (the life’s count of events attended went up).', why: 'Do scheduled events bring people to a place?' },
+
+  // ---- Where you live (the world layer: src/ui/panels/lga-card.js, world-panels.js, src/life-main.js)
+  lga_chosen: { from: 'world', props: { method: 'string', lga: 'string' }, when: 'A local government was chosen or changed (method: device | manual; lga: its id, one of a fixed list — never a position).', why: 'How people choose where they live; which areas fill.' },
+  house_allocated: { from: 'world', props: {}, when: 'The server set a plot aside for this life (or moved it). No address.', why: 'Settle-in ends with a house on the map.' },
+  house_styled: { from: 'world', props: {}, when: 'The look of the player’s house was changed.', why: 'Is house styling used?' },
+  estate_viewed: { from: 'world', props: { lga: 'string' }, when: 'A local government’s page (its estates and residents directory) was opened.', why: 'Do people look around their area?' },
+  neighbour_card_opened: { from: 'world', props: { from: 'string' }, when: 'A resident’s card was opened (from: directory | map).', why: 'Does the directory lead to people?' },
+
+  // ---- Missions, tables, sharing and outreach (the growth panels: src/ui/panels/*, src/tables/client.js)
+  mission_completed: { from: 'growth', props: { kind: 'string' }, when: 'A finished mission was collected (kind: life | discovery | social).', why: 'Which missions get done.' },
+  table_sat: { from: 'growth', props: { game: 'string' }, when: 'The player sat down at a game table.', why: 'Table adoption per game.' },
+  match_started: { from: 'growth', props: { game: 'string', vs: 'string' }, when: 'A table game the player sits in began (vs: player | bot).', why: 'Real matches against people.' },
+  match_finished: { from: 'growth', props: { game: 'string', result: 'string' }, when: 'A table game the player sat in ended (result: won | lost | draw | called_off).', why: 'Completion of matches.' },
+  share_card_created: { from: 'growth', props: { kind: 'string' }, when: 'A share link and card were made (kind: invite | house | missions | week | table | event).', why: 'What people share.' },
+  invite_created: { from: 'growth', props: {}, when: 'A share that invites someone was made (invite, house or table).', why: 'Top of the invite funnel.' },
+  invite_opened: { from: 'quick-start', props: { kind: 'string', has_session: 'boolean' }, when: 'Once per page load: the page was opened from an invite, share or table link (kind: house | share | table).', why: 'Invite funnel step 2.' },
+  invite_joined: { from: 'quick-start', props: { kind: 'string' }, when: 'A new life was attached to the sharer’s link as a referral (once per life; nothing is paid yet).', why: 'Invite funnel step 3.' },
+  invite_colocated: { from: 'quick-start', props: { kind: 'string' }, when: 'A visitor who came by a link was put in the same venue as the player it pointed at.', why: 'Invite funnel step 4: the invite produced time together.' },
+  referral_rewarded: { from: 'growth', props: {}, when: 'A referral gift was paid to this player (after the friend’s paid work).', why: 'Bottom of the invite funnel.' },
+  push_prompt_shown: { from: 'growth', props: {}, when: 'The game’s own notification explanation was shown (before the browser’s prompt).', why: 'Push opt-in funnel.' },
+  push_prompt_accepted: { from: 'growth', props: {}, when: 'Notifications were switched on.', why: 'Push opt-in funnel.' },
+  push_prompt_declined: { from: 'growth', props: {}, when: 'The notification prompt was declined (in the game or in the browser).', why: 'Push opt-in funnel.' },
+  email_optin_started: { from: 'growth', props: {}, when: 'A consented e-mail address was submitted. The address is never an event property.', why: 'E-mail opt-in funnel.' },
+  email_optin_confirmed: { from: 'growth', props: {}, when: 'The address was confirmed from its e-mail.', why: 'E-mail opt-in funnel.' },
+  unsubscribed: { from: 'growth', props: { channel: 'string' }, when: 'A channel was switched off in the game (channel: push | email).', why: 'Are messages welcome?' },
+
+  // ---- People (recorded by the server for players who accepted: server/telemetry/instrument.js) ---
   friend_request_sent: { from: 'server', props: {}, when: 'A friend request was stored (not a repeat).', why: 'Start of the friend loop.' },
   friend_made: { from: 'server', props: { role: 'string' }, when: 'A friend request was accepted; sent for each of the two players who has accepted analytics (role: accepter | asker).', why: 'Meaningful interaction; invite → friend conversion.' },
   house_knock_sent: { from: 'server', props: {}, when: 'A player knocked at another player’s home (not a repeat).', why: 'House invites as they exist today.' },
   house_knock_answered: { from: 'server', props: { accepted: 'boolean' }, when: 'A host answered a knock.', why: 'How often an invite is accepted.' },
   house_visit: { from: 'server', props: { role: 'string' }, when: 'Once per stay: a guest and the host are in the host’s Home room together (role: guest | host).', why: 'The invite ended with both players in the same place.' },
-  invite_link_created: { from: 'external', props: { kind: 'string', channel: 'string' }, when: 'To be emitted by the sharing branch when a share or invite link is made (kind: house | venue | referral; channel: copy | share_sheet | whatsapp…).', why: 'Top of the invite funnel.' },
-  invite_link_opened: { from: 'external', props: { kind: 'string', has_session: 'boolean' }, when: 'To be emitted when the page is opened from an invite link.', why: 'Invite funnel step 2.' },
-  invite_joined: { from: 'external', props: { kind: 'string', minutes_since_opened: 'number' }, when: 'To be emitted when a player who arrived by an invite link has a session and a finished character.', why: 'Invite funnel step 3.' },
-  invite_copresent: { from: 'external', props: { kind: 'string', minutes_since_joined: 'number' }, when: 'To be emitted when inviter and invited are in the same room within N minutes of joining.', why: 'Invite funnel step 4: the invite produced time together.' },
 
   // ---- Meaningful player interactions (counts and durations only — never content) -----------------
   chat_message_sent: { from: 'server', props: { venue_id: 'string' }, when: 'A venue chat line was accepted and delivered. The text is never read by telemetry.', why: 'Count of public chat.' },
@@ -69,10 +108,12 @@ export const EVENTS = {
 };
 
 /** The steps of the activation funnel, in order, as a PostHog funnel is built from them. */
-export const ACTIVATION_FUNNEL = Object.freeze(['landed', 'named', 'character_done', 'first_activity', 'first_travel', 'first_job_shift', 'day2_return']);
+export const ACTIVATION_FUNNEL = Object.freeze(['landed', 'play_tapped', 'arrived', 'first_activity_completed', 'save_character_done', 'first_travel', 'first_job_shift', 'day2_return']);
+/** The invite funnel, in order. */
+export const INVITE_FUNNEL = Object.freeze(['invite_created', 'invite_opened', 'invite_joined', 'invite_colocated', 'referral_rewarded']);
 
-/** The names another branch may dispatch with `jaw:track` today. */
-export const EXTERNAL_EVENTS = Object.freeze(Object.keys(EVENTS).filter((name) => EVENTS[name].from === 'external'));
+/** The events that reach the facade as `jaw:track` DOM events from the game's own screens (everything not derived or server-side). */
+export const TRACKED_EVENTS = Object.freeze(Object.keys(EVENTS).filter((name) => ['quick-start', 'world', 'growth'].includes(EVENTS[name].from)));
 
 /** The property names an event may carry, or null for an event that is not in the catalogue. */
 export function allowedProps(name) { return Object.hasOwn(EVENTS, name) ? Object.keys(EVENTS[name].props) : null; }

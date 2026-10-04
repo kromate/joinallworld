@@ -8,14 +8,14 @@ import { createCore, STORAGE_KEY, QUEUE_LIMIT } from './core.js';
 import { captureArgs } from './clean.js';
 import { scrubEvent } from './scrub.js';
 import { isDevHost, privacySignal, resolveConsent, clientPlan, lagosDay, daysBetween, latencyBucket, fpsBucket } from './policy.js';
-import { newMemo, landed, named, stateEvents } from './funnel.js';
+import { newMemo, sessionStarted, stateEvents } from './funnel.js';
 import { consentHtml } from './consent-ui.js';
 import { CONSENT, whatWeCollect, regionWords } from './what-we-collect.js';
-import { EVENTS } from './events.js';
+import { EVENTS, TRACKED_EVENTS } from './events.js';
 import { createLife } from '../life.js';
 
 const PUBLIC = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10';
-const CONFIG = { enabled: true, env: 'production', release: 'build-7', debug: false, sentry: { dsn: 'https://abc@o1.ingest.example/7', replayOnError: false }, posthog: { key: 'phc_testkey123', host: 'https://us.i.posthog.com', consentAt: 'named' } };
+const CONFIG = { enabled: true, env: 'production', release: 'build-7', debug: false, sentry: { dsn: 'https://abc@o1.ingest.example/7', replayOnError: false }, posthog: { key: 'phc_testkey123', host: 'https://us.i.posthog.com', consentAt: 'reward' } };
 const tick = () => new Promise((resolve) => setImmediate(resolve));
 
 /** A window with just what telemetry touches. `fetches` records every request it would have made. */
@@ -32,13 +32,14 @@ function fakeWindow({ hostname = 'play.example', nav = {}, stored = null, config
     removeEventListener(type, fn) { listeners.get(type)?.delete(fn); },
     dispatch(type, detail) { for (const fn of [...(listeners.get(type) ?? [])]) fn({ type, detail }); },
     listening: (type) => listeners.get(type)?.size ?? 0,
-    document: { hidden: true, addEventListener() {}, removeEventListener() {} },
+    openDialog: null,
+    document: { hidden: true, addEventListener() {}, removeEventListener() {}, querySelector: (selector) => (selector === 'dialog[open]' ? win.openDialog : null) },
     setTimeout(fn) { win.timers.push(fn); return win.timers.length; },
     requestAnimationFrame() {},
     async fetch(url, options = {}) {
       win.fetches.push({ url: String(url), method: options.method ?? 'GET', body: options.body ? JSON.parse(options.body) : undefined });
       if (String(url) === '/api/telemetry/config') return { ok: configStatus === 200, status: configStatus, json: async () => config };
-      return { ok: true, status: 200, json: async () => ({}) };
+      return { ok: true, status: 200, json: async () => (String(url) === '/api/telemetry/consent' ? win.consentAnswer ?? {} : {}) };
     },
   };
   win.__jawErrors = []; win.__jawErrorHandler = () => {};
@@ -174,22 +175,22 @@ test('before the player answers, nothing reaches PostHog — not the SDK, not on
   assert.equal(core.consent, 'unset');
   assert.deepEqual(win.fetches, [], 'and the server is told nothing');
   assert.equal(win.saved(), null, 'and nothing is written to this device');
-  // The sheet was offered once, as soon as this browser had a session.
-  assert.equal(log.sheets.length, 1);
-  assert.equal(log.sheets[0].source, 'sheet');
-  assert.equal(log.sheets[0].state.consent, 'unset');
+  // A session alone does not bring the question up: it waits for the first reward (see the consent-timing test).
+  assert.equal(log.sheets.length, 0);
 });
 
 test('Accept sends what was waiting, at the time it happened; later events go straight out', async () => {
   let time = 1_700_000_000_000;
   const { win, log, core } = running({ now: () => time });
-  core.needName(); time += 4000; core.session({ id: PUBLIC }, true, 500); time += 1000;
+  core.needName(); core.track('landed', { join: false, ms: 0, name: 'Ada Obi' }); time += 4000; core.track('play_tapped', { taps: 1, ms: 4000 }); core.session({ id: PUBLIC }, true, 500); time += 1000;
   core.setConsent('granted', 'sheet'); await tick(); await tick();
   assert.deepEqual(log.loaded.filter((name) => name === 'posthog'), ['posthog']);
   assert.deepEqual(log.identified, [PUBLIC]);
-  assert.deepEqual(names(log), ['$pageview', 'landed', 'named', 'consent_choice', 'session_start']);
+  // The landing screen's own events (reported with jaw:track → track) waited in memory and go out at the time they happened;
+  // telemetry itself reports neither `landed` nor `named` (one source per event).
+  assert.deepEqual(names(log), ['$pageview', 'landed', 'play_tapped', 'consent_choice', 'session_start']);
   assert.equal(log.sent[1].at, 1_700_000_000_000); assert.equal(log.sent[2].at, 1_700_000_004_000);
-  assert.deepEqual(log.sent[2].props, { ms_since_landed: 4000 });
+  assert.deepEqual([log.sent[1].props, log.sent[2].props], [{ join: false, ms: 0 }, { taps: 1, ms: 4000 }]);
   assert.deepEqual(log.sent[3].props, { choice: 'granted', source: 'sheet' });
   assert.deepEqual(log.sent[4].options.$set_once, { first_seen_date: '2023-11-14' });
   core.track('activity_completed', { activity_id: 'jog', venue_id: 'park', nickname: 'Ada Obi' });
@@ -261,22 +262,89 @@ test('a player known to be under 18 has analytics off, whatever was accepted', a
   assert.equal(core.consent, 'denied');
 });
 
-test('consentAt "landing" asks at once; "named" waits for a session; an answered question is not asked again', async () => {
+test('consent timing: never during the first minute — after the first reward, when no sheet is open and nothing is running; "landing" asks at once', async () => {
   const landing = running({ config: { ...CONFIG, posthog: { ...CONFIG.posthog, consentAt: 'landing' } } });
   await tick();
   assert.equal(landing.log.sheets.length, 1);
-  const named = running();
-  await tick();
-  assert.equal(named.log.sheets.length, 0);
-  named.core.session({ id: PUBLIC }, true, 5); named.core.session({ id: PUBLIC }, false, 5); await tick();
-  assert.equal(named.log.sheets.length, 1);
+  // The default: a new guest is not asked on the landing screen, when the session is made, on arrival, or while playing.
+  const { win, log, core } = running();
+  const life = (change) => { const state = createLife(null, { now: 1000, isNew: true, quickStart: true }); change?.(state.onboarding, state); return state; };
+  const held = life(), playing = life((o) => { o.required = false; o.playedAt = 2000; });
+  const busy = life((o, state) => { o.required = false; state.activeAction = { kind: 'activity', id: 'play-ayo', duration: 7, remaining: 3 }; });
+  const rewarded = life((o) => { o.required = false; o.firstAt = 10000; o.activities = 1; });
+  const rewardedBusy = life((o, state) => { o.required = false; o.firstAt = 10000; state.activeAction = { kind: 'activity', id: 'chill', duration: 11, remaining: 5 }; });
+  const step = async (previous, next, now) => { core.state(next, previous, client(next, { now })); await tick(); return log.sheets.length; };
+  core.needName(); core.session({ id: PUBLIC }, true, 1000); await tick();
+  assert.equal(log.sheets.length, 0, 'not when the session is made');
+  assert.equal(await step(createLife(), held, 1000), 0, 'not while the landing screen is up');
+  assert.equal(await step(held, playing, 2000), 0, 'not on arrival');
+  assert.equal(await step(playing, busy, 4000), 0, 'not during the first activity');
+  assert.equal(await step(busy, rewarded, 10000), 0, 'not on top of the reward: the reward and the settle-in offer come first');
+  win.openDialog = {};
+  assert.equal(await step(rewarded, rewarded, 20000), 0, 'not while another sheet ("Make this life yours") is open');
+  win.openDialog = null;
+  assert.equal(await step(rewarded, rewardedBusy, 21000), 0, 'not while something is running');
+  assert.equal(await step(rewardedBusy, rewarded, 30000), 1, 'then, once');
+  assert.deepEqual([log.sheets[0].source, log.sheets[0].state.consent], ['sheet', 'unset']);
+  assert.equal(await step(rewarded, rewarded, 40000), 1, 'and never a second time');
+  // A returning player (settled, or a life that never was a guest) is past the first minute: asked at their first state.
+  const back = running();
+  back.core.session({ id: PUBLIC }, false, 5); await tick();
+  assert.equal(back.log.sheets.length, 0);
+  back.core.state(createLife(), createLife(), client(null, { now: 60 })); await tick();
+  assert.equal(back.log.sheets.length, 1);
   const answered = running({ stored: { consent: 'denied', at: 1 } });
-  answered.core.session({ id: PUBLIC }, false, 5); await tick();
+  answered.core.session({ id: PUBLIC }, false, 5); answered.core.state(createLife(), structuredClone(createLife()), client(null, { now: 60 })); await tick();
   assert.equal(answered.log.sheets.length, 0);
   // Analytics not configured at all: no sheet, no queue; error monitoring still runs.
   const errorsOnly = running({ config: { ...CONFIG, posthog: null } });
-  errorsOnly.core.session({ id: PUBLIC }, true, 5); errorsOnly.core.setConsent('granted'); await tick(); await tick();
+  errorsOnly.core.session({ id: PUBLIC }, true, 5); errorsOnly.core.setConsent('granted'); errorsOnly.core.state(createLife(), structuredClone(createLife()), client(null, { now: 60 })); await tick(); await tick();
   assert.deepEqual(errorsOnly.log.loaded, ['sentry']);
+});
+
+test('the age answer has one home: "under 18" from the server’s configuration, from its consent answer or from the page switches analytics off', async () => {
+  // 1. The game's server says so with the configuration: nothing is loaded, nothing is asked, a stored Accept does not count.
+  const told = running({ config: { ...CONFIG, under18: true }, stored: { consent: 'granted', at: 1 } });
+  told.core.session({ id: PUBLIC }, false, 5); told.core.track('landed', { join: false }); told.core.state(createLife(), structuredClone(createLife()), client(null, { now: 60 })); told.core.setConsent('granted', 'settings');
+  await tick(); await tick();
+  assert.deepEqual([told.core.consent, told.log.sent, told.log.sheets.length, told.log.loaded.filter((name) => name !== 'sentry')], ['denied', [], 0, []]);
+  assert.deepEqual(told.win.fetches.filter((call) => call.body?.analytics === true), [], 'and the server is never told Accept');
+  // 2. The server's answer to an Accept says so (the age was given on another device): the SDK is stopped at once.
+  const late = running({ stored: { consent: 'granted', at: 1 } });
+  late.win.consentAnswer = { analytics: false, under18: true };
+  late.core.session({ id: PUBLIC }, false, 5); await tick(); await tick(); await tick();
+  assert.deepEqual([late.core.consent, late.log.stopped], ['denied', 1]);
+  const sent = late.log.sent.length;
+  late.core.track('activity_completed', { activity_id: 'jog' }); late.core.setConsent('granted', 'settings'); await tick();
+  assert.equal(late.log.sent.length, sent);
+  // 3. The page says so the moment the question is answered ('jaw:age', through the facade); "adult" changes nothing.
+  const win = fakeWindow({ config: CONFIG, stored: { consent: 'granted', at: 1 } });
+  const { log, loaders } = fakeLoaders();
+  const telemetry = createTelemetry({ window: win, loadCore: async () => ({ createCore: (options) => createCore({ ...options, loaders, now: () => 1_700_000_000_000 }) }) });
+  await telemetry.start(); telemetry.identify(PUBLIC); await tick(); await tick();
+  win.dispatch('jaw:age', { age: 'adult' }); telemetry.track('activity_completed', { activity_id: 'jog' });
+  assert.deepEqual([log.stopped, names(log).at(-1)], [0, 'activity_completed']);
+  const before = log.sent.length;
+  win.dispatch('jaw:age', { age: 'minor' }); win.dispatch('jaw:age', { age: 'adult' }); win.dispatch('jaw:age', null);
+  telemetry.track('activity_completed', { activity_id: 'jog' }); telemetry.setConsent('granted'); await tick();
+  assert.deepEqual([log.stopped, log.sent.length], [1, before], 'off, and an "adult" afterwards does not switch it back on');
+  // The game's two places that hold the answer both announce it.
+  const growthClient = readFileSync(new URL('../ui/panels/growth-client.js', import.meta.url), 'utf8'), touch = readFileSync(new URL('../ui/panels/touch.js', import.meta.url), 'utf8');
+  assert.match(growthClient, /announceAge\(result\.consent\?\.age\)/); assert.match(touch, /announceAge\(result\.consent\?\.age\)/);
+});
+
+test('the local government becomes a coarse group once it is chosen — never the game’s guess, never a guest’s', async () => {
+  const { log, core } = running({ stored: { consent: 'granted', at: 1 } });
+  core.session({ id: PUBLIC }, false, 5); await tick(); await tick();
+  const life = (change) => { const state = createLife(); change(state); return state; };
+  const guess = life((state) => { state.onboarding.done = true; state.estate.lga = 'mushin'; state.estate.lgaConfirmed = false; });
+  const guest = life((state) => { state.onboarding.done = false; state.onboarding.stage = 'guest'; state.estate.lga = 'mushin'; state.estate.lgaConfirmed = true; });
+  const ikeja = life((state) => { state.onboarding.done = true; state.estate.lga = 'ikeja'; state.estate.lgaConfirmed = true; });
+  const epe = life((state) => { state.onboarding.done = true; state.estate.lga = 'epe'; state.estate.lgaConfirmed = true; });
+  core.state(guess, createLife(), client(null, { now: 10 })); core.state(guest, guess, client(null, { now: 20 }));
+  assert.deepEqual(log.groups, []);
+  core.state(ikeja, guest, client(null, { now: 30 })); core.state(structuredClone(ikeja), ikeja, client(null, { now: 40 })); core.state(epe, ikeja, client(null, { now: 50 }));
+  assert.deepEqual(log.groups, [['lga', 'ikeja'], ['lga', 'epe']], 'set when it is known, and again only when it changes');
 });
 
 test('the sheet: Accept and Reject are the same control, the details are one tap away, and Settings shows the choice in force', () => {
@@ -360,22 +428,24 @@ function firstDay() {
   };
 }
 
-test('the activation funnel fires each step exactly once with the right properties — across polls, repeats and a reload', async () => {
+test('what telemetry derives from the server’s states fires once with the right properties — across polls, repeats and a reload', async () => {
   let time = 1_700_000_000_000;
   const { win, log, core } = running({ now: () => time });
   const s = firstDay();
   const fresh = createLife();
   core.setConsent('granted', 'sheet');
-  core.needName(); core.needName();                      // the gate is drawn more than once
+  core.needName(); core.needName();                      // the gate is drawn more than once: telemetry reports nothing for it
   time += 3000; core.session({ id: PUBLIC }, true, 1000);
   const play = (previous, next, now, pending = null) => { if (pending) core.pending(pending); core.state(next, previous, client(next, { now })); if (pending) core.actionDone(pending, 50, { ok: true, code: 'ok' }); };
+  const dayTwo = structuredClone(s.worked); dayTwo.missions.active = { days: 2, last: 9 }; dayTwo.missions.stamps = { week: 1, days: 2, paid: false };
+  const dayOne = structuredClone(s.worked); dayOne.missions.active = { days: 1, last: 8 }; dayOne.missions.stamps = { week: 1, days: 1, paid: false };
+  const atEvent = structuredClone(dayTwo); atEvent.events.count = 1;
   play(fresh, s.created, 1000);                          // the first state after connecting: a baseline
   play(s.created, s.look, 3000, 'onboarding.look');
-  play(s.look, s.look, 3500);                            // a poll that changed nothing
   play(s.look, s.traits, 6000, 'onboarding.traits');
   play(s.traits, s.dream, 7000, 'onboarding.dream');
   play(s.dream, s.lottery, 8000, 'onboarding.lottery');
-  play(s.lottery, s.moved, 9000, 'onboarding.home');
+  play(s.lottery, s.moved, 9000, 'onboarding.home');     // settling in is the quick start's to report (save_character_done), not telemetry's
   play(s.moved, s.moved, 9500);
   play(s.moved, s.eating, 10000, 'activity');
   play(s.eating, s.eatingLater, 28000);                  // polls while it runs
@@ -387,21 +457,20 @@ test('the activation funnel fires each step exactly once with the right properti
   play(s.arrived, s.arrived, 111000);
   play(s.arrived, s.worked, 200000);
   play(s.worked, s.worked, 201000);
+  play(s.worked, dayOne, 202000);                        // the first active day
+  play(dayOne, dayOne, 203000);
+  play(dayOne, dayTwo, 90000000);                        // the next one
+  play(dayTwo, atEvent, 90001000);                       // showed up at an event
+  play(atEvent, atEvent, 90002000);
   await tick(); await tick();
   const funnel = log.sent.filter((event) => !['$pageview', 'consent_choice', 'session_start', 'action_latency'].includes(event.name)).map((event) => [event.name, event.props]);
   assert.deepEqual(funnel, [
-    ['landed', {}],
-    ['named', { ms_since_landed: 3000 }],
-    ['character_step_completed', { step: 'look', step_index: 0, ms_in_step: 2000, ms_since_session: 2000 }],
-    ['character_step_completed', { step: 'traits', step_index: 1, ms_in_step: 3000, ms_since_session: 5000 }],
-    ['character_step_completed', { step: 'dream', step_index: 2, ms_in_step: 1000, ms_since_session: 6000 }],
-    ['character_step_completed', { step: 'lottery', step_index: 3, ms_in_step: 1000, ms_since_session: 7000 }],
-    ['character_step_completed', { step: 'home', step_index: 4, ms_in_step: 1000, ms_since_session: 8000 }],
-    ['character_done', { ms_since_session: 8000, house: 'yaba', lottery: 'lapo-baby' }],
     ['activity_completed', { activity_id: 'cook', venue_id: 'home' }],
-    ['first_activity', { activity_id: 'cook', venue_id: 'home', ms_since_session: 39000, ms_since_character_done: 31000 }],
     ['first_travel', { mode: 'danfo', ms_since_session: 109000 }],
     ['first_job_shift', { job_id: 'barista', ms_since_session: 199000 }],
+    ['streak_day', { days: 1, stamps: 1 }],
+    ['streak_day', { days: 2, stamps: 2 }],
+    ['event_joined', { venue_id: 'park', total: 1 }],
   ]);
   for (const [name, props] of funnel) for (const key of Object.keys(props)) assert.ok(Object.hasOwn(EVENTS[name].props, key), `${name}.${key} is in the catalogue`);
   assert.equal(names(log).filter((name) => name === 'session_start').length, 1);
@@ -409,33 +478,66 @@ test('the activation funnel fires each step exactly once with the right properti
   // A reload on the same device: the same life, the same states — nothing fires a second time.
   const again = running({ now: () => time, stored: win.saved() });
   again.core.needName(); again.core.session({ id: PUBLIC }, false, 300000);
-  again.core.state(s.worked, fresh, client(s.worked, { now: 300000 }));
-  again.core.state(s.worked, s.worked, client(s.worked, { now: 301000 }));
+  again.core.state(atEvent, fresh, client(atEvent, { now: 300000 }));
+  again.core.state(structuredClone(atEvent), atEvent, client(atEvent, { now: 301000 }));
   await tick(); await tick();
   assert.deepEqual(names(again.log), ['$pageview']);
 
   // Another device (nothing remembered) with a life that is already under way: the milestones the
-  // life has are reported once, marked as backfilled and without invented timings.
+  // life has are reported once, marked as backfilled and without invented timings — and no day or event is replayed.
   const other = running({ now: () => time, stored: { consent: 'granted', at: 1 } });
   other.core.session({ id: PUBLIC }, false, 300000);
-  other.core.state(s.worked, fresh, client(s.worked, { now: 300000 }));
-  other.core.state(s.worked, s.worked, client(s.worked, { now: 301000 }));
+  other.core.state(atEvent, fresh, client(atEvent, { now: 300000 }));
+  other.core.state(structuredClone(atEvent), atEvent, client(atEvent, { now: 301000 }));
   await tick(); await tick();
-  assert.deepEqual(other.log.sent.filter((event) => event.props.backfill).map((event) => [event.name, event.props]), [
-    ['character_done', { house: 'yaba', lottery: 'lapo-baby', backfill: true }], ['first_travel', { mode: 'danfo', backfill: true }], ['first_job_shift', { job_id: 'barista', backfill: true }]]);
-  assert.ok(!names(other.log).includes('first_activity') && !names(other.log).includes('named'));
+  assert.deepEqual(other.log.sent.filter((event) => !['$pageview', 'session_start'].includes(event.name)).map((event) => [event.name, event.props]), [
+    ['first_travel', { mode: 'danfo', backfill: true }], ['first_job_shift', { job_id: 'barista', backfill: true }]]);
 });
 
-test('the funnel reads nothing from an unrelated previous state, and a life that predates character creation is not "done"', () => {
+test('the derived events read nothing from an unrelated previous state', () => {
   const s = firstDay(), memo = newMemo();
-  assert.deepEqual(landed(memo, 10), [['landed', {}]]); assert.deepEqual(landed(memo, 20), []);
-  assert.deepEqual(named(memo, 100, 40), [['named', { ms_since_landed: 30 }]]); assert.deepEqual(named(memo, 200, 50), []);
-  // Another city's life arriving (baseline): its steps are not this session's steps.
+  sessionStarted(memo, 100); sessionStarted(memo, 900);
+  assert.equal(memo.t.session, 100, 'the session moment is set once');
+  // Another city's life arriving (baseline): what it did is not this page's doing.
   assert.deepEqual(stateEvents(s.created, s.dream, memo, { now: 500, baseline: true }), []);
-  assert.deepEqual(stateEvents(s.eating, s.moved, newMemo(), { now: 500, baseline: true }).map(([name]) => name), ['character_done']);
-  const legacy = structuredClone(s.moved); legacy.onboarding.legacy = true;
-  assert.deepEqual(stateEvents(createLife(), legacy, newMemo(), { now: 1 }), []);
+  assert.deepEqual(stateEvents(s.eating, s.moved, newMemo(), { now: 500, baseline: true }), []);
+  assert.deepEqual(stateEvents(s.eating, s.moved, newMemo(), { now: 500 }).map(([name]) => name), ['activity_completed']);
+  const days = structuredClone(s.moved); days.missions.active = { days: 5, last: 3 };
+  assert.deepEqual(stateEvents(s.moved, days, newMemo(), { now: 1, baseline: true }), [], 'a life seen for the first time does not replay its days');
   assert.deepEqual(stateEvents(null, null, newMemo(), { now: 1 }), []);
+});
+
+test('every event the game’s screens report is in the catalogue, with every property it carries — and nothing is defined twice', () => {
+  const root = new URL('../', import.meta.url);
+  const files = [];
+  const walk = (dir) => { for (const entry of readdirSync(new URL(dir, root), { withFileTypes: true })) { if (entry.isDirectory()) walk(`${dir}${entry.name}/`); else if (entry.name.endsWith('.js') && !entry.name.endsWith('.test.js')) files.push(`${dir}${entry.name}`); } };
+  for (const dir of ['ui/', 'quick-start/', 'tables/', 'map3d/', 'scene/']) walk(dir);
+  files.push('life-main.js', 'client.js');
+  const reported = new Map();
+  for (const file of files) {
+    const text = readFileSync(new URL(file, root), 'utf8');
+    for (const match of text.matchAll(/\btrack\('([a-z0-9_]+)'(?:,\s*\{([^}]*)\})?/g)) {
+      const keys = (match[2] ?? '').split(',').map((part) => part.trim().split(':')[0].trim()).filter((key) => /^[a-z_]+$/i.test(key));
+      if (!reported.has(match[1])) reported.set(match[1], { files: new Set(), keys: new Set() });
+      reported.get(match[1]).files.add(file); for (const key of keys) reported.get(match[1]).keys.add(key);
+    }
+    // Events built as data and reported by the entry: { name: '…', props: { … } }, and the settle-in steps of src/quick-start/model.js.
+    for (const match of [...text.matchAll(/name: '([a-z0-9_]+)', props: \{/g), ...(file === 'quick-start/model.js' ? text.matchAll(/\d: '(settle_[a-z_]+)'/g) : [])]) { if (!reported.has(match[1])) reported.set(match[1], { files: new Set(), keys: new Set() }); reported.get(match[1]).files.add(file); }
+  }
+  // The funnel events of src/quick-start/model.js are built as data and reported by life-main.
+  for (const name of ['arrived', 'first_activity_started', 'first_activity_completed', 'settle_traits_done', 'settle_dream_done', 'settle_lottery_done', 'save_character_done']) assert.ok(reported.has(name), name);
+  assert.ok(reported.size >= 30, `the scan found the game's events (${reported.size})`);
+  for (const [name, found] of reported) {
+    assert.ok(EVENTS[name], `${name} (reported in ${[...found.files].join(', ')}) is not in the catalogue`);
+    assert.ok(['quick-start', 'world', 'growth'].includes(EVENTS[name].from), `${name} is reported by a screen, so it must not also be derived by telemetry`);
+    for (const key of found.keys) assert.ok(Object.hasOwn(EVENTS[name].props, key), `${name}.${key} would be dropped: it is not in the catalogue`);
+  }
+  // …and the other way round: nothing is catalogued as a screen's event that no screen reports.
+  for (const name of TRACKED_EVENTS) assert.ok(reported.has(name), `${name} is catalogued but nothing reports it`);
+  // One source per event: an event a screen reports is never also derived here, and the old flow's derivations are gone.
+  const derived = readFileSync(new URL('./funnel.js', import.meta.url), 'utf8') + readFileSync(new URL('./core.js', import.meta.url), 'utf8');
+  for (const name of TRACKED_EVENTS) assert.ok(!new RegExp(`['"]${name}['"]`).test(derived), `${name} is also emitted by telemetry itself`);
+  for (const [name, spec] of Object.entries(EVENTS)) if (spec.from === 'client' && name !== '$pageview') assert.ok(new RegExp(`['"]${name}['"]`).test(derived), `${name} is catalogued as derived but telemetry does not emit it`);
 });
 
 test('session_start fires once per Lagos day per device, with the first-seen date; day2_return once, on the next day', async () => {
@@ -499,15 +601,15 @@ test('jaw:track: another branch can emit an event without importing anything', a
   const win = fakeWindow({ config: CONFIG, stored: { consent: 'granted', at: 1 } });
   const { log, loaders } = fakeLoaders();
   const telemetry = createTelemetry({ window: win, loadCore: async () => ({ createCore: (options) => createCore({ ...options, loaders, now: () => 1_700_000_000_000 }) }) });
-  win.dispatch('jaw:track', { name: 'invite_link_created', props: { kind: 'house', channel: 'copy', link: 'https://play.example/?invite=abc123' } });
+  win.dispatch('jaw:track', { name: 'share_card_created', props: { kind: 'house', channel: 'copy', link: 'https://play.example/?invite=abc123' } });
   win.dispatch('jaw:track', { name: 'minigame_won', props: { game: 'ludo', opponent: 'Ada Obi' } });
   win.dispatch('jaw:track', null); win.dispatch('jaw:track', { name: 42 }); win.dispatch('jaw:track', { name: 'Not A Name' });
   await telemetry.start(); await tick(); await tick();
   assert.equal(telemetry.status, 'on');
-  assert.deepEqual(log.sent.filter((event) => event.name !== '$pageview').map((event) => [event.name, event.props]), [['invite_link_created', { kind: 'house', channel: 'copy' }], ['minigame_won', { game: 'ludo' }]]);
+  assert.deepEqual(log.sent.filter((event) => event.name !== '$pageview').map((event) => [event.name, event.props]), [['share_card_created', { kind: 'house' }], ['minigame_won', { game: 'ludo' }]]);
   // The identity and a coarse group go through the same facade.
   telemetry.identify(PUBLIC, { nickname: 'Ada Obi' }); telemetry.setGroup('lga', 'ikeja'); telemetry.setGroup('lga', { not: 'an id' });
   assert.deepEqual(log.identified, [PUBLIC]); assert.deepEqual(log.groups, [['lga', 'ikeja']]);
   win.dispatch('jaw:track', { name: 'invite_joined', props: { kind: 'house', minutes_since_opened: 3 } });
-  assert.deepEqual(log.sent.at(-1).props, { kind: 'house', minutes_since_opened: 3 });
+  assert.deepEqual(log.sent.at(-1).props, { kind: 'house' }, 'a property the catalogue does not list is dropped');
 });

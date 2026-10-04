@@ -173,7 +173,7 @@ export default {
     // One funnel event per time the sheet is put in front of a guest (a redraw of the same opening is not another offer).
     if (api.view().onboarding.guest && !offered && draft) {
       offered = true;
-      track('save_character_offered', { reason: params?.nudge ?? params?.why ?? 'asked', step: api.view().onboarding.step });
+      track('save_character_offered', { trigger: params?.nudge ?? params?.why ?? 'asked', step: api.view().onboarding.step });
       root.closest('dialog')?.addEventListener('close', () => { offered = false; }, { once: true });
     }
     const send = async (label, type, payload, then) => {

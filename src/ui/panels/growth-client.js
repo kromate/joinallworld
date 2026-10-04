@@ -45,6 +45,9 @@ const ready = (view) => Boolean(view?.connected) && view.onboarding?.required !=
 try { window.addEventListener('jaw:session', () => { if (G.sharing?.prepared.url) URL.revokeObjectURL(G.sharing.prepared.url); Object.assign(G, { hello: null, at: 0, loading: false, error: null, sharing: null, busy: null, landing: null }); }); } catch { /* not a browser */ }
 const refresh = () => G.api?.refresh();
 
+/** The age answer, as the server holds it, is told to whoever listens ('jaw:age'): telemetry switches analytics off for "under 18". */
+export function announceAge(age) { if (age === 'minor' || age === 'adult') { try { window.dispatchEvent(new CustomEvent('jaw:age', { detail: { age } })); } catch { /* not a browser */ } } }
+
 /** One POST. Never throws: a failure comes back as { ok: false, code, reason }. */
 export async function call(path, body) {
   try { return await G.api.fetchJson(path, body ? { method: 'POST', body: { cityId: G.api.view().cityId, ...body } } : undefined); }
@@ -63,7 +66,7 @@ export async function load(api, { force = false } = {}) {
   const result = await call('/api/growth/hello', { device: deviceToken() });
   G.loading = false; G.at = Date.now();
   if (result.ok && result.contact?.email?.confirmed && G.hello && !G.hello.contact?.email?.confirmed) track('email_optin_confirmed');
-  if (result.ok) { if ((result.referral?.paid?.paidTotal ?? 0) > (G.hello?.referral?.paid?.paidTotal ?? Infinity)) track('referral_rewarded'); G.hello = result; G.error = null; if (result.state) void api.command('missions.refresh'); }
+  if (result.ok) { if ((result.referral?.paid?.paidTotal ?? 0) > (G.hello?.referral?.paid?.paidTotal ?? Infinity)) track('referral_rewarded'); G.hello = result; G.error = null; announceAge(result.consent?.age); if (result.state) void api.command('missions.refresh'); }
   else G.error = result.reason;
   refresh();
 }

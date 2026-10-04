@@ -19,16 +19,17 @@
  *   joinallworld-quick-landed  1 once the landing screen was shown, so 'landed' is reported once per device
  * None of it is a credential: the session is the cookie the server sets, exactly as before.
  *
- * FUNNEL EVENTS — window 'jaw:track' { name, props } (the telemetry branch listens). Every event
- * carries `ms`: milliseconds since this device first landed (kept across reloads).
+ * FUNNEL EVENTS — window 'jaw:track' { name, props }: src/telemetry/index.js listens, and src/telemetry/events.js is the
+ * catalogue every name and property here is listed in (a property that is not listed there is dropped before sending).
+ * Every event carries `ms`: milliseconds since this device first landed (kept across reloads).
  *   landed                     the landing screen was shown to a new device            { join: boolean }
  *   named                      Play was tapped with this name                          { edited: boolean, length }
  *   quick_look_done            …and this look                                          { shuffles, preset, edited }
  *   play_tapped                Play was tapped                                         { taps }  (taps on the landing screen, Play included)
  *   arrived                    the server confirmed the quick start                    { venue }
  *   first_activity_started     { activity, venue }
- *   first_activity_completed   the first reward                                        { venue, serverMs } (serverMs: server time from the life's creation)
- *   save_character_offered     the "Make this life yours" sheet opened                 { reason }
+ *   first_activity_completed   the first reward                                        { venue, server_ms } (server_ms: server time from the life's creation)
+ *   save_character_offered     the "Make this life yours" sheet opened                 { trigger, step }
  *   settle_traits_done · settle_dream_done · settle_lottery_done                       each deferred step
  *   save_character_done        moved in ('life.started')                               { activities }
  *   join_landed                an invite link was handled                              { code }

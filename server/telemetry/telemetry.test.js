@@ -49,7 +49,8 @@ test('configuration: off unless configured, and only public values ever reach th
   assert.equal(config.active, true); assert.equal(config.release, 'build-7'); assert.equal(config.env, 'production');
   assert.equal(config.sentryServer.endpoint, 'https://o1.ingest.sentry.example/api/42/envelope/');
   assert.deepEqual(publicConfig(config), { enabled: true, env: 'production', release: 'build-7', debug: false,
-    sentry: { dsn: 'https://clientkey@o1.ingest.sentry.example/41', replayOnError: false }, posthog: { key: 'phc_projectkey123', host: 'https://eu.i.posthog.com', consentAt: 'named' } });
+    sentry: { dsn: 'https://clientkey@o1.ingest.sentry.example/41', replayOnError: false }, posthog: { key: 'phc_projectkey123', host: 'https://eu.i.posthog.com', consentAt: 'reward' } });
+  assert.equal(publicConfig(readTelemetryConfig({ ...ENV, TELEMETRY_CONSENT_AT: 'named' })).posthog.consentAt, 'reward', 'the older value means the same: never before the first reward');
   assert.ok(!JSON.stringify(publicConfig(config)).includes('serverkey'), 'the server project’s DSN stays on the server');
   assert.equal(readTelemetryConfig({ ...ENV, POSTHOG_HOST: undefined }).posthog.host, DEFAULT_POSTHOG_HOST);
   assert.equal(readTelemetryConfig({ ...ENV, TELEMETRY_REPLAY_ON_ERROR: '1', TELEMETRY_CONSENT_AT: 'landing' }).replayOnError, true);
@@ -299,6 +300,39 @@ test('the config and consent endpoints: public keys only, a session is required 
   assert.equal(telemetry.hasConsent(ada.id), true);
   assert.equal((await post(f, '/api/telemetry/consent', { analytics: false }, ada)).analytics, false);
   assert.equal(telemetry.hasConsent(ada.id), false);
+});
+
+test('the age answer has one home: a player who said "under 18" in the game has analytics off on the server and is told so', async t => {
+  const { f, telemetry, sent } = await running(t);
+  const ada = await f.device('Ada'), bola = await f.device('Bola');
+  for (const device of [ada, bola]) { await f.request('/api/life?city=lagos', null, device.cookie); await f.request('/api/social/me', null, device.cookie); }
+  // Both accepted analytics; then Ada answers the age question — the growth collection is the only place it is stored.
+  for (const device of [ada, bola]) assert.equal((await post(f, '/api/telemetry/consent', { analytics: true }, device)).analytics, true);
+  assert.deepEqual([(await (await f.request('/api/telemetry/config', null, ada.cookie)).json()).under18, telemetry.hasConsent(ada.id)], [undefined, true]);
+  const answered = await post(f, '/api/growth/consent', { cityId: 'lagos', age: 'minor' }, ada);
+  assert.deepEqual([answered.ok, answered.consent.age], [true, 'minor']);
+  assert.equal(telemetry.hasConsent(ada.id), false, 'the server forgets her Accept the moment the age is answered');
+  // Her browser is told with the configuration (so it never starts analytics) and with every consent answer.
+  assert.equal((await (await f.request('/api/telemetry/config', null, ada.cookie)).json()).under18, true);
+  assert.deepEqual(await post(f, '/api/telemetry/consent', { analytics: true }, ada).then(({ analytics, under18 }) => ({ analytics, under18 })), { analytics: false, under18: true });
+  assert.equal(telemetry.hasConsent(ada.id), false, 'an Accept from a browser that has not heard yet is not kept');
+  // Asking again as an adult does not raise it (growth's own rule), so analytics stays off.
+  assert.equal((await post(f, '/api/growth/consent', { cityId: 'lagos', age: 'adult' }, ada)).consent.age, 'minor');
+  assert.equal((await post(f, '/api/telemetry/consent', { analytics: true }, ada)).analytics, false);
+  // Nobody else is affected: no session, another player and an adult all get the plain configuration.
+  assert.equal((await (await f.request('/api/telemetry/config')).json()).under18, undefined);
+  assert.equal((await (await f.request('/api/telemetry/config', null, bola.cookie)).json()).under18, undefined);
+  assert.equal((await post(f, '/api/growth/consent', { cityId: 'lagos', age: 'adult' }, bola)).consent.age, 'adult');
+  assert.deepEqual([(await post(f, '/api/telemetry/consent', { analytics: true }, bola)).analytics, telemetry.hasConsent(bola.id)], [true, true]);
+  // And the server records nothing for her from here on, while Bola's events still count.
+  const asked = await post(f, '/api/social/friends/request', { to: bola.id, cityId: 'lagos' }, ada);
+  assert.equal(asked.error, undefined, JSON.stringify(asked));
+  await post(f, '/api/social/friends/answer', { from: ada.id, accept: true, cityId: 'lagos' }, bola);
+  const events = await sent();
+  assert.ok(!events.some(([id]) => id === ada.id), 'no event carries the under-18 player');
+  // The same age answer is what e-mail and push are refused on (one stored answer, one place).
+  const mail = await post(f, '/api/growth/email', { cityId: 'lagos', email: 'ada@example.com', consent: true }, ada);
+  assert.deepEqual([mail.ok, mail.code], [false, 'under_18']);
 });
 
 test('friends, chat and voice are counted exactly once for players who accepted — never their content, never the others', async t => {

@@ -7,7 +7,8 @@
  *   track('activity_completed', { activity_id: 'jog', venue_id: 'park' });
  *
  * Or, without importing anything (for code on another branch):
- *   window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name: 'invite_link_created', props: { kind: 'house', channel: 'copy' } } }));
+ *   window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name: 'share_card_created', props: { kind: 'house' } } }));
+ *   window.dispatchEvent(new CustomEvent('jaw:age', { detail: { age: 'minor' } }));   // the age question was answered: analytics goes off
  *   window.dispatchEvent(new CustomEvent('jaw:privacy'));   // open "What we collect" and the choice (Settings does)
  *
  * Every function is safe to call anywhere, at any time, with anything: it never throws, and it
@@ -49,11 +50,13 @@ export function createTelemetry({ window: win = globalThis.window, now = Date.no
   };
   const forward = (method) => (...args) => send(method, ...args);
   const onTrack = (event) => send('track', event?.detail?.name, event?.detail?.props);
+  /** The age question was answered somewhere in the game ('jaw:age' { age: 'adult' | 'minor' }): one stored answer, heard here. */
+  const onAge = (event) => send('age', event?.detail?.age);
 
   function stop() {
     off = true; calls.length = 0;
     try {
-      win.removeEventListener('jaw:track', onTrack);
+      win.removeEventListener('jaw:track', onTrack); win.removeEventListener('jaw:age', onAge);
       win.removeEventListener('error', win.__jawErrorHandler); win.removeEventListener('unhandledrejection', win.__jawErrorHandler);
       win.__jawErrors = []; win.__jawErrorHandler = null;
     } catch { /* not a browser */ }
@@ -80,7 +83,7 @@ export function createTelemetry({ window: win = globalThis.window, now = Date.no
       else (await loadSheet()).showConsent({ document: win.document, source: 'settings', state: { analytics: false, errors: false } });
     } catch { /* the sheet could not load */ }
   }
-  try { win.addEventListener('jaw:track', onTrack); win.addEventListener('jaw:privacy', privacy); } catch { /* not a browser (tests) */ }
+  try { win.addEventListener('jaw:track', onTrack); win.addEventListener('jaw:age', onAge); win.addEventListener('jaw:privacy', privacy); } catch { /* not a browser (tests) */ }
 
   return {
     // ---- the public facade ----------------------------------------------------------------------

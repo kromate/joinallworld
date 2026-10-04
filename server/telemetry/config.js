@@ -14,7 +14,8 @@
  *                            region the owner's other product uses); set https://eu.i.posthog.com for the EU cloud.
  *   BUILD_ID                 the release every event is tagged with
  *   TELEMETRY_DEBUG=1        also run on localhost and with TELEMETRY_ENV=dev (for testing the wiring)
- *   TELEMETRY_CONSENT_AT     named (default) | landing — when the consent sheet is first shown
+ *   TELEMETRY_CONSENT_AT     reward (default) | landing — when the consent sheet is first shown: after a new life's first
+ *                            reward (never during the first-minute flow), or at once. The older value `named` means `reward`.
  *   TELEMETRY_REPLAY_ON_ERROR=1   opt-in: Sentry session replay for sessions that hit an error (masked, no canvas)
  *   TELEMETRY_SLOW_MS        a request slower than this may be sampled as a slow transaction (default 1000)
  *
@@ -53,14 +54,14 @@ function hostOf(value, allowHttp) {
  * @param {{ buildId?: string }} [options]
  * @returns {{ active: boolean, problems: string[], env: string | null, debug: boolean, release: string,
  *   sentryServer: ReturnType<typeof parseDsn>, sentryClient: ReturnType<typeof parseDsn>, posthog: { key: string, host: string } | null,
- *   replayOnError: boolean, consentAt: 'named' | 'landing', slowMs: number }}
+ *   replayOnError: boolean, consentAt: 'reward' | 'landing', slowMs: number }}
  */
 export function readTelemetryConfig(env = {}, { buildId } = {}) {
   const problems = [];
   const text = (name) => (typeof env?.[name] === 'string' ? env[name].trim() : '');
   const debug = text('TELEMETRY_DEBUG') === '1';
   const wanted = ['SENTRY_DSN_CLIENT', 'SENTRY_DSN_SERVER', 'POSTHOG_KEY'].filter((name) => text(name));
-  const off = { active: false, problems, env: null, debug, release: String(buildId ?? text('BUILD_ID') ?? '').slice(0, 40), sentryServer: null, sentryClient: null, posthog: null, replayOnError: false, consentAt: 'named', slowMs: 1000 };
+  const off = { active: false, problems, env: null, debug, release: String(buildId ?? text('BUILD_ID') ?? '').slice(0, 40), sentryServer: null, sentryClient: null, posthog: null, replayOnError: false, consentAt: 'reward', slowMs: 1000 };
   if (!wanted.length) return off;
   const stage = text('TELEMETRY_ENV');
   if (!ENVIRONMENTS.includes(stage)) { problems.push('TELEMETRY_ENV must be production, staging or dev: telemetry stays off.'); return off; }
@@ -83,7 +84,7 @@ export function readTelemetryConfig(env = {}, { buildId } = {}) {
   const sentryServer = dsn('SENTRY_DSN_SERVER'), sentryClient = dsn('SENTRY_DSN_CLIENT');
   const slow = Number(text('TELEMETRY_SLOW_MS'));
   return { ...off, active: Boolean(sentryServer || sentryClient || posthog), env: stage, sentryServer, sentryClient, posthog,
-    replayOnError: text('TELEMETRY_REPLAY_ON_ERROR') === '1', consentAt: text('TELEMETRY_CONSENT_AT') === 'landing' ? 'landing' : 'named',
+    replayOnError: text('TELEMETRY_REPLAY_ON_ERROR') === '1', consentAt: text('TELEMETRY_CONSENT_AT') === 'landing' ? 'landing' : 'reward',
     slowMs: Number.isFinite(slow) && slow >= 50 ? slow : 1000 };
 }
 

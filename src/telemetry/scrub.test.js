@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { scrubText, scrubProps, scrubEvent, stripUrl, isEventName, MAX_PROPS } from './scrub.js';
 import { cleanEvent, captureArgs } from './clean.js';
-import { EVENTS, ACTIVATION_FUNNEL, EXTERNAL_EVENTS, checkProps } from './events.js';
+import { EVENTS, ACTIVATION_FUNNEL, INVITE_FUNNEL, TRACKED_EVENTS, checkProps } from './events.js';
 
 const SECRET = '5b0f2c1e-7a44-4d0b-9c1d-2f6f6a7e8b90'; // a cookie secret is a UUID, exactly like this
 const PUBLIC = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10';
@@ -107,12 +107,14 @@ test('the catalogue: every event is named and described, and its properties pass
   for (const [name, spec] of Object.entries(EVENTS)) {
     assert.ok(isEventName(name), name);
     assert.ok(spec.when.length > 10 && spec.why.length > 5, `${name} says when and why`);
-    assert.ok(['client', 'server', 'external'].includes(spec.from), name);
+    assert.ok(['client', 'server', 'quick-start', 'world', 'growth'].includes(spec.from), name);
     const sample = Object.fromEntries(Object.entries(spec.props).map(([key, type]) => [key, type === 'number' ? 1 : type === 'boolean' ? true : 'word']));
     assert.deepEqual(checkProps(name, sample, scrubProps), sample, `${name}: a catalogued property is refused by the scrubber`);
   }
-  for (const name of ACTIVATION_FUNNEL) assert.ok(EVENTS[name], name);
-  assert.deepEqual(EXTERNAL_EVENTS, ['invite_link_created', 'invite_link_opened', 'invite_joined', 'invite_copresent']);
+  for (const name of [...ACTIVATION_FUNNEL, ...INVITE_FUNNEL]) assert.ok(EVENTS[name], name);
+  assert.ok(TRACKED_EVENTS.includes('landed') && TRACKED_EVENTS.includes('lga_chosen') && TRACKED_EVENTS.includes('mission_completed') && !TRACKED_EVENTS.includes('activity_completed'));
+  // The old flow's events are gone, not kept beside the new ones: one definition per event.
+  for (const gone of ['character_step_completed', 'character_done', 'first_activity', 'invite_link_created', 'invite_link_opened', 'invite_copresent', 'share_link_opened']) assert.equal(EVENTS[gone], undefined, gone);
   // Listed properties only, each of its listed type; an uncatalogued event gets the generic scrubber.
   assert.deepEqual(checkProps('activity_completed', { activity_id: 'jog', venue_id: 7, extra: 'no' }, scrubProps), { activity_id: 'jog' });
   assert.deepEqual(checkProps('minigame_won', { game: 'ludo', score: 12, player: 'Ada Obi' }, scrubProps), { game: 'ludo', score: 12 });

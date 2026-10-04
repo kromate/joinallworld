@@ -300,7 +300,7 @@ function accepted(state, previous) {
   // The funnel, from the server's own state: each event once, when it happens.
   const was = funnelSnap(previous), is = funnelSnap(state);
   for (const event of funnelEvents(was, is)) {
-    track(event.name, event.name === 'first_activity_completed' && Number.isFinite(state.onboarding.bornAt) ? { ...event.props, serverMs: state.onboarding.firstAt - state.onboarding.bornAt } : event.props);
+    track(event.name, event.name === 'first_activity_completed' && Number.isFinite(state.onboarding.bornAt) ? { ...event.props, server_ms: state.onboarding.firstAt - state.onboarding.bornAt } : event.props);
   }
   if (was.guest && is.done) forgetDraft();
   noteCity(client.cityId);

@@ -15,7 +15,7 @@
  * from server states in ./funnel.js.
  */
 import { clientPlan, resolveConsent, privacySignal, lagosDay, daysBetween, latencyBucket, fpsBucket } from './policy.js';
-import { newMemo, landed, named, stateEvents } from './funnel.js';
+import { newMemo, sessionStarted, stateEvents } from './funnel.js';
 
 export const STORAGE_KEY = 'joinallworld-telemetry-v1';
 export const QUEUE_LIMIT = 200;
@@ -45,7 +45,12 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   let sentry = null, posthog = null, posthogLoading = null, sheetOpen = false, asked = false, viewed = false;
   /** Analytics events and errors waiting for their SDK (or for the player's answer). */
   const events = [], errors = [], crumbs = [];
-  let user = null, traits = {}, under18 = false;
+  // Under 18: the ONE stored answer is the growth age question (server: growth.players[id].consent.age). The game's server
+  // says so with the configuration (config.under18), with every consent answer, and the page says so the moment it is
+  // answered ('jaw:age' → age()). Once true it stays true for this page: analytics is off whatever was chosen before.
+  let user = null, traits = {}, under18 = config?.under18 === true;
+  /** Has this life had its first reward (or is it past its first minutes)? The consent question waits for it. */
+  let rewarded = false, rewardedAt = null, lastLga = null;
   /** The player's nickname, kept in memory for one purpose: taking it OUT of error messages. It is never sent. */
   let nickname = null;
   const groups = {};
@@ -132,7 +137,8 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
     if (serverConsent === wanted || (!wanted && serverConsent === null && saved.consent !== 'denied')) return;
     serverConsent = wanted;
     try {
-      Promise.resolve(win.fetch('/api/telemetry/consent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ analytics: wanted }) })).catch(() => { serverConsent = null; });
+      Promise.resolve(win.fetch('/api/telemetry/consent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ analytics: wanted }) }))
+        .then((response) => (response?.ok ? response.json() : null)).then((answer) => { if (answer?.under18 === true) minor(); }).catch(() => { serverConsent = null; });
     } catch { serverConsent = null; }
   }
 
@@ -182,12 +188,30 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
       onChoice: (choice) => setConsent(choice, source),
     })).catch(() => {}).finally(() => { sheetOpen = false; });
   }
-  /** Ask once, at the configured moment: 'named' (default) = as soon as this browser has a session; 'landing' = at once. */
-  function maybeAsk() {
+  /**
+   * Ask once, at the configured moment. 'reward' (the default): never during the first-minute flow — only once the life has
+   * had its first reward (or is past its first minutes), a few seconds later so the reward and the "Make this life yours"
+   * offer come first, and only while no other sheet is open and nothing is running. 'landing': at once (an operator's choice).
+   */
+  const ASK_AFTER_REWARD_MS = 5000;
+  function maybeAsk(state, serverNow) {
     if (asked || mode !== 'on' || !plan.posthog || consent() !== 'unset') return;
-    if (config.posthog.consentAt !== 'landing' && !user) return;
+    if (config.posthog.consentAt !== 'landing') {
+      if (!user || !rewarded) return;
+      if (rewardedAt !== null && Number.isFinite(serverNow) && serverNow - rewardedAt < ASK_AFTER_REWARD_MS) return;
+      if (state?.activeAction) return;
+      try { if (win.document.querySelector('dialog[open]')) return; } catch { return; }
+    }
     asked = true;
     openSheet('sheet');
+  }
+  /** The player is under 18: analytics is off for good on this page, what was waiting is dropped, the SDK is stopped. */
+  function minor() {
+    if (under18) return;
+    under18 = true; events.length = 0;
+    try { posthog?.stop(); } catch { /* already stopped */ }
+    posthog = null; posthogLoading = null; serverConsent = false;
+    persist();
   }
 
   const onContextLost = (event) => { emit('webgl_context_lost', { scene: event?.target?.closest?.('.life-scene')?.id }); crumb('scene', { lost: true }); };
@@ -206,10 +230,11 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
     /** `publicId` is the session's PUBLIC id — never the cookie. `traits.under18: true` switches analytics off. */
     identify: safe((publicId, more) => {
       user = typeof publicId === 'string' ? publicId : null;
-      if (more && typeof more === 'object') { traits = { ...traits, ...more }; if (more.under18 === true) { under18 = true; events.length = 0; try { posthog?.stop(); } catch { /* stopped */ } posthog = null; } }
+      if (more && typeof more === 'object') { traits = { ...traits, ...more }; if (more.under18 === true) minor(); }
       sentry?.user(user);
       if (posthog && user) posthog.identify(user, traits);
-      maybeAsk(); daily();
+      if (config?.posthog?.consentAt === 'landing') maybeAsk();
+      daily();
     }),
     /** A coarse group, e.g. setGroup('lga', 'ikeja'). */
     setGroup: safe((type, id) => { if (typeof type !== 'string' || typeof id !== 'string') return; groups[type] = id; if (posthog && consent() === 'granted') posthog.group(type, id); }),
@@ -219,14 +244,17 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
     openPrivacy: safe(() => openSheet('settings')),
     get consent() { return consent(); },
     get mode() { return mode; },
-    /** No session in this browser: the nickname entry is showing. */
-    needName: safe(() => { for (const [name, props] of landed(saved.device, now())) emit(name, props); }),
+    /** The age question was answered (the growth "Stay in touch" screen, or the growth hello): 'minor' switches analytics off. */
+    age: safe((value) => { if (value === 'minor') minor(); }),
+    /** No session in this browser: the landing screen is showing. It reports `landed` itself (one source per event). */
+    needName: safe(() => {}),
     /** A session was established (`isNew`: the server just created it for the nickname). */
     session: safe((session, isNew, serverNow) => {
       const id = session?.id;
       if (typeof id !== 'string') return;
       baseline = true;
-      if (isNew) for (const [name, props] of named(Object.assign(memoFor(id), { t: { ...memoFor(id).t, landed: saved.device.t.landed } }), serverNow ?? now(), now())) emit(name, props);
+      if (isNew) sessionStarted(memoFor(id), serverNow ?? now());
+      rewarded = false; rewardedAt = null; lastLga = null;
       api.identify(id);
     }),
     /** After every accepted server state. `client` is the facade's snapshot of the client model: { session, cityId, storage, now }. */
@@ -239,6 +267,13 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
       baseline = false; lastCity = client.cityId;
       const found = stateEvents(previous, next, memoFor(id), { now: client.now, baseline: first, pending });
       for (const [name, props] of found) emit(name, props);
+      // The local government is known (chosen and confirmed — never the game's guess): a coarse group, set once per change.
+      const lga = next.onboarding?.done === true && next.estate?.lgaConfirmed === true && typeof next.estate.lga === 'string' ? next.estate.lga : null;
+      if (lga && lga !== lastLga) { lastLga = lga; api.setGroup('lga', lga); }
+      // The consent question waits for the first reward of a new life; a life past its first minutes may be asked now.
+      const o = next.onboarding, guest = o?.stage === 'guest' && o.done !== true;
+      if (!rewarded && o && o.required !== true && (!guest || Number.isFinite(o.firstAt))) { rewarded = true; rewardedAt = guest ? o.firstAt : null; }
+      maybeAsk(next, client.now);
       if (found.length && consent() === 'granted') persist();
       daily();
     }),

@@ -1,37 +1,30 @@
 /**
- * The activation funnel, derived from the states the server sends (pure: no DOM, no clock of its
- * own, no SDK). Kept small: this file is part of the first download.
+ * What telemetry itself derives from the states the server sends (pure: no DOM, no clock of its own, no SDK).
  *
- * The client never decides a rule; it only compares the last accepted state with the next one and
- * names what happened. Each milestone is recorded in `memo.done`, so it is reported once per life
- * on this device however often the state is polled or the page reloaded.
+ * ONE SOURCE PER EVENT. The first-minute funnel — landed, named, quick_look_done, play_tapped, arrived,
+ * first_activity_started/completed, the settle-in steps, save_character_offered/done, join_landed — is reported by the quick
+ * start itself (src/quick-start/entry.js track → 'jaw:track'), with its own timings. Nothing here repeats it. This file adds
+ * only what no screen reports: every completed activity, the first trip and the first shift of a life, a new day in the
+ * city (the missions' day count, which only ever goes up) and showing up at an event.
+ *
+ * The client never decides a rule; it only compares the last accepted state with the next one and names what happened.
+ * Each once-per-life milestone is recorded in `memo.done`, so it is reported once on this device however often the state is
+ * polled or the page reloaded.
  *
  * @typedef {{ done: string[], t: Record<string, number> }} Memo   what has been reported for one player, and when
  * @typedef {[name: string, props: Record<string, string | number | boolean | undefined>]} Event
  */
-export const STEPS = ['look', 'traits', 'dream', 'lottery', 'home'];
 
 /** @returns {Memo} */
 export const newMemo = () => ({ done: [], t: {} });
 const once = (memo, key) => (memo.done.includes(key) ? false : (memo.done.push(key), true));
 const since = (from, now) => (Number.isFinite(from) && Number.isFinite(now) ? Math.max(0, Math.round(now - from)) : undefined);
 
-/** A browser without a session was shown the nickname entry. `wall` is the device clock. */
-export function landed(memo, wall) {
-  if (!once(memo, 'landed')) return [];
-  memo.t.landed = wall;
-  return [['landed', {}]];
-}
-
-/** The server created a session for the nickname. `now` is server time, `wall` the device clock. */
-export function named(memo, now, wall) {
-  if (!once(memo, 'named')) return [];
-  memo.t.session = now; memo.t.step = now;
-  return [['named', { ms_since_landed: since(memo.t.landed, wall) }]];
-}
+/** The server created a session for this player: the moment the per-life timings count from. `now` is server time. */
+export function sessionStarted(memo, now) { if (!Number.isFinite(memo.t.session)) memo.t.session = now; }
 
 /**
- * What an accepted state means for the funnel.
+ * What an accepted state means.
  * @param {any} previous  the state before
  * @param {any} next      the accepted state
  * @param {Memo} memo
@@ -46,24 +39,11 @@ export function named(memo, now, wall) {
 export function stateEvents(previous, next, memo, { now, baseline = false, pending = null }) {
   /** @type {Event[]} */
   const events = [];
-  const o = next?.onboarding, before = previous?.onboarding;
+  if (!next?.onboarding) return events;
   const session = () => since(memo.t.session, now);
-  if (!o) return events;
-  if (!baseline && before && !before.done && !o.legacy && o.step > before.step) {
-    for (let index = before.step; index < Math.min(o.step, STEPS.length); index += 1) {
-      if (once(memo, `step${index}`)) events.push(['character_step_completed', { step: STEPS[index], step_index: index, ms_in_step: since(memo.t.step, now), ms_since_session: session() }]);
-    }
-    memo.t.step = now;
-  }
-  if (o.done && !o.legacy && once(memo, 'character_done')) {
-    const old = baseline || before?.done === true;
-    events.push(['character_done', { house: o.house ?? undefined, lottery: o.lottery?.id, ...(old ? { backfill: true } : { ms_since_session: session() }) }]);
-  }
   const ran = previous?.activeAction;
   if (!baseline && ran?.kind === 'activity' && pending !== 'cancel' && !(next.activeAction?.kind === 'activity' && next.activeAction.id === ran.id)) {
-    const props = { activity_id: ran.id, venue_id: previous.location };
-    events.push(['activity_completed', props]);
-    if (once(memo, 'first_activity')) events.push(['first_activity', { ...props, ms_since_session: session(), ms_since_character_done: since(o.completedAt, now) }]);
+    events.push(['activity_completed', { activity_id: ran.id, venue_id: previous.location }]);
   }
   if (next.travel?.trips > 0 && once(memo, 'first_travel')) {
     const old = baseline || previous?.travel?.trips > 0;
@@ -73,5 +53,11 @@ export function stateEvents(previous, next, memo, { now, baseline = false, pendi
     const old = baseline || previous?.completedShifts > 0;
     events.push(['first_job_shift', { job_id: typeof next.job === 'string' ? next.job : undefined, ...(old ? { backfill: true } : { ms_since_session: session() }) }]);
   }
+  // A new day lived in the city: the missions' count of active days went up (it never goes down, and never by absence).
+  const days = next.missions?.active?.days, before = previous?.missions?.active?.days;
+  if (!baseline && Number.isSafeInteger(days) && Number.isSafeInteger(before) && days > before) events.push(['streak_day', { days, stamps: next.missions.stamps?.days }]);
+  // Showed up at an event of the calendar: the life's count of events attended went up.
+  const joined = next.events?.count, joinedBefore = previous?.events?.count;
+  if (!baseline && Number.isSafeInteger(joined) && Number.isSafeInteger(joinedBefore) && joined > joinedBefore) events.push(['event_joined', { venue_id: next.location, total: joined }]);
   return events;
 }

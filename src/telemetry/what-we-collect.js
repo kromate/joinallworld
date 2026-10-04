@@ -20,7 +20,7 @@ export const CONSENT = Object.freeze({
   turnOff: 'Turn off',
   close: 'Close',
   signal: 'Your browser sends a “Do Not Track” or “Global Privacy Control” signal. We treat that as Reject: usage analytics is off and stays off while the signal is on.',
-  under18: 'Usage analytics is off for players under 18.',
+  under18: 'Usage analytics is off for players under 18: you told the game you are under 18 (Phone, Stay in touch).',
   notConfigured: 'This server does not have usage analytics switched on. Nothing is being counted.',
   noErrors: 'This server does not have error reports switched on either.',
 });
@@ -37,7 +37,8 @@ export function regionWords(host) {
 export function whatWeCollect({ host = '' } = {}) {
   return [
     { heading: 'If you accept: usage analytics', lines: [
-      'Which steps you complete: choosing a nickname, each step of creating your Sim, your first activity, first trip and first work shift, and whether you come back on later days.',
+      'Which steps you complete: starting to play (how long your name is and whether you changed the suggestion — never the name), your first activity, each step of settling in, your first trip and first work shift, and the days you come back.',
+      'What you use: missions you collect, table games you sit down to and how they end, links you share or arrive by, notifications or e-mail you switch on or off (never the address), and the local government you choose for your house — one of twenty, chosen by you, never your position.',
       'Counts, never content: that a chat line or a message was sent, that voice was joined and for how long, that you became friends with someone or visited a home, and how many minutes you spent in a place with another player.',
       'How the game runs for you: a rough frame-rate band, how long loading took, how long actions take, which actions fail and why, and connection problems.',
       'Your player code — the same public code other players can already see — so the counts belong to one player. Not your nickname.',
@@ -46,7 +47,7 @@ export function whatWeCollect({ host = '' } = {}) {
       'What you write: chat, messages, your nickname, group names, reports.',
       'Where your character stands, your real location, or your IP address.',
       'Voice audio. Recordings of your screen, your clicks or your typing.',
-      'An email address or phone number (the game does not ask for one).',
+      'An e-mail address or phone number. If you give the game an e-mail address for its own messages, it is never sent to analytics or to error reports.',
     ] },
     { heading: 'Always on: error reports', lines: [
       'When the game crashes or a request fails, we receive a short technical report: the kind of error, where in the code it happened, the last few action names and result codes, your browser type and your player code.',

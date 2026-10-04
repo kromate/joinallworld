@@ -58,6 +58,9 @@ export default function growthRoutes(ctx) {
   const outreach = outreachService(ctx);
   const tables = tablesService(ctx);
   const city = (value) => { if (!ctx.cityIds.includes(value)) throw ctx.fail(400, 'invalid_city'); return value; };
+  // THE AGE ANSWER LIVES HERE AND NOWHERE ELSE (growth.players[id].consent.age). Whoever needs it asks this check: e-mail
+  // and push eligibility below, and analytics (server/telemetry/routes.js) — a player who said "under 18" gets none of them.
+  (ctx.checks ??= {}).minor = (db, publicId) => typeof publicId === 'string' && ctx.collection(db, 'growth')?.players?.[publicId]?.consent?.age === 'minor';
 
   /** Authenticate, rate limit, find the caller's created life in the city (never creating one), and run `call`. */
   const route = (call, { durable = true } = {}) => async (request) => {
@@ -161,6 +164,8 @@ export default function growthRoutes(ctx) {
       // notification); `false` here switches one off and deletes what was stored for it.
       if (age === 'minor' || body.email === false) outreach.dropContact(g, session.publicId, 'removed');
       if (age === 'minor' || body.push === false) outreach.unsubscribePush(g, session.publicId);
+      // Under 18 also ends analytics for this player at once: the server forgets any Accept it held (the browser is told by its own page).
+      if (age === 'minor') ctx.telemetry?.consent?.(session.publicId, false);
       if (age === 'minor' && (body.push === true || body.email === true)) {
         if (player.consent?.age !== 'minor') count(g, now, 'consent.minor');
         player.consent = { age, push: false, email: false, at: now };

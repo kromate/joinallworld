@@ -30,22 +30,22 @@ export function mailConfig(ctx: Pick<RouteContext, 'env'>): { configured: boolea
  * @returns {Promise<{ ok: boolean, status: number, attempts: number, error?: string }>}  `error` is a short code, never a body
  */
 export interface MailMessage { to: string; subject: string; text: string; html: string; headers?: Record<string, string> }
-export async function sendMail(ctx: Pick<RouteContext, 'env' | 'fetch'>, message: MailMessage, { pause = (ms: number) => new Promise<void>((done) => setTimeout(done, ms)) }: { pause?: (ms: number) => Promise<void> } = {}): Promise<{ ok: boolean; status: number; attempts: number; error?: string }> {
+export async function sendMail(ctx: Pick<RouteContext, 'env' | 'fetch'>, message: MailMessage, { pause = (ms: number) => new Promise<void>((done) => setTimeout(done, ms)) }: { pause?: (ms: number) => Promise<void> } = {}): Promise<{ ok: boolean; status?: number; attempts: number; error?: string }> {
   const config = mailConfig(ctx);
   if (!config.configured) return { ok: false, status: 0, attempts: 0, error: 'not_configured' };
   const body = JSON.stringify({
     personalizations: [{ to: [{ email: message.to }] }], from: { email: config.from, name: config.name }, subject: message.subject,
     content: [{ type: 'text/plain', value: message.text }, { type: 'text/html', value: message.html }], ...(message.headers ? { headers: message.headers } : {}),
   });
-  let status = 0, error = 'network';
+  let status: number | undefined = 0, error = 'network';
   for (let attempt = 1; attempt <= RETRIES; attempt++) {
     try {
       const response = outboundResponse(await ctx.fetch(ENDPOINT, { method: 'POST', body, signal: globalThis.AbortSignal?.timeout?.(TIMEOUT_MS),
         headers: { Authorization: config.auth, 'Content-Type': 'application/json', Accept: 'application/json' } }));
       status = response.status;
-      if (status >= 200 && status < 300) return { ok: true, status, attempts: attempt };
+      if (status !== undefined && status >= 200 && status < 300) return { ok: true, status, attempts: attempt };
       error = `http_${status}`;
-      if (status < 500 && status !== 429) return { ok: false, status, attempts: attempt, error };
+      if (status !== undefined && status < 500 && status !== 429) return { ok: false, status, attempts: attempt, error };
       const wait = Number(response.headers?.get('retry-after'));
       if (attempt < RETRIES) await pause(Number.isFinite(wait) && wait > 0 ? Math.min(wait, 10) * 1000 : 500 * 4 ** (attempt - 1));
     } catch (thrown) {

@@ -801,6 +801,7 @@ export interface WsDispatch {
 
 /** The part of a Response that server/growth reads from an answer to ctx.fetch (typed `unknown` there; see growth/data.ts outboundResponse). */
 export interface OutboundResponse {
-  status: number
+  /** Undefined when the answer carried no numeric status; the senders then treat it as neither success nor an HTTP error code, as the JavaScript did. */
+  status?: number
   headers?: { get(name: string): string | null }
 }

@@ -215,7 +215,7 @@ test('phone: the home screen lists the panels from their static metadata', async
     plain('messages', { order: 12, group: 'people', badge: () => 3 }), plain('jobs', { order: 10, group: 'money' }), plain('ride', { order: 18, group: 'life' }),
     plain('groceries', { order: 16, group: 'life' }), plain('governor', { order: 40, group: 'city', badge: () => 'new!' }), plain('mystery', { order: 99 }),
     plain('career', { placement: 'sim-tab', phone: true, group: 'money', order: 60 }), plain('needs', { placement: 'sim-tab' }), plain('city', { placement: 'modal' }),
-    plain('pending-app', { order: 50, group: 'money', badge: () => 0 }),
+    plain('pending-app', { order: 50, group: 'money', badge: () => { throw new Error('not loaded') } }),
     definePanel({ id: 'bank', title: 'Bank', placement: 'phone', order: 14, group: 'money', badge: () => 120, notifications: () => [{ id: 'b', at: 5, text: 'Rent due', fresh: true, app: 'bank' }], component }),
   ])
   assert.deepEqual(listedApps(panels).map((app) => app.id), ['jobs', 'messages', 'bank', 'groceries', 'ride', 'governor', 'pending-app', 'career', 'mystery'], 'Phone apps and Sim tabs marked phone: true')

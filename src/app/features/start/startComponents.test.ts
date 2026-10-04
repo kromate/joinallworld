@@ -135,7 +135,7 @@ test('the session sheet: a nickname form for a new device, the reason in words w
   const form = await render('SessionApp', { params: { reason: 'new', problem: { reason: 'Pick another name.', name: 'Bad' } } })
   const words = text(form)
   assert.ok(words.includes('Start your city life') && words.includes('There is no password and no e-mail'))
-  assert.match(form, /<p class="ui-error" role="alert">Pick another name\.<\/p>/)
+  assert.match(form, /<p class="ui-error" role="alert"[^>]*>Pick another name\.<\/p>/)
   assert.match(form, /<input[^>]*value="Bad"[^>]*name="name"[^>]*minlength="3"[^>]*maxlength="24"[^>]*required/)
   const gone = await render('SessionApp', { params: { reason: 'expired' } })
   const sentence = text(gone)

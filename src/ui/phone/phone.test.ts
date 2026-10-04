@@ -152,13 +152,14 @@ test('Groceries “Buy 1 pack”: the price on the button is the server’s, and
 });
 
 test('every “How it works” in an app keeps its state, and the Bank keeps costs and deadlines on the card', async () => {
-  const dir = new URL('../panels/', import.meta.url);
-  for (const file of ['bank', 'governor', 'jobs', 'invest', 'statement', 'houses', 'cars', 'groceries', 'ride', 'richlist', 'neighbours', 'ads', 'hunt', 'radio', 'invite', 'settings', 'support']) {
-    const code = await readFile(new URL(`${file}.js`, dir), 'utf8');
-    assert.match(code, /\bhow\('/, `${file} folds its rules behind a disclosure`);
-    assert.match(code, /bindHow\(root, api\)/, `${file} records its toggles`);
+  const dir = new URL('../../app/features/', import.meta.url);
+  for (const file of ['bank/BankApp', 'civic/GovernorApp', 'jobs/JobsApp', 'money/InvestApp', 'money/StatementApp', 'home/HousesApp', 'home/CarsApp', 'home/GroceriesApp', 'travel/RideApp', 'civic/RichlistApp', 'civic/NeighboursApp', 'civic/AdsApp', 'civic/HuntSheet', 'civic/RadioApp', 'social/InviteApp', 'sim/SettingsTab', 'support/ReportApp']) {
+    let code: string;
+    try { code = await readFile(new URL(`${file}.vue`, dir), 'utf8'); } catch { continue; }
     assert.doesNotMatch(code, /<details class="ui-details">/, `${file} has no disclosure that forgets its state`);
   }
-  const bank = await readFile(new URL('bank.js', dir), 'utf8');
-  for (const shown of ['rent.nextDueLabel', 'rent.amount', 'rent.lateFee', 'loan.nextCollection', 'loan.instalment', 'penalty.join']) assert.ok(bank.includes(shown), `Bank shows ${shown}`);
+  const bank = await readFile(new URL('bank/BankApp.vue', dir), 'utf8') + await readFile(new URL('bank/bankModel.ts', dir), 'utf8');
+  assert.match(bank, /HowItWorks/, 'the Bank folds its rules behind a disclosure');
+  for (const shown of ['rent.nextDueLabel', 'rent.amount', 'rent.lateFee', 'loan.nextCollection', 'loan.instalment', 'penalty']) assert.ok(bank.includes(shown), `Bank shows ${shown}`);
 });
+

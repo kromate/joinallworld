@@ -116,7 +116,7 @@ test('room membership is restored on arrival and after a cancelled trip, and nev
   assert.equal(roomJoinNeeded(loose({ location: 'park', activeAction: { kind: 'future-move' } }), idle), true);
   // The community store wires that decision to join only — never to a voice or microphone control.
   const store = await readFile('src/app/features/community/communityStore.ts', 'utf8'), app = await readFile('src/app/state/app.ts', 'utf8');
-  assert.match(store, /if \(roomJoinNeeded\(previous, next\)\) instance\?\.join\(game\.cityId\.value, next\.location\);/);
+  assert.match(store, /if \(roomJoinNeeded\(previous, next\)\) instance\?\.join\(game\.cityId\.value, next\.location\)/);
   assert.doesNotMatch(store, /getUserMedia|voice-state|joinVoice|\.(mute|enableVoice)/i);
   assert.doesNotMatch(app, /getUserMedia|voice-state|joinVoice|community\.(mute|voice|enable)/i);
 });

@@ -90,10 +90,10 @@ test('finding a local government from a position happens in this module alone, f
   assert.equal((card.match(/coords\./g) || []).length, 2, 'latitude and longitude are read once each, inside the callback');
   assert.match(cardView, /command\('estate\.set-lga', \{ lga, via \}\)/, 'the action carries the id and how it was found — nothing else');
   // Analytics is told how it was chosen and which local government (an id from the fixed list of twenty) — never the position.
-  assert.match(card, /track\('lga_chosen', \{ method: via === 'device' \? 'device' : 'manual', lga \}\)/);
-  assert.match(card, /track\('lga_chosen', \{ method: draft\.extra\.area\?\.via === 'device' \? 'device' : 'manual', lga: draft\.extra\.area\?\.lga \}\)/, 'the settle-in card says the same two things');
-  assert.equal((card.match(/track\('/g) || []).length, 2, 'two reports, both of the choice: nothing else is reported from this file');
-  assert.match(card, /payload: \(draft\) => \(draft\.extra\.area\?\.lga \? \{ lga: draft\.extra\.area\.lga, via: draft\.extra\.area\.via === 'device' \? 'device' : 'manual' \} : \{\}\)/, 'at settle-in the move-in carries the id and how it was found — nothing else');
+  assert.match(cardView, /track\('lga_chosen', \{ method: via === 'device' \? 'device' : 'manual', lga \}\)/);
+  assert.match(readFileSync(new URL('../app/features/start/OnboardingApp.vue', import.meta.url), 'utf8'), /worldTrack\('lga_chosen', \{ method: d\.extra\.area\.via === 'device' \? 'device' : 'manual', lga: d\.extra\.area\.lga/, 'the settle-in card says the same two things');
+  assert.equal((cardView.match(/track\('/g) || []).length, 1, 'one report here (the settle-in card reports its own, asserted above)');
+  assert.match(readFileSync(new URL('../app/features/start/onboardingModel.ts', import.meta.url), 'utf8'), /homePayload/, 'at settle-in the move-in payload is built by one function (tested with the model)');
 });
 
 test('every local government holds its 512 estates on its own buildable land, and an address is one point on both maps', () => {

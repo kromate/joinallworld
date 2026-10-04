@@ -340,9 +340,9 @@ test('the preview and the panels that use it hold no interval timers or free-run
   const preview = await read('./avatar-preview.ts');
   assert.doesNotMatch(preview, new RegExp([['request', 'Animation', 'Frame'], ['set', 'Animation', 'Loop'], ['set', 'Interval']].map((parts) => parts.join('')).join('|')));
   assert.equal(preview.match(new RegExp(['set', 'Timeout'].join(''), 'g'))!.length, 1, 'the only timer is the one-shot step of the bounded animator');
-  for (const file of ['look-ui.js', 'onboarding.js', 'sim.js', 'boutique.js']) {
-    const code = await read(`../ui/panels/${file}`);
+  for (const file of ['start/lookPreview.ts', 'start/LookStage.vue', 'start/OnboardingApp.vue', 'sim/ProfileTab.vue', 'life/BoutiqueApp.vue']) {
+    const code = (await read(`../app/features/${file}`)).replace(/^import type .*$/gm, '');
     assert.doesNotMatch(code, new RegExp(`${['request', 'Animation', 'Frame'].join('')}|${['set', 'Interval'].join('')}|${['set', 'Timeout'].join('')}|from '[^']*three[^']*'|from '[^']*scene/`), `${file} has no loops and no static import of the 3D code`);
   }
-  assert.match(await read('../app/features/start/lookPreview.ts'), /import\('\.\.\/\.\.\/scene\/avatar-preview\.ts'\)/, 'the preview is fetched with a dynamic import');
+  assert.match(await read('../app/features/start/lookPreview.ts'), /import\('\.\.\/\.\.\/\.\.\/scene\/avatar-preview\.ts'\)/, 'the preview is fetched with a dynamic import');
 });

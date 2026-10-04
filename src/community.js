@@ -1,6 +1,6 @@
 import './community.css';
 
-export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {} } = {}) {
+export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
   container.innerHTML = `<section class="community" aria-label="Local community">
     <header class="community-header"><div><span class="community-eyebrow">People nearby</span><h2>Community</h2></div><span class="community-connection" role="status">Connecting…</span></header>
     <p class="community-room"></p>
@@ -156,22 +156,29 @@ function closePlaybackContext() {
     if (!voice || !stream || id === session.id) return null;
     const member = members.find((person) => person.id === id);
     if (!nearby(member) || !iceConfig) return null;
-    const pc = new RTCPeerConnection({ iceServers: iceConfig.iceServers });
+    const pc = new RTCPeerConnection({ iceServers: iceConfig.iceServers, iceTransportPolicy: iceTransportPolicy === 'relay' ? 'relay' : 'all' });
     const wrapper = document.createElement('div'), audio = document.createElement('audio'), play = document.createElement('button');
     audio.autoplay = true; audio.playsInline = true;
     play.type = 'button'; play.textContent = `Play audio from ${member.name}`; play.hidden = true;
-    play.addEventListener('click', () => audio.play().then(() => { play.hidden = true; }).catch(() => feedback('Audio playback is blocked. Check your browser sound permissions.')));
+    play.addEventListener('click', () => audio.play().then(() => { peer.htmlSinkState = 'playing'; play.hidden = true; }).catch(() => feedback('Audio playback is blocked. Check your browser sound permissions.')));
     wrapper.append(audio, play); el.audio.append(wrapper);
     audio.volume = Math.max(0, 1 - distanceTo(member) / VOICE_RADIUS);
-    const peer = { pc, audio, wrapper, gain: audio.volume, candidates: [], chain: Promise.resolve() };
+    const peer = { pc, audio, wrapper, gain: audio.volume, htmlSinkState: 'idle', candidates: [], chain: Promise.resolve() };
     peers.set(id, peer);
     stream.getTracks().forEach((track) => pc.addTrack(track, stream));
     pc.onicecandidate = ({ candidate }) => { if (candidate) signal(id, { candidate: candidate.toJSON() }); };
     pc.onconnectionstatechange = voiceStatus;
     pc.ontrack = ({ streams, track }) => {
       const remoteStream = streams[0] || new MediaStream([track]);
-      peer.remoteStream = remoteStream; audio.srcObject = remoteStream;
-      if (peer.gainNode) { audio.muted = true; audio.srcObject = null; return; }
+      peer.remoteStream = remoteStream; audio.muted = Boolean(playbackContext); audio.srcObject = remoteStream;
+      const startMutedSink = () => {
+        audio.muted = true;
+        audio.play().then(() => { if (peers.get(id) === peer) peer.htmlSinkState = 'playing'; }).catch(() => {
+          if (peers.get(id) !== peer) return;
+          peer.htmlSinkState = 'blocked'; play.hidden = false; feedback('Tap the audio button to enable received audio playback.');
+        });
+      };
+      if (peer.gainNode) { startMutedSink(); return; }
       if (playbackContext && !peer.audioSource) {
         try {
           peer.audioSource = playbackContext.createMediaStreamSource(remoteStream);
@@ -181,7 +188,7 @@ function closePlaybackContext() {
             peer.analyser = playbackContext.createAnalyser(); peer.analyser.fftSize = 512;
             peer.audioSamples = new Float32Array(peer.analyser.fftSize); peer.gainNode.connect(peer.analyser);
           }
-          audio.muted = true; audio.srcObject = null; play.hidden = true;
+          audio.muted = true; play.hidden = true; startMutedSink();
           return;
         } catch {
           peer.audioSource?.disconnect(); peer.gainNode?.disconnect(); peer.analyser?.disconnect();
@@ -350,7 +357,7 @@ function closePlaybackContext() {
   }
   async function getDiagnostics() {
     const peerStats = await Promise.all([...peers].map(async ([id, peer]) => {
-      const result = { id, connectionState: peer.pc.connectionState, inboundPacketsReceived: 0, totalAudioEnergy: 0, outboundPacketsSent: 0, rms: null, gain: peer.gain, playbackMode: peer.gainNode ? 'web-audio' : 'media-element-fallback', distance: distanceTo(members.find((member) => member.id === id)) };
+      const result = { id, connectionState: peer.pc.connectionState, inboundPacketsReceived: 0, totalAudioEnergy: 0, outboundPacketsSent: 0, rms: null, gain: peer.gain, playbackMode: peer.gainNode ? 'web-audio' : 'media-element-fallback', htmlSinkState: peer.htmlSinkState, distance: distanceTo(members.find((member) => member.id === id)), sourceAudioLevel: null, sourceTotalAudioEnergy: null, inboundAudioLevel: null, receiverTracks: peer.remoteStream?.getAudioTracks?.().map((track) => ({ enabled: track.enabled, muted: track.muted, readyState: track.readyState })) || [] };
       try {
         if (peer.analyser) {
           peer.analyser.getFloatTimeDomainData(peer.audioSamples);
@@ -364,15 +371,17 @@ function closePlaybackContext() {
         if (pair) { result.localCandidateType = stats.get(pair.localCandidateId)?.candidateType || null; result.remoteCandidateType = stats.get(pair.remoteCandidateId)?.candidateType || null; }
         stats.forEach((stat) => {
           if (stat.kind !== 'audio' && stat.mediaType !== 'audio') return;
-          if (stat.type === 'inbound-rtp') { result.inboundPacketsReceived += stat.packetsReceived || 0; result.totalAudioEnergy += stat.totalAudioEnergy || 0; }
+          if (stat.type === 'media-source') { if (Number.isFinite(stat.audioLevel)) result.sourceAudioLevel = stat.audioLevel; if (Number.isFinite(stat.totalAudioEnergy)) result.sourceTotalAudioEnergy = stat.totalAudioEnergy; }
+          if (stat.type === 'inbound-rtp') { result.inboundPacketsReceived += stat.packetsReceived || 0; result.totalAudioEnergy += stat.totalAudioEnergy || 0; if (Number.isFinite(stat.audioLevel)) result.inboundAudioLevel = stat.audioLevel; }
           if (stat.type === 'outbound-rtp') result.outboundPacketsSent += stat.packetsSent || 0;
         });
       } catch { result.statsUnavailable = true; }
       return result;
     }));
+    const localTracks = stream?.getAudioTracks().map((track) => ({ enabled: track.enabled, muted: track.muted, readyState: track.readyState })) || [];
     const trackCount = stream?.getTracks().filter((track) => track.readyState !== 'ended').length || 0;
     const remoteTrackCount = [...peers.values()].reduce((count, peer) => count + (peer.remoteStream?.getTracks().filter((track) => track.readyState !== 'ended').length || 0), 0);
-    return { voice, muted, trackCount, liveTrackCount: trackCount + remoteTrackCount, position: validPosition(members.find((member) => member.id === session?.id)), relayMode: iceConfig?.mode || null, peers: peerStats };
+    return { voice, muted, trackCount, liveTrackCount: trackCount + remoteTrackCount, localTracks, playbackContextState: playbackContext?.state || null, position: validPosition(members.find((member) => member.id === session?.id)), relayMode: iceConfig?.mode || null, peers: peerStats };
   }
   async function updateDiagnostics(generation) {
     const snapshot = await getDiagnostics();

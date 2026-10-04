@@ -12,7 +12,7 @@ Requires Node.js `>=22.12.0`.
 
 ```sh
 npm install
-npm test          # node --test: life model, persistence and server suites
+npm test          # life model, persistence and Node server suites
 ```
 
 ### Development
@@ -52,6 +52,7 @@ The client still loads if the server is unreachable, but it is **read-only**: it
 - **Venue view** built from procedural Three.js geometry — no downloaded models or textures.
 - **A separate life per city**, held on the server. Cash, needs, location and the action in progress are changed only by the server and settled against server time, so an action finishes even if you close the tab.
 - **Home and park activities:** Chill (11 seconds, energy +4, fun +10), Garri (5 seconds, hunger +20), Bath (6 seconds, hygiene +25), and Nap (15 seconds, energy +2 per second). Home amounts are explicit beta choices where the exact general formula was not observed. Nap retains accrued energy when stopped. Home travel uses free trek; other transport options have preview fares.
+- **Community helper job.** Apply in Phone → Jobs, go straight to the community desk, and work a 20-second shift for ₦300. Requires Energy and Hunger of at least 20; completion uses 10 Energy and 5 Hunger. Cancellation gives no reward. These are original beta rules, not a reproduced career schedule.
 - **Idempotent actions.** Every action carries a client-generated ID. A repeat returns the recorded outcome instead of charging twice, and reusing an ID for a different action is rejected.
 - **Device sessions.** A random secret in an `HttpOnly` cookie plus a nickname. This identifies a browser, not a person — it is not an account. Sessions expire, and there is no way to recover one.
 - **Community panel.** Public venues have live presence and text chat; home rooms are isolated per device identity. You can only join the room for the venue your character is actually in.
@@ -64,8 +65,18 @@ The client still loads if the server is unreachable, but it is **read-only**: it
 - **Very little content.** One venue has no activities, and most activities at the other are listed but disabled.
 - **No accounts.** No passwords, sign-in, account recovery or moving a life between devices.
 - **No moderation.** No blocking, reporting or chat filtering.
-- Jobs, skills, purchasable property and elections are not implemented. The home is a starter interior, not a property market.
-- **Storage is one JSON file** on the server's disk. A separate deployment target with different storage is being developed and is not part of this tree.
+- Skills, purchasable property and elections are not implemented; only the starter Community helper job is available. The home is a starter interior, not a property market.
+- **Node storage is one JSON file** on the server's disk. The optional Cloudflare adapter uses SQLite Durable Objects; deployment configuration is included in `wrangler.jsonc`.
+
+### Cloudflare adapter checks
+
+```sh
+npm ci --prefix deploy/tooling
+npm run build
+npm run test:edge
+```
+
+The edge suite uses pinned local tooling and the built static files. Running it does not deploy anything.
 
 ## Reference behaviour is provisional
 

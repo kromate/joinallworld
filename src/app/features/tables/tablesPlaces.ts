@@ -1,7 +1,7 @@
 // Where the game tables stand: the typed boundary to src/tables/places.js, which is plain data.
 // It is a file of its own so the HUD chip, which ships with the first download, knows only where
 // tables stand and downloads no game code or socket client.
-import { GAME_LABELS as GAME_LABELS_JS, TABLES as TABLES_JS, tableById as tableByIdJs, tablesAt as tablesAtJs } from '../../../tables/places.js'
+import { GAME_LABELS as GAME_LABELS_JS, TABLES as TABLES_JS, tableById as tableByIdJs, tablesAt as tablesAtJs } from '../../../tables/places.ts'
 import type { TableGameId } from '../../../types/growth.ts'
 
 /** One table of the city: it belongs to a venue and takes `seats` players at most. */

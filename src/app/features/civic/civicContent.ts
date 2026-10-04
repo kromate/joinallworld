@@ -4,7 +4,7 @@
 import {
   AD_COLOURS as AD_COLOURS_JS, AD_ICONS as AD_ICONS_JS, AD_TEXT as AD_TEXT_JS, BILLBOARDS as BILLBOARDS_JS,
   ELECTION as ELECTION_JS, RADIO as RADIO_JS, SEA_PLOTS as SEA_PLOTS_JS, STATE_HOUSE_TEXT as STATE_HOUSE_TEXT_JS,
-} from '../../../game/content/civic.js'
+} from '../../../game/content/civic.ts'
 import type { AdColour } from '../../../types/civic.ts'
 
 export const ELECTION = ELECTION_JS as unknown as Readonly<{

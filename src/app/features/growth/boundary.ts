@@ -2,7 +2,7 @@
 // (fetched the first time something is shared, never with the first download), the web-push
 // client, the events calendar, the away-card rule and the device token. Every cast for these
 // modules is here; a module that becomes TypeScript loses its lines here.
-import { EMAIL_CONSENT as EMAIL_CONSENT_JS, PUSH_CONSENT as PUSH_CONSENT_JS } from '../../../game/outreach.js'
+import { EMAIL_CONSENT as EMAIL_CONSENT_JS, PUSH_CONSENT as PUSH_CONSENT_JS } from '../../../game/outreach.ts'
 import { deviceToken as deviceTokenJs } from '../../../quick-start/entry.js'
 import type { PushSubscriptionLike, ShareFacts } from '../../../types/growth.ts'
 

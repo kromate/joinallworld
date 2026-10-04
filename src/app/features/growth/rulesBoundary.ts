@@ -2,8 +2,8 @@
 // (src/game/calendar.js) and the away-card rule (src/game/digest.js). Its own file so the panel
 // registry can compute badges, notifications and HUD slots without pulling in the rest of the
 // growth boundary.
-import { upcomingEvents as upcomingEventsJs, eventIcs as eventIcsJs } from '../../../game/calendar.js'
-import { awayCard as awayCardJs } from '../../../game/digest.js'
+import { upcomingEvents as upcomingEventsJs, eventIcs as eventIcsJs } from '../../../game/calendar.ts'
+import { awayCard as awayCardJs } from '../../../game/digest.ts'
 import type { CalendarOccurrence } from '../../../types/growth.ts'
 import type { PhoneNotification } from '../../types/panel.ts'
 

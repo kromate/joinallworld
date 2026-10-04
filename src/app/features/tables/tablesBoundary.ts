@@ -5,11 +5,11 @@
 import {
   T as T_JS, again as againJs, begin as beginJs, closeTable as closeTableJs, leave as leaveJs, openTable as openTableJs, play as playJs,
   refreshList as refreshListJs, reconnect as reconnectJs, setOption as setOptionJs, sit as sitJs, start as startJs,
-} from '../../../tables/client.js'
-import { penaltyRules as penaltyRulesJs } from '../../../tables/penalty-board.js'
-import { ZONES as ZONES_JS } from '../../../tables/penalty.js'
-import { whotRules as whotRulesJs } from '../../../tables/whot-board.js'
-import { SHAPES as SHAPES_JS, SHAPE_NAMES as SHAPE_NAMES_JS, SPECIAL as SPECIAL_JS, cardName as cardNameJs } from '../../../tables/whot.js'
+} from '../../../tables/client.ts'
+import { penaltyRules as penaltyRulesJs } from '../../../tables/penalty-board.ts'
+import { ZONES as ZONES_JS } from '../../../tables/penalty.ts'
+import { whotRules as whotRulesJs } from '../../../tables/whot-board.ts'
+import { SHAPES as SHAPES_JS, SHAPE_NAMES as SHAPE_NAMES_JS, SPECIAL as SPECIAL_JS, cardName as cardNameJs } from '../../../tables/whot.ts'
 import type { TableGameId, TableOptionValue, TableRating, TableStateFrame, TableSummary } from '../../../types/growth.ts'
 import type { FetchJson } from '../../types/client.ts'
 import type { ToastKind } from '../../types/panel.ts'

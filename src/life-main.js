@@ -159,7 +159,7 @@ async function loadScene() {
     telemetry.sceneReady(true, $('venue-scene').querySelector('canvas'));
     // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
     // (Nothing is built or drawn until the Map opens.)
-    void import('./map3d/index.js').catch(() => {});
+    void import('./map3d/index.ts').catch(() => {});
   } catch (error) {
     console.error('The scene could not be started:', error);
     telemetry.chunkFailed('scene', error); telemetry.sceneReady(false);
@@ -176,7 +176,7 @@ const mapUi = {};
 const keepMapUi = (event) => Object.assign(mapUi, event.detail || {});
 window.addEventListener('jaw:map-ui', keepMapUi);
 function loadMaps() {
-  mapsLoading ??= Promise.all([import('./map3d/index.js'), import('./world-map.js')]).then(([cityModule, worldModule]) => {
+  mapsLoading ??= Promise.all([import('./map3d/index.ts'), import('./world-map.ts')]).then(([cityModule, worldModule]) => {
     world = worldModule.createWorldMap($('map-scene'), {
       onOpenCity: () => showMapLayer('city'),
       onEnterCity: (cityId) => switchCity(cityId),

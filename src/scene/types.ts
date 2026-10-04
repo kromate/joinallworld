@@ -48,7 +48,8 @@ export interface Batch {
   light(x: number, y: number, z: number, colour: Colour, intensity?: number, distance?: number): Batch
   world(x: number, y: number, z: number): { x: number; y: number; z: number }
   readonly triangles: number
-  build(materials: SceneMaterials): BatchResult
+  /** Any material may back a layer (the map passes one shared material for all three). */
+  build(materials: Record<keyof SceneMaterials, THREE.Material>): BatchResult
   /** Added by footprintRecorder (movement.ts): tells the recorder where the two walls are. */
   walls?(size: { w: number; d: number }): void
 }

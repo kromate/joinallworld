@@ -135,7 +135,7 @@ export function createBatch(THREE: ThreeModule): Batch {
     world(x, y, z) { v.set(x, y, z).applyMatrix4(stack[stack.length - 1]!); return { x: v.x, y: v.y, z: v.z }; },
     get triangles(): number { let count = 0; for (const data of Object.values(layers)) count += data.idx.length; return count / 3; },
     /** Bake the batch into meshes. `materials` comes from sceneMaterials(kit). */
-    build(materials: SceneMaterials): BatchResult {
+    build(materials: Record<keyof SceneMaterials, THREE.Material>): BatchResult {
       const meshes: THREE.Mesh[] = [];
       let triangles = 0;
       // The three shared layers first, then each part's own meshes.

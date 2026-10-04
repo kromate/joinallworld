@@ -247,7 +247,7 @@ export const activeMoves = (kind: unknown): boolean => activeHandler(kind)?.move
  * longer in it: no venue room, no voice, no "people here". Everything that asks "is this player
  * really at their location?" uses this — never a comparison with one kind's name.
  */
-export const isDeparting = (state: Pick<LifeState, 'activeAction'> | null | undefined): boolean => Boolean(state?.activeAction) && activeMoves(state?.activeAction?.kind);
+export const isDeparting = (state: { activeAction?: { kind: string } | null } | null | undefined): boolean => Boolean(state?.activeAction) && activeMoves(state?.activeAction?.kind);
 /** Is the player in `venueId` right now — recorded there and not on their way out? */
 export const occupiesVenue = (state: Pick<LifeState, 'activeAction' | 'location'> | null | undefined, venueId: unknown): boolean => !!state && typeof venueId === 'string' && state.location === venueId && !isDeparting(state);
 

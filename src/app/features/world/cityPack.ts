@@ -22,8 +22,8 @@ interface LgaModule { resolveLga(pack: CityPack, latitude: number, longitude: nu
 /** The real modules, fetched now. */
 export async function loadCityPackApi(): Promise<CityPackApi> {
   const [regions, lga] = await Promise.all([
-    import('../../../map3d/regions.js') as unknown as Promise<RegionsModule>,
-    import('../../../map3d/lga.js') as unknown as Promise<LgaModule>,
+    import('../../../map3d/regions.ts') as unknown as Promise<RegionsModule>,
+    import('../../../map3d/lga.ts') as unknown as Promise<LgaModule>,
   ])
   return { has: regions.hasCityPack, load: regions.loadCityPack, resolve: lga.resolveLga }
 }

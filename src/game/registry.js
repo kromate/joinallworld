@@ -1,0 +1,183 @@
+/**
+ * RULES ENGINE REGISTRY — the contract for every game system.
+ * ===========================================================================
+ * The rules engine is pure: no I/O, no Date.now(), no Math.random(), no DOM. The same
+ * code runs on the Node server, the Cloudflare worker and (read-only, for display) the
+ * browser. The server is the only thing that ever applies an action.
+ *
+ * HOW TO ADD OR EXTEND A SYSTEM
+ * -----------------------------
+ * Every system file in `src/game/systems/` is already imported and registered, in a
+ * fixed order, by `src/game/systems/index.js`. You own your file(s); you never edit the
+ * index, this registry, `src/life.js` or another owner's file.
+ *
+ * A system is a default-exported plain object:
+ *
+ *   export default {
+ *     id: 'career',                       // unique; also the default state slice name
+ *     stateKeys: ['career'],              // every top-level state key this system writes
+ *
+ *     // Rebuild this system's slice from UNTRUSTED saved input. `input` is the raw saved
+ *     // object (already migrated to the current state.v); `state` is the fresh state being
+ *     // built — systems earlier in the order have already filled their keys. Write only your
+ *     // stateKeys. Never copy a value without validating it; fall back to defaults.
+ *     // ctx.isNew is true when no save existed (a brand-new life).
+ *     sanitize(input, state, ctx) { state.career = { ... } },
+ *
+ *     // Player actions, keyed by the `type` sent to POST /api/action. `payload` is an
+ *     // untrusted plain object (the server only guarantees it is an object under 2 KB):
+ *     // validate every field. Return ok(state, code) or fail(state, code, reason) from
+ *     // util.js — a failure MUST name the unmet prerequisite in `reason`.
+ *     actions: { 'apply-job': (state, payload, ctx) => ({ ok, code, state, reason? }) },
+ *
+ *     // Called on every settlement with the elapsed seconds, whether or not a timed
+ *     // action is running. dt can be large (a player returning after days): cap or
+ *     // batch your own work. ctx.now is the time at the END of the interval.
+ *     advance(state, dtSeconds, ctx) {},
+ *
+ *     // Optional derived, display-only data (never stored). Returned to the client UI
+ *     // as view[id] by viewLife(). Must not mutate state.
+ *     view(state, ctx) { return { ... } },
+ *
+ *     // Optional event listeners and modifiers — see CROSS-SYSTEM HOOKS below.
+ *     on: { 'activity.completed': (state, data, ctx) => {} },
+ *     modifiers: { 'skills.xpRate': (value, state, data, ctx) => value },
+ *
+ *     // Optional static activity definitions this system attaches to venue spots
+ *     // (see systems/activities.js for the definition format).
+ *     activities: [{ id: 'my-activity', where: { venue: 'park', spot: 'work' }, ... }],
+ *
+ *     // Optional handlers for kinds of timed action held in state.activeAction
+ *     // ({ kind, id, duration, remaining, ... }). Only one timed action runs at a time.
+ *     active: { travel: { sanitize(value, state, ctx), tick?(state, active, elapsedSeconds, ctx),
+ *                         complete(state, active, ctx), cancel?(state, active, ctx) } },
+ *   };
+ *
+ * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId? }`:
+ *   now     server time in ms — the only clock you may read (see clock.js for Lagos time)
+ *   cityId  the city this life belongs to
+ *   rng     () => float in [0,1), seeded from the action ID or the settlement interval, so
+ *           a replayed request or a re-run test produces the same outcome
+ *
+ * WHAT YOU MAY IMPORT (inside src/game/)
+ *   registry.js (emit, modify), util.js, clock.js, api.js (core systems' public functions:
+ *   wallet, needs, skills, inventory, activities, arrival) and any file in content/.
+ * WHAT YOU MAY NOT IMPORT
+ *   another feature system (systems/*.js other than through api.js), src/life.js, anything
+ *   under src/ui, src/scene or server/, Node built-ins, or browser globals.
+ *
+ * STATE
+ *   One JSON object per life per city. New systems keep everything under `state[id]`.
+ *   Legacy top-level keys are grandfathered to their owning system (cash → wallet,
+ *   needs → needs, job/completedShifts → career, homeOwned → property, location/spot/
+ *   activeAction/name/message → core/activities). `state.v` is the global schema version,
+ *   owned by src/life.js; do not bump it. If you change the shape of your own slice, make
+ *   your sanitize() accept the older shape — that is your migration.
+ *
+ * CROSS-SYSTEM HOOKS — systems never import each other
+ * ----------------------------------------------------
+ *   emit(state, event, data, ctx)        tell everyone something happened (may mutate state)
+ *   modify(state, key, base, data, ctx)  ask everyone to adjust a value; returns the result
+ *
+ * Worked example — a trait that speeds up skills, a perk that discounts purchases, and a
+ * goal that watches for a meal, without goals/traits/home importing one another:
+ *
+ *   // systems/skills.js (core) computes the rate before granting XP:
+ *   const rate = modify(state, 'skills.xpRate', 1, { skill }, ctx);
+ *
+ *   // systems/onboarding.js (character owner) contributes the trait:
+ *   modifiers: { 'skills.xpRate': (value, state) => state.onboarding.traits?.includes('fast-learner') ? value * 1.25 : value },
+ *
+ *   // systems/home.js (home owner) asks for the price and announces the purchase:
+ *   const price = Math.round(modify(state, 'shop.price', item.price, { item }, ctx));
+ *   emit(state, 'item.bought', { item: item.id, price }, ctx);
+ *
+ *   // systems/goals.js (character owner) contributes the discount perk and observes events:
+ *   modifiers: { 'shop.price': (value, state) => state.goals.perks?.includes('discount') ? value * 0.9 : value },
+ *   on: { 'item.bought': (state, data, ctx) => complete(state, 'buy-something', ctx),
+ *         'activity.completed': (state, { tags }, ctx) => { if (tags.includes('food')) complete(state, 'eat', ctx); } },
+ *
+ * Events emitted by the foundation:
+ *   'activity.started'   { id, def }
+ *   'activity.completed' { id, def, tags, choice }
+ *   'activity.unpaid'    { id, def }  (finished but could no longer be paid for; no effects)
+ *   'action.cancelled'   { kind, id }
+ *   'wallet.changed'     { amount, reason, balance }
+ *   'skill.levelup'      { skill, level }
+ *   'travel.arrived'     { venue, from }
+ *   'job.applied'        { job }            (ported starter job)
+ *   'shift.completed'    { job, activity }  (ported starter job)
+ * Modifier keys consulted by the foundation (base value → your adjusted value):
+ *   'needs.decayRate'  data { need }   base 1 — multiply background decay
+ *   'skills.xpRate'    data { skill }  base 1 — multiply XP gains
+ *   'activity.cost'    data { def }    base def.cost
+ *   'activity.reward'  data { def }    base def.reward
+ *   'activity.block'   data { def }    base null — return { code, reason } to veto a start
+ *   'travel.fare'      data { mode, destination }  base fare
+ * Owners add their own names as `<system>.<thing>` (e.g. 'shop.price', 'friend.made') and
+ * list them in their file header. Listeners must tolerate events they do not know.
+ *
+ * HOW TO TEST
+ *   node --test picks up src/** and server/** `*.test.js`. Your pre-created test file imports the
+ *   public entry only:
+ *     import { createLife, dispatch, advanceLife, viewLife } from '../life.js';
+ *     import { makeContext } from './util.js';
+ *     const ctx = makeContext({ now: Date.UTC(2026, 0, 5, 9), cityId: 'lagos', seed: 't1' });
+ *     const state = createLife(null, ctx);
+ *     assert.equal(dispatch(state, { type: 'apply-job', payload: { id: 'x' } }, ctx).code, 'applied');
+ *     advanceLife(state, 60, { ...ctx, now: ctx.now + 60000 });
+ *   Always include a test that feeds your sanitize() hostile input.
+ */
+
+const order = [];
+const byId = new Map();
+const actionTable = new Map();
+const activeTable = new Map();
+const MAX_EMIT_DEPTH = 8;
+let depth = 0;
+
+export function registerSystem(def) {
+  if (!def || typeof def.id !== 'string' || byId.has(def.id)) throw new Error(`Invalid or duplicate system: ${def?.id}`);
+  if (!Array.isArray(def.stateKeys) || typeof def.sanitize !== 'function') throw new Error(`System ${def.id} needs stateKeys and sanitize`);
+  for (const key of def.stateKeys) {
+    const owner = order.find((other) => other.stateKeys.includes(key));
+    if (owner) throw new Error(`State key "${key}" is owned by ${owner.id}, not ${def.id}`);
+  }
+  for (const type of Object.keys(def.actions || {})) {
+    if (actionTable.has(type)) throw new Error(`Action "${type}" is already registered`);
+    actionTable.set(type, def.actions[type]);
+  }
+  for (const kind of Object.keys(def.active || {})) {
+    if (activeTable.has(kind)) throw new Error(`Active kind "${kind}" is already registered`);
+    activeTable.set(kind, def.active[kind]);
+  }
+  order.push(def);
+  byId.set(def.id, def);
+  return def;
+}
+
+export const systems = () => order;
+export const getSystem = (id) => byId.get(id);
+export const actionTypes = () => [...actionTable.keys()];
+export const hasAction = (type) => typeof type === 'string' && actionTable.has(type);
+export const actionHandler = (type) => actionTable.get(type);
+export const activeHandler = (kind) => (typeof kind === 'string' ? activeTable.get(kind) : undefined);
+
+/** Notify every system, in registration order. Listeners may mutate state and emit further events. */
+export function emit(state, event, data, ctx) {
+  if (depth >= MAX_EMIT_DEPTH) return;
+  depth += 1;
+  try {
+    for (const def of order) def.on?.[event]?.(state, data, ctx);
+  } finally { depth -= 1; }
+}
+
+/** Fold a value through every system's modifier for `key`, in registration order. */
+export function modify(state, key, base, data, ctx) {
+  let value = base;
+  for (const def of order) {
+    const fn = def.modifiers?.[key];
+    if (fn) value = fn(value, state, data, ctx);
+  }
+  return value;
+}

@@ -1,3 +1,9 @@
+/**
+ * Node host: HTTP + WebSocket plumbing, static files and the server context.
+ * Everything Node-specific lives here and in store.js. Rules shared with the Cloudflare worker
+ * live in protocol.js, life-service.js and src/life.js. Endpoints live in routes/*.js and
+ * socket message types in ws/*.js — see routes/index.js and ws/index.js for those contracts.
+ */
 import http from 'node:http';
 import { randomUUID } from 'node:crypto';
 import { readFile, stat } from 'node:fs/promises';
@@ -5,12 +11,11 @@ import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.js';
-import { VENUES } from '../src/life.js';
 import { settleCity, applyLifeAction } from './life-service.js';
+import { buildRoutes } from './routes/index.js';
+import { buildSocketHandlers } from './ws/index.js';
+import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection } from './protocol.js';
 
-import { CITY_IDS, ACTION_WINDOW_MS, MAX_VOICE_MEMBERS, UUID_PATTERN as uuid, protocolError as fail, validateName, validateActionPayload, publicSession, isSameOrigin, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, archivedLife, renewSession, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig, validatePosition, withinVoiceDistance, venueRoomKey } from './protocol.js';
-
-const cities = new Set(CITY_IDS);
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
 const cookieId = (req) => (req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith('sid='))?.slice(4);
 const sameOrigin = req => isSameOrigin(req.headers.origin, req.headers.host);
@@ -24,8 +29,8 @@ async function jsonBody(req) {
   try { const value = JSON.parse(body); if (!value || typeof value !== 'object' || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions = 10000, voiceConfigProvider } = {}) {
-  const store = await createStore(dataDir);
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions = 10000, voiceConfigProvider, store: providedStore, routes: routeModules, wsModules } = {}) {
+  const store = providedStore || await createStore(dataDir);
   if (!Number.isFinite(sessionTtlMs) || sessionTtlMs < 60000) throw new Error('Invalid session TTL');
   function archiveSession(db, secret, session) {
     db.archivedLives ||= {};
@@ -77,84 +82,22 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       if (url.pathname.startsWith('/api/')) {
         if (!sameOrigin(req)) throw fail(403, 'origin_rejected');
         if (!allow(`http:${req.socket.remoteAddress}`, 600)) throw fail(429, 'rate_limited');
-        if (url.pathname === '/api/session' && req.method === 'POST') {
-          const body = await jsonBody(req);
-          const name = validateName(body.name);
-          const session = await store.transact(db => {
-            for (const [secret, record] of Object.entries(db.sessions)) if (record.expiresAt <= now()) archiveSession(db, secret, record);
-            let current = sessionFor(req, db);
-            if (!current) {
-              if (Object.keys(db.sessions).length >= maxActiveSessions) throw fail(503, 'device_capacity');
-              const id = randomUUID();
-              current = db.sessions[id] = { secret: id, publicId: randomUUID(), name, expiresAt: now() + sessionTtlMs, cities: {}, actions: {} };
-            }
-            current.name = name;
-            current.expiresAt = now() + sessionTtlMs;
-            return { secret: current.secret, session: publicSession(current) };
-          });
-          reply(res, 200, { session: session.session, serverTime: now() }, { 'Set-Cookie': cookieHeader(req, session.secret) });
-          refreshNames(session.session); return;
-        }
-        if (url.pathname === '/api/session' && req.method === 'GET') {
-          const session = await store.transact(db => sessionFor(req, db, true));
-          if (!session) throw fail(401, 'device_session_required');
-          return reply(res, 200, { session: publicSession(session), serverTime: now() }, renewedHeaders(req));
-        }
-        if (url.pathname === '/api/voice-config' && req.method === 'GET') {
-          const session = await store.transact(db => {
-            const current = sessionFor(req, db, true);
-            if (!current) throw fail(401, 'device_session_required');
-            const live = [...wss.clients].some(ws => {
-              if (ws.session.id !== current.publicId || ws.readyState !== WebSocket.OPEN || !ws.room || ws.expiresAt <= now()) return false;
-              const city = ws.room.split(':')[0];
-              const state = settle(current, city);
-              return canJoinVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, current.publicId);
-            });
-            if (!live) throw fail(403, 'room_membership_required');
-            return current;
-          });
-          if (!allow(`voice-config:${session.publicId}`, 6)) throw fail(429, 'voice_config_rate_limited');
-          let config = STUN_ONLY_CONFIG;
-          if (voiceConfigProvider) {
-            try { config = validateVoiceConfig(await voiceConfigProvider(publicSession(session)), now()); }
-            catch { throw fail(503, 'voice_config_unavailable'); }
-          }
-          return reply(res, 200, { ...config, radius: VOICE_RADIUS, serverTime: now() }, renewedHeaders(req));
-        }
-        if (url.pathname === '/api/life' && req.method === 'GET') {
-          const city = url.searchParams.get('city');
-          if (!cities.has(city)) throw fail(400, 'invalid_city');
-          const state = await store.transact(db => {
-            const session = sessionFor(req, db, true);
-            if (!session) throw fail(401, 'device_session_required');
-            return settle(session, city);
-          });
-          await validateMemberships(cookieId(req), city, state);
-          return reply(res, 200, { state, serverTime: now() }, renewedHeaders(req));
-        }
-        if (url.pathname === '/api/action' && req.method === 'POST') {
-          const body = await jsonBody(req);
-          const actionAt = validateActionPayload(body, now(), actionWindowMs);
-          const outcome = await store.transact(db => {
-            const session = sessionFor(req, db, true);
-            if (!session) throw fail(401, 'device_session_required');
-            validateActionPayload(body, now(), actionWindowMs);
-            pruneReceipts(session.actions, now(), actionWindowMs);
-            const state = settle(session, body.cityId);
-            const fingerprint = actionFingerprint(body);
-            const old = readReceipt(session.actions, body);
-            if (old) {
-              return { ok: old.ok, code: old.code, state, duplicate: true };
-            }
-            if (Object.keys(session.actions).length >= 10000) throw fail(429, 'action_history_full');
-            const result = applyLifeAction(state, body);
-            session.actions[body.actionId] = { actionAt, fingerprint, ok: result.ok, code: result.code };
-            return result;
-          });
-          await validateMemberships(cookieId(req), body.cityId, outcome.state);
-          return reply(res, 200, { ...outcome, serverTime: now() }, renewedHeaders(req));
-        }
-        throw fail(404, 'not_found');
+        const route = routes.match(req.method, url.pathname);
+        if (!route) throw fail(404, 'not_found');
+        const request = {
+          method: req.method, path: url.pathname, params: route.params, query: url.searchParams, ip: req.socket.remoteAddress,
+          json: () => jsonBody(req),
+          session: (db, { renew = false } = {}) => sessionFor(req, db, renew),
+          requireSession(db, options) { const session = this.session(db, options); if (!session) throw fail(401, 'device_session_required'); return session; },
+          // Foundation-only: the cookie secret and the raw request, used by core routes for cookies and room checks.
+          secret: cookieId(req), raw: req,
+        };
+        const result = await route.handler(request) || {};
+        const status = result.status || 200;
+        const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body) ? { ...result.body, serverTime: now() } : result.body ?? {};
+        reply(res, status, payload, { ...(result.renew ? renewedHeaders(req) : {}), ...result.headers });
+        result.after?.();
+        return;
       }
       if (!['GET', 'HEAD'].includes(req.method)) throw fail(405, 'method_not_allowed');
       const root = resolve(distDir);
@@ -170,37 +113,34 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     }
   });
   const wss = new WebSocketServer({ noServer: true, maxPayload: 16384 });
-  const rooms = new Map();
-  const chatHistory = new Map();
   const send = (ws, message) => { if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(message)); };
-  function presence(room) {
-    const members = new Map();
-    for (const ws of rooms.get(room) || []) {
-      const old = members.get(ws.session.id);
-      members.set(ws.session.id, { ...ws.session, position: { ...ws.position }, enabled: (old?.enabled || ws.voice.enabled), muted: old ? old.muted && ws.voice.muted : ws.voice.muted });
-    }
-    for (const ws of rooms.get(room) || []) send(ws, { type: 'presence', members: [...members.values()] });
-  }
-  function leave(ws) {
-    if (!ws.room) return;
-    const room = ws.room;
-    rooms.get(room)?.delete(ws);
-    if (!rooms.get(room)?.size) rooms.delete(room);
-    ws.room = null;
-    presence(room);
-  }
-  function validateMemberships(secret, city, state) {
-    for (const ws of wss.clients) if (ws.secret === secret && ws.room?.startsWith(`${city}:`)
-      && (ws.room !== venueRoomKey(city, state.location, ws.session.id) || state.activeAction?.kind === 'travel')) {
-      leave(ws); ws.voice = { enabled: false, muted: true };
-      send(ws, { type: 'error', code: 'venue_mismatch', error: 'venue_mismatch' });
-    }
-  }
-  function refreshNames(session) {
-    const changed = new Set();
-    for (const ws of wss.clients) if (ws.session.id === session.id) { ws.session.name = session.name; ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); if (ws.room) changed.add(ws.room); }
-    for (const room of changed) presence(room);
-  }
+  /**
+   * The server context handed to every route and ws module. Documented in routes/index.js.
+   * `core` holds foundation internals (cookies, sockets, room checks); feature modules use the rest.
+   */
+  const ctx = {
+    store, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS,
+    settle,
+    act: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }),
+    push(publicId, message) {
+      let sent = 0;
+      for (const ws of wss.clients) if (ws.session?.id === publicId && ws.readyState === WebSocket.OPEN) { send(ws, message); sent += 1; }
+      return sent;
+    },
+    online: (publicId) => [...wss.clients].some(ws => ws.session?.id === publicId && ws.readyState === WebSocket.OPEN),
+    config: { sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider },
+    core: {
+      archiveSession,
+      newIdentity: () => ({ secret: randomUUID(), publicId: randomUUID() }),
+      newId: () => randomUUID(),
+      cookieHeader: (request, secret) => cookieHeader(request.raw, secret),
+      sockets: () => [...wss.clients],
+      isOpen: (ws) => ws.readyState === WebSocket.OPEN,
+      sessionOf: (ws, db) => db.sessions[ws.secret],
+    },
+  };
+  const sockets = buildSocketHandlers(ctx, wsModules);
+  const routes = buildRoutes(ctx, routeModules);
   server.on('upgrade', async (req, socket, head) => {
     try {
       if (req.url !== '/socket' || !req.headers.origin || !sameOrigin(req) || !allow(`upgrade:${req.socket.remoteAddress}`, 60)) throw Error('Rejected');
@@ -213,9 +153,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         ws.secret = session.secret;
         ws.expiresAt = session.expiresAt;
         ws.lastSessionRenewedAt = now();
-        ws.voice = { enabled: false, muted: true };
-        ws.position = { x: 0, z: 0 };
-        ws.lastMoves = [];
+        sockets.open(ws);
         wss.emit('connection', ws);
       });
     } catch { socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n'); }
@@ -244,7 +182,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     ws.alive = true;
     ws.on('pong', () => { ws.alive = true; });
     ws.on('error', () => {});
-    ws.on('close', () => leave(ws));
+    ws.on('close', () => sockets.close(ws));
     let messages = Promise.resolve();
     ws.on('message', (raw, binary) => {
       if (binary || !allow(`ws:${ws.session.id}`, 600)) {
@@ -263,57 +201,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         message = JSON.parse(raw.toString());
         if (!message || typeof message !== 'object') throw Error('invalid_message');
         await renewSocketSession(ws);
-        if (message.type === 'join') {
-          if (!cities.has(message.cityId) || !Object.hasOwn(VENUES, message.venueId)) throw Error('invalid_room');
-          const allowed = await store.transact(db => {
-            const session = db.sessions[ws.secret];
-            if (!session || session.expiresAt <= now()) throw Error('device_session_required');
-            const state = settle(session, message.cityId);
-            return canJoinVenue(state, message.venueId);
-          });
-          if (!allowed) throw Error('venue_mismatch');
-          if (ws.readyState !== WebSocket.OPEN) return;
-          const room = venueRoomKey(message.cityId, message.venueId, ws.session.id);
-          leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.room = room;
-          if (!rooms.has(room)) rooms.set(room, new Set());
-          rooms.get(room).add(ws); presence(room); return;
-        }
-        if (!ws.room) throw Error('join_required');
-        if (message.type === 'move') {
-          const position = validatePosition(message);
-          ws.lastMoves = ws.lastMoves.filter(time => time > now() - 1000);
-          if (ws.lastMoves.length >= 5) throw Error('move_rate_limited');
-          ws.lastMoves.push(now());
-          for (const peer of rooms.get(ws.room)) if (peer.session.id === ws.session.id) peer.position = position;
-          presence(ws.room); return;
-        }
-        if (message.type === 'voice-state') {
-          if (typeof message.enabled !== 'boolean' || typeof message.muted !== 'boolean') throw Error('invalid_voice_state');
-          const enabled = new Set([...rooms.get(ws.room)].filter(peer => peer.voice.enabled).map(peer => peer.session.id));
-          if (message.enabled && !enabled.has(ws.session.id) && enabled.size >= MAX_VOICE_MEMBERS) throw Error('voice_room_full');
-          ws.voice = { enabled: message.enabled, muted: message.muted }; presence(ws.room); return;
-        }
-        if (message.type === 'signal') {
-          if (typeof message.to !== 'string' || !message.data || typeof message.data !== 'object' || JSON.stringify(message.data).length > 12000) throw Error('invalid_signal');
-          const peers = [...rooms.get(ws.room)].filter(peer => peer.session.id === message.to && peer !== ws);
-          if (!peers.length) throw Error('peer_not_in_room');
-          const nearby = peers.filter(peer => withinVoiceDistance(ws.position, peer.position));
-          if (!nearby.length) throw Error('peer_out_of_range');
-          for (const peer of nearby) send(peer, { type: 'signal', from: ws.session.id, data: message.data }); return;
-        }
-        if (message.type === 'chat') {
-          const body = typeof message.body === 'string' ? message.body.trim() : '';
-          const clientId = message.clientId;
-          if (!body || body.length > 500 || /[\u0000-\u0008\u000b-\u001f\u007f]/.test(body) || (clientId !== undefined && (typeof clientId !== 'string' || clientId.length > 80 || !clientId))) throw Error('invalid_chat');
-          if (!allow(`chat:${ws.session.id}`, 30)) throw Error('rate_limited');
-          const key = `${ws.session.id}:${ws.room}`;
-          const history = chatHistory.get(key) || new Map();
-          if (clientId && history.has(clientId)) { send(ws, history.get(clientId)); return; }
-          const chat = { type: 'chat', id: randomUUID(), clientId, from: { ...ws.session }, body, at: now() };
-          if (clientId) { history.set(clientId, chat); if (history.size > 100) history.delete(history.keys().next().value); chatHistory.set(key, history); }
-          for (const peer of rooms.get(ws.room)) send(peer, chat); return;
-        }
-        throw Error('invalid_message');
+        const entry = typeof message.type === 'string' ? sockets.messages.get(message.type) : undefined;
+        // Unknown types keep their historical replies: join_required outside a room, invalid_message inside one.
+        if (!entry) throw Error(ws.room ? 'invalid_message' : 'join_required');
+        if (entry.room && !ws.room) throw Error('join_required');
+        await entry.handle(ws, message);
       } catch (error) { send(ws, { type: 'error', code: error.message, error: error.message, ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));
     });

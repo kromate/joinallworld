@@ -1,3 +1,8 @@
+// Portable protocol rules shared by the Node server and the Cloudflare worker.
+// No Node-only imports here (no node:*, ws or fs): the worker bundles this file as-is.
+import { hasAction } from '../src/life.js';
+
+export const MAX_PAYLOAD_BYTES = 2048;
 export const CITY_IDS = Object.freeze(['lagos', 'ibadan']);
 export const SESSION_TTL_MS = 30 * 86400000;
 export const ACTION_WINDOW_MS = 86400000;
@@ -16,8 +21,26 @@ export function parseActionId(id, now, windowMs = ACTION_WINDOW_MS) {
   if (at < now - windowMs || at > now + 30000) throw protocolError(409, 'action_expired');
   return at;
 }
+const isPlainObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+/** Stable JSON: object keys sorted at every depth, so equal payloads always fingerprint equally. */
+export function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (isPlainObject(value)) return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
+  return JSON.stringify(value) ?? 'null';
+}
+/**
+ * Validates the envelope of POST /api/action: `{ actionId, cityId, type, id?, mode?, payload? }`.
+ * `type` must be an action registered by a game system; `payload`, when present, must be a
+ * plain object whose JSON is at most MAX_PAYLOAD_BYTES. Field-level validation of the payload
+ * belongs to the system that owns the action type.
+ */
 export function validateActionPayload(body, now, windowMs = ACTION_WINDOW_MS) {
-  if (!body || typeof body !== 'object' || !CITY_IDS.includes(body.cityId) || !['activity', 'cancel', 'travel', 'spot', 'apply-job'].includes(body.type)) throw protocolError(400, 'invalid_action');
+  if (!body || typeof body !== 'object' || !CITY_IDS.includes(body.cityId) || !hasAction(body.type)) throw protocolError(400, 'invalid_action');
+  if (body.payload !== undefined) {
+    let size = Infinity;
+    try { if (isPlainObject(body.payload)) size = JSON.stringify(body.payload).length; } catch {}
+    if (size > MAX_PAYLOAD_BYTES) throw protocolError(400, 'invalid_payload');
+  }
   return parseActionId(body.actionId, now, windowMs);
 }
 export function publicSession(session) { return { id: session.publicId, name: session.name }; }
@@ -26,7 +49,11 @@ export function isSameOrigin(origin, host, { requireOrigin = false } = {}) {
   try { const url = new URL(origin); return url.host === host && ['http:', 'https:'].includes(url.protocol); } catch { return false; }
 }
 export function canJoinVenue(state, venueId) { return state.location === venueId && state.activeAction?.kind !== 'travel'; }
-export function actionFingerprint(body) { return JSON.stringify([body.cityId, body.type, body.id, body.mode]); }
+/** Identity of a request for idempotency. Covers the payload; without one it equals the pre-payload format, so stored receipts stay valid. */
+export function actionFingerprint(body) {
+  const parts = [body.cityId, body.type, body.id, body.mode];
+  return body.payload === undefined ? JSON.stringify(parts) : `${JSON.stringify(parts)}${canonicalJson(body.payload)}`;
+}
 export function pruneReceipts(actions, now, windowMs = ACTION_WINDOW_MS) {
   for (const [id, receipt] of Object.entries(actions)) if (receipt.actionAt < now - windowMs) delete actions[id];
 }
@@ -83,4 +110,15 @@ export function validateVoiceConfig(config, now) {
 
 export function venueRoomKey(cityId, venueId, publicId) {
   return venueId === 'home' ? `${cityId}:home:${publicId}` : `${cityId}:${venueId}`;
+}
+
+
+/**
+ * Namespaced top-level collection inside the stored document (db.accounts, db.social, ...),
+ * created on first use. Call it inside store.transact(); pass the default for a non-object.
+ */
+export function collection(db, name, initial = {}) {
+  if (typeof name !== 'string' || !/^[a-z][a-zA-Z0-9]{1,31}$/.test(name) || ['version', 'sessions', 'archivedLives'].includes(name)) throw new Error(`Invalid collection name: ${name}`);
+  if (db[name] === undefined || db[name] === null) db[name] = initial;
+  return db[name];
 }

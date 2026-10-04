@@ -1,0 +1,25 @@
+/* Shared design tokens. Panels use these instead of hard-coded values so the game stays consistent. */
+:root {
+  /* colour */
+  --c-ink: #20232c;
+  --c-muted: #687079;
+  --c-surface: rgba(250, 250, 249, .94);
+  --c-surface-solid: #fff;
+  --c-line: #e4e5e3;
+  --c-fill: #f5f6f7;
+  --c-green: #46a86d;
+  --c-green-dark: #256b45;
+  --c-green-soft: #edf4ee;
+  --c-amber: #e8a643;
+  --c-red: #a2542a;
+  --c-night: #182a25;
+  /* spacing */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  /* radii */
+  --r-chip: 20px; --r-card: 23px; --r-sheet: 26px; --r-round: 50%;
+  /* type */
+  --font: 'DM Sans', Arial, sans-serif;
+  --t-small: 10px; --t-body: 13px; --t-title: 16px; --t-heading: 20px;
+  /* touch */
+  --tap: 40px;
+}

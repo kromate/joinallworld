@@ -63,17 +63,17 @@ test('cancelled actions have no effects; overlapping and invalid time are harmle
 });
 
 test('unknown outcomes and skill-locked actions are catalogued but unavailable', () => {
-  assert.ok(VENUES.park.spots.trees.actions.some((action) => action.id === 'play-ayo'));
+  assert.ok(VENUES.park.spots.trees.activities.some((action) => action.id === 'play-ayo'));
   assert.equal(VENUES.park.district, 'Lagos Island');
   assert.equal(VENUES.library.district, 'Victoria Island');
   const state = createLife();
   for (const spot of Object.values(VENUES.park.spots)) {
     state.spot = spot.id;
-    for (const action of spot.actions.filter((item) => item.id !== 'chill' && !item.beta)) {
+    for (const action of spot.activities.filter((item) => item.id !== 'chill' && !item.beta)) {
       assert.equal(action.unavailable, true);
       assert.equal(action.effects, undefined);
-      assert.ok(action.source);
-      assert.equal(action.placeholder, true);
+      assert.ok(action.note);
+
       assert.equal(startActivity(state, action.id).code, 'unavailable');
       assert.equal(state.activeAction, null);
       assert.equal(state.cash, 5000);

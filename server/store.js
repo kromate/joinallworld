@@ -1,6 +1,14 @@
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { join } from 'node:path';
 
+/**
+ * JSON file store (Node only). The storage interface the rest of the server relies on is just:
+ *   transact(fn(db)) → Promise<result>   serialised read-modify-write; a throw discards changes
+ *   read(fn(db))     → Promise<result>   read-only snapshot
+ * over one JSON document `{ version, sessions, archivedLives?, <namespaced collections> }`.
+ * Route and ws modules reach their own collection with collection(db, name) from protocol.js,
+ * which creates it on first use; nothing outside this file may assume a file on disk.
+ */
 export async function createStore(dataDir) {
   await mkdir(dataDir, { recursive: true });
   const file = join(dataDir, 'devices.json');

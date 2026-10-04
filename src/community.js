@@ -20,7 +20,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     audio: $('.community-audio'), device: $('.community-device'), deviceSelect: $('#community-microphone'), feedback: $('.community-feedback'), retry: $('.community-retry'),
   };
   let room = { cityId, venueId }, session = null, socket = null, members = [], stream = null;
-  let destroyed = false, connected = false, roomReady = false, voice = false, muted = false, joiningVoice = false;
+  let destroyed = false, connected = false, roomReady = false, roomRevoked = false, voice = false, muted = false, joiningVoice = false;
   let reconnectTimer = null, attempts = 0, voiceGeneration = 0, selectedDevice = '', diagnosticsTimer = null;
   let iceConfig = null, iceConfigRequest = null, playbackContext = null;
   const VOICE_RADIUS = 12, SPACE_BOUND = 20;
@@ -271,7 +271,10 @@ function closePlaybackContext() {
   function receive(event) {
     let message; try { message = JSON.parse(event.data); } catch { return; }
     if (message.type === 'presence') {
-      members = message.members || []; rejectedPeers.clear(); roomReady = true; renderMembers(); retryPending(); syncPeers(); voiceStatus();
+      const wasRevoked = roomRevoked; members = message.members || [];
+      if (roomRevoked && !members.some((member) => member.id === session?.id)) return;
+      roomRevoked = false; if (wasRevoked) { feedback(''); el.connection.textContent = connected ? 'Connected' : 'Connecting…'; } el.compose.querySelector('input').disabled = false; el.compose.querySelector('button').disabled = false;
+      rejectedPeers.clear(); roomReady = true; renderMembers(); retryPending(); syncPeers(); voiceStatus();
     } else if (message.type === 'chat') {
       if (seen.has(message.id)) return;
       seen.add(message.id); if (seen.size > 100) seen.delete(seen.values().next().value);
@@ -280,6 +283,19 @@ function closePlaybackContext() {
       else appendChat(message);
     } else if (message.type === 'signal') receiveSignal(message);
     else if (message.type === 'error') {
+      if ((message.error || message.code) === 'venue_mismatch') {
+        roomRevoked = true; roomReady = false; members = []; rejectedPeers.clear();
+        clearTimeout(reconnectTimer); reconnectTimer = null; el.retry.hidden = true;
+        leaveVoice(false); renderMembers();
+        for (const pendingMessage of pending.values()) {
+          pendingMessage.status.textContent = 'Not sent: you moved to another place';
+          pendingMessage.retry?.remove();
+        }
+        pending.clear(); el.compose.querySelector('input').disabled = true; el.compose.querySelector('button').disabled = true;
+        el.connection.textContent = 'Room changed';
+        feedback('You moved to another place. Return to the game to reconnect here.');
+        return;
+      }
       const rejected = pending.get(message.clientId);
       if (rejected) {
         rejected.failed = true; rejected.sent = false; rejected.status.textContent = 'Not sent';
@@ -305,16 +321,17 @@ function closePlaybackContext() {
     }
   }
   function connect() {
-    if (destroyed || !session || socket?.readyState === WebSocket.OPEN || socket?.readyState === WebSocket.CONNECTING) return;
+    if (destroyed || roomRevoked || !session || socket?.readyState === WebSocket.OPEN || socket?.readyState === WebSocket.CONNECTING) return;
     clearTimeout(reconnectTimer); roomReady = false; el.retry.hidden = true; report(attempts ? 'Reconnecting…' : 'Connecting…'); voiceStatus();
     const current = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/socket`); socket = current;
-    current.onopen = () => { if (destroyed || socket !== current) return; connected = true; attempts = 0; report('Connected'); send({ type: 'join', ...room }); };
+    current.onopen = () => { if (destroyed || socket !== current) return; connected = true; attempts = 0; report('Connected'); if (!roomRevoked) send({ type: 'join', ...room }); };
     current.onmessage = (event) => { if (!destroyed && socket === current) receive(event); };
     current.onclose = () => {
       if (destroyed || socket !== current) return;
       socket = null; connected = false; roomReady = false; members = []; renderMembers(); leaveVoice(false);
       for (const message of pending.values()) { message.sent = false; if (!message.failed) message.status.textContent = 'Pending reconnection'; }
       report('Disconnected');
+      if (roomRevoked) { el.retry.hidden = true; feedback('You moved to another place. Return to the game to reconnect here.'); return; }
       if (attempts < 5) { const delay = Math.min(1000 * 2 ** attempts, 15000); attempts++; reconnectTimer = setTimeout(connect, delay); }
       else { el.retry.hidden = false; feedback('The room is offline. Reconnect when the server is available.'); }
     };
@@ -411,9 +428,9 @@ function closePlaybackContext() {
   listen(el.join, 'click', joinVoice);
   listen(el.leave, 'click', () => leaveVoice());
   listen(el.mute, 'click', () => { muted = !muted; stream?.getAudioTracks().forEach((track) => { track.enabled = !muted; }); send({ type: 'voice-state', enabled: voice, muted }); voiceStatus(); });
-  listen(el.retry, 'click', () => { attempts = 0; feedback(''); connect(); });
+  listen(el.retry, 'click', () => { if (roomRevoked) return; attempts = 0; feedback(''); connect(); });
   listen(el.compose, 'submit', (event) => {
-    event.preventDefault(); const input = el.compose.querySelector('input'), body = input.value.trim();
+    event.preventDefault(); if (roomRevoked) return; const input = el.compose.querySelector('input'), body = input.value.trim();
     if (!body) return;
     if (pending.size >= 25) { feedback('Wait for pending messages to send before adding more.'); return; }
     const clientId = crypto.randomUUID(), row = appendChat({ body, from: session }, roomReady ? 'Sending…' : 'Pending reconnection');
@@ -444,11 +461,11 @@ function closePlaybackContext() {
     getDiagnostics,
     moveTo,
     join(nextCityId, nextVenueId) {
-      if (destroyed || (room.cityId === nextCityId && room.venueId === nextVenueId)) return;
-      leaveVoice(); room = { cityId: nextCityId, venueId: nextVenueId }; roomReady = false; members = [];
+      if (destroyed || (!roomRevoked && room.cityId === nextCityId && room.venueId === nextVenueId)) return;
+      leaveVoice(!roomRevoked); roomRevoked = false; el.compose.querySelector('input').disabled = false; el.compose.querySelector('button').disabled = false; room = { cityId: nextCityId, venueId: nextVenueId }; roomReady = false; members = [];
       for (const message of pending.values()) message.status.textContent = 'Not delivered: room changed';
       pending.clear(); seen.clear(); rejectedPeers.clear(); el.messages.replaceChildren(); renderMembers(); roomLabel();
-      feedback(''); if (connected) send({ type: 'join', ...room }); voiceStatus();
+      feedback(''); if (connected) send({ type: 'join', ...room }); else connect(); voiceStatus();
     },
     destroy() {
       if (destroyed) return; destroyed = true; clearTimeout(reconnectTimer); leaveVoice();

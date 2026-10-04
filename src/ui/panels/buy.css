@@ -1,0 +1,38 @@
+/* Buy mode (nav panel) and the home chip (HUD). Class prefixes: buy-, home-. */
+.buy-catalogue,.buy-place{width:100%;max-width:640px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-sheet);padding:var(--s-3);box-shadow:0 5px 30px #00000012;pointer-events:auto;font-family:var(--font);color:var(--c-ink)}
+.buy-catalogue>header,.buy-place>header{display:flex;align-items:center;gap:var(--s-2);margin-bottom:var(--s-2)}
+.buy-chip{background:var(--c-ink);color:#fff;border-radius:var(--r-chip);padding:7px 12px;font-size:12px;font-weight:600;white-space:nowrap}
+.buy-wallet{font-weight:700;font-variant-numeric:tabular-nums;margin-right:auto}
+.life-ui .buy-catalogue>header button{background:var(--c-fill);border-radius:var(--r-chip);min-height:var(--tap);min-width:var(--tap);padding:0 14px;font-size:12px}
+.buy-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:var(--s-2)}.buy-tabs::-webkit-scrollbar{display:none}
+.life-ui .buy-tabs button{background:var(--c-fill);border-radius:var(--r-chip);padding:0 12px;min-height:var(--tap);font-size:12px;white-space:nowrap;flex-shrink:0}
+.life-ui .buy-tabs .is-selected{background:var(--c-ink);color:#fff}
+.buy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-2);max-height:min(24dvh,200px);overflow-y:auto;padding:1px}
+@media(min-width:700px){.buy-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.life-ui .buy-card{display:grid;justify-items:center;gap:2px;background:var(--c-surface-solid);border:1px solid var(--c-line)!important;border-radius:18px;padding:8px 6px;text-align:center;min-height:118px;font-size:12px}
+.life-ui .buy-card:disabled{opacity:1}.buy-card:disabled .buy-emoji,.buy-card:disabled strong{opacity:.5}
+.buy-card-top{display:flex;justify-content:space-between;width:100%;font-size:var(--t-small);color:var(--c-muted)}.buy-card-top em{font-style:normal}
+.buy-stars{color:#c98a1b;font-style:normal;letter-spacing:-1px}
+.buy-emoji{font-size:28px;line-height:1.2}
+.buy-card strong{font-weight:600;line-height:1.2}
+.buy-card b{color:var(--c-muted);font-variant-numeric:tabular-nums}.buy-card b.is-afford{color:var(--c-green-dark)}.buy-card s{font-weight:400;opacity:.7}
+.buy-need{color:var(--c-red);font-size:var(--t-small);line-height:1.2}
+.buy-stored-actions{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
+.life-ui .buy-stored-actions button{background:var(--c-green-soft);color:var(--c-green-dark);border-radius:14px;min-height:36px;padding:0 10px;font-size:11px}
+.buy-hint{font-size:11px;color:var(--c-muted);margin:var(--s-1) 0 0!important}
+.buy-place>header{justify-content:space-between}.buy-place>header strong{font-size:var(--t-title)}.buy-place>header span{font-weight:700;color:var(--c-green-dark)}
+.buy-why{font-size:12px;font-weight:600;margin:var(--s-2) 0!important}.buy-why.is-good{color:var(--c-green-dark)}.buy-why.is-bad{color:var(--c-red)}
+.buy-controls{display:flex;align-items:center;gap:var(--s-4);flex-wrap:wrap}
+.buy-pad{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px);gap:2px}
+.life-ui .buy-pad button{background:var(--c-fill);border-radius:14px;font-size:18px;width:44px;height:44px}
+.buy-pad-move-left{grid-area:1/1}.buy-pad-move-up{grid-area:1/3}.buy-pad-rotate{grid-area:2/2}.buy-pad-move-down{grid-area:3/1}.buy-pad-move-right{grid-area:3/3}
+.life-ui .buy-pad .buy-pad-rotate{background:var(--c-ink);color:#fff}
+.buy-row{display:flex;gap:var(--s-2);flex-wrap:wrap;flex:1}.buy-row .ui-button{flex:1;white-space:nowrap}
+.life-ui .ui-button:disabled{opacity:.48}
+.home-chip{display:grid;gap:4px;background:var(--c-surface);border:1px solid #fff;border-radius:20px;padding:9px 12px;pointer-events:auto;font-size:12px}
+.home-chip strong{font-weight:600}.home-chip small{font-size:var(--t-small);color:var(--c-muted)}
+.home-chip-object{font-size:11px;background:#fff8df;border-radius:10px;padding:3px 7px;color:#806520}
+.life-ui .home-chip-button,.life-ui .home-kitchen-toggle{background:var(--c-green-soft);color:var(--c-green-dark);border-radius:14px;min-height:var(--tap);padding:0 10px;font-size:11px;text-align:left;width:100%}
+.home-kitchen{display:grid;gap:4px}
+.home-kitchen-list{display:flex;flex-wrap:wrap;gap:3px;max-height:22dvh;overflow-y:auto}.home-kitchen-list span{background:var(--c-fill);border-radius:10px;padding:2px 6px;font-size:var(--t-small)}
+@media(max-width:540px){.buy-catalogue,.buy-place{padding:10px;border-radius:22px}.buy-grid{max-height:24dvh}.life-ui .buy-card{min-height:108px;font-size:11px}.buy-emoji{font-size:24px}.buy-controls{gap:var(--s-2)}}

@@ -1,60 +1,312 @@
 /**
  * OWNER: home
  * The home interior. Same builder contract as src/scene/venue-scenes.js:
- *   buildHomeScene(kit, venue) → { group, background, camera?, update?(state) → boolean }
- * The host calls update(state) after every accepted server state while the player is at
- * home; rebuild furniture from state there and return true when something changed so the
- * host draws one frame. Placement keys arrive as `jaw:key` window events (see src/ui/keys.js).
- * Static scene: no requestAnimationFrame, timers or per-frame work.
+ *   buildHomeScene(kit, venue) → { group, background, camera, update(state) → boolean }
  *
- * Ported starter interior (replace freely): a fixed bedroom, kitchen, bathroom and lounge.
+ * WHAT IT DRAWS
+ *   An isometric-style room on a checkerboard grid (grid × grid tiles for the player's house),
+ *   two cut-away walls with a window and a door, and every placed object from state.home.items
+ *   as a simple low-poly shape at its tile and rotation. Wall items hang on the two walls.
+ *   The object the player picked gets a yellow marker; in Buy mode the placement ghost gets a
+ *   green (valid) or red (invalid) footprint.
+ *
+ * STATIC RENDERING
+ *   No requestAnimationFrame, no timers. Geometry is rebuilt only when the room, the furniture
+ *   or the selection/ghost actually changed. update(state) returns true exactly when it rebuilt,
+ *   so the host draws one frame. The scene never calls the renderer itself, so the host's
+ *   renderCount stays honest.
+ *
+ * EVENTS (window CustomEvents; the Buy panel is the other end)
+ *   in   'jaw:home-ui'     detail { selected: objectId | null, buy: boolean, ghost: { itemId, x, y, rot, valid } | null, retry? }
+ *                          UI-only state to draw. The sender then asks the host for a frame
+ *                          (a Buy panel refresh or the next accepted state does that).
+ *   out  'jaw:home-pick'   detail { id: objectId | null, cell: { x, y } | null } — the player
+ *                          tapped an object and/or a floor tile
+ *   out  'jaw:home-scene'  detail { status: 'ready' | 'empty' | 'error', placed } — for the
+ *                          on-screen loading / empty / error message
+ * The camera and canvas are learned from the renderer at draw time (onBeforeRender), so taps
+ * are resolved with the exact camera the host used.
  */
+import { FURNITURE, KINDS } from '../game/content/furniture.js';
+import { HOUSES, DEFAULT_HOUSE } from '../game/content/housing.js';
+import { footprint, windowSlot, doorSlot } from '../game/home-layout.js';
+
+const ROOM = 10;         // world units along each wall, whatever the grid size
+const WALL_HEIGHT = 3.4;
+const WALL_ITEM_Y = 1.95;
+const SHIFT = -2.5;      // the room sits up-screen so the bottom panels do not cover it
+const WOOD = '#7a5c40', DARK = '#33373d', WHITE = '#f3f1ea', STEEL = '#9aa3a8';
+
+const legs = (b, w, d, h, c = WOOD) => { for (const x of [-w / 2, w / 2]) for (const z of [-d / 2, d / 2]) b.box(x, h / 2, z, 0.06, h, 0.06, c); };
+
+/** One low-poly model per catalogue `shape`. Units are tiles; origin is the footprint centre on the floor; W × D is the footprint. */
+const SHAPES = {
+  mat(b, W, D, c) { b.box(0, 0.04, 0, W * 0.84, 0.06, D * 0.9, c); b.box(0, 0.1, -D * 0.36, W * 0.5, 0.07, D * 0.12, WHITE); },
+  bed(b, W, D, c, def) {
+    b.box(0, 0.2, 0, W * 0.92, 0.26, D * 0.94, WOOD);
+    b.box(0, 0.42, 0, W * 0.86, 0.2, D * 0.9, WHITE);
+    b.box(0, 0.54, D * 0.14, W * 0.88, 0.07, D * 0.58, c);
+    for (let i = 0; i < W; i++) b.box((i - (W - 1) / 2) * 0.8, 0.58, -D * 0.38, 0.55, 0.1, D * 0.12 + 0.08, '#ffffff');
+    b.box(0, 0.5 + def.stars * 0.08, -D * 0.47, W * 0.92, 0.7 + def.stars * 0.16, 0.07, def.stars >= 4 ? '#c9a227' : WOOD);
+  },
+  stove(b, W, D, c) {
+    b.box(0, 0.5, 0, 0.82, 0.06, 0.82, '#8a6b4a'); legs(b, 0.68, 0.68, 0.5);
+    b.round(0, 0.63, 0, 0.2, 0.2, c); b.round(0, 0.8, 0, 0.19, 0.14, '#55595e'); b.round(0, 0.88, 0, 0.2, 0.03, '#2f3236');
+  },
+  cooker(b, W, D, c) {
+    b.box(0, 0.43, 0, W * 0.84, 0.86, D * 0.8, c); b.box(0, 0.88, 0, W * 0.86, 0.04, D * 0.82, DARK);
+    for (let i = 0; i < W * 2; i++) b.round((i + 0.5) * 0.42 - W * 0.42, 0.92, 0, 0.13, 0.04, '#6c7278');
+    b.box(0, 1.0, -D * 0.37, W * 0.84, 0.2, 0.05, c); b.box(0, 0.45, D * 0.41, W * 0.6, 0.4, 0.02, DARK);
+  },
+  cooler(b, W, D, c) { b.box(0, 0.24, 0, 0.62, 0.44, 0.44, c); b.box(0, 0.5, 0, 0.66, 0.09, 0.48, WHITE); b.box(0, 0.58, 0, 0.3, 0.05, 0.06, c); },
+  fridge(b, W, D, c, def) {
+    const h = 1.3 + def.stars * 0.12;
+    b.box(0, h / 2, 0, 0.74, h, 0.7, c); b.box(0, h * 0.68, 0.36, 0.7, 0.02, 0.02, DARK); b.box(0.28, h * 0.5, 0.37, 0.04, 0.3, 0.03, STEEL);
+  },
+  drum(b, W, D, c) { b.round(0, 0.48, 0, 0.36, 0.96, c); b.round(0, 0.98, 0, 0.38, 0.05, '#2c4f76'); b.round(0, 0.3, 0, 0.375, 0.04, '#2c4f76'); b.round(0, 0.66, 0, 0.375, 0.04, '#2c4f76'); },
+  bucket(b, W, D, c) { b.round(-0.12, 0.2, -0.08, 0.22, 0.4, c); b.round(-0.12, 0.41, -0.08, 0.24, 0.03, '#2f6f52'); b.round(0.24, 0.07, 0.2, 0.16, 0.12, '#d9574f'); },
+  shower(b, W, D, c) {
+    b.box(0, 0.04, 0, 0.9, 0.08, 0.9, WHITE);
+    b.box(-0.44, 0.9, 0, 0.03, 1.7, 0.9, c); b.box(0, 0.9, -0.44, 0.9, 1.7, 0.03, c);
+    b.round(-0.32, 0.95, -0.32, 0.025, 1.8, STEEL); b.box(-0.2, 1.82, -0.2, 0.24, 0.04, 0.24, STEEL);
+  },
+  tub(b, W, D, c) { b.box(0, 0.28, 0, W * 0.9, 0.52, D * 0.8, c); b.box(0, 0.52, 0, W * 0.78, 0.06, D * 0.6, '#bfe3ee'); b.round(-W * 0.38, 0.66, 0, 0.03, 0.26, STEEL); },
+  toilet(b, W, D, c) { b.round(0, 0.19, 0.08, 0.19, 0.38, c); b.round(0, 0.41, 0.1, 0.25, 0.07, c); b.box(0, 0.55, -0.27, 0.46, 0.5, 0.18, c); b.box(0, 0.82, -0.27, 0.5, 0.05, 0.22, WHITE); },
+  basin(b, W, D, c) { b.round(0, 0.1, 0, 0.36, 0.2, c); b.round(0, 0.2, 0, 0.3, 0.02, '#8fc6d8'); },
+  chair(b, W, D, c) { b.box(0, 0.38, 0, 0.5, 0.06, 0.5, c); b.box(0, 0.66, -0.23, 0.5, 0.5, 0.05, c); legs(b, 0.42, 0.42, 0.36, c); },
+  sofa(b, W, D, c) {
+    b.box(0, 0.24, 0, W * 0.94, 0.34, D * 0.84, c); b.box(0, 0.58, -D * 0.34, W * 0.94, 0.5, D * 0.18, c);
+    for (const side of [-1, 1]) b.box(side * (W * 0.47 - 0.07), 0.46, 0, 0.14, 0.32, D * 0.84, c);
+    for (let i = 0; i < W; i++) b.box((i - (W - 1) / 2) * 0.82, 0.45, D * 0.06, 0.66, 0.1, D * 0.5, '#f0e6d6');
+  },
+  beanbag(b, W, D, c) { b.ball(0, 0.26, 0, 0.38, c); b.ball(0, 0.5, -0.08, 0.24, c); },
+  rug(b, W, D, c) { b.box(0, 0.02, 0, W * 0.94, 0.03, D * 0.94, c); b.box(0, 0.04, 0, W * 0.7, 0.02, D * 0.7, '#e8d9b5'); b.box(0, 0.055, 0, W * 0.4, 0.02, D * 0.4, c); },
+  radio(b, W, D, c) {
+    b.round(0, 0.4, 0, 0.26, 0.06, WOOD); legs(b, 0.3, 0.3, 0.4);
+    b.box(0, 0.56, 0, 0.44, 0.26, 0.16, c); b.round(-0.1, 0.56, 0.085, 0.07, 0.02, DARK); b.box(0.18, 0.84, 0, 0.015, 0.34, 0.015, STEEL);
+  },
+  speaker(b, W, D, c) { b.box(0, 0.6, 0, 0.5, 1.2, 0.46, c); b.ball(0, 0.85, 0.2, 0.14, '#5b6068'); b.ball(0, 0.42, 0.2, 0.2, '#5b6068'); b.box(0, 1.22, 0, 0.3, 0.04, 0.1, '#35d07f', true); },
+  board(b, W, D, c) { b.box(0, 0.3, 0, 0.7, 0.05, 0.7, WOOD); legs(b, 0.56, 0.56, 0.3); b.box(0, 0.34, 0, 0.56, 0.03, 0.56, c); b.box(-0.14, 0.36, -0.14, 0.2, 0.02, 0.2, '#c9372c'); b.box(0.14, 0.36, 0.14, 0.2, 0.02, 0.2, '#2f6fbf'); },
+  tv(b, W, D, c) {
+    b.box(0, 0.24, 0, W * 0.82, 0.48, 0.4, c);
+    b.box(0, 0.5 + W * 0.26, 0, W * 0.7, W * 0.42, 0.07, '#15171a'); b.box(0, 0.5 + W * 0.26, 0.04, W * 0.62, W * 0.34, 0.01, '#5d8fc4', true);
+  },
+  console(b, W, D, c) { b.box(0, 0.2, 0, 0.7, 0.4, 0.5, WOOD); b.box(0, 0.45, 0, 0.4, 0.1, 0.3, c); b.box(0.24, 0.43, 0.14, 0.16, 0.05, 0.1, '#e5e7e9'); b.box(0, 0.51, 0.16, 0.2, 0.01, 0.02, '#4aa3ff', true); },
+  gymmat(b, W, D, c) {
+    b.box(0, 0.03, 0, W * 0.8, 0.05, D * 0.9, c);
+    for (const z of [-0.12, 0.12]) { b.box(W * 0.2, 0.12, D * 0.3 + z, 0.3, 0.05, 0.05, STEEL); for (const x of [-0.15, 0.15]) b.ball(W * 0.2 + x, 0.12, D * 0.3 + z, 0.08, DARK); }
+  },
+  bench(b, W, D, c) {
+    b.box(0, 0.34, 0, W * 0.6, 0.1, 0.34, c); legs(b, W * 0.5, 0.26, 0.3, DARK);
+    for (const z of [-0.36, 0.36]) b.box(-W * 0.32, 0.5, z, 0.06, 1.0, 0.06, DARK);
+    b.box(-W * 0.32, 0.98, 0, 0.04, 0.04, 0.96, STEEL); for (const z of [-0.44, 0.44]) b.box(-W * 0.32, 0.98, z, 0.3, 0.3, 0.06, DARK);
+  },
+  desk(b, W, D, c) {
+    b.box(0, 0.62, 0, W * 0.9, 0.06, 0.62, c); legs(b, W * 0.8, 0.5, 0.6, DARK);
+    b.box(0, 0.67, 0.02, 0.44, 0.02, 0.3, STEEL); b.box(0, 0.83, -0.14, 0.44, 0.3, 0.02, DARK); b.box(0, 0.83, -0.125, 0.4, 0.26, 0.01, '#8fd0ff', true);
+    b.box(W * 0.3, 0.72, -0.1, 0.1, 0.14, 0.1, '#d9574f');
+  },
+  shelf(b, W, D, c) {
+    b.box(0, 0.75, -0.14, 0.8, 1.5, 0.05, c); for (const x of [-0.39, 0.39]) b.box(x, 0.75, 0, 0.04, 1.5, 0.34, c);
+    [0.08, 0.5, 0.92, 1.34].forEach((y, row) => { b.box(0, y, 0, 0.78, 0.04, 0.34, c); if (row < 3) for (let i = 0; i < 5; i++) b.box(-0.28 + i * 0.14, y + 0.17, 0, 0.1, 0.28 - (i % 2) * 0.05, 0.22, ['#b6524a', '#4f7fa8', '#d1a94a', '#5d8f63', '#8a5f99'][(i + row) % 5]); });
+  },
+  keyboard(b, W, D, c) {
+    for (const x of [-W * 0.3, W * 0.3]) { b.box(x, 0.36, 0, 0.05, 0.72, 0.05, DARK); b.box(x, 0.03, 0, 0.05, 0.05, 0.5, DARK); }
+    b.box(0, 0.75, 0, W * 0.88, 0.08, 0.32, c); b.box(0, 0.8, 0.05, W * 0.82, 0.02, 0.16, WHITE); b.box(0, 0.815, 0.01, W * 0.82, 0.02, 0.05, '#17181a');
+  },
+  tripod(b, W, D, c) {
+    for (const [x, z] of [[-0.2, 0.16], [0.2, 0.16], [0, -0.22]]) b.box(x * 0.6, 0.5, z * 0.6, 0.04, 1.0, 0.04, STEEL);
+    b.box(0, 1.1, 0, 0.3, 0.2, 0.2, c); b.round(0, 1.1, 0.13, 0.07, 0.06, '#5b6068');
+  },
+  mic(b, W, D, c) { b.round(0, 0.03, 0, 0.2, 0.05, c); b.round(0, 0.62, 0, 0.022, 1.2, STEEL); b.ball(0, 1.26, 0, 0.07, DARK); },
+  lantern(b, W, D, c) { b.round(0, 0.05, 0, 0.14, 0.1, DARK); b.round(0, 0.24, 0, 0.11, 0.28, c, true); b.round(0, 0.41, 0, 0.14, 0.06, DARK); },
+  floorlamp(b, W, D, c) { b.round(0, 0.03, 0, 0.2, 0.05, DARK); b.round(0, 0.7, 0, 0.025, 1.36, STEEL); b.round(0, 1.5, 0, 0.24, 0.34, c, true); },
+  generator(b, W, D, c) {
+    b.box(0, 0.3, 0, 0.7, 0.4, 0.5, c); b.round(0, 0.56, 0, 0.22, 0.14, DARK);
+    for (const x of [-0.4, 0.4]) b.box(x, 0.32, 0, 0.04, 0.64, 0.56, DARK); b.box(0, 0.64, 0, 0.84, 0.04, 0.04, DARK); b.box(0, 0.05, 0, 0.84, 0.06, 0.56, DARK);
+  },
+  inverter(b, W, D, c) { b.box(0, 0.62, -0.18, 0.5, 0.6, 0.18, c); b.box(0, 0.74, -0.08, 0.2, 0.1, 0.01, '#35d07f', true); for (const x of [-0.2, 0.2]) b.box(x, 0.16, 0.08, 0.34, 0.32, 0.5, DARK); },
+  jerrycans(b, W, D, c) { b.box(-0.18, 0.24, -0.06, 0.26, 0.48, 0.34, c); b.box(0.16, 0.24, 0.08, 0.26, 0.48, 0.34, c); b.box(-0.18, 0.52, -0.06, 0.08, 0.08, 0.08, DARK); b.box(0.16, 0.52, 0.08, 0.08, 0.08, 0.08, DARK); },
+  plant(b, W, D, c) { b.round(0, 0.17, 0, 0.2, 0.34, '#b9744f'); b.crown(0, 0.72, 0, 0.36, 0.5, 0.36, c); b.crown(0.14, 0.92, -0.06, 0.22, 0.3, 0.22, '#63a56e'); },
+  wardrobe(b, W, D, c) { b.box(0, 0.85, 0, W * 0.92, 1.7, 0.56, c); b.box(0, 0.85, 0.285, 0.02, 1.6, 0.01, DARK); for (const x of [-0.07, 0.07]) b.box(x, 0.9, 0.3, 0.03, 0.2, 0.03, STEEL); },
+  aquarium(b, W, D, c) { b.box(0, 0.3, 0, 0.8, 0.6, 0.44, WOOD); b.box(0, 0.86, 0, 0.78, 0.5, 0.4, c); b.box(0, 1.13, 0, 0.8, 0.05, 0.42, DARK); b.box(-0.15, 0.9, 0.205, 0.12, 0.06, 0.01, '#ffb347', true); b.box(0.18, 0.78, 0.205, 0.1, 0.05, 0.01, '#ff6f61', true); },
+  petbed(b, W, D, c) {
+    b.round(0, 0.07, 0, 0.4, 0.14, '#7a8f9a'); b.box(0, 0.24, 0, 0.42, 0.2, 0.24, c); b.ball(0.24, 0.36, 0.02, 0.13, c);
+    for (const z of [-0.07, 0.11]) b.box(0.27, 0.5, z, 0.05, 0.1, 0.05, c); b.box(-0.26, 0.3, 0, 0.14, 0.05, 0.05, c);
+  },
+  cage(b, W, D, c) { b.round(0, 0.03, 0, 0.2, 0.05, DARK); b.round(0, 0.5, 0, 0.025, 0.94, STEEL); b.round(0, 1.2, 0, 0.26, 0.5, '#d8c27a'); b.ball(0, 1.14, 0.2, 0.11, c); b.box(0, 1.14, 0.32, 0.05, 0.04, 0.06, '#c9372c'); },
+  // ---- wall items: origin is the mounting point on the wall, facing +z ----
+  lamp(b, W, D, c) { b.box(0, 0, 0.04, 0.1, 0.16, 0.08, DARK); b.box(0, 0.06, 0.14, 0.22, 0.24, 0.16, c, true); },
+  strip(b, W, D, c) { b.box(0, 0.5, 0.03, 0.9, 0.06, 0.04, c, true); },
+  fan(b) { b.box(0, 0, 0.06, 0.1, 0.1, 0.12, DARK); b.box(0, 0, 0.16, 0.56, 0.56, 0.03, STEEL); b.box(0, 0, 0.19, 0.5, 0.1, 0.02, WHITE); b.box(0, 0, 0.19, 0.1, 0.5, 0.02, WHITE); },
+  mirror(b, W, D, c) { b.box(0, -0.4, 0.03, 0.74, 1.8, 0.05, WOOD); b.box(0, -0.4, 0.06, 0.64, 1.68, 0.02, c); },
+  calendar(b, W, D, c) { b.box(0, 0, 0.02, 0.4, 0.54, 0.03, c); b.box(0, 0.2, 0.04, 0.4, 0.14, 0.02, '#c9372c'); },
+  art(b, W, D, c) { b.box(0, 0, 0.03, 0.74, 0.58, 0.05, WOOD); b.box(0, 0, 0.06, 0.62, 0.46, 0.02, c); b.box(-0.1, 0.02, 0.075, 0.2, 0.2, 0.01, '#e8d9b5'); b.box(0.16, -0.08, 0.075, 0.14, 0.14, 0.01, '#7fa6d9'); },
+  fallback(b, W, D, c) { b.box(0, 0.3, 0, W * 0.8, 0.6, D * 0.8, c); },
+};
+
 export function buildHomeScene(kit) {
-  const { THREE, box, round, mesh, crownGeometry } = kit;
+  const { THREE } = kit;
   const group = new THREE.Group();
-  // Open walls keep the compact room readable from the overhead camera.
-  box(0, -0.22, 0, 18, 0.4, 17, '#a8987d', group);
-  box(0, 2.25, -8.3, 18, 4.5, 0.25, '#d2c8ac', group);
-  box(-8.85, 2.25, 0, 0.25, 4.5, 17, '#c1c8b3', group);
-  box(-2.8, 0.025, 0.5, 7.1, 0.05, 8.2, '#7e9b91', group);
-  box(-4.8, 0.43, -0.9, 3.7, 0.7, 5.7, '#796654', group);
-  box(-4.8, 0.9, -0.9, 3.55, 0.32, 5.5, '#ebe5d7', group);
-  box(-4.8, 1.12, 0.2, 3.58, 0.13, 3.35, '#af938a', group);
-  box(-4.8, 1.3, -3.8, 3.8, 1.5, 0.23, '#786754', group);
-  for (const x of [-5.7, -3.9]) box(x, 1.15, -2.8, 1.35, 0.2, 0.85, '#f3ead8', group);
-  box(-7.4, 0.8, -2.5, 1.2, 1.5, 1.2, '#998168', group);
-  round(-7.4, 1.82, -2.5, 0.08, 0.52, '#637269', group);
-  round(-7.4, 2.2, -2.5, 0.43, 0.37, '#efcf8f', group, true);
-  const bedsideLight = new THREE.PointLight('#ffe0ab', 12, 10, 1.6);
-  bedsideLight.position.set(-7.4, 2.2, -2.5);
-  group.add(bedsideLight);
-  for (const x of [2, 4, 6]) {
-    box(x, 0.85, -6.8, 1.95, 1.65, 2, '#8c9b83', group);
-    box(x, 1.75, -6.8, 2, 0.16, 2.1, '#ddd5bd', group);
-    box(x, 0.9, -5.76, 0.55, 0.09, 0.05, '#d6cfb7', group);
+  const room = new THREE.Group(), furniture = new THREE.Group(), overlay = new THREE.Group();
+  group.add(room, furniture, overlay);
+  group.position.set(SHIFT, 0, SHIFT);
+  const glow = new THREE.PointLight('#ffe3b0', 26, 18, 1.5);
+  glow.position.set(-1, 3, -1);
+  group.add(glow);
+
+  let grid = 0, tile = 1, drawn = '', lastState = null, camera = null, canvas = null, status = '', undrawn = false;
+  let ui = { selected: null, ghost: null, buy: false };
+  const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+  const tools = (parent) => ({
+    box: (x, y, z, w, h, d, c, lit) => kit.box(x, y, z, w, h, d, c, parent, lit),
+    round: (x, y, z, r, h, c, lit) => kit.round(x, y, z, r, h, c, parent, lit),
+    ball: (x, y, z, r, c) => kit.sphere(x, y, z, r, c, parent),
+    crown: (x, y, z, sx, sy, sz, c) => kit.mesh(kit.crownGeometry, x, y, z, sx, sy, sz, c, parent),
+  });
+  const along = (index, span = 1) => -ROOM / 2 + (index + span / 2) * tile;
+
+  function announce(next, placed) {
+    if (next === status) return;
+    status = next;
+    globalThis.window?.dispatchEvent?.(new CustomEvent('jaw:home-scene', { detail: { status, placed } }));
   }
-  round(2, 1.87, -6.8, 0.5, 0.09, '#819394', group);
-  round(2, 2.15, -7.5, 0.045, 0.55, '#b6c3bb', group);
-  box(4, 1.87, -6.8, 1.25, 0.08, 1.3, '#414b49', group);
-  for (const x of [3.65, 4.35]) for (const z of [-7.15, -6.45]) round(x, 1.93, z, 0.19, 0.04, '#738077', group);
-  box(7.75, 1.7, -6.7, 1.5, 3.3, 1.8, '#aac3bf', group);
-  box(7.75, 2.35, -5.76, 1.34, 0.04, 0.06, '#789b94', group);
-  box(8.25, 1.9, -5.74, 0.06, 0.75, 0.08, '#dfebe0', group);
-  box(4, 3.35, -8.08, 2.8, 1.3, 0.15, '#7f927e', group);
-  box(4, 3.35, -7.98, 2.3, 0.85, 0.06, '#dac79d', group);
-  box(-3.8, 0.025, -6.7, 5.7, 0.05, 2.9, '#b7c6bc', group);
-  box(-0.7, 1.15, -6.7, 0.15, 2.3, 3, '#d4d5c3', group);
-  box(-5.4, 0.8, -7.65, 1.1, 1.35, 0.45, '#e5e7d9', group);
-  round(-5.4, 0.42, -6.9, 0.55, 0.8, '#e7ebdf', group);
-  round(-5.4, 0.87, -6.8, 0.6, 0.12, '#f4f4e8', group);
-  box(-2.4, 1.15, -7.5, 1.2, 0.2, 1, '#dce3d5', group);
-  box(-2.4, 2.45, -8.08, 1.3, 1.45, 0.08, '#9ab4b4', group);
-  box(3.8, 0.6, 1.4, 4.4, 0.9, 1.9, '#b19c7d', group);
-  box(3.8, 1.15, 0.6, 4.4, 1.4, 0.35, '#a38a70', group);
-  for (const x of [1.7, 5.9]) box(x, 0.95, 1.4, 0.3, 1.2, 2, '#a38a70', group);
-  round(3.8, 0.65, 4.2, 1.1, 0.16, '#d8c9ab', group);
-  round(3.8, 0.32, 4.2, 0.16, 0.6, '#796d58', group);
-  round(7.2, 0.5, 4.5, 0.6, 0.8, '#b99477', group);
-  mesh(crownGeometry, 7.2, 1.75, 4.5, 0.7, 1.35, 0.7, '#6d9273', group);
-  return { group, background: '#879b8a', camera: { landscape: [11, 16, 20], portrait: [11, 19, 24] } };
+
+  function buildRoom() {
+    room.clear();
+    const b = tools(room);
+    b.box(0, -0.21, 0, ROOM + 0.5, 0.4, ROOM + 0.5, '#6f6253');
+    for (let y = 0; y < grid; y++) for (let x = 0; x < grid; x++) b.box(along(x), 0, along(y), tile * 0.985, 0.03, tile * 0.985, (x + y) % 2 ? '#d9cdb4' : '#bfae8f');
+    b.box(-0.125, WALL_HEIGHT / 2, -ROOM / 2 - 0.125, ROOM + 0.25, WALL_HEIGHT, 0.25, '#d7ccb0');
+    b.box(-ROOM / 2 - 0.125, WALL_HEIGHT / 2, 0, 0.25, WALL_HEIGHT, ROOM, '#c3cbb6');
+    b.box(0, 0.12, -ROOM / 2 + 0.02, ROOM, 0.24, 0.04, '#8c7a62');
+    b.box(-ROOM / 2 + 0.02, 0.12, 0, 0.04, 0.24, ROOM, '#8c7a62');
+    // Window on the back wall, door on the side wall — the same slots the placement rules keep clear.
+    const wide = Math.min(tile * 0.86, 1.5);
+    const wx = along(windowSlot(grid)), dz = along(doorSlot(grid));
+    b.box(wx, 2.0, -ROOM / 2 + 0.03, wide, 1.2, 0.07, '#5f4a36');
+    b.box(wx, 2.0, -ROOM / 2 + 0.07, wide - 0.16, 1.04, 0.02, '#a9d3ea', true);
+    b.box(wx, 2.0, -ROOM / 2 + 0.085, 0.05, 1.04, 0.02, '#5f4a36'); b.box(wx, 2.0, -ROOM / 2 + 0.085, wide - 0.16, 0.05, 0.02, '#5f4a36');
+    b.box(-ROOM / 2 + 0.03, 1.15, dz, 0.07, 2.3, wide, '#5f4a36');
+    b.box(-ROOM / 2 + 0.075, 1.12, dz, 0.02, 2.1, wide - 0.16, '#8a623d');
+    b.box(-ROOM / 2 + 0.11, 1.1, dz + wide * 0.3, 0.05, 0.07, 0.07, '#d8c27a');
+    // The floor reports the camera and canvas the host draws with, so taps can be resolved.
+    room.children[0].onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); };
+  }
+
+  /** A group holding one object's model, placed and rotated on its tile(s) or wall slot. */
+  function model(def, x, y, rot, parent) {
+    const holder = new THREE.Group();
+    if (def.wall) {
+      const scale = Math.max(tile, 0.8);
+      if (rot === 0) holder.position.set(along(x), WALL_ITEM_Y, -ROOM / 2 + 0.01);
+      else { holder.position.set(-ROOM / 2 + 0.01, WALL_ITEM_Y, along(y)); holder.rotation.y = Math.PI / 2; }
+      holder.scale.setScalar(scale);
+    } else {
+      const size = footprint(def, rot);
+      holder.position.set(along(x, size.w), 0.015, along(y, size.h));
+      holder.rotation.y = -rot * Math.PI / 2;
+      holder.scale.setScalar(tile);
+    }
+    (SHAPES[def.shape] || SHAPES.fallback)(tools(holder), def.wall ? 1 : def.w, def.wall ? 1 : def.h, def.color, def);
+    parent.add(holder);
+    return holder;
+  }
+
+  /** A flat marker under a footprint (or behind a wall item). */
+  function marker(def, x, y, rot, colour, lift) {
+    const b = tools(overlay);
+    if (def.wall) {
+      const size = Math.max(tile, 0.8) * 0.94;
+      if (rot === 0) b.box(along(x), WALL_ITEM_Y, -ROOM / 2 + 0.006, size, size * 1.2, 0.012, colour, true);
+      else b.box(-ROOM / 2 + 0.006, WALL_ITEM_Y, along(y), 0.012, size * 1.2, size, colour, true);
+      return;
+    }
+    const size = footprint(def, rot);
+    b.box(along(x, size.w), lift, along(y, size.h), size.w * tile * 0.97, 0.02, size.h * tile * 0.97, colour, true);
+  }
+
+  function rebuild(state) {
+    const house = HOUSES[state?.property?.house] ?? HOUSES[DEFAULT_HOUSE];
+    if (house.grid !== grid) { grid = house.grid; tile = ROOM / grid; buildRoom(); }
+    furniture.clear(); overlay.clear();
+    const items = Array.isArray(state?.home?.items) ? state.home.items : [];
+    let placed = 0;
+    for (const item of items) {
+      const def = FURNITURE[item?.itemId];
+      if (!def) continue;
+      model(def, item.x, item.y, item.rot, furniture).userData.objectId = item.id;
+      placed += 1;
+      // Outside Buy mode the marker follows the spot: it clears when the player moves to another one.
+      const spot = KINDS[def.kind]?.spot;
+      if (item.id === ui.selected && (ui.buy || !spot || spot === state?.spot)) marker(def, item.x, item.y, item.rot, '#ffd24a', 0.035);
+    }
+    const ghost = ui.ghost, ghostDef = ghost && FURNITURE[ghost.itemId];
+    if (ghostDef) {
+      marker(ghostDef, ghost.x, ghost.y, ghost.rot, ghost.valid ? '#35d07f' : '#e5484d', 0.05);
+      model(ghostDef, ghost.x, ghost.y, ghost.rot, overlay);
+    }
+    return placed;
+  }
+
+  const signature = (state) => JSON.stringify([state?.property?.house, state?.home?.items, state?.spot, ui]);
+
+  /** Rebuild if anything visible changed. Returns true when it did. */
+  function refresh(state) {
+    const next = signature(state);
+    if (next === drawn) return false;
+    drawn = next;
+    try { const placed = rebuild(state); announce(placed ? 'ready' : 'empty', placed); }
+    catch (error) { console.error('Home scene failed to build:', error); furniture.clear(); overlay.clear(); announce('error', 0); }
+    return true;
+  }
+
+  function onPick(event) {
+    if (!group.visible || !camera || !canvas || !lastState) return;
+    const box = canvas.getBoundingClientRect();
+    if (!box.width || !box.height) return;
+    pointer.set(((event.clientX - box.left) / box.width) * 2 - 1, -((event.clientY - box.top) / box.height) * 2 + 1);
+    raycaster.setFromCamera(pointer, camera);
+    group.updateMatrixWorld(true);
+    let id = null;
+    for (let node = raycaster.intersectObjects(furniture.children, true)[0]?.object; node && !id; node = node.parent) id = node.userData.objectId ?? null;
+    let cell = null;
+    const point = raycaster.ray.intersectPlane(floorPlane, new THREE.Vector3());
+    if (point) {
+      group.worldToLocal(point);
+      const x = Math.floor((point.x + ROOM / 2) / tile), y = Math.floor((point.z + ROOM / 2) / tile);
+      if (x >= 0 && y >= 0 && x < grid && y < grid) cell = { x, y };
+    }
+    if (id || cell) window.dispatchEvent(new CustomEvent('jaw:home-pick', { detail: { id, cell } }));
+  }
+  function attach(element) {
+    if (canvas || !element?.addEventListener) return;
+    canvas = element;
+    canvas.addEventListener('click', onPick);
+  }
+
+  globalThis.window?.addEventListener?.('jaw:home-ui', (event) => {
+    const detail = event.detail || {};
+    ui = { selected: typeof detail.selected === 'string' ? detail.selected : null, buy: detail.buy === true, ghost: detail.ghost && FURNITURE[detail.ghost.itemId] ? { ...detail.ghost } : null };
+    if (detail.retry) { drawn = ''; status = ''; }
+    // Rebuild now so the frame the sender asks the host for shows it; drawing stays the host's job.
+    // `undrawn` makes the next update() report a change unless a frame has been drawn meanwhile.
+    if (lastState && refresh(lastState)) undrawn = true;
+  });
+
+  grid = HOUSES[DEFAULT_HOUSE].grid; tile = ROOM / grid;
+  buildRoom();
+
+  return {
+    group,
+    background: '#8fa39a',
+    camera: { landscape: [17.5, 19.5, 17.5], portrait: [19, 24, 19] },
+    update(state) {
+      const first = lastState === null;
+      lastState = state;
+      const changed = refresh(state) || first || undrawn;
+      undrawn = false;
+      return changed;
+    },
+  };
 }

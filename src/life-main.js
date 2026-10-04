@@ -12,10 +12,6 @@
  *   - the lazy panel groups                                    (src/ui/panels/index.js)
  * Until a piece arrives its callers simply skip it (`venue?.…`), and it is given the current
  * state the moment it exists, so nothing depends on load order.
- *
- * TAB ORDER. In index.html the overlay (HUD, the open nav sheet, the bottom nav) comes before the
- * scene layers, so the keyboard reaches the Map sheet before the map's pins and the scene's name
- * tags. Stacking does not depend on that order: the overlay has its own z-index.
  */
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
 import { createShell } from './ui/shell.js';

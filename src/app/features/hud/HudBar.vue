@@ -48,7 +48,7 @@ function onSaved(): void {
   <section class="hud-bar" aria-label="Player status">
     <i class="hud-mark" aria-hidden="true"><GameIcon name="globe" :size="19" /></i>
     <span class="hud-clock">{{ view.clock }}</span>
-    <span class="hud-mood" :class="`is-${mood.tone}`">{{ mood.icon }} {{ mood.word }}</span>
+    <span class="hud-mood" :class="`is-${mood.tone}`"><GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /> {{ mood.word }}</span>
     <button class="hud-name" type="button" @click="shell.open('sim')"><GameIcon name="person" :size="17" /><span>{{ state.name }}</span></button>
     <span class="hud-saved-slot">
       <button v-if="saved.kind === 'button'" class="hud-saved is-off" :class="{ 'is-wait': saved.wait }" type="button" :title="saved.title" @click="onSaved">

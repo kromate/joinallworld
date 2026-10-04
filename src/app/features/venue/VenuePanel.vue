@@ -29,7 +29,7 @@ const district = computed(() => house.value?.district || venue.value.district)
 const line = computed(() => {
   if (!view.value.connected) return linkWording(view.value)?.menu ?? 'Not connected · read-only'
   const ambient = view.value.travel?.destinations?.find((item) => item.id === state.value.location)?.ambient
-  return `${privateHome.value ? '🔒 Private · ' : ''}${ambient || spot.value?.caption || 'Explore at your own pace'}`
+  return `${privateHome.value ? ' Private · ' : ''}${ambient || spot.value?.caption || 'Explore at your own pace'}`
 })
 // Where this spot lists paid gigs, the day's counter sits above them (the limit is the server's).
 const gigs = computed(() => view.value.travel?.gigs)
@@ -68,15 +68,15 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
 <template>
   <section class="life-venue-panel" aria-label="Current venue">
     <header class="life-venue-header">
-      <button class="life-avatar" type="button" aria-label="Open your Sim: profile, needs, goals and skills" @click="shell.open('sim')">👤</button>
-      <div class="life-venue-heading"><h1>{{ venue.icon }} {{ title }} <span>· {{ district }}</span></h1><p>{{ line }}</p></div>
+      <button class="life-avatar" type="button" aria-label="Open your Sim: profile, needs, goals and skills" @click="shell.open('sim')"><GameIcon inline name="person" /></button>
+      <div class="life-venue-heading"><h1><GameIcon inline kind="venue" :id="venue.id" :emoji="venue.icon" /> {{ title }} <span>· {{ district }}</span></h1><p><GameIcon v-if="privateHome && view.connected" inline name="lock" />{{ line }}</p></div>
       <button v-if="!privateHome && view.connected" class="life-icon-button" type="button" aria-label="Open community chat" title="Community chat" @click="toggleCommunity()"><GameIcon name="chat" /></button>
       <button class="life-icon-button" type="button" aria-label="Open map" title="Map (M)" @click="shell.open('map')"><GameIcon name="map" /></button>
     </header>
     <div ref="rail" class="life-spots">
       <button class="life-expand" :class="{ 'is-expanded': ui.expanded }" type="button" :aria-expanded="ui.expanded" :aria-label="`${ui.expanded ? 'Hide' : 'Show'} activities`" title="Activities (T)" @click="ui.expanded = !ui.expanded"><GameIcon name="chevron-down" /></button>
-      <button v-for="(item, index) in spots" :key="item.id" type="button" :data-spot="item.id" :class="{ 'is-selected': item.id === state.spot }" :aria-pressed="item.id === state.spot" :aria-busy="pending === `spot:${item.id}`" :title="`Shortcut ${index + 1}`" @click="selectSpot(item.id)">{{ item.icon }} {{ item.label }}</button>
-      <button v-if="!privateHome && !spots.some((item) => item.id === 'people')" type="button" @click="toggleCommunity()">👥 People</button>
+      <button v-for="(item, index) in spots" :key="item.id" type="button" :data-spot="item.id" :class="{ 'is-selected': item.id === state.spot }" :aria-pressed="item.id === state.spot" :aria-busy="pending === `spot:${item.id}`" :title="`Shortcut ${index + 1}`" @click="selectSpot(item.id)"><GameIcon inline kind="spot" :id="item.id" :emoji="item.icon" /><span>{{ item.label }}</span></button>
+      <button v-if="!privateHome && !spots.some((item) => item.id === 'people')" type="button" @click="toggleCommunity()"><GameIcon inline name="people" /><span>People</span></button>
     </div>
     <template v-if="ui.expanded">
       <p v-if="state.activeAction" class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>
@@ -84,16 +84,16 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
       <div class="life-actions">
         <template v-for="{ card, face, tags } in cards" :key="card.id">
           <div v-if="card.choices && face.state !== 'unavailable'" class="life-action has-choices" :class="face.state === 'ready' ? undefined : `is-${face.state}`" role="group" :aria-label="face.label">
-            <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true">{{ card.icon || '✨' }}</span><span class="life-action-title">{{ card.label }}</span></span>
-            <span class="life-action-meta"><span>◷ {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
-            <span v-if="face.why" class="life-lock">🔒 {{ face.why }}</span>
+            <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true"><GameIcon inline kind="activity" :id="card.id" :emoji="card.icon" /></span><span class="life-action-title">{{ card.label }}</span></span>
+            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
+            <span v-if="face.why" class="life-lock"><GameIcon inline name="lock" /> {{ face.why }}</span>
             <span v-else class="life-tags"><span v-for="tag in tags" :key="tag.text" :class="{ 'is-cost': tag.cost, 'is-beta': tag.beta }">{{ tag.text }}</span></span>
             <span class="life-choices"><button v-for="choice in card.choices" :key="choice.id" type="button" :disabled="face.disabled || pending !== null" :title="face.full || undefined" @click="start(card, choice.id)">{{ choice.label }}</button></span>
           </div>
           <button v-else class="life-action" :class="face.state === 'ready' ? undefined : `is-${face.state}`" type="button" :disabled="face.disabled || pending !== null" :title="face.full || undefined" :aria-label="face.label" :aria-busy="pending === `start:${card.id}`" @click="start(card)">
-            <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true">{{ card.icon || '✨' }}</span><span class="life-action-title">{{ card.label }}</span></span>
-            <span class="life-action-meta"><span>◷ {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
-            <span v-if="face.why" class="life-lock">🔒 {{ face.why }}</span>
+            <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true"><GameIcon inline kind="activity" :id="card.id" :emoji="card.icon" /></span><span class="life-action-title">{{ card.label }}</span></span>
+            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
+            <span v-if="face.why" class="life-lock"><GameIcon inline name="lock" /> {{ face.why }}</span>
             <span v-else class="life-tags"><span v-for="tag in tags" :key="tag.text" :class="{ 'is-cost': tag.cost, 'is-beta': tag.beta }">{{ tag.text }}</span></span>
           </button>
         </template>

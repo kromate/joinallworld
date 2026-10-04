@@ -33,7 +33,7 @@ function dismiss(): void {
 
 <template>
   <div v-if="step && goal" class="life-coach" role="note">
-    <span aria-hidden="true">👉</span>
+    <span aria-hidden="true"><GameIcon inline name="pointer" /></span>
     <p><b>Goal {{ goal.step }} of {{ goal.of }} · {{ goal.title }}</b>{{ step.text }}</p>
     <button type="button" aria-label="Hide these tips" @click="dismiss"><GameIcon name="close" /></button>
   </div>

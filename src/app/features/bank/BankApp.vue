@@ -18,7 +18,9 @@ import ListRow from '../../ui/ListRow.vue'
 import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
-import { OFFLINE_TEXT, billsLine, loanReasons, rentStanding } from './bankModel.ts'
+import HowItWorks from '../../ui/HowItWorks.vue'
+import { linkWords } from '../../legacy/modules.ts'
+import { billsLine, loanReasons, loanRule, rentStanding } from './bankModel.ts'
 
 defineProps<{ params?: unknown }>()
 
@@ -28,7 +30,9 @@ const view = game.view
 const economy = computed(() => view.value.economy)
 const career = computed(() => view.value.career)
 const ledger = computed(() => view.value.wallet.ledger)
-const offline = computed(() => (view.value.connected ? null : OFFLINE_TEXT))
+// Why nothing can be paid right now, in the words of the real connection state.
+const offline = computed(() => { const words = view.value.connected ? null : linkWords(view.value); return words ? `${words.why} Read-only until that is resolved.` : null })
+const loanRules = computed(() => loanRule(loan.value?.rule))
 const bills = computed(() => billsLine(economy.value, career.value))
 const rent = computed(() => economy.value.rent)
 const loan = computed(() => economy.value.loan)
@@ -68,13 +72,15 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
       <BaseButton v-if="!career.employed" @click="shell.open('jobs')">Find a job</BaseButton>
     </div>
 
+    <div class="bank-cards">
     <section v-if="!rent" class="bank-card" aria-label="Rent">
-      <header><span class="bank-card-mark" aria-hidden="true">🏠</span><div><b>Rent</b></div></header>
-      <div class="bank-note">No rent is set up: you have not moved into a rented home yet. Once you do, rent is collected here every Saturday.</div>
+      <header><span class="bank-card-mark" aria-hidden="true"><GameIcon name="home" /></span><div><b>Rent</b></div></header>
+      <div class="bank-note">No rent yet: it starts when you move into a rented home.</div>
+      <HowItWorks id="bank-rent" :rules="['Once you live in a rented home, its rent is collected here automatically every Saturday (Lagos time), even while you are away.', 'Missed-rent rules are original beta rules.']" />
     </section>
     <section v-else class="bank-card" :class="{ 'is-warning': rent.arrears > 0 }" aria-label="Rent">
       <header>
-        <span class="bank-card-mark" aria-hidden="true">🏠</span>
+        <span class="bank-card-mark" aria-hidden="true"><GameIcon name="home" /></span>
         <div><b>Rent</b><small>{{ rent.label }}</small></div>
         <strong>{{ money(rent.amount) }}<small>per week</small></strong>
       </header>
@@ -86,12 +92,13 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
         </div>
         <div v-if="rentBlocked" class="bank-why">{{ rentBlocked }}</div>
       </template>
-      <div class="bank-note">{{ rent.rule }} Missed-rent rules are original beta rules.</div>
+      <div v-if="rent.lateFee > 0 && !rent.warning" class="bank-note">A missed week must be paid within a week, or a {{ money(rent.lateFee) }} late fee is added.</div>
+      <HowItWorks id="bank-rent" :rules="[rent.rule, 'Missed rent becomes arrears. Pay it within a week — here, or it is collected on a Saturday when your balance covers it — or the late fee is added.', 'You keep your home in this beta. Missed-rent rules are original beta rules.']" />
     </section>
 
     <section v-if="loan" class="bank-card" aria-label="Loan">
       <header>
-        <span class="bank-card-mark" aria-hidden="true">🤝</span>
+        <span class="bank-card-mark" aria-hidden="true"><GameIcon name="handshake" /></span>
         <div><b>Starting loan</b><small>{{ money(loan.weekly) }} per week</small></div>
         <strong>{{ money(loan.left) }}<small>left to pay</small></strong>
       </header>
@@ -104,13 +111,15 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
           <BaseButton :disabled="paying !== null" :reason="offline || loan.allBlocked" @click="pay('all')">{{ paying === 'all' ? 'Paying…' : 'Pay it all off' }}</BaseButton>
         </div>
         <div v-for="reason in reasons" :key="reason" class="bank-why">{{ reason }}</div>
-        <div class="bank-note">Paying one instalment now covers the next Saturday collection. {{ loan.rule }}</div>
+        <div v-if="loanRules.penalty" class="bank-note">{{ loanRules.penalty }}</div>
+        <HowItWorks id="bank-loan" :rules="['Paying one instalment now covers the next Saturday collection.', ...loanRules.rest, 'Paying it all off ends the collections at once.']" />
       </template>
     </section>
+    </div>
 
     <ListRows>
       <ListRow as="button" title="Savings" sub="Fixed deposits pay a small, capped interest (beta)" @click="shell.open('invest')">
-        <template #icon><RowMark>🔒</RowMark></template>
+        <template #icon><RowMark><GameIcon name="lock" /></RowMark></template>
         <template #end><span class="bank-locked">{{ money(economy.savings.locked) }}<small>locked</small></span><GameIcon name="chevron" :size="16" /></template>
       </ListRow>
     </ListRows>
@@ -122,14 +131,17 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
         <template #end><span :class="entry.amount < 0 ? 'bank-out' : 'bank-in'">{{ signedMoney(entry.amount) }}</span></template>
       </ListRow>
     </ListRows>
-    <EmptyState v-else compact emoji="🧾" title="No transactions yet" text="Every fare, purchase, wage and payment will be listed here with its reason." />
+    <EmptyState v-else compact icon="statement" title="No transactions yet" text="Every fare, purchase, wage and payment will be listed here with its reason." />
   </div>
 </template>
 
 <style scoped>
 .bank-quick { display: flex; gap: var(--s-2); margin: 0 0 var(--s-3); }
-.bank-quick > * { flex: 1; padding: 10px 8px; }
-.bank-card { margin: 0 0 var(--s-2); padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); font-size: var(--t-body); line-height: 1.45; }
+.bank-quick > * { flex: 1; padding: 10px 8px; background: #fff; box-shadow: var(--ring); }
+/* Rent and loan: stacked on a phone, side by side when the phone is expanded on a desktop. */
+.bank-cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); margin: 0 0 var(--s-2); align-items: start; }
+:global(.ph.is-wide) .bank-cards { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.bank-card { margin: 0; padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); font-size: var(--t-body); line-height: 1.45; }
 .bank-card.is-warning { box-shadow: var(--e-1), inset 0 0 0 1.5px var(--c-amber); background: #fffaf0; }
 .bank-card header { display: flex; align-items: center; gap: 10px; margin: 0 0 var(--s-2); }
 .bank-card header > div { flex: 1; min-width: 0; font-size: 15px; }

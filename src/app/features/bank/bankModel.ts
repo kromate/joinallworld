@@ -3,7 +3,12 @@ import type { LifeState } from '../../../types/life.ts'
 import type { EconomyView, LoanCard, RentCard } from '../../../types/view.ts'
 import type { PanelView } from '../../types/panel.ts'
 
-export const OFFLINE_TEXT = 'Not connected: read-only until the connection is back.'
+/** The loan's rule, split: the penalty (the late fee) stays on the card, the rest folds away under "How it works". */
+export function loanRule(rule: string | null | undefined): { penalty: string; rest: string[] } {
+  const sentences = String(rule ?? '').split(/(?<=\.)\s+/).filter(Boolean)
+  const penalty = sentences.filter((line) => /fee|penalt/i.test(line))
+  return { penalty: penalty.join(' '), rest: sentences.filter((line) => !penalty.includes(line)) }
+}
 
 /**
  * The red badge on the Bank icon: rent that is overdue or that the balance will not cover, and a

@@ -23,6 +23,7 @@ import ListRow from '../../ui/ListRow.vue'
 import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
+import { linkWords } from '../../legacy/modules.ts'
 import { noticeMarks, ui } from './messagesState.ts'
 import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
 
@@ -60,7 +61,7 @@ watch(tick, () => { if (social.openConv !== ui.open && social.openConv) ui.open 
 const gate = computed<{ text: string; warn: boolean; retry: boolean } | null>(() => {
   void tick.value
   if (view.value.onboarding?.required) return { text: 'Finish creating your Sim first. People and messages open once you have moved in.', warn: false, retry: false }
-  if (!connected.value) return { text: 'Not connected. People and messages are read-only until the connection is back.', warn: true, retry: false }
+  if (!connected.value) return { text: `${linkWords(view.value)?.why ?? 'Not connected.'} People and messages are read-only until that is resolved.`, warn: true, retry: false }
   if (social.error && !social.me) return { text: `Could not load: ${social.error}`, warn: true, retry: true }
   if (!social.me) return { text: 'Loading…', warn: false, retry: false }
   return null
@@ -72,7 +73,7 @@ const conv = computed<Conversation | null>(() => (ui.open ? me.value?.conversati
 const thread = computed(() => { void tick.value; return ui.open ? social.threads.get(ui.open) ?? null : null })
 const items = computed(() => { void tick.value; return ui.open ? threadView(ui.open) : [] })
 const title = computed(() => (ui.open ? threadTitle(ui.open, conv.value, ui.openName) : ''))
-const readOnly = computed(() => (ui.open && me.value ? readOnlyReason(ui.open, me.value, connected.value) : null))
+const readOnly = computed(() => (ui.open && me.value ? readOnlyReason(ui.open, me.value, connected.value ? null : linkWords(view.value)?.cannot('send messages') ?? 'Not connected.') : null))
 const isGroup = computed(() => Boolean(conv.value) && conv.value?.kind !== 'dm')
 const addable = computed(() => (me.value?.friends ?? []).filter((friend) => !conv.value?.members.some((member) => member.id === friend.id)))
 const threadBox = ref<HTMLElement | null>(null)
@@ -290,7 +291,7 @@ defineExpose({
               </template>
             </ListRow>
           </ListRows>
-          <EmptyState v-else emoji="💬" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat.">
+          <EmptyState v-else icon="messages" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat.">
             <BaseButton @click="shell.open('people')">See who is here</BaseButton>
           </EmptyState>
         </div>
@@ -304,11 +305,11 @@ defineExpose({
                 <span class="bubble-actions"><BaseButton small variant="primary" @click="answerFriend(request.id, true)">Accept</BaseButton><BaseButton small @click="answerFriend(request.id, false)">Decline</BaseButton></span>
               </div>
               <div v-for="request in me.baeRequests" :key="`b${request.id}`" class="messages-ask">
-                <ListRow :title="request.name" sub="asked you to be their Bae"><template #icon><RowMark round>💞</RowMark></template></ListRow>
+                <ListRow :title="request.name" sub="asked you to be their Bae"><template #icon><RowMark round><GameIcon name="heart" /></RowMark></template></ListRow>
                 <span class="bubble-actions"><BaseButton small variant="primary" @click="answerBae(request.id, true)">Yes</BaseButton><BaseButton small @click="answerBae(request.id, false)">Not now</BaseButton></span>
               </div>
               <div v-if="me.house.knocks.length" class="messages-ask">
-                <ListRow :title="me.house.knocks.map((knock) => knock.from.name).join(', ')" sub="knocking at your door"><template #icon><RowMark round>🚪</RowMark></template></ListRow>
+                <ListRow :title="me.house.knocks.map((knock) => knock.from.name).join(', ')" sub="knocking at your door"><template #icon><RowMark round><GameIcon name="invite" /></RowMark></template></ListRow>
                 <span class="bubble-actions"><BaseButton small variant="primary" @click="shell.open('invite')">Answer</BaseButton></span>
               </div>
             </ListRows>
@@ -316,10 +317,10 @@ defineExpose({
           </template>
           <ListRows v-if="lines.length" label="Updates">
             <ListRow v-for="line in lines" :key="line.key" class="messages-update" :title="line.text" :sub="`${formatClock(line.at)}${line.fresh ? ' · New' : ''}`" :unread="line.fresh">
-              <template #icon><RowMark round>{{ line.icon }}</RowMark></template>
+              <template #icon><RowMark round><GameIcon :kind="line.kind" :id="line.id" /></RowMark></template>
             </ListRow>
           </ListRows>
-          <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" emoji="🔔" title="Nothing yet" text="Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the Governor appear here." />
+          <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" icon="bell" title="Nothing yet" text="Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the Governor appear here." />
         </div>
       </template>
     </template>

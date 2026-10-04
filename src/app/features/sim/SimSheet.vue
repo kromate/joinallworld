@@ -3,6 +3,7 @@
 // Profile, Needs, Skills, People, Career, Settings. Tabs are panels of either kind.
 import { computed, nextTick, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
+import GameIcon from '../../ui/GameIcon.vue'
 import PanelHost from '../phone/PanelHost.vue'
 import { moodOf } from '../hud/hudModel.ts'
 
@@ -34,7 +35,7 @@ function onArrow(event: KeyboardEvent, index: number): void {
 
 <template>
   <header class="sheet-head sim-head">
-    <span class="sim-avatar" aria-hidden="true">👤</span>
+    <span class="sim-avatar" aria-hidden="true"><GameIcon inline name="person" /></span>
     <div><h2>{{ game.state.value.name }}</h2><p>{{ mood.word }}<template v-if="feeling"> · {{ feeling.label }}</template></p></div>
   </header>
   <div ref="row" class="sim-tabs" role="tablist" aria-label="Your Sim">

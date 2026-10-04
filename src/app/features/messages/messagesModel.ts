@@ -7,8 +7,6 @@ import type { PhoneNotification } from '../../types/panel.ts'
 
 /** A waiting friend or Bae request is counted once, as a request, not again as the update that announced it. */
 const REQUEST_KINDS: readonly string[] = ['friend-request', 'bae-request']
-export const NOTICE_ICONS: Readonly<Record<string, string>> = { 'rent-due': '🗓️', rent: '🏠', 'rent-missed': '⚠️', loan: '🏦', 'loan-missed': '⚠️', promotion: '🎉', illness: '🤒', recovered: '💪', gov: '🏛️', transfer: '💸', bae: '💞' }
-export const UPDATE_ICONS: Readonly<Record<string, string>> = { transfer: '💸', report: '🛡️', 'friend-request': '🤝', 'friend-accepted': '🤝', 'invite-knock': '🚪', 'invite-answer': '🚪', 'group-added': '👥', 'bae-request': '💞', 'bae-answer': '💞' }
 /** Which app a line of Updates belongs to: where tapping it in the Phone's notification list goes. */
 const NOTICE_APPS: Readonly<Record<string, string>> = { 'rent-due': 'bank', rent: 'bank', 'rent-missed': 'bank', loan: 'bank', 'loan-missed': 'bank', promotion: 'jobs', illness: 'health', recovered: 'health', gov: 'governor', transfer: 'statement', bae: 'people' }
 const UPDATE_APPS: Readonly<Record<string, string>> = { transfer: 'statement', 'friend-request': 'people', 'friend-accepted': 'contacts', 'invite-knock': 'invite', 'invite-answer': 'invite', 'bae-request': 'people', 'bae-answer': 'people' }
@@ -79,12 +77,13 @@ export function notificationLines(me: SocialOverview | null, input: { connected:
   return lines
 }
 
-export interface UpdateLine { key: string; at: number; text: string; fresh: boolean; icon: string }
+/** `kind` and `id` choose the line's glyph through the icon map ('update' or 'notice', and the update's or notice's own kind). */
+export interface UpdateLine { key: string; at: number; text: string; fresh: boolean; kind: 'update' | 'notice'; id: string }
 /** Updates and life notices as one list, newest first. `seen` is the mark from BEFORE the tab was opened, so what was new stays marked while it is read. */
 export function updateLines(updates: readonly SocialUpdate[], notices: readonly Notice[], seen: number): UpdateLine[] {
   return [
-    ...updates.map((update) => ({ key: `u${update.id}`, at: update.at, text: update.text, fresh: !update.read, icon: UPDATE_ICONS[update.kind] ?? '🔔' })),
-    ...notices.map((notice) => ({ key: `n${notice.id ?? notice.at}`, at: notice.at, text: notice.text, fresh: notice.at > seen, icon: NOTICE_ICONS[notice.kind] ?? '📣' })),
+    ...updates.map((update) => ({ key: `u${update.id}`, at: update.at, text: update.text, fresh: !update.read, kind: 'update' as const, id: update.kind })),
+    ...notices.map((notice) => ({ key: `n${notice.id ?? notice.at}`, at: notice.at, text: notice.text, fresh: notice.at > seen, kind: 'notice' as const, id: notice.kind })),
   ].sort((a, b) => b.at - a.at)
 }
 
@@ -102,8 +101,8 @@ export const targetOf = (key: string): { to: string } | { conv: string } => (key
 /** The host's public id for a house chat key (`h.<hostId>`), else null. */
 export const houseHostOf = (key: string): string | null => (key.startsWith('h.') ? key.slice(2) : null)
 /** Why the thread cannot be written to, or null. */
-export function readOnlyReason(key: string, me: SocialOverview, connected: boolean): string | null {
-  if (!connected) return 'Not connected: messages cannot be sent right now.'
+export function readOnlyReason(key: string, me: SocialOverview, notConnected: string | null): string | null {
+  if (notConnected) return notConnected
   const host = houseHostOf(key)
   return host && host !== me.me.id && me.visiting?.host.id !== host ? 'Your visit has ended. Knock again to join the house chat.' : null
 }

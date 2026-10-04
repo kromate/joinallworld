@@ -4,6 +4,7 @@
 // (about once a second while something runs), never on a timer of its own.
 import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
+import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
 import { isTrip } from './venueModel.ts'
 
@@ -35,7 +36,7 @@ async function cancel(): Promise<void> {
 
 <template>
   <section v-if="active" class="life-progress" aria-label="Current activity">
-    <span class="life-progress-icon" aria-hidden="true">{{ activity?.icon || (isTrip(active) ? '🧭' : '⏳') }}</span>
+    <span class="life-progress-icon" aria-hidden="true"><GameIcon inline kind="activity" :id="activity?.id" :emoji="activity?.icon || (isTrip(active) ? '🧭' : '⏳')" /></span>
     <div><strong>{{ name }}</strong><small>{{ Math.ceil(active.remaining) }}s left</small></div>
     <button type="button" :disabled="fixed || cancelling" :title="fixed ? 'This cannot be cancelled once started' : undefined" :aria-label="cancelLabel" @click="cancel">{{ cancelling ? 'Cancelling…' : sleeping ? 'Wake up' : 'Cancel' }}</button>
     <progress max="1" :value="progress" aria-label="Activity progress" />

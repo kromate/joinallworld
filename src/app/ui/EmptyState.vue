@@ -1,12 +1,20 @@
 <script setup lang="ts">
 // The one empty state every screen uses: what is missing, and the next step (the default slot
 // takes the button). `compact` is the small, left-aligned form for an empty list inside a longer screen.
-withDefaults(defineProps<{ emoji: string; title: string; text?: string; compact?: boolean }>(), { text: '', compact: false })
+import GameIcon from './GameIcon.vue'
+
+withDefaults(defineProps<{
+  /** A glyph name ('statement', 'messages', 'cloud-off' …), never an emoji. */
+  icon: string
+  title: string
+  text?: string
+  compact?: boolean
+}>(), { text: '', compact: false })
 </script>
 
 <template>
   <div class="empty-state" :class="{ 'is-compact': compact }">
-    <span class="empty-state-art" aria-hidden="true">{{ emoji }}</span>
+    <span class="empty-state-art" aria-hidden="true"><GameIcon :name="icon" :size="compact ? 20 : 26" /></span>
     <h3>{{ title }}</h3>
     <div v-if="text" class="empty-state-text">{{ text }}</div>
     <slot />

@@ -16,16 +16,18 @@ const props = withDefaults(defineProps<{
   size?: number
   /** Leave the size to the surrounding styles (the Phone's chrome sizes its own marks). */
   bare?: boolean
-}>(), { name: undefined, kind: undefined, id: undefined, emoji: undefined, size: 20, bare: false })
+  /** A mark inside a line of text: sized to the text around it (1.2em), like the existing `ui-glyph`. */
+  inline?: boolean
+}>(), { name: undefined, kind: undefined, id: undefined, emoji: undefined, size: 20, bare: false, inline: false })
 const svg = computed(() => {
   // More of the icon set arrives with the Phone's code: a mark drawn as "info" until then is drawn again.
   void glyphTick.value
-  return iconSvg(props.name ?? glyphNameFor(props.kind ?? '', props.id, props.emoji))
+  return iconSvg(props.name ?? glyphNameFor(props.kind ?? '', props.id, props.emoji), props.inline ? 'ui-glyph' : undefined)
 })
 </script>
 
 <template>
-  <span class="game-icon" :class="{ 'is-bare': bare }" aria-hidden="true" :style="bare ? undefined : { '--icon': `${size}px` }" v-html="svg" />
+  <span class="game-icon" :class="{ 'is-bare': bare || inline }" aria-hidden="true" :style="bare || inline ? undefined : { '--icon': `${size}px` }" v-html="svg" />
 </template>
 
 <style scoped>

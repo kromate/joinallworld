@@ -11,7 +11,8 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
-import { markReportsRead, noteFiled, noteReports } from '../../legacy/modules.ts'
+import { linkWords, markReportsRead, noteFiled, noteReports } from '../../legacy/modules.ts'
+import HowItWorks from '../../ui/HowItWorks.vue'
 import BaseButton from '../../ui/BaseButton.vue'
 import BaseChip from '../../ui/BaseChip.vue'
 import EmptyState from '../../ui/EmptyState.vue'
@@ -27,6 +28,7 @@ const { game } = useApp()
 const support = useSupport()
 const { draft, list, sending, notice } = support
 const offline = computed(() => !game.connected.value)
+const offlineWhy = computed(() => linkWords(game.view.value)?.why ?? 'Not connected.')
 const limit = computed(() => list.value?.limits.text ?? DEFAULT_LIMITS.text)
 const reports = computed(() => list.value?.reports ?? [])
 const textField = ref<HTMLTextAreaElement | null>(null)
@@ -65,7 +67,7 @@ function useSupport(): Support {
 <template>
   <div class="report">
     <HeroCard label="Report a problem" figure="Tell us what went wrong" class="report-hero">
-      Your report is filed on this server and you get a receipt number at once — no e-mail or other account is needed.
+      You get a receipt number at once. No e-mail needed.
     </HeroCard>
 
     <form class="report-form" novalidate @submit.prevent="send">
@@ -77,10 +79,11 @@ function useSupport(): Support {
       <label>What happened?
         <textarea ref="textField" v-model="draft.text" name="text" rows="5" :maxlength="limit" placeholder="What you did, what you expected, what you saw instead." :disabled="offline" :aria-invalid="notice?.kind === 'error' ? 'true' : undefined" aria-describedby="report-sent-with report-notice" />
       </label>
-      <div id="report-sent-with" class="report-fine">Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines. Your device’s secret is never included.</div>
+      <div id="report-sent-with" class="report-fine">Your recent actions and wallet lines are attached automatically. Your device’s secret never is.</div>
+      <HowItWorks id="support-sent" :rules="['Sent with your report automatically: the game build, your city and where you are, your last 10 actions and their results, the last thing that was refused, and your last 10 wallet lines.', 'Your device’s secret is never included.', 'The report is filed on this server and you get a receipt number at once. No e-mail or other account is needed.']" />
       <div class="report-send">
         <BaseButton variant="primary" block type="submit" :disabled="offline || sending">{{ sending ? 'Sending…' : 'Send report' }}</BaseButton>
-        <small v-if="offline">Not connected: sending needs the server. What you typed is kept.</small>
+        <small v-if="offline">{{ offlineWhy }} A report cannot be sent right now. What you typed is kept.</small>
       </div>
       <div id="report-notice" ref="noticeLine" tabindex="-1" :role="notice?.kind === 'error' ? 'alert' : 'status'" :class="notice ? `report-${notice.kind}` : undefined">{{ notice?.text }}</div>
     </form>
@@ -96,10 +99,10 @@ function useSupport(): Support {
           <div v-if="report.note" class="report-reply"><b>Moderator:</b> {{ report.note }}</div>
         </li>
       </ul>
-      <EmptyState v-if="list.failed" compact emoji="📡" title="Your reports did not load" text="They are kept on the server. Check your connection and try again.">
+      <EmptyState v-if="list.failed" compact icon="cloud-off" title="Your reports did not load" text="They are kept on the server. Check your connection and try again.">
         <BaseButton small :disabled="offline" @click="support.reload()">Try again</BaseButton>
       </EmptyState>
-      <EmptyState v-else-if="!reports.length" compact emoji="🛟" title="Nothing reported yet" text="A report you send appears here with its receipt number, its status and any reply from a moderator." />
+      <EmptyState v-else-if="!reports.length" compact icon="support" title="Nothing reported yet" text="A report you send appears here with its receipt number, its status and any reply from a moderator." />
     </template>
   </div>
 </template>
@@ -113,7 +116,7 @@ function useSupport(): Support {
 .report-form select:focus-visible, .report-form textarea:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .report-form textarea { resize: vertical; }
 .report-form textarea[aria-invalid='true'] { border-color: var(--c-red); }
-.report-fine { padding: 10px 12px; border-radius: var(--r-sm); background: var(--c-fill); font-size: 11px; line-height: 1.45; color: var(--c-muted); }
+.report-fine { font-size: 12px; line-height: 1.45; color: var(--c-muted); }
 .report-send { display: grid; gap: 4px; }
 .report-send small { color: var(--c-red); font-size: 12px; }
 .report-good, .report-error { padding: 9px 12px; border-radius: var(--r-sm); font-size: 13px; font-weight: 600; line-height: 1.4; }

@@ -6,6 +6,7 @@
 import { PANELS as PANELS_JS, sessionGate as sessionGateJs } from '../../ui/panels/index.js'
 import { glyph as glyphJs, glyphFor as glyphForJs, hasGlyph as hasGlyphJs, onGlyphs as onGlyphsJs } from '../../ui/phone/icons.js'
 import { glyphNameFor as glyphNameForJs } from '../../ui/icon-map.js'
+import { linkWords as linkWordsJs } from '../../ui/link.js'
 import { icon as iconJs } from '../../ui/dom.js'
 import { markReportsRead as markReportsReadJs, noteFiled as noteFiledJs, noteReports as noteReportsJs, reportReplies as reportRepliesJs } from '../../ui/phone/reports.js'
 import { shortcutFor as shortcutForJs, shortcutRows as shortcutRowsJs, heldActionFor as heldActionForJs } from '../../ui/keys.js'
@@ -22,12 +23,12 @@ export const legacySessionGate = sessionGateJs as unknown as () => LegacyPanel |
 
 // ---- icons ---------------------------------------------------------------------------------
 /** A bare <svg> string of the game's icon set; an unknown name draws the "info" mark. */
-export const glyph = glyphJs as unknown as (name: string) => string
+export const glyph = glyphJs as unknown as (name: string, className?: string) => string
 /** Small interface marks that are not part of the app icon set (src/ui/dom.js). */
 const INTERFACE_MARKS: readonly string[] = ['menu', 'eye', 'eye-off', 'chat', 'plus', 'minus', 'fit', 'list']
 const interfaceMark = iconJs as unknown as (name: string) => string
 /** Any mark by name: an interface mark, 'chevron-down', or a glyph of the icon set. */
-export const iconSvg = (name: string): string => (name === 'chevron-down' ? interfaceMark('chevron') : INTERFACE_MARKS.includes(name) ? interfaceMark(name) : glyph(name))
+export const iconSvg = (name: string, className?: string): string => (name === 'chevron-down' ? interfaceMark('chevron') : INTERFACE_MARKS.includes(name) ? interfaceMark(name) : glyph(name, className))
 export const hasGlyph = hasGlyphJs as unknown as (name: string) => boolean
 /** The glyph name for a panel id. */
 export const glyphFor = glyphForJs as unknown as (id: string) => string
@@ -61,3 +62,17 @@ export const heldActionFor = heldActionForJs as unknown as (event: KeyboardEvent
 export interface CrowdPerson { id: string; kind: 'player' | 'npc'; name: string; [key: string]: unknown }
 export const crowdList = crowdListJs as unknown as (input: { players?: unknown[]; npcs?: NpcContent[]; selfId?: string | null }) => CrowdPerson[]
 export const playersHere = playersHereJs as unknown as (listing: unknown, state: LifeState, cityId: string) => unknown[]
+
+// ---- connection wording --------------------------------------------------------------------
+export interface LinkWords {
+  state: string
+  /** Two or three words for a button or a pill: "No internet". */
+  short: string
+  /** One plain sentence saying what is true. */
+  why: string
+  /** A full line for a toast or a note: why, what it stops, what to do. `what` is lower-case: 'send messages'. */
+  cannot(what?: string): string
+  action: { label: string; menu?: 'reconnect'; gate?: 'new' | 'expired' } | null
+}
+/** The one table of words for why nothing can change right now (src/ui/link.js). Null when connected. */
+export const linkWords = linkWordsJs as unknown as (link: string | { connected: boolean; link: string }) => LinkWords | null

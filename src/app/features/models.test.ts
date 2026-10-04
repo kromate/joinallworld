@@ -13,7 +13,7 @@ import { createGame } from '../state/game.ts'
 import { buildRegistry, definePanel, legacyChoice } from '../state/panels.ts'
 import { createFakeServer, memoryStorage } from '../testing/fakeServer.ts'
 import { cap, hueOf, initialOf, money, plural, signedMoney } from '../ui/format.ts'
-import { billsDue, billsLine, loanReasons, rentStanding } from './bank/bankModel.ts'
+import { billsDue, billsLine, loanReasons, loanRule, rentStanding } from './bank/bankModel.ts'
 import { COACH_GOALS, coachStep } from './hud/coachModel.ts'
 import { LINKS, cashDelta, hudNotice, linkWording, moodOf, needFlash, savedPill } from './hud/hudModel.ts'
 import { createNoticeMarks, lastLine, messagesBadge, notificationLines, readOnlyReason, targetOf, threadTitle, unreadChats, unreadUpdates, updateLines, updatesCount } from './messages/messagesModel.ts'
@@ -103,6 +103,7 @@ test('bank: badge, rent standing and the reasons a payment is unavailable', asyn
   assert.deepEqual(rentStanding({ arrears: 0, warning: null }), { tone: 'good', label: 'Up to date' })
   assert.deepEqual(loanReasons({ weekBlocked: 'a', allBlocked: 'a' }, null), ['a'], 'the same reason is said once')
   assert.deepEqual(loanReasons({ weekBlocked: 'a', allBlocked: 'b' }, 'Offline'), ['Offline'])
+  assert.deepEqual(loanRule('₦12,000 is collected every Saturday after rent. A missed week stays owed and adds a ₦500 fee (at most 4 times).'), { penalty: 'A missed week stays owed and adds a ₦500 fee (at most 4 times).', rest: ['₦12,000 is collected every Saturday after rent.'] }, 'the penalty stays on the card')
   assert.deepEqual(billsLine({ weeklyBills: 0 }, { employed: false }), { due: false, tail: '' })
   assert.deepEqual(billsLine({ weeklyBills: 18000 }, { employed: false, weeklyPay: 0 }), { due: true, tail: 'no-job' })
 })
@@ -144,7 +145,7 @@ test('messages: unread counts, the badge and the notification lines', () => {
   assert.equal(new Set(lines.map((line) => line.id)).size, lines.length, 'two updates of one kind in the same millisecond keep separate keys')
   assert.deepEqual(lines.find((line) => line.id === 'chat:dm.ada.me')?.params, { conv: 'dm.ada.me' })
   assert.deepEqual(notificationLines(me, { connected: false, now: 1000, seen: 0 }), [])
-  assert.deepEqual(updateLines(me.updates, notices, 500).map((line) => [line.text, line.fresh]), [['New Governor', true], ['Ada sent you ₦500', true], ['Ada sent you ₦200', false], ['Bola wants to be friends', true], ['Rent is due Saturday', false]])
+  assert.deepEqual(updateLines(me.updates, notices, 500).map((line) => [line.text, line.fresh, `${line.kind}:${line.id}`]), [['New Governor', true, 'notice:gov'], ['Ada sent you ₦500', true, 'update:transfer'], ['Ada sent you ₦200', false, 'update:transfer'], ['Bola wants to be friends', true, 'update:friend-request'], ['Rent is due Saturday', false, 'notice:rent-due']])
 })
 
 test('messages: thread wording, where a message goes, and when it cannot be written', () => {
@@ -154,10 +155,10 @@ test('messages: thread wording, where a message goes, and when it cannot be writ
   assert.deepEqual([lastLine(dm, 'me'), lastLine(group, 'me'), lastLine({ ...dm, last: null }, 'me')], ['Ada: How far?', 'You: Hello', 'No messages yet'])
   assert.deepEqual([targetOf('to:ada'), targetOf('dm.ada.me')], [{ to: 'ada' }, { conv: 'dm.ada.me' }])
   assert.deepEqual([threadTitle('to:ada', null, 'Ada'), threadTitle('to:x', null, null), threadTitle('h.ada', null, null), threadTitle('g.1', group, 'ignored')], ['Ada', 'New chat', 'House chat', 'Yaba crew'])
-  assert.equal(readOnlyReason('dm.ada.me', me, true), null)
-  assert.match(readOnlyReason('dm.ada.me', me, false) ?? '', /Not connected/)
-  assert.match(readOnlyReason('h.ada', me, true) ?? '', /visit has ended/)
-  assert.equal(readOnlyReason('h.me', me, true), null, 'the host can always write in their own house chat')
+  assert.equal(readOnlyReason('dm.ada.me', me, null), null)
+  assert.equal(readOnlyReason('dm.ada.me', me, 'This device has no internet connection.'), 'This device has no internet connection.', 'the connection\'s own words')
+  assert.match(readOnlyReason('h.ada', me, null) ?? '', /visit has ended/)
+  assert.equal(readOnlyReason('h.me', me, null), null, 'the host can always write in their own house chat')
 })
 
 test('messages: which notices were read is kept per city on this device', () => {

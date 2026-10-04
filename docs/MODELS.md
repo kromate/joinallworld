@@ -1,28 +1,183 @@
-# Allworld model library research
+# Allworld procedural model library
 
-Research date: 4 October 2026. Base revision: `c5e803e`. Worktree: `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models`. Branch: `astra/models`.
+Implemented on 4 October 2026 in `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models`, branch `astra/models`, based on `c5e803e`. The owner game files are unchanged. No merge, rebase, push, deployment, downloaded 3D model, image texture, font, or new npm dependency is part of this delivery.
 
-Immutable research-evidence commit: `594845d80ee3a1d8dec99095aa4a5d927339d809`. This commit contains the map audit probe and observed result, not a model-library implementation.
+## Current delivery
 
-This handoff answers the request for extensive online research and better free model candidates. It does not deliver the vehicle, avatar, geography, or preview implementations in the wider brief. No downloaded 3D model, image texture, font, npm dependency, or runtime integration was added.
+The local library includes 15 vehicles, 11 buildings/water models, a compatible procedural avatar, and world/Africa/Nigeria/Kenya map models. `models.html` is a dev-only workshop. The production Vite inputs remain unchanged.
 
-## Recommendation
+| Unit | Immutable implementation commit | State |
+| --- | --- | --- |
+| Vehicles, buildings, water | `3bae5aba98787e12495baa067ba6a0e2699c5c75` | Implemented; headless and local browser checked |
+| People | `bc59adc637ad7d0ac1d44265cd308412be39f152` | Implemented; trait, budget, pose, ownership, and contact-sheet checks |
+| Geography | `503a244caffd0b46b632de02dac4d2352af13558` | Implemented; sourced geometry, picking, routes, framing, sizes checked |
+| Workshop and verification tooling | `3d31c9a42653fcf861d8240c620d0edea3b87d33` | Local preview and evidence records |
+| Owner-game integration / real Android device | Not performed | Owner mounts the library; real-device frame-time and mobile-data proof remain pending |
 
-Keep the procedural implementation as the current baseline. The request to search free models does not by itself settle the brief's explicit ban on importing them. The candidates below are alternatives for review until that rule changes. Converting a downloaded mesh to JavaScript arrays would still be importing a model, not original procedural authorship.
+The Kenya dataset exception is approved by Anthony in this chat. Kenya uses the attributed geoBoundaries release. Other outlines remain Natural Earth public-domain data. Road paths are explicitly **schematic travel corridors**, not surveyed highway alignments or navigation routes. Imported free 3D candidates remain research references.
 
-The most useful free starting points are Kenney's Car Kit for coherent generic traffic, Nirmal.Justin's autorickshaw for a keke shape reference, and MPFB for an optional offline character-authoring workflow. Quaternius has useful character and vehicle packs, but its pack labels and current site license need reconciliation before acquisition. For the signature danfo, Nigerian garments, and the requested tiny map LODs, original work remains necessary. None of these listings proves that an asset is better inside Allworld.
+## Open the workshop
 
-The existing avatar already supports body, hair, outfit, fabric, skin, accessories, face, and expression choices. A generic imported character would lose functionality unless it preserves those choices and the existing batch/rig contracts. The source contract was read at the pinned revision, not inferred from marketplace claims.
+The current local preview is `http://127.0.0.1:3400/models.html`. It supports every model, detail selection, lighting, views, paint, avatar appearance, pose/animation scrubbing, vehicle doors/steering/brakes, map selection, region drilldown, camera scrubbing, and flight arcs. Drag rotates; scroll zooms. Rendering stops when input stops.
 
-## Evidence levels
+On this machine, reuse the existing Three.js r180 and Vite installation without creating a root dependency link:
 
-- **Listing** means a creator or provider page states the fact. Counts are advertised, sometimes rounded, and are not measurements of downloaded files.
-- **Visual** means I inspected the provider's preview in a browser. It proves the visible shape or presentation only.
-- **Measured** means a probe inspected source data directly. This applies to the Natural Earth audit below, not to 3D assets.
-- **Unresolved** means the license, free subset, download contents, rig, material count, or performance remains unverified.
+```sh
+cd /Users/anthonyakpan/Desktop/JoinAllworld-astra-models
+MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node src/models/tooling/dev.mjs
+```
 
-The search covered creator packs, specific vehicle listings, human generators, African hair resources, cultural references, and map data. Two `gpt-5.6-luna` workers at medium effort researched vehicles and people separately. The primary agent checked the leading pages, inspected previews, audited map data, and assembled this decision. The people worker had one focused follow-up for licensing and service availability. Token cost and elapsed time per worker were not exposed.
+Only ports 3400–3409 are accepted by this runner. It runs the workshop only, without the game API/server. It ignores its own cache/evidence writes to avoid screenshot-triggered reloads. If dependencies are installed normally in a future checkout, omit `MODELS_DEPENDENCY_ROOT`.
 
+## Public API
+
+Import from `src/models/index.js`, or directly from a domain entry to keep loading narrow. Geography data is lazy-loaded separately. All model code is plain JavaScript ES modules; geometry construction needs no DOM or WebGL. The preview and tooling are the explicit DOM/Node exceptions.
+
+| Domain | Exports / contract |
+| --- | --- |
+| Vehicles | `VEHICLE_TYPES`, `VEHICLE_DETAILS`, `buildVehicle(type, options)`, `poseVehicle(model, pose)` |
+| People | `normalizeLook`, `drawAvatar(batch, look, options)`, `buildAvatar(kit, look, options)`, `poseAvatar(group, pose)`, `buildPerson(look, options)`, `LOOK_OPTIONS`, `DETAILS`, `POSES` |
+| Environment | `ENVIRONMENT_TYPES`, `DETAILS`, `buildEnvironment(type, options)`, `poseEnvironment(model, state)` |
+| Maps | `GEOGRAPHY_LEVELS`, `loadGeography(level)`, `buildGeography(data, options)`, `buildCountry(data, options)`, `regionData(data, id)`, `buildRoute(map, points, options)`, `transitionCamera(from, to, progress, out)` |
+
+The facade aliases people/environment detail lists as `PEOPLE_DETAILS` and `ENVIRONMENT_DETAILS`. New builders return `{ object3D, userData }`, sharing the metadata object with `object3D.userData`. Metadata includes `triangles`, `drawCalls`, and idempotent `dispose()`, plus applicable parts/anchors. The legacy `buildAvatar` deliberately returns `THREE.Group`, matching the existing contract. Its `userData.parts` retains body, torso, head, arms, and legs; the rig also has elbow/knee controls. `top` includes the builder’s y offset.
+
+Vehicles face +Z, with +Y up. Their driver, door, and passenger-seat anchors are `Object3D` nodes; door anchors move with the door. Wheel rotations use supplied distance. Steering, doors, bounce, brake lights, and indicators reset from stored base transforms. The `time` builder option is `day`/`night`; pose `time` is numeric seconds. Avatar poses accept normalized `stride` and numeric `time`. Water pose modifies existing position and normal buffers. None of these functions starts a timer or owns an animation loop.
+
+```js
+import { buildVehicle, poseVehicle } from './src/models/vehicles/index.js';
+const danfo = buildVehicle('danfo', { detail: 'street', route: 'YABA', time: 'day' });
+scene.add(danfo.object3D);
+poseVehicle(danfo, { distance: 10, steering: 0.15, door: 0.5, time: 2 });
+// The host chooses when to render, and disposes any separately attached passengers.
+danfo.userData.dispose();
+```
+
+`drawAvatar` writes into the existing scene batch. `buildAvatar` borrows the host kit’s materials and disposes only its own geometry. `buildPerson` owns its materials and geometry. The appearance IDs and seeded fallbacks are covered by tests; height/build options scale the geometry without changing its triangle cost. The stylized avatar is about 2.9 local units tall. Hosts must choose scene scale and verify seated fit for the existing game’s unit system before mounting it.
+
+Map coordinates are `[longitude, latitude]`. `model.pick({lon, lat})` returns a feature ID or null. `project(lon, lat, target?)` and `unproject(x, z)` convert to/from local XZ coordinates. Feature metadata exposes full bounds, an area centroid, a safe interior label anchor, and main-landmass focus bounds. `highlight(id, on)` and `hover(id)` update the existing color buffer. `frame(id?)` supports feature IDs, `group:Africa`, and city identifiers such as `city:lagos`. Frames use local model coordinates. Allocate the transition output once and reuse it.
+
+```js
+import * as THREE from 'three';
+import { loadGeography, buildGeography, buildRoute, transitionCamera } from './src/models/geo/index.js';
+const data = await loadGeography('nigeria');
+const map = buildGeography(data);
+map.highlight('NG-LA', true);
+const from = map.frame(), to = map.frame('NG-LA');
+const frame = { position: new THREE.Vector3(), target: new THREE.Vector3(), span: 0 };
+transitionCamera(from, to, 0.5, frame);
+const route = buildRoute(map, data.roads[0].points, { mode: 'road' });
+route.pose(0.5);
+// Attach a separately owned vehicle to route.userData.anchors.traveller.
+route.userData.dispose(); map.userData.dispose();
+```
+
+A route owns its line/anchor but does not own a vehicle the host attaches. Camera transitions and route poses write into existing objects. They handle backwards scrubbing and exact endpoints. Maps currently use flat projections; overseas islands remain in the full feature, while focus framing prefers its main landmass.
+
+## Measured rendering and data budgets
+
+Counts below include model geometry and instanced triangles, excluding preview lights, separate route markers, and other models. The workshop additionally shows actual renderer totals. All counts are reproducible with `MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node src/models/tooling/measure.mjs`. The JSON record is `src/models/evidence/measurements.json`.
+
+Vehicle cells are triangles / draw calls. The hard ceilings are 250 / 1,500 / 8,000 triangles. Route lettering changes the count within the tested limit.
+
+| Vehicle | Map | Street | Showcase |
+| --- | ---: | ---: | ---: |
+| danfo | 240 / 7 | 902 / 7 | 1286 / 8 |
+| keke | 212 / 7 | 308 / 7 | 452 / 8 |
+| okada | 120 / 3 | 216 / 3 | 328 / 4 |
+| cab | 248 / 7 | 696 / 7 | 1080 / 8 |
+| sedan | 240 / 7 | 664 / 7 | 1048 / 8 |
+| hatchback | 236 / 7 | 660 / 7 | 1044 / 8 |
+| suv | 236 / 7 | 660 / 7 | 1044 / 8 |
+| pickup | 248 / 7 | 636 / 7 | 1020 / 8 |
+| molue | 240 / 7 | 602 / 7 | 794 / 8 |
+| brt | 240 / 7 | 638 / 7 | 830 / 8 |
+| tanker | 244 / 7 | 544 / 7 | 912 / 8 |
+| container | 228 / 7 | 516 / 7 | 804 / 8 |
+| ferry | 72 / 2 | 240 / 2 | 240 / 2 |
+| canoe | 134 / 2 | 158 / 2 | 158 / 2 |
+| airplane | 136 / 3 | 504 / 3 | 696 / 4 |
+
+Building/water budgets use the same conservative ceilings. LODs retain the same bounds and anchor positions.
+
+| Environment | Map | Street | Showcase |
+| --- | ---: | ---: | ---: |
+| compound-house | 204 / 1 | 240 / 1 | 504 / 1 |
+| bungalow | 104 / 1 | 104 / 1 | 368 / 1 |
+| apartment | 192 / 1 | 288 / 1 | 1740 / 1 |
+| office | 180 / 1 | 252 / 1 | 1308 / 1 |
+| kiosk | 72 / 1 | 72 / 1 | 264 / 1 |
+| market-stall | 72 / 1 | 108 / 1 | 186 / 1 |
+| bus-stop | 84 / 1 | 108 / 1 | 168 / 1 |
+| bridge | 168 / 1 | 240 / 1 | 384 / 1 |
+| lagoon | 60 / 2 | 192 / 2 | 552 / 2 |
+| river | 72 / 2 | 204 / 2 | 564 / 2 |
+| beach | 242 / 3 | 374 / 3 | 734 / 3 |
+
+People hard limits are 600 / 2,500 / 25,000. The fixed measurement sweep covers 656 body/hair/outfit/fabric combinations per tier with a crown and a specified five-accessory set. It is not an exhaustive maximum over every look combination. The separate low-detail test exercises all game-allowed accessory subsets up to five items. A representative unmarked rigged braids/casual person is 476 / 1,848 / 7,788 triangles at 11 calls. Unrigged batching is one opaque call, plus one for a marker. Rigged marked avatars use 12 calls.
+
+| Map | Features | Minified module bytes | Triangles | Draw calls |
+| --- | ---: | ---: | ---: | ---: |
+| world | 242 | 113,508 | 16,280 | 3 |
+| africa | 56 | 69,941 | 14,442 | 3 |
+| nigeria | 37 | 58,496 | 12,666 | 9 |
+| kenya | 47 | 29,064 | 4,430 | 8 |
+
+World includes countries and territories. Africa includes 56 features, including disputed representations and the island countries omitted by the source’s Africa continent filter. Nigeria includes 36 states plus FCT and 37 distinct capital anchors. Kenya includes 47 counties. Country maps include city/airport anchors, schematic corridors, lane markings, and sampled source coastlines; Nigeria includes Niger/Benue centerlines. Coming-soon hatching adds a draw call when enabled.
+
+`src/models/geo/provenance.json` records URLs, immutable revisions, source hashes, attribution, and limitations. `generate-data.py` fetches missing authoring inputs, verifies hashes, nodes collinear shared border segments, simplifies common chains, and writes compact local chunks. The world/Africa/Nigeria/Kenya module budgets are respectively 120,000 / 80,000 / 60,000 / 40,000 bytes. Capitals missing from Natural Earth use the committed Wikidata CC0 supplement; airport coordinates use OurAirports public-domain data. No runtime tiles or network APIs are used.
+
+## Verification and local evidence
+
+- Main `npm test`: 534 tests total, 530 passed, four skipped, zero failures. The final focused model run passed 29/29 after visual corrections.
+- Production `npm run build`: passed with a dependency-aware config wrapper and output redirected into `src/models/.cache/build`. It kept the original production inputs, so the workshop is not bundled into the game.
+- Edge suite: 14/14 passed. The test fixture hardcodes a root `dist` path; to respect the write lane, it ran on a private `git archive c5e803e` snapshot under `.cache/edge-workspace`, with the newly built assets linked as that snapshot’s `dist`. Existing game/deploy files are byte-identical to that base. The installed `deploy/tooling` dependencies were reused through `JOINALLWORLD_TOOLS`.
+- Browser verification used the user-provided headless Chromium/CDP approach. Captures reported no JS exceptions and stable idle render counters. Actual model renderer counts matched metadata when no separately owned route traveller was present.
+- Twelve repeated kiosk detail changes ended with the same live renderer geometry count, 1 → 1. An avatar pose change retained its geometry allocation. Nigeria → Lagos drilldown worked; the 390px viewport had no horizontal overflow. These are bounded local checks, not a universal GPU-leak or physical-Android proof.
+
+Focused tests:
+
+```sh
+MODELS_DEPENDENCY_ROOT=/Users/anthonyakpan/Desktop/JoinAllworld node --import ./src/models/tooling/register-dependencies.mjs --test src/models/vehicles/*.test.js src/models/people/*.test.js src/models/environment/*.test.js src/models/geo/*.test.js
+```
+
+Screenshots are local ignored files under `/Users/anthonyakpan/Desktop/JoinAllworld-astra-models/src/models/evidence/`. JSON measurements and browser check results are committed. Representative paths:
+
+- `vehicles-map-grid.png`, `vehicles-street-grid.png`, `vehicles-showcase-grid.png`.
+- `environment-map-grid.png`, `environment-street-grid.png`, `environment-showcase-grid.png`.
+- `people-{low,medium,high}-{hair,outfit}-{woman,man}.png`: front/side/back, lightest/darkest skin for every option in each body registry.
+- `people-high-single-woman-night.png` and `people-high-single-woman-night-skin-1.png`.
+- `geo-street-single-{world,africa,nigeria,kenya}.png`.
+- `transition-nigeria-lagos-{0,0.5,1}.png`, `mobile-preview.png`.
+
+The parent inspected the main fleet/building/map views and representative contact sheets, then corrected vehicle face winding and windscreens, canoe interior faces, avatar cheek/eye projection, exposed tunic waist geometry, building LOD massing, roof ribs, and palm shape. Machine-generated contact sheets cover the full registry; not every thumbnail received an individual close-up art review.
+
+Regenerate contact sheets in bounded pages by body type:
+
+```sh
+node src/models/tooling/capture.mjs vehicles:street:grid environment:showcase:grid people:high:hair:woman people:high:hair:man geo:street:single:nigeria --interactions
+```
+
+The capture tool uses the existing local Chromium binary, owns port 3409 while running, and removes its temporary profile. It has per-command timeouts. The ordinary preview stays on 3400.
+
+## Extend and integrate
+
+Add geometry to the appropriate domain builder/registry and keep the same public wrapper. Share materials and instance repeated geometry. Dispose temporary construction geometry after merging, and release instanced-mesh resources as well as their geometry/materials. Extend the existing parameter-driven pose function rather than creating a render loop. New geo datasets need closed nondegenerate rings, stable unique IDs, and explicit provenance; `buildCountry` accepts data without changes to its geometry logic.
+
+Integration requests for the parity owner:
+
+1. Mount vehicles/environment models in the map and venue scenes. Confirm the world-unit scale, actor seat offsets, collision bounds, and doors in actual gameplay. The standalone workshop does not prove collision or passenger seating in the owner’s scene.
+2. Switch the avatar behind the planned comparison flag, using the legacy `buildAvatar` return shape and `drawAvatar` batch path. Use batched low-detail crowds; reserve rigged/high-detail people for the player/preview.
+3. Mount the lazy geography levels and use the exposed feature/city anchors. Keep scene-wide geometry/draw-call limits in addition to per-model limits.
+4. Preserve the Kenya geoBoundaries attribution and license link from `geo/provenance.json` in any distributed game. Anthony’s exception applies to this dataset, not to unrestricted new asset imports.
+5. Retain the visible schematic-route label. Accurate highway geometry, surveyed lane counts, and map-specific bridge placements still need a separately approved/licensed source. The reusable bridge model is implemented.
+6. Run the actual host paths and representative Android hardware/mobile-data checks before a production claim. The library has not been merged or mounted into the owner’s running game.
+
+Three Sol workers implemented the disjoint vehicle, people, and environment units; a Luna researcher checked Kenya provenance. The parent implemented geography, preview/tooling, integration, and visual QA. Revision passes are reflected in the tests and commits above. Per-agent elapsed time, tokens, and money were not exposed.
+
+## Research archive
+
+The following source comparison was completed before implementation. Candidate assets were researched and previewed, not imported. Kenya’s earlier public-domain-only blocker is superseded by Anthony’s explicit attributed-dataset approval; the Natural Earth audit correctly remains eight old Kenyan provinces and was not used for county geometry.
 ## Free vehicle candidates
 
 Hard triangle ceilings from the brief: map 250, street 1,500, showcase 8,000. An advertised count below a ceiling is only a candidate; materials, moving parts, seat anchors, loading, and memory still need inspection. Unknown counts are not a pass. Unless stated otherwise, free download is advertised but the archive was not downloaded.
@@ -121,7 +276,7 @@ The local `RESEARCH-DESIGN.md` section 2 calls for warm skin highlights, readabl
 
 ## Technical acceptance before any adoption
 
-These are proposed checks, not completed results.
+These checks informed the implementation. The current verification record above distinguishes completed checks from physical-device and host-integration work that remains pending.
 
 1. Record the exact asset URL, creator, file hash, acquired version/date, bundled license, attribution, edits, and redistribution conditions. Confirm which models are actually in a free subset.
 2. Inspect the full asset, including child meshes, hidden geometry, material groups, textures, animations, and skeleton. Count triangles after triangulation. Count instanced triangles multiplied by instance count.
@@ -135,25 +290,3 @@ These are proposed checks, not completed results.
 [Khronos glTF guidance](https://www.khronos.org/gltf/) is relevant if model files become permitted. glTF is a delivery format, not a budget guarantee. Image texture compression and imported animation are outside the current procedural-only scope.
 
 There is also an API distinction in the brief: the common new builder wrapper returns `{ object3D, userData }`, but the existing `buildAvatar(kit, look, options)` returns a `THREE.Group` whose `userData` owns `parts`, `top`, and `dispose`. Preserve the legacy return shape for the drop-in function; expose a separately named wrapper if needed. Do not silently wrap the legacy return value.
-
-## Integration requests
-
-1. Resolve whether downloaded models are allowed, and whether that also changes the image-texture ban. Until then, all 3D candidates in this document remain research/reference only.
-2. Keep Kenya's eight-province Natural Earth data out of a counties implementation. Verify the 47-county public-domain source lineage, or explicitly relax the data-license rule for a named alternative.
-3. Select a verified highway data source or accept visibly schematic travel routes. OSM and geoBoundaries are not automatically public-domain data.
-4. Keep `buildAvatar`'s existing return contract and all trait IDs. The generic library wrapper can coexist under a different export.
-5. Set explicit draw-call ceilings and scene-wide instance counts before model acceptance. The brief gives triangle limits but no numeric draw-call limits. Decide whether preview lights and blob geometry are included in model counters.
-6. Mount a future side-by-side model preview behind the owner's flag. The parity session owns all changes outside this lane. No integration has been performed in this handoff.
-
-## Delivery status
-
-| Unit | State | Evidence / next action |
-| --- | --- | --- |
-| Online asset and license research | Complete at listing/reference level | Linked candidates, direct source review, and five visual previews: Kenney cars, Nirmal.Justin keke, Lagos danfo, Quaternius people, and AliceCassie motorcycle. |
-| Natural Earth coverage audit | Measured | Source hash, Nigeria 37, Kenya 8, raw/filtered byte counts; rerunnable probe included. |
-| Imported-model acceptance | Not performed | No model archive downloaded, parsed, retopologized, or rendered in Allworld. |
-| Vehicle/people/geo library | Not implemented in this research handoff | Original brief remains the implementation specification. |
-| Dev preview, contact sheets, GPU leak checks, Android proof | Not performed | No `models.html`, dev server, or runtime screenshots created. |
-| Production/owner integration | Not performed | No merge, rebase, push, or owner-file edits. |
-
-Only new research files inside the assigned lane were added. Full `npm test`, build, and edge suites were not run for this research-only change; there is no runtime code change to verify. The saved probe received syntax validation and the JSON evidence was parsed. No screenshot file is claimed; provider previews were inspected through the browser tool during the research.

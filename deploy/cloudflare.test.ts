@@ -1,4 +1,5 @@
 import test from 'node:test';
+import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, rm, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -6,46 +7,95 @@ import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { randomUUID } from 'node:crypto';
 
+/** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
+interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
+type MiniflareResponse = Response & { webSocket?: StubSocket | null }
+/** A row of a table in the object's SQLite storage; the tests read `value`, `secret`, `name`, `n`, ... as they know their query. */
+type Row = { value: string; secret: string; name: string; n: number; [column: string]: string | number }
+/** Never empty: a query with no rows fails on the first property read, as before. */
+type Rows = [Row, ...Row[]]
+interface ObjectStorage { exec(query: string, ...bindings: (string | number | null)[]): Promise<Rows> }
+interface MiniflareInstance {
+  ready: Promise<URL>
+  dispose(): Promise<void>
+  dispatchFetch(url: string, init?: RequestInit & { headers?: Record<string, string> }): Promise<MiniflareResponse>
+  unsafeGetDurableObjectStorage(script: string, className: string, id: { name: string }): Promise<ObjectStorage>
+  unsafeEvictDurableObject(script: string, className: string, id: { name: string; webSockets?: 'hibernate' }): Promise<void>
+}
+interface MiniflareTooling {
+  Miniflare: new (options: Record<string, unknown>) => MiniflareInstance
+  convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown>
+}
+interface BundleOptions { entryPoints: string[]; outfile: string; bundle: boolean; format: string; platform: string; external: string[] }
+interface EsbuildTooling { build(options: BundleOptions): Promise<unknown> }
 const require = createRequire(resolve(process.env.JOINALLWORLD_TOOLS || 'deploy/tooling', 'package.json'));
-const { Miniflare, convertV4MiniflareOptions } = require('miniflare');
-const { build: esbuild } = require('esbuild');
-const build = process.env.JOINALLWORLD_BUNDLER_ROLLUP ? async options => {
+const { Miniflare, convertV4MiniflareOptions } = require('miniflare') as MiniflareTooling;
+const { build: esbuild } = require('esbuild') as EsbuildTooling;
+const build: (options: BundleOptions) => Promise<unknown> = process.env.JOINALLWORLD_BUNDLER_ROLLUP ? async options => {
  const { rollup } = await import('rollup');
- const bundle = await rollup({ input: options.entryPoints[0], external: options.external });
+ const bundle = await rollup({ input: options.entryPoints[0] as string, external: options.external });
  await bundle.write({ file: options.outfile, format: 'esm' }); await bundle.close();
 } : esbuild;
 
-async function fixture(t, overrides = {}) {
+/** A player the tests created: the session's public fields and the cookie to send. */
+interface Device { id: string; name: string; cookie: string; device?: string; [field: string]: unknown }
+interface Member { id: string; name: string; muted: boolean; enabled: boolean; position: { x: number; z: number } }
+/**
+ * A frame received on a socket. The tests assert on the fields they expect, so a field a frame does not carry fails
+ * its assertion rather than the type check.
+ */
+interface Frame {
+  type: string; code: string; error: string; id: string; from: string; clientId: string; body: string; answer: string; reason?: string
+  members: [Member, ...Member[]]
+  conv: { id: string; with: string }
+  message: { body: string; from: { id: string } }
+  by: { name: string }
+  [field: string]: unknown
+}
+/** The last table-state frame a socket was sent (a Whot table at the buka). */
+interface TableState {
+  type: string
+  n: number
+  you: number
+  toMove: number[]
+  table: { status: string; seats: { name: string; bot?: boolean }[] }
+  view: { hand: { s: string }[]; playable: number[] }
+  result: { calledOff: boolean; text: string; winners: number[] }
+}
+/** A socket with the frames it has received. `state` is set by the first table-state frame; the table steps read it only after one arrived. */
+interface Peer { who: Device; send(message: object): void; next(): Promise<Frame>; until(type: string, tries?: number): Promise<Frame>; seen: Frame[]; state: TableState }
+
+async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-do-test-'));
   const bundle = join(folder, 'worker.mjs');
-  await build({ entryPoints: [new URL('./cloudflare-worker.js', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
+  await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
   const options = { name: 'joinallworld-conformance', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
   let mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true });
-  const sockets = [];
+  const sockets: StubSocket[] = [];
   t.after(async () => { for (const socket of sockets) try { socket.close(); } catch {} await mf.dispose(); await rm(folder, { recursive: true, force: true }); });
   await mf.ready;
   const origin = 'https://joinallworld.test';
-  async function request(path, body, cookie, headers = {}) {
+  async function request(path: string, body?: object | null, cookie?: string | null, headers: Record<string, string> = {}) {
     return mf.dispatchFetch(origin + path, { method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined });
   }
-  async function device(name) {
+  async function device(name: string): Promise<Device> {
     const response = await request('/api/session', { name });
     assert.equal(response.status, 200);
     const setCookie = response.headers.get('set-cookie');
-    assert.match(setCookie, /HttpOnly/); assert.match(setCookie, /SameSite=Lax/); assert.match(setCookie, /Secure/);
+    assert.match(setCookie as string, /HttpOnly/); assert.match(setCookie as string, /SameSite=Lax/); assert.match(setCookie as string, /Secure/);
     const body = await response.json();
-    return { ...body.session, cookie: setCookie.split(';')[0] };
+    return { ...body.session, cookie: (setCookie as string).split(';')[0] as string };
   }
-  const action = (device, fields) => request('/api/action', { actionId: `${Date.now()}:${randomUUID()}`, cityId: 'lagos', ...fields }, device.cookie);
-  const life = async device => (await (await request('/api/life?city=lagos', null, device.cookie)).json()).state;
-  async function socket(device) {
+  const action = (device: Device, fields: object) => request('/api/action', { actionId: `${Date.now()}:${randomUUID()}`, cityId: 'lagos', ...fields }, device.cookie);
+  const life = async (device: Device) => (await (await request('/api/life?city=lagos', null, device.cookie)).json()).state;
+  async function socket(device: Device) {
     const response = await mf.dispatchFetch(origin + '/socket', { headers: { origin, cookie: device.cookie, upgrade: 'websocket' } });
     assert.equal(response.status, 101);
-    const ws = response.webSocket;
-    const queue = [], pending = [], heartbeats = [];
-    ws.addEventListener('message', event => { const item = JSON.parse(event.data); if (item.type === 'heartbeat') { heartbeats.push(Date.now()); ws.send(JSON.stringify({type:'heartbeat-ack'})); return; } const listener = pending.shift(); if (listener) listener(item); else queue.push(item); });
+    const ws = response.webSocket as StubSocket;
+    const queue: Frame[] = [], pending: ((item: Frame) => void)[] = [], heartbeats: number[] = [];
+    ws.addEventListener('message', event => { const item = JSON.parse(event.data) as Frame; if (item.type === 'heartbeat') { heartbeats.push(Date.now()); ws.send(JSON.stringify({type:'heartbeat-ack'})); return; } const listener = pending.shift(); if (listener) listener(item); else queue.push(item); });
     ws.accept(); sockets.push(ws);
-    return { ws, heartbeats, send: message => ws.send(JSON.stringify(message)), next: () => queue.length ? Promise.resolve(queue.shift()) : new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('Socket message timeout')), 3000); pending.push(item => { clearTimeout(timer); resolve(item); }); }) };
+    return { ws, heartbeats, send: (message: object) => ws.send(JSON.stringify(message)), next: (): Promise<Frame> => queue.length ? Promise.resolve(queue.shift() as Frame) : new Promise<Frame>((resolve, reject) => { const timer = setTimeout(() => reject(Error('Socket message timeout')), 3000); pending.push((item: Frame) => { clearTimeout(timer); resolve(item); }); }) };
   }
   const storage = () => mf.unsafeGetDurableObjectStorage('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1' });
   /**
@@ -53,24 +103,24 @@ async function fixture(t, overrides = {}) {
    * way the conformance tests above do: its stored `updatedAt` (and the absolute times of its activity cooldowns) is moved
    * back, and the next request settles the elapsed time through the engine exactly as a real wait would.
    */
-  async function skip(device, ms, cityId = 'lagos') {
+  async function skip(device: Device, ms: number, cityId = 'lagos') {
     const db = await storage(), secret = device.cookie.slice(4);
     const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
     const entry = session.cities[cityId];
     entry.updatedAt -= ms;
-    for (const [id, readyAt] of Object.entries(entry.state.travel?.cooldowns ?? {})) entry.state.travel.cooldowns[id] = readyAt - ms;
+    for (const [id, readyAt] of Object.entries(entry.state.travel?.cooldowns ?? {})) entry.state.travel.cooldowns[id] = (readyAt as number) - ms;
     await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
   }
   /** The next Lagos day for one life: the day its last paid work was counted on becomes yesterday. */
-  async function nextDay(device, cityId = 'lagos') {
+  async function nextDay(device: Device, cityId = 'lagos') {
     const db = await storage(), secret = device.cookie.slice(4);
     const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
     const work = session.cities[cityId].state.civic.work;
     if (work.last !== null) work.last -= 1;
     await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
   }
-  const upgrade = headers => mf.dispatchFetch(origin + '/socket', { headers: { upgrade: 'websocket', ...headers } });
-  return { atHost: (host,path,method='GET') => mf.dispatchFetch(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path, init) => mf.dispatchFetch(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { for (const socket of sockets) socket.close(); await mf.dispose(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true }); await mf.ready; } };
+  const upgrade = (headers: Record<string, string>) => mf.dispatchFetch(origin + '/socket', { headers: { upgrade: 'websocket', ...headers } });
+  return { atHost: (host: string,path: string,method='GET') => mf.dispatchFetch(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path: string, init?: RequestInit & { headers?: Record<string, string> }) => mf.dispatchFetch(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { for (const socket of sockets) socket.close(); await mf.dispose(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true }); await mf.ready; } };
 }
 
 test('Cloudflare: public IDs, origin isolation, atomic duplicate fare, replay window and restart durability', async t => {
@@ -129,7 +179,7 @@ test('Cloudflare: two clients presence, chat dedupe, signaling isolation and tra
   await f.hibernate();
   x.send(chat); assert.equal((await x.next()).id, first.id);
   x.send({ type: 'voice-state', enabled: true, muted: true });
-  assert.equal((await x.next()).members.find(member => member.id === a.id).muted, true); await y.next();
+  assert.equal((await x.next()).members.find(member => member.id === a.id)?.muted, true); await y.next();
   await f.hibernate();
   y.send({ type: 'voice-state', enabled: true, muted: true });
   assert.equal((await x.next()).members.filter(member => member.enabled).length, 2); await y.next();
@@ -188,7 +238,7 @@ test('Cloudflare: proximity survives hibernation, movement avoids SQL writes and
   const storage = await f.storage();
   const before = JSON.stringify(await storage.exec('SELECT * FROM sessions'));
   x.send({ type: 'move', x: 12, z: 0 });
-  assert.deepEqual((await x.next()).members.find(m => m.id === a.id).position, { x: 12, z: 0 }); await y.next();
+  assert.deepEqual((await x.next()).members.find(m => m.id === a.id)?.position, { x: 12, z: 0 }); await y.next();
   assert.equal(JSON.stringify(await storage.exec('SELECT * FROM sessions')), before);
   await f.hibernate();
   x.send({ type: 'signal', to: b.id, data: { candidate: 'synthetic' } }); assert.equal((await x.next()).code, 'peer_out_of_range');
@@ -213,7 +263,7 @@ test('Cloudflare: twelve devices behind one IP retain independent HTTP allowance
   const devices = [];
   for (let i = 0; i < 12; i++) devices.push(await f.device(`Player ${i}`));
   for (const device of devices) for (let i = 0; i < 51; i++) assert.equal((await f.request('/api/session', null, device.cookie)).status, 200);
-  const a = devices[0];
+  const a = devices[0] as Device;
   const action = { actionId: `${Date.now()}:${randomUUID()}`, type: 'travel', id: 'library', mode: 'cab' };
   assert.equal((await (await f.action(a, action)).json()).state.cash, 4600);
   const storage = await f.storage();
@@ -222,10 +272,10 @@ test('Cloudflare: twelve devices behind one IP retain independent HTTP allowance
   assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM action_receipts'))[0].n, 1);
   await f.hibernate();
   assert.equal((await (await f.action(a, action)).json()).duplicate, true);
-  assert.equal((await f.request('/api/voice-config', null, devices[1].cookie)).status, 403);
-  const socket = await f.socket(devices[1]); socket.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await socket.next();
-  for (let i = 0; i < 6; i++) assert.equal((await f.request('/api/voice-config', null, devices[1].cookie)).status, 200);
-  assert.equal((await f.request('/api/voice-config', null, devices[1].cookie)).status, 429);
+  assert.equal((await f.request('/api/voice-config', null, (devices[1] as Device).cookie)).status, 403);
+  const socket = await f.socket(devices[1] as Device); socket.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await socket.next();
+  for (let i = 0; i < 6; i++) assert.equal((await f.request('/api/voice-config', null, (devices[1] as Device).cookie)).status, 200);
+  assert.equal((await f.request('/api/voice-config', null, (devices[1] as Device).cookie)).status, 429);
 });
 
 test('Cloudflare: gradual home nap cancellation survives eviction without repeating gains', async t => {
@@ -275,8 +325,8 @@ test('Cloudflare: pre-job saves hydrate and award a completed shift once after r
 
 test('Cloudflare: only two nominated relay testers mint, global budget survives hibernation, errors hide secrets', async t => {
   const publicId = '11111111-1111-4111-8111-111111111111'; let calls = 0; let providerFailure;
-  const f = await fixture(t, { bindings: { TURN_TEST_PUBLIC_IDS: publicId, TURN_KEY_ID: 'a'.repeat(32), TURN_API_TOKEN: 'synthetic-api-secret' }, outboundService: async request => {
-    calls++; try { assert.equal(new URL(request.url).origin, 'https://rtc.live.cloudflare.com'); assert.deepEqual(await request.json(), { ttl: 600 }); } catch (error) { providerFailure = error.message; }
+  const f = await fixture(t, { bindings: { TURN_TEST_PUBLIC_IDS: publicId, TURN_KEY_ID: 'a'.repeat(32), TURN_API_TOKEN: 'synthetic-api-secret' }, outboundService: async (request: Request) => {
+    calls++; try { assert.equal(new URL(request.url).origin, 'https://rtc.live.cloudflare.com'); assert.deepEqual(await request.json(), { ttl: 600 }); } catch (error) { providerFailure = (error as Error).message; }
     return new Response(JSON.stringify({ iceServers: [{ urls: 'turn:turn.cloudflare.com:3478', username: 'synthetic-user', credential: 'synthetic-short-lived' }] }), { status: 201 });
   } });
   const a = await f.device('Tester'), b = await f.device('Other'); const storage = await f.storage();
@@ -293,9 +343,9 @@ test('Cloudflare: only two nominated relay testers mint, global budget survives 
 test('Recovery parity: Node and Worker share onboarding, social, blocking, civic, paid retry and authority refusals', async t=>{
  const {fixture:nodeFixture}=await import('../server/test-fixture.js');
  const edge=await fixture(t), node=await nodeFixture(t,{now:Date.now});
- async function sequence(f){
+ async function sequence(f: Pick<Awaited<ReturnType<typeof fixture>>, 'device' | 'request'>){
    const a=await f.device('Ada'),b=await f.device('Bola'),out=[];
-   const call=async(path,body,who=a)=>{const r=await f.request(path,body,who?.cookie);const data=await r.json();return {status:r.status,...data};};
+   const call=async(path: string,body?: object | null,who: Device | undefined=a)=>{const r=await f.request(path,body,who?.cookie);const data=await r.json();return {status:r.status,...data};};
    for(const who of [a,b])await call('/api/social/me',null,who);
    out.push((await call('/api/social/friends/request',{to:b.id,cityId:'lagos'})).code);
    out.push((await call('/api/social/friends/answer',{from:a.id,accept:true,cityId:'lagos'},b)).code);
@@ -313,7 +363,7 @@ test('Recovery parity: Node and Worker share onboarding, social, blocking, civic
    out.push((await call('/api/civic/prefs',{richList:false})).status);
    out.push((await call('/api/civic/radio?city=lagos&venue=../bad')).error);
    out.push((await call('/api/auth/login',{email:'nobody@example.invalid'})).status);
-   const created=await f.request('/api/session',{name:'Chidi',onboarding:true});const fresh={cookie:created.headers.get('set-cookie').split(';')[0]};
+   const created=await f.request('/api/session',{name:'Chidi',onboarding:true});const fresh={cookie:(created.headers.get('set-cookie') as string).split(';')[0] as string} as Device;
    out.push((await call('/api/action',{actionId:`${Date.now()}:${randomUUID()}`,cityId:'lagos',type:'spot',id:'trees'},fresh)).code);
    return out;
  }
@@ -352,7 +402,7 @@ test('Review B1: a new socket never postpones the already scheduled heartbeat',a
  const f=await fixture(t),a=await f.device('Ada'),b=await f.device('Bola');const x=await f.socket(a),opened=Date.now();
  await new Promise(resolve=>setTimeout(resolve,6000));await f.socket(b);
  await new Promise(resolve=>setTimeout(resolve,5500));
- assert.ok(x.heartbeats.length>=1,'first alarm must run despite the later upgrade');assert.ok(x.heartbeats[0]<opened+11500);
+ assert.ok(x.heartbeats.length>=1,'first alarm must run despite the later upgrade');assert.ok((x.heartbeats[0] as number)<opened+11500);
 });
 test('Review B2: expired rate keys free capacity at their own windows; long windows remain enforced',async t=>{
  const f=await fixture(t);await f.device('Ada');const storage=await f.storage(),now=Date.now();
@@ -375,7 +425,7 @@ test('Review B3: heartbeat acknowledgements hit the frame limiter before session
 test('Continuity preparation: old-character bridge is apex-only, safe-method-only and uncached',async t=>{
  const f=await fixture(t);
  const response=await f.atHost('https://joinallworld.com','/old-character.html');assert.equal(response.status,200);
- assert.equal(response.headers.get('cache-control'),'private, no-store');assert.equal(response.headers.get('referrer-policy'),'no-referrer');assert.match(response.headers.get('content-security-policy'),/connect-src https:\/\/v1\.joinallworld\.com/);
+ assert.equal(response.headers.get('cache-control'),'private, no-store');assert.equal(response.headers.get('referrer-policy'),'no-referrer');assert.match(response.headers.get('content-security-policy') as string,/connect-src https:\/\/v1\.joinallworld\.com/);
  assert.match(await response.text(),/Continue with my character/);
  const head=await f.atHost('https://joinallworld.com','/old-character.html','HEAD');assert.equal(head.status,200);assert.equal(await head.text(),'');
  assert.equal((await f.atHost('https://joinallworld.com','/old-character.html','POST')).status,405);
@@ -390,23 +440,23 @@ test('Continuity preparation: old-character bridge is apex-only, safe-method-onl
 
 const CITY = 'lagos';
 /** What a combined-game test needs on top of the fixture: the calls a browser makes, and patience for one frame type. */
-async function combined(t, overrides) {
+async function combined(t: TestContext, overrides?: Record<string, unknown>) {
   const { viewLife, createLife } = await import('../src/life.ts');
   const { presetLook } = await import('../src/quick-start/look-model.ts');
   const f = await fixture(t, overrides);
-  const call = async (path, body, who) => { const response = await f.request(path, body, who?.cookie); const data = await response.json(); return { status: response.status, headers: response.headers, ...data }; };
-  const get = (path, who) => call(path, null, who), post = (path, body, who) => call(path, body, who);
-  const life = async who => (await get(`/api/life?city=${CITY}`, who)).state;
-  const act = (who, type, payload) => post('/api/action', { actionId: `${Date.now()}:${randomUUID()}`, cityId: CITY, type, ...(payload ? { payload } : {}) }, who);
-  async function ok(who, type, payload, code) {
+  const call = async (path: string, body?: object | null, who?: Device) => { const response = await f.request(path, body, who?.cookie); const data = await response.json(); return { status: response.status, headers: response.headers, ...data }; };
+  const get = (path: string, who?: Device) => call(path, null, who), post = (path: string, body: object, who?: Device) => call(path, body, who);
+  const life = async (who: Device) => (await get(`/api/life?city=${CITY}`, who)).state;
+  const act = (who: Device, type: string, payload?: object) => post('/api/action', { actionId: `${Date.now()}:${randomUUID()}`, cityId: CITY, type, ...(payload ? { payload } : {}) }, who);
+  async function ok(who: Device, type: string, payload?: object, code?: string) {
     const result = await act(who, type, payload);
     assert.equal(result.ok, true, `${who.name} ${type} was refused: ${result.status} ${result.error ?? result.code} — ${result.reason ?? ''}`);
     if (code) assert.equal(result.code, code, `${who.name} ${type}`);
     return result.state;
   }
-  const view = state => viewLife(createLife(state, { now: state.t, cityId: CITY }), { now: state.t, cityId: CITY });
+  const view = (state: { t: number }) => viewLife(createLife(state, { now: state.t, cityId: CITY }), { now: state.t, cityId: CITY });
   /** Stand at a spot and run one activity to its end. */
-  async function run(who, spot, id) {
+  async function run(who: Device, spot: string, id: string) {
     if ((await life(who)).spot !== spot) await ok(who, 'spot', { id: spot }, 'selected');
     const started = await ok(who, 'activity', { id }, 'started');
     await f.skip(who, started.activeAction.duration * 1000 + 500);
@@ -415,26 +465,26 @@ async function combined(t, overrides) {
     return state;
   }
   /** Travel and wait out the trip; a roadside event on arrival is answered with its last choice (never costs money). */
-  async function travel(who, id, mode = 'danfo') {
+  async function travel(who: Device, id: string, mode = 'danfo') {
     const started = await ok(who, 'travel', { id, mode }, 'started');
     await f.skip(who, started.activeAction.duration * 1000 + 500);
     let state = await life(who);
     assert.equal(state.location, id, `${who.name} arrived at ${id}`);
-    if (state.travel.event) state = await ok(who, 'world.roadside', { choice: view(state).travel.event.choices.at(-1).id }, 'resolved');
+    if (state.travel.event) state = await ok(who, 'world.roadside', { choice: (view(state).travel.event as { choices: { id: string }[] }).choices.at(-1)?.id as string }, 'resolved');
     return state;
   }
   /** One paid Community helper shift at Freedom Park: a Lagos day of paid work. */
-  async function paidWork(who) {
+  async function paidWork(who: Device) {
     if ((await life(who)).location !== 'park') await travel(who, 'park', 'trek');
     if (!(await life(who)).job) await ok(who, 'apply-job', { id: 'community-helper' }, 'applied');
     for (let rests = 0; rests < 8 && (await life(who)).needs.energy < 30; rests++) await run(who, 'trees', 'chill');
     return run(who, 'work', 'helper-shift');
   }
   /** What the landing does when Play is tapped: a session for the name, then the look, confirmed exactly once. */
-  async function play(name, { preset = 'owambe', joining = false, device } = {}) {
+  async function play(name: string, { preset = 'owambe', joining = false, device }: { preset?: string; joining?: boolean; device?: string } = {}) {
     const opened = await f.request('/api/session', { name, onboarding: true });
     assert.equal(opened.status, 200);
-    const who = { name, cookie: opened.headers.get('set-cookie').split(';')[0], id: (await opened.json()).session.id, device };
+    const who = { name, cookie: (opened.headers.get('set-cookie') as string).split(';')[0] as string, id: (await opened.json()).session.id, device };
     const held = await life(who);
     assert.deepEqual([held.onboarding.stage, held.onboarding.required, held.location], ['guest', true, 'park']);
     assert.equal((await act(who, 'spot', { id: 'trees' })).code, 'onboarding_required', 'nothing can be done before Play');
@@ -444,20 +494,20 @@ async function combined(t, overrides) {
     assert.equal((await get('/api/social/me', who)).me.name, name);
     return { who, state: first.state };
   }
-  async function settle(who, lga) {
+  async function settle(who: Device, lga: string) {
     await ok(who, 'onboarding.traits', { traits: ['smooth-talker', 'clean-pikin'] }, 'traits_saved');
     await ok(who, 'onboarding.dream', { dream: 'everybodys-padi' }, 'dream_saved');
     await ok(who, 'onboarding.lottery', {}, 'rolled');
     return ok(who, 'onboarding.home', { lga, via: 'manual' }, 'life_started');
   }
   /** A socket with the frames it has received by type; `until(type)` waits for the next one of that type. */
-  async function peer(who) {
-    const socket = await f.socket(who), seen = [];
-    const until = async (type, tries = 40) => { for (let i = 0; i < tries; i++) { const message = await socket.next(); seen.push(message); if (message.type === type) return message; } throw Error(`No ${type} frame`); };
-    return { who, send: socket.send, next: socket.next, until, seen, state: null };
+  async function peer(who: Device): Promise<Peer> {
+    const socket = await f.socket(who), seen: Frame[] = [];
+    const until = async (type: string, tries = 40): Promise<Frame> => { for (let i = 0; i < tries; i++) { const message = await socket.next(); seen.push(message); if (message.type === type) return message; } throw Error(`No ${type} frame`); };
+    return { who, send: socket.send, next: socket.next, until, seen, state: null as unknown as TableState };
   }
-  const reasons = (state, prefix) => state.ledger.filter(line => line.reason.startsWith(prefix)).map(line => line.amount);
-  return { ...f, call, get, post, life, act, ok, view, run, travel, paidWork, play, settle, peer, reasons, hello: who => post('/api/growth/hello', { cityId: CITY, device: who.device }, who) };
+  const reasons = (state: { ledger: { reason: string; amount: number }[] }, prefix: string) => state.ledger.filter(line => line.reason.startsWith(prefix)).map(line => line.amount);
+  return { ...f, call, get, post, life, act, ok, view, run, travel, paidWork, play, settle, peer, reasons, hello: (who: Device) => post('/api/growth/hello', { cityId: CITY, device: who.device }, who) };
 }
 
 test('Combined game on the Worker: quick start, settle in with a plot, a mission, a share page, the invite landing, Whot over two sockets, the referral', async t => {
@@ -476,7 +526,7 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   assert.equal((await f.act(ada, 'unilag.apply', { programme: 'computer' })).code, 'settle_required', 'a guest cannot enrol before settling in');
   let state = await f.run(ada, 'trees', 'play-ayo');
   assert.deepEqual([state.goals.chain, state.cash], [1, 5500], 'the first goal pays');
-  state = await f.run(ada, 'people', `npc-${Object.values(NPCS).find(npc => npc.venue === 'park').id}-hello`);
+  state = await f.run(ada, 'people', `npc-${(Object.values(NPCS).find(npc => npc.venue === 'park') as { id: string }).id}-hello`);
 
   // 2. settle in with a local government: the free starter house, on a plot the server sets aside in that shard.
   state = await f.settle(ada, LGA);
@@ -486,10 +536,10 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   state = await f.life(ada);
   assert.deepEqual(state.estate.plot, mine.plot, 'the plot is recorded in her life');
   const houses = await f.get(`/api/world/lga/${LGA}/estate/${mine.plot.estate}/houses?city=${CITY}`, ada);
-  assert.ok(houses.houses.some(house => house.id === ada.id && house.you === true && house.p === mine.plot.plot), 'her house is in that estate’s listing');
+  assert.ok(houses.houses.some((house: { id: string; you: boolean; p: number }) => house.id === ada.id && house.you === true && house.p === mine.plot.plot), 'her house is in that estate’s listing');
   const area = await f.get(`/api/world/lga/${LGA}?city=${CITY}`, ada);
   assert.deepEqual([area.yours, area.residents, area.houses], [true, 1, 1]);
-  assert.deepEqual((await f.get(`/api/world/lga/${LGA}/people?city=${CITY}`, ada)).items.map(item => [item.id, item.home]), [[ada.id, 'own']]);
+  assert.deepEqual((await f.get(`/api/world/lga/${LGA}/people?city=${CITY}`, ada)).items.map((item: { id: string; home: string }) => [item.id, item.home]), [[ada.id, 'own']]);
   // The shard is rows of one name; no other local government was read or written.
   const shards = await (await f.storage()).exec('SELECT name, COUNT(*) AS n FROM world_shards GROUP BY name');
   assert.deepEqual(shards.map(row => row.name), [`${CITY}.${LGA}`]);
@@ -503,9 +553,11 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
     'd-two-places': async () => { await f.travel(ada, 'park'); return f.travel(ada, 'amala-shitta'); }, 'd-new-place': () => f.travel(ada, 'amala-shitta'),
     'd-greet': async () => { await f.travel(ada, 'park'); for (const npc of f.view(await f.life(ada)).social.here.slice(0, 2)) await f.run(ada, 'people', `npc-${npc.id}-hello`); return f.life(ada); },
   };
+  // BUG: flaky (pre-existing, seen once in ~5 runs). The three daily missions are dealt at random and `recipes` covers only
+  // seven ids, so a deal of d-train, d-gem and d-gist (no recipe) fails the next assertion. Not fixed here.
   const chosen = missions.daily.find(mission => mission.done && !mission.claimed) ?? missions.daily.find(mission => Object.hasOwn(recipes, mission.id));
   assert.ok(chosen, `one of today’s missions can be done: ${missions.daily.map(mission => mission.id).join(', ')}`);
-  if (!chosen.done) await recipes[chosen.id]();
+  if (!chosen.done) await (recipes as Record<string, () => Promise<unknown>>)[chosen.id]?.();
   const purse = (await f.life(ada)).cash, claimed = await f.act(ada, 'missions.claim', { id: chosen.id });
   assert.deepEqual([claimed.code, claimed.state.cash], ['claimed', purse + MISSION_REWARDS.daily.cash]);
   assert.equal((await f.act(ada, 'missions.claim', { id: chosen.id })).code, 'already_claimed', 'a mission pays once');
@@ -522,18 +574,18 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   const page = await f.fetch(`/s/${code}`, { redirect: 'manual' }), html = await page.text();
   assert.equal(page.status, 200);
   assert.equal(page.headers.get('set-cookie'), null, 'the preview page sets no cookie');
-  assert.match(page.headers.get('content-security-policy'), /default-src 'none'/);
+  assert.match(page.headers.get('content-security-policy') as string, /default-src 'none'/);
   assert.deepEqual([page.headers.get('x-frame-options'), page.headers.get('x-content-type-options'), page.headers.get('referrer-policy')], ['DENY', 'nosniff', 'no-referrer']);
   assert.ok(!/<script/i.test(html) && !/\son[a-z]+=/i.test(html), 'no script and no inline handler: a crawler that runs nothing sees everything');
-  const meta = key => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
-  assert.match(meta('og:title'), /Ada/); assert.match(meta('og:title'), /Whot/);
+  const meta = (key: string) => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
+  assert.match(meta('og:title') as string, /Ada/); assert.match(meta('og:title') as string, /Whot/);
   assert.deepEqual([meta('og:type'), meta('og:site_name'), meta('og:url'), meta('og:image'), meta('twitter:card'), meta('twitter:image')],
     ['website', 'Allworld', `${ORIGIN}/s/${code}`, `${ORIGIN}/og/allworld.jpg`, 'summary_large_image', `${ORIGIN}/og/allworld.jpg`]);
-  const target = /<meta http-equiv="refresh" content="0;url=([^"]+)"/.exec(html)[1].replaceAll('&amp;', '&');
+  const target = (/<meta http-equiv="refresh" content="0;url=([^"]+)"/.exec(html) as RegExpExecArray)[1]?.replaceAll('&amp;', '&');
   assert.equal(target, `/?join=${ada.id}&ref=${code}&table=${TABLE}`);
   assert.equal((await f.fetch(`/s/${code}`, { method: 'HEAD' })).status, 200);
   // A code nobody made is still the module's page — the same 404 page, under the same headers, as on Node.
-  const none = await f.fetch('/s/zzzzzzzz'); assert.equal(none.status, 404); assert.match(none.headers.get('content-security-policy'), /default-src 'none'/); assert.ok(!/<script/i.test(await none.text()));
+  const none = await f.fetch('/s/zzzzzzzz'); assert.equal(none.status, 404); assert.match(none.headers.get('content-security-policy') as string, /default-src 'none'/); assert.ok(!/<script/i.test(await none.text()));
   // A house link (/v/<public id>) is the game's own page: the landing reads the id from the address.
   const houseLink = await f.fetch(`/v/${ada.id}`); assert.equal(houseLink.status, 200); assert.match(await houseLink.text(), /<title>Allworld/);
   assert.equal(joinIdFrom(`/v/${ada.id}`, ''), ada.id);
@@ -563,14 +615,14 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   const peers = [adaSocket, bolaSocket];
   // A socket's messages are handled in order, so the answer to a `table-list` sent after a request marks the point
   // where everything before it has been handled: each peer keeps the last table-state it was sent up to that point.
-  const settled = async one => { one.send({ type: 'table-list', cityId: CITY }); for (let i = 0; i < 60; i++) { const message = await one.next(); one.seen.push(message); if (message.type === 'table-state') one.state = message; if (message.type === 'error') assert.fail(`${one.who.name}: ${message.code} ${message.reason ?? ''}`); if (message.type === 'tables') return; } throw Error('No answer to table-list'); };
-  const tell = async (peer, type, body = {}) => { peer.send({ type, cityId: CITY, table: TABLE, ...body }); await settled(peer); for (const one of peers) if (one !== peer) await settled(one); };
+  const settled = async (one: Peer) => { one.send({ type: 'table-list', cityId: CITY }); for (let i = 0; i < 60; i++) { const message = await one.next(); one.seen.push(message); if (message.type === 'table-state') one.state = message as unknown as TableState; if (message.type === 'error') assert.fail(`${one.who.name}: ${message.code} ${message.reason ?? ''}`); if (message.type === 'tables') return; } throw Error('No answer to table-list'); };
+  const tell = async (peer: Peer, type: string, body: object = {}) => { peer.send({ type, cityId: CITY, table: TABLE, ...body }); await settled(peer); for (const one of peers) if (one !== peer) await settled(one); };
   await tell(adaSocket, 'table-sit');
   await tell(bolaSocket, 'table-sit');
   await tell(adaSocket, 'table-start');
   assert.deepEqual([adaSocket.state.table.status, adaSocket.state.table.seats.map(seat => [seat.name, Boolean(seat.bot)]), adaSocket.state.you, bolaSocket.state.you], ['playing', [['Ada', false], ['Bola', false]], 0, 1]);
   assert.deepEqual([adaSocket.state.view.hand.length, bolaSocket.state.view.hand.length], [5, 5]);
-  const choose = table => (table.playable.length ? { t: 'play', i: table.playable[0], ...(table.hand[table.playable[0]].s === 'whot' ? { shape: 'circle' } : {}) } : { t: 'draw' });
+  const choose = (table: TableState['view']) => (table.playable.length ? { t: 'play', i: table.playable[0] as number, ...(table.hand[table.playable[0] as number]?.s === 'whot' ? { shape: 'circle' } : {}) } : { t: 'draw' });
   let moves = 0;
   while (adaSocket.state.table.status === 'playing') {
     const mover = peers.find(one => one.state.toMove.includes(one.state.you));
@@ -582,10 +634,10 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   assert.deepEqual([adaSocket.state.table.status, result.calledOff, typeof result.text], ['over', false, 'string']);
   // No socket was ever sent the other player's hand, the market's order or the seed.
   assert.equal(peers.some(one => one.seen.some(message => /"hands"|"market":\[|"seed"/.test(JSON.stringify(message)))), false);
-  const winner = result.winners.length ? peers[result.winners[0]] : null;
+  const winner = result.winners.length ? peers[result.winners[0] as number] : null;
   for (const one of peers) {
     const before = (await f.life(one.who)).cash, paid = await f.post('/api/growth/tables/claim', { cityId: CITY }, one.who), won = one === winner;
-    assert.deepEqual(paid.results.map(item => [item.game, item.won, item.code]), [['whot', won, won ? 'paid' : 'counted']]);
+    assert.deepEqual(paid.results.map((item: { game: string; won: boolean; code: string }) => [item.game, item.won, item.code]), [['whot', won, won ? 'paid' : 'counted']]);
     assert.equal((await f.life(one.who)).cash - before, won ? TABLE_REWARDS.win : 0);
     assert.deepEqual((await f.post('/api/growth/tables/claim', { cityId: CITY }, one.who)).results, [], 'and it is applied once');
   }
@@ -605,7 +657,7 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   await f.hello(bola);
   assert.deepEqual((await gifts()).reward, [], 'counted, and owed to Ada until she is here');
   const adaBefore = await f.life(ada), told = await f.hello(ada), adaAfter = await f.life(ada);
-  assert.deepEqual([told.referral.counted, told.referral.invited.map(friend => [friend.name, friend.state])], [1, [['Bola', 'counted']]]);
+  assert.deepEqual([told.referral.counted, told.referral.invited.map((friend: { name: string; state: string }) => [friend.name, friend.state])], [1, [['Bola', 'counted']]]);
   assert.deepEqual([adaAfter.cash - adaBefore.cash, adaAfter.goals.stars - adaBefore.goals.stars], [REFERRAL.reward, REFERRAL.rewardStars]);
   for (let i = 0; i < 2; i++) { await f.hello(bola); await f.hello(ada); }
   assert.deepEqual([(await gifts()).welcome.length, (await gifts()).reward.length], [1, 1]);
@@ -635,7 +687,7 @@ test('Invitations on the Worker: house link, friend request, first DM, knock and
 
   // A friend request over the socket; the answer over HTTP; both are told on their sockets.
   b.send({ type: 'friend-request', to: ada.id, cityId: CITY });
-  assert.deepEqual([(await b.until('friend-result')).code, (await a.until('friend-request')).from.name], ['requested', 'Bola']);
+  assert.deepEqual([(await b.until('friend-result')).code, ((await a.until('friend-request')).from as unknown as { name: string }).name], ['requested', 'Bola']);
   assert.equal((await f.post('/api/social/friends/answer', { from: bola.id, accept: true, cityId: CITY }, ada)).code, 'accepted');
   assert.equal((await b.until('friend-accepted')).by.name, 'Ada');
 
@@ -653,7 +705,7 @@ test('Invitations on the Worker: house link, friend request, first DM, knock and
   assert.equal((await b.until('dm-sent')).message.body, 'On my way!');
   let reply = await a.until('dm'); while (reply.message.body !== 'On my way!') reply = await a.until('dm'); // her own first message is echoed to her sockets too
   assert.deepEqual([reply.message.from.id, reply.conv.id], [bola.id, sent.conv.id]);
-  assert.deepEqual((await f.get(`/api/social/conversations/${sent.conv.id}`, bola)).messages.map(message => message.body), ['Come and see my place', 'On my way!']);
+  assert.deepEqual((await f.get(`/api/social/conversations/${sent.conv.id}`, bola)).messages.map((message: { body: string }) => message.body), ['Come and see my place', 'On my way!']);
 
   // A house visit: a friend is not a guest; knock → let in → the host's Home room → the visit ends.
   b.send({ type: 'join', cityId: CITY, venueId: 'home', hostId: ada.id });
@@ -670,13 +722,13 @@ test('Invitations on the Worker: house link, friend request, first DM, knock and
   // Asleep and awake again: the guest is still in the host's room, and house chat still reaches both.
   await f.hibernate();
   b.send({ type: 'chat', body: 'Nice place!', clientId: 'house-1' });
-  assert.deepEqual([(await a.until('chat')).body, (await b.until('chat')).from.name], ['Nice place!', 'Bola']);
+  assert.deepEqual([(await a.until('chat')).body, ((await b.until('chat')).from as unknown as { name: string }).name], ['Nice place!', 'Bola']);
   assert.equal((await f.post('/api/social/house/leave', { host: ada.id }, bola)).code, 'left');
   assert.equal((await b.until('error')).code, 'visit_ended');
   b.send({ type: 'join', cityId: CITY, venueId: 'home', hostId: ada.id });
   assert.equal((await b.until('error')).code, 'not_a_guest');
   // The secret of neither player was ever sent to the other.
-  for (const [mine, theirs] of [[a, bola], [b, ada]]) assert.ok(!JSON.stringify(mine.seen).includes(theirs.cookie.slice(4)));
+  for (const [mine, theirs] of [[a, bola], [b, ada]] as [Peer, Device][]) assert.ok(!JSON.stringify(mine.seen).includes(theirs.cookie.slice(4)));
 });
 
 test('UNILAG on the Worker: a visitor walks the campus, rides the shuttle once, and only a settled life may enrol', async t => {
@@ -694,12 +746,12 @@ test('UNILAG on the Worker: a visitor walks the campus, rides the shuttle once, 
   assert.deepEqual((await a.until('presence')).members[0].position, { x: -286, z: -112 });
   g.send({ type: 'join', cityId: CITY, venueId: 'unilag' }); await g.until('presence'); await a.until('presence');
   a.send({ type: 'move', x: 120, z: -160 });
-  assert.deepEqual((await g.until('presence')).members.find(member => member.id === ada.id).position, { x: 120, z: -160 });
+  assert.deepEqual((await g.until('presence')).members.find(member => member.id === ada.id)?.position, { x: 120, z: -160 });
   a.send({ type: 'move', x: 360, z: 0 });
   assert.equal((await a.until('error')).code, 'invalid_position');
   await f.hibernate();
   g.send({ type: 'move', x: -280, z: -110 });
-  let after = await a.until('presence'); while (after.members.find(member => member.id === guest.id).position.x !== -280) after = await a.until('presence');
+  let after = await a.until('presence'); while (after.members.find(member => member.id === guest.id)?.position.x !== -280) after = await a.until('presence');
   assert.deepEqual(after.members.map(member => [member.name, member.position]).sort(), [['Ada', { x: 120, z: -160 }], ['Guest', { x: -280, z: -110 }]], 'positions survive the sleep');
   // The shuttle: one fare for one action id, and the ride ends at the stop it was bought for.
   const fare = { actionId: `${Date.now()}:${randomUUID()}`, cityId: CITY, type: 'campus-shuttle', payload: { destination: 'senate' } };

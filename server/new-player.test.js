@@ -4,7 +4,7 @@
 // over two sockets, a referral that pays only after real work, and a restart that reads everything back identical.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runNewPlayer } from '../scripts/new-player.mjs';
+import { runNewPlayer } from '../scripts/new-player.ts';
 
 test('the new-player journey runs to the end with every assertion holding', async () => {
   const lines = [];

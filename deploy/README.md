@@ -12,7 +12,7 @@ npm ci --ignore-scripts --prefix deploy/tooling
 npm run build
 npm test
 npm run test:edge
-node --test deploy/turn-provider.test.mjs
+node --experimental-strip-types --test deploy/turn-provider.test.ts
 PORT=8787 npm run start:worker   # the same Worker on this machine (Miniflare), for a browser
 ```
 

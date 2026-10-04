@@ -4,5 +4,5 @@
   // the runtime that executes it (scripts/typecheck.mjs).
   "extends": "./tsconfig.base.json",
   "compilerOptions": { "lib": ["ES2023", "DOM", "DOM.Iterable"], "types": ["node", "vite/client"] },
-  "include": ["src/**/*", "server/**/*", "scripts/**/*", "env.d.ts", "vite.config.js"]
+  "include": ["src/**/*", "server/**/*", "scripts/**/*", "env.d.ts", "vite.config.ts"]
 }

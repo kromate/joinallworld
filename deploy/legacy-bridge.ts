@@ -1,4 +1,4 @@
-export function oldCharacterLanding(head = false) {
+export function oldCharacterLanding(head = false): Response {
   const binding = { origin: 'https://v1.joinallworld.com', audience: 'https://logical-ins-pillow-ref.trycloudflare.com', siteId: '953074f15b9d05cfb72cc8024b2186653d5ff16b21fd005604f803abe019436c', packageId: 'cli-953074f15b9d05cfb72cc8024b2186653d5ff16b21fd005604f803abe019436c', channel: 'test' };
   const nonce = crypto.randomUUID().replaceAll('-', '')
   const target = binding.origin

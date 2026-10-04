@@ -3,7 +3,7 @@
 // messages, a house visit, a gift, an election, a sea plot and the gem hunt.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runTwoPlayers } from '../scripts/two-players.mjs';
+import { runTwoPlayers } from '../scripts/two-players.ts';
 
 test('the two-player script runs to the end with every assertion holding', async () => {
   const lines = [];

@@ -3,7 +3,7 @@
 // totals equal to the old flow's, reload identical.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runFirstMinute } from '../scripts/first-minute.mjs';
+import { runFirstMinute } from '../scripts/first-minute.ts';
 
 test('the scripted first minute runs to the end with every assertion holding', async () => {
   const lines = [];

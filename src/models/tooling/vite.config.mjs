@@ -1,4 +1,4 @@
-import base from '../../../vite.config.js';
+import base from '../../../vite.config.ts';
 import { fileURLToPath } from 'node:url';
 import { dirname,resolve } from 'node:path';
 const threeRoot=dirname(fileURLToPath(import.meta.resolve('three')));

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { UNILAG_BETA_RULES as UNILAG_BETA_RULES_JS } from '../campus/unilag/curriculum.js';
 import { CAMPUS_JOBS as CAMPUS_JOBS_JS } from '../campus/unilag/student.js';
 import type { CampusJobDefinition, UnilagBetaRules } from '../types/campus.ts';
-import * as economySim from '../../scripts/economy-sim.mjs';
+import * as economySim from '../../scripts/economy-sim.ts';
 import { lagosTime } from './clock.ts';
 import { GIG_DAILY_LIMIT } from './content/venues.ts';
 import { TRACKS, HELPER_COOLDOWN_SECONDS } from './content/jobs.ts';

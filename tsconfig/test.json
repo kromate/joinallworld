@@ -1,5 +1,5 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": { "lib": ["ES2023", "DOM", "DOM.Iterable"], "types": ["node", "vite/client"] },
-  "include": ["../src/**/*.test.js", "../src/**/*.test.ts", "../server/**/*.test.js", "../server/**/*.test.ts", "../deploy/*.test.mjs", "../env.d.ts"]
+  "include": ["../src/**/*.test.js", "../src/**/*.test.ts", "../server/**/*.test.js", "../server/**/*.test.ts", "../deploy/*.test.ts", "../env.d.ts"]
 }

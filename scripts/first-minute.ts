@@ -3,7 +3,7 @@
  * The scripted first minute: one brand-new player, from the landing screen's Play to a settled
  * life, against the real server.
  *
- *   node scripts/first-minute.mjs        (also run by server/first-minute.test.js under `npm test`)
+ *   node scripts/first-minute.ts        (also run by server/first-minute.test.js under `npm test`)
  *
  * Starts the server in-process on an ephemeral port with a temporary data directory and a clock
  * this script controls, then drives one device session over HTTP exactly as the browser does
@@ -49,71 +49,91 @@ import { STARTER_GOALS } from '../src/game/content/goals.ts';
 import { EVENTS } from '../src/game/content/events.ts';
 import { nextNudge, nudgeMemory, nudged, funnelSnap, funnelEvents } from '../src/quick-start/model.ts';
 import { presetLook } from '../src/quick-start/look-model.ts';
+import type { AddressInfo } from 'node:net';
+import type { Server } from 'node:http';
+import type { ActionBody, LifeState, NeedId, SkillId } from '../src/types/index.ts';
+import type { ActionResponse, LifeResponse } from '../src/types/protocol.ts';
+
+/** What this script uses of the server (server/server.js is still untyped JavaScript). */
+interface FirstMinuteServer extends Server { store: { close(): Promise<void> } }
+type Json = Record<string, unknown>;
+/** Narrow away null and undefined; the script fails here, as a property read on the missing value would. */
+function must<T>(value: T | null | undefined, what = 'value'): T {
+  if (value === null || value === undefined) throw new TypeError(`${what} is missing`);
+  return value;
+}
+/** The fields of GET /api/world/me this script reads. */
+interface WorldMe { placed: boolean; lga: string; plot?: { lga: string } }
+interface SentBody { actionId: string; cityId: string; type: string; payload?: Json }
+interface Http<T> { status: number; headers: Headers; json: T }
+export interface FirstMinuteOptions { log?: (line: string) => void; salt?: string }
+export interface FirstMinuteResult { steps: number; cash: number; firstRewardMs: number; serverFirstRewardMs: number; settledMs: number; outcome: string; lga: string; funnel: FunnelEvent[] }
+interface FunnelEvent { name: string; at: number }
 
 const CITY = 'lagos';
 /** The local government picked at settle-in: the free starter house stands on a plot there. */
 const LGA = 'ikeja';
-const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
-const naira = (value) => `₦${value.toLocaleString('en-NG')}`;
+const NEEDS: NeedId[] = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
+const naira = (value: number) => `₦${value.toLocaleString('en-NG')}`;
 export const FIRST_MINUTE_SALT = 'first-minute-salt-0001';
 /** How long the scripted player takes on the landing screen before tapping Play (the measured UI run is in the report). */
 const LANDING_SECONDS = 4;
 
 /** Monday 5 January 2026, 10:00 in Lagos, moved forward to a dry stretch (a trek in the rain would change the needs). */
-function dryMondayMorning() {
+function dryMondayMorning(): number {
   let start = Date.UTC(2026, 0, 5, 9);
   while ([0, 1, 2].some((block) => weatherAt(start + block * 20 * 60000, CITY).raining)) start += 20 * 60000;
   return start;
 }
 
-export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SALT } = {}) {
+export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SALT }: FirstMinuteOptions = {}): Promise<FirstMinuteResult> {
   const dataDir = await mkdtemp(join(tmpdir(), 'allworld-first-minute-'));
   let time = dryMondayMorning();
   const landedAt = time;
-  let server, base, cookie, ids = 0, step = 0;
+  let server: FirstMinuteServer | undefined, base = '', cookie: string | undefined, ids = 0, step = 0;
   const serverOptions = { dataDir, now: () => time, distDir: join(dataDir, 'no-dist') };
-  async function boot() { server = await createServer(serverOptions); server.listen(0, '127.0.0.1'); await once(server, 'listening'); base = `http://127.0.0.1:${server.address().port}`; }
-  async function halt() { server.closeAllConnections(); await new Promise((done) => server.close(done)); await server.store.close(); }
-  async function http(path, body) {
+  async function boot() { const booted = await createServer(serverOptions) as unknown as FirstMinuteServer; server = booted; booted.listen(0, '127.0.0.1'); await once(booted, 'listening'); base = `http://127.0.0.1:${(booted.address() as AddressInfo).port}`; }
+  async function halt() { const running = server; if (!running) return; running.closeAllConnections(); await new Promise<void>((done) => running.close(() => done())); await running.store.close(); }
+  async function http<T = Json>(path: string, body?: unknown): Promise<Http<T>> {
     const response = await fetch(base + path, { method: body ? 'POST' : 'GET', body: body ? JSON.stringify(body) : undefined, headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) } });
-    return { status: response.status, headers: response.headers, json: await response.json() };
+    return { status: response.status, headers: response.headers, json: await response.json() as T };
   }
   const nextId = () => `${time}:00000000-0000-4000-8000-${String(++ids).padStart(12, '0')}`;
   /** Every state the server returns must survive a reload unchanged. */
-  const stable = (state, what) => { assert.deepEqual(createLife(structuredClone(state), { now: time, cityId: CITY }), state, `${what}: reloading the returned state changes nothing`); return state; };
+  const stable = (state: LifeState, what: string) => { assert.deepEqual(createLife(structuredClone(state), { now: time, cityId: CITY }), state, `${what}: reloading the returned state changes nothing`); return state; };
   // The funnel as the browser reports it: from one server state to the next.
-  const funnel = [];
+  const funnel: FunnelEvent[] = [];
   let seen = funnelSnap(null);
-  const watch = (state) => { const now = funnelSnap(state); for (const event of funnelEvents(seen, now)) funnel.push({ name: event.name, at: time - landedAt }); seen = now; return state; };
-  async function send(body) {
-    const { status, json } = await http('/api/action', body);
+  const watch = (state: LifeState) => { const now = funnelSnap(state); for (const event of funnelEvents(seen, now)) funnel.push({ name: event.name, at: time - landedAt }); seen = now; return state; };
+  async function send(body: SentBody): Promise<ActionResponse> {
+    const { status, json } = await http<ActionResponse>('/api/action', body);
     assert.equal(status, 200, `${body.type}: HTTP ${status} ${JSON.stringify(json)}`);
     stable(json.state, body.type); watch(json.state);
     return json;
   }
-  const action = (type, payload) => send({ actionId: nextId(), cityId: CITY, type, ...(payload ? { payload } : {}) });
-  async function ok(type, payload, code) {
+  const action = (type: string, payload?: Json) => send({ actionId: nextId(), cityId: CITY, type, ...(payload ? { payload } : {}) });
+  async function ok(type: string, payload: Json | undefined, code?: string) {
     const result = await action(type, payload);
     assert.equal(result.ok, true, `${type} was refused: ${result.code} — ${result.state.message}`);
     if (code) assert.equal(result.code, code, type);
     return result.state;
   }
-  const life = async () => watch(stable((await http(`/api/life?city=${CITY}`)).json.state, 'GET /api/life'));
-  async function wait(seconds) { time += seconds * 1000; return life(); }
-  const view = (state) => viewLife(createLife(state, { now: time, cityId: CITY }), { now: time, cityId: CITY });
-  const secs = (ms) => `${(ms / 1000).toFixed(0)}s`;
-  const say = (title, state, note = '') => log(`${String(++step).padStart(2, '0')}  +${secs(time - landedAt).padStart(4)}  ${title.padEnd(44)} ${naira(state.cash).padStart(8)}  ${note}`);
-  async function activity(spot, id, seconds) {
+  const life = async () => watch(stable((await http<LifeResponse>(`/api/life?city=${CITY}`)).json.state, 'GET /api/life'));
+  async function wait(seconds: number) { time += seconds * 1000; return life(); }
+  const view = (state: LifeState) => viewLife(createLife(state, { now: time, cityId: CITY }), { now: time, cityId: CITY });
+  const secs = (ms: number) => `${(ms / 1000).toFixed(0)}s`;
+  const say = (title: string, state: LifeState, note = '') => log(`${String(++step).padStart(2, '0')}  +${secs(time - landedAt).padStart(4)}  ${title.padEnd(44)} ${naira(state.cash).padStart(8)}  ${note}`);
+  async function activity(spot: string | null, id: string, seconds: number) {
     if (spot) await ok('spot', { id: spot }, 'selected');
     const started = await ok('activity', { id }, 'started');
-    assert.equal(started.activeAction.duration, seconds, `${id} takes ${seconds} seconds`);
+    assert.equal(must(started.activeAction).duration, seconds, `${id} takes ${seconds} seconds`);
     return wait(seconds);
   }
 
   // Count 'life.started' as the server's own rules engine delivers it (see the header).
-  const economy = systems().find((system) => system.id === 'economy'), original = economy.on['life.started'];
-  const startedEvents = [];
-  economy.on['life.started'] = (life, data, ctx) => { startedEvents.push(structuredClone(data)); return original(life, data, ctx); };
+  const economy = must(systems().find((system) => system.id === 'economy')), hooks = must(economy.on), original = must(hooks['life.started']);
+  const startedEvents: Parameters<typeof original>[1][] = [];
+  hooks['life.started'] = (life, data, ctx) => { startedEvents.push(structuredClone(data)); return original(life, data, ctx); };
 
   try {
     await boot();
@@ -123,21 +143,22 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     time += LANDING_SECONDS * 1000; // the landing screen: a name is suggested, a character is shown, Play is tapped
     const opened = await http('/api/session', { name: 'Sunny Tobi', onboarding: true });
     assert.equal(opened.status, 200);
-    cookie = opened.headers.get('set-cookie').split(';')[0];
+    cookie = must(opened.headers.get('set-cookie')).split(';')[0];
     useSaltSourceForTests(() => salt);
     let state = await life();
     assert.deepEqual([state.onboarding.stage, state.onboarding.required, state.onboarding.bornAt, state.cash, state.location], ['guest', true, time, 5000, 'park']);
     const held = await action('activity', { id: 'play-ayo' });
     assert.deepEqual([held.ok, held.code], [false, 'onboarding_required'], 'nothing is accepted before Play');
-    const look = presetLook('street');
+    const look = must(presetLook('street'));
     const play = { actionId: nextId(), cityId: CITY, type: 'onboarding.quick-start', payload: { look } };
     const [first, second] = await Promise.all([send(play), send(play)]); // a double tap
     assert.deepEqual([first.code, second.code, [first.duplicate, second.duplicate].filter(Boolean).length], ['playing', 'playing', 1], 'a double tap on Play is one start');
     state = await life();
-    assert.deepEqual([state.onboarding.required, state.onboarding.stage, state.onboarding.playedAt - state.onboarding.bornAt, state.location, state.spot, state.name], [false, 'guest', 0, 'park', 'trees', 'Sunny Tobi']);
+    assert.deepEqual([state.onboarding.required, state.onboarding.stage, must(state.onboarding.playedAt) - must(state.onboarding.bornAt), state.location, state.spot, state.name], [false, 'guest', 0, 'park', 'trees', 'Sunny Tobi']);
     assert.deepEqual(NEEDS.map((need) => state.needs[need]), [80, 85, 70, 60, 75, 70]);
     let shown = view(state);
-    assert.deepEqual([shown.goals.chip.kind, shown.goals.chip.title, shown.goals.chip.go, shown.goals.chip.activity, shown.goals.chip.reward], ['goal', 'Play a round of Ayo', ['park', 'trees'], 'play-ayo', '+₦500 +1✨']);
+    const chip = shown.goals.chip, goal = chip.kind === 'goal' ? chip : null;
+    assert.deepEqual([chip.kind, chip.title, goal?.go, goal?.activity, goal?.reward], ['goal', 'Play a round of Ayo', ['park', 'trees'], 'play-ayo', '+₦500 +1✨']);
     const regulars = shown.social.here.map((npc) => npc.name);
     assert.ok(regulars.length >= 2, 'the park has regulars to meet');
     say('Play: Sunny Tobi is in Freedom Park, a guest', state, `two requests (session, look); regulars here: ${regulars.join(', ')}; first goal “${shown.goals.chip.title}”`);
@@ -145,8 +166,8 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     // ---- 2. the first activity and the first reward -------------------------------------------------
     time += 2000; // one tap on the highlighted card
     state = await activity(null, 'play-ayo', 7);
-    assert.deepEqual([state.cash, state.goals.stars, state.ledger.at(-1).reason, state.ledger.at(-1).amount], [5500, 1, 'Goal: Play a round of Ayo', 500]);
-    const toFirst = state.onboarding.firstAt - landedAt, serverToFirst = state.onboarding.firstAt - state.onboarding.bornAt;
+    assert.deepEqual([state.cash, state.goals.stars, must(state.ledger.at(-1)).reason, must(state.ledger.at(-1)).amount], [5500, 1, 'Goal: Play a round of Ayo', 500]);
+    const toFirst = must(state.onboarding.firstAt) - landedAt, serverToFirst = must(state.onboarding.firstAt) - must(state.onboarding.bornAt);
     assert.ok(toFirst <= 60000, `the first reward is inside the first minute (${secs(toFirst)})`);
     assert.deepEqual([toFirst, serverToFirst], [(LANDING_SECONDS + 2 + 7) * 1000, 9000]);
     say('Play Ayo under the trees (7s) → first reward', state, `+₦500 +1✨, Fun +8, Social +8 · ${secs(toFirst)} after landing, ${secs(serverToFirst)} after the session was made`);
@@ -163,9 +184,9 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     say('“Make this life yours” is offered — Not now', state, 'the sheet opens once after the first reward; the guest keeps playing');
 
     // ---- 4. play goes on without settling: two more activities and a trip -----------------------------
-    const regular = shown.social.here[0];
+    const regular = must(shown.social.here[0]);
     state = await activity('people', `npc-${regular.id}-hello`, 6);
-    assert.deepEqual([state.cash, state.goals.stars, state.ledger.at(-1).reason, view(state).goals.chip.title], [6000, 2, 'Goal: Say hello to someone', 'Settle in']);
+    assert.deepEqual([state.cash, state.goals.stars, must(state.ledger.at(-1)).reason, view(state).goals.chip.title], [6000, 2, 'Goal: Say hello to someone', 'Settle in']);
     say(`Say Hello to ${regular.name} (6s)`, state, 'goal 2 +₦500 +1✨; the goal chip now reads “Settle in”');
     state = await activity('trees', 'chill', 11);
     assert.deepEqual([state.cash, state.onboarding.activities], [6000, 3]);
@@ -178,13 +199,13 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     const fare = view(state).travel.destinations.find((item) => item.id === 'amala-shitta')?.modes?.find((mode) => mode.id === 'danfo')?.fare ?? 200;
     const started = await ok('travel', { id: 'amala-shitta', mode: 'danfo' }, 'started');
     assert.deepEqual([fare, started.cash], [200, 6000 - fare], 'the Danfo fare from the Island is charged at departure');
-    state = await wait(started.activeAction.duration);
-    if (state.travel.event) { assert.ok(EVENTS[state.travel.event.id]); state = await ok('world.roadside', { choice: view(state).travel.event.choices.at(-1).id }, 'resolved'); }
+    state = await wait(must(started.activeAction).duration);
+    if (state.travel.event) { assert.ok(EVENTS[state.travel.event.id]); state = await ok('world.roadside', { choice: must(must(view(state).travel.event).choices.at(-1)).id }, 'resolved'); }
     assert.deepEqual([state.location, state.cash, state.onboarding.stage], ['amala-shitta', 5800, 'guest']);
     assert.deepEqual([state.economy.rent.house, state.economy.loan, state.economy.billedWeek, state.economy.started, state.home.stocked, state.inventory], [null, null, null, false, false, {}], 'a guest has nothing the economy takes as settled');
     const guestNet = state.cash - 5000; // +₦1,000 in goals, −₦200 fare
     assert.equal(guestNet, 800);
-    say(`Home refused (“Settle in to get your home”); Danfo to Amala Shitta (${started.activeAction.duration}s)`, state, 'fare −₦200; still a guest: no rent house, no loan, no kitchen');
+    say(`Home refused (“Settle in to get your home”); Danfo to Amala Shitta (${must(started.activeAction).duration}s)`, state, 'fare −₦200; still a guest: no rent house, no loan, no kitchen');
 
     // ---- 5. settling in: life.started exactly once ----------------------------------------------------
     assert.equal((await action('onboarding.home', { lga: LGA })).code, 'step_required', 'the deferred steps are still validated in order');
@@ -193,7 +214,7 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     await ok('onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }, 'traits_saved');
     await ok('onboarding.dream', { dream: 'yaba-unicorn' }, 'dream_saved');
     const rolled = await ok('onboarding.lottery', {}, 'rolled');
-    const outcome = LOTTERY[rolled.onboarding.lottery.id];
+    const outcome = LOTTERY[must(rolled.onboarding.lottery).id];
     const stars = rolled.goals.stars, before = rolled.cash;
     const move = { actionId: nextId(), cityId: CITY, type: 'onboarding.home', payload: { lga: LGA, via: 'manual', stay: true } };
     const moved = await send(move);
@@ -204,8 +225,9 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     assert.equal((await action('onboarding.home', { lga: LGA })).code, 'already_onboarded', 'a second move-in is refused');
     state = await life();
     assert.equal(startedEvents.length, 1, "'life.started' fired exactly once: not on the replay, not on the refused second move-in");
-    assert.deepEqual(Object.keys(startedEvents[0]).sort(), ['body', 'dream', 'house', 'lga', 'loan', 'look', 'lottery', 'own', 'rent', 'startCash', 'traits', 'via'], 'with the payload other systems expect');
-    assert.deepEqual([startedEvents[0].body, startedEvents[0].traits, startedEvents[0].dream, startedEvents[0].lottery, startedEvents[0].house, startedEvents[0].rent, startedEvents[0].startCash, startedEvents[0].loan, startedEvents[0].lga, startedEvents[0].via, startedEvents[0].own],
+    const startedFirst = must(startedEvents[0]);
+    assert.deepEqual(Object.keys(startedFirst).sort(), ['body', 'dream', 'house', 'lga', 'loan', 'look', 'lottery', 'own', 'rent', 'startCash', 'traits', 'via'], 'with the payload other systems expect');
+    assert.deepEqual([startedFirst.body, startedFirst.traits, startedFirst.dream, startedFirst.lottery, startedFirst.house, startedFirst.rent, startedFirst.startCash, startedFirst.loan, startedFirst.lga, startedFirst.via, startedFirst.own],
       [look.body, ['musical', 'tech-bro-or-sis'], 'yaba-unicorn', outcome.id, null, 0, outcome.ownCash, outcome.loan ? { ...outcome.loan } : null, LGA, 'manual', true]);
     // What 'life.started' does, each of its listeners exactly once:
     const startLines = state.ledger.filter((entry) => entry.reason.startsWith('Start cash'));
@@ -213,39 +235,39 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     assert.equal(state.ledger.filter((entry) => entry.reason === 'Goal: Settle in').length, 1, 'the Settle in goal paid once');
     assert.deepEqual([state.onboarding.done, state.onboarding.stage, state.onboarding.house, state.onboarding.completedAt, state.location], [true, 'settled', null, time, 'amala-shitta'], 'moved in without leaving the buka');
     assert.deepEqual([state.estate.lga, state.estate.lgaConfirmed, state.estate.lgaVia, state.estate.living, state.estate.tier, state.economy.rent.house, state.economy.started], [LGA, true, 'manual', 'own', 'starter', null, true], 'the local government and the own starter house are recorded; no rent house');
-    const mine = (await http(`/api/world/me?city=${CITY}`)).json;
+    const mine = (await http<WorldMe>(`/api/world/me?city=${CITY}`)).json;
     assert.deepEqual([mine.placed, mine.lga, mine.plot?.lga], [true, LGA, LGA], 'the server set a plot aside in that local government');
     state = await life();
     assert.deepEqual(state.estate.plot, mine.plot);
     assert.ok(state.home.items.length > 0 && state.home.stocked && Object.keys(state.inventory).length > 0, 'the home has its starter furniture and kitchen');
     shown = view(state);
     assert.deepEqual([Boolean(shown.economy.loan), state.goals.dream, state.goals.stars], [Boolean(outcome.loan), 'yaba-unicorn', stars + 1]);
-    if (outcome.loan) assert.deepEqual([shown.economy.loan.left, shown.economy.loan.weekly], [outcome.loan.owed, outcome.loan.weekly]);
+    if (outcome.loan) assert.deepEqual([must(shown.economy.loan).left, must(shown.economy.loan).weekly], [outcome.loan.owed, outcome.loan.weekly]);
     assert.deepEqual(shown.goals.chip.title, 'Eat something', 'the home goals follow');
-    say(`settled in: ${outcome.label}, own starter house in ${shown.estate.lga.name}`, state, `'life.started' once · furniture ${state.home.items.length} pieces · ${shown.estate.plot.address} · no rent${outcome.loan ? ` · loan ${naira(outcome.loan.owed)}` : ''}`);
+    say(`settled in: ${outcome.label}, own starter house in ${must(shown.estate.lga).name}`, state, `'life.started' once · furniture ${state.home.items.length} pieces · ${must(shown.estate.plot).address} · no rent${outcome.loan ? ` · loan ${naira(outcome.loan.owed)}` : ''}`);
 
     // ---- 6. totals equal the old flow's ---------------------------------------------------------------
     // The control: the same outcome and home played the old way (create → look → traits → dream → lottery → home,
     // nothing in between), through the rules engine. Its move-in is what the old enforced flow gave.
     const fired = startedEvents.length;
     let control = createLife(null, { now: landedAt, cityId: CITY, isNew: true });
-    const run = (type, payload, actionId) => dispatch(control, { type, payload, actionId }, { now: landedAt, cityId: CITY, actionId });
+    const run = (type: string, payload: Json, actionId: string) => dispatch(control, { type, payload, actionId } as unknown as ActionBody, { now: landedAt, cityId: CITY, actionId });
     run('onboarding.look', { look }, 'c-look'); run('onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }, 'c-traits'); run('onboarding.dream', { dream: 'yaba-unicorn' }, 'c-dream');
     for (let i = 0; i < 5000 && control.onboarding.lottery?.id !== outcome.id; i++) { control.onboarding.lottery = null; run('onboarding.lottery', {}, `c-roll-${i}`); }
-    assert.equal(control.onboarding.lottery.id, outcome.id);
+    assert.equal(must(control.onboarding.lottery).id, outcome.id);
     assert.equal(run('onboarding.home', { lga: LGA, via: 'manual' }, 'c-home').code, 'life_started');
-    assert.deepEqual(startedEvents.at(-1), startedEvents[0], 'the old flow emits the very same event');
+    assert.deepEqual(startedEvents.at(-1), startedFirst, 'the old flow emits the very same event');
     startedEvents.length = fired; // the control's own event is not the server's
-    const oldGrant = control.ledger.find((entry) => entry.reason.startsWith('Start cash'));
-    assert.deepEqual([startLines[0].amount, startLines[0].reason], [oldGrant.amount, oldGrant.reason], 'the same start-cash ledger line as the old flow');
+    const oldGrant = must(control.ledger.find((entry) => entry.reason.startsWith('Start cash')));
+    assert.deepEqual([must(startLines[0]).amount, must(startLines[0]).reason], [oldGrant.amount, oldGrant.reason], 'the same start-cash ledger line as the old flow');
     assert.equal(control.cash, outcome.ownCash, 'the control starts with the outcome’s start cash for the own house');
-    const settleGoal = STARTER_GOALS.find((goal) => goal.id === 'settle-in').cash;
+    const settleGoal = must(STARTER_GOALS.find((goal) => goal.id === 'settle-in')).cash;
     assert.equal(state.cash, control.cash + guestNet + settleGoal, 'old start cash + what the guest earned and spent + the Settle in goal: minus nothing, plus nothing');
     assert.equal(state.cash, before + oldGrant.amount + settleGoal);
     assert.equal(5000 + state.ledger.reduce((sum, entry) => sum + entry.amount, 0), state.cash, 'the ledger explains the whole balance');
     assert.deepEqual([state.estate.lga, state.estate.living, state.economy.rent.house, state.economy.loan, state.home.items.map((item) => item.itemId), state.inventory],
       [control.estate.lga, control.estate.living, control.economy.rent.house, control.economy.loan, control.home.items.map((item) => item.itemId), control.inventory], 'the same house, no rent, the same loan, furniture and kitchen as the old flow');
-    for (const [skill, level] of Object.entries(outcome.skills || {})) assert.ok(view(state).skills[skill].level >= level, `${skill} starts at level ${level} or better`);
+    for (const [skill, level] of Object.entries(outcome.skills || {})) assert.ok(view(state).skills[skill as SkillId].level >= level, `${skill} starts at level ${level} or better`);
     assert.ok(state.social.rel[regular.id], 'the regular met as a guest is still known');
     assert.deepEqual(state.onboarding.look, control.onboarding.look, 'the look chosen on the landing screen');
     say('totals match the old flow', state, `old start ${naira(control.cash)} + guest ${guestNet >= 0 ? '+' : '−'}${naira(Math.abs(guestNet))} + Settle in +${naira(settleGoal)} = ${naira(state.cash)}`);
@@ -259,7 +281,7 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     assert.deepEqual([replay.duplicate, replay.code, replay.state.cash], [true, 'playing', beforeReload.cash], 'Play sent again after the restart is still the first Play');
     say('reload (server restarted on the same data)', beforeReload, 'identical state; the kept Play request replays as a duplicate');
 
-    const settled = state.onboarding.completedAt - landedAt;
+    const settled = must(state.onboarding.completedAt) - landedAt;
     assert.equal(startedEvents.length, 1, "still one 'life.started' after the reload and the replay");
     assert.deepEqual(funnel.map((event) => event.name), ['arrived', 'first_activity_started', 'first_activity_completed', 'settle_traits_done', 'settle_dream_done', 'settle_lottery_done', 'save_character_done']);
     log('');
@@ -271,7 +293,7 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     log(`First minute complete: ${step} steps. First reward ${secs(toFirst)} after landing (${secs(serverToFirst)} of server time from the session); settled in at ${secs(settled)}; wallet ${naira(state.cash)}.`);
     return { steps: step, cash: state.cash, firstRewardMs: toFirst, serverFirstRewardMs: serverToFirst, settledMs: settled, outcome: outcome.id, lga: LGA, funnel };
   } finally {
-    economy.on['life.started'] = original;
+    hooks['life.started'] = original;
     useSaltSourceForTests();
     if (server?.listening) await halt();
     await rm(dataDir, { recursive: true, force: true });

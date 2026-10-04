@@ -12,7 +12,7 @@ Steps 0 and 1 are done on `parity/vue-ts`. Steps 2 to 8 start at the freeze poin
 
 | Piece | Where | State |
 |---|---|---|
-| Tooling | `tsconfig.base.json`, `tsconfig/*.json`, `scripts/typecheck.mjs`, `vite.config.js` | Done |
+| Tooling | `tsconfig.base.json`, `tsconfig/*.json`, `scripts/typecheck.ts`, `vite.config.ts` | Done |
 | Types for the engine, the protocol and the server | `src/types/*.ts`, `server/types.ts` | Done, as new files |
 | Type check of the existing JavaScript | `tsconfig/baseline.json` | Running, against a baseline |
 | The Vue shell | `next.html` → `src/app/` | Playable beside the existing shell, from the landing screen of a new device on (the quick start). Invite, share and table links are handled only by the existing shell |
@@ -21,7 +21,7 @@ Steps 0 and 1 are done on `parity/vue-ts`. Steps 2 to 8 start at the freeze poin
 | Converted engine modules | `src/game/clock.ts`, `src/game/systems/wallet.ts` | Twins of the `.js`, held equal by tests |
 
 `index.html` still starts `src/life-main.js`. No existing source file has been renamed or
-rewritten. Three existing files were edited: `package.json`, `vite.config.js` (the Vue plugin and
+rewritten. Three existing files were edited: `package.json`, `vite.config.ts` (the Vue plugin and
 the second entry) and `.github/workflows/ci.yml` (the typecheck step).
 
 ## Tooling
@@ -43,9 +43,9 @@ DOM call in the engine or a Node call in code the Worker runs is an error.
 |---|---|---|
 | `engine` | `src/game/**`, `src/life.js`, `src/types/**` | ES2023 only: no DOM, no Node |
 | `client` | the rest of `src/` | DOM, Vite |
-| `server` | `server/**`, `scripts/**`, `vite.config.js` | Node |
-| `worker` | `deploy/*.js`, `server/protocol.js`, `server/life-service.js` | Cloudflare Workers |
-| `test` | `*.test.js`, `*.test.ts`, `deploy/*.test.mjs` | Node and DOM |
+| `server` | `server/**`, `scripts/**`, `vite.config.ts` | Node |
+| `worker` | `deploy/*.ts`, `server/protocol.js`, `server/life-service.js` | Cloudflare Workers |
+| `test` | `*.test.js`, `*.test.ts`, `deploy/*.test.ts` | Node and DOM |
 
 `tsconfig.json` at the root is for editors only: one program over the whole tree.
 
@@ -75,10 +75,10 @@ defects; the findings are in [Defects the type checker found](#defects-the-type-
 The rest are artifacts of inference on untyped code, and each disappears when its file gets types.
 
 ```sh
-node scripts/typecheck.mjs --summary        # the table above
-node scripts/typecheck.mjs --list           # every baselined error that is not "no annotations"
-node scripts/typecheck.mjs --list TS2339    # one code
-node scripts/typecheck.mjs --update         # record the current state
+node scripts/typecheck.ts --summary        # the table above
+node scripts/typecheck.ts --list           # every baselined error that is not "no annotations"
+node scripts/typecheck.ts --list TS2339    # one code
+node scripts/typecheck.ts --update         # record the current state
 ```
 
 The baseline only shrinks, with one exception: a merge of untyped JavaScript from a sibling branch
@@ -313,7 +313,7 @@ two polls and a phone open and close, and a visual pass of every venue kind.
 `src/community.js` last and by itself. See [Community](#community-chat-and-voice).
 
 Then: delete `src/app/legacy/`, `src/ui/`, `tsconfig/baseline.json` and the baseline logic in
-`scripts/typecheck.mjs`; turn off `allowJs`; rename `next.html` to `index.html`.
+`scripts/typecheck.ts`; turn off `allowJs`; rename `next.html` to `index.html`.
 
 ## From HTML strings to components
 
@@ -488,8 +488,8 @@ steps named.
 | C3 | `src/ui/panels/social-client.js:20`, `src/life-main.js:51` | Social state was never reset on a session change. Since fixed in the JavaScript (`life-main.js` `sessionChanged` → `resetSocial`); the Vue shell (`src/app/state/app.ts`) does not make that call yet | Medium | 4 |
 | C4 | `src/ui/panels/social-client.js:234` | After the reconnect attempts run out the socket stays off until the player presses Reconnect, though the game itself reconnected | Low–medium | 4 |
 | C5 | `src/life-main.js:382` | `pagehide` destroys the community panel but keeps the reference; a page restored from the back/forward cache has an empty panel until reload | Low–medium | 5 |
-| W1 | `deploy/cloudflare-worker.js:158` | Room membership is revalidated with `kind === 'travel'`, so a commuting life stays in its room. `server/protocol.js` forbids that comparison | Medium | deploy owner |
-| W2 | `deploy/cloudflare-worker.js:318` | Venue chat on the Worker has no text filter and no mute | Medium | deploy owner |
+| W1 | `deploy/cloudflare-worker.ts:158` | Room membership is revalidated with `kind === 'travel'`, so a commuting life stays in its room. `server/protocol.js` forbids that comparison | Medium | deploy owner |
+| W2 | `deploy/cloudflare-worker.ts:318` | Venue chat on the Worker has no text filter and no mute | Medium | deploy owner |
 | S1 | `server/server.js:394,420` | The `to` echo on signal errors compares a public id with the cookie secret, so it is always true | Low | 3 |
 | E1 | `src/life.js:108`, `systems/onboarding.js` (`INBOUND`) | The onboarding veto also blocked server-only actions. Since fixed for the deliveries TO a life (a gift or friendship, a referral gift, a table result pass the hold); every other server-only action is still vetoed like a player's | Low | 2 |
 | E2 | `content/events.js:120`, `systems/goals.js:236` | Two unrelated "startup funded" mechanisms; the event one emits has no listener | Medium | 2 |
@@ -525,7 +525,7 @@ disagree on the health body, the voice-config error codes and what a session con
 
 Nothing now. `deploy/**` and `wrangler.jsonc` are untouched and `npm run test:edge` passes.
 
-- **Step 2.** `deploy/cloudflare-worker.js` imports `../server/protocol.js`,
+- **Step 2.** `deploy/cloudflare-worker.ts` imports `../server/protocol.js`,
   `../server/life-service.js` and `../src/life.js`: change the three specifiers to `.ts` in the
   same commit that renames them. No bundler configuration is needed (checked with wrangler
   4.147.0). The edge test does the same for its imports.
@@ -551,7 +551,7 @@ Four branches are changing the JavaScript now. Until the freeze:
 4. **Never add a `.ts` beside a `.js` of the same name.** The type checker would read it instead.
 5. **After merging into a branch that has this tooling**, run `npm run typecheck`. Fix errors in
    `.ts` and `.vue`. For JavaScript errors that came with the merge, run
-   `node scripts/typecheck.mjs --update` and commit the baseline with the merge.
+   `node scripts/typecheck.ts --update` and commit the baseline with the merge.
 6. **If `src/types/engine.test.ts` or `protocol.test.ts` fails after your change, that is the
    point**: you added an action, a state key, a view key, a route or a frame. Add it to the type
    it names. The merge of `parity/owner` into this branch tripped two (the session's `cities`, the

@@ -100,7 +100,7 @@ test('every frame type the server accepts or sends is typed', async () => {
 })
 
 test('the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does', async () => {
-  const source = await readFile(join(root, 'deploy', 'cloudflare-worker.js'), 'utf8')
+  const source = await readFile(join(root, 'deploy', 'cloudflare-worker.ts'), 'utf8')
   // The same modules as Node, not a second implementation: the registries are imported and built over one context.
   assert.match(source, /import \{ buildRoutes, ROUTE_MODULES \} from '\.\.\/server\/routes\/index\.js'/)
   assert.match(source, /import \{ buildSocketHandlers \} from '\.\.\/server\/ws\/index\.js'/)

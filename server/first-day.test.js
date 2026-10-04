@@ -2,7 +2,7 @@
 // played end to end over HTTP against the real server, with exact wallet and need values.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runFirstDay } from '../scripts/first-day.mjs';
+import { runFirstDay } from '../scripts/first-day.ts';
 
 test('the scripted first day runs to the end with every assertion holding', async () => {
   const lines = [];

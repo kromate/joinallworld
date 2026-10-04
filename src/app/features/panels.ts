@@ -59,4 +59,21 @@ export const cars = definePanel({
   component: defineAsyncComponent(() => import('./home/CarsApp.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars]
+export const groceries = definePanel({
+  id: 'groceries', title: 'Groceries', placement: 'phone', order: 16, group: 'life',
+  component: defineAsyncComponent(() => import('./home/GroceriesApp.vue')),
+})
+
+export const health = definePanel({
+  id: 'health', title: 'Health', placement: 'phone', order: 22, group: 'life',
+  /** Sick or run down: something to act on. */
+  badge: (_state, view) => (view.health?.sick || view.health?.rundown ? 1 : 0),
+  component: defineAsyncComponent(() => import('./life/HealthApp.vue')),
+})
+
+export const goals = definePanel({
+  id: 'goals', title: 'Goals', placement: 'sim-tab', order: 30, phone: true, group: 'life',
+  component: defineAsyncComponent(() => import('./life/GoalsTab.vue')),
+})
+
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals]

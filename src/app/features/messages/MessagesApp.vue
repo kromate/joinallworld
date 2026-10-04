@@ -9,13 +9,13 @@
 // itself posts — rent, loan, promotions, illness, the Governor's news — newest first.
 //
 // The social state is the one the existing People, Contacts and Invite screens use
-// (src/app/legacy/social.ts): a message sent here shows there. All text is rendered as text;
+// (src/app/features/social/useSocial.ts): a message sent here shows there. All text is rendered as text;
 // nothing a player typed is ever markup or a link.
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
 import type { Conversation, GroupUpdateBody, SearchResult } from '../../../types/social.ts'
-import { call, discard, newClientId, openThread, perform, reconnectSocial, retry, send, social, socialCityId, startSocial, sync, threadView } from '../../legacy/social.ts'
+import { call, cityId as socialCityId, discard, newClientId, openThread, perform, reconnect as reconnectSocial, retry, send, social, start as startSocial, sync, threadView } from '../social/useSocial.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -24,16 +24,20 @@ import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import { linkWords } from '../../legacy/modules.ts'
+import GlyphText from '../kit/GlyphText.vue'
+import LinkButton from '../growth/LinkButton.vue'
+import { useGrowth } from '../growth/useGrowth.ts'
 import { noticeMarks, ui } from './messagesState.ts'
 import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
 
 const props = defineProps<{ params?: unknown }>()
-const { game, shell, legacy } = useApp()
+const { game, shell, legacy, menu } = useApp()
+const growth = useGrowth()
 
 /**
- * The social client is not reactive: it changes its objects in place and calls api.refresh(),
- * which bumps this. So what is read from it is copied on each bump — a computed that returned the
- * same object again would tell nobody that its contents changed.
+ * The social client is reactive (useSocial), and it also calls api.refresh() on every change,
+ * which bumps this. What is read from it is still copied on each bump — the outbox, which
+ * threadView() reads, is not reactive.
  */
 const tick = shell.legacyTick
 const me = computed(() => { void tick.value; return social.me ? { ...social.me } : null })
@@ -62,15 +66,23 @@ watch(() => props.params, (params) => {
 // A new chat received its real conversation id.
 watch(tick, () => { if (social.openConv !== ui.open && social.openConv) ui.open = social.openConv })
 
-const gate = computed<{ text: string; warn: boolean; retry: boolean } | null>(() => {
+const gate = computed<{ text: string; warn: boolean; retry: boolean; link: boolean } | null>(() => {
   void tick.value
   // Held for the quick start: the look is not confirmed yet. (A guest who has tapped Play is in the city like anyone else.)
-  if (view.value.onboarding?.required) return { text: 'Choose your look and tap Play first. People and messages open as soon as you are in the city.', warn: false, retry: false }
-  if (!connected.value) return { text: `${linkWords(view.value)?.why ?? 'Not connected.'} People and messages are read-only until that is resolved.`, warn: true, retry: false }
-  if (social.error && !social.me) return { text: `Could not load: ${social.error}`, warn: true, retry: true }
-  if (!social.me) return { text: 'Loading…', warn: false, retry: false }
+  if (view.value.onboarding?.required) return { text: 'Choose your look and tap Play first. People and messages open as soon as you are in the city.', warn: false, retry: false, link: false }
+  if (!connected.value) return { text: `${linkWords(view.value)?.why ?? 'Not connected.'} People and messages are read-only until that is resolved.`, warn: true, retry: false, link: true }
+  if (social.error && !social.me) return { text: `Could not load: ${social.error}`, warn: true, retry: true, link: false }
+  if (!social.me) return { text: 'Loading…', warn: false, retry: false, link: false }
   return null
 })
+/** The one tap that resolves a lost connection ("Try again", "Start a new life"). */
+const linkAction = computed(() => linkWords(view.value)?.action ?? null)
+function runLinkAction(): void {
+  const next = linkAction.value
+  if (!next) return
+  if (next.menu) menu(next.menu)
+  else if (next.gate) { const target = shell.sessionGate(next.gate); if (target) shell.open(target.id, { reason: next.gate }) }
+}
 const socket = computed(() => { void tick.value; return social.socket })
 
 // ---- the thread ----------------------------------------------------------------------------
@@ -159,6 +171,7 @@ const answerFriend = (from: string, accept: boolean): Promise<unknown> => perfor
 const answerBae = (from: string, accept: boolean): Promise<unknown> => perform('/api/social/bae/answer', { from, accept, cityId: socialCityId() })
 
 onMounted(() => {
+  void growth.load() // the footer's WhatsApp link comes with the growth hello (asked for at most every five minutes)
   startSocial(legacy.api)
   // The thread that was on screen when the app was closed is on screen again: say so, and catch up.
   if (ui.open) { social.openConv = ui.open; if (!ui.open.startsWith('to:')) void openThread(ui.open) }
@@ -179,7 +192,7 @@ defineExpose({
 <template>
   <div ref="rootBox" class="messages" :class="{ 'panel-fill': Boolean(ui.open) && !gate }">
     <div v-if="gate" class="messages-note" :class="{ 'is-warn': gate.warn }" role="status">
-      {{ gate.text }} <button v-if="gate.retry" class="messages-link" type="button" @click="social.error = null; sync()">Retry</button>
+      {{ gate.text }} <button v-if="gate.link && linkAction" class="messages-link" type="button" @click="runLinkAction">{{ linkAction.label }}</button><button v-if="gate.retry" class="messages-link" type="button" @click="social.error = null; sync()">Retry</button>
     </div>
     <template v-else-if="me">
       <div v-if="socket !== 'open'" class="messages-note" :class="{ 'is-warn': socket === 'offline', 'is-inset': ui.open }" role="status">
@@ -327,12 +340,14 @@ defineExpose({
             <SectionTitle v-if="lines.length">Earlier</SectionTitle>
           </template>
           <ListRows v-if="lines.length" label="Updates">
-            <ListRow v-for="line in lines" :key="line.key" class="messages-update" :title="line.text" :sub="`${formatClock(line.at)}${line.fresh ? ' · New' : ''}`" :unread="line.fresh">
-              <template #icon><RowMark round><GameIcon :kind="line.kind" :id="line.id" /></RowMark></template>
-            </ListRow>
+            <div v-for="line in lines" :key="line.key" class="messages-update" :class="{ 'is-unread': line.fresh }">
+              <RowMark round><GameIcon :kind="line.kind" :id="line.id" /></RowMark>
+              <span class="messages-update-body"><b><GlyphText :text="line.text" /></b><small>{{ formatClock(line.at) }}{{ line.fresh ? ' · New' : '' }}</small></span>
+            </div>
           </ListRows>
           <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" icon="bell" title="Nothing yet" text="Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the Governor appear here." />
         </div>
+        <LinkButton v-if="growth.channel.value" :href="growth.channel.value" block class="messages-channel">Follow Allworld on WhatsApp</LinkButton>
       </template>
     </template>
   </div>
@@ -360,15 +375,20 @@ defineExpose({
 .messages-add { display: flex; flex-wrap: wrap; gap: 6px; }
 .messages-checks { display: grid; gap: 2px; max-height: 150px; overflow-y: auto; margin: 6px 0; }
 .messages-checks label { display: flex; align-items: center; gap: 8px; min-height: 36px; font-weight: 500; }
+.messages-channel { margin-top: var(--s-3); }
 .messages-when { display: grid; justify-items: end; gap: 3px; }
 .messages-when small { font-size: 11px; font-weight: 500; color: var(--c-muted); }
 .messages-ask { border-bottom: 1px solid var(--c-line); padding-bottom: 10px; }
 .messages-ask:last-child { border-bottom: 0; }
 .messages-ask > .bubble-actions { padding: 0 14px 0 64px; justify-content: stretch; }
 .messages-ask > .bubble-actions > * { flex: 1; }
-.messages-update { align-items: flex-start; }
-.messages-update :deep(.list-row-body > b) { white-space: normal; font-weight: 500; }
-.messages-update.is-unread :deep(.list-row-body > b) { font-weight: 700; }
+.messages-update { display: flex; align-items: flex-start; gap: 12px; min-height: 56px; padding: 9px 14px; border-bottom: 1px solid var(--c-line); }
+.messages-update:last-child { border-bottom: 0; }
+.messages-update.is-unread { background: #f3faf5; }
+.messages-update-body { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.messages-update-body > b { font-size: 14px; font-weight: 500; line-height: 1.3; }
+.messages-update.is-unread .messages-update-body > b { font-weight: 700; }
+.messages-update-body > small { font-size: 12px; line-height: 1.35; color: var(--c-muted); }
 
 .messages-chat { display: flex; flex-direction: column; flex: 1; min-height: 0; }
 .messages-head { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px 12px 8px 6px; background: #fff; border-bottom: 1px solid var(--c-line); }

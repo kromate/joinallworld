@@ -41,12 +41,12 @@
 .cmap-pin.is-dimmed{opacity:.3}
 .cmap-pin.is-dimmed:hover,.cmap-pin.is-dimmed:focus-visible{opacity:1}
 /* Zoomed out: icons only, except Home, where you are, where you are going and the selected place */
-.cmap.is-compact .cmap-pin-icon{width:30px;height:30px;font-size:16px;border-radius:10px 10px 10px 3px}
+.cmap.is-compact .cmap-pin-icon{width:26px;height:26px;font-size:14px;border-width:1.5px;border-radius:9px 9px 9px 3px}
 .cmap.is-compact .cmap-pin{transform:translate(-50%,-22px)}
 .cmap.is-compact .cmap-pin.is-edge-left{transform:translate(-22px,-22px)}
 .cmap.is-compact .cmap-pin.is-edge-right{transform:translate(calc(-100% + 22px),-22px)}
-.cmap.is-compact .cmap-pin-icon{margin-top:7px}
-.cmap.is-compact .cmap-pin.is-home .cmap-pin-icon{width:34px;height:34px;margin-top:5px;border-radius:50%}
+.cmap.is-compact .cmap-pin-icon{margin-top:9px}
+.cmap.is-compact .cmap-pin.is-home .cmap-pin-icon{width:32px;height:32px;margin-top:6px;border-width:3px;border-radius:50%}
 .cmap.is-compact .cmap-pin:not(.is-home):not(.is-here):not(.is-selected):not(.is-going):not(:hover):not(:focus-visible) .cmap-pin-name,
 .cmap.is-compact .cmap-pin:not(.is-here):not(.is-going) .cmap-pin-note{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .cmap.is-compact .cmap-pin-name{font-size:11px;padding:2px 7px}
@@ -59,7 +59,14 @@
 .cmap-controls button svg{width:20px;height:20px}
 .cmap-controls button[aria-disabled=true]{opacity:.45;cursor:default}
 .cmap-controls button:focus-visible{outline:3px solid #14532d;outline-offset:2px}
-@media(max-width:720px){.cmap-controls{right:8px;top:62px;bottom:auto}}
+/* "Whole city" is the one reset, so it says what it does */
+.cmap-controls{justify-items:end}
+.cmap-controls button.cmap-fit{display:flex;align-items:center;gap:6px;width:auto;padding:0 14px 0 12px;border-radius:22px;font-family:inherit;font-size:12px;font-weight:700;line-height:1;white-space:nowrap}
+/* A phone: one row just above the bottom sheet, in reach of the thumb and clear of the pins above it */
+@media(max-width:720px){.cmap-controls{right:8px;top:auto;bottom:var(--cmap-dock,150px);grid-auto-flow:column;align-items:center}}
+
+/* How to use the map: shown under the top bar until the player first moves the map or picks a place */
+.cmap-hint{position:absolute;left:var(--cmap-free-left,10px);top:var(--cmap-free-top,66px);z-index:7;margin:0;max-width:calc(100% - 20px);padding:7px 12px;border-radius:14px;background:#20242ae6;color:#fff;font-size:12px;font-weight:600;line-height:1.3;pointer-events:none}
 
 /* Civic overlays (billboards, neighbours, Governor) and the sea plots below the city. None of the ads is interactive. */
 .cmap-overlay{position:absolute;inset:0;pointer-events:none;z-index:2}

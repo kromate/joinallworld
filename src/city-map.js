@@ -25,8 +25,10 @@
  * Every piece of player text here is set with textContent, never as markup, and no ad is a
  * link or a button: nothing a player typed can be clicked.
  *
- * PAN AND ZOOM. The whole city is fitted into the part of the screen the HUD and the Map panel
- * leave free when the map opens. Drag pans, a pinch or the wheel zooms about the point under
+ * PAN AND ZOOM. When the map opens, the whole city is fitted into the part of the screen the HUD
+ * and the Map panel leave free — unless that would make it too small to name its places (a phone),
+ * in which case it opens closer, on where the player is, with every name readable; "Whole city"
+ * is then one tap away. Drag pans, a pinch or the wheel zooms about the point under
  * the fingers or the cursor, and the + / − / fit / find-me buttons do the same for anyone who
  * cannot. From the keyboard (forwarded by the shell as 'jaw:key'): arrows pan, + and − zoom,
  * 0 fits the city again. Zooming changes the size of the map, never of the pins: a label is
@@ -86,17 +88,20 @@ function backdrop(names) {
 const HOMES_SHOWN = 12;
 const W = 1000, H = 700;          // the map's own units (venue positions are percentages of this)
 const LABEL_WIDTH = 720;          // below this many CSS pixels of map width, only the important labels show
+const START_WIDTH = 820;          // the map width a small screen opens at, so place names can be read
 const MAX_WIDTH = 2200;           // the furthest zoom, as map width in CSS pixels
 const KEEP = 0.6;                 // the share of the map (or of the free area, if smaller) that must stay in view
 const DRAG_START = 6;             // pixels a pointer must travel before a press becomes a drag
 const make = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
 const ICON = (path) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
+let hintSeen = false;             // the how-to line is shown until the player first moves the map or picks a place
 
 export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {} } = {}) {
   let cityId = 'lagos', state = null, layer = 'city', filter = 'all', selected = null, signature = '', built = false;
   let layers = { billboards: false, sea: false, neighbours: false, gov: false }, overlay = { ads: null, neighbours: null, gov: null }, overlayKey = '', seaPending = false;
   // The view: `scale` is CSS pixels per map unit, (x, y) is where the map's top-left corner sits in the container.
-  let scale = 0, x = 0, y = 0, fitted = false, userMoved = false, shown = '';
+  // `closeUp` is true while the view is the closer opening view of a small screen (see open()).
+  let scale = 0, x = 0, y = 0, fitted = false, userMoved = false, closeUp = false, shown = '', dock = '';
   let deepLink = null;
   try { deepLink = new URLSearchParams(window.location.search).get('venue'); } catch { deepLink = null; }
   const root = document.createElement('div');
@@ -115,14 +120,21 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     const names = CITY_MAPS[cityId] || CITY_MAPS.lagos;
     root.innerHTML = `<div class="cmap-view"><div class="cmap-world"><div class="cmap-canvas" role="group" aria-label="Map of the city. Choose a place to see it and travel there. Drag to move the map; plus and minus zoom; zero shows the whole city.">${backdrop(names)}${places().map((place) =>
       `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
-      <div class="cmap-controls" role="group" aria-label="Map view"><button type="button" data-cmap="in" aria-label="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-cmap="out" aria-label="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" data-cmap="fit" aria-label="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}</button><button type="button" data-cmap="me" aria-label="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>`;
+      <div class="cmap-controls" role="group" aria-label="Map view"><button type="button" data-cmap="in" aria-label="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-cmap="out" aria-label="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" class="cmap-fit" data-cmap="fit" aria-label="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" data-cmap="me" aria-label="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>
+      <p class="cmap-hint" data-hint ${hintSeen ? 'hidden' : ''}>Drag to look around. Choose a place to travel there.</p>`;
     view = root.querySelector('.cmap-view'); worldNode = root.querySelector('.cmap-world'); canvas = root.querySelector('.cmap-canvas');
     controls = Object.fromEntries([...root.querySelectorAll('[data-cmap]')].map((node) => [node.dataset.cmap, node]));
-    built = true; signature = ''; overlayKey = ''; fitted = false; userMoved = false; shown = '';
+    built = true; signature = ''; overlayKey = ''; fitted = false; userMoved = false; closeUp = false; shown = ''; dock = '';
     pointers.clear(); drag = null; pinch = null; suppressClick = false; root.classList.remove('is-dragging');
     update();
     drawOverlays();
-    if (!container.hidden) fit();
+    if (!container.hidden) open();
+  }
+  function dismissHint() {
+    if (hintSeen) return;
+    hintSeen = true;
+    const hint = root.querySelector('[data-hint]');
+    if (hint) hint.hidden = true;
   }
 
   // ---- the view: fit, clamp, pan, zoom -------------------------------------------------------
@@ -141,7 +153,8 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
       else if (panel.height < page.height * 0.6) bottom = Math.max(bottom, page.bottom - panel.top + 34);
     }
     const width = Math.max(120, page.width - left - right), height = Math.max(120, page.height - top - bottom);
-    return { left, top, width, height, right: left + width, bottom: top + height };
+    // `sheet` is how far the nav and the bottom sheet reach up from the bottom edge; the view buttons of a phone sit just above it.
+    return { left, top, width, height, right: left + width, bottom: top + height, sheet: bottom - 34, isWide };
   }
   const fitScale = (free = freeRect()) => Math.min((free.width - 16) / W, (free.height - 16) / H);
   const worldHeight = () => (worldNode ? Math.max(H * scale, worldNode.offsetHeight) : H * scale);
@@ -165,6 +178,15 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
       worldNode.style.width = size;
     }
     clamp(free);
+    // The furniture around the map follows the free area: the phone's view buttons sit above the sheet, the how-to line under the top bar.
+    const place = `${Math.round(free.sheet)}|${Math.round(free.left)}|${Math.round(free.top)}`;
+    if (place !== dock) {
+      dock = place;
+      root.style.setProperty('--cmap-dock', `${Math.round(free.sheet) + 8}px`);
+      root.style.setProperty('--cmap-free-left', `${Math.round(free.left)}px`);
+      root.style.setProperty('--cmap-free-top', `${Math.round(free.top)}px`);
+    }
+    if (userMoved) dismissHint();
     const next = `${scale.toFixed(4)}|${Math.round(x)}|${Math.round(y)}|${userMoved}`;
     if (next === shown) return;
     shown = next;
@@ -190,12 +212,32 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     // With the sea plots showing, the city sits at the top and the sea is a drag away.
     const sea = root.querySelector('[data-sea]');
     y = sea && !sea.hidden ? free.top + 8 : free.top + (free.height - H * scale) / 2;
-    fitted = true; userMoved = false;
+    fitted = true; userMoved = false; closeUp = false;
+    apply();
+  }
+  /**
+   * The view the map opens with. Where the whole city fits with its names readable (a wide screen)
+   * that is the whole city. On a small screen it is a closer view on where the player is, filling
+   * the free area with the map; "Whole city" then zooms out to everything.
+   */
+  function open() {
+    if (!built || container.hidden) return;
+    const free = freeRect();
+    if (W * fitScale(free) >= LABEL_WIDTH) { fit(); return; }
+    scale = START_WIDTH / W;
+    const width = W * scale, height = H * scale;
+    const point = pointOf(state?.location) || homeSpot().map;
+    x = free.left + free.width / 2 - (point.x / 100) * width;
+    y = free.top + free.height / 2 - (point.y / 100) * height;
+    // Show map, not open water: keep the city edge to edge wherever it is bigger than the free area.
+    x = width >= free.width ? Math.min(free.left, Math.max(free.right - width, x)) : free.left + (free.width - width) / 2;
+    y = height >= free.height ? Math.min(free.top, Math.max(free.bottom - height, y)) : free.top + (free.height - height) / 2;
+    fitted = true; userMoved = false; closeUp = true;
     apply();
   }
   /** Zoom by `factor` keeping the map point under (cx, cy) — container pixels — where it is. */
   function zoomAt(factor, cx, cy) {
-    if (!fitted) fit();
+    if (!fitted) open();
     const free = freeRect();
     const smallest = fitScale(free);
     const next = Math.min(MAX_WIDTH / W, Math.max(smallest, scale * factor));
@@ -208,12 +250,12 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     scale = next; userMoved = true;
     apply();
   }
-  function panBy(dx, dy) { if (!fitted) fit(); x += dx; y += dy; userMoved = true; apply(); }
+  function panBy(dx, dy) { if (!fitted) open(); x += dx; y += dy; userMoved = true; apply(); }
   /** Bring a place into the free area, moving the map as little as possible. `centre` puts it in the middle instead. */
   function reveal(id, centre = false) {
     const point = pointOf(id);
     if (!built || container.hidden || !point) return;
-    if (!fitted) fit();
+    if (!fitted) open();
     const free = freeRect(), px = x + (point.x / 100) * W * scale, py = y + (point.y / 100) * H * scale;
     const padX = Math.min(90, free.width / 3), padY = Math.min(70, free.height / 3);
     if (centre) { x += free.left + free.width / 2 - px; y += free.top + free.height / 2 - py; }
@@ -424,6 +466,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     const pin = event.target.closest('.cmap-pin');
     if (!pin) return;
     selected = pin.dataset.venue;
+    dismissHint();
     update();
     // With the Gov layer on, the State House opens the Governor sheet instead of the travel card.
     if (layers.gov && pin.dataset.venue === 'state-house') { onSelectGov(); return; }
@@ -442,7 +485,8 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     drawOverlays();
     if (container.hidden) return;
     // The panel changed size (collapsed, expanded, a card opened): the free area moved with it.
-    if (!fitted || (detail.layout && !userMoved)) fit(); else apply();
+    // The whole-city view is fitted again; a closer view stays where it is and only keeps the selected place in sight.
+    if (!fitted) open(); else if (detail.layout && !userMoved && !closeUp) fit(); else apply();
     if (selected && (picked || detail.layout)) reveal(selected);
     // Turning the Sea layer on brings the plots into view once they are drawn.
     const sea = root.querySelector('[data-sea]');
@@ -470,6 +514,8 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
     get ready() { return layer === 'city'; },
     setCity(id) { if (id !== cityId || !built) { cityId = id; build(); } layer = 'city'; },
     setState(next) {
+      // The player went somewhere: an untouched closer view opens on the new place the next time the map shows.
+      if (closeUp && !userMoved && state && next && next.location !== state.location) fitted = false;
       state = next;
       update();
       drawOverlays();
@@ -479,14 +525,14 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
         if (Object.hasOwn(VENUES, id) || Object.hasOwn(COMING_SOON, id)) { selected = id; update(); onSelectVenue(id); }
       }
     },
-    /** The container was shown or changed size: fit the city the first time, afterwards only keep it in bounds. */
+    /** The container was shown or changed size: set the opening view the first time, afterwards only keep it in bounds. */
     resize() {
       if (!built || container.hidden) return;
-      if (!fitted || !userMoved) fit(); else apply();
+      if (!fitted) open(); else if (!userMoved && !closeUp) fit(); else apply();
       if (selected) reveal(selected);
     },
     /** For tests and diagnostics: the current view. */
-    view: () => ({ scale, x, y, fitted, compact: W * scale < LABEL_WIDTH }),
+    view: () => ({ scale, x, y, fitted, closeUp, compact: W * scale < LABEL_WIDTH }),
     destroy() { root.removeEventListener('click', onClick); window.removeEventListener('pointerup', onPointerUp); window.removeEventListener('pointercancel', onPointerUp); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:key', onKey); root.remove(); },
   };
 }

@@ -6,7 +6,7 @@
  * without a session, command() refuses, sends nothing and changes nothing — the cached state
  * is shown read-only until the server is reachable again.
  */
-import { createLife } from './life.js';
+import { createLife, isDeparting } from './life.js';
 
 export const CITIES = Object.freeze({ lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State' }, ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State' } });
 export const STORAGE_KEY = 'joinallworld-life-v1';
@@ -18,13 +18,15 @@ export const TEXT = Object.freeze({
 });
 /**
  * Whether the community room must be (re)joined after a state change: on arrival somewhere
- * new, and when a trip was cancelled — the server removed the player from the room when they
- * set off, so staying put needs an explicit rejoin. This only joins the room (presence and
- * text chat); it never turns voice or the microphone on.
+ * new, and when a departure was cancelled — a trip, the automatic commute to work, or any other
+ * timed action that moves the player (the shared isDeparting rule, the same one the server
+ * revokes by). The server removed the player from the room when they set off, so staying put
+ * needs an explicit rejoin. This only joins the room (presence and text chat): the join puts the
+ * player back with voice off and muted, and nothing here turns voice or the microphone on.
  */
 export function roomJoinNeeded(previous, next) {
   if (previous.location !== next.location) return true;
-  return previous.activeAction?.kind === 'travel' && !next.activeAction;
+  return isDeparting(previous) && !next.activeAction;
 }
 
 /**

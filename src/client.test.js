@@ -88,6 +88,16 @@ test('room membership is restored on arrival and after a cancelled trip, and nev
   assert.equal(roomJoinNeeded(idle, travelling), false, 'setting off does not rejoin');
   assert.equal(roomJoinNeeded(travelling, travelling), false);
   assert.equal(roomJoinNeeded(chilling, idle), false, 'finishing or cancelling an activity is not a room change');
+  // The automatic commute is a departure too: the server ends the membership when it starts, so a
+  // cancelled commute needs the same rejoin as a cancelled trip — and arriving at work joins there.
+  const commuting = createLife({ location: 'park', job: 'tech', activeAction: { kind: 'commute', id: 'cchub', duration: 5, remaining: 3 } });
+  assert.equal(commuting.activeAction?.kind, 'commute');
+  assert.equal(roomJoinNeeded(commuting, idle), true, 'commute cancelled: same place, no action');
+  assert.equal(roomJoinNeeded(commuting, createLife({ location: 'cchub' })), true, 'arrived at work');
+  assert.equal(roomJoinNeeded(idle, commuting), false, 'the commute starting does not rejoin');
+  assert.equal(roomJoinNeeded(commuting, commuting), false);
+  // A timed action of a kind this build does not know is treated as a departure, never as "still here".
+  assert.equal(roomJoinNeeded({ location: 'park', activeAction: { kind: 'future-move' } }, idle), true);
   // The entry file wires that decision to community.join only — never to a voice or microphone control.
   const main = await readFile('src/life-main.js', 'utf8');
   assert.match(main, /if \(roomJoinNeeded\(previous, state\)\) community\?\.join\(client\.cityId, state\.location\);/);

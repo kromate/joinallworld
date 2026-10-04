@@ -1,6 +1,6 @@
 // Portable protocol rules shared by the Node server and the Cloudflare worker.
 // No Node-only imports here (no node:*, ws or fs): the worker bundles this file as-is.
-import { hasAction } from '../src/life.js';
+import { hasAction, isDeparting, occupiesVenue } from '../src/life.js';
 import { screenText } from './moderation/text.js';
 
 export const MAX_PAYLOAD_BYTES = 2048;
@@ -69,7 +69,22 @@ export function isSameOrigin(origin, host, { requireOrigin = false } = {}) {
   if (!origin) return !requireOrigin;
   try { const url = new URL(origin); return url.host === host && ['http:', 'https:'].includes(url.protocol); } catch { return false; }
 }
-export function canJoinVenue(state, venueId) { return state.location === venueId && state.activeAction?.kind !== 'travel'; }
+/**
+ * WHO IS IN A VENUE — one rule for both hosts and every feature.
+ *   isDeparting(state)             the life's timed action is one that takes the player out of the
+ *                                  venue (a trip, the automatic commute, any kind a game system
+ *                                  registers with `moves: true` — src/game/registry.js). From the
+ *                                  moment it starts until it ends or is cancelled the player is not
+ *                                  in any venue, although state.location still names the one they left.
+ *   canOccupyVenue(state, venueId) the player is recorded at venueId and is not departing.
+ * Joining a venue room, staying in one, being "at home" for guests, interacting with someone in
+ * the same venue and counting as present for civic features all ask canOccupyVenue. Never compare
+ * state.activeAction.kind with a kind's name: a new way of moving would be missed.
+ */
+export { isDeparting };
+export function canOccupyVenue(state, venueId) { return occupiesVenue(state, venueId); }
+/** May this life join (or stay in) the room of venueId? Same rule as canOccupyVenue; the name the worker imports. */
+export function canJoinVenue(state, venueId) { return canOccupyVenue(state, venueId); }
 /** Identity of a request for idempotency. Covers the payload; without one it equals the pre-payload format, so stored receipts stay valid. */
 export function actionFingerprint(body) {
   const parts = [body.cityId, body.type, body.id, body.mode];
@@ -139,7 +154,10 @@ export function venueRoomKey(cityId, venueId, publicId) {
  * created on first use. Call it inside store.transact(); pass the default for a non-object.
  */
 export function collection(db, name, initial = {}) {
-  if (typeof name !== 'string' || !/^[a-z][a-zA-Z0-9]{1,31}$/.test(name) || ['version', 'sessions', 'archivedLives'].includes(name)) throw new Error(`Invalid collection name: ${name}`);
-  if (db[name] === undefined || db[name] === null) db[name] = initial;
+  // A name every object inherits ('constructor', 'toString', …) would read as "already there" on a
+  // plain document and hand back a built-in instead of a collection: such names are refused, and
+  // only the document's OWN property counts as an existing collection.
+  if (typeof name !== 'string' || !/^[a-z][a-zA-Z0-9]{1,31}$/.test(name) || ['version', 'sessions', 'archivedLives'].includes(name) || name in Object.prototype) throw new Error(`Invalid collection name: ${name}`);
+  if (!Object.hasOwn(db, name) || db[name] === undefined || db[name] === null) db[name] = initial;
   return db[name];
 }

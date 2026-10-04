@@ -3,8 +3,10 @@
  * by the facade (./index.js) after the first scene is drawn and only when the server sent a DSN.
  *
  * Runs without asking the player because it carries no personal data:
- *   - sendDefaultPii is false and the SDK is told never to infer an IP address (the project must
- *     ALSO have "Prevent Storing of IP Addresses" switched on — see SECURITY.md)
+ *   - every part of the SDK's `dataCollection` is off (user info, cookies, headers, bodies, query
+ *     strings, frame variables), so it tells Sentry never to infer an IP address — `sendDefaultPii:
+ *     false` alone no longer does that in SDK 11. The project must ALSO have "Prevent Storing of IP
+ *     Addresses" switched on — see SECURITY.md
  *   - no cookies and no storage are used; the user is the session's PUBLIC id and nothing else
  *   - none of the SDK's automatic breadcrumbs are installed (no console, clicks, fetch, navigation
  *     or history): the only breadcrumbs are the ones the facade writes — action types, result codes,
@@ -36,7 +38,12 @@ export async function startSentry({ dsn, release, env, replayOnError = false, us
   init({
     dsn, release, environment: env,
     defaultIntegrations: false, integrations,
-    sendDefaultPii: false, sendClientReports: false, attachStacktrace: true, maxBreadcrumbs: 30,
+    // No personal data. In SDK 11 `sendDefaultPii` no longer decides this: `dataCollection` does, and every part of
+    // it defaults to ON (userInfo: true makes Sentry infer the IP address). Each part is switched off by name.
+    sendDefaultPii: false,
+    dataCollection: { userInfo: false, cookies: false, httpHeaders: false, httpBodies: [], urlQueryParams: false, stackFrameVariables: false, frameContextLines: 0,
+      graphQL: { document: false, variables: false }, genAI: { inputs: false, outputs: false }, databaseQueryData: false, queues: false },
+    sendClientReports: false, attachStacktrace: true, maxBreadcrumbs: 30,
     replaysSessionSampleRate: 0, replaysOnErrorSampleRate: replayOnError ? 1 : 0,
     beforeBreadcrumb: (crumb) => (BREADCRUMB_CATEGORIES.includes(crumb?.category) ? { category: crumb.category, timestamp: crumb.timestamp, data: scrubProps(crumb.data) } : null),
     beforeSend: (event) => scrubEvent({ ...event, request: { url: stripUrl(win.location.href), headers: { 'User-Agent': win.navigator.userAgent } } }, { userId: user, typed: words() }),

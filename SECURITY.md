@@ -97,7 +97,7 @@ There are no moderator accounts. Whoever holds the server's `MODERATOR_TOKEN` is
 - The same file holds four more collections. `social`: friends, blocks, conversations and their messages (direct, group and house chats, a bounded history each), house visits, pending gifts and reports. (Receipts of gifts, interactions, groups and paid civic requests are kept in each player's session record, beside their action receipts.) `civic`: list preferences and, per city, the residents directory with each resident's last balance, elections and announcements (with a salted hash per voting address for the current election), ads, hunt counters and radio queues. `moderation`: mutes and the audit trail, including the address each operator request came from. `support`: problem reports with their context. All four identify players by public id only; the session secret is never written to them.
 - Every collection is capped; the caps are listed in the README under "Storage and limits". Archived lives of players who actually played are the one thing never deleted automatically.
 - **Direct, group and house messages are stored in plain text** and can be read by whoever can read the data file. Venue chat is relayed to the room and not written to disk.
-- The browser caches the last known game state and nickname in `localStorage` for display, and keeps the sound preferences and which notices you have read there too.
+- The browser caches the last known game state and nickname in `localStorage` for display, and keeps the sound preferences and which notices you have read there too. When telemetry is configured it also keeps the player's analytics choice there (and, after Accept only, which funnel steps were already reported and PostHog's own state).
 
 ## Chat, presence and location
 
@@ -114,6 +114,40 @@ There are no moderator accounts. Whoever holds the server's `MODERATOR_TOKEN` is
 - **Third-party STUN.** To find a route between browsers, the client contacts a public STUN server operated by Google (`stun.l.google.com`). That server sees your IP address, not your audio. Self-hosters can change it in `src/community.js`.
 - **No relay.** The project does not run or pay for a TURN server. On some mobile, corporate or carrier-grade NAT networks, calls will not connect.
 - **No recording by the project.** The server never receives audio and the project's code does not record it. Nothing stops another participant from recording on their own device.
+
+## Telemetry
+
+**Off unless an operator configures it.** With no telemetry variable set (README, "Telemetry") nothing below happens: no request to either service, no SDK code run or downloaded, nothing stored. It also never runs on `localhost` or a private address unless `TELEMETRY_DEBUG=1`. When it is configured there are two separate things, with different rules.
+
+### Error reports (Sentry) — always on, no personal data
+
+Sent without asking, as a diagnostic the game needs to be kept working. A report contains: the error type and message, stack frames (file, function, line — no local variables), the release (`BUILD_ID`) and environment, the browser's user-agent string, the page's origin and path, up to 30 breadcrumbs that are **action types, result codes, screen names and connection states only**, and the session's **public id** (the code other players already see). The server's reports carry a route **template** (`POST /api/social/house/:host`), an action type and a result code.
+
+- It never contains chat or message text, a nickname, an email address, a position, a query string, a request body, a header or a cookie. This is enforced by an allow-list, not a filter: every report is rebuilt from named fields (`src/telemetry/scrub.js`), every string in it is rewritten (emails, UUIDs, tokens, coordinates, long numbers, query strings and quoted prose are replaced), and whatever the player is known to have typed — the failing request's own strings, the text fields on the page, the nickname — is removed from the message first.
+- The user id is the public id and nothing else. The session cookie is `HttpOnly`, so browser code cannot read it; on the server it never enters a report, and any UUID found in report text is replaced.
+- No cookies and no browser storage are used. None of the SDK's automatic breadcrumbs (console, clicks, network, navigation) are installed, and there is no browser performance tracing.
+- **IP addresses.** The SDK is told not to let Sentry infer one (`dataCollection.userInfo: false`; since SDK 11 `sendDefaultPii: false` alone does not do this). Sentry still sees the connection's address when a report arrives, so the operator **must also** switch on, in each Sentry project: *Settings → Security & Privacy → **Prevent Storing of IP Addresses***, and leave *Data Scrubber* and *Use Default Scrubbers* on.
+- **Session replay is off.** It exists only behind `TELEMETRY_REPLAY_ON_ERROR=1`; then it records only sessions that hit an error, with all text and inputs masked, media blocked and no canvas recorded. Turning it on changes what is collected: update the player-facing text first.
+- The same failure is reported at most five times a minute per server process.
+
+### Usage analytics (PostHog) — only after the player accepts
+
+- **Consent first.** A sheet in the game asks once — right after the nickname is accepted by default — with **Accept** and **Reject** as two identical buttons and the full "What we collect" text one tap away. Until the player answers, nothing is sent and the PostHog code is not downloaded; events that happen meanwhile wait in memory only, are sent if the answer is Accept and are discarded if it is Reject. After Reject nothing is sent, ever, and the only thing kept on the device is the choice itself. The choice can be changed in Sim → Settings → Privacy → *Analytics and error reports*; Reject after Accept stops the SDK and clears what it had stored.
+- **Do Not Track and Global Privacy Control are a Reject**, whatever was chosen before, and the sheet is not shown. A player known to be under 18 has analytics off (`identify(id, { under18: true })`; this build has no age question, so nothing sets it yet).
+- **What is sent** is the event catalogue in `src/telemetry/events.js` and nothing else: funnel steps, counts of interactions (never their content), coarse performance and connection health. Properties are numbers, booleans and short id-like words, checked against the catalogue by name and type; a nickname, free text, an email, a position, an IP address or any UUID is refused. The distinct id is the session's **public id**. Page URLs are reduced to origin and path. GeoIP lookup is disabled on every event (`$geoip_disable`), so no location is derived from the address; a local-government id may be attached as a coarse group.
+- **What is switched off in the SDK:** autocapture of clicks and inputs, rage/dead clicks, heatmaps, session recording, surveys, feature flags, web vitals and exception capture. The build used cannot download further scripts from PostHog. Storage is `localStorage` under one name — no cookies, nothing shared across subdomains — and person profiles are created for identified players only.
+- **The server's events follow the same choice.** The browser tells the server Accept or Reject (`POST /api/telemetry/consent`); the server keeps that in memory only, records nothing for a player without an Accept on record, and is told again on each page load.
+- **IP addresses.** PostHog sees the connection's address when an event arrives. The operator **must** switch on *Project settings → General → **Discard client IP data***.
+- **Where it goes.** PostHog and Sentry process the data on the operator's behalf, in the region of the configured host (`POSTHOG_HOST`, the Sentry DSN). The default PostHog host is the US cloud; for players in Nigeria, the EU or the UK that is a transfer abroad which the operator's privacy notice must cover, or the EU host can be configured instead.
+
+### What the operator must do
+
+1. In Sentry (both projects): *Prevent Storing of IP Addresses* on; data scrubbers on.
+2. In PostHog: *Discard client IP data* on; session recording and autocapture left off in the project as well.
+3. Keep the player-facing text (`src/telemetry/what-we-collect.js`) and this section true whenever an event or a flag is added.
+4. Never put a secret in a telemetry variable: the client DSN and the `phc_` key are public by design and are the only two values sent to the browser. The source-map token (`SENTRY_AUTH_TOKEN`) is used at build time only and is not read by the server.
+
+Source maps are uploaded to Sentry and are never served by the game (`*.map` answers 404).
 
 ## Out of scope
 

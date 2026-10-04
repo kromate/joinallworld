@@ -42,7 +42,13 @@ export function startPosthog({ key, host, release, env, distinctId = null, locat
   return {
     /** @param {import('./clean.js').Item} item */
     capture(item) { const args = captureArgs(item); if (args) posthog.capture(...args); },
-    identify(id, traits) { if (isUuid(id) && id !== identified) { identified = id; posthog.identify(id, scrubProps(traits)); } },
+    identify(id, traits) {
+      if (!isUuid(id) || id === identified) return;
+      identified = id;
+      const set = scrubProps(traits);
+      // Already this player (the id was given at start): no event is spent on saying so again.
+      if (posthog.get_distinct_id() !== id) posthog.identify(id, set); else if (Object.keys(set).length) posthog.setPersonProperties(set);
+    },
     group(type, id) { const safe = scrubProps({ [type]: id }); if (Object.keys(safe).length) posthog.group(type, safe[type]); },
     /** Reject after Accept: stop sending and forget what PostHog kept on this device. */
     stop() { posthog.opt_out_capturing(); posthog.reset(); },

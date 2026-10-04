@@ -30,6 +30,7 @@ const STYLE = `
 .jaw-consent-foot button{min-height:48px;border-radius:999px;border:2px solid var(--c-green-dark,#183b2a);background:#fff;color:var(--c-green-dark,#183b2a);font:700 15px var(--font,system-ui,sans-serif);cursor:pointer}
 .jaw-consent-foot button:hover{background:#183b2a14}
 #jaw-consent button:focus-visible{outline:3px solid #e39a1c;outline-offset:2px}
+#jaw-consent h2:focus{outline:none}
 `;
 
 const esc = (text) => String(text).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);

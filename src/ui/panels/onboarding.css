@@ -1,0 +1,43 @@
+/* Character creation. The dialog is widened on larger screens so the avatar sits beside the options. */
+#life-dialog:has(.ob-root){max-width:860px}
+.ob-root{display:grid;gap:var(--s-3);font-family:var(--font);color:var(--c-ink)}
+.ob-head{display:grid;grid-template-columns:var(--tap) minmax(0,1fr) auto;align-items:center;gap:var(--s-2);margin-right:34px}
+.ob-head strong{font-size:var(--t-title)}
+.ob-head-gap{width:var(--tap)}
+.ob-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;list-style:none;padding:0;margin:6px 0 0}
+.ob-steps li{height:6px;border-radius:6px;background:var(--c-line)}
+.ob-steps li.is-done{background:var(--c-green)}
+.ob-steps li.is-current{background:var(--c-ink)}
+.ob-steps span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.ob-shuffle{padding:8px 12px;min-height:var(--tap)}
+.ob-lead{margin:0;font-size:14px!important}
+.ob-error{margin:0;padding:10px 12px;border-radius:14px;background:#fbeee6;color:var(--c-red);font-size:13px!important}
+.ob-split{display:grid;gap:var(--s-3)}
+.ob-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-2)}
+.ob-list{display:grid;gap:var(--s-2)}
+.ob-card{display:grid;gap:3px;text-align:left;border:1px solid var(--c-line);background:var(--c-surface-solid);color:var(--c-ink);border-radius:18px;padding:12px;font:inherit;cursor:pointer;min-height:var(--tap)}
+.ob-card.is-row{grid-template-columns:auto minmax(0,1fr);gap:var(--s-3);align-items:start}
+.ob-card strong{display:block;font-size:14px}
+.ob-card small{display:block;font-size:12px;color:var(--c-muted);line-height:1.35}
+.ob-card ul{margin:4px 0 0;padding-left:16px;font-size:11px;color:var(--c-green-dark)}
+.ob-card[aria-pressed=true]{border-color:var(--c-ink);box-shadow:inset 0 0 0 2px var(--c-ink);background:var(--c-green-soft)}
+.ob-card[aria-pressed=true] strong::after{content:' ✓'}
+.ob-card:disabled{cursor:not-allowed;background:var(--c-fill)}
+.ob-card:disabled strong,.ob-card:disabled .ob-card-icon{opacity:.55}
+.ob-card:focus-visible,.ob-primary:focus-visible{outline:3px solid #247a49;outline-offset:2px}
+.ob-card-icon{font-size:26px;line-height:1}
+.ob-faint{opacity:.8;font-style:italic}
+.ob-tag{display:inline-block;font:600 10px var(--font);font-style:normal;text-transform:uppercase;letter-spacing:.4px;background:#fff8df;color:#7a6220;border-radius:10px;padding:2px 7px;margin-bottom:3px}
+.ob-money{color:var(--c-green-dark)!important;font-weight:600}
+.ob-locked{color:var(--c-red)!important;font-weight:600}
+.ob-lottery{border:1px solid var(--c-line);border-radius:var(--r-card);padding:var(--s-4);background:linear-gradient(#fff8df,#fff)}
+.ob-lottery.is-waiting{font-size:64px;text-align:center}
+.ob-lottery h3{margin:6px 0 2px;font-size:var(--t-heading)}
+.ob-lottery p{margin:0!important}
+.ob-lottery ul{margin:10px 0 0;padding-left:18px;font-size:13px;line-height:1.6}
+.ob-primary{width:100%;position:sticky;bottom:0}
+.ob-primary:disabled{background:#8b9a90;cursor:not-allowed}
+.ob-done{justify-items:start}
+.ob-done h3{margin:0}
+@media(min-width:760px){.ob-split{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start}.ob-split .look-stage{position:sticky;top:0;min-height:320px}.ob-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ob-list{grid-template-columns:1fr}}
+@media(max-width:420px){.ob-grid{grid-template-columns:1fr 1fr}.ob-card{padding:10px}.ob-card ul{padding-left:14px}}

@@ -1,0 +1,36 @@
+/* Sim sheet tabs: Profile, Needs, Skills. */
+.sim-profile{display:grid;gap:var(--s-3);font-family:var(--font)}
+.sim-profile h3{margin:0}
+.sim-profile-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s-3);align-items:start}
+.sim-field{display:grid;gap:6px;font-size:13px;font-weight:600}
+.sim-field input{font:inherit;font-weight:400;padding:10px 12px;border:1px solid #cfd4cf;border-radius:12px;min-height:var(--tap);width:100%;box-sizing:border-box}
+.sim-hint{margin:4px 0 0!important;font-size:12px!important;color:var(--c-muted)}
+.sim-note{margin:0!important;padding:10px 12px;border-radius:14px;background:#fff8df;font-size:13px!important}
+.sim-about{list-style:none;padding:0;margin:8px 0 0;font-size:12px;display:grid;gap:3px}
+.sim-about b{color:var(--c-muted);font-weight:600;margin-right:4px}
+.sim-link{border:0;background:none;padding:0;color:var(--c-green-dark);text-decoration:underline;font:inherit;cursor:pointer;min-height:24px}
+.sim-error{margin:0!important;padding:10px 12px;border-radius:14px;background:#fbeee6;color:var(--c-red);font-size:13px!important}
+.sim-save{position:sticky;bottom:0;width:100%}
+.sim-save:disabled{background:#8b9a90;cursor:not-allowed}
+.sim-needs,.sim-skills{display:grid;gap:10px;font-family:var(--font)}
+.sim-needs h3{margin:6px 0 0}
+.sim-mood{margin:0!important;display:flex;align-items:baseline;gap:8px;font-size:18px!important}
+.sim-mood small{font-size:12px;color:var(--c-muted)}
+.sim-mood.is-good strong{color:var(--c-green-dark)}.sim-mood.is-neutral strong{color:var(--c-muted)}.sim-mood.is-warn strong{color:#b0701c}.sim-mood.is-bad strong{color:#b3261e}
+.sim-need-row{display:grid;grid-template-columns:96px minmax(0,1fr) 42px;align-items:center;gap:10px;font-size:13px}
+.sim-need-row>span i{font-style:normal}
+.sim-need-row [role=meter]{height:10px;border-radius:10px;background:#e8e9ea;overflow:hidden}
+.sim-need-row [role=meter] i{display:block;height:100%;border-radius:10px;background:var(--c-green)}
+.sim-need-row.is-mid [role=meter] i{background:var(--c-amber)}
+.sim-need-row.is-low [role=meter] i{background:#c8443a}
+.sim-need-row>b{text-align:right;font-variant-numeric:tabular-nums}
+.sim-feelings{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.sim-feelings li{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--c-line);border-radius:14px;padding:8px 12px;font-size:13px}
+.sim-feelings small{display:block;font-size:11px;color:var(--c-muted)}
+.sim-feelings .is-bad{color:#b3261e}.sim-feelings .is-good{color:var(--c-green-dark)}
+.sim-skill{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);align-items:center;gap:10px;font-size:13px}
+.sim-skill small{display:block;font-size:11px;color:var(--c-muted)}
+.sim-segments{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
+.sim-segments>i{display:block;height:12px;border-radius:4px;background:#e8e9ea;overflow:hidden}
+.sim-segments b{display:block;height:100%;background:var(--c-green)}
+@media(max-width:420px){.sim-skill{grid-template-columns:1fr}.sim-need-row{grid-template-columns:88px minmax(0,1fr) 40px}.sim-profile-top{grid-template-columns:1fr}.sim-profile-top .look-stage{justify-self:center}}

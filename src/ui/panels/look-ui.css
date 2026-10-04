@@ -1,0 +1,14 @@
+/* Shared by the onboarding, Profile and Boutique panels. */
+.look-avatar{display:block;max-width:100%;height:auto}
+.look-stage{display:grid;place-items:center;background:linear-gradient(#dcebf2,#eef4ee);border-radius:var(--r-card);padding:var(--s-3)}
+.look-editor{display:grid;gap:var(--s-3)}
+.look-group{border:0;padding:0;margin:0;min-width:0}
+.look-group legend{font:600 12px var(--font);color:var(--c-muted);padding:0;margin-bottom:6px}
+.look-chips,.look-swatches{display:flex;flex-wrap:wrap;gap:6px}
+.look-chip{border:1px solid var(--c-line);background:var(--c-surface-solid);color:var(--c-ink);border-radius:var(--r-chip);padding:8px 12px;min-height:var(--tap);font:500 13px var(--font);cursor:pointer}
+.look-chip small{display:block;font-size:10px;color:var(--c-muted);font-weight:400}
+.look-chip[aria-pressed=true]{background:var(--c-ink);border-color:var(--c-ink);color:#fff}
+.look-chip:disabled{cursor:not-allowed;background:var(--c-fill);color:var(--c-muted)}
+.look-swatch{width:var(--tap);height:var(--tap);border-radius:var(--r-round);border:2px solid #fff;box-shadow:0 0 0 1px var(--c-line);background:var(--swatch);cursor:pointer;color:#fff;font:700 15px var(--font);text-shadow:0 0 3px #000,0 0 2px #000}
+.look-swatch[aria-pressed=true]{box-shadow:0 0 0 3px var(--c-ink)}
+.look-chip:focus-visible,.look-swatch:focus-visible{outline:3px solid #247a49;outline-offset:2px}

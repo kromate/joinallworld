@@ -637,6 +637,9 @@ if (new URLSearchParams(location.search).has('diagnostics')) {
 
 render();
 telemetry.hudReady();
+// A device without a life will meet the landing screen: its code is asked for now, in parallel with the connection, so it is
+// there when the server says a name is needed. A returning player never downloads it.
+if (!client.hasSavedIdentity) void sessionGate().load?.().catch(() => {});
 // The link this page was opened with is read once, here, before anything rewrites the address.
 { const link = captureLink(); if (link.join || link.ref || link.table) track('invite_opened', { kind: link.table ? 'table' : link.ref ? 'share' : 'house', has_session: client.hasSavedIdentity === true }); }
 connect();

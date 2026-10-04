@@ -6,6 +6,7 @@
  * First download: it knows only where tables stand (src/tables/places.js, data); no game code.
  */
 import { esc, json, mark } from '../dom.js';
+import '../phone/icon-tables.js';
 import { isDeparting } from '../../game/registry.js';
 import { tablesAt, GAME_LABELS } from '../../tables/places.js';
 

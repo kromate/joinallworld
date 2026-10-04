@@ -1,8 +1,8 @@
 // OWNER: quick start — the pure client logic of the first minute (./model.js).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom, joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE,
-  NUDGE_CAP, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.js';
+import { joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE, NUDGE_CAP, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.js';
+import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom } from './look-model.js';
 import { checkLook } from '../game/systems/onboarding.js';
 import { validateName } from '../../server/protocol.js';
 import { makeRng } from '../game/util.js';

@@ -232,7 +232,11 @@ test('"Make a new friend" completes when a regular is greeted — the real thing
   state.goals.chain = STARTER_GOALS.findIndex((goal) => goal.id === 'make-a-friend');
   const cash = state.cash;
   const chip = viewLife(state, at()).goals.chip;
-  assert.deepEqual([chip.title, chip.hint, chip.open], ['Make a new friend', 'Tap someone at a venue', 'people']);
+  // At home there is nobody to meet: the one line of guidance points the way out…
+  assert.deepEqual([chip.title, chip.open, chip.params], ['Make a new friend', 'map', { destination: 'park' }]);
+  // …and out in public it opens the people who are there.
+  const out = viewLife({ ...state, location: 'amala-shitta', spot: 'counter' }, at()).goals.chip;
+  assert.deepEqual([out.title, out.hint, out.open], ['Make a new friend', 'Tap someone at a venue', 'people']);
   // The interim rule is gone: a social-tagged activity, at home or at a venue, is not a friend.
   state.location = 'amala-shitta'; state.spot = 'kitchen';
   assert.equal(act(state, 'activity', { id: 'buka-gist' }).code, 'started');

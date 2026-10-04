@@ -3,8 +3,10 @@
  * The panel registry. The panel contract is at the top of src/ui/shell.js.
  *
  * EAGER panels are imported here and are part of the first download: only what the first paint
- * needs — the session gate, the landing screen (./quick-start.js: a name, a quick character, Play) and the HUD chips (goal, home, inbox, gem hunt, club radio, health,
- * weather, the roadside prompt). A chip's file holds the chip alone; the app or sheet it opens is a lazy
+ * needs — the session gate and the HUD chips (goal, home, inbox, gem hunt, club radio, health, weather, the roadside prompt, and
+ * two stubs of a few lines for the table and "while you were away" chips).
+ * The landing screen of a new device (./quick-start.js: a name, a quick character, Play) is a lazy group like any other — only a
+ * device without a life needs it — and src/life-main.js asks for it at once on such a device, in parallel with the connection. A chip's file holds the chip alone; the app or sheet it opens is a lazy
  * panel like any other (inbox.js → messages.js, hunt-chip.js → hunt.js, home-chip.js → buy.js, roadside-chip.js → map.js …).
  * The two nav panels, Map and Buy, are lazy too: the Map's own 3D code is fetched on first open anyway.
  *
@@ -22,7 +24,6 @@
  * A panel a group exports without a metadata line here is reported in the console and ignored.
  */
 import session from './session.js';
-import quickStart from './quick-start.js';
 import city from './city.js';
 import roadsideChip from './roadside-chip.js';
 import healthChips from './health-chips.js';
@@ -36,7 +37,10 @@ import { civicNews } from './civic-ui.js';
 import { reportReplies } from '../phone/reports.js';
 import awayChip from './away-chip.js';
 import tablesChip from './tables-chip.js';
-import { GROWTH_TINTS } from '../phone/icons-growth.js';
+import { play } from '../../quick-start/entry.js';
+
+/** App-icon colours for the growth apps (their glyphs arrive with the Phone: ../phone/icons-growth.js). */
+const GROWTH_TINTS = Object.freeze({ missions: '#256b45', events: '#b23a2e', refer: '#2b5fa8', touch: '#6a3fa0', tables: '#1f8a86' });
 
 const PLACEMENTS = ['phone', 'nav', 'hud', 'sim-tab', 'modal'];
 const RESERVED = ['phone', 'sim', 'help', 'home', 'venue'];
@@ -134,8 +138,14 @@ const trust = lazyGroup(() => import('./groups/trust.js'), [
   { id: 'statement', title: 'Statement', placement: 'phone', order: 15, group: 'money' },
   { id: 'support', title: 'Report a problem', short: 'Report', placement: 'phone', order: 96, live: false, group: 'city', badge: () => reportReplies() },
 ]);
+// The landing screen: the session gate of a new device. Its rule is here, so a life still held for its look is held before
+// the screen's own code has arrived.
+const landing = lazyGroup(() => import('./groups/landing.js'), [
+  { id: 'quick-start', title: 'Welcome to Allworld', placement: 'modal', role: 'session-gate', live: false,
+    required: (state, view) => (view.onboarding?.required === true && view.connected && !play.sending ? 'Choose your look and tap Play to start.' : null) },
+]);
 const start = lazyGroup(() => import('./groups/start.js'), [
-  // Settling in ("Make this life yours") is offered, never required: a new life starts from the landing screen (./quick-start.js, eager).
+  // Settling in ("Make this life yours") is offered, never required: a new life starts from the landing screen (./quick-start.js).
   { id: 'onboarding', title: 'Make this life yours', placement: 'modal', live: false },
   { id: 'account', title: 'Account', placement: 'modal' },
 ]);
@@ -170,7 +180,7 @@ const tableApps = lazyGroup(() => import('./groups/tables.js'), [
   { id: 'tables', title: 'Tables', placement: 'phone', order: 43, group: 'city', tint: GROWTH_TINTS.tables },
 ]);
 
-export const PANELS = buildPanels([session, quickStart, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, awayChip, tablesChip, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels, growth, tableApps]);
+export const PANELS = buildPanels([session, landing, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, awayChip, tablesChip, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels, growth, tableApps]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

@@ -47,7 +47,8 @@ import { weatherAt } from '../src/game/systems/health.js';
 import { LOTTERY } from '../src/game/content/traits.js';
 import { STARTER_GOALS } from '../src/game/content/goals.js';
 import { EVENTS } from '../src/game/content/events.js';
-import { nextNudge, nudgeMemory, nudged, presetLook, funnelSnap, funnelEvents } from '../src/quick-start/model.js';
+import { nextNudge, nudgeMemory, nudged, funnelSnap, funnelEvents } from '../src/quick-start/model.js';
+import { presetLook } from '../src/quick-start/look-model.js';
 
 const CITY = 'lagos';
 /** The local government picked at settle-in: the free starter house stands on a plot there. */

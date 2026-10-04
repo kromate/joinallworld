@@ -1,7 +1,8 @@
 /**
  * OWNER: quick start
  * THE LANDING SCREEN — the session gate of a new device (role 'session-gate', so it replaces the
- * nickname form of ./session.js): a name, a quick character and one Play button. Two taps at most
+ * nickname form of ./session.js). A lazy panel (./groups/landing.js): only a device without a life needs it, so it is not
+ * in the first download; src/life-main.js asks for it at once on such a device, in parallel with the connection: a name, a quick character and one Play button. Two taps at most
  * for someone who accepts the defaults (Play; a Shuffle if they want one). No traits, dream,
  * lottery or home here: those are offered later by "Make this life yours" (./onboarding.js).
  *
@@ -27,8 +28,9 @@ import './quick-start.css';
 import { esc, mark } from '../dom.js';
 import { linkWords, linkButton } from '../link.js';
 import { lookStage, lookEditor, chooseLook, lookTabClick, lookFocusBody, mountLookPreview, starterWardrobe, avatarSvg } from './look-ui.js';
-import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, starterLook } from '../../quick-start/model.js';
-import { quickDraft, keepDraft, keepPlay, joinTarget, pendingRef, track, play, firstLanding } from '../../quick-start/entry.js';
+import { PRESETS, presetLook, shuffleLook, withBody, nameProblem, suggestName, starterLook } from '../../quick-start/look-model.js';
+import { quickDraft, keepDraft, firstLanding } from '../../quick-start/draft.js';
+import { keepPlay, joinTarget, pendingRef, track, play } from '../../quick-start/entry.js';
 import { APPEARANCE } from '../../game/content/traits.js';
 
 const ID = 'quick-start';
@@ -59,7 +61,7 @@ function landing(state, view) {
 
 export default {
   id: ID, title: 'Welcome to Allworld', placement: 'modal', role: 'session-gate', live: false,
-  /** A life whose look the server has not confirmed is held here — unless its Play is being sent right now. */
+  /** A life whose look the server has not confirmed is held here — unless its Play is being sent right now (the same rule is on its stub in ./index.js, so it holds before this file has arrived). */
   required(state, view) { return held(view) && !play.sending ? 'Choose your look and tap Play to start.' : null; },
   render(state, view) {
     return landing(state, view);

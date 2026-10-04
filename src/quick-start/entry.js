@@ -2,7 +2,8 @@
  * OWNER: quick start
  * The browser side of the quick start: what the device keeps between reloads, and the funnel
  * events. Every decision is in ./model.js (pure); this file only reads and writes storage, the
- * address bar and one window event.
+ * address bar and one window event. It is in the first download, so it holds only what every page load needs; the draft
+ * of the landing screen is ./draft.js, fetched with that screen.
  *
  * KEPT ON THIS DEVICE (localStorage; a browser without storage keeps them in memory for the visit)
  *   joinallworld-quick-start   { name, look, landedAt, nameEdited, shuffles, preset } — the draft on the
@@ -40,7 +41,7 @@
  * open. captureLink() reads all three once, before anything rewrites the address, and src/life-main.js handles them in that
  * order after the quick start — one banner, then the table.
  */
-import { draftFrom, nudgeMemory, joinIdFrom, linkParts } from './model.js';
+import { nudgeMemory, joinIdFrom, linkParts } from './model.js';
 
 const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed', table: 'joinallworld-quick-table', ref: 'allworld-ref' };
 const REF_KEEP_MS = 7 * 86400000;
@@ -57,26 +58,20 @@ function write(key, value) {
 }
 
 // ---- the draft -----------------------------------------------------------------------------
-let draft = null, landed = null;
+/** The draft the landing screen edits lives in ./draft.js (fetched with that screen); it is held here so forgetDraft can drop it. */
+export const kept = { draft: null };
+/** For ./draft.js: this file's storage and keys. */
+export const store = { read, write, KEYS };
+let landed = null;
 /** True while life-main is sending a tapped Play: the landing screen stays out of the way until it has an answer. */
 export const play = { sending: false };
-/** The draft the landing screen edits (made on first use, then kept). `name`: a name this device already uses. */
-export function quickDraft(name) {
-  draft ??= draftFrom(read(KEYS.draft), { random: Math.random, now: Date.now(), name });
-  landed ??= draft.landedAt;
-  return draft;
+/** The moment this device first landed (kept with the draft, so it survives a reload): what every funnel event's `ms` counts from. */
+export function landedAt() {
+  if (landed === null) { const saved = read(KEYS.draft)?.landedAt; landed = Number.isFinite(saved) && saved > 0 && saved <= Date.now() ? saved : Date.now(); }
+  return landed;
 }
-/** True the first time the landing screen is shown on this device (and false after, across reloads), so 'landed' is reported once. */
-export function firstLanding() {
-  if (read(KEYS.landed)) return false;
-  write(KEYS.draft, quickDraft()); // the moment of landing is kept with the draft: `ms` counts from here, also after a reload
-  write(KEYS.landed, 1);
-  return true;
-}
-/** Change the draft and keep it. */
-export function keepDraft(changes) { draft = { ...quickDraft(), ...changes }; write(KEYS.draft, draft); return draft; }
 /** The first minute is over (the life has moved in, or belongs to a returning player): forget the drafts. */
-export function forgetDraft() { draft = null; write(KEYS.draft, null); write(KEYS.play, null); write(KEYS.landed, null); }
+export function forgetDraft() { kept.draft = null; write(KEYS.draft, null); write(KEYS.play, null); write(KEYS.landed, null); }
 
 // ---- Play, until the server has confirmed it ---------------------------------------------------
 /** @returns {{ look: object, actionId?: string } | null} */
@@ -139,7 +134,6 @@ export function keepNudges(life, value) { write(KEYS.nudge, { [life]: value }); 
 /** Report one funnel event. Never throws; with nobody listening it does nothing. */
 export function track(name, props = {}) {
   try {
-    landed ??= quickDraft().landedAt;
-    window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name, props: { ...props, ms: Math.max(0, Date.now() - landed) } } }));
+    window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name, props: { ...props, ms: Math.max(0, Date.now() - landedAt()) } } }));
   } catch { /* telemetry must never break the game */ }
 }

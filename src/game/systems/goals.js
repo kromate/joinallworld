@@ -61,6 +61,8 @@ import { VENUES } from '../content/venues.js';
 import { JOBS } from '../content/jobs.js';
 
 const FEED_LIMIT = 8;
+/** Where the guide sends a player who has to meet someone and is at home: the public venue new players arrive in. */
+const MEETING_PLACE = 'park';
 const BESTIE_LIMIT = 16;
 const MAX_STARS = 1000000;
 const PITCH_TAG = 'startup-pitch';
@@ -369,6 +371,9 @@ function chipOf(state, ctx) {
     }
     if (goal.workplace) return { ...chip, ...(workplaceOf(state) ? { go: workplaceOf(state) } : { open: 'jobs' }) };
     if (goal.open === 'buy' && state.location !== 'home') return { ...chip, go: ['home'] };
+    // A goal that needs other people cannot be met at home (a player who settled in before saying hello is standing there):
+    // the one line of guidance says so and points at the way out, instead of opening a list with nobody in it.
+    if (goal.open === 'people' && state.location === 'home' && Object.hasOwn(VENUES, MEETING_PLACE)) return { ...chip, hint: `Nobody else is at home: go out to ${VENUES[MEETING_PLACE].label} and tap a person`, open: 'map', params: { destination: MEETING_PLACE } };
     if (goal.open) return { ...chip, open: goal.open, ...(goal.params ? { params: goal.params } : {}) };
     return goal.go ? { ...chip, go: goal.go.length > 1 ? homeSpot(goal.go[1]) : goal.go } : chip;
   }

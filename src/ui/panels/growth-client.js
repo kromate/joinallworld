@@ -17,7 +17,7 @@
  *   allworld-away     the server time of the hello whose away card was dismissed
  */
 import './growth.css';
-import '../phone/icons-growth.js';
+import '../phone/icons-more.js';
 import { deviceToken } from '../../quick-start/entry.js';
 export { deviceToken };
 /** The canvas painter and the share-sheet calls are fetched the first time something is shared, not with the first download. */

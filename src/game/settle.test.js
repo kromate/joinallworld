@@ -173,3 +173,23 @@ test('a delivery from the server reaches a life that is still held for its look;
   assert.equal(g.act('travel', { id: 'library', mode: 'trek' }, { internal: true }).code, 'onboarding_required', 'server authority does not unlock a player action');
   assert.equal(g.act('social.server', { op: 'no-such-op' }).code, 'server_only');
 });
+
+test('the one line of guidance is always something that can be done: settled in before saying hello, it points the way out', () => {
+  const g = game();
+  g.act('onboarding.quick-start', { look: LOOK });
+  g.run('trees', 'play-ayo');
+  assert.deepEqual([g.view().goals.chip.id, g.view().goals.chip.open], ['say-hello', 'people']);
+  g.ready();
+  assert.equal(g.act('onboarding.home', { lga: 'ikeja' }).code, 'life_started');
+  // At home, with "Say hello" still the current goal: Settle in is already met and waits its turn; nothing is lost.
+  const chip = g.view().goals.chip;
+  assert.deepEqual([g.state.location, chip.id, chip.open, chip.params, g.state.goals.chain], ['home', 'say-hello', 'map', { destination: 'park' }, 1]);
+  assert.match(chip.hint, /go out to Freedom Park/);
+  assert.equal(g.act('travel', { id: 'park', mode: 'trek' }).ok, true); g.finish();
+  if (g.state.travel.event) g.act('world.roadside', { choice: g.view().travel.event.choices.at(-1).id });
+  assert.equal(g.view().goals.chip.open, 'people', 'out in public, the goal opens the people who are there');
+  const regular = g.view().social.here[0];
+  assert.equal(g.run('people', `npc-${regular.id}-hello`).ok, true);
+  assert.deepEqual([g.state.goals.chain, g.view().goals.chip.id], [3, 'eat'], 'the hello pays, and Settle in — met earlier — pays right behind it');
+  assert.deepEqual(reasons(g.state).filter((reason) => reason.startsWith('Goal:')), ['Goal: Play a round of Ayo', 'Goal: Say hello to someone', 'Goal: Settle in']);
+});

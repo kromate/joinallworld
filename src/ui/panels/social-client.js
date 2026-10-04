@@ -30,6 +30,7 @@ export const S = {
 let joiningHouse = null;
 let ws = null, attempts = 0, timer = null, started = false, syncing = false, dirty = false, peopleDirty = false;
 const peopleWatchers = new Set();
+let profileVersion = 0;
 /** Call `fn` whenever the who-is-here listing changes (the scene host draws its crowd from it). */
 export function onPeople(fn) { peopleWatchers.add(fn); return () => peopleWatchers.delete(fn); }
 const peopleChanged = () => { for (const fn of peopleWatchers) { try { fn(S.people); } catch (error) { console.error('People watcher failed:', error); } } };
@@ -98,7 +99,9 @@ export async function loadPeople() {
 function watchPeople() { if (ws?.readyState === 1 && connected()) ws.send(JSON.stringify({ type: 'people-list', cityId: cityId() })); }
 
 export async function loadProfile(id) {
+  const version = profileVersion;
   const result = await call(`/api/social/players/${encodeURIComponent(id)}`);
+  if (version !== profileVersion) return; // An older response must not restore invalidated friendship details.
   S.profiles.set(id, result.ok ? result.player : { error: result.reason });
   refresh();
 }
@@ -208,6 +211,7 @@ function receive(event) {
   } else if (type === 'transfer') {
     refreshLife(); void sync();
   } else if (['social-sync', 'friend-request', 'friend-accepted', 'invite-knock', 'invite-house'].includes(type)) {
+    if (['social-sync', 'friend-request', 'friend-accepted'].includes(type)) { profileVersion += 1; S.profiles.clear(); }
     if (type === 'social-sync') refreshLife();
     void sync();
   }

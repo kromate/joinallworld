@@ -2,9 +2,9 @@
  * Growth wire shapes: everything `/api/growth/*` and `/api/mod/growth/*` returns and accepts, the
  * `table-*` frames on `/socket`, and the two telemetry endpoints.
  *
- * Derived from server/routes/growth.js and server/routes/growth-mod.js (the adapters),
- * server/growth/referral.js, share.js, outreach.js, tables.js and metrics.js (the answers),
- * server/ws/tables.js (the socket adapter), server/telemetry/routes.js and config.js, and the pure
+ * Derived from server/routes/growth.ts and server/routes/growth-mod.ts (the adapters),
+ * server/growth/referral.ts, share.js, outreach.js, tables.js and metrics.js (the answers),
+ * server/ws/tables.ts (the socket adapter), server/telemetry/routes.ts and config.js, and the pure
  * modules src/game/share-model.js, digest.js, calendar.js and outreach.js.
  *
  * Conventions of the `/api/growth/` routes that act for a player: the session cookie is required;
@@ -195,7 +195,7 @@ export type ReferralLinkResult =
  * The age question. Saying the age switches nothing on; `false` switches a channel off and deletes
  * what was stored for it. An age once given as under 18 is not raised by asking again.
  */
-// INCONSISTENT: the route list at the top of server/routes/growth.js documents this body as
+// INCONSISTENT: the route list at the top of server/routes/growth.ts documents this body as
 // `{ age, push?, email? }`, without `cityId`, but the handler is built with route(), which validates
 // `body.cityId` first and answers 400 invalid_city without one.
 export interface ConsentBody {
@@ -264,7 +264,7 @@ export type TablesClaimResult =
   }>
   | Refusal<'not_ready'>
 
-/** server/growth/metrics.js CLIENT_SIGNALS: what a browser may report about itself. Anything else is ignored. */
+/** server/growth/metrics.ts CLIENT_SIGNALS: what a browser may report about itself. Anything else is ignored. */
 export type ClientSignal = 'webgl-missing' | 'opera-mini' | 'save-data' | 'slow-start' | 'installed' | 'share-sheet' | 'share-fallback'
 
 // ---- HTTP: /api/growth/ ---------------------------------------------------------------------------
@@ -319,7 +319,7 @@ export interface MetricsCohort {
   d30: RetentionCell
 }
 
-/** server/growth/metrics.js FUNNEL_ORDER. */
+/** server/growth/metrics.ts FUNNEL_ORDER. */
 export type FunnelStep = 'onboarded' | 'goal-1' | 'settled' | 'job' | 'shift' | 'goals-done' | 'mission' | 'table' | 'day-two-work'
 
 /** GET /api/mod/growth/metrics: first-party daily totals and retention cohorts. Carries no player id. */
@@ -417,10 +417,10 @@ export interface GrowthModerationHttpRoutes {
   'POST /api/mod/growth/outreach/run': { body: Record<string, never>; response: Ok<OutreachRunResponse>; errors: GrowthModCommon | JsonBodyErrorCode }
 }
 
-// ---- HTTP: telemetry (server/telemetry/routes.js) -------------------------------------------------
+// ---- HTTP: telemetry (server/telemetry/routes.ts) -------------------------------------------------
 //
-// Registered by server/server.js beside ROUTE_MODULES (`[...ROUTE_MODULES, telemetryRoutes]`), not by
-// server/routes/index.js, so they are not part of `HttpRoutes` / HTTP_ROUTE_KEYS, which describe
+// Registered by server/server.ts beside ROUTE_MODULES (`[...ROUTE_MODULES, telemetryRoutes]`), not by
+// server/routes/index.ts, so they are not part of `HttpRoutes` / HTTP_ROUTE_KEYS, which describe
 // what buildRoutes() registers by default.
 
 /** What the browser may load. Never a secret: the PUBLIC Sentry DSN and the PostHog PROJECT key. */
@@ -448,7 +448,7 @@ export interface TelemetryHttpRoutes {
   }
 }
 
-// ---- socket: table games (server/ws/tables.js, server/growth/tables.js) ---------------------------
+// ---- socket: table games (server/ws/tables.ts, server/growth/tables.ts) ---------------------------
 //
 // A socket need not have joined a venue room: the service checks the stored life itself. A refusal
 // is an ordinary `error` frame whose code is a TableErrorCode, with the sentence for the player in
@@ -552,7 +552,7 @@ export interface TableStateFrame {
 export interface TablesChangedFrame { type: 'tables-changed'; cityId: CityId; venue: string }
 export type TableServerFrame = TablesFrame | TableStateFrame | TablesChangedFrame
 
-/** Codes of a refused `table-*` frame (server/growth/tables.js refuse()). */
+/** Codes of a refused `table-*` frame (server/growth/tables.ts refuse()). */
 export type TableErrorCode =
   | 'invalid_city' | 'unknown_table' | 'rate_limited' | 'table_crowded' | 'game_on' | 'already_seated' | 'table_full' | 'table_closed'
   | 'not_here' | 'table_changed' | 'not_host' | 'not_seated' | 'need_players' | 'no_game' | 'invalid_move' | 'stale_move'

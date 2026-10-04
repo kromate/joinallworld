@@ -10,7 +10,7 @@
  * once (skipWaiting + clients.claim), which is safe because it holds no cache and no state.
  * Switching notifications off unsubscribes; the worker then simply never receives anything.
  *
- * A push payload is JSON { title, body, url, tag } made by server/growth/outreach.js. The words
+ * A push payload is JSON { title, body, url, tag } made by server/growth/outreach.ts. The words
  * are the server's own; nothing in a payload is run or inserted as markup.
  */
 self.addEventListener('install', () => { self.skipWaiting(); });

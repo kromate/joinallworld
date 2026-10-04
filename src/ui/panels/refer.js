@@ -3,7 +3,7 @@
  * Bring a friend: the Phone app. Your invite link (shared through the phone's own apps — the game
  * sends nothing), who came through it and where each of them is on the way to counting, and the
  * share sheet every Share button in the growth apps opens.
- * Rules: server/growth/referral.js; numbers: src/game/content/growth.js.
+ * Rules: server/growth/referral.ts; numbers: src/game/content/growth.js.
  */
 import { esc, money, mark, avatar, empty } from '../dom.ts';
 import { how, rules as ruleList, bindHow } from '../phone/how.ts';

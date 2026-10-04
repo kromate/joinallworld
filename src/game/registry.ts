@@ -80,7 +80,7 @@
  *   cityId  the city this life belongs to
  *   rng     () => float in [0,1), seeded from the action ID or the settlement interval, so
  *           a replayed request or a re-run test produces the same outcome. On a server the seed
- *           is also keyed with a secret held per life (server/life-service.js) that no client
+ *           is also keyed with a secret held per life (server/life-service.ts) that no client
  *           ever sees, so a player cannot work out an outcome in advance or pick an action ID
  *           that produces the one they want. The secret is consumed by makeContext and is not
  *           part of ctx: a system cannot read it, store it or show it.

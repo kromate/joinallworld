@@ -3,7 +3,7 @@
 //   cash == what the life started with + the sum of every ledger line (nothing appears or vanishes),
 //   cash is never negative, counted items are never negative, needs stay in range,
 //   the statement reconciles, a reload changes nothing, and the same inputs replay to the same life.
-// The server half (the same request sent twice is applied once) is in server/replay.test.js.
+// The server half (the same request sent twice is applied once) is in server/replay.test.ts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, actionTypes, spotsOf } from '../life.ts';

@@ -17,7 +17,7 @@ import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { createServer, connect } from 'node:net';
 import { fileURLToPath } from 'node:url';
-import { OUTREACH_ENV } from '../server/host-context.js';
+import { OUTREACH_ENV } from '../server/host-context.ts';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const require = createRequire(resolve(process.env.JOINALLWORLD_TOOLS || join(root, 'deploy/tooling'), 'package.json'));

@@ -73,7 +73,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   function nearby(member) { return room.venueId !== 'home' && !rejectedPeers.has(member?.id) && member?.enabled && member.id !== session?.id && distanceTo(member) < VOICE_RADIUS; }
   function moveTo(x, z) {
     if (!roomReady || room.venueId === 'home' || !Number.isFinite(x) || !Number.isFinite(z)) return false;
-    // The UNILAG campus is walked in campus coordinates: the server checks them against its walkable ground (server/protocol.js).
+    // The UNILAG campus is walked in campus coordinates: the server checks them against its walkable ground (server/protocol.ts).
     if (room.venueId === 'unilag') return send({ type: 'move', x, z });
     const mx = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), mz = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z));
     // Exactly the origin means "not reported yet" (see reported()): a player standing there reports a hair beside it.

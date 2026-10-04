@@ -5,7 +5,7 @@
  * message is offered at all. Every channel is off until the player turns it on — notifications by
  * the browser's own permission, e-mail by a consent tick and a confirmation link — and one tap
  * turns each off again and deletes what was stored for it.
- * Rules: server/growth/outreach.js and src/game/outreach.js; the words: src/game/digest.js.
+ * Rules: server/growth/outreach.ts and src/game/outreach.js; the words: src/game/digest.js.
  */
 import { esc } from '../dom.ts';
 import { how, rules as ruleList, bindHow } from '../phone/how.ts';

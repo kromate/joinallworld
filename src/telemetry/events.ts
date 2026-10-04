@@ -11,7 +11,7 @@
  * ONE SOURCE PER EVENT. `from` names the one place that reports it: 'quick-start' (the first minute and the landing of a
  * link: src/quick-start/entry.js track), 'world' (where you live), 'growth' (missions, tables, sharing, outreach) — all
  * three arrive as `jaw:track` DOM events, as do those of 'campus' (the UNILAG campus: src/life-main.js, from the server's state) — 'client' (derived here from the server's states: ./funnel.ts and ./core.ts) and
- * 'server' (server/telemetry/instrument.js). src/telemetry/telemetry.test.ts reads the game's sources and fails if a
+ * 'server' (server/telemetry/instrument.ts). src/telemetry/telemetry.test.ts reads the game's sources and fails if a
  * `track('…')` call names an event that is not listed here, or carries a property this list would drop.
  *
  * Property rules, enforced by src/telemetry/scrub.ts for every event: numbers, booleans and short
@@ -91,7 +91,7 @@ export const EVENTS: Record<string, EventSpec> = {
   email_optin_confirmed: { from: 'growth', props: {}, when: 'The address was confirmed from its e-mail.', why: 'E-mail opt-in funnel.' },
   unsubscribed: { from: 'growth', props: { channel: 'string' }, when: 'A channel was switched off in the game (channel: push | email).', why: 'Are messages welcome?' },
 
-  // ---- People (recorded by the server for players who accepted: server/telemetry/instrument.js) ---
+  // ---- People (recorded by the server for players who accepted: server/telemetry/instrument.ts) ---
   friend_request_sent: { from: 'server', props: {}, when: 'A friend request was stored (not a repeat).', why: 'Start of the friend loop.' },
   friend_made: { from: 'server', props: { role: 'string' }, when: 'A friend request was accepted; sent for each of the two players who has accepted analytics (role: accepter | asker).', why: 'Meaningful interaction; invite → friend conversion.' },
   house_knock_sent: { from: 'server', props: {}, when: 'A player knocked at another player’s home (not a repeat).', why: 'House invites as they exist today.' },

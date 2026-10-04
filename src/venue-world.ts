@@ -296,7 +296,7 @@ export const START_DISTANCE = Object.freeze({ portrait: 16.5, short: 13, wide: 2
 const ZOOM_STEP = 1.35, LOOK_YAW = 1.9, LOOK_PITCH = 1.2;
 /** How long the avatar rests beside a spot before the spot is selected, and the least time between two such requests. */
 const DWELL_MS = 650, SPOT_GAP_MS = 1500;
-/** The room protocol accepts positions within ±20 (server/protocol.js POSITION_BOUNDS); a little is kept in hand. */
+/** The room protocol accepts positions within ±20 (server/protocol.ts POSITION_BOUNDS); a little is kept in hand. */
 const PRESENCE_REACH = 19.5;
 /** How fast the see-through circle fades in and out (per second), and its radius in avatar heights. */
 const GHOST_RATE = 9, GHOST_RADIUS = 0.62;

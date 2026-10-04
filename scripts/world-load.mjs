@@ -31,10 +31,10 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { once } from 'node:events';
 import { randomUUID } from 'node:crypto';
-import { createServer } from '../server/server.js';
+import { createServer } from '../server/server.ts';
 import { lagosTime } from '../src/game/clock.ts';
-import { createShardStore } from '../server/world/shards.js';
-import * as registry from '../server/world/registry.js';
+import { createShardStore } from '../server/world/shards.ts';
+import * as registry from '../server/world/registry.ts';
 import { ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE } from '../src/game/content/world.ts';
 
 const arg = (name, fallback) => { const at = process.argv.indexOf(`--${name}`); return at > 0 ? Number(process.argv[at + 1]) : fallback; };

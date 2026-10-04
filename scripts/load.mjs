@@ -28,7 +28,7 @@ import { once } from 'node:events';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { createServer } from '../server/server.js';
+import { createServer } from '../server/server.ts';
 
 const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
 const quantile = (sorted, q) => (sorted.length ? sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] : NaN);

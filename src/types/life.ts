@@ -38,7 +38,7 @@ export type ComingSoonId = never
 
 /**
  * Cities the RULES know (content/world.js CITY_RULES). Only 'lagos' is open; the others are data for
- * the links between cities. Not the same set as protocol.ts `CityId` (server/protocol.js CITY_IDS:
+ * the links between cities. Not the same set as protocol.ts `CityId` (server/protocol.ts CITY_IDS:
  * the cities a server keeps lives for) — hence the different name.
  */
 export type WorldCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'

@@ -2,8 +2,8 @@
  * Social wire shapes: everything `/api/social/*` returns and accepts, the social frames on
  * `/socket`, and the browser's outbox entry.
  *
- * Derived from server/social/service.js (the rules), server/routes/social.js and
- * server/ws/social.js (the two adapters), server/social/presence.js, and — for what the browser
+ * Derived from server/social/service.ts (the rules), server/routes/social.ts and
+ * server/ws/social.ts (the two adapters), server/social/presence.ts, and — for what the browser
  * reads — src/ui/panels/social-client.js, messages.js, people.js, contacts.js, invite.js and
  * src/game/social-model.js.
  *
@@ -23,7 +23,7 @@ export type Done<Code extends string, Extra = unknown> = { ok: true; code: Code 
 /** Set on a success that changed nothing because it had already been applied. */
 export interface Repeat { duplicate?: true }
 
-/** server/social/presence.js, as reported by whereabouts(). */
+/** server/social/presence.ts, as reported by whereabouts(). */
 export type PresenceStatus = 'online' | 'away' | 'reconnecting' | 'offline'
 export interface Whereabouts {
   status: PresenceStatus
@@ -354,7 +354,7 @@ export interface SocialHttpRoutes {
   'POST /api/social/transfers': { body: TransferBody; response: Ok<TransferResult>; errors: SocialPost | OnceErrorCode | 'invalid_player' | 'invalid_city' | 'invalid_amount' }
 }
 
-// ---- socket: client → server (server/ws/social.js) ----------------------------------------------
+// ---- socket: client → server (server/ws/social.ts) ----------------------------------------------
 //
 // Each is answered on the sending socket. The browser sends only `people-list` (and `join` with a
 // hostId): src/ui/panels/social-client.js does every other write over HTTP so that it always
@@ -379,11 +379,11 @@ export interface DmSentFrame { type: 'dm-sent'; clientId?: string; conv: Convers
 /** Reply to a refused OR malformed `dm-send` (`code` is then the 400 code, with a fixed `reason`). */
 export interface DmFailedFrame { type: 'dm-failed'; clientId?: string; code: string; reason: string }
 /** Reply to `dm-read`: the ReadResult spread into the frame. */
-// INCONSISTENT: server/ws/social.js:9 documents `dm-read-ok { conv }` as if `conv` were the id; it is the whole
+// INCONSISTENT: server/ws/social.ts:9 documents `dm-read-ok { conv }` as if `conv` were the id; it is the whole
 // conversation summary, with `ok` and `code` beside it, and a refusal (`not_a_member`) arrives under this same type.
 export type DmReadOkFrame = { type: 'dm-read-ok' } & ReadResult
 /** Reply to `people-list`. */
-// INCONSISTENT: server/ws/social.js:10 documents `people { venue, self, players, count }`; the frame also carries
+// INCONSISTENT: server/ws/social.ts:10 documents `people { venue, self, players, count }`; the frame also carries
 // `ok`, `code` and `cityId`, and src/ui/panels/social-client.js:201 drops the frame unless `ok` is set.
 export type PeopleFrame = { type: 'people' } & PeopleListing
 /** Reply to `friend-request` and `friend-answer`. */

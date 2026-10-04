@@ -32,7 +32,7 @@
  * Extras for the host only: db.$store.scanSessions(predicate) → [secret] (records are read without receipts),
  * db.$store.sessionKeyByPublicId(id), db.$store.onceCounts(liveSince, lightKinds) → { money, light }.
  */
-import { storageError } from '../server/protocol.js';
+import { storageError } from '../server/protocol.ts';
 
 /** The most characters of a collection kept in one row (a row may hold 2 MB; four bytes a character at worst). */
 export const CHUNK = 400000;

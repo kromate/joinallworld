@@ -2,7 +2,7 @@
 // Bring a friend: the Phone app. Your invite link (shared through the phone's own apps — the game
 // sends nothing), who came through it and where each of them is on the way to counting. Every
 // Share button in the growth apps opens the share sheet (ShareSheet.vue).
-// Rules: server/growth/referral.js; numbers: src/game/content/growth.js.
+// Rules: server/growth/referral.ts; numbers: src/game/content/growth.js.
 import { computed, onMounted } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../legacy/modules.ts'

@@ -4,7 +4,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../../..');
-const {createServer:createGameServer}=await import('../../../server/server.js');
+const {createServer:createGameServer}=await import('../../../server/server.ts');
 const {createServer:createViteServer}=await import('vite');
 const threeRoot=dirname(fileURLToPath(import.meta.resolve('three')));
 const game=await createGameServer({dataDir:resolve(root,'src/models/.cache/integration-state'),buildId:'models-integration'});

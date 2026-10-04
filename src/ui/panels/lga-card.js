@@ -16,7 +16,7 @@
  *
  * THE ACTION is the ordinary game action 'estate.set-lga' { lga, via } (src/game/systems/estate.js):
  * validated on the server, applied once per action id, and the free house on a plot is allocated
- * by the server as soon as it is saved (server/world/service.js).
+ * by the server as soon as it is saved (server/world/service.ts).
  *
  * LOCATION PRIVACY. "Find my local government" asks the browser for a position, works out the
  * local government ON THIS DEVICE from the boxes bundled in the city pack (src/map3d/lga.js

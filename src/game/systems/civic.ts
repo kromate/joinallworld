@@ -2,7 +2,7 @@
  * OWNER: civic
  * Per-life civic state: the daily gem hunt, days lived in the city, this week's earnings, and
  * the wallet side of every civic purchase. Shared city state (elections, ads, radio queues,
- * the residents directory) lives on the server under server/civic/ and server/routes/civic.js.
+ * the residents directory) lives on the server under server/civic/ and server/routes/civic.ts.
  *
  * State key: `civic`
  *   seed    integer — fixes where this player's gems hide each day
@@ -30,7 +30,7 @@
  *   'civic.run' · 'civic.vote' · 'civic.rent-ad' { kind, slot } · 'civic.shoutout'
  *       SERVER-COMPLETED: each of these is one half of a change whose other half is shared
  *       storage (a ballot, a slot, a queue). They are declared `serverOnly` (registry.ts), so
- *       they succeed only when server/routes/civic.js runs them through ctx.act inside its store
+ *       they succeed only when server/routes/civic.ts runs them through ctx.act inside its store
  *       transaction. Sent on their own through POST /api/action they are refused with
  *       `server_only` and charge nothing, so a player can never pay without receiving what was paid for.
  *

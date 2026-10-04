@@ -8,7 +8,7 @@
  *                 house and nothing more
  * and renderMyHouse(), the "your house" section the Houses app shows first: the look (free and
  * priced options), upgrades (paid, built on server time) and moving in.
- * Rules and prices: src/game/systems/estate.js, src/game/content/world.js. Data: server/routes/world.js.
+ * Rules and prices: src/game/systems/estate.js, src/game/content/world.js. Data: server/routes/world.ts.
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './world.css';

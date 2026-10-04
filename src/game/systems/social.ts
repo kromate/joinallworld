@@ -1,8 +1,8 @@
 /**
  * OWNER: social
  * NPC interactions, relationships, family calls and the life-side half of player-to-player
- * features (messaging, presence, invites and the friend graph live in server/routes/social.js,
- * server/ws/social.js and server/social/).
+ * features (messaging, presence, invites and the friend graph live in server/routes/social.ts,
+ * server/ws/social.ts and server/social/).
  *
  * State key: `social`
  *   rel       { [id]: { p, d, n, npc, name?, friend?, at } }   closeness per NPC id or player public id
@@ -23,7 +23,7 @@
  *   'social.sync'   {}        no-op: lets the client re-read the life after a server-side change
  *   'social.server' { op, … } SERVER ONLY (declared `serverOnly`, see registry.ts): refused with
  *                   'server_only' on POST /api/action. Run through ctx.act by
- *                   server/social/service.js once the server has checked the other player
+ *                   server/social/service.ts once the server has checked the other player
  *                   (friendship, presence, limits): transfers, friendships, player-to-player
  *                   interactions and Bae.
  *
@@ -159,7 +159,7 @@ function pushNotice(state: LifeState, kind: unknown, text: unknown, ctx: LifeCon
   if (list.length > MAX_NOTICES) list.splice(0, list.length - MAX_NOTICES);
 }
 
-// ---- server-only operations ('social.server', reached through ctx.act from server/social/service.js) ----
+// ---- server-only operations ('social.server', reached through ctx.act from server/social/service.ts) ----
 const playerId = (value: unknown): string | null => (typeof value === 'string' && /^[0-9a-f-]{36}$/.test(value) ? value : null);
 
 type ServerOps = {

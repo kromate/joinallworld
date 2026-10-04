@@ -8,7 +8,7 @@
  * starter house on it — from the moment it HAS a local government: a new life chooses one with
  * 'estate.set-lga' when it settles in (the card in src/ui/panels/lga-card.js), and until then it has
  * no house and belongs nowhere (hasPlace below). A life from before local governments existed keeps
- * the one its home district lies in. The server allocates the plot (server/world/service.js) and
+ * the one its home district lies in. The server allocates the plot (server/world/service.ts) and
  * records it here with the server-only 'estate.assign'. A player can live in that house (no weekly rent) or rent
  * one of the housing tiers (content/housing.ts) and keep the plot; either way the house stands on
  * the map at its address.
@@ -182,7 +182,7 @@ function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
   return ok(state, 'lga_set');
 }
 
-/** The server allocated a plot (server/world/service.js). The one before it, if any, is remembered so it can be freed. */
+/** The server allocated a plot (server/world/service.ts). The one before it, if any, is remembered so it can be freed. */
 function assign(state: LifeState, payload: Record<string, unknown>) {
   const e = state.estate, plot = cleanPlot(payload, e.city);
   if (!hasPlace(state)) return fail(state, 'no_place', 'This life has not settled in: it has no local government and no house yet.');

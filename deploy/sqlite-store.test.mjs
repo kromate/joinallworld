@@ -77,7 +77,7 @@ test('SQLite: a collection larger than one row is split and read back whole; a s
  assert.deepEqual(seen,['two'],'a session added in the draft is scanned and one removed in it is not');
 });
 test('SQLite: a collection that exists is an own property of the document, so the shared collection() helper never resets it',async t=>{
- const {collection}=await import('../server/protocol.js');
+ const {collection}=await import('../server/protocol.ts');
  const f=fixture(t);
  await f.store.transact(db=>{assert.equal(Object.hasOwn(db,'social'),false);collection(db,'social',{players:{}}).players.ada={name:'Ada'};});
  await f.store.transact(db=>{assert.equal(Object.hasOwn(db,'social'),true);assert.equal('social' in db,true);collection(db,'social',{players:{}}).players.bola={name:'Bola'};});

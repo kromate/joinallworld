@@ -555,7 +555,7 @@ async function firstMinute() {
  * THE LANDING OF A LINK — the one place an invite, share or table link is handled, after the quick start (or at once for a
  * player who already has a life). In order:
  *   1. the share code (`ref`) is attached to the caller's life as a referral (POST /api/growth/referral/link). It pays
- *      nobody now: both gifts wait for paid work on real Lagos days (server/growth/referral.js). A link that had no `join`
+ *      nobody now: both gifts wait for paid work on real Lagos days (server/growth/referral.ts). A link that had no `join`
  *      names its sharer here, and that is who is joined.
  *   2. a brand-new guest is put beside the player the link points at (POST /api/social/join): in their venue, or told they
  *      are at home (Knock), out or offline. A player who has already settled in gets the Invite app on that house instead.

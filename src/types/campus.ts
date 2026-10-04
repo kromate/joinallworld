@@ -663,7 +663,7 @@ export interface UnilagShuttleView {
   active: { origin: ShuttleStopId; destination: ShuttleStopId; refundable: false } | null
 }
 
-// ---- HTTP: /api/campus (server/routes/campus.js) ---------------------------------------------------
+// ---- HTTP: /api/campus (server/routes/campus.ts) ---------------------------------------------------
 //
 // The shared half of the campus: the weekly Student Union election (kept in the `campus`
 // collection of the server's store) and the leaderboards, which are computed on every read from

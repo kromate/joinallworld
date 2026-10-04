@@ -35,16 +35,16 @@ import { oldCharacterLanding } from './legacy-bridge.js';
 import { createSqliteStore } from './sqlite-store.js';
 import { sqliteShardBackend } from './sqlite-shards.js';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.js';
-import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.js';
-import { buildSocketHandlers } from '../server/ws/index.js';
-import { executeCommand } from '../server/routes/core.js';
-import { createOnce } from '../server/routes/once.js';
-import { createShardStoreOn } from '../server/world/shard-core.js';
-import * as worldRegistry from '../server/world/registry.js';
-import { createServerTelemetry } from '../server/telemetry/index.js';
-import telemetryRoutes from '../server/telemetry/routes.js';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.js';
-import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.js';
+import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.ts';
+import { buildSocketHandlers } from '../server/ws/index.ts';
+import { executeCommand } from '../server/routes/core.ts';
+import { createOnce } from '../server/routes/once.ts';
+import { createShardStoreOn } from '../server/world/shard-core.ts';
+import * as worldRegistry from '../server/world/registry.ts';
+import { createServerTelemetry } from '../server/telemetry/index.ts';
+import telemetryRoutes from '../server/telemetry/routes.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.ts';
+import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
 
 /** How often connected sockets are asked for a sign of life, and how often the object wakes with nobody connected. */
 const HEARTBEAT_MS = 10000, IDLE_BEAT_MS = 300000;

@@ -291,7 +291,7 @@ test('Cloudflare: only two nominated relay testers mint, global budget survives 
 });
 
 test('Recovery parity: Node and Worker share onboarding, social, blocking, civic, paid retry and authority refusals', async t=>{
- const {fixture:nodeFixture}=await import('../server/test-fixture.js');
+ const {fixture:nodeFixture}=await import('../server/test-fixture.ts');
  const edge=await fixture(t), node=await nodeFixture(t,{now:Date.now});
  async function sequence(f){
    const a=await f.device('Ada'),b=await f.device('Bola'),out=[];

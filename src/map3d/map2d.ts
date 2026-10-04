@@ -37,7 +37,7 @@ import type { HouseStyle, PlotAddress } from '../types/index.ts';
 
 /** One house of an estate as /api/world/lga/:lga/estate/:n/houses sends it. `p` plot, `s` packed style, `u` upgrade-done time. */
 export interface HouseRecord { p: number; s: number; u: number; id?: string; name?: string; online?: boolean; you?: boolean }
-/** What a local government's summary says (server/routes/world.js): `occ` is the houses in each estate. */
+/** What a local government's summary says (server/routes/world.ts): `occ` is the houses in each estate. */
 export interface LgaCounts { residents?: number; houses: number; online: number; occ?: ArrayLike<number> }
 /** The shared house data of the maps (src/map3d/world-data.ts createWorldData), as far as the maps read it. */
 export interface WorldView {

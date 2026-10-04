@@ -1,6 +1,6 @@
 // The world panels without a DOM: the drawing of a house, the analytics event, the pages of the
 // local-government directory and the requests behind them. Typed responses of every /api/world/*
-// route are in src/types/world.ts (derived from server/routes/world.js).
+// route are in src/types/world.ts (derived from server/routes/world.ts).
 import { reactive } from 'vue'
 import type { CityId } from '../../../types/protocol.ts'
 import type { HouseStyle, HouseTierId, LgaId } from '../../../types/life.ts'

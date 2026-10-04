@@ -1,8 +1,8 @@
 /**
  * "Report a problem", the wallet statement, and the operator's API.
  *
- * Derived from server/routes/support.js + server/support/service.js, server/routes/moderation.js +
- * server/moderation/service.js, the operator helpers at the end of server/social/service.js
+ * Derived from server/routes/support.ts + server/support/service.ts, server/routes/moderation.ts +
+ * server/moderation/service.ts, the operator helpers at the end of server/social/service.ts
  * (modReports, modSetReport) and src/game/systems/wallet.js statementOf(); the browser side is
  * src/ui/panels/support.js and statement.js. Nothing in the browser calls `/api/mod/*`: it is
  * used with curl and a bearer token.
@@ -78,7 +78,7 @@ export type FileReportResponse =
   | { ok: true; code: 'filed'; duplicate?: true; receipt: SupportReceipt | { id: string } }
   | Refusal<'too_many_open' | 'rate_limited' | 'inbox_full'>
 /** The caller's own receipts, newest first, at most 30. */
-// INCONSISTENT: server/routes/support.js:8 documents `{ ok, reports, categories, limits }`; the answer also has
+// INCONSISTENT: server/routes/support.ts:8 documents `{ ok, reports, categories, limits }`; the answer also has
 // `code: 'ok'`. src/ui/panels/support.js:21 ignores `categories` and uses its own hard-coded label map.
 export interface MyReportsResponse {
   ok: true
@@ -187,7 +187,7 @@ export interface AuditLine {
   from: string
 }
 
-/** server/store.js stats(); null when the store offers none. */
+/** server/store.ts stats(); null when the store offers none. */
 export interface StoreStats {
   mode: 'grouped'
   transactions: number

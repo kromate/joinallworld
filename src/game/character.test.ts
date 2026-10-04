@@ -7,7 +7,7 @@ import { systems, emit, modify } from './registry.ts';
 import { makeContext } from './util.ts';
 import { APPEARANCE, TRAITS, DREAMS, LOTTERY, START_HOMES, START_NEEDS, MOODS, BOUTIQUE_PRICES, DREAM_REWARD, DREAM_TARGETS } from './content/traits.ts';
 import { STARTER_GOALS, STARTER_INTRO, WISHES, PERKS, WISH_REROLLS_PER_DAY } from './content/goals.ts';
-import { fixture } from '../../server/test-fixture.js';
+import { fixture } from '../../server/test-fixture.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { LifeContext, LifeState, LotteryId, SkillId } from '../types/life.ts';
 import type { EngineEvent, EngineEventMap, ModifierKey, ModifierMap } from '../types/registry.ts';

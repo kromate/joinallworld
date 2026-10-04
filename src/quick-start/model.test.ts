@@ -6,7 +6,7 @@ import type { JoinBanner } from './model.ts';
 import type { Look } from '../types/life.ts';
 import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom } from './look-model.ts';
 import { checkLook } from '../game/systems/onboarding.ts';
-import { validateName } from '../../server/protocol.js';
+import { validateName } from '../../server/protocol.ts';
 import { makeRng } from '../game/util.ts';
 import { createLife, dispatch, advanceLife } from '../life.ts';
 

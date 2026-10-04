@@ -1,5 +1,5 @@
 // What Bring a friend says, worked out from the hello's referral view. Pure, so it is tested
-// without a browser. Rules: server/growth/referral.js; numbers: src/game/content/growth.js.
+// without a browser. Rules: server/growth/referral.ts; numbers: src/game/content/growth.js.
 import type { InvitedFriend, ReferralView } from '../../../types/growth.ts'
 
 /** The red badge on the Friends icon: counted friends whose reward the player has not been paid yet. */

@@ -1,5 +1,5 @@
 import { once } from 'node:events';
-import { createServer as createGameServer } from '../server/server.js';
+import { createServer as createGameServer } from '../server/server.ts';
 import { createServer as createViteServer } from 'vite';
 
 // Keep the API paired with this checkout: a frontend-only preview cannot save or travel.

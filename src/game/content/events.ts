@@ -19,7 +19,7 @@
  * }
  *
  * Provenance: the agbo seller (title, the ₦600 price, the two choices, appearing after a trek)
- * was observed in the reference game. Every other event, every effect amount and every
+ * is fixed. Every other event, every effect amount and every
  * probability is an original beta value. Money effects are small and bounded: no choice pays
  * more than ₦500, an event needs a trip (which costs time, and usually a fare) to appear, and an
  * event marked `oncePerDay` is offered at most once per Lagos day.

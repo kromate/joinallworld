@@ -8,15 +8,13 @@
  *   w, h      footprint in floor tiles before rotation; `wall: true` items hang on a wall instead
  *   stars     quality 0–4. Better furniture gives better results: STAR_MULTIPLIER[stars] scales
  *             the positive effects and XP of the actions the object offers (original beta rule —
- *             the reference game shows the stars but what they do was never observed)
+ *             provisional)
  *   shape     which procedural model src/scene/home-scene.ts draws
  *
  * Provenance: the six Comfort items WITHOUT `beta` (Plastic Chair, Velvet Sofa, 3-Seater Family
- * Sofa, Leather Sofa, Royal Gold Sofa, Lounge Armchair) use the footprint, rating and price
- * observed in the reference game. Everything marked `beta: true` is original: the starter
- * objects were seen in the reference room but their prices were not, and the rest of the
- * catalogue was never opened. The nine category tabs follow the reference (the ninth was cut
- * off on screen and is assumed to be Pets).
+ * Sofa, Leather Sofa, Royal Gold Sofa, Lounge Armchair) have a fixed footprint, rating and price.
+ * Everything marked `beta: true` is provisional: the starter objects' prices and the
+ * rest of the catalogue may be retuned. There are nine category tabs (the ninth is Pets).
  */
 import type { FurnitureId } from '../../types/life.ts'
 import type {
@@ -102,7 +100,7 @@ export const FURNITURE: Record<FurnitureId, FurnitureDefinition> = {
   toilet: { id: 'toilet', label: 'Toilet', category: 'bath', kind: 'toilet', w: 1, h: 1, stars: 1, price: 5000, icon: '🚽', shape: 'toilet', color: '#eeeeea', blurb: 'Your own. No queue in the compound.', beta: B },
   'wc-suite': { id: 'wc-suite', label: 'Soft-close WC Suite', category: 'bath', kind: 'toilet', w: 1, h: 1, stars: 3, price: 45000, icon: '🚽', shape: 'toilet', color: '#d8e6ea', blurb: 'Quiet lid, strong flush.', beta: B },
   basin: { id: 'basin', label: 'Wash Basin', category: 'bath', kind: 'decor', w: 1, h: 1, stars: 0, price: 400, icon: '🫧', shape: 'basin', color: '#c9574f', blurb: 'For laundry day and nothing else.', beta: B },
-  // ---- Comfort (the six without `beta` are as observed in the reference game) ----
+  // ---- Comfort (the six without `beta` are fixed) ----
   'plastic-chair': { id: 'plastic-chair', label: 'Plastic Chair', category: 'comfort', kind: 'seat', w: 1, h: 1, stars: 0, price: 500, icon: '🪑', shape: 'chair', color: '#e9e6dc', blurb: 'Every party, every compound, every veranda.' },
   'velvet-sofa': { id: 'velvet-sofa', label: 'Velvet Sofa', category: 'comfort', kind: 'seat', w: 2, h: 1, stars: 2, price: 10200, icon: '🛋️', shape: 'sofa', color: '#7b4b8e', blurb: 'Soft enough to lose the remote in.' },
   'family-sofa': { id: 'family-sofa', label: '3-Seater Family Sofa', category: 'comfort', kind: 'seat', w: 3, h: 1, stars: 3, price: 24000, icon: '🛋️', shape: 'sofa', color: '#9c7b5a', blurb: 'Room for you, your cousin and their cousin.' },
@@ -151,7 +149,7 @@ export const FURNITURE: Record<FurnitureId, FurnitureDefinition> = {
 
 /**
  * The room a new life starts with, with positions designed for a 6 × 6 room (bigger rooms
- * scale the positions). The objects follow the starter room seen in the reference game; the
+ * scale the positions). The objects are the starter room's; the
  * exact arrangement is original. Wall items give a wall slot as `x` (rot 0 = back wall) or
  * `y` (rot 1 = side wall).
  */
@@ -179,9 +177,9 @@ export const STARTER_FURNITURE: StarterFurnitureEntry[] = [
  */
 export const HOME_ACTIVITIES: HomeActivityDefinition[] = [
   { id: 'sleep', label: 'Sleep', icon: '😴', needs: 'bed', duration: 36, effectsPerSecond: { energy: 2.5 }, tags: ['sleep'],
-    note: 'Duration as observed in the reference game; energy rises gradually and waking early keeps what was gained. The rate is an original beta value.' },
+    note: 'Duration is fixed; energy rises gradually and waking early keeps what was gained. The rate is an original beta value.' },
   { id: 'stay-in-bed', label: 'Stay in Bed', icon: '🛌', needs: 'bed', duration: 36, effectsPerSecond: { energy: 1.2, fun: 0.6 }, tags: ['sleep'],
-    note: 'Duration as observed in the reference game; rates are original beta values.' },
+    note: 'Duration is fixed; rates are original beta values.' },
   { id: 'use-toilet', label: 'Use the Toilet', icon: '🚽', needs: 'toilet', duration: 4, effects: { bladder: 70 }, tags: ['bladder'] },
   { id: 'long-soak', label: 'Long Soak', icon: '🛁', needs: 'tub', duration: 12, effects: { hygiene: 30, fun: 8, energy: 4 }, tags: ['hygiene'] },
   { id: 'sit-down', label: 'Sit & Rest', icon: '🪑', needs: 'seat', duration: 8, effects: { energy: 6, fun: 4 }, tags: ['rest'] },

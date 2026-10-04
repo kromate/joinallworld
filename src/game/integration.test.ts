@@ -255,7 +255,7 @@ test('all fourteen career tracks can be applied for, show a work spot, and can b
   assert.equal(viewLife(createLife({}, at()), at()).career.jobs.filter((item) => item.blocked).length, 0, 'no track is blocked for an idle player');
 });
 
-test('a new life starts with the three observed wishes now that their venues exist', () => {
+test('a new life starts with the three opening wishes now that their venues exist', () => {
   const state = onboard(createLife(null, at(MONDAY_9AM, 'wishes', { isNew: true })));
   assert.deepEqual(viewLife(state, at()).goals.wishes.map((wish) => wish.label), ['Make ₦15,000 today', 'See art at Freedom Park', 'See a movie at The Palms']);
   // The Palms really has a film to see: the wish can be granted by a real activity.
@@ -278,7 +278,7 @@ test('"Make a new friend" completes when a regular is greeted — the real thing
   assert.equal(act(state, 'activity', { id: 'buka-gist' }).code, 'started');
   advanceLife(state, 8, at(MONDAY_9AM + 8000));
   assert.equal(state.cash, cash, 'gisting with Mama is nice, but it is not the goal');
-  // Say Hello to Amaka at the People spot: Social +12, Fun +2 as observed, and the goal pays once.
+  // Say Hello to Amaka at the People spot: Social +12, Fun +2, and the goal pays once.
   const before = { ...state.needs };
   assert.equal(act(state, 'spot', { id: 'people' }).code, 'selected');
   assert.equal(act(state, 'activity', { id: 'npc-amaka-hello' }, at(MONDAY_9AM + 9000)).code, 'started');

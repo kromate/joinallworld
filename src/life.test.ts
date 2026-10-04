@@ -28,7 +28,7 @@ test('preview seed is independent; saved needs and cash override seed safely', (
     { hunger: 50, energy: 100, fun: 50, social: 50, hygiene: 50, bladder: 50 });
 });
 
-test('Chill finishes after 11 seconds, awards observed effects once and clamps needs', () => {
+test('Chill finishes after 11 seconds, awards its effects once and clamps needs', () => {
   const state = createLife({ spot: 'trees', needs: { energy: 98, fun: 95 } });
   assert.deepEqual(startActivity(state, 'chill'), { ok: true, code: 'started', state });
   assert.deepEqual(state.activeAction, { kind: 'activity', id: 'chill', duration: 11, remaining: 11 });

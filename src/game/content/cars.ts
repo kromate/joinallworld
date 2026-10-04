@@ -3,14 +3,13 @@
  * Cars.
  *
  * CARS[id] = { id, label, nickname, icon, price, fuel, speed, beta: true }
- *   price  naira, as listed in the reference game's car dealer (see below)
+ *   price  naira, as listed in the car dealer
  *   fuel   naira of fuel per trip when you drive it — original beta value
  *   speed  multiplier on travel time when you drive it (lower is faster) — original beta value
  *
- * Provenance: the price ladder follows what was observed in the reference game. The last
- * entry's price was reported by the audit but was below the fold of the observed screen, so it
- * is marked `priceReported`. Vehicle names and nicknames are original; fuel cost and speed were
- * never observed, so every entry carries `beta: true` for those two fields.
+ * Provenance: `priceReported` marks a price that may still be retuned. Vehicle names and
+ * nicknames are original; every entry carries `beta: true` because fuel cost and speed are
+ * provisional values.
  */
 import type { CarId } from '../../types/life.ts'
 import type { CarDefinition, TravelModeDefinition } from '../../types/content.ts'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Daily gem hunt: the sheet (a Phone app) that the HUD chip opens. How the hunt works is
-// original; the chip wording and the prize follow the reference game. The hunt itself is in the
+// original beta design. The hunt itself is in the
 // life (view.civic.hunt); the city counters come from the pulse (GET /api/civic/pulse). Searching
 // and claiming are game actions, so the press says "Working…" until the server answers.
 import { computed, ref } from 'vue'
@@ -75,7 +75,7 @@ async function claim(): Promise<void> {
       <CivicAction block :highlight="hunt.canClaim" :working="working === 'claim'" :reason="claimWhy" @click="claim">Claim {{ money(hunt.prize) }}</CivicAction>
     </div>
     <p class="civic-note">Resets at midnight, Lagos time — an unclaimed prize does not carry over.</p>
-    <HowItWorks id="hunt-rules" page label="How the hunt works" :rules="['Travel to a place in the clues, stand at a spot and search.', 'Some gems only come loose when you finish an activity there.', 'Find them all, then claim the prize here. Gems and the prize reset at midnight, Lagos time; an unclaimed prize does not carry over.', `Beta: the chip wording and the ${money(hunt.prize)} prize follow the reference game; how gems are hidden and found is an original beta mechanic. The prize is in-game naira.`]" />
+    <HowItWorks id="hunt-rules" page label="How the hunt works" :rules="['Travel to a place in the clues, stand at a spot and search.', 'Some gems only come loose when you finish an activity there.', 'Find them all, then claim the prize here. Gems and the prize reset at midnight, Lagos time; an unclaimed prize does not carry over.', `Beta: the ${money(hunt.prize)} prize is provisional and may change; how gems are hidden and found is an original beta mechanic. The prize is in-game naira.`]" />
   </div>
 </template>
 

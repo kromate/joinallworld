@@ -88,7 +88,7 @@ test('hostile onboarding and goals slices are rebuilt field by field', () => {
   assert.deepEqual(createLife(structuredClone(hostile), ctx), hostile, 'sanitizing a valid state is a no-op');
 });
 
-test('observed content: appearance lists, ten traits, five dreams, three homes, LAPO Baby', () => {
+test('fixed content: appearance lists, ten traits, five dreams, three homes, LAPO Baby', () => {
   assert.deepEqual(APPEARANCE.bodies.map(body => body.label), ['Woman', 'Man']);
   assert.deepEqual(APPEARANCE.hair.woman.map(id => APPEARANCE.labels[id]), ['Braids', 'Afro', 'Bun', 'Ponytail', 'Long', 'Locs', 'Low cut', 'Gele', 'Classic']);
   assert.deepEqual(APPEARANCE.hair.man.map(id => APPEARANCE.labels[id]), ['Low cut', 'Bald', 'Curls', 'Afro', 'Locs', 'Braids', 'Classic']);
@@ -215,7 +215,7 @@ test('the birth lottery is rolled once, is deterministic, covers every outcome a
   assert.equal(createLife({ onboarding: { lottery: { id: 'jackpot', at: 1 } } }, { ...at(), isNew: true }).onboarding.lottery, null);
 });
 
-test('moving in: LAPO Baby exactly as observed, life.started once, start cash through the ledger', () => {
+test('moving in: LAPO Baby exactly as specified, life.started once, start cash through the ledger', () => {
   const heard: unknown[] = [];
   const probe = systems().find(system => system.id === 'onboarding');
   assert.ok(probe?.modifiers?.['skills.xpRate']);
@@ -338,9 +338,9 @@ test('traits and lottery outcomes change play through the modifier keys', () => 
   emitLoose(foodie, 'activity.completed', { id: 'walk', def: {}, tags: [], choice: null }, at(START + 240000)); assert.equal(foodie.needs.fun, fun + 16);
 });
 
-test('starter goals pay the observed rewards from events, once each, with a ledger line and a toast', () => {
+test('starter goals pay the fixed rewards from events, once each, with a ledger line and a toast', () => {
   // The three opening goals belong to the quick start (a guest plays them in public, before there is a home);
-  // a life that was never a guest starts at the first home goal, with the observed rewards unchanged.
+  // a life that was never a guest starts at the first home goal, with the fixed rewards unchanged.
   assert.equal(STARTER_INTRO, 3);
   assert.deepEqual(STARTER_GOALS.slice(0, STARTER_INTRO).map(goal => [goal.id, goal.cash, goal.stars, goal.beta]), [['first-fun', 500, 1, true], ['say-hello', 500, 1, true], ['settle-in', 1000, 1, true]]);
   assert.deepEqual(STARTER_GOALS.slice(STARTER_INTRO).map(goal => [goal.title, goal.hint, goal.cash, goal.stars]), [
@@ -441,7 +441,7 @@ test('wishes: three active, +3 stars each, replaced when granted, re-rolls limit
   const state = started();
   const wishes = () => viewLife(state, at()).goals.wishes;
   assert.equal(wishes().length, 3); assert.ok(wishes().every(wish => wish.stars === 3));
-  // Every venue is on the map now, so a new life starts with the three observed wishes.
+  // Every venue is on the map now, so a new life starts with the three opening wishes.
   assert.deepEqual(state.goals.wishes.map(wish => wish.id), ['earn-15k', 'park-art', 'palms-movie']);
 
   // A real activity grants one: see the exhibition in the Freedom Park gallery (trek from Home, 18 s).
@@ -482,7 +482,7 @@ test('wishes: three active, +3 stars each, replaced when granted, re-rolls limit
   assert.deepEqual(createLife(structuredClone(state), at()), state);
 });
 
-test('perks: the eight observed ones, original ones up to 25 stars, bought once with stars and applied as modifiers', () => {
+test('perks: the eight fixed ones, original ones up to 25 stars, bought once with stars and applied as modifiers', () => {
   assert.deepEqual(PERKS.slice(0, 8).map(perk => [perk.label, perk.cost]), [['Steel Bladder', 6], ['Iron Belle', 8], ['Early Bird', 8], ['Never Dull', 8], ['Sweet Mouth', 10], ['Connected', 10], ['Hustle Juice', 12], ['Fast Learner', 14]]);
   assert.ok(PERKS.slice(0, 8).every(perk => !perk.beta) && PERKS.slice(8).every(perk => perk.beta === true));
   assert.equal(Math.max(...PERKS.map(perk => perk.cost)), 25); assert.equal(Math.min(...PERKS.map(perk => perk.cost)), 6);

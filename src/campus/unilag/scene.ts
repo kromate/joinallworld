@@ -198,7 +198,7 @@ export function buildUnilag(kit: Kit, venue: { scene?: { time?: string } } = {})
   terrain.box(0,-.35,0,600,.6,480,'#90a578');
   terrain.box(320,-.25,0,40,.4,480,'#c3bd97');
   terrain.box(620,-.35,0,560,.4,1200,'#669ba4');
-  // Third Mainland Bridge is distant reference scenery, beyond walkable water.
+  // Third Mainland Bridge is distant background scenery, beyond walkable water.
   terrain.box(580,6,-10,12,.7,1000,'#b4b6a8');
   for(let z=-480;z<500;z+=30)terrain.box(580,2.7,z,5,6,4,'#9ea69b');
   for(const road of ROADS) for(let i=1;i<road.points.length;i++) {

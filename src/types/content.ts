@@ -4,7 +4,7 @@
  * helpers — tierCost, addressLabel … — which are not described here.)
  *
  * Provenance marks appear on most entries and are never read by the rules: `beta: true` (an
- * original beta value), `betaFields` (which fields of an otherwise observed entry are original),
+ * original beta value), `betaFields` (which fields of an otherwise fixed entry are provisional),
  * `observed`, `note`.
  */
 import type {
@@ -437,7 +437,7 @@ export interface RecipeDefinition {
   duration: number
   /** `{ ingredientId: count }` used when the meal is FINISHED (cancelling costs nothing). */
   ingredients: Record<ItemId, number>
-  /** Ingredients the recipe uses that were not legible in the reference game. */
+  /** Ingredients the recipe uses that are provisional. */
   betaIngredients?: ItemId[]
   effects: NeedMap
   xp?: SkillMap
@@ -600,7 +600,7 @@ export interface CarDefinition {
   /** Multiplier on travel time when driven (lower is faster). */
   speed: number
   beta?: boolean
-  /** The price was reported but not seen on screen. */
+  /** The price is provisional and may be retuned. */
   priceReported?: boolean
 }
 

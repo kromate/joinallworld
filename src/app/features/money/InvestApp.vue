@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Invest app: fixed deposits — an original beta savings product, not from the reference game.
+// Invest app: fixed deposits — an original beta savings product.
 // Lock cash for 1, 3 or 7 days; principal plus a small fixed interest returns automatically at
 // maturity on server time. Limits and rates come from view.economy.savings (systems/economy.js).
 // No gambling and no random outcome.

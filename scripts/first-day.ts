@@ -206,7 +206,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT }: 
     await ok('onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }, 'traits_saved');
     state = await ok('onboarding.dream', { dream: 'yaba-unicorn' }, 'dream_saved');
     // The roll is decided by the action ID, the server clock and the life's secret salt: it cannot
-    // be found by trying IDs. Under this run's fixed salt it is the outcome observed in the reference game.
+    // be found by trying IDs. Under this run's fixed salt the outcome is always the same.
     const rollId = nextId();
     const rolled = await send({ actionId: rollId, cityId: CITY, type: 'onboarding.lottery', payload: {} });
     assert.deepEqual([rolled.code, must(rolled.state.onboarding.lottery).id], ['rolled', 'lapo-baby'], 'the fixed salt rolls LAPO Baby (if content changed, run with --find-salt)');
@@ -303,7 +303,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT }: 
     const hello = await ok('activity', { id: 'npc-amaka-hello' }, 'started');
     assert.equal(must(hello.activeAction).duration, 6);
     state = await wait(6);
-    // Observed effect of Say Hello: Social +12, Fun +2 (80 → 92, 90 → 92).
+    // Effect of Say Hello: Social +12, Fun +2 (80 → 92, 90 → 92).
     check(state, 82800, [100, 85, 92, 92, 100, 70], 'say hello');
     assert.deepEqual([state.goals.stars, must(state.ledger.at(-1)).reason], [9, 'Goal: Make a new friend']);
     assert.deepEqual([must(state.social.rel.amaka).p, must(state.social.rel.amaka).npc], [2, true]);

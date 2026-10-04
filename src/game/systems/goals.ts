@@ -225,7 +225,7 @@ function skillFraction(state: LifeState, skill: 'music' | 'coding'): number {
   return level + (xp - floor) / (next - floor);
 }
 
-/** Dream progress 0–1 (original beta formulas; the completion conditions themselves were observed). */
+/** Dream progress 0–1 (original beta formulas; the completion conditions themselves are fixed). */
 export function dreamProgress(state: LifeState): number {
   const g = state.goals, s = g.stats, T = DREAM_TARGETS;
   const table: Record<DreamId, () => number> = {

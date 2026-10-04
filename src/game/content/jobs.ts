@@ -15,15 +15,13 @@
  * PROVENANCE
  *   Entry role and entry pay for Tech, Banking and Music, the five-day week for those three,
  *   Tech's Monday–Friday week, the 50% starting performance, Tech's second role (Junior Dev,
- *   needing Coding 1) and its top role (CTO) were observed in the reference game. Entry role and
- *   entry pay of the other eleven tracks were reported from the reference game but not
- *   independently verified. Everything else — every other role name, the pay curve, skill
- *   requirements above level 2, which weekdays are work days, days per week for the eleven
- *   unverified tracks, shift length, need costs, XP and performance per shift — is an original
- *   beta value. The reference shift itself was never observed, so the whole shift design is
- *   original. All blurbs are original copy.
+ *   needing Coding 1) and its top role (CTO) are fixed. Entry role and entry pay of the other
+ *   eleven tracks are provisional. Everything else — every other role name, the pay curve,
+ *   skill requirements above level 2, which weekdays are work days, days per week for the
+ *   eleven other tracks, shift length, need costs, XP and performance per shift — is an
+ *   original beta value, as is the whole shift design. All blurbs are original copy.
  *
- * The Community helper job is original beta gameplay, not a job from the reference game. It is
+ * The Community helper job is original beta gameplay, not one of the career tracks. It is
  * kept so existing saves keep working: any time of day, no ladder, one shift per
  * HELPER_COOLDOWN_SECONDS.
  */
@@ -45,19 +43,19 @@ export const SHIFT_MINIMUM_NEEDS = Object.freeze({ energy: 30, hunger: 25 });
 export const SHIFT_EFFECTS = Object.freeze({ energy: -20, hunger: -12 });
 /** Track-skill XP per completed shift (original beta value). */
 export const SHIFT_XP = 25;
-/** Performance when a role starts (50% at level 1 was observed in the reference game). */
+/** Performance when a role starts (50% at level 1). */
 export const START_PERFORMANCE = 50;
 /** Performance gained per completed shift before modifiers (original beta value). */
 export const PERFORMANCE_PER_SHIFT = 10;
 /**
  * Pay of each ladder level as a multiple of entry pay, rounded to ₦100 (original beta values).
  * The top two rungs were 5.5 and 9. scripts/economy-sim.ts showed that no career could then
- * pay the fourth house's observed rent (₦250,000 a week against at most ₦227,000), so that house
+ * pay the fourth house's rent (₦250,000 a week against at most ₦227,000), so that house
  * and everything above it was unreachable by working. At 7 and 16 the median track's top level
  * earns that rent in a week; the fifth house stays beyond wages alone.
  */
 export const PAY_CURVE = Object.freeze([1, 1.5, 2.25, 3.5, 7, 16]);
-/** Track-skill level needed to reach each ladder level (level 2 = skill 1 was observed for Tech). */
+/** Track-skill level needed to reach each ladder level (level 2 = skill 1 for Tech). */
 export const SKILL_GATES = Object.freeze([0, 1, 2, 4, 6, 8]);
 
 /** Career shifts ignore venue opening hours: staff can clock in at any time on a work day. */

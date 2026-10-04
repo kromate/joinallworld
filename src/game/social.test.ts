@@ -53,7 +53,7 @@ function run(state: LifeState, id: string, now = NOW, seed = 'run') {
   return started;
 }
 
-test('content: every venue id has a cast, actions follow the observed list, provenance is marked', () => {
+test('content: every venue id has a cast, actions follow the listed set, provenance is marked', () => {
   const venues = ['park', 'library', 'amala-shitta', 'cchub', 'shrine', 'viewing-centre', 'market', 'i-fitness', 'office', 'quilox', 'canopy-walk', 'palms', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'church', 'mosque', 'radio', 'polling-unit', 'state-house', 'airport', 'refinery'];
   for (const venue of venues) assert.ok(Object.values(NPCS).filter((npc) => npc.venue === venue).length >= 2, venue);
   assert.ok(!Object.values(NPCS).some((npc) => npc.venue === 'home'));
@@ -101,7 +101,7 @@ test('NPC interactions are activities at the People spot of every public venue',
   assert.deepEqual(viewLife(createLife({ location: 'home' }, ctxAt()), ctxAt()).social.here, []);
 });
 
-test('Say Hello: observed needs, charisma XP, closeness, events; nothing on cancel', () => {
+test('Say Hello: needs, charisma XP, closeness, events; nothing on cancel', () => {
   reset();
   const state = atPeople();
   const before = { ...state.needs };

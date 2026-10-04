@@ -5,17 +5,16 @@
  *
  * INGREDIENTS[id] = { id, label, icon, start, price, pack, beta? }
  *   id     the inventory item id (state.inventory[id])
- *   start  how many a new kitchen holds — observed in the reference game
- *   price  naira for one pack of `pack` units — original beta value (never observed)
+ *   start  how many a new kitchen holds
+ *   price  naira for one pack of `pack` units — original beta value
  * RECIPES[id] = { id, label, icon, station, duration, ingredients, effects, xp?, requiresSkill?, moodlets?, beta?, note }
  *   station      'cooler' or 'stove' — which kitchen object prepares it
- *   duration     seconds — observed in the reference game unless the recipe is `beta`
+ *   duration     seconds — fixed unless the recipe is `beta`
  *   ingredients  { ingredientId: count } used when the meal is finished
  *
- * Provenance: the recipe list, their stations, durations and skill locks follow what was
- * observed. Need amounts, XP and moodlets are original beta values (the reference showed only
- * "+Hunger"-style tags). `betaIngredients` lists ingredients a recipe uses that were not legible
- * in the reference; a recipe with `beta: true` is entirely original. Ingredient names are
+ * Provenance: the recipe list, their stations, durations and skill locks are fixed. Need
+ * amounts, XP and moodlets are original beta values. `betaIngredients` lists ingredients a
+ * recipe uses that are provisional; a recipe with `beta: true` is entirely provisional. Ingredient names are
  * original and generic.
  *
  * ORIGINAL RULE — interruptions never cost food: ingredients are taken when the meal is
@@ -50,7 +49,7 @@ export const INGREDIENT_ORDER = Object.keys(INGREDIENTS);
 /** Most packs of one ingredient in a single order. */
 export const MAX_PACKS_PER_ORDER = 20;
 
-const amounts = 'Station, duration and skill lock as observed in the reference game; need amounts and XP are original beta values.';
+const amounts = 'Station, duration and skill lock are fixed; need amounts and XP are original beta values.';
 
 export const RECIPES: Record<string, RecipeDefinition> = {
   'soak-garri': {
@@ -100,7 +99,7 @@ export const RECIPES: Record<string, RecipeDefinition> = {
   'bread-egg': {
     id: 'bread-egg', label: 'Bread & Fried Egg', icon: '🍞', station: 'stove', duration: 5, beta: true,
     ingredients: { bread: 1, eggs: 1 }, effects: { hunger: 28 }, xp: { cooking: 40 },
-    note: 'Original beta recipe: the reference game stocked bread but showed no recipe for it.',
+    note: 'Original beta recipe: bread is stocked, and this is the only recipe that uses it.',
   },
 };
 

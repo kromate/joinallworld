@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Daily gem hunt: the chip in the HUD stack; its sheet is HuntSheet.vue.
 //
-// The chip follows the label observed in the reference game ("Daily gem hunt · N found · next
+// The chip label reads ("Daily gem hunt · N found · next
 // prize ₦3,000"). N is the server's own count of gems found in this city; until it has loaded, no
 // number is shown. The chip also carries the real presence counter, raises a toast when one more
 // gem was found, and is where civic notices (a new Governor, an announcement) surface as toasts.

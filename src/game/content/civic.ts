@@ -3,10 +3,9 @@
  * Civic content — election rules, billboard slots, sea plots, the daily gem hunt, club radio,
  * home districts and the rich list. Plain data only (no functions, no imports).
  *
- * Provenance: `beta: true` marks an original beta value. Only the fields listed in an entry's
- * `observed` array follow what was observed in the reference game; everything about HOW these
- * features work (cycles, eligibility, caps, queues, clues) is original design, because the
- * reference versions were only seen as labels.
+ * Provenance: `beta: true` marks a provisional value that may be retuned. Only the fields listed
+ * in an entry's `observed` array are fixed; everything about HOW these features work (cycles,
+ * eligibility, caps, queues, clues) is provisional design.
  */
 
 /** Weekly election cycle on Lagos time. Weekdays: 0 = Sunday … 6 = Saturday. Original beta rules. */
@@ -31,7 +30,7 @@ export const ELECTION: ElectionRules = {
   announcement: { max: 140, min: 3, cooldownMs: 3600000, perDay: 3, keep: 20 },
 };
 
-/** Text observed on the reference game's State House sheet (Lagos). */
+/** Text on the State House sheet (Lagos). */
 export const STATE_HOUSE_TEXT = {
   title: 'Lagos State House',
   empty: 'Lagos has no Governor yet. Sign up to vote, or run for office yourself.',
@@ -85,7 +84,7 @@ export const BILLBOARDS: BillboardContent = {
 
 /**
  * Sea plots: a grid of floating tiles. Plot ids are `sea-<row>-<col>`, both zero-based; row 0
- * is nearest the shore. Observed in the reference game: plots "from ₦100 a plot" that float
+ * is nearest the shore. Plots are "from ₦100 a plot" and float
  * "for 30 days". Grid size, the dearer shore rows and the per-player cap are original beta values.
  */
 export const SEA_PLOTS: SeaPlotContent = {
@@ -100,9 +99,9 @@ export const SEA_PLOTS: SeaPlotContent = {
 };
 
 /**
- * Daily gem hunt. Observed in the reference game: a HUD chip reading "Daily gem hunt · N found ·
- * next prize ₦3,000". The mechanic behind it was not observed; gems per day, where they hide,
- * how they are found and the once-a-day claim are original beta design.
+ * Daily gem hunt. A HUD chip reads "Daily gem hunt · N found ·
+ * next prize ₦3,000". Gems per day, where they hide, how they are found and the once-a-day
+ * claim are original beta design.
  */
 export const HUNT: HuntContent = {
   observed: ['prize', 'label'],
@@ -121,11 +120,11 @@ export const RADIO: RadioContent = {
   queueMax: 20,
   titleMax: 40,
   artistMax: 40,
-  label: 'Club radio', // observed chip label
-  cta: 'Play your song here', // observed button label
+  label: 'Club radio', // chip label
+  cta: 'Play your song here', // button label
 };
 
-/** Home districts, keyed by house id (the home owner stores which one a player lives in). Names as observed. */
+/** Home districts, keyed by house id (the home owner stores which one a player lives in). Names as shown to players. */
 export const DISTRICTS: District[] = [
   { id: 'mushin', label: 'Mushin' },
   { id: 'yaba', label: 'Yaba' },

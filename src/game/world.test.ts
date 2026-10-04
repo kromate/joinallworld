@@ -121,7 +121,7 @@ test('venue catalogue: 25 venues and the UNILAG campus with district, hours, sce
       assert.ok(!seen.has(def.id), `duplicate activity id ${def.id}`); seen.add(def.id);
       assert.ok(def.label && def.icon && def.duration >= 3 && def.duration <= 45, def.id);
       assert.ok(!def.unavailable, `${def.id} is playable`);
-      assert.ok(def.beta === true || def.id === 'chill', `${def.id} must be marked beta unless fully observed`);
+      assert.ok(def.beta === true || def.id === 'chill', `${def.id} must be marked beta unless fully specified`);
     }
   }
   // Mainland lies north of the lagoon, the island and Lekki south of it.
@@ -137,7 +137,7 @@ test('venue catalogue: 25 venues and the UNILAG campus with district, hours, sce
   assert.deepEqual(Object.keys(HOME_SPOTS).sort(), ['banana', 'ikoyi', 'lekki', 'mushin', 'yaba']);
 });
 
-test('observed venue values are used exactly', () => {
+test('fixed venue values are used exactly', () => {
   const find = (id: string) => need(everyDef().find((entry) => entry.def.id === id)).def;
   const observed: [string, number, number][] = [['stage-play', 14, 400], ['comedy-show', 11, 500], ['spoken-word', 9, 0], ['chill', 11, 0], ['play-ayo', 7, 0],
     ['buka-amala', 8, 300], ['buka-jollof', 8, 550], ['buka-peppersoup', 7, 400], ['buka-efo', 8, 650]];
@@ -201,7 +201,7 @@ test('Freedom Park is fully playable: paid shows, free play, and the skill-gated
   }
 });
 
-test('fares follow the observed table, are symmetric, and Danfo is the default', () => {
+test('fares follow the fare table, are symmetric, and Danfo is the default', () => {
   assert.equal(DEFAULT_MODE, 'danfo');
   assert.deepEqual(Object.keys(TRAVEL_MODES), ['trek', 'keke', 'danfo', 'okada', 'cab']);
   const modeIds = Object.keys(TRAVEL_MODES) as TravelModeId[]; // Object.keys loses the key type; these are the table's own keys
@@ -244,7 +244,7 @@ test('the fare is charged at departure, a cancel keeps it, and arrival applies t
   assert.equal(viewLife(state, at(DRY_NOON + 3000)).travel.active, null);
   assert.equal(heard.length, 0);
   go(state, 'library', 'danfo', DRY_NOON + 10000, 'no-event-1');
-  // A Danfo ride leaves every need as it was (as reported from the reference game).
+  // A Danfo ride leaves every need as it was.
   assert.deepEqual([state.cash, state.needs.hygiene, state.needs.fun, state.spot], [4700, 50, 50, 'bookcase']);
   assert.deepEqual(heard.filter(([name]) => name === 'travel.arrived'), [['travel.arrived', { venue: 'library', from: 'park', mode: 'danfo' }]]);
   assert.deepEqual(heard.filter(([name]) => name === 'venue.visited'), [['venue.visited', { venue: 'library', first: true }]]);
@@ -252,7 +252,7 @@ test('the fare is charged at departure, a cancel keeps it, and arrival applies t
   // An Okada (original beta value) costs 3 Hygiene on arrival.
   const rider = createLife(null, at(DRY_NOON)); go(rider, 'library', 'okada', DRY_NOON, 'no-event-1');
   assert.deepEqual([rider.cash, rider.needs.hygiene], [4800, 47]);
-  // Trek: free, 10 Energy and 7 Hygiene as observed, and it trains Fitness.
+  // Trek: free, 10 Energy and 7 Hygiene, and it trains Fitness.
   const walker = createLife(null, at(DRY_NOON));
   go(walker, 'library', 'trek', DRY_NOON);
   assert.deepEqual([walker.cash, walker.needs.energy, walker.needs.hygiene, walker.skills.fitness], [5000, 40, 43, 15]);
@@ -516,7 +516,7 @@ test('illness never traps: free clinic with no cash, paid doctor, agbo, or time'
   advanceLife(broke, 1, at(DRY_NOON + 1000));
   assert.ok(broke.moodlets.some((moodlet) => moodlet.id === 'very-sick'), 'the feeling is restored if a save lost it');
   assert.equal(viewLife(broke, at(DRY_NOON + 1000)).needs.mood.label, 'Miserable');
-  // A sick trek costs 12 Energy and 9 Hygiene (observed), and the agbo seller always turns up.
+  // A sick trek costs 12 Energy and 9 Hygiene, and the agbo seller always turns up.
   const trekker = createLife({ health: { sick: true, cause: 'rain', since: DRY_NOON } }, at(DRY_NOON));
   go(trekker, 'library', 'trek', DRY_NOON, 'sick-trek');
   assert.deepEqual([trekker.needs.energy, trekker.needs.hygiene, trekker.travel.event?.id], [38, 41, 'agbo']);

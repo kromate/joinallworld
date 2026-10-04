@@ -58,13 +58,13 @@ test('home systems are registered and survive hostile saves', () => {
   assert.equal(typeof dispatch, 'function');
 });
 
-test('content: observed values are exact and every original value is marked', () => {
+test('content: fixed values are exact and every original value is marked', () => {
   // Houses: grid, weekly rent and move-in cost.
   assert.deepEqual(HOUSE_ORDER.map((id) => [id, HOUSES[id].grid, HOUSES[id].rent, HOUSES[id].moveIn]), [
     ['mushin', 6, 2400, 7200], ['yaba', 8, 6000, 18000], ['lekki', 10, 17000, 51000], ['ikoyi', 12, 250000, 750000], ['banana', 14, 1500000, 4500000]]);
   for (const house of Object.values(HOUSES)) assert.equal(house.moveIn, MOVE_IN_WEEKS * house.rent, house.id);
   assert.deepEqual(HOUSES.yaba.betaFields, ['grid', 'moveIn']);
-  // The six observed Comfort items: footprint, stars, price — and nothing else is unmarked.
+  // The six fixed Comfort items: footprint, stars, price — and nothing else is unmarked.
   const observed = Object.values(FURNITURE).filter((item) => !item.beta).map((item) => [item.id, item.w, item.h, item.stars, item.price]);
   assert.deepEqual(observed, [['plastic-chair', 1, 1, 0, 500], ['velvet-sofa', 2, 1, 2, 10200], ['family-sofa', 3, 1, 3, 24000],
     ['leather-sofa', 2, 1, 3, 32000], ['gold-sofa', 2, 1, 4, 55000], ['lounge-armchair', 1, 1, 2, 8500]]);
@@ -76,7 +76,7 @@ test('content: observed values are exact and every original value is marked', ()
   }
   for (const category of CATEGORIES) assert.ok(Object.values(FURNITURE).some((item) => item.category === category.id), `${category.id} has items`);
   assert.equal(STAR_MULTIPLIER[1], 1, 'a one-star object gives exactly the listed amounts');
-  // Kitchen: starting stock and the ten observed recipes with their durations and locks.
+  // Kitchen: starting stock and the ten fixed recipes with their durations and locks.
   assert.deepEqual(Object.fromEntries(Object.values(INGREDIENTS).filter((item) => item.start).map((item) => [item.id, item.start])), START_KITCHEN);
   assert.equal(Object.keys(INGREDIENTS).length, 18);
   assert.deepEqual(Object.values(INGREDIENTS).filter((item) => item.beta).map((item) => item.id), ['semolina']);
@@ -86,11 +86,11 @@ test('content: observed values are exact and every original value is marked', ()
   assert.deepEqual(need(RECIPES['cook-jollof']).ingredients, { rice: 1, 'tomato-paste': 1, seasoning: 1, 'veg-oil': 1 });
   assert.deepEqual(need(RECIPES['soak-garri']).ingredients, { garri: 1, sugar: 1 });
   for (const recipe of Object.values(RECIPES)) for (const id of Object.keys(recipe.ingredients)) assert.ok(INGREDIENTS[id], `${recipe.id} uses ${id}`);
-  // Cars: the observed price ladder; fuel and speed are original and marked.
+  // Cars: the price ladder; fuel and speed are original and marked.
   assert.deepEqual(CAR_ORDER.map((id) => CARS[id].price), [350000, 900000, 1800000, 3000000, 7500000, 9500000, 15000000, 28000000, 95000000]);
   for (const car of Object.values(CARS)) assert.ok(car.beta && car.fuel > 0 && car.speed > 0 && car.speed < 1, car.id);
   assert.equal(CARS['atlantic-grand'].priceReported, true);
-  // Sleep and bath timings as observed.
+  // Sleep and bath timings.
   const byId = Object.fromEntries(HOME_ACTIVITIES.map((def) => [def.id, def]));
   assert.equal(need(byId.sleep).duration, 36); assert.equal(need(byId['stay-in-bed']).duration, 36);
   const ported = Object.fromEntries(spotsOf('home').flatMap((spot) => spot.activities).map((def) => [def.id, def]));
@@ -459,7 +459,7 @@ test('better furniture gives better results: beds restore faster, stoves feed an
   act(cook, 'activity', { id: 'home-cook-jollof' }); run(cook, 11);
   assert.equal(cook.needs.hunger, 81); assert.equal(cook.skills.cooking, 180);
   const wash = atHome({ spot: 'bathroom', cash: 100000, needs: { hygiene: 0, bladder: 10 } });
-  act(wash, 'activity', { id: 'bath' }); run(wash, 6); assert.equal(wash.needs.hygiene, 25, 'bucket bath: +25 as observed');
+  act(wash, 'activity', { id: 'bath' }); run(wash, 6); assert.equal(wash.needs.hygiene, 25, 'bucket bath: +25');
   act(wash, 'home.furniture-buy', { item: 'shower-cubicle', x: 3, y: 4, rot: 0 }, 6000);
   act(wash, 'activity', { id: 'bath' }, 6000); run(wash, 6, 6000); assert.equal(wash.needs.hygiene, 62.5);
   act(wash, 'activity', { id: 'home-use-toilet' }, 12000); run(wash, 4, 12000); assert.equal(wash.needs.bladder, 80);

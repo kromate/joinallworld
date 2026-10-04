@@ -3,10 +3,9 @@
  * Weather, illness, their feelings and treatments.
  *
  * Provenance: the two feelings — "Soaked by Rain" −8 and "Very Sick" −35 — and the fact that
- * the hospital and roadside agbo treat illness were observed in the reference game. A trek
- * costing a sick, rain-soaked character 12 Energy and 9 Hygiene (2 more of each than a
- * healthy one) was also observed. Causes, chances, durations, prices and the weather cycle
- * were not, and are original beta values.
+ * the hospital and roadside agbo treat illness are fixed, as is a trek costing a sick,
+ * rain-soaked character 12 Energy and 9 Hygiene (2 more of each than a healthy one). Causes,
+ * chances, durations, prices and the weather cycle are original beta values.
  */
 import type { HealthContent } from '../../types/content.ts'
 

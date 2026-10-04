@@ -2,7 +2,7 @@
  * OWNER: career
  * Jobs, schedules, shifts, performance and promotion.
  *
- * HOW A CAREER WORKS (original beta design — the reference game's shift was never observed)
+ * HOW A CAREER WORKS (original beta design)
  *   - Applying is free and hires at once. One job at a time.
  *   - A shift is an ordinary timed activity at the workplace's `work` spot. It needs minimum
  *     Energy and Hunger, pays on completion through the wallet ledger, uses Energy and Hunger,

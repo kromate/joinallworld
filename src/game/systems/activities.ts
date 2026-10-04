@@ -21,8 +21,7 @@
  *   cost                naira; price actually charged is modify('activity.cost', cost, { def })
  *   chargeOn            'complete' (default) — debited when the activity finishes;
  *                       'start' — debited when it starts.
- *                       Original beta choice: when the reference game takes the money (somewhere
- *                       between start and completion) is unverified. Either way the player must be
+ *                       Original beta choice: either way the player must be
  *                       able to afford it at the start, and cancelling an activity that gives
  *                       nothing until it finishes never costs anything.
  *   refundOnCancel      for chargeOn 'start': default true (cancel refunds in full — or, for a

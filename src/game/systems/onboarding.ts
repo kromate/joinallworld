@@ -159,7 +159,7 @@ const isKind = (kind: unknown): kind is WardrobeKind => typeof kind === 'string'
 /** Whether `value` is one of `known` (any type of value may be asked). */
 const isOneOf = (known: readonly unknown[], value: unknown): boolean => known.includes(value);
 
-/** Styles of one kind that the given body can wear: the observed list, then the beta additions. */
+/** Styles of one kind that the given body can wear: the base list, then the beta additions. */
 function optionsFor(kind: 'hair', body: BodyId): HairId[];
 function optionsFor(kind: 'outfit', body: BodyId): OutfitId[];
 function optionsFor(kind: 'fabric', body: BodyId): FabricId[];

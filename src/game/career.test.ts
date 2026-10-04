@@ -480,7 +480,7 @@ function onboarded(house = 'yaba', lottery: string | { id: string; loan: boolean
 }
 const secondsUntil = (player: { now: number }, ms: number) => Math.ceil((ms - player.now) / 1000);
 
-test('billing weeks start on Saturday 00:00 Lagos time and rents follow the observed table', () => {
+test('billing weeks start on Saturday 00:00 Lagos time and rents follow the rent table', () => {
   assert.deepEqual(Object.fromEntries(Object.values(RENTS).map((house) => [house.id, house.rent])), { mushin: 2400, yaba: 6000, lekki: 17000, ikoyi: 250000, banana: 1500000 });
   assert.deepEqual(LOAN, { principal: 60000, total: 72000, weekly: 12000 });
   const saturday = Date.UTC(2026, 0, 9, 23); // Sat 10 Jan 00:00 Lagos

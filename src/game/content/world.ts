@@ -8,8 +8,7 @@
  * the map's single source of truth. This file holds what the RULES need: ids, names, prices and
  * capacities. src/map3d/map3d.test.ts asserts that the two list exactly the same ids.
  *
- * PROVENANCE. Everything here is an original beta value (`beta: true`): none of it was observed in
- * the reference game. The local governments are the twenty real ones of Lagos State; their one-line
+ * PROVENANCE. Everything here is an original beta value (`beta: true`): none of it is final. The local governments are the twenty real ones of Lagos State; their one-line
  * characters are our own words.
  *
  * ADDRESSES. Every local government has ESTATE.estates estates of ESTATE.streets streets with

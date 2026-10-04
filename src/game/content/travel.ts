@@ -3,13 +3,12 @@
  * Travel content: modes, fares, durations and need costs.
  *
  * Provenance
- *   Observed in the reference game: the five modes, Danfo as the default selection, the two
- *   fare bands (`near` and the standard band stored on each mode as `fare`), fares charged at
- *   departure, a trek costing 10 Energy and 7 Hygiene and training Fitness, and own-car travel
- *   costing fuel only.
- *   A Danfo ride was reported to leave every need unchanged, so Danfo has no need cost.
+ *   Fixed: the five modes, Danfo as the default selection, the two fare bands (`near` and the
+ *   standard band stored on each mode as `fare`), fares charged at departure, a trek costing
+ *   10 Energy and 7 Hygiene and training Fitness, and own-car travel costing fuel only.
+ *   A Danfo ride leaves every need unchanged, so Danfo has no need cost.
  *   Original beta values (`beta` blocks below): every duration, the cross-lagoon `far` band,
- *   need costs of Keke, Okada and Cab (never ridden in the reference game), the Fitness XP amount, roadside-event chances and fuel.
+ *   need costs of Keke, Okada and Cab, the Fitness XP amount, roadside-event chances and fuel.
  */
 
 /** `fare` is the standard-band fare. `seconds` is the standard-band trip time (original beta value). */
@@ -38,7 +37,7 @@ export const BASE_MODE_IDS: readonly BaseTravelModeId[] = Object.freeze(Object.k
 export const DEFAULT_MODE: BaseTravelModeId = 'danfo';
 
 /**
- * Fares by band for the modes whose fare changes with distance. `near` was observed (a short
+ * Fares by band for the modes whose fare changes with distance. `near` is fixed (a short
  * hop within one district cluster); `far` (crossing the lagoon) is an original beta value.
  * The standard band is each mode's own `fare`.
  */

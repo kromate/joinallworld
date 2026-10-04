@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // Family (an original beta feature): your household and a daily check-in call to each of them.
-// The reference game has a Family app whose content was never observed, so everything here is
-// original and labelled beta.
+// Everything here is original and labelled beta.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed } from 'vue'

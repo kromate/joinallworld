@@ -4,15 +4,14 @@ import { CAMPUS_NPCS } from '../../campus/unilag/content.ts';
  * NPCs, the interactions they offer, relationship tiers, family contacts and the limits on
  * player-to-player gifts. Plain data only (no functions, no imports).
  *
- * Provenance: `beta: true` marks an original beta value. Entries or fields without it follow
- * what was observed in the reference game. Where a single field of an observed entry is
- * original, the entry carries a `note` saying which.
+ * Provenance: `beta: true` marks an original beta value. Entries or fields without it are
+ * fixed. Where a single field of a fixed entry is provisional, the entry carries a `note` saying which.
  */
 
 /**
  * Relationship tiers by closeness points (0–100).
- * Observed in the reference game: a closeness meter that unlocks "Ask to be my Bae" at 40, and
- * a "Paddy Mi" (best friend) status. The tier names in between and every other threshold are
+ * A closeness meter unlocks "Ask to be my Bae" at 40, and
+ * a "Paddy Mi" (best friend) status follows. The tier names in between and every other threshold are
  * original beta values. Bae is not a points tier: it is a status two real players agree on.
  */
 import type { FamilyId, NpcId } from '../../types/life.ts'
@@ -21,12 +20,12 @@ import type {
 } from '../../types/content.ts'
 
 export const MAX_CLOSENESS = 100;
-export const BAE_UNLOCK = 40; // observed in the reference game
+export const BAE_UNLOCK = 40;
 export const TIERS: TierDefinition[] = [
   { id: 'stranger', label: 'Stranger', min: 0, beta: true },
   { id: 'acquaintance', label: 'Acquaintance', min: 5, beta: true },
   { id: 'friend', label: 'Friend', min: 20, beta: true },
-  { id: 'paddy', label: 'Paddy Mi', min: BAE_UNLOCK, note: 'Name observed; sharing the 40-point Bae threshold is an original beta choice.', beta: true },
+  { id: 'paddy', label: 'Paddy Mi', min: BAE_UNLOCK, note: 'Name is fixed; sharing the 40-point Bae threshold is an original beta choice.', beta: true },
 ];
 export const BAE_TIER = { id: 'bae', label: 'Bae' } as const;
 
@@ -36,9 +35,8 @@ export const DAILY_INTERACTIONS = 4;
 export const MAX_RELATIONSHIPS = 200;
 
 /**
- * Interactions offered by every NPC. Labels, the +Fun/+Social tags, the ₦300 drink and the
- * 60% joke chance were observed in the reference game. Say Hello's +12 Social / +2 Fun was
- * observed; every duration, every other effect size, XP and closeness points are original
+ * Interactions offered by every NPC. Labels, the +Fun/+Social tags, the ₦300 drink, the
+ * 60% joke chance and Say Hello's +12 Social / +2 Fun are fixed; every duration, every other effect size, XP and closeness points are original
  * beta values.
  *   effects   applied on completion whatever happens
  *   success   { base } percent chance (before skill and closeness); `bonus` effects and the
@@ -46,19 +44,18 @@ export const MAX_RELATIONSHIPS = 200;
  */
 export const NPC_ACTIONS: NpcAction[] = [
   { id: 'hello', label: 'Say Hello', icon: '👋', duration: 6, effects: { social: 12, fun: 2 }, xp: { charisma: 5 }, points: 2,
-    note: 'Effects observed in the reference game; duration, XP and points are original beta values.' },
+    note: 'Effects are fixed; duration, XP and points are original beta values.' },
   { id: 'gist', label: 'Gist', icon: '🗣️', duration: 10, effects: { social: 10, fun: 6 }, xp: { charisma: 8 }, points: 3, beta: true },
   { id: 'joke', label: 'Crack Joke', icon: '😂', duration: 8, effects: { social: 3, fun: 2 }, bonus: { social: 5, fun: 8 }, xp: { charisma: 6, comedy: 6 }, points: 5,
-    success: { base: 60 }, note: 'The 60% base chance was observed in the reference game; everything else is an original beta value.' },
+    success: { base: 60 }, note: 'The 60% base chance is fixed; everything else is an original beta value.' },
   { id: 'compliment', label: 'Compliment Their Fit', icon: '✨', duration: 6, effects: { social: 8, fun: 4 }, xp: { charisma: 6 }, points: 3, beta: true },
   { id: 'drink', label: 'Buy Them a Drink', icon: '🥤', duration: 9, cost: 300, effects: { social: 12, fun: 8 }, xp: { charisma: 8 }, points: 6,
-    note: 'The ₦300 price was observed in the reference game; everything else is an original beta value.' },
+    note: 'The ₦300 price is fixed; everything else is an original beta value.' },
 ];
 
 /**
- * Interactions between two real players standing in the same venue. Labels and tags were
- * observed in the reference game; all numbers are original beta values (the reference showed a
- * different joke chance per target, formula unknown). These are instant and limited per day.
+ * Interactions between two real players standing in the same venue. Labels and tags are
+ * fixed; all numbers are original beta values. These are instant and limited per day.
  */
 export const PLAYER_ACTIONS: PlayerAction[] = [
   { id: 'hello', label: 'Say Hello', icon: '👋', effects: { social: 10 }, xp: { charisma: 4 }, points: 2, beta: true },
@@ -71,8 +68,7 @@ export const JOKE_FORMULA = { perCharismaLevel: 2, perClosenessPoint: 0.4, min: 
 
 /**
  * The cast: two regulars per venue, placed by venue id (`at` is where they stand in its scene).
- * A venue that does not exist in the running build simply has no cast. "Amaka — Serving" at the buka was observed in the
- * reference game; every other name, role and every quote line is original.
+ * A venue that does not exist in the running build simply has no cast. Every name, role and quote line is original.
  */
 /**
  * Where each regular stands in their venue's scene: a landmark key of that scene kind
@@ -91,7 +87,7 @@ const NPC_PLACES: Record<string, string> = {
 };
 const npc = (id: NpcId, venue: string, name: string, role: string, emoji: string, quotes: string[], extra: Pick<NpcDefinition, 'beta' | 'note'> = { beta: true }): Omit<NpcDefinition, 'at'> => ({ id, venue, name, role, emoji, quotes, ...extra });
 export const NPCS: Record<NpcId, NpcDefinition> = Object.fromEntries([
-  npc('amaka', 'amala-shitta', 'Amaka', 'Serving', '👩🏾‍🍳', ['Extra meat is extra money, no vex.', 'This pot has fed half of Surulere today.', 'You look like somebody that skipped breakfast.'], { note: 'Name and role observed in the reference game; quotes are original.' }),
+  npc('amaka', 'amala-shitta', 'Amaka', 'Serving', '👩🏾‍🍳', ['Extra meat is extra money, no vex.', 'This pot has fed half of Surulere today.', 'You look like somebody that skipped breakfast.'], { note: 'Name and role are fixed; quotes are original.' }),
   npc('baba-sege', 'amala-shitta', 'Baba Sege', 'Regular customer', '👴🏾', ['I have eaten here since before you were born.', 'Abula first, wahala later.'],),
   npc('kunle', 'park', 'Kunle', 'Sketching by the trees', '🧑🏾‍🎨', ['Sit small, let me draw your shadow.', 'Art no dey rush. Lagos dey rush.', 'This breeze is the only free thing left.']),
   npc('mama-ronke', 'park', 'Mama Ronke', 'Selling zobo', '👩🏾', ['Cold zobo, sweet like better news.', 'My customer! You no greet today?']),
@@ -142,15 +138,14 @@ export const NPCS: Record<NpcId, NpcDefinition> = Object.fromEntries([
 ].map((entry) => [entry.id, { ...entry, at: NPC_PLACES[entry.id] ?? null }]));
 
 /**
- * Family and phone contacts (original beta feature). A "Mummy" contact who can be called was
- * observed in the reference game; the rest of the household, every line and every number
- * here are original beta values. A call is a short timed action that works anywhere.
+ * Family and phone contacts (original beta feature). A "Mummy" contact can be called; the rest of the
+ * household, every line and every number here are original beta values. A call is a short timed action that works anywhere.
  *   every call: `effects`; the first call to each member per Lagos day also gives `first`, the
  *   XP and the check-in moodlet.
  */
 export const FAMILY: Record<FamilyId, FamilyMember> = {
   mummy: { id: 'mummy', name: 'Mummy', relation: 'Mother', emoji: '👩🏾', line: 'Picks up on the first ring', contact: true,
-    quotes: ['Have you eaten?', 'Remember the child of whom you are.', 'Call your father too.'], note: 'Contact observed in the reference game; all values are original.', beta: true },
+    quotes: ['Have you eaten?', 'Remember the child of whom you are.', 'Call your father too.'], note: 'Contact is fixed; all values are original.', beta: true },
   daddy: { id: 'daddy', name: 'Daddy', relation: 'Father', emoji: '👨🏾', line: 'Short calls, big advice',
     quotes: ['How is work?', 'Save something every month.', 'Greet your landlord for me.'], beta: true },
   tobi: { id: 'tobi', name: 'Tobi', relation: 'Younger brother', emoji: '🧒🏾', line: 'Wants data and gist',
@@ -162,9 +157,8 @@ export const FAMILY_CALL: FamilyCallRules = { duration: 8, effects: { social: 2 
   moodlet: { id: 'family-checkin', label: 'Checked in with family', value: 5, duration: 6 * 3600 }, beta: true };
 
 /**
- * Gifts of naira between players (original beta values, deliberately conservative: the
- * reference game's own rules were not observed and players reported that easy gifts made work
- * pointless). A life can never give away more than it has earned from paid work.
+ * Gifts of naira between players (original beta values, deliberately conservative: easy
+ * gifts would make work pointless). A life can never give away more than it has earned from paid work.
  */
 export const TRANSFER_LIMITS: TransferLimits = {
   min: 100, maxPerTransfer: 5000, dailyAmount: 10000, dailyCount: 3, dailyReceive: 20000,

@@ -5,10 +5,9 @@
  * Every naira moves through api.credit/api.debit with a reason, so the Bank ledger explains it.
  * Nothing here creates money except deposit interest, which is capped (see DEPOSIT_*).
  *
- * BILLING (rules marked "original" were not observed in the reference game)
+ * BILLING (rules marked "original" are provisional)
  *   - Bills fall due every Saturday at 00:00 Lagos time (weekly rent "paid every Saturday" and
- *     the rent amounts were observed; how the reference game collects is unknown, so the rest is
- *     original). The billing week index is the idempotency key: `billedWeek` is the last
+ *     the rent amounts are fixed; the rest is original). The billing week index is the idempotency key: `billedWeek` is the last
  *     Saturday already settled, so a Saturday is never billed twice however often we settle.
  *   - Settled inside advance(), so bills are collected even while the player is offline. A long
  *     absence is caught up for at most MAX_CATCHUP_WEEKS Saturdays; older ones are written off.
@@ -18,13 +17,13 @@
  *     arrears adds a late fee of LATE_FEE_PERCENT of one week's rent. Arrears are collected
  *     automatically on a Saturday when the balance covers them, and are capped at
  *     MAX_ARREARS_WEEKS of rent plus fees. Nobody is evicted by this system (original).
- *   - Loan: ₦60,000 principal, ₦72,000 to repay, ₦12,000 a week (observed). The principal is
+ *   - Loan: ₦60,000 principal, ₦72,000 to repay, ₦12,000 a week. The principal is
  *     part of the starting cash set by onboarding, so this system records the debt and never
  *     credits it. Collected each Saturday after rent. "Pay ₦12,000 now" is an early instalment
  *     that covers the next Saturday's collection; "Pay it all off" clears the balance. A missed
  *     instalment stays owed and adds LOAN_LATE_FEE, at most MAX_LOAN_FEES times (original).
  *
- * SAVINGS (original beta product, not from the reference game)
+ * SAVINGS (original beta product)
  *   Fixed deposits: lock cash for 1, 3 or 7 days; principal plus simple interest is paid back
  *   automatically at maturity on server time. Closing early returns the principal only. At most
  *   DEPOSIT_MAX_OPEN deposits and DEPOSIT_TOTAL_CAP locked at once, so interest is bounded.
@@ -67,7 +66,7 @@ import type { EconomyView } from '../../types/view.ts';
 
 const DAY_MS = 86400000;
 
-/** Weekly rent by house id (observed in the reference game). Names are original labels. */
+/** Weekly rent by house id (fixed). Names are original labels. */
 export const RENTS = Object.freeze({
   mushin: { id: 'mushin', label: 'Mushin room', rent: 2400 },
   yaba: { id: 'yaba', label: 'Yaba self-contain', rent: 6000 },
@@ -76,7 +75,7 @@ export const RENTS = Object.freeze({
   banana: { id: 'banana', label: 'Banana Island mansion', rent: 1500000 },
 } satisfies Record<HouseId, RentEntry>);
 
-/** Loan figures observed in the reference game. */
+/** Loan figures. */
 export const LOAN = Object.freeze({ principal: 60000, total: 72000, weekly: 12000 } satisfies LoanTerms);
 /** Original beta values. */
 export const LOAN_LATE_FEE = 500;

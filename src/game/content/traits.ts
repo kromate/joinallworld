@@ -4,8 +4,7 @@
  * Plain data only (no functions, no imports outside content/).
  *
  * Provenance: `beta: true` marks an original beta value. Names, option lists and any value
- * without that mark follow what was observed in the reference game. Where only part of an
- * entry is original, `betaFields` lists which fields are.
+ * without that mark are fixed. Where only part of an entry is provisional, `betaFields` lists which fields are.
  *
  * EFFECT DATA (`fx`) — shared by traits, lottery outcomes and perks (content/goals.ts) and
  * applied by src/game/character-effects.ts through the registry modifier keys:
@@ -27,7 +26,7 @@ import type {
 } from '../../types/content.ts'
 
 // ---- Appearance -------------------------------------------------------------------------
-// Option names and list lengths as observed in the reference game; hex values are original.
+// Option names and list lengths are fixed; hex values are original.
 export const APPEARANCE: Appearance = {
   bodies: [{ id: 'woman', label: 'Woman' }, { id: 'man', label: 'Man' }],
   hair: {
@@ -72,7 +71,7 @@ export const APPEARANCE: Appearance = {
     oval: 'Oval', round: 'Round', smile: 'Smile', neutral: 'Calm', grin: 'Grin',
   },
   /**
-   * Original beta additions (add-only; the lists above stay exactly as observed). A body's styles
+   * Original beta additions (add-only; the lists above stay exactly as they are). A body's styles
    * are its list above followed by its list here.
    */
   extra: {
@@ -126,7 +125,7 @@ export const BOUTIQUE_PRICES: BoutiquePrices = {
 };
 
 // ---- Traits (choose exactly two) ---------------------------------------------------------
-// The ten names and what each one is about were observed; every magnitude is an original beta value.
+// The ten names and what each one is about are fixed; every magnitude is an original beta value.
 export const TRAITS_REQUIRED = 2;
 export const TRAITS: Record<TraitId, TraitDefinition> = {
   hustler: { id: 'hustler', label: 'Hustler', icon: '💸', beta: true, betaFields: ['fx', 'blurb'],
@@ -162,7 +161,7 @@ export const TRAITS: Record<TraitId, TraitDefinition> = {
 };
 
 // ---- Dreams (choose one) -----------------------------------------------------------------
-// Names and completion conditions were observed. How progress is measured on the way there
+// Names and completion conditions are fixed. How progress is measured on the way there
 // (see systems/goals.ts) and the completion reward are original beta values.
 export const DREAMS: Record<DreamId, DreamDefinition> = {
   'oga-at-the-top': { id: 'oga-at-the-top', label: 'Oga at the Top', icon: '👔', goal: 'Reach the top level of any career.',
@@ -182,7 +181,7 @@ export const DREAM_TARGETS = { beta: true, netWorth: 1000000, bestFriends: 4, ca
   /** One-off cash when the startup pitch succeeds. */ funding: 250000 };
 
 // ---- Starting homes ----------------------------------------------------------------------
-// Names, districts, weekly rent and difficulty tags were observed; the descriptions are original.
+// Names, districts, weekly rent and difficulty tags are fixed; the descriptions are original.
 export const START_HOMES: Record<StartHomeId, StartHomeDefinition> = {
   mushin: { id: 'mushin', label: 'Face-me-I-face-you', district: 'Mushin', rent: 2400, tag: 'Hard start', icon: '🏚️',
     blurb: 'One room in a busy shared compound. The rent is tiny and so is the space.' },
@@ -193,11 +192,11 @@ export const START_HOMES: Record<StartHomeId, StartHomeDefinition> = {
 };
 export const RENT_NOTE = 'Rent is paid every Saturday.';
 
-/** Needs a life starts with once it moves in, as reported for a fresh life in the reference game. */
+/** Needs a life starts with once it moves in. */
 export const START_NEEDS: Record<NeedId, number> = { hunger: 80, energy: 85, fun: 70, social: 60, hygiene: 75, bladder: 70 };
 
 // ---- Birth lottery -----------------------------------------------------------------------
-// Rolled once. LAPO Baby is exactly as observed (loan, Hustle 2, +25% learning, Lekki locked,
+// Rolled once. LAPO Baby is fixed (loan, Hustle 2, +25% learning, Lekki locked,
 // start cash 76,000 in Mushin and 96,000 in Yaba). Its odds, and every other outcome in full,
 // are original beta content. `odds` are weights out of 100.
 // `ownCash` (original beta value) is the start cash of a life that settles into the free starter house on its own plot
@@ -248,7 +247,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
 ];
 
 // ---- Mood words and feeling lines --------------------------------------------------------
-// The five mood words and their colours were observed; the score thresholds are original beta values.
+// The five mood words and their colours are fixed; the score thresholds are original beta values.
 export const MOODS: MoodWord[] = [
   { word: 'Very Happy', min: 78, tone: 'good', icon: '😁' },
   { word: 'Happy', min: 62, tone: 'good', icon: '😄' },

@@ -108,7 +108,7 @@ test('economy: no strategy creates money from nothing', () => {
     assert.ok(row.minCash >= 0, `${at(row)}: cash never went below zero`);
     for (const line of row.credits) assert.ok(sources.has(line.category), `${at(row)}: unexpected credit “${line.reason}” (${line.category})`);
     assert.equal(row.credits.filter((line) => line.category === 'start').length, 1, `${at(row)}: start cash is paid once`);
-    assert.ok((row.flows.goals ?? 0) <= 10000, `${at(row)}: starter goals pay at most ₦10,000 in total (₦8,000 observed + the three opening goals, ₦2,000, original beta values)`);
+    assert.ok((row.flows.goals ?? 0) <= 10000, `${at(row)}: starter goals pay at most ₦10,000 in total (₦8,000 fixed + the three opening goals, ₦2,000, original beta values)`);
     // Deposits: what comes back is what went in plus capped interest — never more than a week's best rate on the cap, per week.
     const interest = row.flows.savings ?? 0;
     assert.ok(interest <= Math.ceil(DAYS / 7) * DEPOSIT_TOTAL_CAP * DEPOSIT_TERMS.d7.bps / 10000, `${at(row)}: deposit interest is bounded (${interest})`);

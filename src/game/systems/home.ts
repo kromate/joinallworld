@@ -34,7 +34,7 @@
  * 'activity.block' with code 'furniture_required' until an object of that kind is placed, and
  * recipes with 'missing_items' naming the ingredients (the engine reports a skill lock first).
  *
- * ORIGINAL RULES (not reference facts)
+ * ORIGINAL RULES
  *   - Ingredients are used when a meal FINISHES, together with its effects. Cancelling a
  *     recipe, or reloading mid-cook, costs nothing.
  *   - Star rating scales results: positive effects, per-second gains and XP of an action are

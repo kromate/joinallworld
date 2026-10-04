@@ -251,7 +251,7 @@ function onboarded(): LifeState {
 /**
  * A life in the middle of a first day: created, hired, travelled to work, a shift worked, a
  * deposit opened, a family call made and the gem hunt rolled. `seen` holds every timed action
- * that was observed running on the way.
+ * that was seen running on the way.
  */
 function midGame(): { state: LifeState; now: number; seen: ActiveAction[] } {
   const state = onboarded()

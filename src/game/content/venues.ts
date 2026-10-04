@@ -27,8 +27,8 @@
  *   tags 'cure' / 'checkup' / 'immunity' are acted on by systems/health.ts
  *
  * Provenance: `beta: true` marks an entry whose numbers are original beta values. Where a
- * `note` says so, the name, duration or price was observed in the reference game and only the
- * effect amounts are original. Entries without `beta` follow what was observed. Opening hours
+ * `note` says so, the name, duration or price is fixed and only the effect amounts are
+ * provisional. Entries without `beta` are fixed. Opening hours
  * are original beta values except where a comment says otherwise. Earning activities are
  * bounded three ways, so none of them can be repeated without limit: a cooldown, a need cost,
  * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.ts).
@@ -51,8 +51,8 @@ import type {
  */
 export const GIG_DAILY_LIMIT = 8;
 
-const seenCard = 'Duration and price as observed in the reference game; effect amounts are original beta values.';
-const seenName = 'Name seen in the reference game; duration, price and effects are original beta values.';
+const seenCard = 'Duration and price are fixed; effect amounts are original beta values.';
+const seenName = 'Name is fixed; duration, price and effects are original beta values.';
 
 export const SCENE_KINDS: readonly SceneKind[] = Object.freeze(['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
   'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'unilag', 'home']);
@@ -81,7 +81,7 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
         { id: 'open-mic-jokes', label: 'Test Jokes at the Open Mic', icon: '🎤', duration: 9, cost: 0, effects: { energy: -3, social: 5 }, xp: { comedy: 22 }, tags: ['training'], beta: true },
         { id: 'perform-comedy', label: 'Perform at Comedy Night', icon: '🎙️', duration: 11, requiresSkill: { id: 'comedy', level: 3 }, reward: 900, minimumNeeds: { energy: 20 },
           effects: { energy: -8, fun: 10, social: 10 }, xp: { comedy: 25 }, cooldown: 600, tags: ['performance'], beta: true,
-          note: 'Duration and the Comedy 3 requirement as observed in the reference game; pay, effects and cooldown are original beta values.' },
+          note: 'Duration and the Comedy 3 requirement are fixed; pay, effects and cooldown are original beta values.' },
       ] },
       art: { id: 'art', label: 'Art gallery', icon: '🖼️', caption: 'Art in the heart of the city', activities: [
         { id: 'see-art', label: 'See the Exhibition', icon: '🖼️', duration: 10, cost: 200, effects: { fun: 12 }, xp: { photography: 6 }, tags: ['fun', 'art'], beta: true },
@@ -91,7 +91,7 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
       ] },
       trees: { id: 'trees', label: 'Under the trees', icon: '🌳', caption: 'Cool breeze under the trees', activities: [
         { id: 'chill', label: 'Chill Under the Trees', icon: '🌳', duration: 11, cost: 0, effects: { energy: 4, fun: 10 },
-          note: 'Duration and effects as observed in the reference game.' },
+          note: 'Duration and effects are fixed.' },
         { id: 'play-ayo', label: 'Play Ayo', icon: '🎲', duration: 7, cost: 0, effects: { fun: 8, social: 8 }, tags: ['fun', 'social'], beta: true, note: seenCard },
       ] },
       drinks: { id: 'drinks', label: 'Drinks kiosk', icon: '🍹', caption: 'A quiet stop by the kiosk', activities: [
@@ -106,7 +106,7 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
   library: {
     id: 'library', label: 'The Library', district: 'Victoria Island', icon: '📚', category: 'nightlife',
     description: 'A lounge hidden behind a wall of books: low lights, cocktails and a dance floor that never closes.',
-    // observed open in the small hours; it stays open round the clock here
+    // it stays open round the clock
     zone: 'island', map: { x: 64, y: 82 }, scene: { kind: 'club', variant: 'speakeasy' },
     ambient: ['Somebody just found the right book', 'The DJ is easing into amapiano', 'Candles flicker along the shelves', 'A birthday crew is filling the lounge'],
     spots: {
@@ -141,11 +141,11 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
         // The free fallback behind the cooler's Soak Garri & Sugar: listed only when that cannot be made
         // (systems/home.ts), so nobody is ever stuck hungry with an empty kitchen. The id is kept for old saves.
         { id: 'garri', label: 'Eat Dry Garri', icon: '🥣', duration: 5, cost: 0, effects: { hunger: 20 }, tags: ['food'], beta: true,
-          note: 'Original beta fallback: free, no ingredients, +20 hunger. Duration as observed for soaking garri in the reference game.' },
+          note: 'Original beta fallback: free, no ingredients, +20 hunger. Duration for soaking garri is fixed.' },
       ] },
       bathroom: { id: 'bathroom', label: 'Bathroom', icon: '🛁', activities: [
         { id: 'bath', label: 'Take a Bath', icon: '🛁', duration: 6, cost: 0, effects: { hygiene: 25 }, tags: ['hygiene'], beta: true,
-          note: 'Duration observed in the reference game; the +25 hygiene amount is an original beta value.' },
+          note: 'Duration is fixed; the +25 hygiene amount is an original beta value.' },
       ] },
       bedroom: { id: 'bedroom', label: 'Bedroom', icon: '🛏️', activities: [
         { id: 'nap', label: 'Take a Nap', icon: '🛏️', duration: 15, cost: 0, effects: {}, effectsPerSecond: { energy: 2 }, tags: ['sleep'], beta: true,
@@ -243,7 +243,7 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
   'amala-shitta': {
     id: 'amala-shitta', label: 'Amala Shitta', district: 'Surulere', icon: '🍲', category: 'food',
     description: 'A famous Surulere buka: amala, gbegiri and ewedu, and a queue that is half the fun.',
-    // observed open in the small hours, so it never closes here
+    // it never closes
     zone: 'mainland', map: { x: 44, y: 13 }, scene: { kind: 'buka', anchors: { work: 'wash' } },
     ambient: ['“Add extra pepper” — a regular, loudly', 'A new pot of ewedu has just landed', 'Fuji is playing on a small radio', 'The line is long, but it is moving'],
     spots: {
@@ -251,7 +251,7 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
         { id: 'buka-amala', label: 'Amala & Ewedu', icon: '🍲', duration: 8, cost: 300, effects: { hunger: 40 }, tags: ['food'], beta: true, note: seenCard },
         { id: 'buka-jollof', label: 'Jollof, Dodo & Chicken', icon: '🍛', duration: 8, cost: 550, effects: { hunger: 50, fun: 10 },
           moodlets: [{ id: 'party-jollof', label: 'Party Jollof', value: 5, duration: 600 }], tags: ['food'], beta: true,
-          note: 'Duration, price, +10 Fun and the Party Jollof feeling as observed in the reference game; the hunger amount and the feeling’s value are original beta values.' },
+          note: 'Duration, price, +10 Fun and the Party Jollof feeling are fixed; the hunger amount and the feeling’s value are original beta values.' },
         { id: 'buka-peppersoup', label: 'Pepper Soup & Cold Drink', icon: '🥣', duration: 7, cost: 400, effects: { hunger: 30, fun: 10, bladder: -5 }, tags: ['food'], beta: true, note: seenCard },
         { id: 'buka-efo', label: 'Efo Riro, Ponmo & Semo', icon: '🥬', duration: 8, cost: 650, effects: { hunger: 55, fun: 8 }, tags: ['food'], beta: true, note: seenCard },
         { id: 'buka-ofada', label: 'Ofada Rice & Smoked Fish', icon: '🐟', duration: 8, cost: 600, effects: { hunger: 50, fun: 6 }, tags: ['food'], beta: true, note: seenName },
@@ -273,7 +273,7 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
   cchub: {
     id: 'cchub', label: 'CcHub', district: 'Yaba', icon: '💻', category: 'work',
     description: 'The centre of Yaba’s tech scene: quick Wi-Fi and even quicker founders.',
-    hours: { open: 8, close: 22 }, // 8AM opening observed in the reference game; closing time is an original beta value
+    hours: { open: 8, close: 22 }, // 8AM opening is fixed; closing time is an original beta value
     zone: 'mainland', map: { x: 62, y: 13 }, scene: { kind: 'hub', anchors: { stage: 'pitch', 'pitch-room': 'pitch', cafe: 'coffee', work: 'whiteboard' } },
     ambient: ['Someone just shipped to production on a Friday', 'A founder is drawing boxes on the whiteboard', 'The Wi-Fi is flying today', 'Demo day posters are going up'],
     spots: {
@@ -284,13 +284,13 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
           effects: { energy: -12, fun: -4 }, xp: { coding: 20, hustle: 10 }, cooldown: 600, tags: ['gig'], beta: true, note: seenName },
         { id: 'hub-hack-atm', label: 'Hack an ATM', icon: '🏧', duration: 12, requiresSkill: { id: 'coding', level: 6 }, minimumNeeds: { energy: 20 },
           effects: { energy: -8 }, xp: { coding: 20 }, cooldown: 1200, tags: ['risky'], beta: true,
-          note: 'Name seen in the reference game. The gamble (see ACTIVITY_OUTCOMES in content/events.ts) is an original beta rule.' },
+          note: 'Name is fixed. The gamble (see ACTIVITY_OUTCOMES in content/events.ts) is an original beta rule.' },
       ] },
       stage: { id: 'stage', label: 'Pitch stage', icon: '📈', caption: 'Three minutes, one slide deck', activities: [
         { id: 'hub-meetup', label: 'Attend Tech Meetup', icon: '🤝', duration: 11, cost: 0, effects: { social: 12 }, xp: { coding: 12, charisma: 6 }, tags: ['social', 'training'], beta: true, note: seenName },
         { id: 'hub-pitch', label: 'Pitch Your Startup', icon: '📈', duration: 14, cost: 1000, requiresSkill: { id: 'coding', level: 4 }, minimumNeeds: { energy: 20 },
           effects: { energy: -8 }, xp: { charisma: 20, hustle: 20 }, cooldown: 900, tags: ['pitch', 'startup'], beta: true,
-          note: 'Name seen in the reference game. The outcome roll (see ACTIVITY_OUTCOMES in content/events.ts) is an original beta rule.' },
+          note: 'Name is fixed. The outcome roll (see ACTIVITY_OUTCOMES in content/events.ts) is an original beta rule.' },
         { id: 'hub-hackathon', label: 'Weekend Hackathon', icon: '🏁', duration: 20, requiresSkill: { id: 'coding', level: 3 }, reward: 2500, minimumNeeds: { energy: 35 },
           hours: { open: 8, close: 22, days: [0, 6] }, effects: { energy: -20, hunger: -8 }, xp: { coding: 60 }, cooldown: 3600, tags: ['performance'], beta: true, note: seenName },
       ] },

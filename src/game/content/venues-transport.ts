@@ -4,7 +4,7 @@
  * src/game/content/venues.ts (same shape — see the header there), kept in their own file.
  *
  * Provenance: everything here is an original beta value — names, hours, durations, prices,
- * effects, pay and cooldowns. Nothing was observed in the reference game.
+ * effects, pay and cooldowns.
  *
  * The paid activities (`airport-carry-bags`, `refinery-load-drums`) are ordinary gigs: a need
  * cost, a cooldown and a place in the GIG_DAILY_LIMIT paid gigs a Lagos day allows.

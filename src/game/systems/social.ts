@@ -44,7 +44,7 @@
  *   'social.success'  data { id, npc, action }  percent chance that a joke lands
  * Modifier it contributes: 'activity.block' (per-person daily limit).
  *
- * Every number here is an original beta value unless content/npcs.ts says it was observed.
+ * Every number here is an original beta value unless content/npcs.ts says it is fixed.
  */
 import type {
   ActionFailure, ActionOutcome, ActionSuccess, AttachedActivity, FamilyId, FamilyMember, LifeContext, LifeState, NpcAction, NpcDefinition, NpcSummary,

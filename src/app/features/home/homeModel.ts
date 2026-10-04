@@ -15,7 +15,7 @@ export const housesRules = (weeks: number): string[] => [
   `The move-in cost pays the landlord and the agent: ${weeks} weeks of rent, up front.`,
   'Your furniture moves with you. Anything that does not fit the new room waits in Buy → Storage.',
   'From then on the new rent is collected every Saturday (see Bank).',
-  'Rents and move-in costs follow the reference game; the Yaba room size and move-in cost are beta estimates.',
+  'Rents and move-in costs are set per area. The Yaba room size and move-in cost are provisional and may change.',
 ]
 
 /** Why a car's Drive and Sell are unavailable, or ''. */
@@ -30,5 +30,5 @@ export const carsRules = (resaleRate: number): string[] => [
   'An owned car adds Drive to every trip: you pay its fuel instead of a fare, and it gets you there quicker.',
   'You can own several vehicles and choose which one you drive.',
   `Selling returns ${Math.round(resaleRate * 100)}% of the list price — the amount is on each Sell button.`,
-  'Prices follow the reference game (the last one was reported, not seen). Vehicle names, fuel costs and speeds are original beta values.',
+  'Prices are set per vehicle. Vehicle names, fuel costs and speeds are provisional and may change.',
 ]

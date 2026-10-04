@@ -3,8 +3,7 @@
  * Starter goal chain, wishes and perks. Plain data only (no functions, no imports outside content/).
  *
  * Provenance: `beta: true` marks an original beta value; `betaFields` lists the original
- * fields of an otherwise observed entry. Everything else follows what was observed in the
- * reference game. Perk effect data (`fx`) uses the format documented in content/traits.ts.
+ * fields of an otherwise fixed entry. Everything else is fixed. Perk effect data (`fx`) uses the format documented in content/traits.ts.
  */
 
 /**
@@ -44,15 +43,14 @@ export const STARTER_GOALS: StarterGoal[] = [
     done: { events: ['job.applied'], hasJob: true }, open: 'jobs' },
   { id: 'buy-something', title: 'Buy something new', hint: 'Open Buy and place an item', icon: '🛋️', cash: 1000, stars: 1,
     done: { events: ['item.bought'] }, open: 'buy', go: ['home'] },
-  // The reference game paid this goal on arrival, but the amount was never seen on its own.
+  // This goal pays on arrival; the amount is provisional.
   { id: 'visit-buka', title: 'Visit the buka', hint: 'Open Map → Amala Shitta', icon: '🍛', cash: 1500, stars: 1, betaFields: ['cash'],
     done: { venue: 'amala-shitta' }, open: 'map', params: { destination: 'amala-shitta' } },
-  // Completes when you greet one of a venue's regulars (Say Hello) or make a friend. The observed
-  // reference paid this goal on an NPC Say Hello. Tapping the chip opens Sim → People, which
+  // Completes when you greet one of a venue's regulars (Say Hello) or make a friend. Tapping the chip opens Sim → People, which
   // lists who is here; at home it says to go out first.
   { id: 'make-a-friend', title: 'Make a new friend', hint: 'Tap someone at a venue', icon: '👋', cash: 1500, stars: 1,
     done: { events: ['npc.greeted', 'friend.made'], fresh: true }, open: 'people' },
-  // Only the title and hint of the last goal were observed; its reward is an original beta value.
+  // The reward of the last goal is an original beta value.
   { id: 'work-a-shift', title: 'Work a shift', hint: 'Leave for work on time', icon: '⏰', cash: 2000, stars: 1, betaFields: ['cash', 'stars'],
     done: { events: ['shift.completed'] }, workplace: true },
 ];
@@ -62,7 +60,7 @@ export const STARTER_INTRO = STARTER_GOALS.findIndex((goal) => goal.id === 'eat'
 
 /**
  * Wishes: three are active at a time and each grants WISH_STARS when it comes true.
- * The first three labels and the +3 star reward were observed; the rest of the pool, the way
+ * The first three labels and the +3 star reward are fixed; the rest of the pool, the way
  * each wish is detected and the re-roll rule are original beta values.
  *   on: 'earn'      cash earned on one Lagos day reaches `amount`
  *   on: 'activity'  an activity completes at `venue` (if given) matching `activity`, `spot` or any of `tags`
@@ -94,8 +92,8 @@ export const WISHES: WishDefinition[] = [
 ];
 
 /**
- * Perks, bought once each with stars. The first eight (name, cost, effect) were observed.
- * The rest fill the grid up to the reported 25-star top tier and are original beta content.
+ * Perks, bought once each with stars. The first eight (name, cost, effect) are fixed.
+ * The rest fill the grid up to the 25-star top tier and are original beta content.
  */
 export const PERKS: PerkDefinition[] = [
   { id: 'steel-bladder', label: 'Steel Bladder', icon: '🚽', cost: 6, effect: 'Bladder drops 30% slower', fx: { decay: { bladder: 0.7 } } },

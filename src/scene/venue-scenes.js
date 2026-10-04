@@ -10,7 +10,7 @@
  *   ...the extensions below
  * })
  * Kinds: park, buka, hub, club, office, market, gym, mall, beach, hospital, salon, rooftop,
- * police, worship, radio, polling, viewing, shrine, walk, statehouse — plus `library` (the
+ * police, worship, radio, polling, viewing, shrine, walk, statehouse, airport, refinery — plus `library` (the
  * speakeasy variant of club) and `generic`, the fallback for unknown kinds. `home` belongs to
  * src/scene/home-scene.js.
  *
@@ -76,6 +76,7 @@ import * as outdoor from './venues-outdoor.js';
 import * as social from './venues-social.js';
 import * as work from './venues-work.js';
 import * as civic from './venues-civic.js';
+import * as transport from './venues-transport.js';
 
 export const DEFAULT_CAMERA = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
 const SCENE_CAMERA = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
@@ -120,7 +121,7 @@ export function timeOfDay(ms) {
 }
 export const lightingFor = (mood, time) => (LIGHTING[mood] || LIGHTING.outdoor)[TIMES.includes(time) ? time : 'day'];
 
-const DEFS = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES };
+const DEFS = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
 /** Kinds that are another kind with a default variant. */
 const ALIASES = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };
 export const KINDS = Object.freeze(Object.keys(DEFS).filter((kind) => kind !== 'generic'));
@@ -210,6 +211,7 @@ export const WALK = Object.freeze({
   generic: outdoors({ bounds: [-13.2, -11.2, 13.2, 11.2], entrance: [0, 10.4] }),
   buka: indoors(), club: indoors(), viewing: indoors(), shrine: indoors(), mall: indoors(), hub: indoors(), office: indoors(),
   gym: indoors(), salon: indoors(), radio: indoors(), hospital: indoors(), police: indoors(), worship: indoors(),
+  airport: indoors(), refinery: outdoors(),
 });
 /**
  * GAME TABLES IN THE SCENE. Every table of src/tables/places.js stands in its venue: a visible table (props.js gameTable)

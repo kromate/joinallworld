@@ -45,7 +45,7 @@ test('the region registry: Lagos is playable, Ibadan, Abuja and Port Harcourt ar
   assert.equal(loaded.id, 'lagos'); assert.equal(await loadCityPack('abuja'), null);
 });
 
-test('the Lagos pack places every venue, every home district and both coming-soon districts, and every scene kind has a landmark', () => {
+test('the Lagos pack places every venue (the airport and the refinery among them) and every home district, and every scene kind has a landmark', () => {
   assert.deepEqual(Object.keys(pack.sites).sort(), Object.keys(VENUES).filter((id) => id !== 'home').sort(), 'one site per venue, by the venue ids of the game content');
   assert.deepEqual(Object.keys(pack.homes).sort(), Object.keys(HOME_SPOTS).sort());
   assert.deepEqual(Object.keys(pack.soon).sort(), Object.keys(COMING_SOON).sort());
@@ -440,8 +440,9 @@ test('why a trip is refused is always said with what to do about it', () => {
   assert.equal(short.code, 'insufficient_funds'); assert.match(short.reason, /you are ₦170 short/); assert.match(short.reason, /Trekking is free/);
   assert.deepEqual([short.fix.kind, short.fix.mode], ['mode', 'trek']);
   assert.equal(cardOf(broke, 'cchub').block('trek'), null, 'the trek itself is never refused for cash');
-  // Coming soon, and already here.
-  assert.equal(cardOf(fresh, 'airport').block().code, 'coming_soon');
+  // Coming soon (a made-up place: nothing in Lagos is waiting now), and already here.
+  COMING_SOON.spaceport = { id: 'spaceport', label: 'Spaceport', district: 'Epe', icon: '✈️', description: 'Not built yet.', zone: 'east', map: { x: 90, y: 60 } };
+  try { assert.equal(cardOf(fresh, 'spaceport').block().code, 'coming_soon'); } finally { delete COMING_SOON.spaceport; }
   const here = cardOf(fresh, fresh.location).block();
   assert.equal(here.code, 'already_here'); assert.equal(here.fix.kind, 'enter');
   // Already travelling, and busy with an activity: finish or cancel.

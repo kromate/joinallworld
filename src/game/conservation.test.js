@@ -132,7 +132,9 @@ function invariants(state, expectedCash, index, next, now) {
     assert.deepEqual([state.economy.rent.house, state.economy.loan, state.economy.billedWeek, state.economy.started, state.home.stocked, state.onboarding.done],
       [null, null, null, false, false, false], `a guest has no rent house, loan, bills or kitchen at ${where}`);
     assert.ok(state.location !== 'home' && !(state.activeAction && state.activeAction.id === 'home'), `a guest is never at home or on the way there at ${where}`);
-    assert.ok(!state.ledger.some((entry) => /^(Rent|Loan repayment|Start cash|Moved)/.test(entry.reason)), `no rent, loan, start cash or move in a guest's ledger at ${where}`);
+    // The economy's own lines are 'Rent: <house> (due …)' and 'Rent arrears: …'. ('Rent a Cabana' at the beach is an activity a guest may buy.)
+    const settledLine = state.ledger.find((entry) => /^(Rent:|Rent arrears|Loan repayment|Start cash|Moved)/.test(entry.reason));
+    assert.equal(settledLine, undefined, `no rent, loan, start cash or move in a guest's ledger at ${where}`);
   }
 }
 

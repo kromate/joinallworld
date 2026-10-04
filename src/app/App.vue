@@ -129,7 +129,9 @@ onMounted(() => {
 })
 onBeforeUnmount(() => { for (const [target, type, listener] of listeners) target.removeEventListener(type, listener) })
 // Connected (or connected again): the social client opens its socket and reads the overview.
-watch(game.connected, (connected) => { if (connected) startSocial(api) })
+// The social client also waits for a life that is not still held by character creation (its connected() says so), so a quick start that
+// confirms the look a moment after connecting must start it again; otherwise the new player is not findable until a reload.
+watch(() => game.connected.value && game.view.value.onboarding?.required !== true, (ready) => { if (ready) startSocial(api) })
 // Where the page's share link came from, once the landing knows (growth.state.landing).
 watch(landing.landed, (landed) => { if (landed) useGrowth().state.landing = landed })
 watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), { immediate: true })

@@ -1,5 +1,6 @@
+import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.js';
 import { DurableObject } from 'cloudflare:workers';
-import { CITY_IDS, SESSION_TTL_MS, MAX_VOICE_MEMBERS, UUID_PATTERN, protocolError, validateName, validateActionPayload, publicSession, isSameOrigin, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, archivedLife, renewSession, venueRoomKey, validatePosition, withinVoiceDistance, VOICE_RADIUS, STUN_ONLY_CONFIG } from '../server/protocol.js';
+import { CITY_IDS, SESSION_TTL_MS, MAX_VOICE_MEMBERS, UUID_PATTERN, protocolError, validateName, validateActionPayload, publicSession, isSameOrigin, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, archivedLife, renewSession, venueRoomKey, validatePosition, withinVoiceDistance, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.js';
 import { settleCity, applyLifeAction } from '../server/life-service.js';
 import { VENUES } from '../src/life.js';
 
@@ -65,6 +66,7 @@ export class JoinAllworldState extends DurableObject {
     this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS action_receipts (sender TEXT NOT NULL, action_id TEXT NOT NULL, action_at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,action_id))');
     this.sql.exec('CREATE INDEX IF NOT EXISTS action_expiry ON action_receipts(action_at)');
+    this.sql.exec('CREATE TABLE IF NOT EXISTS turn_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
     this.rateCleanupAt = 0;
   }
   allow(key, count, now = Date.now()) {
@@ -205,6 +207,20 @@ export class JoinAllworldState extends DurableObject {
           if (!this.allow(`voice-config:${session.publicId}`, 6)) throw protocolError(429, 'rate_limited');
           return { ...STUN_ONLY_CONFIG, radius: VOICE_RADIUS, serverTime: now };
         });
+        if (relayTestAuthorized(this.env, authenticated.publicId)) {
+          const day = new Date().toISOString().slice(0, 10);
+          this.ctx.storage.transactionSync(() => {
+            const issued = this.sql.exec('SELECT issued FROM turn_budget WHERE day=?', day).toArray()[0]?.issued || 0;
+            if (issued >= TURN_DAILY_MINT_LIMIT) throw protocolError(429, 'relay_test_limit');
+            this.sql.exec('INSERT INTO turn_budget(day,issued) VALUES(?,1) ON CONFLICT(day) DO UPDATE SET issued=issued+1', day);
+          });
+          let config;
+          try { config = validateVoiceConfig(await mintCloudflareIce(this.env), Date.now()); }
+          catch { throw protocolError(503, 'voice_config_unavailable'); }
+          this.expireSockets();
+          if (!this.sockets().some(ws => { const attached = ws.deserializeAttachment(); return attached.secret === secret && attached.room; })) throw protocolError(409, 'join_required');
+          return json(200, { ...config, radius: VOICE_RADIUS, serverTime: Date.now() }, { 'set-cookie': cookie(secret) });
+        }
         return json(200, value, { 'set-cookie': cookie(secret) });
       }
       if (url.pathname === '/api/life' && request.method === 'GET') {

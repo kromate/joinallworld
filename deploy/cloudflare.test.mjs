@@ -10,11 +10,11 @@ const require = createRequire(resolve(process.env.JOINALLWORLD_TOOLS || 'deploy/
 const { Miniflare, convertV4MiniflareOptions } = require('miniflare');
 const { build } = require('esbuild');
 
-async function fixture(t) {
+async function fixture(t, overrides = {}) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-do-test-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.js', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-conformance', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true } } };
+  const options = { name: 'joinallworld-conformance', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true } }, ...overrides };
   let mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true });
   const sockets = [];
   t.after(async () => { for (const socket of sockets) try { socket.close(); } catch {} await mf.dispose(); await rm(folder, { recursive: true, force: true }); });
@@ -244,4 +244,22 @@ test('Cloudflare: pre-job saves hydrate and award a completed shift once after r
   await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(halfway), a.cookie.slice(4));
   const done = await f.life(a); assert.equal(done.cash, 5300); assert.equal(done.completedShifts, 1); assert.equal(done.homeOwned, true);
   assert.equal((await (await f.action(a, shift)).json()).duplicate, true); assert.equal((await f.life(a)).cash, 5300);
+});
+
+
+test('Cloudflare: only two nominated relay testers mint, global budget survives hibernation, errors hide secrets', async t => {
+  const publicId = '11111111-1111-4111-8111-111111111111'; let calls = 0; let providerFailure;
+  const f = await fixture(t, { bindings: { TURN_TEST_PUBLIC_IDS: publicId, TURN_KEY_ID: 'a'.repeat(32), TURN_API_TOKEN: 'synthetic-api-secret' }, outboundService: async request => {
+    calls++; try { assert.equal(new URL(request.url).origin, 'https://rtc.live.cloudflare.com'); assert.deepEqual(await request.json(), { ttl: 600 }); } catch (error) { providerFailure = error.message; }
+    return new Response(JSON.stringify({ iceServers: [{ urls: 'turn:turn.cloudflare.com:3478', username: 'synthetic-user', credential: 'synthetic-short-lived' }] }), { status: 201 });
+  } });
+  const a = await f.device('Tester'), b = await f.device('Other'); const storage = await f.storage();
+  const session = JSON.parse((await storage.exec('SELECT value FROM sessions WHERE secret=?', a.cookie.slice(4)))[0].value); session.publicId = publicId;
+  await storage.exec('UPDATE sessions SET public_id=?,value=? WHERE secret=?', publicId, JSON.stringify(session), a.cookie.slice(4));
+  assert.equal((await f.request('/api/voice-config', null, a.cookie)).status, 409); assert.equal(calls, 0);
+  const x = await f.socket(a), y = await f.socket(b); x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
+  assert.equal((await (await f.request('/api/voice-config', null, b.cookie)).json()).turnConfigured, false); assert.equal(calls, 0);
+  const response = await f.request('/api/voice-config', null, a.cookie); const body = await response.json(); assert.equal(response.status, 200, body.error); assert.equal(providerFailure, undefined); assert.equal(calls, 1); assert.equal(body.turnConfigured, true); assert.equal(JSON.stringify(body).includes('synthetic-api-secret'), false); assert.equal(calls, 1);
+  await storage.exec('UPDATE turn_budget SET issued=8'); await f.hibernate();
+  const limited = await f.request('/api/voice-config', null, a.cookie); assert.equal(limited.status, 429); assert.equal((await limited.json()).error, 'relay_test_limit'); assert.equal(calls, 1);
 });

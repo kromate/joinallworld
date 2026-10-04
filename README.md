@@ -48,23 +48,23 @@ The client still loads if the server is unreachable, but it is **read-only**: it
 
 ## What works today
 
-- **World map.** A schematic SVG map with pan, zoom, rotate and keyboard controls, and pins for Lagos and Ibadan. An optional button uses browser geolocation to suggest the nearer city.
+- **World map.** A schematic SVG map with pan, zoom, rotate and keyboard controls, and dot markers for Lagos and Ibadan. An optional button uses browser geolocation to suggest the nearer city.
 - **Venue view** built from procedural Three.js geometry — no downloaded models or textures.
 - **A separate life per city**, held on the server. Cash, needs, location and the action in progress are changed only by the server and settled against server time, so an action finishes even if you close the tab.
-- **One complete activity:** Chill under the trees (11 seconds, energy +4, fun +10), plus paid travel between two venues (trek, keke, danfo, okada, cab).
+- **Home and park activities:** Chill (11 seconds, energy +4, fun +10), Garri (5 seconds, hunger +20), Bath (6 seconds, hygiene +25), and Nap (15 seconds, energy +2 per second). Home amounts are explicit beta choices where the exact general formula was not observed. Nap retains accrued energy when stopped. Home travel uses free trek; other transport options have preview fares.
 - **Idempotent actions.** Every action carries a client-generated ID. A repeat returns the recorded outcome instead of charging twice, and reusing an ID for a different action is rejected.
 - **Device sessions.** A random secret in an `HttpOnly` cookie plus a nickname. This identifies a browser, not a person — it is not an account. Sessions expire, and there is no way to recover one.
-- **Community panel.** Each venue is a room with live presence and text chat. You can only join the room for the venue your character is actually in.
-- **Opt-in voice.** Nothing touches the microphone until you press Join voice and grant permission. You join muted, can choose an input device, and up to eight people can be in voice per room.
+- **Community panel.** Public venues have live presence and text chat; home rooms are isolated per device identity. You can only join the room for the venue your character is actually in.
+- **Opt-in voice.** Nothing touches the microphone until you press Join voice and grant permission. You join muted, can choose an input device, and up to eight people can be in voice per room. A separate venue-space map controls proximity: voices fade with distance and disconnect at 12 virtual units. These positions do not move the decorative scene characters.
 
 ## What does not work yet
 
-- **Voice is unverified.** The code path exists, but audio between two real clients has not yet been proven. It is peer-to-peer, needs HTTPS (or `localhost`), and has no TURN relay, so it can fail on restrictive or mobile networks. Treat it as experimental.
+- **Voice remains experimental.** Two browser sessions on loopback passed real bidirectional WebRTC transport with a generated tone, mute, leave, and near/mid/far proximity checks. Physical microphones and external networks remain untested. No TURN provider is configured yet, so restrictive networks may fail. The authenticated configuration endpoint supports an injected short-lived credential provider; it never embeds persistent provider secrets in the frontend.
 - **Ibadan is a starter.** It has its own server-side life and its own venue names, but reuses the Lagos venue structure and activities. A proper city-pack format — venues, spots, map layout and fares as data — is not finalised.
 - **Very little content.** One venue has no activities, and most activities at the other are listed but disabled.
 - **No accounts.** No passwords, sign-in, account recovery or moving a life between devices.
 - **No moderation.** No blocking, reporting or chat filtering.
-- Jobs, homes, skills, property, elections and interiors are not implemented.
+- Jobs, skills, purchasable property and elections are not implemented. The home is a starter interior, not a property market.
 - **Storage is one JSON file** on the server's disk. A separate deployment target with different storage is being developed and is not part of this tree.
 
 ## Reference behaviour is provisional

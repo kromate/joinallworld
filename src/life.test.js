@@ -63,17 +63,17 @@ test('cancelled actions have no effects; overlapping and invalid time are harmle
 });
 
 test('unknown outcomes and skill-locked actions are catalogued but unavailable', () => {
-  assert.ok(VENUES.park.spots.trees.actions.some((action) => action.id === 'play-ayo'));
+  assert.ok(VENUES.park.spots.trees.activities.some((action) => action.id === 'play-ayo'));
   assert.equal(VENUES.park.district, 'Lagos Island');
   assert.equal(VENUES.library.district, 'Victoria Island');
   const state = createLife();
   for (const spot of Object.values(VENUES.park.spots)) {
     state.spot = spot.id;
-    for (const action of spot.actions.filter((item) => item.id !== 'chill' && !item.beta)) {
+    for (const action of spot.activities.filter((item) => item.id !== 'chill' && !item.beta)) {
       assert.equal(action.unavailable, true);
       assert.equal(action.effects, undefined);
-      assert.ok(action.source);
-      assert.equal(action.placeholder, true);
+      assert.ok(action.note);
+
       assert.equal(startActivity(state, action.id).code, 'unavailable');
       assert.equal(state.activeAction, null);
       assert.equal(state.cash, 5000);
@@ -85,23 +85,26 @@ test('unknown outcomes and skill-locked actions are catalogued but unavailable',
 });
 
 test('travel charges each fare once and settles location only on completion', () => {
-  assert.equal(PREVIEW_TRAVEL_DURATION, 5);
+  assert.equal(PREVIEW_TRAVEL_DURATION, 5, 'legacy flat trip time, still carried by old saves');
   assert.deepEqual(TRAVEL_OPTIONS, { trek: 0, keke: 150, danfo: 150, okada: 200, cab: 400 });
+  // Freedom Park → The Library is an across-town trip: each mode has its own trip time.
+  const seconds = { trek: 12, keke: 9, danfo: 8, okada: 5, cab: 6 };
   for (const [mode, fare] of Object.entries(TRAVEL_OPTIONS)) {
     const state = createLife();
     startTravel(state, 'library', mode);
     assert.equal(state.cash, 5000 - fare);
+    assert.equal(state.activeAction.duration, seconds[mode], mode);
     startTravel(state, 'library', mode);
     assert.equal(state.cash, 5000 - fare);
-    advanceLife(state, 4);
+    advanceLife(state, seconds[mode] - 1);
     assert.equal(state.location, 'park');
     advanceLife(state, 1);
     advanceLife(state, 10);
     assert.equal(state.location, 'library');
-    assert.equal(state.spot, null);
+    assert.equal(state.spot, 'bookcase', 'arrival stands at the venue’s first spot');
     assert.equal(state.cash, 5000 - fare);
     startTravel(state, 'park', 'trek');
-    advanceLife(state, 5);
+    advanceLife(state, seconds.trek);
     assert.equal(state.spot, 'amphitheatre');
   }
 });
@@ -126,8 +129,8 @@ test('saved in-progress travel resumes without charging again', () => {
   advanceLife(state, 2);
   const restored = createLife(JSON.parse(JSON.stringify(state)));
   assert.equal(restored.cash, 4600);
-  assert.equal(restored.activeAction.remaining, 3);
-  advanceLife(restored, 3);
+  assert.equal(restored.activeAction.remaining, 4, 'a cab across town takes 6 seconds');
+  advanceLife(restored, 4);
   assert.equal(restored.location, 'library');
   assert.equal(restored.cash, 4600);
   assert.equal(createLife({ activeAction: { kind: 'activity', id: 'comedy', duration: 11, remaining: 3 } }).activeAction, null);
@@ -151,16 +154,28 @@ test('reload mid activity pauses offline and completion cannot award again after
   assert.equal(cancelledTravel.location, 'park');
 });
 
-test('home travel uses existing free trek and preserves starting venue and paid fares', () => {
+test('home is reachable by every mode: a paid ride needs its fare, trek is free, and each is charged once', () => {
   const state = createLife({ cash: 0 });
   assert.equal(state.location, 'park');
-  assert.equal(VENUES.home.travelMode, 'trek');
-  assert.equal(startTravel(state, 'home', 'cab').code, 'home_travel_free_only');
+  assert.equal(VENUES.home.hours, undefined, 'home never closes');
+  for (const mode of ['keke', 'danfo', 'okada', 'cab']) {
+    assert.equal(startTravel(state, 'home', mode).code, 'insufficient_funds', mode);
+    assert.equal(state.cash, 0); assert.equal(state.activeAction, null);
+  }
   assert.equal(startTravel(state, 'home', 'trek').code, 'started');
-  advanceLife(state, 5);
+  assert.equal(state.activeAction.duration, 18, 'Freedom Park → Home (Yaba) crosses the lagoon');
+  advanceLife(state, 17);
+  assert.equal(state.location, 'park');
+  advanceLife(state, 1);
   assert.equal(state.location, 'home');
   assert.equal(state.spot, 'kitchen');
   assert.equal(state.cash, 0);
+  const rider = createLife();
+  assert.equal(startTravel(rider, 'home', 'cab').code, 'started');
+  assert.equal(rider.cash, 5000 - 550);
+  startTravel(rider, 'home', 'cab');
+  advanceLife(rider, 9);
+  assert.equal(rider.location, 'home'); assert.equal(rider.cash, 5000 - 550);
 });
 
 test('Garri and Bath award once only on completion and cap needs', () => {
@@ -297,7 +312,11 @@ test('midshift reload completes reward and costs exactly once; completed saves c
   advanceLife(completed, 100);
   assert.equal(completed.cash, 5300);
   assert.equal(completed.completedShifts, 1);
-  startActivity(completed, 'helper-shift');
+  // The starter shift has a four-hour break: an immediate second shift is refused and changes nothing.
+  assert.equal(startActivity(completed, 'helper-shift').code, 'cooldown');
+  assert.equal(completed.activeAction, null); assert.equal(completed.cash, 5300);
+  advanceLife(completed, 4 * 3600);
+  assert.equal(startActivity(completed, 'helper-shift').code, 'started');
   advanceLife(completed, 20);
   assert.equal(completed.cash, 5600);
   assert.equal(completed.completedShifts, 2);

@@ -1,9 +1,11 @@
-import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.js';
 import { DurableObject } from 'cloudflare:workers';
-import { CITY_IDS, SESSION_TTL_MS, MAX_VOICE_MEMBERS, UUID_PATTERN, protocolError, validateName, validateActionPayload, publicSession, isSameOrigin, canJoinVenue, actionFingerprint, pruneReceipts, readReceipt, archivedLife, renewSession, venueRoomKey, validatePosition, withinVoiceDistance, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.js';
+import { createSqliteStore } from './sqlite-store.js';
+import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.js';
+import { buildRoutes } from '../server/routes/index.js';
+import { executeCommand } from '../server/routes/core.js';
+import { buildSocketHandlers } from '../server/ws/index.js';
 import { settleCity, applyLifeAction } from '../server/life-service.js';
-import { VENUES } from '../src/life.js';
-
+import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, archivedLife, renewSession, collection, canJoinVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.js';
 const json = (status, value, headers = {}) => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers } });
 const cookieId = request => (request.headers.get('cookie') || '').split(';').map(x => x.trim()).find(x => x.startsWith('sid='))?.slice(4);
 const cookie = secret => `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${Math.floor(SESSION_TTL_MS / 1000)}; Secure`;
@@ -41,7 +43,6 @@ async function bodyOf(request) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.pathname === '/api/health') return json(200, { ok: true, transport: 'cloudflare', buildId: env.BUILD_ID || 'unreleased' });
     if (url.pathname.startsWith('/api/') || url.pathname === '/socket') {
       if (!isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) return json(403, { error: 'origin_rejected' });
       return env.JOINALLWORLD.getByName('joinallworld-v1').fetch(request);
@@ -57,294 +58,181 @@ export default {
 
 export class JoinAllworldState extends DurableObject {
   constructor(ctx, env) {
-    super(ctx, env);
-    this.sql = ctx.storage.sql;
-    this.sql.exec('CREATE TABLE IF NOT EXISTS sessions (secret TEXT PRIMARY KEY, public_id TEXT UNIQUE NOT NULL, expires_at INTEGER NOT NULL, value TEXT NOT NULL)');
-    this.sql.exec('CREATE TABLE IF NOT EXISTS archived_lives (public_id TEXT PRIMARY KEY, value TEXT NOT NULL)');
+    super(ctx, env); this.env = env; this.sql = ctx.storage.sql; this.peers = new Map(); this.inflight = new Map();
+    this.store = createSqliteStore(ctx.storage);
     this.sql.exec('CREATE TABLE IF NOT EXISTS rate_limits (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL)');
-    this.sql.exec('CREATE INDEX IF NOT EXISTS rate_expiry ON rate_limits(started_at)');
-    this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
-    this.sql.exec('CREATE TABLE IF NOT EXISTS action_receipts (sender TEXT NOT NULL, action_id TEXT NOT NULL, action_at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,action_id))');
-    this.sql.exec('CREATE INDEX IF NOT EXISTS action_expiry ON action_receipts(action_at)');
+    if (!this.sql.exec('PRAGMA table_info(rate_limits)').toArray().some(column => column.name === 'expires_at')) this.sql.exec('ALTER TABLE rate_limits ADD COLUMN expires_at INTEGER');
+    this.sql.exec('UPDATE rate_limits SET expires_at = started_at + 60000 WHERE expires_at IS NULL');
     this.sql.exec('CREATE TABLE IF NOT EXISTS turn_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
+    this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
     this.rateCleanupAt = 0;
+    const listeners = new Map(), now = () => Date.now();
+    const context = this.context = {
+      store: this.store, now, fail: protocolError, collection, randomId: () => crypto.randomUUID(), cityIds: CITY_IDS, publicSession,
+      allow: (key, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
+      send: (ws, message) => { if (ws.readyState === 1) { try { ws.send(JSON.stringify(message)); } catch {} } },
+      on(event, fn) { if (!listeners.has(event)) listeners.set(event, []); listeners.get(event).push(fn); },
+      emit(event, value) { for (const fn of listeners.get(event) || []) { try { fn(value); } catch {} } },
+      settle: (session, city) => settleCity(session, city, now()),
+      act: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId, internal: true }),
+      push: (id, message) => { let count = 0; for (const ws of this.peers.values()) if (ws.session.id === id && ws.readyState === 1) { context.send(ws, message); count++; } return count; },
+      online: id => [...this.peers.values()].some(ws => ws.session.id === id && ws.readyState === 1 && !context.core.unresponsive(ws)),
+      atHome(db, id, city) { const s = context.core.sessionByPublicId(db, id); return !!s && s.expiresAt > now() && CITY_IDS.includes(city) && canJoinVenue(s.cities?.[city]?.state, 'home'); },
+      checks: {}, startup: [],
+      config: { sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId: env.BUILD_ID || 'unreleased', votesPerAddress: 3, heartbeatMs: 10000, moderation: false },
+      core: {
+        chatHistory: (ws, body) => this.chatHistory(ws, body),
+        validateMemberships: async () => {}, refreshNames: () => {}, roomStillValid: () => false,
+        archiveSession(db, secret, session) { if (Object.values(session.cities || {}).some(entry => entry?.state && !(entry.state.onboarding?.required === true && !entry.state.onboarding.done))) db.archivedLives[session.publicId] = archivedLife(session, session.publicId, now()); delete db.sessions[secret]; },
+        expiredSessionKeys: db => db.$store.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now()),
+        sessionByPublicId: (db, id) => { const key = db.$store.sessionKeyByPublicId(id); return key === undefined ? undefined : db.sessions[key]; },
+        unresponsive: ws => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= 5000,
+        storeStats: () => this.store.stats(), newIdentity: () => ({secret: crypto.randomUUID(), publicId: crypto.randomUUID()}), newId: () => crypto.randomUUID(),
+        cookieHeader: (_, secret) => cookie(secret), sockets: () => [...this.peers.values()].filter(ws => ws.readyState === 1), isOpen: ws => ws.readyState === 1,
+        sessionOf: (ws, db) => db.sessions[ws.secret],
+        playerAct: (state, body) => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }),
+      },
+    };
+    context.command = (request, body, options) => executeCommand(context, request, body, options);
+    this.handlers = buildSocketHandlers(context);
+    this.routes = buildRoutes(context);
+    this.ready = ctx.blockConcurrencyWhile(async () => {
+      await Promise.all(context.startup.splice(0));
+      for (const socket of ctx.getWebSockets()) { const info = socket.deserializeAttachment(); if (info && !info.closed) { const ws = this.wrap(socket, info); this.handlers.restore(ws); } }
+      await this.store.transact(db => { for (const secret of context.core.expiredSessionKeys(db)) context.core.archiveSession(db, secret, db.sessions[secret]); });
+    });
   }
-  allow(key, count, now = Date.now()) {
-    if (now >= this.rateCleanupAt) { this.sql.exec('DELETE FROM rate_limits WHERE started_at <= ?', now - 60000); this.rateCleanupAt = now + 60000; }
-    const old = this.sql.exec('SELECT started_at,count FROM rate_limits WHERE key = ?', key).toArray()[0];
-    if (!old && this.sql.exec('SELECT COUNT(*) AS count FROM rate_limits').one().count >= 10000) return false;
-    const active = old && now - old.started_at < 60000;
-    const next = active ? old.count + 1 : 1;
-    this.sql.exec('INSERT INTO rate_limits(key,started_at,count) VALUES(?,?,?) ON CONFLICT(key) DO UPDATE SET started_at=excluded.started_at,count=excluded.count', key, active ? old.started_at : now, next);
+  allow(key, count, windowMs = 60000) {
+    const now = Date.now();
+    if (now >= this.rateCleanupAt) { this.sql.exec('DELETE FROM rate_limits WHERE expires_at <= ?', now); this.rateCleanupAt = now + 60000; }
+    const old = this.sql.exec('SELECT started_at,count,expires_at FROM rate_limits WHERE key = ?', key).toArray()[0];
+    if (!old && this.sql.exec('SELECT COUNT(*) AS count FROM rate_limits').one().count >= 10000) {
+      this.sql.exec('DELETE FROM rate_limits WHERE expires_at <= ?', now);
+      if (this.sql.exec('SELECT COUNT(*) AS count FROM rate_limits').one().count >= 10000) return false;
+    }
+    const active = old && old.expires_at > now, next = active ? old.count + 1 : 1;
+    this.sql.exec('INSERT INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?) ON CONFLICT(key) DO UPDATE SET started_at=excluded.started_at,count=excluded.count,expires_at=excluded.expires_at', key, active ? old.started_at : now, next, active ? old.expires_at : now + windowMs);
     return next <= count;
   }
-  getSession(secret, now) {
-    if (!secret || !UUID_PATTERN.test(secret)) return null;
-    const row = this.sql.exec('SELECT value FROM sessions WHERE secret = ?', secret).toArray()[0];
-    if (!row) return null;
-    const session = JSON.parse(row.value);
-    if (!renewSession(session, now)) return null;
-    return session;
+  wrap(socket, info) {
+    const ws = { ...info, voice: info.voice || { enabled: false, muted: true }, position: info.position || {x:0,z:0}, lastMoves: info.lastMoves || [],
+      get readyState() { return this.closed ? 3 : socket.readyState; },
+      send: data => socket.send(data), close: (code = 1000, reason = '') => { ws.closed = true; socket.close(code, reason); }, socket };
+    this.peers.set(socket, ws); return ws;
   }
-  save(session) {
-    this.sql.exec('INSERT INTO sessions(secret,public_id,expires_at,value) VALUES(?,?,?,?) ON CONFLICT(secret) DO UPDATE SET expires_at=excluded.expires_at,value=excluded.value', session.secret, session.publicId, session.expiresAt, JSON.stringify(session));
+  saveSockets() {
+    for (const [socket, ws] of this.peers) { const { socket: ignored, send: ignoredSend, close: ignoredClose, readyState: ignoredReady, ...info } = ws; socket.serializeAttachment(info); }
   }
-  archiveExpired(now) {
-    for (const row of this.sql.exec('SELECT secret,value FROM sessions WHERE expires_at <= ? LIMIT 100', now).toArray()) {
-      const session = JSON.parse(row.value);
-      this.sql.exec('INSERT OR REPLACE INTO archived_lives(public_id,value) VALUES(?,?)', session.publicId, JSON.stringify(archivedLife(session, session.publicId, now)));
-      this.sql.exec('DELETE FROM sessions WHERE secret = ?', row.secret);
-    }
+  session(request, db, renew = false) {
+    const s = request.secret && UUID_PATTERN.test(request.secret) ? db.sessions[request.secret] : undefined;
+    if (!s || !Number.isFinite(s.expiresAt) || s.expiresAt <= Date.now()) return undefined;
+    if (renew) renewSession(s, Date.now()); return s;
   }
-  transaction(secret, operation) {
-    return this.ctx.storage.transactionSync(() => {
-      const now = Date.now();
-      const session = this.getSession(secret, now);
-      if (!session) throw protocolError(401, 'device_session_required');
-      const value = operation(session, now);
-      this.save(session);
-      return value;
-    });
-  }
-  sockets(room) {
-    return this.ctx.getWebSockets().filter(ws => {
-      const state = ws.deserializeAttachment();
-      return !state.closed && (!room || state.room === room);
-    });
-  }
-  presence(room) {
-    if (!room) return;
-    const peers = this.sockets(room);
-    const members = new Map();
-    for (const ws of peers) {
-      const info = ws.deserializeAttachment();
-      const old = members.get(info.session.id);
-      members.set(info.session.id, { ...info.session, position: info.position || { x: 0, z: 0 }, enabled: !!(old?.enabled || info.voice.enabled), muted: old ? old.muted && info.voice.muted : info.voice.muted });
-    }
-    for (const ws of peers) send(ws, { type: 'presence', members: [...members.values()] });
-  }
-  leave(ws, closed = false) {
-    const info = ws.deserializeAttachment();
-    const room = info.room;
-    info.room = null; info.voice = { enabled: false, muted: true }; info.closed = closed;
-    ws.serializeAttachment(info);
-    this.presence(room);
-  }
-  refreshNames(session) {
-    const rooms = new Set();
-    for (const ws of this.sockets()) {
-      const info = ws.deserializeAttachment();
-      if (info.session.id !== session.id) continue;
-      info.session = session; ws.serializeAttachment(info); if (info.room) rooms.add(info.room);
-    }
-    for (const room of rooms) this.presence(room);
-  }
-  expireSockets() {
-    const now = Date.now();
-    for (const ws of this.sockets()) {
-      const info = ws.deserializeAttachment();
-      const row = this.sql.exec('SELECT expires_at FROM sessions WHERE secret = ?', info.secret).toArray()[0];
-      if (!row || row.expires_at <= now) { this.leave(ws, true); ws.close(1008, 'device_session_required'); }
-    }
-  }
-  async alarm() {
-    this.expireSockets();
-    this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', Date.now() - 86400000);
-    if (this.sockets().length) await this.ctx.storage.setAlarm(Date.now() + 60000);
-  }
-  validateMemberships(secret, city, state) {
-    for (const ws of this.sockets()) {
-      const info = ws.deserializeAttachment();
-      if (info.secret === secret && info.room?.startsWith(`${city}:`) && (info.room !== venueRoomKey(city, state.location, info.session.id) || state.activeAction?.kind === 'travel')) {
-        this.leave(ws); send(ws, { type: 'error', code: 'venue_mismatch', error: 'venue_mismatch' });
-      }
-    }
-  }
-  async fetch(request) {
+  async fetch(raw) {
+    await this.ready;
     try {
-      const url = new URL(request.url);
-      const ip = await digest(addressBucket(request.headers.get('cf-connecting-ip') || 'local'));
-      if (!isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) throw protocolError(403, 'origin_rejected');
-      const secret = cookieId(request);
-      if (url.pathname === '/socket') {
-        if (request.method !== 'GET' || request.headers.get('upgrade')?.toLowerCase() !== 'websocket' || !this.allow(`upgrade:${ip}`, 60)) throw protocolError(403, 'upgrade_rejected');
-        const session = this.transaction(secret, session => ({ session: publicSession(session), secret, expiresAt: session.expiresAt }));
-        this.expireSockets();
-        const peers = this.sockets();
-        if (peers.length >= 1024 || peers.filter(ws => ws.deserializeAttachment().session.id === session.session.id).length >= 8 || peers.filter(ws => ws.deserializeAttachment().ip === ip).length >= 32) throw protocolError(503, 'connection_capacity');
-        const pair = new WebSocketPair();
-        this.ctx.acceptWebSocket(pair[1]);
-        pair[1].serializeAttachment({ ...session, ip, position: { x: 0, z: 0 }, lastMoves: [], room: null, voice: { enabled: false, muted: true }, closed: false });
-        if (await this.ctx.storage.getAlarm() === null) await this.ctx.storage.setAlarm(Date.now() + 60000);
-        return new Response(null, { status: 101, webSocket: pair[0], headers: { 'set-cookie': cookie(secret) } });
-      }
-      const authenticated = this.getSession(secret, Date.now());
-      if (!this.allow(authenticated ? `http:session:${authenticated.publicId}` : `http:ip:${ip}`, authenticated ? 600 : 60)) throw protocolError(429, 'rate_limited');
-      if (url.pathname === '/api/session' && request.method === 'POST') {
-        const name = validateName((await bodyOf(request)).name);
-        const result = this.ctx.storage.transactionSync(() => {
-          const now = Date.now(); this.archiveExpired(now);
-          let session = this.getSession(secret, now);
-          if (!session) {
-            const count = this.sql.exec('SELECT COUNT(*) AS count FROM sessions WHERE expires_at > ?', now).one().count;
-            if (count >= 10000) throw protocolError(503, 'device_capacity');
-            session = { secret: crypto.randomUUID(), publicId: crypto.randomUUID(), name, expiresAt: now + SESSION_TTL_MS, cities: {} };
-          }
-          session.name = name; this.save(session);
-          return { session: publicSession(session), secret: session.secret, serverTime: now };
-        });
-        this.refreshNames(result.session);
-        return json(200, { session: result.session, serverTime: result.serverTime }, { 'set-cookie': cookie(result.secret) });
-      }
-      if (url.pathname === '/api/session' && request.method === 'GET') {
-        const value = this.transaction(secret, (session, now) => ({ session: publicSession(session), serverTime: now }));
-        return json(200, value, { 'set-cookie': cookie(secret) });
-      }
-      if (url.pathname === '/api/voice-config' && request.method === 'GET') {
-        const value = this.transaction(secret, (session, now) => {
-          this.expireSockets();
-          if (!this.sockets().some(ws => { const attached = ws.deserializeAttachment(); return attached.secret === secret && attached.room; })) throw protocolError(409, 'join_required');
-          if (!this.allow(`voice-config:${session.publicId}`, 6)) throw protocolError(429, 'rate_limited');
-          return { ...STUN_ONLY_CONFIG, radius: VOICE_RADIUS, serverTime: now };
-        });
-        if (relayTestAuthorized(this.env, authenticated.publicId)) {
-          const day = new Date().toISOString().slice(0, 10);
-          this.ctx.storage.transactionSync(() => {
-            const issued = this.sql.exec('SELECT issued FROM turn_budget WHERE day=?', day).toArray()[0]?.issued || 0;
-            if (issued >= TURN_DAILY_MINT_LIMIT) throw protocolError(429, 'relay_test_limit');
-            this.sql.exec('INSERT INTO turn_budget(day,issued) VALUES(?,1) ON CONFLICT(day) DO UPDATE SET issued=issued+1', day);
-          });
-          let config;
-          try { config = validateVoiceConfig(await mintCloudflareIce(this.env), Date.now()); }
-          catch { throw protocolError(503, 'voice_config_unavailable'); }
-          this.expireSockets();
-          if (!this.sockets().some(ws => { const attached = ws.deserializeAttachment(); return attached.secret === secret && attached.room; })) throw protocolError(409, 'join_required');
-          return json(200, { ...config, radius: VOICE_RADIUS, serverTime: Date.now() }, { 'set-cookie': cookie(secret) });
-        }
-        return json(200, value, { 'set-cookie': cookie(secret) });
-      }
-      if (url.pathname === '/api/life' && request.method === 'GET') {
-        const city = url.searchParams.get('city');
-        if (!CITY_IDS.includes(city)) throw protocolError(400, 'invalid_city');
-        const value = this.transaction(secret, (session, now) => ({ state: settleCity(session, city, now), serverTime: now }));
-        this.validateMemberships(secret, city, value.state);
-        return json(200, value, { 'set-cookie': cookie(secret) });
-      }
-      if (url.pathname === '/api/action' && request.method === 'POST') {
-        const body = await bodyOf(request);
-        const value = this.transaction(secret, (session, now) => {
-          const actionAt = validateActionPayload(body, now);
-          this.sql.exec('DELETE FROM action_receipts WHERE sender=? AND action_at < ?', session.publicId, now - 86400000);
-          const state = settleCity(session, body.cityId, now);
-          const storedReceipt = this.sql.exec('SELECT value FROM action_receipts WHERE sender=? AND action_id=?', session.publicId, body.actionId).toArray()[0];
-          const receipt = readReceipt(storedReceipt ? { [body.actionId]: JSON.parse(storedReceipt.value) } : {}, body);
-          if (receipt) return { ok: receipt.ok, code: receipt.code, state, duplicate: true, serverTime: now };
-          if (this.sql.exec('SELECT COUNT(*) AS count FROM action_receipts WHERE sender=?', session.publicId).one().count >= 10000) throw protocolError(429, 'action_history_full');
-          const result = applyLifeAction(state, body);
-          this.sql.exec('INSERT INTO action_receipts(sender,action_id,action_at,value) VALUES(?,?,?,?)', session.publicId, body.actionId, actionAt, JSON.stringify({ actionAt, fingerprint: actionFingerprint(body), ok: result.ok, code: result.code }));
-          return { ...result, serverTime: now };
-        });
-        this.validateMemberships(secret, body.cityId, value.state);
-        return json(200, value, { 'set-cookie': cookie(secret) });
-      }
-      throw protocolError(404, 'not_found');
-    } catch (error) { return json(error.status || 500, { error: error.status ? error.code : 'internal_error' }); }
+      const url = new URL(raw.url), secret = cookieId(raw), now = Date.now();
+      const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
+      if (!isSameOrigin(raw.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) throw protocolError(403, 'origin_rejected');
+      const request = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, params: {}, raw,
+        moderator: () => false, json: () => bodyOf(raw), session: (db, options = {}) => this.session(request, db, options.renew),
+        requireSession: (db, options = {}) => { const s = this.session(request, db, options.renew); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
+      if (url.pathname === '/socket') return await this.upgrade(raw, request);
+      const id = await this.store.read(db => request.session(db)?.publicId);
+      if (!this.allow(id ? `http:session:${id}` : `http-ip:${ip}`, id ? 600 : 60)) throw protocolError(429, 'rate_limited');
+      if (url.pathname === '/api/voice-config' && raw.method === 'GET') return await this.voiceConfig(request);
+      const route = this.routes.match(raw.method, url.pathname); if (!route) throw protocolError(404, 'not_found'); request.params = route.params;
+      const result = await route.handler(request) || {}, status = result.status || 200;
+      const body = status < 300 ? { ...(result.body || {}), serverTime: Date.now() } : result.body || {};
+      if (url.pathname === '/api/health') Object.assign(body, { transport: 'cloudflare', buildId: this.env.BUILD_ID || 'unreleased' });
+      if (result.renew) for (const ws of this.peers.values()) if (ws.secret === secret) { ws.expiresAt = now + SESSION_TTL_MS; ws.lastSessionRenewedAt = now; }
+      this.saveSockets();
+      if (result.after) this.ctx.waitUntil(Promise.resolve().then(result.after).then(() => this.saveSockets()).catch(() => {}));
+      return json(status, body, { ...(result.renew ? { 'Set-Cookie': cookie(secret) } : {}), ...result.headers });
+    } catch (error) { this.saveSockets(); return json(error.status || 500, { error: error.status ? error.code : 'internal_error', ...(error.status && typeof error.reason === 'string' ? {reason:error.reason} : {}) }); }
   }
-  async webSocketMessage(ws, raw) {
+  async voiceConfig(request) {
+    const session = await this.store.transact(db => {
+      const s = request.requireSession(db, {renew:true});
+      if (!this.liveRoom(s, db)) throw protocolError(403, 'room_membership_required');
+      return publicSession(s);
+    });
+    if (!this.allow(`voice-config:${session.id}`, 6)) throw protocolError(429, 'voice_config_rate_limited');
+    let config = STUN_ONLY_CONFIG;
+    if (relayTestAuthorized(this.env, session.id)) {
+      this.ctx.storage.transactionSync(() => { const day = new Date().toISOString().slice(0,10), used = this.sql.exec('SELECT issued FROM turn_budget WHERE day = ?', day).toArray()[0]?.issued || 0; if (used >= TURN_DAILY_MINT_LIMIT) throw protocolError(429, 'relay_test_limit'); this.sql.exec('INSERT INTO turn_budget(day,issued) VALUES(?,?) ON CONFLICT(day) DO UPDATE SET issued=excluded.issued', day, used + 1); });
+      try { config = validateVoiceConfig(await mintCloudflareIce(this.env), Date.now()); } catch { throw protocolError(503, 'voice_config_unavailable'); }
+      await this.store.read(db => { const s = request.requireSession(db); if (!this.liveRoom(s, db)) throw protocolError(403, 'room_membership_required'); });
+    }
+    return json(200, {...config, radius:12, serverTime:Date.now()}, {'Set-Cookie':cookie(request.secret)});
+  }
+  liveRoom(session, db) {
+    return [...this.peers.values()].some(ws => ws.session.id === session.publicId && ws.readyState === 1 && ws.room && ws.expiresAt > Date.now() && !this.context.core.unresponsive(ws) && this.context.core.roomStillValid(ws, db, session, ws.room.split(':')[0], this.context.settle(session, ws.room.split(':')[0])));
+  }
+  async upgrade(raw, request) {
+    if (raw.headers.get('upgrade')?.toLowerCase() !== 'websocket' || raw.method !== 'GET') throw protocolError(403, 'websocket_required');
+    if (!this.allow(`upgrade:${request.ip}`, 60)) throw protocolError(429, 'rate_limited');
+    const info = await this.store.transact(db => { const s = request.requireSession(db, {renew:true}); return { secret:s.secret, session:publicSession(s), expiresAt:s.expiresAt }; });
+    const peers = [...this.peers.values()].filter(ws => ws.readyState === 1);
+    if (peers.length >= 1024 || peers.filter(ws => ws.secret === info.secret).length >= 8 || peers.filter(ws => ws.ip === request.ip).length >= 32) throw protocolError(503, 'socket_capacity');
+    const pair = new WebSocketPair(), socket = pair[1]; this.ctx.acceptWebSocket(socket);
+    const ws = this.wrap(socket, {...info,ip:request.ip,room:null,closed:false,alive:true,pingedAt:0,seenAt:Date.now(),lastSessionRenewedAt:Date.now()});
+    this.handlers.open(ws); this.saveSockets(); if (await this.ctx.storage.getAlarm() === null) await this.ctx.storage.setAlarm(Date.now()+10000);
+    return new Response(null, {status:101,webSocket:pair[0],headers:{'Set-Cookie':cookie(info.secret)}});
+  }
+  chatHistory(ws, body) {
+    this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', Date.now()-86400000);
+    const rows = this.sql.exec('SELECT client_id,value FROM chat_receipts WHERE sender=? AND room=? ORDER BY at,rowid',ws.session.id,ws.room).toArray();
+    const records = new Map(rows.map(row=>[row.client_id,JSON.parse(row.value)]));
+    return {
+      has:id=>records.has(id), get:id=>{const r=records.get(id);if(r.bodyHash!==ws.chatBodyHash)throw Error('chat_id_conflict');return {type:'chat',id:r.id,at:r.at,clientId:id,from:{...ws.session},body};},
+      set:(id,chat)=>{const value={id:chat.id,at:chat.at,bodyHash:ws.chatBodyHash};this.sql.exec('INSERT INTO chat_receipts(sender,room,client_id,at,value) VALUES(?,?,?,?,?)',ws.session.id,ws.room,id,chat.at,JSON.stringify(value));records.set(id,value);},
+      get size(){return records.size;}, keys:()=>records.keys(),
+      delete:id=>{this.sql.exec('DELETE FROM chat_receipts WHERE sender=? AND room=? AND client_id=?',ws.session.id,ws.room,id);records.delete(id);},
+    };
+  }
+  async webSocketMessage(socket, raw) {
+    await this.ready;
+    const ws = this.peers.get(socket); if (!ws || ws.readyState !== 1) return;
+    if (!this.allow(`ws:${ws.session.id}`, 600)) { this.context.send(ws,{type:'error',code:'rate_limited',error:'rate_limited'}); return; }
+    const before = this.inflight.get(socket) || Promise.resolve();
+    const operation = before.then(() => this.message(socket, raw)); this.inflight.set(socket, operation);
+    try { await operation; } finally { if (this.inflight.get(socket) === operation) this.inflight.delete(socket); }
+  }
+  async message(socket, raw) {
+    const ws = this.peers.get(socket); if (!ws || ws.readyState !== 1) return;
     let message;
     try {
-      let info = ws.deserializeAttachment();
-      if (info.closed) return;
-      if (typeof raw !== 'string' || new TextEncoder().encode(raw).length > 16384) throw protocolError(400, 'invalid_message');
-      message = JSON.parse(raw);
-      if (!message || typeof message !== 'object' || Array.isArray(message)) throw protocolError(400, 'invalid_message');
-      if (message.type !== 'move' && !this.allow(`ws:${info.session.id}`, 600)) throw Object.assign(protocolError(429, 'rate_limited'), { disconnect: true });
-      const acceptedRoom = info.room;
-      const bodyHash = message.type === 'chat' && typeof message.body === 'string' ? await digest(message.body.trim()) : null;
-      info = ws.deserializeAttachment();
-      if (info.closed) return;
-      if (message.type === 'chat' && info.room !== acceptedRoom) throw protocolError(409, 'room_changed');
-      const result = this.ctx.storage.transactionSync(() => {
-        const now = Date.now();
-        const row = this.sql.exec('SELECT value FROM sessions WHERE secret = ?', info.secret).toArray()[0];
-        const session = row && JSON.parse(row.value);
-        if (!session || session.expiresAt <= now) throw protocolError(401, 'device_session_required');
-        const renew = session.expiresAt < now + SESSION_TTL_MS - 60000;
-        if (renew) renewSession(session, now);
-        if (message.type === 'join') {
-          if (!CITY_IDS.includes(message.cityId) || !Object.hasOwn(VENUES, message.venueId)) throw protocolError(400, 'invalid_room');
-          if (!canJoinVenue(settleCity(session, message.cityId, now), message.venueId)) throw protocolError(409, 'venue_mismatch');
-        } else if (info.room) {
-          const [city, venue] = info.room.split(':');
-          if (!canJoinVenue(settleCity(session, city, now), venue)) throw protocolError(409, 'venue_mismatch');
-        }
-        if (renew || message.type === 'join') this.save(session);
-        return { session: publicSession(session), expiresAt: session.expiresAt };
-      });
-      Object.assign(info, result); ws.serializeAttachment(info);
-      if (message.type === 'join') {
-        this.leave(ws); info.room = venueRoomKey(message.cityId, message.venueId, info.session.id); info.position = { x: 0, z: 0 }; info.lastMoves = []; info.voice = { enabled: false, muted: true };
-        ws.serializeAttachment(info); this.presence(info.room); return;
+      if (typeof raw !== 'string' || new TextEncoder().encode(raw).length > 16384) throw Error('invalid_message');
+      message = JSON.parse(raw); if (!message || typeof message !== 'object') throw Error('invalid_message');
+      const authenticated = await this.store.read(db => { const s=db.sessions[ws.secret]; if (s && s.expiresAt>Date.now()) { if (message.type !== 'join') this.context.core.validateRestoredMembership(ws,db,s); return true; } return false; });
+      if (!authenticated || ws.expiresAt <= Date.now()) { this.context.send(ws,{type:'error',code:'device_session_required',error:'device_session_required'}); ws.close(1008,'Device session expired'); this.handlers.close(ws); return; }
+      ws.alive = true; ws.seenAt = Date.now();
+      if (message.type === 'heartbeat-ack') return;
+      if (Date.now()-ws.lastSessionRenewedAt >= 60000) {
+        const expiration = await this.store.transact(db => { const s = db.sessions[ws.secret]; if (!renewSession(s,Date.now())) throw Error('device_session_required'); return s.expiresAt; });
+        for (const peer of this.peers.values()) if (peer.secret === ws.secret) {peer.expiresAt=expiration;peer.lastSessionRenewedAt=Date.now();}
       }
-      if (!info.room) throw protocolError(400, 'join_required');
-      const peers = this.sockets(info.room);
-      if (message.type === 'move') {
-        const position = validatePosition(message);
-        const now = Date.now();
-        const lastMoves = (info.lastMoves || []).filter(at => at > now - 1000);
-        if (lastMoves.length >= 5) throw protocolError(429, 'move_rate_limited');
-        lastMoves.push(now);
-        for (const peer of peers) {
-          const attached = peer.deserializeAttachment();
-          if (attached.session.id === info.session.id) { attached.position = position; attached.lastMoves = lastMoves; peer.serializeAttachment(attached); }
-        }
-        this.presence(info.room); return;
-      }
-      if (message.type === 'voice-state') {
-        if (typeof message.enabled !== 'boolean' || typeof message.muted !== 'boolean') throw protocolError(400, 'invalid_voice_state');
-        const enabled = new Set(peers.map(peer => peer.deserializeAttachment()).filter(peer => peer.voice.enabled).map(peer => peer.session.id));
-        if (message.enabled && !enabled.has(info.session.id) && enabled.size >= MAX_VOICE_MEMBERS) throw protocolError(409, 'voice_room_full');
-        info.voice = { enabled: message.enabled, muted: message.muted }; ws.serializeAttachment(info); this.presence(info.room); return;
-      }
-      if (message.type === 'signal') {
-        if (typeof message.to !== 'string' || !message.data || typeof message.data !== 'object' || JSON.stringify(message.data).length > 12000) throw protocolError(400, 'invalid_signal');
-        const targets = peers.filter(peer => peer !== ws && peer.deserializeAttachment().session.id === message.to);
-        if (!targets.length) throw protocolError(400, 'peer_not_in_room');
-        const nearby = targets.filter(target => withinVoiceDistance(info.position, target.deserializeAttachment().position));
-        if (!nearby.length) throw protocolError(400, 'peer_out_of_range');
-        for (const target of nearby) send(target, { type: 'signal', from: info.session.id, data: message.data });
-        return;
-      }
+      const entry = this.handlers.messages.get(message.type); if (!entry) throw Error(ws.room?'invalid_message':'join_required'); if (entry.room && !ws.room) throw Error('join_required');
       if (message.type === 'chat') {
-        const body = typeof message.body === 'string' ? message.body.trim() : '';
-        const clientId = message.clientId;
-        if (!body || body.length > 500 || /[\u0000-\u0008\u000b-\u001f\u007f]/.test(body) || (clientId !== undefined && (typeof clientId !== 'string' || !clientId || clientId.length > 80))) throw protocolError(400, 'invalid_chat');
-        if (!this.allow(`chat:${info.session.id}`, 30)) throw protocolError(429, 'rate_limited');
-        this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', Date.now() - 86400000);
-        const old = clientId && this.sql.exec('SELECT value FROM chat_receipts WHERE sender=? AND room=? AND client_id=?', info.session.id, info.room, clientId).toArray()[0];
-        if (old) {
-          const receipt = JSON.parse(old.value);
-          if (receipt.bodyHash !== bodyHash) throw protocolError(409, 'chat_id_conflict');
-          send(ws, { type: 'chat', id: receipt.id, clientId, from: info.session, body, at: receipt.at }); return;
-        }
-        const chat = { type: 'chat', id: crypto.randomUUID(), clientId, from: info.session, body, at: Date.now() };
-        if (clientId) {
-          this.ctx.storage.transactionSync(() => {
-            this.sql.exec('INSERT INTO chat_receipts(sender,room,client_id,at,value) VALUES(?,?,?,?,?)', info.session.id, info.room, clientId, chat.at, JSON.stringify({ id: chat.id, at: chat.at, bodyHash }));
-            this.sql.exec('DELETE FROM chat_receipts WHERE sender=? AND room=? AND client_id NOT IN (SELECT client_id FROM chat_receipts WHERE sender=? AND room=? ORDER BY at DESC,rowid DESC LIMIT 100)', info.session.id, info.room, info.session.id, info.room);
-          });
-        }
-        for (const peer of peers) send(peer, chat);
-        return;
+        const room = ws.room; const hash = await digest(typeof message.body === 'string' ? message.body.trim() : '');
+        if (ws.room !== room) throw Error('venue_mismatch');
+        Object.defineProperty(ws, 'chatBodyHash', {value:hash,configurable:true});
       }
-      throw protocolError(400, 'invalid_message');
-    } catch (error) {
-      const code = error.code || 'invalid_message';
-      send(ws, { type: 'error', code, error: code, ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) });
-      if (code === 'venue_mismatch' && message?.type !== 'join') this.leave(ws);
-      if (code === 'device_session_required' || error.disconnect) { this.leave(ws, true); ws.close(1008, code); }
-    }
+      await entry.handle(ws, message);
+    } catch (error) { const code = /^[a-z][a-z0-9_]{1,63}$/.test(error.message) ? error.message : 'internal_error'; this.context.send(ws, {type:'error',code,error:code,...(typeof error.reason==='string'?{reason:error.reason}:{}),...(message?.type==='signal'&&typeof message.to==='string'&&UUID_PATTERN.test(message.to)&&message.to!==ws.secret?{to:message.to}:{}),...(message?.type==='chat'&&typeof message.clientId==='string'&&message.clientId.length<=80?{clientId:message.clientId}:{})}); }
+    finally { this.saveSockets(); }
   }
-  webSocketClose(ws, code, reason) { this.leave(ws, true); try { ws.close(code, reason); } catch {} }
-  webSocketError(ws) { this.leave(ws, true); try { ws.close(1011, 'Connection error'); } catch {} }
+  async webSocketClose(socket) { await this.ready; const ws=this.peers.get(socket);if(ws){ws.closed=true;this.handlers.close(ws);this.peers.delete(socket);this.saveSockets();} }
+  async webSocketError(socket) { await this.webSocketClose(socket); }
+  async alarm() {
+    await this.ready;
+    for (const ws of this.peers.values()) {
+      if (ws.readyState !== 1) continue;
+      if (!ws.alive || ws.expiresAt <= Date.now()) {ws.close(1008,'Session inactive');this.handlers.close(ws);continue;}
+      ws.alive=false;ws.pingedAt=Date.now();this.context.send(ws,{type:'heartbeat'});
+    }
+    this.context.emit('heartbeat',{now:Date.now()});this.saveSockets();
+    if ([...this.peers.values()].some(ws=>ws.readyState===1)) await this.ctx.storage.setAlarm(Date.now()+10000);
+  }
 }

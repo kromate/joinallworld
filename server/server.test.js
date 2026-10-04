@@ -8,29 +8,7 @@ import { once } from 'node:events';
 import { WebSocket } from 'ws';
 import { createServer } from './server.js';
 
-async function fixture(t, options = {}) {
-  const dir = await mkdtemp(join(tmpdir(), 'joinallworld-test-'));
-  let time = 100000;
-  const server = await createServer({ dataDir: dir, now: () => time, sessionTtlMs: 2592000000, ...options });
-  server.listen(0, '127.0.0.1'); await once(server, 'listening');
-  const base = `http://127.0.0.1:${server.address().port}`;
-  const sockets = [];
-  t.after(async () => { for (const ws of sockets) ws.terminate(); server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); await rm(dir, { recursive: true, force: true }); });
-  async function request(path, body, cookie) {
-    return fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
-  }
-  async function device(name) { const res = await request('/api/session', { name }); return { cookie: res.headers.get('set-cookie').split(';')[0], ...(await res.json()).session }; }
-  async function action(cookie, fields) { return (await request('/api/action', { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...fields }, cookie)).json(); }
-  async function socket(device) {
-    const ws = new WebSocket(base.replace('http', 'ws') + '/socket', { headers: { Cookie: device.cookie, Origin: base } });
-    sockets.push(ws); const queue = []; const waiting = [];
-    ws.on('message', data => { const message = JSON.parse(data.toString()); const wait = waiting.shift(); if (wait) wait(message); else queue.push(message); });
-    await once(ws, 'open');
-    return { ws, next: () => queue.length ? Promise.resolve(queue.shift()) : new Promise((resolve, reject) => { const timeout = setTimeout(() => reject(Error('Message timeout')), 2000); waiting.push(message => { clearTimeout(timeout); resolve(message); }); }) };
-  }
-  async function joinRoom(device) { const peer = await socket(device); peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await peer.next(); return peer; }
-  return { base, request, device, action, socket, joinRoom, advance: ms => { time += ms; }, dir };
-}
+import { fixture } from './test-fixture.js';
 
 test('device auth, isolation, concurrent duplicate fare, and server time persist', async t => {
   const f = await fixture(t); const a = await f.device('Ada');
@@ -280,7 +258,7 @@ test('departure removes room membership immediately and city switching removes p
 
 test('home presence chat and signals stay isolated between device identities', async t => {
   const f = await fixture(t); const a = await f.device('Ada'); const b = await f.device('Bola');
-  await f.action(a.cookie, { type: 'travel', id: 'home', mode: 'trek' }); await f.action(b.cookie, { type: 'travel', id: 'home', mode: 'trek' }); f.advance(6000);
+  await f.action(a.cookie, { type: 'travel', id: 'home', mode: 'trek' }); await f.action(b.cookie, { type: 'travel', id: 'home', mode: 'trek' }); f.advance(19000); // the trek home takes 18 s
   const x = await f.socket(a); const y = await f.socket(b); const same = await f.socket(a);
   x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' })); assert.equal((await x.next()).members.length, 1);
   y.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' })); assert.equal((await y.next()).members.length, 1);
@@ -306,13 +284,21 @@ test('TURN mint requires a live venue socket and is capped at six requests per m
   assert.equal((await f.request('/api/voice-config', null, a.cookie)).status, 403); assert.equal(minted, 7);
 });
 
-test('paid Home transport is refused without charging while trek is free', async t => {
-  const f = await fixture(t); const a = await f.device('Ada');
-  for (const mode of ['cab', 'keke', 'danfo', 'okada']) {
-    const result = await f.action(a.cookie, { type: 'travel', id: 'home', mode });
-    assert.equal(result.ok, false); assert.equal(result.code, 'home_travel_free_only'); assert.equal(result.state.cash, 5000); assert.equal(result.state.activeAction, null);
+test('Home transport: an invalid mode is refused without charging, a paid ride charges its fare once, trek is free', async t => {
+  const f = await fixture(t); const a = await f.device('Ada'); const b = await f.device('Bola');
+  const invalid = await f.action(a.cookie, { type: 'travel', id: 'home', mode: 'jetpack' });
+  assert.equal(invalid.ok, false); assert.equal(invalid.code, 'invalid_travel'); assert.equal(invalid.state.cash, 5000); assert.equal(invalid.state.activeAction, null);
+  // Freedom Park → Home crosses the lagoon: the far-band fares apply and are taken at departure.
+  for (const [mode, fare] of [['cab', 550], ['keke', 200], ['danfo', 200], ['okada', 300]]) {
+    const rider = await f.device(`Rider ${mode}`);
+    const actionId = `100000:${randomUUID()}`;
+    const body = { actionId, cityId: 'lagos', type: 'travel', id: 'home', mode };
+    const result = await (await f.request('/api/action', body, rider.cookie)).json();
+    assert.equal(result.ok, true, mode); assert.equal(result.state.cash, 5000 - fare, mode); assert.equal(result.state.location, 'park');
+    const replay = await (await f.request('/api/action', body, rider.cookie)).json();
+    assert.equal(replay.duplicate, true); assert.equal(replay.state.cash, 5000 - fare, `${mode} is charged once`);
   }
-  const free = await f.action(a.cookie, { type: 'travel', id: 'home', mode: 'trek' }); assert.equal(free.ok, true); assert.equal(free.state.cash, 5000);
+  const free = await f.action(b.cookie, { type: 'travel', id: 'home', mode: 'trek' }); assert.equal(free.ok, true); assert.equal(free.state.cash, 5000);
 });
 
 test('out-of-range signal error identifies public peer without echoing cookie secret', async t => {

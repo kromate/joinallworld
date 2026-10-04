@@ -1,0 +1,21 @@
+/* Career tab of the Sim sheet. Class names are prefixed with the panel id. */
+.career-head h3{margin:0;font-size:var(--t-title)}
+.career-head p{margin:4px 0;font-size:var(--t-body)}
+.career-schedule{color:var(--c-green-dark);font-weight:600}
+.career-next{font-size:var(--t-body);margin:4px 0 var(--s-3)}
+.career-next span{display:inline-block;margin-right:var(--s-2)}
+.career-next .is-met{color:var(--c-green-dark)}.career-next .is-unmet{color:var(--c-red);font-weight:600}
+.career-chips{display:flex;gap:6px;margin:var(--s-2) 0;padding:0;list-style:none}
+.career-chips li{flex:1;max-width:40px;aspect-ratio:1;border-radius:var(--r-round);display:grid;place-items:center;font-weight:700;font-size:13px;background:var(--c-fill);color:var(--c-muted)}
+.career-chips .is-work{background:var(--c-green);color:#fff}
+.career-chips .is-today{outline:3px solid var(--c-ink);outline-offset:2px}
+.career-legend{font-size:11px;color:var(--c-muted);margin:0 0 var(--s-2)}
+.career-status{border-radius:14px;background:var(--c-fill);padding:var(--s-2) var(--s-3);font-size:var(--t-body);margin:var(--s-2) 0}
+.career-status.is-open{background:var(--c-green-soft);color:var(--c-green-dark);font-weight:600}
+.career-step{font-weight:600;font-size:var(--t-body);margin:var(--s-2) 0}
+.career-actions{display:flex;flex-wrap:wrap;gap:var(--s-2)}
+.career-actions .ui-button{flex:1 1 140px}
+.career-why{color:var(--c-red);font-size:12px;margin:4px 0 0}
+.career-rules{margin:var(--s-3) 0 0;padding-left:18px;font-size:12px;color:var(--c-muted)}
+.career-empty{padding:var(--s-4) 0}
+.career-empty .ui-button{width:100%}

@@ -4,12 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
+    "dev": "node scripts/dev.mjs",
     "build": "vite build",
-    "test": "node --test src/*.test.js server/*.test.js",
+    "test": "node --test \"src/**/*.test.js\" \"server/**/*.test.js\"",
     "start": "node server/server.js",
     "start:server": "node server/server.js",
-    "test:edge": "node --test deploy/*.test.mjs"
+    "test:edge": "node --test deploy/*.test.mjs",
+    "first-day": "node scripts/first-day.mjs",
+    "two-players": "node scripts/two-players.mjs",
+    "economy": "node scripts/economy-sim.mjs",
+    "load": "node scripts/load.mjs"
   },
   "dependencies": {
     "three": "^0.180.0",

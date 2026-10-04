@@ -1,0 +1,19 @@
+/* Report a problem. Class names are prefixed with the panel id. */
+.support-lead{font-size:var(--t-body);margin:0 0 var(--s-2)}
+.support-form{display:flex;flex-direction:column;gap:var(--s-2)}
+.support-form label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600}
+.support-form select,.support-form textarea{font:400 14px var(--font);border:1px solid var(--c-line);border-radius:12px;padding:10px 12px;min-height:44px;background:#fff;color:var(--c-ink);width:100%;box-sizing:border-box}
+.support-form textarea{resize:vertical}
+.support-note{color:var(--c-muted);font-size:12px;margin:0}
+.support-send{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2)}.support-send small{color:var(--c-red);font-size:12px}
+.support-send .ui-button:disabled{opacity:.5;cursor:not-allowed}
+.support-good{color:var(--c-green);font-size:13px;font-weight:600;margin:0}
+.support-error{color:var(--c-red);font-size:13px;font-weight:600;margin:0}
+.support-list{list-style:none;padding:0;margin:0}
+.support-list li{border:1px solid var(--c-line);border-radius:14px;padding:var(--s-2) var(--s-3);margin:var(--s-2) 0}
+.support-list li div{display:flex;justify-content:space-between;gap:var(--s-2);align-items:baseline;font-size:13px}
+.support-list li div span{color:var(--c-muted)}
+.support-list li.is-resolved div span{color:var(--c-green)}
+.support-list li p{margin:4px 0;font-size:var(--t-body);overflow-wrap:anywhere}
+.support-list li small{color:var(--c-muted);font-size:12px}
+.support-reply{border-top:1px solid var(--c-line);padding-top:6px}

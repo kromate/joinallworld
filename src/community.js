@@ -270,6 +270,7 @@ function closePlaybackContext() {
   }
   function receive(event) {
     let message; try { message = JSON.parse(event.data); } catch { return; }
+    if (message.type === 'heartbeat') { if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'heartbeat-ack' })); return; }
     if (message.type === 'presence') {
       const wasRevoked = roomRevoked; members = message.members || [];
       if (roomRevoked && !members.some((member) => member.id === session?.id)) return;

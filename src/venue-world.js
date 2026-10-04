@@ -1,258 +1,321 @@
-import * as THREE from 'three';
+/**
+ * Venue scene host (thin). It owns the renderer, the camera, the two lights and the DOM name
+ * tags, and asks the scene modules for geometry: src/scene/venue-scenes.js for each venue
+ * `scene.kind`, src/scene/home-scene.js for the home interior.
+ *
+ * WHAT A SCENE ENTRY MAY OFFER (all optional except group/camera/update)
+ *   group, camera: { landscape, portrait }, update(state) → boolean
+ *   background          clear colour; re-read after every update() that returns true
+ *   lighting()          → { hemi: [sky, ground, intensity], sun: [colour, intensity, [x, y, z]] }
+ *                       applied to the host's own lights; a scene without it gets HOST_LIGHTING
+ *   setPlayer({ look, seed, name, pose }) → boolean   the player's avatar; seed is the public id
+ *   setCrowd(people)    other players and NPCs standing in the scene
+ *   tags()              → [{ id, kind, text, marker, colour, position }] projected into DOM tags
+ *   dispose()           called when the player leaves the venue and when the host is disposed.
+ *                       A scene that has it is rebuilt on the next visit; one without is kept.
+ *
+ * THE SCENE IS THE HERO: setInsets({ top, bottom }) tells the host how much of the canvas the HUD
+ * covers at the top and the bottom. The camera's view is shifted (and, on a wide screen, gently
+ * zoomed out) so the scene sits in the part that is left free instead of under a panel. Name
+ * tags and taps use the same camera, so they stay exact.
+ *
+ * BATTERY RULE: scenes are static and drawn on demand only. A frame is rendered when the canvas
+ * is resized, the venue changes, the insets change, a scene's update(state) / setPlayer /
+ * setCrowd reports a change, or update() is called — never from a requestAnimationFrame loop or a timer. Name
+ * tags are projected in the same step, so they move only when a frame is drawn.
+ * diagnostics().renderCount proves it: it does not move while nothing changes (asserted in
+ * src/venue-world.test.js).
+ */
+import { createKit } from './scene/kit.js';
+import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD } from './scene/venue-scenes.js';
+import { buildHomeScene } from './scene/home-scene.js';
+import { VENUES } from './game/content/venues.js';
+import { spotsOf } from './life.js';
 
-export function createVenueWorld(container, { location = 'park' } = {}) {
+export const HOST_LIGHTING = Object.freeze({ hemi: ['#bdd4e7', '#273e2b', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]] });
+const DEFAULT_BACKGROUND = '#182a25';
+
+/** The host's two lights. apply(preset) sets them from a scene's lighting(), or back to the defaults. */
+export function createHostLights(THREE, scene) {
+  const hemi = new THREE.HemisphereLight(HOST_LIGHTING.hemi[0], HOST_LIGHTING.hemi[1], HOST_LIGHTING.hemi[2]);
+  const sun = new THREE.DirectionalLight(HOST_LIGHTING.sun[0], HOST_LIGHTING.sun[1]);
+  sun.position.set(...HOST_LIGHTING.sun[2]);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  Object.assign(sun.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 70 });
+  sun.shadow.normalBias = 0.04;
+  scene.add(hemi, sun);
+  return {
+    hemi, sun,
+    apply(preset) {
+      const use = Array.isArray(preset?.hemi) && Array.isArray(preset?.sun) ? preset : HOST_LIGHTING;
+      hemi.color.set(use.hemi[0]); hemi.groundColor.set(use.hemi[1]); hemi.intensity = use.hemi[2];
+      sun.color.set(use.sun[0]); sun.intensity = use.sun[1]; sun.position.set(...use.sun[2]);
+    },
+  };
+}
+
+/** The venue as the scene module should see it: every spot players can stand at, including spots other systems added. */
+export function sceneVenue(id) {
+  const venue = VENUES[id];
+  if (!venue) return venue;
+  return { ...venue, scene: { ...venue.scene, spots: spotsOf(id).map((spot) => ({ id: spot.id, label: spot.label })) } };
+}
+
+export function createVenueWorld(container, { location = 'park', renderer: providedRenderer, onTag } = {}) {
+  const kit = createKit();
+  const { THREE } = kit;
   const scene = new THREE.Scene();
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 2));
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.setClearColor('#182a25');
   container.appendChild(renderer.domElement);
   const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 150);
-  camera.position.set(16, 21, 27);
-  camera.lookAt(0, 0, 0);
-  scene.add(new THREE.HemisphereLight('#bdd4e7', '#273e2b', 1.6));
-  const moon = new THREE.DirectionalLight('#c7dbec', 1.4);
-  moon.position.set(-12, 25, 8);
-  moon.castShadow = true;
-  moon.shadow.mapSize.set(2048, 2048);
-  Object.assign(moon.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 70 });
-  moon.shadow.normalBias = 0.04;
-  scene.add(moon);
-  const park = new THREE.Group();
-  const library = new THREE.Group();
-  const home = new THREE.Group();
-  scene.add(park, library, home);
-  const materials = new Map();
-  const geometries = new Set();
-  const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-  const sphereGeometry = new THREE.SphereGeometry(1, 9, 7);
-  const cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 9);
-  const crownGeometry = new THREE.IcosahedronGeometry(1, 0);
-  [boxGeometry, sphereGeometry, cylinderGeometry, crownGeometry].forEach(g => geometries.add(g));
-  function material(color, glow = false) {
-    const key = `${color}:${glow}`;
-    if (!materials.has(key)) materials.set(key, new THREE.MeshStandardMaterial({ color, roughness: 0.92, ...(glow ? { emissive: color, emissiveIntensity: 1.3 } : {}) }));
-    return materials.get(key);
-  }
-  function mesh(geometry, x, y, z, sx, sy, sz, color, parent, glow = false) {
-    const object = new THREE.Mesh(geometry, material(color, glow));
-    object.position.set(x, y, z);
-    object.scale.set(sx, sy, sz);
-    object.castShadow = !glow;
-    object.receiveShadow = true;
-    parent.add(object);
-    return object;
-  }
-  const box = (x, y, z, w, h, d, c, p, glow) => mesh(boxGeometry, x, y, z, w, h, d, c, p, glow);
-  const round = (x, y, z, r, h, c, p, glow) => mesh(cylinderGeometry, x, y, z, r, h, r, c, p, glow);
-  const sphere = (x, y, z, r, c, p) => mesh(sphereGeometry, x, y, z, r, r, r, c, p);
-  function person(x, z, shirt, pants, { seated = false, rotation = 0, skin = '#986345', hair = '#211d1c', parent = park, y = 0, gesture = false } = {}) {
-    const person = new THREE.Group();
-    person.position.set(x, y, z);
-    person.rotation.y = rotation;
-    parent.add(person);
-    const body = new THREE.Group();
-    person.add(body);
-    box(0, 1.47, 0, 0.6, 0.72, 0.34, shirt, body);
-    round(0, 1.94, 0, 0.1, 0.2, skin, body);
-    sphere(0, 2.2, 0, 0.26, skin, body);
-    mesh(sphereGeometry, 0, 2.34, -0.025, 0.28, 0.19, 0.27, hair, body);
-    box(0, 1.04, 0, 0.5, 0.24, 0.3, pants, body);
-    const limbs = [];
-    for (const side of [-1, 1]) {
-      const arm = new THREE.Group();
-      arm.position.set(side * 0.38, 1.78, 0);
-      arm.rotation.z = side * -0.12;
-      body.add(arm);
-      round(0, -0.21, 0, 0.105, 0.43, shirt, arm);
-      const forearm = new THREE.Group();
-      forearm.position.y = -0.43;
-      forearm.rotation.x = seated ? -0.9 : gesture && side === 1 ? -1.2 : -0.14;
-      arm.add(forearm);
-      round(0, -0.19, 0, 0.078, 0.38, skin, forearm);
-      sphere(0, -0.4, 0, 0.085, skin, forearm);
-      const leg = new THREE.Group();
-      leg.position.set(side * 0.17, 1.02, 0);
-      leg.rotation.x = seated ? -Math.PI / 2 : side * 0.035;
-      body.add(leg);
-      round(0, -0.24, 0, 0.115, 0.49, pants, leg);
-      const calf = new THREE.Group();
-      calf.position.y = -0.49;
-      calf.rotation.x = seated ? Math.PI / 2 : 0;
-      leg.add(calf);
-      round(0, -0.23, 0, 0.095, 0.46, pants, calf);
-      box(0, -0.47, 0.08, 0.24, 0.14, 0.43, '#252c32', calf);
-      limbs.push(arm);
-    }
-    if (seated) body.position.y = -0.85;
-    return person;
-  }
-  function tree(x, z, size = 1) {
-    round(x, 1.45 * size, z, 0.25 * size, 2.9 * size, '#635141', park);
-    mesh(crownGeometry, x, 3.6 * size, z, 1.8 * size, 2.3 * size, 1.7 * size, '#2b6957', park);
-    mesh(crownGeometry, x + 0.8 * size, 4.1 * size, z - 0.3, 1.35 * size, 1.5 * size, 1.3 * size, '#39775b', park);
-  }
-  function lamp(x, z, parent = park) {
-    round(x, 2, z, 0.065, 4, '#344441', parent);
-    box(x, 4.1, z, 0.44, 0.65, 0.44, '#ffe2a2', parent, true);
-    box(x, 4.48, z, 0.65, 0.12, 0.65, '#394a43', parent);
-    const light = new THREE.PointLight('#ffc878', 23, 12, 1.5);
-    light.position.set(x, 3.8, z);
-    parent.add(light);
+  const lights = createHostLights(THREE, scene);
+
+  // Name tags live in the DOM, above the canvas. There is none under `node --test`.
+  const tagLayer = globalThis.document?.createElement ? globalThis.document.createElement('div') : null;
+  if (tagLayer) {
+    tagLayer.className = 'scene-tags';
+    container.appendChild(tagLayer);
+    tagLayer.addEventListener('click', (event) => {
+      const node = event.target.closest?.('[data-tag]');
+      if (node) onTag?.({ id: node.dataset.tag, kind: node.dataset.kind });
+    });
   }
 
-  box(0, -0.28, 0, 42, 0.5, 38, '#3e5141', park);
-  box(1, 0.015, 2, 14, 0.05, 24, '#56624a', park);
-  round(5, 0.35, -6, 4.5, 0.7, '#796a5a', park);
-  round(5, 0.75, -6, 4.25, 0.15, '#917c64', park);
-  for (const x of [1.5, 8.5]) {
-    round(x, 2.6, -9, 0.07, 5.2, '#293e36', park);
-    box(x, 5.15, -9, 0.55, 0.18, 0.6, '#ffd79a', park, true);
+  const built = new Map();
+  let current = null, currentLocation = null, renderCount = 0, lastState = null, size = { width: 0, height: 0 };
+  let player = {}, crowd = [], crowdKey = '[]', shownTags = [], tagKey = '', background = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
+  const point = new THREE.Vector3();
+  const orbit = { yaw: 0, tilt: 0, zoom: 1 };
+  const pointers = new Map();
+  let suppressClick = false;
+  const canvas = renderer.domElement;
+  const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
+  const previousTouchAction = canvas.style?.touchAction;
+  const previousCursor = canvas.style?.cursor;
+  if (canvas.style) { canvas.style.touchAction = 'none'; canvas.style.cursor = 'grab'; }
+  function releasePointers() {
+    for (const id of pointers.keys()) { try { canvas.releasePointerCapture?.(id); } catch {} }
+    pointers.clear();
+    if (canvas.style) canvas.style.cursor = 'grab';
   }
-  box(5, 4.4, -9, 7.2, 0.85, 0.14, '#32483e', park);
-  for (const [x, z, w] of [[3.8, -0.8, 7.8], [3.8, 2.4, 7.8], [-4.7, 4.2, 4]]) {
-    box(x, 0.65, z, w, 0.5, 0.9, '#8c9080', park);
-    box(x, 1, z - 0.45, w, 0.85, 0.2, '#999a8b', park);
-    for (const dx of [-w * 0.32, w * 0.32]) box(x + dx, 0.3, z, 0.5, 0.6, 0.65, '#747e72', park);
+  function resetView() {
+    releasePointers();
+    suppressClick = false;
+    orbit.yaw = 0; orbit.tilt = 0; orbit.zoom = 1;
   }
-  for (const [x, z, scale] of [[-9, -7, 1.15], [-11, 0, 1.2], [-9, 8, 1.35], [-4, -10, 0.95], [-13, 7, 0.9], [-5, 11, 1.05], [11, -11, 0.85]]) tree(x, z, scale);
-  for (const [x, z] of [[-8, -3], [-7, 6], [11, 2]]) lamp(x, z);
-  box(9, 0.14, 8, 5.2, 0.28, 4.2, '#898a78', park);
-  box(9, 1.5, 8, 4.3, 2.8, 2.5, '#aa8642', park);
-  box(9, 2.2, 6.72, 3.45, 1.2, 0.08, '#2c3631', park);
-  box(9, 1.6, 6.45, 4.6, 0.18, 0.7, '#ddba75', park);
-  box(9, 3.1, 7.6, 5.3, 0.23, 4, '#a54741', park);
-  box(9, 2.82, 5.7, 5.3, 0.38, 0.08, '#d6ad4f', park);
-  for (const x of [7.8, 8.6, 9.4, 10.2]) round(x, 1.94, 6.44, 0.075, 0.45, ['#8aab68', '#d4ad60'][Math.round(x) % 2], park);
-  const kioskLight = new THREE.PointLight('#ffd080', 20, 10, 1.4);
-  kioskLight.position.set(9, 2.4, 5.8);
-  park.add(kioskLight);
-  person(4, -6, '#d0a244', '#355eac', { y: 0.84, rotation: -0.4, gesture: true });
-  person(1.5, -0.65, '#4778c7', '#263f70', { seated: true, y: 0.91, rotation: 0.3 });
-  person(6, 2.55, '#d4a34a', '#3970ba', { seated: true, y: 0.91, rotation: -0.2, skin: '#6f4533' });
-  person(-1, 5.8, '#c77594', '#d0c2ae', { rotation: -0.7, skin: '#83543b', gesture: true });
-  person(-2.5, 7, '#496db5', '#806a4c', { rotation: 1.4 });
-  person(-6.2, 3.2, '#9eaeb4', '#333740', { rotation: 0.7, skin: '#674631' });
-  person(6.8, 5.2, '#619489', '#293e54', { rotation: 2.2 });
-  person(10.2, 5, '#d2b976', '#589093', { rotation: -1.6, skin: '#68422f' });
-
-  // A second venue is built from the same original shapes and characters.
-  box(0, -0.2, 0, 28, 0.4, 26, '#333544', library);
-  box(0, 3, -10, 24, 6, 0.35, '#42445d', library);
-  box(-11.5, 3, -2, 0.35, 6, 16, '#3e4259', library);
-  for (const x of [-7, 0, 7]) {
-    box(x, 2.25, -9.5, 5.5, 4.5, 0.75, '#615354', library);
-    for (const y of [0.9, 2.1, 3.3]) {
-      box(x, y, -8.9, 5.3, 0.12, 0.8, '#a18c79', library);
-      for (let i = 0; i < 7; i++) box(x - 2.3 + i * 0.7, y + 0.44, -9, 0.4, 0.76, 0.43, ['#768f91', '#b6867c', '#9c986c', '#7b7394'][i % 4], library);
+  function redrawView() { frame(); renderScene(); }
+  function pointerDown(event) {
+    if (event.button !== 0 || pointers.size >= 2) return;
+    if (!pointers.size) suppressClick = false;
+    else suppressClick = true;
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY });
+    try { canvas.setPointerCapture?.(event.pointerId); } catch {}
+    if (canvas.style) canvas.style.cursor = 'grabbing';
+  }
+  function pointerMove(event) {
+    const previous = pointers.get(event.pointerId);
+    if (!previous) return;
+    const next = { ...previous, x: event.clientX, y: event.clientY };
+    if (!suppressClick && pointers.size === 1) {
+      if (Math.hypot(next.x - previous.startX, next.y - previous.startY) < 6) return;
+      suppressClick = true;
     }
+    if (next.x === previous.x && next.y === previous.y) return;
+    if (pointers.size === 2) {
+      const other = [...pointers.entries()].find(([id]) => id !== event.pointerId)[1];
+      const before = Math.hypot(previous.x - other.x, previous.y - other.y);
+      const after = Math.hypot(next.x - other.x, next.y - other.y);
+      if (before > 4 && after > 4) orbit.zoom = clamp(orbit.zoom * after / before, 0.65, 2);
+    } else {
+      orbit.yaw -= (next.x - previous.x) * 0.006;
+      orbit.tilt = clamp(orbit.tilt + (next.y - previous.y) * 0.004, -0.5, 0.5);
+    }
+    pointers.set(event.pointerId, next);
+    event.preventDefault();
+    redrawView();
   }
-  for (const x of [-5.5, 5.5]) {
-    box(x, 0.7, 2, 5, 0.9, 2, '#776789', library);
-    box(x, 1.35, 1.2, 5, 1.3, 0.4, '#8d7ca0', library);
-    for (const side of [-1, 1]) box(x + side * 2.3, 1, 2, 0.4, 1.1, 2.1, '#665b7b', library);
-    round(x, 0.8, 5, 1.2, 0.15, '#a59b89', library);
-    round(x, 0.38, 5, 0.15, 0.7, '#665f6c', library);
+  function pointerEnd(event) {
+    pointers.delete(event.pointerId);
+    try { canvas.releasePointerCapture?.(event.pointerId); } catch {}
+    if (!pointers.size && canvas.style) canvas.style.cursor = 'grab';
   }
-  round(0, 0.035, 0, 3.8, 0.06, '#4f6173', library);
-  sphere(0, 5.6, -1, 0.62, '#a5acbf', library);
-  const violet = new THREE.PointLight('#c794fa', 55, 22, 1.3);
-  violet.position.set(0, 5, 0);
-  library.add(violet);
-  lamp(-9, 5, library);
-  person(-5.6, 2.2, '#dfb665', '#475e7b', { parent: library, seated: true, y: 0.93 });
-  person(5.5, 2.2, '#bd7e9b', '#454452', { parent: library, seated: true, y: 0.93, rotation: -0.2 });
-  person(0, -3, '#657fb2', '#35445b', { parent: library, rotation: 0.6, gesture: true });
-  // Open walls keep the compact room readable from the overhead camera.
-  box(0, -0.22, 0, 18, 0.4, 17, '#a8987d', home);
-  box(0, 2.25, -8.3, 18, 4.5, 0.25, '#d2c8ac', home);
-  box(-8.85, 2.25, 0, 0.25, 4.5, 17, '#c1c8b3', home);
-  box(-2.8, 0.025, 0.5, 7.1, 0.05, 8.2, '#7e9b91', home);
-  box(-4.8, 0.43, -0.9, 3.7, 0.7, 5.7, '#796654', home);
-  box(-4.8, 0.9, -0.9, 3.55, 0.32, 5.5, '#ebe5d7', home);
-  box(-4.8, 1.12, 0.2, 3.58, 0.13, 3.35, '#af938a', home);
-  box(-4.8, 1.3, -3.8, 3.8, 1.5, 0.23, '#786754', home);
-  for (const x of [-5.7, -3.9]) box(x, 1.15, -2.8, 1.35, 0.2, 0.85, '#f3ead8', home);
-  box(-7.4, 0.8, -2.5, 1.2, 1.5, 1.2, '#998168', home);
-  round(-7.4, 1.82, -2.5, 0.08, 0.52, '#637269', home);
-  round(-7.4, 2.2, -2.5, 0.43, 0.37, '#efcf8f', home, true);
-  const bedsideLight = new THREE.PointLight('#ffe0ab', 12, 10, 1.6);
-  bedsideLight.position.set(-7.4, 2.2, -2.5);
-  home.add(bedsideLight);
-  for (const x of [2, 4, 6]) {
-    box(x, 0.85, -6.8, 1.95, 1.65, 2, '#8c9b83', home);
-    box(x, 1.75, -6.8, 2, 0.16, 2.1, '#ddd5bd', home);
-    box(x, 0.9, -5.76, 0.55, 0.09, 0.05, '#d6cfb7', home);
+  function wheel(event) {
+    if (!Number.isFinite(event.deltaY)) return;
+    event.preventDefault();
+    const units = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? size.height : 1;
+    const zoom = clamp(orbit.zoom * Math.exp(clamp(-event.deltaY * units * 0.001, -1, 1)), 0.65, 2);
+    if (zoom === orbit.zoom) return;
+    orbit.zoom = zoom;
+    redrawView();
   }
-  round(2, 1.87, -6.8, 0.5, 0.09, '#819394', home);
-  round(2, 2.15, -7.5, 0.045, 0.55, '#b6c3bb', home);
-  box(4, 1.87, -6.8, 1.25, 0.08, 1.3, '#414b49', home);
-  for (const x of [3.65, 4.35]) for (const z of [-7.15, -6.45]) round(x, 1.93, z, 0.19, 0.04, '#738077', home);
-  box(7.75, 1.7, -6.7, 1.5, 3.3, 1.8, '#aac3bf', home);
-  box(7.75, 2.35, -5.76, 1.34, 0.04, 0.06, '#789b94', home);
-  box(8.25, 1.9, -5.74, 0.06, 0.75, 0.08, '#dfebe0', home);
-  box(4, 3.35, -8.08, 2.8, 1.3, 0.15, '#7f927e', home);
-  box(4, 3.35, -7.98, 2.3, 0.85, 0.06, '#dac79d', home);
-  box(-3.8, 0.025, -6.7, 5.7, 0.05, 2.9, '#b7c6bc', home);
-  box(-0.7, 1.15, -6.7, 0.15, 2.3, 3, '#d4d5c3', home);
-  box(-5.4, 0.8, -7.65, 1.1, 1.35, 0.45, '#e5e7d9', home);
-  round(-5.4, 0.42, -6.9, 0.55, 0.8, '#e7ebdf', home);
-  round(-5.4, 0.87, -6.8, 0.6, 0.12, '#f4f4e8', home);
-  box(-2.4, 1.15, -7.5, 1.2, 0.2, 1, '#dce3d5', home);
-  box(-2.4, 2.45, -8.08, 1.3, 1.45, 0.08, '#9ab4b4', home);
-  box(3.8, 0.6, 1.4, 4.4, 0.9, 1.9, '#b19c7d', home);
-  box(3.8, 1.15, 0.6, 4.4, 1.4, 0.35, '#a38a70', home);
-  for (const x of [1.7, 5.9]) box(x, 0.95, 1.4, 0.3, 1.2, 2, '#a38a70', home);
-  round(3.8, 0.65, 4.2, 1.1, 0.16, '#d8c9ab', home);
-  round(3.8, 0.32, 4.2, 0.16, 0.6, '#796d58', home);
-  round(7.2, 0.5, 4.5, 0.6, 0.8, '#b99477', home);
-  mesh(crownGeometry, 7.2, 1.75, 4.5, 0.7, 1.35, 0.7, '#6d9273', home);
-  let currentLocation = location;
-  let renderCount = 0;
-  function renderScene() { renderer.render(scene, camera); renderCount += 1; }
-  function setLocation(id) {
-    currentLocation = id;
-    const indoors = ['library', 'club'].includes(id);
-    const atHome = id === 'home';
-    park.visible = !indoors && !atHome;
-    library.visible = indoors;
-    home.visible = atHome;
-    renderer.setClearColor(atHome ? '#879b8a' : indoors ? '#252b3b' : '#182a25');
+  const controls = { pointerdown: pointerDown, pointermove: pointerMove, pointerup: pointerEnd,
+    pointercancel: pointerEnd, lostpointercapture: pointerEnd, wheel,
+    click(event) {
+      if (!suppressClick || event.detail === 0) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    },
+    dblclick(event) {
+      if (suppressClick && event.detail > 0) return;
+      resetView(); redrawView();
+    } };
+  for (const [type, listener] of Object.entries(controls)) canvas.addEventListener?.(type, listener, { passive: false, capture: type === 'click' });
+
+  /** Project the current scene's tags through the camera. Runs with every frame the host draws — never on its own. */
+  function projectTags() {
+    const tags = current?.tags?.() || [];
+    camera.updateMatrixWorld(true);
+    current?.group.updateMatrixWorld(true);
+    shownTags = tags.map((tag) => {
+      point.set(tag.position.x, tag.position.y, tag.position.z);
+      if (current?.group) point.applyMatrix4(current.group.matrixWorld);
+      point.project(camera);
+      return { id: tag.id, kind: tag.kind, text: tag.text, name: tag.name, marker: tag.marker, colour: tag.colour,
+        x: Math.round(((point.x + 1) / 2) * size.width), y: Math.round(((1 - point.y) / 2) * size.height), visible: point.z > -1 && point.z < 1 && Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1 };
+    });
+    if (!tagLayer) return;
+    const next = JSON.stringify(shownTags);
+    if (next === tagKey) return;
+    tagKey = next;
+    tagLayer.replaceChildren(...shownTags.filter((tag) => tag.visible).map((tag) => {
+      // Built with textContent only: a player's name can never become markup.
+      const node = globalThis.document.createElement(tag.kind === 'self' ? 'span' : 'button');
+      node.className = `scene-tag is-${tag.kind}`;
+      node.dataset.tag = tag.id; node.dataset.kind = tag.kind;
+      node.textContent = tag.marker === 'crown' ? '♛' : tag.marker === 'dot' ? '●' : tag.text;
+      node.title = tag.kind === 'self' ? 'You' : tag.name;
+      node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'npc' ? `${tag.name}, a local` : `${tag.name}, a player`);
+      node.style.left = `${tag.x}px`; node.style.top = `${tag.y}px`;
+      return node;
+    }));
   }
-  function resize() {
+  function renderScene() { renderer.render(scene, camera); renderCount += 1; projectTags(); }
+
+  /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
+  function sceneFor(id) {
+    if (!built.has(id)) {
+      const venue = VENUES[id];
+      const entry = venue?.scene?.kind === 'home' ? buildHomeScene(kit, venue) : buildVenueScene(kit, sceneVenue(id));
+      entry.group.visible = false;
+      scene.add(entry.group);
+      built.set(id, entry);
+    }
+    return built.get(id);
+  }
+  /** Take the lighting and clear colour the current scene asks for. */
+  function applyLook() {
+    lights.apply(current?.lighting?.());
+    background = current?.background || DEFAULT_BACKGROUND;
+    renderer.setClearColor(background);
+  }
+  function frame() {
     const { width, height } = container.getBoundingClientRect();
+    size = { width, height };
     camera.aspect = width / Math.max(1, height);
     const portrait = camera.aspect < 0.85;
-    const atHome = currentLocation === 'home';
-    camera.position.set(atHome ? 11 : portrait ? 13 : 16, atHome ? (portrait ? 19 : 16) : portrait ? 24 : 21, atHome ? (portrait ? 24 : 20) : portrait ? 31 : 27);
+    const view = current?.camera || DEFAULT_CAMERA;
+    camera.position.set(...(portrait ? view.portrait : view.landscape));
+    if (orbit.yaw || orbit.tilt) {
+      const offset = new THREE.Spherical().setFromVector3(camera.position.clone().sub(new THREE.Vector3(0, 0.7, 0)));
+      offset.theta += orbit.yaw;
+      offset.phi = clamp(offset.phi + orbit.tilt, 0.25, Math.PI / 2 - 0.1);
+      camera.position.setFromSpherical(offset).add(new THREE.Vector3(0, 0.7, 0));
+    }
     camera.fov = portrait ? 48 : 43;
     camera.lookAt(0, 0.7, 0);
+    // Centre the scene in what the HUD leaves free; on a wide screen also step back a little when little is left.
+    const free = Math.max(160, height - insets.top - insets.bottom);
+    camera.zoom = portrait ? 1 : Math.max(0.74, Math.min(1, free / (height * 0.6)));
+    camera.zoom *= orbit.zoom;
+    // Scenes are composed a little above the point the camera looks at (walls and props rise from the floor).
+    const shift = insets.top || insets.bottom ? Math.round((insets.bottom - insets.top) / 2 - height * 0.06 * camera.zoom) : 0;
+    if (shift && width > 0 && height > 0) camera.setViewOffset(width, height, 0, shift, width, height); else camera.clearViewOffset();
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
+  }
+  function resize() { frame(); renderScene(); }
+  /** Show a venue. Draws one frame only if the venue actually changed. */
+  function setLocation(id) {
+    if (id === currentLocation) return;
+    if (current) {
+      current.group.visible = false;
+      if (typeof current.dispose === 'function') { current.dispose(); scene.remove(current.group); built.delete(currentLocation); }
+    }
+    resetView();
+    currentLocation = id;
+    current = sceneFor(id);
+    current.group.visible = true;
+    current.setPlayer?.(player);
+    current.setCrowd?.(crowd);
+    if (lastState) current.update?.(lastState);
+    applyLook();
+    resize();
+  }
+  /** Give the current scene the latest game state. Draws one frame only if the scene says it changed. */
+  function setState(state) {
+    lastState = state;
+    if (current?.update?.(state)) { applyLook(); renderScene(); }
+  }
+  /** The player's avatar: { look, seed (the session's public id), name, pose? }. One frame if it changed. */
+  function setPlayer(next = {}) {
+    player = { ...next };
+    if (current?.setPlayer?.(player)) renderScene();
+  }
+  /** Other players and NPCs standing here (capped at MAX_CROWD). One frame, and only if the list changed. */
+  function setCrowd(people) {
+    const list = (Array.isArray(people) ? people : []).filter((person) => person && typeof person === 'object').slice(0, MAX_CROWD);
+    const key = JSON.stringify(list);
+    if (key === crowdKey) return false;
+    crowdKey = key; crowd = list;
+    if (!current?.setCrowd) return false;
+    current.setCrowd(crowd);
     renderScene();
+    return true;
   }
   setLocation(location);
-  resize();
   return {
     update() { renderScene(); },
     diagnostics() {
       return {
         renderCount,
-        drawCalls: renderer.info.render.calls,
-        triangles: renderer.info.render.triangles,
-        geometries: renderer.info.memory.geometries,
-        textures: renderer.info.memory.textures,
+        drawCalls: renderer.info?.render.calls,
+        triangles: renderer.info?.render.triangles,
+        geometries: renderer.info?.memory.geometries,
+        textures: renderer.info?.memory.textures,
+        location: currentLocation, background, scenes: built.size, crowd: crowd.length,
+        lighting: { hemi: lights.hemi.intensity, sun: lights.sun.intensity, sky: `#${lights.hemi.color.getHexString()}` },
+        tags: shownTags.map((tag) => ({ ...tag })),
       };
     },
     resize,
+    /** How many CSS pixels of the canvas the HUD covers at the top and bottom. One frame, and only if it changed. */
+    setInsets(next = {}) {
+      const snap = (value) => Math.max(0, Math.round((Number(value) || 0) / 12) * 12);
+      const top = snap(next.top), bottom = snap(next.bottom);
+      if (top === insets.top && bottom === insets.bottom) return false;
+      insets = { top, bottom };
+      resize();
+      return true;
+    },
     setLocation,
+    setState,
+    setPlayer,
+    setCrowd,
     dispose() {
-      geometries.forEach(g => g.dispose());
-      materials.forEach(m => m.dispose());
+      releasePointers();
+      for (const [type, listener] of Object.entries(controls)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
+      if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
+      for (const entry of built.values()) entry.dispose?.();
+      built.clear();
+      kit.dispose();
       renderer.dispose();
-      renderer.domElement.remove();
+      renderer.domElement.remove?.();
+      tagLayer?.remove();
     },
   };
 }

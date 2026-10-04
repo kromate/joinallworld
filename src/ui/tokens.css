@@ -1,0 +1,33 @@
+/* Shared design tokens. Panels use these instead of hard-coded values so the game stays consistent. */
+:root {
+  /* colour */
+  --c-ink: #20232c;
+  --c-muted: #5f6770;
+  --c-surface: rgba(252, 252, 251, .96);
+  --c-surface-solid: #fff;
+  --c-line: #e4e5e3;
+  --c-fill: #f1f3f2;
+  --c-green: #46a86d;
+  --c-green-dark: #256b45;
+  --c-green-soft: #edf4ee;
+  --c-amber: #e8a643;
+  --c-amber-soft: #fff6dc;
+  --c-amber-dark: #7a5a12;
+  --c-red: #a2542a;
+  --c-red-soft: #fbeee6;
+  --c-night: #182a25;
+  /* spacing */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  /* radii */
+  --r-chip: 22px; --r-card: 20px; --r-sheet: 24px; --r-round: 50%;
+  /* type */
+  --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --t-small: 11px; --t-body: 13px; --t-title: 16px; --t-heading: 20px;
+  /* touch: every control is at least this tall and wide */
+  --tap: 44px;
+  /* elevation and motion */
+  --shadow: 0 4px 18px rgba(0, 0, 0, .12);
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, .08);
+  --focus: 3px solid #1c5f3c;
+  --ease: .16s ease-out;
+}

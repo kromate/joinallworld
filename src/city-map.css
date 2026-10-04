@@ -1,0 +1,97 @@
+/* City map (src/city-map.js). The map is 1000 × 700 units; the script sets its size in pixels (zoom)
+   and moves it with a transform (pan). Pins keep one readable size at every zoom. */
+.cmap{position:absolute;inset:0;background:#9ccfe0;font-family:var(--font,'DM Sans',Arial,sans-serif);color:#20232c;overflow:hidden}
+.cmap *{box-sizing:border-box}
+.cmap-view{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab;-webkit-user-select:none;user-select:none}
+.cmap.is-dragging .cmap-view{cursor:grabbing}
+.cmap-world{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.cmap-canvas{position:relative;border-radius:22px;overflow:visible}
+.cmap-art{position:absolute;inset:0;width:100%;height:100%;display:block;border-radius:22px;box-shadow:0 8px 40px #0b2b3a33;pointer-events:none}
+.cmap-pin{position:absolute;transform:translate(-50%,-22px);display:grid;justify-items:center;gap:2px;min-width:44px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit;z-index:1;-webkit-tap-highlight-color:transparent}
+.cmap-pin-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:12px 12px 12px 3px;background:#fff;border:2px solid #2f6a4b;font-size:19px;line-height:1;margin-top:4px;box-shadow:0 3px 8px #0003}
+.cmap-pin-name{max-width:150px;padding:3px 9px;border-radius:12px;background:#fffffff2;font-size:12px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 1px 4px #0002}
+.cmap-pin-note{font-size:10px;font-weight:700;line-height:1.2;padding:2px 7px;border-radius:9px;background:#20242ae6;color:#fff;white-space:nowrap}
+.cmap-pin-note:empty{display:none}
+.cmap-pin-note.is-quiet{background:none;color:#59616b;padding:0;font-weight:600}
+.cmap-pin.is-edge-left{transform:translate(-22px,-22px);justify-items:start}
+.cmap-pin.is-edge-right{transform:translate(calc(-100% + 22px),-22px);justify-items:end}
+.cmap-pin.is-edge-left .cmap-pin-icon{margin-left:4px}.cmap-pin.is-edge-right .cmap-pin-icon{margin-right:4px}
+.cmap-pin:hover{z-index:5}.cmap-pin:hover .cmap-pin-icon{border-color:#c98f2e}
+.cmap-pin:focus-visible{outline:none;z-index:6}
+.cmap-pin:focus-visible .cmap-pin-icon,.cmap-pin:focus-visible .cmap-pin-name{outline:3px solid #14532d;outline-offset:2px}
+/* Home: always the same green roundel, always named */
+.cmap-pin.is-home{z-index:3}
+.cmap-pin.is-home .cmap-pin-icon{width:40px;height:40px;margin-top:2px;background:#256b45;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px #256b45,0 3px 8px #0004}
+.cmap-pin.is-home .cmap-pin-name{background:#256b45;color:#fff}
+.cmap-pin.is-soon .cmap-pin-icon{background:#fff3c4;border:2px dashed #a8761a;filter:grayscale(.3)}
+.cmap-pin.is-soon .cmap-pin-name{background:#ffe9a6;color:#4d3a05}
+.cmap-pin.is-soon .cmap-pin-note{background:none;color:#6b5312;padding:0}
+/* Closed: quiet grey, still tappable (the card says when it opens) */
+.cmap-pin.is-closed .cmap-pin-icon{border-color:#9aa1a8;background:#eef0f1;filter:grayscale(1);opacity:.85;box-shadow:0 1px 3px #0002}
+.cmap-pin.is-closed .cmap-pin-name{color:#59616b;font-weight:600;background:#ffffffd9}
+/* Where you are: an amber ring and "You are here", at every zoom */
+.cmap-pin.is-here{z-index:4}
+.cmap-pin.is-here .cmap-pin-icon{border-color:#e8a643;box-shadow:0 0 0 5px #e8a64366,0 3px 8px #0003}
+.cmap-pin.is-home.is-here .cmap-pin-icon{box-shadow:0 0 0 2px #256b45,0 0 0 7px #e8a64380,0 3px 8px #0004}
+.cmap-pin.is-here .cmap-pin-note{background:#8a5a12}
+.cmap-pin.is-going .cmap-pin-icon{border-style:dashed;border-color:#256b45}
+.cmap-pin.is-selected{z-index:5}
+.cmap-pin.is-selected .cmap-pin-icon{border-color:#14532d;box-shadow:0 0 0 4px #14532d55,0 3px 8px #0003;filter:none;opacity:1}
+.cmap-pin.is-selected .cmap-pin-name{background:#20232c;color:#fff}
+.cmap-pin.is-dimmed{opacity:.3}
+.cmap-pin.is-dimmed:hover,.cmap-pin.is-dimmed:focus-visible{opacity:1}
+/* Zoomed out: icons only, except Home, where you are, where you are going and the selected place */
+.cmap.is-compact .cmap-pin-icon{width:26px;height:26px;font-size:14px;border-width:1.5px;border-radius:9px 9px 9px 3px}
+.cmap.is-compact .cmap-pin{transform:translate(-50%,-22px)}
+.cmap.is-compact .cmap-pin.is-edge-left{transform:translate(-22px,-22px)}
+.cmap.is-compact .cmap-pin.is-edge-right{transform:translate(calc(-100% + 22px),-22px)}
+.cmap.is-compact .cmap-pin-icon{margin-top:9px}
+.cmap.is-compact .cmap-pin.is-home .cmap-pin-icon{width:32px;height:32px;margin-top:6px;border-width:3px;border-radius:50%}
+.cmap.is-compact .cmap-pin:not(.is-home):not(.is-here):not(.is-selected):not(.is-going):not(:hover):not(:focus-visible) .cmap-pin-name,
+.cmap.is-compact .cmap-pin:not(.is-here):not(.is-going) .cmap-pin-note{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.cmap.is-compact .cmap-pin-name{font-size:11px;padding:2px 7px}
+.cmap.is-compact .cmap-art text{display:none}
+
+/* View controls: zoom in, zoom out, whole city, find me */
+.cmap-controls{position:absolute;right:14px;bottom:104px;display:grid;gap:6px;z-index:8}
+.cmap-controls button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid #fff;border-radius:50%;background:#fffffff5;color:#20232c;box-shadow:0 2px 8px #0003;cursor:pointer}
+.cmap-controls button{touch-action:manipulation}
+.cmap-controls button svg{width:20px;height:20px}
+.cmap-controls button[aria-disabled=true]{opacity:.45;cursor:default}
+.cmap-controls button:focus-visible{outline:3px solid #14532d;outline-offset:2px}
+/* "Whole city" is the one reset, so it says what it does */
+.cmap-controls{justify-items:end}
+.cmap-controls button.cmap-fit{display:flex;align-items:center;gap:6px;width:auto;padding:0 14px 0 12px;border-radius:22px;font-family:inherit;font-size:12px;font-weight:700;line-height:1;white-space:nowrap}
+/* A phone: one row just above the bottom sheet, in reach of the thumb and clear of the pins above it */
+@media(max-width:720px){.cmap-controls{right:8px;top:auto;bottom:var(--cmap-dock,150px);grid-auto-flow:column;align-items:center}}
+
+/* How to use the map: shown under the top bar until the player first moves the map or picks a place */
+.cmap-hint{position:absolute;left:var(--cmap-free-left,10px);top:var(--cmap-free-top,66px);z-index:7;margin:0;max-width:calc(100% - 20px);padding:7px 12px;border-radius:14px;background:#20242ae6;color:#fff;font-size:12px;font-weight:600;line-height:1.3;pointer-events:none}
+
+/* Civic overlays (billboards, neighbours, Governor) and the sea plots below the city. None of the ads is interactive. */
+.cmap-overlay{position:absolute;inset:0;pointer-events:none;z-index:2}
+.cmap-board{position:absolute;transform:translate(-50%,-100%);display:flex;align-items:center;gap:4px;max-width:128px;padding:4px 7px;border-radius:6px;border:2px solid #20232c;font-size:10px;font-weight:700;line-height:1.2;box-shadow:0 3px 0 #20232c;pointer-events:none}
+.cmap-board::after{content:"";position:absolute;left:50%;top:100%;width:3px;height:10px;margin-left:-1.5px;background:#20232c}
+.cmap-board-text{overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+.cmap-board.is-free{background:#fffffff0;color:#6b6247;border-style:dashed;border-color:#8a7a4a;box-shadow:none;font-weight:600}
+/* A free slot is a small quiet marker (its full name is in its label for screen readers); rented boards shrink when zoomed out */
+.cmap-board.is-free{padding:2px 5px}.cmap-board.is-free .cmap-board-text{display:none}.cmap-board.is-free::before{content:"📢";font-size:12px}
+.cmap.is-compact .cmap-board{max-width:34px;padding:3px 5px}.cmap.is-compact .cmap-board-text{display:none}
+.cmap-hood{position:absolute;transform:translate(-50%,0);display:grid;gap:3px;justify-items:center;pointer-events:auto;max-width:170px}
+.cmap-hood-label{font-size:10px;font-weight:700;padding:2px 7px;border-radius:9px;background:#256b45;color:#fff;white-space:nowrap}
+.cmap-hood-homes{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:170px}
+.cmap-house{position:relative;display:grid;place-items:center;width:26px;height:26px;padding:0;border:0;border-radius:8px;background:#fffffff2;font-size:14px;line-height:1;box-shadow:0 1px 3px #0003}
+button.cmap-house{cursor:pointer}
+.cmap-house.is-online::after{content:"";position:absolute;right:-1px;top:-1px;width:8px;height:8px;border-radius:50%;background:#2fbf71;border:2px solid #fff}
+.cmap-house.is-you{background:#ffe9b0}
+.cmap-house:focus-visible{outline:3px solid #14532d;outline-offset:1px}
+.cmap-hood-more{font-size:10px;font-weight:700;align-self:center;padding:0 4px;color:#20232c}
+.cmap-gov{position:absolute;transform:translate(-50%,-100%);font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;background:#3b2a6b;color:#fff;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.cmap-pin.is-gov .cmap-pin-icon{border-color:#3b2a6b;box-shadow:0 0 0 5px #3b2a6b40,0 3px 8px #0003}
+.cmap-sea{width:100%;margin:18px 0 0}
+.cmap-sea-title{margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:2px;color:#2f6f86}
+.cmap-sea-grid{display:grid;gap:3px;padding:10px;border-radius:18px;background:#8ac4d8}
+.cmap-plot{aspect-ratio:5/4;min-width:0;border-radius:6px;background:#ffffff38;display:grid;align-content:center;justify-items:center;gap:1px;padding:2px;overflow:hidden;font-size:9px;font-weight:700;line-height:1.1;text-align:center}
+.cmap-plot.is-shore{background:#ffffff5c}
+.cmap-plot-icon{font-size:13px;line-height:1}
+.cmap-plot-text{max-width:100%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}

@@ -1,247 +1,119 @@
-const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
-const clamp = (value) => Math.min(100, Math.max(0, value));
-const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
-const finite = (value) => typeof value === 'number' && Number.isFinite(value);
-const result = (state, ok, code) => ({ ok, code, state });
-
-// Five seconds is a local preview convenience; reference travel timing is unknown.
-export const PREVIEW_TRAVEL_DURATION = 5;
-export const TRAVEL_OPTIONS = Object.freeze({ trek: 0, keke: 150, danfo: 150, okada: 200, cab: 400 });
-export const TRAVEL_EVIDENCE = Object.freeze({
-  source: 'A06: observed transport menu fees',
-  placeholder: true,
-  timing: 'Five-second local-preview duration; exact reference duration and roadside events unverified.',
-  cancellation: 'No refund in local preview; reference cancellation policy unverified.',
-});
-
-const actions = {
-  chill: { id: 'chill', label: 'Chill Under the Trees', duration: 11, cost: 0, effects: { energy: 4, fun: 10 } },
-  'stage-play': { id: 'stage-play', label: 'Stage Play', duration: 14, cost: 400, tags: ['fun'], unavailable: true },
-  comedy: { id: 'comedy', label: 'Comedy', duration: 11, cost: 500, tags: ['fun', 'social'], unavailable: true },
-  'spoken-word': { id: 'spoken-word', label: 'Spoken Word', duration: 9, cost: 0, choice: 'Choose', unavailable: true },
-  'perform-comedy': { id: 'perform-comedy', label: 'Perform Comedy', duration: 11, requiredSkill: { name: 'Comedy', level: 3 }, locked: true, unavailable: true },
-  'play-ayo': { id: 'play-ayo', label: 'Play Ayo', duration: 7, cost: 0, tags: ['fun', 'social'], unavailable: true },
-  garri: { id: 'garri', label: 'Eat Garri', duration: 5, cost: 0, effects: { hunger: 20 }, beta: true,
-    source: 'Home observation: Garri completed in 5 seconds, hunger 80 → 100.',
-    evidence: 'Beta extrapolation: +20 hunger for other starting values, capped at 100.' },
-  bath: { id: 'bath', label: 'Take a Bath', duration: 6, cost: 0, effects: { hygiene: 25 }, beta: true,
-    source: 'Home Bath observation supplied in this task: 6 seconds, hygiene +25.',
-    evidence: 'Completion-only hygiene +25, capped at 100; free in beta.' },
-  nap: { id: 'nap', label: 'Take a Nap', duration: 15, cost: 0, effects: {}, effectsPerSecond: { energy: 2 }, beta: true,
-    source: 'Home Nap observation: energy 75 → 91 mid-action, 98 at wake.',
-    evidence: 'Beta rate: +2 energy per elapsed second, capped at 100; accrued energy survives cancellation.' },
-  'helper-shift': { id: 'helper-shift', label: 'Community helper shift', duration: 20, cost: 0,
-    reward: 300, requiresJob: 'community-helper', minimumNeeds: { energy: 20, hunger: 20 },
-    effects: { energy: -10, hunger: -5 }, beta: true,
-    source: 'Original Community helper beta gameplay; not a reference-game job.',
-    evidence: '20-second shift: ₦300 on completion, energy −10, hunger −5. Cancellation grants no reward or effects.' },
-};
-for (const action of Object.values(actions)) {
-  action.source ??= action.id === 'chill' ? 'A05: completed Freedom Park Chill observation'
-    : 'A05: Freedom Park activity menu observations';
-  action.placeholder = Boolean(action.unavailable);
-  action.evidence ??= action.unavailable ? 'Label and requirements observed; completion outcome unverified.'
-    : 'Completed Chill: 11 seconds, energy +4, fun +10.';
-}
-
-export const VENUES = {
-  park: {
-    id: 'park', label: 'Freedom Park', district: 'Lagos Island',
-    spots: {
-      amphitheatre: { id: 'amphitheatre', label: 'Amphitheatre', actions: [actions['stage-play'], actions.comedy, actions['spoken-word'], actions['perform-comedy']] },
-      art: { id: 'art', label: 'Art gallery', actions: [] },
-      trees: { id: 'trees', label: 'Under the trees', actions: [actions.chill, actions['play-ayo']] },
-      drinks: { id: 'drinks', label: 'Drinks kiosk', actions: [] },
-      people: { id: 'people', label: 'People', actions: [] },
-      work: { id: 'work', label: 'Community desk', beta: true,
-        source: 'Original Community helper beta gameplay', actions: [actions['helper-shift']] },
-    },
-  },
-  library: { id: 'library', label: 'The Library', district: 'Victoria Island', spots: {} },
-  home: {
-    id: 'home', label: 'Home', district: 'Local beta home', beta: true,
-    source: 'Home activity observations supplied in this task',
-    travelLabel: 'Free beta travel', travelMode: 'trek',
-    spots: {
-      kitchen: { id: 'kitchen', label: 'Kitchen', actions: [actions.garri] },
-      bathroom: { id: 'bathroom', label: 'Bathroom', actions: [actions.bath] },
-      bedroom: { id: 'bedroom', label: 'Bedroom', actions: [actions.nap] },
-    },
-  },
-};
-for (const venue of Object.values(VENUES)) {
-  venue.source ??= venue.id === 'park' ? 'A05: Freedom Park venue and spot observations'
-    : 'A06: destination menu observation';
-  venue.placeholder = venue.id === 'library';
-  for (const spot of Object.values(venue.spots)) {
-    spot.source ??= venue.source;
-    spot.placeholder = spot.actions.length === 0;
-  }
-}
-
-const defaultSpot = (location) => location === 'park' ? 'amphitheatre' : location === 'home' ? 'kitchen' : null;
-
-function validActive(value, location, job) {
-  if (!isRecord(value) || !finite(value.remaining) || value.remaining <= 0) return null;
-  if (value.kind === 'activity') {
-    const action = actions[value.id];
-    const belongs = Object.values(VENUES[location].spots).some((spot) => spot.actions.includes(action));
-    if (!belongs || !action || action.unavailable || value.duration !== action.duration
-      || value.remaining > action.duration || (action.requiresJob && job !== action.requiresJob)) return null;
-    return { kind: 'activity', id: action.id, duration: action.duration, remaining: value.remaining };
-  }
-  if (value.kind === 'travel' && Object.hasOwn(VENUES, value.id)
-    && value.id !== location && value.duration === PREVIEW_TRAVEL_DURATION
-    && value.remaining <= PREVIEW_TRAVEL_DURATION) {
-    return { kind: 'travel', id: value.id, duration: PREVIEW_TRAVEL_DURATION, remaining: value.remaining };
-  }
-  return null;
-}
-
-/** Fresh local-preview seed: ₦5,000 and all needs 50, not reference-game defaults.
- * Valid saved values take precedence. Needs are satisfaction scores from 0 to 100.
- * Mutations return {ok,code,state}; createLife returns state itself.
- * Remaining time is restored as saved: offline time is paused, with no wall-clock catchup.
+/**
+ * Public entry to the rules engine, shared by the Node server, the Cloudflare worker and
+ * the browser (display only). Pure: no I/O and no clocks other than ctx.now.
+ *
+ *   createLife(saved, ctx?)        build a valid state from untrusted saved input
+ *   dispatch(state, body, ctx?)    apply one player action → { ok, code, state, reason? }
+ *   advanceLife(state, dt, ctx?)   settle `dt` seconds: timed action, then every system's advance
+ *   viewLife(state, ctx?)          derived display data, { [systemId]: view }
+ *
+ * Systems live in src/game/systems and are registered by src/game/systems/index.js; the
+ * contract for adding to them is at the top of src/game/registry.js.
+ *
+ * State versions: `state.v` is the global schema version. A save without `v` is the
+ * pre-registry format (v0). MIGRATIONS[n] upgrades a raw save from version n to n+1 before
+ * any system sanitizes it; each system then validates its own slice and fills defaults, so
+ * fields that did not exist when a save was written simply start at their defaults.
  */
-export function createLife(saved) {
-  const input = isRecord(saved) ? saved : {};
-  const location = Object.hasOwn(VENUES, input.location) ? input.location : 'park';
-  const spots = VENUES[location].spots;
-  const job = input.job === 'community-helper' ? input.job : null;
-  const needs = {};
-  for (const need of NEEDS) {
-    const value = isRecord(input.needs) ? input.needs[need] : input[need];
-    needs[need] = finite(value) ? clamp(value) : 50;
-  }
-  return {
-    cash: Number.isSafeInteger(input.cash) && input.cash >= 0 ? input.cash : 5000,
-    name: typeof input.name === 'string' ? input.name.trim().slice(0, 24) || 'New Lagosian' : 'New Lagosian',
-    homeOwned: input.homeOwned === true,
-    job,
-    completedShifts: Number.isSafeInteger(input.completedShifts) && input.completedShifts >= 0 ? input.completedShifts : 0,
-    needs,
-    location,
-    spot: Object.hasOwn(spots, input.spot) ? input.spot : defaultSpot(location),
-    activeAction: validActive(input.activeAction, location, job),
-    message: typeof input.message === 'string' && input.message.length <= 500 ? input.message : '',
-  };
+import './game/systems/index.js';
+import { systems, actionHandler, hasAction, actionTypes, modify, serverOnlyReason, guardState } from './game/registry.js';
+import { fail, finite, isRecord, makeContext } from './game/util.js';
+import { STATE_VERSION, sanitizeActive, advanceActive } from './game/systems/core.js';
+import { NEEDS } from './game/systems/needs.js';
+import { VENUES } from './game/content/venues.js';
+import { TRAVEL_MODES, TRAVEL_DURATION } from './game/content/travel.js';
+
+export { VENUES, STATE_VERSION, NEEDS, makeContext, actionTypes, hasAction };
+export { spotsOf } from './game/systems/activities.js';
+
+/** Legacy names kept for existing callers. Fares by mode, and the flat beta trip time. */
+export const TRAVEL_OPTIONS = Object.freeze(Object.fromEntries(Object.values(TRAVEL_MODES).map((mode) => [mode.id, mode.fare])));
+export const PREVIEW_TRAVEL_DURATION = TRAVEL_DURATION;
+
+const MIGRATIONS = [
+  // v0 → v1: the earliest saves kept needs as flat top-level numbers; everything else carries over as-is.
+  (input) => {
+    const needs = isRecord(input.needs) ? input.needs : Object.fromEntries(NEEDS.filter((need) => finite(input[need])).map((need) => [need, input[need]]));
+    return { ...input, needs, v: 1 };
+  },
+];
+
+export function migrate(saved) {
+  let input = isRecord(saved) ? saved : {};
+  let version = Number.isInteger(input.v) && input.v >= 0 ? input.v : 0;
+  while (version < STATE_VERSION) input = MIGRATIONS[version++](input);
+  return input;
 }
 
-/** Enrol in the original beta job. No application fee, immediate reward or reference schedule. */
-export function applyJob(state, id) {
-  if (state.activeAction) {
-    state.message = 'Finish or cancel your current action before applying.';
-    return result(state, false, 'busy');
-  }
-  if (id !== 'community-helper') {
-    state.message = 'Choose the Community helper beta job.';
-    return result(state, false, 'invalid_job');
-  }
-  if (state.job === id) {
-    state.message = 'You already work as a Community helper. Visit the Community desk in Freedom Park.';
-    return result(state, true, 'already_employed');
-  }
-  state.job = id;
-  state.message = 'Community helper job accepted. Visit the Community desk in Freedom Park to work a shift.';
-  return result(state, true, 'applied');
+const contextFor = (state, ctx, seed) => (ctx && typeof ctx.rng === 'function' ? ctx
+  : makeContext({ ...ctx, now: finite(ctx?.now) ? ctx.now : state?.t ?? 0, cityId: ctx?.cityId ?? 'lagos', seed }));
+
+/**
+ * Build a life from saved input. Nothing in `saved` is trusted: every system rebuilds its own
+ * keys, unknown keys are dropped, and malformed values fall back to defaults. Calling it on an
+ * already-valid state returns an equal deep copy. The beta seed is ₦5,000 and all needs at 50.
+ * Only the authoritative persistence adapter may set ctx.trustedSave: invalidated prepaid
+ * actions then refund their stored payment once. Never use that flag for client/imported data.
+ */
+export function createLife(saved, ctx) {
+  const context = contextFor(null, { isNew: !isRecord(saved), ...ctx }, 'create');
+  const input = migrate(saved);
+  const state = {};
+  for (const system of systems()) system.sanitize(input, guardState(state, system.stateKeys), context);
+  sanitizeActive(input, guardState(state), context);
+  return state;
 }
 
-export function startActivity(state, id) {
-  if (state.activeAction) {
-    state.message = 'Finish or cancel your current action first.';
-    return result(state, false, 'busy');
-  }
-  const spot = VENUES[state.location]?.spots[state.spot];
-  const action = spot?.actions.find((item) => item.id === id);
-  if (!action || action.unavailable || action.locked) {
-    state.message = 'This activity is unavailable in the local preview.';
-    return result(state, false, 'unavailable');
-  } else if (action.requiresJob && state.job !== action.requiresJob) {
-    state.message = 'Apply for the Community helper beta job before starting a shift.';
-    return result(state, false, 'job_required');
-  } else if (Object.entries(action.minimumNeeds ?? {}).some(([need, minimum]) => state.needs[need] < minimum)) {
-    state.message = 'This shift requires at least 20 energy and 20 hunger. Eat and rest at Home first.';
-    return result(state, false, 'needs_required');
-  } else if (action.reward && (!Number.isSafeInteger(state.cash + action.reward)
-    || state.completedShifts >= Number.MAX_SAFE_INTEGER)) {
-    state.message = 'Your saved balance or shift count has reached its supported limit.';
-    return result(state, false, 'balance_limit');
-  } else if (state.cash < action.cost) {
-    state.message = 'You do not have enough cash for this activity.';
-    return result(state, false, 'insufficient_funds');
-  } else {
-    state.cash -= action.cost;
-    state.activeAction = { kind: 'activity', id, duration: action.duration, remaining: action.duration };
-    state.message = action.label;
-  }
-  return result(state, true, 'started');
+/**
+ * Apply one action. `body` is `{ type, payload? }`; the legacy top-level `id` and `mode`
+ * fields are folded into the payload. Throws for an unknown type (callers validate first).
+ * Before the handler runs every system may veto the action through the 'action.block' modifier
+ * (data { type, payload }); a veto is an ordinary failure with its code and reason.
+ * A server-only action (registry.js) is refused with 'server_only' unless ctx.internal === true:
+ * that flag is set by the route host's ctx.act and by nothing a player can reach.
+ */
+export function dispatch(state, body, ctx) {
+  const handler = actionHandler(body?.type);
+  if (!handler) throw new Error('Invalid action type');
+  const payload = { ...(isRecord(body.payload) ? body.payload : {}) };
+  if (body.id !== undefined && payload.id === undefined) payload.id = body.id;
+  if (body.mode !== undefined && payload.mode === undefined) payload.mode = body.mode;
+  const context = contextFor(state, ctx, `action|${body.actionId ?? ''}`);
+  const refusal = serverOnlyReason(body.type);
+  if (refusal && context.internal !== true) return fail(state, 'server_only', refusal);
+  const guarded = guardState(state);
+  const veto = modify(guarded, 'action.block', null, { type: body.type, payload }, context);
+  if (isRecord(veto) && typeof veto.code === 'string') return fail(state, veto.code, typeof veto.reason === 'string' ? veto.reason : 'That is not possible right now.');
+  const result = handler(guarded, payload, context);
+  return { ...result, state };
 }
 
-/** Cancel skips completion effects, keeps accrued Nap energy and refunds no travel fare (beta policy). */
-export function cancelActivity(state) {
-  if (state.activeAction) {
-    state.activeAction = null;
-    state.message = 'Action cancelled.';
-    return result(state, true, 'cancelled');
-  }
-  return result(state, false, 'idle');
+/**
+ * Settle `dt` seconds. The timed action advances first, then every system's advance() runs —
+ * always, so needs decay and bills fall due whether or not the player is doing anything.
+ * Returns { ok, code: 'idle' | 'advanced' | 'completed' | 'invalid_time', state }.
+ */
+export function advanceLife(state, dt, ctx) {
+  if (!finite(dt) || dt <= 0) return { ok: false, code: 'invalid_time', state };
+  const now = finite(ctx?.now) ? ctx.now : state.t + dt * 1000;
+  const context = contextFor(state, { ...ctx, now }, `settle|${state.t}|${now}`);
+  const guarded = guardState(state);
+  const code = advanceActive(guarded, dt, context);
+  for (const system of systems()) system.advance?.(guarded, dt, context);
+  state.t = now;
+  return { ok: true, code, state };
 }
 
-export function advanceLife(state, dt) {
-  if (!finite(dt) || dt <= 0) return result(state, false, 'invalid_time');
-  if (!state.activeAction) return result(state, true, 'idle');
-  const active = state.activeAction;
-  const elapsed = Math.min(dt, active.remaining);
-  if (active.kind === 'activity') {
-    for (const [need, rate] of Object.entries(actions[active.id].effectsPerSecond ?? {})) {
-      state.needs[need] = clamp(state.needs[need] + rate * elapsed);
-    }
-  }
-  active.remaining = Math.max(0, active.remaining - dt);
-  if (active.remaining > 0) return result(state, true, 'advanced');
-  state.activeAction = null;
-  if (active.kind === 'activity') {
-    const action = actions[active.id];
-    for (const [need, amount] of Object.entries(action.effects)) {
-      state.needs[need] = clamp(state.needs[need] + amount);
-    }
-    if (action.reward) {
-      state.cash += action.reward;
-      state.completedShifts += 1;
-    }
-    state.message = action.reward ? `${action.label} completed. You earned ₦${action.reward}.`
-      : `${action.label} completed.`;
-  } else {
-    state.location = active.id;
-    state.spot = defaultSpot(active.id);
-    state.message = `Arrived at ${VENUES[active.id].label}.`;
-  }
-  return result(state, true, 'completed');
+/** Derived, display-only data from every system that defines view(). Never mutates state. */
+export function viewLife(state, ctx) {
+  const context = contextFor(state, ctx, 'view');
+  const view = {};
+  for (const system of systems()) if (system.view) view[system.id] = system.view(state, context);
+  return view;
 }
 
-export function startTravel(state, destination, mode) {
-  if (state.activeAction) {
-    state.message = 'Finish or cancel your current action first.';
-    return result(state, false, 'busy');
-  } else if (!Object.hasOwn(VENUES, destination) || !Object.hasOwn(TRAVEL_OPTIONS, mode)) {
-    state.message = 'Choose a valid destination and travel option.';
-    return result(state, false, 'invalid_travel');
-  } else if (destination === 'home' && mode !== 'trek') {
-    state.message = 'Home uses free beta travel. Choose trek.';
-    return result(state, false, 'home_travel_free_only');
-  } else if (destination === state.location) {
-    state.message = 'You are already here.';
-    return result(state, false, 'already_here');
-  } else if (state.cash < TRAVEL_OPTIONS[mode]) {
-    state.message = 'You do not have enough cash for this fare.';
-    return result(state, false, 'insufficient_funds');
-  } else {
-    state.cash -= TRAVEL_OPTIONS[mode];
-    state.activeAction = {
-      kind: 'travel', id: destination,
-      duration: PREVIEW_TRAVEL_DURATION, remaining: PREVIEW_TRAVEL_DURATION,
-    };
-    state.message = `Travelling to ${VENUES[destination].label}.`;
-  }
-  return result(state, true, 'started');
-}
+// Thin named wrappers kept for older callers and tests.
+export const startActivity = (state, id, ctx) => dispatch(state, { type: 'activity', id }, ctx);
+export const cancelActivity = (state, ctx) => dispatch(state, { type: 'cancel' }, ctx);
+export const startTravel = (state, destination, mode, ctx) => dispatch(state, { type: 'travel', id: destination, mode }, ctx);
+export const applyJob = (state, id, ctx) => dispatch(state, { type: 'apply-job', id }, ctx);

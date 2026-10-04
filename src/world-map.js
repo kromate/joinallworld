@@ -93,8 +93,16 @@ export function createWorldMap(container, { onSelectCity } = {}) {
     const rect = svg.getBoundingClientRect();
     return 1 / Math.max(0.001, Math.min(rect.width / WIDTH, rect.height / HEIGHT));
   }
+  /** A screen point in the map's own units (the SVG is centred in its box at every size). */
+  function toUnits(clientX, clientY) {
+    const rect = svg.getBoundingClientRect(), scale = unitPerPixel();
+    return { x: (clientX - rect.left - rect.width / 2) * scale + CENTER_X, y: (clientY - rect.top - rect.height / 2) * scale + CENTER_Y };
+  }
   function draw() {
     if (destroyed) return;
+    // The middle of the view always stays over the map, so it can not be dragged out of sight.
+    panX = clamp(panX, -WIDTH * zoom / 2, WIDTH * zoom / 2);
+    panY = clamp(panY, -HEIGHT * zoom / 2, HEIGHT * zoom / 2);
     geography.setAttribute('transform', `translate(${CENTER_X + panX} ${CENTER_Y + panY}) rotate(${rotation}) scale(${zoom}) translate(${-CENTER_X} ${-CENTER_Y})`);
     const radians = rotation * Math.PI / 180;
     const scale = unitPerPixel();
@@ -146,7 +154,14 @@ export function createWorldMap(container, { onSelectCity } = {}) {
     const city = CITIES.find(value => value.id === id);
     if (city) onSelectCity?.({ id: city.id, label: city.label, country: city.country, region: city.region });
   }
-  function adjustZoom(factor) { zoom = clamp(zoom * factor, 0.65, 12); draw(); }
+  /** Zoom keeping the map point under `at` (map units; the middle of the view by default) where it is. */
+  function adjustZoom(factor, at) {
+    const next = clamp(zoom * factor, 0.65, 12), ratio = next / zoom;
+    const sx = (at?.x ?? CENTER_X) - CENTER_X, sy = (at?.y ?? CENTER_Y) - CENTER_Y;
+    panX = sx - (sx - panX) * ratio; panY = sy - (sy - panY) * ratio;
+    zoom = next;
+    draw();
+  }
   function reset() { zoom = 1; rotation = 0; panX = 0; panY = 0; draw(); }
   element.querySelectorAll('[data-city]').forEach(node => {
     listen(node, 'click', () => select(node.dataset.city));
@@ -163,11 +178,17 @@ export function createWorldMap(container, { onSelectCity } = {}) {
       case 'reset': reset(); break;
     }
   }));
-  listen(svg, 'wheel', event => { event.preventDefault(); adjustZoom(Math.exp(-clamp(event.deltaY, -120, 120) * 0.003)); }, { passive: false });
+  listen(svg, 'wheel', event => {
+    event.preventDefault();
+    // Line and page based wheels (deltaMode 1 and 2) report far smaller numbers than pixel based ones.
+    const delta = event.deltaY * (event.deltaMode === 1 ? 32 : event.deltaMode === 2 ? 320 : 1);
+    adjustZoom(Math.exp(-clamp(delta, -120, 120) * 0.003), toUnits(event.clientX, event.clientY));
+  }, { passive: false });
   listen(svg, 'pointerdown', event => {
     if (event.target.closest('[data-city]') || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    if (event.isPrimary) pointers.clear(); // no other finger is down: drop any press whose release was never seen
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    svg.setPointerCapture(event.pointerId);
+    try { svg.setPointerCapture(event.pointerId); } catch { /* the pointer is already gone */ }
     svg.classList.add('is-dragging');
   });
   listen(svg, 'pointermove', event => {
@@ -180,13 +201,12 @@ export function createWorldMap(container, { onSelectCity } = {}) {
       panX += (event.clientX - previous.x) * unitPerPixel();
       panY += (event.clientY - previous.y) * unitPerPixel();
     } else if (after.length === 2) {
+      // Two fingers move the map and zoom it about the point between them.
       const distance = points => Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-      if (distance(before) > 1) zoom = clamp(zoom * distance(after) / distance(before), 0.65, 12);
       panX += ((after[0].x + after[1].x) - (before[0].x + before[1].x)) * 0.5 * unitPerPixel();
       panY += ((after[0].y + after[1].y) - (before[0].y + before[1].y)) * 0.5 * unitPerPixel();
+      if (distance(before) > 1) { adjustZoom(distance(after) / distance(before), toUnits((after[0].x + after[1].x) / 2, (after[0].y + after[1].y) / 2)); return; }
     }
-    panX = clamp(panX, -2500, 2500);
-    panY = clamp(panY, -1500, 1500);
     draw();
   });
   const release = event => { pointers.delete(event.pointerId); if (!pointers.size) svg.classList.remove('is-dragging'); };
@@ -209,6 +229,22 @@ export function createWorldMap(container, { onSelectCity } = {}) {
       default: return;
     }
     event.preventDefault();
+    draw();
+  });
+  // The shell forwards the game's map keys as 'jaw:key', so they work without first focusing the map.
+  listen(window, 'jaw:key', event => {
+    const { action, mode } = event.detail || {};
+    if (mode !== 'map' || container.hidden || document.activeElement === svg) return; // the focused map handles its own keys
+    switch (action) {
+      case 'move-left': panX += 35; break;
+      case 'move-right': panX -= 35; break;
+      case 'move-up': panY += 35; break;
+      case 'move-down': panY -= 35; break;
+      case 'zoom-in': adjustZoom(1.3); return;
+      case 'zoom-out': adjustZoom(1 / 1.3); return;
+      case 'zoom-fit': reset(); return;
+      default: return;
+    }
     draw();
   });
   const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(draw) : null;

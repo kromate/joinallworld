@@ -91,8 +91,9 @@ test('scrubEvent rebuilds a Sentry event from allowed fields: hostile data in an
   assert.equal((event as unknown as Record<string, unknown>).server_name, undefined);
   assert.equal(event.release, 'build-7');
   // Without a public id there is no user at all — an id on the event itself is never trusted.
-  assert.equal(scrubEvent(hostile)?.user, undefined);
-  assert.equal(scrubEvent(hostile, { userId: 'Ada Obi' })?.user, undefined);
+  const bare = scrubEvent(hostile), named = scrubEvent(hostile, { userId: 'Ada Obi' });
+  assert.equal(typeof bare, 'object'); assert.notEqual(bare, null); assert.equal(bare?.user, undefined);
+  assert.equal(typeof named, 'object'); assert.notEqual(named, null); assert.equal(named?.user, undefined);
 });
 
 test('scrubEvent drops browser-extension noise and things that are not events', () => {

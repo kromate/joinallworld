@@ -30,7 +30,7 @@ interface SavedChoice { consent?: unknown; at?: unknown; [key: string]: unknown 
 /** The window the telemetry code sees, plus what the tests look at. The stub is built narrowly and cast once, in fakeWindow. */
 type FakeWindow = TelemetryWindow & {
   fetches: Request[]; timers: Array<() => void>; saved(): SavedChoice | null; dispatch(type: string, detail?: unknown): void; listening(type: string): number;
-  openDialog: object | null; docListeners: Map<string, unknown>; consentAnswer?: { under18?: boolean };
+  openDialog: object | null; docListeners: Map<string, unknown>; consentAnswer?: { analytics?: boolean; under18?: boolean };
 };
 interface FakeWindowOptions { hostname?: string; nav?: Record<string, unknown>; stored?: SavedChoice | null; config?: unknown; configStatus?: number }
 
@@ -58,7 +58,7 @@ function fakeWindow({ hostname = 'play.example', nav = {}, stored = null, config
       if (String(url) === '/api/telemetry/config') return { ok: configStatus === 200, status: configStatus, json: async () => config };
       return { ok: true, status: 200, json: async () => (String(url) === '/api/telemetry/consent' ? win.consentAnswer ?? {} : {}) };
     },
-    consentAnswer: undefined as { under18?: boolean } | undefined,
+    consentAnswer: undefined as { analytics?: boolean; under18?: boolean } | undefined,
     __jawErrors: [] as Array<{ e: unknown }>, __jawErrorHandler: (() => {}) as (() => void) | null,
   };
   win.addEventListener('error', win.__jawErrorHandler as () => void);
@@ -343,7 +343,7 @@ test('the age answer has one home: "under 18" from the server’s configuration,
   assert.deepEqual(told.win.fetches.filter((call) => call.body?.analytics === true), [], 'and the server is never told Accept');
   // 2. The server's answer to an Accept says so (the age was given on another device): the SDK is stopped at once.
   const late = running({ stored: { consent: 'granted', at: 1 } });
-  late.win.consentAnswer = { under18: true }; // (the server also answers { analytics: false }, which telemetry ignores)
+  late.win.consentAnswer = { analytics: false, under18: true }; // (the server also answers { analytics: false }, which telemetry ignores)
   late.core.session({ id: PUBLIC }, false, 5); await tick(); await tick(); await tick();
   assert.deepEqual([late.core.consent, late.log.stopped], ['denied', 1]);
   const sent = late.log.sent.length;

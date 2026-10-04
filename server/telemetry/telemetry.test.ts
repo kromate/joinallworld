@@ -227,6 +227,7 @@ test('an error report is an envelope with the release, a route template and code
   assert.equal(must(frames.at(-1)).filename, 'app:///server/telemetry/telemetry.test.ts');
   assert.deepEqual(framesOf('Error: x\n    at handle (file:///srv/app/server/server.ts:10:5)\n    at node:internal/timers:1:2\n    at /srv/app/node_modules/ws/lib/x.js:3:4'),
     [{ function: '<anonymous>', filename: 'app:///node_modules/ws/lib/x.js', lineno: 3, colno: 4, in_app: false }, { function: '<anonymous>', filename: 'node:internal/timers', lineno: 1, colno: 2, in_app: false }, { function: 'handle', filename: 'app:///server/server.ts', lineno: 10, colno: 5, in_app: true }]);
+  assert.deepEqual(framesOf('Error: x\n    at handle (file:///srv/app/server/server.js:10:5)').map((frame) => frame.filename), ['app:///server/server.js'], 'the original .js frame keeps its path; the module is the same file');
 });
 
 test('the same failure is reported at most five times a minute; the start marker carries the release', async () => {

@@ -41,7 +41,10 @@ import { LGA_IDS } from './life.ts'
 import { SHARE_KINDS as ENGINE_SHARE_KINDS } from '../game/share-model.ts'
 import { CLIENT_SIGNALS as SERVER_CLIENT_SIGNALS, FUNNEL_ORDER } from '../../server/growth/metrics.ts'
 import { COLLECTION_NAMES, DATABASE_KEYS } from '../../server/types.ts'
-import type { ActionReceipt, CityLifeRecord, GrowthCollection, GrowthPlayerRecord, OnceReceipt, SessionRecord, ShareRecord } from '../../server/types.ts'
+import type { ActionReceipt, CityLifeRecord, GrowthCollection, GrowthPlayerRecord, OnceReceipt, RouteContext, SessionRecord, ShareRecord } from '../../server/types.ts'
+
+/** A host-free context for the registries: modules only read it when they are called. */
+const bareContext = (): RouteContext => ({ core: {}, config: {}, store: {}, cityIds: [] }) as unknown as RouteContext
 
 type Json = Record<string, unknown>
 const root = join(import.meta.dirname, '..', '..')
@@ -86,14 +89,14 @@ async function serverSources(): Promise<string> {
 
 test('every registered route is typed, and every typed route is registered', () => {
   // The same host-free context server/registry.test.ts builds the registry with.
-  const keys: string[] = buildRoutes({ core: {}, config: {}, store: {}, cityIds: [] }).keys
+  const keys: string[] = buildRoutes(bareContext()).keys
   assert.deepEqual(sorted(keys), sorted(HTTP_ROUTE_KEYS), 'server/routes/*.ts and HTTP_ROUTE_KEYS (src/types/protocol.ts) list different routes')
   assert.equal(new Set(HTTP_ROUTE_KEYS).size, HTTP_ROUTE_KEYS.length)
   assert.deepEqual([...SERVER_CITY_IDS], [...CITY_IDS])
 })
 
 test('every frame type the server accepts or sends is typed', async () => {
-  const accepted = [...buildSocketHandlers({ core: {}, config: {}, store: {}, cityIds: [] }).messages.keys()] as string[]
+  const accepted = [...buildSocketHandlers(bareContext()).messages.keys()] as string[]
   assert.deepEqual(sorted(accepted), sorted(CLIENT_FRAME_TYPES), 'server/ws/*.ts and CLIENT_FRAME_TYPES list different message types')
   const sent = frameTypesIn(await serverSources())
   assert.deepEqual(sorted(sent), sorted(SERVER_FRAME_TYPES), 'the frames built in server/**/*.ts and SERVER_FRAME_TYPES differ')

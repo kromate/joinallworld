@@ -13,10 +13,9 @@ import type { ServerOptions, AllworldServer } from './server.ts';
 import type { TestContext } from 'node:test';
 import type { ActionResponse, PublicSession, ServerFrame, SessionResponse } from '../src/types/protocol.ts';
 import type { ActionRequest } from '../src/types/protocol.ts';
-import type { ActionType } from '../src/types/actions.ts';
 
 /** A request body a test sends on purpose in a shape the client never would (a refusal test): any fields beside the type. */
-export interface ActionAttempt { type: ActionType; [field: string]: unknown }
+export interface ActionAttempt { type: string; [field: string]: unknown }
 
 /** File calls a test can break (see flakyDisk). */
 export interface FlakyDisk {

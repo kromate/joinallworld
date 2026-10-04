@@ -44,14 +44,21 @@ export { VENUES };
  * hosts already do.
  */
 const SALT_PATTERN = /^[A-Za-z0-9_-]{16,64}$/;
-const serverRandom = () => (globalThis.crypto.getRandomValues(new Uint32Array(1))[0] ?? 0) / 0x100000000;
+const serverRandom = () => (crypto.getRandomValues(new Uint32Array(1))[0] ?? 0) / 0x100000000;
 const lives = new WeakMap<LifeState, LifeMeta>(); // settled state → { salt, publicId, cityId }
 
 function randomSalt(): string {
-  const bytes = globalThis.crypto.getRandomValues(new Uint8Array(16));
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
   let text = '';
   for (const byte of bytes) text += byte.toString(16).padStart(2, '0');
   return text;
+}
+/** NODE_ENV where there is a Node process (the Worker has none: its answer is undefined). */
+function nodeEnvironment(): unknown {
+  const nodeProcess: unknown = Reflect.get(globalThis, 'process');
+  if (typeof nodeProcess !== 'object' || nodeProcess === null) return undefined;
+  const env: unknown = Reflect.get(nodeProcess, 'env');
+  return typeof env === 'object' && env !== null ? Reflect.get(env, 'NODE_ENV') : undefined;
 }
 let saltSource: () => unknown = randomSalt;
 /**
@@ -61,7 +68,7 @@ let saltSource: () => unknown = randomSalt;
  * cannot change the salt of a life that already has one, and it refuses to run in production.
  */
 export function useSaltSourceForTests(source?: () => unknown): void {
-  if (globalThis.process?.env?.NODE_ENV === 'production') throw new Error('useSaltSourceForTests is not available in production');
+  if (nodeEnvironment() === 'production') throw new Error('useSaltSourceForTests is not available in production');
   saltSource = typeof source === 'function' ? source : randomSalt;
 }
 function newSalt(): string {

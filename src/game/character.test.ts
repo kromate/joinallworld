@@ -654,7 +654,7 @@ test('server end to end: onboarding, goal rewards and perks are authoritative an
   const roll = { actionId: `100000:${crypto.randomUUID()}`, type: 'onboarding.lottery', payload: {} };
   const rolled = await f.action(a.cookie, roll);
   assert.equal(rolled.code, 'rolled');
-  const outcome = LOTTERY[rolled.state.onboarding.lottery.id as LotteryId];
+  const outcome = LOTTERY[rolled.state.onboarding.lottery?.id as LotteryId];
   const replay = await f.action(a.cookie, roll);
   assert.equal(replay.duplicate, true); assert.deepEqual(replay.state.onboarding.lottery, rolled.state.onboarding.lottery);
   assert.equal((await f.action(a.cookie, { type: 'onboarding.lottery', payload: {} })).code, 'already_rolled');

@@ -22,8 +22,10 @@ import { S, bindCommon, gate, socketNote, call, perform, sync, openThread, threa
 import { channelLink, load as loadGrowth } from './growth-client.js';
 
 const ui = { tab: 'chats', open: null, draft: '', find: '', results: null, finding: false, group: null, manage: false, focus: null };
+// The reply field across a redraw: the element last bound, the selection it had, and whether focus goes back to it.
+let draftField = null, draftSelection = null, restoreDraft = false;
 
-function setOpen(key) { ui.open = key; S.openConv = key; ui.manage = false; ui.draft = ''; ui.focus = key ? 'draft' : null; }
+function setOpen(key) { ui.open = key; S.openConv = key; ui.manage = false; ui.draft = ''; ui.focus = key ? 'draft' : null; draftSelection = null; restoreDraft = Boolean(key); }
 const convOf = (key) => S.me?.conversations.find((conv) => conv.id === key) || null;
 const time = (at) => formatClock(at).split('· ')[1] ?? '';
 
@@ -92,6 +94,12 @@ const app = {
   badge: messagesBadge,
   notifications,
   render(state, view) {
+    // Capture before the shell replaces the field. Removing a focused input can fire blur;
+    // that must not erase the editing position we are about to restore for a live update.
+    const editing = draftField?.isConnected && document.activeElement === draftField;
+    restoreDraft = editing || ui.focus === 'draft';
+    if (editing) draftSelection = draftField.value === ui.draft
+      ? [draftField.selectionStart, draftField.selectionEnd, draftField.selectionDirection] : null;
     // Opened from a person card or contact: api.open('messages', { to, name } | { conv }).
     const params = view.params;
     if (params && params !== ui.params) {
@@ -124,7 +132,12 @@ const app = {
     const thread = root.querySelector('[data-m-thread]');
     if (thread) thread.scrollTop = thread.scrollHeight;
     const field = root.querySelector('[data-m-compose] input');
-    if (field && ui.focus === 'draft') { field.focus(); field.setSelectionRange(field.value.length, field.value.length); }
+    draftField = field;
+    if (field && restoreDraft && !field.disabled) {
+      field.focus({ preventScroll: true });
+      field.setSelectionRange(...(draftSelection || [field.value.length, field.value.length]));
+      ui.focus = 'draft';
+    }
     field?.addEventListener('input', () => { ui.draft = field.value; });
     field?.addEventListener('blur', () => { ui.focus = null; });
     field?.addEventListener('focus', () => { ui.focus = 'draft'; });
@@ -139,7 +152,7 @@ const app = {
       event.preventDefault();
       const body = ui.draft.trim();
       if (!body) return;
-      ui.draft = ''; ui.focus = 'draft';
+      ui.draft = ''; ui.focus = 'draft'; draftSelection = null;
       send(ui.open, ui.open.startsWith('to:') ? { to: ui.open.slice(3) } : { conv: ui.open }, body);
     });
     on('[data-m-find]', 'submit', async (event) => {

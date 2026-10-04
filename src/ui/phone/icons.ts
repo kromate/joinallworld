@@ -184,5 +184,5 @@ const ALIAS: Record<string, string> = { 'hunt-sheet': 'hunt', 'state-house': 'go
   session: 'globe', city: 'globe', onboarding: 'star', account: 'key', 'goal-chip': 'goals', 'home-chip': 'home', 'social-inbox': 'messages', 'radio-banner': 'radio',
   'health-chip': 'health', 'weather-chip': 'sun' };
 /** Glyphs that arrive with ./icons-more.js: known by name before they can be drawn. */
-const LATER = ['contacts', 'family', 'neighbours', 'ads', 'support'];
+const LATER = ['contacts', 'family', 'neighbours', 'ads', 'support', 'campus'];
 export const glyphFor = (id: string): string => (hasGlyph(ALIAS[id] || id) || LATER.includes(id) ? ALIAS[id] || id : 'info');

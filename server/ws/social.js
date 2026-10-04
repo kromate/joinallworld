@@ -90,6 +90,8 @@ export default function socialSocket(ctx) {
   const echo = (message) => (typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {});
 
   return {
+    /** A connected socket handed back after the host lost its memory: it counts as online again; nothing is announced. */
+    restore(ws) { presence.open(ws); },
     open(ws) {
       const first = presence.status(ws.session.id).state !== 'online';
       presence.open(ws);

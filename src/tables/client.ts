@@ -14,7 +14,9 @@ import type { TableGameId, TableOptionValue, TableRating, TableServerFrame, Tabl
 
 /** A refusal frame: only `code` and `reason` are read here, the socket also carries other modules' errors. */
 interface ErrorFrame { type: 'error'; code?: string; reason?: string }
-type ServerMessage = TableServerFrame | ErrorFrame;
+/** The Worker host's liveness probe (deploy/): the answer is a 'heartbeat-ack'. */
+interface HeartbeatFrame { type: 'heartbeat' }
+type ServerMessage = TableServerFrame | ErrorFrame | HeartbeatFrame;
 type Claimed = Extract<TablesClaimResult, { ok: true }>['results'][number];
 
 /** The state of the Tables app (one shared object, read by the panel). */
@@ -72,6 +74,8 @@ async function claim(): Promise<void> {
 }
 
 function onMessage(message: ServerMessage): void {
+  // The Worker host cannot ping a hibernating socket: it asks, and the answer proves this connection is alive.
+  if (message.type === 'heartbeat') { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return; }
   if (message.type === 'tables') { T.list = message.tables; T.listAt = Date.now(); }
   else if (message.type === 'tables-changed') send('table-list', { venue: undefined, table: undefined });
   else if (message.type === 'table-state') {

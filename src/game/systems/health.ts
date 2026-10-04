@@ -145,7 +145,7 @@ export default {
   view,
   on: {
     'travel.arrived': (state, data, ctx) => {
-      const mode = data.mode === null ? undefined : ALL_MODES[data.mode];
+      const mode = data.mode === null || data.mode === 'campus-shuttle' ? undefined : ALL_MODES[data.mode];
       const now = nowOf(state, ctx);
       if (!mode?.exposed || !weatherAt(now, ctx?.cityId).raining) return;
       addMoodlet(state, feelings.soaked, ctx);

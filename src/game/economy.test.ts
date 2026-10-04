@@ -3,6 +3,9 @@
 // change is the thing to question, not the assertion.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { UNILAG_BETA_RULES as UNILAG_BETA_RULES_JS } from '../campus/unilag/curriculum.js';
+import { CAMPUS_JOBS as CAMPUS_JOBS_JS } from '../campus/unilag/student.js';
+import type { CampusJobDefinition, UnilagBetaRules } from '../types/campus.ts';
 import * as economySim from '../../scripts/economy-sim.mjs';
 import { lagosTime } from './clock.ts';
 import { GIG_DAILY_LIMIT } from './content/venues.ts';
@@ -35,7 +38,9 @@ interface SimPlayer {
 /** A value at each of CHECKPOINTS (days 1, 3, 7, 14, 30). */
 interface Checkpoints { 1: number; 3: number; 7: number; 14: number; 30: number }
 interface SimStart { lottery: string; house: string }
+interface SimStudent { status: string; records: { semester: number; passed: boolean; gpa: number; scholarship: boolean }[]; jobDays: number }
 interface SimRow extends SimStart {
+  student: SimStudent;
   strategy: string;
   netWorth: Checkpoints;
   cash: Checkpoints;
@@ -75,6 +80,10 @@ const found = <T>(value: T | undefined, what: string): T => { assert.ok(value !=
 /** The naira a row's life took in (or paid out) in one category; the row must have any at all. */
 const flow = (row: SimRow, category: string): number => found(row.flows[category], `${row.lottery}/${row.house} ${row.strategy} ${category} flow`);
 
+// Trust boundary: the campus tables are plain JavaScript; src/types/campus.ts describes them.
+const UNILAG_BETA_RULES = UNILAG_BETA_RULES_JS as unknown as UnilagBetaRules;
+const CAMPUS_JOBS = CAMPUS_JOBS_JS as unknown as Record<string, CampusJobDefinition>;
+
 const DAYS = 30, HORIZON = 200;
 const rows = runEconomy({ days: DAYS, horizon: HORIZON, track: 'tech' });
 const of = (strategy: string) => rows.filter((row) => row.strategy === strategy);
@@ -96,7 +105,7 @@ test('economy: the table covers every start and strategy, deterministically', ()
 });
 
 test('economy: no strategy creates money from nothing', () => {
-  const sources = new Set(['start', 'wages', 'gigs', 'goals', 'hunt', 'savings', 'events', 'purchases', 'missions', 'tables', 'referral']);
+  const sources = new Set(['start', 'wages', 'gigs', 'goals', 'hunt', 'savings', 'events', 'purchases', 'missions', 'tables', 'referral', 'campusPay']);
   for (const row of rows) {
     assert.equal(row.conserved, true, `${at(row)}: cash = seed + Σ ledger`);
     assert.deepEqual(row.unknown, [], `${at(row)}: every ledger reason is one the report knows`);
@@ -130,6 +139,7 @@ test('economy: every repeatable source of money has a daily cap that holds in pl
       if (kind === 'wages') assert.ok(count <= (row.strategy === 'helper' ? 86400 / HELPER_COOLDOWN_SECONDS : 1), `${at(row)}: ${count} paid shifts in one day`);
       if (kind === 'A wallet on the ground') assert.equal(count, 1, `${at(row)}: one found wallet a day`);
       if (kind === 'tables') assert.ok(count <= TABLE_REWARDS.paidWinsPerDay, `${at(row)}: ${count} paid table wins in one day`);
+      if (kind === 'campusPay') assert.ok(count <= 2, `${at(row)}: ${count} campus credits in one day (one paid campus job, and the scholarship on the day a semester closes)`);
       if (kind === 'missions') assert.ok(count <= MISSION_REWARDS.daily.slots + MISSION_REWARDS.weekly.slots, `${at(row)}: ${count} missions paid in one day`);
     }
     const hunt = row.flows.hunt ?? 0;
@@ -263,4 +273,30 @@ test('economy: missions, table wins and referrals stay inside their budget even 
   const entry = found(TRACKS.map(entryPay).sort((a, b) => a - b)[Math.floor(TRACKS.length / 2)], 'a median entry pay');
   assert.ok(dailyMissions + dailyTables <= 1350, `daily ceiling ₦${dailyMissions + dailyTables}`);
   assert.ok(entry > 0 && dailyMissions + dailyTables <= 0.5 * entry, `₦${dailyMissions + dailyTables} a day against an entry-level shift of ₦${entry}`);
+});
+
+test('economy: a UNILAG student pays every fee once, is paid for one campus job a day, graduates, and stays solvent on every start', () => {
+  const fees = UNILAG_BETA_RULES.admissionFee + 2 * (UNILAG_BETA_RULES.tuition + UNILAG_BETA_RULES.levy + UNILAG_BETA_RULES.hostelFee);
+  const bestJob = Math.max(...Object.values(CAMPUS_JOBS).map((job) => job.pay));
+  for (const row of of('student')) {
+    assert.deepEqual([row.student.status, row.student.records.filter((record) => record.passed).map((record) => record.semester)], ['graduated', [1, 2]], `${at(row)}: both semesters passed in ${DAYS} days`);
+    assert.equal(row.student.records.length, 2, `${at(row)}: no semester had to be repeated`);
+    // What the degree costs: one application, two registrations, two hostel rooms — each debited once.
+    assert.equal(row.flows.campusFees, -fees, `${at(row)}: campus fees are ${fees}`);
+    const lines = row.player.lines.filter((line) => categoryOf(line) === 'campusFees').map((line) => line.reason).sort();
+    assert.deepEqual(lines, ['UNILAG application fee', 'UNILAG hostel semester 1', 'UNILAG hostel semester 2', 'UNILAG semester 1 tuition and levy', 'UNILAG semester 2 tuition and levy']);
+    // What the campus pays: at most the best job once a Lagos day while a current student, and one scholarship in a lifetime.
+    const pay = row.credits.filter((line) => line.category === 'campusPay');
+    const scholarships = pay.filter((line) => line.reason === 'UNILAG scholarship');
+    assert.ok(scholarships.length <= 1 && scholarships.every((line) => line.amount === UNILAG_BETA_RULES.scholarshipAward), `${at(row)}: one scholarship at most`);
+    const jobs = pay.filter((line) => line.reason !== 'UNILAG scholarship');
+    assert.equal(new Set(jobs.map((line) => lagosTime(line.at).day)).size, jobs.length, `${at(row)}: one paid campus job a Lagos day`);
+    assert.ok(jobs.length === row.student.jobDays && jobs.every((line) => line.amount === bestJob), `${at(row)}: ${jobs.length} campus jobs at ₦${bestJob}`);
+    assert.ok(flow(row, 'campusPay') <= jobs.length * bestJob + UNILAG_BETA_RULES.scholarshipAward);
+    // The degree is not a faucet: over the whole of it the campus pays back less than a helper's wages for the same days.
+    assert.ok(flow(row, 'campusPay') < flow(row, 'wages'), `${at(row)}: campus pay ${flow(row, 'campusPay')} is below wages ${flow(row, 'wages')}`);
+    assert.ok(row.minCash >= 0 && row.conserved && row.unknown.length === 0, at(row));
+    assert.equal(row.rentMissedWeeks, 0, `${at(row)}: a student still pays the rent`);
+  }
+  assert.equal(of('student').length, STARTS.length);
 });

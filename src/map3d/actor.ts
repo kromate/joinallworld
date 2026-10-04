@@ -4,7 +4,12 @@
  * look) standing at the place they are, and — during a trip — walking the route or riding a small
  * procedural vehicle along it.
  *
- *   createActor(kit) → { group, setPlayer({ look, seed }), setMode(mode), place(pose), stand(x, z, ry), dot(on), triangles, dispose() }
+ *   createActor(kit, { travelVehicle? }) → { group, setPlayer({ look, seed }), setMode(mode), setTime(time),
+ *                        place(pose), stand(x, z, ry), dot(on), triangles, dispose() }
+ *
+ * `travelVehicle(kind, { time })` (optional, src/models/integration/scene-models.js buildTravelVehicle): the trip is ridden in a
+ * model-library vehicle with real seat anchors instead of the batch-drawn one below. Without it — the default — nothing of the
+ * model library is loaded or drawn.
  *
  * The avatar module builds static poses, so walking is drawn from two frames: the walk pose and
  * its mirror image, swapped every stride. Which frame shows comes from the pose's `step`, which
@@ -24,29 +29,54 @@ export interface ActorPlayer { look?: unknown; seed?: string }
 
 export const ACTOR_SCALE = 0.86;
 const SEAT_HEIGHT = 0.6;
+const SEATED_AVATAR_SCALE = 0.62;
 
-export function createActor(kit: MapKit) {
+/** A model-library trip vehicle (src/models/integration/scene-models.js buildTravelVehicle): real seat anchors, posed along the route. */
+export interface TravelVehicleModel {
+  object3D: THREE.Group
+  attachPassenger(passenger: THREE.Object3D): void
+  detachPassenger(parent: THREE.Object3D): void
+  pose(distance: number, heading: number, riding: boolean): void
+  dispose(): void
+}
+export type TravelVehicleBuilder = (kind: string, options: { time: string }) => TravelVehicleModel | null;
+
+export function createActor(kit: MapKit, { travelVehicle = null }: { travelVehicle?: TravelVehicleBuilder | null } = {}) {
   const { THREE } = kit;
+  // The model library's trip vehicles (src/models): OFF unless the host passes its builder (see src/models/integration/flags.js).
+  const useModels = typeof travelVehicle === 'function';
   const group = new THREE.Group();
   group.name = 'actor';
   const walker = new THREE.Group(), ride = new THREE.Group();
+  walker.name = 'actor-walker'; ride.name = 'actor-ride';
   walker.scale.setScalar(ACTOR_SCALE); ride.scale.setScalar(ACTOR_SCALE);
   group.add(walker, ride);
   // Reduced motion: the traveller is a plain dot on the route line.
   const dot = new THREE.Mesh(new THREE.SphereGeometry(1.1, 12, 8), new THREE.MeshBasicMaterial({ color: '#ffb224' }));
-  dot.visible = false; group.add(dot);
+  dot.name = 'actor-dot'; dot.visible = false; group.add(dot);
   // "You are here": a ring on the ground under the piece.
   const ring = new THREE.Mesh(new THREE.RingGeometry(1.25, 1.75, 24), new THREE.MeshBasicMaterial({ color: '#ffb224', transparent: true, opacity: 0.9, depthWrite: false }));
-  ring.rotation.x = -Math.PI / 2; ring.renderOrder = 3; group.add(ring);
+  ring.name = 'actor-ring'; ring.rotation.x = -Math.PI / 2; ring.renderOrder = 3; group.add(ring);
 
   let player: { look: unknown; seed: string } = { look: null, seed: 'you' }, playerKey = '', mode: string | null = null, asDot = false, size = 1;
-  let frames: { stand: THREE.Group; stride: THREE.Group; mirror: THREE.Group } | null = null, seated: THREE.Group | null = null, vehicle: THREE.Group | null = null, seat = { x: 0, y: 0, z: 0 };
+  let frames: { stand: THREE.Group; stride: THREE.Group; mirror: THREE.Group } | null = null, seated: THREE.Group | null = null, vehicle: THREE.Group | null = null, vehicleModel: TravelVehicleModel | null = null, seat = { x: 0, y: 0, z: 0 };
+  let vehicleTime = 'day', disposed = false;
   const plain = (mesh: THREE.Object3D) => { mesh.castShadow = false; mesh.receiveShadow = false; };
 
   function buildPeople() {
     for (const built of [frames?.stand, frames?.stride, seated]) built?.userData.dispose();
     if (frames?.mirror) walker.remove(frames.mirror);
-    const make = (pose: Pose): THREE.Group => { const avatar = buildAvatar(kit, player.look, { seed: player.seed, pose, seat: SEAT_HEIGHT, marker: 'crown' }); avatar.traverse(plain); return avatar; };
+    const make = (pose: Pose, riding = false): THREE.Group => {
+      const avatar = buildAvatar(kit, player.look, {
+        seed: player.seed,
+        pose,
+        seat: riding && useModels ? 0 : SEAT_HEIGHT,
+        scale: riding && useModels ? SEATED_AVATAR_SCALE : 1,
+        marker: 'crown',
+      });
+      avatar.traverse(plain);
+      return avatar;
+    };
     const stand = make('stand'), stride = make('walk');
     // The second walk frame is the first one mirrored: the same geometry, the other foot forward.
     const mirror = new THREE.Group();
@@ -54,17 +84,41 @@ export function createActor(kit: MapKit) {
     mirror.scale.x = -1;
     walker.add(stand, stride, mirror);
     frames = { stand, stride, mirror };
-    seated = make('sit');
-    seated.position.set(seat.x, seat.y - SEAT_HEIGHT - 0.13, seat.z);
-    ride.add(seated);
+    seated = make('sit', true);
+    seated.name = 'actor-passenger';
+    if (vehicleModel) vehicleModel.attachPassenger(seated);
+    else {
+      seated.position.set(seat.x, seat.y - SEAT_HEIGHT - 0.13, seat.z);
+      ride.add(seated);
+    }
+  }
+  function releaseVehicle() {
+    if (vehicleModel) {
+      vehicleModel.detachPassenger(ride);
+      vehicleModel.dispose();
+      vehicleModel = null;
+    } else if (vehicle) {
+      vehicle.traverse((mesh) => (mesh as THREE.Mesh).geometry?.dispose());
+      ride.remove(vehicle);
+    }
+    vehicle = null;
   }
   function buildVehicle() {
-    if (vehicle) { vehicle.traverse((mesh) => (mesh as THREE.Mesh).geometry?.dispose()); ride.remove(vehicle); vehicle = null; }
+    releaseVehicle();
     const kind = lookOf(mode!).vehicle;
     if (!kind) return;
+    if (useModels && travelVehicle) {
+      vehicleModel = travelVehicle(kind, { time: vehicleTime });
+      if (!vehicleModel) return;
+      vehicle = vehicleModel.object3D;
+      ride.add(vehicle);
+      if (seated) vehicleModel.attachPassenger(seated);
+      return;
+    }
     const batch = createBatch(THREE);
     seat = VEHICLES[kind](batch).seat;
     vehicle = new THREE.Group();
+    vehicle.name = `legacy-vehicle:${kind}`;
     batch.build(sceneMaterials(kit)).meshes.forEach((mesh) => { plain(mesh); vehicle!.add(mesh); });
     ride.add(vehicle);
     if (seated) seated.position.set(seat.x, seat.y - SEAT_HEIGHT - 0.13, seat.z);
@@ -89,6 +143,14 @@ export function createActor(kit: MapKit) {
       if (next === mode) return false;
       mode = next;
       buildVehicle();
+      return true;
+    },
+    /** Vehicle lights have day/night phases; dusk uses the day phase. */
+    setTime(next: string) {
+      const phase = next === 'night' ? 'night' : 'day';
+      if (phase === vehicleTime) return false;
+      vehicleTime = phase;
+      if (useModels && vehicleModel) buildVehicle();
       return true;
     },
     /**
@@ -126,19 +188,25 @@ export function createActor(kit: MapKit) {
       }
       ride.visible = Boolean(pose.vehicle && vehicle);
       if (ride.visible) {
-        ride.position.set(pose.vehicle!.x, pose.vehicle!.y + 0.1 + (riding ? Math.sin(pose.distance * 2.4) * 0.03 : 0), pose.vehicle!.z);
+        ride.position.set(pose.vehicle!.x, pose.vehicle!.y + 0.1 + (!useModels && riding ? Math.sin(pose.distance * 2.4) * 0.03 : 0), pose.vehicle!.z);
         ride.rotation.y = pose.vehicle!.ry;
+        vehicleModel?.pose(pose.distance, pose.vehicle!.ry, riding);
         seated!.visible = riding;
       }
     },
     get triangles() {
       let total = 0;
-      group.traverse((object) => { const mesh = object as THREE.Mesh; if (mesh.isMesh && mesh.visible && mesh.parent?.visible !== false) total += (mesh.geometry.index ? mesh.geometry.index.count : mesh.geometry.attributes.position!.count) / 3; });
+      group.traverseVisible((object) => { const mesh = object as THREE.Mesh | THREE.InstancedMesh; if (mesh.isMesh) total += (mesh.geometry.index ? mesh.geometry.index.count : mesh.geometry.attributes.position!.count) / 3 * ((mesh as THREE.InstancedMesh).isInstancedMesh ? (mesh as THREE.InstancedMesh).count : 1); });
       return total;
     },
     dispose() {
+      if (disposed) return;
+      disposed = true;
+      releaseVehicle();
+      if (disposed) return;
+      disposed = true;
+      releaseVehicle();
       for (const built of [frames?.stand, frames?.stride, seated]) built?.userData.dispose();
-      vehicle?.traverse((mesh) => (mesh as THREE.Mesh).geometry?.dispose());
       for (const mesh of [dot, ring]) { mesh.geometry.dispose(); mesh.material.dispose(); }
       group.parent?.remove(group);
       frames = null; seated = null; vehicle = null;

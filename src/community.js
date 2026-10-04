@@ -8,12 +8,13 @@ import './community.css';
  *   onMembers({ self, members: [{ id, name, position: { x, z } | null }] })   after every presence
  *       message and whenever the list empties (disconnect, room change, revocation, destroy).
  *       `position` is null until that member has reported one (the server's origin means "not yet").
+ *   venueName(venueId, cityId) → the venue's name in that city, for the room line (the panel itself knows only three).
  *   onStep(dx, dz) → true when the game walked the avatar by that much (the four "Walk" buttons here
  *       are the keyboard-accessible way to move without the scene). When it is absent or returns
  *       false — the scene could not be drawn — the buttons move the voice position directly, as before.
  * Nothing here enables the microphone: voice starts only from the Join voice button.
  */
-export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, onStep = null, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
+export async function createCommunity(container, { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, onStep = null, venueName = null, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all' } = {}) {
   container.innerHTML = `<section class="community" aria-label="Local community">
     <header class="community-header"><div><span class="community-eyebrow">People nearby</span><h2>Community</h2></div><span class="community-connection" role="status">Connecting…</span></header>
     <p class="community-room"></p>
@@ -52,8 +53,11 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   const send = (message) => { if (socket?.readyState !== WebSocket.OPEN) return false; socket.send(JSON.stringify(message)); return true; };
   const roomLabel = () => {
     const privateHome = room.venueId === 'home';
-    const venueName = privateHome ? 'Your home (private)' : room.venueId === 'library' ? 'Library' : room.venueId === 'club' ? 'Club' : 'Park';
-    el.room.textContent = `${room.cityId === 'ibadan' ? 'Ibadan' : 'Lagos'} · ${venueName}`;
+    // The game names the venue (venueName(venueId, cityId) → its label in that city); without it, the three names this panel always knew.
+    let named = null;
+    try { named = typeof venueName === 'function' ? venueName(room.venueId, room.cityId) : null; } catch { named = null; }
+    const place = privateHome ? 'Your home (private)' : typeof named === 'string' && named ? named : room.venueId === 'library' ? 'Library' : room.venueId === 'club' ? 'Club' : 'Park';
+    el.room.textContent = `${room.cityId === 'ibadan' ? 'Ibadan' : 'Lagos'} · ${place}`;
     el.proximity.hidden = privateHome; el.voiceSection.hidden = privateHome; el.chatSection.hidden = privateHome; el.privateNote.hidden = !privateHome;
   };
   roomLabel();
@@ -69,6 +73,8 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
   function nearby(member) { return room.venueId !== 'home' && !rejectedPeers.has(member?.id) && member?.enabled && member.id !== session?.id && distanceTo(member) < VOICE_RADIUS; }
   function moveTo(x, z) {
     if (!roomReady || room.venueId === 'home' || !Number.isFinite(x) || !Number.isFinite(z)) return false;
+    // The UNILAG campus is walked in campus coordinates: the server checks them against its walkable ground (server/protocol.js).
+    if (room.venueId === 'unilag') return send({ type: 'move', x, z });
     const mx = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, x)), mz = Math.max(-SPACE_BOUND, Math.min(SPACE_BOUND, z));
     // Exactly the origin means "not reported yet" (see reported()): a player standing there reports a hair beside it.
     return send({ type: 'move', x: mx === 0 && mz === 0 ? 0.01 : mx, z: mz });
@@ -83,7 +89,7 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     if (self) moveTo(self.x + dx, self.z + dz);
   }
   /** The origin is where the server puts everyone on joining: it means "has not reported a position yet". */
-  const reported = (member) => { const position = validPosition(member); return position && (position.x !== 0 || position.z !== 0) ? { x: position.x, z: position.z } : null; };
+  const reported = (member) => { const position = validPosition(member); return position && (room.venueId === 'unilag' || position.x !== 0 || position.z !== 0) ? { x: position.x, z: position.z } : null; };
   /** Tell the game who is here and where each one stands (see the header). Never throws into the room code. */
   function announce() {
     try { onMembers({ self: session?.id ?? null, members: members.map((member) => ({ id: member.id, name: member.name, position: reported(member) })) }); } catch { /* the game's own problem */ }
@@ -95,7 +101,8 @@ export async function createCommunity(container, { cityId = 'lagos', venueId = '
     el.position.textContent = !self ? 'Waiting for your place in the venue…'
       : inVoice.length ? `${near} of ${inVoice.length} ${inVoice.length === 1 ? 'person' : 'people'} in voice ${near === 1 && inVoice.length === 1 ? 'is' : 'are'} within range of where you stand.`
         : 'Nobody else is in voice here yet.';
-    for (const button of [el.north, el.south, el.west, el.east]) button.disabled = !roomReady || !self;
+    // On the campus the avatar is walked in its own scene (its place arrives through moveTo): the four buttons would move the voice position alone.
+    for (const button of [el.north, el.south, el.west, el.east]) button.disabled = !roomReady || !self || room.venueId === 'unilag';
   }
   async function ensureVoiceConfig(generation) {
     const expired = iceConfig?.expiresAt && Date.now() >= iceConfig.expiresAt;
@@ -286,6 +293,8 @@ function closePlaybackContext() {
   }
   function receive(event) {
     let message; try { message = JSON.parse(event.data); } catch { return; }
+    // The Worker host cannot ping a hibernating socket: it asks, and the answer proves this connection is alive.
+    if (message?.type === 'heartbeat') { if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'heartbeat-ack' })); return; }
     if (message.type === 'presence') {
       const wasRevoked = roomRevoked; members = message.members || [];
       if (roomRevoked && !members.some((member) => member.id === session?.id)) return;
@@ -301,17 +310,21 @@ function closePlaybackContext() {
       else appendChat(message);
     } else if (message.type === 'signal') receiveSignal(message);
     else if (message.type === 'error') {
-      if ((message.error || message.code) === 'venue_mismatch') {
+      const refusal = message.error || message.code;
+      // The server refused a Home room this socket asked for: whatever else is true, no microphone stays open on a refusal.
+      if (refusal === 'not_a_guest') leaveVoice(false);
+      // The room is gone for this socket — the life left the venue, or a house visit ended: voice stops with it.
+      if (refusal === 'venue_mismatch' || refusal === 'visit_ended') {
         roomRevoked = true; roomReady = false; members = []; rejectedPeers.clear();
         clearTimeout(reconnectTimer); reconnectTimer = null; el.retry.hidden = true;
         leaveVoice(false); renderMembers();
         for (const pendingMessage of pending.values()) {
-          pendingMessage.status.textContent = 'Not sent: you moved to another place';
+          pendingMessage.status.textContent = refusal === 'visit_ended' ? 'Not sent: the visit ended' : 'Not sent: you moved to another place';
           pendingMessage.retry?.remove();
         }
         pending.clear(); el.compose.querySelector('input').disabled = true; el.compose.querySelector('button').disabled = true;
         el.connection.textContent = 'Room changed';
-        feedback('You moved to another place. Return to the game to reconnect here.');
+        feedback(refusal === 'visit_ended' ? 'The visit has ended.' : 'You moved to another place. Return to the game to reconnect here.');
         return;
       }
       const rejected = pending.get(message.clientId);

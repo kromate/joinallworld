@@ -17,6 +17,8 @@ import type {
   HouseStyle, HouseTierId, ItemId, JobId, LgaId, Look, MissionId, PerkId, PlayerPublicId, PlotAddress, SpotId, StartHomeId, TraitId,
   TravelModeId, VenueId, WardrobeKind,
 } from './life.ts'
+import { CAMPUS_ACTION_TYPES } from './campus.ts'
+import type { CampusActionMap, CampusActivityVetoCode, GuestCampusActionType } from './campus.ts'
 
 // ---- shared code groups -------------------------------------------------------------------
 
@@ -37,16 +39,22 @@ export type ActivityEngineBlockCode =
  *   home     furniture_required · missing_items
  *   goals    already_funded · skill_required
  *   social   npc_daily_limit
+ *   campus   student_required · daily_limit (the 'unilag-volunteer' activity only; games.js)
  */
 export type ActivityVetoCode =
   | 'cooldown' | 'gig_limit' | 'not_needed' | 'balance_limit' | 'shift_done' | 'day_off' | 'working' | 'no_job'
   | 'not_sick' | 'furniture_required' | 'missing_items' | 'already_funded' | 'skill_required' | 'npc_daily_limit'
+  | CampusActivityVetoCode
 
 /** Every code an activity card's `blocked` (and a refused 'activity' start) can carry. */
 export type ActivityBlockCode = ActivityEngineBlockCode | ActivityVetoCode
 
-/** Why a trip cannot start (travel.js travelBlock). */
-export type TravelBlockCode = 'coming_soon' | 'invalid_travel' | 'already_here' | 'travel_mode_unavailable' | 'closed' | 'insufficient_funds'
+/**
+ * Why a trip cannot start (travel.js travelBlock). 'campus_lagos_only': the destination is 'unilag' and the life is in
+ * another city (a venue with `cities`; any other such venue would answer 'invalid_travel').
+ */
+export type TravelBlockCode =
+  | 'coming_soon' | 'invalid_travel' | 'already_here' | 'travel_mode_unavailable' | 'closed' | 'insufficient_funds' | 'campus_lagos_only'
 
 /** Why a gift cannot be sent (social.js transferBlock). */
 export type TransferBlockCode =
@@ -128,7 +136,8 @@ export interface CivicNewsItem {
 
 // ---- the action table ---------------------------------------------------------------------
 
-export interface ActionMap {
+/** The campus actions (`unilag.*` and 'campus-shuttle', registered after growth) are declared in campus.ts CampusActionMap. */
+export interface ActionMap extends CampusActionMap {
   // -- core --
   /**
    * Cancel the running timed action.
@@ -334,7 +343,10 @@ export type PlayerActionType = Exclude<ActionType, ServerOnlyActionType>
  *                          refuses everything except `onboarding.*` …
  *   'settle_required'      … and a guest who is playing is refused only what needs a home: going
  *                          Home ('travel' with id 'home'), every `home.*` and `estate.*` action and
- *                          'property.house-move'.
+ *                          'property.house-move' — and, at the campus, being a student: every
+ *                          action onboarding.js GUEST_CAMPUS matches (campus.ts GuestCampusActionType:
+ *                          enrolment, study, the hostel, campus jobs and the student vote). A guest
+ *                          may still visit the campus, walk the trail and ride the shuttle.
  * Server-only actions run through ctx.act are vetoed like a player's, except the three deliveries
  * TO a life (`InboundActionType`), which pass the hold.
  */
@@ -344,7 +356,7 @@ export type ActionVetoCode = 'onboarding_required' | 'settle_required'
 export type InboundActionType = 'social.server' | 'growth.referral' | 'growth.table-result'
 
 /** Actions a guest of the quick start cannot run until it has settled in. ('travel' only when the destination is Home.) */
-export type SettledOnlyActionType = Extract<ActionType, `home.${string}` | `estate.${string}` | 'property.house-move' | 'travel'>
+export type SettledOnlyActionType = Extract<ActionType, `home.${string}` | `estate.${string}` | 'property.house-move' | 'travel'> | GuestCampusActionType
 
 /** Codes dispatch() can return for action `T` without the handler having run. */
 export type DispatchRefusalCode<T extends ActionType = ActionType> =
@@ -403,12 +415,14 @@ export const ACTION_TYPES = [
   'missions.claim', 'missions.reroll', 'missions.refresh',
   'events.spray',
   'growth.table-result', 'growth.referral',
+  // the campus: unilagStudent, unilagCommunity, unilagShuttle (campus.ts)
+  ...CAMPUS_ACTION_TYPES,
 ] as const satisfies readonly ActionType[]
 
 /** The action types declared `serverOnly` (registry.js serverOnlyReason(type) !== null). */
 export const SERVER_ONLY_ACTIONS = [
   'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
-  'civic.shoutout', 'growth.table-result', 'growth.referral',
+  'civic.shoutout', 'growth.table-result', 'growth.referral', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]
 
 /** The server-only deliveries that pass a held life's veto (onboarding.js INBOUND). */

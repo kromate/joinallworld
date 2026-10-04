@@ -46,7 +46,7 @@ import { growthOf, playerOf } from './data.js';
 import { count } from './metrics.js';
 
 /** Timings. A test may shorten them; nothing else should. */
-export const TUNING = { botDelayMs: 900, awayForfeitMs: 120000, resetMs: 45000, missesToForfeit: 3, maxSockets: 40, logLines: 30, minMovesEach: 2 };
+export const TUNING = { botDelayMs: 900, awayForfeitMs: 120000, resetMs: 45000, missesToForfeit: 3, maxSockets: 40, logLines: 30, minMovesEach: 2, keepAwakeMs: 45000 };
 const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const refuse = (code, reason) => Object.assign(new Error(code), { reason });
 const ready = (state) => Boolean(state) && !(state.onboarding?.required === true && state.onboarding.done !== true);
@@ -96,6 +96,7 @@ export function tablesService(ctx) {
     for (const ws of table.sockets) { if (ctx.core.isOpen(ws)) ctx.send(ws, stateFor(table, ws.session.id)); else table.sockets.delete(ws); }
     // Sockets that asked for a venue's list are told that it changed (no table data in the nudge).
     for (const ws of ctx.core.sockets()) if (ws.tablesVenue === `${table.cityId}:${table.place.venue}` && !table.sockets.has(ws) && ctx.core.isOpen(ws)) ctx.send(ws, { type: 'tables-changed', cityId: table.cityId, venue: table.place.venue });
+    if (ctx.core?.hibernates === true && table.status === 'open') schedule(table);
   }
 
   // ---- the clock ----------------------------------------------------------------------------------
@@ -104,6 +105,9 @@ export function tablesService(ctx) {
     let due = Infinity;
     if (table.status === 'playing') due = Math.min(table.match.deadline, table.match.botAt ?? Infinity, ...table.seats.filter((seat) => seat.away > 0 && !seat.left).map((seat) => seat.away + TUNING.awayForfeitMs));
     else if (table.status === 'over') due = table.endedAt + TUNING.resetMs;
+    // A host that forgets what is in memory when nothing is pending (the Worker: ctx.core.hibernates) keeps a timer
+    // going while anyone sits at or watches an open table, so the seats are still there for the next message.
+    else if (ctx.core?.hibernates === true && (table.seats.length || table.sockets.size)) due = now() + TUNING.keepAwakeMs;
     if (due === Infinity) return;
     // The delay is at least a quarter second of real time, so a clock that is not the wall clock (a test's) cannot spin.
     table.timer = setTimeout(() => { table.timer = null; void pump(table); }, Math.max(250, Math.min(due - now(), 60000)));

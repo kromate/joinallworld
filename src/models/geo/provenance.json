@@ -1,0 +1,53 @@
+{
+  "retrieved": "2026-10-04",
+  "sources": {
+    "ne_50m_admin_0_countries": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_50m_admin_0_countries.geojson",
+      "sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
+      "bytes": 3083490,
+      "license": "Public domain"
+    },
+    "ne_10m_admin_1_states_provinces": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_1_states_provinces.geojson",
+      "sha256": "22d0e3ad85eb3e27f17cabf8ba2d50e554fbc27a87796ff891d958185da62fb5",
+      "bytes": 40726851,
+      "license": "Public domain"
+    },
+    "ne_10m_populated_places": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_populated_places.geojson",
+      "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b",
+      "bytes": 19359003,
+      "license": "Public domain"
+    },
+    "ne_10m_rivers_lake_centerlines": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_rivers_lake_centerlines.geojson",
+      "sha256": "bb854a900ecbd3b408df46d5e16e3e0f974ba55993f9d8b5c26e855273c0905a",
+      "bytes": 7307743,
+      "license": "Public domain"
+    },
+    "ne_50m_coastline": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_50m_coastline.geojson",
+      "sha256": "271f1c4c1908312bac6b29d158ea1356544beafc129f260005300913aa5ea283",
+      "bytes": 1640858,
+      "license": "Public domain"
+    },
+    "kenya-counties": {
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/KEN/ADM1/geoBoundaries-KEN-ADM1_simplified.geojson",
+      "sha256": "4d9e1b8a6d305ee2b2bbeeeb4dd6ec3cc52e44884f0f6065d14d255810f9eae4",
+      "bytes": 861584,
+      "license": "geoBoundaries gbOpen CC BY 4.0 collection; source metadata Public Domain"
+    }
+  },
+  "attribution": {
+    "Natural Earth": "Made with Natural Earth. https://www.naturalearthdata.com/about/terms-of-use/",
+    "Kenya": "geoBoundaries, William & Mary geoLab, RCMRD GeoPortal / Africa GeoPortal; KEN-ADM1-32016919, year2020, release9469f09. Simplified, rounded, and converted to ES module by Allworld. CC BY4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/KEN/ADM1/. User approved attributed dataset exception on2026-10-04.",
+    "Capital supplement": "Wikidata structured data CC0; Q1024647, Q1061665, Q304976, Q648749. https://www.wikidata.org/wiki/Wikidata:Licensing",
+    "Airports": "OurAirports public-domain data; selected coordinates retained in sources/airports.json with original source hash. https://ourairports.com/data/"
+  },
+  "limitations": [
+    "Roads are original schematic travel corridors joining city coordinates, not surveyed highway alignments.",
+    "Small islands are simplified; largest polygon retained and minor secondary islands omitted at small map scale.",
+    "Shared collinear border segments are noded before canonical chain simplification; input is expected to be valid administrative coverage.",
+    "Natural Earth de facto disputed boundaries remain source representations, not a sovereignty endorsement."
+  ]
+}

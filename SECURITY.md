@@ -119,14 +119,30 @@ There are no moderator accounts. Whoever holds the server's `MODERATOR_TOKEN` is
 - Chat is plain text relayed through the server. It is not end-to-end encrypted. Venue chat passes the text filter and the sender's mute state, and is not delivered between two players of whom either has blocked the other; see "Other players" and "Moderation" above.
 - The optional "use my location" control asks the browser for your position and uses it in the browser to suggest a city. The position is not sent to the server.
 
+## The Worker host
+
+The Cloudflare Worker (`deploy/`) runs the same route and socket modules over the same context, so every property in this document holds there too. What is specific to it:
+
+- **Storage.** Everything is in the SQLite storage of one Durable Object: sessions (with their secrets, as on Node), action receipts and exactly-once receipts in tables of their own, archived lives, the feature collections, the world's shards as rows, the keys the server makes for itself (`host_keys`: the push keys and the link-signing key — never in a collection, a response or a log), durable rate-limit windows, the relay test's daily budget, and venue-chat retry receipts (an id, a time and a digest of the body; never the text). Protect access to the Cloudflare account as you would the data directory.
+- **A failed write has no effect there either.** A write is one SQLite transaction — the session, its receipts, the archives and the collections together — followed by a durability barrier before it is acknowledged. A commit that fails is answered `503 storage_unavailable` with the store's own sentence and never with the SQL error. If the barrier itself fails the outcome is unknown: the store refuses everything until the object restarts, and a retry then meets the receipt if the commit was kept.
+- **Addresses.** The Worker never stores or keys on a raw address: limits and caps use a SHA-256 digest of `CF-Connecting-IP` (for IPv6, of its /64). `TRUST_PROXY` does not exist there.
+- **The operator surface** is off unless the `MODERATOR_TOKEN` secret is set (24–512 printable characters). Only a digest of it is kept in memory; a bearer token is compared by digest without stopping at the first difference; a cookie or a query value is never accepted. The Worker's own origin check exempts `/api/mod/*` exactly as the Node host does.
+- **Sockets sleep.** A hibernating socket's attachment holds its public identity, its cookie secret (host-private: it is how the session is found again), room, position, voice state and look. Nothing in an attachment is ever sent to another player. After a sleep every socket's room is re-checked against the stored life before its next room message is forwarded.
+- **Outside requests** are `https` only, never follow a redirect (the answer to one is rejected) and are cut off after 15 seconds.
+- **The original Allworld character.** `/old-character.html` exists only on the apex host (`https://joinallworld.com`), answers only `GET` and `HEAD`, is never cached, and sends no referrer. It moves a legacy guest identity to the original game through the old site's own scope; it reads and writes nothing of this game's sessions. The link to it in the landing, the session sheet and the menu is ordinary navigation.
+
+## The University of Lagos campus
+
+The campus is a fictional game layer. Nothing in it is a real admission, fee, room allocation, result or job, and it is not affiliated with the university. Its shared state is one weekly election (at most 16 candidates and 2,048 ballots, public ids and student ids the game made). A ballot or a nomination takes the player's identity, faculty and hall from their stored life — never from the request — and is saved in the same transaction as its exactly-once receipt; the public action route cannot run either. A guest of the quick start can visit but cannot become a student. Campus positions are checked against the campus's walkable ground on the server.
+
 ## Voice
 
 **Voice has not yet been verified with real audio between two clients.** Treat it as experimental.
 
 - **Opt-in.** The microphone is not requested until you press Join voice. The browser asks for permission and requires HTTPS or `localhost`. You join muted and unmute yourself. Leaving voice, changing room or closing the page stops the microphone.
-- **Peer-to-peer.** Audio goes directly between browsers, not through the JoinAllworld server, which only relays connection setup messages between people in the same room. As a consequence, **people you connect to can learn your IP address**, and with it your approximate location and network provider. Do not enable voice if that is unacceptable.
+- **Peer-to-peer.** Audio goes directly between browsers (or through the configured relay in the bounded test below), not through the game server, which only relays connection setup messages between people in the same room. As a consequence, **people you connect to can learn your IP address**, and with it your approximate location and network provider. Do not enable voice if that is unacceptable.
 - **Third-party STUN.** To find a route between browsers, the client contacts a public STUN server operated by Google (`stun.l.google.com`). That server sees your IP address, not your audio. Self-hosters can change it in `src/community.js`.
-- **No relay.** The project does not run or pay for a TURN server. On some mobile, corporate or carrier-grade NAT networks, calls will not connect.
+- **Relay is restricted.** The Node server issues no relay credentials. On the Worker host the optional Cloudflare TURN adapter can issue short-lived credentials only to at most two explicitly allowed test devices, with a bounded number of mint attempts a day; general relay issuance is disabled. When a relay is selected, audio passes through that provider. These application limits are not a provider spending cap, and provider secrets are never placed in frontend code. Everywhere else, on some mobile, corporate or carrier-grade NAT networks, calls will not connect.
 - **No recording by the project.** The server never receives audio and the project's code does not record it. Nothing stops another participant from recording on their own device.
 
 ## Growth features: what is stored and what pays

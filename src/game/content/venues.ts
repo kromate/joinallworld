@@ -34,6 +34,7 @@
  * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.ts).
  */
 import { AIRPORT, REFINERY } from './venues-transport.ts';
+import { UNILAG_VENUE } from '../../campus/unilag/content.js';
 import type { HouseId, VenueId, WorldCityId } from '../../types/life.ts';
 import type {
   CityMapNames, CityVenueLabel, ComingSoonDefinition, HomeMapSpot, SceneKind, VenueCategory, VenueCategoryId, VenueDefinition,
@@ -54,7 +55,7 @@ const seenCard = 'Duration and price as observed in the reference game; effect a
 const seenName = 'Name seen in the reference game; duration, price and effects are original beta values.';
 
 export const SCENE_KINDS: readonly SceneKind[] = Object.freeze(['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
-  'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'home']);
+  'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'unilag', 'home']);
 
 /** Map filter bar. */
 export const VENUE_CATEGORIES: Record<VenueCategoryId, VenueCategory> = {
@@ -708,6 +709,8 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
   // The airport at Ikeja and the refinery in the Lekki Free Zone: src/game/content/venues-transport.ts.
   airport: AIRPORT,
   refinery: REFINERY,
+  // The University of Lagos campus at Akoka (Lagos only): src/campus/unilag/content.js.
+  unilag: UNILAG_VENUE as VenueDefinition, // trust boundary: src/campus/unilag/content.js is plain JavaScript (its ids are `string`)
 };
 
 /**

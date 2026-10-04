@@ -30,7 +30,8 @@
  * POSITION. `move` { x, z } (finite, within ±20 — protocol.js validatePosition; at most 5 a second per
  * socket) records where the sender's avatar stands in the venue's scene. It is the ONE position:
  * `presence` carries it to the room (the message is unchanged), and the proximity gate for voice
- * signalling measures between these same positions. A join resets it to the origin { x: 0, z: 0 },
+ * signalling measures between these same positions. (The UNILAG campus alone uses campus coordinates, valid only on
+ * its walkable ground, and a join there starts at the main gate: protocol.js.) A join resets it to the origin { x: 0, z: 0 },
  * which clients read as "has not reported a position yet" (a client never reports exactly the origin).
  * ROOM-CHANGED. When a room's membership or a member's name changes, this module raises the
  * server event 'room-changed' { room, cityId, venueId, members: [publicId] } (ctx.emit). It sends
@@ -83,7 +84,7 @@
  *   'home-closed' { hostId, cityId } (the host's life left home), 'host-absent' { hostId, guestId,
  *   cityId } (no host connection in the room) or 'guest-expired' with the same fields (anything else).
  */
-import { MAX_VOICE_MEMBERS, UUID_PATTERN, canOccupyVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
+import { MAX_VOICE_MEMBERS, UUID_PATTERN, canOccupyVenue, initialVenuePosition, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
 import { VENUES, watchLives } from '../life-service.js';
 import { checkLook } from '../../src/game/systems/onboarding.ts';
 import { screenText } from '../moderation/text.js';
@@ -298,6 +299,12 @@ export default function roomSocket(ctx) {
       ws.guestUntil = 0;
     },
     close: leave,
+    /** A host that lost its memory hands a connected socket back: it is in its room again, exactly as it was (ws/index.js). Nothing is announced. */
+    restore(ws) {
+      ws.voice ||= { enabled: false, muted: true }; ws.position ||= { x: 0, z: 0 }; ws.lastMoves ||= []; ws.look ??= null; ws.guestUntil ||= 0;
+      // What the room remembered about the stored life is gone with the memory: the next room message re-checks it.
+      if (ws.room) { const room = ws.room; enter(ws, room); ws.stale = true; }
+    },
     lifecycle: {
       /**
        * Drop sockets whose room no longer matches where the server says the player is. A socket
@@ -365,7 +372,7 @@ export default function roomSocket(ctx) {
         // A guest cannot come back into a Home room its host has been missing from for longer than the grace period.
         if (!until || (visiting && hostAbsent(room, hostId))) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');
         if (!core.isOpen(ws)) return;
-        leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.look = look;
+        leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = initialVenuePosition(message.venueId); ws.lastMoves = []; ws.look = look;
         enter(ws, room);
         ws.stale = false; ws.guestUntil = visiting ? Math.min(now() + GUEST_RECHECK_MS, until) : 0;
         presence(room, ws.session.id); roomChanged(room, null, ws.session.id);
@@ -374,7 +381,7 @@ export default function roomSocket(ctx) {
         if (visiting) await verify([ws]);
       },
       move: guarded((ws, message) => {
-        const position = validatePosition(message);
+        const position = validatePosition(message, ws.room.split(':')[1]);
         ws.lastMoves = ws.lastMoves.filter(time => time > now() - 1000);
         if (ws.lastMoves.length >= 5) throw Error('move_rate_limited');
         ws.lastMoves.push(now());
@@ -402,13 +409,14 @@ export default function roomSocket(ctx) {
         if (!body || body.length > 500 || /[\u0000-\u0008\u000b-\u001f\u007f]/.test(body) || (clientId !== undefined && (typeof clientId !== 'string' || clientId.length > 80 || !clientId))) throw Error('invalid_chat');
         if (!allow(`chat:${ws.session.id}`, 30)) throw Error('rate_limited');
         const key = `${ws.session.id}:${ws.room}`;
-        const history = chatHistory.get(key) || new Map();
+        // A host whose memory does not last (the Worker) keeps these retry receipts itself: core.chatHistory(ws, body).
+        const history = core.chatHistory?.(ws, body) || chatHistory.get(key) || new Map();
         if (clientId && history.has(clientId)) { send(ws, history.get(clientId)); return; }
         // Refused, never altered: a muted sender or a blocked text gets a reason and nobody receives the line.
         const refusal = ctx.checks?.muted?.(ws.session.id) ?? screenText(body, { what: 'Your message' });
         if (refusal) throw Object.assign(Error(refusal.code), { reason: refusal.reason });
         const chat = { type: 'chat', id: core.newId(), clientId, from: { ...ws.session }, body, at: now() };
-        if (clientId) { history.set(clientId, chat); if (history.size > 100) history.delete(history.keys().next().value); chatHistory.set(key, history); }
+        if (clientId) { history.set(clientId, chat); if (history.size > 100) history.delete(history.keys().next().value); if (!core.chatHistory) chatHistory.set(key, history); }
         for (const peer of rooms.get(ws.room)) if (!hidden(ws.session.id, peer.session.id)) send(peer, chat);
       }),
     },

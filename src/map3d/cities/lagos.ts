@@ -97,6 +97,8 @@ export const sites: Record<string, PackSite> = {
   palms: { x: 76, z: 23 }, 'canopy-walk': { x: 93, z: 21.5 }, beach: { x: 97, z: 42 },
   // The terminal at the end of Agege Motor Road (Ikeja), and the refinery's gate on the Lekki–Epe Expressway (Ibeju-Lekki).
   airport: { x: -96, z: -57 }, refinery: { x: 112, z: 34.6 },
+  // The University of Lagos at Akoka, on the lagoon edge of Lagos Mainland east of Yaba (approximate presentation coordinates).
+  unilag: { x: 21, z: -37 },
 };
 
 /** Where Home stands for each house (ids of HOME_SPOTS in src/game/content/venues.js). */

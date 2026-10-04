@@ -8,5 +8,5 @@ import { worldOf } from '../world/service.js';
 
 export default function worldSocket(ctx) {
   const world = worldOf(ctx);
-  return { messages: {}, open: (ws) => world.open(ws), close: (ws) => world.close(ws) };
+  return { messages: {}, open: (ws) => world.open(ws), close: (ws) => world.close(ws), restore: (ws) => world.open(ws) };
 }

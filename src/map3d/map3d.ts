@@ -39,7 +39,7 @@ import type { WorldData } from './world-data.ts';
 import type { HouseCard, Map2DState, MapLayers, MapUiDetail } from './map2d.ts';
 import type { City, CityPlace, TimeOfDay } from './city-build.ts';
 import type { OpeningHours } from '../game/clock.ts';
-import type { ActorPlayer } from './actor.ts';
+import type { ActorPlayer, TravelVehicleBuilder } from './actor.ts';
 import type { OverlayData, OverlayLayers, OverlayChip } from './overlays.ts';
 import type { Trip, TripPose, TripSource } from './trip.ts';
 import type { Route } from './roads.ts';
@@ -93,6 +93,8 @@ export type MapRenderer = THREE.WebGLRenderer
 export interface Map3DOptions {
   pack: CityPack
   cityId?: string
+  /** The model library's trip-vehicle builder (src/models/integration/scene-models.js), or null for the batch-drawn ones. */
+  travelVehicle?: TravelVehicleBuilder | null
   onSelectVenue?: (id: string) => void
   onSelectGov?: () => void
   onSelectNeighbour?: (neighbour: { id: string | undefined; name: string | undefined }) => void
@@ -115,7 +117,7 @@ export const detailOf = (event: CustomEvent<unknown>): Record<string, unknown> =
   return detail && typeof detail === 'object' ? detail as Record<string, unknown> : {};
 };
 
-export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
+export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, travelVehicle = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
   world = null, onSelectLga = () => {}, onSelectHouse = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden }: Map3DOptions) {
@@ -139,7 +141,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, o
   scene.add(overlays.group);
   const houses = createHouses(kit, pack);
   scene.add(houses.group);
-  const actor = createActor(kit);
+  const actor = createActor(kit, { travelVehicle });
   scene.add(actor.group);
   const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
   const ringOf = (colour: string, opacity: number) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };
@@ -336,6 +338,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, o
     if (next === time) return false;
     time = next;
     const preset = city.setTime(next);
+    actor.setTime?.(next); // model-library trip vehicles have day and night lights; a no-op otherwise
     hemi.color.set(preset.hemi[0]); hemi.groundColor.set(preset.hemi[1]); hemi.intensity = preset.hemi[2];
     sun.color.set(preset.sun[0]); sun.intensity = preset.sun[1]; sun.position.set(...preset.sun[2]);
     if (root) { root.dataset.time = next; root.style.background = `linear-gradient(${preset.sky[0]}, ${preset.sky[1]})`; }

@@ -577,7 +577,8 @@ test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit a
   const { VENUES } = await import('./game/content/venues.ts');
   const { spotsOf } = await import('./life.ts');
   const report = [];
-  for (const id of Object.keys(VENUES)) {
+  // The UNILAG campus is drawn by its own host (src/campus/unilag/host.js behind world-adapter.js) and has its own scene, walk and budget tests there.
+  for (const id of Object.keys(VENUES).filter((venue) => VENUES[venue as keyof typeof VENUES].scene.kind !== 'unilag')) {
     const bench = motionBench({ location: id });
     try {
       const { world } = bench;

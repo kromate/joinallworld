@@ -23,6 +23,10 @@
  *               against real players (the fifth is past the paid cap), the referral welcome gift is
  *               taken, and six friends a week are referred (one more than the weekly cap) until the
  *               lifetime cap. It is the worst case for the new faucets, not a typical player.
+ *     student   the helper job once a day, and the whole UNILAG degree: reads in the Library until admission is possible,
+ *               applies, matriculates, registers both semesters (tuition, levy, a hostel room), attends every lecture in
+ *               its slot, sits the assignments and tests, takes the one paid campus job a day, and collects the
+ *               scholarship if the results earn it. Every campus fee and every campus naira earned is in the `campus` column.
  *   Sessions start at 09:00 Lagos time (or when the workplace opens). Away time is settled in one
  *   step, as the server does for a player who was offline.
  *
@@ -49,6 +53,8 @@ import { HOUSE_TIERS, TIER_ORDER, tierCost } from '../src/game/content/world.ts'
 import { EVENTS } from '../src/game/content/events.ts';
 import { DAILY_MISSIONS, WEEKLY_MISSIONS } from '../src/game/content/missions.ts';
 import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.ts';
+import { PROGRAMMES, LECTURE_SLOTS, semesterOf } from '../src/campus/unilag/curriculum.js';
+import { CAMPUS_JOBS } from '../src/campus/unilag/student.js';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
@@ -71,6 +77,10 @@ export const GIGS = Object.keys(VENUES).flatMap((venue) => spotsOf(venue).flatMa
   .filter((def) => def.reward > 0 && !def.requiresJob && !def.unavailable).map((def) => ({ venue, spot: spot.id, def }))));
 const LABELS = new Map(Object.keys(VENUES).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities.map((def) => [def.label, def]))));
 const EVENT_TITLES = new Set(Object.values(EVENTS).map((event) => event.title));
+const CAMPUS_JOB_REASONS = new Set(Object.values(CAMPUS_JOBS).map((job) => `UNILAG ${job.label}`));
+/** The programme the simulated student reads, and the best-paid campus job. */
+export const SIM_PROGRAMME = 'computer';
+const SIM_CAMPUS_JOB = Object.values(CAMPUS_JOBS).sort((a, b) => b.pay - a.pay)[0];
 
 /** Which column of the report a ledger line belongs to. */
 export function categoryOf(line) {
@@ -85,7 +95,10 @@ export function categoryOf(line) {
   if (reason.startsWith('Welcome gift') || reason.startsWith('Referral reward')) return 'referral';
   if (reason.startsWith('Sprayed at ')) return 'leisure';
   if (reason.startsWith('Fixed deposit')) return 'savings';
-  if (/^(Danfo|Keke|Okada|Cab|Trek|Fuel) to /.test(reason)) return 'transport';
+  if (/^(Danfo|Keke|Okada|Cab|Trek|Fuel) to /.test(reason) || reason.startsWith('Campus shuttle to ')) return 'transport';
+  // The UNILAG campus (src/campus/unilag/student.js): what a student pays the university, and what the campus pays a student.
+  if (reason === 'UNILAG application fee' || /^UNILAG semester \d+ tuition and levy$/.test(reason) || /^UNILAG hostel semester \d+$/.test(reason)) return 'campusFees';
+  if (reason === 'UNILAG scholarship' || CAMPUS_JOB_REASONS.has(reason)) return 'campusPay';
   if (reason.startsWith('Groceries')) return 'food';
   if (reason.startsWith('Landlord and agent') || reason.startsWith('Bought') || reason.startsWith('Sold') || reason.startsWith('Boutique') || reason.startsWith('House upgrade') || reason === 'House styling' || reason.startsWith('Moving your ')) return 'purchases';
   if (EVENT_TITLES.has(reason)) return 'events';
@@ -322,6 +335,43 @@ function missionRun(player) {
   for (const mission of [...view.daily, ...view.weekly]) if (mission.done && !mission.claimed) player.do('missions.claim', { id: mission.id });
 }
 
+/**
+ * One day of a UNILAG student's campus life, through the same actions the Campus app sends. Admission needs Coding
+ * (or Charisma) level 1; a semester is seven Lagos days of lectures in their slots, then the tests, then it is closed.
+ */
+function studentDay(player) {
+  const student = () => player.state.unilagStudent;
+  if (student().status === 'graduated' || !PROGRAMMES[SIM_PROGRAMME]) return;
+  if (!player.travel('unilag')) return;
+  const at = (spot) => player.state.spot === spot || player.do('spot', { id: spot }).ok;
+  const task = (type, payload) => { const started = player.do(type, payload); if (started.ok) player.settle(); return started; };
+  for (let read = 0; read < 12 && skillLevel(player.state, 'coding') < 1 && skillLevel(player.state, 'charisma') < 1; read++) if (!player.run('library', 'read-library').ok) break;
+  if (['none', 'dropped'].includes(student().status) && at('senate')) player.do('unilag.apply', { programme: SIM_PROGRAMME });
+  if (student().status === 'admitted' && at('senate')) player.do('unilag.matriculate');
+  if (student().status === 'matriculated' && !student().term && at('senate')) {
+    const number = student().records.some((record) => record.semester === 1 && record.passed) ? 2 : 1;
+    if (player.do('unilag.register-semester', { courses: semesterOf(SIM_PROGRAMME, number).courses.map((course) => course.id) }).ok) player.do('unilag.hostel.allocate', { hall: 'mariere' });
+  }
+  const term = student().term, spot = PROGRAMMES[SIM_PROGRAMME].spot;
+  if (term && student().status === 'studying') {
+    const courses = semesterOf(SIM_PROGRAMME, term.semester).courses, today = lagosTime(player.now).day;
+    if (today < term.deadlineDay) {
+      // Every course's lecture in its own slot (the morning ones first), then its assignment, once.
+      for (const course of [...courses].sort((a, b) => LECTURE_SLOTS[a.slot].open - LECTURE_SLOTS[b.slot].open)) {
+        const opens = lagosDayStart(today) + LECTURE_SLOTS[course.slot].open * 60000, closes = lagosDayStart(today) + LECTURE_SLOTS[course.slot].close * 60000;
+        if (player.now < opens) player.awayUntil(opens + 60000);
+        if (player.now < closes - 60000 && at(spot)) task('unilag.lecture', { course: course.id });
+      }
+      for (const course of courses) if (student().term.assessments[course.id].assignment === null && at(spot)) task('unilag.assignment', { course: course.id });
+    } else {
+      for (const course of courses) if (student().term.assessments[course.id].test === null && at(spot)) task('unilag.test', { course: course.id });
+      player.do('unilag.close-semester');
+    }
+  }
+  // One paid campus job a Lagos day, for a current student.
+  if (student().studentId && ['matriculated', 'studying'].includes(student().status) && at(SIM_CAMPUS_JOB.spot)) task('unilag.job', { id: SIM_CAMPUS_JOB.id });
+}
+
 export const STRATEGIES = {
   idle: { label: 'idle', day() {} },
   helper: {
@@ -382,6 +432,18 @@ export const STRATEGIES = {
       player.upkeep({ energy: 50 });
     },
   },
+  student: {
+    label: 'student (UNILAG)',
+    first: (player) => firstSitting(player, 'community-helper'),
+    day(player) {
+      player.upkeep({ mode: 'trek' });
+      studentDay(player);
+      // The helper shift is what pays the fees.
+      player.upkeep({ energy: 40, hunger: 45, mode: 'trek' });
+      if (player.travel('park', 'trek')) player.run('work', 'helper-shift');
+      player.upkeep({ mode: 'trek' });
+    },
+  },
 };
 
 /** Every start the birth lottery allows: [{ lottery, house }] — the own starter house first, then each rented home. */
@@ -434,6 +496,7 @@ export function simulate({ lottery, house, strategy, days = 30, horizon = days, 
       row.unknown = [...new Set(player.lines.filter((line) => categoryOf(line) === 'other').map((line) => line.reason))];
       row.conserved = player.seed + row.ledgerSum === player.state.cash;
       row.refusals = { ...player.refusals };
+      row.student = { status: player.state.unilagStudent.status, records: player.state.unilagStudent.records.map((record) => ({ semester: record.semester, passed: record.passed, gpa: record.gpa, scholarship: record.scholarshipAwarded })), jobDays: player.state.unilagStudent.lifetime.campusJobDays.length };
       if (!nextHouse && row.carDay !== null) break;
     }
     if (day >= days && (row.nextHouseDay !== null || !nextHouse) && row.carDay !== null) break;
@@ -459,9 +522,9 @@ export function runEconomy({ days = 30, horizon = 365, track = 'tech', strategie
 }
 
 export function formatTable(rows) {
-  const head = ['start', 'strategy', 'start ₦', ...CHECKPOINTS.map((day) => `d${day}`), 'wages', 'gigs', 'goals', 'hunt', 'missn', 'tables', 'refer', 'food', 'transp', 'rent', 'loan', 'promo', 'rent ok', 'act s/d', 'next house', 'car'];
+  const head = ['start', 'strategy', 'start ₦', ...CHECKPOINTS.map((day) => `d${day}`), 'wages', 'gigs', 'goals', 'hunt', 'missn', 'tables', 'refer', 'campus', 'food', 'transp', 'rent', 'loan', 'promo', 'rent ok', 'act s/d', 'next house', 'car'];
   const lines = rows.map((row) => [`${row.lottery}/${row.house}`, `${row.label}${row.track ? ` (${row.track})` : ''}`, short(row.startCash), ...CHECKPOINTS.map((day) => short(row.netWorth[day])),
-    short(row.flows.wages ?? 0), short(row.flows.gigs ?? 0), short(row.flows.goals ?? 0), short(row.flows.hunt ?? 0), short(row.flows.missions ?? 0), short(row.flows.tables ?? 0), short(row.flows.referral ?? 0), short(row.flows.food ?? 0), short(row.flows.transport ?? 0), short(row.flows.rent ?? 0), short(row.flows.loan ?? 0),
+    short(row.flows.wages ?? 0), short(row.flows.gigs ?? 0), short(row.flows.goals ?? 0), short(row.flows.hunt ?? 0), short(row.flows.missions ?? 0), short(row.flows.tables ?? 0), short(row.flows.referral ?? 0), short((row.flows.campusFees ?? 0) + (row.flows.campusPay ?? 0)), short(row.flows.food ?? 0), short(row.flows.transport ?? 0), short(row.flows.rent ?? 0), short(row.flows.loan ?? 0),
     row.firstPromotionDay ? `d${row.firstPromotionDay}` : '—', row.rentMissedWeeks ? `missed ${row.rentMissedWeeks}` : 'yes', String(row.activePerDay),
     row.nextHouse ? (row.nextHouseDay ? `${row.nextHouse} d${row.nextHouseDay}` : `${row.nextHouse} —`) : 'top', row.carDay ? `d${row.carDay}` : '—']);
   const widths = head.map((title, column) => Math.max(title.length, ...lines.map((line) => line[column].length)));

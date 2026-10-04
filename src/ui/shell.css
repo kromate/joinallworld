@@ -122,10 +122,10 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-menu{display:none}
 /* On a wide screen the open menu takes its place in the column, right under the needs strip, and the chips move down: it never lies on top of them. */
 .is-tray-open .life-menu{display:grid;gap:2px;order:-1;padding:8px;background:var(--c-surface-solid);border-radius:var(--r-lg);box-shadow:var(--e-2);pointer-events:auto}
-.life-menu>button{display:flex;align-items:center;gap:10px;min-height:var(--tap);padding:6px 8px;border-radius:var(--r-sm);background:none;text-align:left}
-.life-menu>button:hover{background:var(--c-fill)}
-.life-menu>button>span:first-child{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--c-green-soft);color:var(--c-green-dark)}
-.life-ui .life-menu>button svg{width:19px;height:19px}
+.life-menu>button,.life-menu>a{display:flex;align-items:center;gap:10px;min-height:var(--tap);padding:6px 8px;border-radius:var(--r-sm);background:none;text-align:left}
+.life-menu>button:hover,.life-menu>a:hover{background:var(--c-fill)}
+.life-menu>button>span:first-child,.life-menu>a>span:first-child{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--c-green-soft);color:var(--c-green-dark)}
+.life-ui .life-menu>button svg,.life-ui .life-menu>a svg{width:19px;height:19px}
 .life-menu b{display:block;font-weight:600}
 .life-menu small{display:block;font-size:var(--t-small);color:var(--c-muted)}
 .life-brand{display:flex;align-items:baseline;gap:8px;padding:4px 8px 6px}
@@ -612,3 +612,9 @@ button.ui-row:hover{background:#f7f9f8}
   .is-opening .life-action,.life-nav button.is-selected svg,#life-dialog[open]:not([data-phone]){animation:none}
   .life-burst{display:none}
 }
+
+/* The way back to the original Allworld world: ordinary navigation from the menu, the landing and the session sheet. */
+.legacy-character-link{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.life-menu>a{font:inherit;color:inherit;text-decoration:none}
+.legacy-character-link:focus-visible{outline:3px solid var(--c-green-dark);outline-offset:3px}
+.session-legacy{display:grid;gap:2px;margin:12px 0 0;font-size:var(--t-small);color:var(--c-muted)}

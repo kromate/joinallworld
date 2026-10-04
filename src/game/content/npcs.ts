@@ -1,3 +1,4 @@
+import { CAMPUS_NPCS } from '../../campus/unilag/content.js';
 /**
  * OWNER: social
  * NPCs, the interactions they offer, relationship tiers, family contacts and the limits on
@@ -169,3 +170,6 @@ export const TRANSFER_LIMITS: TransferLimits = {
   min: 100, maxPerTransfer: 5000, dailyAmount: 10000, dailyCount: 3, dailyReceive: 20000,
   minEarned: 1000, minAccountAgeMs: 24 * 3600 * 1000, minFriendshipMs: 3600 * 1000, beta: true,
 };
+
+// The campus cast (src/campus/unilag/content.js) joins the catalogue before the social system reads it.
+Object.assign(NPCS, CAMPUS_NPCS);

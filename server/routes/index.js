@@ -146,8 +146,8 @@
  *                                          that does not serve pages (use ctx.pages?.set).
  *   ctx.env(name) / ctx.fetch / ctx.keyFile(name, make)   for the one module that reaches outside the game (server/growth/
  *                                          outreach.js): a fixed list of settings, an outside request, and a secret this server makes
- *                                          for itself and keeps in DATA_DIR/keys with mode 0600. A page may also be POSTed to (`method`).
- *                                          ctx.env answers only for the names on its allowlist (server.js OUTREACH_ENV) and '' for everything
+ *                                          for itself and keeps in DATA_DIR/keys with mode 0600 (Node) or in the Durable Object's own storage (Worker). A page may also be POSTed to (`method`).
+ *                                          ctx.env answers only for the names on its allowlist (host-context.js OUTREACH_ENV) and '' for everything
  *                                          else; ctx.fetch refuses anything but https, never follows a redirect and is cut off after 15 s whatever
  *                                          the caller asked. The host writes every page itself, with fixed headers: a page returns { status, html, cache? }.
  *   ctx.startup                            array of promises the host awaits before it takes requests
@@ -155,8 +155,11 @@
  *   ctx.closing                            array of async functions the host runs, in order, when it stops — before the world
  *                                          registry and the store are closed (a module that may be in the middle of sending
  *                                          something outside the game waits for it here). Absent on a host without it (use ctx.closing?.push).
- *   ctx.shards                             the world's shard store (server/world/shards.js): one append-only file per local
- *                                          government, used only through the world service (server/world/service.js)
+ *   ctx.waitUntil?.(promise)               work that outlives the request that started it (a message being sent, a registry sync):
+ *                                          a host that could stop between requests (the Worker) keeps itself up for it; Node does nothing.
+ *   ctx.shards                             the world's shard store (server/world/shard-core.js): one append-only log per local
+ *                                          government — a file on Node (world/shards.js), SQLite rows on the Worker (deploy/sqlite-shards.js) —
+ *                                          used only through the world service (server/world/service.js)
  *   ctx.randomId()                         a random UUID (for salts and ids; not a clock, not a secret store)
  *   ctx.on(event, fn) / ctx.emit(event, data)   in-process events between server modules. The
  *                                          foundation raises 'room-changed' { room, cityId, venueId,
@@ -202,8 +205,9 @@ import moderation from './moderation.js';
 import world from './world.js';
 import growth from './growth.js';
 import growthMod from './growth-mod.js';
+import campus from './campus.js';
 
-export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, world, growth, growthMod];
+export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /** Build the lookup. Returns { match(method, pathname) → { handler, params } | null, keys }. */

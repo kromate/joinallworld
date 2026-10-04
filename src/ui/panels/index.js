@@ -41,6 +41,7 @@ import { play } from '../../quick-start/entry.ts';
 
 /** App-icon colours for the growth apps (their glyphs arrive with the Phone: ../phone/icons-growth.js). */
 const GROWTH_TINTS = Object.freeze({ missions: '#256b45', events: '#b23a2e', refer: '#2b5fa8', touch: '#6a3fa0', tables: '#1f8a86' });
+const CAMPUS_TINT = '#8f2434';
 
 const PLACEMENTS = ['phone', 'nav', 'hud', 'sim-tab', 'modal'];
 const RESERVED = ['phone', 'sim', 'help', 'home', 'venue'];
@@ -142,7 +143,7 @@ const trust = lazyGroup(() => import('./groups/trust.js'), [
 // the screen's own code has arrived.
 const landing = lazyGroup(() => import('./groups/landing.js'), [
   { id: 'quick-start', title: 'Welcome to Allworld', placement: 'modal', role: 'session-gate', live: false,
-    required: (state, view) => (view.onboarding?.required === true && view.connected && !play.sending ? 'Choose your look and tap Play to start.' : null) },
+    required: (state, view) => (play.sending ? null : view.onboarding?.required === true && view.connected ? 'Choose your look and tap Play to start.' : view.link === 'new' && !view.connected ? 'Choose a name and tap Play to start your life.' : null) },
 ]);
 const start = lazyGroup(() => import('./groups/start.js'), [
   // Settling in ("Make this life yours") is offered, never required: a new life starts from the landing screen (./quick-start.js).
@@ -180,7 +181,12 @@ const tableApps = lazyGroup(() => import('./groups/tables.js'), [
   { id: 'tables', title: 'Tables', placement: 'phone', order: 43, group: 'city', tint: GROWTH_TINTS.tables },
 ]);
 
-export const PANELS = buildPanels([session, landing, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, awayChip, tablesChip, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels, growth, tableApps]);
+// The UNILAG campus app (src/campus/unilag): study, residence and campus community. Lagos only — it says so itself in another city.
+const campusApps = lazyGroup(() => import('./groups/campus.js'), [
+  { id: 'campus', title: 'Campus', placement: 'phone', order: 47, group: 'city', tint: CAMPUS_TINT },
+]);
+
+export const PANELS = buildPanels([session, landing, city, map, roadsideChip, healthChips, home, homeChip, goalChip, inbox, awayChip, tablesChip, huntChip, radioBanner, money, sim, socialApps, civic, trust, start, life, worldPanels, growth, tableApps, campusApps]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');

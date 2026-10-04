@@ -158,6 +158,13 @@ export { openingInfo };
  * Codes: invalid_travel · coming_soon · already_here · travel_mode_unavailable · closed · insufficient_funds
  */
 export function travelBlock(state: LifeState, destination: unknown, modeId: unknown, ctx: LifeContext): Block<TravelBlockCode> | null {
+  // A venue that names its cities exists only there (the UNILAG campus is in Lagos).
+  if (typeof destination === 'string' && Object.hasOwn(VENUES, destination)) {
+    const cities = VENUES[destination as VenueId]?.cities;
+    if (cities && !(cities as readonly string[]).includes(ctx?.cityId)) {
+      return destination === 'unilag' ? { code: 'campus_lagos_only', reason: 'UNILAG is in Lagos. Choose Lagos from the world map to visit.' } : { code: 'invalid_travel', reason: 'That place is not in this city.' };
+    }
+  }
   if (typeof destination === 'string' && Object.hasOwn(COMING_SOON, destination)) {
     return { code: 'coming_soon', reason: `${venueLabel(destination, ctx?.cityId)} is not open yet — it is coming soon.` };
   }
@@ -346,7 +353,7 @@ function destinationCard(state: LifeState, venue: VenueDefinition, ctx: LifeCont
   const opening = openingInfo(venue.hours, now);
   const place = placeOf(state, id)!; // non-null: id is a key of VENUES, which placeOf always finds
   // Reasons that do not depend on the mode are worked out once and shared by every tile.
-  const base: Block<TravelBlockCode> | null = here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
+  const base: Block<TravelBlockCode> | null = venue.cities && !(venue.cities as readonly string[]).includes(ctx.cityId) ? travelBlock(state, id, 'trek', ctx) : here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
   return {
     id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? (state.estate?.living === 'own' ? lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.name ?? 'Your house' : HOME_SPOTS[homeId(state)].district) : venueDistrict(id, ctx.cityId),
     icon: venue.icon, description: venue.description, category: venue.category, x: place.x, y: place.y, zone: place.zone,
@@ -363,7 +370,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
   const queued = state.travel.event;
   const pending = queued && EVENTS[queued.id];
   const trip = state.activeAction?.kind === 'travel' ? state.activeAction : null;
-  const venues = Object.values(VENUES).map((venue) => destinationCard(state, venue, ctx));
+  const venues = Object.values(VENUES).filter((venue) => !venue.cities || (venue.cities as readonly string[]).includes(ctx.cityId)).map((venue) => destinationCard(state, venue, ctx));
   const soon = Object.values(COMING_SOON).map((place): TravelDestination => ({
     id: place.id, kind: 'soon', label: venueLabel(place.id, ctx.cityId), district: venueDistrict(place.id, ctx.cityId), icon: place.icon, description: place.description,
     category: 'soon', x: place.map.x, y: place.map.y, zone: place.zone, here: false, visited: false, open: false, hours: 'Coming soon', status: 'Coming soon',

@@ -9,7 +9,7 @@
  * registers `active: { [kind]: { sanitize, tick?, complete, cancel? } }`.
  */
 import { activeHandler, emit } from '../registry.js';
-import { cleanText, finite, isRecord, ok, fail } from '../util.js';
+import { finite, isRecord, ok, fail } from '../util.js';
 import { VENUES } from '../content/venues.js';
 
 export const STATE_VERSION = 1;

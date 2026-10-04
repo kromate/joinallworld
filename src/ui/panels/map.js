@@ -33,6 +33,8 @@ export default {
   bind(root, api) {
     root.addEventListener('click', (event) => {
       const pick = event.target.closest('[data-map-pick]'), choose = event.target.closest('[data-map-mode]');
+      // Leaving on a trip clears the selection so the next visit starts from the list.
+      if (event.target.closest('[data-action="travel"]')) { destination = null; return; }
       if (pick) { destination = pick.dataset.mapPick || null; api.refresh(); }
       else if (choose) { mode = choose.dataset.mapMode; api.refresh(); }
     });

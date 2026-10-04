@@ -287,7 +287,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (navPanel?.live === false && html.has(el.main) && lastMode === mode) { /* static nav panel: leave as is */ }
     else if (setHtml(el.main, mainHtml)) {
       if (navPanel) bindPanels(el.main);
-      else restoreRail(railLeft);
+      else { if (!rail) lastSpotKey = ''; restoreRail(railLeft); }
     }
     lastMode = mode;
     setHtml(el.nav, navHtml());

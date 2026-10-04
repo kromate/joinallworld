@@ -16,3 +16,8 @@
 .ride-place .ride-why{color:#7a3c12}
 .ride-go{flex:none;max-width:132px;min-height:44px;padding:8px 13px;border:0;border-radius:22px;background:var(--c-green-dark);color:#fff;font:700 12px var(--font);cursor:pointer}
 .ride-go:disabled{background:#d9dcdf;color:#454b55;cursor:not-allowed}
+.ride-notice{display:grid;gap:8px;margin:0 0 var(--s-2);padding:10px 12px;border-radius:14px;background:var(--c-red-soft);color:#7a3c12;font-size:13px}
+.ride-notice p{margin:0;font-size:13px!important}
+.ride-fix{justify-self:start;min-height:var(--tap);padding:0 16px;border:0;border-radius:999px;background:var(--c-ink);color:#fff;font:700 12px var(--font);cursor:pointer}
+.ride-fix.is-small{min-height:32px;margin-top:4px;padding:0 12px;background:var(--c-green-soft);color:var(--c-green-dark)}
+.ride-fix:focus-visible{outline:3px solid #247a49;outline-offset:2px}

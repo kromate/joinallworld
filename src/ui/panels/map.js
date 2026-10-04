@@ -2,16 +2,21 @@
  * OWNER: world
  * Map panel, plus the roadside-event prompt.
  *
- *   'map'            nav panel. The city map (src/city-map.js) is the screen; this panel is a
- *                    sheet beside it. Overview: a handle (collapsed by default on a phone, so
- *                    nothing covers the pins), the filter chips, and — when opened — the layer
- *                    toggles and the list of every place, the alternative to tapping a pin.
+ *   'map'            nav panel. The city map (src/map3d — the 3D miniature — or src/city-map.js,
+ *                    the flat one) is the screen; this panel is a sheet beside it. Overview: a
+ *                    handle (collapsed by default on a phone, so nothing covers the city), the
+ *                    filter chips, and — when opened — the layer toggles and the list of every
+ *                    place, the keyboard and screen-reader alternative to pointing at a building.
  *                    Once a place is picked on the map or in the list: the venue card with
  *                    hours, mode tiles, the trip line, Go, a copy-link share, and "About"
- *                    (description and things to do) folded away. On a wide screen the sheet is
- *                    docked at the left and the list starts open.
- *                    "World map" swaps the backdrop to the city picker (src/world-map.js).
- *                    Open with a destination: api.open('map', { destination: venueId }).
+ *                    (description and things to do) folded away. Whatever stops the trip is said
+ *                    ON the card, with the one-tap way out (Reconnect, Cancel, Trek instead).
+ *                    WHILE A TRIP IS RUNNING the panel is a slim trip bar — from → to, how, the
+ *                    time left and Cancel with the real cancel rule — and the map shows the trip.
+ *                    On a wide screen the sheet is docked at the left and the list starts open.
+ *                    "Nigeria map" swaps the backdrop to the country map (src/world-map.js).
+ *                    Open with a destination: api.open('map', { destination: venueId }); with the
+ *                    country map: api.open('map', { layer: 'world' }).
  *   'roadside'       modal with the pending roadside choice (state.travel.event).
  *   'roadside-chip'  HUD chip shown while a choice is pending; it opens the modal once by itself.
  *
@@ -19,15 +24,16 @@
  * city map through the window event 'jaw:map-ui' { layer?, filter?, selected?, layers?, ads?,
  * neighbours?, gov? }.
  *
- * MAP LAYERS (Billboards · Sea · Neighbours · Gov). Each toggle draws one civic overlay on the
- * city map from its own server response, loaded through the civic panels' cache (civic-ui.js):
- * GET /api/civic/ads, /neighbours and /gov. The panel only passes the data on; the map draws it.
+ * MAP LAYERS (Moving · Billboards · Sea · Neighbours · Gov). Each toggle draws one civic overlay
+ * on the city map from its own server response, loaded through the civic panels' cache
+ * (civic-ui.js): GET /api/civic/ads, /neighbours and /gov. The panel only passes the data on; the
+ * map draws it. "Moving" has no data: it is street traffic, decorative only.
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './map.css';
 import { esc, json, icon } from '../dom.js';
 import { VENUE_CATEGORIES } from '../../game/content/venues.js';
-import { chosenMode, fareText, goBlock, statusClass, tripLine } from './world-ui.js';
+import { chosenMode, fareText, fixButton, goBlock, statusClass, tripInfo, tripLine } from './world-ui.js';
 import { entry, load } from './civic-ui.js';
 
 const FILTERS = [{ id: 'all', label: 'All' }, { id: 'open', label: 'Open now' }, ...Object.values(VENUE_CATEGORIES)];
@@ -37,14 +43,16 @@ let destination = null, mode = null, seenParams = null, filter = 'all', layer = 
 let shownEvent = '';
 /** UI-only: is the list of places open (null = not chosen yet: open on a wide screen, a handle on a phone), is "About" open, and the last layout the map was told about. */
 let listOpen = null, aboutOpen = false, lastLayout = '';
-const layers = { billboards: false, sea: false, neighbours: false, gov: false };
+const layers = { moving: false, billboards: false, sea: false, neighbours: false, gov: false };
 const LAYERS = [
+  { id: 'moving', label: '🚐 Moving', note: 'Street traffic — decoration only, it changes nothing in the game.' },
   { id: 'billboards', label: '📢 Billboards', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'billboard' }, action: 'Rent a billboard' },
   { id: 'sea', label: '🌊 Sea', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'sea' }, action: 'Rent a sea plot' },
   { id: 'neighbours', label: '🏡 Neighbours', key: 'hood', path: 'neighbours', open: 'neighbours', action: 'Open Neighbours' },
   { id: 'gov', label: '🏛️ Gov', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
 ];
 const cacheKey = (item, view) => `${item.key}:${view.cityId}`;
+const DATA_LAYERS = LAYERS.filter((item) => item.path);
 
 const tell = (detail) => window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail }));
 const matches = (item) => item.kind !== 'soon' && (filter === 'all' || (filter === 'open' ? item.open : item.category === filter || item.kind === 'home'));
@@ -63,11 +71,13 @@ function overview(state, view) {
   const filters = `<div class="map-filters" role="group" aria-label="Filter places">${FILTERS.map((item) => `<button data-map-filter="${esc(item.id)}" aria-pressed="${item.id === filter}" class="${item.id === filter ? 'is-selected' : ''}">${esc(item.label)}</button>`).join('')}</div>`;
   // The stamp makes the panel re-bind when a layer's data arrives, which is when the map is told.
   const on = LAYERS.filter((item) => layers[item.id]);
-  const stamp = on.map((item) => `${item.id}:${entry(cacheKey(item, view)).at}`).join('|');
+  const stamp = on.map((item) => `${item.id}:${item.path ? entry(cacheKey(item, view)).at : ''}`).join('|');
   const layerRow = `<div class="map-filters map-layers" role="group" aria-label="Map layers" data-map-stamp="${esc(stamp)}">${LAYERS.map((item) => `<button data-map-layer-toggle="${esc(item.id)}" aria-pressed="${layers[item.id]}" class="${layers[item.id] ? 'is-selected' : ''}">${esc(item.label)}</button>`).join('')}</div>`;
   const layerNotes = on.map((item) => {
+    if (!item.path) return `<div class="map-layer-note"><span>${esc(item.note)}</span></div>`;
     const cached = entry(cacheKey(item, view));
     const status = cached.data ? '' : !view.connected ? 'Offline: reconnect to load this layer.' : cached.error ? `Could not load: ${cached.error}` : 'Loading…';
+    if (!cached.data && !view.connected) return `<div class="map-layer-note"><span>${esc(status)}</span><button class="map-chip-button" data-menu="reconnect">Reconnect</button></div>`;
     const summary = !cached.data ? status : item.id === 'billboards' ? `${cached.data.billboards.slots.filter((slot) => slot.ad).length} of ${cached.data.billboards.slots.length} billboards rented`
       : item.id === 'sea' ? `${cached.data.sea.plots.length} sea plot${cached.data.sea.plots.length === 1 ? '' : 's'} rented · shown in the water below the city`
         : item.id === 'neighbours' ? `${cached.data.total} home${cached.data.total === 1 ? '' : 's'}, ${cached.data.online} online`
@@ -79,11 +89,11 @@ function overview(state, view) {
     ? `<ul class="map-list" aria-label="Places">${places.map((item) => `<li><button data-map-pick="${esc(item.id)}" class="${statusClass(item)}${item.here ? ' is-here' : ''}"><span aria-hidden="true">${esc(item.icon)}</span><span class="map-list-text"><b>${esc(item.label)}</b><small>${esc(item.district)}</small></span><em>${esc(item.here ? 'You are here' : item.open ? 'Open' : 'Closed')}</em></button></li>`).join('')}</ul>`
     : `<div class="ui-empty"><span aria-hidden="true">🔎</span><h3>Nothing matches “${esc(FILTERS.find((item) => item.id === filter)?.label || filter)}” right now</h3><p>Closed places open again later in the day.</p><button class="ui-button is-primary" data-map-filter="all">Show every place</button></div>`;
   // What a switched-on layer shows stays readable with the list closed, where the layer itself is in view.
-  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}${open ? '' : layerNotes}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">🌍 World map · switch city</button></div></div>`;
+  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}${open ? '' : layerNotes}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">🇳🇬 Nigeria map · more cities soon</button></div></div>`;
 }
 
 function worldLayer(view) {
-  return `<div class="map-panel map-worldbar"><header class="map-top"><div><h1>World map</h1><p>Choose a city to start or continue a life there. Each city has its own life.</p></div><button class="map-chip-button" data-map-layer="city">← ${esc(view.city?.name || 'City')} map</button></header></div>`;
+  return `<div class="map-panel map-worldbar"><header class="map-top"><div><h1>Nigeria</h1><p>${esc(view.city?.name || 'Lagos')} is open. More cities are on the way.</p></div><button class="map-chip-button" data-map-layer="city">← ${esc(view.city?.name || 'City')} map</button></header></div>`;
 }
 
 function card(state, view, item) {
@@ -92,6 +102,7 @@ function card(state, view, item) {
   const chips = showAll ? item.preview : item.preview.slice(0, CHIP_LIMIT);
   const more = item.preview.length - chips.length;
   const tiles = item.modes.map((option) => {
+    // A tile is dead only when no mode can go there (closed, already here). Being busy or offline is said once, on the card.
     const off = item.blocked;
     return `<button data-map-mode="${esc(option.id)}" aria-pressed="${option === chosen}" class="${option === chosen ? 'is-selected' : ''}${option.blocked && !off ? ' is-short' : ''}" ${off ? `disabled title="${esc(off.reason)}"` : `title="${esc(option.blurb || '')}"`} aria-label="${esc(option.label)}, ${esc(fareText(option))}, ${esc(option.seconds)} seconds"><span aria-hidden="true">${esc(option.icon)}</span><b>${esc(option.label)}</b><small>${esc(fareText(option))}</small><small class="map-mode-time">${esc(option.seconds)}s</small></button>`;
   }).join('');
@@ -103,11 +114,27 @@ function card(state, view, item) {
     <p class="map-status ${statusClass(item)}"><b>${esc(item.status)}</b>${item.open && item.hours !== item.status ? ` <span>${esc(item.hours)}</span>` : ''}</p>
     ${item.modes.length ? `<div class="map-modes" role="group" aria-label="How to travel">${tiles}</div>` : ''}
     ${chosen && !item.blocked ? `<p class="map-trip">${esc(tripLine(chosen))}</p>` : ''}
-    ${block ? `<p class="map-why" role="note">${esc(block.reason)}</p>` : ''}
-    <button class="map-go" ${block || !chosen ? 'disabled' : `data-action="travel" data-payload="${json({ id: item.id, mode: chosen.id })}" data-then="close"`}>${block ? esc(block.label) : `Go · ${esc(fareText(chosen))} <span aria-hidden="true">→</span>`}</button>
+    ${block ? `<div class="map-why is-${esc(block.code)}" role="note"><p>${esc(block.reason)}</p>${fixButton(block)}</div>` : ''}
+    <button class="map-go" ${block || !chosen ? `disabled aria-label="Cannot go: ${esc(block?.label || 'unavailable')}"` : `data-action="travel" data-payload="${json({ id: item.id, mode: chosen.id })}"`}>${block ? esc(block.label) : `Go · ${esc(fareText(chosen))} <span aria-hidden="true">→</span>`}</button>
     ${item.id === 'state-house' ? '<button class="map-chip-button" data-open="state-house">🏛️ Who governs? Open the State House</button>' : item.id === 'polling-unit' ? '<button class="map-chip-button" data-open="governor">🗳️ Election: candidates, voting and results</button>' : ''}
     ${about}
   </div>`;
+}
+
+/**
+ * The trip bar: all there is of the panel while a trip runs, so the map — where the trip is
+ * happening — stays in view. Cancel is the shell's own data-cancel; the rule beside it is the
+ * server's (the fare was charged at departure and is not refunded).
+ */
+function tripBar(state, view) {
+  const trip = tripInfo(state, view), left = Math.ceil(trip.remaining);
+  const paid = trip.fare === null ? '' : trip.fare > 0 ? ` · ${fareText({ fare: trip.fare })} paid` : ' · Free';
+  return `<div class="map-panel map-trip" role="group" aria-label="Travelling to ${esc(trip.to.label)}">
+    <div class="map-trip-row"><span class="map-trip-mode" aria-hidden="true">${esc(trip.mode.icon)}</span>
+      <div class="map-trip-text"><b>${esc(trip.from.label)} <span aria-hidden="true">→</span><span class="ui-sr"> to </span> ${esc(trip.to.label)}</b><small>${esc(trip.mode.label)}${esc(paid)} · <strong>${left}s left</strong></small></div>
+      <button class="map-trip-cancel" data-cancel aria-label="Cancel the trip and stay at ${esc(trip.from.label)}">Cancel</button></div>
+    <div class="map-trip-track" role="progressbar" aria-label="Trip progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(trip.fraction * 100)}"><i style="--from:${(trip.fraction * 100).toFixed(1)}%;animation-duration:${Math.max(0.05, trip.remaining).toFixed(2)}s"></i></div>
+    <p class="map-trip-rule">${esc(trip.rule)}</p></div>`;
 }
 
 const mapPanel = {
@@ -117,22 +144,24 @@ const mapPanel = {
     if (view.params && view.params !== seenParams) {
       seenParams = view.params;
       if ('destination' in view.params) { destination = view.params.destination ?? null; mode = null; showAll = false; layer = 'city'; }
+      if (view.params.layer === 'world' || view.params.layer === 'city') layer = view.params.layer;
     }
     if (layer === 'world') return worldLayer(view);
     const item = view.travel.destinations.find((entry) => entry.id === destination);
-    return item ? card(state, view, item) : overview(state, view);
+    if (item) return card(state, view, item);
+    return tripInfo(state, view) ? tripBar(state, view) : overview(state, view);
   },
   bind(root, api, params) {
     // Layers: load what is switched on (cached; never from a timer) and hand the map what there is.
-    const view = api.view(), detail = { layers: { ...layers } };
-    for (const item of LAYERS.filter((option) => layers[option.id])) {
+    const view = api.view(), detail = { layers: { ...layers }, layer };
+    for (const item of DATA_LAYERS.filter((option) => layers[option.id])) {
       load(api, cacheKey(item, view), `/api/civic/${item.path}?city=${view.cityId}`, { maxAge: 30000 });
       detail[item.key === 'hood' ? 'neighbours' : item.key] = entry(cacheKey(item, view)).data;
     }
     // Opened for a place (the Home tab, a goal chip, "Go to work", a pin): highlight it on the city map too.
     if (params?.destination && params.destination === destination) detail.selected = destination;
     // The panel changed shape (list opened or closed, a card came or went): the map re-fits around it.
-    const layout = `${layer}|${destination || ''}|${isListOpen()}|${LAYERS.filter((item) => layers[item.id]).length}`;
+    const layout = `${layer}|${destination || ''}|${isListOpen()}|${LAYERS.filter((item) => layers[item.id]).length}|${Boolean(tripInfo(api.state(), view))}`;
     if (layout !== lastLayout) { lastLayout = layout; detail.layout = true; }
     tell(detail);
     root.querySelector('.map-about')?.addEventListener('toggle', (event) => { aboutOpen = event.currentTarget.open; });
@@ -146,8 +175,11 @@ const mapPanel = {
         api.refresh(); tell({ layers: { ...layers } });
         return;
       }
-      // Leaving on a trip clears the selection so the next visit starts from the overview.
+      // Leaving on a trip clears the selection: the card makes way for the trip bar and the map shows the trip.
+      // (The shell sends the action; if the server refuses it, its reason is a toast and the place is one tap away.)
       if (event.target.closest('[data-action="travel"]')) { destination = null; tell({ selected: null }); return; }
+      const fix = event.target.closest('[data-travel-mode]');
+      if (fix) { mode = fix.dataset.travelMode; api.refresh(); return; }
       if (pick) {
         destination = pick.dataset.mapPick || null; mode = null; showAll = false;
         if (destination && !wide()) listOpen = false; // on a phone the card replaces the list; going back shows the map, not the list

@@ -7,13 +7,19 @@
  * FIRST LOAD. Only the shell, the eager panels and the rules needed to draw the HUD are in the
  * entry chunk. Everything heavy is fetched after the HUD is on screen and usable:
  *   - the 3D scene host with Three.js and every scene module   (loadScene, straight after start)
- *   - the city map and the world map                           (first time the Map opens)
+ *   - the city map (the 3D miniature in src/map3d, or the flat one where WebGL is missing) and
+ *     the country map                                          (first time the Map opens, or a trip starts)
  *   - the community panel                                      (after the first connection; if its
  *     chunk does not arrive the status line and the community panel say so, it is retried with
  *     a bounded backoff — src/lazy-load.js — and the panel offers Try again and Reload)
  *   - the lazy panel groups                                    (src/ui/panels/index.js)
  * Until a piece arrives its callers simply skip it (`venue?.…`), and it is given the current
  * state the moment it exists, so nothing depends on load order.
+ *
+ * TRAVEL IS SHOWN ON THE MAP. Whatever started a trip (the map card, the Ride app, Go to work),
+ * the moment the server reports it the Map becomes the screen in front and shows the trip; when
+ * the server reports the arrival the map shows it for a moment and then the venue comes up. The
+ * rules and the timer stay the server's — see accepted() and src/map3d/trip.js.
  */
 import { createClient, CITIES, roomJoinNeeded } from './client.js';
 import { createLazyLoader } from './lazy-load.js';
@@ -44,7 +50,8 @@ const client = createClient({
 });
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
-const showPlayer = () => venue?.setPlayer({ look: client.state.onboarding?.look, seed: client.session?.id ?? 'you', name: client.state.name || client.identity.name });
+const playerLook = () => ({ look: client.state.onboarding?.look, seed: client.session?.id ?? 'you', name: client.state.name || client.identity.name });
+const showPlayer = () => { venue?.setPlayer(playerLook()); cityMap?.setPlayer(playerLook()); };
 
 /**
  * The crowd in the scene, from real data only: the server's who-is-here listing for this venue
@@ -73,6 +80,9 @@ async function loadScene() {
     showCrowd();
     venue.resize();
     layoutScene();
+    // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
+    // (Nothing is built or drawn until the Map opens.)
+    void import('./map3d/index.js').catch(() => {});
   } catch (error) {
     console.error('The scene could not be started:', error);
     const wait = $('scene-wait');
@@ -88,16 +98,24 @@ const mapUi = {};
 const keepMapUi = (event) => Object.assign(mapUi, event.detail || {});
 window.addEventListener('jaw:map-ui', keepMapUi);
 function loadMaps() {
-  mapsLoading ??= Promise.all([import('./city-map.js'), import('./world-map.js'), import('./world-map.css')]).then(([cityModule, worldModule]) => {
-    world = worldModule.createWorldMap($('map-scene'), { onSelectCity: (city) => shell.open('city', { city: city.id }) });
-    cityMap = cityModule.createCityMap($('city-scene'), {
+  mapsLoading ??= Promise.all([import('./map3d/index.js'), import('./world-map.js')]).then(([cityModule, worldModule]) => {
+    world = worldModule.createWorldMap($('map-scene'), {
+      onOpenCity: () => shell.open('map', { layer: 'city' }),
+      onEnterCity: (cityId) => switchCity(cityId),
+      held: heldCities,
+    });
+    cityMap = cityModule.createCityView($('city-scene'), {
+      cityId: client.cityId,
       onSelectVenue: (venueId) => shell.open('map', { destination: venueId }),
       onSelectGov: () => shell.open('state-house'),
       onSelectNeighbour: (player) => shell.open('person', { player: player.id, name: player.name }),
+      // The avatar reached the door: ask the server for the arrival now rather than at its next poll.
+      onTripDue: () => { if (client.online) void client.refresh(); },
+      onNotice: (text) => shell.toast(text),
     });
     window.removeEventListener('jaw:map-ui', keepMapUi);
     world.setCity(client.cityId);
-    cityMap.setCity(client.cityId);
+    cityMap.setPlayer(playerLook());
     cityMap.setState(client.state);
     render();
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }));
@@ -134,6 +152,8 @@ function render() {
   $('map-scene').hidden = !mapOpen || !worldLayer;
   $('city-scene').hidden = !mapOpen || worldLayer;
   shell.render(state, buildView());
+  // Told after the shell has drawn, so the map measures the panel it shares the screen with. Hidden, it draws nothing.
+  cityMap?.setShown(mapOpen && !worldLayer);
 }
 /** Tell the scene how much of the screen the HUD covers, so it draws itself in the free part. Measured after each shell render (host.onRender). */
 function layoutScene() {
@@ -145,12 +165,36 @@ function layoutScene() {
 }
 function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.resize(); } else venue?.resize(); }
 
+/** The cities this device has had a life in, so the country map can offer a "coming soon" city only to someone who already lives there. */
+const HELD_KEY = 'joinallworld-cities';
+function heldCities() { try { const list = JSON.parse(storage.getItem(HELD_KEY) || '[]'); return Array.isArray(list) ? list.filter((id) => typeof id === 'string') : []; } catch { return []; } }
+function noteCity(id) { try { const list = heldCities(); if (!list.includes(id)) storage.setItem(HELD_KEY, JSON.stringify([...list, id])); } catch { /* remembered for this visit only */ } }
+
+/** The trip a state is on, as a key: a different key is a different trip. */
+const tripKey = (state) => (isDeparting(state) ? `${state.activeAction.kind}|${state.location}|${state.activeAction.id}|${state.activeAction.duration}` : '');
+let shownTrip = '';
+function showVenue() {
+  if (shell.mode === 'venue') return;
+  shell.setMode('venue');
+  // The venue comes up with a short fade rather than a cut.
+  const scene = $('venue-scene');
+  scene.classList.remove('is-arriving'); void scene.offsetWidth; scene.classList.add('is-arriving');
+}
+
 /** Called after every accepted server state. */
 function accepted(state, previous) {
   const moved = previous.location !== state.location;
+  noteCity(client.cityId);
+  // A trip started — from the map card, the Ride app, Go to work, anywhere: the map shows it. Once per trip, so
+  // a player who then looks at something else is not pulled back.
+  const trip = tripKey(state);
+  if (trip && trip !== shownTrip && shell.mode !== 'map') shell.setMode('map');
+  shownTrip = trip;
   if (moved) {
     venue?.setLocation(state.location);
-    if (shell.mode !== 'venue') shell.setMode('venue');
+    // Arrived while watching the trip: the map shows the arrival for a moment, then the venue comes up.
+    if (shell.mode === 'map' && cityMap && isDeparting(previous)) { cityMap.setState(state); cityMap.arrive(showVenue); }
+    else if (shell.mode !== 'venue') shell.setMode('venue');
     if (pendingRoute && pendingRoute.venue !== state.location) pendingRoute = null; // went somewhere else instead
   }
   // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
@@ -296,6 +340,7 @@ async function connect(createNew = false) {
 async function switchCity(id) {
   const result = await client.switchCity(id);
   if (!result.ok) { if (result.reason) shell.toast(result.reason, 'error'); return; }
+  noteCity(id);
   world?.setCity(id); cityMap?.setCity(id);
   community?.join(id, client.state.location);
   venue?.setLocation(client.state.location);
@@ -306,16 +351,11 @@ async function switchCity(id) {
 /** Entries of the shell's More menu and the top bar's Reconnect. */
 function menu(id) {
   if (id === 'reconnect') connect();
-  else if (id === 'city') { shell.setMode('map'); shell.open('city', { city: client.cityId }); }
-  else if (id === 'locate') {
-    if (!navigator.geolocation) { shell.toast('Location is unavailable here. Choose Lagos or Ibadan on the world map.', 'error'); return; }
-    shell.toast('Asking your browser for your location…');
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      const lagos = Math.hypot(latitude - 6.5244, longitude - 3.3792), ibadan = Math.hypot(latitude - 7.3775, longitude - 3.947);
-      shell.open('city', { city: lagos <= ibadan ? 'lagos' : 'ibadan' });
-    }, () => shell.toast('Location was not shared. Choose a city on the world map instead.', 'error'), { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 });
-  }
+  // The country map: the city you are in, and the cities that are coming soon.
+  else if (id === 'city') shell.open('map', { layer: 'world' });
+  // "Use my location" only ever chose between Lagos and Ibadan. With one open city there is nothing to choose, so the
+  // device's location is no longer asked for; the entry (still drawn by the shell's menu, hidden by src/city-map.css) opens the country map.
+  else if (id === 'locate') shell.open('map', { layer: 'world' });
 }
 
 window.addEventListener('jaw:start-life', (event) => { if (event.detail?.name) client.identity.name = event.detail.name; connect(true); });
@@ -331,7 +371,9 @@ if (new URLSearchParams(location.search).has('diagnostics')) {
   panel.style.cssText = 'position:fixed;left:10px;bottom:90px;z-index:60;background:white;color:black;padding:8px;max-width:340px;font:12px monospace';
   const button = document.createElement('button'); button.textContent = 'Read renderer diagnostics';
   const output = document.createElement('pre'); output.id = 'render-diagnostics';
-  button.onclick = () => { output.textContent = JSON.stringify({ ...(venue ? venue.diagnostics() : { renderCount: 0, scene: 'not loaded yet' }), visibility: document.visibilityState, lazyPanelsWaiting: PANELS.filter((item) => item.pending).map((item) => item.id) }, null, 2); };
+  button.onclick = () => { output.textContent = JSON.stringify({ ...(venue ? venue.diagnostics() : { renderCount: 0, scene: 'not loaded yet' }), map: cityMap ? cityMap.diagnostics() : 'not loaded yet', visibility: document.visibilityState, lazyPanelsWaiting: PANELS.filter((item) => item.pending).map((item) => item.id) }, null, 2); };
+  // For the same diagnostics from a test harness: the map, the client and the shell mode.
+  window.__jaw = { get map() { return cityMap; }, get client() { return client; }, get mode() { return shell.mode; }, get venue() { return venue; } };
   panel.append(button, output); document.body.append(panel);
 }
 

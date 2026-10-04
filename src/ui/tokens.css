@@ -1,33 +1,55 @@
-/* Shared design tokens. Panels use these instead of hard-coded values so the game stays consistent. */
+/*
+ * Shared design tokens. Panels, the HUD and the in-game phone use these instead of hard-coded
+ * values so the whole game reads as one system.
+ *
+ *   colour     ink / muted text, surfaces, lines, the brand greens, amber (attention), red (danger)
+ *   radii      --r-xs 8 · --r-sm 12 · --r-md 16 · --r-lg 20 · --r-xl 24 · pill
+ *   type       --t-micro 10 · --t-small 11 · --t-caption 12 · --t-body 13 · --t-lead 15 · --t-title 17 · --t-heading 20 · --t-display 28
+ *   elevation  --e-1 (chips, rows) · --e-2 (bars, cards over the scene) · --e-3 (sheets, the phone)
+ */
 :root {
   /* colour */
-  --c-ink: #20232c;
+  --c-ink: #1b1f27;
+  --c-ink-2: #39404b;
   --c-muted: #5f6770;
-  --c-surface: rgba(252, 252, 251, .96);
+  --c-faint: #8a929b;
+  --c-surface: rgba(253, 253, 252, .97);
   --c-surface-solid: #fff;
-  --c-line: #e4e5e3;
-  --c-fill: #f1f3f2;
-  --c-green: #46a86d;
-  --c-green-dark: #256b45;
-  --c-green-soft: #edf4ee;
+  --c-canvas: #f2f4f3;
+  --c-line: #e3e6e4;
+  --c-fill: #eef1ef;
+  --c-fill-2: #e3e7e4;
+  --c-green: #2fa866;
+  --c-green-dark: #1d6b43;
+  --c-green-soft: #e8f5ec;
   --c-amber: #e8a643;
-  --c-amber-soft: #fff6dc;
+  --c-amber-soft: #fff5d9;
   --c-amber-dark: #7a5a12;
-  --c-red: #a2542a;
-  --c-red-soft: #fbeee6;
+  --c-red: #b3402a;
+  --c-red-soft: #fcebe5;
+  --c-red-dark: #8a2417;
+  --c-blue: #2563eb;
+  --c-blue-soft: #e8effd;
   --c-night: #182a25;
+  --c-badge: #e5372b;
   /* spacing */
-  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
   /* radii */
+  --r-xs: 8px; --r-sm: 12px; --r-md: 16px; --r-lg: 20px; --r-xl: 24px; --r-pill: 999px;
   --r-chip: 22px; --r-card: 20px; --r-sheet: 24px; --r-round: 50%;
   /* type */
-  --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --t-small: 11px; --t-body: 13px; --t-title: 16px; --t-heading: 20px;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --t-micro: 10px; --t-small: 11px; --t-caption: 12px; --t-body: 13px; --t-lead: 15px; --t-title: 17px; --t-heading: 20px; --t-display: 28px;
   /* touch: every control is at least this tall and wide */
   --tap: 44px;
   /* elevation and motion */
-  --shadow: 0 4px 18px rgba(0, 0, 0, .12);
-  --shadow-soft: 0 2px 8px rgba(0, 0, 0, .08);
+  --e-1: 0 1px 2px rgba(16, 24, 20, .06), 0 1px 3px rgba(16, 24, 20, .08);
+  --e-2: 0 2px 4px rgba(16, 24, 20, .06), 0 6px 18px rgba(16, 24, 20, .14);
+  --e-3: 0 8px 20px rgba(8, 14, 11, .18), 0 24px 70px rgba(8, 14, 11, .38);
+  --shadow: var(--e-2);
+  --shadow-soft: var(--e-1);
+  --ring: 0 0 0 1px rgba(16, 24, 20, .06);
   --focus: 3px solid #1c5f3c;
   --ease: .16s ease-out;
+  --ease-phone: .26s cubic-bezier(.2, .8, .2, 1);
 }

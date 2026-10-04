@@ -1,4 +1,5 @@
 // Small string-template helpers shared by the shell and every panel.
+import { glyph } from './phone/icons.js';
 
 /** Escape text for HTML content and attribute values. Use it on EVERY dynamic value. */
 export const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -15,14 +16,9 @@ export function uuid() {
 /** JSON for a data-payload / data-params attribute. */
 export const json = (value) => esc(JSON.stringify(value));
 
+/** Small interface marks that are not part of the app icon set. Everything else comes from ./phone/icons.js. */
 const ICONS = {
-  home: '<path d="m3 10 9-7 9 7v10H6V10m3 10v-7h6v7"/>',
-  map: '<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/>',
-  phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
-  buy: '<path d="M5 9V5h14v4m-16 1h18v10H3V10Zm5 0v10m8-10v10"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>',
-  back: '<path d="m15 6-6 6 6 6"/>',
-  close: '<path d="m6 6 12 12M6 18 18 6"/>',
   menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
   eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
   'eye-off': '<path d="M3 3l18 18M10.6 5.1A10.9 10.9 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4M6.2 6.2C3.5 8.1 2 12 2 12s3.6 7 10 7c1.6 0 3-.4 4.3-1M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',
@@ -32,7 +28,17 @@ const ICONS = {
   fit: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
   list: '<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
 };
-export const icon = (name) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[name] || ICONS.home}</svg>`;
+/** An inline SVG icon by name: one of the marks above, else a glyph of the game's icon set (home, map, phone, buy, back, close, …). */
+export const icon = (name) => (ICONS[name] ? `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]}</svg>` : glyph(name));
+
+/**
+ * What a screen shows while its code or its data is on the way: grey bars in the shape of the
+ * content, never a spinner page. `rows` is how many list rows to hint at.
+ */
+export const skeleton = (rows = 3, label = 'Loading') => `<div class="ui-skeleton" role="status" aria-label="${esc(label)}"><i class="is-hero"></i>${'<i></i>'.repeat(rows)}</div>`;
+
+/** A section title inside an app: small, quiet, above a card or a list. */
+export const section = (title, extra = '') => `<h3 class="ui-section">${esc(title)}${extra}</h3>`;
 
 /**
  * The one empty state every panel uses: what is missing, and the next step.
@@ -46,3 +52,18 @@ export const placeholder = (title, text = 'Coming soon.') => `<div class="ui-pla
 
 /** A labelled 0–100 meter row. */
 export const meter = (label, value, low = 35) => `<div class="ui-meter${value < low ? ' is-low' : ''}"><span>${esc(label)}</span><div role="meter" aria-label="${esc(label)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(value)}"><i style="width:${Math.max(0, Math.min(100, value))}%"></i></div><b>${Math.round(value)}</b></div>`;
+
+/** A round avatar with the first letter of a name, on a colour derived from `seed` (a player id) so one person keeps one colour. `extra` is ready-made HTML (a presence dot). */
+export function avatar(name, seed = name, extra = '') {
+  let hash = 0;
+  for (const char of String(seed ?? '')) hash = (hash * 31 + char.codePointAt(0)) % 360;
+  const letter = [...String(name ?? '').trim()][0] || '?';
+  return `<span class="ui-avatar" aria-hidden="true" style="--hue:${hash}">${esc(letter.toUpperCase())}${extra}</span>`;
+}
+
+/** One line of a money list: what it was for, when, and the amount in green (in) or red (out). `sub` is plain text. */
+export const ledgerRow = (reason, sub, amount) => `<li class="ui-row"><span class="ui-row-icon is-round ${amount < 0 ? 'is-out' : 'is-in'}" aria-hidden="true">${glyph(amount < 0 ? 'spend' : 'earn')}</span><span class="ui-row-body"><b>${esc(reason)}</b><small>${esc(sub)}</small></span><span class="ui-row-end ${amount < 0 ? 'is-out' : 'is-in'}">${amount < 0 ? '−' : '+'}${money(Math.abs(amount))}</span></li>`;
+
+/** The trailing chevron of a row that opens something. */
+export const chevron = () => glyph('chevron');
+export { glyph };

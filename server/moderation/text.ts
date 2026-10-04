@@ -52,13 +52,10 @@ const phrases: [string, BlockedCategory][] = BLOCKED_PHRASES.map(([phrase, categ
 
 function wordCategory(word: string): BlockedCategory | null {
   for (const form of new Set([word, squeeze(word, 2), squeeze(word, 1)])) {
-    const whole = words.get(form);
-    if (whole) return whole;
+    if (words.has(form)) return words.get(form) ?? null;
     // Plain plurals only ("…s", "…es"); no other suffixes, so a longer innocent word never matches.
-    const plural = form.endsWith('s') ? words.get(form.slice(0, -1)) : undefined;
-    if (plural) return plural;
-    const plural2 = form.endsWith('es') ? words.get(form.slice(0, -2)) : undefined;
-    if (plural2) return plural2;
+    if (form.endsWith('s') && words.has(form.slice(0, -1))) return words.get(form.slice(0, -1)) ?? null;
+    if (form.endsWith('es') && words.has(form.slice(0, -2))) return words.get(form.slice(0, -2)) ?? null;
   }
   return null;
 }

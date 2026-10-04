@@ -65,22 +65,32 @@
  *   dispose()                   free everything and detach from the parent (the host calls it on
  *                               a location change and when it is disposed itself)
  */
+import type * as THREE from 'three';
 import { createBatch, kitResources, releaseObjects, GLOW } from './build.ts';
-import { buildAvatar, drawCrowd } from './characters.js';
-import { playerOptions, rigOf } from './avatar-rig.js';
-import { createWalkGrid, footprintRecorder, turnTowards } from './movement.js';
-import { spotMarker, gameTable } from './props.js';
+import type { Releasable } from './build.ts';
+import type { Kit } from './kit.ts';
+import type { AvatarGroup, Pose } from './characters.ts';
+import type { FootprintRecorder, FootprintShapes, WalkGrid, WalkRect, WalkShape } from './movement.ts';
+import type {
+  Anchor, Batch, Colour, CrowdPerson, Landmark, SceneOptions, Lighting, Mood, RaisedShape, SceneBuilder, SceneCamera, SceneContext, SceneDef, SceneEntrance, SceneEntry,
+  SceneLayout, SceneMaterials, ScenePerson, SceneRest, SceneSpot, SceneState, SceneTag, SceneThing, SceneVenue, SceneWalk, PlayerOptions, ThreeModule, TimeOfDay, Vec3, WalkSpot,
+} from './types.ts';
+import { buildAvatar, drawCrowd } from './characters.ts';
+import { playerOptions, rigOf } from './avatar-rig.ts';
+import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
+import { spotMarker, gameTable } from './props.ts';
 import { tablesAt, GAME_LABELS } from '../tables/places.js';
 import { lagosTime } from '../game/clock.js';
-import * as outdoor from './venues-outdoor.js';
-import * as social from './venues-social.js';
-import * as work from './venues-work.js';
-import * as civic from './venues-civic.js';
-import * as transport from './venues-transport.js';
+import * as outdoor from './venues-outdoor.ts';
+import * as social from './venues-social.ts';
+import * as work from './venues-work.ts';
+import * as civic from './venues-civic.ts';
+import * as transport from './venues-transport.ts';
 
-export const DEFAULT_CAMERA = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
-const SCENE_CAMERA = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
-export const TIMES = Object.freeze(['day', 'dusk', 'night']);
+export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
+const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
+export const TIMES: readonly TimeOfDay[] = Object.freeze<TimeOfDay[]>(['day', 'dusk', 'night']);
+const isTime = (value: unknown): value is TimeOfDay => TIMES.includes(value as TimeOfDay);
 export const MAX_CROWD = 12;
 
 /**
@@ -94,7 +104,7 @@ export const MAX_CROWD = 12;
  * least 1 and leans on the rim light, so people stay readable against a dark sky; the club keeps
  * its purple but gets a warmer floor bounce for faces.
  */
-export const LIGHTING = Object.freeze({
+export const LIGHTING: Readonly<Record<Mood, Readonly<Record<TimeOfDay, Lighting>>>> = Object.freeze({
   outdoor: {
     day: { sky: ['#cfe9f3', '#6fb4e6'], hemi: ['#eaf4ff', '#c9b08a', 1.9], sun: ['#fff0d2', 2.4, [-10, 26, 12]], rim: ['#cfe2ff', 0.7], glow: 0.6, lamps: 0.1 },
     dusk: { sky: ['#f0b48c', '#5d528f'], hemi: ['#f3cdb6', '#8a6f6a', 1.5], sun: ['#ff9a5c', 1.9, [-22, 11, 7]], rim: ['#c9b6f0', 0.9], glow: 1.05, lamps: 0.8 },
@@ -113,32 +123,35 @@ export const LIGHTING = Object.freeze({
 });
 
 /** Lagos time of day from server ms: day 06:30–17:30, dusk for the hour either side of night. */
-export function timeOfDay(ms) {
+export function timeOfDay(ms: number): TimeOfDay {
   const { minuteOfDay } = lagosTime(ms);
   if (minuteOfDay >= 390 && minuteOfDay < 1050) return 'day';
   if ((minuteOfDay >= 330 && minuteOfDay < 390) || (minuteOfDay >= 1050 && minuteOfDay < 1170)) return 'dusk';
   return 'night';
 }
-export const lightingFor = (mood, time) => (LIGHTING[mood] || LIGHTING.outdoor)[TIMES.includes(time) ? time : 'day'];
+export const lightingFor = (mood: string, time: unknown): Lighting => (LIGHTING[mood as Mood] || LIGHTING.outdoor)[isTime(time) ? time : 'day'];
 
-const DEFS = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
+const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
 /** Kinds that are another kind with a default variant. */
-const ALIASES = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };
+const ALIASES: Record<string, [string, string]> = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };
 export const KINDS = Object.freeze(Object.keys(DEFS).filter((kind) => kind !== 'generic'));
 
-function skyDome(kit, materials) {
+/** The scene materials plus the sky's, made once per kit by the first scene. */
+type SkyMaterials = SceneMaterials & { sky?: THREE.MeshBasicMaterial };
+
+function skyDome(kit: Kit, materials: SkyMaterials) {
   const { THREE } = kit;
   const geometry = new THREE.SphereGeometry(90, 16, 8);
-  geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count * 3), 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(geometry.attributes.position!.count * 3), 3));
   const mesh = new THREE.Mesh(geometry, materials.sky);
   mesh.name = 'sky';
   mesh.frustumCulled = false;
   mesh.renderOrder = -1;
   return mesh;
 }
-function paintSky(THREE, mesh, [horizon, zenith]) {
+function paintSky(THREE: ThreeModule, mesh: THREE.Mesh, [horizon, zenith]: [Colour, Colour]) {
   const low = new THREE.Color(horizon), high = new THREE.Color(zenith), mix = new THREE.Color();
-  const { position, color } = mesh.geometry.attributes;
+  const { position, color } = mesh.geometry.attributes as Record<'position' | 'color', THREE.BufferAttribute>;
   for (let i = 0; i < position.count; i++) {
     const t = Math.max(0, Math.min(1, (position.getY(i) + 30) / 75));
     mix.copy(low).lerp(high, t);
@@ -151,17 +164,20 @@ function paintSky(THREE, mesh, [horizon, zenith]) {
  * Match venue spots to the landmarks a scene offers: an explicit hint first (several spots may
  * share one landmark), then the spot's id and label; leftovers take unused landmarks, then spare ground.
  */
-function resolveAnchors(landmarks, spots, spare, hints = {}) {
-  const anchors = {}, used = new Set();
+interface Resolved { anchors: Record<string, Anchor>; fallback(): Anchor; hint(id: string): Landmark | null; place(landmark: Landmark): Anchor }
+type Point = { x: number; z: number };
+const present = (point: Point | null): point is Point => point !== null;
+function resolveAnchors(landmarks: Landmark[], spots: SceneSpot[], spare: [number, number][], hints: Record<string, string> = {}): Resolved {
+  const anchors: Record<string, Anchor> = {}, used = new Set<string>();
   // approach on a landmark is the way up to a raised place: [x, z] — the foot of its steps, where the avatar leaves the
   // floor — or a chain [[x, z], ...] whose first point is on the floor and whose others are the way up (a stair top, a platform).
-  const place = (landmark) => {
-    const pair = (value) => (Array.isArray(value) && Number.isFinite(value[0]) && Number.isFinite(value[1]) ? { x: value[0], z: value[1] } : null);
-    const chain = Array.isArray(landmark.approach) ? (Array.isArray(landmark.approach[0]) ? landmark.approach.map(pair).filter(Boolean) : [pair(landmark.approach)].filter(Boolean)) : [];
+  const place = (landmark: Landmark): Anchor => {
+    const pair = (value: unknown): Point | null => (Array.isArray(value) && Number.isFinite(value[0]) && Number.isFinite(value[1]) ? { x: value[0], z: value[1] } : null);
+    const chain = Array.isArray(landmark.approach) ? (Array.isArray(landmark.approach[0]) ? landmark.approach.map(pair).filter(present) : [pair(landmark.approach)].filter(present)) : [];
     return { x: landmark.x, y: landmark.y || 0, z: landmark.z, ry: landmark.ry || 0, landmark: landmark.key, act: landmark.act || null, approach: chain[0] || null, steps: chain.slice(1) };
   };
   for (const landmark of landmarks) anchors[landmark.key] = place(landmark);
-  const pending = [], unhinted = [];
+  const pending: SceneSpot[] = [], unhinted: SceneSpot[] = [];
   for (const spot of spots) {
     if (!spot || typeof spot.id !== 'string') continue;
     const wanted = Object.hasOwn(hints, spot.id) ? hints[spot.id] : spot.anchor;
@@ -176,16 +192,16 @@ function resolveAnchors(landmarks, spots, spare, hints = {}) {
     if (match) { used.add(match.key); anchors[spot.id] = place(match); } else pending.push(spot);
   }
   let spareIndex = 0;
-  const fallback = () => {
+  const fallback = (): Anchor => {
     const free = landmarks.find((landmark) => !used.has(landmark.key));
     if (free) { used.add(free.key); return place(free); }
-    const [x, z] = spare[spareIndex % spare.length];
+    const [x, z] = spare[spareIndex % spare.length]!;
     const ring = Math.floor(spareIndex / spare.length);
     spareIndex += 1;
     return { x: x + ring * 0.9, y: 0, z: z + ring * 0.9, ry: 0, landmark: null, act: null, approach: null, steps: [] };
   };
   for (const spot of pending) anchors[spot.id] = fallback();
-  return { anchors, fallback, hint: (id) => (typeof hints[id] === 'string' && landmarks.find((landmark) => landmark.key === hints[id])) || null, place };
+  return { anchors, fallback, hint: (id: string) => (typeof hints[id] === 'string' && landmarks.find((landmark) => landmark.key === hints[id])) || null, place };
 }
 
 /**
@@ -201,11 +217,18 @@ function resolveAnchors(landmarks, spots, spare, hints = {}) {
  * they are the ground footprints of what the scene builder draws (footprintRecorder), so they
  * cannot drift from the art. `block` and `clear` are for what a footprint cannot say.
  */
-const GROUND = Object.freeze([-14.2, -12.2, 14.2, 12.2]), FLOOR = Object.freeze([-11.5, -9.5, 11.5, 9.5]);
-const outdoors = (more) => Object.freeze({ bounds: GROUND, entrance: [0, 11.4], open: true, ...more });
-const indoors = (more) => Object.freeze({ bounds: FLOOR, entrance: [0, 8.8], open: false, ...more });
-export const WALK_DEFAULT = Object.freeze({ bounds: null, entrance: null, open: true });
-export const WALK = Object.freeze({
+export interface WalkSpec {
+  bounds: Readonly<WalkRect> | null;
+  entrance: readonly [number, number] | null;
+  open: boolean;
+  block?: WalkShape[];
+  clear?: WalkShape[];
+}
+const GROUND = Object.freeze([-14.2, -12.2, 14.2, 12.2]) as Readonly<WalkRect>, FLOOR = Object.freeze([-11.5, -9.5, 11.5, 9.5]) as Readonly<WalkRect>;
+const outdoors = (more?: Partial<WalkSpec>): Readonly<WalkSpec> => Object.freeze({ bounds: GROUND, entrance: [0, 11.4] as const, open: true, ...more });
+const indoors = (more?: Partial<WalkSpec>): Readonly<WalkSpec> => Object.freeze({ bounds: FLOOR, entrance: [0, 8.8] as const, open: false, ...more });
+export const WALK_DEFAULT: Readonly<WalkSpec> = Object.freeze({ bounds: null, entrance: null, open: true });
+export const WALK: Readonly<Record<string, Readonly<WalkSpec>>> = Object.freeze({
   park: outdoors(), market: outdoors(), beach: outdoors({ entrance: [0, 11.2] }), polling: outdoors(), walk: outdoors(), statehouse: outdoors(),
   rooftop: outdoors({ bounds: [-10.4, -8.4, 10.4, 8.4], entrance: [0, 7.6] }),
   generic: outdoors({ bounds: [-13.2, -11.2, 13.2, 11.2], entrance: [0, 10.4] }),
@@ -222,7 +245,7 @@ export const WALK = Object.freeze({
  * and, failing those, the nearest free place found in widening rings. The places are checked in src/scene/scenes.test.js
  * for every table of every venue: free floor around it, a way to it from the entrance, no marker covered.
  */
-export const TABLE_PLACES = Object.freeze({
+export const TABLE_PLACES: Readonly<Record<string, readonly (readonly [number, number])[]>> = Object.freeze({
   // By table id (src/tables/places.js): where that table belongs in its room — the goal by the pitch, the corner table in the corner.
   'buka-corner': [[-7.4, 5.2], [7.6, 4.6]], 'buka-door': [[-3.2, 6.2], [4.4, 5.6], [-8.6, 0.9]],
   'park-bench': [[9.7, 2.9], [9.6, 6.4]], 'park-goal': [[-9.6, 1.8], [-10.6, 0.4]],
@@ -236,7 +259,7 @@ export const TABLE_PLACES = Object.freeze({
   viewing: [[7.8, 5.0], [-7.6, 5.4], [8.0, 0.2], [-7.8, 0.8]],
   beach: [[9.4, 5.8], [-9.6, 6.2], [10.2, -0.6]],
 });
-const TABLE_FALLBACK = Object.freeze([[7.5, 4.5], [-7.5, 4.5], [7.5, -1], [-7.5, -1], [0, 5]]);
+const TABLE_FALLBACK: readonly (readonly [number, number])[] = Object.freeze([[7.5, 4.5], [-7.5, 4.5], [7.5, -1], [-7.5, -1], [0, 5]]);
 /** A table's clear ground: nothing else within this radius of its centre (it is 0.9 across, with stools to 1.6). */
 export const TABLE_CLEAR = 1.9, TABLE_REACH = 2.5;
 
@@ -249,15 +272,29 @@ export const SPOT_REACH = 1.5;
  */
 export const SPOT_BEHIND = 1.3, SPOT_FRONT = 3.4, SPOT_SIDE = 1.7;
 /** How long another player's figure takes to ease to a newly reported position (seconds), and the jump beyond which it is simply placed. */
-const PEER_EASE = [0.16, 0.42], PEER_JUMP = 7, PEER_PACE = 6;
+const PEER_EASE: [number, number] = [0.16, 0.42], PEER_JUMP = 7, PEER_PACE = 6;
 
-function createEntry(kit, venue, def, kind, defaultVariant) {
+/** One other player's figure: a standing and a walking pose, eased between reported positions. */
+interface Peer {
+  id: string; lookKey: string; look: unknown; seed: unknown; group: THREE.Group; shown: AvatarGroup | null;
+  x: number; z: number; y: number; ry: number; fromX: number; fromZ: number; toX: number; toZ: number;
+  t: number; span: number; stride: number; top: number; tag: SceneTag; at: ScenePerson; stand: AvatarGroup; walk: AvatarGroup;
+}
+/** A crowd person with a reported position. */
+type LivePerson = CrowdPerson & { x: number; z: number };
+interface View {
+  time: TimeOfDay; fixedTime: boolean; spot: string | null; look: unknown; lookKey: string; seed: unknown; name: string;
+  pose: string; poseFixed: boolean; crowd: CrowdPerson[];
+}
+
+function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneDef, kind: string, defaultVariant?: string): SceneEntry {
   const { THREE } = kit;
   const shared = kitResources(kit);
-  if (!shared.materials.sky) shared.materials.sky = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, depthWrite: false, fog: false });
-  const options = venue?.scene && typeof venue.scene === 'object' ? venue.scene : {};
-  const spots = Array.isArray(options.spots) ? options.spots : Object.values(venue?.spots || {});
-  const context = {
+  const materials: SkyMaterials = shared.materials;
+  if (!materials.sky) materials.sky = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, depthWrite: false, fog: false });
+  const options: SceneOptions = venue?.scene && typeof venue.scene === 'object' ? venue.scene : {};
+  const spots: SceneSpot[] = Array.isArray(options.spots) ? options.spots : Object.values(venue?.spots || {});
+  const context: SceneContext = {
     kind, venue, spots,
     variant: typeof options.variant === 'string' ? options.variant : defaultVariant || null,
     accent: typeof options.palette === 'string' && /^#[0-9a-f]{6}$/i.test(options.palette) ? options.palette : def.accent || '#e0a43a',
@@ -267,43 +304,43 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   const group = new THREE.Group();
   group.name = `venue:${kind}`;
 
-  const view = {
-    time: TIMES.includes(options.time) ? options.time : 'day',
-    fixedTime: TIMES.includes(options.time),
+  const view: View = {
+    time: isTime(options.time) ? options.time : 'day',
+    fixedTime: isTime(options.time),
     spot: null, look: options.look ?? null, lookKey: JSON.stringify(options.look ?? null), seed: options.seed ?? 'you', name: 'You',
     pose: 'stand', poseFixed: false, crowd: [],
   };
-  const hints = options.anchors && typeof options.anchors === 'object' ? options.anchors : {};
-  let layout = null, resolved = null, live = false, disposed = false, footprints = null, grid = null, entrance = null;
-  const staticObjects = [], actorObjects = [], markObjects = [];
-  let staticTriangles = 0, actorTriangles = 0, crowdTags = [], selfTag = null, sky = null;
+  const hints: Record<string, string> = options.anchors && typeof options.anchors === 'object' ? options.anchors : {};
+  let layout: SceneLayout | null = null, resolved: Resolved | null = null, live = false, disposed = false, footprints: FootprintShapes | null = null, grid: WalkGrid | null = null, entrance: SceneEntrance | null = null;
+  const staticObjects: Releasable[] = [], actorObjects: Releasable[] = [], markObjects: Releasable[] = [];
+  let staticTriangles = 0, actorTriangles = 0, crowdTags: SceneTag[] = [], selfTag: SceneTag | null = null, sky: THREE.Mesh | null = null;
   // Other players who report where they stand: one figure each, eased to every new position.
-  const peers = new Map();
-  let peopleList = [], mergedTags = [], batchKey = null, easing = false;
-  const wallParts = { wallBack: [], wallLeft: [] };
+  const peers = new Map<string, Peer>();
+  let peopleList: ScenePerson[] = [], mergedTags: SceneTag[] = [], batchKey: string | null = null, easing = false;
+  const wallParts: Record<'wallBack' | 'wallLeft', THREE.Object3D[]> = { wallBack: [], wallLeft: [] };
   const sceneCamera = def.camera || SCENE_CAMERA;
   // The ground direction from the scene's centre towards its own camera: "in front of" a marker.
   const toCamera = (() => { const [cx, , cz] = sceneCamera.landscape, size = Math.hypot(cx, cz) || 1; return { x: cx / size, z: cz / size }; })();
   // The player's avatar is its own group, moved by its transform only: one prebuilt figure per pose.
   const avatar = new THREE.Group();
   avatar.name = 'avatar';
-  const figures = new Map();
-  let shownFigure = null, standFigure = null, strideFigure = null, driven = false;
-  const marks = { ring: null, near: null, goal: null };
+  const figures = new Map<string, AvatarGroup>();
+  let shownFigure: AvatarGroup | null = null, standFigure: AvatarGroup | null = null, strideFigure: AvatarGroup | null = null, driven = false;
+  const marks: Record<'ring' | 'near' | 'goal', THREE.Mesh | null> = { ring: null, near: null, goal: null };
   /** The game tables that stand here: [{ id, kind: 'table', table, game, x, z, top, r, label }] (see TABLE_PLACES). */
-  const tableList = [];
+  const tableList: SceneThing[] = [];
 
   function drawStatic() {
     const recorder = footprintRecorder(createBatch(THREE));
     const batch = recorder.batch;
-    layout = def.build(batch, context) || {};
+    layout = (def.build(batch, context) || {}) as SceneLayout;
     footprints = recorder.shapes();
     layout.spots ||= [];
     layout.crowd ||= [];
     layout.spare ||= [[0, 4], [3, 5], [-3, 5], [5, 2], [-5, 2], [0, 7]];
     if (!resolved) {
       resolved = resolveAnchors(layout.spots, spots, layout.spare, hints);
-      view.spot = spots.find((spot) => spot && resolved.anchors[spot.id])?.id ?? layout.spots[0]?.key ?? null;
+      view.spot = spots.find((spot) => spot && resolved!.anchors[spot.id])?.id ?? layout.spots[0]?.key ?? null;
     }
     for (const landmark of layout.spots) spotMarker(batch, landmark.x, landmark.z, context.accent, landmark.y || 0);
     placeTables(recorder);
@@ -311,10 +348,10 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     return batch;
   }
   /** The walk grid for this kind's walkable description and a set of recorded footprints. */
-  function gridFor(shapes) {
-    const data = Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT;
+  function gridFor(shapes: FootprintShapes | null) {
+    const data = (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT)!;
     const floor = shapes?.floor;
-    const bounds = data.bounds || (floor ? [floor[0] + 1.3, floor[1] + 1.3, floor[2] - 1.3, floor[3] - 1.3] : [-10, -8, 10, 8]);
+    const bounds = (data.bounds || (floor ? [floor[0] + 1.3, floor[1] + 1.3, floor[2] - 1.3, floor[3] - 1.3] : [-10, -8, 10, 8])) as WalkRect;
     return { data, bounds, grid: createWalkGrid({ bounds, block: [...(shapes?.block || []), ...(data.block || [])], clear: data.clear || [] }) };
   }
   /**
@@ -322,13 +359,13 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
    * (the time of day changed) draws them where they already are — from the floor as it is BEFORE the tables: what the
    * scene's own builder drew.
    */
-  function placeTables(recorder) {
+  function placeTables(recorder: FootprintRecorder) {
     const wanted = tablesAt(venue?.id);
     if (!wanted.length) return;
     if (!tableList.length) {
       const before = gridFor(recorder.shapes()), free = before.grid, door = before.data.entrance || [(before.bounds[0] + before.bounds[2]) / 2, before.bounds[3] - 0.8];
       // Free all round, off every marker and the ground in front of one, away from the door and from the other tables.
-      const fits = (x, z) => {
+      const fits = (x: number, z: number): boolean => {
         if (Math.hypot(x - door[0], z - door[1]) < 3.2 || tableList.some((other) => Math.hypot(other.x - x, other.z - z) < TABLE_CLEAR * 2 + 0.6)) return false;
         let standing = 0;
         for (let step = 0; step < 12; step++) {
@@ -341,15 +378,15 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       };
       wanted.forEach((table, index) => {
         const places = [...(TABLE_PLACES[table.id] || []), ...(TABLE_PLACES[kind] || TABLE_FALLBACK)], own = TABLE_PLACES[table.id] ? 0 : index;
-        const pinned = resolved.hint(`table:${table.id}`);
-        let at = pinned && fits(pinned.x, pinned.z) ? { x: pinned.x, z: pinned.z } : null;
-        for (let i = 0; i < places.length && !at; i++) { const [x, z] = places[(own + i) % places.length]; if (fits(x, z)) at = { x, z }; }
+        const pinned = resolved!.hint(`table:${table.id}`);
+        let at: Point | null = pinned && fits(pinned.x, pinned.z) ? { x: pinned.x, z: pinned.z } : null;
+        for (let i = 0; i < places.length && !at; i++) { const [x, z] = places[(own + i) % places.length]!; if (fits(x, z)) at = { x, z }; }
         for (let ring = 1; ring <= 40 && !at; ring++) {
-          const [cx, cz] = places[own % places.length], radius = ring * 0.5;
+          const [cx, cz] = places[own % places.length]!, radius = ring * 0.5;
           for (let step = 0; step < 20 && !at; step++) { const angle = (step / 20) * Math.PI * 2 + ring * 0.31, x = cx + Math.sin(angle) * radius, z = cz + Math.cos(angle) * radius; if (fits(x, z)) at = { x: Math.round(x * 10) / 10, z: Math.round(z * 10) / 10 }; }
         }
         // A venue with no room left for a table simply has none in the scene: the Phone's Tables app still lists it.
-        if (at) tableList.push({ id: `table:${table.id}`, kind: 'table', table: table.id, game: table.game, x: at.x, z: at.z, top: 1.7, r: 1.6, label: `${GAME_LABELS[table.game] ?? table.game} · ${table.label}` });
+        if (at) tableList.push({ id: `table:${table.id}`, kind: 'table', table: table.id, game: table.game, x: at.x, z: at.z, top: 1.7, r: 1.6, label: `${(GAME_LABELS as Record<string, string>)[table.game] ?? table.game} · ${table.label}` });
       });
     }
     markers = null; // read again when the crowd is placed: the list was only borrowed here
@@ -364,13 +401,13 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     const at = grid.nearest(wanted[0], wanted[1]) || { x: wanted[0], z: wanted[1] };
     entrance = { x: at.x, y: 0, z: at.z, ry: Math.PI };
   }
-  function anchorFor(id) {
+  function anchorFor(id: string | null | undefined): Anchor | null {
     if (id == null) return null;
-    if (!resolved.anchors[id]) { const pinned = resolved.hint(id); resolved.anchors[id] = pinned ? resolved.place(pinned) : resolved.fallback(); }
-    return resolved.anchors[id];
+    if (!resolved!.anchors[id]) { const pinned = resolved!.hint(id); resolved!.anchors[id] = pinned ? resolved!.place(pinned) : resolved!.fallback(); }
+    return resolved!.anchors[id]!;
   }
   /** Is this place off every spot marker and off the ground in front of one (as the scene's own camera sees it)? */
-  function offMarkers(x, z) {
+  function offMarkers(x: number, z: number) {
     for (const at of markerList()) {
       const dx = x - at.x, dz = z - at.z;
       const along = dx * toCamera.x + dz * toCamera.z, side = dx * toCamera.z - dz * toCamera.x;
@@ -378,12 +415,12 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     }
     return true;
   }
-  let markers = null;
+  let markers: Anchor[] | null = null;
   /** Every place a spot marker is drawn, and every spot the server knows (each once). */
-  function markerList() {
+  function markerList(): Anchor[] {
     if (markers) return markers;
-    const seen = new Set(), list = [];
-    for (const at of Object.values(resolved.anchors)) { const key = `${at.x.toFixed(2)},${at.z.toFixed(2)}`; if (!seen.has(key)) { seen.add(key); list.push(at); } }
+    const seen = new Set<string>(), list: Anchor[] = [];
+    for (const at of Object.values(resolved!.anchors)) { const key = `${at.x.toFixed(2)},${at.z.toFixed(2)}`; if (!seen.has(key)) { seen.add(key); list.push(at); } }
     markers = list;
     return list;
   }
@@ -392,12 +429,12 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
    * marker and of the ground in front of it, and not on top of someone already placed. Searched in
    * widening rings, so a crowd place that is already fine is kept exactly.
    */
-  function clearOfSpots(x, z, taken) {
-    const fits = (px, pz) => (!grid || grid.free(px, pz)) && offMarkers(px, pz) && !taken.some((other) => Math.hypot(other.x - px, other.z - pz) < 0.9);
+  function clearOfSpots(x: number, z: number, taken: Point[]): Point {
+    const fits = (px: number, pz: number) => (!grid || grid.free(px, pz)) && offMarkers(px, pz) && !taken.some((other) => Math.hypot(other.x - px, other.z - pz) < 0.9);
     if (fits(x, z)) return { x, z };
     for (let ring = 1; ring <= 14; ring++) {
       const radius = ring * 0.45;
-      let best = null, bestScore = Infinity;
+      let best: Point | null = null, bestScore = Infinity;
       for (let step = 0; step < 16; step++) {
         const angle = (step / 16) * Math.PI * 2 + ring * 0.37;
         const px = x + Math.sin(angle) * radius, pz = z + Math.cos(angle) * radius;
@@ -411,22 +448,22 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     return { x, z };
   }
   /** Where each person of the crowd stands. A player with a reported position stands there (`live`); everyone else is placed by the scene. */
-  function placeCrowd(people) {
-    const slots = layout.crowd, base = resolved.anchors.people || { x: 0, z: 3 }, taken = [];
+  function placeCrowd(people: CrowdPerson[]): CrowdPerson[] {
+    const slots = layout!.crowd, base = resolved!.anchors.people || { x: 0, z: 3 }, taken: Point[] = [];
     return people.slice(0, MAX_CROWD).map((person, index) => {
       if (Number.isFinite(person.x) && Number.isFinite(person.z)) {
         const bounds = grid?.bounds;
-        const x = bounds ? Math.max(bounds[0], Math.min(bounds[2], person.x)) : person.x, z = bounds ? Math.max(bounds[1], Math.min(bounds[3], person.z)) : person.z;
+        const x = bounds ? Math.max(bounds[0], Math.min(bounds[2], person.x!)) : person.x!, z = bounds ? Math.max(bounds[1], Math.min(bounds[3], person.z!)) : person.z!;
         return { ...person, x, z, live: person.kind !== 'npc' };
       }
-      let wanted;
-      const at = person.spot != null && resolved.anchors[person.spot];
+      let wanted: { x: number; y?: number; z: number; ry: number };
+      const at = person.spot != null && resolved!.anchors[person.spot];
       if (at) {
         const turn = index * 2.4;
         // Far enough from the anchor that someone standing at it (you, perhaps) and this person do not overlap.
         const reach = 1.9, angle = turn + 0.9;
         wanted = { x: at.x + Math.sin(angle) * reach, y: at.y, z: at.z + Math.cos(angle) * reach, ry: person.ry ?? angle + Math.PI };
-      } else if (index < slots.length) { const [x, z, ry = 0, y = 0] = slots[index]; wanted = { x, y, z, ry: person.ry ?? ry }; }
+      } else if (index < slots.length) { const [x, z, ry = 0, y = 0] = slots[index]!; wanted = { x, y, z, ry: person.ry ?? ry }; }
       else { const turn = index * 2.4, radius = 1.6 + (index % 3) * 0.7; wanted = { x: base.x + Math.sin(turn) * radius, z: base.z + Math.cos(turn) * radius, ry: person.ry ?? turn + Math.PI }; }
       // Someone on a raised place (a stage, a walkway) stands at its height, where the scene put them; everyone else is on
       // the ground, clear of the markers.
@@ -442,8 +479,8 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
    * Where the scene itself stands the avatar: at the chosen spot's anchor, or — while an activity
    * runs there — at the place and in the pose the spot gives it (anchor.act).
    */
-  function rest() {
-    const anchor = anchorFor(view.spot) || { x: 0, y: 0, z: 3, ry: 0 };
+  function rest(): SceneRest {
+    const anchor = anchorFor(view.spot) || ({ x: 0, y: 0, z: 3, ry: 0 } as Anchor);
     const acting = view.pose === 'busy' && !view.poseFixed && anchor.act ? anchor.act : null;
     const pose = view.poseFixed ? view.pose : acting ? acting.pose || 'work' : view.pose === 'stand' || view.pose === 'walk' ? view.pose : 'work';
     return {
@@ -453,20 +490,20 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     };
   }
   /** One figure per pose, built the first time the pose is needed and kept until the look changes. */
-  function figure(pose, seat) {
+  function figure(pose: string, seat?: number): AvatarGroup {
     const key = `${pose}:${seat ?? ''}`;
     let entry = figures.get(key);
     if (!entry) {
       // The player's own figure is seen close up: the best detail characters.js offers a scene (avatar-rig.js).
-      entry = buildAvatar(kit, view.look, { pose, seat, seed: view.seed, marker: 'crown', ...playerOptions(pose) });
+      entry = buildAvatar(kit, view.look, { pose: pose as Pose, seat, seed: view.seed, marker: 'crown', ...playerOptions(pose as Pose) });
       entry.visible = false;
       avatar.add(entry);
       figures.set(key, entry);
     }
     return entry;
   }
-  function show(pose, seat) { return showFigure(figure(pose, seat)); }
-  function showFigure(next) {
+  function show(pose: string, seat?: number) { return showFigure(figure(pose, seat)); }
+  function showFigure(next: AvatarGroup | null) {
     if (!next || next === shownFigure) return false;
     if (shownFigure) shownFigure.visible = false;
     next.visible = true;
@@ -481,14 +518,14 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   /** The two figures of the walk cycle, built ahead so that a step only switches which one is visible. */
   function prebuild() { standFigure = figure('stand'); strideFigure = rigOf(standFigure) ? null : figure('walk'); }
   /** Move the avatar (transform only) and its name tag. */
-  function moveAvatar(x, y, z, ry) {
+  function moveAvatar(x: number, y: number, z: number, ry: number) {
     avatar.position.set(x, y, z);
     avatar.rotation.y = ry;
     const top = y + (shownFigure?.userData.top ?? 2.95);
     if (driven && selfTag) { selfTag.position.x = x; selfTag.position.y = top; selfTag.position.z = z; }
     else selfTag = { id: 'self', name: view.name, kind: 'self', text: view.name, marker: 'crown', colour: '#ffd34d', position: { x, y: top, z } };
   }
-  function placeMark(mark, x, y, z, visible) {
+  function placeMark(mark: THREE.Mesh | null, x: number, y: number, z: number, visible: boolean) {
     if (!mark) return false;
     const changed = mark.visible !== visible || (visible && (mark.position.x !== x || mark.position.y !== y || mark.position.z !== z));
     mark.visible = visible;
@@ -497,15 +534,15 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   }
   /** The ring under the chosen spot, the lighter ring under a spot the avatar is near, and the tap-to-walk target. */
   function buildMarks() {
-    const make = (name, draw) => {
+    const make = (name: string, draw: (b: Batch) => void) => {
       const batch = createBatch(THREE);
       draw(batch);
-      const mesh = batch.build(shared.materials).meshes[0];
+      const mesh = batch.build(shared.materials).meshes[0]!;
       mesh.name = `mark-${name}`; mesh.visible = false;
       group.add(mesh); markObjects.push(mesh);
       return mesh;
     };
-    marks.ring = make('spot', (b) => { b.cyl(0, 0.12, 0, 0.82, 0.1, context.accent, { seg: 16, open: true, ...GLOW }); b.disc(0, 0.115, 0, 0.7, '#fff3c4', { seg: 16, ...GLOW }); });
+    marks.ring = make('spot', (b: Batch) => { b.cyl(0, 0.12, 0, 0.82, 0.1, context.accent, { seg: 16, open: true, ...GLOW }); b.disc(0, 0.115, 0, 0.7, '#fff3c4', { seg: 16, ...GLOW }); });
     marks.near = make('near', (b) => { b.cyl(0, 0.13, 0, 1.02, 0.06, '#ffffff', { seg: 20, open: true, ...GLOW }); });
     marks.goal = make('goal', (b) => { b.cyl(0, 0.1, 0, 0.5, 0.05, '#ffffff', { seg: 14, open: true, ...GLOW }); b.disc(0, 0.09, 0, 0.16, '#ffffff', { seg: 10, ...GLOW }); });
   }
@@ -518,43 +555,43 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     moveAvatar(at.x, at.y, at.z, at.ry);
   }
   /** One of a peer's two figures (standing, walking): both are built when the player first appears, so easing builds nothing. */
-  function peerFigure(peer, pose) {
+  function peerFigure(peer: Peer, pose: 'stand' | 'walk') {
     const figure = buildAvatar(kit, peer.look, { pose, seed: peer.seed, marker: 'player' });
     figure.visible = false;
     peer.group.add(figure);
     return figure;
   }
-  function showPeer(peer, walking) {
+  function showPeer(peer: Peer, walking: boolean) {
     const next = walking ? peer.walk : peer.stand;
     if (peer.shown === next) return;
     if (peer.shown) peer.shown.visible = false;
     next.visible = true; peer.shown = next;
   }
-  function placePeer(peer) {
+  function placePeer(peer: Peer) {
     peer.y = walk.heightAt(peer.x, peer.z);
     peer.group.position.set(peer.x, peer.y, peer.z);
     peer.group.rotation.y = peer.ry;
     peer.tag.position.x = peer.x; peer.tag.position.y = peer.y + peer.top; peer.tag.position.z = peer.z;
     peer.at.x = peer.x; peer.at.z = peer.z; peer.at.top = peer.y + peer.top;
   }
-  function dropPeer(peer) {
+  function dropPeer(peer: Peer) {
     peer.stand.userData.dispose(); peer.walk.userData.dispose();
     peer.group.parent?.remove(peer.group);
     peers.delete(peer.id);
   }
   /** A player with a reported position: make their figure, or send it on its way to the new place. */
-  function syncPeer(person) {
+  function syncPeer(person: LivePerson): Peer {
     const id = String(person.id), lookKey = JSON.stringify([person.look ?? null, person.seed ?? id]);
-    let peer = peers.get(id);
-    if (peer && peer.lookKey !== lookKey) { dropPeer(peer); peer = null; }
+    let peer: Peer | undefined = peers.get(id);
+    if (peer && peer.lookKey !== lookKey) { dropPeer(peer); peer = undefined; }
     const name = String(person.name ?? '');
     if (!peer) {
       const holder = new THREE.Group();
       holder.name = 'peer';
-      peer = { id, lookKey, look: person.look ?? null, seed: person.seed ?? id, group: holder, shown: null, x: person.x, z: person.z, y: 0, ry: Number.isFinite(person.ry) ? person.ry : Math.atan2(-person.x, -person.z) || 0,
+      peer = { id, lookKey, look: person.look ?? null, seed: person.seed ?? id, group: holder, shown: null, x: person.x, z: person.z, y: 0, ry: Number.isFinite(person.ry) ? person.ry! : Math.atan2(-person.x, -person.z) || 0,
         fromX: person.x, fromZ: person.z, toX: person.x, toZ: person.z, t: 1, span: 0, stride: 0, top: 2.95,
         tag: { id, name, kind: 'player', text: `@${name}`, marker: 'tag', colour: '#6fb4ff', position: { x: person.x, y: 2.95, z: person.z } },
-        at: { id, kind: 'player', x: person.x, z: person.z, top: 2.95 } };
+        at: { id, kind: 'player', x: person.x, z: person.z, top: 2.95 } } as Peer;
       peer.stand = peerFigure(peer, 'stand'); peer.walk = peerFigure(peer, 'walk');
       peer.top = peer.stand.userData.top ?? 2.95;
       showPeer(peer, false);
@@ -574,7 +611,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     return peer;
   }
   /** Advance every figure that is on its way. Returns true while any still is; moves transforms only. */
-  function stepCrowd(dt) {
+  function stepCrowd(dt: number) {
     if (!easing) return false;
     let more = false;
     for (const peer of peers.values()) {
@@ -612,24 +649,24 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
     }
     const kept = new Set();
-    for (const person of placed) if (person.live) kept.add(syncPeer(person).id);
+    for (const person of placed) if (person.live) kept.add(syncPeer(person as LivePerson).id);
     for (const peer of [...peers.values()]) if (!kept.has(peer.id)) dropPeer(peer);
     // Tags and tap targets in the order the crowd was given.
     let next = 0;
-    crowdTags = placed.map((person) => (person.live ? peers.get(String(person.id)).tag : mergedTags[next++])).filter(Boolean);
-    peopleList = crowdTags.map((tag) => peers.get(tag.id)?.tag === tag ? peers.get(tag.id).at : { id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y });
+    crowdTags = placed.map((person) => (person.live ? peers.get(String(person.id))!.tag : mergedTags[next++])).filter((tag): tag is SceneTag => Boolean(tag));
+    peopleList = crowdTags.map((tag) => peers.get(tag.id)?.tag === tag ? peers.get(tag.id)!.at : { id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y });
   }
   function applyLighting() {
     const preset = lightingFor(mood, view.time);
     shared.materials.glow.color.setScalar(preset.glow);
-    for (const object of staticObjects) if (object.isPointLight) object.intensity = object.userData.intensity * preset.lamps;
+    for (const object of staticObjects as THREE.PointLight[]) if (object.isPointLight) object.intensity = object.userData.intensity * preset.lamps;
     if (sky) paintSky(THREE, sky, preset.sky);
   }
   function realise() {
     if (live || disposed) return;
     const built = drawStatic().build(shared.materials);
     staticTriangles = built.triangles;
-    for (const object of [...built.meshes, ...built.lights]) { group.add(object); staticObjects.push(object); if (object.userData.part && wallParts[object.userData.part]) wallParts[object.userData.part].push(object); }
+    for (const object of [...built.meshes, ...built.lights]) { group.add(object); staticObjects.push(object); const part = object.userData.part as keyof typeof wallParts | undefined; if (part && wallParts[part]) wallParts[part].push(object); }
     sky = skyDome(kit, shared.materials);
     group.add(sky);
     staticObjects.push(sky);
@@ -661,26 +698,26 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     const pose = shownFigure ? [...figures.entries()].find(([, entry]) => entry === shownFigure)?.[0] : null;
     clearFigures();
     prebuild();
-    if (driven && pose) { const [name, seat] = pose.split(':'); show(name, seat === '' ? undefined : Number(seat)); if (selfTag) selfTag.position.y = avatar.position.y + shownFigure.userData.top; }
+    if (driven && pose) { const [name, seat] = pose.split(':'); show(name!, seat === '' ? undefined : Number(seat)); if (selfTag) selfTag.position.y = avatar.position.y + shownFigure!.userData.top; }
   }
 
-  const triangleCount = (object) => (object.geometry?.index ? object.geometry.index.count / 3 : 0);
+  const triangleCount = (object: THREE.Mesh) => (object.geometry?.index ? object.geometry.index.count / 3 : 0);
   /**
    * WALKING (driven by the host, src/venue-world.js). Until the host calls walk.drive(true) the scene
    * stands the avatar at its spot by itself, exactly as before; once driven it only reports where
    * the avatar should be (rest()) and the host moves it there along the floor.
    */
-  const walk = {
+  const walk: SceneWalk = {
     get grid() { return grid; },
     get entrance() { return entrance; },
-    get open() { return (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT).open !== false; },
+    get open() { return (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT)!.open !== false; },
     scale: 1,
     centre: [0, 0.7, 0],
     avatar,
-    drive(on) { driven = Boolean(on); if (!driven && live) settle(); },
+    drive(on: boolean) { driven = Boolean(on); if (!driven && live) settle(); },
     rest,
     /** The spots the server knows, with where they are: [{ id, label, x, y, z, ry, approach }] (approach: the foot of the steps up to a raised spot, or null). */
-    spots() { return spots.filter((spot) => spot && typeof spot.id === 'string').map((spot) => { const at = anchorFor(spot.id); return { id: spot.id, label: String(spot.label ?? spot.id), x: at.x, y: at.y, z: at.z, ry: at.ry, approach: at.approach || null, steps: at.steps || [] }; }); },
+    spots() { return spots.filter((spot) => spot && typeof spot.id === 'string').map((spot) => { const at = anchorFor(spot.id)!; return { id: spot.id, label: String(spot.label ?? spot.id), x: at.x, y: at.y, z: at.z, ry: at.ry, approach: at.approach || null, steps: at.steps || [] }; }); },
     /** The game tables that stand in this venue (see TABLE_PLACES): fixed for the life of the scene. */
     things() { return tableList; },
     /** People standing in the scene, for taps and for walking round them: [{ id, kind, x, z, top }]. The same objects until the crowd changes; a moving player's entry moves with them. */
@@ -689,13 +726,13 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     get solids() { return footprints?.solids || []; },
     move: moveAvatar,
     /** Resting pose ('stand', or the activity's pose) — builds that figure if it has not been needed yet. */
-    pose(name, seat) { rigOf(standFigure)?.rest(); return show(name || 'stand', seat); },
+    pose(name?: string, seat?: number) { rigOf(standFigure)?.rest(); return show(name || 'stand', seat); },
     /**
      * The walk cycle. With a rigged figure (characters.js offering limb parts — see avatar-rig.js) the
      * standing figure's limbs swing with `phase`; without one the walking and the standing figure
      * alternate, one visible at a time. Either way no geometry is built.
      */
-    gait(step, phase = 0, jog = false) {
+    gait(step: unknown, phase = 0, jog = false) {
       const rig = rigOf(standFigure);
       if (rig) { rig.stride(phase, 1, jog); return showFigure(standFigure); }
       return showFigure(step ? strideFigure : standFigure);
@@ -705,7 +742,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
      * layout.raised (see deckHeight): a stage, a landing, a stair, a bridge. A raised spot nothing
      * was declared for still lifts the avatar as it steps on, in a small radius around it.
      */
-    heightAt(x, z) {
+    heightAt(x: number, z: number) {
       let height = deckHeight(x, z);
       for (const at of raised) {
         const share = 1 - (Math.hypot(x - at.x, z - at.z) - 0.3) / 1.6;
@@ -713,10 +750,10 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       }
       return height;
     },
-    near(spot) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
-    goal(x, z) { return Number.isFinite(x) ? placeMark(marks.goal, x, 0, z, true) : placeMark(marks.goal, 0, 0, 0, false); },
+    near(spot: { x: number; y: number; z: number } | null | undefined) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
+    goal(x?: number, z?: number) { return Number.isFinite(x) ? placeMark(marks.goal, x!, 0, z!, true) : placeMark(marks.goal, 0, 0, 0, false); },
   };
-  let raised = [];
+  let raised: { x: number; y: number; z: number }[] = [];
   /**
    * layout.raised: what can be stood on above the ground, so the avatar walks UP it instead of
    * through it. Each shape gives the height of its top:
@@ -724,20 +761,20 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
    *   { disc: [x, z, radius], y, lip }     a round platform
    *   { ramp: [ax, az, ay, bx, bz, by], half, sag }   a stair or a bridge between two heights, `half` wide to each side
    */
-  function deckHeight(x, z) {
+  function deckHeight(x: number, z: number) {
     let height = 0;
     const shapes = layout?.raised;
     if (!shapes) return 0;
     for (let i = 0; i < shapes.length; i++) {
-      const shape = shapes[i];
+      const shape = shapes[i]!;
       let top = 0;
       if (shape.rect) {
         const [x0, z0, x1, z1] = shape.rect;
         const away = Math.hypot(Math.max(x0 - x, 0, x - x1), Math.max(z0 - z, 0, z - z1));
-        top = away <= 0 ? shape.y : shape.lip > 0 && away < shape.lip ? shape.y * (1 - away / shape.lip) : 0;
+        top = away <= 0 ? shape.y! : shape.lip! > 0 && away < shape.lip! ? shape.y! * (1 - away / shape.lip!) : 0;
       } else if (shape.disc) {
         const away = Math.hypot(x - shape.disc[0], z - shape.disc[1]) - shape.disc[2];
-        top = away <= 0 ? shape.y : shape.lip > 0 && away < shape.lip ? shape.y * (1 - away / shape.lip) : 0;
+        top = away <= 0 ? shape.y! : shape.lip! > 0 && away < shape.lip! ? shape.y! * (1 - away / shape.lip!) : 0;
       } else if (shape.ramp) {
         const [ax, az, ay, bx, bz, by] = shape.ramp, dx = bx - ax, dz = bz - az, span = dx * dx + dz * dz || 1;
         const t = ((x - ax) * dx + (z - az) * dz) / span;
@@ -753,37 +790,37 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   function findRaised() {
     raised = [];
     // Only raised places no declared shape covers get the small ramp of their own.
-    const lone = (x, y, z) => { if (y > 0.05 && deckHeight(x, z) < y - 0.2) raised.push({ x, y, z }); };
-    for (const at of Object.values(resolved.anchors)) {
+    const lone = (x: number, y: number, z: number) => { if (y > 0.05 && deckHeight(x, z) < y - 0.2) raised.push({ x, y, z }); };
+    for (const at of Object.values(resolved!.anchors)) {
       lone(at.x, at.y, at.z);
       if (at.act) lone(at.act.x ?? at.x, at.act.y ?? at.y, at.act.z ?? at.z);
     }
   }
 
   const refresh = () => { if (live) settle(); return true; };
-  const entry = {
+  const entry: SceneEntry = {
     group, kind, mood, walk,
     camera: def.camera || SCENE_CAMERA,
     get background() { return lightingFor(mood, view.time).sky[0]; },
     /** [horizon, zenith] for the host's graded sky. */
     get sky() { return lightingFor(mood, view.time).sky; },
-    get anchors() { return resolved.anchors; },
+    get anchors() { return resolved!.anchors; },
     get time() { return view.time; },
     get spot() { return view.spot; },
     lighting: () => lightingFor(mood, view.time),
-    setTime(time) {
-      if (!TIMES.includes(time) || time === view.time) return false;
+    setTime(time: string) {
+      if (!isTime(time) || time === view.time) return false;
       view.time = time;
       if (live) applyLighting();
       return true;
     },
-    setSpot(id) {
+    setSpot(id: string) {
       if (typeof id !== 'string' || id === view.spot) return false;
       anchorFor(id); findRaised();
       view.spot = id;
       return refresh();
     },
-    setPlayer({ look, seed, pose, name } = {}) {
+    setPlayer({ look, seed, pose, name }: PlayerOptions = {}) {
       let changed = false, dressed = false;
       if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; changed = true; dressed = true; } }
       if (seed !== undefined && seed !== view.seed) { view.seed = seed; changed = true; dressed = true; }
@@ -792,8 +829,8 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
       if (dressed) redress();
       return changed ? refresh() : false;
     },
-    setCrowd(people) {
-      view.crowd = Array.isArray(people) ? people.filter((person) => person && typeof person === 'object') : [];
+    setCrowd(people: unknown) {
+      view.crowd = Array.isArray(people) ? (people as unknown[]).filter((person): person is CrowdPerson => Boolean(person) && typeof person === 'object') : [];
       if (live) buildActors(); else { crowdTags = []; peopleList = []; }
       return crowdTags;
     },
@@ -801,11 +838,11 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     get easing() { return easing; },
     stepCrowd, settleCrowd,
     /** The camera is at (x, z): hide whichever wall it has gone behind, with what hangs on it. */
-    look(x, z) {
+    look(x: number, z: number) {
       const zone = footprints?.walls;
       if (!zone || !live) return false;
       let changed = false;
-      const set = (meshes, shown) => { for (const mesh of meshes) if (mesh.visible !== shown) { mesh.visible = shown; changed = true; } };
+      const set = (meshes: THREE.Object3D[], shown: boolean) => { for (const mesh of meshes) if (mesh.visible !== shown) { mesh.visible = shown; changed = true; } };
       set(wallParts.wallBack, !(z < zone.backZ));
       set(wallParts.wallLeft, !(x < zone.leftX));
       return changed;
@@ -814,22 +851,22 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     get walls() { return footprints?.walls ? { back: wallParts.wallBack.every((mesh) => mesh.visible), left: wallParts.wallLeft.every((mesh) => mesh.visible) } : null; },
     tags: () => (selfTag ? [selfTag, ...crowdTags] : [...crowdTags]),
     stats() {
-      const meshes = [];
-      group.traverseVisible((child) => { if (child.isMesh) meshes.push(child); });
+      const meshes: THREE.Mesh[] = [];
+      group.traverseVisible((child) => { if ((child as THREE.Mesh).isMesh) meshes.push(child as THREE.Mesh); });
       return {
         triangles: live ? meshes.reduce((sum, mesh) => sum + triangleCount(mesh), 0) : 0,
         meshes: meshes.length,
         drawCalls: meshes.length + meshes.filter((mesh) => mesh.castShadow).length,
-        lights: group.children.filter((child) => child.isLight).length,
+        lights: group.children.filter((child) => (child as THREE.Light).isLight).length,
         geometries: meshes.length,
       };
     },
     /** Reflect the server state: Lagos time of day, the spot you stand at, your look, and whether you are busy. */
-    update(state) {
+    update(state: SceneState | null | undefined) {
       if (!state || typeof state !== 'object') return false;
       let changed = false, actors = false, dressed = false;
       if (!view.fixedTime && Number.isFinite(state.t)) {
-        const time = timeOfDay(state.t);
+        const time = timeOfDay(state.t!);
         if (time !== view.time) { view.time = time; changed = true; }
       }
       const here = state.location == null || !venue?.id || state.location === venue.id;
@@ -860,14 +897,14 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
   return entry;
 }
 
-const builder = (kind, def, variant) => (kit, venue) => createEntry(kit, venue, def, kind, variant);
-export const SCENES = Object.fromEntries([
-  ...Object.entries(DEFS).map(([kind, def]) => [kind, builder(kind, def)]),
-  ...Object.entries(ALIASES).map(([alias, [kind, variant]]) => [alias, builder(kind, DEFS[kind], variant)]),
+const builder = (kind: string, def: SceneDef, variant?: string): SceneBuilder => (kit, venue) => createEntry(kit, venue, def, kind, variant);
+export const SCENES: Record<string, SceneBuilder> = Object.fromEntries([
+  ...Object.entries(DEFS).map(([kind, def]): [string, SceneBuilder] => [kind, builder(kind, def)]),
+  ...Object.entries(ALIASES).map(([alias, [kind, variant]]): [string, SceneBuilder] => [alias, builder(kind, DEFS[kind]!, variant)]),
 ]);
 
 /** Build the scene for a venue; unknown or missing kinds get the generic plaza. */
-export function buildVenueScene(kit, venue) {
-  const kind = venue?.scene?.kind;
-  return (Object.hasOwn(SCENES, kind) ? SCENES[kind] : SCENES.generic)(kit, venue);
+export function buildVenueScene(kit: Kit, venue?: SceneVenue | null): SceneEntry {
+  const kind = String(venue?.scene?.kind);
+  return (Object.hasOwn(SCENES, kind) ? SCENES[kind] : SCENES.generic)!(kit, venue);
 }

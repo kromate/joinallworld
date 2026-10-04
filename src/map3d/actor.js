@@ -11,7 +11,7 @@
  * is a function of the distance covered — the walk never keeps time of its own.
  */
 import { createBatch, sceneMaterials } from '../scene/build.ts';
-import { buildAvatar } from '../scene/characters.js';
+import { buildAvatar } from '../scene/characters.ts';
 import { VEHICLES } from './vehicles.js';
 import { lookOf } from './trip.js';
 

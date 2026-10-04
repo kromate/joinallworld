@@ -6,7 +6,7 @@ import { createLife, dispatch, viewLife } from '../life.js';
 import { makeContext } from './util.js';
 import { checkLook } from './systems/onboarding.js';
 import { APPEARANCE, BOUTIQUE_PRICES, ACCESSORY_BASICS, DEFAULT_LOOK } from './content/traits.js';
-import { LOOK_OPTIONS, ACCESSORY_SLOTS, normalizeLook } from '../scene/characters.js';
+import { LOOK_OPTIONS, ACCESSORY_SLOTS, normalizeLook } from '../scene/characters.ts';
 
 const START = Date.UTC(2026, 0, 5, 8);
 let tick = 0;

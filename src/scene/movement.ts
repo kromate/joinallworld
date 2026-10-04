@@ -29,6 +29,8 @@
  *   host's frame loop alive — and lets it stop the moment the avatar arrives.
  */
 
+import type { Batch, BatchOptions } from './types.ts';
+
 export const CELL = 0.4;
 export const AVATAR_RADIUS = 0.34;
 export const WALK_SPEED = 4.6, JOG_SPEED = 8;
@@ -37,7 +39,23 @@ export const LONG_WALK = 9;
 const TURN_RATE = 14; // radians per second the avatar turns towards where it is going
 const SQRT2 = Math.SQRT2;
 
-const isCircle = (shape) => Array.isArray(shape) && shape.length === 3;
+/** [x0, z0, x1, z1] */
+export type WalkRect = [number, number, number, number];
+/** [x, z, radius] */
+export type WalkCircle = [number, number, number];
+export type WalkShape = WalkRect | WalkCircle;
+export interface WalkPoint { x: number; z: number }
+/** A scene's walkable description (see the header). */
+export interface WalkDescription {
+  bounds?: WalkRect;
+  block?: WalkShape[];
+  clear?: WalkShape[];
+  cell?: number;
+  radius?: number;
+  entrance?: [number, number, number];
+}
+
+const isCircle = (shape: WalkShape): shape is WalkCircle => Array.isArray(shape) && shape.length === 3;
 
 /**
  * An occupancy grid over a rectangle of floor.
@@ -47,15 +65,28 @@ const isCircle = (shape) => Array.isArray(shape) && shape.length === 3;
  * grid.path(ax, az, bx, bz)  → [{ x, z }, ...] waypoints ending at b — or, when b is walled off, at the
  *                            reachable place closest to it. Empty when already there; null without a floor.
  */
-export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = [], cell = CELL, radius = AVATAR_RADIUS } = {}) {
+export interface WalkGrid {
+  bounds: WalkRect;
+  cell: number;
+  cols: number;
+  rows: number;
+  cells: Uint8Array;
+  free(x: number, z: number): boolean;
+  nearest(x: number, z: number, reach?: number): WalkPoint | null;
+  clearLine(ax: number, az: number, bx: number, bz: number): boolean;
+  path(ax: number, az: number, bx: number, bz: number): WalkPoint[] | null;
+  ascii(marks?: Record<string, [number, number]>): string;
+}
+
+export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = [], cell = CELL, radius = AVATAR_RADIUS }: WalkDescription = {}): WalkGrid {
   const [minX, minZ, maxX, maxZ] = bounds;
   const cols = Math.max(1, Math.ceil((maxX - minX) / cell)), rows = Math.max(1, Math.ceil((maxZ - minZ) / cell));
   const cells = new Uint8Array(cols * rows);
-  const col = (x) => Math.floor((x - minX) / cell), row = (z) => Math.floor((z - minZ) / cell);
-  const centreX = (c) => minX + (c + 0.5) * cell, centreZ = (r) => minZ + (r + 0.5) * cell;
-  const inside = (c, r) => c >= 0 && r >= 0 && c < cols && r < rows;
+  const col = (x: number) => Math.floor((x - minX) / cell), row = (z: number) => Math.floor((z - minZ) / cell);
+  const centreX = (c: number) => minX + (c + 0.5) * cell, centreZ = (r: number) => minZ + (r + 0.5) * cell;
+  const inside = (c: number, r: number) => c >= 0 && r >= 0 && c < cols && r < rows;
 
-  function paint(shape, value, grow) {
+  function paint(shape: WalkShape, value: number, grow: number) {
     if (!Array.isArray(shape)) return;
     if (isCircle(shape)) {
       const [x, z, r] = shape, reach = r + grow;
@@ -78,12 +109,12 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
   for (const shape of block) paint(shape, 1, radius);
   for (const shape of clear) paint(shape, 0, 0);
 
-  const free = (x, z) => { const c = col(x), r = row(z); return inside(c, r) && cells[r * cols + c] === 0; };
+  const free = (x: number, z: number) => { const c = col(x), r = row(z); return inside(c, r) && cells[r * cols + c] === 0; };
 
-  function nearest(x, z, reach = Math.max(cols, rows)) {
+  function nearest(x: number, z: number, reach = Math.max(cols, rows)): WalkPoint | null {
     const c0 = Math.max(0, Math.min(cols - 1, col(x))), r0 = Math.max(0, Math.min(rows - 1, row(z)));
     if (free(x, z)) return { x, z };
-    let best = null, bestDistance = Infinity;
+    let best: WalkPoint | null = null, bestDistance = Infinity;
     for (let ring = 1; ring <= reach; ring++) {
       for (let r = r0 - ring; r <= r0 + ring; r++) {
         for (let c = c0 - ring; c <= c0 + ring; c++) {
@@ -98,7 +129,7 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
     return best;
   }
 
-  function clearLine(ax, az, bx, bz) {
+  function clearLine(ax: number, az: number, bx: number, bz: number) {
     const length = Math.hypot(bx - ax, bz - az), steps = Math.max(1, Math.ceil(length / (cell * 0.45)));
     for (let i = 0; i <= steps; i++) { const t = i / steps; if (!free(ax + (bx - ax) * t, az + (bz - az) * t)) return false; }
     return true;
@@ -106,43 +137,43 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
 
   // A* scratch space, made once per grid.
   const cost = new Float32Array(cols * rows), from = new Int32Array(cols * rows), state = new Uint8Array(cols * rows);
-  function path(ax, az, bx, bz) {
+  function path(ax: number, az: number, bx: number, bz: number): WalkPoint[] | null {
     const start = nearest(ax, az), goal = nearest(bx, bz);
     if (!start || !goal) return null;
     if (clearLine(start.x, start.z, goal.x, goal.z)) return [{ x: goal.x, z: goal.z }];
     const sc = col(start.x), sr = row(start.z), gc = col(goal.x), gr = row(goal.z);
     const startIndex = sr * cols + sc, goalIndex = gr * cols + gc;
     cost.fill(Infinity); state.fill(0); from.fill(-1);
-    const heap = [], score = [];
-    const push = (index, value) => {
+    const heap: number[] = [], score: number[] = [];
+    const push = (index: number, value: number) => {
       let i = heap.length; heap.push(index); score.push(value);
-      while (i > 0) { const parent = (i - 1) >> 1; if (score[parent] <= value) break; heap[i] = heap[parent]; score[i] = score[parent]; i = parent; }
+      while (i > 0) { const parent = (i - 1) >> 1; if (score[parent]! <= value) break; heap[i] = heap[parent]!; score[i] = score[parent]!; i = parent; }
       heap[i] = index; score[i] = value;
     };
     const pop = () => {
-      const top = heap[0], lastIndex = heap.pop(), lastScore = score.pop();
+      const top = heap[0]!, lastIndex = heap.pop()!, lastScore = score.pop()!;
       if (heap.length) {
         let i = 0;
         for (;;) {
           let child = i * 2 + 1;
           if (child >= heap.length) break;
-          if (child + 1 < heap.length && score[child + 1] < score[child]) child += 1;
-          if (score[child] >= lastScore) break;
-          heap[i] = heap[child]; score[i] = score[child]; i = child;
+          if (child + 1 < heap.length && score[child + 1]! < score[child]!) child += 1;
+          if (score[child]! >= lastScore) break;
+          heap[i] = heap[child]!; score[i] = score[child]!; i = child;
         }
         heap[i] = lastIndex; score[i] = lastScore;
       }
       return top;
     };
-    const guess = (c, r) => { const dx = Math.abs(c - gc), dz = Math.abs(r - gr); return (dx + dz) + (SQRT2 - 2) * Math.min(dx, dz); };
+    const guess = (c: number, r: number) => { const dx = Math.abs(c - gc), dz = Math.abs(r - gr); return (dx + dz) + (SQRT2 - 2) * Math.min(dx, dz); };
     cost[startIndex] = 0; push(startIndex, guess(sc, sr));
     let found = false;
     while (heap.length) {
       const index = pop();
-      if (state[index] === 2) continue;
-      state[index] = 2;
+      if (state[index!] === 2) continue;
+      state[index!] = 2;
       if (index === goalIndex) { found = true; break; }
-      const c = index % cols, r = (index - c) / cols;
+      const c = index! % cols, r = (index! - c) / cols;
       for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
         if (!dr && !dc) continue;
         const nc = c + dc, nr = r + dr;
@@ -151,8 +182,8 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
         if (cells[next] || state[next] === 2) continue;
         // No cutting a corner between two blocked cells.
         if (dr && dc && (cells[r * cols + nc] || cells[nr * cols + c])) continue;
-        const value = cost[index] + (dr && dc ? SQRT2 : 1);
-        if (value < cost[next]) { cost[next] = value; from[next] = index; push(next, value + guess(nc, nr)); }
+        const value = cost[index!]! + (dr && dc ? SQRT2 : 1);
+        if (value < cost[next]!) { cost[next] = value; from[next] = index!; push(next, value + guess(nc, nr)); }
       }
     }
     // Walled off (a stage, an island of floor): go to the reachable place closest to it instead.
@@ -165,17 +196,17 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
         if (distance < best) { best = distance; endIndex = index; }
       }
     }
-    const raw = [];
-    for (let index = endIndex; index !== -1 && index !== startIndex; index = from[index]) raw.push({ x: centreX(index % cols), z: centreZ(Math.floor(index / cols)) });
+    const raw: WalkPoint[] = [];
+    for (let index = endIndex; index !== -1 && index !== startIndex; index = from[index]!) raw.push({ x: centreX(index % cols), z: centreZ(Math.floor(index / cols)) });
     raw.reverse();
-    if (found && raw.length) { raw[raw.length - 1].x = goal.x; raw[raw.length - 1].z = goal.z; }
+    if (found && raw.length) { raw[raw.length - 1]!.x = goal.x; raw[raw.length - 1]!.z = goal.z; }
     // Straighten: from each kept point, skip ahead to the farthest waypoint in clear sight.
-    const out = [];
+    const out: WalkPoint[] = [];
     let hereX = start.x, hereZ = start.z, i = 0;
     while (i < raw.length) {
       let far = i;
-      for (let j = raw.length - 1; j > i; j--) if (clearLine(hereX, hereZ, raw[j].x, raw[j].z)) { far = j; break; }
-      out.push(raw[far]); hereX = raw[far].x; hereZ = raw[far].z; i = far + 1;
+      for (let j = raw.length - 1; j > i; j--) if (clearLine(hereX, hereZ, raw[j]!.x, raw[j]!.z)) { far = j; break; }
+      out.push(raw[far]!); hereX = raw[far]!.x; hereZ = raw[far]!.z; i = far + 1;
     }
     return out;
   }
@@ -184,15 +215,15 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
     bounds: [minX, minZ, maxX, maxZ], cell, cols, rows, cells,
     free, nearest, clearLine, path,
     /** Text picture of the grid for tests and debugging: '#' blocked, '.' free; marks: { 'S': [x, z], ... }. */
-    ascii(marks = {}) {
-      const lines = [];
+    ascii(marks: Record<string, [number, number]> = {}) {
+      const lines: string[][] = [];
       for (let r = 0; r < rows; r++) {
         let line = '';
         for (let c = 0; c < cols; c++) line += cells[r * cols + c] ? '#' : '.';
         lines.push(line.split(''));
       }
-      for (const [mark, at] of Object.entries(marks)) { const c = col(at[0]), r = row(at[1]); if (inside(c, r)) lines[r][c] = mark[0]; }
-      return lines.map((line) => line.join('')).join('\n');
+      for (const [mark, at] of Object.entries(marks)) { const c = col(at[0]), r = row(at[1]); if (inside(c, r)) lines[r]![c] = mark[0]!; }
+      return lines.map((line: string[]) => line.join('')).join('\n');
     },
   };
 }
@@ -213,11 +244,21 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
  *           goes round behind it. Parts are never camera solids: a hidden wall hides nothing.
  */
 export const WALL_REACH = 0.75;
-export function footprintRecorder(inner, { low = 0.34, high = 1.2 } = {}) {
-  const block = [], solids = [];
-  let floor = null, floorArea = 0, walls = null;
+export type FootprintSolid = [number, number, number, number, number, number];
+export interface FootprintShapes {
+  floor: WalkRect | null;
+  block: WalkRect[];
+  solids: FootprintSolid[];
+  walls: { backZ: number; leftX: number } | null;
+}
+/** What footprintRecorder returns: the batch to draw into and the recorded shapes. */
+export interface FootprintRecorder { batch: Batch; shapes(): FootprintShapes }
+
+export function footprintRecorder(inner: Batch, { low = 0.34, high = 1.2 }: { low?: number; high?: number } = {}): FootprintRecorder {
+  const block: WalkRect[] = [], solids: FootprintSolid[] = [];
+  let floor: WalkRect | null = null, floorArea = 0, walls: { backZ: number; leftX: number } | null = null;
   /** Records one primitive's footprint; returns the options to draw it with (the same, or with its wall part). */
-  function note(x, y, z, hx, hy, hz, o, flat = false) {
+  function note(x: number, y: number, z: number, hx: number, hy: number, hz: number, o: BatchOptions | undefined, flat = false): BatchOptions | undefined {
     const c = Math.cos(o?.ry || 0), s = Math.sin(o?.ry || 0);
     // A primitive tipped over (a ring or a sign laid against a wall) has other extents: turn its corners the way the batch does (Y, then X, then Z).
     const tipped = Boolean(o?.rx || o?.rz), cx = Math.cos(o?.rx || 0), sx0 = Math.sin(o?.rx || 0), cz = Math.cos(o?.rz || 0), sz0 = Math.sin(o?.rz || 0);
@@ -243,7 +284,7 @@ export function footprintRecorder(inner, { low = 0.34, high = 1.2 } = {}) {
     if (!flat && !glass && !o?.part && y1 > 0.9 && y1 - y0 > 0.4 && Math.min(x1 - x0, z1 - z0) > 0.25 && area < 80) solids.push([x0, y0, z0, x1, y1, z1]);
     return o;
   }
-  const batch = {
+  const batch: Batch = {
     isBatch: true,
     box(x, y, z, w, h, d, colour, o) { inner.box(x, y, z, w, h, d, colour, note(x, y, z, w / 2, h / 2, d / 2, o)); return batch; },
     cyl(x, y, z, r, h, colour, o) { inner.cyl(x, y, z, r, h, colour, note(x, y, z, r * (o?.sx || 1), h / 2, r * (o?.sz || 1), o)); return batch; },
@@ -253,9 +294,9 @@ export function footprintRecorder(inner, { low = 0.34, high = 1.2 } = {}) {
     quad(x, y, z, w, h, colour, o) { inner.quad(x, y, z, w, h, colour, note(x, y, z, w / 2, h / 2, 0.02, o)); return batch; },
     disc(x, y, z, r, colour, o) { inner.disc(x, y, z, r, colour, note(x, y, z, r * (o?.sx || 1), 0.01, r * (o?.sz || 1), o, true)); return batch; },
     at(x, y, z, ry, draw, rx, rz, scale) { inner.at(x, y, z, ry, () => draw(batch), rx, rz, scale); return batch; },
-    light(...args) { inner.light(...args); return batch; },
+    light(x, y, z, colour, intensity, distance) { inner.light(x, y, z, colour, intensity, distance); return batch; },
     /** The builder's room: a back wall along z = −d / 2 and a left wall along x = −w / 2 (props.js room()). */
-    walls({ w, d } = {}) { if (Number.isFinite(w) && Number.isFinite(d)) walls = { backZ: -d / 2, leftX: -w / 2 }; return batch; },
+    walls({ w, d }: { w?: number; d?: number } = {}) { if (Number.isFinite(w) && Number.isFinite(d)) walls = { backZ: -d! / 2, leftX: -w! / 2 }; return batch; },
     world: (x, y, z) => inner.world(x, y, z),
     get triangles() { return inner.triangles; },
     build: (materials) => inner.build(materials),
@@ -264,7 +305,7 @@ export function footprintRecorder(inner, { low = 0.34, high = 1.2 } = {}) {
 }
 
 /** Shortest signed turn from one heading to another. */
-export function turnTowards(from, to) {
+export function turnTowards(from: number, to: number) {
   let delta = (to - from) % (Math.PI * 2);
   if (delta > Math.PI) delta -= Math.PI * 2; else if (delta < -Math.PI) delta += Math.PI * 2;
   return delta;
@@ -288,9 +329,47 @@ export function turnTowards(from, to) {
  *   walker.stop()                              drop the path and the input
  *   walker.step(dt, cameraYaw, snap?) → bool   advance; true while still moving or turning
  */
-export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) {
-  let grid = null, inputX = 0, inputZ = 0, jog = false, routeJog = false;
-  let route = null, routeIndex = 0, face = null, arrive = null, turning = false;
+export type WalkMode = 'idle' | 'keys' | 'path';
+export interface WalkToOptions {
+  exact?: boolean;
+  via?: WalkPoint | null;
+  steps?: WalkPoint | WalkPoint[] | null;
+  leave?: WalkPoint | WalkPoint[] | null;
+  face?: number | null;
+  arrive?: (() => void) | null;
+  jog?: boolean;
+}
+export interface Walker {
+  x: number;
+  z: number;
+  ry: number;
+  moving: boolean;
+  mode: WalkMode;
+  speed: number;
+  jogSpeed: number;
+  blocked: boolean;
+  others: WalkPoint[] | null;
+  reach: number;
+  heading: number;
+  readonly passing: boolean;
+  readonly hopping: boolean;
+  readonly grid: WalkGrid | null;
+  readonly target: WalkPoint | null;
+  readonly hasInput: boolean;
+  readonly jogging: boolean;
+  setGrid(next: WalkGrid | null | undefined): void;
+  place(x: number, z: number, ry?: number): void;
+  input(right: number, forward: number, fast?: boolean): void;
+  goTo(x: number, z: number, options?: WalkToOptions): boolean;
+  stop(): void;
+  finishNow(): boolean;
+  step(dt: number, cameraYaw?: number, snap?: boolean): boolean;
+}
+interface RouteNode extends WalkPoint { hop: boolean }
+
+export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED }: { speed?: number; jogSpeed?: number } = {}): Walker {
+  let grid: WalkGrid | null = null, inputX = 0, inputZ = 0, jog = false, routeJog = false;
+  let route: RouteNode[] | null = null, routeIndex = 0, face: number | null = null, arrive: (() => void) | null = null, turning = false;
   let stuck = 0, ghost = false, nearest = Infinity;
   /**
    * Keep clear of the other figures. Called after the avatar has moved from (fromX, fromZ): each
@@ -300,13 +379,13 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
    * A push never leaves the floor. And nobody is ever trapped: making no headway against the crowd
    * for 0.4 s lets the avatar pass through until it is clear of everyone again.
    */
-  function avoid(fromX, fromZ, dt) {
+  function avoid(fromX: number, fromZ: number, dt: number) {
     const others = walker.others;
     if (!others || !others.length) { stuck = 0; return; }
     const reach = walker.reach, moved = Math.hypot(walker.x - fromX, walker.z - fromZ);
     let touching = false, pushX = 0, pushZ = 0;
     for (let i = 0; i < others.length; i++) {
-      const other = others[i];
+      const other = others[i]!;
       let dx = walker.x - other.x, dz = walker.z - other.z;
       const distance = Math.hypot(dx, dz);
       if (distance >= reach) continue;
@@ -335,7 +414,7 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
     // If the crowd has held it for a moment, let it through.
     if (route) {
       // On a path: is it getting any nearer to where it is going?
-      const end = route[route.length - 1], gap = Math.hypot(end.x - walker.x, end.z - walker.z);
+      const end = route[route.length - 1]!, gap = Math.hypot(end.x - walker.x, end.z - walker.z);
       if (gap < nearest - 0.01) { nearest = gap; stuck = 0; } else stuck += dt;
     } else {
       const gained = Number.isFinite(walker.heading) ? (walker.x - fromX) * Math.sin(walker.heading) + (walker.z - fromZ) * Math.cos(walker.heading) : Math.hypot(walker.x - fromX, walker.z - fromZ);
@@ -344,20 +423,20 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
     if (stuck > 0.4) { ghost = true; stuck = 0; }
   }
   const reset = () => { route = null; routeIndex = 0; face = null; arrive = null; turning = false; walker.moving = false; walker.mode = 'idle'; };
-  const point = (value) => (value && Number.isFinite(value.x) && Number.isFinite(value.z) ? value : null);
+  const point = (value: WalkPoint | null | undefined): WalkPoint | null => (value && Number.isFinite(value.x) && Number.isFinite(value.z) ? value : null);
   /** A list of off-floor points ({ x, z } or [{ x, z }, ...]) as hop nodes. */
-  const hops = (value) => (Array.isArray(value) ? value : [value]).map(point).filter(Boolean).map((at) => ({ x: at.x, z: at.z, hop: true }));
-  const walker = {
+  const hops = (value: WalkPoint | WalkPoint[] | null | undefined): RouteNode[] => (Array.isArray(value) ? value : [value]).map(point).filter(Boolean).map((at) => ({ x: at!.x, z: at!.z, hop: true }));
+  const walker: Walker = {
     x: 0, z: 0, ry: 0, moving: false, mode: 'idle', speed, jogSpeed, blocked: false, others: null, reach: AVATAR_RADIUS * 2,
     /** True while the avatar is being let through a crowd that had boxed it in. */
     get passing() { return ghost; },
     /** True while the avatar is on a hop (stepping on to or off a place that is not on the walkable floor). */
-    get hopping() { return Boolean(route) && routeIndex < route.length && route[routeIndex].hop === true; },
+    get hopping() { return Boolean(route) && routeIndex < route!.length && route![routeIndex]!.hop === true; },
     setGrid(next) { grid = next || null; },
     get grid() { return grid; },
     get target() { const end = route ? route[route.length - 1] : null; return end ? { x: end.x, z: end.z } : null; },
     place(x, z, ry) {
-      walker.x = x; walker.z = z; if (Number.isFinite(ry)) walker.ry = ry;
+      walker.x = x; walker.z = z; if (Number.isFinite(ry)) walker.ry = ry!;
       walker.heading = NaN;
       reset(); stuck = 0; ghost = false;
     },
@@ -378,33 +457,33 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
      *   leave   { x, z } | [{ x, z }, ...] the way back down from where the avatar stands, ending
      *           on the floor; without it an avatar that is off the floor steps to the nearest free place
      */
-    goTo(x, z, options = {}) {
+    goTo(x, z, options: WalkToOptions = {}) {
       if (!grid || !Number.isFinite(x) || !Number.isFinite(z)) return false;
-      const nodes = [];
+      const nodes: RouteNode[] = [];
       let fromX = walker.x, fromZ = walker.z;
       if (!grid.free(walker.x, walker.z)) {
-        const down = options.leave ? hops(options.leave) : [];
+        const down: RouteNode[] = options.leave ? hops(options.leave) : [];
         if (down.length) {
           // The last point of the way down is on the floor: walked to like any waypoint.
-          const foot = grid.nearest(down[down.length - 1].x, down[down.length - 1].z);
+          const foot = grid.nearest(down[down.length - 1]!.x, down[down.length - 1]!.z);
           down.pop();
           nodes.push(...down);
           if (foot) nodes.push({ x: foot.x, z: foot.z, hop: true });
         } else { const back = grid.nearest(walker.x, walker.z); if (back) nodes.push({ x: back.x, z: back.z, hop: true }); }
-        if (nodes.length) { fromX = nodes[nodes.length - 1].x; fromZ = nodes[nodes.length - 1].z; }
+        if (nodes.length) { fromX = nodes[nodes.length - 1]!.x; fromZ = nodes[nodes.length - 1]!.z; }
       }
       // A raised or walled-in place is approached at its approach point: the path ends there, the hop starts there.
-      const via = point(options.via) ? grid.nearest(options.via.x, options.via.z) : null;
+      const via = point(options.via) ? grid.nearest(options.via!.x, options.via!.z) : null;
       const aim = via || { x, z };
       const waypoints = grid.path(fromX, fromZ, aim.x, aim.z);
       if (!waypoints) return false;
       for (const next of waypoints) nodes.push({ x: next.x, z: next.z, hop: false });
       if (via && options.steps) nodes.push(...hops(options.steps));
-      const end = nodes.length ? nodes[nodes.length - 1] : walker;
+      const end: WalkPoint = nodes.length ? nodes[nodes.length - 1]! : walker;
       if ((options.exact || via) && Math.hypot(end.x - x, end.z - z) > 0.05) nodes.push({ x, z, hop: true });
       if (!nodes.length) return false; // already there
       route = nodes; routeIndex = 0; nearest = Infinity; stuck = 0;
-      face = Number.isFinite(options.face) ? options.face : null;
+      face = Number.isFinite(options.face) ? options.face! : null;
       arrive = typeof options.arrive === 'function' ? options.arrive : null;
       // A long way (across the venue) is jogged, so being sent somewhere never takes long.
       let length = 0, lastX = walker.x, lastZ = walker.z;
@@ -418,7 +497,7 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
     /** Jump to the end of the current path (reduced motion, or no frame loop available). */
     finishNow() {
       if (!route) return false;
-      const end = route[route.length - 1];
+      const end = route[route.length - 1]!;
       walker.x = end.x; walker.z = end.z;
       if (face !== null) walker.ry = face;
       const done = arrive;
@@ -448,7 +527,7 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
           const done = arrive, facing = face;
           reset();
           turning = facing !== null;
-          if (turning) walker.heading = facing;
+          if (turning) walker.heading = facing!;
           done?.();
         } else walker.moving = true;
       } else if (inputX || inputZ) {
@@ -499,11 +578,17 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
  * Sends a position to someone else at most `perSecond` times a second, and only when it moved
  * by `minStep`. report(x, z, now) → true when it sent. flush(now) sends the last unsent position.
  */
-export function createPositionReporter(send, { perSecond = 3, minStep = 0.25 } = {}) {
+export interface PositionReporter {
+  report(x: number, z: number, now: number): boolean;
+  flush(now: number): boolean;
+  rest(x: number, z: number, now: number): boolean;
+  reset(): void;
+}
+export function createPositionReporter(send: (x: number, z: number) => void, { perSecond = 3, minStep = 0.25 }: { perSecond?: number; minStep?: number } = {}): PositionReporter {
   let lastAt = -Infinity, lastX = NaN, lastZ = NaN, waitingX = NaN, waitingZ = NaN;
   const gap = 1000 / perSecond;
-  const moved = (x, z) => !(Math.hypot(x - lastX, z - lastZ) < minStep);
-  function report(x, z, now) {
+  const moved = (x: number, z: number) => !(Math.hypot(x - lastX, z - lastZ) < minStep);
+  function report(x: number, z: number, now: number) {
     if (!Number.isFinite(x) || !Number.isFinite(z) || !moved(x, z)) { waitingX = NaN; return false; }
     if (now - lastAt < gap) { waitingX = x; waitingZ = z; return false; }
     lastAt = now; lastX = x; lastZ = z; waitingX = NaN;

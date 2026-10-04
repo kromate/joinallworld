@@ -5,13 +5,13 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { createKit } from './kit.ts';
 import { createBatch } from './build.ts';
-import { createOccluders, resolve, CAMERA_GAP, PULL_FROM_ZOOM } from './camera-collision.js';
-import { createOrbit } from './camera-controls.js';
-import { createWalkGrid, createWalker, footprintRecorder, AVATAR_RADIUS, WALL_REACH } from './movement.js';
-import { SCENES, MAX_CROWD, SPOT_BEHIND, SPOT_FRONT, SPOT_SIDE, buildVenueScene } from './venue-scenes.js';
-import { pickDetail, rigOf, PLAYER_DETAIL } from './avatar-rig.js';
-import { DETAILS } from './characters.js';
-import { room, leafTree } from './props.js';
+import { createOccluders, resolve, CAMERA_GAP, PULL_FROM_ZOOM } from './camera-collision.ts';
+import { createOrbit } from './camera-controls.ts';
+import { createWalkGrid, createWalker, footprintRecorder, AVATAR_RADIUS, WALL_REACH } from './movement.ts';
+import { SCENES, MAX_CROWD, SPOT_BEHIND, SPOT_FRONT, SPOT_SIDE, buildVenueScene } from './venue-scenes.ts';
+import { pickDetail, rigOf, PLAYER_DETAIL } from './avatar-rig.ts';
+import { DETAILS } from './characters.ts';
+import { room, leafTree } from './props.ts';
 
 test('the sweep finds the first box between the head and the camera, ignores what the head is inside, and resolve() pulls in or ghosts', () => {
   const occluders = createOccluders();
@@ -86,11 +86,11 @@ test('the recorder gives camera solids with heights, and bakes a room’s walls 
   b.box(3, 0.1, 3, 2, 0.2, 2, '#444');                        // a low platform: walked over, hides nothing
   const shapes = recorder.shapes();
   assert.deepEqual(shapes.walls, { backZ: -10, leftX: -12 });
-  const built = b.build({ solid: new THREE.MeshBasicMaterial(), glow: new THREE.MeshBasicMaterial(), glass: new THREE.MeshBasicMaterial() });
+  const built = b.build({ solid: new THREE.MeshLambertMaterial(), glow: new THREE.MeshBasicMaterial(), glass: new THREE.MeshStandardMaterial() });
   const names = built.meshes.map((mesh) => mesh.name).sort();
   assert.deepEqual(names, ['solid', 'solid@wallBack', 'solid@wallLeft']);
-  assert.equal(built.meshes.find((mesh) => mesh.name === 'solid@wallBack').userData.part, 'wallBack');
-  const triangles = (name) => built.meshes.find((mesh) => mesh.name === name).geometry.index.count / 3;
+  assert.equal(built.meshes.find((mesh) => mesh.name === 'solid@wallBack')!.userData.part, 'wallBack');
+  const triangles = (name: string) => built.meshes.find((mesh) => mesh.name === name)!.geometry.index!.count / 3;
   assert.equal(triangles('solid@wallBack'), 12 * 4 + 16 + 16, 'the back wall, its skirting and coping, the board and the ring (a 8-sided tube with caps)');
   assert.equal(triangles('solid@wallLeft'), 12 * 4, 'the left wall, its skirting and coping, and the window');
   assert.ok(shapes.solids.every((box) => box.length === 6 && box[4] > 0.9 && box[4] - box[1] > 0.4), 'solids are tall things, with their heights');
@@ -106,7 +106,7 @@ test('walking round people: a figure in the way is passed on one side, walking a
   const grid = createWalkGrid({ bounds: [-8, -8, 8, 8] });
   const walker = createWalker();
   walker.setGrid(grid);
-  const run = (seconds, yaw = 0) => { let closest = Infinity; for (let i = 0; i < seconds * 60; i++) { walker.step(1 / 60, yaw); for (const other of walker.others || []) closest = Math.min(closest, Math.hypot(walker.x - other.x, walker.z - other.z)); if (!walker.moving) break; } return closest; };
+  const run = (seconds: number, yaw = 0) => { let closest = Infinity; for (let i = 0; i < seconds * 60; i++) { walker.step(1 / 60, yaw); for (const other of walker.others || []) closest = Math.min(closest, Math.hypot(walker.x - other.x, walker.z - other.z)); if (!walker.moving) break; } return closest; };
   // A path straight through someone: the avatar arrives, having kept its distance.
   walker.place(-5, 0); walker.others = [{ x: 0, z: 0 }];
   let arrived = 0;
@@ -146,7 +146,7 @@ test('a raised place is reached by its approach: along the floor to the foot of 
   const grid = createWalkGrid({ bounds: [-8, -8, 8, 8], block: [[-6, -8, 6, -4], [-4, -3.9, -1, -3.2]] });
   const walker = createWalker();
   walker.setGrid(grid);
-  const trail = () => { const points = []; for (let i = 0; i < 2000 && walker.moving; i++) { walker.step(1 / 60); points.push([walker.x, walker.z, walker.hopping]); } return points; };
+  const trail = () => { const points: Array<[number, number, boolean]> = []; for (let i = 0; i < 2000 && walker.moving; i++) { walker.step(1 / 60); points.push([walker.x, walker.z, walker.hopping]); } return points; };
   // Without an approach the hop leaves the floor wherever the path ends nearest to the spot.
   walker.place(-2.5, 6);
   walker.goTo(-2.5, -6, { exact: true });
@@ -158,7 +158,7 @@ test('a raised place is reached by its approach: along the floor to the foot of 
   walker.goTo(-2.5, -6, { via: { x: 2, z: -3.2 }, arrive: () => { arrived += 1; } });
   const routed = trail();
   assert.equal(arrived, 1); assert.ok(Math.hypot(walker.x + 2.5, walker.z + 6) < 0.01, 'on the spot');
-  const leftFloor = routed.find(([x, z]) => !grid.free(x, z));
+  const leftFloor = routed.find(([x, z]) => !grid.free(x, z))!;
   assert.ok(routed.some(([x, z]) => Math.hypot(x - 2, z + 3.2) < 0.15), 'the path went to the approach point');
   assert.ok(Math.hypot(leftFloor[0] - 2, leftFloor[1] + 3.2) < 1 && leftFloor[0] > -1, `stepped up beside the approach point (${leftFloor[0].toFixed(1)}, ${leftFloor[1].toFixed(1)}), not through the rail`);
   assert.ok(direct.length !== routed.length);
@@ -166,13 +166,13 @@ test('a raised place is reached by its approach: along the floor to the foot of 
   walker.place(0, 6);
   walker.goTo(0, -7, { via: { x: 7, z: -3 }, steps: [{ x: 7, z: -6 }, { x: 4, z: -6 }] });
   const chain = trail();
-  const near = (px, pz) => chain.some(([x, z]) => Math.hypot(x - px, z - pz) < 0.12);
+  const near = (px: number, pz: number) => chain.some(([x, z]) => Math.hypot(x - px, z - pz) < 0.12);
   assert.ok(near(7, -3) && near(7, -6) && near(4, -6), 'every step of the way up was taken');
   assert.ok(Math.hypot(walker.x, walker.z + 7) < 0.01);
   // Coming down: the way back is given, and the walk continues over the floor from its foot.
   walker.goTo(-6, 6, { leave: [{ x: 4, z: -6 }, { x: 7, z: -6 }, { x: 7, z: -3 }] });
   const down = trail();
-  const downNear = (px, pz) => down.some(([x, z]) => Math.hypot(x - px, z - pz) < 0.3);
+  const downNear = (px: number, pz: number) => down.some(([x, z]) => Math.hypot(x - px, z - pz) < 0.3);
   assert.ok(downNear(4, -6) && downNear(7, -6) && downNear(7, -3), 'down the same steps');
   assert.ok(Math.hypot(walker.x + 6, walker.z - 6) < 0.3 && grid.free(walker.x, walker.z));
   // Hops are exact: nobody in the way deflects one (the spot is the spot).
@@ -186,7 +186,7 @@ test('every scene: nobody the scene places stands on a spot marker or in front o
   const crowd = Array.from({ length: MAX_CROWD }, (_, i) => ({ id: `p${i}`, name: `P${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
   let raisedSpots = 0;
   for (const kind of Object.keys(SCENES)) {
-    const entry = SCENES[kind](kit, { id: kind, label: kind, scene: { kind } });
+    const entry = SCENES[kind]!(kit, { id: kind, label: kind, scene: { kind } });
     const [cx, , cz] = entry.camera.landscape, size = Math.hypot(cx, cz), toCamera = { x: cx / size, z: cz / size };
     // A regular standing "at" each landmark as well, the hardest case.
     const keys = Object.keys(entry.anchors);
@@ -194,7 +194,7 @@ test('every scene: nobody the scene places stands on a spot marker or in front o
     const people = entry.walk.people();
     assert.equal(people.length, MAX_CROWD, kind);
     for (const person of people) {
-      assert.ok(entry.walk.grid.free(person.x, person.z) || entry.walk.heightAt(person.x, person.z) > 0.05, `${kind}: ${person.id} stands on the floor (${person.x.toFixed(1)}, ${person.z.toFixed(1)})`);
+      assert.ok(entry.walk.grid!.free(person.x, person.z) || entry.walk.heightAt(person.x, person.z) > 0.05, `${kind}: ${person.id} stands on the floor (${person.x.toFixed(1)}, ${person.z.toFixed(1)})`);
       for (const [key, at] of Object.entries(entry.anchors)) {
         if (entry.walk.heightAt(person.x, person.z) > 0.05) continue; // on a stage of their own
         const dx = person.x - at.x, dz = person.z - at.z, along = dx * toCamera.x + dz * toCamera.z, side = dx * toCamera.z - dz * toCamera.x;
@@ -203,18 +203,18 @@ test('every scene: nobody the scene places stands on a spot marker or in front o
     }
     for (const a of people) for (const b of people) if (a !== b) assert.ok(Math.hypot(a.x - b.x, a.z - b.z) > 0.6, `${kind}: ${a.id} and ${b.id} do not stand in each other`);
     // Raised spots: the declared way up starts on the floor, and the avatar's height rises along it to the spot's.
-    for (const spot of entry.walk.spots().concat(Object.entries(entry.anchors).map(([id, at]) => ({ id, ...at })))) {
+    for (const spot of [...entry.walk.spots(), ...Object.entries(entry.anchors).map(([id, at]) => ({ id, ...at }))]) {
       if (!(spot.y > 0.25)) continue;
       raisedSpots += 1;
       assert.ok(spot.approach, `${kind}.${spot.id} (y ${spot.y.toFixed(2)}) declares its approach`);
-      const foot = entry.walk.grid.nearest(spot.approach.x, spot.approach.z);
+      const foot = entry.walk.grid!.nearest(spot.approach.x, spot.approach.z);
       assert.ok(foot && Math.hypot(foot.x - spot.approach.x, foot.z - spot.approach.z) < 0.6, `${kind}.${spot.id}: the approach is on the floor`);
       assert.ok(entry.walk.heightAt(foot.x, foot.z) < 0.35, `${kind}.${spot.id}: and at ground level`);
       assert.ok(Math.abs(entry.walk.heightAt(spot.x, spot.z) - spot.y) < 0.2, `${kind}.${spot.id}: the deck under the spot is at the spot’s height`);
       const way = [spot.approach, ...(spot.steps || []), { x: spot.x, z: spot.z }];
       let previous = 0;
       for (let leg = 1; leg < way.length; leg++) for (let t = 0; t <= 1.0001; t += 0.1) {
-        const x = way[leg - 1].x + (way[leg].x - way[leg - 1].x) * t, z = way[leg - 1].z + (way[leg].z - way[leg - 1].z) * t;
+        const x = way[leg - 1]!.x + (way[leg]!.x - way[leg - 1]!.x) * t, z = way[leg - 1]!.z + (way[leg]!.z - way[leg - 1]!.z) * t;
         const height = entry.walk.heightAt(x, z);
         assert.ok(height - previous < 1.3, `${kind}.${spot.id}: no jump of more than a big step on the way up (${previous.toFixed(2)} → ${height.toFixed(2)} at ${x.toFixed(1)}, ${z.toFixed(1)})`);
         previous = height;
@@ -232,12 +232,12 @@ test('other players with a reported position are their own figures: placed there
   const ada = '00000001-2222-4333-8444-555555555555', bola = '00000002-2222-4333-8444-555555555555';
   const tags = entry.setCrowd([{ id: ada, name: 'Ada', kind: 'player', x: 4, z: 6 }, { id: bola, name: 'Bola', kind: 'player' }, { id: 'npc:mama', name: 'Mama', kind: 'npc', spot: 'drinks' }]);
   assert.deepEqual(tags.map((tag) => [tag.id, tag.kind, tag.text]), [[ada, 'player', '@Ada'], [bola, 'player', '@Bola'], ['npc:mama', 'npc', 'Mama']], 'tags come in the order the crowd was given');
-  assert.deepEqual([tags[0].position.x, tags[0].position.z], [4, 6], 'Ada stands exactly where she reported');
+  assert.deepEqual([tags[0]!.position.x, tags[0]!.position.z], [4, 6], 'Ada stands exactly where she reported');
   assert.equal(entry.easing, false, 'a newly arrived figure is simply there');
   const peers = () => entry.group.children.filter((child) => child.name === 'peer');
   assert.equal(peers().length, 1, 'one figure for the one player with a position; the others share the merged batch');
   const figure = peers()[0];
-  assert.deepEqual([figure.position.x, figure.position.z], [4, 6]);
+  assert.deepEqual([figure!.position.x, figure!.position.z], [4, 6]);
   // She moves: the same figure eases there; her tag and her tap target go with her; nothing is rebuilt.
   const setIndex = THREE.BufferGeometry.prototype.setIndex; let built = 0;
   THREE.BufferGeometry.prototype.setIndex = function counted(...args) { built += 1; return setIndex.apply(this, args); };
@@ -245,21 +245,21 @@ test('other players with a reported position are their own figures: placed there
     entry.setCrowd([{ id: ada, name: 'Ada', kind: 'player', x: 6, z: 6 }, { id: bola, name: 'Bola', kind: 'player' }, { id: 'npc:mama', name: 'Mama', kind: 'npc', spot: 'drinks' }]);
     assert.equal(entry.easing, true);
     assert.equal(peers()[0], figure, 'the same figure');
-    let frames = 0, last = figure.position.x;
-    while (entry.stepCrowd(1 / 60) && frames < 600) { frames += 1; assert.ok(figure.position.x >= last - 1e-9, 'it only moves towards the new place'); last = figure.position.x; }
+    let frames = 0, last = figure!.position.x;
+    while (entry.stepCrowd(1 / 60) && frames < 600) { frames += 1; assert.ok(figure!.position.x >= last - 1e-9, 'it only moves towards the new place'); last = figure!.position.x; }
     assert.ok(frames > 5 && frames < 30, `eased over ${frames} frames: bounded, well under half a second`);
     assert.equal(entry.easing, false); assert.equal(entry.stepCrowd(1 / 60), false, 'and then nothing more');
-    assert.deepEqual([figure.position.x, figure.position.z], [6, 6]);
-    assert.deepEqual([entry.tags().find((tag) => tag.id === ada).position.x, entry.walk.people().find((person) => person.id === ada).x], [6, 6], 'her name tag and her tap target followed');
-    assert.ok(Math.abs(figure.rotation.y - Math.PI / 2) < 0.6, 'she turned to face the way she walked');
+    assert.deepEqual([figure!.position.x, figure!.position.z], [6, 6]);
+    assert.deepEqual([entry.tags().find((tag) => tag.id === ada)!.position.x, entry.walk.people().find((person) => person.id === ada)!.x], [6, 6], 'her name tag and her tap target followed');
+    assert.ok(Math.abs(figure!.rotation.y - Math.PI / 2) < 0.6, 'she turned to face the way she walked');
     assert.equal(built, 0, 'moving a player builds no geometry (the batch of the others was not touched)');
     // Reduced motion: settleCrowd() puts everyone where they are going, at once.
     entry.setCrowd([{ id: ada, name: 'Ada', kind: 'player', x: 2, z: 8 }, { id: bola, name: 'Bola', kind: 'player' }, { id: 'npc:mama', name: 'Mama', kind: 'npc', spot: 'drinks' }]);
     entry.settleCrowd();
-    assert.deepEqual([figure.position.x, figure.position.z, entry.easing], [2, 8, false]);
+    assert.deepEqual([figure!.position.x, figure!.position.z, entry.easing], [2, 8, false]);
     // A position off the floor is kept on it; a far jump is not animated across the venue.
     entry.setCrowd([{ id: ada, name: 'Ada', kind: 'player', x: 19, z: -19 }]);
-    assert.deepEqual([figure.position.x, figure.position.z, entry.easing], [14.2, -12.2, false], 'kept on this scene’s floor, and a jump that far is not walked');
+    assert.deepEqual([figure!.position.x, figure!.position.z, entry.easing], [14.2, -12.2, false], 'kept on this scene’s floor, and a jump that far is not walked');
   } finally { THREE.BufferGeometry.prototype.setIndex = setIndex; }
   // Gone from the list: her figure is freed. A changed look rebuilds it.
   entry.setCrowd([{ id: bola, name: 'Bola', kind: 'player', x: 1, z: 9, look: { hair: 'afro' } }]);
@@ -284,13 +284,13 @@ test('the avatar rig is feature-detected: today’s characters.js flips two pose
   const kit = createKit();
   const entry = buildVenueScene(kit, { id: 'park', label: 'Park', scene: { kind: 'park' } });
   const built = entry.walk.avatar.children[0];
-  assert.equal(rigOf(built), built.userData.parts || typeof built.userData.stride === 'function' ? rigOf(built) : null);
+  assert.equal(rigOf(built), built!.userData.parts || typeof built!.userData.stride === 'function' ? rigOf(built) : null);
   // With characters.js's rig: one figure, posed by its parts; a step turns the legs and builds nothing.
   if (rigOf(built)) {
-    const { legL, legR, armL } = built.userData.parts;
+    const { legL, legR, armL } = built!.userData.parts;
     assert.equal(entry.walk.avatar.children.length, 1, 'one rigged figure, no second walking figure');
-    assert.ok(built.userData.triangles > 900, `medium detail (${built.userData.triangles} triangles)`);
-    const geometries = () => { let count = 0; entry.walk.avatar.traverse((node) => { if (node.geometry) count += 1; }); return count; };
+    assert.ok(built!.userData.triangles > 900, `medium detail (${built!.userData.triangles} triangles)`);
+    const geometries = () => { let count = 0; entry.walk.avatar.traverse((node) => { if ((node as THREE.Mesh).geometry) count += 1; }); return count; };
     const before = geometries(), rest = [legL.rotation.x, legR.rotation.x, armL.rotation.x];
     entry.walk.gait(true, Math.PI / 2);
     const contact = [legL.rotation.x, legR.rotation.x, armL.rotation.x];
@@ -312,7 +312,7 @@ test('the avatar rig is feature-detected: today’s characters.js flips two pose
   }
   entry.dispose(); kit.dispose();
   // A figure with limb parts: the legs swing in opposition around their built pose, the arms the other way, and rest() puts them back.
-  const part = (x) => ({ rotation: { x } });
+  const part = (x: number) => ({ rotation: { x } });
   const limbs = { userData: { parts: { legL: part(0.1), legR: part(-0.1), armL: part(0), armR: part(0) } } };
   const rig = rigOf(limbs);
   assert.ok(rig, 'parts are found');
@@ -327,9 +327,9 @@ test('the avatar rig is feature-detected: today’s characters.js flips two pose
   // Other spellings of the same thing, legs only, and a stride() function all work; anything else is no rig.
   assert.ok(rigOf({ userData: { parts: { leftLeg: part(0), rightLeg: part(0) } } }));
   assert.ok(rigOf({ userData: { parts: { legs: [part(0), part(0)], arms: [part(0), part(0)] } } }));
-  const calls = [];
-  const custom = rigOf({ userData: { stride: (phase, amount) => calls.push([phase, amount]) } });
-  custom.stride(1, 1); custom.rest();
+  const calls: Array<[number, number]> = [];
+  const custom = rigOf({ userData: { stride: (phase: number, amount: number) => calls.push([phase, amount]) } });
+  custom!.stride(1, 1); custom!.rest();
   assert.deepEqual(calls, [[1, 1], [0, 0]], 'a stride() function is simply called');
   for (const none of [null, {}, { userData: {} }, { userData: { parts: { legL: part(0) } } }, { userData: { parts: 'x' } }]) assert.equal(rigOf(none), null);
 });

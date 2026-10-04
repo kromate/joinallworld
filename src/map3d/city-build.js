@@ -21,7 +21,7 @@
  * places[id] = { id, kind: 'venue' | 'home' | 'soon', x, z, ry, top, gate }
  */
 import { createBatch, sceneMaterials, hash } from '../scene/build.ts';
-import { sign, textWidth } from '../scene/props.js';
+import { sign, textWidth } from '../scene/props.ts';
 import { drawLandmark, PLINTH } from './landmarks.js';
 import { miniVehicle, boat } from './vehicles.js';
 import { roundPolygon, pointInPolygon } from './roads.js';

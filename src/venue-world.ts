@@ -78,18 +78,155 @@
  *                          setCrowd() takes other players' { x, z } in the same units.
  */
 import { createKit } from './scene/kit.ts';
-import { createOrbit, followShare } from './scene/camera-controls.js';
-import { createOccluders, resolve as resolveCollision } from './scene/camera-collision.js';
+import { createOrbit, followShare } from './scene/camera-controls.ts';
+import { createOccluders, resolve as resolveCollision } from './scene/camera-collision.ts';
 import { sceneMaterials } from './scene/build.ts';
-import { createMotionLoop } from './scene/motion-loop.js';
-import { rewardChips, cheer } from './scene/reward.js';
+import { createMotionLoop } from './scene/motion-loop.ts';
+import { rewardChips, cheer } from './scene/reward.ts';
 import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.ts';
-import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.js';
-import { createSceneControls } from './scene/controls.js';
-import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.js';
-import { buildHomeScene } from './scene/home-scene.js';
-import { VENUES } from './game/content/venues.js';
+import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.ts';
+import { createSceneControls } from './scene/controls.ts';
+import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.ts';
+import { buildHomeScene } from './scene/home-scene.ts';
+import { VENUES as VENUE_DATA } from './game/content/venues.js';
 import { spotsOf } from './life.js';
+import type * as THREE from 'three';
+import type { Colour, ThreeModule, Vec3, SceneCamera, SceneTag as DomTag, ScenePerson, SceneThing, WalkSpot, SceneWalk, CrowdPerson } from './scene/types.ts';
+import type { OccluderBox } from './scene/camera-collision.ts';
+import type { HomePick } from './scene/home-scene.ts';
+import type { SceneControls } from './scene/controls.ts';
+import type { WalkPoint, WalkMode } from './scene/movement.ts';
+import type { LifeState } from './types/life.ts';
+import type { VenueDefinition } from './types/content.ts';
+
+/** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). pose: set only by the host's own callers (a fixed pose). */
+export interface PlayerLook { look: unknown; seed: string; name: string; pose?: string | null }
+/** What a tap on a name tag reports (options.onTag): a person ('npc' | 'player'), a game table, or the goal's flag. */
+export interface SceneTag { id: string; kind: 'npc' | 'player' | 'table' | 'goal' | (string & {}); text?: string }
+export interface SceneDiagnostics {
+  /** Frames drawn since the host was created. Flat while nothing is happening. */
+  renderCount: number
+  loop?: { running: boolean; frames: number }
+  [key: string]: unknown
+}
+/** What diagnostics() reports: the frame count, where the avatar and the camera are, and what each spot, person and tag is on the canvas (CSS pixels). */
+export interface VenueDiagnostics extends SceneDiagnostics {
+  loop: { running: boolean; frames: number }
+  avatar: { x: number; z: number; y: number; facing: number; moving: boolean; mode: WalkMode; blocked: boolean; locked: boolean; near: string | null }
+  /** walls: which of a room's walls are showing; perch: standing on a raised place; hover: what a click would pick; solids: boxes the camera tests against. */
+  walls: { back: boolean; left: boolean } | null
+  perch: boolean
+  hover: string | null
+  easing: boolean
+  solids: number
+  /** held: the share of the asked-for distance a collision holds the camera at; ghost: the see-through circle's strength. */
+  camera: { yaw: number; pitch: number; zoom: number; distance: number; asked: number; whole: number; held: number; ghost: number; x: number; y: number; z: number
+    limits: { pitch: [number, number]; zoom: [number, number]; azimuth: [number, number] | null } }
+  spots: { id: string; x: number; z: number; px: number; py: number; selected: boolean }[]
+  things: { id: string; kind: string; label: string; x: number; z: number; px: number; py: number; at: boolean }[]
+  people: { id: string; kind: string; x: number; z: number; px: number; py: number }[]
+  objects: { id: string; itemId: string; x: number; z: number; px: number; py: number }[]
+  drawCalls: number | undefined
+  triangles: number | undefined
+  geometries: number | undefined
+  textures: number | undefined
+  location: string | null
+  background: Colour
+  scenes: number
+  crowd: number
+  lighting: { hemi: number; sun: number; sky: string }
+  tier: string
+  matte: boolean
+  pixelRatio: number | undefined
+  shadowMap: number
+  avatarPx: number | null
+  tags: ShownTag[]
+}
+/** The spot the avatar was sent to or rests beside (options.onSpot). */
+export interface SceneSpotRequest { id: string; open: boolean }
+/** Where the avatar stands, in presence units (options.onMove, 'jaw:avatar-move'). */
+export interface AvatarPosition { x: number; z: number; location: string | null }
+export interface VenueWorldOptions {
+  location?: string
+  /** A renderer to draw with (tests pass a stub); by default a WebGLRenderer is made. */
+  renderer?: THREE.WebGLRenderer
+  onTag?: (tag: SceneTag) => void
+  onSpot?: (spot: SceneSpotRequest) => void
+  onMove?: (at: AvatarPosition) => void
+}
+/** setGoal(): the spot the current goal points at. */
+export interface SceneGoal { venue: string; spot: string; text: string }
+/** The host's lights: hemi [sky, ground, intensity]; sun [colour, intensity, position]; rim [colour, intensity]. */
+export interface LightPreset {
+  hemi: readonly [Colour, Colour, number]
+  sun: readonly [Colour, number, Vec3]
+  rim?: readonly [Colour, number]
+}
+/** Where a scene rests the avatar (walk.rest()): its spot, the seat of a running activity, the way out. */
+export interface HostRest {
+  spot: string | null
+  x: number
+  y?: number
+  z: number
+  ry: number
+  pose: string
+  seat?: number | undefined
+  busy: boolean
+  leaving: boolean
+  fixed: boolean
+  approach?: { x: number; z: number } | null
+  steps?: { x: number; z: number }[]
+}
+/** What the host needs to walk the avatar about (a venue scene's `walk`, or the home room's). */
+export interface HostWalk extends Omit<SceneWalk, 'rest' | 'things'> {
+  rest(): HostRest | null
+  things?(): SceneThing[]
+}
+/** What a scene entry may offer the host (see the header). Venue scenes and the home room both satisfy it. */
+export interface HostScene {
+  group: THREE.Group
+  camera?: SceneCamera
+  update?(state: LifeState): boolean
+  background?: Colour
+  sky?: readonly [Colour, Colour]
+  ground?: Colour
+  lighting?(): LightPreset
+  setPlayer?(player: Partial<PlayerLook>): boolean
+  setCrowd?(people: unknown): unknown
+  readonly easing?: boolean
+  stepCrowd?(dt: number): boolean
+  settleCrowd?(): void
+  look?(x: number, z: number): boolean
+  tags?(): DomTag[]
+  walk?: HostWalk
+  readonly placing?: boolean
+  pickAt?(x: number, y: number): HomePick | null
+  use?(id?: string | null, cell?: { x: number; y: number } | null): void
+  readonly walls?: { back: boolean; left: boolean } | null
+  objects?(): { id: string; itemId: string; x: number; z: number }[]
+  dispose?(): void
+}
+/** What createVenueWorld() returns. Every method draws at most one frame, and only when something changed. */
+export interface VenueWorld {
+  update(): void
+  readonly location: string | null
+  prepare(id: string): boolean
+  diagnostics(): VenueDiagnostics
+  resize(): void
+  /** `top` / `bottom`: how many CSS pixels of the canvas the HUD covers; `hint`: where the HUD rows under the top bar end. */
+  setInsets(next?: { top?: number; bottom?: number; hint?: number }): boolean
+  setLocation(id: string): void
+  setState(state: LifeState): void
+  setPlayer(next?: Partial<PlayerLook>): void
+  setGoal(next: { venue?: unknown; spot?: unknown; text?: unknown } | null | undefined): boolean
+  setCrowd(people: unknown): boolean
+  zoom(direction: number): void
+  recentre(): void
+  walkTo(x: number, z: number): boolean
+  walkBy(dx: number, dz: number): boolean
+  position(): AvatarPosition
+  dispose(): void
+}
 
 /**
  * The host's default lighting. hemi: [sky, ground, intensity] — the ground colour is the light that
@@ -98,15 +235,16 @@ import { spotsOf } from './life.js';
  * light from behind the scene as the camera sees it, which separates dark hair and shoulders from
  * the wall or the night behind them; it casts no shadow.
  */
-export const HOST_LIGHTING = Object.freeze({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7] });
+export const HOST_LIGHTING = Object.freeze<Required<LightPreset>>({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7] });
 const DEFAULT_BACKGROUND = '#182a25';
+const VENUES = VENUE_DATA as unknown as Readonly<Record<string, VenueDefinition | undefined>>;
 
 /**
  * The host's three lights. apply(preset) sets them from a scene's lighting(), or back to the
  * defaults; aim(camera, x, y, z) puts the rim light behind the point the camera looks at (called on
  * a frame that is being drawn anyway — it never asks for one). shadowMap: the sun's map size.
  */
-export function createHostLights(THREE, scene, { shadowMap = 2048 } = {}) {
+export function createHostLights(THREE: ThreeModule, scene: THREE.Scene, { shadowMap = 2048 }: { shadowMap?: number } = {}) {
   const hemi = new THREE.HemisphereLight(HOST_LIGHTING.hemi[0], HOST_LIGHTING.hemi[1], HOST_LIGHTING.hemi[2]);
   const sun = new THREE.DirectionalLight(HOST_LIGHTING.sun[0], HOST_LIGHTING.sun[1]);
   sun.position.set(...HOST_LIGHTING.sun[2]);
@@ -120,14 +258,14 @@ export function createHostLights(THREE, scene, { shadowMap = 2048 } = {}) {
   scene.add(hemi, sun, rim, rim.target);
   return {
     hemi, sun, rim,
-    apply(preset) {
-      const use = Array.isArray(preset?.hemi) && Array.isArray(preset?.sun) ? preset : HOST_LIGHTING;
+    apply(preset?: Partial<LightPreset> | null) {
+      const use = preset?.hemi && preset.sun && Array.isArray(preset.hemi) && Array.isArray(preset.sun) ? preset as LightPreset : HOST_LIGHTING;
       hemi.color.set(use.hemi[0]); hemi.groundColor.set(use.hemi[1]); hemi.intensity = use.hemi[2];
       sun.color.set(use.sun[0]); sun.intensity = use.sun[1]; sun.position.set(...use.sun[2]);
-      const back = Array.isArray(use.rim) ? use.rim : HOST_LIGHTING.rim;
+      const back = Array.isArray(use.rim) ? use.rim as readonly [Colour, number] : HOST_LIGHTING.rim;
       rim.color.set(back[0]); rim.intensity = back[1];
     },
-    aim(camera, x = 0, y = 0.7, z = 0) {
+    aim(camera: THREE.Camera, x = 0, y = 0.7, z = 0) {
       // Behind the subject and a little to the camera's right, above head height.
       const dx = x - camera.position.x, dz = z - camera.position.z, flat = Math.hypot(dx, dz) || 1;
       const ux = dx / flat, uz = dz / flat;
@@ -139,7 +277,7 @@ export function createHostLights(THREE, scene, { shadowMap = 2048 } = {}) {
 }
 
 /** The venue as the scene module should see it: every spot players can stand at, including spots other systems added. */
-export function sceneVenue(id) {
+export function sceneVenue(id: string) {
   const venue = VENUES[id];
   if (!venue) return venue;
   return { ...venue, scene: { ...venue.scene, spots: spotsOf(id).map((spot) => ({ id: spot.id, label: spot.label })) } };
@@ -163,8 +301,8 @@ const PRESENCE_REACH = 19.5;
 /** How fast the see-through circle fades in and out (per second), and its radius in avatar heights. */
 const GHOST_RATE = 9, GHOST_RADIUS = 0.62;
 const CROWN_MARK = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="rgba(0,0,0,.55)" stroke-width="1.2" stroke-linejoin="round"><path d="M3.5 18.5 2.5 7.5l5.6 4.2L12 4.5l3.9 7.2 5.6-4.2-1 11Z"/></svg>';
-const WALK_KEYS = { 'move-up': 'up', 'move-down': 'down', 'move-left': 'left', 'move-right': 'right', 'walk-up': 'up', 'walk-down': 'down', 'walk-left': 'left', 'walk-right': 'right', 'walk-jog': 'jog' };
-const LOOK_KEYS = { 'look-left': 'lookLeft', 'look-right': 'lookRight', 'look-up': 'lookUp', 'look-down': 'lookDown' };
+const WALK_KEYS: Record<string, HeldKey> = { 'move-up': 'up', 'move-down': 'down', 'move-left': 'left', 'move-right': 'right', 'walk-up': 'up', 'walk-down': 'down', 'walk-left': 'left', 'walk-right': 'right', 'walk-jog': 'jog' };
+const LOOK_KEYS: Record<string, HeldKey> = { 'look-left': 'lookLeft', 'look-right': 'lookRight', 'look-up': 'lookUp', 'look-down': 'lookDown' };
 
 /**
  * The see-through patch for a lit material: fragments that are above the ground, closer to the
@@ -172,11 +310,11 @@ const LOOK_KEYS = { 'look-left': 'lookLeft', 'look-right': 'lookRight', 'look-up
  * in `uniforms.uGhost.value.w`. With the strength at zero (always, unless something is in the way)
  * the shader does nothing. Every patched material shares the one uniforms object.
  */
-function ghostPatch(uniforms) {
-  return (material) => {
+function ghostPatch(uniforms: { uGhost: THREE.IUniform<THREE.Vector4>; uGhostDepth: THREE.IUniform<number> }) {
+  return (material: THREE.Material) => {
     if (!material || material.userData?.jawGhost) return;
     material.userData.jawGhost = true;
-    material.onBeforeCompile = (shader) => {
+    material.onBeforeCompile = (shader: THREE.WebGLProgramParametersWithUniforms) => {
       shader.uniforms.uGhost = uniforms.uGhost; shader.uniforms.uGhostDepth = uniforms.uGhostDepth;
       shader.vertexShader = `varying float vGhostY;\n${shader.vertexShader}`.replace('#include <project_vertex>', '#include <project_vertex>\n  vGhostY = (modelMatrix * vec4(transformed, 1.0)).y;');
       shader.fragmentShader = `uniform vec4 uGhost;\nuniform float uGhostDepth;\nvarying float vGhostY;\n${shader.fragmentShader}`.replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>
@@ -194,7 +332,27 @@ function ghostPatch(uniforms) {
   };
 }
 
-export function createVenueWorld(container, { location = 'park', renderer: providedRenderer, onTag, onSpot, onMove } = {}) {
+/** A tag as shown: the scene's data plus its place on the canvas. */
+/** A name tag as the host reads it: a scene's tag, a game table's or the goal's flag (those have no marker). */
+type TagData = Omit<DomTag, 'marker'> & { marker?: string };
+export interface ShownTag { id: string; kind: string; text: string; name: string; marker: string | undefined; colour: string | undefined; x: number; y: number; visible: boolean }
+/** A tag's DOM node, with the last values written to it (so a frame only touches what moved). */
+type TagNode = HTMLElement & { jawX: number; jawY: number; jawShown: boolean };
+/** What a click at a point of the canvas would pick (pick()). */
+type Target =
+  | { type: 'spot'; spot: WalkSpot }
+  | { type: 'person'; person: ScenePerson }
+  | { type: 'thing'; thing: SceneThing }
+  | { type: 'object'; hit: HomePick }
+  | { type: 'floor'; at: { x: number; z: number } };
+/** Somewhere the avatar can be sent: a spot, or where a scene rests it. */
+interface Place { x: number; y?: number | undefined; z: number; approach?: { x: number; z: number } | null | undefined; steps?: { x: number; z: number }[] | undefined }
+type HeldKey = 'up' | 'down' | 'left' | 'right' | 'jog' | 'lookLeft' | 'lookRight' | 'lookUp' | 'lookDown';
+interface Hover { key: string; type: Target['type']; spot: WalkSpot | null; person: ScenePerson | null; thing: SceneThing | null }
+/** 'jaw:reward': { cash, needs, skills }. */
+interface RewardDetail { cash?: number; needs?: Record<string, number>; skills?: Record<string, number> }
+
+export function createVenueWorld(container: HTMLElement, { location = 'park', renderer: providedRenderer, onTag, onSpot, onMove }: VenueWorldOptions = {}): VenueWorld {
   // Cheaper scenery (Lambert in place of Standard) is behind a flag, default off: see matteScenery() in scene/look.js.
   const kit = createKit({ matte: matteScenery() });
   const { THREE } = kit;
@@ -224,36 +382,36 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     tagLayer.addEventListener('click', (event) => {
       // A drag that began on a tag turned the camera: it is not a click on the tag.
       if (suppressClick && event.detail !== 0) return;
-      const node = event.target.closest?.('[data-tag]');
+      const node = (event.target as Element | null)?.closest?.<HTMLElement>('[data-tag]');
       if (!node) return;
       // A table's tag is the table: the avatar walks up to it, and arriving opens it (no frame loop: it is simply there).
       const thing = node.dataset.kind === 'table' ? thingList.find((item) => item.id === node.dataset.tag) : null;
       if (thing) { if (!(uiMode === 'venue' && !locked && walkToThing(thing))) onTag?.({ id: thing.id, kind: thing.kind }); else if (!loop.running) renderScene(); return; }
-      onTag?.({ id: node.dataset.tag, kind: node.dataset.kind });
+      onTag?.({ id: node.dataset.tag!, kind: node.dataset.kind! });
     });
     // A press on a tag is followed like a press on the scene, so dragging from a tag orbits the camera.
-    tagLayer.addEventListener('pointerdown', (event) => { if (event.target.closest?.('[data-tag]')) pointerDown(event, false); });
+    tagLayer.addEventListener('pointerdown', (event) => { if ((event.target as Element | null)?.closest?.('[data-tag]')) pointerDown(event, false); });
     tagLayer.addEventListener('pointermove', (event) => pointerMove(event));
-    for (const type of ['pointerup', 'pointercancel']) tagLayer.addEventListener(type, (event) => pointerEnd(event));
+    for (const type of ['pointerup', 'pointercancel'] as const) tagLayer.addEventListener(type, (event) => pointerEnd(event));
   }
-  let goal = null; // { venue, spot, text } — the spot the current goal points at (setGoal)
+  let goal: SceneGoal | null = null; // { venue, spot, text } — the spot the current goal points at (setGoal)
   /** What stands in this venue to be walked up to (walk.things(): the game tables), and the one the avatar is standing at. */
-  let thingList = [], atThing = null, thingDwell = null;
+  let thingList: SceneThing[] = [], atThing: string | null = null, thingDwell: ReturnType<typeof setTimeout> | null = null;
   const spotHint = tagLayer ? globalThis.document.createElement('span') : null;
   if (spotHint) { spotHint.className = 'scene-spot-hint'; spotHint.hidden = true; }
 
-  const built = new Map();
-  let prepared = null;
-  let current = null, currentLocation = null, renderCount = 0, lastState = null, size = { width: 0, height: 0 };
-  let player = {}, crowd = [], crowdKey = '[]', background = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
-  let tagSource = [], shownTags = [], tagNodes = [], tagShape = '', tagsRead = true;
+  const built = new Map<string, HostScene>();
+  let prepared: string | null = null;
+  let current: HostScene | null = null, currentLocation: string | null = null, renderCount = 0, lastState: LifeState | null = null, size = { width: 0, height: 0 };
+  let player: Partial<PlayerLook> = {}, crowd: CrowdPerson[] = [], crowdKey = '[]', background: Colour = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
+  let tagSource: TagData[] = [], shownTags: ShownTag[] = [], tagNodes: TagNode[] = [], tagShape = '', tagsRead = true;
   const point = new THREE.Vector3(), rayA = new THREE.Vector3(), rayB = new THREE.Vector3();
   const orbit = createOrbit();
   const walker = createWalker();
-  const pointers = new Map();
+  const pointers = new Map<number, { x: number; y: number; startX: number; startY: number; loose: boolean }>();
   let suppressClick = false;
   const canvas = renderer.domElement;
-  const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
+  const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
   const previousTouchAction = canvas.style?.touchAction;
   const previousCursor = canvas.style?.cursor;
   // A drag on the scene orbits the camera: it must never scroll the page or start a text selection.
@@ -261,13 +419,13 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   const reduced = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
 
   // ---- walking state --------------------------------------------------------------------
-  const held = { up: false, down: false, left: false, right: false, jog: false, lookLeft: false, lookRight: false, lookUp: false, lookDown: false };
+  const held: Record<HeldKey, boolean> = { up: false, down: false, left: false, right: false, jog: false, lookLeft: false, lookRight: false, lookUp: false, lookDown: false };
   const stick = { x: 0, z: 0, jog: false };
-  let locked = false, restKey = '', restWas = { spot: null, busy: false, leaving: false }, stride = 0, wasMoving = false, restPose = null;
-  let nearSpot = null, expected = null, dwell = null, lastSpotAt = -Infinity, spotList = [], avatarY = 0, fresh = false, uiMode = 'venue';
+  let locked = false, restKey = '', restWas: { spot: string | null; busy: boolean; leaving: boolean; at?: string } = { spot: null, busy: false, leaving: false }, stride = 0, wasMoving = false, restPose: { pose: string; seat?: number | undefined } | null = null;
+  let nearSpot: WalkSpot | null = null, expected: { id: string; near: boolean } | null = null, dwell: ReturnType<typeof setTimeout> | null = null, lastSpotAt = -Infinity, spotList: WalkSpot[] = [], avatarY = 0, fresh = false, uiMode = 'venue';
   // perch: the raised place the avatar stepped up on to, and the way back down ([{ x, z }, ...] ending on the floor).
-  let perch = null, hover = null, hintTop = 0, closeness = 1;
-  const walkOf = () => current?.walk || null;
+  let perch: { down: WalkPoint[] } | null = null, hover: Hover | null = null, hintTop = 0, closeness = 1;
+  const walkOf = (): HostWalk | null => current?.walk || null;
   /** Scene units → presence units (1 unless a scene's floor is larger than the room protocol's bounds). */
   function presenceScale() {
     const bounds = walkOf()?.grid?.bounds;
@@ -292,7 +450,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const walk = walkOf();
     if (!walk) { orbit.follow(0, 0.7, 0); return; }
     // The closer the starting view, the more the pivot belongs to the avatar (closeness: see frame()).
-    const share = followShare(orbit.now.zoom * closeness), centre = walk.centre, offset = current.group.position;
+    const share = followShare(orbit.now.zoom * closeness), centre = walk.centre, offset = current!.group.position;
     orbit.follow(offset.x + centre[0] + (walker.x - centre[0]) * share, centre[1] + (avatarY + 1.55 * walk.scale - centre[1]) * share, offset.z + centre[2] + (walker.z - centre[2]) * share);
   }
   function nearestSpot() {
@@ -315,7 +473,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   }
   function clearDwell() { if (dwell !== null) { clearTimeout(dwell); dwell = null; } }
   /** Ask for a spot through the game's own `spot` action (the shell sends it). Never while an activity runs. */
-  function requestSpot(id, open) {
+  function requestSpot(id: string, open: boolean) {
     if (locked || lastState?.activeAction) return false;
     const now = Date.now();
     if (!open && (id === lastState?.spot || now - lastSpotAt < SPOT_GAP_MS - 5)) return false;
@@ -362,7 +520,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if (restPose) walk.pose(restPose.pose, restPose.seat); else walk.pose('stand');
   }
   /** One step of walking. Returns true while the avatar is still moving or turning. */
-  function advance(dt) {
+  function advance(dt: number) {
     const walk = walkOf();
     if (!walk) return false;
     const wantX = (held.right ? 1 : 0) - (held.left ? 1 : 0) + stick.x, wantZ = (held.up ? 1 : 0) - (held.down ? 1 : 0) + stick.z;
@@ -370,7 +528,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     else if (perch && (wantX || wantZ)) {
       // Standing on a raised place: a walking key first takes the way back down, then the keys walk as usual.
       walker.input(0, 0);
-      if (walker.mode !== 'path') { const foot = perch.down[perch.down.length - 1]; walkTo(foot.x, foot.z); }
+      if (walker.mode !== 'path') { const foot = perch.down[perch.down.length - 1]!; walkTo(foot.x, foot.z); }
     }
     else walker.input(wantX, wantZ, held.jog || stick.jog);
     if (walker.hasInput && walker.mode === 'path') walk.goal();
@@ -396,7 +554,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     return more;
   }
   /** Send the avatar somewhere along the floor. Without a frame loop, or with reduced motion, it is simply there. */
-  function walkTo(x, z, { exact = false, face, jog, then, mark = false, via = null, steps = null } = {}) {
+  function walkTo(x: number, z: number, { exact = false, face, jog, then, mark = false, via = null, steps = null }: { exact?: boolean; face?: number; jog?: boolean; then?: () => void; mark?: boolean; via?: WalkPoint | null; steps?: WalkPoint[] | null } = {}) {
     const walk = walkOf();
     if (!walk) return false;
     clearDwell();
@@ -441,7 +599,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     } else if (rest.leaving) {
       // Setting off on a trip: walk to the way out.
       restPose = { pose: 'walk' };
-      walkTo(walk.entrance.x, walk.entrance.z, { jog: true });
+      walkTo(walk!.entrance!.x, walk!.entrance!.z, { jog: true });
     } else {
       restPose = null;
       const sent = expected && expected.id === rest.spot ? expected : null;
@@ -455,14 +613,14 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     return true;
   }
   /** The declared way up to a raised place (a spot, or where the scene rests the avatar), unless the avatar is already up there beside it. */
-  function wayUp(place) {
+  function wayUp(place: Place | null | undefined) {
     if (!place?.approach) return null;
     if (perch && Math.hypot(place.x - walker.x, place.z - walker.z) < 6 && !walkOf()?.grid?.free(walker.x, walker.z) && avatarY > 0.2 && Math.abs((place.y || 0) - avatarY) < 0.4) return null;
     return { via: place.approach, steps: place.steps };
   }
   /** Where the avatar is when a scene is first shown: at the entrance — or, mid-activity, already at its place and in its pose. */
-  function arrive(rest) {
-    const walk = walkOf(), door = walk.entrance;
+  function arrive(rest: HostRest | null) {
+    const walk = walkOf()!, door = walk.entrance!;
     locked = Boolean(rest && (rest.busy || rest.leaving || rest.fixed));
     if (rest && (rest.busy || rest.fixed)) { restPose = { pose: rest.pose, seat: rest.seat }; walker.place(rest.x, rest.z, rest.ry); }
     else { restPose = rest?.leaving ? { pose: 'walk' } : null; walker.place(door.x, door.z, door.ry); }
@@ -478,7 +636,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     stick.x = 0; stick.z = 0; stick.jog = false;
     walker.setGrid(walk?.grid || null);
     walker.others = walk?.people() || null;
-    occluders.setStatic(walk?.solids || []);
+    occluders.setStatic((walk?.solids || []) as OccluderBox[]);
     ghost.now = 0; ghost.goal = 0; ghost.uniforms.uGhost.value.w = 0; orbit.cap(Infinity);
     if (!walk) { locked = false; restKey = ''; return; }
     walk.drive(true);
@@ -496,13 +654,13 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   }
 
   // ---- the motion loop: frames only while something moves ------------------------------------
-  function tick(dt) {
+  function tick(dt: number) {
     let more = false;
     const yaw = (held.lookRight ? 1 : 0) - (held.lookLeft ? 1 : 0), pitch = (held.lookUp ? 1 : 0) - (held.lookDown ? 1 : 0);
     if (yaw || pitch) { orbit.rotate(yaw * LOOK_YAW * dt, pitch * LOOK_PITCH * dt); more = true; }
     more = advance(dt) || more;
     // Other players' figures on their way to a newly reported position.
-    if (current?.easing) more = (reduced() ? (current.settleCrowd(), false) : current.stepCrowd(dt)) || more;
+    if (current?.easing) more = (reduced() ? (current.settleCrowd!(), false) : current.stepCrowd!(dt)) || more;
     setPivot();
     keepInSight();
     if (reduced()) { orbit.snap(); ghost.now = ghost.goal; }
@@ -556,7 +714,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     ghost.uniforms.uGhostDepth.value = Math.max(0.2, depth - 0.75 * (walk?.scale || 1));
   }
   function dropInput() {
-    for (const key of Object.keys(held)) held[key] = false;
+    for (const key of Object.keys(held)) held[key as HeldKey] = false;
     stick.x = 0; stick.z = 0; stick.jog = false;
     controls?.release();
   }
@@ -572,7 +730,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     setPivot(); orbit.snap(); setPivot(); orbit.snap();
     keepInSight(); orbit.snap(); ghost.now = ghost.goal;
   }
-  function zoom(direction) { orbit.zoomBy(direction > 0 ? ZOOM_STEP : 1 / ZOOM_STEP); redrawView(); }
+  function zoom(direction: number) { orbit.zoomBy(direction > 0 ? ZOOM_STEP : 1 / ZOOM_STEP); redrawView(); }
   function recentre() { orbit.reset(); redrawView(); }
 
   // ---- pointer: drag to look, pinch and wheel to zoom, tap to walk ---------------------------
@@ -586,7 +744,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     suppressClick = false;
     orbit.reset();
   }
-  function pointerDown(event, capture = true) {
+  function pointerDown(event: PointerEvent, capture = true) {
     if (event.pointerType === 'touch') controls?.touch(true);
     if (event.button !== 0 || pointers.size >= 2) return;
     if (!pointers.size) suppressClick = false;
@@ -597,7 +755,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if (canvas.style) canvas.style.cursor = 'grabbing';
     setHover(null);
   }
-  function pointerMove(event) {
+  function pointerMove(event: PointerEvent) {
     const previous = pointers.get(event.pointerId);
     if (!previous) { if (!pointers.size && event.pointerType !== 'touch') hoverAt(event); return; }
     const next = { ...previous, x: event.clientX, y: event.clientY };
@@ -608,7 +766,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     }
     if (next.x === previous.x && next.y === previous.y) return;
     if (pointers.size === 2) {
-      const other = [...pointers.entries()].find(([id]) => id !== event.pointerId)[1];
+      const other = [...pointers.entries()].find(([id]) => id !== event.pointerId)![1];
       const before = Math.hypot(previous.x - other.x, previous.y - other.y);
       const after = Math.hypot(next.x - other.x, next.y - other.y);
       if (before > 4 && after > 4) orbit.zoomBy(after / before);
@@ -618,13 +776,13 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     event.preventDefault();
     redrawView();
   }
-  function pointerEnd(event) {
+  function pointerEnd(event: PointerEvent) {
     if (!pointers.has(event.pointerId)) return;
     pointers.delete(event.pointerId);
     try { canvas.releasePointerCapture?.(event.pointerId); } catch {}
     if (!pointers.size && canvas.style) canvas.style.cursor = 'grab';
   }
-  function wheel(event) {
+  function wheel(event: WheelEvent) {
     if (!Number.isFinite(event.deltaY)) return;
     event.preventDefault();
     const units = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? size.height : 1;
@@ -636,7 +794,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     redrawView();
   }
   /** The floor point (scene coordinates) under a point of the canvas, or null when it looks at the sky. */
-  function floorAt(clientX, clientY, out) {
+  function floorAt(clientX: number, clientY: number, out: { x: number; z: number }) {
     const box = container.getBoundingClientRect();
     if (!box.width || !box.height || !current) return null;
     const nx = ((clientX - (box.left || 0)) / box.width) * 2 - 1, ny = -((clientY - (box.top || 0)) / box.height) * 2 + 1;
@@ -651,7 +809,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     return out;
   }
   /** Where a scene point is on the canvas, in CSS pixels. */
-  function screenOf(x, y, z, out) {
+  function screenOf(x: number, y: number, z: number, out: { x: number; y: number }) {
     point.set(x, y, z);
     if (current?.group) point.applyMatrix4(current.group.matrixWorld);
     point.project(camera);
@@ -669,7 +827,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     return Math.round(Math.hypot(pixel.x - pixelTop.x, pixel.y - pixelTop.y));
   }
   /** How far a spot's marker reaches on screen, in CSS pixels across and down: the ring as the camera sees it, and a little more — never less than a fingertip. */
-  function markerReach(spot, out) {
+  function markerReach(spot: WalkSpot, out: { x: number; y: number; ringX: number; ringY: number }) {
     const azimuth = orbit.azimuth;
     screenOf(spot.x, spot.y + 0.1, spot.z, pixel);
     screenOf(spot.x + Math.cos(azimuth) * 0.82, spot.y + 0.1, spot.z - Math.sin(azimuth) * 0.82, pixelSide);
@@ -690,7 +848,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
    *   floor    anywhere else on the floor; null when it looks at the sky
    * → { type, spot | person | hit, at } | null. Used by the tap and by the hover, so what lights up is what a click does.
    */
-  function pick(clientX, clientY) {
+  function pick(clientX: number, clientY: number): Target | null {
     const walk = walkOf();
     if (!walk || !walk.grid || !current) return null;
     current.group.updateMatrixWorld(true);
@@ -726,7 +884,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     return beside ? { type: 'spot', spot: beside } : { type: 'floor', at };
   }
   /** Walk up to a game table — to the free place beside it nearest the avatar — face it, and report it (onTag, kind 'table'). */
-  function walkToThing(thing) {
+  function walkToThing(thing: SceneThing) {
     const walk = walkOf();
     if (!walk?.grid) return false;
     const side = Math.atan2(walker.x - thing.x, walker.z - thing.z), reach = thing.r + 0.5;
@@ -739,9 +897,9 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     return walkTo(stand.x, stand.z, { face: Math.atan2(thing.x - stand.x, thing.z - stand.z), then: () => { atThing = id; onTag?.({ id, kind }); } });
   }
   /** A tap that was not a drag: walk to what was tapped, then do what tapping it does. */
-  function tap(event) {
+  function tap(event: MouseEvent) {
     const walk = walkOf();
-    if (!walk || !walk.grid || locked || uiMode !== 'venue' || current.placing || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return false;
+    if (!walk || !walk.grid || locked || uiMode !== 'venue' || current!.placing || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return false;
     const target = pick(event.clientX, event.clientY);
     if (!target) return false;
     if (target.type === 'spot') {
@@ -760,59 +918,60 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       const hit = target.hit;
       const cx = hit.rect ? (hit.rect[0] + hit.rect[2]) / 2 : hit.x, cz = hit.rect ? (hit.rect[1] + hit.rect[3]) / 2 : hit.z;
       const stand = Number.isFinite(cx) ? walk.grid.nearest(cx, cz) : null;
-      if (!stand) { current.use(hit.id, hit.cell); return true; }
-      return walkTo(stand.x, stand.z, { face: Math.atan2(cx - stand.x, cz - stand.z), then: () => current.use(hit.id, hit.cell) });
+      if (!stand) { current!.use!(hit.id, hit.cell); return true; }
+      return walkTo(stand.x, stand.z, { face: Math.atan2(cx - stand.x, cz - stand.z), then: () => current!.use!(hit.id, hit.cell) });
     }
     return walkTo(target.at.x, target.at.z, { mark: true });
   }
   /** Show what a click would pick: a marker lights up and names itself, a person's tag is outlined. One frame per change; nothing while the pointer rests. */
-  function setHover(next) {
-    const key = next ? `${next.type}:${next.spot?.id ?? next.person?.id ?? next.thing?.id ?? ''}` : '';
+  function setHover(next: Target | null) {
+    const spot = next && 'spot' in next ? next.spot : null, person = next && 'person' in next ? next.person : null, thing = next && 'thing' in next ? next.thing : null;
+    const key = next ? `${next.type}:${spot?.id ?? person?.id ?? thing?.id ?? ''}` : '';
     if (key === (hover?.key ?? '')) return false;
-    hover = next ? { key, type: next.type, spot: next.spot || null, person: next.person || null, thing: next.thing || null } : null;
+    hover = next ? { key, type: next.type, spot, person, thing } : null;
     if (canvas.style && !pointers.size) canvas.style.cursor = hover && hover.type !== 'floor' ? 'pointer' : 'grab';
-    for (const node of tagNodes) node.classList?.toggle('is-hover', (hover?.type === 'person' && node.dataset.tag === hover.person.id) || (hover?.type === 'thing' && node.dataset.tag === hover.thing.id));
-    if (spotHint) { spotHint.hidden = hover?.type !== 'spot'; if (hover?.type === 'spot') spotHint.textContent = hover.spot.label || hover.spot.id; }
+    for (const node of tagNodes) node.classList?.toggle('is-hover', (hover?.type === 'person' && node.dataset.tag === hover.person!.id) || (hover?.type === 'thing' && node.dataset.tag === hover.thing!.id));
+    if (spotHint) { spotHint.hidden = hover?.type !== 'spot'; if (hover?.type === 'spot') spotHint.textContent = hover.spot!.label || hover.spot!.id; }
     showNear();
     return true;
   }
-  function hoverAt(event) {
+  function hoverAt(event: PointerEvent) {
     if (locked || uiMode !== 'venue' || current?.placing || loop.running || !Number.isFinite(event.clientX)) { if (hover) { setHover(null); if (!loop.running) renderScene(); } return; }
     const target = pick(event.clientX, event.clientY);
     if (setHover(target && target.type !== 'floor' && target.type !== 'object' ? target : null)) renderScene();
   }
-  const listeners = { pointerdown: (event) => pointerDown(event), pointermove: pointerMove, pointerup: pointerEnd,
-    pointercancel: pointerEnd, lostpointercapture: pointerEnd, wheel,
+  const listeners: Record<string, EventListener> = { pointerdown: (event) => pointerDown(event as PointerEvent), pointermove: (event) => pointerMove(event as PointerEvent), pointerup: (event) => pointerEnd(event as PointerEvent),
+    pointercancel: (event) => pointerEnd(event as PointerEvent), lostpointercapture: (event) => pointerEnd(event as PointerEvent), wheel: (event) => wheel(event as WheelEvent),
     pointerleave() { if (hover && !pointers.size) { setHover(null); if (!loop.running) renderScene(); } },
     click(event) {
-      if (suppressClick && event.detail !== 0) { event.preventDefault(); event.stopImmediatePropagation(); return; }
-      if (event.detail === 0) return; // a keyboard-generated click is not a place on the floor
-      if (tap(event) && !loop.running) renderScene();
+      if (suppressClick && (event as MouseEvent).detail !== 0) { event.preventDefault(); event.stopImmediatePropagation(); return; }
+      if ((event as MouseEvent).detail === 0) return; // a keyboard-generated click is not a place on the floor
+      if (tap(event as MouseEvent) && !loop.running) renderScene();
     } };
   for (const [type, listener] of Object.entries(listeners)) canvas.addEventListener?.(type, listener, { passive: false, capture: type === 'click' });
 
   // ---- keys (forwarded by the shell) and the on-screen controls ------------------------------
-  function onKey(event) {
-    const { action, mode, jog } = event.detail || {};
+  function onKey(event: Event) {
+    const { action = '', mode, jog } = (event as CustomEvent<{ action?: string; mode?: string; jog?: boolean } | null>).detail || {};
     if (mode !== 'venue' && mode !== 'buy') return;
-    if (Object.hasOwn(LOOK_KEYS, action) || /^zoom-/.test(action || '')) controls?.learned('look');
+    if (Object.hasOwn(LOOK_KEYS, action) || /^zoom-/.test(action)) controls?.learned('look');
     if (action === 'zoom-in') zoom(1);
     else if (action === 'zoom-out') zoom(-1);
     else if (action === 'zoom-fit') recentre();
     else if (mode !== 'venue') return;
     else if (Object.hasOwn(WALK_KEYS, action)) {
-      held[WALK_KEYS[action]] = true;
+      held[WALK_KEYS[action]!] = true;
       if (action !== 'walk-jog') held.jog = Boolean(jog);
       if (walkOf() && !locked) loop.wake();
     } else if (Object.hasOwn(LOOK_KEYS, action)) {
-      held[LOOK_KEYS[action]] = true;
-      if (loop.available) loop.wake(); else { orbit.rotate(((held.lookRight ? 1 : 0) - (held.lookLeft ? 1 : 0)) * 0.12, ((held.lookUp ? 1 : 0) - (held.lookDown ? 1 : 0)) * 0.08); held[LOOK_KEYS[action]] = false; redrawView(); }
+      held[LOOK_KEYS[action]!] = true;
+      if (loop.available) loop.wake(); else { orbit.rotate(((held.lookRight ? 1 : 0) - (held.lookLeft ? 1 : 0)) * 0.12, ((held.lookUp ? 1 : 0) - (held.lookDown ? 1 : 0)) * 0.08); held[LOOK_KEYS[action]!] = false; redrawView(); }
     }
   }
-  function onKeyUp(event) {
-    const action = event.detail?.action;
-    if (Object.hasOwn(WALK_KEYS, action)) held[WALK_KEYS[action]] = false;
-    else if (Object.hasOwn(LOOK_KEYS, action)) held[LOOK_KEYS[action]] = false;
+  function onKeyUp(event: Event) {
+    const action = (event as CustomEvent<{ action?: string } | null>).detail?.action ?? '';
+    if (Object.hasOwn(WALK_KEYS, action)) held[WALK_KEYS[action]!] = false;
+    else if (Object.hasOwn(LOOK_KEYS, action)) held[LOOK_KEYS[action]!] = false;
   }
   /**
    * THE REWARD MOMENT. The host remembers what the player had when an activity began (needs, cash,
@@ -823,19 +982,19 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
    * that gave nothing, or for a different life. 'jaw:reward' ({ detail: { cash, needs, skills } })
    * shows the same chips on request.
    */
-  let rewardFrom = null;
-  function trackReward(state) {
-    const active = state?.activeAction, busy = Boolean(active) && active.kind !== 'travel' && active.kind !== 'commute';
-    const snap = () => ({ who: state.name, needs: { ...state.needs }, cash: Number(state.cash) || 0, skills: { ...state.skills } });
+  let rewardFrom: { who: string; needs: Record<string, number>; cash: number; skills: Record<string, number> } | null = null;
+  function trackReward(state: LifeState | null) {
+    const active = state?.activeAction, busy = Boolean(active) && active?.kind !== 'travel' && active?.kind !== 'commute';
+    const snap = () => ({ who: state!.name, needs: { ...state!.needs }, cash: Number(state!.cash) || 0, skills: { ...state!.skills } });
     if (busy) { rewardFrom ||= snap(); return; }
     const from = rewardFrom;
     rewardFrom = null;
     if (!from || !state?.needs || from.who !== state.name) return;
-    const diff = (now = {}, was = {}, missing) => Object.fromEntries(Object.entries(now).map(([id, value]) => [id, value - (was[id] ?? (missing ?? value))]));
+    const diff = (now: Record<string, number> = {}, was: Record<string, number> = {}, missing?: number) => Object.fromEntries(Object.entries(now).map(([id, value]) => [id, value - (was[id] ?? (missing ?? value))]));
     onReward({ detail: { cash: (Number(state.cash) || 0) - from.cash, needs: diff(state.needs, from.needs), skills: diff(state.skills, from.skills, 0) } });
   }
-  function onReward(event) {
-    const chips = rewardChips(event.detail || {});
+  function onReward(event: Event | { detail: RewardDetail }) {
+    const chips = rewardChips((event as CustomEvent<RewardDetail | null>).detail || {});
     const walk = walkOf();
     if (!tagLayer || !chips.length || !walk || !current || uiMode !== 'venue') return;
     tagLayer.querySelector('.scene-reward')?.remove();
@@ -854,13 +1013,13 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       node.append(item);
     }
     // The last chip to finish takes the whole group away; with animations off they are simply removed by the next reward or scene change.
-    node.lastChild.addEventListener('animationend', () => node.remove(), { once: true });
+    node.lastChild!.addEventListener('animationend', () => node.remove(), { once: true });
     tagLayer.append(node);
   }
   const onCheer = () => cheer(globalThis.document?.querySelector('dialog[open]') || globalThis.document?.body);
-  function onMode(event) { uiMode = event.detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
+  function onMode(event: Event) { uiMode = (event as CustomEvent<{ mode?: string } | null>).detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
   // Created after the shell: start from the view the shell wrote on its root element.
-  uiMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
+  uiMode = globalThis.document?.querySelector?.<HTMLElement>('.life-ui')?.dataset?.mode || 'venue';
   win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer);
   win?.addEventListener?.('jaw:key', onKey);
   win?.addEventListener?.('jaw:key-up', onKeyUp);
@@ -882,9 +1041,9 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function projectTags() {
     camera.updateMatrixWorld(true);
     current?.group.updateMatrixWorld(true);
-    if (shownTags.length !== tagSource.length) shownTags = tagSource.map(() => ({}));
+    if (shownTags.length !== tagSource.length) shownTags = tagSource.map(() => ({} as ShownTag));
     for (let i = 0; i < tagSource.length; i++) {
-      const tag = tagSource[i], shown = shownTags[i];
+      const tag = tagSource[i]!, shown = shownTags[i]!;
       point.set(tag.position.x, tag.position.y, tag.position.z);
       if (current?.group) point.applyMatrix4(current.group.matrixWorld);
       point.project(camera);
@@ -898,9 +1057,9 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     tagsRead = false;
     if (shape !== tagShape) {
       tagShape = shape;
-      tagNodes = shownTags.map((tag) => {
+      tagNodes = shownTags.map((tag): TagNode => {
         // Built with textContent only: a player's name can never become markup.
-        const node = globalThis.document.createElement(tag.kind === 'self' ? 'span' : 'button');
+        const node = globalThis.document.createElement(tag.kind === 'self' ? 'span' : 'button') as TagNode;
         node.className = `scene-tag is-${tag.kind}`;
         node.dataset.tag = tag.id; node.dataset.kind = tag.kind;
         if (tag.marker === 'crown') node.innerHTML = CROWN_MARK;
@@ -911,16 +1070,16 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
         node.jawX = NaN; node.jawY = NaN; node.jawShown = true;
         return node;
       });
-      tagLayer.replaceChildren(...tagNodes, spotHint);
+      tagLayer.replaceChildren(...tagNodes, spotHint!);
     }
     if (spotHint && hover?.type === 'spot') {
-      point.set(hover.spot.x, hover.spot.y + 0.1, hover.spot.z);
+      point.set(hover.spot!.x, hover.spot!.y + 0.1, hover.spot!.z);
       if (current?.group) point.applyMatrix4(current.group.matrixWorld);
       point.project(camera);
       spotHint.style.left = `${Math.round(((point.x + 1) / 2) * size.width)}px`; spotHint.style.top = `${Math.round(((1 - point.y) / 2) * size.height)}px`;
     }
     for (let i = 0; i < tagNodes.length; i++) {
-      const node = tagNodes[i], tag = shownTags[i];
+      const node = tagNodes[i]!, tag = shownTags[i]!;
       if (node.jawShown !== tag.visible) { node.jawShown = tag.visible; node.hidden = !tag.visible; }
       if (node.jawX !== tag.x) { node.jawX = tag.x; node.style.left = `${tag.x}px`; }
       if (node.jawY !== tag.y) { node.jawY = tag.y; node.style.top = `${tag.y}px`; }
@@ -929,8 +1088,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   /** The goal's flag: one tag over the spot the current goal points at, while the player is in that venue (setGoal). */
   function goalTag() {
     if (!goal || goal.venue !== currentLocation) return [];
-    const spot = spotList.find((item) => item.id === goal.spot);
-    return spot ? [{ id: `goal:${spot.id}`, kind: 'goal', text: goal.text, name: goal.text, position: { x: spot.x, y: (spot.y ?? 0) + 2.4, z: spot.z } }] : [];
+    const spot = spotList.find((item) => item.id === goal!.spot);
+    return spot ? [{ id: `goal:${spot.id}`, kind: 'goal', text: goal!.text, name: goal!.text, position: { x: spot.x, y: (spot.y ?? 0) + 2.4, z: spot.z } }] : [];
   }
   /** One tag over each game table that stands here: its game and its name. A tap on it walks the avatar there. */
   const thingTags = () => thingList.map((thing) => ({ id: thing.id, kind: thing.kind, text: thing.label, name: thing.label, position: { x: thing.x, y: thing.top + 0.55, z: thing.z } }));
@@ -945,15 +1104,15 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x, orbit.now.y, orbit.now.z); renderer.render(scene, camera); renderCount += 1; projectTags(); }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
-  function sceneFor(id) {
+  function sceneFor(id: string) {
     if (!built.has(id)) {
       const venue = VENUES[id];
-      const entry = venue?.scene?.kind === 'home' ? buildHomeScene(kit, venue) : buildVenueScene(kit, sceneVenue(id));
+      const entry = venue?.scene?.kind === 'home' ? buildHomeScene(kit) : buildVenueScene(kit, sceneVenue(id));
       entry.group.visible = false;
       scene.add(entry.group);
       built.set(id, entry);
     }
-    return built.get(id);
+    return built.get(id)!;
   }
   /** Take the lighting and clear colour the current scene asks for. */
   function applyLook() {
@@ -1013,13 +1172,13 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   }
   function resize() { frame(); renderScene(); }
   /** Show a venue. Draws one frame only if the venue actually changed. */
-  function setLocation(id) {
+  function setLocation(id: string) {
     if (id === currentLocation) return;
     loop.stop();
     if (current) {
       current.walk?.drive(false);
       current.group.visible = false;
-      if (typeof current.dispose === 'function') { current.dispose(); scene.remove(current.group); built.delete(currentLocation); }
+      if (typeof current.dispose === 'function') { current.dispose(); scene.remove(current.group); built.delete(currentLocation!); }
     }
     resetView();
     currentLocation = id;
@@ -1035,7 +1194,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     resize();
   }
   /** Give the current scene the latest game state. Draws one frame only if the scene says it changed. */
-  function setState(state) {
+  function setState(state: LifeState) {
     lastState = state;
     trackReward(state);
     const changed = current?.update?.(state);
@@ -1047,7 +1206,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if ((changed || moved) && !loop.running) { setPivot(); if (!loop.available || reduced()) settleView(); orbit.apply(camera); renderScene(); }
   }
   /** The player's avatar: { look, seed (the session's public id), name, pose? }. One frame if it changed. */
-  function setPlayer(next = {}) {
+  function setPlayer(next: Partial<PlayerLook> = {}) {
     player = { ...next };
     const changed = current?.setPlayer?.(player);
     const moved = changed ? syncRest() : false;
@@ -1055,7 +1214,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if ((changed || moved) && !loop.running) renderScene();
   }
   /** Other players and NPCs standing here (capped at MAX_CROWD). One frame, and only if the list changed. */
-  function setCrowd(people) {
+  function setCrowd(people: unknown) {
     const list = (Array.isArray(people) ? people : []).filter((person) => person && typeof person === 'object').slice(0, MAX_CROWD);
     const key = JSON.stringify(list);
     if (key === crowdKey) return false;
@@ -1066,12 +1225,12 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function showCrowd() {
     if (!current?.setCrowd) return false;
     const k = presenceScale();
-    current.setCrowd(k === 1 ? crowd : crowd.map((person) => (Number.isFinite(person.x) && Number.isFinite(person.z) ? { ...person, x: person.x / k, z: person.z / k } : person)));
+    current.setCrowd(k === 1 ? crowd : crowd.map((person) => (Number.isFinite(person.x) && Number.isFinite(person.z) ? { ...person, x: person.x! / k, z: person.z! / k } : person)));
     walker.others = walkOf()?.people() || null;
     setHover(null);
     readTags();
     // Somebody is on their way to a new place: the loop eases them there (bounded) — or, without one, they are simply there.
-    if (current.easing) { if (loop.available && !reduced()) { loop.wake(); return true; } current.settleCrowd(); }
+    if (current.easing) { if (loop.available && !reduced()) { loop.wake(); return true; } current.settleCrowd!(); }
     if (!loop.running) renderScene();
     return true;
   }
@@ -1104,8 +1263,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
           asked: Math.round(orbit.asked * 100) / 100, whole: Math.round(orbit.base.distance * closeness * 100) / 100, held: Math.round(orbit.now.squeeze * 1000) / 1000, ghost: Math.round(ghost.now * 100) / 100, x: Math.round(camera.position.x * 100) / 100, y: Math.round(camera.position.y * 100) / 100, z: Math.round(camera.position.z * 100) / 100,
           limits: { pitch: [0.1, Math.round((Math.PI / 2 - 0.07) * 1000) / 1000], zoom: [Math.round(orbit.limits.zoomMin * 1000) / 1000, Math.round(orbit.limits.zoomMax * 1000) / 1000], azimuth: orbit.limits.azimuth } },
         // Where each spot and person is on the canvas (CSS pixels) — what a tap on it has to hit.
-        spots: spotList.map((spot) => { current.group.updateMatrixWorld(true); const at = screenOf(spot.x, spot.y + 0.1, spot.z, { x: 0, y: 0 }); return { id: spot.id, x: spot.x, z: spot.z, px: Math.round(at.x), py: Math.round(at.y), selected: spot.id === lastState?.spot }; }),
-        things: thingList.map((thing) => { current.group.updateMatrixWorld(true); const at = screenOf(thing.x, thing.top * 0.5, thing.z, { x: 0, y: 0 }); return { id: thing.id, kind: thing.kind, label: thing.label, x: thing.x, z: thing.z, px: Math.round(at.x), py: Math.round(at.y), at: atThing === thing.id }; }),
+        spots: spotList.map((spot) => { current!.group.updateMatrixWorld(true); const at = screenOf(spot.x, spot.y + 0.1, spot.z, { x: 0, y: 0 }); return { id: spot.id, x: spot.x, z: spot.z, px: Math.round(at.x), py: Math.round(at.y), selected: spot.id === lastState?.spot }; }),
+        things: thingList.map((thing) => { current!.group.updateMatrixWorld(true); const at = screenOf(thing.x, thing.top * 0.5, thing.z, { x: 0, y: 0 }); return { id: thing.id, kind: thing.kind, label: thing.label, x: thing.x, z: thing.z, px: Math.round(at.x), py: Math.round(at.y), at: atThing === thing.id }; }),
         people: (walkOf()?.people() || []).map((person) => { const at = screenOf(person.x, person.top * 0.5, person.z, { x: 0, y: 0 }); return { id: person.id, kind: person.kind, x: person.x, z: person.z, px: Math.round(at.x), py: Math.round(at.y) }; }),
         objects: (current?.objects?.() || []).map((item) => { const at = screenOf(item.x, 0.35, item.z, { x: 0, y: 0 }); return { id: item.id, itemId: item.itemId, x: item.x, z: item.z, px: Math.round(at.x), py: Math.round(at.y) }; }),
         drawCalls: renderer.info?.render.calls,
@@ -1121,7 +1280,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     resize,
     /** How many CSS pixels of the canvas the HUD covers at the top and bottom. One frame, and only if it changed. */
     setInsets(next = {}) {
-      const snap = (value) => Math.max(0, Math.round((Number(value) || 0) / 12) * 12);
+      const snap = (value: unknown) => Math.max(0, Math.round((Number(value) || 0) / 12) * 12);
       const top = snap(next.top), bottom = snap(next.bottom);
       // hint: where the HUD's own rows under the top bar end on a phone — the one-time hint sits just below (no frame is needed to move it).
       const hintAt = Math.max(0, Math.round(Number(next.hint) || 0));
@@ -1139,7 +1298,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
      * DOM tag (kind 'goal') while the player is in that venue; a tap on it goes through onTag like a
      * name tag. One frame, and only when the flag changed.
      */
-    setGoal(next) {
+    setGoal(next: { venue?: unknown; spot?: unknown; text?: unknown } | null | undefined) {
       const value = next && typeof next.venue === 'string' && typeof next.spot === 'string' ? { venue: next.venue, spot: next.spot, text: String(next.text ?? '').slice(0, 40) } : null;
       if (JSON.stringify(value) === JSON.stringify(goal)) return false;
       goal = value;
@@ -1153,7 +1312,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     walkTo(x, z) { const ok = walkTo(x, z, { mark: true }); if (ok && !loop.running) renderScene(); return ok; },
     /** Walk the avatar by (dx, dz) scene units — the community panel's keyboard-accessible Walk buttons. False when it cannot walk now. */
     walkBy(dx, dz) {
-      if (!walkOf()?.grid || locked || uiMode !== 'venue' || current.placing || !Number.isFinite(dx) || !Number.isFinite(dz)) return false;
+      if (!walkOf()?.grid || locked || uiMode !== 'venue' || current!.placing || !Number.isFinite(dx) || !Number.isFinite(dz)) return false;
       const ok = walkTo(walker.x + dx, walker.z + dz, { mark: true });
       if (ok && !loop.running) renderScene();
       return ok;

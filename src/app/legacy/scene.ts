@@ -59,7 +59,7 @@ export interface WorldMap { setCity(id: string): void; resize(): void; /** Draw 
 export interface WorldMapOptions { onOpenCity?: () => void; onEnterCity?: (cityId: string) => void; held?: () => string[] }
 
 export async function loadVenueWorld(): Promise<(container: HTMLElement, options?: VenueWorldOptions) => VenueWorld> {
-  const module = await import('../../venue-world.js')
+  const module = await import('../../venue-world.ts')
   return module.createVenueWorld as unknown as (container: HTMLElement, options?: VenueWorldOptions) => VenueWorld
 }
 export async function loadMaps(): Promise<{ createCityView: (container: HTMLElement, options?: CityViewOptions) => CityView; createWorldMap: (container: HTMLElement, options?: WorldMapOptions) => WorldMap }> {

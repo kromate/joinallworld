@@ -163,12 +163,14 @@ export const hasAction = (type) => typeof type === 'string' && actionTable.has(t
 export const actionHandler = (type) => actionTable.get(type);
 export const activeHandler = (kind) => (typeof kind === 'string' ? activeTable.get(kind) : undefined);
 
-/** Notify every system, in registration order. Listeners may mutate state and emit further events. */
+/** Notify every system, in registration order. Listeners may mutate state and emit further events.
+ * Listeners always receive an object: anything else is replaced with {} so they can destructure safely. */
 export function emit(state, event, data, ctx) {
   if (depth >= MAX_EMIT_DEPTH) return;
+  const payload = data !== null && typeof data === 'object' && !Array.isArray(data) ? data : {};
   depth += 1;
   try {
-    for (const def of order) def.on?.[event]?.(state, data, ctx);
+    for (const def of order) def.on?.[event]?.(state, payload, ctx);
   } finally { depth -= 1; }
 }
 

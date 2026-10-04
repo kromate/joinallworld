@@ -1,12 +1,12 @@
-import { signLetters } from '../shared/signs.js';
+import { signLetters } from '../shared/signs.ts';
 
 /** Original procedural interpretations. Reference evidence and limits are in CAMPUS-UNILAG.md.
- * @typedef {import('./layout.js').CampusBuilding} Building
+ * @typedef {import('./layout.ts').CampusBuilding} Building
  * @typedef {ReturnType<import('../../scene/build.js').createBatch>} Batch
  */
 
 /** @param {Batch} batch @param {Building} b @param {number} detail
- * @param {import('../shared/geometry.js').Instance[]} windows */
+ * @param {import('../shared/geometry.ts').Instance[]} windows */
 export function drawBuilding(batch, b, detail, windows) {
   const { x, z, w, d, h } = b;
   const cream = b.color || '#dfd0ad', roof = '#795c50', red = '#983e3d';

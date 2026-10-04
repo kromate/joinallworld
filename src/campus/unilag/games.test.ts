@@ -6,15 +6,15 @@ import { registerSystem } from '../../game/registry.js';
 import { rebuildCatalogue } from '../../game/systems/activities.js';
 import { makeContext } from '../../game/util.js';
 import { xpForLevel } from '../../game/systems/skills.js';
-import studentSystem from './student.js';
-import { UNILAG_VENUE } from './content.js';
-import { PROGRAMMES, UNILAG_BETA_RULES } from './curriculum.js';
+import studentSystem from './student.ts';
+import { UNILAG_VENUE } from './content.ts';
+import { PROGRAMMES, UNILAG_BETA_RULES } from './curriculum.ts';
 import gamesSystem, {
   campusTeamStandings, creditCampusGoal, CAMPUS_CLUBS, CAMPUS_GAME_RULES, QUIZ_QUESTIONS, STUDENT_UNION_TABLES,
   campusLeaderboardStandings, creditCampusLeaderboard, electionPhaseAt, emptyCampusElection,
   emptyCampusLeaderboard, eventsAt, finalizeCampusElection, nominateCampusElection,
   sanitizeCampusElection, sanitizeCampusLeaderboard, voteCampusElection,
-} from './games.js';
+} from './games.ts';
 
 const DAY = 86400000;
 const HOUR = 3600000;

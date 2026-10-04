@@ -11,7 +11,7 @@
     "start": "node server/server.js",
     "start:server": "node server/server.js",
     "start:worker": "node deploy/local.mjs",
-    "preview:campus": "vite --config src/campus/unilag/preview.config.mjs",
+    "preview:campus": "vite --config src/campus/unilag/preview.config.ts",
     "preview:models": "node src/models/tooling/dev.mjs",
     "test:edge": "node --test deploy/*.test.mjs",
     "first-day": "node scripts/first-day.mjs",

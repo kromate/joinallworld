@@ -1,10 +1,10 @@
 import { createBatch, sceneMaterials, kitResources, releaseObjects } from '../../scene/build.js';
 import { buildAvatar, poseAvatar } from '../../scene/characters.js';
 import { lagosTime } from '../../game/clock.js';
-import { ZONES, BUILDINGS, ROADS, ANCHORS, ENTRANCE } from './layout.js';
-import { createCampusWalk, footprintOf } from './walk.js';
-import { drawBuilding } from './buildings.js';
-import { instances, primitiveGeometry, measureScene } from '../shared/geometry.js';
+import { ZONES, BUILDINGS, ROADS, ANCHORS, ENTRANCE } from './layout.ts';
+import { createCampusWalk, footprintOf } from './walk.ts';
+import { drawBuilding } from './buildings.ts';
+import { instances, primitiveGeometry, measureScene } from '../shared/geometry.ts';
 
 const STYLE = { senate: 'senate', library: 'library', auditorium: 'auditorium', engineering: 'lecture',
   cafeteria: 'cafeteria', 'access-bank': 'bank', 'sports-centre': 'sports', chapel: 'chapel',
@@ -94,7 +94,7 @@ export function buildUnilag(kit, venue = {}) {
   ]]));
   const nav = createCampusWalk(extras);
 
-  /** @param {import('./layout.js').CampusZone} zone @param {number} detail */
+  /** @param {import('./layout.ts').CampusZone} zone @param {number} detail */
   function buildZone(zone, detail) {
     const node = new THREE.Group(), batch = createBatch(THREE), windows = [], meshes = [];
     node.name = `${zone.id}:lod${detail}`;

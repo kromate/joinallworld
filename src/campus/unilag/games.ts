@@ -13,8 +13,8 @@ import { emit } from '../../game/registry.js';
 import { addSkillXp, changeNeeds } from '../../game/api.js';
 import { busy, cleanText, fail, finite, isRecord, ok, safeCount } from '../../game/util.js';
 import { lagosDayStart, lagosTime } from '../../game/clock.js';
-import { DISCOVERY_TRAIL } from './content.js';
-import { PROGRAMMES, programmeOf } from './curriculum.js';
+import { DISCOVERY_TRAIL } from './content.ts';
+import { PROGRAMMES, programmeOf } from './curriculum.ts';
 import { tablesAt } from '../../tables/places.js';
 
 export const CAMPUS_GAME_KIND = 'campus-game';

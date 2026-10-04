@@ -38,11 +38,11 @@ import { DEPOSIT_TERMS, LOAN, RENTS } from '../game/systems/economy.js'
 import { NEEDS } from '../game/systems/needs.js'
 import { GUEST_CAMPUS } from '../game/systems/onboarding.js'
 import { SKILLS } from '../game/systems/skills.js'
-import { DISCOVERY_TRAIL } from '../campus/unilag/content.js'
-import { LECTURE_SLOTS, PROGRAMMES, UNILAG_BETA_RULES } from '../campus/unilag/curriculum.js'
-import { CAMPUS_CLUBS, CAMPUS_DISCOVERIES, CAMPUS_FACULTIES, CAMPUS_HALLS, QUIZ_QUESTIONS, STUDENT_UNION_TABLES } from '../campus/unilag/games.js'
-import { SHUTTLE_STOPS } from '../campus/unilag/shuttle.js'
-import { CAMPUS_JOBS, HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS } from '../campus/unilag/student.js'
+import { DISCOVERY_TRAIL } from '../campus/unilag/content.ts'
+import { LECTURE_SLOTS, PROGRAMMES, UNILAG_BETA_RULES } from '../campus/unilag/curriculum.ts'
+import { CAMPUS_CLUBS, CAMPUS_DISCOVERIES, CAMPUS_FACULTIES, CAMPUS_HALLS, QUIZ_QUESTIONS, STUDENT_UNION_TABLES } from '../campus/unilag/games.ts'
+import { SHUTTLE_STOPS } from '../campus/unilag/shuttle.ts'
+import { CAMPUS_JOBS, HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS } from '../campus/unilag/student.ts'
 import { ACTION_TYPES, INBOUND_ACTIONS, SERVER_ONLY_ACTIONS, SOCIAL_SERVER_OPS } from './actions.ts'
 import type { ActionPayload, ActionResult, ActionType, InboundActionType, ServerOnlyActionType, SocialServerOp } from './actions.ts'
 import { CAMPUS_ACTION_TYPES, CAMPUS_EVENT_NAMES, GUEST_CAMPUS_ACTIONS } from './campus.ts'
@@ -769,7 +769,7 @@ test('the campus lists equal what the campus systems register and emit', () => {
   assert.deepEqual(ACTION_TYPES.slice(-CAMPUS_ACTION_TYPES.length), [...CAMPUS_ACTION_TYPES], 'the campus registers last')
   assert.deepEqual((ACTION_TYPES as readonly string[]).filter((type) => GUEST_CAMPUS.test(type)), [...GUEST_CAMPUS_ACTIONS])
   const root = fileURLToPath(new URL('../campus/unilag/', import.meta.url))
-  const source = (readdirSync(root) as string[]).filter((file) => file.endsWith('.js') && !file.endsWith('.test.js')).map((file) => readFileSync(`${root}${file}`, 'utf8')).join('\n')
+  const source = (readdirSync(root) as string[]).filter((file) => file.endsWith('.ts') && !file.endsWith('.test.ts')).map((file) => readFileSync(`${root}${file}`, 'utf8')).join('\n')
   assert.deepEqual([...new Set([...source.matchAll(/\bemit\(state,\s*'([A-Za-z.-]+)'/g)].map((match) => match[1] ?? ''))].sort(), [...CAMPUS_EVENT_NAMES])
   // None of them is an engine event, and no system listens to one.
   const listened = new Set((systems() as { on?: Record<string, unknown> }[]).flatMap((system) => Object.keys(system.on ?? {})))

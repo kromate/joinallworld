@@ -7,8 +7,8 @@
 import { arrive, debit, spotsOf } from '../../game/api.js';
 import { busy, fail, finite, ok, safeCount } from '../../game/util.js';
 import { createBatch, kitResources, releaseObjects, sceneMaterials } from '../../scene/build.js';
-import { ANCHORS, ROADS } from './layout.js';
-import { createCampusWalk } from './walk.js';
+import { ANCHORS, ROADS } from './layout.ts';
+import { createCampusWalk } from './walk.ts';
 
 export const SHUTTLE_FEE = 50;
 export const SHUTTLE_SPEED = 8;

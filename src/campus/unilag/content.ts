@@ -1,4 +1,4 @@
-import { ANCHORS } from './layout.js';
+import { ANCHORS } from './layout.ts';
 
 /**
  * UNILAG content for the campus beta.

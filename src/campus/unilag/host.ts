@@ -2,9 +2,9 @@ import './host.css';
 import { createKit } from '../../scene/kit.js';
 import { createMotionLoop } from '../../scene/motion-loop.js';
 import { createPositionReporter, createWalker } from '../../scene/movement.js';
-import { buildUnilag } from './scene.js';
-import { buildShuttle, shuttlePose } from './shuttle.js';
-import { ANCHORS, BUILDINGS, ENTRANCE } from './layout.js';
+import { buildUnilag } from './scene.ts';
+import { buildShuttle, shuttlePose } from './shuttle.ts';
+import { ANCHORS, BUILDINGS, ENTRANCE } from './layout.ts';
 
 const WALK_KEYS = new Map([
   ['w', 'up'], ['arrowup', 'up'], ['s', 'down'], ['arrowdown', 'down'],

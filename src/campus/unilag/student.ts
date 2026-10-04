@@ -20,7 +20,7 @@ import { emit } from '../../game/registry.js';
 import { addItem, addSkillXp, canAfford, canCredit, changeNeeds, countItem, credit, debit, removeItems, skillLevel } from '../../game/api.js';
 import { busy, fail, isRecord, naira, ok, safeCount } from '../../game/util.js';
 import { lagosTime } from '../../game/clock.js';
-import { LECTURE_SLOTS, PROGRAMMES, UNILAG_BETA_RULES, courseOf, programmeOf, semesterOf } from './curriculum.js';
+import { LECTURE_SLOTS, PROGRAMMES, UNILAG_BETA_RULES, courseOf, programmeOf, semesterOf } from './curriculum.ts';
 
 /** @typedef {{id:string,label:string,faculty:string,department:string,spot:string,skill:string,careerTrack:string|null,semesters:ReadonlyArray<{number:number,courses:ReadonlyArray<Course>}>}} Programme */
 /** @typedef {{id:string,title:string,credits:number,skill:string,slot:string}} Course */

@@ -3,10 +3,10 @@ import * as THREE from 'three';
 import { createKit } from '../../scene/kit.js';
 import { createWalker } from '../../scene/movement.js';
 import { createMotionLoop } from '../../scene/motion-loop.js';
-import { buildUnilag } from './scene.js';
-import { buildShuttle, SHUTTLE_STOPS, shuttleRoute, shuttlePose } from './shuttle.js';
-import { CAMPUS_NPCS } from './content.js';
-import { BUILDINGS, ZONES, ROADS, ANCHORS, ENTRANCE } from './layout.js';
+import { buildUnilag } from './scene.ts';
+import { buildShuttle, SHUTTLE_STOPS, shuttleRoute, shuttlePose } from './shuttle.ts';
+import { CAMPUS_NPCS } from './content.ts';
+import { BUILDINGS, ZONES, ROADS, ANCHORS, ENTRANCE } from './layout.ts';
 
 const $=id=>document.getElementById(id);
 const renderer=new THREE.WebGLRenderer({canvas:$('world'),antialias:true,alpha:false});

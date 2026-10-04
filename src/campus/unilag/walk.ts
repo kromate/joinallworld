@@ -1,5 +1,5 @@
 import { createWalkGrid } from '../../scene/movement.js';
-import { BUILDINGS, ZONES } from './layout.js';
+import { BUILDINGS, ZONES } from './layout.ts';
 
 const WALL = 1;
 const zoneById = new Map(ZONES.map((zone) => [zone.id, zone]));
@@ -13,7 +13,7 @@ const zoneById = new Map(ZONES.map((zone) => [zone.id, zone]));
  * Gates are two pillars with a clear opening beneath the arch.
  * Sports grounds, gardens and water scenery do not create solid footprints.
  *
- * @param {import('./layout.js').CampusBuilding|object} building Building descriptor.
+ * @param {import('./layout.ts').CampusBuilding|object} building Building descriptor.
  * @returns {Array<[number,number,number,number]>} Obstacle rectangles.
  */
 export function footprintOf(building) {
@@ -56,7 +56,7 @@ const samePoint = (a, b) => Math.abs(a.x - b.x) < 1e-8 && Math.abs(a.z - b.z) < 
  *   rebuild navigation after placing trees, cars, lamps and benches.
  * @returns {{
  *   grids: Map<string, ReturnType<typeof createWalkGrid>>,
- *   zoneAt: (x:number,z:number)=>import('./layout.js').CampusZone|null,
+ *   zoneAt: (x:number,z:number)=>import('./layout.ts').CampusZone|null,
  *   route: (from:{x:number,z:number},to:{x:number,z:number})=>Array<{x:number,z:number}>|null
  * }} Campus navigation API.
  */
@@ -75,7 +75,7 @@ export function createCampusWalk(extraFootprints = {}) {
    * half a metre to either side and are therefore unambiguous.
    * @param {number} x World x.
    * @param {number} z World z.
-   * @returns {import('./layout.js').CampusZone|null}
+   * @returns {import('./layout.ts').CampusZone|null}
    */
   function zoneAt(x, z) {
     if (!Number.isFinite(x) || !Number.isFinite(z)) return null;
@@ -89,7 +89,7 @@ export function createCampusWalk(extraFootprints = {}) {
    * Finds the shortest unweighted sequence of portal hops between two zones.
    * @param {string} from Start zone id.
    * @param {string} to Destination zone id.
-   * @returns {Array<{zone:string,portal:import('./layout.js').Portal}>|null}
+   * @returns {Array<{zone:string,portal:import('./layout.ts').Portal}>|null}
    */
   function portalRoute(from, to) {
     if (from === to) return [];

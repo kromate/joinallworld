@@ -6,11 +6,11 @@ import './campus.css';
 import { esc, json, money, uuid, glyph } from '../dom.js';
 import { glyphOfEmoji } from '../icon-map.js';
 import { lagosTime } from '../../game/clock.js';
-import { DISCOVERY_TRAIL, spots } from '../../campus/unilag/content.js';
-import { LECTURE_SLOTS, PROGRAMMES } from '../../campus/unilag/curriculum.js';
-import { CAMPUS_CLUBS, CAMPUS_DISCOVERIES } from '../../campus/unilag/games.js';
-import { CAMPUS_JOBS, HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS } from '../../campus/unilag/student.js';
-import { SHUTTLE_STOPS } from '../../campus/unilag/shuttle.js';
+import { DISCOVERY_TRAIL, spots } from '../../campus/unilag/content.ts';
+import { LECTURE_SLOTS, PROGRAMMES } from '../../campus/unilag/curriculum.ts';
+import { CAMPUS_CLUBS, CAMPUS_DISCOVERIES } from '../../campus/unilag/games.ts';
+import { CAMPUS_JOBS, HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS } from '../../campus/unilag/student.ts';
+import { SHUTTLE_STOPS } from '../../campus/unilag/shuttle.ts';
 
 const PANEL = 'campus';
 /**

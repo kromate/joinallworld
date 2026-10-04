@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createKit} from '../../scene/kit.js';
-import {buildUnilag,CAMPUS_BUDGET} from './scene.js';
-import {ANCHORS,ENTRANCE,ZONES} from './layout.js';
+import {buildUnilag,CAMPUS_BUDGET} from './scene.ts';
+import {ANCHORS,ENTRANCE,ZONES} from './layout.ts';
 
 test('every resident zone combination, full crowd and all landmarks stay within budget',()=>{
  const kit=createKit(),scene=buildUnilag(kit);let worst={triangles:0,drawCalls:0};

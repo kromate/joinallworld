@@ -34,7 +34,7 @@
  * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.js).
  */
 import { AIRPORT, REFINERY } from './venues-transport.js';
-import { UNILAG_VENUE } from '../../campus/unilag/content.js';
+import { UNILAG_VENUE } from '../../campus/unilag/content.ts';
 
 /**
  * Paid gigs a player may finish per Lagos day, over all venues together (original beta value).
@@ -705,7 +705,7 @@ export const VENUES = {
   // The airport at Ikeja and the refinery in the Lekki Free Zone: src/game/content/venues-transport.js.
   airport: AIRPORT,
   refinery: REFINERY,
-  // The University of Lagos campus at Akoka (Lagos only): src/campus/unilag/content.js.
+  // The University of Lagos campus at Akoka (Lagos only): src/campus/unilag/content.ts.
   unilag: UNILAG_VENUE,
 };
 

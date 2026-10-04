@@ -21,7 +21,7 @@ import { createVenueWorld } from '../../venue-world.js';
 export const CAMPUS_VENUE = 'unilag';
 const campus = (id) => id === CAMPUS_VENUE;
 
-export function createWorldAdapter(container, { location = 'park', commitSpot, now, onHost, loadCampus = () => import('./host.js'), ...options } = {}) {
+export function createWorldAdapter(container, { location = 'park', commitSpot, now, onHost, loadCampus = () => import('./host.ts'), ...options } = {}) {
   let currentLocation = location;
   let host = null, kind = null, token = 0, disposed = false;
   let state = null, player = null, crowd = [], insets = null, goal = null;

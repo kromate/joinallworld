@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ANCHORS } from './layout.js';
-import { CAMPUS_NPCS, DISCOVERY_TRAIL, shareLabel, UI_LINKS, UNILAG_VENUE } from './content.js';
+import { ANCHORS } from './layout.ts';
+import { CAMPUS_NPCS, DISCOVERY_TRAIL, shareLabel, UI_LINKS, UNILAG_VENUE } from './content.ts';
 
 const NEEDS = new Set(['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder']);
 const SKILLS = new Set(['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography']);

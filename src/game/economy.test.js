@@ -3,8 +3,8 @@
 // change is the thing to question, not the assertion.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { UNILAG_BETA_RULES } from '../campus/unilag/curriculum.js';
-import { CAMPUS_JOBS } from '../campus/unilag/student.js';
+import { UNILAG_BETA_RULES } from '../campus/unilag/curriculum.ts';
+import { CAMPUS_JOBS } from '../campus/unilag/student.ts';
 import { runEconomy, simulate, Player, STARTS, STRATEGIES, GIGS, CHECKPOINTS, CHEAPEST_CAR, categoryOf } from '../../scripts/economy-sim.mjs';
 import { lagosTime } from './clock.js';
 import { GIG_DAILY_LIMIT } from './content/venues.js';

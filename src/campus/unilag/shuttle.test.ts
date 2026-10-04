@@ -4,10 +4,10 @@ import test from 'node:test';
 import { VENUES } from '../../game/content/venues.js';
 import { rebuildCatalogue } from '../../game/systems/activities.js';
 import { makeContext } from '../../game/util.js';
-import { BUILDINGS, ROADS } from './layout.js';
-import { createCampusWalk, footprintOf } from './walk.js';
-import unilagShuttle, { buildShuttle, SHUTTLE_FEE, SHUTTLE_STOPS, shuttlePose, shuttleRoute } from './shuttle.js';
-import { buildUnilagLandmark, MAP_PLACEMENT } from './landmark.js';
+import { BUILDINGS, ROADS } from './layout.ts';
+import { createCampusWalk, footprintOf } from './walk.ts';
+import unilagShuttle, { buildShuttle, SHUTTLE_FEE, SHUTTLE_STOPS, shuttlePose, shuttleRoute } from './shuttle.ts';
+import { buildUnilagLandmark, MAP_PLACEMENT } from './landmark.ts';
 
 const NOW = Date.UTC(2026, 9, 4, 12);
 const context = makeContext({ now: NOW, cityId: 'lagos', seed: 'shuttle-test' });

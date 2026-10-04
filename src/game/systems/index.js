@@ -26,9 +26,9 @@ import missions from './missions.js';
 import events from './events.js';
 import growth from './growth.js';
 // The UNILAG campus (src/campus/unilag): student before community, then the shuttle.
-import unilagStudent from '../../campus/unilag/student.js';
-import unilagCommunity from '../../campus/unilag/games.js';
-import unilagShuttle from '../../campus/unilag/shuttle.js';
+import unilagStudent from '../../campus/unilag/student.ts';
+import unilagCommunity from '../../campus/unilag/games.ts';
+import unilagShuttle from '../../campus/unilag/shuttle.ts';
 
 export const SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, onboarding, goals, social, civic, missions, events, growth, unilagStudent, unilagCommunity, unilagShuttle];
 for (const system of SYSTEMS) registerSystem(system);

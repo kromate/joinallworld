@@ -6,9 +6,9 @@ import { rebuildCatalogue } from '../../game/systems/activities.js';
 import { VENUES } from '../../game/content/venues.js';
 import { xpForLevel } from '../../game/systems/skills.js';
 import { makeContext } from '../../game/util.js';
-import studentSystem, { CAMPUS_JOBS, HOSTEL_STORAGE_LIMIT, MAX_ATTEMPTS, graduationOf } from './student.js';
-import { UNILAG_VENUE } from './content.js';
-import { PROGRAMMES, UNILAG_BETA_RULES } from './curriculum.js';
+import studentSystem, { CAMPUS_JOBS, HOSTEL_STORAGE_LIMIT, MAX_ATTEMPTS, graduationOf } from './student.ts';
+import { UNILAG_VENUE } from './content.ts';
+import { PROGRAMMES, UNILAG_BETA_RULES } from './curriculum.ts';
 
 const DAY = 86400000;
 const HOUR = 3600000;

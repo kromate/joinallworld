@@ -4,14 +4,14 @@ import {registerSystem} from '../../game/registry.js';
 import {makeContext} from '../../game/util.js';
 import {VENUES} from '../../game/content/venues.js';
 import {NPCS} from '../../game/content/npcs.js';
-import {ANCHORS} from './layout.js';
+import {ANCHORS} from './layout.ts';
 import {spotsOf} from '../../game/api.js';
 import {rebuildCatalogue} from '../../game/systems/activities.js';
-import {UNILAG_VENUE,CAMPUS_NPCS} from './content.js';
-import student from './student.js';
-import community from './games.js';
-import shuttle from './shuttle.js';
-import {PROGRAMMES} from './curriculum.js';
+import {UNILAG_VENUE,CAMPUS_NPCS} from './content.ts';
+import student from './student.ts';
+import community from './games.ts';
+import shuttle from './shuttle.ts';
+import {PROGRAMMES} from './curriculum.ts';
 
 // This is the integration the parity owner must perform in the real registry.
 VENUES.unilag=UNILAG_VENUE;Object.assign(NPCS,CAMPUS_NPCS);

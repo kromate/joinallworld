@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { ANCHORS, BUILDINGS, ENTRANCE, ZONES } from './layout.js';
-import { createCampusWalk, footprintOf } from './walk.js';
+import { ANCHORS, BUILDINGS, ENTRANCE, ZONES } from './layout.ts';
+import { createCampusWalk, footprintOf } from './walk.ts';
 
 const walk = createCampusWalk();
 const campusZones = ZONES;

@@ -1,0 +1,591 @@
+/**
+ * OWNER: world
+ * The 3D city map: a tilted, orbitable miniature of the city (src/map3d/city-build.js) with one
+ * landmark per venue, the player's own avatar on it, and travel you can watch.
+ *
+ * Same contract as the 2D map (src/city-map.js), so the host swaps one for the other:
+ *   createMap3D(container, { pack, onSelectVenue, onSelectGov, onSelectNeighbour, onTripDue, onContextLost })
+ *     → { ready, setState(state), setPlayer({ look, seed }), resize(), arrive(done), diagnostics(), destroy() }
+ * It listens to the Map panel's 'jaw:map-ui' event (filter, selected place, layers and their data)
+ * and to the shell's 'jaw:key' (arrows pan, + and − zoom, 0 shows the whole city).
+ *
+ * BATTERY RULE — NO FRAME LOOP WHILE IDLE
+ *   A frame is drawn when something asks for one (the map opens, a resize, camera input, the
+ *   state or a layer changes). After drawing, another frame is scheduled ONLY while something is
+ *   still moving: a camera ease or inertia, or a trip in progress. When that ends the loop ends;
+ *   while the map is hidden, or the tab is, nothing is scheduled at all. diagnostics().renderCount
+ *   is the proof and src/map3d/map3d.test.js asserts it: flat when idle, climbing during a trip,
+ *   flat again after arrival.
+ *
+ * THE TRIP IS THE SERVER'S TIMER (src/map3d/trip.js): each state re-anchors the clock to the
+ * server's `remaining`, and the avatar's place on the route is a function of the fraction done.
+ * onTripDue() is called when that reaches 1, so the host can ask the server for the arrival at
+ * once instead of waiting for its next poll.
+ *
+ * `prefers-reduced-motion`: no camera eases and no frame loop for the trip — it is a line with a
+ * dot on it, moved each time the server reports progress.
+ */
+import { createKit } from '../scene/kit.js';
+import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.js';
+import { openingInfo, lagosTime } from '../game/clock.js';
+import { buildNetwork } from './roads.js';
+import { buildCity, createRaw, CITY_LIGHT } from './city-build.js';
+import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.js';
+import { createActor } from './actor.js';
+import { createOverlays } from './overlays.js';
+import { tripOf, createTripClock, tripPose } from './trip.js';
+import { PLINTH } from './landmarks.js';
+
+const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34;
+const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
+export const timeOfDay = (ms) => { const { minuteOfDay } = lagosTime(ms), hour = minuteOfDay / 60; return hour < 5.5 || hour >= 19 ? 'night' : hour < 7 || hour >= 17.5 ? 'dusk' : 'day'; };
+const ICON = (path) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
+
+/** Can this device draw the 3D map at all? */
+export function webglAvailable(doc = globalThis.document) {
+  try { const canvas = doc.createElement('canvas'); return Boolean(canvas.getContext('webgl2') || canvas.getContext('webgl')); } catch { return false; }
+}
+
+export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
+  renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
+  reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null } = {}) {
+  const doc = globalThis.document?.createElement ? globalThis.document : null;
+  const kit = createKit(), { THREE } = kit;
+  const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.shadowMap.enabled = false;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.setClearColor(0x000000, 0);
+  const canvas = renderer.domElement;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(34, 1, 1, 2000);
+  const hemi = new THREE.HemisphereLight('#ffffff', '#9fb07f', 2), sun = new THREE.DirectionalLight('#fff0d2', 2.4);
+  scene.add(hemi, sun);
+  const network = buildNetwork(pack);
+  const city = buildCity(kit, pack, network, { venues: VENUES, soon: COMING_SOON });
+  scene.add(city.group);
+  const overlays = createOverlays(kit, city);
+  scene.add(overlays.group);
+  const actor = createActor(kit);
+  scene.add(actor.group);
+  const rig = createRig(THREE, camera, { minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.sea ? pack.bounds.sea.z1 : pack.bounds.maxZ, fit: pack.bounds.fit });
+  const ringOf = (colour, opacity) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };
+  const selectRing = ringOf('#14532d', 0.95), hoverRing = ringOf('#e8a643', 0.9);
+  const routeMaterial = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.9, depthWrite: false });
+  let routeLine = null;
+
+  // ---- DOM: the canvas, the labels over it, the view buttons ---------------------------------
+  let root = null, labelLayer = null, controls = {}, hint = null, you = null;
+  const labels = new Map(), chips = new Map();
+  if (doc) {
+    root = doc.createElement('div');
+    root.className = 'm3';
+    root.innerHTML = `<div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
+      <div class="m3-controls" role="group" aria-label="Map view"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" class="m3-fit" data-m3="fit" aria-label="Show the whole city" title="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" data-m3="me" aria-label="Show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>
+      <p class="m3-hint" data-m3-hint>Drag to turn the city · pinch or scroll to zoom · two fingers to move. Tap a building to go there.</p>`;
+    root.prepend(canvas);
+    canvas.classList?.add('m3-canvas');
+    canvas.setAttribute?.('aria-hidden', 'true');
+    container.appendChild(root);
+    labelLayer = root.querySelector('.m3-labels'); hint = root.querySelector('[data-m3-hint]');
+    controls = Object.fromEntries([...root.querySelectorAll('[data-m3]')].map((node) => [node.dataset.m3, node]));
+  }
+
+  // ---- state ----------------------------------------------------------------------------------
+  let state = null, layer = 'city', filter = 'all', selected = null, hovered = null, destroyed = false, lost = false;
+  let layers = { billboards: false, sea: false, neighbours: false, gov: false, moving: false }, data = { ads: null, neighbours: null, gov: null };
+  let size = { width: 0, height: 0 }, insets = { left: 0, top: 0, right: 0, bottom: 0 }, opened = false, userMoved = false, time = null, labelKey = '', chipKey = '';
+  let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs = [], gaps = [];
+  let trip = null, route = null, returning = null, settling = false, pendingArrive = null, dueAt = -Infinity, tripCamera = true, pose = null;
+  const clock = createTripClock();
+  const shown = () => !destroyed && !lost && !container.hidden && !(doc && doc.hidden) && size.width > 0;
+  const placeKey = (id) => (id === 'home' ? `home:${city.places.home.house}` : id);
+
+  // ---- drawing: on demand, and only as long as something moves ----------------------------------
+  function request() { if (!rafId && shown() && raf) rafId = raf(tick); }
+  function stop() { if (rafId) { caf?.(rafId); rafId = 0; } lastTick = 0; }
+  function tick() {
+    rafId = 0;
+    if (!shown()) { lastTick = 0; return; }
+    const t = now(), dt = lastTick ? clamp((t - lastTick) / 1000, 0, 0.1) : 0;
+    if (lastTick) { gaps.push(t - lastTick); if (gaps.length > 120) gaps.shift(); }
+    frameCount += 1;
+    let moving = rig.step(dt);
+    moving = stepTrip(t, dt) || moving;
+    if (settling && !rig.moving) finishArrival();
+    if (moving) { seconds += dt; city.animate(seconds); }
+    draw(t);
+    if (moving && !destroyed) { lastTick = t; request(); } else lastTick = 0;
+  }
+  function draw(t = now()) {
+    // The player's piece grows as the view pulls back, so it can always be found — and a trip always followed.
+    actor.setSize(clamp(rig.view.distance / 95, 1, 3.4));
+    renderer.render(scene, camera);
+    renderCount += 1;
+    placeLabels();
+    frameMs.push(now() - t); if (frameMs.length > 120) frameMs.shift();
+  }
+
+  // ---- the trip ----------------------------------------------------------------------------------
+  function standHere() {
+    const place = city.places[state?.location] || city.places.home, node = network.places[placeKey(place.id)];
+    const door = node?.door || place;
+    actor.stand(door.x, door.z, place.ry);
+  }
+  function straight(from, to) {
+    const a = network.places[placeKey(from)]?.door || city.places[from] || city.places.home, b = network.places[placeKey(to)]?.door || city.places[to] || city.places.home;
+    const length = Math.hypot(b.x - a.x, b.z - a.z) || 1;
+    return { from, to, points: [{ x: a.x, y: 0, z: a.z, bridge: null }, { x: b.x, y: 0, z: b.z, bridge: null }], lengths: [0, length], length, lead: length * 0.1, tail: length * 0.1, bridges: [] };
+  }
+  function drawRoute() {
+    if (routeLine) { scene.remove(routeLine); routeLine.geometry.dispose(); routeLine = null; }
+    if (!route) return;
+    const raw = createRaw(THREE);
+    raw.ribbon(route.points, 1.25, 0.16, '#14532d'); raw.ribbon(route.points, 0.7, 0.18, '#ffd166');
+    routeLine = raw.build(routeMaterial); routeLine.renderOrder = 2; routeLine.name = 'route';
+    scene.add(routeLine);
+  }
+  function startTrip(next) {
+    trip = next; returning = null; settling = false; dueAt = -Infinity; tripCamera = true;
+    route = network.route(placeKey(next.from), placeKey(next.to)) || straight(next.from, next.to);
+    actor.dot(reducedMotion); actor.setMode(next.mode);
+    drawRoute();
+    if (shown() && !reducedMotion) rig.ease(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route.points.length - 1), { pad: 1.5, min: 70 }), 0.9);
+  }
+  function clearTrip() {
+    trip = null; route = null; returning = null; settling = false; pose = null;
+    clock.clear();
+    drawRoute();
+    if (state) standHere();
+  }
+  /** Place the traveller for this instant. Returns true while the trip still has ground to cover. */
+  function stepTrip(t, dt) {
+    if (returning) {                                  // a cancelled trip: walk it back to where it started
+      returning.p = Math.max(0, returning.p - dt * returning.rate);
+      pose = tripPose(route, returning.p, trip.mode); actor.place(pose);
+      if (returning.p <= 0) { clearTrip(); return false; }
+      return true;
+    }
+    if (!trip || !route || settling) return false;
+    const p = clock.progress(t);
+    pose = tripPose(route, p, trip.mode); pose.progress = p;
+    actor.place(pose);
+    if (p >= 1) {
+      // The door is reached: ask the server for the arrival now instead of waiting for the next poll.
+      if (t - dueAt > 700) { dueAt = t; onTripDue(); }
+      return false;
+    }
+    return !reducedMotion;
+  }
+  function finishArrival() {
+    const done = pendingArrive;
+    pendingArrive = null; opened = false; userMoved = false;
+    clearTrip();
+    done?.();
+  }
+
+  // ---- lighting ----------------------------------------------------------------------------------
+  function applyTime(next) {
+    if (next === time) return false;
+    time = next;
+    const preset = city.setTime(next);
+    hemi.color.set(preset.hemi[0]); hemi.groundColor.set(preset.hemi[1]); hemi.intensity = preset.hemi[2];
+    sun.color.set(preset.sun[0]); sun.intensity = preset.sun[1]; sun.position.set(...preset.sun[2]);
+    if (root) { root.dataset.time = next; root.style.background = `linear-gradient(${preset.sky[0]}, ${preset.sky[1]})`; }
+    return true;
+  }
+  applyTime('day');
+
+  // ---- labels ------------------------------------------------------------------------------------
+  const probe = new THREE.Vector3();
+  const nameOf = (place) => (place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId));
+  function buildLabels() {
+    if (!labelLayer) return;
+    for (const place of Object.values(city.places).sort((a, b) => a.x - b.x || a.z - b.z)) {
+      const source = VENUES[place.id] || COMING_SOON[place.id];
+      const node = doc.createElement('button');
+      node.type = 'button'; node.className = `m3-label is-${place.kind}`; node.dataset.venue = place.id;
+      const icon = doc.createElement('span'); icon.className = 'm3-label-icon'; icon.setAttribute('aria-hidden', 'true'); icon.textContent = source?.icon || '📍';
+      const text = doc.createElement('span'); text.className = 'm3-label-text';
+      const name = doc.createElement('b'), note = doc.createElement('small');
+      text.append(name, note); node.append(icon, text);
+      labelLayer.append(node);
+      labels.set(place.id, { node, name, note, width: 80, height: 30, priority: 0 });
+    }
+    // The traveller's own tag: it rides above the avatar for the length of a trip.
+    you = doc.createElement('div');
+    you.className = 'm3-you'; you.hidden = true; you.setAttribute('aria-hidden', 'true'); you.textContent = 'You';
+    labelLayer.append(you);
+  }
+  function updateLabels() {
+    if (!labelLayer) return;
+    const at = state?.t ?? 0, going = trip?.to ?? null, home = city.places.home;
+    const next = JSON.stringify([state?.location, going, home.house, filter, selected, hovered, layers.gov, Object.values(VENUES).map((venue) => openingInfo(venue.hours, at).status)]);
+    if (next === labelKey) return;
+    labelKey = next;
+    for (const [id, label] of labels) {
+      const place = city.places[id], venue = VENUES[id], soon = place.kind === 'soon';
+      const opening = venue ? openingInfo(venue.hours, at) : null, open = Boolean(opening?.open), here = state?.location === id;
+      const status = soon ? 'Coming soon' : here ? (going ? 'Leaving from here' : 'You are here') : going === id ? 'On the way' : open ? '' : opening?.opensAt ? `opens ${opening.opensAt}` : 'Closed';
+      const dimmed = soon ? filter !== 'all' : filter === 'open' ? !open : filter !== 'all' && venue.category !== filter && id !== 'home';
+      const district = place.kind === 'home' ? home.district : venueDistrict(id, cityId);
+      label.name.textContent = nameOf(place); label.note.textContent = status;
+      const node = label.node;
+      node.className = `m3-label is-${place.kind}${here ? ' is-here' : ''}${going === id ? ' is-going' : ''}${!soon && !open ? ' is-closed' : ''}${dimmed && !here ? ' is-dimmed' : ''}${selected === id ? ' is-selected' : ''}${hovered === id ? ' is-hover' : ''}${layers.gov && (id === 'state-house' || id === 'polling-unit') ? ' is-gov' : ''}`;
+      node.setAttribute('aria-label', `${nameOf(place)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
+      node.title = `${nameOf(place)}${status ? ` · ${status}` : ''}`;
+      if (here) node.setAttribute('aria-current', 'location'); else node.removeAttribute('aria-current');
+      label.priority = (here ? 100 : 0) + (selected === id ? 90 : 0) + (going === id ? 80 : 0) + (hovered === id ? 70 : 0) + (place.kind === 'home' ? 40 : 0) + (soon ? 5 : open ? 20 : 10) - (dimmed ? 30 : 0);
+      label.width = node.offsetWidth || 90; label.height = node.offsetHeight || 30;
+    }
+  }
+  function syncChips() {
+    if (!labelLayer) return;
+    const list = overlays.chips(), next = JSON.stringify(list.map((chip) => [chip.key, chip.text, chip.bg, chip.homes]));
+    if (next === chipKey) return;
+    chipKey = next;
+    for (const { node } of chips.values()) node.remove();
+    chips.clear();
+    for (const chip of list) {
+      const node = doc.createElement('div');
+      node.className = `m3-chip is-${chip.kind}`;
+      if (chip.label) { node.setAttribute('role', 'img'); node.setAttribute('aria-label', chip.label); }
+      if (chip.bg) { node.style.background = chip.bg; node.style.color = chip.ink; }
+      const icon = doc.createElement('span'); icon.className = 'm3-chip-icon'; icon.textContent = chip.icon || '';
+      node.append(icon);
+      // Player text goes in as text, never as markup, and is not a link or a button.
+      if (chip.text) { const text = doc.createElement('span'); text.className = 'm3-chip-text'; text.textContent = chip.text; node.append(text); }
+      if (chip.homes?.length) {
+        node.removeAttribute('role'); node.removeAttribute('aria-label');
+        const row = doc.createElement('span'); row.className = 'm3-chip-homes';
+        for (const item of chip.homes) {
+          const house = doc.createElement(item.you ? 'span' : 'button');
+          house.className = `m3-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`; house.textContent = '🏠';
+          house.title = item.you ? `${item.name} (you)` : item.name;
+          house.setAttribute('aria-label', `${item.name}${item.you ? ' (you)' : ''}, ${item.online ? 'online now' : 'not online'}`);
+          if (!item.you) { house.type = 'button'; house.dataset.neighbour = item.id; house.dataset.name = item.name; }
+          row.append(house);
+        }
+        if (chip.more > 0) { const more = doc.createElement('span'); more.className = 'm3-chip-more'; more.textContent = `+${chip.more}`; row.append(more); }
+        node.append(row);
+      }
+      labelLayer.append(node);
+      chips.set(chip.key, { node, chip });
+    }
+  }
+  const project = (x, y, z) => { probe.set(x, y, z).project(camera); return { x: (probe.x * 0.5 + 0.5) * size.width, y: (-probe.y * 0.5 + 0.5) * size.height, front: probe.z < 1 }; };
+  function placeLabels() {
+    if (!labelLayer) return;
+    const entries = [];
+    for (const [id, label] of labels) {
+      const place = city.places[id], at = project(place.x, place.top + 0.5, place.z);
+      entries.push({ label, at, visible: at.front && at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 });
+    }
+    entries.sort((a, b) => b.label.priority - a.label.priority || b.at.y - a.at.y);
+    const taken = [];
+    const hits = (box) => taken.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t);
+    for (const { label, at, visible } of entries) {
+      const node = label.node;
+      if (!visible) { if (!node.hidden) node.hidden = true; continue; }
+      if (node.hidden) node.hidden = false;
+      const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 };
+      // A name that would sit on top of a more important one shrinks to its icon; it is still a button with its full name.
+      const compact = hits(full);
+      taken.push(compact ? { l: at.x - 15, r: at.x + 15, t: at.y - 30, b: at.y } : full);
+      node.classList.toggle('is-compact', compact);
+      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
+    }
+    if (you) {
+      const travelling = Boolean(pose && trip && shown());
+      if (you.hidden === travelling) you.hidden = !travelling;
+      if (travelling) { const at = project(pose.x, pose.y + (pose.phase === 'ride' ? 3.3 : 3.1) * actor.size, pose.z); you.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`; }
+    }
+    const far = rig.view.distance > 230;
+    if (root.classList.contains('is-far') !== far) root.classList.toggle('is-far', far);
+    for (const { node, chip } of chips.values()) {
+      const at = project(chip.x, chip.y, chip.z);
+      const visible = at.front && at.x > -40 && at.x < size.width + 40 && at.y > 0 && at.y < size.height + 40 && !(far && (chip.kind === 'plot' || chip.kind === 'board-free'));
+      if (node.hidden === visible) node.hidden = !visible;
+      if (visible) node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
+    }
+  }
+
+  // ---- the view --------------------------------------------------------------------------------
+  function measureInsets() {
+    if (!doc) return { left: 0, top: 0, right: 0, bottom: 0 };
+    const page = container.getBoundingClientRect();
+    const box = (selector) => { const rect = doc.querySelector(selector)?.getBoundingClientRect(); return rect && rect.height ? rect : null; };
+    const bar = box('.life-status'), nav = box('.life-nav'), panel = box('.map-panel'), wide = page.width > 720;
+    let left = 8, right = wide ? 64 : 8, top = (bar ? bar.bottom - page.top : 56) + 8, bottom = (nav ? page.bottom - nav.top : 70) + 10;
+    if (panel) {
+      if (wide) left = Math.max(left, panel.right - page.left + 12);
+      else if (panel.height < page.height * 0.62) bottom = Math.max(bottom, page.bottom - panel.top + 10);
+    }
+    return { left, top, right, bottom, wide };
+  }
+  function openView() {
+    opened = true; userMoved = false;
+    rig.jump({ yaw: 0, pitch: DEFAULT_PITCH });
+    if (size.width > 720) { rig.jump(rig.whole()); return; }
+    // A phone cannot name the places of the whole city at once: it opens on where the player is.
+    const here = city.places[state?.location] || city.places.home;
+    rig.jump({ x: here.x, z: here.z, distance: 150 });
+    rig.jump(rig.framing([{ x: here.x - 34, z: here.z }, { x: here.x + 34, z: here.z }, { x: here.x, z: here.z - 22 }, { x: here.x, z: here.z + 26 }], { pad: 1, min: MIN_DISTANCE }));
+  }
+  function layout() {
+    const rect = container.getBoundingClientRect();
+    if (container.hidden || !rect.width || !rect.height) { stop(); return false; }
+    const next = measureInsets();
+    const changed = rect.width !== size.width || rect.height !== size.height || ['left', 'top', 'right', 'bottom'].some((side) => Math.round(next[side]) !== Math.round(insets[side]));
+    if (changed) {
+      size = { width: rect.width, height: rect.height }; insets = next;
+      renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, size.width <= 720 ? 1.75 : 2));
+      renderer.setSize(size.width, size.height, false);
+      rig.setViewport(size.width, size.height, insets);
+      container.style?.setProperty('--map-dock', `${Math.round(insets.bottom)}px`);
+      if (root) { root.style.setProperty('--m3-dock', `${Math.round(insets.bottom)}px`); root.style.setProperty('--m3-left', `${Math.round(insets.left)}px`); root.style.setProperty('--m3-top', `${Math.round(insets.top)}px`); }
+    }
+    if (!opened) { openView(); if (trip && route && !reducedMotion) rig.jump(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route.points.length - 1), { pad: 1.5, min: 70 })); }
+    else if (changed && !userMoved && size.width > 720 && !trip) rig.jump(rig.whole());
+    return true;
+  }
+  const motion = (target, time = 0.5) => { if (reducedMotion) rig.jump(target); else rig.ease(target, time); request(); };
+  function setSelected(id) {
+    selected = id;
+    const place = id ? city.places[id] : null;
+    selectRing.visible = Boolean(place);
+    if (place) selectRing.position.set(place.x, 0.1, place.z);
+    updateLabels();
+  }
+  function reveal(id) {
+    const place = city.places[id];
+    if (!place || !shown()) return;
+    const at = project(place.x, place.top * 0.5, place.z);
+    const inside = at.front && at.x > insets.left + 60 && at.x < size.width - insets.right - 60 && at.y > insets.top + 70 && at.y < size.height - insets.bottom - 40;
+    if (!inside) motion({ x: place.x, z: place.z });
+  }
+  function dismissHint() { if (hint && !hint.hidden) hint.hidden = true; }
+  function pick(clientX, clientY, radius = PICK_RADIUS) {
+    const page = container.getBoundingClientRect(), x = clientX - page.left, y = clientY - page.top;
+    let best = null;
+    for (const place of Object.values(city.places)) {
+      const base = project(place.x, 0, place.z), top = project(place.x, place.top, place.z);
+      if (!base.front) continue;
+      // Anywhere over the building counts, from its plinth to its roof, with room to spare for a finger.
+      const cy = clamp(y, Math.min(base.y, top.y), Math.max(base.y, top.y)), distance = Math.hypot(x - base.x, y - cy);
+      const reach = Math.max(radius, Math.abs(project(place.x + PLINTH / 2, 0, place.z).x - base.x) * 1.2);
+      if (distance <= reach && (!best || distance < best.distance)) best = { id: place.id, distance };
+    }
+    return best?.id ?? null;
+  }
+  function choose(id) {
+    if (!id) return;
+    dismissHint();
+    setSelected(id);
+    request();
+    // With the Gov layer on, the State House opens the Governor sheet instead of the travel card.
+    if (layers.gov && id === 'state-house') onSelectGov(); else onSelectVenue(id);
+  }
+  function focus(id) { const place = city.places[id]; if (place) { userMoved = true; tripCamera = false; motion({ x: place.x, z: place.z, distance: 52 }, 0.55); } }
+
+  // ---- input -------------------------------------------------------------------------------------
+  const pointers = new Map();
+  let gesture = null, lastTap = { id: null, at: 0 }, suppressClick = false;
+  const local = (event) => { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; };
+  const toNdc = (point) => ({ x: (point.x / size.width) * 2 - 1, y: -(point.y / size.height) * 2 + 1 });
+  function grab() { userMoved = true; tripCamera = false; dismissHint(); }
+  function onPointerDown(event) {
+    if (event.target.closest?.('[data-m3],.m3-label,.m3-chip')) return;
+    if (event.isPrimary) pointers.clear();
+    pointers.set(event.pointerId, local(event));
+    rig.hold();
+    if (pointers.size === 1) gesture = { kind: event.button === 2 || event.button === 1 || event.shiftKey ? 'pan' : 'orbit', id: event.pointerId, from: local(event), last: local(event), moved: false, spin: 0 };
+    else if (pointers.size === 2) { const [a, b] = [...pointers.values()]; gesture = { kind: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, moved: true }; grab(); }
+    try { root.setPointerCapture?.(event.pointerId); } catch { /* the pointer is already gone */ }
+  }
+  function onPointerMove(event) {
+    const at = local(event);
+    if (!pointers.has(event.pointerId)) {
+      if (event.pointerType === 'mouse' && !event.buttons) hover(event.target.closest?.('.m3-label')?.dataset.venue || (event.target.closest?.('[data-m3],.m3-chip') ? null : pick(event.clientX, event.clientY, 22)));
+      return;
+    }
+    pointers.set(event.pointerId, at);
+    if (gesture?.kind === 'pinch' && pointers.size >= 2) {
+      const [a, b] = [...pointers.values()], distance = Math.hypot(a.x - b.x, a.y - b.y) || 1, mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      rig.panScreen(mid.x - gesture.mid.x, mid.y - gesture.mid.y);
+      const n = toNdc(mid);
+      rig.zoomAt(gesture.distance / distance, n.x, n.y);
+      gesture.distance = distance; gesture.mid = mid;
+      request();
+      return;
+    }
+    if (!gesture || gesture.id !== event.pointerId) return;
+    const dx = at.x - gesture.last.x, dy = at.y - gesture.last.y;
+    if (!gesture.moved && Math.hypot(at.x - gesture.from.x, at.y - gesture.from.y) < DRAG_START) return;
+    if (!gesture.moved) { gesture.moved = true; grab(); root?.classList.add('is-dragging'); }
+    gesture.last = at;
+    if (gesture.kind === 'pan') rig.panScreen(dx, dy);
+    else { gesture.spin = -dx * 0.0052; rig.orbit(gesture.spin, dy * 0.0042); }       // the city follows the finger; dragging down tips the view over the top
+    request();
+  }
+  function onPointerUp(event) {
+    if (!pointers.delete(event.pointerId)) return;
+    if (gesture?.kind === 'pinch') {
+      const [rest] = [...pointers.entries()];
+      gesture = rest ? { kind: 'pan', id: rest[0], from: rest[1], last: rest[1], moved: true } : null;
+    } else if (gesture?.id === event.pointerId) {
+      if (gesture.moved) { suppressClick = true; if (gesture.kind === 'orbit' && !reducedMotion && event.type !== 'pointercancel') { rig.release(gesture.spin); request(); } }
+      else if (event.type !== 'pointercancel') tap(event);
+      gesture = null;
+    }
+    if (!pointers.size) root?.classList.remove('is-dragging');
+  }
+  function tap(event) {
+    const id = pick(event.clientX, event.clientY), at = now();
+    if (id && lastTap.id === id && at - lastTap.at < DOUBLE_TAP_MS) { focus(id); lastTap = { id: null, at: 0 }; return; }
+    lastTap = { id, at };
+    if (id) choose(id);
+  }
+  function hover(id) {
+    if (id === hovered) return;
+    hovered = id;
+    const place = id ? city.places[id] : null;
+    hoverRing.visible = Boolean(place) && id !== selected;
+    if (place) hoverRing.position.set(place.x, 0.12, place.z);
+    if (root) root.style.cursor = place ? 'pointer' : '';
+    updateLabels();
+    request();
+  }
+  function onWheel(event) {
+    event.preventDefault();
+    grab();
+    const delta = event.deltaY * (event.deltaMode === 1 ? 32 : event.deltaMode === 2 ? 320 : 1), n = toNdc(local(event));
+    rig.zoomAt(Math.exp(clamp(delta, -240, 240) * (event.ctrlKey ? 0.01 : 0.0016)), n.x, n.y);
+    request();
+  }
+  function onClick(event) {
+    const control = event.target.closest?.('[data-m3]');
+    if (control) { onControl(control.dataset.m3); return; }
+    const house = event.target.closest?.('[data-neighbour]');
+    if (house) { onSelectNeighbour({ id: house.dataset.neighbour, name: house.dataset.name }); return; }
+    const label = event.target.closest?.('.m3-label');
+    if (!label) return;
+    if (suppressClick && event.detail !== 0) { suppressClick = false; return; }
+    choose(label.dataset.venue);
+  }
+  function onControl(name) {
+    grab();
+    if (name === 'in') motion({ distance: rig.view.distance * 0.68 }, 0.3);
+    else if (name === 'out') motion({ distance: rig.view.distance / 0.68 }, 0.3);
+    else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; }
+    else if (name === 'me') { const place = city.places[state?.location] || city.places.home, at = pose || place; motion({ x: at.x, z: at.z, distance: Math.min(rig.view.distance, 80) }, 0.6); }
+  }
+  function onKey(event) {
+    const { action, mode } = event.detail || {};
+    if (mode !== 'map' || layer !== 'city' || !shown()) return;
+    if (action === 'move-left') rig.panScreen(90, 0); else if (action === 'move-right') rig.panScreen(-90, 0);
+    else if (action === 'move-up') rig.panScreen(0, 90); else if (action === 'move-down') rig.panScreen(0, -90);
+    else if (action === 'zoom-in') { onControl('in'); return; } else if (action === 'zoom-out') { onControl('out'); return; } else if (action === 'zoom-fit') { onControl('fit'); return; }
+    else return;
+    grab(); request();
+  }
+  function onUi(event) {
+    const detail = event.detail || {};
+    if (detail.layer === 'city' || detail.layer === 'world') layer = detail.layer;
+    if (typeof detail.filter === 'string') { filter = detail.filter; labelKey = ''; }
+    const picked = 'selected' in detail && detail.selected && detail.selected !== selected;
+    if ('selected' in detail) setSelected(detail.selected && city.places[detail.selected] ? detail.selected : null);
+    const seaWasOff = !layers.sea;
+    if (detail.layers && typeof detail.layers === 'object') layers = { billboards: detail.layers.billboards === true, sea: detail.layers.sea === true, neighbours: detail.layers.neighbours === true, gov: detail.layers.gov === true, moving: detail.layers.moving === true };
+    for (const key of ['ads', 'neighbours', 'gov']) if (key in detail) data[key] = detail[key] && typeof detail[key] === 'object' ? detail[key] : null;
+    city.setTraffic(layers.moving);
+    if (overlays.set(layers, data)) syncChips();
+    labelKey = ''; updateLabels();
+    if (!shown() && !layout()) return;
+    if (detail.layout) layout();
+    if (selected && (picked || detail.layout)) reveal(selected);
+    // Turning the Sea layer on brings the plots into view.
+    if (layers.sea && seaWasOff && pack.bounds.sea) { const sea = pack.bounds.sea; userMoved = true; motion(rig.framing([{ x: sea.x0, z: sea.z0 - 14 }, { x: sea.x1, z: sea.z0 - 14 }, { x: sea.x0, z: sea.z1 }, { x: sea.x1, z: sea.z1 }], { pad: 1.1 }), 0.7); }
+    request();
+  }
+  function onVisibility() { if (doc.hidden) { stop(); if (settling) finishArrival(); } else request(); }
+  function onLost(event) { event.preventDefault?.(); lost = true; stop(); if (settling) finishArrival(); onContextLost(); }
+  const listeners = [];
+  const listen = (target, type, handler, options) => { if (!target?.addEventListener) return; target.addEventListener(type, handler, options); listeners.push(() => target.removeEventListener(type, handler, options)); };
+  if (root) {
+    listen(root, 'pointerdown', onPointerDown); listen(root, 'pointermove', onPointerMove);
+    listen(globalThis, 'pointerup', onPointerUp); listen(globalThis, 'pointercancel', onPointerUp);
+    listen(root, 'wheel', onWheel, { passive: false }); listen(root, 'click', onClick);
+    listen(root, 'dblclick', (event) => { const id = event.target.closest?.('.m3-label')?.dataset.venue; if (id) focus(id); });
+    listen(root, 'contextmenu', (event) => event.preventDefault());
+    listen(root, 'pointerleave', () => hover(null));
+    listen(doc, 'visibilitychange', onVisibility);
+    listen(canvas, 'webglcontextlost', onLost);
+  }
+  listen(globalThis, 'jaw:map-ui', onUi); listen(globalThis, 'jaw:key', onKey);
+
+  buildLabels();
+
+  const api = {
+    kind: '3d',
+    get ready() { return layer === 'city'; },
+    setState(next) {
+      state = next;
+      let changed = city.setHome(state?.travel?.home);
+      if (changed) { labelKey = ''; if (overlays.set(layers, data)) syncChips(); }
+      changed = applyTime(timeOfDay(state?.t ?? 0)) || changed;
+      const nextTrip = tripOf(state);
+      if (nextTrip && city.places[nextTrip.to]) {
+        const fresh = clock.sync(nextTrip, now());
+        if (fresh || !route || returning) startTrip(nextTrip); else trip = nextTrip;
+        if (!shown() || reducedMotion) stepTrip(now(), 0);
+      } else if (trip && !settling && !returning) {
+        if (state.location === trip.to && shown() && !reducedMotion) {
+          // Arrived: a moment at the door while the camera pushes in, then the host shows the venue.
+          pose = tripPose(route, 1, trip.mode); actor.place(pose);
+          settling = true;
+          rig.ease({ x: pose.x, z: pose.z, distance: clamp(rig.view.distance * 0.6, MIN_DISTANCE, 80) }, 0.5);
+        } else if (state.location === trip.from && shown() && !reducedMotion && pose) {
+          returning = { p: pose.progress ?? 0, rate: Math.max(1.6, (pose.progress ?? 0) / 0.7) };
+        } else clearTrip();
+      } else if (!trip) standHere();
+      updateLabels();
+      // A shared link opens its place once the life has loaded.
+      if (deepLink) { const id = deepLink; deepLink = null; if (city.places[id]) choose(id); }
+      request();
+    },
+    setPlayer(player) { if (actor.setPlayer(player)) { if (!trip && state) standHere(); request(); } },
+    /** The container was shown, hidden or resized. */
+    resize() { if (layout()) { updateLabels(); request(); } },
+    /** Run `done` once the arrival has been shown (at once when there is nothing to show). */
+    arrive(done) { if (settling) pendingArrive = done; else done(); },
+    select(id) { choose(id); },
+    /** What the Map panel says, for callers that do not go through the window event (tests, a host replaying it). */
+    ui(detail) { onUi({ detail }); },
+    /** For tests and the diagnostics panel. */
+    diagnostics() {
+      const info = renderer.info?.render || {}, sorted = [...frameMs].sort((a, b) => a - b), gap = [...gaps].sort((a, b) => a - b);
+      const mid = (list) => (list.length ? list[Math.floor(list.length / 2)] : 0);
+      return { kind: '3d', renderCount, frames: frameCount, loop: Boolean(rafId), time, reducedMotion, lost,
+        triangles: info.triangles ?? 0, calls: info.calls ?? 0, cityTriangles: city.triangles, overlayTriangles: overlays.triangles, counts: city.counts,
+        view: { ...rig.view }, frameMs: { median: mid(sorted), max: sorted.at(-1) ?? 0 }, frameGapMs: { median: mid(gap), max: gap.at(-1) ?? 0 },
+        trip: trip ? { ...trip, progress: clock.progress(now()), remaining: clock.remaining(now()), shown: pose?.progress ?? null, phase: pose?.phase ?? null, bridge: pose?.bridge ?? null, distance: pose?.distance ?? null, length: route?.length ?? null, bridges: route?.bridges ?? [], x: pose?.x, z: pose?.z, settling, returning: Boolean(returning) } : null,
+        selected, layers: { ...layers }, labels: [...labels].map(([id, label]) => ({ id, text: label.name.textContent, note: label.note.textContent, hidden: label.node.hidden, compact: label.node.classList.contains('is-compact') })) };
+    },
+    /** Where a place is on screen, in CSS pixels of the page (for tests that click on buildings). */
+    screenOf(id) { const place = city.places[id]; if (!place) return null; const page = container.getBoundingClientRect(), at = project(place.x, place.top * 0.45, place.z); return { x: at.x + page.left, y: at.y + page.top }; },
+    rig, city,
+    destroy() {
+      destroyed = true; stop();
+      for (const remove of listeners) remove();
+      if (routeLine) routeLine.geometry.dispose();
+      routeMaterial.dispose();
+      for (const ring of [selectRing, hoverRing]) { ring.geometry.dispose(); ring.material.dispose(); }
+      actor.dispose(); overlays.dispose(); city.dispose(); kit.dispose();
+      if (!providedRenderer) { renderer.dispose(); renderer.forceContextLoss?.(); }
+      root?.remove();
+      const done = pendingArrive; pendingArrive = null; done?.();
+    },
+  };
+  return api;
+}

@@ -1,5 +1,5 @@
 /** Lazy panel group: the Phone apps about money and things you own. Loaded on first open (see ../index.js). */
-import '../../phone/icons-more.js';
+import '../../phone/icons-more.ts';
 import jobs from '../jobs.js';
 import bank from '../bank.js';
 import invest from '../invest.js';

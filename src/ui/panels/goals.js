@@ -5,8 +5,8 @@
  * All rules live in src/game/systems/goals.js; this panel draws view.goals.
  */
 import './goals.css';
-import { esc, money, json, mark, iconFor, withGlyphs } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, json, mark, iconFor, withGlyphs } from '../dom.ts';
+import { linkWords } from '../link.ts';
 
 const STAR = mark('star');
 

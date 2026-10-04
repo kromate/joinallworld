@@ -11,7 +11,7 @@
  * data folder) or the session ran out. This is NOT "offline" and the panel never says so: it says
  * what happened and puts "Start a new life" one tap away, with "Try again" beside it.
  */
-import { esc } from '../dom.js';
+import { esc } from '../dom.ts';
 
 export default {
   id: 'session', title: 'Your city life', placement: 'modal', role: 'session-gate', live: false,

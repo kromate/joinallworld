@@ -4,8 +4,8 @@
  * reload in the middle of the form loses nothing ('joinallworld-quick-start', see ./entry.js). Fetched with the landing
  * screen; the decisions are ./look-model.js (pure).
  */
-import { draftFrom } from './look-model.js';
-import { kept, store, landedAt } from './entry.js';
+import { draftFrom } from './look-model.ts';
+import { kept, store, landedAt } from './entry.ts';
 
 /** The draft the landing screen edits (made on first use, then kept). `name`: a name this device already uses. */
 export function quickDraft(name) {

@@ -12,8 +12,8 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './world.css';
-import { esc, json, money, avatar, skeleton, mark } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, json, money, avatar, skeleton, mark } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { HOUSE_STYLE, HOUSE_TIERS, STYLE_FIELDS, addressLabel, lgaOf, unpackStyle } from '../../game/content/world.ts';
 import { renderLgaCard, bindLgaCard, track } from './lga-card.js';
 

@@ -57,7 +57,7 @@ import './city-map.css';
 import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, CITY_MAPS, venueLabel, venueDistrict } from './game/content/venues.ts';
 import { isOpen } from './game/clock.ts';
 import { isDeparting } from './game/registry.ts';
-import { iconFor } from './ui/icon-map.js';
+import { iconFor } from './ui/icon-map.ts';
 
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 

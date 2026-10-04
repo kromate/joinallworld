@@ -16,10 +16,10 @@
  * Prices and pack sizes are original beta values (content/food.js).
  */
 import './groceries.css';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { quickBuy } from '../phone/logic.js';
-import { esc, money, iconFor } from '../dom.js';
-import { linkWords } from '../link.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { quickBuy } from '../phone/logic.ts';
+import { esc, money, iconFor } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../game/content/food.ts';
 
 const USED_BY = Object.fromEntries(INGREDIENT_ORDER.map((id) => [id, Object.values(RECIPES).filter((recipe) => id in recipe.ingredients).map((recipe) => recipe.label)]));

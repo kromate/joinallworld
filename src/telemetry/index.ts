@@ -35,7 +35,7 @@ export const CALL_LIMIT = 300;
  * @param {() => Promise<{ createCore: Function }>} [env.loadCore]
  * @param {() => Promise<{ showConsent: Function }>} [env.loadSheet]
  */
-export function createTelemetry({ window: win = globalThis.window, now = Date.now, loadCore = () => import('./core.js'), loadSheet = () => import('./consent-ui.js') } = {}) {
+export function createTelemetry({ window: win = globalThis.window, now = Date.now, loadCore = () => import('./core.ts'), loadSheet = () => import('./consent-ui.ts') } = {}) {
   /** Kept calls: [method, args, wall-clock time]. The first ones matter most (landed, named), so a full list refuses new ones. */
   const calls = [];
   let core = null, off = false, started = false;

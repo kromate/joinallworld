@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { nextEnabled, typeAhead, keepsNative } from './controls.js';
+import { nextEnabled, typeAhead, keepsNative } from './controls.ts';
 
 const options = [{ label: 'Agege' }, { label: 'Ikeja', disabled: true }, { label: 'Ikorodu' }, { label: 'Lagos Island' }, { label: 'Lagos Mainland' }];
 

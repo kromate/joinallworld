@@ -6,7 +6,7 @@
  * are the server's own list). Every card is a real button, so the table works by keyboard and
  * at 360 px. The turn clock is one CSS animation: no script runs while a player thinks.
  */
-import { esc, glyph } from '../ui/dom.js';
+import { esc, glyph } from '../ui/dom.ts';
 import { SHAPES, SHAPE_NAMES, SPECIAL, cardName } from './whot.ts';
 import type { Card, WhotView } from './whot.ts';
 import type { TableStateFrame } from '../types/growth.ts';

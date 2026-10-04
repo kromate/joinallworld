@@ -7,14 +7,14 @@
  * turns each off again and deletes what was stored for it.
  * Rules: server/growth/outreach.js and src/game/outreach.js; the words: src/game/digest.js.
  */
-import { esc } from '../dom.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { linkWords } from '../link.js';
+import { esc } from '../dom.ts';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { linkWords } from '../link.ts';
 import { EMAIL_CONSENT, PUSH_CONSENT } from '../../game/outreach.ts';
 import { G, load, call, track, announceAge } from './growth-client.js';
 
 const ui = { busy: null, email: '', tick: false, pushAsk: false, note: null };
-const push = () => import('../push-client.js');
+const push = () => import('../push-client.ts');
 let pushKind = null; // 'ready' | 'unsupported' | 'needs-install' | 'blocked', once known
 
 async function saveAge(api, age) {

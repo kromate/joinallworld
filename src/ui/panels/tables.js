@@ -6,9 +6,9 @@
  * Everything shown comes from the server (src/tables/client.js); every button sends a message.
  */
 import './tables.css';
-import { esc, json, money, mark, empty, section } from '../dom.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { linkWords } from '../link.js';
+import { esc, json, money, mark, empty, section } from '../dom.ts';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { linkWords } from '../link.ts';
 import { isDeparting } from '../../game/registry.ts';
 import { tableById, GAME_LABELS } from '../../tables/places.ts';
 import { T, start, openTable, closeTable, sit, leave, begin, again, play, setOption, reconnect, refreshList } from '../../tables/client.ts';

@@ -4,12 +4,12 @@
 // module and the casts live in one place. When a module is converted to TypeScript its lines here
 // are deleted and its importers point at the real file. The DOM-free modules are in ./engine.ts.
 import { PANELS as PANELS_JS, sessionGate as sessionGateJs } from '../../ui/panels/index.js'
-import { glyph as glyphJs, glyphFor as glyphForJs, hasGlyph as hasGlyphJs, onGlyphs as onGlyphsJs } from '../../ui/phone/icons.js'
-import { glyphNameFor as glyphNameForJs } from '../../ui/icon-map.js'
-import { linkWords as linkWordsJs } from '../../ui/link.js'
-import { icon as iconJs } from '../../ui/dom.js'
-import { markReportsRead as markReportsReadJs, noteFiled as noteFiledJs, noteReports as noteReportsJs, reportReplies as reportRepliesJs } from '../../ui/phone/reports.js'
-import { shortcutFor as shortcutForJs, shortcutRows as shortcutRowsJs, heldActionFor as heldActionForJs } from '../../ui/keys.js'
+import { glyph as glyphJs, glyphFor as glyphForJs, hasGlyph as hasGlyphJs, onGlyphs as onGlyphsJs } from '../../ui/phone/icons.ts'
+import { glyphNameFor as glyphNameForJs } from '../../ui/icon-map.ts'
+import { linkWords as linkWordsJs } from '../../ui/link.ts'
+import { icon as iconJs } from '../../ui/dom.ts'
+import { markReportsRead as markReportsReadJs, noteFiled as noteFiledJs, noteReports as noteReportsJs, reportReplies as reportRepliesJs } from '../../ui/phone/reports.ts'
+import { shortcutFor as shortcutForJs, shortcutRows as shortcutRowsJs, heldActionFor as heldActionForJs } from '../../ui/keys.ts'
 import { crowdList as crowdListJs, playersHere as playersHereJs } from '../../scene/crowd.ts'
 import type { LifeState } from '../../types/life.ts'
 import type { SupportReport } from '../../types/support.ts'

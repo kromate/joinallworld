@@ -15,7 +15,7 @@
  * has closed. Without giveWay (Settings, which opens it from inside the game's sheet, and an
  * operator's "ask on the landing screen") it is raised above the game's sheet instead.
  */
-import { CONSENT, whatWeCollect } from './what-we-collect.js';
+import { CONSENT, whatWeCollect } from './what-we-collect.ts';
 
 const STYLE = `
 #jaw-consent{border:0;padding:0;border-radius:20px;width:min(460px,calc(100% - 24px));max-height:min(88dvh,720px);background:#fff;color:var(--c-ink,#14231b);font-family:var(--font,system-ui,sans-serif);box-shadow:0 24px 60px #0006;overflow:hidden}

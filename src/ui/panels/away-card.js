@@ -7,7 +7,7 @@
  * NOT in the first download: the chip's stub (./away-chip.js) fetches this file once a settled player is connected. It draws
  * only from data already loaded (the growth hello, which ./growth-client.js asks for) and never fetches by itself.
  */
-import { esc, json } from '../dom.js';
+import { esc, json } from '../dom.ts';
 import { awayCard } from '../../game/digest.ts';
 import { upcomingEvents } from '../../game/calendar.ts';
 import { notifications } from './inbox.js';

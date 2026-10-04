@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { nextStep, wayTo, needsBubble, COACH_GOALS, TAPER } from './attention.js';
+import { nextStep, wayTo, needsBubble, COACH_GOALS, TAPER } from './attention.ts';
 
 const goal = (more = {}) => ({ kind: 'goal', step: 1, of: 7, title: 'Eat something', hint: 'Tap the cooler or stove', go: ['home', 'kitchen'], ...more });
 const base = (more = {}) => ({

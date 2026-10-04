@@ -20,7 +20,7 @@
  * previewDiagnostics() reports its render counter.
  */
 import './look-ui.css';
-import { esc, money, mark } from '../dom.js';
+import { esc, money, mark } from '../dom.ts';
 import { APPEARANCE, BOUTIQUE_PRICES } from '../../game/content/traits.ts';
 
 const hexOf = (group, id) => APPEARANCE[group].find((swatch) => swatch.id === id)?.hex ?? '#888888';

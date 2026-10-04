@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createClient, outgoing, TEXT, STORAGE_KEY, roomJoinNeeded } from './client.js';
+import { createClient, outgoing, TEXT, STORAGE_KEY, roomJoinNeeded } from './client.ts';
 import { dispatch } from './life.ts';
 import { START_HOMES, TRAITS, DREAMS } from './game/content/traits.ts';
 import { createLife } from './life.ts';
@@ -115,7 +115,7 @@ test('city sheet footnote uses the current city-specific text', async () => {
 });
 
 test('uuid() works without crypto.randomUUID, as on a plain-HTTP LAN origin', async () => {
-  const { uuid } = await import('./client.js');
+  const { uuid } = await import('./client.ts');
   const pattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
   const insecure = { getRandomValues: (bytes) => globalThis.crypto.getRandomValues(bytes) };
   const ids = new Set(Array.from({ length: 50 }, () => uuid(insecure)));

@@ -11,9 +11,9 @@
  * All rules live in src/game/systems/goals.js; this draws view.goals.
  */
 import './goals.css';
-import { esc, json, iconFor, withGlyphs } from '../dom.js';
+import { esc, json, iconFor, withGlyphs } from '../dom.ts';
 import { nextNudge, nudged } from '../../quick-start/model.ts';
-import { nudgesOf, keepNudges } from '../../quick-start/entry.js';
+import { nudgesOf, keepNudges } from '../../quick-start/entry.ts';
 
 let lastSeq = null, offeredTo = null, nudging = false;
 /** How long the reward toast is left alone before the offer comes up. */

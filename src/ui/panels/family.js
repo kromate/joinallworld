@@ -5,8 +5,8 @@
  * here is original and labelled beta.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, avatar } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, avatar } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { callButton } from './contacts.js';
 
 export default {

@@ -11,7 +11,7 @@
  *   - flush() is for shutdown (and for the Worker's ctx.waitUntil): it resolves when the queues
  *     have been sent or have failed, and it never rejects
  */
-import { scrubEvent } from '../../src/telemetry/scrub.js';
+import { scrubEvent } from '../../src/telemetry/scrub.ts';
 
 export const ANALYTICS_QUEUE_LIMIT = 1000;
 export const ERROR_QUEUE_LIMIT = 100;

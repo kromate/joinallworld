@@ -9,10 +9,10 @@ function fakeStorage(initial = {}) {
 }
 
 test('every Phone app has its own drawn icon and colour, and an unknown id still draws something', async () => {
-  const { glyph, glyphFor, hasGlyph } = await import('./icons.js');
+  const { glyph, glyphFor, hasGlyph } = await import('./icons.ts');
   assert.equal(hasGlyph('contacts'), false, 'app-only glyphs are not in the first download');
   assert.match(glyph('contacts'), /^<svg aria-hidden="true"/, 'a glyph that has not arrived yet still draws a placeholder');
-  const { appIcon, TINTS, tintOf } = await import('./icons-more.js'); // adds the rest of the set
+  const { appIcon, TINTS, tintOf } = await import('./icons-more.ts'); // adds the rest of the set
   const apps = ['jobs', 'messages', 'bank', 'ride', 'statement', 'invest', 'career', 'richlist', 'goals', 'health', 'groceries', 'boutique', 'houses', 'cars', 'settings', 'help',
     'contacts', 'people', 'family', 'invite', 'community', 'governor', 'neighbours', 'ads', 'hunt-sheet', 'radio', 'support'];
   const drawn = new Set();
@@ -27,7 +27,7 @@ test('every Phone app has its own drawn icon and colour, and an unknown id still
   assert.equal(tintOf({ id: 'bank', tint: '#123456' }), '#123456');
   assert.equal(tintOf({ id: 'bank' }), TINTS.bank);
   // Inline SVG only: no image files, no fonts, nothing fetched.
-  for (const file of ['./icons.js', './icons-more.js']) assert.doesNotMatch(await readFile(new URL(file, import.meta.url), 'utf8'), /url\(|<image|href=|@font-face/);
+  for (const file of ['./icons.ts', './icons-more.ts']) assert.doesNotMatch(await readFile(new URL(file, import.meta.url), 'utf8'), /url\(|<image|href=|@font-face/);
 });
 
 test('the wallpaper is a preference of this device: unknown values fall back, a refused save still applies', async (t) => {
@@ -35,7 +35,7 @@ test('the wallpaper is a preference of this device: unknown values fall back, a 
   t.after(() => { Object.defineProperty(globalThis, 'localStorage', { value: real, configurable: true, writable: true }); });
   const store = fakeStorage({ 'joinallworld-wallpaper': 'not-a-wallpaper' });
   Object.defineProperty(globalThis, 'localStorage', { value: store, configurable: true, writable: true });
-  const { WALLPAPERS, WALLPAPER_KEY, getWallpaper, setWallpaper } = await import('./wallpapers.js');
+  const { WALLPAPERS, WALLPAPER_KEY, getWallpaper, setWallpaper } = await import('./wallpapers.ts');
   assert.ok(WALLPAPERS.length >= 3 && WALLPAPERS.length <= 4);
   assert.equal(getWallpaper(), WALLPAPERS[0].id);
   assert.equal(setWallpaper('nonsense'), false); assert.equal(getWallpaper(), WALLPAPERS[0].id);
@@ -54,7 +54,7 @@ test('the Report badge counts replies not read on this device, and reading clear
   const real = globalThis.localStorage;
   t.after(() => { Object.defineProperty(globalThis, 'localStorage', { value: real, configurable: true, writable: true }); });
   Object.defineProperty(globalThis, 'localStorage', { value: fakeStorage(), configurable: true, writable: true });
-  const { noteReports, reportReplies, markReportsRead } = await import('./reports.js');
+  const { noteReports, reportReplies, markReportsRead } = await import('./reports.ts');
   assert.equal(reportReplies(), 0, 'nothing loaded yet: no badge');
   noteReports([{ id: 'P-1', at: 100, updatedAt: 100, note: '', status: 'received' }, { id: 'P-2', at: 100, updatedAt: 250, note: 'Refunded.', status: 'resolved' }]);
   assert.equal(reportReplies(), 1, 'only the report a moderator answered');
@@ -72,7 +72,7 @@ test('the phone runs nothing while idle: no timers and no frame loop in its sour
 });
 
 test('the Governor badge counts only city news that is new to this life and not yet read', async () => {
-  const { unseenNews } = await import('./logic.js');
+  const { unseenNews } = await import('./logic.ts');
   const notices = [{ id: 'a', at: 1000 }, { id: 'b', at: 2000 }, { id: 'c', at: 3000 }];
   assert.equal(unseenNews(notices, { readAt: 0, since: 5000 }), 0, 'a brand-new life: everything in the city is older than it');
   assert.equal(unseenNews(notices, { readAt: 0, since: 1500 }), 2, 'only what happened after the life began');
@@ -87,7 +87,7 @@ test('the Governor badge counts only city news that is new to this life and not 
 });
 
 test('opening the phone asks for the reports once, then only while an answer can still arrive', async () => {
-  const { shouldCheckReports, unreadReports, reportOpen } = await import('./logic.js');
+  const { shouldCheckReports, unreadReports, reportOpen } = await import('./logic.ts');
   const base = { connected: true, checking: false, now: 1_000_000 };
   assert.equal(shouldCheckReports({ ...base }), true, 'first opening on this page: one look, app never opened');
   assert.equal(shouldCheckReports({ ...base, connected: false }), false, 'never while not connected');
@@ -128,7 +128,7 @@ test('checkReports fetches once when the phone opens, without the app, and shows
 });
 
 test('How it works: the open state is kept by id, and an unchanged toggle changes nothing', async () => {
-  const { toggled, rulesList } = await import('./logic.js');
+  const { toggled, rulesList } = await import('./logic.ts');
   const none = new Set();
   const one = toggled(none, 'bank-rent', true);
   assert.deepEqual([...one], ['bank-rent']); assert.equal(none.size, 0, 'the old set is not touched');
@@ -140,7 +140,7 @@ test('How it works: the open state is kept by id, and an unchanged toggle change
 });
 
 test('Groceries “Buy 1 pack”: the price on the button is the server’s, and it says why it cannot be pressed', async () => {
-  const { quickBuy } = await import('./logic.js');
+  const { quickBuy } = await import('./logic.ts');
   assert.deepEqual(quickBuy({ quote: { price: 600, list: 600 }, cash: 5000, connected: true }), { price: 600, blocked: '' });
   assert.deepEqual(quickBuy({ quote: { price: 540, list: 600 }, cash: 540, connected: true }), { price: 540, blocked: '' }, 'a discount the server quoted is the price; exactly enough is enough');
   assert.equal(quickBuy({ quote: { price: 600 }, cash: 250, connected: true }).blocked, 'Need ₦350 more');

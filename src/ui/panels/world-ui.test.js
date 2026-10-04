@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { goBlock, fixButton, tripInfo, modeIcon, placeName } from './world-ui.js';
-import { LINK_STATES, linkWords, linkAttrs, linkButton } from '../link.js';
+import { LINK_STATES, linkWords, linkAttrs, linkButton } from '../link.ts';
 
 const destination = { id: 'cchub', label: 'CcHub', status: 'Open', modes: [{ id: 'danfo', label: 'Danfo', fare: 150, seconds: 8 }] };
 const mode = destination.modes[0];

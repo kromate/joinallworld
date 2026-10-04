@@ -22,7 +22,7 @@
  * perk, notice, update, panel, empty.
  * Pure strings: no DOM, no CSS — src/ui/icon-map.test.js checks that every content id maps to a glyph.
  */
-import { glyph, glyphFor, hasGlyph } from './phone/icons.js';
+import { glyph, glyphFor, hasGlyph } from './phone/icons.ts';
 
 /** glyph name → the emoji that mean it. Looked up by an emoji's first code point (skin tones, ZWJ tails and variation selectors do not matter). */
 const GROUPS = {

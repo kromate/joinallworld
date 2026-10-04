@@ -26,9 +26,9 @@
 import { readTelemetryConfig, publicConfig, TRACE_SAMPLE_RATE } from './config.js';
 import { createTransport, errorEvent, eventId, spanId } from './transport.js';
 import { routeEvents, replyEvents, createCoPresence, createVoice } from './instrument.js';
-import { scrubProps, isEventName, isUuid, stringsOf } from '../../src/telemetry/scrub.js';
-import { checkProps } from '../../src/telemetry/events.js';
-import { durationBucket } from '../../src/telemetry/policy.js';
+import { scrubProps, isEventName, isUuid, stringsOf } from '../../src/telemetry/scrub.ts';
+import { checkProps } from '../../src/telemetry/events.ts';
+import { durationBucket } from '../../src/telemetry/policy.ts';
 
 const CONSENT_LIMIT = 20000;
 const REPEAT_WINDOW_MS = 60000;

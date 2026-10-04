@@ -14,7 +14,7 @@
  */
 import './social.css';
 import { createOutbox, mergeMessages, inviteIdFrom, freshSocial, SEND_TIMEOUT_MS } from '../../game/social-model.ts';
-import { linkWords, linkButton } from '../link.js';
+import { linkWords, linkButton } from '../link.ts';
 
 const MAX_ATTEMPTS = 6;
 export const outbox = createOutbox();

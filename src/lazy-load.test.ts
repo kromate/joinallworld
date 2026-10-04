@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLazyLoader, RETRY_DELAYS_MS, MAX_RETRY_DELAY_MS } from './lazy-load.js';
+import { createLazyLoader, RETRY_DELAYS_MS, MAX_RETRY_DELAY_MS } from './lazy-load.ts';
 
 /** Timers the test fires by hand. */
 function clock() {

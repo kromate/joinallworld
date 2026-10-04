@@ -13,7 +13,7 @@
  * The Report a problem app (src/ui/panels/support.js) hands every list it loads to noteReports()
  * and calls markReportsRead() when the player is looking at them.
  */
-import { shouldCheckReports, unreadReports } from './logic.js';
+import { shouldCheckReports, unreadReports } from './logic.ts';
 
 const KEY = 'joinallworld-reports-seen';
 let seen = null;       // { [reportId]: updatedAt already read }

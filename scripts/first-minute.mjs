@@ -48,7 +48,7 @@ import { LOTTERY } from '../src/game/content/traits.ts';
 import { STARTER_GOALS } from '../src/game/content/goals.ts';
 import { EVENTS } from '../src/game/content/events.ts';
 import { nextNudge, nudgeMemory, nudged, funnelSnap, funnelEvents } from '../src/quick-start/model.ts';
-import { presetLook } from '../src/quick-start/look-model.js';
+import { presetLook } from '../src/quick-start/look-model.ts';
 
 const CITY = 'lagos';
 /** The local government picked at settle-in: the free starter house stands on a plot there. */

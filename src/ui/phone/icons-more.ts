@@ -8,8 +8,8 @@
  *   TINTS, tintOf(panel)    one colour per app id: the icon's square and the app bar
  * Same style as ./icons.js: 24×24, 1.8px round strokes in currentColor, the main shape at 30%.
  */
-import { F, S, glyph, glyphFor, registerGlyphs } from './icons.js';
-import { GROWTH_GLYPHS } from './icons-growth.js';
+import { F, S, glyph, glyphFor, registerGlyphs } from './icons.ts';
+import { GROWTH_GLYPHS } from './icons-growth.ts';
 
 registerGlyphs({
   ...GROWTH_GLYPHS,

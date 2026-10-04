@@ -5,8 +5,8 @@
  *   cleanEvent   PostHog's finished event (before_send) → the same event with only the allowed
  *                properties left; everything the SDK added that is not on the list is dropped
  */
-import { scrubProps, stripUrl, isEventName } from './scrub.js';
-import { checkProps } from './events.js';
+import { scrubProps, stripUrl, isEventName } from './scrub.ts';
+import { checkProps } from './events.ts';
 
 /** @typedef {{ name: string, props?: object, at?: number, extra?: { setOnce?: object } }} Item */
 

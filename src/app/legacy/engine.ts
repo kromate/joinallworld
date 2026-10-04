@@ -2,11 +2,11 @@
 // the store built on them (state/game.ts) runs under `node --test`. Every cast for these modules
 // is here. When a module is converted to TypeScript its lines are deleted and its importers point
 // at the real file. The browser-only modules (panels, icons, keys) are in ./modules.ts.
-import { createClient as createClientJs, CITIES as CITIES_JS, TEXT as TEXT_JS, roomJoinNeeded as roomJoinNeededJs } from '../../client.js'
+import { createClient as createClientJs, CITIES as CITIES_JS, TEXT as TEXT_JS, roomJoinNeeded as roomJoinNeededJs } from '../../client.ts'
 import { viewLife as viewLifeJs, isDeparting as isDepartingJs, VENUES as VENUES_JS } from '../../life.ts'
 import { venueLabel as venueLabelJs, venueDistrict as venueDistrictJs } from '../../game/content/venues.ts'
 import { NPCS as NPCS_JS } from '../../game/content/npcs.ts'
-import { createLazyLoader as createLazyLoaderJs } from '../../lazy-load.js'
+import { createLazyLoader as createLazyLoaderJs } from '../../lazy-load.ts'
 import type { LifeState } from '../../types/life.ts'
 import type { LifeView } from '../../types/view.ts'
 import type { CityId } from '../../types/protocol.ts'

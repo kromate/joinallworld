@@ -7,7 +7,7 @@
  * Everything shown comes from view.health (src/game/systems/health.js).
  */
 import './health.css';
-import { esc, iconFor } from '../dom.js';
+import { esc, iconFor } from '../dom.ts';
 
 /** Something to act on now (sick, run down) stays in view; the weather is information and lives in the tray. */
 const chip = (warning) => `<button class="health-chip is-${esc(warning.level)}" data-open="health" aria-label="${esc(warning.text)}. Open the Health app."><span aria-hidden="true">${iconFor('health', warning.level, warning.icon)}</span><b>${esc(warning.text)}</b></button>`;

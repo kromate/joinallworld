@@ -6,7 +6,7 @@
  * so the Phone's home screen can draw the app icons before any app has loaded; the one glyph a chip of the
  * first download needs (`tables`) is ./icon-tables.js.
  */
-import { F, S, DOT } from './icons.js';
+import { F, S, DOT } from './icons.ts';
 
 export const GROWTH_GLYPHS = {
   missions: `<rect x="5" y="4" width="14" height="17" rx="2.5" ${F}/><path d="M9 4V3h6v1M8.5 10l1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15.5 10.5h.5M15.5 16.5h.5"/>`,

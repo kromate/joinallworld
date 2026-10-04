@@ -17,8 +17,8 @@
  *   (a tapped object or floor tile) and 'jaw:home-scene' (ready / empty / error).
  */
 import './buy.css';
-import { esc, mark, iconFor } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, mark, iconFor } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { FURNITURE, KINDS } from '../../game/content/furniture.ts';
 import { homeOf } from '../../game/content/housing.ts';
 import { HOUSE_TIERS } from '../../game/content/world.ts';

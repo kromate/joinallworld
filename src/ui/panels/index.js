@@ -34,10 +34,10 @@ import huntChip from './hunt-chip.js';
 import radioBanner from './radio-banner.js';
 import { S as social } from './social-client.js';
 import { civicNews } from './civic-ui.js';
-import { reportReplies } from '../phone/reports.js';
+import { reportReplies } from '../phone/reports.ts';
 import awayChip from './away-chip.js';
 import tablesChip from './tables-chip.js';
-import { play } from '../../quick-start/entry.js';
+import { play } from '../../quick-start/entry.ts';
 
 /** App-icon colours for the growth apps (their glyphs arrive with the Phone: ../phone/icons-growth.js). */
 const GROWTH_TINTS = Object.freeze({ missions: '#256b45', events: '#b23a2e', refer: '#2b5fa8', touch: '#6a3fa0', tables: '#1f8a86' });

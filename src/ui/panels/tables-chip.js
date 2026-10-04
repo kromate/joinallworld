@@ -5,8 +5,8 @@
  * table link is taken to that table by the landing: src/life-main.js landJoin.)
  * First download: it knows only where tables stand (src/tables/places.js, data); no game code.
  */
-import { esc, json, mark } from '../dom.js';
-import '../phone/icon-tables.js';
+import { esc, json, mark } from '../dom.ts';
+import '../phone/icon-tables.ts';
 import { isDeparting } from '../../game/registry.ts';
 import { tablesAt, GAME_LABELS } from '../../tables/places.ts';
 

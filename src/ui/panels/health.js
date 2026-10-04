@@ -8,7 +8,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './health.css';
-import { esc, json, money, mark, iconFor } from '../dom.js';
+import { esc, json, money, mark, iconFor } from '../dom.ts';
 import { VENUES } from '../../game/content/venues.ts';
 
 function cureRow(cure, state, view) {

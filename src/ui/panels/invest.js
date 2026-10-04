@@ -8,9 +8,9 @@
  * Actions: 'economy.open-deposit' { amount, term } and 'economy.close-deposit' { id }. The panel contract is at the top of src/ui/shell.js.
  */
 import './invest.css';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { esc, money, json, empty } from '../dom.js';
-import { linkWords } from '../link.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { esc, money, json, empty } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { formatClock } from '../../game/clock.ts';
 
 /** UI-only state: the chosen amount and the deposit whose early close is being confirmed. */

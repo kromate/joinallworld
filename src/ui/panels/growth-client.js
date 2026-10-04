@@ -17,11 +17,11 @@
  *   allworld-away     the server time of the hello whose away card was dismissed
  */
 import './growth.css';
-import '../phone/icons-more.js';
-import { deviceToken } from '../../quick-start/entry.js';
+import '../phone/icons-more.ts';
+import { deviceToken } from '../../quick-start/entry.ts';
 export { deviceToken };
 /** The canvas painter and the share-sheet calls are fetched the first time something is shared, not with the first download. */
-const sharing = () => import('../share.js');
+const sharing = () => import('../share.ts');
 
 const HELLO_MAX_AGE = 5 * 60000;
 export const G = {

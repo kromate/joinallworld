@@ -2,9 +2,9 @@
 // query strings must never survive the scrubber, whichever field they hide in.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { scrubText, scrubProps, scrubEvent, stripUrl, isEventName, MAX_PROPS } from './scrub.js';
-import { cleanEvent, captureArgs } from './clean.js';
-import { EVENTS, ACTIVATION_FUNNEL, INVITE_FUNNEL, TRACKED_EVENTS, checkProps } from './events.js';
+import { scrubText, scrubProps, scrubEvent, stripUrl, isEventName, MAX_PROPS } from './scrub.ts';
+import { cleanEvent, captureArgs } from './clean.ts';
+import { EVENTS, ACTIVATION_FUNNEL, INVITE_FUNNEL, TRACKED_EVENTS, checkProps } from './events.ts';
 
 const SECRET = '5b0f2c1e-7a44-4d0b-9c1d-2f6f6a7e8b90'; // a cookie secret is a UUID, exactly like this
 const PUBLIC = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10';

@@ -44,11 +44,11 @@
  * offline and is saved when the step is confirmed.
  */
 import './onboarding.css';
-import { esc, money, icon, mark, iconFor } from '../dom.js';
-import { linkWords, linkButton } from '../link.js';
+import { esc, money, icon, mark, iconFor } from '../dom.ts';
+import { linkWords, linkButton } from '../link.ts';
 import { TRAITS, TRAITS_REQUIRED, DREAMS, DREAM_REWARD, ONBOARDING_STEPS, LOTTERY_NOTE } from '../../game/content/traits.ts';
 import { APPEARANCE } from '../../game/content/traits.ts';
-import { track } from '../../quick-start/entry.js';
+import { track } from '../../quick-start/entry.ts';
 import { lookStage, lookEditor, chooseLook, lookSummary, lookTabClick, lookFocusBody, mountLookPreview, randomLook, sameLook, starterWardrobe, hairOptions, outfitOptions } from './look-ui.js';
 
 const ID = 'onboarding';

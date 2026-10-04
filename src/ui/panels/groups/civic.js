@@ -1,5 +1,5 @@
 /** Lazy panel group: Governor, State House, Neighbours, Billboards, the Rich List, the Gem hunt sheet and the Radio app. Loaded on first open (see ../index.js). */
-import '../../phone/icons-more.js';
+import '../../phone/icons-more.ts';
 import governor from '../governor.js';
 import neighbours from '../neighbours.js';
 import ads from '../ads.js';

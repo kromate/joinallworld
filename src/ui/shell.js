@@ -149,10 +149,10 @@
 import './tokens.css';
 import './shell.css';
 import './controls.css';
-import { esc, money, cap, icon, json, skeleton, mark, iconFor, withGlyphs, stripLeadEmoji } from './dom.js';
-import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.js';
-import { glyph, glyphFor, hasGlyph, onGlyphs } from './phone/icons.js';
-import { linkWords } from './link.js';
+import { esc, money, cap, icon, json, skeleton, mark, iconFor, withGlyphs, stripLeadEmoji } from './dom.ts';
+import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.ts';
+import { glyph, glyphFor, hasGlyph, onGlyphs } from './phone/icons.ts';
+import { linkWords } from './link.ts';
 
 const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
 const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone']];
@@ -196,7 +196,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   // The attention system: its code arrives just after the first paint; until then nothing is pointed at.
   let attn = null, attention = null, stepId = '', lastClick = null, seen = {}, wasBusy = '', lastWaiting = 0;
   try { seen = JSON.parse(globalThis.localStorage?.getItem(SEEN_KEY)) || {}; } catch { seen = {}; }
-  import('./attention.js').then((module) => { attn = module; attention = module.createAttention({ root, dialog }); if (state) api.refresh(); }, () => {});
+  import('./attention.ts').then((module) => { attn = module; attention = module.createAttention({ root, dialog }); if (state) api.refresh(); }, () => {});
   const html = new WeakMap();
   const byId = new Map(panels.map((panel) => [panel.id, panel]));
   const placed = (placement) => panels.filter((panel) => panel.placement === placement);
@@ -318,7 +318,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   let escAt = 0, phoneLoading = null;
   let phone = { open: false, ready: false, hosts: () => false, render: () => false, unmount() {}, back: () => false, focus() {}, destroy() {} };
   function loadPhone() {
-    phoneLoading ??= import('./phone/phone.js').then((module) => {
+    phoneLoading ??= import('./phone/phone.ts').then((module) => {
       phone = module.createPhone({ dialog, content: dialogContent, panels,
         host: { api, panelHtml: (panel, params) => panelHtml(panel, params), bindPanels: (container, params) => bindPanels(container, params), open: (id, params) => open(id, params), close: () => close(), helpHtml: () => helpHtml() } });
       phone.ready = true;
@@ -425,7 +425,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   let kit = null;
   function dress(container) {
     if (kit) kit.enhanceSelects(container);
-    else if (container.querySelector('select')) import('./controls.js').then((module) => { kit = module; kit.enhanceSelects(dialogContent); kit.enhanceSelects(root); }, () => {});
+    else if (container.querySelector('select')) import('./controls.ts').then((module) => { kit = module; kit.enhanceSelects(dialogContent); kit.enhanceSelects(root); }, () => {});
   }
   function bindPanels(container, params) {
     for (const node of container.querySelectorAll('[data-panel]')) {

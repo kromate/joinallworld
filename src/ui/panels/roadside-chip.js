@@ -6,7 +6,7 @@
  * ./map.js (fetched with the map panel group).
  */
 import './map.css';
-import { esc, iconFor } from '../dom.js';
+import { esc, iconFor } from '../dom.ts';
 
 let shownEvent = '';
 

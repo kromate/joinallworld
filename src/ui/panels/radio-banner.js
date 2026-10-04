@@ -5,7 +5,7 @@
  * The banner follows the server's schedule whenever the HUD is redrawn (each state poll); it runs
  * no timer of its own, so a new shout-out can take up to a poll interval to appear.
  */
-import { esc, mark } from '../dom.js';
+import { esc, mark } from '../dom.ts';
 import { RADIO } from '../../game/content/civic.ts';
 import { entry, load } from './civic-ui.js';
 

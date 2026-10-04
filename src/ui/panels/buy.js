@@ -16,8 +16,8 @@
  * rules (src/game/home-layout.js) so the player sees the answer before pressing Place.
  */
 import './buy.css';
-import { esc, money, json, mark, icon, iconFor } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, json, mark, icon, iconFor } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../game/content/furniture.ts';
 import { findFreeSpot, nudge, turn } from '../../game/home-layout.ts';
 import { H, houseOf, itemsOf, objectOf, whyNot, show, stars } from './home-chip.js';

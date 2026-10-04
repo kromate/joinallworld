@@ -44,11 +44,11 @@
  * The 3D scene is not touched: opening, paging and closing the phone draw no scene frame.
  */
 import './phone.css';
-import { esc, json } from '../dom.js';
-import { glyph, glyphFor } from './icons.js';
-import { appIcon, tintOf } from './icons-more.js';
-import { getWallpaper } from './wallpapers.js';
-import { checkReports } from './reports.js';
+import { esc, json } from '../dom.ts';
+import { glyph, glyphFor } from './icons.ts';
+import { appIcon, tintOf } from './icons-more.ts';
+import { getWallpaper } from './wallpapers.ts';
+import { checkReports } from './reports.ts';
 
 const DOCK = ['messages', 'jobs', 'bank', 'ride'];
 const PAGES = [

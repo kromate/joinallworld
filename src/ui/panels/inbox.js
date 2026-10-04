@@ -6,8 +6,8 @@
  * social panel group the first time it is opened.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, mark } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, mark } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { S, start } from './social-client.js';
 
 // A waiting friend or Bae request is counted once, as a request, not again as the update that announced it.

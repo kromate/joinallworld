@@ -8,10 +8,10 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './bank.css';
-import { esc, money, json, empty, ledgerRow, chevron, mark } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, json, empty, ledgerRow, chevron, mark } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { formatClock } from '../../game/clock.ts';
-import { how, rules, bindHow } from '../phone/how.js';
+import { how, rules, bindHow } from '../phone/how.ts';
 
 
 function pay(label, action, payload, blocked, primary) {

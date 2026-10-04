@@ -11,7 +11,7 @@ import { createServerTelemetry, useTelemetry, track, captureError } from './inde
 import { readTelemetryConfig, publicConfig, parseDsn, DEFAULT_POSTHOG_HOST } from './config.js';
 import { ANALYTICS_QUEUE_LIMIT, ERROR_QUEUE_LIMIT, framesOf } from './transport.js';
 import { socialEvents, createCoPresence, createVoice } from './instrument.js';
-import { EVENTS } from '../../src/telemetry/events.js';
+import { EVENTS } from '../../src/telemetry/events.ts';
 
 const ADA = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10', BOLA = '1f2e3d4c-5b6a-4788-9a0b-1c2d3e4f5a6b';
 const ENV = { TELEMETRY_ENV: 'production', SENTRY_DSN_SERVER: 'https://serverkey@o1.ingest.sentry.example/42', SENTRY_DSN_CLIENT: 'https://clientkey@o1.ingest.sentry.example/41',

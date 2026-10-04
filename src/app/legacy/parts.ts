@@ -6,7 +6,7 @@
 import { chooseLook as chooseLookJs, lookEditor as lookEditorJs, lookStage as lookStageJs, lookSummary as lookSummaryJs, lookTabClick as lookTabClickJs, mountLookPreview as mountLookPreviewJs, sameLook as sameLookJs, withAccessory as withAccessoryJs, withoutAccessory as withoutAccessoryJs } from '../../ui/panels/look-ui.js'
 import { bindLgaCard as bindLgaCardJs, renderLgaCard as renderLgaCardJs } from '../../ui/panels/lga-card.js'
 import { channelLink as channelLinkJs, load as loadGrowthJs } from '../../ui/panels/growth-client.js'
-import { WALLPAPERS as WALLPAPERS_JS, getWallpaper as getWallpaperJs, setWallpaper as setWallpaperJs } from '../../ui/phone/wallpapers.js'
+import { WALLPAPERS as WALLPAPERS_JS, getWallpaper as getWallpaperJs, setWallpaper as setWallpaperJs } from '../../ui/phone/wallpapers.ts'
 import type { AccessoryId, Look, Wardrobe } from '../../types/life.ts'
 import type { LifeState } from '../../types/life.ts'
 import type { LegacyPanel, PanelApi, PanelView } from '../types/panel.ts'
@@ -51,7 +51,7 @@ export const escapeHtml = (value: unknown): string => String(value ?? '').replac
 
 // ---- the goal chip's offer to settle in -------------------------------------------------------
 import { nextNudge as nextNudgeJs, nudged as nudgedJs } from '../../quick-start/model.ts'
-import { keepNudges as keepNudgesJs, nudgesOf as nudgesOfJs } from '../../quick-start/entry.js'
+import { keepNudges as keepNudgesJs, nudgesOf as nudgesOfJs } from '../../quick-start/entry.ts'
 /** What was offered before on this device: how many times, which reasons, and the Lagos day of the last. */
 export interface NudgeMemory { count: number; reasons: string[]; day: number | null }
 export interface NudgeFacts { guest: boolean; activities: number; firstAt: number | null; busy: boolean; day: number }

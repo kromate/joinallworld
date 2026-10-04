@@ -25,8 +25,8 @@
  * `{ lga, via: 'device' }` and nothing else. The player always confirms the answer before it is sent.
  */
 import './world.css';
-import { mark, esc, money } from '../dom.js';
-import { linkWords } from '../link.js';
+import { mark, esc, money } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { loadCityPack, hasCityPack } from '../../map3d/regions.js';
 import { resolveLga } from '../../map3d/lga.js';
 

@@ -8,8 +8,8 @@
  * cheer(parent) — a short burst of confetti under the top bar for a finished goal: CSS only
  *   (.life-burst in src/ui/shell.css), removed when its last piece has faded, nothing under reduced motion.
  */
-import { money, cap } from '../ui/dom.js';
-import { glyph, hasGlyph } from '../ui/phone/icons.js';
+import { money, cap } from '../ui/dom.ts';
+import { glyph, hasGlyph } from '../ui/phone/icons.ts';
 
 export type RewardKind = 'money' | 'gain' | 'loss' | 'xp';
 export interface RewardChip { text: string; kind: RewardKind; glyph: string }

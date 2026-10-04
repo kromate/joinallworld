@@ -3,15 +3,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { createTelemetry, CALL_LIMIT } from './index.js';
-import { createCore, STORAGE_KEY, QUEUE_LIMIT } from './core.js';
-import { captureArgs } from './clean.js';
-import { scrubEvent } from './scrub.js';
-import { isDevHost, privacySignal, resolveConsent, clientPlan, lagosDay, daysBetween, latencyBucket, fpsBucket } from './policy.js';
-import { newMemo, sessionStarted, stateEvents } from './funnel.js';
-import { consentHtml } from './consent-ui.js';
-import { CONSENT, whatWeCollect, regionWords } from './what-we-collect.js';
-import { EVENTS, TRACKED_EVENTS } from './events.js';
+import { createTelemetry, CALL_LIMIT } from './index.ts';
+import { createCore, STORAGE_KEY, QUEUE_LIMIT } from './core.ts';
+import { captureArgs } from './clean.ts';
+import { scrubEvent } from './scrub.ts';
+import { isDevHost, privacySignal, resolveConsent, clientPlan, lagosDay, daysBetween, latencyBucket, fpsBucket } from './policy.ts';
+import { newMemo, sessionStarted, stateEvents } from './funnel.ts';
+import { consentHtml } from './consent-ui.ts';
+import { CONSENT, whatWeCollect, regionWords } from './what-we-collect.ts';
+import { EVENTS, TRACKED_EVENTS } from './events.ts';
 import { createLife } from '../life.ts';
 
 const PUBLIC = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10';
@@ -75,7 +75,7 @@ test('only the three wrapper files import an SDK, and the facade imports nothing
   assert.deepEqual(users.sort(), ['posthog.js', 'sentry-replay.js', 'sentry.js']);
   assert.deepEqual(importsOf('index.js'), [], 'the facade in the entry chunk has no static import');
   // The core reaches the SDK wrappers and the sheet only through import(): each stays its own chunk.
-  assert.ok(importsOf('core.js').every((name) => ['./policy.js', './funnel.js'].includes(name)));
+  assert.ok(importsOf('core.js').every((name) => ['./policy.ts', './funnel.ts'].includes(name)));
   // The game's entry reaches telemetry through the facade only.
   assert.deepEqual(importsOf('../life-main.js').filter((name) => name.includes('telemetry')), ['./telemetry/index.js']);
 });
@@ -545,7 +545,7 @@ test('every event the game’s screens report is in the catalogue, with every pr
   // …and the other way round: nothing is catalogued as a screen's event that no screen reports.
   for (const name of TRACKED_EVENTS) assert.ok(reported.has(name), `${name} is catalogued but nothing reports it`);
   // One source per event: an event a screen reports is never also derived here, and the old flow's derivations are gone.
-  const derived = readFileSync(new URL('./funnel.js', import.meta.url), 'utf8') + readFileSync(new URL('./core.js', import.meta.url), 'utf8');
+  const derived = readFileSync(new URL('./funnel.ts', import.meta.url), 'utf8') + readFileSync(new URL('./core.ts', import.meta.url), 'utf8');
   for (const name of TRACKED_EVENTS) assert.ok(!new RegExp(`['"]${name}['"]`).test(derived), `${name} is also emitted by telemetry itself`);
   for (const [name, spec] of Object.entries(EVENTS)) if (spec.from === 'client' && name !== '$pageview') assert.ok(new RegExp(`['"]${name}['"]`).test(derived), `${name} is catalogued as derived but telemetry does not emit it`);
 });

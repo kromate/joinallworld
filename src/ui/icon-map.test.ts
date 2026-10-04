@@ -2,8 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
-import { glyphNameFor, glyphOfEmoji, iconFor, withGlyphs, stripLeadEmoji } from './icon-map.js';
-import { hasGlyph, glyph, glyphFor } from './phone/icons.js';
+import { glyphNameFor, glyphOfEmoji, iconFor, withGlyphs, stripLeadEmoji } from './icon-map.ts';
+import { hasGlyph, glyph, glyphFor } from './phone/icons.ts';
 import { VENUES, COMING_SOON } from '../game/content/venues.ts';
 import { FURNITURE, CATEGORIES, HOME_SPOTS, HOME_ACTIVITIES } from '../game/content/furniture.ts';
 import { INGREDIENTS, RECIPES } from '../game/content/food.ts';
@@ -106,9 +106,9 @@ test('every panel id has a glyph for its sheet head and its Sim tab, and the res
   const later = ['contacts', 'family', 'neighbours', 'ads', 'support'];
   for (const id of later) { assert.equal(glyphFor(id), id); assert.equal(hasGlyph(id), false, `${id} is not in the first download`); }
   let told = 0;
-  const { onGlyphs } = await import('./phone/icons.js');
+  const { onGlyphs } = await import('./phone/icons.ts');
   const off = onGlyphs(() => { told += 1; });
-  await import('./phone/icons-more.js');
+  await import('./phone/icons-more.ts');
   off();
   for (const id of later) assert.ok(drawn(glyphFor(id)), `${id} is drawn once icons-more.js has loaded`);
   assert.ok(told <= 1, 'listeners hear about it once (or it was already loaded by another test file in this process)');

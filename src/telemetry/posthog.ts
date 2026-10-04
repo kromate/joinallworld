@@ -13,8 +13,8 @@
  *     catalogue (./events.js), and GeoIP lookup is disabled per event ($geoip_disable)
  */
 import posthog from 'posthog-js/dist/module.slim.no-external.js';
-import { scrubProps, isUuid } from './scrub.js';
-import { cleanEvent, captureArgs } from './clean.js';
+import { scrubProps, isUuid } from './scrub.ts';
+import { cleanEvent, captureArgs } from './clean.ts';
 
 export const PERSISTENCE_NAME = 'allworld_analytics';
 let initialised = false;
@@ -40,7 +40,7 @@ export function startPosthog({ key, host, release, env, distinctId = null, locat
   initialised = true;
   let identified = null;
   return {
-    /** @param {import('./clean.js').Item} item */
+    /** @param {import('./clean.ts').Item} item */
     capture(item) { const args = captureArgs(item); if (args) posthog.capture(...args); },
     identify(id, traits) {
       if (!isUuid(id) || id === identified) return;

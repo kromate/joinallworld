@@ -44,7 +44,7 @@ import { lgaAt } from './lga.js';
 import { tripOf, createTripClock, tripPose } from './trip.js';
 import { PLINTH as PLINTH_UNIT } from './landmarks.js';
 import { avatarBox, labelShift, nearPoints } from './labels.js';
-import { iconFor } from '../ui/icon-map.js';
+import { iconFor } from '../ui/icon-map.ts';
 
 /** How close the camera may come: near enough to tell the houses of a compact estate apart. */
 const CLOSEST = 3;

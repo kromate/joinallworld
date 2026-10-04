@@ -4,11 +4,11 @@
  * and an icon on it. No uploaded pictures and no links in this wave — the panel says so.
  * Data: GET /api/civic/ads (one request for every ad). A form, so `live: false`.
  */
-import { esc, money, json, iconFor } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, json, iconFor } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from '../../game/content/civic.ts';
 import { button, busy, dateTime, entry, load, put, send, stale, status, requestId, requestDone } from './civic-ui.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 
 const PANEL = 'ads';
 let tab = 'billboard';

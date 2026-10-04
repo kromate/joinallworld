@@ -13,8 +13,8 @@
  * redraws at once so the keyboard stays on the summary.
  */
 import './how.css';
-import { esc } from '../dom.js';
-import { rulesList, toggled } from './logic.js';
+import { esc } from '../dom.ts';
+import { rulesList, toggled } from './logic.ts';
 
 let opened = new Set();
 

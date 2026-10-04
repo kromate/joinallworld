@@ -5,9 +5,9 @@
  * src/game/systems/missions.js and content/missions.js; this file only draws them.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, json, money, mark, section } from '../dom.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { linkWords } from '../link.js';
+import { esc, json, money, mark, section } from '../dom.ts';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { linkWords } from '../link.ts';
 import { G, load, share, until, track } from './growth-client.js';
 
 const KIND_ICON = { life: 'home', discovery: 'compass', social: 'people' };

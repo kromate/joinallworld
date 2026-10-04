@@ -3,10 +3,10 @@
  * Rich List: top balances and top earners of the week, plus the real city counters.
  * Everything shown comes from the server (GET /api/civic/richlist); nothing is estimated here.
  */
-import { esc, money, empty, avatar } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, money, empty, avatar } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { button, busy, count, entry, load, send, stale, status } from './civic-ui.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 
 const key = (view) => `rich:${view.cityId}`;
 const path = (view) => `/api/civic/richlist?city=${view.cityId}`;

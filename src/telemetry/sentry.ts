@@ -16,7 +16,7 @@
  *     sessions that hit an error, with all text and inputs masked and every canvas blocked.
  */
 import { init, captureException, captureMessage, addBreadcrumb, setUser, withScope, globalHandlersIntegration, linkedErrorsIntegration, dedupeIntegration } from '@sentry/browser';
-import { scrubEvent, scrubProps, stripUrl, isUuid, BREADCRUMB_CATEGORIES } from './scrub.js';
+import { scrubEvent, scrubProps, stripUrl, isUuid, BREADCRUMB_CATEGORIES } from './scrub.ts';
 
 /**
  * @param {{ dsn: string, release?: string, env?: string, replayOnError?: boolean, userId?: string | null, window: Window, typed?: () => string[] }} options
@@ -33,7 +33,7 @@ export async function startSentry({ dsn, release, env, replayOnError = false, us
   };
   const integrations = [globalHandlersIntegration(), linkedErrorsIntegration(), dedupeIntegration()];
   if (replayOnError) {
-    try { integrations.push((await import('./sentry-replay.js')).replay()); } catch { /* replay could not load: errors are still reported */ }
+    try { integrations.push((await import('./sentry-replay.ts')).replay()); } catch { /* replay could not load: errors are still reported */ }
   }
   init({
     dsn, release, environment: env,

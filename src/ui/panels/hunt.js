@@ -3,11 +3,11 @@
  * Daily gem hunt: the sheet (a Phone app) that the HUD chip (./hunt-chip.js) opens.
  * How the hunt works is original; the chip wording and the prize follow the reference game.
  */
-import { esc, money, mark } from '../dom.js';
+import { esc, money, mark } from '../dom.ts';
 import { count, entry, load, stale } from './civic-ui.js';
 import { isDeparting } from '../../game/registry.ts';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
-import { linkWords } from '../link.js';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
+import { linkWords } from '../link.ts';
 
 const travelling = (state) => isDeparting(state); // a trip or the commute: in no venue
 

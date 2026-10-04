@@ -1,6 +1,6 @@
 // Small string-template helpers shared by the shell and every panel.
-import { glyph } from './phone/icons.js';
-import { iconFor, withGlyphs, stripLeadEmoji } from './icon-map.js';
+import { glyph } from './phone/icons.ts';
+import { iconFor, withGlyphs, stripLeadEmoji } from './icon-map.ts';
 
 /** Escape text for HTML content and attribute values. Use it on EVERY dynamic value. */
 export const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

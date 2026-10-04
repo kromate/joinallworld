@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.js';
+import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.ts';
 
 test('shortcut map matches the documented keys and resolves events', () => {
   const run = key => shortcutFor({ key })?.run;

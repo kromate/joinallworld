@@ -5,8 +5,8 @@
  * The calendar itself is data (src/game/content/calendar.js) read by pure functions
  * (src/game/calendar.js); the list is computed here from the server's clock, with no request.
  */
-import { esc, json, money, mark, empty } from '../dom.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { esc, json, money, mark, empty } from '../dom.ts';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 import { upcomingEvents, eventIcs } from '../../game/calendar.ts';
 import { isDeparting } from '../../game/registry.ts';
 import { G, load, share, span, until, channelLink } from './growth-client.js';

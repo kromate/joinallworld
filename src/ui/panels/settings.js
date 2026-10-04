@@ -12,11 +12,11 @@
  * account. The panel contract is at the top of src/ui/shell.js.
  */
 import './settings.css';
-import { esc, chevron, mark } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, chevron, mark } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { channelLink, load as loadGrowth } from './growth-client.js';
-import { WALLPAPERS, getWallpaper, setWallpaper } from '../phone/wallpapers.js';
-import { how, rules as ruleList, bindHow } from '../phone/how.js';
+import { WALLPAPERS, getWallpaper, setWallpaper } from '../phone/wallpapers.ts';
+import { how, rules as ruleList, bindHow } from '../phone/how.ts';
 
 export const SETTINGS_KEY = 'joinallworld-settings-v1';
 const DEFAULTS = Object.freeze({ sound: true, music: true });

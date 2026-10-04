@@ -14,8 +14,8 @@
  * The names and properties of the events are in ./events.js (the catalogue); the funnel is derived
  * from server states in ./funnel.js.
  */
-import { clientPlan, resolveConsent, privacySignal, lagosDay, daysBetween, latencyBucket, fpsBucket } from './policy.js';
-import { newMemo, sessionStarted, stateEvents } from './funnel.js';
+import { clientPlan, resolveConsent, privacySignal, lagosDay, daysBetween, latencyBucket, fpsBucket } from './policy.ts';
+import { newMemo, sessionStarted, stateEvents } from './funnel.ts';
 
 export const STORAGE_KEY = 'joinallworld-telemetry-v1';
 export const QUEUE_LIMIT = 200;
@@ -28,14 +28,14 @@ const normalise = (choice) => (choice === true || choice === 'granted' || choice
 
 /**
  * @param {object} env everything the core touches, injectable for tests
- * @param {import('./policy.js').ClientConfig} env.config   what GET /api/telemetry/config answered
+ * @param {import('./policy.ts').ClientConfig} env.config   what GET /api/telemetry/config answered
  * @param {Window} [env.window]
  * @param {() => number} [env.now]
  * @param {() => number} [env.random]
  * @param {{ sentry: () => Promise<any>, posthog: () => Promise<any>, consent: () => Promise<any> }} [env.loaders]
  */
 export function createCore({ config, window: win = globalThis.window, now: wall = Date.now, random = Math.random,
-  loaders = { sentry: () => import('./sentry.js'), posthog: () => import('./posthog.js'), consent: () => import('./consent-ui.js') } }) {
+  loaders = { sentry: () => import('./sentry.ts'), posthog: () => import('./posthog.ts'), consent: () => import('./consent-ui.ts') } }) {
   /** While the facade's kept calls are replayed, the clock reads the moment each call was made. */
   let replayAt = null;
   const now = () => replayAt ?? wall();

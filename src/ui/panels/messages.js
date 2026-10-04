@@ -14,8 +14,8 @@
  * All text is escaped; nothing a player typed is ever rendered as markup or as a link.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, json, empty, avatar, glyph, mark, iconFor, withGlyphs } from '../dom.js';
-import { linkWords } from '../link.js';
+import { esc, json, empty, avatar, glyph, mark, iconFor, withGlyphs } from '../dom.ts';
+import { linkWords } from '../link.ts';
 import { unreadChats, unreadUpdates, freshNotices, noticesSeen, markNoticesSeen, notifications, messagesBadge } from './inbox.js';
 import { formatClock } from '../../game/clock.ts';
 import { S, bindCommon, gate, socketNote, call, perform, sync, openThread, threadView, send, retry, discard, cityId, newClientId } from './social-client.js';

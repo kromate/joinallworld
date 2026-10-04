@@ -41,6 +41,7 @@ import { createOverlays } from './overlays.js';
 import { tripOf, createTripClock, tripPose } from './trip.js';
 import { PLINTH as PLINTH_UNIT } from './landmarks.js';
 import { avatarBox, labelShift, nearPoints } from './labels.js';
+import { iconFor } from '../ui/icon-map.js';
 
 const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34, PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
 let hintSeen = false;             // the how-to line shows until the player first moves the map, picks a place or travels
@@ -218,7 +219,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       const source = VENUES[place.id] || COMING_SOON[place.id];
       const node = doc.createElement('button');
       node.type = 'button'; node.className = `m3-label is-${place.kind}`; node.dataset.venue = place.id;
-      const icon = doc.createElement('span'); icon.className = 'm3-label-icon'; icon.setAttribute('aria-hidden', 'true'); icon.textContent = source?.icon || '📍';
+      const icon = doc.createElement('span'); icon.className = 'm3-label-icon'; icon.setAttribute('aria-hidden', 'true'); icon.innerHTML = iconFor('venue', place.id, source?.icon);
       const text = doc.createElement('span'); text.className = 'm3-label-text';
       const name = doc.createElement('b'), note = doc.createElement('small');
       text.append(name, note); node.append(icon, text);
@@ -265,7 +266,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       node.className = `m3-chip is-${chip.kind}`;
       if (chip.label) { node.setAttribute('role', 'img'); node.setAttribute('aria-label', chip.label); }
       if (chip.bg) { node.style.background = chip.bg; node.style.color = chip.ink; }
-      const icon = doc.createElement('span'); icon.className = 'm3-chip-icon'; icon.textContent = chip.icon || '';
+      const icon = doc.createElement('span'); icon.className = 'm3-chip-icon'; icon.innerHTML = chip.glyph || '';
       node.append(icon);
       // Player text goes in as text, never as markup, and is not a link or a button.
       if (chip.text) { const text = doc.createElement('span'); text.className = 'm3-chip-text'; text.textContent = chip.text; node.append(text); }
@@ -274,7 +275,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
         const row = doc.createElement('span'); row.className = 'm3-chip-homes';
         for (const item of chip.homes) {
           const house = doc.createElement(item.you ? 'span' : 'button');
-          house.className = `m3-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`; house.textContent = '🏠';
+          house.className = `m3-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`; house.innerHTML = chip.homeGlyph || iconFor('house', null, 'home');
           house.title = item.you ? `${item.name} (you)` : item.name;
           house.setAttribute('aria-label', `${item.name}${item.you ? ' (you)' : ''}, ${item.online ? 'online now' : 'not online'}`);
           if (!item.you) { house.type = 'button'; house.dataset.neighbour = item.id; house.dataset.name = item.name; }

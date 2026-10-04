@@ -288,13 +288,15 @@ const shrine = {
     b.light(0, 4.6, 3, '#ffb070', 26, 14);
     return {
       spots: [
-        landmark('stage', /stage|perform|play|sing|band|gig|shift|work|job|mic/, -1.8, -5.6, 0, { y: 1.24, act: { pose: 'dance' } }),
+        landmark('stage', /stage|perform|play|sing|band|gig|shift|work|job|mic/, -1.8, -5.6, 0, { y: 1.24, act: { pose: 'dance' }, approach: [-1.8, -3.5] }),
         landmark('floor', /dance|floor|yabis|listen|watch|vibe|show|concert/, 0, 0.6, PI, { act: { pose: 'dance' } }),
         landmark('bar', /bar|drink|palm|beer|stout/, -7.4, 3.6, -HALF),
         landmark('grill', /suya|grill|food|pepper|eat|smoke/, 8.2, 4.6, HALF),
-        landmark('backstage', /backstage|rehears|learn|lesson|meet the|legend/, 6.8, -6.4, PI + 0.5, { y: 1.24 }),
+        landmark('backstage', /backstage|rehears|learn|lesson|meet the|legend/, 6.8, -6.4, PI + 0.5, { y: 1.24, approach: [6.8, -3.5] }),
         landmark('people', /people|crowd|meet/, 3, 7.6, PI),
       ],
+      // The stage is stepped up on to from its front edge.
+      raised: [{ rect: [-8, -9.7, 8, -4.3], y: 1.24, lip: 0.55 }],
       crowd: [[1.2, 4.6, PI], [-2.2, 3.6, PI - 0.3], [3.4, 1.4, PI + 0.4], [-3.6, 0.6, 2.6], [-0.6, 6.2, PI], [5.6, 7.4, -2.6], [-3.2, 7.4, 2.8], [6.6, 1.6, -2.2], [-6.6, 0.6, 2.2], [-6.8, 7, 1.8], [2.4, 9, PI], [7.8, 8.6, -2.6]],
     };
   },

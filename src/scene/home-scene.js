@@ -6,8 +6,12 @@
  *
  * WHAT IT DRAWS
  *   An isometric-style room on a checkerboard grid (grid × grid tiles for the player's house),
- *   two cut-away walls with a window and a door, and every placed object from state.home.items
- *   as a simple low-poly shape at its tile and rotation. Wall items hang on the two walls.
+ *   two walls with a window and a door, and every placed object from state.home.items as a simple
+ *   low-poly shape at its tile and rotation. Wall items hang on the two walls.
+ *   DOLLHOUSE: the camera may orbit all the way round. look(x, z) — called by the host with the
+ *   camera's place before each frame — hides whichever wall the camera has gone behind, together
+ *   with its window or door and every wall item hanging on it (lamps, the calendar, art), so the
+ *   room is always visible. It only flips `visible`; nothing is rebuilt.
  *   The object the player picked gets a yellow marker; in Buy mode the placement ghost gets a
  *   green (valid) or red (invalid) footprint.
  *   The player's own avatar (state.onboarding.look, drawn by src/scene/characters.js) stands
@@ -43,6 +47,7 @@
 import { FURNITURE, KINDS } from '../game/content/furniture.js';
 import { createBatch, sceneMaterials, releaseObjects } from './build.js';
 import { drawAvatar, buildAvatar, POSES } from './characters.js';
+import { PLAYER_DETAIL, rigOf } from './avatar-rig.js';
 import { createWalkGrid } from './movement.js';
 import { HOUSES, DEFAULT_HOUSE } from '../game/content/housing.js';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.js';
@@ -55,6 +60,8 @@ const WOOD = '#7a5c40', DARK = '#33373d', WHITE = '#f3f1ea', STEEL = '#9aa3a8';
 /** An avatar is 2.45 units tall in venue scale; furniture here is modelled one unit per tile (about a metre). */
 const AVATAR_SCALE = 0.72;
 export const MAX_GUESTS_SHOWN = 5;
+/** How tall each furniture shape stands, in tiles — what can come between the camera and the avatar (camera-collision.js). Unlisted shapes are low. */
+const TALL = { bed: 1.3, fridge: 1.9, shower: 1.8, speaker: 1.25, tv: 1.4, shelf: 1.5, wardrobe: 1.7, tripod: 1.25, mic: 1.3, floorlamp: 1.7, cage: 1.5, aquarium: 1.15, plant: 1.1, drum: 1, cooker: 1.1, desk: 1, bench: 1, inverter: 0.95, chair: 0.95, sofa: 0.85 };
 
 const legs = (b, w, d, h, c = WOOD) => { for (const x of [-w / 2, w / 2]) for (const z of [-d / 2, d / 2]) b.box(x, h / 2, z, 0.06, h, 0.06, c); };
 
@@ -168,6 +175,10 @@ export function buildHomeScene(kit) {
   const { THREE } = kit;
   const group = new THREE.Group();
   const room = new THREE.Group(), furniture = new THREE.Group(), overlay = new THREE.Group(), people = new THREE.Group();
+  // Each wall, with its trim and its window or door, is a group of its own: hidden when the camera is behind it.
+  const wallGroups = { back: new THREE.Group(), left: new THREE.Group() };
+  const hiddenWalls = { back: false, left: false };
+  let solids = [];
   group.add(room, furniture, overlay, people);
   group.position.set(SHIFT, 0, SHIFT);
   const glow = new THREE.PointLight('#ffe3b0', 26, 18, 1.5);
@@ -200,23 +211,24 @@ export function buildHomeScene(kit) {
   }
 
   function buildRoom() {
-    room.clear();
-    const b = tools(room);
+    room.clear(); wallGroups.back.clear(); wallGroups.left.clear();
+    const b = tools(room), back = tools(wallGroups.back), left = tools(wallGroups.left);
     b.box(0, -0.21, 0, ROOM + 0.5, 0.4, ROOM + 0.5, '#6f6253');
     for (let y = 0; y < grid; y++) for (let x = 0; x < grid; x++) b.box(along(x), 0, along(y), tile * 0.985, 0.03, tile * 0.985, (x + y) % 2 ? '#d9cdb4' : '#bfae8f');
-    b.box(-0.125, WALL_HEIGHT / 2, -ROOM / 2 - 0.125, ROOM + 0.25, WALL_HEIGHT, 0.25, '#d7ccb0');
-    b.box(-ROOM / 2 - 0.125, WALL_HEIGHT / 2, 0, 0.25, WALL_HEIGHT, ROOM, '#c3cbb6');
-    b.box(0, 0.12, -ROOM / 2 + 0.02, ROOM, 0.24, 0.04, '#8c7a62');
-    b.box(-ROOM / 2 + 0.02, 0.12, 0, 0.04, 0.24, ROOM, '#8c7a62');
+    back.box(-0.125, WALL_HEIGHT / 2, -ROOM / 2 - 0.125, ROOM + 0.25, WALL_HEIGHT, 0.25, '#d7ccb0');
+    left.box(-ROOM / 2 - 0.125, WALL_HEIGHT / 2, 0, 0.25, WALL_HEIGHT, ROOM, '#c3cbb6');
+    back.box(0, 0.12, -ROOM / 2 + 0.02, ROOM, 0.24, 0.04, '#8c7a62');
+    left.box(-ROOM / 2 + 0.02, 0.12, 0, 0.04, 0.24, ROOM, '#8c7a62');
     // Window on the back wall, door on the side wall — the same slots the placement rules keep clear.
     const wide = Math.min(tile * 0.86, 1.5);
     const wx = along(windowSlot(grid)), dz = along(doorSlot(grid));
-    b.box(wx, 2.0, -ROOM / 2 + 0.03, wide, 1.2, 0.07, '#5f4a36');
-    b.box(wx, 2.0, -ROOM / 2 + 0.07, wide - 0.16, 1.04, 0.02, '#a9d3ea', true);
-    b.box(wx, 2.0, -ROOM / 2 + 0.085, 0.05, 1.04, 0.02, '#5f4a36'); b.box(wx, 2.0, -ROOM / 2 + 0.085, wide - 0.16, 0.05, 0.02, '#5f4a36');
-    b.box(-ROOM / 2 + 0.03, 1.15, dz, 0.07, 2.3, wide, '#5f4a36');
-    b.box(-ROOM / 2 + 0.075, 1.12, dz, 0.02, 2.1, wide - 0.16, '#8a623d');
-    b.box(-ROOM / 2 + 0.11, 1.1, dz + wide * 0.3, 0.05, 0.07, 0.07, '#d8c27a');
+    back.box(wx, 2.0, -ROOM / 2 + 0.03, wide, 1.2, 0.07, '#5f4a36');
+    back.box(wx, 2.0, -ROOM / 2 + 0.07, wide - 0.16, 1.04, 0.02, '#a9d3ea', true);
+    back.box(wx, 2.0, -ROOM / 2 + 0.085, 0.05, 1.04, 0.02, '#5f4a36'); back.box(wx, 2.0, -ROOM / 2 + 0.085, wide - 0.16, 0.05, 0.02, '#5f4a36');
+    left.box(-ROOM / 2 + 0.03, 1.15, dz, 0.07, 2.3, wide, '#5f4a36');
+    left.box(-ROOM / 2 + 0.075, 1.12, dz, 0.02, 2.1, wide - 0.16, '#8a623d');
+    left.box(-ROOM / 2 + 0.11, 1.1, dz + wide * 0.3, 0.05, 0.07, 0.07, '#d8c27a');
+    room.add(wallGroups.back, wallGroups.left);
     // The floor reports the camera and canvas the host draws with, so taps can be resolved.
     room.children[0].onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); };
   }
@@ -229,6 +241,9 @@ export function buildHomeScene(kit) {
       if (rot === 0) holder.position.set(along(x), WALL_ITEM_Y, -ROOM / 2 + 0.01);
       else { holder.position.set(-ROOM / 2 + 0.01, WALL_ITEM_Y, along(y)); holder.rotation.y = Math.PI / 2; }
       holder.scale.setScalar(scale);
+      // It hangs on that wall, and hides with it.
+      holder.userData.wall = rot === 0 ? 'back' : 'left';
+      holder.visible = !hiddenWalls[holder.userData.wall];
     } else {
       const size = footprint(def, rot);
       holder.position.set(along(x, size.w), 0.015, along(y, size.h));
@@ -245,8 +260,10 @@ export function buildHomeScene(kit) {
     const b = tools(overlay);
     if (def.wall) {
       const size = Math.max(tile, 0.8) * 0.94;
-      if (rot === 0) b.box(along(x), WALL_ITEM_Y, -ROOM / 2 + 0.006, size, size * 1.2, 0.012, colour, true);
-      else b.box(-ROOM / 2 + 0.006, WALL_ITEM_Y, along(y), 0.012, size * 1.2, size, colour, true);
+      const mark = rot === 0 ? b.box(along(x), WALL_ITEM_Y, -ROOM / 2 + 0.006, size, size * 1.2, 0.012, colour, true)
+        : b.box(-ROOM / 2 + 0.006, WALL_ITEM_Y, along(y), 0.012, size * 1.2, size, colour, true);
+      mark.userData.wall = rot === 0 ? 'back' : 'left';
+      mark.visible = !hiddenWalls[mark.userData.wall];
       return;
     }
     const size = footprint(def, rot);
@@ -308,7 +325,8 @@ export function buildHomeScene(kit) {
     let entry = figures.get(pose);
     if (!entry) {
       const state = lastState;
-      entry = buildAvatar(kit, who.look ?? state?.onboarding?.look ?? null, { pose, seed: who.seed, scale: tile * AVATAR_SCALE, marker: 'crown' });
+      // The player's own figure is seen close up: the best detail characters.js offers a scene (avatar-rig.js).
+      entry = buildAvatar(kit, who.look ?? state?.onboarding?.look ?? null, { pose, seed: who.seed, scale: tile * AVATAR_SCALE, marker: 'crown', detail: PLAYER_DETAIL });
       entry.visible = false;
       avatar.add(entry);
       figures.set(pose, entry);
@@ -349,6 +367,17 @@ export function buildHomeScene(kit) {
       return [-edge + item.x * tile + inset, -edge + item.y * tile + inset, -edge + (item.x + size.w) * tile - inset, -edge + (item.y + size.h) * tile - inset];
     });
     walkGrid = createWalkGrid({ bounds: [-edge + 0.22, -edge + 0.22, edge - 0.15, edge - 0.15], block, cell: 0.25, radius: Math.min(0.3, tile * 0.22) });
+    // The same footprints, with heights: what can stand between the camera and the avatar.
+    solids = items.map((item, index) => [block[index][0], 0, block[index][1], block[index][2], (TALL[FURNITURE[item.itemId].shape] || 0.7) * tile, block[index][3]]).filter((box) => box[4] > 0.9 * tile);
+  }
+  /** Hide the walls the camera is behind (and what hangs on them); show the others. True when anything changed. */
+  function look(x, z) {
+    const back = z < -ROOM / 2, left = x < -ROOM / 2;
+    if (back === hiddenWalls.back && left === hiddenWalls.left) return false;
+    hiddenWalls.back = back; hiddenWalls.left = left;
+    wallGroups.back.visible = !back; wallGroups.left.visible = !left;
+    for (const parent of [furniture, overlay]) for (const child of parent.children) if (child.userData.wall) child.visible = !hiddenWalls[child.userData.wall];
+    return true;
   }
   /** Rebuild what changed about the people: the player's figure, where it rests, the guests. Returns true when anything did. */
   function refreshPeople(state) {
@@ -411,7 +440,8 @@ export function buildHomeScene(kit) {
     raycaster.setFromCamera(pointer, camera);
     group.updateMatrixWorld(true);
     let id = null;
-    for (let node = raycaster.intersectObjects(furniture.children, true)[0]?.object; node && !id; node = node.parent) id = node.userData.objectId ?? null;
+    // What hangs on a hidden wall cannot be tapped.
+    for (let node = raycaster.intersectObjects(furniture.children.filter((child) => child.visible), true)[0]?.object; node && !id; node = node.parent) id = node.userData.objectId ?? null;
     let cell = null, x = NaN, z = NaN;
     const point = raycaster.ray.intersectPlane(floorPlane, new THREE.Vector3());
     if (point) {
@@ -484,6 +514,9 @@ export function buildHomeScene(kit) {
       return guestTags;
     },
     tags: () => (selfTag ? [selfTag, ...guestTags] : [...guestTags]),
+    look,
+    /** Which walls are showing right now: { back, left } (true = shown). */
+    get walls() { return { back: !hiddenWalls.back, left: !hiddenWalls.left }; },
     /** True in Buy mode: taps place and pick furniture, and the host does not walk the avatar. */
     get placing() { return buying(); },
     pickAt, use,
@@ -498,16 +531,19 @@ export function buildHomeScene(kit) {
       get entrance() { return { x: along(0), y: 0.03, z: along(doorSlot(grid)), ry: Math.PI / 2 }; },
       open: false,
       get scale() { return tile * AVATAR_SCALE; },
-      // The room is drawn up-screen of the origin (SHIFT); the camera keeps looking at the origin when zoomed out.
-      centre: [-SHIFT, 0.7, -SHIFT],
+      // The camera turns about the middle of the room, so a full orbit keeps the room in place on screen
+      // (the host already lifts the scene clear of the bottom panels through its insets).
+      centre: [0, 0.7, 0],
       avatar,
       drive(on) { driven = Boolean(on); if (!driven && restAt) { show(restAt.pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); } },
       rest: () => restAt,
       spots: () => [],
       people: () => guestTags.map((tag) => ({ id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y })),
+      get solids() { return solids; },
       move: moveAvatar,
-      pose: (name) => show(POSES.includes(name) ? name : 'stand'),
-      gait: (step) => show(step ? 'walk' : 'stand'),
+      pose: (name) => { rigOf(figures.get('stand'))?.rest(); return show(POSES.includes(name) ? name : 'stand'); },
+      // With a rigged figure the limbs swing with `phase`; without one the two figures alternate (avatar-rig.js).
+      gait(step, phase = 0) { const rig = rigOf(figures.get('stand')); if (rig) { rig.stride(phase, 1); return show('stand'); } return show(step ? 'walk' : 'stand'); },
       heightAt: () => 0.03,
       near: () => false,
       goal(x, z) {

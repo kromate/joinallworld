@@ -18,6 +18,10 @@
  *   b.light(x, y, z, colour, intensity, distance);                  // a point light request
  *   const { meshes, lights, triangles } = b.build(sceneMaterials(kit));
  *
+ * PARTS. A primitive drawn with `{ part: 'name' }` is baked into its own mesh per layer (named
+ * 'solid@name', with mesh.userData.part = 'name') instead of the shared one, so a scene can show
+ * and hide that part by itself — the walls of a room, with what hangs on them, are parts.
+ *
  * Materials are three per kit, shared by every scene and avatar, and are freed with the kit.
  */
 
@@ -42,6 +46,9 @@ export const GLASS = Object.freeze({ layer: 'glass' });
 export function createBatch(THREE) {
   const layer = () => ({ pos: [], nor: [], col: [], idx: [] });
   const layers = { solid: layer(), glow: layer(), glass: layer() };
+  const BASE = ['solid', 'glow', 'glass'];
+  /** The vertex store for a layer, or for one named part of it (made the first time the part is drawn). */
+  const store = (name, part) => { if (!part) return layers[name]; const key = `${name}@${part}`; return (layers[key] ||= layer()); };
   const stack = [new THREE.Matrix4()];
   const lights = [];
   const colours = new Map();
@@ -61,7 +68,7 @@ export function createBatch(THREE) {
     e.set(o?.rx || 0, o?.ry || 0, o?.rz || 0, 'YXZ');
     m.compose(p.set(x, y, z), q.setFromEuler(e), s.set(sx, sy, sz)).premultiply(stack[stack.length - 1]);
     n3.getNormalMatrix(m);
-    const target = layers[o?.layer || 'solid'];
+    const target = store(Object.hasOwn(layers, o?.layer) && BASE.includes(o.layer) ? o.layer : 'solid', o?.part);
     const base = target.pos.length / 3;
     const [r, g, bl] = rgb(colour);
     const { pos, nor, idx } = shape;
@@ -120,21 +127,25 @@ export function createBatch(THREE) {
     },
     /** Where a local point ends up in scene space — for anchors recorded while drawing. */
     world(x, y, z) { v.set(x, y, z).applyMatrix4(stack[stack.length - 1]); return { x: v.x, y: v.y, z: v.z }; },
-    get triangles() { return (layers.solid.idx.length + layers.glow.idx.length + layers.glass.idx.length) / 3; },
+    get triangles() { let count = 0; for (const data of Object.values(layers)) count += data.idx.length; return count / 3; },
     /** Bake the batch into meshes. `materials` comes from sceneMaterials(kit). */
     build(materials) {
       const meshes = [];
       let triangles = 0;
-      for (const name of ['solid', 'glow', 'glass']) {
-        const data = layers[name];
+      // The three shared layers first, then each part's own meshes.
+      const keys = [...BASE, ...Object.keys(layers).filter((key) => !BASE.includes(key)).sort()];
+      for (const key of keys) {
+        const data = layers[key];
         if (!data.idx.length) continue;
+        const [name, part] = key.split('@');
         const geometry = new THREE.BufferGeometry();
         geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(data.pos), 3));
         geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(data.nor), 3));
         geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(data.col), 3));
         geometry.setIndex(new THREE.BufferAttribute(data.pos.length / 3 > 65535 ? new Uint32Array(data.idx) : new Uint16Array(data.idx), 1));
         const mesh = new THREE.Mesh(geometry, materials[name]);
-        mesh.name = name;
+        mesh.name = key;
+        if (part) mesh.userData.part = part;
         mesh.castShadow = name === 'solid';
         mesh.receiveShadow = name === 'solid';
         if (name === 'glass') mesh.renderOrder = 1;

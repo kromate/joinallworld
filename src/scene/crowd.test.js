@@ -44,6 +44,6 @@ test('a reported position places a player in the scene; without one nothing chan
   assert.ok(!('x' in placed[1]), 'a malformed position is ignored');
   assert.equal(placed.length, 2, 'a position for someone who is not here adds nobody');
   const far = crowdList({ players, positions: { [a]: { x: 400, z: -400 } } });
-  assert.deepEqual([far[0].x, far[0].z], [14.2, -14.2], 'kept on the floor');
+  assert.deepEqual([far[0].x, far[0].z], [20, -20], 'kept inside the room protocol’s bounds (the scene then keeps the figure on its own floor)');
   assert.deepEqual(crowdList({ players, positions: 'junk' }), plain);
 });

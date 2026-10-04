@@ -20,9 +20,14 @@ export function createKit() {
   const cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 9);
   const crownGeometry = new THREE.IcosahedronGeometry(1, 0);
   const geometries = [boxGeometry, sphereGeometry, cylinderGeometry, crownGeometry];
+  let prepare = null;
   function material(color, glow = false) {
     const key = `${color}:${glow}`;
-    if (!materials.has(key)) materials.set(key, new THREE.MeshStandardMaterial({ color, roughness: 0.92, ...(glow ? { emissive: color, emissiveIntensity: 1.3 } : {}) }));
+    if (!materials.has(key)) {
+      const made = new THREE.MeshStandardMaterial({ color, roughness: 0.92, ...(glow ? { emissive: color, emissiveIntensity: 1.3 } : {}) });
+      prepare?.(made);
+      materials.set(key, made);
+    }
     return materials.get(key);
   }
   function mesh(geometry, x, y, z, sx, sy, sz, color, parent, glow = false) {
@@ -39,6 +44,8 @@ export function createKit() {
     THREE, material, mesh, boxGeometry, sphereGeometry, cylinderGeometry, crownGeometry,
     /** Run `fn` when the kit is disposed. Returns a function that withdraws it. */
     onDispose(fn) { cleanups.add(fn); return () => cleanups.delete(fn); },
+    /** Run `fn(material)` on every material the kit has made and on each one it makes from now on (the host's see-through patch). */
+    eachMaterial(fn) { prepare = fn; materials.forEach((item) => fn(item)); },
     /** box(x, y, z, width, height, depth, colour, parent, glow?) */
     box: (x, y, z, w, h, d, c, p, glow) => mesh(boxGeometry, x, y, z, w, h, d, c, p, glow),
     /** round(x, y, z, radius, height, colour, parent, glow?) — an upright cylinder */

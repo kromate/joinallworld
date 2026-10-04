@@ -7,18 +7,19 @@
  *     standing at their own place in the scene (`at`, a landmark key).
  * Real players come first, so a regular never crowds a person out of the capped list.
  *
- * POSITIONS. A player's place in the scene is optional: `positions` is { [publicId]: { x, z } } in
- * scene coordinates — the same numbers the scene host reports for the local avatar ('jaw:avatar-move',
- * options.onMove in src/venue-world.js) and the presence channel's `move` message carries. The
- * entry file (src/life-main.js) does not pass them yet: that needs the host's onMove wired to the
- * community panel's moveTo(x, z), and the panel to expose its members' positions. Until then
- * players stand at the scene's spare places exactly as before.
+ * POSITIONS. `positions` is { [publicId]: { x, z } }: where each player stands, as the room's
+ * `presence` reports it — the numbers the scene host reports for the local avatar (options.onMove
+ * in src/venue-world.js, sent by the community module's moveTo). The entry file (src/life-main.js)
+ * passes what the community module's onMembers gives it. A player in the listing who has not
+ * reported a position yet stands at one of the scene's crowd places, as before; a player who is in
+ * the positions but NOT in the who-is-here listing is not drawn (the listing is what says someone
+ * is here: it leaves out anyone on a trip or still creating their Sim).
  * The result is what the scene host's setCrowd() takes; it is compared by value there, so
  * calling this again with unchanged data never causes a frame.
  */
 import { isDeparting } from '../game/registry.js';
-/** No venue floor reaches farther than this from its centre; a reported position is kept inside it. */
-const SCENE_REACH = 14.2;
+/** The room protocol's bounds (server/protocol.js POSITION_BOUNDS); the scene keeps a figure on its own floor. */
+const SCENE_REACH = 20;
 export const CROWD_LIMIT = 12; // equals MAX_CROWD in venue-scenes.js (asserted in crowd.test.js)
 
 export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_LIMIT, positions = null } = {}) {

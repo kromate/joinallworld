@@ -53,7 +53,8 @@ test('each scene builds within budget with a full crowd, and disposes without le
       assert.ok(stats.triangles > 1500, `${kind} has real geometry (${stats.triangles})`);
       assert.ok(stats.triangles < TRIANGLE_BUDGET, `${kind} triangles ${stats.triangles}`);
       // Static (≤ 3) + sky + crowd (≤ 2) + the player's own figure (≤ 2) + the spot ring; the two walking marks add at most 2 more.
-      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= 9, `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
+      // A room's two walls are parts of their own (≤ 3 layers each), so that the scene can hide the wall the camera is behind.
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= (entry.walls ? 15 : 9), `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
       assert.ok(stats.lights <= 4, `${kind} lights ${stats.lights}`);
       assert.equal(tags.length, MAX_CROWD, kind);
       for (const mesh of entry.group.children.filter((child) => child.isMesh)) {
@@ -341,13 +342,14 @@ test('a scene crowd is capped, placed and tagged; the player carries the crown',
   assert.deepEqual([all[0].kind, all[0].marker], ['self', 'crown']);
   const placed = entry.setCrowd([{ id: 'x', name: 'X', x: 4, z: -2 }, { id: 'y', name: 'Y', spot: 'snacks' }, null, 'junk']);
   assert.deepEqual([placed[0].position.x, placed[0].position.z], [4, -2]);
-  assert.ok(Math.hypot(placed[1].position.x - entry.anchors.snacks.x, placed[1].position.z - entry.anchors.snacks.z) < 2);
+  const fromSnacks = Math.hypot(placed[1].position.x - entry.anchors.snacks.x, placed[1].position.z - entry.anchors.snacks.z);
+  assert.ok(fromSnacks > 1 && fromSnacks < 3.2, `someone "at" a spot stands beside its marker, not on it (${fromSnacks.toFixed(2)} away)`);
   assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), true);
   assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), false);
   assert.equal(entry.tags()[0].text, 'Kromate');
   assert.equal(entry.setPlayer({ pose: 'wave' }), true);
   assert.deepEqual(entry.setCrowd([]), []);
-  assert.equal(entry.stats().meshes <= 7, true);
+  assert.equal(entry.stats().meshes <= 13, true);
   kit.dispose();
 });
 

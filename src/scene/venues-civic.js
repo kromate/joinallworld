@@ -166,11 +166,13 @@ function church(b, accent) {
   return {
     spots: [
       landmark('pews', /pew|seat|service|pray|worship|sermon|mass|sit|listen/, 0, 3.4, PI, { act: { pose: 'sit', x: 2.4, z: 3.4, ry: PI, seat: 0.6 } }),
-      landmark('altar', /altar|pastor|priest|bless|confess|counsel|thanksgiv|testimon|pulpit|deliver/, 0, -6.2, PI, { y: 0.53 }),
-      landmark('choir', /choir|sing|music|praise|band|instrument|rehears/, 5.6, -6.4, 0, { y: 0.5, act: { pose: 'wave' } }),
+      landmark('altar', /altar|pastor|priest|bless|confess|counsel|thanksgiv|testimon|pulpit|deliver/, 0, -6.2, PI, { y: 0.53, approach: [0, -4.5] }),
+      landmark('choir', /choir|sing|music|praise|band|instrument|rehears/, 5.6, -6.4, 0, { y: 0.5, act: { pose: 'wave' }, approach: [5.6, -4.5] }),
       landmark('offering', /offer|tithe|give|donat|charity|volunteer|work|job|seed/, -0.6, 8.6, -HALF, { act: { pose: 'work' } }),
       landmark('people', /people|crowd|meet/, 8.8, 4.4, -HALF),
     ],
+    // The chancel is one step up, taken at its front edge.
+    raised: [{ rect: [-8, -9.9, 8, -5.35], y: 0.5, lip: 0.5 }],
     crowd: [[9, 2.4, -HALF], [9.4, 6.4, -HALF], [-9, 4.6, HALF], [-9.2, 0.6, HALF], [0.6, 9.4, PI], [4.4, 9.4, PI], [-4.6, 9.4, PI], [8.8, -1.6, -2], [-8.8, -2.4, 2], [0, 6.2, PI], [8.6, 8.6, -2.4], [-8.8, 8.4, 2.4]],
   };
 }

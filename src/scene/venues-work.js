@@ -68,12 +68,13 @@ const hub = {
       spots: [
         landmark('desks', /desk|hack|code|project|laptop|wi-?fi|freelance|gig|work|job/, 2.8, 1.8, -HALF, { act: { pose: 'sit', x: 1, z: 1.75, ry: PI, seat: 0.6 } }),
         landmark('whiteboard', /meetup|whiteboard|board|learn|class|talk|workshop|founder|gist/, -4.6, -7.4, PI),
-        landmark('pitch', /pitch|stage|startup|demo|present|investor|hackathon/, 5.4, -7, 0, { y: 0.3, act: { pose: 'wave' } }),
+        landmark('pitch', /pitch|stage|startup|demo|present|investor|hackathon/, 5.4, -7, 0, { y: 0.3, act: { pose: 'wave' }, approach: [5.4, -5.7] }),
         landmark('coffee', /coffee|puff|snack|tea|kitchen|cafe/, -8.2, 4.4, -HALF),
         landmark('atm', /atm|cash|bank/, 10.6, -7.2, PI, { act: { pose: 'work' } }),
         landmark('lounge', /lounge|chill|bean|relax|rest/, 6.4, 6.6, 0.6),
         landmark('people', /people|crowd|meet/, -1.4, 5.6, 0),
       ],
+      raised: [{ rect: [2.8, -9.7, 9.2, -6.3], y: 0.3, lip: 0.3 }],
       crowd: [[0.6, 6.6, 0.4], [-3.4, 6.2, -0.5], [2.4, 4.4, 2.4], [-6.4, 5.4, 1.2], [3.4, -5.6, PI], [-7.6, -5.6, 2.6], [8.2, -4.8, PI], [-0.6, 8.4, 0.2], [3.6, 8, -0.4], [-7.4, 0.4, 1.6], [3.8, -1.2, -1.2], [-5.4, 8.4, 0.8]],
     };
   },

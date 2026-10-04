@@ -143,9 +143,8 @@
  *   - Identify players by session.publicId only; session.secret is the cookie and must never
  *     be stored in your collection, logged or returned.
  *   - All game-state changes go through ctx.act (the rules engine); routes never edit a life.
- *   - A route that settles or changes the caller's life ends with
- *     `finally { await ctx.core.revalidate(request.secret) }` so their rooms are re-checked
- *     whether or not the request succeeded (see routes/social.js, routes/civic.js).
+ *   - Rooms: the host re-checks the caller's rooms against the stored lives after EVERY API request
+ *     (ctx.core.revalidate(publicId), server.js), so a route needs no call of its own.
  *   - May import: ../protocol.js, ../../src/life.js, ../../src/game/** (pure). Must not import
  *     server.js, store.js, node:* modules or `ws` — keep modules portable.
  *

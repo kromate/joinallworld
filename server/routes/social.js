@@ -51,18 +51,13 @@ export default function socialRoutes(ctx) {
     const body = request.method === 'POST' ? await request.json() : {};
     // Every POST is durable before it is answered. A GET that only registered the caller need not
     // wait for the disk; one that applied something owed to their life (a gift, a friendship) does.
-    try {
-      const result = await ctx.store.transact((db) => {
-        const session = request.requireSession(db, { renew: true });
-        if (!ctx.allow(`social:http:${session.publicId}`, HTTP_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
-        return service.finish(db, call(db, session, body, request));
-      }, { durable: (value) => request.method !== 'GET' || value?.[MATERIAL] === true, waitForObserved: true, committed: (value) => service.committed(value) });
-      return { body: service.deliver(result), renew: true };
-    } finally {
-      // ROOM REVALIDATION SEAM (core.revalidate in server.js): a social request can settle the
-      // caller's life, so their rooms are re-checked afterwards — also when the request failed.
-      await ctx.core?.revalidate?.(request.secret);
-    }
+    // The caller's rooms are re-checked by the route host after every request (core.revalidate, server.js).
+    const result = await ctx.store.transact((db) => {
+      const session = request.requireSession(db, { renew: true });
+      if (!ctx.allow(`social:http:${session.publicId}`, HTTP_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
+      return service.finish(db, call(db, session, body, request));
+    }, { durable: (value) => request.method !== 'GET' || value?.[MATERIAL] === true, waitForObserved: true, committed: (value) => service.committed(value) });
+    return { body: service.deliver(result), renew: true };
   };
   const after = (request) => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };
   return {

@@ -61,7 +61,7 @@ import { civicEligibility } from '../../src/game/systems/civic.js';
 import { cityOf, emptyCivic, nextId } from '../civic/data.js';
 import { cleanLine } from '../civic/text.js';
 import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapNotice, govView, notices, vote, voteBlock } from '../civic/elections.js';
-import { hash53, isSharedAddress } from '../protocol.js';
+import { canOccupyVenue, hash53, isSharedAddress } from '../protocol.js';
 import { moderationService } from '../moderation/service.js';
 import { AD_KINDS, adsView, removeAd, rent, rentBlock, validateCreative } from '../civic/ads.js';
 import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong } from '../civic/radio.js';
@@ -82,15 +82,6 @@ export default function civicRoutes(ctx) {
   /** Run a server-completed civic action through the rules engine, inside the caller's transaction. */
   // Inside ctx.once the receipt covers the action; elsewhere `guard` says why a repeat cannot apply twice (ctx.act in server.js).
   const act = (life, cityId, type, payload = {}, guard) => ctx.act(life, { type, cityId, payload, ...(guard ? { stateGuard: guard } : {}) });
-  /**
-   * SEAM (shared departing predicate): has this life left its venue — on a trip or on the commute to
-   * work? The engine owner's shared predicate replaces the body; the call site stays as it is.
-   */
-  const departing = (life) => (typeof ctx.core?.departing === 'function' ? ctx.core.departing(life) : ['travel', 'commute'].includes(life?.activeAction?.kind));
-  /** Wrap every handler: whatever a civic request settled, the player's rooms are re-checked afterwards — also when it failed. */
-  const revalidated = (handlers) => Object.fromEntries(Object.entries(handlers).map(([key, handler]) => [key, async (request) => {
-    try { return await handler(request); } finally { await ctx.core?.revalidate?.(request.secret); } // ROOM REVALIDATION SEAM (core.revalidate in server.js)
-  }]));
   const refused = (block, extra = {}) => ({ body: { ok: false, code: block.code, reason: block.reason, ...extra }, renew: true });
   const muted = (who) => ctx.checks?.muted?.(who.id) ?? null;
   const moderation = moderationService(ctx);
@@ -171,7 +162,7 @@ export default function civicRoutes(ctx) {
   function pulseBody(city, cityId, who, life, checkedIn) {
     const now = ctx.now(), view = govView(city, now, who?.id ?? null);
     const hunt = huntCounters(city, now);
-    const venue = life && !departing(life) ? life.location : null;
+    const venue = life && canOccupyVenue(life, life.location) ? life.location : null;
     return { city: cityId, checkedIn, counters: cityCounters(city, cityId),
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
@@ -179,7 +170,7 @@ export default function civicRoutes(ctx) {
       radio: venue && isClub(venue) ? radioView(city, now, venue, who.id) : null };
   }
 
-  return revalidated({
+  return {
     'GET /api/civic/pulse': async (request) => {
       const cityId = cityParam(request.query.get('city'));
       const signedIn = await store.read(db => request.session(db)?.publicId ?? null);
@@ -390,5 +381,5 @@ export default function civicRoutes(ctx) {
       });
       return { body: { ok: true, prefs }, renew: true };
     },
-  });
+  };
 }

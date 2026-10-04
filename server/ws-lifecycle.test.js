@@ -55,10 +55,13 @@ test('a replacement room module receives the lifecycle the foundation rooms rece
   assert.deepEqual(calls.shift(), ['roomStillValid', 'lagos:custom', ada.id, 'lagos', 'park']);
   admit = true;
   assert.equal((await f.request('/api/voice-config', null, ada.cookie)).status, 200, 'the module said yes');
+  // The route host re-checks a player's rooms after each of their requests once they have a socket in one.
+  assert.ok(calls.some((call) => call[0] === 'revalidate' && call[1] === ada.id), 'revalidate(publicId) was called');
+  assert.ok(calls.every((call) => call[0] !== 'revalidate' || (call.length === 2 && call[1] === ada.id)), 'always with the public id alone');
   calls.length = 0;
   // A rename reaches the socket (done by the registry itself) and the module's hook.
   assert.equal((await f.request('/api/session', { name: 'Ada Renamed' }, ada.cookie)).status, 200);
-  assert.deepEqual(calls.shift(), ['refreshNames', ada.id, 'Ada Renamed']);
+  assert.deepEqual(calls.filter((call) => call[0] !== 'revalidate').shift(), ['refreshNames', ada.id, 'Ada Renamed']);
   peer.ws.send(JSON.stringify({ type: 'custom-name' }));
   assert.deepEqual(await peer.next(), { type: 'custom-name', name: 'Ada Renamed' });
 });

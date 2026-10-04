@@ -16,7 +16,7 @@ import { settleCity, applyLifeAction } from './life-service.js';
 import { buildRoutes } from './routes/index.js';
 import { createOnce } from './routes/once.js';
 import { buildSocketHandlers } from './ws/index.js';
-import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canJoinVenue } from './protocol.js';
+import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, archivedLife, renewSession, collection, canOccupyVenue } from './protocol.js';
 
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
 const cookieId = (req) => (req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith('sid='))?.slice(4);
@@ -200,7 +200,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           // Foundation-only: the cookie secret and the raw request, used by core routes for cookies and room checks.
           secret: cookieId(req), raw: req,
         };
-        const returned = await route.handler(request);
+        // ROOM REVALIDATION, for every route and every outcome. A request may have settled or changed
+        // the caller's life (or been refused, or lost its write and been undone): before it is answered,
+        // every room that player's sockets are in is re-checked against the STORED lives. The player is
+        // identified by their own sockets, so a request from a device with no socket costs nothing.
+        let returned;
+        try { returned = await route.handler(request); }
+        finally { for (const publicId of new Set([...wss.clients].filter(ws => ws.secret === request.secret && ws.room).map(ws => ws.session.id))) await ctx.core.revalidate(publicId); }
         const result = returned && typeof returned === 'object' ? returned : {};
         const status = result.status || 200;
         // While the data file cannot be written, every success says so: what the player sees is what
@@ -287,7 +293,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const found = sessionByPublicId(db, publicId);
       const session = found && found.expiresAt > now() ? found : undefined;
       const state = session?.cities?.[cityId]?.state;
-      return Boolean(state) && canJoinVenue(state, 'home');
+      return Boolean(state) && canOccupyVenue(state, 'home');
     },
     // Checks one module provides for another. checks.homeGuest is set by the social module and
     // read by ws/rooms.js; while it is absent, nobody can join another player's Home room.
@@ -313,37 +319,15 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       actionOnce: receipts.action,
       storageFailing,
       log,
-      // Room hooks. The room module (ws/rooms.js) replaces these three; the defaults keep the core
+      // Room hooks. The socket registry (ws/index.js) replaces these four; the defaults keep the core
       // routes working when a host is built without it (a test that passes its own wsModules):
       // nobody is in a room, so there is nothing to drop, rename or confirm.
       validateMemberships: async () => {},
       refreshNames: () => {},
       roomStillValid: () => false,
-      /**
-       * ROOM REVALIDATION — call it in a `finally` after ANY request that may have settled or changed
-       * a life, whether its transaction resolved or was rejected. It never throws.
-       *   known = { city, state, publicId }   the life as the resolved transaction left it, or
-       *   known = null                        the transaction failed (nothing was saved), or the route
-       *                                       does not have the state: the STORED life is read instead.
-       * Every room the player's sockets are in is then checked against that life.
-       * SEAM: the engine owner's shared `revalidate(publicId)` replaces the body of this function;
-       * the call sites (routes/core.js, routes/social.js, routes/civic.js) stay as they are.
-       */
-      async revalidate(secret, known = null) {
-        try {
-          if (typeof secret !== 'string') return;
-          const cities = new Set();
-          for (const ws of wss.clients) if (ws.secret === secret && ws.room) cities.add(ws.room.split(':')[0]);
-          if (known) { await ctx.core.validateMemberships(secret, known.city, known.state, known.publicId); cities.delete(known.city); }
-          if (!cities.size) return;
-          const stored = await store.read(db => {
-            const session = db.sessions[secret];
-            return session ? { publicId: session.publicId, states: Object.fromEntries([...cities].map(city => [city, session.cities?.[city]?.state ?? null])) } : null;
-          });
-          if (!stored) return;
-          for (const city of cities) if (stored.states[city]) await ctx.core.validateMemberships(secret, city, stored.states[city], stored.publicId);
-        } catch (error) { log(`Room revalidation failed: ${firstLine(error)}`); }
-      },
+      // revalidate(publicId): re-check that player's rooms against the stored lives. Defined by the socket registry
+      // (ws/index.js) for whatever modules are registered; it never throws. Called for every API request below.
+      revalidate: async () => {},
     },
   };
   const sockets = buildSocketHandlers(ctx, wsModules);

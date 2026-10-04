@@ -50,7 +50,7 @@
  * removal of an idle player is in the data file — never for a change the store had to undo.
  * committed() raises 'blocks-changed' { a, b }.
  */
-import { UUID_PATTERN, venueRoomKey } from '../protocol.js';
+import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.js';
 import { lagosTime } from '../../src/game/clock.js';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.js';
 import { venueLabel } from '../../src/game/content/venues.js';
@@ -116,11 +116,6 @@ export function socialService(ctx) {
   const city = (value) => { if (!ctx.cityIds.includes(value)) throw bad('invalid_city'); return value; };
   /** A message's client id: any opaque retry key (the message itself is the record). Writes that go through ctx.once need the timed form instead. */
   const clientId = (value) => { if (typeof value !== 'string' || !CLIENT_ID.test(value)) throw bad('invalid_client_id'); return value; };
-  /**
-   * SEAM (shared departing predicate): has this life left its venue — on a trip or on the commute to
-   * work? The engine owner's shared predicate replaces the body; the two call sites stay as they are.
-   */
-  const departing = (state) => (typeof ctx.core?.departing === 'function' ? ctx.core.departing(state) : ['travel', 'commute'].includes(state?.activeAction?.kind));
   function text(value, max, code) {
     const body = typeof value === 'string' ? value.trim() : '';
     if (!body || body.length > max || CONTROL.test(body)) throw bad(code);
@@ -334,10 +329,10 @@ export function socialService(ctx) {
   }
 
   // ---- houses --------------------------------------------------------------------------------
-  /** Is the host's stored life at home in the visit's city? Without the host helper (a bare context) visits are not tied to it. */
+  /** Is the host's stored life at home in the visit's city? When that cannot be known (no host helper, no document) the answer is no. */
   function hostAtHome(s, hostId, cityId) {
     const db = dbOf.get(s);
-    if (typeof ctx.atHome !== 'function' || !db) return true;
+    if (typeof ctx.atHome !== 'function' || !db) return false;
     return cityId ? ctx.atHome(db, hostId, cityId) : ctx.cityIds.some((city) => ctx.atHome(db, hostId, city));
   }
   function pruneHouse(s, hostId) {
@@ -479,7 +474,7 @@ export function socialService(ctx) {
       city(cityId);
       const { s, p, id } = enter(db, session);
       const state = ctx.settle(session, cityId);
-      const travelling = departing(state);
+      const travelling = isDeparting(state);
       const room = venueRoomKey(cityId, state.location, id);
       const joined = !travelling && presence.isIn(id, room);
       // `look` (appearance option ids) and `here` come from the room module's own record of who is in the room.
@@ -909,7 +904,7 @@ export function socialService(ctx) {
         if (!ctx.allow(`social:interact:${id}`, 30)) return no('rate_limited', 'Slow down a little. Try again in a moment.');
         const state = ctx.settle(session, cityId);
         const room = venueRoomKey(cityId, state.location, id);
-        if (state.location === 'home' || departing(state) || !presence.isIn(id, room)) return no('not_joined', 'You are not in a venue room right now. Go to a public venue and wait for it to connect.');
+        if (state.location === 'home' || isDeparting(state) || !presence.isIn(id, room)) return no('not_joined', 'You are not in a venue room right now. Go to a public venue and wait for it to connect.');
         if (!presence.isIn(target, room)) return no('not_here', `${them.name} is not at ${venueLabel(state.location, cityId)} with you right now.`);
         const result = act(session, cityId, 'interact', { id: target, name: them.name, action: action.id }, `social|interact|${id}|${cid}`);
         if (!result.ok) return no(result.code, result.reason);

@@ -1,6 +1,7 @@
 // Leaving a venue ends room membership and voice state — however the player leaves (a trip, the
-// automatic commute), whichever request starts it, and whether or not the write that follows
-// succeeds. Two real sockets throughout. "Voice" here is the server's protocol flag only: no
+// automatic commute) and whichever request starts it. Room authority follows the life the store
+// holds: with the real store a departure whose write failed did not happen (nobody is revoked); with
+// a store that keeps such a change in memory (switchableStore below) the departure is revoked anyway. Two real sockets throughout. "Voice" here is the server's protocol flag only: no
 // microphone, no WebRTC, no audio.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -215,19 +216,22 @@ test('a room message from a socket whose life has just departed waits for the re
   const store = switchableStore();
   const { f, A, B, act } = await park(t, { store, heartbeatMs: 60000 });
   const { a, b } = await joinBoth(f, A, B);
-  // The write fails, so the request ends before the route's own validation; and reads are held
-  // back, so the re-check that follows the departure cannot finish yet. The socket is therefore
-  // still listed in the room when it sends — the one moment a remembered membership could be trusted.
+  // The write fails, so the route's own validation never runs; and reads are held back, so the
+  // re-check that follows the departure cannot finish yet (the request itself waits for that re-check
+  // before it is answered). The socket is therefore still listed in the room when it sends — the one
+  // moment a remembered membership could be trusted.
   let release; store.control.holdReads = new Promise((resolve) => { release = resolve; });
   store.control.failWrites = true;
   const mark = a.log.length, heard = b.log.length;
-  assert.equal((await act(A, { type: 'travel', id: 'library', mode: 'trek' })).status, 500);
+  const request = act(A, { type: 'travel', id: 'library', mode: 'trek' });
+  await new Promise((resolve) => setTimeout(resolve, 80)); // the departure is in the store's memory; its write has failed
   say(a, { type: 'signal', to: B.id, data: { probe: 'in-the-gap' } });
   say(a, { type: 'chat', clientId: 'gap', body: 'in the gap' });
   await new Promise((resolve) => setTimeout(resolve, 80));
   assert.deepEqual(a.log.slice(mark).filter((m) => m.type === 'error'), [], 'held: nothing has been answered yet');
   assert.equal(b.log.slice(heard).some((m) => m.type === 'signal' || m.type === 'chat'), false, 'and nothing was forwarded on the strength of the old membership');
   store.control.holdReads = null; release();
+  assert.equal((await request).status, 500, 'the request is answered only after its rooms were re-checked');
   await until(a, () => a.log.slice(mark).filter((item) => item.type === 'error').length >= 3, 'three answers', mark);
   assert.deepEqual(a.log.slice(mark).filter((m) => m.type === 'error').map((m) => m.code), ['venue_mismatch', 'join_required', 'join_required']);
   store.control.failWrites = false;
@@ -276,26 +280,28 @@ test('with the real store and a failing disk, room authority always agrees with 
   await rename(disk, backup); await mkdir(disk); blocked = true; // every write now fails (EISDIR on rename)
   const actionId = `${f.now()}:${randomUUID()}`;
   const failed = await act(A, { type: 'travel', id: 'library', mode: 'trek' }, actionId);
-  assert.equal(failed.status, 500);
+  assert.equal(failed.status, 503, 'the store reports a write it could not make as storage_unavailable');
   // What does the server hold for A now? (Looked at inside the store's own read; whether that read
   // then rejects because of the disk does not matter here.)
   let held;
   await f.server.store.read((db) => { held = structuredClone(Object.values(db.sessions).find((session) => session.publicId === A.id).cities.lagos.state); }).catch(() => {});
   const members = (await roster(b, true)).map((member) => member.id);
   const forwarded = await signal(a, b, 'after-failed-write');
+  assert.equal(isDeparting(held), false, 'this store takes a change back when its write fails');
   if (isDeparting(held)) {
     // The departure is in memory although the request failed: membership, voice flag and forwarding are gone.
     assert.equal(a.log.some(isError('venue_mismatch')), true);
     assert.deepEqual(members, [B.id]);
     assert.deepEqual(forwarded, { delivered: false, code: 'join_required' });
   } else {
-    // The store took the change back: the player never left, and is still a member.
+    // The store took the change back: the player never left, was not revoked, and is still a member.
+    assert.equal(a.log.some(isError('venue_mismatch')), false);
     assert.deepEqual(members.sort(), [A.id, B.id].sort());
     assert.deepEqual(forwarded, { delivered: true, code: null });
   }
   await restore();
   const retry = await act(A, { type: 'travel', id: 'library', mode: 'trek' }, actionId);
-  assert.deepEqual([retry.status, retry.state.activeAction.kind], [200, 'travel']);
+  assert.deepEqual([retry.status, retry.duplicate, retry.state.activeAction.kind], [200, undefined, 'travel'], 'applied now, once: there was no receipt to repeat');
   assert.deepEqual((await roster(b, false)).map((member) => member.id), [B.id], 'once the travel stands, A is out of the room either way');
   assert.deepEqual(await signal(a, b, 'after-retry'), { delivered: false, code: 'join_required' });
 });

@@ -96,42 +96,33 @@ export default function coreRoutes(ctx) {
       // outcomeKey) is in the data file before it is answered, exactly like an action. Either way the
       // poll waits for other requests' unsaved outcomes it may have seen (waitForObserved), so it
       // never shows a player something that a failed write then takes back.
-      let known = null;
-      try {
-        const { state, publicId } = await store.transact(db => {
-          const session = request.requireSession(db, { renew: true });
-          const before = outcomeKey(session.cities?.[city]?.state);
-          const state = settle(session, city);
-          return { state, publicId: session.publicId, material: before !== outcomeKey(state) };
-        }, { durable: result => result.material, waitForObserved: true });
-        known = { city, state, publicId };
-        return { body: { state }, renew: true };
-      } finally {
-        // ROOM REVALIDATION SEAM (see core.revalidate in server.js): always, also when the settlement
-        // could not be saved — the rooms are then checked against the stored life.
-        await core.revalidate(request.secret, known);
-      }
+      const { state, publicId } = await store.transact(db => {
+        const session = request.requireSession(db, { renew: true });
+        const before = outcomeKey(session.cities?.[city]?.state);
+        const state = settle(session, city);
+        return { state, publicId: session.publicId, material: before !== outcomeKey(state) };
+      }, { durable: result => result.material, waitForObserved: true });
+      // The settlement is saved: rooms are told with the state it produced. When it could not be saved
+      // (or the request was refused) the route host re-checks the rooms against the stored life instead
+      // — core.revalidate(publicId), after every API request (server.js).
+      await core.validateMemberships(request.secret, city, state, publicId);
+      return { body: { state }, renew: true };
     },
     'POST /api/action': async (request) => {
       const body = await request.json();
       validateActionPayload(body, now(), config.actionWindowMs);
-      let known = null;
-      try {
-        const { outcome, publicId } = await store.transact(db => {
-          const session = request.requireSession(db, { renew: true });
-          validateActionPayload(body, now(), config.actionWindowMs);
-          const state = settle(session, body.cityId);
-          // never ctx.act: a player's request carries no server authority
-          const result = core.actionOnce(session, body, () => core.playerAct(state, body));
-          return { publicId: session.publicId, outcome: result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true } : result };
-        });
-        known = { city: body.cityId, state: outcome.state, publicId };
-        return { body: outcome, renew: true };
-      } finally {
-        // ROOM REVALIDATION SEAM: always. A rejected action changed nothing, so the stored life is
-        // what the rooms are checked against; a repeat (duplicate) is checked like a first answer.
-        await core.revalidate(request.secret, known);
-      }
+      const { outcome, publicId } = await store.transact(db => {
+        const session = request.requireSession(db, { renew: true });
+        validateActionPayload(body, now(), config.actionWindowMs);
+        const state = settle(session, body.cityId);
+        // never ctx.act: a player's request carries no server authority
+        const result = core.actionOnce(session, body, () => core.playerAct(state, body));
+        return { publicId: session.publicId, outcome: result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true } : result };
+      });
+      // Saved (a repeat is checked like a first answer). A rejected or unsaved action changed nothing:
+      // the route host then re-checks the rooms against the stored life (core.revalidate, server.js).
+      await core.validateMemberships(request.secret, body.cityId, outcome.state, publicId);
+      return { body: outcome, renew: true };
     },
   };
 }

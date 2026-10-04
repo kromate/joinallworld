@@ -36,8 +36,10 @@
  *     validateMemberships(secret, cityId, state, publicId)   a life was settled or acted on and
  *                              committed: drop sockets whose room it no longer allows. May be async.
  *     revalidate(publicId)     re-check that player's sockets against the STORED lives, whatever
- *                              just happened (the route host calls it in a `finally`, so it also
- *                              runs when a request failed after changing something). May be async.
+ *                              just happened. The route host (server.js) calls it after every API
+ *                              request of a player who has a socket in a room — also when the request
+ *                              failed or its write was undone. ONE signature, the public id; the
+ *                              registry's function never throws. May be async.
  *     roomStillValid(ws, db, session, cityId, state) → boolean   would this socket's room still be
  *                              granted? Asked before voice configuration is handed out. The answer
  *                              is true only if some module says so: with no room module registered
@@ -114,7 +116,11 @@ export function buildSocketHandlers(ctx, modules = WS_MODULES) {
       if (failure) throw failure;
     };
     core.validateMemberships = (...args) => runAll('validateMemberships', args);
-    core.revalidate = (...args) => runAll('revalidate', args);
+    // revalidate never throws (the route host calls it in a `finally`): a failing hook is logged, the others still ran.
+    core.revalidate = async (publicId) => {
+      if (typeof publicId !== 'string') return;
+      try { await runAll('revalidate', [publicId]); } catch (error) { (typeof core.log === 'function' ? core.log : console.error)(`Room revalidation failed: ${String(error?.message ?? error).split('\n')[0]}`); }
+    };
     core.roomStillValid = (...args) => hooks.roomStillValid.some(hook => hook(...args) === true);
     core.refreshNames = (session) => {
       if (!session || typeof session.id !== 'string') return;

@@ -44,10 +44,12 @@
  *   A socket's `ws.room` is only a record of an admission; it is re-checked:
  *   - WHEN THE LIFE CHANGES. life-service.js tells this module, synchronously, every time a life is
  *     settled or acted on. If the result no longer allows one of that player's rooms (or, for a
- *     host, their guests) the sockets are marked and re-checked against the store straight after
- *     the transaction — whichever route, socket message or timer made the change, and whether or
- *     not the write that follows succeeds. A request that fails after committing a departure in
- *     memory therefore still ends the membership and the voice state.
+ *     host, their guests) the sockets are MARKED at once — a marked socket forwards nothing — and
+ *     re-checked against the store straight after the transaction, whichever route, socket message
+ *     or timer made the change. The re-check takes its verdict from the stored document only once
+ *     that is in the data file: if the write succeeded the membership and the voice state end; if
+ *     it failed the change was undone (store.js), the departure did not happen, and the mark is
+ *     lifted with the player still in the room.
  *   - BEFORE ANY ROOM MESSAGE IS FORWARDED. move, voice-state, signal and chat first ask
  *     `admitted(ws)`: a marked socket is re-checked before anything is delivered, and one that is
  *     no longer allowed is dropped and answered 'join_required'. Nothing is forwarded on the
@@ -61,11 +63,11 @@
  *     module closes the stored visits.
  *   - ON EVERY HEARTBEAT, for sockets that send nothing: guests and marked sockets are swept, so an
  *     idle guest leaves at most one heartbeat interval (10 s by default) after the visit ends.
- *   - BY THE ROUTE HOST: validateMemberships(secret, city, state, publicId) after a settlement, and
- *     revalidate(publicId) in a `finally` (lifecycle hooks, ws/index.js).
- *   Decisions are taken from the document as committed in memory, inside the store's read, and do
- *   not wait for the disk: while writes are failing a departure still revokes. If the store cannot
- *   be read at all the sockets concerned are dropped — unknown is treated as "not allowed".
+ *   - BY THE ROUTE HOST: validateMemberships(secret, city, state, publicId) after a settlement that
+ *     was saved, and revalidate(publicId) after every API request of a player who has a socket,
+ *     whether the request succeeded or failed (server.js; lifecycle hooks, ws/index.js).
+ *   A verdict is never taken from a change that is not in the data file. If the store cannot be
+ *   read at all the sockets concerned are dropped — unknown is treated as "not allowed".
  *   When a check ends a visit this module raises, for the social module to close the stored visit:
  *   'home-closed' { hostId, cityId } (the host's life left home), 'host-absent' { hostId, guestId,
  *   cityId } (no host connection in the room) or 'guest-expired' with the same fields (anything else).
@@ -180,55 +182,44 @@ export default function roomSocket(ctx) {
   const occupies = (ws, city, state) => Boolean(state) && canOccupyVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, ws.session.id);
 
   /**
-   * Re-check sockets against the stored document and drop the ones that are no longer allowed.
-   * Runs inside one store read, on the document as committed in memory, and resolves as soon as
-   * the decisions are made — it does not wait for the disk, so it works while writes are failing.
-   * If the read itself cannot run, every socket in the list is dropped.
+   * Re-check sockets against the STORED document and drop the ones that are no longer allowed.
+   * The read only collects verdicts; nothing is dropped until the read has resolved, and a store
+   * read resolves only once everything it could have seen is in the data file (and runs again if a
+   * failed write took some of it back). So a verdict is never taken from a change that was then
+   * undone: a departure whose write failed did not happen, and the socket stays. Until the verdict
+   * is in, a marked socket forwards nothing (see admitted()). If the read itself cannot be
+   * completed, every socket in the list is dropped — unknown is treated as "not allowed".
    */
   function verify(list) {
     const items = [...new Set(list)].filter(ws => ws.room).map(ws => ({ ws, room: ws.room }));
     if (!items.length) return Promise.resolve();
-    return new Promise((resolve) => {
-      let decided = false;
+    const failClosed = () => { for (const { ws, room } of items) if (ws.room === room) drop(ws, visitedHost(ws, cityOf(ws)) ? 'visit_ended' : 'venue_mismatch'); };
+    let reading;
+    try { reading = store.read((db) => items.map(({ ws, room }) => {
+      if (ws.room !== room) return null;
+      const city = cityOf(ws), hostId = visitedHost(ws, city);
+      const session = core.sessionOf(ws, db);
+      const live = Boolean(session) && session.expiresAt > now();
+      if (!hostId) return { stay: live && occupies(ws, city, session.cities?.[city]?.state) };
+      const until = live ? guestUntil(db, session.publicId, hostId, city) : 0;
+      // Why a visit is over, so the social module closes the stored visit with the right words.
+      return { hostId, city, live, until, hostOut: !until && typeof ctx.atHome === 'function' && ctx.atHome(db, hostId, city) === false };
+    })); } catch { failClosed(); return Promise.resolve(); }
+    return Promise.resolve(reading).then((verdicts) => {
       const ended = [];
-      const finish = () => {
-        for (const [event, detail] of ended) ctx.emit?.(event, detail);
-        resolve();
-      };
-      const failClosed = () => {
-        if (decided) return; // decided on the committed document; only the wait for the disk failed
-        decided = true;
-        for (const { ws, room } of items) if (ws.room === room) drop(ws, visitedHost(ws, cityOf(ws)) ? 'visit_ended' : 'venue_mismatch');
-        finish();
-      };
-      let reading;
-      try { reading = store.read((db) => {
-        for (const { ws, room } of items) {
-          if (ws.room !== room) continue;
-          const city = cityOf(ws), hostId = visitedHost(ws, city);
-          const session = core.sessionOf(ws, db);
-          const live = session && session.expiresAt > now();
-          if (hostId) {
-            if (live && hostAbsent(room, hostId)) { drop(ws, 'visit_ended'); ended.push(['host-absent', { hostId, guestId: ws.session.id, cityId: city }]); continue; }
-            const until = live ? guestUntil(db, session.publicId, hostId, city) : 0;
-            if (!until) {
-              drop(ws, 'visit_ended');
-              // Say why, so the social module closes the stored visit with the right words: the host
-              // went out (their life is no longer at home), or the visit itself is over.
-              const hostOut = typeof ctx.atHome === 'function' && ctx.atHome(db, hostId, city) === false;
-              if (!hostOut) ended.push(['guest-expired', { hostId, guestId: ws.session.id, cityId: city }]);
-              else if (!ended.some(([event, detail]) => event === 'home-closed' && detail.hostId === hostId && detail.cityId === city)) ended.push(['home-closed', { hostId, cityId: city }]);
-              continue;
-            }
-            ws.guestUntil = Math.min(now() + GUEST_RECHECK_MS, until);
-          } else if (!live || !occupies(ws, city, session.cities?.[city]?.state)) drop(ws, 'venue_mismatch');
-          else ws.stale = false;
-        }
-        decided = true;
-        finish();
-      }); } catch { failClosed(); return; }
-      Promise.resolve(reading).catch(failClosed);
-    });
+      items.forEach(({ ws, room }, index) => {
+        const verdict = verdicts[index];
+        if (!verdict || ws.room !== room) return;
+        if (!verdict.hostId) { if (verdict.stay) ws.stale = false; else drop(ws, 'venue_mismatch'); return; }
+        const { hostId, city } = verdict, guestId = ws.session.id;
+        if (verdict.live && hostAbsent(room, hostId)) { drop(ws, 'visit_ended'); ended.push(['host-absent', { hostId, guestId, cityId: city }]); return; }
+        if (verdict.until) { ws.guestUntil = Math.min(now() + GUEST_RECHECK_MS, verdict.until); return; }
+        drop(ws, 'visit_ended');
+        if (!verdict.hostOut) ended.push(['guest-expired', { hostId, guestId, cityId: city }]);
+        else if (!ended.some(([event, detail]) => event === 'home-closed' && detail.hostId === hostId && detail.cityId === city)) ended.push(['home-closed', { hostId, cityId: city }]);
+      });
+      for (const [event, detail] of ended) ctx.emit?.(event, detail);
+    }, failClosed);
   }
   /** Everything that depends on one player's lives: their own sockets in rooms, and the guests in their Home rooms. */
   function dependants(publicId) {

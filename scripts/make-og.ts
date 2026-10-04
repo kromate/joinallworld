@@ -4,12 +4,15 @@
  *
  *   node --experimental-strip-types scripts/make-og.ts
  *
- * The art is flat shapes in the game's palette: dark green ground, amber, a Lekki-style cable-stayed bridge, a yellow danfo.
+ * The share card is a shaded globe (the repo's own world outlines, projected orthographically) with amber lights on many
+ * continents and a few thin travel arcs; the icons are flat shapes. Palette: dark green ground, amber, off-white.
  */
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { homedir, tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+import { WORLD } from '../src/map3d/geo/data/world.ts';
+import { decodeTopology } from '../src/map3d/geo/topo.ts';
 
 const root = resolve(import.meta.dirname, '..');
 const GREEN = '#183b2a', AMBER = '#e8a643', DANFO = '#f5c21b', INK = '#20232c', FONT = "'Helvetica Neue', Helvetica, Arial, sans-serif";
@@ -38,29 +41,117 @@ function render(svg: string, width: number, height: number, out: string, transpa
   } finally { rmSync(dir, { recursive: true, force: true }); }
 }
 
-const cables = (): string => {
-  const out: string[] = [];
-  for (let i = 0; i < 8; i++) { const x = 560 + i * 34; out.push(`<line x1="760" y1="350" x2="${x}" y2="522"/>`); }
-  for (let i = 0; i < 8; i++) { const x = 800 + i * 36; out.push(`<line x1="760" y1="350" x2="${x}" y2="522"/>`); }
+const WHITE = '#ffffff';
+const GLOBE = { cx: 950, cy: 375, r: 345 };
+const VIEW = { lon: 0, lat: 16 };
+const RAD = Math.PI / 180;
+
+/** Orthographic projection of a lon/lat (at height `lift` above the surface, 1 = surface) as seen from VIEW; `depth` > 0 faces the viewer. */
+function project(lon: number, lat: number, lift = 1): { x: number; y: number; depth: number } {
+  const l = (lon - VIEW.lon) * RAD, p = lat * RAD, p0 = VIEW.lat * RAD;
+  const x = Math.cos(p) * Math.sin(l);
+  const y = Math.cos(p0) * Math.sin(p) - Math.sin(p0) * Math.cos(p) * Math.cos(l);
+  const depth = Math.sin(p0) * Math.sin(p) + Math.cos(p0) * Math.cos(p) * Math.cos(l);
+  return { x: GLOBE.cx + GLOBE.r * lift * x, y: GLOBE.cy - GLOBE.r * lift * y, depth };
+}
+/** A point behind the globe is pushed out to the edge of the disc, so a coastline runs along the rim instead of disappearing. */
+function onDisc(lon: number, lat: number): [number, number] {
+  const q = project(lon, lat);
+  if (q.depth >= 0) return [q.x, q.y];
+  const dx = q.x - GLOBE.cx, dy = q.y - GLOBE.cy, d = Math.hypot(dx, dy) || 1;
+  return [GLOBE.cx + (dx / d) * GLOBE.r, GLOBE.cy + (dy / d) * GLOBE.r];
+}
+
+const land = (): string => {
+  const topo = decodeTopology(WORLD), out: string[] = [];
+  for (const feature of topo.features) {
+    if (feature.id === 'aq') continue;
+    const near = project(feature.at[0], feature.at[1]).depth > -0.45 || (feature.bounds.maxLon - feature.bounds.minLon) > 40;
+    if (!near) continue;
+    for (const poly of feature.rings) for (const ring of poly) {
+      const pts: string[] = [];
+      let seen = false;
+      for (let k = 0; k + 1 < ring.length; k += 2) { const lon = ring[k]!, lat = ring[k + 1]!; if (project(lon, lat).depth > -0.1) seen = true; const [x, y] = onDisc(lon, lat); pts.push(`${x.toFixed(1)} ${y.toFixed(1)}`); }
+      if (seen && pts.length > 5) out.push(`M${pts.join('L')}Z`);
+    }
+  }
   return out.join('');
 };
 
+/** Faint meridians every 30 degrees and parallels every 30 degrees, following the sphere's curvature. */
+const grid = (): string => {
+  const out: string[] = [];
+  const trace = (points: [number, number][]): void => {
+    let run: string[] = [];
+    for (const [lon, lat] of points) { const q = project(lon, lat); if (q.depth > 0) run.push(`${q.x.toFixed(1)} ${q.y.toFixed(1)}`); else { if (run.length > 1) out.push(`M${run.join('L')}`); run = []; } }
+    if (run.length > 1) out.push(`M${run.join('L')}`);
+  };
+  for (let lon = -180; lon < 180; lon += 30) trace(Array.from({ length: 91 }, (_, k): [number, number] => [lon, -90 + k * 2]));
+  for (let lat = -60; lat <= 60; lat += 30) trace(Array.from({ length: 181 }, (_, k): [number, number] => [-180 + k * 2, lat]));
+  return out.join('');
+};
+
+/** Small amber lights spread over many countries (a deterministic scatter): people live everywhere. */
+const lights = (): string => {
+  const out: string[] = [];
+  let seed = 7;
+  const rand = (): number => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+  for (const feature of decodeTopology(WORLD).features) {
+    if (feature.id === 'aq' || feature.id === 'ng') continue;
+    const size = Math.min(3, 1 + Math.round((feature.bounds.maxLon - feature.bounds.minLon) / 22));
+    for (let n = 0; n < size; n++) {
+      const lon = feature.at[0] + (rand() - 0.5) * Math.min(12, feature.bounds.maxLon - feature.bounds.minLon) * (n ? 1 : 0), lat = feature.at[1] + (rand() - 0.5) * Math.min(8, feature.bounds.maxLat - feature.bounds.minLat) * (n ? 1 : 0);
+      const q = project(lon, lat);
+      if (q.depth < 0.12) continue;
+      const rr = 1.6 + rand() * 2.2, edge = Math.min(1, q.depth * 2.5);
+      out.push(`<circle cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${rr.toFixed(1)}" fill="${AMBER}" opacity="${(0.55 + 0.45 * edge).toFixed(2)}"/>`);
+    }
+  }
+  return out.join('');
+};
+
+/** Thin amber arcs between far-apart places, lifted off the surface a little. */
+const flights = (): string => {
+  const pairs: [[number, number], [number, number]][] = [[[2, 49], [28, -26]], [[31, 30], [73, 19]], [[-17, 15], [-35, -8]], [[-3, 40], [37, -1]]];
+  return pairs.map(([a, b]) => {
+    const pts: string[] = [], rad = (v: number): number => v * RAD;
+    const va = [Math.cos(rad(a[1])) * Math.cos(rad(a[0])), Math.cos(rad(a[1])) * Math.sin(rad(a[0])), Math.sin(rad(a[1]))] as const;
+    const vb = [Math.cos(rad(b[1])) * Math.cos(rad(b[0])), Math.cos(rad(b[1])) * Math.sin(rad(b[0])), Math.sin(rad(b[1]))] as const;
+    const omega = Math.acos(va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2]);
+    for (let k = 0; k <= 40; k++) {
+      const t = k / 40, f = Math.sin((1 - t) * omega) / Math.sin(omega), g = Math.sin(t * omega) / Math.sin(omega);
+      const v = [f * va[0] + g * vb[0], f * va[1] + g * vb[1], f * va[2] + g * vb[2]] as const;
+      const q = project(Math.atan2(v[1], v[0]) / RAD, Math.asin(Math.max(-1, Math.min(1, v[2]))) / RAD, 1 + 0.16 * Math.sin(Math.PI * t));
+      pts.push(`${q.x.toFixed(1)} ${q.y.toFixed(1)}`);
+    }
+    return `<path d="M${pts.join('L')}" fill="none" stroke="${AMBER}" stroke-width="2" stroke-linecap="round" opacity=".8"/>`;
+  }).join('');
+};
+
+const { cx: GX, cy: GY, r: GR } = GLOBE;
 const card = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="${FONT}">
+<defs>
+<radialGradient id="glow" cx="${GX}" cy="${GY}" r="${GR * 1.9}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2b6a4a" stop-opacity=".75"/><stop offset=".55" stop-color="#21503a" stop-opacity=".25"/><stop offset="1" stop-color="${GREEN}" stop-opacity="0"/></radialGradient>
+<radialGradient id="sea" cx="${GX - GR * 0.35}" cy="${GY - GR * 0.4}" r="${GR * 1.5}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2f6f50"/><stop offset=".5" stop-color="#1f5a3f"/><stop offset="1" stop-color="#0f2f21"/></radialGradient>
+<radialGradient id="shade" cx="${GX - GR * 0.35}" cy="${GY - GR * 0.4}" r="${GR * 1.35}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffffff" stop-opacity=".16"/><stop offset=".45" stop-color="#ffffff" stop-opacity="0"/><stop offset=".82" stop-color="#04140c" stop-opacity=".4"/><stop offset="1" stop-color="#04140c" stop-opacity=".78"/></radialGradient>
+<radialGradient id="rim" cx="${GX}" cy="${GY}" r="${GR + 34}" gradientUnits="userSpaceOnUse"><stop offset=".9" stop-color="#7fd0a0" stop-opacity=".0"/><stop offset=".935" stop-color="#7fd0a0" stop-opacity=".38"/><stop offset="1" stop-color="#7fd0a0" stop-opacity="0"/></radialGradient>
+<clipPath id="disc"><circle cx="${GX}" cy="${GY}" r="${GR}"/></clipPath>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter>
+</defs>
 <rect width="1200" height="630" fill="${GREEN}"/>
-<circle cx="1000" cy="170" r="66" fill="${AMBER}"/>
-<g fill="#21503a"><rect x="0" y="430" width="70" height="200"/><rect x="70" y="390" width="54" height="240"/><rect x="124" y="450" width="90" height="180"/><rect x="214" y="410" width="60" height="220"/><rect x="274" y="440" width="80" height="190"/><rect x="354" y="380" width="48" height="250"/><rect x="402" y="430" width="100" height="200"/><rect x="900" y="420" width="70" height="210"/><rect x="970" y="380" width="56" height="250"/><rect x="1026" y="440" width="84" height="190"/><rect x="1110" y="400" width="90" height="230"/></g>
-<g fill="#2c6247"><rect x="20" y="470" width="60" height="160"/><rect x="150" y="480" width="70" height="150"/><rect x="300" y="470" width="50" height="160"/><rect x="430" y="490" width="80" height="140"/><rect x="940" y="480" width="60" height="150"/><rect x="1060" y="470" width="70" height="160"/></g>
-<rect x="0" y="548" width="1200" height="82" fill="#0f2a1d"/>
-<g stroke="#2c6247" stroke-width="3" stroke-linecap="round"><line x1="40" y1="580" x2="160" y2="580"/><line x1="260" y1="600" x2="420" y2="600"/><line x1="820" y1="584" x2="960" y2="584"/><line x1="1000" y1="606" x2="1150" y2="606"/></g>
-<polygon points="748,522 772,522 766,350 754,350" fill="#0b2117"/>
-<rect x="756" y="346" width="8" height="12" fill="${AMBER}"/>
-<g stroke="${AMBER}" stroke-width="2" opacity=".75">${cables()}</g>
-<rect x="520" y="522" width="680" height="14" fill="#0b2117"/>
-<rect x="520" y="522" width="680" height="3" fill="${AMBER}" opacity=".6"/>
-<g><rect x="880" y="486" width="112" height="38" rx="6" fill="${DANFO}"/><rect x="890" y="494" width="20" height="14" rx="2" fill="${INK}"/><rect x="916" y="494" width="20" height="14" rx="2" fill="${INK}"/><rect x="942" y="494" width="20" height="14" rx="2" fill="${INK}"/><rect x="880" y="508" width="112" height="6" fill="${INK}" opacity=".85"/><circle cx="906" cy="526" r="9" fill="${INK}"/><circle cx="966" cy="526" r="9" fill="${INK}"/></g>
-<text x="76" y="196" font-size="148" font-weight="800" fill="#ffffff" letter-spacing="-3">Allworld</text>
-<rect x="82" y="226" width="96" height="8" rx="4" fill="${AMBER}"/>
-<text x="80" y="300" font-size="42" font-weight="500" fill="#e9f1ec">Live a Lagos life. Free, in your browser.</text>
+<rect width="1200" height="630" fill="url(#glow)"/>
+<ellipse cx="${GX + 18}" cy="${GY + 40}" rx="${GR}" ry="${GR}" fill="#04140c" opacity=".55" filter="url(#soft)"/>
+<circle cx="${GX}" cy="${GY}" r="${GR + 34}" fill="url(#rim)"/>
+<circle cx="${GX}" cy="${GY}" r="${GR}" fill="url(#sea)"/>
+<g clip-path="url(#disc)">
+<path d="${grid()}" fill="none" stroke="#9fe0b8" stroke-width="1.2" opacity=".22"/>
+<path d="${land()}" fill="#5aa77a" fill-rule="evenodd"/>
+<circle cx="${GX}" cy="${GY}" r="${GR}" fill="url(#shade)"/>
+${flights()}${lights()}
+</g>
+<text x="72" y="282" font-size="132" font-weight="800" fill="${WHITE}" letter-spacing="-3">Allworld</text>
+<rect x="80" y="312" width="96" height="8" rx="4" fill="${AMBER}"/>
+<text x="78" y="384" font-size="40" font-weight="500" fill="#e9f1ec">A whole world to live in.</text>
 </svg>`;
 
 /** The mark: a rounded or full-bleed green square with an amber A. `inset` keeps the A inside the maskable safe zone. */
@@ -76,6 +167,15 @@ ${shape === 'round' ? `<rect width="${s}" height="${s}" rx="${s * 0.22}" fill="$
 mkdirSync(join(root, 'public/og'), { recursive: true });
 mkdirSync(join(root, 'public/icons'), { recursive: true });
 render(card, 1200, 630, join(root, 'public/og/allworld.png'));
+/** The shaded globe is smooth, so a 24-bit PNG is large; when ffmpeg is installed the card is kept as a 256-colour palette PNG (about a third of the size). */
+function shrink(file: string): void {
+  const temp = `${file}.tmp.png`;
+  try {
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', file, '-vf', 'split[a][b];[a]palettegen=max_colors=200:stats_mode=full[p];[b][p]paletteuse=dither=bayer:bayer_scale=3', '-frames:v', '1', temp], { stdio: 'ignore' });
+    if (statSync(temp).size < statSync(file).size) renameSync(temp, file);
+  } catch { /* ffmpeg is optional */ } finally { rmSync(temp, { force: true }); }
+}
+shrink(join(root, 'public/og/allworld.png'));
 render(icon(512, 'round', 1), 512, 512, join(root, 'public/icons/icon-512.png'), true);
 render(icon(192, 'round', 1), 192, 192, join(root, 'public/icons/icon-192.png'), true);
 render(icon(512, 'full', 0.72), 512, 512, join(root, 'public/icons/icon-maskable-512.png'));

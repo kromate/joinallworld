@@ -20,7 +20,7 @@ export const SHARE_KINDS: readonly ShareKind[] = Object.freeze(['invite', 'house
 const KIND_NAMES: readonly string[] = SHARE_KINDS;
 const isKind = (value: unknown): value is ShareKind => typeof value === 'string' && KIND_NAMES.includes(value);
 export const BRAND = 'Allworld';
-export const TAGLINE = 'Your city story. Live in Lagos, with real people.';
+export const TAGLINE = 'A whole world to live in.';
 
 const clip = (value: unknown, max: number): string => { const text = String(value ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim(); return text.length > max ? `${text.slice(0, max - 1)}…` : text; };
 const count = (value: unknown, max = 100000): number => (typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? Math.min(value, max) : 0);
@@ -30,7 +30,7 @@ const days = (n: number): string => `${n} day${n === 1 ? '' : 's'}`;
 export function cleanFacts(input: unknown): ShareFacts {
   const facts: Record<string, unknown> = isRecord(input) ? input : {};
   const kind = isKind(facts.kind) ? facts.kind : 'invite';
-  return { kind, name: clip(facts.name, 24) || 'A Lagosian', district: clip(facts.district, 24), city: clip(facts.city, 24) || 'Lagos',
+  return { kind, name: clip(facts.name, 24) || 'A resident', district: clip(facts.district, 24), city: clip(facts.city, 24) || 'Lagos',
     done: count(facts.done, 9), total: count(facts.total, 9), days: count(facts.days), stamps: count(facts.stamps, 7), title: clip(facts.title, 24),
     game: clip(facts.game, 24), won: facts.won === true, event: clip(facts.event, 48), venue: clip(facts.venue, 32),
     tableId: typeof facts.tableId === 'string' && /^[a-z0-9-]{1,40}$/.test(facts.tableId) ? facts.tableId : '' };

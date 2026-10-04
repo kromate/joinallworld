@@ -103,7 +103,7 @@ export const safeOrigin = (origin: unknown): string => (typeof origin === 'strin
  */
 export function sharePageHtml(share: Pick<ShareRecord, 'by' | 'facts'> | null, code: unknown, origin: unknown = ''): string {
   const base = safeOrigin(origin);
-  const preview = share ? sharePreview(share.facts) : { title: `${BRAND}: a free Lagos life game in your browser`, description: TAGLINE };
+  const preview = share ? sharePreview(share.facts) : { title: `${BRAND}: a digital world you can live in`, description: TAGLINE };
   // People are sent on to the game's own landing hook: `join` places a new visitor with the sharer (their venue, their
   // door, or a table), `ref` is this share code, which the game attaches as a referral once the visitor's life exists.
   const table = share?.facts?.tableId && /^[a-z0-9-]{1,40}$/.test(share.facts.tableId) ? `&table=${share.facts.tableId}` : '';

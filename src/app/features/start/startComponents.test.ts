@@ -61,7 +61,7 @@ test('the registered panels carry the metadata of the existing ones', async () =
 test('the landing screen: the lead, the quick characters, the body toggle, the name and one Play', async () => {
   const html = await render('QuickStartApp', { params: { reason: 'new' } })
   const words = text(html)
-  assert.ok(words.startsWith('Jump into a Nigerian world with your friends. Start playing in seconds. Build your life as you go.'))
+  assert.ok(words.startsWith('Step into a world to live in, with your friends. Start playing in seconds. Build your life as you go.'))
   for (const label of ['Street', 'Owambe', 'Office', 'Sporty', 'Chill']) assert.match(html, new RegExp(`aria-label="${label} character"`))
   assert.match(html, /role="group" aria-label="Body"/)
   assert.ok(words.includes('Shuffle') && words.includes('More options') && words.includes('Your name'))

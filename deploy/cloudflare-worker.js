@@ -2,7 +2,9 @@ import { oldCharacterLanding } from './legacy-bridge.js';
 import { DurableObject } from 'cloudflare:workers';
 import { createSqliteStore } from './sqlite-store.js';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.js';
-import { buildRoutes } from '../server/routes/index.js';
+import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.js';
+import { createServerTelemetry } from '../server/telemetry/index.js';
+import telemetryRoutes from '../server/telemetry/routes.js';
 import { executeCommand } from '../server/routes/core.js';
 import { buildSocketHandlers } from '../server/ws/index.js';
 import { settleCity, applyLifeAction } from '../server/life-service.js';
@@ -49,6 +51,9 @@ export default {
       return env.JOINALLWORLD.getByName('joinallworld-v1').fetch(request);
     }
     if (!['GET', 'HEAD'].includes(request.method)) return json(405, { error: 'method_not_allowed' });
+    let assetPath;
+    try { assetPath = decodeURIComponent(url.pathname); } catch { return json(400, { error: 'invalid_path' }); }
+    if (assetPath.endsWith('.map')) return json(404, { error: 'not_found' });
     if (url.pathname === '/old-character.html') {
       if (url.origin !== 'https://joinallworld.com') return json(404, { error: 'not_found' });
       return oldCharacterLanding(request.method === 'HEAD');
@@ -64,6 +69,7 @@ export default {
 export class JoinAllworldState extends DurableObject {
   constructor(ctx, env) {
     super(ctx, env); this.env = env; this.sql = ctx.storage.sql; this.peers = new Map(); this.inflight = new Map();
+    this.telemetry = createServerTelemetry({ env, buildId: env.BUILD_ID || 'unreleased' });
     this.store = createSqliteStore(ctx.storage);
     this.sql.exec('CREATE TABLE IF NOT EXISTS rate_limits (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL)');
     if (!this.sql.exec('PRAGMA table_info(rate_limits)').toArray().some(column => column.name === 'expires_at')) this.sql.exec('ALTER TABLE rate_limits ADD COLUMN expires_at INTEGER');
@@ -73,9 +79,9 @@ export class JoinAllworldState extends DurableObject {
     this.rateCleanupAt = 0;
     const listeners = new Map(), now = () => Date.now();
     const context = this.context = {
-      store: this.store, now, fail: protocolError, collection, randomId: () => crypto.randomUUID(), cityIds: CITY_IDS, publicSession,
+      store: this.store, now, fail: protocolError, collection, randomId: () => crypto.randomUUID(), cityIds: CITY_IDS, publicSession, telemetry: this.telemetry,
       allow: (key, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
-      send: (ws, message) => { if (ws.readyState === 1) { try { ws.send(JSON.stringify(message)); } catch {} } },
+      send: (ws, message) => { if (ws.readyState === 1) { try { ws.send(JSON.stringify(message)); this.telemetry.socketOut(ws, message); } catch {} } },
       on(event, fn) { if (!listeners.has(event)) listeners.set(event, []); listeners.get(event).push(fn); },
       emit(event, value) { for (const fn of listeners.get(event) || []) { try { fn(value); } catch {} } },
       settle: (session, city) => settleCity(session, city, now()),
@@ -100,7 +106,8 @@ export class JoinAllworldState extends DurableObject {
     };
     context.command = (request, body, options) => executeCommand(context, request, body, options);
     this.handlers = buildSocketHandlers(context);
-    this.routes = buildRoutes(context);
+    this.routes = buildRoutes(context, [...ROUTE_MODULES, telemetryRoutes]);
+    this.telemetry.attach(context);
     this.ready = ctx.blockConcurrencyWhile(async () => {
       await Promise.all(context.startup.splice(0));
       for (const socket of ctx.getWebSockets()) { const info = socket.deserializeAttachment(); if (info && !info.closed) { const ws = this.wrap(socket, info); this.handlers.restore(ws); } }
@@ -135,26 +142,33 @@ export class JoinAllworldState extends DurableObject {
   }
   async fetch(raw) {
     await this.ready;
+    let at;
     try {
       const url = new URL(raw.url), secret = cookieId(raw), now = Date.now();
       const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
       if (!isSameOrigin(raw.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) throw protocolError(403, 'origin_rejected');
       const request = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, params: {}, raw,
-        moderator: () => false, json: () => bodyOf(raw), session: (db, options = {}) => this.session(request, db, options.renew),
-        requireSession: (db, options = {}) => { const s = this.session(request, db, options.renew); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
+        moderator: () => false, json: () => bodyOf(raw).then(body => (request.body = body)),
+        session: (db, options = {}) => { const s = this.session(request, db, options.renew); if (s) request.publicId = s.publicId; return s; },
+        requireSession: (db, options = {}) => { const s = request.session(db, options); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
       if (url.pathname === '/socket') return await this.upgrade(raw, request);
       const id = await this.store.read(db => request.session(db)?.publicId);
       if (!this.allow(id ? `http:session:${id}` : `http-ip:${ip}`, id ? 600 : 60)) throw protocolError(429, 'rate_limited');
       if (url.pathname === '/api/voice-config' && raw.method === 'GET') return await this.voiceConfig(request);
       const route = this.routes.match(raw.method, url.pathname); if (!route) throw protocolError(404, 'not_found'); request.params = route.params;
+      at = { key: route.key, request, began: performance.now() };
       const result = await route.handler(request) || {}, status = result.status || 200;
+      this.telemetry.http({ method: raw.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.type, code: result.body?.code } });
       const body = status < 300 ? { ...(result.body || {}), serverTime: Date.now() } : result.body || {};
       if (url.pathname === '/api/health') Object.assign(body, { transport: 'cloudflare', buildId: this.env.BUILD_ID || 'unreleased' });
       if (result.renew) for (const ws of this.peers.values()) if (ws.secret === secret) { ws.expiresAt = now + SESSION_TTL_MS; ws.lastSessionRenewedAt = now; }
       this.saveSockets();
       if (result.after) this.ctx.waitUntil(Promise.resolve().then(result.after).then(() => this.saveSockets()).catch(() => {}));
       return json(status, body, { ...(result.renew ? { 'Set-Cookie': cookie(secret) } : {}), ...result.headers });
-    } catch (error) { this.saveSockets(); return json(error.status || 500, { error: error.status ? error.code : 'internal_error', ...(error.status && typeof error.reason === 'string' ? {reason:error.reason} : {}) }); }
+    } catch (error) {
+      this.telemetry.httpFailed(error, { method: raw.method, route: at?.key, status: error.status || 500, code: error.code, body: at?.request.body, publicId: at?.request.publicId });
+      this.saveSockets(); return json(error.status || 500, { error: error.status ? error.code : 'internal_error', ...(error.status && typeof error.reason === 'string' ? {reason:error.reason} : {}) });
+    } finally { this.ctx.waitUntil(this.telemetry.flush()); }
   }
   async voiceConfig(request) {
     const session = await this.store.transact(db => {
@@ -225,10 +239,11 @@ export class JoinAllworldState extends DurableObject {
         Object.defineProperty(ws, 'chatBodyHash', {value:hash,configurable:true});
       }
       await entry.handle(ws, message);
-    } catch (error) { const code = /^[a-z][a-z0-9_]{1,63}$/.test(error.message) ? error.message : 'internal_error'; this.context.send(ws, {type:'error',code,error:code,...(typeof error.reason==='string'?{reason:error.reason}:{}),...(message?.type==='signal'&&typeof message.to==='string'&&UUID_PATTERN.test(message.to)&&message.to!==ws.secret?{to:message.to}:{}),...(message?.type==='chat'&&typeof message.clientId==='string'&&message.clientId.length<=80?{clientId:message.clientId}:{})}); }
-    finally { this.saveSockets(); }
+      this.telemetry.socketIn(ws, message);
+    } catch (error) { const coded = /^[a-z][a-z0-9_]{1,63}$/.test(error.message), code = coded ? error.message : 'internal_error'; this.telemetry.socketFailed(ws, message, code, coded, error); this.context.send(ws, {type:'error',code,error:code,...(typeof error.reason==='string'?{reason:error.reason}:{}),...(message?.type==='signal'&&typeof message.to==='string'&&UUID_PATTERN.test(message.to)&&message.to!==ws.secret?{to:message.to}:{}),...(message?.type==='chat'&&typeof message.clientId==='string'&&message.clientId.length<=80?{clientId:message.clientId}:{})}); }
+    finally { this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); }
   }
-  async webSocketClose(socket) { await this.ready; const ws=this.peers.get(socket);if(ws){ws.closed=true;this.handlers.close(ws);this.peers.delete(socket);this.saveSockets();} }
+  async webSocketClose(socket) { await this.ready; const ws=this.peers.get(socket);if(ws){ws.closed=true;this.telemetry.socketClosed(ws);this.handlers.close(ws);this.peers.delete(socket);this.saveSockets();this.ctx.waitUntil(this.telemetry.flush());} }
   async webSocketError(socket) { await this.webSocketClose(socket); }
   async alarm() {
     await this.ready;
@@ -238,6 +253,7 @@ export class JoinAllworldState extends DurableObject {
       ws.alive=false;ws.pingedAt=Date.now();this.context.send(ws,{type:'heartbeat'});
     }
     this.context.emit('heartbeat',{now:Date.now()});this.saveSockets();
+    this.ctx.waitUntil(this.telemetry.flush());
     if ([...this.peers.values()].some(ws=>ws.readyState===1)) await this.ctx.storage.setAlarm(Date.now()+10000);
   }
 }

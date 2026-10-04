@@ -162,15 +162,15 @@ export function buildRoutes(ctx, modules = ROUTE_MODULES) {
       const parsed = KEY.exec(key);
       if (!parsed || typeof handler !== 'function') throw new Error(`Invalid route: ${key}`);
       if (exact.has(key) || patterns.some(route => route.key === key)) throw new Error(`Duplicate route: ${key}`);
-      if (!key.includes('/:')) { exact.set(key, handler); continue; }
+      if (!key.includes('/:')) { exact.set(key, { key: parsed[2], handler }); continue; }
       patterns.push({ key, method: parsed[1], segments: parsed[2].split('/'), handler });
     }
   }
   return {
     keys: [...exact.keys(), ...patterns.map(route => route.key)],
     match(method, pathname) {
-      const handler = exact.get(`${method} ${pathname}`);
-      if (handler) return { handler, params: {} };
+      const route = exact.get(`${method} ${pathname}`);
+      if (route) return { ...route, params: {} };
       const parts = pathname.split('/');
       for (const route of patterns) {
         if (route.method !== method || route.segments.length !== parts.length) continue;
@@ -180,7 +180,7 @@ export function buildRoutes(ctx, modules = ROUTE_MODULES) {
           try { params[segment.slice(1)] = decodeURIComponent(parts[i]); } catch { return false; }
           return parts[i].length > 0;
         });
-        if (hit) return { handler: route.handler, params };
+        if (hit) return { key: route.segments.join('/'), handler: route.handler, params };
       }
       return null;
     },

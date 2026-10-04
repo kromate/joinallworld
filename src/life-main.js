@@ -21,6 +21,7 @@ import { crowdList, playersHere } from './scene/crowd.js';
 import { NPCS } from './game/content/npcs.js';
 import { viewLife, VENUES } from './life.js';
 import { venueLabel, venueDistrict } from './game/content/venues.js';
+import { telemetry } from './telemetry/index.js';
 
 const $ = (id) => document.getElementById(id);
 let storage; try { storage = window.localStorage; } catch {}
@@ -29,7 +30,14 @@ let shell = null, venue = null, cityMap = null, world = null, mapsLoading = null
 /** The connection status line: shown in the top bar's saved indicator and in the More menu. */
 let net = { text: 'Connecting…', error: false };
 
-function status(text, error = false) { net = { text, error }; if (shell) render(); }
+function status(text, error = false) {
+  net = { text, error };
+  const link = text.startsWith('Connecting') ? 'connecting' : text.startsWith('Connected') ? 'online'
+    : text.startsWith('Choose a nickname') ? 'new' : text.toLowerCase().includes('expired') ? 'expired'
+      : error ? (navigator.onLine === false ? 'offline' : 'unreachable') : 'online';
+  telemetry.link(link);
+  if (shell) render();
+}
 
 const client = createClient({
   storage,
@@ -37,7 +45,8 @@ const client = createClient({
   onStatus: status,
   onChange: accepted,
   onSessionExpired() { community?.destroy(); community = null; render(); shell.open(sessionGate().id, { reason: 'expired' }); },
-  onNeedName() { shell.open(sessionGate().id, { reason: 'new' }); },
+  onNeedName() { telemetry.needName(); shell.open(sessionGate().id, { reason: 'new' }); },
+  onSession(session, isNew) { telemetry.session(session, isNew, client.serverNow()); },
 });
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
@@ -70,8 +79,10 @@ async function loadScene() {
     showCrowd();
     venue.resize();
     layoutScene();
+    telemetry.sceneReady(true, $('venue-scene').querySelector('canvas'));
   } catch (error) {
     console.error('The scene could not be started:', error);
+    telemetry.chunkFailed('scene', error); telemetry.sceneReady(false);
     const wait = $('scene-wait');
     if (wait) wait.textContent = 'The 3D scene could not be drawn on this device. Everything else still works.';
   }
@@ -99,14 +110,14 @@ function loadMaps() {
     render();
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }));
     refreshScene();
-  }).catch((error) => { mapsLoading = null; console.error('The map could not be loaded:', error); shell.toast('The map could not be loaded. Check your connection and open it again.', 'error'); });
+  }).catch((error) => { mapsLoading = null; telemetry.chunkFailed('map', error); console.error('The map could not be loaded:', error); shell.toast('The map could not be loaded. Check your connection and open it again.', 'error'); });
   return mapsLoading;
 }
 
 const dialog = $('life-dialog');
 shell = createShell({
   root: $('life-overlay'), dialog, dialogContent: $('life-dialog-content'), panels: PANELS,
-  host: { command, fetchJson: client.fetchJson, goTo, toggleCommunity, menu, onRender: () => layoutScene(), redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) { if (mode === 'map') loadMaps(); render(); refreshScene(); } },
+  host: { command, fetchJson: client.fetchJson, goTo, toggleCommunity, menu, onRender: () => layoutScene(), redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) { telemetry.screen(mode); if (mode === 'map') loadMaps(); render(); refreshScene(); } },
 });
 
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
@@ -144,6 +155,7 @@ function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.
 
 /** Called after every accepted server state. */
 function accepted(state, previous) {
+  telemetry.state(state, previous, client);
   const moved = previous.location !== state.location;
   if (moved) {
     venue?.setLocation(state.location);
@@ -168,7 +180,9 @@ function accepted(state, previous) {
 
 async function command(type, payload) {
   if (type === 'cancel') pendingRoute = null;
+  const measured = telemetry.action(type);
   const result = await client.command(type, payload);
+  measured?.(result);
   if (!result.ok && result.reason && result.code !== 'busy') shell.toast(result.reason, 'error');
   if (!result.ok && type === 'travel') pendingRoute = null;
   return result;
@@ -210,6 +224,7 @@ async function connect(createNew = false) {
     render();
   } catch (error) {
     console.error('The community panel could not be started:', error);
+    telemetry.captureError(error, { chunk: 'community' });
     communityLoadFailed = true;
     // A failed module download can remain cached for this page. A player-triggered reload
     // retries it without creating a new identity or requesting microphone access.
@@ -262,6 +277,7 @@ if (new URLSearchParams(location.search).has('diagnostics')) {
 }
 
 render();
+telemetry.hudReady();
 connect();
 // The scene (Three.js and every scene module) starts downloading only now, with the HUD already on screen and usable.
 setTimeout(loadScene, 0);

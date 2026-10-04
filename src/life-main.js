@@ -42,7 +42,11 @@ const venue = createVenueWorld($('venue-scene'), { location: client.state.locati
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
 const showPlayer = () => venue.setPlayer({ look: client.state.onboarding?.look, seed: client.session?.id ?? 'you', name: client.state.name || client.identity.name });
 const world = createWorldMap($('map-scene'), { onSelectCity: (city) => shell.open('city', { city: city.id }) });
-const cityMap = createCityMap($('city-scene'), { onSelectVenue: (venueId) => shell.open('map', { destination: venueId }) });
+const cityMap = createCityMap($('city-scene'), {
+  onSelectVenue: (venueId) => shell.open('map', { destination: venueId }),
+  onSelectGov: () => shell.open('state-house'),
+  onSelectNeighbour: (player) => shell.open('person', { player: player.id, name: player.name }),
+});
 world.setCity(client.cityId);
 cityMap.setCity(client.cityId);
 

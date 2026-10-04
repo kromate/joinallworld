@@ -12,6 +12,7 @@ const PANEL = 'ads';
 let tab = 'billboard';
 const draft = { text: '', colour: AD_COLOURS[0].id, icon: AD_ICONS[0].id };
 let plot = { row: 4, col: 4 };
+let seenParams = null;
 
 const key = (view) => `ads:${view.cityId}`;
 const path = (view) => `/api/civic/ads?city=${view.cityId}`;
@@ -70,11 +71,13 @@ function sea(state, view, data) {
 export default {
   id: PANEL, title: 'Billboards', icon: '📢', placement: 'phone', live: false,
   render(state, view) {
+    // Opened from the map with { tab: 'billboard' | 'sea' }.
+    if (view.params && view.params !== seenParams) { seenParams = view.params; if (view.params.tab === 'sea' || view.params.tab === 'billboard') tab = view.params.tab; }
     const item = entry(key(view)), data = item.data;
     const tabs = `<div class="civic-tabs" role="group" aria-label="Ad type"><button data-ads-tab="billboard" aria-pressed="${tab === 'billboard'}">Billboards</button><button data-ads-tab="sea" aria-pressed="${tab === 'sea'}">Sea plots</button></div>`;
     const body = data ? `${stale(item)}${form()}${tab === 'sea' ? sea(state, view, data) : billboards(state, view, data)} ${button('Refresh', 'data-civic-retry', { working: item.loading })}` : status(item, view);
     return `${tabs}<p class="civic-note">Balance ${money(state.cash)}</p>${body}
-      <p class="civic-beta">Beta limitation: an ad is one line of text, a colour and an icon. Picture uploads and links are switched off until moderation exists, and ad text is never clickable. Rent is paid in in-game naira only. Ads are stored and listed now; drawing them on the map comes with the map update. Billboard pricing and the sea grid are original beta values (${esc(BILLBOARDS.slots.length)} billboard slots).</p>`;
+      <p class="civic-beta">Beta limitation: an ad is one line of text, a colour and an icon. Picture uploads and links are switched off until moderation exists, and ad text is never clickable. Rent is paid in in-game naira only. Ads are drawn on the city map behind its Billboards and Sea layers; they are never links. Billboard pricing and the sea grid are original beta values (${esc(BILLBOARDS.slots.length)} billboard slots).</p>`;
   },
   bind(root, api) {
     const view = api.view(), again = () => api.open(PANEL);

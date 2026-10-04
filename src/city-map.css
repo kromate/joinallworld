@@ -31,3 +31,29 @@
 .cmap-pin.is-dimmed:hover,.cmap-pin.is-dimmed:focus-visible{opacity:1}
 @media(min-width:901px){.cmap-scroll{padding:96px 24px 250px}.cmap-pin-name{font-size:13px;max-width:160px}}
 @media(max-width:540px){.cmap-scroll{padding:160px 12px 330px}.cmap-canvas{width:880px}}
+
+/* Civic overlays (billboards, neighbours, Governor) and the sea plots below the city. None of the ads is interactive. */
+.cmap-overlay{position:absolute;inset:0;pointer-events:none;z-index:2}
+.cmap-board{position:absolute;transform:translate(-50%,-100%);display:flex;align-items:center;gap:4px;max-width:128px;padding:4px 7px;border-radius:6px;border:2px solid #20232c;font-size:10px;font-weight:700;line-height:1.2;box-shadow:0 3px 0 #20232c;pointer-events:none}
+.cmap-board::after{content:"";position:absolute;left:50%;top:100%;width:3px;height:10px;margin-left:-1.5px;background:#20232c}
+.cmap-board-text{overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+.cmap-board.is-free{background:#fffffff0;color:#6b6247;border-style:dashed;border-color:#8a7a4a;box-shadow:none;font-weight:600}
+.cmap-hood{position:absolute;transform:translate(-50%,0);display:grid;gap:3px;justify-items:center;pointer-events:auto;max-width:170px}
+.cmap-hood-label{font-size:10px;font-weight:700;padding:2px 7px;border-radius:9px;background:#256b45;color:#fff;white-space:nowrap}
+.cmap-hood-homes{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:170px}
+.cmap-house{position:relative;display:grid;place-items:center;width:26px;height:26px;padding:0;border:0;border-radius:8px;background:#fffffff2;font-size:14px;line-height:1;box-shadow:0 1px 3px #0003}
+button.cmap-house{cursor:pointer}
+.cmap-house.is-online::after{content:"";position:absolute;right:-1px;top:-1px;width:8px;height:8px;border-radius:50%;background:#2fbf71;border:2px solid #fff}
+.cmap-house.is-you{background:#ffe9b0}
+.cmap-house:focus-visible{outline:3px solid #14532d;outline-offset:1px}
+.cmap-hood-more{font-size:10px;font-weight:700;align-self:center;padding:0 4px;color:#20232c}
+.cmap-gov{position:absolute;transform:translate(-50%,-100%);font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;background:#3b2a6b;color:#fff;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.cmap-pin.is-gov .cmap-pin-icon{border-color:#3b2a6b;box-shadow:0 0 0 5px #3b2a6b40,0 3px 8px #0003}
+.cmap-sea{width:max(100%,900px);max-width:1280px;margin:18px auto 0}
+.cmap-sea-title{margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:3px;color:#2f6f86}
+.cmap-sea-grid{display:grid;gap:3px;padding:10px;border-radius:18px;background:#8ac4d8}
+.cmap-plot{aspect-ratio:5/4;min-width:0;border-radius:6px;background:#ffffff38;display:grid;align-content:center;justify-items:center;gap:1px;padding:2px;overflow:hidden;font-size:9px;font-weight:700;line-height:1.1;text-align:center}
+.cmap-plot.is-shore{background:#ffffff5c}
+.cmap-plot-icon{font-size:13px;line-height:1}
+.cmap-plot-text{max-width:100%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+@media(max-width:540px){.cmap-sea{width:880px}}

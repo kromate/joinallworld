@@ -2,7 +2,7 @@
  * OWNER: civic
  * Neighbours: the directory of player homes, grouped by district, with truthful presence.
  * Counts and the online flag come from the server (GET /api/civic/neighbours). "Say hi" opens
- * the social owner's player card when that panel exists and says so plainly when it does not.
+ * that player's card (the social 'person' panel): chat, add friend, knock at their house.
  */
 import { esc, json } from '../dom.js';
 import { button, busy, count, entry, load, send, stale, status } from './civic-ui.js';
@@ -23,7 +23,7 @@ export default {
     const unset = data.districts.some((group) => group.id === 'unknown');
     return `<p class="civic-headline">${data.total === 1 ? '1 player has a house here' : `${count(data.total)} ${esc(data.demonym)} have houses`}, ${count(data.online)} online now.</p>${stale(item)}${groups || '<p class="civic-note">Nobody has checked in yet.</p>'}
       ${button(data.hidden ? 'List my home in the directory' : 'Hide my home from the directory', 'data-hood-toggle', { working: busy('prefs'), reason: view.connected ? '' : 'Offline: reconnect to change this.' })} ${button('Refresh', 'data-civic-retry', { working: item.loading })}
-      <p class="civic-beta">Beta: these are real counts of players who have opened the game since this feature shipped. “Online now” means a live connection at the moment this list was loaded.${unset ? ' Districts fill in once players choose a house.' : ''} Homes are not drawn on the map yet.</p>`;
+      <p class="civic-beta">Beta: these are real counts of players who have opened the game since this feature shipped. “Online now” means a live connection at the moment this list was loaded.${unset ? ' Districts fill in once players choose a house.' : ''} Homes are drawn on the city map behind the Neighbours layer.</p>`;
   },
   bind(root, api) {
     const view = api.view();
@@ -38,7 +38,7 @@ export default {
       node.addEventListener('click', () => {
         let player = null;
         try { player = JSON.parse(node.dataset.hoodHi); } catch {}
-        if (!player || !api.open('people', { player })) api.toast('Player cards are not available yet, so you cannot say hi from here. Meet people in a venue’s community chat.', 'error');
+        if (!player || !api.open('person', { player: player.id, name: player.name })) api.toast('That player’s card could not be opened. Try again from Sim → People.', 'error');
       });
     }
   },

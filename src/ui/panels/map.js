@@ -12,19 +12,33 @@
  *   'roadside-chip'  HUD chip shown while a choice is pending; it opens the modal once by itself.
  *
  * Everything shown comes from view.travel (src/game/systems/travel.js). The panel talks to the
- * city map through the window event 'jaw:map-ui' { layer?, filter?, selected? }.
+ * city map through the window event 'jaw:map-ui' { layer?, filter?, selected?, layers?, ads?,
+ * neighbours?, gov? }.
+ *
+ * MAP LAYERS (Billboards · Sea · Neighbours · Gov). Each toggle draws one civic overlay on the
+ * city map from its own server response, loaded through the civic panels' cache (civic-ui.js):
+ * GET /api/civic/ads, /neighbours and /gov. The panel only passes the data on; the map draws it.
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './map.css';
 import { esc, json, icon } from '../dom.js';
 import { VENUE_CATEGORIES } from '../../game/content/venues.js';
 import { chosenMode, fareText, goBlock, statusClass, tripLine } from './world-ui.js';
+import { entry, load } from './civic-ui.js';
 
 const FILTERS = [{ id: 'all', label: 'All' }, { id: 'open', label: 'Open now' }, ...Object.values(VENUE_CATEGORIES)];
 const CHIP_LIMIT = 9;
 
 let destination = null, mode = null, seenParams = null, filter = 'all', layer = 'city', lastCity = null, showAll = false;
 let shownEvent = '';
+const layers = { billboards: false, sea: false, neighbours: false, gov: false };
+const LAYERS = [
+  { id: 'billboards', label: '📢 Billboards', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'billboard' }, action: 'Rent a billboard' },
+  { id: 'sea', label: '🌊 Sea', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'sea' }, action: 'Rent a sea plot' },
+  { id: 'neighbours', label: '🏡 Neighbours', key: 'hood', path: 'neighbours', open: 'neighbours', action: 'Open Neighbours' },
+  { id: 'gov', label: '🏛️ Gov', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
+];
+const cacheKey = (item, view) => `${item.key}:${view.cityId}`;
 
 const tell = (detail) => window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail }));
 const matches = (item) => item.kind !== 'soon' && (filter === 'all' || (filter === 'open' ? item.open : item.category === filter || item.kind === 'home'));
@@ -34,10 +48,23 @@ function overview(state, view) {
   const places = view.travel.destinations.filter(matches);
   const top = `<header class="map-top"><div><h1>${esc(view.city?.name || 'City')} map</h1><p>${weather ? `${esc(weather.icon)} ${esc(weather.label)} · ` : ''}Pick a place on the map or below.</p></div><button class="map-chip-button" data-map-layer="world">🌍 World map</button></header>`;
   const filters = `<div class="map-filters" role="group" aria-label="Filter places">${FILTERS.map((item) => `<button data-map-filter="${esc(item.id)}" aria-pressed="${item.id === filter}" class="${item.id === filter ? 'is-selected' : ''}">${esc(item.label)}</button>`).join('')}</div>`;
+  // The stamp makes the panel re-bind when a layer's data arrives, which is when the map is told.
+  const on = LAYERS.filter((item) => layers[item.id]);
+  const stamp = on.map((item) => `${item.id}:${entry(cacheKey(item, view)).at}`).join('|');
+  const layerRow = `<div class="map-filters map-layers" role="group" aria-label="Map layers" data-map-stamp="${esc(stamp)}">${LAYERS.map((item) => `<button data-map-layer-toggle="${esc(item.id)}" aria-pressed="${layers[item.id]}" class="${layers[item.id] ? 'is-selected' : ''}">${esc(item.label)}</button>`).join('')}</div>`;
+  const layerNotes = on.map((item) => {
+    const cached = entry(cacheKey(item, view));
+    const status = cached.data ? '' : !view.connected ? 'Offline: reconnect to load this layer.' : cached.error ? `Could not load: ${cached.error}` : 'Loading…';
+    const summary = !cached.data ? status : item.id === 'billboards' ? `${cached.data.billboards.slots.filter((slot) => slot.ad).length} of ${cached.data.billboards.slots.length} billboards rented`
+      : item.id === 'sea' ? `${cached.data.sea.plots.length} sea plots rented · shown in the water below the city`
+        : item.id === 'neighbours' ? `${cached.data.total} home${cached.data.total === 1 ? '' : 's'}, ${cached.data.online} online`
+          : cached.data.governor ? `Governor ${cached.data.governor.name}` : 'No Governor yet';
+    return `<div class="map-layer-note"><span>${esc(summary)}</span><button class="map-chip-button" data-open="${esc(item.open)}" ${item.params ? `data-params="${json(item.params)}"` : ''}>${esc(item.action)}</button></div>`;
+  }).join('');
   const rail = places.length
     ? `<div class="map-rail" role="group" aria-label="Places">${places.map((item) => `<button data-map-pick="${esc(item.id)}" class="${statusClass(item)}${item.here ? ' is-here' : ''}"><span aria-hidden="true">${esc(item.icon)}</span><b>${esc(item.label)}</b><small>${esc(item.here ? 'You are here' : item.open ? item.district : 'Closed')}</small></button>`).join('')}</div>`
     : `<p class="map-empty">Nothing matches this filter right now. Choose “All” to see every place.</p>`;
-  return `<div class="map-panel">${top}${filters}${rail}</div>`;
+  return `<div class="map-panel">${top}${filters}${layerRow}${layerNotes}${rail}</div>`;
 }
 
 function worldLayer(view) {
@@ -64,6 +91,7 @@ function card(state, view, item) {
     ${item.modes.length ? `<div class="map-modes" role="group" aria-label="How to travel">${tiles}</div>` : ''}
     ${chosen && !item.blocked ? `<p class="map-trip">${esc(tripLine(chosen))}</p>` : ''}
     ${block ? `<p class="map-why" role="note">${esc(block.reason)}</p>` : ''}
+    ${item.id === 'state-house' ? '<button class="map-chip-button" data-open="state-house">🏛️ Who governs? Open the State House</button>' : item.id === 'polling-unit' ? '<button class="map-chip-button" data-open="governor">🗳️ Election: candidates, voting and results</button>' : ''}
     <button class="map-go" ${block || !chosen ? 'disabled' : `data-action="travel" data-payload="${json({ id: item.id, mode: chosen.id })}" data-then="close"`}>${block ? esc(block.label) : `Go · ${esc(fareText(chosen))} <span aria-hidden="true">→</span>`}</button>
   </div>`;
 }
@@ -83,9 +111,17 @@ const mapPanel = {
   bind(root, api, params) {
     // Opened for a place (the Home tab, a goal chip, "Go to work"): highlight it on the city map too.
     if (params?.destination && params.destination === destination) tell({ selected: destination });
+    // Layers: load what is switched on (cached; never from a timer) and hand the map what there is.
+    const view = api.view(), detail = { layers: { ...layers } };
+    for (const item of LAYERS.filter((option) => layers[option.id])) {
+      load(api, cacheKey(item, view), `/api/civic/${item.path}?city=${view.cityId}`, { maxAge: 30000 });
+      detail[item.key === 'hood' ? 'neighbours' : item.key] = entry(cacheKey(item, view)).data;
+    }
+    tell(detail);
     root.addEventListener('click', async (event) => {
       const hit = (name) => event.target.closest(`[data-map-${name}]`);
-      const pick = hit('pick'), choose = hit('mode'), chip = hit('filter'), swap = hit('layer'), share = hit('share');
+      const pick = hit('pick'), choose = hit('mode'), chip = hit('filter'), swap = hit('layer'), share = hit('share'), toggle = hit('layer-toggle');
+      if (toggle) { const id = toggle.dataset.mapLayerToggle; layers[id] = !layers[id]; tell({ layers: { ...layers } }); api.refresh(); return; }
       // Leaving on a trip clears the selection so the next visit starts from the overview.
       if (event.target.closest('[data-action="travel"]')) { destination = null; tell({ selected: null }); return; }
       if (pick) { destination = pick.dataset.mapPick || null; mode = null; showAll = false; tell({ selected: destination }); api.refresh(); }

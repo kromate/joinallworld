@@ -10,7 +10,20 @@
  * the world map (the city picker) instead — the host reads it on every render.
  *
  * The Map panel talks to this module through one window event, 'jaw:map-ui', with detail
- * { layer?: 'city' | 'world', filter?: string, selected?: venueId | null }.
+ * { layer?: 'city' | 'world', filter?: string, selected?: venueId | null,
+ *   layers?: { billboards, sea, neighbours, gov }   which civic overlays to draw
+ *   ads?, neighbours?, gov? }                        the server responses they are drawn from
+ *
+ * CIVIC OVERLAYS (drawn only while their layer is on, and only from server data)
+ *   billboards  one board beside the venue each slot is `near`: the renter's colour, a fixed icon
+ *               and their one line of text; a free slot shows "For rent".
+ *   sea         the 16 x 16 grid of sea plots below the city, each rented plot in its colour with
+ *               icon and text.
+ *   neighbours  a cluster of player homes at each district, with who is online.
+ *   gov         the State House and the Polling Unit are highlighted and the State House names
+ *               the Governor; tapping the State House then opens the Governor sheet.
+ * Every piece of player text here is set with textContent, never as markup, and no ad is a
+ * link or a button: nothing a player typed can be clicked.
  *
  * Static rendering only: the DOM is built once per city and class names change when the
  * state does. No requestAnimationFrame loop, no timers.
@@ -57,8 +70,12 @@ function backdrop(names) {
   </svg>`;
 }
 
-export function createCityMap(container, { onSelectVenue = () => {} } = {}) {
+const HOMES_SHOWN = 12;
+const make = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
+
+export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {} } = {}) {
   let cityId = 'lagos', state = null, layer = 'city', filter = 'all', selected = null, signature = '', centred = '', built = false;
+  let layers = { billboards: false, sea: false, neighbours: false, gov: false }, overlay = { ads: null, neighbours: null, gov: null }, overlayKey = '', seaPending = false;
   let deepLink = null;
   try { deepLink = new URLSearchParams(window.location.search).get('venue'); } catch { deepLink = null; }
   const root = document.createElement('div');
@@ -74,9 +91,10 @@ export function createCityMap(container, { onSelectVenue = () => {} } = {}) {
   function build() {
     const names = CITY_MAPS[cityId] || CITY_MAPS.lagos;
     root.innerHTML = `<div class="cmap-scroll"><div class="cmap-canvas" role="group" aria-label="Map of the city. Choose a place to see it and travel there.">${backdrop(names)}${places().map((place) =>
-      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}</div></div>`;
-    built = true; signature = '';
+      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${esc(place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div>`;
+    built = true; signature = ''; overlayKey = '';
     update();
+    drawOverlays();
   }
 
   /** Reflect the state in class names and labels. Touches the DOM only when something changed. */
@@ -107,6 +125,91 @@ export function createCityMap(container, { onSelectVenue = () => {} } = {}) {
     }
   }
 
+  /** Rebuild the civic overlays when a layer or its data changed. Static: nothing here moves by itself. */
+  function drawOverlays() {
+    if (!built) return;
+    const home = homeSpot();
+    const next = JSON.stringify([layers, overlay, home.map]);
+    if (next === overlayKey) return;
+    overlayKey = next;
+    const host = root.querySelector('[data-overlay]'), seaHost = root.querySelector('[data-sea]');
+    const nodes = [];
+    const ads = overlay.ads, colourOf = (id) => ads?.palette?.colours?.find((item) => item.id === id) || { bg: '#256b45', ink: '#ffffff' };
+    const iconOf = (id) => ads?.palette?.icons?.find((item) => item.id === id)?.icon || '⭐';
+    if (layers.billboards && ads) {
+      for (const slot of ads.billboards.slots) {
+        const venue = VENUES[slot.near];
+        if (!venue) continue;
+        const place = slot.near === 'home' ? home.map : venue.map;
+        const board = make('div', `cmap-board${slot.ad ? '' : ' is-free'}`);
+        board.style.left = `${place.x + 4.6}%`; board.style.top = `${place.y - 5.4}%`;
+        if (slot.ad) {
+          const colour = colourOf(slot.ad.colour);
+          board.style.background = colour.bg; board.style.color = colour.ink;
+          board.append(make('span', 'cmap-board-icon', iconOf(slot.ad.icon)), make('span', 'cmap-board-text', slot.ad.text));
+          board.setAttribute('aria-label', `Billboard on ${slot.road}: ${slot.ad.text}, by ${slot.ad.by.name}`);
+        } else {
+          board.append(make('span', 'cmap-board-text', 'Billboard for rent'));
+          board.setAttribute('aria-label', `Billboard on ${slot.road}: for rent`);
+        }
+        board.setAttribute('role', 'img');
+        nodes.push(board);
+      }
+    }
+    if (layers.neighbours && overlay.neighbours) {
+      for (const group of overlay.neighbours.districts) {
+        const spot = HOME_SPOTS[group.id];
+        if (!spot || !group.count) continue;
+        const hood = make('div', 'cmap-hood');
+        hood.style.left = `${spot.map.x}%`; hood.style.top = `${spot.map.y + 7.5}%`;
+        hood.append(make('span', 'cmap-hood-label', `${group.label} · ${group.count} home${group.count === 1 ? '' : 's'} · ${group.online} online`));
+        const row = make('div', 'cmap-hood-homes');
+        for (const item of group.homes.slice(0, HOMES_SHOWN)) {
+          const house = make(item.you ? 'span' : 'button', `cmap-house${item.online ? ' is-online' : ''}${item.you ? ' is-you' : ''}`, '🏠');
+          house.title = item.you ? `${item.name} (you)` : item.name;
+          house.setAttribute('aria-label', `${item.name}${item.you ? ' (you)' : ''}, ${item.online ? 'online now' : 'not online'}`);
+          if (!item.you) { house.type = 'button'; house.dataset.neighbour = item.id; house.dataset.name = item.name; }
+          row.append(house);
+        }
+        const shown = Math.min(group.homes.length, HOMES_SHOWN);
+        if (group.count > shown) row.append(make('span', 'cmap-hood-more', `+${group.count - shown}`));
+        hood.append(row);
+        nodes.push(hood);
+      }
+    }
+    if (layers.gov && overlay.gov) {
+      const seat = VENUES['state-house'];
+      if (seat) {
+        const label = make('div', 'cmap-gov', overlay.gov.governor ? `Governor ${overlay.gov.governor.name}` : 'No Governor yet');
+        label.style.left = `${seat.map.x}%`; label.style.top = `${seat.map.y - 7.5}%`;
+        nodes.push(label);
+      }
+    }
+    host.replaceChildren(...nodes);
+    for (const pin of root.querySelectorAll('.cmap-pin')) pin.classList.toggle('is-gov', layers.gov && ['state-house', 'polling-unit'].includes(pin.dataset.venue));
+    // Sea plots: a block of open water below the city.
+    seaHost.hidden = !(layers.sea && ads);
+    if (layers.sea && ads) {
+      const sea = ads.sea, taken = new Map(sea.plots.map((plot) => [plot.slot, plot]));
+      const grid = make('div', 'cmap-sea-grid');
+      grid.style.gridTemplateColumns = `repeat(${sea.cols}, 1fr)`;
+      for (let row = 0; row < sea.rows; row++) for (let col = 0; col < sea.cols; col++) {
+        const plot = taken.get(`sea-${row}-${col}`);
+        const cell = make('div', `cmap-plot${plot ? ' is-rented' : ''}${row < sea.shoreRows ? ' is-shore' : ''}`);
+        if (plot) {
+          const colour = colourOf(plot.colour);
+          cell.style.background = colour.bg; cell.style.color = colour.ink;
+          cell.append(make('span', 'cmap-plot-icon', iconOf(plot.icon)), make('span', 'cmap-plot-text', plot.text));
+          cell.setAttribute('role', 'img'); cell.setAttribute('aria-label', `Sea plot ${row + 1}·${col + 1}: ${plot.text}, by ${plot.by.name}`);
+          cell.title = `${plot.text} — ${plot.by.name}`;
+        }
+        grid.append(cell);
+      }
+      const names = CITY_MAPS[cityId] || CITY_MAPS.lagos;
+      seaHost.replaceChildren(make('h2', 'cmap-sea-title', `${names.sea} · sea plots (${sea.plots.length} of ${sea.rows * sea.cols} rented)`), grid);
+    } else seaHost.replaceChildren();
+  }
+
   function centre(id, force = false) {
     if (!built || container.hidden || (!force && centred === id)) return;
     const pin = root.querySelector(`.cmap-pin[data-venue="${CSS.escape(id)}"]`), scroller = root.querySelector('.cmap-scroll');
@@ -117,10 +220,14 @@ export function createCityMap(container, { onSelectVenue = () => {} } = {}) {
   }
 
   function onClick(event) {
+    const house = event.target.closest('[data-neighbour]');
+    if (house) { onSelectNeighbour({ id: house.dataset.neighbour, name: house.dataset.name }); return; }
     const pin = event.target.closest('.cmap-pin');
     if (!pin) return;
     selected = pin.dataset.venue;
     update();
+    // With the Gov layer on, the State House opens the Governor sheet instead of the travel card.
+    if (layers.gov && pin.dataset.venue === 'state-house') { onSelectGov(); return; }
     onSelectVenue(pin.dataset.venue);
   }
   function onUi(event) {
@@ -128,7 +235,16 @@ export function createCityMap(container, { onSelectVenue = () => {} } = {}) {
     if (detail.layer === 'city' || detail.layer === 'world') layer = detail.layer;
     if (typeof detail.filter === 'string') filter = detail.filter;
     if ('selected' in detail) { selected = detail.selected || null; if (selected) centre(selected, true); }
+    const seaWasOff = !layers.sea;
+    if (detail.layers && typeof detail.layers === 'object') layers = { billboards: detail.layers.billboards === true, sea: detail.layers.sea === true, neighbours: detail.layers.neighbours === true, gov: detail.layers.gov === true };
+    for (const key of ['ads', 'neighbours', 'gov']) if (key in detail) overlay[key] = detail[key] && typeof detail[key] === 'object' ? detail[key] : null;
     update();
+    drawOverlays();
+    // Turning the Sea layer on brings the plots into view once they are drawn.
+    const sea = root.querySelector('[data-sea]'), scroller = root.querySelector('.cmap-scroll');
+    if (layers.sea && sea && scroller && !sea.hidden && (seaWasOff || seaPending)) { scroller.scrollTop = Math.max(0, sea.offsetTop - 170); seaPending = false; }
+    else if (layers.sea && seaWasOff) seaPending = true;
+    if (!layers.sea) seaPending = false;
   }
   root.addEventListener('click', onClick);
   window.addEventListener('jaw:map-ui', onUi);
@@ -140,6 +256,7 @@ export function createCityMap(container, { onSelectVenue = () => {} } = {}) {
     setState(next) {
       state = next;
       update();
+      drawOverlays();
       // A shared link opens its venue card once, after the life has loaded.
       if (deepLink) {
         const id = deepLink; deepLink = null;

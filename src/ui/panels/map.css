@@ -61,3 +61,7 @@
 .map-event-chip small{color:#7a5a12}
 @media(max-width:540px){.map-card{max-height:calc(100dvh - 215px)}.map-modes button{min-height:70px}}
 @media(max-height:650px){.map-desc,.map-ambient{display:none}}
+.map-layers button{background:var(--c-surface-solid);border:1px solid var(--c-line)!important}
+.map-layers button.is-selected{background:var(--c-green-dark);border-color:var(--c-green-dark)!important}
+.map-layer-note{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);font-size:12px;color:var(--c-muted)}
+.map-layer-note span{min-width:0;overflow-wrap:anywhere}

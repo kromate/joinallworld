@@ -1,0 +1,718 @@
+/**
+ * OWNER: world
+ * Builds a city pack (src/map3d/cities/*.js) into a Three.js group: the board, the water, the
+ * land, roads and bridges, one landmark per venue, the coming-soon building sites, district
+ * plates, and the fabric that makes it a city — houses, blocks, towers, trees, palms, boats and
+ * street traffic.
+ *
+ * BUDGET (asserted in src/map3d/map3d.test.js): everything static is merged into a few meshes and
+ * everything repeated is instanced, so the whole city is a few dozen draw calls and stays under
+ * 60,000 triangles. Nothing here needs a WebGL context: it is typed-array work and runs under
+ * `node --test`. There are no shadow maps — shadows are flat dark quads laid beside what casts them.
+ *
+ *   buildCity(kit, pack, network, { venues, soon, labelOf }) → {
+ *     group, places, triangles, counts,
+ *     setHome(houseId)        move the Home landmark to the player's district
+ *     setTime('day'|'dusk'|'night')
+ *     setTraffic(on)          the decorative "Moving" layer: more vehicles, and they drive
+ *     animate(seconds)        called only from a running frame loop: water and traffic drift
+ *     dispose()
+ *   }
+ * places[id] = { id, kind: 'venue' | 'home' | 'soon', x, z, ry, top, gate }
+ */
+import type { BufferGeometry, Group, InstancedMesh, Material, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D } from 'three';
+import { createBatch, sceneMaterials, hash } from '../scene/build.js';
+import { sign, textWidth } from '../scene/props.js';
+import { drawLandmark, PLINTH } from './landmarks.ts';
+import type { Batch, LandmarkContext } from './landmarks.ts';
+import { miniVehicle, boat } from './vehicles.ts';
+import { roundPolygon, pointInPolygon } from './roads.ts';
+import type { Network, Road } from './roads.ts';
+import { rasterLgas } from './lga.ts';
+import { estateLayout } from './estates.ts';
+import type { Box4, CityPack, FabricStyle, LandKind, PackDistrict, Point2, Point3, XZ } from './types.ts';
+
+/** The Three.js namespace the map code is handed (it is loaded lazily, so it is never imported here as a value). */
+type Three = typeof import('three');
+/** What the map code uses of the scene kit (src/scene/kit.js createKit()). */
+export interface MapKit {
+  THREE: Three;
+  matte: boolean;
+  onDispose(fn: () => void): () => boolean;
+  dispose(): void;
+}
+export type TimeOfDay = 'day' | 'dusk' | 'night';
+/** Lighting for one time of day: sky gradient, hemisphere [sky, ground, intensity], sun [colour, intensity, position], and the city's own water / window / wave / shadow values. */
+export interface TimePreset {
+  sky: [string, string];
+  hemi: [string, string, number];
+  sun: [string, number, [number, number, number]];
+  water: string;
+  windows: string;
+  waves: number;
+  shadow: number;
+}
+/** One place on the map: a venue, the player's Home, or a coming-soon site. `gate` is where its path meets the road. */
+export interface CityPlace {
+  id: string;
+  kind: 'venue' | 'home' | 'soon';
+  x: number;
+  z: number;
+  ry: number;
+  top: number;
+  gate: Point3 | null;
+  /** Home only: the district house id, or 'own' for the player's own plot. */
+  house?: string;
+  /** Home only: the district name, or the label of the player's own house. */
+  district?: string;
+  /** Home only: true when Home is the player's own plot. */
+  own?: boolean;
+}
+/** The player's own plot, for setHome: where it is, what the label says, and how high the label sits. */
+export interface OwnHome { x: number; z: number; label: string; top?: number }
+/** The venue fields the builder reads (src/game/content/venues.js). */
+export interface CityVenue { scene?: { kind?: string; variant?: string } }
+export interface CityMaterials {
+  ground: MeshStandardMaterial;
+  water: MeshStandardMaterial;
+  board: MeshStandardMaterial;
+  waves: MeshBasicMaterial;
+  windows: MeshBasicMaterial;
+  shadow: MeshBasicMaterial;
+  instanced: MeshStandardMaterial;
+}
+/** The first estate of a local government (an element of estateLayout().cells). */
+export interface CityFront { x: number; z: number; size: number }
+/** What buildCity returns. */
+export interface City {
+  group: Group;
+  places: Record<string, CityPlace>;
+  materials: CityMaterials;
+  pack: CityPack;
+  readonly triangles: number;
+  counts: { houses: number; towers: number; trees: number; palms: number; vehicles: number; shadows: number };
+  readonly time: string;
+  setHome(house: string | null, own?: OwnHome | null): boolean;
+  setLgas(on: boolean, own?: string | null): boolean;
+  fronts: CityFront[];
+  setTime(next: string): TimePreset;
+  setTraffic(on: boolean): boolean;
+  readonly traffic: boolean;
+  animate(seconds: number): void;
+  dispose(): void;
+}
+/** createRaw: a hand-rolled mesh collector for flat things the batch has no primitive for. */
+export interface Raw {
+  shape(polygon: readonly Point2[], y: number, colour: string): void;
+  wall(polygon: readonly Point2[], y0: number, y1: number, colour: string): void;
+  ribbon(points: readonly Point3[], width: number, lift: number, colour: string, side?: number): void;
+  strip(points: readonly Point3[], side: number, low: number, high: number | number[], colour: string, facing?: number): void;
+  readonly triangles: number;
+  build(material: Material): Mesh;
+}
+
+export const WATER_Y = -0.5;
+/** Landmarks are drawn a little larger than life, so each can be told apart on a view of the whole city. */
+export const LANDMARK_SCALE = 1.15;
+const LOT = PLINTH * LANDMARK_SCALE;
+const LAND_COLOURS: Record<LandKind, string> = { mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae' };
+const ASPHALT = '#5d626b', KERB = '#e4dfcf', DASH = '#f6f2e2', PATH = '#dcd2b6';
+
+export const CITY_LIGHT: Readonly<Record<TimeOfDay, TimePreset>> = Object.freeze({
+  day: { sky: ['#cfeaf5', '#8fcbe6'], hemi: ['#f4fbff', '#9fb07f', 2.1], sun: ['#fff0d2', 2.5, [-70, 120, 90]], water: '#4faacb', windows: '#56748c', waves: 0.5, shadow: 0.2 },
+  dusk: { sky: ['#f3b184', '#6a5c98'], hemi: ['#f6c9a8', '#5a5370', 1.45], sun: ['#ff9f5f', 1.9, [-130, 46, 40]], water: '#4a79a6', windows: '#ffd9a0', waves: 0.35, shadow: 0.24 },
+  night: { sky: ['#1b2748', '#0a1024'], hemi: ['#9db2e6', '#1c2a44', 1.25], sun: ['#b4c6f5', 1.0, [-60, 110, 60]], water: '#1b3d68', windows: '#ffffff', waves: 0.16, shadow: 0.3 },
+});
+
+function mulberry(seed: number) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+const segmentDistance = (x: number, z: number, a: XZ, b: XZ) => { const dx = b.x - a.x, dz = b.z - a.z, t = Math.max(0, Math.min(1, ((x - a.x) * dx + (z - a.z) * dz) / (dx * dx + dz * dz || 1))); return Math.hypot(x - a.x - dx * t, z - a.z - dz * t); };
+const circle = (x: number, z: number, radius: number, sides = 12) => Array.from({ length: sides }, (_, i): [number, number] => [x + Math.cos((i / sides) * Math.PI * 2) * radius, z + Math.sin((i / sides) * Math.PI * 2) * radius]);
+const PYLON_STAYS = 5;
+const inBox = (x: number, z: number, [x0, z0, x1, z1]: Box4) => x >= x0 && x <= x1 && z >= z0 && z <= z1;
+
+/** A hand-rolled mesh collector for flat things the batch has no primitive for: polygons, ribbons, walls. */
+export function createRaw(THREE: Three): Raw {
+  const pos: number[] = [], nor: number[] = [], col: number[] = [], idx: number[] = [], tint = new THREE.Color(), cache = new Map<string, [number, number, number]>();
+  const rgb = (colour: string) => { if (!cache.has(colour)) { tint.set(colour); cache.set(colour, [tint.r, tint.g, tint.b]); } return cache.get(colour)!; };
+  const v = (x: number, y: number, z: number, nx: number, ny: number, nz: number, colour: string) => { const c = rgb(colour); pos.push(x, y, z); nor.push(nx, ny, nz); col.push(c[0], c[1], c[2]); return pos.length / 3 - 1; };
+  /** A triangle wound so that it faces the way its first vertex's normal points. */
+  function tri(i: number, j: number, k: number) {
+    const ax = pos[i * 3]!, ay = pos[i * 3 + 1]!, az = pos[i * 3 + 2]!;
+    const ux = pos[j * 3]! - ax, uy = pos[j * 3 + 1]! - ay, uz = pos[j * 3 + 2]! - az, wx = pos[k * 3]! - ax, wy = pos[k * 3 + 1]! - ay, wz = pos[k * 3 + 2]! - az;
+    const facing = (uy * wz - uz * wy) * nor[i * 3]! + (uz * wx - ux * wz) * nor[i * 3 + 1]! + (ux * wy - uy * wx) * nor[i * 3 + 2]!;
+    if (facing >= 0) idx.push(i, j, k); else idx.push(i, k, j);
+  }
+  const raw: Raw = {
+    /** A flat polygon [[x, z], …] at height y, facing up. */
+    shape(polygon, y, colour) {
+      const base = pos.length / 3;
+      for (const [x, z] of polygon) v(x, y, z, 0, 1, 0, colour);
+      for (const [a, b, c] of THREE.ShapeUtils.triangulateShape(polygon.map(([x, z]) => new THREE.Vector2(x, z)), [])) tri(base + a!, base + b!, base + c!);
+    },
+    /** The vertical side of a closed polygon between two heights, facing outwards. */
+    wall(polygon, y0, y1, colour) {
+      let area = 0;
+      for (let i = 0; i < polygon.length; i++) { const [ax, az] = polygon[i]!, [bx, bz] = polygon[(i + 1) % polygon.length]!; area += ax * bz - bx * az; }
+      const out = area > 0 ? 1 : -1;
+      for (let i = 0; i < polygon.length; i++) {
+        const [ax, az] = polygon[i]!, [bx, bz] = polygon[(i + 1) % polygon.length]!, length = Math.hypot(bx - ax, bz - az) || 1;
+        const nx = ((bz - az) / length) * out, nz = (-(bx - ax) / length) * out;
+        const a = v(ax, y1, az, nx, 0, nz, colour), b = v(bx, y1, bz, nx, 0, nz, colour), c = v(bx, y0, bz, nx, 0, nz, colour), d = v(ax, y0, az, nx, 0, nz, colour);
+        tri(a, b, c); tri(a, c, d);
+      }
+    },
+    /** A flat band of the given width along a polyline [{ x, y, z }], `lift` above it; `side` shifts it sideways. */
+    ribbon(points, width, lift, colour, side = 0) {
+      const base = pos.length / 3;
+      for (let i = 0; i < points.length; i++) {
+        const a = points[Math.max(0, i - 1)]!, b = points[Math.min(points.length - 1, i + 1)]!, length = Math.hypot(b.x - a.x, b.z - a.z) || 1;
+        const px = -(b.z - a.z) / length, pz = (b.x - a.x) / length, p = points[i]!;
+        v(p.x + px * (side + width / 2), p.y + lift, p.z + pz * (side + width / 2), 0, 1, 0, colour);
+        v(p.x + px * (side - width / 2), p.y + lift, p.z + pz * (side - width / 2), 0, 1, 0, colour);
+      }
+      for (let i = 0; i < points.length - 1; i++) { const k = base + i * 2; tri(k, k + 1, k + 2); tri(k + 1, k + 3, k + 2); }
+    },
+    /** A vertical strip along a polyline, `side` units to one side, between two lifts (`high` may be a list, one per point); it faces away from the line. */
+    strip(points, side, low, high, colour, facing = Math.sign(side) || 1) {
+      const base = pos.length / 3;
+      for (let i = 0; i < points.length; i++) {
+        const a = points[Math.max(0, i - 1)]!, b = points[Math.min(points.length - 1, i + 1)]!, length = Math.hypot(b.x - a.x, b.z - a.z) || 1;
+        const px = -(b.z - a.z) / length, pz = (b.x - a.x) / length, p = points[i]!;
+        v(p.x + px * side, p.y + (Array.isArray(high) ? high[i]! : high), p.z + pz * side, px * facing, 0, pz * facing, colour);
+        v(p.x + px * side, p.y + low, p.z + pz * side, px * facing, 0, pz * facing, colour);
+      }
+      for (let i = 0; i < points.length - 1; i++) { const k = base + i * 2; tri(k, k + 1, k + 2); tri(k + 1, k + 3, k + 2); }
+    },
+    get triangles() { return idx.length / 3; },
+    build(material) {
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+      geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(nor), 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(col), 3));
+      geometry.setIndex(new THREE.BufferAttribute(pos.length / 3 > 65535 ? new Uint32Array(idx) : new Uint16Array(idx), 1));
+      return new THREE.Mesh(geometry, material);
+    },
+  };
+  return raw;
+}
+
+/** The shimmer tile covers this many units of water. */
+const WATER_TILE = 30;
+/** The brightness (0…1) of the water's shimmer at (u, v) of its tile. Every frequency is a whole number, so the tile repeats without a seam. */
+export function shimmer(u: number, v: number) {
+  const a = u * Math.PI * 2, c = v * Math.PI * 2;
+  const swell = Math.sin(c * 3 + Math.sin(a * 2) * 1.3) * 0.55 + Math.sin(c * 7 + a + Math.sin(a * 3 + c) * 0.9) * 0.45;
+  const glint = Math.pow(Math.max(0, Math.sin(c * 10 + Math.sin(a * 2 + c) * 2.4 + Math.sin(a * 5) * 0.7)), 10) * (0.5 + 0.5 * Math.sin(a * 3 + c * 2));
+  return Math.min(1, 0.91 + swell * 0.03 + glint * 0.07);
+}
+/**
+ * The water's shimmer: a small procedural texture of soft swells and pale glints, made once and
+ * tiled over the lagoon. It is STATIC — nothing about it moves, so it costs no frames; it multiplies
+ * the water's colour, so it follows the time of day with it.
+ */
+function waterTexture(THREE: Three, size = 128) {
+  const data = new Uint8Array(size * size * 4);
+  for (let j = 0; j < size; j++) for (let i = 0; i < size; i++) {
+    const tone = Math.round(shimmer(i / size, j / size) * 255), k = (j * size + i) * 4;
+    data[k] = tone; data[k + 1] = tone; data[k + 2] = Math.min(255, tone + 4); data[k + 3] = 255;
+  }
+  const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
+  texture.wrapS = THREE.RepeatWrapping; texture.wrapT = THREE.RepeatWrapping;
+  texture.magFilter = THREE.LinearFilter; texture.minFilter = THREE.LinearMipmapLinearFilter; texture.generateMipmaps = true;
+  texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4;
+  texture.needsUpdate = true;
+  return texture;
+}
+
+/**
+ * Lean unit shapes for things drawn hundreds of times: a box without its underside (10 triangles)
+ * and a four-sided pyramid without a base (4). White, so an instance colour is the colour.
+ */
+export function leanGeometry(THREE: Three, kind: 'box' | 'gable' | 'pyramid'): BufferGeometry {
+  const pos: number[] = [], nor: number[] = [], idx: number[] = [];
+  const face = (points: number[][], normal: number[]) => { const base = pos.length / 3; for (const point of points) { pos.push(...point); nor.push(...normal); } for (let i = 1; i < points.length - 1; i++) idx.push(base, base + i, base + i + 1); };
+  if (kind === 'box') {
+    const a = -0.5, b = 0.5;
+    face([[a, 1, b], [b, 1, b], [b, 1, a], [a, 1, a]], [0, 1, 0]);
+    face([[a, 0, b], [b, 0, b], [b, 1, b], [a, 1, b]], [0, 0, 1]); face([[b, 0, a], [a, 0, a], [a, 1, a], [b, 1, a]], [0, 0, -1]);
+    face([[b, 0, b], [b, 0, a], [b, 1, a], [b, 1, b]], [1, 0, 0]); face([[a, 0, a], [a, 0, b], [a, 1, b], [a, 1, a]], [-1, 0, 0]);
+  } else if (kind === 'gable') {
+    // A ridge roof: two slopes and two gable ends, the ridge running front to back. It sits on a unit house (y = 0 is the eaves).
+    const r = 0.58, d = 0.56, h = 0.46, k = Math.hypot(h, r);
+    face([[-r, 0, d], [0, h, d], [0, h, -d], [-r, 0, -d]], [-h / k, r / k, 0]); face([[r, 0, -d], [0, h, -d], [0, h, d], [r, 0, d]], [h / k, r / k, 0]);
+    face([[-r, 0, d], [r, 0, d], [0, h, d]], [0, 0, 1]); face([[r, 0, -d], [-r, 0, -d], [0, h, -d]], [0, 0, -1]);
+  } else {
+    const r = 0.56, h = 0.6, k = Math.hypot(h, r);
+    face([[-r, 0, r], [r, 0, r], [0, h, 0]], [0, r / k, h / k]); face([[r, 0, -r], [-r, 0, -r], [0, h, 0]], [0, r / k, -h / k]);
+    face([[r, 0, r], [r, 0, -r], [0, h, 0]], [h / k, r / k, 0]); face([[-r, 0, -r], [-r, 0, r], [0, h, 0]], [-h / k, r / k, 0]);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+  geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(nor), 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(pos.length).fill(1), 3));
+  geometry.setIndex(idx);
+  return geometry;
+}
+
+/** Push a polygon's outline outwards by `distance`. */
+function offsetPolygon(polygon: readonly Point2[], distance: number): [number, number][] {
+  let area = 0;
+  for (let i = 0; i < polygon.length; i++) { const [ax, az] = polygon[i]!, [bx, bz] = polygon[(i + 1) % polygon.length]!; area += ax * bz - bx * az; }
+  const out = area > 0 ? 1 : -1, n = polygon.length;
+  return polygon.map(([x, z], i) => {
+    const [px, pz] = polygon[(i + n - 1) % n]!, [qx, qz] = polygon[(i + 1) % n]!, length = Math.hypot(qx - px, qz - pz) || 1;
+    return [x + ((qz - pz) / length) * out * distance, z + (-(qx - px) / length) * out * distance];
+  });
+}
+
+/** A stretch of ground road (or a path), and how far the fabric keeps off it. */
+interface Segment { a: XZ; b: XZ; half: number }
+/** A circle the fabric keeps out of. */
+interface Clear { x: number; z: number; r: number }
+/** A flat shadow quad, drawn in one instanced mesh. */
+interface Shadow { x: number; z: number; w: number; d: number; ry: number }
+interface HouseItem { x: number; z: number; ry: number; sx: number; sy: number; sz: number; wall: string; roof: string }
+interface TowerItem { x: number; z: number; ry: number; sx: number; sy: number; sz: number; colour: string }
+/** A tree or palm; palms on sand sit a little below ground (y). */
+interface TreeItem { x: number; z: number; s: number; ry: number; y?: number }
+/** Anything the instanced fabric stands up on the ground. */
+interface Upright { x: number; y?: number; z: number; ry?: number; sx?: number; sy?: number; sz?: number }
+interface TrafficItem { road: Road; at: number; speed: number; kind: 'danfo' | 'car'; colour: string }
+/** The builder's drawing context: the landmark's batches, and `at` to stand it on a spot. */
+interface Builder extends LandmarkContext { at(x: number, y: number, z: number, ry: number, draw: (g: Builder) => void): unknown }
+type MaybeInstanced = Mesh & { isInstancedMesh?: boolean; count?: number };
+
+export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venues = {}, soon = {} }: { venues?: Readonly<Record<string, CityVenue | undefined>>; soon?: object } = {}): City {
+  const { THREE } = kit;
+  const shared = sceneMaterials(kit);
+  const rng = mulberry(hash(`city:${pack.id}`));
+  const group = new THREE.Group();
+  group.name = `city:${pack.id}`;
+  const own: { dispose(): void }[] = [];                                   // geometries and materials this city must free
+  const keep = <T extends { dispose(): void }>(thing: T): T => { own.push(thing); return thing; };
+  const materials = {
+    ground: keep(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 })),
+    water: keep(new THREE.MeshStandardMaterial({ color: CITY_LIGHT.day.water, roughness: 0.42, metalness: 0.05, map: keep(waterTexture(THREE)) })),
+    board: keep(new THREE.MeshStandardMaterial({ color: '#2c4a52', roughness: 1 })),
+    waves: keep(new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.5, depthWrite: false })),
+    windows: keep(new THREE.MeshBasicMaterial({ vertexColors: true, color: CITY_LIGHT.day.windows })),
+    shadow: keep(new THREE.MeshBasicMaterial({ color: '#0d1a14', transparent: true, opacity: 0.2, depthWrite: false })),
+    instanced: keep(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.92, metalness: 0 })),
+  };
+  let triangles = 0;
+  const add = <T extends Mesh>(mesh: T, name: string, order = 0): T => { mesh.name = name; mesh.renderOrder = order; mesh.matrixAutoUpdate = false; mesh.updateMatrix(); keep(mesh.geometry); group.add(mesh); return mesh; };
+  const count = <T extends MaybeInstanced>(mesh: T): T => { triangles += (mesh.geometry.index!.count / 3) * (mesh.isInstancedMesh ? mesh.count! : 1); return mesh; };
+
+  // ---- the board and the water -------------------------------------------------------------
+  const { minX, maxX, minZ, maxZ } = pack.bounds;
+  const seaZ = pack.bounds.sea ? pack.bounds.sea.z1 + 4 : maxZ;
+  const width = maxX - minX, depth = seaZ - minZ, midX = (minX + maxX) / 2, midZ = (minZ + seaZ) / 2;
+  const board = new THREE.Mesh(new THREE.BoxGeometry(width + 2, 3, depth + 2), materials.board);
+  board.position.set(midX, WATER_Y - 1.56, midZ);
+  count(add(board, 'board'));
+  const water = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), materials.water);
+  materials.water.map!.repeat.set(width / WATER_TILE, depth / WATER_TILE);
+  water.rotation.x = -Math.PI / 2; water.position.set(midX, WATER_Y, midZ);
+  count(add(water, 'water'));
+
+  // ---- land --------------------------------------------------------------------------------
+  const raw = createRaw(THREE);
+  const lands = pack.land.map((entry) => { const polygon = roundPolygon(entry.points, 2); return { ...entry, polygon, wide: offsetPolygon(polygon, 3) }; });
+  for (const entry of lands) {
+    const sand = entry.kind === 'sand';
+    raw.shape(offsetPolygon(entry.polygon, 2.6), WATER_Y + 0.03, '#7cc6d6');                       // the shallows
+    raw.shape(offsetPolygon(entry.polygon, 1.1), WATER_Y + 0.14, sand ? '#f8efd2' : '#ecdcae');    // the beach rim
+    raw.wall(entry.polygon, WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
+    raw.shape(entry.polygon, sand ? -0.12 : 0, LAND_COLOURS[entry.kind] || LAND_COLOURS.mainland);
+  }
+  const buildable = lands.filter((entry) => entry.kind !== 'sand');
+  const onLand = (x: number, z: number, margin = 0) => buildable.some((entry) => pointInPolygon(x, z, entry.polygon)
+    && (!margin || ([[margin, 0], [-margin, 0], [0, margin], [0, -margin]] as [number, number][]).every(([dx, dz]) => pointInPolygon(x + dx, z + dz, entry.polygon))));
+  const onAnyLand = (x: number, z: number) => lands.some((entry) => pointInPolygon(x, z, entry.wide));
+
+  // ---- roads and bridges --------------------------------------------------------------------
+  const b = createBatch(THREE), w = createBatch(THREE);
+  const g: Builder = { b, w, at: (x, y, z, ry, draw) => b.at(x, y, z, ry, () => w.at(x, y, z, ry, () => draw(g), 0, 0, LANDMARK_SCALE), 0, 0, LANDMARK_SCALE) };
+  const segments: Segment[] = [];                              // every ground stretch of road, for keeping the fabric off it
+  for (const road of network.roads) {
+    const wide = road.major ? 2.5 : 1.8;
+    raw.ribbon(road.points, wide + 0.7, road.bridge ? 0.05 : 0.035, KERB);
+    raw.ribbon(road.points, wide, road.bridge ? 0.08 : 0.06, ASPHALT);
+    if (road.major) {
+      for (let i = 1; i < road.points.length - 1; i += 2) {
+        const a = road.points[i]!, c = road.points[i + 1]!, mid = { x: (a.x + c.x) / 2, y: (a.y + c.y) / 2, z: (a.z + c.z) / 2 };
+        raw.ribbon([{ x: a.x + (mid.x - a.x) * 0.3, y: a.y, z: a.z + (mid.z - a.z) * 0.3 }, mid], 0.16, road.bridge ? 0.1 : 0.08, DASH);
+      }
+    }
+    // Every road end is rounded off, so two roads that meet at an angle join in a smooth corner and not a notch.
+    for (const end of [road.points[0]!, road.points[road.points.length - 1]!]) {
+      raw.shape(circle(end.x, end.z, wide / 2 + 0.35), 0.035, KERB); raw.shape(circle(end.x, end.z, wide / 2), 0.06, ASPHALT);
+    }
+    if (road.bridge) {
+      // The parapets grow out of the ground with the ramp, so the deck leaves the road without a step.
+      const span = road.points.slice(1, -1), rise = span.map((point) => 0.42 * Math.min(1, point.y / (road.bridge * 0.4)));
+      const coping = span.map((point, i) => ({ ...point, y: point.y + Math.max(0.1, rise[i]!) }));
+      for (const side of [-1, 1]) {
+        const edge = side * (wide / 2 + 0.35);
+        raw.strip(span, edge, -0.4, rise, '#efe9da', side); raw.strip(span, edge - side * 0.12, 0.05, rise.map((high) => Math.max(0.05, high)), '#d6cfbc', -side);
+        raw.ribbon(coping, 0.14, 0, '#f6f2e6', edge - side * 0.06);
+      }
+      const mid = Math.floor(road.points.length / 2), middle = road.points[mid]!;
+      let since = 99;
+      for (let i = 1; i < road.points.length - 1; i++) {
+        const point = road.points[i]!, previous = road.points[i - 1]!;
+        since += Math.hypot(point.x - previous.x, point.z - previous.z);
+        if (since < 5.5 || onLand(point.x, point.z) || (road.pylon && Math.hypot(point.x - middle.x, point.z - middle.z) < 3.2)) continue;
+        since = 0;
+        const next = road.points[i + 1]!, ry = Math.atan2(next.x - previous.x, next.z - previous.z), height = point.y - WATER_Y;
+        b.box(point.x, WATER_Y + height / 2 - 0.2, point.z, wide * 0.8, height, 0.5, '#cfc8b6', { ry });
+        b.box(point.x, WATER_Y + 0.12, point.z, wide * 0.95, 0.24, 0.9, '#b9b2a0', { ry });
+      }
+      if (road.pylon) {
+        // A cable-stayed pylon astride the deck at mid-span: two legs rise from pile caps in the water and lean in to one
+        // mast head, a cross-beam carries the deck between them, and the stays fan down in two planes to the parapets.
+        const before = road.points[mid - 1]!, after = road.points[mid + 1]!, ry = Math.atan2(after.x - before.x, after.z - before.z);
+        const foot = wide / 2 + 1.25, apex = 0.2, top = middle.y + 8.2, tall = top - WATER_Y, lean = Math.atan2(foot - apex, tall), stone = '#f4f0e6';
+        const legAt = (y: number) => foot - (foot - apex) * ((y - WATER_Y) / tall);
+        const heads: Record<number, Point3[]> = { [-1]: [], 1: [] };
+        b.at(middle.x, 0, middle.z, ry, () => {
+          for (const side of [-1, 1]) {
+            b.box(side * (foot + apex) / 2, WATER_Y + tall / 2, 0, 0.5, Math.hypot(foot - apex, tall), 0.62, stone, { rz: side * lean });
+            b.box(side * foot, WATER_Y + 0.2, 0, 1.4, 0.4, 1.6, '#b9b2a0');
+            for (let n = 1; n <= PYLON_STAYS; n++) heads[side]!.push(b.world(-side * 0.16, top + 0.1 + n * 0.3, 0));
+          }
+          b.box(0, middle.y - 0.42, 0, legAt(middle.y - 0.42) * 2, 0.44, 0.5, stone);
+          b.box(0, top + 0.55, 0, 0.66, 2.5, 0.72, stone);
+          b.box(0, top + 1.88, 0, 0.86, 0.16, 0.92, '#d9d3c4');
+          b.ico(0, top + 2.14, 0, 0.17, 0.17, 0.17, '#ff3b30', { layer: 'glow' });
+        });
+        for (const way of [-1, 1]) {
+          let run = 0, n = 0;
+          for (let i = mid + way; i > 1 && i < road.points.length - 2 && n < PYLON_STAYS; i += way) {
+            const point = road.points[i]!, previous = road.points[i - way]!;
+            run += Math.hypot(point.x - previous.x, point.z - previous.z);
+            if (run < (n + 1) * 1.45) continue;
+            const a = road.points[i - 1]!, c = road.points[i + 1]!, length = Math.hypot(c.x - a.x, c.z - a.z) || 1, px = -(c.z - a.z) / length, pz = (c.x - a.x) / length;
+            for (const side of [-1, 1]) {
+              const head = heads[side]![n]!, reach = side * (wide / 2 + 0.29);
+              const anchor = { x: point.x + px * reach, y: point.y + 0.4, z: point.z + pz * reach };
+              const flat = Math.hypot(anchor.x - head.x, anchor.z - head.z), drop = head.y - anchor.y;
+              b.at(head.x, head.y, head.z, Math.atan2(anchor.x - head.x, anchor.z - head.z), () => b.box(0, -drop / 2, flat / 2, 0.055, Math.hypot(flat, drop), 0.055, '#e6eaec', { rx: -Math.atan2(flat, drop) }));
+            }
+            n += 1;
+          }
+        }
+      }
+    } else {
+      for (let i = 1; i < road.points.length; i++) segments.push({ a: road.points[i - 1]!, b: road.points[i]!, half: wide / 2 + 0.5 });
+    }
+  }
+
+  // ---- landmarks ----------------------------------------------------------------------------
+  const places: Record<string, CityPlace> = {};
+  const shadows: Shadow[] = [];                               // { x, z, w, d, ry } flat shadows, drawn as one instanced mesh
+  const clear: Clear[] = [];                                 // { x, z, r } circles the fabric keeps out of
+  const path = (place: { x: number; z: number; gate: Point3 | null }) => {
+    if (!place.gate) return;
+    const length = Math.hypot(place.gate.x - place.x, place.gate.z - place.z), k = Math.min(1, (LOT / 2 - 0.2) / (length || 1));
+    const start = { x: place.x + (place.gate.x - place.x) * k, y: 0, z: place.z + (place.gate.z - place.z) * k };
+    raw.ribbon([start, place.gate], 1.3, 0.045, PATH);
+    segments.push({ a: start, b: place.gate, half: 1.2 });
+  };
+  for (const [id, spot] of Object.entries(pack.sites)) {
+    const venue = venues[id], node = network.places[id];
+    if (!venue || !node) continue;
+    let top = 4;
+    g.at(node.x, 0, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
+    places[id] = { id, kind: 'venue', x: spot.x, z: spot.z, ry: node.ry, top, gate: node.gate };
+    shadows.push({ x: spot.x + 0.7, z: spot.z + 0.55, w: LOT + 1.3, d: LOT + 1.3, ry: node.ry });
+    clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
+    path(places[id]);
+  }
+  // Home: every district's lot is laid out; the house itself is its own small mesh, moved to the player's lot.
+  for (const [house, spot] of Object.entries(pack.homes)) {
+    const node = network.places[`home:${house}`]!;
+    // An empty lot is a small garden: three trees, so it never reads as a hole in the city.
+    for (const [dx, dz, size] of [[-2.2, -1.8, 1.1], [2, -0.6, 0.9], [-0.6, 2, 1]] as [number, number, number][]) { b.cyl(spot.x + dx, 0.5 * size, spot.z + dz, 0.14 * size, size, '#6b4f36', { seg: 5 }); b.ico(spot.x + dx, 1.5 * size, spot.z + dz, 0.85 * size, 0.95 * size, 0.85 * size, '#3f8a57'); }
+    clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
+    path({ x: spot.x, z: spot.z, gate: node.gate });
+  }
+  for (const [id, spot] of Object.entries(pack.soon || {})) {
+    if (!(soon as Record<string, unknown>)[id]) continue;
+    places[id] = { id, kind: 'soon', x: spot.x, z: spot.z, ry: 0, top: 7.5, gate: null };
+  }
+  const homeBatch = createBatch(THREE), homeWindows = createBatch(THREE);
+  const hg: Builder = { b: homeBatch, w: homeWindows, at: (x, y, z, ry, draw) => draw(hg) };
+  const homeTop = drawLandmark(hg, 'home').top * LANDMARK_SCALE;
+
+  // ---- district plates, laid on the ground or lettered on the water ---------------------------
+  const plates: (PackDistrict & { box: Box4 })[] = [];
+  for (const plate of pack.districts || []) {
+    const size = plate.size || 2, wide = textWidth(plate.name, size);
+    b.at(plate.x, plate.water ? WATER_Y + 0.07 : 0.1, plate.z, 0, () => {
+      if (!plate.water) b.box(0, 0, -0.04, wide + size * 0.9, size * 1.7, 0.08, '#8fb07a');
+      sign(b, 0, 0, 0, plate.name, { size, color: plate.water ? '#d6f1f7' : '#f6faea' });
+    }, -Math.PI / 2);
+    plates.push({ ...plate, box: [plate.x - wide / 2 - size, plate.z - size * 1.2, plate.x + wide / 2 + size, plate.z + size * 1.2] });
+  }
+
+  // ---- what only this city has ----------------------------------------------------------------
+  pack.decorate?.(b, { rng, w });
+
+  // ---- boats on the lagoon and the creek ------------------------------------------------------
+  const hulls = ['#b5483f', '#2b5fa8', '#e0a23a', '#3f9a5a', '#ece2c6'];
+  for (let i = 0, placed = 0; i < 400 && placed < 16; i++) {
+    const x = minX + 8 + rng() * (width - 16), z = minZ + 8 + rng() * (maxZ - minZ - 16);
+    if (onAnyLand(x, z) || network.roads.some((road) => road.bridge && road.points.some((point) => Math.hypot(point.x - x, point.z - z) < 5)) || plates.some((plate) => inBox(x, z, plate.box))) continue;
+    boat(b, x, z, rng() * Math.PI * 2, hulls[placed % hulls.length]!, placed % 3 !== 0);
+    placed += 1;
+  }
+
+  // ---- the fabric: houses, blocks, towers, trees and palms ------------------------------------
+  const roadDistance = (x: number, z: number) => { let best = Infinity; for (const segment of segments) { const d = segmentDistance(x, z, segment.a, segment.b) - segment.half; if (d < best) best = d; } return best; };
+  // The first estate of every local government is open ground for its residents' houses.
+  const fronts: CityFront[] = (pack.lgas || []).map((lga) => estateLayout(pack, lga.id)!.cells[0]!);
+  const blocked = (x: number, z: number, pad: number) => fronts.some((cell) => Math.abs(x - cell.x) < cell.size / 2 + pad + 0.6 && Math.abs(z - cell.z) < cell.size / 2 + pad + 0.6) || clear.some((circle) => Math.hypot(circle.x - x, circle.z - z) < circle.r + pad)
+    || (pack.zones || []).some((zone) => inBox(x, z, [zone[0] - pad, zone[1] - pad, zone[2] + pad, zone[3] + pad]))
+    || plates.some((plate) => !plate.water && inBox(x, z, [plate.box[0] - pad, plate.box[1] - pad, plate.box[2] + pad, plate.box[3] + pad]))
+    || Object.values(pack.estates || {}).some((estate) => inBox(x, z, [estate.x - 1.6 - pad, estate.z - 1.6 - pad, estate.x + (estate.cols - 1) * 2.7 + 1.6 + pad, estate.z + (Math.ceil((estate.max ?? 18) / estate.cols) - 1) * 3 + 1.6 + pad]));
+  const noise = (x: number, z: number) => { const cell = (ix: number, iz: number) => (hash(`${pack.id}:${ix}:${iz}`) % 1000) / 1000, fx = x / 22, fz = z / 22, ix = Math.floor(fx), iz = Math.floor(fz), tx = fx - ix, tz = fz - iz;
+    return (cell(ix, iz) * (1 - tx) + cell(ix + 1, iz) * tx) * (1 - tz) + (cell(ix, iz + 1) * (1 - tx) + cell(ix + 1, iz + 1) * tx) * tz; };
+  const STYLES: Partial<Record<FabricStyle, { gap: number; keep: number; tree: number }>> = {
+    dense: { gap: 3.5, keep: 0.66, tree: 0.1 },
+    blocks: { gap: 4.6, keep: 0.7, tree: 0.1 },
+    towers: { gap: 5.0, keep: 0.78, tree: 0.08 },
+    villas: { gap: 4.7, keep: 0.74, tree: 0.26 },
+  };
+  const WALLS = ['#f3ead6', '#ece0c4', '#f6f0e2', '#e9d9b8', '#efe3d0', '#dfe8ea'], ROOFS = ['#a85c40', '#96483a', '#8d9399', '#b67a45', '#6f8492', '#9b9b8f'];
+  const BLOCKS = ['#e6dcc6', '#d9cdb4', '#cfd8dc', '#e8d6c0', '#d6dfd0', '#f0e4cc'], GLASSY = ['#9fb9c8', '#b7c9d2', '#8fa9bd', '#c9d6da', '#a9bfc0', '#d9d2c0'];
+  const houses: HouseItem[] = [], towers: TowerItem[] = [], trees: TreeItem[] = [], palms: TreeItem[] = [];
+  for (const area of pack.fabric || []) {
+    const style = STYLES[area.style];
+    if (!style) continue;
+    for (let x = area.box[0]; x <= area.box[2]; x += style.gap) for (let z = area.box[1]; z <= area.box[3]; z += style.gap) {
+      const px = x + (rng() - 0.5) * 0.7, pz = z + (rng() - 0.5) * 0.7, roll = rng(), turn = rng() < 0.5 ? 0 : Math.PI / 2, pick = Math.floor(rng() * 6), tall = rng();
+      // The first area that contains a point owns it, so overlapping areas never double up.
+      if (pack.fabric.find((entry) => inBox(px, pz, entry.box)) !== area) continue;
+      if (!onLand(px, pz, 2.2) || blocked(px, pz, 1.6)) continue;
+      const toRoad = roadDistance(px, pz);
+      if (toRoad < 1.5) continue;
+      const patch = noise(px, pz);
+      // Built-up patches along the roads, green between them.
+      const built = toRoad < 24 && patch < style.keep + (toRoad < 7 ? 0.3 : 0);
+      if (!built || roll < style.tree) {
+        if (roll < (built ? 1 : 0.5)) (area.style === 'villas' && tall < 0.35 ? palms : trees).push({ x: px, z: pz, s: 0.8 + tall * 0.7, ry: tall * 6 });
+        continue;
+      }
+      if (area.style === 'dense') houses.push({ x: px, z: pz, ry: turn, sx: 1.9 + tall * 0.6, sy: 1.0 + tall * 0.5, sz: 2.2 + roll * 0.7, wall: WALLS[pick]!, roof: ROOFS[(pick + Math.floor(tall * 3)) % 6]! });
+      else if (area.style === 'villas') houses.push({ x: px, z: pz, ry: turn, sx: 2.7 + tall * 0.6, sy: 1.5 + tall * 0.5, sz: 3.0 + roll * 0.6, wall: '#f6f1e6', roof: ['#b5593c', '#a85c40', '#3f7f86', '#b5593c', '#96483a', '#55707c'][pick]! });
+      else if (area.style === 'blocks') towers.push({ x: px, z: pz, ry: turn, sx: 2.5 + roll * 0.9, sy: 2.4 + tall * 2.4, sz: 2.5 + tall * 0.8, colour: BLOCKS[pick]! });
+      else towers.push({ x: px, z: pz, ry: turn, sx: 2.7 + roll * 0.8, sy: 4.6 + tall * tall * 7.5, sz: 2.7 + tall * 0.6, colour: GLASSY[pick]! });
+    }
+  }
+  // Palms along the sand, wherever there is sand.
+  for (const entry of lands.filter((item) => item.kind === 'sand')) {
+    for (let i = 0; i < entry.polygon.length; i += 3) {
+      const [ax, az] = entry.polygon[i]!;
+      const cx = entry.polygon.reduce((sum, point) => sum + point[0], 0) / entry.polygon.length, cz = entry.polygon.reduce((sum, point) => sum + point[1], 0) / entry.polygon.length;
+      const x = ax + (cx - ax) * 0.12 + (rng() - 0.5) * 2, z = az + (cz - az) * 0.3 + (rng() - 0.5);
+      if (!blocked(x, z, 1) && roadDistance(x, z) > 1 && pointInPolygon(x, z, entry.polygon)) palms.push({ x, z, s: 0.8 + rng() * 0.5, ry: rng() * 6, y: -0.12 });
+    }
+  }
+  const thin = <T,>(list: T[], cap: number): T[] => { if (list.length <= cap) return list; const step = list.length / cap; return Array.from({ length: cap }, (_, i) => list[Math.floor(i * step)]!); };
+  // The decorative fabric is thinner than it could be on purpose: the houses that matter are the players' own (src/map3d/houses.js), and they need room in the budget.
+  const HOUSE_CAP = 420, TOWER_CAP = 150, TREE_CAP = 330, PALM_CAP = 90;
+  const fabric = { houses: thin(houses, HOUSE_CAP), towers: thin(towers, TOWER_CAP), trees: thin(trees, TREE_CAP), palms: thin(palms, PALM_CAP) };
+
+  const dummy = new THREE.Object3D(), tint = new THREE.Color();
+  const unit = (draw: (batch: Batch) => void, material: Material = materials.instanced) => { const batch = createBatch(THREE); draw(batch); return batch.build({ solid: material, glow: material, glass: material }).meshes[0].geometry; };
+  function instanced<T>(name: string, geometry: BufferGeometry, material: Material, items: T[], place: (item: T, object: Object3D) => void, colourOf?: ((item: T) => string) | null): InstancedMesh {
+    const mesh = new THREE.InstancedMesh(geometry, material, Math.max(1, items.length));
+    mesh.count = items.length;
+    items.forEach((item, i) => {
+      place(item, dummy); dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix);
+      if (colourOf) mesh.setColorAt(i, tint.set(colourOf(item)));
+    });
+    mesh.instanceMatrix.needsUpdate = true;
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+    mesh.frustumCulled = false;
+    add(mesh, name);
+    if (items.length) count(mesh);
+    mesh.visible = items.length > 0;
+    return mesh;
+  }
+  const upright = (item: Upright, object: Object3D, sx = item.sx!, sy = item.sy!, sz = item.sz!) => { object.position.set(item.x, item.y || 0, item.z); object.rotation.set(0, item.ry || 0, 0); object.scale.set(sx, sy, sz); };
+  instanced('house-walls', leanGeometry(THREE, 'box'), materials.instanced, fabric.houses, (item, o) => upright(item, o), (item) => item.wall);
+  instanced('house-roofs', leanGeometry(THREE, 'pyramid'), materials.instanced, fabric.houses,
+    (item, o) => { o.position.set(item.x, item.sy, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.sx, 0.9 + item.sy * 0.25, item.sz); }, (item) => item.roof);
+  instanced('house-windows', unit((u) => { u.quad(0.18, 0.55, 0.506, 0.26, 0.3, '#ffe6ae'); u.quad(0.506, 0.55, -0.1, 0.26, 0.3, '#fff4d6', { ry: Math.PI / 2 }); }, materials.windows),
+    materials.windows, fabric.houses, (item, o) => upright(item, o));
+  instanced('towers', unit((u) => { u.box(0, 0.5, 0, 1, 1, 1, '#ffffff'); u.box(0, 1.01, 0, 0.7, 0.03, 0.7, '#c9ced3'); }), materials.instanced, fabric.towers, (item, o) => upright(item, o), (item) => item.colour);
+  instanced('tower-windows', unit((u) => {
+    const tones = ['#ffe6ae', '#fff4d6', '#2c3a4a', '#ffd98a', '#cfe4ff', '#2c3a4a'];
+    for (let floor = 0; floor < 4; floor++) for (let face = 0; face < 4; face++) {
+      const ry = face * Math.PI / 2;
+      u.quad(Math.sin(ry) * 0.506, 0.2 + floor * 0.2, Math.cos(ry) * 0.506, 0.78, 0.085, tones[(floor * 5 + face * 3) % tones.length], { ry });
+    }
+  }, materials.windows), materials.windows, fabric.towers, (item, o) => upright(item, o));
+  instanced('trees', unit((u) => { u.cyl(0, 0.45, 0, 0.13, 0.9, '#6b4f36', { seg: 4, open: true }); u.ico(0, 1.45, 0, 0.85, 0.95, 0.85, '#ffffff'); }), materials.instanced, fabric.trees,
+    (item, o) => upright(item, o, item.s, item.s, item.s), (item) => ['#3f8a57', '#4f9a5f', '#2c6b4a', '#5aa55f', '#3a7d4f'][Math.floor(item.ry * 7) % 5]!);
+  instanced('palms', unit((u) => {
+    u.cyl(0, 1.5, 0, 0.11, 3.0, '#8a7250', { seg: 5, top: 0.7 });
+    for (let i = 0; i < 6; i++) { const a = i * 1.047; u.cone(Math.sin(a) * 0.8, 2.95, Math.cos(a) * 0.8, 0.32, 1.6, i % 2 ? '#3f8a57' : '#4f9a5f', { seg: 3, rz: -Math.sin(a) * 1.25, rx: Math.cos(a) * 1.25 }); }
+  }), materials.instanced, fabric.palms, (item, o) => upright(item, o, item.s, item.s, item.s));
+
+  // ---- flat shadows: one instanced quad beside everything that stands up -----------------------
+  for (const item of fabric.houses) shadows.push({ x: item.x + 0.3 + item.sy * 0.22, z: item.z + 0.2 + item.sy * 0.16, w: item.sx + 0.5, d: item.sz + 0.5, ry: item.ry });
+  for (const item of fabric.towers) shadows.push({ x: item.x + 0.3 + item.sy * 0.2, z: item.z + 0.2 + item.sy * 0.14, w: item.sx + 0.5 + item.sy * 0.12, d: item.sz + 0.5 + item.sy * 0.1, ry: item.ry });
+  for (const item of fabric.trees) shadows.push({ x: item.x + 0.4 * item.s, z: item.z + 0.3 * item.s, w: 1.7 * item.s, d: 1.5 * item.s, ry: 0.5 });
+  const shadowGeometry = new THREE.PlaneGeometry(1, 1); shadowGeometry.rotateX(-Math.PI / 2);
+  const shadowMesh = instanced('shadows', shadowGeometry, materials.shadow, shadows, (item, o) => { o.position.set(item.x, 0.02, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.w, 1, item.d); });
+  shadowMesh.renderOrder = 1;
+
+  // ---- street traffic: parked until the Moving layer is on and a frame loop is running ---------
+  const lanes = network.roads.filter((road) => road.major && road.length > 20);
+  const traffic: TrafficItem[] = [];
+  for (let i = 0; i < 38 && lanes.length; i++) {
+    const road = lanes[i % lanes.length]!;
+    traffic.push({ road, at: rng() * road.length, speed: (2.2 + rng() * 2.2) * (i % 2 ? 1 : -1), kind: i % 5 < 2 ? 'danfo' : 'car', colour: ['#f6f2e6', '#c9423a', '#2b5fa8', '#30343b', '#d9d4c4', '#1f8a86'][i % 6]! });
+  }
+  const along = (road: Road, distance: number) => {
+    const points = road.points, d = ((distance % road.length) + road.length) % road.length;
+    let run = 0;
+    for (let i = 1; i < points.length; i++) {
+      const length = Math.hypot(points[i]!.x - points[i - 1]!.x, points[i]!.z - points[i - 1]!.z);
+      if (run + length >= d || i === points.length - 1) { const t = Math.min(1, (d - run) / (length || 1)); return { x: points[i - 1]!.x + (points[i]!.x - points[i - 1]!.x) * t, y: points[i - 1]!.y + (points[i]!.y - points[i - 1]!.y) * t, z: points[i - 1]!.z + (points[i]!.z - points[i - 1]!.z) * t, ry: Math.atan2(points[i]!.x - points[i - 1]!.x, points[i]!.z - points[i - 1]!.z) }; }
+      run += length;
+    }
+    return { x: points[0]!.x, y: 0, z: points[0]!.z, ry: 0 };
+  };
+  const fleets = ['danfo', 'car'].map((kind) => {
+    const items = traffic.filter((item) => item.kind === kind);
+    const mesh = instanced(`traffic-${kind}`, unit((u) => miniVehicle(u, kind)), materials.instanced, items, (item, o) => o.position.set(0, 0, 0), kind === 'car' ? (item) => item.colour : null);
+    mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    return { mesh, items };
+  });
+  let trafficOn = false;
+  function placeTraffic(seconds: number) {
+    for (const { mesh, items } of fleets) {
+      items.forEach((item, i) => {
+        const spot = along(item.road, item.at + (trafficOn ? item.speed * seconds : 0)), lane = item.speed > 0 ? -0.62 : 0.62, ry = spot.ry + (item.speed > 0 ? 0 : Math.PI);
+        dummy.position.set(spot.x - Math.cos(spot.ry) * lane, spot.y + 0.08, spot.z + Math.sin(spot.ry) * lane);
+        dummy.rotation.set(0, ry, 0); dummy.scale.set(1, 1, 1); dummy.updateMatrix();
+        mesh.setMatrixAt(i, dummy.matrix);
+      });
+      mesh.count = trafficOn ? items.length : Math.ceil(items.length / 2);
+      mesh.instanceMatrix.needsUpdate = true;
+    }
+  }
+  placeTraffic(0);
+
+  // ---- waves: a few pale dashes on open water ---------------------------------------------------
+  const waveRaw = createRaw(THREE);
+  for (let i = 0, placed = 0; i < 900 && placed < 150; i++) {
+    const x = minX + 3 + rng() * (width - 6), z = minZ + 3 + rng() * (depth - 6), length = 1.2 + rng() * 2.2;
+    if (onAnyLand(x, z)) continue;
+    waveRaw.ribbon([{ x: x - length / 2, y: 0, z }, { x, y: 0, z: z + 0.12 }, { x: x + length / 2, y: 0, z }], 0.12, WATER_Y + 0.05, '#ffffff');
+    placed += 1;
+  }
+  const waves = count(add(waveRaw.build(materials.waves), 'waves', 1));
+
+  // ---- bake ------------------------------------------------------------------------------------
+  count(add(raw.build(materials.ground), 'ground'));
+  const built = b.build(shared);
+  for (const mesh of built.meshes) { mesh.castShadow = false; mesh.receiveShadow = false; count(add(mesh, `city-${mesh.name}`, mesh.name === 'glass' ? 2 : 0)); }
+  const windowMesh = w.build({ solid: materials.windows, glow: materials.windows, glass: materials.windows }).meshes[0];
+  if (windowMesh) { windowMesh.castShadow = false; windowMesh.receiveShadow = false; count(add(windowMesh, 'windows')); }
+
+  // The Home landmark: its own two small meshes in a group that is moved to the player's lot.
+  const home = new THREE.Group();
+  home.name = 'home';
+  for (const mesh of homeBatch.build(shared).meshes) { mesh.castShadow = false; mesh.receiveShadow = false; keep(mesh.geometry); triangles += mesh.geometry.index.count / 3; home.add(mesh); }
+  const homeWindowMesh = homeWindows.build({ solid: materials.windows, glow: materials.windows, glass: materials.windows }).meshes[0];
+  if (homeWindowMesh) { homeWindowMesh.castShadow = false; keep(homeWindowMesh.geometry); triangles += homeWindowMesh.geometry.index.count / 3; home.add(homeWindowMesh); }
+  group.add(home);
+  let homeId: string | null = null;
+  /**
+   * Where Home is: the rented home of a district (the landmark stands on its lot), or — `own` =
+   * { x, z, label } — the player's own house on its plot, where the landmark makes way for the
+   * estate's houses and Home is just the place the label points at.
+   */
+  function setHome(house: string | null, own: OwnHome | null = null): boolean {
+    if (own) {
+      const key = `own:${own.x.toFixed(2)}:${own.z.toFixed(2)}`;
+      if (key === homeId) return false;
+      homeId = key; home.visible = false;
+      const node = network.attachPlace('home:own', { x: own.x, z: own.z })!;
+      places.home = { id: 'home', kind: 'home', house: 'own', district: own.label, x: own.x, z: own.z, ry: node.ry, top: own.top ?? 1, gate: node.gate, own: true };
+      return true;
+    }
+    const id = Object.hasOwn(pack.homes, house as string) ? house as string : Object.keys(pack.homes)[0]!;
+    if (id === homeId) return false;
+    homeId = id; home.visible = true;
+    const node = network.places[`home:${id}`]!, spot = pack.homes[id]!;
+    home.position.set(spot.x, 0, spot.z); home.rotation.y = node.ry; home.scale.setScalar(LANDMARK_SCALE);
+    places.home = { id: 'home', kind: 'home', house: id, district: spot.district, x: spot.x, z: spot.z, ry: node.ry, top: homeTop, gate: node.gate };
+    return true;
+  }
+  setHome(null);
+
+  // ---- the local governments: one flat layer of tints and boundary lines, drawn on land only ----------------
+  let lgaMesh: Mesh<BufferGeometry, MeshBasicMaterial> | null = null, lgaOwn: string | null | undefined;
+  if (pack.lgas?.length) {
+    const material = keep(new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+    const plane = new THREE.PlaneGeometry(maxX - minX, maxZ - minZ);
+    plane.rotateX(-Math.PI / 2);
+    lgaMesh = new THREE.Mesh(plane, material);
+    lgaMesh.position.set((minX + maxX) / 2, 0.012, (minZ + maxZ) / 2);
+    lgaMesh.visible = false;
+    count(add(lgaMesh, 'lgas', 1));
+  }
+  /** Show or hide the local-government layer; `own` is the player's, drawn brighter with a firmer line. Returns true when it changed. */
+  function setLgas(on: boolean, own: string | null = null): boolean {
+    if (!lgaMesh) return false;
+    let changed = lgaMesh.visible !== Boolean(on);
+    lgaMesh.visible = Boolean(on);
+    if (on && (own !== lgaOwn || !lgaMesh.material.map)) {
+      lgaOwn = own;
+      const image = rasterLgas(pack, { scale: 2, own });
+      lgaMesh.material.map?.dispose();
+      const texture = new THREE.DataTexture(image.data, image.width, image.height, THREE.RGBAFormat);
+      texture.magFilter = THREE.LinearFilter; texture.minFilter = THREE.LinearFilter; texture.colorSpace = THREE.SRGBColorSpace; texture.flipY = true; texture.needsUpdate = true;
+      lgaMesh.material.map = texture; lgaMesh.material.needsUpdate = true;
+      changed = true;
+    }
+    return changed;
+  }
+
+  let time = 'day';
+  const presets: Readonly<Record<string, TimePreset | undefined>> = CITY_LIGHT;
+  return {
+    group, places, materials, pack,
+    get triangles() { return triangles; },
+    counts: { houses: fabric.houses.length, towers: fabric.towers.length, trees: fabric.trees.length, palms: fabric.palms.length, vehicles: traffic.length, shadows: shadows.length },
+    get time() { return time; },
+    setHome, setLgas, fronts,
+    /** Lighting that belongs to the city's own materials. The host applies hemi, sun and sky. */
+    setTime(next: string) {
+      const preset = presets[next] || CITY_LIGHT.day;
+      time = presets[next] ? next : 'day';
+      materials.water.color.set(preset.water); materials.windows.color.set(preset.windows);
+      materials.waves.opacity = preset.waves; materials.shadow.opacity = preset.shadow;
+      return preset;
+    },
+    setTraffic(on: boolean) { if (trafficOn === Boolean(on)) return false; trafficOn = Boolean(on); placeTraffic(0); return true; },
+    get traffic() { return trafficOn; },
+    /** Only ever called from a running frame loop: nothing here moves while the map is idle. */
+    animate(seconds: number) {
+      waves.position.x = Math.sin(seconds * 0.5) * 0.9; waves.position.z = Math.cos(seconds * 0.37) * 0.35; waves.updateMatrix();
+      if (trafficOn) placeTraffic(seconds);
+    },
+    dispose() {
+      lgaMesh?.material.map?.dispose();
+      for (const thing of own) thing.dispose?.();
+      group.parent?.remove(group);
+      own.length = 0;
+    },
+  };
+}

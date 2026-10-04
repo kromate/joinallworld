@@ -1,14 +1,14 @@
 /**
  * OWNER: world
- * Region registry: country → cities. Everything the country map (src/world-map.js) and the 3D
- * city map (src/map3d/map3d.js) know about places comes from here, so a new city is DATA plus a
+ * Region registry: country → cities. Everything the country map (src/world-map.ts) and the 3D
+ * city map (src/map3d/map3d.ts) know about places comes from here, so a new city is DATA plus a
  * city module — never an edit to the map code.
  *
  * TO ADD A CITY
- *   1. Write src/map3d/cities/<id>.js exporting the same shape as cities/lagos.js (bounds, land,
+ *   1. Write src/map3d/cities/<id>.ts exporting the same shape as cities/lagos.ts (bounds, land,
  *      roads, sites, homes, districts, zones and an optional decorate()).
  *   2. Add an entry to its country's `cities` below with `status: 'playable'` and
- *      `pack: () => import('./cities/<id>.js')`.
+ *      `pack: () => import('./cities/<id>.ts')`.
  * TO ADD A COUNTRY: add an entry to COUNTRIES with an outline (longitude/latitude pairs, any
  * rough stylised shape) and its cities. The country map draws whichever country is selected.
  *
@@ -20,8 +20,43 @@
  * legacy   true when the server already keeps lives for this city although it is shown as coming
  *          soon. Only a player who already has such a life is offered it, labelled "Preview".
  */
+import type { AfricaGroupId, AtlasLevelId, Box4, CityId, CityPack, CityStatus, ContinentId, Hub, Point2, RegionEntry, RegionKind, RegionStatus, ZoneId } from './types.ts';
 
-export const COUNTRIES = Object.freeze({
+/** What a city module's `import()` gives: the pack's parts as named exports, and the same object as `default`. */
+export type CityModule = CityPack & { default?: CityPack };
+/** One city of a country, as the registry holds it. `pack` is null while the city has no 3D pack. */
+export interface CityEntry {
+  id: CityId
+  name: string
+  region: string
+  status: CityStatus
+  legacy?: boolean
+  lon: number
+  lat: number
+  stand?: 'low' | 'high'
+  teaser: string
+  pack: (() => Promise<CityModule>) | null
+  preview?: readonly string[]
+}
+/** A city entry with the country it belongs to. */
+export interface CityRecord extends CityEntry { country: string; countryName: string }
+export interface Country {
+  id: string
+  name: string
+  status: CityStatus
+  /** [longitude, latitude] pairs. */
+  outline: readonly Point2[]
+  rivers: readonly (readonly Point2[])[]
+  cities: Readonly<Record<string, CityEntry>>
+}
+export type CountryId = 'nigeria';
+export interface Zone { id: ZoneId; name: string; tint: string }
+export interface AfricaGroup { id: AfricaGroupId; name: string; tint: string }
+export interface Continent { id: ContinentId; name: string; lon: number; lat: number }
+/** What a player may do with a city: it is where they are, they may enter it, they may only look, or it is coming soon. */
+export type CityAccess = 'here' | 'enter' | 'preview' | 'soon';
+
+export const COUNTRIES: Readonly<Record<CountryId, Country>> = Object.freeze({
   nigeria: {
     id: 'nigeria', name: 'Nigeria', status: 'playable',
     // A stylised outline, [longitude, latitude], drawn from general knowledge of the country's shape.
@@ -35,7 +70,7 @@ export const COUNTRIES = Object.freeze({
     ],
     cities: {
       lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State', status: 'playable', lon: 3.38, lat: 6.52, stand: 'low',
-        teaser: 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', pack: () => import('./cities/lagos.js') },
+        teaser: 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', pack: () => import('./cities/lagos.ts') },
       ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State', status: 'soon', legacy: true, lon: 3.95, lat: 7.38, stand: 'high',
         teaser: 'Seven hills of brown roofs, Cocoa House and the best amala in the country.', pack: null,
         preview: ['Dugbe and Cocoa House', 'Bodija market and the University of Ibadan', 'Mapo Hall on its hill'] },
@@ -50,18 +85,18 @@ export const COUNTRIES = Object.freeze({
 });
 
 /** Countries not in the game yet, named so the country picker can say what is planned. */
-export const MORE_REGIONS = Object.freeze(['More Nigerian states', 'Ghana', 'Kenya', 'South Africa', 'United Kingdom']);
+export const MORE_REGIONS: readonly string[] = Object.freeze(['More Nigerian states', 'Ghana', 'Kenya', 'South Africa', 'United Kingdom']);
 
 export const countryList = () => Object.values(COUNTRIES);
-export const citiesOf = (countryId) => Object.values(COUNTRIES[countryId]?.cities || {});
-export function cityEntry(cityId) {
-  for (const country of Object.values(COUNTRIES)) if (Object.hasOwn(country.cities, cityId)) return { ...country.cities[cityId], country: country.id, countryName: country.name };
+export const citiesOf = (countryId: string) => Object.values<CityEntry>(COUNTRIES[countryId as CountryId]?.cities || {});
+export function cityEntry(cityId: string): CityRecord | null {
+  for (const country of Object.values(COUNTRIES)) if (Object.hasOwn(country.cities, cityId)) return { ...country.cities[cityId]!, country: country.id, countryName: country.name };
   return null;
 }
-export const isPlayable = (cityId) => cityEntry(cityId)?.status === 'playable';
+export const isPlayable = (cityId: string) => cityEntry(cityId)?.status === 'playable';
 /** Does this city have a 3D pack? Without one the city map falls back to the 2D schematic. */
-export const hasCityPack = (cityId) => typeof cityEntry(cityId)?.pack === 'function';
-export async function loadCityPack(cityId) {
+export const hasCityPack = (cityId: string) => typeof cityEntry(cityId)?.pack === 'function';
+export async function loadCityPack(cityId: string): Promise<CityPack | null> {
   const entry = cityEntry(cityId);
   if (typeof entry?.pack !== 'function') return null;
   const module = await entry.pack();
@@ -72,7 +107,7 @@ export async function loadCityPack(cityId) {
  * What a player may do with a city, given the city they are in and the legacy cities they already
  * have a life in (ids). → 'here' | 'enter' | 'preview' | 'soon'
  */
-export function cityAccess(cityId, { current = null, held = [] } = {}) {
+export function cityAccess(cityId: string, { current = null, held = [] }: { current?: string | null; held?: readonly string[] } = {}): CityAccess {
   const entry = cityEntry(cityId);
   if (!entry) return 'soon';
   if (cityId === current) return 'here';
@@ -101,23 +136,23 @@ export function cityAccess(cityId, { current = null, held = [] } = {}) {
  * TO OPEN A COUNTRY   set `status: 'open'` here; to give it a states level as Nigeria has, add its
  *                     data module under src/map3d/geo/data and an entry in ATLAS_LEVELS with `level`.
  */
-export const ZONES = Object.freeze({
+export const ZONES: Readonly<Record<ZoneId, Zone>> = Object.freeze({
   sw: { id: 'sw', name: 'South West', tint: '#e8b04a' }, se: { id: 'se', name: 'South East', tint: '#d9765f' }, ss: { id: 'ss', name: 'South South', tint: '#4fa3a5' },
   nc: { id: 'nc', name: 'North Central', tint: '#8fae58' }, nw: { id: 'nw', name: 'North West', tint: '#b58a5a' }, ne: { id: 'ne', name: 'North East', tint: '#9a7fb8' },
 });
 /** The regional groups of Africa (UN geoscheme), a layer at the Africa level. */
-export const AFRICA_GROUPS = Object.freeze({
+export const AFRICA_GROUPS: Readonly<Record<AfricaGroupId, AfricaGroup>> = Object.freeze({
   north: { id: 'north', name: 'North Africa', tint: '#d9b96a' }, west: { id: 'west', name: 'West Africa', tint: '#7fb277' }, east: { id: 'east', name: 'East Africa', tint: '#d18a62' },
   central: { id: 'central', name: 'Central Africa', tint: '#6fa6a8' }, south: { id: 'south', name: 'Southern Africa', tint: '#a48cc0' },
 });
-export const CONTINENTS = Object.freeze({
+export const CONTINENTS: Readonly<Record<ContinentId, Continent>> = Object.freeze({
   af: { id: 'af', name: 'Africa', lon: 20, lat: 3 }, eu: { id: 'eu', name: 'Europe', lon: 18, lat: 51 }, as: { id: 'as', name: 'Asia', lon: 92, lat: 45 },
   na: { id: 'na', name: 'North America', lon: -101, lat: 46 }, sa: { id: 'sa', name: 'South America', lon: -59, lat: -12 }, oc: { id: 'oc', name: 'Oceania', lon: 134, lat: -25 }, an: { id: 'an', name: 'Antarctica', lon: 60, lat: -80 },
 });
 
-const state = (zone, teaser, more = {}) => ({ status: 'soon', zone, teaser, ...more });
+const state = (zone: ZoneId, teaser: string, more: RegionEntry = {}): RegionEntry => ({ status: 'soon', zone, teaser, ...more });
 /** Every first-level unit of Nigeria, by the ids of src/map3d/geo/data/nigeria.js. */
-const NIGERIA_STATES = {
+const NIGERIA_STATES: Record<string, RegionEntry> = {
   lagos: state('sw', 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', { status: 'open', city: 'lagos' }),
   oyo: state('sw', 'Ibadan on its seven hills, old Oyo and the widest spread of brown roofs in the country.', { status: 'planned', city: 'ibadan' }),
   fct: state('nc', 'Abuja, the capital under Aso Rock: wide roads, big offices and bigger politics.', { status: 'planned', city: 'abuja' }),
@@ -157,7 +192,7 @@ const NIGERIA_STATES = {
   yobe: state('ne', 'Pride of the Sahel: Damaturu, Potiskum’s cattle market and dunes to the north.'),
 };
 /** Countries with something to say. Every other country is `soon` (see regionEntry). Ids are ISO 3166-1 alpha-2, lower case. */
-const WORLD_COUNTRIES = {
+const WORLD_COUNTRIES: Record<string, RegionEntry> = {
   ng: { status: 'open', level: 'nigeria', teaser: 'Where Allworld begins. Lagos is open; more states are on the way.' },
   gh: { status: 'planned', teaser: 'Accra: Osu nights, Makola market and the jollof argument settled in person.', hub: { name: 'Accra', lon: -0.19, lat: 5.6 } },
   ke: { status: 'planned', teaser: 'Nairobi: matatus, tech money and a national park at the edge of town.', hub: { name: 'Nairobi', lon: 36.82, lat: -1.29 } },
@@ -167,37 +202,59 @@ const WORLD_COUNTRIES = {
 };
 export const ATLAS = Object.freeze({ state: Object.freeze(NIGERIA_STATES), country: Object.freeze(WORLD_COUNTRIES) });
 
+interface AtlasLevelBase {
+  name: string
+  kind: RegionKind
+  /** The continent a country level frames. */
+  continent?: ContinentId
+  /** The country (ISO 3166-1 alpha-2, lower case) whose states a state level shows. */
+  country?: string
+  /** [west, south, east, north] in degrees. */
+  frame: Box4
+  /** The neighbouring countries the level draws itself, as flat land. */
+  around?: readonly string[]
+}
+/** One zoom level of the atlas; `data` is the compact geographic data module the level is drawn from. */
+export type AtlasLevel =
+  | (AtlasLevelBase & { id: 'world'; data: () => Promise<typeof import('./geo/data/world.ts')> })
+  | (AtlasLevelBase & { id: 'africa'; data: () => Promise<typeof import('./geo/data/africa.ts')> })
+  | (AtlasLevelBase & { id: 'nigeria'; data: () => Promise<typeof import('./geo/data/nigeria.ts')> });
+/** What the atlas reads from a registry entry once the default status is filled in. */
+export interface RegionInfo extends RegionEntry { status: RegionStatus }
+
 /**
  * The zoom levels of the atlas, from the widest in. `data` is fetched the first time the level is shown.
  * `frame` is what the level's default view holds: [west, south, east, north] in degrees.
  */
-export const ATLAS_LEVELS = Object.freeze([
-  { id: 'world', name: 'World', kind: 'country', frame: [-169, -58, 191, 80], data: () => import('./geo/data/world.js') },
-  { id: 'africa', name: 'Africa', kind: 'country', continent: 'af', frame: [-18.5, -35.5, 52, 38], data: () => import('./geo/data/africa.js') },
+export const ATLAS_LEVELS: readonly AtlasLevel[] = Object.freeze<AtlasLevel[]>([
+  { id: 'world', name: 'World', kind: 'country', frame: [-169, -58, 191, 80], data: () => import('./geo/data/world.ts') },
+  { id: 'africa', name: 'Africa', kind: 'country', continent: 'af', frame: [-18.5, -35.5, 52, 38], data: () => import('./geo/data/africa.ts') },
   // `around`: the neighbouring countries the level draws itself, as flat land (ISO codes; the same list as the data module's AROUND).
-  { id: 'nigeria', name: 'Nigeria', kind: 'state', country: 'ng', frame: [2.6, 4.1, 14.8, 14], around: ['bf', 'bj', 'cf', 'cm', 'ga', 'gh', 'gq', 'ne', 'ng', 'st', 'td', 'tg'], data: () => import('./geo/data/nigeria.js') },
+  { id: 'nigeria', name: 'Nigeria', kind: 'state', country: 'ng', frame: [2.6, 4.1, 14.8, 14], around: ['bf', 'bj', 'cf', 'cm', 'ga', 'gh', 'gq', 'ne', 'ng', 'st', 'td', 'tg'], data: () => import('./geo/data/nigeria.ts') },
 ]);
 
 /** @param {RegionKind} kind @param {string} id @returns {RegionEntry & { status: RegionStatus }} the registry entry, with the default status filled in */
-export function regionEntry(kind, id) {
+export function regionEntry(kind: RegionKind, id: string): RegionInfo {
   const entry = Object.hasOwn(ATLAS[kind] || {}, id) ? ATLAS[kind][id] : null;
-  return { ...entry, status: entry && 'status' in entry ? entry.status : 'soon' };
+  return { ...entry, status: entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
 }
-export const regionStatus = (kind, id) => regionEntry(kind, id).status;
+export const regionStatus = (kind: RegionKind, id: string) => regionEntry(kind, id).status;
 /** Only an open region can be entered. For a state that means its city; for a country, its states level. */
-export const canEnter = (kind, id) => regionStatus(kind, id) === 'open';
+export const canEnter = (kind: RegionKind, id: string) => regionStatus(kind, id) === 'open';
 /** The state a city lies in, or null. */
-export const stateOfCity = (cityId) => Object.keys(NIGERIA_STATES).find((id) => NIGERIA_STATES[id].city === cityId) ?? null;
+export const stateOfCity = (cityId: string) => Object.keys(NIGERIA_STATES).find((id) => NIGERIA_STATES[id]!.city === cityId) ?? null;
 /** Planned routes between countries: from the open city to the hub of every country marked `planned`. */
-export function plannedRoutes(fromCity = 'lagos') {
+export interface PlannedRoute { id: string; from: Hub & { id: string }; to: Hub & { id: string }; mode: 'air' }
+export function plannedRoutes(fromCity = 'lagos'): PlannedRoute[] {
   const from = cityEntry(fromCity);
   if (!from) return [];
-  return Object.entries(WORLD_COUNTRIES).filter(([, entry]) => entry.status === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub }, mode: 'air' }));
+  return Object.entries(WORLD_COUNTRIES).filter(([, entry]) => entry.status === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub! }, mode: 'air' as const }));
 }
 
 /** Longitude/latitude → flat map units for one country: x east, y south, the country fitted into `width`. */
-export function projector(countryId, width = 1000) {
-  const outline = COUNTRIES[countryId].outline;
+export interface Projector { width: number; height: number; point: (lon: number, lat: number) => [number, number] }
+export function projector(countryId: string, width = 1000): Projector {
+  const outline = COUNTRIES[countryId as CountryId].outline;
   const lons = outline.map((point) => point[0]), lats = outline.map((point) => point[1]);
   const west = Math.min(...lons), east = Math.max(...lons), south = Math.min(...lats), north = Math.max(...lats);
   const scale = width / (east - west);

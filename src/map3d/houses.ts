@@ -27,10 +27,52 @@
  * Pure geometry work on typed arrays: it runs under `node --test` without a WebGL context.
  */
 import { createBatch } from '../scene/build.js';
-import { leanGeometry } from './city-build.js';
+import { leanGeometry } from './city-build.ts';
 import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, HOUSE_TIERS, unpackStyle } from '../game/content/world.js';
-import { estateLayout } from './estates.js';
-import { lgaAt } from './lga.js';
+import { estateLayout } from './estates.ts';
+import { lgaAt } from './lga.ts';
+import type * as THREE from 'three';
+import type { CityPack } from './types.ts';
+import type { WorldData, WorldHouse } from './world-data.ts';
+
+/** What createHouses needs of the scene kit (src/scene/kit.js): Three.js itself, which is loaded lazily and so is never imported here as a value. */
+export interface Kit { THREE: typeof THREE }
+/** The level of detail the layer draws at: the whole city as blocks, one local government as pads, the estates in view as houses. */
+export type HouseLevel = 'far' | 'near' | 'close';
+/** One local government's counters, as much as the layer reads of a city summary (world-data.ts CitySummary). */
+export interface HouseSummary { occ: Uint8Array; houses?: number }
+/** The view the layer chooses its level for: the middle of the view, how far the camera is, and CSS pixels one map unit covers there. */
+export interface HouseView { x: number; z: number; distance: number; pixels: number }
+/** The player's own plot, drawn as a lit plot. */
+export interface OwnPlot { lga: string; estate: number; plot: number }
+export interface HouseOptions { own?: OwnPlot | null; serverNow?: number; visible?: boolean }
+/** An estate the layer wants loaded, or has drawn. */
+export interface EstateRef { lga: string; estate: number }
+export interface HouseCounts { far: number; pads: number; detail: number; estates: number; calls: number }
+export interface Houses {
+  group: THREE.Group
+  readonly level: HouseLevel
+  readonly triangles: number
+  counts: () => HouseCounts
+  perHouse: number
+  setSummary: (next: ReadonlyMap<string, HouseSummary> | null) => void
+  update: (view: HouseView, data: Pick<WorldData, 'estate'> | null | undefined, options?: HouseOptions) => EstateRef[]
+  detailed: () => EstateRef[]
+  dispose: () => void
+}
+type Batch = ReturnType<typeof createBatch>;
+interface Layer { mesh: THREE.InstancedMesh; capacity: number; geometryName: string }
+/** An instance of a box-shaped part (walls, roofs, fences, ...): its middle, width and height. */
+interface Part { x: number; z: number; w: number; h: number; colour: string; pitch?: number }
+interface Plot { x: number; z: number; s: number; colour: string }
+interface Dot { x: number; y: number; z: number; w: number; colour: string }
+interface FarBlock { x: number; z: number; w: number; d: number; fill: number; colour: string; front?: boolean }
+interface Pad { cell: { x: number; z: number; size: number }; fill: number }
+interface DetailEstate extends EstateRef { houses: Map<number, WorldHouse>; at: number }
+/** The look of a house as unpackStyle returns it: one index per field of HOUSE_STYLE. */
+interface HouseStyleIndexes { shape: number; wall: number; roof: number; door: number; windows: number; fence: number; yard: number; sign: number }
+/** HOUSE_STYLE read by field name: the lists of options; `hex` is the colour of those that have one. */
+const STYLE_OPTIONS: Readonly<Record<string, readonly { id: string; hex?: string }[]>> = HOUSE_STYLE;
 
 export const BINS = 4;
 // With the city itself (about 45,000 triangles), the far blocks and the pads, this keeps the whole frame under 60,000:
@@ -41,9 +83,9 @@ const MAX_DETAILED = 9;
 const SHAPES = HOUSE_STYLE.shape.map((shape) => shape.id);
 /** How big a house is on its plot, by tier rank: the starter is small, a villa fills the plot. */
 const TIER_SCALE = [0.62, 0.7, 0.78, 0.86, 0.94], TIER_HEIGHT = [0.5, 0.56, 0.62, 0.86, 0.96];
-const YARD = { flowers: ['green', '#e86a8a', 0.5], tree: ['green', '#3f8a57', 1], palm: ['green', '#4f9a5f', 1.25], tank: ['box', '#2f3b46', 0.9], gen: ['box', '#c9423a', 0.6], car: ['box', '#2b5fa8', 0.7], kiosk: ['box', '#e8a13a', 0.8] };
+const YARD: Record<string, readonly [string, string, number]> = { flowers: ['green', '#e86a8a', 0.5], tree: ['green', '#3f8a57', 1], palm: ['green', '#4f9a5f', 1.25], tank: ['box', '#2f3b46', 0.9], gen: ['box', '#c9423a', 0.6], car: ['box', '#2b5fa8', 0.7], kiosk: ['box', '#e8a13a', 0.8] };
 
-export function createHouses(kit, pack) {
+export function createHouses(kit: Kit, pack: CityPack): Houses {
   const { THREE } = kit;
   const group = new THREE.Group();
   group.name = 'houses';
@@ -51,9 +93,9 @@ export function createHouses(kit, pack) {
   const flat = new THREE.MeshBasicMaterial({ vertexColors: true });
   const block = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, metalness: 0, transparent: true, opacity: 0.92 });
   const dummy = new THREE.Object3D(), tint = new THREE.Color(), tintB = new THREE.Color();
-  const unit = (draw) => { const batch = createBatch(THREE); draw(batch); return batch.build({ solid: lit, glow: lit, glass: lit }).meshes[0].geometry; };
+  const unit = (draw: (batch: Batch) => void) => { const batch = createBatch(THREE); draw(batch); return batch.build({ solid: lit, glow: lit, glass: lit }).meshes[0]!.geometry; };
   // One unit house: 1 wide, 1 deep, walls 1 high; the roof sits on top. Everything is white and takes its colour per instance.
-  const geometries = {
+  const geometries: Record<string, THREE.BufferGeometry> = {
     walls: leanGeometry(THREE, 'box'),
     door: unit((u) => u.quad(0, 0.3, 0.506, 0.24, 0.6, '#ffffff')),
     glass: unit((u) => { u.quad(-0.3, 0.58, 0.506, 0.2, 0.26, '#ffffff'); u.quad(0.3, 0.58, 0.506, 0.2, 0.26, '#ffffff'); }),
@@ -61,7 +103,7 @@ export function createHouses(kit, pack) {
     gable: leanGeometry(THREE, 'gable'),
     hip: leanGeometry(THREE, 'pyramid'),
     flat: unit((u) => u.box(0, 0.06, 0, 1.1, 0.12, 1.1, '#ffffff')),
-    twin: (() => { const a = leanGeometry(THREE, 'gable'); a.scale(0.5, 0.9, 1); const left = a.clone().translate(-0.28, 0, 0), right = a.translate(0.28, 0, 0); const merged = new THREE.BufferGeometry(); for (const name of ['position', 'normal', 'color']) merged.setAttribute(name, new THREE.BufferAttribute(Float32Array.from([...left.attributes[name].array, ...right.attributes[name].array]), 3)); const n = left.attributes.position.count; merged.setIndex([...left.index.array, ...Array.from(right.index.array, (i) => i + n)]); left.dispose(); right.dispose(); return merged; })(),
+    twin: (() => { const a = leanGeometry(THREE, 'gable'); a.scale(0.5, 0.9, 1); const left = a.clone().translate(-0.28, 0, 0), right = a.translate(0.28, 0, 0); const merged = new THREE.BufferGeometry(); for (const name of ['position', 'normal', 'color']) merged.setAttribute(name, new THREE.BufferAttribute(Float32Array.from([...left.attributes[name]!.array, ...right.attributes[name]!.array]), 3)); const n = left.attributes.position!.count; merged.setIndex([...left.index!.array, ...Array.from(right.index!.array, (i) => i + n)]); left.dispose(); right.dispose(); return merged; })(),
     fence: unit((u) => { for (const [x, z, ry] of [[0, 0.5, 0], [0, -0.5, Math.PI], [0.5, 0, Math.PI / 2], [-0.5, 0, -Math.PI / 2]]) u.quad(x, 0.11, z, 1, 0.22, '#ffffff', { ry }); }),
     green: unit((u) => u.cone(0, 0.42, 0, 0.3, 0.84, '#ffffff', { seg: 4 })),
     box: unit((u) => u.box(0, 0.2, 0, 0.3, 0.4, 0.3, '#ffffff')),
@@ -71,16 +113,16 @@ export function createHouses(kit, pack) {
     pad: (() => { const geometry = new THREE.PlaneGeometry(1, 1); geometry.rotateX(-Math.PI / 2); const colours = new Float32Array(12).fill(1); geometry.setAttribute('color', new THREE.BufferAttribute(colours, 3)); return geometry; })(),
     block: leanGeometry(THREE, 'box'),
   };
-  const trianglesOf = (name) => geometries[name].index.count / 3;
+  const trianglesOf = (name: string) => geometries[name]!.index!.count / 3;
 
   // ---- instanced layers: created once, grown when needed, refilled when the level or the data changes --------
-  const layers = new Map();
-  function layer(name, geometryName, material, capacity) {
+  const layers = new Map<string, Layer>();
+  function layer(name: string, geometryName: string, material: THREE.Material, capacity: number) {
     let entry = layers.get(name);
     if (!entry || entry.capacity < capacity) {
       if (entry) { group.remove(entry.mesh); entry.mesh.dispose?.(); }
       const size = Math.max(16, Math.ceil(capacity * 1.3));
-      const mesh = new THREE.InstancedMesh(geometries[geometryName], material, size);
+      const mesh = new THREE.InstancedMesh(geometries[geometryName]!, material, size);
       mesh.name = `houses-${name}`; mesh.frustumCulled = false; mesh.count = 0; mesh.matrixAutoUpdate = false; mesh.renderOrder = name === 'far' ? 1 : 0;
       mesh.setColorAt(0, tint.set('#ffffff'));
       group.add(mesh);
@@ -89,35 +131,35 @@ export function createHouses(kit, pack) {
     }
     return entry.mesh;
   }
-  function fill(name, geometryName, material, items, place) {
+  function fill<T>(name: string, geometryName: string, material: THREE.Material, items: readonly T[], place: ((item: T, o: THREE.Object3D, colour: THREE.Color) => void) | null) {
     if (!items.length) { const entry = layers.get(name); if (entry) { entry.mesh.count = 0; entry.mesh.visible = false; } return 0; }
     const mesh = layer(name, geometryName, material, items.length);
-    items.forEach((item, i) => { place(item, dummy, tint); dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix); mesh.setColorAt(i, tint); });
+    items.forEach((item, i) => { place!(item, dummy, tint); dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix); mesh.setColorAt(i, tint); });
     mesh.count = items.length; mesh.visible = true;
-    mesh.instanceMatrix.needsUpdate = true; mesh.instanceColor.needsUpdate = true;
+    mesh.instanceMatrix.needsUpdate = true; mesh.instanceColor!.needsUpdate = true;
     return items.length * trianglesOf(geometryName);
   }
 
   // ---- FAR: the city as blocks -------------------------------------------------------------------
-  let summary = null, farKey = '', farTriangles = 0, hiddenLga = null;
+  let summary: ReadonlyMap<string, HouseSummary> | null = null, farKey = '', farTriangles = 0, hiddenLga: string | null = null;
   function buildFar() {
-    const items = [];
+    const items: FarBlock[] = [];
     if (summary) for (const lga of pack.lgas) {
       const occ = summary.get(lga.id)?.occ;
       if (!occ || lga.id === hiddenLga) continue;
-      const layout = estateLayout(pack, lga.id), front = layout.cells[0];
+      const layout = estateLayout(pack, lga.id)!, front = layout.cells[0]!;
       if (occ[0]) items.push({ x: front.x, z: front.z, w: front.size * 0.92, d: front.size * 0.92, fill: occ[0] / PLOTS_PER_ESTATE, colour: lga.tint, front: true });
       // The compact estates are gathered into a few blocks, each hugging the estates it stands for.
       const xs = lga.polygon.map((point) => point[0]), zs = lga.polygon.map((point) => point[1]);
       const minX = Math.min(...xs), minZ = Math.min(...zs), stepX = (Math.max(...xs) - minX) / BINS || 1, stepZ = (Math.max(...zs) - minZ) / BINS || 1;
-      const bins = new Map();
+      const bins = new Map<number, { x0: number; x1: number; z0: number; z1: number; houses: number; estates: number }>();
       for (let i = 1; i < ESTATE.estates; i++) {
         if (!occ[i]) continue;
-        const cell = layout.cells[i], key = Math.min(BINS - 1, Math.floor((cell.x - minX) / stepX)) + BINS * Math.min(BINS - 1, Math.floor((cell.z - minZ) / stepZ));
+        const cell = layout.cells[i]!, key = Math.min(BINS - 1, Math.floor((cell.x - minX) / stepX)) + BINS * Math.min(BINS - 1, Math.floor((cell.z - minZ) / stepZ));
         let bin = bins.get(key);
         if (!bin) bins.set(key, bin = { x0: Infinity, x1: -Infinity, z0: Infinity, z1: -Infinity, houses: 0, estates: 0 });
         bin.x0 = Math.min(bin.x0, cell.x - cell.size / 2); bin.x1 = Math.max(bin.x1, cell.x + cell.size / 2); bin.z0 = Math.min(bin.z0, cell.z - cell.size / 2); bin.z1 = Math.max(bin.z1, cell.z + cell.size / 2);
-        bin.houses += occ[i]; bin.estates += 1;
+        bin.houses += occ[i]!; bin.estates += 1;
       }
       for (const bin of bins.values()) items.push({ x: (bin.x0 + bin.x1) / 2, z: (bin.z0 + bin.z1) / 2, w: bin.x1 - bin.x0, d: bin.z1 - bin.z0, fill: bin.houses / (bin.estates * PLOTS_PER_ESTATE), colour: lga.tint });
     }
@@ -129,9 +171,9 @@ export function createHouses(kit, pack) {
 
   // ---- NEARER: one pad per estate of the local government in view ---------------------------------
   let padsKey = '', padTriangles = 0;
-  function buildPads(lga, occ, skip) {
-    const layout = estateLayout(pack, lga), items = [];
-    for (let i = 0; i < ESTATE.estates; i++) if (!skip.has(i)) items.push({ cell: layout.cells[i], fill: (occ?.[i] || 0) / PLOTS_PER_ESTATE });
+  function buildPads(lga: string, occ: Uint8Array | undefined, skip: Set<number>) {
+    const layout = estateLayout(pack, lga)!, items: Pad[] = [];
+    for (let i = 0; i < ESTATE.estates; i++) if (!skip.has(i)) items.push({ cell: layout.cells[i]!, fill: (occ?.[i] || 0) / PLOTS_PER_ESTATE });
     padTriangles = fill('pads', 'pad', flat, items, (item, o, colour) => {
       o.position.set(item.cell.x, 0.025, item.cell.z); o.rotation.set(0, 0, 0); o.scale.set(item.cell.size * 0.92, 1, item.cell.size * 0.92);
       if (item.fill > 0) colour.set('#efe3c6').lerp(tintB.set('#b5593c'), 0.2 + item.fill * 0.65); else colour.set('#d3dfb6');
@@ -139,32 +181,32 @@ export function createHouses(kit, pack) {
   }
 
   // ---- CLOSE: the estates in view as houses ----------------------------------------------------------
-  let detailKey = '', detailTriangles = 0, drawn = [];
-  const hex = (field, index) => HOUSE_STYLE[field][index]?.hex ?? '#ffffff';
-  function buildDetail(list, serverNow, own) {
-    const plots = [], walls = [], doors = [], glass = [], roofs = Object.fromEntries(SHAPES.map((shape) => [shape, []])), fences = [], greens = [], boxes = [], dots = [], scaffolds = [];
+  let detailKey = '', detailTriangles = 0, drawn: EstateRef[] = [];
+  const hex = (field: string, index: number) => STYLE_OPTIONS[field]![index]?.hex ?? '#ffffff';
+  function buildDetail(list: readonly DetailEstate[], serverNow: number, own: OwnPlot | null) {
+    const plots: Plot[] = [], walls: Part[] = [], doors: Part[] = [], glass: Part[] = [], roofs: Record<string, Part[]> = Object.fromEntries(SHAPES.map((shape): [string, Part[]] => [shape, []])), fences: Part[] = [], greens: Part[] = [], boxes: Part[] = [], dots: Dot[] = [], scaffolds: Part[] = [];
     for (const { lga, estate, houses } of list) {
-      const layout = estateLayout(pack, lga), pitch = layout.pitch(estate);
+      const layout = estateLayout(pack, lga)!, pitch = layout.pitch(estate);
       for (let plot = 0; plot < PLOTS_PER_ESTATE; plot++) {
         const at = layout.plot(estate, plot), house = houses.get(plot);
         const mine = own && own.lga === lga && own.estate === estate && own.plot === plot;
         plots.push({ x: at.x, z: at.z, s: pitch * 0.9, colour: mine ? '#ffe08a' : house ? '#e9e4d2' : '#cdd9b2' });
         if (!house) continue;
-        const { tier, style } = unpackStyle(house.s), rank = HOUSE_TIERS[tier].rank, w = pitch * 0.9 * TIER_SCALE[rank] * 0.72, h = pitch * 0.9 * TIER_HEIGHT[rank] * 0.7;
+        const { tier, style } = unpackStyle(house.s) as { tier: keyof typeof HOUSE_TIERS; style: HouseStyleIndexes }, rank = HOUSE_TIERS[tier].rank, w = pitch * 0.9 * TIER_SCALE[rank]! * 0.72, h = pitch * 0.9 * TIER_HEIGHT[rank]! * 0.7;
         const item = { x: at.x, z: at.z - pitch * 0.06, w, h, pitch };
         walls.push({ ...item, colour: hex('wall', style.wall) }); doors.push({ ...item, colour: hex('door', style.door) }); glass.push({ ...item, colour: hex('windows', style.windows) });
-        roofs[SHAPES[style.shape]].push({ ...item, colour: hex('roof', style.roof) });
+        roofs[SHAPES[style.shape]!]!.push({ ...item, colour: hex('roof', style.roof) });
         if (style.fence) fences.push({ x: at.x, z: at.z, w: pitch * 0.84, h: pitch * 0.7, colour: hex('fence', style.fence) });
-        const yard = YARD[HOUSE_STYLE.yard[style.yard].id];
+        const yard = YARD[HOUSE_STYLE.yard[style.yard]!.id];
         if (yard) (yard[0] === 'green' ? greens : boxes).push({ x: at.x + pitch * 0.3, z: at.z + pitch * 0.3, w: pitch * 0.5 * yard[2], h: pitch * 0.5 * yard[2], colour: yard[1] });
         if (house.online) dots.push({ x: at.x, z: at.z - pitch * 0.06, y: h + w * 0.62, w: pitch * 0.2, colour: '#33d17a' });
         if (house.u > serverNow) scaffolds.push({ ...item, colour: '#c9a35a' });
       }
     }
-    const stand = (item, o, colour) => { o.position.set(item.x, 0.03, item.z); o.rotation.set(0, 0, 0); o.scale.set(item.w, item.h, item.w); colour.set(item.colour); };
+    const stand = (item: Part, o: THREE.Object3D, colour: THREE.Color) => { o.position.set(item.x, 0.03, item.z); o.rotation.set(0, 0, 0); o.scale.set(item.w, item.h, item.w); colour.set(item.colour); };
     let total = fill('plots', 'pad', flat, plots, (item, o, colour) => { o.position.set(item.x, 0.028, item.z); o.rotation.set(0, 0, 0); o.scale.set(item.s, 1, item.s); colour.set(item.colour); });
     total += fill('walls', 'walls', lit, walls, stand) + fill('doors', 'door', flat, doors, stand) + fill('glass', 'glass', flat, glass, stand);
-    for (const shape of SHAPES) total += fill(`roof-${shape}`, shape, lit, roofs[shape], (item, o, colour) => { o.position.set(item.x, 0.03 + item.h, item.z); o.rotation.set(0, 0, 0); o.scale.set(item.w, item.w, item.w); colour.set(item.colour); });
+    for (const shape of SHAPES) total += fill(`roof-${shape}`, shape, lit, roofs[shape]!, (item, o, colour) => { o.position.set(item.x, 0.03 + item.h, item.z); o.rotation.set(0, 0, 0); o.scale.set(item.w, item.w, item.w); colour.set(item.colour); });
     total += fill('fences', 'fence', lit, fences, stand) + fill('greens', 'green', lit, greens, stand) + fill('boxes', 'box', lit, boxes, stand);
     total += fill('dots', 'dot', flat, dots, (item, o, colour) => { o.position.set(item.x, item.y, item.z); o.rotation.set(0, 0, 0); o.scale.set(item.w, item.w, item.w); colour.set(item.colour); });
     total += fill('scaffold', 'scaffold', lit, scaffolds, (item, o, colour) => { o.position.set(item.x, 0.03, item.z); o.rotation.set(0, 0, 0); o.scale.set(item.w, Math.max(item.h, item.w) * 0.8, item.w); colour.set(item.colour); });
@@ -173,10 +215,10 @@ export function createHouses(kit, pack) {
   }
   /** Triangles a list of estates would cost as houses (worst case per house: every part). */
   const PER_HOUSE = trianglesOf('walls') + trianglesOf('door') + trianglesOf('glass') + trianglesOf('gable') + trianglesOf('fence') + trianglesOf('green') + trianglesOf('dot');
-  const costOf = (houses) => PLOTS_PER_ESTATE * trianglesOf('pad') + houses * PER_HOUSE;
+  const costOf = (houses: number) => PLOTS_PER_ESTATE * trianglesOf('pad') + houses * PER_HOUSE;
 
-  let level = 'far';
-  const api = {
+  let level: HouseLevel = 'far';
+  const api: Houses = {
     group,
     get level() { return level; },
     get triangles() { return farTriangles + padTriangles + detailTriangles; },
@@ -187,18 +229,18 @@ export function createHouses(kit, pack) {
      * Choose what to draw for this view. `view` = { x, z, distance, pixels } (pixels = CSS pixels one
      * map unit covers at the middle of the view). Returns the estates to load: [{ lga, estate }].
      */
-    update(view, data, { own = null, serverNow = 0, visible = true } = {}) {
+    update(view, data, { own = null, serverNow = 0, visible = true }: HouseOptions = {}) {
       group.visible = visible;
       if (!visible || !pack.lgas?.length) return [];
       const focus = view.distance < PAD_DISTANCE ? lgaAt(pack, view.x, view.z) : null;
-      const wanted = [];
-      let detail = [];
+      const wanted: EstateRef[] = [];
+      let detail: DetailEstate[] = [];
       if (focus) {
         // The estates whose houses would be big enough to tell apart, nearest the middle of the view first.
-        const layout = estateLayout(pack, focus), occ = summary?.get(focus)?.occ;
-        const near = [];
+        const layout = estateLayout(pack, focus)!, occ = summary?.get(focus)?.occ;
+        const near: { estate: number; far: number; houses: number }[] = [];
         for (let i = 0; i < ESTATE.estates; i++) {
-          const cell = layout.cells[i], far = Math.hypot(cell.x - view.x, cell.z - view.z);
+          const cell = layout.cells[i]!, far = Math.hypot(cell.x - view.x, cell.z - view.z);
           if (layout.pitch(i) * view.pixels >= 7 && far < cell.size * 1.2 + 260 / view.pixels) near.push({ estate: i, far, houses: occ?.[i] ?? 0 });
         }
         near.sort((a, b) => a.far - b.far);

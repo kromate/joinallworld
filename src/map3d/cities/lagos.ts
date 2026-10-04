@@ -24,15 +24,16 @@
  */
 
 import { LAGOS_LGAS } from '../../game/content/world.js';
+import type { Box4, CityPack, DecorateBatch, PackBounds, PackDistrict, PackEstate, PackFabric, PackHome, PackLand, PackLga, PackRoad, PackSite, PackSoon } from '../types.ts';
 
 export const id = 'lagos';
 export const name = 'Lagos';
 
 /** The board. `fit` is what "the whole city" frames (the land, not the open sea); `sea` is the open-water block the sea-plot layer uses. */
-export const bounds = { minX: -176, maxX: 190, minZ: -116, maxZ: 62, fit: { minX: -166, maxX: 180, minZ: -104, maxZ: 46 }, sea: { x0: 24, x1: 92, z0: 50, z1: 92 } };
+export const bounds: PackBounds = { minX: -176, maxX: 190, minZ: -116, maxZ: 62, fit: { minX: -166, maxX: 180, minZ: -104, maxZ: 46 }, sea: { x0: 24, x1: 92, z0: 50, z1: 92 } };
 
 /** Land masses as control polygons [x, z]; the builder rounds the corners. `kind` picks the ground colour. */
-export const land = [
+export const land: PackLand[] = [
   // The mainland runs west to Badagry and, round the top of the lagoon, north-east to Ikorodu.
   { id: 'mainland', kind: 'mainland', points: [[-166, -106], [152, -106], [158, -86], [140, -68], [106, -70], [84, -80], [66, -90], [53, -93], [48, -84], [46, -68], [38, -54], [30, -44], [26, -30], [22, -18], [10, -11], [-12, -11], [-30, -11], [-44, -10], [-50, -2], [-52, 10], [-60, 18], [-80, 18], [-94, 12], [-126, 12], [-138, 14], [-152, 18], [-166, 13]] },
   { id: 'island', kind: 'island', points: [[-42, 2], [-20, 0], [4, 0], [26, -3], [46, -3], [56, 3], [55, 13], [44, 20], [10, 20], [-20, 21], [-40, 19], [-46, 10]] },
@@ -50,7 +51,7 @@ export const land = [
  * deck height (the builder ramps it at both ends, adds piers and rails); `major` roads are wider
  * and carry lane marks and traffic.
  */
-export const roads = [
+export const roads: PackRoad[] = [
   // Mainland
   { id: 'ikorodu', name: 'Ikorodu Road', major: true, points: [[-20, -82], [-21, -58], [-21, -36], [-18, -24], [-16, -15]] },
   { id: 'agege', name: 'Agege Motor Road', major: true, points: [[-86, -56], [-60, -58], [-40, -58], [-21, -58], [2, -56], [22, -60], [36, -64]] },
@@ -87,7 +88,7 @@ export const roads = [
 ];
 
 /** Where each venue's landmark stands. Ids are venue ids (src/game/content/venues.js). */
-export const sites = {
+export const sites: Record<string, PackSite> = {
   radio: { x: -66, z: -51 }, shrine: { x: -46, z: -65 }, 'viewing-centre': { x: -31, z: -27 }, 'amala-shitta': { x: -45, z: -23 },
   cchub: { x: 8.5, z: -30 }, hospital: { x: 11, z: -64 }, salon: { x: 26, z: -53 },
   church: { x: -26, z: 4.5 }, market: { x: -9.5, z: 4.5 }, police: { x: 1.5, z: 4.5 }, park: { x: 17, z: 4.5 },
@@ -99,7 +100,7 @@ export const sites = {
 };
 
 /** Where Home stands for each house (ids of HOME_SPOTS in src/game/content/venues.js). */
-export const homes = {
+export const homes: Record<string, PackHome> = {
   mushin: { x: -50, z: -40.5, district: 'Mushin' }, yaba: { x: 15, z: -44.5, district: 'Yaba' }, lekki: { x: 72, z: 36, district: 'Lekki Phase 1' },
   ikoyi: { x: 40, z: 15.5, district: 'Ikoyi' }, banana: { x: 66, z: -13.5, district: 'Banana Island' },
 };
@@ -108,10 +109,10 @@ export const homes = {
  * Coming-soon districts: { [id of COMING_SOON]: { x, z, zone: [x0, z0, x1, z1], gate: [x, z] } }. Each is marked on both
  * maps and may be fenced off in decorate() with hazardFence() below. Lagos has none now: the airport and the refinery are venues.
  */
-export const soon = {};
+export const soon: Record<string, PackSoon> = {};
 
 /** District name plates laid on the ground: [x, z, size]. `water` plates are lettered straight onto the water. */
-export const districts = [
+export const districts: PackDistrict[] = [
   // Neighbourhoods and waters. The local governments have their own name plates (`lgas` below), so they are not repeated here.
   { name: 'YABA', x: 10, z: -19.5, size: 2 }, { name: 'GBAGADA', x: -6, z: -72, size: 2 },
   { name: 'IKOYI', x: 40, z: 4.6, size: 1.7 }, { name: 'BANANA ISLAND', x: 92, z: -12, size: 1.3, water: true },
@@ -121,7 +122,7 @@ export const districts = [
 ];
 
 /** Areas the city fabric keeps clear: [x0, z0, x1, z1]. Sites, roads and plates are kept clear automatically. */
-export const zones = [
+export const zones: Box4[] = [
   [-122, -82, -88, -48],   // the airfield
   [106, 16, 126, 37],      // the refinery's tank farm
   [-84, 2, -52, 18],       // Apapa port
@@ -131,7 +132,7 @@ export const zones = [
  * What the fabric of each part of town is made of. The first area containing a point wins.
  * style: 'dense' tin-roofed houses · 'blocks' mid-rise · 'towers' high-rise · 'villas' big houses and gardens · 'green' trees only
  */
-export const fabric = [
+export const fabric: PackFabric[] = [
   { box: [-126, -86, -30, -46], style: 'blocks' },           // Ikeja
   { box: [-126, -46, 50, 14], style: 'dense' },              // Mushin, Surulere, Yaba
   { box: [-30, -86, 50, -46], style: 'dense' },              // Gbagada, Bariga
@@ -148,7 +149,7 @@ export const fabric = [
 ];
 
 /** Home estates for the Neighbours layer: where each district's player homes are drawn. */
-export const estates = {
+export const estates: Record<string, PackEstate> = {
   mushin: { x: -80, z: -47, cols: 6 }, yaba: { x: -16, z: -50, cols: 6 }, lekki: { x: 54, z: 32.5, cols: 6 }, ikoyi: { x: 11.5, z: 12.5, cols: 6 }, banana: { x: 52, z: -13, cols: 4, max: 8 },
 };
 
@@ -164,7 +165,7 @@ export const estates = {
  *            [south, west, north, east]. Hand-drawn from general knowledge, good to a few kilometres:
  *            near a boundary it can name the neighbour, which is why the player confirms the answer.
  */
-const LGA_SHAPES = {
+const LGA_SHAPES: Record<string, Pick<PackLga, 'polygon' | 'plate' | 'tint' | 'geo'>> = {
   alimosho: { polygon: [[-168, -108], [-124, -108], [-124, -46], [-168, -46]], plate: [-146, -70], tint: '#e8c27a', geo: { c: [6.584, 3.257], box: [6.50, 3.18, 6.67, 3.30] } },
   'ifako-ijaiye': { polygon: [[-124, -108], [-80, -108], [-80, -84], [-124, -84]], plate: [-102, -96], tint: '#9ecf8a', geo: { c: [6.685, 3.289], box: [6.64, 3.25, 6.71, 3.33] } },
   agege: { polygon: [[-80, -108], [-38, -108], [-38, -84], [-80, -84]], plate: [-59, -96], tint: '#f0a58e', geo: { c: [6.622, 3.325], box: [6.60, 3.29, 6.65, 3.34] } },
@@ -187,24 +188,24 @@ const LGA_SHAPES = {
   epe: { polygon: [[130, -52], [184, -52], [184, 0], [130, 0]], plate: [158, -26], tint: '#b0c8f0', geo: { c: [6.586, 3.983], box: [6.50, 3.80, 6.72, 4.36] } },
 };
 /** The rough box of Lagos State [south, west, north, east]: a position outside it is "not in Lagos". */
-export const geo = { box: [6.36, 2.69, 6.73, 4.37] };
-export const lgas = LAGOS_LGAS.map((lga) => ({ id: lga.id, name: lga.name, line: lga.line, land: lga.land, districts: lga.districts, ...LGA_SHAPES[lga.id] }));
+export const geo: { box: Box4 } = { box: [6.36, 2.69, 6.73, 4.37] };
+export const lgas: PackLga[] = LAGOS_LGAS.map((lga) => ({ id: lga.id, name: lga.name, line: lga.line, land: lga.land, districts: lga.districts, ...LGA_SHAPES[lga.id]! }));
 
 const STRIPE = ['#f2c230', '#22252a'];
 
 /** Hazard-striped fence around a rectangle, with a gap for the gate — for a coming-soon district (`soon` above). */
-function hazardFence(b, [x0, z0, x1, z1]) {
-  const run = (ax, az, bx, bz) => {
+function hazardFence(b: DecorateBatch, [x0, z0, x1, z1]: Box4) {
+  const run = (ax: number, az: number, bx: number, bz: number) => {
     const length = Math.hypot(bx - ax, bz - az), n = Math.max(1, Math.round(length / 2.2)), ry = Math.atan2(bx - ax, bz - az);
     for (let i = 0; i < n; i++) {
       const t = (i + 0.5) / n;
-      b.box(ax + (bx - ax) * t, 0.55, az + (bz - az) * t, 0.3, 0.5, length / n * 0.98, STRIPE[i % 2], { ry });
+      b.box(ax + (bx - ax) * t, 0.55, az + (bz - az) * t, 0.3, 0.5, length / n * 0.98, STRIPE[i % 2]!, { ry });
       if (i % 3 === 0) b.box(ax + (bx - ax) * t, 0.3, az + (bz - az) * t, 0.36, 0.6, 0.36, '#6b6f75', { ry });
     }
   };
   run(x0, z0, x1, z0); run(x1, z0, x1, z1); run(x1, z1, x0, z1); run(x0, z1, x0, z0);
 }
-function crane(b, x, z, ry = 0, h = 7, colour = '#e8a13a') {
+function crane(b: DecorateBatch, x: number, z: number, ry = 0, h = 7, colour = '#e8a13a') {
   b.at(x, 0, z, ry, () => {
     b.box(0, h / 2, 0, 0.5, h, 0.5, colour);
     b.box(0, 0.25, 0, 1.6, 0.5, 1.6, '#6b6f75');
@@ -217,13 +218,13 @@ function crane(b, x, z, ry = 0, h = 7, colour = '#e8a13a') {
 }
 
 /** What only Lagos has. `b` is a geometry batch (src/scene/build.js); `tools` are builder helpers. */
-export function decorate(b, { rng }) {
+export function decorate(b: DecorateBatch, { rng }: { rng: () => number }) {
   // ---- Apapa port: quay, gantry cranes, container stacks, two ships ---------------------------
   b.box(-68, 0.12, 10, 30, 0.24, 13, '#9a9c9a');
   const boxes = ['#c9423a', '#2b5fa8', '#e8a13a', '#3f9a5a', '#ece2c6', '#7a4bb0'];
   for (let i = 0; i < 26; i++) {
     const x = -80 + (i % 9) * 3, z = 6 + Math.floor(i / 9) * 3.4, high = 1 + Math.floor(rng() * 3);
-    for (let level = 0; level < high; level++) b.box(x, 0.65 + level * 0.82, z, 2.6, 0.8, 1.2, boxes[Math.floor(rng() * boxes.length)]);
+    for (let level = 0; level < high; level++) b.box(x, 0.65 + level * 0.82, z, 2.6, 0.8, 1.2, boxes[Math.floor(rng() * boxes.length)]!);
   }
   for (const z of [5, 10, 15]) {
     b.at(-54.5, 0, z, 0, () => {
@@ -232,12 +233,12 @@ export function decorate(b, { rng }) {
       b.box(3.4, 4.6, 0, 0.8, 0.7, 0.8, '#ece8dc');
     });
   }
-  for (const [x, z, ry, hull] of [[-46, 9, 0, '#33414f'], [-66, 22, Math.PI / 2, '#7a2f2a']]) {
+  for (const [x, z, ry, hull] of [[-46, 9, 0, '#33414f'], [-66, 22, Math.PI / 2, '#7a2f2a']] as [number, number, number, string][]) {
     b.at(x, -0.5, z, ry, () => {
       b.box(0, 0.5, 0, 3, 1.1, 11, hull);
       b.box(0, 1.25, -3.8, 2.4, 1.4, 2.2, '#ece8dc');
       b.box(0, 2.2, -3.8, 0.7, 0.7, 0.7, '#c9423a');
-      for (let i = 0; i < 3; i++) b.box(0, 1.35, -1 + i * 2.2, 2.4, 0.8, 1.9, boxes[(i * 2 + (x < -50 ? 1 : 0)) % boxes.length]);
+      for (let i = 0; i < 3; i++) b.box(0, 1.35, -1 + i * 2.2, 2.4, 0.8, 1.9, boxes[(i * 2 + (x < -50 ? 1 : 0)) % boxes.length]!);
     });
   }
 
@@ -248,7 +249,7 @@ export function decorate(b, { rng }) {
   b.box(-104, 0.16, -68, 3, 0.06, 8, '#4a4e55');                            // taxiway
   b.cyl(-114, 3, -60, 0.9, 6, '#d9d4c4', { seg: 8 });                       // control tower
   b.cyl(-114, 6.5, -60, 1.5, 1.2, '#55707c', { seg: 8, top: 1.25 });
-  for (const [x, z, ry, tail] of [[-96, -68, 1.2, '#3f9a5a'], [-110, -66.5, -0.5, '#2b5fa8']]) {
+  for (const [x, z, ry, tail] of [[-96, -68, 1.2, '#3f9a5a'], [-110, -66.5, -0.5, '#2b5fa8']] as [number, number, number, string][]) {
     b.at(x, 0.2, z, ry, () => {                                             // planes at their stands
       b.cyl(0, 0.9, 0, 0.55, 6.4, '#ece8dc', { seg: 8, rx: Math.PI / 2 });
       b.cone(0, 0.9, 3.7, 0.55, 1.1, '#ece8dc', { seg: 8, rx: Math.PI / 2 });
@@ -261,21 +262,22 @@ export function decorate(b, { rng }) {
   // ---- The refinery's tank farm in the Lekki Free Zone, across the expressway from its gate (the venue's landmark) ----
   b.box(116, 0.07, 20.7, 20, 0.14, 9.4, '#c5c8c2');
   b.box(116, 0.07, 34, 20, 0.14, 6, '#c5c8c2');
-  for (const [x, z, r, h] of [[110, 19.5, 2.2, 2.4], [115.5, 19.5, 2.2, 2.4], [121, 19.5, 2.2, 2.4], [110, 23.9, 1.4, 3.2], [114, 23.9, 1.4, 3.2]]) {
+  for (const [x, z, r, h] of [[110, 19.5, 2.2, 2.4], [115.5, 19.5, 2.2, 2.4], [121, 19.5, 2.2, 2.4], [110, 23.9, 1.4, 3.2], [114, 23.9, 1.4, 3.2]] as [number, number, number, number][]) {
     b.cyl(x, h / 2, z, r, h, '#dfe2e0', { seg: 10 });
     b.cyl(x, h + 0.12, z, r * 0.96, 0.24, '#b8bcba', { seg: 10, top: 0.5 });
   }
-  for (const [x, z, h] of [[119.5, 23.8, 9], [122.5, 23.4, 7]]) {
+  for (const [x, z, h] of [[119.5, 23.8, 9], [122.5, 23.4, 7]] as [number, number, number][]) {
     b.cyl(x, h / 2, z, 0.5, h, '#9aa0a4', { seg: 7, top: 0.7 });
     for (let band = 0; band < 3; band++) b.cyl(x, h - 0.6 - band * 1.4, z, 0.52, 0.5, band % 2 ? '#ece8dc' : '#c9423a', { seg: 7 });
   }
   for (let i = 0; i < 4; i++) b.cyl(118 + i * 1.6, 0.9, 34, 0.14, 1.8, '#8a8f95', { seg: 5, rz: Math.PI / 2 });
 
   // ---- Eko Atlantic: reclaimed land with its first towers ---------------------------------------
-  for (const [x, z, h, colour] of [[-5, 50, 9, '#b9c7cf'], [1, 52, 12, '#9fb4c0'], [8, 50, 7.5, '#c9d2d4']]) {
+  for (const [x, z, h, colour] of [[-5, 50, 9, '#b9c7cf'], [1, 52, 12, '#9fb4c0'], [8, 50, 7.5, '#c9d2d4']] as [number, number, number, string][]) {
     b.box(x, h / 2, z, 3.2, h, 3.2, colour);
     b.box(x, h + 0.2, z, 2.4, 0.4, 2.4, '#7d858c');
   }
 }
 
-export default { id, name, bounds, land, roads, sites, homes, soon, districts, zones, fabric, estates, lgas, geo, decorate };
+const pack: CityPack = { id, name, bounds, land, roads, sites, homes, soon, districts, zones, fabric, estates, lgas, geo, decorate };
+export default pack;

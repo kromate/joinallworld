@@ -469,6 +469,8 @@ button.ui-row:hover{background:#f7f9f8}
   .life-toasts{top:var(--toast-top,74px)}
   .life-bottom{width:calc(100% - 16px);bottom:max(8px,env(safe-area-inset-bottom));gap:6px}
   .life-venue-panel{border-radius:22px}
+  /* The wallet's change note sits beside the two round buttons, not under them. */
+  .life-delta{right:104px;top:calc(100% + 10px)}
   /* Collapsed, the card is the place's name and its spots; the ambient line comes back with the activities. */
   :not(.is-expanded)>.life-bottom .life-venue-heading p{display:none}
   :not(.is-expanded)>.life-bottom .life-venue-header{margin-bottom:4px}
@@ -541,7 +543,9 @@ button.ui-row:hover{background:#f7f9f8}
   .life-venue-heading p,.life-venue-header .life-icon-button{display:none}
   .life-venue-panel>:not(.life-venue-header):not(.life-spots){grid-column:1/-1}
   .life-action{min-height:92px}
-  .life-coach{padding:3px 4px 3px 10px;justify-self:start}
+  /* The coach floats above the row, in the middle: the joystick has the left corner and the zoom buttons the right, and it is not counted in the height the scene gives up. */
+  .life-bottom>[data-slot=coach]{position:absolute;left:50%;bottom:calc(100% + 6px);width:auto;max-width:min(360px,calc(100% - 300px));transform:translateX(-50%)}
+  .life-coach{padding:3px 4px 3px 10px}
   .life-toasts{top:var(--toast-top,58px)}
 }
 
@@ -562,7 +566,11 @@ button.ui-row:hover{background:#f7f9f8}
 .life-burst{position:fixed;left:50%;top:var(--toast-top,84px);width:0;height:0;z-index:41;pointer-events:none}
 .life-burst i{position:absolute;left:0;top:0;width:8px;height:8px;border-radius:2px;background:var(--c,#f2b01e);animation:life-burst .9s var(--ease-out) forwards}
 @keyframes life-burst{from{opacity:1;transform:translate(0,0) rotate(0)}70%{opacity:1}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}
+/* A new roadside event draws the eye to its chip twice, then waits: it never opens by itself (panels/roadside-chip.js). */
+.map-event-chip.is-new{animation:ui-nudge .7s var(--ease-out) 2}
+@keyframes ui-nudge{0%,100%{box-shadow:0 0 0 0 #e39a1c00}40%{box-shadow:0 0 0 6px #e39a1c66}}
 @media(prefers-reduced-motion:reduce){
+  .map-event-chip.is-new{animation:none}
   .life-ui button:active,.ui-button:active{transform:none}
   .is-opening .life-action,.life-nav button.is-selected svg,#life-dialog[open]:not([data-phone]){animation:none}
   .life-burst{display:none}

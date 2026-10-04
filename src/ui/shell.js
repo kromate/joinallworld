@@ -309,7 +309,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     text = String(text);
     if (kind === 'good' && /\+₦/.test(text)) kind = 'earn';
     const tone = TOAST_KINDS.includes(kind) ? kind : 'info';
-    if (tone === 'good' && /^goal complete/i.test(stripLeadEmoji(text) || text)) burst();
+    if (/^goal complete/i.test(stripLeadEmoji(text) || text)) burst();
     const showing = [...el.toasts.children].find((node) => node.dataset.text === text);
     if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.innerHTML = glyph(tone); } return; }
     // The toast carries its own glyph: an emoji the text starts with is dropped, one inside it is drawn as a glyph.

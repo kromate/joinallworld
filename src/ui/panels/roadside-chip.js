@@ -1,7 +1,8 @@
 /**
  * OWNER: world
  * 'roadside-chip' — the HUD chip shown while a roadside choice is pending (state.travel.event);
- * it opens the 'roadside' modal once by itself. First download; the modal and the Map panel are
+ * tapping it opens the 'roadside' modal (it never opens by itself: nothing covers a place the player has
+ * just arrived at). First download; the modal and the Map panel are
  * ./map.js (fetched with the map panel group).
  */
 import './map.css';
@@ -15,12 +16,13 @@ const roadsideChip = {
     const event = view.travel?.event;
     return event ? `<button class="map-event-chip" data-open="roadside" data-event-key="${esc(`${event.id}:${event.at}`)}"><span aria-hidden="true">${iconFor('event', event.id, event.icon)}</span><span><b>${esc(event.title)}</b><small>Tap to answer</small></span></button>` : '';
   },
-  bind(root, api) {
-    const key = root.querySelector('[data-event-key]')?.dataset.eventKey;
+  bind(root) {
+    // A roadside event never interrupts: arriving somewhere shows the place first. The chip is the way in — it
+    // draws the eye once when the event is new (a one-shot CSS pulse) and waits to be tapped.
+    const chip = root.querySelector('[data-event-key]'), key = chip?.dataset.eventKey;
     if (!key || key === shownEvent) return;
     shownEvent = key;
-    // Raise the prompt once per event, after this render pass, and never over another open sheet.
-    queueMicrotask(() => { if (!document.querySelector('dialog[open]')) api.open('roadside'); });
+    chip.classList.add('is-new');
   },
 };
 

@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import type { BufferGeometry, Mesh } from 'three';
 import {createKit} from '../../scene/kit.js';
 import {buildUnilag,CAMPUS_BUDGET} from './scene.ts';
 import {ANCHORS,ENTRANCE,ZONES} from './layout.ts';
@@ -18,14 +19,14 @@ test('every resident zone combination, full crowd and all landmarks stay within 
   assert.equal(stats.lights,0);
  }
  // Empty south zone is still a required resident view.
- for(const zone of ZONES){const p=scene.navigation.grids.get(zone.id).nearest((zone.bounds[0]+zone.bounds[2])/2,(zone.bounds[1]+zone.bounds[3])/2);assert.ok(scene.setPosition(p.x,p.z));const stats=scene.stats();assert.ok(stats.triangles<=60000);assert.ok(stats.drawCalls<=60);visited.add(scene.zone);}
+ for(const zone of ZONES){const p=scene.navigation.grids.get(zone.id)!.nearest((zone.bounds[0]+zone.bounds[2])/2,(zone.bounds[1]+zone.bounds[3])/2)!;assert.ok(scene.setPosition(p.x,p.z));const stats=scene.stats();assert.ok(stats.triangles<=60000);assert.ok(stats.drawCalls<=60);visited.add(scene.zone);}
  assert.equal(visited.size,ZONES.length);console.log('UNILAG worst resident view',worst);
  scene.dispose();kit.dispose();
 });
 
 test('zone movement reuses resident geometry; disposal frees observed resources exactly once',()=>{
- const kit=createKit(),scene=buildUnilag(kit),observed=new Map();
- const watch=()=>scene.group.traverse(o=>{if(o.geometry&&!observed.has(o.geometry)){observed.set(o.geometry,0);o.geometry.addEventListener('dispose',()=>observed.set(o.geometry,observed.get(o.geometry)+1));}});
+ const kit=createKit(),scene=buildUnilag(kit),observed=new Map<BufferGeometry,number>();
+ const watch=()=>scene.group.traverse(o=>{const g=(o as Mesh).geometry;if(g&&!observed.has(g)){observed.set(g,0);g.addEventListener('dispose',()=>observed.set(g,observed.get(g)!+1));}});
  watch();const start=scene.stats().rebuilds;
  scene.setPosition(ENTRANCE.x,ENTRANCE.z+1);assert.equal(scene.stats().rebuilds,start);
  for(const [id] of Object.entries(ANCHORS)){scene.setSpot(id);watch();}

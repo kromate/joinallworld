@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLife, dispatch, advanceLife, viewLife } from '../../life.js';
+import { createLife as createLifeUntyped, dispatch as dispatchUntyped, advanceLife as advanceLifeUntyped, viewLife as viewLifeUntyped } from '../../life.js';
 import { VENUES } from '../../game/content/venues.js';
 import { registerSystem } from '../../game/registry.js';
 import { rebuildCatalogue } from '../../game/systems/activities.js';
-import { makeContext } from '../../game/util.js';
+import { makeContext as makeContextUntyped } from '../../game/util.js';
 import { xpForLevel } from '../../game/systems/skills.js';
 import studentSystem from './student.ts';
 import { UNILAG_VENUE } from './content.ts';
@@ -15,48 +15,78 @@ import gamesSystem, {
   emptyCampusLeaderboard, eventsAt, finalizeCampusElection, nominateCampusElection,
   sanitizeCampusElection, sanitizeCampusLeaderboard, voteCampusElection,
 } from './games.ts';
+import type { CampusEventMap } from '../../types/campus.ts';
+import type { ActionOutcome, AdvanceOutcome, LifeContext, LifeContextInit, LifeState } from '../../types/life.ts';
+import type { LifeView } from '../../types/view.ts';
+
+// life.js and game/util.js are untyped JS: name what this test passes in and reads back.
+interface ActionBody { type: string; payload?: Record<string, unknown>; actionId?: string }
+const createLife = createLifeUntyped as unknown as (saved: object, ctx: LifeContext) => LifeState;
+const dispatch = dispatchUntyped as unknown as (state: LifeState, body: ActionBody, ctx: LifeContext) => ActionOutcome;
+const advanceLife = advanceLifeUntyped as unknown as (state: LifeState, dt: number, ctx: LifeContext) => AdvanceOutcome;
+const viewLife = viewLifeUntyped as unknown as (state: LifeState, ctx: LifeContext) => LifeView;
+const makeContext = makeContextUntyped as (init?: LifeContextInit) => LifeContext;
 
 const DAY = 86400000;
 const HOUR = 3600000;
 const MONDAY_9 = Date.UTC(2026, 0, 5, 8); // Lagos is UTC+1.
-const localAt = (dayOffset, hour, minute = 0, second = 0) => MONDAY_9 + dayOffset * DAY + (hour - 9) * HOUR + minute * 60000 + second * 1000;
+const localAt = (dayOffset: number, hour: number, minute = 0, second = 0): number => MONDAY_9 + dayOffset * DAY + (hour - 9) * HOUR + minute * 60000 + second * 1000;
 
 // Actual delivered venue, registered only inside this test process.
-VENUES.unilag = UNILAG_VENUE;
+(VENUES as unknown as Record<string, unknown>)['unilag'] = UNILAG_VENUE;
 
-const seen = [];
+type Seen = ['score', CampusEventMap['campus.game.scored']] | ['volunteer', CampusEventMap['campus.volunteered']];
+const seen: Seen[] = [];
+/** The Lagos week an election or leaderboard instant falls in. */
+const weekOf = (now: number): number => {
+  const { week } = electionPhaseAt(now);
+  assert.ok(week !== null);
+  return week;
+};
 
 
 registerSystem({
   id: 'unilagGamesTestProbe', stateKeys: [], sanitize() {}, actions: {}, advance() {},
   on: {
-    'campus.game.scored': (state, data) => seen.push(['score', structuredClone(data)]),
-    'campus.volunteered': (state, data) => seen.push(['volunteer', structuredClone(data)]),
+    'campus.game.scored': (_state: LifeState, data: CampusEventMap['campus.game.scored']) => seen.push(['score', structuredClone(data)]),
+    'campus.volunteered': (_state: LifeState, data: CampusEventMap['campus.volunteered']) => seen.push(['volunteer', structuredClone(data)]),
   },
 });
 rebuildCatalogue();
 
-function player() {
+interface Player {
+  state: LifeState
+  readonly now: number
+  at(value: number): Player
+  act(type: string, payload?: Record<string, unknown>, extraCtx?: LifeContextInit): ActionOutcome
+  step(seconds: number): AdvanceOutcome
+  spot(id: string): ActionOutcome
+  view(): LifeView
+}
+
+function player(): Player {
   let now = MONDAY_9, sequence = 0;
   const state = createLife({ location: 'unilag', spot: 'senate', cash: 5000, skills: { coding: xpForLevel(1) } }, makeContext({ now, cityId: 'lagos', seed: 'games-create' }));
-  const api = {
+  const api: Player = {
     state,
     get now() { return now; },
-    at(value) { now = value; return api; },
-    act(type, payload = {}, extraCtx = {}) {
+    at(value: number) { now = value; return api; },
+    act(type: string, payload: Record<string, unknown> = {}, extraCtx: LifeContextInit = {}) {
       sequence += 1;
       return dispatch(state, { type, payload, actionId: `games-${sequence}` }, makeContext({ now, cityId: 'lagos', seed: `games-${sequence}`, ...extraCtx }));
     },
-    step(seconds) {
+    step(seconds: number) {
       now += seconds * 1000; sequence += 1;
       return advanceLife(state, seconds, makeContext({ now, cityId: 'lagos', seed: `games-step-${sequence}` }));
     },
-    spot(id) { return api.act('spot', { id }); },
+    spot(id: string) { return api.act('spot', { id }); },
     view() { return viewLife(state, makeContext({ now, cityId: 'lagos', seed: 'games-view' })); },
   };
   assert.equal(api.act('unilag.apply', { programme: 'computer' }).code, 'admitted');
   assert.equal(api.act('unilag.matriculate').code, 'matriculated');
-  const courses = PROGRAMMES.computer.semesters[0].courses.map((course) => course.id);
+  const semester = PROGRAMMES.computer.semesters[0];
+  assert.ok(semester);
+  const courses = semester.courses.map((course) => course.id);
   assert.equal(api.act('unilag.register-semester', { courses }).code, 'registered');
   assert.equal(api.act('unilag.hostel.allocate', { hall: 'moremi' }).code, 'hostel_allocated');
   return api;
@@ -70,9 +100,12 @@ test('faculty quiz, discovery and penalties use server state, award no cash and 
   p.spot('student-union');
   assert.equal(p.act('unilag.quiz.start', { question: 'eng-binary', answer: 'a', score: 999 }).code, 'quiz_started');
   const quiz = p.view().unilagCommunity.quiz;
+  assert.ok(quiz);
   assert.equal(QUIZ_QUESTIONS.Engineering.some((question) => question.id === quiz.question.id), true);
   assert.equal(JSON.stringify(quiz).includes('answer'), false, 'the view never returns the answer key');
-  const answer = quiz.question.options[0].id;
+  const firstOption = quiz.question.options[0];
+  assert.ok(firstOption);
+  const answer = firstOption.id;
   assert.match(p.act('unilag.quiz.answer', { answer, score: 999 }).code, /correct|incorrect/);
   assert.equal(p.act('unilag.quiz.start').code, 'daily_limit');
 
@@ -83,12 +116,12 @@ test('faculty quiz, discovery and penalties use server state, award no cash and 
 
   p.spot('sports-centre');
   assert.equal(p.act('unilag.penalties', { goals: 5, timing: 0 }).code, 'started');
-  assert.equal(p.state.activeAction.duration, CAMPUS_GAME_RULES.penaltySeconds);
+  assert.equal(p.state.activeAction?.duration, CAMPUS_GAME_RULES.penaltySeconds);
   assert.equal(p.step(CAMPUS_GAME_RULES.penaltySeconds).code, 'completed');
   assert.match(p.state.message, /[0-5] of 5 scored/);
   assert.equal(p.act('unilag.penalties').code, 'daily_limit');
 
-  const scores = seen.filter(([kind]) => kind === 'score').map(([, data]) => data);
+  const scores = seen.flatMap((entry) => entry[0] === 'score' ? [entry[1]] : []);
   assert.deepEqual(scores.map((item) => item.game), ['quiz', 'discovery', 'penalties']);
   assert.ok(scores.every((item) => item.studentId === p.state.unilagStudent.studentId && item.faculty === 'Engineering' && item.hall === 'moremi'));
   assert.ok(scores.every((item) => Number.isInteger(item.score) && item.score >= 0));
@@ -108,8 +141,8 @@ test('penalty cancellation, clubs and Aluta volunteering respect caps and never 
 
   assert.equal(p.act('unilag.club.join', { id: '__proto__' }).code, 'invalid_club');
   for (const club of CAMPUS_CLUBS.slice(0, CAMPUS_GAME_RULES.maxClubs)) assert.equal(p.act('unilag.club.join', { id: club.id }).code, 'joined');
-  assert.equal(p.act('unilag.club.join', { id: CAMPUS_CLUBS.at(-1).id }).code, 'club_limit');
-  assert.equal(p.act('unilag.club.leave', { id: CAMPUS_CLUBS[0].id }).code, 'left');
+  assert.equal(p.act('unilag.club.join', { id: CAMPUS_CLUBS.at(-1)?.id }).code, 'club_limit');
+  assert.equal(p.act('unilag.club.leave', { id: CAMPUS_CLUBS[0]?.id }).code, 'left');
 
   p.spot('student-union');
   assert.equal(p.act('activity', { id: 'unilag-volunteer' }).code, 'started');
@@ -117,7 +150,8 @@ test('penalty cancellation, clubs and Aluta volunteering respect caps and never 
   assert.equal(p.act('cancel').code, 'cancelled');
   assert.equal(p.act('activity', { id: 'unilag-volunteer' }).code, 'started');
   p.step(CAMPUS_GAME_RULES.volunteerSeconds);
-  const volunteer = seen.find(([kind]) => kind === 'volunteer')?.[1];
+  const volunteer = seen.flatMap((entry) => entry[0] === 'volunteer' ? [entry[1]] : [])[0];
+  assert.ok(volunteer);
   assert.deepEqual(volunteer.tags, ['aluta', 'volunteering', 'community']);
   assert.equal(p.act('activity', { id: 'unilag-volunteer' }).code, 'daily_limit');
   assert.equal(p.state.cash, cash);
@@ -140,11 +174,11 @@ test('weekly event windows use Lagos time exactly', () => {
   assert.deepEqual(eventsAt(NaN), []);
 });
 
-const authority = (id, studentId, extra = {}) => ({ current: true, id, studentId, name: id.toUpperCase(), faculty: 'Engineering', hall: 'moremi', ...extra });
+const authority = (id: string, studentId: string, extra: Record<string, unknown> = {}) => ({ current: true, id, studentId, name: id.toUpperCase(), faculty: 'Engineering', hall: 'moremi', ...extra });
 
 test('shared election reducers reject wrong phases, duplicate or stale ballots and finalize a stable winner', () => {
   const monday = localAt(0, 10), thursday = localAt(3, 10), sunday = localAt(6, 10);
-  const week = electionPhaseAt(monday).week;
+  const week = weekOf(monday);
   let election = emptyCampusElection(week);
   assert.equal(nominateCampusElection(election, NaN, authority('bad-time', 'ULG-0001-000099')).code, 'invalid_time');
   let result = nominateCampusElection(election, monday, authority('ada', 'ULG-0001-000001'));
@@ -169,7 +203,7 @@ test('shared election reducers reject wrong phases, duplicate or stale ballots a
 test('election life actions are server-only and local receipts have no cash effect', () => {
   const p = player(), cash = p.state.cash;
   const publicTry = p.act('unilag.election.nominate', { internal: true });
-  assert.equal(publicTry.code, 'server_only'); assert.match(publicTry.reason, /nothing was changed/);
+  assert.equal(publicTry.code, 'server_only'); assert.ok(!publicTry.ok); assert.match(publicTry.reason ?? '', /nothing was changed/);
   assert.equal(p.state.cash, cash);
   assert.equal(p.act('unilag.election.nominate', {}, { internal: true }).code, 'nominated');
   assert.equal(p.act('unilag.election.nominate', {}, { internal: true }).code, 'already_candidate');
@@ -181,9 +215,9 @@ test('election life actions are server-only and local receipts have no cash effe
 });
 
 test('leaderboard reducer credits one result per life, day and game, sorts stably and rolls weekly', () => {
-  const now = localAt(4, 19), time = electionPhaseAt(now), day = Math.floor((now + HOUR) / DAY);
-  let board = emptyCampusLeaderboard(time.week);
-  const entry = (lifeId, studentId, game, score, extra = {}) => ({ lifeId, studentId, day, game, score, faculty: 'Engineering', hall: 'moremi', ...extra });
+  const now = localAt(4, 19), day = Math.floor((now + HOUR) / DAY);
+  let board = emptyCampusLeaderboard(weekOf(now));
+  const entry = (lifeId: string, studentId: string, game: string, score: number, extra: Record<string, unknown> = {}) => ({ lifeId, studentId, day, game, score, faculty: 'Engineering', hall: 'moremi', ...extra });
   assert.equal(creditCampusLeaderboard(board, entry('bad-time', 'ULG-0001-000099', 'quiz', 2), NaN).code, 'invalid_time');
   const source = board, untouched = structuredClone(board);
   let result = creditCampusLeaderboard(board, entry('ada', 'ULG-0001-000001', 'quiz', 10), now); board = result.state;
@@ -200,10 +234,10 @@ test('leaderboard reducer credits one result per life, day and game, sorts stabl
 });
 
 test('hostile per-life community state is bounded, cannot forge scores, and round-trips', () => {
-  const p = player(), raw = structuredClone(p.state);
+  const p = player(), raw = structuredClone(p.state) as unknown as Record<string, unknown>;
   raw.unilagCommunity = {
     clubs: ['__proto__', ...CAMPUS_CLUBS.flatMap((club) => [club.id, club.id]), 'x'],
-    discoveries: ['__proto__', 'senate', 'senate', ...new Array(100).fill('x')],
+    discoveries: ['__proto__', 'senate', 'senate', ...new Array<string>(100).fill('x')],
     days: Array.from({ length: 1000 }, (_, index) => ({ day: index, games: { quiz: index % 2 ? 999 : 10, discovery: -1, penalties: Infinity }, volunteered: index % 2 === 0 })),
     quiz: { day: Infinity, faculty: '__proto__', questionId: '__proto__', startedAt: NaN, answer: 'a' },
     volunteerDay: Infinity,
@@ -239,10 +273,10 @@ test('visitors complete the eight-stop trail with no money or student admission'
 
 test('team standings aggregate teams and shared community goals reject replay',()=>{
  const now=MONDAY_9,day=Math.floor((now+3600000)/DAY);
- let board=emptyCampusLeaderboard(electionPhaseAt(now).week);
+ let board=emptyCampusLeaderboard(weekOf(now));
  for(const [lifeId,studentId,faculty,score] of [['ada','ULG-0001-000001','Engineering',10],['bola','ULG-0001-000002','Arts',2]])board=creditCampusLeaderboard(board,{lifeId,studentId,faculty,hall:'moremi',day,game:'quiz',score},now).state;
  assert.deepEqual(campusTeamStandings(board,now,'faculty').map(t=>[t.id,t.score]),[['Engineering',10],['Arts',2]]);
- assert.equal(campusTeamStandings(board,now,'hall')[0].score,12);
+ assert.equal(campusTeamStandings(board,now,'hall')[0]?.score,12);
  const result=creditCampusGoal(null,{lifeId:'ada',day},now);assert.equal(result.code,'contributed');
  assert.equal(creditCampusGoal(result.state,{lifeId:'ada',day},now).code,'already_contributed');
 });

@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import { ANCHORS, BUILDINGS, ENTRANCE, ZONES } from './layout.ts';
 import { createCampusWalk, footprintOf } from './walk.ts';
+import type { CampusZone } from './layout.ts';
 
 const walk = createCampusWalk();
 const campusZones = ZONES;
@@ -10,7 +11,9 @@ const campusZones = ZONES;
 test('all building anchors are exact, free destinations in their declared zones', () => {
   const anchors = Object.values(ANCHORS);
   assert.ok(anchors.length >= BUILDINGS.length);
-  assert.deepEqual([ANCHORS.people.x,ANCHORS.people.z],[ANCHORS['student-union'].x,ANCHORS['student-union'].z]);
+  const people = ANCHORS['people'], union = ANCHORS['student-union'];
+  assert.ok(people && union);
+  assert.deepEqual([people.x,people.z],[union.x,union.z]);
   for (const anchor of anchors) {
     assert.equal(walk.zoneAt(anchor.x, anchor.z)?.id, anchor.zone, anchor.id);
     assert.equal(walk.grids.get(anchor.zone)?.free(anchor.x, anchor.z), true, anchor.id);
@@ -20,13 +23,16 @@ test('all building anchors are exact, free destinations in their declared zones'
 test('interior walls keep the full south facade open and exterior footprints stay solid', () => {
   const interior = BUILDINGS.find((building) => building.id === 'library');
   const exterior = BUILDINGS.find((building) => building.id === 'main-gate');
+  assert.ok(interior && exterior);
   const walls = footprintOf(interior);
   assert.equal(walls.length, 6);
   assert.ok(walls.every((wall) => wall[1] < interior.z + interior.d / 2));
 
   const gatePillars = footprintOf(exterior);
   assert.equal(gatePillars.length, 2);
-  assert.ok(gatePillars[0][2] < gatePillars[1][0], 'gate arch must remain walkable');
+  const [leftPillar, rightPillar] = gatePillars;
+  assert.ok(leftPillar && rightPillar);
+  assert.ok(leftPillar[2] < rightPillar[0], 'gate arch must remain walkable');
 });
 
 test('main gate can reach every building anchor and preserves each exact endpoint', () => {
@@ -38,14 +44,15 @@ test('main gate can reach every building anchor and preserves each exact endpoin
 });
 
 test('every pair of walkable zones is connected through free exact endpoints', () => {
-  const pointIn = (zone) => {
+  const pointIn = (zone: CampusZone) => {
     const [x0, z0, x1, z1] = zone.bounds;
-    return walk.grids.get(zone.id).nearest((x0 + x1) / 2, (z0 + z1) / 2);
+    return walk.grids.get(zone.id)?.nearest((x0 + x1) / 2, (z0 + z1) / 2) ?? null;
   };
   for (const fromZone of campusZones) {
     for (const toZone of campusZones) {
       const from = pointIn(fromZone);
       const to = pointIn(toZone);
+      assert.ok(from && to, `${fromZone.id} -> ${toZone.id} endpoints`);
       const path = walk.route(from, to);
       assert.ok(path, `${fromZone.id} -> ${toZone.id}`);
       if (fromZone.id === toZone.id && from.x === to.x && from.z === to.z) {
@@ -64,10 +71,13 @@ test('shore water, outside bounds and blocked exact endpoints are rejected', () 
   assert.equal(walk.route({ x: Number.NaN, z: 0 }, ENTRANCE), null);
 
   const solidBackWall = BUILDINGS.find((building) => building.id === 'senate');
+  assert.ok(solidBackWall);
   assert.equal(walk.route(ENTRANCE, { x: solidBackWall.x, z: solidBackWall.z - solidBackWall.d / 2 }), null);
 });
 
 test('additional rendered footprints participate in exact route validation', () => {
   const blocked = createCampusWalk({ gate: [[ENTRANCE.x - 1, ENTRANCE.z - 1, ENTRANCE.x + 1, ENTRANCE.z + 1]] });
-  assert.equal(blocked.route(ENTRANCE, ANCHORS.library), null);
+  const library = ANCHORS['library'];
+  assert.ok(library);
+  assert.equal(blocked.route(ENTRANCE, library), null);
 });

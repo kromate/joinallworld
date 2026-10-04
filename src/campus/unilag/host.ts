@@ -1,31 +1,94 @@
 import './host.css';
+import type { Group, WebGLRenderer } from 'three';
 import { createKit } from '../../scene/kit.js';
 import { createMotionLoop } from '../../scene/motion-loop.js';
 import { createPositionReporter, createWalker } from '../../scene/movement.js';
 import { buildUnilag } from './scene.ts';
+import type { CampusTag, CrowdInput, CrowdPerson, PlayerInput, Point } from './scene.ts';
 import { buildShuttle, shuttlePose } from './shuttle.ts';
+import type { ShuttlePose } from './shuttle.ts';
+import type { CampusShuttleAction } from '../../types/campus.ts';
 import { ANCHORS, BUILDINGS, ENTRANCE } from './layout.ts';
+import type { SceneKit } from '../shared/geometry.ts';
 
-const WALK_KEYS = new Map([
+export interface WalkResult { ok: boolean; code?: string; reason?: string }
+export interface SpotRequest { id: string; open: boolean }
+/** The shuttle ride the server reports as the player's active action. */
+export interface HostAction { kind?: string; origin?: string; dest?: string; start?: number; duration: number; remaining: number }
+export interface HostState { t?: number; spot?: string | null; activeAction?: HostAction | null }
+export type HostPerson = CrowdInput & { x?: number; z?: number }
+export interface HostPlayer extends PlayerInput { name?: string }
+export interface CampusHostOptions {
+  onTag?: (tag: { id: string; kind: string | undefined }) => void;
+  onSpot?: (spot: SpotRequest) => Promise<WalkResult | undefined> | WalkResult | undefined;
+  onMove?: (position: { x: number; z: number; location: string }) => void;
+  now?: () => number;
+  renderer?: WebGLRenderer;
+}
+export interface CampusHostDiagnostics {
+  location: string; renderCount: number; loop: { running: boolean; frames: number };
+  avatar: { x: number; z: number; facing: number; moving: boolean; locked: boolean };
+  camera: { yaw: number; tilt: number; distance: number };
+  shuttle: { x: number; z: number; progress: number } | null;
+  zone: string | null; crowd: number; tags: number;
+  drawCalls: number | undefined; triangles: number | undefined;
+}
+export interface CampusHost {
+  update(): void;
+  resize(): void;
+  setInsets(next?: { top?: number; bottom?: number }): boolean;
+  setLocation(id: string): boolean;
+  setState(next: HostState | null): void;
+  setPlayer(next?: HostPlayer): boolean;
+  setCrowd(people: HostPerson[] | null | undefined): boolean;
+  walkTo(id: string): Promise<WalkResult>;
+  position(): { x: number; z: number; location: string };
+  diagnostics(): CampusHostDiagnostics;
+  dispose(): void;
+}
+
+// The slices of the scene modules (src/scene/movement.js, motion-loop.js) the host drives.
+export interface Walker {
+  x: number; z: number; ry: number; moving: boolean; jogging: boolean; hasInput: boolean; mode: string;
+  others: Point[] | null;
+  setGrid(grid: unknown): void;
+  place(x: number, z: number, ry?: number): void;
+  stop(): void;
+  input(right: number, forward: number, fast?: boolean): void;
+  step(dt: number, cameraYaw?: number, snap?: boolean): boolean;
+  goTo(x: number, z: number, options?: { exact?: boolean; face?: number; arrive?: () => void }): boolean;
+  finishNow(): boolean;
+}
+export interface MotionLoop { running: boolean; frames: number; available: boolean; wake(): boolean; stop(): void; dispose(): void }
+interface PositionReporter { report(x: number, z: number, now: number): boolean; rest(x: number, z: number, now: number): boolean }
+interface ShuttleView { group: Group; dispose(): void }
+interface WalkTask { id: string; resolve: (result: WalkResult) => void; committing?: boolean }
+interface ShuttleClock { key: string; remaining: number; receivedAt: number }
+interface TagView extends CampusTag { text?: string }
+
+const motionLoop: (tick: (dt: number) => boolean, hooks: { onHidden?: () => void; onVisible?: () => void }) => MotionLoop = createMotionLoop as unknown as (tick: (dt: number) => boolean, hooks: { onHidden?: () => void; onVisible?: () => void }) => MotionLoop; // motion-loop.js is untyped: its inferred options omit onHidden/onVisible
+const finite = (value: unknown): value is number => Number.isFinite(value);
+
+const WALK_KEYS = new Map<string, string>([
   ['w', 'up'], ['arrowup', 'up'], ['s', 'down'], ['arrowdown', 'down'],
   ['a', 'left'], ['arrowleft', 'left'], ['d', 'right'], ['arrowright', 'right'],
 ]);
-const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
-const rounded = (value, places = 2) => Math.round(value * (10 ** places)) / (10 ** places);
-const isField = (target) => target?.matches?.('input,textarea,select,[contenteditable]');
+const clamp = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
+const rounded = (value: number, places = 2): number => Math.round(value * (10 ** places)) / (10 ** places);
+const isField = (target: EventTarget | null): boolean | undefined => (target as Element | null)?.matches?.('input,textarea,select,[contenteditable]');
 
 /**
  * Live host for the UNILAG campus. The scene owns geometry; this host owns rendering, input and
  * presence-only movement. Game state remains server-owned.
  */
-export function createCampusHost(container, {
-  onTag = () => {}, onSpot = () => {}, onMove = () => {}, now = Date.now, renderer: providedRenderer,
-} = {}) {
-  const kit = createKit();
+export function createCampusHost(container: HTMLElement, {
+  onTag = () => {}, onSpot = () => undefined, onMove = () => {}, now = Date.now, renderer: providedRenderer,
+}: CampusHostOptions = {}): CampusHost {
+  const kit: SceneKit = createKit();
   const { THREE } = kit;
   const world = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 1800);
-  const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true, alpha: false });
+  const renderer: WebGLRenderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true, alpha: false });
   renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.shadowMap.enabled = false;
@@ -33,7 +96,7 @@ export function createCampusHost(container, {
   container.appendChild(renderer.domElement);
 
   const campus = buildUnilag(kit);
-  const shuttle = buildShuttle(kit);
+  const shuttle: ShuttleView = buildShuttle(kit);
   shuttle.group.visible = false;
   world.add(campus.group, shuttle.group);
   const hemi = new THREE.HemisphereLight('#c6e0e6', '#68765a', 2);
@@ -52,7 +115,7 @@ export function createCampusHost(container, {
   const controls = document.createElement('div');
   controls.className = 'campus-host-controls';
   controls.setAttribute('aria-label', 'Walk around campus');
-  for (const [move, label] of [['up', 'Walk north'], ['left', 'Walk west'], ['down', 'Walk south'], ['right', 'Walk east']]) {
+  for (const [move, label] of [['up', 'Walk north'], ['left', 'Walk west'], ['down', 'Walk south'], ['right', 'Walk east']] as const) {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'campus-host-control'; button.dataset.move = move;
     button.textContent = { up: '↑', left: '←', down: '↓', right: '→' }[move];
@@ -60,19 +123,19 @@ export function createCampusHost(container, {
   }
   container.append(tagLayer, miniMap, zoneLabel, controls);
 
-  const walker = createWalker({ speed: 8, jogSpeed: 18 });
+  const walker: Walker = createWalker({ speed: 8, jogSpeed: 18 });
   walker.setGrid(campus.walk.grid);
   walker.place(ENTRANCE.x, ENTRANCE.z, ENTRANCE.ry);
   campus.walk.move(walker.x, 0, walker.z, walker.ry);
-  const report = createPositionReporter((x, z) => onMove({ x, z, location: 'unilag' }), { perSecond: 3 });
-  const keys = new Set();
-  const tagNodes = new Map();
-  const crowdKinds = new Map();
-  let crowd = [], state = null, player = {}, playerKey = '', crowdKey = '[]';
+  const report: PositionReporter = createPositionReporter((x: number, z: number) => onMove({ x, z, location: 'unilag' }), { perSecond: 3 });
+  const keys = new Set<string>();
+  const tagNodes = new Map<string, HTMLButtonElement>();
+  const crowdKinds = new Map<string, 'npc' | 'player'>();
+  let crowd: HostPerson[] = [], state: HostState | null = null, player: HostPlayer = {}, playerKey = '', crowdKey = '[]';
   let insets = { top: 0, bottom: 0 }, size = { width: 0, height: 0 };
   let yaw = 0.55, tilt = 0.62, distance = 64, phase = 0, renderCount = 0;
-  let locked = false, wasMoving = false, disposed = false, drag = null, walkTask = null;
-  let shuttleActive = false, shuttleAt = null, shuttleClock = null;
+  let locked = false, wasMoving = false, disposed = false, drag: { id: number; x: number; y: number } | null = null, walkTask: WalkTask | null = null;
+  let shuttleActive = false, shuttleAt: ShuttlePose | null = null, shuttleClock: ShuttleClock | null = null;
   const projected = new THREE.Vector3();
   const canvas = renderer.domElement;
 
@@ -80,18 +143,18 @@ export function createCampusHost(container, {
   const reduced = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
   const canWalk = () => !locked && !container.hidden && !document.body.classList.contains('map-open') && !document.querySelector('dialog[open]');
 
-  function finishTask(result, expected = walkTask) {
+  function finishTask(result: WalkResult, expected: WalkTask | null = walkTask): void {
     const task = walkTask;
     if (!task || task !== expected) return;
     walkTask = null;
     task.resolve(result);
   }
-  function cancelTask(code = 'cancelled') {
+  function cancelTask(code = 'cancelled'): void {
     if (!walkTask) return;
     const id = walkTask.id;
     finishTask({ ok: false, code, reason: code === 'busy' ? 'Finish or cancel your current action before moving.' : `Stopped before reaching ${ANCHORS[id]?.label || 'that place'}.` }, walkTask);
   }
-  async function arrived(id, task) {
+  async function arrived(id: string, task: WalkTask): Promise<void> {
     if (walkTask !== task) return;
     campus.walk.goal();
     report.rest(walker.x, walker.z, now());
@@ -100,14 +163,14 @@ export function createCampusHost(container, {
       const result = await onSpot({ id, open: true });
       if (walkTask !== task) return;
       if (!result?.ok) placeAt(state?.spot, true);
-      finishTask(result, task);
+      finishTask(result as WalkResult, task); // an onSpot that answers nothing resolves the walk with undefined, as before
     } catch (error) {
       if (walkTask === task) placeAt(state?.spot, true);
-      finishTask({ ok: false, code: 'network', reason: error?.message || 'That place could not be selected.' }, task);
+      finishTask({ ok: false, code: 'network', reason: (error as { message?: string } | null)?.message || 'That place could not be selected.' }, task);
     }
   }
 
-  function updateCamera() {
+  function updateCamera(): void {
     const target = shuttleActive && shuttleAt ? shuttleAt : walker;
     const available = Math.max(180, size.height - insets.top - insets.bottom);
     const phone = size.width <= 720;
@@ -124,14 +187,14 @@ export function createCampusHost(container, {
     camera.updateProjectionMatrix();
   }
 
-  function drawMap() {
+  function drawMap(): void {
     const ctx = miniMap.getContext('2d');
     if (!ctx) return;
     const zone = currentZone();
     if (!zone) return;
     const [x0, z0, x1, z1] = zone.bounds;
     const width = miniMap.width, height = miniMap.height, pad = 18;
-    const point = (x, z) => [pad + ((x - x0) / (x1 - x0)) * (width - pad * 2), pad + ((z - z0) / (z1 - z0)) * (height - pad * 2)];
+    const point = (x: number, z: number): [number, number] => [pad + ((x - x0) / (x1 - x0)) * (width - pad * 2), pad + ((z - z0) / (z1 - z0)) * (height - pad * 2)];
     ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = zone.kind === 'waterfront' ? '#dbe8df' : '#e9ead8'; ctx.fillRect(0, 0, width, height);
     ctx.strokeStyle = '#bdc8aa'; ctx.lineWidth = 2; ctx.strokeRect(pad, pad, width - pad * 2, height - pad * 2);
@@ -140,34 +203,34 @@ export function createCampusHost(container, {
       ctx.fillStyle = '#819078';
       ctx.fillRect(x, z, Math.max(2, building.w / (x1 - x0) * (width - pad * 2)), Math.max(2, building.d / (z1 - z0) * (height - pad * 2)));
     }
-    for (const peer of crowd.filter((person) => person.kind === 'player' && Number.isFinite(person.x) && campus.navigation.zoneAt(person.x, person.z)?.id === zone.id)) {
-      const [x, z] = point(peer.x, peer.z); ctx.fillStyle = '#575da7'; ctx.beginPath(); ctx.arc(x, z, 5, 0, Math.PI * 2); ctx.fill();
+    for (const peer of crowd.filter((person) => person.kind === 'player' && finite(person.x) && campus.navigation.zoneAt(person.x, person.z!)?.id === zone.id)) {
+      const [x, z] = point(peer.x!, peer.z!); ctx.fillStyle = '#575da7'; ctx.beginPath(); ctx.arc(x, z, 5, 0, Math.PI * 2); ctx.fill();
     }
     const focus = shuttleActive && shuttleAt ? shuttleAt : walker;
     const [px, pz] = point(focus.x, focus.z); ctx.fillStyle = shuttleActive ? '#8f2434' : '#d45f36'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.arc(px, pz, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
     zoneLabel.textContent = zone.label;
-    miniMap.setAttribute('aria-label', `${zone.label} mini-map. You and ${crowd.filter((person) => person.kind === 'player' && Number.isFinite(person.x) && campus.navigation.zoneAt(person.x, person.z)?.id === zone.id).length} other players are marked.`);
+    miniMap.setAttribute('aria-label', `${zone.label} mini-map. You and ${crowd.filter((person) => person.kind === 'player' && finite(person.x) && campus.navigation.zoneAt(person.x, person.z!)?.id === zone.id).length} other players are marked.`);
   }
 
-  function syncTags() {
+  function syncTags(): void {
     const zone = campus.zone;
-    const candidates = campus.tags().map((tag) => ({ ...tag, kind: crowdKinds.get(String(tag.id)) || tag.kind }))
+    const candidates = campus.tags().map((tag): TagView => ({ ...tag, kind: crowdKinds.get(String(tag.id)) || tag.kind }))
       .filter((tag) => campus.navigation.zoneAt(tag.position.x, tag.position.z)?.id === zone)
       .sort((a, b) => Math.hypot(a.position.x - walker.x, a.position.z - walker.z) - Math.hypot(b.position.x - walker.x, b.position.z - walker.z))
       .slice(0, size.width <= 420 ? 6 : 12);
-    const live = new Set(), placed = [];
+    const live = new Set<string>(), placed: Array<{ x: number; y: number }> = [];
     for (const tag of candidates) {
       const id = String(tag.id); live.add(id);
       let node = tagNodes.get(id);
       if (!node) {
-        node = document.createElement('button'); node.type = 'button'; node.dataset.tag = id;
-        node.addEventListener('click', () => {
-          const kind = node.dataset.kind;
+        const made = node = document.createElement('button'); made.type = 'button'; made.dataset.tag = id;
+        made.addEventListener('click', () => {
+          const kind = made.dataset.kind;
           if (kind === 'landmark') void walkTo(id);
           else onTag({ id, kind });
         });
-        tagNodes.set(id, node); tagLayer.appendChild(node);
+        tagNodes.set(id, made); tagLayer.appendChild(made);
       }
       node.className = `campus-host-tag is-${tag.kind}`; node.dataset.kind = tag.kind;
       const label = String(tag.name || tag.text || id);
@@ -182,7 +245,7 @@ export function createCampusHost(container, {
     for (const [id, node] of tagNodes) if (!live.has(id)) { node.remove(); tagNodes.delete(id); }
   }
 
-  function draw() {
+  function draw(): void {
     if (disposed) return;
     updateCamera();
     world.background = new THREE.Color(campus.background);
@@ -193,26 +256,27 @@ export function createCampusHost(container, {
     syncTags(); drawMap();
   }
 
-  const elapsedNow = () => globalThis.performance?.now?.() ?? Date.now();
-  const shuttleKey = (active) => `${active?.origin || ''}\u0001${active?.dest || ''}\u0001${active?.start ?? ''}`;
-  function anchorShuttle(active) {
+  const elapsedNow = (): number => globalThis.performance?.now?.() ?? Date.now();
+  const shuttleKey = (active: HostAction | null | undefined): string => `${active?.origin || ''}\u0001${active?.dest || ''}\u0001${active?.start ?? ''}`;
+  function anchorShuttle(active: HostAction): ShuttleClock {
     const receivedAt = elapsedNow(), key = shuttleKey(active);
     let remaining = clamp(Number(active?.remaining) || 0, 0, Number(active?.duration) || 0);
     if (shuttleClock?.key === key) {
       const carried = Math.max(0, shuttleClock.remaining - (receivedAt - shuttleClock.receivedAt) / 1000);
       remaining = Math.min(remaining, carried);
     }
-    shuttleClock = { key, remaining, receivedAt };
+    return shuttleClock = { key, remaining, receivedAt };
   }
 
-  function showShuttle() {
+  function showShuttle(): boolean {
     const active = state?.activeAction;
     if (active?.kind !== 'campus-shuttle') return false;
-    if (shuttleClock?.key !== shuttleKey(active)) anchorShuttle(active);
-    const elapsed = Math.max(0, (elapsedNow() - shuttleClock.receivedAt) / 1000);
-    const remaining = Math.max(0, shuttleClock.remaining - elapsed);
+    const ride = active as CampusShuttleAction; // the server's shuttle action carries every field the pose reads
+    const clock = shuttleClock?.key === shuttleKey(active) ? shuttleClock : anchorShuttle(active);
+    const elapsed = Math.max(0, (elapsedNow() - clock.receivedAt) / 1000);
+    const remaining = Math.max(0, clock.remaining - elapsed);
     const progress = active.duration > 0 ? clamp(1 - remaining / active.duration, 0, 1) : 1;
-    const at = shuttlePose(active, progress);
+    const at = shuttlePose(ride, progress);
     if (!at) return false;
     shuttleAt = at; shuttleActive = true; shuttle.group.visible = true; campus.walk.avatar.visible = false;
     shuttle.group.position.set(at.x, 0.2, at.z); shuttle.group.rotation.y = at.ry;
@@ -221,7 +285,7 @@ export function createCampusHost(container, {
     return at.progress < 1;
   }
 
-  function tick(dt) {
+  function tick(dt: number): boolean {
     if (shuttleActive) { const more = showShuttle(); draw(); return more; }
     const right = Number(keys.has('right')) - Number(keys.has('left'));
     const forward = Number(keys.has('up')) - Number(keys.has('down'));
@@ -237,16 +301,16 @@ export function createCampusHost(container, {
     draw();
     return moving || walker.hasInput;
   }
-  const loop = createMotionLoop(tick, {
+  const loop: MotionLoop = motionLoop(tick, {
     onHidden() { keys.clear(); walker.input(0, 0); },
     onVisible() { if (walker.mode === 'path' || shuttleActive) loop.wake(); },
   });
 
-  function hold(move, pressed) {
+  function hold(move: string, pressed: boolean): void {
     if (pressed) keys.add(move); else keys.delete(move);
     if (pressed && canWalk()) loop.wake();
   }
-  function onKeyDown(event) {
+  function onKeyDown(event: KeyboardEvent): void {
     if (isField(event.target) || event.ctrlKey || event.metaKey || event.altKey || !canWalk()) return;
     const key = String(event.key).toLowerCase();
     if (key === 'shift') { keys.add('jog'); return; }
@@ -254,43 +318,44 @@ export function createCampusHost(container, {
     if (!move) return;
     event.preventDefault(); event.stopImmediatePropagation(); hold(move, true);
   }
-  function onKeyUp(event) {
+  function onKeyUp(event: KeyboardEvent): void {
     const key = String(event.key).toLowerCase();
     if (key === 'shift') { keys.delete('jog'); return; }
     const move = WALK_KEYS.get(key); if (move) hold(move, false);
   }
-  function releaseInput() { keys.clear(); walker.input(0, 0); drag = null; }
+  function releaseInput(): void { keys.clear(); walker.input(0, 0); drag = null; }
   window.addEventListener('keydown', onKeyDown, true);
   window.addEventListener('keyup', onKeyUp, true);
   window.addEventListener('blur', releaseInput);
 
-  const controlCleanups = [];
-  for (const button of controls.querySelectorAll('[data-move]')) {
-    const down = (event) => { event.preventDefault(); try { button.setPointerCapture(event.pointerId); } catch {} hold(button.dataset.move, true); };
-    const up = () => hold(button.dataset.move, false);
+  const controlCleanups: Array<() => void> = [];
+  for (const button of controls.querySelectorAll<HTMLButtonElement>('[data-move]')) {
+    const move = button.dataset.move!;
+    const down = (event: PointerEvent) => { event.preventDefault(); try { button.setPointerCapture(event.pointerId); } catch {} hold(move, true); };
+    const up = () => hold(move, false);
     button.addEventListener('pointerdown', down); button.addEventListener('pointerup', up); button.addEventListener('pointercancel', up); button.addEventListener('lostpointercapture', up);
     controlCleanups.push(() => { button.removeEventListener('pointerdown', down); button.removeEventListener('pointerup', up); button.removeEventListener('pointercancel', up); button.removeEventListener('lostpointercapture', up); });
   }
-  const pointerDown = (event) => { if (event.button !== 0) return; drag = { id: event.pointerId, x: event.clientX, y: event.clientY }; try { canvas.setPointerCapture(event.pointerId); } catch {} };
-  const pointerMove = (event) => {
+  const pointerDown = (event: PointerEvent): void => { if (event.button !== 0) return; drag = { id: event.pointerId, x: event.clientX, y: event.clientY }; try { canvas.setPointerCapture(event.pointerId); } catch {} };
+  const pointerMove = (event: PointerEvent): void => {
     if (!drag || drag.id !== event.pointerId) return;
     yaw -= (event.clientX - drag.x) * 0.006; tilt = clamp(tilt + (event.clientY - drag.y) * 0.004, 0.25, 1.35);
     drag.x = event.clientX; drag.y = event.clientY; event.preventDefault(); draw();
   };
-  const pointerUp = (event) => { if (drag?.id === event.pointerId) drag = null; };
-  const wheel = (event) => { if (!Number.isFinite(event.deltaY)) return; event.preventDefault(); distance = clamp(distance + event.deltaY * 0.07, 14, 220); draw(); };
+  const pointerUp = (event: PointerEvent): void => { if (drag?.id === event.pointerId) drag = null; };
+  const wheel = (event: WheelEvent): void => { if (!Number.isFinite(event.deltaY)) return; event.preventDefault(); distance = clamp(distance + event.deltaY * 0.07, 14, 220); draw(); };
   canvas.addEventListener('pointerdown', pointerDown); canvas.addEventListener('pointermove', pointerMove);
   canvas.addEventListener('pointerup', pointerUp); canvas.addEventListener('pointercancel', pointerUp);
   canvas.addEventListener('wheel', wheel, { passive: false });
 
-  function placeAt(id, preserveTask = false) {
-    const anchor = ANCHORS[id] || ENTRANCE;
+  function placeAt(id: string | null | undefined, preserveTask = false): void {
+    const anchor = (id ? ANCHORS[id] : undefined) || ENTRANCE;
     walker.stop(); if (!preserveTask) cancelTask(); walker.place(anchor.x, anchor.z, anchor.ry);
     campus.setPosition(anchor.x, anchor.z); campus.walk.move(anchor.x, 0, anchor.z, anchor.ry); campus.walk.rest();
     report.rest(anchor.x, anchor.z, now());
   }
 
-  function setState(next) {
+  function setState(next: HostState | null): void {
     const previous = state;
     state = next || {};
     const changed = campus.update(state);
@@ -316,7 +381,7 @@ export function createCampusHost(container, {
     if (changed || wasShuttle || spotChanged || actionStarted) draw();
   }
 
-  function setPlayer(next = {}) {
+  function setPlayer(next: HostPlayer = {}): boolean {
     const key = JSON.stringify([next.look || null, next.seed || '', next.name || '']);
     player = { ...next };
     if (key === playerKey) return false;
@@ -327,7 +392,7 @@ export function createCampusHost(container, {
     draw(); return true;
   }
 
-  function setCrowd(people) {
+  function setCrowd(people: HostPerson[] | null | undefined): boolean {
     const next = (Array.isArray(people) ? people : []).filter((person) => person && typeof person === 'object').slice(0, 12);
     const key = JSON.stringify(next);
     if (key === crowdKey) return false;
@@ -339,13 +404,13 @@ export function createCampusHost(container, {
     draw(); return true;
   }
 
-  function walkTo(id) {
+  function walkTo(id: string): Promise<WalkResult> {
     const anchor = ANCHORS[id];
     if (!anchor) return Promise.resolve({ ok: false, code: 'invalid_spot', reason: 'That campus destination is unavailable.' });
     if (locked) return Promise.resolve({ ok: false, code: 'busy', reason: 'Finish or cancel your current action before moving.' });
     cancelTask();
-    return new Promise((resolve) => {
-      const task = { id, resolve }; walkTask = task;
+    return new Promise<WalkResult>((resolve) => {
+      const task: WalkTask = { id, resolve }; walkTask = task;
       const arrive = () => void arrived(id, task);
       const alreadyThere = Math.hypot(walker.x - anchor.x, walker.z - anchor.z) <= 0.1;
       const started = walker.goTo(anchor.x, anchor.z, { exact: true, face: anchor.ry, arrive });
@@ -361,13 +426,13 @@ export function createCampusHost(container, {
     });
   }
 
-  function resize() {
+  function resize(): void {
     const box = container.getBoundingClientRect();
     size = { width: Math.max(1, Math.round(box.width)), height: Math.max(1, Math.round(box.height)) };
     renderer.setSize(size.width, size.height, false); camera.aspect = size.width / size.height;
     draw();
   }
-  function setInsets(next = {}) {
+  function setInsets(next: { top?: number; bottom?: number } = {}): boolean {
     const top = Math.max(0, Math.round(Number(next.top) || 0)), bottom = Math.max(0, Math.round(Number(next.bottom) || 0));
     if (top === insets.top && bottom === insets.bottom) return false;
     insets = { top, bottom };

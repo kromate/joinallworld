@@ -1,5 +1,38 @@
-import { createWalkGrid } from '../../scene/movement.js';
+import { createWalkGrid as createWalkGridUntyped } from '../../scene/movement.js';
 import { BUILDINGS, ZONES } from './layout.ts';
+import type { CampusBuilding, CampusZone, Portal } from './layout.ts';
+
+/** The part of scene/movement.js's occupancy grid the campus router uses. */
+export interface WalkGrid {
+  bounds: [number, number, number, number];
+  cell: number;
+  cols: number;
+  rows: number;
+  cells: ArrayLike<number>;
+  free: (x: number, z: number) => boolean;
+  nearest: (x: number, z: number, reach?: number) => WalkPoint | null;
+  clearLine: (ax: number, az: number, bx: number, bz: number) => boolean;
+  path: (ax: number, az: number, bx: number, bz: number) => WalkPoint[] | null;
+}
+// movement.js is untyped JS: its defaulted `block = []` infers never[], so name the options and result it really takes and returns.
+const createWalkGrid = createWalkGridUntyped as unknown as (options: {
+  bounds: [number, number, number, number]; block: Array<WalkRect | WalkCircle>; cell: number; radius: number;
+}) => WalkGrid;
+
+/** A world point on the campus floor. */
+export interface WalkPoint { x: number; z: number }
+/** An obstacle rectangle `[x0, z0, x1, z1]`. */
+export type WalkRect = [number, number, number, number];
+/** An obstacle circle `[x, z, radius]`. */
+export type WalkCircle = [number, number, number];
+/** One portal crossing of a zone-to-zone route. */
+export interface PortalHop { zone: string; portal: Portal }
+/** The campus navigation API of createCampusWalk(). */
+export interface CampusWalk {
+  grids: Map<string, WalkGrid>;
+  zoneAt: (x: number, z: number) => CampusZone | null;
+  route: (from: WalkPoint, to: WalkPoint) => WalkPoint[] | null;
+}
 
 const WALL = 1;
 const zoneById = new Map(ZONES.map((zone) => [zone.id, zone]));
@@ -12,17 +45,14 @@ const zoneById = new Map(ZONES.map((zone) => [zone.id, zone]));
  * same descriptor, leaving a central aisle through the entire south facade.
  * Gates are two pillars with a clear opening beneath the arch.
  * Sports grounds, gardens and water scenery do not create solid footprints.
- *
- * @param {import('./layout.ts').CampusBuilding|object} building Building descriptor.
- * @returns {Array<[number,number,number,number]>} Obstacle rectangles.
  */
-export function footprintOf(building) {
+export function footprintOf(building: CampusBuilding): WalkRect[] {
   const { x, z, w, d, kind, interior } = building;
   const x0 = x - w / 2, x1 = x + w / 2;
   const z0 = z - d / 2, z1 = z + d / 2;
   if (building.id === 'swimming-pool') return [[x0,z0,x1,z1]];
   if (building.id === 'amphitheatre') return [[x-w/2,z-7.5,x+w/2,z+.8]];
-  if (building.id === 'sports-centre') return [[x-w*.4,z-d/2-5.5,x+w*.4,z-d/2-1.5],...[-1,1].flatMap(side=>[-3,3].map(offset=>[x+side*(w/2-1)-.2,z+offset-.2,x+side*(w/2-1)+.2,z+offset+.2]))];
+  if (building.id === 'sports-centre') return [[x-w*.4,z-d/2-5.5,x+w*.4,z-d/2-1.5],...[-1,1].flatMap(side=>[-3,3].map((offset): WalkRect=>[x+side*(w/2-1)-.2,z+offset-.2,x+side*(w/2-1)+.2,z+offset+.2]))];
   if (kind === 'open-space') return [];
   if (kind === 'gate') {
     const pillarWidth = w * 0.15;
@@ -42,8 +72,7 @@ export function footprintOf(building) {
   ];
 }
 
-/** @param {{x:number,z:number}} a @param {{x:number,z:number}} b */
-const samePoint = (a, b) => Math.abs(a.x - b.x) < 1e-8 && Math.abs(a.z - b.z) < 1e-8;
+const samePoint = (a: WalkPoint, b: WalkPoint): boolean => Math.abs(a.x - b.x) < 1e-8 && Math.abs(a.z - b.z) < 1e-8;
 
 /**
  * Builds campus occupancy grids and a router that crosses zones through the
@@ -51,19 +80,13 @@ const samePoint = (a, b) => Math.abs(a.x - b.x) < 1e-8 && Math.abs(a.z - b.z) < 
  * waypoint is the exact requested endpoint; this rejects createWalkGrid's
  * documented partial-path fallback for unreachable goals.
  *
- * @param {Record<string, Array<[number,number,number,number]|[number,number,number]>>} [extraFootprints]
- *   Additional rendered obstacle shapes keyed by zone id. This lets a scene
- *   rebuild navigation after placing trees, cars, lamps and benches.
- * @returns {{
- *   grids: Map<string, ReturnType<typeof createWalkGrid>>,
- *   zoneAt: (x:number,z:number)=>import('./layout.ts').CampusZone|null,
- *   route: (from:{x:number,z:number},to:{x:number,z:number})=>Array<{x:number,z:number}>|null
- * }} Campus navigation API.
+ * `extraFootprints` are additional rendered obstacle shapes keyed by zone id. This lets a scene
+ * rebuild navigation after placing trees, cars, lamps and benches.
  */
-export function createCampusWalk(extraFootprints = {}) {
-  const grids = new Map();
+export function createCampusWalk(extraFootprints: Record<string, Array<WalkRect | WalkCircle>> = {}): CampusWalk {
+  const grids = new Map<string, WalkGrid>();
   for (const zone of ZONES) {
-    const block = BUILDINGS.filter((building) => building.zone === zone.id).flatMap(footprintOf);
+    const block: Array<WalkRect | WalkCircle> = BUILDINGS.filter((building) => building.zone === zone.id).flatMap(footprintOf);
     block.push(...(extraFootprints[zone.id] || []));
     if (zone.id === 'lagoon') block.push([340, zone.bounds[1], zone.bounds[2], zone.bounds[3]]);
     grids.set(zone.id, createWalkGrid({ bounds: zone.bounds, block, cell: 1, radius: 0.4 }));
@@ -73,11 +96,8 @@ export function createCampusWalk(extraFootprints = {}) {
    * Returns the zone containing a world point. Shared edges resolve toward the
    * zone whose interior contains the point; portal points deliberately sit
    * half a metre to either side and are therefore unambiguous.
-   * @param {number} x World x.
-   * @param {number} z World z.
-   * @returns {import('./layout.ts').CampusZone|null}
    */
-  function zoneAt(x, z) {
+  function zoneAt(x: number, z: number): CampusZone | null {
     if (!Number.isFinite(x) || !Number.isFinite(z)) return null;
     return ZONES.find((zone) => {
       const [x0, z0, x1, z1] = zone.bounds;
@@ -85,27 +105,22 @@ export function createCampusWalk(extraFootprints = {}) {
     }) || null;
   }
 
-  /**
-   * Finds the shortest unweighted sequence of portal hops between two zones.
-   * @param {string} from Start zone id.
-   * @param {string} to Destination zone id.
-   * @returns {Array<{zone:string,portal:import('./layout.ts').Portal}>|null}
-   */
-  function portalRoute(from, to) {
+  /** Finds the shortest unweighted sequence of portal hops between two zones. */
+  function portalRoute(from: string, to: string): PortalHop[] | null {
     if (from === to) return [];
     const queue = [from];
-    const previous = new Map([[from, null]]);
-    while (queue.length) {
-      const here = queue.shift();
+    const previous = new Map<string, PortalHop | null>([[from, null]]);
+    for (let here = queue.shift(); here !== undefined; here = queue.shift()) {
       const zone = zoneById.get(here);
       for (const edge of zone?.portals || []) {
         if (previous.has(edge.to)) continue;
         previous.set(edge.to, { zone: here, portal: edge });
         if (edge.to === to) {
-          const hops = [];
+          const hops: PortalHop[] = [];
           let cursor = to;
           while (cursor !== from) {
             const step = previous.get(cursor);
+            if (!step) return null; // unreachable: every cursor between `to` and `from` was recorded above
             hops.push({ zone: step.zone, portal: step.portal });
             cursor = step.zone;
           }
@@ -117,19 +132,14 @@ export function createCampusWalk(extraFootprints = {}) {
     return null;
   }
 
-  /**
-   * Requests a per-zone path and refuses partial fallback paths.
-   * @param {string} zoneId Owning zone id.
-   * @param {{x:number,z:number}} from Segment start.
-   * @param {{x:number,z:number}} to Segment destination.
-   * @returns {Array<{x:number,z:number}>|null}
-   */
-  function exactSegment(zoneId, from, to) {
+  /** Requests a per-zone path and refuses partial fallback paths. */
+  function exactSegment(zoneId: string, from: WalkPoint, to: WalkPoint): WalkPoint[] | null {
     const grid = grids.get(zoneId);
     if (!grid?.free(from.x, from.z) || !grid.free(to.x, to.z)) return null;
     if (samePoint(from, to)) return [];
     const path = grid.path(from.x, from.z, to.x, to.z);
-    if (!path?.length || !samePoint(path[path.length - 1], to)) return null;
+    const last = path?.[path.length - 1];
+    if (!path?.length || !last || !samePoint(last, to)) return null;
     return path;
   }
 
@@ -137,11 +147,8 @@ export function createCampusWalk(extraFootprints = {}) {
    * Routes between two exact world points. Returned waypoints omit the start,
    * include paired portal crossings, and end at the exact destination.
    * Water, out-of-bounds points and disconnected or blocked endpoints fail.
-   * @param {{x:number,z:number}} from Exact start point.
-   * @param {{x:number,z:number}} to Exact destination point.
-   * @returns {Array<{x:number,z:number}>|null}
    */
-  function route(from, to) {
+  function route(from: WalkPoint, to: WalkPoint): WalkPoint[] | null {
     if (!from || !to) return null;
     const startZone = zoneAt(from.x, from.z);
     const endZone = zoneAt(to.x, to.z);
@@ -149,8 +156,8 @@ export function createCampusWalk(extraFootprints = {}) {
     const hops = portalRoute(startZone.id, endZone.id);
     if (!hops) return null;
 
-    const result = [];
-    let current = { x: from.x, z: from.z };
+    const result: WalkPoint[] = [];
+    let current: WalkPoint = { x: from.x, z: from.z };
     let currentZone = startZone.id;
     for (const hop of hops) {
       const segment = exactSegment(currentZone, current, hop.portal.at);

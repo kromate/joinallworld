@@ -18,7 +18,7 @@ test('UNILAG content covers every finalized layout anchor', () => {
 
 test('campus activities use supported skills and needs with finite beta numbers', () => {
   for (const spot of Object.values(UNILAG_VENUE.spots)) for (const def of spot.activities) {
-    for (const value of [def.duration, def.cost, def.cooldown].filter((value) => value !== undefined)) {
+    for (const value of [def.duration, def.cost, def.cooldown].filter((value): value is number => value !== undefined)) {
       assert.ok(Number.isFinite(value));
       assert.ok(value >= 0);
     }

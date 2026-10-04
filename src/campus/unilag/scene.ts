@@ -1,27 +1,100 @@
+import type { Look } from '../../types/life.ts';
+import type { BufferGeometry, Group, InstancedMesh, Mesh } from 'three';
 import { createBatch, sceneMaterials, kitResources, releaseObjects } from '../../scene/build.js';
 import { buildAvatar, poseAvatar } from '../../scene/characters.js';
 import { lagosTime } from '../../game/clock.js';
 import { ZONES, BUILDINGS, ROADS, ANCHORS, ENTRANCE } from './layout.ts';
+import type { CampusAnchor, CampusBuilding, CampusZone } from './layout.ts';
 import { createCampusWalk, footprintOf } from './walk.ts';
+import type { CampusWalk as NavigationApi, WalkCircle, WalkGrid, WalkPoint, WalkRect } from './walk.ts';
 import { drawBuilding } from './buildings.ts';
+import type { BuildingStyle } from './buildings.ts';
 import { instances, primitiveGeometry, measureScene } from '../shared/geometry.ts';
+import type { Instance, SceneBatch, SceneKit, SceneMaterials, SceneMeasure } from '../shared/geometry.ts';
 
-const STYLE = { senate: 'senate', library: 'library', auditorium: 'auditorium', engineering: 'lecture',
+export type Point = WalkPoint;
+/** Obstacle shapes the walk model accepts: a rectangle [x0, z0, x1, z1] or a circle [x, z, radius]. */
+export type Footprint = WalkRect | WalkCircle;
+export type CampusGrid = WalkGrid;
+export type CampusNavigation = NavigationApi;
+export interface CampusGridView {
+  bounds: [number, number, number, number];
+  free(x: number, z: number): boolean;
+  path(ax: number, az: number, bx: number, bz: number): Point[] | null;
+  nearest(x: number, z: number): Point | null;
+}
+export type Solid = [number, number, number, number, number, number];
+export interface CrowdPerson { id: string; name: string; kind: 'npc' | 'player'; x: number; z: number }
+/** What a caller may pass to setCrowd(): a position, or a landmark id to stand beside. */
+export interface CrowdInput { id: string | number; name?: unknown; kind?: string; x?: number; z?: number; spot?: string }
+export interface CampusTag { id: string; name: string; kind: string; position: { x: number; y: number; z: number } }
+export interface PlayerInput { look?: Partial<Look> | null; seed?: string; pose?: string }
+export interface CampusSceneState { t?: number }
+export interface CampusSceneStats extends SceneMeasure { zone: string | null; resident: string[]; rebuilds: number }
+export interface PlayerPosition { x: number; y: number; z: number; ry: number; zone: string }
+
+/** The campus walk surface the host and the preview drive the avatar through. */
+export interface AvatarWalk {
+  entrance: number[]; open: boolean; avatar: Group; raised: unknown[]; scale: number;
+  readonly centre: number[];
+  readonly grid: CampusGridView;
+  solids: Solid[];
+  move(x: number, y: number, z: number, ry: number): void;
+  drive(): void;
+  rest(): void;
+  gait(step: unknown, phase: number): void;
+  pose(name: string): void;
+  heightAt(): number;
+  near(at?: Point | null): boolean;
+  goal(x?: number, z?: number): boolean;
+  spots(): Array<CampusAnchor & { approach: null; steps: never[] }>;
+  people(): Array<CrowdPerson & { top: number }>;
+}
+
+export interface UnilagScene {
+  group: Group; kind: 'unilag'; mood: 'outdoor';
+  anchors: Record<string, CampusAnchor>;
+  walk: AvatarWalk;
+  navigation: CampusNavigation;
+  camera: { landscape: number[]; portrait: number[] };
+  readonly background: string;
+  readonly time: string;
+  readonly zone: string | null;
+  readonly position: PlayerPosition;
+  update(state?: CampusSceneState | null): boolean;
+  setTime(value: string): boolean;
+  lighting(): { hemi: [string, string, number]; sun: [string, number, number[]] };
+  setPosition(x: number, z: number): boolean;
+  setSpot(id: string): boolean;
+  setPlayer(input?: PlayerInput): boolean;
+  setCrowd(people: CrowdInput[] | null | undefined): CampusTag[];
+  tags(): CampusTag[];
+  stats(): CampusSceneStats;
+  dispose(): void;
+}
+
+interface ResidentZone { node: Group; detail: number; dispose(): void }
+type DecorKind = 'tree' | 'lamp' | 'bench' | 'car';
+type Decorations = Record<DecorKind, Instance[]>;
+const posing: (avatar: Group, options?: { pose?: string; stride?: number }) => unknown = poseAvatar;
+// The avatar look is a loose bag here: the campus visitor's outfitColor below is not a Look id.
+const makeAvatar: (kit: SceneKit, look: Record<string, unknown> | undefined, options: { detail: string; rig: boolean; scale: number; seed: string }) => Group = buildAvatar;
+const finite = (value: unknown): value is number => Number.isFinite(value);
+
+const STYLE: Record<string, string> = { senate: 'senate', library: 'library', auditorium: 'auditorium', engineering: 'lecture',
   cafeteria: 'cafeteria', 'access-bank': 'bank', 'sports-centre': 'sports', chapel: 'chapel',
   mosque: 'mosque', amphitheatre: 'amphitheatre', 'lagoon-front': 'lagoon' };
-const styleOf = b => ({ ...b, color: b.kind==='hall'?'#d9ba73':b.id==='access-bank'?'#ded3b6':'#ddd2b5', kind: STYLE[b.id] || (b.id.includes('mosque') ? 'mosque' : b.id.includes('chapel') ? 'chapel' : b.kind === 'open-space' ? 'garden' : b.kind) });
+const styleOf = (b: CampusBuilding): BuildingStyle => ({ ...b, color: b.kind==='hall'?'#d9ba73':b.id==='access-bank'?'#ded3b6':'#ddd2b5', kind: STYLE[b.id] || (b.id.includes('mosque') ? 'mosque' : b.id.includes('chapel') ? 'chapel' : b.kind === 'open-space' ? 'garden' : b.kind) });
 export const CAMPUS_BUDGET = Object.freeze({ triangles: 60000, drawCalls: 60, crowd: 12 });
 
 /** Procedural campus scene. Position updates are the only trigger for zone residency.
  * No renderer, timers or frame loop belong to this module.
- * @param {ReturnType<import('../../scene/kit.js').createKit>} kit
- * @param {{scene?:{time?:string}}} [venue]
  */
-export function buildUnilag(kit, venue = {}) {
-  const { THREE } = kit, group = new THREE.Group(), navigation = createCampusWalk();
+export function buildUnilag(kit: SceneKit, venue: { scene?: { time?: string } } = {}): UnilagScene {
+  const { THREE } = kit, group = new THREE.Group(), navigation: CampusNavigation = createCampusWalk();
   group.name = 'Allworld UNILAG';
-  const materials = sceneMaterials(kit), resident = new Map(), ownedGeometry = new Set();
-  const instanceGeometries = {
+  const materials: SceneMaterials = sceneMaterials(kit), resident = new Map<string, ResidentZone>(), ownedGeometry = new Set<BufferGeometry>();
+  const instanceGeometries: Record<'tree' | 'lamp' | 'bench' | 'car' | 'window' | 'person', BufferGeometry> = {
     tree: primitiveGeometry(kit, b => {
       b.cyl(0, 2.4, 0, .35, 4.8, '#79664a', { seg: 6 });
       b.ico(0, 6, 0, 3.6, 3.1, 3.6, '#608762');
@@ -49,22 +122,23 @@ export function buildUnilag(kit, venue = {}) {
     }),
   };
   Object.values(instanceGeometries).forEach(g => ownedGeometry.add(g));
-  let player = buildAvatar(kit, { body: 'woman', outfit: 'casual', outfitColor: 'ochre', skin: 'skin-5' }, { detail: 'low', rig: true, scale: .75, seed: 'campus-visitor' });
+  // BUG: 'ochre' is not an OutfitColourId (types/life.ts); normalizeLook() silently falls back to a seeded colour.
+  let player: Group = makeAvatar(kit, { body: 'woman', outfit: 'casual', outfitColor: 'ochre', skin: 'skin-5' }, { detail: 'low', rig: true, scale: .75, seed: 'campus-visitor' });
   group.add(player);
-  let current = null, time = venue.scene?.time || 'day', disposed = false, crowd = [], crowdMesh = null;
+  let current: string | null = null, time = venue.scene?.time || 'day', disposed = false, crowd: CrowdPerson[] = [], crowdMesh: InstancedMesh | null = null;
   let rebuilds = 0;
-  const position = { ...ENTRANCE };
+  const position: PlayerPosition = { ...ENTRANCE };
   let playerKey='';
   const markerGeometry = new THREE.RingGeometry(.7,.82,20);markerGeometry.rotateX(-Math.PI/2);ownedGeometry.add(markerGeometry);
   const nearMarker=new THREE.Mesh(markerGeometry,kit.material('#f0c060',true)),goalMarker=new THREE.Mesh(markerGeometry,kit.material('#89b7c2',true));
   nearMarker.visible=goalMarker.visible=false;group.add(nearMarker,goalMarker);
-  const moveMark=(mark,at)=>{mark.visible=!!at;if(at)mark.position.set(at.x,.12,at.z);return true;};
-  const decorations = new Map();
-  const clearOfRoad=(x,z,margin)=>ROADS.every(road=>road.points.slice(1).every(([bx,bz],i)=>{const [ax,az]=road.points[i],dx=bx-ax,dz=bz-az,t=Math.max(0,Math.min(1,((x-ax)*dx+(z-az)*dz)/(dx*dx+dz*dz||1)));return Math.hypot(x-ax-dx*t,z-az-dz*t)>road.width/2+margin;}));
+  const moveMark=(mark: Mesh,at?: Point | null): boolean=>{mark.visible=!!at;if(at)mark.position.set(at.x,.12,at.z);return true;};
+  const decorations = new Map<string, Decorations>();
+  const clearOfRoad=(x: number,z: number,margin: number): boolean=>ROADS.every(road=>road.points.slice(1).every(([bx,bz],i)=>{const [ax,az]=road.points[i]!,dx=bx-ax,dz=bz-az,t=Math.max(0,Math.min(1,((x-ax)*dx+(z-az)*dz)/(dx*dx+dz*dz||1)));return Math.hypot(x-ax-dx*t,z-az-dz*t)>road.width/2+margin;}));
   // Props live on conservative blocked perimeter strips. They cannot obstruct a route.
   for (const zone of ZONES) {
     const [x0,z0,x1,z1] = zone.bounds;
-    const items = { tree: [], lamp: [], bench: [], car: [] };
+    const items: Decorations = { tree: [], lamp: [], bench: [], car: [] };
     const grid = navigation.grids.get(zone.id);
     for (let i = 0; i < 28; i++) {
       const x = x0 + 10 + (i * 47 % Math.max(1,x1-x0-20)), z = z0 + 8 + (i * 61 % Math.max(1,z1-z0-16));
@@ -87,22 +161,21 @@ export function buildUnilag(kit, venue = {}) {
   }
   // Install decoration footprints into the walk model before serving any path.
   // See createCampusWalk's optional extra footprints for exact geometry agreement.
-  const extras = Object.fromEntries([...decorations].map(([id,items])=>[id,[
-    ...items.tree.map(p=>[p.x,p.z,.55]), ...items.lamp.map(p=>[p.x,p.z,.3]),
-    ...items.car.map(p=>[p.x-1.3,p.z-2.3,p.x+1.3,p.z+2.3]),
-    ...items.bench.map(p=>[p.x-.7,p.z-1.7,p.x+.7,p.z+1.7]),
+  const extras: Record<string, Footprint[]> = Object.fromEntries([...decorations].map(([id,items]): [string, Footprint[]]=>[id,[
+    ...items.tree.map((p): Footprint=>[p.x,p.z,.55]), ...items.lamp.map((p): Footprint=>[p.x,p.z,.3]),
+    ...items.car.map((p): Footprint=>[p.x-1.3,p.z-2.3,p.x+1.3,p.z+2.3]),
+    ...items.bench.map((p): Footprint=>[p.x-.7,p.z-1.7,p.x+.7,p.z+1.7]),
   ]]));
-  const nav = createCampusWalk(extras);
+  const nav: CampusNavigation = createCampusWalk(extras);
 
-  /** @param {import('./layout.ts').CampusZone} zone @param {number} detail */
-  function buildZone(zone, detail) {
-    const node = new THREE.Group(), batch = createBatch(THREE), windows = [], meshes = [];
+  function buildZone(zone: CampusZone, detail: number): ResidentZone {
+    const node = new THREE.Group(), batch: SceneBatch = createBatch(THREE), windows: Instance[] = [], meshes: Mesh[] = [];
     node.name = `${zone.id}:lod${detail}`;
     for(const building of BUILDINGS.filter(b=>b.zone===zone.id)) drawBuilding(batch,styleOf(building),detail,windows);
     const built=batch.build(materials);
     meshes.push(...built.meshes); built.meshes.forEach(mesh=>node.add(mesh));
     if(detail===2) {
-      for(const [name,items] of Object.entries(decorations.get(zone.id))) {
+      for(const [name,items] of Object.entries(decorations.get(zone.id)!) as Array<[DecorKind, Instance[]]>) {
         const made=instances(kit,instanceGeometries[name],items);
         if(made){node.add(made);meshes.push(made);}
       }
@@ -114,12 +187,12 @@ export function buildUnilag(kit, venue = {}) {
       for(const mesh of meshes){
         mesh.parent?.remove(mesh);
         if(!ownedGeometry.has(mesh.geometry)) mesh.geometry.dispose();
-        if(mesh.isInstancedMesh)mesh.dispose();
+        if((mesh as Mesh & { isInstancedMesh?: boolean }).isInstancedMesh)(mesh as InstancedMesh).dispose();
       }
       node.removeFromParent();node.clear();
     }};
   }
-  const terrain=createBatch(THREE);
+  const terrain: SceneBatch=createBatch(THREE);
   terrain.box(0,-.35,0,600,.6,480,'#90a578');
   terrain.box(320,-.25,0,40,.4,480,'#c3bd97');
   terrain.box(620,-.35,0,560,.4,1200,'#669ba4');
@@ -127,7 +200,7 @@ export function buildUnilag(kit, venue = {}) {
   terrain.box(580,6,-10,12,.7,1000,'#b4b6a8');
   for(let z=-480;z<500;z+=30)terrain.box(580,2.7,z,5,6,4,'#9ea69b');
   for(const road of ROADS) for(let i=1;i<road.points.length;i++) {
-    const [ax,az]=road.points[i-1],[bx,bz]=road.points[i],length=Math.hypot(bx-ax,bz-az);
+    const [ax,az]=road.points[i-1]!,[bx,bz]=road.points[i]!,length=Math.hypot(bx-ax,bz-az);
     const ry=Math.atan2(bx-ax,bz-az);
     terrain.box((ax+bx)/2,.025,(az+bz)/2,road.width+3,.06,length,'#d2cbb0',{ry});
     terrain.box((ax+bx)/2,.065,(az+bz)/2,road.width,.04,length,'#81867d',{ry});
@@ -135,19 +208,18 @@ export function buildUnilag(kit, venue = {}) {
       const t=j/length;terrain.box(ax+(bx-ax)*t,.095,az+(bz-az)*t,.22,.025,3,'#e8dfbc',{ry});
     }
   }
-  const terrainMeshes=terrain.build(materials).meshes;terrainMeshes.forEach(m=>group.add(m));
+  const terrainMeshes: Mesh[]=terrain.build(materials).meshes;terrainMeshes.forEach(m=>group.add(m));
 
-  function syncCrowd() {
+  function syncCrowd(): void {
     if(crowdMesh){crowdMesh.removeFromParent();crowdMesh.dispose();crowdMesh=null;}
-    const visible=crowd.filter(p=>resident.get(nav.zoneAt(p.x,p.z)?.id)?.detail===2).slice(0,CAMPUS_BUDGET.crowd);
+    const visible=crowd.filter(p=>resident.get(nav.zoneAt(p.x,p.z)?.id ?? '')?.detail===2).slice(0,CAMPUS_BUDGET.crowd);
     crowdMesh=instances(kit,instanceGeometries.person,visible.map(p=>({...p,y:0})));
     if(crowdMesh)group.add(crowdMesh);
   }
-  /** @param {number} x @param {number} z */
-  function setPosition(x,z) {
+  function setPosition(x: number,z: number): boolean {
     if(disposed||!Number.isFinite(x)||!Number.isFinite(z))return false;
     const zone=nav.zoneAt(x,z);
-    if(!zone||!nav.grids.get(zone.id).free(x,z))return false;
+    if(!zone||!nav.grids.get(zone.id)!.free(x,z))return false;
     position.x=x;position.z=z;position.zone=zone.id;player.position.set(x,0,z);
     if(zone.id===current)return true;
     current=zone.id;
@@ -159,40 +231,40 @@ export function buildUnilag(kit, venue = {}) {
     }
     syncCrowd();return true;
   }
-  const walk={
+  const walk: AvatarWalk={
     entrance:[ENTRANCE.x,ENTRANCE.z,ENTRANCE.ry],open:true,avatar:player,raised:[],scale:.75,
     get centre(){return [position.x,.7,position.z];},
-    get grid(){return {
-      bounds:[-300,-240,340,240],free:(x,z)=>{const zone=nav.zoneAt(x,z);return !!zone&&nav.grids.get(zone.id).free(x,z);},
-      path:(ax,az,bx,bz)=>nav.route({x:ax,z:az},{x:bx,z:bz}),
-      nearest:(x,z)=>{const zone=nav.zoneAt(x,z);return zone?nav.grids.get(zone.id).nearest(x,z):null;},
+    get grid(): CampusGridView{return {
+      bounds:[-300,-240,340,240],free:(x: number,z: number)=>{const zone=nav.zoneAt(x,z);return !!zone&&nav.grids.get(zone.id)!.free(x,z);},
+      path:(ax: number,az: number,bx: number,bz: number)=>nav.route({x:ax,z:az},{x:bx,z:bz}),
+      nearest:(x: number,z: number)=>{const zone=nav.zoneAt(x,z);return zone?nav.grids.get(zone.id)!.nearest(x,z):null;},
     };},
-    solids:BUILDINGS.flatMap(b=>footprintOf(b).map(([x0,z0,x1,z1])=>[x0,0,z0,x1,b.h,z1])),
-    move(x,y,z,ry){setPosition(x,z);player.rotation.y=ry;},
-    drive(){},rest(){poseAvatar(player,{pose:'stand'});},
-    gait(step,phase){poseAvatar(player,{pose:'walk',stride:phase/(Math.PI*2)});},
-    pose(name){poseAvatar(player,{pose:name});},heightAt:()=>0,
-    near:at=>moveMark(nearMarker,at),goal:(x,z)=>moveMark(goalMarker,Number.isFinite(x)&&Number.isFinite(z)?{x,z}:null),
-    spots:()=>Object.entries(ANCHORS).map(([id,a])=>({id,...a,approach:null,steps:[]})),people:()=>crowd.map(p=>({...p,kind:p.kind||'player',top:2.3})),
+    solids:BUILDINGS.flatMap(b=>footprintOf(b).map(([x0,z0,x1,z1]): Solid=>[x0,0,z0,x1,b.h,z1])),
+    move(x: number,y: number,z: number,ry: number){setPosition(x,z);player.rotation.y=ry;},
+    drive(){},rest(){posing(player,{pose:'stand'});},
+    gait(step: unknown,phase: number){posing(player,{pose:'walk',stride:phase/(Math.PI*2)});},
+    pose(name: string){posing(player,{pose:name});},heightAt:()=>0,
+    near:(at?: Point | null)=>moveMark(nearMarker,at),goal:(x?: number,z?: number)=>moveMark(goalMarker,finite(x)&&finite(z)?{x,z}:null),
+    spots:()=>Object.entries(ANCHORS).map(([,a])=>({...a,approach:null,steps:[]})),people:()=>crowd.map(p=>({...p,kind:p.kind||'player',top:2.3})),
   };
-  const scene={group,kind:'unilag',mood:'outdoor',anchors:ANCHORS,walk,navigation:nav,
+  const scene: UnilagScene={group,kind:'unilag',mood:'outdoor',anchors:ANCHORS,walk,navigation:nav,
     camera:{landscape:[22,20,26],portrait:[26,30,34]},
     get background(){return time==='night'?'#182c3d':time==='dusk'?'#d8ad8d':'#bdd9df';},
     get time(){return time;},get zone(){return current;},get position(){return {...position};},
-    update(state){const hour=lagosTime(state?.t??0).hour;return scene.setTime(venue.scene?.time||(hour<6||hour>=19?'night':hour>=17?'dusk':'day'));},
-    setTime(value){if(!['day','dusk','night'].includes(value)||time===value)return false;time=value;return true;},
+    update(state){const hour: number=lagosTime(state?.t??0).hour;return scene.setTime(venue.scene?.time||(hour<6||hour>=19?'night':hour>=17?'dusk':'day'));},
+    setTime(value: string){if(!['day','dusk','night'].includes(value)||time===value)return false;time=value;return true;},
     lighting(){return {hemi:[scene.background,'#68765a',time==='night'?.9:2],sun:[time==='night'?'#96b5da':'#fff0d2',time==='night'?.65:2.4,[80,140,50]]};},
     setPosition,
-    setSpot(id){const at=ANCHORS[id];return !!at&&setPosition(at.x,at.z);},
-    setPlayer({look,seed='campus-visitor',pose='stand'}={}){
+    setSpot(id: string){const at=ANCHORS[id];return !!at&&setPosition(at.x,at.z);},
+    setPlayer({look,seed='campus-visitor',pose='stand'}: PlayerInput={}){
       const key=JSON.stringify([look,seed]);
-      if(look&&key!==playerKey){playerKey=key;player.userData.dispose();player=buildAvatar(kit,look,{detail:'low',rig:true,scale:.75,seed});group.add(player);player.position.set(position.x,0,position.z);walk.avatar=player;}
-      poseAvatar(player,{pose});return true;
+      if(look&&key!==playerKey){playerKey=key;player.userData.dispose();player=makeAvatar(kit,look,{detail:'low',rig:true,scale:.75,seed});group.add(player);player.position.set(position.x,0,position.z);walk.avatar=player;}
+      posing(player,{pose});return true;
     },
     setCrowd(people){
       crowd=(Array.isArray(people)?people:[]).slice(0,CAMPUS_BUDGET.crowd).flatMap(p=>{
-        const anchor=ANCHORS[p.spot];
-        const at=Number.isFinite(p.x)&&Number.isFinite(p.z)?p:anchor?walk.grid.nearest(anchor.x+3,anchor.z+3):null;
+        const anchor=p.spot===undefined?undefined:ANCHORS[p.spot];
+        const at=finite(p.x)&&finite(p.z)?{x:p.x,z:p.z}:anchor?walk.grid.nearest(anchor.x+3,anchor.z+3):null;
         return at&&walk.grid.free(at.x,at.z)?[{id:String(p.id),name:String(p.name??''),kind:p.kind==='npc'?'npc':'player',x:at.x,z:at.z}]:[];
       });syncCrowd();return scene.tags();
     },

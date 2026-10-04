@@ -16,17 +16,58 @@
  *   now()               server time, for the shuttle's place on its route
  *   onHost(kind)        'venue' | 'campus' — a host was built (the entry file re-measures the HUD insets)
  */
+import type { WebGLRenderer } from 'three';
 import { createVenueWorld } from '../../venue-world.js';
+import type { CampusHost, CampusHostOptions, HostPerson, HostPlayer, HostState, WalkResult } from './host.ts';
 
 export const CAMPUS_VENUE = 'unilag';
-const campus = (id) => id === CAMPUS_VENUE;
+const campus = (id: string): boolean => id === CAMPUS_VENUE;
 
-export function createWorldAdapter(container, { location = 'park', commitSpot, now, onHost, loadCampus = () => import('./host.ts'), ...options } = {}) {
+export type HostKind = 'venue' | 'campus';
+export type AdapterState = HostState & { location?: string };
+type Insets = { top?: number; bottom?: number };
+
+/** What the adapter asks of either host (the venue host has more; the campus host has no setGoal/zoom/recentre/prepare). */
+interface WorldHost {
+  update(): void;
+  resize(): void;
+  setState(state: AdapterState | null): void;
+  setPlayer(player: HostPlayer): boolean | undefined;
+  setCrowd(people: HostPerson[]): boolean | undefined;
+  setInsets(insets: Insets): boolean | undefined;
+  setGoal?(goal: unknown): boolean | undefined;
+  setLocation(id: string): boolean | undefined;
+  prepare?(id: string): boolean | undefined;
+  zoom?(direction: number): unknown;
+  recentre?(): unknown;
+  walkTo(a: number | string, z?: number): boolean | Promise<WalkResult>;
+  walkBy?(dx: number, dz: number): boolean;
+  position?(): unknown;
+  diagnostics(): object;
+  dispose(): void;
+}
+
+export interface WorldAdapterOptions {
+  location?: string;
+  commitSpot?: CampusHostOptions['onSpot'];
+  now?: () => number;
+  onHost?: (kind: HostKind | null) => void;
+  loadCampus?: () => Promise<{ createCampusHost(container: HTMLElement, options?: CampusHostOptions): CampusHost }>;
+  onTag?: CampusHostOptions['onTag'];
+  onMove?: CampusHostOptions['onMove'];
+  renderer?: WebGLRenderer;
+  /** Further options belong to the venue host. */
+  [venueOption: string]: unknown;
+}
+
+const venueWorld: (container: HTMLElement, options: Record<string, unknown>) => WorldHost = createVenueWorld as unknown as (container: HTMLElement, options: Record<string, unknown>) => WorldHost; // venue-world.js is untyped
+
+export function createWorldAdapter(container: HTMLElement, { location = 'park', commitSpot, now, onHost, loadCampus = () => import('./host.ts'), ...options }: WorldAdapterOptions = {}) {
   let currentLocation = location;
-  let host = null, kind = null, token = 0, disposed = false;
-  let state = null, player = null, crowd = [], insets = null, goal = null;
+  let host: WorldHost | null = null, kind: HostKind | null = null, token = 0, disposed = false;
+  let state: AdapterState | null = null, player: HostPlayer | null = null, crowd: HostPerson[] = [], insets: Insets | null = null, goal: unknown = null;
 
-  function replay() {
+  function replay(): void {
     if (!host) return;
     if (state?.location === currentLocation) host.setState(state);
     if (player) host.setPlayer(player);
@@ -36,8 +77,8 @@ export function createWorldAdapter(container, { location = 'park', commitSpot, n
     host.resize?.();
     onHost?.(kind);
   }
-  function useVenueHost(id) { kind = 'venue'; host = createVenueWorld(container, { ...options, location: id }); replay(); }
-  function build(id) {
+  function useVenueHost(id: string): void { kind = 'venue'; host = venueWorld(container, { ...options, location: id }); replay(); }
+  function build(id: string): void {
     host?.dispose(); host = null; kind = null;
     const mine = ++token;
     if (!campus(id)) { useVenueHost(id); return; }
@@ -62,35 +103,35 @@ export function createWorldAdapter(container, { location = 'park', commitSpot, n
     /** Which host is drawing: 'venue', 'campus', or null while the campus is on its way. */
     get host() { return kind; },
     diagnostics() { return { adapter: kind, ...host?.diagnostics() }; },
-    setInsets(next) { insets = { ...next }; return host?.setInsets(next); },
-    setLocation(id) {
+    setInsets(next: Insets) { insets = { ...next }; return host?.setInsets(next); },
+    setLocation(id: string) {
       if (id === currentLocation) return false;
       const rebuild = campus(id) !== campus(currentLocation) || !host;
       currentLocation = id;
       crowd = [];
-      if (rebuild) build(id); else host.setLocation(id);
+      if (rebuild) build(id); else host!.setLocation(id);
       return true;
     },
     /** A trip has set off: have the place it goes to ready (the campus: its code; any other venue: its scene). */
-    prepare(id) {
+    prepare(id: string) {
       if (campus(id)) { void loadCampus().catch(() => {}); return true; }
-      return kind === 'venue' ? host.prepare?.(id) === true : false;
+      return kind === 'venue' ? host!.prepare?.(id) === true : false;
     },
-    setState(next) { state = next; host?.setState(next); },
-    setPlayer(next) { player = { ...next }; return host?.setPlayer(next); },
-    setGoal(next) { goal = next ?? null; return host?.setGoal?.(next) ?? false; },
-    setCrowd(next) { crowd = Array.isArray(next) ? next.map((person) => ({ ...person })) : []; return host?.setCrowd(crowd); },
-    zoom(direction) { return host?.zoom?.(direction); },
+    setState(next: AdapterState | null) { state = next; host?.setState(next); },
+    setPlayer(next: HostPlayer) { player = { ...next }; return host?.setPlayer(next); },
+    setGoal(next?: unknown) { goal = next ?? null; return host?.setGoal?.(next) ?? false; },
+    setCrowd(next: HostPerson[]) { crowd = Array.isArray(next) ? next.map((person) => ({ ...person })) : []; return host?.setCrowd(crowd); },
+    zoom(direction: number) { return host?.zoom?.(direction); },
     recentre() { return host?.recentre?.(); },
     /** Walk to a point of the floor (venue host only: the campus is walked with its own controls and by landmark). */
-    walkTo(x, z) { return kind === 'venue' ? host.walkTo(x, z) : false; },
-    walkBy(dx, dz) { return kind === 'venue' ? host.walkBy(dx, dz) : false; },
+    walkTo(x: number, z: number) { return kind === 'venue' ? host!.walkTo(x, z) as boolean : false; }, // the venue host answers a boolean
+    walkBy(dx: number, dz: number) { return kind === 'venue' ? host!.walkBy!(dx, dz) : false; },
     /**
      * Walk to a landmark and then select it. Only the campus walks first: → Promise<{ ok, code?, reason? }>, the
      * result of the `spot` action sent on arrival. Anywhere else it answers { ok: false, code: 'not_walkable' }
      * at once and the caller sends the action itself.
      */
-    walkToSpot(id) { return kind === 'campus' ? host.walkTo(id) : Promise.resolve({ ok: false, code: 'not_walkable' }); },
+    walkToSpot(id: string): Promise<WalkResult> { return kind === 'campus' ? host!.walkTo(id) as Promise<WalkResult> : Promise.resolve({ ok: false, code: 'not_walkable' }); }, // the campus host answers a promise
     position() { return host?.position?.() || null; },
     dispose() { disposed = true; token += 1; host?.dispose(); host = null; kind = null; },
   };

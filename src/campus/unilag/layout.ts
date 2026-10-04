@@ -10,63 +10,99 @@
 const STUDY_MAP = 'https://assets-eu.researchsquare.com/files/rs-2926408/v1/fc6eeb08-d1ff-422a-8880-e4baab439b27.pdf?c=1689601461#page=13';
 const FIELD_MAP = 'User brief from the UNILAG campus-map interpretation; placement approximate';
 
-/** @typedef {'high'|'medium'|'low'} Confidence */
+export type Confidence = 'high' | 'medium' | 'low';
 
-/**
- * @typedef {object} Portal
- * @property {string} id Stable portal identifier, shared by its two zones.
- * @property {string} to Adjacent zone identifier.
- * @property {{x:number,z:number}} at Walkable point just inside this zone.
- * @property {{x:number,z:number}} peer Walkable point just inside the adjacent zone.
- */
+export interface Portal {
+  /** Stable portal identifier, shared by its two zones. */
+  id: string;
+  /** Adjacent zone identifier. */
+  to: string;
+  /** Walkable point just inside this zone. */
+  at: { x: number; z: number };
+  /** Walkable point just inside the adjacent zone. */
+  peer: { x: number; z: number };
+}
 
-/**
- * @typedef {object} CampusZone
- * @property {string} id Stable zone identifier.
- * @property {string} label Display name.
- * @property {[number,number,number,number]} bounds [minX, minZ, maxX, maxZ].
- * @property {'campus'|'waterfront'} kind Surface type.
- * @property {string[]} neighbours Adjacent zone identifiers.
- * @property {Portal[]} portals Cross-zone walking connections.
- * @property {string} description Human-readable coverage note.
- */
+export interface CampusZone {
+  /** Stable zone identifier. */
+  id: string;
+  /** Display name. */
+  label: string;
+  /** [minX, minZ, maxX, maxZ]. */
+  bounds: [number, number, number, number];
+  /** Surface type. */
+  kind: 'campus' | 'waterfront';
+  /** Adjacent zone identifiers. */
+  neighbours: string[];
+  /** Cross-zone walking connections. */
+  portals: Portal[];
+  /** Human-readable coverage note. */
+  description: string;
+}
 
-/**
- * @typedef {object} CampusBuilding
- * @property {string} id Stable landmark identifier.
- * @property {string} label Display name.
- * @property {string} zone Owning zone identifier.
- * @property {number} x Centre x coordinate.
- * @property {number} z Centre z coordinate.
- * @property {number} w Width along x.
- * @property {number} d Depth along z.
- * @property {number} h Visual height.
- * @property {'faculty'|'hall'|'administration'|'academic'|'services'|'worship'|'gate'|'open-space'} kind Landmark type.
- * @property {string} color CSS colour used by a scene renderer.
- * @property {boolean} interior Whether the south facade is open into a usable room.
- * @property {Confidence} confidence Confidence in relative placement; never exact-coordinate confidence.
- * @property {string} source Placement source or qualification.
- */
+export interface CampusBuilding {
+  /** Stable landmark identifier. */
+  id: string;
+  label: string;
+  /** Owning zone identifier. */
+  zone: string;
+  /** Centre x coordinate. */
+  x: number;
+  /** Centre z coordinate. */
+  z: number;
+  /** Width along x. */
+  w: number;
+  /** Depth along z. */
+  d: number;
+  /** Visual height. */
+  h: number;
+  kind: 'faculty' | 'hall' | 'administration' | 'academic' | 'services' | 'worship' | 'gate' | 'open-space';
+  /** CSS colour used by a scene renderer. */
+  color: string;
+  /** Whether the south facade is open into a usable room. */
+  interior: boolean;
+  /** Confidence in relative placement; never exact-coordinate confidence. */
+  confidence: Confidence;
+  /** Placement source or qualification. */
+  source: string;
+}
 
-/**
- * @typedef {object} CampusAnchor
- * @property {string} id Stable anchor identifier.
- * @property {string} building Building reached by this anchor.
- * @property {string} label Display label.
- * @property {string} zone Owning zone identifier.
- * @property {number} x World x coordinate.
- * @property {number} y World floor height.
- * @property {number} z World z coordinate.
- * @property {number} ry Facing in radians; all anchors face north toward a south facade.
- * @property {'interior'|'approach'} kind Whether the destination is inside or outside.
- */
+export interface CampusAnchor {
+  /** Stable anchor identifier. */
+  id: string;
+  /** Building reached by this anchor. */
+  building: string;
+  label: string;
+  /** Owning zone identifier. */
+  zone: string;
+  /** World x coordinate. */
+  x: number;
+  /** World floor height. */
+  y: number;
+  /** World z coordinate. */
+  z: number;
+  /** Facing in radians; all anchors face north toward a south facade. */
+  ry: number;
+  /** Whether the destination is inside or outside. */
+  kind: 'interior' | 'approach';
+  /** The landmark key of the scene (the building id). */
+  landmark: string;
+}
 
-const portal = (id, to, x, z, peerX, peerZ) => ({
+export interface CampusRoad {
+  id: string;
+  label: string;
+  kind: 'road';
+  width: number;
+  points: Array<[number, number]>;
+  source?: string;
+}
+
+const portal = (id: string, to: string, x: number, z: number, peerX: number, peerZ: number): Portal => ({
   id, to, at: { x, z }, peer: { x: peerX, z: peerZ },
 });
 
-/** @type {CampusZone[]} */
-export const ZONES = [
+export const ZONES: CampusZone[] = [
   {
     id: 'gate', label: 'Main Gate & El-Kanemi', bounds: [-300, -240, -100, -80], kind: 'campus',
     description: 'Western arrival and the main-gate approach.',
@@ -159,8 +195,7 @@ export const ZONES = [
   },
 ];
 
-/** @type {CampusBuilding[]} */
-export const BUILDINGS = [
+export const BUILDINGS: CampusBuilding[] = [
   { id: 'main-gate', label: 'UNILAG Main Gate', zone: 'gate', x: -286, z: -105, w: 18, d: 5, h: 8, kind: 'gate', color: '#8f2434', interior: false, confidence: 'medium', source: STUDY_MAP },
   { id: 'el-kanemi-hall', label: 'El-Kanemi Hall', zone: 'gate', x: -246, z: -151, w: 28, d: 20, h: 13, kind: 'hall', color: '#c67f4d', interior: false, confidence: 'medium', source: STUDY_MAP },
 
@@ -219,9 +254,8 @@ export const BUILDINGS = [
  * collision. Interior landmarks put the destination 1.25 metres inside the
  * fully open south front. Exterior landmarks stop 1.25 metres south of it.
  * Open spaces remain unobstructed and use their centre as an approach.
- * @type {Record<string, CampusAnchor>}
  */
-export const ANCHORS = Object.fromEntries(BUILDINGS.map((building) => {
+export const ANCHORS: Record<string, CampusAnchor> = Object.fromEntries(BUILDINGS.map((building): [string, CampusAnchor] => {
   const openSpace = building.kind === 'open-space' && !['swimming-pool','amphitheatre'].includes(building.id);
   const z = openSpace
     ? building.z
@@ -230,18 +264,20 @@ export const ANCHORS = Object.fromEntries(BUILDINGS.map((building) => {
     id: `${building.id}-anchor`, building: building.id, label: building.label,
     zone: building.zone, x: building.x, y: 0, z, ry: 0,
     kind: building.interior ? 'interior' : 'approach',
+    landmark: building.id,
   }];
 }));
 
-for(const anchor of Object.values(ANCHORS))anchor.landmark=anchor.building;
-ANCHORS.people = {...ANCHORS['student-union'],id:'people',label:'Campus people'};
+const studentUnionAnchor = ANCHORS['student-union'];
+if (!studentUnionAnchor) throw new TypeError('UNILAG layout has no student-union building');
+ANCHORS.people = {...studentUnionAnchor,id:'people',label:'Campus people'};
 
 /**
  * Broad visual road guides. Walking is allowed throughout campus zones; these
  * routes document the intended portal approaches and are kept clear of solid
  * building footprints.
  */
-export const ROADS = [
+export const ROADS: CampusRoad[] = [
   { id: 'main-gate-approach', label: 'Main Gate Approach', kind: 'road', width: 4, points: [[-286, -90], [-286, -122], [-200, -122], [-200, -160], [-100, -160]] },
   { id: 'northern-spine', label: 'Northern Spine', kind: 'road', width: 6, points: [[-100, -160], [0, -160], [120, -160], [120, -110], [295, -110], [295, -160], [330, -160]] },
   { id: 'western-spine', label: 'Western Spine', kind: 'road', width: 6, points: [[-200, -80], [-200, 0], [-200, 45], [-215, 45], [-215, 78], [-200, 80]] },

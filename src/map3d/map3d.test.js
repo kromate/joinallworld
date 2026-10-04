@@ -3,10 +3,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { COUNTRIES, citiesOf, cityAccess, cityEntry, hasCityPack, isPlayable, loadCityPack, projector } from './regions.js';
-import { buildNetwork, pointAt, pointInPolygon, roundPolygon } from './roads.js';
+import { bridgeRamp, buildNetwork, pointAt, pointInPolygon, roundPolygon } from './roads.js';
 import { tripOf, createTripClock, tripPose, tripShares, TRIP_LOOKS } from './trip.js';
 import { createMap3D, timeOfDay } from './map3d.js';
 import { LANDMARK_KINDS } from './landmarks.js';
+import { avatarBox, labelShift, nearPoints } from './labels.js';
+import { shimmer } from './city-build.js';
 import pack from './cities/lagos.js';
 import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.js';
 import { ALL_MODES } from '../game/content/travel.js';
@@ -140,10 +142,10 @@ test('the place on the route is a pure function of progress: leave on foot, ride
 });
 
 // ---- the host, with a renderer that only counts and a frame clock the test drives -------------------
-function harness({ reducedMotion = false, home = 'yaba' } = {}) {
+function harness({ reducedMotion = false, home = 'yaba', width = 390, height = 844 } = {}) {
   const calls = { render: 0 }, queue = [];
   const renderer = { calls, shadowMap: {}, domElement: {}, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
-  const container = { hidden: false, appendChild() {}, getBoundingClientRect: () => ({ width: 390, height: 844, left: 0, top: 0 }) };
+  const container = { hidden: false, appendChild() {}, getBoundingClientRect: () => ({ width, height, left: 0, top: 0 }) };
   const env = { now: 0, hidden: false, due: 0, arrived: 0 };
   const map = createMap3D(container, { pack, renderer, reducedMotion, raf: (fn) => { queue.push(fn); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden, onTripDue: () => { env.due += 1; } });
   /** Run every frame that has been asked for, `step` ms apart, up to `limit` frames. Returns how many ran. */
@@ -302,6 +304,113 @@ test('every venue has its landmark and label anchor; Home stands in the player�
   h.map.setState(h.state({ t: NIGHT, travel: { home: 'lekki' } })); h.pump();
   assert.equal(h.map.diagnostics().time, 'night');
   assert.deepEqual([timeOfDay(Date.UTC(2026, 0, 5, 5)), timeOfDay(Date.UTC(2026, 0, 5, 12)), timeOfDay(Date.UTC(2026, 0, 5, 17)), timeOfDay(Date.UTC(2026, 0, 5, 20))], ['dusk', 'day', 'dusk', 'night']);
+  h.map.destroy();
+});
+
+test('the opening view: a phone opens close on the player, a wide screen on the whole city, and neither costs a frame loop', () => {
+  const phone = harness({ home: 'ikoyi' });
+  phone.map.setState(phone.state()); phone.map.resize();
+  assert.equal(phone.pump(), 1, 'one frame, no ease');
+  const near = phone.map.diagnostics().view, whole = phone.map.rig.whole(), home = phone.map.city.places.home;
+  assert.ok(Math.hypot(near.x - home.x, near.z - home.z) < 4, 'centred on the player');
+  assert.ok(near.distance < whole.distance * 0.3, `a close view (${Math.round(near.distance)} against ${Math.round(whole.distance)} for the whole city)`);
+  // Close means: the streets either side of the player fill the screen, so their places are named in words.
+  const span = nearPoints(home, true);
+  assert.ok(span[1].x - span[0].x < 60 && span[1].x - span[0].x > 40, 'a phone holds about fifty units of city across');
+  assert.ok(nearPoints(home, false)[1].x - nearPoints(home, false)[0].x > span[1].x - span[0].x, 'a wide screen holds more');
+  // Wherever the player is, that is where it opens.
+  const away = harness();
+  away.map.setState(away.state({ location: 'beach' })); away.map.resize(); away.pump();
+  assert.ok(Math.hypot(away.map.diagnostics().view.x - pack.sites.beach.x, away.map.diagnostics().view.z - pack.sites.beach.z) < 4);
+  const idle = away.count(); away.env.now += 60000;
+  assert.equal(away.queue.length, 0); assert.equal(away.pump(), 0); assert.equal(away.count(), idle, 'still once open');
+  const desk = harness({ width: 1280, height: 800 });
+  desk.map.setState(desk.state()); desk.map.resize(); desk.pump();
+  const wide = desk.map.diagnostics().view, all = desk.map.rig.whole();
+  assert.deepEqual([wide.x, wide.z, Math.round(wide.distance)], [all.x, all.z, Math.round(all.distance)], 'a wide screen opens on the whole city');
+  for (const h of [phone, away, desk]) h.map.destroy();
+});
+
+test('a label never covers the player’s piece: it steps up (or down over its own roof) while they overlap, and back when they part', () => {
+  const feet = { x: 200, y: 400 }, head = { x: 200, y: 340 };
+  const piece = avatarBox(feet, head), tagged = avatarBox(feet, head, { tag: true }), riding = avatarBox(feet, head, { riding: true });
+  assert.ok(piece.l < 200 && piece.r > 200 && piece.t <= 340 && piece.b >= 400, 'the box holds the piece from head to feet');
+  assert.ok(tagged.t < piece.t - 20 && tagged.r - tagged.l >= 44, 'during a trip it holds the "You" tag too');
+  assert.ok(riding.r - riding.l > piece.r - piece.l, 'a vehicle is wider than a walker');
+  const label = (x, bottom, width = 120, height = 32) => ({ l: x - width / 2, r: x + width / 2, t: bottom - height, b: bottom });
+  const after = (box, shift) => ({ ...box, t: box.t + shift, b: box.b + shift });
+  const covers = (box, other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t;
+  assert.equal(labelShift(label(200, 300), piece), 0, 'above the head: left alone');
+  assert.equal(labelShift(label(200, 460), piece), 0, 'below the feet: left alone');
+  assert.equal(labelShift(label(330, 370), piece), 0, 'beside it: left alone');
+  assert.equal(labelShift(label(200, 370), null), 0, 'no piece on screen, nothing to avoid');
+  // Over the head and shoulders: it rises until its bottom edge is above the head.
+  const high = label(200, 362), up = labelShift(high, piece);
+  assert.ok(up < 0 && !covers(after(high, up), piece), `rises clear (${up}px)`);
+  assert.ok(labelShift(high, tagged) < up, 'and higher still to clear the "You" tag');
+  // Over the feet, where rising would be a long way: it drops over its own roof instead.
+  const low = label(200, 428), down = labelShift(low, piece);
+  assert.ok(down > 0 && down < 40 && !covers(after(low, down), piece), `drops clear (${down}px)`);
+  // The move grows from nothing as the two begin to overlap sideways, so nothing snaps as the avatar walks up.
+  const moves = [];
+  for (let x = 290; x >= 200; x -= 2) moves.push(labelShift(label(x, 362), piece));
+  assert.equal(moves[0], 0); assert.equal(moves.at(-1), up);
+  for (let i = 1; i < moves.length; i++) assert.ok(moves[i] <= moves[i - 1] && moves[i - 1] - moves[i] <= 12, `a smooth rise (${moves[i - 1]} → ${moves[i]})`);
+  // On the map: the piece stands at the door, off the plinth, and a state after arrival names the place as where you are.
+  const h = harness();
+  h.map.setState(h.state({ activeAction: travelling(10) })); h.map.resize(); h.pump(5);
+  h.env.now += 10000; h.pump(50);
+  h.map.setState(h.state({ location: 'park' })); h.pump(200);
+  const d = h.map.diagnostics();
+  assert.equal(d.trip, null); assert.equal(d.loop, false);
+  h.map.destroy();
+});
+
+test('bridges meet the road without a kink: gentle ramps, and the link bridge carries on the line of the road at each end', () => {
+  assert.equal(bridgeRamp(1.9, 90), 0.24, 'a long bridge keeps a level deck');
+  assert.ok(bridgeRamp(2.2, 18) > 0.4 && bridgeRamp(2.2, 18) <= 0.46, 'a short, high one is an arch');
+  const heading = (a, b) => Math.atan2(b.x - a.x, b.z - a.z);
+  const turn = (a, b) => { const d = Math.abs(a - b) % (Math.PI * 2); return Math.min(d, Math.PI * 2 - d) * 180 / Math.PI; };
+  for (const road of network.roads.filter((item) => item.bridge)) {
+    let steepest = 0, sharpest = 0;
+    for (let i = 1; i < road.points.length; i++) {
+      const a = road.points[i - 1], b = road.points[i], run = Math.hypot(b.x - a.x, b.z - a.z);
+      assert.ok(run < 1.6, `${road.id} deck is sampled finely`);
+      steepest = Math.max(steepest, Math.abs(b.y - a.y) / run);
+      if (i > 1) sharpest = Math.max(sharpest, Math.abs((b.y - a.y) / run - (a.y - road.points[i - 2].y) / Math.hypot(a.x - road.points[i - 2].x, a.z - road.points[i - 2].z)));
+    }
+    assert.ok(steepest < 0.42, `${road.id} ramp is a slope a road could have (${steepest.toFixed(2)})`);
+    assert.ok(sharpest < 0.25, `${road.id} deck bends smoothly (${sharpest.toFixed(2)})`);
+  }
+  const road = (id) => network.roads.find((item) => item.id === id).points;
+  const link = road('link'), broad = road('broad'), landing = road('link-landing');
+  assert.ok(Math.hypot(link[0].x - broad.at(-1).x, link[0].z - broad.at(-1).z) < 1e-9 && Math.hypot(link.at(-1).x - landing[0].x, link.at(-1).z - landing[0].z) < 1e-9, 'joined end to end');
+  assert.ok(turn(heading(broad.at(-2), broad.at(-1)), heading(link[0], link[1])) < 15, 'Broad Street runs straight onto the bridge');
+  assert.ok(turn(heading(link.at(-2), link.at(-1)), heading(landing[0], landing[1])) < 15, 'and the bridge straight onto Admiralty Way');
+  for (let i = 2; i < link.length; i++) assert.ok(turn(heading(link[i - 2], link[i - 1]), heading(link[i - 1], link[i])) < 14, 'the deck itself has no corner');
+  assert.equal(network.roads.find((item) => item.id === 'link').pylon, true);
+});
+
+test('the water’s shimmer is a static, seamless texture: it tiles, it is subtle, and nothing animates it', () => {
+  let low = 1, high = 0;
+  for (let i = 0; i <= 64; i++) {
+    assert.ok(Math.abs(shimmer(0, i / 64) - shimmer(1, i / 64)) < 1e-9 && Math.abs(shimmer(i / 64, 0) - shimmer(i / 64, 1)) < 1e-9, 'the tile repeats without a seam');
+    for (let j = 0; j < 64; j++) { const tone = shimmer(i / 64, j / 64); low = Math.min(low, tone); high = Math.max(high, tone); }
+  }
+  assert.ok(low > 0.84 && high <= 1 && high - low > 0.05, `subtle: ${low.toFixed(2)}…${high.toFixed(2)} of the water's colour`);
+  const h = harness();
+  h.map.setState(h.state()); h.map.resize(); h.pump();
+  const water = h.map.city.materials.water, map = water.map;
+  assert.ok(map && map.image.width === 128 && map.repeat.x > 4 && map.repeat.y > 4, 'a small tile, repeated over the lagoon');
+  const version = map.version, offset = [map.offset.x, map.offset.y], idle = h.count();
+  // A trip runs the loop (and city.animate with it): the shimmer still does not move, and idle is still idle.
+  h.map.setState(h.state({ activeAction: travelling(10) })); h.pump(40);
+  assert.equal(map.version, version, 'never re-uploaded'); assert.deepEqual([map.offset.x, map.offset.y], offset, 'never scrolled');
+  h.map.setState(h.state()); h.pump(500);
+  const still = h.count(); h.env.now += 60000;
+  assert.ok(still > idle); assert.equal(h.queue.length, 0); assert.equal(h.pump(), 0); assert.equal(h.count(), still, 'flat when idle');
+  h.map.setState(h.state({ t: NIGHT })); h.pump();
+  assert.equal(water.map, map, 'the same tile at night: it multiplies the water’s colour');
   h.map.destroy();
 });
 

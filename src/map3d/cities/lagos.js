@@ -55,7 +55,7 @@ export const roads = [
   { id: 'eko', name: 'Eko Bridge', bridge: 1.5, major: true, points: [[-36, -15], [-37, -6], [-36, 3]] },
   { id: 'third-mainland', name: 'Third Mainland Bridge', bridge: 1.9, major: true, points: [[36, -64], [43, -52], [40, -38], [35, -24], [26, -10], [13, -3], [8, 3]] },
   // Lagos Island and Ikoyi
-  { id: 'broad', name: 'Broad Street', major: true, points: [[-36, 3], [-36, 10], [-16, 10], [8, 10], [30, 10], [48, 10], [52, 9]] },
+  { id: 'broad', name: 'Broad Street', major: true, points: [[-36, 3], [-36, 10], [-16, 10], [8, 10], [30, 10], [48, 10], [50.2, 10.2], [52, 11]] },
   { id: 'carter-landing', name: 'Idumota', points: [[-16, 3], [-16, 10]] },
   { id: 'adeniji', name: 'Adeniji Adele Road', points: [[8, 3], [8, 10]] },
   { id: 'falomo-road', name: 'Kingsway Road', points: [[30, 10], [30, 17]] },
@@ -63,9 +63,10 @@ export const roads = [
   { id: 'banana-road', name: 'Banana Island Road', points: [[48, 10], [50, 2]] },
   { id: 'banana-bridge', name: 'Banana Island causeway', bridge: 0.6, points: [[50, 2], [51.5, -2.5], [53, -7]] },
   { id: 'banana-drive', name: 'Banana Island Drive', points: [[53, -7], [60, -8], [68, -9]] },
-  // The Lekki–Ikoyi link bridge and the peninsula
-  { id: 'link', name: 'Lekki–Ikoyi Link Bridge', bridge: 2.2, pylon: true, points: [[52, 9], [57, 15], [63, 23]] },
-  { id: 'link-landing', name: 'Admiralty Way', points: [[63, 23], [64, 29]] },
+  // The Lekki–Ikoyi link bridge and the peninsula. Its first and last control points carry on the line of the road
+  // at each end (Broad Street, Admiralty Way), so the deck leaves and rejoins the road in one curve, without a corner.
+  { id: 'link', name: 'Lekki–Ikoyi Link Bridge', bridge: 2, pylon: true, major: true, points: [[52, 11], [54, 12.4], [57.6, 16.2], [61.6, 20.6], [63, 23]] },
+  { id: 'link-landing', name: 'Admiralty Way', major: true, points: [[63, 23], [63.8, 26], [64, 29]] },
   { id: 'ozumba', name: 'Lekki–Epe Expressway', major: true, points: [[-10, 30], [10, 29], [30, 29], [48, 30], [64, 29], [84, 30], [104, 29]] },
   { id: 'beach-road', name: 'Beach Road', points: [[84, 30], [89, 35], [92, 38]] },
 ];

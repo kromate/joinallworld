@@ -18,7 +18,7 @@ export function callButton(state, view, member) {
 }
 
 export default {
-  id: 'contacts', title: 'Contacts', icon: '📇', placement: 'phone', order: 13,
+  id: 'contacts', title: 'Contacts', icon: '📇', placement: 'phone', order: 20,
   render(state, view) {
     const social = view.social;
     const mummy = social.family.find((member) => member.contact);

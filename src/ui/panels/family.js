@@ -9,7 +9,7 @@ import { esc } from '../dom.js';
 import { callButton } from './contacts.js';
 
 export default {
-  id: 'family', title: 'Family', icon: '👪', placement: 'phone', order: 14,
+  id: 'family', title: 'Family', icon: '👪', placement: 'phone', order: 36,
   render(state, view) {
     const social = view.social, info = social.familyCall;
     const called = social.family.filter((member) => member.calledToday).length;

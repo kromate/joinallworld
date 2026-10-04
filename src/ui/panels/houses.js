@@ -10,7 +10,7 @@ import { esc, money, json } from '../dom.js';
 import { MOVE_IN_WEEKS } from '../../game/content/housing.js';
 
 export default {
-  id: 'houses', title: 'Houses', icon: '🏘️', placement: 'phone', order: 40,
+  id: 'houses', title: 'Houses', icon: '🏘️', placement: 'phone', order: 30,
   render(state, view) {
     const property = view.property;
     if (!property) return '<p class="ui-error">Houses could not be loaded. Close this app and open it again.</p>';

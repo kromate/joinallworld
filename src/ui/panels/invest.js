@@ -18,7 +18,7 @@ let closing = null;
 const OFFLINE = 'Offline: read-only until you reconnect.';
 
 export default {
-  id: 'invest', title: 'Invest', icon: '📊', placement: 'phone',
+  id: 'invest', title: 'Invest', icon: '📊', placement: 'phone', order: 50,
   render(state, view) {
     const economy = view.economy, savings = economy.savings, offline = view.connected === false ? OFFLINE : null;
     const pick = savings.amounts.find((item) => item.amount === chosen) || savings.amounts[0];

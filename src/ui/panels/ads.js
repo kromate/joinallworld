@@ -69,7 +69,7 @@ function sea(state, view, data) {
 }
 
 export default {
-  id: PANEL, title: 'Billboards', icon: '📢', placement: 'phone', live: false,
+  id: PANEL, title: 'Billboards', icon: '📢', placement: 'phone', order: 44, live: false,
   render(state, view) {
     // Opened from the map with { tab: 'billboard' | 'sea' }.
     if (view.params && view.params !== seenParams) { seenParams = view.params; if (view.params.tab === 'sea' || view.params.tab === 'billboard') tab = view.params.tab; }

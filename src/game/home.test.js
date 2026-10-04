@@ -343,7 +343,20 @@ test('recipe locks: the skill is reported first, then the missing ingredients, t
   const cards = viewLife(state, ctx).activities.cards;
   assert.equal(cards.find((card) => card.id === 'home-efo-semo').blocked.code, 'missing_items');
   assert.equal(cards.find((card) => card.id === 'home-cook-jollof').blocked, null);
-  assert.equal(cards.length, 12, 'the ported free garri plus eleven recipes share the kitchen spot');
+  assert.equal(cards.length, 11, 'eleven recipes; the free dry garri is not listed while the cooler can soak some');
+  assert.equal(cards.some((card) => card.id === 'garri'), false);
+  // Out of sugar: the cooler can no longer soak garri, so the free fallback is listed and nobody goes hungry.
+  const sugar = state.inventory.sugar; state.inventory.sugar = 0;
+  const empty = viewLife(state, ctx).activities.cards;
+  assert.deepEqual([empty.length, empty.find((card) => card.id === 'garri').label, empty.find((card) => card.id === 'garri').blocked], [12, 'Eat Dry Garri', null]);
+  assert.equal(empty.find((card) => card.id === 'home-soak-garri').blocked.code, 'missing_items');
+  state.inventory.sugar = sugar;
+  // Hidden is not removed: a save that is half-way through the old "garri" still loads and finishes.
+  const old = createLife({ ...structuredClone(state), activeAction: { kind: 'activity', id: 'garri', duration: 5, remaining: 2 } }, ctx);
+  assert.deepEqual([old.activeAction.id, old.activeAction.remaining], ['garri', 2]);
+  const hungry = old.needs.hunger; old.needs.hunger = 40;
+  advanceLife(old, 3, { ...ctx, now: ctx.now + 3000 });
+  assert.deepEqual([old.activeAction, old.needs.hunger], [null, 60]); void hungry;
   // Sell the stove: stove recipes now ask for one; the cooler still works.
   act(state, 'home.furniture-sell', { id: state.home.items.find((item) => item.itemId === 'kerosene-stove').id });
   const noStove = act(state, 'activity', { id: 'home-cook-jollof' });

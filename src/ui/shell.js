@@ -295,8 +295,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const destination = activity ? null : view.venues.find((item) => item.id === active.id);
     const place = destination ? (destination.id === 'home' ? 'Home' : destination.label) : 'your destination';
     const name = activity?.label || (active.kind === 'travel' ? `Travelling to ${place}` : active.kind === 'commute' ? `Commuting to work · ${place}` : destination ? `On the way to ${place}` : 'Action in progress');
-    const paid = activity?.reward > 0;
-    return `<section class="life-progress" aria-label="Current activity"><div><strong>${esc(name)}</strong><small data-remaining></small></div><button data-cancel ${activity && !activity.cancellable ? 'disabled' : ''} aria-label="${paid ? 'Cancel shift. Cancelling earns nothing' : 'Cancel current activity'}">Cancel</button><progress max="1" value="0" data-progress aria-label="Activity progress"></progress>${paid ? `<p class="life-progress-note">Pays ${money(activity.reward)} when finished. Cancelling earns nothing.</p>` : ''}</section>`;
+    const paid = activity?.reward > 0, sleeping = Boolean(activity?.tags?.includes('sleep'));
+    return `<section class="life-progress" aria-label="Current activity"><div><strong>${esc(name)}</strong><small data-remaining></small></div><button data-cancel ${activity && !activity.cancellable ? 'disabled' : ''} aria-label="${paid ? 'Cancel shift. Cancelling earns nothing' : sleeping ? 'Wake up. The rest you got is kept' : 'Cancel current activity'}">${sleeping ? 'Wake up' : 'Cancel'}</button><progress max="1" value="0" data-progress aria-label="Activity progress"></progress>${paid ? `<p class="life-progress-note">Pays ${money(activity.reward)} when finished. Cancelling earns nothing.</p>` : ''}</section>`;
   }
   function navHtml() {
     return NAV.map(([id, label]) => {

@@ -75,7 +75,7 @@ function office(data, view) {
 }
 
 const app = {
-  id: PANEL, title: 'Governor', icon: '🏛️', placement: 'phone', live: false,
+  id: PANEL, title: 'Governor', icon: '🏛️', placement: 'phone', order: 40, live: false,
   render(state, view) {
     const item = entry(key(view)), data = item.data;
     if (!data) return status(item, view);

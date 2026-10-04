@@ -41,7 +41,7 @@ function visitHtml(view) {
 }
 
 export default {
-  id: 'invite', title: 'Invite', icon: '🏠', placement: 'phone', order: 16,
+  id: 'invite', title: 'Invite', icon: '🏠', placement: 'phone', order: 38,
   render(state, view) {
     // Opened from an invite link: api.open('invite', { host }).
     if (view.params?.host && view.params !== ui.params) { ui.params = view.params; ui.pending = view.params.host; }

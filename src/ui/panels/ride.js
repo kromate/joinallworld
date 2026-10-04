@@ -12,7 +12,7 @@ import { chosenMode, fareText, goBlock, statusClass, tripLine } from './world-ui
 let wanted = null;
 
 export default {
-  id: 'ride', title: 'Ride', icon: '🚕', placement: 'phone', order: 30,
+  id: 'ride', title: 'Ride', icon: '🚕', placement: 'phone', order: 18,
   render(state, view) {
     const travel = view.travel;
     const here = travel.destinations.find((item) => item.here);

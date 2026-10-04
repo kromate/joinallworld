@@ -37,13 +37,15 @@
  * EMITS  'goal.completed' { id, cash, stars } · 'wish.granted' { id, stars } ·
  *        'perk.bought' { id, cost } · 'dream.completed' { id }
  * MODIFIERS contributed by owned perks: needs.decayRate, skills.xpRate, activity.cost,
- *   activity.reward, travel.fare, shop.price, social.gain, career.performance; and
- *   activity.block for the one-off startup pitch.
+ *   activity.reward, travel.fare, shop.price, social.gain, career.performance;
+ *   activity.block for the one-off startup pitch; and career.autoCommute, which holds the
+ *   automatic commute while the starter chain has not reached "Work a shift" yet, so applying
+ *   for a job never whisks a new player away in the middle of the tutorial.
  *
  * Every cash reward goes through the wallet with its own ledger line ("Goal: Freshen up").
  * A starter goal pays exactly once: the chain index moves on before the reward is credited.
  */
-import { emit } from '../registry.js';
+import { emit, modify } from '../registry.js';
 import { cap, fail, finite, isRecord, naira, ok, safeCount } from '../util.js';
 import { lagosTime } from '../clock.js';
 import { blockReason, credit, MAX_LEVEL, NEEDS, skillLevel, spotsOf, xpForLevel } from '../api.js';
@@ -299,8 +301,8 @@ function recovery(state, need, ctx) {
       for (const def of spot.activities) {
         if (def.unavailable || def.cost || def.requiresJob || def.requiresSkill || def.choices
           || Object.keys(def.minimumNeeds || {}).length || gain(def) <= 0) continue;
-        // Never point at something that cannot be started: no furniture for it, a closed venue, a cooldown…
-        if (blockReason(state, def, venue, ctx)) continue;
+        // Never point at something that cannot be started or is not listed: no furniture for it, a closed venue, a cooldown…
+        if (blockReason(state, def, venue, ctx) || modify(state, 'activity.hidden', false, { def }, ctx) === true) continue;
         if (!best || gain(def) > gain(best.fix)) best = { venue, spot, fix: def };
       }
     }
@@ -434,6 +436,10 @@ export default {
   on: Object.fromEntries(EVENTS.map((event) => [event, (state, data, ctx) => handle(event, state, data, ctx)])),
   modifiers: {
     ...fxModifiers((state) => state.goals.perks.map((id) => perkById[id]?.fx)),
+    'career.autoCommute'(value, state) {
+      const g = state.goals;
+      return value && !(g.started && g.chain < STARTER_GOALS.findIndex((goal) => goal.workplace));
+    },
     'activity.block'(value, state, data) {
       if (value || !data?.def?.tags?.includes(PITCH_TAG)) return value;
       if (state.goals.stats.funded) return { code: 'already_funded', reason: 'Your startup is already funded. Investors only write the first cheque once.' };

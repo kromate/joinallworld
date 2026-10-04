@@ -8,6 +8,6 @@ test('the scripted first day runs to the end with every assertion holding', asyn
   const lines = [];
   const result = await runFirstDay({ log: (line) => lines.push(line) });
   assert.equal(result.steps, 19);
-  assert.equal(result.cash, 88300);
+  assert.equal(result.cash, 88450); // ₦150 more than before: the free automatic commute replaced the Danfo to work
   assert.ok(lines.some((line) => line.startsWith('First day complete')));
 });

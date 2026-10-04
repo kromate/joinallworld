@@ -26,7 +26,7 @@ const song = (item) => `${item.title} — ${item.artist}`;
 const newRequestId = () => { try { return window.crypto.randomUUID(); } catch { return `r-${Date.now()}-${Math.floor(Math.random() * 1e9)}`; } };
 
 const app = {
-  id: PANEL, title: 'Radio', icon: '📻', placement: 'phone', live: false,
+  id: PANEL, title: 'Radio', icon: '📻', placement: 'phone', order: 46, live: false,
   render(state, view) {
     const clubs = view.venues.filter((venue) => RADIO.venues.includes(venue.id));
     const beta = `<p class="civic-beta">Beta limitation: a shout-out is text only — a song title and an artist. No audio is played and links are not allowed. It costs ${money(RADIO.price)} of in-game naira, plays for ${esc(RADIO.slotSeconds)} seconds on the club banner, and each player gets ${esc(RADIO.perPlayerPerDay)} a day. These are original beta values.</p>`;

@@ -42,6 +42,9 @@
  *                       chosen entry's fields override the base definition
  *   tags                ['food', 'work', ...] passed to 'activity.completed' listeners
  *   unavailable         true = listed but cannot be started
+ * A system may hide an activity from the list (not from the engine) through the 'activity.hidden'
+ * modifier (data { def }, base false): a hidden activity is left out of view.cards and of the
+ * rolling guide, but a save that is running it still loads and completes.
  *   beta, note          provenance (see content/venues.js)
  *
  * BLOCKED STARTS always return a machine code and a reason naming the unmet prerequisite:
@@ -258,7 +261,7 @@ export default {
     return {
       spot: state.spot,
       spots: spots.map(({ activities, ...spot }) => ({ ...spot, count: activities.length })),
-      cards: (here?.activities || []).map((def) => card(state, def, state.location, ctx)),
+      cards: (here?.activities || []).filter((def) => modify(state, 'activity.hidden', false, { def }, ctx) !== true).map((def) => card(state, def, state.location, ctx)),
       active: runningDef ? { id: runningDef.id, label: runningDef.label, icon: runningDef.icon, reward: rewardOf(state, runningDef, ctx),
         cancellable: runningDef.cancellable !== false, tags: runningDef.tags || [] } : null,
     };

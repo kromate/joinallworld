@@ -48,10 +48,13 @@
  *         'item.sold'   { id, refund }
  *         'meal.eaten'  { id, source: 'home' }   (id is the recipe id, or the activity id for a
  *                                                 ported food activity eaten at home)
+ * One kitchen: the ported free "Eat Dry Garri" is the fallback that keeps the never-hungry promise
+ * (needs.js). It is hidden (modifier 'activity.hidden') while the cooler can make Soak Garri &
+ * Sugar, so the kitchen never lists the same bowl twice; a save that is mid-way through it still loads.
  * Listens 'life.started' (lay out the starter room for the chosen house, stock the kitchen),
  *         'house.moved' (re-fit furniture), 'travel.arrived' (first arrival home stocks the
  *         kitchen), 'activity.started' / 'activity.completed' / 'action.cancelled'.
- * Modifier implemented: 'activity.block'.   Modifier called: 'shop.price'.
+ * Modifiers implemented: 'activity.block', 'activity.hidden'.   Modifier called: 'shop.price'.
  */
 import { emit, modify } from '../registry.js';
 import { busy, fail, isRecord, naira, ok } from '../util.js';
@@ -319,6 +322,11 @@ export default {
   activities: [...furnitureActivities, ...recipeActivities],
 
   modifiers: {
+    /** The legacy free garri is only listed while the cooler cannot make the real thing. */
+    'activity.hidden'(value, state, data) {
+      if (value || data?.def?.id !== 'garri') return value;
+      return placedOfKind(state, RECIPES['soak-garri'].station).length > 0 && !missingIngredients(state, RECIPES['soak-garri']).length;
+    },
     'activity.block'(value, state, data) {
       const home = data?.def?.home;
       if (value || !home) return value;
@@ -375,7 +383,12 @@ export default {
       if (kind) completionBonus(state, def, qualityOf(state, kind), ctx);
       if (state.home.boost && state.home.boost.id === def.id) state.home.boost.finished = true;
     },
-    'action.cancelled'(state) { state.home.boost = null; },
+    'action.cancelled'(state, data) {
+      state.home.boost = null;
+      // Stopping sleep early is waking up, not cancelling: the rest already gained is kept.
+      const def = data?.kind === 'activity' ? findActivity(data.id)?.def : null;
+      if (def?.tags?.includes('sleep')) state.message = `${state.name} woke up. The rest you got is kept.`;
+    },
   },
 
   /** Pays out the quality bonus of a running per-second activity for the seconds just settled. */

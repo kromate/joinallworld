@@ -60,6 +60,7 @@
  *   ('job.applied' and 'shift.completed' carry maxLevel too, for track jobs)
  * MODIFIERS ASKED
  *   'career.performance'  data { job, level }  base PERFORMANCE_PER_SHIFT — performance gained by a shift
+ *   'career.autoCommute'  data { job }         base true — return false to hold "Go automatically" for now
  * MODIFIERS CONTRIBUTED
  *   'activity.reward'  a career shift pays the player's current ladder level (others then adjust it)
  *   'activity.block'   'shift_done' / 'day_off' with the next shift named
@@ -182,6 +183,8 @@ function maybeCommute(state, ctx) {
   if (!job?.track || !state.career.auto || state.activeAction || !workplaceOpen(job) || state.location === job.workplace.venue) return false;
   const today = lagosTime(nowOf(state, ctx)).day;
   if (state.career.autoDay === today || !shiftStatus(state, ctx).canWork || shortNeeds(state, job).length) return false;
+  // Another system may hold the commute back (the tutorial does, until it asks for a shift).
+  if (modify(state, 'career.autoCommute', true, { job: job.id }, ctx) !== true) return false;
   if (!workplaceOpening(job, state, ctx).open) return false; // closed: try again on a later settlement the same day
   state.career.autoDay = today;
   state.activeAction = { kind: 'commute', id: job.workplace.venue, duration: COMMUTE_SECONDS, remaining: COMMUTE_SECONDS };

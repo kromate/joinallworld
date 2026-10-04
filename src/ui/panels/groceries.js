@@ -13,7 +13,7 @@ import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../game/content/food.
 const USED_BY = Object.fromEntries(INGREDIENT_ORDER.map((id) => [id, Object.values(RECIPES).filter((recipe) => id in recipe.ingredients).map((recipe) => recipe.label)]));
 
 export default {
-  id: 'groceries', title: 'Groceries', icon: '🛒', placement: 'phone', order: 42,
+  id: 'groceries', title: 'Groceries', icon: '🛒', placement: 'phone', order: 16,
   render(state, view) {
     const offline = view.connected ? '' : 'Offline — reconnect to order';
     const rows = INGREDIENT_ORDER.map((id) => {

@@ -11,7 +11,7 @@ const key = (view) => `hood:${view.cityId}`;
 const path = (view) => `/api/civic/neighbours?city=${view.cityId}`;
 
 export default {
-  id: 'neighbours', title: 'Neighbours', icon: '🏡', placement: 'phone',
+  id: 'neighbours', title: 'Neighbours', icon: '🏡', placement: 'phone', order: 42,
   render(state, view) {
     const item = entry(key(view)), data = item.data;
     if (!data) return status(item, view);

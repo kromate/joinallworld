@@ -27,6 +27,7 @@ import { weatherAt } from '../src/game/systems/health.js';
 import { findFreeSpot } from '../src/game/home-layout.js';
 import { FURNITURE } from '../src/game/content/furniture.js';
 import { HOUSES } from '../src/game/content/housing.js';
+import { EVENTS } from '../src/game/content/events.js';
 
 const CITY = 'lagos';
 const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
@@ -82,7 +83,11 @@ export async function runFirstDay({ log = console.log } = {}) {
     assert.equal(state.cash, cash, `${label}: wallet`);
     assert.deepEqual(needsOf(state), needs, `${label}: needs (hunger, energy, fun, social, hygiene, bladder)`);
   };
-  /** Travel and wait out the trip; a roadside event on arrival is declined (its last answer is always free). */
+  /**
+   * Travel and wait out the trip; a roadside event on arrival is answered with its last choice, which
+   * never costs money. Which event comes up is decided by the server from the trip's settlement, so it
+   * is reported with whatever that answer does to the needs (read from the event content).
+   */
   async function travel(id, mode, fare, label) {
     const before = (await life()).cash;
     const started = await ok('travel', { id, mode }, 'started');
@@ -96,7 +101,9 @@ export async function runFirstDay({ log = console.log } = {}) {
       const cash = state.cash;
       state = await ok('world.roadside', { choice: offer.choices.at(-1).id }, 'resolved');
       assert.equal(state.cash, cash, 'declining a roadside offer is free');
-      event = `declined “${offer.title}”`;
+      const effects = EVENTS[offer.id].choices.at(-1).effects || {};
+      const cost = Object.entries(effects).map(([need, amount]) => `${need[0].toUpperCase()}${need.slice(1)} ${amount > 0 ? '+' : '−'}${Math.abs(amount)}`).join(', ');
+      event = `roadside “${offer.title}” answered “${offer.choices.at(-1).label}”${cost ? ` (${cost})` : ''}`;
     }
     return { state, seconds: started.activeAction.duration, event };
   }
@@ -169,11 +176,10 @@ export async function runFirstDay({ log = console.log } = {}) {
     shown = view(state);
     assert.deepEqual([state.job, shown.career.role, shown.career.pay, shown.career.performance, state.goals.stars], ['tech', 'Intern', 3600, 50, 3]);
     assert.equal(shown.career.hours, 'CcHub · Open 8AM – 10PM — you can only travel there while it is open');
-    // "Go automatically" is on by default and CcHub is open, so the commute starts at once. Stay home for now.
-    assert.deepEqual([state.activeAction?.kind, state.activeAction?.id], ['commute', 'cchub']);
-    state = await ok('cancel', undefined, 'cancelled');
-    assert.deepEqual([state.location, state.activeAction], ['home', null]);
-    say('applied for Tech: hired as Intern', state, 'goal 3 +₦1,000 +1✨; automatic commute cancelled to stay home');
+    // "Go automatically" is on and CcHub is open, but the tutorial is not at "Work a shift" yet,
+    // so nobody is whisked away: the commute waits.
+    assert.deepEqual([state.career.auto, state.location, state.activeAction], [true, 'home', null]);
+    say('applied for Tech: hired as Intern', state, 'goal 3 +₦1,000 +1✨; “Go automatically” waits until the tutorial asks for a shift');
 
     // ---- goal 4: Buy → place a plastic chair --------------------------------------------------
     const chair = FURNITURE['plastic-chair'];
@@ -221,29 +227,32 @@ export async function runFirstDay({ log = console.log } = {}) {
     check(state, 100850, [100, 85, 82, 72, 100, 70], 'say hello');
     assert.deepEqual([state.goals.stars, state.ledger.at(-1).reason], [6, 'Goal: Make a new friend']);
     assert.deepEqual([state.social.rel.amaka.p, state.social.rel.amaka.npc], [2, true]);
-    assert.match(state.message, /^Amaka: “/);
     say('Say Hello to Amaka at the buka (6s)', state, 'Social +12, Fun +2, goal 6 +₦1,500 +1✨, closeness with Amaka 0→2');
 
-    // ---- goal 7: travel to the workplace while it is open and work a shift ----------------------
-    assert.equal(view(state).travel.destinations.find((item) => item.id === 'cchub').open, true);
-    trip = await travel('cchub', 'danfo', 150, 'Danfo to CcHub');
-    state = trip.state;
-    check(state, 100700, [100, 85, 82, 72, 100, 70], 'arrive CcHub');
-    await ok('spot', { id: 'work' }, 'selected');
+    // ---- goal 7: the tutorial now asks for a shift, so "Go automatically" starts the free commute ---
+    assert.equal(view(state).goals.chip.title, 'Work a shift');
+    assert.deepEqual([state.activeAction?.kind, state.activeAction?.id, state.career.auto], ['commute', 'cchub', true]);
+    assert.match(state.message, /^Go automatically: heading to CcHub for today’s shift/);
+    const commute = state.activeAction.duration;
+    state = await wait(commute);
+    assert.deepEqual([state.location, state.spot, state.activeAction], ['cchub', 'work', null]);
+    check(state, 100850, [100, 85, 82, 72, 100, 70], 'arrive CcHub');
     const shift = await ok('activity', { id: 'tech-shift' }, 'started');
-    assert.equal(shift.cash, 100700, 'a shift pays on completion');
+    assert.equal(shift.cash, 100850, 'a shift pays on completion');
     state = await wait(shift.activeAction.duration);
-    check(state, 106300, [88, 65, 82, 72, 100, 70], 'shift');
+    check(state, 106450, [88, 65, 82, 72, 100, 70], 'shift');
     shown = view(state);
     assert.deepEqual([shown.career.performance, state.completedShifts, state.goals.stars, state.goals.chain], [60, 1, 7, 7]);
     assert.deepEqual(state.ledger.slice(-2).map((entry) => [entry.amount, entry.reason]), [[3600, 'Tech shift'], [2000, 'Goal: Work a shift']]);
-    say(`Danfo to CcHub (${trip.seconds}s), Tech shift (${shift.activeAction.duration}s)`, state, `fare −₦150, pay +₦3,600 in the ledger, performance 50→60%, goal 7 +₦2,000 +1✨${trip.event ? `, ${trip.event}` : ''}`);
+    say(`automatic commute to CcHub (${commute}s), Tech shift (${shift.activeAction.duration}s)`, state, 'no fare, pay +₦3,600 in the ledger, performance 50→60%, goal 7 +₦2,000 +1✨');
 
     // ---- trek home; decline any roadside offer ---------------------------------------------------
     assert.equal(weatherAt(time + 20000, CITY).raining, false, 'the trek happens in dry weather');
     trip = await travel('home', 'trek', 0, 'Trek home');
     state = trip.state;
-    check(state, 106300, [88, 55, 82, 72, 93, 70], 'trek home');
+    // Energy −10 and Hygiene −7 for the trek, and Hygiene −3 for bracing against the puddle splash.
+    assert.equal(trip.event, 'roadside “Bus versus puddle” answered “Turn your back and brace” (Hygiene −3)');
+    check(state, 106450, [88, 55, 82, 72, 90, 70], 'trek home');
     say(`trek CcHub → Home (${trip.seconds}s)`, state, `Energy −10, Hygiene −7${trip.event ? `, ${trip.event}` : ', no roadside offer'}`);
 
     // ---- nap, wake early: the energy gained so far is kept -----------------------------------------
@@ -252,15 +261,16 @@ export async function runFirstDay({ log = console.log } = {}) {
     state = await wait(8);
     assert.equal(state.activeAction.id, 'nap');
     state = await ok('cancel', undefined, 'cancelled');
-    check(state, 106300, [88, 71, 82, 72, 93, 70], 'nap woken early');
-    say('nap, woken after 8 of 15 seconds', state, 'Energy +16 kept');
+    check(state, 106450, [88, 71, 82, 72, 90, 70], 'nap woken early');
+    assert.equal(state.message, 'Tunde woke up. The rest you got is kept.', 'waking is not "Action cancelled."');
+    say('nap, woken after 8 of 15 seconds', state, 'Energy +16 kept · “Tunde woke up. The rest you got is kept.”');
 
     // ---- cook Jollof: ingredients are used once, when the meal finishes ------------------------------
     await ok('spot', { id: 'kitchen' }, 'selected');
     const cooking = await ok('activity', { id: 'home-cook-jollof' }, 'started');
     assert.deepEqual([cooking.inventory.rice, cooking.inventory['tomato-paste'], cooking.inventory.seasoning, cooking.inventory['veg-oil']], [2, 2, 6, 4], 'nothing is used at the start');
     state = await wait(11);
-    check(state, 106300, [100, 71, 82, 72, 93, 70], 'cook jollof');
+    check(state, 106450, [100, 71, 82, 72, 90, 70], 'cook jollof');
     assert.deepEqual([state.inventory.rice, state.inventory['tomato-paste'], state.inventory.seasoning, state.inventory['veg-oil']], [1, 1, 5, 3]);
     state = await wait(30);
     assert.deepEqual([state.inventory.rice, state.inventory['tomato-paste'], state.inventory.seasoning, state.inventory['veg-oil']], [1, 1, 5, 3], 'used once');
@@ -278,7 +288,7 @@ export async function runFirstDay({ log = console.log } = {}) {
     // ---- replay: the same action ID has no second effect -----------------------------------------------
     const replay = await send(chairBody);
     assert.deepEqual([replay.duplicate, replay.ok, replay.code], [true, true, 'bought']);
-    check(replay.state, 106300, [100, 71, 82, 72, 93, 70], 'replay');
+    check(replay.state, 106450, [100, 71, 82, 72, 90, 70], 'replay');
     assert.equal(replay.state.home.items.filter((item) => item.itemId === 'plastic-chair').length, chairsBefore + 1);
     assert.equal(replay.state.ledger.filter((entry) => entry.reason === 'Bought Plastic Chair').length, 1);
     const conflict = await http('/api/action', { ...chairBody, payload: { item: 'velvet-sofa', ...tile } });
@@ -294,13 +304,13 @@ export async function runFirstDay({ log = console.log } = {}) {
     assert.deepEqual(bills.map((entry) => [entry.amount, entry.reason]), [[-6000, 'Rent: Yaba self-contain (due Sat 10 Jan)'], [-12000, 'Loan repayment (due Sat 10 Jan)']]);
     // However long the player was away, one settlement applies at most four hours of need decay
     // (hunger 6, energy 4, fun 5, social 4, hygiene 3, bladder 8 points an hour).
-    check(state, 88300, [76, 55, 62, 56, 81, 38], 'Saturday');
+    check(state, 88450, [76, 55, 62, 56, 78, 38], 'Saturday');
     assert.equal(view(state).economy.loan.left, 60000);
     say('Saturday 00:00: rent and loan instalment', state, 'rent −₦6,000 and loan −₦12,000, each with a ledger line; loan ₦60,000 left');
     await wait(3600);
     const later = await wait(86400); // Sunday
     assert.equal(later.ledger.filter((entry) => /^(Rent|Loan repayment)/.test(entry.reason)).length, 2, 'not collected again on later settlements that week');
-    assert.equal(later.cash, 88300);
+    assert.equal(later.cash, 88450);
     const stale = await http('/api/action', chairBody);
     assert.deepEqual([stale.status, stale.json.error], [409, 'action_expired'], 'an action ID older than 24 hours is refused');
     say('a day later: nothing collected twice', later, 'wallet unchanged; the week-old action ID is refused as expired');

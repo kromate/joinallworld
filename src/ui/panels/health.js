@@ -27,7 +27,7 @@ function cureRow(cure, state, view) {
 }
 
 const healthPanel = {
-  id: 'health', title: 'Health', icon: '🩺', placement: 'phone', order: 40,
+  id: 'health', title: 'Health', icon: '🩺', placement: 'phone', order: 22,
   render(state, view) {
     const health = view.health;
     const tone = health.sick ? 'is-sick' : health.rundown ? 'is-rundown' : 'is-well';

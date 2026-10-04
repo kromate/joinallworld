@@ -15,7 +15,7 @@ function board(title, rows, empty) {
 }
 
 export default {
-  id: 'richlist', title: 'Rich List', icon: '🏆', placement: 'phone',
+  id: 'richlist', title: 'Rich List', icon: '🏆', placement: 'phone', order: 48,
   render(state, view) {
     const item = entry(key(view)), data = item.data;
     if (!data) return status(item, view);

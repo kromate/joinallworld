@@ -120,8 +120,10 @@ export const VENUES = {
     ambient: ['The neighbour’s generator hums', 'Somewhere a pot of stew is frying'],
     spots: {
       kitchen: { id: 'kitchen', label: 'Kitchen', icon: '🥣', activities: [
-        { id: 'garri', label: 'Eat Garri', icon: '🥣', duration: 5, cost: 0, effects: { hunger: 20 }, tags: ['food'], beta: true,
-          note: 'Duration observed in the reference game; the +20 hunger amount is an original beta value.' },
+        // The free fallback behind the cooler's Soak Garri & Sugar: listed only when that cannot be made
+        // (systems/home.js), so nobody is ever stuck hungry with an empty kitchen. The id is kept for old saves.
+        { id: 'garri', label: 'Eat Dry Garri', icon: '🥣', duration: 5, cost: 0, effects: { hunger: 20 }, tags: ['food'], beta: true,
+          note: 'Original beta fallback: free, no ingredients, +20 hunger. Duration as observed for soaking garri in the reference game.' },
       ] },
       bathroom: { id: 'bathroom', label: 'Bathroom', icon: '🛁', activities: [
         { id: 'bath', label: 'Take a Bath', icon: '🛁', duration: 6, cost: 0, effects: { hygiene: 25 }, tags: ['hygiene'], beta: true,

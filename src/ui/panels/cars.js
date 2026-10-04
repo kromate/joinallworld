@@ -10,7 +10,7 @@ import { esc, money, json } from '../dom.js';
 import { CAR_RESALE_RATE } from '../../game/content/cars.js';
 
 export default {
-  id: 'cars', title: 'Cars', icon: '🚗', placement: 'phone', order: 41,
+  id: 'cars', title: 'Cars', icon: '🚗', placement: 'phone', order: 34,
   render(state, view) {
     const property = view.property;
     if (!property) return '<p class="ui-error">The dealer list could not be loaded. Close this app and open it again.</p>';

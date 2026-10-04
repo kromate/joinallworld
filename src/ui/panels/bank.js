@@ -31,7 +31,7 @@ function loanCard(loan, offline) {
 }
 
 export default {
-  id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 15,
+  id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14,
   render(state, view) {
     const economy = view.economy, career = view.career, offline = view.connected === false ? OFFLINE : null;
     const rows = view.wallet.ledger.map((entry) => `<li><span>${esc(entry.reason)}<small>${esc(formatClock(entry.at))} · balance ${money(entry.balance)}</small></span><b class="${entry.amount < 0 ? 'is-out' : 'is-in'}">${entry.amount < 0 ? '−' : '+'}${money(Math.abs(entry.amount))}</b></li>`).join('');

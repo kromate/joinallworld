@@ -11,7 +11,7 @@ import { avatarSvg } from './look-ui.js';
 const SECTIONS = [['hair', 'Hairstyles'], ['outfit', 'Outfits'], ['fabric', 'Fabrics']];
 
 export default {
-  id: 'boutique', title: 'Boutique', icon: '👗', placement: 'phone', order: 40,
+  id: 'boutique', title: 'Boutique', icon: '👗', placement: 'phone', order: 32,
   render(state, view) {
     const o = view.onboarding, offline = view.connected ? '' : 'Offline — reconnect to shop';
     const card = (item) => {

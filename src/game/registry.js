@@ -121,6 +121,7 @@
  *   'activity.cost'    data { def }    base def.cost
  *   'activity.reward'  data { def }    base def.reward
  *   'activity.block'   data { def }    base null — return { code, reason } to veto a start
+ *   'activity.hidden'  data { def }    base false — return true to leave an activity out of the list
  *   'action.block'     data { type, payload }  base null — return { code, reason } to veto ANY action
  *                      before its handler runs (dispatch asks for every action type). Pass a veto
  *                      from an earlier system through unchanged: `if (value) return value`.

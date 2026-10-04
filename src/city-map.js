@@ -45,6 +45,7 @@
 import './city-map.css';
 import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, CITY_MAPS, venueLabel, venueDistrict } from './game/content/venues.js';
 import { isOpen } from './game/clock.js';
+import { isDeparting } from './game/registry.js';
 
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -296,7 +297,7 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   function update() {
     if (!built) return;
     const now = state?.t ?? 0, home = homeSpot();
-    const going = state?.activeAction?.kind === 'travel' ? state.activeAction.id : null;
+    const going = isDeparting(state) ? state.activeAction.id : null; // a trip or the commute
     const openIds = Object.values(VENUES).filter((venue) => isOpen(venue.hours, now)).map((venue) => venue.id).join(',');
     const next = [state?.location, going, home.map.x, home.map.y, filter, selected, openIds].join('|');
     if (next === signature) return;

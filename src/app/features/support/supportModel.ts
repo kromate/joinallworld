@@ -33,7 +33,7 @@ export interface SupportDeps {
   fetchJson: FetchJson
   newId: () => string
   cityId: () => CityId
-  /** Called with every list that loads, so the Phone's badge knows about replies (src/ui/phone/reports.js). */
+  /** Called with every list that loads, so the Phone's badge knows about replies (src/ui/phone/reports.ts). */
   onLoaded?: (reports: SupportReceipt[]) => void
   onFiled?: () => void
 }

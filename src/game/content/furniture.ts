@@ -9,7 +9,7 @@
  *   stars     quality 0–4. Better furniture gives better results: STAR_MULTIPLIER[stars] scales
  *             the positive effects and XP of the actions the object offers (original beta rule —
  *             the reference game shows the stars but what they do was never observed)
- *   shape     which procedural model src/scene/home-scene.js draws
+ *   shape     which procedural model src/scene/home-scene.ts draws
  *
  * Provenance: the six Comfort items WITHOUT `beta` (Plastic Chair, Velvet Sofa, 3-Seater Family
  * Sofa, Leather Sofa, Royal Gold Sofa, Lounge Armchair) use the footprint, rating and price

@@ -20,7 +20,7 @@
  *   joinallworld-quick-landed  1 once the landing screen was shown, so 'landed' is reported once per device
  * None of it is a credential: the session is the cookie the server sets, exactly as before.
  *
- * FUNNEL EVENTS — window 'jaw:track' { name, props }: src/telemetry/index.js listens, and src/telemetry/events.js is the
+ * FUNNEL EVENTS — window 'jaw:track' { name, props }: src/telemetry/index.ts listens, and src/telemetry/events.ts is the
  * catalogue every name and property here is listed in (a property that is not listed there is dropped before sending).
  * Every event carries `ms`: milliseconds since this device first landed (kept across reloads).
  *   landed                     the landing screen was shown to a new device            { join: boolean }

@@ -1,5 +1,5 @@
 /**
- * The saved state of one life, as built by `createLife()` in src/life.js.
+ * The saved state of one life, as built by `createLife()` in src/life.ts.
  *
  * Every shape here is read off the owning system's `stateKeys` and `sanitize()` in
  * src/game/systems/*.js: what sanitize rebuilds is what a state can contain, nothing else
@@ -38,7 +38,7 @@ export type ComingSoonId = never
 
 /**
  * Cities the RULES know (content/world.js CITY_RULES). Only 'lagos' is open; the others are data for
- * the links between cities. Not the same set as protocol.ts `CityId` (server/protocol.js CITY_IDS:
+ * the links between cities. Not the same set as protocol.ts `CityId` (server/protocol.ts CITY_IDS:
  * the cities a server keeps lives for) — hence the different name.
  */
 export type WorldCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
@@ -215,7 +215,7 @@ export type ActiveKind = ActiveAction['kind']
 
 /** OWNER core. Identity of a life and the timed-action slot. */
 export interface CoreSlice {
-  /** Global schema version (STATE_VERSION, currently 1). Owned by src/life.js. */
+  /** Global schema version (STATE_VERSION, currently 1). Owned by src/life.ts. */
   v: number
   /** Server ms this state was last settled to. */
   t: Ms
@@ -514,7 +514,7 @@ export interface EstateSlice {
 
 // ---- home ---------------------------------------------------------------------------------
 
-/** A placed object (rules in src/game/home-layout.js). */
+/** A placed object (rules in src/game/home-layout.ts). */
 export interface PlacedItem {
   /** `f<seq>`, unique within the room. */
   id: string
@@ -959,7 +959,7 @@ export interface SliceBySystem {
 // ---- context and results ------------------------------------------------------------------
 
 /**
- * The `ctx` every system receives, built by `makeContext()` in src/game/util.js.
+ * The `ctx` every system receives, built by `makeContext()` in src/game/util.ts.
  * makeContext passes any other property through untouched (`...rest`); the optional fields below
  * are the ones the engine itself reads.
  * INCONSISTENT: the contract in registry.js:78 lists `{ now, cityId, rng, isNew?, actionId?,
@@ -994,7 +994,7 @@ export interface LifeContext {
 
 /**
  * What a caller may hand to createLife / dispatch / advanceLife / viewLife instead of a built
- * context: the engine builds one (src/life.js contextFor) unless `rng` is already a function.
+ * context: the engine builds one (src/life.ts contextFor) unless `rng` is already a function.
  * `seed` and `salt` are consumed by makeContext and are not part of the resulting LifeContext.
  */
 export interface LifeContextInit extends Partial<LifeContext> {

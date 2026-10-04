@@ -37,7 +37,7 @@
  *   plus four weeks of its rent) and the cheapest car (found by playing on, up to `horizon` days —
  *   never extrapolated).
  *
- * The assertions that encode the design intent are in src/game/economy.test.js.
+ * The assertions that encode the design intent are in src/game/economy.test.ts.
  * Everything here is deterministic: the same arguments give the same table.
  */
 import { makeContext } from '../src/game/util.ts';

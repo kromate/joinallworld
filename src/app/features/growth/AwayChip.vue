@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // The "While you were away" card: a HUD alert shown once when a player returns after three hours
 // or more, with at most five lines of what is waiting — a person first, then an invitation, then
-// their Sim, then progress (src/game/digest.js). Each line opens the app it belongs to; the X
+// their Sim, then progress (src/game/digest.ts). Each line opens the app it belongs to; the X
 // dismisses the card for good. It states facts; nothing was taken while the player was gone.
 // It draws from data already loaded (the growth hello) and asks for it, at most every five
 // minutes, only once a connected player has settled in; for anyone else it draws nothing.

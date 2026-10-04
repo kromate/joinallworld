@@ -2,7 +2,7 @@
  * OWNER: growth
  * When the game may reach a player outside the game, as pure functions: the frequency rules, the
  * check of an e-mail address, and the exact words of the consent. No I/O and no clock of its own;
- * the server (server/growth/outreach.js) supplies the time and does the sending.
+ * the server (server/growth/outreach.ts) supplies the time and does the sending.
  *
  * THE RULES (carried over from the first Allworld's come-back engine)
  *   - nothing without consent, and nothing at all to a player who said they are under 18;

@@ -1,7 +1,7 @@
 /**
  * OWNER: world
  * What the maps know about houses and residents, fetched for the part of the city in view and
- * nothing more (server/routes/world.js). One instance is shared by the 3D and the 2D map.
+ * nothing more (server/routes/world.ts). One instance is shared by the 3D and the 2D map.
  *
  *   createWorldData({ fetchJson, cityId, onChange })
  *     summary()                 → Map<lgaId, { residents, houses, online, occ: Uint8Array(512) }> | null

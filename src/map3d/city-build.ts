@@ -5,7 +5,7 @@
  * plates, and the fabric that makes it a city — houses, blocks, towers, trees, palms, boats and
  * street traffic.
  *
- * BUDGET (asserted in src/map3d/map3d.test.js): everything static is merged into a few meshes and
+ * BUDGET (asserted in src/map3d/map3d.test.ts): everything static is merged into a few meshes and
  * everything repeated is instanced, so the whole city is a few dozen draw calls and stays under
  * 60,000 triangles. Nothing here needs a WebGL context: it is typed-array work and runs under
  * `node --test`. There are no shadow maps — shadows are flat dark quads laid beside what casts them.
@@ -35,7 +35,7 @@ import type { Box4, CityPack, FabricStyle, LandKind, PackDistrict, Point2, Point
 
 /** The Three.js namespace the map code is handed (it is loaded lazily, so it is never imported here as a value). */
 type Three = typeof import('three');
-/** What the map code uses of the scene kit (src/scene/kit.js createKit()). */
+/** What the map code uses of the scene kit (src/scene/kit.ts createKit()). */
 /** The scene kit as the map code uses it: the real kit (src/scene/kit.ts createKit()). */
 export type MapKit = Kit;
 export type TimeOfDay = 'day' | 'dusk' | 'night';
@@ -67,7 +67,7 @@ export interface CityPlace {
 }
 /** The player's own plot, for setHome: where it is, what the label says, and how high the label sits. */
 export interface OwnHome { x: number; z: number; label: string; top?: number }
-/** The venue fields the builder reads (src/game/content/venues.js). */
+/** The venue fields the builder reads (src/game/content/venues.ts). */
 export interface CityVenue { scene?: { kind?: string; variant?: string } }
 export interface CityMaterials {
   ground: MeshStandardMaterial;
@@ -517,7 +517,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     }
   }
   const thin = <T,>(list: T[], cap: number): T[] => { if (list.length <= cap) return list; const step = list.length / cap; return Array.from({ length: cap }, (_, i) => list[Math.floor(i * step)]!); };
-  // The decorative fabric is thinner than it could be on purpose: the houses that matter are the players' own (src/map3d/houses.js), and they need room in the budget.
+  // The decorative fabric is thinner than it could be on purpose: the houses that matter are the players' own (src/map3d/houses.ts), and they need room in the budget.
   const HOUSE_CAP = 420, TOWER_CAP = 150, TREE_CAP = 330, PALM_CAP = 90;
   const fabric = { houses: thin(houses, HOUSE_CAP), towers: thin(towers, TOWER_CAP), trees: thin(trees, TREE_CAP), palms: thin(palms, PALM_CAP) };
 

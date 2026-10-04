@@ -6,7 +6,7 @@
  * WHERE THE GEOMETRY IS. A local government's boundary on the map, and the rough real-world box
  * used to find it from a device's position, live in the city pack (src/map3d/cities/<city>.js) —
  * the map's single source of truth. This file holds what the RULES need: ids, names, prices and
- * capacities. src/map3d/map3d.test.js asserts that the two list exactly the same ids.
+ * capacities. src/map3d/map3d.test.ts asserts that the two list exactly the same ids.
  *
  * PROVENANCE. Everything here is an original beta value (`beta: true`): none of it was observed in
  * the reference game. The local governments are the twenty real ones of Lagos State; their one-line
@@ -15,8 +15,8 @@
  * ADDRESSES. Every local government has ESTATE.estates estates of ESTATE.streets streets with
  * ESTATE.plots plots each: 512 × 14 × 14 = 100,352 plots. A house's address is
  * `<lga>/<estate>/<street>/<plot>` (all zero-based numbers in storage, one-based when shown). The
- * server allocates it in O(1) (server/world/registry.js) and it never changes. Where an estate
- * stands on the map is computed from the pack alone (src/map3d/estates.js) — no per-house data is
+ * server allocates it in O(1) (server/world/registry.ts) and it never changes. Where an estate
+ * stands on the map is computed from the pack alone (src/map3d/estates.ts) — no per-house data is
  * needed to draw a street.
  */
 

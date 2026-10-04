@@ -77,7 +77,7 @@ test('every emoji written anywhere in the game content or the systems has a glyp
   for (const dir of ['../game/content/', '../game/systems/']) {
     for (const file of (await readdir(new URL(dir, import.meta.url))).filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))) {
       const source = await readFile(new URL(dir + file, import.meta.url), 'utf8');
-      for (const emoji of new Set(source.match(EMOJI) || [])) assert.ok(drawn(glyphOfEmoji(emoji)), `${file}: ${emoji} has no glyph in src/ui/icon-map.js`);
+      for (const emoji of new Set(source.match(EMOJI) || [])) assert.ok(drawn(glyphOfEmoji(emoji)), `${file}: ${emoji} has no glyph in src/ui/icon-map.ts`);
     }
   }
 });

@@ -11,7 +11,7 @@
 // What Buy mode shares with the home chip — the tapped object, the ghost — is homeState.ts, and the
 // conversation with the scene is homeScene.ts (the chip is in the first download, this is fetched
 // the first time Buy is opened). The server validates every placement again; the ghost's
-// green/red state uses the same pure rules (src/game/home-layout.js) so the player sees the answer
+// green/red state uses the same pure rules (src/game/home-layout.ts) so the player sees the answer
 // before pressing Place.
 import { computed } from 'vue'
 import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../../game/content/furniture.ts'

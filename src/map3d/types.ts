@@ -17,7 +17,7 @@ export interface Rect { minX: number; maxX: number; minZ: number; maxZ: number }
 /** Longitude and latitude, in degrees. */
 export interface LonLat { lon: number; lat: number }
 
-/** The part of a geometry batch (src/scene/build.js createBatch) that decorate() draws with. `opts` are the batch's per-primitive options. */
+/** The part of a geometry batch (src/scene/build.ts createBatch) that decorate() draws with. `opts` are the batch's per-primitive options. */
 export interface BatchOptions { ry?: number; rx?: number; rz?: number; seg?: number; top?: number; layer?: 'solid' | 'glow' | 'glass'; part?: string }
 export interface DecorateBatch {
   box: (x: number, y: number, z: number, w: number, h: number, d: number, colour: string, opts?: BatchOptions) => void

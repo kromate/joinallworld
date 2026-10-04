@@ -7,8 +7,8 @@
  *   advanceLife(state, dt, ctx?)   settle `dt` seconds: timed action, then every system's advance
  *   viewLife(state, ctx?)          derived display data, { [systemId]: view }
  *
- * Systems live in src/game/systems and are registered by src/game/systems/index.js; the
- * contract for adding to them is at the top of src/game/registry.js.
+ * Systems live in src/game/systems and are registered by src/game/systems/index.ts; the
+ * contract for adding to them is at the top of src/game/registry.ts.
  *
  * State versions: `state.v` is the global schema version. A save without `v` is the
  * pre-registry format (v0). MIGRATIONS[n] upgrades a raw save from version n to n+1 before
@@ -70,7 +70,7 @@ const contextFor = (state: LifeState | null, ctx: LifeContextInit | undefined, s
  * already-valid state returns an equal deep copy. The beta seed is ₦5,000 and all needs at 50.
  *
  * ctx.trustedSave === true says the input is the server's OWN stored copy of the life. Only the
- * authoritative persistence adapter sets it (server/life-service.js settleCity, which the Worker
+ * authoritative persistence adapter sets it (server/life-service.ts settleCity, which the Worker
  * uses too). It is what allows a saved timed action that can no longer run to be settled at load —
  * its start charge refunded, or a metered one charged for the time used — and a stored `paid`
  * amount to be believed as written. Without the flag (a client's local copy, anything imported) an

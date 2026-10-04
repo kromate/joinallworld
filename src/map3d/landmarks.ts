@@ -1,7 +1,7 @@
 /**
  * OWNER: world
  * The landmark buildings of the city map: one small procedural building per venue scene kind
- * (src/game/content/venues.js `scene.kind` / `scene.variant`), each on its own plinth and shaped
+ * (src/game/content/venues.ts `scene.kind` / `scene.variant`), each on its own plinth and shaped
  * so that it says what it is before its label is read.
  *
  *   drawLandmark(g, kind, variant) → { top }       top = where the label pill sits
@@ -14,13 +14,13 @@ import { GLOW, GLASS } from '../scene/build.ts';
 import type { createBatch } from '../scene/build.ts';
 import { sign as drawSign } from '../scene/props.ts';
 
-/** A geometry batch (src/scene/build.js createBatch). */
+/** A geometry batch (src/scene/build.ts createBatch). */
 export type Batch = ReturnType<typeof createBatch>;
 /** The builder's drawing context: `b` the geometry batch, `w` the window batch. */
 export interface LandmarkContext { b: Batch; w: Batch }
 /** What drawLandmark reports: `top` is where the label pill sits. */
 export interface LandmarkDrawn { top: number }
-/** The options of src/scene/props.js sign() (its own inferred type leaves out `board`). */
+/** The options of src/scene/props.ts sign() (its own inferred type leaves out `board`). */
 interface SignOptions { size?: number; color?: string; ry?: number; lit?: boolean; board?: string; pad?: number; depth?: number }
 const sign: (b: Batch, x: number, y: number, z: number, text: string, options?: SignOptions) => void = drawSign;
 /** Draws one landmark kind and returns the height of its top above the plinth top. */

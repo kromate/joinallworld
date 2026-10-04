@@ -4,7 +4,7 @@
 // Chats: find a player and message them, the conversation list with unread counts, groups (create,
 // rename, add and remove members, leave). Every message you send appears at once as "Sending…",
 // then becomes sent, or "Not sent" with the reason and a Retry that can never duplicate it (the
-// outbox in src/game/social-model.js keeps one client id per message). Updates is the game's one
+// outbox in src/game/social-model.ts keeps one client id per message). Updates is the game's one
 // notice surface: friend requests, knocks, gifts and report receipts together with what the life
 // itself posts — rent, loan, promotions, illness, the Governor's news — newest first.
 //

@@ -3,7 +3,7 @@
  *
  * ONE SOURCE PER EVENT. The first-minute funnel — landed, named, quick_look_done, play_tapped, arrived,
  * first_activity_started/completed, the settle-in steps, save_character_offered/done, join_landed — is reported by the quick
- * start itself (src/quick-start/entry.js track → 'jaw:track'), with its own timings. Nothing here repeats it. This file adds
+ * start itself (src/quick-start/entry.ts track → 'jaw:track'), with its own timings. Nothing here repeats it. This file adds
  * only what no screen reports: every completed activity, the first trip and the first shift of a life, a new day in the
  * city (the missions' day count, which only ever goes up) and showing up at an event.
  *

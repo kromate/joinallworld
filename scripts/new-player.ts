@@ -19,7 +19,7 @@
  *   Last  the server is stopped and started again on the same data: every life, plot and record reads back identical.
  *
  * Every step asserts what it claims and prints one transcript line. `runNewPlayer({ log })` is also run by
- * server/new-player.test.js.
+ * server/new-player.test.ts.
  */
 import assert from 'node:assert/strict';
 import { mkdtemp, rm, readFile } from 'node:fs/promises';
@@ -28,8 +28,8 @@ import { join, resolve } from 'node:path';
 import { once } from 'node:events';
 import { fileURLToPath } from 'node:url';
 import { WebSocket } from 'ws';
-import { createServer } from '../server/server.js';
-import { useSaltSourceForTests } from '../server/life-service.js';
+import { createServer } from '../server/server.ts';
+import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife } from '../src/life.ts';
 import { lagosTime } from '../src/game/clock.ts';
 import { EVENTS } from '../src/game/content/events.ts';
@@ -47,7 +47,7 @@ import type { Server } from 'node:http';
 import type { LifeState } from '../src/types/index.ts';
 import type { ActionResponse, LifeResponse } from '../src/types/protocol.ts';
 
-/** What this script uses of the server (server/server.js is still untyped JavaScript). */
+/** What this script uses of the server (server/server.ts is still untyped JavaScript). */
 interface NewPlayerServer extends Server { closeAllConnections(): void }
 type Json = Record<string, unknown>;
 /** What every HTTP answer carries beside its JSON body. */
@@ -102,7 +102,7 @@ const naira = (value: number) => `₦${value.toLocaleString('en-NG')}`;
 const START = Date.UTC(2026, 0, 3, 9);
 /** Where Ada settles: the local government she picks from the list. */
 const LGA = 'ikeja';
-/** The table the share link invites to (src/tables/places.js): the corner table at the buka. */
+/** The table the share link invites to (src/tables/places.ts): the corner table at the buka. */
 const TABLE = 'buka-corner';
 export const SALT_PREFIX = 'new-player-salt';
 

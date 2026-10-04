@@ -554,10 +554,10 @@ test('every event the game’s screens report is in the catalogue, with every pr
       if (!reported.has(match[1]!)) reported.set(match[1]!, { files: new Set(), keys: new Set() });
       reported.get(match[1]!)!.files.add(file); for (const key of keys) reported.get(match[1]!)!.keys.add(key);
     }
-    // Events built as data and reported by the entry: { name: '…', props: { … } }, and the settle-in steps of src/quick-start/model.js.
+    // Events built as data and reported by the entry: { name: '…', props: { … } }, and the settle-in steps of src/quick-start/model.ts.
     for (const match of [...text.matchAll(/name: '([a-z0-9_]+)', props: \{/g), ...text.matchAll(/events\.push\('([a-z0-9_]+)'\)/g), ...(file === 'quick-start/model.ts' ? text.matchAll(/\d: '(settle_[a-z_]+)'/g) : [])]) { if (!reported.has(match[1]!)) reported.set(match[1]!, { files: new Set(), keys: new Set() }); reported.get(match[1]!)!.files.add(file); }
   }
-  // The funnel events of src/quick-start/model.js are built as data and reported by the application (src/app/state/app.ts).
+  // The funnel events of src/quick-start/model.ts are built as data and reported by the application (src/app/state/app.ts).
   for (const name of ['arrived', 'first_activity_started', 'first_activity_completed', 'settle_traits_done', 'settle_dream_done', 'settle_lottery_done', 'save_character_done']) assert.ok(reported.has(name), name);
   assert.ok(reported.size >= 30, `the scan found the game's events (${reported.size})`);
   for (const [name, found] of reported) {

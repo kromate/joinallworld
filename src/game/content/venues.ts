@@ -10,7 +10,7 @@
  *     zone: 'mainland' | 'island' | 'east',    // landmass; crossing the lagoon is a long trip
  *     map: { x, y },                           // position in percent of the city map (1000 × 700 units)
  *     ambient: [line, ...],                    // rotating one-liners for the venue card
- *     scene: { kind, variant?, anchors? },     // read by src/scene/venue-scenes.js. `variant` picks the look where one kind has
+ *     scene: { kind, variant?, anchors? },     // read by src/scene/venue-scenes.ts. `variant` picks the look where one kind has
  *                                              // several (club: speakeasy; worship: church | mosque). `anchors` pins a spot id —
  *                                              // including spots other systems add, such as 'work' — to a landmark of the scene.
  *     spots: { [spotId]: { id, label, icon?, caption?, activities: [activityDef, ...] } },

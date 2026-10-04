@@ -341,11 +341,13 @@ test('Cloudflare: only two nominated relay testers mint, global budget survives 
 });
 
 test('Recovery parity: Node and Worker share onboarding, social, blocking, civic, paid retry and authority refusals', async t=>{
- const {fixture:nodeFixture}=await import('../server/test-fixture.js');
+ const {fixture:nodeFixture}=await import('../server/test-fixture.ts');
  const edge=await fixture(t), node=await nodeFixture(t,{now:Date.now});
- async function sequence(f: Pick<Awaited<ReturnType<typeof fixture>>, 'device' | 'request'>){
+ /** What both hosts' fixtures offer the shared script (method syntax: the Node fixture takes a narrower cookie and body). */
+ interface Driver { device(name: string): Promise<{ id: string; cookie: string }>; request(path: string, body?: object | null, cookie?: string | null): Promise<Response> }
+ async function sequence(f: Driver){
    const a=await f.device('Ada'),b=await f.device('Bola'),out=[];
-   const call=async(path: string,body?: object | null,who: Device | undefined=a)=>{const r=await f.request(path,body,who?.cookie);const data=await r.json();return {status:r.status,...data};};
+   const call=async(path: string,body?: object | null,who: { cookie: string } | undefined=a)=>{const r=await f.request(path,body,who?.cookie);const data=await r.json();return {status:r.status,...data};};
    for(const who of [a,b])await call('/api/social/me',null,who);
    out.push((await call('/api/social/friends/request',{to:b.id,cityId:'lagos'})).code);
    out.push((await call('/api/social/friends/answer',{from:a.id,accept:true,cityId:'lagos'},b)).code);

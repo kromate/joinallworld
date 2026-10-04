@@ -1,12 +1,12 @@
 /**
  * OWNER: world
  * The flat ("Simple") city map: the SAME city as the 3D map, seen from straight above.
- * It is generated from the city pack (src/map3d/flat.js) — land, water, roads, bridges, local
+ * It is generated from the city pack (src/map3d/flat.ts) — land, water, roads, bridges, local
  * governments, venues, homes and estates are the pack's, at the pack's coordinates — and it uses
  * the 3D map's own label, name-plate, chip and button styles (src/map3d/map3d.css), so switching
  * between the two is tilting one map. It is also the fallback where WebGL is missing or lost.
  *
- * Same contract as the 3D map (src/map3d/map3d.js):
+ * Same contract as the 3D map (src/map3d/map3d.ts):
  *   createMap2D(container, { pack, cityId, world, onSelectVenue, onSelectGov, onSelectLga, onSelectHouse })
  *     → { kind: '2d', ready, setState, setPlayer, resize, worldChanged, setFriends, focusEstate, focusPlot, focusLga, view, diagnostics, destroy }
  *
@@ -37,7 +37,7 @@ import type { HouseStyle, PlotAddress } from '../types/index.ts';
 
 /** One house of an estate as /api/world/lga/:lga/estate/:n/houses sends it. `p` plot, `s` packed style, `u` upgrade-done time. */
 export interface HouseRecord { p: number; s: number; u: number; id?: string; name?: string; online?: boolean; you?: boolean }
-/** What a local government's summary says (server/routes/world.js): `occ` is the houses in each estate. */
+/** What a local government's summary says (server/routes/world.ts): `occ` is the houses in each estate. */
 export interface LgaCounts { residents?: number; houses: number; online: number; occ?: ArrayLike<number> }
 /** The shared house data of the maps (src/map3d/world-data.ts createWorldData), as far as the maps read it. */
 export interface WorldView {

@@ -1,5 +1,5 @@
 // The typed boundary of the Getting around panels to the one existing module they need without a
-// browser: the table of connection words (src/ui/link.js is pure strings, so a test reaches it
+// browser: the table of connection words (src/ui/link.ts is pure strings, so a test reaches it
 // under `node --test`; src/app/legacy/modules.ts, which has the same cast, pulls in the panel
 // registry and cannot be loaded there). When link.js is converted these lines are deleted.
 import { LINK_STATES as LINK_STATES_JS, linkWords as linkWordsJs } from '../../../ui/link.ts'

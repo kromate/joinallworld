@@ -6,7 +6,7 @@
 //   - a paid request keeps its id for a retry, so a lost answer repeats the SAME request (applied once);
 //   - after a success the life is re-synced so the wallet shows the new balance.
 // The cache is reactive, so a screen reads it and redraws by itself; nothing here calls render.
-// Rules and validation live on the server (server/civic) and in src/game/systems/civic.js.
+// Rules and validation live on the server (server/civic) and in src/game/systems/civic.ts.
 import { reactive, shallowReactive } from 'vue'
 import type { ToastKind } from '../../types/panel.ts'
 import type { FetchJson } from '../../types/client.ts'

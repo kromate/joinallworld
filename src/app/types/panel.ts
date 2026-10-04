@@ -85,7 +85,7 @@ export interface PanelApi {
 export interface PanelMeta {
   id: string
   title: string
-  /** Emoji or short text for a Sim tab. The Phone draws its own icon for the id (src/ui/phone/icons.js). */
+  /** Emoji or short text for a Sim tab. The Phone draws its own icon for the id (src/ui/phone/icons.ts). */
   icon?: string
   placement: PanelPlacement
   /** Sort key within its placement (default 100). */

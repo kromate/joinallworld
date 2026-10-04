@@ -2,7 +2,7 @@
  * OWNER: world
  * What the atlas says about a region: the model behind its sheet and its row in the list.
  * Pure — no Three.js, no DOM. Everything comes from the registry (../regions.js), the links
- * between cities (src/game/content/world.js) and the map data's own names.
+ * between cities (src/game/content/world.ts) and the map data's own names.
  *
  *   regionInfo(ref, context) → RegionInfo
  *   listOrder(a, b)          open first, then planned, then by name

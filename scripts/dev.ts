@@ -1,11 +1,11 @@
 import { once } from 'node:events';
 import type { AddressInfo } from 'node:net';
 import type { Server } from 'node:http';
-import { createServer as createGameServer } from '../server/server.js';
+import { createServer as createGameServer } from '../server/server.ts';
 import { createServer as createViteServer } from 'vite';
 import type { ViteDevServer } from 'vite';
 
-/** What this script uses of the game server's HTTP server (server/server.js is untyped). */
+/** What this script uses of the game server's HTTP server (server/server.ts is untyped). */
 interface GameServer extends Server {
   wss: { clients: Iterable<{ terminate(): void }> };
   store: { close(): Promise<void> };

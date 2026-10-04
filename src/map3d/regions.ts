@@ -117,7 +117,7 @@ export function cityAccess(cityId: string, { current = null, held = [] }: { curr
 
 // ---- The atlas: world → continent → country → state (src/map3d/geo) -------------------------------------
 /**
- * WHAT IS OPEN, WHAT IS PLANNED, WHAT IS COMING SOON — one registry, read by the atlas (src/map3d/geo/atlas.js).
+ * WHAT IS OPEN, WHAT IS PLANNED, WHAT IS COMING SOON — one registry, read by the atlas (src/map3d/geo/atlas.ts).
  *
  * @typedef {'open' | 'planned' | 'soon' | null} RegionStatus
  *   'open'     in full colour; the only status that can be entered
@@ -151,7 +151,7 @@ export const CONTINENTS: Readonly<Record<ContinentId, Continent>> = Object.freez
 });
 
 const state = (zone: ZoneId, teaser: string, more: RegionEntry = {}): RegionEntry => ({ status: 'soon', zone, teaser, ...more });
-/** Every first-level unit of Nigeria, by the ids of src/map3d/geo/data/nigeria.js. */
+/** Every first-level unit of Nigeria, by the ids of src/map3d/geo/data/nigeria.ts. */
 const NIGERIA_STATES: Record<string, RegionEntry> = {
   lagos: state('sw', 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', { status: 'open', city: 'lagos' }),
   oyo: state('sw', 'Ibadan on its seven hills, old Oyo and the widest spread of brown roofs in the country.', { status: 'planned', city: 'ibadan' }),

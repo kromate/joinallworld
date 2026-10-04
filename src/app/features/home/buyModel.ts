@@ -1,7 +1,7 @@
 // What Buy mode and the home chip decide, worked out from the life: the placement ghost, why a
 // piece cannot be placed or bought, what the room's status line says. Pure, so it is tested
 // without a browser. The server validates every placement again; the ghost's green/red state uses
-// the same pure rules (src/game/home-layout.js) so the player sees the answer before pressing Place.
+// the same pure rules (src/game/home-layout.ts) so the player sees the answer before pressing Place.
 import type { FurnitureDefinition } from '../../../types/content.ts'
 import type { LifeState, PlacedItem } from '../../../types/life.ts'
 import type { PanelView } from '../../types/panel.ts'

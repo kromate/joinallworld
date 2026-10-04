@@ -1,4 +1,4 @@
-// The typed boundary to the civic content tables (src/game/content/civic.js): plain data, no
+// The typed boundary to the civic content tables (src/game/content/civic.ts): plain data, no
 // functions. They are imported as they are; only their types are declared here. When the table is
 // converted these lines are deleted and the importers point at the real file.
 import {

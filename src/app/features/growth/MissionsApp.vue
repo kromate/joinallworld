@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Missions: the Phone app. Three daily and three weekly missions with their progress, what each
 // pays, a Go button, the weekly stamp card and the count of days lived. Rules and numbers live in
-// src/game/systems/missions.js and content/missions.js; this only shows them.
+// src/game/systems/missions.ts and content/missions.js; this only shows them.
 //
 // Collect and Swap are 'missions.claim' and 'missions.reroll': the pressed control says so until
 // the server answers, and the answer — not the press — changes the numbers.

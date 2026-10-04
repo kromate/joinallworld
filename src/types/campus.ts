@@ -175,7 +175,7 @@ export interface TrailStopDefinition {
 
 /**
  * A Student Union table (games.js STUDENT_UNION_TABLES): the 'unilag' rows of the one table registry
- * (src/tables/places.js), so `id` is a table id of the shared table framework (growth.ts TableSummary.id).
+ * (src/tables/places.ts), so `id` is a table id of the shared table framework (growth.ts TableSummary.id).
  */
 export interface StudentUnionTable {
   id: string
@@ -666,7 +666,7 @@ export interface UnilagShuttleView {
   active: { origin: ShuttleStopId; destination: ShuttleStopId; refundable: false } | null
 }
 
-// ---- HTTP: /api/campus (server/routes/campus.js) ---------------------------------------------------
+// ---- HTTP: /api/campus (server/routes/campus.ts) ---------------------------------------------------
 //
 // The shared half of the campus: the weekly Student Union election (kept in the `campus`
 // collection of the server's store) and the leaderboards, which are computed on every read from

@@ -1,6 +1,6 @@
 // The one Report a problem form of the page: the draft outlives the component (closing the phone
 // does not lose the text), and what loads is told to the Phone, whose red badge counts replies
-// not read yet (src/ui/phone/reports.js).
+// not read yet (src/ui/phone/reports.ts).
 import { markReportsRead, noteFiled, noteReports } from '../../../ui/phone/reports.ts'
 import { useApp } from '../../state/app.ts'
 import { createSupport } from './supportModel.ts'

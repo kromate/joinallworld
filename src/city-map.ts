@@ -6,7 +6,7 @@
  *
  * WHEN IT IS USED: the 3D miniature (src/map3d) is the city map wherever it can run. This one is
  * the fallback where WebGL is unavailable or its context is lost, the map of a city that has no
- * 3D pack yet, and the player's own choice ("Simple map"). src/map3d/index.js decides and swaps;
+ * 3D pack yet, and the player's own choice ("Simple map"). src/map3d/index.ts decides and swaps;
  * both maps answer to the same contract below.
  *
  * A TRIP is shown here too, without any animation loop: a line from where the trip started to

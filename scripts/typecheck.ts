@@ -40,7 +40,7 @@ export const PROJECTS: Record<string, (file: string) => boolean> = {
   engine: (file) => !isTest(file) && isEngine(file),
   client: (file) => !isTest(file) && !isEngine(file) && (file.startsWith('src/') || file === 'env.d.ts'),
   server: (file) => !isTest(file) && (file.startsWith('server/') || file.startsWith('scripts/') || file.startsWith('vite.config.') || file === 'deploy/local.ts'),
-  worker: (file) => !isTest(file) && (/^deploy\/[^/]+\.ts$/.test(file) && file !== 'deploy/local.ts' || file === 'server/protocol.js' || file === 'server/life-service.js'),
+  worker: (file) => !isTest(file) && (/^deploy\/[^/]+\.ts$/.test(file) && file !== 'deploy/local.ts' || file === 'server/protocol.ts' || file === 'server/life-service.ts'),
   test: (file) => isTest(file),
 }
 /** Codes that only say "this JavaScript has no type annotations yet". Everything else is worth reading. */

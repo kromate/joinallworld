@@ -9,9 +9,9 @@
  * numbers and booleans only) — but add it here so its properties are checked by name.
  *
  * ONE SOURCE PER EVENT. `from` names the one place that reports it: 'quick-start' (the first minute and the landing of a
- * link: src/quick-start/entry.js track), 'world' (where you live), 'growth' (missions, tables, sharing, outreach) — all
+ * link: src/quick-start/entry.ts track), 'world' (where you live), 'growth' (missions, tables, sharing, outreach) — all
  * three arrive as `jaw:track` DOM events, as do those of 'campus' (the UNILAG campus: src/life-main.js, from the server's state) — 'client' (derived here from the server's states: ./funnel.ts and ./core.ts) and
- * 'server' (server/telemetry/instrument.js). src/telemetry/telemetry.test.ts reads the game's sources and fails if a
+ * 'server' (server/telemetry/instrument.ts). src/telemetry/telemetry.test.ts reads the game's sources and fails if a
  * `track('…')` call names an event that is not listed here, or carries a property this list would drop.
  *
  * Property rules, enforced by src/telemetry/scrub.ts for every event: numbers, booleans and short
@@ -40,7 +40,7 @@ export const EVENTS: Record<string, EventSpec> = {
   day2_return: { from: 'client', props: {}, when: 'Once per device: the first session_start on the day after first_seen_date.', why: 'Last step of the activation funnel.' },
   consent_choice: { from: 'client', props: { choice: 'string', source: 'string' }, when: 'The player chose Accept on the consent sheet or in Settings (a Reject sends nothing).', why: 'How many people accept, and from where.' },
 
-  // ---- The first minute (reported by the quick start: src/quick-start/entry.js; `ms` = milliseconds since this device landed)
+  // ---- The first minute (reported by the quick start: src/quick-start/entry.ts; `ms` = milliseconds since this device landed)
   landed: { from: 'quick-start', props: { join: 'boolean', ms: 'number' }, when: 'Once per device: the landing screen (a name, a quick character, Play) was shown to a browser with no session. join: it arrived by an invite or share link.', why: 'Top of the activation funnel.' },
   named: { from: 'quick-start', props: { edited: 'boolean', length: 'number', ms: 'number' }, when: 'Play was tapped with this name. Only whether the suggestion was edited and how long the name is — never the name.', why: 'Do people keep the suggested name?' },
   quick_look_done: { from: 'quick-start', props: { shuffles: 'number', preset: 'string', edited: 'boolean', ms: 'number' }, when: 'Play was tapped with this character: how many shuffles, which one-tap preset (if any), whether "More options" was opened.', why: 'How much character choice the landing needs.' },
@@ -73,7 +73,7 @@ export const EVENTS: Record<string, EventSpec> = {
   estate_viewed: { from: 'world', props: { lga: 'string' }, when: 'A local government’s page (its estates and residents directory) was opened.', why: 'Do people look around their area?' },
   neighbour_card_opened: { from: 'world', props: { from: 'string' }, when: 'A resident’s card was opened (from: directory | map).', why: 'Does the directory lead to people?' },
 
-  // ---- Missions, tables, sharing and outreach (the growth panels: src/ui/panels/*, src/tables/client.js)
+  // ---- Missions, tables, sharing and outreach (the growth panels: src/ui/panels/*, src/tables/client.ts)
   mission_completed: { from: 'growth', props: { kind: 'string' }, when: 'A finished mission was collected (kind: life | discovery | social).', why: 'Which missions get done.' },
   table_sat: { from: 'growth', props: { game: 'string' }, when: 'The player sat down at a game table.', why: 'Table adoption per game.' },
   match_started: { from: 'growth', props: { game: 'string', vs: 'string' }, when: 'A table game the player sits in began (vs: player | bot).', why: 'Real matches against people.' },
@@ -91,7 +91,7 @@ export const EVENTS: Record<string, EventSpec> = {
   email_optin_confirmed: { from: 'growth', props: {}, when: 'The address was confirmed from its e-mail.', why: 'E-mail opt-in funnel.' },
   unsubscribed: { from: 'growth', props: { channel: 'string' }, when: 'A channel was switched off in the game (channel: push | email).', why: 'Are messages welcome?' },
 
-  // ---- People (recorded by the server for players who accepted: server/telemetry/instrument.js) ---
+  // ---- People (recorded by the server for players who accepted: server/telemetry/instrument.ts) ---
   friend_request_sent: { from: 'server', props: {}, when: 'A friend request was stored (not a repeat).', why: 'Start of the friend loop.' },
   friend_made: { from: 'server', props: { role: 'string' }, when: 'A friend request was accepted; sent for each of the two players who has accepted analytics (role: accepter | asker).', why: 'Meaningful interaction; invite → friend conversion.' },
   house_knock_sent: { from: 'server', props: {}, when: 'A player knocked at another player’s home (not a repeat).', why: 'House invites as they exist today.' },

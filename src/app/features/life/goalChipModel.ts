@@ -1,5 +1,5 @@
 // What the goal chip (HUD) says and does, worked out from view.goals. Pure, so it is tested
-// without a browser. All rules live in src/game/systems/goals.js.
+// without a browser. All rules live in src/game/systems/goals.ts.
 import type { GoalChip, GoalsView } from '../../../types/view.ts'
 
 /** What tapping the chip does: open a panel, walk somewhere, or (a guide with neither) open the community. */

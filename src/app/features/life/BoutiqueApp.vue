@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Boutique (Phone app): buy hairstyles, outfits and fabrics with cash and wear them.
-// Rules and prices: src/game/systems/onboarding.js ('onboarding.boutique-buy', 'onboarding.set-look')
+// Rules and prices: src/game/systems/onboarding.ts ('onboarding.boutique-buy', 'onboarding.set-look')
 // and content/traits.js (BOUTIQUE_PRICES — original beta prices). Draws view.onboarding.boutique.
 //
 // The 3D preview at the top shows your Sim. "Try on" puts an item on the preview only — nothing is

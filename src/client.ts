@@ -1,6 +1,6 @@
 /**
  * Client model: the browser's read-only mirror of the server-held life, plus networking.
- * DOM-free so it can be tested in Node (src/client.test.js).
+ * DOM-free so it can be tested in Node (src/client.test.ts).
  *
  * The server is authoritative. This module never applies a rule locally: while offline or
  * without a session, command() refuses, sends nothing and changes nothing — the cached state
@@ -139,7 +139,7 @@ const IDLE_POLL_MS = 60000;
 /**
  * What this client may send for an action. One rule today: SETTLING IN ('onboarding.home') carries the local government
  * and nothing else — { lga, via?, stay? }. The rules still accept the older rented-home form { house } from old scripts and
- * the Worker (src/game/systems/onboarding.js), but the game's own client cannot send it: a `house` (or any other key) put
+ * the Worker (src/game/systems/onboarding.ts), but the game's own client cannot send it: a `house` (or any other key) put
  * in that payload by a panel never leaves the device, and the server then answers 'lga_required'.
  */
 const MOVE_IN_KEYS = ['lga', 'via', 'stay'];

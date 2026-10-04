@@ -2,7 +2,7 @@
  * A lazily loaded piece of the client (a code chunk) that may fail to arrive, with a truthful
  * state and bounded retries. Pure: no DOM, timers are injectable.
  *
- *   const piece = createLazyLoader(() => import('./community.js'), { onState });
+ *   const piece = createLazyLoader(() => import('./community.ts'), { onState });
  *   const module = await piece.load();   // the loaded value, or null if it is not available (yet)
  *
  * STATE  piece.state = { status, attempt, attempts, retryInMs, error }

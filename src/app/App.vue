@@ -43,7 +43,7 @@ const topCover = (): (Element | null)[] => [root.value?.querySelector('.hud-bar'
 const hudRows = (): (Element | null)[] => (window.innerWidth <= 720 ? ['.life-quick', '.life-alerts', '.life-goal'].map((selector) => root.value?.querySelector(selector) ?? null) : [])
 
 // ---- keys ----------------------------------------------------------------------------------
-// The same map as the existing shell (src/ui/keys.js). Walking and the scene camera belong to the
+// The same map as the existing shell (src/ui/keys.ts). Walking and the scene camera belong to the
 // scene host: in the venue view with no sheet open the movement keys are forwarded as 'jaw:key'.
 function onKey(event: KeyboardEvent): void {
   const target = event.target instanceof Element ? event.target : null

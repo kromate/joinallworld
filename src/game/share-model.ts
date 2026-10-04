@@ -73,7 +73,7 @@ export function shareText(facts: unknown, link = ''): string {
   return lines.join('\n');
 }
 
-/** What the picture card shows: plain fields for the canvas painter (src/ui/share.js). */
+/** What the picture card shows: plain fields for the canvas painter (src/ui/share.ts). */
 export interface ShareCard {
   kicker: string
   headline: string

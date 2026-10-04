@@ -7,14 +7,14 @@
  * WHO FREES WHAT
  *   Meshes made through the kit (box, round, sphere, mesh) share the kit's geometries and
  *   materials; kit.dispose() frees those. A scene may instead bake its own merged meshes
- *   (src/scene/build.js): it then returns dispose(), which the host calls when the player
+ *   (src/scene/build.ts): it then returns dispose(), which the host calls when the player
  *   leaves the venue and when the host itself is disposed. Anything that must outlive one scene
  *   (shared materials) registers a clean-up with kit.onDispose(fn).
  */
 import * as THREE from 'three';
 import type { Colour } from './types.ts';
 
-/** matte: build Lambert materials instead of Standard ones (the cheaper-scenery flag, src/scene/look.js matteScenery(); default off). */
+/** matte: build Lambert materials instead of Standard ones (the cheaper-scenery flag, src/scene/look.ts matteScenery(); default off). */
 export interface Kit {
   THREE: typeof THREE;
   matte: boolean;

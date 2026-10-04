@@ -34,7 +34,7 @@
  *
  * Nothing here animates by itself: a pose is chosen when the avatar is drawn or posed (POSES).
  * Rules for everything under src/scene/: procedural geometry only, no downloaded models or
- * textures, no animation loops — the host (src/venue-world.js) draws on demand.
+ * textures, no animation loops — the host (src/venue-world.ts) draws on demand.
  */
 import type * as THREE from 'three';
 import { createBatch, sceneMaterials, kitResources, releaseObjects, hash, GLOW } from './build.ts';

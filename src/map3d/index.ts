@@ -1,17 +1,17 @@
 /**
  * OWNER: world
  * The city view the host talks to (src/life-main.js). It shows the 3D city map where it can and
- * the 2D schematic (src/city-map.js) where it cannot, behind one unchanged contract:
+ * the 2D schematic (src/city-map.ts) where it cannot, behind one unchanged contract:
  *
  *   createCityView(container, { cityId, onSelectVenue, onSelectGov, onSelectNeighbour, onTripDue, onNotice })
  *     → { ready, kind, setCity(id), setState(state), setPlayer(player), setShown(shown), resize(), arrive(done), diagnostics(), destroy() }
  *
  * WHICH MAP
- *   3D   the city has a pack in the region registry (src/map3d/regions.js), WebGL is available and
+ *   3D   the city has a pack in the region registry (src/map3d/regions.ts), WebGL is available and
  *        the player has not asked for the simple map
  *   2D   otherwise — and at once if the WebGL context is lost. The 2D map is also the choice of
  *        the "Simple map" button, kept in localStorage; it is the plainest, lightest view. It is
- *        the SAME city pack seen from above (src/map3d/map2d.js, flat.js), not a second drawing.
+ *        the SAME city pack seen from above (src/map3d/map2d.ts, flat.js), not a second drawing.
  *
  * ONE HEAVY CONTEXT AT A TIME: the venue scene has its own WebGL context and draws only on
  * demand; so does the map, and only while it is shown. When the map has been out of sight for
@@ -96,7 +96,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
   const ui: Record<string, unknown> = {};                                   // everything the Map panel has said, replayed to a map mounted later
   const onUi = (event: Event) => { const detail = detailOf(event as CustomEvent<unknown>); if (detail.layer === 'city' || detail.layer === 'world') layer = detail.layer; const { layout, ...rest } = detail; Object.assign(ui, rest); };
   window.addEventListener('jaw:map-ui', onUi);
-  // Houses and residents for the part of the city in view: one cache, shared by whichever map is mounted (src/map3d/world-data.js).
+  // Houses and residents for the part of the city in view: one cache, shared by whichever map is mounted (src/map3d/world-data.ts).
   let friends: string[] = [];
   const world = fetchJson ? createWorldData({ fetchJson, cityId: firstCity, onChange: () => impl?.worldChanged?.() }) : null;
   // A panel says the player's own place in the world changed (their local government, their house): what is cached is stale.
@@ -144,7 +144,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
       }
     }
     if (!next) {
-      // The flat map is drawn from the same city pack as the 3D one (src/map3d/map2d.js). Only a city that
+      // The flat map is drawn from the same city pack as the 3D one (src/map3d/map2d.ts). Only a city that
       // has no pack at all (a legacy preview) falls back to the old hand-drawn schematic, which a pack never reaches.
       const pack = hasCityPack(cityId) ? await loadCityPack(cityId).catch(() => null) : null;
       if (ticket !== mounting) return;

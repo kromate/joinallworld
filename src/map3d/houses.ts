@@ -2,7 +2,7 @@
  * OWNER: world
  * THE HOUSES ON THE 3D MAP, at whatever scale the city has grown to.
  *
- * Every player has a house on a plot of an estate (src/game/content/world.js); a local government
+ * Every player has a house on a plot of an estate (src/game/content/world.ts); a local government
  * holds up to 100,352 of them. Nothing here draws a house per DOM node or a mesh per house:
  *
  *   FAR      the whole city: per local government, its estates are gathered into at most
@@ -35,7 +35,7 @@ import type * as THREE from 'three';
 import type { CityPack } from './types.ts';
 import type { WorldData, WorldHouse } from './world-data.ts';
 
-/** What createHouses needs of the scene kit (src/scene/kit.js): Three.js itself, which is loaded lazily and so is never imported here as a value. */
+/** What createHouses needs of the scene kit (src/scene/kit.ts): Three.js itself, which is loaded lazily and so is never imported here as a value. */
 export interface Kit { THREE: typeof THREE }
 /** The level of detail the layer draws at: the whole city as blocks, one local government as pads, the estates in view as houses. */
 export type HouseLevel = 'far' | 'near' | 'close';

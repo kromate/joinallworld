@@ -2,10 +2,10 @@
  * Social wire shapes: everything `/api/social/*` returns and accepts, the social frames on
  * `/socket`, and the browser's outbox entry.
  *
- * Derived from server/social/service.js (the rules), server/routes/social.js and
- * server/ws/social.js (the two adapters), server/social/presence.js, and — for what the browser
+ * Derived from server/social/service.ts (the rules), server/routes/social.ts and
+ * server/ws/social.ts (the two adapters), server/social/presence.ts, and — for what the browser
  * reads — src/ui/panels/social-client.js, messages.js, people.js, contacts.js, invite.js and
- * src/game/social-model.js.
+ * src/game/social-model.ts.
  *
  * Conventions of every social route: it needs the session cookie; malformed input is HTTP 400
  * `{ error }`; a refusal for a game reason is HTTP 200 `{ ok: false, code, reason }`; a success is
@@ -23,7 +23,7 @@ export type Done<Code extends string, Extra = unknown> = { ok: true; code: Code 
 /** Set on a success that changed nothing because it had already been applied. */
 export interface Repeat { duplicate?: true }
 
-/** server/social/presence.js, as reported by whereabouts(). */
+/** server/social/presence.ts, as reported by whereabouts(). */
 export type PresenceStatus = 'online' | 'away' | 'reconnecting' | 'offline'
 export interface Whereabouts {
   status: PresenceStatus
@@ -230,7 +230,7 @@ export interface KnockBody { host: string; cityId: CityId }
 export interface KnockAnswerBody { visitor: string; answer: 'accept' | 'decline' }
 /** A guest leaves (`guest` omitted) or the host asks `guest` to leave. */
 export interface HouseLeaveBody { host: string; guest?: string }
-/** `action` is an id from PLAYER_ACTIONS (src/game/content/npcs.js): hello, gist, joke, shade. */
+/** `action` is an id from PLAYER_ACTIONS (src/game/content/npcs.ts): hello, gist, joke, shade. */
 export interface InteractBody { action: string; cityId: CityId; clientId: TimedId }
 export interface BaeAskBody { id: string; cityId: CityId }
 export interface BaeAnswerBody { from: string; accept: boolean; cityId: CityId }
@@ -248,12 +248,12 @@ export type LabelRefusal = TextRefusal | 'links_not_allowed' | 'contact_not_allo
 export type FriendAnswerResult =
   | Done<'accepted', { player: PlayerRef } & Repeat>
   | Done<'declined', { player: PlayerRef }>
-  | Refusal<'no_request' | 'friends_full'>
+  | Refusal<'no_request' | 'friends_full' | (string & {})>
 /** A request to someone who already asked the caller is answered as an accept. */
 export type FriendRequestResult =
   | Done<'requested' | 'already_friends', { player: PlayerRef } & Repeat>
   | FriendAnswerResult
-  | Refusal<OtherPlayerRefusal | 'rate_limited' | 'too_many_requests' | 'inbox_full' | 'friends_full'>
+  | Refusal<OtherPlayerRefusal | 'rate_limited' | 'too_many_requests' | 'inbox_full' | 'friends_full' | (string & {})>
 export type FriendRemoveResult = Done<'removed', Repeat>
 export type BlockResult = Done<'blocked', Repeat> | Refusal<'self' | 'unknown_player' | 'block_list_full'>
 export type UnblockResult = Done<'unblocked'>
@@ -261,7 +261,7 @@ export type PlayerReportResult = Done<'reported', { receipt: PlayerReportReceipt
 export type ConversationsResult = Done<'ok', { conversations: Conversation[]; unread: number }>
 /** At most 50 messages after `?after=<seq>`; `read` is the caller's read marker. */
 export type HistoryResult = Done<'ok', { conv: Conversation; messages: Message[]; read: number }> | Refusal<'not_a_member'>
-export type ReadResult = Done<'read', { conv: Conversation }> | Refusal<'not_a_member'>
+export type ReadResult = Done<'read', { conv: Conversation }> | Refusal<'not_a_member' | (string & {})>
 export type SendMessageResult =
   | Done<'sent', { conv: Conversation; message: Message } & Repeat>
   | Refusal<OtherPlayerRefusal | TextRefusal | 'not_a_member' | 'rate_limited' | 'new_chat_limit' | 'awaiting_reply'>
@@ -279,7 +279,7 @@ export type HouseResult =
 export type KnockResult =
   | Done<'inside', { house: HouseView; duplicate: true }>
   | Done<'knocking', { expiresAt: number } & Repeat>
-  | Refusal<OtherPlayerRefusal | 'knock_cooldown' | 'host_offline' | 'host_reconnecting' | 'host_not_home' | 'house_full' | 'rate_limited'>
+  | Refusal<OtherPlayerRefusal | 'knock_cooldown' | 'host_offline' | 'host_reconnecting' | 'host_not_home' | 'house_full' | 'rate_limited' | (string & {})>
 /**
  * THE INVITE LANDING: who the caller is joining and how that player can be reached right now.
  *   'joined'        the caller is a brand-new guest and the inviter is in a public venue: the guest was
@@ -298,7 +298,7 @@ export type JoinResult =
   | Refusal<'self' | 'unknown_player' | 'rate_limited'>
 export type KnockAnswerResult =
   | Done<'accepted' | 'declined', { house: HouseView } & Repeat>
-  | Refusal<'knock_expired' | 'already_answered' | 'host_not_home' | 'house_full'>
+  | Refusal<'knock_expired' | 'already_answered' | 'host_not_home' | 'house_full' | (string & {})>
 export type HouseLeaveResult = Done<'left', Repeat> | Refusal<'host_only'>
 /**
  * `code` is the rules engine's ('interacted', or another success such as a joke that flopped);
@@ -354,7 +354,7 @@ export interface SocialHttpRoutes {
   'POST /api/social/transfers': { body: TransferBody; response: Ok<TransferResult>; errors: SocialPost | OnceErrorCode | 'invalid_player' | 'invalid_city' | 'invalid_amount' }
 }
 
-// ---- socket: client → server (server/ws/social.js) ----------------------------------------------
+// ---- socket: client → server (server/ws/social.ts) ----------------------------------------------
 //
 // Each is answered on the sending socket. The browser sends only `people-list` (and `join` with a
 // hostId): src/ui/panels/social-client.js does every other write over HTTP so that it always
@@ -379,11 +379,11 @@ export interface DmSentFrame { type: 'dm-sent'; clientId?: string; conv: Convers
 /** Reply to a refused OR malformed `dm-send` (`code` is then the 400 code, with a fixed `reason`). */
 export interface DmFailedFrame { type: 'dm-failed'; clientId?: string; code: string; reason: string }
 /** Reply to `dm-read`: the ReadResult spread into the frame. */
-// INCONSISTENT: server/ws/social.js:9 documents `dm-read-ok { conv }` as if `conv` were the id; it is the whole
+// INCONSISTENT: server/ws/social.ts:9 documents `dm-read-ok { conv }` as if `conv` were the id; it is the whole
 // conversation summary, with `ok` and `code` beside it, and a refusal (`not_a_member`) arrives under this same type.
 export type DmReadOkFrame = { type: 'dm-read-ok' } & ReadResult
 /** Reply to `people-list`. */
-// INCONSISTENT: server/ws/social.js:10 documents `people { venue, self, players, count }`; the frame also carries
+// INCONSISTENT: server/ws/social.ts:10 documents `people { venue, self, players, count }`; the frame also carries
 // `ok`, `code` and `cityId`, and src/ui/panels/social-client.js:201 drops the frame unless `ok` is set.
 export type PeopleFrame = { type: 'people' } & PeopleListing
 /** Reply to `friend-request` and `friend-answer`. */
@@ -427,7 +427,7 @@ export interface CallFailure {
   transport: boolean
 }
 
-/** An unconfirmed message in the outbox (src/game/social-model.js createOutbox). */
+/** An unconfirmed message in the outbox (src/game/social-model.ts createOutbox). */
 export interface OutboxEntry {
   clientId: string
   /** Conversation id, or the provisional `to:<publicId>` of a chat that does not exist yet. */

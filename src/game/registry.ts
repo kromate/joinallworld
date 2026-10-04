@@ -8,8 +8,8 @@
  * HOW TO ADD OR EXTEND A SYSTEM
  * -----------------------------
  * Every system file in `src/game/systems/` is already imported and registered, in a
- * fixed order, by `src/game/systems/index.js`. You own your file(s); you never edit the
- * index, this registry, `src/life.js` or another owner's file.
+ * fixed order, by `src/game/systems/index.ts`. You own your file(s); you never edit the
+ * index, this registry, `src/life.ts` or another owner's file.
  *
  * A system is a default-exported plain object:
  *
@@ -80,7 +80,7 @@
  *   cityId  the city this life belongs to
  *   rng     () => float in [0,1), seeded from the action ID or the settlement interval, so
  *           a replayed request or a re-run test produces the same outcome. On a server the seed
- *           is also keyed with a secret held per life (server/life-service.js) that no client
+ *           is also keyed with a secret held per life (server/life-service.ts) that no client
  *           ever sees, so a player cannot work out an outcome in advance or pick an action ID
  *           that produces the one they want. The secret is consumed by makeContext and is not
  *           part of ctx: a system cannot read it, store it or show it.
@@ -90,7 +90,7 @@
  *   wallet, needs, skills, inventory, activities, arrive(state, venue, ctx, { spot?, mode? })) and
  *   any file in content/.
  * WHAT YOU MAY NOT IMPORT
- *   another feature system (systems/*.js other than through api.js), src/life.js, anything
+ *   another feature system (systems/*.js other than through api.js), src/life.ts, anything
  *   under src/ui, src/scene or server/, Node built-ins, or browser globals.
  *
  * STATE
@@ -98,7 +98,7 @@
  *   Legacy top-level keys are grandfathered to their owning system (cash → wallet,
  *   needs → needs, job/completedShifts → career, homeOwned → property, location/spot/
  *   activeAction/name/message → core/activities). `state.v` is the global schema version,
- *   owned by src/life.js; do not bump it. If you change the shape of your own slice, make
+ *   owned by src/life.ts; do not bump it. If you change the shape of your own slice, make
  *   your sanitize() accept the older shape — that is your migration.
  *   A top-level key outside every system's stateKeys cannot be written silently: the engine
  *   throws `Undeclared state key` the moment an action, a settlement or a load leaves one behind.

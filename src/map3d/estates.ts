@@ -2,7 +2,7 @@
  * OWNER: world
  * WHERE EVERY HOUSE STANDS — computed from the city pack alone.
  *
- * A local government has 512 estates of 14 streets × 14 plots (src/game/content/world.js). The
+ * A local government has 512 estates of 14 streets × 14 plots (src/game/content/world.ts). The
  * server hands out addresses (`lga/estate/street/plot`) and never positions; this file turns an
  * address into a point on the map, the same way on every device and in both maps, so a street of
  * houses can be drawn without fetching anything about the houses that are not there.

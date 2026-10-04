@@ -1,5 +1,5 @@
 // What the Missions app says, worked out from view.missions. Pure, so it is tested without a
-// browser. The rules and numbers are in src/game/systems/missions.js and content/missions.js.
+// browser. The rules and numbers are in src/game/systems/missions.ts and content/missions.js.
 import type { MissionRow, MissionSet, MissionsView } from '../../../types/view.ts'
 import type { PhoneNotification } from '../../types/panel.ts'
 

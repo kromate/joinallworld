@@ -7,7 +7,7 @@ import { systems, emit, modify } from './registry.ts';
 import { makeContext } from './util.ts';
 import { APPEARANCE, TRAITS, DREAMS, LOTTERY, START_HOMES, START_NEEDS, MOODS, BOUTIQUE_PRICES, DREAM_REWARD, DREAM_TARGETS } from './content/traits.ts';
 import { STARTER_GOALS, STARTER_INTRO, WISHES, PERKS, WISH_REROLLS_PER_DAY } from './content/goals.ts';
-import { fixture } from '../../server/test-fixture.js';
+import { fixture } from '../../server/test-fixture.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { LifeContext, LifeState, LotteryId, SkillId } from '../types/life.ts';
 import type { EngineEvent, EngineEventMap, ModifierKey, ModifierMap } from '../types/registry.ts';
@@ -654,7 +654,7 @@ test('server end to end: onboarding, goal rewards and perks are authoritative an
   const roll = { actionId: `100000:${crypto.randomUUID()}`, type: 'onboarding.lottery', payload: {} };
   const rolled = await f.action(a.cookie, roll);
   assert.equal(rolled.code, 'rolled');
-  const outcome = LOTTERY[rolled.state.onboarding.lottery.id as LotteryId];
+  const outcome = LOTTERY[rolled.state.onboarding.lottery?.id as LotteryId];
   const replay = await f.action(a.cookie, roll);
   assert.equal(replay.duplicate, true); assert.deepEqual(replay.state.onboarding.lottery, rolled.state.onboarding.lottery);
   assert.equal((await f.action(a.cookie, { type: 'onboarding.lottery', payload: {} })).code, 'already_rolled');

@@ -11,7 +11,7 @@
 //
 // Open with a destination: shell.open('map', { destination: venueId }); with the country map:
 // shell.open('map', { layer: 'world' }). Esc with a card open goes back to the map; a second Esc
-// leaves the Map. Everything shown comes from view.travel (src/game/systems/travel.js).
+// leaves the Map. Everything shown comes from view.travel (src/game/systems/travel.ts).
 //
 // MAP LAYERS (Moving · Billboards · Sea · Neighbours · Gov): each toggle draws one civic overlay
 // on the city map from its own server response (GET /api/civic/ads and /gov, cached by the civic

@@ -12,6 +12,6 @@ export default defineConfig({
   },
   // voice-test.html is a development fixture (served by `npm run dev` only): it is not a build input.
   // Hidden source maps: written next to the bundles for `npm run sentry:sourcemaps` to upload, with no reference to
-  // them in the served files. They are never served (server/server.js refuses .map; public/.assetsignore keeps them off the Worker).
+  // them in the served files. They are never served (server/server.ts refuses .map; public/.assetsignore keeps them off the Worker).
   build: { sourcemap: 'hidden', rollupOptions: { input: { app: 'index.html' }, output: { manualChunks: { three: ['three'] } } } },
 });

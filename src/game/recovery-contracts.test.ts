@@ -40,9 +40,9 @@ const activityOf = (state: LifeState): ActivityAction => {
 
 // DESIGN CONFLICT (kept visible, not run). The navigation lane forbids a priced activity with per-second
 // gains unless it is charged at the start and never refunded: such a definition makes rebuildCatalogue throw.
-// This branch allows those definitions and METERS them instead (src/game/systems/activities.js, METERED
+// This branch allows those definitions and METERS them instead (src/game/systems/activities.ts, METERED
 // ACTIVITIES): stopping early costs price × elapsed ÷ duration, so gains that accrued are always paid for
-// (src/game/contracts.test.js, 'a metered activity charged on completion…' and '…charged at the start…').
+// (src/game/contracts.test.ts, 'a metered activity charged on completion…' and '…charged at the start…').
 // Both close the same hole (paid gains kept for free on cancel); they differ on whether the definition is legal.
 test('paid gradual gains require a nonrefundable start charge, including choices and XP', { skip: 'design conflict: this branch meters priced per-second activities instead of forbidding them' }, () => {
   try {

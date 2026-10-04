@@ -1,7 +1,7 @@
 /**
  * Venue scene host (thin). It owns the renderer, the camera, the two lights and the DOM name
- * tags, and asks the scene modules for geometry: src/scene/venue-scenes.js for each venue
- * `scene.kind`, src/scene/home-scene.js for the home interior.
+ * tags, and asks the scene modules for geometry: src/scene/venue-scenes.ts for each venue
+ * `scene.kind`, src/scene/home-scene.ts for the home interior.
  *
  * WHAT A SCENE ENTRY MAY OFFER (all optional except group/camera/update)
  *   group, camera: { landscape, portrait }, update(state) → boolean
@@ -30,13 +30,13 @@
  * venue changes, the insets change, a scene's update(state) / setPlayer / setCrowd reports a
  * change, or update() is called. The one exception is MOTION: while a movement key or the
  * joystick is held, while the avatar is walking to a target, or while the camera is still easing
- * after a drag or a zoom, the motion loop (src/scene/motion-loop.js) draws frames — and it ends
+ * after a drag or a zoom, the motion loop (src/scene/motion-loop.ts) draws frames — and it ends
  * itself on the first frame in which nothing moved, and when the page is hidden. Nothing else may
  * schedule frames. Name tags are projected in the same step, so they move only when a frame is
  * drawn. diagnostics().renderCount and diagnostics().loop prove it: flat and stopped while nothing
- * is happening (asserted in src/venue-world.test.js).
+ * is happening (asserted in src/venue-world.test.ts).
  *
- * LOOKING AND WALKING (src/scene/camera-controls.js, src/scene/movement.js)
+ * LOOKING AND WALKING (src/scene/camera-controls.ts, src/scene/movement.ts)
  *   camera   drag = orbit (right turns the scene with the finger; DOWN looks from higher up, UP
  *            looks along the ground), wheel / trackpad pinch / two-finger pinch / + − = zoom towards
  *            the avatar, 0 or the ◎ button = recentre. The pivot moves on to the avatar as the
@@ -63,7 +63,7 @@
  *   it), when the avatar arrives at a spot it was sent to or rests beside one for a moment.
  *
  * EVENTS
- *   in   'jaw:key'         { action, mode, jog } — the shell's key forwarder (src/ui/keys.js). In the
+ *   in   'jaw:key'         { action, mode, jog } — the shell's key forwarder (src/ui/keys.ts). In the
  *                          venue view: move-* / walk-* walk, look-* orbit, zoom-in / zoom-out /
  *                          zoom-fit zoom and recentre. Ignored on the map and while a sheet is open.
  *   in   'jaw:key-up'      { action } — a held key was released
@@ -296,7 +296,7 @@ export const START_DISTANCE = Object.freeze({ portrait: 16.5, short: 13, wide: 2
 const ZOOM_STEP = 1.35, LOOK_YAW = 1.9, LOOK_PITCH = 1.2;
 /** How long the avatar rests beside a spot before the spot is selected, and the least time between two such requests. */
 const DWELL_MS = 650, SPOT_GAP_MS = 1500;
-/** The room protocol accepts positions within ±20 (server/protocol.js POSITION_BOUNDS); a little is kept in hand. */
+/** The room protocol accepts positions within ±20 (server/protocol.ts POSITION_BOUNDS); a little is kept in hand. */
 const PRESENCE_REACH = 19.5;
 /** How fast the see-through circle fades in and out (per second), and its radius in avatar heights. */
 const GHOST_RATE = 9, GHOST_RADIUS = 0.62;
@@ -358,7 +358,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', re
   const { THREE } = kit;
   const scene = new THREE.Scene();
   const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true });
-  // Colour, tone mapping and what this device may cost (src/scene/look.js): a phone draws at 1.5× with a 1024 shadow map.
+  // Colour, tone mapping and what this device may cost (src/scene/look.ts): a phone draws at 1.5× with a 1024 shadow map.
   let tier = applyRendererLook(THREE, renderer, renderTier());
   container.appendChild(renderer.domElement);
   const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 150);

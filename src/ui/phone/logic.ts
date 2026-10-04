@@ -1,6 +1,6 @@
 /**
  * The Phone's pure decisions — no DOM, no storage, no clock of their own — so `node --test` can
- * reach them (src/ui/phone/phone.test.js). The modules that draw (how.js, reports.js, the Governor
+ * reach them (src/ui/phone/phone.test.ts). The modules that draw (how.js, reports.js, the Governor
  * and Groceries apps) call these and keep nothing clever for themselves.
  */
 

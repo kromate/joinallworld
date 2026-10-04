@@ -1,13 +1,13 @@
 /**
  * OWNER: world
- * The player's piece on the city map: their own avatar (src/scene/characters.js, their saved
+ * The player's piece on the city map: their own avatar (src/scene/characters.ts, their saved
  * look) standing at the place they are, and — during a trip — walking the route or riding a small
  * procedural vehicle along it.
  *
  *   createActor(kit, { travelVehicle? }) → { group, setPlayer({ look, seed }), setMode(mode), setTime(time),
  *                        place(pose), stand(x, z, ry), dot(on), triangles, dispose() }
  *
- * `travelVehicle(kind, { time })` (optional, src/models/integration/scene-models.js buildTravelVehicle): the trip is ridden in a
+ * `travelVehicle(kind, { time })` (optional, src/models/integration/scene-models.ts buildTravelVehicle): the trip is ridden in a
  * model-library vehicle with real seat anchors instead of the batch-drawn one below. Without it — the default — nothing of the
  * model library is loaded or drawn.
  *
@@ -24,14 +24,14 @@ import type { Pose } from '../scene/characters.ts';
 import { VEHICLES } from './vehicles.ts';
 import { lookOf } from './trip.ts';
 
-/** The player's saved look (a record from the server, normalised by src/scene/characters.js) and public id. */
+/** The player's saved look (a record from the server, normalised by src/scene/characters.ts) and public id. */
 export interface ActorPlayer { look?: unknown; seed?: string }
 
 export const ACTOR_SCALE = 0.86;
 const SEAT_HEIGHT = 0.6;
 const SEATED_AVATAR_SCALE = 0.62;
 
-/** A model-library trip vehicle (src/models/integration/scene-models.js buildTravelVehicle): real seat anchors, posed along the route. */
+/** A model-library trip vehicle (src/models/integration/scene-models.ts buildTravelVehicle): real seat anchors, posed along the route. */
 export interface TravelVehicleModel {
   object3D: THREE.Group
   attachPassenger(passenger: THREE.Object3D): void
@@ -43,7 +43,7 @@ export type TravelVehicleBuilder = (kind: string, options: { time: string }) => 
 
 export function createActor(kit: MapKit, { travelVehicle = null }: { travelVehicle?: TravelVehicleBuilder | null } = {}) {
   const { THREE } = kit;
-  // The model library's trip vehicles (src/models): OFF unless the host passes its builder (see src/models/integration/flags.js).
+  // The model library's trip vehicles (src/models): OFF unless the host passes its builder (see src/models/integration/flags.ts).
   const useModels = typeof travelVehicle === 'function';
   const group = new THREE.Group();
   group.name = 'actor';
@@ -173,7 +173,7 @@ export function createActor(kit: MapKit, { travelVehicle = null }: { travelVehic
       walker.position.set(x, 0, z); walker.rotation.y = ry;
       ring.position.set(x, 0.09, z);
     },
-    /** Take a trip pose (src/map3d/trip.js tripPose). */
+    /** Take a trip pose (src/map3d/trip.ts tripPose). */
     place(pose: TripPose) {
       if (!frames) actor.setPlayer(player);
       ring.visible = false;

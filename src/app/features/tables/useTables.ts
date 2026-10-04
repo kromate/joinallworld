@@ -1,4 +1,4 @@
-// The Tables app's state and actions as a composable over src/tables/client.js.
+// The Tables app's state and actions as a composable over src/tables/client.ts.
 //
 // The client keeps one plain object, `T`, and calls `api.refresh()` after every change to it (a
 // socket frame, a press). This module gives it a typed `api` built from the application and turns

@@ -15,10 +15,10 @@
  *          the north-east, Ibeju-Lekki at the end of the peninsula and Epe across the Lekki lagoon
  *
  * UNITS: x runs east, z runs south, y is up. One unit is roughly a small house. Venue ids are the
- * ones in src/game/content/venues.js; the server's fare bands still use the positions there —
+ * ones in src/game/content/venues.ts; the server's fare bands still use the positions there —
  * these coordinates are presentation only.
  *
- * A pack is plain data plus decorate(): the generic builder (src/map3d/city-build.js) draws land,
+ * A pack is plain data plus decorate(): the generic builder (src/map3d/city-build.ts) draws land,
  * roads, bridges, landmarks and the city fabric from the data; decorate() adds what only this
  * city has (the port, the airfield and the tank farm around the airport and refinery landmarks, Eko Atlantic).
  */
@@ -87,7 +87,7 @@ export const roads: PackRoad[] = [
   { id: 'epe-road', name: 'Epe Road', points: [[157, -8], [158, -20], [160, -34]] },
 ];
 
-/** Where each venue's landmark stands. Ids are venue ids (src/game/content/venues.js). */
+/** Where each venue's landmark stands. Ids are venue ids (src/game/content/venues.ts). */
 export const sites: Record<string, PackSite> = {
   radio: { x: -66, z: -51 }, shrine: { x: -46, z: -65 }, 'viewing-centre': { x: -31, z: -27 }, 'amala-shitta': { x: -45, z: -23 },
   cchub: { x: 8.5, z: -30 }, hospital: { x: 11, z: -64 }, salon: { x: 26, z: -53 },
@@ -101,7 +101,7 @@ export const sites: Record<string, PackSite> = {
   unilag: { x: 21, z: -37 },
 };
 
-/** Where Home stands for each house (ids of HOME_SPOTS in src/game/content/venues.js). */
+/** Where Home stands for each house (ids of HOME_SPOTS in src/game/content/venues.ts). */
 export const homes: Record<string, PackHome> = {
   mushin: { x: -50, z: -40.5, district: 'Mushin' }, yaba: { x: 15, z: -44.5, district: 'Yaba' }, lekki: { x: 72, z: 36, district: 'Lekki Phase 1' },
   ikoyi: { x: 40, z: 15.5, district: 'Ikoyi' }, banana: { x: 66, z: -13.5, district: 'Banana Island' },
@@ -157,12 +157,12 @@ export const estates: Record<string, PackEstate> = {
 
 /**
  * THE LOCAL GOVERNMENTS, as geometry. Ids, names, prices and character lines are in
- * src/game/content/world.js (LAGOS_LGAS) and are merged in below; a test asserts the two lists match.
+ * src/game/content/world.ts (LAGOS_LGAS) and are merged in below; a test asserts the two lists match.
  *   polygon  the boundary in map units [x, z]: our own stylised shapes, placed as the real ones lie
  *            relative to each other. A boundary may run out over water; both maps draw it on land only.
  *   plate    where its name plate stands [x, z]
  *   tint     its colour on the "LGAs" layer
- *   geo      for finding a player's local government ON THEIR DEVICE (src/map3d/lga.js resolveLga):
+ *   geo      for finding a player's local government ON THEIR DEVICE (src/map3d/lga.ts resolveLga):
  *            c = a rough centre [latitude, longitude], box = a rough bounding rectangle
  *            [south, west, north, east]. Hand-drawn from general knowledge, good to a few kilometres:
  *            near a boundary it can name the neighbour, which is why the player confirms the answer.
@@ -219,7 +219,7 @@ function crane(b: DecorateBatch, x: number, z: number, ry = 0, h = 7, colour = '
   });
 }
 
-/** What only Lagos has. `b` is a geometry batch (src/scene/build.js); `tools` are builder helpers. */
+/** What only Lagos has. `b` is a geometry batch (src/scene/build.ts); `tools` are builder helpers. */
 export function decorate(b: DecorateBatch, { rng }: { rng: () => number }) {
   // ---- Apapa port: quay, gantry cranes, container stacks, two ships ---------------------------
   b.box(-68, 0.12, 10, 30, 0.24, 13, '#9a9c9a');

@@ -8,7 +8,7 @@
  *
  * DATA_DIR keeps the object's storage between runs (default: a temporary folder that is removed on exit). Bindings a
  * deployment would set as vars or secrets are read from the environment when present: BUILD_ID, PUBLIC_ORIGIN,
- * MODERATOR_TOKEN and the outreach settings (server/host-context.js OUTREACH_ENV). Nothing here deploys anything.
+ * MODERATOR_TOKEN and the outreach settings (server/host-context.ts OUTREACH_ENV). Nothing here deploys anything.
  */
 import { mkdtemp, readFile, mkdir } from 'node:fs/promises';
 import { rmSync } from 'node:fs';
@@ -17,7 +17,7 @@ import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { createServer, connect, type Socket } from 'node:net';
 import { fileURLToPath } from 'node:url';
-import { OUTREACH_ENV } from '../server/host-context.js';
+import { OUTREACH_ENV } from '../server/host-context.ts';
 
 /** The few pieces of the pinned tooling (miniflare, esbuild) this runner uses. */
 interface MiniflareHandle { ready: Promise<URL>; dispose(): Promise<void> }

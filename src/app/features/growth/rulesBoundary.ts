@@ -1,5 +1,5 @@
 // The typed boundary to the pure rules the growth screens read: the events calendar
-// (src/game/calendar.js) and the away-card rule (src/game/digest.js). Its own file so the panel
+// (src/game/calendar.ts) and the away-card rule (src/game/digest.ts). Its own file so the panel
 // registry can compute badges, notifications and HUD slots without pulling in the rest of the
 // growth boundary.
 import { upcomingEvents as upcomingEventsJs, eventIcs as eventIcsJs } from '../../../game/calendar.ts'
@@ -12,7 +12,7 @@ export const upcomingEvents = upcomingEventsJs as unknown as (now: number, days?
 /** One occurrence as an iCalendar file's text. `link` is appended to the description. */
 export const eventIcs = eventIcsJs as unknown as (event: CalendarOccurrence, link?: string) => string
 
-// ---- the away card (src/game/digest.js) ----------------------------------------------------
+// ---- the away card (src/game/digest.ts) ----------------------------------------------------
 export interface AwayLine { id: string; text: string; app?: string; params?: unknown; group?: string; at?: number }
 export interface AwayCard { title: string; sub: string; lines: AwayLine[]; more: number }
 /** The card for a returning player (three hours or more away), or null when there is nothing worth a card. */

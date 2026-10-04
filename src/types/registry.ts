@@ -1,6 +1,6 @@
 /**
  * The system contract of the rules engine, as types. The prose contract is the header of
- * src/game/registry.js; this file is its shape: what a system file default-exports, the events
+ * src/game/registry.ts; this file is its shape: what a system file default-exports, the events
  * systems emit to one another, and the modifier keys they fold values through.
  */
 import type { ActionMap, ActionType, ActionVetoCode, ActivityVetoCode } from './actions.ts'

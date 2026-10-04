@@ -1,5 +1,5 @@
 // The "While you were away" card and the inbox chip: what they show and where they sit. Pure, so
-// it is tested without a browser. The card's rule is src/game/digest.js awayCard; its lines are the
+// it is tested without a browser. The card's rule is src/game/digest.ts awayCard; its lines are the
 // fresh ones of the Phone's notification list, with the live events and the missions.
 import type { LifeView } from '../../../types/view.ts'
 import type { PhoneNotification } from '../../types/panel.ts'

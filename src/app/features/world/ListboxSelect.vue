@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// The select of the control kit as a component (src/ui/controls.js): a button that opens a
+// The select of the control kit as a component (src/ui/controls.ts): a button that opens a
 // listbox in the game's own style, with the same keys.
 //
 // KEYBOARD  on the button: Enter, Space, ↓ or ↑ open. In the list: ↑ ↓ move, Home / End jump,

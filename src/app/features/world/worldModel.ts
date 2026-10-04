@@ -1,6 +1,6 @@
 // The world panels without a DOM: the drawing of a house, the analytics event, the pages of the
 // local-government directory and the requests behind them. Typed responses of every /api/world/*
-// route are in src/types/world.ts (derived from server/routes/world.js).
+// route are in src/types/world.ts (derived from server/routes/world.ts).
 import { reactive } from 'vue'
 import type { CityId } from '../../../types/protocol.ts'
 import type { HouseStyle, HouseTierId, LgaId } from '../../../types/life.ts'
@@ -117,7 +117,7 @@ export type LgaDirectory = ReturnType<typeof createLgaDirectory>
 export const emptyPeopleText = (page: Pick<LgaPage, 'q' | 'online'>): string =>
   page.q ? 'Nobody listed by that name here.' : page.online ? 'Nobody listed here is online right now.' : 'Nobody is listed here yet.'
 
-/** The house the map hands over when one is tapped (src/map3d/map3d.js onSelectHouse). */
+/** The house the map hands over when one is tapped (src/map3d/map3d.ts onSelectHouse). */
 export interface MapHouse { lga: LgaId; estate: number; plot: number; id: string | null; name: string | null; online: boolean; you: boolean; style: number; upgrading: boolean }
 export function asMapHouse(value: unknown): MapHouse | null {
   if (typeof value !== 'object' || value === null) return null

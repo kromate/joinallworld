@@ -1,6 +1,6 @@
 /**
  * OWNER: home
- * The home interior. Same builder contract as src/scene/venue-scenes.js:
+ * The home interior. Same builder contract as src/scene/venue-scenes.ts:
  *   buildHomeScene(kit, venue) → { group, background, camera, update(state) → boolean,
  *                                  setPlayer, setCrowd, tags, dispose }
  *
@@ -14,12 +14,12 @@
  *   room is always visible. It only flips `visible`; nothing is rebuilt.
  *   The object the player picked gets a yellow marker; in Buy mode the placement ghost gets a
  *   green (valid) or red (invalid) footprint.
- *   The player's own avatar (state.onboarding.look, drawn by src/scene/characters.js) stands
+ *   The player's own avatar (state.onboarding.look, drawn by src/scene/characters.ts) stands
  *   beside the furniture of the spot they chose — or by the door — and guests the host has let
  *   in (setCrowd) stand just inside the door. Guests are one merged mesh, rebuilt on change; the
  *   player's own avatar is a separate prebuilt figure per pose that is only ever moved.
  *
- * WALKING (see src/scene/movement.js; the host, src/venue-world.js, does the walking)
+ * WALKING (see src/scene/movement.ts; the host, src/venue-world.ts, does the walking)
  *   `walk` is the same contract as a venue scene's: the walkable description is the room's
  *   bounds plus one obstacle rectangle per piece of floor furniture in state.home.items (rugs and
  *   mats are walked over), rebuilt only when the furniture changes. Outside Buy mode a tap on
@@ -567,7 +567,7 @@ export function buildHomeScene(kit: Kit) {
       return (Array.isArray(lastState?.home?.items) ? lastState.home.items : []).filter((item) => FURNITURE[item?.itemId] && !FURNITURE[item.itemId]!.wall)
         .map((item) => { const size = footprint(FURNITURE[item.itemId]!, item.rot); return { id: item.id, itemId: item.itemId, x: along(item.x, size.w), z: along(item.y, size.h) }; });
     },
-    /** Walking — the same contract as a venue scene's `walk` (src/scene/venue-scenes.js). */
+    /** Walking — the same contract as a venue scene's `walk` (src/scene/venue-scenes.ts). */
     walk: {
       get grid() { return walkGrid; },
       get entrance() { return { x: along(0), y: 0.03, z: along(doorSlot(grid)), ry: Math.PI / 2 }; },

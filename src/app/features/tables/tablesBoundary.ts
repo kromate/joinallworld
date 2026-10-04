@@ -1,4 +1,4 @@
-// The typed boundary to the JavaScript behind the Tables app: the socket client (src/tables/client.js,
+// The typed boundary to the JavaScript behind the Tables app: the socket client (src/tables/client.ts,
 // whose state `T` is a plain object it mutates), the card and penalty vocabularies and the rules
 // text of the two boards. Every cast for those modules is here; the screens import only this file.
 // The frames and the table types are the protocol's own (src/types/growth.ts).
@@ -34,7 +34,7 @@ export interface TableClaim { game: string; label: string; won: boolean; code: s
 
 export type SocketPhase = 'idle' | 'connecting' | 'open' | 'closed'
 
-/** The browser's side of the tables: what src/tables/client.js keeps in `T`. */
+/** The browser's side of the tables: what src/tables/client.ts keeps in `T`. */
 export interface TablesClientState {
   api: TablesApi | null
   socket: SocketPhase
@@ -71,7 +71,7 @@ export const play = playJs as unknown as (move: WhotMove | PenaltyMove) => void
 export type WhotShape = 'circle' | 'triangle' | 'cross' | 'square' | 'star'
 export type WhotCardData = { s: WhotShape | 'whot'; n: number }
 export type WhotMove = { t: 'play'; i: number; shape?: WhotShape } | { t: 'draw' }
-/** What the server's Whot view holds for one seat (src/tables/whot.js view). */
+/** What the server's Whot view holds for one seat (src/tables/whot.ts view). */
 export type WhotView = {
   game: 'whot'
   top: WhotCardData
@@ -93,7 +93,7 @@ export type WhotView = {
 }
 export type PenaltyKick = { kicker: number; shot: number; dive: number; goal: boolean }
 export type PenaltyMove = { z: number }
-/** What the server's penalty view holds for one seat (src/tables/penalty.js view). */
+/** What the server's penalty view holds for one seat (src/tables/penalty.ts view). */
 export type PenaltyView = {
   game: 'penalty'
   options: { kicks: number }

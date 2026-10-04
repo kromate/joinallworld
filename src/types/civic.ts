@@ -2,8 +2,8 @@
  * Civic wire shapes: Governor and elections, neighbours, billboards and sea plots, the gem hunt
  * counters, club radio, the rich list and the listing preferences.
  *
- * Derived from server/routes/civic.js and server/civic/{elections,ads,radio,residents,text}.js,
- * src/game/systems/civic.js (eligibility) and src/game/content/civic.js (the fixed option lists);
+ * Derived from server/routes/civic.ts and server/civic/{elections,ads,radio,residents,text}.js,
+ * src/game/systems/civic.ts (eligibility) and src/game/content/civic.ts (the fixed option lists);
  * the browser side is src/ui/panels/{governor,neighbours,ads,richlist,radio,hunt,civic-ui}.js.
  *
  * Conventions: GET routes take `?city=`; POST routes take `cityId` in the body (civic-ui.js send()
@@ -11,7 +11,7 @@
  * fresh view (`gov`, `ads`, `radio`) so the panel can redraw. Paid writes take a mandatory
  * `requestId` and are applied exactly once (OnceErrorCode).
  *
- * There are NO civic socket frames: nothing in server/civic or server/routes/civic.js calls
+ * There are NO civic socket frames: nothing in server/civic or server/routes/civic.ts calls
  * ctx.push. City news reaches a player through GET /api/civic/pulse (`notices`) and, once per
  * notice, through the life itself (the server-only action 'civic.news').
  * WORKER: none of these routes exist on the Cloudflare Worker.
@@ -60,7 +60,7 @@ export interface GovView {
   phase: ElectionPhase
   phaseEndsAt: number
   election: {
-    /** Monday-started Lagos week index (src/game/clock.js). */
+    /** Monday-started Lagos week index (src/game/clock.ts). */
     week: number
     nominationsAt: number
     votingAt: number
@@ -95,7 +95,7 @@ export interface GovRules {
   pollingVenue: string | null
 }
 
-/** One row of the eligibility checklist (src/game/systems/civic.js civicEligibility()). */
+/** One row of the eligibility checklist (src/game/systems/civic.ts civicEligibility()). */
 export interface EligibilityCheck {
   id: 'days' | 'fee' | 'work' | 'place'
   met: boolean
@@ -128,7 +128,7 @@ export interface RunBody { cityId: CityId; slogan: string; requestId: TimedId }
 export interface VoteBody { cityId: CityId; candidate: string }
 export interface AnnounceBody { cityId: CityId; text: string }
 
-/** cleanLine() refusals (server/civic/text.js). */
+/** cleanLine() refusals (server/civic/text.ts). */
 export type LineRefusal = 'text_required' | 'text_too_short' | 'text_too_long' | 'text_blocked' | 'links_not_allowed' | 'contact_not_allowed'
 type WithLife = { state: LifeState }
 export type RunResponse =

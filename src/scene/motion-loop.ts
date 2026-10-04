@@ -6,7 +6,7 @@
  * or motion in progress (a movement key or the joystick is held, the avatar is walking to a
  * target, the camera is still easing after a drag or a zoom). The loop below has no way to run
  * otherwise: every frame asks its owner "is anything still moving?" and it ends itself on the
- * first "no". It also ends when the page is hidden. src/venue-world.test.js proves: idle → zero
+ * first "no". It also ends when the page is hidden. src/venue-world.test.ts proves: idle → zero
  * frames; walking → frames; arrived → flat again; hidden → stopped. This file is the single
  * place in src/scene, src/ui and the host that may name the browser's frame callback.
  */

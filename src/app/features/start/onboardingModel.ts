@@ -1,7 +1,7 @@
 // "Make this life yours" without a DOM: which card a life starts on, the look kept on the device
 // while it is edited, why the sheet opened, what each card's one primary action says and what is
 // still missing, and the sentence a refused step shows. Every step is confirmed by a server action
-// (src/game/systems/onboarding.js); the screen only keeps the draft being edited.
+// (src/game/systems/onboarding.ts); the screen only keeps the draft being edited.
 import { APPEARANCE, DREAM_REWARD, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
 import type { DreamId, Look, StartHomeId, TraitId } from '../../../types/life.ts'
 import { hairOptions, outfitOptions, slotOf, starterWardrobe } from './lookModel.ts'

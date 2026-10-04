@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // The one-tap way out of a connection state, as a button: "Try again" reconnects, "Choose a
 // nickname" and "Start a new life" open the session sheet. Nothing when connected or still
-// connecting. The words are linkWords' own (src/ui/link.js); the actions are the ones the existing
+// connecting. The words are linkWords' own (src/ui/link.ts); the actions are the ones the existing
 // buttons carry as data-menu and data-open-gate.
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'

@@ -1,5 +1,5 @@
 /**
- * Types of the rules engine (src/game, src/life.js).
+ * Types of the rules engine (src/game, src/life.ts).
  *
  * life.ts, view.ts, actions.ts, registry.ts and campus.ts also export a few runtime lists
  * (LIFE_STATE_KEYS, VIEW_KEYS, ACTION_TYPES …) that engine.test.ts checks against the running

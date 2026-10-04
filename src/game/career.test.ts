@@ -11,7 +11,7 @@ import { xpForLevel } from './api.ts';
 import { JOBS, TRACKS, SHIFT_SECONDS, START_PERFORMANCE, HELPER_COOLDOWN_SECONDS } from './content/jobs.ts';
 import { scheduleText, daysText, COMMUTE_SECONDS } from './systems/career.ts';
 import { RENTS, LOAN, billingWeek, dueAt, DEPOSIT_TOTAL_CAP, MAX_CATCHUP_WEEKS, LOAN_LATE_FEE } from './systems/economy.ts';
-import { fixture } from '../../server/test-fixture.js';
+import { fixture } from '../../server/test-fixture.ts';
 import type { EngineEvent, EngineEventMap } from '../types/registry.ts';
 import type { ActionBody, ActionType } from '../types/actions.ts';
 import type { JobId, LifeContext, LifeState, SystemId } from '../types/life.ts';

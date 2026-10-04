@@ -357,7 +357,7 @@ export function spotMarker(b: Batch, x: number, z: number, color: Colour = '#f2d
 
 export interface GameTableOptions { game?: string; ry?: number; accent?: Colour }
 /**
- * A GAME TABLE — the place a table of src/tables/places.js stands in a venue (venue-scenes.js puts one on free floor for
+ * A GAME TABLE — the place a table of src/tables/places.ts stands in a venue (venue-scenes.js puts one on free floor for
  * each). Drawn into the venue's own batch: no draw call of its own, about 150 triangles.
  *   'whot'      a low round table with a felt top, a fan of cards and four stools
  *   'penalty'   a small goal frame with a net line, a penalty spot and a ball

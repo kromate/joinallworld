@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// The venue scene: hosts the existing Three.js scene host (src/venue-world.js) through its own
+// The venue scene: hosts the existing Three.js scene host (src/venue-world.ts) through its own
 // API. The host owns the canvas, the camera and the name tags; this component owns nothing but
 // the element it draws into and the moment it is created and disposed.
 //

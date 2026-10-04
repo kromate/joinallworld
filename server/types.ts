@@ -1,11 +1,11 @@
 /**
  * Server-only types: what is stored, and the contracts between the host and its modules.
  *
- * Derived from server/store.js (the stored document and the storage interface), server/server.js
- * (the context, the request object, the socket fields), server/routes/index.js and
- * server/ws/index.js (the two registries), server/routes/once.js (receipts) and the header
- * comments of server/social/service.js, server/civic/data.js, server/moderation/service.js,
- * server/support/service.js and server/growth/data.js (the five namespaced collections).
+ * Derived from server/store.ts (the stored document and the storage interface), server/server.ts
+ * (the context, the request object, the socket fields), server/routes/index.ts and
+ * server/ws/index.ts (the two registries), server/routes/once.ts (receipts) and the header
+ * comments of server/social/service.ts, server/civic/data.ts, server/moderation/service.ts,
+ * server/support/service.ts and server/growth/data.ts (the five namespaced collections).
  *
  * Nothing here is sent to a browser as it stands: a SessionRecord holds the cookie secret.
  */
@@ -48,7 +48,7 @@ export interface OnceReceipt {
   result: Record<string, unknown>
 }
 
-/** One city's life of one session (server/life-service.js settleCity). */
+/** One city's life of one session (server/life-service.ts settleCity). */
 export interface CityLifeRecord {
   state: LifeState
   /** Server ms this life was last settled to. */
@@ -80,7 +80,7 @@ export interface SessionRecord {
   onboarding?: true
   /**
    * The session's ONE character: the city it is in. Written at start-up for every session already
-   * stored (server/world/service.js migrateCharacters) and when an intercity trip arrives, which also
+   * stored (server/world/service.ts migrateCharacters) and when an intercity trip arrives, which also
    * records when and from where — a session that moved is then refused a new life in the city it left
    * (409 `city_moved`). A session created since the last start has none until it travels; readers
    * fall back to the city asked for.
@@ -88,6 +88,8 @@ export interface SessionRecord {
   character?: { v: 1; city: string; movedAt?: number; from?: string }
   /** Keyed by client/request id; created by the first ctx.once. */
   once?: Record<TimedId, OnceReceipt>
+  /** server/world/service.ts rekey(): a separate life that was already filed under the city a character arrived in, put aside as `<city>:<ms>`. */
+  legacyLives?: Record<string, CityLifeRecord>
 }
 /**
  * WORKER: what deploy/cloudflare-worker.ts stores in its `sessions` table. Action receipts live
@@ -150,7 +152,7 @@ export interface ConversationRecord {
   name?: string
   /** Groups (who runs it) and houses (the host). */
   owner?: string
-  // INCONSISTENT: server/social/service.js:690 also stores `creator` on a new group; the header comment of
+  // INCONSISTENT: server/social/service.ts:690 also stores `creator` on a new group; the header comment of
   // that file (line 19) does not list it and nothing reads it.
   creator?: string
   /** Sequence number of the last message. */
@@ -164,7 +166,7 @@ export interface KnockRecord {
   expires: number
   status: 'pending' | 'accepted' | 'declined'
   cityId: CityId
-  // INCONSISTENT: `answeredAt` is written at server/social/service.js:903 and read at :344, but is missing
+  // INCONSISTENT: `answeredAt` is written at server/social/service.ts:903 and read at :344, but is missing
   // from the collection shape documented at :21.
   answeredAt?: number
 }
@@ -268,8 +270,8 @@ export interface CivicCollection {
   prefs: Record<string, { richList?: true; directory?: true }>
   /** Random; mixed into the address keys of the vote cap. Created by the first vote. */
   salt?: string
-  // INCONSISTENT: `prefsPrunedAt` is written by server/routes/civic.js:96-97 but is not in the shape documented
-  // in server/civic/data.js.
+  // INCONSISTENT: `prefsPrunedAt` is written by server/routes/civic.ts:96-97 but is not in the shape documented
+  // in server/civic/data.ts.
   prefsPrunedAt?: number
   cities: Partial<Record<CityId, CivicCityRecord>>
 }
@@ -295,7 +297,7 @@ export interface SupportCollection {
   seq: number
 }
 
-// ---- growth collection (db.growth, server/growth/data.js) ----------------------------------------
+// ---- growth collection (db.growth, server/growth/data.ts) ----------------------------------------
 //
 // Public ids only: never a cookie secret, an address or a device token (those are kept or compared
 // only as a hash salted with `salt`). Created on first use by growthOf(); outreach.js adds
@@ -325,13 +327,13 @@ export interface GrowthPlayerRecord {
   wins: PendingTableResult[]
 }
 export interface ShareRecord { by: string; kind: ShareKind; at: number; facts: ShareFacts; opened: number; joined: number }
-/** server/growth/metrics.js: daily totals, retention cohorts, and lives still inside their 31-day window (`steps` is a bit mask of funnel steps). */
+/** server/growth/metrics.ts: daily totals, retention cohorts, and lives still inside their 31-day window (`steps` is a bit mask of funnel steps). */
 export interface GrowthMetricsRecord {
   days?: Record<string, Record<string, number>>
   cohorts?: Record<string, { size: number; r: Record<string, number> }>
   lives?: Record<string, { first: number; last: number | null; steps: number }>
 }
-/** server/growth/tables.js: ratings per player per game, and how often two players' games counted today. */
+/** server/growth/tables.ts: ratings per player per game, and how often two players' games counted today. */
 export interface GrowthTablesRecord {
   ratings?: Record<string, Partial<Record<TableGameId, { rating: number; played: number; won: number }>>>
   pairs?: { day: number; counts: Record<string, number> }
@@ -399,7 +401,7 @@ export interface Database {
   support?: SupportCollection
   moderation?: ModerationCollection
   growth?: GrowthCollection
-  /** server/routes/campus.js: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
+  /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
   campus?: { election?: CampusElectionRecord }
   /** A collection a module added (collection names: a lower-case letter, then 1–31 letters or digits). */
   [collection: string]: unknown
@@ -424,6 +426,8 @@ export interface StoreHelpers {
   /** Keys of sessions whose record satisfies `predicate`, without copying every record. */
   scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]
   sessionKeyByPublicId(publicId: string): string | undefined
+  /** WORKER: a store that keeps receipts apart from the session records counts the live ones itself (deploy/sqlite-store.ts). */
+  onceCounts?(liveSince: number, lightKinds: readonly string[]): { money: number; light: number }
 }
 /** What `fn(db)` receives: private copies; nothing reaches the document unless the transaction returns. */
 export type Db = Database & { readonly $store?: StoreHelpers }
@@ -449,7 +453,7 @@ export interface Store {
   stats?(): StoreStats
 }
 
-// ---- the route-module contract (server/routes/index.js) ------------------------------------------
+// ---- the route-module contract (server/routes/index.ts) ------------------------------------------
 
 /** An error a handler throws to answer with a status: `ctx.fail(status, code)`, optionally with a `reason`. */
 export interface HttpError extends Error {
@@ -474,6 +478,8 @@ export interface RouteRequest {
   session(db: Db, options?: { renew?: boolean }): SessionRecord | undefined
   /** Throws 401 device_session_required. */
   requireSession(db: Db, options?: { renew?: boolean }): SessionRecord
+  /** Set by session()/requireSession() once the request's session is known (server/server.ts); the telemetry route reads it. */
+  publicId?: string
   /** Foundation-only: the cookie secret and the raw Node request. */
   secret: string | undefined
   raw: unknown
@@ -597,7 +603,7 @@ export interface ServerEvents {
 export type PageHandler = (request: { path: string; query: URLSearchParams; origin: string; ip: string; method: string }) => Promise<{ status?: number; html: string; cache?: boolean }>
 
 /**
- * What the host's telemetry object offers the route modules (server/telemetry/index.js); the host
+ * What the host's telemetry object offers the route modules (server/telemetry/index.ts); the host
  * itself uses more of it. Off, and doing nothing at all, unless its environment keys are set.
  */
 export interface ContextTelemetry {
@@ -607,7 +613,7 @@ export interface ContextTelemetry {
   consent(publicId: string, granted: boolean): boolean
 }
 
-/** The world's shard store (server/world/shards.js): one append-only file per local government. Used only through server/world/service.js. */
+/** The world's shard store (server/world/shards.ts): one append-only file per local government. Used only through server/world/service.ts. */
 export interface ShardStore {
   read<T>(name: string, operation: (state: object) => T): Promise<T>
   /** `operation` returns the records that change the shard; it must not change the state itself. */
@@ -703,7 +709,7 @@ export interface RouteContext {
   waitUntil?(promise: Promise<unknown>): void
   /** One of the outreach settings on the host's allowlist (host-context.js OUTREACH_ENV), or '' — nothing else of the environment is reachable. */
   env(name: string): string
-  /** An outside request for server/growth/outreach.js: https only, never follows a redirect, cut off after 15 s. */
+  /** An outside request for server/growth/outreach.ts: https only, never follows a redirect, cut off after 15 s. */
   fetch(url: string, init?: object): Promise<unknown>
   /** A secret this server makes for itself (signing key, push keys): DATA_DIR/keys with mode 0600 on Node, the Durable Object's own storage on the Worker. */
   keyFile<T extends object>(name: string, make: () => T | Promise<T>): Promise<T>
@@ -713,7 +719,7 @@ export interface RouteContext {
   core: ContextCore
 }
 
-// ---- the ws-module contract (server/ws/index.js) -------------------------------------------------
+// ---- the ws-module contract (server/ws/index.ts) -------------------------------------------------
 
 /**
  * An authenticated socket as the host and its modules see it. The underlying object is a `ws`
@@ -786,9 +792,15 @@ export interface WsHandlers {
 export type WsHandlerModule = (ctx: RouteContext) => WsHandlers | void
 /** What buildSocketHandlers() returns. */
 export interface WsDispatch {
-  messages: Map<string, { room: boolean; handle: WsMessageHandler   /** Hand a still-connected socket back to every module after the host lost its memory (Worker only). */
-  restore(ws: WsConnection): void
-}>
+  messages: Map<string, { room: boolean; handle: WsMessageHandler }>
   open(ws: WsConnection): void
   close(ws: WsConnection): void
+  /** Hand a still-connected socket back to every module after the host lost its memory (Worker only). */
+  restore(ws: WsConnection): void
+}
+
+/** The part of a Response that server/growth reads from an answer to ctx.fetch (typed `unknown` there; see growth/data.ts outboundResponse). */
+export interface OutboundResponse {
+  status: number
+  headers?: { get(name: string): string | null }
 }

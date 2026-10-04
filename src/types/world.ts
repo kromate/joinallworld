@@ -2,8 +2,8 @@
  * World wire shapes: everything `/api/world/*` returns — your place in the city, the city at a
  * glance, one local government, its estates and houses, and its directory of residents.
  *
- * Derived from server/routes/world.js (the adapters), server/world/service.js (the answers) and
- * server/world/registry.js (one page of houses, one page of the directory).
+ * Derived from server/routes/world.ts (the adapters), server/world/service.ts (the answers) and
+ * server/world/registry.ts (one page of houses, one page of the directory).
  *
  * Conventions of every world route: `?city=<cityId>`; the session cookie is required; all of them
  * READ (a player's local government, house style and upgrades are ordinary actions on

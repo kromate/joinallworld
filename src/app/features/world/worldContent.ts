@@ -1,4 +1,4 @@
-// The typed boundary to the world's content tables (src/game/content/world.js): house looks and
+// The typed boundary to the world's content tables (src/game/content/world.ts): house looks and
 // tiers, local governments, readable addresses. Every cast for that module is here; when it is
 // converted to TypeScript these lines are deleted and the importers point at the real file.
 import { HOUSE_STYLE as HOUSE_STYLE_JS, HOUSE_TIERS as HOUSE_TIERS_JS, STYLE_FIELDS as STYLE_FIELDS_JS, addressLabel as addressLabelJs, lgaOf as lgaOfJs, unpackStyle as unpackStyleJs } from '../../../game/content/world.ts'

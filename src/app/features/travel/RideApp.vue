@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Ride app: quick travel booking. Pick how to travel once, then tap Go beside any place. It is the
 // same engine as the Map card: every fare, trip time and refusal comes from view.travel
-// (src/game/systems/travel.js), and Go sends the same 'travel' action. The trip itself is then
+// (src/game/systems/travel.ts), and Go sends the same 'travel' action. The trip itself is then
 // shown on the city map, like every other trip (the shell switches to it). While something stops
 // every trip at once (offline, already travelling, busy) that is said once at the top, with its
 // one-tap way out, instead of on every row.

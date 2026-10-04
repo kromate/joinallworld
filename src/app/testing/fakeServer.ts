@@ -4,7 +4,7 @@
 // returns the first outcome, every answer carries `serverTime` — and lets a test break things on
 // purpose: go offline, lose the session, fail to save. A life it creates is made the way the real
 // server makes one for a session opened with `onboarding: true`: a guest of the quick start, held
-// until its look is confirmed (server/life-service.js settleCity).
+// until its look is confirmed (server/life-service.ts settleCity).
 import { advanceLife, createLife, dispatch } from '../../life.ts'
 import type { LifeState } from '../../types/life.ts'
 

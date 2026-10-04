@@ -3,7 +3,7 @@
 //
 // Phone app: how you are, the weather, how close you are to falling sick, what to do about it, and
 // every cure with its price and where to get it. Everything shown comes from view.health
-// (src/game/systems/health.js) and view.travel.
+// (src/game/systems/health.ts) and view.travel.
 import { computed } from 'vue'
 import { VENUES as VENUE_SPOTS } from '../../../game/content/venues.ts'
 import { useApp } from '../../state/app.ts'

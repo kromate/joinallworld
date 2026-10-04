@@ -2,7 +2,7 @@
  * OWNER: growth
  * Sharing from the browser: paint the picture card on a canvas, then hand the picture and the text
  * to the phone's own share sheet — or, where that is not available, offer WhatsApp, X, copy and
- * save. The words and the card's data come from src/game/share-model.js (pure, tested); this file
+ * save. The words and the card's data come from src/game/share-model.ts (pure, tested); this file
  * is only the DOM side. Nothing is sent to anyone by the game: the player's own apps do the sending.
  *
  * The card is drawn once per share, on demand, from the game's own colours and the page's font.

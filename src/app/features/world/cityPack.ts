@@ -1,5 +1,5 @@
 // The typed boundary to the lazy map modules the "find my local government" button needs
-// (src/map3d/regions.js: the city packs, src/map3d/lga.js: which box a position falls in).
+// (src/map3d/regions.ts: the city packs, src/map3d/lga.ts: which box a position falls in).
 // Both are fetched with a dynamic import the first time they are asked for, never with the
 // panel: a player who picks from the list never downloads them.
 import type { LgaId } from '../../../types/life.ts'

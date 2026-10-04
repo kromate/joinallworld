@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // "Your own house": the section the Houses app shows first. The look (free and priced options),
 // upgrades (paid, built on server time) and moving in. A life without a place is sent to Profile to
-// choose where it lives. Rules and prices: src/game/systems/estate.js, src/game/content/world.js.
+// choose where it lives. Rules and prices: src/game/systems/estate.ts, src/game/content/world.ts.
 //
 // Actions: 'estate.style' { style: { field: index } }, 'estate.upgrade' { to } and 'estate.move-in'.
 import '../../../ui/panels/world.css'

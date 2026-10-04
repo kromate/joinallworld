@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// One mark from the game's icon set (src/ui/phone/icons.js): original inline SVG, 24×24, drawn in
+// One mark from the game's icon set (src/ui/phone/icons.ts): original inline SVG, 24×24, drawn in
 // currentColor. The markup is the icon set's own static string, never anything a player typed.
 import { computed } from 'vue'
 import { glyphNameFor } from '../../ui/icon-map.ts'

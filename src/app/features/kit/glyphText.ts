@@ -1,6 +1,6 @@
 // Splits a text into plain runs and emoji that have a glyph. Pure, so it is tested without a browser.
 
-/** One emoji (with its skin tone, variation selector and ZWJ tail), or a flag: the same pattern as src/ui/icon-map.js. */
+/** One emoji (with its skin tone, variation selector and ZWJ tail), or a flag: the same pattern as src/ui/icon-map.ts. */
 const EMOJI = /(?:\p{Regional_Indicator}{2}|\p{Extended_Pictographic}(?:️|\p{Emoji_Modifier})*(?:‍\p{Extended_Pictographic}(?:️|\p{Emoji_Modifier})*)*)/gu
 
 export type GlyphPart = { text: string; emoji?: undefined } | { emoji: string; text?: undefined }

@@ -1,15 +1,15 @@
 /**
  * WORKER HOST: the Cloudflare Worker and its SQLite Durable Object — the production host.
  *
- * It builds the SAME server context as the Node host (server/server.js; the contract is in
- * server/routes/index.js and server/ws/index.js) and hands it to the same route and socket registries,
+ * It builds the SAME server context as the Node host (server/server.ts; the contract is in
+ * server/routes/index.ts and server/ws/index.ts) and hands it to the same route and socket registries,
  * so every endpoint, socket message and rule is the one implementation in server/** and src/game/**.
  * What is host-specific lives here and in the three files beside it:
  *   sqlite-store.ts    the main store: one SQLite transaction per write, durable before it is acknowledged
  *   sqlite-shards.ts   the world's per-local-government shards, as rows instead of files
  *   legacy-bridge.ts   the apex-only way back to the original Allworld character
  *   turn-provider.ts   relay credentials for the bounded voice test
- * What this file consumes from server/** is described by local structural interfaces in host-seam.ts.
+ * What this file consumes from server/** is typed by server/types.ts; host-seam.ts holds the few shapes the Worker needs narrower or wider.
  *
  * WHAT THE HOST PROVIDES IN PLACE OF NODE'S
  *   sockets      hibernating WebSockets. What a socket carries (room, position, voice, look, what it watches) is its
@@ -36,29 +36,19 @@ import { oldCharacterLanding } from './legacy-bridge.ts';
 import { createSqliteStore } from './sqlite-store.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.ts';
-import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.js';
-import { buildSocketHandlers } from '../server/ws/index.js';
-import { executeCommand as executeCommandJs } from '../server/routes/core.js';
-import { createOnce as createOnceJs } from '../server/routes/once.js';
-import { createShardStoreOn as createShardStoreOnJs } from '../server/world/shard-core.js';
-import * as worldRegistry from '../server/world/registry.js';
-import { createServerTelemetry as createServerTelemetryJs } from '../server/telemetry/index.js';
-import telemetryRoutes from '../server/telemetry/routes.js';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority as lifeAuthorityJs, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.js';
-import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError as protocolErrorJs, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.js';
-import type { CodedError, Draft, HostContext, HostSocket, JsonObject, MatchedRoute, OnceReceipts, PublicSession, RouteRequest, RouteResult, RouteTable, SessionRecord, ShardStore, SocketHandlers, SocketInfo, Store, Telemetry } from './host-seam.ts';
-import type { ShardBackend } from './sqlite-shards.ts';
-
-// THE SEAM with server/**: the registries and helpers below are JavaScript today; each is bound to the local interface
-// this file relies on (host-seam.ts), so the checks here do not depend on what is inferred from the JavaScript.
-// (buildRoutes and buildSocketHandlers keep their import names, which src/types/protocol.test.ts reads from this file's source,
-// and are bound at their call sites.)
-const executeCommand = executeCommandJs as unknown as (ctx: HostContext, request: RouteRequest, body: unknown, options?: unknown) => unknown;
-const createOnce = createOnceJs as unknown as (options: { now: () => number; windowMs: number }) => OnceReceipts;
-const createShardStoreOn = createShardStoreOnJs as unknown as (backend: ShardBackend, options: Record<string, unknown>) => ShardStore;
-const createServerTelemetry = createServerTelemetryJs as unknown as (options: { env: WorkerEnv; buildId: string }) => Telemetry;
-const lifeAuthority = lifeAuthorityJs as unknown as (options: { now: () => number; receipts: OnceReceipts }) => { settle: HostContext['settle']; act: unknown; playerAct: unknown };
-const protocolError = protocolErrorJs as unknown as (status: number, code: string, reason?: string) => CodedError;
+import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.ts';
+import { buildSocketHandlers } from '../server/ws/index.ts';
+import { executeCommand } from '../server/routes/core.ts';
+import { createOnce } from '../server/routes/once.ts';
+import { createShardStoreOn } from '../server/world/shard-core.ts';
+import * as worldRegistry from '../server/world/registry.ts';
+import { createServerTelemetry } from '../server/telemetry/index.ts';
+import telemetryRoutes from '../server/telemetry/routes.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.ts';
+import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
+import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
+import type { Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
+import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
 
 /** How often connected sockets are asked for a sign of life, and how often the object wakes with nobody connected. */
 const HEARTBEAT_MS = 10000, IDLE_BEAT_MS = 300000;
@@ -80,7 +70,7 @@ function addressBucket(ip: string): string {
   const start = left ? left.split(':') : [], end = right ? right.split(':') : [];
   return [...start, ...Array(Math.max(0, 8 - start.length - end.length)).fill('0'), ...end].slice(0, 4).map(part => parseInt(part || '0', 16).toString(16)).join(':');
 }
-async function bodyOf(request: Request): Promise<JsonObject> {
+async function bodyOf(request: Request): Promise<Record<string, unknown>> {
   if (!request.headers.get('content-type')?.startsWith('application/json')) throw protocolError(415, 'json_required');
   const reader = request.body?.getReader();
   if (!reader) throw protocolError(400, 'invalid_json');
@@ -99,7 +89,7 @@ async function bodyOf(request: Request): Promise<JsonObject> {
   try {
     const body: unknown = JSON.parse(new TextDecoder().decode(bytes));
     if (!body || typeof body !== 'object' || Array.isArray(body)) throw Error();
-    return body as JsonObject;
+    return body as Record<string, unknown>;
   } catch { throw protocolError(400, 'invalid_json'); }
 }
 /** The origin written into absolute links: PUBLIC_ORIGIN when the operator set it, otherwise the request's own host. */
@@ -174,14 +164,14 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   sql: SqlStorage;
   peers: Map<WebSocket, HostSocket>;
   inflight: Map<WebSocket, Promise<void>>;
-  telemetry: Telemetry;
+  telemetry: ReturnType<typeof createServerTelemetry>;
   booted: boolean;
-  store: Store;
+  store: SqliteStore;
   shards: ShardStore;
   rateCleanupAt: number;
   operatorDigest: Promise<string> | null;
-  context: HostContext;
-  handlers: SocketHandlers;
+  context: RouteContext;
+  handlers: WsDispatch;
   routes: RouteTable;
   ready: Promise<void>;
   constructor(ctx: DurableObjectState, env: WorkerEnv) {
@@ -197,7 +187,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const barrier = () => (this.booted ? ctx.storage.sync() : Promise.resolve());
     this.store = createSqliteStore(ctx.storage, { barrier });
     // The world registry: one append-only shard per local government, as rows beside the main tables (sqlite-shards.ts).
-    this.shards = createShardStoreOn(sqliteShardBackend(ctx.storage, { barrier }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log });
+    this.shards = createShardStoreOn(sqliteShardBackend(ctx.storage, { barrier }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
     this.sql.exec('CREATE TABLE IF NOT EXISTS rate_limits (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL)');
     if (!this.sql.exec('PRAGMA table_info(rate_limits)').toArray().some(column => column['name'] === 'expires_at')) this.sql.exec('ALTER TABLE rate_limits ADD COLUMN expires_at INTEGER');
     this.sql.exec('UPDATE rate_limits SET expires_at = started_at + 60000 WHERE expires_at IS NULL');
@@ -208,30 +198,34 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     // The operator token never leaves this closure: only its digest is kept. Unset or too short = no operator surface.
     const operatorToken = validOperatorToken(env.MODERATOR_TOKEN) ? env.MODERATOR_TOKEN as string : null;
     this.operatorDigest = operatorToken ? digest(operatorToken) : null;
-    const votesPerAddress = Number(env.VOTES_PER_ADDRESS ?? 3), voteCapMode = env.VOTE_CAP_MODE || 'flag';
+    const votesPerAddress = Number(env.VOTES_PER_ADDRESS ?? 3), capMode = env.VOTE_CAP_MODE || 'flag';
     if (!Number.isSafeInteger(votesPerAddress) || votesPerAddress < 0) throw new Error('Invalid VOTES_PER_ADDRESS');
-    if (!['flag', 'refuse'].includes(voteCapMode)) throw new Error('Invalid VOTE_CAP_MODE (use "flag" or "refuse")');
+    if (capMode !== 'flag' && capMode !== 'refuse') throw new Error('Invalid VOTE_CAP_MODE (use "flag" or "refuse")');
+    const voteCapMode = capMode;
 
-    const listeners = new Map<string, ((value: unknown) => void)[]>();
+    type Listener = (data: ServerEvents[keyof ServerEvents]) => void;
+    const listeners = new Map<keyof ServerEvents, Listener[]>();
     const receipts = createOnce({ now, windowMs: ACTION_WINDOW_MS });
     const { settle, act, playerAct } = lifeAuthority({ now, receipts });
-    const keys = new Map<string, Promise<unknown>>();
+    const keys = new Map<string, Promise<object>>();
     const unresponsive = (ws: HostSocket): boolean => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= HEARTBEAT_MS / 2;
     const open = (): HostSocket[] => [...this.peers.values()].filter(ws => ws.readyState === 1);
-    const context: HostContext = this.context = {
+    const context: RouteContext = this.context = {
       store: this.store, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: CITY_IDS, telemetry: this.telemetry,
       randomId: () => crypto.randomUUID(),
       allow: (key: string, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
-      send: (ws: HostSocket, message: unknown) => { if (ws.readyState === 1) { try { ws.send(JSON.stringify(message)); this.telemetry.socketOut(ws, message); } catch { /* the socket went away */ } } },
-      on(event: string, fn: (value: unknown) => void) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn); },
-      emit(event: string, value: unknown) { for (const fn of listeners.get(event) || []) { try { fn(value); } catch (error) { log(`Listener for ${event} failed: ${firstLine(error)}`); } } },
+      send: (ws, message) => this.sendFrame(ws as HostSocket, message),
+      on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
+      emit(event, value) { for (const fn of listeners.get(event) || []) { try { fn(value); } catch (error) { log(`Listener for ${event} failed: ${firstLine(error)}`); } } },
       settle, act,
+      // One game action for the caller, exactly once, with everything it changed saved together (routes/core.ts).
+      command: (request, body, options) => executeCommand(context, request, body, options),
       once: receipts.once, onceId: receipts.onceId,
-      push: (id: string, message: unknown) => { let count = 0; for (const ws of open()) if (ws.session.id === id) { context.send(ws, message); count++; } return count; },
-      online: (id: string) => open().some(ws => ws.session.id === id && !unresponsive(ws)),
-      atHome(db: Draft, id: unknown, city: string) {
-        if (typeof id !== 'string' || !(CITY_IDS as readonly string[]).includes(city)) return false;
-        const found = context.core.sessionByPublicId(db, id), state = found && found.expiresAt > now() ? found.cities?.[city]?.state : undefined;
+      push: (id, message) => { let count = 0; for (const ws of open()) if (ws.session.id === id) { context.send(ws, message); count++; } return count; },
+      online: (id) => open().some(ws => ws.session.id === id && !unresponsive(ws)),
+      atHome(db, id, city) {
+        if (!(CITY_IDS as readonly string[]).includes(city)) return false;
+        const found = context.core.sessionByPublicId(db, id), state = found && found.expiresAt > now() ? found.cities?.[city as CityId]?.state : undefined;
         return Boolean(state) && canOccupyVenue(state, 'home');
       },
       checks: {},
@@ -240,20 +234,20 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       // The Workers runtime cannot be told to fail on a redirect: it is not followed, and the answer is refused (host-context.js).
       fetch: outboundFetch((url: string, init?: RequestInit) => fetch(url, init), { refuseRedirect: 'manual' }),
       /** A secret this host makes for itself, once: a row of `host_keys` in the object's own storage. Never logged. */
-      keyFile: (name: string, make: () => unknown): Promise<unknown> => {
+      keyFile: <T extends object>(name: string, make: () => T | Promise<T>): Promise<T> => {
         if (!/^[a-z][a-z0-9-]{0,31}$/.test(name)) return Promise.reject(new Error('Invalid key file name'));
-        if (!keys.has(name)) keys.set(name, (async () => {
+        if (!keys.has(name)) keys.set(name, (async (): Promise<T> => {
           const row = this.sql.exec('SELECT value FROM host_keys WHERE name = ?', name).toArray()[0];
-          if (row) return JSON.parse(row['value'] as string) as unknown;
+          if (row) return JSON.parse(row['value'] as string) as T;
           const value = await make();
           this.sql.exec('INSERT INTO host_keys(name,value) VALUES(?,?) ON CONFLICT(name) DO NOTHING', name, JSON.stringify(value));
           await barrier();
-          return JSON.parse((this.sql.exec('SELECT value FROM host_keys WHERE name = ?', name).toArray()[0] as { value: string }).value) as unknown;
+          return JSON.parse((this.sql.exec('SELECT value FROM host_keys WHERE name = ?', name).toArray()[0] as { value: string }).value) as T;
         })().catch(error => { keys.delete(name); throw error; }));
-        return keys.get(name) as Promise<unknown>;
+        return keys.get(name) as Promise<T>;
       },
       // Work that outlives the request that started it: the object stays up until it has finished.
-      waitUntil: (promise: unknown) => { try { ctx.waitUntil(Promise.resolve(promise).catch(() => {})); } catch { /* not in a request */ } },
+      waitUntil: (promise) => { try { ctx.waitUntil(Promise.resolve(promise).catch(() => {})); } catch { /* not in a request */ } },
       config: { publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
       startup: [],
       // Nothing stops a Durable Object in an orderly way: every write is durable when it is acknowledged, and work in
@@ -261,8 +255,8 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       closing: [],
       core: {
         archiveSession: sessionArchiver({ now, randomId: () => crypto.randomUUID() }),
-        expiredSessionKeys: (db: Draft) => db.$store.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now()),
-        sessionByPublicId: (db: Draft, id: string) => { const key = db.$store.sessionKeyByPublicId(id); return key === undefined ? undefined : db.sessions[key]; },
+        expiredSessionKeys: (db: Db) => db.$store!.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now()),
+        sessionByPublicId: (db: Db, id: string) => { const key = db.$store!.sessionKeyByPublicId(id); return key === undefined ? undefined : db.sessions[key]; },
         unresponsive,
         storeStats: () => this.store.stats(),
         newIdentity: () => ({ secret: crypto.randomUUID(), publicId: crypto.randomUUID() }),
@@ -270,7 +264,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         cookieHeader: (_: unknown, secret: string) => cookie(secret),
         sockets: open,
         isOpen: (ws: HostSocket) => ws.readyState === 1,
-        sessionOf: (ws: HostSocket, db: Draft) => db.sessions[ws.secret],
+        sessionOf: (ws: HostSocket, db: Db) => db.sessions[ws.secret],
         playerAct,
         actionOnce: receipts.action,
         storageFailing: () => this.store.stats().failing === true,
@@ -283,16 +277,14 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         validateMemberships: async () => {}, refreshNames: () => {}, roomStillValid: () => false, revalidate: async () => {},
       },
     };
-    // One game action for the caller, exactly once, with everything it changed saved together (routes/core.js).
-    context.command = (request: RouteRequest, body: unknown, options?: unknown) => executeCommand(context, request, body, options);
-    this.handlers = buildSocketHandlers(context) as unknown as SocketHandlers;
-    this.routes = buildRoutes(context, [...ROUTE_MODULES, telemetryRoutes]) as unknown as RouteTable;
+    this.handlers = buildSocketHandlers(context);
+    this.routes = buildRoutes(context, [...ROUTE_MODULES, telemetryRoutes]);
     this.telemetry.attach(context);
     this.ready = ctx.blockConcurrencyWhile(async () => {
       await Promise.all(context.startup.splice(0));
       for (const socket of ctx.getWebSockets()) { const info = socket.deserializeAttachment(); if (info && !info.closed) this.handlers.restore(this.wrap(socket, info)); }
       // Rotate credentials created by versions that exposed the cookie as a public ID, and archive what has expired.
-      await this.store.transact(db => { for (const secret of context.core.expiredSessionKeys(db)) context.core.archiveSession(db, secret, db.sessions[secret]); });
+      await this.store.transact(db => { for (const secret of context.core.expiredSessionKeys(db)) { const expired = db.sessions[secret]; if (expired) context.core.archiveSession(db, secret, expired); } });
       if (await ctx.storage.getAlarm() === null) await ctx.storage.setAlarm(Date.now() + (this.peers.size ? HEARTBEAT_MS : IDLE_BEAT_MS));
     }).then(() => { this.booted = true; });
   }
@@ -310,10 +302,15 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     return next <= count;
   }
   wrap(socket: WebSocket, info: SocketInfo): HostSocket {
-    const ws: HostSocket = { ...info, voice: info.voice || { enabled: false, muted: true }, position: info.position || { x: 0, z: 0 }, lastMoves: info.lastMoves || [],
+    const ws: HostSocket = { ...info, voice: info.voice || { enabled: false, muted: true }, position: info.position || { x: 0, z: 0 }, lastMoves: info.lastMoves || [], look: info.look ?? null, stale: false, guestUntil: 0,
       get readyState() { return this.closed ? 3 : socket.readyState; },
       send: (data: string) => socket.send(data), close: (code = 1000, reason = '') => { ws.closed = true; try { socket.close(code, reason); } catch { /* already closed */ } }, socket };
     this.peers.set(socket, ws); return ws;
+  }
+  /** To one socket, if it is open: the frames the shared modules send, plus the Worker's own application heartbeat. */
+  sendFrame(ws: HostSocket, message: ServerFrame | HeartbeatFrame): void {
+    if (ws.readyState !== 1) return;
+    try { ws.send(JSON.stringify(message)); this.telemetry.socketOut(ws, message); } catch { /* the socket went away */ }
   }
   /** Write what each socket carries into its attachment, so it survives a sleep. Too large (a long look): the look is what goes. */
   saveSockets(): void {
@@ -327,7 +324,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   }
   /** Tell the modules a socket is gone — once, however many ways its end was noticed (an expiry, an alarm, the close event). */
   release(ws: HostSocket): void { if (ws.released) return; ws.released = true; ws.closed = true; this.telemetry.socketClosed(ws); this.handlers.close(ws); }
-  session(request: RouteRequest, db: Draft, renew = false): SessionRecord | undefined {
+  session(request: WorkerRequest, db: Db, renew = false): SessionRecord | undefined {
     const s = request.secret && UUID_PATTERN.test(request.secret) ? db.sessions[request.secret] : undefined;
     if (!s || !Number.isFinite(s.expiresAt) || s.expiresAt <= Date.now()) return undefined;
     if (renew) renewSession(s, Date.now()); return s;
@@ -336,7 +333,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     await this.ready;
     const url = new URL(raw.url);
     if (!url.pathname.startsWith('/api/') && url.pathname !== '/socket') return this.page(raw, url);
-    let at: { key: string; request: RouteRequest; began: number } | undefined;
+    let at: { key: string; request: WorkerRequest; began: number } | undefined;
     try {
       const secret = cookieId(raw), now = Date.now();
       const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
@@ -345,7 +342,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       // True only for a request carrying the operator's bearer token (never a cookie or a query value).
       const bearer = this.operatorDigest ? bearerToken(raw.headers.get('authorization')) : null;
       const moderator = bearer !== null && sameDigest(await digest(bearer), await this.operatorDigest);
-      const request: RouteRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, params: {}, raw,
+      const request: WorkerRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, params: {}, raw,
         moderator: () => moderator, json: () => bodyOf(raw).then(body => (request.body = body)),
         session: (db, options = {}) => { const s = this.session(request, db, options.renew); if (s) request.publicId = s.publicId; return s; },
         requireSession: (db, options = {}) => { const s = request.session(db, options); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
@@ -376,7 +373,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (typeof after === 'function') this.ctx.waitUntil(Promise.resolve().then(() => after()).then(() => this.saveSockets()).catch(error => this.context.core.log(`After-response step of ${raw.method} ${route.key} failed: ${firstLine(error)}`)));
       return json(status, body, { ...(result.renew === true ? { 'Set-Cookie': cookie(secret as string) } : {}), ...routeHeaders(result.headers) });
     } catch (thrown) {
-      const error = (thrown && typeof thrown === 'object' ? thrown : { message: thrown }) as Partial<CodedError>;
+      const error = (thrown && typeof thrown === 'object' ? thrown : { message: thrown }) as Partial<HttpError>;
       const known = Number.isInteger(error.status) && typeof error.code === 'string';
       // Only the first line of the message is logged: never a header, a cookie or a body.
       if (!known) this.context.core.log(`Request failed: ${firstLine(error)}`);
@@ -392,7 +389,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
    */
   async page(raw: Request, url: URL): Promise<Response> {
     const none = () => new Response(null, { status: 204, headers: { 'x-allworld-page': 'none' } });
-    const found = pageFor(this.context.pages, url.pathname);
+    const found = pageFor(this.context.pages ?? new Map<string, PageHandler>(), url.pathname);
     if (!found || !['GET', 'HEAD', 'POST'].includes(raw.method)) return none();
     const [prefix, render] = found, began = performance.now(), key = `${prefix}*`;
     try {
@@ -403,18 +400,18 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (raw.method === 'POST') { try { await raw.body?.cancel(); } catch { /* nothing to drain */ } }
       const page = await render({ path: url.pathname, query: url.searchParams, origin: publicOrigin(this.env, url), ip, method: raw.method });
       if (!page || typeof page.html !== 'string') return none();
-      const status = Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200;
+      const status = typeof page.status === 'number' && Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200;
       this.telemetry.http({ method: raw.method, route: key, status, ms: performance.now() - began });
       return new Response(raw.method === 'HEAD' ? null : page.html, { status, headers: { ...PAGE_HEADERS, 'Cache-Control': page.cache !== false && raw.method !== 'POST' && status === 200 ? 'public, max-age=300' : 'no-store' } });
     } catch (thrown) {
-      const coded = (thrown ?? {}) as Partial<CodedError>;
+      const coded = (thrown ?? {}) as Partial<HttpError>;
       const known = Number.isInteger(coded.status) && typeof coded.code === 'string';
       if (!known) this.context.core.log(`Page failed: ${firstLine(thrown)}`);
       this.telemetry.httpFailed(thrown, { method: raw.method, route: key, status: known ? coded.status as number : 500, code: known ? coded.code : undefined });
       return json(known ? coded.status as number : 500, { error: known ? coded.code : 'internal_error' });
     } finally { this.ctx.waitUntil(this.telemetry.flush()); }
   }
-  async voiceConfig(request: RouteRequest): Promise<Response> {
+  async voiceConfig(request: WorkerRequest): Promise<Response> {
     const session = await this.store.transact(db => {
       const s = request.requireSession(db, { renew: true });
       if (!this.liveRoom(s, db)) throw protocolError(403, 'room_membership_required');
@@ -429,10 +426,10 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     }
     return json(200, { ...config, radius: 12, serverTime: Date.now() }, { 'Set-Cookie': cookie(request.secret as string) });
   }
-  liveRoom(session: SessionRecord, db: Draft): boolean {
-    return [...this.peers.values()].some(ws => ws.session.id === session.publicId && ws.readyState === 1 && ws.room && ws.expiresAt > Date.now() && !this.context.core.unresponsive(ws) && this.context.core.roomStillValid(ws, db, session, ws.room.split(':')[0] as string, this.context.settle(session, ws.room.split(':')[0] as string)));
+  liveRoom(session: SessionRecord, db: Db): boolean {
+    return [...this.peers.values()].some(ws => ws.session.id === session.publicId && ws.readyState === 1 && ws.room && ws.expiresAt > Date.now() && !this.context.core.unresponsive(ws) && this.context.core.roomStillValid(ws, db, session, ws.room.split(':')[0] as string, this.context.settle(session, ws.room.split(':')[0] as CityId)));
   }
-  async upgrade(raw: Request, request: RouteRequest): Promise<Response> {
+  async upgrade(raw: Request, request: WorkerRequest): Promise<Response> {
     if (raw.headers.get('upgrade')?.toLowerCase() !== 'websocket' || raw.method !== 'GET') throw protocolError(403, 'websocket_required');
     if (!this.allow(`upgrade:${request.ip}`, 60)) throw protocolError(429, 'rate_limited');
     const info = await this.store.transact(db => { const s = request.requireSession(db, { renew: true }); return { secret: s.secret as string, session: publicSession(s), expiresAt: s.expiresAt }; });
@@ -460,17 +457,17 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   override async webSocketMessage(socket: WebSocket, raw: Inbound): Promise<void> {
     await this.ready;
     const ws = this.peers.get(socket); if (!ws || ws.readyState !== 1) return;
-    if (!this.allow(`ws:${ws.session.id}`, 600)) { this.context.send(ws, { type: 'error', code: 'rate_limited', error: 'rate_limited' }); return; }
+    if (!this.allow(`ws:${ws.session.id}`, 600)) { this.sendFrame(ws, { type: 'error', code: 'rate_limited', error: 'rate_limited' }); return; }
     const before = this.inflight.get(socket) || Promise.resolve();
     const operation = before.then(() => this.message(socket, raw)); this.inflight.set(socket, operation);
     try { await operation; } finally { if (this.inflight.get(socket) === operation) this.inflight.delete(socket); }
   }
   async message(socket: WebSocket, raw: Inbound): Promise<void> {
     const ws = this.peers.get(socket); if (!ws || ws.readyState !== 1) return;
-    let message: JsonObject | undefined;
+    let message: IncomingFrame | undefined;
     try {
       if (typeof raw !== 'string' || new TextEncoder().encode(raw).length > 16384) throw Error('invalid_message');
-      try { message = JSON.parse(raw) as JsonObject; } catch { throw Error('invalid_message'); }
+      try { message = JSON.parse(raw) as IncomingFrame; } catch { throw Error('invalid_message'); }
       if (!message || typeof message !== 'object') throw Error('invalid_message');
       const authenticated = await this.store.read(db => { const s = db.sessions[ws.secret]; return !!s && s.expiresAt > Date.now(); });
       if (!authenticated || ws.expiresAt <= Date.now()) { this.context.send(ws, { type: 'error', code: 'device_session_required', error: 'device_session_required' }); ws.close(1008, 'Device session expired'); this.release(ws); return; }
@@ -478,7 +475,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (message.type === 'heartbeat-ack') return;
       if (Date.now() - ws.lastSessionRenewedAt >= 60000) {
         // The renewal could not be saved, so it did not happen: the socket keeps its expiry and the message is still handled.
-        const expiration = await this.store.transact(db => { const s = db.sessions[ws.secret]; if (!renewSession(s, Date.now())) throw Error('device_session_required'); return (s as SessionRecord).expiresAt; }).catch((error: unknown) => { if ((error as Partial<CodedError> | null | undefined)?.code !== 'storage_unavailable') throw error; return null; });
+        const expiration = await this.store.transact(db => { const s = db.sessions[ws.secret]; if (!renewSession(s, Date.now())) throw Error('device_session_required'); return (s as SessionRecord).expiresAt; }).catch((error: unknown) => { if ((error as Partial<HttpError> | null | undefined)?.code !== 'storage_unavailable') throw error; return null; });
         if (expiration !== null) for (const peer of this.peers.values()) if (peer.secret === ws.secret) { peer.expiresAt = expiration; peer.lastSessionRenewedAt = Date.now(); }
       }
       const entry = typeof message.type === 'string' ? this.handlers.messages.get(message.type) : undefined;
@@ -494,11 +491,11 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     } catch (thrown) {
       // Only a machine code goes to the client; anything else (a TypeError's text) is logged here instead. A coded
       // refusal may carry the sentence the server wrote for the player (`reason`), repeated as `message`.
-      const reason = (thrown as Partial<CodedError> | null | undefined)?.reason;
+      const reason = (thrown as Partial<HttpError> | null | undefined)?.reason;
       const text = firstLine(thrown), coded = /^[a-z][a-z0-9_]{1,63}$/.test(text), code = coded ? text : 'internal_error';
       if (!coded) this.context.core.log(`Socket message failed: ${text}`);
       this.telemetry.socketFailed(ws, message, code, coded, thrown);
-      this.context.send(ws, { type: 'error', code, error: code, ...(coded && typeof reason === 'string' ? { reason, message: reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && UUID_PATTERN.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) });
+      this.sendFrame(ws, { type: 'error', code: code as SocketErrorCode, error: code as SocketErrorCode, ...(coded && typeof reason === 'string' ? { reason, message: reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && UUID_PATTERN.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) });
     }
     finally { this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); }
   }
@@ -509,7 +506,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     for (const ws of [...this.peers.values()]) {
       if (ws.readyState !== 1) continue;
       if (!ws.alive || ws.expiresAt <= Date.now()) { ws.close(1008, 'Session inactive'); this.release(ws); continue; }
-      ws.alive = false; ws.pingedAt = Date.now(); this.context.send(ws, { type: 'heartbeat' });
+      ws.alive = false; ws.pingedAt = Date.now(); this.sendFrame(ws, { type: 'heartbeat' });
     }
     this.context.emit('heartbeat', { now: Date.now() }); this.saveSockets();
     this.ctx.waitUntil(this.telemetry.flush());

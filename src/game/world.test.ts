@@ -1,5 +1,5 @@
 // OWNER: world — tests for venues, travel, roadside events, weather and illness.
-// Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.js.
+// Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife, spotsOf } from '../life.ts';

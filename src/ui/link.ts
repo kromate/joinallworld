@@ -1,6 +1,6 @@
 /**
  * CONNECTION WORDING — one table for every place that has to say why the game cannot change
- * anything right now. `view.link` (src/client.js) is one of:
+ * anything right now. `view.link` (src/client.ts) is one of:
  *   'online'       connected: nothing to say
  *   'connecting'   the first request is still on its way
  *   'new'          no life on this device yet: a nickname starts one

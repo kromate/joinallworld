@@ -1,6 +1,6 @@
 // The world panels' logic without a browser: the drawing of a house, the directory's requests and
 // pages, finding the local government from a position, and the select's keys held equal to the
-// control kit's own (src/ui/controls.js).
+// control kit's own (src/ui/controls.ts).
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { keepsNative as legacyKeepsNative, nextEnabled as legacyNextEnabled, typeAhead as legacyTypeAhead } from '../../../ui/controls.ts'

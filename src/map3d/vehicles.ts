@@ -1,6 +1,6 @@
 /**
  * OWNER: world
- * Small procedural vehicles for the city map, drawn into a geometry batch (src/scene/build.js)
+ * Small procedural vehicles for the city map, drawn into a geometry batch (src/scene/build.ts)
  * at the origin, facing +z, in the same scale as an avatar (about three units tall).
  *
  *   VEHICLES[kind](b, options) → { seat: { x, y, z }, length }
@@ -11,7 +11,7 @@
 import { GLOW, GLASS } from '../scene/build.ts';
 import type { Point3 } from './types.ts';
 
-/** The options a geometry batch (src/scene/build.js createBatch) takes on a shape. */
+/** The options a geometry batch (src/scene/build.ts createBatch) takes on a shape. */
 export interface ShapeOptions { rx?: number; ry?: number; rz?: number; seg?: number; layer?: string; part?: string; top?: number; open?: boolean; sx?: number; sz?: number }
 /** The methods of a geometry batch that the vehicles draw with. */
 export interface VehicleBatch {

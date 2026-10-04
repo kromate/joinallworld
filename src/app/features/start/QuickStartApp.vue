@@ -11,7 +11,7 @@
 //              options" opens the full creator below; it is never required.
 //   Play       sends 'jaw:quick-start' { name, look } (App.vue), which opens the session and confirms
 //              the look with the 'onboarding.quick-start' action — exactly once: the action id is
-//              kept on the device until the server has answered (src/quick-start/entry.js).
+//              kept on the device until the server has answered (src/quick-start/entry.ts).
 //
 // The draft is kept on the device as it is edited (startBoundary.ts), so a reload in the middle of
 // the form loses nothing. params: { reason: 'new', problem?: { reason, name } } — or none, when the

@@ -1,7 +1,7 @@
 /**
  * OWNER: growth
  * The browser's side of the game tables: one socket to /socket for the `table-*` messages
- * (server/ws/tables.js), the latest state of the table on screen, and the calls a board makes.
+ * (server/ws/tables.ts), the latest state of the table on screen, and the calls a board makes.
  * It decides nothing: every button sends a message, and what is drawn is what the server sent.
  *
  * The socket is opened the first time the Tables app is used and re-opened, with a bounded

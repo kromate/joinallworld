@@ -3,8 +3,8 @@
 // port of src/ui/panels/world-ui.js (the helpers the Map card and the Ride app shared, so the two
 // can never disagree about a fare, a trip time or why a trip is refused) plus the pure parts of
 // map.js, ride.js and the roadside prompt. Everything is derived from view.travel
-// (src/game/systems/travel.js). The words for "why Go is off" come from the connection table
-// (src/ui/link.js), so a trip is never refused as "offline" when the server is merely unreachable.
+// (src/game/systems/travel.ts). The words for "why Go is off" come from the connection table
+// (src/ui/link.ts), so a trip is never refused as "offline" when the server is merely unreachable.
 import { VENUE_CATEGORIES } from '../../../game/content/venues.ts'
 import type { LifeState } from '../../../types/life.ts'
 import type { AdsResponse, GovResponse } from '../../../types/civic.ts'
@@ -172,7 +172,7 @@ export interface MapLayer {
   action?: string
 }
 export const LAYERS: readonly MapLayer[] = [
-  // The world layer: on from the start. The maps load only what is in view (src/map3d/world-data.js).
+  // The world layer: on from the start. The maps load only what is in view (src/map3d/world-data.ts).
   { id: 'lgas', label: 'LGAs', icon: 'map' },
   { id: 'homes', label: 'Homes', icon: 'houses' },
   { id: 'moving', label: 'Moving', icon: 'bus', note: 'Street traffic — decoration only, it changes nothing in the game.' },

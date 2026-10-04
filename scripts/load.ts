@@ -30,9 +30,9 @@ import type { Server } from 'node:http';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { createServer } from '../server/server.js';
+import { createServer } from '../server/server.ts';
 
-/** Counters the store keeps (server/store.js is untyped). */
+/** Counters the store keeps (server/store.ts is untyped). */
 interface StoreStats { writes: number; bytes: number; transactions: number }
 interface LoadServer extends Server {
   store: { stats(): StoreStats; flush(): Promise<void>; close(): Promise<void> };

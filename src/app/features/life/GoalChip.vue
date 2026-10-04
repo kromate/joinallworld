@@ -4,10 +4,10 @@
 // complete: Freshen up · +₦500 +1 star"). To a guest of the quick start it offers settling in
 // ("Make this life yours") at natural moments — after the first reward, after the third activity,
 // on a later day — at most NUDGE_CAP times, never over another sheet or in the middle of an
-// activity (the policy is src/quick-start/model.js nextNudge). A life that never was a guest and
+// activity (the policy is src/quick-start/model.ts nextNudge). A life that never was a guest and
 // has no character yet is offered character creation once, as before.
 //
-// The Goals tab of the Sim sheet is GoalsTab.vue. All rules live in src/game/systems/goals.js.
+// The Goals tab of the Sim sheet is GoalsTab.vue. All rules live in src/game/systems/goals.ts.
 import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { keepNudges, nudgesOf } from '../../../quick-start/entry.ts'

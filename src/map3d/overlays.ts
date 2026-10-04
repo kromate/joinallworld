@@ -13,7 +13,7 @@
  * PLAYER TEXT NEVER BECOMES GEOMETRY OR MARKUP. The 3D part of an ad is only a coloured board or
  * tile; its words are returned from chips() as plain strings, and the host writes them into DOM
  * nodes with textContent. Nothing an ad says is a link or a button.
- * A chip's ICON is never player text: `glyph` is ready-made SVG of the game's own icon set (src/ui/icon-map.js),
+ * A chip's ICON is never player text: `glyph` is ready-made SVG of the game's own icon set (src/ui/icon-map.ts),
  * chosen from the ad's icon id, and is the one field the host may write as markup. `icon` (the palette's emoji)
  * is kept only as the plain-text fallback.
  *

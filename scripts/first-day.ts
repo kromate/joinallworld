@@ -19,11 +19,11 @@
  * trying action IDs against a copy of the rules (what this script used to do for the birth
  * lottery) no longer says anything about what the server will roll. The run still needs the
  * outcomes it documents (LAPO Baby at birth, the puddle on the trek home), so it uses the
- * test-only hook in server/life-service.js: this process — which IS the server here — fixes the
+ * test-only hook in server/life-service.ts: this process — which IS the server here — fixes the
  * salt its one life is given (FIRST_DAY_SALT). No request can do that. If content changes and
  * those outcomes stop coming up, `node scripts/first-day.ts --find-salt` prints a salt that works.
  *
- * Plain Node, no dependencies. `runFirstDay({ log })` is also run by server/first-day.test.js.
+ * Plain Node, no dependencies. `runFirstDay({ log })` is also run by server/first-day.test.ts.
  */
 import assert from 'node:assert/strict';
 import { mkdtemp, rm } from 'node:fs/promises';
@@ -32,8 +32,8 @@ import { join } from 'node:path';
 import { once } from 'node:events';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { createServer } from '../server/server.js';
-import { useSaltSourceForTests } from '../server/life-service.js';
+import { createServer } from '../server/server.ts';
+import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife } from '../src/life.ts';
 import { weatherAt } from '../src/game/systems/health.ts';
 import { findFreeSpot } from '../src/game/home-layout.ts';
@@ -45,7 +45,7 @@ import type { Server } from 'node:http';
 import type { LifeState, NeedId } from '../src/types/index.ts';
 import type { ActionResponse, LifeResponse } from '../src/types/protocol.ts';
 
-/** What this script uses of the server (server/server.js is still untyped JavaScript). */
+/** What this script uses of the server (server/server.ts is still untyped JavaScript). */
 interface FirstDayServer extends Server { store: { close(): Promise<void> } }
 type Json = Record<string, unknown>;
 interface Http<T> { status: number; headers: Headers; json: T }

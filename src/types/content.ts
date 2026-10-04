@@ -158,7 +158,7 @@ export type VenueZone = 'mainland' | 'island' | 'east'
  */
 export type VenueCategoryId = 'food' | 'fun' | 'nightlife' | 'work' | 'care' | 'civic'
 
-/** Which scene src/scene/venue-scenes.js draws (SCENE_KINDS). */
+/** Which scene src/scene/venue-scenes.ts draws (SCENE_KINDS). */
 export type SceneKind =
   | 'park' | 'buka' | 'hub' | 'club' | 'office' | 'market' | 'gym' | 'mall' | 'beach' | 'hospital' | 'salon'
   | 'rooftop' | 'police' | 'worship' | 'radio' | 'polling' | 'viewing' | 'shrine' | 'walk' | 'statehouse' | 'airport'
@@ -374,7 +374,7 @@ export interface FurnitureDefinition {
   /** List price in naira (the charged price is modify('shop.price', price, { item, kind: 'furniture' })). */
   price: number
   icon: string
-  /** Which procedural model src/scene/home-scene.js draws. */
+  /** Which procedural model src/scene/home-scene.ts draws. */
   shape: string
   /** Hex colour. */
   color: string
@@ -451,7 +451,7 @@ export interface RecipeDefinition {
 
 /**
  * Plain-data effect block shared by traits, lottery outcomes and perks, applied by
- * src/game/character-effects.js through the registry modifier keys. Multipliers are ≥ 0.
+ * src/game/character-effects.ts through the registry modifier keys. Multipliers are ≥ 0.
  */
 export interface EffectBlock {
   /** 'skills.xpRate' — `all` and/or per skill. */

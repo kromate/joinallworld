@@ -6,7 +6,7 @@ import { EMAIL_CONSENT as EMAIL_CONSENT_JS, PUSH_CONSENT as PUSH_CONSENT_JS } fr
 import { deviceToken as deviceTokenJs } from '../../../quick-start/entry.ts'
 import type { PushSubscriptionLike, ShareFacts } from '../../../types/growth.ts'
 
-// ---- the share module (src/ui/share.js) ----------------------------------------------------
+// ---- the share module (src/ui/share.ts) ----------------------------------------------------
 /** Everything a share needs, prepared once: the text, the link and the picture. */
 export interface PreparedShare {
   text: string
@@ -26,7 +26,7 @@ export interface ShareModule {
 /** The canvas painter and the share calls are fetched the first time something is shared. */
 export const loadShareModule = (): Promise<ShareModule> => import('../../../ui/share.ts') as unknown as Promise<ShareModule>
 
-// ---- web push (src/ui/push-client.js) ------------------------------------------------------
+// ---- web push (src/ui/push-client.ts) ------------------------------------------------------
 export type PushKind = 'ready' | 'unsupported' | 'needs-install' | 'blocked'
 export type EnablePushResult = { ok: true; subscription: PushSubscriptionLike } | { ok: false; code: 'declined' | 'blocked' | 'unsupported' | 'failed' }
 export interface PushModule {
@@ -40,7 +40,7 @@ export const loadPushModule = (): Promise<PushModule> => import('../../../ui/pus
 export { upcomingEvents, eventIcs, awayCard } from './rulesBoundary.ts'
 export type { AwayCard, AwayLine } from './rulesBoundary.ts'
 
-// ---- consent wording (src/game/outreach.js) ------------------------------------------------
+// ---- consent wording (src/game/outreach.ts) ------------------------------------------------
 export const EMAIL_CONSENT: string = EMAIL_CONSENT_JS
 export const PUSH_CONSENT: string = PUSH_CONSENT_JS
 

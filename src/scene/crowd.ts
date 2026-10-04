@@ -10,7 +10,7 @@ import type { LifeState } from '../types/life.ts';
  *
  * POSITIONS. `positions` is { [publicId]: { x, z } }: where each player stands, as the room's
  * `presence` reports it — the numbers the scene host reports for the local avatar (options.onMove
- * in src/venue-world.js, sent by the community module's moveTo). The entry file (src/life-main.js)
+ * in src/venue-world.ts, sent by the community module's moveTo). The entry file (src/life-main.js)
  * passes what the community module's onMembers gives it. A player in the listing who has not
  * reported a position yet stands at one of the scene's crowd places, as before; a player who is in
  * the positions but NOT in the who-is-here listing is not drawn (the listing is what says someone
@@ -19,7 +19,7 @@ import type { LifeState } from '../types/life.ts';
  * calling this again with unchanged data never causes a frame.
  */
 import { isDeparting } from '../game/registry.ts';
-/** The room protocol's bounds (server/protocol.js POSITION_BOUNDS); the scene keeps a figure on its own floor. */
+/** The room protocol's bounds (server/protocol.ts POSITION_BOUNDS); the scene keeps a figure on its own floor. */
 const SCENE_REACH = 20;
 export const CROWD_LIMIT = 12; // equals MAX_CROWD in venue-scenes.js (asserted in crowd.test.js)
 

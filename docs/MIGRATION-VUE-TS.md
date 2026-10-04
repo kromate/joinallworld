@@ -43,10 +43,10 @@ DOM call in the engine or a Node call in code the Worker runs is an error.
 
 | Project | Files | Globals |
 |---|---|---|
-| `engine` | `src/game/**`, `src/life.js`, `src/types/**` | ES2023 only: no DOM, no Node |
+| `engine` | `src/game/**`, `src/life.ts`, `src/types/**` | ES2023 only: no DOM, no Node |
 | `client` | the rest of `src/` | DOM, Vite |
 | `server` | `server/**`, `scripts/**`, `vite.config.ts` | Node |
-| `worker` | `deploy/*.ts`, `server/protocol.js`, `server/life-service.js` | Cloudflare Workers |
+| `worker` | `deploy/*.ts`, `server/protocol.ts`, `server/life-service.ts` | Cloudflare Workers |
 | `test` | `*.test.js`, `*.test.ts`, `deploy/*.test.ts` | Node and DOM |
 
 `tsconfig.json` at the root is for editors only: one program over the whole tree.
@@ -99,7 +99,7 @@ One rule makes all three agree: **write the real extension in every import** (`.
   (`erasableSyntaxOnly` enforces it).
 - **Vite** compiles `.ts` and `.vue` with no configuration beyond the Vue plugin.
 - **The Worker.** Checked with a throwaway Worker that imports `clock.ts`, `wallet.ts`,
-  `src/types/actions.ts` and `src/life.js`: `wrangler deploy --dry-run` from `deploy/tooling`
+  `src/types/actions.ts` and `src/life.ts`: `wrangler deploy --dry-run` from `deploy/tooling`
   (wrangler 4.147.0) bundled it with no configuration. Nothing in `deploy/` was changed.
 - **A sibling `.ts` wins in the type checker.** For `import './clock.js'` TypeScript reads
   `clock.ts` if it exists; Node, Vite and esbuild load `clock.js`. That is how the two twins give
@@ -210,9 +210,9 @@ splits across people by panel group.
 
 ### Step 2: engine and protocol
 
-**Files.** `src/game/util.js`, `clock.js`, `registry.js`, `api.js`, `home-layout.js`,
+**Files.** `src/game/util.ts`, `clock.js`, `registry.js`, `api.js`, `home-layout.js`,
 `character-effects.js`, `social-model.js`; `src/game/content/*.js`; `src/game/systems/*.js`;
-`src/life.js`; then `server/protocol.js` and `server/life-service.js`.
+`src/life.ts`; then `server/protocol.ts` and `server/life-service.ts`.
 
 **Why first.** Three runtimes import them: the browser, the Node server and the Worker. Their
 types flow into everything else, and until they are real the server and the client are typed
@@ -231,7 +231,7 @@ and the three scripted runs.
 
 ### Step 3: server
 
-**Files.** `server/store.js`, `auth.js`, `routes/*`, `ws/*`, `social/*`, `civic/*`,
+**Files.** `server/store.ts`, `auth.js`, `routes/*`, `ws/*`, `social/*`, `civic/*`,
 `moderation/*`, `support/*`, `server.js`, `test-fixture.js`; `scripts/*.mjs`.
 
 **How.** `npm start` becomes `node server/server.ts`. Raise `engines.node` to `>=22.18.0` in the
@@ -244,15 +244,15 @@ the diff.
 
 ### Step 4: client transport
 
-**Files.** `src/client.js`, `src/lazy-load.js`, then `src/ui/panels/social-client.js`.
+**Files.** `src/client.ts`, `src/lazy-load.ts`, then `src/ui/panels/social-client.js`.
 
 **How.** `client.js` becomes `src/app/state/client.ts` with the contract in
-`src/app/types/client.ts` as its own types; `src/client.test.js` becomes its test unchanged in
+`src/app/types/client.ts` as its own types; `src/client.test.ts` becomes its test unchanged in
 behaviour. `social-client.js` becomes a reactive store (`src/app/state/social.ts`): `social.me`,
 the threads and the outbox become refs, which removes the `legacyTick` counter the Vue Messages app
 reads today. Fix the session-change reset at the same time (defect C3 below).
 
-**Verified by.** `src/client.test.js` passing against the port, `src/app/state/game.test.ts`, a
+**Verified by.** `src/client.test.ts` passing against the port, `src/app/state/game.test.ts`, a
 two-browser message exchange.
 
 ### Step 5: the shell switch
@@ -291,8 +291,8 @@ with `?legacy=<id>`, and the keyboard pass (Tab order, Esc, focus after an actio
 
 ### Step 7: scenes and maps
 
-**Files.** `src/scene/**`, `src/venue-world.js`, `src/map3d/**`, `src/city-map.js`,
-`src/world-map.js`.
+**Files.** `src/scene/**`, `src/venue-world.ts`, `src/map3d/**`, `src/city-map.ts`,
+`src/world-map.ts`.
 
 **How.** The modules are converted to TypeScript as they are: factory functions that own a
 renderer. They are not rewritten as components. `ScenePane.vue` and `MapPane.vue` already wrap
@@ -302,7 +302,7 @@ modules' own.
 
 **The rule that must survive.** No render loop while idle. A component never asks for a frame of
 its own accord; it forwards state, and the host draws only when something changed. The existing
-tests assert it (`src/venue-world.test.js`, "RELEASE GATE: idle → zero frames") and they move with
+tests assert it (`src/venue-world.test.ts`, "RELEASE GATE: idle → zero frames") and they move with
 the code.
 
 **Verified by.** The scene tests, `?diagnostics` frame count flat over ten idle seconds and across
@@ -310,7 +310,7 @@ two polls and a phone open and close, and a visual pass of every venue kind.
 
 ### Step 8: community, then clean-up
 
-`src/community.js` last and by itself. See [Community](#community-chat-and-voice).
+`src/community.ts` last and by itself. See [Community](#community-chat-and-voice).
 
 Then, once `server/` is converted: delete `tsconfig/baseline.json` and the baseline logic in
 `scripts/typecheck.ts`, and turn off `allowJs`. (`src/app/legacy/` is already deleted and `next.html` is `index.html`.)
@@ -415,11 +415,11 @@ explicit and small.
 
 ## Community: chat and voice
 
-`src/community.js` is 495 lines in one closure with about twenty variables whose correctness is
+`src/community.ts` is 495 lines in one closure with about twenty variables whose correctness is
 their order. It handles the microphone. It is ported last, alone, and in two moves.
 
 1. **Port it as it is.** Same structure, same DOM, types added, the existing test
-   (`src/community.test.js`) passing unchanged. No restructuring in the same change.
+   (`src/community.test.ts`) passing unchanged. No restructuring in the same change.
 2. **Then tighten the types** so the privacy rules cannot be broken by a later edit:
    - voice state is a union `off | joining { generation } | on { stream, muted, generation }`;
      a stream exists only in `on`, and `on` is only built from a stream whose tracks are already
@@ -448,7 +448,7 @@ npm run test:edge
 npm run first-day && npm run two-players && npm run economy
 ```
 
-In a browser, with a private server (`PORT=3330 DATA_DIR=<temp> node server/server.js`) and the
+In a browser, with a private server (`PORT=3330 DATA_DIR=<temp> node server/server.ts`) and the
 headless harness, old and new shell at 390×844 and 1280×800:
 
 - create a life, see the scene, open the phone, open each converted screen;
@@ -477,35 +477,35 @@ steps named.
 
 | # | Where | What | Severity | Step |
 |---|---|---|---|---|
-| C1 | `src/community.js:42` | `roomLabel()` knows four venue ids, one of which does not exist; every other venue is headed "Park" in the panel where voice is joined | Medium | 8 |
+| C1 | `src/community.ts:42` | `roomLabel()` knows four venue ids, one of which does not exist; every other venue is headed "Park" in the panel where voice is joined | Medium | 8 |
 | C2 | `src/ui/panels/messages.js:22`, `social-client.js:187` | `S.openConv` is cleared only by going back; closing the sheet inside a chat leaves it set, so the next message is marked read with no toast or badge. Fixed in the Vue Messages app | Medium | 6 |
 | C3 | `src/ui/panels/social-client.js:20`, `src/life-main.js:51` | Social state was never reset on a session change. Since fixed in the JavaScript (`life-main.js` `sessionChanged` → `resetSocial`); the Vue shell (`src/app/state/app.ts`) does not make that call yet | Medium | 4 |
 | C4 | `src/ui/panels/social-client.js:234` | After the reconnect attempts run out the socket stays off until the player presses Reconnect, though the game itself reconnected | Low–medium | 4 |
 | C5 | `src/life-main.js:382` | `pagehide` destroys the community panel but keeps the reference; a page restored from the back/forward cache has an empty panel until reload | Low–medium | 5 |
-| W1 | `deploy/cloudflare-worker.ts:158` | Room membership is revalidated with `kind === 'travel'`, so a commuting life stays in its room. `server/protocol.js` forbids that comparison | Medium | deploy owner |
+| W1 | `deploy/cloudflare-worker.ts:158` | Room membership is revalidated with `kind === 'travel'`, so a commuting life stays in its room. `server/protocol.ts` forbids that comparison | Medium | deploy owner |
 | W2 | `deploy/cloudflare-worker.ts:318` | Venue chat on the Worker has no text filter and no mute | Medium | deploy owner |
-| S1 | `server/server.js:394,420` | The `to` echo on signal errors compares a public id with the cookie secret, so it is always true | Low | 3 |
-| E1 | `src/life.js:108`, `systems/onboarding.js` (`INBOUND`) | The onboarding veto also blocked server-only actions. Since fixed for the deliveries TO a life (a gift or friendship, a referral gift, a table result pass the hold); every other server-only action is still vetoed like a player's | Low | 2 |
+| S1 | `server/server.ts:394,420` | The `to` echo on signal errors compares a public id with the cookie secret, so it is always true | Low | 3 |
+| E1 | `src/life.ts:108`, `systems/onboarding.js` (`INBOUND`) | The onboarding veto also blocked server-only actions. Since fixed for the deliveries TO a life (a gift or friendship, a referral gift, a table result pass the hold); every other server-only action is still vetoed like a player's | Low | 2 |
 | E2 | `content/events.js:120`, `systems/goals.js:236` | Two unrelated "startup funded" mechanisms; the event one emits has no listener | Medium | 2 |
 | E3 | `systems/home.js:146` | Moving furniture without `rot` resets its rotation to 0 | Low | 2 |
-| S2 | `server/civic/elections.js:25` | `week` is written and then overwritten by the spread in three returns (dead code) | Low | 3 |
-| C6 | `src/community.js:438` | Chat ids use `crypto.randomUUID()`, absent on plain-HTTP LAN origins; `client.js` has a fallback for exactly this | Medium | 8 |
-| C7 | `src/community.js:447` | Its nickname form posts no `onboarding: true`, so a life made there is never a guest of the quick start (it starts settled, with creation only offered) | Low | 8 |
+| S2 | `server/civic/elections.ts:25` | `week` is written and then overwritten by the spread in three returns (dead code) | Low | 3 |
+| C6 | `src/community.ts:438` | Chat ids use `crypto.randomUUID()`, absent on plain-HTTP LAN origins; `client.js` has a fallback for exactly this | Medium | 8 |
+| C7 | `src/community.ts:447` | Its nickname form posts no `onboarding: true`, so a life made there is never a guest of the quick start (it starts settled, with creation only offered) | Low | 8 |
 | C8 | `src/ui/panels/radio.js:17` | `inClub` compares `kind !== 'travel'` instead of `isDeparting` | Low | 6 |
 
 ### Latent (wrong only for inputs nobody produces today)
 
 | Where | What |
 |---|---|
-| `src/life.js:44` | `MIGRATIONS[version++](input)` assumes one migration per version; bumping `STATE_VERSION` alone makes every older save throw |
-| `server/routes/civic.js:260` | Two clock reads around a term end can make `announce()` dereference a null governor |
-| `server/ws/social.js:110` | The `dm-send` catch sends any thrown message as `code`, past the machine-code filter |
-| `server/server.js:236` | Any `ENOENT` from a route becomes an unlogged `404 build_required` |
+| `src/life.ts:44` | `MIGRATIONS[version++](input)` assumes one migration per version; bumping `STATE_VERSION` alone makes every older save throw |
+| `server/routes/civic.ts:260` | Two clock reads around a term end can make `announce()` dereference a null governor |
+| `server/ws/social.ts:110` | The `dm-send` catch sends any thrown message as `code`, past the machine-code filter |
+| `server/server.ts:236` | Any `ENOENT` from a route becomes an unlogged `404 build_required` |
 | `src/life-main.js:295` | A location change while the community panel is being created starts it in the old room |
-| `src/community.js:273` | Presence frames carry no room key; a late frame from the previous room is accepted |
-| `src/community.js:315` | After `peer_out_of_range` one side may never re-offer |
+| `src/community.ts:273` | Presence frames carry no room key; a late frame from the previous room is accepted |
+| `src/community.ts:315` | After `peer_out_of_range` one side may never re-offer |
 | `src/ui/panels/messages.js:220` | `openThread(ui.open)` after an `await` can request `/conversations/null` |
-| `src/client.js:115` | A JSON `null` body throws a bare `TypeError` |
+| `src/client.ts:115` | A JSON `null` body throws a bare `TypeError` |
 | `systems/travel.js:268` | `state.travel[outcome.once] = true` writes a key named by content; only `funded` survives a reload |
 
 ### Inconsistencies recorded in the types
@@ -563,7 +563,7 @@ missions and mini-games branch are merged into one combined build that passes ev
 From that commit:
 
 1. merge it into `parity/vue-ts`, follow the conformance tests, re-record the baseline;
-2. no branch edits `src/game/**`, `server/protocol.js` or `server/life-service.js` until step 2
+2. no branch edits `src/game/**`, `server/protocol.ts` or `server/life-service.ts` until step 2
    lands (about a week);
 3. after that, each step freezes only the files it names, and says so the day before.
 

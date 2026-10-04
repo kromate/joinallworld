@@ -1,9 +1,9 @@
 /**
  * "Report a problem", the wallet statement, and the operator's API.
  *
- * Derived from server/routes/support.js + server/support/service.js, server/routes/moderation.js +
- * server/moderation/service.js, the operator helpers at the end of server/social/service.js
- * (modReports, modSetReport) and src/game/systems/wallet.js statementOf(); the browser side is
+ * Derived from server/routes/support.ts + server/support/service.ts, server/routes/moderation.ts +
+ * server/moderation/service.ts, the operator helpers at the end of server/social/service.ts
+ * (modReports, modSetReport) and src/game/systems/wallet.ts statementOf(); the browser side is
  * src/ui/panels/support.js and statement.js. Nothing in the browser calls `/api/mod/*`: it is
  * used with curl and a bearer token.
  * WORKER: none of these routes exist on the Cloudflare Worker.
@@ -78,7 +78,7 @@ export type FileReportResponse =
   | { ok: true; code: 'filed'; duplicate?: true; receipt: SupportReceipt | { id: string } }
   | Refusal<'too_many_open' | 'rate_limited' | 'inbox_full'>
 /** The caller's own receipts, newest first, at most 30. */
-// INCONSISTENT: server/routes/support.js:8 documents `{ ok, reports, categories, limits }`; the answer also has
+// INCONSISTENT: server/routes/support.ts:8 documents `{ ok, reports, categories, limits }`; the answer also has
 // `code: 'ok'`. src/ui/panels/support.js:21 ignores `categories` and uses its own hard-coded label map.
 export interface MyReportsResponse {
   ok: true
@@ -92,7 +92,7 @@ export interface MyReportsResponse {
 
 export interface StatementLine { at: number; amount: number; reason: string; balance: number }
 export interface StatementDay {
-  /** Lagos day index (src/game/clock.js). */
+  /** Lagos day index (src/game/clock.ts). */
   day: number
   open: number
   close: number
@@ -102,7 +102,7 @@ export interface StatementDay {
   /** Largest movement first. */
   groups: { group: string; net: number; count: number }[]
 }
-/** src/game/systems/wallet.js statementOf(): the kept history with its arithmetic checked. */
+/** src/game/systems/wallet.ts statementOf(): the kept history with its arithmetic checked. */
 export interface Statement {
   closing: number
   /** `day` is null when no day totals are kept yet (then `balance` is the balance before the first kept line). */
@@ -187,20 +187,26 @@ export interface AuditLine {
   from: string
 }
 
-/** server/store.js stats(); null when the store offers none. */
+/** server/store.ts stats(); null when the store offers none. */
 export interface StoreStats {
-  mode: 'grouped'
+  /** WORKER: 'sqlite' (deploy/sqlite-store.ts). */
+  mode: 'grouped' | 'sqlite'
   transactions: number
-  lazy: number
+  /** WORKER: the SQLite store has no lazy writes, no byte count, no undo and no failure time, so it omits these four. */
+  lazy?: number
   reads: number
   writes: number
-  bytes: number
+  bytes?: number
   aborted: number
   writeFailures: number
-  undone: number
+  undone?: number
   failing: boolean
-  lastFailureAt: number | null
+  lastFailureAt?: number | null
+  /** WORKER: the same flag as `failing`, kept for the Worker's own tests. */
+  failed?: boolean
 }
+/** What the Node store (server/store.ts) keeps: every counter, always. */
+export type NodeStoreStats = StoreStats & { mode: 'grouped'; lazy: number; bytes: number; undone: number; lastFailureAt: number | null }
 export interface ModOverviewResponse {
   reports: { total: number; open: number }
   problems: { total: number; open: number }

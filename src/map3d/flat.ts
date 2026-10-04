@@ -14,7 +14,7 @@
  *   }
  *   flatSvg(model, { lgas }) → the backdrop as an SVG string (viewBox in map units)
  * Pure strings and numbers: no DOM, so `node --test` checks it against the 3D build
- * (src/map3d/map3d.test.js: every venue, road, bridge and local government, at the same place).
+ * (src/map3d/map3d.test.ts: every venue, road, bridge and local government, at the same place).
  */
 import { landOf } from './lga.ts';
 import type { Network } from './roads.ts';
@@ -45,7 +45,7 @@ export interface FlatModel {
 const fixed = (value: number) => (Math.round(value * 100) / 100).toString();
 const path = (points: readonly (Point2 | XZ)[], close = false) => `${points.map((point, i) => `${i ? 'L' : 'M'}${fixed('x' in point ? point.x : point[0])} ${fixed('z' in point ? point.z : point[1])}`).join('')}${close ? 'Z' : ''}`;
 const esc = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' } as Record<string, string>)[c]!);
-/** The ground colours of the 3D build (src/map3d/city-build.js LAND_COLOURS), so both maps are the same green. */
+/** The ground colours of the 3D build (src/map3d/city-build.ts LAND_COLOURS), so both maps are the same green. */
 export const FLAT_COLOURS = { water: '#4faacb', shallows: '#7cc6d6', rim: '#ecdcae', mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae', asphalt: '#5d626b', kerb: '#e4dfcf', dash: '#f6f2e2', parapet: '#efe9da' };
 
 export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { venues = {}, soon = {} }: { venues?: object; soon?: object } = {}): FlatModel {

@@ -48,7 +48,7 @@ export interface CampusHost {
   dispose(): void;
 }
 
-// The slices of the scene modules (src/scene/movement.js, motion-loop.js) the host drives.
+// The slices of the scene modules (src/scene/movement.ts, motion-loop.js) the host drives.
 export interface Walker {
   x: number; z: number; ry: number; moving: boolean; jogging: boolean; hasInput: boolean; mode: string;
   others: Point[] | null;

@@ -20,7 +20,7 @@
  * `kind` is one of: venue, spot, activity, mode, weather, mood, health, need, track, furniture,
  * category, food, car, house, event, npc, npc-action, ad, trait, dream, home, lottery, goal, wish,
  * perk, notice, update, panel, empty.
- * Pure strings: no DOM, no CSS — src/ui/icon-map.test.js checks that every content id maps to a glyph.
+ * Pure strings: no DOM, no CSS — src/ui/icon-map.test.ts checks that every content id maps to a glyph.
  */
 import { glyph, glyphFor, hasGlyph } from './phone/icons.ts';
 

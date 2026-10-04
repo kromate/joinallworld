@@ -2,7 +2,7 @@
  * OWNER: world
  * The city map's camera: a tilted orbit around a point on the ground, clamped so the player can
  * never get lost. Pure state and maths on a THREE.PerspectiveCamera — no events, no timers; the
- * host (src/map3d/map3d.js) feeds it input and asks whether it is still moving.
+ * host (src/map3d/map3d.ts) feeds it input and asks whether it is still moving.
  *
  *   rig.view = { x, z, yaw, pitch, distance }       what is looked at, from where
  *   orbit(dYaw, dPitch) · pan(dx, dz) · panScreen(px, py) · zoomAt(factor, ndcX, ndcY)

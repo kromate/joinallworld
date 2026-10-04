@@ -1,5 +1,5 @@
 // The HUD's health warning and weather chips, worked out from view.health. Pure, so it is tested
-// without a browser. Everything comes from view.health (src/game/systems/health.js).
+// without a browser. Everything comes from view.health (src/game/systems/health.ts).
 import type { HealthView } from '../../../types/view.ts'
 
 export type Warning = NonNullable<HealthView['warning']>

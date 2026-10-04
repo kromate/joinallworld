@@ -1,5 +1,5 @@
 /**
- * THE WORLD'S SHARDS ON THE WORKER HOST — the backend that server/world/shard-core.js writes through.
+ * THE WORLD'S SHARDS ON THE WORKER HOST — the backend that server/world/shard-core.ts writes through.
  * On Node a shard (one local government's registry) is an append-only file; here it is the rows of one
  * `name` in `world_shards`, in the order they were appended. The store above this backend is the same
  * code on both hosts, so its guarantee and its bounds hold here unchanged:

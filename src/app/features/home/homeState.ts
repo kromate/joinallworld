@@ -1,4 +1,4 @@
-// What Buy mode and the home chip share, and what the scene tells them. The scene (src/scene/home-scene.js)
+// What Buy mode and the home chip share, and what the scene tells them. The scene (src/scene/home-scene.ts)
 // and these panels talk through window events, so a tap on an object works before Buy mode's code
 // has ever been downloaded: the home chip is part of the HUD from the first paint, and this state
 // and homeScene.ts, which owns the events, load with it.

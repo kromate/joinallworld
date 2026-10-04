@@ -1,5 +1,5 @@
 /**
- * ONE SCENE API, TWO HOSTS. Every venue is drawn by the venue host (src/venue-world.js). The UNILAG
+ * ONE SCENE API, TWO HOSTS. Every venue is drawn by the venue host (src/venue-world.ts). The UNILAG
  * campus is a venue the size of a district — ten zones, position-driven level of detail, a shuttle on
  * its roads — so it has a host of its own (./host.js), built from the same movement, motion-loop and
  * avatar modules (src/scene/*). This adapter keeps the entry file talking to one object and swaps the

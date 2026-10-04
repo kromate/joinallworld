@@ -3,7 +3,7 @@
 // elsewhere in the city; opening one shows the table itself: who sits there, the rules the first
 // player chose, the game while it is on (drawn by the game's own board) and the result.
 //
-// Everything shown comes from the server (src/tables/client.js, through useTables()); every button
+// Everything shown comes from the server (src/tables/client.ts, through useTables()); every button
 // sends a message and the answer, not the press, changes what is shown. A press that is on its way
 // disables the buttons that would repeat it. Player names are text, never markup.
 import { computed, onMounted, watch } from 'vue'

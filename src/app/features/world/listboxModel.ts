@@ -1,4 +1,4 @@
-// The pure part of the select of the control kit (src/ui/controls.js): which option an arrow key,
+// The pure part of the select of the control kit (src/ui/controls.ts): which option an arrow key,
 // Home, End or typed letters move to. The component (ListboxSelect.vue) holds the DOM; a test holds
 // these equal to the existing functions.
 

@@ -1,6 +1,6 @@
 /**
  * THE MAIN STORE ON THE WORKER HOST: transaction-local views over the Durable Object's SQLite tables.
- * The same interface as server/store.js — transact(fn(db), { committed }?) and read(fn(db)) over one
+ * The same interface as server/store.ts — transact(fn(db), { committed }?) and read(fn(db)) over one
  * document `{ version, sessions, archivedLives, <collections> }` — and the same guarantee:
  *
  *   A transaction whose promise REJECTS has no effect. Every callback gets a fresh draft; nothing a
@@ -20,7 +20,7 @@
  *   sessions(secret, public_id, expires_at, value)   one row per device session, WITHOUT its receipts
  *   action_receipts(sender, action_id, action_at, value)   session.actions — exactly-once for game actions
  *   once_receipts(sender, id, at, kind, value)       session.once — exactly-once for every other write
- *                                                    (server/routes/once.js). Receipts are rows of their own so that
+ *                                                    (server/routes/once.ts). Receipts are rows of their own so that
  *                                                    a player's thousands of receipts are never rewritten with their
  *                                                    life, and a session row stays far below SQLite's 2 MB row limit.
  *   archived_lives(public_id, value)
@@ -32,22 +32,28 @@
  * Extras for the host only: db.$store.scanSessions(predicate) → [secret] (records are read without receipts),
  * db.$store.sessionKeyByPublicId(id), db.$store.onceCounts(liveSince, lightKinds) → { money, light }.
  */
-import { storageError } from '../server/protocol.js';
+import { storageError } from '../server/protocol.ts';
 import type { SqlBinding, SqliteStorage } from './cf-types.ts';
-import type { Draft, ReceiptRecord, SessionRecord, Store, StoreHelpers, TransactOptions } from './host-seam.ts';
+import type { ActionReceipt, Db, OnceReceipt, SessionRecord, StoreHelpers, TransactOptions } from '../server/types.ts';
+import type { SqliteStore } from './host-seam.ts';
+
+/** One row of `action_receipts` or `once_receipts`. */
+type ReceiptRecord = ActionReceipt | OnceReceipt;
+/** A session's receipts as the transaction sees them: keyed by action or client id, read lazily from their table. */
+type ReceiptMap<R extends ReceiptRecord> = Record<`${number}:${string}`, R>;
 
 /** The most characters of a collection kept in one row (a row may hold 2 MB; four bytes a character at worst). */
 export const CHUNK = 400000;
 
 export interface SqliteStoreOptions { beforeCommit?: () => void; chunk?: number; barrier?: () => Promise<void> }
 
-/** server/protocol.js storageError: { status: 503, code: 'storage_unavailable' } with the cause kept for the log. */
+/** server/protocol.ts storageError: { status: 503, code: 'storage_unavailable' } with the cause kept for the log. */
 const toStorageError = storageError as (error: unknown) => Error;
 
 type Cache<T> = Map<string, T | undefined>;
-interface ReceiptEntry { cache: Cache<ReceiptRecord>; original: Map<string, string | undefined>; map: Record<string, ReceiptRecord | undefined> }
+interface ReceiptEntry<R extends ReceiptRecord> { cache: Cache<R>; original: Map<string, string | undefined>; map: Record<string, R | undefined> }
 
-export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk = CHUNK, barrier = () => storage.sync() }: SqliteStoreOptions = {}): Store {
+export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk = CHUNK, barrier = () => storage.sync() }: SqliteStoreOptions = {}): SqliteStore {
   const sql = storage.sql;
   sql.exec('CREATE TABLE IF NOT EXISTS sessions (secret TEXT PRIMARY KEY, public_id TEXT NOT NULL UNIQUE, expires_at INTEGER NOT NULL, value TEXT NOT NULL)');
   sql.exec('CREATE TABLE IF NOT EXISTS archived_lives (public_id TEXT PRIMARY KEY, value TEXT NOT NULL)');
@@ -78,7 +84,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     sql.exec('INSERT INTO collections(name,value) VALUES(?,?) ON CONFLICT(name) DO UPDATE SET value=excluded.value', name, `{"$parts":${parts}}`);
   }
 
-  function view(): { db: Draft; commit: () => number } {
+  function view(): { db: Db; commit: () => number } {
     const sessions: Cache<SessionRecord> = new Map(), archives: Cache<unknown> = new Map(), collections: Cache<unknown> = new Map();
     /** A map whose keys are read from a table on demand; `cache` holds what this transaction read or wrote (undefined = removed). */
     function lazyMap<T>(cache: Cache<T>, keys: () => string[], load: (key: string) => T | undefined): Record<string, T | undefined> {
@@ -95,24 +101,24 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
       return new Proxy(Object.create(null) as Record<string, T | undefined>, handler);
     }
     /** One kind of receipt (a table keyed by sender and id) as lazy maps per player. `legacy`: receipts found inline in a session record. */
-    function receiptTable(table: string, idColumn: string) {
-      const entries = new Map<string, ReceiptEntry>();
+    function receiptTable<R extends ReceiptRecord>(table: string, idColumn: string) {
+      const entries = new Map<string, ReceiptEntry<R>>();
       return {
         entries,
-        of(publicId: string, legacy: Record<string, ReceiptRecord | undefined> = {}): Record<string, ReceiptRecord | undefined> {
+        of(publicId: string, legacy: Record<string, R> = {}): ReceiptMap<R> {
           let entry = entries.get(publicId);
           if (!entry) {
-            const cache: Cache<ReceiptRecord> = new Map(Object.entries(legacy)), original = new Map<string, string | undefined>();
-            const map = lazyMap<ReceiptRecord>(cache,
+            const cache: Cache<R> = new Map(Object.entries(legacy)), original = new Map<string, string | undefined>();
+            const map = lazyMap<R>(cache,
               () => sql.exec<{ id: string }>(`SELECT ${idColumn} AS id FROM ${table} WHERE sender = ?`, publicId).toArray().map(row => row.id),
-              key => { const row = sql.exec<{ value: string }>(`SELECT value FROM ${table} WHERE sender = ? AND ${idColumn} = ?`, publicId, key).toArray()[0]; original.set(key, row?.value); return row ? JSON.parse(row.value) as ReceiptRecord : undefined; });
+              key => { const row = sql.exec<{ value: string }>(`SELECT value FROM ${table} WHERE sender = ? AND ${idColumn} = ?`, publicId, key).toArray()[0]; original.set(key, row?.value); return row ? JSON.parse(row.value) as R : undefined; });
             entry = { cache, original, map }; entries.set(publicId, entry);
           }
-          return entry.map;
+          return entry.map as ReceiptMap<R>;
         },
       };
     }
-    const actions = receiptTable('action_receipts', 'action_id'), once = receiptTable('once_receipts', 'id');
+    const actions = receiptTable<ActionReceipt>('action_receipts', 'action_id'), once = receiptTable<OnceReceipt>('once_receipts', 'id');
     const originals = { sessions: new Map<string, string | undefined>(), archives: new Map<string, string | undefined>(), collections: new Map<string, string | undefined>() };
     const sessionMap = lazyMap<SessionRecord>(sessions, () => sql.exec<{ secret: string }>('SELECT secret FROM sessions').toArray().map(row => row.secret), key => {
       const row = sql.exec<{ value: string }>('SELECT value FROM sessions WHERE secret = ?', key).toArray()[0]; originals.sessions.set(key, row?.value);
@@ -136,10 +142,10 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
         const keys: string[] = [], seen = new Set<string>();
         for (const row of sql.exec<{ secret: string; value: string }>('SELECT secret,value FROM sessions').toArray()) {
           seen.add(row.secret);
-          if (sessions.has(row.secret)) { const held = sessions.get(row.secret); if (held !== undefined && predicate(held)) keys.push(row.secret); }
-          else if (predicate(JSON.parse(row.value) as SessionRecord)) keys.push(row.secret);
+          if (sessions.has(row.secret)) { const held = sessions.get(row.secret); if (held !== undefined && predicate(held, row.secret)) keys.push(row.secret); }
+          else if (predicate(JSON.parse(row.value) as SessionRecord, row.secret)) keys.push(row.secret);
         }
-        for (const [key, held] of sessions) if (!seen.has(key) && held !== undefined && predicate(held)) keys.push(key);
+        for (const [key, held] of sessions) if (!seen.has(key) && held !== undefined && predicate(held, key)) keys.push(key);
         return keys;
       },
       sessionKeyByPublicId: publicId => {
@@ -167,7 +173,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
         const value = typeof key === 'string' && key !== '$store' ? collectionOf(key) : undefined;
         return value === undefined ? undefined : { enumerable: true, configurable: true, writable: true, value };
       },
-    }) as unknown as Draft;
+    }) as unknown as Db;
     function commit(): number {
       beforeCommit?.();
       let wrote = 0;
@@ -202,7 +208,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     }
     return { db, commit };
   }
-  function run<T>(fn: (db: Draft) => T | Promise<T>, options: TransactOptions<T> | null | undefined, write: boolean): Promise<T> {
+  function run<T>(fn: (db: Db) => T | Promise<T>, options: TransactOptions<T> | null | undefined, write: boolean): Promise<T> {
     const operation = serial.then(async (): Promise<T> => {
       if (failed) throw toStorageError(new Error('The durability of an earlier write is unknown'));
       const draft = view();

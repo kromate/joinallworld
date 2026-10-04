@@ -1,6 +1,6 @@
 /**
  * OWNER: scenes
- * One procedural scene per `scene.kind` declared in src/game/content/venues.js.
+ * One procedural scene per `scene.kind` declared in src/game/content/venues.ts.
  *
  * SCENES[kind] = (kit, venue) => ({
  *   group,                      // THREE.Group holding everything for this venue
@@ -12,7 +12,7 @@
  * Kinds: park, buka, hub, club, office, market, gym, mall, beach, hospital, salon, rooftop,
  * police, worship, radio, polling, viewing, shrine, walk, statehouse, airport, refinery — plus `library` (the
  * speakeasy variant of club) and `generic`, the fallback for unknown kinds. `home` belongs to
- * src/scene/home-scene.js.
+ * src/scene/home-scene.ts.
  *
  * venue.scene options: { kind, variant, palette (accent colour), time ('day' | 'dusk' | 'night',
  * fixes the lighting; otherwise it follows Lagos time from state.t), spots: [{ id, label }]
@@ -22,11 +22,11 @@
  * spots without a hint are matched by their id and label, and only then take what is left.
  *
  * BATTERY RULE. Scenes are static: no frame callbacks, timers or per-frame work, and a scene
- * never renders by itself. A venue is baked into a few merged meshes (src/scene/build.js); a
+ * never renders by itself. A venue is baked into a few merged meshes (src/scene/build.ts); a
  * crowd change rebuilds only the small "actors" batch and reports true so the host draws exactly
  * one frame. The player's avatar, the spot ring and the walking marks are separate, prebuilt
  * objects that are only ever MOVED (position, rotation, visibility) — walking builds no geometry.
- * The host (src/venue-world.js) calls dispose() when the player leaves the venue, which frees
+ * The host (src/venue-world.ts) calls dispose() when the player leaves the venue, which frees
  * every geometry the scene made.
  *
  * What the host does with an entry (every member is optional for the host):
@@ -42,7 +42,7 @@
  *   walk                        what the host needs to walk the avatar about: { grid, entrance,
  *                               open, avatar, drive(on), rest(), spots(), people(), move(x, y, z, ry),
  *                               pose(name, seat), gait(step, phase), heightAt(x, z), near(spot),
- *                               goal(x, z), solids } — see WALK below and src/scene/movement.js
+ *                               goal(x, z), solids } — see WALK below and src/scene/movement.ts
  *   walk.things()               what else can be walked up to and tapped: the game tables that stand in this venue
  *                               (TABLES below) — [{ id: 'table:<id>', kind: 'table', x, z, top, r, label }], fixed for the scene
  *   look(x, z) → boolean        the camera is at (x, z) in the scene's own coordinates: a room hides
@@ -205,7 +205,7 @@ function resolveAnchors(landmarks: Landmark[], spots: SceneSpot[], spare: [numbe
 }
 
 /**
- * WALKABLE DESCRIPTION per scene kind (see src/scene/movement.js). Every kind has one; an unknown
+ * WALKABLE DESCRIPTION per scene kind (see src/scene/movement.ts). Every kind has one; an unknown
  * kind gets WALK_DEFAULT, whose bounds are then taken from the floor the scene actually drew.
  *   bounds    [minX, minZ, maxX, maxZ] the avatar's centre may be in — inside the floor slab and its walls
  *   entrance  [x, z] where the avatar appears on arrival (the open, camera side of the venue); the
@@ -237,16 +237,16 @@ export const WALK: Readonly<Record<string, Readonly<WalkSpec>>> = Object.freeze(
   airport: indoors(), refinery: outdoors(),
 });
 /**
- * GAME TABLES IN THE SCENE. Every table of src/tables/places.js stands in its venue: a visible table (props.js gameTable)
+ * GAME TABLES IN THE SCENE. Every table of src/tables/places.ts stands in its venue: a visible table (props.js gameTable)
  * on free floor, solid like any furniture (its footprint is recorded with the rest), listed in walk.things() so the host
  * can walk the avatar up to it and open it. WHERE: `venue.scene.anchors['table:<id>']` may pin a table to one of the
  * scene's landmarks; otherwise it takes the first of its preferred places below ([x, z], tried in order: the table's own, then the scene kind's) that is
  * free — clear of every wall, prop, spot marker and the ground in front of one, of the entrance and of the other tables —
- * and, failing those, the nearest free place found in widening rings. The places are checked in src/scene/scenes.test.js
+ * and, failing those, the nearest free place found in widening rings. The places are checked in src/scene/scenes.test.ts
  * for every table of every venue: free floor around it, a way to it from the entrance, no marker covered.
  */
 export const TABLE_PLACES: Readonly<Record<string, readonly (readonly [number, number])[]>> = Object.freeze({
-  // By table id (src/tables/places.js): where that table belongs in its room — the goal by the pitch, the corner table in the corner.
+  // By table id (src/tables/places.ts): where that table belongs in its room — the goal by the pitch, the corner table in the corner.
   'buka-corner': [[-7.4, 5.2], [7.6, 4.6]], 'buka-door': [[-3.2, 6.2], [4.4, 5.6], [-8.6, 0.9]],
   'park-bench': [[9.7, 2.9], [9.6, 6.4]], 'park-goal': [[-9.6, 1.8], [-10.6, 0.4]],
   'rooftop-lounge': [[0.5, -1.5], [6.6, 3.6]],
@@ -703,7 +703,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
 
   const triangleCount = (object: THREE.Mesh) => (object.geometry?.index ? object.geometry.index.count / 3 : 0);
   /**
-   * WALKING (driven by the host, src/venue-world.js). Until the host calls walk.drive(true) the scene
+   * WALKING (driven by the host, src/venue-world.ts). Until the host calls walk.drive(true) the scene
    * stands the avatar at its spot by itself, exactly as before; once driven it only reports where
    * the avatar should be (rest()) and the host moves it there along the floor.
    */

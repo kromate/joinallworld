@@ -23,7 +23,7 @@
  * re-armed while one of them is still running — nothing is ever scheduled while the preview is
  * at rest, and no frame callback or repeating timer is used anywhere. With `reducedMotion` none
  * of them run: the final state is drawn once. diagnostics().renderCount proves it
- * (src/scene/avatar-preview.test.js).
+ * (src/scene/avatar-preview.test.ts).
  *
  * ONE CONTEXT: creating a preview disposes the previous one, so at most one preview WebGL
  * context is alive (previewStats.live). A lost context stops drawing and calls onLost, so the
@@ -162,7 +162,7 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
   renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, MAX_PIXEL_RATIO));
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  // The same tone mapping as the scenes (src/scene/look.js), so the figure made here is the figure seen there.
+  // The same tone mapping as the scenes (src/scene/look.ts), so the figure made here is the figure seen there.
   renderer.toneMapping = THREE.NeutralToneMapping; renderer.toneMappingExposure = 1;
   if (canvas.style) Object.assign(canvas.style, { display: 'block', width: '100%', height: '100%', touchAction: 'pan-y', cursor: 'grab', outline: 'none' });
   canvas.setAttribute?.('tabindex', '0');

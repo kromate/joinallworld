@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // The Goals tab of the Sim sheet (also a Phone app): current starter goal, lifetime dream, wishes,
 // stars and perks. The goal chip in the HUD is goalChip. All rules live in
-// src/game/systems/goals.js; this draws view.goals.
+// src/game/systems/goals.ts; this draws view.goals.
 import { computed } from 'vue'
 import type { DreamId, PerkId } from '../../../types/life.ts'
 import { useApp } from '../../state/app.ts'

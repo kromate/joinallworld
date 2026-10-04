@@ -3,7 +3,7 @@
  * The scripted first minute: one brand-new player, from the landing screen's Play to a settled
  * life, against the real server.
  *
- *   node scripts/first-minute.ts        (also run by server/first-minute.test.js under `npm test`)
+ *   node scripts/first-minute.ts        (also run by server/first-minute.test.ts under `npm test`)
  *
  * Starts the server in-process on an ephemeral port with a temporary data directory and a clock
  * this script controls, then drives one device session over HTTP exactly as the browser does
@@ -15,7 +15,7 @@
  *   1. a new session is a guest that accepts nothing until Play, and Play is exactly once
  *   2. the guest stands in Freedom Park and the first goal is a free, seconds-long activity there
  *   3. the first reward lands inside the first minute, and settling in is then OFFERED (the client's
- *      own rule, src/quick-start/model.js nextNudge, fed with the server's state)
+ *      own rule, src/quick-start/model.ts nextNudge, fed with the server's state)
  *   4. play goes on without settling: two more activities and a trip; Home is refused with the
  *      one-tap explanation and nothing home-shaped exists (no rent house, no loan, no furniture stocked)
  *   5. settling in fires 'life.started' exactly once: the home with its furniture and kitchen, the rent
@@ -31,7 +31,7 @@
  * COUNT 'life.started': this process is the server, so the script wraps one listener of that event
  * (the economy's) for the length of the run and asserts it was called once, with the agreed payload.
  * Random outcomes are keyed with a salt this process (which IS the server here) fixes through the
- * test-only hook in server/life-service.js, so the run is the same every time.
+ * test-only hook in server/life-service.ts, so the run is the same every time.
  */
 import assert from 'node:assert/strict';
 import { mkdtemp, rm } from 'node:fs/promises';
@@ -39,8 +39,8 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { once } from 'node:events';
 import { fileURLToPath } from 'node:url';
-import { createServer } from '../server/server.js';
-import { useSaltSourceForTests } from '../server/life-service.js';
+import { createServer } from '../server/server.ts';
+import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife, dispatch } from '../src/life.ts';
 import { systems } from '../src/game/registry.ts';
 import { weatherAt } from '../src/game/systems/health.ts';
@@ -54,7 +54,7 @@ import type { Server } from 'node:http';
 import type { ActionBody, LifeState, NeedId, SkillId } from '../src/types/index.ts';
 import type { ActionResponse, LifeResponse } from '../src/types/protocol.ts';
 
-/** What this script uses of the server (server/server.js is still untyped JavaScript). */
+/** What this script uses of the server (server/server.ts is still untyped JavaScript). */
 interface FirstMinuteServer extends Server { store: { close(): Promise<void> } }
 type Json = Record<string, unknown>;
 /** Narrow away null and undefined; the script fails here, as a property read on the missing value would. */

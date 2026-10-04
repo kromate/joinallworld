@@ -1,6 +1,6 @@
 // What the Events app says, worked out from the calendar and the view. Pure, so it is tested
-// without a browser. The calendar is data (src/game/content/calendar.js) read by pure functions
-// (src/game/calendar.js); nothing here makes a request.
+// without a browser. The calendar is data (src/game/content/calendar.ts) read by pure functions
+// (src/game/calendar.ts); nothing here makes a request.
 import type { CalendarOccurrence } from '../../../types/growth.ts'
 import type { EventsView } from '../../../types/view.ts'
 import type { PhoneNotification } from '../../types/panel.ts'

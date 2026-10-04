@@ -1,9 +1,9 @@
 /**
  * OWNER: world
- * The 3D city map: a tilted, orbitable miniature of the city (src/map3d/city-build.js) with one
+ * The 3D city map: a tilted, orbitable miniature of the city (src/map3d/city-build.ts) with one
  * landmark per venue, the player's own avatar on it, and travel you can watch.
  *
- * Same contract as the 2D map (src/city-map.js), so the host swaps one for the other:
+ * Same contract as the 2D map (src/city-map.ts), so the host swaps one for the other:
  *   createMap3D(container, { pack, onSelectVenue, onSelectGov, onSelectNeighbour, onTripDue, onContextLost })
  *     → { ready, setState(state), setPlayer({ look, seed }), resize(), arrive(done), diagnostics(), destroy() }
  * It listens to the Map panel's 'jaw:map-ui' event (filter, selected place, layers and their data)
@@ -12,17 +12,17 @@
  * THE OPENING VIEW: a phone opens close on the player, where the places around them are named in
  * words; "Whole city" pulls back to all of it and "Find me" comes back (it lights up while the
  * player's piece is out of sight or far away). A wide screen has room for the whole city and opens on it.
- * A label never covers the player's piece: see src/map3d/labels.js.
+ * A label never covers the player's piece: see src/map3d/labels.ts.
  *
  * BATTERY RULE — NO FRAME LOOP WHILE IDLE
  *   A frame is drawn when something asks for one (the map opens, a resize, camera input, the
  *   state or a layer changes). After drawing, another frame is scheduled ONLY while something is
  *   still moving: a camera ease or inertia, or a trip in progress. When that ends the loop ends;
  *   while the map is hidden, or the tab is, nothing is scheduled at all. diagnostics().renderCount
- *   is the proof and src/map3d/map3d.test.js asserts it: flat when idle, climbing during a trip,
+ *   is the proof and src/map3d/map3d.test.ts asserts it: flat when idle, climbing during a trip,
  *   flat again after arrival.
  *
- * THE TRIP IS THE SERVER'S TIMER (src/map3d/trip.js): each state re-anchors the clock to the
+ * THE TRIP IS THE SERVER'S TIMER (src/map3d/trip.ts): each state re-anchors the clock to the
  * server's `remaining`, and the avatar's place on the route is a function of the fraction done.
  * onTripDue() is called when that reaches 1, so the host can ask the server for the arrival at
  * once instead of waiting for its next poll.
@@ -59,7 +59,7 @@ import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
 import { avatarBox, labelShift, nearPoints } from './labels.ts';
 import { iconFor } from '../ui/icon-map.ts';
 
-/** What the map reads of a venue (src/game/content/venues.js): its icon, filter category and opening hours. */
+/** What the map reads of a venue (src/game/content/venues.ts): its icon, filter category and opening hours. */
 interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }
 const VENUE_TABLE: Readonly<Record<string, VenueInfo | undefined>> = VENUES;
 const SOON_TABLE = COMING_SOON as Record<string, VenueInfo | undefined>;
@@ -93,7 +93,7 @@ export type MapRenderer = THREE.WebGLRenderer
 export interface Map3DOptions {
   pack: CityPack
   cityId?: string
-  /** The model library's trip-vehicle builder (src/models/integration/scene-models.js), or null for the batch-drawn ones. */
+  /** The model library's trip-vehicle builder (src/models/integration/scene-models.ts), or null for the batch-drawn ones. */
   travelVehicle?: TravelVehicleBuilder | null
   onSelectVenue?: (id: string) => void
   onSelectGov?: () => void
@@ -172,7 +172,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   // ---- state ----------------------------------------------------------------------------------
   let state: MapState | null = null, layer = 'city', filter = 'all', selected: string | null = null, hovered: string | null = null, destroyed = false, lost = false;
   let layers: MapLayers = { billboards: false, sea: false, neighbours: false, gov: false, moving: false, lgas: true, homes: true }, data: OverlayData = { ads: null, neighbours: null, gov: null };
-  // The world: local governments and the houses on their estates (src/map3d/houses.js, world-data.js).
+  // The world: local governments and the houses on their estates (src/map3d/houses.ts, world-data.js).
   const plates = new Map<string, { node: HTMLButtonElement; note: HTMLElement; lga: PackLga }>(), tags: HTMLDivElement[] = [];
   let friends = new Set<string>(), summaryShown: ReturnType<WorldData['summary']> = null, hoverHouse: (PlotRef & { text: string }) | null = null, mine = null, pixels = 1;
   let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, opened = false, userMoved = false, time: TimeOfDay | null = null, labelKey = '', chipKey = '';
@@ -458,7 +458,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       // A name that would sit on top of a more important one shrinks to its icon; it is still a button with its full name.
       const lift = labelShift(full, piece), moved = lift ? { l: full.l, r: full.r, t: full.t + lift, b: full.b + lift } : full;
       const compact = hits(moved), small = { l: at.x - 15, r: at.x + 15, t: at.y - 30, b: at.y };
-      // It steps clear of the player's piece: up on a longer stalk, or down over its own roof (src/map3d/labels.js).
+      // It steps clear of the player's piece: up on a longer stalk, or down over its own roof (src/map3d/labels.ts).
       const shift = compact ? labelShift(small, piece) : lift;
       taken.push(compact ? { l: small.l, r: small.r, t: small.t + shift, b: small.b + shift } : moved);
       node.classList.toggle('is-compact', compact);

@@ -8,7 +8,7 @@ import type { HttpProxy } from 'vite';
 /** The game server: Node's http server plus the sockets and store server.js attaches to it. */
 interface GameServer extends Server{wss:{clients:Iterable<{terminate():void}>};store:{close():Promise<unknown>}}
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../../..');
-const {createServer:createGameServer}=await import('../../../server/server.js');
+const {createServer:createGameServer}=await import('../../../server/server.ts');
 const {createServer:createViteServer}=await import('vite');
 const threeRoot=dirname(fileURLToPath(import.meta.resolve('three')));
 const game=await createGameServer({dataDir:resolve(root,'src/models/.cache/integration-state'),buildId:'models-integration'}) as GameServer; // server.js is untyped until the server is converted

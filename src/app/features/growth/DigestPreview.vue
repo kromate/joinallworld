@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// The weekly message exactly as it would be sent (src/game/digest.js composeDigest), shown as text.
+// The weekly message exactly as it would be sent (src/game/digest.ts composeDigest), shown as text.
 import type { Digest } from '../../../types/growth.ts'
 
 defineProps<{ digest: Digest }>()

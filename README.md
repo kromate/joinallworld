@@ -211,7 +211,7 @@ Two device sessions, each with a room socket and a social socket, against the sa
 
 ## What does not work yet
 
-- **No accounts.** No passwords, sign-in, recovery email or moving a life between devices. An accounts design exists as a separate, unmerged proposal; `server/auth.js` and `server/routes/auth.js` are inert placeholders and Settings has no account section.
+- **No accounts.** No passwords, sign-in, recovery email or moving a life between devices. An accounts design exists as a separate, unmerged proposal; `server/auth.ts` and `server/routes/auth.ts` are inert placeholders and Settings has no account section.
 - **Moderation is basic.** The text filter is a short list of slurs and threats plus link and contact-detail patterns; it is easy to evade on purpose and does not understand context, images of text or other languages. There is one operator secret, not moderator accounts with roles, no ban (only a time-limited mute from posting text), no appeal flow beyond Report a problem, and no operator screen — the operator uses the JSON routes. Venue chat is not stored, so a report about venue chat carries no evidence. Run a public server only if someone will actually read the reports.
 - **Elections are not polls.** A device session is not a verified person. Sock-puppet voting is slowed, not prevented: a voter must have lived a Lagos day and been paid for work on two different days. More than three votes from one network address in an election are still counted by default and only flagged to the operator, because a mobile carrier, a school or a hostel puts many real voters behind one address; an operator can choose to refuse them instead (`VOTE_CAP_MODE=refuse`). Someone willing to play several sessions for two days can vote several times. Treat results as a game.
 - **The top of the property ladder is out of reach of wages.** The balance simulation shows the next house and the cheapest car are reachable by working (see `npm run economy`). The fifth house (₦1,500,000 a week) and the dearer cars are not sustainable on any career's pay: their prices follow what was observed, and the income that reaches them in the reference game was never seen.
@@ -235,7 +235,7 @@ Two device sessions, each with a room socket and a social socket, against the sa
 
 ## The server's surface
 
-Both hosts answer the same routes and socket messages: they are one registry (`server/routes/index.js`, `server/ws/index.js`).
+Both hosts answer the same routes and socket messages: they are one registry (`server/routes/index.ts`, `server/ws/index.ts`).
 
 HTTP routes (all under the per-address rate limit, and all except `/api/mod/*` under the same-origin check; `server/routes/`). A refusal may carry a `reason` sentence beside its `error` code:
 
@@ -261,7 +261,7 @@ WebSocket messages on `/socket` (`server/ws/`):
 - Client → server, tables: `table-list`, `table-watch`, `table-unwatch`, `table-sit`, `table-options`, `table-start`, `table-move`, `table-leave`, `table-again` (server → client: `tables`, `table-state`, `tables-changed`).
 - Server → client: `presence` (built per recipient: players you have blocked, or who blocked you, are left out), `chat`, `signal`, `error` (with a `reason` when the server has one — `text_blocked`, `muted`); `dm`, `dm-sent`, `dm-failed`, `dm-read-ok`, `people`, `people-changed`, `people-presence`, `people-interaction`, `friend-request`, `friend-accepted`, `friend-result`, `invite-knock`, `invite-answer`, `invite-result`, `invite-house`, `social-update`, `social-sync`, `transfer`.
 
-Stored collections in the one data document (`devices.json` on Node): `sessions` (device sessions with their lives per city, action receipts and the receipts of gifts, interactions, groups and paid civic requests), `archivedLives`, `social` (players, conversations, houses, pending life effects, reports), `civic` (preferences and, per city, residents, elections and announcements, ads, hunt counters, radio queues), `moderation` (mutes and the audit trail) and `support` (problem reports). Only public ids are stored outside `sessions`. The campus adds `campus` (this week's Student Union election: at most 16 candidates and 2,048 ballots). The growth features add one collection, `growth` (share links, referral records, consent, e-mail contacts and push subscriptions, table ratings and pending results, the outreach log and first-party metrics; its shape and every cap are in `server/growth/data.js`, `outreach.js` and `metrics.js`), and two key files outside the data file, in `DATA_DIR/keys/` with mode 0600 (`vapid.json`, `growth-signing.json`). The world layer keeps its registry beside the data file, in `DATA_DIR/world/`: one append-only shard file per local government (`lagos.<lga>`: which public id holds which plot, the name shown in the directory, the packed style of the house) and a small summary file; nothing else is stored there. A life itself holds its local government, its plot and its house (`estate`).
+Stored collections in the one data document (`devices.json` on Node): `sessions` (device sessions with their lives per city, action receipts and the receipts of gifts, interactions, groups and paid civic requests), `archivedLives`, `social` (players, conversations, houses, pending life effects, reports), `civic` (preferences and, per city, residents, elections and announcements, ads, hunt counters, radio queues), `moderation` (mutes and the audit trail) and `support` (problem reports). Only public ids are stored outside `sessions`. The campus adds `campus` (this week's Student Union election: at most 16 candidates and 2,048 ballots). The growth features add one collection, `growth` (share links, referral records, consent, e-mail contacts and push subscriptions, table ratings and pending results, the outreach log and first-party metrics; its shape and every cap are in `server/growth/data.ts`, `outreach.js` and `metrics.js`), and two key files outside the data file, in `DATA_DIR/keys/` with mode 0600 (`vapid.json`, `growth-signing.json`). The world layer keeps its registry beside the data file, in `DATA_DIR/world/`: one append-only shard file per local government (`lagos.<lga>`: which public id holds which plot, the name shown in the directory, the packed style of the house) and a small summary file; nothing else is stored there. A life itself holds its local government, its plot and its house (`estate`).
 
 Pages outside `/api/` (`ctx.pages`, written by the host itself with fixed headers — no script may run, nothing may frame them, no cookie, no referrer — under the same per-address limit and telemetry hooks as the API): `GET /s/:code` (the link preview), `GET`/`POST /e/confirm` and `GET`/`POST /e/unsub` (the pages a link in an e-mail opens; only the POST does anything). Everything else outside `/api/` is a static file of the build; `*.map` answers 404; the game's own page is served with its default preview image made absolute from `PUBLIC_ORIGIN` (or the request's own host), because link-preview crawlers do not resolve a relative `og:image`.
 
@@ -275,12 +275,12 @@ Pages outside `/api/` (`ctx.pages`, written by the host itself with fixed header
 
 ### The Worker host
 
-`deploy/cloudflare-worker.ts` builds the same server context as `server/server.js` (the parts both share are in `server/host-context.js`) and hands it to the same registries. What is specific to the host:
+`deploy/cloudflare-worker.ts` builds the same server context as `server/server.ts` (the parts both share are in `server/host-context.ts`) and hands it to the same registries. What is specific to the host:
 
-| | Node (`server/server.js`) | Worker (`deploy/`) |
+| | Node (`server/server.ts`) | Worker (`deploy/`) |
 | --- | --- | --- |
-| Main store | one JSON file, group commit (`server/store.js`) | SQLite tables of one Durable Object (`sqlite-store.ts`): `sessions`, `action_receipts`, `once_receipts`, `archived_lives`, `collections` + `collection_parts`. One SQL transaction per write, durable before it is acknowledged |
-| World shards | one append-only file per local government (`server/world/shards.js`) | rows of `world_shards` (`sqlite-shards.ts`), through the same store code (`server/world/shard-core.js`): the same bounded reads, group commit and compaction |
+| Main store | one JSON file, group commit (`server/store.ts`) | SQLite tables of one Durable Object (`sqlite-store.ts`): `sessions`, `action_receipts`, `once_receipts`, `archived_lives`, `collections` + `collection_parts`. One SQL transaction per write, durable before it is acknowledged |
+| World shards | one append-only file per local government (`server/world/shards.ts`) | rows of `world_shards` (`sqlite-shards.ts`), through the same store code (`server/world/shard-core.ts`): the same bounded reads, group commit and compaction |
 | Keys the server makes (push, link signing) | `DATA_DIR/keys/*.json`, mode 0600 | rows of `host_keys` in the object's own storage |
 | Rate limits | in memory | the `rate_limits` table (they survive a sleep) |
 | Sockets | `ws`, protocol ping | hibernating WebSockets; what a socket carries is its attachment, and the modules get each socket back (`restore`) when the object wakes. An application `heartbeat` frame is answered by every browser socket with `heartbeat-ack` |
@@ -305,7 +305,7 @@ What does not carry over, or fails closed, on the Worker:
 
 ### Storage and limits
 
-How the Node store writes (`server/store.js`) — there is one store with one set of rules:
+How the Node store writes (`server/store.ts`) — there is one store with one set of rules:
 
 - A transaction copies only the sessions it touches. It is applied to the server's memory when it returns and queued for the next write of the file; transactions applied while a write is in flight share the next one.
 - **Acknowledged means in the file.** An action, message, gift, purchase, vote or report is answered only after the write that contains it has been renamed into place. That survives a crash of the process. Writes are not `fsync`ed, so it does not necessarily survive a power cut.
@@ -322,12 +322,12 @@ What is applied exactly once, and what is not:
 | Request | Retry key | Guarantee |
 | --- | --- | --- |
 | `POST /api/action` (every game action, including the gem prize) | `actionId` = `<unix ms>:<uuid>`, mandatory | Applied once per id. Same id, different contents: 409. Older than 24 h or more than 30 s ahead: 409, never run. Receipt kept 24 h in the session; 10,000 per session, then 429 until old ones expire (never evicted early) |
-| Gift, player interaction, new group, problem report (`clientId`); shout-out, ad rental, standing for Governor (`requestId`) | `<unix ms>:<uuid>`, mandatory — 400 without it | Same rules through one helper (`server/routes/once.js`): once per id, 409 on changed contents, 409 `client_id_expired` after 24 h, receipt kept in the player's session for those 24 h and never evicted before. **2,000** unexpired receipts per player (then 429) and **200,000** on the server (then 503), both refused *before* anything is charged, with "try again later" |
+| Gift, player interaction, new group, problem report (`clientId`); shout-out, ad rental, standing for Governor (`requestId`) | `<unix ms>:<uuid>`, mandatory — 400 without it | Same rules through one helper (`server/routes/once.ts`): once per id, 409 on changed contents, 409 `client_id_expired` after 24 h, receipt kept in the player's session for those 24 h and never evicted before. **2,000** unexpired receipts per player (then 429) and **200,000** on the server (then 503), both refused *before* anything is charged, with "try again later" |
 | Vote | none | One per player per election: the ballot is the record, written in the same transaction |
 | Friend request, knock, Bae, block | none | Repeating one is answered from the stored state and changes nothing |
 | Message (`clientId`, any 8–80 character key) | the message itself | Stored once per id while it is among the conversation's last 200 messages; a replay is answered only to someone still in the conversation |
 
-A route module that runs one game action for the caller can use `ctx.command` (`server/routes/core.js`): session check, settlement, action, an optional same-transaction side write and the receipt are saved together or not at all, and the authority and scope it ran with are part of the receipt, so the id cannot be replayed as an ordinary player action.
+A route module that runs one game action for the caller can use `ctx.command` (`server/routes/core.ts`): session check, settlement, action, an optional same-transaction side write and the receipt are saved together or not at all, and the authority and scope it ran with are part of the receipt, so the id cannot be replayed as an ordinary player action.
 
 Not covered by any of this: a client that sends the same thing under a **new** id has made a second request; the per-minute and per-day limits of each feature are what bound that. An id is a retry key the client chooses — it proves nothing about who sent it or when. A route module can only spend through `ctx.act`, and the host refuses that call unless it is inside a receipt, forwards a request's action id, or names the stored state that makes a repeat harmless.
 
@@ -454,45 +454,45 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `src/world-map.ts`, `src/city-map.ts` | The door to the atlas for the host; the flat in-city map used where WebGL is not available |
 | `src/map3d/geo/` | The atlas (world → Africa → Nigeria): `atlas.js` (the view), `build.js` (plates, ribbons, dots), `projection.js` (Equal Earth), `topo.js` (the compact data form), `pick.js`, `levels.js`, `labels.js`, `routes.js`, `info.js`, and `data/` (one generated module per level) |
 | `src/community.ts` | Room presence, chat and voice |
-| `server/server.js` | Node host: HTTP and WebSocket plumbing, static files, server context |
+| `server/server.ts` | Node host: HTTP and WebSocket plumbing, static files, server context |
 | `server/routes/` | HTTP endpoints. `index.js` is the route registry — **the contract for adding a route**; `core.js` holds session (including the flag that starts a life as a guest of the quick start), life, action and voice-config; `social.js` and `civic.js` are thin adapters; `once.js` is the shared receipt helper (not a route module) |
 | `server/ws/` | WebSocket message types. `index.js` is the registry; `rooms.js` holds presence, movement, chat, voice state, signalling and the guest rule for Home rooms; `social.js` the social messages |
 | `server/social/`, `server/civic/` | The player-to-player rules (friends, messages, houses, gifts, reports, presence) and the shared city rules (elections, ads, radio, residents) |
-| `server/protocol.js`, `server/life-service.js` | Validation, idempotency and settlement logic, free of I/O and shared with the Cloudflare adapter |
+| `server/protocol.ts`, `server/life-service.ts` | Validation, idempotency and settlement logic, free of I/O and shared with the Cloudflare adapter |
 | `server/moderation/` | `terms.js` (the one list of blocked terms), `text.js` (the text filter), `service.js` (mutes and the audit trail) |
-| `server/support/`, `server/routes/support.js` | Problem reports with automatic context, and the server's wallet statement |
-| `server/routes/moderation.js` | The operator routes behind `MODERATOR_TOKEN` |
-| `server/store.js` | JSON file store behind a two-method `transact`/`read` interface: copy-on-touch transactions, shared durable writes that are undone if they fail, lazy polls, frozen stored state, a write budget |
-| `server/routes/once.js` | The exactly-once helper behind `ctx.once`, `ctx.act` and `POST /api/action`: mandatory timed ids, conflicts, expiry, quotas without eviction |
+| `server/support/`, `server/routes/support.ts` | Problem reports with automatic context, and the server's wallet statement |
+| `server/routes/moderation.ts` | The operator routes behind `MODERATOR_TOKEN` |
+| `server/store.ts` | JSON file store behind a two-method `transact`/`read` interface: copy-on-touch transactions, shared durable writes that are undone if they fail, lazy polls, frozen stored state, a write budget |
+| `server/routes/once.ts` | The exactly-once helper behind `ctx.once`, `ctx.act` and `POST /api/action`: mandatory timed ids, conflicts, expiry, quotas without eviction |
 | `src/lazy-load.ts` | Loads a late chunk (the community panel) with a truthful state and bounded retries |
 | `src/telemetry/` | Error monitoring and product analytics, off unless configured. `index.js` is the facade (the only part in the first download); `core.js` (consent, queues, funnel), `sentry.js` / `posthog.js` (the only files that import an SDK), `consent-ui.js` and `what-we-collect.js` (the sheet and its words) are lazy chunks; `events.js` is the event catalogue; `scrub.js`, `clean.js`, `policy.js`, `funnel.js` are the pure rules, shared with the server |
 | `server/telemetry/` | The server side: `config.js` (environment), `transport.js` (bounded queue, `fetch` to PostHog's batch API and Sentry's envelope endpoint), `instrument.js` (what routes, socket replies and room snapshots mean as events), `routes.js` (`/api/telemetry/*`) |
 | `scripts/sentry-sourcemaps.ts`, `scripts/telemetry-capture.ts` | Source-map upload (`npm run sentry:sourcemaps`); a local stand-in for both services that records what would be sent |
-| `server/auth.js`, `server/routes/auth.js` | Inert placeholders for accounts; device sessions remain the only identity |
+| `server/auth.ts`, `server/routes/auth.ts` | Inert placeholders for accounts; device sessions remain the only identity |
 | `src/game/systems/missions.ts`, `events.js`, `growth.js`, `src/game/content/missions.ts`, `calendar.js`, `growth.js` | Missions and the stamp card; event attendance and spraying; the server-only credits for table wins and referral gifts. Content is plain data |
 | `src/game/calendar.ts`, `digest.js`, `outreach.js`, `share-model.js` | Pure functions shared by server and client: what is on when; the away card and the weekly digest; when a message may be sent, the address check and the consent wording; what a share says |
 | `src/tables/` | Table games. `rules.js` is **the contract for adding a game**; `whot.js`, `penalty.js` are pure rules; `places.js` says where tables stand; `client.js` and `*-board.js` are the browser side |
-| `server/growth/`, `server/routes/growth.js`, `growth-mod.js`, `server/ws/tables.js` | Share links and the preview page, referral, metrics, the table service, outreach (e-mail through `email/zeptomail.js`, web push in `webpush.js`); their routes, operator routes and socket messages |
+| `server/growth/`, `server/routes/growth.ts`, `growth-mod.js`, `server/ws/tables.ts` | Share links and the preview page, referral, metrics, the table service, outreach (e-mail through `email/zeptomail.js`, web push in `webpush.js`); their routes, operator routes and socket messages |
 | `src/app/features/growth/`, `src/app/features/tables/`, `src/ui/share.ts`, `src/ui/push-client.ts` | The growth apps and chips, the share painter and the push subscription |
 | `public/` | `og/allworld.jpg` (link-preview image), `manifest.webmanifest`, `icons/`, `sw.js` (notifications only) |
-| `scripts/first-day.ts` | The scripted first day (`npm run first-day`), also run by `server/first-day.test.js` |
-| `scripts/first-minute.ts` | The scripted first minute (`npm run first-minute`), also run by `server/first-minute.test.js` |
+| `scripts/first-day.ts` | The scripted first day (`npm run first-day`), also run by `server/first-day.test.ts` |
+| `scripts/first-minute.ts` | The scripted first minute (`npm run first-minute`), also run by `server/first-minute.test.ts` |
 | `src/quick-start/` | The first minute's client logic. In the first download: `model.js` (pure: the landing of a link — `joinIdFrom`, `linkParts`, the banner words — when to offer settling in, the funnel) and `entry.js` (what the device keeps, the one place a link is read, the device token, and the funnel events). Fetched with the landing screen: `look-model.js` (pure: name suggestions, presets, starter looks, the draft) and `draft.js` |
-| `scripts/new-player.ts` | The new-player journey (`npm run new-player`), also run by `server/new-player.test.js` |
+| `scripts/new-player.ts` | The new-player journey (`npm run new-player`), also run by `server/new-player.test.ts` |
 | `scripts/world-load.ts` | The world layer's load test (`npm run world-load`) |
-| `server/host-context.js` | What both hosts do the same way when they build the server context: the settings a module may read, the bounded outside request, `ctx.act` under a receipt, session archiving, page headers |
-| `src/campus/unilag/`, `src/campus/shared/`, `server/routes/campus.js`, `src/app/features/campus/` | The UNILAG campus: layout and walk grids, the scene and its own host (`host.ts` behind `world-adapter.ts`), three engine systems (student, community, shuttle), the shared election routes and the Campus app. `campus.html` is its development preview |
+| `server/host-context.ts` | What both hosts do the same way when they build the server context: the settings a module may read, the bounded outside request, `ctx.act` under a receipt, session archiving, page headers |
+| `src/campus/unilag/`, `src/campus/shared/`, `server/routes/campus.ts`, `src/app/features/campus/` | The UNILAG campus: layout and walk grids, the scene and its own host (`host.ts` behind `world-adapter.ts`), three engine systems (student, community, shuttle), the shared election routes and the Campus app. `campus.html` is its development preview |
 | `src/models/`, `models.html` | The procedural model library and its workshop (development only). `integration/flags.ts` is the one place its opt-in flags are read |
 | `deploy/` | The Worker host: `cloudflare-worker.ts`, `sqlite-store.ts`, `sqlite-shards.ts`, `legacy-bridge.ts`, `turn-provider.ts`, their tests, `local.ts` (run it on this machine) and pinned tooling |
-| `server/world/`, `server/routes/world.js`, `server/ws/world.js` | The plot registry: one append-only shard per local government (`shard-core.js` is the store, `shards.js` its file backend; `registry.js`), the service that keeps it in step with the lives and allocates plots (`service.js`), the read-only routes, and the online count per local government |
+| `server/world/`, `server/routes/world.ts`, `server/ws/world.ts` | The plot registry: one append-only shard per local government (`shard-core.js` is the store, `shards.js` its file backend; `registry.js`), the service that keeps it in step with the lives and allocates plots (`service.js`), the read-only routes, and the online count per local government |
 | `src/game/systems/estate.ts`, `src/game/content/world.ts` | Where a life lives: its local government, its plot, its house (style, tier, upgrades, ground rent), living in it or renting; the twenty local governments, land prices and the estate grid |
 | `src/app/features/world/`, `src/map3d/` | The local-government card (and its section of the settle-in Home card), the local-government page and house card, and the 3D city map that draws estates and houses |
-| `scripts/two-players.ts` | The scripted two players (`npm run two-players`), also run by `server/two-players.test.js` |
+| `scripts/two-players.ts` | The scripted two players (`npm run two-players`), also run by `server/two-players.test.ts` |
 | `scripts/economy-sim.ts` | The balance simulation (`npm run economy`); its assertions are `src/game/economy.test.ts` |
 | `scripts/load.ts` | The local load test (`npm run load`) |
-| `**/*.test.js`, `server/test-fixture.js` | `node --test` suites (one per owner under `src/game/`, plus `integration.test.js` for the seams between them) and the shared server fixture |
+| `**/*.test.js`, `server/test-fixture.ts` | `node --test` suites (one per owner under `src/game/`, plus `integration.test.js` for the seams between them) and the shared server fixture |
 
-The only registered placeholders left are the accounts files (`server/auth.js`, `server/routes/auth.js`): they mark where a reviewed accounts design would live, not that one exists. [What works today](#what-works-today) is the list of working features.
+The only registered placeholders left are the accounts files (`server/auth.ts`, `server/routes/auth.ts`): they mark where a reviewed accounts design would live, not that one exists. [What works today](#what-works-today) is the list of working features.
 
 ## Contributing and security
 

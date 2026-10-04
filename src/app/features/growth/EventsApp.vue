@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Events: the Phone app. What is on now and this week, where, a Go button, "add to my calendar"
 // (a file the phone's own calendar opens — nothing is sent anywhere) and spraying at a party.
-// The list is computed from the server's clock (src/game/calendar.js), with no request.
+// The list is computed from the server's clock (src/game/calendar.ts), with no request.
 import { computed, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { isDeparting } from '../../../life.ts'

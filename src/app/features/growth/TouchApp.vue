@@ -4,7 +4,7 @@
 // message is offered at all. Every channel is off until the player turns it on — notifications by
 // the browser's own permission, e-mail by a consent tick and a confirmation link — and one tap
 // turns each off again and deletes what was stored for it.
-// Rules: server/growth/outreach.js and src/game/outreach.js; the words: src/game/digest.js.
+// Rules: server/growth/outreach.ts and src/game/outreach.ts; the words: src/game/digest.ts.
 //
 // The form is bound to a draft kept for the page (touchState.ts), so a state update never touches
 // what is being typed. The control that was pressed says so until the server answers.

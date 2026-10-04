@@ -1,6 +1,6 @@
 // What Stay in touch says and decides. The Phone app where a player decides whether the game may
 // reach them outside the game, and reads exactly what it would say. Pure, so it is tested without
-// a browser. Rules: server/growth/outreach.js and src/game/outreach.js; the words: src/game/digest.js.
+// a browser. Rules: server/growth/outreach.ts and src/game/outreach.ts; the words: src/game/digest.ts.
 import type { ConsentView, OutreachMine } from '../../../types/growth.ts'
 import type { PushKind } from './boundary.ts'
 

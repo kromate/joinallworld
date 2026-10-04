@@ -1,5 +1,5 @@
 // What the Goals tab says, worked out from view.goals. Pure, so it is tested without a browser.
-// All rules live in src/game/systems/goals.js; this decides only the words and the reasons.
+// All rules live in src/game/systems/goals.ts; this decides only the words and the reasons.
 import type { EconomyView, PerkCard, WishCard } from '../../../types/view.ts'
 
 /** Why nothing can change while the game is not connected; '' when connected. `short` is the connection's two or three words. */

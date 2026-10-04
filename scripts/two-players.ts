@@ -17,10 +17,10 @@
  *
  * REPRODUCIBLE ROLLS. A real server keys every random outcome with a secret salt per life, so no
  * two runs would roll alike. This process is the server here, so it fixes the salts its lives are
- * given (the test-only hook in server/life-service.js; no request can do that): the run is the
+ * given (the test-only hook in server/life-service.ts; no request can do that): the run is the
  * same every time, as it was before salts existed.
  *
- * Plain Node, no new dependencies. `runTwoPlayers({ log })` is also run by server/two-players.test.js.
+ * Plain Node, no new dependencies. `runTwoPlayers({ log })` is also run by server/two-players.test.ts.
  */
 import assert from 'node:assert/strict';
 import { mkdtemp, rm, readFile } from 'node:fs/promises';
@@ -29,8 +29,8 @@ import { join, resolve } from 'node:path';
 import { once } from 'node:events';
 import { fileURLToPath } from 'node:url';
 import { WebSocket } from 'ws';
-import { createServer } from '../server/server.js';
-import { useSaltSourceForTests } from '../server/life-service.js';
+import { createServer } from '../server/server.ts';
+import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife } from '../src/life.ts';
 import { VENUES } from '../src/game/content/venues.ts';
 import { NPCS } from '../src/game/content/npcs.ts';
@@ -41,7 +41,7 @@ import type { Server } from 'node:http';
 import type { LifeState, Look } from '../src/types/index.ts';
 import type { ActionResponse, LifeResponse } from '../src/types/protocol.ts';
 
-/** What this script uses of the server (server/server.js is still untyped JavaScript). */
+/** What this script uses of the server (server/server.ts is still untyped JavaScript). */
 interface TwoPlayersServer extends Server { store: { close(): Promise<void> } }
 type Json = Record<string, unknown>;
 /** What every HTTP answer carries beside its JSON body. */
@@ -133,7 +133,7 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
 
   const say = (title: string, note = '') => log(`${String(++step).padStart(2, '0')}  ${title.padEnd(64)}${note ? `· ${note}` : ''}`);
   const stamp = () => { const t = lagosTime(time); return `${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][t.weekday]} ${String(t.hour).padStart(2, '0')}:${String(t.minute).padStart(2, '0')}`; };
-  // Client ids and request ids are made the way the browser makes them: server time, then a UUID (server/routes/once.js).
+  // Client ids and request ids are made the way the browser makes them: server time, then a UUID (server/routes/once.ts).
   const clientId = () => `${time}:00000000-0000-4000-8000-${String(++ids).padStart(12, '0')}`;
   const nextAction = () => `${time}:00000000-0000-4000-8000-${String(++ids).padStart(12, '0')}`;
 

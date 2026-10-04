@@ -1,6 +1,6 @@
 // The game store: the browser's read-only mirror of the server-held life, as Vue state.
 //
-// It owns one client model (src/client.js through its typed contract) and republishes what that
+// It owns one client model (src/client.ts through its typed contract) and republishes what that
 // model reports — the accepted state, the link, the status line, the storage notice, the session —
 // as refs. The transport is not reimplemented here: timed action ids, exactly-once retries, the
 // server time offset and the six link states are the client model's, unchanged.

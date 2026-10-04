@@ -4,7 +4,16 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { createSqliteStore } from './sqlite-store.ts';
 import type { SqlBinding, SqliteStorage, SqlCursor, SqlRow } from './cf-types.ts';
-import type { Draft, SessionRecord } from './host-seam.ts';
+import type { Db, SessionRecord, TransactOptions } from '../server/types.ts';
+
+/** The document as these tests use it: sessions plus whatever collections a test invents (the real `Db` types the five known ones). */
+interface Draft { version: number; sessions: Record<string, SessionRecord | undefined>; readonly $store: { scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]; onceCounts(liveSince: number, lightKinds: readonly string[]): { money: number; light: number } }; [collection: string]: unknown }
+interface LooseStore {
+  transact<T>(operation: (db: Draft) => T | Promise<T>, options?: TransactOptions<T>): Promise<T>
+  read<T>(operation: (db: Draft) => T | Promise<T>): Promise<T>
+}
+/** The store under test, seen through the looser document. */
+const open = (storage: SqliteStorage, options?: Parameters<typeof createSqliteStore>[1]): LooseStore => createSqliteStore(storage, options) as unknown as LooseStore;
 
 interface Receipt { at: number; kind: string; fp: string; result: { ok: boolean } }
 interface ActionReceipt { actionAt: number; ok: boolean; code?: string; fingerprint?: string }
@@ -35,7 +44,7 @@ function fixture(t: TestContext) {
  const db = new DatabaseSync(':memory:');t.after(()=>db.close());
  let rejectSync=false, failCommit=false;
  const storage=storageOn(db,()=>rejectSync);
- const store=createSqliteStore(storage,{beforeCommit(){if(failCommit)throw Error('commit failed');}});
+ const store=open(storage,{beforeCommit(){if(failCommit)throw Error('commit failed');}});
  return {db,store,storage,fail(){failCommit=true;},barrierFail(){rejectSync=true;}};
 }
 const session=():Life=>({secret:'secret',publicId:'public',expiresAt:Date.now()+10000,cities:{lagos:{cash:5000}},actions:{},once:{}});
@@ -63,7 +72,7 @@ test('SQLite: uncertain durability never acknowledges or continues serving cache
  const f=fixture(t);let acknowledged=false;f.barrierFail();
  await assert.rejects(f.store.transact(db=>{put(db,'secret',session());},{committed(){acknowledged=true;}}),error=>codedError(error).code==='storage_unavailable'&&/barrier failed/.test(codedError(error).cause?.message ?? ''));
  assert.equal(acknowledged,false);await assert.rejects(f.store.read(db=>db.sessions['secret']),/storage_unavailable/);
- const restarted=createSqliteStore(f.storage);assert.equal(await restarted.read(db=>db.sessions['secret']?.publicId),'public');
+ const restarted=open(f.storage);assert.equal(await restarted.read(db=>db.sessions['secret']?.publicId),'public');
 });
 test('SQLite: legacy inline receipts migrate without erasing dedupe metadata',async t=>{
  const f=fixture(t),s=session();s.actions['old']={actionAt:Date.now(),ok:true,code:'saved',fingerprint:'original'};
@@ -93,7 +102,7 @@ test('SQLite: exactly-once receipts live in their own table, are counted by clas
 test('SQLite: a collection larger than one row is split and read back whole; a scan sees the draft',async t=>{
  const db=new DatabaseSync(':memory:');t.after(()=>db.close());
  const storage=storageOn(db);
- const store=createSqliteStore(storage,{chunk:64});
+ const store=open(storage,{chunk:64});
  const big={lines:Array.from({length:40},(_,i)=>`line ${i} with some text`)};
  await store.transact(d=>{d['social']=big;d['civic']={small:true};});
  assert.ok(count(db,"SELECT COUNT(*) AS n FROM collection_parts WHERE name='social'")>3);
@@ -101,13 +110,14 @@ test('SQLite: a collection larger than one row is split and read back whole; a s
  assert.deepEqual(await store.read(d=>d['social']),big);
  await store.transact(d=>{d['social']={lines:['short']};});
  assert.equal(count(db,"SELECT COUNT(*) AS n FROM collection_parts"),0,'a collection that shrank leaves no parts behind');
- assert.deepEqual(await createSqliteStore(storage).read(d=>d['social']),{lines:['short']});
+ assert.deepEqual(await open(storage).read(d=>d['social']),{lines:['short']});
  await store.transact(d=>{put(d,'one',{secret:'one',publicId:'p1',expiresAt:5,cities:{},actions:{}});});
  const seen=await store.transact(d=>{put(d,'two',{secret:'two',publicId:'p2',expiresAt:1,cities:{},actions:{}});delete d.sessions['one'];return d.$store.scanSessions(s=>s.expiresAt<10);});
  assert.deepEqual(seen,['two'],'a session added in the draft is scanned and one removed in it is not');
 });
 test('SQLite: a collection that exists is an own property of the document, so the shared collection() helper never resets it',async t=>{
- const {collection}=await import('../server/protocol.js');
+ const {collection:shared}=await import('../server/protocol.ts');
+ const collection=(db: Draft,name: string,initial: object)=>shared(db as unknown as Db,name,initial);
  const f=fixture(t);
  type Social = { players: Record<string, { name: string }> };
  await f.store.transact(db=>{assert.equal(Object.hasOwn(db,'social'),false);(collection(db,'social',{players:{}}) as Social).players['ada']={name:'Ada'};});

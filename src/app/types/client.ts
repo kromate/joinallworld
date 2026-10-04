@@ -1,4 +1,4 @@
-// The client model's contract: what src/client.js exposes, as the new shell uses it. The module
+// The client model's contract: what src/client.ts exposes, as the new shell uses it. The module
 // itself is still JavaScript (src/app/legacy/modules.ts casts it to these types); when it is
 // converted these become its own declarations.
 import type { ActionMap, ActionType, PlayerActionType } from '../../types/actions.ts'
@@ -52,7 +52,7 @@ export type CommandArgs<T extends ActionType> = Record<string, never> extends Ac
   : [payload: ActionMap[T]['payload']]
 /**
  * One exception to "the payload is sent as written": for 'onboarding.home' the client model sends only
- * `{ lga, via?, stay? }` (src/client.js outgoing()). The rules still accept the rented-home form
+ * `{ lga, via?, stay? }` (src/client.ts outgoing()). The rules still accept the rented-home form
  * `{ house }` from other hosts, but through this client a `house` never leaves the device and the
  * server answers 'lga_required'.
  */

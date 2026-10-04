@@ -21,7 +21,7 @@ Both must pass before you open a pull request. CI runs the same two commands.
 
 ## Tests
 
-Tests use the built-in runner (`node --test`) and live next to the code as `*.test.js`, in both `src/` and `server/`.
+Tests use the built-in runner (`node --test`) and live next to the code as `*.test.js` or `*.test.ts`, in both `src/` and `server/`.
 
 Add or update tests whenever you touch:
 
@@ -29,7 +29,7 @@ Add or update tests whenever you touch:
 - **Idempotency** — anything keyed by an action ID or client message ID. Show that a repeat does not apply twice, and that the same ID with different contents is rejected.
 - **Saved data** — loading must tolerate missing, old or malformed values.
 
-Game rules belong in plain modules such as `src/life.js` that run without a browser, so they can be tested and shared with the server.
+Game rules belong in plain modules such as `src/life.ts` that run without a browser, so they can be tested and shared with the server.
 
 ## Accessibility
 
@@ -42,7 +42,7 @@ Game rules belong in plain modules such as `src/life.js` that run without a brow
 ## Originality
 
 - **No copied code or assets from any reference game or the older Allworld project** — no extracted scripts, models, textures, audio, icons or text.
-- Observed behaviour (a label, a price, a duration) may inform a value. Mark it in code as observed or as a placeholder, the way `src/life.js` does. Do not present guesses as verified.
+- Observed behaviour (a label, a price, a duration) may inform a value. Mark it in code as observed or as a placeholder, the way `src/life.ts` does. Do not present guesses as verified.
 - Only contribute work you have the right to license under MIT. Note the licence of anything third-party you add.
 
 ## Keep these out of the repository

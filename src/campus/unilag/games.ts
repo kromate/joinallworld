@@ -44,7 +44,7 @@ export const CAMPUS_CLUBS: readonly Readonly<CampusClubDefinition>[] = Object.fr
   Object.freeze({ id: 'football', label: 'Football Club', spot: 'sports-centre' }),
 ] as const);
 
-/** The Student Union's game tables: the campus rows of the one table registry (src/tables/places.js), played through the shared table framework. */
+/** The Student Union's game tables: the campus rows of the one table registry (src/tables/places.ts), played through the shared table framework. */
 export const STUDENT_UNION_TABLES: readonly Readonly<StudentUnionTable>[] = Object.freeze(tablesAt('unilag').map(({ id, label, game, seats }): Readonly<StudentUnionTable> => Object.freeze({
   id, label, spot: 'student-union', game: game as StudentUnionTable['game'], seats,
 })));

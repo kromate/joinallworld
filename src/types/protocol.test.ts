@@ -1,21 +1,21 @@
 // Keeps the wire types honest. Everything here compares a runtime list exported next to a type
 // with what the server really registers, sends or stores, so a branch that adds a route, a frame
 // or a response field without updating src/types fails this file:
-//   - the route and socket registries, read the way server/registry.test.js reads them;
+//   - the route and socket registries, read the way server/registry.test.ts reads them;
 //   - the frame types the server sends and what the Cloudflare Worker implements, read from source;
-//   - the exact key sets of real answers from a real server (server/test-fixture.js).
+//   - the exact key sets of real answers from a real server (server/test-fixture.ts).
 //
 //   node --experimental-strip-types --test src/types/protocol.test.ts
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import { fixture } from '../../server/test-fixture.js'
-import { buildRoutes } from '../../server/routes/index.js'
-import { buildSocketHandlers } from '../../server/ws/index.js'
-import { CITY_IDS as SERVER_CITY_IDS } from '../../server/protocol.js'
-import { CATEGORIES, STATUSES } from '../../server/support/service.js'
-import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/service.js'
+import { fixture } from '../../server/test-fixture.ts'
+import { buildRoutes } from '../../server/routes/index.ts'
+import { buildSocketHandlers } from '../../server/ws/index.ts'
+import { CITY_IDS as SERVER_CITY_IDS } from '../../server/protocol.ts'
+import { CATEGORIES, STATUSES } from '../../server/support/service.ts'
+import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/service.ts'
 import {
   ACTION_DUPLICATE_RESPONSE_KEYS, ACTION_RESPONSE_KEYS, CHAT_FRAME_KEYS, CITY_IDS, CLIENT_FRAME_TYPES, ERROR_BODY_KEYS, HEALTH_RESPONSE_KEYS, HTTP_ROUTE_KEYS,
   LIFE_RESPONSE_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
@@ -39,9 +39,12 @@ import {
 } from './world.ts'
 import { LGA_IDS } from './life.ts'
 import { SHARE_KINDS as ENGINE_SHARE_KINDS } from '../game/share-model.ts'
-import { CLIENT_SIGNALS as SERVER_CLIENT_SIGNALS, FUNNEL_ORDER } from '../../server/growth/metrics.js'
+import { CLIENT_SIGNALS as SERVER_CLIENT_SIGNALS, FUNNEL_ORDER } from '../../server/growth/metrics.ts'
 import { COLLECTION_NAMES, DATABASE_KEYS } from '../../server/types.ts'
-import type { ActionReceipt, CityLifeRecord, GrowthCollection, GrowthPlayerRecord, OnceReceipt, SessionRecord, ShareRecord } from '../../server/types.ts'
+import type { ActionReceipt, CityLifeRecord, GrowthCollection, GrowthPlayerRecord, OnceReceipt, RouteContext, SessionRecord, ShareRecord } from '../../server/types.ts'
+
+/** A host-free context for the registries: modules only read it when they are called. */
+const bareContext = (): RouteContext => ({ core: {}, config: {}, store: {}, cityIds: [] }) as unknown as RouteContext
 
 type Json = Record<string, unknown>
 const root = join(import.meta.dirname, '..', '..')
@@ -77,7 +80,7 @@ async function serverSources(): Promise<string> {
       const path = join(directory, entry.name)
       // server/telemetry builds Sentry and PostHog payloads (`{ type: 'transaction' …`), which go to those services, never to a socket.
       if (entry.isDirectory()) { if (path !== join(root, 'server', 'telemetry')) await walk(path) }
-      else if (entry.name.endsWith('.js') && !entry.name.endsWith('.test.js') && entry.name !== 'test-fixture.js') files.push(path)
+      else if (entry.name.endsWith('.ts') && !entry.name.endsWith('.test.ts') && entry.name !== 'test-fixture.ts' && entry.name !== 'types.ts') files.push(path)
     }
   }
   await walk(join(root, 'server'))
@@ -85,25 +88,25 @@ async function serverSources(): Promise<string> {
 }
 
 test('every registered route is typed, and every typed route is registered', () => {
-  // The same host-free context server/registry.test.js builds the registry with.
-  const keys: string[] = buildRoutes({ core: {}, config: {}, store: {}, cityIds: [] }).keys
-  assert.deepEqual(sorted(keys), sorted(HTTP_ROUTE_KEYS), 'server/routes/*.js and HTTP_ROUTE_KEYS (src/types/protocol.ts) list different routes')
+  // The same host-free context server/registry.test.ts builds the registry with.
+  const keys: string[] = buildRoutes(bareContext()).keys
+  assert.deepEqual(sorted(keys), sorted(HTTP_ROUTE_KEYS), 'server/routes/*.ts and HTTP_ROUTE_KEYS (src/types/protocol.ts) list different routes')
   assert.equal(new Set(HTTP_ROUTE_KEYS).size, HTTP_ROUTE_KEYS.length)
   assert.deepEqual([...SERVER_CITY_IDS], [...CITY_IDS])
 })
 
 test('every frame type the server accepts or sends is typed', async () => {
-  const accepted = [...buildSocketHandlers({ core: {}, config: {}, store: {}, cityIds: [] }).messages.keys()] as string[]
-  assert.deepEqual(sorted(accepted), sorted(CLIENT_FRAME_TYPES), 'server/ws/*.js and CLIENT_FRAME_TYPES list different message types')
+  const accepted = [...buildSocketHandlers(bareContext()).messages.keys()] as string[]
+  assert.deepEqual(sorted(accepted), sorted(CLIENT_FRAME_TYPES), 'server/ws/*.ts and CLIENT_FRAME_TYPES list different message types')
   const sent = frameTypesIn(await serverSources())
-  assert.deepEqual(sorted(sent), sorted(SERVER_FRAME_TYPES), 'the frames built in server/**/*.js and SERVER_FRAME_TYPES differ')
+  assert.deepEqual(sorted(sent), sorted(SERVER_FRAME_TYPES), 'the frames built in server/**/*.ts and SERVER_FRAME_TYPES differ')
 })
 
 test('the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does', async () => {
   const source = await readFile(join(root, 'deploy', 'cloudflare-worker.ts'), 'utf8')
   // The same modules as Node, not a second implementation: the registries are imported and built over one context.
-  assert.match(source, /import \{ buildRoutes, ROUTE_MODULES \} from '\.\.\/server\/routes\/index\.js'/)
-  assert.match(source, /import \{ buildSocketHandlers \} from '\.\.\/server\/ws\/index\.js'/)
+  assert.match(source, /import \{ buildRoutes, ROUTE_MODULES \} from '\.\.\/server\/routes\/index\.ts'/)
+  assert.match(source, /import \{ buildSocketHandlers \} from '\.\.\/server\/ws\/index\.ts'/)
   assert.match(source, /this\.routes = buildRoutes\(context, \[\.\.\.ROUTE_MODULES, telemetryRoutes\]\)/)
   assert.match(source, /this\.handlers = buildSocketHandlers\(context\)/)
   assert.deepEqual(sorted(WORKER_HTTP_ROUTE_KEYS), sorted(HTTP_ROUTE_KEYS))

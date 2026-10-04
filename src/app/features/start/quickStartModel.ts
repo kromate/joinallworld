@@ -1,6 +1,6 @@
 // The landing screen's decisions without a DOM: when a life is held for its look, what the screen
 // says about the connection, and what a tap on Play does with the name and character on screen.
-// (The name suggestions, the presets and the look rules are src/quick-start/look-model.js, reached
+// (The name suggestions, the presets and the look rules are src/quick-start/look-model.ts, reached
 // through startBoundary.ts; the server decides everything that counts.)
 import type { Look } from '../../../types/life.ts'
 import type { PanelView } from '../../types/panel.ts'

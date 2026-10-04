@@ -95,7 +95,7 @@ export interface PlacementPayload {
 
 /**
  * The operations of the server-only 'social.server' action, keyed by `payload.op`
- * (social.js serverOps). Each is run through ctx.act by server/social/service.js after the
+ * (social.js serverOps). Each is run through ctx.act by server/social/service.ts after the
  * server has checked the other player.
  */
 export interface SocialServerOpMap {
@@ -193,7 +193,7 @@ export interface ActionMap extends CampusActionMap {
    * levy for dearer land. 'unchanged' (already confirmed there) is a success.
    */
   'estate.set-lga': { payload: { lga: LgaId; via?: 'device' | 'manual' }; ok: 'lga_set' | 'lga_confirmed' | 'unchanged'; fail: 'settle_required' | 'invalid_lga' | 'lga_cooldown' | 'upgrade_running' | 'insufficient_funds' }
-  /** SERVER ONLY: record the plot the server allocated (server/world/service.js). 'unchanged' (the same plot again) is a success. */
+  /** SERVER ONLY: record the plot the server allocated (server/world/service.ts). 'unchanged' (the same plot again) is a success. */
   'estate.assign': { payload: PlotAddress; ok: 'assigned' | 'unchanged'; fail: 'no_place' | 'invalid_plot'; serverOnly: true }
   /** SERVER ONLY: the server freed the plot left behind (`state.estate.old`). Succeeds whether or not the address matched. */
   'estate.released': { payload: PlotAddress; ok: 'released'; fail: never; serverOnly: true }
@@ -395,7 +395,7 @@ export type ActionBody<T extends ActionType = ActionType> = {
 
 // ---- runtime lists (checked against the running engine by engine.test.ts) -------------------
 
-/** Every registered action type, in registration order. Equals `actionTypes()` from src/life.js. */
+/** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
   'cancel',
   'apply-job', 'career.switch', 'career.quit', 'career.auto',

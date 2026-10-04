@@ -236,7 +236,7 @@ export function createWalkGrid({ bounds = [-10, -8, 10, 8], block = [], clear = 
  *           (what hangs overhead — awnings, tree crowns, signs — is walked under), plus water
  *   solids  [x0, y0, z0, x1, y1, z1] boxes of everything bulky enough to hide the avatar from the
  *           camera (tree crowns, kiosks, shelves, people) — WITH heights; what the camera's line to
- *           the avatar is tested against (src/scene/camera-collision.js)
+ *           the avatar is tested against (src/scene/camera-collision.ts)
  *   walls   { backZ, leftX } | null — set when the builder declared a room (batch.walls). Whatever
  *           is drawn wholly inside the strip along a wall (the wall itself, its trim, windows,
  *           boards, a shelf against it) is baked as that wall's PART ('wallBack' / 'wallLeft' —

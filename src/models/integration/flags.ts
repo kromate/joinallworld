@@ -1,9 +1,9 @@
 /**
  * Which model-library integrations this page has switched ON. Every one is OFF by default: the running game uses its
- * own avatars (src/scene/characters.js), its own atlas (src/world-map.js) and its own batch-drawn map vehicles
- * (src/map3d/vehicles.js). The library itself is always available to the workshop (models.html).
+ * own avatars (src/scene/characters.ts), its own atlas (src/world-map.ts) and its own batch-drawn map vehicles
+ * (src/map3d/vehicles.ts). The library itself is always available to the workshop (models.html).
  *
- *   ?models=vehicles   the travelling player rides a model-library vehicle on the 3D city map (src/map3d/actor.js)
+ *   ?models=vehicles   the travelling player rides a model-library vehicle on the 3D city map (src/map3d/actor.ts)
  *
  * Several may be given, separated by commas. Unknown names are ignored.
  */

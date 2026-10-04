@@ -10,7 +10,7 @@
  * their heights, plus a box per person. A few hundred slab tests, and only on a frame in which the
  * camera or the avatar actually moved.
  *
- * WHAT IS DONE ABOUT IT (the host, src/venue-world.js, applies both; both are eased, never snapped)
+ * WHAT IS DONE ABOUT IT (the host, src/venue-world.ts, applies both; both are eased, never snapped)
  *   pull    the camera is brought in along its own ray to just in front of the first thing the
  *           line from the avatar's head to the camera meets — only when the player has zoomed in
  *           (at the composed wide view a lamp post crossing the line must not dolly the camera)

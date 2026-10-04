@@ -584,6 +584,7 @@ export function createAtlas(container, { onOpenCity = () => {}, onEnterCity = ()
   function select(ref, { from = 'map', flyTo = false } = {}) {
     const hit = find(ref);
     if (!same(hit, selected)) sheetOpen = false;
+    if (preview && reducedMotion) preview = null; // the still preview lasts until something else is chosen
     selected = hit ? { kind: hit.kind, id: hit.id } : null;
     if (!preview && !trip) routeShown = null;
     const inside = hit?.kind === 'country' ? ATLAS_LEVELS.findIndex((entry) => entry.id === regionEntry('country', hit.id).level) : -1;

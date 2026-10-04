@@ -4,7 +4,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { useApp } from './state/app.ts'
 import { telemetry } from '../telemetry/index.ts'
+import { warmLanding } from './features/start/warmLanding.ts'
 
+warmLanding() // a device that has never played opens on the landing: fetch its code now, not after the first paint
 const app = createApp(App)
 app.config.errorHandler = (error, _instance, info) => { console.error(`The shell failed in ${info}:`, error) }
 app.mount('#app')

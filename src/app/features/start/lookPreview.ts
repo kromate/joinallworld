@@ -86,6 +86,14 @@ export function showLookPreview(request: PreviewRequest): void {
     () => { loading = null; if (wanted?.stage.connected()) wanted.stage.setMode('2d') })
 }
 
+/** Fetch the preview code now, without showing anything (see warmLanding.ts). A failed fetch is forgotten, so showing a stage tries again. */
+export function warmLookPreview(): Promise<void> {
+  if (scene3d || unavailable) return Promise.resolve()
+  const pending = loading ??= import('../../../scene/avatar-preview.ts')
+  pending.catch(() => { if (loading === pending) loading = null })
+  return pending.then(() => undefined, () => undefined)
+}
+
 /** The preview alone follows a Face / Full body switch. */
 export function setPreviewFocus(focus: PreviewFocus): void { preview?.setFocus(focus) }
 

@@ -3,9 +3,11 @@
 // own button. Drop it into App.vue once. It shows the panel when the controller is running, and what
 // went wrong (with the two ways out) while the community code did not load or did not start.
 // Hidden while closed; the store keeps it closed at home.
+import { defineAsyncComponent } from 'vue'
 import { useCommunity } from './communityStore.ts'
 import type { CommunityStore } from './communityStore.ts'
-import CommunityPanel from './CommunityPanel.vue'
+// The panel is drawn only once the community code has loaded (long after the first paint), so its own code is fetched with it.
+const CommunityPanel = defineAsyncComponent(() => import('./CommunityPanel.vue'))
 
 const props = defineProps<{ store?: CommunityStore }>()
 const store = props.store ?? useCommunity()

@@ -1,12 +1,9 @@
-// The TypeScript wallet against the JavaScript one the game still runs: the same sequence of
-// changes must leave the same state, the same statement and the same view, and a hostile save
-// must be cleaned the same way.
+// The wallet: what a change may do to the balance, the statement, the view, and how a hostile
+// save is cleaned.
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import * as ts from './wallet.ts'
 import type { LedgerDay, WalletState } from './wallet.ts'
-// At run time this is wallet.js (see clock.test.ts for why the type checker reads wallet.ts for it).
-import * as js from './wallet.ts'
 import { makeContext, makeRng } from '../util.ts'
 import { createLife, viewLife } from '../../life.ts'
 
@@ -35,9 +32,9 @@ test('reason groups: the kind of change, not the detail', () => {
   assert.deepEqual(['Rent: Yaba (due Sat)', 'Danfo to Lekki', 'Transfer from Bola', 'Groceries × 3 rice', '', null].map(ts.reasonGroup), ['Rent', 'Danfo', 'Transfer from', 'Groceries', 'Other', 'Other'])
 })
 
-test('the TypeScript wallet and the JavaScript wallet agree after 4,000 seeded changes', () => {
+test('4,000 seeded changes keep the statement reconciled and the history trimmed', () => {
   const rng = makeRng('wallet-parity')
-  const a = fresh(), b = fresh()
+  const a = fresh()
   let now = START
   for (let i = 0; i < 4000; i++) {
     now += Math.floor(rng() * DAY / 6)
@@ -45,20 +42,18 @@ test('the TypeScript wallet and the JavaScript wallet agree after 4,000 seeded c
     const amount = Math.floor(rng() * 9000)
     const kind = rng()
     const seed = `change-${i}`
-    if (kind < 0.45) assert.equal(ts.credit(a, amount, reason, at(now, seed)), js.credit(b, amount, reason, at(now, seed)))
-    else if (kind < 0.85) assert.equal(ts.debit(a, amount, reason, at(now, seed)), js.debit(b, amount, reason, at(now, seed)))
-    else assert.equal(ts.debit(a, amount, reason, at(now, seed), { partial: true }), js.debit(b, amount, reason, at(now, seed), { partial: true }))
-    assert.equal(ts.canAfford(a, amount), js.canAfford(b, amount))
+    if (kind < 0.45) ts.credit(a, amount, reason, at(now, seed))
+    else if (kind < 0.85) ts.debit(a, amount, reason, at(now, seed))
+    else ts.debit(a, amount, reason, at(now, seed), { partial: true })
+    assert.equal(ts.canAfford(a, amount), a.cash >= amount)
   }
-  assert.deepEqual(a, b)
   assert.ok(a.ledger.length === ts.LEDGER_LIMIT && a.ledgerDays.length === ts.LEDGER_DAYS, 'both histories are full, so trimming was exercised')
   assert.ok(a.ledgerDays.some((day: LedgerDay) => Object.hasOwn(day.by, 'Other')), 'folding small groups into Other was exercised')
-  assert.deepEqual(ts.statementOf(a), js.statementOf(b))
   assert.equal(ts.statementOf(a).reconciled, true)
-  assert.deepEqual(ts.default.view(a), js.default.view(b))
+  assert.equal(ts.statementOf(a).problems.length, 0)
 })
 
-test('sanitize: the same answer for clean, old-format and hostile saves', () => {
+test('sanitize: clean, old-format and hostile saves all rebuild a reconciled wallet', () => {
   const played = fresh()
   for (let i = 0; i < 90; i++) ts.credit(played, 100 + i, REASONS[i % REASONS.length] ?? '', at(START + i * DAY / 3))
   const saves: Record<string, unknown>[] = [
@@ -73,20 +68,17 @@ test('sanitize: the same answer for clean, old-format and hostile saves', () => 
     { cash: 2 ** 60, ledger: [{ at: 2, amount: 2 ** 60, balance: 2 ** 60, reason: 'huge' }] },
   ]
   for (const [index, save] of saves.entries()) {
-    const a = { t: START }, b = { t: START }
+    const a = { t: START }
     ts.default.sanitize(structuredClone(save), a)
-    js.default.sanitize(structuredClone(save), b)
-    assert.deepEqual(a, b, `save ${index}`)
     assert.deepEqual(ts.statementOf(a as WalletState).problems, [], `save ${index} reconciles`)
   }
 })
 
-test('the TypeScript view equals what the running engine shows for a real life', () => {
+test('the wallet view equals what the running engine shows for a real life', () => {
   const state = fresh()
-  js.credit(state, 1200, 'Shift: Bank teller', at(START + 3600000))
-  js.debit(state, 300, 'Danfo to Lekki', at(START + 7200000))
+  ts.credit(state, 1200, 'Shift: Bank teller', at(START + 3600000))
+  ts.debit(state, 300, 'Danfo to Lekki', at(START + 7200000))
   const view: { wallet?: unknown } = viewLife(state, { now: START + 7200000, cityId: 'lagos' })
   assert.deepEqual(ts.default.view(state), view.wallet)
-  assert.deepEqual([ts.default.id, ts.default.stateKeys], [js.default.id, js.default.stateKeys])
-  assert.deepEqual(Object.keys(ts).sort(), Object.keys(js).sort(), 'both modules export the same names')
+  assert.deepEqual([ts.default.id, ts.default.stateKeys], ['wallet', ['cash', 'ledger', 'ledgerDays']])
 })

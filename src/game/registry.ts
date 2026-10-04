@@ -173,17 +173,22 @@
  *   Always include a test that feeds your sanitize() hostile input.
  */
 
-const order = [];
-const byId = new Map();
-const actionTable = new Map();
-const serverOnlyTable = new Map();
-const activeTable = new Map();
-const declaredKeys = new Set();
+import type {
+  ActionHandler, ActiveKindHandler, EngineEvent, EngineEventMap, EventListener, ModifierKey, ModifierMap, ServerOnlyAction, SystemDefinition,
+} from '../types/registry.ts';
+import type { LifeContext, LifeState } from '../types/life.ts';
+
+const order: SystemDefinition[] = [];
+const byId = new Map<string, SystemDefinition>();
+const actionTable = new Map<string, ActionHandler>();
+const serverOnlyTable = new Map<string, string>();
+const activeTable = new Map<string, ActiveKindHandler>();
+const declaredKeys = new Set<string>();
 const MAX_EMIT_DEPTH = 8;
 const SERVER_ONLY_REASON = 'That step is completed by the game server from its own screen. Nothing was changed.';
 let depth = 0;
 
-export function registerSystem(def) {
+export function registerSystem(def: SystemDefinition): SystemDefinition {
   if (!def || typeof def.id !== 'string' || byId.has(def.id)) throw new Error(`Invalid or duplicate system: ${def?.id}`);
   if (!Array.isArray(def.stateKeys) || typeof def.sanitize !== 'function') throw new Error(`System ${def.id} needs stateKeys and sanitize`);
   if (def.stateKeys.some((key) => typeof key !== 'string' || !key || ['__proto__', 'constructor', 'prototype'].includes(key))
@@ -192,44 +197,49 @@ export function registerSystem(def) {
     const owner = order.find((other) => other.stateKeys.includes(key));
     if (owner) throw new Error(`State key "${key}" is owned by ${owner.id}, not ${def.id}`);
   }
-  for (const type of Object.keys(def.actions || {})) {
+  const actions: Record<string, ActionHandler | ServerOnlyAction | undefined> = def.actions || {};
+  for (const type of Object.keys(actions)) {
     if (actionTable.has(type)) throw new Error(`Action "${type}" is already registered`);
-    const entry = def.actions[type];
+    const entry = actions[type];
     const handler = typeof entry === 'function' ? entry : entry?.serverOnly === true ? entry.run : null;
     if (typeof handler !== 'function') throw new Error(`Action "${type}" needs a handler function, or { serverOnly: true, run }`);
     actionTable.set(type, handler);
-    if (typeof entry !== 'function') serverOnlyTable.set(type, typeof entry.refusal === 'string' && entry.refusal ? entry.refusal : SERVER_ONLY_REASON);
+    if (typeof entry !== 'function') serverOnlyTable.set(type, typeof entry?.refusal === 'string' && entry.refusal ? entry.refusal : SERVER_ONLY_REASON);
   }
-  for (const kind of Object.keys(def.active || {})) {
+  const active: Record<string, ActiveKindHandler | undefined> = def.active || {};
+  for (const kind of Object.keys(active)) {
     if (activeTable.has(kind)) throw new Error(`Active kind "${kind}" is already registered`);
-    const handler = def.active[kind];
+    const handler = active[kind];
     // Whether a timed action takes the player out of their venue is never left to a default:
     // room membership and voice depend on it (isDeparting), so every kind must say.
     if (typeof handler?.moves !== 'boolean') throw new Error(`Active kind "${kind}" must declare moves: true or false`);
     if (typeof handler.sanitize !== 'function' || typeof handler.complete !== 'function') throw new Error(`Active kind "${kind}" needs sanitize and complete`);
   }
-  for (const kind of Object.keys(def.active || {})) activeTable.set(kind, def.active[kind]);
+  for (const kind of Object.keys(active)) {
+    const handler = active[kind];
+    if (handler) activeTable.set(kind, handler);
+  }
   for (const key of def.stateKeys) declaredKeys.add(key);
   order.push(def);
   byId.set(def.id, def);
   return def;
 }
 
-export const systems = () => order;
-export const getSystem = (id) => byId.get(id);
-export const actionTypes = () => [...actionTable.keys()];
-export const hasAction = (type) => typeof type === 'string' && actionTable.has(type);
-export const actionHandler = (type) => actionTable.get(type);
+export const systems = (): SystemDefinition[] => order;
+export const getSystem = (id: string): SystemDefinition | undefined => byId.get(id);
+export const actionTypes = (): string[] => [...actionTable.keys()];
+export const hasAction = (type: unknown): type is string => typeof type === 'string' && actionTable.has(type);
+export const actionHandler = (type: string): ActionHandler | undefined => actionTable.get(type);
 /** The refusal sentence of a server-only action type, or null for an ordinary player action. */
-export const serverOnlyReason = (type) => (typeof type === 'string' && serverOnlyTable.has(type) ? serverOnlyTable.get(type) : null);
-export const activeHandler = (kind) => (typeof kind === 'string' ? activeTable.get(kind) : undefined);
+export const serverOnlyReason = (type: unknown): string | null => (typeof type === 'string' ? serverOnlyTable.get(type) ?? null : null);
+export const activeHandler = (kind: unknown): ActiveKindHandler | undefined => (typeof kind === 'string' ? activeTable.get(kind) : undefined);
 
 /**
  * Does a timed action of this kind take the player out of the venue they are in? Declared by the
  * kind's handler (`moves`). A kind nobody registered is treated as moving: unknown means "not
  * provably here".
  */
-export const activeMoves = (kind) => activeHandler(kind)?.moves !== false;
+export const activeMoves = (kind: unknown): boolean => activeHandler(kind)?.moves !== false;
 /**
  * THE departing predicate. True while the life's timed action is one that moves the player (a
  * trip, the automatic commute, any future kind registered with `moves: true`). A departing player
@@ -237,13 +247,13 @@ export const activeMoves = (kind) => activeHandler(kind)?.moves !== false;
  * longer in it: no venue room, no voice, no "people here". Everything that asks "is this player
  * really at their location?" uses this — never a comparison with one kind's name.
  */
-export const isDeparting = (state) => Boolean(state?.activeAction) && activeMoves(state.activeAction.kind);
+export const isDeparting = (state: Pick<LifeState, 'activeAction'> | null | undefined): boolean => Boolean(state?.activeAction) && activeMoves(state?.activeAction?.kind);
 /** Is the player in `venueId` right now — recorded there and not on their way out? */
-export const occupiesVenue = (state, venueId) => Boolean(state) && typeof venueId === 'string' && state.location === venueId && !isDeparting(state);
+export const occupiesVenue = (state: Pick<LifeState, 'activeAction' | 'location'> | null | undefined, venueId: unknown): boolean => !!state && typeof venueId === 'string' && state.location === venueId && !isDeparting(state);
 
 /** Top-level keys on `state` that no registered system declared. Empty for every valid state. */
-export function undeclaredKeys(state) {
-  const found = [];
+export function undeclaredKeys(state: object): string[] {
+  const found: string[] = [];
   for (const key of Object.keys(state)) if (!declaredKeys.has(key)) found.push(key);
   return found;
 }
@@ -252,30 +262,35 @@ export function undeclaredKeys(state) {
  * and then disappear without a trace; throwing here turns that into a failure at the moment of the
  * write, in the first test (or request) that reaches it. `where` names what just ran.
  */
-export function assertDeclared(state, where) {
+export function assertDeclared(state: object, where: string): void {
   const stray = Object.keys(state).filter((key) => !declaredKeys.has(key));
   if (!stray.length) return;
   // The key is taken off again before the failure is raised, so a caller that catches the error
   // is not left holding a life with a value the next load would silently drop.
-  for (const key of stray) delete state[key];
+  for (const key of stray) delete (state as Record<string, unknown>)[key];
   throw new Error(`Undeclared state key "${stray[0]}" after ${where}: add it to the owning system's stateKeys and rebuild it in sanitize(), or it is lost at the next load.`);
 }
 
 /** Notify every system, in registration order. Listeners may mutate state and emit further events.
  * Listeners always receive an object: anything else is replaced with {} so they can destructure safely. */
-export function emit(state, event, data, ctx) {
+export function emit<E extends EngineEvent>(state: LifeState, event: E, data: EngineEventMap[E], ctx: LifeContext): void {
   // Listeners emitting from listeners this deep is a loop, not a design: dropping the event
   // silently would leave some systems updated and others not, so it is an error instead.
   if (depth >= MAX_EMIT_DEPTH) throw new Error(`Event "${event}" was emitted ${MAX_EMIT_DEPTH} listeners deep: an event loop between systems.`);
-  const payload = data !== null && typeof data === 'object' && !Array.isArray(data) ? data : {};
+  // Anything that is not a plain object reaches listeners as {} (a trust boundary: tests and other owners may emit partial data).
+  const payload = (data !== null && typeof data === 'object' && !Array.isArray(data) ? data : {}) as EngineEventMap[E];
   depth += 1;
   try {
-    for (const def of order) def.on?.[event]?.(state, payload, ctx);
+    for (const def of order) {
+      const on: { [K in EngineEvent]?: EventListener<K> } | undefined = def.on;
+      const listener: EventListener<E> | undefined = on?.[event];
+      listener?.(state, payload, ctx);
+    }
   } finally { depth -= 1; }
 }
 
 /** Fold a value through every system's modifier for `key`, in registration order. */
-export function modify(state, key, base, data, ctx) {
+export function modify<K extends ModifierKey>(state: LifeState, key: K, base: ModifierMap[K]['base'], data: ModifierMap[K]['data'], ctx: LifeContext): ModifierMap[K]['base'] {
   let value = base;
   for (const def of order) {
     const fn = def.modifiers?.[key];

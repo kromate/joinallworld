@@ -22,15 +22,19 @@ import { STATE_VERSION, sanitizeActive, advanceActive } from './game/systems/cor
 import { NEEDS } from './game/systems/needs.ts';
 import { VENUES } from './game/content/venues.ts';
 import { TRAVEL_MODES, TRAVEL_DURATION } from './game/content/travel.ts';
+import type { ActionBody, ActionResult, ActionType } from './types/actions.ts';
+import type { ActivityId, AdvanceOutcome, LifeContext, LifeContextInit, LifeState, ActionOutcome, TravelModeId, VenueId } from './types/life.ts';
+import type { SavedInput } from './types/registry.ts';
+import type { LifeView } from './types/view.ts';
 
 export { VENUES, STATE_VERSION, NEEDS, makeContext, actionTypes, hasAction, isDeparting, occupiesVenue, activeMoves };
 export { spotsOf } from './game/systems/activities.ts';
 
 /** Legacy names kept for existing callers. Fares by mode, and the flat beta trip time. */
-export const TRAVEL_OPTIONS = Object.freeze(Object.fromEntries(Object.values(TRAVEL_MODES).map((mode) => [mode.id, mode.fare])));
+export const TRAVEL_OPTIONS: Readonly<Record<string, number>> = Object.freeze(Object.fromEntries(Object.values(TRAVEL_MODES).map((mode) => [mode.id, mode.fare])));
 export const PREVIEW_TRAVEL_DURATION = TRAVEL_DURATION;
 
-const MIGRATIONS = [
+const MIGRATIONS: ((input: SavedInput) => SavedInput)[] = [
   // v0 → v1: the earliest saves kept needs as flat top-level numbers; everything else carries over as-is.
   (input) => {
     const needs = isRecord(input.needs) ? input.needs : Object.fromEntries(NEEDS.filter((need) => finite(input[need])).map((need) => [need, input[need]]));
@@ -38,10 +42,14 @@ const MIGRATIONS = [
   },
 ];
 
-export function migrate(saved) {
-  let input = isRecord(saved) ? saved : {};
-  let version = Number.isInteger(input.v) && input.v >= 0 ? input.v : 0;
-  while (version < STATE_VERSION) input = MIGRATIONS[version++](input);
+export function migrate(saved: unknown): SavedInput {
+  let input: SavedInput = isRecord(saved) ? saved : {};
+  let version = typeof input.v === 'number' && Number.isInteger(input.v) && input.v >= 0 ? input.v : 0;
+  while (version < STATE_VERSION) {
+    const step = MIGRATIONS[version++];
+    if (!step) throw new TypeError('No migration for this state version');
+    input = step(input);
+  }
   return input;
 }
 
@@ -51,7 +59,9 @@ export function migrate(saved) {
  * the secret they hold for each life), keyed with it, so the outcome cannot be computed from
  * anything a client knows or chooses. makeContext consumes the salt: it is not in the result.
  */
-const contextFor = (state, ctx, seed) => (ctx && typeof ctx.rng === 'function' ? ctx
+/** A caller that already built a context hands one in: a generator is the sign of it. */
+const isBuilt = (ctx: LifeContextInit | undefined): ctx is LifeContext => Boolean(ctx) && typeof ctx?.rng === 'function';
+const contextFor = (state: LifeState | null, ctx: LifeContextInit | undefined, seed: string): LifeContext => (isBuilt(ctx) ? ctx
   : makeContext({ ...ctx, now: finite(ctx?.now) ? ctx.now : state?.t ?? 0, cityId: ctx?.cityId ?? 'lagos', seed }));
 
 /**
@@ -66,18 +76,19 @@ const contextFor = (state, ctx, seed) => (ctx && typeof ctx.rng === 'function' ?
  * amount to be believed as written. Without the flag (a client's local copy, anything imported) an
  * invalid action is dropped with no money moved, so no input can mint a refund.
  */
-export function createLife(saved, ctx) {
+export function createLife(saved: unknown, ctx?: LifeContextInit): LifeState {
   const context = contextFor(null, { isNew: !isRecord(saved), ...ctx }, 'create');
   const input = migrate(saved);
-  const state = {};
+  // Built key by key: each system's sanitize() fills its own keys (the registry contract types `state` as the whole life).
+  const state = {} as LifeState;
   let known = 0;
   for (const system of systems()) {
     system.sanitize(input, state, context);
     // A system may only add the keys it declared: anything else is either another system's
     // (which would then overwrite it) or nobody's (which the next load would drop).
     const keys = Object.keys(state);
-    for (let i = known; i < keys.length; i++) {
-      if (!system.stateKeys.includes(keys[i])) throw new Error(`Undeclared state key "${keys[i]}": System "${system.id}" wrote state key "${keys[i]}" in sanitize() without declaring it in stateKeys.`);
+    for (const key of keys.slice(known)) {
+      if (!system.stateKeys.includes(key)) throw new Error(`Undeclared state key "${key}": System "${system.id}" wrote state key "${key}" in sanitize() without declaring it in stateKeys.`);
     }
     known = keys.length;
   }
@@ -96,10 +107,11 @@ export function createLife(saved, ctx) {
  * action runs with that authority (data.internal), so a system can let a delivery TO the life through its own hold
  * (systems/onboarding.js lists the three it lets through; every other action is vetoed exactly as a player's would be).
  */
-export function dispatch(state, body, ctx) {
+export function dispatch<T extends ActionType>(state: LifeState, body: ActionBody<T>, ctx?: LifeContextInit): ActionResult<T>;
+export function dispatch(state: LifeState, body: ActionBody, ctx?: LifeContextInit): ActionOutcome {
   const handler = actionHandler(body?.type);
   if (!handler) throw new Error('Invalid action type');
-  const payload = { ...(isRecord(body.payload) ? body.payload : {}) };
+  const payload: Record<string, unknown> = { ...(isRecord(body.payload) ? body.payload : {}) };
   if (body.id !== undefined && payload.id === undefined) payload.id = body.id;
   if (body.mode !== undefined && payload.mode === undefined) payload.mode = body.mode;
   const context = contextFor(state, ctx, `action|${body.actionId ?? ''}`);
@@ -117,7 +129,7 @@ export function dispatch(state, body, ctx) {
  * always, so needs decay and bills fall due whether or not the player is doing anything.
  * Returns { ok, code: 'idle' | 'advanced' | 'completed' | 'invalid_time', state }.
  */
-export function advanceLife(state, dt, ctx) {
+export function advanceLife(state: LifeState, dt: number, ctx?: LifeContextInit): AdvanceOutcome {
   if (!finite(dt) || dt <= 0) return { ok: false, code: 'invalid_time', state };
   const now = finite(ctx?.now) ? ctx.now : state.t + dt * 1000;
   const context = contextFor(state, { ...ctx, now }, `settle|${state.t}|${now}`);
@@ -129,15 +141,16 @@ export function advanceLife(state, dt, ctx) {
 }
 
 /** Derived, display-only data from every system that defines view(). Never mutates state. */
-export function viewLife(state, ctx) {
+export function viewLife(state: LifeState, ctx?: LifeContextInit): LifeView {
   const context = contextFor(state, ctx, 'view');
-  const view = {};
+  const view: Record<string, unknown> = {};
   for (const system of systems()) if (system.view) view[system.id] = system.view(state, context);
-  return view;
+  // Each present key holds that system's view (see LifeView); a key whose system has no view() is absent.
+  return view as unknown as LifeView;
 }
 
 // Thin named wrappers kept for older callers and tests.
-export const startActivity = (state, id, ctx) => dispatch(state, { type: 'activity', id }, ctx);
-export const cancelActivity = (state, ctx) => dispatch(state, { type: 'cancel' }, ctx);
-export const startTravel = (state, destination, mode, ctx) => dispatch(state, { type: 'travel', id: destination, mode }, ctx);
-export const applyJob = (state, id, ctx) => dispatch(state, { type: 'apply-job', id }, ctx);
+export const startActivity = (state: LifeState, id: ActivityId, ctx?: LifeContextInit): ActionResult<'activity'> => dispatch(state, { type: 'activity', id }, ctx);
+export const cancelActivity = (state: LifeState, ctx?: LifeContextInit): ActionResult<'cancel'> => dispatch(state, { type: 'cancel' }, ctx);
+export const startTravel = (state: LifeState, destination: VenueId, mode: TravelModeId, ctx?: LifeContextInit): ActionResult<'travel'> => dispatch(state, { type: 'travel', id: destination, mode }, ctx);
+export const applyJob = (state: LifeState, id: string, ctx?: LifeContextInit): ActionResult<'apply-job'> => dispatch(state, { type: 'apply-job', id }, ctx);

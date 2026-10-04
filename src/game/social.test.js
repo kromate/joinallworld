@@ -39,7 +39,7 @@ function run(state, id, now = NOW, seed = 'run') {
 }
 
 test('content: every venue id has a cast, actions follow the observed list, provenance is marked', () => {
-  const venues = ['park', 'library', 'amala-shitta', 'cchub', 'shrine', 'viewing-centre', 'market', 'i-fitness', 'office', 'quilox', 'canopy-walk', 'palms', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'church', 'mosque', 'radio', 'polling-unit', 'state-house'];
+  const venues = ['park', 'library', 'amala-shitta', 'cchub', 'shrine', 'viewing-centre', 'market', 'i-fitness', 'office', 'quilox', 'canopy-walk', 'palms', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'church', 'mosque', 'radio', 'polling-unit', 'state-house', 'airport', 'refinery'];
   for (const venue of venues) assert.ok(Object.values(NPCS).filter((npc) => npc.venue === venue).length >= 2, venue);
   assert.ok(!Object.values(NPCS).some((npc) => npc.venue === 'home'));
   for (const npc of Object.values(NPCS)) { assert.ok(npc.name && npc.role && npc.quotes.length >= 2, npc.id); assert.ok(npc.beta || npc.note, `${npc.id} provenance`); }

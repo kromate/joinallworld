@@ -20,7 +20,7 @@
  *
  * A pack is plain data plus decorate(): the generic builder (src/map3d/city-build.js) draws land,
  * roads, bridges, landmarks and the city fabric from the data; decorate() adds what only this
- * city has (the port, the airport and refinery building sites, Eko Atlantic).
+ * city has (the port, the airfield and the tank farm around the airport and refinery landmarks, Eko Atlantic).
  */
 
 import { LAGOS_LGAS } from '../../game/content/world.js';
@@ -94,6 +94,8 @@ export const sites = {
   mosque: { x: -30, z: 15.5 }, 'polling-unit': { x: -19, z: 15.5 }, office: { x: -8, z: 15.5 }, 'state-house': { x: 4, z: 15.5 },
   'i-fitness': { x: -3, z: 35.5 }, library: { x: 9, z: 35.5 }, quilox: { x: 21, z: 35.5 }, rooftop: { x: 40, z: 35.5 },
   palms: { x: 76, z: 23 }, 'canopy-walk': { x: 93, z: 21.5 }, beach: { x: 97, z: 42 },
+  // The terminal at the end of Agege Motor Road (Ikeja), and the refinery's gate on the Lekki–Epe Expressway (Ibeju-Lekki).
+  airport: { x: -96, z: -57 }, refinery: { x: 112, z: 34.6 },
 };
 
 /** Where Home stands for each house (ids of HOME_SPOTS in src/game/content/venues.js). */
@@ -102,11 +104,11 @@ export const homes = {
   ikoyi: { x: 40, z: 15.5, district: 'Ikoyi' }, banana: { x: 66, z: -13.5, district: 'Banana Island' },
 };
 
-/** Coming-soon districts: fenced, hazard-striped building sites. Ids are those of COMING_SOON. */
-export const soon = {
-  airport: { x: -103, z: -66, zone: [-122, -82, -88, -48], gate: [-86, -56] },
-  refinery: { x: 116, z: 27, zone: [106, 16, 126, 37], gate: [104, 29] },
-};
+/**
+ * Coming-soon districts: { [id of COMING_SOON]: { x, z, zone: [x0, z0, x1, z1], gate: [x, z] } }. Each is marked on both
+ * maps and may be fenced off in decorate() with hazardFence() below. Lagos has none now: the airport and the refinery are venues.
+ */
+export const soon = {};
 
 /** District name plates laid on the ground: [x, z, size]. `water` plates are lettered straight onto the water. */
 export const districts = [
@@ -120,8 +122,8 @@ export const districts = [
 
 /** Areas the city fabric keeps clear: [x0, z0, x1, z1]. Sites, roads and plates are kept clear automatically. */
 export const zones = [
-  [-122, -82, -88, -48],   // airport
-  [106, 16, 126, 37],      // refinery
+  [-122, -82, -88, -48],   // the airfield
+  [106, 16, 126, 37],      // the refinery's tank farm
   [-84, 2, -52, 18],       // Apapa port
 ];
 
@@ -190,7 +192,7 @@ export const lgas = LAGOS_LGAS.map((lga) => ({ id: lga.id, name: lga.name, line:
 
 const STRIPE = ['#f2c230', '#22252a'];
 
-/** Hazard-striped fence around a rectangle, with a gap for the gate. */
+/** Hazard-striped fence around a rectangle, with a gap for the gate — for a coming-soon district (`soon` above). */
 function hazardFence(b, [x0, z0, x1, z1]) {
   const run = (ax, az, bx, bz) => {
     const length = Math.hypot(bx - ax, bz - az), n = Math.max(1, Math.round(length / 2.2)), ry = Math.atan2(bx - ax, bz - az);
@@ -239,46 +241,35 @@ export function decorate(b, { rng }) {
     });
   }
 
-  // ---- Airport at Ikeja: a building site, visibly not open yet --------------------------------
-  const air = soon.airport.zone;
-  b.box(-105, 0.07, -65, 33, 0.14, 33, '#c8bfa4');
+  // ---- The airfield at Ikeja, behind the terminal (the venue's landmark): apron, runway, tower, planes ----
+  b.box(-105, 0.07, -65, 33, 0.14, 33, '#c5c8c2');
   b.box(-105, 0.16, -74, 30, 0.06, 4.2, '#4a4e55');                         // runway
   for (let i = 0; i < 9; i++) b.box(-117 + i * 3, 0.2, -74, 1.6, 0.02, 0.3, '#ece8dc');
   b.box(-104, 0.16, -68, 3, 0.06, 8, '#4a4e55');                            // taxiway
-  b.box(-100, 1.3, -58, 14, 2.6, 5, '#d9d4c4');                             // terminal shell
-  b.box(-100, 2.75, -58, 14.6, 0.3, 5.6, '#7d858c');
-  for (let i = 0; i < 6; i++) b.box(-106 + i * 2.4, 1.4, -55.4, 1.6, 1.4, 0.1, '#8fb8cc');
-  for (let i = 0; i < 5; i++) b.box(-106 + i * 3, 3.6, -58, 0.14, 1.6, 0.14, '#8a8f95');   // bare steel above the roof
-  b.box(-100, 4.4, -58, 12.4, 0.14, 0.14, '#8a8f95');
   b.cyl(-114, 3, -60, 0.9, 6, '#d9d4c4', { seg: 8 });                       // control tower
   b.cyl(-114, 6.5, -60, 1.5, 1.2, '#55707c', { seg: 8, top: 1.25 });
-  b.at(-96, 0.2, -68, 1.2, () => {                                          // one parked plane
-    b.cyl(0, 0.9, 0, 0.55, 6.4, '#ece8dc', { seg: 8, rx: Math.PI / 2 });
-    b.cone(0, 0.9, 3.7, 0.55, 1.1, '#ece8dc', { seg: 8, rx: Math.PI / 2 });
-    b.box(0, 0.85, 0.2, 7.4, 0.14, 1.5, '#d9d4c4');
-    b.box(0, 1.1, -2.8, 2.8, 0.12, 0.8, '#d9d4c4');
-    b.box(0, 1.8, -2.9, 0.14, 1.5, 0.9, '#3f9a5a');
-  });
-  crane(b, -112, -53, 0.6, 8);
-  crane(b, -92, -64, -1.9, 6.5, '#d9482f');
-  hazardFence(b, air);
+  for (const [x, z, ry, tail] of [[-96, -68, 1.2, '#3f9a5a'], [-110, -66.5, -0.5, '#2b5fa8']]) {
+    b.at(x, 0.2, z, ry, () => {                                             // planes at their stands
+      b.cyl(0, 0.9, 0, 0.55, 6.4, '#ece8dc', { seg: 8, rx: Math.PI / 2 });
+      b.cone(0, 0.9, 3.7, 0.55, 1.1, '#ece8dc', { seg: 8, rx: Math.PI / 2 });
+      b.box(0, 0.85, 0.2, 7.4, 0.14, 1.5, '#d9d4c4');
+      b.box(0, 1.1, -2.8, 2.8, 0.12, 0.8, '#d9d4c4');
+      b.box(0, 1.8, -2.9, 0.14, 1.5, 0.9, tail);
+    });
+  }
 
-  // ---- Refinery in the Lekki Free Zone: tanks, stacks and scaffolding ---------------------------
-  const ref = soon.refinery.zone;
-  b.box(116, 0.07, 26.5, 20, 0.14, 21, '#c8bfa4');
-  for (const [x, z, r, h] of [[110, 20, 2.2, 2.4], [115.5, 20, 2.2, 2.4], [121, 20, 2.2, 2.4], [110, 25.5, 1.6, 3.2], [114, 25.5, 1.6, 3.2]]) {
+  // ---- The refinery's tank farm in the Lekki Free Zone, across the expressway from its gate (the venue's landmark) ----
+  b.box(116, 0.07, 20.7, 20, 0.14, 9.4, '#c5c8c2');
+  b.box(116, 0.07, 34, 20, 0.14, 6, '#c5c8c2');
+  for (const [x, z, r, h] of [[110, 19.5, 2.2, 2.4], [115.5, 19.5, 2.2, 2.4], [121, 19.5, 2.2, 2.4], [110, 23.9, 1.4, 3.2], [114, 23.9, 1.4, 3.2]]) {
     b.cyl(x, h / 2, z, r, h, '#dfe2e0', { seg: 10 });
     b.cyl(x, h + 0.12, z, r * 0.96, 0.24, '#b8bcba', { seg: 10, top: 0.5 });
   }
-  for (const [x, z, h] of [[120, 27, 9], [122.5, 29.5, 7]]) {
+  for (const [x, z, h] of [[119.5, 23.8, 9], [122.5, 23.4, 7]]) {
     b.cyl(x, h / 2, z, 0.5, h, '#9aa0a4', { seg: 7, top: 0.7 });
     for (let band = 0; band < 3; band++) b.cyl(x, h - 0.6 - band * 1.4, z, 0.52, 0.5, band % 2 ? '#ece8dc' : '#c9423a', { seg: 7 });
   }
-  b.box(112, 1.4, 32, 8, 2.8, 4, '#aab0b3');
-  for (let i = 0; i < 5; i++) { b.box(108.4 + i * 1.8, 2.2, 34.2, 0.12, 4.4, 0.12, '#8a8f95'); b.box(112, 1 + i * 0.9, 34.2, 7.4, 0.1, 0.1, '#8a8f95'); }
   for (let i = 0; i < 4; i++) b.cyl(118 + i * 1.6, 0.9, 34, 0.14, 1.8, '#8a8f95', { seg: 5, rz: Math.PI / 2 });
-  crane(b, 123, 34, 2.4, 7.5);
-  hazardFence(b, ref);
 
   // ---- Eko Atlantic: reclaimed land with its first towers ---------------------------------------
   for (const [x, z, h, colour] of [[-5, 50, 9, '#b9c7cf'], [1, 52, 12, '#9fb4c0'], [8, 50, 7.5, '#c9d2d4']]) {

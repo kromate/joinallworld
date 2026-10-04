@@ -82,11 +82,11 @@ test('world systems are registered and survive hostile saves', () => {
   assert.deepEqual(createLife(JSON.parse(JSON.stringify(state)), at(MONDAY_NOON + 60000)), state, 'a valid state round-trips unchanged');
 });
 
-test('venue catalogue: 23 venues with district, hours, scene kind, map position, spots and activities', () => {
+test('venue catalogue: 25 venues with district, hours, scene kind, map position, spots and activities', () => {
   const ids = ['home', 'park', 'library', 'amala-shitta', 'cchub', 'shrine', 'viewing-centre', 'market', 'i-fitness', 'office', 'quilox', 'canopy-walk', 'palms', 'beach',
-    'hospital', 'salon', 'rooftop', 'police', 'church', 'mosque', 'radio', 'polling-unit', 'state-house'];
+    'hospital', 'salon', 'rooftop', 'police', 'church', 'mosque', 'radio', 'polling-unit', 'state-house', 'airport', 'refinery'];
   assert.deepEqual(Object.keys(VENUES).sort(), [...ids].sort());
-  assert.deepEqual(Object.keys(COMING_SOON).sort(), ['airport', 'refinery']);
+  assert.deepEqual(Object.keys(COMING_SOON), [], 'nothing in Lagos is coming soon: the airport and the refinery are venues');
   const seen = new Set();
   for (const venue of Object.values(VENUES)) {
     assert.equal(VENUES[venue.id], venue);
@@ -116,7 +116,7 @@ test('venue catalogue: 23 venues with district, hours, scene kind, map position,
   assert.ok(seen.size >= 180, `${seen.size} activities`);
   // Places that must be reachable at any hour.
   for (const id of ['home', 'park', 'hospital', 'police', 'amala-shitta']) assert.equal(VENUES[id].hours, undefined, id);
-  for (const id of [...ids.filter((id) => id !== 'home'), 'airport', 'refinery']) assert.ok(CITY_LABELS.ibadan[id]?.label, `Ibadan label for ${id}`);
+  for (const id of ids.filter((id) => id !== 'home')) assert.ok(CITY_LABELS.ibadan[id]?.label, `Ibadan label for ${id}`);
   assert.equal(venueLabel('park', 'ibadan'), 'Agodi Gardens'); assert.equal(venueLabel('airport', 'lagos'), 'Airport');
   assert.deepEqual(Object.keys(CITY_MAPS).sort(), ['ibadan', 'lagos']);
   assert.deepEqual(Object.keys(HOME_SPOTS).sort(), ['banana', 'ikoyi', 'lekki', 'mushin', 'yaba']);
@@ -297,16 +297,24 @@ test('a closed venue can be previewed but not travelled to, with one consistent 
 });
 
 test('coming-soon places and invalid trips are refused with a reason and no charge', () => {
-  const state = createLife(null, at(DRY_NOON));
-  for (const [payload, code, reason] of [[{ id: 'airport', mode: 'cab' }, 'coming_soon', /Airport is not open yet/], [{ id: 'refinery', mode: 'trek' }, 'coming_soon', /coming soon/],
-    [{ id: 'moon', mode: 'trek' }, 'invalid_travel', /valid destination/], [{ id: 'library', mode: 'jetpack' }, 'invalid_travel', /valid destination/], [{ id: 'library' }, 'invalid_travel', /./],
-    [{ id: 'park', mode: 'cab' }, 'already_here', /already here/], [{ id: 'library', mode: 'car' }, 'travel_mode_unavailable', /do not own a car/], [{ id: ['library'], mode: { id: 'cab' } }, 'invalid_travel', /./]]) {
-    const result = dispatch(state, { type: 'travel', payload }, at(DRY_NOON));
-    assert.equal(result.ok, false); assert.equal(result.code, code, JSON.stringify(payload)); assert.match(result.reason, reason);
-    assert.equal(state.cash, 5000); assert.equal(state.activeAction, null);
-  }
-  const soon = viewLife(state, at(DRY_NOON)).travel.destinations.filter((item) => item.kind === 'soon');
-  assert.deepEqual(soon.map((item) => [item.id, item.status, item.blocked.code, item.modes.length]), [['airport', 'Coming soon', 'coming_soon', 0], ['refinery', 'Coming soon', 'coming_soon', 0]]);
+  // No place in Lagos is coming soon any more, so the mechanism is exercised with two made-up ones.
+  COMING_SOON.spaceport = { id: 'spaceport', label: 'Spaceport', district: 'Epe', icon: '✈️', description: 'Not built yet.', zone: 'east', map: { x: 90, y: 60 } };
+  COMING_SOON.monorail = { id: 'monorail', label: 'Monorail', district: 'Marina', icon: '🚌', description: 'Not built yet.', zone: 'island', map: { x: 40, y: 80 } };
+  try {
+    const state = createLife(null, at(DRY_NOON));
+    for (const [payload, code, reason] of [[{ id: 'spaceport', mode: 'cab' }, 'coming_soon', /Spaceport is not open yet/], [{ id: 'monorail', mode: 'trek' }, 'coming_soon', /coming soon/],
+      [{ id: 'moon', mode: 'trek' }, 'invalid_travel', /valid destination/], [{ id: 'library', mode: 'jetpack' }, 'invalid_travel', /valid destination/], [{ id: 'library' }, 'invalid_travel', /./],
+      [{ id: 'park', mode: 'cab' }, 'already_here', /already here/], [{ id: 'library', mode: 'car' }, 'travel_mode_unavailable', /do not own a car/], [{ id: ['library'], mode: { id: 'cab' } }, 'invalid_travel', /./]]) {
+      const result = dispatch(state, { type: 'travel', payload }, at(DRY_NOON));
+      assert.equal(result.ok, false); assert.equal(result.code, code, JSON.stringify(payload)); assert.match(result.reason, reason);
+      assert.equal(state.cash, 5000); assert.equal(state.activeAction, null);
+    }
+    const soon = viewLife(state, at(DRY_NOON)).travel.destinations.filter((item) => item.kind === 'soon');
+    assert.deepEqual(soon.map((item) => [item.id, item.status, item.blocked.code, item.modes.length]), [['spaceport', 'Coming soon', 'coming_soon', 0], ['monorail', 'Coming soon', 'coming_soon', 0]]);
+    // A saved trip to a place that is not open is dropped.
+    assert.equal(createLife({ location: 'park', activeAction: { kind: 'travel', id: 'spaceport', duration: 8, remaining: 3, mode: 'danfo' } }, at(DRY_NOON)).activeAction, null);
+  } finally { delete COMING_SOON.spaceport; delete COMING_SOON.monorail; }
+  assert.deepEqual(viewLife(createLife(null, at(DRY_NOON)), at(DRY_NOON)).travel.destinations.filter((item) => item.kind === 'soon'), [], 'and Lagos itself lists none');
 });
 
 test('modifiers: own car through travel.modes, and fare, duration and need cost adjustments', () => {
@@ -331,7 +339,7 @@ test('a save from before per-mode travel resumes and arrives; malformed trips ar
   advanceLife(legacy, 3, at(WET_NOON + 3000));
   assert.deepEqual([legacy.location, legacy.cash, legacy.message, legacy.needs.energy, legacy.travel.event], ['library', 4600, 'Arrived at The Library.', 50, null]);
   for (const active of [{ kind: 'travel', id: 'library', duration: 12, remaining: 3 }, { kind: 'travel', id: 'library', duration: 12, remaining: 3, mode: 'jetpack' }, { kind: 'travel', id: 'library', duration: 61, remaining: 3, mode: 'trek' },
-    { kind: 'travel', id: 'airport', duration: 8, remaining: 3, mode: 'danfo' }, { kind: 'travel', id: 'park', duration: 8, remaining: 3, mode: 'danfo' }, { kind: 'travel', id: 'library', duration: 2, remaining: 1, mode: 'cab' }]) {
+    { kind: 'travel', id: 'moon', duration: 8, remaining: 3, mode: 'danfo' }, { kind: 'travel', id: 'park', duration: 8, remaining: 3, mode: 'danfo' }, { kind: 'travel', id: 'library', duration: 2, remaining: 1, mode: 'cab' }]) {
     assert.equal(createLife({ location: 'park', activeAction: active }, at(DRY_NOON)).activeAction, null, JSON.stringify(active));
   }
   assert.deepEqual(createLife({ location: 'park', activeAction: { kind: 'travel', id: 'home', duration: 18, remaining: 7.5, mode: 'trek', hacked: true } }, at(DRY_NOON)).activeAction, { kind: 'travel', id: 'home', duration: 18, remaining: 7.5, mode: 'trek' });

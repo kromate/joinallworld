@@ -81,6 +81,7 @@ const NPC_PLACES = {
   somto: 'view', lola: 'lounge', 'sergeant-audu': 'desk', 'corporal-ife': 'bench', 'sister-grace': 'choir', 'usher-ben': 'pews',
   'alhaji-sani': 'prayer', 'mallam-isa': 'mihrab', 'oap-tobi': 'studio', 'sound-ada': 'control', 'agent-wale': 'queue', 'mrs-bello': 'officials',
   'protocol-segun': 'steps', 'madam-secretary': 'office',
+  'agent-bimpe': 'desk', 'porter-sule': 'arrivals', 'engineer-chioma': 'control', 'driver-mustapha': 'loading',
 };
 const npc = (id, venue, name, role, emoji, quotes, extra = { beta: true }) => ({ id, venue, name, role, emoji, quotes, ...extra });
 export const NPCS = Object.fromEntries([
@@ -128,6 +129,10 @@ export const NPCS = Object.fromEntries([
   npc('mrs-bello', 'polling-unit', 'Mrs Bello', 'Electoral officer', '📋', ['Queue here. One person, one line.', 'Ink on the finger, then you may go.']),
   npc('protocol-segun', 'state-house', 'Segun', 'Protocol officer', '🕴🏾', ['His Excellency is in a meeting.', 'Do you have an appointment?']),
   npc('madam-secretary', 'state-house', 'Madam Abike', 'Secretary', '🗂️', ['Drop your letter, we will get back to you.', 'The file is on the table.']),
+  npc('agent-bimpe', 'airport', 'Bimpe', 'Travel desk agent', '👩🏾‍💼', ['Abuja and Port Harcourt are on the board. The planes are still coming.', 'Window or aisle? I am only practising.']),
+  npc('porter-sule', 'airport', 'Sule', 'Porter at Arrivals', '🧑🏾', ['Oga, let me carry that one for you.', 'Every flight lands with one suitcase too many.']),
+  npc('engineer-chioma', 'refinery', 'Engr Chioma', 'Shift engineer', '👩🏾', ['Hard hat on before you say hello.', 'When the flare is quiet, everybody is happy.']),
+  npc('driver-mustapha', 'refinery', 'Mustapha', 'Tanker driver', '👨🏾', ['I have been on this queue since dawn.', 'Full tank going out, empty stomach coming back.']),
 ].map((entry) => [entry.id, { ...entry, at: NPC_PLACES[entry.id] ?? null }]));
 
 /**

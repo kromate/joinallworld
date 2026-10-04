@@ -23,8 +23,9 @@
  * A socket need not have joined a venue room: the service checks the stored life itself.
  */
 import { tablesService } from '../growth/tables.ts';
+import type { RouteContext, WsHandlers } from '../types.ts';
 
-export default function tablesSocket(ctx) {
+export default function tablesSocket(ctx: RouteContext): WsHandlers {
   const tables = tablesService(ctx);
   return {
     close(ws) { tables.drop(ws); },

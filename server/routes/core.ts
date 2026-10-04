@@ -12,6 +12,10 @@
  * POST /api/action runs the action through core.playerAct, without the `internal` flag that
  * ctx.act carries, so a server-only action type (src/game/registry.js) is always refused here.
  */
+import type { LifeState } from '../../src/types/life.ts';
+import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../../src/types/protocol.ts';
+import type { ActionOutcome, CommandOptions, Db, MuteVerdict, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
+import { hasAction } from '../../src/game/registry.ts';
 import { validateName, validateActionPayload, publicSession, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
 import { MAX_RECEIPTS, boundedFingerprint } from './once.ts';
 
@@ -25,7 +29,7 @@ export { MAX_RECEIPTS, boundedFingerprint };
  * recovering, a roadside event waiting for an answer, skills, goal progress and stars — so nothing
  * of that kind is shown from a settlement that a crash could compute differently.
  */
-export const outcomeKey = (state) => (state ? JSON.stringify([state.cash, state.ledger?.length ?? 0, state.ledger?.at(-1)?.at ?? 0, state.location, state.activeAction?.kind ?? null,
+export const outcomeKey = (state: LifeState | null | undefined): string => (state ? JSON.stringify([state.cash, state.ledger?.length ?? 0, state.ledger?.at(-1)?.at ?? 0, state.location, state.activeAction?.kind ?? null,
   state.activeAction?.id ?? null, state.inventory ?? null, state.job ?? null, state.completedShifts ?? 0, state.message ?? '',
   state.health?.sick ?? false, state.health?.cause ?? null, state.travel?.event ?? null, state.skills ?? null,
   state.goals?.chain ?? 0, state.goals?.stars ?? 0, state.goals?.granted ?? 0, state.goals?.dreamDone ?? false]) : 'none');
@@ -46,7 +50,7 @@ export const outcomeKey = (state) => (state ? JSON.stringify([state.cash, state.
  *                that belongs to the charge: throw and the charge, the receipt and every other change
  *                are discarded together. It must be synchronous and must not send anything.
  */
-export async function executeCommand(ctx, request, body, { internal = false, scope, afterAction } = {}) {
+export async function executeCommand(ctx: RouteContext, request: RouteRequest, body: ActionRequest, { internal = false, scope, afterAction }: CommandOptions = {}): Promise<ActionOutcome> {
   const { store, now, settle, core, config } = ctx;
   if (scope !== undefined && (typeof scope !== 'string' || !/^[a-z][a-z0-9_.-]{0,63}$/.test(scope))) throw new Error('A command scope is a fixed server string');
   if (afterAction !== undefined && (typeof afterAction !== 'function' || scope === undefined)) throw new Error('A command callback requires a fixed server scope');
@@ -61,21 +65,31 @@ export async function executeCommand(ctx, request, body, { internal = false, sco
     const result = core.actionOnce(session, body, () => {
       const done = internal === true ? ctx.act(state, body) : core.playerAct(state, body);
       if (done.ok && afterAction) {
-        const pending = afterAction({ db, session, result: done });
-        if (pending && typeof pending.then === 'function') throw new Error('A command callback must be synchronous');
+        const pending: unknown = afterAction({ db, session, result: done });
+        if (isThenable(pending)) throw new Error('A command callback must be synchronous');
       }
       return done;
     }, { authority });
-    return { publicId: session.publicId, outcome: result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true } : result };
+    return { publicId: session.publicId, outcome: result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true as const } : result };
   });
   await core.validateMemberships(request.secret, body.cityId, outcome.state, publicId);
   return outcome;
 }
 
-export default function coreRoutes(ctx) {
+const isThenable = (value: unknown): boolean => (typeof value === 'object' || typeof value === 'function') && value !== null && typeof Reflect.get(value, 'then') === 'function';
+const errorCode = (error: unknown): unknown => (typeof error === 'object' && error !== null ? Reflect.get(error, 'code') : undefined);
+/** The body of POST /api/action once validateActionPayload has accepted its envelope (cityId, a registered type, a timed action id, a plain-object payload). */
+function isActionRequest(body: Record<string, unknown>): body is Record<string, unknown> & ActionRequest {
+  return typeof body.actionId === 'string' && /^\d+:./.test(body.actionId) && typeof body.cityId === 'string' && hasAction(body.type)
+    && (body.payload === undefined || (typeof body.payload === 'object' && body.payload !== null && !Array.isArray(body.payload)));
+}
+type VoiceBody = { readonly iceServers: readonly IceServerConfig[]; readonly turnConfigured: boolean; readonly mode: string; readonly expiresAt?: number };
+
+export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const { store, now, fail, allow, settle, core, config } = ctx;
   /** For a request that only reads: when the renewal could not be saved, answer from the stored data instead. */
-  const unsaved = (fallback) => (error) => { if (error?.code !== 'storage_unavailable') throw error; return fallback(); };
+  const isCityId = (value: unknown): value is CityId => ctx.cityIds.some(id => id === value);
+  const unsaved = <T>(fallback: () => T | Promise<T>) => (error: unknown): T | Promise<T> => { if (errorCode(error) !== 'storage_unavailable') throw error; return fallback(); };
   /**
    * The caller's OWN session as the session routes answer it: the public identity plus `cities`,
    * the ids of the cities this session has a life in — so a returning player is recognised on any
@@ -83,20 +97,21 @@ export default function coreRoutes(ctx) {
    * It is about the caller only and goes to the caller only: publicSession() — what sockets, chat
    * and every other player see — is unchanged and never carries it.
    */
-  const ownSession = (session) => ({ ...publicSession(session), cities: ctx.cityIds.filter(id => Boolean(session.cities?.[id]?.state)) });
+  const ownSession = (session: SessionRecord): PublicSession & { cities: CityId[] } => ({ ...publicSession(session), cities: ctx.cityIds.filter(id => Boolean(session.cities?.[id]?.state)) });
   return {
     // Which build is serving, for a local preview or a deploy check. No session is read or created.
     'GET /api/health': () => ({ body: { ok: true, build: config.buildId } }),
     'POST /api/session': async (request) => {
+      type Answer = { secret: string; session: PublicSession; own: PublicSession & { cities: CityId[] }; mute?: MuteVerdict; refused?: boolean };
       const body = await request.json();
       const name = validateName(body.name);
-      const result = await store.transact(db => {
-        for (const secret of core.expiredSessionKeys(db)) core.archiveSession(db, secret, db.sessions[secret]);
+      const result = await store.transact((db): Answer => {
+        for (const secret of core.expiredSessionKeys(db)) { const stale = db.sessions[secret]; if (stale) core.archiveSession(db, secret, stale); }
         let current = request.session(db), created = false;
         if (!current) {
           if (Object.keys(db.sessions).length >= config.maxActiveSessions) throw fail(503, 'device_capacity');
           const { secret, publicId } = core.newIdentity();
-          current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {}, ...(body.onboarding === true ? { onboarding: true } : {}) };
+          current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {}, ...(body.onboarding === true ? { onboarding: true as const } : {}) };
           created = true;
         }
         current.expiresAt = now() + config.sessionTtlMs;
@@ -108,7 +123,7 @@ export default function coreRoutes(ctx) {
         current.name = name;
         return { secret: current.secret, session: publicSession(current), own: ownSession(current) };
       });
-      if (result.refused) throw Object.assign(fail(403, 'muted'), { reason: result.mute.reason });
+      if (result.refused && result.mute) throw Object.assign(fail(403, 'muted'), { reason: result.mute.reason });
       return { body: { session: result.own }, headers: { 'Set-Cookie': core.cookieHeader(request, result.secret) }, ...(result.mute ? {} : { after: () => core.refreshNames(result.session) }) };
     },
     'GET /api/session': async (request) => {
@@ -119,11 +134,12 @@ export default function coreRoutes(ctx) {
       return { body: { session: ownSession(session) }, renew: renewed };
     },
     'GET /api/voice-config': async (request) => {
-      const check = (renew) => (db) => {
+      const check = (renew: boolean) => (db: Db): SessionRecord => {
         const current = request.requireSession(db, { renew });
         const live = core.sockets().some(ws => {
           if (ws.session.id !== current.publicId || !core.isOpen(ws) || !ws.room || ws.expiresAt <= now()) return false;
           const city = ws.room.split(':')[0];
+          if (!isCityId(city)) return false;
           const state = settle(current, city);
           // The player's own venue room, or a host's Home room they are still a guest of.
           return core.roomStillValid(ws, db, current, city, state);
@@ -134,7 +150,7 @@ export default function coreRoutes(ctx) {
       let renewed = true;
       const session = await store.transact(check(true)).catch(unsaved(() => { renewed = false; return store.read(check(false)); }));
       if (!allow(`voice-config:${session.publicId}`, 6)) throw fail(429, 'voice_config_rate_limited');
-      let voice = STUN_ONLY_CONFIG;
+      let voice: VoiceBody = STUN_ONLY_CONFIG;
       if (config.voiceConfigProvider) {
         try { voice = validateVoiceConfig(await config.voiceConfigProvider(publicSession(session)), now()); }
         catch { throw fail(503, 'voice_config_unavailable'); }
@@ -143,7 +159,7 @@ export default function coreRoutes(ctx) {
     },
     'GET /api/life': async (request) => {
       const city = request.query.get('city');
-      if (!ctx.cityIds.includes(city)) throw fail(400, 'invalid_city');
+      if (!isCityId(city)) throw fail(400, 'invalid_city');
       // A quiet poll acknowledges nothing — it only moves the clock — so it does not wait for its own
       // write (store.js, lazy transactions). A poll whose settlement produced an outcome (see
       // outcomeKey) is in the data file before it is answered, exactly like an action. Either way the
@@ -166,6 +182,7 @@ export default function coreRoutes(ctx) {
     'POST /api/action': async (request) => {
       const body = await request.json();
       validateActionPayload(body, now(), config.actionWindowMs);
+      if (!isActionRequest(body)) throw fail(400, 'invalid_action');
       // A player's own request: no server authority, no scope (see executeCommand above). Once it is
       // saved the rooms are told with the state it produced (a repeat is checked like a first answer).
       // A rejected or unsaved action changed nothing: the route host then re-checks the rooms against

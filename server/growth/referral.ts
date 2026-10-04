@@ -36,16 +36,21 @@ import { isShareCode } from '../../src/game/share-model.ts';
 import { keyed, LIMITS, playerOf } from './data.ts';
 import { findShare } from './share.ts';
 import { count } from './metrics.ts';
+import type { CityId } from '../../src/types/protocol.ts';
+import type { LifeState } from '../../src/types/life.ts';
+import type { GrowthView } from '../../src/types/view.ts';
+import type { InvitedFriend, ReferralView } from '../../src/types/growth.ts';
+import type { GrowthCollection, GrowthPlayerRecord, RouteContext, SessionRecord } from '../types.ts';
 
 const DEVICE = /^[A-Za-z0-9-]{16,64}$/;
 const WEEK_MS = 7 * 86400000;
-const no = (code, reason) => ({ ok: false, code, reason });
-const ready = (state) => Boolean(state) && !(state.onboarding?.required === true && state.onboarding.done !== true);
+const no = <Code extends string>(code: Code, reason: string): { ok: false; code: Code; reason: string } => ({ ok: false, code, reason });
+const ready = (state: LifeState | null | undefined): state is LifeState => state !== undefined && state !== null && !(state.onboarding?.required === true && state.onboarding.done !== true);
 
-export function referralService(ctx) {
+export function referralService(ctx: Pick<RouteContext, 'now' | 'fail' | 'checks' | 'act'>) {
   // Links per (inviter, address) in the last seven days. In memory only: an address is never stored.
-  const recent = new Map();
-  function addressCount(key, now, add) {
+  const recent = new Map<string, number[]>();
+  function addressCount(key: string, now: number, add: boolean): number {
     const list = (recent.get(key) ?? []).filter((at) => now - at < WEEK_MS);
     if (add) list.push(now);
     if (list.length) recent.set(key, list); else recent.delete(key);
@@ -54,32 +59,37 @@ export function referralService(ctx) {
   }
 
   /** Remember this browser's device token (as a salted hash) for the caller. */
-  function noteDevice(g, player, device) {
-    if (typeof device !== 'string' || !DEVICE.test(device)) return null;
+  function rememberDevice(g: GrowthCollection, player: GrowthPlayerRecord, device: string): string {
     const hash = keyed(g, `device|${device}`);
     if (!player.devices.includes(hash)) { player.devices.push(hash); if (player.devices.length > LIMITS.devices) player.devices.shift(); }
     return hash;
   }
+  function noteDevice(g: GrowthCollection, player: GrowthPlayerRecord, device: unknown): string | null {
+    if (typeof device !== 'string' || !DEVICE.test(device)) return null;
+    return rememberDevice(g, player, device);
+  }
 
   /** Attach the caller's young life to the owner of a share code. */
-  function link(g, session, state, body, ip) {
+  function link(g: GrowthCollection, session: SessionRecord, state: LifeState, body: Record<string, unknown>, ip: string) {
     const now = ctx.now(), id = session.publicId;
-    if (!isShareCode(body?.code)) throw ctx.fail(400, 'invalid_share_code');
-    if (typeof body.device !== 'string' || !DEVICE.test(body.device)) throw ctx.fail(400, 'device_required');
+    const code = body?.code, token = body.device;
+    if (typeof code !== 'string' || !isShareCode(code)) throw ctx.fail(400, 'invalid_share_code');
+    if (typeof token !== 'string' || !DEVICE.test(token)) throw ctx.fail(400, 'device_required');
     const me = playerOf(g, id);
     if (!me) return no('server_full', 'Invites are not available right now. Try again later.');
-    const refuse = (code, reason) => { count(g, now, `referral.refused.${code.replace(/_/g, '-')}`); return no(code, reason); };
-    if (me.ref) return me.ref.code === body.code ? { ok: true, code: 'linked', duplicate: true } : refuse('already_linked', 'This life already came through a friend’s link. That cannot be changed.');
-    const share = findShare(g, body.code, now);
+    const refuse = (code: string, reason: string) => { count(g, now, `referral.refused.${code.replace(/_/g, '-')}`); return no(code, reason); };
+    if (me.ref) return me.ref.code === code ? { ok: true, code: 'linked', duplicate: true } : refuse('already_linked', 'This life already came through a friend’s link. That cannot be changed.');
+    const share = findShare(g, code, now);
     if (!share) return refuse('unknown_link', 'That invite link has expired or does not exist.');
     if (share.by === id) return refuse('own_link', 'That is your own link. Send it to a friend.');
     const inviter = playerOf(g, share.by, { create: false });
     if (!inviter) return refuse('unknown_link', 'That invite link has expired or does not exist.');
     if (inviter.ref?.by === id) return refuse('mutual_link', 'You invited this friend, so their link cannot count for you too.');
     if (ctx.checks?.blocked?.(id, share.by) === true) return refuse('unknown_link', 'That invite link has expired or does not exist.');
-    const age = lagosTime(now).day - lagosTime(Number.isFinite(state.civic?.since) ? state.civic.since : now).day;
+    const since = state.civic?.since;
+    const age = lagosTime(now).day - lagosTime(typeof since === 'number' && Number.isFinite(since) ? since : now).day;
     if (age > REFERRAL.linkWithinDays) return refuse('too_late', `An invite link counts in the first ${REFERRAL.linkWithinDays} days of a life. You can still visit your friend.`);
-    const device = noteDevice(g, me, body.device);
+    const device = rememberDevice(g, me, token);
     if (inviter.devices.includes(device) || Object.values(inviter.invited).some((friend) => friend.device === device)) {
       return refuse('same_device', 'This phone has already been used with that link. An invite counts for a friend on their own phone.');
     }
@@ -89,7 +99,7 @@ export function referralService(ctx) {
     }
     if (Object.keys(inviter.invited).length >= LIMITS.invited) return refuse('inviter_full', 'Your friend’s invite list is full. You can still play together.');
     addressCount(address, now, true);
-    me.ref = { by: share.by, code: body.code, at: now, welcomed: false, counted: false };
+    me.ref = { by: share.by, code, at: now, welcomed: false, counted: false };
     inviter.invited[id] = { name: session.name, at: now, state: 'joined', device };
     share.joined = Math.min(Number.MAX_SAFE_INTEGER, (share.joined ?? 0) + 1);
     // One act, one counter: the share keeps its own `joined` number; the day's total is referral.linked.
@@ -101,12 +111,12 @@ export function referralService(ctx) {
    * Pay what is due now, for the caller as a newcomer and as an inviter. Returns true when a life
    * or another player's record changed (the caller's request must then be saved before it is answered).
    */
-  function settle(g, session, state, cityId) {
+  function settle(g: GrowthCollection, session: SessionRecord, state: LifeState, cityId: CityId): boolean {
     const now = ctx.now(), id = session.publicId, me = playerOf(g, id, { create: false });
     if (!me || !ready(state)) return false;
     let material = false;
     const worked = state.civic?.work?.days ?? 0;
-    const act = (kind, name) => ctx.act(state, { type: 'growth.referral', cityId, payload: { kind, name },
+    const act = (kind: 'welcome' | 'reward', name: string) => ctx.act(state, { type: 'growth.referral', cityId, payload: { kind, name },
       stateGuard: 'the referral record (welcomed flag, owed list) is written in this same transaction' });
     if (me.ref && !me.ref.welcomed && worked >= REFERRAL.welcomeWorkDays) {
       const inviter = playerOf(g, me.ref.by, { create: false });
@@ -125,7 +135,7 @@ export function referralService(ctx) {
     }
     // As an inviter: collect what is owed, a few at a time, until a cap says stop.
     for (let paid = 0; me.owed.length && paid < 6; paid++) {
-      const result = act('reward', me.invited[me.owed[0]]?.name ?? 'A friend');
+      const result = act('reward', (me.owed[0] === undefined ? undefined : me.invited[me.owed[0]]?.name) ?? 'A friend');
       if (result.ok) { me.owed.shift(); material = true; count(g, now, 'referral.paid'); continue; }
       if (result.code === 'referral_lifetime_cap') { me.owed.length = 0; material = true; } // they still count for titles
       break; // the weekly cap or a full wallet: it stays owed
@@ -134,7 +144,7 @@ export function referralService(ctx) {
   }
 
   /** What the caller sees about their own referrals. Names only; never an id of a device or an address. */
-  function view(g, id, growthView) {
+  function view(g: GrowthCollection, id: string, growthView?: GrowthView): ReferralView {
     const me = playerOf(g, id, { create: false });
     const invited = Object.entries(me?.invited ?? {}).sort((a, b) => b[1].at - a[1].at).slice(0, 30).map(([friend, entry]) => ({ id: friend, name: entry.name, state: entry.state, at: entry.at }));
     const counted = me?.counted ?? 0;

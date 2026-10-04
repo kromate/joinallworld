@@ -15,7 +15,9 @@ const INVISIBLE = /[\u00ad\u200b-\u200f\u2028-\u202f\u2060-\u206f\ufeff]/g;
  * space, and the result must be between `min` and `max` characters and pass the text filter
  * (server/moderation/text.ts: no blocked term, no link, no contact detail). Refused, never altered.
  */
-export function cleanLine(value, { min = 1, max = 80, what = 'Text' } = {}) {
+export type LineResult = { ok: true; text: string } | { ok: false; code: string; reason: string };
+
+export function cleanLine(value: unknown, { min = 1, max = 80, what = 'Text' }: { min?: number; max?: number; what?: string } = {}): LineResult {
   if (typeof value !== 'string') return { ok: false, code: 'text_required', reason: `${what} is required.` };
   if (value.length > max * 4 + 64) return { ok: false, code: 'text_too_long', reason: `${what} must be at most ${max} characters.` };
   const text = cleanText(value.replace(INVISIBLE, '').replace(/\s+/g, ' '), max * 4 + 64);

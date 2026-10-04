@@ -473,7 +473,7 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `src/game/systems/missions.js`, `events.js`, `growth.js`, `src/game/content/missions.js`, `calendar.js`, `growth.js` | Missions and the stamp card; event attendance and spraying; the server-only credits for table wins and referral gifts. Content is plain data |
 | `src/game/calendar.js`, `digest.js`, `outreach.js`, `share-model.js` | Pure functions shared by server and client: what is on when; the away card and the weekly digest; when a message may be sent, the address check and the consent wording; what a share says |
 | `src/tables/` | Table games. `rules.js` is **the contract for adding a game**; `whot.js`, `penalty.js` are pure rules; `places.js` says where tables stand; `client.js` and `*-board.js` are the browser side |
-| `server/growth/`, `server/routes/growth.ts`, `growth-mod.js`, `server/ws/tables.ts` | Share links and the preview page, referral, metrics, the table service, outreach (e-mail through `email/zeptomail.js`, web push in `webpush.js`); their routes, operator routes and socket messages |
+| `server/growth/`, `server/routes/growth.ts`, `growth-mod.ts`, `server/ws/tables.ts` | Share links and the preview page, referral, metrics, the table service, outreach (e-mail through `email/zeptomail.js`, web push in `webpush.js`); their routes, operator routes and socket messages |
 | `src/ui/panels/missions.js`, `events.js`, `refer.js`, `touch.js`, `tables.js`, `away-chip.js`, `tables-chip.js`, `growth-client.js`, `src/ui/share.js`, `push-client.js` | The growth apps and chips, the share painter and the push subscription |
 | `public/` | `og/allworld.jpg` (link-preview image), `manifest.webmanifest`, `icons/`, `sw.js` (notifications only) |
 | `scripts/first-day.mjs` | The scripted first day (`npm run first-day`), also run by `server/first-day.test.ts` |
@@ -491,7 +491,7 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `scripts/two-players.mjs` | The scripted two players (`npm run two-players`), also run by `server/two-players.test.ts` |
 | `scripts/economy-sim.mjs` | The balance simulation (`npm run economy`); its assertions are `src/game/economy.test.js` |
 | `scripts/load.mjs` | The local load test (`npm run load`) |
-| `**/*.test.js`, `server/test-fixture.ts` | `node --test` suites (one per owner under `src/game/`, plus `integration.test.js` for the seams between them) and the shared server fixture |
+| `**/*.test.{js,ts}`, `server/test-fixture.ts` | `node --test` suites (one per owner under `src/game/`, plus `integration.test.js` for the seams between them) and the shared server fixture |
 
 The only registered placeholders left are the accounts files (`server/auth.ts`, `server/routes/auth.ts`, `src/ui/panels/account.js`): they mark where a reviewed accounts design would live, not that one exists. [What works today](#what-works-today) is the list of working features.
 

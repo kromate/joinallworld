@@ -34,6 +34,9 @@
  */
 import { lagosTime } from '../../src/game/clock.ts';
 import { STARTER_GOALS } from '../../src/game/content/goals.ts';
+import type { LifeState } from '../../src/types/life.ts';
+import type { FunnelStep, GrowthMetricsResponse, MetricsCohort, MetricsDay, RetentionCell } from '../../src/types/growth.ts';
+import type { GrowthCollection } from '../types.ts';
 
 export const KEEP = Object.freeze({ days: 400, cohorts: 120, window: 31, lives: 50000 });
 export const RETENTION_DAYS = Object.freeze([1, 3, 7, 14, 30]);
@@ -42,7 +45,7 @@ export const RETENTION_DAYS = Object.freeze([1, 3, 7, 14, 30]);
  * POSITION in this list, so a step is only ever ADDED AT THE END: inserting one would shift the bits of lives already
  * followed and count them a second time. FUNNEL_ORDER is the order a person reads them in.
  */
-export const FUNNEL = Object.freeze([
+export const FUNNEL: readonly { id: FunnelStep; reached: (state: LifeState) => boolean }[] = Object.freeze([
   { id: 'onboarded', reached: (state) => !(state.onboarding?.required === true && state.onboarding.done !== true) },
   { id: 'goal-1', reached: (state) => (state.goals?.chain ?? 0) >= 1 },
   { id: 'job', reached: (state) => Boolean(state.job) },
@@ -54,20 +57,28 @@ export const FUNNEL = Object.freeze([
   // Added with the quick start: a guest who settled in (a local government and a house). At the end — see above.
   { id: 'settled', reached: (state) => state.onboarding?.done === true },
 ]);
-export const FUNNEL_ORDER = Object.freeze(['onboarded', 'goal-1', 'settled', 'job', 'shift', 'goals-done', 'mission', 'table', 'day-two-work']);
+export const FUNNEL_ORDER: readonly FunnelStep[] = Object.freeze(['onboarded', 'goal-1', 'settled', 'job', 'shift', 'goals-done', 'mission', 'table', 'day-two-work']);
 /** Signals a browser may report about itself (see POST /api/growth/client). A fixed list: nothing free-form is counted. */
 export const CLIENT_SIGNALS = Object.freeze(['webgl-missing', 'opera-mini', 'save-data', 'slow-start', 'installed', 'share-sheet', 'share-fallback']);
 const COUNTER = /^[a-z0-9][a-z0-9.-]{0,47}$/;
-const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 
-function book(g) {
+/** The metrics record with its three parts present (the objects are the stored ones, so changes to them are changes to the collection). */
+interface MetricsBook {
+  days: Record<string, Record<string, number>>
+  cohorts: Record<string, { size: number; r: Record<string, number> }>
+  lives: Record<string, { first: number; last: number | null; steps: number }>
+}
+function book(g: GrowthCollection): MetricsBook {
   const m = g.metrics;
-  for (const key of ['days', 'cohorts', 'lives']) if (!isRecord(m[key])) m[key] = {};
-  return m;
+  if (!isRecord(m.days)) m.days = {};
+  if (!isRecord(m.cohorts)) m.cohorts = {};
+  if (!isRecord(m.lives)) m.lives = {};
+  return { days: m.days, cohorts: m.cohorts, lives: m.lives };
 }
 
 /** Add to one of today's counters. A name that is not a plain counter name is ignored. */
-export function count(g, now, name, n = 1) {
+export function count(g: GrowthCollection, now: number, name: string, n = 1): void {
   if (typeof name !== 'string' || !COUNTER.test(name) || !Number.isSafeInteger(n) || n <= 0) return;
   const m = book(g), day = lagosTime(now).day;
   const today = (m.days[day] ||= {});
@@ -80,23 +91,25 @@ export function count(g, now, name, n = 1) {
  * `lastSeen`: when this player was last seen before now (server ms, or null) — so a life too old to be followed is still
  * counted once a day and not once per visit.
  */
-export function touch(g, now, publicId, state, lastSeen = null) {
+export function touch(g: GrowthCollection, now: number, publicId: string, state: LifeState, lastSeen: number | null = null): void {
   const m = book(g), day = lagosTime(now).day;
   const first = lagosTime(Number.isFinite(state?.civic?.since) ? state.civic.since : now).day;
-  let life = Object.hasOwn(m.lives, publicId) ? m.lives[publicId] : null;
-  if (!life) {
+  let found: MetricsBook['lives'][string] | null = Object.hasOwn(m.lives, publicId) ? m.lives[publicId] ?? null : null;
+  if (!found) {
     // Only a life still inside its window is followed; an old life is counted as active and nothing else.
-    if (day - first > KEEP.window - 1 || Object.keys(m.lives).length >= KEEP.lives) { if (!Number.isFinite(lastSeen) || lagosTime(lastSeen).day !== day) count(g, now, 'active-untracked'); return; }
-    life = m.lives[publicId] = { first, last: null, steps: 0 };
+    if (day - first > KEEP.window - 1 || Object.keys(m.lives).length >= KEEP.lives) { if (typeof lastSeen !== 'number' || !Number.isFinite(lastSeen) || lagosTime(lastSeen).day !== day) count(g, now, 'active-untracked'); return; }
+    found = m.lives[publicId] = { first, last: null, steps: 0 };
     const cohort = (m.cohorts[first] ||= { size: 0, r: {} });
     cohort.size += 1;
     if (first === day) count(g, now, 'new');
   }
+  const life = found;
   if (life.last !== day) {
     life.last = day;
     count(g, now, 'active');
     const offset = day - life.first;
-    if (RETENTION_DAYS.includes(offset) && m.cohorts[life.first]) m.cohorts[life.first].r[offset] = (m.cohorts[life.first].r[offset] ?? 0) + 1;
+    const cohort = m.cohorts[life.first];
+    if (RETENTION_DAYS.includes(offset) && cohort) cohort.r[offset] = (cohort.r[offset] ?? 0) + 1;
   }
   FUNNEL.forEach((step, index) => {
     if (life.steps & (1 << index) || !step.reached(state)) return;
@@ -106,27 +119,28 @@ export function touch(g, now, publicId, state, lastSeen = null) {
 }
 
 /** Drop what is past its retention. Called from the hourly sweep. */
-export function prune(g, now) {
+export function prune(g: GrowthCollection, now: number): void {
   const m = book(g), day = lagosTime(now).day;
   for (const key of Object.keys(m.days)) if (day - Number(key) > KEEP.days) delete m.days[key];
   for (const key of Object.keys(m.cohorts)) if (day - Number(key) > KEEP.cohorts) delete m.cohorts[key];
   for (const [id, life] of Object.entries(m.lives)) if (day - life.first > KEEP.window) delete m.lives[id];
 }
 
-const dateOf = (day) => new Date(day * 86400000).toISOString().slice(0, 10);
+const dateOf = (day: number): string => new Date(day * 86400000).toISOString().slice(0, 10);
 /** The operator's report: totals per day and the cohort table. Carries no player id. */
-export function report(g, now, { days = 35 } = {}) {
+export function report(g: GrowthCollection, now: number, { days = 35 }: { days?: number } = {}): Omit<GrowthMetricsResponse, 'analytics'> {
   const m = book(g), today = lagosTime(now).day, span = Math.max(1, Math.min(KEEP.days, days));
-  const daily = [];
-  for (let day = today - span + 1; day <= today; day++) if (m.days[day]) daily.push({ day, date: dateOf(day), ...m.days[day] });
-  const cohorts = Object.keys(m.cohorts).map(Number).filter((day) => today - day < span + 30).sort((a, b) => a - b).map((day) => {
-    const cohort = m.cohorts[day], row = { day, date: dateOf(day), size: cohort.size };
+  const daily: MetricsDay[] = [];
+  for (let day = today - span + 1; day <= today; day++) { const counters = m.days[day]; if (counters) daily.push({ day, date: dateOf(day), ...counters }); }
+  const cohorts = Object.keys(m.cohorts).map(Number).filter((day) => today - day < span + 30).sort((a, b) => a - b).flatMap((day): MetricsCohort[] => {
+    const cohort = m.cohorts[day];
+    if (!cohort) return [];
     // A retention day that has not come yet is null, never zero: "nobody came back" and "too early to say" are different answers.
-    for (const offset of RETENTION_DAYS) row[`d${offset}`] = today - day < offset ? null : { returned: cohort.r[offset] ?? 0, rate: cohort.size ? Math.round(((cohort.r[offset] ?? 0) / cohort.size) * 1000) / 10 : 0 };
-    return row;
+    const cell = (offset: number): RetentionCell => (today - day < offset ? null : { returned: cohort.r[offset] ?? 0, rate: cohort.size ? Math.round(((cohort.r[offset] ?? 0) / cohort.size) * 1000) / 10 : 0 });
+    return [{ day, date: dateOf(day), size: cohort.size, d1: cell(1), d3: cell(3), d7: cell(7), d14: cell(14), d30: cell(30) }];
   });
-  const totals = {};
-  for (const row of daily) for (const [name, value] of Object.entries(row)) if (name !== 'day' && name !== 'date') totals[name] = (totals[name] ?? 0) + value;
+  const totals: Record<string, number> = {};
+  for (const row of daily) for (const [name, value] of Object.entries(row)) if (name !== 'day' && name !== 'date' && typeof value === 'number') totals[name] = (totals[name] ?? 0) + value;
   const funnel = FUNNEL_ORDER.map((id) => ({ step: id, lives: totals[`funnel.${id}`] ?? 0 }));
   return { generatedAt: now, timezone: 'Africa/Lagos', source: 'first-party', days: daily, cohorts, totals, funnel, tracked: Object.keys(m.lives).length,
     retention: { daily: `${KEEP.days} days`, cohorts: `${KEEP.cohorts} days`, perLife: `${KEEP.window} days, then deleted` } };

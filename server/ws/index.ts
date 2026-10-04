@@ -84,21 +84,25 @@ import rooms from './rooms.ts';
 import social from './social.ts';
 import world from './world.ts';
 import tables from './tables.ts';
+import type { RouteContext, WsConnection, WsDispatch, WsHandlerModule, WsLifecycle, WsMessageHandler } from '../types.ts';
 
-export const WS_MODULES = [rooms, social, world, tables];
+export const WS_MODULES: readonly WsHandlerModule[] = [rooms, social, world, tables];
 
-const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'];
+const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'] as const satisfies readonly (keyof WsLifecycle)[];
+type LifecycleName = (typeof LIFECYCLE)[number];
+const isLifecycleName = (name: string): name is LifecycleName => LIFECYCLE.some((item) => item === name);
+const messageOf = (error: unknown): unknown => (typeof error === 'object' && error !== null && 'message' in error ? error.message : undefined);
 
 /**
  * Build the dispatch table. Returns { messages: Map<type, { room, handle }>, open(ws), close(ws), restore(ws) }
  * and installs the room lifecycle functions on ctx.core (see ROOM LIFECYCLE above).
  */
-export function buildSocketHandlers(ctx, modules = WS_MODULES) {
-  const messages = new Map();
-  const opens = [];
-  const closes = [];
-  const restores = [];
-  const hooks = Object.fromEntries(LIFECYCLE.map(name => [name, []]));
+export function buildSocketHandlers(ctx: RouteContext, modules: readonly WsHandlerModule[] = WS_MODULES): WsDispatch {
+  const messages = new Map<string, { room: boolean; handle: WsMessageHandler }>();
+  const opens: ((ws: WsConnection) => void)[] = [];
+  const closes: ((ws: WsConnection) => void)[] = [];
+  const restores: ((ws: WsConnection) => void)[] = [];
+  const hooks: { [Name in LifecycleName]: NonNullable<WsLifecycle[Name]>[] } = { validateMemberships: [], revalidate: [], roomStillValid: [], refreshNames: [] };
   for (const module of modules) {
     const built = module(ctx) || {};
     for (const [type, entry] of Object.entries(built.messages || {})) {
@@ -110,27 +114,33 @@ export function buildSocketHandlers(ctx, modules = WS_MODULES) {
     if (built.open) opens.push(built.open);
     if (built.close) closes.push(built.close);
     if (built.restore) restores.push(built.restore);
-    for (const [name, hook] of Object.entries(built.lifecycle || {})) {
-      if (!LIFECYCLE.includes(name) || typeof hook !== 'function') throw new Error(`Invalid socket lifecycle hook: ${name}`);
-      hooks[name].push(hook);
+    const lifecycle = built.lifecycle;
+    if (lifecycle) {
+      for (const name of Object.keys(lifecycle)) {
+        if (!isLifecycleName(name) || typeof lifecycle[name] !== 'function') throw new Error(`Invalid socket lifecycle hook: ${name}`);
+      }
+      if (lifecycle.validateMemberships) hooks.validateMemberships.push(lifecycle.validateMemberships);
+      if (lifecycle.revalidate) hooks.revalidate.push(lifecycle.revalidate);
+      if (lifecycle.roomStillValid) hooks.roomStillValid.push(lifecycle.roomStillValid);
+      if (lifecycle.refreshNames) hooks.refreshNames.push(lifecycle.refreshNames);
     }
   }
   const core = ctx.core;
   if (core && typeof core === 'object') {
     const everySocket = () => (typeof core.sockets === 'function' ? core.sockets() : []);
     // One failing module must not stop the others from revoking: every hook runs, then the first error is raised.
-    const runAll = async (name, args) => {
-      let failure = null;
-      for (const hook of hooks[name]) { try { await hook(...args); } catch (error) { failure ||= error; } }
+    const runAll = async <Args extends unknown[]>(list: ((...args: Args) => void | Promise<void>)[], args: Args): Promise<void> => {
+      let failure: unknown = null;
+      for (const hook of list) { try { await hook(...args); } catch (error) { failure ||= error; } }
       if (failure) throw failure;
     };
-    core.validateMemberships = (...args) => runAll('validateMemberships', args);
+    core.validateMemberships = (...args) => runAll(hooks.validateMemberships, args);
     // revalidate never throws (the route host calls it in a `finally`): a failing hook is logged, the others still ran.
     core.revalidate = async (publicId) => {
       if (typeof publicId !== 'string') return;
-      try { await runAll('revalidate', [publicId]); } catch (error) { (typeof core.log === 'function' ? core.log : console.error)(`Room revalidation failed: ${String(error?.message ?? error).split('\n')[0]}`); }
+      try { await runAll(hooks.revalidate, [publicId]); } catch (error) { (typeof core.log === 'function' ? core.log : console.error)(`Room revalidation failed: ${String(messageOf(error) ?? error).split('\n')[0]}`); }
     };
-    core.roomStillValid = (...args) => hooks.roomStillValid.some(hook => hook(...args) === true);
+    core.roomStillValid = (...args) => hooks.roomStillValid.some((hook) => hook(...args) === true);
     core.refreshNames = (session) => {
       if (!session || typeof session.id !== 'string') return;
       const renewed = typeof ctx.now === 'function' ? ctx.now() : null;
@@ -139,13 +149,13 @@ export function buildSocketHandlers(ctx, modules = WS_MODULES) {
         ws.session.name = session.name;
         if (renewed !== null && Number.isFinite(ctx.config?.sessionTtlMs)) { ws.expiresAt = renewed + ctx.config.sessionTtlMs; ws.lastSessionRenewedAt = renewed; }
       }
-      for (const hook of hooks.refreshNames) { try { hook(session); } catch (error) { console.error('Socket refreshNames hook failed:', error.message); } }
+      for (const hook of hooks.refreshNames) { try { hook(session); } catch (error) { console.error('Socket refreshNames hook failed:', messageOf(error)); } }
     };
   }
   return {
     messages,
     open(ws) { for (const fn of opens) fn(ws); },
-    restore(ws) { for (const fn of restores) { try { fn(ws); } catch (error) { console.error('Socket restore handler failed:', error.message); } } },
-    close(ws) { for (const fn of closes) { try { fn(ws); } catch (error) { console.error('Socket close handler failed:', error.message); } } },
+    restore(ws) { for (const fn of restores) { try { fn(ws); } catch (error) { console.error('Socket restore handler failed:', messageOf(error)); } } },
+    close(ws) { for (const fn of closes) { try { fn(ws); } catch (error) { console.error('Socket close handler failed:', messageOf(error)); } } },
   };
 }

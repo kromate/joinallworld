@@ -1,5 +1,24 @@
 // Portable settlement logic shared by the Node server and the Cloudflare worker (no I/O).
 import { createLife, advanceLife, dispatch, hasAction, VENUES } from '../src/life.ts';
+import type { ActionType, ActionBody } from '../src/types/actions.ts';
+import type { LifeContextInit, LifeState } from '../src/types/life.ts';
+import type { CityId } from '../src/types/protocol.ts';
+import type { ActionOutcome, CityLifeRecord, SessionRecord } from './types.ts';
+
+/** What a host hands the rules engine for one action: the envelope POST /api/action checks, or the body server code names. */
+export interface LifeActionBody {
+  type: ActionType
+  cityId: CityId
+  payload?: Record<string, unknown>
+  actionId?: string
+  /** Legacy top-level fields, folded into the payload by the engine. */
+  id?: unknown
+  mode?: unknown
+}
+/** Called with a life that was just settled or acted on (watchLives). */
+export type LifeWatcher = (publicId: string, cityId: CityId, state: LifeState) => void
+/** The link from a settled state to its salt and owner. */
+interface LifeMeta { salt: string; publicId: string; cityId: CityId }
 
 export { VENUES };
 
@@ -25,27 +44,27 @@ export { VENUES };
  * hosts already do.
  */
 const SALT_PATTERN = /^[A-Za-z0-9_-]{16,64}$/;
-const serverRandom = () => globalThis.crypto.getRandomValues(new Uint32Array(1))[0] / 0x100000000;
-const lives = new WeakMap(); // settled state → { salt, publicId, cityId }
+const serverRandom = () => (globalThis.crypto.getRandomValues(new Uint32Array(1))[0] ?? 0) / 0x100000000;
+const lives = new WeakMap<LifeState, LifeMeta>(); // settled state → { salt, publicId, cityId }
 
-function randomSalt() {
+function randomSalt(): string {
   const bytes = globalThis.crypto.getRandomValues(new Uint8Array(16));
   let text = '';
   for (const byte of bytes) text += byte.toString(16).padStart(2, '0');
   return text;
 }
-let saltSource = randomSalt;
+let saltSource: () => unknown = randomSalt;
 /**
  * TEST-ONLY. Replace where NEW salts come from (an in-process test or script that needs a
  * reproducible roll), or pass nothing to restore the random source. It is not reachable from any
  * request: nothing in server/, deploy/ or src/ calls it (asserted in server/salt.test.ts), it
  * cannot change the salt of a life that already has one, and it refuses to run in production.
  */
-export function useSaltSourceForTests(source) {
+export function useSaltSourceForTests(source?: () => unknown): void {
   if (globalThis.process?.env?.NODE_ENV === 'production') throw new Error('useSaltSourceForTests is not available in production');
   saltSource = typeof source === 'function' ? source : randomSalt;
 }
-function newSalt() {
+function newSalt(): string {
   const salt = saltSource();
   if (typeof salt !== 'string' || !SALT_PATTERN.test(salt)) throw new Error('Invalid life salt');
   return salt;
@@ -57,13 +76,13 @@ function newSalt() {
 // inside the caller's transaction. It is a hint to re-check stored state, not the truth: the
 // transaction may still be discarded. Watchers are held weakly, so a server that is gone stops
 // being called without having to unregister.
-const watchers = new Set();
+const watchers = new Set<WeakRef<LifeWatcher>>();
 /** watchLives(fn(publicId, cityId, state)). Keep a reference to `fn` for as long as it should be called. */
-export function watchLives(fn) {
+export function watchLives(fn: LifeWatcher): void {
   if (typeof fn !== 'function') throw new Error('watchLives needs a function');
   watchers.add(new WeakRef(fn));
 }
-function announce(meta, state) {
+function announce(meta: LifeMeta | undefined, state: LifeState): void {
   if (!watchers.size || typeof meta?.publicId !== 'string') return;
   for (const ref of watchers) {
     const fn = ref.deref();
@@ -84,9 +103,9 @@ function announce(meta, state) {
  * session is created; a session without it — every session made before the flag existed, and
  * every session the Cloudflare worker makes — behaves as before.
  */
-export function settleCity(session, cityId, now) {
+export function settleCity(session: SessionRecord, cityId: CityId, now: number): LifeState {
   session.cities ||= {};
-  let entry = session.cities[cityId];
+  let entry: CityLifeRecord | undefined = session.cities[cityId];
   if (!entry) {
     const salt = newSalt();
     entry = session.cities[cityId] = { state: createLife({ name: session.name }, { now, cityId, isNew: true, quickStart: session.onboarding === true, salt }), updatedAt: now, salt };
@@ -100,7 +119,7 @@ export function settleCity(session, cityId, now) {
   entry.state.t = now;
   entry.updatedAt = now;
   entry.state.name = session.name;
-  const meta = { salt, publicId: session.publicId, cityId };
+  const meta: LifeMeta = { salt, publicId: session.publicId, cityId };
   lives.set(entry.state, meta);
   announce(meta, entry.state);
   return entry.state;
@@ -113,11 +132,11 @@ export function settleCity(session, cityId, now) {
  * cannot supply a salt of its own, and a replay of one action ID rolls the same dice. For any
  * other state the generator is the caller's `ctx.rng`, or the platform's random source.
  */
-export function applyLifeAction(state, body, ctx) {
+export function applyLifeAction(state: LifeState, body: LifeActionBody, ctx?: LifeContextInit): ActionOutcome {
   if (!hasAction(body?.type)) throw new Error('Invalid action type');
   const meta = lives.get(state);
-  const given = ctx ?? { now: state.t, cityId: body.cityId, actionId: body.actionId };
-  let context = given;
+  const given: LifeContextInit = ctx ?? { now: state.t, cityId: body.cityId, actionId: body.actionId };
+  let context: LifeContextInit = given;
   // A state that did not come from settleCity has no salt (a direct call from a test or a script;
   // neither host does this). It must still never roll from the client-chosen action ID alone: unless
   // the caller hands in its own generator, the roll comes from the platform's random source.
@@ -128,7 +147,8 @@ export function applyLifeAction(state, body, ctx) {
     const { salt: ignoredSalt, rng: ignoredRng, ...rest } = given;
     context = { ...rest, salt: meta.salt };
   }
-  const result = dispatch(state, body, context);
+  // The engine reads every payload as untrusted (each system validates its own), so the envelope-checked body goes in as it is.
+  const result = dispatch(state, body as ActionBody, context);
   if (meta) announce(meta, state);
   return result;
 }

@@ -43,6 +43,8 @@
  * STORED   session.once = { [id]: { at, kind, fp, result } }   (public ids only; `result` ≤ 2 KB)
  *          session.actions = { [actionId]: { actionAt, fingerprint, ok, code, type } }   (actions)
  */
+import type { ActionRequest, TimedId } from '../../src/types/protocol.ts';
+import type { ActBody, ActionOutcome, ActionReceipt, Db, HttpError, OnceDescriptor, OnceReceipt, SessionRecord } from '../types.ts';
 import { UUID_PATTERN, canonicalJson, hash53, actionFingerprint, pruneReceipts, parseActionId, protocolError as fail } from '../protocol.ts';
 
 /** Every number this helper enforces. */
@@ -58,7 +60,7 @@ export const ONCE = Object.freeze({
 });
 /** Kinds where no money moves. They have their own allowance; anything else is counted as money. */
 export const LIGHT_KINDS = Object.freeze(['interact']);
-const isLight = (kind) => LIGHT_KINDS.includes(kind);
+const isLight = (kind: unknown): boolean => LIGHT_KINDS.some((light) => light === kind);
 /** Action receipts kept per session inside the action window; a full history answers 429 until old ones expire. */
 export const MAX_RECEIPTS = 10000;
 
@@ -68,12 +70,22 @@ export const MAX_RECEIPTS = 10000;
  * hash. A reused id with different contents is still refused; the worst a hash collision can do
  * is return the first outcome again, which changes nothing.
  */
-export const boundedFingerprint = (text) => (text.length <= ONCE.fingerprintMax ? text : `${text.slice(0, 48)}#${text.length}#${hash53(text)}`);
+export const boundedFingerprint = (text: string): string => (text.length <= ONCE.fingerprintMax ? text : `${text.slice(0, 48)}#${text.length}#${hash53(text)}`);
 
-const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
-const reasoned = (status, code, reason) => Object.assign(fail(status, code), { reason });
+const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
+/** onceId() has already checked the id: the shape `<ms>:<uuid>`. */
+const isTimedId = (value: unknown): value is TimedId => typeof value === 'string' && /^\d+:./.test(value);
+const reasoned = (status: number, code: string, reason: string): HttpError => Object.assign(fail(status, code), { reason });
 
-export function createOnce({ now, windowMs, limits = {} }) {
+export interface OnceLimits { perPlayer: number; global: number; lightPerPlayer: number; lightGlobal: number }
+export interface OnceHelper {
+  once<R extends { ok?: boolean }>(db: Db, session: SessionRecord, descriptor: OnceDescriptor, run: (at: number) => R): R | (R & { duplicate: true })
+  onceId(id: unknown): number
+  action(session: SessionRecord, body: ActionRequest | ActBody, run: () => ActionOutcome, options?: { authority?: string }): ActionOutcome | { ok: boolean; code: string; duplicate: true }
+  active(): boolean
+}
+
+export function createOnce({ now, windowMs, limits = {} }: { now: () => number; windowMs: number; limits?: Partial<OnceLimits> }): OnceHelper {
   const perPlayer = limits.perPlayer ?? ONCE.perPlayer, global = limits.global ?? ONCE.global;
   const lightPerPlayer = limits.lightPerPlayer ?? ONCE.lightPerPlayer, lightGlobal = limits.lightGlobal ?? ONCE.lightGlobal;
   for (const value of [perPlayer, global, lightPerPlayer, lightGlobal]) if (!Number.isSafeInteger(value) || value < 1) throw new Error('Invalid receipt limits');
@@ -81,21 +93,22 @@ export function createOnce({ now, windowMs, limits = {} }) {
   let counted = { at: -Infinity, money: 0, light: 0 };
 
   /** The time inside a client id, or a thrown 400/409. Call it before the transaction to refuse early. */
-  function onceId(id) {
+  function onceId(id: unknown): number {
     if (id === undefined || id === null || id === '') throw reasoned(400, 'client_id_required', 'This request needs a client id so that a retry cannot repeat it.');
     const parts = typeof id === 'string' ? id.split(':') : [];
-    const at = Number(parts[0]);
-    if (parts.length !== 2 || !/^\d{1,16}$/.test(parts[0]) || !Number.isSafeInteger(at) || !UUID_PATTERN.test(parts[1])) throw fail(400, 'invalid_client_id');
+    const head = parts[0] ?? '', tail = parts[1] ?? '';
+    const at = Number(head);
+    if (parts.length !== 2 || !/^\d{1,16}$/.test(head) || !Number.isSafeInteger(at) || !UUID_PATTERN.test(tail)) throw fail(400, 'invalid_client_id');
     if (at < now() - windowMs || at > now() + ONCE.futureMs) throw reasoned(409, 'client_id_expired', 'That request is too old to be retried safely. Nothing was done; start it again.');
     return at;
   }
-  const live = (receipt, time) => Number.isFinite(receipt?.at) && receipt.at >= time - windowMs;
+  const live = (receipt: { at: number } | undefined, time: number): boolean => receipt !== undefined && Number.isFinite(receipt?.at) && receipt.at >= time - windowMs;
   /** Unexpired receipts of one class on the whole server: counted from the stored sessions, then kept current by adding. */
-  function total(db, light) {
+  function total(db: Db, light: boolean): number {
     const time = now();
     if (!(time - counted.at < ONCE.recountMs && time >= counted.at)) {
       const sum = { at: time, money: 0, light: 0 };
-      const count = (record) => { if (isRecord(record?.once)) for (const receipt of Object.values(record.once)) if (live(receipt, time)) sum[isLight(receipt.kind) ? 'light' : 'money'] += 1; return false; };
+      const count = (record: SessionRecord): boolean => { if (isRecord(record?.once)) for (const receipt of Object.values(record.once)) if (live(receipt, time)) sum[isLight(receipt.kind) ? 'light' : 'money'] += 1; return false; };
       // A store that keeps receipts apart from the session records (the Worker's SQLite store) counts them itself:
       // $store.onceCounts(liveSince, lightKinds) → { money, light }, the same two numbers the scan below produces.
       if (typeof db.$store?.onceCounts === 'function') Object.assign(sum, db.$store.onceCounts(time - windowMs, LIGHT_KINDS));
@@ -105,12 +118,14 @@ export function createOnce({ now, windowMs, limits = {} }) {
     return light ? counted.light : counted.money;
   }
 
-  function once(db, session, { id, kind, fingerprint }, run) {
+  function once<R extends { ok?: boolean }>(db: Db, session: SessionRecord, descriptor: OnceDescriptor, run: (at: number) => R): R | (R & { duplicate: true });
+  function once(db: Db, session: SessionRecord, { id, kind, fingerprint }: OnceDescriptor, run: (at: number) => { ok?: boolean }): { ok?: boolean } | Record<string, unknown> {
     const at = onceId(id), time = now();
+    if (!isTimedId(id)) throw fail(400, 'invalid_client_id');
     if (typeof kind !== 'string' || !kind) throw new Error('ctx.once needs a kind');
     const fp = boundedFingerprint(typeof fingerprint === 'string' ? fingerprint : canonicalJson(fingerprint ?? null));
     if (!isRecord(session.once)) session.once = {};
-    const receipts = session.once;
+    const receipts: Record<string, OnceReceipt> = session.once;
     // Expired receipts go first. This is safe: onceId() above refuses every id old enough to have one.
     for (const [key, receipt] of Object.entries(receipts)) if (!live(receipt, time)) delete receipts[key];
     const old = Object.hasOwn(receipts, id) ? receipts[id] : null;
@@ -125,7 +140,7 @@ export function createOnce({ now, windowMs, limits = {} }) {
     if (mine >= (light ? lightPerPlayer : perPlayer)) throw reasoned(429, 'receipt_quota', 'You have done this too many times in the last 24 hours. Nothing was charged. Try again later.');
     if (total(db, light) >= (light ? lightGlobal : global)) throw reasoned(503, 'receipts_full', 'The server is too busy to take this safely right now. Nothing was charged. Try again later.');
     depth += 1;
-    let result;
+    let result: { ok?: boolean };
     try { result = run(at); } finally { depth -= 1; }
     if (!isRecord(result)) throw new Error(`ctx.once(${kind}): run() must return an object`);
     if (result.ok === false) return result; // a refusal changed nothing: no receipt, the id may be tried again
@@ -145,21 +160,24 @@ export function createOnce({ now, windowMs, limits = {} }) {
    * receipt's identity: ctx.command uses it so that an id spent with server authority, or under one
    * route's scope, cannot be replayed as an ordinary player action or under another scope (409).
    */
-  function action(session, body, run, { authority = '' } = {}) {
+  function action(session: SessionRecord, body: ActionRequest | ActBody, run: () => ActionOutcome, { authority = '' }: { authority?: string } = {}): ActionOutcome | { ok: boolean; code: string; duplicate: true } {
     const actionAt = parseActionId(body.actionId, now(), windowMs);
     if (!isRecord(session.actions)) session.actions = {};
     pruneReceipts(session.actions, now(), windowMs);
+    const actions: Record<string, ActionReceipt> = session.actions;
+    const actionId = body.actionId;
+    if (!isTimedId(actionId)) throw fail(400, 'invalid_action_id');
     const full = `${authority}${actionFingerprint(body)}`, fingerprint = boundedFingerprint(full);
-    const old = Object.hasOwn(session.actions, body.actionId) ? session.actions[body.actionId] : null;
+    const old = Object.hasOwn(actions, actionId) ? actions[actionId] : null;
     // A receipt written before fingerprints were bounded holds the full text; accept either form.
     if (old && old.fingerprint !== fingerprint && old.fingerprint !== full) throw fail(409, 'action_id_conflict');
     if (old) return { ok: old.ok, code: old.code, duplicate: true };
-    if (Object.keys(session.actions).length >= MAX_RECEIPTS) throw fail(429, 'action_history_full');
+    if (Object.keys(actions).length >= MAX_RECEIPTS) throw fail(429, 'action_history_full');
     depth += 1;
-    let result;
+    let result: ActionOutcome;
     try { result = run(); } finally { depth -= 1; }
     // `type` is kept so a problem report can list the player's last actions with their results.
-    session.actions[body.actionId] = { actionAt, fingerprint, ok: result.ok, code: result.code, type: body.type };
+    actions[actionId] = { actionAt, fingerprint, ok: result.ok, code: result.code, type: body.type };
     return result;
   }
 

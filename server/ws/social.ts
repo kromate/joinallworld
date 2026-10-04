@@ -30,13 +30,14 @@
  * Nothing here touches voice, the microphone, ws.room, ws.voice or ws.position.
  */
 import { socialService } from '../social/service.ts';
+import type { Db, IncomingFrame, RouteContext, SessionRecord, WsConnection, WsHandlers } from '../types.ts';
 
-export default function socialSocket(ctx) {
+export default function socialSocket(ctx: RouteContext): WsHandlers {
   const service = socialService(ctx);
   const { presence } = service;
 
   /** Run a service call for the socket's stored session, commit, push, and return the result. */
-  async function run(ws, call) {
+  async function run<Result>(ws: WsConnection, call: (db: Db, session: SessionRecord) => Result) {
     const result = await ctx.store.transact((db) => {
       const session = ctx.core.sessionOf(ws, db);
       if (!session || session.expiresAt <= ctx.now()) throw Error('device_session_required');
@@ -45,7 +46,7 @@ export default function socialSocket(ctx) {
     return service.deliver(result);
   }
   /** Tell a player's friends that they connected or dropped. Best effort; never blocks the socket. */
-  function announce(id, status) {
+  function announce(id: string, status: 'online' | 'reconnecting'): void {
     ctx.store.read((db) => Object.keys(db.social?.players?.[id]?.friends || {}))
       .then((friends) => { for (const friend of friends) ctx.push(friend, { type: 'people-presence', id, status }); })
       .catch(() => {});
@@ -66,7 +67,7 @@ export default function socialSocket(ctx) {
     ctx.checks.homeGuestUntil = (db, guestId, hostId, cityId) => {
       if (!service.homeGuest(db, guestId, hostId, cityId)) return 0;
       const expires = ctx.collection(db, 'social').houses?.[hostId]?.guests?.[guestId]?.expires;
-      return Number.isFinite(expires) ? expires : 0;
+      return typeof expires === 'number' && Number.isFinite(expires) ? expires : 0;
     };
   }
   // A host whose life left home has no visitors: when the room module empties their Home room, end the visits too.
@@ -87,7 +88,7 @@ export default function socialSocket(ctx) {
       return service.finish(db, service.houseLeave(db, guest, { host: hostId }));
     }, { committed: (value) => service.committed(value) }).then((result) => service.deliver(result)).catch(() => {});
   });
-  const echo = (message) => (typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {});
+  const echo = (message: IncomingFrame): { clientId?: string } => (typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {});
 
   return {
     /** A connected socket handed back after the host lost its memory: it counts as online again; nothing is announced. */
@@ -105,11 +106,11 @@ export default function socialSocket(ctx) {
       async 'dm-send'(ws, message) {
         try {
           const result = await run(ws, (db, session) => service.send(db, session, message));
-          ctx.send(ws, result.ok ? { type: 'dm-sent', ...echo(message), conv: result.conv, message: result.message, ...(result.duplicate ? { duplicate: true } : {}) }
+          ctx.send(ws, result.ok ? { type: 'dm-sent', ...echo(message), conv: result.conv, message: result.message, ...('duplicate' in result && result.duplicate ? { duplicate: true as const } : {}) }
             : { type: 'dm-failed', ...echo(message), code: result.code, reason: result.reason });
         } catch (error) {
           // Malformed input still gets an answer tied to the client id, so a pending message can fail instead of stalling.
-          ctx.send(ws, { type: 'dm-failed', ...echo(message), code: error.message, reason: 'That message could not be sent as written.' });
+          ctx.send(ws, { type: 'dm-failed', ...echo(message), code: error instanceof Error ? error.message : String(error), reason: 'That message could not be sent as written.' });
         }
       },
       async 'dm-read'(ws, message) {

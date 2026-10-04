@@ -15,9 +15,11 @@
  */
 export const ENDPOINT = 'https://api.zeptomail.com/v1.1/sg/email';
 export const RETRIES = 3, TIMEOUT_MS = 10000;
+import type { RouteContext } from '../../types.ts';
+import { outboundResponse } from '../data.ts';
 const ADDRESS = /^[^\s@<>]{1,64}@[a-z0-9.-]{3,253}$/i;
 
-export function mailConfig(ctx) {
+export function mailConfig(ctx: Pick<RouteContext, 'env'>): { configured: boolean; auth: string; from: string; name: string } {
   const auth = ctx.env('ZEPTOMAIL_AUTH'), from = ctx.env('EMAIL_FROM_ADDRESS').trim();
   const name = (ctx.env('EMAIL_FROM_NAME') || 'Allworld').replace(/[\r\n"<>]/g, '').slice(0, 60);
   return { configured: Boolean(auth) && ADDRESS.test(from), auth, from, name };
@@ -27,7 +29,8 @@ export function mailConfig(ctx) {
  * @param {{ to: string, subject: string, text: string, html: string, headers?: Record<string, string> }} message
  * @returns {Promise<{ ok: boolean, status: number, attempts: number, error?: string }>}  `error` is a short code, never a body
  */
-export async function sendMail(ctx, message, { pause = (ms) => new Promise((done) => setTimeout(done, ms)) } = {}) {
+export interface MailMessage { to: string; subject: string; text: string; html: string; headers?: Record<string, string> }
+export async function sendMail(ctx: Pick<RouteContext, 'env' | 'fetch'>, message: MailMessage, { pause = (ms: number) => new Promise<void>((done) => setTimeout(done, ms)) }: { pause?: (ms: number) => Promise<void> } = {}): Promise<{ ok: boolean; status: number; attempts: number; error?: string }> {
   const config = mailConfig(ctx);
   if (!config.configured) return { ok: false, status: 0, attempts: 0, error: 'not_configured' };
   const body = JSON.stringify({
@@ -37,16 +40,17 @@ export async function sendMail(ctx, message, { pause = (ms) => new Promise((done
   let status = 0, error = 'network';
   for (let attempt = 1; attempt <= RETRIES; attempt++) {
     try {
-      const response = await ctx.fetch(ENDPOINT, { method: 'POST', body, signal: globalThis.AbortSignal?.timeout?.(TIMEOUT_MS),
-        headers: { Authorization: config.auth, 'Content-Type': 'application/json', Accept: 'application/json' } });
+      const response = outboundResponse(await ctx.fetch(ENDPOINT, { method: 'POST', body, signal: globalThis.AbortSignal?.timeout?.(TIMEOUT_MS),
+        headers: { Authorization: config.auth, 'Content-Type': 'application/json', Accept: 'application/json' } }));
       status = response.status;
       if (status >= 200 && status < 300) return { ok: true, status, attempts: attempt };
       error = `http_${status}`;
       if (status < 500 && status !== 429) return { ok: false, status, attempts: attempt, error };
-      const wait = Number(response.headers?.get?.('retry-after'));
+      const wait = Number(response.headers?.get('retry-after'));
       if (attempt < RETRIES) await pause(Number.isFinite(wait) && wait > 0 ? Math.min(wait, 10) * 1000 : 500 * 4 ** (attempt - 1));
     } catch (thrown) {
-      status = 0; error = thrown?.name === 'TimeoutError' || thrown?.name === 'AbortError' ? 'timeout' : 'network';
+      const thrownName = thrown instanceof Error ? thrown.name : undefined;
+      status = 0; error = thrownName === 'TimeoutError' || thrownName === 'AbortError' ? 'timeout' : 'network';
       if (attempt < RETRIES) await pause(500 * 4 ** (attempt - 1));
     }
   }

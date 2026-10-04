@@ -15,25 +15,29 @@
 import { growthOf } from '../growth/data.ts';
 import { report } from '../growth/metrics.ts';
 import { outreachService } from '../growth/outreach.ts';
+import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest } from '../types.ts';
+
+/** An operator handler: its return value is the JSON body. */
+export type OperatorHandler = (db: Db, request: RouteRequest, body: Record<string, unknown>) => object;
 
 const FAILED_PER_ADDRESS = 10, FAILED_TOTAL = 100, FAILED_WINDOW_MS = 600000, OPERATOR_PER_MINUTE = 60;
 
 /** Guard for an operator route: `read` handlers get a snapshot, `write` handlers a transaction. */
-export function operatorGuard(ctx) {
-  return (handler, { write = false } = {}) => async (request) => {
+export function operatorGuard(ctx: RouteContext) {
+  return (handler: OperatorHandler, { write = false }: { write?: boolean } = {}): RouteHandler => async (request) => {
     if (!ctx.config.moderation) throw ctx.fail(404, 'not_found');
     if (!request.moderator()) {
       if (!ctx.allow(`mod-fail:${request.ip}`, FAILED_PER_ADDRESS, FAILED_WINDOW_MS) || !ctx.allow('mod-fail:all', FAILED_TOTAL, FAILED_WINDOW_MS)) throw ctx.fail(429, 'rate_limited');
       throw ctx.fail(401, 'moderator_token_required');
     }
     if (!ctx.allow(`mod:${request.ip}`, OPERATOR_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
-    const body = request.method === 'POST' ? await request.json() : {};
-    const run = (db) => handler(db, request, body);
+    const body: Record<string, unknown> = request.method === 'POST' ? await request.json() : {};
+    const run = (db: Db) => handler(db, request, body);
     return { body: await (write ? ctx.store.transact(run) : ctx.store.read(run)), headers: { 'Cache-Control': 'no-store' } };
   };
 }
 
-export default function growthOperatorRoutes(ctx) {
+export default function growthOperatorRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const operator = operatorGuard(ctx);
   const outreach = outreachService(ctx);
   return {

@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import { runNewPlayer } from '../scripts/new-player.mjs';
 
 test('the new-player journey runs to the end with every assertion holding', async () => {
-  const lines = [];
+  const lines: string[] = [];
   const result = await runNewPlayer({ log: (line) => lines.push(line) });
   assert.equal(result.steps, 11);
   assert.ok(lines.some((line) => line.startsWith('New player complete')));

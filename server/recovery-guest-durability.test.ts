@@ -18,33 +18,44 @@
 //     'room_unavailable'; here with the store's own 'storage_unavailable', the code every other
 //     socket and HTTP refusal for a failed write already carries. In both the join may be sent again.
 import test from 'node:test';
+import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { once } from 'node:events';
 import { writeFile } from 'node:fs/promises';
 import { WebSocket } from 'ws';
-import { fixture } from './test-fixture.ts';
+import { fixture, flakyDisk } from './test-fixture.ts';
+import type { PresenceFrame, ServerFrame } from '../src/types/protocol.ts';
+import type { HouseView } from '../src/types/social.ts';
 
-const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
-async function until(check) {
-  for (let i = 0; i < 400; i++) { const value = await check(); if (value) return value; await sleep(5); }
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+const isFrame = (value: unknown): value is ServerFrame => isRecord(value) && typeof value.type === 'string';
+const presenceOf = (frame: ServerFrame): PresenceFrame => { if (frame.type !== 'presence') throw Error('presence expected'); return frame; };
+/** A parsed JSON reply with its HTTP status: only the fields these scenarios read. */
+interface Reply { status: number; code?: unknown; house?: HouseView }
+const reply = async (res: Response): Promise<Reply> => { const body: unknown = await res.json(); if (!isRecord(body)) throw Error('JSON object expected'); return { ...body, status: res.status }; };
+const houseOf = (r: Reply): HouseView => { if (!r.house) throw Error('house expected'); return r.house; };
+
+const sleep = (ms: number) => new Promise((done) => setTimeout(done, ms));
+async function until<T>(check: () => T | Promise<T>): Promise<NonNullable<T>> {
+  for (let i = 0; i < 400; i++) { const value = await check(); if (value) return value as NonNullable<T>; await sleep(5); }
   throw Error('Condition never became true');
 }
-async function open(f, device) {
+async function open(f: { base: string }, device: { cookie: string }) {
   const ws = new WebSocket(f.base.replace('http', 'ws') + '/socket', { headers: { Cookie: device.cookie, Origin: f.base } });
-  const messages = [];
-  ws.on('message', (data) => messages.push(JSON.parse(data.toString())));
+  const messages: ServerFrame[] = [];
+  ws.on('message', (data) => { const frame: unknown = JSON.parse(data.toString()); if (isFrame(frame)) messages.push(frame); });
   await once(ws, 'open');
-  return { ws, messages, send: (message) => ws.send(JSON.stringify(message)) };
+  return { ws, messages, send: (message: object) => ws.send(JSON.stringify(message)) };
 }
 /** Holds the store's next write until released; optionally makes that one write fail. Idle unless armed. */
 function writeGate() {
-  let hold = null, release = null, reached = null, fail = false;
+  let hold: Promise<void> | null = null, release: (() => void) | null = null, reached: (() => void) | null = null, fail = false;
   return {
     // (adapted: the store's `io.writeFile` instead of a `beforeWrite` hook)
-    async writeFile(...args) {
+    async writeFile(...args: Parameters<typeof writeFile>) {
       if (hold) {
         const waiting = hold;
-        reached();
+        reached?.();
         await waiting;
         hold = null;
         if (fail) { fail = false; throw Object.assign(new Error('injected write failure'), { code: 'EIO' }); }
@@ -52,27 +63,28 @@ function writeGate() {
       return writeFile(...args);
     },
     /** Hold the next write. Resolves when that write has been reached (its transaction is committed in memory, not on disk). */
-    arm() { hold = new Promise((done) => { release = done; }); return new Promise((done) => { reached = done; }); },
+    arm() { hold = new Promise<void>((done) => { release = done; }); return new Promise<void>((done) => { reached = done; }); },
     release() { release?.(); },
     failAndRelease() { fail = true; release?.(); },
   };
 }
 
 /** A host at home with an open door socket, and a guest who has knocked and is waiting for the answer. */
-async function knocked(t, mode) {
+async function knocked(t: TestContext, mode: string) {
   const gate = writeGate();
   // Teardown must not depend on hook order. The fixture's own hook waits for the HTTP server to
   // close, and that waits for every socket — including the two this test opens itself — and for any
   // write still held by the gate. So stop() (release the gate, end our sockets) is idempotent and is
   // called from the test's `finally` and from a hook on each side of the fixture's.
-  const opened = [];
+  const opened: Awaited<ReturnType<typeof open>>[] = [];
   const stop = () => { gate.release(); for (const peer of opened) peer.ws.terminate(); };
   t.after(stop);
-  const f = await fixture(t, { disk: { io: { writeFile: gate.writeFile } }, heartbeatMs: 60000 }); // no heartbeat sweep inside the test: nothing but the join decides
+  const disk = flakyDisk(); disk.io.writeFile = gate.writeFile; // only the write is gated; rename stays the real one
+  const f = await fixture(t, { disk, heartbeatMs: 60000 }); // no heartbeat sweep inside the test: nothing but the join decides
   t.after(stop);
-  assert.equal(f.server.store.stats().mode, mode);
-  const get = async (path, who) => { const res = await f.request(path, null, who.cookie); return { status: res.status, ...(await res.json()) }; };
-  const post = async (path, body, who) => { const res = await f.request(path, body, who.cookie); return { status: res.status, ...(await res.json()) }; };
+  assert.equal(f.server.store.stats?.().mode, mode);
+  const get = async (path: string, who: { cookie: string }) => reply(await f.request(path, null, who.cookie));
+  const post = async (path: string, body: object, who: { cookie: string }) => reply(await f.request(path, body, who.cookie));
   const host = await f.device('Host'), guest = await f.device('Guest');
   for (const who of [host, guest]) await get('/api/social/me', who);
   await f.action(host.cookie, { type: 'travel', id: 'home', mode: 'trek' });
@@ -83,8 +95,8 @@ async function knocked(t, mode) {
   await until(() => h.messages.find((message) => message.type === 'presence'));
   assert.equal((await post('/api/social/house/knock', { host: host.id, cityId: 'lagos' }, guest)).code, 'knocking');
   await f.flush();
-  const ids = (message) => message.members.map((member) => member.id).sort();
-  const both = (message) => message.type === 'presence' && [host.id, guest.id].every((id) => message.members.some((member) => member.id === id));
+  const ids = (message: ServerFrame) => presenceOf(message).members.map((member) => member.id).sort();
+  const both = (message: ServerFrame) => message.type === 'presence' && [host.id, guest.id].every((id) => message.members.some((member) => member.id === id));
   /** Who the room really holds, read from a fresh presence frame the host's own move triggers. */
   let step = 0;
   const roomNow = async () => {
@@ -97,19 +109,20 @@ async function knocked(t, mode) {
     accept: () => post('/api/social/house/answer', { visitor: guest.id, answer: 'accept' }, host),
     remove: () => post('/api/social/house/leave', { host: host.id, guest: guest.id }, host),
     joinAsGuest: () => g.send({ type: 'join', cityId: 'lagos', venueId: 'home', hostId: host.id }),
-    visit: async () => (await get(`/api/social/house/${host.id}`, guest)).house,
-    errors: () => g.messages.filter((message) => message.type === 'error').map((message) => message.code),
+    visit: async () => houseOf(await get(`/api/social/house/${host.id}`, guest)),
+    errors: () => g.messages.flatMap((message) => message.type === 'error' ? [message.code] : []),
   };
 }
 
 /** One scenario: bounded in time, and the gate is released and our sockets ended whatever happens. */
-const scenario = (mode, name, body) => test(`${mode}: ${name}`, { timeout: 20000 }, async (t) => {
-  let setup = null;
+type Setup = Awaited<ReturnType<typeof knocked>>;
+const scenario = (mode: string, name: string, body: (setup: Setup) => Promise<void>) => test(`${mode}: ${name}`, { timeout: 20000 }, async (t) => {
+  let setup: Setup | null = null;
   try { setup = await knocked(t, mode); await body(setup); } finally { setup?.stop(); }
 });
 
 for (const mode of ['grouped']) { // (adapted: there is one store here; 'legacy' was removed)
-  scenario(mode, 'a guest is admitted only after the host’s accept is on disk; ordinary joins are unaffected', async ({ f, gate, host, guest, g, both, roomNow, accept, joinAsGuest, visit, errors }) => {
+  scenario(mode, 'a guest is admitted only after the host’s accept is on disk; ordinary joins are unaffected', async ({ f, gate, host, guest, g, both, roomNow, accept, joinAsGuest, visit, errors }: Setup) => {
     // An ordinary join with nothing waiting for the disk is answered straight away, as before.
     const bystander = await f.device('Bystander');
     const park = await f.joinRoom(bystander);
@@ -133,7 +146,7 @@ for (const mode of ['grouped']) { // (adapted: there is one store here; 'legacy'
     assert.deepEqual(errors(), []);
   });
 
-  scenario(mode, 'when the accept’s write fails the guest is never in the room, and a retry admits them', async ({ gate, host, guest, g, both, roomNow, accept, joinAsGuest, visit, errors }) => {
+  scenario(mode, 'when the accept’s write fails the guest is never in the room, and a retry admits them', async ({ gate, host, guest, g, both, roomNow, accept, joinAsGuest, visit, errors }: Setup) => {
     const reached = gate.arm();
     const accepting = accept();
     await reached;
@@ -159,7 +172,7 @@ for (const mode of ['grouped']) { // (adapted: there is one store here; 'legacy'
     assert.deepEqual(await roomNow(), [host.id, guest.id].sort());
   });
 
-  scenario(mode, 'a guest removed while the accept is still being written is admitted and then dropped, never left in the room', async ({ gate, host, g, both, roomNow, accept, remove, joinAsGuest, visit, errors }) => {
+  scenario(mode, 'a guest removed while the accept is still being written is admitted and then dropped, never left in the room', async ({ gate, host, g, both, roomNow, accept, remove, joinAsGuest, visit, errors }: Setup) => {
     const reached = gate.arm();
     const accepting = accept();
     await reached;

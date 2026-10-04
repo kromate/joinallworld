@@ -45,19 +45,28 @@ import { cityOf, emptyCivic } from '../civic/data.ts';
 import { AD_KINDS, liveAds, takeDown } from '../civic/ads.ts';
 import { liveShoutouts, removeShoutout } from '../civic/radio.ts';
 import { removeAnnouncement } from '../civic/elections.ts';
+import type { CityId } from '../../src/types/protocol.ts';
+import type { AdRecord, AnnouncementRecord, Db, MuteRecord, ShoutoutRecord, RouteContext, RouteHandler, RouteKey, RouteRequest } from '../types.ts';
+
+/** A read handler returns the JSON body; a write may carry the mutes (kept in memory after the commit) and the pushes owed to players. */
+type ModBody = Record<string, unknown>;
+type ReadHandler = (db: Db, request: RouteRequest, body: ModBody) => object;
+type WriteResult = { mutes?: Record<string, MuteRecord> } & Record<string, unknown>;
+type WriteHandler = (db: Db, request: RouteRequest, body: ModBody) => WriteResult;
 
 const CONTROL = /[\u0000-\u001f\u007f]/;
 /** Requests without the right token: per address and in total, per 10 minutes. Requests with it: per address, per minute. */
 export const FAILED_PER_ADDRESS = 10, FAILED_TOTAL = 100, FAILED_WINDOW_MS = 600000, OPERATOR_PER_MINUTE = 60;
 
-export default function moderationRoutes(ctx) {
+export default function moderationRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const moderation = moderationService(ctx);
   const social = socialService(ctx);
   const support = supportService(ctx);
   ctx.startup?.push(moderation.load());
 
   /** Guard, parse, run inside one transaction, then push what the change told players. */
-  const guarded = (handler, { write = false } = {}) => async (request) => {
+  /** The checks every operator route starts with; returns the parsed body (empty unless POST). */
+  const gate = async (request: RouteRequest): Promise<ModBody> => {
     if (!ctx.config.moderation) throw ctx.fail(404, 'not_found');
     if (!request.moderator()) {
       // Requests without the token are counted on their own, so neither guessing nor a hostile page
@@ -68,8 +77,16 @@ export default function moderationRoutes(ctx) {
       throw ctx.fail(401, 'moderator_token_required');
     }
     if (!ctx.allow(`mod:${request.ip}`, OPERATOR_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
-    const body = request.method === 'POST' ? await request.json() : {};
-    if (!write) return { body: await ctx.store.read((db) => handler(db, request, body)), headers: { 'Cache-Control': 'no-store' } };
+    return request.method === 'POST' ? await request.json() : {};
+  };
+  /** Guard, parse and run a read on a snapshot. */
+  const guarded = (handler: ReadHandler): RouteHandler => async (request) => {
+    const body = await gate(request);
+    return { body: await ctx.store.read((db) => handler(db, request, body)), headers: { 'Cache-Control': 'no-store' } };
+  };
+  /** Guard, parse, run inside one transaction, then push what the change told players. */
+  const mutating = (handler: WriteHandler): RouteHandler => async (request) => {
+    const body = await gate(request);
     // The in-memory copies (mutes, blocks) follow the commit itself, not the write that follows it.
     const result = await ctx.store.transact((db) => social.finish(db, handler(db, request, body)),
       { committed: (value) => { if (value?.mutes) moderation.sync(value.mutes); social.committed(value); } });
@@ -77,15 +94,15 @@ export default function moderationRoutes(ctx) {
     const { mutes, ...rest } = social.deliver(result) ?? {};
     return { body: rest };
   };
-  const note = (value, max = 300) => {
+  const note = (value: unknown, max = 300): string => {
     if (value === undefined || value === '') return '';
     if (typeof value !== 'string' || value.length > max || CONTROL.test(value)) throw ctx.fail(400, 'invalid_note');
     return value.trim();
   };
-  const publicId = (value) => { if (typeof value !== 'string' || !UUID_PATTERN.test(value)) throw ctx.fail(400, 'invalid_player'); return value.toLowerCase(); };
-  const statusParam = (request, allowed) => { const value = request.query.get('status') ?? 'open'; if (!['open', 'all', ...allowed].includes(value)) throw ctx.fail(400, 'invalid_status'); return value; };
-  const cityParam = (value) => { if (!ctx.cityIds.includes(value)) throw ctx.fail(400, 'invalid_city'); return value; };
-  const civicCity = (db, cityId) => cityOf(ctx.collection(db, 'civic', emptyCivic()), cityId);
+  const publicId = (value: unknown): string => { if (typeof value !== 'string' || !UUID_PATTERN.test(value)) throw ctx.fail(400, 'invalid_player'); return value.toLowerCase(); };
+  const statusParam = (request: RouteRequest, allowed: readonly string[]): string => { const value = request.query.get('status') ?? 'open'; if (!['open', 'all', ...allowed].includes(value)) throw ctx.fail(400, 'invalid_status'); return value; };
+  const cityParam = (value: unknown): CityId => { const known = ctx.cityIds.find((id) => id === value); if (known === undefined) throw ctx.fail(400, 'invalid_city'); return known; };
+  const civicCity = (db: Db, cityId: CityId) => cityOf(ctx.collection(db, 'civic', emptyCivic()), cityId);
 
   return {
     'GET /api/mod/overview': guarded((db) => ({
@@ -103,46 +120,49 @@ export default function moderationRoutes(ctx) {
         announcements: city.gov.announcements.map((item) => ({ id: item.id, text: item.text, by: { id: item.by.id, name: item.by.name }, at: item.at })) };
     }),
 
-    'POST /api/mod/reports/:id/dismiss': guarded((db, request, body) => {
-      const changed = social.modSetReport(db, request.params.id, 'dismissed', note(body.note));
+    'POST /api/mod/reports/:id/dismiss': mutating((db, request, body) => {
+      const changed = social.modSetReport(db, request.params.id ?? '', 'dismissed', note(body.note));
       if (!changed) throw ctx.fail(404, 'unknown_report');
       moderation.audit(db, 'report-dismiss', changed.report.id, changed.report.note, request.ip);
       return { ok: true, code: 'dismissed', report: changed.report, push: changed.push };
-    }, { write: true }),
-    'POST /api/mod/problems/:id/status': guarded((db, request, body) => {
-      if (!['reviewing', 'resolved', 'dismissed'].includes(body.status)) throw ctx.fail(400, 'invalid_status');
-      const report = support.setStatus(db, request.params.id, body.status, note(body.note));
+    }),
+    'POST /api/mod/problems/:id/status': mutating((db, request, body) => {
+      const status = body.status;
+      if (typeof status !== 'string' || (status !== 'reviewing' && status !== 'resolved' && status !== 'dismissed')) throw ctx.fail(400, 'invalid_status');
+      const report = support.setStatus(db, request.params.id ?? '', status, note(body.note));
       if (!report) throw ctx.fail(404, 'unknown_report');
-      moderation.audit(db, `problem-${body.status}`, report.id, report.note, request.ip);
-      const told = social.modKnows(db, report.by) ? social.modNote(db, report.by, `Problem report ${report.id} is now “${body.status}”.${report.note ? ` Note: ${report.note}` : ''} See Phone → Report a problem.`) : { push: [] };
+      moderation.audit(db, `problem-${status}`, report.id, report.note, request.ip);
+      const told = social.modKnows(db, report.by) ? social.modNote(db, report.by, `Problem report ${report.id} is now “${status}”.${report.note ? ` Note: ${report.note}` : ''} See Phone → Report a problem.`) : { push: [] };
       return { ok: true, code: 'updated', problem: report, push: told.push };
-    }, { write: true }),
-    'POST /api/mod/mutes': guarded((db, request, body) => {
+    }),
+    'POST /api/mod/mutes': mutating((db, request, body) => {
       const id = publicId(body.id), reason = note(body.reason, LIMITS.reason);
-      if (!Number.isSafeInteger(body.minutes) || body.minutes < 1 || body.minutes > LIMITS.maxMinutes) throw ctx.fail(400, 'invalid_minutes');
+      const minutes = body.minutes;
+      if (typeof minutes !== 'number' || !Number.isSafeInteger(minutes) || minutes < 1 || minutes > LIMITS.maxMinutes) throw ctx.fail(400, 'invalid_minutes');
       const reportId = body.report === undefined ? null : body.report;
       if (reportId !== null && (typeof reportId !== 'string' || !/^R-\d{1,12}$/.test(reportId))) throw ctx.fail(400, 'invalid_report');
-      const result = moderation.mute(db, { id, minutes: body.minutes, reason, report: reportId }, request.ip);
-      const push = [];
-      if (reportId) { const changed = social.modSetReport(db, reportId, 'actioned', `Muted for ${body.minutes} minutes.`); if (changed) push.push(...changed.push); }
-      if (social.modKnows(db, id)) push.push(...social.modNote(db, id, `A moderator has muted you for ${body.minutes} minutes${reason ? `: ${reason}` : ''}. You can keep playing; you cannot post text until it ends. If this is a mistake, use Phone → Report a problem.`).push);
+      const result = moderation.mute(db, { id, minutes, reason, report: reportId ?? undefined }, request.ip);
+      const push: unknown[] = [];
+      if (reportId) { const changed = social.modSetReport(db, reportId, 'actioned', `Muted for ${minutes} minutes.`); if (changed) push.push(...changed.push); }
+      if (social.modKnows(db, id)) push.push(...social.modNote(db, id, `A moderator has muted you for ${minutes} minutes${reason ? `: ${reason}` : ''}. You can keep playing; you cannot post text until it ends. If this is a mistake, use Phone → Report a problem.`).push);
       return { ok: true, code: 'muted', mute: result.mute, mutes: result.mutes, push };
-    }, { write: true }),
-    'POST /api/mod/mutes/:id/lift': guarded((db, request) => {
+    }),
+    'POST /api/mod/mutes/:id/lift': mutating((db, request) => {
       const result = moderation.lift(db, publicId(request.params.id), request.ip);
       return { ok: true, code: result.lifted ? 'lifted' : 'not_muted', mutes: result.mutes };
-    }, { write: true }),
-    'POST /api/mod/content/remove': guarded((db, request, body) => {
+    }),
+    'POST /api/mod/content/remove': mutating((db, request, body) => {
       const cityId = cityParam(body.cityId), city = civicCity(db, cityId), reason = note(body.reason, LIMITS.reason);
-      let removed = null, what = '';
-      if (AD_KINDS.includes(body.kind)) { removed = takeDown(city, ctx.now(), body.kind, body.slot); what = `your ${body.kind === 'sea' ? 'sea plot' : 'billboard'} ad “${removed?.text}”`; }
+      let removed: AdRecord | AnnouncementRecord | ShoutoutRecord | null = null, what = '';
+      if (AD_KINDS.some((item) => item === body.kind)) { removed = takeDown(city, ctx.now(), body.kind, body.slot); what = `your ${body.kind === 'sea' ? 'sea plot' : 'billboard'} ad “${removed?.text}”`; }
       else if (body.kind === 'announcement') { removed = typeof body.id === 'string' ? removeAnnouncement(city, body.id) : null; what = `your announcement “${removed?.text}”`; }
       else if (body.kind === 'radio') { removed = typeof body.venue === 'string' && typeof body.id === 'string' && Object.hasOwn(city.radio.queues, body.venue) ? removeShoutout(city, body.venue, body.id) : null; what = `your shout-out “${removed?.title}”`; }
       else throw ctx.fail(400, 'invalid_kind');
       if (!removed) throw ctx.fail(404, 'nothing_to_remove');
-      moderation.audit(db, `remove-${body.kind}`, `${cityId}:${body.slot ?? body.id}`, `${removed.text ?? removed.title} · by ${removed.by.id}${reason ? ` · ${reason}` : ''}`, request.ip);
+      const label = 'text' in removed ? removed.text : removed.title;
+      moderation.audit(db, `remove-${body.kind}`, `${cityId}:${body.slot ?? body.id}`, `${label} · by ${removed.by.id}${reason ? ` · ${reason}` : ''}`, request.ip);
       const told = social.modKnows(db, removed.by.id) ? social.modNote(db, removed.by.id, `A moderator removed ${what}${reason ? `: ${reason}` : ''}. What you paid for it is not refunded.`) : { push: [] };
-      return { ok: true, code: 'removed', removed: { kind: body.kind, text: removed.text ?? removed.title, by: removed.by }, push: told.push };
-    }, { write: true }),
+      return { ok: true, code: 'removed', removed: { kind: body.kind, text: label, by: removed.by }, push: told.push };
+    }),
   };
 }

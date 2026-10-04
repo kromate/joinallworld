@@ -25,6 +25,7 @@
  * Players idle for LIMITS.idleDays are forgotten together with their referral links.
  */
 import { hash53 } from '../protocol.ts';
+import type { Db, GrowthCollection, GrowthPlayerRecord, OutboundResponse, RouteContext } from '../types.ts';
 
 export const LIMITS = Object.freeze({
   devices: 3, invited: 100, owed: 40, results: 12,
@@ -33,35 +34,48 @@ export const LIMITS = Object.freeze({
   httpPerMinute: 120, sharePagePerMinute: 60,
 });
 
-const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 
 /** The collection, with every part present. */
-export function growthOf(ctx, db) {
+export function growthOf(ctx: RouteContext, db: Db): GrowthCollection {
   const g = ctx.collection(db, 'growth');
   if (typeof g.salt !== 'string' || g.salt.length < 16) g.salt = ctx.randomId();
-  for (const key of ['players', 'shares', 'metrics', 'tables']) if (!isRecord(g[key])) g[key] = {};
+  for (const key of ['players', 'shares', 'metrics', 'tables'] as const) if (!isRecord(g[key])) g[key] = {};
   if (!Number.isFinite(g.sweptAt)) g.sweptAt = 0;
   return g;
 }
 
 /** The caller's record, created on first use (or null when the collection is full). */
-export function playerOf(g, id, { create = true } = {}) {
-  if (Object.hasOwn(g.players, id)) return g.players[id];
+export function playerOf(g: GrowthCollection, id: string, { create = true }: { create?: boolean } = {}): GrowthPlayerRecord | null {
+  const known = g.players[id];
+  if (known !== undefined && Object.hasOwn(g.players, id)) return known;
   if (!create || Object.keys(g.players).length >= LIMITS.players) return null;
   return (g.players[id] = { seen: 0, devices: [], ref: null, invited: {}, counted: 0, owed: [], shares: { day: 0, n: 0 }, consent: null, table: null, wins: [] });
 }
 
 /** A salted, pseudonymous key for a device token or an address. */
-export const keyed = (g, value) => hash53(`${g.salt}|${value}`);
+export const keyed = (g: GrowthCollection, value: string): string => hash53(`${g.salt}|${value}`);
 
 /** Drop expired share links and players nobody has heard from. At most once an hour. */
-export function sweep(g, now) {
+export function sweep(g: GrowthCollection, now: number): void {
   if (now - g.sweptAt < LIMITS.sweepMs) return;
   g.sweptAt = now;
   const oldShare = now - LIMITS.shareDays * 86400000, idle = now - LIMITS.idleDays * 86400000;
-  for (const [code, share] of Object.entries(g.shares)) if (!(share?.at >= oldShare)) delete g.shares[code];
+  for (const [code, share] of Object.entries(g.shares)) if (!(share.at >= oldShare)) delete g.shares[code];
   for (const [id, player] of Object.entries(g.players)) {
-    if (player?.seen >= idle) continue;
+    if (player.seen >= idle) continue;
     delete g.players[id];
   }
+}
+
+/**
+ * An answer to ctx.fetch (typed `unknown` there) as the part of a Response the senders read.
+ * Throws like reading `.status` of a non-object always did, so the callers' catch still answers 'network'.
+ */
+export function outboundResponse(value: unknown): OutboundResponse {
+  if (value === null || typeof value !== 'object' || !('status' in value) || typeof value.status !== 'number') throw new TypeError('The outside request did not answer with a response');
+  const source = 'headers' in value ? value.headers : undefined;
+  const get = source !== null && typeof source === 'object' && 'get' in source ? source.get : undefined;
+  if (typeof get !== 'function') return { status: value.status };
+  return { status: value.status, headers: { get: (name: string): string | null => { const found: unknown = Reflect.apply(get, source, [name]); return typeof found === 'string' ? found : null; } } };
 }

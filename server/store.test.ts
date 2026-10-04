@@ -3,25 +3,53 @@ import assert from 'node:assert/strict';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import type { TestContext } from 'node:test';
 import { createStore } from './store.ts';
+import type { StoreOptions } from './store.ts';
 import { flakyDisk } from './test-fixture.ts';
+import type { StoreHelpers } from './types.ts';
 
-async function temp(t, options) {
-  const dir = await mkdtemp(join(tmpdir(), 'joinallworld-store-'));
-  const store = await createStore(dir, options);
-  t.after(async () => { await store.close().catch(() => {}); await rm(dir, { recursive: true, force: true }); });
-  return { dir, store, file: async () => JSON.parse(await readFile(join(dir, 'devices.json'), 'utf8')) };
+// The store is a generic document store, so these tests use small documents of their own, not full game records.
+interface TestCity { state: { cash: number; ledger?: { amount: number }[] } }
+interface TestSession { secret: string; publicId: string; name: string; expiresAt: number; cities: { lagos: TestCity }; actions: Record<string, never>; cash: number }
+/** The keys these tests read by name are always present when read; any other key may be missing. */
+type Sessions = Record<string, TestSession> & Record<'a' | 'b' | 'c' | 'k2', TestSession>;
+interface DocParts {
+  version: 1
+  sessions: Sessions
+  archivedLives: Record<string, { publicId: string; name?: string }>
+  social: { players: Record<string, { name: string }> }
+  civic: { v?: number; cities: { lagos: { n: number } } }
+  support: { reports: number[] }
+  extra: { x: number }
 }
-const session = (publicId, extra = {}) => ({ secret: `s-${publicId}`, publicId, name: publicId, expiresAt: 1000, cities: {}, actions: {}, ...extra });
-const unavailable = (error) => error.code === 'storage_unavailable' && error.status === 503 && typeof error.reason === 'string';
+type FileDoc = DocParts;
+interface TestDoc extends DocParts { $store: StoreHelpers; [collection: string]: unknown }
+/** `delete` on a part the document type declares as present. */
+function remove(target: object, key: string): void { delete (target as Record<string, unknown>)[key]; }
+/** Replace a whole part of the document. */
+function replace(db: object, key: string, value: unknown): void { (db as Record<string, unknown>)[key] = value; }
+/** A part of the document a transaction has just made. */
+function must<T>(value: T | undefined): T { if (value === undefined) throw new TypeError('The document has no such part'); return value; }
+
+async function temp(t: TestContext, options?: StoreOptions) {
+  const dir = await mkdtemp(join(tmpdir(), 'joinallworld-store-'));
+  const store = await createStore<TestDoc>(dir, options);
+  t.after(async () => { await store.close().catch(() => {}); await rm(dir, { recursive: true, force: true }); });
+  const file = async (): Promise<FileDoc> => JSON.parse(await readFile(join(dir, 'devices.json'), 'utf8'));
+  return { dir, store, file };
+}
+// `cash` is only there when a test gives it.
+const session = (publicId: string, extra: Partial<TestSession> = {}): TestSession => ({ secret: `s-${publicId}`, publicId, name: publicId, expiresAt: 1000, cities: {}, actions: {}, ...extra } as TestSession);
+const unavailable = (error: unknown): boolean => { const failure = error as { code?: unknown; status?: unknown; reason?: unknown }; return failure.code === 'storage_unavailable' && failure.status === 503 && typeof failure.reason === 'string'; };
 
 test('a durable transaction is in the file when it resolves, and a throw changes nothing', async (t) => {
   const { store, file } = await temp(t);
   await store.transact((db) => { db.sessions.a = session('pa'); db.social = { players: { pa: { name: 'Ada' } } }; });
   assert.deepEqual((await file()).sessions.a.publicId, 'pa');
-  assert.equal((await file()).social.players.pa.name, 'Ada');
-  await assert.rejects(store.transact((db) => { db.sessions.a.name = 'Changed'; db.sessions.b = session('pb'); db.social.players.pa.name = 'Changed'; delete db.sessions.a; throw new Error('abort'); }), /abort/);
-  assert.deepEqual(await store.read((db) => [db.sessions.a.name, db.sessions.b, db.social.players.pa.name, Object.keys(db.sessions)]), ['pa', undefined, 'Ada', ['a']]);
+  assert.equal(must((await file()).social.players.pa).name, 'Ada');
+  await assert.rejects(store.transact((db) => { db.sessions.a.name = 'Changed'; db.sessions.b = session('pb'); must(db.social.players.pa).name = 'Changed'; remove(db.sessions, 'a'); throw new Error('abort'); }), /abort/);
+  assert.deepEqual(await store.read((db) => [db.sessions.a.name, db.sessions.b, must(db.social.players.pa).name, Object.keys(db.sessions)]), ['pa', undefined, 'Ada', ['a']]);
   assert.equal((await file()).sessions.a.name, 'pa');
   assert.equal(store.stats().aborted, 1);
 });
@@ -49,14 +77,14 @@ test('the file is exactly the JSON of the document, whatever was touched', async
     db.sessions.k2 = session('p2');
     db.archivedLives ||= {};
     db.archivedLives.p0 = { publicId: 'p0', name: 'Gone' };
-    db.civic = { v: 1 };
+    replace(db, 'civic', { v: 1 });
   });
-  await store.transact((db) => { db.sessions.k2.name = 'Bola'; delete db.sessions['k"1']; db.civic.v = 2; });
+  await store.transact((db) => { db.sessions.k2.name = 'Bola'; remove(db.sessions, 'k"1'); db.civic.v = 2; });
   const expected = { version: 1, sessions: { k2: session('p2', { name: 'Bola' }) }, archivedLives: { p0: { publicId: 'p0', name: 'Gone' } }, civic: { v: 2 } };
   assert.deepEqual(await file(), expected);
   // A new store reading that file sees the same document.
   await store.close();
-  const again = await createStore(dir);
+  const again = await createStore<TestDoc>(dir);
   assert.deepEqual(await again.read((db) => JSON.parse(JSON.stringify(db))), expected);
   await again.close();
 });
@@ -70,7 +98,7 @@ test('the session map behaves like the plain object it replaces', async (t) => {
     assert.deepEqual(Object.entries(db.sessions).map(([key, item]) => [key, item.name]), [['a', 'pa'], ['b', 'pb']]);
     assert.equal(Object.hasOwn(db.sessions, 'a'), true); assert.equal('zz' in db.sessions, false); assert.equal(db.sessions.zz, undefined);
     assert.equal(db.sessions.a, db.sessions.a, 'one copy per transaction');
-    db.sessions.c = session('pc'); delete db.sessions.a;
+    db.sessions.c = session('pc'); remove(db.sessions, 'a');
     assert.deepEqual(Object.keys(db.sessions), ['b', 'c']);
     assert.equal(db.$store.sessionKeyByPublicId('pc'), 'c'); assert.equal(db.$store.sessionKeyByPublicId('pa'), undefined); assert.equal(db.$store.sessionKeyByPublicId('pb'), 'b');
     assert.deepEqual(db.$store.scanSessions((record) => record.expiresAt <= 1000).sort(), ['b', 'c']);
@@ -84,11 +112,11 @@ test('transactions committed while a write is in flight share the next write', a
   const { store, file } = await temp(t);
   await store.transact((db) => { for (let i = 0; i < 50; i++) db.sessions[`k${i}`] = session(`p${i}`); });
   const before = store.stats().writes;
-  await Promise.all(Array.from({ length: 50 }, (unused, i) => store.transact((db) => { db.sessions[`k${i}`].name = `renamed ${i}`; })));
+  await Promise.all(Array.from({ length: 50 }, (unused, i) => store.transact((db) => { must(db.sessions[`k${i}`]).name = `renamed ${i}`; })));
   const used = store.stats().writes - before;
   assert.ok(used >= 1 && used <= 5, `50 concurrent transactions took ${used} writes`);
   const stored = await file();
-  for (let i = 0; i < 50; i++) assert.equal(stored.sessions[`k${i}`].name, `renamed ${i}`);
+  for (let i = 0; i < 50; i++) assert.equal(must(stored.sessions[`k${i}`]).name, `renamed ${i}`);
 });
 
 test('a lazy transaction resolves before the disk and is written within the lazy interval; durable can be decided by the result', async (t) => {
@@ -124,7 +152,7 @@ test('close writes what is pending, and an unreadable file is refused at start',
 });
 
 test('a failed write has NO effect: every transaction in the failed batch and every one applied on top of it is rejected and undone', async (t) => {
-  const disk = flakyDisk(), logged = [];
+  const disk = flakyDisk(), logged: string[] = [];
   const { store, file, dir } = await temp(t, { io: disk.io, log: (line) => logged.push(line) });
   await store.transact((db) => { db.sessions.a = session('pa', { cash: 5000 }); db.social = { players: {} }; });
   const before = await file();
@@ -132,7 +160,7 @@ test('a failed write has NO effect: every transaction in the failed batch and ev
   // Hold one good write so that three debits pile up behind it and share the NEXT write (one batch).
   const release = disk.hold();
   const first = store.transact((db) => { db.sessions.a.name = 'kept'; });
-  const hooks = [];
+  const hooks: (string | number)[] = [];
   const batch = [1, 2, 3].map((n) => store.transact((db) => { db.sessions.a.cash -= 500; db.sessions[`new${n}`] = session(`pn${n}`); db.social.players[`pn${n}`] = { name: 'x' }; return n; }, { committed: (value) => hooks.push(value) }));
   await new Promise((done) => setTimeout(done, 10)); // the three are applied in memory, behind the held write
   // Held again: the next write is the one that carries the batch. It will fail.
@@ -147,7 +175,7 @@ test('a failed write has NO effect: every transaction in the failed batch and ev
   releaseBatch();
   const results = await Promise.allSettled([...batch, late]);
   for (const result of results) { assert.equal(result.status, 'rejected'); assert.ok(unavailable(result.reason), 'rejected as storage_unavailable (503) with a reason'); }
-  assert.deepEqual(hooks, [], 'no commit listener ran for an undone transaction');
+  assert.deepEqual<(string | number)[]>(hooks, [], 'no commit listener ran for an undone transaction');
 
   // Memory is exactly what the file holds: the one good write, none of the failed ones.
   assert.deepEqual(await store.read((db) => [db.sessions.a.cash, db.sessions.a.name, Object.keys(db.sessions), Object.keys(db.social.players), db.$store.sessionKeyByPublicId('pn1')]),
@@ -155,7 +183,7 @@ test('a failed write has NO effect: every transaction in the failed batch and ev
   assert.deepEqual(await file(), { ...before, sessions: { a: { ...before.sessions.a, name: 'kept' } } });
   const stats = store.stats();
   assert.equal(stats.failing, true); assert.equal(stats.writeFailures, 1); assert.equal(stats.undone, 5);
-  assert.equal(logged.length, 1); assert.match(logged[0], /^Store write failed \(ENOSPC\)/);
+  assert.equal(logged.length, 1); assert.match(must(logged[0]), /^Store write failed \(ENOSPC\)/);
 
   // Still failing: reads keep working, each new transaction is rejected and leaves nothing behind.
   for (let i = 0; i < 3; i++) await assert.rejects(store.transact((db) => { db.sessions.a.cash -= 500; }), unavailable);
@@ -169,7 +197,7 @@ test('a failed write has NO effect: every transaction in the failed batch and ev
   assert.equal(store.stats().failing, false);
   // A restart reads the same thing.
   await store.close();
-  const again = await createStore(dir);
+  const again = await createStore<TestDoc>(dir);
   assert.deepEqual(await again.read((db) => [db.sessions.a.cash, db.sessions.a.name, Object.keys(db.sessions)]), [4500, 'kept', ['a']]);
   await again.close();
 });
@@ -177,11 +205,11 @@ test('a failed write has NO effect: every transaction in the failed batch and ev
 test('a failed write undoes deletions, replaced maps and new collections too', async (t) => {
   const disk = flakyDisk();
   const { store, file } = await temp(t, { io: disk.io, log: () => {} });
-  await store.transact((db) => { db.sessions.a = session('pa'); db.sessions.b = session('pb'); db.archivedLives = { old: { publicId: 'old' } }; db.civic = { v: 1 }; });
+  await store.transact((db) => { db.sessions.a = session('pa'); db.sessions.b = session('pb'); db.archivedLives = { old: { publicId: 'old' } }; replace(db, 'civic', { v: 1 }); });
   const before = await file();
   disk.fail = 'EIO';
-  await assert.rejects(store.transact((db) => { delete db.sessions.a; db.sessions.c = session('pc'); delete db.archivedLives; db.civic.v = 2; db.support = { reports: [1] }; delete db.civic; }), unavailable);
-  await assert.rejects(store.transact((db) => { db.sessions = { only: session('po') }; }), unavailable);
+  await assert.rejects(store.transact((db) => { remove(db.sessions, 'a'); db.sessions.c = session('pc'); remove(db, 'archivedLives'); db.civic.v = 2; db.support = { reports: [1] }; remove(db, 'civic'); }), unavailable);
+  await assert.rejects(store.transact((db) => { replace(db, 'sessions', { only: session('po') }); }), unavailable);
   disk.fail = null;
   assert.deepEqual(await store.read((db) => JSON.parse(JSON.stringify(db))), before);
   assert.deepEqual(await store.read((db) => [db.$store.sessionKeyByPublicId('pa'), db.$store.sessionKeyByPublicId('pc'), db.$store.sessionKeyByPublicId('po')]), ['a', undefined, undefined]);
@@ -202,8 +230,8 @@ test('a failed write: a read that saw the unsaved change is answered from what i
   // A lazy transaction that asks to wait for what it saw is rejected with the write it depended on.
   const poll = store.transact((db) => db.sessions.a.cash, { durable: false, waitForObserved: true });
   // An operation still running when the write fails read state that is about to vanish: it must change nothing.
-  let finish;
-  const slow = store.transact(async (db) => { const seen = db.sessions.a.cash; await new Promise((done) => { finish = done; }); db.sessions.a.cash = seen - 1; });
+  let finish: () => void = () => {};
+  const slow = store.transact(async (db) => { const seen = db.sessions.a.cash; await new Promise<void>((done) => { finish = done; }); db.sessions.a.cash = seen - 1; });
   await new Promise((done) => setTimeout(done, 10));
   release();
   await assert.rejects(debit, unavailable);
@@ -246,10 +274,10 @@ test('grouped: a rejected durable write never commits or survives a later succes
   await store.transact((db) => { db.sessions.a = session('pa'); });
   const { mkdir } = await import('node:fs/promises');
   await rm(dir, { recursive: true, force: true }); // every write now fails
-  const seen = [];
+  const seen: string[] = [];
   await assert.rejects(store.transact((db) => { db.sessions.a.name = 'during the outage'; return 'value'; }, { committed: (value) => seen.push(value) }),
-    (error) => unavailable(error) && error.cause?.code === 'ENOENT');
-  assert.deepEqual(seen, [], 'a rejected durable transaction never calls committed');
+    (error) => unavailable(error) && (error as { cause?: { code?: unknown } }).cause?.code === 'ENOENT');
+  assert.deepEqual<string[]>(seen, [], 'a rejected durable transaction never calls committed');
   assert.equal(await store.read((db) => db.sessions.a.name), 'pa', 'a failed save leaves the last committed state readable');
   await mkdir(dir, { recursive: true });
   await store.transact((db) => { db.sessions.b = session('pb'); });
@@ -257,18 +285,18 @@ test('grouped: a rejected durable write never commits or survives a later succes
   assert.deepEqual([stored.sessions.a.name, stored.sessions.b.publicId], ['pa', 'pb'], 'the rejected mutation never appears in a later successful file');
   // An aborted transaction never calls the listener.
   await assert.rejects(store.transact(() => { throw new Error('abort'); }, { committed: () => seen.push('no') }), /abort/);
-  assert.deepEqual(seen, []);
+  assert.deepEqual<string[]>(seen, []);
 });
 
 test('a commit listener runs once the change is in the file, in order, before the caller resumes', async (t) => {
   const disk = flakyDisk();
   const { store, file } = await temp(t, { io: disk.io, lazyFlushMs: 30 });
-  const order = [];
+  const order: string[] = [];
   const release = disk.hold();
   const one = store.transact((db) => { db.sessions.a = session('pa'); return 1; }, { committed: (value) => order.push(`hook ${value}`) }).then(() => order.push('resolved 1'));
   const two = store.transact((db) => { db.sessions.b = session('pb'); return 2; }, { committed: (value) => order.push(`hook ${value}`) }).then(() => order.push('resolved 2'));
   await new Promise((done) => setTimeout(done, 10));
-  assert.deepEqual(order, [], 'applied in memory, not in the file: nobody has been told');
+  assert.deepEqual<string[]>(order, [], 'applied in memory, not in the file: nobody has been told');
   release();
   await Promise.all([one, two]);
   assert.deepEqual(order.slice(0, 2), ['hook 1', 'resolved 1']); assert.ok(order.indexOf('hook 2') < order.indexOf('resolved 2'));
@@ -287,9 +315,9 @@ test('stored state cannot be changed through a value a transaction handed back',
   const { store, file } = await temp(t);
   const made = await store.transact((db) => { db.sessions.a = session('pa', { cities: { lagos: { state: { cash: 5000, ledger: [{ amount: 1 }] } } } }); db.civic = { cities: { lagos: { n: 1 } } }; return { record: db.sessions.a, civic: db.civic }; });
   assert.throws(() => { made.record.cities.lagos.state.cash = 9999999; }, TypeError);
-  assert.throws(() => { made.record.cities.lagos.state.ledger.push({ amount: 5 }); }, TypeError);
+  assert.throws(() => { must(made.record.cities.lagos.state.ledger).push({ amount: 5 }); }, TypeError);
   assert.throws(() => { made.civic.cities.lagos.n = 2; }, TypeError);
-  assert.throws(() => { delete made.record.name; }, TypeError);
+  assert.throws(() => { remove(made.record, 'name'); }, TypeError);
   const again = await store.transact((db) => db.sessions.a.cities.lagos.state);
   assert.throws(() => { again.cash = 1; }, TypeError);
   // Inside a transaction (and a read) the same record is a private, changeable copy; what a scan shows is not.

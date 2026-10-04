@@ -44,28 +44,36 @@ import { CLIENT_SIGNALS, count, prune, touch } from '../growth/metrics.ts';
 import { outreachService } from '../growth/outreach.ts';
 import { tablesService } from '../growth/tables.ts';
 import { mailPage } from '../growth/email/templates.ts';
+import type { LifeState } from '../../src/types/life.ts';
+import type { CityId } from '../../src/types/protocol.ts';
+import type { ConsentView } from '../../src/types/growth.ts';
+import type { Db, GrowthCollection, GrowthPlayerRecord, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
+
+/** What a growth route's `call` hands back: the JSON answer, and `material` (kept out of the answer) when the life changed. */
+type GrowthAnswer = { material?: boolean } & Record<string, unknown>;
+interface GrowthCall { db: Db; g: GrowthCollection; session: SessionRecord; state: LifeState; cityId: CityId; body: Record<string, unknown>; request: RouteRequest }
 
 const SESSION_GAP_MS = 30 * 60000;
-const CITY_NAMES = { lagos: 'Lagos', ibadan: 'Ibadan' };
-const AGES = ['adult', 'minor'];
+const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
+const AGES: readonly ConsentView['age'][] = ['adult', 'minor'];
 
-const ready = (state) => Boolean(state) && !(state.onboarding?.required === true && state.onboarding.done !== true);
+const ready = (state: LifeState | undefined): boolean => state !== undefined && !(state.onboarding?.required === true && state.onboarding.done !== true);
 /** What the caller may see of their own consent. */
-const consentView = (player) => (player?.consent ? { age: player.consent.age, push: player.consent.push === true, email: player.consent.email === true, at: player.consent.at } : null);
+const consentView = (player: GrowthPlayerRecord | null | undefined): ConsentView | null => (player?.consent ? { age: player.consent.age, push: player.consent.push === true, email: player.consent.email === true, at: player.consent.at } : null);
 
-export default function growthRoutes(ctx) {
+export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const referral = referralService(ctx);
   const outreach = outreachService(ctx);
   const tables = tablesService(ctx);
-  const city = (value) => { if (!ctx.cityIds.includes(value)) throw ctx.fail(400, 'invalid_city'); return value; };
+  const city = (value: unknown): CityId => { const known = ctx.cityIds.find((id) => id === value); if (known === undefined) throw ctx.fail(400, 'invalid_city'); return known; };
   // THE AGE ANSWER LIVES HERE AND NOWHERE ELSE (growth.players[id].consent.age). Whoever needs it asks this check: e-mail
   // and push eligibility below, and analytics (server/telemetry/routes.ts) — a player who said "under 18" gets none of them.
-  (ctx.checks ??= {}).minor = (db, publicId) => typeof publicId === 'string' && ctx.collection(db, 'growth')?.players?.[publicId]?.consent?.age === 'minor';
+  (ctx.checks ??= {}).minor = (db: Db, publicId: string): boolean => typeof publicId === 'string' && ctx.collection(db, 'growth')?.players?.[publicId]?.consent?.age === 'minor';
 
   /** Authenticate, rate limit, find the caller's created life in the city (never creating one), and run `call`. */
-  const route = (call, { durable = true } = {}) => async (request) => {
-    const body = request.method === 'POST' ? await request.json() : {};
-    const result = await ctx.store.transact((db) => {
+  const route = (call: (args: GrowthCall) => GrowthAnswer, { durable = true }: { durable?: boolean | ((result: GrowthAnswer) => boolean) } = {}): RouteHandler => async (request) => {
+    const body: Record<string, unknown> = request.method === 'POST' ? await request.json() : {};
+    const result = await ctx.store.transact((db): GrowthAnswer => {
       const session = request.requireSession(db, { renew: true });
       if (!ctx.allow(`growth:http:${session.publicId}`, LIMITS.httpPerMinute)) throw ctx.fail(429, 'rate_limited');
       const cityId = city(body.cityId);
@@ -147,8 +155,9 @@ export default function growthRoutes(ctx) {
 
     'GET /api/growth/share/:code': async (request) => {
       if (!ctx.allow(`growth:share:${request.ip}`, 60)) throw ctx.fail(429, 'rate_limited');
-      if (!isShareCode(request.params.code)) throw ctx.fail(400, 'invalid_share_code');
-      const share = await ctx.store.read((db) => { const found = findShare(growthOf(ctx, db), request.params.code, ctx.now()); return found ? { kind: found.kind, by: found.by, facts: found.facts } : null; });
+      const code = request.params.code;
+      if (code === undefined || !isShareCode(code)) throw ctx.fail(400, 'invalid_share_code');
+      const share = await ctx.store.read((db) => { const found = findShare(growthOf(ctx, db), code, ctx.now()); return found ? { kind: found.kind, by: found.by, facts: found.facts } : null; });
       if (!share) return { body: { ok: false, code: 'unknown_link', reason: 'That link has expired or does not exist.' } };
       return { body: { ok: true, kind: share.kind, by: { id: share.by, name: share.facts.name }, facts: share.facts } };
     },
@@ -158,14 +167,15 @@ export default function growthRoutes(ctx) {
     'POST /api/growth/consent': route(({ g, session, body }) => {
       const now = ctx.now(), player = playerOf(g, session.publicId);
       if (!player) return { ok: false, code: 'server_full', reason: 'This is not available right now. Try again later.' };
-      if (!AGES.includes(body.age)) throw ctx.fail(400, 'invalid_age');
+      const answered = AGES.find((item) => item === body.age);
+      if (answered === undefined) throw ctx.fail(400, 'invalid_age');
       for (const key of ['push', 'email']) if (body[key] !== undefined && typeof body[key] !== 'boolean') throw ctx.fail(400, 'invalid_consent');
       // An age once given as under 18 is not raised by asking again on the same life.
-      const age = player.consent?.age === 'minor' ? 'minor' : body.age;
+      const age = player.consent?.age === 'minor' ? 'minor' : answered;
       // Saying the age switches nothing on. A channel goes on only by its own step (confirming an address, granting a
       // notification); `false` here switches one off and deletes what was stored for it.
       if (age === 'minor' || body.email === false) outreach.dropContact(g, session.publicId, 'removed');
-      if (age === 'minor' || body.push === false) outreach.unsubscribePush(g, session.publicId);
+      if (age === 'minor' || body.push === false) outreach.unsubscribePush(g, session.publicId, undefined);
       // Under 18 also ends analytics for this player at once: the server forgets any Accept it held (the browser is told by its own page).
       if (age === 'minor') ctx.telemetry?.consent?.(session.publicId, false);
       if (age === 'minor' && (body.push === true || body.email === true)) {
@@ -194,7 +204,8 @@ export default function growthRoutes(ctx) {
     'POST /api/growth/client': async (request) => {
       const body = await request.json();
       if (!ctx.allow(`growth:client:${request.ip}`, 10)) throw ctx.fail(429, 'rate_limited');
-      const signals = [...new Set(Array.isArray(body.signals) ? body.signals.slice(0, 8) : [])].filter((name) => CLIENT_SIGNALS.includes(name));
+      const named: unknown[] = Array.isArray(body.signals) ? body.signals.slice(0, 8) : [];
+      const signals = [...new Set(named)].filter((name): name is string => typeof name === 'string' && CLIENT_SIGNALS.includes(name));
       if (signals.length) await ctx.store.transact((db) => { const g = growthOf(ctx, db); for (const name of signals) count(g, ctx.now(), `client.${name}`); }, { durable: false });
       return { body: { ok: true, counted: signals.length } };
     },

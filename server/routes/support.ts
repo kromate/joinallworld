@@ -18,8 +18,9 @@
 import { supportService } from '../support/service.ts';
 import { statementOf } from '../../src/game/systems/wallet.ts';
 import { outcomeKey } from './core.ts';
+import type { RouteContext, RouteHandler, RouteKey } from '../types.ts';
 
-export default function supportRoutes(ctx) {
+export default function supportRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const service = supportService(ctx);
   return {
     'POST /api/support/reports': async (request) => {
@@ -27,7 +28,7 @@ export default function supportRoutes(ctx) {
       const result = await ctx.store.transact((db) => {
         const session = request.requireSession(db, { renew: true });
         if (!ctx.allow(`support:http:${session.publicId}`, 30)) throw ctx.fail(429, 'rate_limited');
-        return service.file(db, session, body, request.ip);
+        return service.file(db, session, { cityId: body.cityId, category: body.category, text: body.text, clientId: body.clientId }, request.ip);
       });
       return { body: result, renew: true };
     },
@@ -35,13 +36,14 @@ export default function supportRoutes(ctx) {
     // poll, it is durable before it is answered whenever the settlement produced an outcome.
     'GET /api/support/statement': async (request) => {
       const city = request.query.get('city');
-      if (!ctx.cityIds.includes(city)) throw ctx.fail(400, 'invalid_city');
+      const cityId = ctx.cityIds.find((id) => id === city);
+      if (cityId === undefined) throw ctx.fail(400, 'invalid_city');
       const result = await ctx.store.transact((db) => {
         const session = request.requireSession(db, { renew: true });
         if (!ctx.allow(`support:statement:${session.publicId}`, 30)) throw ctx.fail(429, 'rate_limited');
-        const before = outcomeKey(session.cities?.[city]?.state);
-        const state = ctx.settle(session, city);
-        return { body: { ok: true, city, name: session.name, statement: statementOf(state) }, material: before !== outcomeKey(state) };
+        const before = outcomeKey(session.cities?.[cityId]?.state);
+        const state = ctx.settle(session, cityId);
+        return { body: { ok: true, city: cityId, name: session.name, statement: statementOf(state) }, material: before !== outcomeKey(state) };
       }, { durable: (value) => value.material });
       return { body: result.body, renew: true };
     },

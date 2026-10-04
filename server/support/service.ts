@@ -23,26 +23,36 @@
  *
  * STATUS  received → reviewing → resolved | dismissed   (set by an operator; `note` is shown to the player)
  */
-export const LIMITS = Object.freeze({ reports: 2000, own: 30, openPerPlayer: 5, text: 600, note: 300, perHour: 3, perAddressPerHour: 10, actions: 10, ledger: 10 });
-export const CATEGORIES = Object.freeze(['money', 'stuck', 'messages', 'people', 'bug', 'other']);
-export const STATUSES = Object.freeze(['received', 'reviewing', 'resolved', 'dismissed']);
-const OPEN = ['received', 'reviewing'];
-const CONTROL = /[\u0000-\u0008\u000b-\u001f\u007f]/;
-const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
-const no = (code, reason) => ({ ok: false, code, reason });
+import type { CityId } from '../../src/types/protocol.ts';
+import type { LifeState } from '../../src/types/life.ts';
+import type { SupportCategory, SupportContext, SupportReceipt, SupportReport, SupportStatus } from '../../src/types/support.ts';
+import type { ActionReceipt, Db, RouteContext, SessionRecord, SupportCollection } from '../types.ts';
 
-export function supportService(ctx) {
-  function col(db) {
+/** The body of a filing as the route hands it over: every field is untrusted until file() has checked it. */
+export interface FileReportInput { cityId: unknown; category: unknown; text: unknown; clientId: unknown }
+export interface Refused { ok: false; code: string; reason: string }
+type Filed = { ok: true; code: 'filed'; id: string; duplicate?: true };
+
+export const LIMITS = Object.freeze({ reports: 2000, own: 30, openPerPlayer: 5, text: 600, note: 300, perHour: 3, perAddressPerHour: 10, actions: 10, ledger: 10 });
+export const CATEGORIES: readonly SupportCategory[] = Object.freeze<SupportCategory[]>(['money', 'stuck', 'messages', 'people', 'bug', 'other']);
+export const STATUSES: readonly SupportStatus[] = Object.freeze<SupportStatus[]>(['received', 'reviewing', 'resolved', 'dismissed']);
+const OPEN: readonly SupportStatus[] = ['received', 'reviewing'];
+const CONTROL = /[\u0000-\u0008\u000b-\u001f\u007f]/;
+const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
+const no = (code: string, reason: string): Refused => ({ ok: false, code, reason });
+
+export function supportService(ctx: RouteContext) {
+  function col(db: Db): SupportCollection {
     const s = ctx.collection(db, 'support');
     if (!Array.isArray(s.reports)) s.reports = [];
     if (!Number.isSafeInteger(s.seq)) s.seq = 0;
     return s;
   }
-  const receipt = (report) => ({ id: report.id, at: report.at, cityId: report.cityId, category: report.category, text: report.text, status: report.status, note: report.note || '', updatedAt: report.updatedAt });
+  const receipt = (report: SupportReport): SupportReceipt => ({ id: report.id, at: report.at, cityId: report.cityId, category: report.category, text: report.text, status: report.status, note: report.note || '', updatedAt: report.updatedAt });
   /** Built from named fields only. Nothing here can carry the session secret. */
-  function contextOf(session, cityId, state) {
-    const actions = Object.values(isRecord(session.actions) ? session.actions : {})
-      .filter((item) => item && Number.isFinite(item.actionAt))
+  function contextOf(session: SessionRecord, cityId: CityId, state: LifeState): SupportContext {
+    const actions = Object.values(isRecord(session.actions) ? session.actions : {}).map((item) => item as Partial<ActionReceipt> | null)
+      .filter((item): item is Partial<ActionReceipt> & { actionAt: number } => Boolean(item) && Number.isFinite(item?.actionAt))
       .sort((a, b) => b.actionAt - a.actionAt).slice(0, LIMITS.actions)
       .map((item) => ({ at: item.actionAt, type: typeof item.type === 'string' ? item.type.slice(0, 40) : 'unknown', ok: item.ok === true, code: String(item.code ?? '').slice(0, 40) }));
     const active = state.activeAction;
@@ -58,14 +68,16 @@ export function supportService(ctx) {
   return {
     LIMITS,
     /** body: { cityId, category, text, clientId }. Exactly once per clientId (ctx.once); the id is mandatory. */
-    file(db, session, body, address) {
-      if (!ctx.cityIds.includes(body.cityId)) throw ctx.fail(400, 'invalid_city');
-      if (!CATEGORIES.includes(body.category)) throw ctx.fail(400, 'invalid_category');
+    file(db: Db, session: SessionRecord, body: FileReportInput, address: string): Refused | { ok: true; code: 'filed'; duplicate?: true; receipt: SupportReceipt | { id: string } } {
+      const cityId = ctx.cityIds.find((candidate) => candidate === body.cityId);
+      if (!cityId) throw ctx.fail(400, 'invalid_city');
+      const category = CATEGORIES.find((candidate) => candidate === body.category);
+      if (!category) throw ctx.fail(400, 'invalid_category');
       const text = typeof body.text === 'string' ? body.text.trim() : '';
       if (text.length < 3 || text.length > LIMITS.text || CONTROL.test(text)) throw ctx.fail(400, 'invalid_report_text');
       ctx.onceId(body.clientId);
       const s = col(db), id = session.publicId;
-      const outcome = ctx.once(db, session, { id: body.clientId, kind: 'support.report', fingerprint: [body.cityId, body.category, text] }, () => {
+      const outcome = ctx.once(db, session, { id: body.clientId, kind: 'support.report', fingerprint: [cityId, category, text] }, (): Filed | Refused => {
         if (s.reports.filter((report) => report.by === id && OPEN.includes(report.status)).length >= LIMITS.openPerPlayer) {
           return no('too_many_open', `You already have ${LIMITS.openPerPlayer} problem reports waiting. They are listed below with their status; add to one of those when it is answered.`);
         }
@@ -77,9 +89,9 @@ export function supportService(ctx) {
           if (closed < 0) return no('inbox_full', 'The problem inbox is full right now. Nothing was filed; please try again later.');
           s.reports.splice(closed, 1);
         }
-        const state = ctx.settle(session, body.cityId);
-        const report = { id: `P-${++s.seq}`, by: id, name: session.name, cityId: body.cityId, category: body.category, text, at: ctx.now(), status: 'received', note: '', updatedAt: ctx.now(),
-          context: contextOf(session, body.cityId, state) };
+        const state = ctx.settle(session, cityId);
+        const report: SupportReport = { id: `P-${++s.seq}`, by: id, name: session.name, cityId, category, text, at: ctx.now(), status: 'received', note: '', updatedAt: ctx.now(),
+          context: contextOf(session, cityId, state) };
         s.reports.push(report);
         return { ok: true, code: 'filed', id: report.id };
       });
@@ -89,20 +101,20 @@ export function supportService(ctx) {
       return { ok: true, code: 'filed', ...(outcome.duplicate ? { duplicate: true } : {}), receipt: report ? receipt(report) : { id: outcome.id } };
     },
     /** The caller's own receipts, newest first. */
-    mine(db, session) {
+    mine(db: Db, session: SessionRecord) {
       const reports = col(db).reports.filter((report) => report.by === session.publicId).slice(-LIMITS.own).reverse().map(receipt);
       return { ok: true, code: 'ok', reports, categories: CATEGORIES, limits: { text: LIMITS.text, open: LIMITS.openPerPlayer } };
     },
     // ---- operator side (routes/moderation.js) ------------------------------------------------
-    list(db, status = 'open', limit = 100) {
+    list(db: Db, status = 'open', limit = 100) {
       const all = col(db).reports;
       return all.filter((report) => status === 'all' || (status === 'open' ? OPEN.includes(report.status) : report.status === status)).slice(-limit).reverse();
     },
-    counts(db) {
+    counts(db: Db) {
       const all = col(db).reports;
       return { total: all.length, open: all.filter((report) => OPEN.includes(report.status)).length };
     },
-    setStatus(db, id, status, note) {
+    setStatus(db: Db, id: string, status: SupportStatus, note: string) {
       const report = col(db).reports.find((item) => item.id === id);
       if (!report) return null;
       report.status = status; report.note = note; report.updatedAt = ctx.now();

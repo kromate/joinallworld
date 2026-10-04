@@ -23,8 +23,12 @@
  * someone determined. Blocking, reports and operator mutes are the real tools.
  */
 import { BLOCKED_WORDS, BLOCKED_PHRASES } from './terms.ts';
+import type { BlockedCategory } from './terms.ts';
 
-const FOLD = { 0: 'o', 1: 'i', 3: 'e', 4: 'a', 5: 's', 7: 't', '@': 'a', $: 's' };
+/** What screenText answers with when it refuses a text. */
+export interface TextVerdict { code: 'text_blocked' | 'links_not_allowed' | 'contact_not_allowed'; category: BlockedCategory | 'link' | 'contact'; reason: string }
+
+const FOLD: Record<string, string> = { 0: 'o', 1: 'i', 3: 'e', 4: 'a', 5: 's', 7: 't', '@': 'a', $: 's' };
 const INVISIBLE = /[\u00ad\u200b-\u200f\u2028-\u202f\u2060-\u206f\ufeff]/g;
 export const LINK = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|net|org|ng|io|co|xyz|app|gg|me|ly|tv|info|biz|link|shop|site|online)\b)/i;
 const EMAIL = /[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,}/i;
@@ -34,7 +38,7 @@ const PHONE = /(?:\+?\d[\s().-]{0,2}){9,}/;
 const HANDLE = /\b(whats\s?app|telegram|insta(gram)?|snap(chat)?|tik\s?tok|discord|facebook|twitter|ig)\b\s*(?::\s*@?|@)[a-z0-9._]{3,}/i;
 
 /** Lower-case, strip accents and invisible characters, fold look-alikes, keep letters and spaces. */
-export function normalise(text) {
+export function normalise(text: unknown): string {
   const base = String(text).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(INVISIBLE, '').toLowerCase();
   let out = '';
   for (const char of base) out += FOLD[char] ?? char;
@@ -42,25 +46,28 @@ export function normalise(text) {
 }
 
 /** Collapse a run of three or more of the same letter ("niiiice" → "niice"). */
-const squeeze = (word, to) => word.replace(/([a-z])\1{2,}/g, to === 1 ? '$1' : '$1$1');
+const squeeze = (word: string, to: 1 | 2): string => word.replace(/([a-z])\1{2,}/g, to === 1 ? '$1' : '$1$1');
 const words = new Map(BLOCKED_WORDS);
-const phrases = BLOCKED_PHRASES.map(([phrase, category]) => [` ${phrase} `, category]);
+const phrases: [string, BlockedCategory][] = BLOCKED_PHRASES.map(([phrase, category]) => [` ${phrase} `, category]);
 
-function wordCategory(word) {
+function wordCategory(word: string): BlockedCategory | null {
   for (const form of new Set([word, squeeze(word, 2), squeeze(word, 1)])) {
-    if (words.has(form)) return words.get(form);
+    const whole = words.get(form);
+    if (whole) return whole;
     // Plain plurals only ("…s", "…es"); no other suffixes, so a longer innocent word never matches.
-    if (form.endsWith('s') && words.has(form.slice(0, -1))) return words.get(form.slice(0, -1));
-    if (form.endsWith('es') && words.has(form.slice(0, -2))) return words.get(form.slice(0, -2));
+    const plural = form.endsWith('s') ? words.get(form.slice(0, -1)) : undefined;
+    if (plural) return plural;
+    const plural2 = form.endsWith('es') ? words.get(form.slice(0, -2)) : undefined;
+    if (plural2) return plural2;
   }
   return null;
 }
 
 /** The category of the first blocked term in `text`, or null. */
-export function blockedCategory(text) {
+export function blockedCategory(text: unknown): BlockedCategory | null {
   const tokens = normalise(text).split(' ').filter(Boolean);
   // Letters spelt out one at a time ("k y s", "n.i.g…") are read as the word they spell.
-  const joined = [];
+  const joined: string[] = [];
   let run = '';
   for (const token of tokens) {
     if (token.length === 1) { run += token; continue; }
@@ -76,13 +83,13 @@ export function blockedCategory(text) {
   return null;
 }
 
-const REASONS = {
+const REASONS: Record<BlockedCategory, string> = {
   hate: 'it contains a slur',
   threat: 'it tells someone to harm themselves or threatens them',
   minors: 'it refers to sexual content about children',
 };
 
-export function screenText(text, { contact = false, what = 'That text' } = {}) {
+export function screenText(text: unknown, { contact = false, what = 'That text' }: { contact?: boolean; what?: string } = {}): TextVerdict | null {
   if (typeof text !== 'string') return null;
   const category = blockedCategory(text);
   if (category) return { code: 'text_blocked', category, reason: `${what} was not accepted because ${REASONS[category]}. Nothing was sent or saved; change the wording and try again.` };

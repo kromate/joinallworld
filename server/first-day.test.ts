@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { runFirstDay } from '../scripts/first-day.mjs';
 
 test('the scripted first day runs to the end with every assertion holding', async () => {
-  const lines = [];
+  const lines: string[] = [];
   const result = await runFirstDay({ log: (line) => lines.push(line) });
   assert.equal(result.steps, 22); // the quick start, the first activity and the hello now open the day
   // LAPO Baby in the free starter house: ₦76,000 start (not ₦96,000 in rented Yaba), no ₦6,000 Saturday rent, a ₦150 Danfo from the

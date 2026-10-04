@@ -13,20 +13,42 @@ import { ROUTE_MODULES } from './routes/index.ts';
 import { canOccupyVenue, canJoinVenue, isDeparting } from './protocol.ts';
 import { createLife, dispatch } from '../src/life.ts';
 import { roomJoinNeeded } from '../src/client.ts';
+import type { LifeState } from '../src/types/index.ts';
+import type { Database, Db, RouteContext, RouteModule, Store, TransactOptions } from './types.ts';
 
 const MONDAY_10AM = Date.UTC(2026, 0, 5, 9); // Lagos is UTC+1: the workplace (open 08:00–22:00) is open
 const MONDAY_7AM = Date.UTC(2026, 0, 5, 6);  // ...and here it is still closed
-const say = (peer, message) => peer.ws.send(JSON.stringify(message));
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+type Frame = Record<string, unknown>;
+interface Member { id: string; enabled: boolean; muted: boolean }
+interface Who { id: string; cookie: string }
 /** A real socket whose every frame is kept, so a test can wait for one without losing the others. */
-async function connect(f, device) {
+interface Peer { ws: Awaited<ReturnType<Fixture['socket']>>['ws']; id: string; cookie: string; log: Frame[] }
+/** What a test passes to `fixture()` / `park()`. */
+interface ParkOptions { now?: () => number; store?: Store; heartbeatMs?: number; routes?: RouteModule[] }
+/** What the tests read of an action answer: the status, plus the outcome fields (absent on an error answer). */
+interface Acted { status: number; ok?: boolean; code?: string; duplicate?: boolean; state?: LifeState }
+const isFrame = (value: unknown): value is Frame => typeof value === 'object' && value !== null;
+const isLifeState = (value: unknown): value is LifeState => isFrame(value) && typeof value.cash === 'number' && isFrame(value.onboarding);
+const isMember = (value: unknown): value is Member => isFrame(value) && typeof value.id === 'string' && typeof value.enabled === 'boolean' && typeof value.muted === 'boolean';
+/** The `members` of a presence frame (none for any other frame). */
+const membersOf = (message: Frame): Member[] => (Array.isArray(message.members) ? message.members.filter(isMember) : []);
+/** The life state of a /api/life answer. */
+async function stateOf(res: Response): Promise<LifeState> {
+  const body: unknown = await res.json();
+  if (!isFrame(body) || !isLifeState(body.state)) throw new Error('not a life response');
+  return body.state;
+}
+const say = (peer: Peer, message: Frame) => peer.ws.send(JSON.stringify(message));
+async function connect(f: Fixture, device: Who): Promise<Peer> {
   const { ws } = await f.socket(device);
-  const peer = { ws, id: device.id, cookie: device.cookie, log: [] };
+  const peer: Peer = { ws, id: device.id, cookie: device.cookie, log: [] };
   ws.removeAllListeners('message');
-  ws.on('message', (data) => peer.log.push(JSON.parse(data.toString())));
+  ws.on('message', (data) => { const frame: unknown = JSON.parse(data.toString()); if (isFrame(frame)) peer.log.push(frame); });
   return peer;
 }
 /** The first frame matching `test` among those received since `from` (default: all), waiting up to two seconds for it. */
-async function until(peer, test, what = 'message', from = 0) {
+async function until(peer: Peer, test: (message: Frame) => boolean, what = 'message', from = 0): Promise<Frame> {
   for (let i = 0; i < 400; i++) {
     const found = peer.log.slice(from).find(test);
     if (found) return found;
@@ -34,18 +56,18 @@ async function until(peer, test, what = 'message', from = 0) {
   }
   throw Error(`No ${what}`);
 }
-const isError = (code) => (message) => message.type === 'error' && message.code === code;
+const isError = (code: string) => (message: Frame) => message.type === 'error' && message.code === code;
 /** Ask for a fresh, authoritative roster: the peer changes its own voice state and reads the presence that follows. */
-async function roster(peer, token) {
+async function roster(peer: Peer, token: boolean): Promise<Member[]> {
   const from = peer.log.length;
   say(peer, { type: 'voice-state', enabled: false, muted: token });
-  return (await until(peer, (message) => message.type === 'presence' && message.members.some((member) => member.id === peer.id && member.muted === token), 'roster', from)).members;
+  return membersOf(await until(peer, (message) => message.type === 'presence' && membersOf(message).some((member) => member.id === peer.id && member.muted === token), 'roster', from));
 }
 /** Send a signalling marker from `from` to `to` and report whether it arrived or was refused (and with which codes). */
-async function signal(from, to, label) {
+async function signal(from: Peer, to: Peer, label: string): Promise<{ delivered: boolean; code: unknown }> {
   const sent = from.log.length, heard = to.log.length;
   say(from, { type: 'signal', to: to.id, data: { probe: label } });
-  const arrived = (message) => message.type === 'signal' && message.data?.probe === label;
+  const arrived = (message: Frame) => message.type === 'signal' && isFrame(message.data) && message.data.probe === label;
   for (let i = 0; i < 400; i++) {
     if (to.log.slice(heard).some(arrived)) return { delivered: true, code: null };
     const refusal = from.log.slice(sent).filter((message) => message.type === 'error').at(-1);
@@ -54,33 +76,38 @@ async function signal(from, to, label) {
   }
   throw Error(`Signal ${label} neither arrived nor was refused`);
 }
+interface World { f: Fixture; A: Who; B: Who; act: (who: Who, fields: Frame, actionId?: string) => Promise<Acted> }
 /** Two players; A will be the one who leaves. */
-async function park(t, options) {
+async function park(t: Parameters<typeof fixture>[0], options?: ParkOptions): Promise<World> {
   const f = await fixture(t, options);
   const A = await f.device('Commuter'), B = await f.device('Peer');
   /** An action stamped with the server's own clock (the fixture's helper assumes its default clock). */
   const clock = options?.now ?? f.now;
-  const act = async (who, fields, actionId = `${clock()}:${randomUUID()}`) => { const response = await f.request('/api/action', { actionId, cityId: 'lagos', ...fields }, who.cookie); return { status: response.status, ...(await response.json()) }; };
+  const act = async (who: Who, fields: Frame, actionId = `${clock()}:${randomUUID()}`): Promise<Acted> => {
+    const response = await f.request('/api/action', { actionId, cityId: 'lagos', ...fields }, who.cookie);
+    const body: unknown = await response.json();
+    return { ...(isFrame(body) ? body : {}), status: response.status };
+  };
   return { f, A, B, act };
 }
 /** Both in the park room, A with the voice flag on. */
-async function joinBoth(f, A, B) {
+async function joinBoth(f: Fixture, A: Who, B: Who) {
   const a = await connect(f, A), b = await connect(f, B);
   say(a, { type: 'join', cityId: 'lagos', venueId: 'park' }); await until(a, (m) => m.type === 'presence');
-  say(b, { type: 'join', cityId: 'lagos', venueId: 'park' }); await until(b, (m) => m.type === 'presence' && m.members.length === 2);
+  say(b, { type: 'join', cityId: 'lagos', venueId: 'park' }); await until(b, (m) => m.type === 'presence' && membersOf(m).length === 2);
   say(a, { type: 'voice-state', enabled: true, muted: false });
-  await until(b, (m) => m.type === 'presence' && m.members.some((member) => member.id === A.id && member.enabled), 'voice flag');
+  await until(b, (m) => m.type === 'presence' && membersOf(m).some((member) => member.id === A.id && member.enabled), 'voice flag');
   return { a, b };
 }
 /** After a frame matching `test` arrives, the next frame of the same kind (used for "the error that answers THIS message"). */
-async function answer(peer, send, test = (message) => message.type === 'error' || message.type === 'presence') {
+async function answer(peer: Peer, send: () => void, test: (message: Frame) => boolean = (message) => message.type === 'error' || message.type === 'presence'): Promise<Frame> {
   const from = peer.log.length;
   send();
   return until(peer, test, 'answer', from);
 }
 
 /** Everything that must hold once A has started to leave, and again after A cancels. `mark` is A's log length before the departure. */
-async function assertRevokedThenRestored({ f, act }, a, b, A, mark) {
+async function assertRevokedThenRestored({ f, act }: World, a: Peer, b: Peer, A: Who, mark: number) {
   assert.equal((await until(a, isError('venue_mismatch'), 'revocation', mark)).code, 'venue_mismatch', 'the departing player is told at once');
   assert.deepEqual((await roster(b, true)).map((member) => member.id), [b.id], 'the old room no longer lists them — so no voice flag either');
   assert.deepEqual(await signal(a, b, 'while-departing'), { delivered: false, code: 'join_required' }, 'nothing is forwarded for them');
@@ -90,13 +117,13 @@ async function assertRevokedThenRestored({ f, act }, a, b, A, mark) {
   assert.equal((await f.request('/api/voice-config', null, A.cookie)).status, 403, 'and no voice configuration is handed out');
   // Cancel: the player never left. Membership comes back by an explicit join — with voice off and muted.
   const cancelled = await act(A, { type: 'cancel' });
-  assert.deepEqual([cancelled.ok, cancelled.code, cancelled.state.location, cancelled.state.activeAction], [true, 'cancelled', 'park', null]);
+  assert.deepEqual([cancelled.ok, cancelled.code, cancelled.state?.location, cancelled.state?.activeAction], [true, 'cancelled', 'park', null]);
   const back = await answer(a, () => say(a, { type: 'join', cityId: 'lagos', venueId: 'park' }));
   assert.equal(back.type, 'presence', 'the join is accepted again');
-  const self = back.members.find((member) => member.id === A.id);
-  assert.deepEqual([self.enabled, self.muted], [false, true], 'restored with voice OFF and muted');
+  const self = membersOf(back).find((member) => member.id === A.id);
+  assert.deepEqual([self?.enabled, self?.muted], [false, true], 'restored with voice OFF and muted');
   const seen = (await roster(b, false)).find((member) => member.id === A.id);
-  assert.deepEqual([seen.enabled, seen.muted], [false, true], 'the peer sees them back, not in voice');
+  assert.deepEqual([seen?.enabled, seen?.muted], [false, true], 'the peer sees them back, not in voice');
   assert.deepEqual(await signal(a, b, 'after-cancel'), { delivered: true, code: null }, 'the room works again');
 }
 
@@ -105,7 +132,7 @@ test('one shared rule: a departing life occupies no venue, whatever kind of depa
   const idle = createLife({ location: 'park' }, at);
   const trip = createLife({ location: 'park' }, at); dispatch(trip, { type: 'travel', payload: { id: 'library', mode: 'trek' } }, at);
   const commute = createLife({ location: 'park' }, at); dispatch(commute, { type: 'apply-job', payload: { id: 'tech' } }, at);
-  assert.equal(commute.activeAction.kind, 'commute');
+  assert.equal(commute.activeAction?.kind, 'commute');
   assert.deepEqual([idle, trip, commute].map((state) => [isDeparting(state), canOccupyVenue(state, 'park'), canJoinVenue(state, 'park')]), [[false, true, true], [true, false, false], [true, false, false]]);
   assert.equal(canOccupyVenue(idle, 'library'), false);
   assert.equal(canOccupyVenue(null, 'park'), false);
@@ -122,7 +149,7 @@ test('applying for a job that starts the commute ends room membership and voice 
   const { a, b } = await joinBoth(f, A, B);
   const mark = a.log.length;
   const hired = await act(A, { type: 'apply-job', payload: { id: 'tech' } });
-  assert.deepEqual([hired.ok, hired.state.activeAction?.kind, hired.state.location], [true, 'commute', 'park'], 'the commute started and the location has not changed yet');
+  assert.deepEqual([hired.ok, hired.state?.activeAction?.kind, hired.state?.location], [true, 'commute', 'park'], 'the commute started and the location has not changed yet');
   await assertRevokedThenRestored(world, a, b, A, mark);
 });
 
@@ -131,12 +158,12 @@ test('a commute started by a plain GET settlement ends room membership and voice
   const world = await park(t, { now: () => clock });
   const { f, A, B, act } = world;
   const hired = await act(A, { type: 'apply-job', payload: { id: 'tech' } });
-  assert.deepEqual([hired.ok, hired.state.activeAction], [true, null], 'hired while the workplace is closed: no commute yet');
+  assert.deepEqual([hired.ok, hired.state?.activeAction], [true, null], 'hired while the workplace is closed: no commute yet');
   const { a, b } = await joinBoth(f, A, B);
   const mark = a.log.length;
   clock = MONDAY_10AM; // the workplace opens; the player does nothing
-  const polled = await (await f.request('/api/life?city=lagos', null, A.cookie)).json();
-  assert.deepEqual([polled.state.activeAction?.kind, polled.state.location], ['commute', 'park'], 'the poll itself started the commute');
+  const polled = await stateOf(await f.request('/api/life?city=lagos', null, A.cookie));
+  assert.deepEqual([polled.activeAction?.kind, polled.location], ['commute', 'park'], 'the poll itself started the commute');
   await assertRevokedThenRestored(world, a, b, A, mark);
 });
 
@@ -145,14 +172,14 @@ test('a trip still revokes, and arriving does not restore the old room', async (
   const { a, b } = await joinBoth(f, A, B);
   const mark = a.log.length;
   const started = await act(A, { type: 'travel', id: 'library', mode: 'trek' });
-  assert.equal(started.state.activeAction.kind, 'travel');
+  assert.equal(started.state?.activeAction?.kind, 'travel');
   assert.equal((await until(a, isError('venue_mismatch'), 'revocation', mark)).code, 'venue_mismatch');
   assert.deepEqual((await roster(b, true)).map((member) => member.id), [B.id]);
-  f.advance(started.state.activeAction.duration * 1000 + 1000);
-  assert.equal((await (await f.request('/api/life?city=lagos', null, A.cookie)).json()).state.location, 'library');
+  f.advance((started.state?.activeAction?.duration ?? NaN) * 1000 + 1000);
+  assert.equal((await stateOf(await f.request('/api/life?city=lagos', null, A.cookie))).location, 'library');
   assert.equal((await answer(a, () => say(a, { type: 'join', cityId: 'lagos', venueId: 'park' }))).code, 'venue_mismatch');
   const arrived = await answer(a, () => say(a, { type: 'join', cityId: 'lagos', venueId: 'library' }));
-  assert.deepEqual(arrived.members.map((member) => [member.id, member.enabled, member.muted]), [[A.id, false, true]]);
+  assert.deepEqual(membersOf(arrived).map((member) => [member.id, member.enabled, member.muted]), [[A.id, false, true]]);
 });
 
 /**
@@ -160,14 +187,15 @@ test('a trip still revokes, and arriving does not restore the old room', async (
  * can throw: writes that fail AFTER the change is committed in memory (the hazard), reads that
  * cannot run at all, and reads that wait. It stands in for "whatever the storage does".
  */
-function switchableStore() {
-  let db = { version: 1, sessions: {} };
-  let queue = Promise.resolve();
-  const control = { failWrites: false, failReads: false, holdReads: null };
-  const enqueue = (work) => { const run = queue.then(work); queue = run.catch(() => {}); return run; };
+interface StoreControl { failWrites: boolean; failReads: boolean; holdReads: Promise<void> | null }
+function switchableStore(): Store & { control: StoreControl } {
+  let db: Database = { version: 1, sessions: {} };
+  let queue: Promise<unknown> = Promise.resolve();
+  const control: StoreControl = { failWrites: false, failReads: false, holdReads: null };
+  const enqueue = <T>(work: () => Promise<T>): Promise<T> => { const run = queue.then(work); queue = run.catch(() => {}); return run; };
   return {
     control,
-    transact(operation, { durable = true, committed } = {}) {
+    transact<T>(operation: (db: Db) => T | Promise<T>, { durable = true, committed }: TransactOptions<T> = {}): Promise<T> {
       return enqueue(async () => {
         const next = structuredClone(db);
         const value = await operation(next); // a throw discards `next`
@@ -181,12 +209,12 @@ function switchableStore() {
         return value;
       });
     },
-    read(operation) {
+    read<T>(operation: (db: Db) => T | Promise<T>): Promise<T> {
       if (control.failReads) return Promise.reject(Object.assign(Error('store unavailable'), { code: 'EIO' }));
       return enqueue(async () => { if (control.holdReads) await control.holdReads; return operation(structuredClone(db)); });
     },
-    flush: () => queue, close: () => queue,
-    stats: () => ({ mode: 'test' }),
+    flush: async () => { await queue; }, close: async () => { await queue; },
+    stats: () => ({ mode: 'grouped', transactions: 0, lazy: 0, reads: 0, writes: 0, bytes: 0, aborted: 0, writeFailures: 0, undone: 0, failing: false, lastFailureAt: null }),
   };
 }
 
@@ -208,7 +236,7 @@ test('a departure committed in memory still revokes when its write fails, and no
   // The disk comes back and the client retries the same action ID: applied once, membership stays revoked.
   store.control.failWrites = false;
   const retry = await act(A, { type: 'travel', id: 'library', mode: 'trek' }, actionId);
-  assert.deepEqual([retry.status, retry.ok, retry.duplicate, retry.state.activeAction.kind], [200, true, true, 'travel']);
+  assert.deepEqual([retry.status, retry.ok, retry.duplicate, retry.state?.activeAction?.kind], [200, true, true, 'travel']);
   assert.deepEqual((await roster(b, false)).map((member) => member.id), [B.id]);
 });
 
@@ -220,7 +248,7 @@ test('a room message from a socket whose life has just departed waits for the re
   // re-check that follows the departure cannot finish yet (the request itself waits for that re-check
   // before it is answered). The socket is therefore still listed in the room when it sends — the one
   // moment a remembered membership could be trusted.
-  let release; store.control.holdReads = new Promise((resolve) => { release = resolve; });
+  let release: () => void = () => {}; store.control.holdReads = new Promise<void>((resolve) => { release = resolve; });
   store.control.failWrites = true;
   const mark = a.log.length, heard = b.log.length;
   const request = act(A, { type: 'travel', id: 'library', mode: 'trek' });
@@ -243,30 +271,31 @@ test('a room message from a socket whose life has just departed waits for the re
 
 test('revalidate(publicId) re-checks sockets against the stored life, and drops them when the store cannot be read', async (t) => {
   const store = switchableStore();
-  let captured;
-  const { f, A, B } = await park(t, { store, heartbeatMs: 60000, routes: [...ROUTE_MODULES, (ctx) => { captured = ctx; return {}; }] });
+  const held: { ctx?: RouteContext } = {};
+  const core = () => { if (!held.ctx) throw new Error('the capturing route module has not run'); return held.ctx.core; };
+  const { f, A, B } = await park(t, { store, heartbeatMs: 60000, routes: [...ROUTE_MODULES, (ctx: RouteContext) => { held.ctx = ctx; return {}; }] });
   const { a, b } = await joinBoth(f, A, B);
-  assert.equal(typeof captured.core.revalidate, 'function');
+  assert.equal(typeof core().revalidate, 'function');
   // Nothing changed: revalidating keeps everybody, voice flag included.
-  await captured.core.revalidate(A.id);
-  await captured.core.revalidate('not-a-player');
-  await captured.core.revalidate(undefined);
-  assert.equal((await roster(b, true)).find((member) => member.id === A.id).enabled, true);
+  await core().revalidate(A.id);
+  await core().revalidate('not-a-player');
+  await Reflect.apply(core().revalidate, core(), [undefined]); // not a string at all: a robustness check, so the types are bypassed on purpose
+  assert.equal((await roster(b, true)).find((member) => member.id === A.id)?.enabled, true);
   // The stored life is changed behind the room module's back (no settlement announces it): only revalidate can notice.
-  await store.transact((db) => { const session = Object.values(db.sessions).find((item) => item.publicId === A.id); session.cities.lagos.state.location = 'library'; });
+  await store.transact((db) => { const lagos = Object.values(db.sessions).find((item) => item.publicId === A.id)?.cities.lagos; if (!lagos) throw new Error('no stored life'); lagos.state.location = 'library'; });
   assert.deepEqual(await signal(a, b, 'unnoticed'), { delivered: true, code: null }, 'control: nothing has re-checked yet');
   let mark = a.log.length;
-  await captured.core.revalidate(A.id);
+  await core().revalidate(A.id);
   assert.equal((await until(a, isError('venue_mismatch'), 'revocation', mark)).code, 'venue_mismatch');
   assert.deepEqual((await roster(b, false)).map((member) => member.id), [B.id]);
   // Unknown is "not allowed": if the store cannot be read, the sockets asked about are dropped.
   store.control.failReads = true;
   mark = b.log.length;
-  await captured.core.revalidate(B.id);
+  await core().revalidate(B.id);
   assert.equal((await until(b, isError('venue_mismatch'), 'fail-closed drop', mark)).code, 'venue_mismatch');
   store.control.failReads = false;
   const back = await answer(b, () => say(b, { type: 'join', cityId: 'lagos', venueId: 'park' }));
-  assert.deepEqual(back.members.map((member) => member.id), [B.id], 'and can come back once it can');
+  assert.deepEqual(membersOf(back).map((member) => member.id), [B.id], 'and can come back once it can');
 });
 
 test('with the real store and a failing disk, room authority always agrees with the life the server holds', async (t) => {
@@ -283,8 +312,9 @@ test('with the real store and a failing disk, room authority always agrees with 
   assert.equal(failed.status, 503, 'the store reports a write it could not make as storage_unavailable');
   // What does the server hold for A now? (Looked at inside the store's own read; whether that read
   // then rejects because of the disk does not matter here.)
-  let held;
-  await f.server.store.read((db) => { held = structuredClone(Object.values(db.sessions).find((session) => session.publicId === A.id).cities.lagos.state); }).catch(() => {});
+  const box: { held?: LifeState } = {};
+  await f.server.store.read((db) => { box.held = structuredClone(Object.values(db.sessions).find((session) => session.publicId === A.id)?.cities.lagos?.state); }).catch(() => {});
+  const held = box.held;
   const members = (await roster(b, true)).map((member) => member.id);
   const forwarded = await signal(a, b, 'after-failed-write');
   assert.equal(isDeparting(held), false, 'this store takes a change back when its write fails');
@@ -301,7 +331,7 @@ test('with the real store and a failing disk, room authority always agrees with 
   }
   await restore();
   const retry = await act(A, { type: 'travel', id: 'library', mode: 'trek' }, actionId);
-  assert.deepEqual([retry.status, retry.duplicate, retry.state.activeAction.kind], [200, undefined, 'travel'], 'applied now, once: there was no receipt to repeat');
+  assert.deepEqual([retry.status, retry.duplicate, retry.state?.activeAction?.kind], [200, undefined, 'travel'], 'applied now, once: there was no receipt to repeat');
   assert.deepEqual((await roster(b, false)).map((member) => member.id), [B.id], 'once the travel stands, A is out of the room either way');
   assert.deepEqual(await signal(a, b, 'after-retry'), { delivered: false, code: 'join_required' });
 });

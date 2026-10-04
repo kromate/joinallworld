@@ -22,7 +22,23 @@
  * The owner's source-map upload token (SENTRY_AUTH_TOKEN) is NOT read here: only
  * scripts/sentry-sourcemaps.mjs uses it, at build time, and it never reaches a running server.
  */
-export const ENVIRONMENTS = Object.freeze(['production', 'staging', 'dev']);
+import type { TelemetryConfigResponse } from '../../src/types/growth.ts';
+
+export interface ParsedDsn { dsn: string; key: string; endpoint: string }
+export interface TelemetryConfig {
+  active: boolean
+  problems: string[]
+  env: string | null
+  debug: boolean
+  release: string
+  sentryServer: ParsedDsn | null
+  sentryClient: ParsedDsn | null
+  posthog: { key: string; host: string } | null
+  replayOnError: boolean
+  consentAt: 'reward' | 'landing'
+  slowMs: number
+}
+export const ENVIRONMENTS: readonly string[] = Object.freeze(['production', 'staging', 'dev']);
 export const DEFAULT_POSTHOG_HOST = 'https://us.i.posthog.com';
 /** The share of slow requests reported as transactions (the owner's convention for trace sampling). */
 export const TRACE_SAMPLE_RATE = 0.2;
@@ -30,17 +46,16 @@ export const TRACE_SAMPLE_RATE = 0.2;
 /**
  * A DSN split into the parts the envelope endpoint needs. Null for anything that is not a DSN —
  * including the legacy form with a secret key (`public:secret@host`), which must never be used.
- * @returns {{ dsn: string, key: string, endpoint: string } | null}
  */
-export function parseDsn(value) {
+export function parseDsn(value: unknown): ParsedDsn | null {
   if (typeof value !== 'string' || value.length > 300) return null;
   const match = /^(https?):\/\/([A-Za-z0-9_-]+)@([A-Za-z0-9.-]+(?::\d{1,5})?)((?:\/[A-Za-z0-9_-]+)*)\/(\d+)$/.exec(value.trim());
   if (!match) return null;
   const [, protocol, key, host, path, project] = match;
-  return { dsn: value.trim(), key, endpoint: `${protocol}://${host}${path}/api/${project}/envelope/` };
+  return { dsn: value.trim(), key: key!, endpoint: `${protocol}://${host}${path}/api/${project}/envelope/` };
 }
 
-function hostOf(value, allowHttp) {
+function hostOf(value: unknown, allowHttp: boolean): string | null {
   try {
     const url = new URL(String(value));
     if (url.protocol !== 'https:' && !(allowHttp && url.protocol === 'http:')) return null;
@@ -49,30 +64,23 @@ function hostOf(value, allowHttp) {
   } catch { return null; }
 }
 
-/**
- * @param {Record<string, string | undefined>} [env]
- * @param {{ buildId?: string }} [options]
- * @returns {{ active: boolean, problems: string[], env: string | null, debug: boolean, release: string,
- *   sentryServer: ReturnType<typeof parseDsn>, sentryClient: ReturnType<typeof parseDsn>, posthog: { key: string, host: string } | null,
- *   replayOnError: boolean, consentAt: 'reward' | 'landing', slowMs: number }}
- */
-export function readTelemetryConfig(env = {}, { buildId } = {}) {
-  const problems = [];
-  const text = (name) => (typeof env?.[name] === 'string' ? env[name].trim() : '');
+export function readTelemetryConfig(env: Record<string, string | undefined> = {}, { buildId }: { buildId?: string } = {}): TelemetryConfig {
+  const problems: string[] = [];
+  const text = (name: string): string => { const value = env?.[name]; return typeof value === 'string' ? value.trim() : ''; };
   const debug = text('TELEMETRY_DEBUG') === '1';
   const wanted = ['SENTRY_DSN_CLIENT', 'SENTRY_DSN_SERVER', 'POSTHOG_KEY'].filter((name) => text(name));
-  const off = { active: false, problems, env: null, debug, release: String(buildId ?? text('BUILD_ID') ?? '').slice(0, 40), sentryServer: null, sentryClient: null, posthog: null, replayOnError: false, consentAt: 'reward', slowMs: 1000 };
+  const off: TelemetryConfig = { active: false, problems, env: null, debug, release: String(buildId ?? text('BUILD_ID') ?? '').slice(0, 40), sentryServer: null, sentryClient: null, posthog: null, replayOnError: false, consentAt: 'reward', slowMs: 1000 };
   if (!wanted.length) return off;
   const stage = text('TELEMETRY_ENV');
   if (!ENVIRONMENTS.includes(stage)) { problems.push('TELEMETRY_ENV must be production, staging or dev: telemetry stays off.'); return off; }
   if (stage === 'dev' && !debug) { problems.push('TELEMETRY_ENV=dev: telemetry stays off (set TELEMETRY_DEBUG=1 to test the wiring).'); return off; }
-  const dsn = (name) => {
+  const dsn = (name: string): ParsedDsn | null => {
     if (!text(name)) return null;
     const parsed = parseDsn(text(name));
     if (!parsed || (parsed.dsn.startsWith('http://') && !debug)) { problems.push(`${name} is not a usable DSN (https://<public key>@<host>/<project id>): ignored.`); return null; }
     return parsed;
   };
-  let posthog = null;
+  let posthog: TelemetryConfig['posthog'] = null;
   if (text('POSTHOG_KEY')) {
     const key = text('POSTHOG_KEY');
     const host = hostOf(text('POSTHOG_HOST') || DEFAULT_POSTHOG_HOST, debug);
@@ -89,9 +97,9 @@ export function readTelemetryConfig(env = {}, { buildId } = {}) {
 }
 
 /** What GET /api/telemetry/config answers: public values only (see ClientConfig in src/telemetry/policy.js). */
-export function publicConfig(config) {
+export function publicConfig(config: TelemetryConfig | null | undefined): TelemetryConfigResponse {
   if (!config?.active || (!config.sentryClient && !config.posthog)) return { enabled: false };
-  return { enabled: true, env: config.env, release: config.release, debug: config.debug,
+  return { enabled: true, env: config.env!, release: config.release, debug: config.debug,
     sentry: config.sentryClient ? { dsn: config.sentryClient.dsn, replayOnError: config.replayOnError } : null,
     posthog: config.posthog ? { key: config.posthog.key, host: config.posthog.host, consentAt: config.consentAt } : null };
 }

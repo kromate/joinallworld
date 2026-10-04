@@ -196,6 +196,7 @@
  *   });
  *   fixture(t, { routes: [myModule], wsModules: [myWs] }) replaces the registered modules.
  */
+import type { RouteContext, RouteHandler, RouteModule, RouteTable } from '../types.ts';
 import core from './core.ts';
 import auth from './auth.ts';
 import social from './social.ts';
@@ -207,20 +208,22 @@ import growth from './growth.ts';
 import growthMod from './growth-mod.ts';
 import campus from './campus.ts';
 
-export const ROUTE_MODULES = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
+interface PatternRoute { key: string; method: string; segments: string[]; handler: RouteHandler }
+
 /** Build the lookup. Returns { match(method, pathname) → { handler, params } | null, keys }. */
-export function buildRoutes(ctx, modules = ROUTE_MODULES) {
-  const exact = new Map();
-  const patterns = [];
+export function buildRoutes(ctx: RouteContext, modules: RouteModule[] = ROUTE_MODULES): RouteTable {
+  const exact = new Map<string, RouteHandler>();
+  const patterns: PatternRoute[] = [];
   for (const module of modules) {
     for (const [key, handler] of Object.entries(module(ctx) || {})) {
       const parsed = KEY.exec(key);
       if (!parsed || typeof handler !== 'function') throw new Error(`Invalid route: ${key}`);
       if (exact.has(key) || patterns.some(route => route.key === key)) throw new Error(`Duplicate route: ${key}`);
       if (!key.includes('/:')) { exact.set(key, handler); continue; }
-      patterns.push({ key, method: parsed[1], segments: parsed[2].split('/'), handler });
+      patterns.push({ key, method: parsed[1] ?? '', segments: (parsed[2] ?? '').split('/'), handler });
     }
   }
   return {
@@ -231,13 +234,14 @@ export function buildRoutes(ctx, modules = ROUTE_MODULES) {
       const parts = pathname.split('/');
       for (const route of patterns) {
         if (route.method !== method || route.segments.length !== parts.length) continue;
-        const params = {};
+        const params: Record<string, string> = {};
         const hit = route.segments.every((segment, i) => {
-          if (!segment.startsWith(':')) return segment === parts[i];
-          try { params[segment.slice(1)] = decodeURIComponent(parts[i]); } catch { return false; }
-          return parts[i].length > 0;
+          const part = parts[i] ?? '';
+          if (!segment.startsWith(':')) return segment === part;
+          try { params[segment.slice(1)] = decodeURIComponent(part); } catch { return false; }
+          return part.length > 0;
         });
-        if (hit) return { handler: route.handler, params, key: route.key.split(' ')[1] };
+        if (hit) return { handler: route.handler, params, key: route.key.split(' ')[1] ?? '' };
       }
       return null;
     },

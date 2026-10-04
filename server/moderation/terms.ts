@@ -17,7 +17,9 @@
  *   'threat'  telling someone to die or threatening sexual violence
  *   'minors'  sexual content about children
  */
-export const BLOCKED_WORDS = [
+export type BlockedCategory = 'hate' | 'threat' | 'minors'
+
+export const BLOCKED_WORDS: [string, BlockedCategory][] = [
   ['nigger', 'hate'],
   ['faggot', 'hate'],
   ['wetback', 'hate'],
@@ -28,7 +30,7 @@ export const BLOCKED_WORDS = [
   ['childporn', 'minors'],
 ];
 
-export const BLOCKED_PHRASES = [
+export const BLOCKED_PHRASES: [string, BlockedCategory][] = [
   ['kill yourself', 'threat'],
   ['kill urself', 'threat'],
   ['go and die', 'threat'],

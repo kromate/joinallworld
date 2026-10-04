@@ -4,26 +4,43 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
+import { readFile } from 'node:fs/promises';
 import { JOIN_WINDOW_MS } from '../src/game/systems/onboarding.ts';
+import type { LifeState, Look } from '../src/types/index.ts';
 
-const LOOK = { body: 'woman', hair: 'braids', outfit: 'casual', fabric: 'ankara', skin: 'skin-6', hairColor: 'soft-black', outfitColor: 'orange', bottomsColor: 'teal' };
-async function open(f, name) {
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+type Frame = Record<string, unknown>;
+interface Who { name: string; cookie: string; id: string }
+/** What the tests read of a JSON answer: the status, plus the few fields they look at (all optional: an error answer has none). */
+interface Reply { status: number; ok?: boolean; code?: string; error?: string; host?: { id: string; name: string }; venue?: string; hostStatus?: string }
+const isRecord = (value: unknown): value is Frame => typeof value === 'object' && value !== null;
+const isLifeState = (value: unknown): value is LifeState => isRecord(value) && typeof value.cash === 'number' && isRecord(value.onboarding);
+const frameOf = (value: unknown): Frame => (isRecord(value) ? value : {});
+const replyOf = (body: unknown, status: number): Reply => ({ ...(isRecord(body) ? body : {}), status });
+
+const LOOK: Look = { body: 'woman', hair: 'braids', outfit: 'casual', fabric: 'ankara', skin: 'skin-6', hairColor: 'soft-black', outfitColor: 'orange', bottomsColor: 'teal' };
+async function open(f: Fixture, name: string): Promise<Who> {
   const res = await f.request('/api/session', { name, onboarding: true });
   assert.equal(res.status, 200);
-  return { name, cookie: res.headers.get('set-cookie').split(';')[0], ...(await res.json()).session };
+  const body: unknown = await res.json(), session = isRecord(body) ? body.session : undefined;
+  return { name, cookie: (res.headers.get('set-cookie') ?? '').split(';')[0] ?? '', id: isRecord(session) && typeof session.id === 'string' ? session.id : '' };
 }
-const life = async (f, who) => (await (await f.request('/api/life?city=lagos', null, who.cookie)).json()).state;
-const post = async (f, path, body, who) => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-const get = async (f, path, who) => { const res = await f.request(path, null, who.cookie); return { status: res.status, ...(await res.json()) }; };
+async function life(f: Fixture, who: { cookie: string }): Promise<LifeState> {
+  const body: unknown = await (await f.request('/api/life?city=lagos', null, who.cookie)).json();
+  if (!isRecord(body) || !isLifeState(body.state)) throw new Error('not a life response');
+  return body.state;
+}
+const post = async (f: Fixture, path: string, body: Frame, who?: { cookie: string }): Promise<Reply> => { const res = await f.request(path, body, who?.cookie); return replyOf(await res.json(), res.status); };
+const get = async (f: Fixture, path: string, who: { cookie: string }): Promise<Reply> => { const res = await f.request(path, null, who.cookie); return replyOf(await res.json(), res.status); };
 /** A guest who has tapped Play. */
-async function guest(f, name) {
+async function guest(f: Fixture, name: string) {
   const who = await open(f, name);
   await life(f, who);
   assert.equal((await f.action(who.cookie, { type: 'onboarding.quick-start', payload: { look: LOOK } })).code, 'playing');
   return who;
 }
 /** Settle a guest in (moves home unless `stay`). */
-async function settle(f, who, extra = {}) {
+async function settle(f: Fixture, who: { cookie: string }, extra: Frame = {}) {
   await f.action(who.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } });
   await f.action(who.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } });
   const rolled = await f.action(who.cookie, { type: 'onboarding.lottery', payload: {} });
@@ -32,20 +49,20 @@ async function settle(f, who, extra = {}) {
   return moved.state;
 }
 /** Travel and wait out the trip (the last roadside choice is free). */
-async function go(f, who, id) {
+async function go(f: Fixture, who: { cookie: string }, id: string) {
   const started = await f.action(who.cookie, { type: 'travel', id, mode: 'danfo' });
   assert.equal(started.code, 'started', started.state.message);
-  f.advance(started.state.activeAction.duration * 1000);
+  f.advance((started.state.activeAction?.duration ?? NaN) * 1000);
   let state = await life(f, who);
   if (state.travel.event) state = (await f.action(who.cookie, { type: 'world.roadside', payload: { choice: 'decline' } })).state;
   assert.equal(state.location, id);
   return state;
 }
-async function inRoom(f, who, venueId, hostId) {
+async function inRoom(f: Fixture, who: { cookie: string }, venueId: string, hostId?: string): Promise<{ peer: Awaited<ReturnType<Fixture['socket']>>; answer: Frame }> {
   const peer = await f.socket(who);
   peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId, ...(hostId ? { hostId } : {}) }));
   const answer = await peer.next();
-  return { peer, answer };
+  return { peer, answer: isRecord(answer) ? answer : {} };
 }
 
 test('creation is exactly once: one session is one life, however often Play is sent, retried or reloaded', async t => {
@@ -56,20 +73,22 @@ test('creation is exactly once: one session is one life, however often Play is s
   assert.deepEqual([a.onboarding.bornAt, b.onboarding.bornAt, c.onboarding.bornAt], [100000, 100000, 100000]);
   // Play under one action id: a double tap, then a retry after a "lost" answer, then again after a reload a minute later.
   const play = { actionId: `${f.now()}:33333333-3333-4333-8333-333333333333`, cityId: 'lagos', type: 'onboarding.quick-start', payload: { look: LOOK } };
-  const answers = await Promise.all([f.request('/api/action', play, ada.cookie), f.request('/api/action', play, ada.cookie)]).then((all) => Promise.all(all.map((res) => res.json())));
+  const answers: Frame[] = await Promise.all([f.request('/api/action', play, ada.cookie), f.request('/api/action', play, ada.cookie)]).then((all) => Promise.all(all.map(async (res) => frameOf(await res.json()))));
   f.advance(60000);
-  answers.push(await (await f.request('/api/action', play, ada.cookie)).json());
+  answers.push(frameOf(await (await f.request('/api/action', play, ada.cookie)).json()));
   assert.deepEqual(answers.map((answer) => answer.code), ['playing', 'playing', 'playing']);
   assert.equal(answers.filter((answer) => answer.duplicate).length, 2, 'applied once, replayed twice');
   const state = await life(f, ada);
   assert.deepEqual([state.onboarding.playedAt, state.onboarding.stage, state.onboarding.required, state.name], [100000, 'guest', false, 'Ada']);
   // The same id with another look is refused, not applied.
   const other = await f.request('/api/action', { ...play, payload: { look: { ...LOOK, hair: 'afro' } } }, ada.cookie);
-  assert.deepEqual([other.status, (await other.json()).error], [409, 'action_id_conflict']);
+  const conflict: unknown = await other.json();
+  assert.deepEqual([other.status, isRecord(conflict) ? conflict.error : undefined], [409, 'action_id_conflict']);
   // The stored data holds one session with one life per city asked for.
   await f.flush();
-  const stored = JSON.parse(await (await import('node:fs/promises')).readFile(`${f.dir}/devices.json`, 'utf8')).sessions;
-  assert.deepEqual(Object.values(stored).map((session) => Object.keys(session.cities)), [['lagos']]);
+  const file: unknown = JSON.parse(await readFile(`${f.dir}/devices.json`, 'utf8'));
+  const stored: unknown = isRecord(file) ? file.sessions : undefined;
+  assert.deepEqual(Object.values(isRecord(stored) ? stored : {}).map((session) => Object.keys(isRecord(session) && isRecord(session.cities) ? session.cities : {})), [['lagos']]);
   // A name the filter refuses creates nothing at all.
   const refused = await f.request('/api/session', { name: 'ab', onboarding: true });
   assert.equal(refused.status, 400);
@@ -137,7 +156,7 @@ test('invite landing fallbacks: at home the visitor knocks (the existing flow, a
   const bola = await guest(f, 'Bola');
   // Offline: nothing to join, the visitor stays where they arrived.
   const offline = await post(f, '/api/social/join', { host: ada.id, cityId: 'lagos' }, bola);
-  assert.deepEqual([offline.ok, offline.code, offline.host.name, offline.venue, (await life(f, bola)).location], [true, 'offline', 'Ada', undefined, 'park']);
+  assert.deepEqual([offline.ok, offline.code, offline.host?.name, offline.venue, (await life(f, bola)).location], [true, 'offline', 'Ada', undefined, 'park']);
   // At home and connected: the landing says so, and the knock flow lets a guest in.
   const home = await inRoom(f, ada, 'home');
   assert.equal(home.answer.type, 'presence');
@@ -157,7 +176,7 @@ test('invite landing fallbacks: at home the visitor knocks (the existing flow, a
 test('no path lets a guest into a settled state: every home, rent, loan and house action over HTTP, across reloads and a week of bills', async t => {
   const f = await fixture(t);
   const ada = await guest(f, 'Ada');
-  const refused = [];
+  const refused: unknown[] = [];
   for (const fields of [{ type: 'travel', id: 'home', mode: 'trek' }, { type: 'travel', id: 'home', mode: 'danfo' }, { type: 'home.furniture-buy', payload: { item: 'plastic-chair', x: 0, y: 0, rot: 0 } },
     { type: 'home.furniture-move', payload: { id: 'f1', x: 1, y: 1, rot: 0 } }, { type: 'home.furniture-sell', payload: { id: 'f1' } }, { type: 'home.furniture-store', payload: { id: 'f1' } },
     { type: 'home.furniture-place', payload: { item: 'plastic-chair', x: 0, y: 0, rot: 0 } }, { type: 'home.grocery-buy', payload: { id: 'rice' } }, { type: 'home.kitchen-unpack' },
@@ -178,7 +197,8 @@ test('no path lets a guest into a settled state: every home, rent, loan and hous
     [5000, 0, { house: null, arrears: 0, missed: 0 }, null, null, false, false, {}, 'park']);
   // Settling in then creates exactly what the old flow created, once.
   const moved = await settle(f, ada);
-  const rent = { mushin: 2400, yaba: 6000, lekki: 17000 }[moved.property.house];
+  const rents: Record<string, number> = { mushin: 2400, yaba: 6000, lekki: 17000 };
+  const rent = rents[moved.property.house ?? ''] ?? NaN;
   assert.deepEqual([moved.economy.started, moved.economy.rent.house, moved.home.stocked, moved.home.items.length > 0, moved.location], [true, moved.property.house, true, true, 'home']);
   assert.equal(moved.ledger.filter((entry) => entry.reason.startsWith('Start cash')).length, 1);
   assert.ok(rent > 0);

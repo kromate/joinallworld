@@ -24,40 +24,55 @@ import { once } from 'node:events';
 import { fixture } from './test-fixture.ts';
 import { createServer } from './server.ts';
 import { LIGHT_KINDS } from './routes/once.ts';
+import type { Db, OnceReceipt, SessionRecord, Store } from './types.ts';
+import type { LifeState } from '../src/types/life.ts';
+
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+/** A parsed JSON reply with its HTTP status: only the fields these tests read. */
+interface Reply { status: number; ok?: boolean; code?: unknown; error?: unknown; reason?: string; duplicate?: boolean; balance?: unknown; state?: LifeState }
+const reply = async (res: Response): Promise<Reply> => { const body: unknown = await res.json(); if (!isRecord(body)) throw Error('JSON object expected'); return { ...body, status: res.status }; };
+interface Who { id: string; cookie: string }
+type Fixture = Awaited<ReturnType<typeof fixture>>;
+/** A stored receipt as the tests may seed it: one of an unknown kind has no `kind` at all. */
+type SeededReceipt = Omit<OnceReceipt, 'kind'> & { kind?: string };
+const receiptsOf = (record: SessionRecord): Record<string, SeededReceipt> => { record.once ||= {}; return record.once; };
+const stateOf = (reply: Reply): LifeState => { if (!reply.state) throw Error('no state'); return reply.state; };
 
 const HOUR = 3600000;
 const LIMITS = { perPlayer: 50, global: 30, lightPerPlayer: 12, lightGlobal: 20 };
 
-function tools(f) {
-  const store = f.server.store;
-  const get = async (path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-  const post = async (path, body, who) => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-  const life = async (who) => (await get('/api/life?city=lagos', who)).state;
-  const session = (db, who) => Object.values(db.sessions).find((record) => record.publicId === who.id);
+function tools(f: Fixture) {
+  const store: Store = f.server.store;
+  const get = async (path: string, who?: Who) => reply(await f.request(path, null, who?.cookie));
+  const post = async (path: string, body: object, who?: Who) => reply(await f.request(path, body, who?.cookie));
+  const life = async (who: Who): Promise<LifeState> => stateOf(await get('/api/life?city=lagos', who));
+  const session = (db: Db, who: Who): SessionRecord => { const found = Object.values(db.sessions).find((record) => record.publicId === who.id); if (!found) throw Error('no session'); return found; };
+  const lagos = (db: Db, who: Who) => { const city = session(db, who).cities.lagos; if (!city) throw Error('no lagos life'); return city; };
+  const player = (db: Db, id: string) => { const record = db.social?.players[id]; if (!record) throw Error('no social player'); return record; };
   /** Every stored receipt on the server: { owner, id, kind } (adapted: session.once instead of db.social.receipts). */
   const receipts = () => store.read((db) => Object.values(db.sessions).flatMap((record) => Object.entries(record.once ?? {}).map(([id, receipt]) => ({ owner: record.publicId, id, kind: receipt.kind }))));
   /** SEEDED: `count` receipts of `kind` in `who`'s own record, written at `at` (the id carries the same time, as a real one does). */
   let seeded = 0;
-  const seed = (who, kind, count, at) => store.transact((db) => {
-    const record = session(db, who); record.once ||= {};
-    for (let i = 0; i < count; i++) record.once[`${at}:00000000-0000-4000-8000-${String(seeded += 1).padStart(12, '0')}`] = { at, kind, fp: 'synthetic', result: { ok: true, code: 'probe' } };
+  const seed = (who: Who, kind: string, count: number, at: number) => store.transact((db) => {
+    const once = receiptsOf(session(db, who));
+    for (let i = 0; i < count; i++) once[`${at}:00000000-0000-4000-8000-${String(seeded += 1).padStart(12, '0')}`] = { at, kind, fp: 'synthetic', result: { ok: true, code: 'probe' } };
   });
-  const transfer = (who, to, clientId, amount = 500) => post('/api/social/transfers', { to: to.id, amount, cityId: 'lagos', clientId }, who);
-  const interact = (who, target, clientId, action = 'hello') => post(`/api/social/players/${target.id}/interact`, { action, cityId: 'lagos', clientId }, who);
-  return { store, get, post, life, session, receipts, seed, transfer, interact };
+  const transfer = (who: Who, to: Who, clientId: string, amount = 500) => post('/api/social/transfers', { to: to.id, amount, cityId: 'lagos', clientId }, who);
+  const interact = (who: Who, target: Who, clientId: string, action = 'hello') => post(`/api/social/players/${target.id}/interact`, { action, cityId: 'lagos', clientId }, who);
+  return { store, get, post, life, session, lagos, player, receipts, seed, transfer, interact };
 }
 /** Three registered players; `a` and `c` can each give money to `b` through the real transfer route. */
-async function players(f) {
-  const { store, get, life, session } = tools(f);
+async function players(f: Fixture) {
+  const { store, get, life, lagos, player } = tools(f);
   const a = await f.device('Sender Probe'), b = await f.device('Recipient Probe'), c = await f.device('Other Sender');
   for (const who of [a, b, c]) { await get('/api/social/me', who); await life(who); }
   // SEEDED: accounts older than a day, friendships older than an hour, and earned money to give.
   await store.transact((db) => {
-    for (const who of [a, b, c]) db.social.players[who.id].first = f.now() - 25 * HOUR;
+    for (const who of [a, b, c]) player(db, who.id).first = f.now() - 25 * HOUR;
     for (const sender of [a, c]) {
-      db.social.players[sender.id].friends[b.id] = f.now() - 2 * HOUR;
-      db.social.players[b.id].friends[sender.id] = f.now() - 2 * HOUR;
-      const state = session(db, sender).cities.lagos.state;
+      player(db, sender.id).friends[b.id] = f.now() - 2 * HOUR;
+      player(db, b.id).friends[sender.id] = f.now() - 2 * HOUR;
+      const state = lagos(db, sender).state;
       state.cash = 10000; state.social.earned = 5000;
     }
   });
@@ -65,8 +80,9 @@ async function players(f) {
   const balances = async () => { await get('/api/social/me', b); return { a: (await life(a)).cash, b: (await life(b)).cash, c: (await life(c)).cash }; };
   return { a, b, c, balances };
 }
-const count = (list, kind) => list.filter((item) => item.kind === kind).length;
-const holds = (list, who, id) => list.some((item) => item.owner === who.id && item.id === id);
+type Held = { owner: string; id: string; kind: string | undefined };
+const count = (list: Held[], kind: string) => list.filter((item) => item.kind === kind).length;
+const holds = (list: Held[], who: Who, id: string) => list.some((item) => item.owner === who.id && item.id === id);
 
 test('the light class is the player-to-player interaction, and nothing else', () => {
   assert.deepEqual([...LIGHT_KINDS], ['interact']);
@@ -156,7 +172,7 @@ test('a full money allowance refuses a transfer before the debit and leaves inte
   const fullId = f.id();
   const refused = await transfer(c, b, fullId, 100);
   assert.deepEqual([refused.status, refused.error], [503, 'receipts_full']); // adapted: thrown, not 200 { ok: false }
-  assert.match(refused.reason, /Nothing was charged/);
+  assert.match(String(refused.reason), /Nothing was charged/);
   assert.deepEqual(await balances(), paid, 'refused before the debit: nobody was debited or credited');
   assert.equal((await transfer(a, b, ownId)).duplicate, true, 'a stored money receipt still answers');
   const stored = await receipts();
@@ -165,7 +181,7 @@ test('a full money allowance refuses a transfer before the debit and leaves inte
   // A full money allowance does not stop interactions.
   const still = await interact(b, a, f.id(), 'gist');
   assert.equal(still.status, 200);
-  assert.ok(!['receipts_full', 'receipt_quota'].includes(still.error ?? still.code), `decided by the game, not by receipt capacity (${still.code})`);
+  assert.ok(!['receipts_full', 'receipt_quota'].includes(String(still.error ?? still.code)), `decided by the game, not by receipt capacity (${still.code})`);
 });
 
 test('stored receipts are read as they are after a restart: money kept, an unknown kind counted as money, ids guarded across kinds', async t => {
@@ -186,9 +202,9 @@ test('stored receipts are read as they are after a restart: money kept, an unkno
   await seed(b, 'interact', LIMITS.lightPerPlayer, old); await seed(c, 'interact', LIMITS.lightGlobal - LIMITS.lightPerPlayer, old);
   await seed(b, 'transfer', 10, old);
   await store.transact((db) => {
-    const record = session(db, c);
-    record.once[historicId] = { at: old, kind: 'transfer', fp: JSON.stringify([b.id, 300, 'lagos']), result: { ok: true, code: 'sent', amount: 300, to: { id: b.id, name: 'Recipient Probe' }, credited: false, balance: 9700 } };
-    record.once[unknownId] = { at: old, fp: 'synthetic', result: { ok: true, code: 'probe' } };
+    const once = receiptsOf(session(db, c));
+    once[historicId] = { at: old, kind: 'transfer', fp: JSON.stringify([b.id, 300, 'lagos']), result: { ok: true, code: 'sent', amount: 300, to: { id: b.id, name: 'Recipient Probe' }, credited: false, balance: 9700 } };
+    once[unknownId] = { at: old, fp: 'synthetic', result: { ok: true, code: 'probe' } };
   });
   const written = (await receipts()).length;
   assert.equal(written, LIMITS.lightGlobal + 10 + 3);
@@ -197,15 +213,18 @@ test('stored receipts are read as they are after a restart: money kept, an unkno
   await f.flush();
   f.server.closeAllConnections();
   await new Promise((done) => f.server.close(done));
-  await f.server.store.close();
+  await f.server.store.close?.();
   const again = await createServer({ dataDir: f.dir, now: f.now, sessionTtlMs: 2592000000, receiptLimits: LIMITS });
   t.after(async () => { again.closeAllConnections(); await new Promise((done) => again.close(done)); await again.store?.close?.().catch(() => {}); });
   again.listen(0, '127.0.0.1'); await once(again, 'listening');
-  const base = `http://127.0.0.1:${again.address().port}`;
-  const call = async (path, body, who) => { const res = await fetch(base + path, { method: body ? 'POST' : 'GET', headers: { Cookie: who.cookie, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined }); return { status: res.status, ...(await res.json()) }; };
-  const send = (who, clientId, amount = 500) => call('/api/social/transfers', { to: b.id, amount, cityId: 'lagos', clientId }, who);
-  const stored = () => again.store.read((db) => Object.values(db.sessions).flatMap((record) => Object.entries(record.once ?? {}).map(([id, receipt]) => ({ owner: record.publicId, id, kind: receipt.kind }))));
-  const wallets = async () => { await call('/api/social/me', null, b); const cash = async (who) => (await call('/api/life?city=lagos', null, who)).state.cash; return { a: await cash(a), b: await cash(b), c: await cash(c) }; };
+  const address = again.address();
+  if (!address || typeof address === 'string') throw Error('The restarted server is not listening on a port');
+  const base = `http://127.0.0.1:${address.port}`;
+  const call = async (path: string, body: object | null, who: Who) => reply(await fetch(base + path, { method: body ? 'POST' : 'GET', headers: { Cookie: who.cookie, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined }));
+  const send = (who: Who, clientId: string, amount = 500) => call('/api/social/transfers', { to: b.id, amount, cityId: 'lagos', clientId }, who);
+  const againStore: Store = again.store;
+  const stored = () => againStore.read((db) => Object.values(db.sessions).flatMap((record) => Object.entries(record.once ?? {}).map(([id, receipt]) => ({ owner: record.publicId, id, kind: receipt.kind }))));
+  const wallets = async () => { await call('/api/social/me', null, b); const cash = async (who: Who) => stateOf(await call('/api/life?city=lagos', null, who)).cash; return { a: await cash(a), b: await cash(b), c: await cash(c) }; };
   assert.equal((await stored()).length, written, 'the receipts came back as they were written');
 
   // Historical money receipts still answer: no second debit, and a different request under the id is a conflict.
@@ -229,9 +248,9 @@ test('stored receipts are read as they are after a restart: money kept, an unkno
 
   // The receipt of unknown kind counts as MONEY: `b` holds 10 money receipts, the three senders' are 3,
   // and with the unknown one that is 14 of 30 — so 16 more fill the server-wide money allowance exactly.
-  await again.store.transact((db) => {
-    const record = session(db, b);
-    for (let i = 0; i < LIMITS.global - 14; i++) record.once[`${old}:44444444-4444-4444-8444-${String(i).padStart(12, '0')}`] = { at: old, kind: 'transfer', fp: 'synthetic', result: { ok: true, code: 'probe' } };
+  await againStore.transact((db) => {
+    const once = receiptsOf(session(db, b));
+    for (let i = 0; i < LIMITS.global - 14; i++) once[`${old}:44444444-4444-4444-8444-${String(i).padStart(12, '0')}`] = { at: old, kind: 'transfer', fp: 'synthetic', result: { ok: true, code: 'probe' } };
   });
   time.advance(61000); // the server-wide count is taken again once a minute
   const full = await send(a, `${f.now()}:55555555-5555-4555-8555-555555555555`, 100);

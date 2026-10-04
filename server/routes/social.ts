@@ -41,14 +41,19 @@
  *   POST /api/social/transfers           { to, amount, cityId, clientId }
  * The friends list is part of GET /api/social/me.
  */
+import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 import { socialService, MATERIAL } from '../social/service.ts';
+
+type Service = ReturnType<typeof socialService>;
+type Outcome = Parameters<Service['finish']>[1];
+type Call = (db: Db, session: SessionRecord, body: Record<string, unknown>, request: RouteRequest) => Outcome;
 
 export const HTTP_PER_MINUTE = 240;
 
-export default function socialRoutes(ctx) {
+export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const service = socialService(ctx);
   /** Wrap a service call: parse the body, authenticate, rate limit, transact, then push. */
-  const route = (call) => async (request) => {
+  const route = (call: Call): RouteHandler => async (request) => {
     const body = request.method === 'POST' ? await request.json() : {};
     // Every POST is durable before it is answered. A GET that only registered the caller need not
     // wait for the disk; one that applied something owed to their life (a gift, a friendship) does.
@@ -60,7 +65,7 @@ export default function socialRoutes(ctx) {
     }, { durable: (value) => request.method !== 'GET' || value?.[MATERIAL] === true, waitForObserved: true, committed: (value) => service.committed(value) });
     return { body: service.deliver(result), renew: true };
   };
-  const after = (request) => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };
+  const after = (request: RouteRequest): number => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };
   return {
     'GET /api/social/me': route((db, session) => service.me(db, session)),
     'POST /api/social/updates/read': route((db, session) => service.readUpdates(db, session)),

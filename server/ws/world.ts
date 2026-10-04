@@ -5,8 +5,9 @@
  * server already holds — never a scan of residents.
  */
 import { worldOf } from '../world/service.ts';
+import type { RouteContext, WsHandlers } from '../types.ts';
 
-export default function worldSocket(ctx) {
+export default function worldSocket(ctx: RouteContext): WsHandlers {
   const world = worldOf(ctx);
   return { messages: {}, open: (ws) => world.open(ws), close: (ws) => world.close(ws), restore: (ws) => world.open(ws) };
 }

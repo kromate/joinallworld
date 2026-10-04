@@ -36,31 +36,37 @@ import { ESTATE, lgaOf } from '../../src/game/content/world.ts';
 import { worldOf } from '../world/service.ts';
 import { hasPlace } from '../../src/game/systems/estate.ts';
 import { PAGE, fold } from '../world/registry.ts';
+import type { CityId } from '../../src/types/protocol.ts';
+import type { RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 
-export default function worldRoutes(ctx) {
+export default function worldRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const { store, fail } = ctx;
   const world = worldOf(ctx);
-  const limit = (bucket, key, count) => { if (!ctx.allow(`world:${bucket}:${key}`, count, 60000)) throw Object.assign(fail(429, 'world_rate_limited'), { reason: 'You are doing that too quickly. Wait a minute and try again.' }); };
-  const cityParam = (request) => { const value = request.query.get('city'); if (typeof value !== 'string' || !ctx.cityIds.includes(value)) throw fail(400, 'invalid_city'); return value; };
-  const lgaParam = (cityId, id) => { const unit = lgaOf(cityId, id); if (!unit) throw fail(404, 'unknown_lga'); return unit; };
-  const whole = (value, max, fallback = 0) => { if (value === null || value === '') return fallback; const number = Number(value); if (!Number.isInteger(number) || number < 0 || number > max) throw fail(400, 'invalid_number'); return number; };
-  const ready = () => { if (!world.enabled) throw fail(503, 'world_unavailable'); };
+  const limit = (bucket: string, key: string, count: number): void => { if (!ctx.allow(`world:${bucket}:${key}`, count, 60000)) throw Object.assign(fail(429, 'world_rate_limited'), { reason: 'You are doing that too quickly. Wait a minute and try again.' }); };
+  const cityParam = (request: RouteRequest): CityId => { const value = request.query.get('city'); const known = ctx.cityIds.find((id) => id === value); if (known === undefined) throw fail(400, 'invalid_city'); return known; };
+  const lgaParam = (cityId: CityId, id: string | undefined) => { const unit = lgaOf(cityId, id); if (!unit) throw fail(404, 'unknown_lga'); return unit; };
+  function whole(value: string | null | undefined, max: number, fallback?: number): number;
+  function whole(value: string | null | undefined, max: number, fallback: null): number | null;
+  function whole(value: string | null | undefined, max: number, fallback: number | null = 0): number | null { if (value === null || value === '') return fallback; const number = Number(value); if (!Number.isInteger(number) || number < 0 || number > max) throw fail(400, 'invalid_number'); return number; }
+  const ready = (): void => { if (!world.enabled) throw fail(503, 'world_unavailable'); };
   /** The caller, from a read of the main store (their session only): { id, lga, plot, city }. */
-  const caller = (request, cityId) => store.read((db) => {
+  const caller = (request: RouteRequest, cityId: CityId) => store.read((db) => {
     const session = request.requireSession(db);
     const state = session.cities?.[cityId]?.state;
     // A life that has not settled in has no local government and no house (src/game/systems/estate.js hasPlace).
-    const placed = hasPlace(state);
+    const placed = state !== undefined && hasPlace(state);
     return { id: session.publicId, placed, lga: placed ? state.estate.lga : null, plot: placed ? state.estate.plot ?? null : null, hasLife: Boolean(state?.estate), character: { city: session.character?.city ?? cityId } };
   });
   // One character: once a life has travelled to another city, asking for the city it left must not start a second life there.
-  (ctx.checks ??= {}).cityGate = (session, cityId) => {
+  const hasLifeIn = (session: SessionRecord, cityId: string): boolean => { const known = ctx.cityIds.find((id) => id === cityId); return known !== undefined && Boolean(session.cities?.[known]); };
+  const cityGate = (session: SessionRecord, cityId: string): void => {
     const character = session?.character;
-    if (character?.movedAt && character.city !== cityId && character.from === cityId && !session.cities?.[cityId]) {
+    if (character?.movedAt && character.city !== cityId && character.from === cityId && !hasLifeIn(session, cityId)) {
       throw Object.assign(fail(409, 'city_moved'), { reason: `Your character is in ${character.city} now. Open that city to carry on.`, city: character.city });
     }
   };
-  const unchanged = (request, v) => (request.query.get('v') === String(v) ? { body: { v, unchanged: true } } : null);
+  (ctx.checks ??= {}).cityGate = cityGate;
+  const unchanged = (request: RouteRequest, v: unknown) => (request.query.get('v') === String(v) ? { body: { v, unchanged: true } } : null);
 
   return {
     'GET /api/world/me': async (request) => {
@@ -69,7 +75,7 @@ export default function worldRoutes(ctx) {
       let who = await caller(request, cityId);
       limit('me', who.id, 30);
       // A device that asks before its first poll has no life yet: it is created (or brought up to now) exactly as a poll would.
-      if (!who.hasLife) await store.transact((db) => { const session = request.requireSession(db, { renew: true }); ctx.checks.cityGate(session, cityId); ctx.settle(session, cityId); }, { durable: false });
+      if (!who.hasLife) await store.transact((db) => { const session = request.requireSession(db, { renew: true }); cityGate(session, cityId); ctx.settle(session, cityId); }, { durable: false });
       await world.sync(who.id, cityId);
       who = await caller(request, cityId);
       const counts = who.lga && lgaOf(cityId, who.lga) ? await world.lga(cityId, who.lga) : null;

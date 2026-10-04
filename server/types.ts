@@ -88,6 +88,8 @@ export interface SessionRecord {
   character?: { v: 1; city: string; movedAt?: number; from?: string }
   /** Keyed by client/request id; created by the first ctx.once. */
   once?: Record<TimedId, OnceReceipt>
+  /** server/world/service.ts rekey(): a separate life that was already filed under the city a character arrived in, put aside as `<city>:<ms>`. */
+  legacyLives?: Record<string, CityLifeRecord>
 }
 /**
  * WORKER: what deploy/cloudflare-worker.js stores in its `sessions` table. Action receipts live
@@ -424,6 +426,8 @@ export interface StoreHelpers {
   /** Keys of sessions whose record satisfies `predicate`, without copying every record. */
   scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]
   sessionKeyByPublicId(publicId: string): string | undefined
+  /** WORKER: a store that keeps receipts apart from the session records counts the live ones itself (deploy/sqlite-store.js). */
+  onceCounts?(liveSince: number, lightKinds: readonly string[]): { money: number; light: number }
 }
 /** What `fn(db)` receives: private copies; nothing reaches the document unless the transaction returns. */
 export type Db = Database & { readonly $store?: StoreHelpers }
@@ -474,6 +478,8 @@ export interface RouteRequest {
   session(db: Db, options?: { renew?: boolean }): SessionRecord | undefined
   /** Throws 401 device_session_required. */
   requireSession(db: Db, options?: { renew?: boolean }): SessionRecord
+  /** Set by session()/requireSession() once the request's session is known (server/server.ts); the telemetry route reads it. */
+  publicId?: string
   /** Foundation-only: the cookie secret and the raw Node request. */
   secret: string | undefined
   raw: unknown
@@ -786,9 +792,15 @@ export interface WsHandlers {
 export type WsHandlerModule = (ctx: RouteContext) => WsHandlers | void
 /** What buildSocketHandlers() returns. */
 export interface WsDispatch {
-  messages: Map<string, { room: boolean; handle: WsMessageHandler   /** Hand a still-connected socket back to every module after the host lost its memory (Worker only). */
-  restore(ws: WsConnection): void
-}>
+  messages: Map<string, { room: boolean; handle: WsMessageHandler }>
   open(ws: WsConnection): void
   close(ws: WsConnection): void
+  /** Hand a still-connected socket back to every module after the host lost its memory (Worker only). */
+  restore(ws: WsConnection): void
+}
+
+/** The part of a Response that server/growth reads from an answer to ctx.fetch (typed `unknown` there; see growth/data.ts outboundResponse). */
+export interface OutboundResponse {
+  status: number
+  headers?: { get(name: string): string | null }
 }

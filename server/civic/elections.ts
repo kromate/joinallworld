@@ -8,33 +8,40 @@
 // The winner is derived from the stored ballot every time, so nothing has to "run" at midnight.
 import { lagosTime, lagosDayStart } from '../../src/game/clock.ts';
 import { ELECTION } from '../../src/game/content/civic.ts';
+import type { Announcement, CivicNotice, ElectionPhase, ElectionResult, Governor } from '../../src/types/civic.ts';
+import type { PlayerRef } from '../../src/types/protocol.ts';
+import type { CivicCityRecord, ElectionRecord } from '../types.ts';
+
+type Block = { code: string; reason: string };
+export interface Timeline { week: number; nominationsAt: number; votingAt: number; closesAt: number; termEndsAt: number }
+export interface Standing { id: string; name: string; slogan: string; at: number; votes: number }
 
 const DAY_MS = 86400000;
-const mondayOf = (week) => 7 * week - 3;
+const mondayOf = (week: number): number => 7 * week - 3;
 
 /** Key moments of one week's election, in server ms. */
-export function timeline(week) {
+export function timeline(week: number): Timeline {
   const monday = mondayOf(week);
   const closesAt = lagosDayStart(monday + 6);
   return { week, nominationsAt: lagosDayStart(monday), votingAt: lagosDayStart(monday + 3), closesAt, termEndsAt: closesAt + ELECTION.termDays * DAY_MS };
 }
 
 /** The phase at `now` and when it ends. */
-export function phaseAt(now) {
+export function phaseAt(now: number): Timeline & { phase: ElectionPhase; endsAt: number } {
   const time = lagosTime(now), times = timeline(time.week);
-  if (now < times.votingAt) return { week: time.week, phase: 'nominations', endsAt: times.votingAt, ...times };
-  if (now < times.closesAt) return { week: time.week, phase: 'voting', endsAt: times.closesAt, ...times };
-  return { week: time.week, phase: 'results', endsAt: lagosDayStart(mondayOf(time.week + 1)), ...times };
+  if (now < times.votingAt) return { phase: 'nominations', endsAt: times.votingAt, ...times };
+  if (now < times.closesAt) return { phase: 'voting', endsAt: times.closesAt, ...times };
+  return { phase: 'results', endsAt: lagosDayStart(mondayOf(time.week + 1)), ...times };
 }
 
-const electionOf = (city, week) => city.gov.elections[week];
+const electionOf = (city: CivicCityRecord, week: number): ElectionRecord | undefined => city.gov.elections[week];
 
 /**
  * Candidates with their vote counts, best first. Deterministic order: most votes, then the
  * earlier declaration, then the smaller public id — which is also the tie-break for the winner.
  */
-export function tally(election) {
-  const counts = {};
+export function tally(election: ElectionRecord | undefined): Standing[] {
+  const counts: Record<string, number> = {};
   for (const candidate of Object.values(election?.votes ?? {})) counts[candidate] = (counts[candidate] ?? 0) + 1;
   return Object.entries(election?.candidates ?? {})
     .map(([id, candidate]) => ({ id, name: candidate.name, slogan: candidate.slogan, at: candidate.at, votes: counts[id] ?? 0 }))
@@ -42,13 +49,13 @@ export function tally(election) {
 }
 
 /** The winner of a finished ballot, or null when nobody stood or nobody voted. */
-export function winnerOf(election) {
+export function winnerOf(election: ElectionRecord | undefined): Standing | null {
   const best = tally(election)[0];
   return best && best.votes > 0 ? best : null;
 }
 
 /** Result of the week's election once its polls have closed, else null. */
-function resultOf(city, week, now) {
+function resultOf(city: CivicCityRecord, week: number, now: number): ElectionResult | null {
   const times = timeline(week);
   if (now < times.closesAt) return null;
   const election = electionOf(city, week);
@@ -59,14 +66,14 @@ function resultOf(city, week, now) {
 }
 
 /** The sitting Governor at `now`, or null. A term runs from one Sunday 00:00 to the next. */
-export function governorAt(city, now) {
+export function governorAt(city: CivicCityRecord, now: number): Governor | null {
   const week = Math.floor((lagosTime(now).day - 3) / 7);
   const result = resultOf(city, week, now);
   return result?.winner && now < result.termEndsAt ? { ...result.winner, week, termStartedAt: result.closedAt, termEndsAt: result.termEndsAt } : null;
 }
 
 /** Why `who` cannot be added to the ballot right now, or null. Wallet and age are checked by the rules engine. */
-export function declareBlock(city, now, playerId) {
+export function declareBlock(city: CivicCityRecord, now: number, playerId: string): Block | null {
   const phase = phaseAt(now);
   const candidates = electionOf(city, phase.week)?.candidates ?? {};
   if (Object.hasOwn(candidates, playerId)) return { code: 'already_candidate', reason: 'You are already on this week’s ballot.' };
@@ -78,7 +85,7 @@ export function declareBlock(city, now, playerId) {
   return null;
 }
 
-export function declare(city, now, who, slogan) {
+export function declare(city: CivicCityRecord, now: number, who: PlayerRef, slogan: string): void {
   const week = phaseAt(now).week;
   const election = city.gov.elections[week] ||= { candidates: {}, votes: {} };
   election.candidates[who.id] = { name: who.name, slogan, at: now };
@@ -86,7 +93,7 @@ export function declare(city, now, who, slogan) {
 }
 
 /** Why `playerId` cannot vote for `candidateId` right now, or null. */
-export function voteBlock(city, now, playerId, candidateId) {
+export function voteBlock(city: CivicCityRecord, now: number, playerId: string, candidateId: unknown): Block | null {
   const phase = phaseAt(now);
   const election = electionOf(city, phase.week);
   if (election && Object.hasOwn(election.votes, playerId)) return { code: 'already_voted', reason: 'You have already voted in this election. Each player has one vote.' };
@@ -103,24 +110,26 @@ export function voteBlock(city, now, playerId, candidateId) {
  * election keeps a count per key so the route can apply the per-address soft cap. Counts of
  * earlier elections are dropped here, so they live for one election only.
  */
-export function vote(city, now, playerId, candidateId, addressKey = null) {
+export function vote(city: CivicCityRecord, now: number, playerId: string, candidateId: string, addressKey: string | null = null): void {
   const week = phaseAt(now).week, election = electionOf(city, week);
+  if (!election) throw new Error('no_election');
   election.votes[playerId] = candidateId;
   for (const [key, other] of Object.entries(city.gov.elections)) if (Number(key) !== week && other) { delete other.addr; delete other.capLogged; }
   if (typeof addressKey === 'string' && addressKey) {
     if (election.addr === null || typeof election.addr !== 'object' || Array.isArray(election.addr)) election.addr = {};
-    election.addr[addressKey] = (Number.isSafeInteger(election.addr[addressKey]) ? election.addr[addressKey] : 0) + 1;
+    const previous = election.addr[addressKey];
+    election.addr[addressKey] = (previous !== undefined && Number.isSafeInteger(previous) ? previous : 0) + 1;
   }
 }
 
 /** Votes already counted from this address key in the current election. */
-export function addressVotes(city, now, addressKey) {
+export function addressVotes(city: CivicCityRecord, now: number, addressKey: string): number {
   const count = electionOf(city, phaseAt(now).week)?.addr?.[addressKey];
-  return Number.isSafeInteger(count) && count > 0 ? count : 0;
+  return count !== undefined && Number.isSafeInteger(count) && count > 0 ? count : 0;
 }
 
 /** True the first time it is asked for this key in the current election (so the audit trail gets one line, not one per attempt). */
-export function firstCapNotice(city, now, addressKey) {
+export function firstCapNotice(city: CivicCityRecord, now: number, addressKey: string): boolean {
   const election = electionOf(city, phaseAt(now).week);
   if (!election) return false;
   if (election.capLogged === null || typeof election.capLogged !== 'object' || Array.isArray(election.capLogged)) election.capLogged = {};
@@ -130,13 +139,13 @@ export function firstCapNotice(city, now, addressKey) {
 }
 
 /** Operator removal of one announcement. Returns it, or null. */
-export function removeAnnouncement(city, id) {
+export function removeAnnouncement(city: CivicCityRecord, id: string) {
   const index = city.gov.announcements.findIndex((item) => item.id === id);
-  return index < 0 ? null : city.gov.announcements.splice(index, 1)[0];
+  return index < 0 ? null : city.gov.announcements.splice(index, 1)[0] ?? null;
 }
 
 /** Why the player cannot post a Governor's announcement right now, or null. */
-export function announceBlock(city, now, playerId) {
+export function announceBlock(city: CivicCityRecord, now: number, playerId: string): Block | null {
   const governor = governorAt(city, now);
   if (governor?.id !== playerId) return { code: 'not_governor', reason: 'Only the sitting Governor can post an announcement. Win this week’s election first.' };
   const rules = ELECTION.announcement, day = lagosTime(now).day;
@@ -147,16 +156,17 @@ export function announceBlock(city, now, playerId) {
   return null;
 }
 
-export function announce(city, now, who, text, id) {
+export function announce(city: CivicCityRecord, now: number, who: PlayerRef, text: string, id: string): void {
   const governor = governorAt(city, now);
+  if (!governor) throw new Error('not_governor');
   city.gov.announcements.push({ id, by: { id: who.id, name: who.name }, text, at: now, term: governor.week });
   if (city.gov.announcements.length > ELECTION.announcement.keep) city.gov.announcements.splice(0, city.gov.announcements.length - ELECTION.announcement.keep);
 }
 
-const publicAnnouncement = (item) => ({ id: item.id, by: { id: item.by.id, name: item.by.name }, text: item.text, at: item.at });
+const publicAnnouncement = (item: CivicCityRecord['gov']['announcements'][number]): Announcement => ({ id: item.id, by: { id: item.by.id, name: item.by.name }, text: item.text, at: item.at });
 
 /** Everything the Governor panel and the State House sheet show. `viewerId` may be null. */
-export function govView(city, now, viewerId = null) {
+export function govView(city: CivicCityRecord, now: number, viewerId: string | null = null) {
   const phase = phaseAt(now);
   const election = electionOf(city, phase.week);
   const standings = tally(election);
@@ -175,8 +185,8 @@ export function govView(city, now, viewerId = null) {
 }
 
 /** Recent civic news for the notice surface, newest first: results, phase changes and announcements. */
-export function notices(city, now, cityName = 'Lagos') {
-  const phase = phaseAt(now), items = [];
+export function notices(city: CivicCityRecord, now: number, cityName = 'Lagos'): CivicNotice[] {
+  const phase = phaseAt(now), items: CivicNotice[] = [];
   for (const week of [phase.week, phase.week - 1]) {
     const times = timeline(week), result = resultOf(city, week, now);
     if (result) {

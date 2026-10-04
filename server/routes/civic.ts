@@ -54,6 +54,11 @@
  *   GET  /api/civic/richlist    { city, week, size, balances, earners, you, counters }
  *   POST /api/civic/prefs        { richList?: boolean, directory?: boolean }  (true = listed) → { ok, prefs: { richList, directory } }
  */
+import type { LifeState } from '../../src/types/life.ts';
+import type { ActionType } from '../../src/types/actions.ts';
+import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
+import type { CityCounters, EligibilityCheck, Gate, GovResponse, GovRules, GovYou, HuntResponse, PulseResponse } from '../../src/types/civic.ts';
+import type { ActionOutcome, CivicCityRecord, CivicCollection, Db, RouteContext, RouteHandler, RouteKey, RouteRequest, RouteResult } from '../types.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { makeContext } from '../../src/game/util.ts';
 import { VENUES } from '../../src/game/content/venues.ts';
@@ -68,39 +73,41 @@ import { AD_KINDS, adsView, removeAd, rent, rentBlock, validateCreative } from '
 import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong } from '../civic/radio.ts';
 import { checkIn, counters, huntCounters, neighboursView, richListView } from '../civic/residents.ts';
 
-const CITY_NAMES = { lagos: 'Lagos', ibadan: 'Ibadan' };
+const CITY_NAMES: Record<CityId, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const COUNTER_CACHE_MS = 5000;
 
-export default function civicRoutes(ctx) {
+type Block = { code: string; reason?: string | undefined };
+
+export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const { store, fail } = ctx;
   const ttl = () => ctx.config.sessionTtlMs;
-  const cityName = (cityId) => CITY_NAMES[cityId] ?? cityId;
+  const cityName = (cityId: CityId): string => CITY_NAMES[cityId] ?? cityId;
 
-  const cityParam = (value) => { if (typeof value !== 'string' || !ctx.cityIds.includes(value)) throw fail(400, 'invalid_city'); return value; };
-  const limit = (bucket, key, count, windowMs = 60000) => { if (!ctx.allow(`civic:${bucket}:${key}`, count, windowMs)) throw fail(429, 'civic_rate_limited'); };
-  const civicOf = (db) => ctx.collection(db, 'civic', emptyCivic());
-  const engine = (cityId, op) => makeContext({ now: ctx.now(), cityId, seed: `civic|${op}|${ctx.now()}` });
+  const cityParam = (value: unknown): CityId => { const found = ctx.cityIds.find((id) => id === value); if (typeof value !== 'string' || found === undefined) throw fail(400, 'invalid_city'); return found; };
+  const limit = (bucket: string, key: string, count: number, windowMs = 60000): void => { if (!ctx.allow(`civic:${bucket}:${key}`, count, windowMs)) throw fail(429, 'civic_rate_limited'); };
+  const civicOf = (db: Db): CivicCollection => ctx.collection(db, 'civic', emptyCivic());
+  const engine = (cityId: CityId, op: string) => makeContext({ now: ctx.now(), cityId, seed: `civic|${op}|${ctx.now()}` });
   /** Run a server-completed civic action through the rules engine, inside the caller's transaction. */
   // Inside ctx.once the receipt covers the action; elsewhere `guard` says why a repeat cannot apply twice (ctx.act in server.js).
-  const act = (life, cityId, type, payload = {}, guard) => ctx.act(life, { type, cityId, payload, ...(guard ? { stateGuard: guard } : {}) });
-  const refused = (block, extra = {}) => ({ body: { ok: false, code: block.code, reason: block.reason, ...extra }, renew: true });
-  const muted = (who) => ctx.checks?.muted?.(who.id) ?? null;
+  const act = (life: LifeState, cityId: CityId, type: ActionType, payload: Record<string, unknown> = {}, guard?: string): ActionOutcome => ctx.act(life, { type, cityId, payload, ...(guard ? { stateGuard: guard } : {}) });
+  const refused = (block: Block, extra: object = {}): RouteResult => ({ body: { ok: false, code: block.code, reason: block.reason, ...extra }, renew: true });
+  const muted = (who: PlayerRef): Block | null => ctx.checks?.muted?.(who.id) ?? null;
   const moderation = moderationService(ctx);
   /** Pseudonymous key for an address: a hash salted with a random value stored once in the civic collection. */
-  function addressKey(civic, ip) {
+  function addressKey(civic: CivicCollection, ip: string): string {
     if (typeof civic.salt !== 'string' || civic.salt.length < 16) civic.salt = `${ctx.randomId?.() ?? ''}${ctx.now()}`;
     return hash53(`${civic.salt}|${ip}`);
   }
   // Preferences of players who are no longer residents anywhere are dropped once an hour.
-  function prunePrefs(civic) {
-    if (ctx.now() - (Number.isFinite(civic.prefsPrunedAt) ? civic.prefsPrunedAt : 0) < 3600000) return;
+  function prunePrefs(civic: CivicCollection): void {
+    if (ctx.now() - (typeof civic.prefsPrunedAt === 'number' && Number.isFinite(civic.prefsPrunedAt) ? civic.prefsPrunedAt : 0) < 3600000) return;
     civic.prefsPrunedAt = ctx.now();
     const known = new Set(Object.values(civic.cities).flatMap((city) => Object.keys(city?.residents ?? {})));
     for (const id of Object.keys(civic.prefs)) if (!known.has(id)) delete civic.prefs[id];
   }
 
   /** Signed-in entry to a write: settle the life and refresh the caller's resident entry. */
-  function enter(db, request, cityId) {
+  function enter(db: Db, request: RouteRequest, cityId: CityId) {
     const session = request.requireSession(db, { renew: true });
     const who = ctx.publicSession(session);
     const life = ctx.settle(session, cityId);
@@ -114,16 +121,16 @@ export default function civicRoutes(ctx) {
     return { session, who, life, civic, city, resident };
   }
   /** Read-only view of the same things. Works on the snapshot, so nothing it settles is saved. */
-  function peek(db, request, cityId) {
+  function peek(db: Db, request: RouteRequest, cityId: CityId) {
     const session = request.session(db);
     const civic = civicOf(db), city = cityOf(civic, cityId);
     return { session, who: session ? ctx.publicSession(session) : null, life: session ? ctx.settle(session, cityId) : null, civic, city };
   }
-  const viewerKey = (request, who) => who?.id ?? `ip:${request.ip}`;
+  const viewerKey = (request: RouteRequest, who: PlayerRef | null): string => who?.id ?? `ip:${request.ip}`;
 
   // Presence is a scan over open sockets per resident, so the city totals are cached briefly.
-  const counterCache = new Map();
-  function cityCounters(city, cityId) {
+  const counterCache = new Map<CityId, { at: number; value: CityCounters }>();
+  function cityCounters(city: CivicCityRecord, cityId: CityId): CityCounters {
     const hit = counterCache.get(cityId), now = ctx.now();
     if (hit && now >= hit.at && now - hit.at < COUNTER_CACHE_MS) return hit.value;
     const value = counters(city, now, ttl(), ctx.online);
@@ -131,38 +138,39 @@ export default function civicRoutes(ctx) {
     return value;
   }
 
-  const rules = () => ({ beta: true, minDaysToRun: ELECTION.minDaysToRun, minDaysToVote: ELECTION.minDaysToVote, minWorkDays: ELECTION.minWorkDays, votesPerAddress: ctx.config.votesPerAddress, filingFee: ELECTION.filingFee, sloganMin: ELECTION.sloganMin, sloganMax: ELECTION.sloganMax,
+  const rules = (): GovRules => ({ beta: true, minDaysToRun: ELECTION.minDaysToRun, minDaysToVote: ELECTION.minDaysToVote, minWorkDays: ELECTION.minWorkDays, votesPerAddress: ctx.config.votesPerAddress, filingFee: ELECTION.filingFee, sloganMin: ELECTION.sloganMin, sloganMax: ELECTION.sloganMax,
     maxCandidates: ELECTION.maxCandidates, announcementMax: ELECTION.announcement.max, announcementsPerDay: ELECTION.announcement.perDay,
     pollingVenue: Object.hasOwn(VENUES, ELECTION.pollingVenue) ? ELECTION.pollingVenue : null });
 
   /** Governor state plus, for a signed-in viewer, exactly why they can or cannot run, vote and announce. */
-  function govBody(city, cityId, who, life) {
+  function govBody(city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null): GovResponse {
     const now = ctx.now(), view = govView(city, now, who?.id ?? null);
-    let you = null;
+    let you: GovYou | null = null;
     if (who && life) {
       const eligibility = civicEligibility(life, engine(cityId, 'eligibility'));
-      const unmet = (checks) => { const item = checks.find((entry) => !entry.met); return item ? { code: item.code, reason: `${item.label}. ${item.detail}` } : null; };
-      const gate = (block) => (block ? { ok: false, code: block.code, reason: block.reason } : { ok: true });
-      you = {
+      const unmet = (checks: EligibilityCheck[]) => { const item = checks.find((entry) => !entry.met); return item ? { code: item.code, reason: `${item.label}. ${item.detail}` } : null; };
+      const gate = (block: { code: string; reason: string } | null): Gate => (block ? { ok: false, code: block.code, reason: block.reason } : { ok: true });
+      const youBody: GovYou = {
         days: eligibility.days, isGovernor: view.governor?.id === who.id, isCandidate: view.election.candidates.some((item) => item.you), votedFor: view.election.yourVote,
         run: { ...gate(declareBlock(city, now, who.id) ?? unmet(eligibility.run)), checks: eligibility.run },
         vote: { ...gate(voteBlock(city, now, who.id, view.election.candidates[0]?.id ?? '') ?? unmet(eligibility.vote)), checks: eligibility.vote },
         announce: gate(announceBlock(city, now, who.id)),
       };
       // With an empty ballot the only thing missing is a candidate; say that rather than "unknown candidate".
-      if (!you.vote.ok && you.vote.code === 'unknown_candidate') you.vote.reason = 'Nobody is on the ballot yet, so there is no one to vote for.';
+      if (!youBody.vote.ok && youBody.vote.code === 'unknown_candidate') youBody.vote.reason = 'Nobody is on the ballot yet, so there is no one to vote for.';
+      you = youBody;
     }
     return { city: cityId, ...view, rules: rules(), you };
   }
 
-  const huntBody = (city, cityId, life) => {
+  const huntBody = (city: CivicCityRecord, cityId: CityId, life: LifeState | null): HuntResponse => {
     const mine = life?.civic?.hunt;
     const found = mine ? mine.gems.filter((gem) => gem.found).length : 0;
     return { city: cityId, ...huntCounters(city, ctx.now()), prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay,
       you: mine ? { found, total: mine.gems.length, claimed: mine.claimed, canClaim: found === mine.gems.length && !mine.claimed } : null };
   };
 
-  function pulseBody(city, cityId, who, life, checkedIn) {
+  function pulseBody(city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null, checkedIn: boolean): PulseResponse {
     const now = ctx.now(), view = govView(city, now, who?.id ?? null);
     const hunt = huntCounters(city, now);
     const venue = life && canOccupyVenue(life, life.location) ? life.location : null;
@@ -170,7 +178,7 @@ export default function civicRoutes(ctx) {
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
       notices: notices(city, now, cityName(cityId)),
-      radio: venue && isClub(venue) ? radioView(city, now, venue, who.id) : null };
+      radio: venue && isClub(venue) ? radioView(city, now, venue, who?.id ?? null) : null };
   }
 
   return {
@@ -209,8 +217,9 @@ export default function civicRoutes(ctx) {
         limit('gov-run', who.id, 12);
         // The filing fee and the ballot entry are one receipted step: a retry with the same id pays nothing more.
         const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.run', fingerprint: [cityId, slogan.ok ? slogan.text : String(body.slogan ?? '')] }, () => {
-          const block = declareBlock(city, ctx.now(), who.id) ?? muted(who) ?? (slogan.ok ? null : slogan);
+          const block = declareBlock(city, ctx.now(), who.id) ?? muted(who);
           if (block) return { ok: false, code: block.code, reason: block.reason };
+          if (!slogan.ok) return { ok: false, code: slogan.code, reason: slogan.reason };
           const paid = act(life, cityId, 'civic.run');
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
           declare(city, ctx.now(), who, slogan.text);
@@ -249,6 +258,7 @@ export default function civicRoutes(ctx) {
         }
         const allowed = act(life, cityId, 'civic.vote', {}, 'voteBlock refuses a second vote and the ballot entry is written in this transaction');
         if (!allowed.ok) return refused(allowed, { state: life, gov: govBody(city, cityId, who, life) });
+        if (typeof body.candidate !== 'string') return refused({ code: 'unknown_candidate', reason: 'Choose a candidate from this week’s ballot.' }, { state: life, gov: govBody(city, cityId, who, life) }); // voteBlock has already refused this
         vote(city, ctx.now(), who.id, body.candidate, key);
         return { body: { ok: true, code: 'voted', state: life, gov: govBody(city, cityId, who, life) }, renew: true };
       });
@@ -262,6 +272,7 @@ export default function civicRoutes(ctx) {
         limit('gov-announce', who.id, 6);
         const block = announceBlock(city, ctx.now(), who.id) ?? muted(who) ?? (text.ok ? null : text);
         if (block) return refused(block, { gov: govBody(city, cityId, who, life) });
+        if (!text.ok) return refused(text, { gov: govBody(city, cityId, who, life) });
         announce(city, ctx.now(), who, text.text, nextId(city, 'a'));
         return { body: { ok: true, code: 'announced', gov: govBody(city, cityId, who, life) }, renew: true };
       });
@@ -272,10 +283,11 @@ export default function civicRoutes(ctx) {
       const cityId = cityParam(request.query.get('city'));
       const body = await store.read(db => {
         const session = request.requireSession(db);
-        const { who, civic, city } = peek(db, request, cityId);
+        const { civic, city } = peek(db, request, cityId);
+        const viewer = ctx.publicSession(session);
         limit('read', session.publicId, 120);
-        return { city: cityId, demonym: DEMONYMS[cityId] ?? `${cityName(cityId)} residents`, hidden: civic.prefs[who.id]?.directory === true,
-          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, who.id) };
+        return { city: cityId, demonym: DEMONYMS[cityId] ?? `${cityName(cityId)} residents`, hidden: civic.prefs[viewer.id]?.directory === true,
+          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, viewer.id) };
       });
       return { body };
     },
@@ -294,8 +306,9 @@ export default function civicRoutes(ctx) {
         const { session, who, life, city } = enter(db, request, cityId);
         limit('ads-rent', who.id, 30);
         const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.rent-ad', fingerprint: [cityId, body.kind, body.slot, creative.ok ? creative.creative.text : body.text, body.colour, body.icon].map((part) => String(part ?? '')) }, () => {
-          const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot) ?? muted(who) ?? (creative.ok ? null : creative);
+          const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot) ?? muted(who);
           if (block) return { ok: false, code: block.code, reason: block.reason };
+          if (!creative.ok) return { ok: false, code: creative.code, reason: creative.reason };
           const paid = act(life, cityId, 'civic.rent-ad', { kind: body.kind, slot: body.slot });
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
           rent(city, ctx.now(), who, body.kind, body.slot, creative.creative);
@@ -308,7 +321,7 @@ export default function civicRoutes(ctx) {
     'POST /api/civic/ads/remove': async (request) => {
       const body = await request.json();
       const cityId = cityParam(body.cityId);
-      if (!AD_KINDS.includes(body.kind) || typeof body.slot !== 'string' || body.slot.length > 16) throw fail(400, 'invalid_slot');
+      if (!AD_KINDS.some((kind) => kind === body.kind) || typeof body.slot !== 'string' || body.slot.length > 16) throw fail(400, 'invalid_slot');
       return store.transact(db => {
         const { who, city } = enter(db, request, cityId);
         limit('ads-remove', who.id, 12);
@@ -343,11 +356,12 @@ export default function civicRoutes(ctx) {
         const now = ctx.now(), venue = life.location;
         // A retried request (same id) returns the entry it already bought instead of charging again.
         const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.shoutout', fingerprint: [cityId, ...(song.ok ? [song.song.title, song.song.artist] : [String(body.title ?? ''), String(body.artist ?? '')])] }, () => {
-          const block = shoutBlock(city, now, who.id, venue) ?? muted(who) ?? (song.ok ? null : song);
+          const block = shoutBlock(city, now, who.id, venue) ?? muted(who);
           if (block) return { ok: false, code: block.code, reason: block.reason };
+          if (!song.ok) return { ok: false, code: song.code, reason: song.reason };
           const paid = act(life, cityId, 'civic.shoutout');
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
-          const entry = addShoutout(city, now, who, venue, song.song, nextId(city, 'r'), body.requestId);
+          const entry = addShoutout(city, now, who, venue, song.song, nextId(city, 'r'), typeof body.requestId === 'string' ? body.requestId : null);
           checkIn(city, now, who, life, ttl());
           return { ok: true, code: 'queued', entry: publicEntry(entry, who.id) };
         });
@@ -360,7 +374,7 @@ export default function civicRoutes(ctx) {
       const cityId = cityParam(request.query.get('city'));
       const signedIn = await store.read(db => request.session(db)?.publicId ?? null);
       limit('read', signedIn ?? `ip:${request.ip}`, 120);
-      const build = (civic, city, who) => ({ city: cityId, ...richListView(city, ctx.now(), ttl(), civic.prefs, who?.id ?? null), counters: cityCounters(city, cityId) });
+      const build = (civic: CivicCollection, city: CivicCityRecord, who: PlayerRef | null) => ({ city: cityId, ...richListView(city, ctx.now(), ttl(), civic.prefs, who?.id ?? null), counters: cityCounters(city, cityId) });
       // Opening the list checks the viewer in first, so their own row is never stale.
       if (signedIn && ctx.allow(`civic:checkin:${signedIn}`, 6)) {
         const body = await store.transact(db => { const { who, civic, city } = enter(db, request, cityId); counterCache.delete(cityId); return build(civic, city, who); }, { durable: false });
@@ -370,7 +384,8 @@ export default function civicRoutes(ctx) {
     },
     'POST /api/civic/prefs': async (request) => {
       const body = await request.json();
-      for (const key of ['richList', 'directory']) if (body[key] !== undefined && typeof body[key] !== 'boolean') throw fail(400, 'invalid_prefs');
+      const prefKeys = ['richList', 'directory'] as const;
+      for (const key of prefKeys) if (body[key] !== undefined && typeof body[key] !== 'boolean') throw fail(400, 'invalid_prefs');
       const prefs = await store.transact(db => {
         const session = request.requireSession(db, { renew: true });
         limit('prefs', session.publicId, 12);
@@ -378,7 +393,7 @@ export default function civicRoutes(ctx) {
         if (civic.prefs === null || typeof civic.prefs !== 'object' || Array.isArray(civic.prefs)) civic.prefs = {};
         const mine = { ...civic.prefs[session.publicId] };
         // Stored as "hidden" flags so that the default (no entry) is listed.
-        for (const key of ['richList', 'directory']) if (body[key] === true) delete mine[key]; else if (body[key] === false) mine[key] = true;
+        for (const key of prefKeys) if (body[key] === true) delete mine[key]; else if (body[key] === false) mine[key] = true;
         if (Object.keys(mine).length) civic.prefs[session.publicId] = mine; else delete civic.prefs[session.publicId];
         return { richList: mine.richList !== true, directory: mine.directory !== true, id: session.publicId };
       // Once the preference is in the file the world registry follows it (server/world/service.ts): a hidden player's house stays on the map, anonymous.

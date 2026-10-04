@@ -19,34 +19,48 @@
 //     is "decided afresh" — it can be charged again. Here: the id carries its own time and an id older
 //     than the window is refused with 409 client_id_expired, so it can never run a second time.
 import test from 'node:test';
+import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
 import { ACTION_WINDOW_MS } from './protocol.ts';
+import type { Db, SessionRecord, Store } from './types.ts';
+import type { LifeState } from '../src/types/life.ts';
+
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+/** A parsed JSON reply with its HTTP status: only the fields these tests read. */
+interface Reply { status: number; ok?: boolean; code?: unknown; error?: unknown; reason?: string; duplicate?: boolean; balance?: unknown; state?: LifeState; usedToday?: unknown; playing?: unknown; entry?: { id: unknown } }
+const reply = async (res: Response): Promise<Reply> => { const body: unknown = await res.json(); if (!isRecord(body)) throw Error('JSON object expected'); return { ...body, status: res.status }; };
+interface Who { id: string; cookie: string }
+type FixtureOptions = Parameters<typeof fixture>[1];
 
 const HOUR = 3600000;
 
-async function harness(t, options) {
+async function harness(t: TestContext, options?: FixtureOptions) {
   const f = await fixture(t, options);
-  const store = f.server.store;
-  const get = async (path, who) => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-  const post = async (path, body, who) => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json()) }; };
-  const life = async (who) => (await get('/api/life?city=lagos', who)).state;
-  const session = (db, who) => Object.values(db.sessions).find((record) => record.publicId === who.id);
-  return { f, store, get, post, life, session };
+  const store: Store = f.server.store;
+  const get = async (path: string, who?: Who) => reply(await f.request(path, null, who?.cookie));
+  const post = async (path: string, body: object, who?: Who) => reply(await f.request(path, body, who?.cookie));
+  const life = async (who: Who): Promise<LifeState> => { const state = (await get('/api/life?city=lagos', who)).state; if (!state) throw Error('no state'); return state; };
+  const session = (db: Db, who: Who): SessionRecord => { const found = Object.values(db.sessions).find((record) => record.publicId === who.id); if (!found) throw Error('no session'); return found; };
+  const lagos = (db: Db, who: Who) => { const city = session(db, who).cities.lagos; if (!city) throw Error('no lagos life'); return city; };
+  const players = (db: Db) => { const social = db.social; if (!social) throw Error('no social collection'); return social.players; };
+  const player = (db: Db, id: string) => { const record = players(db)[id]; if (!record) throw Error('no social player'); return record; };
+  return { f, store, get, post, life, session, lagos, player };
 }
 
 test('club radio: a shout-out without a valid request id is refused before the wallet is touched; with one it is charged once', async t => {
-  const { f, store, get, post, life, session } = await harness(t);
+  const { f, store, get, post, life, lagos } = await harness(t);
   const who = await f.device('Radio Probe');
   assert.equal((await life(who)).cash, 5000);
   // SEEDED: standing in a club (the Library), not travelling. The wallet is an ordinary new life's ₦5,000.
-  await store.transact((db) => { const state = session(db, who).cities.lagos.state; state.location = 'library'; state.activeAction = null; });
+  await store.transact((db) => { const state = lagos(db, who).state; state.location = 'library'; state.activeAction = null; });
   const used = async () => (await get('/api/civic/radio?city=lagos&venue=library', who)).usedToday;
   const song = { cityId: 'lagos', title: 'Synthetic Song', artist: 'Test Artist' };
 
   // (codes adapted: client_id_required / invalid_client_id; an untimed id such as 'radio-retry-0001' is refused too)
-  for (const [label, extra, code] of [['no id', {}, 'client_id_required'], ['too short', { requestId: 'short' }, 'invalid_client_id'], ['wrong type', { requestId: 12345678 }, 'invalid_client_id'],
-    ['bad characters', { requestId: 'has spaces in it' }, 'invalid_client_id'], ['not timed', { requestId: 'radio-retry-0001' }, 'invalid_client_id']]) {
+  const refusals: [string, object, string][] = [['no id', {}, 'client_id_required'], ['too short', { requestId: 'short' }, 'invalid_client_id'], ['wrong type', { requestId: 12345678 }, 'invalid_client_id'],
+    ['bad characters', { requestId: 'has spaces in it' }, 'invalid_client_id'], ['not timed', { requestId: 'radio-retry-0001' }, 'invalid_client_id']];
+  for (const [label, extra, code] of refusals) {
     const refused = await post('/api/civic/radio/shoutout', { ...song, ...extra }, who);
     assert.deepEqual([refused.status, refused.error], [400, code], label);
     assert.equal((await life(who)).cash, 5000, `${label}: nothing was charged`);
@@ -60,34 +74,34 @@ test('club radio: a shout-out without a valid request id is refused before the w
   assert.deepEqual([first.status, first.ok, first.code, first.duplicate], [200, true, 'queued', undefined]);
   assert.equal((await life(who)).cash, 4500);
   const retry = await post('/api/civic/radio/shoutout', body, who);
-  assert.deepEqual([retry.status, retry.ok, retry.duplicate, retry.entry.id], [200, true, true, first.entry.id]);
+  assert.deepEqual([retry.status, retry.ok, retry.duplicate, retry.entry?.id], [200, true, true, first.entry?.id]);
   assert.equal((await life(who)).cash, 4500, 'the retry is not charged');
   assert.equal(await used(), 1);
 });
 
 /** Three registered players; `a` and `c` can each give money to `b` through the real transfer route. */
-async function transferSetup(t, receiptLimits) {
+async function transferSetup(t: TestContext, receiptLimits: { perPlayer: number; global: number }) {
   const h = await harness(t, { receiptLimits });
-  const { f, store, get, life, session } = h;
+  const { f, store, get, life, session, lagos, player } = h;
   const a = await f.device('Sender Probe'), b = await f.device('Recipient Probe'), c = await f.device('Other Sender');
   for (const who of [a, b, c]) { await get('/api/social/me', who); await life(who); }
   // SEEDED: accounts older than a day, friendships older than an hour, and earned money to give.
   await store.transact((db) => {
-    for (const who of [a, b, c]) db.social.players[who.id].first = f.now() - 25 * HOUR;
+    for (const who of [a, b, c]) player(db, who.id).first = f.now() - 25 * HOUR;
     for (const sender of [a, c]) {
-      db.social.players[sender.id].friends[b.id] = f.now() - 2 * HOUR;
-      db.social.players[b.id].friends[sender.id] = f.now() - 2 * HOUR;
-      const state = session(db, sender).cities.lagos.state;
+      player(db, sender.id).friends[b.id] = f.now() - 2 * HOUR;
+      player(db, b.id).friends[sender.id] = f.now() - 2 * HOUR;
+      const state = lagos(db, sender).state;
       state.cash = 10000; state.social.earned = 5000;
     }
   });
   /** Wallets after anything owed to the recipient has been applied. */
   const balances = async () => { await get('/api/social/me', b); return { a: (await life(a)).cash, b: (await life(b)).cash, c: (await life(c)).cash }; };
   /** The receipt ids one player holds (adapted: session.once instead of db.social.receipts). */
-  const receipts = (who) => store.read((db) => Object.keys(session(db, who).once ?? {}));
+  const receipts = (who: Who) => store.read((db) => Object.keys(session(db, who).once ?? {}));
   const total = async () => (await Promise.all([a, b, c].map(receipts))).flat().length;
   /** SEEDED: `count` monetary transfer receipts in `who`'s own record, written at `at` (the id carries the same time, as a real one does). */
-  const fill = (who, count, at) => store.transact((db) => {
+  const fill = (who: Who, count: number, at: number) => store.transact((db) => {
     const record = session(db, who); record.once ||= {};
     for (let i = 0; i < count; i++) record.once[`${at}:00000000-0000-4000-8000-${String(i).padStart(12, '0')}`] = { at, kind: 'transfer', fp: 'synthetic', result: { ok: true, code: 'probe' } };
   });
@@ -117,7 +131,7 @@ test('transfers: a live receipt is never evicted; with no room left the request 
   const otherId = f.id();
   const pressure = await post('/api/social/transfers', { to: b.id, amount: 100, cityId: 'lagos', clientId: otherId }, c);
   assert.deepEqual([pressure.status, pressure.error], [503, 'receipts_full']); // adapted: thrown, not 200 { ok: false }
-  assert.match(pressure.reason, /Nothing was charged/);
+  assert.match(String(pressure.reason), /Nothing was charged/);
   assert.deepEqual(await balances(), once, 'the refused transfer debited and credited nobody');
   assert.equal(await total(), GLOBAL, 'nothing was evicted and nothing was added');
   assert.ok((await receipts(a)).includes(body.clientId), 'the earlier sender’s receipt is still there');

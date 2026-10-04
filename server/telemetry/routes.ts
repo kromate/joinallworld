@@ -18,15 +18,18 @@
  * store it; it asks through ctx.checks.minor(db, publicId), which the growth routes provide. On a host
  * without the growth module nobody is known to be under 18.
  */
-export default function telemetryRoutes(ctx) {
+import type { TelemetryConfigResponse } from '../../src/types/growth.ts';
+import type { Db, RouteContext, RouteKey, RouteHandler } from '../types.ts';
+
+export default function telemetryRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const telemetry = ctx.telemetry;
-  const minor = (db, publicId) => { try { return ctx.checks?.minor?.(db, publicId) === true; } catch { return false; } };
+  const minor = (db: Db, publicId: string): boolean => { try { return ctx.checks?.minor?.(db, publicId) === true; } catch { return false; } };
   return {
     'GET /api/telemetry/config': async (request) => {
-      const body = telemetry?.publicConfig?.() ?? { enabled: false };
+      const body: TelemetryConfigResponse = telemetry?.publicConfig?.() ?? { enabled: false };
       if (body.enabled !== true) return { body };
-      const under18 = await ctx.store.read((db) => { const session = request.session(db); return Boolean(session) && minor(db, session.publicId); });
-      if (under18) telemetry?.consent?.(request.publicId, false);
+      const under18 = await ctx.store.read((db) => { const session = request.session(db); return session !== undefined && minor(db, session.publicId); });
+      if (under18) telemetry?.consent?.(request.publicId ?? '', false);
       return { body: under18 ? { ...body, under18: true } : body };
     },
     'POST /api/telemetry/consent': async (request) => {

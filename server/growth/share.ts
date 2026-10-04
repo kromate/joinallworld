@@ -24,14 +24,19 @@ import { tableById } from '../../src/tables/places.ts';
 import { GAMES } from '../../src/tables/games.ts';
 import { LIMITS, playerOf, sweep } from './data.ts';
 import { count } from './metrics.ts';
+import type { CityId } from '../../src/types/protocol.ts';
+import type { LifeState } from '../../src/types/life.ts';
+import type { ShareFacts, ShareKind } from '../../src/types/growth.ts';
+import type { GrowthCollection, GrowthPlayerRecord, RouteContext, SessionRecord, ShareRecord } from '../types.ts';
 
 export const OG_IMAGE = '/og/allworld.jpg';
-const CITY_NAMES = { lagos: 'Lagos', ibadan: 'Ibadan' };
-const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const no = (code, reason) => ({ ok: false, code, reason });
+const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
+const ESCAPES: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => ESCAPES[c] ?? c);
+const no = <Code extends string>(code: Code, reason: string): { ok: false; code: Code; reason: string } => ({ ok: false, code, reason });
 
 /** The facts of a share, read from the sharer's settled life. Nothing comes from the request but the kind (and an event id). */
-export function factsFor(kind, session, state, cityId, now, player, eventId, tableId) {
+export function factsFor(kind: ShareKind, session: Pick<SessionRecord, 'name'>, state: LifeState, cityId: CityId, now: number, player: GrowthPlayerRecord, eventId?: unknown, tableId?: unknown): Partial<ShareFacts> | null {
   const view = viewLife(state, { now, cityId });
   // Where the sharer lives: the local government of their own house, or the district of the home they rent. A guest (no
   // home yet) and a life whose local government is only the game's guess say nothing about where they live.
@@ -54,9 +59,9 @@ export function factsFor(kind, session, state, cityId, now, player, eventId, tab
 }
 
 /** Make (or find again) the caller's share link of one kind. Runs inside a store transaction. */
-export function createShare(ctx, g, session, state, cityId, body) {
-  const now = ctx.now(), kind = body?.kind;
-  if (!SHARE_KINDS.includes(kind)) throw ctx.fail(400, 'invalid_share_kind');
+export function createShare(ctx: Pick<RouteContext, 'now' | 'fail' | 'randomId'>, g: GrowthCollection, session: SessionRecord, state: LifeState, cityId: CityId, body: Record<string, unknown>) {
+  const now = ctx.now(), kind = SHARE_KINDS.find((item) => item === body.kind);
+  if (!kind) throw ctx.fail(400, 'invalid_share_kind');
   if (body.event !== undefined && (typeof body.event !== 'string' || !/^[a-z0-9-]{1,40}$/.test(body.event))) throw ctx.fail(400, 'invalid_event');
   const player = playerOf(g, session.publicId);
   if (!player) return no('server_full', 'Sharing is not available right now. Try again later.');
@@ -82,20 +87,21 @@ export function createShare(ctx, g, session, state, cityId, body) {
 }
 
 /** A stored, unexpired share, or null. */
-export function findShare(g, code, now) {
-  if (!isShareCode(code) || !Object.hasOwn(g.shares, code)) return null;
+export function findShare(g: GrowthCollection, code: unknown, now: number): ShareRecord | null {
+  if (typeof code !== 'string' || !isShareCode(code) || !Object.hasOwn(g.shares, code)) return null;
   const share = g.shares[code];
+  if (!share) return null;
   return share.at >= now - LIMITS.shareDays * 86400000 ? share : null;
 }
 
 /** Only http(s) origins made of host characters are written into a page; anything else falls back to relative links. */
-export const safeOrigin = (origin) => (typeof origin === 'string' && /^https?:\/\/[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(origin) ? origin : '');
+export const safeOrigin = (origin: unknown): string => (typeof origin === 'string' && /^https?:\/\/[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(origin) ? origin : '');
 
 /**
  * The preview page. `share` may be null (unknown code): the general preview.
- * @param {{ facts: object } | null} share  @param {string} code  @param {string} origin  e.g. "https://play.example" or ''
+ * `origin` is e.g. "https://play.example" or ''.
  */
-export function sharePageHtml(share, code, origin = '') {
+export function sharePageHtml(share: Pick<ShareRecord, 'by' | 'facts'> | null, code: unknown, origin: unknown = ''): string {
   const base = safeOrigin(origin);
   const preview = share ? sharePreview(share.facts) : { title: `${BRAND} · Your city story`, description: TAGLINE };
   // People are sent on to the game's own landing hook: `join` places a new visitor with the sharer (their venue, their

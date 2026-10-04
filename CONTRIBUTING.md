@@ -21,7 +21,7 @@ Both must pass before you open a pull request. CI runs the same two commands.
 
 ## Tests
 
-Tests use the built-in runner (`node --test`) and live next to the code as `*.test.js`, in both `src/` and `server/`.
+Tests use the built-in runner (`node --test`) and live next to the code as `*.test.js` or `*.test.ts`, in both `src/` and `server/`.
 
 Add or update tests whenever you touch:
 

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { runFirstMinute } from '../scripts/first-minute.mjs';
 
 test('the scripted first minute runs to the end with every assertion holding', async () => {
-  const lines = [];
+  const lines: string[] = [];
   const result = await runFirstMinute({ log: (line) => lines.push(line) });
   assert.equal(result.steps, 9);
   assert.ok(result.firstRewardMs <= 60000, 'first reward inside a minute of landing');

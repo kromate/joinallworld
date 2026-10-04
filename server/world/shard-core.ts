@@ -51,33 +51,74 @@
 import { storageError } from '../protocol.ts';
 
 const encoder = new TextEncoder();
-const byteLength = (text) => encoder.encode(text).length;
+/** Where a shard's log is kept (see THE BACKEND above). */
+export interface ShardBackend {
+  read(name: string): Promise<string>
+  append(name: string, text: string): Promise<unknown>
+  replace(name: string, text: string): Promise<unknown>
+  size(name: string): Promise<number>
+  readMeta(): Promise<unknown>
+  writeMeta(value: unknown): Promise<unknown>
+}
+/** What a shard's state is made of: `empty` makes one, `reduce` applies a record, `snapshot` lists the records that rebuild it. */
+export interface ShardOptions<S extends object, R extends readonly unknown[]> {
+  empty(name: string): S
+  reduce(state: S, record: R): void
+  snapshot(state: S): R[]
+  loaded?(state: S): unknown
+  live?(state: S): number
+  maxOpen?: number
+  compactSlack?: number
+  log?(line: string): void
+}
+export interface ShardStats { loads: number; recordsRead: number; appends: number; records: number; bytes: number; compactions: number; failures: number; evictions: number; torn: number; open: number }
+/** What createShardStoreOn() returns. */
+export interface ShardStoreOn<S extends object, R extends readonly unknown[]> {
+  transact<T>(name: string, fn: (state: S) => { records?: R[]; result: T } | Promise<{ records?: R[]; result: T }>): Promise<T>
+  read<T>(name: string, fn: (state: S) => T): Promise<T>
+  peek(name: string): S | null
+  size(name: string): Promise<number>
+  compact(name: string): Promise<number>
+  open(): string[]
+  readMeta(): Promise<unknown>
+  writeMeta(value: unknown): Promise<unknown>
+  stats(): ShardStats
+  flush(): Promise<void>
+  close(): Promise<void>
+}
+interface Pending { text: string; resolve(): void; reject(error: unknown): void }
+interface Shard<S> { state: S; lines: number; bytes: number; queue: Promise<unknown>; pending: Pending[]; flushing: Promise<void> | null; used: number; broken: boolean; busy?: boolean; compacting?: boolean }
+const errorField = (error: unknown, field: 'code' | 'message'): unknown => (typeof error === 'object' && error !== null && field in error ? (error as Record<string, unknown>)[field] : undefined);
+
+const byteLength = (text: string): number => encoder.encode(text).length;
 
 const NAME = /^[a-z][a-z0-9-]{0,39}\.[a-z][a-z0-9-]{0,39}$/;
 
 export const SHARD_NAME = NAME;
 
-export function createShardStoreOn(backend, { empty, reduce, snapshot, loaded = (state) => state, live = () => 0, maxOpen = 8, compactSlack = 2000, log = (line) => console.error(line) } = {}) {
+export function createShardStoreOn<S extends object, R extends readonly unknown[]>(backend: ShardBackend, options: Partial<ShardOptions<S, R>> = {}): ShardStoreOn<S, R> {
+  const { empty, reduce, snapshot, loaded = (state: S) => state, live = () => 0, maxOpen = 8, compactSlack = 2000, log = (line: string) => console.error(line) } = options;
   if (typeof empty !== 'function' || typeof reduce !== 'function' || typeof snapshot !== 'function') throw new Error('A shard store needs empty(), reduce() and snapshot()');
-  for (const method of ['read', 'append', 'replace', 'size', 'readMeta', 'writeMeta']) if (typeof backend?.[method] !== 'function') throw new Error(`A shard backend needs ${method}()`);
+  for (const method of ['read', 'append', 'replace', 'size', 'readMeta', 'writeMeta'] as const) if (typeof backend?.[method] !== 'function') throw new Error(`A shard backend needs ${method}()`);
+  const makeState = empty, applyRecord = reduce, snapshotOf = snapshot;
   const stats = { loads: 0, recordsRead: 0, appends: 0, records: 0, bytes: 0, compactions: 0, failures: 0, evictions: 0, torn: 0 };
-  const shards = new Map(); // name → { state, lines, bytes, queue, pending: [{ text, resolve, reject }], flushing, used }
+  const shards = new Map<string, Shard<S> | Promise<Shard<S>>>(); // name → { state, lines, bytes, queue, pending: [{ text, resolve, reject }], flushing, used }
   let tick = 0, closed = false;
 
-  async function load(name) {
+  async function load(name: string): Promise<Shard<S>> {
     const text = await backend.read(name);
-    const state = empty(name);
+    const state = makeState(name);
     let lines = 0;
     for (let start = 0; start < text.length;) {
       let end = text.indexOf('\n', start);
       const last = end < 0;
       if (last) end = text.length;
       if (end > start) {
-        let record = null;
+        let record: unknown = null;
         try { record = JSON.parse(text.slice(start, end)); } catch { record = null; }
         // Only the very last line may be damaged (a crash in the middle of an append); anything else is corruption.
         if (!Array.isArray(record)) { if (!last && text.indexOf('\n', end + 1) >= 0) throw new Error(`Corrupt world shard ${name}: line ${lines + 1}`); stats.torn += 1; }
-        else { reduce(state, record); lines += 1; }
+        else { const entry: readonly unknown[] = record; applyRecord(state, entry as R); lines += 1; }
       }
       start = end + 1;
     }
@@ -86,9 +127,9 @@ export function createShardStoreOn(backend, { empty, reduce, snapshot, loaded = 
     return { state, lines, bytes: byteLength(text), queue: Promise.resolve(), pending: [], flushing: null, used: ++tick, broken: false };
   }
   /** The open shard, loading it (and closing the least recently used idle one) if needed. */
-  async function open(name) {
+  async function open(name: string): Promise<Shard<S>> {
     if (!NAME.test(name)) throw new Error(`Invalid shard name: ${name}`);
-    let shard = shards.get(name);
+    let shard: Shard<S> | Promise<Shard<S>> | undefined = shards.get(name);
     if (shard && !(shard instanceof Promise) && shard.broken) { shards.delete(name); shard = undefined; }
     if (!shard) {
       const loading = load(name).then((loaded) => { shards.set(name, loaded); return loaded; }, (error) => { shards.delete(name); throw error; });
@@ -98,21 +139,21 @@ export function createShardStoreOn(backend, { empty, reduce, snapshot, loaded = 
     const ready = await shard;
     ready.used = ++tick;
     if (shards.size > maxOpen) {
-      const idle = [...shards].filter(([key, item]) => key !== name && !(item instanceof Promise) && !item.pending.length && !item.flushing && !item.busy).sort((a, b) => a[1].used - b[1].used);
+      const idle = [...shards].filter((entry): entry is [string, Shard<S>] => entry[0] !== name && !(entry[1] instanceof Promise) && !entry[1].pending.length && !entry[1].flushing && !entry[1].busy).sort((a, b) => a[1].used - b[1].used);
       for (const [key] of idle.slice(0, shards.size - maxOpen)) { shards.delete(key); stats.evictions += 1; }
     }
     return ready;
   }
 
-  async function compact(name, shard) {
-    const records = snapshot(shard.state);
+  async function compact(name: string, shard: Shard<S>): Promise<void> {
+    const records = snapshotOf(shard.state);
     const text = records.map((record) => JSON.stringify(record)).join('\n') + (records.length ? '\n' : '');
     await backend.replace(name, text);
     shard.lines = records.length; shard.bytes = byteLength(text);
     stats.compactions += 1;
   }
   /** Append everything that is waiting. One write for however many transactions queued up meanwhile. */
-  function flush(name, shard) {
+  function flush(name: string, shard: Shard<S>): Promise<void> | null {
     if (shard.flushing || !shard.pending.length) return shard.flushing;
     const batch = shard.pending.splice(0);
     const text = batch.map((item) => item.text).join('');
@@ -126,7 +167,7 @@ export function createShardStoreOn(backend, { empty, reduce, snapshot, loaded = 
         // Not in the file means not done: this batch and whatever was applied on top of it are rejected,
         // and the shard is read again from the file the next time it is used.
         stats.failures += 1; shard.broken = true;
-        try { log(`World shard ${name} could not be written (${error?.code || 'error'}): its unsaved changes were undone.`); } catch { /* a failing logger changes nothing */ }
+        try { log(`World shard ${name} could not be written (${errorField(error, 'code') || 'error'}): its unsaved changes were undone.`); } catch { /* a failing logger changes nothing */ }
         const failure = storageError(error);
         for (const item of [...batch, ...shard.pending.splice(0)]) item.reject(failure);
       } finally { shard.flushing = null; if (!shard.broken && shard.pending.length) flush(name, shard); }
@@ -134,29 +175,28 @@ export function createShardStoreOn(backend, { empty, reduce, snapshot, loaded = 
     return shard.flushing;
   }
 
-  async function transact(name, fn) {
+  async function transact<T>(name: string, fn: (state: S) => { records?: R[]; result: T } | Promise<{ records?: R[]; result: T }>): Promise<T> {
     if (closed) throw storageError(new Error('closed'));
     for (;;) {
       const shard = await open(name);
       if (shard.broken) continue;
-      let done;
-      const work = shard.queue.then(async () => {
+      const work = shard.queue.then(async (): Promise<{ retry: true } | { retry?: undefined; value: T; saved: Promise<unknown> }> => {
         if (shard.broken) return { retry: true };
         shard.busy = true;
         try {
-          const outcome = (await fn(shard.state)) || {};
+          const outcome: { records?: R[]; result?: T } = (await fn(shard.state)) || {};
           const records = Array.isArray(outcome.records) ? outcome.records : [];
-          if (!records.length) return { value: outcome.result, saved: Promise.resolve() };
+          if (!records.length) return { value: outcome.result as T, saved: Promise.resolve() };
           let text = '';
-          for (const record of records) { reduce(shard.state, record); text += `${JSON.stringify(record)}\n`; }
+          for (const record of records) { applyRecord(shard.state, record); text += `${JSON.stringify(record)}\n`; }
           shard.lines += records.length; stats.records += records.length;
-          const saved = new Promise((resolve, reject) => shard.pending.push({ text, resolve, reject }));
+          const saved = new Promise<void>((resolve, reject) => shard.pending.push({ text, resolve, reject }));
           flush(name, shard);
-          return { value: outcome.result, saved };
+          return { value: outcome.result as T, saved };
         } finally { shard.busy = false; }
       });
       shard.queue = work.then(() => {}, () => {});
-      done = await work;
+      const done = await work;
       if (done.retry) continue;
       await done.saved;
       // Keep the file from growing without bound: rewrite it from the state once it is mostly history.
@@ -164,18 +204,18 @@ export function createShardStoreOn(backend, { empty, reduce, snapshot, loaded = 
         shard.compacting = true;
         shard.queue = shard.queue.then(async () => {
           try { if (shard.flushing) await shard.flushing.catch(() => {}); if (!shard.broken && !shard.pending.length) await compact(name, shard); }
-          catch (error) { try { log(`World shard ${name} could not be compacted: ${error?.message}`); } catch { /* ignore */ } }
+          catch (error) { try { log(`World shard ${name} could not be compacted: ${errorField(error, 'message')}`); } catch { /* ignore */ } }
           finally { shard.compacting = false; }
         });
       }
       return done.value;
     }
   }
-  async function read(name, fn) {
+  async function read<T>(name: string, fn: (state: S) => T): Promise<T> {
     for (;;) {
       const shard = await open(name);
       if (shard.broken) continue;
-      const work = shard.queue.then(() => (shard.broken ? { retry: true } : { value: fn(shard.state) }));
+      const work = shard.queue.then((): { retry: true } | { retry?: undefined; value: T } => (shard.broken ? { retry: true } : { value: fn(shard.state) }));
       shard.queue = work.then(() => {}, () => {});
       const done = await work;
       if (done.retry) continue;
@@ -188,15 +228,15 @@ export function createShardStoreOn(backend, { empty, reduce, snapshot, loaded = 
 
   return {
     transact, read,
-    peek(name) { const shard = shards.get(name); return shard && !(shard instanceof Promise) && !shard.broken ? shard.state : null; },
+    peek(name: string): S | null { const shard = shards.get(name); return shard && !(shard instanceof Promise) && !shard.broken ? shard.state : null; },
     /** Bytes of the shard's file as this process knows it (0 when it has never been opened here and does not exist). */
-    async size(name) { const shard = shards.get(name); if (shard && !(shard instanceof Promise)) return shard.bytes; try { return await backend.size(name); } catch { return 0; } },
+    async size(name: string): Promise<number> { const shard = shards.get(name); if (shard && !(shard instanceof Promise)) return shard.bytes; try { return await backend.size(name); } catch { return 0; } },
     /** Rewrite one shard's file from its state now (used by the load generator to report the compact size). */
-    async compact(name) { const shard = await open(name); await shard.queue; if (shard.flushing) await shard.flushing; await compact(name, shard); return shard.bytes; },
+    async compact(name: string): Promise<number> { const shard = await open(name); await shard.queue; if (shard.flushing) await shard.flushing; await compact(name, shard); return shard.bytes; },
     open: () => [...shards.keys()],
     /** One small JSON file beside the shards (the city summary). Derived data: losing it costs a re-count, nothing else. */
-    async readMeta() { try { return (await backend.readMeta()) ?? null; } catch { return null; } },
-    writeMeta: (value) => backend.writeMeta(value),
+    async readMeta(): Promise<unknown> { try { return (await backend.readMeta()) ?? null; } catch { return null; } },
+    writeMeta: (value: unknown) => backend.writeMeta(value),
     stats: () => ({ ...stats, open: shards.size }),
     flush: settled,
     async close() { await settled(); closed = true; },

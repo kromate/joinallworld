@@ -1,9 +1,10 @@
 import './world-map.css';
 
 const CITIES = [
-  { id: 'lagos', label: 'Lagos', country: 'Nigeria', region: 'Lagos State', longitude: 3.3792, latitude: 6.5244, description: 'Coastal energy, culture & community' },
-  { id: 'ibadan', label: 'Ibadan', country: 'Nigeria', region: 'Oyo State', longitude: 3.9470, latitude: 7.3775, description: 'A historic city of hills & discovery' },
+  { id: 'lagos', label: 'Lagos', country: 'Nigeria', region: 'Lagos State', longitude: 3.3792, latitude: 6.5244 },
+  { id: 'ibadan', label: 'Ibadan', country: 'Nigeria', region: 'Oyo State', longitude: 3.9470, latitude: 7.3775 },
 ];
+// Hand-drawn schematic outlines; they only decide which grid dots count as land.
 const CONTINENTS = [
   'M72 104 101 83 134 84 154 65 187 76 202 63 228 80 252 77 277 102 280 124 257 132 246 157 225 164 211 180 204 202 187 211 181 231 161 226 149 205 124 189 109 165 87 148Z',
   'M202 222 219 225 231 241 247 245 263 261 255 273 239 263 226 246 212 242Z',
@@ -18,32 +19,63 @@ const CONTINENTS = [
   'M913 383 920 367 927 371 923 389 910 404 903 399Z',
   'M564 306 572 309 574 330 566 342 560 329Z',
   'M844 172 850 162 853 172 849 188 843 196 839 190Z',
-  'M425 467 459 458 500 463 540 455 580 460 620 454 654 462 695 456 732 467 772 463 806 478 794 491 431 493Z',
 ];
+const WIDTH = 1000;
+const HEIGHT = 480;
+const CENTER_X = 500;
+const CENTER_Y = 240;
+const DOT_STEP = 12;
+const PIN_GAP = 30;
+
+// Built once: every land dot is a zero-length round-capped segment in a single path.
+const LAND_DOTS = (() => {
+  const polygons = CONTINENTS.map(d => {
+    const values = d.match(/\d+/g).map(Number);
+    const points = [];
+    for (let i = 0; i < values.length; i += 2) points.push([values[i], values[i + 1]]);
+    return points;
+  });
+  const inside = (x, y, points) => {
+    let hit = false;
+    for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+      const [ax, ay] = points[i];
+      const [bx, by] = points[j];
+      if ((ay > y) !== (by > y) && x < (bx - ax) * (y - ay) / (by - ay) + ax) hit = !hit;
+    }
+    return hit;
+  };
+  let path = '';
+  for (let y = DOT_STEP; y < HEIGHT; y += DOT_STEP) {
+    for (let x = DOT_STEP; x < WIDTH; x += DOT_STEP) {
+      if (polygons.some(points => inside(x, y, points))) path += `M${x} ${y}h.01`;
+    }
+  }
+  return path;
+})();
 
 export function createWorldMap(container, { onSelectCity } = {}) {
   const element = document.createElement('section');
   element.className = 'awm';
   element.setAttribute('aria-label', 'World map and city travel');
   element.innerHTML = `
-    <div class="awm-heading"><div><span class="awm-eyebrow">YOUR NEXT CHAPTER</span><h2>A world to belong to.</h2><p>Start in Nigeria. Discover your people.</p></div><span class="awm-country">🇳🇬 Two cities. One community.</span></div>
+    <div class="awm-heading"><h2>A world to belong to.</h2><p>Start in Nigeria. Discover your people.</p></div>
     <div class="awm-viewport">
-      <svg class="awm-svg" viewBox="0 0 1000 560" tabindex="0" role="group" aria-label="Interactive schematic world map. Drag to pan. Use arrow keys to pan, plus and minus to zoom, Home to reset.">
-        <defs><linearGradient id="awm-ocean" x2="0" y2="1"><stop stop-color="#d2e9ef"/><stop offset="1" stop-color="#bddce7"/></linearGradient><linearGradient id="awm-land" x2="0.3" y2="1"><stop stop-color="#a8c7ab"/><stop offset="1" stop-color="#87b39c"/></linearGradient></defs>
-        <rect width="1000" height="560" fill="url(#awm-ocean)"/>
-        <g class="awm-geography"><g class="awm-graticule">${[100, 200, 300, 400, 500].map(y => `<path d="M0 ${y}H1000"/>`).join('')}${[100, 200, 300, 400, 500, 600, 700, 800, 900].map(x => `<path d="M${x} 0V560"/>`).join('')}</g><g class="awm-land">${CONTINENTS.map(d => `<path d="${d}"/>`).join('')}</g><text x="159" y="143" class="awm-continent">NORTH AMERICA</text><text x="287" y="322" class="awm-continent">SOUTH AMERICA</text><text x="488" y="151" class="awm-continent">EUROPE</text><text x="502" y="267" class="awm-continent">AFRICA</text><text x="695" y="158" class="awm-continent">ASIA</text><text x="821" y="356" class="awm-continent">OCEANIA</text></g>
-        <g class="awm-pins">${CITIES.map(city => `<g class="awm-pin" data-city="${city.id}" tabindex="0" role="button" aria-label="Travel to ${city.label}, ${city.country}" aria-pressed="false"><circle class="awm-pin-halo" r="14"/><circle class="awm-pin-dot" r="5"/><path class="awm-pin-line"/><g class="awm-pin-label"><rect x="-49" y="-17" width="98" height="34" rx="17"/><text text-anchor="middle" dominant-baseline="central">${city.label} ↗</text></g></g>`).join('')}</g>
+      <svg class="awm-svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" tabindex="0" role="group" aria-label="Dot map of the world. Drag to move. Arrow keys move, plus and minus zoom, square brackets rotate, Home resets.">
+        <g class="awm-geography"><path class="awm-land" d="${LAND_DOTS}"/></g>
+        <g class="awm-pins">${CITIES.map(city => `<g class="awm-pin" data-city="${city.id}" tabindex="0" role="button" aria-label="Travel to ${city.label}, ${city.country}" aria-pressed="false"><circle class="awm-pin-hit" r="14"/><circle class="awm-pin-ring" r="9"/><circle class="awm-pin-dot" r="5"/><text class="awm-pin-name" dominant-baseline="central">${city.label}</text></g>`).join('')}</g>
       </svg>
-      <div class="awm-controls" role="group" aria-label="Map controls"><button data-action="zoom-in" aria-label="Zoom in" title="Zoom in">+</button><button data-action="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><span></span><button data-action="rotate-left" aria-label="Rotate map left by 15 degrees" title="Rotate left">↶</button><button data-action="rotate-right" aria-label="Rotate map right by 15 degrees" title="Rotate right">↷</button><button data-action="reset" aria-label="Reset map view" title="Reset map view">⌖</button></div>
-      <div class="awm-map-note"><span>✦ Schematic world</span><span class="awm-gesture-hint">Drag to explore · Scroll to zoom</span></div>
+      <div class="awm-controls" role="group" aria-label="Map controls"><button data-action="zoom-in" aria-label="Zoom in" title="Zoom in">+</button><button data-action="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button data-action="rotate-left" aria-label="Rotate map left by 15 degrees" title="Rotate left">↶</button><button data-action="rotate-right" aria-label="Rotate map right by 15 degrees" title="Rotate right">↷</button><button data-action="reset" aria-label="Reset map view" title="Reset map view">⌖</button></div>
       <div class="awm-zoom" aria-live="polite">100%</div>
     </div>
-    <div class="awm-destinations"><div class="awm-destinations-title"><span>WHERE WILL YOU GO?</span><span>Lagos ↔ Ibadan · 120 km</span></div><div class="awm-city-list">${CITIES.map((city, index) => `<button class="awm-city" data-city="${city.id}" aria-pressed="false"><span class="awm-city-art awm-city-art-${city.id}" aria-hidden="true">${index ? '⛰' : '◒'}</span><span class="awm-city-copy"><strong>${city.label}<span class="awm-current">Current city</span></strong><span>${city.region}, ${city.country}</span><small>${city.description}</small></span><span class="awm-travel">Travel ↗</span></button>`).join('')}</div></div>`;
+    <div class="awm-destinations"><div class="awm-destinations-title">Where will you go?</div><div class="awm-city-list">${CITIES.map(city => `<button class="awm-city" data-city="${city.id}" aria-pressed="false"><span class="awm-city-dot" aria-hidden="true"></span><span class="awm-city-copy"><strong>${city.label}</strong><span>${city.region}, ${city.country}</span></span><span class="awm-travel">Travel ↗</span></button>`).join('')}</div></div>`;
   container.appendChild(element);
   const svg = element.querySelector('svg');
   const geography = element.querySelector('.awm-geography');
   const pinElements = [...element.querySelectorAll('.awm-pin')];
+  const pinNames = pinElements.map(pin => pin.querySelector('.awm-pin-name'));
   const zoomLabel = element.querySelector('.awm-zoom');
+  const zoomIn = element.querySelector('[data-action="zoom-in"]');
+  const zoomOut = element.querySelector('[data-action="zoom-out"]');
   const pointers = new Map();
   const listeners = [];
   let zoom = 1;
@@ -59,28 +91,45 @@ export function createWorldMap(container, { onSelectCity } = {}) {
   }
   function unitPerPixel() {
     const rect = svg.getBoundingClientRect();
-    return 1 / Math.max(0.001, Math.min(rect.width / 1000, rect.height / 560));
+    return 1 / Math.max(0.001, Math.min(rect.width / WIDTH, rect.height / HEIGHT));
   }
   function draw() {
     if (destroyed) return;
-    geography.setAttribute('transform', `translate(${500 + panX} ${260 + panY}) rotate(${rotation}) scale(${zoom}) translate(-500 -260)`);
+    geography.setAttribute('transform', `translate(${CENTER_X + panX} ${CENTER_Y + panY}) rotate(${rotation}) scale(${zoom}) translate(${-CENTER_X} ${-CENTER_Y})`);
     const radians = rotation * Math.PI / 180;
     const scale = unitPerPixel();
-    pinElements.forEach((pin, index) => {
-      const city = CITIES[index];
-      const dx = (city.longitude + 180) / 360 * 1000 - 500;
-      const dy = (90 - city.latitude) / 180 * 500 - 260;
-      const x = 500 + panX + (dx * Math.cos(radians) - dy * Math.sin(radians)) * zoom;
-      const y = 260 + panY + (dx * Math.sin(radians) + dy * Math.cos(radians)) * zoom;
-      pin.setAttribute('transform', `translate(${x} ${y}) scale(${scale})`);
-      const offsetX = index ? 68 : -68;
-      const offsetY = index ? -27 : 27;
-      pin.querySelector('.awm-pin-line').setAttribute('d', `M0 0L${offsetX * 0.3} ${offsetY}H${offsetX}`);
-      pin.querySelector('.awm-pin-label').setAttribute('transform', `translate(${offsetX} ${offsetY})`);
+    const spots = CITIES.map(city => {
+      const dx = (city.longitude + 180) / 360 * WIDTH - CENTER_X;
+      const dy = (90 - city.latitude) / 180 * 500 - CENTER_Y;
+      return {
+        x: CENTER_X + panX + (dx * Math.cos(radians) - dy * Math.sin(radians)) * zoom,
+        y: CENTER_Y + panY + (dx * Math.sin(radians) + dy * Math.cos(radians)) * zoom,
+      };
     });
-    zoomLabel.textContent = `${Math.round(zoom * 100)}%`;
-    element.querySelector('[data-action="zoom-in"]').disabled = zoom >= 12;
-    element.querySelector('[data-action="zoom-out"]').disabled = zoom <= 0.65;
+    // The two cities sit almost on top of each other at world scale, so keep their dots a tap apart.
+    const [first, second] = spots;
+    const gap = PIN_GAP * scale;
+    const distance = Math.hypot(second.x - first.x, second.y - first.y);
+    if (distance < gap) {
+      const ux = distance > 0.001 ? (second.x - first.x) / distance : 0.55;
+      const uy = distance > 0.001 ? (second.y - first.y) / distance : -0.83;
+      const midX = (first.x + second.x) / 2;
+      const midY = (first.y + second.y) / 2;
+      first.x = midX - ux * gap / 2; first.y = midY - uy * gap / 2;
+      second.x = midX + ux * gap / 2; second.y = midY + uy * gap / 2;
+    }
+    pinElements.forEach((pin, index) => {
+      const spot = spots[index];
+      const other = spots[1 - index];
+      const left = spot.x < other.x || (spot.x === other.x && index === 0);
+      pin.setAttribute('transform', `translate(${spot.x} ${spot.y}) scale(${scale})`);
+      pinNames[index].setAttribute('x', left ? -14 : 14);
+      pinNames[index].setAttribute('text-anchor', left ? 'end' : 'start');
+    });
+    const percent = `${Math.round(zoom * 100)}%`;
+    if (zoomLabel.textContent !== percent) zoomLabel.textContent = percent;
+    zoomIn.disabled = zoom >= 12;
+    zoomOut.disabled = zoom <= 0.65;
   }
   function setCity(id) {
     if (!CITIES.some(city => city.id === id)) return;

@@ -107,6 +107,7 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
       async until(type) { for (let i = 0; i < 200; i++) { const message = await next(); if (message.type === type) return message; } throw Error(`${who.name}: no ${type} message`); },
       /** Everything already received and not yet read. */
       drain() { return queue.splice(0); },
+      close() { ws.terminate(); },
     };
   }
 
@@ -132,32 +133,51 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
 
   async function joinRoom(peer, venueId) { peer.send({ type: 'join', cityId: CITY, venueId }); return peer.until('presence'); }
 
-  async function create(name) {
+  /** A new device session, as the quick start makes it: a name, a look, and straight into Freedom Park as a guest. */
+  async function arrive(name) {
     const opened = await post('/api/session', { name, onboarding: true });
     assert.equal(opened.status, 200);
     const who = { name, cookie: opened.headers.get('set-cookie').split(';')[0], id: opened.session.id };
     assert.notEqual(who.id, who.cookie.slice(4), 'the public id is not the cookie');
     const blocked = await act(who, 'travel', { id: 'park', mode: 'trek' });
     assert.equal(blocked.code, 'onboarding_required');
-    await ok(who, 'onboarding.look', { look: LOOKS[name] }, 'look_saved');
+    const playing = await ok(who, 'onboarding.quick-start', { look: LOOKS[name] }, 'playing');
+    assert.deepEqual([playing.location, playing.onboarding.stage, playing.onboarding.required], ['park', 'guest', false]);
+    return who;
+  }
+  /** Settle in: the deferred choices, then the home. Everything earned as a guest is kept. */
+  async function settle(who) {
+    const before = (await life(who)).cash;
     await ok(who, 'onboarding.traits', { traits: ['smooth-talker', 'clean-pikin'] }, 'traits_saved');
     await ok(who, 'onboarding.dream', { dream: 'everybodys-padi' }, 'dream_saved');
     const rolled = await ok(who, 'onboarding.lottery', {}, 'rolled');
     const home = view(rolled).onboarding.homes.find((item) => !item.locked);
     const moved = await ok(who, 'onboarding.home', { house: home.id }, 'life_started');
-    assert.deepEqual([moved.location, moved.onboarding.done], ['home', true]);
+    assert.deepEqual([moved.location, moved.onboarding.done, moved.onboarding.stage], ['home', true, 'settled']);
+    assert.equal(moved.cash, home.startCash + (before - 5000) + (moved.ledger.some((entry) => entry.reason === 'Goal: Settle in') ? 1000 : 0), `${who.name}: the home’s start cash, plus what was earned as a guest`);
     return { who, outcome: view(moved).onboarding.lottery.label, home: home.label, cash: moved.cash };
   }
 
   try {
     log(`Two players · server clock starts ${new Date(time).toISOString()} (${stamp()} in Lagos)`);
 
-    // ---- 1. both create a Sim; until then neither exists for the other ---------------------------
-    const a = await create('Ada'), b = await create('Bola');
-    const ada = a.who, bola = b.who;
+    // ---- 1. the quick start: Ada is playing in seconds; Bola arrives by her link and is told he is joining her ----
+    const ada = await arrive('Ada');
+    const firstRoom = await socket(ada);
+    await joinRoom(firstRoom, 'park');
+    assert.equal((await get('/api/social/me', ada)).me.name, 'Ada'); // her Invite app is open: that is where the link comes from
+    const bola = await arrive('Bola');
+    const landing = await post('/api/social/join', { host: ada.id, cityId: CITY }, bola);
+    assert.deepEqual([landing.ok, landing.code, landing.host, landing.venue], [true, 'here', { id: ada.id, name: 'Ada' }, 'park'], 'her link puts him where she is: the park they both arrived in');
+    assert.equal((await post('/api/social/join', { host: bola.id, cityId: CITY }, bola)).code, 'self');
+    firstRoom.close();
+    say('Ada and Bola quick-start into Freedom Park as guests', `Bola opened Ada’s link: “You’re joining ${landing.host.name}” at ${VENUES[landing.venue].label}`);
+
+    // ---- 1b. both settle in; nothing earned as a guest is lost ---------------------------------------
+    const a = await settle(ada), b = await settle(bola);
     assert.equal((await get('/api/social/me', ada)).me.name, 'Ada');
     assert.equal((await get('/api/social/me', bola)).me.name, 'Bola');
-    say('Ada and Bola create their Sims and move in', `Ada: ${a.outcome}, ${a.home}, ${naira(a.cash)} · Bola: ${b.outcome}, ${b.home}, ${naira(b.cash)}`);
+    say('Ada and Bola settle in and move in', `Ada: ${a.outcome}, ${a.home}, ${naira(a.cash)} · Bola: ${b.outcome}, ${b.home}, ${naira(b.cash)}`);
 
     // ---- 2. they meet at Freedom Park: truthful presence --------------------------------------------
     const roomA = await socket(ada), roomB = await socket(bola), liveA = await socket(ada), liveB = await socket(bola);
@@ -259,7 +279,9 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     const shift = await ok(ada, 'activity', { id: 'teaching-shift' }, 'started');
     wait(shift.activeAction.duration * 1000);
     const paid = await life(ada);
-    assert.deepEqual([paid.ledger.at(-1).reason, paid.ledger.at(-1).amount, paid.social.earned], ['Teaching shift', 3000, 3000]);
+    // The shift is also the first thing Ada finished, so the opening goals she had already met are paid behind it.
+    const wage = paid.ledger.findLast((entry) => entry.reason === 'Teaching shift');
+    assert.deepEqual([wage.amount, paid.social.earned, paid.ledger.slice(paid.ledger.indexOf(wage) + 1).map((entry) => entry.reason)], [3000, 3000, ['Goal: Play a round of Ayo', 'Goal: Say hello to someone', 'Goal: Settle in']]);
     const tooSoon = await post('/api/social/transfers', { to: bola.id, amount: 1500, cityId: CITY, clientId: clientId() }, ada);
     assert.equal(tooSoon.code, 'account_too_new');
     goTo(START + 25 * HOUR);

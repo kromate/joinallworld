@@ -14,9 +14,25 @@
  *          'activity.completed' carrying any of these tags),
  *          `venue` (arriving at or visiting it),
  *          `hasJob` (already employed when the goal comes up)
+ *          `fresh: true` — the condition only counts while this goal is the current one (so the
+ *          hello that completed "Say hello to someone" does not also pay "Make a new friend")
  *   open / params / go   what tapping the goal chip does: open a panel, or walk to [venue, spot]
+ *   here   the goal is done wherever the player stands: when they are not at `go`'s venue the chip
+ *          points at the quickest free activity of the venue they are in instead
+ *
+ * THE ORDER follows the quick start: a guest arrives in a public venue, so the chain opens with
+ * something enjoyable right there, then meeting someone, then settling in (which is what creates
+ * the home); the home goals follow. STARTER_INTRO is how many goals come before the first one that
+ * needs a home — a life that never was a guest starts the chain there, as it always did.
  */
 export const STARTER_GOALS = [
+  // The three quick-start goals and their rewards are original beta values.
+  { id: 'first-fun', title: 'Play a round of Ayo', hint: 'Under the trees · takes 7 seconds', icon: '🎲', cash: 500, stars: 1, beta: true,
+    done: { events: ['activity.completed'] }, go: ['park', 'trees'], activity: 'play-ayo', here: true },
+  { id: 'say-hello', title: 'Say hello to someone', hint: 'Tap a person nearby', icon: '👋', cash: 500, stars: 1, beta: true,
+    done: { events: ['npc.greeted', 'friend.made', 'relationship.changed'] }, open: 'people' },
+  { id: 'settle-in', title: 'Settle in', hint: 'Choose your traits, your dream and your home', icon: '🏠', cash: 1000, stars: 1, beta: true,
+    done: { events: ['life.started'] }, open: 'onboarding' },
   { id: 'eat', title: 'Eat something', hint: 'Tap the cooler or stove', icon: '🍲', cash: 500, stars: 1,
     done: { events: ['meal.eaten'], tags: ['food'] }, go: ['home', 'kitchen'] },
   { id: 'freshen-up', title: 'Freshen up', hint: 'Tap the bucket or shower', icon: '🫧', cash: 500, stars: 1,
@@ -32,11 +48,14 @@ export const STARTER_GOALS = [
   // reference paid this goal on an NPC Say Hello. Tapping the chip opens Sim → People, which
   // lists who is here; at home it says to go out first.
   { id: 'make-a-friend', title: 'Make a new friend', hint: 'Tap someone at a venue', icon: '👋', cash: 1500, stars: 1,
-    done: { events: ['npc.greeted', 'friend.made'] }, open: 'people' },
+    done: { events: ['npc.greeted', 'friend.made'], fresh: true }, open: 'people' },
   // Only the title and hint of the last goal were observed; its reward is an original beta value.
   { id: 'work-a-shift', title: 'Work a shift', hint: 'Leave for work on time', icon: '⏰', cash: 2000, stars: 1, betaFields: ['cash', 'stars'],
     done: { events: ['shift.completed'] }, workplace: true },
 ];
+
+/** Goals that come before the first one that needs a home (see THE ORDER above). */
+export const STARTER_INTRO = STARTER_GOALS.findIndex((goal) => goal.id === 'eat');
 
 /**
  * Wishes: three are active at a time and each grants WISH_STARS when it comes true.

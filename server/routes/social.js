@@ -31,6 +31,7 @@
  *   POST /api/social/groups              { name, members: [id], clientId }
  *   POST /api/social/groups/:id          { op: 'rename' | 'add' | 'remove' | 'leave', name?, id? }
  *   GET  /api/social/house/:host                      a house's guest list, as seen by me
+ *   POST /api/social/join                { host, cityId }   the invite landing: who you are joining and how (service.join)
  *   POST /api/social/house/knock         { host, cityId }
  *   POST /api/social/house/answer        { visitor, answer: 'accept' | 'decline' }
  *   POST /api/social/house/leave         { host, guest? }
@@ -80,6 +81,7 @@ export default function socialRoutes(ctx) {
     'POST /api/social/groups': route((db, session, body) => service.groupCreate(db, session, body)),
     'POST /api/social/groups/:id': route((db, session, body, request) => service.groupUpdate(db, session, { ...body, conv: request.params.id })),
     'GET /api/social/house/:host': route((db, session, body, request) => service.house(db, session, request.params.host)),
+    'POST /api/social/join': route((db, session, body) => service.join(db, session, body)),
     'POST /api/social/house/knock': route((db, session, body) => service.knock(db, session, body)),
     'POST /api/social/house/answer': route((db, session, body) => service.knockAnswer(db, session, body)),
     'POST /api/social/house/leave': route((db, session, body) => service.houseLeave(db, session, body)),

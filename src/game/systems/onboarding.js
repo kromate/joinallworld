@@ -1,9 +1,29 @@
 /**
  * OWNER: character
- * Character creation (look → personality → dream → birth lottery → home), the wardrobe and
- * the boutique, and the gameplay effects of traits and the lottery outcome.
+ * The quick start (a look, then straight into a public venue as a GUEST), settling in (personality →
+ * dream → birth lottery → home, whenever the player chooses), the wardrobe and the boutique, and the
+ * gameplay effects of traits and the lottery outcome.
+ *
+ * THE STAGED MODEL
+ *   stage 'guest'    a life made by the quick start that has not moved in yet. It plays in public
+ *                    venues at once — activities, people, jobs, trips — with the default needs and no
+ *                    traits. It has no home: the 'action.block' modifier refuses going Home, every
+ *                    'home.*' action and 'property.house-move' with code 'settle_required', so a guest
+ *                    can never reach a state the economy takes as settled (a rent house, the loan, a
+ *                    furnished room). Those are created when 'onboarding.home' succeeds, which is
+ *                    also when 'life.started' fires — once.
+ *   stage 'settled'  everything else: a life that has moved in, a life saved before character creation
+ *                    existed (`legacy`), and a life that was never asked to create a character (made
+ *                    without ctx.quickStart: the Worker's sessions, scripts and tests). The last kind
+ *                    is offered creation and never restricted, exactly as before.
+ *   A guest is `required` only until its look has been confirmed (the quick start itself, seconds
+ *   long): until then nothing but 'onboarding.*' is accepted and the servers keep the session out of
+ *   rooms, people lists and directories — an abandoned sign-up is in nobody's city.
+ *   A life the old enforced five-step flow left half-way (saved with required: true, not done) loads
+ *   as a guest with every choice it had already made; if its look was confirmed it can play at once.
  *
  * STATE — state.onboarding
+ *   stage        'guest' | 'settled' (see above)
  *   done         boolean — the life has moved in. Traits and lottery effects apply only once true.
  *   legacy       boolean — true for a life saved before character creation existed: it is treated
  *                as onboarded with the default look, keeps everything it had, and is never asked
@@ -23,12 +43,18 @@
  *   house        'mushin' | 'yaba' | 'lekki' | null — the starting home chosen
  *   wardrobe     { hair: [ids], outfit: [ids], fabric: [ids], accessories?: [ids bought] } — owned styles (basics, the look
  *                chosen at creation, and boutique purchases)
- *   required     boolean — this life must finish creation before it can do anything else. Set only
- *                when the life is created with ctx.requireOnboarding (the server passes it for a
- *                device session opened by a client that declared it can show creation). Lives made
- *                any other way, and every life saved before creation existed, are never forced.
+ *   required     boolean — a guest whose look is not confirmed yet (see THE STAGED MODEL). Set only
+ *                when the life is created with ctx.quickStart (or its older name ctx.requireOnboarding;
+ *                the server passes it for a device session opened by a client that declared it shows
+ *                the quick start). Lives made any other way are never held.
  *   completedAt  server ms the life moved in, or null
  *   bonusAt      server ms a food bonus was last given (so one meal is never counted twice)
+ *   bornAt       server ms a guest life was created | null   } the first-minute timings, all in
+ *   playedAt     server ms the quick start was confirmed | null } server time; kept after settling in
+ *   firstAt      server ms the first activity finished | null   }
+ *   activities   activities finished while a guest (capped) — the UI offers settling in by it
+ *   needsSet     the START_NEEDS were handed out (at the quick start, or at move-in: once either way)
+ *   joined       the one free arrival at an inviter's venue was used (see 'onboarding.arrive')
  *
  * THE LOTTERY SURVIVES "NEW LIFE"
  *   sanitize() keeps a valid `onboarding.lottery` even when ctx.isNew is true and resets
@@ -37,20 +63,29 @@
  *   A life in another city is a separate life and rolls separately unless seeded the same way.
  *
  * ACTIONS (each failure names what is missing in `reason`)
+ *   'onboarding.quick-start' { look }                   guests only: confirm the look and start playing. Sets the
+ *                                                       START_NEEDS, stands the Sim at the venue's welcome spot
+ *                                                       and lifts `required`. Repeating it only changes the look.
+ *   'onboarding.arrive' { venue }  SERVER ONLY          a guest who came by an invite is put in the inviter's
+ *                                                       public venue: once per life, within JOIN_WINDOW_MS of its
+ *                                                       creation, free. The server chooses the venue (server/social).
  *   'onboarding.look'    { look } | { shuffle: true }   step 1 (Boutique-only styles are refused); shuffle picks a random look a new Sim may wear
  *   'onboarding.traits'  { traits: [id, id] }           step 2; exactly two different traits
  *   'onboarding.dream'   { dream }                      step 3
  *   'onboarding.lottery' {}                             step 4; rolls once with ctx.rng, then repeats the stored roll
- *   'onboarding.home'    { house }                      step 5; completes creation (see below)
+ *   'onboarding.home'    { house, stay? }               step 5; completes creation (see below). `stay: true`
+ *                                                       moves in without leaving the venue the Sim is in
  *   'onboarding.set-look'        { look }                       after creation: change look using owned styles; colours are free
  *   'onboarding.boutique-buy'    { kind: 'hair'|'outfit'|'fabric'|'accessories', id }   buy a style with cash and wear it
- * Earlier steps may be redone until 'onboarding.home' succeeds. While `required` is set and the
- * life has not moved in, this system vetoes every action that is not 'onboarding.*' through the
- * 'action.block' modifier (code 'onboarding_required'). Otherwise creation is offered, not enforced.
+ * Earlier steps may be redone until 'onboarding.home' succeeds. While `required` is set, this
+ * system vetoes every action that is not 'onboarding.*' through the 'action.block' modifier (code
+ * 'onboarding_required'); for a guest it vetoes the home-only actions (code 'settle_required').
  *
- * COMPLETION, in order: lottery skill levels are set, needs are set to START_NEEDS, the start
- * cash is credited through the wallet (ledger reason "Start cash · …"), the Sim is placed at
- * Home, then 'life.started' { body, traits, dream, lottery, house } is emitted exactly once.
+ * COMPLETION, in order: lottery skill levels are set (never lowered), needs are set to START_NEEDS
+ * unless the quick start already did, the start cash is credited through the wallet (ledger reason
+ * "Start cash · …": the chosen home's start cash minus the seed the life was created with, so what
+ * was earned or spent as a guest is neither lost nor counted twice), the Sim is placed at Home
+ * (unless `stay`), then 'life.started' { body, traits, dream, lottery, house } is emitted exactly once.
  * `lottery` is the outcome id ('lapo-baby' is the loan outcome); the event also carries `look`,
  * `loan` ({ principal, weekly, owed } | null), `rent` and `startCash` for convenience.
  *
@@ -62,12 +97,21 @@
  */
 import { emit } from '../registry.js';
 import { busy, fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.js';
-import { arrive, canAfford, changeNeeds, credit, debit, moodOf, feelingsOf, setSkillLevel } from '../api.js';
+import { arrive, canAfford, changeNeeds, credit, debit, moodOf, feelingsOf, setSkillLevel, spotsOf } from '../api.js';
 import { bonusNeeds, fxModifiers } from '../character-effects.js';
 import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, FEELING_LINES, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, START_NEEDS,
   TRAITS, TRAITS_REQUIRED, WARDROBE_BASICS, ACCESSORY_BASICS } from '../content/traits.js';
 
+import { VENUES } from '../content/venues.js';
+
 const DONE_STEP = ONBOARDING_STEPS.length;
+/** How long after its creation a guest life may still be put in an inviter's venue (original beta value). */
+export const JOIN_WINDOW_MS = 10 * 60 * 1000;
+/** Where a new guest stands in a venue: the spot of the first activity the goal chip points at. */
+const WELCOME_SPOT = { park: 'trees' };
+const ACTIVITY_CAP = 9999;
+const SETTLE_REASON = 'Settle in to get your home: choose your traits, your dream and where you live. It takes a minute, and everything you have earned is kept.';
+const isGuest = (o) => o?.stage === 'guest' && !o.done;
 const KINDS = ['hair', 'outfit', 'fabric'];
 const COLOUR_FIELDS = { skin: ['skin', 'skin tone'], hairColor: ['hairColours', 'hair colour'], outfitColor: ['outfitColours', 'outfit colour'], bottomsColor: ['outfitColours', 'bottoms colour'] };
 const name = (id) => APPEARANCE.labels[id] ?? id;
@@ -209,14 +253,55 @@ const notDone = (state) => (state.onboarding.done
 const needStep = (state, step) => (state.onboarding.step < step
   ? fail(state, 'step_required', `Finish the ${ONBOARDING_STEPS[state.onboarding.step].label} step first.`) : null);
 const reach = (state, step) => { state.onboarding.step = Math.max(state.onboarding.step, step); };
-const mustBeDone = (state) => (state.onboarding.done ? null : fail(state, 'onboarding_required', 'Finish creating your Sim first: tap the "Create your Sim" goal.'));
+const mustBeDone = (state) => (state.onboarding.done ? null : fail(state, 'onboarding_required', isGuest(state.onboarding) ? 'Settle in first: tap the "Settle in" goal. The Boutique and your wardrobe open once you have a home.' : 'Finish creating your Sim first: tap the "Create your Sim" goal.'));
 
 function giveBonus(state, tags) {
   const bonus = bonusNeeds(sources(state), tags);
   if (Object.keys(bonus).length) changeNeeds(state, bonus);
 }
 
+/** Hand out the starting needs, once per life (at the quick start, or at move-in for a life that had none). */
+function startNeeds(state) {
+  const o = state.onboarding;
+  if (o.needsSet) return;
+  o.needsSet = true;
+  changeNeeds(state, Object.fromEntries(Object.entries(START_NEEDS).map(([need, value]) => [need, value - state.needs[need]])));
+}
+
 const actions = {
+  'onboarding.quick-start'(state, payload, ctx) {
+    const blocked = notDone(state);
+    if (blocked) return blocked;
+    const o = state.onboarding;
+    if (!isGuest(o)) return fail(state, 'not_a_guest', 'This life was not started with the quick start. Tap the "Create your Sim" goal to choose your look.');
+    const { look, reason } = checkLook(payload?.look, { starter: true });
+    if (!look) return fail(state, 'invalid_look', reason);
+    o.look = look;
+    reach(state, 1);
+    o.required = false;
+    if (o.playedAt === null) {
+      o.playedAt = finite(ctx.now) ? ctx.now : state.t;
+      startNeeds(state);
+      const spot = WELCOME_SPOT[state.location];
+      if (spot && !state.activeAction && spotsOf(state.location).some((item) => item.id === spot)) state.spot = spot;
+    }
+    state.message = `Welcome to ${VENUES[state.location]?.label ?? 'the city'}, ${state.name}.`;
+    return ok(state, 'playing');
+  },
+  'onboarding.arrive': { serverOnly: true, refusal: 'Joining a friend is done from their invite link.', run(state, payload, ctx) {
+    const o = state.onboarding, now = finite(ctx.now) ? ctx.now : state.t;
+    if (!isGuest(o) || o.required) return fail(state, 'not_a_guest', 'Only a brand-new guest is brought to a friend’s venue. Use the Map to go there.');
+    if (o.joined) return fail(state, 'already_joined', 'You have already joined a friend once. Use the Map to go there.');
+    if (o.bornAt === null || now - o.bornAt > JOIN_WINDOW_MS) return fail(state, 'join_window_closed', 'That invite brings you along only in your first minutes. Use the Map to go there.');
+    const venue = typeof payload?.venue === 'string' && payload.venue !== 'home' && Object.hasOwn(VENUES, payload.venue) ? payload.venue : null;
+    if (!venue) return fail(state, 'invalid_venue', 'That is not a public venue.');
+    const stop = busy(state, 'Finish or cancel your current action first.');
+    if (stop) return stop;
+    o.joined = true;
+    if (state.location !== venue) arrive(state, venue, ctx, { mode: null });
+    state.message = `You are at ${VENUES[venue].label}.`;
+    return ok(state, 'joined');
+  } },
   'onboarding.look'(state, payload, ctx) {
     const blocked = notDone(state);
     if (blocked) return blocked;
@@ -230,6 +315,7 @@ const actions = {
     if (!look) return fail(state, 'invalid_look', reason);
     o.look = look;
     reach(state, 1);
+    o.required = false; // the look is confirmed: a guest may play from here
     state.message = 'Look saved.';
     return ok(state, 'look_saved');
   },
@@ -278,7 +364,8 @@ const actions = {
     return ok(state, 'rolled');
   },
   'onboarding.home'(state, payload, ctx) {
-    const blocked = notDone(state) || needStep(state, 4) || busy(state, 'Finish or cancel your current action before moving in.');
+    const stay = payload?.stay === true;
+    const blocked = notDone(state) || needStep(state, 4) || (stay ? null : busy(state, 'Finish or cancel your current action before moving in.'));
     if (blocked) return blocked;
     const o = state.onboarding, outcome = outcomeOf(state);
     const home = typeof payload?.house === 'string' && Object.hasOwn(START_HOMES, payload.house) ? START_HOMES[payload.house] : null;
@@ -290,15 +377,15 @@ const actions = {
     const grant = Math.max(0, startCash - o.seed);
     if (!Number.isSafeInteger(state.cash + grant)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
 
-    o.house = home.id; o.done = true; o.step = DONE_STEP; o.completedAt = finite(ctx.now) ? ctx.now : state.t;
+    o.house = home.id; o.done = true; o.stage = 'settled'; o.required = false; o.step = DONE_STEP; o.completedAt = finite(ctx.now) ? ctx.now : state.t;
     o.wardrobe = wardrobeOf(o.wardrobe, o.look);
     for (const [skill, level] of Object.entries(outcome.skills || {})) setSkillLevel(state, skill, level);
-    changeNeeds(state, Object.fromEntries(Object.entries(START_NEEDS).map(([need, value]) => [need, value - state.needs[need]])));
+    startNeeds(state);
     credit(state, grant, `Start cash · ${home.label}, ${home.district}${outcome.loan ? ` (includes ${naira(outcome.loan.principal)} LAPO loan)` : ''}`, ctx);
-    arrive(state, 'home', ctx, { mode: null });
+    if (!stay) arrive(state, 'home', ctx, { mode: null });
     emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: outcome.id, house: home.id,
       look: { ...o.look, ...(o.look.accessories ? { accessories: [...o.look.accessories] } : {}) }, loan: outcome.loan ? { ...outcome.loan } : null, rent: home.rent, startCash }, ctx);
-    state.message = `Welcome to ${home.district}. You moved into your ${home.label} with ${naira(state.cash)}.`;
+    state.message = stay ? `Your ${home.label} in ${home.district} is ready. Tap Home whenever you want to see it. You have ${naira(state.cash)}.` : `Welcome to ${home.district}. You moved into your ${home.label} with ${naira(state.cash)}.`;
     return ok(state, 'life_started');
   },
   'onboarding.set-look'(state, payload) {
@@ -350,14 +437,15 @@ export default {
   sanitize(input, state, ctx) {
     const raw = input.onboarding;
     const lottery = validLottery(isRecord(raw) ? raw.lottery : null);
-    const base = { done: false, legacy: false, required: false, step: 0, seed: state.cash, look: { ...DEFAULT_LOOK }, traits: [], dream: null, lottery, house: null,
-      wardrobe: null, completedAt: null, bonusAt: 0 };
+    const base = { stage: 'settled', done: false, legacy: false, required: false, step: 0, seed: state.cash, look: { ...DEFAULT_LOOK }, traits: [], dream: null, lottery, house: null,
+      wardrobe: null, completedAt: null, bonusAt: 0, bornAt: null, playedAt: null, firstAt: null, activities: 0, needsSet: false, joined: false };
+    const time = (value) => (finite(value) && value >= 0 ? value : null);
     if (ctx?.isNew) {
       // A brand-new life: only the lottery roll may be carried in (see the header).
-      base.required = ctx.requireOnboarding === true;
+      if (ctx.quickStart === true || ctx.requireOnboarding === true) Object.assign(base, { stage: 'guest', required: true, bornAt: time(ctx.now) });
     } else if (!isRecord(raw) || typeof raw.done !== 'boolean') {
       // Saved before character creation existed: onboarded as-is, nothing taken away.
-      Object.assign(base, { done: true, legacy: true, step: DONE_STEP });
+      Object.assign(base, { done: true, legacy: true, step: DONE_STEP, needsSet: true });
     } else {
       // A saved look keeps everything that is still valid: an unknown accessory, face or expression is dropped, not the whole look.
       base.look = checkLook(isRecord(raw.look) ? { ...raw.look, accessories: tidyAccessories(raw.look.accessories),
@@ -367,7 +455,8 @@ export default {
       base.house = typeof raw.house === 'string' && Object.hasOwn(START_HOMES, raw.house) ? raw.house : null;
       base.seed = safeCount(raw.seed) ? raw.seed : state.cash;
       base.done = raw.done;
-      base.required = raw.required === true;
+      // A guest: saved as one, or left half-way by the old enforced flow (required, not done).
+      if (!raw.done && (raw.stage === 'guest' || raw.required === true)) base.stage = 'guest';
       base.legacy = raw.done && raw.legacy === true;
       base.completedAt = raw.done && finite(raw.completedAt) && raw.completedAt >= 0 ? raw.completedAt : null;
       base.bonusAt = finite(raw.bonusAt) && raw.bonusAt >= 0 ? raw.bonusAt : 0;
@@ -377,6 +466,12 @@ export default {
         const limit = base.traits.length !== TRAITS_REQUIRED ? 1 : !base.dream ? 2 : !lottery ? 3 : 4;
         base.step = Number.isInteger(raw.step) ? Math.min(Math.max(raw.step, 0), limit) : 0;
       }
+      // Held only until the look is confirmed; never for a life that was not made by the quick start.
+      base.required = base.stage === 'guest' && raw.required === true && base.step < 1;
+      base.bornAt = time(raw.bornAt); base.playedAt = time(raw.playedAt); base.firstAt = time(raw.firstAt);
+      base.activities = safeCount(raw.activities) ? Math.min(raw.activities, ACTIVITY_CAP) : 0;
+      base.needsSet = raw.done || raw.needsSet === true;
+      base.joined = raw.joined === true;
       base.wardrobe = raw.wardrobe;
     }
     // Until the life has moved in nothing is owned but the basics, however many looks were tried on.
@@ -387,15 +482,26 @@ export default {
   advance() {},
   modifiers: {
     ...fxModifiers(sources),
-    /** A life that must be created first accepts nothing but the creation steps. */
+    /**
+     * A guest whose look is not confirmed accepts nothing but the creation steps; a guest who is
+     * playing is refused only what needs a home (see THE STAGED MODEL in the header).
+     */
     'action.block'(value, state, data) {
-      const o = state.onboarding;
-      if (value || !o?.required || o.done || (typeof data?.type === 'string' && data.type.startsWith('onboarding.'))) return value;
-      return { code: 'onboarding_required', reason: `Finish creating your Sim first: you are on the ${ONBOARDING_STEPS[Math.min(o.step, ONBOARDING_STEPS.length - 1)].label} step. Nothing else can be done until you have moved in.` };
+      const o = state.onboarding, type = typeof data?.type === 'string' ? data.type : '';
+      if (value || !o || o.done || type.startsWith('onboarding.')) return value;
+      if (o.required) return { code: 'onboarding_required', reason: 'Choose your look and tap Play first. Nothing else can be done until then.' };
+      if (!isGuest(o)) return value;
+      if (type.startsWith('home.') || type === 'property.house-move' || (type === 'travel' && data.payload?.id === 'home')) return { code: 'settle_required', reason: SETTLE_REASON };
+      return value;
     },
   },
   on: {
     'activity.completed'(state, data, ctx) {
+      const o = state.onboarding;
+      if (isGuest(o)) {
+        if (o.firstAt === null) o.firstAt = finite(ctx?.now) ? ctx.now : state.t;
+        o.activities = Math.min(ACTIVITY_CAP, o.activities + 1);
+      }
       let tags = Array.isArray(data?.tags) ? data.tags : [];
       if (tags.includes('food')) {
         const now = finite(ctx?.now) ? ctx.now : state.t;
@@ -415,8 +521,12 @@ export default {
   view(state) {
     const o = state.onboarding, outcome = outcomeOf(state), mood = moodOf(state);
     const word = moodWord(mood.score);
+    const notYet = isGuest(o) ? 'Settle in first.' : 'Finish creating your Sim first.';
     return {
-      done: o.done, legacy: o.legacy, required: o.required && !o.done, step: o.step, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
+      stage: o.stage, guest: isGuest(o), done: o.done, legacy: o.legacy, required: o.required && !o.done, step: o.step,
+      /** The first-minute timings in server ms (null until they happen) and what a guest has done so far. */
+      timing: { bornAt: o.bornAt, playedAt: o.playedAt, firstAt: o.firstAt, settledAt: o.completedAt }, activities: o.activities,
+      settleReason: isGuest(o) ? SETTLE_REASON : null, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
       lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery.at } : null,
       homes: Object.values(START_HOMES).map((home) => {
         const locked = outcome ? homeLock(outcome, home.id) : null;
@@ -425,12 +535,12 @@ export default {
       wardrobe: { hair: [...o.wardrobe.hair], outfit: [...o.wardrobe.outfit], fabric: [...o.wardrobe.fabric], accessories: ownedAccessories(o) },
       boutique: KINDS.flatMap((kind) => optionsFor(kind, o.look.body).map((id) => {
         const owned = o.wardrobe[kind].includes(id), price = BOUTIQUE_PRICES[kind][id];
-        const blocked = !o.done ? 'Finish creating your Sim first.' : owned ? null
+        const blocked = !o.done ? notYet : owned ? null
           : !canAfford(state, price) ? `Costs ${naira(price)}; you have ${naira(state.cash)}.` : null;
         return { kind, id, label: name(id), price, owned, wearing: o.look[kind] === id, blocked };
       })).concat(APPEARANCE.accessories.map(({ id, slot }) => {
         const owned = ownedAccessories(o).includes(id), price = BOUTIQUE_PRICES.accessories[id];
-        const blocked = !o.done ? 'Finish creating your Sim first.' : owned ? null
+        const blocked = !o.done ? notYet : owned ? null
           : !canAfford(state, price) ? `Costs ${naira(price)}; you have ${naira(state.cash)}.` : null;
         return { kind: 'accessories', id, slot, label: name(id), price, owned, wearing: (o.look.accessories ?? []).includes(id), blocked };
       })),

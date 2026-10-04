@@ -8,6 +8,6 @@ import { runTwoPlayers } from '../scripts/two-players.mjs';
 test('the two-player script runs to the end with every assertion holding', async () => {
   const lines = [];
   const result = await runTwoPlayers({ log: (line) => lines.push(line) });
-  assert.equal(result.steps, 11);
+  assert.equal(result.steps, 12);
   assert.ok(lines.some((line) => line.startsWith('Two players complete')));
 });

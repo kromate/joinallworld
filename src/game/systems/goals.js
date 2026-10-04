@@ -4,10 +4,15 @@
  * Everything is driven by registry events; perks act through modifiers.
  *
  * STATE — state.goals
- *   started    boolean — the starter chain is running. It starts on 'life.started', so it belongs
- *              to lives that went through character creation; a life saved before that existed
- *              skips the tutorial rewards and goes straight to the rolling guide.
- *   chain      0–7: index in STARTER_GOALS of the current starter goal (7 = chain finished)
+ *   started    boolean — the starter chain is running. For a guest of the quick start it runs from
+ *              the first moment (the opening goals are played in public, before there is a home).
+ *              For any other life it starts on 'life.started', at the first home goal; a life saved
+ *              before character creation existed skips the tutorial rewards and goes straight to
+ *              the rolling guide.
+ *   chain      index in STARTER_GOALS of the current starter goal (STARTER_GOALS.length = finished)
+ *   cv         2 — the version of the goal order `chain` counts in. A save without it counted in the
+ *              order before the quick start (seven goals, "Eat something" first): its index is
+ *              moved past the opening goals when it loads, and those are never paid to it.
  *   seen       [goalId] — later goals whose condition already happened; they pay as soon as the
  *              chain reaches them, so nobody is stuck on a step they did early
  *   stars      unspent stars
@@ -50,7 +55,7 @@ import { cap, fail, finite, isRecord, naira, ok, safeCount } from '../util.js';
 import { lagosTime } from '../clock.js';
 import { blockReason, credit, MAX_LEVEL, NEEDS, skillLevel, spotsOf, xpForLevel } from '../api.js';
 import { fxModifiers } from '../character-effects.js';
-import { GUIDE_LOW_NEED, PERKS, STARTER_GOALS, WISHES, WISH_REROLLS_PER_DAY, WISH_SLOTS, WISH_STARS } from '../content/goals.js';
+import { GUIDE_LOW_NEED, PERKS, STARTER_GOALS, STARTER_INTRO, WISHES, WISH_REROLLS_PER_DAY, WISH_SLOTS, WISH_STARS } from '../content/goals.js';
 import { DREAMS, DREAM_REWARD, DREAM_TARGETS, LOTTERY } from '../content/traits.js';
 import { VENUES } from '../content/venues.js';
 import { JOBS } from '../content/jobs.js';
@@ -107,6 +112,7 @@ function markSeen(state, test) {
   const g = state.goals;
   for (let i = g.chain; i < STARTER_GOALS.length; i++) {
     const goal = STARTER_GOALS[i];
+    if (goal.done.fresh && i !== g.chain) continue; // counts only while it is the current goal
     if (!g.seen.includes(goal.id) && test(goal.done)) g.seen.push(goal.id);
   }
 }
@@ -271,7 +277,8 @@ const HANDLERS = {
   },
   'life.started'(state, data) {
     const g = state.goals;
-    g.started = true;
+    // A life that was never a guest starts its chain here, at the first home goal (the opening goals are the quick start's).
+    if (!g.started) { g.started = true; g.chain = Math.max(g.chain, STARTER_INTRO); }
     if (typeof data?.dream === 'string' && Object.hasOwn(DREAMS, data.dream)) g.dream = data.dream;
     const owed = data?.loan?.owed ?? LOTTERY[data?.lottery]?.loan?.owed;
     if (safeCount(owed)) g.stats.debt = owed;
@@ -310,18 +317,36 @@ function recovery(state, need, ctx) {
   }
   return null;
 }
+/** The shortest free activity that can be started right now in the venue the player is in, or null. */
+function quickest(state, ctx) {
+  let best = null;
+  for (const spot of spotsOf(state.location)) {
+    for (const def of spot.activities) {
+      if (def.unavailable || def.cost || def.reward || def.requiresJob || def.requiresSkill || def.choices || def.home || Object.keys(def.minimumNeeds || {}).length || !(def.duration > 0)) continue;
+      if (blockReason(state, def, state.location, ctx) || modify(state, 'activity.hidden', false, { def }, ctx) === true) continue;
+      if (!best || def.duration < best.def.duration) best = { spot, def };
+    }
+  }
+  return best;
+}
 const workplaceOf = (state) => { const at = JOBS[state.job]?.workplace; return typeof at?.venue === 'string' ? [at.venue, at.spot] : null; };
 const homeSpot = (id) => (spotsOf('home').some((spot) => spot.id === id) ? ['home', id] : ['home']);
 
 function chipOf(state, ctx) {
   const g = state.goals;
-  if (state.onboarding && !state.onboarding.done) {
+  if (state.onboarding && !state.onboarding.done && state.onboarding.stage !== 'guest') {
     return { kind: 'create', icon: '✨', title: 'Create your Sim', hint: 'Choose your look, personality, dream and home', open: 'onboarding' };
   }
   const goal = g.started ? STARTER_GOALS[g.chain] : null;
   if (goal) {
     const chip = { kind: 'goal', id: goal.id, icon: goal.icon, title: goal.title, hint: goal.hint, reward: `+${naira(goal.cash)} +${goal.stars}✨`,
       step: g.chain + 1, of: STARTER_GOALS.length };
+    if (goal.here) {
+      // Wherever the guest stands: the goal's own spot at its venue, otherwise the quickest free thing to do right here.
+      if (state.location === goal.go[0]) return { ...chip, go: goal.go, activity: goal.activity };
+      const near = quickest(state, ctx);
+      return near ? { ...chip, title: 'Do something fun', hint: `${near.spot.label} → ${near.def.label} · takes ${near.def.duration} seconds`, go: [state.location, near.spot.id], activity: near.def.id } : { ...chip, go: goal.go };
+    }
     if (goal.workplace) return { ...chip, ...(workplaceOf(state) ? { go: workplaceOf(state) } : { open: 'jobs' }) };
     if (goal.open === 'buy' && state.location !== 'home') return { ...chip, go: ['home'] };
     if (goal.open) return { ...chip, open: goal.open, ...(goal.params ? { params: goal.params } : {}) };
@@ -399,12 +424,16 @@ export default {
     const raw = isRecord(input.goals) ? input.goals : {};
     const stats = isRecord(raw.stats) ? raw.stats : {};
     const ids = (value, valid, max) => [...new Set((Array.isArray(value) ? value.slice(0, 100) : []).filter((id) => typeof id === 'string' && valid(id)))].slice(0, max);
-    const chain = Number.isInteger(raw.chain) ? Math.min(Math.max(raw.chain, 0), STARTER_GOALS.length) : 0;
+    const guest = state.onboarding?.stage === 'guest';
+    // A chain saved in the order before the quick start counts from "Eat something": move it past the opening goals.
+    const shift = raw.cv === 2 || raw.started !== true ? 0 : STARTER_INTRO;
+    const chain = Number.isInteger(raw.chain) ? Math.min(Math.max(raw.chain, 0) + shift, STARTER_GOALS.length) : 0;
     const dream = typeof raw.dream === 'string' && Object.hasOwn(DREAMS, raw.dream) ? raw.dream : state.onboarding?.done ? state.onboarding.dream ?? null : null;
     const seq = count(raw.seq);
     state.goals = {
-      started: raw.started === true,
+      started: raw.started === true || guest,
       chain,
+      cv: 2,
       seen: ids(raw.seen, (id) => goalIds.indexOf(id) >= chain, STARTER_GOALS.length),
       stars: count(raw.stars, MAX_STARS),
       perks: ids(raw.perks, (id) => Object.hasOwn(perkById, id), PERKS.length),

@@ -97,13 +97,13 @@ The code units are locally verified. Parity host wiring, real shared-store persi
 
 The campus lane does not edit existing files. The parity owner must register `UNILAG_VENUE` in the venue catalogue, `buildUnilag` for scene kind `unilag`, and campus systems in the registry. The preview is isolated from the game server; no production delivery is claimed.
 
-The current `src/scene/crowd.js` clamps positions to 20 units, and the server position protocol is venue-sized. Campus positions need a per-venue range and walk validation using campus bounds, without weakening other venue validation. Host walking should use the scene's coarse-plus-fine `walk.grid.path` adapter. Camera occlusion receives `walk.solids` including heights. Campus LOD changes only from `setPosition`/`walk.move`, never a timer.
+The current `src/scene/crowd.ts` clamps positions to 20 units, and the server position protocol is venue-sized. Campus positions need a per-venue range and walk validation using campus bounds, without weakening other venue validation. Host walking should use the scene's coarse-plus-fine `walk.grid.path` adapter. Camera occlusion receives `walk.solids` including heights. Campus LOD changes only from `setPosition`/`walk.move`, never a timer.
 
 The owner must wire the Campus phone app to the student view, the existing Bank phone app at `access-bank`, existing shared table games at Student Union, transactional shared elections/leaderboards, city travel arrival at Main Gate, and analytics events at the UI host. The campus rule modules emit domain events and do not dispatch DOM events. Integration event example: `window.dispatchEvent(new CustomEvent('jaw:track', {detail:{name, props}}))`.
 
 ## Local development
 
-Existing dependencies are reused from the owner checkout; no new npm dependencies or package-file edits. Run `node ../JoinAllworld/node_modules/vite/bin/vite.js --config src/campus/unilag/preview.config.mjs` from this worktree. Preview: `http://127.0.0.1:3410/campus.html`. Only ports 3410 and the private screenshot browser port 3419 belong to this task. Port 3300 is untouched.
+Existing dependencies are reused from the owner checkout; no new npm dependencies or package-file edits. Run `node ../JoinAllworld/node_modules/vite/bin/vite.js --config src/campus/unilag/preview.config.ts` from this worktree. Preview: `http://127.0.0.1:3410/campus.html`. Only ports 3410 and the private screenshot browser port 3419 belong to this task. Port 3300 is untouched.
 
 Node checks use `NODE_OPTIONS='--import ./src/campus/shared/resolve-local.mjs'` to resolve the owner's existing three/vite/ws packages. `capture.mjs` adapts the supplied private headless harness, removes its own browser profile, and records real renderer counts, exceptions, phone overflow and idle frame count. Software GL is not a measurement of Android frame rate.
 
@@ -125,7 +125,7 @@ Routing: Luna handled two bounded research units and content. Sol handled layout
 | `student.js` | default system `unilagStudent`, `graduationOf`, `gradeOf`, `allocatedHostelSpot` | Server rules and read-only ID/results/hostel view |
 | `games.js` | default system `unilagCommunity`, `eventsAt`, election reducers, leaderboard reducers, `campusTeamStandings`, `creditCampusGoal` | Server-owned campus community and shared store |
 | `shuttle.js` | default system `unilagShuttle`, `SHUTTLE_STOPS`, `shuttleRoute`, `shuttlePose`, `buildShuttle` | Fare/timer authority and host-driven visible ride |
-| `landmark.js` | `MAP_PLACEMENT`, `buildUnilagLandmark` | Lagos map miniature; x15/z-42, footprint14x10, approximate mainland presentation coordinates |
+| `landmark.ts` | `MAP_PLACEMENT`, `buildUnilagLandmark` | Lagos map miniature; x15/z-42, footprint14x10, approximate mainland presentation coordinates |
 
 Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The combined `integration.test.js` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. The isolated source lane did not edit registry files; the main integration below now registers these systems.
 
@@ -222,16 +222,16 @@ Everything above describes the campus as it was built on `astra/unilag` and inte
 | Seam | In the combined game |
 | --- | --- |
 | Venue catalogue | `unilag` is the 26th place (25 venues and the campus), Lagos only (`cities: ['lagos']`: other cities neither list nor accept it). It has no `hours`: open at any hour. |
-| Engine systems | `unilagStudent`, `unilagCommunity`, `unilagShuttle` are registered after `growth`. A guest of the quick start is refused every student action (apply, matriculate, register, lecture, assignment, test, close, defer, resume, drop, hostel, campus job, election) with `settle_required` — `GUEST_CAMPUS` in `src/game/systems/onboarding.js`; visiting, the trail, the games and the shuttle stay open. |
-| Map | A site in the Lagos city pack at Akoka (`src/map3d/cities/lagos.js`, inside the Lagos Mainland local government) with a landmark kind of its own (`src/map3d/landmarks.js` `unilag`: Senate House and the main gate, in the city's merged batch). The flat map is the same pack from above. `landmark.js` here remains for the standalone preview. |
-| Scene host | `src/campus/unilag/host.js` behind `world-adapter.js`, which the entry file talks to for every venue. The campus host is fetched only when the player is at the campus (or a trip to it has set off). `src/campus/shared/{characters,movement,motion-loop}.js` were copies of the game's own modules and are gone: the campus uses `src/scene/characters.js`, `src/scene/movement.js` and `src/scene/motion-loop.js`. Only `shared/geometry.js` and `shared/signs.js` remain. |
+| Engine systems | `unilagStudent`, `unilagCommunity`, `unilagShuttle` are registered after `growth`. A guest of the quick start is refused every student action (apply, matriculate, register, lecture, assignment, test, close, defer, resume, drop, hostel, campus job, election) with `settle_required` — `GUEST_CAMPUS` in `src/game/systems/onboarding.ts`; visiting, the trail, the games and the shuttle stay open. |
+| Map | A site in the Lagos city pack at Akoka (`src/map3d/cities/lagos.ts`, inside the Lagos Mainland local government) with a landmark kind of its own (`src/map3d/landmarks.ts` `unilag`: Senate House and the main gate, in the city's merged batch). The flat map is the same pack from above. `landmark.ts` here remains for the standalone preview. |
+| Scene host | `src/campus/unilag/host.ts` behind `world-adapter.ts`, which the entry file talks to for every venue. The campus host is fetched only when the player is at the campus (or a trip to it has set off). `src/campus/shared/{characters,movement,motion-loop}.ts` were copies of the game's own modules and are gone: the campus uses `src/scene/characters.ts`, `src/scene/movement.ts` and `src/scene/motion-loop.ts`. Only `shared/geometry.ts` and `shared/signs.ts` remain. |
 | Selecting a landmark | The `spot` action is sent when the avatar arrives (`walkToSpot`, then `commitSpot` in `src/life-main.js`), from the panel's spot pills, the Campus app and a landmark's name tag alike. |
 | Presence | Campus coordinates on the wire, valid only on walkable ground (`server/protocol.js validatePosition(value, 'unilag')`); a join starts at the main gate. Every other venue keeps ±20. |
-| Table games | The two Student Union tables are rows of the one table registry (`src/tables/places.js`: `union-whot-1`, `union-whot-2`) and are played through the shared table framework from the Tables app and the "table here" chip. They are not drawn in the campus scene. |
+| Table games | The two Student Union tables are rows of the one table registry (`src/tables/places.ts`: `union-whot-1`, `union-whot-2`) and are played through the shared table framework from the Tables app and the "table here" chip. They are not drawn in the campus scene. |
 | Campus app | A lazy phone app (`src/ui/panels/groups/campus.js`), in the City group with a drawn mortarboard; its emoji are drawn as the game's glyphs. |
 | Shared routes | `GET /api/campus`, `POST /api/campus/nominate`, `POST /api/campus/vote` on both hosts, exactly once through `ctx.command` (the ballot is saved with the action receipt). Stored: the `campus` collection (one weekly election). |
-| Analytics | `campus_enrolled` and `campus_graduated` through `jaw:track`, from the server's own state (`src/telemetry/events.js`). |
-| Economy | `npm run economy` plays a student on every start; `src/game/economy.test.js` asserts fees (₦3,000 for the degree), one paid campus job a Lagos day and one scholarship at most. |
+| Analytics | `campus_enrolled` and `campus_graduated` through `jaw:track`, from the server's own state (`src/telemetry/events.ts`). |
+| Economy | `npm run economy` plays a student on every start; `src/game/economy.test.ts` asserts fees (₦3,000 for the degree), one paid campus job a Lagos day and one scholarship at most. |
 | Types | `src/types/campus.ts`. |
 
 Known limits carried over: the leaderboard projection reads every session on each `GET /api/campus` (rate limited per player, not cached); `campus.*` engine events have no listener; `campus-shuttle` is the one campus action outside the `unilag.` namespace.

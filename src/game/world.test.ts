@@ -112,7 +112,7 @@ test('venue catalogue: 25 venues and the UNILAG campus with district, hours, sce
     assert.ok(venue.ambient.length >= 2, `${venue.id} ambient lines`);
     if (venue.hours) assert.ok(Number.isFinite(venue.hours.open) && Number.isFinite(venue.hours.close) && venue.hours.open !== venue.hours.close, `${venue.id} hours`);
     const own = Object.values(venue.spots).filter((spot) => !['people', 'work'].includes(spot.id));
-    // The campus is a venue the size of a district: one spot per landmark (src/campus/unilag/layout.js).
+    // The campus is a venue the size of a district: one spot per landmark (src/campus/unilag/layout.ts).
     assert.ok(own.length >= 3 && own.length <= (venue.id === 'unilag' ? 64 : 5), `${venue.id} has ${own.length} spots`);
     const defs = own.flatMap((spot) => spot.activities);
     assert.ok(venue.id === 'home' || defs.length >= 7, `${venue.id} has ${defs.length} activities`);

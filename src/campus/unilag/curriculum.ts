@@ -8,21 +8,15 @@
  * beta gameplay value and is collected in UNILAG_BETA_RULES below.
  */
 
-/** @typedef {'morning'|'afternoon'|'night'} LectureSlotId */
-/** @typedef {{id:string,open:number,close:number,label:string}} LectureSlot */
-/** @typedef {{id:string,title:string,credits:number,skill:string,slot:LectureSlotId}} Course */
-/** @typedef {{number:number,courses:ReadonlyArray<Course>}} Semester */
-/** @typedef {{id:string,label:string,faculty:string,department:string,spot:string,skill:string,careerTrack:string|null,note?:string,semesters:ReadonlyArray<Semester>}} Programme */
+import type { CourseDefinition, LectureSlot, LectureSlotId, ProgrammeDefinition, ProgrammeId, SemesterDefinition, UnilagBetaRules } from '../../types/campus.ts';
 
-/** @type {Readonly<Record<LectureSlotId, LectureSlot>>} */
-export const LECTURE_SLOTS = Object.freeze({
+export const LECTURE_SLOTS: Readonly<Record<LectureSlotId, LectureSlot>> = Object.freeze({
   morning: Object.freeze({ id: 'morning', open: 9 * 60, close: 11 * 60, label: '9:00 AM to 11:00 AM' }),
   afternoon: Object.freeze({ id: 'afternoon', open: 14 * 60, close: 16 * 60, label: '2:00 PM to 4:00 PM' }),
   night: Object.freeze({ id: 'night', open: 20 * 60, close: 22 * 60, label: '8:00 PM to 10:00 PM' }),
 });
 
-/** @type {Readonly<Record<string, number>>} */
-export const UNILAG_BETA_RULES = Object.freeze({
+export const UNILAG_BETA_RULES: Readonly<UnilagBetaRules> = Object.freeze({
   admissionFee: 200,
   tuition: 1000,
   levy: 100,
@@ -43,18 +37,14 @@ export const UNILAG_BETA_RULES = Object.freeze({
   scholarshipAward: 200,
 });
 
-/** @param {string} id @param {string} title @param {number} credits @param {string} skill @param {LectureSlotId} slot @returns {Readonly<Course>} */
-const course = (id, title, credits, skill, slot) => Object.freeze({ id, title, credits, skill, slot });
-/** @param {number} number @param {Course[]} courses @returns {Readonly<Semester>} */
-const semester = (number, courses) => Object.freeze({ number, courses: Object.freeze(courses) });
-/** @param {{id:string,label:string,faculty:string,department:string,spot:string,skill:string,careerTrack:string|null,note?:string,semesters:Semester[]}} input @returns {Readonly<Programme>} */
-const programme = ({ id, label, faculty, department, spot, skill, careerTrack, note, semesters }) => Object.freeze({
+const course = (id: string, title: string, credits: number, skill: CourseDefinition['skill'], slot: CourseDefinition['slot']): Readonly<CourseDefinition> => Object.freeze({ id, title, credits, skill, slot });
+const semester = (number: SemesterDefinition['number'], courses: CourseDefinition[]): Readonly<SemesterDefinition> => Object.freeze({ number, courses: Object.freeze(courses) });
+const programme = ({ id, label, faculty, department, spot, skill, careerTrack, note, semesters }: Omit<ProgrammeDefinition, 'semesters'> & { semesters: SemesterDefinition[] }): Readonly<ProgrammeDefinition> => Object.freeze({
   id, label, faculty, department, spot, skill, careerTrack, ...(note ? { note } : {}),
   semesters: Object.freeze(semesters),
 });
 
-/** @type {Readonly<Record<string, Programme>>} */
-export const PROGRAMMES = Object.freeze({
+export const PROGRAMMES: Readonly<Record<ProgrammeId, ProgrammeDefinition>> = Object.freeze({
   eee: programme({
     id: 'eee', label: 'Electrical and Electronics Engineering', faculty: 'Engineering', department: 'Electrical and Electronics Engineering',
     spot: 'engineering', skill: 'coding', careerTrack: 'tech',
@@ -113,9 +103,8 @@ export const PROGRAMMES = Object.freeze({
   }),
 });
 
-/** @param {string} id @returns {Programme|null} */
-export const programmeOf = (id) => (typeof id === 'string' && Object.hasOwn(PROGRAMMES, id) ? PROGRAMMES[id] : null);
-/** @param {string} programmeId @param {number} number @returns {Semester|null} */
-export const semesterOf = (programmeId, number) => programmeOf(programmeId)?.semesters[number - 1] ?? null;
-/** @param {string} programmeId @param {number} semesterNumber @param {string} courseId @returns {Course|null} */
-export const courseOf = (programmeId, semesterNumber, courseId) => semesterOf(programmeId, semesterNumber)?.courses.find((item) => item.id === courseId) ?? null;
+const isProgrammeId = (id: unknown): id is ProgrammeId => typeof id === 'string' && Object.hasOwn(PROGRAMMES, id);
+export const programmeOf = (id: unknown): ProgrammeDefinition | null => (isProgrammeId(id) ? PROGRAMMES[id] : null);
+// A null semester number gave `semesters[-1]`, i.e. null, in the untyped original.
+export const semesterOf = (programmeId: unknown, number: number | null): SemesterDefinition | null => (number === null ? null : programmeOf(programmeId)?.semesters[number - 1] ?? null);
+export const courseOf = (programmeId: unknown, semesterNumber: number | null, courseId: unknown): CourseDefinition | null => semesterOf(programmeId, semesterNumber)?.courses.find((item) => item.id === courseId) ?? null;

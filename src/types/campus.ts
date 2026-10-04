@@ -15,7 +15,7 @@
  */
 import type { ActionResponse } from './protocol.ts'
 import type { CityGateErrorCode, ActionErrorCode, HostErrorCode, JsonBodyErrorCode, Ok, SessionErrorCode, StorageErrorCode, TimedId } from './protocol.ts'
-import type { JobId, LagosDay, LagosWeek, Ms, PlayerPublicId, SkillId, SpotId } from './life.ts'
+import type { ActionOutcome, JobId, LagosDay, LagosWeek, Ms, PlayerPublicId, SkillId, SpotId } from './life.ts'
 import type { NoPayload } from './actions.ts'
 import type { TableGameId } from './growth.ts'
 
@@ -572,6 +572,9 @@ export interface CampusActionMap {
 }
 
 export type CampusActionType = keyof CampusActionMap
+
+/** What the handler of campus action `T` returns: the success and refusal codes `CampusActionMap[T]` lists. */
+export type CampusOutcome<T extends CampusActionType> = ActionOutcome<CampusActionMap[T]['ok'], CampusActionMap[T]['fail']>
 
 /**
  * The campus actions a guest of the quick start is refused with 'settle_required'

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ANCHORS } from './layout.js';
-import { CAMPUS_NPCS, DISCOVERY_TRAIL, shareLabel, UI_LINKS, UNILAG_VENUE } from './content.js';
+import { ANCHORS } from './layout.ts';
+import { CAMPUS_NPCS, DISCOVERY_TRAIL, shareLabel, UI_LINKS, UNILAG_VENUE } from './content.ts';
 
 const NEEDS = new Set(['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder']);
 const SKILLS = new Set(['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography']);
@@ -18,7 +18,7 @@ test('UNILAG content covers every finalized layout anchor', () => {
 
 test('campus activities use supported skills and needs with finite beta numbers', () => {
   for (const spot of Object.values(UNILAG_VENUE.spots)) for (const def of spot.activities) {
-    for (const value of [def.duration, def.cost, def.cooldown].filter((value) => value !== undefined)) {
+    for (const value of [def.duration, def.cost, def.cooldown].filter((value): value is number => value !== undefined)) {
       assert.ok(Number.isFinite(value));
       assert.ok(value >= 0);
     }

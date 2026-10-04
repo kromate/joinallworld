@@ -1,16 +1,19 @@
-import { signLetters } from '../shared/signs.js';
+import { signLetters } from '../shared/signs.ts';
 
-/** Original procedural interpretations. Reference evidence and limits are in CAMPUS-UNILAG.md.
- * @typedef {import('./layout.js').CampusBuilding} Building
- * @typedef {ReturnType<import('../../scene/build.ts').createBatch>} Batch
- */
+import type { Instance } from '../shared/geometry.ts';
+import type { Batch } from '../../scene/types.ts';
 
-/** @param {Batch} batch @param {Building} b @param {number} detail
- * @param {import('../shared/geometry.js').Instance[]} windows */
-export function drawBuilding(batch, b, detail, windows) {
+/** The building fields the renderer reads; scene.ts passes a layout building with its style resolved. */
+export interface BuildingStyle {
+  id: string; label: string; kind: string; x: number; z: number; w: number; d: number; h: number;
+  color?: string; interior?: boolean;
+}
+
+/** Original procedural interpretations. Reference evidence and limits are in CAMPUS-UNILAG.md. */
+export function drawBuilding(batch: Batch, b: BuildingStyle, detail: number, windows: Instance[]): void {
   const { x, z, w, d, h } = b;
   const cream = b.color || '#dfd0ad', roof = '#795c50', red = '#983e3d';
-  const box = (dx, y, dz, width, height, depth, color) => batch.box(x + dx, y, z + dz, width, height, depth, color);
+  const box = (dx: number, y: number, dz: number, width: number, height: number, depth: number, color: string): Batch => batch.box(x + dx, y, z + dz, width, height, depth, color);
   if (b.kind === 'gate') {
     for (const side of [-1, 1]) {
       box(side * w * .36, h / 2, 0, w * .15, h, d, cream);
@@ -114,15 +117,14 @@ export function drawBuilding(batch, b, detail, windows) {
   signLetters(batch,b.label,x,3.1,z+d/2+.31,Math.min(w-1,13));
 }
 
-/** Furniture occupies the sides, leaving the centre approach open.
- * @param {Batch} batch @param {Building} b */
-function furnish(batch, b) {
+/** Furniture occupies the sides, leaving the centre approach open. */
+function furnish(batch: Batch, b: BuildingStyle): void {
   const { x, z, w, d, kind } = b;
-  const box = (dx, y, dz, width, height, depth, color) => batch.box(x + dx, y, z + dz, width, height, depth, color);
+  const box = (dx: number, y: number, dz: number, width: number, height: number, depth: number, color: string): Batch => batch.box(x + dx, y, z + dz, width, height, depth, color);
   if (kind === 'library') {
     for (const side of [-1, 1]) for (let row = 0; row < 3; row++) {
       box(side * (w / 2 - 3), 1.8, -d / 2 + 4 + row * 4, 2, 3.6, 2.7, '#7e5337');
-      for (let shelf = 0; shelf < 3; shelf++) box(side * (w / 2 - 2.8), .7 + shelf, -d / 2 + 4 + row * 4, 1.5, .6, 2.4, ['#984c44', '#5b7777', '#be9649'][shelf]);
+      for (let shelf = 0; shelf < 3; shelf++) box(side * (w / 2 - 2.8), .7 + shelf, -d / 2 + 4 + row * 4, 1.5, .6, 2.4, ['#984c44', '#5b7777', '#be9649'][shelf]!);
     }
   } else if (kind === 'hall') {
     for (const side of [-1, 1]) {

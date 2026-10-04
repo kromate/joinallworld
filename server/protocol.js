@@ -2,8 +2,8 @@
 // No Node-only imports here (no node:*, ws or fs): the worker bundles this file as-is.
 import { hasAction, isDeparting, occupiesVenue } from '../src/life.ts';
 import { screenText } from './moderation/text.js';
-import { createCampusWalk } from '../src/campus/unilag/walk.js';
-import { ENTRANCE } from '../src/campus/unilag/layout.js';
+import { createCampusWalk } from '../src/campus/unilag/walk.ts';
+import { ENTRANCE } from '../src/campus/unilag/layout.ts';
 
 export const MAX_PAYLOAD_BYTES = 2048;
 export const CITY_IDS = Object.freeze(['lagos', 'ibadan']);
@@ -121,7 +121,7 @@ export const STUN_ONLY_CONFIG = Object.freeze({ iceServers: Object.freeze([{ url
 
 /**
  * The UNILAG campus is a venue the size of a district: its positions are campus coordinates, valid only on its
- * walkable ground (src/campus/unilag/walk.js). Every other venue keeps the ±20 bounds.
+ * walkable ground (src/campus/unilag/walk.ts). Every other venue keeps the ±20 bounds.
  */
 let campusWalk;
 /** Where a socket that has just joined a venue room stands: the campus gate, or the origin ("not reported yet") anywhere else. */

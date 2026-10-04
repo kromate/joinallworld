@@ -177,6 +177,7 @@ import type {
   ActionHandler, ActiveKindHandler, EngineEvent, EngineEventMap, EventListener, ModifierKey, ModifierMap, ServerOnlyAction, SystemDefinition,
 } from '../types/registry.ts';
 import type { LifeContext, LifeState } from '../types/life.ts';
+import type { CampusEngineEvent, CampusEventMap } from '../types/campus.ts';
 
 const order: SystemDefinition[] = [];
 const byId = new Map<string, SystemDefinition>();
@@ -188,7 +189,7 @@ const MAX_EMIT_DEPTH = 8;
 const SERVER_ONLY_REASON = 'That step is completed by the game server from its own screen. Nothing was changed.';
 let depth = 0;
 
-export function registerSystem(def: SystemDefinition): SystemDefinition {
+export function registerSystem(def: SystemDefinition<string>): SystemDefinition {
   if (!def || typeof def.id !== 'string' || byId.has(def.id)) throw new Error(`Invalid or duplicate system: ${def?.id}`);
   if (!Array.isArray(def.stateKeys) || typeof def.sanitize !== 'function') throw new Error(`System ${def.id} needs stateKeys and sanitize`);
   if (def.stateKeys.some((key) => typeof key !== 'string' || !key || ['__proto__', 'constructor', 'prototype'].includes(key))
@@ -220,9 +221,11 @@ export function registerSystem(def: SystemDefinition): SystemDefinition {
     if (handler) activeTable.set(kind, handler);
   }
   for (const key of def.stateKeys) declaredKeys.add(key);
-  order.push(def);
-  byId.set(def.id, def);
-  return def;
+  // Tests register probe systems under ids of their own; the table keeps the engine's own SystemId type.
+  const registered = def as SystemDefinition;
+  order.push(registered);
+  byId.set(def.id, registered);
+  return registered;
 }
 
 export const systems = (): SystemDefinition[] => order;
@@ -273,16 +276,18 @@ export function assertDeclared(state: object, where: string): void {
 
 /** Notify every system, in registration order. Listeners may mutate state and emit further events.
  * Listeners always receive an object: anything else is replaced with {} so they can destructure safely. */
-export function emit<E extends EngineEvent>(state: LifeState, event: E, data: EngineEventMap[E], ctx: LifeContext): void {
+export function emit<E extends EngineEvent>(state: LifeState, event: E, data: EngineEventMap[E], ctx: LifeContext): void;
+export function emit<E extends CampusEngineEvent>(state: LifeState, event: E, data: CampusEventMap[E], ctx: LifeContext): void;
+export function emit<E extends EngineEvent | CampusEngineEvent>(state: LifeState, event: E, data: (EngineEventMap & CampusEventMap)[E], ctx: LifeContext): void {
   // Listeners emitting from listeners this deep is a loop, not a design: dropping the event
   // silently would leave some systems updated and others not, so it is an error instead.
   if (depth >= MAX_EMIT_DEPTH) throw new Error(`Event "${event}" was emitted ${MAX_EMIT_DEPTH} listeners deep: an event loop between systems.`);
   // Anything that is not a plain object reaches listeners as {} (a trust boundary: tests and other owners may emit partial data).
-  const payload = (data !== null && typeof data === 'object' && !Array.isArray(data) ? data : {}) as EngineEventMap[E];
+  const payload = (data !== null && typeof data === 'object' && !Array.isArray(data) ? data : {}) as (EngineEventMap & CampusEventMap)[E];
   depth += 1;
   try {
     for (const def of order) {
-      const on: { [K in EngineEvent]?: EventListener<K> } | undefined = def.on;
+      const on: { [K in EngineEvent | CampusEngineEvent]?: EventListener<K> } | undefined = def.on;
       const listener: EventListener<E> | undefined = on?.[event];
       listener?.(state, payload, ctx);
     }

@@ -412,7 +412,7 @@ const KINDS: Record<string, DrawKind> = {
     b.cone(2.6, Y + 7.7, -1.2, 0.34, 1.1, '#ff7a2f', { seg: 6, ...GLOW }); b.cone(2.6, Y + 7.55, -1.2, 0.18, 0.7, '#ffe08a', { seg: 5, ...GLOW });
     return 8.4;
   },
-  /** The University of Lagos at Akoka: Senate House with its red grid over a low entrance block, and the main gate (after src/campus/unilag/landmark.js). */
+  /** The University of Lagos at Akoka: Senate House with its red grid over a low entrance block, and the main gate (after src/campus/unilag/landmark.ts). */
   unilag(g) {
     const { b } = g; plinth(b, '#b9c887', '#98aa6c');
     const cream = '#efe2c4', red = '#8f2434';

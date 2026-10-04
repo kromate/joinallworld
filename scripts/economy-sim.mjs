@@ -53,8 +53,8 @@ import { HOUSE_TIERS, TIER_ORDER, tierCost } from '../src/game/content/world.ts'
 import { EVENTS } from '../src/game/content/events.ts';
 import { DAILY_MISSIONS, WEEKLY_MISSIONS } from '../src/game/content/missions.ts';
 import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.ts';
-import { PROGRAMMES, LECTURE_SLOTS, semesterOf } from '../src/campus/unilag/curriculum.js';
-import { CAMPUS_JOBS } from '../src/campus/unilag/student.js';
+import { PROGRAMMES, LECTURE_SLOTS, semesterOf } from '../src/campus/unilag/curriculum.ts';
+import { CAMPUS_JOBS } from '../src/campus/unilag/student.ts';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
@@ -96,7 +96,7 @@ export function categoryOf(line) {
   if (reason.startsWith('Sprayed at ')) return 'leisure';
   if (reason.startsWith('Fixed deposit')) return 'savings';
   if (/^(Danfo|Keke|Okada|Cab|Trek|Fuel) to /.test(reason) || reason.startsWith('Campus shuttle to ')) return 'transport';
-  // The UNILAG campus (src/campus/unilag/student.js): what a student pays the university, and what the campus pays a student.
+  // The UNILAG campus (src/campus/unilag/student.ts): what a student pays the university, and what the campus pays a student.
   if (reason === 'UNILAG application fee' || /^UNILAG semester \d+ tuition and levy$/.test(reason) || /^UNILAG hostel semester \d+$/.test(reason)) return 'campusFees';
   if (reason === 'UNILAG scholarship' || CAMPUS_JOB_REASONS.has(reason)) return 'campusPay';
   if (reason.startsWith('Groceries')) return 'food';

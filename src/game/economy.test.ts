@@ -3,9 +3,8 @@
 // change is the thing to question, not the assertion.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { UNILAG_BETA_RULES as UNILAG_BETA_RULES_JS } from '../campus/unilag/curriculum.js';
-import { CAMPUS_JOBS as CAMPUS_JOBS_JS } from '../campus/unilag/student.js';
-import type { CampusJobDefinition, UnilagBetaRules } from '../types/campus.ts';
+import { UNILAG_BETA_RULES } from '../campus/unilag/curriculum.ts';
+import { CAMPUS_JOBS } from '../campus/unilag/student.ts';
 import * as economySim from '../../scripts/economy-sim.mjs';
 import { lagosTime } from './clock.ts';
 import { GIG_DAILY_LIMIT } from './content/venues.ts';
@@ -80,9 +79,6 @@ const found = <T>(value: T | undefined, what: string): T => { assert.ok(value !=
 /** The naira a row's life took in (or paid out) in one category; the row must have any at all. */
 const flow = (row: SimRow, category: string): number => found(row.flows[category], `${row.lottery}/${row.house} ${row.strategy} ${category} flow`);
 
-// Trust boundary: the campus tables are plain JavaScript; src/types/campus.ts describes them.
-const UNILAG_BETA_RULES = UNILAG_BETA_RULES_JS as unknown as UnilagBetaRules;
-const CAMPUS_JOBS = CAMPUS_JOBS_JS as unknown as Record<string, CampusJobDefinition>;
 
 const DAYS = 30, HORIZON = 200;
 const rows = runEconomy({ days: DAYS, horizon: HORIZON, track: 'tech' });

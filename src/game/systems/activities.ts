@@ -111,7 +111,8 @@ interface Catalogue {
 /** Extra fields handed to api.arrive() after `spot` and `mode`: passed through to the 'travel.arrived' listeners. */
 export interface ArriveOptions {
   spot?: unknown;
-  mode?: TravelModeId | null;
+  /** The campus shuttle arrives with 'campus-shuttle' (it is not a travel mode of the fare table). */
+  mode?: TravelModeId | 'campus-shuttle' | null;
   [extra: string]: unknown;
 }
 type StartOutcome = ReturnType<TypedActionHandler<'activity'>>;

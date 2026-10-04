@@ -1,5 +1,13 @@
 import { createBatch, kitResources, releaseObjects, sceneMaterials } from '../../scene/build.ts';
 import { palm } from '../../scene/props.ts';
+import type * as ThreeNamespace from 'three';
+import type { Kit } from '../../scene/kit.ts';
+
+export interface UnilagLandmark {
+  group: ThreeNamespace.Group;
+  triangles: number;
+  dispose: () => void;
+}
 
 /**
  * Approximate city-map placement beside Yaba on the mainland lagoon edge.
@@ -13,10 +21,8 @@ export const MAP_PLACEMENT = Object.freeze({
 /**
  * Builds the procedural UNILAG city-map landmark: Senate House, its red grid,
  * the open main gate and palms. It uses merged geometry and no textures.
- * @param {{THREE:object,onDispose:(fn:()=>void)=>()=>void}} kit Scene kit.
- * @returns {{group:object,triangles:number,dispose:()=>void}}
  */
-export function buildUnilagLandmark(kit) {
+export function buildUnilagLandmark(kit: Kit): UnilagLandmark {
   const { THREE } = kit, batch = createBatch(THREE), group = new THREE.Group();
   group.name = 'landmark:unilag';
   const cream = '#efe2c4', red = '#8f2434', dark = '#5d4339', glass = '#78a6ae';

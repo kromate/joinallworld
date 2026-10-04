@@ -1,12 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createClient} from '../../client.ts';
-import {createLife,dispatch} from '../../life.ts';
+import {createLife,dispatch as dispatchTyped} from '../../life.ts';
 import {makeContext} from '../../game/util.ts';
+import type {ActionBody} from '../../types/actions.ts';
+import type {ActionOutcome,LifeContext,LifeState} from '../../types/life.ts';
 
-async function hydrate(state) {
-  const scheduled=[];
-  const client=createClient({now:()=>1000,setTimeout:(fn,ms)=>{scheduled.push(ms);return 1;},clearTimeout(){},fetch:async path=>({ok:true,json:async()=>path==='/api/session'?{session:{id:'qa-student',name:'QA Student'},serverTime:state.t}:{state,serverTime:state.t}})});
+/** Loose on purpose, like a request body. */
+const dispatch=(state:LifeState,body:{type:string;payload?:Record<string,unknown>},ctx:LifeContext):ActionOutcome=>dispatchTyped(state,body as ActionBody,ctx);
+
+async function hydrate(state: LifeState) {
+  const scheduled: number[]=[];
+  const client=createClient({now:()=>1000,setTimeout:(fn,ms)=>{scheduled.push(ms);return 1;},clearTimeout(){},fetch:async path=>({ok:true,status:200,json:async()=>path==='/api/session'?{session:{id:'qa-student',name:'QA Student'},serverTime:state.t}:{state,serverTime:state.t}})});
   assert.equal(await client.connect(),true);
   return {client,scheduled};
 }

@@ -22,7 +22,7 @@ export type SkillId = 'cooking' | 'charisma' | 'fitness' | 'coding' | 'music' | 
 
 /**
  * Every venue in this build (keys of content/venues.js VENUES). `state.location` is always one of these.
- * 'unilag' (the campus, src/campus/unilag/content.js) exists in Lagos only: see VenueDefinition.cities.
+ * 'unilag' (the campus, src/campus/unilag/content.ts) exists in Lagos only: see VenueDefinition.cities.
  */
 export type VenueId =
   | 'park' | 'library' | 'home' | 'radio' | 'shrine' | 'viewing-centre' | 'amala-shitta' | 'cchub'

@@ -34,7 +34,7 @@
  * and GIG_DAILY_LIMIT paid gigs per Lagos day across the whole city (systems/travel.ts).
  */
 import { AIRPORT, REFINERY } from './venues-transport.ts';
-import { UNILAG_VENUE } from '../../campus/unilag/content.js';
+import { UNILAG_VENUE } from '../../campus/unilag/content.ts';
 import type { HouseId, VenueId, WorldCityId } from '../../types/life.ts';
 import type {
   CityMapNames, CityVenueLabel, ComingSoonDefinition, HomeMapSpot, SceneKind, VenueCategory, VenueCategoryId, VenueDefinition,
@@ -709,8 +709,8 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
   // The airport at Ikeja and the refinery in the Lekki Free Zone: src/game/content/venues-transport.ts.
   airport: AIRPORT,
   refinery: REFINERY,
-  // The University of Lagos campus at Akoka (Lagos only): src/campus/unilag/content.js.
-  unilag: UNILAG_VENUE as VenueDefinition, // trust boundary: src/campus/unilag/content.js is plain JavaScript (its ids are `string`)
+  // The University of Lagos campus at Akoka (Lagos only): src/campus/unilag/content.ts.
+  unilag: UNILAG_VENUE,
 };
 
 /**

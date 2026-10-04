@@ -13,6 +13,7 @@ import type {
   RoadsideEventId, SkillId, StarterGoalId, StartHomeId, SystemId, TierId, TraitId, TravelModeId, VenueId, WishId,
 } from './life.ts'
 import type { LifeView } from './view.ts'
+import type { CampusEngineEvent, CampusEventMap } from './campus.ts'
 
 // ---- events -------------------------------------------------------------------------------
 
@@ -49,7 +50,7 @@ export interface EngineEventMap {
    * The player was put in a venue (a trip, the commute, moving in). `mode` is a travel mode id, or
    * null when no vehicle was used. Extra `options` handed to api.arrive() are passed through.
    */
-  // INCONSISTENT: the campus shuttle arrives with `mode: 'campus-shuttle'` (src/campus/unilag/shuttle.js:246), which is
+  // INCONSISTENT: the campus shuttle arrives with `mode: 'campus-shuttle'` (src/campus/unilag/shuttle.ts:246), which is
   // not a travel mode id; the listeners (health, missions, goals, home) only compare it with ids they know.
   'travel.arrived': { venue: VenueId; from: VenueId; mode: TravelModeId | 'campus-shuttle' | null; [extra: string]: unknown }
 
@@ -213,7 +214,7 @@ export type EngineEvent = keyof EngineEventMap
 export type UnemittedListenedEvent = 'friend.best'
 
 /** A listener in a system's `on` table. `data` should be read defensively: tests and other owners may emit partial data. */
-export type EventListener<E extends EngineEvent = EngineEvent> = (state: LifeState, data: EngineEventMap[E], ctx: LifeContext) => void
+export type EventListener<E extends EngineEvent | CampusEngineEvent = EngineEvent> = (state: LifeState, data: (EngineEventMap & CampusEventMap)[E], ctx: LifeContext) => void
 
 // ---- modifiers ----------------------------------------------------------------------------
 
@@ -380,7 +381,7 @@ export interface SystemDefinition<Id extends string = SystemId> {
   /** Derived, display-only data returned as `view[id]`. Must not mutate state. */
   view?(state: LifeState, ctx: LifeContext): Id extends keyof LifeView ? LifeView[Id] : unknown
   /** Event listeners. Listeners must tolerate events they do not know. */
-  on?: { [E in EngineEvent]?: EventListener<E> } & { [E in UnemittedListenedEvent]?: (state: LifeState, data: Record<string, unknown>, ctx: LifeContext) => void }
+  on?: { [E in EngineEvent]?: EventListener<E> } & { [E in CampusEngineEvent]?: EventListener<E> } & { [E in UnemittedListenedEvent]?: (state: LifeState, data: Record<string, unknown>, ctx: LifeContext) => void }
   /** Modifiers this system contributes. */
   modifiers?: { [K in ModifierKey]?: Modifier<K> }
   /** Static activity definitions attached to venue spots. */

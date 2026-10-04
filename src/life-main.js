@@ -142,7 +142,7 @@ function onMembers({ self, members }) {
 async function loadScene() {
   try {
     // One scene API over two hosts: the venue host, and the UNILAG campus's own (fetched only when the player goes there).
-    const { createWorldAdapter } = await import('./campus/unilag/world-adapter.js');
+    const { createWorldAdapter } = await import('./campus/unilag/world-adapter.ts');
     venue = createWorldAdapter($('venue-scene'), { location: client.state.location, onTag: (tag) => {
       // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
       if (tag.kind === 'goal') void goTo(client.state.location, tag.id.replace(/^goal:/, ''));

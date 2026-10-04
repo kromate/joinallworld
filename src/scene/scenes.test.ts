@@ -231,7 +231,7 @@ test('lighting presets exist for every mood and time; the scene reports its pres
 test('every spot of every venue stands at a landmark of its scene, and every regular has a place', () => {
   const kit = createKit();
   for (const venue of Object.values(VENUES)) {
-    // The UNILAG campus is drawn by its own host (src/campus/unilag/host.js behind world-adapter.js) and has its own scene, walk and budget tests there.
+    // The UNILAG campus is drawn by its own host (src/campus/unilag/host.ts behind world-adapter.ts) and has its own scene, walk and budget tests there.
     if (venue.scene.kind === 'home' || venue.scene.kind === 'unilag') continue;
     const seen = sceneVenue(venue.id);
     assert.deepEqual(seen!.scene.spots.map((spot) => spot.id), spotsOf(venue.id).map((spot) => spot.id), `${venue.id}: spots added by other systems are passed to the scene`);

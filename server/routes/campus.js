@@ -1,7 +1,7 @@
-import { programmeOf } from '../../src/campus/unilag/curriculum.js';
+import { programmeOf } from '../../src/campus/unilag/curriculum.ts';
 import { emptyCampusElection, sanitizeCampusElection, electionPhaseAt, electionStandings,
   nominateCampusElection, voteCampusElection, electionWinner, sanitizeCampusLeaderboard,
-  campusLeaderboardStandings, campusTeamStandings } from '../../src/campus/unilag/games.js';
+  campusLeaderboardStandings, campusTeamStandings } from '../../src/campus/unilag/games.ts';
 import { lagosTime, lagosDayStart } from '../../src/game/clock.ts';
 
 /** Shared campus reads and transactional ballots. Identity and scores come only from stored lives. */

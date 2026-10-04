@@ -82,6 +82,7 @@ import { createOrbit, followShare } from './scene/camera-controls.js';
 import { createOccluders, resolve as resolveCollision } from './scene/camera-collision.js';
 import { sceneMaterials } from './scene/build.js';
 import { createMotionLoop } from './scene/motion-loop.js';
+import { rewardChips, cheer } from './scene/reward.js';
 import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.js';
 import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.js';
 import { createSceneControls } from './scene/controls.js';
@@ -758,13 +759,27 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     else if (Object.hasOwn(LOOK_KEYS, action)) held[LOOK_KEYS[action]] = false;
   }
   /**
-   * THE REWARD MOMENT: when an activity ends the shell says what it gave ('jaw:reward', { chips }),
-   * and the chips float up from above the avatar's head and fade — DOM nodes in the tag layer,
-   * placed once from the avatar's projected position and moved by a CSS animation that ends by
-   * itself and removes them. No frame of the scene is drawn for it and no loop is started.
+   * THE REWARD MOMENT. The host remembers what the player had when an activity began (needs, cash,
+   * skill XP); when it ends, the difference is worded (scene/reward.js) and floats up from above the
+   * avatar's head as up to four chips — DOM nodes in the tag layer, placed once from the avatar's
+   * projected position and moved by a CSS animation that ends by itself and removes them. No frame of
+   * the scene is drawn for it and no loop is started. Nothing is shown for a trip, for an activity
+   * that gave nothing, or for a different life. 'jaw:reward' ({ detail: { cash, needs, skills } })
+   * shows the same chips on request.
    */
+  let rewardFrom = null;
+  function trackReward(state) {
+    const active = state?.activeAction, busy = Boolean(active) && active.kind !== 'travel' && active.kind !== 'commute';
+    const snap = () => ({ who: state.name, needs: { ...state.needs }, cash: Number(state.cash) || 0, skills: { ...state.skills } });
+    if (busy) { rewardFrom ||= snap(); return; }
+    const from = rewardFrom;
+    rewardFrom = null;
+    if (!from || !state?.needs || from.who !== state.name) return;
+    const diff = (now = {}, was = {}, missing) => Object.fromEntries(Object.entries(now).map(([id, value]) => [id, value - (was[id] ?? (missing ?? value))]));
+    onReward({ detail: { cash: (Number(state.cash) || 0) - from.cash, needs: diff(state.needs, from.needs), skills: diff(state.skills, from.skills, 0) } });
+  }
   function onReward(event) {
-    const chips = Array.isArray(event.detail?.chips) ? event.detail.chips.slice(0, 4) : [];
+    const chips = rewardChips(event.detail || {});
     const walk = walkOf();
     if (!tagLayer || !chips.length || !walk || !current || uiMode !== 'venue') return;
     tagLayer.querySelector('.scene-reward')?.remove();
@@ -786,10 +801,11 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     node.lastChild.addEventListener('animationend', () => node.remove(), { once: true });
     tagLayer.append(node);
   }
+  const onCheer = () => cheer(globalThis.document?.querySelector('dialog[open]') || globalThis.document?.body);
   function onMode(event) { uiMode = event.detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
   // Created after the shell: start from the view the shell wrote on its root element.
   uiMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
-  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward);
+  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer);
   win?.addEventListener?.('jaw:key', onKey);
   win?.addEventListener?.('jaw:key-up', onKeyUp);
   win?.addEventListener?.('blur', dropInput);
@@ -956,6 +972,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   /** Give the current scene the latest game state. Draws one frame only if the scene says it changed. */
   function setState(state) {
     lastState = state;
+    trackReward(state);
     const changed = current?.update?.(state);
     const walk = walkOf();
     if (walk) { walker.setGrid(walk.grid); spotList = walk.spots(); }
@@ -1054,7 +1071,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       loop.dispose(); clearDwell();
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
-      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
+      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
       controls?.dispose();
       if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
       for (const entry of built.values()) entry.dispose?.();

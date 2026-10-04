@@ -189,8 +189,7 @@ const STORAGE_NOTICE = { title: 'The server cannot save right now', actions: [['
 export function createShell({ root, dialog, dialogContent, panels, host }) {
   let state = null, view = null, mode = 'venue', lastMode = 'venue', modeParams = null, expanded = false, sheet = null, lastSpotKey = '', forced = false;
   let trayOpen = false, clean = false, saving = 0, lastCash = null, lastNeeds = null, lastMessage = null, lastLife = '', coachOff = false;
-  // rewardFrom: what the player had when the running activity began — the difference at its end is the reward shown over the avatar.
-  let rewardFrom = null, wasExpanded = false;
+  let wasExpanded = false;
   try { coachOff = globalThis.localStorage?.getItem(COACH_KEY) === '1'; } catch { coachOff = false; }
   const html = new WeakMap();
   const byId = new Map(panels.map((panel) => [panel.id, panel]));
@@ -252,55 +251,6 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   };
 
   /**
-   * THE REWARD MOMENT. When an activity ends, what it gave — needs, money, skill XP — is announced
-   * where the player is looking: the window event 'jaw:reward' ({ detail: { chips: [{ text, kind:
-   * 'gain' | 'loss' | 'money' | 'xp', icon }] } }) is picked up by the scene host, which floats the
-   * chips up from the avatar for about a second (src/venue-world.js). Nothing is sent for a trip,
-   * for an activity that was cancelled before it gave anything, or while not connected. At most
-   * four chips: money first, then the largest changes.
-   */
-  function reward() {
-    const active = state.activeAction && !isTrip(state.activeAction) ? state.activeAction : null;
-    if (!view.connected) { rewardFrom = null; return; }
-    if (active) { if (!rewardFrom) rewardFrom = { needs: { ...state.needs }, cash: state.cash, skills: { ...(state.skills || {}) } }; return; }
-    if (!rewardFrom) return;
-    const from = rewardFrom; rewardFrom = null;
-    const chips = [];
-    const cash = state.cash - from.cash;
-    if (cash) chips.push({ text: `${cash > 0 ? '+' : '−'}${money(Math.abs(cash))}`, kind: cash > 0 ? 'money' : 'loss', icon: 'bank', size: Infinity });
-    for (const need of view.needs.order) {
-      const change = Math.round(state.needs[need] - (from.needs[need] ?? state.needs[need]));
-      if (Math.abs(change) >= 1) chips.push({ text: `${change > 0 ? '+' : '−'}${Math.abs(change)} ${cap(need)}`, kind: change > 0 ? 'gain' : 'loss', icon: need, size: Math.abs(change) });
-    }
-    for (const [skill, xp] of Object.entries(state.skills || {})) {
-      const change = Math.round(xp - (from.skills[skill] || 0));
-      if (change >= 1) chips.push({ text: `+${change} ${cap(skill)} XP`, kind: 'xp', icon: 'skills', size: change });
-    }
-    if (!chips.length) return;
-    chips.sort((a, b) => (b.kind !== 'loss') - (a.kind !== 'loss') || b.size - a.size);
-    window.dispatchEvent(new CustomEvent('jaw:reward', { detail: { chips: chips.slice(0, 4).map(({ text, kind, icon }) => ({ text, kind, glyph: hasGlyph(icon) ? glyph(icon) : '' })) } }));
-  }
-  /** A finished goal gets a short burst of confetti under the top bar: CSS only, removed when its last piece has faded. */
-  function burst() {
-    if (globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    document.querySelector('.life-burst')?.remove();
-    const box = document.createElement('div');
-    box.className = 'life-burst'; box.setAttribute('aria-hidden', 'true');
-    const colours = ['#f2b01e', '#2fa866', '#2a5bd7', '#e2572b', '#7a3fb0', '#ffffff'];
-    for (let i = 0; i < 22; i += 1) {
-      const piece = document.createElement('i'), angle = (i / 22) * Math.PI * 2, far = 70 + ((i * 37) % 60);
-      piece.style.setProperty('--c', colours[i % colours.length]);
-      piece.style.setProperty('--x', `${Math.round(Math.cos(angle) * far)}px`);
-      piece.style.setProperty('--y', `${Math.round(Math.sin(angle) * far * 0.7 + 50)}px`);
-      piece.style.setProperty('--r', `${(i % 2 ? 1 : -1) * (120 + i * 9)}deg`);
-      piece.style.animationDelay = `${(i % 5) * 18}ms`;
-      box.append(piece);
-    }
-    box.lastChild.addEventListener('animationend', () => box.remove(), { once: true });
-    (dialog.open ? dialog : document.body).append(box);
-  }
-
-  /**
    * One line of feedback under the top bar. Never more than MAX_TOASTS at once (the oldest gives
    * way), and a text that is already showing is not repeated — a stronger kind just recolours it.
    */
@@ -309,7 +259,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     text = String(text);
     if (kind === 'good' && /\+₦/.test(text)) kind = 'earn';
     const tone = TOAST_KINDS.includes(kind) ? kind : 'info';
-    if (/^goal complete/i.test(stripLeadEmoji(text) || text)) burst();
+    // A finished goal: the scene host answers with a sub-second burst of confetti (src/scene/reward.js).
+    if (/^goal complete/i.test(stripLeadEmoji(text) || text)) window.dispatchEvent(new CustomEvent('jaw:cheer'));
     const showing = [...el.toasts.children].find((node) => node.dataset.text === text);
     if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.innerHTML = glyph(tone); } return; }
     // The toast carries its own glyph: an emoji the text starts with is dropped, one inside it is drawn as a glyph.
@@ -712,7 +663,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (!state || !view) return;
     // A different life (another city, a new session): compare nothing against the old one.
     const life = `${view.session?.id ?? ''}:${view.cityId}`;
-    if (life !== lastLife) { lastLife = life; lastCash = null; lastNeeds = null; lastMessage = null; rewardFrom = null; }
+    if (life !== lastLife) { lastLife = life; lastCash = null; lastNeeds = null; lastMessage = null; }
     setText(el.clock, view.clock);
     const mood = moodOf();
     if (setHtml(el.mood, `${iconFor('mood', mood.tone, mood.icon)}<span>${esc(mood.word)}</span>`)) el.mood.setAttribute('aria-label', `Mood: ${mood.word}. Open your needs`);
@@ -739,17 +690,15 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       needs[need] = value;
       if (meter.getAttribute('aria-valuenow') !== String(value)) {
         // Low (under 35) and critical (under 20) are said three ways: the colour, a mark beside the bar, and the word a screen reader hears.
-        const low = value < LOW_NEED, critical = value < CRITICAL_NEED;
-        meter.style.setProperty('--need', `${value}%`); meter.setAttribute('aria-valuenow', String(value)); meter.setAttribute('aria-valuetext', `${value}%${critical ? ', critical' : low ? ', low' : ''}`);
-        meter.classList.toggle('is-low', low); meter.classList.toggle('is-critical', critical);
-        meter.parentNode.classList.toggle('is-low', low); meter.parentNode.classList.toggle('is-critical', critical);
+        const low = value < LOW_NEED, bad = value < CRITICAL_NEED, row = meter.parentNode;
+        meter.style.setProperty('--need', `${value}%`); meter.setAttribute('aria-valuenow', value); meter.setAttribute('aria-valuetext', `${value}%${bad ? ', critical' : low ? ', low' : ''}`);
+        row.classList.toggle('is-low', low); row.classList.toggle('is-critical', bad);
       }
       // A gain, or a sharp drop, is highlighted once; the slow decay is not.
       const before = lastNeeds?.[need];
       if (before !== undefined && (value - before >= 1 || before - value >= 3)) flash(meter.parentNode, value > before ? 'is-up' : 'is-down');
     }
     lastNeeds = needs;
-    reward();
     // On a phone the strip shows only the needs that are low; with none low it steps aside (the mood in the top bar opens them all).
     el.needs.classList.toggle('has-low', Object.values(needs).some((value) => value < LOW_NEED));
 

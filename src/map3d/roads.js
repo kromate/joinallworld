@@ -65,7 +65,7 @@ function nearestOnSegment(x, z, a, b) {
   return { x: px, z: pz, t, distance: Math.hypot(x - px, z - pz) };
 }
 
-export function buildNetwork(pack, { door = 4.2 } = {}) {
+export function buildNetwork(pack, { door = 4.7 } = {}) {
   const nodes = new Map();
   const node = (x, y, z) => {
     const id = key(x, z);
@@ -121,7 +121,7 @@ export function buildNetwork(pack, { door = 4.2 } = {}) {
   const places = {};
   const add = (id, spot) => {
     const gate = attach(id, spot.x, spot.z);
-    const reach = gate ? Math.hypot(gate.x - spot.x, gate.z - spot.z) : 0, k = reach ? Math.min(door, reach * 0.6) / reach : 0;
+    const reach = gate ? Math.hypot(gate.x - spot.x, gate.z - spot.z) : 0, k = reach ? Math.min(door, reach * 0.78) / reach : 0;
     // The door: where a traveller stands, just off the plinth on the side facing the road.
     places[id] = { x: spot.x, z: spot.z, ry: gate ? Math.atan2(gate.x - spot.x, gate.z - spot.z) : 0, gate: gate ? { x: gate.x, y: 0, z: gate.z } : null,
       door: gate ? { x: spot.x + (gate.x - spot.x) * k, y: 0, z: spot.z + (gate.z - spot.z) * k } : { x: spot.x, y: 0, z: spot.z } };

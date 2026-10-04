@@ -29,14 +29,14 @@ import { createKit } from '../scene/kit.js';
 import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.js';
 import { openingInfo, lagosTime } from '../game/clock.js';
 import { buildNetwork } from './roads.js';
-import { buildCity, createRaw, CITY_LIGHT } from './city-build.js';
+import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.js';
 import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.js';
 import { createActor } from './actor.js';
 import { createOverlays } from './overlays.js';
 import { tripOf, createTripClock, tripPose } from './trip.js';
-import { PLINTH } from './landmarks.js';
+import { PLINTH as PLINTH_UNIT } from './landmarks.js';
 
-const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34;
+const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34, PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
 let hintSeen = false;             // the how-to line shows until the player first moves the map, picks a place or travels
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
 export const timeOfDay = (ms) => { const { minuteOfDay } = lagosTime(ms), hour = minuteOfDay / 60; return hour < 5.5 || hour >= 19 ? 'night' : hour < 7 || hour >= 17.5 ? 'dusk' : 'day'; };
@@ -556,7 +556,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
           // Arrived: a moment at the door while the camera pushes in, then the host shows the venue.
           pose = tripPose(route, 1, trip.mode); actor.place(pose);
           settling = true;
-          rig.ease({ x: pose.x, z: pose.z, distance: clamp(rig.view.distance * 0.6, MIN_DISTANCE, 80) }, 0.5);
+          rig.ease({ x: pose.x, z: pose.z, distance: clamp(rig.view.distance * 0.6, MIN_DISTANCE, 80) }, 0.42);
         } else if (state.location === trip.from && shown() && !reducedMotion && pose) {
           returning = { p: pose.progress ?? 0, rate: Math.max(0.35, (pose.progress ?? 0) / 0.9) };   // back where it started in under a second
         } else clearTrip();

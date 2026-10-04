@@ -18,11 +18,11 @@
  */
 import { createBatch, sceneMaterials } from '../scene/build.js';
 import { sign } from '../scene/props.js';
-import { PLINTH } from './landmarks.js';
-import { WATER_Y } from './city-build.js';
+import { PLINTH as PLINTH_UNIT } from './landmarks.js';
+import { WATER_Y, LANDMARK_SCALE } from './city-build.js';
 
 const HOUSES_PER_ESTATE = 18, HOMES_LISTED = 6, PLOT_CHIPS = 36;
-const GOV = '#6a3fa0';
+const GOV = '#6a3fa0', PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
 
 export function createOverlays(kit, city) {
   const { THREE } = kit, pack = city.pack;

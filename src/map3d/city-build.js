@@ -27,6 +27,9 @@ import { miniVehicle, boat } from './vehicles.js';
 import { roundPolygon, pointInPolygon } from './roads.js';
 
 export const WATER_Y = -0.5;
+/** Landmarks are drawn a little larger than life, so each can be told apart on a view of the whole city. */
+export const LANDMARK_SCALE = 1.15;
+const LOT = PLINTH * LANDMARK_SCALE;
 const LAND_COLOURS = { mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae' };
 const ASPHALT = '#5d626b', KERB = '#e4dfcf', DASH = '#f6f2e2', PATH = '#dcd2b6';
 
@@ -166,7 +169,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
 
   // ---- roads and bridges --------------------------------------------------------------------
   const b = createBatch(THREE), w = createBatch(THREE);
-  const g = { b, w, at: (x, y, z, ry, draw) => b.at(x, y, z, ry, () => w.at(x, y, z, ry, () => draw(g))) };
+  const g = { b, w, at: (x, y, z, ry, draw) => b.at(x, y, z, ry, () => w.at(x, y, z, ry, () => draw(g), 0, 0, LANDMARK_SCALE), 0, 0, LANDMARK_SCALE) };
   const segments = [];                              // every ground stretch of road, for keeping the fabric off it
   for (const road of network.roads) {
     const wide = road.major ? 2.5 : 1.8;
@@ -218,7 +221,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   const clear = [];                                 // { x, z, r } circles the fabric keeps out of
   const path = (place) => {
     if (!place.gate) return;
-    const length = Math.hypot(place.gate.x - place.x, place.gate.z - place.z), k = Math.min(1, (PLINTH / 2 - 0.2) / (length || 1));
+    const length = Math.hypot(place.gate.x - place.x, place.gate.z - place.z), k = Math.min(1, (LOT / 2 - 0.2) / (length || 1));
     const start = { x: place.x + (place.gate.x - place.x) * k, y: 0, z: place.z + (place.gate.z - place.z) * k };
     raw.ribbon([start, place.gate], 1.3, 0.045, PATH);
     segments.push({ a: start, b: place.gate, half: 1.2 });
@@ -227,10 +230,10 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     const venue = venues[id], node = network.places[id];
     if (!venue || !node) continue;
     let top = 4;
-    g.at(node.x, 0, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top; });
+    g.at(node.x, 0, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
     places[id] = { id, kind: 'venue', x: spot.x, z: spot.z, ry: node.ry, top, gate: node.gate };
-    shadows.push({ x: spot.x + 0.7, z: spot.z + 0.55, w: PLINTH + 1.3, d: PLINTH + 1.3, ry: node.ry });
-    clear.push({ x: spot.x, z: spot.z, r: PLINTH * 0.78 });
+    shadows.push({ x: spot.x + 0.7, z: spot.z + 0.55, w: LOT + 1.3, d: LOT + 1.3, ry: node.ry });
+    clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
     path(places[id]);
   }
   // Home: every district's lot is laid out; the house itself is its own small mesh, moved to the player's lot.
@@ -238,7 +241,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     const node = network.places[`home:${house}`];
     // An empty lot is a small garden: three trees, so it never reads as a hole in the city.
     for (const [dx, dz, size] of [[-2.2, -1.8, 1.1], [2, -0.6, 0.9], [-0.6, 2, 1]]) { b.cyl(spot.x + dx, 0.5 * size, spot.z + dz, 0.14 * size, size, '#6b4f36', { seg: 5 }); b.ico(spot.x + dx, 1.5 * size, spot.z + dz, 0.85 * size, 0.95 * size, 0.85 * size, '#3f8a57'); }
-    clear.push({ x: spot.x, z: spot.z, r: PLINTH * 0.78 });
+    clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
     path({ x: spot.x, z: spot.z, gate: node.gate });
   }
   for (const [id, spot] of Object.entries(pack.soon || {})) {
@@ -247,7 +250,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   }
   const homeBatch = createBatch(THREE), homeWindows = createBatch(THREE);
   const hg = { b: homeBatch, w: homeWindows, at: (x, y, z, ry, draw) => draw(hg) };
-  const homeTop = drawLandmark(hg, 'home').top;
+  const homeTop = drawLandmark(hg, 'home').top * LANDMARK_SCALE;
 
   // ---- district plates, laid on the ground or lettered on the water ---------------------------
   const plates = [];
@@ -439,7 +442,7 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
     if (id === homeId) return false;
     homeId = id;
     const node = network.places[`home:${id}`], spot = pack.homes[id];
-    home.position.set(spot.x, 0, spot.z); home.rotation.y = node.ry;
+    home.position.set(spot.x, 0, spot.z); home.rotation.y = node.ry; home.scale.setScalar(LANDMARK_SCALE);
     places.home = { id: 'home', kind: 'home', house: id, district: spot.district, x: spot.x, z: spot.z, ry: node.ry, top: homeTop, gate: node.gate };
     return true;
   }

@@ -40,6 +40,9 @@ let net = { text: 'Connecting…', error: false };
 
 function status(text, error = false) { net = { text, error }; if (shell) render(); }
 
+/** The trip a state is on, as a key ('' when it is not travelling): a different key is a different trip. */
+const tripKey = (state) => (isDeparting(state) ? `${state.activeAction.kind}|${state.location}|${state.activeAction.id}|${state.activeAction.duration}` : '');
+
 const client = createClient({
   storage,
   isHidden: () => document.hidden,
@@ -133,7 +136,13 @@ function showMapLayer(layer) {
 const dialog = $('life-dialog');
 shell = createShell({
   root: $('life-overlay'), dialog, dialogContent: $('life-dialog-content'), panels: PANELS,
-  host: { command, fetchJson: client.fetchJson, newId: client.newId, goTo, toggleCommunity, menu, onRender: () => layoutScene(), redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) { if (mode === 'map') loadMaps(); render(); refreshScene(); } },
+  host: { command, fetchJson: client.fetchJson, newId: client.newId, goTo, toggleCommunity, menu, onRender: () => layoutScene(), redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) {
+    // A trip is watched on the map: while one is running there is no venue to stand in, so the venue screen
+    // (and the shell's old full-panel travel view with it) is never what is in front.
+    if (mode === 'venue' && tripKey(client.state)) { shell.setMode('map'); return; }
+    if (mode === 'map') loadMaps();
+    render(); refreshScene();
+  } },
 });
 
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
@@ -176,8 +185,6 @@ const HELD_KEY = 'joinallworld-cities';
 function heldCities() { try { const list = JSON.parse(storage.getItem(HELD_KEY) || '[]'); return Array.isArray(list) ? list.filter((id) => typeof id === 'string') : []; } catch { return []; } }
 function noteCity(id) { try { const list = heldCities(); if (!list.includes(id)) storage.setItem(HELD_KEY, JSON.stringify([...list, id])); } catch { /* remembered for this visit only */ } }
 
-/** The trip a state is on, as a key: a different key is a different trip. */
-const tripKey = (state) => (isDeparting(state) ? `${state.activeAction.kind}|${state.location}|${state.activeAction.id}|${state.activeAction.duration}` : '');
 let shownTrip = '';
 function showVenue() {
   if (shell.mode === 'venue') return;
@@ -191,8 +198,8 @@ function showVenue() {
 function accepted(state, previous) {
   const moved = previous.location !== state.location;
   noteCity(client.cityId);
-  // A trip started — from the map card, the Ride app, Go to work, anywhere: the map shows it. Once per trip, so
-  // a player who then looks at something else is not pulled back.
+  // A trip started — from the map card, the Ride app, Go to work, anywhere: the map shows it. Once per trip, so a
+  // player who then opens another screen (Buy, a Phone app) is not pulled back; leaving that screen returns to the map.
   const trip = tripKey(state);
   if (trip && trip !== shownTrip && shell.mode !== 'map') shell.setMode('map');
   shownTrip = trip;

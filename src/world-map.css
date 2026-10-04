@@ -52,6 +52,15 @@
 .wm-more{margin:0;padding:0 4px;font-size:11px;line-height:1.4;color:#5f6770}
 
 /* A phone: the country on top, the cities as one card under it, clear of the bar above and the panel below */
+.wm-library{padding-top:70px;padding-bottom:160px;grid-template-columns:minmax(0,1fr) 285px;gap:10px;background:#b9d7d6}
+.wm-library .wm-head p{max-width:none}.wm-breadcrumb{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.wm-breadcrumb button,.wm-back,.wm-continents button{border:1px solid #668a8055;background:#f4f7eb;color:#224a3c;border-radius:9px;padding:7px 12px;min-height:36px;font:600 12px var(--font,Arial,sans-serif);cursor:pointer}
+.wm-library .wm-stage{position:relative;padding:0;display:block;perspective:none;overflow:hidden;min-height:180px;border-radius:18px;background:#9fcdd4}
+.wm-model-stage{position:absolute;inset:0;min-height:180px}.wm-model-canvas,.wm-model-flat,.wm-model-pins{position:absolute;inset:0;width:100%;height:100%}.wm-model-canvas{touch-action:none}
+.wm-model-flat[hidden]{display:none}.wm-model-flat path{cursor:pointer}.wm-model-pins{pointer-events:none}
+.wm-model-pin{position:absolute;transform:translate(-50%,-100%);padding:5px 9px;min-height:30px;max-width:145px;border:1px solid #fff;background:#fff7df;color:#39483b;border-radius:8px;font:600 11px var(--font,Arial,sans-serif);pointer-events:auto;cursor:pointer}
+.wm-model-pin.is-here{background:#236245;color:white}.wm-model-pin[hidden]{display:none}.wm-model-status{position:absolute;bottom:4px;left:8px;right:8px;text-align:center;font-size:12px;pointer-events:none;background:#ffffffc9;border-radius:6px}.wm-model-status:empty{display:none}
+.wm-library .wm-side{max-height:100%;border-radius:16px}.wm-region-label{display:grid;gap:5px;font-size:12px;font-weight:700}.wm-region-label select{min-width:0;width:100%;height:40px;border:1px solid #a6bdae;border-radius:8px;padding:5px;background:#fff;color:#203f35;font:inherit}.wm-continents{display:grid;grid-template-columns:1fr 1fr;gap:6px}.wm-map-credit{font-size:10px;line-height:1.45;color:#51685e;margin:0}.wm-map-credit a{color:inherit}.wm-library .wm-go{border-radius:10px;padding:8px 12px}.wm-library .wm-cities{max-height:240px;overflow:auto}
 @media(max-width:720px){
   .wm{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(150px,1fr) auto;gap:4px;padding:112px 10px 172px}
   .wm-head h2{font-size:22px}.wm-head p{font-size:12px}
@@ -66,4 +75,7 @@
   .wm-city em{display:none}.wm-city-text b{font-size:13px}.wm-city-text small{font-size:10px}
   .wm-detail{padding:9px}.wm-detail h3{font-size:15px}.wm-detail p{font-size:12px}
   .wm-more{display:none}
+  .wm-library{padding:108px 8px 176px;grid-template-rows:auto minmax(160px,1fr) auto;grid-template-columns:minmax(0,1fr);gap:6px}
+  .wm-library .wm-stage{padding:0;min-height:160px}.wm-library .wm-head h2{font-size:20px}.wm-library .wm-head p{display:none}.wm-breadcrumb{gap:4px;margin-bottom:6px}.wm-breadcrumb button{min-height:34px;padding:5px 10px;font-size:11px}
+  .wm-library .wm-side{grid-row:3;max-height:28dvh;gap:7px;padding:8px}.wm-library .wm-cities{max-height:92px}.wm-map-credit{font-size:9px}.wm-model-stage{min-height:160px}.wm-library .wm-detail h3{font-size:14px}
 }

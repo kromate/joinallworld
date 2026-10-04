@@ -91,11 +91,11 @@ function overview(state, view) {
     ? `<ul class="map-list" aria-label="Places">${places.map((item) => `<li><button data-map-pick="${esc(item.id)}" class="${statusClass(item)}${item.here ? ' is-here' : ''}"><span aria-hidden="true">${iconFor('venue', item.id, item.icon)}</span><span class="map-list-text"><b>${esc(item.label)}</b><small>${esc(item.district)}</small></span><em>${esc(item.here ? 'You are here' : item.open ? 'Open' : 'Closed')}</em></button></li>`).join('')}</ul>`
     : `<div class="ui-empty"><span aria-hidden="true">${mark('search')}</span><h3>Nothing matches “${esc(FILTERS.find((item) => item.id === filter)?.label || filter)}” right now</h3><p>Closed places open again later in the day.</p><button class="ui-button is-primary" data-map-filter="all">Show every place</button></div>`;
   // What a switched-on layer shows stays readable with the list closed, where the layer itself is in view.
-  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}${open ? '' : layerNotes}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">${mark('globe')}<span>Nigeria map · more cities soon</span></button></div></div>`;
+  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}${open ? '' : layerNotes}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">${mark('globe')}<span>World map · explore countries</span></button></div></div>`;
 }
 
 function worldLayer(view) {
-  return `<div class="map-panel map-worldbar"><header class="map-top"><div><h1>Nigeria</h1><p>${esc(view.city?.name || 'Lagos')} is open. More cities are on the way.</p></div><button class="map-chip-button" data-map-layer="city">← ${esc(view.city?.name || 'City')} map</button></header></div>`;
+  return `<div class="map-panel map-worldbar"><header class="map-top"><div><h1>World map</h1><p>${esc(view.city?.name || 'Lagos')} is open. More cities are on the way.</p></div><button class="map-chip-button" data-map-layer="city">← ${esc(view.city?.name || 'City')} map</button></header></div>`;
 }
 
 function card(state, view, item) {

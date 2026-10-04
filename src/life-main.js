@@ -204,6 +204,7 @@ function render() {
   if (world && heldCities().join() !== heldShown) { heldShown = heldCities().join(); world.refresh(); }
   // Told after the shell has drawn, so the map measures the panel it shares the screen with. Hidden, it draws nothing.
   cityMap?.setShown(mapOpen && !worldLayer);
+  world?.setShown?.(mapOpen && worldLayer);
 }
 /** Tell the scene how much of the screen the HUD covers, so it draws itself in the free part. Measured after each shell render (host.onRender). */
 function layoutScene() {

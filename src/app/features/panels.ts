@@ -29,4 +29,34 @@ export const support = definePanel({
   component: defineAsyncComponent(() => import('./support/ReportApp.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support]
+export const jobs = definePanel({
+  id: 'jobs', title: 'Jobs', placement: 'phone', order: 10, group: 'money',
+  component: defineAsyncComponent(() => import('./jobs/JobsApp.vue')),
+})
+
+export const career = definePanel({
+  id: 'career', title: 'Career', placement: 'sim-tab', order: 60, phone: true, group: 'money',
+  component: defineAsyncComponent(() => import('./jobs/CareerTab.vue')),
+})
+
+export const statement = definePanel({
+  id: 'statement', title: 'Statement', placement: 'phone', order: 15, group: 'money',
+  component: defineAsyncComponent(() => import('./money/StatementApp.vue')),
+})
+
+export const invest = definePanel({
+  id: 'invest', title: 'Invest', placement: 'phone', order: 50, group: 'money',
+  component: defineAsyncComponent(() => import('./money/InvestApp.vue')),
+})
+
+export const houses = definePanel({
+  id: 'houses', title: 'Houses', placement: 'phone', order: 30, group: 'life',
+  component: defineAsyncComponent(() => import('./home/HousesApp.vue')),
+})
+
+export const cars = definePanel({
+  id: 'cars', title: 'Cars', placement: 'phone', order: 34, group: 'life',
+  component: defineAsyncComponent(() => import('./home/CarsApp.vue')),
+})
+
+export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars]

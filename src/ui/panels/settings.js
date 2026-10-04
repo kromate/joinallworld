@@ -60,13 +60,15 @@ export default {
       <p class="settings-note">A <strong>device session</strong>, not an account: a cookie in this browser is the only key. Clearing cookies, or 30 days without playing, ends it.</p>
       ${how('settings-session', ruleList(['This is a device session, not an account: there is no password, no email and no sign-in.', 'A cookie in this browser is the only key to this life. Clearing cookies, or not playing for 30 days, ends the session; the life is kept on the server but cannot be recovered from another device yet.', 'Other players only ever see your name and player code — never the cookie.', 'Change your name and look in your Sim’s Profile tab.']), 'How a device session works', true)}
       <h3 class="ui-section">Privacy</h3>
-      <div class="ui-rows">${link('neighbours', 'neighbours', 'Neighbours directory', 'Hide or list your home')}${link('richlist', 'richlist', 'Rich List', 'Hide or show your balance')}${link('people', 'people', 'People and blocks', 'Blocked players are listed there')}</div>
+      <div class="ui-rows">${link('neighbours', 'neighbours', 'Neighbours directory', 'Hide or list your home')}${link('richlist', 'richlist', 'Rich List', 'Hide or show your balance')}${link('people', 'people', 'People and blocks', 'Blocked players are listed there')}<button class="ui-row" data-privacy-analytics><span class="ui-row-icon" aria-hidden="true">${mark('id')}</span><span class="ui-row-body"><b>Analytics and error reports</b><small>What we collect, and your choice</small></span><span class="ui-row-end">${chevron()}</span></button></div>
       <h3 class="ui-section">Accounts</h3>
       <p class="settings-note">Accounts (sign up, log in, recovery email, moving a life to another device) are not part of this build. Notifications outside the game are not available either: news arrives in Phone → Messages → Updates.</p>
       <div class="ui-rows">${link('support', 'support', 'Report a problem', 'File a report and get a receipt')}</div>`;
   },
   bind(root, api) {
     bindHow(root, api);
+    // Opens the telemetry sheet (src/telemetry): what is collected and the Accept / Reject choice for this device.
+    root.querySelector('[data-privacy-analytics]')?.addEventListener('click', () => window.dispatchEvent(new CustomEvent('jaw:privacy')));
     for (const button of root.querySelectorAll('[data-wallpaper]')) {
       button.addEventListener('click', () => {
         warning = setWallpaper(button.dataset.wallpaper) ? '' : 'This browser would not save the wallpaper, so it lasts only until you close the tab.';

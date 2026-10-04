@@ -1,0 +1,48 @@
+/**
+ * Error monitoring: the ONLY file that imports the Sentry browser SDK. It is a lazy chunk, fetched
+ * by the facade (./index.js) after the first scene is drawn and only when the server sent a DSN.
+ *
+ * Runs without asking the player because it carries no personal data:
+ *   - sendDefaultPii is false and the SDK is told never to infer an IP address (the project must
+ *     ALSO have "Prevent Storing of IP Addresses" switched on — see SECURITY.md)
+ *   - no cookies and no storage are used; the user is the session's PUBLIC id and nothing else
+ *   - none of the SDK's automatic breadcrumbs are installed (no console, clicks, fetch, navigation
+ *     or history): the only breadcrumbs are the ones the facade writes — action types, result codes,
+ *     screen names — and every event is rebuilt by scrubEvent before it is sent
+ *   - no performance tracing in the browser (action latency is a sampled analytics event instead)
+ *   - session replay is OFF. It exists only behind TELEMETRY_REPLAY_ON_ERROR=1, then records only
+ *     sessions that hit an error, with all text and inputs masked and every canvas blocked.
+ */
+import { init, captureException, captureMessage, addBreadcrumb, setUser, withScope, globalHandlersIntegration, linkedErrorsIntegration, dedupeIntegration } from '@sentry/browser';
+import { scrubEvent, scrubProps, stripUrl, isUuid, BREADCRUMB_CATEGORIES } from './scrub.js';
+
+/**
+ * @param {{ dsn: string, release?: string, env?: string, replayOnError?: boolean, userId?: string | null, window: Window }} options
+ * @returns {Promise<{ capture(error: unknown, context?: object): void, crumb(item: object): void, user(id: string | null): void }>}
+ */
+export async function startSentry({ dsn, release, env, replayOnError = false, userId = null, window: win }) {
+  let user = isUuid(userId) ? userId : null;
+  const integrations = [globalHandlersIntegration(), linkedErrorsIntegration(), dedupeIntegration()];
+  if (replayOnError) {
+    try { integrations.push((await import('./sentry-replay.js')).replay()); } catch { /* replay could not load: errors are still reported */ }
+  }
+  init({
+    dsn, release, environment: env,
+    defaultIntegrations: false, integrations,
+    sendDefaultPii: false, sendClientReports: false, attachStacktrace: true, maxBreadcrumbs: 30,
+    replaysSessionSampleRate: 0, replaysOnErrorSampleRate: replayOnError ? 1 : 0,
+    beforeBreadcrumb: (crumb) => (BREADCRUMB_CATEGORIES.includes(crumb?.category) ? { category: crumb.category, timestamp: crumb.timestamp, data: scrubProps(crumb.data) } : null),
+    beforeSend: (event) => scrubEvent({ ...event, request: { url: stripUrl(win.location.href), headers: { 'User-Agent': win.navigator.userAgent } } }, { userId: user }),
+  });
+  if (user) setUser({ id: user });
+  return {
+    capture(error, context) {
+      withScope((scope) => {
+        scope.setExtras(scrubProps(context));
+        if (error instanceof Error) captureException(error); else captureMessage(typeof error === 'string' ? error : 'Non-error thrown', 'error');
+      });
+    },
+    crumb(item) { addBreadcrumb(item); },
+    user(id) { user = isUuid(id) ? id : null; setUser(user ? { id: user } : null); },
+  };
+}

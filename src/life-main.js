@@ -38,6 +38,7 @@ import { crowdList, playersHere } from './scene/crowd.js';
 import { NPCS } from './game/content/npcs.js';
 import { viewLife, VENUES, isDeparting } from './life.js';
 import { venueLabel, venueDistrict } from './game/content/venues.js';
+import { telemetry } from './telemetry/index.js';
 
 const $ = (id) => document.getElementById(id);
 let storage; try { storage = window.localStorage; } catch {}
@@ -48,7 +49,7 @@ let shell = null, venue = null, cityMap = null, world = null, mapsLoading = null
 /** The connection status line: shown in the top bar's saved indicator and in the More menu. */
 let net = { text: 'Connecting…', error: false };
 
-function status(text, error = false) { net = { text, error }; if (shell) render(); }
+function status(text, error = false) { net = { text, error }; telemetry.link(client.link); if (shell) render(); }
 
 /** The trip a state is on, as a key ('' when it is not travelling): a different key is a different trip. */
 const tripKey = (state) => (isDeparting(state) ? `${state.activeAction.kind}|${state.location}|${state.activeAction.id}|${state.activeAction.duration}` : '');
@@ -59,7 +60,8 @@ const client = createClient({
   onStatus: status,
   onChange: accepted,
   onSessionExpired() { community?.destroy(); community = null; positions = {}; render(); shell.open(sessionGate().id, { reason: 'expired' }); },
-  onNeedName(problem) { shell.open(sessionGate().id, { reason: 'new', problem: problem ?? null }); },
+  onNeedName(problem) { telemetry.needName(); shell.open(sessionGate().id, { reason: 'new', problem: problem ?? null }); },
+  onSession(session, isNew) { telemetry.session(session, isNew, client.serverNow()); },
 });
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). */
@@ -115,11 +117,13 @@ async function loadScene() {
     venue.resize();
     layoutScene();
     reportPlace();
+    telemetry.sceneReady(true, $('venue-scene').querySelector('canvas'));
     // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
     // (Nothing is built or drawn until the Map opens.)
     void import('./map3d/index.js').catch(() => {});
   } catch (error) {
     console.error('The scene could not be started:', error);
+    telemetry.chunkFailed('scene', error); telemetry.sceneReady(false);
     const wait = $('scene-wait');
     if (wait) wait.textContent = 'The 3D scene could not be drawn on this device. Everything else still works.';
   }
@@ -156,7 +160,7 @@ function loadMaps() {
     render();
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }));
     refreshScene();
-  }).catch((error) => { mapsLoading = null; console.error('The map could not be loaded:', error); shell.toast('The map could not be loaded. Check your connection and open it again.', 'error'); });
+  }).catch((error) => { mapsLoading = null; telemetry.chunkFailed('map', error); console.error('The map could not be loaded:', error); shell.toast('The map could not be loaded. Check your connection and open it again.', 'error'); });
   return mapsLoading;
 }
 
@@ -173,6 +177,7 @@ shell = createShell({
     // A trip is watched on the map: while one is running there is no venue to stand in, so the venue screen
     // (and the shell's old full-panel travel view with it) is never what is in front.
     if (mode === 'venue' && tripKey(client.state)) { shell.setMode('map'); return; }
+    telemetry.screen(mode);
     if (mode === 'map') loadMaps();
     render(); refreshScene();
   } },
@@ -240,6 +245,7 @@ function showVenue() {
 
 /** Called after every accepted server state. */
 function accepted(state, previous) {
+  telemetry.state(state, previous, client);
   const moved = previous.location !== state.location;
   noteCity(client.cityId);
   // A trip started — from the map card, the Ride app, Go to work, anywhere: the map shows it. Once per trip, so a
@@ -272,7 +278,9 @@ function accepted(state, previous) {
 
 async function command(type, payload) {
   if (type === 'cancel') pendingRoute = null;
+  const measured = telemetry.action(type);
   const result = await client.command(type, payload);
+  measured?.(result);
   if (!result.ok && result.reason && result.code !== 'busy') shell.toast(result.reason, 'error');
   if (!result.ok && type === 'travel') pendingRoute = null;
   return result;
@@ -302,7 +310,7 @@ async function goTo(venueId, spotId) {
 const communityCode = createLazyLoader(() => Promise.all([import('./community.js'), import('./community.css')]).then(([module]) => module), {
   onState(state) {
     if (state.status === 'retrying') status(`Community did not load · retrying in ${Math.round(state.retryInMs / 1000)} s (attempt ${state.attempt + 1} of ${state.attempts})`, true);
-    else if (state.status === 'failed') status('Community is unavailable · it did not load. Open Community to retry', true);
+    else if (state.status === 'failed') { telemetry.chunkFailed('community', state.error); status('Community is unavailable · it did not load. Open Community to retry', true); }
     // A retry that succeeded by itself: bring the panel up now, without waiting for the player.
     else if (state.status === 'ready') void startCommunity();
     showCommunityRecovery();
@@ -347,6 +355,7 @@ async function startCommunity() {
     render();
   } catch (error) {
     console.error('The community panel could not be started:', error);
+    telemetry.captureError(error, { chunk: 'community' });
     status('Community is unavailable · it could not start. Open Community to retry', true);
     showCommunityRecovery(error);
   } finally { startingCommunity = false; }
@@ -440,6 +449,7 @@ if (new URLSearchParams(location.search).has('diagnostics')) {
 }
 
 render();
+telemetry.hudReady();
 connect();
 // The scene (Three.js and every scene module) starts downloading only now, with the HUD already on screen and usable.
 setTimeout(loadScene, 0);

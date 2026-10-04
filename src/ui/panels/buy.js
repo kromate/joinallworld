@@ -235,6 +235,8 @@ function roomStatus(state, view) {
 
 const homeChip = {
   id: 'home-chip', title: 'Home', icon: '🏠', placement: 'hud', order: 20,
+  /** A room that could not be drawn is something to act on (Try again); otherwise the chip is information for the tray. */
+  slot: () => (scene.status === 'error' ? 'alert' : 'hud'),
   render(state, view, shellApi) {
     api = shellApi;
     const buying = view.mode === 'buy';

@@ -29,7 +29,8 @@
  *     order: 20,                  // optional sort key within its placement (default 100)
  *     slot: 'goal',               // optional, 'hud' panels only: 'goal' = the single goal line,
  *                                 //   'alert' = always visible above it (something to act on now);
- *                                 //   omitted = in the tray behind "More"
+ *                                 //   omitted = in the tray behind "More". May be a function
+ *                                 //   (state, view) → slot, for a chip that is only sometimes urgent
  *     live: true,                 // optional; false = do not re-render on every state update
  *                                 //   (use for forms; call api.refresh() yourself)
  *     enabled(state, view) {},    // optional; return true, or a string reason to disable the entry
@@ -132,6 +133,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   const html = new WeakMap();
   const byId = new Map(panels.map((panel) => [panel.id, panel]));
   const placed = (placement) => panels.filter((panel) => panel.placement === placement);
+  /** Where a HUD chip goes right now: a panel may decide per state (a knock at the door is an alert, an empty inbox is not). */
+  const slotOf = (panel) => { try { return (typeof panel.slot === 'function' ? panel.slot(state, view) : panel.slot) || 'hud'; } catch { return 'hud'; } };
   const gate = (panel) => { const value = panel.enabled?.(state, view); return value === undefined || value === true ? null : String(value || 'Unavailable right now'); };
 
   root.classList.add('life-ui');
@@ -516,7 +519,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
 
     const hud = placed('hud');
     for (const [slot, target] of Object.entries(el.slots)) {
-      const chips = hud.filter((panel) => (panel.slot || 'hud') === slot).map((panel) => { const body = panelHtml(panel); return body ? `<div data-panel="${esc(panel.id)}">${body}</div>` : ''; }).join('');
+      const chips = hud.filter((panel) => slotOf(panel) === slot).map((panel) => { const body = panelHtml(panel); return body ? `<div data-panel="${esc(panel.id)}">${body}</div>` : ''; }).join('');
       if (setHtml(target, chips)) bindPanels(target);
     }
     setHtml(el.menu, menuHtml());
@@ -531,7 +534,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (lastMessage !== null && text && text !== lastMessage && !(active && (text === (view.activities.active?.label || '') || text.startsWith('Travelling to ')))) toast(text);
     lastMessage = text;
 
-    const travelling = isTrip(active) && mode === 'venue';
+    // Clean screen keeps only the small progress chip (with Cancel), also for a trip.
+    const travelling = isTrip(active) && mode === 'venue' && !clean;
     setHtml(el.progress, travelling ? '' : progressHtml());
     root.classList.toggle('is-expanded', expanded && mode === 'venue');
     root.classList.toggle('is-travelling', travelling);

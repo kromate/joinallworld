@@ -149,7 +149,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     camera.lookAt(0, 0.7, 0);
     // Centre the scene in what the HUD leaves free; on a wide screen also step back a little when little is left.
     const free = Math.max(160, height - insets.top - insets.bottom);
-    camera.zoom = portrait ? 1 : Math.max(0.74, Math.min(1, free / (height * 0.66)));
+    camera.zoom = portrait ? 1 : Math.max(0.74, Math.min(1, free / (height * 0.6)));
     // Scenes are composed a little above the point the camera looks at (walls and props rise from the floor).
     const shift = insets.top || insets.bottom ? Math.round((insets.bottom - insets.top) / 2 - height * 0.06 * camera.zoom) : 0;
     if (shift && width > 0 && height > 0) camera.setViewOffset(width, height, 0, shift, width, height); else camera.clearViewOffset();

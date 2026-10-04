@@ -124,6 +124,28 @@ test('leaving a venue disposes its scene; home shows the player’s avatar and g
   } finally { THREE.BufferGeometry.prototype.setIndex = setIndex; }
 });
 
+test('HUD insets re-centre the scene with one frame per change, never by themselves, and keep name tags on the canvas', () => {
+  const renderer = stubRenderer();
+  const world = createVenueWorld(container, { location: 'park', renderer });
+  const drawn = world.diagnostics().renderCount;
+  assert.equal(world.setInsets({ top: 0, bottom: 0 }), false, 'no insets: nothing changes');
+  assert.equal(world.diagnostics().renderCount, drawn);
+  assert.equal(world.setInsets({ top: 104, bottom: 300 }), true);
+  assert.equal(world.diagnostics().renderCount, drawn + 1, 'a new HUD size draws exactly one frame');
+  assert.equal(world.setInsets({ top: 106, bottom: 298 }), false, 'a change of a few pixels is not a new layout');
+  assert.equal(world.setInsets({ top: 104, bottom: 300 }), false, 'the same insets again draw nothing');
+  assert.equal(world.diagnostics().renderCount, drawn + 1);
+  world.setPlayer({ look: null, seed: 'p1', name: 'Ada' });
+  const before = world.diagnostics().tags.find(tag => tag.kind === 'self');
+  assert.ok(before, 'the player has a tag');
+  world.setInsets({ top: 104, bottom: 520 });
+  const after = world.diagnostics().tags.find(tag => tag.kind === 'self');
+  assert.ok(after.y < before.y, 'a taller bottom panel moves the scene (and its tags) up');
+  assert.ok(after.x === before.x, 'and never sideways');
+  world.setInsets({ top: 0, bottom: 0 });
+  world.dispose();
+});
+
 test('no scene, map or shell source contains a frame loop or interval', async () => {
   const files = ['src/venue-world.js', 'src/world-map.js', 'src/city-map.js', 'src/ui/shell.js', 'src/life-main.js', 'src/client.js',
     ...(await readdir('src/scene')).map(name => `src/scene/${name}`), ...(await readdir('src/ui/panels')).filter(name => name.endsWith('.js')).map(name => `src/ui/panels/${name}`)];

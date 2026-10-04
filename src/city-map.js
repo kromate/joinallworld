@@ -153,13 +153,17 @@ export function createCityMap(container, { onSelectVenue = () => {}, onSelectGov
   function apply() {
     if (!built) return;
     const free = freeRect(), smallest = fitScale(free);
+    // Size first: the clamp below measures the world (city plus sea plots) at its new size.
+    const size = `${Math.round(W * scale)}px`;
+    if (canvas.style.width !== size) {
+      canvas.style.width = size;
+      canvas.style.height = `${Math.round(H * scale)}px`;
+      worldNode.style.width = size;
+    }
     clamp(free);
-    const next = `${scale.toFixed(4)}|${Math.round(x)}|${Math.round(y)}`;
+    const next = `${scale.toFixed(4)}|${Math.round(x)}|${Math.round(y)}|${userMoved}`;
     if (next === shown) return;
     shown = next;
-    canvas.style.width = `${Math.round(W * scale)}px`;
-    canvas.style.height = `${Math.round(H * scale)}px`;
-    worldNode.style.width = `${Math.round(W * scale)}px`;
     worldNode.style.transform = `translate(${Math.round(x)}px,${Math.round(y)}px)`;
     root.classList.toggle('is-compact', W * scale < LABEL_WIDTH);
     const atFit = scale <= smallest * 1.01, atMax = W * scale >= MAX_WIDTH - 1;

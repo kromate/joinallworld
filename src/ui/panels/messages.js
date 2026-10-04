@@ -103,6 +103,8 @@ function updatesHtml(view) {
 
 const chip = {
   id: 'social-inbox', title: 'Inbox', icon: '✉️', placement: 'hud', order: 30,
+  /** Someone at the door cannot wait in the tray: a knock is shown as an alert. */
+  slot: (state, view) => (view.connected && S.me?.house.knocks?.length ? 'alert' : 'hud'),
   render(state, view) {
     if (!view.connected) return '<button class="life-job" disabled><span>✉️</span><div><strong>Messages</strong><small>Offline · reconnect to read</small></div></button>';
     const knocks = S.me?.house.knocks || [];

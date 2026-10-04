@@ -83,6 +83,7 @@ test('room membership is restored on arrival and after a cancelled trip, and nev
   const arrived = createLife({ location: 'library' });
   const chilling = createLife({ location: 'park', spot: 'trees', activeAction: { kind: 'activity', id: 'chill', duration: 11, remaining: 4 } });
   assert.equal(roomJoinNeeded(travelling, idle), true, 'trip cancelled: same place, no action');
+  assert.equal(roomJoinNeeded({ ...travelling, activeAction: { kind: 'commute' } }, idle), true, 'cancelled work commute rejoins without enabling voice');
   assert.equal(roomJoinNeeded(travelling, arrived), true, 'arrived somewhere new');
   assert.equal(roomJoinNeeded(idle, idle), false);
   assert.equal(roomJoinNeeded(idle, travelling), false, 'setting off does not rejoin');

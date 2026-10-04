@@ -239,6 +239,27 @@ test('a write that fails at once: a read or transaction applied just before the 
   }
 });
 
+// From the navigation lane's store test of the same name (there it expects the raw ENOENT; here the caller gets
+// storage_unavailable with that error as its cause).
+test('grouped: a rejected durable write never commits or survives a later successful write', async (t) => {
+  const { store, dir, file } = await temp(t, { log: () => {} });
+  await store.transact((db) => { db.sessions.a = session('pa'); });
+  const { mkdir } = await import('node:fs/promises');
+  await rm(dir, { recursive: true, force: true }); // every write now fails
+  const seen = [];
+  await assert.rejects(store.transact((db) => { db.sessions.a.name = 'during the outage'; return 'value'; }, { committed: (value) => seen.push(value) }),
+    (error) => unavailable(error) && error.cause?.code === 'ENOENT');
+  assert.deepEqual(seen, [], 'a rejected durable transaction never calls committed');
+  assert.equal(await store.read((db) => db.sessions.a.name), 'pa', 'a failed save leaves the last committed state readable');
+  await mkdir(dir, { recursive: true });
+  await store.transact((db) => { db.sessions.b = session('pb'); });
+  const stored = await file();
+  assert.deepEqual([stored.sessions.a.name, stored.sessions.b.publicId], ['pa', 'pb'], 'the rejected mutation never appears in a later successful file');
+  // An aborted transaction never calls the listener.
+  await assert.rejects(store.transact(() => { throw new Error('abort'); }, { committed: () => seen.push('no') }), /abort/);
+  assert.deepEqual(seen, []);
+});
+
 test('a commit listener runs once the change is in the file, in order, before the caller resumes', async (t) => {
   const disk = flakyDisk();
   const { store, file } = await temp(t, { io: disk.io, lazyFlushMs: 30 });

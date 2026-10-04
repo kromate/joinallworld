@@ -34,6 +34,8 @@
  * @property {(state: object, seat: number, rng: () => number) => object} timeout  the state after the clock played for a seat
  * @property {(state: object, seat: number) => object} forfeit   the seat leaves; the others play on or win
  * @property {(state: object, seat: number, move: object) => string} describe   a line for the table's log (state BEFORE the move)
+ * @property {(before: object, after: object) => string[]} [report]   optional: extra log lines once a move has been applied
+ *                                          (a result that was secret until now), with "{0}" for seat names
  * @property {(state: object) => number[]} moved   real moves made per seat (a game is called off if someone never really played)
  */
 

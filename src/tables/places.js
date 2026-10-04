@@ -19,6 +19,9 @@ export const TABLES = Object.freeze([
   { id: 'park-bench', venue: 'park', game: 'whot', label: 'Bench under the trees', seats: 4 },
   { id: 'rooftop-lounge', venue: 'rooftop', game: 'whot', label: 'Lounge table', seats: 4 },
   { id: 'viewing-whot', venue: 'viewing-centre', game: 'whot', label: 'Back-row table', seats: 4 },
+  { id: 'viewing-goal', venue: 'viewing-centre', game: 'penalty', label: 'Five-a-side goal', seats: 2 },
+  { id: 'beach-goal', venue: 'beach', game: 'penalty', label: 'Goalposts in the sand', seats: 2 },
+  { id: 'park-goal', venue: 'park', game: 'penalty', label: 'Kickabout corner', seats: 2 },
 ]);
 
 export const tableById = (id) => TABLES.find((table) => table.id === id) ?? null;

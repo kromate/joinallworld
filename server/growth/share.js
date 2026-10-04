@@ -17,7 +17,8 @@ import { DISTRICTS } from '../../src/game/content/civic.js';
 import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.js';
 import { eventsBetween } from '../../src/game/calendar.js';
 import { venueLabel } from '../../src/game/content/venues.js';
-import { GAMES, tableById } from '../../src/tables/places.js';
+import { tableById } from '../../src/tables/places.js';
+import { GAMES } from '../../src/tables/games.js';
 import { LIMITS, playerOf, sweep } from './data.js';
 import { count } from './metrics.js';
 

@@ -38,7 +38,8 @@ import { lagosTime } from '../../src/game/clock.js';
 import { makeRng } from '../../src/game/util.js';
 import { TABLE_REWARDS } from '../../src/game/content/growth.js';
 import { venueLabel } from '../../src/game/content/venues.js';
-import { GAMES, TABLES, BOT_NAMES, tableById } from '../../src/tables/places.js';
+import { TABLES, BOT_NAMES, tableById } from '../../src/tables/places.js';
+import { GAMES } from '../../src/tables/games.js';
 import { RulesError, RATING, cleanOptions, eloChange, withNames } from '../../src/tables/rules.js';
 import { canOccupyVenue } from '../protocol.js';
 import { growthOf, playerOf } from './data.js';
@@ -63,7 +64,7 @@ export function tablesService(ctx) {
   function tableOf(cityId, id) {
     if (!ctx.cityIds.includes(cityId)) throw refuse('invalid_city', 'That city is not available.');
     const place = typeof id === 'string' ? tableById(id) : null;
-    if (!place) throw refuse('unknown_table', 'That table does not exist.');
+    if (!place || !Object.hasOwn(GAMES, place.game)) throw refuse('unknown_table', 'That table does not exist.');
     const key = `${cityId}:${place.id}`;
     if (!tables.has(key)) {
       const rules = GAMES[place.game];
@@ -114,8 +115,10 @@ export function tablesService(ctx) {
   function applyMove(table, seat, move, { auto = false } = {}) {
     const match = table.match;
     const line = auto ? null : table.rules.describe(match.state, seat, move);
-    match.state = auto === 'timeout' ? table.rules.timeout(match.state, seat, rngFor(match, 'move')) : table.rules.apply(match.state, seat, move, rngFor(match, 'move'));
+    const before = match.state;
+    match.state = auto === 'timeout' ? table.rules.timeout(before, seat, rngFor(match, 'move')) : table.rules.apply(before, seat, move, rngFor(match, 'move'));
     if (line) log(table, line); else log(table, `{${seat}} ran out of time`);
+    for (const extra of table.rules.report?.(before, match.state) ?? []) log(table, extra);
     match.last = { seat, n: match.n, move: JSON.stringify(move ?? null) };
     match.n += 1;
     match.deadline = now() + table.rules.turnSeconds * 1000;
@@ -251,7 +254,7 @@ export function tablesService(ctx) {
       if (!ctx.cityIds.includes(message.cityId)) throw refuse('invalid_city', 'That city is not available.');
       const venue = typeof message.venue === 'string' ? message.venue : null;
       ws.tablesVenue = venue ? `${message.cityId}:${venue}` : null;
-      return { type: 'tables', cityId: message.cityId, venue, tables: TABLES.filter((place) => !venue || place.venue === venue).map((place) => summary(tableOf(message.cityId, place.id))) };
+      return { type: 'tables', cityId: message.cityId, venue, tables: TABLES.filter((place) => Object.hasOwn(GAMES, place.game) && (!venue || place.venue === venue)).map((place) => summary(tableOf(message.cityId, place.id))) };
     },
     watch(ws, message) {
       limit(ws);

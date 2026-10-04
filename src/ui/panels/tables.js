@@ -10,13 +10,14 @@ import { esc, json, money, mark, empty, section } from '../dom.js';
 import { how, rules as ruleList, bindHow } from '../phone/how.js';
 import { linkWords } from '../link.js';
 import { isDeparting } from '../../game/registry.js';
-import { tableById } from '../../tables/places.js';
+import { tableById, GAME_LABELS } from '../../tables/places.js';
 import { T, start, openTable, closeTable, sit, leave, begin, again, play, setOption, reconnect, refreshList } from '../../tables/client.js';
 import { whotBoard, bindWhot, whotRules } from '../../tables/whot-board.js';
+import { penaltyBoard, bindPenalty, penaltyRules } from '../../tables/penalty-board.js';
 import { G, share } from './growth-client.js';
 
 const ui = { choosing: null, params: null };
-const BOARDS = { whot: { draw: whotBoard, bind: bindWhot, rules: whotRules } };
+const BOARDS = { whot: { draw: whotBoard, bind: bindWhot, rules: whotRules }, penalty: { draw: penaltyBoard, bind: bindPenalty, rules: penaltyRules } };
 const here = (state) => (isDeparting(state) ? null : state.location);
 
 function row(table, state) {
@@ -32,9 +33,9 @@ function listScreen(state, view) {
   const paid = view.growth?.tables;
   return `<section class="ui-hero gr-hero"><small>Game tables</small><strong>${mine.length ? `${mine.length} table${mine.length === 1 ? '' : 's'} where you are` : 'No table where you are'}</strong>
       <p>${paid ? `A win against a real player pays ${money(paid.win)} · ${paid.paidLeft} of ${paid.perDay} paid wins left today` : 'Play with whoever is here, or with a bot.'}</p></section>
-    ${mine.length ? `<ul class="ui-rows">${mine.map((table) => row(table, state)).join('')}</ul>` : empty('tables', 'Go where the tables are', 'Whot is played at the buka, the park, the rooftop and the viewing centre.', '', { compact: true })}
+    ${mine.length ? `<ul class="ui-rows">${mine.map((table) => row(table, state)).join('')}</ul>` : empty('tables', 'Go where the tables are', 'Whot is played at the buka, the park, the rooftop and the viewing centre; penalties at the viewing centre, the park and the beach.', '', { compact: true })}
     ${other.length ? `${section('Elsewhere in the city')}<ul class="ui-rows">${other.map((table) => row(table, state)).join('')}</ul>` : ''}
-    ${T.ratings?.whot ? `<p class="gr-note">Your Whot rating: ${T.ratings.whot.rating}${T.ratings.whot.provisional ? ' (provisional)' : ''} · ${T.ratings.whot.won} won of ${T.ratings.whot.played} rated games.</p>` : ''}
+    ${Object.entries(T.ratings ?? {}).map(([game, rating]) => `<p class="gr-note">Your ${esc(GAME_LABELS[game] ?? game)} rating: ${rating.rating}${rating.provisional ? ' (provisional)' : ''} · ${rating.won} won of ${rating.played} rated games.</p>`).join('')}
     ${how('tables-rules', ruleList(['Sit at a table in the place where your Sim is. Anyone can watch from anywhere.', 'There are no stakes: nobody can lose money at a table. A win against a real player is paid by the game.',
     'Four paid wins a day. Games against the same player count three times a day; after that they are for fun.', 'Bots fill empty seats when you ask. A game against bots pays nothing.', 'If you leave before everyone has really played, the game is called off and nothing counts.']))}`;
 }

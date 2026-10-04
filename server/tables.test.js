@@ -69,7 +69,7 @@ test('tables: sit at a table in your venue, watch from anywhere, one seat per pl
   const { act, player, all } = await harness(t);
   const ada = await player('Ada'), bola = await player('Bola'), chidi = await player('Chidi');
   await all(ada);
-  assert.deepEqual(ada.list.tables.map((table) => [table.id, table.gameLabel, table.status, table.seats.length, table.max]), [['park-bench', 'Whot', 'open', 0, 4]]);
+  assert.deepEqual(ada.list.tables.map((table) => [table.id, table.gameLabel, table.status, table.seats.length, table.max]), [['park-bench', 'Whot', 'open', 0, 4], ['park-goal', 'Penalties', 'open', 0, 2]]);
   assert.ok(TABLES.some((table) => table.venue === 'amala-shitta') && TABLES.some((table) => table.venue === 'viewing-centre'), 'the buka and the viewing centre have tables too');
   // Nobody is at the buka: sitting there is refused with the reason, watching is allowed.
   await act(ada, 'table-sit', { table: 'buka-corner' });
@@ -269,4 +269,55 @@ test('tables: four paid wins a day and three counted games a day against the sam
   const html = await (await fetch(`${f.base}${shared.share.path}`)).text();
   assert.ok(html.includes(`url=/?join=${ada.who.id}&amp;ref=${shared.share.code}&amp;table=park-bench`) && html.includes('Come and play Whot with Ada'));
   assert.equal((await post('/api/growth/share', { cityId: 'lagos', kind: 'table', table: '../x' }, ada.who)).status, 400);
+});
+
+test('tables: a penalty shoot-out between two real sockets and against a bot — secret choices, both revealed together, paid like any win', async (t) => {
+  const { act, all, player, connect, claim, wins } = await harness(t);
+  const goal = { table: 'park-goal' };
+  const ada = await player('Ada'), bola = await player('Bola'), chidi = await player('Chidi');
+  await act(ada, 'table-sit', goal); await act(bola, 'table-sit', goal, ada); await act(chidi, 'table-watch', goal);
+  await act(chidi, 'table-sit', goal);
+  assert.equal(chidi.errors.at(-1).code, 'table_full', 'a shoot-out is for two');
+  await act(ada, 'table-start', goal, bola, chidi);
+  assert.deepEqual([ada.state.toMove, ada.state.view.kicker, ada.state.clock.seconds], [[0, 1], 0, 15]);
+  // Bola (in goal) chooses first. Nobody — not Ada, not the watcher — is sent his choice.
+  await act(bola, 'table-move', { ...goal, n: bola.state.n, move: { z: 2 } }, ada, chidi);
+  assert.deepEqual([bola.state.view.mine, ada.state.view.mine, chidi.state.view.mine, ada.state.view.chosen, ada.state.toMove, ada.state.log.at(-1)], [2, null, null, [false, true], [0], 'Bola is ready']);
+  assert.equal(ada.all.concat(chidi.all).some((message) => /"picks"|"mine":2/.test(JSON.stringify(message))), false);
+  // A second choice for the same kick is refused; so is a side that does not exist.
+  await act(bola, 'table-move', { ...goal, n: bola.state.n, move: { z: 0 } });
+  assert.equal(bola.errors.at(-1).code, 'not_your_turn');
+  await act(ada, 'table-move', { ...goal, n: ada.state.n, move: { z: 7 } });
+  assert.equal(ada.errors.at(-1).code, 'invalid_move');
+  // Ada shoots left: a goal, shown to everyone at the same moment.
+  await act(ada, 'table-move', { ...goal, n: ada.state.n, move: { z: 0 } }, bola, chidi);
+  for (const peer of [ada, bola, chidi]) assert.deepEqual([peer.state.view.goals, peer.state.view.history, peer.state.view.kicker, peer.state.log.at(-1)], [[1, 0], [{ kicker: 0, shot: 0, dive: 2, goal: true }], 1, 'GOAL! Ada shot left, Bola went right. 1–0']);
+  // Reconnect in the middle of a shoot-out: same seat, same score.
+  ada.ws.terminate();
+  await new Promise((done) => setTimeout(done, 30));
+  const back = await connect(ada.who);
+  await act(back, 'table-sit', goal, bola);
+  assert.deepEqual([back.state.you, back.state.view.goals], [0, [1, 0]]);
+  // Ada always scores (left against right), Bola is always saved (centre against centre): 3–0 after three each ends it early.
+  for (let guard = 0; guard < 12 && back.state.table.status === 'playing'; guard++) {
+    const adaKicks = back.state.view.kicker === 0;
+    await act(back, 'table-move', { ...goal, n: back.state.n, move: { z: adaKicks ? 0 : 1 } }, bola);
+    await act(bola, 'table-move', { ...goal, n: bola.state.n, move: { z: adaKicks ? 2 : 1 } }, back, chidi);
+  }
+  assert.deepEqual([back.state.table.status, back.state.view.goals, back.state.result.mine.won, bola.state.result.mine.won, back.state.result.mine.change], ['over', [3, 0], true, false, 20]);
+  assert.match(back.state.result.text, /Ada wins the shoot-out 3–0/);
+  assert.deepEqual([(await claim(back)).results.map((item) => [item.game, item.code]), (await wins(back)).map((line) => line.reason)], [[['penalty', 'paid']], ['Table win: Penalties']]);
+  // Against the house keeper: it chooses by itself, and the game pays nothing.
+  const dayo = await player('Dayo');
+  const sand = { table: 'beach-goal' };
+  await act(dayo, 'table-watch', sand);
+  assert.equal(dayo.state.table.venueLabel.length > 0, true);
+  await act(dayo, 'table-sit', sand);
+  assert.equal(dayo.errors.at(-1).code, 'not_here', 'the beach table is at the beach');
+  await act(back, 'table-leave', goal); await act(bola, 'table-leave', goal); // the two get up, so the goal is free
+  await act(dayo, 'table-watch', goal); await act(dayo, 'table-again', goal);
+  await act(dayo, 'table-sit', goal); await act(dayo, 'table-start', { ...goal, bots: 1 });
+  assert.deepEqual([dayo.state.table.seats.map((seat) => seat.bot), dayo.state.toMove], [[false, true], [0]], 'the bot has already chosen');
+  for (let guard = 0; guard < 40 && dayo.state.table.status === 'playing'; guard++) await act(dayo, 'table-move', { ...goal, n: dayo.state.n, move: { z: guard % 3 } });
+  assert.deepEqual([dayo.state.table.status, dayo.state.result.mine.human, (await claim(dayo)).results.map((item) => item.code), (await wins(dayo)).length], ['over', false, ['counted'], 0]);
 });

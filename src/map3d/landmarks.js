@@ -363,6 +363,42 @@ const KINDS = {
     b.box(2.9, Y + 0.7, 2.6, 0.5, 1.5, 0.08, '#38b5c9', { rz: 0.2 }); b.box(0, Y + 0.02, 3.0, 6.4, 0.04, 0.5, '#bfe6ee', GLASS);
     return 3.9;
   },
+  airport(g) {
+    const { b } = g; plinth(b, '#d5d8d2', '#b4b8b0');
+    b.box(-0.5, Y + 1.0, -0.7, 5.0, 2.0, 3.0, '#e9edee');                 // the terminal, under one long swept roof
+    b.box(-0.5, Y + 2.2, -0.5, 5.6, 0.22, 4.0, '#3f9ad0', { rx: 0.1 });
+    b.box(-0.5, Y + 1.1, 0.83, 4.6, 1.5, 0.06, '#9fd0e6', GLASS); winGrid(g, -0.5, Y + 1.1, 0.87, 4, 1, 0.9, 1.2, 1.12, 1);
+    sign(b, -0.5, Y + 2.75, 1.3, 'AIRPORT', { size: 0.3, color: WHITE, lit: true, board: '#2f4a66', pad: 0.12 });
+    b.cyl(2.5, Y + 2.6, -2.2, 0.42, 5.2, '#d9d4c4', { seg: 8 });           // the control tower
+    b.cyl(2.5, Y + 5.6, -2.2, 0.85, 0.9, '#55707c', { seg: 8, top: 1.25 });
+    b.cyl(2.5, Y + 6.15, -2.2, 1.15, 0.14, '#d9d4c4', { seg: 8 });
+    b.ico(2.5, Y + 6.6, -2.2, 0.14, 0.14, 0.14, '#ff3b30', GLOW);
+    b.at(0.2, Y, 2.3, Math.PI / 2 - 0.25, () => {                         // a plane at the stand
+      b.cyl(0, 0.5, 0, 0.3, 3.0, WHITE, { seg: 7, rx: Math.PI / 2 }); b.cone(0, 0.5, 1.8, 0.3, 0.6, WHITE, { seg: 7, rx: Math.PI / 2 });
+      b.box(0, 0.46, 0.1, 3.4, 0.08, 0.7, '#d9d4c4'); b.box(0, 0.6, -1.3, 1.3, 0.06, 0.4, '#d9d4c4'); b.box(0, 0.95, -1.35, 0.08, 0.8, 0.5, '#3f9a5a');
+    });
+    return 7.0;
+  },
+  refinery(g) {
+    const { b } = g; plinth(b, '#cfd0c8', '#aeb0a6');
+    b.box(1.9, Y + 0.7, 2.2, 1.4, 1.4, 1.2, '#ece2c6'); b.box(1.9, Y + 1.5, 2.2, 1.8, 0.16, 1.6, '#2f4a45');      // the gate house and its boom
+    win(g, 1.9, Y + 0.85, 2.81, 0.8, 0.5);
+    for (let i = 0; i < 5; i++) b.box(-1.9 + i * 0.6, Y + 0.6, 2.7, 0.6, 0.12, 0.12, i % 2 ? WHITE : '#c9423a');
+    sign(b, -0.6, Y + 1.5, 2.9, 'REFINERY', { size: 0.22, color: WHITE, board: '#2f4a45', pad: 0.1 });
+    for (const [x, z, r, h] of [[-1.9, -1.6, 1.15, 1.9], [0.7, -1.9, 1.15, 1.9]]) {                                 // two tanks
+      b.cyl(x, Y + h / 2, z, r, h, '#dfe2e0', { seg: 10 }); b.cyl(x, Y + h + 0.1, z, r * 0.96, 0.2, '#b8bcba', { seg: 10, top: 0.5 });
+      b.cyl(x, Y + h * 0.6, z, r * 1.02, 0.2, '#3f72c4', { seg: 10, open: true });
+    }
+    for (const [x, z, r, h] of [[-2.2, 0.6, 0.36, 5.6], [-1.3, 0.9, 0.28, 4.4]]) {                                  // the columns
+      b.cyl(x, Y + h / 2, z, r, h, '#aab0b3', { seg: 8 }); b.cyl(x, Y + h + 0.14, z, r, 0.28, '#8a8f95', { seg: 8, top: 0.3 });
+      for (let band = 0; band < 2; band++) b.cyl(x, Y + h - 0.6 - band * 0.8, z, r * 1.04, 0.28, band ? WHITE : '#c9423a', { seg: 8, open: true });
+    }
+    for (const [dz, colour] of [[0, '#c9ced3'], [0.26, '#f2c230']]) b.cyl(0.6, Y + 1.25, 0.5 + dz, 0.1, 4.4, colour, { seg: 5, rz: Math.PI / 2 });
+    for (const x of [-0.6, 1.2, 2.6]) b.box(x, Y + 0.6, 0.63, 0.1, 1.2, 0.5, '#3d444b');
+    b.cyl(2.6, Y + 3.6, -1.2, 0.12, 7.2, '#8a8f95', { seg: 5 });                                                     // the flare stack
+    b.cone(2.6, Y + 7.7, -1.2, 0.34, 1.1, '#ff7a2f', { seg: 6, ...GLOW }); b.cone(2.6, Y + 7.55, -1.2, 0.18, 0.7, '#ffe08a', { seg: 5, ...GLOW });
+    return 8.4;
+  },
 };
 
 /** Draw the landmark for a venue's scene kind. Unknown kinds get a plain block, so a new venue is never invisible. */

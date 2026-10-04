@@ -11,6 +11,7 @@
 // The dialog keeps the id `life-dialog`: existing panels and the phone's stylesheet are written
 // against it. It goes when the last of them is converted.
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import '../../../ui/controls.css' // the fields, selects and buttons every sheet's panel uses (a panel that does not import it itself would be unstyled until one that does has loaded)
 import { useApp } from '../../state/app.ts'
 import AppBar from '../../ui/AppBar.vue'
 import BaseSheet from '../../ui/BaseSheet.vue'

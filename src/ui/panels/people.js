@@ -10,7 +10,7 @@
  * Every disabled control says why. All names and text are escaped.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, json, money } from '../dom.js';
+import { esc, json, money, empty } from '../dom.js';
 import { NPCS } from '../../game/content/npcs.js';
 import { PRESENCE, presenceText, roomSummary } from '../../game/social-model.js';
 import { S, start, bindCommon, gate, perform, loadPeople, loadProfile, cityId, newClientId, refreshLife } from './social-client.js';
@@ -41,10 +41,10 @@ const peopleTab = {
       const friends = S.me.friends.map((friend) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">🧑🏾${dot(friend.status)}</span><div><strong>${esc(friend.name)}${friend.bae ? ' 💞' : ''}</strong><small>${esc(presenceText(friend, (id) => venueName(view, id)))}</small></div><span class="social-actions"><button class="social-btn is-primary" data-open="messages" data-params="${json({ to: friend.id, name: friend.name })}">Chat</button><button class="social-btn" data-open="person" data-params="${json({ player: friend.id, name: friend.name })}">View</button></span></div>`).join('');
       const waiting = S.me.requests.out.length ? `<p class="social-note">Waiting for an answer from: ${esc(S.me.requests.out.map((request) => request.name).join(', '))}</p>` : '';
       const blockedList = S.me.blocked.length ? `<h3>Blocked</h3>${S.me.blocked.map((player) => `<div class="social-row"><div><strong>${esc(player.name)}</strong><small>Cannot message, invite or see you</small></div><span class="social-actions"><button class="social-btn" data-p-unblock="${esc(player.id)}">Unblock</button></span></div>`).join('')}` : '';
-      friendsHtml = `${requests}${friends || '<p class="social-note">No friends yet. Go to places around town, greet people, and add the players you meet.</p>'}${waiting}${blockedList}`;
+      friendsHtml = `${requests}${friends || empty('👋', 'No friends yet', 'Go to places around town, greet people, and add the players you meet.', '<button class="ui-button" data-open="map">Find somewhere to go</button>')}${waiting}${blockedList}`;
     }
     const rels = social.relationships.map((rel) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">${esc(rel.emoji)}</span><div><strong>${esc(rel.name)}</strong><small>${esc(rel.role)} · ${closeness(rel, view)}</small>${meterHtml(rel.points, rel.next ? rel.next.min : view.social.maxCloseness, `Closeness with ${rel.name}`)}</div></div>`).join('');
-    return `${hereHtml}<h3>Friends</h3>${friendsHtml}<h3>Relationships</h3>${rels || '<p class="social-note">Nobody yet. Say hello to someone at a venue to start.</p>'}
+    return `${hereHtml}<h3>Friends</h3>${friendsHtml}<h3>Relationships</h3>${rels || empty('🤝', 'Nobody yet', 'Say hello to one of the regulars at a venue to start.')}
       <p class="preview-note">Closeness tiers (Acquaintance 5, Friend 20, Paddy Mi 40) and points are original beta values. ${social.paddyCount} Paddy Mi so far.</p>`;
   },
   bind(root, api) {

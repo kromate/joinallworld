@@ -93,6 +93,12 @@
  *   api.toggleCommunity(force?)   show/hide the existing community (presence/chat/voice) panel
  *   api.state() / api.view()      the latest state and view, for use inside bind/keys handlers
  *
+ * host (what src/life-main.js gives the shell)
+ *   command, fetchJson, goTo, toggleCommunity, redrawScene — behind the api calls above
+ *   onMode(mode, params)          a nav panel was entered or left
+ *   onRender()                    the shell finished a render pass (the HUD may have changed size)
+ *   menu(id)                      an entry of the More menu: 'city' | 'locate' | 'reconnect'
+ *
  * RULES
  *   - Panels never change state locally and never fetch /api/action themselves: the server is
  *     authoritative; use api.command. While offline everything is read-only.
@@ -306,7 +312,12 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       body = `${sheetHead(`${esc(panel.icon || '')} ${esc(panel.title)}`, { back: sheet.from === 'phone' })}${lock ? `<p class="sheet-lock" role="note">🔒 ${esc(lock.reason)}</p>` : ''}<div class="sheet-body" data-panel="${esc(panel.id)}">${panelHtml(panel, sheet.params)}</div>`;
     }
     dialog.toggleAttribute('data-locked', Boolean(lockOf()));
-    if (setHtml(dialogContent, body)) bindPanels(dialogContent, sheet.params);
+    if (setHtml(dialogContent, body)) {
+      bindPanels(dialogContent, sheet.params);
+      // The selected Sim tab is always in view, even the last one of the row.
+      const tabs = dialogContent.querySelector('.sim-tabs'), chosen = tabs?.querySelector('.is-selected');
+      if (chosen) tabs.scrollLeft = Math.max(0, chosen.offsetLeft - (tabs.clientWidth - chosen.offsetWidth) / 2);
+    }
   }
 
   /** The mood word shown in the HUD and the Sim header: the character system's five words, else the core label. */
@@ -558,6 +569,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       const must = panels.find((panel) => panel.placement === 'modal' && typeof panel.required?.(state, panelView()) === 'string');
       if (must && !(sheet?.kind === 'panel' && (sheet.id === must.id || byId.get(sheet.id)?.role === 'session-gate'))) { sheet = null; open(must.id); }
     }
+    // The HUD may have changed size (activities opened, Clean screen, a trip): the host re-centres the scene if so.
+    host.onRender?.();
   }
 
   /** Rebuilding resets the spot rail: keep the scroll position and reveal a newly selected spot. */

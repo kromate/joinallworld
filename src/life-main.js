@@ -106,7 +106,7 @@ function loadMaps() {
 const dialog = $('life-dialog');
 shell = createShell({
   root: $('life-overlay'), dialog, dialogContent: $('life-dialog-content'), panels: PANELS,
-  host: { command, fetchJson: client.fetchJson, goTo, toggleCommunity, menu, redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) { if (mode === 'map') loadMaps(); render(); refreshScene(); } },
+  host: { command, fetchJson: client.fetchJson, goTo, toggleCommunity, menu, onRender: () => layoutScene(), redrawScene: () => { if (shell.mode !== 'map') venue?.update(); }, onMode(mode) { if (mode === 'map') loadMaps(); render(); refreshScene(); } },
 });
 
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
@@ -131,11 +131,10 @@ function render() {
   $('map-scene').hidden = !mapOpen || !worldLayer;
   $('city-scene').hidden = !mapOpen || worldLayer;
   shell.render(state, buildView());
-  layoutScene();
 }
-/** Tell the scene how much of the screen the HUD covers, so it draws itself in the free part. Measured after each shell render. */
+/** Tell the scene how much of the screen the HUD covers, so it draws itself in the free part. Measured after each shell render (host.onRender). */
 function layoutScene() {
-  if (!venue || shell.mode === 'map') return;
+  if (!venue || !shell || shell.mode === 'map') return;
   const overlay = $('life-overlay'), box = (selector) => overlay.querySelector(selector)?.getBoundingClientRect();
   const stack = box('.life-bottom'), quick = box('.life-quick'), bar = box('.life-status'), page = overlay.getBoundingClientRect();
   const phone = page.width <= 720;

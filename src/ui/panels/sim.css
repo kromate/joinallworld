@@ -7,10 +7,12 @@
 .sim-hint{margin:4px 0 0!important;font-size:12px!important;color:var(--c-muted)}
 .sim-note{margin:0!important;padding:10px 12px;border-radius:14px;background:#fff8df;font-size:13px!important}
 .sim-about{list-style:none;padding:0;margin:8px 0 0;font-size:12px;display:grid;gap:3px}
+.sim-about li{display:flex;flex-wrap:wrap;align-items:center;gap:0 4px;min-height:22px}
 .sim-about b{color:var(--c-muted);font-weight:600;margin-right:4px}
-.sim-link{border:0;background:none;padding:0;color:var(--c-green-dark);text-decoration:underline;font:inherit;cursor:pointer;min-height:24px}
+.sim-link{border:0;background:none;padding:0 6px;color:var(--c-green-dark);text-decoration:underline;font:inherit;font-weight:600;cursor:pointer;min-height:var(--tap);min-width:var(--tap)}
 .sim-error{margin:0!important;padding:10px 12px;border-radius:14px;background:#fbeee6;color:var(--c-red);font-size:13px!important}
-.sim-save{position:sticky;bottom:0;width:100%}
+.sim-save-bar{position:sticky;bottom:calc(-1 * var(--sheet-pad,20px));z-index:2;margin:0 calc(-1 * var(--sheet-pad,20px)) calc(-1 * var(--sheet-pad,20px));padding:10px var(--sheet-pad,20px) max(14px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--c-line);box-shadow:0 -8px 16px -12px #0004}
+.sim-save{width:100%;min-height:48px}
 .sim-save:disabled{background:#8b9a90;cursor:not-allowed}
 .sim-needs,.sim-skills{display:grid;gap:10px;font-family:var(--font)}
 .sim-needs h3{margin:6px 0 0}

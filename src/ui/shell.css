@@ -32,7 +32,8 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--c-nig
 .life-saved.is-saving i{background:var(--c-amber-soft);color:var(--c-amber-dark)}
 .life-ui button.life-saved.is-off{min-height:34px;padding:0 12px 0 6px;border-radius:999px;background:#fbe3dc;color:#8a2417}
 .life-saved.is-off i{background:#a3271b;color:#fff}
-.life-ui button.life-cash{min-height:36px;padding:0 14px;border-radius:999px;background:var(--c-ink);color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
+.life-ui button.life-cash{position:relative;min-height:36px;padding:0 14px;border-radius:999px;background:var(--c-ink);color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
+.life-cash::after{content:'';position:absolute;inset:-4px -2px}
 .life-cash.is-up{animation:life-flash-up 1.1s ease-out}
 .life-cash.is-down{animation:life-flash-down 1.1s ease-out}
 .life-delta{position:absolute;right:8px;top:calc(100% - 6px);max-width:min(270px,80vw);padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;line-height:1.35;overflow:hidden;text-overflow:ellipsis;opacity:0;visibility:hidden;pointer-events:none;box-shadow:var(--shadow-soft)}
@@ -215,7 +216,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--c-nig
 .phone-app span{font-size:24px;line-height:1.1}
 .phone-app:disabled{opacity:.5;cursor:not-allowed}
 .sim-avatar{flex:none;width:var(--tap);height:var(--tap);border-radius:var(--r-round);background:#c8e1ed;border:2px solid #e8a846;display:grid;place-items:center;font-size:24px}
-.sim-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px var(--s-2);padding:2px 20px}
+.sim-tabs{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px var(--s-2);padding:2px 20px}
 .sim-tabs::-webkit-scrollbar{display:none}
 .sim-tabs button{flex:none;border:0;background:var(--c-fill);border-radius:999px;padding:0 14px;min-height:var(--tap);font:500 13px var(--font);white-space:nowrap;cursor:pointer;color:var(--c-ink)}
 .sim-tabs .is-selected{background:var(--c-ink);color:#fff}
@@ -299,8 +300,8 @@ kbd{display:inline-block;min-width:26px;text-align:center;border:1px solid #cfd4
   .life-quick{justify-content:flex-end}
   .life-goal .life-job{width:fit-content;max-width:100%}
   .life-goal .life-job>div{display:flex;align-items:baseline;gap:6px;min-width:0;overflow:hidden}
-  .life-goal .life-job strong{flex:0 1 auto;min-width:60px}
-  .life-goal .life-job small{flex:0 1 auto;min-width:0}
+  .life-goal .life-job strong{flex:0 0 auto;max-width:58%}
+  .life-goal .life-job small{flex:1 1 0;min-width:0}
   .life-goal .life-job em{flex:none;margin:0}
   .life-tray{display:none}
   .is-tray-open .life-tray{display:grid;gap:8px;max-height:calc(100dvh - 250px);overflow-y:auto;padding:8px;background:#fff;border-radius:22px;box-shadow:var(--shadow);pointer-events:auto}

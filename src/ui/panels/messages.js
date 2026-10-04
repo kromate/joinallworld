@@ -13,7 +13,7 @@
  * All text is escaped; nothing a player typed is ever rendered as markup or as a link.
  * The panel contract is at the top of src/ui/shell.js.
  */
-import { esc, json } from '../dom.js';
+import { esc, json, empty } from '../dom.js';
 import { formatClock } from '../../game/clock.js';
 import { S, start, bindCommon, gate, socketNote, call, perform, sync, openThread, threadView, send, retry, discard, cityId, newClientId } from './social-client.js';
 
@@ -87,7 +87,7 @@ function chatsHtml() {
       <p class="social-note">Up to ${S.me.limits.groupSize} people including you.</p><span class="social-actions"><button class="social-btn is-primary" ${S.me.friends.length ? '' : 'disabled'}>Create group</button><button type="button" class="social-btn" data-m-groupcancel>Cancel</button></span>${S.me.friends.length ? '' : '<span class="social-why">You need at least one friend to create a group.</span>'}</form>` : '';
   return `<form class="social-form" data-m-find><input name="q" maxlength="36" placeholder="Message someone: name" aria-label="Find a player by name" value="${esc(ui.find)}" autocomplete="off"><button class="social-btn">Find</button></form>${results}
     <div class="social-head"><h3>Chats</h3>${ui.group ? '' : '<button class="social-btn" data-m-groupnew>+ New group</button>'}</div>${group}
-    ${convs.length ? convs.map(row).join('') : '<p class="social-note">No chats yet. Find a player above, or tap someone at a venue and press Chat.</p>'}`;
+    ${convs.length ? convs.map(row).join('') : empty('💬', 'No chats yet', 'Find a player by name above, or tap someone at a venue and press Chat.', '<button class="ui-button" data-open="people">See who is here</button>')}`;
 }
 
 function updatesHtml(view) {

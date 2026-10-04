@@ -78,7 +78,8 @@ function overview(state, view) {
   const list = places.length
     ? `<ul class="map-list" aria-label="Places">${places.map((item) => `<li><button data-map-pick="${esc(item.id)}" class="${statusClass(item)}${item.here ? ' is-here' : ''}"><span aria-hidden="true">${esc(item.icon)}</span><span class="map-list-text"><b>${esc(item.label)}</b><small>${esc(item.district)}</small></span><em>${esc(item.here ? 'You are here' : item.open ? 'Open' : 'Closed')}</em></button></li>`).join('')}</ul>`
     : `<div class="ui-empty"><span aria-hidden="true">🔎</span><h3>Nothing matches “${esc(FILTERS.find((item) => item.id === filter)?.label || filter)}” right now</h3><p>Closed places open again later in the day.</p><button class="ui-button is-primary" data-map-filter="all">Show every place</button></div>`;
-  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">🌍 World map · switch city</button></div></div>`;
+  // What a switched-on layer shows stays readable with the list closed, where the layer itself is in view.
+  return `<div class="map-panel map-overview ${open ? 'is-open' : 'is-collapsed'}">${handle}${filters}${open ? '' : layerNotes}<div class="map-more" id="map-list" ${open ? '' : 'hidden'}>${layerRow}${layerNotes}${list}<button class="map-chip-button map-world" data-map-layer="world">🌍 World map · switch city</button></div></div>`;
 }
 
 function worldLayer(view) {
@@ -139,7 +140,12 @@ const mapPanel = {
       const hit = (name) => event.target.closest(`[data-map-${name}]`);
       const pick = hit('pick'), choose = hit('mode'), chip = hit('filter'), swap = hit('layer'), share = hit('share'), toggle = hit('layer-toggle');
       if (hit('sheet')) { listOpen = !isListOpen(); api.refresh(); return; }
-      if (toggle) { const id = toggle.dataset.mapLayerToggle; layers[id] = !layers[id]; tell({ layers: { ...layers } }); api.refresh(); return; }
+      if (toggle) {
+        const id = toggle.dataset.mapLayerToggle; layers[id] = !layers[id];
+        if (layers[id] && !wide()) listOpen = false; // on a phone the list makes way, so the layer just switched on can be seen
+        api.refresh(); tell({ layers: { ...layers } });
+        return;
+      }
       // Leaving on a trip clears the selection so the next visit starts from the overview.
       if (event.target.closest('[data-action="travel"]')) { destination = null; tell({ selected: null }); return; }
       if (pick) {

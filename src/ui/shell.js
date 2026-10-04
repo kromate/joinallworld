@@ -9,6 +9,12 @@
  * The Phone — the device, its home screen and the frame every app opens in — is drawn by
  * src/ui/phone/phone.js; the shell only decides which sheet is open and hands it over.
  *
+ * THE SCENE AND THE KEYS: walking and the scene camera belong to the scene host
+ * (src/venue-world.js). The shell only routes: in the venue view with no sheet open it forwards
+ * the movement and camera keys as 'jaw:key' / 'jaw:key-up' window events, it announces the view
+ * it is in ('jaw:mode': venue | buy | map), and it sends the `spot` action when the scene reports
+ * ('jaw:scene-spot') that the avatar has walked up to a spot.
+ *
  * THE HUD IS SMALL ON PURPOSE: the scene is the hero. Always visible are one top bar, the six
  * need bars as a slim strip, and one goal line. Every other HUD chip lives in the tray behind
  * the "More" button on a phone (and in a capped column on a wide screen); a chip asks for
@@ -136,7 +142,7 @@
 import './tokens.css';
 import './shell.css';
 import { esc, money, cap, icon, json, skeleton } from './dom.js';
-import { shortcutFor, shortcutRows } from './keys.js';
+import { shortcutFor, shortcutRows, heldActionFor } from './keys.js';
 import { glyph } from './phone/icons.js';
 
 const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
@@ -365,6 +371,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   function setMode(next, params) {
     mode = next === 'venue' || byId.get(next)?.placement === 'nav' ? next : 'venue';
     modeParams = params ?? null;
+    // The scene host walks the avatar on a tap only in the venue view (Buy mode and the map keep their own taps).
+    window.dispatchEvent(new CustomEvent('jaw:mode', { detail: { mode } }));
     host.onMode(mode, params);
   }
 
@@ -796,7 +804,14 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (verb === 'key') {
       if (event.key === 'Enter' && event.target.matches?.('button, a, summary')) return;
       showing()?.keys?.(arg, api);
-      window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action: arg, mode: dialog.open ? 'sheet' : mode } }));
+      // In the venue view the arrows walk the avatar (the scene host listens); they must not also scroll the spot rail.
+      if (mode === 'venue' && !dialog.open && arg.startsWith('move-')) event.preventDefault();
+      window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action: arg, mode: dialog.open ? 'sheet' : mode, jog: event.shiftKey } }));
+      return;
+    }
+    if (verb === 'walk' || verb === 'look') {
+      // Held keys for the scene host: only in the venue view, never under a sheet (typing was ruled out above).
+      if (mode === 'venue' && !dialog.open) { if (arg !== 'jog') event.preventDefault(); window.dispatchEvent(new CustomEvent('jaw:key', { detail: { action: `${verb}-${arg}`, mode, jog: event.shiftKey } })); }
       return;
     }
     if (dialog.open && verb !== 'close' && verb !== 'open' && verb !== 'help') return;
@@ -822,16 +837,31 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       if (isOpen) close(); else open(arg);
     }
   }
+  /** A movement or camera key was released: always forwarded, so a key can never stay "held" in the scene. */
+  function onKeyUp(event) { const action = heldActionFor(event); if (action) window.dispatchEvent(new CustomEvent('jaw:key-up', { detail: { action } })); }
+  /**
+   * The avatar walked up to a spot in the scene. Selecting it is still the server's `spot` action;
+   * `open` (the player sent the avatar there on purpose) also shows the spot's activities.
+   */
+  function onSceneSpot(event) {
+    const { id, open: show } = event.detail || {};
+    if (!state || !view?.connected || mode !== 'venue' || dialog.open || state.activeAction || !view.activities.spots.some((spot) => spot.id === id)) return;
+    if (id === state.spot) { if (show && !expanded) { expanded = true; api.refresh(); } return; }
+    if (show) expanded = true;
+    api.command('spot', { id }).then(api.refresh);
+  }
   root.addEventListener('click', onClick);
   dialog.addEventListener('click', onClick);
   document.addEventListener('pointerdown', onOutside);
   window.addEventListener('keydown', onKey);
+  window.addEventListener('keyup', onKeyUp);
+  window.addEventListener('jaw:scene-spot', onSceneSpot);
 
   return {
     api, render, open, close, toast,
     get mode() { return mode; },
     setMode,
     setExpanded(value) { expanded = Boolean(value); },
-    destroy() { phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); root.replaceChildren(); root.classList.remove('life-ui'); },
+    destroy() { phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

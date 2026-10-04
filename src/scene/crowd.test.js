@@ -33,3 +33,17 @@ test('the list is capped without crowding real players out, and only the current
   assert.deepEqual(playersHere(listing, { location: 'park', activeAction: { kind: 'travel' } }, 'lagos'), [], 'on the road nobody is with you');
   assert.deepEqual(playersHere({ error: 'x' }, { location: 'park' }, 'lagos'), []); assert.deepEqual(playersHere(null, { location: 'park' }, 'lagos'), []);
 });
+
+test('a reported position places a player in the scene; without one nothing changes', () => {
+  const a = '00000001-2222-4333-8444-555555555555', b = '00000002-2222-4333-8444-555555555555';
+  const players = [{ id: a, name: 'A' }, { id: b, name: 'B' }];
+  const plain = crowdList({ players });
+  assert.ok(!('x' in plain[0]) && !('z' in plain[0]), 'no position: the scene chooses the place');
+  const placed = crowdList({ players, positions: { [a]: { x: 3.5, z: -2 }, [b]: { x: 'x', z: 1 }, stranger: { x: 0, z: 0 } } });
+  assert.deepEqual([placed[0].x, placed[0].z], [3.5, -2]);
+  assert.ok(!('x' in placed[1]), 'a malformed position is ignored');
+  assert.equal(placed.length, 2, 'a position for someone who is not here adds nobody');
+  const far = crowdList({ players, positions: { [a]: { x: 400, z: -400 } } });
+  assert.deepEqual([far[0].x, far[0].z], [14.2, -14.2], 'kept on the floor');
+  assert.deepEqual(crowdList({ players, positions: 'junk' }), plain);
+});

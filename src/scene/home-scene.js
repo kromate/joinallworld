@@ -12,15 +12,24 @@
  *   green (valid) or red (invalid) footprint.
  *   The player's own avatar (state.onboarding.look, drawn by src/scene/characters.js) stands
  *   beside the furniture of the spot they chose — or by the door — and guests the host has let
- *   in (setCrowd) stand just inside the door. Avatars are one merged mesh, rebuilt on change.
+ *   in (setCrowd) stand just inside the door. Guests are one merged mesh, rebuilt on change; the
+ *   player's own avatar is a separate prebuilt figure per pose that is only ever moved.
+ *
+ * WALKING (see src/scene/movement.js; the host, src/venue-world.js, does the walking)
+ *   `walk` is the same contract as a venue scene's: the walkable description is the room's
+ *   bounds plus one obstacle rectangle per piece of floor furniture in state.home.items (rugs and
+ *   mats are walked over), rebuilt only when the furniture changes. Outside Buy mode a tap on
+ *   furniture is not acted on at once: the host walks the avatar to it (pickAt), then use() sends
+ *   the same 'jaw:home-pick' the tap always sent. In Buy mode taps work exactly as before.
  *
  * STATIC RENDERING
- *   No requestAnimationFrame, no timers. Geometry is rebuilt only when the room, the furniture
+ *   No frame callbacks, no timers. Geometry is rebuilt only when the room, the furniture
  *   or the selection/ghost actually changed. update(state) returns true exactly when it rebuilt,
  *   so the host draws one frame. The scene never calls the renderer itself, so the host's
  *   renderCount stays honest.
  *
  * EVENTS (window CustomEvents; the Buy panel is the other end)
+ *   in   'jaw:mode'        detail { mode } — the shell's view; in 'buy' a tap picks at once
  *   in   'jaw:home-ui'     detail { selected: objectId | null, buy: boolean, ghost: { itemId, x, y, rot, valid } | null, retry? }
  *                          UI-only state to draw. The sender then asks the host for a frame
  *                          (a Buy panel refresh or the next accepted state does that).
@@ -33,7 +42,8 @@
  */
 import { FURNITURE, KINDS } from '../game/content/furniture.js';
 import { createBatch, sceneMaterials, releaseObjects } from './build.js';
-import { drawAvatar } from './characters.js';
+import { drawAvatar, buildAvatar, POSES } from './characters.js';
+import { createWalkGrid } from './movement.js';
 import { HOUSES, DEFAULT_HOUSE } from '../game/content/housing.js';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.js';
 
@@ -166,8 +176,14 @@ export function buildHomeScene(kit) {
 
   let grid = 0, tile = 1, drawn = '', lastState = null, camera = null, canvas = null, status = '', undrawn = false;
   let ui = { selected: null, ghost: null, buy: false };
-  let who = { look: undefined, seed: 'you', name: 'You', pose: null }, guests = [], tagList = [], peopleKey = '';
-  const actorMeshes = [];
+  let who = { look: undefined, seed: 'you', name: 'You', pose: null }, guests = [], guestTags = [], selfTag = null, guestKey = '', restKey = '', dressKey = '';
+  const actorMeshes = [], markMeshes = [];
+  // The player's own figure: a group moved by its transform, with one prebuilt figure per pose.
+  const avatar = new THREE.Group();
+  avatar.name = 'avatar';
+  people.add(avatar);
+  const figures = new Map();
+  let shownFigure = null, shownPose = 'stand', driven = false, walkGrid = null, gridKey = '', restAt = null, goalMark = null;
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   const tools = (parent) => ({
     box: (x, y, z, w, h, d, c, lit) => kit.box(x, y, z, w, h, d, c, parent, lit),
@@ -288,31 +304,88 @@ export function buildHomeScene(kit) {
     const tileAt = best || door;
     return { x: tileAt.x, y: tileAt.y, ry: Math.atan2(centre.x - tileAt.x, centre.y - tileAt.y) || 0 };
   }
-  /** Rebuild the avatars (one merged mesh) if the people, their place or the room changed. Returns true when it did. */
+  function figure(pose) {
+    let entry = figures.get(pose);
+    if (!entry) {
+      const state = lastState;
+      entry = buildAvatar(kit, who.look ?? state?.onboarding?.look ?? null, { pose, seed: who.seed, scale: tile * AVATAR_SCALE, marker: 'crown' });
+      entry.visible = false;
+      avatar.add(entry);
+      figures.set(pose, entry);
+    }
+    return entry;
+  }
+  function show(pose) {
+    const next = figure(pose);
+    shownPose = pose;
+    if (next === shownFigure) return false;
+    if (shownFigure) shownFigure.visible = false;
+    next.visible = true;
+    shownFigure = next;
+    return true;
+  }
+  function clearFigures() {
+    for (const entry of figures.values()) entry.userData.dispose();
+    figures.clear();
+    shownFigure = null;
+  }
+  /** Move the avatar (transform only) and its name tag. */
+  function moveAvatar(x, y, z, ry) {
+    avatar.position.set(x, y, z);
+    avatar.rotation.y = ry;
+    const top = y + (shownFigure?.userData.top ?? 2.95 * tile * AVATAR_SCALE);
+    if (driven && selfTag) { selfTag.position.x = x; selfTag.position.y = top; selfTag.position.z = z; }
+    else selfTag = { id: 'self', name: who.name, kind: 'self', text: who.name, marker: 'crown', colour: '#ffd34d', position: { x, y: top, z } };
+  }
+  /** The floor as a grid: the room, minus every piece of floor furniture. Rebuilt only when either changes. */
+  function refreshGrid(state) {
+    const items = (Array.isArray(state?.home?.items) ? state.home.items : []).filter((item) => { const def = FURNITURE[item?.itemId]; return def && !def.wall && def.shape !== 'rug' && def.shape !== 'mat'; });
+    const key = JSON.stringify([grid, items.map((item) => [item.itemId, item.x, item.y, item.rot])]);
+    if (key === gridKey && walkGrid) return;
+    gridKey = key;
+    const inset = tile * 0.1, edge = ROOM / 2;
+    const block = items.map((item) => {
+      const size = footprint(FURNITURE[item.itemId], item.rot);
+      return [-edge + item.x * tile + inset, -edge + item.y * tile + inset, -edge + (item.x + size.w) * tile - inset, -edge + (item.y + size.h) * tile - inset];
+    });
+    walkGrid = createWalkGrid({ bounds: [-edge + 0.22, -edge + 0.22, edge - 0.15, edge - 0.15], block, cell: 0.25, radius: Math.min(0.3, tile * 0.22) });
+  }
+  /** Rebuild what changed about the people: the player's figure, where it rests, the guests. Returns true when anything did. */
   function refreshPeople(state) {
     const taken = freeTiles(Array.isArray(state?.home?.items) ? state.home.items : []);
     const mine = standing(state, taken);
     const active = state?.location === 'home' || state?.location == null ? state?.activeAction : null;
-    const pose = who.pose || (!active ? 'stand' : active.kind === 'travel' || active.kind === 'commute' ? 'walk' : 'work');
-    const next = JSON.stringify([grid, mine, pose, who.look ?? state?.onboarding?.look ?? null, who.seed, who.name, guests]);
-    if (next === peopleKey) return false;
-    peopleKey = next;
+    const leaving = !who.pose && Boolean(active) && (active.kind === 'travel' || active.kind === 'commute');
+    const pose = who.pose || (!active ? 'stand' : leaving ? 'walk' : 'work');
+    let changed = false;
+    refreshGrid(state);
+    const dress = JSON.stringify([tile, who.look ?? state?.onboarding?.look ?? null, who.seed]);
+    if (dress !== dressKey) { dressKey = dress; clearFigures(); figure('stand'); figure('walk'); if (driven) { show(shownPose); moveAvatar(avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y); } changed = true; }
+    restAt = { spot: state?.spot ?? null, x: along(mine.x), y: 0.03, z: along(mine.y), ry: mine.ry, pose, busy: Boolean(active) && !leaving && !who.pose, leaving, fixed: Boolean(who.pose) };
+    const rest = JSON.stringify([grid, mine, pose, who.name]);
+    if (rest !== restKey) {
+      restKey = rest; changed = true;
+      if (selfTag) { selfTag.name = who.name; selfTag.text = who.name; }
+    }
+    if (changed && !driven) { show(pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); }
+    const guestsNow = JSON.stringify([grid, mine, guests]);
+    if (guestsNow === guestKey) return changed;
+    guestKey = guestsNow;
     releaseObjects(actorMeshes);
     taken.add(`${mine.x},${mine.y}`);
     const scale = tile * AVATAR_SCALE;
     const batch = createBatch(THREE);
-    const drawn = drawAvatar(batch, who.look ?? state?.onboarding?.look ?? null, { x: along(mine.x), y: 0.03, z: along(mine.y), ry: mine.ry, pose, seed: who.seed, scale, marker: 'crown' });
-    tagList = [{ id: 'self', name: who.name, kind: 'self', text: who.name, marker: 'crown', colour: '#ffd34d', position: { x: along(mine.x), y: drawn.top, z: along(mine.y) } }];
+    guestTags = [];
     // Guests wait on the free tiles nearest the door.
     const door = { x: 0, y: doorSlot(grid) }, spare = [];
     for (let x = 0; x < grid; x++) for (let y = 0; y < grid; y++) if (!taken.has(`${x},${y}`)) spare.push({ x, y, d: Math.hypot(x - door.x, y - door.y) });
     spare.sort((a, b) => a.d - b.d);
     const placed = guests.slice(0, Math.min(MAX_GUESTS_SHOWN, spare.length)).map((guest, index) => ({ ...guest, x: along(spare[index].x), y: 0.03, z: along(spare[index].y), ry: Math.PI / 2, scale }));
     for (const [index, person] of placed.entries()) {
-      const figure = drawAvatar(batch, person.look ?? null, { x: person.x, y: person.y, z: person.z, ry: person.ry, pose: 'stand', seed: person.seed ?? person.id, scale, marker: person.kind === 'npc' ? 'npc' : 'player' });
+      const drawn = drawAvatar(batch, person.look ?? null, { x: person.x, y: person.y, z: person.z, ry: person.ry, pose: 'stand', seed: person.seed ?? person.id, scale, marker: person.kind === 'npc' ? 'npc' : 'player' });
       const name = String(person.name ?? '');
-      tagList.push({ id: String(person.id ?? `guest-${index}`), name, kind: person.kind === 'npc' ? 'npc' : 'player', text: person.kind === 'npc' ? name : `@${name}`, marker: person.kind === 'npc' ? 'dot' : 'tag',
-        colour: person.kind === 'npc' ? '#58d68a' : '#6fb4ff', position: { x: person.x, y: figure.top, z: person.z } });
+      guestTags.push({ id: String(person.id ?? `guest-${index}`), name, kind: person.kind === 'npc' ? 'npc' : 'player', text: person.kind === 'npc' ? name : `@${name}`, marker: person.kind === 'npc' ? 'dot' : 'tag',
+        colour: person.kind === 'npc' ? '#58d68a' : '#6fb4ff', position: { x: person.x, y: drawn.top, z: person.z } });
     }
     const builtBatch = batch.build(sceneMaterials(kit));
     for (const mesh of builtBatch.meshes) { mesh.name = `home-people-${mesh.name}`; people.add(mesh); actorMeshes.push(mesh); }
@@ -329,23 +402,37 @@ export function buildHomeScene(kit) {
     return true;
   }
 
-  function onPick(event) {
-    if (!group.visible || !camera || !canvas || !lastState) return;
+  /** What is under a point of the canvas: { id (furniture), cell (floor tile), x, z (the floor point), rect (the furniture's footprint) } | null. */
+  function pickAt(clientX, clientY) {
+    if (!group.visible || !camera || !canvas || !lastState) return null;
     const box = canvas.getBoundingClientRect();
-    if (!box.width || !box.height) return;
-    pointer.set(((event.clientX - box.left) / box.width) * 2 - 1, -((event.clientY - box.top) / box.height) * 2 + 1);
+    if (!box.width || !box.height) return null;
+    pointer.set(((clientX - box.left) / box.width) * 2 - 1, -((clientY - box.top) / box.height) * 2 + 1);
     raycaster.setFromCamera(pointer, camera);
     group.updateMatrixWorld(true);
     let id = null;
     for (let node = raycaster.intersectObjects(furniture.children, true)[0]?.object; node && !id; node = node.parent) id = node.userData.objectId ?? null;
-    let cell = null;
+    let cell = null, x = NaN, z = NaN;
     const point = raycaster.ray.intersectPlane(floorPlane, new THREE.Vector3());
     if (point) {
       group.worldToLocal(point);
-      const x = Math.floor((point.x + ROOM / 2) / tile), y = Math.floor((point.z + ROOM / 2) / tile);
-      if (x >= 0 && y >= 0 && x < grid && y < grid) cell = { x, y };
+      x = point.x; z = point.z;
+      const cx = Math.floor((point.x + ROOM / 2) / tile), cy = Math.floor((point.z + ROOM / 2) / tile);
+      if (cx >= 0 && cy >= 0 && cx < grid && cy < grid) cell = { x: cx, y: cy };
     }
-    if (id || cell) window.dispatchEvent(new CustomEvent('jaw:home-pick', { detail: { id, cell } }));
+    if (!id && !cell) return null;
+    let rect = null;
+    const item = id ? lastState.home?.items?.find((entry) => entry.id === id) : null, def = FURNITURE[item?.itemId];
+    if (def && !def.wall) { const size = footprint(def, item.rot); rect = [-ROOM / 2 + item.x * tile, -ROOM / 2 + item.y * tile, -ROOM / 2 + (item.x + size.w) * tile, -ROOM / 2 + (item.y + size.h) * tile]; }
+    return { id, cell, x, z, rect };
+  }
+  /** Tell the Buy panel / home chip that an object or a tile was chosen — what a tap has always done. */
+  function use(id, cell) { window.dispatchEvent(new CustomEvent('jaw:home-pick', { detail: { id: id ?? null, cell: cell ?? null } })); }
+  function onPick(event) {
+    // Outside Buy mode the host walks the avatar to the furniture first, then calls use().
+    if (driven && !buying()) return;
+    const hit = pickAt(event.clientX, event.clientY);
+    if (hit) use(hit.id, hit.cell);
   }
   function attach(element) {
     if (canvas || !element?.addEventListener) return;
@@ -362,6 +449,12 @@ export function buildHomeScene(kit) {
     if (lastState && refresh(lastState)) undrawn = true;
   };
   globalThis.window?.addEventListener?.('jaw:home-ui', onUi);
+  // The Buy panel says `buy` only when it has something to draw; the shell's view is known the moment Buy opens.
+  // (A scene built while Buy is already open reads the view the shell wrote on its root element.)
+  let shellMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
+  const onMode = (event) => { shellMode = event.detail?.mode || 'venue'; };
+  const buying = () => ui.buy || shellMode === 'buy';
+  globalThis.window?.addEventListener?.('jaw:mode', onMode);
 
   grid = HOUSES[DEFAULT_HOUSE].grid; tile = ROOM / grid;
   buildRoom();
@@ -388,13 +481,59 @@ export function buildHomeScene(kit) {
       guests = (Array.isArray(list) ? list : []).filter((person) => person && typeof person === 'object').slice(0, MAX_GUESTS_SHOWN)
         .map((person) => ({ id: person.id, name: person.name, kind: person.kind, look: person.look ?? null, seed: person.seed ?? person.id }));
       refreshPeople(lastState);
-      return tagList.slice(1);
+      return guestTags;
     },
-    tags: () => tagList.map((tag) => ({ ...tag })),
+    tags: () => (selfTag ? [selfTag, ...guestTags] : [...guestTags]),
+    /** True in Buy mode: taps place and pick furniture, and the host does not walk the avatar. */
+    get placing() { return buying(); },
+    pickAt, use,
+    /** Floor furniture and where it stands, for diagnostics: [{ id, itemId, x, z }] (centre of the footprint). */
+    objects() {
+      return (Array.isArray(lastState?.home?.items) ? lastState.home.items : []).filter((item) => FURNITURE[item?.itemId] && !FURNITURE[item.itemId].wall)
+        .map((item) => { const size = footprint(FURNITURE[item.itemId], item.rot); return { id: item.id, itemId: item.itemId, x: along(item.x, size.w), z: along(item.y, size.h) }; });
+    },
+    /** Walking — the same contract as a venue scene's `walk` (src/scene/venue-scenes.js). */
+    walk: {
+      get grid() { return walkGrid; },
+      get entrance() { return { x: along(0), y: 0.03, z: along(doorSlot(grid)), ry: Math.PI / 2 }; },
+      open: false,
+      get scale() { return tile * AVATAR_SCALE; },
+      // The room is drawn up-screen of the origin (SHIFT); the camera keeps looking at the origin when zoomed out.
+      centre: [-SHIFT, 0.7, -SHIFT],
+      avatar,
+      drive(on) { driven = Boolean(on); if (!driven && restAt) { show(restAt.pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); } },
+      rest: () => restAt,
+      spots: () => [],
+      people: () => guestTags.map((tag) => ({ id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y })),
+      move: moveAvatar,
+      pose: (name) => show(POSES.includes(name) ? name : 'stand'),
+      gait: (step) => show(step ? 'walk' : 'stand'),
+      heightAt: () => 0.03,
+      near: () => false,
+      goal(x, z) {
+        const visible = Number.isFinite(x);
+        if (!goalMark) {
+          if (!visible) return false;
+          const batch = createBatch(THREE);
+          batch.cyl(0, 0.07, 0, 0.36, 0.04, '#ffffff', { seg: 14, open: true, layer: 'glow' }); batch.disc(0, 0.06, 0, 0.12, '#ffffff', { seg: 10, layer: 'glow' });
+          goalMark = batch.build(sceneMaterials(kit)).meshes[0];
+          goalMark.name = 'mark-goal';
+          group.add(goalMark); markMeshes.push(goalMark);
+        }
+        const changed = goalMark.visible !== visible || (visible && (goalMark.position.x !== x || goalMark.position.z !== z));
+        goalMark.visible = visible;
+        if (visible) goalMark.position.set(x, 0, z);
+        return changed;
+      },
+    },
     /** Free the avatars and stop listening; the room's own meshes use the kit's shared geometry. */
     dispose() {
       releaseObjects(actorMeshes);
+      releaseObjects(markMeshes);
+      goalMark = null;
+      clearFigures();
       globalThis.window?.removeEventListener?.('jaw:home-ui', onUi);
+      globalThis.window?.removeEventListener?.('jaw:mode', onMode);
       canvas?.removeEventListener?.('click', onPick);
       canvas = null;
       group.parent?.remove(group);

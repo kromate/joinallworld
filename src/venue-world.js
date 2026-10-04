@@ -14,9 +14,14 @@
  *   dispose()           called when the player leaves the venue and when the host is disposed.
  *                       A scene that has it is rebuilt on the next visit; one without is kept.
  *
+ * THE SCENE IS THE HERO: setInsets({ top, bottom }) tells the host how much of the canvas the HUD
+ * covers at the top and the bottom. The camera's view is shifted (and, on a wide screen, gently
+ * zoomed out) so the scene sits in the part that is left free instead of under a panel. Name
+ * tags and taps use the same camera, so they stay exact.
+ *
  * BATTERY RULE: scenes are static and drawn on demand only. A frame is rendered when the canvas
- * is resized, the venue changes, a scene's update(state) / setPlayer / setCrowd reports a
- * change, or update() is called — never from a requestAnimationFrame loop or a timer. Name
+ * is resized, the venue changes, the insets change, a scene's update(state) / setPlayer /
+ * setCrowd reports a change, or update() is called — never from a requestAnimationFrame loop or a timer. Name
  * tags are projected in the same step, so they move only when a frame is drawn.
  * diagnostics().renderCount proves it: it does not move while nothing changes (asserted in
  * src/venue-world.test.js).
@@ -83,7 +88,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
 
   const built = new Map();
   let current = null, currentLocation = null, renderCount = 0, lastState = null, size = { width: 0, height: 0 };
-  let player = {}, crowd = [], crowdKey = '[]', shownTags = [], tagKey = '', background = DEFAULT_BACKGROUND;
+  let player = {}, crowd = [], crowdKey = '[]', shownTags = [], tagKey = '', background = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
   const point = new THREE.Vector3();
 
   /** Project the current scene's tags through the camera. Runs with every frame the host draws — never on its own. */
@@ -142,6 +147,12 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     camera.position.set(...(portrait ? view.portrait : view.landscape));
     camera.fov = portrait ? 48 : 43;
     camera.lookAt(0, 0.7, 0);
+    // Centre the scene in what the HUD leaves free; on a wide screen also step back a little when little is left.
+    const free = Math.max(160, height - insets.top - insets.bottom);
+    camera.zoom = portrait ? 1 : Math.max(0.74, Math.min(1, free / (height * 0.66)));
+    // Scenes are composed a little above the point the camera looks at (walls and props rise from the floor).
+    const shift = insets.top || insets.bottom ? Math.round((insets.bottom - insets.top) / 2 - height * 0.06 * camera.zoom) : 0;
+    if (shift && width > 0 && height > 0) camera.setViewOffset(width, height, 0, shift, width, height); else camera.clearViewOffset();
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
   }
@@ -199,6 +210,15 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       };
     },
     resize,
+    /** How many CSS pixels of the canvas the HUD covers at the top and bottom. One frame, and only if it changed. */
+    setInsets(next = {}) {
+      const snap = (value) => Math.max(0, Math.round((Number(value) || 0) / 12) * 12);
+      const top = snap(next.top), bottom = snap(next.bottom);
+      if (top === insets.top && bottom === insets.bottom) return false;
+      insets = { top, bottom };
+      resize();
+      return true;
+    },
     setLocation,
     setState,
     setPlayer,

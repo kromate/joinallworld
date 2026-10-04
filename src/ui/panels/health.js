@@ -4,8 +4,8 @@
  *
  *   'health'       Phone app: how you are, the weather, how close you are to falling sick,
  *                  what to do about it, and every cure with its price and where to get it.
- *   'health-chip'  HUD chip, shown only when there is something to act on: sick, run down,
- *                  or raining. It opens the Health app.
+ *   'health-chip'  HUD alert, shown only when there is something to act on: sick or run down.
+ *   'weather-chip' HUD tray chip: the weather now (and the rain warning). Both open the Health app.
  * Everything shown comes from view.health (src/game/systems/health.js) and view.travel.
  * The panel contract is at the top of src/ui/shell.js.
  */
@@ -47,12 +47,23 @@ const healthPanel = {
   },
 };
 
+/** Something to act on now (sick, run down) stays in view; the weather is information and lives in the tray. */
+const chip = (warning) => `<button class="health-chip is-${esc(warning.level)}" data-open="health" aria-label="${esc(warning.text)}. Open the Health app."><span aria-hidden="true">${esc(warning.icon)}</span><b>${esc(warning.text)}</b></button>`;
 const healthChip = {
-  id: 'health-chip', title: 'Health', placement: 'hud', order: 6,
+  id: 'health-chip', title: 'Health', placement: 'hud', slot: 'alert', order: 6,
   render(state, view) {
     const warning = view.health?.warning;
-    return warning ? `<button class="health-chip is-${esc(warning.level)}" data-open="health" aria-label="${esc(warning.text)}. Open the Health app."><span aria-hidden="true">${esc(warning.icon)}</span><b>${esc(warning.text)}</b></button>` : '';
+    return warning && warning.level !== 'rain' ? chip(warning) : '';
+  },
+};
+const weatherChip = {
+  id: 'weather-chip', title: 'Weather', placement: 'hud', order: 6,
+  render(state, view) {
+    const health = view.health, warning = health?.warning;
+    if (warning?.level === 'rain') return chip(warning);
+    const sky = health?.weather;
+    return sky ? `<button class="health-chip" data-open="health" aria-label="Weather: ${esc(sky.label)}. Open the Health app."><span aria-hidden="true">${esc(sky.icon)}</span><b>${esc(sky.label)}</b></button>` : '';
   },
 };
 
-export default [healthPanel, healthChip];
+export default [healthPanel, healthChip, weatherChip];

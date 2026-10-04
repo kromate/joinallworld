@@ -23,8 +23,22 @@ const ICONS = {
   chevron: '<path d="m6 9 6 6 6-6"/>',
   back: '<path d="m15 6-6 6 6 6"/>',
   close: '<path d="m6 6 12 12M6 18 18 6"/>',
+  menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
+  eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+  'eye-off': '<path d="M3 3l18 18M10.6 5.1A10.9 10.9 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4M6.2 6.2C3.5 8.1 2 12 2 12s3.6 7 10 7c1.6 0 3-.4 4.3-1M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4V5Z"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  minus: '<path d="M5 12h14"/>',
+  fit: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
+  list: '<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
 };
 export const icon = (name) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[name] || ICONS.home}</svg>`;
+
+/**
+ * The one empty state every panel uses: what is missing, and the next step.
+ * `action` is ready-made HTML (a button with data-open / data-action), already escaped by the caller.
+ */
+export const empty = (emoji, title, text = '', action = '') => `<div class="ui-empty"><span aria-hidden="true">${esc(emoji)}</span><h3>${esc(title)}</h3>${text ? `<p>${esc(text)}</p>` : ''}${action}</div>`;
 
 /** Standard body for a panel that has no content yet. */
 export const placeholder = (title, text = 'Coming soon.') => `<div class="ui-placeholder"><h3>${esc(title)}</h3><p>${esc(text)}</p></div>`;

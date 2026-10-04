@@ -92,7 +92,9 @@ export function createLife(saved, ctx) {
  * Before the handler runs every system may veto the action through the 'action.block' modifier
  * (data { type, payload }); a veto is an ordinary failure with its code and reason.
  * A server-only action (registry.js) is refused with 'server_only' unless ctx.internal === true:
- * that flag is set by the route host's ctx.act and by nothing a player can reach.
+ * that flag is set by the route host's ctx.act and by nothing a player can reach. The veto is told when a server-only
+ * action runs with that authority (data.internal), so a system can let a delivery TO the life through its own hold
+ * (systems/onboarding.js lists the three it lets through; every other action is vetoed exactly as a player's would be).
  */
 export function dispatch(state, body, ctx) {
   const handler = actionHandler(body?.type);
@@ -103,7 +105,7 @@ export function dispatch(state, body, ctx) {
   const context = contextFor(state, ctx, `action|${body.actionId ?? ''}`);
   const refusal = serverOnlyReason(body.type);
   if (refusal && context.internal !== true) return fail(state, 'server_only', refusal);
-  const veto = modify(state, 'action.block', null, { type: body.type, payload }, context);
+  const veto = modify(state, 'action.block', null, { type: body.type, payload, internal: Boolean(refusal) && context.internal === true }, context);
   if (isRecord(veto) && typeof veto.code === 'string') return fail(state, veto.code, typeof veto.reason === 'string' ? veto.reason : 'That is not possible right now.');
   const result = handler(state, payload, context);
   assertDeclared(state, `action "${body.type}"`);

@@ -7,8 +7,8 @@
  * THE STAGED MODEL
  *   stage 'guest'    a life made by the quick start that has not moved in yet. It plays in public
  *                    venues at once — activities, people, jobs, trips — with the default needs and no
- *                    traits. It has no home: the 'action.block' modifier refuses going Home, every
- *                    'home.*' action and 'property.house-move' with code 'settle_required', so a guest
+ *                    traits. It has no home, no local government and no house: the 'action.block' modifier refuses going
+ *                    Home, every 'home.*' and 'estate.*' action and 'property.house-move' with code 'settle_required', so a guest
  *                    can never reach a state the economy takes as settled (a rent house, the loan, a
  *                    furnished room). Those are created when 'onboarding.home' succeeds, which is
  *                    also when 'life.started' fires — once.
@@ -73,8 +73,13 @@
  *   'onboarding.traits'  { traits: [id, id] }           step 2; exactly two different traits
  *   'onboarding.dream'   { dream }                      step 3
  *   'onboarding.lottery' {}                             step 4; rolls once with ctx.rng, then repeats the stored roll
- *   'onboarding.home'    { house, stay? }               step 5; completes creation (see below). `stay: true`
- *                                                       moves in without leaving the venue the Sim is in
+ *   'onboarding.home'    { lga, via?, stay? }           step 5; completes creation (see below): the life takes the local
+ *                        | { house, lga?, via?, stay? }  government `lga` and lives in the free starter house on its own
+ *                                                       plot there (no weekly rent; start cash = the outcome's `ownCash`).
+ *                                                       With `house` it starts in that rented home instead, as before (the
+ *                                                       game's own screens do not offer this at settle-in: renting is the
+ *                                                       Houses app; hosts without the world layer and older scripts use it).
+ *                                                       `stay: true` moves in without leaving the venue the Sim is in
  *   'onboarding.set-look'        { look }                       after creation: change look using owned styles; colours are free
  *   'onboarding.boutique-buy'    { kind: 'hair'|'outfit'|'fabric'|'accessories', id }   buy a style with cash and wear it
  * Earlier steps may be redone until 'onboarding.home' succeeds. While `required` is set, this
@@ -86,8 +91,10 @@
  * "Start cash · …": the chosen home's start cash minus the seed the life was created with, so what
  * was earned or spent as a guest is neither lost nor counted twice), the Sim is placed at Home
  * (unless `stay`), then 'life.started' { body, traits, dream, lottery, house } is emitted exactly once.
- * `lottery` is the outcome id ('lapo-baby' is the loan outcome); the event also carries `look`,
- * `loan` ({ principal, weekly, owed } | null), `rent` and `startCash` for convenience.
+ * `lottery` is the outcome id ('lapo-baby' is the loan outcome); `house` is the rented home's id, or null for a
+ * life that lives in its own starter house. The event also carries `look`, `loan` ({ principal, weekly, owed } |
+ * null), `rent` (0 in the own house), `startCash`, and — when a local government was chosen — `lga`, `via` and
+ * `own` (true: the life lives in its own house; systems/estate.js takes these three).
  *
  * MODIFIERS contributed (from the two traits and the lottery outcome): needs.decayRate,
  * skills.xpRate, activity.cost, activity.reward, travel.fare, shop.price, social.gain,
@@ -103,6 +110,7 @@ import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, FEELING_LINES, LOTTE
   TRAITS, TRAITS_REQUIRED, WARDROBE_BASICS, ACCESSORY_BASICS } from '../content/traits.js';
 
 import { VENUES } from '../content/venues.js';
+import { lgaOf, lgasOf, cityRules } from '../content/world.js';
 
 const DONE_STEP = ONBOARDING_STEPS.length;
 /** How long after its creation a guest life may still be put in an inviter's venue (original beta value). */
@@ -112,6 +120,14 @@ const WELCOME_SPOT = { park: 'trees' };
 const ACTIVITY_CAP = 9999;
 const SETTLE_REASON = 'Settle in to get your home: choose your traits, your dream and where you live. It takes a minute, and everything you have earned is kept.';
 const isGuest = (o) => o?.stage === 'guest' && !o.done;
+/** A life of the quick start that has not settled in: it has no home, no local government and no house, and is in no directory. */
+export const isGuestLife = (state) => isGuest(state?.onboarding);
+/**
+ * Server-only actions that deliver something TO a life (a gift or a friendship from another player, a referral gift, a
+ * finished table game). They are applied with the server's authority whatever the life is doing — also while it is still
+ * held for its look — so the sender's side and the receiver's side can never disagree. Nothing else passes the hold.
+ */
+const INBOUND = ['social.server', 'growth.referral', 'growth.table-result'];
 const KINDS = ['hair', 'outfit', 'fabric'];
 const COLOUR_FIELDS = { skin: ['skin', 'skin tone'], hairColor: ['hairColours', 'hair colour'], outfitColor: ['outfitColours', 'outfit colour'], bottomsColor: ['outfitColours', 'bottoms colour'] };
 const name = (id) => APPEARANCE.labels[id] ?? id;
@@ -368,24 +384,32 @@ const actions = {
     const blocked = notDone(state) || needStep(state, 4) || (stay ? null : busy(state, 'Finish or cancel your current action before moving in.'));
     if (blocked) return blocked;
     const o = state.onboarding, outcome = outcomeOf(state);
+    const city = state.estate?.city ?? ctx.cityId;
+    const wantsLga = payload?.lga !== undefined && payload?.lga !== null, unit = wantsLga ? lgaOf(city, payload.lga) : null;
+    if (wantsLga && !unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(city).length} local governments of ${cityRules(city)?.name ?? 'this city'}.`);
+    const rented = payload?.house !== undefined && payload?.house !== null;
     const home = typeof payload?.house === 'string' && Object.hasOwn(START_HOMES, payload.house) ? START_HOMES[payload.house] : null;
-    if (!home) return fail(state, 'invalid_house', `Choose a starting home: ${Object.values(START_HOMES).map((item) => `${item.label} (${item.district})`).join(', ')}.`);
-    const locked = homeLock(outcome, home.id);
+    if (rented && !home) return fail(state, 'invalid_house', `Choose a starting home: ${Object.values(START_HOMES).map((item) => `${item.label} (${item.district})`).join(', ')}.`);
+    if (!rented && !unit) return fail(state, 'lga_required', 'Choose your local government: your free starter house stands on a plot there.');
+    const locked = home ? homeLock(outcome, home.id) : null;
     if (locked) return fail(state, 'house_locked', locked);
     if (o.traits.length !== TRAITS_REQUIRED || !o.dream) return fail(state, 'step_required', 'Choose your two traits and a dream before moving in.');
-    const startCash = outcome.startCash[home.id];
+    const startCash = home ? outcome.startCash[home.id] : outcome.ownCash;
     const grant = Math.max(0, startCash - o.seed);
     if (!Number.isSafeInteger(state.cash + grant)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
 
-    o.house = home.id; o.done = true; o.stage = 'settled'; o.required = false; o.step = DONE_STEP; o.completedAt = finite(ctx.now) ? ctx.now : state.t;
+    o.house = home?.id ?? null; o.done = true; o.stage = 'settled'; o.required = false; o.step = DONE_STEP; o.completedAt = finite(ctx.now) ? ctx.now : state.t;
     o.wardrobe = wardrobeOf(o.wardrobe, o.look);
     for (const [skill, level] of Object.entries(outcome.skills || {})) setSkillLevel(state, skill, level);
     startNeeds(state);
-    credit(state, grant, `Start cash · ${home.label}, ${home.district}${outcome.loan ? ` (includes ${naira(outcome.loan.principal)} LAPO loan)` : ''}`, ctx);
+    const where = home ? `${home.label}, ${home.district}` : `Starter house, ${unit.name}`;
+    credit(state, grant, `Start cash · ${where}${outcome.loan ? ` (includes ${naira(outcome.loan.principal)} LAPO loan)` : ''}`, ctx);
     if (!stay) arrive(state, 'home', ctx, { mode: null });
-    emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: outcome.id, house: home.id,
-      look: { ...o.look, ...(o.look.accessories ? { accessories: [...o.look.accessories] } : {}) }, loan: outcome.loan ? { ...outcome.loan } : null, rent: home.rent, startCash }, ctx);
-    state.message = stay ? `Your ${home.label} in ${home.district} is ready. Tap Home whenever you want to see it. You have ${naira(state.cash)}.` : `Welcome to ${home.district}. You moved into your ${home.label} with ${naira(state.cash)}.`;
+    emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: outcome.id, house: home?.id ?? null,
+      look: { ...o.look, ...(o.look.accessories ? { accessories: [...o.look.accessories] } : {}) }, loan: outcome.loan ? { ...outcome.loan } : null, rent: home?.rent ?? 0, startCash,
+      ...(unit ? { lga: unit.id, via: payload.via === 'device' ? 'device' : 'manual', own: !home } : {}) }, ctx);
+    const place = home ? `${home.label} in ${home.district}` : `starter house in ${unit.name}`;
+    state.message = stay ? `Your ${place} is ready. Tap Home whenever you want to see it. You have ${naira(state.cash)}.` : `Welcome to ${home ? home.district : unit.name}. You moved into your ${home ? home.label : 'own starter house'} with ${naira(state.cash)}.`;
     return ok(state, 'life_started');
   },
   'onboarding.set-look'(state, payload) {
@@ -489,9 +513,11 @@ export default {
     'action.block'(value, state, data) {
       const o = state.onboarding, type = typeof data?.type === 'string' ? data.type : '';
       if (value || !o || o.done || type.startsWith('onboarding.')) return value;
+      if (data.internal === true && INBOUND.includes(type)) return value;
       if (o.required) return { code: 'onboarding_required', reason: 'Choose your look and tap Play first. Nothing else can be done until then.' };
       if (!isGuest(o)) return value;
-      if (type.startsWith('home.') || type === 'property.house-move' || (type === 'travel' && data.payload?.id === 'home')) return { code: 'settle_required', reason: SETTLE_REASON };
+      // A guest has no home, no local government and no house: everything that needs one waits for settling in.
+      if (type.startsWith('home.') || type.startsWith('estate.') || type === 'property.house-move' || (type === 'travel' && data.payload?.id === 'home')) return { code: 'settle_required', reason: SETTLE_REASON };
       return value;
     },
   },
@@ -528,6 +554,8 @@ export default {
       timing: { bornAt: o.bornAt, playedAt: o.playedAt, firstAt: o.firstAt, settledAt: o.completedAt }, activities: o.activities,
       settleReason: isGuest(o) ? SETTLE_REASON : null, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
       lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery.at } : null,
+      /** The start a new life is offered: its own starter house, free, in the local government it chooses. */
+      own: { startCash: outcome ? outcome.ownCash : null, rent: 0 },
       homes: Object.values(START_HOMES).map((home) => {
         const locked = outcome ? homeLock(outcome, home.id) : null;
         return { ...home, startCash: outcome && !locked ? outcome.startCash[home.id] : null, locked };

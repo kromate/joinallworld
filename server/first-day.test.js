@@ -8,6 +8,8 @@ test('the scripted first day runs to the end with every assertion holding', asyn
   const lines = [];
   const result = await runFirstDay({ log: (line) => lines.push(line) });
   assert.equal(result.steps, 22); // the quick start, the first activity and the hello now open the day
-  assert.equal(result.cash, 90450); // ₦2,000 more than the old flow: the three opening goals (₦500 + ₦500 + ₦1,000)
+  // LAPO Baby in the free starter house: ₦76,000 start (not ₦96,000 in rented Yaba), no ₦6,000 Saturday rent, a ₦150 Danfo from the
+  // house in Lagos Mainland (not ₦100 from Yaba), and the three opening goals (₦500 + ₦500 + ₦1,000).
+  assert.equal(result.cash, 76400);
   assert.ok(lines.some((line) => line.startsWith('First day complete')));
 });

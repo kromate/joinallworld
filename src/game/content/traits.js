@@ -195,10 +195,14 @@ export const START_NEEDS = { hunger: 80, energy: 85, fun: 70, social: 60, hygien
 // Rolled once. LAPO Baby is exactly as observed (loan, Hustle 2, +25% learning, Lekki locked,
 // start cash 76,000 in Mushin and 96,000 in Yaba). Its odds, and every other outcome in full,
 // are original beta content. `odds` are weights out of 100.
+// `ownCash` (original beta value) is the start cash of a life that settles into the free starter house on its own plot
+// (systems/estate.js) instead of a rented home. It is the outcome's Mushin start — the same 6 × 6 room, without the ₦2,400
+// weekly rent — except for Ajebutter: ₦200,000, not ₦230,000, because with no rent to pay the larger sum let the starter job
+// alone reach the cheapest car inside 150 days (scripts/economy-sim.mjs; asserted in src/game/economy.test.js).
 export const LOTTERY = {
   'lapo-baby': {
     id: 'lapo-baby', label: 'LAPO Baby', icon: '🧾', tagline: 'Nothing handed over, everything earned.', odds: 50, betaFields: ['odds', 'tagline'],
-    startCash: { mushin: 76000, yaba: 96000 },
+    startCash: { mushin: 76000, yaba: 96000 }, ownCash: 76000,
     locked: { lekki: 'Locked for LAPO Baby: a life started on a loan can only afford Mushin or Yaba. Earn your way up and move later in Phone → Houses.' },
     loan: { principal: 60000, weekly: 12000, owed: 72000 },
     skills: { hustle: 2 },
@@ -207,7 +211,7 @@ export const LOTTERY = {
   },
   'civil-servant': {
     id: 'civil-servant', label: "Civil Servant's Pikin", icon: '🗂️', tagline: 'A steady home and a pension somewhere in the family.', odds: 28, beta: true,
-    startCash: { mushin: 40000, yaba: 55000, lekki: 75000 },
+    startCash: { mushin: 40000, yaba: 55000, lekki: 75000 }, ownCash: 40000,
     locked: {}, loan: null,
     skills: { charisma: 1 },
     fx: {},
@@ -215,7 +219,7 @@ export const LOTTERY = {
   },
   'street-smart': {
     id: 'street-smart', label: 'Street Smart', icon: '🛞', tagline: 'Raised by the road. Tougher than the traffic.', odds: 14, beta: true,
-    startCash: { mushin: 18000, yaba: 24000 },
+    startCash: { mushin: 18000, yaba: 24000 }, ownCash: 18000,
     locked: { lekki: 'Locked for Street Smart: your savings cannot cover Lekki rent. Earn your way up and move later in Phone → Houses.' },
     loan: null,
     skills: { hustle: 3, fitness: 2 },
@@ -224,7 +228,7 @@ export const LOTTERY = {
   },
   ajebutter: {
     id: 'ajebutter', label: 'Ajebutter', icon: '🧈', tagline: 'Born with the generator already running.', odds: 8, beta: true,
-    startCash: { mushin: 230000, yaba: 250000, lekki: 300000 },
+    startCash: { mushin: 230000, yaba: 250000, lekki: 300000 }, ownCash: 200000,
     locked: {}, loan: null,
     skills: { charisma: 2 },
     fx: { xp: { all: 0.9 }, decay: { fun: 1.15 } },

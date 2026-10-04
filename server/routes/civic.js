@@ -54,6 +54,7 @@
  *   GET  /api/civic/richlist    { city, week, size, balances, earners, you, counters }
  *   POST /api/civic/prefs        { richList?: boolean, directory?: boolean }  (true = listed) → { ok, prefs: { richList, directory } }
  */
+import { isGuestLife } from '../../src/game/systems/onboarding.js';
 import { makeContext } from '../../src/game/util.js';
 import { VENUES } from '../../src/game/content/venues.js';
 import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.js';
@@ -105,8 +106,9 @@ export default function civicRoutes(ctx) {
     const life = ctx.settle(session, cityId);
     const civic = civicOf(db), city = cityOf(civic, cityId);
     // A life still held for the quick start (Play not confirmed) is not a resident yet: it is in no directory, list or counter.
-    // A guest who is playing is one (with the default house until they settle in and choose theirs).
-    const resident = !(life.onboarding?.required === true && life.onboarding.done !== true);
+    // Nor is a guest who is playing: a guest has no local government and no house, so it is in no residents directory, estate
+    // or rich list until it settles in (src/game/systems/onboarding.js THE STAGED MODEL). It still plays, travels and meets people.
+    const resident = !(life.onboarding?.required === true && life.onboarding.done !== true) && !isGuestLife(life);
     if (resident) checkIn(city, ctx.now(), who, life, ttl());
     prunePrefs(civic);
     return { session, who, life, civic, city, resident };

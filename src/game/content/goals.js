@@ -11,7 +11,8 @@
  * The starter chain, in order. Each goal pays its cash through the wallet (with a ledger line)
  * and one star, exactly once.
  *   done   how the goal completes: `events` (any of these registry events), `tags` (an
- *          'activity.completed' carrying any of these tags),
+ *          'activity.completed' carrying any of these tags), `activity` (that activity finished —
+ *          or, with `here`, the free thing the chip pointed at instead: see systems/goals.js firstFun),
  *          `venue` (arriving at or visiting it),
  *          `hasJob` (already employed when the goal comes up)
  *          `fresh: true` — the condition only counts while this goal is the current one (so the
@@ -28,10 +29,10 @@
 export const STARTER_GOALS = [
   // The three quick-start goals and their rewards are original beta values.
   { id: 'first-fun', title: 'Play a round of Ayo', hint: 'Under the trees · takes 7 seconds', icon: '🎲', cash: 500, stars: 1, beta: true,
-    done: { events: ['activity.completed'] }, go: ['park', 'trees'], activity: 'play-ayo', here: true },
+    done: { activity: 'play-ayo' }, go: ['park', 'trees'], activity: 'play-ayo', here: true },
   { id: 'say-hello', title: 'Say hello to someone', hint: 'Tap a person nearby', icon: '👋', cash: 500, stars: 1, beta: true,
     done: { events: ['npc.greeted', 'friend.made', 'relationship.changed'] }, open: 'people' },
-  { id: 'settle-in', title: 'Settle in', hint: 'Choose your traits, your dream and your home', icon: '🏠', cash: 1000, stars: 1, beta: true,
+  { id: 'settle-in', title: 'Settle in', hint: 'Choose your traits, your dream and where you live', icon: '🏠', cash: 1000, stars: 1, beta: true,
     done: { events: ['life.started'] }, open: 'onboarding' },
   { id: 'eat', title: 'Eat something', hint: 'Tap the cooler or stove', icon: '🍲', cash: 500, stars: 1,
     done: { events: ['meal.eaten'], tags: ['food'] }, go: ['home', 'kitchen'] },

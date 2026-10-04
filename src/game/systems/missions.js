@@ -4,6 +4,10 @@
  * card and the count of days lived actively. Everything is driven by registry events; nothing here
  * is punished for absence — an unfinished mission simply lapses, and no count ever goes down.
  *
+ * NOT IN THE FIRST MINUTES. A guest of the quick start (systems/onboarding.js) is following the starter goals — one
+ * line of guidance at a time — so missions are not dealt, counted or shown to it: `view.locked` says when they open.
+ * They are dealt the moment the life settles in ('life.started'), and what it does from then on counts.
+ *
  * STATE — state.missions
  *   seed      integer — fixes which missions this life is dealt each day
  *   day       Lagos day the daily set belongs to;  daily   [{ id, n, marks, claimed }]
@@ -71,9 +75,14 @@ export function dealMissions(state, scope, period, ctx, exclude = []) {
   return picked.slice(0, MISSION_REWARDS[scope].slots);
 }
 
+/** Missions open when the life has settled in; a life that never was a guest has them from the start. */
+const open = (state) => !(state.onboarding?.stage === 'guest' && state.onboarding.done !== true);
+const LOCKED = 'Missions open once you have settled in. Follow your goal for now: it is the line under your needs.';
+
 /** Bring the sets, the stamp card and the visited list to today. Unclaimed missions of an old period lapse. */
 function roll(state, ctx) {
   const book = state.missions, time = lagosTime(nowOf(state, ctx));
+  if (!open(state)) return time;
   if (book.week !== time.week) {
     book.week = time.week;
     book.weekly = dealMissions(state, 'weekly', time.week, ctx);
@@ -109,6 +118,7 @@ function markActive(state, time, ctx) {
 
 /** Add progress to every unfinished mission the trigger matches. */
 function progress(state, ctx, matches, mark = null) {
+  if (!open(state)) return;
   const time = roll(state, ctx);
   markActive(state, time, ctx);
   for (const scope of ['daily', 'weekly']) {
@@ -136,6 +146,7 @@ function settleSet(state, scope, time, ctx) {
 }
 
 export function claimMission(state, payload, ctx) {
+  if (!open(state)) return fail(state, 'missions_locked', LOCKED);
   const time = roll(state, ctx);
   const id = payload?.id, scope = typeof id === 'string' ? scopeOf(state, id) : null;
   if (!scope) return fail(state, 'unknown_mission', 'That mission is not one of yours today. Missions change at midnight, Lagos time.');
@@ -154,6 +165,7 @@ export function claimMission(state, payload, ctx) {
 }
 
 export function rerollMission(state, payload, ctx) {
+  if (!open(state)) return fail(state, 'missions_locked', LOCKED);
   roll(state, ctx);
   const book = state.missions, index = book.daily.findIndex((entry) => entry.id === payload?.id);
   if (index < 0) return fail(state, 'unknown_mission', 'Only one of today’s missions can be swapped.');
@@ -222,17 +234,19 @@ export default {
   },
   on: {
     ...listeners,
+    /** Settled in: today's missions are dealt now, so they are there when the Phone is next opened. */
+    'life.started'(state, data, ctx) { roll(state, ctx); },
     'activity.completed'(state, data, ctx) {
       const tags = Array.isArray(data?.tags) ? data.tags : [];
       progress(state, ctx, (def) => def.on === 'tag' && def.tags.some((tag) => tags.includes(tag)));
-      if (!(data?.def?.reward > 0)) return;
+      if (!(data?.def?.reward > 0) || !open(state)) return;
       progress(state, ctx, (def) => def.on === 'paid');
       const day = lagosTime(nowOf(state, ctx)).day;
       if (state.missions.paidDay !== day) { state.missions.paidDay = day; emit(state, 'work.day', {}, ctx); }
     },
     'travel.arrived'(state, data, ctx) {
       const venue = data?.venue;
-      if (typeof venue !== 'string' || venue === 'home' || !Object.hasOwn(VENUES, venue)) return;
+      if (typeof venue !== 'string' || venue === 'home' || !Object.hasOwn(VENUES, venue) || !open(state)) return;
       roll(state, ctx);
       const visited = state.missions.visited, fresh = !visited.list.includes(venue);
       progress(state, ctx, (def) => def.on === 'venue' && (!def.fresh || fresh), venue);
@@ -250,6 +264,7 @@ export default {
     const weekStart = lagosDayStart(time.day - ((time.weekday + 6) % 7));
     const titles = book.titles.map((id) => DAY_TITLES.find((title) => title.id === id) ?? WEEK_TITLE);
     return {
+      locked: open(state) ? null : LOCKED,
       day: time.day, week: time.week,
       daily: daily.map((entry) => row(entry, 'daily')), weekly: weekly.map((entry) => row(entry, 'weekly')),
       dailySet: set(daily, 'daily', book.sets.day === time.day), weeklySet: set(weekly, 'weekly', book.sets.week === time.week),

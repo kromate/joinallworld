@@ -45,6 +45,8 @@ const LOOKS = {
   Bola: { body: 'man', hair: 'low-cut', outfit: 'hoodie', fabric: 'plain', skin: 'skin-5', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' },
 };
 /** Saturday 3 January 2026, 10:00 in Lagos: two Lagos days before Monday's nominations open. */
+/** Where each of them settles: the local government they pick, and so where their free starter house stands. */
+const LGAS = { Ada: 'ikeja', Bola: 'surulere' };
 const START = Date.UTC(2026, 0, 3, 9);
 const at = (day, hour, minute = 0) => Date.UTC(2026, 0, day, hour - 1, minute); // Lagos wall time → server ms
 
@@ -142,7 +144,11 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     const blocked = await act(who, 'travel', { id: 'park', mode: 'trek' });
     assert.equal(blocked.code, 'onboarding_required');
     const playing = await ok(who, 'onboarding.quick-start', { look: LOOKS[name] }, 'playing');
-    assert.deepEqual([playing.location, playing.onboarding.stage, playing.onboarding.required], ['park', 'guest', false]);
+    assert.deepEqual([playing.location, playing.onboarding.stage, playing.onboarding.required, playing.spot], ['park', 'guest', false, 'trees']);
+    // The first goal is the first thing a new player does: a round of Ayo under the trees.
+    const round = await ok(who, 'activity', { id: 'play-ayo' }, 'started');
+    wait(round.activeAction.duration * 1000);
+    assert.ok((await life(who)).ledger.some((entry) => entry.reason === 'Goal: Play a round of Ayo'), `${name}: the round of Ayo paid the first goal`);
     return who;
   }
   /** Settle in: the deferred choices, then the home. Everything earned as a guest is kept. */
@@ -151,11 +157,12 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     await ok(who, 'onboarding.traits', { traits: ['smooth-talker', 'clean-pikin'] }, 'traits_saved');
     await ok(who, 'onboarding.dream', { dream: 'everybodys-padi' }, 'dream_saved');
     const rolled = await ok(who, 'onboarding.lottery', {}, 'rolled');
-    const home = view(rolled).onboarding.homes.find((item) => !item.locked);
-    const moved = await ok(who, 'onboarding.home', { house: home.id }, 'life_started');
-    assert.deepEqual([moved.location, moved.onboarding.done, moved.onboarding.stage], ['home', true, 'settled']);
-    assert.equal(moved.cash, home.startCash + (before - 5000) + (moved.ledger.some((entry) => entry.reason === 'Goal: Settle in') ? 1000 : 0), `${who.name}: the home’s start cash, plus what was earned as a guest`);
-    return { who, outcome: view(moved).onboarding.lottery.label, home: home.label, cash: moved.cash };
+    // Where they live: each picks a local government and is given the free starter house on a plot there. No weekly rent.
+    const own = view(rolled).onboarding.own, lga = LGAS[who.name];
+    const moved = await ok(who, 'onboarding.home', { lga, via: 'manual' }, 'life_started');
+    assert.deepEqual([moved.location, moved.onboarding.done, moved.onboarding.stage, moved.estate.lga, moved.estate.lgaConfirmed, moved.estate.living, moved.economy.rent.house], ['home', true, 'settled', lga, true, 'own', null]);
+    assert.equal(moved.cash, own.startCash + (before - 5000) + (moved.ledger.some((entry) => entry.reason === 'Goal: Settle in') ? 1000 : 0), `${who.name}: the start cash of the birth lottery, plus what was earned as a guest`);
+    return { who, outcome: view(moved).onboarding.lottery.label, home: `starter house in ${view(moved).estate.lga.name}`, cash: moved.cash };
   }
 
   try {
@@ -279,9 +286,9 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     const shift = await ok(ada, 'activity', { id: 'teaching-shift' }, 'started');
     wait(shift.activeAction.duration * 1000);
     const paid = await life(ada);
-    // The shift is also the first thing Ada finished, so the opening goals she had already met are paid behind it.
+    // A shift is work, not the first goal: nothing but the wage is paid for it (the opening goals were paid when they were met).
     const wage = paid.ledger.findLast((entry) => entry.reason === 'Teaching shift');
-    assert.deepEqual([wage.amount, paid.social.earned, paid.ledger.slice(paid.ledger.indexOf(wage) + 1).map((entry) => entry.reason)], [3000, 3000, ['Goal: Play a round of Ayo', 'Goal: Say hello to someone', 'Goal: Settle in']]);
+    assert.deepEqual([wage.amount, paid.social.earned, paid.ledger.slice(paid.ledger.indexOf(wage) + 1).map((entry) => entry.reason)], [3000, 3000, []]);
     const tooSoon = await post('/api/social/transfers', { to: bola.id, amount: 1500, cityId: CITY, clientId: clientId() }, ada);
     assert.equal(tooSoon.code, 'account_too_new');
     goTo(START + 25 * HOUR);
@@ -404,8 +411,8 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     await get(`/api/civic/pulse?city=${CITY}`, bola);
     const again = (await life(bola)).social.notices.map((notice) => notice.text);
     assert.equal(again.filter((text) => text.startsWith('Governor Ada announced')).length, 1, 'posted once, however often he checks in');
-    assert.ok(again.some((text) => text.startsWith('Rent paid:') || text.startsWith('Rent missed:')), 'Saturday’s rent is in the same feed');
-    say('Sunday: Ada is Governor and posts an announcement', 'it and the result are in Bola’s Updates, once, beside his rent notice');
+    assert.ok(!again.some((text) => text.startsWith('Rent paid:') || text.startsWith('Rent missed:')), 'he lives in his own starter house: Saturday brought no rent');
+    say('Sunday: Ada is Governor and posts an announcement', 'it and the result are in Bola’s Updates, once; no rent notice — he lives in his own house');
 
     // ---- 11. Bola rents a sea plot; it is in the public ads listing ---------------------------------
     const seaBefore = (await life(bola)).cash;

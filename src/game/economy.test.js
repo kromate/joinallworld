@@ -22,8 +22,8 @@ const lowestTrack = [...TRACKS].sort((a, b) => weeklyEntry(a) - weeklyEntry(b))[
 
 test('economy: the table covers every start and strategy, deterministically', () => {
   assert.equal(rows.length, STARTS.length * Object.keys(STRATEGIES).length);
-  assert.deepEqual(STARTS.map((start) => `${start.lottery}/${start.house}`), ['lapo-baby/mushin', 'lapo-baby/yaba', 'civil-servant/mushin', 'civil-servant/yaba', 'civil-servant/lekki',
-    'street-smart/mushin', 'street-smart/yaba', 'ajebutter/mushin', 'ajebutter/yaba', 'ajebutter/lekki']);
+  assert.deepEqual(STARTS.map((start) => `${start.lottery}/${start.house}`), ['lapo-baby/own', 'lapo-baby/mushin', 'lapo-baby/yaba', 'civil-servant/own', 'civil-servant/mushin', 'civil-servant/yaba', 'civil-servant/lekki',
+    'street-smart/own', 'street-smart/mushin', 'street-smart/yaba', 'ajebutter/own', 'ajebutter/mushin', 'ajebutter/yaba', 'ajebutter/lekki']);
   for (const row of rows) assert.deepEqual(Object.keys(row.netWorth).map(Number), CHECKPOINTS, at(row));
   const again = simulate({ lottery: 'lapo-baby', house: 'yaba', strategy: 'optimal', days: DAYS, horizon: DAYS });
   const first = simulate({ lottery: 'lapo-baby', house: 'yaba', strategy: 'optimal', days: DAYS, horizon: DAYS });
@@ -113,10 +113,12 @@ test('economy: an idle or broke player is never stuck — free food, wash, rest 
     const { economy, cash, needs } = player.state;
     assert.ok(Number.isSafeInteger(cash) && cash >= 0, `${start.lottery}/${start.house}: cash ${cash}`);
     const house = RENTS[economy.rent.house];
-    assert.ok(economy.rent.arrears <= Math.round(house.rent * MAX_ARREARS_WEEKS * (1 + LATE_FEE_PERCENT / 100)), 'rent arrears are capped');
+    if (start.house === 'own') assert.deepEqual([economy.rent.house, economy.rent.arrears, player.state.estate.living, player.state.estate.ground.arrears], [null, 0, 'own', 0], 'the free starter house has no rent and no ground rent: nothing can fall into arrears');
+    else assert.ok(economy.rent.arrears <= Math.round(house.rent * MAX_ARREARS_WEEKS * (1 + LATE_FEE_PERCENT / 100)), 'rent arrears are capped');
     assert.ok((economy.loan?.left ?? 0) <= LOAN.total + LOAN_LATE_FEE * MAX_LOAN_FEES, 'the loan can never grow past its total plus the capped fees');
     assert.ok(Object.values(needs).every((value) => value >= 10), 'needs never decay below the floor on their own');
-    assert.equal(player.state.property.house, start.house, 'nobody is evicted');
+    if (start.house !== 'own') assert.equal(player.state.property.house, start.house, 'nobody is evicted');
+    else assert.deepEqual([player.state.estate.tier, player.state.estate.lgaConfirmed], ['starter', true], 'nobody loses their house');
     // Recovery with whatever is left, spending nothing: walk home, eat, wash, rest, then earn.
     const before = player.state.cash, spent = () => player.lines.filter((line) => line.amount < 0 && line.at > player.returnedAt).length;
     player.returnedAt = player.now - 1;

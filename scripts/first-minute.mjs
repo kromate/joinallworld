@@ -44,12 +44,14 @@ import { useSaltSourceForTests } from '../server/life-service.js';
 import { createLife, viewLife, dispatch } from '../src/life.js';
 import { systems } from '../src/game/registry.js';
 import { weatherAt } from '../src/game/systems/health.js';
-import { LOTTERY, START_HOMES } from '../src/game/content/traits.js';
+import { LOTTERY } from '../src/game/content/traits.js';
 import { STARTER_GOALS } from '../src/game/content/goals.js';
 import { EVENTS } from '../src/game/content/events.js';
 import { nextNudge, nudgeMemory, nudged, presetLook, funnelSnap, funnelEvents } from '../src/quick-start/model.js';
 
 const CITY = 'lagos';
+/** The local government picked at settle-in: the free starter house stands on a plot there. */
+const LGA = 'ikeja';
 const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
 const naira = (value) => `₦${value.toLocaleString('en-NG')}`;
 export const FIRST_MINUTE_SALT = 'first-minute-salt-0001';
@@ -184,38 +186,42 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     say(`Home refused (“Settle in to get your home”); Danfo to Amala Shitta (${started.activeAction.duration}s)`, state, 'fare −₦200; still a guest: no rent house, no loan, no kitchen');
 
     // ---- 5. settling in: life.started exactly once ----------------------------------------------------
-    assert.equal((await action('onboarding.home', { house: 'yaba' })).code, 'step_required', 'the deferred steps are still validated in order');
+    assert.equal((await action('onboarding.home', { lga: LGA })).code, 'step_required', 'the deferred steps are still validated in order');
+    assert.equal((await action('estate.set-lga', { lga: LGA })).code, 'settle_required', 'a guest cannot take a local government (and its free house) without settling in');
     assert.equal((await action('onboarding.traits', { traits: ['musical'] })).code, 'invalid_traits');
     await ok('onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }, 'traits_saved');
     await ok('onboarding.dream', { dream: 'yaba-unicorn' }, 'dream_saved');
     const rolled = await ok('onboarding.lottery', {}, 'rolled');
     const outcome = LOTTERY[rolled.onboarding.lottery.id];
-    const house = view(rolled).onboarding.homes.find((item) => !item.locked && item.id === 'yaba') ?? view(rolled).onboarding.homes.find((item) => !item.locked);
     const stars = rolled.goals.stars, before = rolled.cash;
-    const move = { actionId: nextId(), cityId: CITY, type: 'onboarding.home', payload: { house: house.id, stay: true } };
+    const move = { actionId: nextId(), cityId: CITY, type: 'onboarding.home', payload: { lga: LGA, via: 'manual', stay: true } };
     const moved = await send(move);
     assert.deepEqual([moved.ok, moved.code], [true, 'life_started']);
     state = moved.state;
     const again = await send(move);
     assert.deepEqual([again.duplicate, again.code, again.state.cash], [true, 'life_started', state.cash], 'the same request again is the same answer');
-    assert.equal((await action('onboarding.home', { house: house.id })).code, 'already_onboarded', 'a second move-in is refused');
+    assert.equal((await action('onboarding.home', { lga: LGA })).code, 'already_onboarded', 'a second move-in is refused');
     state = await life();
     assert.equal(startedEvents.length, 1, "'life.started' fired exactly once: not on the replay, not on the refused second move-in");
-    assert.deepEqual(Object.keys(startedEvents[0]).sort(), ['body', 'dream', 'house', 'loan', 'look', 'lottery', 'rent', 'startCash', 'traits'], 'with the payload other systems expect');
-    assert.deepEqual([startedEvents[0].body, startedEvents[0].traits, startedEvents[0].dream, startedEvents[0].lottery, startedEvents[0].house, startedEvents[0].rent, startedEvents[0].startCash, startedEvents[0].loan],
-      [look.body, ['musical', 'tech-bro-or-sis'], 'yaba-unicorn', outcome.id, house.id, START_HOMES[house.id].rent, outcome.startCash[house.id], outcome.loan ? { ...outcome.loan } : null]);
+    assert.deepEqual(Object.keys(startedEvents[0]).sort(), ['body', 'dream', 'house', 'lga', 'loan', 'look', 'lottery', 'own', 'rent', 'startCash', 'traits', 'via'], 'with the payload other systems expect');
+    assert.deepEqual([startedEvents[0].body, startedEvents[0].traits, startedEvents[0].dream, startedEvents[0].lottery, startedEvents[0].house, startedEvents[0].rent, startedEvents[0].startCash, startedEvents[0].loan, startedEvents[0].lga, startedEvents[0].via, startedEvents[0].own],
+      [look.body, ['musical', 'tech-bro-or-sis'], 'yaba-unicorn', outcome.id, null, 0, outcome.ownCash, outcome.loan ? { ...outcome.loan } : null, LGA, 'manual', true]);
     // What 'life.started' does, each of its listeners exactly once:
     const startLines = state.ledger.filter((entry) => entry.reason.startsWith('Start cash'));
     assert.equal(startLines.length, 1, 'one start-cash line');
     assert.equal(state.ledger.filter((entry) => entry.reason === 'Goal: Settle in').length, 1, 'the Settle in goal paid once');
-    assert.deepEqual([state.onboarding.done, state.onboarding.stage, state.onboarding.house, state.onboarding.completedAt, state.location], [true, 'settled', house.id, time, 'amala-shitta'], 'moved in without leaving the buka');
-    assert.deepEqual([state.property.house, state.travel.home, state.economy.rent.house, state.economy.started], [house.id, house.id, house.id, true], 'home assigned everywhere it is recorded');
+    assert.deepEqual([state.onboarding.done, state.onboarding.stage, state.onboarding.house, state.onboarding.completedAt, state.location], [true, 'settled', null, time, 'amala-shitta'], 'moved in without leaving the buka');
+    assert.deepEqual([state.estate.lga, state.estate.lgaConfirmed, state.estate.lgaVia, state.estate.living, state.estate.tier, state.economy.rent.house, state.economy.started], [LGA, true, 'manual', 'own', 'starter', null, true], 'the local government and the own starter house are recorded; no rent house');
+    const mine = (await http(`/api/world/me?city=${CITY}`)).json;
+    assert.deepEqual([mine.placed, mine.lga, mine.plot?.lga], [true, LGA, LGA], 'the server set a plot aside in that local government');
+    state = await life();
+    assert.deepEqual(state.estate.plot, mine.plot);
     assert.ok(state.home.items.length > 0 && state.home.stocked && Object.keys(state.inventory).length > 0, 'the home has its starter furniture and kitchen');
     shown = view(state);
-    assert.deepEqual([shown.economy.rent.amount, shown.economy.rent.nextDueLabel, Boolean(shown.economy.loan), state.goals.dream, state.goals.stars], [START_HOMES[house.id].rent, 'Sat 10 Jan', Boolean(outcome.loan), 'yaba-unicorn', stars + 1]);
+    assert.deepEqual([Boolean(shown.economy.loan), state.goals.dream, state.goals.stars], [Boolean(outcome.loan), 'yaba-unicorn', stars + 1]);
     if (outcome.loan) assert.deepEqual([shown.economy.loan.left, shown.economy.loan.weekly], [outcome.loan.owed, outcome.loan.weekly]);
     assert.deepEqual(shown.goals.chip.title, 'Eat something', 'the home goals follow');
-    say(`settled in: ${outcome.label}, ${house.label} in ${house.district}`, state, `'life.started' once · furniture ${state.home.items.length} pieces · rent ${naira(START_HOMES[house.id].rent)} due ${shown.economy.rent.nextDueLabel}${outcome.loan ? ` · loan ${naira(outcome.loan.owed)}` : ''}`);
+    say(`settled in: ${outcome.label}, own starter house in ${shown.estate.lga.name}`, state, `'life.started' once · furniture ${state.home.items.length} pieces · ${shown.estate.plot.address} · no rent${outcome.loan ? ` · loan ${naira(outcome.loan.owed)}` : ''}`);
 
     // ---- 6. totals equal the old flow's ---------------------------------------------------------------
     // The control: the same outcome and home played the old way (create → look → traits → dream → lottery → home,
@@ -226,18 +232,18 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     run('onboarding.look', { look }, 'c-look'); run('onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }, 'c-traits'); run('onboarding.dream', { dream: 'yaba-unicorn' }, 'c-dream');
     for (let i = 0; i < 5000 && control.onboarding.lottery?.id !== outcome.id; i++) { control.onboarding.lottery = null; run('onboarding.lottery', {}, `c-roll-${i}`); }
     assert.equal(control.onboarding.lottery.id, outcome.id);
-    assert.equal(run('onboarding.home', { house: house.id }, 'c-home').code, 'life_started');
+    assert.equal(run('onboarding.home', { lga: LGA, via: 'manual' }, 'c-home').code, 'life_started');
     assert.deepEqual(startedEvents.at(-1), startedEvents[0], 'the old flow emits the very same event');
     startedEvents.length = fired; // the control's own event is not the server's
     const oldGrant = control.ledger.find((entry) => entry.reason.startsWith('Start cash'));
     assert.deepEqual([startLines[0].amount, startLines[0].reason], [oldGrant.amount, oldGrant.reason], 'the same start-cash ledger line as the old flow');
-    assert.equal(control.cash, outcome.startCash[house.id], 'the control starts with the outcome’s start cash');
+    assert.equal(control.cash, outcome.ownCash, 'the control starts with the outcome’s start cash for the own house');
     const settleGoal = STARTER_GOALS.find((goal) => goal.id === 'settle-in').cash;
     assert.equal(state.cash, control.cash + guestNet + settleGoal, 'old start cash + what the guest earned and spent + the Settle in goal: minus nothing, plus nothing');
     assert.equal(state.cash, before + oldGrant.amount + settleGoal);
     assert.equal(5000 + state.ledger.reduce((sum, entry) => sum + entry.amount, 0), state.cash, 'the ledger explains the whole balance');
-    assert.deepEqual([state.property.house, state.economy.rent.house, state.economy.loan, state.home.items.map((item) => item.itemId), state.inventory],
-      [control.property.house, control.economy.rent.house, control.economy.loan, control.home.items.map((item) => item.itemId), control.inventory], 'the same home, rent, loan, furniture and kitchen as the old flow');
+    assert.deepEqual([state.estate.lga, state.estate.living, state.economy.rent.house, state.economy.loan, state.home.items.map((item) => item.itemId), state.inventory],
+      [control.estate.lga, control.estate.living, control.economy.rent.house, control.economy.loan, control.home.items.map((item) => item.itemId), control.inventory], 'the same house, no rent, the same loan, furniture and kitchen as the old flow');
     for (const [skill, level] of Object.entries(outcome.skills || {})) assert.ok(view(state).skills[skill].level >= level, `${skill} starts at level ${level} or better`);
     assert.ok(state.social.rel[regular.id], 'the regular met as a guest is still known');
     assert.deepEqual(state.onboarding.look, control.onboarding.look, 'the look chosen on the landing screen');
@@ -262,7 +268,7 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     log('Ledger:');
     for (const entry of state.ledger) log(`    ${(entry.amount > 0 ? '+' : '−') + naira(Math.abs(entry.amount))}`.padEnd(14) + ` ${entry.reason}`.padEnd(62) + naira(entry.balance).padStart(9));
     log(`First minute complete: ${step} steps. First reward ${secs(toFirst)} after landing (${secs(serverToFirst)} of server time from the session); settled in at ${secs(settled)}; wallet ${naira(state.cash)}.`);
-    return { steps: step, cash: state.cash, firstRewardMs: toFirst, serverFirstRewardMs: serverToFirst, settledMs: settled, outcome: outcome.id, house: house.id, funnel };
+    return { steps: step, cash: state.cash, firstRewardMs: toFirst, serverFirstRewardMs: serverToFirst, settledMs: settled, outcome: outcome.id, lga: LGA, funnel };
   } finally {
     economy.on['life.started'] = original;
     useSaltSourceForTests();

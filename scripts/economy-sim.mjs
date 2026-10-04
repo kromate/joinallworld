@@ -5,8 +5,9 @@
  *   node scripts/economy-sim.mjs [--days 30] [--horizon 365] [--track tech]
  *
  * WHAT IT PLAYS
- *   For every birth-lottery outcome and every starting home that outcome may choose, one life per
- *   strategy. Every life finishes character creation with the same look, traits and dream, so the
+ *   For every birth-lottery outcome, one life per strategy in the start the game offers a new player — `own`: the free
+ *   starter house on a plot in the local government picked at settle-in, no weekly rent — and one in every rented
+ *   starting home that outcome may choose (the Houses app's alternative, and what the game offered before). Every life finishes character creation with the same look, traits and dream, so the
  *   only differences are the start and the strategy.
  *     idle      never does anything. Shows what the bills alone do.
  *     helper    the starter Community helper job only: three sittings a day, free upkeep at home.
@@ -44,6 +45,7 @@ import { NPCS } from '../src/game/content/npcs.js';
 import { LOTTERY, START_HOMES } from '../src/game/content/traits.js';
 import { HOUSES, HOUSE_ORDER } from '../src/game/content/housing.js';
 import { CARS, CAR_ORDER } from '../src/game/content/cars.js';
+import { HOUSE_TIERS, TIER_ORDER, tierCost } from '../src/game/content/world.js';
 import { EVENTS } from '../src/game/content/events.js';
 import { DAILY_MISSIONS, WEEKLY_MISSIONS } from '../src/game/content/missions.js';
 import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.js';
@@ -51,6 +53,10 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
 const CITY = 'lagos';
+/** The local government a simulated new player picks at settle-in (mid-priced mainland land). */
+export const SIM_LGA = 'mushin';
+/** The start a new player is offered: their own starter house (see the header). */
+export const OWN = 'own';
 const DAY = 86400000;
 /** Monday 5 January 2026, 00:00 Lagos time. */
 export const SIM_START = lagosDayStart(lagosTime(Date.UTC(2026, 0, 5, 9)).day);
@@ -70,7 +76,7 @@ const EVENT_TITLES = new Set(Object.values(EVENTS).map((event) => event.title));
 export function categoryOf(line) {
   const reason = line.reason;
   if (reason.startsWith('Start cash')) return 'start';
-  if (reason.startsWith('Rent')) return 'rent';
+  if (reason.startsWith('Rent') || reason.startsWith('Ground rent')) return 'rent';
   if (reason.startsWith('Loan')) return 'loan';
   if (reason.startsWith('Goal:') || reason.startsWith('Dream achieved') || reason.startsWith('Startup funding')) return 'goals';
   if (reason === 'Daily gem hunt prize') return 'hunt';
@@ -81,7 +87,7 @@ export function categoryOf(line) {
   if (reason.startsWith('Fixed deposit')) return 'savings';
   if (/^(Danfo|Keke|Okada|Cab|Trek|Fuel) to /.test(reason)) return 'transport';
   if (reason.startsWith('Groceries')) return 'food';
-  if (reason.startsWith('Landlord and agent') || reason.startsWith('Bought') || reason.startsWith('Sold') || reason.startsWith('Boutique')) return 'purchases';
+  if (reason.startsWith('Landlord and agent') || reason.startsWith('Bought') || reason.startsWith('Sold') || reason.startsWith('Boutique') || reason.startsWith('House upgrade') || reason === 'House styling' || reason.startsWith('Moving your ')) return 'purchases';
   if (EVENT_TITLES.has(reason)) return 'events';
   const def = LABELS.get(reason) ?? LABELS.get(reason.replace(/^Refund: /, '').split(': ')[0]);
   if (def?.requiresJob) return 'wages';
@@ -119,7 +125,7 @@ export class Player {
       rolled = this.state.onboarding.lottery?.id === lottery;
     }
     if (!rolled) throw new Error(`No action id rolled ${lottery}`);
-    this.must('onboarding.home', { house });
+    this.must('onboarding.home', house === OWN ? { lga: SIM_LGA, via: 'manual' } : { house });
   }
   ctx() { const actionId = `sim-${++this.seq}`; return { now: this.now, cityId: CITY, actionId }; }
   do(type, payload = {}) {
@@ -378,8 +384,8 @@ export const STRATEGIES = {
   },
 };
 
-/** Every start the birth lottery allows: [{ lottery, house }]. */
-export const STARTS = Object.values(LOTTERY).flatMap((outcome) => Object.keys(START_HOMES).filter((house) => !outcome.locked?.[house] && outcome.startCash[house] !== undefined)
+/** Every start the birth lottery allows: [{ lottery, house }] — the own starter house first, then each rented home. */
+export const STARTS = Object.values(LOTTERY).flatMap((outcome) => [OWN, ...Object.keys(START_HOMES).filter((house) => !outcome.locked?.[house] && outcome.startCash[house] !== undefined)]
   .map((house) => ({ lottery: outcome.id, house })));
 
 /**
@@ -391,7 +397,10 @@ export function simulate({ lottery, house, strategy, days = 30, horizon = days, 
   const options = { track, budget, mixBudget };
   const player = new Player({ lottery, house });
   const startCash = player.state.cash;
-  const nextHouse = HOUSES[HOUSE_ORDER[HOUSE_ORDER.indexOf(house) + 1]] ?? null;
+  // The next house: for a renter the next rented tier; for an owner the first upgrade of their own house (its price in their
+  // local government, and its weekly ground rent).
+  const nextHouse = house === OWN ? { id: TIER_ORDER[1], moveIn: tierCost(CITY, SIM_LGA, TIER_ORDER[1]), rent: HOUSE_TIERS[TIER_ORDER[1]].groundRent }
+    : HOUSES[HOUSE_ORDER[HOUSE_ORDER.indexOf(house) + 1]] ?? null;
   const row = { lottery, house, strategy, label: plan.label, track: plan === STRATEGIES.career || plan === STRATEGIES.optimal || plan === STRATEGIES.social ? track : null, startCash,
     netWorth: {}, cash: {}, firstPromotionDay: null, rentMissedWeeks: 0, minCash: startCash, nextHouse: nextHouse?.id ?? null, nextHouseDay: null, carDay: null, activePerDay: 0 };
   plan.first?.(player, options);
@@ -470,5 +479,5 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   console.log(formatTable(rows));
   const bad = rows.filter((row) => !row.conserved || row.unknown.length);
   console.log(bad.length ? `NOT CONSERVED or unknown reasons in ${bad.length} rows: ${JSON.stringify(bad.map((row) => [row.lottery, row.house, row.strategy, row.unknown]))}` : `Conservation: cash = seed + Σ ledger in all ${rows.length} lives; every ledger reason is classified.`);
-  console.log(`Next house = move-in + 4 weeks' rent: ${HOUSE_ORDER.map((id) => `${id} ${naira(HOUSES[id].moveIn + 4 * HOUSES[id].rent)}`).join(' · ')} · cheapest car ${naira(CHEAPEST_CAR.price)}`);
+  console.log(`Next house = move-in + 4 weeks' rent: ${HOUSE_ORDER.map((id) => `${id} ${naira(HOUSES[id].moveIn + 4 * HOUSES[id].rent)}`).join(' · ')} · own house upgrade (${TIER_ORDER[1]} in ${SIM_LGA}) ${naira(tierCost(CITY, SIM_LGA, TIER_ORDER[1]) + 4 * HOUSE_TIERS[TIER_ORDER[1]].groundRent)} · cheapest car ${naira(CHEAPEST_CAR.price)}`);
 }

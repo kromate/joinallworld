@@ -57,7 +57,7 @@
  *         'house.moved' { id: 'own' | houseId, from, cost: 0 }   so furniture is re-fitted
  *         'house.upgraded' { tier } · 'lga.changed' { lga } · 'city.changed' { from, to }
  *         'notice.posted' { kind: 'house' | 'ground-rent', text }
- * LISTENS 'life.started' { house }  ·  'house.moved' { id }
+ * LISTENS 'life.started' { house, lga?, via?, own? }  ·  'house.moved' { id }
  *
  * TIMED ACTION 'intercity' (moves: true): the trip between two cities. It cannot be cancelled once
  * the fare is paid. On arrival the residence of the city left is put away, the one of the city
@@ -73,6 +73,8 @@ import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, OWNING,
   lgaOf, lgaOfDistrict, lgasOf, linksFrom, moveLevy, packStyle, stylePrice, tierCost, tierOf, validPlot } from '../content/world.js';
 
 const DAY_MS = 86400000;
+/** A life still held for its look, or a guest of the quick start: it has not settled in (systems/onboarding.js THE STAGED MODEL). */
+const unsettled = (state) => { const o = state?.onboarding; return Boolean(o) && o.done !== true && (o.required === true || o.stage === 'guest'); };
 const MAX_CATCHUP_WEEKS = 4;
 const VIAS = ['device', 'manual', 'default'];
 const nowOf = (state, ctx) => (finite(ctx?.now) ? ctx.now : state.t);
@@ -135,7 +137,7 @@ function sanitize(input, state, ctx) {
 function setLga(state, payload, ctx) {
   const e = state.estate, now = nowOf(state, ctx);
   // Chosen when the life settles in, not before: a life still being created belongs nowhere yet.
-  if (state.onboarding?.required === true && state.onboarding.done !== true) return fail(state, 'onboarding_required', 'Settle in first: your local government is chosen once your life has started.');
+  if (unsettled(state)) return fail(state, 'settle_required', 'Settle in first: your local government is chosen when you settle in (tap the "Settle in" goal), and your free house comes with it.');
   const unit = lgaOf(e.city, payload?.lga);
   if (!unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(e.city).length} local governments of ${cityRules(e.city)?.name ?? 'this city'}.`);
   const via = payload?.via === 'device' ? 'device' : 'manual';
@@ -163,6 +165,7 @@ function setLga(state, payload, ctx) {
 /** The server allocated a plot (server/world/service.js). The one before it, if any, is remembered so it can be freed. */
 function assign(state, payload) {
   const e = state.estate, plot = cleanPlot(payload, e.city);
+  if (!hasPlace(state)) return fail(state, 'no_place', 'This life has not settled in: it has no local government and no house yet.');
   if (!plot || plot.lga !== e.lga) return fail(state, 'invalid_plot', 'That plot is not in your local government.');
   if (e.plot && e.plot.lga === plot.lga && e.plot.estate === plot.estate && e.plot.plot === plot.plot) return ok(state, 'unchanged');
   if (e.plot) e.old = e.plot;
@@ -229,7 +232,7 @@ function moveIn(state, payload, ctx) {
  * True once it has chosen one, and for a life from before local governments existed (it keeps the
  * one its home district lies in). A life that has not settled in has neither.
  */
-export const hasPlace = (state) => Boolean(state?.estate?.lga) && !(state.onboarding?.required === true && state.onboarding.done !== true)
+export const hasPlace = (state) => Boolean(state?.estate?.lga) && !unsettled(state)
   && (state.estate.lgaConfirmed === true || (state.onboarding?.done === true && state.onboarding.legacy === true));
 
 /** Why a trip to another city cannot start, or null. `ctx.openCities` lets a test open a city; no request can set it. */
@@ -370,9 +373,15 @@ export default {
   view,
   on: {
     /** The life has settled in a home: until a local government is chosen, the guess follows that home's district. */
-    'life.started'(state) {
-      const e = state.estate;
-      if (!e.lgaConfirmed) Object.assign(e, { lga: defaultLga(e.city, state), lgaVia: 'default' });
+    'life.started'(state, data, ctx) {
+      const e = state.estate, unit = lgaOf(e.city, data?.lga);
+      // Settling in with a local government (the settle-in Home card): it is the life's first choice — free, immediate and
+      // confirmed — and with `own` the life lives in the free starter house there from the first moment: no weekly rent.
+      if (unit && !e.lgaConfirmed) {
+        Object.assign(e, { lga: unit.id, lgaAt: nowOf(state, ctx), lgaConfirmed: true, lgaVia: data.via === 'device' ? 'device' : 'manual' });
+        emit(state, 'lga.changed', { lga: unit.id }, ctx);
+      } else if (!e.lgaConfirmed) Object.assign(e, { lga: defaultLga(e.city, state), lgaVia: 'default' });
+      if (data?.own === true && e.living !== 'own') { e.living = 'own'; emit(state, 'home.owned', { living: true, house: rentedHouse(state) }, ctx); }
     },
     /** Moving to a rented home through the Houses app ends living in the owned one (the house stays yours). */
     'house.moved'(state, data) { if (data?.id !== 'own' && data?.from !== 'away' && state.estate.living === 'own') state.estate.living = 'rent'; },

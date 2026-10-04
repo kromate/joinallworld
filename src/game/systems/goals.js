@@ -113,8 +113,25 @@ function markSeen(state, test) {
   for (let i = g.chain; i < STARTER_GOALS.length; i++) {
     const goal = STARTER_GOALS[i];
     if (goal.done.fresh && i !== g.chain) continue; // counts only while it is the current goal
-    if (!g.seen.includes(goal.id) && test(goal.done)) g.seen.push(goal.id);
+    if (!g.seen.includes(goal.id) && test(goal.done, goal)) g.seen.push(goal.id);
   }
+}
+
+/**
+ * Did the activity that just finished complete a goal that names one (`done.activity`)? The named activity always does.
+ * A goal that is done `here` (wherever the player stands) also accepts the kind of thing its chip points at when the
+ * named one cannot be done: away from the goal's venue, or while the named activity cannot be started there (the venue
+ * is closed, say) — a free, unpaid pastime that is not work. So the goal is completed by what the chip asked for, a
+ * paid gig or a shift never ticks it by accident, and a player is never left with a goal that cannot be met.
+ */
+function intended(state, goal, data, ctx) {
+  if (data?.id === goal.done.activity) return true;
+  if (!goal.here) return false;
+  const def = data?.def;
+  if (!def || def.cost || def.reward || def.requiresJob || def.home) return false;
+  if (state.location !== goal.go[0]) return true;
+  const named = spotsOf(goal.go[0]).flatMap((spot) => spot.activities).find((item) => item.id === goal.done.activity);
+  return !named || Boolean(blockReason(state, named, goal.go[0], ctx));
 }
 
 // ---- wishes -------------------------------------------------------------------------------
@@ -237,6 +254,7 @@ const HANDLERS = {
   'activity.completed'(state, data, ctx) {
     const tags = Array.isArray(data?.tags) ? data.tags : [];
     const def = { id: data?.id, tags };
+    markSeen(state, (done, goal) => typeof done.activity === 'string' && intended(state, goal, data, ctx));
     markSeen(state, (done) => Array.isArray(done.tags) && done.tags.some((tag) => tags.includes(tag)));
     bumpWishes(state, ctx, (wish) => wish.on === 'activity' && state.location === wish.venue && activityFits(wish, def, state.spot));
     if (tags.includes(PITCH_TAG) && !state.goals.stats.funded) {

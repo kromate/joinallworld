@@ -141,9 +141,23 @@ test('until the quick start is confirmed a player is not in the city: no room, n
   assert.equal((await a.next()).type, 'presence');
   assert.equal((await get('/api/social/me', ada)).me.name, 'Ada');
   assert.deepEqual((await get('/api/social/search?q=ada', old)).results.map((item) => item.id), [ada.id]);
+  // …but a guest is not a resident: she has no local government and no house, so she is in no directory, estate, counter or rich list.
+  f.advance(6000);
+  assert.equal((await get('/api/civic/pulse?city=lagos', ada)).checkedIn, false);
+  f.advance(6000);
+  assert.equal((await get('/api/civic/pulse?city=lagos', old)).counters.players, 1);
+  assert.ok(!JSON.stringify(await get('/api/civic/neighbours?city=lagos', old)).includes(ada.id));
+  assert.equal((await get('/api/civic/richlist?city=lagos', ada)).you, null);
+  assert.deepEqual([(await get('/api/world/me?city=lagos', ada)).placed, (await get('/api/world/me?city=lagos', ada)).plot], [false, null]);
+  const early = await f.action(ada.cookie, { type: 'estate.set-lga', payload: { lga: 'ikeja' } });
+  assert.deepEqual([early.code, early.state.estate.lgaConfirmed], ['settle_required', false], 'a guest cannot take a local government (and so a house) without settling in');
+  // Settling in — with her local government — is what makes her a resident, with a house on a plot there.
+  assert.equal((await settle(f, ada, { house: undefined, lga: 'ikeja', stay: true })).code, 'life_started');
   f.advance(6000);
   assert.equal((await get('/api/civic/pulse?city=lagos', ada)).checkedIn, true);
   f.advance(6000);
   assert.equal((await get('/api/civic/pulse?city=lagos', old)).counters.players, 2);
   assert.ok(JSON.stringify(await get('/api/civic/neighbours?city=lagos', old)).includes(ada.id));
+  const placed = await get('/api/world/me?city=lagos', ada);
+  assert.deepEqual([placed.placed, placed.lga, placed.plot?.lga], [true, 'ikeja', 'ikeja']);
 });

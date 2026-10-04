@@ -74,6 +74,10 @@ export const gridOf = (state) => (HOUSES[state.property?.house] ?? HOUSES[DEFAUL
 const whole = (value, fallback) => (Number.isFinite(value) ? Math.max(0, Math.round(value)) : fallback);
 const priceOf = (state, item, ctx) => whole(modify(state, 'shop.price', item.price, { item, kind: 'furniture' }, ctx), item.price);
 const refundOf = (item) => Math.floor(item.price * SELL_REFUND_RATE);
+/** What `packs` packs of an ingredient cost right now, after every 'shop.price' modifier — the one price the action charges and the Groceries app shows. */
+export const groceryPrice = (state, item, packs, ctx) => whole(modify(state, 'shop.price', item.price * packs, { item, kind: 'grocery' }, ctx), item.price * packs);
+/** Pack counts the Groceries app offers per row. */
+export const GROCERY_PACK_OPTIONS = Object.freeze([1, 3]);
 const storedCount = (state) => Object.values(state.home.storage).reduce((sum, count) => sum + count, 0);
 const placedOfKind = (state, kind) => state.home.items.filter((item) => FURNITURE[item.itemId]?.kind === kind);
 
@@ -230,7 +234,7 @@ function buyGroceries(state, payload, ctx) {
   const packs = payload?.packs ?? 1;
   if (!Number.isInteger(packs) || packs < 1 || packs > MAX_PACKS_PER_ORDER) return fail(state, 'invalid_quantity', `Order between 1 and ${MAX_PACKS_PER_ORDER} packs at a time.`);
   const count = packs * item.pack;
-  const price = whole(modify(state, 'shop.price', item.price * packs, { item, kind: 'grocery' }, ctx), item.price * packs);
+  const price = groceryPrice(state, item, packs, ctx);
   if (!canAfford(state, price)) return fail(state, 'insufficient_funds', `${packs} × ${item.label} costs ${naira(price)}; you have ${naira(state.cash)} (${naira(price - state.cash)} short).`);
   if (!addItem(state, item.id, count)) return fail(state, 'kitchen_full', `Your kitchen cannot hold more ${item.label}. Cook some first.`);
   debit(state, price, `Groceries: ${count} × ${item.label}`, ctx);
@@ -404,6 +408,8 @@ export default {
       ambience: ambienceOf(state),
       /** Price of every catalogue item after discounts (list price is FURNITURE[id].price). */
       prices: Object.fromEntries(Object.values(FURNITURE).map((item) => [item.id, priceOf(state, item, ctx)])),
+      /** What the server will charge for each offered pack count of every ingredient: { [id]: { [packs]: { price, list } } }. */
+      groceries: Object.fromEntries(INGREDIENT_ORDER.map((id) => [id, Object.fromEntries(GROCERY_PACK_OPTIONS.map((packs) => [packs, { price: groceryPrice(state, INGREDIENTS[id], packs, ctx), list: INGREDIENTS[id].price * packs }]))])),
       /** What the kitchen holds, in the catalogue's order. */
       kitchen: INGREDIENT_ORDER.filter((id) => countItem(state, id) > 0).map((id) => ({ id, label: INGREDIENTS[id].label, icon: INGREDIENTS[id].icon, count: countItem(state, id) })),
       /** Result multiplier per furniture kind (0 = none placed). */

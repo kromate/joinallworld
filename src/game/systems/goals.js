@@ -18,6 +18,9 @@
  *   dream      dream id | null;  dreamDone  boolean (its reward was paid)
  *   stats      { friends, best, level, levelCap, assets, debt, cchub, funded } — what the dream
  *              formulas measure, collected from other systems' events
+ *   besties    [id] — best friends already counted, so a friend reported both as
+ *              'friend.made' { best: true } and as 'friend.best' counts once (events that carry
+ *              no id — `id`, `friend`, `npc` or `player` — cannot be told apart and each count)
  *   seq, feed  feed = last few [{ n, text }] announcements (goal complete, wish granted, …);
  *              n counts up from seq so the UI can toast each one once
  *
@@ -27,8 +30,8 @@
  *   'goals.set-dream'   { dream }  only for a life that has no dream yet (one saved before dreams existed)
  *
  * LISTENS TO  activity.completed, meal.eaten, item.bought, job.applied, shift.completed,
- *   promotion { job, level, role, top?, maxLevel? }, loan.paid, npc.greeted, friend.made,
- *   friend.best, travel.arrived, venue.visited, wallet.changed, skill.levelup, life.started.
+ *   promotion { job, level, role, top?, maxLevel? }, loan.paid, npc.greeted,
+ *   friend.made { id?, best? }, friend.best { id? }, travel.arrived, venue.visited, wallet.changed, skill.levelup, life.started.
  *   Also registered, with no effect yet: house.moved, car.bought, rent.paid.
  * EMITS  'goal.completed' { id, cash, stars } · 'wish.granted' { id, stars } ·
  *        'perk.bought' { id, cost } · 'dream.completed' { id }
@@ -50,6 +53,7 @@ import { VENUES } from '../content/venues.js';
 import { JOBS } from '../content/jobs.js';
 
 const FEED_LIMIT = 8;
+const BESTIE_LIMIT = 16;
 const MAX_STARS = 1000000;
 const PITCH_TAG = 'startup-pitch';
 const perkById = Object.fromEntries(PERKS.map((perk) => [perk.id, perk]));
@@ -191,6 +195,24 @@ function checkDream(state, ctx) {
 }
 
 // ---- events -------------------------------------------------------------------------------
+/** Record the size of the career ladder when an event carries it. Returns true if it did. */
+function ladderSize(state, data) {
+  if (!safeCount(data?.maxLevel) || data.maxLevel <= 0) return false;
+  state.goals.stats.levelCap = Math.min(data.maxLevel, 100);
+  return true;
+}
+
+const friendKey = (data) => [data?.id, data?.friend, data?.npc, data?.player].find((id) => typeof id === 'string' && id.length > 0 && id.length <= 80) ?? null;
+/** Count one best friend; the same friend id is never counted twice. */
+function countBest(state, data) {
+  const g = state.goals, key = friendKey(data);
+  if (key) {
+    if (g.besties.includes(key)) return;
+    if (g.besties.length < BESTIE_LIMIT) g.besties.push(key);
+  }
+  g.stats.best = count(g.stats.best + 1, 999);
+}
+
 const EARNING_EXCLUDED = /^(Refund|Start cash)/;
 
 function arrived(state, venue, ctx) {
@@ -204,7 +226,7 @@ const HANDLERS = {
   'activity.completed'(state, data, ctx) {
     const tags = Array.isArray(data?.tags) ? data.tags : [];
     const def = { id: data?.id, tags };
-    markSeen(state, (done) => Array.isArray(done.tags) && done.tags.some((tag) => tags.includes(tag)));
+    markSeen(state, (done) => Array.isArray(done.tags) && done.tags.some((tag) => tags.includes(tag)) && (!done.away || state.location !== 'home'));
     bumpWishes(state, ctx, (wish) => wish.on === 'activity' && state.location === wish.venue && activityFits(wish, def, state.spot));
     if (tags.includes(PITCH_TAG) && !state.goals.stats.funded) {
       state.goals.stats.funded = true;
@@ -215,13 +237,14 @@ const HANDLERS = {
   'promotion'(state, data) {
     const s = state.goals.stats;
     if (safeCount(data?.level)) s.level = Math.max(s.level, Math.min(data.level, 100));
-    if (safeCount(data?.maxLevel) && data.maxLevel > 0) s.levelCap = Math.min(data.maxLevel, 100);
-    else if (data?.top === true && s.level > 0) s.levelCap = s.level;
+    if (!ladderSize(state, data) && data?.top === true && s.level > 0) s.levelCap = s.level;
   },
   'shift.completed'(state, data) {
     const s = state.goals.stats;
     if (safeCount(data?.level)) s.level = Math.max(s.level, Math.min(data.level, 100));
+    ladderSize(state, data);
   },
+  'job.applied'(state, data) { ladderSize(state, data); },
   'item.bought'(state, data) {
     const s = state.goals.stats;
     if (safeCount(data?.price) && Number.isSafeInteger(s.assets + data.price)) s.assets += data.price;
@@ -230,9 +253,9 @@ const HANDLERS = {
   'friend.made'(state, data) {
     const s = state.goals.stats;
     s.friends = count(s.friends + 1, 999);
-    if (data?.best === true) s.best = count(s.best + 1, 999);
+    if (data?.best === true) countBest(state, data);
   },
-  'friend.best'(state) { const s = state.goals.stats; s.best = count(s.best + 1, 999); },
+  'friend.best'(state, data) { countBest(state, data); },
   'travel.arrived'(state, data, ctx) { arrived(state, data?.venue, ctx); },
   'venue.visited'(state, data, ctx) { arrived(state, data?.venue, ctx); },
   'wallet.changed'(state, data, ctx) {
@@ -263,7 +286,7 @@ const NEED_STEP = { hunger: ['🍲', 'Eat something'], energy: ['🛏️', 'Get 
   hygiene: ['🫧', 'Freshen up'], bladder: ['🚽', 'Use the toilet'] };
 
 /** The free, startable activity that raises `need` the most: Home first, then any other venue. */
-function recovery(state, need) {
+function recovery(state, need, ctx) {
   const gain = (def) => (def.effects?.[need] ?? 0) + (def.effectsPerSecond?.[need] ?? 0) * (def.duration ?? 0);
   for (const venue of ['home', ...Object.keys(VENUES).filter((id) => id !== 'home')]) {
     let best = null;
@@ -271,7 +294,8 @@ function recovery(state, need) {
       for (const def of spot.activities) {
         if (def.unavailable || def.cost || def.requiresJob || def.requiresSkill || def.choices
           || Object.keys(def.minimumNeeds || {}).length || gain(def) <= 0) continue;
-        if (blockReason(state, def, venue)?.code === 'furniture_required') continue;
+        // Never point at something that cannot be started: no furniture for it, a closed venue, a cooldown…
+        if (blockReason(state, def, venue, ctx)) continue;
         if (!best || gain(def) > gain(best.fix)) best = { venue, spot, fix: def };
       }
     }
@@ -282,7 +306,7 @@ function recovery(state, need) {
 const workplaceOf = (state) => { const at = JOBS[state.job]?.workplace; return typeof at?.venue === 'string' ? [at.venue, at.spot] : null; };
 const homeSpot = (id) => (spotsOf('home').some((spot) => spot.id === id) ? ['home', id] : ['home']);
 
-function chipOf(state) {
+function chipOf(state, ctx) {
   const g = state.goals;
   if (state.onboarding && !state.onboarding.done) {
     return { kind: 'create', icon: '✨', title: 'Create your Sim', hint: 'Choose your look, personality, dream and home', open: 'onboarding' };
@@ -298,7 +322,7 @@ function chipOf(state) {
   }
   const low = NEEDS.filter((need) => state.needs[need] < GUIDE_LOW_NEED).sort((a, b) => state.needs[a] - state.needs[b])[0];
   if (low) {
-    const fix = recovery(state, low), [icon, title] = NEED_STEP[low];
+    const fix = recovery(state, low, ctx), [icon, title] = NEED_STEP[low];
     return { kind: 'guide', icon, title, hint: fix ? `${VENUES[fix.venue].label} → ${fix.spot.label} → ${fix.fix.label}` : `${cap(low)} is low (${Math.floor(state.needs[low])}%)`,
       ...(fix ? { go: [fix.venue, fix.spot.id] } : {}) };
   }
@@ -382,6 +406,7 @@ export default {
       dreamDone: Boolean(dream) && raw.dreamDone === true,
       stats: { friends: count(stats.friends, 999), best: count(stats.best, 999), level: count(stats.level, 100), levelCap: count(stats.levelCap, 100),
         assets: count(stats.assets), debt: count(stats.debt), cchub: stats.cchub === true, funded: stats.funded === true },
+      besties: ids(raw.besties, (id) => id.length > 0 && id.length <= 80, BESTIE_LIMIT),
       seq,
       feed: (Array.isArray(raw.feed) ? raw.feed.slice(-FEED_LIMIT) : []).filter((item) => isRecord(item) && safeCount(item.n) && item.n <= seq && typeof item.text === 'string')
         .map((item) => ({ n: item.n, text: item.text.slice(0, 160) })),
@@ -420,7 +445,7 @@ export default {
     const g = state.goals, day = today(state, ctx), rerolls = rerollsOf(state, ctx), goal = (g.started && STARTER_GOALS[g.chain]) || null;
     const progress = dreamProgress(state);
     return {
-      chip: chipOf(state),
+      chip: chipOf(state, ctx),
       chain: { started: g.started, index: g.chain, total: STARTER_GOALS.length, finished: g.started && g.chain >= STARTER_GOALS.length,
         current: goal ? { id: goal.id, title: goal.title, hint: goal.hint, icon: goal.icon, cash: goal.cash, stars: goal.stars } : null },
       stars: g.stars,

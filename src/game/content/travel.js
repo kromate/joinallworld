@@ -7,8 +7,9 @@
  *   fare bands (`near` and the standard band stored on each mode as `fare`), fares charged at
  *   departure, a trek costing 10 Energy and 7 Hygiene and training Fitness, and own-car travel
  *   costing fuel only.
+ *   A Danfo ride was reported to leave every need unchanged, so Danfo has no need cost.
  *   Original beta values (`beta` blocks below): every duration, the cross-lagoon `far` band,
- *   need costs of the four paid modes, the Fitness XP amount, roadside-event chances and fuel.
+ *   need costs of Keke, Okada and Cab (never ridden in the reference game), the Fitness XP amount, roadside-event chances and fuel.
  */
 
 /** `fare` is the standard-band fare. `seconds` is the standard-band trip time (original beta value). */
@@ -16,7 +17,7 @@ export const TRAVEL_MODES = {
   trek: { id: 'trek', label: 'Trek', icon: '🚶', fare: 0, seconds: 12, needs: { energy: -10, hygiene: -7 }, xp: { fitness: 15 }, exposed: true, eventChance: 0.5,
     blurb: 'Free, slow, sweaty — and good for your fitness.' },
   keke: { id: 'keke', label: 'Keke', icon: '🛺', fare: 150, seconds: 9, needs: { hygiene: -1 }, eventChance: 0.2, blurb: 'Cheap and breezy.' },
-  danfo: { id: 'danfo', label: 'Danfo', icon: '🚌', fare: 150, seconds: 8, needs: { hygiene: -2, fun: -2 }, eventChance: 0.25, blurb: 'Cheap, crowded, always an experience.' },
+  danfo: { id: 'danfo', label: 'Danfo', icon: '🚌', fare: 150, seconds: 8, needs: {}, eventChance: 0.25, blurb: 'Cheap, crowded, always an experience.' },
   okada: { id: 'okada', label: 'Okada', icon: '🏍️', fare: 200, seconds: 5, needs: { hygiene: -3 }, exposed: true, eventChance: 0.15, blurb: 'Fastest through traffic. Dusty, and no roof.' },
   cab: { id: 'cab', label: 'Cab', icon: '🚕', fare: 400, seconds: 6, needs: { energy: 2 }, eventChance: 0.15, blurb: 'Air-conditioned. Arrive rested.' },
 };

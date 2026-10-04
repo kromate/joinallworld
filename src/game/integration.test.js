@@ -1,0 +1,224 @@
+// OWNER: foundation — tests for the seams between the career, character, home and world systems.
+// Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.js.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createLife, dispatch, advanceLife, viewLife, spotsOf, actionTypes } from '../life.js';
+import { registerSystem, systems } from './registry.js';
+import { makeContext } from './util.js';
+import { isOpen, lagosDayStart, lagosTime, openingInfo } from './clock.js';
+import { arrive } from './api.js';
+import { VENUES } from './content/venues.js';
+import { JOBS, TRACKS } from './content/jobs.js';
+import { INGREDIENTS } from './content/food.js';
+import { CARS } from './content/cars.js';
+import { HOUSES } from './content/housing.js';
+import { STARTER_GOALS } from './content/goals.js';
+import { workplaceHoursText, scheduleText } from './systems/career.js';
+
+const MONDAY_9AM = Date.UTC(2026, 0, 5, 8); // 09:00 in Lagos
+const at = (now = MONDAY_9AM, seed = 'seam', extra = {}) => makeContext({ now, cityId: 'lagos', seed, ...extra });
+const act = (state, type, payload, ctx = at()) => dispatch(state, { type, payload }, ctx);
+
+// A stand-in for a later owner's system: registered last, it records events and can veto actions.
+const heard = [];
+registerSystem({
+  id: 'seamprobe', stateKeys: ['seamprobe'],
+  sanitize(input, state) { state.seamprobe = { frozen: input.seamprobe?.frozen === true }; },
+  on: { 'travel.arrived': (state, data) => heard.push({ ...data }) },
+  modifiers: { 'action.block': (value, state, data) => value || (state.seamprobe.frozen && data.type !== 'cancel' ? { code: 'frozen', reason: `Frozen: ${data.type} is not possible right now.` } : null) },
+});
+
+function onboard(state, { house = 'yaba', traits = ['musical', 'tech-bro-or-sis'], dream = 'yaba-unicorn', outcome = 'lapo-baby' } = {}) {
+  const look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' };
+  assert.equal(act(state, 'onboarding.look', { look }).code, 'look_saved');
+  assert.equal(act(state, 'onboarding.traits', { traits }).code, 'traits_saved');
+  assert.equal(act(state, 'onboarding.dream', { dream }).code, 'dream_saved');
+  for (let i = 0; i < 500 && state.onboarding.lottery?.id !== outcome; i++) {
+    state.onboarding.lottery = null;
+    act(state, 'onboarding.lottery', {}, at(MONDAY_9AM, `roll-${i}`));
+  }
+  assert.equal(state.onboarding.lottery.id, outcome);
+  const moved = act(state, 'onboarding.home', { house });
+  assert.equal(moved.code, 'life_started', moved.reason);
+  return state;
+}
+
+test('travel.arrived carries { venue, from, mode } for every listener, and arrive accepts a target spot', () => {
+  assert.equal(systems().find((system) => system.id === 'travel').on['travel.arrived'], undefined, 'travel no longer patches the payload from its own listener');
+  heard.length = 0;
+  const state = createLife({}, at());
+  act(state, 'travel', { id: 'library', mode: 'okada' });
+  advanceLife(state, 5, at(MONDAY_9AM + 5000));
+  assert.deepEqual(heard, [{ venue: 'library', from: 'park', mode: 'okada' }]);
+  // Systems registered before travel receive the very same payload object, so they see the mode too.
+  const first = [];
+  const career = systems().find((system) => system.id === 'career');
+  const original = career.on['travel.arrived'];
+  career.on['travel.arrived'] = (s, data) => first.push({ ...data });
+  try {
+    act(state, 'travel', { id: 'park', mode: 'trek' }, at(MONDAY_9AM + 5000));
+    advanceLife(state, 12, at(MONDAY_9AM + 17000));
+  } finally { if (original) career.on['travel.arrived'] = original; else delete career.on['travel.arrived']; }
+  assert.deepEqual(first, [{ venue: 'park', from: 'library', mode: 'trek' }]);
+
+  heard.length = 0;
+  assert.equal(arrive(state, 'park', at(), { spot: 'trees', mode: null, reason: 'test' }), true);
+  assert.equal(state.spot, 'trees');
+  assert.deepEqual(heard, [{ reason: 'test', venue: 'park', from: 'park', mode: null }]);
+  arrive(state, 'park', at(), { spot: 'no-such-spot' });
+  assert.equal(state.spot, 'amphitheatre', 'an unknown spot falls back to the first one');
+  assert.equal(arrive(state, 'atlantis', at()), false);
+});
+
+test('the automatic commute lands on the work spot and only starts while the workplace is open', () => {
+  const state = createLife({ location: 'home', needs: { hunger: 90, energy: 90, fun: 50, social: 50, hygiene: 50, bladder: 50 } }, at(Date.UTC(2026, 0, 5, 2))); // Monday 3 AM
+  assert.equal(act(state, 'apply-job', { id: 'tech' }, at(Date.UTC(2026, 0, 5, 2))).code, 'applied');
+  assert.equal(state.activeAction, null, 'CcHub is closed at 3 AM, so nobody is sent there');
+  assert.match(viewLife(state, at(Date.UTC(2026, 0, 5, 2))).career.step.text, /CcHub is closed right now: it opens 8AM/);
+  advanceLife(state, 60, at(Date.UTC(2026, 0, 5, 7, 1))); // 8:01 AM
+  assert.deepEqual([state.activeAction?.kind, state.activeAction?.id], ['commute', 'cchub']);
+  advanceLife(state, 5, at(Date.UTC(2026, 0, 5, 7, 1, 5)));
+  assert.deepEqual([state.location, state.spot], ['cchub', 'work']);
+  assert.ok(viewLife(state, at(Date.UTC(2026, 0, 5, 7, 2))).activities.cards.some((card) => card.id === 'tech-shift' && !card.blocked));
+});
+
+test('action.block lets any system veto any action with a code and a reason', () => {
+  const state = createLife({ seamprobe: { frozen: true } }, at());
+  for (const type of actionTypes().filter((name) => name !== 'cancel')) {
+    const result = dispatch(state, { type, payload: {} }, at());
+    assert.deepEqual([result.ok, result.code, result.reason], [false, 'frozen', `Frozen: ${type} is not possible right now.`], type);
+  }
+  assert.equal(state.message, `Frozen: ${actionTypes().filter((name) => name !== 'cancel').at(-1)} is not possible right now.`);
+  assert.equal(act(state, 'cancel').code, 'idle', 'an action the veto lets through reaches its handler');
+  assert.throws(() => dispatch(state, { type: 'no-such-action' }, at()), /Invalid action type/);
+});
+
+test('enforced onboarding: a life created with requireOnboarding accepts only onboarding.* until it has moved in', () => {
+  const state = createLife(null, at(MONDAY_9AM, 'new', { isNew: true, requireOnboarding: true }));
+  assert.deepEqual([state.onboarding.required, state.onboarding.done], [true, false]);
+  assert.equal(viewLife(state, at()).onboarding.required, true);
+  for (const [type, payload] of [['spot', { id: 'trees' }], ['activity', { id: 'chill' }], ['travel', { id: 'home', mode: 'trek' }], ['apply-job', { id: 'tech' }],
+    ['home.grocery-buy', { id: 'rice' }], ['goals.reroll-wish', { slot: 0 }], ['economy.pay-rent', {}], ['cancel', {}]]) {
+    const result = act(state, type, payload);
+    assert.deepEqual([result.ok, result.code], [false, 'onboarding_required'], type);
+    assert.match(result.reason, /Finish creating your Sim first: you are on the Look step/);
+  }
+  assert.deepEqual([state.location, state.cash, state.job, state.activeAction], ['park', 5000, null, null], 'nothing changed');
+  // A reload keeps the rule; the client cannot drop it by saving and restoring.
+  const restored = createLife(JSON.parse(JSON.stringify(state)), at());
+  assert.equal(restored.onboarding.required, true);
+  assert.equal(act(restored, 'spot', { id: 'trees' }).code, 'onboarding_required');
+  onboard(restored);
+  assert.deepEqual([restored.location, restored.onboarding.done, viewLife(restored, at()).onboarding.required], ['home', true, false]);
+  const chip = viewLife(restored, at()).goals.chip;
+  assert.deepEqual([chip.kind, chip.title, chip.step], ['goal', STARTER_GOALS[0].title, 1], 'the goal chip shows the first starter goal');
+  assert.equal(act(restored, 'spot', { id: 'bathroom' }).code, 'selected');
+});
+
+test('onboarding is never forced on a life that predates it, or on one created without the flag', () => {
+  const legacy = createLife({ cash: 4321, location: 'park' }, at());
+  assert.deepEqual([legacy.onboarding.legacy, legacy.onboarding.done, legacy.onboarding.required], [true, true, false]);
+  assert.equal(act(legacy, 'spot', { id: 'trees' }).code, 'selected');
+  // A hostile save cannot turn a legacy life into an un-onboarded one or the reverse.
+  assert.equal(createLife({ onboarding: { required: true } }, at()).onboarding.done, true);
+  const plain = createLife(null, at(MONDAY_9AM, 'plain', { isNew: true }));
+  assert.deepEqual([plain.onboarding.required, plain.onboarding.done, viewLife(plain, at()).onboarding.required], [false, false, false]);
+  assert.equal(act(plain, 'spot', { id: 'trees' }).code, 'selected', 'offered, not enforced');
+  assert.equal(viewLife(plain, at()).goals.chip.kind, 'create');
+});
+
+test('all fourteen career tracks can be applied for, show a work spot, and can be reached on every work day', () => {
+  assert.equal(TRACKS.length, 14);
+  for (const job of TRACKS) {
+    assert.ok(Object.hasOwn(VENUES, job.workplace.venue), `${job.id}: ${job.workplace.venue} is on the map`);
+    const state = createLife({}, at());
+    assert.equal(act(state, 'apply-job', { id: job.id }).code, 'applied', job.id);
+    const spot = spotsOf(job.workplace.venue).find((item) => item.id === 'work');
+    assert.ok(spot?.label && spot.activities.some((def) => def.id === job.shift.id), `${job.id}: the work spot lists the shift`);
+    // On each work day there is a time the venue is open, so travel there is possible that day.
+    const hours = VENUES[job.workplace.venue].hours;
+    for (const weekday of job.days) {
+      const day = lagosTime(MONDAY_9AM).day + ((weekday - 1 + 7) % 7); // the first such weekday on or after that Monday
+      assert.equal(lagosTime(lagosDayStart(day)).weekday, weekday);
+      const open = Array.from({ length: 48 }, (_, half) => lagosDayStart(day) + half * 1800000).some((time) => isOpen(hours, time));
+      assert.ok(open, `${job.id}: ${job.workplace.venue} opens at some time on weekday ${weekday}`);
+    }
+    // One label for the hours: the Jobs card, the your-job card and the Career tab show the map card's text.
+    const view = viewLife(state, at());
+    const card = view.career.jobs.find((item) => item.id === job.id);
+    const mapHours = view.travel.destinations.find((item) => item.id === job.workplace.venue).hours;
+    assert.equal(card.hours, workplaceHoursText(job, at())); assert.equal(view.career.hours, card.hours);
+    assert.ok(card.hours.includes(mapHours === 'Open 24 hours' ? 'Open 24 hours' : `Open ${mapHours}`), `${job.id}: ${card.hours} uses the map label ${mapHours}`);
+    assert.equal(openingInfo(hours, 0).hours, mapHours);
+    assert.equal(card.schedule, scheduleText(job));
+  }
+  assert.equal(viewLife(createLife({}, at()), at()).career.jobs.filter((item) => item.blocked).length, 0, 'no track is blocked for an idle player');
+});
+
+test('a new life starts with the three observed wishes now that their venues exist', () => {
+  const state = onboard(createLife(null, at(MONDAY_9AM, 'wishes', { isNew: true })));
+  assert.deepEqual(viewLife(state, at()).goals.wishes.map((wish) => wish.label), ['Make ₦15,000 today', 'See art at Freedom Park', 'See a movie at The Palms']);
+  // The Palms really has a film to see: the wish can be granted by a real activity.
+  assert.ok(spotsOf('palms').some((spot) => spot.activities.some((def) => !def.unavailable && (def.tags || []).some((tag) => ['movie', 'cinema'].includes(tag)))));
+  assert.ok(spotsOf('park').some((spot) => spot.id === 'art' && spot.activities.some((def) => (def.tags || []).includes('art'))));
+});
+
+test('"Make a new friend" completes from a social activity at a venue until the social system is merged, never from one at home', () => {
+  const state = onboard(createLife(null, at(MONDAY_9AM, 'friend', { isNew: true })));
+  state.goals.chain = STARTER_GOALS.findIndex((goal) => goal.id === 'make-a-friend');
+  const cash = state.cash;
+  // A social-tagged activity at home does not count…
+  const completed = systems().find((system) => system.id === 'goals').on['activity.completed'];
+  completed(state, { id: 'home-play-pet', def: {}, tags: ['fun', 'social', 'home'] }, at());
+  assert.equal(state.cash, cash);
+  // …one at a venue does.
+  state.location = 'amala-shitta'; state.spot = 'kitchen';
+  assert.equal(act(state, 'activity', { id: 'buka-gist' }).code, 'started');
+  advanceLife(state, 8, at(MONDAY_9AM + 8000));
+  assert.equal(state.cash, cash + 1500);
+  assert.equal(state.ledger.at(-1).reason, 'Goal: Make a new friend');
+  assert.equal(viewLife(state, at()).goals.chip.title, 'Work a shift');
+});
+
+test('the Groceries price shown is the price charged; the Buy discount covers furniture and groceries but never cars', () => {
+  const state = onboard(createLife(null, at(MONDAY_9AM, 'shop', { isNew: true })));
+  state.goals.chain = STARTER_GOALS.length;
+  state.goals.perks.push('connected');
+  const view = viewLife(state, at());
+  assert.deepEqual(view.home.groceries.rice, { 1: { price: 540, list: 600 }, 3: { price: 1620, list: 1800 } });
+  for (const [id, packs] of [['rice', 1], ['rice', 3], ['spinach', 3], ['chicken', 1]]) {
+    const before = state.cash;
+    assert.equal(act(state, 'home.grocery-buy', { id, packs }).code, 'delivered');
+    assert.equal(before - state.cash, view.home.groceries[id][packs].price, `${packs} × ${id}`);
+    assert.ok(view.home.groceries[id][packs].price < INGREDIENTS[id].price * packs);
+  }
+  assert.equal(view.home.prices['plastic-chair'], 450);
+  const car = view.property.cars.find((item) => item.id === 'agama-150');
+  assert.deepEqual([car.price, car.listPrice], [CARS['agama-150'].price, CARS['agama-150'].price], 'no discount on a car');
+});
+
+test('an owned car is offered as a travel mode and costs fuel only', () => {
+  const state = createLife({ cash: 1000, location: 'home', property: { house: 'yaba', cars: ['agama-150'], car: 'agama-150' } }, at());
+  const card = viewLife(state, at()).travel.destinations.find((item) => item.id === 'cchub');
+  const car = card.modes.find((mode) => mode.id === 'car');
+  assert.ok(car, 'the car is offered'); assert.equal(car.fare, CARS['agama-150'].fuel); assert.equal(car.fuel, true);
+  assert.equal(act(state, 'travel', { id: 'cchub', mode: 'car' }).code, 'started');
+  assert.equal(state.cash, 1000 - CARS['agama-150'].fuel);
+  const walker = createLife({ location: 'home' }, at());
+  assert.equal(act(walker, 'travel', { id: 'cchub', mode: 'car' }).code, 'travel_mode_unavailable');
+});
+
+test('the Home header data: the house name and district come from the housing content', () => {
+  const state = onboard(createLife(null, at(MONDAY_9AM, 'house', { isNew: true })), { house: 'mushin' });
+  const view = viewLife(state, at());
+  assert.deepEqual([view.property.house.label, view.property.house.district], [HOUSES.mushin.label, 'Mushin']);
+  assert.equal(view.travel.destinations.find((item) => item.id === 'home').district, 'Mushin');
+});
+
+test('the starter helper job cannot outpace a career track', () => {
+  const helper = JOBS['community-helper'];
+  assert.equal(helper.shift.cooldown, 4 * 3600);
+  assert.equal(helper.shift.beta, true);
+  const perDay = Math.floor(86400 / helper.shift.cooldown) * helper.shift.reward;
+  for (const job of TRACKS) assert.ok(perDay < job.ladder[0].pay, `${job.id}: one entry shift (${job.ladder[0].pay}) beats a whole day of helper shifts (${perDay})`);
+});

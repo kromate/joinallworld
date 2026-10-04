@@ -8,7 +8,7 @@ import { systems, registerSystem, emit, actionTypes } from './registry.js';
 import { makeContext } from './util.js';
 import { lagosTime } from './clock.js';
 import { xpForLevel } from './api.js';
-import { JOBS, TRACKS, SHIFT_SECONDS, START_PERFORMANCE } from './content/jobs.js';
+import { JOBS, TRACKS, SHIFT_SECONDS, START_PERFORMANCE, HELPER_COOLDOWN_SECONDS } from './content/jobs.js';
 import { scheduleText, daysText, COMMUTE_SECONDS } from './systems/career.js';
 import { RENTS, LOAN, billingWeek, dueAt, DEPOSIT_TOTAL_CAP, MAX_CATCHUP_WEEKS, LOAN_LATE_FEE } from './systems/economy.js';
 import { fixture } from '../../server/test-fixture.js';
@@ -144,7 +144,7 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
   const applied = player.act('apply-job', { id: 'teaching' });
   assert.equal(applied.code, 'applied'); assert.equal(player.state.job, 'teaching');
   assert.match(player.state.message, /Hired as Lesson Teacher .*₦3,000 per shift.*first shift today/);
-  assert.deepEqual(events('job.applied').at(-1), { job: 'teaching' });
+  assert.deepEqual(events('job.applied').at(-1), { job: 'teaching', maxLevel: 6 });
   let view = player.view().career;
   assert.deepEqual([view.level, view.role, view.pay, view.performance, view.auto], [1, 'Lesson Teacher', 3000, START_PERFORMANCE, true]);
   assert.equal(view.today.code, 'available'); assert.equal(view.nextShift, 'Next shift: now');
@@ -169,7 +169,7 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
   assert.equal(player.state.skills.charisma, 25); assert.equal(player.state.career.performance, 60);
   assert.equal(player.state.completedShifts, 1); assert.equal(player.state.career.shifts, 1);
   assert.deepEqual(player.state.ledger.at(-1).reason, 'Teaching shift'); assert.equal(player.state.ledger.at(-1).amount, 3000);
-  assert.deepEqual(events('shift.completed').at(-1), { job: 'teaching', activity: 'teaching-shift', pay: 3000, level: 1 });
+  assert.deepEqual(events('shift.completed').at(-1), { job: 'teaching', activity: 'teaching-shift', pay: 3000, level: 1, maxLevel: 6 });
   assert.match(player.state.message, /earned ₦3,000\. Performance 60%\. Next shift: tomorrow \(Tuesday\)/);
 
   // Same Lagos day: no second paid shift, however long we wait or however often we reload.
@@ -251,7 +251,7 @@ test('promotion needs 100% performance and the track skill; pay follows the leve
   assert.deepEqual([player.state.career.level, player.state.career.performance, player.state.skills.charisma], [1, 90, 100]);
   assert.equal(player.shift().code, 'started'); // fifth shift: 100% and Charisma 1
   assert.deepEqual([player.state.career.level, player.state.career.performance], [2, START_PERFORMANCE]);
-  assert.deepEqual(events('promotion'), [{ job: 'teaching', level: 2, role: 'Class Teacher' }]);
+  assert.deepEqual(events('promotion'), [{ job: 'teaching', level: 2, role: 'Class Teacher', maxLevel: 6, top: false }]);
   assert.equal(events('shift.completed').at(-1).pay, 3000, 'the promoting shift was worked and paid at level 1');
   assert.match(player.state.message, /Promoted to Class Teacher! Teaching shifts now pay ₦4,500/);
   assert.ok(player.state.moodlets.some((moodlet) => moodlet.id === 'promoted'));
@@ -272,7 +272,7 @@ test('promotion needs 100% performance and the track skill; pay follows the leve
   player.state.skills.charisma = xpForLevel(2) - 25;
   player.step(DAY); assert.equal(player.shift().code, 'started');
   assert.equal(player.state.career.level, 3);
-  assert.deepEqual(events('promotion').at(-1), { job: 'teaching', level: 3, role: 'Subject Lead' });
+  assert.deepEqual(events('promotion').at(-1), { job: 'teaching', level: 3, role: 'Subject Lead', maxLevel: 6, top: false });
 
   // The top of the ladder has no next promotion and performance stays capped.
   const top = life({ job: 'teaching', career: { level: 6, performance: 100, oriented: true }, skills: { charisma: xpForLevel(10) } });
@@ -326,7 +326,8 @@ test('Go automatically starts one free, cancellable commute per Lagos day and on
   assert.deepEqual(resumed.activeAction, player.state.activeAction, 'a commute survives a reload');
   player.step(COMMUTE_SECONDS);
   assert.equal(player.state.location, 'park'); assert.equal(player.state.activeAction, null); assert.equal(player.state.cash, 5000);
-  assert.match(player.state.message, /Open the Community desk spot to start your Teaching shift/);
+  assert.equal(player.state.spot, 'work', 'the commute arrives at the work spot');
+  assert.match(player.state.message, /at the Community desk spot\. Start your Teaching shift/);
   // Leaving again the same day does not drag the player back.
   player.state.location = 'home'; player.state.spot = 'kitchen';
   player.step(600);
@@ -353,14 +354,20 @@ test('Go automatically starts one free, cancellable commute per Lagos day and on
   assert.equal(helper.state.activeAction, null, 'the starter job never commutes on its own');
 });
 
-test('the starter Community helper job keeps its original rules for old saves', () => {
+test('the starter Community helper job still works for old saves, one shift per four hours', () => {
   const player = life({ job: 'community-helper', completedShifts: 7, spot: 'work' });
   assert.equal(player.state.job, 'community-helper');
-  for (let i = 0; i < 2; i++) { assert.equal(player.act('activity', { id: 'helper-shift' }).code, 'started'); player.step(20); player.rest(); }
+  assert.equal(player.act('activity', { id: 'helper-shift' }).code, 'started'); player.step(20); player.rest();
+  const soon = player.act('activity', { id: 'helper-shift' });
+  assert.equal(soon.code, 'cooldown'); assert.match(soon.reason, /available again in 2\d\dm/); assert.equal(player.state.cash, 5300);
+  player.step(HELPER_COOLDOWN_SECONDS); player.rest();
+  assert.equal(player.act('activity', { id: 'helper-shift' }).code, 'started'); player.step(20); player.rest();
+  // Played round the clock the starter job still earns less in a day than one shift of the lowest-paid track.
+  assert.ok(Math.floor(DAY / HELPER_COOLDOWN_SECONDS) * JOBS['community-helper'].shift.reward < Math.min(...TRACKS.map((job) => job.ladder[0].pay)));
   assert.deepEqual([player.state.cash, player.state.completedShifts], [5600, 9]);
   assert.deepEqual(events('shift.completed').at(-1), { job: 'community-helper', activity: 'helper-shift', pay: 300, level: 1 });
   const view = player.view().career;
-  assert.deepEqual([view.isTrack, view.level, view.next, view.schedule, view.job.id], [false, null, null, 'Shifts any time, any day', 'community-helper']);
+  assert.deepEqual([view.isTrack, view.level, view.next, view.schedule, view.job.id], [false, null, null, 'One shift every 4 hours, any day', 'community-helper']);
 });
 
 test('career sanitize rebuilds every field from hostile input', () => {

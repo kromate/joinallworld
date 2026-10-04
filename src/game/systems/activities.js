@@ -103,13 +103,19 @@ export const spotsOf = (venueId) => Object.values(index().venues[venueId] || {})
 export const defaultSpot = (venueId) => spotsOf(venueId)[0]?.id ?? null;
 export const findActivity = (id) => (typeof id === 'string' ? index().byId.get(id) : undefined);
 
-/** Put the player in a venue (used by travel on arrival). */
-export function arrive(state, venueId, ctx) {
+/**
+ * Put the player in a venue (used by travel, the commute and moving in).
+ *   options.spot   stand at this spot on arrival if the venue has it (default: the first spot)
+ *   options.mode   how the player got there: a travel mode id, or null when no vehicle was used
+ * Anything else in `options` is passed through to the 'travel.arrived' listeners, so every
+ * system sees the same { venue, from, mode, ... } whatever order it was registered in.
+ */
+export function arrive(state, venueId, ctx, { spot, mode = null, ...extra } = {}) {
   if (!Object.hasOwn(VENUES, venueId)) return false;
   const from = state.location;
   state.location = venueId;
-  state.spot = defaultSpot(venueId);
-  emit(state, 'travel.arrived', { venue: venueId, from }, ctx);
+  state.spot = typeof spot === 'string' && Object.hasOwn(index().venues[venueId] || {}, spot) ? spot : defaultSpot(venueId);
+  emit(state, 'travel.arrived', { ...extra, venue: venueId, from, mode }, ctx);
   return true;
 }
 

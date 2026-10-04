@@ -15,13 +15,17 @@ export const isNight = (ms) => { const { hour } = lagosTime(ms); return hour >= 
 const mult = (value) => (finite(value) && value >= 0 ? value : 1);
 const tagged = (rule, def) => Boolean(rule && Array.isArray(def?.tags) && rule.tags.some((tag) => def.tags.includes(tag)));
 
+/** Purchase kinds the `shop` multiplier applies to. */
+export const SHOP_KINDS = Object.freeze(['furniture', 'grocery']);
+
 const FOLDS = {
   'needs.decayRate': (fx, data, ctx) => mult(fx.decay?.all) * mult(fx.decay?.[data?.need]) * (fx.nightDecay && isNight(ctx?.now) ? mult(fx.nightDecay[data?.need]) : 1),
   'skills.xpRate': (fx, data) => mult(fx.xp?.all) * mult(fx.xp?.[data?.skill]),
   'activity.cost': (fx, data) => (tagged(fx.cost, data?.def) ? mult(fx.cost.mult) : 1),
   'activity.reward': (fx, data) => (tagged(fx.reward, data?.def) ? mult(fx.reward.mult) : 1),
   'travel.fare': (fx) => mult(fx.fare),
-  'shop.price': (fx) => mult(fx.shop),
+  // The Buy-mode discount covers furniture and groceries only — never cars (data.kind is set by the seller).
+  'shop.price': (fx, data) => (SHOP_KINDS.includes(data?.kind) ? mult(fx.shop) : 1),
   'social.gain': (fx) => mult(fx.social),
   'career.performance': (fx) => mult(fx.performance),
 };

@@ -21,7 +21,8 @@
  * Listens 'life.started' { house }             sets the starting house at the end of onboarding (free)
  *
  * Modifiers implemented here (the travel system calls them; without an owned car they change nothing)
- *   'travel.modes'     base: the list (array) or map (object keyed by id) of travel modes.
+ *   'travel.modes'     base: the list of offered mode ids (what systems/travel.js passes — 'car' is
+ *                      appended), or a list / map of mode objects.
  *                      Adds { id: 'car', label, icon, fare: <fuel>, fuelOnly: true, car: <car id> }.
  *   'travel.fare'      data { mode, destination } — for mode 'car' the fare is the car's fuel cost
  *   'travel.duration'  data { mode, destination } — for mode 'car' the time is multiplied by the car's speed
@@ -128,6 +129,8 @@ export default {
     'travel.modes'(value, state) {
       const car = drivenCar(state);
       if (!car) return value;
+      // The travel system asks with a list of mode ids; adding 'car' offers the own-car mode.
+      if (Array.isArray(value) && value.every((mode) => typeof mode === 'string')) return [...value.filter((mode) => mode !== CAR_MODE.id), CAR_MODE.id];
       if (Array.isArray(value)) return [...value.filter((mode) => mode?.id !== CAR_MODE.id), carMode(car)];
       if (isRecord(value)) return { ...value, [CAR_MODE.id]: carMode(car) };
       return value;

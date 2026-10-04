@@ -53,7 +53,7 @@
  *                         complete(state, active, ctx), cancel?(state, active, ctx) } },
  *   };
  *
- * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId? }`:
+ * ctx (built by makeContext in util.js) is `{ now, cityId, rng, isNew?, actionId?, requireOnboarding? }`:
  *   now     server time in ms — the only clock you may read (see clock.js for Lagos time)
  *   cityId  the city this life belongs to
  *   rng     () => float in [0,1), seeded from the action ID or the settlement interval, so
@@ -61,7 +61,8 @@
  *
  * WHAT YOU MAY IMPORT (inside src/game/)
  *   registry.js (emit, modify), util.js, clock.js, api.js (core systems' public functions:
- *   wallet, needs, skills, inventory, activities, arrival) and any file in content/.
+ *   wallet, needs, skills, inventory, activities, arrive(state, venue, ctx, { spot?, mode? })) and
+ *   any file in content/.
  * WHAT YOU MAY NOT IMPORT
  *   another feature system (systems/*.js other than through api.js), src/life.js, anything
  *   under src/ui, src/scene or server/, Node built-ins, or browser globals.
@@ -104,7 +105,7 @@
  *   'action.cancelled'   { kind, id }
  *   'wallet.changed'     { amount, reason, balance }
  *   'skill.levelup'      { skill, level }
- *   'travel.arrived'     { venue, from }
+ *   'travel.arrived'     { venue, from, mode }   mode is a travel mode id, or null (commute, moving in)
  *   'job.applied'        { job }            (ported starter job)
  *   'shift.completed'    { job, activity }  (ported starter job)
  * Modifier keys consulted by the foundation (base value → your adjusted value):
@@ -113,6 +114,9 @@
  *   'activity.cost'    data { def }    base def.cost
  *   'activity.reward'  data { def }    base def.reward
  *   'activity.block'   data { def }    base null — return { code, reason } to veto a start
+ *   'action.block'     data { type, payload }  base null — return { code, reason } to veto ANY action
+ *                      before its handler runs (dispatch asks for every action type). Pass a veto
+ *                      from an earlier system through unchanged: `if (value) return value`.
  *   'travel.fare'      data { mode, destination }  base fare
  * Owners add their own names as `<system>.<thing>` (e.g. 'shop.price', 'friend.made') and
  * list them in their file header. Listeners must tolerate events they do not know.

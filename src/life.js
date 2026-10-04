@@ -16,8 +16,8 @@
  * fields that did not exist when a save was written simply start at their defaults.
  */
 import './game/systems/index.js';
-import { systems, actionHandler, hasAction, actionTypes } from './game/registry.js';
-import { finite, isRecord, makeContext } from './game/util.js';
+import { systems, actionHandler, hasAction, actionTypes, modify } from './game/registry.js';
+import { fail, finite, isRecord, makeContext } from './game/util.js';
 import { STATE_VERSION, sanitizeActive, advanceActive } from './game/systems/core.js';
 import { NEEDS } from './game/systems/needs.js';
 import { VENUES } from './game/content/venues.js';
@@ -65,6 +65,8 @@ export function createLife(saved, ctx) {
 /**
  * Apply one action. `body` is `{ type, payload? }`; the legacy top-level `id` and `mode`
  * fields are folded into the payload. Throws for an unknown type (callers validate first).
+ * Before the handler runs every system may veto the action through the 'action.block' modifier
+ * (data { type, payload }); a veto is an ordinary failure with its code and reason.
  */
 export function dispatch(state, body, ctx) {
   const handler = actionHandler(body?.type);
@@ -72,7 +74,10 @@ export function dispatch(state, body, ctx) {
   const payload = { ...(isRecord(body.payload) ? body.payload : {}) };
   if (body.id !== undefined && payload.id === undefined) payload.id = body.id;
   if (body.mode !== undefined && payload.mode === undefined) payload.mode = body.mode;
-  return handler(state, payload, contextFor(state, ctx, `action|${body.actionId ?? ''}`));
+  const context = contextFor(state, ctx, `action|${body.actionId ?? ''}`);
+  const veto = modify(state, 'action.block', null, { type: body.type, payload }, context);
+  if (isRecord(veto) && typeof veto.code === 'string') return fail(state, veto.code, typeof veto.reason === 'string' ? veto.reason : 'That is not possible right now.');
+  return handler(state, payload, context);
 }
 
 /**

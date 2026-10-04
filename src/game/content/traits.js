@@ -15,7 +15,7 @@
  *   performance mult                               'career.performance' (applied to gains only)
  *   social      mult                               'social.gain' (applied to gains only)
  *   fare        mult                               'travel.fare'
- *   shop        mult                               'shop.price'
+ *   shop        mult                               'shop.price' for furniture and groceries (never cars)
  *   cost        { tags: [...], mult }              'activity.cost' for activities with any tag
  *   reward      { tags: [...], mult }              'activity.reward' for activities with any tag
  *   bonus       { tags: [...], needs: { ... } }    extra need change when such an activity completes
@@ -132,7 +132,7 @@ export const DREAMS = {
 };
 /** Original beta values: what completing a dream pays, once. */
 export const DREAM_REWARD = { beta: true, cash: 50000, stars: 10 };
-export const DREAM_TARGETS = { beta: true, netWorth: 1000000, bestFriends: 4, careerTopLevel: 8, codingLevel: 8, hustleLevel: 5,
+export const DREAM_TARGETS = { beta: true, netWorth: 1000000, bestFriends: 4, careerTopLevel: 6, codingLevel: 8, hustleLevel: 5,
   /** One-off cash when the startup pitch succeeds. */ funding: 250000 };
 
 // ---- Starting homes ----------------------------------------------------------------------

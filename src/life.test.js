@@ -312,7 +312,11 @@ test('midshift reload completes reward and costs exactly once; completed saves c
   advanceLife(completed, 100);
   assert.equal(completed.cash, 5300);
   assert.equal(completed.completedShifts, 1);
-  startActivity(completed, 'helper-shift');
+  // The starter shift has a four-hour break: an immediate second shift is refused and changes nothing.
+  assert.equal(startActivity(completed, 'helper-shift').code, 'cooldown');
+  assert.equal(completed.activeAction, null); assert.equal(completed.cash, 5300);
+  advanceLife(completed, 4 * 3600);
+  assert.equal(startActivity(completed, 'helper-shift').code, 'started');
   advanceLife(completed, 20);
   assert.equal(completed.cash, 5600);
   assert.equal(completed.completedShifts, 2);

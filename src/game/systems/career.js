@@ -15,15 +15,21 @@
  *   - Each completed shift adds performance (base PERFORMANCE_PER_SHIFT, adjusted by the
  *     'career.performance' modifier). Performance never falls. At 100% with the track skill at
  *     the next role's level the player is promoted on the spot and performance restarts at 50%.
- *   - "Go automatically" (on by default): when a shift can be worked and the minimum needs are
- *     met, the server starts a free, cancellable commute to the workplace — at most once per
- *     Lagos day, and never while another timed action is running.
+ *   - "Go automatically" (on by default): when a shift can be worked, the workplace is open and
+ *     the minimum needs are met, the server starts a free, cancellable commute to the workplace
+ *     — at most once per Lagos day, and never while another timed action is running. The
+ *     commute arrives at the workplace's `work` spot.
+ *   - WORKPLACE HOURS. A shift itself ignores opening hours (staff inside can clock in at any
+ *     hour), but getting there does not: travel and the commute are refused while the venue is
+ *     closed. Every track's venue is open at some time on each of its work days (asserted in
+ *     career.test.js), and the Jobs and Career screens show the venue's hours next to the
+ *     schedule using the same label as the map (clock.openingInfo).
  *   - Switching tracks restarts at level 1 and 50% performance. 'apply-job' never switches: a
  *     switch is its own action, so no client can skip the warning by accident.
- *   - One job at a time: taking a career job replaces the starter job and vice versa, so the
- *     starter job's unlimited shifts can never be worked alongside a career.
- *   - The starter Community helper job keeps its original rules: any time, no daily limit, no
- *     ladder, no automatic commute.
+ *   - One job at a time: taking a career job replaces the starter job and vice versa.
+ *   - The starter Community helper job (original beta gameplay, kept for existing saves): any
+ *     time of day, no ladder, no automatic commute, and one shift per HELPER_COOLDOWN_SECONDS
+ *     so it can never out-earn a career track.
  *
  * ACTIONS
  *   'apply-job'      { id }          apply while unemployed. Holding another job it is refused with
@@ -49,7 +55,8 @@
  *   'job.applied'     { job }
  *   'job.quit'        { job }
  *   'shift.completed' { job, activity, pay, level }   level and pay are those the shift was worked at
- *   'promotion'       { job, level, role }
+ *   'promotion'       { job, level, role, maxLevel, top }   maxLevel = levels in the track's ladder
+ *   ('job.applied' and 'shift.completed' carry maxLevel too, for track jobs)
  * MODIFIERS ASKED
  *   'career.performance'  data { job, level }  base PERFORMANCE_PER_SHIFT — performance gained by a shift
  * MODIFIERS CONTRIBUTED
@@ -60,9 +67,9 @@
  */
 import { emit, modify } from '../registry.js';
 import { cap, clamp, fail, isRecord, naira, ok, safeCount } from '../util.js';
-import { lagosTime, WEEKDAYS } from '../clock.js';
+import { lagosTime, openingInfo, WEEKDAYS } from '../clock.js';
 import { addMoodlet, arrive, skillLevel, spotsOf } from '../api.js';
-import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIFT } from '../content/jobs.js';
+import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIFT, HELPER_COOLDOWN_SECONDS } from '../content/jobs.js';
 import { VENUES, venueLabel } from '../content/venues.js';
 
 /** Seconds the automatic commute takes (original beta value). */
@@ -93,8 +100,20 @@ export function daysText(days) {
  * all show this string, so two screens can never disagree about when a job is worked.
  */
 export function scheduleText(job) {
-  if (!job.track) return 'Shifts any time, any day';
+  if (!job.track) return `One shift every ${HELPER_COOLDOWN_SECONDS / 3600} hours, any day`;
   return `One paid shift per work day, any time · ${job.days.length} days a week (${daysText(job.days)})`;
+}
+
+/** Opening state of a job's workplace venue (null hours = always open). */
+const workplaceOpening = (job, state, ctx) => openingInfo(VENUES[job.workplace.venue]?.hours, nowOf(state, ctx));
+/**
+ * The single workplace-hours sentence, shown next to the schedule in Jobs and Career. The hours
+ * come from the same clock.openingInfo label the map card uses.
+ */
+export function workplaceHoursText(job, ctx) {
+  if (!workplaceOpen(job)) return `${cap(job.workplaceName)} is not open in this build yet.`;
+  const hours = openingInfo(VENUES[job.workplace.venue].hours, 0);
+  return hours.always ? `${placeName(job, ctx)} · Open 24 hours` : `${placeName(job, ctx)} · Open ${hours.hours} — you can only travel there while it is open`;
 }
 
 function nextWorkDay(job, weekday) {
@@ -113,7 +132,7 @@ function nextWorkDay(job, weekday) {
 export function shiftStatus(state, ctx) {
   const job = jobOf(state.job);
   if (!job) return { code: 'no_job', canWork: false, text: 'No job yet.', next: 'after you apply for a job' };
-  if (!job.track) return { code: 'available', canWork: true, text: 'Starter job: work a shift any time, as often as you like.', next: 'now' };
+  if (!job.track) return { code: 'available', canWork: true, text: `Starter job: a shift at any hour, then a ${HELPER_COOLDOWN_SECONDS / 3600}-hour break before the next one.`, next: 'now' };
   const today = lagosTime(nowOf(state, ctx));
   const career = state.career;
   const upcoming = nextWorkDay(job, today.weekday);
@@ -151,7 +170,7 @@ function tryPromote(state, ctx) {
   state.career.performance = START_PERFORMANCE;
   state.message = `Promoted to ${next.role}! ${job.label} shifts now pay ${naira(next.pay)}.`;
   addMoodlet(state, { id: 'promoted', label: 'Promoted', value: 8, duration: 3600 }, ctx); // original beta value
-  emit(state, 'promotion', { job: job.id, level: next.level, role: next.role }, ctx);
+  emit(state, 'promotion', { job: job.id, level: next.level, role: next.role, maxLevel: job.ladder.length, top: next.level >= job.ladder.length }, ctx);
   return true;
 }
 
@@ -161,6 +180,7 @@ function maybeCommute(state, ctx) {
   if (!job?.track || !state.career.auto || state.activeAction || !workplaceOpen(job) || state.location === job.workplace.venue) return false;
   const today = lagosTime(nowOf(state, ctx)).day;
   if (state.career.autoDay === today || !shiftStatus(state, ctx).canWork || shortNeeds(state, job).length) return false;
+  if (!workplaceOpening(job, state, ctx).open) return false; // closed: try again on a later settlement the same day
   state.career.autoDay = today;
   state.activeAction = { kind: 'commute', id: job.workplace.venue, duration: COMMUTE_SECONDS, remaining: COMMUTE_SECONDS };
   state.message = `Go automatically: heading to ${placeName(job, ctx)} for today’s shift. Cancel to stay where you are.`;
@@ -190,7 +210,7 @@ function apply(state, payload, ctx, switching = false) {
     const status = shiftStatus(state, ctx);
     state.message = `Hired as ${job.ladder[0].role} (${job.label}), ${naira(job.ladder[0].pay)} per shift at ${place}. ${status.canWork ? 'You can work your first shift today.' : `Next shift: ${status.next}.`}`;
   }
-  emit(state, 'job.applied', { job: job.id }, ctx);
+  emit(state, 'job.applied', { job: job.id, ...(job.track ? { maxLevel: job.ladder.length } : {}) }, ctx);
   maybeCommute(state, ctx);
   return ok(state, old ? 'switched' : 'applied');
 }
@@ -226,6 +246,10 @@ function nextStep(state, ctx, job, status) {
   }
   const facts = `It takes ${shift.duration} seconds and pays ${naira(pay)}.`;
   if (state.activeAction) return { kind: 'wait', text: `Finish what you are doing, then go to ${place} for today’s shift. ${facts}` };
+  const opening = workplaceOpening(job, state, ctx);
+  if (state.location !== job.workplace.venue && !opening.open) {
+    return { kind: 'wait', text: `${place} is closed right now${opening.opensAt ? `: it opens ${opening.opensAt}` : ''}. Travel there once it is open to work today’s shift. ${facts}` };
+  }
   if (state.location !== job.workplace.venue) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `Go to ${place} and open the ${spotName(job)} spot to start today’s shift. ${facts}` };
   if (state.spot !== job.workplace.spot) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `You are at ${place}. Open the ${spotName(job)} spot to start today’s shift. ${facts}` };
   return { kind: 'start', text: `You are at work. Close this and tap “${shift.label}” to start. ${facts}` };
@@ -270,9 +294,9 @@ export default {
         return job?.track && value.id === job.workplace.venue && value.id !== state.location && value.duration === COMMUTE_SECONDS ? {} : null;
       },
       complete(state, active, ctx) {
-        if (!arrive(state, active.id, ctx)) return;
         const job = jobOf(state.job);
-        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}. Open the ${job ? spotName(job) : 'Work'} spot to start ${job ? `your ${job.label} shift` : 'your shift'}.`;
+        if (!arrive(state, active.id, ctx, { spot: job?.workplace.spot, mode: null })) return;
+        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}, at the ${job ? spotName(job) : 'Work'} spot. Start ${job ? `your ${job.label} shift` : 'your shift'} when you are ready.`;
       },
     },
   },
@@ -307,7 +331,7 @@ export default {
         const gain = Number(modify(state, 'career.performance', PERFORMANCE_PER_SHIFT, { job: job.id, level }, ctx));
         career.performance = clamp(career.performance + (Number.isFinite(gain) ? Math.max(0, gain) : 0));
       }
-      emit(state, 'shift.completed', { job: def.requiresJob, activity: def.id, pay, level }, ctx);
+      emit(state, 'shift.completed', { job: def.requiresJob, activity: def.id, pay, level, ...(job?.track ? { maxLevel: job.ladder.length } : {}) }, ctx);
       if (job?.track && !tryPromote(state, ctx)) {
         const next = nextPromotion(state, job);
         state.message = `${def.label} completed. You earned ${naira(pay)}. Performance ${Math.floor(career.performance)}%. Next shift: ${shiftStatus(state, ctx).next}.${next && next.performanceMet && !next.skillMet ? ` Promotion to ${next.role} is waiting on ${cap(job.skill)} level ${next.skillLevel}.` : ''}`;
@@ -346,13 +370,15 @@ export default {
       next: nextPromotion(state, job),
       topOfLadder: Boolean(job?.track && career.level >= job.ladder.length),
       auto: career.auto,
-      workplace: job ? { venue: job.workplace.venue, spot: job.workplace.spot, label: placeName(job, ctx) } : null,
+      workplace: job ? { venue: job.workplace.venue, spot: job.workplace.spot, label: placeName(job, ctx), open: workplaceOpening(job, state, ctx).open, status: workplaceOpening(job, state, ctx).status } : null,
+      hours: job ? workplaceHoursText(job, ctx) : null,
       shift: job ? { id: job.shift.id, label: job.shift.label, duration: job.shift.duration, minimumNeeds: job.shift.minimumNeeds, effects: job.shift.effects, xp: job.shift.xp || {} } : null,
       step: nextStep(state, ctx, job, status),
       busy: Boolean(state.activeAction),
       rules: [
         'Applying is free and hires you at once.',
         'One paid shift per Lagos day, at any hour, on your work days. Your first ever shift can also be worked on a day off.',
+        'You can only travel to a workplace while it is open; each track lists its workplace hours.',
         'You are paid when the shift finishes. Cancelling earns nothing and costs nothing.',
         `Each shift adds about ${PERFORMANCE_PER_SHIFT}% performance; it never drops. Promotion needs 100% plus the track skill.`,
       ],
@@ -367,7 +393,7 @@ export default {
           entryRole: item.track ? item.ladder[0].role : item.label,
           pay: item.track ? item.ladder[0].pay : item.shift.reward,
           topRole: item.track ? item.ladder.at(-1).role : null,
-          summary: item.summary || '', schedule: scheduleText(item),
+          summary: item.summary || '', schedule: scheduleText(item), hours: workplaceHoursText(item, ctx),
           skill: item.skill ?? null, duration: item.shift.duration,
           workplace: placeName(item, ctx), blocked,
           switchWarning: job && !current ? `You will leave ${job.label}${job.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? item.ladder[0].role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,

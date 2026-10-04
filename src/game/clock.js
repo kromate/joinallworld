@@ -65,3 +65,26 @@ export function formatClock(ms) {
   const time = lagosTime(ms);
   return `${WEEKDAYS[time.weekday].slice(0, 3)} · ${time.hour % 12 || 12}:${String(time.minute).padStart(2, '0')} ${time.hour < 12 ? 'AM' : 'PM'}`;
 }
+
+const waitLabel = (minutes) => (minutes >= 60 ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : `${minutes}m`);
+
+/**
+ * Opening state of a place's hours at `now`, with the one label every screen shows (map card,
+ * Ride app, Jobs and Career). Shared by systems/travel.js and systems/career.js so a venue's
+ * hours can never be described two ways.
+ * @returns {{ open, always, hours, status, minutes, opensAt }}
+ *   hours   'Open 24 hours' | '8AM – 10PM'
+ *   status  'Open 24 hours' | 'Open now · closes 10PM' | 'Closed · opens 8AM (in 5h 19m)'
+ */
+export function openingInfo(hours, now) {
+  if (!hours) return { open: true, always: true, hours: 'Open 24 hours', status: 'Open 24 hours', minutes: 0, opensAt: null };
+  const range = `${formatHour(hours.open)} – ${formatHour(hours.close)}`;
+  if (isOpen(hours, now)) return { open: true, always: false, hours: range, status: `Open now · closes ${formatHour(hours.close)}`, minutes: 0, opensAt: null };
+  let minutes;
+  if (hours.days) minutes = minutesUntilOpen(hours, now);
+  else { const gap = Math.round(hours.open * 60) - lagosTime(now).minuteOfDay; minutes = ((gap % 1440) + 1440) % 1440 || 1440; }
+  if (minutes === Infinity) return { open: false, always: false, hours: range, status: 'Closed', minutes, opensAt: null };
+  const day = minutes >= 1440 ? `${WEEKDAYS[lagosTime(now + minutes * 60000).weekday].slice(0, 3)} ` : '';
+  const opensAt = `${day}${formatHour(hours.open)}`;
+  return { open: false, always: false, hours: range, status: `Closed · opens ${opensAt} (in ${waitLabel(minutes)})`, minutes, opensAt };
+}

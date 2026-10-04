@@ -322,7 +322,7 @@ test('traits and lottery outcomes change play through the modifier keys', () => 
 test('starter goals pay the observed rewards from events, once each, with a ledger line and a toast', () => {
   assert.deepEqual(STARTER_GOALS.map(goal => [goal.title, goal.hint, goal.cash, goal.stars]), [
     ['Eat something', 'Tap the cooler or stove', 500, 1], ['Freshen up', 'Tap the bucket or shower', 500, 1], ['Get a job', 'Open Phone → Jobs', 1000, 1],
-    ['Buy something new', 'Open Buy and place an item', 1000, 1], ['Visit the buka', 'Open Map → Amala Shitta', 1500, 1], ['Make a new friend', 'Tap someone at a venue', 1500, 1],
+    ['Buy something new', 'Open Buy and place an item', 1000, 1], ['Visit the buka', 'Open Map → Amala Shitta', 1500, 1], ['Make a new friend', 'Gist with someone at any venue', 1500, 1],
     ['Work a shift', 'Leave for work on time', 2000, 1]]);
   assert.deepEqual(STARTER_GOALS.filter(goal => goal.betaFields).map(goal => goal.id), ['visit-buka', 'work-a-shift']);
 
@@ -477,7 +477,10 @@ test('perks: the eight observed ones, original ones up to 25 stars, bought once 
   buy('early-bird'); near(modify(state, 'needs.decayRate', 1, { need: 'energy' }, day), 0.75, 'early bird');
   buy('never-dull'); near(modify(state, 'needs.decayRate', 1, { need: 'fun' }, day), 0.75, 'never dull');
   buy('sweet-mouth'); near(modify(state, 'social.gain', 100, {}, day), 115, 'sweet mouth');
-  buy('connected'); near(modify(state, 'shop.price', 500, { item: {} }, day), 450, 'connected');
+  buy('connected'); near(modify(state, 'shop.price', 500, { item: {}, kind: 'furniture' }, day), 450, 'connected: furniture');
+  near(modify(state, 'shop.price', 600, { item: {}, kind: 'grocery' }, day), 540, 'connected: groceries');
+  near(modify(state, 'shop.price', 350000, { item: {}, kind: 'car' }, day), 350000, 'connected never discounts a car');
+  near(modify(state, 'shop.price', 500, { item: {} }, day), 500, 'no discount without a known purchase kind');
   buy('hustle-juice'); near(modify(state, 'career.performance', 4, {}, day), 5, 'hustle juice');
   buy('fast-learner'); near(modify(state, 'skills.xpRate', 1, { skill: 'dance' }, day), 1.2, 'fast learner');
   near(modify(state, 'skills.xpRate', 1, { skill: 'music' }, day), 1.2 * 1.25, 'fast learner stacks with a trait');
@@ -504,13 +507,15 @@ test('the lifetime dream has measurable progress and pays its reward once', () =
   const percent = (state) => viewLife(state, at()).goals.dream.percent;
   const oga = started({ outcome: 'civil-servant', dream: 'oga-at-the-top' });
   assert.equal(percent(oga), 0);
-  emit(oga, 'shift.completed', { job: 'tech', pay: 3600, level: 1 }, at()); assert.equal(percent(oga), 12);
-  emit(oga, 'promotion', { job: 'tech', level: 4, role: 'Senior Dev' }, at()); assert.equal(percent(oga), 50);
-  emit(oga, 'promotion', { job: 'tech', level: 5, role: 'CTO', top: true }, at());
+  // The career system reports the ladder size (maxLevel) with every shift and promotion.
+  emit(oga, 'shift.completed', { job: 'tech', pay: 3600, level: 1, maxLevel: 6 }, at()); assert.equal(percent(oga), 16);
+  emit(oga, 'promotion', { job: 'tech', level: 3, role: 'Developer', maxLevel: 6, top: false }, at()); assert.equal(percent(oga), 50);
+  assert.equal(oga.goals.dreamDone, false);
+  emit(oga, 'promotion', { job: 'tech', level: 6, role: 'CTO', maxLevel: 6, top: true }, at());
   assert.equal(percent(oga), 100); assert.equal(oga.goals.dreamDone, true);
   assert.equal(oga.goals.feed.at(-1).text, `Dream achieved: Oga at the Top · +₦50,000 +${DREAM_REWARD.stars}✨`);
   const cash = oga.cash, stars = oga.goals.stars;
-  emit(oga, 'promotion', { job: 'tech', level: 5, role: 'CTO', top: true }, at()); advanceLife(oga, 60, at(START + 60000));
+  emit(oga, 'promotion', { job: 'tech', level: 6, role: 'CTO', maxLevel: 6, top: true }, at()); advanceLife(oga, 60, at(START + 60000));
   assert.equal(oga.cash, cash); assert.equal(oga.goals.stars, stars); assert.equal(oga.ledger.filter(entry => entry.reason.startsWith('Dream achieved')).length, 1);
 
   const landlord = started({ outcome: 'lapo-baby', dream: 'lekki-landlord' });
@@ -529,7 +534,16 @@ test('the lifetime dream has measurable progress and pays its reward once', () =
   assert.equal(percent(padi), 50, 'friends beyond four add nothing');
   for (let i = 0; i < 3; i++) emit(padi, 'friend.best', { id: `f${i}`, npc: `n${i}` }, at());
   assert.equal(percent(padi), 87); assert.equal(padi.goals.dreamDone, false);
+  // The same best friend reported again, in either shape, is not counted twice.
+  emit(padi, 'friend.best', { id: 'f2', npc: 'n2' }, at()); assert.equal(padi.goals.stats.best, 3);
   emit(padi, 'friend.best', { id: 'f3', npc: 'n3' }, at()); assert.equal(padi.goals.dreamDone, true);
+  // Both shapes the social system may use are understood: friend.made { best: true } and friend.best.
+  const both = started({ outcome: 'civil-servant', dream: 'everybodys-padi' });
+  emit(both, 'friend.made', { id: 'amaka', best: true }, at()); emit(both, 'friend.best', { id: 'amaka' }, at());
+  assert.deepEqual([both.goals.stats.friends, both.goals.stats.best, both.goals.besties], [1, 1, ['amaka']]);
+  emit(both, 'friend.best', { id: 'tunde' }, at()); emit(both, 'friend.made', { best: true }, at());
+  assert.deepEqual([both.goals.stats.friends, both.goals.stats.best], [2, 3]);
+  assert.deepEqual(createLife(structuredClone(both), at()), both);
 
   const unicorn = started({ outcome: 'lapo-baby', dream: 'yaba-unicorn' });
   assert.equal(percent(unicorn), 8, 'Hustle 2 of 5 is 8%');

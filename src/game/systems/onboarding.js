@@ -21,6 +21,10 @@
  *   house        'mushin' | 'yaba' | 'lekki' | null — the starting home chosen
  *   wardrobe     { hair: [ids], outfit: [ids], fabric: [ids] } — owned styles (basics, the look
  *                chosen at creation, and boutique purchases)
+ *   required     boolean — this life must finish creation before it can do anything else. Set only
+ *                when the life is created with ctx.requireOnboarding (the server passes it for a
+ *                device session opened by a client that declared it can show creation). Lives made
+ *                any other way, and every life saved before creation existed, are never forced.
  *   completedAt  server ms the life moved in, or null
  *   bonusAt      server ms a food bonus was last given (so one meal is never counted twice)
  *
@@ -38,8 +42,9 @@
  *   'onboarding.home'    { house }                      step 5; completes creation (see below)
  *   'onboarding.set-look'        { look }                       after creation: change look using owned styles; colours are free
  *   'onboarding.boutique-buy'    { kind: 'hair'|'outfit'|'fabric', id }   buy a style with cash and wear it
- * Earlier steps may be redone until 'onboarding.home' succeeds. Creation is offered, not enforced:
- * a new life can still act before finishing it.
+ * Earlier steps may be redone until 'onboarding.home' succeeds. While `required` is set and the
+ * life has not moved in, this system vetoes every action that is not 'onboarding.*' through the
+ * 'action.block' modifier (code 'onboarding_required'). Otherwise creation is offered, not enforced.
  *
  * COMPLETION, in order: lottery skill levels are set, needs are set to START_NEEDS, the start
  * cash is credited through the wallet (ledger reason "Start cash · …"), the Sim is placed at
@@ -219,7 +224,7 @@ const actions = {
     for (const [skill, level] of Object.entries(outcome.skills || {})) setSkillLevel(state, skill, level);
     changeNeeds(state, Object.fromEntries(Object.entries(START_NEEDS).map(([need, value]) => [need, value - state.needs[need]])));
     credit(state, grant, `Start cash · ${home.label}, ${home.district}${outcome.loan ? ` (includes ${naira(outcome.loan.principal)} LAPO loan)` : ''}`, ctx);
-    arrive(state, 'home', ctx);
+    arrive(state, 'home', ctx, { mode: null });
     emit(state, 'life.started', { body: o.look.body, traits: [...o.traits], dream: o.dream, lottery: outcome.id, house: home.id,
       look: { ...o.look }, loan: outcome.loan ? { ...outcome.loan } : null, rent: home.rent, startCash }, ctx);
     state.message = `Welcome to ${home.district}. You moved into your ${home.label} with ${naira(state.cash)}.`;
@@ -266,10 +271,11 @@ export default {
   sanitize(input, state, ctx) {
     const raw = input.onboarding;
     const lottery = validLottery(isRecord(raw) ? raw.lottery : null);
-    const base = { done: false, legacy: false, step: 0, seed: state.cash, look: { ...DEFAULT_LOOK }, traits: [], dream: null, lottery, house: null,
+    const base = { done: false, legacy: false, required: false, step: 0, seed: state.cash, look: { ...DEFAULT_LOOK }, traits: [], dream: null, lottery, house: null,
       wardrobe: null, completedAt: null, bonusAt: 0 };
     if (ctx?.isNew) {
       // A brand-new life: only the lottery roll may be carried in (see the header).
+      base.required = ctx.requireOnboarding === true;
     } else if (!isRecord(raw) || typeof raw.done !== 'boolean') {
       // Saved before character creation existed: onboarded as-is, nothing taken away.
       Object.assign(base, { done: true, legacy: true, step: DONE_STEP });
@@ -280,6 +286,7 @@ export default {
       base.house = typeof raw.house === 'string' && Object.hasOwn(START_HOMES, raw.house) ? raw.house : null;
       base.seed = safeCount(raw.seed) ? raw.seed : state.cash;
       base.done = raw.done;
+      base.required = raw.required === true;
       base.legacy = raw.done && raw.legacy === true;
       base.completedAt = raw.done && finite(raw.completedAt) && raw.completedAt >= 0 ? raw.completedAt : null;
       base.bonusAt = finite(raw.bonusAt) && raw.bonusAt >= 0 ? raw.bonusAt : 0;
@@ -297,7 +304,15 @@ export default {
   },
   actions,
   advance() {},
-  modifiers: fxModifiers(sources),
+  modifiers: {
+    ...fxModifiers(sources),
+    /** A life that must be created first accepts nothing but the creation steps. */
+    'action.block'(value, state, data) {
+      const o = state.onboarding;
+      if (value || !o?.required || o.done || (typeof data?.type === 'string' && data.type.startsWith('onboarding.'))) return value;
+      return { code: 'onboarding_required', reason: `Finish creating your Sim first: you are on the ${ONBOARDING_STEPS[Math.min(o.step, ONBOARDING_STEPS.length - 1)].label} step. Nothing else can be done until you have moved in.` };
+    },
+  },
   on: {
     'activity.completed'(state, data, ctx) {
       let tags = Array.isArray(data?.tags) ? data.tags : [];
@@ -320,7 +335,7 @@ export default {
     const o = state.onboarding, outcome = outcomeOf(state), mood = moodOf(state);
     const word = moodWord(mood.score);
     return {
-      done: o.done, legacy: o.legacy, step: o.step, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
+      done: o.done, legacy: o.legacy, required: o.required && !o.done, step: o.step, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
       lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery.at } : null,
       homes: Object.values(START_HOMES).map((home) => {
         const locked = outcome ? homeLock(outcome, home.id) : null;

@@ -217,10 +217,14 @@ test('the fare is charged at departure, a cancel keeps it, and arrival applies t
   assert.deepEqual([state.cash, state.location, state.needs.hygiene, state.travel.trips], [4850, 'park', 50, 0], 'no refund, no move, no need cost');
   assert.equal(heard.length, 0);
   go(state, 'library', 'danfo', DRY_NOON + 10000, 'no-event-1');
-  assert.deepEqual([state.cash, state.needs.hygiene, state.needs.fun, state.spot], [4700, 48, 48, 'bookcase']);
+  // A Danfo ride leaves every need as it was (as reported from the reference game).
+  assert.deepEqual([state.cash, state.needs.hygiene, state.needs.fun, state.spot], [4700, 50, 50, 'bookcase']);
   assert.deepEqual(heard.filter(([name]) => name === 'travel.arrived'), [['travel.arrived', { venue: 'library', from: 'park', mode: 'danfo' }]]);
   assert.deepEqual(heard.filter(([name]) => name === 'venue.visited'), [['venue.visited', { venue: 'library', first: true }]]);
   assert.deepEqual(state.travel.lastTrip, { mode: 'danfo', from: 'park', to: 'library' });
+  // An Okada (original beta value) costs 3 Hygiene on arrival.
+  const rider = createLife(null, at(DRY_NOON)); go(rider, 'library', 'okada', DRY_NOON, 'no-event-1');
+  assert.deepEqual([rider.cash, rider.needs.hygiene], [4800, 47]);
   // Trek: free, 10 Energy and 7 Hygiene as observed, and it trains Fitness.
   const walker = createLife(null, at(DRY_NOON));
   go(walker, 'library', 'trek', DRY_NOON);

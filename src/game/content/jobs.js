@@ -24,9 +24,17 @@
  *   original. All blurbs are original copy.
  *
  * The Community helper job is original beta gameplay, not a job from the reference game. It is
- * kept so existing saves keep working: any time, no daily limit, no ladder.
+ * kept so existing saves keep working: any time of day, no ladder, one shift per
+ * HELPER_COOLDOWN_SECONDS.
  */
 
+/**
+ * Seconds between Community helper shifts (original beta value). At ₦300 a shift this caps the
+ * starter job at 6 shifts — ₦1,800 — per Lagos day even when played round the clock, below the
+ * lowest career entry pay (₦2,400 for one shift), so it can never out-earn a career track.
+ * Enforced through the activity `cooldown` field (systems/travel.js).
+ */
+export const HELPER_COOLDOWN_SECONDS = 4 * 3600;
 /** Seconds a career shift takes (original beta value). */
 export const SHIFT_SECONDS = 40;
 /** Minimum needs to start a career shift, and what a completed shift uses (original beta values). */
@@ -73,8 +81,8 @@ export const JOBS = {
     shift: {
       id: 'helper-shift', label: 'Community helper shift', icon: '💼', duration: 20, cost: 0,
       reward: 300, minimumNeeds: { energy: 20, hunger: 20 }, effects: { energy: -10, hunger: -5 },
-      tags: ['work'], beta: true,
-      note: 'Original beta rules: ₦300 on completion, energy −10, hunger −5. Cancelling earns nothing.',
+      cooldown: HELPER_COOLDOWN_SECONDS, tags: ['work'], beta: true,
+      note: 'Original beta rules: ₦300 on completion, energy −10, hunger −5, then a four-hour break. Cancelling earns nothing.',
     },
   },
   tech: track({

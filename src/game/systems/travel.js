@@ -43,9 +43,8 @@
  *   'activity.block'   enforces `cooldown` and `requiresMoodlet` on any activity definition
  *
  * EVENTS EMITTED
- *   'travel.arrived'     { venue, from, mode }  emitted by api.arrive(); this system adds `mode`
- *                        to the payload from its own listener, so systems registered before it
- *                        (career) see only { venue, from } and can read state.travel.lastTrip.
+ *   'travel.arrived'     { venue, from, mode }  emitted by api.arrive(); this system passes the mode
+ *                        it travelled by, so every listener sees it whatever its registration order.
  *   'venue.visited'      { venue, first }       after every arrival; first = never been before
  *   'roadside.offered'   { event }
  *   'roadside.resolved'  { event, choice, success }   success is null when nothing was rolled
@@ -53,11 +52,11 @@
  *   'startup.funded'     { venue }              the pitch at CcHub won its one-time grant
  *   'activity.outcome'   { id, success }        a chance activity was rolled
  * EVENTS LISTENED TO
- *   'life.started' { house }, 'house.moved' { id }, 'activity.completed', 'travel.arrived'
+ *   'life.started' { house }, 'house.moved' { id }, 'activity.completed'
  */
 import { emit, modify } from '../registry.js';
 import { busy, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.js';
-import { isOpen, minutesUntilOpen, formatHour, lagosTime, WEEKDAYS } from '../clock.js';
+import { openingInfo } from '../clock.js';
 import { arrive, canAfford, credit, debit, changeNeeds, addSkillXp, addMoodlet, removeMoodlet, skillLevel, feelingsOf, findActivity, spotsOf, NEEDS } from '../api.js';
 import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, venueLabel, venueDistrict } from '../content/venues.js';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, TRAVEL_DURATION } from '../content/travel.js';
@@ -114,24 +113,8 @@ export function modesFor(state, destination, ctx) {
 
 const waitText = (minutes) => (minutes >= 60 ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : `${minutes}m`);
 
-/**
- * Opening state of a venue's hours at `now`, with the one label every screen shows.
- * @returns {{ open, always, hours, status, minutes, opensAt }}
- *   hours   'Open 24 hours' | '8AM – 10PM'
- *   status  'Open 24 hours' | 'Open now · closes 10PM' | 'Closed · opens 8AM (in 5h 19m)'
- */
-export function openingInfo(hours, now) {
-  if (!hours) return { open: true, always: true, hours: 'Open 24 hours', status: 'Open 24 hours', minutes: 0, opensAt: null };
-  const range = `${formatHour(hours.open)} – ${formatHour(hours.close)}`;
-  if (isOpen(hours, now)) return { open: true, always: false, hours: range, status: `Open now · closes ${formatHour(hours.close)}`, minutes: 0, opensAt: null };
-  let minutes;
-  if (hours.days) minutes = minutesUntilOpen(hours, now);
-  else { const gap = Math.round(hours.open * 60) - lagosTime(now).minuteOfDay; minutes = ((gap % 1440) + 1440) % 1440 || 1440; }
-  if (minutes === Infinity) return { open: false, always: false, hours: range, status: 'Closed', minutes, opensAt: null };
-  const day = minutes >= 1440 ? `${WEEKDAYS[lagosTime(now + minutes * 60000).weekday].slice(0, 3)} ` : '';
-  const opensAt = `${day}${formatHour(hours.open)}`;
-  return { open: false, always: false, hours: range, status: `Closed · opens ${opensAt} (in ${waitText(minutes)})`, minutes, opensAt };
-}
+/** Opening state of a venue's hours with the one label every screen shows — see clock.js. */
+export { openingInfo };
 
 /**
  * Why this trip cannot start, or null. Pure: never mutates state. Does not check `busy`.
@@ -199,7 +182,7 @@ function complete(state, active, ctx) {
   const trip = modeId ? quote(state, destination, modeId, ctx) : null;
   state.travel.lastTrip = { mode: modeId, from, to: destination };
   state.message = `Arrived at ${venueLabel(destination, ctx.cityId)}.`;
-  arrive(state, destination, ctx); // listeners (weather, goals) may append to state.message
+  arrive(state, destination, ctx, { mode: modeId }); // listeners (weather, goals) may append to state.message
   const first = !state.travel.visited.includes(destination);
   if (first) state.travel.visited.push(destination);
   state.travel.trips = Math.min(Number.MAX_SAFE_INTEGER, state.travel.trips + 1);
@@ -382,10 +365,6 @@ export default {
   on: {
     'life.started': (state, data) => setHome(state, data?.house),
     'house.moved': (state, data) => setHome(state, data?.id),
-    'travel.arrived': (state, data) => {
-      const trip = state.travel.lastTrip;
-      if (isRecord(data) && data.mode === undefined && trip && trip.to === data.venue) data.mode = trip.mode;
-    },
     'activity.completed': (state, data, ctx) => {
       const def = data?.def;
       if (!def) return;

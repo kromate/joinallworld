@@ -11,7 +11,8 @@
  * The starter chain, in order. Each goal pays its cash through the wallet (with a ledger line)
  * and one star, exactly once.
  *   done   how the goal completes: `events` (any of these registry events), `tags` (an
- *          'activity.completed' carrying any of these tags), `venue` (arriving at or visiting it),
+ *          'activity.completed' carrying any of these tags; with `away: true` only outside Home),
+ *          `venue` (arriving at or visiting it),
  *          `hasJob` (already employed when the goal comes up)
  *   open / params / go   what tapping the goal chip does: open a panel, or walk to [venue, spot]
  */
@@ -27,8 +28,11 @@ export const STARTER_GOALS = [
   // The reference game paid this goal on arrival, but the amount was never seen on its own.
   { id: 'visit-buka', title: 'Visit the buka', hint: 'Open Map → Amala Shitta', icon: '🍛', cash: 1500, stars: 1, betaFields: ['cash'],
     done: { venue: 'amala-shitta' }, open: 'map', params: { destination: 'amala-shitta' } },
-  { id: 'make-a-friend', title: 'Make a new friend', hint: 'Tap someone at a venue', icon: '👋', cash: 1500, stars: 1,
-    done: { events: ['npc.greeted', 'friend.made'] } },
+  // INTERIM: people cannot be tapped until the social system is merged. Until then any completed
+  // activity tagged 'social' away from home also counts, and the hint says so (the observed hint
+  // was "Tap someone at a venue"). Remove `tags`, `away`, `open` and restore the hint with social.
+  { id: 'make-a-friend', title: 'Make a new friend', hint: 'Gist with someone at any venue', icon: '👋', cash: 1500, stars: 1, interim: true,
+    done: { events: ['npc.greeted', 'friend.made'], tags: ['social'], away: true }, open: 'map' },
   // Only the title and hint of the last goal were observed; its reward is an original beta value.
   { id: 'work-a-shift', title: 'Work a shift', hint: 'Leave for work on time', icon: '⏰', cash: 2000, stars: 1, betaFields: ['cash', 'stars'],
     done: { events: ['shift.completed'] }, workplace: true },
@@ -77,7 +81,7 @@ export const PERKS = [
   { id: 'early-bird', label: 'Early Bird', icon: '🌅', cost: 8, effect: 'Energy drops 25% slower', fx: { decay: { energy: 0.75 } } },
   { id: 'never-dull', label: 'Never Dull', icon: '🎉', cost: 8, effect: 'Fun drops 25% slower', fx: { decay: { fun: 0.75 } } },
   { id: 'sweet-mouth', label: 'Sweet Mouth', icon: '🍯', cost: 10, effect: '+15% social success', fx: { social: 1.15 } },
-  { id: 'connected', label: 'Connected', icon: '🏷️', cost: 10, effect: '10% off everything in Buy mode', fx: { shop: 0.9 } },
+  { id: 'connected', label: 'Connected', icon: '🏷️', cost: 10, effect: '10% off everything in Buy mode, and groceries', fx: { shop: 0.9 }, betaFields: ['groceries'] },
   { id: 'hustle-juice', label: 'Hustle Juice', icon: '🧃', cost: 12, effect: '+25% work performance gain', fx: { performance: 1.25 } },
   { id: 'fast-learner', label: 'Fast Learner', icon: '📚', cost: 14, effect: 'All skills grow 20% faster', fx: { xp: { all: 1.2 } } },
   { id: 'stay-fresh', label: 'Stay Fresh', icon: '🫧', cost: 8, effect: 'Hygiene drops 25% slower', fx: { decay: { hygiene: 0.75 } }, beta: true },

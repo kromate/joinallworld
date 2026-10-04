@@ -9,10 +9,9 @@
  * ctx.checks.homeGuest(db, senderPublicId, hostId, cityId) — provided by the social module —
  * says the sender is an accepted, unexpired guest of that host and the host's life is at home.
  * The room key is built from the validated hostId, so the message cannot name any other room.
- * Membership is re-validated on the same schedule as every venue membership (the guest's own
- * GET /api/life and POST /api/action — and the host's, for the guests in their room); a guest
- * whose visit expired, was ended or whose host left home is dropped with 'visit_ended'. A host who leaves home empties their Home room of
- * guests at their own next validation, and a 'visit-ended' event drops one guest at once.
+ * A guest whose visit expired, was ended or whose host left home is dropped with 'visit_ended'
+ * (see MEMBERSHIP below for when that is checked). A host who leaves home empties their Home room
+ * of guests, and a 'visit-ended' event drops one guest at once.
  * Inside the room a guest is an ordinary member: same chat, same proximity-gated signalling,
  * same voice cap, and — as for everyone — voice off and muted on join. Nothing enables it.
  *
@@ -39,22 +38,54 @@
  * state (ctx.checks.muted). A refused line is answered with an `error` carrying the code
  * ('text_blocked' | 'muted'), a `reason` sentence (repeated as `message`, the field the community
  * panel prints in its status line) and the line's clientId; it is delivered to nobody.
- * GUEST EXPIRY ON THE HEARTBEAT. On every host heartbeat (ctx.on('heartbeat')) each socket that is
- * visiting a host's Home room is re-checked against the guest list. A visit that ran out, or whose
- * host is no longer at home, is dropped then — so a guest who never polls leaves at most one
- * heartbeat interval (10 s by default) after the visit ends, not at the host's next request.
- * The module then raises 'guest-expired' { hostId, guestId, cityId } for the social module to
- * close the stored visit.
+ * MEMBERSHIP IS RE-CHECKED AGAINST THE STORED LIFE, NOT REMEMBERED
+ *   Who may be in a room is one rule, protocol.js canOccupyVenue: recorded at the venue and not
+ *   departing (a trip, the automatic commute, any timed action registered with `moves: true`).
+ *   A socket's `ws.room` is only a record of an admission; it is re-checked:
+ *   - WHEN THE LIFE CHANGES. life-service.js tells this module, synchronously, every time a life is
+ *     settled or acted on. If the result no longer allows one of that player's rooms (or, for a
+ *     host, their guests) the sockets are marked and re-checked against the store straight after
+ *     the transaction — whichever route, socket message or timer made the change, and whether or
+ *     not the write that follows succeeds. A request that fails after committing a departure in
+ *     memory therefore still ends the membership and the voice state.
+ *   - BEFORE ANY ROOM MESSAGE IS FORWARDED. move, voice-state, signal and chat first ask
+ *     `admitted(ws)`: a marked socket is re-checked before anything is delivered, and one that is
+ *     no longer allowed is dropped and answered 'join_required'. Nothing is forwarded on the
+ *     strength of a remembered membership for a life that is departing.
+ *   - FOR GUESTS, AT THE VISIT'S OWN EXPIRY. A guest's entitlement is remembered for at most
+ *     GUEST_RECHECK_MS and never past the visit's expiry timestamp, so the first room message at or
+ *     after that instant is refused. Blocks and removals drop the guest at once ('visit-ended').
+ *   - WHEN THE HOST IS GONE. A host whose life leaves home (including by commute) ends every
+ *     visit. A host with no socket in their own Home room for HOST_ABSENCE_GRACE_MS (a reload fits
+ *     inside it) ends them too: the guests are dropped and 'host-absent' is raised so the social
+ *     module closes the stored visits.
+ *   - ON EVERY HEARTBEAT, for sockets that send nothing: guests and marked sockets are swept, so an
+ *     idle guest leaves at most one heartbeat interval (10 s by default) after the visit ends.
+ *   - BY THE ROUTE HOST: validateMemberships(secret, city, state, publicId) after a settlement, and
+ *     revalidate(publicId) in a `finally` (lifecycle hooks, ws/index.js).
+ *   Decisions are taken from the document as committed in memory, inside the store's read, and do
+ *   not wait for the disk: while writes are failing a departure still revokes. If the store cannot
+ *   be read at all the sockets concerned are dropped — unknown is treated as "not allowed".
+ *   When a check ends a visit this module raises, for the social module to close the stored visit:
+ *   'home-closed' { hostId, cityId } (the host's life left home), 'host-absent' { hostId, guestId,
+ *   cityId } (no host connection in the room) or 'guest-expired' with the same fields (anything else).
  */
-import { MAX_VOICE_MEMBERS, UUID_PATTERN, canJoinVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
-import { VENUES } from '../life-service.js';
+import { MAX_VOICE_MEMBERS, UUID_PATTERN, canOccupyVenue, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.js';
+import { VENUES, watchLives } from '../life-service.js';
 import { checkLook } from '../../src/game/systems/onboarding.js';
 import { screenText } from '../moderation/text.js';
+
+/** The longest a guest's entitlement is remembered between checks (and never past the visit's expiry). */
+export const GUEST_RECHECK_MS = 3000;
+/** How long a host may have no socket in their own Home room before their guests are sent away (a page reload fits). */
+export const HOST_ABSENCE_GRACE_MS = 20000;
 
 export default function roomSocket(ctx) {
   const { store, now, allow, settle, send, core } = ctx;
   const rooms = new Map();
   const chatHistory = new Map();
+  const inRooms = new Map(); // public id → Set<ws> of that player's sockets that are in a room
+  const hostGone = new Map(); // Home room key → server ms since which its host has had no socket in it
 
   /**
    * Send the room's member list. `cause` is the public id of the player whose join, leave, move or
@@ -90,12 +121,26 @@ export default function roomSocket(ctx) {
     // `cause` is who joined, left or was renamed: listeners must not nudge anyone that player is hidden from.
     ctx.emit?.('room-changed', { room, cityId, venueId, members: [...members], cause });
   }
+  const homeOwner = (room) => { const [, venue, owner] = room.split(':'); return venue === 'home' ? owner : null; };
+  const hostPresent = (room, hostId) => [...(rooms.get(room) || [])].some(peer => peer.session.id === hostId);
+  function enter(ws, room) {
+    ws.room = room;
+    if (!rooms.has(room)) rooms.set(room, new Set());
+    rooms.get(room).add(ws);
+    if (!inRooms.has(ws.session.id)) inRooms.set(ws.session.id, new Set());
+    inRooms.get(ws.session.id).add(ws);
+    if (homeOwner(room) === ws.session.id) hostGone.delete(room); // the host is (back) in their own Home room
+  }
   function leave(ws) {
     if (!ws.room) return;
     const room = ws.room;
     rooms.get(room)?.delete(ws);
     if (!rooms.get(room)?.size) rooms.delete(room);
-    ws.room = null;
+    const mine = inRooms.get(ws.session.id);
+    if (mine) { mine.delete(ws); if (!mine.size) inRooms.delete(ws.session.id); }
+    ws.room = null; ws.stale = false; ws.guestUntil = 0;
+    // The host's last socket left their own Home room while guests are inside: the absence clock starts.
+    if (homeOwner(room) === ws.session.id && rooms.has(room) && !hostPresent(room, ws.session.id) && !hostGone.has(room)) hostGone.set(room, now());
     presence(room, ws.session.id);
     roomChanged(room, ws.session.id);
   }
@@ -108,65 +153,137 @@ export default function roomSocket(ctx) {
     const [roomCity, venue, owner] = (ws.room || '').split(':');
     return roomCity === city && venue === 'home' && owner && owner !== ws.session.id ? owner : null;
   };
-  const isGuest = (db, guestId, hostId, city) => ctx.checks?.homeGuest?.(db, guestId, hostId, city) === true;
+  const cityOf = (ws) => (ws.room || '').split(':')[0];
   /**
-   * Drop sockets whose room no longer matches where the server says the player is. A socket
-   * visiting a host's Home room is checked against the guest list instead of the player's own
-   * location. `publicId` is the player's public id; when their own life is not at home, their
-   * Home room is emptied of guests.
+   * Until when (server ms) is this player an accepted guest of that host, or 0 if they are not.
+   * The social module answers: checks.homeGuestUntil gives the visit's expiry; with only the
+   * yes/no checks.homeGuest the answer is good for this instant alone, so nothing is remembered.
+   * While neither exists nobody is anybody's guest.
    */
-  core.validateMemberships = async (secret, city, state, publicId) => {
-    const visiting = [];
-    for (const ws of core.sockets()) {
-      if (ws.secret !== secret || !ws.room?.startsWith(`${city}:`)) continue;
-      if (visitedHost(ws, city)) { visiting.push(ws); continue; }
-      if (ws.room !== venueRoomKey(city, state.location, ws.session.id) || state.activeAction?.kind === 'travel') drop(ws, 'venue_mismatch');
+  function guestUntil(db, guestId, hostId, city) {
+    if (typeof ctx.checks?.homeGuestUntil === 'function') {
+      const until = ctx.checks.homeGuestUntil(db, guestId, hostId, city);
+      return Number.isFinite(until) && until > now() ? until : 0;
     }
-    if (typeof publicId === 'string') {
-      const home = venueRoomKey(city, 'home', publicId);
-      const guests = [...(rooms.get(home) || [])].filter(ws => ws.session.id !== publicId);
-      if (!canJoinVenue(state, 'home')) {
-        for (const ws of guests) drop(ws, 'visit_ended');
-        if (guests.length) ctx.emit?.('home-closed', { hostId: publicId, cityId: city });
-      } else visiting.push(...guests); // the host's own validation also re-checks the guests in their room
-    }
-    if (!visiting.length) return;
-    const allowed = await store.read(db => visiting.map(ws => isGuest(db, ws.session.id, visitedHost(ws, city), city)));
-    visiting.forEach((ws, index) => { if (!allowed[index] && visitedHost(ws, city)) drop(ws, 'visit_ended'); });
-  };
-  /** Is this socket's room one the server would admit it to right now? Used by the voice-config route. */
-  core.roomStillValid = (ws, db, session, city, state) => {
-    const hostId = visitedHost(ws, city);
-    if (hostId) return isGuest(db, session.publicId, hostId, city);
-    return canJoinVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, session.publicId);
-  };
-  // Heartbeat: end expired visits on time. Guests are looked up from the sockets actually in a Home room.
-  let sweeping = false;
-  async function sweepGuests() {
-    if (sweeping) return;
-    const visiting = core.sockets().map(ws => ({ ws, room: ws.room, city: (ws.room || '').split(':')[0] })).filter(item => visitedHost(item.ws, item.city));
-    if (!visiting.length) return;
-    sweeping = true;
-    try {
-      const allowed = await store.read(db => visiting.map(({ ws, city }) => isGuest(db, ws.session.id, visitedHost(ws, city), city)));
-      visiting.forEach(({ ws, room, city }, index) => {
-        if (allowed[index] || ws.room !== room) return;
-        const hostId = visitedHost(ws, city);
-        drop(ws, 'visit_ended');
-        ctx.emit?.('guest-expired', { hostId, guestId: ws.session.id, cityId: city });
-      });
-    } finally { sweeping = false; }
+    return ctx.checks?.homeGuest?.(db, guestId, hostId, city) === true ? now() : 0;
   }
-  ctx.on?.('heartbeat', () => { sweepGuests().catch(() => {}); });
+  /** Has this Home room been without its host for longer than the grace period? Starts the clock if nobody has. */
+  function hostAbsent(room, hostId) {
+    if (hostPresent(room, hostId)) { hostGone.delete(room); return false; }
+    if (!hostGone.has(room)) {
+      if (hostGone.size >= 2000) hostGone.delete(hostGone.keys().next().value);
+      hostGone.set(room, now());
+    }
+    return now() - hostGone.get(room) >= HOST_ABSENCE_GRACE_MS;
+  }
+  /** Is this socket's own-venue room the one the life occupies right now? (Never true for a departing life.) */
+  const occupies = (ws, city, state) => Boolean(state) && canOccupyVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, ws.session.id);
+
+  /**
+   * Re-check sockets against the stored document and drop the ones that are no longer allowed.
+   * Runs inside one store read, on the document as committed in memory, and resolves as soon as
+   * the decisions are made — it does not wait for the disk, so it works while writes are failing.
+   * If the read itself cannot run, every socket in the list is dropped.
+   */
+  function verify(list) {
+    const items = [...new Set(list)].filter(ws => ws.room).map(ws => ({ ws, room: ws.room }));
+    if (!items.length) return Promise.resolve();
+    return new Promise((resolve) => {
+      let decided = false;
+      const ended = [];
+      const finish = () => {
+        for (const [event, detail] of ended) ctx.emit?.(event, detail);
+        resolve();
+      };
+      const failClosed = () => {
+        if (decided) return; // decided on the committed document; only the wait for the disk failed
+        decided = true;
+        for (const { ws, room } of items) if (ws.room === room) drop(ws, visitedHost(ws, cityOf(ws)) ? 'visit_ended' : 'venue_mismatch');
+        finish();
+      };
+      let reading;
+      try { reading = store.read((db) => {
+        for (const { ws, room } of items) {
+          if (ws.room !== room) continue;
+          const city = cityOf(ws), hostId = visitedHost(ws, city);
+          const session = core.sessionOf(ws, db);
+          const live = session && session.expiresAt > now();
+          if (hostId) {
+            if (live && hostAbsent(room, hostId)) { drop(ws, 'visit_ended'); ended.push(['host-absent', { hostId, guestId: ws.session.id, cityId: city }]); continue; }
+            const until = live ? guestUntil(db, session.publicId, hostId, city) : 0;
+            if (!until) {
+              drop(ws, 'visit_ended');
+              // Say why, so the social module closes the stored visit with the right words: the host
+              // went out (their life is no longer at home), or the visit itself is over.
+              const hostOut = typeof ctx.atHome === 'function' && ctx.atHome(db, hostId, city) === false;
+              if (!hostOut) ended.push(['guest-expired', { hostId, guestId: ws.session.id, cityId: city }]);
+              else if (!ended.some(([event, detail]) => event === 'home-closed' && detail.hostId === hostId && detail.cityId === city)) ended.push(['home-closed', { hostId, cityId: city }]);
+              continue;
+            }
+            ws.guestUntil = Math.min(now() + GUEST_RECHECK_MS, until);
+          } else if (!live || !occupies(ws, city, session.cities?.[city]?.state)) drop(ws, 'venue_mismatch');
+          else ws.stale = false;
+        }
+        decided = true;
+        finish();
+      }); } catch { failClosed(); return; }
+      Promise.resolve(reading).catch(failClosed);
+    });
+  }
+  /** Everything that depends on one player's lives: their own sockets in rooms, and the guests in their Home rooms. */
+  function dependants(publicId) {
+    const list = [...(inRooms.get(publicId) || [])];
+    for (const [room, members] of rooms) if (homeOwner(room) === publicId) for (const ws of members) if (ws.session.id !== publicId) list.push(ws);
+    return list;
+  }
+  const revalidate = (publicId) => (typeof publicId === 'string' ? verify(dependants(publicId)) : Promise.resolve());
+
+  // A life was settled or acted on (inside somebody's transaction). If what it now says no longer
+  // allows a room, mark the sockets and re-check them against the store right after that
+  // transaction: the mark stops forwarding at once, the re-check drops them and tells the room.
+  const scheduled = new Set();
+  const onLife = (publicId, city, state) => {
+    let due = false;
+    for (const ws of inRooms.get(publicId) || []) {
+      if (cityOf(ws) !== city || visitedHost(ws, city)) continue;
+      if (!occupies(ws, city, state)) { ws.stale = true; due = true; }
+    }
+    if (!canOccupyVenue(state, 'home')) {
+      for (const ws of rooms.get(venueRoomKey(city, 'home', publicId)) || []) if (ws.session.id !== publicId) { ws.guestUntil = 0; due = true; }
+    }
+    if (!due || scheduled.has(publicId)) return;
+    scheduled.add(publicId);
+    queueMicrotask(() => { scheduled.delete(publicId); revalidate(publicId); });
+  };
+  watchLives(onLife);
+  core.lifeWatcher = onLife; // watchLives holds it weakly: this keeps it for as long as the server exists
+
+  /**
+   * The check every room message passes before anything is forwarded: a socket marked by a life
+   * change, a guest whose remembered entitlement has run out (or whose host has no socket in the
+   * room) is re-checked first. Throws 'join_required' if the socket is no longer in the room.
+   */
+  async function admitted(ws) {
+    const hostId = visitedHost(ws, cityOf(ws));
+    if (hostId ? (!(now() < ws.guestUntil) || !hostPresent(ws.room, hostId)) : ws.stale === true) await verify([ws]);
+    if (!ws.room) throw Error('join_required');
+  }
+  const guarded = (handle) => ({ room: true, async handle(ws, message) { await admitted(ws); return handle(ws, message); } });
+
+  // Heartbeat: sockets that send nothing are re-checked here — every guest (expiry, host absence) and every marked socket.
+  let sweeping = false;
+  async function sweep() {
+    if (sweeping) return;
+    const due = core.sockets().filter(ws => ws.room && (ws.stale === true || visitedHost(ws, cityOf(ws))));
+    if (!due.length) return;
+    sweeping = true;
+    try { await verify(due); } finally { sweeping = false; }
+  }
+  ctx.on?.('heartbeat', () => { sweep().catch(() => {}); });
   // A visit the social module ended (left, removed, blocked): that guest leaves the host's Home room at once.
   ctx.on?.('visit-ended', ({ hostId, guestId }) => {
     for (const ws of core.sockets()) if (ws.session?.id === guestId && ws.room?.endsWith(`:home:${hostId}`)) drop(ws, 'visit_ended');
   });
-  core.refreshNames = (session) => {
-    const changed = new Set();
-    for (const ws of core.sockets()) if (ws.session.id === session.id) { ws.session.name = session.name; ws.expiresAt = now() + ctx.config.sessionTtlMs; ws.lastSessionRenewedAt = now(); if (ws.room) changed.add(ws.room); }
-    for (const room of changed) { presence(room, session.id); roomChanged(room, null, session.id); }
-  };
 
   return {
     open(ws) {
@@ -175,8 +292,47 @@ export default function roomSocket(ctx) {
       ws.position = { x: 0, z: 0 };
       ws.lastMoves = [];
       ws.look = null;
+      ws.stale = false;
+      ws.guestUntil = 0;
     },
     close: leave,
+    lifecycle: {
+      /**
+       * Drop sockets whose room no longer matches where the server says the player is. A socket
+       * visiting a host's Home room is checked against the guest list instead of the player's own
+       * location. `publicId` is the player's public id; when their own life is not at home, their
+       * Home room is emptied of guests.
+       */
+      async validateMemberships(secret, city, state, publicId) {
+        const visiting = [];
+        for (const ws of core.sockets()) {
+          if (ws.secret !== secret || !ws.room?.startsWith(`${city}:`)) continue;
+          if (visitedHost(ws, city)) { visiting.push(ws); continue; }
+          if (!occupies(ws, city, state)) drop(ws, 'venue_mismatch'); else ws.stale = false;
+        }
+        if (typeof publicId === 'string') {
+          const home = venueRoomKey(city, 'home', publicId);
+          const guests = [...(rooms.get(home) || [])].filter(ws => ws.session.id !== publicId);
+          if (!canOccupyVenue(state, 'home')) {
+            for (const ws of guests) drop(ws, 'visit_ended');
+            if (guests.length) ctx.emit?.('home-closed', { hostId: publicId, cityId: city });
+          } else visiting.push(...guests); // the host's own validation also re-checks the guests in their room
+        }
+        await verify(visiting);
+      },
+      revalidate,
+      /** Is this socket's room one the server would admit it to right now? Used by the voice-config route. */
+      roomStillValid(ws, db, session, city, state) {
+        const hostId = visitedHost(ws, city);
+        if (hostId) return !hostAbsent(ws.room, hostId) && guestUntil(db, session.publicId, hostId, city) > 0;
+        return occupies(ws, city, state);
+      },
+      refreshNames(session) {
+        const changed = new Set();
+        for (const ws of inRooms.get(session.id) || []) changed.add(ws.room);
+        for (const room of changed) { presence(room, session.id); roomChanged(room, null, session.id); }
+      },
+    },
     messages: {
       async join(ws, message) {
         if (!ctx.cityIds.includes(message.cityId) || typeof message.venueId !== 'string' || !Object.hasOwn(VENUES, message.venueId)) throw Error('invalid_room');
@@ -184,7 +340,7 @@ export default function roomSocket(ctx) {
         if (message.hostId !== undefined && (message.venueId !== 'home' || typeof message.hostId !== 'string' || !UUID_PATTERN.test(message.hostId))) throw Error('invalid_room');
         const hostId = message.hostId === undefined ? null : message.hostId.toLowerCase();
         const visiting = hostId !== null && hostId !== ws.session.id;
-        const { allowed, look } = await store.transact(db => {
+        const { until, look } = await store.transact(db => {
           const session = core.sessionOf(ws, db);
           if (!session || session.expiresAt <= now()) throw Error('device_session_required');
           const state = settle(session, message.cityId);
@@ -192,31 +348,37 @@ export default function roomSocket(ctx) {
           if (state.onboarding?.required === true && state.onboarding.done !== true) throw Error('onboarding_required');
           // The look comes from the server-held life and is validated again: option ids only.
           const look = checkLook(state.onboarding?.look).look ?? null;
-          // A guest is admitted by the social module's server-side guest list, never by their own location.
-          return { allowed: visiting ? isGuest(db, session.publicId, hostId, message.cityId) : canJoinVenue(state, message.venueId), look };
+          // A guest is admitted by the social module's server-side guest list, never by their own location;
+          // everyone else only to the venue their life occupies (not while departing).
+          return { until: visiting ? guestUntil(db, session.publicId, hostId, message.cityId) : canOccupyVenue(state, message.venueId) ? Infinity : 0, look };
         }, { durable: false }); // a join acknowledges nothing; not waiting for the disk keeps the check and the admission together
-        if (!allowed) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');
-        if (!core.isOpen(ws)) return;
         const room = venueRoomKey(message.cityId, message.venueId, visiting ? hostId : ws.session.id);
-        leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.room = room; ws.look = look;
-        if (!rooms.has(room)) rooms.set(room, new Set());
-        rooms.get(room).add(ws); presence(room, ws.session.id); roomChanged(room, null, ws.session.id);
+        // A guest cannot come back into a Home room its host has been missing from for longer than the grace period.
+        if (!until || (visiting && hostAbsent(room, hostId))) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');
+        if (!core.isOpen(ws)) return;
+        leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = { x: 0, z: 0 }; ws.lastMoves = []; ws.look = look;
+        enter(ws, room);
+        ws.stale = false; ws.guestUntil = visiting ? Math.min(now() + GUEST_RECHECK_MS, until) : 0;
+        presence(room, ws.session.id); roomChanged(room, null, ws.session.id);
+        // A visit that ended between the check above and this admission found no socket to drop:
+        // look once more now that there is one, so the guest list and the room cannot disagree.
+        if (visiting) await verify([ws]);
       },
-      move: { room: true, handle(ws, message) {
+      move: guarded((ws, message) => {
         const position = validatePosition(message);
         ws.lastMoves = ws.lastMoves.filter(time => time > now() - 1000);
         if (ws.lastMoves.length >= 5) throw Error('move_rate_limited');
         ws.lastMoves.push(now());
         for (const peer of rooms.get(ws.room)) if (peer.session.id === ws.session.id) peer.position = position;
         presence(ws.room, ws.session.id);
-      } },
-      'voice-state': { room: true, handle(ws, message) {
+      }),
+      'voice-state': guarded((ws, message) => {
         if (typeof message.enabled !== 'boolean' || typeof message.muted !== 'boolean') throw Error('invalid_voice_state');
         const enabled = new Set([...rooms.get(ws.room)].filter(peer => peer.voice.enabled).map(peer => peer.session.id));
         if (message.enabled && !enabled.has(ws.session.id) && enabled.size >= MAX_VOICE_MEMBERS) throw Error('voice_room_full');
         ws.voice = { enabled: message.enabled, muted: message.muted }; presence(ws.room, ws.session.id);
-      } },
-      signal: { room: true, handle(ws, message) {
+      }),
+      signal: guarded((ws, message) => {
         if (typeof message.to !== 'string' || !message.data || typeof message.data !== 'object' || JSON.stringify(message.data).length > 12000) throw Error('invalid_signal');
         // A blocked pair cannot signal: the answer is the same as for a peer who is not there.
         const peers = hidden(ws.session.id, message.to) ? [] : [...rooms.get(ws.room)].filter(peer => peer.session.id === message.to && peer !== ws);
@@ -224,8 +386,8 @@ export default function roomSocket(ctx) {
         const nearby = peers.filter(peer => withinVoiceDistance(ws.position, peer.position));
         if (!nearby.length) throw Error('peer_out_of_range');
         for (const peer of nearby) send(peer, { type: 'signal', from: ws.session.id, data: message.data });
-      } },
-      chat: { room: true, handle(ws, message) {
+      }),
+      chat: guarded((ws, message) => {
         const body = typeof message.body === 'string' ? message.body.trim() : '';
         const clientId = message.clientId;
         if (!body || body.length > 500 || /[\u0000-\u0008\u000b-\u001f\u007f]/.test(body) || (clientId !== undefined && (typeof clientId !== 'string' || clientId.length > 80 || !clientId))) throw Error('invalid_chat');
@@ -239,7 +401,7 @@ export default function roomSocket(ctx) {
         const chat = { type: 'chat', id: core.newId(), clientId, from: { ...ws.session }, body, at: now() };
         if (clientId) { history.set(clientId, chat); if (history.size > 100) history.delete(history.keys().next().value); chatHistory.set(key, history); }
         for (const peer of rooms.get(ws.room)) if (!hidden(ws.session.id, peer.session.id)) send(peer, chat);
-      } },
+      }),
     },
   };
 }

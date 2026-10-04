@@ -59,7 +59,16 @@ export default function socialSocket(ctx) {
     }
   });
   // The room module admits a guest to a host's Home room only if this says so (see server/ws/rooms.js).
-  if (ctx.checks) ctx.checks.homeGuest = (db, guestId, hostId, cityId) => service.homeGuest(db, guestId, hostId, cityId);
+  if (ctx.checks) {
+    ctx.checks.homeGuest = (db, guestId, hostId, cityId) => service.homeGuest(db, guestId, hostId, cityId);
+    // The same answer with the visit's own expiry (server ms), or 0 for "not a guest": the room module
+    // remembers an entitlement only up to that instant, so an expired visit is refused exactly on time.
+    ctx.checks.homeGuestUntil = (db, guestId, hostId, cityId) => {
+      if (!service.homeGuest(db, guestId, hostId, cityId)) return 0;
+      const expires = ctx.collection(db, 'social').houses?.[hostId]?.guests?.[guestId]?.expires;
+      return Number.isFinite(expires) ? expires : 0;
+    };
+  }
   // A host whose life left home has no visitors: when the room module empties their Home room, end the visits too.
   ctx.on?.('home-closed', ({ hostId }) => {
     ctx.store.transact((db) => service.finish(db, service.closeHouse(db, hostId))).then((result) => service.deliver(result)).catch(() => {});
@@ -67,6 +76,16 @@ export default function socialSocket(ctx) {
   // The room module dropped a guest on the heartbeat (the visit ran out): close the stored visit and tell both sides.
   ctx.on?.('guest-expired', ({ hostId }) => {
     ctx.store.transact((db) => service.finish(db, service.expireVisits(db, hostId))).then((result) => service.deliver(result)).catch(() => {});
+  });
+  // The room module sent a guest away because the host has had no connection in their own Home room for
+  // longer than the grace period. The stored life still says "at home", so the visit is ended the way a
+  // guest leaving ends it: through the service, as that guest. They must knock again — which needs the host back.
+  ctx.on?.('host-absent', ({ hostId, guestId }) => {
+    ctx.store.transact((db) => {
+      const guest = ctx.core.sessionByPublicId?.(db, guestId);
+      if (!guest || guest.expiresAt <= ctx.now()) return null;
+      return service.finish(db, service.houseLeave(db, guest, { host: hostId }));
+    }, { committed: (value) => service.committed(value) }).then((result) => service.deliver(result)).catch(() => {});
   });
   const echo = (message) => (typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {});
 

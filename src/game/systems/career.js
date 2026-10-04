@@ -294,6 +294,7 @@ export default {
     .map((job) => ({ ...job.shift, requiresJob: job.id, where: { ...job.workplace, spotLabel: 'Work', spotIcon: '💼' } })),
   active: {
     commute: {
+      moves: true, // the player is on their way out of the venue: no room, no voice, until they arrive or cancel
       sanitize(value, state) {
         const job = jobOf(state.job);
         return job?.track && value.id === job.workplace.venue && value.id !== state.location && value.duration === COMMUTE_SECONDS ? {} : null;

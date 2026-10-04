@@ -374,6 +374,7 @@ export default {
   actions: { travel, 'world.roadside': roadside },
   active: {
     travel: {
+      moves: true,
       sanitize(value, state) {
         if (!Object.hasOwn(VENUES, value.id) || value.id === state.location) return null;
         if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;

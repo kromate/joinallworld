@@ -16,14 +16,14 @@
  * fields that did not exist when a save was written simply start at their defaults.
  */
 import './game/systems/index.js';
-import { systems, actionHandler, hasAction, actionTypes, modify, serverOnlyReason } from './game/registry.js';
+import { systems, actionHandler, hasAction, actionTypes, modify, serverOnlyReason, assertDeclared, isDeparting, occupiesVenue, activeMoves } from './game/registry.js';
 import { fail, finite, isRecord, makeContext } from './game/util.js';
 import { STATE_VERSION, sanitizeActive, advanceActive } from './game/systems/core.js';
 import { NEEDS } from './game/systems/needs.js';
 import { VENUES } from './game/content/venues.js';
 import { TRAVEL_MODES, TRAVEL_DURATION } from './game/content/travel.js';
 
-export { VENUES, STATE_VERSION, NEEDS, makeContext, actionTypes, hasAction };
+export { VENUES, STATE_VERSION, NEEDS, makeContext, actionTypes, hasAction, isDeparting, occupiesVenue, activeMoves };
 export { spotsOf } from './game/systems/activities.js';
 
 /** Legacy names kept for existing callers. Fares by mode, and the flat beta trip time. */
@@ -45,6 +45,12 @@ export function migrate(saved) {
   return input;
 }
 
+/**
+ * The context a call runs with. A caller that already built one (ctx.rng) keeps it. Otherwise the
+ * generator is seeded from `seed` — and, when the caller supplies `ctx.salt` (the servers do, from
+ * the secret they hold for each life), keyed with it, so the outcome cannot be computed from
+ * anything a client knows or chooses. makeContext consumes the salt: it is not in the result.
+ */
 const contextFor = (state, ctx, seed) => (ctx && typeof ctx.rng === 'function' ? ctx
   : makeContext({ ...ctx, now: finite(ctx?.now) ? ctx.now : state?.t ?? 0, cityId: ctx?.cityId ?? 'lagos', seed }));
 
@@ -57,8 +63,19 @@ export function createLife(saved, ctx) {
   const context = contextFor(null, { isNew: !isRecord(saved), ...ctx }, 'create');
   const input = migrate(saved);
   const state = {};
-  for (const system of systems()) system.sanitize(input, state, context);
+  let known = 0;
+  for (const system of systems()) {
+    system.sanitize(input, state, context);
+    // A system may only add the keys it declared: anything else is either another system's
+    // (which would then overwrite it) or nobody's (which the next load would drop).
+    const keys = Object.keys(state);
+    for (let i = known; i < keys.length; i++) {
+      if (!system.stateKeys.includes(keys[i])) throw new Error(`System "${system.id}" wrote state key "${keys[i]}" in sanitize() without declaring it in stateKeys.`);
+    }
+    known = keys.length;
+  }
   sanitizeActive(input, state, context);
+  assertDeclared(state, 'createLife');
   return state;
 }
 
@@ -81,7 +98,9 @@ export function dispatch(state, body, ctx) {
   if (refusal && context.internal !== true) return fail(state, 'server_only', refusal);
   const veto = modify(state, 'action.block', null, { type: body.type, payload }, context);
   if (isRecord(veto) && typeof veto.code === 'string') return fail(state, veto.code, typeof veto.reason === 'string' ? veto.reason : 'That is not possible right now.');
-  return handler(state, payload, context);
+  const result = handler(state, payload, context);
+  assertDeclared(state, `action "${body.type}"`);
+  return result;
 }
 
 /**
@@ -95,6 +114,7 @@ export function advanceLife(state, dt, ctx) {
   const context = contextFor(state, { ...ctx, now }, `settle|${state.t}|${now}`);
   const code = advanceActive(state, dt, context);
   for (const system of systems()) system.advance?.(state, dt, context);
+  assertDeclared(state, 'advanceLife');
   state.t = now;
   return { ok: true, code, state };
 }

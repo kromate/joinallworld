@@ -15,6 +15,11 @@
  * to read derived display data (which starting homes a lottery outcome allows, opening hours,
  * which regular can be greeted) from what the server returned.
  *
+ * REPRODUCIBLE ROLLS. A real server keys every random outcome with a secret salt per life, so no
+ * two runs would roll alike. This process is the server here, so it fixes the salts its lives are
+ * given (the test-only hook in server/life-service.js; no request can do that): the run is the
+ * same every time, as it was before salts existed.
+ *
  * Plain Node, no new dependencies. `runTwoPlayers({ log })` is also run by server/two-players.test.js.
  */
 import assert from 'node:assert/strict';
@@ -25,6 +30,7 @@ import { once } from 'node:events';
 import { fileURLToPath } from 'node:url';
 import { WebSocket } from 'ws';
 import { createServer } from '../server/server.js';
+import { useSaltSourceForTests } from '../server/life-service.js';
 import { createLife, viewLife } from '../src/life.js';
 import { VENUES } from '../src/game/content/venues.js';
 import { NPCS } from '../src/game/content/npcs.js';
@@ -42,9 +48,13 @@ const LOOKS = {
 const START = Date.UTC(2026, 0, 3, 9);
 const at = (day, hour, minute = 0) => Date.UTC(2026, 0, day, hour - 1, minute); // Lagos wall time → server ms
 
-export async function runTwoPlayers({ log = console.log } = {}) {
+/** Salts are handed out in the order lives are created: `<SALT_PREFIX>-0000`, `-0001`, … (see the header). */
+export const SALT_PREFIX = 'two-players-salt';
+
+export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFIX } = {}) {
   const dataDir = await mkdtemp(join(tmpdir(), 'joinallworld-two-players-'));
-  let time = START, step = 0, ids = 0;
+  let time = START, step = 0, ids = 0, lives = 0;
+  useSaltSourceForTests(() => `${saltPrefix}-${String(lives++).padStart(4, '0')}`);
   const server = await createServer({ dataDir, now: () => time, distDir: join(dataDir, 'no-dist') });
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
@@ -395,6 +405,7 @@ export async function runTwoPlayers({ log = console.log } = {}) {
     log(`Two players complete: ${step} steps. Ada ${naira((await life(ada)).cash)}, Bola ${naira((await life(bola)).cash)}.`);
     return { steps: step };
   } finally {
+    useSaltSourceForTests(); // back to random salts for anything else in this process
     for (const ws of sockets) ws.terminate();
     server.closeAllConnections();
     await new Promise((done) => server.close(done));

@@ -245,6 +245,12 @@ test('collections are namespaced, created lazily and cannot shadow core data', (
   const social = collection(db, 'social'); social.friends = 1;
   assert.equal(collection(db, 'social'), social); assert.deepEqual(collection(db, 'civic', { plots: [] }), { plots: [] }); assert.deepEqual(db.civic, { plots: [] });
   for (const name of ['sessions', 'version', 'archivedLives', '__proto__', 'Bad', 'a', '', null, 'has space']) assert.throws(() => collection(db, name), /Invalid collection name/, String(name));
+  // Names every object inherits are not collections: they would read as "already there" and return a built-in.
+  for (const name of ['constructor', 'toString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'toLocaleString', 'propertyIsEnumerable']) assert.throws(() => collection(db, name), /Invalid collection name/, name);
+  // Only the document's own property counts as an existing collection.
+  const inherited = Object.create({ guestbook: { planted: true } });
+  assert.deepEqual(collection(inherited, 'guestbook', { entries: [] }), { entries: [] });
+  assert.equal(Object.hasOwn(inherited, 'guestbook'), true);
 });
 
 test('an old-format saved life survives the refactor: state, timers, per-city entries and receipts', async t => {

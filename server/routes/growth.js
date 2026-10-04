@@ -24,6 +24,7 @@
  *   POST /api/growth/push/subscribe { cityId, subscription, consent: true }   store a browser's push subscription (adults only)
  *   POST /api/growth/push/unsubscribe { cityId, endpoint? }    delete one or all of the caller's subscriptions
  *   GET|POST /e/confirm?t=  ·  GET|POST /e/unsub?t=            the pages a link in an e-mail opens (signed token; POST does it)
+ *   POST /api/growth/tables/claim   { cityId }            apply the caller's finished table games to their life, once each
  *   POST /api/growth/client         { signals: [name] }   a browser says something about itself from a fixed list (metrics only)
  *   GET  /s/<code>                                        the link-preview page (HTML, no script; see server/growth/share.js)
  *
@@ -41,6 +42,7 @@ import { createShare, findShare, sharePageHtml } from '../growth/share.js';
 import { referralService } from '../growth/referral.js';
 import { CLIENT_SIGNALS, count, prune, touch } from '../growth/metrics.js';
 import { outreachService } from '../growth/outreach.js';
+import { tablesService } from '../growth/tables.js';
 import { mailPage } from '../growth/email/templates.js';
 
 const SESSION_GAP_MS = 30 * 60000;
@@ -54,6 +56,7 @@ const consentView = (player) => (player?.consent ? { age: player.consent.age, pu
 export default function growthRoutes(ctx) {
   const referral = referralService(ctx);
   const outreach = outreachService(ctx);
+  const tables = tablesService(ctx);
   const city = (value) => { if (!ctx.cityIds.includes(value)) throw ctx.fail(400, 'invalid_city'); return value; };
 
   /** Authenticate, rate limit, find the caller's created life in the city (never creating one), and run `call`. */
@@ -168,6 +171,8 @@ export default function growthRoutes(ctx) {
       return { ok: true, code: 'saved', consent: consentView(player) };
     }),
 
+    // Table games: apply the caller's finished games to their life (what a win pays, what counts for missions), once each.
+    'POST /api/growth/tables/claim': route(({ g, session, state, cityId }) => ({ ...tables.claim(g, session, state, cityId), ratings: tables.ratings(g, session.publicId) }), { durable: (result) => result?.material === true }),
     // E-mail: store a consented address and send its confirmation (double opt-in). See server/growth/outreach.js.
     'POST /api/growth/email': async (request) => ({ body: await outreach.requestEmail(request, await request.json()), renew: true }),
     'POST /api/growth/email/remove': route(({ g, session }) => ({ ok: true, code: 'removed', removed: outreach.dropContact(g, session.publicId, 'removed') })),

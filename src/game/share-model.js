@@ -24,7 +24,8 @@
  * @property {string} [title]     the sharer's current title (missions, week)
  * @property {string} [game]      table game label, e.g. "Whot" (table)
  * @property {boolean} [won]      (table)
- * @property {string} [event]     event title (event);  @property {string} [venue] venue label (event)
+ * @property {string} [event]     event title (event);  @property {string} [venue] venue label (event, table)
+ * @property {string} [tableId]   a table to land beside (table): makes the share an invitation to that table
  */
 export const SHARE_KINDS = Object.freeze(['invite', 'house', 'missions', 'week', 'table', 'event']);
 export const BRAND = 'Allworld';
@@ -39,7 +40,8 @@ export function cleanFacts(facts) {
   const kind = SHARE_KINDS.includes(facts?.kind) ? facts.kind : 'invite';
   return { kind, name: clip(facts?.name, 24) || 'A Lagosian', district: clip(facts?.district, 24), city: clip(facts?.city, 24) || 'Lagos',
     done: count(facts?.done, 9), total: count(facts?.total, 9), days: count(facts?.days), stamps: count(facts?.stamps, 7), title: clip(facts?.title, 24),
-    game: clip(facts?.game, 24), won: facts?.won === true, event: clip(facts?.event, 48), venue: clip(facts?.venue, 32) };
+    game: clip(facts?.game, 24), won: facts?.won === true, event: clip(facts?.event, 48), venue: clip(facts?.venue, 32),
+    tableId: typeof facts?.tableId === 'string' && /^[a-z0-9-]{1,40}$/.test(facts.tableId) ? facts.tableId : '' };
 }
 
 /**
@@ -52,7 +54,8 @@ export function sharePreview(facts) {
     case 'house': return { title: `Come to ${f.name}’s house in ${place}`, description: `Knock at the door in ${BRAND}. No sign-up: pick a name and walk in.` };
     case 'missions': return { title: `${f.name} finished ${f.done} of ${f.total || 3} missions today`, description: `${days(f.days)} in ${f.city}${f.title ? ` · ${f.title}` : ''}. Start your own life in ${BRAND}.` };
     case 'week': return { title: `${f.name}’s week in ${f.city}`, description: `${f.stamps} of 7 days played · ${days(f.days)} in the city${f.title ? ` · ${f.title}` : ''}.` };
-    case 'table': return { title: f.won ? `${f.name} just won at ${f.game || 'the table'}` : `${f.name} is at the ${f.game || 'games'} table`, description: `Pull up a chair in ${BRAND}. Whot at the buka, penalties at the viewing centre.` };
+    case 'table': return f.tableId ? { title: `Come and play ${f.game || 'a game'} with ${f.name}`, description: `${f.name} is at a table${f.venue ? ` at ${f.venue}` : ''} in ${BRAND}. Sit down or watch. No sign-up.` }
+      : { title: f.won ? `${f.name} just won at ${f.game || 'the table'}` : `${f.name} is at the ${f.game || 'games'} table`, description: `Pull up a chair in ${BRAND}. Whot at the buka, with real people.` };
     case 'event': return { title: `${f.event || 'Something is on'} · ${f.venue || f.city}`, description: `${f.name} is going. Meet them there in ${BRAND}.` };
     default: return { title: `Join ${f.name} in ${BRAND}`, description: `${f.name} lives in ${place}. Make your Sim, get a job, and come through. No sign-up.` };
   }
@@ -71,7 +74,7 @@ export function shareText(facts, link = '') {
     if (f.title) lines.push(`⭐ ${f.title}`);
   } else if (f.kind === 'week') {
     lines.push(`${BRAND} · my week in ${f.city}`, `${SQUARE.on.repeat(f.stamps)}${SQUARE.off.repeat(7 - f.stamps)} ${f.stamps}/7 days`, `${days(f.days)} in the city${f.title ? ` · ⭐ ${f.title}` : ''}`);
-  } else if (f.kind === 'table') lines.push(f.won ? `I just won at ${f.game} in ${BRAND} 🏆` : `I am at the ${f.game} table in ${BRAND}`, 'Come and play me.');
+  } else if (f.kind === 'table') lines.push(...(f.tableId ? [`Come and play ${f.game} with me${f.venue ? ` at ${f.venue}` : ''} 🃏`, `I am at the table in ${BRAND}. Tap to sit down.`] : [f.won ? `I just won at ${f.game} in ${BRAND} 🏆` : `I am at the ${f.game} table in ${BRAND}`, 'Come and play me.']));
   else if (f.kind === 'house') lines.push(`Come to my house in ${f.district || f.city} 🏠`, `Knock in ${BRAND}. No sign-up.`);
   else if (f.kind === 'event') lines.push(`${f.event} · ${f.venue}`, `I am going. Meet me there in ${BRAND}.`);
   else lines.push(`I live in ${f.district || f.city} now, in ${BRAND}.`, 'Make your Sim and come through. No sign-up.');
@@ -88,7 +91,7 @@ export function shareCard(facts) {
   const base = { kicker: BRAND.toUpperCase(), squares: [], footer: 'Play free in your browser' };
   if (f.kind === 'missions') return { ...base, headline: `${f.done}/${f.total || 3} missions today`, lines: [f.name, `${days(f.days)} in ${f.city}`, ...(f.title ? [f.title] : [])], squares: Array.from({ length: f.total || 3 }, (_, index) => index < f.done) };
   if (f.kind === 'week') return { ...base, headline: `My week in ${f.city}`, lines: [f.name, `${f.stamps} of 7 days played`, `${days(f.days)} in the city`], squares: Array.from({ length: 7 }, (_, index) => index < f.stamps) };
-  if (f.kind === 'table') return { ...base, headline: f.won ? `Won at ${f.game}` : `At the ${f.game} table`, lines: [f.name, place, 'Come and play me'] };
+  if (f.kind === 'table') return { ...base, headline: f.tableId ? `Come and play ${f.game}` : f.won ? `Won at ${f.game}` : `At the ${f.game} table`, lines: [f.name, f.venue || place, f.tableId ? 'A seat is open' : 'Come and play me'] };
   if (f.kind === 'house') return { ...base, headline: 'Come to my house', lines: [f.name, place, 'Knock at the door'] };
   if (f.kind === 'event') return { ...base, headline: f.event, lines: [f.venue, `${f.name} is going`] };
   return { ...base, headline: `I live in ${f.district || f.city} now`, lines: [f.name, 'Make your Sim and come through'] };

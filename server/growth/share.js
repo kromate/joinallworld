@@ -16,6 +16,8 @@ import { viewLife } from '../../src/life.js';
 import { DISTRICTS } from '../../src/game/content/civic.js';
 import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.js';
 import { eventsBetween } from '../../src/game/calendar.js';
+import { venueLabel } from '../../src/game/content/venues.js';
+import { GAMES, tableById } from '../../src/tables/places.js';
 import { LIMITS, playerOf, sweep } from './data.js';
 import { count } from './metrics.js';
 
@@ -25,13 +27,18 @@ const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&
 const no = (code, reason) => ({ ok: false, code, reason });
 
 /** The facts of a share, read from the sharer's settled life. Nothing comes from the request but the kind (and an event id). */
-export function factsFor(kind, session, state, cityId, now, player, eventId) {
+export function factsFor(kind, session, state, cityId, now, player, eventId, tableId) {
   const view = viewLife(state, { now, cityId });
   const district = DISTRICTS.find((item) => item.id === state.property?.house)?.label ?? '';
   const base = { kind, name: session.name, district, city: CITY_NAMES[cityId] ?? cityId };
   if (kind === 'missions') return { ...base, done: view.missions.dailySet.done, total: view.missions.dailySet.total || 3, days: view.missions.activeDays, title: view.missions.title ?? '' };
   if (kind === 'week') return { ...base, stamps: view.missions.stamps.days, days: view.missions.activeDays, title: view.missions.title ?? '' };
-  if (kind === 'table') return player.table ? { ...base, game: player.table.label, won: player.table.won } : null;
+  if (kind === 'table') {
+    // With a table id: an invitation to that table. Without: the caller's last result.
+    const place = typeof tableId === 'string' ? tableById(tableId) : null;
+    if (place) return { ...base, game: GAMES[place.game].label, tableId: place.id, venue: venueLabel(place.venue, cityId) };
+    return player.table ? { ...base, game: player.table.label, won: player.table.won } : null;
+  }
   if (kind === 'event') {
     const event = eventsBetween(now, now + 8 * 86400000, cityId).find((item) => item.id === eventId);
     return event ? { ...base, event: event.title, venue: event.venueLabel } : null;
@@ -46,7 +53,8 @@ export function createShare(ctx, g, session, state, cityId, body) {
   if (body.event !== undefined && (typeof body.event !== 'string' || !/^[a-z0-9-]{1,40}$/.test(body.event))) throw ctx.fail(400, 'invalid_event');
   const player = playerOf(g, session.publicId);
   if (!player) return no('server_full', 'Sharing is not available right now. Try again later.');
-  const raw = factsFor(kind, session, state, cityId, now, player, body.event);
+  if (body.table !== undefined && (typeof body.table !== 'string' || !/^[a-z0-9-]{1,40}$/.test(body.table))) throw ctx.fail(400, 'invalid_table');
+  const raw = factsFor(kind, session, state, cityId, now, player, body.event, body.table);
   if (!raw) return no('nothing_to_share', kind === 'table' ? 'Finish a table game first, then share the result.' : 'That event is not on this week.');
   const facts = cleanFacts(raw), text = JSON.stringify(facts);
   sweep(g, now);

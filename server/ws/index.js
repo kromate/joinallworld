@@ -63,7 +63,7 @@
  * same socket's next message starts).
  *
  * RULES
- *   - Message types are global: prefix yours with your area (dm-*, group-*, friend-*, invite-*).
+ *   - Message types are global: prefix yours with your area (dm-*, group-*, friend-*, invite-*, table-*).
  *     A duplicate type aborts start-up. join, move, voice-state, signal and chat are core.
  *   - Never send ws.secret or a stored session.secret to anyone.
  *   - Do not mutate ws.room, ws.voice or ws.position; rooms belong to ws/rooms.js.
@@ -77,8 +77,9 @@
  */
 import rooms from './rooms.js';
 import social from './social.js';
+import tables from './tables.js';
 
-export const WS_MODULES = [rooms, social];
+export const WS_MODULES = [rooms, social, tables];
 
 const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'];
 

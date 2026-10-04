@@ -8,6 +8,7 @@ import { lagosTime, isOpen, minutesUntilOpen, formatClock } from './clock.js';
 import { rebuildCatalogue } from './systems/activities.js';
 import { NEEDS, DECAY_FLOOR, OFFLINE_DECAY_CAP_SECONDS, NEED_DECAY_PER_HOUR } from './systems/needs.js';
 import { credit, debit, addMoodlet, moodOf, addSkillXp, skillLevel, setSkillLevel, xpForLevel, addItem, removeItems, countItem, SKILLS } from './api.js';
+import { statementOf, reasonGroup, LEDGER_LIMIT, LEDGER_DAYS, LEDGER_DAY_GROUPS } from './systems/wallet.js';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8); // 09:00 in Lagos (UTC+1), a Monday
 const at = (now, seed = 'test') => makeContext({ now, cityId: 'lagos', seed });
@@ -96,7 +97,9 @@ test('sanitize rejects hostile saves: every field falls back to a safe default',
   assert.deepEqual(state.moodlets, [{ id: 'ok', label: 'Fine', value: 4, expiresAt: null }]);
   assert.deepEqual(Object.keys(state.skills), [...SKILLS]); assert.equal(state.skills.cooking, 0); assert.equal(state.skills.coding, 0); assert.equal(state.skills.hustle, xpForLevel(10));
   assert.deepEqual(state.inventory, { rice: 3, gold: 9999 });
-  assert.deepEqual(state.ledger, [{ at: 1, amount: 5, reason: 'ok', balance: 5 }]);
+  // The one valid line ends at ₦5, the balance is the ₦5,000 default: the difference is shown, never hidden.
+  assert.deepEqual(state.ledger, [{ at: 1, amount: 5, reason: 'ok', balance: 5 }, { at: 1000, amount: 4995, reason: 'Balance correction (no record of this change)', balance: 5000 }]);
+  assert.equal(statementOf(state).reconciled, true);
   assert.equal(state.job, null); assert.equal(state.completedShifts, 0); assert.equal(state.homeOwned, false); assert.equal(state.probe.pings, 0);
   assert.equal(state.activeAction, null, 'a shift without the job cannot be resumed');
   assert.equal(state.admin, undefined); assert.equal(Object.hasOwn(state, 'constructor'), false);
@@ -220,9 +223,15 @@ test('wallet ledger: integer naira, overflow-safe, capped log that explains ever
   assert.equal(state.cash, 5200);
   assert.deepEqual(state.ledger, [{ at: 20, amount: 250, reason: 'Gift', balance: 5250 }, { at: 30, amount: -50, reason: 'Snack', balance: 5200 }]);
   assert.equal(debit(state, 6000, 'Bill', at(50), { partial: true }), 5200); assert.equal(state.cash, 0);
-  for (let i = 0; i < 40; i++) credit(state, 1, `Tip ${i}`, at(100 + i));
-  assert.equal(state.ledger.length, 30); assert.equal(state.ledger.at(-1).reason, 'Tip 39'); assert.equal(state.ledger.at(-1).balance, 40);
-  assert.equal(viewLife(state).wallet.ledger[0].reason, 'Tip 39', 'view lists newest first');
+  for (let i = 0; i < 70; i++) credit(state, 1, `Tip ${i}`, at(100 + i));
+  assert.equal(state.ledger.length, LEDGER_LIMIT); assert.equal(LEDGER_LIMIT, 60); assert.equal(state.ledger.at(-1).reason, 'Tip 69'); assert.equal(state.ledger.at(-1).balance, 70);
+  assert.equal(viewLife(state).wallet.ledger[0].reason, 'Tip 69', 'view lists newest first');
+  // The lines that scrolled away are still accounted for in the day's summary, and the statement adds up.
+  const statement = statementOf(state);
+  assert.deepEqual(statement.days.map((day) => [day.open, day.in, day.out, day.close, day.changes]), [[5000, 320, 5250, 70, 73]]);
+  assert.deepEqual([statement.opening.balance, statement.closing, statement.totals.net, statement.reconciled, statement.problems], [5000, 70, -4930, true, []]);
+  assert.equal(statement.linesOpening, 10, 'the kept lines start after the first thirteen changes');
+  assert.equal(statement.days[0].groups.reduce((sum, group) => sum + group.net, 0), -4930);
   // Game actions record their reason too.
   const traveller = createLife(null, at(MONDAY_9AM));
   dispatch(traveller, { type: 'travel', payload: { id: 'library', mode: 'cab' } }, at(MONDAY_9AM));
@@ -381,4 +390,52 @@ test('Lagos wall clock: UTC+1 day, hour, weekday and week index', () => {
   assert.equal(isOpen(club, friday + 18 * 3600000), true, 'Saturday 03:00 belongs to Friday night');
   assert.equal(isOpen(club, friday - 6 * 3600000), false, 'Friday 03:00 belongs to Thursday night');
   assert.equal(minutesUntilOpen(office, MONDAY_9AM - 30 * 60000), 30); assert.equal(minutesUntilOpen(office, MONDAY_9AM), 0);
+});
+
+test('wallet history: full recent lines, a summary per Lagos day, bounded, and a statement that always reconciles', () => {
+  const DAY = 86400000, start = Date.UTC(2026, 0, 5, 9);
+  const state = createLife(null, at(start));
+  let expected = state.cash;
+  for (let day = 0; day < 50; day++) {
+    const now = start + day * DAY;
+    for (let i = 0; i < 12; i++) { credit(state, 100 + i, `Reason ${i}: detail ${day}`, at(now + i * 1000)); expected += 100 + i; }
+    debit(state, 300, 'Danfo to Freedom Park', at(now + 60000)); expected -= 300;
+    debit(state, 50, 'Danfo to The Library', at(now + 61000)); expected -= 50;
+  }
+  assert.equal(state.cash, expected);
+  assert.equal(state.ledger.length, LEDGER_LIMIT); assert.equal(state.ledgerDays.length, LEDGER_DAYS);
+  for (const day of state.ledgerDays) {
+    assert.ok(Object.keys(day.by).length <= LEDGER_DAY_GROUPS + 1, 'groups per day are capped; the rest fold into Other');
+    assert.equal(Object.values(day.by).reduce((sum, [net]) => sum + net, 0), day.in - day.out, 'the groups of a day add up to its net');
+    assert.equal(Object.values(day.by).reduce((sum, [, count]) => sum + count, 0), day.n);
+    assert.deepEqual(day.by.Danfo, [-350, 2], 'two fares share one group');
+    assert.ok(Object.hasOwn(day.by, 'Other'));
+  }
+  const statement = statementOf(state);
+  assert.equal(statement.reconciled, true); assert.deepEqual(statement.problems, []);
+  assert.equal(statement.opening.balance + statement.totals.net, state.cash);
+  assert.equal(statement.opening.day, state.ledgerDays[0].day);
+  assert.equal(statement.lines.at(-1).balance, state.cash);
+  // A reload keeps every summary and line exactly.
+  const again = createLife(structuredClone(state), at(start + 51 * DAY));
+  assert.deepEqual(again.ledgerDays, state.ledgerDays); assert.deepEqual(again.ledger, state.ledger); assert.equal(statementOf(again).reconciled, true);
+  // A save from before the summaries existed gets them rebuilt from its lines.
+  const { ledgerDays, ...older } = structuredClone(state);
+  const rebuilt = createLife(older, at(start + 51 * DAY));
+  assert.equal(statementOf(rebuilt).reconciled, true); assert.equal(rebuilt.ledgerDays.at(-1).close, state.cash); assert.ok(rebuilt.ledgerDays.length >= 1);
+  // Summaries that do not add up, or do not end at the balance, are thrown away and rebuilt — never trusted.
+  for (const damage of [(s) => { s.ledgerDays[3].in += 5; }, (s) => { s.ledgerDays.at(-1).close += 1; }, (s) => { s.ledgerDays[2].by = { x: ['a', 1] }; }, (s) => { s.ledgerDays = 'x'; }, (s) => { s.ledgerDays[5].day = s.ledgerDays[4].day; }]) {
+    const copy = structuredClone(state); damage(copy);
+    const fixed = createLife(copy, at(start + 51 * DAY));
+    assert.equal(statementOf(fixed).reconciled, true); assert.equal(fixed.cash, state.cash);
+  }
+  // A balance that does not match its own history is corrected IN the history.
+  const tampered = structuredClone(state); tampered.cash += 777;
+  const shown = createLife(tampered, at(start + 51 * DAY));
+  assert.deepEqual([shown.ledger.at(-1).amount, shown.ledger.at(-1).reason, shown.ledger.at(-1).balance], [777, 'Balance correction (no record of this change)', state.cash + 777]);
+  assert.equal(statementOf(shown).reconciled, true);
+  assert.deepEqual(['Rent: Yaba self-contain (due Sat 10 Jan)', 'Danfo to Freedom Park', 'Goal: Eat something', 'Bought Plastic chair', 'Transfer from Ada', 'Refund: Test Show', 'Tech shift', 'Groceries: 2 × Rice', '', 'Billboard · Marina · 7 days'].map(reasonGroup),
+    ['Rent', 'Danfo', 'Goal', 'Bought', 'Transfer from', 'Refund', 'Tech shift', 'Groceries', 'Other', 'Billboard']);
+  const view = viewLife(state).wallet;
+  assert.equal(view.days[0].day, state.ledgerDays.at(-1).day, 'the view lists the newest day first'); assert.equal(view.statement.reconciled, true);
 });

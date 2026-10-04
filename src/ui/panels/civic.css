@@ -38,8 +38,8 @@
 .civic-tabs button[aria-pressed=true]{background:var(--c-ink);color:#fff}
 .civic-form{display:grid;gap:var(--s-3);margin:var(--s-2) 0}
 .civic-form.is-card{padding:var(--s-3) var(--s-4) var(--s-4);border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring)}
-.civic-form label{display:grid;gap:5px;font-size:12px;font-weight:600;margin:0!important}
-.civic-form input,.civic-form textarea,.civic-form select{font:inherit;font-weight:400;font-size:14px;padding:10px 12px;border:1px solid #cfd5d1;border-radius:var(--r-sm);width:100%;box-sizing:border-box;min-height:var(--tap);background:#fff}
+.civic-form label{display:grid;gap:6px;font-size:13px;font-weight:600;margin:0!important}
+/* the fields themselves are the kit's (controls.css) */
 .civic-form .civic-note{display:block;margin:0 0 5px!important;font-weight:600;color:var(--c-ink)}
 .civic-checks{list-style:none;padding:0;margin:var(--s-1) 0 var(--s-2);display:grid;gap:6px}
 .civic-checks li{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:var(--r-sm);background:var(--c-fill)}
@@ -63,7 +63,7 @@
 .governor-cycle{margin-bottom:var(--s-2);padding:12px 14px 14px;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring)}
 .governor-cycle ol{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;list-style:none;margin:0 0 10px;padding:0}
 .governor-cycle li{display:grid;gap:1px;padding:7px 8px;border-radius:var(--r-xs);background:var(--c-fill);text-align:center;color:var(--c-muted)}
-.governor-cycle li b{font-size:12px}.governor-cycle li small{font-size:10px}
+.governor-cycle li b{font-size:12px}.governor-cycle li small{font-size:11px}
 .governor-cycle li.is-now{background:var(--app-tint,var(--c-green-dark));color:#fff}
 .governor-cycle p{display:grid;gap:1px;margin:0!important;font-size:13px!important}
 .governor-cycle p strong{font-size:16px}.governor-cycle p span{color:var(--c-muted);font-size:12px}.governor-cycle p span b{color:var(--c-ink)}
@@ -90,7 +90,7 @@
 .ads-slot strong{font-size:14px}
 .ads-slot .ads-preview{margin:4px 0}
 .ads-sea{display:grid;grid-template-columns:repeat(16,1fr);gap:2px;background:linear-gradient(180deg,#d9c48f 0 6%,#8fd0e4 10%,#3f9cc4);padding:10px 8px 8px;border-radius:var(--r-md);margin:var(--s-2) 0;box-shadow:var(--e-1)}
-.ads-sea button{aspect-ratio:1;border:0;border-radius:3px;background:#ffffff55;padding:0;font-size:9px;line-height:1;cursor:pointer;min-width:0;overflow:hidden}
+.ads-sea button{aspect-ratio:1;border:0;border-radius:3px;background:#ffffff55;padding:0;font-size:11px;line-height:1;cursor:pointer;min-width:0;overflow:hidden}
 .ads-sea button.is-shore{background:#ffffff99}
 .ads-sea button[aria-pressed=true]{outline:2px solid var(--c-ink);outline-offset:0}
 .ads-pick{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2)}

@@ -52,7 +52,7 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     const world = createVenueWorld(container, { location: 'park', renderer });
     const count = () => world.diagnostics().renderCount;
     assert.equal(count(), 1);
-    assert.deepEqual(world.diagnostics().lighting, { hemi: LIGHTING.outdoor.day.hemi[2], sun: LIGHTING.outdoor.day.sun[1], sky: '#e6f3ff' }, 'the host applied the scene’s own lighting preset');
+    assert.deepEqual(world.diagnostics().lighting, { hemi: LIGHTING.outdoor.day.hemi[2], sun: LIGHTING.outdoor.day.sun[1], sky: '#eaf4ff' }, 'the host applied the scene’s own lighting preset');
     world.setPlayer({ look: { body: 'woman', hair: 'afro' }, seed: PLAYER, name: 'Ada' });
     assert.equal(count(), 2, 'the avatar changed: one frame');
     world.setPlayer({ look: { body: 'woman', hair: 'afro' }, seed: PLAYER, name: 'Ada' });
@@ -65,7 +65,8 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
     assert.deepEqual(tags.filter((tag) => tag.kind === 'table').map((tag) => tag.text), ['Whot · Bench under the trees', 'Penalties · Kickabout corner']);
     assert.deepEqual([tags[0].text, tags[1].text, tags[2].name], ['Ada', '@Player 0', 'Local 1']);
     assert.ok(tags.every((tag) => Number.isFinite(tag.x) && Number.isFinite(tag.y)), 'every tag has a screen position');
-    assert.ok(tags.filter((tag) => tag.visible).length >= 4, 'tags are projected inside the 390 × 844 view');
+    // The view starts close to the player (START_DISTANCE in venue-world.js), so not everyone is in it: the player's own tag always is.
+    assert.ok(tags[0].visible && tags.filter((tag) => tag.visible).length >= 2, 'the player’s tag and the people nearby are projected inside the 390 × 844 view');
     // Idle with a crowd on screen: no frames, no timers, however long we wait and however often the same data arrives.
     for (let i = 0; i < 25; i++) { assert.equal(world.setCrowd(people(4)), false); world.setState({ location: 'park', spot: 'amphitheatre', t: NOON + i * 1000, name: 'Ada' }); }
     await new Promise((resolve) => setTimeout(resolve, 150));
@@ -594,6 +595,8 @@ test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit a
       bench.key('walk-up'); bench.pump(20); bench.keyUp('walk-up'); bench.pump(400);
       assert.ok(Math.hypot(world.diagnostics().avatar.x - out.avatar.x, world.diagnostics().avatar.z - out.avatar.z) > 0.3, `${id}: not stuck at the entrance`);
       // A full turn in eight drags: the camera goes all the way round; a room shows and hides its walls on the way.
+      // (From the whole-venue view: the view starts close to the player, where the camera can be inside the room.)
+      for (let i = 0; i < 12 && world.diagnostics().camera.asked < world.diagnostics().camera.whole - 0.01; i++) { world.zoom(-1); bench.pump(900); }
       const seen = new Set();
       let turned = 0, last = world.diagnostics().camera.yaw;
       for (let i = 0; i < 8; i++) {
@@ -607,6 +610,7 @@ test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit a
       }
       assert.ok(Math.abs(turned - Math.PI * 2) < 0.2, `${id}: turned ${turned.toFixed(2)} rad — a full orbit`);
       if (spawn.walls) assert.equal(seen.size, 4, `${id}: each wall was hidden while the camera was behind it, and shown again (${[...seen].join(' ')})`);
+      world.recentre(); bench.pump(900);
       assert.deepEqual(world.diagnostics().walls, spawn.walls, `${id}: back where it started, the walls are as they were`);
       // Zoom limits both ways.
       for (let i = 0; i < 60; i++) bench.send('wheel', { deltaY: -400, deltaMode: 0 });

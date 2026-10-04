@@ -148,6 +148,7 @@
  */
 import './tokens.css';
 import './shell.css';
+import './controls.css';
 import { esc, money, cap, icon, json, skeleton, mark, iconFor, withGlyphs, stripLeadEmoji } from './dom.js';
 import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.js';
 import { glyph, glyphFor, hasGlyph, onGlyphs } from './phone/icons.js';
@@ -156,10 +157,12 @@ import { linkWords } from './link.js';
 const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
 const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone']];
 const MAX_TOASTS = 2;
+/** A need under this is low (shown on a phone's HUD, marked beside its bar); under the second it is critical. */
+const LOW_NEED = 35, CRITICAL_NEED = 20;
 const TOAST_KINDS = ['info', 'good', 'earn', 'spend', 'error'];
-/** The first-session coach points at the next control for this many starter goals, then stops. */
-const COACH_GOALS = 3;
 const COACH_KEY = 'joinallworld-coach-off';
+/** How many times each situational pointer has been acted on (it retires after a few: attention.js TAPER). */
+const SEEN_KEY = 'joinallworld-hints-seen';
 const LOADING = skeleton();
 /**
  * CONNECTION STATES (view.link, from src/client.js). Each has its own truthful wording: the word
@@ -187,7 +190,13 @@ const STORAGE_NOTICE = { title: 'The server cannot save right now', actions: [['
 export function createShell({ root, dialog, dialogContent, panels, host }) {
   let state = null, view = null, mode = 'venue', lastMode = 'venue', modeParams = null, expanded = false, sheet = null, lastSpotKey = '', forced = false;
   let trayOpen = false, clean = false, saving = 0, lastCash = null, lastNeeds = null, lastMessage = null, lastLife = '', coachOff = false;
-  try { coachOff = globalThis.localStorage?.getItem(COACH_KEY) === '1'; } catch { coachOff = false; }
+  let wasExpanded = false;
+  const readHints = () => { try { coachOff = globalThis.localStorage?.getItem(COACH_KEY) === '1'; } catch { coachOff = false; } };
+  readHints();
+  // The attention system: its code arrives just after the first paint; until then nothing is pointed at.
+  let attn = null, attention = null, stepId = '', lastClick = null, seen = {}, wasBusy = '', lastWaiting = 0;
+  try { seen = JSON.parse(globalThis.localStorage?.getItem(SEEN_KEY)) || {}; } catch { seen = {}; }
+  import('./attention.js').then((module) => { attn = module; attention = module.createAttention({ root, dialog }); if (state) api.refresh(); }, () => {});
   const html = new WeakMap();
   const byId = new Map(panels.map((panel) => [panel.id, panel]));
   const placed = (placement) => panels.filter((panel) => panel.placement === placement);
@@ -197,23 +206,22 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
 
   root.classList.add('life-ui');
   root.innerHTML = `<p class="life-wordmark" aria-label="Allworld"><i aria-hidden="true">${glyph('globe')}</i><span><b>Allworld</b></span></p>
-    <section class="life-status" aria-label="Player status"><i class="life-status-mark" aria-hidden="true">${glyph('globe')}</i><span class="life-clock" data-clock></span><span class="life-mood" data-mood></span><button class="life-status-profile" data-open="sim" data-name></button><span class="life-saved-slot" data-saved></span><button class="life-cash" data-open="bank" data-cash></button><span class="life-delta" data-delta aria-hidden="true"></span></section>
+    <section class="life-status" aria-label="Player status"><i class="life-status-mark" aria-hidden="true">${glyph('globe')}</i><span class="life-clock" data-clock></span><button class="life-mood" data-open="needs" data-mood aria-label="Mood. Open your needs"></button><button class="life-status-profile" data-open="sim" data-name></button><span class="life-saved-slot" data-saved></span><button class="life-cash" data-open="bank" data-cash></button><span class="life-delta" data-delta aria-hidden="true"></span></section>
     <div class="life-notice" data-notice role="status"></div>
     <aside class="life-sidebar" aria-label="Needs, goal and more">
       <div class="life-quick"><div class="life-needs" role="group" aria-label="Your needs">${NEEDS.map((id) => `<div class="life-need" title="${cap(id)}"><span aria-hidden="true">${glyph(id)}</span><div role="meter" aria-label="${cap(id)}" aria-valuemin="0" aria-valuemax="100" data-need="${id}"><i></i></div></div>`).join('')}</div>
         <button class="life-round" data-tray-toggle aria-expanded="false" aria-controls="life-tray" aria-label="More: weather, messages, city and help" title="More">${icon('menu')}<b class="life-badge" data-badge hidden></b></button>
         <button class="life-round" data-clean aria-pressed="false" aria-label="Clean screen: hide the panels and show only the scene" title="Clean screen (X)">${icon('eye')}</button></div>
-      <div class="life-alerts" data-slot="alert"></div>
       <div class="life-goal" data-slot="goal"></div>
       <div class="life-tray" id="life-tray"><div class="life-hud" data-slot="hud"></div><div class="life-menu" data-slot="menu"></div></div>
     </aside>
     <div class="life-toasts" data-toasts role="status" aria-live="polite"></div>
-    <div class="life-bottom" data-bottom><div data-slot="coach"></div><div data-slot="progress"></div><div data-slot="main"></div><nav class="life-nav" aria-label="Main navigation" data-slot="nav"></nav></div>`;
+    <div class="life-bottom" data-bottom><div data-slot="coach"></div><div class="life-alerts" data-slot="alert"></div><div data-slot="progress"></div><div data-slot="main"></div><nav class="life-nav" aria-label="Main navigation" data-slot="nav"></nav></div>`;
   const $ = (selector) => root.querySelector(selector);
   const el = { clock: $('[data-clock]'), mood: $('[data-mood]'), name: $('[data-name]'), cash: $('[data-cash]'), delta: $('[data-delta]'), saved: $('[data-saved]'),
     toasts: $('[data-toasts]'), bottom: $('[data-bottom]'), progress: $('[data-slot="progress"]'), main: $('[data-slot="main"]'), nav: $('[data-slot="nav"]'), coach: $('[data-slot="coach"]'),
     slots: { alert: $('[data-slot="alert"]'), goal: $('[data-slot="goal"]'), hud: $('[data-slot="hud"]') }, menu: $('[data-slot="menu"]'),
-    tray: $('[data-tray-toggle]'), badge: $('[data-badge]'), clean: $('[data-clean]'), sidebar: $('.life-sidebar'), notice: $('[data-notice]') };
+    needs: $('.life-needs'), tray: $('[data-tray-toggle]'), badge: $('[data-badge]'), clean: $('[data-clean]'), sidebar: $('.life-sidebar'), notice: $('[data-notice]') };
 
   /** Write HTML only when it changed, so per-second updates never rebuild or reflow unchanged parts. */
   function setHtml(target, next) {
@@ -256,6 +264,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     text = String(text);
     if (kind === 'good' && /\+₦/.test(text)) kind = 'earn';
     const tone = TOAST_KINDS.includes(kind) ? kind : 'info';
+    // A finished goal: the scene host answers with a sub-second burst of confetti (src/scene/reward.js).
+    if (/^goal complete/i.test(stripLeadEmoji(text) || text)) window.dispatchEvent(new CustomEvent('jaw:cheer'));
     const showing = [...el.toasts.children].find((node) => node.dataset.text === text);
     if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.innerHTML = glyph(tone); } return; }
     // The toast carries its own glyph: an emoji the text starts with is dropped, one inside it is drawn as a glyph.
@@ -278,7 +288,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
    */
   function placeToasts() {
     const narrow = globalThis.matchMedia?.('(max-width: 1000px)').matches;
-    const rows = dialog.open ? [] : [el.notice, ...(narrow ? [el.sidebar.querySelector('.life-quick'), el.slots.alert, el.slots.goal] : [])];
+    const rows = dialog.open ? [] : [el.notice, ...(narrow ? [el.sidebar.querySelector('.life-quick'), el.slots.goal] : [])];
     const bottom = Math.max(0, ...rows.map((node) => node?.getBoundingClientRect().bottom || 0));
     if (bottom > 0) el.toasts.style.setProperty('--toast-top', `${Math.round(bottom + 6)}px`);
     else el.toasts.style.removeProperty('--toast-top');
@@ -349,7 +359,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     html.delete(dialogContent);
     renderSheet();
     if (state) renderCoach();
-    if (!dialog.open) { dialog.showModal(); phone.focus(); }
+    // A sheet opens with focus on its body (so the keyboard scrolls it and a screen reader starts at its title), not on the
+    // close button — which is what drew a heavy ring around it at rest.
+    if (!dialog.open) { dialog.showModal(); phone.focus(); if (sheet?.kind !== 'phone') { dialogContent.tabIndex = -1; dialogContent.focus({ preventScroll: true }); } }
     // A different screen starts at its top; a form that redraws itself by re-opening keeps its place.
     if (sheetKey() !== before) dialogContent.scrollTop = 0;
     mountToasts();
@@ -400,12 +412,22 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     try { return panel.render(state, panelView(params), api) ?? ''; }
     catch (error) { console.error(`Panel ${panel.id} failed to render:`, error); return '<p class="ui-error">This screen could not be shown.</p>'; }
   }
+  /**
+   * The control kit's select (src/ui/controls.js, fetched the first time a sheet has one): every native <select> a panel
+   * draws becomes the game's own listbox; the native element stays, hidden, as the value. Runs after each (re)draw.
+   */
+  let kit = null;
+  function dress(container) {
+    if (kit) kit.enhanceSelects(container);
+    else if (container.querySelector('select')) import('./controls.js').then((module) => { kit = module; kit.enhanceSelects(dialogContent); kit.enhanceSelects(root); }, () => {});
+  }
   function bindPanels(container, params) {
     for (const node of container.querySelectorAll('[data-panel]')) {
       const panel = byId.get(node.dataset.panel);
       if (!panel || panel.pending) continue;
       try { panel.bind?.(node, api, params ?? null); } catch (error) { console.error(`Panel ${node.dataset.panel} failed to bind:`, error); }
     }
+    dress(container);
   }
 
   const sheetHead = (title, { back = false, extra = '' } = {}) => `<header class="sheet-head">${back ? `<button class="sheet-back" data-open="phone" aria-label="Back to phone">${icon('back')}</button>` : ''}${extra}<h2>${title}</h2></header>`;
@@ -612,45 +634,53 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
 
   /**
-   * First-session coach: for the first COACH_GOALS starter goals it names the next control and
-   * rings it. It is silent once those goals are done, when dismissed, and whenever a sheet,
-   * the map or Buy mode is in front. → { text, target (selector within root) } | null
+   * GUIDANCE (src/ui/attention.js, fetched right after the first paint): the one next step, if there
+   * is one, is ringed — and spelled out in the coach line for the first starter goals, or in a small
+   * bubble with an arrow when the control is a long way from where the player last clicked. It is
+   * silent on a Clean screen, with Hints off (Settings, or the × on the coach line), and it tapers:
+   * each situational pointer (Go on the map, where the trip card is, a roadside prompt) is shown a
+   * few times and then retired. One pointer at a time.
    */
-  function coachStep() {
-    if (coachOff || clean || mode !== 'venue' || !view.connected || view.onboarding?.required) return null;
-    const goal = view.goals?.chip;
-    if (!goal || goal.kind !== 'goal' || goal.step > COACH_GOALS) return null;
-    const active = state.activeAction;
-    if (active) {
-      if (isTrip(active)) return null;
-      // Only the goal's own activity (one started at the goal's spot) is cheered on; anything else is named as a detour.
-      const [goalVenue, goalSpot] = goal.go || [];
-      const forGoal = Boolean(goalSpot) && state.location === goalVenue && state.spot === goalSpot;
-      return { text: forGoal ? 'Nice. It finishes by itself — watch the bar.' : 'This is not part of the goal. Let it finish or cancel it, then carry on.', target: null };
-    }
-    if (goal.go) {
-      const [venueId, spotId] = goal.go;
-      if (state.location !== venueId) return { text: `Go ${venueId === 'home' ? 'Home' : 'there'} first: tap ${venueId === 'home' ? 'Home' : 'Map'}.`, target: `[data-nav="${venueId === 'home' ? 'home' : 'map'}"]` };
-      const spot = view.activities.spots.find((item) => item.id === spotId);
-      if (spot && (state.spot !== spotId || !expanded)) return { text: `Tap ${spot.label} to see what you can do.`, target: `[data-spot="${spotId}"]` };
-      // A goal that names its activity rings that card; otherwise the first one that can be started.
-      const own = goal.activity && root.querySelector(`[data-start="${goal.activity}"]`) ? `[data-start="${goal.activity}"]` : null;
-      return { text: own ? `Tap it: ${goal.hint}.` : `Pick one. ${goal.hint}.`, target: own ?? '.life-action:not(:disabled):not(.is-blocked)' };
-    }
-    if (goal.open) {
-      const app = byId.get(goal.open);
-      if (app?.placement === 'phone') return { text: `Open Phone, then ${app.title}.`, target: '[data-nav="phone"]', app: app.id };
-      if (app?.placement === 'nav') return { text: `Tap ${app.title}.`, target: `[data-nav="${goal.open}"]` };
-    }
-    return null;
+  function stepNow() {
+    if (!attn) return null;
+    return attn.nextStep({ state, view, mode, expanded, clean, hintsOff: coachOff, sheet: sheet?.kind || null, seen, apps: (id) => byId.get(id), has: (selector) => Boolean(root.querySelector(selector)), picked: mode === 'map' && Boolean(el.main.querySelector('.map-go:not(:disabled)')) });
   }
   function renderCoach() {
-    const step = coachStep(), goal = view.goals?.chip;
-    setHtml(el.coach, step ? `<div class="life-coach" role="note"><span aria-hidden="true">${mark('pointer')}</span><p><b>Goal ${esc(goal.step)} of ${esc(goal.of)} · ${esc(goal.title)}</b>${esc(step.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
-    for (const node of [...root.querySelectorAll('.is-coach'), ...dialogContent.querySelectorAll('.is-coach')]) node.classList.remove('is-coach');
-    if (step?.target) root.querySelector(step.target)?.classList.add('is-coach');
+    const step = stepNow(), coach = step?.id === 'goal' && step.bubble ? step : null;
+    // A step that was showing and is now gone (or replaced) was acted on: count it, so the situational pointers taper off.
+    if (stepId && stepId !== 'goal' && stepId !== step?.id) { seen[stepId] = (seen[stepId] || 0) + 1; try { globalThis.localStorage?.setItem(SEEN_KEY, JSON.stringify(seen)); } catch { /* counted for this visit */ } }
+    stepId = step?.id || '';
+    // One line of guidance at a time: while the coach is talking, a phone's HUD drops the goal chip that says the same thing.
+    root.classList.toggle('has-coach', Boolean(coach));
+    setHtml(el.coach, coach ? `<div class="life-coach" role="note"><span aria-hidden="true">${mark('pointer')}</span><p><b>${esc(coach.title)}</b>${esc(coach.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
+    for (const node of dialogContent.querySelectorAll('.is-coach')) node.classList.remove('is-coach');
+    if (!attention) return;
+    const recent = lastClick && Date.now() - lastClick.at < 6000 ? lastClick : null;
+    // The coach line already says a goal step; only the situational pointers get a bubble of their own.
+    attention.point(step?.target || null, { text: step && !coach && step.bubble ? step.text : '', from: recent });
     if (step?.app && sheet?.kind === 'phone') dialogContent.querySelector(`[data-ph-app="${step.app}"]`)?.classList.add('is-coach');
   }
+
+  /**
+   * CAUSE → EFFECT, and things that happen elsewhere. A status card that has just appeared (an
+   * activity's progress, a trip) slides in from the control that started it, so the eye follows it
+   * to the bottom-centre stack. A change the player may not be looking at — money, a need turning
+   * low, something new waiting in More — gets a brief pill near the middle that
+   * points at it (and is said for screen readers). All one-shot CSS; nothing is drawn in the scene.
+   */
+  function notice(needs) {
+    if (!attention) return;
+    const active = state.activeAction, busy = active ? `${active.kind}:${active.id}` : '';
+    if (busy && busy !== wasBusy && lastClick && Date.now() - lastClick.at < 2500) attention.arrive(isTrip(active) && mode === 'map' ? el.main : el.progress, lastClick);
+    wasBusy = busy;
+    if (!view.connected) return;
+    for (const need of view.needs.order) if (noticeNeeds?.[need] >= LOW_NEED && needs[need] < LOW_NEED) attention.announce(`${cap(need)} is low`, { at: el.mood, kind: 'warn' });
+    noticeNeeds = needs;
+    const waiting = el.slots.hud.querySelectorAll('.is-active').length;
+    if (waiting > lastWaiting && !trayOpen) attention.announce('Something new is waiting in More', { at: el.tray });
+    lastWaiting = waiting;
+  }
+  let noticeNeeds = null;
 
   // ---- render ---------------------------------------------------------------------------
   function render(nextState, nextView) {
@@ -661,7 +691,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (life !== lastLife) { lastLife = life; lastCash = null; lastNeeds = null; lastMessage = null; }
     setText(el.clock, view.clock);
     const mood = moodOf();
-    setHtml(el.mood, `${iconFor('mood', mood.tone, mood.icon)}<span>${esc(mood.word)}</span>`);
+    if (setHtml(el.mood, `${iconFor('mood', mood.tone, mood.icon)}<span>${esc(mood.word)}</span>`)) el.mood.setAttribute('aria-label', `Mood: ${mood.word}. Open your needs`);
     el.mood.classList.toggle('is-uneasy', mood.tone === 'warn');
     el.mood.classList.toggle('is-bad', mood.tone === 'bad');
     el.mood.classList.toggle('is-neutral', mood.tone === 'neutral');
@@ -676,6 +706,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
       el.delta.textContent = `${change > 0 ? '+' : '−'}${money(Math.abs(change))}${entry && entry.amount === change ? ` · ${entry.reason}` : ''}`;
       flash(el.delta, change > 0 ? 'is-up' : 'is-down');
       flash(el.cash, change > 0 ? 'is-up' : 'is-down');
+      // Off the venue view (the map, a sheet) nothing else says it where the player is looking: a brief pill near the middle does.
+      if (mode !== 'venue' || dialog.open) attention?.announce(el.delta.textContent, { at: el.cash, kind: change > 0 ? 'good' : 'spend' });
     }
     if (view.connected) lastCash = state.cash;
 
@@ -683,12 +715,19 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     for (const need of view.needs.order) {
       const meter = root.querySelector(`[data-need="${need}"]`), value = Math.round(state.needs[need]);
       needs[need] = value;
-      if (meter.getAttribute('aria-valuenow') !== String(value)) { meter.style.setProperty('--need', `${value}%`); meter.setAttribute('aria-valuenow', String(value)); meter.classList.toggle('is-low', value < 35); }
+      if (meter.getAttribute('aria-valuenow') !== String(value)) {
+        // Low (under 35) and critical (under 20) are said three ways: the colour, a mark beside the bar, and the word a screen reader hears.
+        const low = value < LOW_NEED, bad = value < CRITICAL_NEED, row = meter.parentNode;
+        meter.style.setProperty('--need', `${value}%`); meter.setAttribute('aria-valuenow', value); meter.setAttribute('aria-valuetext', `${value}%${bad ? ', critical' : low ? ', low' : ''}`);
+        row.classList.toggle('is-low', low); row.classList.toggle('is-critical', bad);
+      }
       // A gain, or a sharp drop, is highlighted once; the slow decay is not.
       const before = lastNeeds?.[need];
       if (before !== undefined && (value - before >= 1 || before - value >= 3)) flash(meter.parentNode, value > before ? 'is-up' : 'is-down');
     }
     lastNeeds = needs;
+    // On a phone the strip shows only the needs that are low; with none low it steps aside (the mood in the top bar opens them all).
+    el.needs.classList.toggle('has-low', Object.values(needs).some((value) => value < LOW_NEED));
 
     // A guest's first minutes show ONE line of guidance (the goal): every other chip waits behind "More", on any screen.
     root.classList.toggle('is-guest', Boolean(view.onboarding?.guest));
@@ -713,6 +752,10 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     // A trip itself is shown on the map: the host sends the shell there for as long as one runs (onMode in src/life-main.js).
     setHtml(el.progress, progressHtml());
     root.classList.toggle('is-expanded', expanded && mode === 'venue');
+    // The cards rise in once, when the rail is opened — not on the redraws that follow while it stays open.
+    const opened = expanded && mode === 'venue';
+    root.classList.toggle('is-opening', opened && !wasExpanded);
+    wasExpanded = opened;
     root.dataset.mode = mode;
 
     const navPanel = mode !== 'venue' ? byId.get(mode) : null;
@@ -741,6 +784,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     lastMode = mode;
     setHtml(el.nav, navHtml());
     renderSheet(forced);
+    notice(needs);
     renderCoach();
     // A panel that must be completed opens by itself (and comes back if anything replaced it).
     if (view.connected) {
@@ -775,7 +819,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     const data = target.dataset;
     if ('trayToggle' in data) { setTray(!trayOpen); return; }
     if ('clean' in data) { setClean(!clean); api.refresh(); return; }
-    if ('coachOff' in data) { coachOff = true; try { globalThis.localStorage?.setItem(COACH_KEY, '1'); } catch { /* still off for this visit */ } api.refresh(); return; }
+    if ('coachOff' in data) { coachOff = true; attention?.clear(); try { globalThis.localStorage?.setItem(COACH_KEY, '1'); } catch { /* still off for this visit */ } api.refresh(); return; }
     if ('retryPanel' in data) { const panel = byId.get(data.retryPanel); if (panel) { panel.failed = false; api.refresh(); } return; }
     if ('menu' in data) { setTray(false); host.menu?.(data.menu); return; }
     // The connection notice: one tap starts a new life (the same event the session panel sends), or opens the session panel.
@@ -801,7 +845,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     else if ('close' in data) close();
   }
   /** A tap anywhere outside the tray closes it. */
-  function onOutside(event) { if (trayOpen && !el.sidebar.contains(event.target)) setTray(false); }
+  function onOutside(event) {
+    lastClick = { x: event.clientX, y: event.clientY, at: Date.now() }; if (trayOpen && !el.sidebar.contains(event.target)) setTray(false); }
   function navigate(id) {
     if (clean) setClean(false);
     if (id === 'phone') open('phone');
@@ -881,6 +926,9 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   window.addEventListener('keydown', onKey);
   window.addEventListener('keyup', onKeyUp);
   window.addEventListener('jaw:scene-spot', onSceneSpot);
+  // Settings → Hints was switched: read it again and redraw.
+  const onHints = () => { readHints(); if (state) api.refresh(); };
+  window.addEventListener('jaw:hints', onHints);
 
   return {
     api, render, open, close, toast,
@@ -889,6 +937,6 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     setExpanded(value) { expanded = Boolean(value); },
     /** Is this panel the sheet in front? */
     isOpen(id) { return sheet?.kind === 'panel' && sheet.id === id; },
-    destroy() { offGlyphs(); phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
+    destroy() { attention?.destroy(); window.removeEventListener('jaw:hints', onHints); offGlyphs(); phone.destroy(); el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); document.removeEventListener('pointerdown', onOutside); window.removeEventListener('keydown', onKey); window.removeEventListener('keyup', onKeyUp); window.removeEventListener('jaw:scene-spot', onSceneSpot); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

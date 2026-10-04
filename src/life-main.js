@@ -151,8 +151,10 @@ async function loadScene() {
     showPlayer();
     showCrowd();
     showGoal();
-    venue.resize();
     layoutScene();
+    venue.resize();
+    // The first frame is in the canvas: bring it up with the same short fade as an arrival, over the calm backdrop — never a flash.
+    $('venue-scene').classList.add('is-arriving');
     reportPlace();
     telemetry.sceneReady(true, $('venue-scene').querySelector('canvas'));
     // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
@@ -262,10 +264,11 @@ function layoutScene() {
   const stack = box('.life-bottom'), quick = box('.life-quick'), bar = box('.life-status'), page = overlay.getBoundingClientRect();
   const phone = page.width <= 720;
   // On a phone the rows under the top bar (needs, alerts, the goal line) are the HUD's: the scene's one-time hint sits under the last of them.
-  const rows = phone ? Math.max(0, ...['.life-quick', '.life-alerts', '.life-goal'].map((selector) => { const row = box(selector); return row && row.height ? row.bottom : 0; })) : 0;
+  const rows = phone ? Math.max(0, ...['.life-quick', '.life-goal'].map((selector) => { const row = box(selector); return row && row.height ? row.bottom : 0; })) : 0;
   venue.setInsets({ top: ((phone ? quick?.bottom : bar?.bottom) || bar?.bottom || page.top) - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 });
 }
-function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.resize(); } else venue?.resize(); }
+// A resize (or a phone being turned) moves the HUD: measure it again before the scene is re-framed, so the controls and the camera use the new free area at once.
+function refreshScene() { if (shell.mode === 'map') { world?.resize(); cityMap?.resize(); } else { layoutScene(); venue?.resize(); } }
 
 /**
  * The cities this player has a life in, so the country map can offer a "coming soon" city only to
@@ -310,6 +313,9 @@ function accepted(state, previous) {
   // player who then opens another screen (Buy, a Phone app) is not pulled back; leaving that screen returns to the map.
   const trip = tripKey(state);
   if (trip && trip !== shownTrip && shell.mode !== 'map') shell.setMode('map');
+  // The trip has just set off: build the place it is going to now (once, a moment after the trip bar has appeared), so
+  // arriving is a reveal and not a wait. Nothing is drawn; the map is what is on screen.
+  if (trip && trip !== shownTrip && state.activeAction?.kind === 'travel') { const to = state.activeAction.id; setTimeout(() => { if (tripKey(client.state) === trip) venue?.prepare(to); }, 450); }
   shownTrip = trip;
   if (moved) {
     venue?.setLocation(state.location);
@@ -631,7 +637,7 @@ if (new URLSearchParams(location.search).has('diagnostics')) {
   const output = document.createElement('pre'); output.id = 'render-diagnostics';
   button.onclick = () => { output.textContent = JSON.stringify({ ...(venue ? venue.diagnostics() : { renderCount: 0, scene: 'not loaded yet' }), map: cityMap ? cityMap.diagnostics() : 'not loaded yet', visibility: document.visibilityState, lazyPanelsWaiting: PANELS.filter((item) => item.pending).map((item) => item.id) }, null, 2); };
   // For the same diagnostics from a test harness: the map, the client and the shell mode.
-  window.__jaw = { get map() { return cityMap; }, get client() { return client; }, get mode() { return shell.mode; }, get venue() { return venue; } };
+  window.__jaw = { get map() { return cityMap; }, get client() { return client; }, get mode() { return shell.mode; }, get venue() { return venue; }, get shell() { return shell; } };
   panel.append(button, output); document.body.append(panel);
 }
 

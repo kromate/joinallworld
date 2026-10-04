@@ -82,6 +82,8 @@ import { createOrbit, followShare } from './scene/camera-controls.js';
 import { createOccluders, resolve as resolveCollision } from './scene/camera-collision.js';
 import { sceneMaterials } from './scene/build.js';
 import { createMotionLoop } from './scene/motion-loop.js';
+import { rewardChips, cheer } from './scene/reward.js';
+import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.js';
 import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.js';
 import { createSceneControls } from './scene/controls.js';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.js';
@@ -89,25 +91,49 @@ import { buildHomeScene } from './scene/home-scene.js';
 import { VENUES } from './game/content/venues.js';
 import { spotsOf } from './life.js';
 
-export const HOST_LIGHTING = Object.freeze({ hemi: ['#bdd4e7', '#273e2b', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]] });
+/**
+ * The host's default lighting. hemi: [sky, ground, intensity] — the ground colour is the light that
+ * comes back UP at a figure (a warm bounce, never near-black: it is what keeps dark skin and the
+ * underside of a face readable). sun: [colour, intensity, position]. rim: [colour, intensity] — a
+ * light from behind the scene as the camera sees it, which separates dark hair and shoulders from
+ * the wall or the night behind them; it casts no shadow.
+ */
+export const HOST_LIGHTING = Object.freeze({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7] });
 const DEFAULT_BACKGROUND = '#182a25';
 
-/** The host's two lights. apply(preset) sets them from a scene's lighting(), or back to the defaults. */
-export function createHostLights(THREE, scene) {
+/**
+ * The host's three lights. apply(preset) sets them from a scene's lighting(), or back to the
+ * defaults; aim(camera, x, y, z) puts the rim light behind the point the camera looks at (called on
+ * a frame that is being drawn anyway — it never asks for one). shadowMap: the sun's map size.
+ */
+export function createHostLights(THREE, scene, { shadowMap = 2048 } = {}) {
   const hemi = new THREE.HemisphereLight(HOST_LIGHTING.hemi[0], HOST_LIGHTING.hemi[1], HOST_LIGHTING.hemi[2]);
   const sun = new THREE.DirectionalLight(HOST_LIGHTING.sun[0], HOST_LIGHTING.sun[1]);
   sun.position.set(...HOST_LIGHTING.sun[2]);
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.mapSize.set(shadowMap, shadowMap);
   Object.assign(sun.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 70 });
   sun.shadow.normalBias = 0.04;
-  scene.add(hemi, sun);
+  const rim = new THREE.DirectionalLight(HOST_LIGHTING.rim[0], HOST_LIGHTING.rim[1]);
+  rim.castShadow = false;
+  rim.position.set(-14, 12, -18);
+  scene.add(hemi, sun, rim, rim.target);
   return {
-    hemi, sun,
+    hemi, sun, rim,
     apply(preset) {
       const use = Array.isArray(preset?.hemi) && Array.isArray(preset?.sun) ? preset : HOST_LIGHTING;
       hemi.color.set(use.hemi[0]); hemi.groundColor.set(use.hemi[1]); hemi.intensity = use.hemi[2];
       sun.color.set(use.sun[0]); sun.intensity = use.sun[1]; sun.position.set(...use.sun[2]);
+      const back = Array.isArray(use.rim) ? use.rim : HOST_LIGHTING.rim;
+      rim.color.set(back[0]); rim.intensity = back[1];
+    },
+    aim(camera, x = 0, y = 0.7, z = 0) {
+      // Behind the subject and a little to the camera's right, above head height.
+      const dx = x - camera.position.x, dz = z - camera.position.z, flat = Math.hypot(dx, dz) || 1;
+      const ux = dx / flat, uz = dz / flat;
+      rim.position.set(x + ux * 16 - uz * 7, y + 11, z + uz * 16 + ux * 7);
+      rim.target.position.set(x, y, z);
+      rim.target.updateMatrixWorld?.();
     },
   };
 }
@@ -119,8 +145,16 @@ export function sceneVenue(id) {
   return { ...venue, scene: { ...venue.scene, spots: spotsOf(id).map((spot) => ({ id: spot.id, label: spot.label })) } };
 }
 
-const HINT_DESKTOP = 'Drag to look · scroll to zoom · WASD to walk · click to go';
-const HINT_TOUCH = 'Drag to look · pinch to zoom · stick or tap to walk';
+/** What the scene teaches, one at a time (scene/controls.js): walking first, then looking. Each goes away when the player has done it. */
+const LESSONS_DESKTOP = [{ id: 'walk', text: 'Click the floor to walk there — or use W A S D' }, { id: 'look', text: 'Drag to look around · scroll to zoom' }];
+const LESSONS_TOUCH = [{ id: 'walk', text: 'Drag the stick to walk — or tap where you want to go' }, { id: 'look', text: 'Drag anywhere to look around · pinch to zoom' }];
+/**
+ * How far from the player the camera starts, in avatar-scale units (multiplied by the scene's walk
+ * scale): a phone held upright, a short window (a phone on its side), anything wider. The same
+ * distance in every venue, so the figure is the same size wherever the player goes — about a tenth
+ * of a phone's height. Never farther than the scene's own whole-venue preset.
+ */
+export const START_DISTANCE = Object.freeze({ portrait: 16.5, short: 13, wide: 22 });
 const ZOOM_STEP = 1.35, LOOK_YAW = 1.9, LOOK_PITCH = 1.2;
 /** How long the avatar rests beside a spot before the spot is selected, and the least time between two such requests. */
 const DWELL_MS = 650, SPOT_GAP_MS = 1500;
@@ -161,17 +195,20 @@ function ghostPatch(uniforms) {
 }
 
 export function createVenueWorld(container, { location = 'park', renderer: providedRenderer, onTag, onSpot, onMove } = {}) {
-  const kit = createKit();
+  // Cheaper scenery (Lambert in place of Standard) is behind a flag, default off: see matteScenery() in scene/look.js.
+  const kit = createKit({ matte: matteScenery() });
   const { THREE } = kit;
   const scene = new THREE.Scene();
   const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true });
-  renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 2));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  // Colour, tone mapping and what this device may cost (src/scene/look.js): a phone draws at 1.5× with a 1024 shadow map.
+  let tier = applyRendererLook(THREE, renderer, renderTier());
   container.appendChild(renderer.domElement);
   const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 150);
-  const lights = createHostLights(THREE, scene);
+  const lights = createHostLights(THREE, scene, { shadowMap: tier.shadowMap });
+  // The graded sky behind the scene and the soft ground under it (one texture, one mesh, for every venue).
+  const sky = createSky(THREE), ground = createGround(THREE);
+  scene.background = sky.texture;
+  scene.add(ground.mesh);
   const win = globalThis.window;
   // Keeping the avatar in sight (camera-collision.js): boxes to test against, and the see-through circle.
   const occluders = createOccluders(), collision = { cap: Infinity, ghost: false };
@@ -206,6 +243,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   if (spotHint) { spotHint.className = 'scene-spot-hint'; spotHint.hidden = true; }
 
   const built = new Map();
+  let prepared = null;
   let current = null, currentLocation = null, renderCount = 0, lastState = null, size = { width: 0, height: 0 };
   let player = {}, crowd = [], crowdKey = '[]', background = DEFAULT_BACKGROUND, insets = { top: 0, bottom: 0 };
   let tagSource = [], shownTags = [], tagNodes = [], tagShape = '', tagsRead = true;
@@ -228,7 +266,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   let locked = false, restKey = '', restWas = { spot: null, busy: false, leaving: false }, stride = 0, wasMoving = false, restPose = null;
   let nearSpot = null, expected = null, dwell = null, lastSpotAt = -Infinity, spotList = [], avatarY = 0, fresh = false, uiMode = 'venue';
   // perch: the raised place the avatar stepped up on to, and the way back down ([{ x, z }, ...] ending on the floor).
-  let perch = null, hover = null, hintTop = 0;
+  let perch = null, hover = null, hintTop = 0, closeness = 1;
   const walkOf = () => current?.walk || null;
   /** Scene units → presence units (1 unless a scene's floor is larger than the room protocol's bounds). */
   function presenceScale() {
@@ -253,7 +291,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function setPivot() {
     const walk = walkOf();
     if (!walk) { orbit.follow(0, 0.7, 0); return; }
-    const share = followShare(orbit.now.zoom), centre = walk.centre, offset = current.group.position;
+    // The closer the starting view, the more the pivot belongs to the avatar (closeness: see frame()).
+    const share = followShare(orbit.now.zoom * closeness), centre = walk.centre, offset = current.group.position;
     orbit.follow(offset.x + centre[0] + (walker.x - centre[0]) * share, centre[1] + (avatarY + 1.55 * walk.scale - centre[1]) * share, offset.z + centre[2] + (walker.z - centre[2]) * share);
   }
   function nearestSpot() {
@@ -339,7 +378,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const more = walker.step(dt, orbit.azimuth, still);
     let bob = 0;
     if (walker.moving) {
-      if (!wasMoving) { clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; } controls?.hint(null); }
+      if (!wasMoving) { clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; } controls?.learned('walk'); }
       // Walked away from the table it stood at: coming back to it opens it again.
       if (atThing && !thingList.some((thing) => thing.id === atThing && Math.hypot(thing.x - walker.x, thing.z - walker.z) < TABLE_REACH + 0.8)) atThing = null;
       stride += dt * (walker.jogging ? 9 : 6.5);
@@ -549,8 +588,6 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   }
   function pointerDown(event, capture = true) {
     if (event.pointerType === 'touch') controls?.touch(true);
-    // The first input of any kind retires the one-time hint.
-    controls?.hint(null);
     if (event.button !== 0 || pointers.size >= 2) return;
     if (!pointers.size) suppressClick = false;
     else suppressClick = true;
@@ -576,6 +613,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       const after = Math.hypot(next.x - other.x, next.y - other.y);
       if (before > 4 && after > 4) orbit.zoomBy(after / before);
     } else orbit.drag(next.x - previous.x, next.y - previous.y);
+    controls?.learned('look');
     pointers.set(event.pointerId, next);
     event.preventDefault();
     redrawView();
@@ -594,7 +632,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const before = orbit.goal.zoom;
     orbit.zoomBy(Math.exp(clamp(-event.deltaY * units * (event.ctrlKey ? 0.012 : 0.0016), -0.6, 0.6)));
     if (orbit.goal.zoom === before) return;
-    controls?.hint(null);
+    controls?.learned('look');
     redrawView();
   }
   /** The floor point (scene coordinates) under a point of the canvas, or null when it looks at the sky. */
@@ -622,6 +660,14 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     return out;
   }
   const spare = { x: 0, z: 0 }, pixel = { x: 0, y: 0 }, pixelTop = { x: 0, y: 0 }, pixelSide = { x: 0, y: 0 };
+  /** How tall the player's figure is on screen, in CSS pixels (diagnostics: is the avatar big enough to read?). */
+  function avatarPixels() {
+    const walk = walkOf();
+    if (!walk || !current) return null;
+    current.group.updateMatrixWorld(true);
+    screenOf(walker.x, avatarY, walker.z, pixel); screenOf(walker.x, avatarY + 2.48 * walk.scale, walker.z, pixelTop);
+    return Math.round(Math.hypot(pixel.x - pixelTop.x, pixel.y - pixelTop.y));
+  }
   /** How far a spot's marker reaches on screen, in CSS pixels across and down: the ring as the camera sees it, and a little more — never less than a fingertip. */
   function markerReach(spot, out) {
     const azimuth = orbit.azimuth;
@@ -696,7 +742,6 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function tap(event) {
     const walk = walkOf();
     if (!walk || !walk.grid || locked || uiMode !== 'venue' || current.placing || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return false;
-    controls?.hint(null);
     const target = pick(event.clientX, event.clientY);
     if (!target) return false;
     if (target.type === 'spot') {
@@ -750,7 +795,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function onKey(event) {
     const { action, mode, jog } = event.detail || {};
     if (mode !== 'venue' && mode !== 'buy') return;
-    if (Object.hasOwn(WALK_KEYS, action) || Object.hasOwn(LOOK_KEYS, action) || /^zoom-/.test(action || '')) controls?.hint(null);
+    if (Object.hasOwn(LOOK_KEYS, action) || /^zoom-/.test(action || '')) controls?.learned('look');
     if (action === 'zoom-in') zoom(1);
     else if (action === 'zoom-out') zoom(-1);
     else if (action === 'zoom-fit') recentre();
@@ -769,10 +814,54 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if (Object.hasOwn(WALK_KEYS, action)) held[WALK_KEYS[action]] = false;
     else if (Object.hasOwn(LOOK_KEYS, action)) held[LOOK_KEYS[action]] = false;
   }
+  /**
+   * THE REWARD MOMENT. The host remembers what the player had when an activity began (needs, cash,
+   * skill XP); when it ends, the difference is worded (scene/reward.js) and floats up from above the
+   * avatar's head as up to four chips — DOM nodes in the tag layer, placed once from the avatar's
+   * projected position and moved by a CSS animation that ends by itself and removes them. No frame of
+   * the scene is drawn for it and no loop is started. Nothing is shown for a trip, for an activity
+   * that gave nothing, or for a different life. 'jaw:reward' ({ detail: { cash, needs, skills } })
+   * shows the same chips on request.
+   */
+  let rewardFrom = null;
+  function trackReward(state) {
+    const active = state?.activeAction, busy = Boolean(active) && active.kind !== 'travel' && active.kind !== 'commute';
+    const snap = () => ({ who: state.name, needs: { ...state.needs }, cash: Number(state.cash) || 0, skills: { ...state.skills } });
+    if (busy) { rewardFrom ||= snap(); return; }
+    const from = rewardFrom;
+    rewardFrom = null;
+    if (!from || !state?.needs || from.who !== state.name) return;
+    const diff = (now = {}, was = {}, missing) => Object.fromEntries(Object.entries(now).map(([id, value]) => [id, value - (was[id] ?? (missing ?? value))]));
+    onReward({ detail: { cash: (Number(state.cash) || 0) - from.cash, needs: diff(state.needs, from.needs), skills: diff(state.skills, from.skills, 0) } });
+  }
+  function onReward(event) {
+    const chips = rewardChips(event.detail || {});
+    const walk = walkOf();
+    if (!tagLayer || !chips.length || !walk || !current || uiMode !== 'venue') return;
+    tagLayer.querySelector('.scene-reward')?.remove();
+    current.group.updateMatrixWorld(true);
+    const box = container.getBoundingClientRect();
+    screenOf(walker.x, avatarY + 2.75 * walk.scale, walker.z, pixel);
+    const node = globalThis.document.createElement('div');
+    node.className = 'scene-reward'; node.setAttribute('aria-hidden', 'true');
+    node.style.left = `${Math.round(clamp(pixel.x - (box.left || 0), 84, Math.max(84, size.width - 84)))}px`;
+    node.style.top = `${Math.round(clamp(pixel.y - (box.top || 0), insets.top + 28 * chips.length + 12, Math.max(insets.top + 60, size.height - insets.bottom - 20)))}px`;
+    for (const chip of chips) {
+      const item = globalThis.document.createElement('span');
+      item.className = `is-${['gain', 'loss', 'money', 'xp'].includes(chip.kind) ? chip.kind : 'gain'}`;
+      if (typeof chip.glyph === 'string' && chip.glyph.startsWith('<svg')) item.innerHTML = chip.glyph;
+      item.append(String(chip.text || ''));
+      node.append(item);
+    }
+    // The last chip to finish takes the whole group away; with animations off they are simply removed by the next reward or scene change.
+    node.lastChild.addEventListener('animationend', () => node.remove(), { once: true });
+    tagLayer.append(node);
+  }
+  const onCheer = () => cheer(globalThis.document?.querySelector('dialog[open]') || globalThis.document?.body);
   function onMode(event) { uiMode = event.detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
   // Created after the shell: start from the view the shell wrote on its root element.
   uiMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
-  win?.addEventListener?.('jaw:mode', onMode);
+  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer);
   win?.addEventListener?.('jaw:key', onKey);
   win?.addEventListener?.('jaw:key-up', onKeyUp);
   win?.addEventListener?.('blur', dropInput);
@@ -783,7 +872,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   if (controls) {
     const coarse = globalThis.matchMedia?.('(pointer: coarse)').matches === true;
     controls.touch(coarse);
-    controls.hint(coarse ? HINT_TOUCH : HINT_DESKTOP);
+    controls.teach(coarse ? LESSONS_TOUCH : LESSONS_DESKTOP);
   }
 
   /**
@@ -852,7 +941,8 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const offset = current.group.position;
     current.look(camera.position.x - offset.x, camera.position.z - offset.z);
   }
-  function renderScene() { lookIn(); aimGhost(); renderer.render(scene, camera); renderCount += 1; projectTags(); }
+  // A scene that is not on screen (the map is in front) is not drawn: it is drawn when it is shown again (resize()).
+  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x, orbit.now.y, orbit.now.z); renderer.render(scene, camera); renderCount += 1; projectTags(); }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
   function sceneFor(id) {
@@ -870,6 +960,24 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     lights.apply(current?.lighting?.());
     background = current?.background || DEFAULT_BACKGROUND;
     renderer.setClearColor(background);
+    // sky: [horizon, zenith]. A scene that names only a background gets a gentle rise from it.
+    const pair = Array.isArray(current?.sky) ? current.sky : [background, mixHex(background, '#ffffff', 0.18)];
+    sky.set(pair[0], pair[1]);
+    // The ground takes the horizon's colour, a little deeper, so the slab sits on something and the rim melts into the sky.
+    ground.tint(mixHex(pair[0], current?.ground || '#6f7f6a', 0.34));
+    placeGround();
+  }
+  /** The ground disc: under the scene's floor, wide enough to pass well beyond it. */
+  const bounds = new THREE.Box3(), reach = new THREE.Vector3(), middle = new THREE.Vector3();
+  function placeGround() {
+    if (!current?.group) return;
+    const grid = walkOf()?.grid?.bounds, offset = current.group.position;
+    // A walk grid's bounds are [minX, minZ, maxX, maxZ].
+    if (Array.isArray(grid)) ground.place(offset.x + (grid[0] + grid[2]) / 2, offset.z + (grid[1] + grid[3]) / 2, Math.hypot(grid[2] - grid[0], grid[3] - grid[1]) * 0.95, -0.42);
+    else {
+      bounds.setFromObject(current.group); bounds.getSize(reach); bounds.getCenter(middle);
+      ground.place(middle.x, middle.z, Math.max(12, Math.hypot(reach.x, reach.z) * 0.9), -0.42);
+    }
   }
   /** Size the canvas and the projection, and give the orbit the scene's own camera preset and limits. */
   function frame() {
@@ -878,10 +986,17 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     camera.aspect = width / Math.max(1, height);
     const portrait = camera.aspect < 0.85;
     const view = current?.camera || DEFAULT_CAMERA, walk = walkOf();
-    orbit.setBase(portrait ? view.portrait : view.landscape);
+    // WHERE THE CAMERA STARTS. A scene's preset frames the whole venue; the view the player gets (and
+    // comes back to with Recentre) is closer than that, so the figure they made is big enough to read:
+    // about a tenth of a phone's height. Zooming out still reaches the whole-venue view and beyond.
+    const preset = portrait ? view.portrait : view.landscape;
+    const whole = Math.hypot(preset[0], preset[1] - 0.7, preset[2]);
+    const close = Math.min(1, ((portrait ? START_DISTANCE.portrait : height <= 520 ? START_DISTANCE.short : START_DISTANCE.wide) * (walk?.scale || 1)) / whole);
+    closeness = 1 / close;
+    orbit.setBase([preset[0] * close, 0.7 + (preset[1] - 0.7) * close, preset[2] * close]);
     // Close enough to see a face, far enough to see the whole venue. The orbit is free all the way round:
     // a room hides the walls the camera is behind (lookIn), so no scene needs an azimuth limit.
-    orbit.setLimits({ near: 6.2 * (walk?.scale || 1), azimuth: null });
+    orbit.setLimits({ near: 6.2 * (walk?.scale || 1), far: whole * 1.38, azimuth: null });
     camera.fov = portrait ? 48 : 43;
     // Centre the scene in what the HUD leaves free; on a wide screen also step back a little when little is left.
     const free = Math.max(160, height - insets.top - insets.bottom);
@@ -922,6 +1037,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   /** Give the current scene the latest game state. Draws one frame only if the scene says it changed. */
   function setState(state) {
     lastState = state;
+    trackReward(state);
     const changed = current?.update?.(state);
     const walk = walkOf();
     if (walk) { walker.setGrid(walk.grid); spotList = walk.spots(); }
@@ -962,6 +1078,20 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   setLocation(location);
   return {
     update() { renderScene(); },
+    get location() { return currentLocation; },
+    /**
+     * Build a venue's scene ahead of time (a trip to it has just started), so arriving only has to
+     * show it: the build is the long part, and it is better spent while the trip is setting off than
+     * at the moment the place is revealed. Nothing is drawn. One scene at most is kept ready; a
+     * different one, or a trip that ended elsewhere, frees it.
+     */
+    prepare(id) {
+      if (!VENUES[id] || id === currentLocation) return false;
+      if (prepared && prepared !== id && prepared !== currentLocation) { const old = built.get(prepared); if (old) { old.dispose?.(); scene.remove(old.group); built.delete(prepared); } }
+      prepared = id;
+      sceneFor(id);
+      return true;
+    },
     diagnostics() {
       return {
         renderCount,
@@ -971,7 +1101,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
         // walls: which of a room's walls are showing; held: the share of the asked-for distance a collision holds the camera at; ghost: the see-through circle's strength.
         walls: current?.walls ?? null, perch: Boolean(perch), hover: hover ? hover.key : null, easing: Boolean(current?.easing), solids: occluders.count,
         camera: { yaw: Math.round(orbit.azimuth * 1000) / 1000, pitch: Math.round(orbit.pitch * 1000) / 1000, zoom: Math.round(orbit.now.zoom * 1000) / 1000, distance: Math.round(orbit.distance * 100) / 100,
-          asked: Math.round(orbit.asked * 100) / 100, held: Math.round(orbit.now.squeeze * 1000) / 1000, ghost: Math.round(ghost.now * 100) / 100, x: Math.round(camera.position.x * 100) / 100, y: Math.round(camera.position.y * 100) / 100, z: Math.round(camera.position.z * 100) / 100,
+          asked: Math.round(orbit.asked * 100) / 100, whole: Math.round(orbit.base.distance * closeness * 100) / 100, held: Math.round(orbit.now.squeeze * 1000) / 1000, ghost: Math.round(ghost.now * 100) / 100, x: Math.round(camera.position.x * 100) / 100, y: Math.round(camera.position.y * 100) / 100, z: Math.round(camera.position.z * 100) / 100,
           limits: { pitch: [0.1, Math.round((Math.PI / 2 - 0.07) * 1000) / 1000], zoom: [Math.round(orbit.limits.zoomMin * 1000) / 1000, Math.round(orbit.limits.zoomMax * 1000) / 1000], azimuth: orbit.limits.azimuth } },
         // Where each spot and person is on the canvas (CSS pixels) — what a tap on it has to hit.
         spots: spotList.map((spot) => { current.group.updateMatrixWorld(true); const at = screenOf(spot.x, spot.y + 0.1, spot.z, { x: 0, y: 0 }); return { id: spot.id, x: spot.x, z: spot.z, px: Math.round(at.x), py: Math.round(at.y), selected: spot.id === lastState?.spot }; }),
@@ -984,6 +1114,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
         textures: renderer.info?.memory.textures,
         location: currentLocation, background, scenes: built.size, crowd: crowd.length,
         lighting: { hemi: lights.hemi.intensity, sun: lights.sun.intensity, sky: `#${lights.hemi.color.getHexString()}` },
+        tier: tier.name, matte: kit.matte, pixelRatio: renderer.getPixelRatio?.(), shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
         tags: shownTags.map((tag) => ({ ...tag })),
       };
     },
@@ -1033,11 +1164,12 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       loop.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
-      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
+      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
       controls?.dispose();
       if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
       for (const entry of built.values()) entry.dispose?.();
       built.clear();
+      sky.dispose(); ground.dispose();
       kit.dispose();
       renderer.dispose();
       renderer.domElement.remove?.();

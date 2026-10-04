@@ -492,7 +492,10 @@ export function buildHomeScene(kit) {
 
   return {
     group,
-    background: '#8fa39a',
+    background: '#c9d6cf',
+    // [horizon, zenith]: a soft morning haze rather than a flat fill; the host grades between them.
+    sky: ['#c9d6cf', '#8fb0b4'],
+    ground: '#7f8f7c',
     camera: { landscape: [17.5, 19.5, 17.5], portrait: [19, 24, 19] },
     update(state) {
       const first = lastState === null;

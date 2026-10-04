@@ -12,7 +12,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './world.css';
-import { esc, json, money, avatar, skeleton } from '../dom.js';
+import { esc, json, money, avatar, skeleton, mark } from '../dom.js';
 import { linkWords } from '../link.js';
 import { HOUSE_STYLE, HOUSE_TIERS, STYLE_FIELDS, addressLabel, lgaOf, unpackStyle } from '../../game/content/world.js';
 import { renderLgaCard, bindLgaCard, track } from './lga-card.js';
@@ -87,18 +87,18 @@ const lga = {
     const id = view.params?.lga, unit = lgaOf(view.cityId, id);
     if (!unit) return '<p class="ui-error">That local government is not on this map.</p>';
     const page = pageOf(id), e = view.estate, yours = e?.placed && e.lga?.id === id;
-    const stats = page.info ? `<ul class="world-stats"><li><b>${count(page.info.residents)}</b><small>residents</small></li><li><b>${count(page.info.houses)}</b><small>houses</small></li><li><b>${count(page.info.online)}</b><small>online now</small></li></ul>` : skeleton(1, 'Loading the counts');
+    const stats = page.info ? `<ul class="ui-tiles"><li><b>${count(page.info.residents)}</b><small>residents</small></li><li><b>${count(page.info.houses)}</b><small>houses</small></li><li><b>${count(page.info.online)}</b><small>online now</small></li></ul>` : skeleton(1, 'Loading the counts');
     const people = page.error ? `<p class="ui-error">${esc(page.error)}</p><button class="ui-button" data-lga-reload>Try again</button>`
       : page.items === null ? skeleton(4, 'Loading residents')
         : page.short ? '<p class="ui-note">Type at least two letters to search.</p>'
           : page.items.length ? `<ul class="world-people">${page.items.map((item) => `<li class="ui-row">${avatar(item.name, item.id)}<span class="ui-row-body"><b><i class="world-dot${item.online ? ' is-on' : ''}"></i>${esc(item.name)}${item.you ? ' (you)' : ''}</b><small>${item.plot !== undefined ? esc(addressLabel(view.cityId, id, item.estate, item.plot)) : 'Moving in'}</small></span>${item.you ? '' : `<button class="ui-button is-small" data-lga-person="${esc(item.id)}" data-name="${esc(item.name)}">Say hi</button>`}</li>`).join('')}</ul>${page.next !== null ? `<button class="ui-button is-block" data-lga-more ${page.loading ? 'disabled' : ''}>${page.loading ? 'Loading…' : 'Show more'}</button>` : ''}`
             : `<p class="ui-note">${page.q ? 'Nobody listed by that name here.' : page.online ? 'Nobody listed here is online right now.' : 'Nobody is listed here yet.'}</p>`;
-    return `<div data-lga-page="${esc(id)}"><section class="ui-hero"><small>${esc(view.city?.name ?? '')} · local government${yours ? ' · yours' : ''}</small><strong>${esc(unit.name)}</strong><p>${esc(unit.line)}</p></section>${stats}
-      <div class="world-row"><button class="ui-button" data-lga-show data-nav="map">Show on the map</button>${yours && e.plot ? `<button class="ui-button" data-lga-home="${json(e.plot)}" data-nav="map">Show my house</button>` : ''}</div>
+    return `<div class="ui-stack" style="--gap:16px" data-lga-page="${esc(id)}"><section class="ui-hero"><small>${esc(view.city?.name ?? '')} · local government${yours ? ' · yours' : ''}</small><strong>${esc(unit.name)}</strong><p>${esc(unit.line)}</p></section>${stats}
+      <div class="ui-cluster"><button class="ui-button is-quiet" data-lga-show data-nav="map">${mark('map')}<span>Show on the map</span></button>${yours && e.plot ? `<button class="ui-button is-quiet" data-lga-home="${json(e.plot)}" data-nav="map">${mark('home')}<span>Show my house</span></button>` : ''}</div>
       ${yours ? '' : renderLgaCard(state, view, { heading: e?.placed ? 'Move here?' : 'Live here?', compact: true })}
       <h3 class="ui-section">Residents</h3>
-      <form class="world-row" data-lga-search><label class="world-field" style="flex:2 1 180px">Search by name<input name="q" type="search" maxlength="24" value="${esc(page.q)}" autocomplete="off"></label><button class="ui-button" style="flex:0 0 auto;align-self:end">Search</button></form>
-      <div class="world-row"><button class="ui-button is-small" data-lga-online aria-pressed="${page.online}">${page.online ? 'Showing online now' : 'Online now only'}</button></div>
+      <form class="ui-stack is-tight" data-lga-search><div class="ui-search"><input name="q" type="search" maxlength="24" value="${esc(page.q)}" autocomplete="off" aria-label="Search residents by name" placeholder="Search by name"><button>${mark('search')}<span>Search</span></button></div>
+      <div class="ui-cluster"><button type="button" class="ui-button is-small" data-lga-online aria-pressed="${page.online}">${page.online ? 'Showing online now' : 'Online now only'}</button></div></form>
       ${people}<p class="ui-note">Players who hide themselves from the directory are not listed here; their houses stay on the map without a name.</p></div>`;
   },
   bind(root, api, params) {

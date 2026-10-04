@@ -20,6 +20,9 @@ import { how, rules as ruleList, bindHow } from '../phone/how.js';
 
 export const SETTINGS_KEY = 'joinallworld-settings-v1';
 const DEFAULTS = Object.freeze({ sound: true, music: true });
+/** Hints (the pointer to the next step) live under their own key, shared with the × on the coach line: '1' = off. */
+const HINTS_KEY = 'joinallworld-coach-off';
+const hintsOn = () => { try { return store()?.getItem(HINTS_KEY) !== '1'; } catch { return true; } };
 const OPTIONS = [
   { id: 'sound', label: 'Sound effects', hint: 'Taps, coins and arrivals.' },
   { id: 'music', label: 'Music', hint: 'Background music in venues.' },
@@ -53,6 +56,8 @@ export default {
     const link = (id, icon, title, text) => `<button class="ui-row" data-open="${id}"><span class="ui-row-icon" aria-hidden="true">${mark(icon)}</span><span class="ui-row-body"><b>${title}</b><small>${text}</small></span><span class="ui-row-end">${chevron()}</span></button>`;
     return `<h3 class="ui-section">Phone wallpaper</h3><div class="settings-walls" role="group" aria-label="Phone wallpaper">${walls}</div>
       <p class="settings-note">Saved on this device only. Open the Phone to see it.</p>
+      <h3 class="ui-section">Guidance</h3><div class="ui-rows"><label class="ui-row settings-row"><span class="ui-row-body"><b>Hints</b><small>Point at the next thing to tap, and say when something happens elsewhere on screen.</small></span>
+        <span class="settings-state">${hintsOn() ? 'On' : 'Off'}</span><input type="checkbox" role="switch" data-hints ${hintsOn() ? 'checked' : ''} aria-label="Hints"><i class="ui-switch" aria-hidden="true"></i></label></div>
       <h3 class="ui-section">Sound</h3><div class="ui-rows">${toggles}</div>
       <p class="settings-note">No audio in this beta yet: your choice is saved on this device for when sound ships.</p>
       ${warning ? `<p class="ui-error" role="alert">${esc(warning)}</p>` : ''}
@@ -82,6 +87,11 @@ export default {
         document.querySelector(`[data-wallpaper="${CSS.escape(button.dataset.wallpaper)}"]`)?.focus();
       });
     }
+    root.querySelector('[data-hints]')?.addEventListener('change', (event) => {
+      try { if (event.target.checked) store()?.removeItem(HINTS_KEY); else store()?.setItem(HINTS_KEY, '1'); } catch { warning = 'This browser would not save the setting, so it lasts only until you close the tab.'; }
+      window.dispatchEvent(new CustomEvent('jaw:hints'));
+      api.refresh();
+    });
     for (const input of root.querySelectorAll('[data-setting]')) {
       input.addEventListener('change', () => {
         save({ ...settings(), [input.dataset.setting]: input.checked });

@@ -31,9 +31,26 @@ function moveMaps(): Plugin {
   };
 }
 
+/**
+ * The browser's engine registers the UNILAG campus as stand-ins and fetches its rules on first use (src/game/systems/browser.ts,
+ * src/game/campus-gate.ts); the servers, the Worker, the scripts and the tests register everything from systems/index.ts. Only
+ * this build swaps one for the other, so the rules themselves exist once.
+ */
+function browserSystems(): Plugin {
+  return {
+    name: 'allworld:browser-systems',
+    enforce: 'pre',
+    async resolveId(source, importer, options) {
+      if (!/systems\/index\.ts$/.test(source)) return null;
+      const resolved = await this.resolve(source, importer, { ...options, skipSelf: true });
+      return resolved && /\/src\/game\/systems\/index\.ts$/.test(resolved.id) ? resolved.id.replace(/index\.ts$/, 'browser.ts') : null;
+    },
+  };
+}
+
 export default defineConfig({
   // The page is a Vue 3 + TypeScript application: index.html → src/app/main.ts (docs/MIGRATION-VUE-TS.md).
-  plugins: [vue(), ...(wantMaps ? [moveMaps()] : [])],
+  plugins: [browserSystems(), vue(), ...(wantMaps ? [moveMaps()] : [])],
   server: {
     host: '127.0.0.1', port: 5173,
     proxy: {
@@ -54,6 +71,8 @@ export default defineConfig({
   build: { sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { manualChunks(id) {
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(student|games|shuttle|curriculum|content|layout|walk)\.ts$|tables\/places\.ts$|scene\/(movement|build)\.ts$)/.test(id)) return 'engine'
+    // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.
+    if (/\/src\/campus\/unilag\/(student|games|shuttle|curriculum|walk|register)\.ts$/.test(id)) return 'campus-rules'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|layout)\.ts$|tables\/places\.ts$|scene\/(movement|build)\.ts$)/.test(id)) return 'engine'
   } } } },
 });

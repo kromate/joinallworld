@@ -28,6 +28,7 @@ import type {
 } from '../../types/campus.ts';
 import type { ActionFailure, ActionOutcome, ActionSuccess, LagosDay, LifeContext, LifeState } from '../../types/life.ts';
 import type { SavedActiveAction, SavedInput, SystemDefinition } from '../../types/registry.ts';
+import { freshStudent } from './slices.ts';
 import { LECTURE_SLOTS, PROGRAMMES, UNILAG_BETA_RULES, courseOf, programmeOf, semesterOf } from './curriculum.ts';
 
 /** The fields a saved 'campus-study' action keeps: what ActiveKindHandler.sanitize returns. */
@@ -107,15 +108,6 @@ function nextSemester(records: SemesterRecord[]): SemesterNumber | null {
   if (!passedRecord(records, 1)) return 1;
   if (!passedRecord(records, 2)) return 2;
   return null;
-}
-
-function freshStudent(): UnilagStudentState {
-  return {
-    status: 'none', programme: null, studentId: null, admittedDay: null, applicationCount: 0,
-    term: null, records: [],
-    hostel: { allocations: [], storage: {} },
-    lifetime: { scholarshipPaid: false, campusJobDays: [] },
-  };
 }
 
 function normalizeCourseResult(value: unknown, course: CourseDefinition): CourseResult | null {

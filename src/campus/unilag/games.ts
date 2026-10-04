@@ -15,6 +15,7 @@ import { busy, cleanText, fail, ok } from '../../game/util.ts';
 import { lagosDayStart, lagosTime } from '../../game/clock.ts';
 import { DISCOVERY_TRAIL } from './content.ts';
 import { PROGRAMMES, programmeOf } from './curriculum.ts';
+import { freshCommunity } from './slices.ts';
 import { tablesAt } from '../../tables/places.ts';
 import type {
   CampusCandidate, CampusClubDefinition, CampusClubId, CampusDiscoveryDefinition, CampusDiscoveryId, CampusElectionRecord,
@@ -188,10 +189,6 @@ export function eventsAt(now: number): CampusEvent[] {
     events.push({ id: 'convocation', label: 'Convocation gathering', startsAt: dayStart + 14 * 3600000, endsAt: dayStart + 18 * 3600000, tags: ['convocation', 'community'], beta: true });
   }
   return events;
-}
-
-function freshCommunity(): UnilagCommunityState {
-  return { clubs: [], discoveries: [], trail: [], days: [], quiz: null, elections: { nominated: [], voted: [] } };
 }
 
 function normalizedDay(value: unknown): CommunityDay | null {

@@ -7,6 +7,7 @@
  * is shown read-only until the server is reachable again.
  */
 import { createLife, isDeparting } from './life.ts';
+import { campusFor } from './game/campus-gate.ts';
 import type { LifeState } from './types/life.ts';
 import type { ActionRequest, ActionResponse, ApiEnvelope, CityId, LifeResponse, OwnSession, SessionRequest, SessionResponse, TimedId } from './types/protocol.ts';
 
@@ -178,7 +179,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   // getItem may answer null (parses to null) or undefined (JSON.parse throws, caught): either way nothing was saved.
   try { saved = JSON.parse(storage?.getItem(STORAGE_KEY) as string) as SavedClient | null; } catch {}
   const client: Client = {
-    state: createLife(saved?.state),
+    // A saved life that uses the campus waits for the campus rules (below); until then the device shows a new one.
+    state: createLife(campusFor(saved?.state) ? null : saved?.state),
     cityId: typeof saved?.cityId === 'string' && Object.hasOwn(CITIES, saved.cityId) ? saved.cityId as CityId : 'lagos',
     identity: { name: saved?.identity?.name || 'New Lagosian' },
     hasSavedIdentity: Boolean(saved?.identity),
@@ -195,6 +197,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     api, fetchJson: api, connect, command, switchCity, refresh, schedule, stop,
   };
   let pollTimer: unknown = null;
+  // A saved life that uses the campus is rebuilt as soon as the campus rules have arrived, unless the server has answered first.
+  const savedWaiting = campusFor(saved?.state);
+  if (savedWaiting) void savedWaiting.then(() => { if (!accepted) { const previous = client.state; client.state = createLife(saved?.state); onChange(client.state, previous); } }, () => {});
 
   function status(text: string, error = false): void { onStatus(text, error); }
   function persist(): void {
@@ -235,7 +240,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     return payload as T & ApiEnvelope;
   }
 
-  function accept(next: unknown): void {
+  /** The server's answer is the life now (a late hydration of the saved copy, below, must not replace it). */
+  let accepted = false;
+  /** Rebuild `next` (it waits first for the campus rules when the life uses the campus and they are not loaded yet) and take it as the life. */
+  async function accept(next: unknown): Promise<void> {
+    const waiting = campusFor(next);
+    if (waiting) await waiting;
+    accepted = true;
     const previous = client.state;
     // A server snapshot is rebuilt at ITS time and city, not at time zero: a sanitiser that compares with the clock
     // (a running campus shuttle, today's quiz) must not drop what the server has just sent.
@@ -269,7 +280,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   async function refresh(lostText = 'Reconnect to refresh progress'): Promise<boolean> {
     if (!client.online) return false;
-    try { accept((await api<LifeResponse>(`/api/life?city=${client.cityId}`)).state); return true; }
+    try { await accept((await api<LifeResponse>(`/api/life?city=${client.cityId}`)).state); return true; }
     catch (e) {
       const error = e as ApiError;
       // The server answered, it just could not save this settlement: still connected, try again at the next poll.
@@ -300,7 +311,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = true;
       onSession(client.session, createNew);
       client.link = 'online';
-      accept((await api<LifeResponse>(`/api/life?city=${client.cityId}`)).state);
+      await accept((await api<LifeResponse>(`/api/life?city=${client.cityId}`)).state);
       holdCity(client.cityId);
       status('Connected · progress saved');
       return true;
@@ -348,7 +359,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       const body: Omit<ActionRequest, 'actionId'> & { actionId: string } = { actionId: typeof options?.actionId === 'string' ? options.actionId : client.newId(), cityId: client.cityId, type };
       if (payload !== undefined && payload !== null) body.payload = outgoing(type, payload);
       const response = await api<ActionResponse>('/api/action', { method: 'POST', body });
-      accept(response.state);
+      await accept(response.state);
       if (!response.ok && client.state.message) status(client.state.message, true);
       return { ok: response.ok, code: response.code, reason: response.ok ? undefined : client.state.message };
     } catch (e) {
@@ -368,7 +379,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     try {
       const data = await api<LifeResponse>(`/api/life?city=${id}`);
       client.cityId = id as CityId;
-      accept(data.state);
+      await accept(data.state);
       holdCity(id as CityId);
       return { ok: true, code: 'switched' };
     } catch (e) {

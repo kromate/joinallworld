@@ -406,6 +406,13 @@ function drawHair(b, look, detail, covered = false) {
     b.cyl(0, 0.43, 0.216, 0.009, 0.31, hi, { seg: 5, rz: Math.PI / 2 });
     return;
   }
+  if (look.hair === 'classic' && look.body === 'man' && detail === 'high') {
+    // Keep the men's classic cut distinct from curls at preview detail: a short asymmetric quiff.
+    cap(c, 0.19);
+    b.ball(0.075, 0.68, 0.02, 0.16, 0.1, 0.14, hi, { seg });
+    b.ball(-0.025, 0.72, -0.015, 0.12, 0.08, 0.11, c, { seg });
+    return;
+  }
   if (look.hair === 'curls' && detail === 'low') {
     cap(c, 0.18);
     for (const x of [-0.12, 0.12]) b.ico(x, 0.62, 0.02, 0.11, 0.1, 0.1, x > 0 ? hi : c);

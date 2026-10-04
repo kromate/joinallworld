@@ -55,7 +55,8 @@ test('each scene builds within budget with a full crowd, and disposes without le
       assert.ok(stats.triangles < TRIANGLE_BUDGET, `${kind} triangles ${stats.triangles}`);
       // Static (≤ 3) + sky + crowd (≤ 2) + the player's own figure (a rig: one mesh per part, ≤ 8 with its crown) + the spot ring; the two walking marks add at most 2 more.
       // A room's two walls are parts of their own (≤ 3 layers each), so that the scene can hide the wall the camera is behind.
-      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= (entry.walls ? 21 : 15), `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
+      // The model rig has four additional elbow/knee meshes; the scene cap accounts for that fixed joint cost.
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= (entry.walls ? 25 : 19), `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
       assert.ok(stats.lights <= 4, `${kind} lights ${stats.lights}`);
       assert.equal(tags.length, MAX_CROWD, kind);
       for (const mesh of entry.group.children.filter((child) => child.isMesh)) {

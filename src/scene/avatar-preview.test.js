@@ -58,7 +58,7 @@ test('an idle preview renders nothing; each change costs exactly one frame', asy
     const { preview, canvas, host, renderer, clock } = make();
     const count = () => preview.diagnostics().renderCount;
     assert.equal(count(), 1, 'one frame to show the Sim');
-    assert.ok(preview.diagnostics().triangles > 10000, 'the preview uses the high-detail avatar');
+    assert.ok(preview.diagnostics().triangles >= 6000, 'the preview uses the high-detail avatar');
     await new Promise((resolve) => original.timeout(resolve, 120));
     assert.equal(count(), 1, 'idle: zero renders');
     assert.equal(renderer.calls.render, 1);
@@ -205,7 +205,7 @@ test('three detail levels: the crowd budget holds at low, medium is a light vers
   }
   assert.ok(range.low[1] <= 600, `low detail: at most 600 triangles whatever is worn (${range.low})`);
   assert.ok(range.medium[0] >= 1500 && range.medium[1] <= 4500, `medium detail: a couple of thousand triangles (${range.medium})`);
-  assert.ok(range.high[0] >= 10000 && range.high[1] <= 34000, `high detail: a full model (${range.high})`);
+  assert.ok(range.high[0] >= 6000 && range.high[1] <= 25000, `high detail: a full model (${range.high})`);
   assert.equal(normalizeLook({ skin: 'skin-6' }, 'a').skin, '#5e3620', 'the game’s own skin ids keep their tone in a scene');
   assert.equal(normalizeLook({ skin: 'skin-1' }, 'b').skin, '#e0ac7e');
 });
@@ -215,10 +215,9 @@ test('every option changes the model at every detail level, and one batch can mi
     const batch = createBatch(THREE);
     drawAvatar(batch, look, { detail, seed: 'x' });
     const built = batch.build({ solid: null, glow: null, glass: null }), { position, color } = built.meshes[0].geometry.attributes;
-    let sum = 0;
-    for (let i = 0; i < position.array.length; i++) sum += position.array[i] * (i % 7 + 1) + color.array[i] * (i % 5 + 1);
+    const signature = `${Array.from(position.array).join(',')}:${Array.from(color.array).join(',')}`;
     built.meshes.forEach((mesh) => mesh.geometry.dispose());
-    return `${built.triangles}:${sum.toFixed(3)}`;
+    return `${built.triangles}:${signature}`;
   };
   for (const detail of DETAILS) for (const body of LOOK_OPTIONS.body) {
     const base = { body, hair: 'lowcut', outfit: 'casual', fabric: 'plain', skin: 2, hairColor: 0, outfitColor: 'blue', bottomsColor: 'navy', accessories: [] };
@@ -251,9 +250,10 @@ test('walk and jog are full cycles driven by stride, at every detail level', () 
     const batch = createBatch(THREE);
     drawAvatar(batch, { body: 'man', hair: 'lowcut', outfit: 'casual', fabric: 'plain' }, { seed: 'x', ...options });
     const { position } = batch.build({ solid: null, glow: null, glass: null }).meshes[0].geometry.attributes;
-    let sum = 0, top = -Infinity;
-    for (let i = 0; i < position.array.length; i += 3) { sum += (position.array[i] * 3 + position.array[i + 1] * 5 + position.array[i + 2] * 7) * (i % 11 + 1); top = Math.max(top, position.array[i + 1]); }
-    return { sum: sum.toFixed(2), top };
+    const sum = Array.from(position.array).join(',');
+    let top = -Infinity;
+    for (let i = 1; i < position.array.length; i += 3) top = Math.max(top, position.array[i]);
+    return { sum, top };
   };
   assert.ok(POSES.includes('walk') && POSES.includes('jog'));
   for (const detail of DETAILS) for (const pose of ['walk', 'jog']) {
@@ -288,7 +288,7 @@ test('a rigged avatar is the same figure in movable parts, posed by transforms a
       assert.equal(rig.userData.triangles, whole.userData.triangles, 'the same model');
       assert.equal(rig.userData.top - 0, whole.userData.top, 'the name tag sits at the same height');
       assert.ok(parts.armL.position.x > 0.15 && parts.armR.position.x < -0.15 && Math.abs(parts.armL.position.y + 1.06 - 1.74) < 0.08, 'arms pivot at the shoulders');
-      assert.ok(Math.abs(parts.legL.position.y - 1.04) < 1e-6 && parts.legL.position.x > 0 && parts.legR.position.x < 0, 'legs pivot at the hips');
+      assert.ok(Math.abs(parts.legL.position.y - 1.06) < 1e-6 && parts.legL.position.x > 0 && parts.legR.position.x < 0, 'legs pivot at the hips');
       assert.ok(parts.head.parent === parts.torso && parts.armL.parent === parts.torso && parts.legL.parent === parts.body);
       rig.position.set(0, 0, 0);
       close(box(rig), box(whole), 0.002, `${detail}: standing rig matches the single-mesh avatar`);

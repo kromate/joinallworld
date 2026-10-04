@@ -13,7 +13,7 @@ import { esc, money, json } from '../dom.js';
 
 let lastSeq = null, offeredTo = null;
 
-const offlineWhy = (view) => (view.connected ? '' : 'Offline — reconnect to change anything');
+const offlineWhy = (view) => (view.connected ? '' : 'Not connected — nothing can change right now');
 
 function chip(state, view) {
   const step = view.goals.chip;
@@ -76,7 +76,7 @@ export default [
     },
   },
   {
-    id: 'goals', title: 'Goals', icon: '🎯', placement: 'sim-tab', order: 30,
+    id: 'goals', title: 'Goals', icon: '🎯', placement: 'sim-tab', order: 30, phone: true, group: 'life',
     render(state, view) {
       const g = view.goals, goal = g.chain.current;
       const current = goal

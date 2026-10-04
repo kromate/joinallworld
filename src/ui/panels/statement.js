@@ -11,7 +11,7 @@
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './statement.css';
-import { esc, money, json, empty } from '../dom.js';
+import { esc, money, json, empty, ledgerRow } from '../dom.js';
 import { formatClock, lagosDayStart, WEEKDAYS } from '../../game/clock.js';
 
 let checked = null; // { cityId, closing, at, ok, text }
@@ -32,22 +32,22 @@ export default {
     const days = wallet.days.map((day) => `<li><div class="statement-day"><strong>${esc(dayLabel(day.day))}</strong><span>${money(day.open)} → ${money(day.close)}</span></div>
       <div class="statement-flow"><span class="is-in">+${money(day.in)}</span><span class="is-out">−${money(day.out)}</span><small>${esc(day.changes)} change${day.changes === 1 ? '' : 's'}</small></div>
       <ul class="statement-groups">${day.groups.map((group) => `<li><span>${esc(group.group)}${group.count > 1 ? ` × ${esc(group.count)}` : ''}</span><b class="${group.net < 0 ? 'is-out' : 'is-in'}">${signed(group.net)}</b></li>`).join('')}</ul></li>`).join('');
-    const lines = wallet.ledger.map((line) => `<li><span>${esc(line.reason)}<small>${esc(formatClock(line.at))} · balance ${money(line.balance)}</small></span><b class="${line.amount < 0 ? 'is-out' : 'is-in'}">${signed(line.amount)}</b></li>`).join('');
+    const lines = wallet.ledger.map((line) => ledgerRow(line.reason, `${formatClock(line.at)} · balance ${money(line.balance)}`, line.amount)).join('');
     const since = summary.opening.day === null ? 'before your first change' : `at the start of ${dayLabel(summary.opening.day)}`;
-    const sums = `<dl class="statement-sums"><div><dt>Opening balance <small>${esc(since)}</small></dt><dd>${money(summary.opening.balance)}</dd></div>
+    const sums = `<section class="ui-hero statement-hero" aria-label="Closing balance"><small>Closing balance · ${esc(summary.totals.changes)} change${summary.totals.changes === 1 ? '' : 's'}</small><strong>${money(summary.closing)}</strong></section><dl class="statement-sums"><div><dt>Opening balance <small>${esc(since)}</small></dt><dd>${money(summary.opening.balance)}</dd></div>
       <div><dt>Money in</dt><dd class="is-in">+${money(summary.totals.in)}</dd></div><div><dt>Money out</dt><dd class="is-out">−${money(summary.totals.out)}</dd></div>
-      <div class="statement-total"><dt>Closing balance <small>${esc(summary.totals.changes)} change${summary.totals.changes === 1 ? '' : 's'}</small></dt><dd>${money(summary.closing)}</dd></div></dl>`;
+      </dl>`;
     const adds = summary.reconciled
-      ? `<p class="statement-ok">✓ ${money(summary.opening.balance)} + ${money(summary.totals.in)} − ${money(summary.totals.out)} = ${money(summary.closing)}. Every naira is accounted for.</p>`
-      : `<p class="statement-bad" role="alert">⚠ This statement does not add up: ${esc(summary.problems.join(' '))} Please use Phone → Report a problem; your history is attached automatically.</p>`;
+      ? `<p class="statement-ok">${money(summary.opening.balance)} + ${money(summary.totals.in)} − ${money(summary.totals.out)} = ${money(summary.closing)}. Every naira is accounted for.</p>`
+      : `<p class="statement-bad" role="alert">This statement does not add up: ${esc(summary.problems.join(' '))} Please use Phone → Report a problem; your history is attached automatically.</p>`;
     const verdict = checked && checked.cityId === view.cityId ? `<p class="${checked.ok ? 'statement-ok' : 'statement-bad'}" role="status">${esc(checked.text)}</p>` : '';
     const offline = view.connected === false;
     return `${sums}${adds}
-      <span class="statement-check"><button class="ui-button" data-statement-check ${offline || busy ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check with the server'}</button>${offline ? '<small>Offline: reconnect to check.</small>' : ''}</span>${verdict}
-      <h3>By day</h3>${days ? `<ul class="statement-days">${days}</ul>` : empty('🗓️', 'No changes yet', 'Your first fare, meal or wage will appear here, day by day.', '', { compact: true })}
-      <h3>Recent changes</h3>${lines ? `<ul class="ui-ledger">${lines}</ul>` : empty('🧾', 'Nothing yet', 'Every change to your balance is listed here with its reason and time.', '', { compact: true })}
-      <p class="statement-note">The last ${esc(summary.kept.lines)} changes are kept line by line and the last ${esc(summary.kept.days)} days with activity are kept as daily totals, so older changes stay explained after their lines scroll away. Rent and the loan are collected on Saturdays, Lagos time, even while you are away — they appear here with the date they were due.</p>
-      <button class="ui-button" data-open="support" data-params="${json({ category: 'money' })}">Something here looks wrong</button>`;
+      <span class="statement-check"><button class="ui-button is-block" data-statement-check ${offline || busy ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check with the server'}</button>${offline ? '<small class="ui-why">Not connected: this needs the server.</small>' : ''}</span>${verdict}
+      <h3 class="ui-section">By day</h3>${days ? `<ul class="statement-days">${days}</ul>` : empty('🗓️', 'No changes yet', 'Your first fare, meal or wage will appear here, day by day.', '', { compact: true })}
+      <h3 class="ui-section">Recent changes</h3>${lines ? `<ul class="ui-rows">${lines}</ul>` : empty('🧾', 'Nothing yet', 'Every change to your balance is listed here with its reason and time.', '', { compact: true })}
+      <p class="ui-fine">The last ${esc(summary.kept.lines)} changes are kept line by line and the last ${esc(summary.kept.days)} days with activity are kept as daily totals, so older changes stay explained after their lines scroll away. Rent and the loan are collected on Saturdays, Lagos time, even while you are away — they appear here with the date they were due.</p>
+      <button class="ui-button is-block statement-wrong" data-open="support" data-params="${json({ category: 'money' })}">Something here looks wrong</button>`;
   },
   bind(root, api) {
     root.querySelector('[data-statement-check]')?.addEventListener('click', async () => {

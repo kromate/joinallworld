@@ -1,10 +1,16 @@
-.houses-intro,.houses-next{font-size:13px!important;margin:0 0 var(--s-2)}
-.houses-card header{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-2)}.houses-card h3 span{font-weight:400;color:var(--c-muted)}
-.houses-card em{font-style:normal;font-size:var(--t-small);background:var(--c-fill);border-radius:10px;padding:2px 8px;white-space:nowrap}
-.houses-card p{margin:2px 0 var(--s-2);font-size:13px!important}
-.houses-card dl{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-2);margin:0 0 var(--s-2)}.houses-card dt{font-size:var(--t-small);color:var(--c-muted)}.houses-card dd{margin:0;font-weight:600;font-size:13px}
-.houses-card dd.is-afford{color:var(--c-green-dark)}
-.houses-card.is-current{background:var(--c-green-soft);border-color:#b9d8c4}
-.houses-here{font-weight:600;color:var(--c-green-dark)}
-.houses-card .ui-button{width:100%}.houses-card .ui-button:disabled{opacity:.5;cursor:not-allowed}
-.houses-why{color:var(--c-red);font-size:12px!important;margin:var(--s-1) 0 0!important}
+/* Houses app. Class names are prefixed with the panel id. */
+.houses-hero{--hero:var(--app-tint,#b45309)}
+.houses-hero strong{font-size:20px}
+.houses-progress{height:8px;margin-top:8px;border-radius:8px;background:#ffffff40;overflow:hidden}
+.houses-progress i{display:block;height:100%;border-radius:8px;background:#fff}
+.houses-card{margin:0 0 var(--s-3);border-radius:var(--r-lg);background:#fff;box-shadow:var(--e-1),var(--ring);overflow:hidden}
+.houses-card.is-current{box-shadow:var(--e-1),inset 0 0 0 2px var(--c-green)}
+.houses-art{display:block;width:100%;height:104px}
+.houses-body{padding:var(--s-3) var(--s-4) var(--s-4)}
+.houses-card header{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s-2)}
+.houses-card h3{margin:0!important;font-size:16px!important;letter-spacing:0!important;text-transform:none!important;color:var(--c-ink)!important}
+.houses-card h3 small{display:block;font-size:12px;font-weight:500;color:var(--c-muted)}
+.houses-card p{margin:6px 0 var(--s-2)!important;font-size:13px!important;line-height:1.4!important;color:var(--c-ink-2)}
+.houses-card dl{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-2);margin:0 0 var(--s-3);padding:10px 12px;border-radius:var(--r-sm);background:var(--c-fill)}
+.houses-card dt{font-size:var(--t-small);color:var(--c-muted)}.houses-card dd{margin:0;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.houses-card dd.is-afford{color:var(--c-green-dark)}.houses-card dd.is-short{color:var(--c-red)}

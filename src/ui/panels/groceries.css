@@ -1,9 +1,22 @@
-.groceries-intro{font-size:13px!important;margin:0 0 var(--s-2)}
-.groceries-list{list-style:none;margin:0;padding:0}
-.groceries-row{display:flex;align-items:center;gap:var(--s-2);padding:var(--s-2) 0;border-bottom:1px solid var(--c-line)}
-.groceries-row>div{flex:1;min-width:0}.groceries-row strong{display:block;font-size:13px}.groceries-row small{display:block;font-size:11px;color:var(--c-muted);line-height:1.3}
-.groceries-row small.groceries-why{color:var(--c-red)}
-.groceries-icon{font-size:22px}
-.groceries-buy{border:0;background:var(--c-green-soft);color:var(--c-green-dark);border-radius:14px;min-width:58px;min-height:44px;padding:4px 8px;font:600 13px var(--font);cursor:pointer}
-.groceries-buy small{color:inherit!important;font-weight:400}
-.groceries-buy:disabled{opacity:.5;cursor:not-allowed}
+/* Groceries app. Class names are prefixed with the panel id. */
+.groceries-intro{font-size:13px!important;margin:0 0 var(--s-3)!important;color:var(--c-ink-2)}
+.groceries-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--s-2)}
+.groceries-card{display:grid;gap:2px;align-content:start;padding:12px 12px 10px;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring);min-width:0}
+.groceries-card.is-picked{box-shadow:var(--e-1),inset 0 0 0 2px var(--app-tint,var(--c-green))}
+.groceries-icon{display:grid;place-items:center;width:46px;height:46px;margin-bottom:4px;border-radius:14px;background:var(--c-fill);font-size:25px;line-height:1}
+.groceries-card strong{font-size:14px;line-height:1.25}
+.groceries-card small{font-size:11px;line-height:1.3;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.groceries-card p{margin:4px 0 6px!important;font-size:12px!important;line-height:1.3!important;color:var(--c-muted)}
+.groceries-card p b{color:var(--c-ink);font-variant-numeric:tabular-nums}
+.groceries-card s{font-weight:400;color:var(--c-faint)}
+.groceries-step{display:grid;grid-template-columns:var(--tap) minmax(0,1fr) var(--tap);align-items:center;border-radius:var(--r-pill);background:var(--c-fill)}
+.groceries-step button{height:var(--tap);border:0;border-radius:50%;background:none;font:600 20px var(--font);color:var(--c-ink);cursor:pointer}
+.groceries-step button:enabled:hover{background:var(--c-fill-2)}
+.groceries-step button:disabled{opacity:.3;cursor:not-allowed}
+.groceries-step output{text-align:center;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.groceries-basket{display:flex;align-items:center;gap:var(--s-2)}
+.groceries-basket>div{flex:1;min-width:0;display:grid}
+.groceries-basket small{font-size:11px;font-weight:600;color:var(--c-muted)}
+.groceries-basket b{font-size:18px;font-variant-numeric:tabular-nums}
+.groceries-basket .ui-button{width:auto;flex:none}
+.groceries-basket .ui-button.is-primary{min-width:110px}

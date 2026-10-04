@@ -1,11 +1,16 @@
-.cars-intro{font-size:13px!important;margin:0 0 var(--s-2)}
-.cars-card header{display:flex;align-items:center;gap:var(--s-2)}.cars-card header div{flex:1;min-width:0}.cars-card h3{margin:0}
-.cars-card header p{margin:0;font-size:12px!important;color:var(--c-muted)}
-.cars-icon{font-size:28px}
-.cars-card header b{font-variant-numeric:tabular-nums;color:var(--c-muted);white-space:nowrap;font-size:13px}.cars-card header b.is-afford{color:var(--c-green-dark)}.cars-card s{font-weight:400}
-.cars-facts{font-size:12px!important;color:var(--c-muted);margin:var(--s-1) 0 var(--s-2)}
-.cars-card.is-owned{background:var(--c-green-soft);border-color:#b9d8c4}
+/* Cars app. Class names are prefixed with the panel id. */
+.cars-hero{--hero:var(--app-tint,#334155)}
+.cars-hero strong{font-size:20px}
+.cars-card{margin:0 0 var(--s-3);border-radius:var(--r-lg);background:#fff;box-shadow:var(--e-1),var(--ring);overflow:hidden}
+.cars-card.is-owned{box-shadow:var(--e-1),inset 0 0 0 2px var(--c-green)}
+.cars-art{display:block;width:100%;height:96px}
+.cars-body{padding:var(--s-3) var(--s-4) var(--s-4)}
+.cars-card header{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--s-2)}
+.cars-card header div{min-width:0}
+.cars-card h3{margin:0!important;font-size:16px!important;letter-spacing:0!important;text-transform:none!important;color:var(--c-ink)!important}
+.cars-card header p{margin:0!important;font-size:12px!important;color:var(--c-muted)}
+.cars-card header b{flex:none;font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cars-card header b.is-afford{color:var(--c-green-dark)}.cars-card header b.is-short{color:var(--c-ink-2)}.cars-card s{font-weight:400;color:var(--c-faint)}
+.cars-facts{margin:var(--s-2) 0 var(--s-3)}
 .cars-row{display:flex;gap:var(--s-2);align-items:center;flex-wrap:wrap}.cars-row .ui-button{flex:1}
-.cars-card>.ui-button{width:100%}.cars-card .ui-button:disabled{opacity:.5;cursor:not-allowed}
-.cars-driving{flex:1;font-weight:600;color:var(--c-green-dark)}
-.cars-why{color:var(--c-red);font-size:12px!important;margin:var(--s-1) 0 0!important}
+.cars-driving{flex:1;justify-content:center;min-height:var(--tap);font-size:13px}

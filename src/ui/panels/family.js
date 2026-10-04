@@ -13,10 +13,10 @@ export default {
   render(state, view) {
     const social = view.social, info = social.familyCall;
     const called = social.family.filter((member) => member.calledToday).length;
-    return `<p>Your people back home<span class="social-beta">Beta</span></p>
-      <p class="social-note">Call each of them once a day to check in: +${info.social} Social and a “Checked in with family” feeling (+${info.mood} mood for a few hours). A call takes ${info.duration} seconds and works anywhere. Calling again the same day is only a quick hello.</p>
-      ${social.family.map((member) => `<div class="social-row"><span class="social-avatar" aria-hidden="true">${esc(member.emoji)}</span><div><strong>${esc(member.name)}</strong><small>${esc(member.relation)} · ${esc(member.line)}${member.calledToday ? ' · ✓ checked in today' : ''}</small></div><span class="social-actions">${callButton(state, view, member)}</span></div>`).join('')}
-      <p><strong>${called} of ${social.family.length}</strong> checked in today · streak: <strong>${social.streak} day${social.streak === 1 ? '' : 's'}</strong></p>
+    const why = !view.connected ? 'Not connected: calls need the server.' : state.activeAction ? 'Finish or cancel your current action to call.' : '';
+    return `<section class="ui-hero family-hero"><small>Your people back home <span class="social-beta">Beta</span></small><strong>${called} of ${social.family.length} checked in today</strong><p>Streak: ${social.streak} day${social.streak === 1 ? '' : 's'} · each first call of the day gives +${info.social} Social and +${info.mood} mood for a few hours</p></section>
+      <div class="social-list">${social.family.map((member) => `<div class="social-row"><span class="social-avatar is-big" aria-hidden="true">${esc(member.emoji)}</span><div><strong>${esc(member.name)}${member.calledToday ? ' <span class="ui-chip is-good">Checked in</span>' : ''}</strong><small>${esc(member.relation)} · ${esc(member.line)}</small></div><span class="social-actions">${callButton(state, view, member)}</span></div>`).join('')}</div>${why ? `<p class="ui-why">${esc(why)}</p>` : ''}
+      <p class="ui-note">A call takes ${info.duration} seconds and works anywhere. Calling again the same day is only a quick hello.</p>
       <p class="preview-note">Original beta feature and values. The family here is the same for every player for now.</p>`;
   },
 };

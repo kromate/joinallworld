@@ -6,11 +6,12 @@
  * every recent change line by line with its reason and time, and the closing balance — with the
  * arithmetic shown. The page is drawn from view.wallet (the life the server sent), and "Check with
  * the server" fetches GET /api/support/statement, the same statement computed from the server's own
- * copy, and says whether the two agree. Nothing here changes anything.
+ * copy, and says whether the two agree (a toast, and a line that stays under the button). Nothing
+ * here changes anything.
  * The panel contract is at the top of src/ui/shell.js.
  */
 import './statement.css';
-import { esc, money, json } from '../dom.js';
+import { esc, money, json, empty } from '../dom.js';
 import { formatClock, lagosDayStart, WEEKDAYS } from '../../game/clock.js';
 
 let checked = null; // { cityId, closing, at, ok, text }
@@ -27,7 +28,7 @@ export default {
   id: 'statement', title: 'Statement', icon: '🧾', placement: 'phone', order: 15,
   render(state, view) {
     const wallet = view.wallet, summary = wallet.statement;
-    if (!summary) return '<p class="statement-note">The statement is not available for this life yet.</p>';
+    if (!summary) return empty('🧾', 'No statement yet', 'This life has no wallet history to explain yet. Your first fare, meal or wage starts it.');
     const days = wallet.days.map((day) => `<li><div class="statement-day"><strong>${esc(dayLabel(day.day))}</strong><span>${money(day.open)} → ${money(day.close)}</span></div>
       <div class="statement-flow"><span class="is-in">+${money(day.in)}</span><span class="is-out">−${money(day.out)}</span><small>${esc(day.changes)} change${day.changes === 1 ? '' : 's'}</small></div>
       <ul class="statement-groups">${day.groups.map((group) => `<li><span>${esc(group.group)}${group.count > 1 ? ` × ${esc(group.count)}` : ''}</span><b class="${group.net < 0 ? 'is-out' : 'is-in'}">${signed(group.net)}</b></li>`).join('')}</ul></li>`).join('');
@@ -43,8 +44,8 @@ export default {
     const offline = view.connected === false;
     return `${sums}${adds}
       <span class="statement-check"><button class="ui-button" data-statement-check ${offline || busy ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check with the server'}</button>${offline ? '<small>Offline: reconnect to check.</small>' : ''}</span>${verdict}
-      <h3>By day</h3>${days ? `<ul class="statement-days">${days}</ul>` : '<p class="statement-note">No changes yet. Your first fare, meal or wage will appear here.</p>'}
-      <h3>Recent changes</h3>${lines ? `<ul class="ui-ledger">${lines}</ul>` : '<p class="statement-note">Nothing yet.</p>'}
+      <h3>By day</h3>${days ? `<ul class="statement-days">${days}</ul>` : empty('🗓️', 'No changes yet', 'Your first fare, meal or wage will appear here, day by day.', '', { compact: true })}
+      <h3>Recent changes</h3>${lines ? `<ul class="ui-ledger">${lines}</ul>` : empty('🧾', 'Nothing yet', 'Every change to your balance is listed here with its reason and time.', '', { compact: true })}
       <p class="statement-note">The last ${esc(summary.kept.lines)} changes are kept line by line and the last ${esc(summary.kept.days)} days with activity are kept as daily totals, so older changes stay explained after their lines scroll away. Rent and the loan are collected on Saturdays, Lagos time, even while you are away — they appear here with the date they were due.</p>
       <button class="ui-button" data-open="support" data-params="${json({ category: 'money' })}">Something here looks wrong</button>`;
   },
@@ -56,12 +57,14 @@ export default {
         const reply = await api.fetchJson(`/api/support/statement?city=${encodeURIComponent(view.cityId)}`);
         const server = reply.statement, mine = api.view().wallet.statement;
         const same = server.reconciled && server.closing === api.state().cash && server.opening.balance === mine.opening.balance && server.totals.net === mine.totals.net;
-        checked = { cityId: view.cityId, ok: same, text: same ? `✓ The server’s own statement agrees: closing balance ${money(server.closing)}, ${server.totals.changes} changes, reconciled.`
+        checked = { cityId: view.cityId, ok: same, text: same ? `✓ The server’s own statement agrees: closing balance ${money(server.closing)}, ${server.totals.changes} change${server.totals.changes === 1 ? '' : 's'}, reconciled.`
           : `The server’s statement closes at ${money(server.closing)}. If what you see here differs, wait a moment for this screen to catch up and check again.` };
       } catch (error) {
         checked = { cityId: view.cityId, ok: false, text: error?.status === 429 ? 'You have checked several times this minute. Try again shortly.' : 'The server could not be reached. Nothing changed; try again.' };
       }
       busy = false; api.refresh();
+      // The answer is also a toast, like every other action taken inside a sheet; the line under the button stays.
+      api.toast(checked.ok ? 'The server’s statement agrees with this one.' : checked.text, checked.ok ? 'good' : 'error');
     });
   },
 };

@@ -97,6 +97,10 @@ const civic = lazyGroup(() => import('./groups/civic.js'), [
   { id: 'ads', title: 'Billboards', icon: '📢', placement: 'phone', order: 44, live: false },
   { id: 'richlist', title: 'Rich List', icon: '🏆', placement: 'phone', order: 48 },
 ]);
+const trust = lazyGroup(() => import('./groups/trust.js'), [
+  { id: 'statement', title: 'Statement', icon: '🧾', placement: 'phone', order: 15 },
+  { id: 'support', title: 'Report a problem', icon: '🛟', placement: 'phone', order: 96, live: false },
+]);
 const start = lazyGroup(() => import('./groups/start.js'), [
   // `required` must answer before the code is here: a brand-new life is held in character creation.
   { id: 'onboarding', title: 'Create your Sim', icon: '✨', placement: 'modal', live: false,
@@ -104,13 +108,7 @@ const start = lazyGroup(() => import('./groups/start.js'), [
   { id: 'account', title: 'Account', icon: '🔑', placement: 'modal' },
 ]);
 
-export const PANELS = buildPanels([session, city, map, health, buy, goals, messages, hunt, radio, money, sim, social, civic, start]);
+export const PANELS = buildPanels([session, city, map, health, buy, goals, messages, hunt, radio, money, sim, social, civic, trust, start]);
 
 /** The panel that handles "no session / expired session". A non-foundation panel with role 'session-gate' wins. */
 export const sessionGate = () => PANELS.find((panel) => panel.role === 'session-gate' && panel.id !== 'session') || PANELS.find((panel) => panel.id === 'session');
-
-// Trust pass panels (Statement, Report a problem). Registered on their own lines so the lists
-// above stay untouched; buildPanels re-validates ids and re-sorts by `order`.
-import statement from './statement.js';
-import support from './support.js';
-PANELS.splice(0, PANELS.length, ...buildPanels([...PANELS, statement, support]));

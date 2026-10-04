@@ -185,3 +185,41 @@ test('what the server says about its storage is shown as it is: failing, the 503
   assert.equal(client.storage, null, 'and the next ordinary success clears it');
   assert.deepEqual(statuses.at(-1), ['Connected · progress saved', false]);
 });
+
+test('client.link says why the game is not playable: expired, new, offline and unreachable are different states', async () => {
+  const session = { ok: true, status: 200, json: async () => ({ session: { id: 'p1', name: 'Ada' }, serverTime: 1000 }) };
+  const life = { ok: true, status: 200, json: async () => ({ state: {}, serverTime: 1000 }) };
+  const unknown = { ok: false, status: 401, json: async () => ({ error: 'device_session_required' }) };
+  const saved = { getItem: () => JSON.stringify({ identity: { name: 'Ada' }, cityId: 'lagos', state: {} }), setItem() {} };
+  const timers = { setTimeout: () => 0, clearTimeout: () => {} };
+
+  // The owner's case: the server answers, but does not know this browser's session, and a life is cached here.
+  const expired = createClient({ fetch: async () => unknown, storage: saved, ...timers });
+  assert.equal(expired.link, 'connecting');
+  assert.equal(await expired.connect(), false);
+  assert.equal(expired.link, 'expired', 'a reachable server that has lost the session is "expired", never "offline"');
+
+  // The same answer on a browser with no cached life is simply a new player.
+  const fresh = createClient({ fetch: async () => unknown, storage: { getItem: () => null, setItem() {} }, ...timers });
+  assert.equal(await fresh.connect(), false);
+  assert.equal(fresh.link, 'new');
+
+  // No answer at all: the device's own network decides between "offline" and "unreachable".
+  let deviceOnline = true, serverUp = true;
+  const client = createClient({ fetch: async (path) => { if (!serverUp) throw new Error('fetch failed'); return String(path).startsWith('/api/session') ? session : life; }, storage: saved, isOnline: () => deviceOnline, ...timers });
+  assert.equal(await client.connect(), true); assert.equal(client.link, 'online');
+  serverUp = false;
+  assert.equal((await client.command('cancel')).ok, false);
+  assert.equal(client.link, 'unreachable', 'the device is online, the server did not answer');
+  deviceOnline = false;
+  assert.equal(await client.connect(), false);
+  assert.equal(client.link, 'offline', 'the device itself has no network');
+  deviceOnline = true; serverUp = true;
+  assert.equal(await client.connect(), true); assert.equal(client.link, 'online');
+
+  // A session that disappears mid-game (401 on an action) is expired too.
+  const dropped = createClient({ fetch: async (path, options) => (options?.method === 'POST' ? unknown : String(path).startsWith('/api/session') ? session : life), storage: saved, ...timers });
+  assert.equal(await dropped.connect(), true);
+  await dropped.command('cancel');
+  assert.equal(dropped.link, 'expired');
+});

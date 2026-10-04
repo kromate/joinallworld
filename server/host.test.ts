@@ -338,7 +338,6 @@ test('static files: a source map is never served, and the game page carries an a
   await writeFile(join(dist, 'index.html'), page);
   await writeFile(join(dist, 'assets', 'app.js'), 'console.log(1)');
   await writeFile(join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\n');
-  await writeFile(join(dist, 'sitemap.xml'), '<urlset></urlset>');
   await writeFile(join(dist, 'assets', 'app.js.map'), '{"sources":["../../src/secret.js"]}');
   const f = await fixture(t, { distDir: dist, publicOrigin: 'https://play.example' });
   const get = (path: string, headers?: HeadersInit) => fetch(`${f.base}${path}`, { headers });
@@ -346,7 +345,13 @@ test('static files: a source map is never served, and the game page carries an a
   assert.deepEqual(await (await get('/assets/app.js.map')).json(), { error: 'not_found' });
   const expected = page.replaceAll('content="/og/allworld.png"', 'content="https://play.example/og/allworld.png"').replaceAll('https://joinallworld.com/', 'https://play.example/');
   const robots = await get('/robots.txt'), sitemap = await get('/sitemap.xml');
+  const manifest = await get('/manifest.webmanifest');
   assert.deepEqual([robots.status, robots.headers.get('content-type'), sitemap.status, sitemap.headers.get('content-type')], [200, 'text/plain; charset=utf-8', 200, 'application/xml; charset=utf-8']);
+  // Both are made by code, with no file in dist: the sitemap names the public origin; HEAD has no body.
+  assert.ok((await sitemap.text()).includes('<loc>https://play.example/</loc>'));
+  assert.deepEqual([manifest.status, manifest.headers.get('content-type'), (JSON.parse(await manifest.text()) as { name: string }).name], [200, 'application/manifest+json', 'Allworld']);
+  const head = await fetch(`${f.base}/sitemap.xml`, { method: 'HEAD' });
+  assert.deepEqual([head.status, head.headers.get('content-type'), await head.text()], [200, 'application/xml; charset=utf-8', '']);
   // The index, and every path that falls back to it (an invite link, a share link on a host without the page).
   for (const path of ['/', '/index.html', '/v/11111111-1111-4111-8111-111111111111', '/some/deep/link']) assert.equal(await (await get(path)).text(), expected, path);
   assert.ok(expected.includes('content="/og/not-an-image"') && expected.includes('href="/icons/icon-192.png"'), 'only the two preview-image tags are rewritten');

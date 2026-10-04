@@ -98,13 +98,18 @@ POSTHOG_KEY=phc_local_capture POSTHOG_HOST=http://127.0.0.1:3361 npm start
 curl -s http://127.0.0.1:3361/__captured      # everything recorded so far
 ```
 
-**Source maps.** `npm run build` writes hidden source maps (no reference to them in the served files). Before deploying, upload them and remove them from `dist/`:
+**Source maps.** The default `npm run build` writes none: the release package admits no `.map` file. For error reporting, build with `SOURCEMAPS=1`: hidden maps (no reference to them in the served files) are written to `dist-maps/` (git-ignored), never to `dist/`. Before deploying, upload them:
 
 ```sh
+SOURCEMAPS=1 npm run build
 BUILD_ID=<release> SENTRY_AUTH_TOKEN=<token> SENTRY_ORG=<org slug> SENTRY_PROJECT=<browser project slug> npm run sentry:sourcemaps
 ```
 
-The token comes from the environment and is never written anywhere; `--strip-only` deletes the maps without uploading. Maps are never served in any case: the Node server answers 404 for `*.map`, and `public/.assetsignore` keeps them out of the Worker's assets.
+The token comes from the environment and is never written anywhere; `--strip-only` deletes `dist-maps/` without uploading. Maps are never served in any case: the Node server and the Worker answer 404 for `*.map`.
+
+**manifest.webmanifest and sitemap.xml** are made by code (`server/site-files.ts`), served by both hosts, and are not files in `public/`: the release package admits only `html js css svg png jpg jpeg webp ico woff2 txt` assets. The sitemap names the public origin (`PUBLIC_ORIGIN`, else the request's host).
+
+**Release compatibility files.** `deploy/cloudflare-worker.js` and `deploy/cloudflare.test.mjs` are two thin shims over the `.ts` files: the release policy (kromate/allworld) names those paths. They can go when the policy is updated.
 
 **How it fits together.** `src/telemetry/index.ts` is the facade — `track(name, props)`, `screen(name)`, `identify(publicId, traits)`, `setGroup('lga', id)`, `captureError(error, context)`, `setConsent(choice)` — and the only telemetry code in the first download (about 2 kB). It is safe to call anywhere and never throws. Code that should not import it can dispatch a DOM event instead: `window.dispatchEvent(new CustomEvent('jaw:track', { detail: { name, props } }))`. Everything else (`core.js`, the two SDK wrappers, the consent sheet) is fetched as separate chunks after the first scene is drawn, and only if the server says telemetry is configured; the PostHog chunk only after the player chose Accept. Every event name, its properties, when it fires and why is in `src/telemetry/events.ts`. The server side is `server/telemetry/` — `track(publicId, name, props)` and `captureError(error, context)` over a bounded queue sent with plain `fetch`, never on a request's path, flushed on shutdown.
 
@@ -474,7 +479,7 @@ Some labels, prices and timings follow what was observed in a public Lagos city-
 | `src/tables/` | Table games. `rules.js` is **the contract for adding a game**; `whot.js`, `penalty.js` are pure rules; `places.js` says where tables stand; `client.js` and `*-board.js` are the browser side |
 | `server/growth/`, `server/routes/growth.ts`, `growth-mod.js`, `server/ws/tables.ts` | Share links and the preview page, referral, metrics, the table service, outreach (e-mail through `email/zeptomail.js`, web push in `webpush.js`); their routes, operator routes and socket messages |
 | `src/app/features/growth/`, `src/app/features/tables/`, `src/ui/share.ts`, `src/ui/push-client.ts` | The growth apps and chips, the share painter and the push subscription |
-| `public/` | `og/allworld.jpg` (link-preview image), `manifest.webmanifest`, `icons/`, `sw.js` (notifications only) |
+| `public/` | `og/allworld.jpg` (link-preview image), `icons/`, `sw.js` (notifications only) |
 | `scripts/first-day.ts` | The scripted first day (`npm run first-day`), also run by `server/first-day.test.ts` |
 | `scripts/first-minute.ts` | The scripted first minute (`npm run first-minute`), also run by `server/first-minute.test.ts` |
 | `src/quick-start/` | The first minute's client logic. In the first download: `model.js` (pure: the landing of a link — `joinIdFrom`, `linkParts`, the banner words — when to offer settling in, the funnel) and `entry.js` (what the device keeps, the one place a link is read, the device token, and the funnel events). Fetched with the landing screen: `look-model.js` (pure: name suggestions, presets, starter looks, the draft) and `draft.js` |

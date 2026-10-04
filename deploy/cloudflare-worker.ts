@@ -33,6 +33,7 @@
  */
 import { DurableObject } from 'cloudflare:workers';
 import { oldCharacterLanding } from './legacy-bridge.ts';
+import { siteFile } from '../server/site-files.ts';
 import { createSqliteStore } from './sqlite-store.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.ts';
@@ -127,6 +128,9 @@ export default {
       if (page.headers.get('x-allworld-page') !== 'none') return page;
       if (request.method === 'POST') return json(405, { error: 'method_not_allowed' });
     }
+    // The manifest and the sitemap are made by code (server/site-files.ts), not shipped as assets: the release package admits neither extension.
+    const site = siteFile(url.pathname, publicOrigin(env, url));
+    if (site) return new Response(request.method === 'HEAD' ? null : site.body, { status: 200, headers: { 'content-type': site.type, 'x-content-type-options': 'nosniff' } });
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
     headers.set('x-content-type-options', 'nosniff');

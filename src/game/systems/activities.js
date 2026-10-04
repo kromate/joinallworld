@@ -248,24 +248,32 @@ const active = {
     if (!def || entry.venue !== state.location || def.unavailable || value.duration !== def.duration
       || (def.requiresJob && state.job !== def.requiresJob)) return null;
     // What was charged at the start is the ADJUSTED price (modify 'activity.cost'), which may be
-    // above the listed one; a saved amount beyond both is cut down to the limit, never dropped.
-    const paid = def.chargeOn === 'start' && Number.isSafeInteger(value.paid) && value.paid > 0 ? Math.min(value.paid, paidLimit(state, def, ctx)) : 0;
+    // above the listed one. The server's own save (ctx.trustedSave) is believed as written — the
+    // price may have changed since the player paid. Any other input is cut down to the limit.
+    const paid = def.chargeOn === 'start' && Number.isSafeInteger(value.paid) && value.paid > 0
+      ? (ctx?.trustedSave === true ? value.paid : Math.min(value.paid, paidLimit(state, def, ctx))) : 0;
     return { ...(def.choice ? { choice: def.choice } : {}), ...(paid ? { paid } : {}) };
   },
   /**
    * The saved activity can no longer run. Give back what was paid at its start (through the
-   * ledger), or charge a metered one for the time used. When the definition itself is gone the
-   * saved amount is only returned if the ledger still shows that charge.
+   * ledger), or charge a metered one for the time used. Called only for the server's own save
+   * (core.js sanitizeActive, ctx.trustedSave), where the stored `paid` is the amount the server
+   * itself debited at the start; the caller has already cleared the action, so this runs once.
+   * If the refund would take the balance past its supported limit nothing is credited, the
+   * player is told, and — the action being gone — no later load can pay it either.
    */
   invalidated(state, value, ctx) {
-    const entry = findActivity(value.id);
+    const entry = typeof value.id === 'string' ? findActivity(value.id) : undefined;
     const def = entry && (resolve(entry.def, value.choice) || entry.def);
-    const saved = Number.isSafeInteger(value.paid) && value.paid > 0 ? value.paid : 0;
-    const inLedger = saved > 0 && state.ledger.some((line) => line.amount === -saved);
-    const paid = !saved ? 0 : inLedger ? saved : def?.chargeOn === 'start' ? Math.min(saved, paidLimit(state, def, ctx)) : 0;
+    const paid = Number.isSafeInteger(value.paid) && value.paid > 0 ? value.paid : 0;
     const label = def?.label ?? 'an activity';
     // The elapsed time is measured against the duration the action was started with.
     const action = { duration: value.duration, remaining: value.remaining, ...(paid ? { paid } : {}) };
+    const due = paid && def?.refundOnCancel !== false ? paid - (def && isMetered(def) ? usedShare(paid, action) : 0) : 0;
+    if (due > 0 && !canCredit(state, due)) {
+      state.message = 'Your unfinished activity is no longer available. Its payment could not be refunded because your balance is at the supported limit. Your current balance is unchanged.';
+      return;
+    }
     const { charged, refunded } = settleEarlyStop(state, def ?? { label }, action, ctx, ' (no longer available)');
     // Only a change to the wallet is announced; an action that simply cannot resume is dropped quietly, as before.
     if (refunded) state.message = `${cap(label)} is no longer available here, so it was stopped and ${naira(refunded)} was refunded.`;

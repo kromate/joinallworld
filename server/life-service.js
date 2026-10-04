@@ -16,6 +16,8 @@ export { VENUES };
  *   - mixed into every seed: creation, every settlement and every action (keyedSeed in
  *     src/game/util.js). The engine's context does not carry it, so no system can leak it.
  * A replay of the same action ID on the same life still rolls the same dice.
+ * A state that was NOT settled here has no salt; applyLifeAction then rolls from the platform's
+ * random source instead (never from the action ID alone), unless the caller passes its own `rng`.
  *
  * Both hosts get this from settleCity/applyLifeAction without any code of their own. The link
  * from a settled state to its salt is held in memory only (a WeakMap keyed by the state object
@@ -23,6 +25,7 @@ export { VENUES };
  * hosts already do.
  */
 const SALT_PATTERN = /^[A-Za-z0-9_-]{16,64}$/;
+const serverRandom = () => globalThis.crypto.getRandomValues(new Uint32Array(1))[0] / 0x100000000;
 const lives = new WeakMap(); // settled state → { salt, publicId, cityId }
 
 function randomSalt() {
@@ -88,7 +91,8 @@ export function settleCity(session, cityId, now) {
   }
   if (typeof entry.salt !== 'string' || !SALT_PATTERN.test(entry.salt)) entry.salt = newSalt();
   const { salt } = entry;
-  entry.state = createLife(entry.state, { now, cityId, isNew: false, salt });
+  // trustedSave: this is the server's own stored copy, so an action that can no longer run is settled here (src/life.js createLife).
+  entry.state = createLife(entry.state, { now, cityId, isNew: false, salt, trustedSave: true });
   const elapsed = Number.isFinite(entry.updatedAt) ? Math.max(0, (now - entry.updatedAt) / 1000) : 0;
   if (elapsed > 0) advanceLife(entry.state, elapsed, { now, cityId, salt });
   entry.state.t = now;
@@ -102,16 +106,20 @@ export function settleCity(session, cityId, now) {
 
 /**
  * Apply a validated action body to a settled state. The context defaults to the state's own
- * settlement time and a generator seeded from the action ID, so callers that only pass
- * (state, body) — such as the worker — stay deterministic. For a state that came from
- * settleCity the seed is keyed with that life's salt whatever context the caller passes; a
- * caller cannot supply a salt of its own.
+ * settlement time. For a state that came from settleCity (both hosts) the generator is seeded
+ * from the action ID keyed with that life's salt, whatever context the caller passes; a caller
+ * cannot supply a salt of its own, and a replay of one action ID rolls the same dice. For any
+ * other state the generator is the caller's `ctx.rng`, or the platform's random source.
  */
 export function applyLifeAction(state, body, ctx) {
   if (!hasAction(body?.type)) throw new Error('Invalid action type');
   const meta = lives.get(state);
   const given = ctx ?? { now: state.t, cityId: body.cityId, actionId: body.actionId };
   let context = given;
+  // A state that did not come from settleCity has no salt (a direct call from a test or a script;
+  // neither host does this). It must still never roll from the client-chosen action ID alone: unless
+  // the caller hands in its own generator, the roll comes from the platform's random source.
+  if (!meta && typeof given.rng !== 'function') context = { ...given, rng: serverRandom };
   if (meta) {
     // The generator is always built here, from the action ID and the life's salt: neither a salt
     // nor a ready-made generator from the caller is used for a stored life.

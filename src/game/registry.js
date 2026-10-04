@@ -186,6 +186,8 @@ let depth = 0;
 export function registerSystem(def) {
   if (!def || typeof def.id !== 'string' || byId.has(def.id)) throw new Error(`Invalid or duplicate system: ${def?.id}`);
   if (!Array.isArray(def.stateKeys) || typeof def.sanitize !== 'function') throw new Error(`System ${def.id} needs stateKeys and sanitize`);
+  if (def.stateKeys.some((key) => typeof key !== 'string' || !key || ['__proto__', 'constructor', 'prototype'].includes(key))
+    || new Set(def.stateKeys).size !== def.stateKeys.length) throw new Error(`Invalid stateKeys for ${def.id}`);
   for (const key of def.stateKeys) {
     const owner = order.find((other) => other.stateKeys.includes(key));
     if (owner) throw new Error(`State key "${key}" is owned by ${owner.id}, not ${def.id}`);
@@ -251,9 +253,12 @@ export function undeclaredKeys(state) {
  * write, in the first test (or request) that reaches it. `where` names what just ran.
  */
 export function assertDeclared(state, where) {
-  for (const key of Object.keys(state)) {
-    if (!declaredKeys.has(key)) throw new Error(`Undeclared state key "${key}" after ${where}: add it to the owning system's stateKeys and rebuild it in sanitize(), or it is lost at the next load.`);
-  }
+  const stray = Object.keys(state).filter((key) => !declaredKeys.has(key));
+  if (!stray.length) return;
+  // The key is taken off again before the failure is raised, so a caller that catches the error
+  // is not left holding a life with a value the next load would silently drop.
+  for (const key of stray) delete state[key];
+  throw new Error(`Undeclared state key "${stray[0]}" after ${where}: add it to the owning system's stateKeys and rebuild it in sanitize(), or it is lost at the next load.`);
 }
 
 /** Notify every system, in registration order. Listeners may mutate state and emit further events.

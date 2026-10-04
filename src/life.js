@@ -58,6 +58,13 @@ const contextFor = (state, ctx, seed) => (ctx && typeof ctx.rng === 'function' ?
  * Build a life from saved input. Nothing in `saved` is trusted: every system rebuilds its own
  * keys, unknown keys are dropped, and malformed values fall back to defaults. Calling it on an
  * already-valid state returns an equal deep copy. The beta seed is ₦5,000 and all needs at 50.
+ *
+ * ctx.trustedSave === true says the input is the server's OWN stored copy of the life. Only the
+ * authoritative persistence adapter sets it (server/life-service.js settleCity, which the Worker
+ * uses too). It is what allows a saved timed action that can no longer run to be settled at load —
+ * its start charge refunded, or a metered one charged for the time used — and a stored `paid`
+ * amount to be believed as written. Without the flag (a client's local copy, anything imported) an
+ * invalid action is dropped with no money moved, so no input can mint a refund.
  */
 export function createLife(saved, ctx) {
   const context = contextFor(null, { isNew: !isRecord(saved), ...ctx }, 'create');
@@ -70,7 +77,7 @@ export function createLife(saved, ctx) {
     // (which would then overwrite it) or nobody's (which the next load would drop).
     const keys = Object.keys(state);
     for (let i = known; i < keys.length; i++) {
-      if (!system.stateKeys.includes(keys[i])) throw new Error(`System "${system.id}" wrote state key "${keys[i]}" in sanitize() without declaring it in stateKeys.`);
+      if (!system.stateKeys.includes(keys[i])) throw new Error(`Undeclared state key "${keys[i]}": System "${system.id}" wrote state key "${keys[i]}" in sanitize() without declaring it in stateKeys.`);
     }
     known = keys.length;
   }

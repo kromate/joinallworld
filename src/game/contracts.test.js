@@ -51,6 +51,8 @@ registerSystem({
 rebuildCatalogue();
 
 const at = (now = NOW) => ({ now, cityId: CITY });
+/** The context of the server loading its OWN save (life-service.js settleCity): the only one allowed to settle money at load. */
+const stored = (now = NOW) => ({ ...at(now), trustedSave: true });
 const fresh = (saved = {}) => createLife({ spot: 'contract', needs: { hunger: 50, energy: 50, fun: 50, social: 50, hygiene: 50, bladder: 50 }, ...saved }, at());
 const start = (state, id) => dispatch(state, { type: 'activity', payload: { id } }, at());
 const run = (state, seconds) => advanceLife(state, seconds, at(NOW + seconds * 1000));
@@ -173,37 +175,43 @@ test('a start-charged activity whose definition changed is refunded through the 
   assert.deepEqual([state.cash, state.activeAction.paid], [4900, 100]);
   const saved = structuredClone(state);
   startPaid.duration = 20; startPaid.cost = 40; rebuildCatalogue(); // a deploy changed the activity: longer and cheaper
-  const loaded = createLife(saved, at(NOW + 1000));
+  // Anything that is not the server's own save is only cleaned up: no money moves, so no input can mint a refund.
+  const untrusted = createLife(structuredClone(saved), at(NOW + 1000));
+  assert.deepEqual([untrusted.activeAction, untrusted.cash, untrusted.ledger.length], [null, 4900, 1]);
+  const loaded = createLife(saved, stored(NOW + 1000));
   assert.equal(loaded.activeAction, null, 'the saved action no longer matches and is dropped');
   assert.equal(loaded.cash, 5000, 'the ₦100 actually charged comes back, not the new ₦40 price');
   assert.deepEqual(lines(loaded), [[-100, 'Contract Booth'], [100, 'Refund: Contract Booth (no longer available)']]);
   assert.equal(loaded.message, 'Contract Booth is no longer available here, so it was stopped and ₦100 was refunded.');
   assert.equal(statementOf(loaded).reconciled, true);
   // Loading again — the server does on every request — refunds nothing more.
-  const again = createLife(structuredClone(loaded), at(NOW + 2000));
+  const again = createLife(structuredClone(loaded), stored(NOW + 2000));
   assert.deepEqual([again.cash, again.ledger.length], [5000, 2]);
-  assert.deepEqual(createLife(structuredClone(again), at(NOW + 3000)), again);
+  assert.deepEqual(createLife(structuredClone(again), stored(NOW + 3000)), again);
 });
 
-test('a start-charged activity whose venue or definition is gone is refunded when the ledger shows the charge', (t) => {
+test('a start-charged activity whose venue or definition is gone is refunded from the server’s own save, and from nothing else', (t) => {
   t.after(() => { rebuildCatalogue(); });
   const state = fresh();
   start(state, 'contract-booth');
   // The player's saved location is no longer the activity's venue.
-  const moved = createLife({ ...structuredClone(state), location: 'library' }, at(NOW + 1000));
+  const moved = createLife({ ...structuredClone(state), location: 'library' }, stored(NOW + 1000));
   assert.deepEqual([moved.activeAction, moved.cash], [null, 5000]);
-  // The activity id is not in the catalogue at all: the label is unknown, the charge is in the ledger.
+  // The activity id is not in the catalogue at all: the label is unknown; the amount is the one the server stored at the start.
   const gone = structuredClone(state);
   gone.activeAction.id = 'contract-removed';
-  const loaded = createLife(gone, at(NOW + 1000));
+  const loaded = createLife(structuredClone(gone), stored(NOW + 1000));
+  assert.equal(createLife(structuredClone(gone), at(NOW + 1000)).cash, 4900, 'the same save from anywhere else refunds nothing');
   assert.deepEqual([loaded.activeAction, loaded.cash], [null, 5000]);
   assert.equal(loaded.ledger.at(-1).reason, 'Refund: an activity (no longer available)');
-  // A save that only CLAIMS a payment gets nothing: no such charge in the ledger, no definition to bound it.
+  // Input that only CLAIMS a payment gets nothing — it is not the server's save, whatever it says it paid.
   const forged = createLife({ spot: 'contract', activeAction: { kind: 'activity', id: 'contract-removed', duration: 10, remaining: 5, paid: 4000 } }, at());
   assert.deepEqual([forged.activeAction, forged.cash, forged.ledger.length], [null, 5000, 0]);
-  // And for a known activity a claim is bounded by its price.
   const inflated = createLife({ spot: 'contract', location: 'library', activeAction: { kind: 'activity', id: 'contract-booth', duration: 10, remaining: 5, paid: 4000 } }, at());
-  assert.equal(inflated.cash, 5100, 'at most the listed price is returned');
+  assert.deepEqual([inflated.activeAction, inflated.cash, inflated.ledger.length], [null, 5000, 0], 'also for a known activity');
+  // And while such an action is still valid, a claimed amount above the price is cut down to it.
+  const running = createLife({ spot: 'contract', activeAction: { kind: 'activity', id: 'contract-booth', duration: 10, remaining: 5, paid: 4000 } }, at());
+  assert.equal(running.activeAction.paid, 100);
 });
 
 test('the amount charged at the start is kept through a reload even when a modifier raised it above the listed price', () => {
@@ -221,9 +229,9 @@ test('invalidation settles a metered activity like an early stop: unused part re
   const sauna = fresh(); start(sauna, 'contract-sauna'); run(sauna, 4);
   const massage = fresh(); start(massage, 'contract-massage'); run(massage, 4);
   meteredFirst.duration = 30; meteredLater.duration = 30; rebuildCatalogue();
-  const a = createLife(structuredClone(sauna), at(NOW + 4000));
+  const a = createLife(structuredClone(sauna), stored(NOW + 4000));
   assert.deepEqual([a.activeAction, a.cash], [null, 4920], '₦200 paid, 4 of 10 seconds used: ₦120 back');
-  const b = createLife(structuredClone(massage), at(NOW + 4000));
+  const b = createLife(structuredClone(massage), stored(NOW + 4000));
   assert.deepEqual([b.activeAction, b.cash], [null, 4960], '4 of 10 seconds at ₦100: ₦40');
   assert.equal(b.ledger.at(-1).reason, 'Contract Massage (stopped early)');
 });

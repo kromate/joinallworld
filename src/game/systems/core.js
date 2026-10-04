@@ -9,10 +9,12 @@
  * registers `active: { [kind]: { moves, sanitize, tick?, complete, cancel?, invalidated? } }`
  * (the contract is in registry.js).
  *
- * A SAVED ACTION THAT IS NO LONGER VALID (its definition changed, its venue is gone) is dropped at
- * load. Before it is dropped the kind's `invalidated` hook runs, so whatever the player paid when
- * it started is returned through the wallet ledger. The action is gone from the state afterwards,
- * so the hook can never run twice for one action.
+ * A SAVED ACTION THAT IS NO LONGER VALID (its definition changed, its venue is gone, its timing is
+ * malformed) is dropped at load. When the input is the server's own save (ctx.trustedSave, see
+ * createLife in src/life.js) the kind's `invalidated` hook runs first, so whatever the player paid
+ * when it started is returned through the wallet ledger. The action is gone from the state
+ * afterwards, so the hook can never run twice for one action. For any other input nothing is
+ * settled: the action is just dropped.
  */
 import { activeHandler, emit } from '../registry.js';
 import { finite, isRecord, ok, fail } from '../util.js';
@@ -26,12 +28,15 @@ const START_VENUE = 'park';
 export function sanitizeActive(input, state, ctx) {
   const value = input.activeAction;
   state.activeAction = null;
-  if (!isRecord(value) || !finite(value.remaining) || value.remaining <= 0 || !finite(value.duration)
-    || value.duration <= 0 || value.remaining > value.duration || typeof value.id !== 'string') return;
-  const handler = activeHandler(value.kind);
-  const extra = handler?.sanitize(value, state, ctx);
-  if (extra) state.activeAction = { kind: value.kind, id: value.id, duration: value.duration, remaining: value.remaining, ...extra };
-  else handler?.invalidated?.(state, value, ctx);
+  if (!isRecord(value)) return;
+  const timed = finite(value.remaining) && value.remaining > 0 && finite(value.duration)
+    && value.duration > 0 && value.remaining <= value.duration && typeof value.id === 'string';
+  const handler = typeof value.kind === 'string' ? activeHandler(value.kind) : undefined;
+  const extra = timed ? handler?.sanitize(value, state, ctx) : null;
+  if (extra) { state.activeAction = { kind: value.kind, id: value.id, duration: value.duration, remaining: value.remaining, ...extra }; return; }
+  // Only the server's own save may settle money for an action that cannot resume. With unusable
+  // timing nothing can be said about the time used, so it is settled as if nothing had been.
+  if (ctx?.trustedSave === true) handler?.invalidated?.(state, timed ? value : { ...value, duration: 1, remaining: 1 }, ctx);
 }
 
 /** Advance the timed action. Returns 'idle' | 'advanced' | 'completed'. */

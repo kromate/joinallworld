@@ -17,11 +17,18 @@ import { init, captureException, captureMessage, addBreadcrumb, setUser, withSco
 import { scrubEvent, scrubProps, stripUrl, isUuid, BREADCRUMB_CATEGORIES } from './scrub.js';
 
 /**
- * @param {{ dsn: string, release?: string, env?: string, replayOnError?: boolean, userId?: string | null, window: Window }} options
+ * @param {{ dsn: string, release?: string, env?: string, replayOnError?: boolean, userId?: string | null, window: Window, typed?: () => string[] }} options
+ *   typed: what the player is known to have typed (the nickname); the contents of every text field on the page are added here
  * @returns {Promise<{ capture(error: unknown, context?: object): void, crumb(item: object): void, user(id: string | null): void }>}
  */
-export async function startSentry({ dsn, release, env, replayOnError = false, userId = null, window: win }) {
+export async function startSentry({ dsn, release, env, replayOnError = false, userId = null, window: win, typed = () => [] }) {
   let user = isUuid(userId) ? userId : null;
+  /** The player's own words, so an error message that repeats them (unquoted) is still sent without them. */
+  const words = () => {
+    const found = [];
+    try { found.push(...typed()); for (const field of win.document.querySelectorAll('input, textarea')) if (typeof field.value === 'string') found.push(field.value, field.value.trim()); } catch { /* no document */ }
+    return found;
+  };
   const integrations = [globalHandlersIntegration(), linkedErrorsIntegration(), dedupeIntegration()];
   if (replayOnError) {
     try { integrations.push((await import('./sentry-replay.js')).replay()); } catch { /* replay could not load: errors are still reported */ }
@@ -32,7 +39,7 @@ export async function startSentry({ dsn, release, env, replayOnError = false, us
     sendDefaultPii: false, sendClientReports: false, attachStacktrace: true, maxBreadcrumbs: 30,
     replaysSessionSampleRate: 0, replaysOnErrorSampleRate: replayOnError ? 1 : 0,
     beforeBreadcrumb: (crumb) => (BREADCRUMB_CATEGORIES.includes(crumb?.category) ? { category: crumb.category, timestamp: crumb.timestamp, data: scrubProps(crumb.data) } : null),
-    beforeSend: (event) => scrubEvent({ ...event, request: { url: stripUrl(win.location.href), headers: { 'User-Agent': win.navigator.userAgent } } }, { userId: user }),
+    beforeSend: (event) => scrubEvent({ ...event, request: { url: stripUrl(win.location.href), headers: { 'User-Agent': win.navigator.userAgent } } }, { userId: user, typed: words() }),
   });
   if (user) setUser({ id: user });
   return {

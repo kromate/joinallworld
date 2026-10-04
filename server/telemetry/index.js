@@ -26,7 +26,7 @@
 import { readTelemetryConfig, publicConfig, TRACE_SAMPLE_RATE } from './config.js';
 import { createTransport, errorEvent, eventId, spanId } from './transport.js';
 import { routeEvents, replyEvents, createCoPresence, createVoice } from './instrument.js';
-import { scrubProps, isEventName, isUuid } from '../../src/telemetry/scrub.js';
+import { scrubProps, isEventName, isUuid, stringsOf } from '../../src/telemetry/scrub.js';
 import { checkProps } from '../../src/telemetry/events.js';
 import { durationBucket } from '../../src/telemetry/policy.js';
 
@@ -75,10 +75,12 @@ export function createServerTelemetry({ env = {}, buildId, fetch: request, now =
 
   const captureError = safe((error, context = {}) => {
     if (!errorsOn) return;
-    const { level, publicId, ...tags } = context && typeof context === 'object' ? context : {};
+    // `sent`: what the player sent with the failing request (a body, a socket message). It is never
+    // reported; it is only used to take the player's own words out of the error message.
+    const { level, publicId, sent, ...tags } = context && typeof context === 'object' ? context : {};
     const event = errorEvent(error, { ...base(), level: typeof level === 'string' ? level : 'error', tags: scrubProps(tags) });
     const key = `${event.exception?.values?.[0]?.type ?? 'message'}|${String(event.exception?.values?.[0]?.value ?? event.message).slice(0, 80)}|${tags.route ?? ''}`;
-    if (allowReport(key)) transport.error(event, isUuid(publicId) ? publicId : null);
+    if (allowReport(key)) transport.error(event, isUuid(publicId) ? publicId : null, stringsOf(sent));
   });
   /** A named operational event (not an exception): 'server_started', 'store_write_failed'. */
   const captureMessage = safe((name, level = 'info', tags = {}) => {
@@ -121,11 +123,11 @@ export function createServerTelemetry({ env = {}, buildId, fetch: request, now =
       }
     }),
     /** An API request failed. Known refusals (4xx with a code) are not errors; 5xx and unknown throws are. */
-    httpFailed: safe((error, { method, route, status, code, action, publicId }) => {
+    httpFailed: safe((error, { method, route, status, code, body, publicId }) => {
       if (!errorsOn || status < 500) return;
-      const tags = { route: `${method} ${route || 'unmatched'}`, status, ...(code ? { result_code: code } : {}), ...(action?.type ? { action_type: action.type } : {}) };
+      const tags = { route: `${method} ${route || 'unmatched'}`, status, ...(code ? { result_code: code } : {}), ...(typeof body?.type === 'string' ? { action_type: body.type } : {}) };
       if (code === 'storage_unavailable') captureMessage('store_write_failed', 'error', tags);
-      else captureError(error instanceof Error ? error : new Error(`HTTP ${status} ${code || 'internal_error'}`), { ...tags, publicId });
+      else captureError(error instanceof Error ? error : new Error(`HTTP ${status} ${code || 'internal_error'}`), { ...tags, publicId, sent: body });
     }),
     /** A socket message was handled without an error. */
     socketIn: safe((ws, message) => {
@@ -145,10 +147,10 @@ export function createServerTelemetry({ env = {}, buildId, fetch: request, now =
       } else record(replyEvents(id, message));
     }),
     /** A socket message failed: a machine code (a refusal) is counted, anything else is an error report. */
-    socketFailed: safe((ws, type, text, coded, error) => {
-      const kind = typeof type === 'string' && /^[a-z][a-z0-9-]{1,39}$/.test(type) ? type : 'unknown';
+    socketFailed: safe((ws, message, text, coded, error) => {
+      const type = message?.type, kind = typeof type === 'string' && /^[a-z][a-z0-9-]{1,39}$/.test(type) ? type : 'unknown';
       if (coded) track(ws?.session?.id, 'ws_error', { message_type: kind, code: text });
-      else captureError(error instanceof Error ? error : new Error('Socket message failed'), { route: `WS ${kind}`, publicId: ws?.session?.id });
+      else captureError(error instanceof Error ? error : new Error('Socket message failed'), { route: `WS ${kind}`, publicId: ws?.session?.id, sent: message });
     }),
     socketClosed: safe((ws) => { if (analyticsOn) record(voice.leave(ws)); }),
     /** Who is in which room right now → co-presence minutes and house visits. Called on every heartbeat. */

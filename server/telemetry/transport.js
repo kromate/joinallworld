@@ -119,7 +119,7 @@ export function createTransport({ posthog = null, sentry = null, fetch: request 
     /** One PostHog event: { event, distinct_id, properties, timestamp }. */
     analytics(item) { if (posthog) add(analytics, ANALYTICS_QUEUE_LIMIT, item); },
     /** One Sentry event or transaction. It is scrubbed here, so nothing unscrubbed is ever queued. */
-    error(event, userId) { if (!sentry) return; const safe = scrubEvent(event, { userId }); if (safe) add(errors, ERROR_QUEUE_LIMIT, safe); },
+    error(event, userId, typed) { if (!sentry) return; const safe = scrubEvent(event, { userId, typed }); if (safe) add(errors, ERROR_QUEUE_LIMIT, safe); },
     flush,
     async close() { if (timer !== null) { cancel(timer); timer = null; } await flush(); if (analytics.length || errors.length) await flush(); },
   };

@@ -44,7 +44,8 @@ export function replyEvents(selfId, message) {
   switch (message?.type) {
     case 'friend-result': return socialEvents('friend-answer', selfId, message);
     case 'invite-result': return socialEvents(message.op === 'answer' ? 'knock-answer' : 'knock', selfId, message);
-    case 'dm-sent': return socialEvents('message', selfId, message);
+    // 'dm-sent' is only ever sent for a stored message (a failure is 'dm-failed'), so it carries no `ok`.
+    case 'dm-sent': return socialEvents('message', selfId, { ok: true, duplicate: message.duplicate, conv: message.conv });
     default: return [];
   }
 }

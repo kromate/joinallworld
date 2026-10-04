@@ -95,6 +95,28 @@ export function scrubProps(props, { allow = null } = {}) {
   return out;
 }
 
+/**
+ * The strings inside a request body or socket message (what a player sent), so they can be taken
+ * out of an error message that quotes them. Protocol words (`type`, city and venue ids) are left.
+ * @returns {string[]}
+ */
+export function stringsOf(value, depth = 0, out = []) {
+  if (out.length >= 50 || depth > 4) return out;
+  if (typeof value === 'string') { if (value.trim().length >= 3) out.push(value, value.trim()); }
+  else if (value && typeof value === 'object') {
+    try { for (const [key, inner] of Object.entries(value)) if (!(depth === 0 && ['type', 'cityId', 'venueId'].includes(key))) stringsOf(inner, depth + 1, out); } catch { /* unreadable: nothing to add */ }
+  }
+  return out;
+}
+
+/** `text` with every one of `values` (things a player typed) replaced by [text]. Longest first, so a part never survives its whole. */
+export function redact(text, values) {
+  if (typeof text !== 'string' || !Array.isArray(values) || !values.length) return text;
+  let out = text;
+  for (const value of [...new Set(values)].filter((item) => typeof item === 'string' && item.length >= 3).sort((a, b) => b.length - a.length).slice(0, 100)) out = out.split(value).join('[text]');
+  return out;
+}
+
 /** An event name as the catalogue writes them: lower snake case (PostHog's own `$pageview` is the one exception). */
 export const isEventName = (name) => typeof name === 'string' && (/^[a-z][a-z0-9_]{2,47}$/.test(name) || name === '$pageview');
 
@@ -122,10 +144,13 @@ function scrubFrame(frame) {
  * sent at all (browser-extension noise, or something that is not an event).
  * `userId` is the session's PUBLIC id as the telemetry code knows it — an id found on the event itself is not trusted.
  * @param {any} event
- * @param {{ userId?: string | null }} [options]
+ * `typed` is what the player is known to have typed (a request body's strings, the nickname, the
+ * contents of input fields): removed from every message before the general rules apply.
+ * @param {{ userId?: string | null, typed?: string[] }} [options]
  * @returns {object | null}
  */
-export function scrubEvent(event, { userId = null } = {}) {
+export function scrubEvent(event, { userId = null, typed = [] } = {}) {
+  const say = (value, limit) => scrubText(redact(typeof value === 'string' ? value : String(value ?? ''), typed), limit);
   if (!event || typeof event !== 'object') return null;
   const values = Array.isArray(event.exception?.values) ? event.exception.values.slice(0, 5) : [];
   const frames = values.flatMap((value) => (Array.isArray(value?.stacktrace?.frames) ? value.stacktrace.frames : []));
@@ -135,12 +160,12 @@ export function scrubEvent(event, { userId = null } = {}) {
   for (const key of ['timestamp', 'start_timestamp']) if (Number.isFinite(event[key]) || typeof event[key] === 'string') out[key] = event[key];
   if (LEVELS.includes(event.level)) out.level = event.level;
   if (typeof event.transaction === 'string') out.transaction = scrubText(stripUrl(event.transaction), 120);
-  if (typeof event.message === 'string') out.message = scrubText(event.message);
-  else if (event.message && typeof event.message === 'object' && typeof event.message.formatted === 'string') out.message = scrubText(event.message.formatted);
+  if (typeof event.message === 'string') out.message = say(event.message);
+  else if (event.message && typeof event.message === 'object' && typeof event.message.formatted === 'string') out.message = say(event.message.formatted);
   if (Array.isArray(event.fingerprint)) out.fingerprint = event.fingerprint.slice(0, 6).map((part) => scrubText(part, 80));
   if (values.length) {
     out.exception = { values: values.map((value) => ({
-      type: scrubText(value?.type ?? 'Error', 80), value: scrubText(value?.value ?? ''),
+      type: scrubText(value?.type ?? 'Error', 80), value: say(value?.value ?? ''),
       ...(value?.mechanism && typeof value.mechanism === 'object' ? { mechanism: { type: scrubText(value.mechanism.type ?? 'generic', 40), handled: value.mechanism.handled !== false } } : {}),
       ...(Array.isArray(value?.stacktrace?.frames) ? { stacktrace: { frames: value.stacktrace.frames.slice(-50).map(scrubFrame).filter(Boolean) } } : {}),
     })) };

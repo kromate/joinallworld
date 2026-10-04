@@ -242,7 +242,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const error = thrown && typeof thrown === 'object' ? thrown : { message: thrown };
       const known = Number.isInteger(error.status) && typeof error.code === 'string';
       if (!known && error.code !== 'ENOENT') log(`Request failed: ${firstLine(error)}`);
-      telemetry.httpFailed(thrown, { method: req.method, route: at?.key, status: known ? error.status : error.code === 'ENOENT' ? 404 : 500, code: known ? error.code : undefined, action: { type: at?.request.body?.type }, publicId: at?.request.publicId });
+      telemetry.httpFailed(thrown, { method: req.method, route: at?.key, status: known ? error.status : error.code === 'ENOENT' ? 404 : 500, code: known ? error.code : undefined, body: at?.request.body, publicId: at?.request.publicId });
       reply(res, known ? error.status : error.code === 'ENOENT' ? 404 : 500, { error: known ? error.code : error.code === 'ENOENT' ? 'build_required' : 'internal_error',
         ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}) });
     }
@@ -427,7 +427,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         const text = firstLine(thrown);
         const coded = /^[a-z][a-z0-9_]{1,63}$/.test(text);
         if (!coded) log(`Socket message failed: ${text}`);
-        telemetry.socketFailed(ws, message?.type, text, coded, thrown);
+        telemetry.socketFailed(ws, message, text, coded, thrown);
         const error = coded ? thrown : { message: 'internal_error' };
         send(ws, { type: 'error', code: error.message, error: error.message, ...(typeof error.reason === 'string' ? { reason: error.reason, message: error.reason } : {}), ...(message?.type === 'signal' && typeof message.to === 'string' && uuid.test(message.to) && message.to !== ws.secret ? { to: message.to } : {}), ...(message?.type === 'chat' && typeof message.clientId === 'string' && message.clientId.length <= 80 ? { clientId: message.clientId } : {}) }); }
       }).catch(() => ws.close(1011, 'Server error'));

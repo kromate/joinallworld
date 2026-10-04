@@ -46,6 +46,8 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   /** Analytics events and errors waiting for their SDK (or for the player's answer). */
   const events = [], errors = [], crumbs = [];
   let user = null, traits = {}, under18 = false;
+  /** The player's nickname, kept in memory for one purpose: taking it OUT of error messages. It is never sent. */
+  let nickname = null;
   const groups = {};
   /** What is remembered on this device. Only `consent` is written before the player has accepted. */
   let saved = { consent: null, at: 0, firstSeen: null, lastDay: null, day2: false, device: newMemo(), lives: {} };
@@ -103,7 +105,7 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
   function loadSentry() {
     if (sentry || !plan.sentry) return;
     loaders.sentry().then(async (module) => {
-      sentry = await module.startSentry({ ...config.sentry, release: config.release, env: config.env, userId: user, window: win });
+      sentry = await module.startSentry({ ...config.sentry, release: config.release, env: config.env, userId: user, window: win, typed: () => [nickname] });
       // The page's own early buffer (index.html) stops here: from now on the SDK listens itself.
       const early = win.__jawErrors || [];
       stopEarlyBuffer();
@@ -231,6 +233,7 @@ export function createCore({ config, window: win = globalThis.window, now: wall 
     state: safe((next, previous, client) => {
       const id = client?.session?.id;
       if (client && Boolean(client.storage) !== lastStorage) { lastStorage = Boolean(client.storage); emit('storage_state', { state: lastStorage ? 'failing' : 'recovered' }); crumb('storage', { failing: lastStorage }); }
+      if (typeof next?.name === 'string') nickname = next.name;
       if (!id || next === previous) return;
       const first = baseline || lastCity !== client.cityId;
       baseline = false; lastCity = client.cityId;

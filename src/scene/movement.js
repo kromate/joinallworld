@@ -357,7 +357,11 @@ export function createWalker({ speed = WALK_SPEED, jogSpeed = JOG_SPEED } = {}) 
       if (Number.isFinite(walker.heading)) {
         const delta = turnTowards(walker.ry, walker.heading);
         if (snap || Math.abs(delta) < 0.02) { walker.ry = walker.heading; turning = false; if (!walker.moving) walker.heading = NaN; }
-        else { walker.ry += Math.sign(delta) * Math.min(Math.abs(delta), TURN_RATE * dt); if (!walker.moving) turning = true; }
+        else {
+          walker.ry += Math.sign(delta) * Math.min(Math.abs(delta), TURN_RATE * dt);
+          if (walker.ry > Math.PI) walker.ry -= Math.PI * 2; else if (walker.ry < -Math.PI) walker.ry += Math.PI * 2;
+          if (!walker.moving) turning = true;
+        }
       }
       return walker.moving || turning;
     },

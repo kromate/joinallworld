@@ -285,6 +285,25 @@ test('the avatar rig is feature-detected: today’s characters.js flips two pose
   const entry = buildVenueScene(kit, { id: 'park', label: 'Park', scene: { kind: 'park' } });
   const built = entry.walk.avatar.children[0];
   assert.equal(rigOf(built), built.userData.parts || typeof built.userData.stride === 'function' ? rigOf(built) : null);
+  // With characters.js's rig: one figure, posed by its parts; a step turns the legs and builds nothing.
+  if (rigOf(built)) {
+    const { legL, legR, armL } = built.userData.parts;
+    assert.equal(entry.walk.avatar.children.length, 1, 'one rigged figure, no second walking figure');
+    assert.ok(built.userData.triangles > 900, `medium detail (${built.userData.triangles} triangles)`);
+    const geometries = () => { let count = 0; entry.walk.avatar.traverse((node) => { if (node.geometry) count += 1; }); return count; };
+    const before = geometries(), rest = [legL.rotation.x, legR.rotation.x, armL.rotation.x];
+    entry.walk.gait(true, Math.PI / 2);
+    const contact = [legL.rotation.x, legR.rotation.x, armL.rotation.x];
+    assert.ok(Math.abs(contact[0] - contact[1]) > 0.4, `the legs are apart at the contact (${contact[0].toFixed(2)}, ${contact[1].toFixed(2)})`);
+    entry.walk.gait(false, Math.PI * 1.5);
+    assert.ok(Math.sign(legL.rotation.x - legR.rotation.x) === -Math.sign(contact[0] - contact[1]), 'half a cycle later the other leg leads');
+    entry.walk.gait(true, Math.PI / 2, true);
+    assert.notDeepEqual([legL.rotation.x, legR.rotation.x], [contact[0], contact[1]], 'a jog is a different stride');
+    entry.walk.pose('stand');
+    assert.deepEqual([legL.rotation.x, legR.rotation.x, armL.rotation.x], rest, 'at rest the limbs are back');
+    assert.equal(geometries(), before, 'nothing was built');
+    assert.equal(entry.walk.avatar.children.filter((child) => child.visible).length, 1);
+  }
   // Without a rig the two prebuilt figures alternate.
   if (!rigOf(built)) {
     entry.walk.gait(true, 0); const walking = entry.walk.avatar.children.find((child) => child.visible);

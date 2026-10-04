@@ -47,7 +47,7 @@
 import { FURNITURE, KINDS } from '../game/content/furniture.js';
 import { createBatch, sceneMaterials, releaseObjects } from './build.js';
 import { drawAvatar, buildAvatar, POSES } from './characters.js';
-import { PLAYER_DETAIL, rigOf } from './avatar-rig.js';
+import { playerOptions, rigOf } from './avatar-rig.js';
 import { createWalkGrid } from './movement.js';
 import { HOUSES, DEFAULT_HOUSE } from '../game/content/housing.js';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.js';
@@ -326,7 +326,7 @@ export function buildHomeScene(kit) {
     if (!entry) {
       const state = lastState;
       // The player's own figure is seen close up: the best detail characters.js offers a scene (avatar-rig.js).
-      entry = buildAvatar(kit, who.look ?? state?.onboarding?.look ?? null, { pose, seed: who.seed, scale: tile * AVATAR_SCALE, marker: 'crown', detail: PLAYER_DETAIL });
+      entry = buildAvatar(kit, who.look ?? state?.onboarding?.look ?? null, { pose, seed: who.seed, scale: tile * AVATAR_SCALE, marker: 'crown', ...playerOptions(pose) });
       entry.visible = false;
       avatar.add(entry);
       figures.set(pose, entry);
@@ -389,7 +389,7 @@ export function buildHomeScene(kit) {
     let changed = false;
     refreshGrid(state);
     const dress = JSON.stringify([tile, who.look ?? state?.onboarding?.look ?? null, who.seed]);
-    if (dress !== dressKey) { dressKey = dress; clearFigures(); figure('stand'); figure('walk'); if (driven) { show(shownPose); moveAvatar(avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y); } changed = true; }
+    if (dress !== dressKey) { dressKey = dress; clearFigures(); if (!rigOf(figure('stand'))) figure('walk'); if (driven) { show(shownPose); moveAvatar(avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y); } changed = true; }
     restAt = { spot: state?.spot ?? null, x: along(mine.x), y: 0.03, z: along(mine.y), ry: mine.ry, pose, busy: Boolean(active) && !leaving && !who.pose, leaving, fixed: Boolean(who.pose) };
     const rest = JSON.stringify([grid, mine, pose, who.name]);
     if (rest !== restKey) {
@@ -543,7 +543,7 @@ export function buildHomeScene(kit) {
       move: moveAvatar,
       pose: (name) => { rigOf(figures.get('stand'))?.rest(); return show(POSES.includes(name) ? name : 'stand'); },
       // With a rigged figure the limbs swing with `phase`; without one the two figures alternate (avatar-rig.js).
-      gait(step, phase = 0) { const rig = rigOf(figures.get('stand')); if (rig) { rig.stride(phase, 1); return show('stand'); } return show(step ? 'walk' : 'stand'); },
+      gait(step, phase = 0, jog = false) { const rig = rigOf(figures.get('stand')); if (rig) { rig.stride(phase, 1, jog); return show('stand'); } return show(step ? 'walk' : 'stand'); },
       heightAt: () => 0.03,
       near: () => false,
       goal(x, z) {

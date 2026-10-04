@@ -65,7 +65,7 @@
  */
 import { createBatch, kitResources, releaseObjects, GLOW } from './build.js';
 import { buildAvatar, drawCrowd } from './characters.js';
-import { PLAYER_DETAIL, rigOf } from './avatar-rig.js';
+import { playerOptions, rigOf } from './avatar-rig.js';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.js';
 import { spotMarker } from './props.js';
 import { lagosTime } from '../game/clock.js';
@@ -371,7 +371,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     let entry = figures.get(key);
     if (!entry) {
       // The player's own figure is seen close up: the best detail characters.js offers a scene (avatar-rig.js).
-      entry = buildAvatar(kit, view.look, { pose, seat, seed: view.seed, marker: 'crown', detail: PLAYER_DETAIL });
+      entry = buildAvatar(kit, view.look, { pose, seat, seed: view.seed, marker: 'crown', ...playerOptions(pose) });
       entry.visible = false;
       avatar.add(entry);
       figures.set(key, entry);
@@ -392,7 +392,7 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
     shownFigure = null; standFigure = null; strideFigure = null;
   }
   /** The two figures of the walk cycle, built ahead so that a step only switches which one is visible. */
-  function prebuild() { standFigure = figure('stand'); strideFigure = figure('walk'); }
+  function prebuild() { standFigure = figure('stand'); strideFigure = rigOf(standFigure) ? null : figure('walk'); }
   /** Move the avatar (transform only) and its name tag. */
   function moveAvatar(x, y, z, ry) {
     avatar.position.set(x, y, z);
@@ -606,9 +606,9 @@ function createEntry(kit, venue, def, kind, defaultVariant) {
      * standing figure's limbs swing with `phase`; without one the walking and the standing figure
      * alternate, one visible at a time. Either way no geometry is built.
      */
-    gait(step, phase = 0) {
+    gait(step, phase = 0, jog = false) {
       const rig = rigOf(standFigure);
-      if (rig) { rig.stride(phase, 1); return showFigure(standFigure); }
+      if (rig) { rig.stride(phase, 1, jog); return showFigure(standFigure); }
       return showFigure(step ? strideFigure : standFigure);
     },
     /**

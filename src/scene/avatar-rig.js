@@ -9,6 +9,12 @@
  *                      'medium' the local player's figure is built with `detail: 'medium'`;
  *                      otherwise with 'low', exactly as before. ('high' is the creator's preview
  *                      model — several thousand triangles per pose — and is not used in a scene.)
+ *   poseAvatar         the exported poseAvatar(avatar, { pose, stride }). When it exists (with a
+ *                      'medium' level) the standing figure is built ONCE as a rig — buildAvatar(kit,
+ *                      look, { rig: true, detail: 'medium', marker: 'crown' }) — and a step calls
+ *                      poseAvatar(figure, { pose: 'walk' | 'jog', stride: 0…1 }), which only turns
+ *                      its parts; no second walking figure is built. Resting poses other than
+ *                      'stand' (sit, work, dance …) are still built as plain figures when needed.
  *   userData.stride    optional: a function (phase, amount) on the group buildAvatar returns that
  *                      poses the limbs for a walk cycle. phase is in radians (2π = two steps),
  *                      amount is 0…1 (0 = the built pose). If present it is simply called.
@@ -27,6 +33,11 @@ import * as characters from './characters.js';
 /** The detail level a scene builds the local player's figure with. */
 export function pickDetail(details) { return Array.isArray(details) && details.includes('medium') ? 'medium' : 'low'; }
 export const PLAYER_DETAIL = pickDetail(characters.DETAILS);
+/** True when characters.js can build and pose a rig: the scene then keeps one rigged figure instead of two poses. */
+export const PLAYER_RIG = typeof characters.poseAvatar === 'function' && PLAYER_DETAIL !== 'low';
+/** The detail options a scene passes to buildAvatar for the player's figure in `pose`. */
+export const playerOptions = (pose = 'stand') => (PLAYER_RIG && pose === 'stand' ? { detail: PLAYER_DETAIL, rig: true } : { detail: PLAYER_DETAIL });
+const TURN = Math.PI * 2;
 
 const LEG_SWING = 0.62, ARM_SWING = 0.42;
 const turnable = (part) => (part && typeof part === 'object' && part.rotation && typeof part.rotation === 'object' ? part : null);
@@ -44,7 +55,13 @@ export function rigOf(figure) {
   if (!data || typeof data !== 'object') return null;
   if (data.jawRig !== undefined) return data.jawRig;
   let rig = null;
-  if (typeof data.stride === 'function') rig = { stride: (phase, amount = 1) => { data.stride(phase, amount); }, rest: () => { data.stride(0, 0); } };
+  if (PLAYER_RIG && data.parts?.body?.position && data.parts.torso?.rotation && data.parts.legL && data.parts.legR && data.parts.armL && data.parts.armR) {
+    // characters.js poses its own rig: one full cycle is stride 0 … 1 (phase 2π).
+    rig = {
+      stride: (phase, amount = 1, jog = false) => { if (amount > 0) characters.poseAvatar(figure, { pose: jog ? 'jog' : 'walk', stride: (((phase / TURN) % 1) + 1) % 1 }); else characters.poseAvatar(figure, { pose: 'stand' }); },
+      rest: () => { characters.poseAvatar(figure, { pose: 'stand' }); },
+    };
+  } else if (typeof data.stride === 'function') rig = { stride: (phase, amount = 1) => { data.stride(phase, amount); }, rest: () => { data.stride(0, 0); } };
   else if (data.parts && typeof data.parts === 'object') {
     const parts = data.parts;
     const legL = limb(parts, ['legL', 'leftLeg', 'legLeft'], 'legs', 0), legR = limb(parts, ['legR', 'rightLeg', 'legRight'], 'legs', 1);

@@ -4,103 +4,360 @@
  *
  * SCENES[kind] = (kit, venue) => ({
  *   group,                      // THREE.Group holding everything for this venue
- *   background,                 // clear colour
- *   camera?: { landscape: [x, y, z], portrait: [x, y, z] },   // defaults below
- *   update?(state) → boolean,   // optional: reflect game state; return true if anything changed
+ *   background,                 // clear colour for the current time of day
+ *   camera: { landscape: [x, y, z], portrait: [x, y, z] },
+ *   update(state) → boolean,    // reflect game state; true if anything changed (host draws one frame)
+ *   ...the extensions below
  * })
- * The host (src/venue-world.js) builds a scene the first time its venue is shown, caches it,
- * and draws it only on demand. Scenes are static: no requestAnimationFrame, timers or
- * per-frame work. If something must move, change it inside update() and return true — the
- * host then draws exactly one frame. Unknown kinds fall back to SCENES.generic.
+ * Kinds: park, buka, hub, club, office, market, gym, mall, beach, hospital, salon, rooftop,
+ * police, worship, radio, polling, viewing, shrine, walk, statehouse — plus `library` (the
+ * speakeasy variant of club) and `generic`, the fallback for unknown kinds. `home` belongs to
+ * src/scene/home-scene.js.
+ *
+ * venue.scene options: { kind, variant, palette (accent colour), time ('day' | 'dusk' | 'night',
+ * fixes the lighting; otherwise it follows Lagos time from state.t), spots: [{ id, label }]
+ * (defaults to the venue's own spots), look, seed }.
+ *
+ * BATTERY RULE. Scenes are static: no requestAnimationFrame, timers or per-frame work, and a
+ * scene never renders by itself. A venue is baked into a few merged meshes (src/scene/build.js);
+ * state changes rebuild only the small "actors" batch (your avatar, the crowd, the spot ring)
+ * and report true so the host draws exactly one frame. Hiding a scene (group.visible = false,
+ * which is what the host does on a location change) frees its geometry; showing it rebuilds it.
+ *
+ * Extensions on the returned entry (all optional for the host):
+ *   kind, mood                  resolved kind and lighting mood ('outdoor' | 'indoor' | 'club')
+ *   anchors[spotId] → { x, y, z, ry, landmark }   where a spot is in the scene; also keyed by landmark
+ *   time                        current 'day' | 'dusk' | 'night'
+ *   lighting()                  the preset in use (LIGHTING[mood][time])
+ *   setTime(time) / setSpot(id) / setPlayer({ look, seed, pose, name }) → boolean (changed)
+ *   setCrowd(people) → tags     other players and NPCs; see buildCrowd in characters.js
+ *   tags()                      name-tag data for you and the crowd, for the DOM layer
+ *   stats()                     { triangles, meshes, drawCalls, lights, geometries }
+ *   dispose()                   free everything and detach from the parent
  */
-import { person } from './characters.js';
-import { tree, lamp } from './props.js';
+import { createBatch, kitResources, releaseObjects, GLOW } from './build.js';
+import { drawAvatar, drawCrowd } from './characters.js';
+import { spotMarker } from './props.js';
+import { lagosTime } from '../game/clock.js';
+import * as outdoor from './venues-outdoor.js';
+import * as social from './venues-social.js';
+import * as work from './venues-work.js';
+import * as civic from './venues-civic.js';
 
 export const DEFAULT_CAMERA = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
+const SCENE_CAMERA = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
+export const TIMES = Object.freeze(['day', 'dusk', 'night']);
+export const MAX_CROWD = 12;
 
-function park(kit) {
-  const { THREE, box, round, sphere, mesh, crownGeometry } = kit;
-  const group = new THREE.Group();
-  box(0, -0.28, 0, 42, 0.5, 38, '#3e5141', group);
-  box(1, 0.015, 2, 14, 0.05, 24, '#56624a', group);
-  round(5, 0.35, -6, 4.5, 0.7, '#796a5a', group);
-  round(5, 0.75, -6, 4.25, 0.15, '#917c64', group);
-  for (const x of [1.5, 8.5]) {
-    round(x, 2.6, -9, 0.07, 5.2, '#293e36', group);
-    box(x, 5.15, -9, 0.55, 0.18, 0.6, '#ffd79a', group, true);
+/**
+ * Day / dusk / night presets per mood. sky: [horizon, zenith]; hemi: [sky, ground, intensity];
+ * sun: [colour, intensity, position]; glow: strength of lit surfaces; lamps: point-light scale.
+ */
+export const LIGHTING = Object.freeze({
+  outdoor: {
+    day: { sky: ['#bfe3f2', '#6fb4e6'], hemi: ['#e6f3ff', '#7d916a', 2.2], sun: ['#fff2d4', 2.7, [-10, 26, 12]], glow: 0.6, lamps: 0.1 },
+    dusk: { sky: ['#eeaa82', '#5d528f'], hemi: ['#f0c4ac', '#4d4863', 1.4], sun: ['#ff9a5c', 1.9, [-22, 11, 7]], glow: 1.05, lamps: 0.8 },
+    night: { sky: ['#1c2742', '#0b1020'], hemi: ['#8ea6d2', '#1a2530', 0.8], sun: ['#9fb9ea', 0.75, [-12, 25, 8]], glow: 1.3, lamps: 1.6 },
+  },
+  indoor: {
+    day: { sky: ['#cfe6ef', '#8cc0e2'], hemi: ['#fff8ee', '#c4b9aa', 2.5], sun: ['#fff1d8', 2.1, [-8, 26, 14]], glow: 0.85, lamps: 0.45 },
+    dusk: { sky: ['#e3a37c', '#6f5f95'], hemi: ['#ffe4c7', '#9a8a7c', 1.95], sun: ['#ffb57c', 1.4, [-18, 14, 10]], glow: 1.05, lamps: 0.85 },
+    night: { sky: ['#1d2740', '#0e1324'], hemi: ['#ecdfc9', '#6a6270', 1.6], sun: ['#c9d3ee', 0.9, [-12, 25, 8]], glow: 1.2, lamps: 1.1 },
+  },
+  club: {
+    day: { sky: ['#1d1830', '#120f1f'], hemi: ['#a897e0', '#221a2e', 0.95], sun: ['#c0b0ff', 0.7, [-10, 26, 10]], glow: 1.2, lamps: 1.05 },
+    dusk: { sky: ['#1b162c', '#110e1d'], hemi: ['#9d89d8', '#1f1829', 0.85], sun: ['#b8a4ff', 0.6, [-10, 26, 10]], glow: 1.3, lamps: 1.15 },
+    night: { sky: ['#17132a', '#0d0a18'], hemi: ['#927fd0', '#1c1626', 0.8], sun: ['#b8a4ff', 0.55, [-10, 26, 10]], glow: 1.35, lamps: 1.2 },
+  },
+});
+
+/** Lagos time of day from server ms: day 06:30–17:30, dusk for the hour either side of night. */
+export function timeOfDay(ms) {
+  const { minuteOfDay } = lagosTime(ms);
+  if (minuteOfDay >= 390 && minuteOfDay < 1050) return 'day';
+  if ((minuteOfDay >= 330 && minuteOfDay < 390) || (minuteOfDay >= 1050 && minuteOfDay < 1170)) return 'dusk';
+  return 'night';
+}
+export const lightingFor = (mood, time) => (LIGHTING[mood] || LIGHTING.outdoor)[TIMES.includes(time) ? time : 'day'];
+
+const DEFS = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES };
+/** Kinds that are another kind with a default variant. */
+const ALIASES = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };
+const VARIANT_BY_VENUE = { library: 'speakeasy', mosque: 'mosque', church: 'church' };
+export const KINDS = Object.freeze(Object.keys(DEFS).filter((kind) => kind !== 'generic'));
+
+// Host lights are borrowed while one of these scenes is showing and put back when it hides.
+const borrowed = new WeakMap();
+function hostLights(group) {
+  const scene = group.parent;
+  if (!scene) return null;
+  const hemi = scene.children.find((child) => child.isHemisphereLight), sun = scene.children.find((child) => child.isDirectionalLight);
+  return hemi && sun ? { scene, hemi, sun } : null;
+}
+function applyHostLighting(group, preset) {
+  const lights = hostLights(group);
+  if (!lights) return;
+  const { scene, hemi, sun } = lights;
+  if (!borrowed.has(scene)) {
+    borrowed.set(scene, { hemi: [hemi.color.clone(), hemi.groundColor.clone(), hemi.intensity], sun: [sun.color.clone(), sun.intensity, sun.position.clone()] });
   }
-  box(5, 4.4, -9, 7.2, 0.85, 0.14, '#32483e', group);
-  for (const [x, z, w] of [[3.8, -0.8, 7.8], [3.8, 2.4, 7.8], [-4.7, 4.2, 4]]) {
-    box(x, 0.65, z, w, 0.5, 0.9, '#8c9080', group);
-    box(x, 1, z - 0.45, w, 0.85, 0.2, '#999a8b', group);
-    for (const dx of [-w * 0.32, w * 0.32]) box(x + dx, 0.3, z, 0.5, 0.6, 0.65, '#747e72', group);
-  }
-  for (const [x, z, scale] of [[-9, -7, 1.15], [-11, 0, 1.2], [-9, 8, 1.35], [-4, -10, 0.95], [-13, 7, 0.9], [-5, 11, 1.05], [11, -11, 0.85]]) tree(kit, group, x, z, scale);
-  for (const [x, z] of [[-8, -3], [-7, 6], [11, 2]]) lamp(kit, group, x, z);
-  box(9, 0.14, 8, 5.2, 0.28, 4.2, '#898a78', group);
-  box(9, 1.5, 8, 4.3, 2.8, 2.5, '#aa8642', group);
-  box(9, 2.2, 6.72, 3.45, 1.2, 0.08, '#2c3631', group);
-  box(9, 1.6, 6.45, 4.6, 0.18, 0.7, '#ddba75', group);
-  box(9, 3.1, 7.6, 5.3, 0.23, 4, '#a54741', group);
-  box(9, 2.82, 5.7, 5.3, 0.38, 0.08, '#d6ad4f', group);
-  for (const x of [7.8, 8.6, 9.4, 10.2]) round(x, 1.94, 6.44, 0.075, 0.45, ['#8aab68', '#d4ad60'][Math.round(x) % 2], group);
-  const kioskLight = new THREE.PointLight('#ffd080', 20, 10, 1.4);
-  kioskLight.position.set(9, 2.4, 5.8);
-  group.add(kioskLight);
-  person(kit, group, 4, -6, '#d0a244', '#355eac', { y: 0.84, rotation: -0.4, gesture: true });
-  person(kit, group, 1.5, -0.65, '#4778c7', '#263f70', { seated: true, y: 0.91, rotation: 0.3 });
-  person(kit, group, 6, 2.55, '#d4a34a', '#3970ba', { seated: true, y: 0.91, rotation: -0.2, skin: '#6f4533' });
-  person(kit, group, -1, 5.8, '#c77594', '#d0c2ae', { rotation: -0.7, skin: '#83543b', gesture: true });
-  person(kit, group, -2.5, 7, '#496db5', '#806a4c', { rotation: 1.4 });
-  person(kit, group, -6.2, 3.2, '#9eaeb4', '#333740', { rotation: 0.7, skin: '#674631' });
-  person(kit, group, 6.8, 5.2, '#619489', '#293e54', { rotation: 2.2 });
-  person(kit, group, 10.2, 5, '#d2b976', '#589093', { rotation: -1.6, skin: '#68422f' });
-  return { group, background: '#182a25' };
+  hemi.color.set(preset.hemi[0]); hemi.groundColor.set(preset.hemi[1]); hemi.intensity = preset.hemi[2];
+  sun.color.set(preset.sun[0]); sun.intensity = preset.sun[1]; sun.position.set(...preset.sun[2]);
+}
+function restoreHostLighting(group) {
+  const lights = hostLights(group);
+  const saved = lights && borrowed.get(lights.scene);
+  if (!saved) return;
+  const { scene, hemi, sun } = lights;
+  hemi.color.copy(saved.hemi[0]); hemi.groundColor.copy(saved.hemi[1]); hemi.intensity = saved.hemi[2];
+  sun.color.copy(saved.sun[0]); sun.intensity = saved.sun[1]; sun.position.copy(saved.sun[2]);
+  borrowed.delete(scene);
 }
 
-function library(kit) {
-  const { THREE, box, round, sphere } = kit;
+function skyDome(kit, materials) {
+  const { THREE } = kit;
+  const geometry = new THREE.SphereGeometry(90, 16, 8);
+  geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count * 3), 3));
+  const mesh = new THREE.Mesh(geometry, materials.sky);
+  mesh.name = 'sky';
+  mesh.frustumCulled = false;
+  mesh.renderOrder = -1;
+  return mesh;
+}
+function paintSky(THREE, mesh, [horizon, zenith]) {
+  const low = new THREE.Color(horizon), high = new THREE.Color(zenith), mix = new THREE.Color();
+  const { position, color } = mesh.geometry.attributes;
+  for (let i = 0; i < position.count; i++) {
+    const t = Math.max(0, Math.min(1, (position.getY(i) + 30) / 75));
+    mix.copy(low).lerp(high, t);
+    color.setXYZ(i, mix.r, mix.g, mix.b);
+  }
+  color.needsUpdate = true;
+}
+
+/** Match venue spots to the landmarks a scene offers; leftovers take unused landmarks, then spare ground. */
+function resolveAnchors(landmarks, spots, spare) {
+  const anchors = {}, used = new Set();
+  const place = (landmark) => ({ x: landmark.x, y: landmark.y || 0, z: landmark.z, ry: landmark.ry || 0, landmark: landmark.key, act: landmark.act || null });
+  for (const landmark of landmarks) anchors[landmark.key] = place(landmark);
+  const pending = [];
+  for (const spot of spots) {
+    if (!spot || typeof spot.id !== 'string') continue;
+    const text = `${spot.id} ${spot.label || ''}`.toLowerCase();
+    const match = landmarks.find((landmark) => !used.has(landmark.key) && landmark.key === spot.id)
+      || landmarks.find((landmark) => !used.has(landmark.key) && landmark.match?.test(text));
+    if (match) { used.add(match.key); anchors[spot.id] = place(match); } else pending.push(spot);
+  }
+  let spareIndex = 0;
+  const fallback = () => {
+    const free = landmarks.find((landmark) => !used.has(landmark.key));
+    if (free) { used.add(free.key); return place(free); }
+    const [x, z] = spare[spareIndex % spare.length];
+    const ring = Math.floor(spareIndex / spare.length);
+    spareIndex += 1;
+    return { x: x + ring * 0.9, y: 0, z: z + ring * 0.9, ry: 0, landmark: null, act: null };
+  };
+  for (const spot of pending) anchors[spot.id] = fallback();
+  return { anchors, fallback };
+}
+
+function createEntry(kit, venue, def, kind, defaultVariant) {
+  const { THREE } = kit;
+  const shared = kitResources(kit);
+  if (!shared.materials.sky) shared.materials.sky = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, depthWrite: false, fog: false });
+  const options = venue?.scene && typeof venue.scene === 'object' ? venue.scene : {};
+  const spots = Array.isArray(options.spots) ? options.spots : Object.values(venue?.spots || {});
+  const context = {
+    kind, venue, spots,
+    variant: typeof options.variant === 'string' ? options.variant : defaultVariant || VARIANT_BY_VENUE[venue?.id] || null,
+    accent: typeof options.palette === 'string' && /^#[0-9a-f]{6}$/i.test(options.palette) ? options.palette : def.accent || '#e0a43a',
+    label: String(venue?.label || kind),
+  };
+  const mood = (typeof def.mood === 'function' ? def.mood(context) : def.mood) || 'outdoor';
   const group = new THREE.Group();
-  box(0, -0.2, 0, 28, 0.4, 26, '#333544', group);
-  box(0, 3, -10, 24, 6, 0.35, '#42445d', group);
-  box(-11.5, 3, -2, 0.35, 6, 16, '#3e4259', group);
-  for (const x of [-7, 0, 7]) {
-    box(x, 2.25, -9.5, 5.5, 4.5, 0.75, '#615354', group);
-    for (const y of [0.9, 2.1, 3.3]) {
-      box(x, y, -8.9, 5.3, 0.12, 0.8, '#a18c79', group);
-      for (let i = 0; i < 7; i++) box(x - 2.3 + i * 0.7, y + 0.44, -9, 0.4, 0.76, 0.43, ['#768f91', '#b6867c', '#9c986c', '#7b7394'][i % 4], group);
+  group.name = `venue:${kind}`;
+
+  const view = {
+    time: TIMES.includes(options.time) ? options.time : 'day',
+    fixedTime: TIMES.includes(options.time),
+    spot: null, look: options.look ?? null, lookKey: JSON.stringify(options.look ?? null), seed: options.seed ?? 'you', name: 'You',
+    pose: 'stand', poseFixed: false, crowd: [],
+  };
+  let layout = null, resolved = null, live = false, visible = true, disposed = false;
+  const staticObjects = [], actorObjects = [];
+  let staticTriangles = 0, actorTriangles = 0, crowdTags = [], selfTag = null, sky = null;
+
+  function drawStatic() {
+    const batch = createBatch(THREE);
+    layout = def.build(batch, context) || {};
+    layout.spots ||= [];
+    layout.crowd ||= [];
+    layout.spare ||= [[0, 4], [3, 5], [-3, 5], [5, 2], [-5, 2], [0, 7]];
+    if (!resolved) {
+      resolved = resolveAnchors(layout.spots, spots, layout.spare);
+      view.spot = spots.find((spot) => spot && resolved.anchors[spot.id])?.id ?? layout.spots[0]?.key ?? null;
     }
+    for (const landmark of layout.spots) spotMarker(batch, landmark.x, landmark.z, context.accent, landmark.y || 0);
+    return batch;
   }
-  for (const x of [-5.5, 5.5]) {
-    box(x, 0.7, 2, 5, 0.9, 2, '#776789', group);
-    box(x, 1.35, 1.2, 5, 1.3, 0.4, '#8d7ca0', group);
-    for (const side of [-1, 1]) box(x + side * 2.3, 1, 2, 0.4, 1.1, 2.1, '#665b7b', group);
-    round(x, 0.8, 5, 1.2, 0.15, '#a59b89', group);
-    round(x, 0.38, 5, 0.15, 0.7, '#665f6c', group);
+  function anchorFor(id) {
+    if (id == null) return null;
+    if (!resolved.anchors[id]) resolved.anchors[id] = resolved.fallback();
+    return resolved.anchors[id];
   }
-  round(0, 0.035, 0, 3.8, 0.06, '#4f6173', group);
-  sphere(0, 5.6, -1, 0.62, '#a5acbf', group);
-  const violet = new THREE.PointLight('#c794fa', 55, 22, 1.3);
-  violet.position.set(0, 5, 0);
-  group.add(violet);
-  lamp(kit, group, -9, 5);
-  person(kit, group, -5.6, 2.2, '#dfb665', '#475e7b', { seated: true, y: 0.93 });
-  person(kit, group, 5.5, 2.2, '#bd7e9b', '#454452', { seated: true, y: 0.93, rotation: -0.2 });
-  person(kit, group, 0, -3, '#657fb2', '#35445b', { rotation: 0.6, gesture: true });
-  return { group, background: '#252b3b' };
+  function placeCrowd(people) {
+    const slots = layout.crowd, base = resolved.anchors.people || { x: 0, z: 3 };
+    return people.slice(0, MAX_CROWD).map((person, index) => {
+      if (Number.isFinite(person.x) && Number.isFinite(person.z)) return person;
+      const at = person.spot != null && resolved.anchors[person.spot];
+      if (at) {
+        const turn = index * 2.4;
+        return { ...person, x: at.x + Math.sin(turn) * 1.3, y: at.y, z: at.z + Math.cos(turn) * 1.3, ry: person.ry ?? turn + Math.PI };
+      }
+      if (index < slots.length) { const [x, z, ry = 0, y = 0] = slots[index]; return { ...person, x, y, z, ry: person.ry ?? ry }; }
+      const turn = index * 2.4, radius = 1.6 + (index % 3) * 0.7;
+      return { ...person, x: base.x + Math.sin(turn) * radius, z: base.z + Math.cos(turn) * radius, ry: person.ry ?? turn + Math.PI };
+    });
+  }
+  function buildActors() {
+    releaseObjects(actorObjects);
+    const batch = createBatch(THREE);
+    const anchor = anchorFor(view.spot) || { x: 0, y: 0, z: 3, ry: 0 };
+    const acting = view.pose !== 'stand' && !view.poseFixed && anchor.act ? anchor.act : null;
+    const at = { x: acting?.x ?? anchor.x, y: acting?.y ?? anchor.y, z: acting?.z ?? anchor.z, ry: acting?.ry ?? anchor.ry };
+    const pose = view.poseFixed ? view.pose : acting ? acting.pose || 'work' : view.pose === 'stand' ? 'stand' : 'work';
+    batch.cyl(anchor.x, anchor.y + 0.12, anchor.z, 0.82, 0.1, context.accent, { seg: 16, open: true, ...GLOW });
+    batch.disc(anchor.x, anchor.y + 0.115, anchor.z, 0.7, '#fff3c4', { seg: 16, ...GLOW });
+    const drawn = drawAvatar(batch, view.look, { ...at, pose, seat: acting?.seat, seed: view.seed, marker: 'crown' });
+    selfTag = { id: 'self', name: view.name, kind: 'self', text: view.name, marker: 'crown', colour: '#ffd34d', position: { x: at.x, y: drawn.top, z: at.z } };
+    crowdTags = drawCrowd(batch, placeCrowd(view.crowd));
+    const built = batch.build(shared.materials);
+    actorTriangles = built.triangles;
+    for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
+  }
+  function applyLighting() {
+    const preset = lightingFor(mood, view.time);
+    shared.materials.glow.color.setScalar(preset.glow);
+    for (const object of staticObjects) if (object.isPointLight) object.intensity = object.userData.intensity * preset.lamps;
+    if (sky) paintSky(THREE, sky, preset.sky);
+    applyHostLighting(group, preset);
+  }
+  function realise() {
+    if (live || disposed) return;
+    const built = drawStatic().build(shared.materials);
+    staticTriangles = built.triangles;
+    for (const object of [...built.meshes, ...built.lights]) { group.add(object); staticObjects.push(object); }
+    sky = skyDome(kit, shared.materials);
+    group.add(sky);
+    staticObjects.push(sky);
+    live = true;
+    buildActors();
+    applyLighting();
+  }
+  function release() {
+    releaseObjects(staticObjects);
+    releaseObjects(actorObjects);
+    sky = null;
+    live = false;
+  }
+
+  // The host shows and hides a venue by toggling group.visible; that is the only signal a
+  // scene gets on a location change, so geometry is freed and rebuilt from it.
+  Object.defineProperty(group, 'visible', {
+    configurable: true, enumerable: true,
+    get: () => visible,
+    set(value) {
+      const next = !!value;
+      if (next === visible) return;
+      visible = next;
+      if (next) { realise(); applyLighting(); } else { restoreHostLighting(group); release(); }
+    },
+  });
+
+  const refresh = () => { if (live) buildActors(); return true; };
+  const entry = {
+    group, kind, mood,
+    camera: def.camera || SCENE_CAMERA,
+    get background() { return lightingFor(mood, view.time).sky[0]; },
+    get anchors() { return resolved.anchors; },
+    get time() { return view.time; },
+    get spot() { return view.spot; },
+    lighting: () => lightingFor(mood, view.time),
+    setTime(time) {
+      if (!TIMES.includes(time) || time === view.time) return false;
+      view.time = time;
+      if (live) applyLighting();
+      return true;
+    },
+    setSpot(id) {
+      if (typeof id !== 'string' || id === view.spot) return false;
+      anchorFor(id);
+      view.spot = id;
+      return refresh();
+    },
+    setPlayer({ look, seed, pose, name } = {}) {
+      let changed = false;
+      if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; changed = true; } }
+      if (seed !== undefined && seed !== view.seed) { view.seed = seed; changed = true; }
+      if (name !== undefined && name !== view.name) { view.name = String(name); changed = true; }
+      if (pose !== undefined) { const next = pose || 'stand', fixed = !!pose; if (next !== view.pose || fixed !== view.poseFixed) { view.pose = next; view.poseFixed = fixed; changed = true; } }
+      return changed ? refresh() : false;
+    },
+    setCrowd(people) {
+      view.crowd = Array.isArray(people) ? people.filter((person) => person && typeof person === 'object') : [];
+      if (live) buildActors(); else crowdTags = [];
+      return crowdTags;
+    },
+    tags: () => (selfTag ? [selfTag, ...crowdTags] : [...crowdTags]),
+    stats() {
+      const meshes = group.children.filter((child) => child.isMesh);
+      return {
+        triangles: live ? staticTriangles + actorTriangles + sky.geometry.index.count / 3 : 0,
+        meshes: meshes.length,
+        drawCalls: meshes.length + meshes.filter((mesh) => mesh.castShadow).length,
+        lights: group.children.filter((child) => child.isLight).length,
+        geometries: meshes.length,
+      };
+    },
+    /** Reflect the server state: Lagos time of day, the spot you stand at, your look, and whether you are busy. */
+    update(state) {
+      if (!state || typeof state !== 'object') return false;
+      let changed = false, actors = false;
+      if (!view.fixedTime && Number.isFinite(state.t)) {
+        const time = timeOfDay(state.t);
+        if (time !== view.time) { view.time = time; changed = true; }
+      }
+      const here = state.location == null || !venue?.id || state.location === venue.id;
+      if (here && typeof state.spot === 'string' && state.spot !== view.spot) { anchorFor(state.spot); view.spot = state.spot; actors = true; }
+      const look = state.onboarding?.look;
+      if (look !== undefined) { const lookKey = JSON.stringify(look ?? null); if (lookKey !== view.lookKey) { view.look = look; view.lookKey = lookKey; actors = true; } }
+      if (typeof state.name === 'string' && state.name && state.name !== view.name) { view.name = state.name; if (selfTag) selfTag = { ...selfTag, name: view.name, text: view.name }; }
+      if (!view.poseFixed) { const pose = here && state.activeAction ? 'busy' : 'stand'; if (pose !== view.pose) { view.pose = pose; actors = true; } }
+      if (live) { if (actors) buildActors(); if (changed) applyLighting(); }
+      return changed || actors;
+    },
+    dispose() {
+      if (disposed) return;
+      restoreHostLighting(group);
+      release();
+      disposed = true;
+      shared.disposers.delete(entry.dispose);
+      group.parent?.remove(group);
+    },
+  };
+  shared.disposers.add(entry.dispose);
+  realise();
+  return entry;
 }
 
-/** Plain ground and a marker, for venues whose scene has not been built yet. */
-function generic(kit) {
-  const { THREE, box, round } = kit;
-  const group = new THREE.Group();
-  box(0, -0.25, 0, 30, 0.5, 28, '#3e5141', group);
-  round(0, 0.4, 0, 3, 0.8, '#796a5a', group);
-  return { group, background: '#182a25' };
-}
+const builder = (kind, def, variant) => (kit, venue) => createEntry(kit, venue, def, kind, variant);
+export const SCENES = Object.fromEntries([
+  ...Object.entries(DEFS).map(([kind, def]) => [kind, builder(kind, def)]),
+  ...Object.entries(ALIASES).map(([alias, [kind, variant]]) => [alias, builder(kind, DEFS[kind], variant)]),
+]);
 
-export const SCENES = { park, library, generic };
-
+/** Build the scene for a venue; unknown or missing kinds get the generic plaza. */
 export function buildVenueScene(kit, venue) {
-  return (SCENES[venue?.scene?.kind] || SCENES.generic)(kit, venue);
+  const kind = venue?.scene?.kind;
+  return (Object.hasOwn(SCENES, kind) ? SCENES[kind] : SCENES.generic)(kit, venue);
 }

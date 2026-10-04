@@ -1,0 +1,25 @@
+<!doctype html>
+<!-- Development-only scene viewer. Not linked from the app and not part of the production build.
+     Open through the Vite dev server: /src/scene/harness.html?kind=club&time=night&crowd=8 -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scene harness</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #111; color: #eee; font: 12px system-ui, sans-serif; }
+    #stage { position: fixed; inset: 0; }
+    #stage canvas { width: 100%; height: 100%; display: block; }
+    #bar { position: fixed; left: 8px; top: 8px; display: flex; gap: 6px; flex-wrap: wrap; max-width: 96vw; z-index: 2; }
+    #bar select, #bar button { font: inherit; }
+    #info { position: fixed; left: 8px; bottom: 8px; background: #000a; padding: 4px 8px; border-radius: 6px; white-space: pre; z-index: 2; }
+    .tag { position: fixed; transform: translate(-50%, -100%); padding: 1px 6px; border-radius: 8px; font-size: 11px; background: #0009; pointer-events: none; z-index: 1; }
+  </style>
+</head>
+<body>
+  <div id="stage"></div>
+  <div id="bar"></div>
+  <div id="info"></div>
+  <script type="module" src="./harness.js"></script>
+</body>
+</html>

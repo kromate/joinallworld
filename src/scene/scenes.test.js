@@ -1,0 +1,369 @@
+// Scene modules: every venue kind builds headlessly, stays inside the rendering budget and
+// frees everything it made. Nothing here needs WebGL.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import * as THREE from 'three';
+import { createKit } from './kit.js';
+import { SCENES, KINDS, TIMES, LIGHTING, MAX_CROWD, DEFAULT_CAMERA, buildVenueScene, timeOfDay, lightingFor } from './venue-scenes.js';
+import { LOOK_OPTIONS, POSES, normalizeLook, drawAvatar, buildAvatar, buildCrowd, appearanceToLook } from './characters.js';
+import { createBatch, sceneMaterials } from './build.js';
+import { sign, textWidth, table, chair, bench, stall, speaker, screen, plant, palm, lampPost, signBoard } from './props.js';
+import { createVenueWorld } from '../venue-world.js';
+
+const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse'];
+const TRIANGLE_BUDGET = 15000, DRAW_CALL_BUDGET = 60;
+const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
+const venueOf = (kind, scene = {}, more = {}) => ({ id: kind, label: kind, scene: { kind, ...scene }, ...more });
+
+/** Count geometries that are created and later disposed while `run` executes. */
+function trackGeometries(run) {
+  const live = new Set();
+  const original = THREE.BufferGeometry.prototype.setIndex;
+  THREE.BufferGeometry.prototype.setIndex = function setIndex(...args) {
+    if (!live.has(this)) { live.add(this); this.addEventListener('dispose', () => live.delete(this)); }
+    return original.apply(this, args);
+  };
+  try { run(live); } finally { THREE.BufferGeometry.prototype.setIndex = original; }
+  return live;
+}
+
+test('every venue kind has a scene', () => {
+  assert.deepEqual([...KINDS].sort(), [...EXPECTED_KINDS].sort());
+  for (const kind of [...EXPECTED_KINDS, 'library', 'church', 'mosque', 'generic']) assert.equal(typeof SCENES[kind], 'function', kind);
+  assert.deepEqual(DEFAULT_CAMERA, { landscape: [16, 21, 27], portrait: [13, 24, 31] });
+});
+
+test('each scene builds within budget with a full crowd, and disposes without leaving anything behind', () => {
+  const report = [];
+  const leaked = trackGeometries((live) => {
+    const kit = createKit();
+    const kitGeometries = live.size;
+    for (const kind of [...EXPECTED_KINDS, 'library', 'mosque', 'generic']) {
+      const parent = new THREE.Scene();
+      const entry = SCENES[kind](kit, venueOf(kind));
+      parent.add(entry.group);
+      const tags = entry.setCrowd(crowd());
+      const stats = entry.stats();
+      report.push(`${kind}: ${stats.triangles} triangles, ${stats.drawCalls} draw calls`);
+      assert.ok(entry.group.isGroup && typeof entry.background === 'string' && entry.camera.landscape.length === 3 && entry.camera.portrait.length === 3, kind);
+      assert.ok(stats.triangles > 1500, `${kind} has real geometry (${stats.triangles})`);
+      assert.ok(stats.triangles < TRIANGLE_BUDGET, `${kind} triangles ${stats.triangles}`);
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= 8, `${kind} draw calls ${stats.drawCalls}`);
+      assert.ok(stats.lights <= 4, `${kind} lights ${stats.lights}`);
+      assert.equal(tags.length, MAX_CROWD, kind);
+      for (const mesh of entry.group.children.filter((child) => child.isMesh)) {
+        const { position, normal, color } = mesh.geometry.attributes;
+        assert.ok(position.count > 0 && normal.count === position.count && color.count === position.count, `${kind} ${mesh.name}`);
+        assert.ok(position.array.every(Number.isFinite), `${kind} ${mesh.name} has finite vertices`);
+      }
+      const before = live.size;
+      entry.dispose();
+      assert.equal(entry.group.children.length, 0, `${kind} left objects in its group`);
+      assert.equal(entry.group.parent, null, `${kind} still attached`);
+      assert.equal(parent.children.length, 0, `${kind} left objects in the scene`);
+      assert.ok(live.size < before && live.size === kitGeometries, `${kind} leaked ${live.size - kitGeometries} geometries`);
+      entry.dispose();
+    }
+    kit.dispose();
+  });
+  assert.equal(leaked.size, 0, 'no geometry survives kit.dispose()');
+  assert.equal(report.length, EXPECTED_KINDS.length + 3);
+});
+
+test('hiding a scene frees its geometry and showing it rebuilds the same scene', () => {
+  const leaked = trackGeometries((live) => {
+    const kit = createKit();
+    const base = live.size;
+    const entry = SCENES.market(kit, venueOf('market'));
+    const shown = entry.stats();
+    assert.ok(live.size > base);
+    entry.group.visible = false;
+    assert.equal(entry.group.visible, false);
+    assert.equal(live.size, base, 'hidden scene holds no geometry');
+    assert.equal(entry.group.children.length, 0);
+    assert.equal(entry.stats().triangles, 0);
+    assert.ok(entry.anchors.people, 'anchors stay available while hidden');
+    entry.group.visible = true;
+    assert.deepEqual(entry.stats(), shown);
+    kit.dispose();
+    assert.equal(entry.group.children.length, 0, 'kit.dispose() frees scenes the host never disposed');
+  });
+  assert.equal(leaked.size, 0);
+});
+
+test('kit.dispose() frees the shared scene materials', () => {
+  const kit = createKit();
+  const materials = sceneMaterials(kit);
+  let disposed = 0;
+  for (const material of Object.values(materials)) material.addEventListener('dispose', () => { disposed += 1; });
+  SCENES.park(kit, venueOf('park'));
+  assert.equal(sceneMaterials(kit), materials, 'one material set per kit');
+  kit.dispose();
+  assert.ok(disposed >= 3);
+});
+
+test('unknown kinds fall back to the generic plaza; variants change the scene', () => {
+  const kit = createKit();
+  for (const venue of [undefined, {}, { scene: {} }, venueOf('no-such-kind'), venueOf('constructor'), venueOf('home')]) {
+    const entry = buildVenueScene(kit, venue);
+    assert.equal(entry.kind, 'generic');
+    assert.ok(entry.stats().triangles > 500);
+  }
+  const club = buildVenueScene(kit, venueOf('club')).stats().triangles;
+  const speakeasy = buildVenueScene(kit, venueOf('club', { variant: 'speakeasy' })).stats().triangles;
+  assert.notEqual(club, speakeasy);
+  assert.equal(buildVenueScene(kit, { id: 'library', scene: { kind: 'club' } }).stats().triangles, speakeasy, 'the library venue is the speakeasy');
+  assert.equal(buildVenueScene(kit, venueOf('library')).stats().triangles, speakeasy);
+  const church = buildVenueScene(kit, venueOf('worship')).stats().triangles;
+  const mosque = buildVenueScene(kit, venueOf('worship', { variant: 'mosque' })).stats().triangles;
+  assert.notEqual(church, mosque);
+  assert.equal(buildVenueScene(kit, { id: 'mosque', scene: { kind: 'worship' } }).stats().triangles, mosque);
+  assert.equal(buildVenueScene(kit, venueOf('worship', { variant: 'church' })).stats().triangles, church);
+  kit.dispose();
+});
+
+test('every spot gets an anchor; named spots land on their landmark', () => {
+  const kit = createKit();
+  const spots = [{ id: 'bookcase', label: 'Secret bookcase' }, { id: 'lounge', label: 'Lounge' }, { id: 'cocktail', label: 'Cocktail bar' }, { id: 'floor', label: 'Dance floor' }, { id: 'people', label: 'People' }, { id: 'mystery', label: 'Something else' }];
+  const club = buildVenueScene(kit, venueOf('club', { spots }));
+  assert.deepEqual(spots.map((spot) => club.anchors[spot.id].landmark), ['bookcase', 'lounge', 'bar', 'dancefloor', 'people', 'dj']);
+  for (const spot of spots) assert.ok(Number.isFinite(club.anchors[spot.id].x) && Number.isFinite(club.anchors[spot.id].z), spot.id);
+  assert.equal(club.spot, 'bookcase', 'the player starts at the first spot');
+  // Venue-declared spots (an object map, as in content/venues.js) work too.
+  const buka = buildVenueScene(kit, venueOf('buka', {}, { spots: { counter: { id: 'counter', label: 'Buka counter' }, kitchen: { id: 'kitchen', label: "Mama's kitchen" }, wash: { id: 'wash', label: 'Wash bowl' }, people: { id: 'people', label: 'People' } } }));
+  assert.deepEqual(['counter', 'kitchen', 'wash', 'people'].map((id) => buka.anchors[id].landmark), ['counter', 'kitchen', 'wash', 'people']);
+  // More spots than landmarks: the rest still get distinct places.
+  const many = Array.from({ length: 14 }, (_, i) => ({ id: `s${i}`, label: `Spot ${i}` }));
+  const park = buildVenueScene(kit, venueOf('park', { spots: many }));
+  const places = new Set(many.map((spot) => `${park.anchors[spot.id].x},${park.anchors[spot.id].z}`));
+  assert.equal(places.size, many.length);
+  // A spot that appears later (added by another system) is placed on demand.
+  assert.equal(park.setSpot('late-spot'), true);
+  assert.ok(Number.isFinite(park.anchors['late-spot'].x));
+  for (const kind of EXPECTED_KINDS) {
+    const entry = buildVenueScene(kit, venueOf(kind));
+    assert.ok(entry.anchors.people, `${kind} has a people anchor`);
+    assert.ok(Object.keys(entry.anchors).length >= 4, `${kind} has landmarks`);
+    for (const anchor of Object.values(entry.anchors)) assert.ok(Math.abs(anchor.x) <= 13 && Math.abs(anchor.z) <= 12, `${kind} anchor in bounds`);
+    entry.dispose();
+  }
+  kit.dispose();
+});
+
+test('update(state) reports a change only when something visible changed', () => {
+  const kit = createKit();
+  const noon = Date.UTC(2026, 0, 5, 11, 0), evening = Date.UTC(2026, 0, 5, 17, 0), midnight = Date.UTC(2026, 0, 5, 23, 30);
+  assert.deepEqual([noon, evening, midnight].map(timeOfDay), ['day', 'dusk', 'night']);
+  const venue = { id: 'park', scene: { kind: 'park' }, spots: { amphitheatre: { id: 'amphitheatre', label: 'Amphitheatre' }, trees: { id: 'trees', label: 'Under the trees' } } };
+  const entry = buildVenueScene(kit, venue);
+  assert.equal(entry.update({ location: 'park' }), false, 'nothing to reflect');
+  assert.equal(entry.update(null), false);
+  assert.equal(entry.update({ location: 'park', t: noon, spot: 'amphitheatre' }), false, 'already day, already there');
+  const dayBackground = entry.background;
+  assert.equal(entry.update({ location: 'park', t: midnight, spot: 'amphitheatre' }), true);
+  assert.equal(entry.time, 'night');
+  assert.notEqual(entry.background, dayBackground);
+  assert.equal(entry.update({ location: 'park', t: midnight + 60000, spot: 'amphitheatre' }), false, 'a minute later is still night');
+  assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees' }), true);
+  assert.equal(entry.spot, 'trees');
+  const standing = entry.tags()[0].position;
+  assert.equal(entry.update({ location: 'home', t: midnight, spot: 'kitchen' }), false, 'spots of other venues are ignored');
+  assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees', onboarding: { look: { body: 'man', hair: 'afro' } } }), true);
+  assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees', onboarding: { look: { body: 'man', hair: 'afro' } } }), false);
+  assert.equal(entry.update({ location: 'park', t: midnight, spot: 'trees', onboarding: { look: { body: 'man', hair: 'afro' } }, activeAction: { id: 'chill' } }), true);
+  assert.notDeepEqual(entry.tags()[0].position, standing, 'a busy player moves to the seat of the spot');
+  assert.equal(entry.setTime('night'), false);
+  assert.equal(entry.setTime('dusk'), true);
+  assert.equal(entry.setTime('noon'), false);
+  // A fixed time of day ignores the clock.
+  const fixed = buildVenueScene(kit, venueOf('beach', { time: 'dusk' }));
+  assert.equal(fixed.update({ t: midnight }), false);
+  assert.equal(fixed.time, 'dusk');
+  kit.dispose();
+});
+
+test('lighting presets exist for every mood and time and are applied to the host lights while showing', () => {
+  for (const mood of ['outdoor', 'indoor', 'club']) for (const time of TIMES) {
+    const preset = LIGHTING[mood][time];
+    assert.ok(preset.sky.length === 2 && preset.hemi.length === 3 && preset.sun.length === 3 && preset.glow > 0 && preset.lamps > 0, `${mood} ${time}`);
+  }
+  assert.equal(lightingFor('nope', 'nope'), LIGHTING.outdoor.day);
+  assert.ok(LIGHTING.outdoor.night.hemi[2] < LIGHTING.outdoor.day.hemi[2]);
+  const kit = createKit();
+  const scene = new THREE.Scene();
+  const hemi = new THREE.HemisphereLight('#bdd4e7', '#273e2b', 1.6), sun = new THREE.DirectionalLight('#c7dbec', 1.4);
+  sun.position.set(-12, 25, 8);
+  scene.add(hemi, sun);
+  const entry = buildVenueScene(kit, venueOf('rooftop', { time: 'night' }));
+  entry.group.visible = false;
+  scene.add(entry.group);
+  assert.equal(hemi.intensity, 1.6, 'a hidden scene leaves the host lights alone');
+  entry.group.visible = true;
+  assert.equal(hemi.intensity, LIGHTING.outdoor.night.hemi[2]);
+  assert.equal(sun.intensity, LIGHTING.outdoor.night.sun[1]);
+  assert.equal(sceneMaterials(kit).glow.color.r, LIGHTING.outdoor.night.glow);
+  entry.group.visible = false;
+  assert.equal(hemi.intensity, 1.6);
+  assert.equal(sun.intensity, 1.4);
+  assert.deepEqual(sun.position.toArray(), [-12, 25, 8]);
+  assert.equal(`#${hemi.color.getHexString()}`, '#bdd4e7');
+  kit.dispose();
+});
+
+test('looks are normalised deterministically and tolerate missing or unknown fields', () => {
+  for (const junk of [undefined, null, 'x', 7, [], {}, { body: 'robot', hair: 42, outfit: null, fabric: 'silk', skin: 'green', hairColor: -1, outfitColor: '#12', bottomsColor: {} }]) {
+    const look = normalizeLook(junk, 'player-123');
+    assert.deepEqual(look, normalizeLook(junk, 'player-123'));
+    assert.ok(LOOK_OPTIONS.body.includes(look.body));
+    assert.ok(LOOK_OPTIONS.hair[look.body].includes(look.hair) && LOOK_OPTIONS.outfit[look.body].includes(look.outfit) && LOOK_OPTIONS.fabric.includes(look.fabric));
+    for (const colour of [look.skin, look.hairColor, look.outfitColor, look.bottomsColor]) assert.match(colour, /^#[0-9a-f]{6}$/);
+  }
+  const seeds = Array.from({ length: 40 }, (_, i) => JSON.stringify(normalizeLook(null, `public-${i}`)));
+  assert.ok(new Set(seeds).size > 30, 'different players look different');
+  assert.deepEqual(normalizeLook({ body: 'Woman', hair: 'Low cut', outfit: 'Site work', fabric: 'Aso-oke', skin: 6, hairColor: 'Purple', outfitColor: 'Gold', bottomsColor: '#ABCDEF' }), {
+    body: 'woman', hair: 'lowcut', outfit: 'sitework', fabric: 'asooke', skin: LOOK_OPTIONS.skin[6].hex, hairColor: '#7a4bb0', outfitColor: '#d6a83a', bottomsColor: '#abcdef',
+  });
+  assert.equal(normalizeLook({ body: 'man', hair: 'gele', outfit: 'owambe' }, 's').body, 'man');
+  assert.ok(LOOK_OPTIONS.hair.man.includes(normalizeLook({ body: 'man', hair: 'gele' }, 's').hair), 'options not offered for a body fall back');
+  assert.equal(LOOK_OPTIONS.skin.length, 7); assert.equal(LOOK_OPTIONS.hairColor.length, 7); assert.equal(LOOK_OPTIONS.outfitColor.length, 10);
+  const colours = appearanceToLook({ outfitColor: 'red' }, 'x');
+  assert.equal(colours.shirt, '#c9423a');
+});
+
+test('every hairstyle, outfit, fabric and pose builds a distinct low-poly avatar', () => {
+  const signature = (look, options) => {
+    const batch = createBatch(THREE);
+    drawAvatar(batch, look, options);
+    const built = batch.build({ solid: null, glow: null, glass: null });
+    const solid = built.meshes[0].geometry;
+    let sum = 0;
+    const { position, color } = solid.attributes;
+    for (let i = 0; i < position.array.length; i++) sum += position.array[i] * (i % 7 + 1) + color.array[i] * (i % 5 + 1);
+    built.meshes.forEach((mesh) => mesh.geometry.dispose());
+    assert.ok(built.triangles > 150 && built.triangles <= 600, `avatar triangles ${built.triangles} for ${JSON.stringify(look)}`);
+    return `${built.triangles}:${sum.toFixed(3)}`;
+  };
+  for (const body of LOOK_OPTIONS.body) {
+    const base = { body, hair: 'lowcut', outfit: 'casual', fabric: 'plain', skin: 2, hairColor: 0, outfitColor: 'blue', bottomsColor: 'navy' };
+    const hairs = LOOK_OPTIONS.hair[body].map((hair) => signature({ ...base, hair }));
+    assert.equal(new Set(hairs).size, hairs.length, `${body} hairstyles are distinct`);
+    const outfits = LOOK_OPTIONS.outfit[body].map((outfit) => signature({ ...base, outfit }));
+    assert.equal(new Set(outfits).size, outfits.length, `${body} outfits are distinct`);
+    const fabrics = LOOK_OPTIONS.fabric.map((fabric) => signature({ ...base, fabric }));
+    assert.equal(new Set(fabrics).size, fabrics.length, `${body} fabrics are distinct`);
+    const tones = LOOK_OPTIONS.skin.map((_, skin) => signature({ ...base, skin }));
+    assert.equal(new Set(tones).size, 7);
+    const tops = LOOK_OPTIONS.outfitColor.map((swatch) => signature({ ...base, outfitColor: swatch.id }));
+    assert.equal(new Set(tops).size, 10);
+    const poses = POSES.map((pose) => signature(base, { pose }));
+    assert.equal(new Set(poses).size, POSES.length, `${body} poses are distinct`);
+    assert.equal(signature(base, { pose: 'cartwheel' }), signature(base, { pose: 'stand' }), 'unknown pose stands');
+  }
+  for (const pose of ['stand', 'sit', 'walk', 'wave', 'work']) assert.ok(POSES.includes(pose));
+});
+
+test('buildAvatar and buildCrowd return groups, name-tag data and free themselves', () => {
+  const leaked = trackGeometries((live) => {
+    const kit = createKit();
+    const base = live.size;
+    const avatar = buildAvatar(kit, { body: 'woman', hair: 'gele', outfit: 'owambe', fabric: 'ankara' }, { x: 2, z: 3, ry: 1, pose: 'wave', marker: 'crown' });
+    assert.ok(avatar.isGroup && avatar.children.length >= 1 && avatar.children.length <= 2);
+    assert.deepEqual([avatar.position.x, avatar.position.z, avatar.rotation.y], [2, 3, 1]);
+    assert.equal(avatar.userData.look.hair, 'gele');
+    assert.ok(avatar.userData.top > 2.5);
+    const again = buildAvatar(kit, { body: 'woman', hair: 'gele', outfit: 'owambe', fabric: 'ankara' }, { pose: 'wave', marker: 'crown' });
+    assert.deepEqual(Array.from(again.children[0].geometry.attributes.position.array), Array.from(avatar.children[0].geometry.attributes.position.array), 'same look, same geometry');
+    const people = [{ id: 'a', name: 'Ada', kind: 'player', x: 1, z: 1 }, { id: 'n', name: 'Mama Nkechi', kind: 'npc', x: -2, z: 0, pose: 'work' }, { name: 'Tunde', x: 3, z: 2, pose: 'sit', look: { body: 'man', hair: 'locs' } }];
+    const built = buildCrowd(kit, people);
+    assert.ok(built.group.children.length <= 2, 'a crowd is at most two meshes');
+    assert.equal(built.tags.length, 3);
+    assert.deepEqual(built.tags.map((tag) => [tag.id, tag.text, tag.kind, tag.marker]), [['a', '@Ada', 'player', 'tag'], ['n', 'Mama Nkechi', 'npc', 'dot'], ['person-2', '@Tunde', 'player', 'tag']]);
+    assert.deepEqual([built.tags[0].position.x, built.tags[0].position.z], [1, 1]);
+    assert.ok(built.tags[0].position.y > 2.5 && built.tags[2].position.y < built.tags[0].position.y, 'a seated person has a lower tag');
+    assert.ok(built.triangles < 3 * 600);
+    assert.deepEqual(buildCrowd(kit, []).tags, []);
+    avatar.userData.dispose();
+    built.dispose();
+    assert.equal(avatar.children.length, 0);
+    assert.equal(built.group.children.length, 0);
+    assert.ok(live.size > base, 'the undisposed avatar is still alive');
+    kit.dispose();
+  });
+  assert.equal(leaked.size, 0);
+});
+
+test('a scene crowd is capped, placed and tagged; the player carries the crown', () => {
+  const kit = createKit();
+  const entry = buildVenueScene(kit, venueOf('viewing'));
+  const empty = entry.stats().triangles;
+  const tags = entry.setCrowd(crowd(30));
+  assert.equal(tags.length, MAX_CROWD);
+  assert.ok(entry.stats().triangles > empty);
+  assert.equal(new Set(tags.map((tag) => `${tag.position.x.toFixed(2)},${tag.position.z.toFixed(2)}`)).size, MAX_CROWD, 'everyone has their own place');
+  const all = entry.tags();
+  assert.equal(all.length, MAX_CROWD + 1);
+  assert.deepEqual([all[0].kind, all[0].marker], ['self', 'crown']);
+  const placed = entry.setCrowd([{ id: 'x', name: 'X', x: 4, z: -2 }, { id: 'y', name: 'Y', spot: 'snacks' }, null, 'junk']);
+  assert.deepEqual([placed[0].position.x, placed[0].position.z], [4, -2]);
+  assert.ok(Math.hypot(placed[1].position.x - entry.anchors.snacks.x, placed[1].position.z - entry.anchors.snacks.z) < 2);
+  assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), true);
+  assert.equal(entry.setPlayer({ look: { hair: 'afro' }, name: 'Kromate' }), false);
+  assert.equal(entry.tags()[0].text, 'Kromate');
+  assert.equal(entry.setPlayer({ pose: 'wave' }), true);
+  assert.deepEqual(entry.setCrowd([]), []);
+  assert.equal(entry.stats().meshes <= 6, true);
+  kit.dispose();
+});
+
+test('shared props draw into a batch; block lettering needs no canvas', () => {
+  const batch = createBatch(THREE);
+  const steps = [];
+  for (const draw of [() => table(batch, 0, 0), () => chair(batch, 1, 0), () => bench(batch, 2, 0), () => stall(batch, 4, 0), () => speaker(batch, 6, 0), () => screen(batch, 8, 2, 0), () => plant(batch, 9, 0), () => palm(batch, 10, 0), () => lampPost(batch, 11, 0), () => signBoard(batch, 12, 0, 'ON AIR')]) {
+    const before = batch.triangles;
+    draw();
+    steps.push(batch.triangles - before);
+  }
+  assert.ok(steps.every((count) => count > 0 && count < 450), steps.join(','));
+  const before = batch.triangles;
+  sign(batch, 0, 3, 0, 'On Air 99.9', { lit: true });
+  assert.ok(batch.triangles - before > 40 && batch.triangles - before < 200);
+  assert.ok(Math.abs(textWidth('AB', 0.5) - 0.7) < 1e-9);
+  const built = batch.build({ solid: null, glow: null, glass: null });
+  assert.deepEqual(built.meshes.map((mesh) => mesh.name), ['solid', 'glow']);
+  built.meshes.forEach((mesh) => mesh.geometry.dispose());
+});
+
+test('the host draws one frame per real change and none while a venue scene is idle', async () => {
+  const calls = { render: 0 };
+  const renderer = { shadowMap: {}, domElement: { remove() {} }, setPixelRatio() {}, setClearColor() {}, setSize() {}, dispose() {}, render() { calls.render += 1; } };
+  const container = { appendChild() {}, getBoundingClientRect: () => ({ width: 1280, height: 800 }) };
+  const world = createVenueWorld(container, { location: 'park', renderer });
+  const midnight = Date.UTC(2026, 0, 5, 23, 30);
+  assert.equal(world.diagnostics().renderCount, 1);
+  world.setState({ location: 'park', t: midnight, spot: 'amphitheatre' });
+  assert.equal(world.diagnostics().renderCount, 2, 'night falls: one frame');
+  for (let i = 1; i <= 20; i++) world.setState({ location: 'park', t: midnight + i * 1000, spot: 'amphitheatre' });
+  assert.equal(world.diagnostics().renderCount, 2, 'twenty state ticks with nothing new: no frames');
+  world.setState({ location: 'park', t: midnight, spot: 'trees' });
+  assert.equal(world.diagnostics().renderCount, 3, 'moving to another spot: one frame');
+  world.setLocation('library');
+  world.setState({ location: 'library', t: midnight });
+  assert.equal(world.diagnostics().renderCount, 4);
+  await new Promise((resolve) => setTimeout(resolve, 80));
+  assert.equal(world.diagnostics().renderCount, 4, 'idle: zero renders');
+  assert.equal(calls.render, 4);
+  world.dispose();
+});
+
+test('scene sources hold no frame loops or timers, and the dev harness is not a build input', async () => {
+  // Assembled from parts so this file does not itself contain the words the host's own source scan looks for.
+  const banned = new RegExp([['request', 'Animation', 'Frame'], ['set', 'Animation', 'Loop'], ['set', 'Interval'], ['set', 'Timeout'], ['Texture', 'Loader'], ['GLTF', 'Loader'], ['new ', 'Image'], ['\\.png'], ['\\.jpg'], ['\\.glb'], ['\\.gltf'], ['fetch', '\\(']].map((parts) => parts.join('')).join('|'));
+  for (const file of ['build.js', 'characters.js', 'props.js', 'venue-scenes.js', 'venues-outdoor.js', 'venues-social.js', 'venues-work.js', 'venues-civic.js', 'harness.js', 'harness.html']) {
+    const code = (await readFile(new URL(file, import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
+    assert.doesNotMatch(code, banned, file);
+  }
+  const config = await readFile(new URL('../../vite.config.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(config, /harness/);
+  assert.doesNotMatch(await readFile(new URL('../../index.html', import.meta.url), 'utf8'), /harness/);
+});

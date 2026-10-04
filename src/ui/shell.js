@@ -112,8 +112,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     <section class="life-status" aria-label="Player status"><span class="life-clock" data-clock></span><span class="life-mood" data-mood></span><button class="life-status-profile" data-open="sim" data-name></button><button class="life-cash" data-open="bank" aria-label="Wallet and transactions" data-cash></button></section>
     <aside class="life-sidebar"><div class="life-hud" data-slot="hud"></div><div class="life-needs" aria-label="Your needs">${Object.entries(NEED_ICONS).map(([id, emoji]) => `<div class="life-need" title="${cap(id)}"><span aria-hidden="true">${emoji}</span><div role="meter" aria-label="${cap(id)}" aria-valuemin="0" aria-valuemax="100" data-need="${id}"><i></i></div></div>`).join('')}</div><button class="life-help" data-open="help">? How to play</button></aside>
     <div class="life-toasts" data-toasts role="status" aria-live="polite"></div>
-    <div class="life-message" role="status" data-message hidden></div>
-    <div class="life-bottom" data-bottom><div data-slot="progress"></div><div data-slot="main"></div><nav class="life-nav" aria-label="Main navigation" data-slot="nav"></nav></div>`;
+    <div class="life-bottom" data-bottom><div class="life-message" role="status" data-message hidden></div><div data-slot="progress"></div><div data-slot="main"></div><nav class="life-nav" aria-label="Main navigation" data-slot="nav"></nav></div>`;
   const $ = (selector) => root.querySelector(selector);
   const el = { clock: $('[data-clock]'), mood: $('[data-mood]'), name: $('[data-name]'), cash: $('[data-cash]'), identity: $('[data-identity]'), message: $('[data-message]'),
     toasts: $('[data-toasts]'), bottom: $('[data-bottom]'), hud: $('[data-slot="hud"]'), progress: $('[data-slot="progress"]'), main: $('[data-slot="main"]'), nav: $('[data-slot="nav"]') };
@@ -142,6 +141,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
 
   function toast(text, kind = 'info') {
     if (!text) return;
+    if (el.toasts.lastElementChild?.textContent === text) return; // the same notice twice in a row says nothing new
     const item = document.createElement('div');
     item.className = `life-toast is-${kind}`;
     item.textContent = text;
@@ -149,11 +149,15 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     while (el.toasts.children.length > 3) el.toasts.firstChild.remove();
     setTimeout(() => item.remove(), TOAST_MS);
   }
-  /** A modal dialog sits in the browser's top layer, above everything else: toasts move into it while it is open. */
+  /**
+   * Toasts must never be covered: a modal dialog sits in the browser's top layer, so they move
+   * into it while it is open; otherwise they sit on the page above every other fixed bar.
+   */
   function mountToasts() {
-    const home = dialog.open ? dialog : root;
+    const home = dialog.open ? dialog : document.body;
     if (el.toasts.parentNode !== home) home.append(el.toasts);
   }
+  mountToasts();
 
   /** The reason the open sheet may not be closed yet (a panel whose required() still returns one), or null. */
   function lockOf() {
@@ -331,6 +335,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
 
     setHtml(el.progress, progressHtml());
     el.bottom.classList.toggle('has-progress', Boolean(active));
+    root.classList.toggle('is-expanded', expanded && mode === 'venue');
     if (active) {
       const bar = el.progress.querySelector('[data-progress]');
       bar.value = Math.max(0, Math.min(1, 1 - active.remaining / (active.duration || 1)));
@@ -388,6 +393,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     else if ('action' in data) {
       const result = await api.command(data.action, parse(data.payload));
       if (result.ok && data.then === 'close') close();
+      // A sheet covers the status line, so a successful action inside one confirms itself with a toast.
+      else if (result.ok && sheet && dialog.open && state.message) toast(state.message, 'good');
     }
     else if ('open' in data) open(data.open, parse(data.params));
     else if ('close' in data) close();
@@ -448,6 +455,6 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     get mode() { return mode; },
     setMode,
     setExpanded(value) { expanded = Boolean(value); },
-    destroy() { root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); window.removeEventListener('keydown', onKey); root.replaceChildren(); root.classList.remove('life-ui'); },
+    destroy() { el.toasts.remove(); root.removeEventListener('click', onClick); dialog.removeEventListener('click', onClick); window.removeEventListener('keydown', onKey); root.replaceChildren(); root.classList.remove('life-ui'); },
   };
 }

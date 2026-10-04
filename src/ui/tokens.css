@@ -4,7 +4,11 @@
  *
  *   colour     ink / muted text, surfaces, lines, the brand greens, amber (attention), red (danger)
  *   radii      --r-xs 8 · --r-sm 12 · --r-md 16 · --r-lg 20 · --r-xl 24 · pill
- *   type       --t-micro 10 · --t-small 11 · --t-caption 12 · --t-body 13 · --t-lead 15 · --t-title 17 · --t-heading 20 · --t-display 28
+ *   type       --t-micro 11 · --t-small 12 · --t-caption 12 · --t-body 13 · --t-lead 15 · --t-title 17 · --t-heading 20 · --t-display 28
+ *              Nothing is set smaller than 11px; 11 is for short labels only, anything read as a sentence is 12 or more.
+ *   motion     --m-press 90ms (a tap answering) · --m-fast 140ms · --m-panel 200ms · --m-sheet 260ms · --m-pop 380ms (a reward);
+ *              --ease-out for things arriving, --ease-pop (a small overshoot) for rewards only
+ *   status     good = green + a plus or a tick · low = orange + “!” · critical = vermilion + “!!” — never colour alone
  *   elevation  --e-1 (chips, rows) · --e-2 (bars, cards over the scene) · --e-3 (sheets, the phone)
  */
 :root {
@@ -12,7 +16,7 @@
   --c-ink: #1b1f27;
   --c-ink-2: #39404b;
   --c-muted: #5f6770;
-  --c-faint: #8a929b;
+  --c-faint: #6b737c;
   --c-surface: rgba(253, 253, 252, .97);
   --c-surface-solid: #fff;
   --c-canvas: #f2f4f3;
@@ -32,6 +36,9 @@
   --c-blue-soft: #e8effd;
   --c-night: #182a25;
   --c-badge: #e5372b;
+  /* status: orange for low, vermilion for critical (distinct from the green for people who cannot tell red from green), always with a mark */
+  --c-low: #c97a10;
+  --c-critical: #b3402a;
   /* spacing */
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
   /* radii */
@@ -39,7 +46,7 @@
   --r-chip: 22px; --r-card: 20px; --r-sheet: 24px; --r-round: 50%;
   /* type */
   --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --t-micro: 10px; --t-small: 11px; --t-caption: 12px; --t-body: 13px; --t-lead: 15px; --t-title: 17px; --t-heading: 20px; --t-display: 28px;
+  --t-micro: 11px; --t-small: 12px; --t-caption: 12px; --t-body: 13px; --t-lead: 15px; --t-title: 17px; --t-heading: 20px; --t-display: 28px;
   /* touch: every control is at least this tall and wide */
   --tap: 44px;
   /* elevation and motion */
@@ -51,6 +58,9 @@
   --ring: 0 0 0 1px rgba(16, 24, 20, .06);
   --focus: 3px solid #1c5f3c;
   --ease: .16s ease-out;
+  --m-press: 90ms; --m-fast: 140ms; --m-panel: 200ms; --m-sheet: 260ms; --m-pop: 380ms;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-pop: cubic-bezier(.34, 1.56, .64, 1);
   --ease-phone: .26s cubic-bezier(.2, .8, .2, 1);
 }
 /* A glyph of the icon set inside a line of text, a heading, a chip or a button (mark() / iconFor() in dom.js): it takes the size and colour of the text around it. */

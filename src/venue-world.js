@@ -144,8 +144,9 @@ export function sceneVenue(id) {
   return { ...venue, scene: { ...venue.scene, spots: spotsOf(id).map((spot) => ({ id: spot.id, label: spot.label })) } };
 }
 
-const HINT_DESKTOP = 'Drag to look · scroll to zoom · WASD to walk · click to go';
-const HINT_TOUCH = 'Drag to look · pinch to zoom · stick or tap to walk';
+/** What the scene teaches, one at a time (scene/controls.js): walking first, then looking. Each goes away when the player has done it. */
+const LESSONS_DESKTOP = [{ id: 'walk', text: 'Click the floor to walk there — or use W A S D' }, { id: 'look', text: 'Drag to look around · scroll to zoom' }];
+const LESSONS_TOUCH = [{ id: 'walk', text: 'Drag the stick to walk — or tap where you want to go' }, { id: 'look', text: 'Drag anywhere to look around · pinch to zoom' }];
 /**
  * How far from the player the camera starts, in avatar-scale units (multiplied by the scene's walk
  * scale): a phone held upright, a short window (a phone on its side), anything wider. The same
@@ -346,7 +347,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const more = walker.step(dt, orbit.azimuth, still);
     let bob = 0;
     if (walker.moving) {
-      if (!wasMoving) { clearDwell(); controls?.hint(null); }
+      if (!wasMoving) { clearDwell(); controls?.learned('walk'); }
       stride += dt * (walker.jogging ? 9 : 6.5);
       // Two prebuilt figures alternate for the stride; nothing is built while walking.
       walk.gait(still || Math.floor(stride) % 2 === 0, still ? 0 : stride * Math.PI, walker.jogging);
@@ -550,8 +551,6 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   }
   function pointerDown(event, capture = true) {
     if (event.pointerType === 'touch') controls?.touch(true);
-    // The first input of any kind retires the one-time hint.
-    controls?.hint(null);
     if (event.button !== 0 || pointers.size >= 2) return;
     if (!pointers.size) suppressClick = false;
     else suppressClick = true;
@@ -577,6 +576,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       const after = Math.hypot(next.x - other.x, next.y - other.y);
       if (before > 4 && after > 4) orbit.zoomBy(after / before);
     } else orbit.drag(next.x - previous.x, next.y - previous.y);
+    controls?.learned('look');
     pointers.set(event.pointerId, next);
     event.preventDefault();
     redrawView();
@@ -595,7 +595,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     const before = orbit.goal.zoom;
     orbit.zoomBy(Math.exp(clamp(-event.deltaY * units * (event.ctrlKey ? 0.012 : 0.0016), -0.6, 0.6)));
     if (orbit.goal.zoom === before) return;
-    controls?.hint(null);
+    controls?.learned('look');
     redrawView();
   }
   /** The floor point (scene coordinates) under a point of the canvas, or null when it looks at the sky. */
@@ -685,7 +685,6 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function tap(event) {
     const walk = walkOf();
     if (!walk || !walk.grid || locked || uiMode !== 'venue' || current.placing || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return false;
-    controls?.hint(null);
     const target = pick(event.clientX, event.clientY);
     if (!target) return false;
     if (target.type === 'spot') {
@@ -738,7 +737,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   function onKey(event) {
     const { action, mode, jog } = event.detail || {};
     if (mode !== 'venue' && mode !== 'buy') return;
-    if (Object.hasOwn(WALK_KEYS, action) || Object.hasOwn(LOOK_KEYS, action) || /^zoom-/.test(action || '')) controls?.hint(null);
+    if (Object.hasOwn(LOOK_KEYS, action) || /^zoom-/.test(action || '')) controls?.learned('look');
     if (action === 'zoom-in') zoom(1);
     else if (action === 'zoom-out') zoom(-1);
     else if (action === 'zoom-fit') recentre();
@@ -757,10 +756,39 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
     if (Object.hasOwn(WALK_KEYS, action)) held[WALK_KEYS[action]] = false;
     else if (Object.hasOwn(LOOK_KEYS, action)) held[LOOK_KEYS[action]] = false;
   }
+  /**
+   * THE REWARD MOMENT: when an activity ends the shell says what it gave ('jaw:reward', { chips }),
+   * and the chips float up from above the avatar's head and fade — DOM nodes in the tag layer,
+   * placed once from the avatar's projected position and moved by a CSS animation that ends by
+   * itself and removes them. No frame of the scene is drawn for it and no loop is started.
+   */
+  function onReward(event) {
+    const chips = Array.isArray(event.detail?.chips) ? event.detail.chips.slice(0, 4) : [];
+    const walk = walkOf();
+    if (!tagLayer || !chips.length || !walk || !current || uiMode !== 'venue') return;
+    tagLayer.querySelector('.scene-reward')?.remove();
+    current.group.updateMatrixWorld(true);
+    const box = container.getBoundingClientRect();
+    screenOf(walker.x, avatarY + 2.75 * walk.scale, walker.z, pixel);
+    const node = globalThis.document.createElement('div');
+    node.className = 'scene-reward'; node.setAttribute('aria-hidden', 'true');
+    node.style.left = `${Math.round(clamp(pixel.x - (box.left || 0), 84, Math.max(84, size.width - 84)))}px`;
+    node.style.top = `${Math.round(clamp(pixel.y - (box.top || 0), insets.top + 28 * chips.length + 12, Math.max(insets.top + 60, size.height - insets.bottom - 20)))}px`;
+    for (const chip of chips) {
+      const item = globalThis.document.createElement('span');
+      item.className = `is-${['gain', 'loss', 'money', 'xp'].includes(chip.kind) ? chip.kind : 'gain'}`;
+      if (typeof chip.glyph === 'string' && chip.glyph.startsWith('<svg')) item.innerHTML = chip.glyph;
+      item.append(String(chip.text || ''));
+      node.append(item);
+    }
+    // The last chip to finish takes the whole group away; with animations off they are simply removed by the next reward or scene change.
+    node.lastChild.addEventListener('animationend', () => node.remove(), { once: true });
+    tagLayer.append(node);
+  }
   function onMode(event) { uiMode = event.detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
   // Created after the shell: start from the view the shell wrote on its root element.
   uiMode = globalThis.document?.querySelector?.('.life-ui')?.dataset?.mode || 'venue';
-  win?.addEventListener?.('jaw:mode', onMode);
+  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward);
   win?.addEventListener?.('jaw:key', onKey);
   win?.addEventListener?.('jaw:key-up', onKeyUp);
   win?.addEventListener?.('blur', dropInput);
@@ -771,7 +799,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
   if (controls) {
     const coarse = globalThis.matchMedia?.('(pointer: coarse)').matches === true;
     controls.touch(coarse);
-    controls.hint(coarse ? HINT_TOUCH : HINT_DESKTOP);
+    controls.teach(coarse ? LESSONS_TOUCH : LESSONS_DESKTOP);
   }
 
   /**
@@ -1025,7 +1053,7 @@ export function createVenueWorld(container, { location = 'park', renderer: provi
       loop.dispose(); clearDwell();
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
-      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
+      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
       controls?.dispose();
       if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
       for (const entry of built.values()) entry.dispose?.();

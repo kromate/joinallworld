@@ -156,6 +156,8 @@ import { linkWords } from './link.js';
 const NEEDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
 const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone']];
 const MAX_TOASTS = 2;
+/** A need under this is low (shown on a phone's HUD, marked beside its bar); under the second it is critical. */
+const LOW_NEED = 35, CRITICAL_NEED = 20;
 const TOAST_KINDS = ['info', 'good', 'earn', 'spend', 'error'];
 /** The first-session coach points at the next control for this many starter goals, then stops. */
 const COACH_GOALS = 3;
@@ -187,6 +189,8 @@ const STORAGE_NOTICE = { title: 'The server cannot save right now', actions: [['
 export function createShell({ root, dialog, dialogContent, panels, host }) {
   let state = null, view = null, mode = 'venue', lastMode = 'venue', modeParams = null, expanded = false, sheet = null, lastSpotKey = '', forced = false;
   let trayOpen = false, clean = false, saving = 0, lastCash = null, lastNeeds = null, lastMessage = null, lastLife = '', coachOff = false;
+  // rewardFrom: what the player had when the running activity began — the difference at its end is the reward shown over the avatar.
+  let rewardFrom = null, wasExpanded = false;
   try { coachOff = globalThis.localStorage?.getItem(COACH_KEY) === '1'; } catch { coachOff = false; }
   const html = new WeakMap();
   const byId = new Map(panels.map((panel) => [panel.id, panel]));
@@ -197,7 +201,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
 
   root.classList.add('life-ui');
   root.innerHTML = `<p class="life-wordmark" aria-label="Allworld"><i aria-hidden="true">${glyph('globe')}</i><span><b>Allworld</b></span></p>
-    <section class="life-status" aria-label="Player status"><i class="life-status-mark" aria-hidden="true">${glyph('globe')}</i><span class="life-clock" data-clock></span><span class="life-mood" data-mood></span><button class="life-status-profile" data-open="sim" data-name></button><span class="life-saved-slot" data-saved></span><button class="life-cash" data-open="bank" data-cash></button><span class="life-delta" data-delta aria-hidden="true"></span></section>
+    <section class="life-status" aria-label="Player status"><i class="life-status-mark" aria-hidden="true">${glyph('globe')}</i><span class="life-clock" data-clock></span><button class="life-mood" data-open="needs" data-mood aria-label="Mood. Open your needs"></button><button class="life-status-profile" data-open="sim" data-name></button><span class="life-saved-slot" data-saved></span><button class="life-cash" data-open="bank" data-cash></button><span class="life-delta" data-delta aria-hidden="true"></span></section>
     <div class="life-notice" data-notice role="status"></div>
     <aside class="life-sidebar" aria-label="Needs, goal and more">
       <div class="life-quick"><div class="life-needs" role="group" aria-label="Your needs">${NEEDS.map((id) => `<div class="life-need" title="${cap(id)}"><span aria-hidden="true">${glyph(id)}</span><div role="meter" aria-label="${cap(id)}" aria-valuemin="0" aria-valuemax="100" data-need="${id}"><i></i></div></div>`).join('')}</div>
@@ -213,7 +217,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   const el = { clock: $('[data-clock]'), mood: $('[data-mood]'), name: $('[data-name]'), cash: $('[data-cash]'), delta: $('[data-delta]'), saved: $('[data-saved]'),
     toasts: $('[data-toasts]'), bottom: $('[data-bottom]'), progress: $('[data-slot="progress"]'), main: $('[data-slot="main"]'), nav: $('[data-slot="nav"]'), coach: $('[data-slot="coach"]'),
     slots: { alert: $('[data-slot="alert"]'), goal: $('[data-slot="goal"]'), hud: $('[data-slot="hud"]') }, menu: $('[data-slot="menu"]'),
-    tray: $('[data-tray-toggle]'), badge: $('[data-badge]'), clean: $('[data-clean]'), sidebar: $('.life-sidebar'), notice: $('[data-notice]') };
+    needs: $('.life-needs'), tray: $('[data-tray-toggle]'), badge: $('[data-badge]'), clean: $('[data-clean]'), sidebar: $('.life-sidebar'), notice: $('[data-notice]') };
 
   /** Write HTML only when it changed, so per-second updates never rebuild or reflow unchanged parts. */
   function setHtml(target, next) {
@@ -248,6 +252,55 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   };
 
   /**
+   * THE REWARD MOMENT. When an activity ends, what it gave — needs, money, skill XP — is announced
+   * where the player is looking: the window event 'jaw:reward' ({ detail: { chips: [{ text, kind:
+   * 'gain' | 'loss' | 'money' | 'xp', icon }] } }) is picked up by the scene host, which floats the
+   * chips up from the avatar for about a second (src/venue-world.js). Nothing is sent for a trip,
+   * for an activity that was cancelled before it gave anything, or while not connected. At most
+   * four chips: money first, then the largest changes.
+   */
+  function reward() {
+    const active = state.activeAction && !isTrip(state.activeAction) ? state.activeAction : null;
+    if (!view.connected) { rewardFrom = null; return; }
+    if (active) { if (!rewardFrom) rewardFrom = { needs: { ...state.needs }, cash: state.cash, skills: { ...(state.skills || {}) } }; return; }
+    if (!rewardFrom) return;
+    const from = rewardFrom; rewardFrom = null;
+    const chips = [];
+    const cash = state.cash - from.cash;
+    if (cash) chips.push({ text: `${cash > 0 ? '+' : '−'}${money(Math.abs(cash))}`, kind: cash > 0 ? 'money' : 'loss', icon: 'bank', size: Infinity });
+    for (const need of view.needs.order) {
+      const change = Math.round(state.needs[need] - (from.needs[need] ?? state.needs[need]));
+      if (Math.abs(change) >= 1) chips.push({ text: `${change > 0 ? '+' : '−'}${Math.abs(change)} ${cap(need)}`, kind: change > 0 ? 'gain' : 'loss', icon: need, size: Math.abs(change) });
+    }
+    for (const [skill, xp] of Object.entries(state.skills || {})) {
+      const change = Math.round(xp - (from.skills[skill] || 0));
+      if (change >= 1) chips.push({ text: `+${change} ${cap(skill)} XP`, kind: 'xp', icon: 'skills', size: change });
+    }
+    if (!chips.length) return;
+    chips.sort((a, b) => (b.kind !== 'loss') - (a.kind !== 'loss') || b.size - a.size);
+    window.dispatchEvent(new CustomEvent('jaw:reward', { detail: { chips: chips.slice(0, 4).map(({ text, kind, icon }) => ({ text, kind, glyph: hasGlyph(icon) ? glyph(icon) : '' })) } }));
+  }
+  /** A finished goal gets a short burst of confetti under the top bar: CSS only, removed when its last piece has faded. */
+  function burst() {
+    if (globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelector('.life-burst')?.remove();
+    const box = document.createElement('div');
+    box.className = 'life-burst'; box.setAttribute('aria-hidden', 'true');
+    const colours = ['#f2b01e', '#2fa866', '#2a5bd7', '#e2572b', '#7a3fb0', '#ffffff'];
+    for (let i = 0; i < 22; i += 1) {
+      const piece = document.createElement('i'), angle = (i / 22) * Math.PI * 2, far = 70 + ((i * 37) % 60);
+      piece.style.setProperty('--c', colours[i % colours.length]);
+      piece.style.setProperty('--x', `${Math.round(Math.cos(angle) * far)}px`);
+      piece.style.setProperty('--y', `${Math.round(Math.sin(angle) * far * 0.7 + 50)}px`);
+      piece.style.setProperty('--r', `${(i % 2 ? 1 : -1) * (120 + i * 9)}deg`);
+      piece.style.animationDelay = `${(i % 5) * 18}ms`;
+      box.append(piece);
+    }
+    box.lastChild.addEventListener('animationend', () => box.remove(), { once: true });
+    (dialog.open ? dialog : document.body).append(box);
+  }
+
+  /**
    * One line of feedback under the top bar. Never more than MAX_TOASTS at once (the oldest gives
    * way), and a text that is already showing is not repeated — a stronger kind just recolours it.
    */
@@ -256,6 +309,7 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     text = String(text);
     if (kind === 'good' && /\+₦/.test(text)) kind = 'earn';
     const tone = TOAST_KINDS.includes(kind) ? kind : 'info';
+    if (tone === 'good' && /^goal complete/i.test(stripLeadEmoji(text) || text)) burst();
     const showing = [...el.toasts.children].find((node) => node.dataset.text === text);
     if (showing) { if (tone !== 'info') { showing.className = `life-toast is-${tone}`; showing.firstChild.innerHTML = glyph(tone); } return; }
     // The toast carries its own glyph: an emoji the text starts with is dropped, one inside it is drawn as a glyph.
@@ -644,6 +698,8 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
   }
   function renderCoach() {
     const step = coachStep(), goal = view.goals?.chip;
+    // One line of guidance at a time: while the coach is talking, a phone's HUD drops the goal chip that says the same thing.
+    root.classList.toggle('has-coach', Boolean(step));
     setHtml(el.coach, step ? `<div class="life-coach" role="note"><span aria-hidden="true">${mark('pointer')}</span><p><b>Goal ${esc(goal.step)} of ${esc(goal.of)} · ${esc(goal.title)}</b>${esc(step.text)}</p><button data-coach-off aria-label="Hide these tips">${icon('close')}</button></div>` : '');
     for (const node of [...root.querySelectorAll('.is-coach'), ...dialogContent.querySelectorAll('.is-coach')]) node.classList.remove('is-coach');
     if (step?.target) root.querySelector(step.target)?.classList.add('is-coach');
@@ -656,10 +712,10 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     if (!state || !view) return;
     // A different life (another city, a new session): compare nothing against the old one.
     const life = `${view.session?.id ?? ''}:${view.cityId}`;
-    if (life !== lastLife) { lastLife = life; lastCash = null; lastNeeds = null; lastMessage = null; }
+    if (life !== lastLife) { lastLife = life; lastCash = null; lastNeeds = null; lastMessage = null; rewardFrom = null; }
     setText(el.clock, view.clock);
     const mood = moodOf();
-    setHtml(el.mood, `${iconFor('mood', mood.tone, mood.icon)}<span>${esc(mood.word)}</span>`);
+    if (setHtml(el.mood, `${iconFor('mood', mood.tone, mood.icon)}<span>${esc(mood.word)}</span>`)) el.mood.setAttribute('aria-label', `Mood: ${mood.word}. Open your needs`);
     el.mood.classList.toggle('is-uneasy', mood.tone === 'warn');
     el.mood.classList.toggle('is-bad', mood.tone === 'bad');
     el.mood.classList.toggle('is-neutral', mood.tone === 'neutral');
@@ -681,12 +737,21 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     for (const need of view.needs.order) {
       const meter = root.querySelector(`[data-need="${need}"]`), value = Math.round(state.needs[need]);
       needs[need] = value;
-      if (meter.getAttribute('aria-valuenow') !== String(value)) { meter.style.setProperty('--need', `${value}%`); meter.setAttribute('aria-valuenow', String(value)); meter.classList.toggle('is-low', value < 35); }
+      if (meter.getAttribute('aria-valuenow') !== String(value)) {
+        // Low (under 35) and critical (under 20) are said three ways: the colour, a mark beside the bar, and the word a screen reader hears.
+        const low = value < LOW_NEED, critical = value < CRITICAL_NEED;
+        meter.style.setProperty('--need', `${value}%`); meter.setAttribute('aria-valuenow', String(value)); meter.setAttribute('aria-valuetext', `${value}%${critical ? ', critical' : low ? ', low' : ''}`);
+        meter.classList.toggle('is-low', low); meter.classList.toggle('is-critical', critical);
+        meter.parentNode.classList.toggle('is-low', low); meter.parentNode.classList.toggle('is-critical', critical);
+      }
       // A gain, or a sharp drop, is highlighted once; the slow decay is not.
       const before = lastNeeds?.[need];
       if (before !== undefined && (value - before >= 1 || before - value >= 3)) flash(meter.parentNode, value > before ? 'is-up' : 'is-down');
     }
     lastNeeds = needs;
+    reward();
+    // On a phone the strip shows only the needs that are low; with none low it steps aside (the mood in the top bar opens them all).
+    el.needs.classList.toggle('has-low', Object.values(needs).some((value) => value < LOW_NEED));
 
     const hud = placed('hud');
     for (const [slot, target] of Object.entries(el.slots)) {
@@ -709,6 +774,10 @@ export function createShell({ root, dialog, dialogContent, panels, host }) {
     // A trip itself is shown on the map: the host sends the shell there for as long as one runs (onMode in src/life-main.js).
     setHtml(el.progress, progressHtml());
     root.classList.toggle('is-expanded', expanded && mode === 'venue');
+    // The cards rise in once, when the rail is opened — not on the redraws that follow while it stays open.
+    const opened = expanded && mode === 'venue';
+    root.classList.toggle('is-opening', opened && !wasExpanded);
+    wasExpanded = opened;
     root.dataset.mode = mode;
 
     const navPanel = mode !== 'venue' ? byId.get(mode) : null;

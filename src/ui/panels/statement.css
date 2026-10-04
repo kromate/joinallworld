@@ -2,7 +2,7 @@
 .statement-hero{--hero:var(--app-tint,#475569)}
 .statement-sums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-2);margin:0 0 var(--s-2)}
 .statement-sums div{display:grid;gap:2px;align-content:start;padding:10px 12px;border-radius:var(--r-sm);background:#fff;box-shadow:var(--e-1),var(--ring)}
-.statement-sums dt{font-size:11px;font-weight:600;color:var(--c-muted)}.statement-sums dt small{display:block;font-weight:400;font-size:10px;line-height:1.3}
+.statement-sums dt{font-size:11px;font-weight:600;color:var(--c-muted)}.statement-sums dt small{display:block;font-weight:400;font-size:11px;line-height:1.3}
 .statement-sums dd{margin:0;font-size:14px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;order:-1}
 .statement-ok,.statement-bad{margin:0 0 var(--s-2)!important;padding:9px 12px;border-radius:var(--r-sm);font-size:12.5px!important;line-height:1.4!important;font-weight:600}
 .statement-ok{background:var(--c-green-soft);color:var(--c-green-dark)}

@@ -592,6 +592,8 @@ test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit a
       bench.key('walk-up'); bench.pump(20); bench.keyUp('walk-up'); bench.pump(400);
       assert.ok(Math.hypot(world.diagnostics().avatar.x - out.avatar.x, world.diagnostics().avatar.z - out.avatar.z) > 0.3, `${id}: not stuck at the entrance`);
       // A full turn in eight drags: the camera goes all the way round; a room shows and hides its walls on the way.
+      // (From the whole-venue view: the view starts close to the player, where the camera can be inside the room.)
+      for (let i = 0; i < 12 && world.diagnostics().camera.asked < world.diagnostics().camera.whole - 0.01; i++) { world.zoom(-1); bench.pump(900); }
       const seen = new Set();
       let turned = 0, last = world.diagnostics().camera.yaw;
       for (let i = 0; i < 8; i++) {
@@ -605,6 +607,7 @@ test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit a
       }
       assert.ok(Math.abs(turned - Math.PI * 2) < 0.2, `${id}: turned ${turned.toFixed(2)} rad — a full orbit`);
       if (spawn.walls) assert.equal(seen.size, 4, `${id}: each wall was hidden while the camera was behind it, and shown again (${[...seen].join(' ')})`);
+      world.recentre(); bench.pump(900);
       assert.deepEqual(world.diagnostics().walls, spawn.walls, `${id}: back where it started, the walls are as they were`);
       // Zoom limits both ways.
       for (let i = 0; i < 60; i++) bench.send('wheel', { deltaY: -400, deltaMode: 0 });

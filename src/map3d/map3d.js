@@ -48,8 +48,9 @@ export function webglAvailable(doc = globalThis.document) {
 
 export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
-  reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null } = {}) {
+  reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden } = {}) {
   const doc = globalThis.document?.createElement ? globalThis.document : null;
+  const pageHidden = tabHidden || (() => Boolean(doc && doc.hidden));
   const kit = createKit(), { THREE } = kit;
   const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.shadowMap.enabled = false;
@@ -98,7 +99,8 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs = [], gaps = [];
   let trip = null, route = null, returning = null, settling = false, pendingArrive = null, dueAt = -Infinity, tripCamera = true, pose = null;
   const clock = createTripClock();
-  const shown = () => !destroyed && !lost && !container.hidden && !(doc && doc.hidden) && size.width > 0;
+  let heldTime = null;
+  const shown = () => !destroyed && !lost && !container.hidden && !pageHidden() && size.width > 0;
   const placeKey = (id) => (id === 'home' ? `home:${city.places.home.house}` : id);
 
   // ---- drawing: on demand, and only as long as something moves ----------------------------------
@@ -119,7 +121,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
   }
   function draw(t = now()) {
     // The player's piece grows as the view pulls back, so it can always be found — and a trip always followed.
-    actor.setSize(clamp(rig.view.distance / 95, 1, 3.4));
+    actor.setSize(clamp(rig.view.distance / 62, 1.2, 4));
     renderer.render(scene, camera);
     renderCount += 1;
     placeLabels();
@@ -508,7 +510,8 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
     if (layers.sea && seaWasOff && pack.bounds.sea) { const sea = pack.bounds.sea; userMoved = true; motion(rig.framing([{ x: sea.x0, z: sea.z0 - 14 }, { x: sea.x1, z: sea.z0 - 14 }, { x: sea.x0, z: sea.z1 }, { x: sea.x1, z: sea.z1 }], { pad: 1.1 }), 0.7); }
     request();
   }
-  function onVisibility() { if (doc.hidden) { stop(); if (settling) finishArrival(); } else request(); }
+  /** The tab was hidden or shown again: hidden, the loop stops at once (and a pending arrival is not left waiting for frames). */
+  function onVisibility() { if (pageHidden()) { stop(); if (settling) finishArrival(); } else request(); }
   function onLost(event) { event.preventDefault?.(); lost = true; stop(); if (settling) finishArrival(); onContextLost(); }
   const listeners = [];
   const listen = (target, type, handler, options) => { if (!target?.addEventListener) return; target.addEventListener(type, handler, options); listeners.push(() => target.removeEventListener(type, handler, options)); };
@@ -533,7 +536,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       state = next;
       let changed = city.setHome(state?.travel?.home);
       if (changed) { labelKey = ''; if (overlays.set(layers, data)) syncChips(); }
-      changed = applyTime(timeOfDay(state?.t ?? 0)) || changed;
+      changed = applyTime(heldTime || timeOfDay(state?.t ?? 0)) || changed;
       const nextTrip = tripOf(state);
       if (nextTrip && city.places[nextTrip.to]) {
         const fresh = clock.sync(nextTrip, now());
@@ -546,7 +549,7 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
           settling = true;
           rig.ease({ x: pose.x, z: pose.z, distance: clamp(rig.view.distance * 0.6, MIN_DISTANCE, 80) }, 0.5);
         } else if (state.location === trip.from && shown() && !reducedMotion && pose) {
-          returning = { p: pose.progress ?? 0, rate: Math.max(1.6, (pose.progress ?? 0) / 0.7) };
+          returning = { p: pose.progress ?? 0, rate: Math.max(0.35, (pose.progress ?? 0) / 0.9) };   // back where it started in under a second
         } else clearTrip();
       } else if (!trip) standHere();
       updateLabels();
@@ -555,11 +558,15 @@ export function createMap3D(container, { pack, cityId = pack?.id, onSelectVenue 
       request();
     },
     setPlayer(player) { if (actor.setPlayer(player)) { if (!trip && state) standHere(); request(); } },
+    /** The page's visibility changed (the host of a test calls this; in a browser the document's own event does). */
+    visibility: onVisibility,
     /** The container was shown, hidden or resized. */
     resize() { if (layout()) { updateLabels(); request(); } },
     /** Run `done` once the arrival has been shown (at once when there is nothing to show). */
     arrive(done) { if (settling) pendingArrive = done; else done(); },
     select(id) { choose(id); },
+    /** For tests and screenshots: hold the lighting at 'day' | 'dusk' | 'night' (null follows Lagos time again). */
+    holdTime(next) { heldTime = next; if (applyTime(next || timeOfDay(state?.t ?? 0))) request(); },
     /** What the Map panel says, for callers that do not go through the window event (tests, a host replaying it). */
     ui(detail) { onUi({ detail }); },
     /** For tests and the diagnostics panel. */

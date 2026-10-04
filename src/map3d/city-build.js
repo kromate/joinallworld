@@ -236,7 +236,8 @@ export function buildCity(kit, pack, network, { venues = {}, soon = {} } = {}) {
   // Home: every district's lot is laid out; the house itself is its own small mesh, moved to the player's lot.
   for (const [house, spot] of Object.entries(pack.homes)) {
     const node = network.places[`home:${house}`];
-    b.box(spot.x, 0.06, spot.z, PLINTH + 0.4, 0.12, PLINTH + 0.4, '#a7cf8c');
+    // An empty lot is a small garden: three trees, so it never reads as a hole in the city.
+    for (const [dx, dz, size] of [[-2.2, -1.8, 1.1], [2, -0.6, 0.9], [-0.6, 2, 1]]) { b.cyl(spot.x + dx, 0.5 * size, spot.z + dz, 0.14 * size, size, '#6b4f36', { seg: 5 }); b.ico(spot.x + dx, 1.5 * size, spot.z + dz, 0.85 * size, 0.95 * size, 0.85 * size, '#3f8a57'); }
     clear.push({ x: spot.x, z: spot.z, r: PLINTH * 0.78 });
     path({ x: spot.x, z: spot.z, gate: node.gate });
   }

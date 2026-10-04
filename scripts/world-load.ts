@@ -39,6 +39,13 @@ import { createShardStore } from '../server/world/shards.ts';
 import * as registry from '../server/world/registry.ts';
 import { ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE } from '../src/game/content/world.ts';
 
+/** The session cookie a response set; a missing one is a failed setup, not an empty cookie. */
+const cookieOf = (headers: { get(name: string): string | null }): string => {
+  const cookie = headers.get('set-cookie')?.split(';')[0];
+  if (!cookie) throw new Error('the session response set no cookie');
+  return cookie;
+};
+
 /** What this script uses of the server's world layer, shard store and main store (server/ is still untyped JavaScript). */
 interface ShardStats { loads: number; appends: number; records: number; bytes: number; open: number }
 interface ResidentSeed { id: string; name: string; day: number; hidden: boolean; home: string; style: number; until: number }
@@ -93,7 +100,7 @@ try {
   for (let i = 0; i < PLAYERS; i++) {
     const address = `10.9.${Math.floor(i / 250)}.${(i % 250) + 1}`;
     const { res } = await call('/api/session', { 'X-Forwarded-For': address }, { name: `Load ${i + 1}` });
-    people.push({ Cookie: (res.headers.get('set-cookie') ?? '').split(';')[0] ?? '', 'X-Forwarded-For': address });
+    people.push({ Cookie: cookieOf(res.headers), 'X-Forwarded-For': address });
   }
   const lat: Record<string, number[]> = {}, steps: Record<string, number> = {}, errors: Record<string, number> = {};
   let exact = false;   // steps are only attributable to one request while requests do not overlap (the pass after the run)
@@ -137,7 +144,7 @@ try {
   }
   { // A newcomer on a quiet server: what one allocation walks.
     const { res } = await call('/api/session', { 'X-Forwarded-For': '10.99.0.1' }, { name: 'Late' });
-    await timed('choose LGA (allocates a house)', '/api/action', { Cookie: (res.headers.get('set-cookie') ?? '').split(';')[0] ?? '', 'X-Forwarded-For': '10.99.0.1' }, { actionId: `${Date.now()}:${randomUUID()}`, cityId: 'lagos', type: 'estate.set-lga', payload: { lga: 'ikeja', via: 'manual' } });
+    await timed('choose LGA (allocates a house)', '/api/action', { Cookie: cookieOf(res.headers), 'X-Forwarded-For': '10.99.0.1' }, { actionId: `${Date.now()}:${randomUUID()}`, cityId: 'lagos', type: 'estate.set-lga', payload: { lga: 'ikeja', via: 'manual' } });
     await world.idle();
   }
   const after = { shards: server.shards.stats(), store: server.store.stats() };

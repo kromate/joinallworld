@@ -5,7 +5,7 @@
  */
 
 /** The fields of a player's report that the Phone reads. Every one is optional: the server's list is trusted no further than that. */
-export interface ReportLike { id?: string; at?: number; updatedAt?: number; note?: string; status?: string }
+export interface ReportLike { id?: string; at?: number | null; updatedAt?: number | null; note?: string; status?: string }
 
 /** Open ids of the "How it works" disclosures after one toggle. Returns the SAME set when nothing changed. */
 export function toggled(open: Set<string>, id: string, isOpen: unknown): Set<string> {
@@ -32,8 +32,9 @@ export function unseenNews(notices: unknown, { readAt = 0, since = null }: { rea
 }
 
 /** A report with something the player has not been told: a moderator's note or a status change. */
-// An absent time compares as NaN, so a report without both times is answered only by its note (as before).
-export const reportAnswered = (report?: ReportLike | null): boolean => Boolean(report?.note) || (report?.updatedAt ?? NaN) > (report?.at ?? NaN);
+// Comparison as the original wrote it (`updatedAt > at`): null coerces to 0, an absent (undefined) time is NaN and never compares.
+const asTime = (time: number | null | undefined): number => (time === null ? 0 : time ?? NaN);
+export const reportAnswered = (report?: ReportLike | null): boolean => Boolean(report?.note) || asTime(report?.updatedAt) > asTime(report?.at);
 /** Reports whose answer has not been read on this device. `seen` is { [reportId]: updatedAt already read }. */
 export function unreadReports(reports: unknown, seen: Record<string, unknown> | null = {}): number {
   return (Array.isArray(reports) ? (reports as ReportLike[]) : []).filter((report) => reportAnswered(report) && (Number(seen?.[String(report.id)]) || 0) < (report.updatedAt ?? NaN)).length;

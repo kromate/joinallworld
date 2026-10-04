@@ -585,6 +585,19 @@ test('chance activities: the startup pitch pays its grant once; the ATM gamble c
   assert.equal(booked.moodlets.some((moodlet) => moodlet.id === 'booked'), false);
 });
 
+test('a one-time outcome without a repeat outcome throws instead of paying the grant again', () => {
+  const success: { repeat?: unknown } = need(ACTIVITY_OUTCOMES['hub-pitch']).success, repeat = success.repeat;
+  delete success.repeat;
+  try {
+    let threw = 0;
+    for (let i = 0; i < 40 && !threw; i++) {
+      const attempt = createLife({ location: 'cchub', spot: 'stage', cash: 5000, skills: { coding: 1000, charisma: 5500 }, needs: { energy: 100 }, travel: { funded: true } }, at(DRY_NOON, `broken-${i}`));
+      try { run(attempt, 'hub-pitch', DRY_NOON, `broken-${i}`); } catch (error) { assert.match(String(error), /hub-pitch.*no repeat outcome/); threw += 1; assert.equal(attempt.cash, 4000, 'nothing was paid before the refusal'); }
+    }
+    assert.equal(threw, 1, 'a success on an already-paid grant throws');
+  } finally { success.repeat = repeat; }
+});
+
 test('daily gig limit: paid gigs across the whole city stop at the limit and reopen at Lagos midnight; shifts are untouched', () => {
   const start = MONDAY_NOON;
   let now = start;

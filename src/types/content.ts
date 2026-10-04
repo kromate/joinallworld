@@ -1099,7 +1099,7 @@ export interface CityRules {
   status: 'open' | 'soon'
   /** What the city calls its districts. */
   unit: string
-  units: LgaDefinition[]
+  units: readonly LgaDefinition[]
   /** Where trips to other cities leave from, per mode. */
   hub: Record<CityLinkMode, string>
 }

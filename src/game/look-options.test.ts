@@ -57,7 +57,10 @@ test('the beta options are add-only, priced, labelled and known to the scene', (
     assert.equal(APPEARANCE.boutiqueOnly.accessories.includes(id), !ACCESSORY_BASICS.includes(id), `${id}: a starter or sold in the Boutique`);
   }
   assert.deepEqual([APPEARANCE.faces, APPEARANCE.expressions], [LOOK_OPTIONS.face, LOOK_OPTIONS.expression]);
-  for (const kind of ['hair', 'outfit', 'accessories'] as const) for (const id of APPEARANCE.boutiqueOnly[kind]) assert.ok((BOUTIQUE_PRICES[kind][id] ?? 0) > 0, `${id} is for sale`);
+  for (const [kind, list] of Object.entries(APPEARANCE.boutiqueOnly)) {
+    assert.ok(kind === 'hair' || kind === 'outfit' || kind === 'accessories', `${kind} is a priced kind`);
+    for (const id of list) assert.ok((BOUTIQUE_PRICES[kind][id] ?? 0) > 0, `${id} is for sale`);
+  }
 });
 
 test('a look without the optional fields is the eight fields it always was; with them, only what is set is stored', () => {

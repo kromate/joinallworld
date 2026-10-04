@@ -224,8 +224,9 @@ function upgrade(state: LifeState, payload: Record<string, unknown>, ctx: LifeCo
   if (e.upgrade) return fail(state, 'upgrade_running', `The builders are still working on your ${HOUSE_TIERS[e.upgrade.to].label}: about ${Math.ceil((e.upgrade.doneAt - now) / 60000)} minutes to go.`);
   if (to.rank <= current.rank) return fail(state, 'not_an_upgrade', `You already have a ${current.label}. Choose a bigger house.`);
   const cost = tierCost(e.city, e.lga, to.id);
-  // BUG: a city without local governments has no cost (null) and no lga name, so this refusal throws there instead of failing; unreachable until such a city opens.
-  if (cost === null || !canAfford(state, cost)) return fail(state, 'insufficient_funds', `A ${to.label} in ${lgaName(e.city, e.lga)} costs ${naira(cost)}; you have ${naira(state.cash)} (${naira((cost ?? 0) - state.cash)} short).`);
+  // A city without local governments has no price and no lga name: refuse instead of describing a cost.
+  if (cost === null) return fail(state, 'insufficient_funds', `A ${to.label} cannot be priced: ${cityRules(e.city)?.name ?? 'this city'} has no local governments to build in yet.`);
+  if (!canAfford(state, cost)) return fail(state, 'insufficient_funds', `A ${to.label} in ${lgaName(e.city, e.lga)} costs ${naira(cost)}; you have ${naira(state.cash)} (${naira(cost - state.cash)} short).`);
   debit(state, cost, `House upgrade: ${to.label} at ${where(e)}`, ctx);
   e.upgrade = { to: to.id, cost, startedAt: now, doneAt: now + to.buildSeconds * 1000 };
   state.message = `The builders have started on your ${to.label}. Ready in about ${Math.ceil(to.buildSeconds / 60)} minutes — it finishes even while you are away.`;

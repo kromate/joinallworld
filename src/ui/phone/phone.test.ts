@@ -108,6 +108,18 @@ test('opening the phone asks for the reports once, then only while an answer can
   assert.equal(unreadReports(undefined), 0);
 });
 
+test('reportAnswered compares as the original did: a null time is 0, an absent one never compares', async () => {
+  const { reportAnswered } = await import('./logic.ts');
+  assert.equal(reportAnswered({ at: null, updatedAt: 5 }), true, 'null coerces to 0, so a numeric update answers it');
+  assert.equal(reportAnswered({ at: 0, updatedAt: 5 }), true);
+  assert.equal(reportAnswered({ at: 5, updatedAt: 5 }), false);
+  assert.equal(reportAnswered({ at: null, updatedAt: null }), false);
+  assert.equal(reportAnswered({ updatedAt: 5 }), false, 'an absent `at` is NaN, as before');
+  assert.equal(reportAnswered({ at: 5 }), false);
+  assert.equal(reportAnswered({ updatedAt: 5, note: 'Done.' }), true, 'a note always answers');
+  assert.equal(reportAnswered(null), false);
+});
+
 test('checkReports fetches once when the phone opens, without the app, and shows the badge', async (t) => {
   const real = globalThis.localStorage;
   t.after(() => { Object.defineProperty(globalThis, 'localStorage', { value: real, configurable: true, writable: true }); });

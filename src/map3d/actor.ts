@@ -203,9 +203,6 @@ export function createActor(kit: MapKit, { travelVehicle = null }: { travelVehic
       if (disposed) return;
       disposed = true;
       releaseVehicle();
-      if (disposed) return;
-      disposed = true;
-      releaseVehicle();
       for (const built of [frames?.stand, frames?.stride, seated]) built?.userData.dispose();
       for (const mesh of [dot, ring]) { mesh.geometry.dispose(); mesh.material.dispose(); }
       group.parent?.remove(group);

@@ -299,7 +299,11 @@ function rollActivity(state: LifeState, id: ActivityId, rule: ActivityOutcomeRul
   let outcome: ActivitySuccessOutcome = success ? rule.success : rule.failure;
   const label = findActivity(id)?.def.label ?? id;
   if (success && outcome.once) {
-    if (state.travel[outcome.once]) outcome = outcome.repeat ?? outcome; // every `once` outcome in content has a `repeat`
+    if (state.travel[outcome.once]) {
+      // Every `once` outcome in content has a `repeat`; paying the one-time reward again would be silent corruption.
+      if (!outcome.repeat) throw new Error(`activity ${id}: the one-time outcome "${outcome.once}" has no repeat outcome`);
+      outcome = outcome.repeat;
+    }
     else state.travel[outcome.once] = true;
   }
   applyOutcome(state, outcome, label, ctx);

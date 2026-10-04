@@ -32,6 +32,13 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { createServer } from '../server/server.ts';
 
+/** The session cookie a response set; a missing one is a failed setup, not an empty cookie. */
+const cookieOf = (headers: { get(name: string): string | null }): string => {
+  const cookie = headers.get('set-cookie')?.split(';')[0];
+  if (!cookie) throw new Error('the session response set no cookie');
+  return cookie;
+};
+
 /** Counters the store keeps (server/store.ts is untyped). */
 interface StoreStats { writes: number; bytes: number; transactions: number }
 interface LoadServer extends Server {
@@ -92,7 +99,7 @@ export async function runLoad({ players = 100, seconds = 10, pollMs = 1000, acti
       const { response } = await call(null, '/api/session', { name: `Player ${index + 1}` }, { 'X-Forwarded-For': address });
       // A failed session request stops the run (the original crashed with a TypeError on `response.headers`).
       if (!response) throw new TypeError('session request failed');
-      people.push({ headers: { Cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '', 'X-Forwarded-For': address }, step: index % SCRIPT.length });
+      people.push({ headers: { Cookie: cookieOf(response.headers), 'X-Forwarded-For': address }, step: index % SCRIPT.length });
     }
     const setup = server.store.stats();
     const until = performance.now() + seconds * 1000;

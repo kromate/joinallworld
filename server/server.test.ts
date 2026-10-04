@@ -346,6 +346,9 @@ test('out-of-range signal error identifies public peer without echoing cookie se
   x.ws.send(JSON.stringify({ type: 'move', x: 20, z: 0 })); await x.next(); await y.next();
   x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'far' } })); const denied = await x.next(); assert.equal(denied.code, 'peer_out_of_range'); assert.equal(denied.to, b.id);
   x.ws.send(JSON.stringify({ type: 'signal', to: a.cookie.slice(4), data: { candidate: 'secret' } })); const own = await x.next(); assert.equal(own.to, undefined); assert.ok(!JSON.stringify(own).includes(a.cookie.slice(4)));
+  // The caller's own public id is not echoed either, and no frame of this exchange carries the secret.
+  x.ws.send(JSON.stringify({ type: 'signal', to: a.id, data: { candidate: 'self' } })); const self = await x.next(); assert.equal(self.to, undefined); assert.ok(!JSON.stringify(self).includes(a.cookie.slice(4)));
+  x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'far again' } })); const again = await x.next(); assert.equal(again.to, b.id); assert.ok(!JSON.stringify(again).includes(a.cookie.slice(4)));
 });
 
 

@@ -164,7 +164,7 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
   try {
     let html = await render(messages)
     assert.match(html, /<div class="messages panel-fill"/, 'a conversation takes the whole app area')
-    assert.match(html, /<h3[^>]*>Ada &lt;b&gt;bold&lt;\/b&gt;<small[^>]*>Direct message<\/small>/)
+    assert.match(html, /<h3[^>]*><button[^>]*>Ada &lt;b&gt;bold&lt;\/b&gt;<\/button><small[^>]*>Direct message<\/small>/)
     assert.match(html, /class="bubble"[^>]*>(?:<!--.*?-->)*<span[^>]*>How far\?<\/span>/)
     assert.match(html, /class="is-mine bubble"[^>]*>(?:<!--.*?-->)*<span[^>]*>I dey<\/span><small[^>]*>[^<]*(?:<!--.*?-->)* · Sent/)
 

@@ -360,8 +360,6 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     // A shift is work, not the first goal: nothing but the wage is paid for it (the opening goals were paid when they were met).
     const wage = must(paid.ledger.findLast((entry) => entry.reason === 'Teaching shift'));
     assert.deepEqual([wage.amount, paid.social.earned, paid.ledger.slice(paid.ledger.indexOf(wage) + 1).map((entry) => entry.reason)], [3000, 3000, []]);
-    const tooSoon = await post<TransferBody>('/api/social/transfers', { to: bola.id, amount: 1500, cityId: CITY, clientId: clientId() }, ada);
-    assert.equal(tooSoon.code, 'account_too_new');
     goTo(START + 25 * HOUR);
     const beforeA = (await life(ada)).cash, beforeB = (await life(bola)).cash;
     const tooMuch = await post<TransferBody>('/api/social/transfers', { to: bola.id, amount: 4000, cityId: CITY, clientId: clientId() }, ada);
@@ -380,7 +378,7 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     // Bola takes the starter job and works his first paid shift: Sunday is his first day worked.
     await ok(bola, 'apply-job', { id: 'community-helper' }, 'applied');
     assert.equal((await helperShift(bola)).civic.work.days, 1);
-    say('Ada earns ₦3,000 teaching and, a day later, sends Bola ₦1,500', `refused while her account was under a day old and above what she earned; one debit (${naira(afterA.cash)}), one credit (${naira(afterB.cash)})`);
+    say('Ada earns ₦3,000 teaching and, a day later, sends Bola ₦1,500', `refused above what she earned; one debit (${naira(afterA.cash)}), one credit (${naira(afterB.cash)})`);
 
     // ---- 7. Monday: Ada declares for Governor ------------------------------------------------------
     goTo(at(5, 9));

@@ -42,8 +42,8 @@
 .atlas-marker svg{width:20px;height:20px}
 .atlas-marker[hidden]{display:none}
 
-/* ---- the play column: the same centred column as the HUD (--play-x, src/ui/tokens.css), so the breadcrumb lines up with the wordmark and the sheet with the right-hand chips ---- */
-.atlas-frame{position:absolute;z-index:5;top:74px;bottom:92px;left:50%;width:calc(100% - 28px - 2 * var(--play-x,0px));transform:translateX(-50%);display:grid;grid-template-columns:244px minmax(0,1fr) 352px;grid-template-rows:auto minmax(0,1fr);gap:10px 14px;pointer-events:none}
+/* ---- the frame follows the screen edges, like the HUD ---- */
+.atlas-frame{position:absolute;zoom:var(--ui-zoom);z-index:5;top:74px;bottom:92px;left:14px;right:14px;display:grid;grid-template-columns:244px minmax(0,1fr) 352px;grid-template-rows:auto minmax(0,1fr);gap:10px 14px;pointer-events:none}
 .atlas-frame>*{pointer-events:auto}
 .atlas-frame>.atlas-stage{pointer-events:none;grid-column:2;grid-row:2;position:relative;min-height:0}
 .atlas-stage>*{pointer-events:auto}

@@ -53,7 +53,7 @@
 .cmap.is-compact .cmap-art text{display:none}
 
 /* View controls: zoom in, zoom out, whole city, find me */
-.cmap-controls{position:absolute;right:14px;bottom:104px;display:grid;gap:6px;z-index:8}
+.cmap-controls{position:absolute;zoom:var(--ui-zoom);right:14px;bottom:104px;display:grid;gap:6px;z-index:8}
 .cmap-controls button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid #fff;border-radius:50%;background:#fffffff5;color:#20232c;box-shadow:0 2px 8px #0003;cursor:pointer}
 .cmap-controls button{touch-action:manipulation}
 .cmap-controls button svg{width:20px;height:20px}
@@ -105,7 +105,7 @@ button.cmap-house{cursor:pointer}
 @media(prefers-reduced-motion:reduce){.cmap-trip-dot{animation:none}}
 
 /* The switch between the 3D map and this one (src/map3d/index.js puts it over whichever is showing) */
-.cmap-switch{position:absolute;right:calc(14px + var(--play-x,0px));bottom:60px;z-index:9;min-height:36px;padding:0 14px;border:1px solid #fff;border-radius:18px;background:#fffffff5;color:#20232c;font:700 12px var(--font,'DM Sans',Arial,sans-serif);box-shadow:0 2px 8px #0003;cursor:pointer;touch-action:manipulation}
+.cmap-switch{position:absolute;zoom:var(--ui-zoom);right:14px;bottom:60px;z-index:9;min-height:36px;padding:0 14px;border:1px solid #fff;border-radius:18px;background:#fffffff5;color:#20232c;font:700 12px var(--font,'DM Sans',Arial,sans-serif);box-shadow:0 2px 8px #0003;cursor:pointer;touch-action:manipulation}
 .cmap-switch:focus-visible{outline:3px solid #14532d;outline-offset:2px}
 @media(max-width:720px){.cmap-switch{right:auto;left:8px;bottom:calc(var(--map-dock,150px) + 4px);min-height:44px}}
 

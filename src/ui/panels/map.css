@@ -110,7 +110,7 @@
 /* Wide screens: the sheet is docked at the left, clear of the map */
 @media(min-width:721px){
   /* (The trip bar is not docked: a running trip is shown in the bottom-centre stack with every other live status — shell.css.) */
-  .map-panel.map-overview,.map-panel.map-card{position:fixed;left:calc(14px + var(--play-x));top:70px;width:330px;max-height:calc(100dvh - 84px)}
+  .map-panel.map-overview,.map-panel.map-card{position:fixed;left:14px;top:70px;width:330px;max-height:calc(100dvh - 84px)}
   .map-overview{grid-template-rows:auto auto minmax(0,1fr)}
   .map-list{max-height:none}
   .map-more{grid-template-rows:auto;overflow-y:auto}

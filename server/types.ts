@@ -712,8 +712,6 @@ export interface ContextChecks {
   blocked?: (a: string, b: string) => boolean
   /** Social: is anybody blocked at all? */
   anyBlocks?: () => boolean
-  /** Social: everyone in a block with this player, whichever of the two made it (in memory). */
-  blockedWith?: (publicId: string) => Iterable<string>
   /** Moderation. */
   muted?: (publicId: string) => MuteVerdict | null
   /** World: throws 409 `city_moved` when the session's character travelled away from `cityId` and has no life left there. */

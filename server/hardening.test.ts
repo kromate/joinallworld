@@ -3,7 +3,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
-import type { Device } from './test-fixture.ts';
+import type { Device, TestSocket } from './test-fixture.ts';
+import type { LiveCity, LiveSnapshotFrame } from '../src/types/live.ts';
 
 type Fixture = Awaited<ReturnType<typeof fixture>>;
 interface Reply { status: number; [field: string]: unknown }
@@ -41,4 +42,31 @@ test('a direct chat takes messages from its two players only, and shows itself t
   assert.deepEqual(listed.conversations, []);
   assert.equal(JSON.stringify(listed).includes('Six it is'), false);
   assert.equal((await get(f, `/api/social/conversations/${conv}`, chi)).code, 'not_a_member');
+});
+
+/** Send `live-watch` and answer the snapshot it is answered with. */
+async function liveSnapshot(peer: TestSocket): Promise<LiveSnapshotFrame> {
+  peer.ws.send(JSON.stringify({ type: 'live-watch', cityId: 'lagos' }));
+  for (let i = 0; i < 50; i++) { const frame = await peer.next(); if (frame.type === 'live-snapshot') return frame; }
+  throw new Error('No snapshot');
+}
+const counts = (city: LiveCity | null): Record<string, number> => ({ ...(city?.venues ?? {}), moving: city?.moving ?? 0 });
+
+test('the counts of a city are the same for every watcher, so a block cannot be used to find one player in them', async t => {
+  const f = await fixture(t);
+  const [bola, cy, mallory] = await people(f, ['Bola', 'Cyril', 'Mallory']) as [Device, Device, Device];
+  for (const who of [bola, cy, mallory]) await get(f, '/api/life?city=lagos', who);
+  // Two strangers to Mallory are out in the city: one walking to the library, one standing where a life starts.
+  await f.socket(bola); await f.socket(cy);
+  assert.equal((await f.action(bola.cookie, { type: 'travel', id: 'library', mode: 'trek' })).ok, true);
+  const m = await f.socket(mallory);
+  let before: Record<string, number> = {};
+  for (let i = 0; i < 100 && before.moving !== 1; i++) { before = counts((await liveSnapshot(m)).city); await new Promise(resolve => setTimeout(resolve, 20)); }
+  assert.equal(before.moving, 1, 'one player is on a trip');
+
+  // Mallory blocks one of them, then the other blocks Mallory: what Mallory is given does not change either time.
+  assert.equal((await post(f, '/api/social/block', { id: bola.id, cityId: 'lagos' }, mallory)).ok, true);
+  assert.deepEqual(counts((await liveSnapshot(m)).city), before);
+  assert.equal((await post(f, '/api/social/block', { id: mallory.id, cityId: 'lagos' }, cy)).ok, true);
+  assert.deepEqual(counts((await liveSnapshot(m)).city), before);
 });

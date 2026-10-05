@@ -128,19 +128,16 @@ function buildService(ctx: RouteContext) {
   const endedIn = (s: SocialCollection): Ended => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = Object.assign([] as VisitEnd[], { blocks: [] as BlockChange[], pushes: [] as PushList })); } return list; };
   // ---- blocks, in memory (see header) ----------------------------------------------------------
   const blockIndex = new Map<string, Set<string>>(); // blocker → Set<blocked>
-  const blockedBy = new Map<string, Set<string>>(); // blocked → Set<blocker>, kept in step with blockIndex
-  const unlist = (blocker: string, target: string): void => { const set = blockedBy.get(target); if (set) { set.delete(blocker); if (!set.size) blockedBy.delete(target); } };
   const blocked = (a: string, b: string): boolean => Boolean(blockIndex.get(a)?.has(b) || blockIndex.get(b)?.has(a));
   function applyBlockChange(change: BlockChange): void {
     const [op, a, b] = change;
-    if (op === 'block') { if (!blockIndex.has(a)) blockIndex.set(a, new Set()); blockIndex.get(a)!.add(b!); if (!blockedBy.has(b!)) blockedBy.set(b!, new Set()); blockedBy.get(b!)!.add(a); }
-    else if (op === 'unblock') { blockIndex.get(a)?.delete(b!); if (!blockIndex.get(a)?.size) blockIndex.delete(a); unlist(a, b!); }
-    else if (op === 'forget') { for (const target of blockIndex.get(a) ?? []) unlist(a, target); blockIndex.delete(a); }
+    if (op === 'block') { if (!blockIndex.has(a)) blockIndex.set(a, new Set()); blockIndex.get(a)!.add(b!); }
+    else if (op === 'unblock') { blockIndex.get(a)?.delete(b!); if (!blockIndex.get(a)?.size) blockIndex.delete(a); }
+    else if (op === 'forget') blockIndex.delete(a);
   }
   if (ctx.checks) {
     ctx.checks.blocked = blocked;
     ctx.checks.anyBlocks = () => blockIndex.size > 0;
-    ctx.checks.blockedWith = (id) => new Set([...(blockIndex.get(id) ?? []), ...(blockedBy.get(id) ?? [])]);
   }
   ctx.startup?.push(ctx.store.read((db) => Object.entries(db.social?.players ?? {}).map(([id, player]): [string, string[]] => [id, Object.keys(player?.blocked ?? {})]))
     .then((rows) => { for (const [id, list] of rows) for (const other of list) applyBlockChange(['block', id, other]); }));
@@ -798,7 +795,8 @@ function buildService(ctx: RouteContext) {
     // ---- messages --------------------------------------------------------------------------
     conversations(db: Db, session: SessionRecord) {
       const { s, p, id } = enter(db, session);
-      const list = Object.keys(p.convs).map((key) => s.convs[key]).filter((conv): conv is ConversationRecord => Boolean(conv && !(conv.kind === 'dm' && p.blocked[conv.members.find((member) => member !== id)!])))
+      // Only a conversation the caller is a member of is listed, whatever their own list holds.
+      const list = Object.keys(p.convs).map((key) => s.convs[key]).filter((conv): conv is ConversationRecord => Boolean(conv && conv.members.includes(id) && !(conv.kind === 'dm' && p.blocked[conv.members.find((member) => member !== id)!])))
         .map((conv) => summary(s, conv, id)).sort((a, b) => (b.last?.at ?? 0) - (a.last?.at ?? 0));
       return yes('ok', { conversations: list, unread: list.reduce((sum, conv) => sum + conv.unread, 0) });
     },
@@ -843,6 +841,8 @@ function buildService(ctx: RouteContext) {
       const refused = mutedRefusal(id) ?? screened(message, 'Your message');
       if (refused) return refused;
       if (!ctx.allow(`social:dm:${id}`, 30)) return no('rate_limited', 'You are sending messages too quickly. Wait a moment, then retry.');
+      // A direct chat named by its id belongs to its two players: anyone else is answered as for a chat that does not exist.
+      if (conv?.kind === 'dm' && !conv.members.includes(id)) return no('not_a_member', 'You are not in that conversation.');
       const partner = to ?? (conv?.kind === 'dm' ? conv.members.find((member) => member !== id) : null);
       if (partner) {
         const { target, refusal } = other(s, id, partner);

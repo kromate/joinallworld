@@ -16,7 +16,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from './host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
@@ -27,7 +27,7 @@ import { appHeaders, pageHeaders, apiHeaders, inlineScriptHashes, telemetryOrigi
 import { siteFile } from './site-files.ts';
 import { createMemoryLimiter } from './limiter.ts';
 import telemetryRoutes from './telemetry/routes.ts';
-import { ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue } from './protocol.ts';
+import { ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, isSharedAddress, SOCKETS_PER_ADDRESS } from './protocol.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Duplex } from 'node:stream';
 import type { ActionRequest, CityId, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
@@ -96,12 +96,14 @@ const cookieId = (req: IncomingMessage): string | undefined => presentedSession(
  * The address limits and caps are keyed on. Directly connected: the socket's remote address. With
  * TRUST_PROXY=1 (one trusted reverse proxy in front): the right-most X-Forwarded-For entry, which is
  * the address that proxy itself saw — entries further left are client-supplied and are ignored.
+ * Either way an IPv6 address is reduced to its /64 (host-context.ts addressBucket), as on the Worker host: one
+ * subscriber holds a whole /64, and a limit keyed on the full address would be a limit on nothing.
  */
 function clientAddress(req: IncomingMessage, trustProxy: boolean): string {
-  const direct = req.socket.remoteAddress || 'unknown';
+  const direct = addressBucket(req.socket.remoteAddress || 'unknown');
   if (!trustProxy) return direct;
   const forwarded = String(req.headers['x-forwarded-for'] || '').split(',').map(part => part.trim()).filter(Boolean).at(-1);
-  return forwarded && forwarded.length <= 64 && /^[0-9a-fA-F:.]+$/.test(forwarded) ? forwarded : direct;
+  return forwarded && forwarded.length <= 64 && /^[0-9a-fA-F:.]+$/.test(forwarded) ? addressBucket(forwarded) : direct;
 }
 const sha256 = (value: unknown): Buffer => createHash('sha256').update(String(value)).digest();
 /** The first line of an error's message, for the log. Never throws, whatever was thrown at us. */
@@ -537,7 +539,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const session = await store.transact(db => sessionFor(req, db, true))
         .catch(error => { if (fieldOf(error, 'code') !== 'storage_unavailable') throw error; return store.read(db => sessionFor(req, db, false)); });
       if (!session) throw Error('Unauthorized');
-      if (wss.clients.size >= 1024 || connections().filter(ws => ws.session.id === session.publicId).length >= 8) throw Error('Connection capacity');
+      // One address holds at most SOCKETS_PER_ADDRESS of the server's sockets (as on the Worker host), so one visitor with many
+      // sessions cannot take every place. An address many people share (a proxy without TRUST_PROXY, a LAN) is not counted.
+      const address = addressOf(req);
+      if (wss.clients.size >= 1024 || connections().filter(ws => ws.session.id === session.publicId).length >= 8
+        || (!isSharedAddress(address) && connections().filter(ws => ws.ip === address).length >= SOCKETS_PER_ADDRESS)) throw Error('Connection capacity');
       // The cookie renewed on the 101 answer is the one the browser presented — never the stored record's key, which a signed-in browser must not learn.
       renewedCookies.set(req, cookieHeader(req, cookieId(req)));
       wss.handleUpgrade(req, socket, head, socketOfUpgrade => {
@@ -547,7 +553,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         ws.device = cookieId(req);
         ws.expiresAt = session.expiresAt;
         ws.lastSessionRenewedAt = now();
-        ws.ip = addressOf(req);
+        ws.ip = address;
         sockets.open(ws);
         wss.emit('connection', ws);
       });

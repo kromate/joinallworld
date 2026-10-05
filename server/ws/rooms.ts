@@ -124,6 +124,8 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   const { store, now, allow, settle, send, core } = ctx;
   const rooms = new Map<string, Set<WsConnection>>();
   const chatHistory = new Map<string, ChatHistory>();
+  /** Retry histories kept in memory (each at most 100 lines of one player in one room). */
+  const CHAT_HISTORIES = 5000;
   const inRooms = new Map<string, Set<WsConnection>>(); // public id → Set<ws> of that player's sockets that are in a room
   const hostGone = new Map<string, number>(); // Home room key → server ms since which its host has had no socket in it
 
@@ -424,7 +426,11 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       if (clientId) {
         history.set(clientId, chat);
         if (history.size > 100) { const oldest = history.keys()[Symbol.iterator]().next(); if (!oldest.done) history.delete(oldest.value); }
-        if (!core.chatHistory) chatHistory.set(key, history);
+        if (!core.chatHistory) {
+          chatHistory.set(key, history);
+          // One retry history per player and room, and a bound on how many are kept: the oldest goes first.
+          if (chatHistory.size > CHAT_HISTORIES) { const first = chatHistory.keys().next(); if (!first.done) chatHistory.delete(first.value); }
+        }
       }
       for (const peer of rooms.get(room) ?? []) if (!hidden(ws.session.id, peer.session.id)) send(peer, chat);
     }),

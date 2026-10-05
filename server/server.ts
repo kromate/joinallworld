@@ -16,7 +16,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, sessionCookie, isStrictOrigin, presentedSession, mayBind } from './host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
@@ -484,7 +484,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // the Worker host keeps itself alive for it. A module calls ctx.waitUntil?.(promise) and never relies on the answer.
     waitUntil() {},
     keyFile,
-    config: { accounts: accountsConfig(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
+    config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup,
     // Work a module must finish when the server stops, BEFORE the store is closed: async functions, run in order

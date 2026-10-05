@@ -7,13 +7,13 @@
  */
 
 /* ---- the dialog becomes a clear stage for the device ----------------------------------- */
-#life-dialog[data-phone]{box-sizing:border-box;inset:0;width:100%;height:100%;min-height:100dvh;max-width:none;max-height:none;margin:0;padding:0 0 max(14px,env(safe-area-inset-bottom));background:transparent;box-shadow:none;border-radius:0;overflow:hidden;overflow:clip}
+#life-dialog[data-phone]{box-sizing:border-box;inset:0;width:100%;height:100%;min-height:calc(100 * var(--ui-vh));max-width:none;max-height:none;margin:0;padding:0 0 max(14px,env(safe-area-inset-bottom));background:transparent;box-shadow:none;border-radius:0;overflow:hidden;overflow:clip}
 #life-dialog[data-phone][open]{display:grid;grid-template-rows:minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr);justify-items:center}
 #life-dialog[data-phone]::backdrop{background:rgba(8,14,11,.42);backdrop-filter:none}
 #life-dialog[data-phone] #life-dialog-content{grid-row:2;flex:none;padding:0;overflow:visible;max-width:100%}
 #life-dialog[data-phone] #close-life-dialog{display:none}
 /* Toasts sit inside the device, just under the app bar, so they never cover the Close pill. */
-#life-dialog[data-phone]{--ph-top:calc(100dvh - 14px - min(812px,100dvh - 96px))}
+#life-dialog[data-phone]{--ph-top:calc(100 * var(--ui-vh) - 14px - min(812px,100 * var(--ui-vh) - 96px))}
 #life-dialog[data-phone]>.life-toasts{top:calc(var(--ph-top) + 118px);width:min(360px,calc(100% - 28px))}
 .ph-stage{display:grid;justify-items:end;gap:8px;max-width:100vw}
 .ph-close{display:flex;align-items:center;gap:6px;height:var(--tap);margin-right:6px;padding:0 16px 0 12px;border:0;border-radius:var(--r-pill);background:#fff;color:var(--c-ink);font:600 13px var(--font);box-shadow:var(--e-2);cursor:pointer;animation:ph-rise .3s cubic-bezier(.2,.8,.2,1)}
@@ -21,7 +21,7 @@
 .ph-close:hover{background:#f1f4f2}
 
 /* ---- device -------------------------------------------------------------------------------- */
-.ph{--ph-w:392px;--ph-h:min(812px,calc(100dvh - 96px));--app-tint:#3f4a5a;position:relative;width:var(--ph-w);max-width:100vw;height:var(--ph-h);padding:11px;border-radius:54px;background:linear-gradient(145deg,#3a3f48 0%,#0e1014 38%,#0e1014 62%,#2b2f37 100%);box-shadow:inset 0 0 0 1.5px #646b77,inset 0 0 0 4.5px #08090b,var(--e-3);font-family:var(--font);transition:width var(--ease-phone);animation:ph-rise .3s cubic-bezier(.2,.8,.2,1)}
+.ph{--ph-w:392px;--ph-h:min(812px,calc(100 * var(--ui-vh) - 96px));--app-tint:#3f4a5a;position:relative;width:var(--ph-w);max-width:100vw;height:var(--ph-h);padding:11px;border-radius:54px;background:linear-gradient(145deg,#3a3f48 0%,#0e1014 38%,#0e1014 62%,#2b2f37 100%);box-shadow:inset 0 0 0 1.5px #646b77,inset 0 0 0 4.5px #08090b,var(--e-3);font-family:var(--font);transition:width var(--ease-phone);animation:ph-rise .3s cubic-bezier(.2,.8,.2,1)}
 @keyframes ph-rise{from{transform:translateY(46%);opacity:.2}to{transform:none;opacity:1}}
 /* Closing: phone.js moves the device out of the (already closed) dialog into this layer, which
    dims out and lets the device drop away, then removes itself on animationend. Decoration only. */
@@ -151,14 +151,14 @@
 @media(max-width:899px){.ph-wide{display:none}}
 
 /* ---- sizes ---------------------------------------------------------------------------------- */
-@media(min-width:900px) and (min-height:960px){.ph{--ph-w:412px;--ph-h:860px}#life-dialog[data-phone]{--ph-top:calc(100dvh - 874px)}}
+@media(min-width:900px) and (min-height:960px){.ph{--ph-w:412px;--ph-h:min(860px,calc(100 * var(--ui-vh) - 96px))}#life-dialog[data-phone]{--ph-top:calc(100 * var(--ui-vh) - 14px - min(860px,100 * var(--ui-vh) - 96px))}}
 @media(max-height:860px){.ph-clock b{font-size:54px}.ph-clock{padding-top:2px}.ph-notifs{margin-top:8px}.ph-group{margin-top:6px!important}}
 @media(max-height:790px){.ph-clock b{font-size:40px;display:inline}.ph-clock span{display:inline;margin-left:8px}.ph-more{display:none}.ph-appbtn{min-height:70px}.ph-icon{width:48px;height:48px;border-radius:13px}}
 /* On a real phone the device is the screen: full width, no bezel, the scene still peeks above it. */
 @media(max-width:520px){
   #life-dialog[data-phone]{padding-bottom:0;--ph-top:calc(52px + env(safe-area-inset-top))}
   .ph-stage{gap:6px}.ph-close{margin-right:10px}
-  .ph{--ph-w:100vw;--ph-h:calc(100dvh - 58px - env(safe-area-inset-top));padding:0;border-radius:30px 30px 0 0;box-shadow:0 -1px 0 #ffffff33,var(--e-3);background:#0e1014}
+  .ph{--ph-w:100vw;--ph-h:calc(100 * var(--ui-vh) - 58px - env(safe-area-inset-top));padding:0;border-radius:30px 30px 0 0;box-shadow:0 -1px 0 #ffffff33,var(--e-3);background:#0e1014}
   .ph::before,.ph::after,.ph-island{display:none}
   .ph-screen{border-radius:30px 30px 0 0}
   .ph-status{height:42px;padding:0 18px 0 8px}

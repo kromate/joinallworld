@@ -1035,10 +1035,10 @@ const EDGE_B64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 /** Placeholders in the shape of the provider's public configuration; none of them names anything real. */
 const ACCOUNT_BINDINGS = { BUILD_ID: 'local-conformance', ACCOUNTS_FIREBASE_PROJECT_ID: ACCOUNT_PROJECT, ACCOUNTS_FIREBASE_API_KEY: 'edge-web-api-key-0000000000000000000000', ACCOUNTS_GOOGLE_CLIENT_ID: '1234567890-edgeclient.apps.googleusercontent.com' };
 /** The Worker with accounts configured and a stand-in provider: its keys are made here and served to the Worker's own outbound requests. */
-async function accountsFixture(t: TestContext) {
+async function accountsFixture(t: TestContext, extraBindings: Record<string, string> = {}) {
   const key = await makeKey('edge-key-1');
   const outbound: { url: string; body: unknown }[] = [];
-  const f = await fixture(t, { bindings: ACCOUNT_BINDINGS, outboundService: async (request: Request) => {
+  const f = await fixture(t, { bindings: { ...ACCOUNT_BINDINGS, ...extraBindings }, outboundService: async (request: Request) => {
     const url = request.url.split('?')[0] as string;
     outbound.push({ url, body: request.method === 'POST' ? await request.json().catch(() => null) : null });
     if (url === TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=3600' } });
@@ -1062,6 +1062,47 @@ async function accountsFixture(t: TestContext) {
   const errorOf = async (response: Response) => [response.status, (await response.json()).error];
   return { ...f, key, outbound, token, state, change, proved, signIn, player, whoAmI, errorOf, from };
 }
+
+test('Cloudflare: the founder is every player’s first friend — tagged, once, kept on the player’s side, final when ended, over rows that survive a restart', async t => {
+  // The stand-in provider gives subject `Founder` the address founder@example.com; the Worker is told its hash.
+  const hash = createHash('sha256').update('founder@example.com').digest('hex');
+  const f = await accountsFixture(t, { FOUNDER_EMAIL_SHA256: hash });
+  const me = async (who: { cookie: string }) => (await f.request('/api/social/me', null, who.cookie, f.from())).json();
+  // A player from before the founder: nothing happens yet.
+  const ada = await f.player('Ada');
+  assert.deepEqual((await me(ada)).friends, []);
+  const device = await f.player('Zed');
+  const zed = { id: device.id, cookie: (await f.signIn('Founder', device.cookie)).cookie };
+  assert.equal((await me(zed)).me.id, zed.id);
+  // The earlier player on their next session, and a new one on their first.
+  const bola = await f.player('Bola');
+  for (const who of [ada, bola]) {
+    const mine = await me(who);
+    assert.deepEqual(mine.friends.map((friend: { id: string; founder?: boolean }) => [friend.id, friend.founder]), [[zed.id, true]]);
+    assert.deepEqual(mine.conversations.map((conv: { with: string; unread: number }) => [conv.with, conv.unread]), [[zed.id, 1]]);
+  }
+  const founder = await me(zed);
+  assert.deepEqual([founder.updates, founder.conversations, founder.friendsMore], [[], [], { total: 2, next: null }]);
+  assert.deepEqual(founder.friends.map((friend: { id: string }) => friend.id).sort(), [ada.id, bola.id].sort());
+  // Ended by the player: not made again, also after the object restarts.
+  assert.equal((await (await f.request('/api/social/friends/remove', { id: zed.id, cityId: 'lagos' }, ada.cookie, f.from())).json()).code, 'removed');
+  await f.restart();
+  assert.deepEqual((await me(ada)).friends, []);
+  assert.deepEqual((await me(bola)).friends.map((friend: { id: string; founder?: boolean }) => [friend.id, friend.founder]), [[zed.id, true]]);
+  assert.equal((await me(bola)).conversations.length, 1);
+  const stored = JSON.parse((JSON.parse(await storage_(f, "SELECT value FROM collections WHERE name = 'social'")) as { value: string }[])[0]?.value ?? '{}') as { founder: { id: string }; players: Record<string, { friends: Record<string, number>; founder?: { id: string } }> };
+  assert.deepEqual([stored.founder.id, stored.players[zed.id]?.friends, stored.players[ada.id]?.founder?.id, stored.players[bola.id]?.founder?.id], [zed.id, {}, zed.id, zed.id]);
+});
+
+test('Cloudflare: an empty FOUNDER_EMAIL_SHA256 switches the founder off', async t => {
+  const f = await accountsFixture(t, { FOUNDER_EMAIL_SHA256: '' });
+  const device = await f.player('Zed');
+  const zed = { id: device.id, cookie: (await f.signIn('Founder', device.cookie)).cookie };
+  await (await f.request('/api/social/me', null, zed.cookie, f.from())).text();
+  const ada = await f.player('Ada');
+  const mine = await (await f.request('/api/social/me', null, ada.cookie, f.from())).json();
+  assert.deepEqual([mine.friends, mine.conversations], [[], []]);
+});
 
 test('Cloudflare: accounts are off unless configured — one disabled answer, every other account route a 404, no outbound request', async t => {
   let outbound = 0;
@@ -1335,7 +1376,7 @@ test('Cloudflare: the welcome message — one per new account, after the sign-in
   assert.deepEqual([first.status, second.status], [200, 200]); assert.deepEqual([first.body.created, second.body.created].sort(), [false, true]);
   await waitFor(1);
   assert.equal(mails.length, 1);
-  assert.deepEqual([mails[0]?.subject, mails[0]?.personalizations[0]?.to[0]?.email], ['Welcome to Allworld', 'uidada@example.com']);
+  assert.deepEqual([mails[0]?.subject, mails[0]?.personalizations[0]?.to[0]?.email], ['Welcome to Allworld: your character is saved', 'uidada@example.com']);
   const text = mails[0]?.content.find(part => part.type === 'text/plain')?.value ?? '';
   assert.ok(text.includes('Allworld is a digital world you can live in.') && text.includes('saved to this account — sign in on any device to continue.') && text.includes('Open Allworld: https://play.example/'));
   const storage = await f.storage();
@@ -1433,7 +1474,7 @@ test('Worker: an account holder is a comeback recipient — on from the start, a
   const until = Date.now() + 3000; while (!mails.length && Date.now() < until) await new Promise(resolve => setTimeout(resolve, 20));
   const hello = async () => (await (await f.request('/api/growth/hello', { cityId: 'lagos' }, cookie)).json()).contact.comeback as { source: string; on: boolean; address: string };
   const view = await hello();
-  assert.deepEqual([view.source, view.on, mails[0]?.subject], ['account', true, 'Welcome to Allworld']);
+  assert.deepEqual([view.source, view.on, mails[0]?.subject], ['account', true, 'Welcome to Allworld: your character is saved']);
   assert.ok(!view.address.includes('uidada'), 'only a masked address is shown');
   const db = await f.storage();
   const growth = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);

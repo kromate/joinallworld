@@ -65,9 +65,11 @@ watch(connected, (on) => { if (on) pulse.start(); else { pulse.stop(); pulse.res
 .pulse-dot { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--c-green-dark); transition: background-color .3s; }
 .pulse-dot.is-stale { background: var(--c-amber-dark); }
 .pulse-visits, .pulse-world { color: var(--c-muted); }
+/* Up to a small laptop the pill holds the count for this city only: with the rest the top bar ran under the wordmark, and on a tablet past the screen's edge. */
+@media (max-width: 1300px) { .pulse-visits, .pulse-world { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
 @media (max-width: 600px) {
   .pulse-pill { padding: 0 8px; }
-  .pulse-word, .pulse-visits, .pulse-world { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .pulse-word { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 }
 @media (prefers-reduced-motion: reduce) { .pulse-dot { transition: none; } }
 </style>

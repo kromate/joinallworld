@@ -45,7 +45,7 @@
 .atlas-marker[hidden]{display:none}
 
 /* ---- the frame follows the screen edges, like the HUD ---- */
-.atlas-frame{position:absolute;zoom:var(--ui-zoom);z-index:5;top:74px;bottom:92px;left:14px;right:14px;display:grid;grid-template-columns:244px minmax(0,1fr) 352px;grid-template-rows:auto minmax(0,1fr);gap:10px 14px;pointer-events:none}
+.atlas-frame{position:absolute;zoom:var(--ui-zoom);--ui-vh:calc(1dvh / var(--ui-zoom));z-index:5;top:74px;bottom:92px;left:14px;right:14px;display:grid;grid-template-columns:244px minmax(0,1fr) 352px;grid-template-rows:auto minmax(0,1fr);gap:10px 14px;pointer-events:none}
 .atlas-frame>*{pointer-events:auto}
 .atlas-frame>.atlas-stage{pointer-events:none;grid-column:2;grid-row:2;position:relative;min-height:0}
 .atlas-stage>*{pointer-events:auto}
@@ -159,8 +159,8 @@
   .atlas-crumbs button{padding:0 9px;min-height:36px;font-size:var(--t-caption,12px)}
   .atlas-crumbs .atlas-back span,.atlas-list-toggle span{display:none}
   .atlas-list-toggle{width:44px;padding:0;justify-content:center}
-  .atlas-rail{grid-column:1;width:100%;max-height:min(100%,62dvh);background:var(--c-surface-solid,#fff)}
-  .atlas-sheet{grid-column:1;grid-row:2;align-self:end;max-height:min(100%,64dvh);padding:12px;gap:8px;border-radius:22px;z-index:4}
+  .atlas-rail{grid-column:1;width:100%;max-height:min(100%,calc(62 * var(--ui-vh)));background:var(--c-surface-solid,#fff)}
+  .atlas-sheet{grid-column:1;grid-row:2;align-self:end;max-height:min(100%,calc(64 * var(--ui-vh)));padding:12px;gap:8px;border-radius:22px;z-index:4}
   .atlas-sheet h2{font-size:var(--t-title,17px)}
   /* Folded, the sheet is a name, a line and its one action: the map stays in view. "Routes and details" unfolds it. */
   .atlas-sheet:not(.is-expanded)>:not(header):not(nav):not(.atlas-go):not(.atlas-more):not(.atlas-teaser){display:none}

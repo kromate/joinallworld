@@ -91,7 +91,7 @@ test('social routes need a device session and a same-origin request', async t =>
   const ada = await f.device('Ada');
   const hostile = await fetch(`${f.base}/api/social/me`, { headers: { Cookie: ada.cookie, Origin: 'https://evil.example' } });
   assert.equal(hostile.status, 403);
-  assert.equal((await get(f, '/api/social/friends', ada)).status, 404, 'the friends list is part of /me');
+  assert.equal((await get(f, '/api/social/friends', ada)).error, 'invalid_cursor', 'the friends list is part of /me; this is only the founder’s further pages');
   assert.equal((await get(f, '/api/life?city=lagos', ada)).status, 200);
   const me = await get(f, '/api/social/me', ada);
   assert.deepEqual(me.me, { id: ada.id, name: 'Ada', since: 100000 }); assert.equal(me.invitePath, `/v/${ada.id}`);

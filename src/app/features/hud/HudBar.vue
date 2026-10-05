@@ -110,13 +110,14 @@ function onSaved(): void {
 @keyframes hud-delta { 0% { opacity: 0; visibility: visible; transform: translateY(-6px); } 8%, 82% { opacity: 1; visibility: visible; transform: none; } 100% { opacity: 0; visibility: hidden; } }
 @keyframes hud-flash-up { 0%, 40% { background: #2f8a57; box-shadow: 0 0 0 4px #2f8a5740; } 100% { background: var(--c-ink); box-shadow: 0 0 0 0 transparent; } }
 @keyframes hud-flash-down { 0%, 40% { background: #a2542a; box-shadow: 0 0 0 4px #a2542a40; } 100% { background: var(--c-ink); box-shadow: 0 0 0 0 transparent; } }
-@media (max-width: 1000px) { .hud-mark { display: grid; } }
+/* Narrower than a laptop the bar gives up words before it gives up width: the wordmark beside it, then "Saved", then the name (it is in the Sim). */
+@media (max-width: 1140px) { .hud-mark { display: grid; } }
+@media (max-width: 900px) { .hud-saved > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
+@media (max-width: 880px) { .hud-name { display: none; } }
 @media (max-width: 720px) {
   .hud-bar { top: 8px; left: 8px; right: 8px; transform: none; max-width: none; justify-content: space-between; gap: 8px; height: 44px; padding: 0 4px 0 12px; }
   .hud-clock { font-size: 12px; }
   .hud-mood { padding-left: 8px; font-size: 12px; overflow: hidden; text-overflow: ellipsis; }
-  .hud-name { display: none; }
-  .hud-saved > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .hud-saved.is-off, .hud-saved.is-unsaved { padding: 0 6px; }
   .hud-saved-slot { margin-left: auto; }
   .hud-cash { padding: 0 12px; font-size: 13px !important; }

@@ -25,7 +25,7 @@
 .map-layer-note span{min-width:0;overflow-wrap:anywhere}
 
 .map-more{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-2);min-height:0}
-.map-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:2px;overflow-x:hidden;overflow-y:auto;max-height:38dvh;scrollbar-width:thin;overscroll-behavior:contain}
+.map-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:2px;overflow-x:hidden;overflow-y:auto;max-height:calc(38 * var(--ui-vh));scrollbar-width:thin;overscroll-behavior:contain}
 .life-ui .map-list button{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:4px 8px;border-radius:14px;background:none;text-align:left}
 .life-ui .map-list button:hover{background:var(--c-fill)}
 .map-list button>span:first-child{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--c-surface-solid);border:1px solid var(--c-line);font-size:18px}
@@ -40,7 +40,7 @@
 .life-ui .map-world{justify-self:start}
 
 /* Venue card */
-.map-card{grid-template-columns:minmax(0,1fr);max-height:calc(100dvh - 170px);overflow-y:auto;padding:var(--s-3)}
+.map-card{grid-template-columns:minmax(0,1fr);max-height:calc(100 * var(--ui-vh) - 170px);overflow-y:auto;padding:var(--s-3)}
 .map-card-head{display:flex;align-items:center;gap:var(--s-2)}
 .map-card-head>div{flex:1;min-width:0}
 .map-card-head h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -111,9 +111,11 @@
 /* Wide screens: the sheet is docked at the left, clear of the map */
 @media(min-width:721px){
   /* (The trip bar is not docked: a running trip is shown in the bottom-centre stack with every other live status — shell.css.) */
-  .map-panel.map-overview,.map-panel.map-card{position:fixed;left:14px;top:70px;width:330px;max-height:calc(100dvh - 84px)}
+  .map-panel.map-overview,.map-panel.map-card{position:fixed;left:14px;top:70px;width:330px;max-height:calc(100 * var(--ui-vh) - 84px)}
   .map-overview{grid-template-rows:auto auto minmax(0,1fr)}
   .map-list{max-height:none}
+  /* Docked, the chips wrap onto a second line: a row cut at the panel's edge has no scrollbar to show there is more. */
+  .map-filters{flex-wrap:wrap;overflow-x:visible}
   .map-more{grid-template-rows:auto;overflow-y:auto}
   .map-grip{display:none}
   .life-ui .map-handle{padding-top:4px}
@@ -121,10 +123,10 @@
 }
 @media(max-width:720px){
   .map-panel{max-width:none;border-radius:22px}
-  .map-card{max-height:calc(100dvh - 150px)}
+  .map-card{max-height:calc(100 * var(--ui-vh) - 150px)}
   .life-ui .map-modes button{min-height:68px}
 }
-@media(max-height:560px){.map-list{max-height:30dvh}}
+@media(max-height:560px){.map-list{max-height:calc(30 * var(--ui-vh))}}
 
 /* Arriving from a trip: the venue comes up with a short fade instead of a cut */
 #venue-scene.is-arriving{animation:map-arrive .34s ease-out}

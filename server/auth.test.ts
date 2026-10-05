@@ -893,7 +893,7 @@ test('welcome: a new account with a verified address gets ONE message — not a 
   assert.equal(m.mails().length, 1);
   const mail = m.mails()[0] as SentMail;
   assert.deepEqual(mail.personalizations, [{ to: [{ email: 'uidada@example.com' }] }]); assert.deepEqual(mail.from, { email: 'hello@mail.example.com', name: 'Allworld' });
-  assert.equal(mail.subject, 'Welcome to Allworld');
+  assert.equal(mail.subject, 'Welcome to Allworld: your character is saved');
   assert.equal(typeof (await m.account('UidAda'))?.welcome, 'number', 'the account records when it was sent');
   assert.deepEqual((await m.stored()).accountLog?.welcome, [], 'nothing is left owed');
   // Later sign-ins — another device, a restore after signing out, the merge of a second life — send nothing more.
@@ -918,21 +918,39 @@ test('welcome: the message — short, about the account, text and HTML saying th
   await m.signIn('UidAda', cookie); await m.settled(1);
   const mail = m.mails()[0] as SentMail, text = mail.content.find(part => part.type === 'text/plain')?.value ?? '', html = mail.content.find(part => part.type === 'text/html')?.value ?? '';
   assert.deepEqual(mail.content.map(part => part.type), ['text/plain', 'text/html']);
-  for (const body of [text, html.replace(/<[^>]+>/g, ' ').replace(/&quot;/g, '"').replace(/&#39;/g, '\'').replace(/\s+/g, ' ')]) {
-    for (const said of ['Welcome to Allworld, Ada', 'Allworld is a digital world you can live in.', 'Ada is saved to this account — sign in on any device to continue.', 'Finish your character', 'Find your home', 'Invite a friend with your link', 'You got this because you created an Allworld account with this address. It is sent once.', 'Report a problem', 'Allworld, 1 Example Road']) assert.ok(body.includes(said), said);
+  const seen = html.replace(/<style>[\s\S]*?<\/style>|<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&quot;/g, '"').replace(/&#39;/g, '\'').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
+  for (const body of [text, seen]) {
+    for (const said of ['Welcome to the world, Ada', 'Allworld is a digital universe of the whole world that you can live in.', 'Ada is saved to this account: log in on any device to carry on.', 'More cities are opening.', 'What to do first',
+      'Settle into your home', 'Find work and keep fed', 'Meet the people who are online', 'Travel to another city', 'Press Invite in the top bar to share your own link.', 'press ? at any time to see the shortcuts', 'open your Phone, then Help, then Take the tour',
+      'You got this because you created an Allworld account with this address. It is sent once.', 'open your Phone and choose "Report a problem"', 'Allworld, 1 Example Road', 'https://play.example/']) assert.ok(body.includes(said), said);
   }
+  // Every line of the text part is in the HTML part too: the steps keep their order, and neither part says more than the other.
+  const flat = (value: string) => value.replace(/[^\p{L}\p{N}?]+/gu, ' ').trim();
+  for (const line of text.split('\n').filter(Boolean)) assert.ok(flat(seen).includes(flat(line)) || line === 'Open Allworld: https://play.example/', line); // (the button and its address are checked below)
+  assert.deepEqual(text.split('\n').filter(line => /^\d\. /.test(line)).map(line => line.slice(0, 2)), ['1.', '2.', '3.', '4.']);
+  // The open cities are the registry's, named after the world and never in place of it.
+  const { cityName, playableCityIds } = await import('../src/game/cities/index.ts');
+  const open = playableCityIds().map(id => cityName(id) ?? '');
+  assert.ok(open.length > 1 && open.every(name => name && text.includes(name) && seen.includes(name)), 'the open cities are named from the registry');
+  assert.ok(!open.some(name => `${mail.subject}\n${text.split('\n').slice(0, 3).join('\n')}`.includes(name)), 'it presents a world, not one city');
+  assert.match(html, /<html lang="en">/); assert.match(html, /<meta name="color-scheme" content="light dark">/); assert.ok((html.match(/<table /g) ?? []).length === (html.match(/<table role="presentation"/g) ?? []).length, 'every layout table is marked as layout');
+  assert.ok(!/@import|@font-face|\bsrc=|background=/i.test(html), 'no font, no source and no background picture');
+  assert.ok(html.length < 16000 && text.length < 2500 && text.split('\n').every(line => line.length < 400), 'short enough to be read, and never clipped');
   assert.ok(text.includes('Open Allworld: https://play.example/')); assert.match(html, /<a href="https:\/\/play\.example\/"[^>]*>Open Allworld<\/a>/);
   assert.ok(!/<img|<script|<link|<iframe|url\(|http:\/\//i.test(html), 'no image, no script, nothing fetched when it is opened');
   assert.deepEqual([...new Set([...html.matchAll(/https?:\/\/[^"'\s<)]+/g)].map(match => match[0]))], ['https://play.example/'], 'the only address in it is the game’s own');
   assert.equal(mail.headers, undefined, 'no list headers: it is not a subscription');
-  assert.ok(!/Lagos|Ibadan/.test(text), 'it presents a world, not one city');
   // A hostile character name is text in both parts. (The name filter would refuse this one; the template must not rely on that.)
   const { accountWelcomeMail } = await import('./growth/email/templates.ts');
   const hostile = accountWelcomeMail({ name: '<img src=x onerror=alert(1)>"\'&\r\nBcc: x@evil.example', playUrl: 'https://play.example/', contact: '<b>contact</b>' });
   assert.ok(!/<img|<b>|onerror=alert\(1\)>/.test(hostile.html)); assert.ok(hostile.html.includes('&lt;img src=x onerror=alert(1)&gt;&quot;&#39;&amp;') && hostile.html.includes('&lt;b&gt;contact&lt;/b&gt;'));
-  assert.equal(hostile.subject, 'Welcome to Allworld', 'the subject carries nothing a person chose');
+  assert.equal(hostile.subject, 'Welcome to Allworld: your character is saved', 'the subject carries nothing a person chose');
   assert.ok(!/[\r\n]Bcc:/.test(hostile.text.split('\n')[0] ?? ''), 'a name cannot start a new line of its own in the heading');
-  assert.equal(accountWelcomeMail({ playUrl: 'https://play.example/' }).text.split('\n')[0], 'Welcome to Allworld'); assert.ok(accountWelcomeMail({ playUrl: 'https://play.example/' }).text.includes('Your character is saved to this account'));
+  const bare = accountWelcomeMail({ playUrl: 'https://play.example/' });
+  assert.equal(bare.text.split('\n')[0], 'Welcome to the world'); assert.ok(bare.text.includes('Your character is saved to this account')); assert.ok(!/Open today/.test(bare.text + bare.html), 'given no cities, it names none');
+  // A city name is text too, and a long list is cut short.
+  const named = accountWelcomeMail({ playUrl: 'https://play.example/', cities: ['<i>One</i>', 'Two\r\nThree', '', ...Array.from({ length: 20 }, (_, index) => `City ${index}`)] });
+  assert.ok(named.html.includes('&lt;i&gt;One&lt;/i&gt;') && !named.html.includes('<i>')); assert.ok(named.text.includes('Open today: <i>One</i>, Two  Three, City 0') && named.text.includes('City 8 and City 9.') && !named.text.includes('City 10'));
 });
 
 test('welcome: two first sign-ins at the same moment send one message; a failed send never fails the sign-in and is retried later, once', async t => {

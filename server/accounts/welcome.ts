@@ -35,6 +35,7 @@
 import { mailConfig, sendMail } from '../growth/email/zeptomail.ts';
 import { accountWelcomeMail } from '../growth/email/templates.ts';
 import { lagosTime } from '../../src/game/clock.ts';
+import { cityName, playableCityIds } from '../../src/game/cities/index.ts';
 import { growthOf } from '../growth/data.ts';
 import { claimWelcome, dueWelcomes, reviveWelcomes, settleWelcome } from './service.ts';
 import type { AccountDeps } from './service.ts';
@@ -60,6 +61,8 @@ function build(ctx: RouteContext) {
   /** The mailer's daily allowance (EMAIL_DAILY_CAP, as server/growth/outreach.ts reads it): a welcome message counts against it like any other e-mail. */
   const dailyCap = (): number => { const raw = ctx.env('EMAIL_DAILY_CAP').trim(), value = Number(raw); return /^\d{1,9}$/.test(raw) && Number.isSafeInteger(value) ? value : 500; };
   const today = (): string => String(lagosTime(ctx.now()).day);
+  /** The names of the cities open today, read from the registry so that the message never names a list of its own. */
+  const openCities = (): string[] => playableCityIds().flatMap((id) => { const name = cityName(id); return name ? [name] : []; });
 
   /** Send the welcome message owed to this account, if it is owed, due and nobody else is sending it. Never throws. */
   function send(id: string): Promise<void> {
@@ -80,7 +83,7 @@ function build(ctx: RouteContext) {
           return held ? null : owed;
         });
         if (!claim) return;
-        const result = await sendMail(ctx, { to: claim.email, ...accountWelcomeMail({ name: claim.name, playUrl: `${origin()}/`, contact: contact() }) });
+        const result = await sendMail(ctx, { to: claim.email, ...accountWelcomeMail({ name: claim.name, playUrl: `${origin()}/`, contact: contact(), cities: openCities() }) });
         const status = result.status ?? 0;
         // Worth another try: the mailer could not be reached or asked to wait. A 4xx is the mailer refusing THIS message (a bad or bounced address): never again.
         const retry = status === 0 || status === 429 || status >= 500;

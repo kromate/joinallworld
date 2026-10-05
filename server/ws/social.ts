@@ -18,7 +18,8 @@
  *   social-update     { update }                   a line for Messages → Updates
  *   social-sync       {}                           something of yours changed server-side: re-read /api/social/me
  *   friend-request    { from }      friend-accepted { by }
- *   people-presence   { id, status }               a friend connected or dropped ('online' | 'reconnecting')
+ *   people-presence   { id, status }               a friend connected or dropped ('online' | 'reconnecting'); not sent
+ *                                                  across an automatic friendship with the founder (server/social/founder.ts)
  *   people-changed    { cityId, venueId }          who shares your venue room changed — re-read people-list.
  *                                                  Sent only to sockets that have asked people-list, and
  *                                                  carries no member data.
@@ -30,6 +31,7 @@
  * Nothing here touches voice, the microphone, ws.room, ws.voice or ws.position.
  */
 import { socialService } from '../social/service.ts';
+import { presenceAudience } from '../social/founder.ts';
 import type { Db, IncomingFrame, RouteContext, SessionRecord, WsConnection, WsHandlers } from '../types.ts';
 
 export default function socialSocket(ctx: RouteContext): WsHandlers {
@@ -47,7 +49,7 @@ export default function socialSocket(ctx: RouteContext): WsHandlers {
   }
   /** Tell a player's friends that they connected or dropped. Best effort; never blocks the socket. */
   function announce(id: string, status: 'online' | 'reconnecting'): void {
-    ctx.store.read((db) => Object.keys(db.social?.players?.[id]?.friends || {}))
+    ctx.store.read((db) => presenceAudience(db.social?.players, id))
       .then((friends) => { for (const friend of friends) ctx.push(friend, { type: 'people-presence', id, status }); })
       .catch(() => {});
   }

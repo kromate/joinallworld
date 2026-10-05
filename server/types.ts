@@ -219,6 +219,10 @@ export interface SocialPlayerRecord {
   chats: { day: number; count: number }
   /** Who may ring this player (server/social/calls.ts); absent means the default, everyone. */
   calls?: 'everyone' | 'friends' | 'nobody'
+  /** This player was introduced to the founder (that character's id), once: never cleared (server/social/founder.ts). Absent: not yet. */
+  founder?: { id: string; at: number }
+  /** This player came through `by`'s invite link and the two were introduced, once: never cleared (server/social/service.ts meetInviter). Absent: not yet. */
+  invite?: { by: string; at: number }
 }
 export interface MessageRecord {
   seq: number
@@ -229,6 +233,8 @@ export interface MessageRecord {
   /** The sender's clientId. */
   cid?: string
   sys?: true
+  /** The founder's welcome note: `body` is '' and the words come from server/social/founder.ts. */
+  auto?: true
 }
 export interface ConversationRecord {
   id: string
@@ -308,6 +314,8 @@ export interface SocialCollection {
   seq: number
   /** Last hourly housekeeping run. */
   sweptAt?: number
+  /** The founder's account and its character, as last seen (server/social/founder.ts); checked against the account on every use. */
+  founder?: { account: string; id: string }
 }
 
 // ---- civic collection (db.civic) -----------------------------------------------------------------
@@ -727,6 +735,8 @@ export interface ServerConfig {
   publicOrigin: string
   /** The sign-in provider's public configuration; null or absent = accounts are off and every account route says so. */
   accounts?: AccountsConfig | null
+  /** SHA-256 of the founder account's address (server/host-context.ts founderEmailHash); '' = no founder. Absent: the built-in one. */
+  founderEmailSha256?: string
 }
 
 /** In-process events between server modules; nothing is sent to a client by raising one. */
@@ -735,6 +745,8 @@ export interface ServerEvents {
   'room-changed': { room: string; cityId: string; venueId: string; members: string[]; cause: string | null }
   /** social: a house visit ended; rooms.js drops that guest from the host's Home room. */
   'visit-ended': { hostId: string; guestId: string }
+  /** social: a player who came through `inviter`'s link was introduced to them (comeback mail looks at the inviter soon). */
+  'invite-joined': { inviter: string }
   /** social: a block or unblock was committed. */
   'blocks-changed': { a: string; b: string }
   /** host: every heartbeat. */

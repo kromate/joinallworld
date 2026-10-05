@@ -41,6 +41,9 @@
   --c-critical: #b3402a;
   /* On a very large screen the interface is drawn a little larger, so text and buttons keep a comfortable size; the world behind it is never scaled this way. */
   --ui-zoom: 1;
+  /* One hundredth of the window's height in the units of the element that reads it. A length inside a zoomed element is enlarged with it,
+     viewport units included, so every rule that sets `zoom` also sets this to 1dvh divided by that zoom; heights are written with it, never with dvh. */
+  --ui-vh: 1dvh;
   /* spacing */
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
   /* radii */

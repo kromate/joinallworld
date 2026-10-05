@@ -62,7 +62,7 @@ defineExpose({ element: dialog })
 </template>
 
 <style scoped>
-.base-sheet { border: 0; padding: 0; border-radius: var(--r-xl); width: min(480px, calc(100% - 24px)); max-width: none; max-height: min(88dvh, 780px); background: #fff; color: var(--c-ink); font-family: var(--font); overflow: hidden; box-shadow: var(--e-3); }
+.base-sheet { border: 0; padding: 0; border-radius: var(--r-xl); width: min(480px, calc(100% - 24px)); max-width: none; max-height: min(calc(88 * var(--ui-vh)), 780px); background: #fff; color: var(--c-ink); font-family: var(--font); overflow: hidden; box-shadow: var(--e-3); }
 .base-sheet[open] { display: flex; flex-direction: column; }
 .base-sheet:focus, .base-sheet:focus-visible { outline: none; }
 .base-sheet::backdrop { background: #0c1a1485; backdrop-filter: blur(3px); }

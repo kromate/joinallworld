@@ -14,6 +14,7 @@ import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import ClosenessMeter from './ClosenessMeter.vue'
+import FounderTag from './FounderTag.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import { closenessText, presenceClass, STALE_MS, staleSteps, venueNameOf } from './socialModel.ts'
@@ -65,7 +66,7 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
     <p class="social-note">{{ summaryLine }}</p>
     <div v-if="listing?.players.length || here.length" class="social-cards">
       <button v-for="player in listing?.players ?? []" :key="`p${player.id}`" type="button" class="social-card" @click="shell.open('person', { player: player.id, name: player.name })">
-        <PlayerAvatar :name="player.name" :seed="player.id" status="online" /><strong>{{ player.name }}</strong><small class="is-player">Real player{{ player.friend ? ' · Friend' : '' }}</small>
+        <PlayerAvatar :name="player.name" :seed="player.id" status="online" /><strong>{{ player.name }}<FounderTag v-if="player.founder" /></strong><small class="is-player">Real player{{ player.friend ? ' · Friend' : '' }}</small>
       </button>
       <button v-for="npc in here" :key="`n${npc.id}`" type="button" class="social-card" @click="shell.open('person', { npc: npc.id })">
         <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="npc.name" :seed="npc.id" /></span><strong>{{ npc.name }}</strong><small>{{ npc.role }} · NPC</small>
@@ -85,12 +86,13 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
         <div v-for="friend in state.me.friends" :key="`f${friend.id}`" class="social-row">
           <PlayerAvatar :name="friend.name" :seed="friend.id" :status="friend.status" />
           <div>
-            <strong>{{ friend.name }}<template v-if="friend.bae"> <GameIcon name="heart" inline /><span class="sr-only">your Bae</span></template></strong>
+            <strong>{{ friend.name }}<FounderTag v-if="friend.founder" /><template v-if="friend.bae"> <GameIcon name="heart" inline /><span class="sr-only">your Bae</span></template></strong>
             <small class="social-presence" :class="`is-${presenceClass(friend.status)}`">{{ presence(friend) }}</small>
           </div>
           <span class="social-actions"><button type="button" class="social-btn is-primary" @click="shell.open('messages', { to: friend.id, name: friend.name })">Chat</button><button type="button" class="social-btn" @click="shell.open('person', { player: friend.id, name: friend.name })">View</button></span>
         </div>
       </div>
+      <button v-if="state.me.friendsMore?.next" type="button" class="social-btn" :disabled="state.friendsLoading" @click="client.loadMoreFriends()">Show more friends</button>
       <EmptyState v-if="!state.me.friends.length" icon="hand" title="No friends yet" text="Go to places around town, greet people, and add the players you meet.">
         <BaseButton @click="shell.open('map')">Find somewhere to go</BaseButton>
       </EmptyState>

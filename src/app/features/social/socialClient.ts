@@ -22,7 +22,7 @@ import type { Ref } from 'vue'
 import { createOutbox, freshSocial, inviteIdFrom, mergeMessages, SEND_TIMEOUT_MS } from '../../../game/social-model.ts'
 import type { ThreadRecord } from '../../../game/social-model.ts'
 import type { ErrorFrame, PresenceFrame } from '../../../types/protocol.ts'
-import type { Conversation, KnockState, Message, PeopleFrame, PeopleListing, PersonCard, SocialOverview, SocialPushFrame, ThreadItem } from '../../../types/social.ts'
+import type { Conversation, Friend, KnockState, Message, PeopleFrame, PeopleListing, PersonCard, SocialOverview, SocialPushFrame, ThreadItem } from '../../../types/social.ts'
 import type { ApiError } from '../../types/client.ts'
 import type { PanelApi } from '../../types/panel.ts'
 
@@ -46,6 +46,8 @@ export interface SocialState {
   people: PeopleState | null
   peopleAt: number
   peopleLoading: boolean
+  /** The founder's next page of friends is being read. */
+  friendsLoading: boolean
   /** conversation id → its messages */
   threads: Map<string, ThreadRecord>
   /** player id → their card, or why it could not be had */
@@ -114,7 +116,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   const outbox = createOutbox()
   const state = reactive<SocialState>({
     me: null, loading: false, error: null, socket: 'idle',
-    people: null, peopleAt: 0, peopleLoading: false,
+    people: null, peopleAt: 0, peopleLoading: false, friendsLoading: false,
     threads: new Map(), profiles: new Map(), openConv: null, knock: null, linkHost: null, houseRoom: null,
   })
   /** Counts every change: reading it makes a computed follow the (not reactive) outbox. */
@@ -181,6 +183,21 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     } else state.error = result.reason
     refresh()
     if (dirty) { dirty = false; void sync() }
+  }
+
+  /** The founder's next page of automatic friends, added to the overview's list. The next read of the overview starts from its first page again. */
+  async function loadMoreFriends(): Promise<void> {
+    const after = state.me?.friendsMore?.next
+    if (!connected() || !after || state.friendsLoading) return
+    state.friendsLoading = true
+    const result = await call<{ friends: Friend[]; total: number; next: string | null }>(`/api/social/friends?after=${encodeURIComponent(after)}`)
+    state.friendsLoading = false
+    // An overview read meanwhile has replaced the list: this page belongs to the one before it.
+    if (!result.ok || !state.me || state.me.friendsMore?.next !== after) return
+    const known = new Set(state.me.friends.map((friend) => friend.id))
+    state.me.friends.push(...result.friends.filter((friend) => !known.has(friend.id)))
+    state.me.friendsMore = { total: result.total, next: result.next }
+    refresh()
   }
 
   async function loadPeople(): Promise<void> {
@@ -391,7 +408,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     joiningHouse = null; syncing = false; dirty = false; peopleDirty = false; profileVersion += 1; attempts = 0
     env.clearTimeout(timer); timer = null
     const old = ws; ws = null
-    state.socket = 'idle'
+    state.socket = 'idle'; state.friendsLoading = false
     for (const listener of [...closeListeners]) listener()
     try { old?.close() } catch { /* already closed */ }
     peopleChanged()
@@ -432,6 +449,6 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     }
   }
 
-  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, sendFrame, onCallFrame, onSocketClose, cityId, newClientId, call, perform, refreshLife, sync, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
+  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, sendFrame, onCallFrame, onSocketClose, cityId, newClientId, call, perform, refreshLife, sync, loadMoreFriends, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
 }
 export type SocialClient = ReturnType<typeof createSocialClient>

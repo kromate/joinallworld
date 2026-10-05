@@ -56,6 +56,12 @@ export const COMEBACK = Object.freeze({
   /** Days before the same type may be sent again. */
   cooldownDays: { need: 3, waiting: 2, nudge: 2, milestone: 2, event: 3 } as Readonly<Record<'need' | 'waiting' | 'nudge' | 'milestone' | 'event', number>>,
   nudge: { awayDays: 2, perFriendDays: 7, keepDays: 7, perHour: 5, kept: 5 },
+  /**
+   * A friend who joined through the player's link is said soon, also to a player who was active a moment ago — but
+   * `holdMinutes` after the join (so several joins are one mail), and never while the player is in the game, where
+   * the notice is enough: they are looked at again every `recheckMinutes` until they have left or read it.
+   */
+  join: { holdMinutes: 10, recheckMinutes: 10 },
   /** How often a player who is waiting for nothing in particular is looked at again. */
   checkMs: HOUR,
   /** What a record remembers. */
@@ -68,7 +74,7 @@ const FINAL_STEP = Math.max(...COMEBACK.awaySteps);
 // ---- facts and memory ----------------------------------------------------------------------------
 
 /** Something waiting for the player, from a friend (named) or an anonymous friend request. Already filtered: no blocked or muted sender. */
-export interface WaitingItem { kind: 'message' | 'gift' | 'request'; /** A friend's first name, or null (a request is never named). */ from: string | null; at: number }
+export interface WaitingItem { kind: 'message' | 'gift' | 'request' | /** a friend came through the player's invite link */ 'joined'; /** A friend's first name, or null (a request is never named). */ from: string | null; at: number }
 export interface NudgeItem { from: string; at: number }
 export type MilestoneKind = 'elected' | 'house' | 'deposit' | 'table' | 'vote' | 'shift';
 export interface Milestone { key: string; what: MilestoneKind; label: string }
@@ -98,7 +104,7 @@ export const defaultPrefs = (on = false): Prefs => ({ on, pausedUntil: 0, types:
 export const emptyMemory = (): Memory => ({ sent: [], last: {}, away: {}, keys: [], waitingAt: 0, nudgeAt: 0 });
 
 export type Plan =
-  | { type: 'waiting'; key: string; names: string[]; messages: number; gifts: number; requests: number; newest: number; go: GoTarget }
+  | { type: 'waiting'; key: string; names: string[]; messages: number; gifts: number; requests: number; /** Friends who joined through the player's link. */ joined?: number; newest: number; go: GoTarget }
   | { type: 'nudge'; key: string; names: string[]; newest: number; go: GoTarget }
   | { type: 'need'; key: string; need: 'hunger' | 'energy' | 'social'; go: GoTarget }
   | { type: 'milestone'; key: string; what: MilestoneKind; label: string; go: GoTarget }
@@ -142,7 +148,7 @@ export function waitingPlan(facts: Pick<Facts, 'waiting'>, memory: Pick<Memory, 
   if (!fresh.length) return null;
   const newest = Math.max(...fresh.map((item) => item.at));
   return { type: 'waiting', key: `waiting:${newest}`, names: sortedUnique(fresh.map((item) => item.from)).slice(0, 3),
-    messages: fresh.filter((item) => item.kind === 'message').length, gifts: fresh.filter((item) => item.kind === 'gift').length, requests: fresh.filter((item) => item.kind === 'request').length, newest, go: fresh.every((item) => item.kind === 'request') ? 'people' : 'messages' };
+    messages: fresh.filter((item) => item.kind === 'message').length, gifts: fresh.filter((item) => item.kind === 'gift').length, requests: fresh.filter((item) => item.kind === 'request').length, joined: fresh.filter((item) => item.kind === 'joined').length, newest, go: fresh.every((item) => item.kind === 'request' || item.kind === 'joined') ? 'people' : 'messages' };
 }
 
 /** A friend asked for the player back within the last week and it has not been mailed yet. */
@@ -232,7 +238,7 @@ export interface Decision {
   /** Types that qualified but were held back by the caps or the back-off. */
   suppressed: ComebackType[]
 }
-export interface DecideInput { now: number; lastActive: number; facts: Facts; memory: Memory; prefs: Prefs }
+export interface DecideInput { now: number; lastActive: number; facts: Facts; memory: Memory; prefs: Prefs; /** The player is connected to the game right now. */ online?: boolean }
 
 const cooled = (memory: Memory, type: keyof typeof COMEBACK.cooldownDays, now: number): boolean => { const at = memory.last[type]; return at === undefined || now - at >= COMEBACK.cooldownDays[type] * DAY; };
 
@@ -257,9 +263,15 @@ export function decide(input: DecideInput): Decision {
   if (prefs.pausedUntil > now) return none('paused', prefs.pausedUntil);
   // A mail that was sent after the player's last visit and was the final one ends the run until they come back.
   if ((memory.away['28'] ?? 0) > lastActive || memory.sent.filter((entry) => entry.at > lastActive).length >= COMEBACK.stopAfter) return none('stopped', NEVER);
-  const quietUntil = activeUntil(lastActive);
-  if (now < quietUntil) return none('active', quietUntil);
-  const options = candidates(input);
+  const quietUntil = activeUntil(lastActive), active = now < quietUntil;
+  if (active) {
+    // Only a friend who joined through the player's link is said this soon (COMEBACK.join), and nothing else rides along with it.
+    const joinedAt = prefs.types.friends && cooled(memory, 'waiting', now) ? Math.max(0, ...input.facts.waiting.filter((item) => item.kind === 'joined' && item.at > memory.waitingAt).map((item) => item.at)) : 0;
+    if (!joinedAt) return none('active', quietUntil);
+    const ready = joinedAt + COMEBACK.join.holdMinutes * 60000;
+    if (input.online === true || now < ready) return none('active', Math.min(quietUntil, input.online === true ? Math.max(ready, now + COMEBACK.join.recheckMinutes * 60000) : ready));
+  }
+  const options = candidates(input).filter((plan) => !active || plan.type === 'waiting');
   if (!options.length) return none('nothing_due', now + COMEBACK.checkMs);
   const opens = nextOpen(now);
   if (opens > now) return none('quiet_hours', opens);

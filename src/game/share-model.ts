@@ -48,7 +48,7 @@ export function sharePreview(facts: unknown): { title: string; description: stri
     case 'table': return f.tableId ? { title: `Come and play ${f.game || 'a game'} with ${f.name}`, description: `${f.name} is at a table${f.venue ? ` at ${f.venue}` : ''} in ${BRAND}. Sit down or watch. No sign-up.` }
       : { title: f.won ? `${f.name} just won at ${f.game || 'the table'}` : `${f.name} is at the ${f.game || 'games'} table`, description: `Pull up a chair in ${BRAND}. Whot at the buka, with real people.` };
     case 'event': return { title: `${f.event || 'Something is on'} · ${f.venue || f.city}`, description: `${f.name} is going. Meet them there in ${BRAND}.` };
-    default: return { title: `Join ${f.name} in ${BRAND}`, description: `${f.name} lives in ${place}. Make your Sim, get a job, and come through. No sign-up.` };
+    default: return { title: `Join ${f.name} in ${BRAND}`, description: `${f.name} lives in ${place}, in a world of real cities. Make your character, get a job, and come through. No sign-up.` };
   }
 }
 
@@ -68,7 +68,7 @@ export function shareText(facts: unknown, link = ''): string {
   } else if (f.kind === 'table') lines.push(...(f.tableId ? [`Come and play ${f.game} with me${f.venue ? ` at ${f.venue}` : ''} 🃏`, `I am at the table in ${BRAND}. Tap to sit down.`] : [f.won ? `I just won at ${f.game} in ${BRAND} 🏆` : `I am at the ${f.game} table in ${BRAND}`, 'Come and play me.']));
   else if (f.kind === 'house') lines.push(`Come to my house in ${f.district || f.city} 🏠`, `Knock in ${BRAND}. No sign-up.`);
   else if (f.kind === 'event') lines.push(`${f.event} · ${f.venue}`, `I am going. Meet me there in ${BRAND}.`);
-  else lines.push(`I live in ${f.district || f.city} now, in ${BRAND}.`, 'Make your Sim and come through. No sign-up.');
+  else lines.push(`I live in ${BRAND} now: a world of real cities. Find me in ${f.district || f.city}.`, 'Make your character and come through. No sign-up.');
   if (link) lines.push(link);
   return lines.join('\n');
 }
@@ -89,7 +89,7 @@ export function shareCard(facts: unknown): ShareCard {
   if (f.kind === 'table') return { ...base, headline: f.tableId ? `Come and play ${f.game}` : f.won ? `Won at ${f.game}` : `At the ${f.game} table`, lines: [f.name, f.venue || place, f.tableId ? 'A seat is open' : 'Come and play me'] };
   if (f.kind === 'house') return { ...base, headline: 'Come to my house', lines: [f.name, place, 'Knock at the door'] };
   if (f.kind === 'event') return { ...base, headline: f.event, lines: [f.venue, `${f.name} is going`] };
-  return { ...base, headline: `I live in ${f.district || f.city} now`, lines: [f.name, 'Make your Sim and come through'] };
+  return { ...base, headline: `Come and live in ${BRAND}`, lines: [f.name, `Now in ${f.district || f.city}`, 'Make your character and come through'] };
 }
 
 const CODE = /^[a-z0-9]{8,16}$/;

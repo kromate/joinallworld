@@ -146,7 +146,7 @@ export function referralService(ctx: Pick<RouteContext, 'now' | 'fail' | 'checks
   /** What the caller sees about their own referrals. Names only; never an id of a device or an address. */
   function view(g: GrowthCollection, id: string, growthView?: GrowthView): ReferralView {
     const me = playerOf(g, id, { create: false });
-    const invited = Object.entries(me?.invited ?? {}).sort((a, b) => b[1].at - a[1].at).slice(0, 30).map(([friend, entry]) => ({ id: friend, name: entry.name, state: entry.state, at: entry.at }));
+    const invited = Object.entries(me?.invited ?? {}).sort((a, b) => b[1].at - a[1].at).slice(0, 30).map(([friend, entry]) => ({ id: friend, name: entry.name, state: entry.state, at: entry.at, ...(g.players[friend]?.ref?.welcomed === true ? { welcomed: true } : {}) }));
     const counted = me?.counted ?? 0;
     return {
       by: me?.ref ? { name: g.shares[me.ref.code]?.facts?.name ?? 'a friend', id: me.ref.by, welcomed: me.ref.welcomed, counted: me.ref.counted } : null,

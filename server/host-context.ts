@@ -10,6 +10,7 @@ import { settleCity, applyLifeAction } from './life-service.ts';
 import { archivedLife } from './protocol.ts';
 import type { ActionRequest, CityId } from '../src/types/protocol.ts';
 import type { LifeState } from '../src/types/life.ts';
+import { FOUNDER_EMAIL_SHA256 } from './social/founder.ts';
 import type { AccountsConfig, ActBody, ActionOutcome, ContextCore, Db, PageHandler, SessionRecord } from './types.ts';
 
 /** The settings a module may read through ctx.env(name). Nothing else of the environment is reachable. */
@@ -34,6 +35,18 @@ export function accountsConfig(env: Readonly<Record<string, unknown>> | null | u
   const projectId = text('ACCOUNTS_FIREBASE_PROJECT_ID'), apiKey = text('ACCOUNTS_FIREBASE_API_KEY'), client = text('ACCOUNTS_GOOGLE_CLIENT_ID');
   if (!/^[a-z][a-z0-9-]{4,29}$/.test(projectId) || !/^[A-Za-z0-9_-]{20,80}$/.test(apiKey)) return null;
   return { projectId, apiKey, googleClientId: /^[0-9]+-[A-Za-z0-9_-]+\.apps\.googleusercontent\.com$/.test(client) ? client : '' };
+}
+/**
+ * THE FOUNDER (server/social/founder.ts) is known by the SHA-256 of their account's address. FOUNDER_EMAIL_SHA256
+ * replaces the built-in hash: 64 hex characters name another account; an empty or malformed value means there is no
+ * founder, and nobody is given a first friend. Unset: the built-in hash.
+ */
+export const FOUNDER_ENV = 'FOUNDER_EMAIL_SHA256';
+export function founderEmailHash(env: Readonly<Record<string, unknown>> | null | undefined): string {
+  const value = env?.[FOUNDER_ENV];
+  if (value === undefined || value === null) return FOUNDER_EMAIL_SHA256;
+  const text = typeof value === 'string' ? value.trim().toLowerCase() : '';
+  return /^[0-9a-f]{64}$/.test(text) ? text : '';
 }
 /**
  * THE SESSION COOKIE. Over HTTPS it is `__Host-sid`: a name a browser only accepts with Secure, Path=/ and NO Domain, so

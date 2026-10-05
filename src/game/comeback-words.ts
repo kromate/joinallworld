@@ -62,6 +62,11 @@ export function mailWords(plan: Plan, { name, now }: { name: string; now: number
       if (plan.messages) lines.push(`${plural(plan.messages, 'message', 'messages')} from your friends`);
       if (plan.gifts) lines.push(plan.gifts === 1 ? 'A gift from a friend' : `${plan.gifts} gifts from friends`);
       if (plan.requests) lines.push(plan.requests === 1 ? 'A friend request' : `${plan.requests} friend requests`);
+      if (plan.joined) lines.push(plan.joined === 1 ? 'A friend joined through your link' : `${plan.joined} friends joined through your link`);
+      if (plan.joined && plan.names.length && !plan.messages && !plan.gifts && !plan.requests) {
+        const who = listNames(plan.names), subject = `${who} joined Allworld through your link`;
+        return { subject, heading: subject, intro: `${who} ${plan.names.length === 1 ? 'is' : 'are'} in Allworld now and waiting for you. Say hello.`, lines: [], button: { label: 'Say hello', go: plan.go }, pref };
+      }
       if (!plan.names.length) {
         const subject = plan.requests === 1 ? 'Someone wants to be your friend in Allworld' : `${plan.requests} people want to be your friends in Allworld`;
         return { subject, heading: subject, intro: 'Open the game to see who, and say yes or not now.', lines: [], button: { label: 'See who', go: plan.go }, pref };

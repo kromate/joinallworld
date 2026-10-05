@@ -28,6 +28,7 @@ import GlyphText from '../kit/GlyphText.vue'
 import LinkButton from '../growth/LinkButton.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
 import PersonCallButton from '../calls/PersonCallButton.vue'
+import FounderTag from '../social/FounderTag.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
 
@@ -91,6 +92,8 @@ const conv = computed<Conversation | null>(() => (ui.open ? me.value?.conversati
 const thread = computed(() => { void tick.value; const now = ui.open ? social.threads.get(ui.open) : undefined; return now ? { loaded: now.loaded, error: now.error } : null })
 const items = computed(() => { void tick.value; return ui.open ? threadView(ui.open) : [] })
 const title = computed(() => (ui.open ? threadTitle(ui.open, conv.value, ui.openName) : ''))
+/** A direct chat with the founder: the server marked that member. */
+const withFounder = computed(() => conv.value?.kind === 'dm' && conv.value.members.some((member) => member.id === conv.value?.with && member.founder === true))
 const readOnly = computed(() => (ui.open && me.value ? readOnlyReason(ui.open, me.value, connected.value ? null : linkWords(view.value)?.cannot('send messages') ?? 'Not connected.') : null))
 const isGroup = computed(() => Boolean(conv.value) && conv.value?.kind !== 'dm')
 const addable = computed(() => (me.value?.friends ?? []).filter((friend) => !conv.value?.members.some((member) => member.id === friend.id)))
@@ -209,7 +212,8 @@ defineExpose({
           <RowMark v-if="conv?.kind === 'group'" round>👥</RowMark>
           <RowMark v-else-if="ui.open.startsWith('h.')" round>🏠</RowMark>
           <RowMark v-else :name="title" :seed="conv?.with ?? ui.open" />
-          <h3>{{ title }}<small>{{ threadKind(conv) }}</small></h3>
+          <h3 v-if="withFounder">{{ title }}<FounderTag /><small>{{ threadKind(conv) }}</small></h3>
+          <h3 v-else>{{ title }}<small>{{ threadKind(conv) }}</small></h3>
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
           <template v-else-if="conv?.kind === 'dm' && conv.with">
             <BaseButton small @click="shell.open('person', { player: conv.with, name: title })">Profile</BaseButton>
@@ -349,6 +353,7 @@ defineExpose({
             <div v-for="line in lines" :key="line.key" class="messages-update" :class="{ 'is-unread': line.fresh }">
               <RowMark round><GameIcon :kind="line.kind" :id="line.id" /></RowMark>
               <span class="messages-update-body"><b><GlyphText :text="line.text" /></b><small>{{ formatClock(line.at) }}{{ line.fresh ? ' · New' : '' }}</small></span>
+              <BaseButton v-if="line.player" small @click="shell.open('person', { player: line.player })">Say hello</BaseButton>
             </div>
           </ListRows>
           <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" icon="bell" title="Nothing yet" text="Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the Governor appear here." />

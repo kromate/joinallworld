@@ -13,6 +13,7 @@
  *   HTTP 400/401/409/429 { error: code }        malformed, no session, client-id reuse, rate limited
  *
  *   GET  /api/social/me                               overview: friends + presence, requests, updates, conversations, house
+ *   GET  /api/social/friends?after=<cursor>           the founder's next page of automatic friends (`friendsMore.next` of /me)
  *   POST /api/social/updates/read        {}
  *   GET  /api/social/people?city=                     who shares my venue room right now
  *   GET  /api/social/search?q=                        find a player by name or public id
@@ -39,7 +40,7 @@
  *   POST /api/social/bae/answer          { from, accept, cityId }
  *   POST /api/social/bae/end             { cityId }
  *   POST /api/social/transfers           { to, amount, cityId, clientId }
- * The friends list is part of GET /api/social/me.
+ * The friends list is part of GET /api/social/me; only the founder's can be longer than that answer carries.
  */
 import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 import { socialService, MATERIAL } from '../social/service.ts';
@@ -68,6 +69,7 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   const after = (request: RouteRequest): number => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };
   return {
     'GET /api/social/me': route((db, session) => service.me(db, session)),
+    'GET /api/social/friends': route((db, session, body, request) => service.friendsPage(db, session, request.query.get('after'))),
     'POST /api/social/updates/read': route((db, session) => service.readUpdates(db, session)),
     'GET /api/social/people': route((db, session, body, request) => service.people(db, session, request.query.get('city'))),
     'GET /api/social/search': route((db, session, body, request) => service.search(db, session, request.query.get('q'))),

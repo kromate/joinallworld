@@ -275,7 +275,7 @@ const waiting = computed(() => Boolean(step.value?.wait) && !done.value)
 
 <style scoped>
 .tour { position: fixed; inset: 0; z-index: 60; pointer-events: none; font: 14px/1.4 var(--font); color: var(--c-ink); }
-.tour:not(.in-dialog) { zoom: var(--ui-zoom); }
+.tour:not(.in-dialog) { zoom: var(--ui-zoom); --ui-vh: calc(1dvh / var(--ui-zoom)); }
 .tour-probe { position: absolute; left: 0; top: 0; width: 100px; height: 1px; visibility: hidden; pointer-events: none; }
 .tour-dim { position: absolute; inset: 0; pointer-events: auto; background: rgba(10, 18, 15, .72); }
 .tour-pane { position: absolute; background: transparent; pointer-events: auto; }

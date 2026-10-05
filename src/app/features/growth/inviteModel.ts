@@ -29,6 +29,9 @@ export function progressLine(referral: Pick<ReferralView, 'invited' | 'counted'>
   return `${joined} friend${joined === 1 ? '' : 's'} joined${referral.counted ? ` · ${referral.counted} counted` : ''}`
 }
 
+/** Where one friend who joined has got to: joined, had a first paid day, or counted. */
+export const joinedState = (friend: Pick<ReferralView['invited'][number], 'state' | 'welcomed'>): string => (friend.state === 'counted' ? 'Counted' : friend.welcomed ? 'First paid day' : 'Joined')
+
 /** The surface a share was opened from, or 'other'. */
 export const surfaceOf = (value: unknown): ShareSurface => SHARE_SURFACES.find((surface) => surface === value) ?? 'other'
 

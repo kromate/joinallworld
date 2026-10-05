@@ -72,6 +72,16 @@ The first two must both be present and well formed, or accounts stay off: `GET /
 
 The Node host reads them from its environment; the Worker reads them as vars. `PUBLIC_ORIGIN`, when set, is sent as the referrer of the server's reset request, so an API key restricted by referrer still accepts it.
 
+### The founder's account
+
+One account is the founder's: the one whose verified address has a given SHA-256 (of the address, trimmed and lower-cased). Its character in play is every player's first friend, carries the "Founder" tag wherever a player is listed, and is the sender of the automatic welcome note in Messages (`server/social/founder.ts`; the rules are in `server/social/service.ts`). Only the hash is in the source.
+
+| Setting | Required | What it is |
+| --- | --- | --- |
+| `FOUNDER_EMAIL_SHA256` | no | 64 hex characters: the hash of another account's address. Empty (or malformed): there is no founder and none of this happens. Unset: the built-in hash |
+
+A player is introduced to the founder once, on their first request after arriving in a city (or, for a player from before, their next one). With no such account yet nothing is marked, so it happens when there is one. The friendship is kept on the player's side only, so the founder's own record, overview and presence do not grow with the number of players; the founder's client is sent 50 of them at a time (`GET /api/social/friends`). It is made without a request, a notice, a mail or a life action, and it is not made again after either side removed or blocked the other.
+
 ## 4. Verifying a token
 
 `server/accounts/token.ts`. In this order:

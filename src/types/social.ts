@@ -86,13 +86,15 @@ export interface Message {
   body: string
   at: number
   sys?: true
+  /** The founder's automatic welcome note. */
+  auto?: true
   /** The sender's retry key — only on the sender's own messages. */
   clientId?: string
 }
 
 export type SocialUpdateKind =
   | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
-  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation'
+  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
   id: number
@@ -100,7 +102,7 @@ export interface SocialUpdate {
   text: string
   at: number
   read: boolean
-  /** `{ from }`, `{ host }`, `{ conv }`, `{ report }` or `{ from, amount }` depending on `kind`; absent for `moderation`. */
+  /** `{ from }`, `{ host }`, `{ conv }`, `{ report }` or `{ from, amount }` depending on `kind`; absent for `moderation`. `invite-joined`: `from` is the player who joined. */
   data?: { from?: string; host?: string; conv?: string; report?: string; amount?: number }
   // INCONSISTENT: src/ui/panels/inbox.js:52 keys a notification by `update.at` + `update.kind`, not by this
   // `id`, so two updates of one kind in the same millisecond share a key.
@@ -154,8 +156,10 @@ export interface SocialOverview {
   ok: true
   code: 'ok'
   me: { id: string; name: string; since: number }
-  /** Sorted by name. */
+  /** The founder first, then by name. For the founder: their friends by request, then the newest automatic friends (`friendsMore`). */
   friends: Friend[]
+  /** The founder's own overview only: how many automatic friends there are, and the cursor of the next page (GET /api/social/friends). */
+  friendsMore?: { total: number; next: string | null }
   requests: { in: (PlayerRef & { at: number })[]; out: (PlayerRef & { at: number })[] }
   baeRequests: (PlayerRef & { at: number })[]
   bae: PlayerRef | null
@@ -323,6 +327,8 @@ type SocialPost = SocialCommon | JsonBodyErrorCode
 
 export interface SocialHttpRoutes {
   'GET /api/social/me': { response: Ok<SocialOverview>; errors: SocialCommon }
+  /** The founder's next 50 automatic friends, newest first; `after` is the `next` of the page before. Anyone else: an empty page. */
+  'GET /api/social/friends': { query: { after: string }; response: Ok<Done<'ok', { friends: Friend[]; total: number; next: string | null }>>; errors: SocialCommon | 'invalid_cursor' }
   'POST /api/social/updates/read': { body: Record<string, never>; response: Ok<Done<'read'>>; errors: SocialPost }
   'GET /api/social/people': { query: { city: CityId }; response: Ok<PeopleListing>; errors: SocialCommon | 'invalid_city' }
   /** `q`: 2–36 characters; a leading `@` is dropped. Matches a name fragment or a whole public id; at most 10 results. */

@@ -49,8 +49,8 @@ watch(guest, (now) => { if (now) signupShown('hud') }, { immediate: true })
 .acct-chip:hover { background: var(--c-green-soft); }
 .acct-chip i { display: grid; place-items: center; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--c-green-dark); color: #fff; font-style: normal; font-weight: 700; font-size: 13px; }
 .acct-chip span { overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 880px) { .acct-login { display: none; } }
 @media (max-width: 720px) {
-  .acct-login { display: none; }
   .acct-signup { min-height: 30px; padding: 0 11px; }
   .acct-chip { padding: 0 4px; max-width: none; }
   .acct-chip span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }

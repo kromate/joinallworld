@@ -90,6 +90,8 @@ export interface ConsentView {
 export interface InvitedFriend extends PlayerRef {
   state: 'joined' | 'counted'
   at: number
+  /** They have had their first paid day (their welcome gift was paid). */
+  welcomed?: boolean
 }
 
 /** What the caller sees about their own referrals (referral.js view). Names only. */

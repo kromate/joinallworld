@@ -3,7 +3,7 @@
 .look-view{display:grid;gap:6px;min-width:0}
 .look-stage{position:relative;display:grid;place-items:center;overflow:hidden;isolation:isolate;min-height:90px;border-radius:var(--r-card);background:radial-gradient(120% 85% at 50% 6%,#f6f8fd 0,#e1e8f6 52%,#cdd8ee 100%)}
 .look-view.is-hero .look-stage{height:var(--stage-h,320px)}
-.look-view.is-wide .look-stage{height:clamp(200px,32dvh,260px)}
+.look-view.is-wide .look-stage{height:clamp(200px,calc(32 * var(--ui-vh)),260px)}
 .look-view.is-mini .look-stage{height:150px}
 .look-stage-view{position:absolute;inset:0;display:grid;place-items:center}
 .look-stage-view .look-avatar{height:84%;width:auto}

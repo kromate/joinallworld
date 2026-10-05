@@ -49,7 +49,7 @@ import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
 import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
@@ -203,6 +203,8 @@ export interface WorkerEnv {
   ACCOUNTS_FIREBASE_PROJECT_ID?: string
   ACCOUNTS_FIREBASE_API_KEY?: string
   ACCOUNTS_GOOGLE_CLIENT_ID?: string
+  /** Replaces the built-in founder hash; empty: no founder (server/host-context.ts founderEmailHash). */
+  FOUNDER_EMAIL_SHA256?: string
   [name: string]: unknown
 }
 
@@ -305,7 +307,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       },
       // Work that outlives the request that started it: the object stays up until it has finished.
       waitUntil: (promise) => { try { ctx.waitUntil(Promise.resolve(promise).catch(() => {})); } catch { /* not in a request */ } },
-      config: { accounts: accountsConfig(env), publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
+      config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
       startup: registeredCityIds().map(loadCityContent),
       // Nothing stops a Durable Object in an orderly way: every write is durable when it is acknowledged, and work in
       // flight is covered by waitUntil. The list exists so a module can register without asking which host it is on.

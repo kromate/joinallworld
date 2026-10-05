@@ -30,6 +30,13 @@ import { venueFor } from '../../src/game/cities/runtime.ts';
  *   reports   [{ id, by, about, aboutName, reason, text, at, status, note?, evidence: [body] }]   for moderators
  *             (read and answered through the operator routes — server/routes/moderation.ts)
  *   seq, sweptAt
+ *   founder   { account, id }  and  players[id].founder { id, at }: THE FOUNDER IS EVERY PLAYER'S FIRST FRIEND — who that
+ *             is, what is stored and why the founder's own record never grows with it: server/social/founder.ts.
+ *             A player meets the founder once (meetFounder, on their first request after arriving in a city); a
+ *             friendship made that way is not announced, counts toward no limit and no mission, and is not made
+ *             again after either of them ended it.
+ *   players[id].invite { by, at }: A PLAYER WHO CAME THROUGH AN INVITE LINK AND THEIR INVITER ARE FRIENDS (meetInviter):
+ *             an ordinary friendship in both records, made once without a request, and the inviter is told.
  * Only public ids are stored. The cookie secret never enters this collection or any response.
  *
  * TEXT. Every message body and group name passes the text filter (server/moderation/text.ts) and
@@ -57,10 +64,11 @@ import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts'
 import { venueLabel } from '../../src/game/content/venues.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
+import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus } from '../../src/types/social.ts';
 import type { LifeState } from '../../src/types/life.ts';
-import type { ConversationRecord, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, WsConnection } from '../types.ts';
+import type { AccountRecord, ConversationRecord, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, WsConnection } from '../types.ts';
 
 /** A request body or socket frame: every field is untrusted until a validator below has read it. */
 export type SocialBody = Record<string, unknown>;
@@ -70,7 +78,7 @@ export interface Refused { ok: false; code: string; reason: string }
 type BlockChange = ['block' | 'unblock', string, string] | ['forget', string];
 type VisitEnd = [string, string];
 /** The visits and block changes one transaction made, kept per collection copy (see endedIn). */
-interface Ended extends Array<VisitEnd> { blocks: BlockChange[]; material?: boolean }
+interface Ended extends Array<VisitEnd> { blocks: BlockChange[]; material?: boolean; pushes: PushList }
 type BlockChanges = BlockChange[] & { applied?: boolean };
 type Delivered<R> = R extends { push: unknown } ? Omit<R, 'push'> : R;
 
@@ -98,6 +106,7 @@ type SocialService = ReturnType<typeof buildService>;
 const services = new WeakMap<RouteContext, SocialService>();
 const ENDED = Symbol('visits ended by this transaction');
 const BLOCKS = Symbol('block changes made by this transaction');
+const PUSHES = Symbol('pushes owed by this transaction beside its own result');
 /** Set on a result (see finish) when the transaction applied a life effect that was owed to the caller. */
 export const MATERIAL = Symbol('this transaction changed a life');
 
@@ -116,7 +125,7 @@ function buildService(ctx: RouteContext) {
   // in one shared list) because another transaction may run between this one's commit and its
   // deliver(): finish() moves the list onto the result inside the transaction, deliver() announces it.
   const endedOf = new WeakMap<SocialCollection, Ended>();
-  const endedIn = (s: SocialCollection): Ended => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = Object.assign([] as VisitEnd[], { blocks: [] as BlockChange[] })); } return list; };
+  const endedIn = (s: SocialCollection): Ended => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = Object.assign([] as VisitEnd[], { blocks: [] as BlockChange[], pushes: [] as PushList })); } return list; };
   // ---- blocks, in memory (see header) ----------------------------------------------------------
   const blockIndex = new Map<string, Set<string>>(); // blocker → Set<blocked>
   const blocked = (a: string, b: string): boolean => Boolean(blockIndex.get(a)?.has(b) || blockIndex.get(b)?.has(a));
@@ -165,9 +174,128 @@ function buildService(ctx: RouteContext) {
     if (!Number.isSafeInteger(s.seq)) s.seq = 0;
     return s;
   }
-  const pub = (s: SocialCollection, id: string): PlayerRef => ({ id, name: s.players[id]?.name ?? 'Former player' });
+  // ---- the founder (server/social/founder.ts) --------------------------------------------------
+  const founderHash = ctx.config?.founderEmailSha256 ?? FOUNDER_EMAIL_SHA256;
+  // The last address compared and what came of it: an account's address is hashed once, not on every request.
+  let comparedEmail = '', comparedSame = false;
+  const isFounderEmail = (email: unknown): boolean => {
+    if (typeof email !== 'string' || !email) return false;
+    if (email !== comparedEmail) { comparedEmail = email; comparedSame = emailHash(email) === founderHash; }
+    return comparedSame;
+  };
+  /** One account, read by key alone (on the Worker accounts are rows). */
+  const accountOf = (db: Db | undefined, key: string | undefined): AccountRecord | undefined => {
+    const account = db && typeof key === 'string' && key !== '__proto__' ? db.accounts?.[key] : undefined;
+    return account !== null && typeof account === 'object' ? account : undefined;
+  };
+  /** The founder's character, or null: the noted account still exists, still has that address and still plays that character. */
+  function founderId(s: SocialCollection): string | null {
+    const noted = s.founder;
+    if (!founderHash || !isRecord(noted) || typeof noted.id !== 'string' || !Object.hasOwn(s.players, noted.id)) return null;
+    const account = accountOf(dbOf.get(s), noted.account);
+    return account && account.publicId === noted.id && isFounderEmail(account.email) ? noted.id : null;
+  }
+  /** The caller is the character of the founder's account: note it, so everyone else's requests can find it. */
+  function noteFounder(s: SocialCollection, db: Db, session: SessionRecord): void {
+    if (!founderHash || session.account === undefined) return;
+    const account = accountOf(db, session.account);
+    if (!account || account.publicId !== session.publicId || !isFounderEmail(account.email)) return;
+    if (s.founder?.account !== account.id || s.founder.id !== session.publicId) s.founder = { account: account.id, id: session.publicId };
+  }
+  /**
+   * THE FIRST FRIEND, ONCE. Runs for every caller (a new player's first request, and an earlier player's next one):
+   * with no founder yet nothing is marked, so it is tried again later. A block either way is respected, and the
+   * marker is still set: it is never tried a second time. The friendship is written on this player's side only,
+   * through no request, no update line, no push and no life action (so no mission, goal or reward counts it), and the
+   * founder's welcome note is put in this player's Messages alone.
+   * A player who still holds the friendship follows the founder to another character of the same account.
+   */
+  function meetFounder(s: SocialCollection, p: SocialPlayerRecord, id: string): void {
+    const founder = founderId(s), t = now();
+    if (!founder || founder === id || p.founder?.id === founder) return;
+    const them = s.players[founder]!, blockedHere = Boolean(p.blocked[founder] || them.blocked[id]);
+    if (p.founder) {
+      const held = p.friends[p.founder.id];
+      if (held === undefined || blockedHere || s.players[p.founder.id]?.friends[id] !== undefined) return;
+      delete p.friends[p.founder.id];
+      p.founder = { id: founder, at: p.founder.at };
+      if (p.friends[founder] === undefined) p.friends[founder] = held;
+      endedIn(s).material = true;
+      return;
+    }
+    p.founder = { id: founder, at: t };
+    endedIn(s).material = true;
+    if (blockedHere) return;
+    if (!areFriends(s, id, founder)) {
+      delete p.in[founder]; delete p.out[founder]; delete them.in[id]; delete them.out[id];
+      p.friends[founder] = t;
+    }
+    const key = dmId(id, founder);
+    if (Object.hasOwn(s.convs, key)) return; // they have talked before: no note
+    const conv: ConversationRecord = s.convs[key] = { id: key, kind: 'dm', members: [id, founder].sort(), seq: 1, created: t, messages: [{ seq: 1, from: founder, body: '', at: t, auto: true }] };
+    index(s, id, conv);
+  }
+  /**
+   * A PLAYER WHO CAME THROUGH AN INVITE LINK AND THEIR INVITER BECOME FRIENDS, ONCE. The link itself is the growth
+   * module's (server/growth/referral.ts: `ref.by` on the newcomer, `invited` on the inviter); this runs when either
+   * of the two makes a social request — so a newcomer is introduced once they have arrived in a city, and an inviter
+   * whose friends joined before this existed finds them on their next visit. The marker is on the newcomer and is
+   * never cleared: a block either way is respected, and a friendship either of them ended is not made again.
+   * It is an ordinary friendship (both records, both lives, the usual limit). With a full list on either side the
+   * newcomer's friend request is sent instead, and the inviter's update says so.
+   */
+  function introduce(s: SocialCollection, db: Db, newcomer: string, inviter: string, cityId: CityId): void {
+    const a = s.players[newcomer], b = s.players[inviter], t = now();
+    if (!a || !b || a.invite || newcomer === inviter) return;
+    a.invite = { by: inviter, at: t };
+    const ended = endedIn(s), push = ended.pushes;
+    ended.material = true;
+    if (blockedEither(s, newcomer, inviter) || areFriends(s, newcomer, inviter)) return;
+    const full = friendCount(s, inviter) >= LIMITS.friends ? 'Your' : friendCount(s, newcomer) >= LIMITS.friends ? 'Their' : null;
+    if (full) {
+      const asked = Boolean(a.out[inviter]) || (!b.out[newcomer] && Object.keys(a.out).length < LIMITS.requests && Object.keys(b.in).length < LIMITS.requests);
+      if (asked && !a.out[inviter]) { a.out[inviter] = b.in[newcomer] = t; push.push([inviter, { type: 'friend-request', from: pub(s, newcomer) }]); }
+      notify(s, inviter, 'invite-joined', `${a.name} joined through your link. ${full} friends list is full, so ${asked ? 'they are waiting in your friend requests instead' : 'you were not made friends'}.`, { from: newcomer }, push);
+      return;
+    }
+    for (const [x, y] of [[a, inviter], [b, newcomer]] as [SocialPlayerRecord, string][]) { delete x.in[y]; delete x.out[y]; }
+    a.friends[inviter] = b.friends[newcomer] = t;
+    owe(s, db, newcomer, cityId, { op: 'friend', id: inviter, name: b.name });
+    owe(s, db, inviter, cityId, { op: 'friend', id: newcomer, name: a.name });
+    notify(s, inviter, 'invite-joined', `${a.name} joined through your link. You are friends now: say hello.`, { from: newcomer }, push);
+    push.push([inviter, { type: 'social-sync' }], [newcomer, { type: 'social-sync' }]);
+  }
+  /** The caller as a newcomer (their inviter) and as an inviter (everyone who joined and has arrived), each pair once. */
+  function meetInviter(s: SocialCollection, db: Db, session: SessionRecord, p: SocialPlayerRecord, id: string): void {
+    const mine = db.growth?.players?.[id];
+    if (!mine) return;
+    const cityId = lifeCity(session, ctx.cityIds[0]!) ?? ctx.cityIds[0]!;
+    if (!p.invite && mine.ref && typeof mine.ref.by === 'string') introduce(s, db, id, mine.ref.by, cityId);
+    for (const other of Object.keys(mine.invited ?? {})) {
+      const them = Object.hasOwn(s.players, other) ? s.players[other] : undefined;
+      if (them && !them.invite && db.growth?.players?.[other]?.ref?.by === id) introduce(s, db, other, id, cityId);
+    }
+  }
+  /** Friends that count toward LIMITS.friends: the automatic friendship with the founder takes no place. */
+  const friendCount = (s: SocialCollection, id: string): number => Object.keys(s.players[id]?.friends ?? {}).filter((other) => !autoFriend(s.players, other, id)).length;
+  /**
+   * The founder's automatic friends, newest first, FOUNDER_PAGE at a time. They are found by reading the players (the
+   * founder's record does not list them); `after` is the `next` of the page before.
+   */
+  function founderFriends(s: SocialCollection, founder: string, after: string | null): { ids: [string, number][]; total: number; next: string | null } {
+    const all: [string, number][] = [];
+    for (const other in s.players) if (autoFriend(s.players, founder, other)) all.push([other, s.players[other]!.friends[founder]!]);
+    all.sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+    const [sinceText = '', afterId = ''] = (after ?? '').split(':'), since = Number(sinceText);
+    const start = after === null ? 0 : all.findIndex(([other, at]) => at < since || (at === since && other > afterId));
+    const ids = start < 0 ? [] : all.slice(start, start + FOUNDER_PAGE), last = ids.at(-1);
+    return { ids, total: all.length, next: last && start + ids.length < all.length ? `${last[1]}:${last[0]}` : null };
+  }
+  const bodyOf = (message: MessageRecord): string => (message.auto ? WELCOME_NOTE : message.body);
+
+  const pub = (s: SocialCollection, id: string): PlayerRef => ({ id, name: s.players[id]?.name ?? 'Former player', ...(founderId(s) === id ? { founder: true as const } : {}) });
   const blockedEither = (s: SocialCollection, a: string, b: string): boolean => Boolean(s.players[a]?.blocked[b] || s.players[b]?.blocked[a]);
-  const areFriends = (s: SocialCollection, a: string, b: string): boolean => Boolean(s.players[a]?.friends[b] && s.players[b]?.friends[a]);
+  const areFriends = (s: SocialCollection, a: string, b: string): boolean => friendsIn(s.players, a, b);
 
   /** Register/refresh the caller, run housekeeping and apply anything owed to their life. */
   function enter(db: Db, session: SessionRecord): { s: SocialCollection; p: SocialPlayerRecord; id: string } {
@@ -180,8 +308,11 @@ function buildService(ctx: RouteContext) {
     const p = s.players[id] ||= { name: session.name, first: t, seen: t, friends: {}, in: {}, out: {}, blocked: {}, convs: {}, updates: [], reports: [],
       baeIn: {}, bae: null, visiting: null, recv: { day: 0, amount: 0 }, chats: { day: 0, count: 0 } };
     p.name = session.name; p.seen = t;
+    noteFounder(s, db, session);
     sweep(s, t);
+    meetInviter(s, db, session, p, id);
     claim(s, session);
+    meetFounder(s, p, id);
     return { s, p, id };
   }
   /** The other player's record, or a refusal. Blocking is reported the same way in both directions. */
@@ -288,8 +419,10 @@ function buildService(ctx: RouteContext) {
       }
       if (keep.length) s.pending[to] = keep; else delete s.pending[to];
     }
+    const founder = founderId(s);
     for (const [id, p] of Object.entries(s.players)) {
-      if (t - p.seen <= LIMITS.playerIdleMs || presence.status(id).state === 'online') continue;
+      // The founder is kept however long they are away: every player's first friendship points at their record.
+      if (t - p.seen <= LIMITS.playerIdleMs || presence.status(id).state === 'online' || id === founder) continue;
       for (const friend of Object.keys(p.friends)) delete s.players[friend]?.friends[id];
       for (const key of Object.keys(p.in)) delete s.players[key]?.out[id];
       for (const key of Object.keys(p.out)) delete s.players[key]?.in[id];
@@ -302,8 +435,8 @@ function buildService(ctx: RouteContext) {
 
   // ---- conversations -------------------------------------------------------------------------
   function messageView(s: SocialCollection, conv: ConversationRecord, message: MessageRecord, viewer: string) {
-    return { seq: message.seq, id: `${conv.id}#${message.seq}`, conv: conv.id, from: message.from ? pub(s, message.from) : null, body: message.body, at: message.at,
-      ...(message.sys ? { sys: true as const } : {}), ...(message.from === viewer && message.cid ? { clientId: message.cid } : {}) };
+    return { seq: message.seq, id: `${conv.id}#${message.seq}`, conv: conv.id, from: message.from ? pub(s, message.from) : null, body: bodyOf(message), at: message.at,
+      ...(message.sys ? { sys: true as const } : {}), ...(message.auto ? { auto: true as const } : {}), ...(message.from === viewer && message.cid ? { clientId: message.cid } : {}) };
   }
   const visibleTo = (s: SocialCollection, viewer: string, message: MessageRecord): boolean => !message.from || !s.players[viewer]?.blocked[message.from];
   function summary(s: SocialCollection, conv: ConversationRecord, viewer: string) {
@@ -313,7 +446,7 @@ function buildService(ctx: RouteContext) {
     const others = conv.members.filter((id) => id !== viewer);
     return { id: conv.id, kind: conv.kind, name: conv.kind === 'dm' ? pub(s, others[0]!).name : conv.kind === 'house' ? `${pub(s, conv.owner!).name}’s house` : conv.name!,
       members: conv.members.map((id) => pub(s, id)), owner: conv.owner ?? null, with: conv.kind === 'dm' ? others[0]! : null,
-      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: last.body.slice(0, 80), at: last.at } : null,
+      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: bodyOf(last).slice(0, 80), at: last.at } : null,
       unread: seen.filter((message) => message.seq > read && message.from !== viewer && !message.sys).length };
   }
   function append(s: SocialCollection, conv: ConversationRecord, from: string | null, body: string, cid: string | null, sys = false): MessageRecord {
@@ -424,11 +557,13 @@ function buildService(ctx: RouteContext) {
   function cut(s: SocialCollection, db: Db, a: string, b: string, cityId: CityId): void {
     const pa = s.players[a]!, pb = s.players[b]!;
     const were = Boolean(pa.friends[b] || pb.friends[a]);
+    // An automatic friendship was never written to either life, so there is nothing to take out of one.
+    const automatic = autoFriend(s.players, a, b) || autoFriend(s.players, b, a);
     delete pa.friends[b]; delete pb.friends[a];
     for (const [x, y] of [[pa, b], [pb, a]] as [SocialPlayerRecord, string][]) { delete x.in[y]; delete x.out[y]; delete x.baeIn[y]; }
     if (pa.bae === b) pa.bae = null;
     if (pb.bae === a) pb.bae = null;
-    if (were) for (const [to, about] of [[a, b], [b, a]] as [string, string][]) owe(s, db, to, cityId, { op: 'unfriend', id: about });
+    if (were && !automatic) for (const [to, about] of [[a, b], [b, a]] as [string, string][]) owe(s, db, to, cityId, { op: 'unfriend', id: about });
   }
 
   const service = {
@@ -444,6 +579,7 @@ function buildService(ctx: RouteContext) {
       if (list.material) Object.defineProperty(result, MATERIAL, { value: true, enumerable: false });
       if (list.length) Object.defineProperty(result, ENDED, { value: list.splice(0), enumerable: false });
       if (list.blocks.length) Object.defineProperty(result, BLOCKS, { value: list.blocks.splice(0), enumerable: false });
+      if (list.pushes.length) Object.defineProperty(result, PUSHES, { value: list.pushes.splice(0), enumerable: false });
       return result;
     },
     /**
@@ -463,6 +599,12 @@ function buildService(ctx: RouteContext) {
       const ended: unknown = typeof result === 'object' && result !== null ? Reflect.get(result, ENDED) : undefined;
       for (const [hostId, guestId] of (ended ?? []) as VisitEnd[]) ctx.emit?.('visit-ended', { hostId, guestId });
       service.committed(result); // a store without the `committed` hook: apply the block changes now
+      // What the transaction owed beside its own answer (an inviter told that a friend joined).
+      const owed: unknown = typeof result === 'object' && result !== null ? Reflect.get(result, PUSHES) : undefined;
+      for (const [to, message] of (owed ?? []) as PushList) {
+        ctx.push(to, message);
+        if (message.type === 'social-update' && message.update.kind === 'invite-joined') ctx.emit?.('invite-joined', { inviter: to });
+      }
       if (!result || !Array.isArray((result as { push?: unknown }).push)) return result as Delivered<R>;
       const { push, ...rest } = result as R & { push: PushList };
       for (const [to, message] of push) ctx.push(to, message);
@@ -478,9 +620,16 @@ function buildService(ctx: RouteContext) {
         return { ...pub(s, other), ...where, ...(where.status === 'offline' && !Number.isFinite(where.seenAt) && Number.isFinite(s.players[other]?.seen) ? { seenAt: s.players[other]!.seen } : {}) };
       };
       const visit = p.visiting ? houseView(s, p.visiting, id) : null; // prunes first, so an ended visit is never reported
+      // A friend whose record is gone (only an automatic friendship can outlive the other side) is dropped here.
+      for (const other of Object.keys(p.friends)) if (!Object.hasOwn(s.players, other)) delete p.friends[other];
+      const friend = ([other, since]: [string, number]) => ({ ...person(other), since, bae: p.bae === other });
+      // The founder is first in everyone's list. The founder's own list is their friends by request, then the newest automatic ones.
+      const friends = Object.entries(p.friends).map(friend).sort((a, b) => Number(b.founder === true) - Number(a.founder === true) || a.name.localeCompare(b.name));
+      const automatic = founderId(s) === id ? founderFriends(s, id, null) : null;
       return yes('ok', {
         me: { id, name: p.name, since: p.first },
-        friends: Object.entries(p.friends).map(([other, since]) => ({ ...person(other), since, bae: p.bae === other })).sort((a, b) => a.name.localeCompare(b.name)),
+        friends: automatic ? [...friends, ...automatic.ids.map(friend)] : friends,
+        ...(automatic ? { friendsMore: { total: automatic.total, next: automatic.next } } : {}),
         requests: { in: Object.entries(p.in).map(([other, at]) => ({ ...pub(s, other), at })), out: Object.entries(p.out).map(([other, at]) => ({ ...pub(s, other), at })) },
         baeRequests: Object.entries(p.baeIn).map(([other, request]) => ({ ...pub(s, other), at: request.at })),
         bae: p.bae ? pub(s, p.bae) : null,
@@ -493,6 +642,14 @@ function buildService(ctx: RouteContext) {
         invitePath: `/v/${id}`,
         limits: { body: LIMITS.body, groupSize: LIMITS.groupSize, groupName: LIMITS.groupName, guests: LIMITS.guests, reportText: LIMITS.reportText, reasons: REPORT_REASONS },
       });
+    },
+    /** The founder's next page of automatic friends (`after`: the `next` of the page before). Anyone else has no further page. */
+    friendsPage(db: Db, session: SessionRecord, after: unknown) {
+      const { s, p, id } = enter(db, session);
+      if (typeof after !== 'string' || !/^\d{1,16}:[0-9a-f-]{36}$/.test(after)) throw bad('invalid_cursor');
+      if (founderId(s) !== id) return yes('ok', { friends: [], total: 0, next: null });
+      const page = founderFriends(s, id, after);
+      return yes('ok', { friends: page.ids.map(([other, since]) => ({ ...pub(s, other), ...whereabouts(other, true), since, bae: p.bae === other })), total: page.total, next: page.next });
     },
     readUpdates(db: Db, session: SessionRecord) {
       const { p } = enter(db, session);
@@ -553,7 +710,7 @@ function buildService(ctx: RouteContext) {
       if (!ctx.allow(`social:friend:${id}`, 10)) return no('rate_limited', 'You are sending friend requests too quickly. Wait a minute.');
       if (Object.keys(p.out).length >= LIMITS.requests) return no('too_many_requests', `You have ${LIMITS.requests} friend requests waiting. Wait for answers first.`);
       if (Object.keys(target.in).length >= LIMITS.requests) return no('inbox_full', `${target.name} has too many friend requests waiting.`);
-      if (Object.keys(p.friends).length >= LIMITS.friends) return no('friends_full', `Your friends list is full (${LIMITS.friends}).`);
+      if (friendCount(s, id) >= LIMITS.friends) return no('friends_full', `Your friends list is full (${LIMITS.friends}).`);
       p.out[to] = target.in[id] = now();
       const push: PushList = [[to, { type: 'friend-request', from: pub(s, id) }]];
       notify(s, to, 'friend-request', `${p.name} wants to be friends.`, { from: id }, push);
@@ -569,7 +726,7 @@ function buildService(ctx: RouteContext) {
       delete p.in[from]; delete asker.out[id];
       const push: PushList = [];
       if (!body.accept) return yes('declined', { player: pub(s, from), push });
-      if (Object.keys(p.friends).length >= LIMITS.friends || Object.keys(asker.friends).length >= LIMITS.friends) return no('friends_full', `One of you already has ${LIMITS.friends} friends.`);
+      if (friendCount(s, id) >= LIMITS.friends || friendCount(s, from) >= LIMITS.friends) return no('friends_full', `One of you already has ${LIMITS.friends} friends.`);
       p.friends[from] = asker.friends[id] = now();
       act(session, cityId, 'friend', { id: from, name: asker.name }, `social|friend|${id}|${from}`, 'the friendship is written to the social collection in this transaction; a repeat is answered from it');
       owe(s, db, from, cityId, { op: 'friend', id, name: p.name });
@@ -580,9 +737,11 @@ function buildService(ctx: RouteContext) {
     friendRemove(db: Db, session: SessionRecord, body: SocialBody) {
       const other = uuid(body.id), cityId = city(body.cityId);
       const { s, p, id } = enter(db, session);
-      if (!s.players[other] || !(p.friends[other] || p.out[other])) return yes('removed', { duplicate: true });
+      if (!s.players[other] || !(areFriends(s, id, other) || p.friends[other] || p.out[other])) return yes('removed', { duplicate: true });
+      // A player who removes the founder does not make the founder's client read everything again.
+      const quiet = autoFriend(s.players, other, id);
       cut(s, db, id, other, cityId);
-      return yes('removed', { push: [[other, { type: 'social-sync' }]] });
+      return yes('removed', { push: quiet ? [] : [[other, { type: 'social-sync' }]] });
     },
 
     // ---- block and report ------------------------------------------------------------------
@@ -622,7 +781,7 @@ function buildService(ctx: RouteContext) {
       if (!ctx.allow(`social:report:${id}`, 5, 3600000)) return no('rate_limited', 'You have filed several reports this hour. Try again later.');
       const dm = s.convs[dmId(id, about)];
       const report: PlayerReportRecord = { id: `R-${++s.seq}`, by: id, about, aboutName: s.players[about].name, reason, text: detail, at: now(), status: 'received',
-        evidence: (dm?.messages || []).filter((message) => message.from === about).slice(-5).map((message) => message.body) };
+        evidence: (dm?.messages || []).filter((message) => message.from === about).slice(-5).map(bodyOf) };
       s.reports.push(report);
       if (s.reports.length > LIMITS.reports) s.reports.splice(0, s.reports.length - LIMITS.reports);
       const receipt: PlayerReportReceipt = { id: report.id, about, name: report.aboutName, reason: report.reason, at: report.at, status: report.status };
@@ -1045,7 +1204,7 @@ function buildService(ctx: RouteContext) {
         if (!areFriends(s, id, to)) return no('friends_only', `You can only send money to friends. Add ${target.name} as a friend first.`);
         const wait = (ms: number) => { const minutes = Math.ceil(ms / 60000); return minutes >= 60 ? `${Math.ceil(minutes / 60)} h` : `${minutes} min`; };
         if (t - p.first < L.minAccountAgeMs) return no('account_too_new', `Sending money opens 24 hours after you start playing. Try again in ${wait(L.minAccountAgeMs - (t - p.first))}.`);
-        const since = Math.max(p.friends[to]!, target.friends[id]!);
+        const since = friendsSince(s.players, id, to);
         if (t - since < L.minFriendshipMs) return no('friendship_too_new', `You and ${target.name} only just became friends. Try again in ${wait(L.minFriendshipMs - (t - since))}.`);
         const day = lagosTime(t).day;
         if (target.recv.day !== day) target.recv = { day, amount: 0 };

@@ -6,7 +6,7 @@
 //
 // For an invitation (the invite link, the house, a table) it also offers Copy link, Telegram and a
 // QR code, says what the inviter gets (the referral rules, with their conditions) and how many
-// friends have joined. The QR encoder is only fetched when the code is asked for.
+// friends have joined, each by name (a tap opens their card). The QR encoder is only fetched when the code is asked for.
 import { computed, defineAsyncComponent, nextTick, onMounted, ref } from 'vue'
 import { input } from '../../state/inputMode.ts'
 import { REFERRAL } from '../../../game/content/growth.ts'
@@ -15,13 +15,15 @@ import { money } from '../../ui/format.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import LinkButton from './LinkButton.vue'
-import { friendGetsLine, inviterLimitLine, inviterRewardLine, isInviteSheet, progressLine } from './inviteModel.ts'
+import { useApp } from '../../state/app.ts'
+import { friendGetsLine, inviterLimitLine, inviterRewardLine, isInviteSheet, joinedState, progressLine } from './inviteModel.ts'
 import type { InviteRules, ShareChannel } from './inviteModel.ts'
 import { useGrowth } from './useGrowth.ts'
 
 defineProps<{ params?: unknown }>()
 const ShareQr = defineAsyncComponent(() => import('./ShareQr.vue'))
 const growth = useGrowth()
+const { shell } = useApp()
 const sharing = growth.state
 const working = ref<'share' | 'copy' | 'link' | null>(null)
 const showQr = ref(false)
@@ -100,12 +102,15 @@ onMounted(() => {
       </div>
       <ShareQr v-if="showQr" :link="sharing.sharing.prepared.link" />
       <p class="gr-progress" role="status" data-invite-progress>{{ progress || 'Your link is ready.' }}</p>
+      <ul v-if="referral?.invited.length" class="gr-joined" data-invite-joined aria-label="Friends who joined through your link">
+        <li v-for="friend in referral.invited" :key="friend.id"><button type="button" @click="shell.open('person', { player: friend.id, name: friend.name })"><b>{{ friend.name }}</b><small>{{ joinedState(friend) }}</small></button></li>
+      </ul>
       <div class="gr-reward" data-invite-reward>
         <p>{{ inviterRewardLine(rules, money) }}</p>
         <p>{{ friendGetsLine(rules, money) }}</p>
         <p>{{ inviterLimitLine(rules) }}</p>
       </div>
-      <p class="gr-note">You choose who sees this: the game sends nothing. A friend who opens the link sees your name and goes straight to making their Sim.</p>
+      <p class="gr-note">You choose who sees this: the game sends nothing. A friend who opens the link sees your name and goes straight to making their character, in a world of real cities to live in.</p>
     </template>
   </div>
 </template>
@@ -121,6 +126,9 @@ onMounted(() => {
 .gr-manual { margin: 0 0 var(--s-3); }
 .gr-manual-field { display: block; width: 100%; box-sizing: border-box; min-height: 64px; resize: none; font: inherit; font-size: 13px; line-height: 1.45; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--c-line); background: #fff; color: var(--c-ink); user-select: text; -webkit-user-select: text; }
 .gr-progress { margin: 0 0 var(--s-2); font-size: 14px; font-weight: 700; color: var(--c-green-dark); }
+.gr-joined { list-style: none; margin: 0 0 var(--s-2); padding: 0; }
+.gr-joined button { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; min-height: var(--tap, 44px); padding: 4px 2px; border: 0; border-bottom: 1px solid var(--c-line); background: none; font: inherit; color: var(--c-ink); text-align: left; cursor: pointer; }
+.gr-joined small { color: var(--c-muted); font-size: 12px; }
 .gr-reward { background: var(--c-fill); border-radius: 12px; padding: 8px 12px; }
 .gr-reward p { margin: 4px 0; font-size: 12.5px; line-height: 1.45; color: var(--c-ink-2); }
 </style>

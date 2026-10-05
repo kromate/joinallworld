@@ -14,6 +14,12 @@
  * address, a preference, a nudge). When a tick has work it reads the growth collection once, looks at the due records
  * only (at most LIMITS.examine), reads the lives of those players and sends at most LIMITS.batch mails.
  *
+ * A FRIEND JOINED THROUGH THE PLAYER'S LINK. The social module tells the inviter in the game (an update of kind
+ * 'invite-joined') and raises 'invite-joined'; the inviter is then looked at at once. While that update is unread it
+ * is one of the things waiting for them (a Friends mail, under the same caps, quiet hours and switches), and the one
+ * thing that may be mailed to a player who was active moments ago — though never while they are connected
+ * (COMEBACK.join in src/game/comeback.ts). Before this, a friend joining was not a reason for any mail.
+ *
  * EXACTLY ONCE. The chosen mail is claimed in the same transaction that decided it (the ledger, the type's last time,
  * the milestone key, the next check). A crash, a provider failure, a second tick or a restart after that can only skip
  * a mail, never send it twice. The transaction is durable before anything is sent.
@@ -30,6 +36,8 @@ import { growthOf, playerOf } from './data.ts';
 import { maskEmail } from '../../src/game/outreach.ts';
 import { cityName } from '../../src/game/cities/index.ts';
 import { mailRecipientOf } from './recipient.ts';
+import { autoFriend, friendsIn } from '../social/founder.ts';
+import { presenceOf } from '../social/presence.ts';
 import type { AccountOf, MailRecipient } from './recipient.ts';
 import type { ComebackType, Facts, LedgerType, Memory, MilestoneInput, NudgeItem, Plan, PrefKey, Prefs, WaitingItem } from '../../src/game/comeback.ts';
 import type { ComebackCounters, ComebackView } from '../../src/types/growth.ts';
@@ -97,6 +105,7 @@ function sane(raw: unknown): ComebackRecord {
 
 export function comebackService(ctx: RouteContext, mailing: Mailing) {
   const now = (): number => ctx.now();
+  const presence = presenceOf(ctx);
   /** In memory only: the earliest time any record is due (0 = look; NEVER = nobody is due). */
   let wakeAt = 0;
   /** Rounds that opened the store since this process started (the cost, for the operator). */
@@ -221,7 +230,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     if (!s || s.players[me]?.blocked[sender] || s.players[sender]?.blocked[me]) return false;
     return !ctx.checks?.muted?.(sender);
   }
-  const friends = (db: Db, a: string, b: string): boolean => Boolean(db.social?.players[a]?.friends[b] && db.social?.players[b]?.friends[a]);
+  const friends = (db: Db, a: string, b: string): boolean => friendsIn(db.social?.players, a, b);
   const nameOf = (db: Db, id: string): string => firstName(db.social?.players[id]?.name);
 
   /** Unread things from friends, and friend requests (counted, never named). No text of any message. */
@@ -234,13 +243,15 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
       if (update.read || update.at < since || typeof from !== 'string' || !usableSender(db, id, from)) continue;
       // A request counts while it is still waiting for an answer, not after it was accepted or declined.
       if (update.kind === 'friend-request') { if (me.in[from] !== undefined) items.push({ kind: 'request', from: null, at: update.at }); }
+      else if (update.kind === 'invite-joined') items.push({ kind: 'joined', from: nameOf(db, from), at: update.at });
       else if (update.kind === 'transfer' && friends(db, id, from)) items.push({ kind: 'gift', from: nameOf(db, from), at: update.at });
     }
     for (const [convId, mark] of Object.entries(me.convs)) {
       const conv = s.convs[convId];
       if (conv?.kind !== 'dm') continue;
       for (const message of conv.messages) {
-        if (message.seq <= mark.read || message.sys || message.at < since || message.from === null || message.from === id) continue;
+        // The founder's automatic welcome note is not something a friend wrote: it never causes a mail.
+        if (message.seq <= mark.read || message.sys || message.auto || message.at < since || message.from === null || message.from === id) continue;
         if (friends(db, id, message.from) && usableSender(db, id, message.from)) items.push({ kind: 'message', from: nameOf(db, message.from), at: message.at });
       }
     }
@@ -311,9 +322,11 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
       if (lastActive <= 0) { record.next = t + DAY; continue; }
       try {
         // Cheap gates first: a player who is not eligible costs no more than the record itself.
-        const early = decide({ now: t, lastActive, facts: { name: life.name, needs: null, needsAt: 0, waiting: [], nudges: [], milestones: [], events: [] }, memory: memoryOf(record), prefs: prefsOf(record) });
+        // A friend who joined through this player's link is the one thing looked at before the "active" gate (it may pass it).
+        const joined = waitingFor(db, id, t).filter((item) => item.kind === 'joined'), online = presence.status(id).state !== 'offline';
+        const early = decide({ now: t, lastActive, online, facts: { name: life.name, needs: null, needsAt: 0, waiting: joined, nudges: [], milestones: [], events: [] }, memory: memoryOf(record), prefs: prefsOf(record) });
         if (early.why === 'off' || early.why === 'paused' || early.why === 'active' || early.why === 'stopped') { record.next = early.next; continue; }
-        const decision = decide({ now: t, lastActive, facts: gather(db, g, id, record, life, lastActive), memory: memoryOf(record), prefs: prefsOf(record) });
+        const decision = decide({ now: t, lastActive, online, facts: gather(db, g, id, record, life, lastActive), memory: memoryOf(record), prefs: prefsOf(record) });
         if (!decision.plan) {
           record.next = Math.max(decision.next, t + 1000);
           if (decision.suppressed.length && record.suppressedDay !== day) { record.suppressedDay = day; for (const type of decision.suppressed) bump(g, type, 'suppressed'); }
@@ -379,6 +392,11 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     } finally { running = false; }
   }
   ctx.on?.('heartbeat', () => { void tick(); });
+  // A friend joined through a player's link: that player's record is due now (the rules decide what, if anything, is sent).
+  ctx.on?.('invite-joined', ({ inviter }) => {
+    if (!mailing.emailReady()) return;
+    ctx.store.transact((db) => { const record = recordOf(growthOf(ctx, db), inviter, false); if (record) record.next = Math.min(record.next, now()); }, { durable: false }).then(() => wake(), () => {});
+  });
   ctx.closing?.push(async () => { stopped = true; await current?.catch(() => {}); });
 
   // ---- nudge -------------------------------------------------------------------------------------
@@ -409,7 +427,8 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     const oldest = Object.entries(mine).sort((a, b) => a[1] - b[1]);
     for (const [key] of oldest.slice(0, Math.max(0, oldest.length - LIMITS.nudged))) delete mine[key];
     // Only a friend with a confirmed address and the Friends switch on keeps the nudge; nothing says which.
-    const record = recordOf(g, to, false);
+    // The founder is everybody's friend without having chosen each of them: a nudge across that friendship is answered the same and kept by nobody.
+    const record = autoFriend(db.social?.players, to, id) ? null : recordOf(g, to, false);
     if (record && recipientOf(db, g, to)) {
       record.nudges = [...record.nudges.filter((item) => item.from !== id), { from: id, at: t }].slice(-COMEBACK.nudge.kept);
       record.next = Math.min(record.next, t); wake();

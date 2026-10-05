@@ -33,6 +33,12 @@ Everything is decided on the server from stored state. The browser takes no part
 
 A visit is any sign of play after the mail: the growth hello, a saved action, a social request.
 
+### A friend joined through your link
+
+A player who comes through an invite link and the inviter become friends without a request (`server/social/service.ts` `meetInviter`), and the inviter gets an update in the game that opens the friend's card. While that update is unread it is one of the things *waiting* (a Friends mail: `Ada joined Allworld through your link`), under the same switches, caps, quiet hours and unsubscribe links as every other mail.
+
+It is the one thing that may be mailed to a player who was active in the last 12 hours, and nothing else rides along with it then. It waits 10 minutes after the newest join, so several joins are one mail, and it is never sent while the player is connected to the game: they are looked at again every 10 minutes until they have left or read the update. Before this, a friend joining was not a reason for any mail.
+
 ## Consent and control
 
 * Comeback mail goes to one of two addresses, decided in one place (`mailRecipientOf`, `server/growth/recipient.ts`), and only while "E-mail me about my character" is on: the address confirmed through the double opt-in of Stay in touch, or — for the character that is an account's active one — the account's verified address (never for a player who said they are under 18).

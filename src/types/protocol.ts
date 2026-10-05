@@ -48,7 +48,10 @@ export interface OwnSession extends PublicSession {
   cities?: CityId[]
 }
 /** `{ id, name }` of any player, as stored and returned by the social and civic features. */
-export type PlayerRef = PublicSession
+export interface PlayerRef extends PublicSession {
+  /** Only ever set by the social routes, on the founder's own character: the "Founder" tag. A name cannot earn it. */
+  founder?: true
+}
 
 /** `<unix ms>:<uuid>` — the form of an action id and of every exactly-once client/request id. */
 export type TimedId = `${number}:${string}`
@@ -409,6 +412,7 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/life',
   'POST /api/action',
   'GET /api/social/me',
+  'GET /api/social/friends',
   'POST /api/social/updates/read',
   'GET /api/social/people',
   'GET /api/social/search',

@@ -91,7 +91,7 @@
 .ui-select svg{flex:none;width:20px;height:20px;color:var(--c-ink-2);transition:transform var(--m-fast) ease-out}
 .ui-select[aria-expanded=true] svg{transform:rotate(180deg)}
 .ui-select-native{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;border:0!important;opacity:0;pointer-events:none}
-.ui-listbox{position:fixed;z-index:60;box-sizing:border-box;margin:0;padding:6px;list-style:none;max-height:min(320px,46dvh);overflow-y:auto;overscroll-behavior:contain;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-3),0 0 0 1px var(--c-line);font:500 15px/1.3 var(--font);color:var(--c-ink);animation:ui-listbox-in var(--m-fast) var(--ease-out)}
+.ui-listbox{position:fixed;z-index:60;box-sizing:border-box;margin:0;padding:6px;list-style:none;max-height:min(320px,calc(46 * var(--ui-vh)));overflow-y:auto;overscroll-behavior:contain;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-3),0 0 0 1px var(--c-line);font:500 15px/1.3 var(--font);color:var(--c-ink);animation:ui-listbox-in var(--m-fast) var(--ease-out)}
 .ui-listbox li{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:0 12px;border-radius:10px;cursor:pointer}
 .ui-listbox li[aria-selected=true]{font-weight:700;color:var(--c-green-dark)}
 .ui-listbox li[aria-selected=true]::after{content:'';flex:none;width:7px;height:12px;margin-right:4px;border:solid var(--c-green-dark);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translateY(-2px)}

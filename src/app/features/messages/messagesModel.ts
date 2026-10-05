@@ -66,6 +66,8 @@ export function notificationLines(me: SocialOverview | null, input: { connected:
   for (const conv of me.conversations) if (conv.unread && conv.last) lines.push({ id: `chat:${conv.id}`, at: conv.last.at || now - 3, fresh: true, app: 'messages', params: { conv: conv.id }, text: `${conv.name}: ${conv.last.body}` })
   for (const update of me.updates) {
     if (REQUEST_KINDS.includes(update.kind)) continue
+    // A friend who joined through the player's link: the line opens that friend's card.
+    if (update.kind === 'invite-joined' && update.data?.from) { lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: 'person', params: { player: update.data.from }, text: update.text }); continue }
     const app = UPDATE_APPS[update.kind]
     // Keyed by the update's own id: two updates of one kind in the same millisecond stay two lines.
     lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: app ?? 'messages', params: app ? undefined : UPDATES_TAB, text: update.text })
@@ -78,11 +80,11 @@ export function notificationLines(me: SocialOverview | null, input: { connected:
 }
 
 /** `kind` and `id` choose the line's glyph through the icon map ('update' or 'notice', and the update's or notice's own kind). */
-export interface UpdateLine { key: string; at: number; text: string; fresh: boolean; kind: 'update' | 'notice'; id: string }
+export interface UpdateLine { key: string; at: number; text: string; fresh: boolean; kind: 'update' | 'notice'; id: string; /** The player this line is about, when it offers their card (a friend who joined through the link). */ player?: string }
 /** Updates and life notices as one list, newest first. `seen` is the mark from BEFORE the tab was opened, so what was new stays marked while it is read. */
 export function updateLines(updates: readonly SocialUpdate[], notices: readonly Notice[], seen: number): UpdateLine[] {
   return [
-    ...updates.map((update) => ({ key: `u${update.id}`, at: update.at, text: update.text, fresh: !update.read, kind: 'update' as const, id: update.kind })),
+    ...updates.map((update) => ({ key: `u${update.id}`, at: update.at, text: update.text, fresh: !update.read, kind: 'update' as const, id: update.kind, ...(update.kind === 'invite-joined' && update.data?.from ? { player: update.data.from } : {}) })),
     ...notices.map((notice) => ({ key: `n${notice.id ?? notice.at}`, at: notice.at, text: notice.text, fresh: notice.at > seen, kind: 'notice' as const, id: notice.kind })),
   ].sort((a, b) => b.at - a.at)
 }

@@ -37,6 +37,7 @@ import type { CallSignalData, CallSignalKind, CallsFrom, CallStateFrame, CallSta
 import type { PlayerRef } from '../../src/types/protocol.ts';
 import type { Db, IncomingFrame, RouteContext, WsConnection } from '../types.ts';
 import { presenceOf } from './presence.ts';
+import { friendsIn } from './founder.ts';
 
 export const CALL_LIMITS = { perCallerPerMinute: 8, perPairPerMinute: 3, sdpChars: 8000, candidateChars: 1000, nameChars: 64, ice: 200, offers: 8, answers: 8, settingsPerMinute: 20, keepAwakeMs: 15000 } as const;
 const CLIENT_ID = /^[A-Za-z0-9:_-]{1,80}$/;
@@ -169,7 +170,7 @@ function buildService(ctx: RouteContext) {
     if (record.blocked?.[caller] || social.players?.[caller]?.blocked?.[callee]) return null;
     const mode: CallsFrom = CALLS_FROM.find((item) => item === record.calls) ?? CALLS_FROM_DEFAULT;
     if (mode === 'nobody') return null;
-    if (mode === 'friends' && !(record.friends?.[caller] && social.players?.[caller]?.friends?.[callee])) return null;
+    if (mode === 'friends' && !friendsIn(social.players, caller, callee)) return null;
     return { ...ctx.publicSession(session) };
   }
 

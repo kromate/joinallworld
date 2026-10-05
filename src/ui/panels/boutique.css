@@ -5,7 +5,7 @@
 /* Inside the Phone the app bar is not part of the scroller: stick to its very top. */
 .ph-appbody .boutique-top{top:0}
 .boutique-state{display:flex!important;align-items:center;justify-content:center;gap:4px}
-.boutique-top .look-view .look-stage{height:clamp(190px,28dvh,240px)}
+.boutique-top .look-view .look-stage{height:clamp(190px,calc(28 * var(--ui-vh)),240px)}
 .boutique-top p{margin:0!important;line-height:1.35!important}
 .boutique-top strong{font-size:16px}
 .boutique-top small{display:block;font-size:12px;color:var(--c-muted);line-height:1.4;margin-top:2px}

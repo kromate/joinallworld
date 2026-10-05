@@ -38,7 +38,7 @@ h2 { margin: 0; font-size: var(--t-heading); }
 h3 { margin: 14px 0 6px; color: var(--c-green-dark); font-size: var(--t-small); letter-spacing: .06em; text-transform: uppercase; }
 dl { margin: 0; display: grid; gap: 6px; }
 dl > div { display: flex; align-items: center; gap: 12px; min-height: 30px; }
-dt { display: inline-flex; flex: none; flex-wrap: wrap; gap: 3px; width: 128px; }
+dt { display: inline-flex; flex: none; flex-wrap: wrap; gap: 3px; width: 168px; }
 dd { margin: 0; color: var(--c-ink-2); font-size: 14px; }
 kbd { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; border: 1px solid #c9cfcb; border-bottom-width: 2px; border-radius: 6px; background: #f6f8f7; color: var(--c-ink); font: 700 12px var(--font); }
 @media (max-width: 480px) { dt { width: 96px; } dd { font-size: 13px; } }

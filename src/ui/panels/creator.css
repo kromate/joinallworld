@@ -1,7 +1,7 @@
 /* The character creator: the whole screen. The stage (the character, large and lit) and a panel of steps.
    Wide or landscape: the stage on the left (about 58%), the panel on the right. Portrait: the stage on top
    (about half the screen), the panel below it, scrolling, with its buttons always in reach. */
-#life-dialog.is-fullscreen[open]{width:100%;height:100dvh;max-width:none;max-height:none;margin:0;border-radius:0;box-shadow:none;background:#10281f;animation:none}
+#life-dialog.is-fullscreen[open]{zoom:1;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;border-radius:0;box-shadow:none;background:#10281f;animation:none}
 #life-dialog.is-fullscreen::backdrop{background:#0b1a13;backdrop-filter:none}
 #life-dialog.is-fullscreen .base-sheet-close{display:none}
 #life-dialog.is-fullscreen #life-dialog-content{--sheet-pad:0;padding:0;overflow:hidden;height:100%;font-size:14px}
@@ -243,9 +243,9 @@
 /* very large screens: the panel grows with the picture */
 @media(min-width:2000px) and (min-aspect-ratio:1/1){
   .cr-root{padding-inline:max(0px,calc((100vw - 2500px) / 2))}
-  .cr-panel{zoom:1.4}
+  .cr-panel{zoom:1.4;align-self:start;height:calc(100dvh / 1.4 - 2 * var(--cr-pad))}
 }
 @media(min-width:2800px) and (min-aspect-ratio:1/1){
   .cr-root{padding-inline:max(0px,calc((100vw - 3000px) / 2))}
-  .cr-panel{zoom:1.8}
+  .cr-panel{zoom:1.8;align-self:start;height:calc(100dvh / 1.8 - 2 * var(--cr-pad))}
 }

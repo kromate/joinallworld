@@ -48,7 +48,16 @@ const found = computed(() => (ui.found && !picked.value ? ui.found : null))
 
 // The answer can land below the fold of a short window: bring it into view, so its two buttons are seen.
 const foundBox = ref<HTMLElement | null>(null)
-watch(found, async (now) => { if (!now) return; await nextTick(); foundBox.value?.scrollIntoView({ block: 'center', behavior: globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }) })
+watch(found, async (now) => {
+  if (!now) return
+  await nextTick()
+  // Only the step's own scroller moves (scrollIntoView would also shift the clipped page around it).
+  const box = foundBox.value, scroller = box?.closest<HTMLElement>('.cr-scroll')
+  if (!box || !scroller) return
+  const room = box.getBoundingClientRect(), view = scroller.getBoundingClientRect()
+  const top = scroller.scrollTop + (room.top - view.top) - (view.height - room.height) / 2
+  scroller.scrollTo({ top: Math.max(0, top), behavior: globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+})
 
 function choose(id: string): void { area.value = { lga: id, via: 'manual' }; Object.assign(ui, { found: null, note: '' }) }
 function yes(): void { if (ui.found) { area.value = { lga: ui.found.id, via: 'device' }; Object.assign(ui, { found: null, note: '' }) } }

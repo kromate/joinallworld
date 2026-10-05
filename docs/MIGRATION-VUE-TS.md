@@ -399,7 +399,9 @@ the rules allow, without a second implementation of anything:
   an action or settles time, so it has nothing to apply optimistically. Each system keeps what only playing a life needs (its
   `actions`, `advance` and event listeners) in one `play` block that is built only where `PLAYS` is true (`src/game/profile.ts`). The
   browser build replaces that module with `PLAYS = false` (`vite.config.ts`), and the bundler drops the block with the code that
-  only it uses. `dispatch` and `advanceLife` refuse to run there. Servers, the Worker, scripts and tests play.
+  only it uses. The same holds for what ends a timed action: a kind's `complete`, `cancel`, `tick` and `invalidated` are built only where
+  `PLAYS` is true (its `moves` and `sanitize`, which rebuilding a life needs, are in every build). `dispatch` and `advanceLife` refuse to
+  run there. Servers, the Worker, scripts and tests play.
 - **The campus rules load on demand.** `src/game/systems/browser.ts` takes the place of `systems/index.ts` in the build and registers a
   stand-in for each campus system (`campus/unilag/slices.ts`). A stand-in owns the same state key and rebuilds only a slice that is
   exactly the fresh one; anything else makes it throw, so nothing is ever dropped. `src/game/campus-gate.ts` fetches the campus chunk

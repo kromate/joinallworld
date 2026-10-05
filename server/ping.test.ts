@@ -10,6 +10,8 @@ import { RECONNECT_GRACE_MS } from './social/presence.ts';
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts';
 import { emailHash } from './social/founder.ts';
 import { PING } from '../src/game/ping.ts';
+import { viewLife } from '../src/life.ts';
+import { LODGING, SECOND_HOME, tierCost } from '../src/game/content/world.ts';
 import type { TestContext } from 'node:test';
 import type { Db, GrowthCollection, SocialCollection } from './types.ts';
 import type { LifeState } from '../src/types/index.ts';
@@ -94,6 +96,16 @@ async function harness(t: TestContext, options: FixtureOptions = {}) {
     await f.request('/api/life?city=lagos', null, who.cookie);
     assert.equal((await life(who, 'ibadan')).estate.city, 'ibadan');
   }
+  /** Put naira in a player's pocket, in the city their life is filed under. */
+  const fund = (who: Who, city: string, cash: number): Promise<void> => edit((db) => { const session = must(Object.values(db.sessions).find((item) => item.publicId === who.id)); must(session.cities[city as 'lagos']).state.cash = cash; });
+  /** Take a paid trip between two cities and arrive. */
+  async function trip(who: Who, from: string, to: string, mode: 'road' | 'rail' | 'air' = 'road'): Promise<void> {
+    const left = await f.action(who.cookie, { cityId: from as 'lagos', type: 'estate.relocate', payload: { to: to as 'ibadan', mode } });
+    assert.equal(left.ok, true, `left ${from} for ${to}: ${left.code}`);
+    f.advance(3 * MINUTE);
+    await f.request(`/api/life?city=${from}`, null, who.cookie);
+    assert.equal((await life(who, to)).estate.city, to);
+  }
   let minted = 0;
   const origin = (path: string, body: unknown, cookie?: string): Promise<Response> => fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { Origin: f.base, ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
   /** The founder: a played character saved to the account whose address has the configured hash. */
@@ -109,7 +121,7 @@ async function harness(t: TestContext, options: FixtureOptions = {}) {
     return who;
   }
   const mod = async (path: string, body: unknown): Promise<Reply> => answer(await fetch(f.base + path, { method: 'POST', headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) }));
-  return { f, calls, pushes, mod, post, get, player, befriend, mails, pingMails, textOf, htmlOf, page, optIn, ping, join, life, social, growth, edit, go, walk, toIbadan, founder };
+  return { f, calls, pushes, mod, post, get, player, befriend, mails, pingMails, textOf, htmlOf, page, optIn, ping, join, life, social, growth, edit, go, walk, toIbadan, fund, trip, founder };
 }
 type Harness = Awaited<ReturnType<typeof harness>>;
 /** Ada (in the game, at the park) and Bayo (not connected, with a confirmed address), friends, at midday. */
@@ -607,17 +619,143 @@ test('a notification goes to a subscribed browser of a friend who is away, with 
   assert.equal(h.pushes.length, 1, 'nothing at night');
 });
 
+/** The Home tab of a life, as the page works it out from the state the server answered with. */
+const homeTab = (state: LifeState, now: number) => viewLife(state, { now, cityId: state.estate.city }).estate;
+
 test('a ping from home in another city brings the friend to that city’s public arrival place, and to the door', async (t) => {
   const h = await harness(t), { ada, bayo } = await pair(h);
   await h.toIbadan(ada);
-  assert.equal((await h.f.action(ada.cookie, { cityId: 'ibadan', type: 'estate.set-lga', payload: { lga: 'ibadan-north', via: 'manual' } })).ok, true);
+  // A visitor is never made to choose: a local government with no word on how is refused, and nothing is given away.
+  const plain = await h.f.action(ada.cookie, { cityId: 'ibadan', type: 'estate.set-lga', payload: { lga: 'ibadan-north', via: 'manual' } });
+  assert.deepEqual([plain.ok, plain.code], [false, 'choice_required']);
+  // Ada makes Ibadan her main home: her one free starter house stands there now.
+  assert.equal((await h.f.action(ada.cookie, { cityId: 'ibadan', type: 'estate.set-lga', payload: { lga: 'ibadan-north', via: 'manual', home: 'main' } })).ok, true);
   await h.walk(ada, 'home', 'ibadan');
   const pinged = await h.ping(ada, bayo);
   assert.deepEqual([must(pinged.place).label, must(pinged.place).venue], ['at home in Ibadan', 'home']);
+  const before = await h.life(bayo);
   const done = await h.join(bayo, ada);
   assert.deepEqual([done.ok, done.code, done.moved, done.knock, done.words], [true, 'at_home', 'city', true, 'Ada is at home in Ibadan. Knock to come in.']);
   const after = await h.life(bayo, 'ibadan');
-  assert.deepEqual([after.estate.city, after.location], ['ibadan', 'agodi-gardens']);
+  assert.deepEqual([after.estate.city, after.location, after.activeAction], ['ibadan', 'agodi-gardens', null]);
+  // A visitor: no fare, no free house, no local government chosen for him, and his one main home is where it was.
+  assert.equal(after.cash, before.cash, 'the join is free');
+  assert.deepEqual([after.estate.lga, after.estate.lgaConfirmed, after.estate.plot, after.estate.home, after.estate.homeAt], [null, false, null, 'lagos', before.estate.homeAt]);
+  assert.deepEqual(Object.keys(after.estate.away), ['lagos']);
+  const kept = must(after.estate.away.lagos);
+  assert.deepEqual([kept.lga, kept.tier, kept.living, kept.lgaConfirmed], [before.estate.lga, before.estate.tier, before.estate.living, before.estate.lgaConfirmed]);
+  // What is said: the life's own line names the place and where home is, and it is not the trip's welcome (the page says that one aloud).
+  assert.equal(after.message, 'You joined Ada at Agodi Gardens, Ibadan. You are visiting: your home is in Lagos.');
+  assert.ok(!after.message.startsWith('Welcome to '));
+  // His Home tab: a visitor with both choices open, a guest house, and nothing that must be answered.
+  const tab = homeTab(after, h.f.now());
+  assert.deepEqual([tab.visiting, tab.home, tab.makeMain], [true, { city: 'lagos', name: 'Lagos', here: false }, null]);
+  assert.deepEqual([must(tab.settle).main.blocked, must(tab.settle).buy.prices['ibadan-north']], [null, tierCost('ibadan', 'ibadan-north', SECOND_HOME.tier)]);
+  assert.match(must(must(tab.settle).main.gives), /^your starter house( and rented place)? in Lagos$/);
+  assert.equal(tab.lodging.fee, LODGING.fee);
+  assert.deepEqual(tab.away.map((home) => home.city), ['lagos']);
+  // Going home, and going about the city, are not held up by anything: the visitor plays on.
+  assert.equal((await h.f.action(bayo.cookie, { cityId: 'ibadan', type: 'travel', payload: { id: 'cocoa-house', mode: 'trek' } })).ok, true);
+});
+
+test('the join and the one main home: a friend who owns a second home there arrives at the venue as its owner, and at the public place when the pinger is at home', async (t) => {
+  const h = await harness(t), { ada, bayo } = await pair(h);
+  // Bayo buys a home in Ibadan, then goes back to Lagos: his main home never moved.
+  await h.fund(bayo, 'lagos', 500000);
+  await h.trip(bayo, 'lagos', 'ibadan');
+  const price = must(tierCost('ibadan', 'ibadan-south-east', SECOND_HOME.tier));
+  const bought = await h.f.action(bayo.cookie, { cityId: 'ibadan', type: 'estate.set-lga', payload: { lga: 'ibadan-south-east', via: 'manual', home: 'buy' } });
+  assert.deepEqual([bought.ok, bought.code, bought.state.cash], [true, 'home_bought', 500000 - 3500 - price]);
+  await h.trip(bayo, 'ibadan', 'lagos');
+  const before = await h.life(bayo);
+  assert.deepEqual([before.estate.home, must(before.estate.away.ibadan).lga, must(before.estate.away.ibadan).tier], ['lagos', 'ibadan-south-east', SECOND_HOME.tier]);
+  // Ada is out in Ibadan and pings: he lands beside her, free, and the house he owns there is his again.
+  await h.toIbadan(ada);
+  const there = await h.life(ada, 'ibadan');
+  assert.equal((await h.ping(ada, bayo)).code, 'pinged');
+  const done = await h.join(bayo, ada);
+  assert.deepEqual([done.code, done.moved, must(done.place).venue, done.knock], ['joined', 'city', there.location, false]);
+  const after = await h.life(bayo, 'ibadan');
+  assert.deepEqual([after.location, after.cash, after.estate.lga, after.estate.tier, after.estate.living, after.estate.home], [there.location, before.cash, 'ibadan-south-east', SECOND_HOME.tier, 'own', 'lagos']);
+  assert.deepEqual([Object.keys(after.estate.away), must(after.estate.away.lagos).lga, must(after.estate.away.lagos).tier], [['lagos'], before.estate.lga, before.estate.tier]);
+  assert.equal(after.message, 'You joined Ada at Agodi Gardens, Ibadan. You have a house here.');
+  const tab = homeTab(after, h.f.now());
+  assert.deepEqual([tab.visiting, tab.settle, tab.home, tab.makeMain], [false, null, { city: 'lagos', name: 'Lagos', here: false }, { blocked: null }]);
+  assert.match(must(tab.lodging.blocked), /^You have a home in Ibadan/);
+  // One vote: the house in Ibadan does not put him on its roll while his main home is in Lagos.
+  const civic = viewLife(after, { now: h.f.now(), cityId: 'ibadan' }).civic;
+  assert.ok(civic.eligibility.vote.some((check) => check.code === 'not_main_home' && !check.met));
+  // Back in Lagos; this time Ada is at home in Ibadan (her main home now). He is brought to the public place, not to his own door or hers.
+  await h.trip(bayo, 'ibadan', 'lagos');
+  assert.equal((await h.f.action(ada.cookie, { cityId: 'ibadan', type: 'estate.set-lga', payload: { lga: 'ibadan-north', via: 'manual', home: 'main' } })).ok, true);
+  await h.walk(ada, 'home', 'ibadan');
+  h.f.advance(31 * MINUTE);
+  assert.equal((await h.ping(ada, bayo)).code, 'pinged');
+  const knock = await h.join(bayo, ada);
+  assert.deepEqual([knock.code, knock.moved, knock.knock], ['at_home', 'city', true]);
+  const door = await h.life(bayo, 'ibadan');
+  assert.deepEqual([door.location, door.estate.lga, door.estate.home], ['agodi-gardens', 'ibadan-south-east', 'lagos']);
+  assert.deepEqual(must((await h.social()).pingJoins)[bayo.id]?.length, 2, 'each free journey is counted, homeowner or not');
+});
+
+test('the join from a city that is only being visited: nothing is left behind there, home is still home, and a city with no way back is refused', async (t) => {
+  const h = await harness(t), { ada, bayo } = await pair(h);
+  await h.fund(bayo, 'lagos', 100000);
+  await h.trip(bayo, 'lagos', 'abeokuta');
+  const visiting = await h.life(bayo, 'abeokuta');
+  assert.deepEqual([visiting.estate.lga, visiting.estate.home, Object.keys(visiting.estate.away)], [null, 'lagos', ['lagos']]);
+  // Ada flies to Abuja: nothing runs between Abeokuta and Abuja, so he could not get back the way he came.
+  await h.fund(ada, 'lagos', 200000);
+  await h.trip(ada, 'lagos', 'abuja', 'air');
+  assert.equal((await h.ping(ada, bayo)).code, 'pinged');
+  const far = await h.join(bayo, ada);
+  assert.deepEqual([far.ok, far.code, far.reason], [false, 'no_route', 'Nothing runs between Abeokuta and Abuja yet.']);
+  assert.equal((await h.life(bayo, 'abeokuta')).estate.city, 'abeokuta');
+  assert.equal((await h.social()).pingJoins?.[bayo.id], undefined, 'a refused journey is not counted');
+  // She takes the bus to Ibadan, which Abeokuta has a road to. The ping follows her; he joins her there.
+  await h.trip(ada, 'abuja', 'ibadan');
+  const there = await h.life(ada, 'ibadan');
+  const done = await h.join(bayo, ada);
+  assert.deepEqual([done.code, done.moved, must(done.place).cityId, must(done.place).venue], ['joined', 'city', 'ibadan', there.location]);
+  const after = await h.life(bayo, 'ibadan');
+  assert.deepEqual([after.estate.city, after.estate.lga, after.estate.home, Object.keys(after.estate.away), after.cash], ['ibadan', null, 'lagos', ['lagos'], visiting.cash]);
+  assert.match(after.message, / You are visiting: your home is in Lagos\.$/);
+  // Asking for the life where it was says where it went.
+  const moved = await h.get('/api/life?city=abeokuta', bayo);
+  assert.deepEqual([moved.status, moved.error, moved.city], [409, 'city_moved', 'ibadan']);
+});
+
+test('free journeys by joining under the shorter trips: the limit is three a day whatever the timetable, a join in the same city is never counted, and a trip in progress is not thrown away', async (t) => {
+  const h = await harness(t), { ada, bayo } = await pair(h);
+  await h.fund(bayo, 'lagos', 100000);
+  await h.toIbadan(ada);
+  // Three round trips in one day: out free by joining, back by the paid bus.
+  for (let round = 0; round < PING.freeJoinsPerDay; round++) {
+    assert.equal((await h.ping(ada, bayo)).code, 'pinged', `ping ${round + 1}`);
+    const cash = must((await h.life(bayo)).cash);
+    assert.equal((await h.join(bayo, ada)).code, 'joined', `join ${round + 1}`);
+    assert.equal((await h.life(bayo, 'ibadan')).cash, cash, 'out: free');
+    await h.trip(bayo, 'ibadan', 'lagos');
+    assert.equal((await h.life(bayo)).cash, cash - 3500, 'back: the fare');
+    h.f.advance(31 * MINUTE);
+  }
+  assert.equal((await h.ping(ada, bayo)).code, 'pinged');
+  const capped = await h.join(bayo, ada);
+  assert.deepEqual([capped.ok, capped.code], [false, 'join_cap']);
+  assert.equal((await h.life(bayo)).estate.city, 'lagos');
+  // The paid bus still runs, and on the bus the join is refused rather than the trip lost.
+  const left = await h.f.action(bayo.cookie, { cityId: 'lagos', type: 'estate.relocate', payload: { to: 'ibadan', mode: 'road' } });
+  assert.equal(left.ok, true);
+  const riding = await h.join(bayo, ada);
+  assert.deepEqual([riding.ok, riding.code], [false, 'join_cap']);
+  assert.equal(must((await h.life(bayo)).activeAction).kind, 'intercity');
+  h.f.advance(3 * MINUTE);
+  await h.f.request('/api/life?city=lagos', null, bayo.cookie);
+  // In the same city now: joining her there is not a journey, so the limit does not apply.
+  await h.walk(bayo, 'cocoa-house', 'ibadan');
+  const near = await h.join(bayo, ada);
+  assert.deepEqual([near.ok, near.code, near.moved], [true, 'joined', 'venue']);
+  assert.equal(must((await h.social()).pingJoins)[bayo.id]?.length, PING.freeJoinsPerDay);
 });
 
 test('a new player who came through an invite link: the inviter is offered the same Join, and a newcomer whose inviter is in another city is told which', async (t) => {

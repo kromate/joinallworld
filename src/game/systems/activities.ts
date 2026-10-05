@@ -299,7 +299,7 @@ function runningDef(action: ActivityAction, cityId: string): ResolvedActivity {
   return def;
 }
 
-const active = {
+const shown = {
   moves: false,
   sanitize(value: SavedActiveAction, state: LifeState, ctx: LifeContext) {
     const entry = findActivity(value.id, ctx.cityId);
@@ -313,6 +313,12 @@ const active = {
       ? (ctx?.trustedSave === true ? value.paid : Math.min(value.paid, paidLimit(state, def, ctx))) : 0;
     return { ...(def.choice ? { choice: def.choice } : {}), ...(paid ? { paid } : {}) };
   },
+};
+/**
+ * What becomes of a running activity: only a host that plays lives settles, ends or stops one, so the browser's build leaves
+ * these out (src/game/profile.ts). What a life is rebuilt with — `moves` and `sanitize` — is above, in every build.
+ */
+const played = PLAYS ? {
   /**
    * The saved activity can no longer run. Give back what was paid at its start (through the
    * ledger), or charge a metered one for the time used. Called only for the server's own save
@@ -374,7 +380,8 @@ const active = {
     else if (refunded && refunded < (action.paid ?? 0)) state.message = `${def.label} stopped early. ${naira(refunded)} was refunded for the unused time.`;
     return null;
   },
-} satisfies ActiveKindHandler<ActivityAction>;
+} satisfies Pick<ActiveKindHandler<ActivityAction>, 'invalidated' | 'tick' | 'complete' | 'cancel'> : LEFT_OUT;
+const active = { ...shown, ...played } satisfies ActiveKindHandler<ActivityAction>;
 
 /** Display summary of one activity for the UI, with the reason it is blocked (if it is). */
 function card(state: LifeState, def: ActivityDefinition, venueId: string, ctx: LifeContext): ActivityCard {

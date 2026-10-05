@@ -9,7 +9,7 @@
  */
 
 /** Weekly election cycle on Lagos time. Weekdays: 0 = Sunday … 6 = Saturday. Original beta rules. */
-import type { AdColour, AdIcon, BillboardContent, District, ElectionRules, HuntContent, RadioContent, SeaPlotContent } from '../../types/content.ts'
+import type { BillboardContent, District, ElectionRules, HuntContent, RadioContent, SeaPlotContent } from '../../types/content.ts'
 
 export const ELECTION: ElectionRules = {
   beta: true,
@@ -30,32 +30,8 @@ export const ELECTION: ElectionRules = {
   announcement: { max: 140, min: 3, cooldownMs: 3600000, perDay: 3, keep: 20 },
 };
 
-/** Text on the State House sheet (Lagos). */
-export const STATE_HOUSE_TEXT = {
-  title: 'Lagos State House',
-  empty: 'Lagos has no Governor yet. Sign up to vote, or run for office yourself.',
-};
-
-/** Fixed creative choices for billboards and sea plots: no uploads and no links in this wave. */
-export const AD_COLOURS: AdColour[] = [
-  { id: 'green', label: 'Green', bg: '#256b45', ink: '#ffffff' },
-  { id: 'gold', label: 'Gold', bg: '#e8a643', ink: '#20232c' },
-  { id: 'red', label: 'Red', bg: '#b23a2e', ink: '#ffffff' },
-  { id: 'blue', label: 'Blue', bg: '#2b5fa8', ink: '#ffffff' },
-  { id: 'purple', label: 'Purple', bg: '#6a3fa0', ink: '#ffffff' },
-  { id: 'teal', label: 'Teal', bg: '#1f8a86', ink: '#ffffff' },
-  { id: 'night', label: 'Night', bg: '#182a25', ink: '#ffffff' },
-  { id: 'white', label: 'White', bg: '#ffffff', ink: '#20232c' },
-];
-
-export const AD_ICONS: AdIcon[] = [
-  { id: 'star', icon: '⭐' }, { id: 'shop', icon: '🛍️' }, { id: 'food', icon: '🍲' }, { id: 'music', icon: '🎵' },
-  { id: 'phone', icon: '📱' }, { id: 'car', icon: '🚗' }, { id: 'house', icon: '🏠' }, { id: 'heart', icon: '❤️' },
-  { id: 'crown', icon: '👑' }, { id: 'fire', icon: '🔥' }, { id: 'ball', icon: '⚽' }, { id: 'book', icon: '📚' },
-  { id: 'scissors', icon: '✂️' }, { id: 'camera', icon: '📷' }, { id: 'palm', icon: '🌴' }, { id: 'megaphone', icon: '📣' },
-];
-
-export const AD_TEXT = { min: 2, max: 40 };
+// The words of the State House sheet and the fixed creative choices of an advert are in ./civic-ads.ts: the engine reads none of them.
+export { AD_COLOURS, AD_ICONS, AD_TEXT, STATE_HOUSE_TEXT } from './civic-ads.ts'
 
 /**
  * Roadside billboard slots. `near` is a venue id so a map can anchor the board beside that

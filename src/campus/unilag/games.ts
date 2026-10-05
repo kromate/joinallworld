@@ -600,7 +600,8 @@ export default {
   stateKeys: ['unilagCommunity'],
   sanitize,
   active: {
-    [CAMPUS_GAME_KIND]: { moves: false, sanitize: sanitizeCampusGame, complete: completeCampusGame },
+    // Finishing a game is played by the server alone (src/game/profile.ts).
+    [CAMPUS_GAME_KIND]: { moves: false, sanitize: sanitizeCampusGame, ...(PLAYS ? { complete: completeCampusGame } : LEFT_OUT) },
   },
   activitiesFor: (cityId) => hasCampus(cityId) ? [VOLUNTEER_ACTIVITY] : [],
   modifiers: {

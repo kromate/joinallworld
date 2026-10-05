@@ -100,7 +100,7 @@ import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, LODGING
 import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
 import type { RelocateBlockCode } from '../../types/actions.ts';
 import type { AwayResidence, EstateState, HouseId, HouseStyleField, HouseUpgrade, IntercityAction, LgaId, LgaVia, LifeContext, LifeState, PlotAddress, Residence, WorldCityId } from '../../types/life.ts';
-import type { NoticeKind, SavedInput, SystemDefinition } from '../../types/registry.ts';
+import type { ActiveKindHandler, NoticeKind, SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { EstateView, HouseStyleCard } from '../../types/view.ts';
 
 const DAY_MS = 86400000;
@@ -569,10 +569,13 @@ export default {
         const known = link && (value.duration === link.seconds || (value.fare === link.fare && value.duration > link.seconds && value.duration <= MAX_SAVED_TRIP_SECONDS));
         return link && known ? { mode: link.mode, fare: link.fare, from } : null;
       },
-      complete: arriveInCity,
-      cancel: (state) => fail(state, 'no_cancel', 'The trip has left: it cannot be cancelled now. The fare is not refunded.'),
-      /** A trip that can no longer run (the link changed) gives the fare back, once. */
-      invalidated(state, value, ctx) { if (isSafeInt(value.fare) && value.fare > 0 && value.fare <= 1e6) credit(state, value.fare, 'Inter-city fare refunded', ctx); },
+      // Arriving, refusing a cancel and settling a trip that can no longer run are played by the server alone (src/game/profile.ts).
+      ...(PLAYS ? {
+        complete: arriveInCity,
+        cancel: (state) => fail(state, 'no_cancel', 'The trip has left: it cannot be cancelled now. The fare is not refunded.'),
+        /** A trip that can no longer run (the link changed) gives the fare back, once. Only for the server's own save (core.ts sanitizeActive). */
+        invalidated(state, value, ctx) { if (isSafeInt(value.fare) && value.fare > 0 && value.fare <= 1e6) credit(state, value.fare, 'Inter-city fare refunded', ctx); },
+      } satisfies Pick<ActiveKindHandler<IntercityAction>, 'complete' | 'cancel' | 'invalidated'> : LEFT_OUT),
     },
   },
   view,

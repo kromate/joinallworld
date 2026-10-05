@@ -627,7 +627,8 @@ export default {
     [CAMPUS_STUDY_KIND]: {
       moves: false,
       sanitize: sanitizeActive,
-      complete: completeActive,
+      // Finishing a lecture, a job or a night in the hostel is played by the server alone (src/game/profile.ts).
+      ...(PLAYS ? { complete: completeActive } : LEFT_OUT),
     },
   },
   modifiers: {

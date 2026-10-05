@@ -14,7 +14,8 @@
 //   - the UNILAG campus rules (student, games, shuttle, curriculum, walk, layout): a chunk of their own, fetched by src/game/campus-gate.ts
 //     when a life uses the campus and by the Campus app. The browser registers stand-ins (src/game/systems/browser.ts), which vite.config.ts
 //     puts in the place of src/game/systems/index.ts; the walk below makes the same swap.
-//   - the player actions, settling and event listeners of every system (src/game/profile.ts: PLAYS is false in the build).
+//   - the player actions, settling and event listeners of every system, and what completes, cancels or settles a timed action
+//     (src/game/profile.ts: PLAYS is false in the build).
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
@@ -128,6 +129,10 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 // elected office. Their content, maps, roads, water and scenes are not in it. The budget was not raised for them: what only a lazily fetched screen
 // reads was moved out of the modules the startup shares with it (the civic request helpers, the thread, mission, invite, event, bank and social
 // lines, the settings list), and it measures 605.6 kB / 219.7 kB. The budget is the one from before the three cities.
+// With the travel changes (the level bar, one main home, guest houses), the capacity messages and players' businesses merged it measured 622.5 kB /
+// 225.9 kB. The budget was not raised: the capacity sentences left the landing model that carries the character presets, the completion of every
+// timed action became play-only (the campus rules with it, so the wallet's writers left the engine), and what only a lazily fetched screen reads
+// was moved to files of its own (the people and map-list sentences, the advert choices, Ping's wording, the campus trail). It measures 604.8 kB / 219.5 kB.
 const BUDGET = { raw: 609_000, gzip: 223_000 }
 // A player who starts in another city also loads that city's own content chunk (venues, regulars, calendar, wording) and nothing else:
 // the set of eager chunks for it is the default-city set plus that one chunk, by name, and the default-city budget is unchanged.

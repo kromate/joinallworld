@@ -102,6 +102,11 @@ export default defineConfig({
     if (/\/src\/scene\/(movement|build|walk-grid)\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names|trail)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
+    // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the
+    // people screens and of the Map's list, and the creative choices of an advert.
+    if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|content\/civic-ads)\.ts$/.test(id)) return undefined
+    // The campus discovery trail is read by the campus rules and the Campus app.
+    if (/\/src\/campus\/unilag\/trail\.ts$/.test(id)) return 'campus-rules'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
   } } } },
 });

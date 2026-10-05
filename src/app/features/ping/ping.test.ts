@@ -2,6 +2,7 @@
 // and the store against a fake server (one client id per ping, the frames, the landing of a link).
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
+import { readFileSync } from 'node:fs'
 import { attach } from '../social/useSocial.ts'
 import type { PanelApi } from '../../types/panel.ts'
 import type { PingControl, PingNotice, PingPlace } from '../../../types/ping.ts'
@@ -166,6 +167,19 @@ test('frames: an incoming ping is offered, a closed one stays closed, an ended o
   await loadIncoming()
   const shown = pingState.banner as { kind: string; notice?: PingNotice } | null
   assert.deepEqual([shown?.kind, shown?.notice?.at], ['incoming', NOW + 9])
+})
+
+test('arriving in a city by joining a friend: the ping notice is the only thing said — before the first-home sheet and before the trip’s welcome', () => {
+  const shell = readFileSync(new URL('../../state/app.ts', import.meta.url), 'utf8')
+  const start = shell.indexOf('if (state.estate.city !== previous.estate.city) {\n      scene.world.value?.setCity')
+  assert.ok(start > 0, 'the arrival branch of the shell')
+  const branch = shell.slice(start, shell.indexOf('// The server has set a plot aside', start)).replace(/^\s*\/\/.*$/gm, '')
+  const ping = branch.indexOf('if (pingUi.arriving)'), sheet = branch.indexOf("else if (state.onboarding.done && !state.estate.lga && !state.estate.home && !away) shell.open('city'"), welcome = branch.indexOf("else if (!away && state.message.startsWith('Welcome to ')) game.toast(state.message)")
+  assert.ok(ping > 0 && sheet > ping && welcome > sheet, 'one chain: the join first, then a life with no home anywhere, then the welcome')
+  // Nothing is opened or said by the join's own branch, and no second statement can run after the chain for the same arrival.
+  assert.match(branch.slice(ping, sheet), /^if \(pingUi\.arriving\) \{ \/\* nothing more to open \*\/ \}\s*$/)
+  assert.equal((branch.match(/game\.toast\(/g) ?? []).length, 1)
+  assert.equal((branch.match(/shell\.open\(/g) ?? []).length, 1)
 })
 
 test('the join: the life is read again only when the server moved it, the city’s own sheet is held back meanwhile, and a refusal can be tried again', async () => {

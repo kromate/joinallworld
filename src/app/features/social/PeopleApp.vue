@@ -7,7 +7,7 @@
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed, watch } from 'vue'
-import { roomSummary, presenceText } from '../../../game/social-model.ts'
+import { roomSummary, presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { PeopleListing } from '../../../types/social.ts'
 import { linkWords } from '../../../ui/link.ts'

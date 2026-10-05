@@ -49,7 +49,7 @@ import { cachedCityContent, isCityId } from '../cities/registry.ts';
  * Every number here is an original beta value unless content/npcs.ts says it is fixed.
  */
 import type {
-  ActionFailure, ActionOutcome, ActionSuccess, AttachedActivity, FamilyId, FamilyMember, LifeContext, LifeState, NpcAction, NpcDefinition, NpcSummary,
+  ActionFailure, ActionOutcome, ActionSuccess, ActiveKindHandler, AttachedActivity, CallAction, FamilyId, FamilyMember, LifeContext, LifeState, NpcAction, NpcDefinition, NpcSummary,
   PlayerAction, Relationship, SocialServerOp, SocialServerOpMap, SocialState, SocialView, SystemDefinition, TierDefinition, TransferBlockCode, VenueId,
 } from '../../types/index.ts';
 import { LEFT_OUT, PLAYS } from '../profile.ts';
@@ -217,7 +217,9 @@ const joinOp: ServerOps['join'] = PLAYS ? (state, payload, ctx) => {
   const from = state.estate.city;
   if (!linksFrom(city).some((link) => link.to === from)) return fail(state, 'no_route', `Nothing runs between ${cityRules(from)?.name ?? 'your city'} and ${rules.name} yet.`);
   arriveInCity(state, { id: rules.id }, ctx, venue);
-  state.message = `You joined ${name} at ${label}, ${rules.name}.${state.estate.lga ? '' : ` You are visiting: your home in ${cityRules(from)?.name ?? from} stays yours.`}`;
+  // The words of an arrival (systems/estate.ts): a visitor is told where home is, and that is the main home, not the city just left.
+  const home = state.estate.home && state.estate.home !== rules.id ? cityRules(state.estate.home)?.name ?? state.estate.home : null;
+  state.message = `You joined ${name} at ${label}, ${rules.name}.${state.estate.lga ? (state.estate.home === rules.id ? '' : ' You have a house here.') : ` You are visiting${home ? `: your home is in ${home}` : ''}.`}`;
   return ok(state, 'joined_city');
 } : LEFT_OUT;
 const serverOps: ServerOps = {
@@ -467,7 +469,7 @@ export default {
     call: {
       moves: false,
       sanitize: (value) => (Object.hasOwn(FAMILY, value.id) && value.duration === FAMILY_CALL.duration ? {} : null),
-      complete(state, active, ctx) { familyCall(state, FAMILY[active.id], ctx); },
+      ...(PLAYS ? { complete(state, active, ctx) { familyCall(state, FAMILY[active.id], ctx); } } satisfies Pick<ActiveKindHandler<CallAction>, 'complete'> : LEFT_OUT),
     },
   },
 

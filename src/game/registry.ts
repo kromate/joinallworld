@@ -176,6 +176,7 @@
 import type {
   ActionHandler, ActiveKindHandler, EngineEvent, EngineEventMap, EventListener, ModifierKey, ModifierMap, ServerOnlyAction, SystemDefinition,
 } from '../types/registry.ts';
+import { PLAYS } from './profile.ts';
 import type { LifeContext, LifeState } from '../types/life.ts';
 import type { CampusEngineEvent, CampusEventMap } from '../types/campus.ts';
 
@@ -209,7 +210,8 @@ function install(def: SystemDefinition<string>, replacing: SystemDefinition | nu
     // Whether a timed action takes the player out of their venue is never left to a default:
     // room membership and voice depend on it (isDeparting), so every kind must say.
     if (typeof handler?.moves !== 'boolean') throw new Error(`Active kind "${kind}" must declare moves: true or false`);
-    if (typeof handler.sanitize !== 'function' || typeof handler.complete !== 'function') throw new Error(`Active kind "${kind}" needs sanitize and complete`);
+    // A build that only reads lives carries no completion (./profile.ts): it never runs one.
+    if (typeof handler.sanitize !== 'function' || (PLAYS && typeof handler.complete !== 'function')) throw new Error(`Active kind "${kind}" needs sanitize and complete`);
   }
   for (const key of Object.keys(previous?.actions ?? {})) { actionTable.delete(key); serverOnlyTable.delete(key); }
   for (const key of Object.keys(previous?.active ?? {})) activeTable.delete(key);

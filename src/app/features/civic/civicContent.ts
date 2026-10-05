@@ -1,10 +1,8 @@
 // The typed boundary to the civic content tables (src/game/content/civic.ts): plain data, no
 // functions. They are imported as they are; only their types are declared here. When the table is
 // converted these lines are deleted and the importers point at the real file.
-import {
-  AD_COLOURS as AD_COLOURS_JS, AD_ICONS as AD_ICONS_JS, AD_TEXT as AD_TEXT_JS, BILLBOARDS as BILLBOARDS_JS,
-  ELECTION as ELECTION_JS, RADIO as RADIO_JS, SEA_PLOTS as SEA_PLOTS_JS, STATE_HOUSE_TEXT as STATE_HOUSE_TEXT_JS,
-} from '../../../game/content/civic.ts'
+import { BILLBOARDS as BILLBOARDS_JS, ELECTION as ELECTION_JS, RADIO as RADIO_JS, SEA_PLOTS as SEA_PLOTS_JS } from '../../../game/content/civic.ts'
+import { AD_COLOURS as AD_COLOURS_JS, AD_ICONS as AD_ICONS_JS, AD_TEXT as AD_TEXT_JS, STATE_HOUSE_TEXT as STATE_HOUSE_TEXT_JS } from '../../../game/content/civic-ads.ts'
 import type { AdColour } from '../../../types/civic.ts'
 
 export const ELECTION = ELECTION_JS as unknown as Readonly<{

@@ -2,8 +2,9 @@
 // server time, what the lists are written with, and who is drawn on the map.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { applyWhereabouts, crowdWords, freshLive, LIVE_GRACE_MS, mapPeople, MAP_FRIENDS, othersAt, takeMove, takeSnapshot, whereabouts } from './live-model.ts';
-import { presenceText } from './social-model.ts';
+import { applyWhereabouts, freshLive, LIVE_GRACE_MS, mapPeople, MAP_FRIENDS, othersAt, takeMove, takeSnapshot, whereabouts } from './live-model.ts';
+import { crowdWords } from './live-lines.ts';
+import { presenceText } from './social-lines.ts';
 import type { LiveSpot } from '../types/live.ts';
 import type { Whereabouts } from '../types/social.ts';
 

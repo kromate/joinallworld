@@ -78,8 +78,8 @@ import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIF
 import { venueLabel } from '../content/venues.ts';
 import type { LadderRung, JobDefinition, TrackJobDefinition } from '../../types/content.ts';
 import type { ActionMap } from '../../types/actions.ts';
-import type { ActionOutcome, CareerState, JobId, LifeContext, LifeState, NeedId } from '../../types/life.ts';
-import type { SystemDefinition } from '../../types/registry.ts';
+import type { ActionOutcome, CareerState, CommuteAction, JobId, LifeContext, LifeState, NeedId } from '../../types/life.ts';
+import type { ActiveKindHandler, SystemDefinition } from '../../types/registry.ts';
 import type { CareerStep, CareerView, JobListing, PromotionTarget, ShiftStatusCode } from '../../types/view.ts';
 
 /** Seconds the automatic commute takes (original beta value). */
@@ -402,11 +402,12 @@ export default {
         const job = jobOf(state.job, state.career.city ?? state.estate.city);
         return job?.track && value.id === job.workplace.venue && value.id !== state.location && value.duration === COMMUTE_SECONDS ? {} : null;
       },
-      complete(state, active, ctx) {
+      // Arriving at work is played by the server alone (src/game/profile.ts).
+      ...(PLAYS ? { complete(state, active, ctx) {
         const job = jobOf(state.job, state.career.city ?? state.estate.city);
         if (!arrive(state, active.id, ctx, { spot: job?.workplace.spot, mode: null })) return;
         state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}, at the ${job ? spotName(job, ctx.cityId) : 'Work'} spot. Start ${job ? `your ${job.label} shift` : 'your shift'} when you are ready.`;
-      },
+      } } satisfies Pick<ActiveKindHandler<CommuteAction>, 'complete'> : LEFT_OUT),
     },
   },
   modifiers: {

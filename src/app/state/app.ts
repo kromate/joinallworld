@@ -17,7 +17,7 @@ import { isDeparting } from '../../life.ts'
 import { roomJoinNeeded } from '../../client.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
 import { linkWords } from '../../ui/link.ts'
-import { networkLimitText, networkLimitWait, worldFullText, worldFullWait } from '../features/start/quickStartModel.ts'
+import { networkLimitText, networkLimitWait, worldFullText, worldFullWait } from '../features/start/capacityWait.ts'
 import { captureLink, forgetDraft, forgetGo, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingGo, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
 import { deviceToken } from '../features/growth/boundary.ts'
 import { GO_TARGETS } from '../../game/go-links.ts'
@@ -445,7 +445,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
   /** Play was tapped on the landing screen ('jaw:quick-start'). A second tap while the first is on its way is the same start. */
   let starting = false
-  /** The world was full when Play was tapped: the start is sent again by itself after a growing pause (quickStartModel.ts worldFullWait). */
+  /** The world was full when Play was tapped: the start is sent again by itself after a growing pause (capacityWait.ts worldFullWait). */
   let fullRetry: ReturnType<typeof globalThis.setTimeout> | null = null, fullTries = 0
   async function quickStart(name: string | null, startCity?: string): Promise<void> {
     if (starting) return

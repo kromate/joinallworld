@@ -3,7 +3,8 @@
 // the list of places and the venue card both read it, so they can never disagree with the map's pins.
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { crowdWords, mapPeople } from '../../../game/live-model.ts'
+import { mapPeople } from '../../../game/live-model.ts'
+import { crowdWords } from '../../../game/live-lines.ts'
 import { isDeparting } from '../../../life.ts'
 import { useApp } from '../../state/app.ts'
 import { liveNow, social, useSocial } from '../social/useSocial.ts'

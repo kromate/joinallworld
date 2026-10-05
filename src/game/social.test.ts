@@ -321,7 +321,8 @@ test('any system can post a notice for the Updates tab', async () => {
 });
 
 test('outbox: pending → sent or failed, retry keeps the client id, a confirmed message never shows twice', async () => {
-  const { createOutbox, mergeMessages, presenceText, roomSummary, inviteIdFrom, SEND_TIMEOUT_MS, FAILURE_TEXT } = await import('./social-model.ts');
+  const { createOutbox, mergeMessages, inviteIdFrom, SEND_TIMEOUT_MS, FAILURE_TEXT } = await import('./social-model.ts');
+  const { presenceText, roomSummary } = await import('./social-lines.ts');
   const outbox = createOutbox();
   /** What a thread item says about its delivery: only a message still in the outbox has a status. */
   const statusOf = (item: ThreadItem) => ('status' in item ? item.status : undefined);

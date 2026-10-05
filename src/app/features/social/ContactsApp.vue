@@ -4,7 +4,7 @@
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed } from 'vue'
-import { presenceText } from '../../../game/social-model.ts'
+import { presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { SearchResult } from '../../../types/social.ts'
 import BaseButton from '../../ui/BaseButton.vue'

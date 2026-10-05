@@ -7,7 +7,7 @@
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
-import { presenceText } from '../../../game/social-model.ts'
+import { presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { PersonCard } from '../../../types/social.ts'
 import { money } from '../../ui/format.ts'

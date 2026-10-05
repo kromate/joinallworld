@@ -538,7 +538,8 @@ export default {
         if (!isModeId(value.mode) || value.duration < MIN_TRIP_SECONDS || value.duration > MAX_TRIP_SECONDS || !modeAllowed(state, value.id, value.mode) || (value.mode === 'boat' && !localRoute(state, value.id))) return null;
         return { mode: value.mode, ...(typeof value.fare === 'number' && Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
       },
-      complete,
+      // Arriving is played by the server alone (src/game/profile.ts).
+      ...(PLAYS ? { complete } : LEFT_OUT),
     },
   },
   view,

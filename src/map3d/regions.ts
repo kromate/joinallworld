@@ -236,7 +236,7 @@ export function regionEntry(kind: RegionKind, id: string): RegionInfo {
   const entry = Object.hasOwn(ATLAS[kind] || {}, id) ? ATLAS[kind][id] : null;
   if (kind === 'state') {
     const cities = citiesInState(id), open = cities.find(city => city.status === 'open'), city = open ?? cities[0];
-    return { ...entry, ...(city ? { city: city.id } : {}), status: open ? 'open' : entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
+    return { ...entry, ...(city ? { city: city.id } : {}), status: open ? 'open' : city ? 'planned' : entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
   }
   return { ...entry, status: entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
 }

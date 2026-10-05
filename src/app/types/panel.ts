@@ -85,6 +85,8 @@ export interface PanelApi {
 export interface PanelMeta {
   id: string
   title: string
+  /** Optional city-owned wording; the registry evaluates it against the current life. */
+  titleFor?(state: LifeState): string
   /** Emoji or short text for a Sim tab. The Phone draws its own icon for the id (src/ui/phone/icons.ts). */
   icon?: string
   placement: PanelPlacement

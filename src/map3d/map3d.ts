@@ -47,7 +47,7 @@ import { createKit } from '../scene/kit.ts';
 import { COMING_SOON } from '../game/content/venues.ts';
 import { contentFor } from '../game/cities/runtime.ts';
 import { openingInfo, lagosTime } from '../game/clock.ts';
-import { buildNetwork, pointInPolygon } from './roads.ts';
+import { buildNetwork, localTripRoute, pointInPolygon } from './roads.ts';
 import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.ts';
 import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.ts';
 import { createActor } from './actor.ts';
@@ -62,6 +62,7 @@ import { iconFor } from '../ui/icon-map.ts';
 import { dockOf } from './insets.ts';
 import { createPinLayer, pinsOf, EMPTY_PEOPLE } from './people.ts';
 import type { MapPeople, PinLayer, PeoplePin } from './people.ts';
+import { cityUnit } from '../game/cities/terminology.ts';
 
 /** What the map reads of a venue (src/game/content/venues.ts): its icon, filter category and opening hours. */
 interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }
@@ -263,7 +264,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       const counts = summaryShown?.get(id);
       plate.note.textContent = counts ? `${counts.houses.toLocaleString('en-NG')} home${counts.houses === 1 ? '' : 's'}${counts.online ? ` · ${counts.online.toLocaleString('en-NG')} online` : ''}` : '';
       plate.node.classList.toggle('is-own', id === own);
-      plate.node.setAttribute('aria-label', `${plate.lga.name} local government${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
+      plate.node.setAttribute('aria-label', `${plate.lga.name} ${cityUnit(cityId)}${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
     }
   }
   /** The house under a point of the ground, if its estate is drawn as houses: { lga, estate, plot, house }. */
@@ -337,7 +338,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   function startTrip(next: Trip) {
     trip = next; returning = null; settling = false; dueAt = -Infinity; tripCamera = true;
     dismissHint(); following = false;
-    route = network.route(placeKey(next.from), placeKey(next.to)) || straight(next.from, next.to);
+    route = localTripRoute(pack, next.from, next.to, next.mode) || (next.mode === 'boat' ? null : network.route(placeKey(next.from), placeKey(next.to)) || straight(next.from, next.to));
+    if (!route) return;
     actor.dot(reducedMotion); actor.setMode(next.mode);
     drawRoute();
     if (shown() && !reducedMotion) rig.ease(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route!.points.length - 1), { pad: 1.5, min: 70 }), 0.9);

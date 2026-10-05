@@ -62,6 +62,7 @@ test('no link can be used to travel to a city that is not open', async () => {
     const open = cityRules(to)?.status === 'open'
     const blocked = relocateBlock(rich, to, link.mode)
     if (!open) assert.equal(blocked?.code, 'city_not_open', `${from} to ${to} by ${link.mode} is refused: ${to} is closed`)
+    else if (link.status === 'coming') assert.equal(blocked?.code, 'route_not_open', `${from} to ${to} by ${link.mode} is planned, not bookable`)
     else assert.equal(blocked, null, `${from} to ${to} by ${link.mode} is allowed`)
   }
   rich.estate.city = 'lagos'

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { cityContent, cityMap, isCityId, isKnownCityId, isOpenCityId, linksFrom, loadCityContent, loadCityMap, registerCityForTest } from './registry.ts'
+import { cityContent, cityMap, isCityId, isKnownCityId, isOpenCityId, knownCityIds, linksFrom, loadCityContent, loadCityMap, playableCityIds, registerCityForTest, registeredCityIds } from './registry.ts'
 import { cityContractTest } from './cityContractTest.test.ts'
 import { lagosCity } from './lagos/index.ts'
 import { fictionalCity, fictionalContent, fictionalLoadCounts, fictionalMap, fictionalNeighbourCity, resetFictionalLoadCounts } from './testing/fictionalCity.test-fixture.ts'
@@ -12,9 +12,9 @@ cityContractTest(fictionalNeighbourCity, { profile: 'test-fixture' })
 
 test('test registration is scoped and keeps closed cities closed', async () => {
   resetFictionalLoadCounts()
-  assert.equal(isKnownCityId('abuja'), true)
-  assert.equal(isCityId('abuja'), false)
-  assert.equal(isOpenCityId('abuja'), false)
+  assert.equal(isKnownCityId('kaduna'), true)
+  assert.equal(isCityId('kaduna'), false)
+  assert.equal(isOpenCityId('kaduna'), false)
   assert.throws(() => cityContent('test-fictional'), /has not been loaded/)
   const neighbourRegistration = registerCityForTest(fictionalNeighbourCity)
   const registration = registerCityForTest(fictionalCity)
@@ -35,6 +35,12 @@ test('test registration is scoped and keeps closed cities closed', async () => {
   }
   assert.equal(isKnownCityId('test-fictional'), false)
   assert.throws(() => cityContent('test-fictional'), /has not been loaded/)
+})
+
+test('the catalogue has nine open cities and one closed preview in registry order', () => {
+  assert.deepEqual(knownCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'kaduna', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'])
+  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'])
+  assert.deepEqual(playableCityIds(), ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'])
 })
 
 test('authored Ibadan content is open and exposes its canonical road and rail links', async () => {

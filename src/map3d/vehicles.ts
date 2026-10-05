@@ -23,7 +23,7 @@ export interface VehicleBatch {
 }
 /** What drawing a vehicle reports: where the seated traveller goes, and how long it is. */
 export interface VehicleFit { seat: Point3; length: number }
-export type VehicleKind = 'danfo' | 'keke' | 'okada' | 'cab' | 'car';
+export type VehicleKind = 'danfo' | 'keke' | 'okada' | 'cab' | 'car' | 'boat';
 /** One entry of VEHICLES: draws the vehicle into a batch. */
 export type DrawVehicle = (b: VehicleBatch, options?: { colour?: string }) => VehicleFit;
 
@@ -103,6 +103,12 @@ function saloon(b: VehicleBatch, body: string, { taxi = false, seat }: { taxi?: 
 }
 
 export const VEHICLES: Readonly<Record<VehicleKind, DrawVehicle>> = Object.freeze({
+  boat: (b: VehicleBatch) => {
+    boat(b, 0, 0, 0, '#227b80', false);
+    b.box(0, 0.1, -0.4, 0.8, 0.16, 0.4, '#d9c9a0');
+    figure(b, 0, 0.12, 0.65, '#ed8936');
+    return { seat: { x: 0, y: 0.2, z: -0.5 }, length: 4.5 };
+  },
   danfo,
   keke,
   okada,

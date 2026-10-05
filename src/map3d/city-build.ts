@@ -33,6 +33,7 @@ import { landOf, rasterLgas, scanRings } from './lga.ts';
 import { estateLayout } from './estates.ts';
 import { reliefAt, reliefNormal } from './relief.ts';
 import type { Box4, CityPack, FabricStyle, LandKind, PackDistrict, PackFabric, PackHill, Point2, Point3, XZ } from './types.ts';
+import { heritageDashes, HERITAGE_STYLE } from './heritage.ts';
 
 /** The Three.js namespace the map code is handed (it is loaded lazily, so it is never imported here as a value). */
 type Three = typeof import('three');
@@ -359,6 +360,12 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   if (pack.inland) { materials.water.map = null; materials.water.color.set('#bcd596'); materials.water.roughness = 1; materials.water.metalness = 0; }
   water.rotation.x = -Math.PI / 2; water.position.set(midX, WATER_Y, midZ);
   count(add(water, 'water'));
+  const waterwayMaterial = pack.water?.length ? keep(new THREE.MeshStandardMaterial({ color: CITY_LIGHT.day.water, roughness: 0.42, metalness: 0.05 })) : null;
+  if (waterwayMaterial) {
+    const waterways = createRaw(THREE);
+    for (const part of pack.water ?? []) waterways.shape(part.points, WATER_Y + 0.01, '#ffffff', part.holes);
+    count(add(waterways.build(waterwayMaterial), 'waterways'));
+  }
 
   // ---- land --------------------------------------------------------------------------------
   const raw = createRaw(THREE);
@@ -372,11 +379,14 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     const bits = entry.kind === 'sand' ? 1 : 3;
     scanRings([entry.polygon, ...(entry.holes ?? [])], minX, minZ, gridCell, gridW, gridH, (row, from, to) => { for (let i = row * gridW + from; i <= row * gridW + to; i++) mask[i]! |= bits; });
   }
+  for (const part of pack.water ?? []) {
+    scanRings([part.points, ...(part.holes ?? [])], minX, minZ, gridCell, gridW, gridH, (row, from, to) => { for (let i = row * gridW + from; i <= row * gridW + to; i++) mask[i]! |= 4; });
+  }
   const bitAt = (x: number, z: number, bit: number) => { const col = Math.floor((x - minX) / gridCell), row = Math.floor((z - minZ) / gridCell); return col >= 0 && row >= 0 && col < gridW && row < gridH && (mask[row * gridW + col]! & bit) !== 0; };
   const around = (x: number, z: number, margin: number): [number, number][] => [[x, z], [x + margin, z], [x - margin, z], [x, z + margin], [x, z - margin]];
   const onLand = (x: number, z: number, margin = 0) => (margin ? around(x, z, margin).every(([px, pz]) => bitAt(px, pz, 2)) : bitAt(x, z, 2));
   /** Land, or its shore (3 units round it): where no boat sails and no wave breaks. */
-  const onAnyLand = (x: number, z: number) => pack.inland || around(x, z, 3).some(([px, pz]) => bitAt(px, pz, 1));
+  const onAnyLand = (x: number, z: number) => (pack.inland && !bitAt(x, z, 4)) || around(x, z, 3).some(([px, pz]) => bitAt(px, pz, 1));
   /**
    * The stretches of a true-scale outline that are shore: an edge with more land just beyond it (the boundary between two local governments) is no shore and gets no
    * wall, shallows or beach. A stretch is a run of points; a ring that is shore all the way round is one closed run.
@@ -389,7 +399,8 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     const side = (area > 0 ? 1 : -1) * (hole ? -1 : 1);
     const shore = ring.map(([ax, az], i) => {
       const [bx, bz] = ring[(i + 1) % n]!, length = Math.hypot(bx - ax, bz - az) || 1;
-      return !bitAt((ax + bx) / 2 + ((bz - az) / length) * side * 0.6, (az + bz) / 2 - ((bx - ax) / length) * side * 0.6, 1);
+      const x = (ax + bx) / 2 + ((bz - az) / length) * side * 0.6, z = (az + bz) / 2 - ((bx - ax) / length) * side * 0.6;
+      return !bitAt(x, z, 1) && (!pack.inland || bitAt(x, z, 4));
     });
     const at = (i: number): Point3 => ({ x: ring[i % n]![0], y: 0, z: ring[i % n]![1] });
     if (shore.every(Boolean)) return [Array.from({ length: n + 1 }, (_, i) => at(i))];
@@ -598,6 +609,14 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
 
   // ---- what only this city has ----------------------------------------------------------------
   pack.decorate?.(b, { rng, w });
+  if (pack.heritageLines?.length) {
+    const heritage = createBatch(THREE);
+    for (const { from, to } of heritageDashes(pack.heritageLines)) {
+      const dx = to[0] - from[0], dz = to[1] - from[1];
+      heritage.box((from[0] + to[0]) / 2, HERITAGE_STYLE.height / 2 + 0.03, (from[1] + to[1]) / 2, HERITAGE_STYLE.width, HERITAGE_STYLE.height, Math.hypot(dx, dz), HERITAGE_STYLE.colour, { ry: Math.atan2(dx, dz) });
+    }
+    for (const mesh of heritage.build(shared).meshes) count(add(mesh, 'historic-wall-alignments'));
+  }
 
   /** The metropolitan core: the default view, where the boats sail and the fabric is densest. The whole board when the pack names none. */
   const core = pack.core ?? { minX: minX + 8, maxX: maxX - 8, minZ: minZ + 8, maxZ: maxZ - 8 };
@@ -866,6 +885,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
       const preset = presets[next] || CITY_LIGHT.day;
       time = presets[next] ? next : 'day';
       materials.water.color.set(pack.inland ? '#bcd596' : preset.water); materials.windows.color.set(preset.windows);
+      waterwayMaterial?.color.set(preset.water);
       materials.waves.opacity = preset.waves; materials.shadow.opacity = preset.shadow;
       return preset;
     },

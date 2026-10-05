@@ -107,7 +107,7 @@ export function createActor(kit: MapKit, { travelVehicle = null }: { travelVehic
     releaseVehicle();
     const kind = lookOf(mode!).vehicle;
     if (!kind) return;
-    if (useModels && travelVehicle) {
+    if (useModels && travelVehicle && kind !== 'boat') {
       vehicleModel = travelVehicle(kind, { time: vehicleTime });
       if (!vehicleModel) return;
       vehicle = vehicleModel.object3D;

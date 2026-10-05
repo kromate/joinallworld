@@ -17,6 +17,7 @@
  * (src/map3d/map3d.test.ts: every venue, road, bridge and local government, at the same place).
  */
 import { landOf, partsOf } from './lga.ts';
+import { HERITAGE_STYLE } from './heritage.ts';
 import type { Network } from './roads.ts';
 import { extentWord } from './labels.ts';
 import type { CityPack, LandKind, PackBounds, PackSoon, Point2, Point3, XZ } from './types.ts';
@@ -38,6 +39,8 @@ export interface FlatModel {
   name: string
   box: FlatBox
   land: FlatLand[]
+  water: { id: string; d: string }[]
+  heritageLines: { id: string; name: string; d: string }[]
   roads: FlatRoad[]
   lgas: FlatLga[]
   zones: FlatZone[]
@@ -82,6 +85,8 @@ export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { ven
     context: ctx ? { land: ctx.land.map((piece) => ({ id: piece.id, kind: piece.kind, d: rings([piece.points, ...piece.holes]) })), roads: ctx.roads.filter((road) => road.points.length > 1).map((road) => ({ id: road.id, d: path(road.points) })), names: ctx.labels.map((label) => ({ text: label.text, kind: label.kind, x: label.x, z: label.z })) } : null,
     land: landOf(pack).map((entry) => ({ id: entry.id, kind: entry.kind, d: rings([entry.polygon, ...(entry.holes ?? [])]) })),
     roads: network.roads.map((road) => ({ id: road.id, name: road.name, major: road.major, bridge: road.bridge > 0, d: path(road.points), width: (road.trunk ? 3.6 : road.major ? 2.5 : 1.8) * (pack.roadScale ?? 1), from: road.points[0]!, to: road.points[road.points.length - 1]! })),
+    water: (pack.water ?? []).map(entry => ({ id: entry.id, d: rings([entry.points, ...(entry.holes ?? [])]) })),
+    heritageLines: (pack.heritageLines ?? []).map(line => ({ id: line.id, name: line.name, d: path(line.points) })),
     lgas: (pack.lgas || []).map((lga) => ({ id: lga.id, name: lga.name, tint: lga.tint, d: partsOf(lga).map(rings).join(''), plate: lga.plate })),
     zones: Object.entries<PackSoon>(pack.soon || {}).map(([id, spot]) => ({ id, x: spot.zone[0], z: spot.zone[1], width: spot.zone[2] - spot.zone[0], height: spot.zone[3] - spot.zone[1] })),
     places,
@@ -111,6 +116,7 @@ export function flatSvg(model: FlatModel): string {
   return `<svg class="m3-flat-art" viewBox="${fixed(box.x)} ${fixed(box.z)} ${fixed(box.width)} ${fixed(box.height)}" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <defs><clipPath id="m3-flat-land-${esc(model.id)}" clip-rule="evenodd">${model.land.map((entry) => `<path d="${entry.d}"/>`).join('')}</clipPath></defs>
     <rect x="${fixed(box.x)}" y="${fixed(box.z)}" width="${fixed(box.width)}" height="${fixed(box.height)}" fill="${model.inland ? c.mainland : c.water}"/>
+    ${model.water.length ? `<g fill="${c.water}" fill-rule="evenodd">${model.water.map(entry => `<path d="${entry.d}" data-water="${esc(entry.id)}"/>`).join('')}</g>` : ''}
     ${model.context ? `<g class="m3-flat-context" fill-rule="evenodd" aria-hidden="true"><g>${model.context.land.map((piece) => `<path d="${piece.d}" data-context="${esc(piece.id)}" fill="${piece.kind === 'country' ? '#e4dfd0' : '#dde1d3'}"/>`).join('')}</g><g fill="none" stroke="#b7b8ae" stroke-width="${fixed(1.1 * k)}" stroke-linecap="round" stroke-linejoin="round">${model.context.roads.map((road) => `<path d="${road.d}"/>`).join('')}</g><g font-family="DM Sans, Arial, sans-serif" font-weight="700" text-anchor="middle" font-size="46" letter-spacing="7">${model.context.names.map((label) => `<text x="${fixed(label.x)}" y="${fixed(label.z)}" fill="${label.kind === 'sea' ? '#e2f4f8' : '#56684f'}" fill-opacity=".75">${esc(label.text)}</text>`).join('')}</g></g>` : ''}
     <g fill="${model.inland ? c.mainland : c.shallows}" fill-rule="evenodd" stroke="${model.inland ? c.mainland : c.shallows}" stroke-width="${fixed(5.2 * g)}" stroke-linejoin="round">${ground.map((entry) => `<path d="${entry.d}"/>`).join('')}</g>
     <g stroke-width="${fixed(2.2 * g)}" stroke-linejoin="round" fill-rule="evenodd">${ground.map((entry) => `<path d="${entry.d}" data-land="${esc(entry.id)}" fill="${c[entry.kind] || c.mainland}" stroke="${entry.kind === 'sand' ? '#f8efd2' : c.rim}"/>`).join('')}</g>
@@ -125,6 +131,7 @@ export function flatSvg(model: FlatModel): string {
     <g data-ink="asphalt">${model.roads.map((road) => stroke(road, c.asphalt, 0)).join('')}</g>
     <g data-ink="dash">${model.roads.filter((road) => road.major).map((road) => stroke(road, c.dash, -road.width + 0.16 * k, `stroke-dasharray="${fixed(1.6 * k)} ${fixed(3.2 * k)}" stroke-linecap="butt"`)).join('')}</g>
     </g>
+    ${model.heritageLines.length ? `<g class="m3-flat-heritage" fill="none" stroke="${HERITAGE_STYLE.colour}" stroke-width="${HERITAGE_STYLE.width}" stroke-dasharray="${HERITAGE_STYLE.dash} ${HERITAGE_STYLE.gap}">${model.heritageLines.map(line => `<path data-heritage="${esc(line.id)}" d="${line.d}"><title>${esc(line.name)}</title></path>`).join('')}</g>` : ''}
     <g class="m3-flat-names" font-family="DM Sans, Arial, sans-serif" font-weight="800" text-anchor="middle">${model.names.map((plate) => `<text x="${fixed(plate.x)}" y="${fixed(plate.z + plate.size * 0.35)}" font-size="${fixed(plate.size * 1.15)}" letter-spacing="${fixed(plate.size * 0.18)}" fill="${plate.water ? '#d6f1f7' : '#f6faea'}" ${plate.water ? '' : 'stroke="#6f9160" stroke-width=".35" paint-order="stroke"'}>${esc(plate.name)}</text>`).join('')}</g>
   </svg>`;
 }

@@ -11,7 +11,8 @@ import { isOpen } from './game/clock.ts';
 import * as venuesModule from './game/content/venues.ts';
 import { VENUES } from './game/cities/lagos/venues.ts';
 import * as transportModule from './game/content/venues-transport.ts';
-import { CITY_LINKS, CITY_RULES } from './game/content/world.ts';
+import { cityRules, linksFrom } from './game/cities/registry.ts';
+import { relocateBlock } from './game/systems/estate.ts';
 import * as travelModule from './game/systems/travel.ts';
 import { weatherAt } from './game/systems/health.ts';
 import * as kitModule from './scene/kit.ts';
@@ -64,11 +65,24 @@ test('the airport and the refinery are venues of the catalogue, and nothing in L
   const paid = [AIRPORT, REFINERY].flatMap((venue) => Object.values<any>(venue.spots).flatMap((spot: any) => spot.activities.filter((def: any) => def.reward > 0)));
   assert.deepEqual(paid.map((def: any) => def.id), ['airport-carry-bags', 'refinery-load-drums']);
   for (const def of paid) { assert.ok(isGig(def) && def.cooldown >= 300 && def.effects.energy < 0 && def.minimumNeeds.energy >= 20 && def.reward <= 450, def.id); }
-  // The travel desk names the flights that exist as data and are refused while their city is not open. It sells nothing.
-  const flights = CITY_LINKS.filter((link) => link.mode === 'air' && (link.a === 'lagos' || link.b === 'lagos')).map((link) => { const city = CITY_RULES[link.a === 'lagos' ? link.b : link.a]; assert.ok(city, 'flight destination is registered'); return city; });
-  assert.ok(flights.length >= 2 && flights.every((city) => city.status !== 'open'));
-  for (const city of flights) assert.ok(AIRPORT.spots.desk.caption.includes(city.name), city.name);
-  assert.match(AIRPORT.spots.desk.caption, /begin when those cities open/);
+  // The information desk separates bookable routes from closed previews and never sells a ticket.
+  const flights = linksFrom('lagos').filter(link => link.mode === 'air').map(link => { const city = cityRules(link.to); assert.ok(city, 'flight destination is registered'); return city; });
+  assert.ok(flights.length >= 2);
+  const caption: string = AIRPORT.spots.desk.caption;
+  const [available = '', waiting = ''] = caption.split('Coming soon:');
+  const context = at(MONDAY_NOON), traveller = createLife({ cash: 1_000_000 }, context);
+  for (const city of flights) {
+    if (city.status === 'open') {
+      assert.ok(available.includes(city.name), `${city.name} is shown as available`);
+      assert.ok(!waiting.includes(city.name));
+      assert.equal(relocateBlock(traveller, city.id, 'air', context), null);
+    } else {
+      assert.ok(waiting.includes(city.name), `${city.name} is shown as coming soon`);
+      assert.ok(!available.includes(city.name));
+      assert.equal(relocateBlock(traveller, city.id, 'air', context)?.code, 'city_not_open');
+    }
+  }
+  if (flights.some(city => city.status === 'open')) assert.match(available, /country map/);
   assert.ok(AIRPORT.spots.desk.activities.every((def: any) => !def.reward && !def.cost));
 });
 

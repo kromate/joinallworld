@@ -209,23 +209,25 @@ test('renting stays a choice: moving to a rented home restarts the weekly rent, 
   conserved(state, 5000);
 });
 
-test('cities connect as data, while a trip to closed Abuja is refused without charging', () => {
-  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
-  const soon: WorldCityId[] = ['abuja', 'port-harcourt'];
+test('cities connect as data, while a trip to closed Kaduna is refused without charging', () => {
+  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
+  const soon: WorldCityId[] = ['kaduna'];
   for (const id of soon) { const city = cityRules(id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
   for (const link of allCityLinks()) { assert.ok(cityRules(link.a) && cityRules(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   const cash = state.cash;
-  const refused = act(state, 'estate.relocate', { to: 'abuja', mode: 'road' });
-  assert.equal(refused.code, 'city_not_open'); assert.match(reasonOf(refused), /Abuja is not open yet/);
+  state.estate.city = 'abuja';
+  const refused = act(state, 'estate.relocate', { to: 'kaduna', mode: 'rail' });
+  assert.equal(refused.code, 'city_not_open'); assert.match(reasonOf(refused), /Kaduna is not open yet/);
+  state.estate.city = 'lagos';
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'air' }).code, 'no_route');
   assert.equal(act(state, 'estate.relocate', { to: 'lagos', mode: 'road' }).code, 'invalid_city');
   assert.equal(state.cash, cash); assert.equal(state.activeAction, null);
   const links = viewLife(state, at()).estate.links;
-  assert.equal(links.length, 9)
+  assert.equal(links.length, 12)
   assert.deepEqual(links.filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.open, link.blocked]), [['road', true, null], ['rail', true, null]])
-  const openCities = new Set(['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu']);
-  assert.equal(links.filter((link) => openCities.has(link.to)).every((link) => link.open && link.blocked === null), true);
+  const openCities = new Set(['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano']);
+  assert.equal(links.filter((link) => openCities.has(link.to)).every((link) => link.open), true);
   assert.equal(links.filter((link) => !openCities.has(link.to)).every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
 });
 
@@ -264,7 +266,7 @@ test('hostile saves: every field of the slice is rebuilt or dropped', () => {
     upgrade: { to: 'villa', cost: -5, startedAt: 0, doneAt: 1e30 }, living: 'hotel', ground: { week: 1e30, arrears: -4 }, away: { mars: {}, lagos: {}, abuja: { tier: 'villa', plot: { lga: 'x', estate: 0, plot: 0 } }, ibadan: { tier: 'villa', plot: { lga: 'x', estate: 0, plot: 0 } } }, nudged: 1 } }, at());
   const e = hostile.estate;
   assert.deepEqual([e.city, e.lga, e.lgaAt, e.lgaConfirmed, e.plot, e.old, e.tier, e.upgrade, e.living, e.ground, e.nudged], ['lagos', 'lagos-mainland', null, false, null, null, 'starter', null, 'rent', { week: null, arrears: 0 }, false]);
-  assert.deepEqual(Object.keys(e.away), ['ibadan'], 'known legacy homes remain; unregistered and atlas-only labels are not residences'); assert.equal(found(e.away.ibadan, 'a legacy Ibadan residence').plot, null);
+  assert.deepEqual(Object.keys(e.away).sort(), ['abuja', 'ibadan'], 'known legacy homes remain; unregistered and atlas-only labels are not residences'); assert.equal(found(e.away.ibadan, 'a legacy Ibadan residence').plot, null);
   assert.equal(lgaOf('lagos', 'constructor'), null);
   // An upgrade can never be made to last longer than its tier allows.
   const long = createLife({ estate: { lga: 'ikeja', upgrade: { to: 'bq', cost: 60000, startedAt: MONDAY_9AM - 1000, doneAt: MONDAY_9AM + 1e12 } } }, at());

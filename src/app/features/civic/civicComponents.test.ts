@@ -315,3 +315,24 @@ test('registration: each civic Vue panel carries the static metadata the Phone, 
     else assert.equal(panel.placement, 'hud', `${String(panel.id)} is a HUD chip`)
   }
 })
+
+
+test('city-owned civic title and fictional-role explanation reach the rendered office and announcements', async () => {
+  const registry = await load<typeof import('../../../game/cities/registry.ts')>('/src/game/cities/registry.ts')
+  const fixture = await load<typeof import('../../../game/cities/testing/fictionalCity.test-fixture.ts')>('/src/game/cities/testing/fictionalCity.test-fixture.ts')
+  const module = { ...fixture.fictionalCity, rules: { ...fixture.fictionalCity.rules, civicTitle: 'Community Chair' }, loadContent: async () => ({ ...fixture.fictionalContent, civicExplanation: 'A fictional community role, not a real public office.' }) }
+  const registered = registry.registerCityForTest(module)
+  try {
+    await registry.loadCityContent(module.id)
+    const data = governor({ city: module.id })
+    const seat = text(await render('GovernorSeat', { data }))
+    assert.ok(seat.includes('Fictional Community Chair’s office'))
+    assert.ok(seat.includes('Fictional has no Community Chair yet.'))
+    assert.ok(seat.includes('A fictional community role, not a real public office.'))
+    assert.ok(!seat.includes('Governor'))
+    const news = text(await render('GovernorNews', { data, notices: [] }))
+    assert.ok(news.includes('Community Chair’s announcements'))
+    assert.ok(news.includes('There is no Community Chair to post one.'))
+    assert.ok(!news.includes('Governor'))
+  } finally { registered.dispose() }
+})

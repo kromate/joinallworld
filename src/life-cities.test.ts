@@ -15,7 +15,7 @@ const twoCityLife = `{ cash: 500, job: 'tech', career: { city: 'lagos' },
 
 test('lifeCities names every registered city a life refers to and nothing else', () => {
   assert.deepEqual(lifeCities({ estate: { city: 'ibadan', away: { lagos: {}, nowhere: {} } }, career: { city: 'lagos' } }), ['ibadan', 'lagos'])
-  assert.deepEqual(lifeCities({ estate: { city: 'lagos' }, missions: { visited: { list: ['ibadan:market', 'plain', 'abuja:x'] } }, events: { attended: ['ibadan:fair:3'] } }), ['lagos', 'ibadan'])
+  assert.deepEqual(lifeCities({ estate: { city: 'lagos' }, missions: { visited: { list: ['ibadan:market', 'plain', 'kaduna:x'] } }, events: { attended: ['ibadan:fair:3'] } }), ['lagos', 'ibadan'])
   assert.deepEqual(lifeCities({ social: { rel: { x: { npcSnapshot: { city: 'ibadan' } } } } }), ['ibadan'])
   assert.deepEqual(lifeCities(null), [])
   assert.deepEqual(lifeCities('text'), [])

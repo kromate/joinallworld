@@ -32,7 +32,7 @@ import { emit } from '../registry.ts';
 import { finite, isRecord, makeRng } from '../util.ts';
 import { addMoodlet, removeMoodlet, feelingsOf } from '../api.ts';
 import { HEALTH } from '../content/health.ts';
-import { isCityId } from '../cities/registry.ts';
+import { isCityId, cityRules } from '../cities/registry.ts';
 import { ALL_MODES } from '../content/travel.ts';
 import type { SystemDefinition } from '../../types/registry.ts';
 import type { IllnessCause, LifeContext, LifeState, NeedId } from '../../types/life.ts';
@@ -47,9 +47,12 @@ export function weatherAt(now: unknown, cityId: string) {
   if (!isCityId(cityId)) throw new TypeError(`Unknown city weather: ${cityId}`);
   const blockMs = weather.blockMinutes * 60000;
   const block = Math.floor((finite(now) ? now : 0) / blockMs);
-  const raining = makeRng(`weather|${cityId}|${block}`)() < weather.rainChance;
+  const climate = cityRules(cityId)?.climate;
+  const month = climate ? new Date(block * blockMs + 3600000).getUTCMonth() : 0;
+  const raining = makeRng(`weather|${cityId}|${block}`)() < (climate?.rainChanceByMonth[month] ?? weather.rainChance);
   const kind = weather.kinds[raining ? 'rain' : 'clear'];
-  return { ...kind, raining, until: (block + 1) * blockMs };
+  const local = climate ? raining ? { text: 'It is raining. Exposed travel can leave you soaked.' } : { label: climate.harmattan?.months.includes(month + 1) ? climate.harmattan.label : climate.clearLabel } : {};
+  return { ...kind, ...local, raining, until: (block + 1) * blockMs };
 }
 
 const nowOf = (state: LifeState, ctx: LifeContext): number => (finite(ctx?.now) ? ctx.now : state.t);
@@ -100,7 +103,7 @@ function view(state: LifeState, ctx: LifeContext): HealthView {
   else {
     if (low.length) advice.push(`Your ${low.join(' and ')} ${low.length > 1 ? 'are' : 'is'} very low. Keep ${low.length > 1 ? 'them' : 'it'} above ${illness.neglectBelow} or you will slowly fall sick. Home has free food and a free bath.`);
     else if (strain > 0) advice.push('You are recovering from a rough patch. Stay fed and clean and the risk fades.');
-    if (sky.raining) advice.push('It is raining. Take a keke, danfo or cab to stay dry — a soaking has a small chance of making you sick.');
+    if (sky.raining) advice.push(cityRules(state.estate.city)?.climate ? 'It is raining. Choose covered travel to stay dry — a soaking has a small chance of making you sick.' : 'It is raining. Take a keke, danfo or cab to stay dry — a soaking has a small chance of making you sick.');
     if (!advice.length) advice.push('You are in good health. Eat, wash and stay out of the rain to keep it that way.');
   }
   return {

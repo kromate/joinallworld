@@ -1,3 +1,4 @@
+import { civicTitle } from '../cities/terminology.ts';
 import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
 /**
  * OWNER: civic
@@ -248,7 +249,7 @@ export function claimHuntPrize(state: LifeState, payload: Record<string, unknown
 export function fileCandidacy(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = firstUnmet(state, civicEligibility(state, ctx).run);
   if (blocked) return blocked;
-  debit(state, ELECTION.filingFee, 'Governorship filing fee', ctx);
+  debit(state, ELECTION.filingFee, civicTitle(ctx.cityId) === 'Governor' ? 'Governorship filing fee' : `${civicTitle(ctx.cityId)} filing fee`, ctx);
   state.message = `You are on the ballot. The ${naira(ELECTION.filingFee)} filing fee was paid.`;
   emit(state, 'candidacy.declared', { fee: ELECTION.filingFee }, ctx);
   return ok(state, 'declared');

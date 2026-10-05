@@ -75,6 +75,8 @@ const ROAD_LINKS: Readonly<Record<string, readonly string[]>> = {
   'lagos:abuja': ['lagos', 'shagamu', 'ibadan', 'ife', 'akure', 'owo', 'okene', 'lokoja', 'koton-karfe', 'abaji', 'gwagwalada', 'abuja'],
   'lagos:port-harcourt': ['lagos', 'shagamu', 'ijebu-ode', 'ore', 'benin', 'sapele', 'warri', 'ughelli', 'patani', 'mbiama', 'ahoada', 'port-harcourt'],
   'ibadan:abuja': ['ibadan', 'oyo', 'ogbomosho', 'ilorin', 'jebba', 'mokwa', 'bida', 'suleja', 'abuja'],
+  'lagos:kano': ['lagos', 'shagamu', 'ibadan', 'oyo', 'ogbomosho', 'ilorin', 'jebba', 'mokwa', 'kaduna', 'zaria', 'kano'],
+  'abuja:kano': ['abuja', 'suleja', 'kaduna', 'zaria', 'kano'],
   'abuja:port-harcourt': ['abuja', 'keffi', 'lafia', 'makurdi', 'otukpo', 'ninth-mile', 'enugu', 'okigwe', 'umuahia', 'aba', 'port-harcourt'],
 };
 export const linkId = (link: { a: string; b: string; mode: string }): string => `${link.a}:${link.b}:${link.mode}`;
@@ -83,6 +85,7 @@ export const linkId = (link: { a: string; b: string; mode: string }): string => 
  * The line a link between two cities follows: a road through its towns, or a flight between the two cities.
  */
 export function linkPath(link: { a: string; b: string; mode: string }, cityAt: (cityId: string) => { lon: number; lat: number } | null): LinkPath | null {
+  if (link.mode === 'rail') return null; // Rail is drawn only from the lazy authored track geometry.
   const a = cityAt(link.a), b = cityAt(link.b);
   if (!a || !b) return null;
   if (link.mode === 'air') return { id: linkId(link), mode: 'air', towns: null, points: [[a.lon, a.lat], [b.lon, b.lat]] };

@@ -472,7 +472,7 @@ function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   assert.equal(typeof estate.cheapest.total, 'number')
   assert.deepEqual(keys(estate.rules), ['beta', 'cooldownDays', 'housesPerLife'], `${what}: estate.rules`)
   assert.ok(estate.links.length > 0)
-  for (const link of estate.links) assert.deepEqual(keys(link), ['beta', 'blocked', 'fare', 'hub', 'icon', 'km', 'label', 'mode', 'name', 'open', 'seconds', 'to'], `${what}: city link`)
+  for (const link of estate.links) assert.deepEqual(keys(link), ['beta', 'blocked', 'fare', 'hub', 'icon', 'km', 'label', 'mode', 'name', 'open', 'seconds', ...(link.status ? ['status'] : []), 'to'], `${what}: city link`)
   for (const home of estate.away) assert.deepEqual(keys(home), ['city', 'living', 'name', 'tier'], `${what}: a home in another city`)
   for (const row of [...shown.missions.daily, ...shown.missions.weekly]) assert.deepEqual(keys(row), ['cash', 'claimed', 'count', 'done', 'go', 'hint', 'id', 'kind', 'label', 'n', 'open'], `${what}: mission row`)
   for (const set of [shown.missions.dailySet, shown.missions.weeklySet]) assert.deepEqual(keys(set), ['claimed', 'done', 'granted', 'stars', 'total'], `${what}: mission set`)
@@ -603,7 +603,9 @@ test('a guest who is playing is refused exactly what needs a home, until it sett
 
 test('a trip between cities is the timed action kind intercity', () => {
   const state = onboarded()
-  assert.equal(act(state, 'estate.relocate', { to: 'abuja', mode: 'road' }, at()).code, 'city_not_open')
+  state.estate.city = 'abuja'
+  assert.equal(act(state, 'estate.relocate', { to: 'kaduna', mode: 'rail' }, at()).code, 'city_not_open')
+  state.estate.city = 'lagos'
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at()).code, 'departed')
   const active = state.activeAction
   assert.ok(active && active.kind === 'intercity')
@@ -971,7 +973,7 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
   assert.deepEqual(keys(RENTS), houses)
   assert.deepEqual(keys(START_HOMES), idsOf<StartHomeId>({ mushin: true, yaba: true, lekki: true }))
   assert.deepEqual(keys(TRAVEL_MODES), idsOf<BaseTravelModeId>({ trek: true, keke: true, danfo: true, okada: true, cab: true }))
-  assert.deepEqual(keys(ALL_MODES), idsOf<TravelModeId>({ trek: true, keke: true, danfo: true, okada: true, cab: true, car: true }))
+  assert.deepEqual(keys(ALL_MODES), idsOf<TravelModeId>({ trek: true, keke: true, danfo: true, okada: true, cab: true, car: true, boat: true }))
   assert.deepEqual(keys(JOBS), idsOf<JobId>({
     'community-helper': true, tech: true, banking: true, music: true, trading: true, nursing: true, hair: true, chef: true,
     dj: true, fitness: true, creator: true, teaching: true, event: true, football: true, retail: true,
@@ -998,7 +1000,7 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
   assert.deepEqual(keys(DEPOSIT_TERMS), idsOf<DepositTermId>({ d1: true, d3: true, d7: true }))
   assert.deepEqual(keys(FAMILY), idsOf<FamilyId>({ mummy: true, daddy: true, tobi: true, grandma: true }))
   assert.deepEqual(sorted(TIERS.map((tier) => tier.id)), idsOf<TierId>({ stranger: true, acquaintance: true, friend: true, paddy: true }))
-  assert.deepEqual(keys(CITY_RULES), idsOf<WorldCityId>({ lagos: true, ibadan: true, abuja: true, 'port-harcourt': true, kano: true }))
+  assert.deepEqual(keys(CITY_RULES), idsOf<WorldCityId>({ lagos: true, ibadan: true, abuja: true, 'port-harcourt': true, kaduna: true }))
   assert.deepEqual(LAGOS_LGAS.map((lga) => lga.id), [...LGA_IDS])
   for (const city of Object.values(CITY_RULES).map(required)) {
     for (const unit of city.units) assert.equal(lgaOf(city.id, unit.id), unit, `${city.id}: ${unit.id}`)
@@ -1144,8 +1146,8 @@ test('no content entry carries a field that content.ts does not declare', () => 
   for (const goal of STARTER_GOALS) assert.deepEqual(Object.keys(goal.done).filter((key) => !['events', 'tags', 'venue', 'hasJob', 'activity', 'fresh'].includes(key)), [], goal.id)
   declared<LgaDefinition>()(['id', 'name', 'zone', 'land', 'districts', 'beta'])(LAGOS_LGAS, 'local government')
   declared<HouseTierDefinition>()(['id', 'rank', 'label', 'icon', 'grid', 'cost', 'buildSeconds', 'groundRent', 'blurb', 'beta'])(Object.values(HOUSE_TIERS), 'house tier')
-  declared<CityRules>()(['id', 'name', 'status', 'unit', 'units', 'hub', 'seaPlots', 'legacyLgaChoice', 'legacyVenueAliases'])(Object.values(CITY_RULES).map(required), 'city')
-  declared<CityLink>()(['a', 'b', 'mode', 'label', 'icon', 'fare', 'seconds', 'km', 'beta'])(CITY_LINKS, 'city link')
+  declared<CityRules>()(['id', 'name', 'status', 'unit', 'units', 'hub', 'seaPlots', 'legacyLgaChoice', 'legacyVenueAliases', 'civicTitle', 'climate'])(Object.values(CITY_RULES).map(required), 'city')
+  declared<CityLink>()(['a', 'b', 'mode', 'label', 'icon', 'fare', 'seconds', 'km', 'beta', 'status'])(CITY_LINKS, 'city link')
   declared<CalendarEvent>()(['id', 'title', 'blurb', 'venue', 'icon', 'when', 'spray', 'table'])(EVENTS_CALENDAR, 'calendar event')
   for (const option of Object.values(HOUSE_STYLE).flat()) assert.deepEqual(Object.keys(option).filter((key) => !['id', 'label', 'hex', 'price'].includes(key)), [], option.id)
   // Missions are a union keyed by `on`; each member's own fields are checked by name.

@@ -62,7 +62,7 @@ export type StartHomeId = 'mushin' | 'yaba' | 'lekki'
 export type BaseTravelModeId = 'trek' | 'keke' | 'danfo' | 'okada' | 'cab'
 
 /** Every mode the travel action accepts: the base five plus the own-car mode (ALL_MODES). */
-export type TravelModeId = BaseTravelModeId | 'car'
+export type TravelModeId = BaseTravelModeId | 'car' | 'boat'
 
 /** Job ids (content/jobs.js JOBS): the starter job plus fourteen career tracks. */
 export type JobId =

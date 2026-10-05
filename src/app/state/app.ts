@@ -53,7 +53,7 @@ const HELD_KEY = 'joinallworld-cities'
 function createApp(game: Game, native: readonly VuePanel[]) {
   /** Where the other players in this venue room stand, as the room reports it: { [publicId]: { x, z } }. */
   let positions: Record<string, { x: number; z: number }> = {}
-  const panels: Panel[] = buildRegistry(native)
+  const panels: Panel[] = buildRegistry(native, () => game.state.value)
   /** The 3D hosts, once their code has arrived. */
   const scene = {
     venue: shallowRef<SceneWorld | null>(null),

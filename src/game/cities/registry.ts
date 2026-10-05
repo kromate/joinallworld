@@ -4,6 +4,9 @@ import { abeokutaCity } from './abeokuta/index.ts'
 import { otaCity } from './ota/index.ts'
 import { ijebuOdeCity } from './ijebu-ode/index.ts'
 import { sagamuCity } from './sagamu/index.ts'
+import { portHarcourtCity } from './port-harcourt/index.ts'
+import { abujaCity } from './abuja/index.ts'
+import { kanoCity } from './kano/index.ts'
 import { CITY_LINKS } from './links.ts'
 import type { CityId } from './ids.ts'
 import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRules, CityState } from '../../types/content.ts'
@@ -40,6 +43,7 @@ function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker): Kno
   const hubs: readonly CityHub[] = Object.freeze([
     { id: 'road', name: rules.hub.road, mode: 'road' },
     { id: 'air', name: rules.hub.air, mode: 'air' },
+    ...(rules.hub.rail ? [{ id: 'rail', name: rules.hub.rail, mode: 'rail' as const }] : []),
   ])
   const catalogued: CataloguedCityRules = Object.freeze({
     ...rules,
@@ -65,9 +69,9 @@ function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker): Kno
   })
 }
 
-const publicRules = ({ id, name, status, unit, units, hub }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub })
+const publicRules = ({ id, name, status, unit, units, hub, civicTitle, climate }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub, ...(civicTitle ? { civicTitle } : {}), ...(climate ? { climate } : {}) })
 
-const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity })
+const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity, 'port-harcourt': portHarcourtCity, abuja: abujaCity, kano: kanoCity })
 
 type CoreKnownCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
 type KnownCityCatalogue = Readonly<Record<CoreKnownCityId, KnownCity> & Record<string, KnownCity | undefined>>
@@ -83,20 +87,20 @@ export const KNOWN_CITIES: KnownCityCatalogue = Object.freeze({
     serverKnown: true,
     compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'ibadan', note: 'Open and playable.' }),
   }),
-  abuja: closed(
-    { id: 'abuja', name: 'Abuja', status: 'soon', unit: 'district', units: [], hub: { road: 'Utako Motor Park', air: 'the airport on the Airport Road' } },
-    { id: 'fct', name: 'Federal Capital Territory', unit: 'area council' },
-    { lon: 7.49, lat: 9.06, teaser: 'The capital under Aso Rock: wide roads, big offices and bigger politics.', preview: ['The Three Arms Zone under Aso Rock', 'Wuse market and Jabi Lake', 'Garki, Maitama and the long expressways'] },
-  ),
-  'port-harcourt': closed(
-    { id: 'port-harcourt', name: 'Port Harcourt', status: 'soon', unit: 'local government', units: [], hub: { road: 'Waterlines Motor Park', air: 'the airport at Omagwa' } },
-    { id: 'rivers', name: 'Rivers State', unit: 'local government' },
-    { lon: 7.03, lat: 4.82, teaser: 'The Garden City: oil money, bole and fish, and creeks that run to the sea.', preview: ['Old GRA and the Garden City roundabouts', 'Mile One market and the waterfront', 'The creeks down to Bonny'] },
-  ),
-  kano: closed(
-    { id: 'kano', name: 'Kano', status: 'soon', unit: 'local government', units: [], hub: { road: 'Kano Motor Park', air: 'Mallam Aminu Kano International Airport' } },
-    { id: 'kano', name: 'Kano State', unit: 'local government' },
-    { lon: 8.52, lat: 12.0, teaser: 'The old trading city of the north: dye pits, the Kurmi market and the walls of the ancient city.', preview: ['Kurmi market in the old city', 'The dye pits of Kofar Mata', 'Gidan Makama and the city walls'] },
+  abuja: Object.freeze({
+    rules: abujaCity.rules,
+    serverKnown: true,
+    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'abuja', note: 'Open and playable.' }),
+  }),
+  'port-harcourt': Object.freeze({
+    rules: portHarcourtCity.rules,
+    serverKnown: true,
+    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'port-harcourt', note: 'Open and playable.' }),
+  }),
+  kaduna: closed(
+    { id: 'kaduna', name: 'Kaduna', status: 'soon', unit: 'local government', units: [], hub: { road: 'a planned motor park', air: 'No air route', rail: 'Rigasa Railway Station' } },
+    { id: 'kaduna', name: 'Kaduna State', unit: 'local government' },
+    { lon: 7.4359863, lat: 10.5182899, teaser: 'A city on the Kaduna River, at the end of the railway from Abuja. It is not open yet.', preview: ['The railway from Idu to Rigasa', 'Homes and local governments', 'Road travel to neighbouring cities'] },
   ),
 })
 
@@ -163,7 +167,7 @@ export const citiesInState = (stateId: unknown): readonly CataloguedCityRules[] 
   : []
 
 const linkKey = (link: Pick<CityLink, 'a' | 'b' | 'mode'>): string => `${[link.a, link.b].sort().join('|')}|${link.mode}`
-const sameLink = (a: CityLink, b: CityLink): boolean => a.a === b.a && a.b === b.b && a.mode === b.mode && a.label === b.label && a.icon === b.icon
+const sameLink = (a: CityLink, b: CityLink): boolean => a.a === b.a && a.b === b.b && a.mode === b.mode && (a.status ?? 'open') === (b.status ?? 'open') && a.label === b.label && a.icon === b.icon
   && a.fare === b.fare && a.seconds === b.seconds && a.km === b.km && a.beta === b.beta
 
 /** Canonical live link catalogue. Authored modules supersede legacy rows; authored conflicts are errors. */

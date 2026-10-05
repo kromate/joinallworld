@@ -9,6 +9,7 @@
 import { reactive } from 'vue'
 import type { FoundLga, CityPackApi } from './cityPack.ts'
 import { loadCityPackApi } from './cityPack.ts'
+import { cityUnit } from '../../../game/cities/terminology.ts'
 
 export interface LgaCardUi { finding: boolean; found: FoundLga | null; note: string; picking: boolean; sending: boolean }
 /** One card state for the page (as before): a choice half made on one screen is still there on the next. */
@@ -20,6 +21,8 @@ export const GEOLOCATION_WHY: Readonly<Record<number, string>> = {
   3: 'Finding you took too long. Pick your local government from the list instead.',
 }
 export const NO_LOCATION = 'This device cannot share a location. Pick your local government from the list instead.'
+const locationWhy = (cityId: string, code: number): string => `${GEOLOCATION_WHY[code] ?? GEOLOCATION_WHY[2]}`.replaceAll('local government', cityUnit(cityId))
+const noLocation = (cityId: string): string => NO_LOCATION.replaceAll('local government', cityUnit(cityId))
 
 export interface FindDeps {
   geolocation: Pick<Geolocation, 'getCurrentPosition'> | undefined
@@ -31,23 +34,23 @@ export interface FindDeps {
 export async function findLga(ui: LgaCardUi, cityId: string, deps: FindDeps = { geolocation: globalThis.navigator?.geolocation }): Promise<void> {
   ui.note = ''
   ui.found = null
-  if (!deps.geolocation) { ui.note = NO_LOCATION; ui.picking = true; return }
+  if (!deps.geolocation) { ui.note = noLocation(cityId); ui.picking = true; return }
   ui.finding = true
   try {
     const packs = await (deps.packs ?? loadCityPackApi)()
-    if (!packs.has(cityId)) { ui.note = NO_LOCATION; ui.picking = true; return }
+    if (!packs.has(cityId)) { ui.note = noLocation(cityId); ui.picking = true; return }
     const pack = await packs.load(cityId)
-    if (!pack) { ui.note = NO_LOCATION; ui.picking = true; return }
+    if (!pack) { ui.note = noLocation(cityId); ui.picking = true; return }
     const geolocation = deps.geolocation
     const found = await new Promise<FoundLga | null>((resolve, reject) => geolocation.getCurrentPosition(
       // The position exists only inside this callback: it is reduced to an id and dropped.
       (position) => resolve(packs.resolve(pack, position.coords.latitude, position.coords.longitude)),
       (error) => reject(error), { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 }))
     if (found) ui.found = found
-    else { ui.note = `You do not seem to be in ${pack.name} right now. Pick the local government you call home.`; ui.picking = true }
+    else { ui.note = `You do not seem to be in ${pack.name} right now. Pick the ${cityUnit(cityId)} you call home.`; ui.picking = true }
   } catch (error) {
     const code = (error as { code?: unknown } | null)?.code
-    ui.note = (typeof code === 'number' ? GEOLOCATION_WHY[code] : undefined) ?? GEOLOCATION_WHY[2] ?? ''
+    ui.note = typeof code === 'number' ? locationWhy(cityId, code) : locationWhy(cityId, 2)
     ui.picking = true
   } finally { ui.finding = false }
 }

@@ -3,6 +3,7 @@ import { test } from 'node:test'
 import type { CityContent, CityMapGeometry, CityMapPack, CityModule, LonLatPolygon } from '../../types/content.ts'
 import { JOBS } from '../content/jobs.ts'
 import { linksFrom, cityModule, loadCityContent, loadCityRoutes, registerCityForTest } from './registry.ts'
+import { BASE_MODE_IDS } from '../content/travel.ts'
 import { project, unproject } from '../../map3d/geo/frame.ts'
 import { KINDS as BUILT_SCENE_KINDS } from '../../scene/venue-scenes.ts'
 
@@ -29,10 +30,29 @@ const activitiesAt = (content: CityContent, venueId: string, spotId?: string): r
 export function assertCityContentContract(module: CityModule, content: CityContent, options: CityContractOptions = {}): void {
   const { profile } = optionsFor(module, options)
   assert.equal(content.cityId, module.id)
+  if (module.rules.civicTitle) assert.ok(content.civicExplanation?.trim(), 'a custom civic title explains its game role')
   assert.deepEqual(Object.keys(content.localUnitDescriptions).sort(), module.rules.units.map(unit => unit.id).sort(), 'every local unit has city-owned prose')
   for (const line of Object.values(content.localUnitDescriptions)) assert.ok(line.trim().length > 0, 'local-unit description is not empty')
   const venueIds = content.venues.map((venue) => venue.id), venues = new Set(venueIds)
   unique(venueIds, 'venue')
+  for (const zone of content.localModeZones ?? []) {
+    assert.notEqual(String(zone.mode), 'trek', 'trek remains unrestricted')
+    assert.ok(zone.venueIds.length + zone.rentedHomeIds.length + zone.ownedHomeUnitIds.length > 0, 'a local mode zone has endpoints')
+    unique(zone.venueIds, 'mode zone venue'); unique(zone.rentedHomeIds, 'mode zone rented home'); unique(zone.ownedHomeUnitIds, 'mode zone owned-home unit')
+    const offered = zone.mode === 'car' || (zone.mode === 'boat' ? Boolean(content.localRoutes?.length) : (content.localModes?.map(mode => mode.id) ?? BASE_MODE_IDS).includes(zone.mode))
+    assert.ok(offered, 'restricted mode is an offered local mode')
+    for (const id of zone.venueIds) assert.ok(id !== 'home' && venues.has(id), `mode zone venue ${id} is public`)
+    for (const id of zone.rentedHomeIds) assert.ok(content.housing.some(home => home.definition.id === id), `mode zone rental ${id} exists`)
+    for (const id of zone.ownedHomeUnitIds) assert.ok(module.rules.units.some(unit => unit.id === id), `mode zone unit ${id} exists`)
+  }
+  unique((content.localRoutes ?? []).map(route => [route.a, route.b].sort().join('|')), 'local route')
+  for (const route of content.localRoutes ?? []) {
+    assert.ok(route.a !== route.b && route.a !== 'home' && route.b !== 'home' && venues.has(route.a) && venues.has(route.b), 'local water route joins two public venues')
+    assert.equal(route.mode, 'boat')
+    assert.equal(route.beta, true)
+    assert.ok(Number.isSafeInteger(route.fare) && route.fare >= 0 && route.fare <= 1_000_000, 'local route fare is bounded whole naira')
+    assert.ok(Number.isInteger(route.seconds) && route.seconds >= 4 && route.seconds <= 60, 'local route duration fits saved travel bounds')
+  }
   for (const [oldId, target] of Object.entries(module.rules.legacyVenueAliases ?? {})) {
     assert.ok(oldId.length > 0 && venues.has(target), `legacy venue ${oldId} resolves inside ${module.id}`)
   }
@@ -172,8 +192,16 @@ export async function assertCityMapContract(module: CityModule, map: CityMapPack
     unique(overview.localUnits.map(unit => unit.id), 'state local unit')
     for (const unit of module.rules.units) assert.ok(overview.localUnits.some(item => item.id === unit.id), `state overview includes ${unit.id}`)
     assert.ok(overview.outline.length > 0 && overview.localUnits.every(unit => unit.polygons.length > 0), 'overview includes real polygons')
+    const overviewContent = await module.loadContent()
+    for (const landmark of overview.landmarks ?? []) {
+      const departure = landmark.departure
+      if (!departure) continue
+      assert.equal(departure.cityId, module.id, 'an overview departure belongs to its city module')
+      assert.ok(departure.label.trim(), 'a departure has a readable label')
+      assert.ok(departure.venueId !== 'home' && overviewContent.venues.some(venue => venue.id === departure.venueId), 'a departure points to an authored public venue')
+    }
   }
-  const railLinks = module.rules.links.filter(link => link.mode === 'rail')
+  const railLinks = module.rules.links.filter(link => link.mode === 'rail' && link.status !== 'coming')
   if (railLinks.length) {
     // A rail line is drawn once, by the module of either end; the other end lists the same link without a second copy of the geometry.
     const routes = [...await (module.loadRoutes?.() ?? []), ...(await Promise.all(railLinks.map(link => loadCityRoutes(link.a === module.id ? link.b : link.a)))).flat()]
@@ -185,6 +213,13 @@ export async function assertCityMapContract(module: CityModule, map: CityMapPack
     }
   }
   const [scene, geometry] = await Promise.all([map.loadScene(), map.loadGeometry()])
+  const content = await module.loadContent()
+  for (const route of content.localRoutes ?? []) {
+    const path = scene.localRoutes?.find(path => path.mode === route.mode && ((path.a === route.a && path.b === route.b) || (path.a === route.b && path.b === route.a)))
+    assert.ok(path && path.points.length >= 2, 'local water route has lazy map geometry')
+    assert.ok(path.points.every(point => Number.isFinite(point.x) && Number.isFinite(point.y) && Number.isFinite(point.z)), 'local route vertices are finite')
+    assert.ok(path.points.some(point => point.x !== path.points[0]!.x || point.z !== path.points[0]!.z), 'local water route has positive length')
+  }
   assert.equal(scene.id, module.id); assert.deepEqual(scene.lgas.map((unit) => unit.id).sort(), module.rules.units.map((unit) => unit.id).sort())
   assert.deepEqual(Object.keys(geometry.localUnits).sort(), module.rules.units.map((unit) => unit.id).sort()); assert.ok(geometry.gridDegrees > 0)
   assert.ok(geometry.source.length > 0 && geometry.licence.length > 0, 'geometry states its source and licence')
@@ -195,10 +230,23 @@ export async function assertCityMapContract(module: CityModule, map: CityMapPack
   assert.ok(worst < 1e-9, `shared-frame round trip error ${worst}`); assertSharedBorders(geometry); assertTiling(geometry)
 }
 
-const linkShape = (link: { to: string; mode: string; label: string; icon: string; fare: number; seconds: number; km: number; beta?: boolean }) => ({ to: link.to, mode: link.mode, label: link.label, icon: link.icon, fare: link.fare, seconds: link.seconds, km: link.km, beta: link.beta })
+const linkShape = (link: { to: string; mode: string; label: string; icon: string; fare: number; seconds: number; km: number; beta?: boolean; status?: 'open' | 'coming' }) => ({ to: link.to, mode: link.mode, label: link.label, icon: link.icon, fare: link.fare, seconds: link.seconds, km: link.km, beta: link.beta, status: link.status ?? 'open' })
 export function assertCityRulesContract(module: CityModule, options: CityContractOptions = {}): void {
   const { profile } = optionsFor(module, options)
   assert.equal(module.id, module.rules.id); assert.equal(module.rules.status, 'open'); assert.ok(module.rules.timezone.length > 0); assert.ok(module.rules.units.length > 0)
+  if (module.rules.civicTitle !== undefined) assert.ok(module.rules.civicTitle.trim().length > 0 && module.rules.civicTitle.length <= 64, 'civic title is bounded nonempty public text')
+  const climate = module.rules.climate
+  if (climate) {
+    assert.equal(climate.beta, true)
+    assert.equal(climate.rainChanceByMonth.length, 12, 'one rain chance for every month')
+    assert.ok(climate.rainChanceByMonth.every(chance => Number.isFinite(chance) && chance >= 0 && chance <= 1), 'rain chances are probabilities')
+    assert.ok(climate.clearLabel.trim(), 'clear weather has a label')
+    if (climate.harmattan) {
+      unique(climate.harmattan.months.map(String), 'harmattan month')
+      assert.ok(climate.harmattan.label.trim() && climate.harmattan.months.length > 0)
+      assert.ok(climate.harmattan.months.every(month => Number.isInteger(month) && month >= 1 && month <= 12), 'harmattan months use 1–12')
+    }
+  }
   for (const unit of module.rules.units) assert.equal(Object.hasOwn(unit, 'line'), false, 'local-unit prose belongs in lazy content')
   unique(module.rules.units.map((unit) => unit.id), 'local unit'); unique(module.rules.districts.map((district) => district.id), 'district'); unique(module.rules.hubs.map((hub) => hub.id), 'hub')
   if (profile === 'opened') {
@@ -207,10 +255,11 @@ export function assertCityRulesContract(module: CityModule, options: CityContrac
   }
   const units = new Set(module.rules.units.map((unit) => unit.id)); for (const district of module.rules.districts) assert.ok(units.has(district.localUnitId), `${district.id} belongs to a local unit`)
   for (const link of module.rules.links) {
+    assert.ok(link.status === undefined || link.status === 'open' || link.status === 'coming', 'known route availability')
     assert.ok(link.a === module.id || link.b === module.id, 'each link touches its city'); if (profile === 'test-fixture') continue
     const fromA = linksFrom(link.a).find((candidate) => candidate.to === link.b && candidate.mode === link.mode), fromB = linksFrom(link.b).find((candidate) => candidate.to === link.a && candidate.mode === link.mode)
     assert.ok(fromA && fromB, `${link.a} and ${link.b} expose a round-trip registry link`)
-    assert.deepEqual(linkShape(fromA), { ...linkShape(fromB), to: link.b }); assert.deepEqual(linkShape(fromA), { to: link.b, mode: link.mode, label: link.label, icon: link.icon, fare: link.fare, seconds: link.seconds, km: link.km, beta: link.beta }, 'module link matches the registry')
+    assert.deepEqual(linkShape(fromA), { ...linkShape(fromB), to: link.b }); assert.deepEqual(linkShape(fromA), { to: link.b, mode: link.mode, label: link.label, icon: link.icon, fare: link.fare, seconds: link.seconds, km: link.km, beta: link.beta, status: link.status ?? 'open' }, 'module link matches the registry')
   }
 }
 

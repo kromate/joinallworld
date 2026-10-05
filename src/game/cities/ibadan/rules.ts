@@ -1,3 +1,5 @@
+import { NIGERIA } from '../country.ts'
+import { CAREER_IDS } from '../../content/career-ids.ts'
 import type { CityModuleRules, LgaDefinition } from '../../../types/content.ts'
 import { LAGOS_IBADAN_RAIL } from '../links.ts'
 import { OGUN_LINKS } from '../ogun/links.ts'
@@ -34,10 +36,6 @@ export const IBADAN_LGAS: readonly (Omit<LgaDefinition, 'id' | 'districts'> & {
 /** Pinned shared-frame projection of the Ibadan anchor, 3.93 E and 7.38 N. */
 export const IBADAN_MAP_ORIGIN = Object.freeze({ x: -4470, z: 1801 })
 
-const CAREER_IDS = Object.freeze([
-  'community-helper', 'tech', 'banking', 'music', 'trading', 'nursing', 'hair', 'chef', 'dj',
-  'fitness', 'creator', 'teaching', 'event', 'football', 'retail',
-])
 
 export const IBADAN_RULES = Object.freeze({
   id: 'ibadan',
@@ -57,7 +55,7 @@ export const IBADAN_RULES = Object.freeze({
     quilox: 'agodi-gardens', rooftop: 'agodi-gardens', palms: 'dugbe-market', police: 'mapo-hall',
   },
   state: { id: 'oyo', name: 'Oyo State', unit: 'local government' },
-  country: { id: 'ng', name: 'Nigeria' },
+  country: NIGERIA,
   timezone: 'Africa/Lagos',
   defaultName: 'New arrival',
   rentedHomeIds: ['ibadan-mokola-room', 'ibadan-bodija-flat', 'ibadan-dugbe-flat', 'ibadan-ring-road-flat', 'ibadan-akobo-house'],

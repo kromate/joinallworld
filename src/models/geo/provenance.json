@@ -59,6 +59,19 @@
       "originalSource": "GRID3",
       "retrieved": "2026-10-05"
     },
+    "rivers-osm-water-and-mangroves": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "sourceDate": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "license": "Open Database License 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "derivedGeoJSON": "scripts/geo/sources/rivers-water.geojson",
+      "derivedSha256": "176197c043a0975eb5f7d1bfe72cc9e1eca3d2a297f06476eeed0f9681ac7b36",
+      "objectIds": "All 540 natural=water area object IDs and 750 wetland=mangrove area object IDs are embedded in the derived GeoJSON metadata.",
+      "processing": "In an offline pyosmium area pass, natural=water and waterway=riverbank/dock polygons and wetland=mangrove polygons were selected within bbox 6.65..7.60 E, 4.35..5.35 N. Water polygons were unioned, clipped to pinned Rivers ADM1 and topology-preserving simplified at 0.00005 degrees. The seven opened ADM2 polygons were intersected and differenced against that same water mask at 0.0000001-degree coordinate precision to derive paired water/land surfaces. Mangroves were unioned, clipped to the opened area and simplified at 0.00005 degrees. A four-neighbour A* search on a 0.0003-degree water grid within 7.015..7.105 E, 4.70..4.77 N found the 21-point derived jetty path; line-of-sight reduction accepted only segments inside the same water component with a 0.0000001-degree boarding tolerance. It is not a surveyed channel or official ferry schedule. State-overview water and mangrove display topology are simplified further at generation time; the city water navigation mask remains at 0.000001-degree grid."
+    },
     "openstreetmap-ibadan-landmarks": {
       "url": "https://www.openstreetmap.org/copyright",
       "license": "Open Database License 1.0",
@@ -150,6 +163,100 @@
       "publisher": "Ogun State Government",
       "use": "Current display names for the 20 local governments, including Sagamu, Yewa North and Yewa South",
       "retrieved": "2026-10-05"
+    },
+    "fct-surface": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "license": "ODbL 1.0; administrative source CC BY 4.0",
+      "date": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "attribution": "© OpenStreetMap contributors; geoBoundaries gbOpen, GRID3 2022, William & Mary geoLab",
+      "derivedSource": "scripts/geo/sources/fct-surface.geojson",
+      "derivedSha256": "471e9789485dd7370da22d2f239cedb8bbadc3c43085caccb48b20a4842bd8f8",
+      "derivedBytes": 331199,
+      "refreshTool": "scripts/geo/refresh-fct-surface.py",
+      "dependencies": {
+        "optionalRefresh": "pyosmium 4.3.1; Shapely 2.1.2",
+        "normalGenerator": "Node.js only"
+      },
+      "administrativeSources": [
+        "nigeria-states-adm1",
+        "nigeria-lgas-adm2"
+      ],
+      "water": "Mapped polygons clipped to each of the six councils, retaining the original reservoir islands. Original ADM2 union defines the independent playArea.",
+      "transport": "Mapped airport/northern/southern expressways and city avenues; 0.00008-degree source-vertex simplification; light-rail tracks; local Idu northbound rail context to 9.6 N. The full Idu–Rigasa route is separately pinned under fct-kaduna-rail.",
+      "generator": "npm run geo:boundaries -- --fct [--check]",
+      "coordinateFrame": "src/geo/frame.ts, nigeria-equirectangular-v1, originAt(7.49,9.06) = {-560,-67}"
+    },
+    "fct-kaduna-rail": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "license": "ODbL 1.0",
+      "date": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "attribution": "© OpenStreetMap contributors",
+      "derivedSource": "scripts/geo/sources/fct-kaduna-rail.geojson",
+      "derivedSha256": "2cfbf6e46526d32d5b3ef7aaf00900444393ecac1ca4f37aed27588086014e9c",
+      "derivedBytes": 20521,
+      "refreshTool": "scripts/geo/refresh-fct-rail.py",
+      "processing": "Native rail-only corridor extraction; gauge=1435; exact source-node graph connects Idu to Rigasa. No simplification, no inferred crossings or invented station connectors.",
+      "stationReferences": [
+        "https://www.openstreetmap.org/node/10660810222",
+        "https://www.openstreetmap.org/node/3677156385",
+        "https://www.openstreetmap.org/way/488660318"
+      ],
+      "endpointTrackNodes": [
+        "https://www.openstreetmap.org/node/4597112607",
+        "https://www.openstreetmap.org/node/7449693942"
+      ],
+      "optionalRefreshDependency": "pyosmium 4.3.1; normal Node.js generator has no new dependency"
+    },
+    "kano-surface": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "license": "ODbL 1.0; administrative sources CC BY 4.0",
+      "date": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "attribution": "© OpenStreetMap contributors; geoBoundaries gbOpen, GRID3 2022, William & Mary geoLab",
+      "derivedSource": "scripts/geo/sources/kano-surface.geojson",
+      "derivedSha256": "10ca8a37bc7a9c4b95fc443ad0a8b7c6e971cf5b04aa804a3948f20fccd51fab",
+      "derivedBytes": 648855,
+      "refreshTool": "scripts/geo/refresh-kano-surface.py",
+      "optionalRefreshDependencies": "pyosmium 4.3.1; Shapely 2.1.2",
+      "administrativeSources": [
+        "nigeria-states-adm1",
+        "nigeria-lgas-adm2"
+      ],
+      "processing": "44 original ADM2 polygons partition Kano ADM1 exactly; eight independently define the metropolis footprint. Their dry land excludes mapped water. Administrative and surface shared arcs use 0.000001-degree grid and 0.0001-square-unit threshold to preserve near-border point ownership. Local roads and rail retain source vertices at 0.00006-degree simplification.",
+      "frame": "src/geo/frame.ts; originAt(8.52,12) = {x:571,z:-3336}; nigeria-equirectangular-v1",
+      "reproduction": "npm run geo:boundaries -- --kano --check",
+      "wallLimitation": "No identified ancient city-wall line in the pinned PBF. Compound walls and modern road embankments are not relabelled. Separate licensed alignment required.",
+      "documentation": "docs/MAP-KANO-SOURCES.md"
+    },
+    "kano-historic-wall-illustration": {
+      "url": "https://library.acadlore.com/TSDD/2024/1/1/TSDD_01.01_03.pdf",
+      "retrieved": "2026-10-05",
+      "licence": "CC BY 4.0",
+      "pdfSha256": "c1f353068e077689854de6483863a6b424c87fdc2e645eb9d66d078e1c9b12e0",
+      "figure": "3(a), original image 1502 x 682 pixels",
+      "figureSha256": "f2264629fc8decee973d95b83dc45de142e51539a7c5d05a284c48ec75014866",
+      "attribution": "Adamu et al. (2024), DOI10.56578/tsdd010103. Combined caption credits Yusuf et al. (2023a), DOI10.3390/buildings13081899. Red-overlay upstream authorship not independently established.",
+      "modification": "Trace red outline only; affine georeference from three mapped gate ties; no underlying basemap or photograph redistributed.",
+      "controlsLicence": "OpenStreetMap contributors, ODbL 1.0",
+      "independentCheckResidualMetres": [
+        49.8,
+        97.0
+      ],
+      "otherGateComparisonRangeMetres": [
+        140,
+        803
+      ],
+      "qualification": "Observed residuals are not a guaranteed error bound. Published historical alignment, not a survey of current standing walls. No collision, navigation or road use.",
+      "output": "src/map3d/geo/data/kano-wall.ts",
+      "generator": "scripts/geo/refresh-kano-wall.py --pdf TSDD_01.01_03.pdf --check"
     }
   },
   "attribution": {
@@ -160,6 +267,7 @@
     "Nigeria states and Lagos local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
     "Oyo State and Ibadan local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 33 Oyo local governments are retained in the generated topology; the Ibadan play area selects 11. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
     "Ogun State and local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 20 Ogun local governments are retained; 11 form the Abeokuta, Ota, Ijebu-Ode and Sagamu play footprints and nine remain state context. The Lagos-facing state edge is copied from the accepted Lagos topology selected by the exact shared ADM1 source chain. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
+    "Rivers State and local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 23 source-named Rivers local governments are retained, including Oyigbo; seven open Port Harcourt and 16 remain state context. The raw ADM2 union equals pinned Rivers ADM1 and has zero overlap with pinned Abia ADM1. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
     "Ibadan landmarks and Lagos-Ibadan railway": "© OpenStreetMap contributors. Landmark points and railway relation 10699301 are used under the Open Database License 1.0. The railway is simplified while retaining source vertices; its recorded 23.4 m source gap is disclosed in code. https://www.openstreetmap.org/copyright",
     "Ogun landmarks": "© OpenStreetMap contributors. Selected mapped points and feature centroids for Abeokuta, Ota, Ijebu-Ode, Sagamu and the Ogun state overview are used under the Open Database License 1.0. OOU Ago-Iwoye and Papalanto remain state context outside the opened city footprints. https://www.openstreetmap.org/copyright"
   },

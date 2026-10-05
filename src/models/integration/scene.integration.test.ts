@@ -128,3 +128,21 @@ test('a model trip vehicle stays inside the map\'s budget: at most 1,500 triangl
   }
   assert.equal(buildTravelVehicle('trek'), null, 'a mode without a vehicle has none');
 });
+
+
+test('boat keeps a real vehicle and passenger when the optional road model library is enabled', () => {
+  const kit = createKit();
+  const actor = createActor(kit, { travelVehicle: buildTravelVehicle as unknown as TravelVehicleBuilder });
+  actor.setPlayer({ seed: 'boat-passenger' });
+  actor.setMode('boat');
+  const boat = actor.group.getObjectByName('legacy-vehicle:boat');
+  assert.ok(boat && boat.children.length > 0);
+  assert.ok(actor.group.getObjectByName('actor-passenger'));
+  actor.setMode('danfo');
+  assert.equal(actor.group.getObjectByName('legacy-vehicle:boat'), undefined);
+  assert.ok(actor.group.getObjectByName('vehicle:danfo'));
+  actor.setMode('boat');
+  assert.ok(actor.group.getObjectByName('legacy-vehicle:boat'));
+  actor.dispose();
+  kit.dispose();
+});

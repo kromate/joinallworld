@@ -239,7 +239,7 @@ test('the home step: state, city, the starter house, find my area, and the local
     const html = await render('OnboardingApp')
     const words = text(html)
     assert.ok(words.includes('Step 3 of 4 · Home') && words.includes('Where do you live?'))
-    assert.ok(words.includes('Nigeria') && words.includes('Lagos State') && words.includes('More places are opening: Abuja Port Harcourt Kano'))
+    assert.ok(words.includes('Nigeria') && words.includes('Lagos State') && words.includes('More places are opening: Kaduna'))
     assert.ok(words.includes('Your free starter house') && words.includes('No rent'))
     const estate = app.game.view.value.estate
     if (estate.lgas.length) {

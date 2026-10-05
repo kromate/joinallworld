@@ -8,6 +8,7 @@
 // the SAME request, so the filing fee is taken once. The last refused vote stays beside the ballot
 // (a toast is gone in seconds). The weekly cycle and all eligibility rules are original beta design.
 import { computed, ref, watch } from 'vue'
+import { civicTitle } from '../../../game/cities/terminology.ts'
 import { useApp } from '../../state/app.ts'
 import { isDeparting } from '../../../life.ts'
 import type { GovResponse, PulseResponse } from '../../../types/civic.ts'
@@ -36,6 +37,7 @@ const civic = useCivic()
 const offline = useOffline()
 const view = game.view
 const state = game.state
+const role = computed(() => civicTitle(view.value.cityId))
 const cityId = computed(() => view.value.cityId)
 const { item, reload } = useLoaded<GovResponse>({ key: () => govKey(cityId.value), path: () => govPath(cityId.value), maxAge: 20000 })
 // The city's news is on this screen: it is the Governor's "Updates" and clears the badge on the Phone.
@@ -142,13 +144,13 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
             </li>
           </ul>
           <div class="civic-form"><label>Your slogan ({{ ELECTION.sloganMin }}–{{ ELECTION.sloganMax }} characters, no links)<input ref="runField" v-model="draft.slogan" :maxlength="ELECTION.sloganMax" autocomplete="off"></label></div>
-          <CivicAction :primary="data.phase === 'nominations'" :working="civic.busy('run')" :reason="runWhy(offline('run'), you)" @click="run">Run for Governor · {{ money(data.rules.filingFee) }}</CivicAction>
+          <CivicAction :primary="data.phase === 'nominations'" :working="civic.busy('run')" :reason="runWhy(offline('run'), you)" @click="run">Run for {{ role }} · {{ money(data.rules.filingFee) }}</CivicAction>
           <p class="civic-note">The {{ money(data.rules.filingFee) }} filing fee is not refunded.</p>
         </template>
       </section>
 
       <template v-if="you?.isGovernor">
-        <SectionTitle>Governor’s desk</SectionTitle>
+        <SectionTitle>{{ role }}’s desk</SectionTitle>
         <div class="civic-form is-card"><label>Announcement to the city (up to {{ ELECTION.announcement.max }} characters, no links)<textarea ref="textField" v-model="draft.announcement" :maxlength="ELECTION.announcement.max" rows="3" /></label></div>
         <CivicAction primary :working="civic.busy('announce')" :reason="announceWhy(offline('post'), you)" @click="announce">Post announcement</CivicAction>
         <p class="civic-note">Up to {{ data.rules.announcementsPerDay }} a day, at least an hour apart. Everyone sees it in Updates.</p>

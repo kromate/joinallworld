@@ -92,6 +92,10 @@ export interface PackLga {
 }
 /** What a city module exports, and what the maps are drawn from. `decorate` receives a geometry batch (src/scene/build) and helpers. */
 export interface CityPack {
+  /** Historical context only; these lines are never roads, collision walls or navigation links. */
+  heritageLines?: readonly { id: string; name: string; kind: 'historic-wall-alignment'; points: readonly Point2[] }[]
+  water?: readonly { id: string; points: readonly Point2[]; holes?: readonly (readonly Point2[])[] }[]
+  localRoutes?: readonly { a: string; b: string; mode: 'boat'; points: readonly Point3[] }[]
   /** Ground continues beyond this inland footprint; uncovered space is not ocean. */
   inland?: boolean
   id: string

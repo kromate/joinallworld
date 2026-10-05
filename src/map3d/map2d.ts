@@ -28,10 +28,12 @@ import { openingInfo } from '../game/clock.ts';
 import { isDeparting } from '../game/registry.ts';
 import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, unpackStyle } from '../game/content/world.ts';
 import { iconFor } from '../ui/icon-map.ts';
-import { buildNetwork, pointAt } from './roads.ts';
+import { buildNetwork, localTripRoute, pointAt } from './roads.ts';
 import { flatModel, flatSvg } from './flat.ts';
 import { estateLayout, plotAt } from './estates.ts';
 import { lgaAt } from './lga.ts';
+import { cityUnit } from '../game/cities/terminology.ts';
+import { civicTitle } from '../game/cities/terminology.ts';
 import { plateFit, plateWidth, spanOf } from './labels.ts';
 import type { CityPack, PackLga } from './types.ts';
 import type { Route } from './roads.ts';
@@ -55,7 +57,7 @@ export interface HouseCard { lga: string; estate: number; plot: number; id: stri
 export interface Map2DState {
   t?: number;
   location?: string;
-  activeAction?: { kind: string; id: string; duration: number; remaining: number } | null;
+  activeAction?: { kind: string; id: string; duration: number; remaining: number; mode?: string } | null;
   estate?: { living?: string; plot?: PlotAddress | null; lga?: string | null };
   travel?: { home?: string };
 }
@@ -146,7 +148,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   let homeAt: Spot | null = null;
 
   const root = document.createElement('div');
-  root.className = 'm3 m3-flat';
+  root.className = `m3 m3-flat${model.inland ? ' is-inland' : ''}`;
   root.innerHTML = `<div class="m3-flat-world">${flatSvg(model)}<svg class="m3-flat-trip" viewBox="${box.x} ${box.z} ${box.width} ${box.height}" preserveAspectRatio="none" aria-hidden="true"><path data-trip fill="none" stroke="#14532d" stroke-linecap="round" stroke-linejoin="round"/><path data-trip-top fill="none" stroke="#ffd166" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <canvas class="m3-flat-houses" aria-hidden="true"></canvas>
     <div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
@@ -220,7 +222,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       const counts = summary?.get(id);
       plate.note.textContent = counts ? `${counts.houses.toLocaleString('en-NG')} home${counts.houses === 1 ? '' : 's'}${counts.online ? ` · ${counts.online.toLocaleString('en-NG')} online` : ''}` : '';
       plate.node.classList.toggle('is-own', id === own);
-      plate.node.setAttribute('aria-label', `${plate.lga.name} local government${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
+      plate.node.setAttribute('aria-label', `${plate.lga.name} ${cityUnit(cityId)}${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
     }
     for (const node of lgaArt.querySelectorAll<SVGElement>('[data-lga]')) { const mine = node.dataset.lga === own; node.setAttribute('fill-opacity', mine ? '.58' : '.34'); node.setAttribute('stroke-width', mine ? '1.1' : '.5'); node.setAttribute('stroke', mine ? '#14532d' : '#46544a'); }
   }
@@ -234,7 +236,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       list.push({ key: `board:${slot.slot}`, kind: slot.ad ? 'board' : 'board-free', x: at.x + 5.2, z: at.z - 3.2, glyph: iconFor('ad', slot.ad?.icon ?? 'megaphone', '📢'), text: slot.ad ? slot.ad.text : '', bg: colour?.bg, ink: colour?.ink, label: slot.ad ? `Billboard on ${slot.road}: ${slot.ad.text}, by ${slot.ad.by.name}` : `Billboard on ${slot.road}: for rent` });
     }
     if (layers.sea && ads?.sea && model.sea) list.push({ key: 'sea-title', kind: 'title', x: (model.sea.x0 + model.sea.x1) / 2, z: model.sea.z0 - 2.5, glyph: iconFor('ad', 'sea', '🌊'), text: `Sea plots · ${ads.sea.plots.length} of ${ads.sea.rows * ads.sea.cols} rented`, label: `Sea plots: ${ads.sea.plots.length} of ${ads.sea.rows * ads.sea.cols} rented` });
-    if (layers.gov && data.gov && stateHouseId) { const seat = spotOf(stateHouseId); if (seat) list.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, z: seat.z, glyph: iconFor('panel', 'governor', '🏛️'), text: data.gov.governor ? `Governor ${data.gov.governor.name}` : 'No Governor yet', label: data.gov.governor ? `The Governor is ${data.gov.governor.name}` : 'There is no Governor yet' }); }
+    if (layers.gov && data.gov && stateHouseId) { const seat = spotOf(stateHouseId), title = civicTitle(cityId); if (seat) list.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, z: seat.z, glyph: iconFor('panel', 'governor', '🏛️'), text: data.gov.governor ? `${title} ${data.gov.governor.name}` : `No ${title} yet`, label: data.gov.governor ? `The ${title} is ${data.gov.governor.name}` : `There is no ${title} yet` }); }
     const next = JSON.stringify(list.map((chip) => [chip.key, chip.text, chip.bg]));
     if (next === chipKey) return;
     chipKey = next;
@@ -424,13 +426,13 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   function placeTrip() {
     const active = isDeparting(state) && (state!.activeAction!.kind === 'travel' || state!.activeAction!.kind === 'commute') ? state!.activeAction! : null;
     const key = (id: string) => (id === 'home' ? (homeAt?.own ? 'home:own' : `home:${state?.travel?.home}`) : id);
-    const next = active ? `${state!.location}>${active.id}` : '';
+    const next = active ? `${state!.location}>${active.id}:${active.mode}` : '';
     if (next !== tripKey) {
       tripKey = next;
       if (active && homeAt?.own) network.attachPlace('home:own', { x: homeAt.x, z: homeAt.z });
-      tripRoute = active ? network.route(key(state!.location!), key(active.id)) : null;
+      tripRoute = active ? localTripRoute(pack, state!.location!, active.id, active.mode) || (active.mode === 'boat' ? null : network.route(key(state!.location!), key(active.id))) : null;
       const from = active ? spotOf(state!.location) : null, to = active ? spotOf(active.id) : null;
-      if (active && !tripRoute && from && to) { const length = Math.hypot(to.x - from.x, to.z - from.z) || 1; tripRoute = { points: [{ x: from.x, y: 0, z: from.z, bridge: null }, { x: to.x, y: 0, z: to.z, bridge: null }], lengths: [0, length], length }; }
+      if (active && active.mode !== 'boat' && !tripRoute && from && to) { const length = Math.hypot(to.x - from.x, to.z - from.z) || 1; tripRoute = { points: [{ x: from.x, y: 0, z: from.z, bridge: null }, { x: to.x, y: 0, z: to.z, bridge: null }], lengths: [0, length], length }; }
       const d = tripRoute ? tripRoute.points.map((point, i) => `${i ? 'L' : 'M'}${point.x.toFixed(2)} ${point.z.toFixed(2)}`).join('') : '';
       for (const node of tripPaths) node.setAttribute('d', d);
     }

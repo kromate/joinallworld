@@ -20,7 +20,7 @@ import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
  * RULES
  *   - Five modes (content/travel.ts) plus 'car', which is offered only when a system adds it
  *     through the 'travel.modes' modifier. Trek is always offered, so nobody is ever stranded.
- *   - Every mode goes everywhere, Home included.
+ *   - Road modes go everywhere, Home included. Boat requires a declared pair of jetties.
  *   - A closed venue cannot be travelled to. The refusal names the opening time and the wait,
  *     and the same text is what the map card and the Ride app show (view.destinations[].status).
  *   - Fare and trip time depend on the band of the route: a short hop, across town, or across
@@ -106,6 +106,17 @@ const isVenue = (id: unknown, cityId: string): id is VenueId => typeof id === 's
 const GEOGRAPHIC_BANDS = Object.freeze({ nearKm: 3, farKm: 15, beta: true });
 const localModes = (city: string) => contentFor(city).localModes ?? Object.values(TRAVEL_MODES);
 const modeFor = (city: string, id: TravelModeId) => localModes(city).find(mode => mode.id === id) ?? ALL_MODES[id];
+const localRoute = (state: LifeState, destination: string) => contentFor(state.estate.city).localRoutes?.find(route => (route.a === state.location && route.b === destination) || (route.b === state.location && route.a === destination));
+function modeAllowed(state: LifeState, destination: string, mode: TravelModeId): boolean {
+  const zones = contentFor(state.estate.city).localModeZones?.filter(zone => zone.mode === mode);
+  if (!zones?.length) return true;
+  return zones.some(zone => {
+    const includes = (id: string) => id !== 'home' ? zone.venueIds.includes(id)
+      : state.estate.living === 'own' ? Boolean(state.estate.lga && zone.ownedHomeUnitIds.includes(state.estate.lga))
+        : zone.rentedHomeIds.includes(state.property.house);
+    return includes(state.location) && includes(destination);
+  });
+}
 const isModeId = (id: unknown): id is TravelModeId => typeof id === 'string' && Object.hasOwn(ALL_MODES, id);
 const isEventId = (id: unknown): id is RoadsideEventId => typeof id === 'string' && Object.hasOwn(EVENTS, id);
 const outcomeRuleOf = (id: string): ActivityOutcomeRule | undefined => (Object.hasOwn(ACTIVITY_OUTCOMES, id) ? outcomeRules[id] : undefined);
@@ -154,9 +165,11 @@ export function quote(state: LifeState, destination: VenueId, modeId: TravelMode
   const from = state.location;
   const band = routeBand(state, from, destination);
   const data = { mode: modeId, destination, from, band };
-  const baseFare = contentFor(state.estate.city).localModes ? mode.fare : fareBands[band]?.[modeId] ?? mode.fare;
+  const waterRoute = modeId === 'boat' ? localRoute(state, destination) : undefined;
+  if (modeId === 'boat' && !waterRoute) throw new Error('Boat travel requires a declared jetty route');
+  const baseFare = waterRoute?.fare ?? (contentFor(state.estate.city).localModes ? mode.fare : fareBands[band]?.[modeId] ?? mode.fare);
   const fare = Math.max(0, Math.round(Number(modify(state, 'travel.fare', baseFare, data, ctx)) || 0));
-  const baseSeconds = Math.round(mode.seconds * BAND_TIME[band]);
+  const baseSeconds = waterRoute?.seconds ?? Math.round(mode.seconds * BAND_TIME[band]);
   const seconds = clamp(Math.round(Number(modify(state, 'travel.duration', baseSeconds, data, ctx)) || baseSeconds), MIN_TRIP_SECONDS, MAX_TRIP_SECONDS);
   const needs = cleanNeeds(modify(state, 'travel.needCost', { ...mode.needs }, data, ctx), { ...mode.needs });
   return { mode: modeId, band, fare, seconds, needs, xp: mode.xp || {} };
@@ -165,8 +178,11 @@ export function quote(state: LifeState, destination: VenueId, modeId: TravelMode
 /** Mode ids offered for a trip. Trek is always first, so there is always a free way to go. */
 export function modesFor(state: LifeState, destination: VenueId, ctx: LifeContext): TravelModeId[] {
   const offered = modify(state, 'travel.modes', localModes(state.estate.city).map(mode => mode.id), { destination, from: state.location }, ctx);
-  const ids = (Array.isArray(offered) ? offered : BASE_MODE_IDS).filter((id, index, list) => typeof id === 'string' && Object.hasOwn(ALL_MODES, id) && list.indexOf(id) === index);
-  return ids.includes('trek') ? ids : ['trek', ...ids];
+  const waterRoute = localRoute(state, destination);
+  const ids = (Array.isArray(offered) ? offered : BASE_MODE_IDS).filter((id, index, list) => typeof id === 'string' && Object.hasOwn(ALL_MODES, id) && list.indexOf(id) === index && (id !== 'boat' || Boolean(waterRoute)));
+  if (waterRoute && !ids.includes('boat')) ids.push('boat');
+  const allowed = ids.filter(id => modeAllowed(state, destination, id));
+  return allowed.includes('trek') ? allowed : ['trek', ...allowed];
 }
 
 // ---- opening hours: one source of truth -------------------------------------------------
@@ -235,6 +251,7 @@ export const isGig = (def: ActivityDefinition | null | undefined): boolean => !!
 const gigsToday = (state: LifeState, now: number): number => (state.travel.gigs.day === lagosTime(now).day ? state.travel.gigs.count : 0);
 
 function pickEvent(state: LifeState, modeId: TravelModeId, ctx: LifeContext): RoadsideEvent | null {
+  if (modeId === 'boat') return null;
   const today = lagosTime(ctx.now).day;
   const fits = Object.values(EVENTS).filter((event) => event.modes.includes(modeId) && !(event.oncePerDay && state.travel.eventDays[event.id] === today));
   if (!fits.length) return null;
@@ -512,8 +529,7 @@ export default {
       sanitize(value, state, ctx) {
         if (!venueFor(ctx.cityId, value.id) || value.id === state.location) return null;
         if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;
-        const valid = isModeId(value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
-        if (!valid) return null;
+        if (!isModeId(value.mode) || value.duration < MIN_TRIP_SECONDS || value.duration > MAX_TRIP_SECONDS || !modeAllowed(state, value.id, value.mode) || (value.mode === 'boat' && !localRoute(state, value.id))) return null;
         return { mode: value.mode, ...(typeof value.fare === 'number' && Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
       },
       complete,

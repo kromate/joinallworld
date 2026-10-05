@@ -1,14 +1,14 @@
 # City modules
 
-A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode and Sagamu.
+A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt, Abuja and Kano.
 
 ## Catalogue states
 
 The registry distinguishes three questions.
 
 - `isKnownCityId` accepts every city named by the atlas and compatibility layer.
-- `isCityId` accepts cities whose stored lives the server may read. This currently includes the six open city modules.
-- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode and Sagamu.
+- `isCityId` accepts cities whose stored lives the server may read. This currently includes the nine open city modules.
+- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt, Abuja and Kano.
 
 Abuja, Port Harcourt and Kano remain closed. Ibadan is an authored module (`src/game/cities/ibadan`). Lives that earlier builds filed under its key are read by that module: their venue ids resolve through `legacyVenueAliases`, and the owner chooses a local government once, for free (`legacyLgaChoice`).
 
@@ -108,7 +108,7 @@ Money receipts, friend relationships, privacy preferences, consent and anti-farm
 
 ## Regenerating the reference geometry
 
-`npm run geo:boundaries` regenerates only the Lagos topology. Use `npm run geo:boundaries -- --oyo`, `--ogun`, or `--nigeria` for the corresponding explicit targets; combine any target with `--check` to compare exact generated text and decoded geometry without writing. The command downloads pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. The default cannot change the Nigeria atlas.
+`npm run geo:boundaries` regenerates only the Lagos topology. Use `npm run geo:boundaries -- --oyo`, `--ogun`, `--rivers`, `--fct`, `--kano`, or `--nigeria` for the corresponding explicit targets; combine any target with `--check` to compare exact generated text and decoded geometry without writing. The command downloads pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. The default cannot change the Nigeria atlas.
 
 The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and two compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.
 

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { stateOverviewHtml } from './state-overview.ts'
+import { stateOverviewHtml, stateOverviewToggleHtml } from './state-overview.ts'
 import type { CityStateOverview } from '../../types/content.ts'
 
 const overview: CityStateOverview = {
@@ -78,4 +78,34 @@ test('four cities a few kilometres apart each get a name of their own, set furth
   assert.equal(sides.length, 4)
   assert.equal(new Set(sides).size, 4, `no two names share a side: ${sides.join(', ')}`)
   assert.ok(sides.some((side) => side?.startsWith('far-')), 'the crowded ones are set further out')
+})
+
+test('a state overview can show explicit water without changing the unit choices', () => {
+  const html = stateOverviewHtml({ ...overview, water: overview.localUnits[1]!.polygons }, [], null)
+  assert.match(html, /fill="#7cb9cd" fill-rule="evenodd" pointer-events="none"/)
+  assert.match(html, /2 local governments · 0 in open cities · 2 coming/)
+})
+
+test('an explicit context qualification overrides a conflicting polygon membership', () => {
+  const html = stateOverviewHtml({ ...overview, landmarks: [{ id: 'context', name: 'Context rock', lon: 3.05, lat: 7.05, context: 'Neighbouring jurisdiction · context only' }] }, [{ id: 'test-city', name: 'Test City', units: [{ id: 'open-unit' }] }], 'test-city')
+  assert.match(html, /Context rock <small>Neighbouring jurisdiction · context only<\/small>/)
+  assert.doesNotMatch(html, /Context rock <small>Test City/)
+})
+
+
+test('the atlas overview button uses the selected city unit while preserving Lagos wording', () => {
+  assert.match(stateOverviewToggleHtml('fct', 'abuja', false), /View all area councils/)
+  assert.doesNotMatch(stateOverviewToggleHtml('fct', 'abuja', false), /local governments/)
+  assert.match(stateOverviewToggleHtml('lagos', 'lagos', false), /View all local governments/)
+  assert.match(stateOverviewToggleHtml('fct', 'abuja', true), /aria-expanded="true">Hide state overview/)
+})
+
+test('a remote landmark can inspect a local outing departure without offering a teleport or starting an activity', () => {
+  const withDeparture: CityStateOverview = { ...overview, landmarks: [{ id: 'lake', name: 'Lake reference', lon: 3.15, lat: 7.05, context: 'Outside the playable city', departure: { cityId: 'kano', venueId: 'railway-station', label: 'See simulated outing departure' } }] }
+  const local = stateOverviewHtml(withDeparture, [], 'kano', { landmarks: true }, { current: 'kano' })
+  assert.match(local, /data-atlas-departure="lake">See simulated outing departure/)
+  assert.doesNotMatch(local, /data-atlas-travel|data-atlas-action|data-activity/)
+  const elsewhere = stateOverviewHtml(withDeparture, [], 'kano', { landmarks: true }, { current: 'lagos' })
+  assert.doesNotMatch(elsewhere, /data-atlas-departure/)
+  assert.match(elsewhere, /Departs from Kano/)
 })

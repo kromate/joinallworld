@@ -17,9 +17,11 @@ import { cityRules, linksFrom } from '../cities/registry.ts';
 import type { VenueDefinition } from '../../types/content.ts';
 
 const list = (names: string[]): string => (names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0] ?? '');
-/** Cities a flight out of Lagos is defined for but that are not open yet. */
-const waiting = [...new Set(linksFrom('lagos').filter((link) => link.mode === 'air' && cityRules(link.to)?.status !== 'open').map((link) => cityRules(link.to)?.name ?? link.to))];
-const flightsLine = waiting.length ? `Flights to ${list(waiting)} begin when those cities open` : 'Flights to other cities leave from the country map';
+/** The desk reflects registered routes and current city status; tickets remain on the country map. */
+const destinations = [...new Set(linksFrom('lagos').filter(link => link.mode === 'air').map(link => link.to))];
+const names = (open: boolean) => destinations.filter(id => (cityRules(id)?.status === 'open') === open).map(id => cityRules(id)?.name ?? id);
+const available = names(true), waiting = names(false);
+const flightsLine = [available.length ? `Fly to ${list(available)} from the country map.` : '', waiting.length ? `Coming soon: ${list(waiting)}.` : ''].filter(Boolean).join(' ') || 'Flights leave from the country map';
 
 export const AIRPORT: VenueDefinition = {
   id: 'airport', label: 'Airport', district: 'Ikeja', icon: '✈️', category: 'fun', beta: true,

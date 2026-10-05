@@ -69,11 +69,15 @@ test('simplification kept the shapes sound: no ring crosses itself among the mos
 });
 
 test('the data modules are small, say where they came from, and decode from their compact form', () => {
-  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000 };
+  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000, 'rivers.ts': 900000, 'fct.ts': 150000, 'kano.ts': 200000 };
+  const wallPath = here('./data/kano-wall.ts');
+  assert.ok(statSync(wallPath).size <= 30000, `kano-wall.ts is ${statSync(wallPath).size} bytes (limit 30000)`);
   for (const [file, limit] of Object.entries(limits)) {
     const path = here(`./data/${file}`), text = readFileSync(path, 'utf8');
     assert.ok(statSync(path).size <= limit, `${file} is ${statSync(path).size} bytes (limit ${limit})`);
-    if (file === 'lagos.ts' || file === 'oyo.ts' || file === 'ogun.ts') {
+    if (file === 'fct.ts' || file === 'kano.ts') {
+      assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/);
+    } else if (file === 'lagos.ts' || file === 'oyo.ts' || file === 'ogun.ts' || file === 'rivers.ts') {
       assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/); assert.match(text, /shared-arc topology/);
     } else {
       assert.match(text, /Natural Earth/); assert.match(text, /public domain/); assert.match(text, /Visvalingam/); assert.match(text, /default view/);
@@ -83,7 +87,7 @@ test('the data modules are small, say where they came from, and decode from thei
   const lagosText = readFileSync(here('./data/lagos.ts'), 'utf8');
   assert.ok(statSync(here('./data/lagos.ts')).size <= 60000);
   assert.match(lagosText, /geoBoundaries/); assert.match(lagosText, /CC BY 4\.0/); assert.match(lagosText, /Visvalingam/);
-  assert.deepEqual(readdirSync(here('./data/')).sort(), Object.keys(limits).sort());
+  assert.deepEqual(readdirSync(here('./data/')).filter((file) => file !== 'kano-wall.ts').sort(), Object.keys(limits).sort());
   const values = [0, 1, -1, 31, 32, -33, 1024, -99999, 1234567];
   assert.deepEqual(decodeInts(encodeInts(values)), values);
   const arc = [[100, 200], [101, 198], [90, 260]] satisfies [number, number][];
@@ -117,14 +121,14 @@ test('pick() finds the right region at known places, at every level, through the
   assert.ok(all.candidates(relLon(8), 9).length < 12);
 });
 
-test('open versus coming soon is the live registry: Lagos, Oyo and Ogun are open', () => {
-  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)), ['lagos', 'oyo', 'ogun']);
+test('open versus coming soon is the live registry: Lagos, Oyo, Ogun and Rivers are open', () => {
+  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)), ['lagos', 'oyo', 'fct', 'rivers', 'ogun', 'kano']);
   assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)), ['ng']);
   const context = { current: 'lagos', held: ['lagos'], routes: null };
   for (const feature of nigeria.features) {
     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });
     assert.equal(Boolean(info.action), feature.id === 'lagos', `${feature.id}: ${info.tag}`);
-    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : feature.id === 'oyo' || feature.id === 'ogun' ? 'Open' : 'Coming soon');
+    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : ['oyo', 'ogun', 'rivers', 'fct', 'kano'].includes(feature.id) ? 'Open' : 'Coming soon');
     assert.ok(info.teaser && info.type.includes(feature.id === 'fct' ? 'Territory' : 'State') && info.capital === feature.cap[0]);
     for (const route of info.routes) assert.equal(route.live, false, 'a route is not live until supplied by the server');
   }
@@ -139,15 +143,16 @@ test('open versus coming soon is the live registry: Lagos, Oyo and Ogun are open
   // Only open destinations are listed with a fare; planned ones are named under "Opening soon" and carry none.
   assert.equal(lagos.routes.length, CITY_LINKS.filter((link) => (link.a === 'lagos' || link.b === 'lagos') && isOpen(link.a === 'lagos' ? link.b : link.a)).length);
   assert.ok(lagos.routes.every((route) => isOpen(route.to)));
-  assert.ok(lagos.soon.length > 0 && lagos.soon.every((name) => !['Ibadan', 'Abeokuta'].includes(name)));
+  assert.deepEqual(lagos.soon, [], 'every city Lagos links to is open');
+  assert.deepEqual(regionInfo({ kind: 'state', id: 'fct' }, { ...context, current: 'abuja', feature: nigeria.byId.get('fct') }).soon, ['Kaduna'], 'a planned destination is named under "Opening soon"');
   const oyo = regionInfo({ kind: 'state', id: 'oyo' }, { ...context, feature: nigeria.byId.get('oyo') });
   assert.equal(regionStatus('state', 'oyo'), 'open'); assert.equal(stateOfCity('ibadan'), 'oyo');
   assert.equal(oyo.preview, null); assert.equal(oyo.teaser, cityEntry('ibadan')!.teaser); assert.deepEqual(oyo.routes.map((route) => route.mode), ['road', 'rail']);
   assert.ok(oyo.routes.every((route) => route.fare > 0 && route.minutes > 0 && route.km > 0 && route.hub && route.why === null));
   assert.equal(regionStatus('state', 'ogun'), 'open');
-  // The two planned cities keep their preview and their routes, with fare and time.
-  for (const [id, city] of [['fct', 'abuja'], ['rivers', 'port-harcourt']] satisfies [string, string][]) {
-    const info = regionInfo({ kind: 'state', id }, { ...context, feature: nigeria.byId.get(id) });
+  // The planned cities keep their preview and their routes, with fare and time.
+  for (const [id, city, current] of [['kaduna', 'kaduna', 'abuja']] satisfies [string, string, string][]) {
+    const info = regionInfo({ kind: 'state', id }, { ...context, current, feature: nigeria.byId.get(id) });
     assert.equal(regionStatus('state', id), 'planned'); assert.equal(stateOfCity(city), id);
     assert.deepEqual(info.preview, cityEntry(city)!.preview); assert.ok(info.routes.length >= 1);
     for (const route of info.routes) { assert.ok(route.fare > 0 && route.minutes > 0 && route.km > 0 && route.hub); assert.match(route.why!, /is not open yet, so nothing leaves for it\. Departures start the day it opens\./); }
@@ -163,7 +168,7 @@ test('open versus coming soon is the live registry: Lagos, Oyo and Ogun are open
   assert.equal(regionInfo({ kind: 'country', id: 'ng' }, { ...context, feature: africa.byId.get('ng') }).action!.kind, 'zoom');
   assert.match(regionInfo({ kind: 'country', id: 'gh' }, { ...context, feature: africa.byId.get('gh') }).planned!, /Lagos and Accra/);
   const rows = nigeria.features.map((feature) => regionInfo({ kind: 'state', id: feature.id }, { ...context, feature })).sort(listOrder);
-  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['lagos', 'ogun', 'oyo', 'fct', 'rivers']);
+  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['fct', 'kano', 'lagos', 'ogun', 'oyo']);
 });
 
 test('levels: thresholds half-way between the fits, hysteresis at each, and a closer level only over its own frame', () => {
@@ -214,6 +219,7 @@ test('routes: the roads pass real towns in Nigeria, every link has a line, and a
   const originalNamedRoads = new Set(['lagos:ibadan', 'ibadan:abuja', 'lagos:port-harcourt']);
   for (const link of CITY_LINKS) {
     const path = linkPath(link, cityEntry);
+    if (link.mode === 'rail') { assert.equal(path, null, 'rail never borrows a road or straight-line fallback'); continue; }
     assert.ok(path, linkId(link));
     const line = measure(path.points);
     assert.ok(line.total > 0, linkId(link));
@@ -245,11 +251,11 @@ test('routes: the roads pass real towns in Nigeria, every link has a line, and a
 });
 
 // ---- the view: a fake renderer and a hand-cranked frame queue, as in ../map3d.test.ts ----
-function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0 } = {}) {
+function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0, failures = new Set<string>() } = {}) {
   const queue: (() => void)[] = [], env = { now: 1000, hidden: false, loads: [] as string[], opened: [] as string[], entered: [] as string[] }, calls = { render: 0 };
   const renderer = { calls, domElement: {} as HTMLCanvasElement, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
   const container = { hidden: false, getBoundingClientRect: () => ({ left: 0, top: 0, right: width, bottom: height, width, height }) };
-  const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
+  const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); if (failures.has(id)) throw new Error(`Unavailable test level: ${id}`); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
   const atlas = createAtlas(container as unknown as HTMLElement, { renderer, reducedMotion, load, raf: (fn) => { queue.push(fn); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden,
     onOpenCity: (id) => env.opened.push(id), onEnterCity: (id) => env.entered.push(id) });
   /** Run frames until nothing asks for another (or the limit). Returns how many ran. */

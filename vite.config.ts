@@ -73,14 +73,17 @@ export default defineConfig({
   //   engine  the rules (src/game, src/life.ts, the campus rules): the shell builds and reads every life through them, so it is
   //           part of the first load, but it changes far less often than the shell.
   build: { sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
-    const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
-    if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
-    if (city) return `city-${city[1]}-${city[2]}`
-    if (/\/src\/game\/cities\/ogun\/(contentBuilder)\.ts$/.test(id)) return 'city-ogun-content'
-    if (/\/src\/game\/cities\/ogun\/(character|scene)\.ts$/.test(id)) return 'city-ogun-map'
-    if (/\/src\/game\/cities\/ogun\/mapOverview\.ts$/.test(id)) return 'city-ogun-map'
-    const geometry = id.match(/\/src\/game\/cities\/([^/]+)\/(landmarks|rail|roads|geometry)\.ts$/)
-    if (geometry) return `city-${geometry[1]}-${geometry[2]}`
+    // A city's folder: its small rules (index, rules, links) are read by the registry at startup and stay with the engine; everything else is fetched with
+    // that city. Lagos is the default city: the engine reads its content synchronously, so only its map is a chunk of its own.
+    const cityFile = id.match(/\/src\/game\/cities\/([^/]+)\/([^/.]+)\.ts$/)
+    if (cityFile) {
+      const [, city, file] = cityFile
+      if (file === 'index' || file === 'rules' || file === 'links') return 'engine'
+      if (city === 'lagos') return file === 'map' ? 'city-lagos-map' : 'engine'
+      if (file === 'landmarks' || file === 'rail' || file === 'roads' || file === 'geometry') return `city-${city}-${file}`
+      if (file === 'map' || file === 'mapOverview' || file === 'character' || file === 'scene' || file === 'scenery' || file === 'water') return `city-${city}-map`
+      return `city-${city}-content`
+    }
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.

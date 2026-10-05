@@ -40,7 +40,7 @@ export function whatWeCollect({ host = '' }: { host?: string } = {}): CollectSec
   return [
     { heading: 'If you accept: usage analytics', lines: [
       'Which steps you complete: starting to play (how long your name is and whether you changed the suggestion — never the name), your first activity, each step of settling in, your first trip and first work shift, and the days you come back.',
-      'What you use: missions you collect, table games you sit down to and how they end, links you share or arrive by, notifications or e-mail you switch on or off (never the address), and the local government you choose for your house — one of twenty, chosen by you, never your position.',
+      'What you use: missions you collect, table games you sit down to and how they end, links you share or arrive by, notifications or e-mail you switch on or off (never the address), and the local government or area council you choose for your house — chosen by you, never your position.',
       'Counts, never content: that a chat line or a message was sent, that voice was joined and for how long, that you became friends with someone or visited a home, and how many minutes you spent in a place with another player.',
       'How the game runs for you: a rough frame-rate band, how long loading took, how long actions take, which actions fail and why, and connection problems.',
       'Your player code — the same public code other players can already see — so the counts belong to one player. Not your nickname.',

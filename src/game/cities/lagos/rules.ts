@@ -1,3 +1,5 @@
+import { NIGERIA } from '../country.ts'
+import { CAREER_IDS } from '../../content/career-ids.ts'
 import type { CityModuleRules, LgaDefinition } from '../../../types/content.ts'
 import { CITY_LINKS, LAGOS_IBADAN_RAIL } from '../links.ts'
 import { OGUN_LINKS } from '../ogun/links.ts'
@@ -53,13 +55,13 @@ export const LAGOS_RULES = Object.freeze({
   units: LAGOS_LGAS,
   hub: { road: 'Ojota Motor Park', air: 'the airport at Ikeja', rail: 'Mobolaji Johnson Station at Ebute Metta' },
   state: { id: 'lagos', name: 'Lagos State', unit: 'local government' },
-  country: { id: 'ng', name: 'Nigeria' },
+  country: NIGERIA,
   timezone: 'Africa/Lagos',
   defaultName: 'New Lagosian',
   rentedHomeIds: ['mushin', 'yaba', 'lekki', 'ikoyi', 'banana'],
   defaultRentedHome: 'yaba',
   campus: 'unilag',
-  careerIds: ['community-helper', 'tech', 'banking', 'music', 'trading', 'nursing', 'hair', 'chef', 'dj', 'fitness', 'creator', 'teaching', 'event', 'football', 'retail'],
+  careerIds: CAREER_IDS,
   atlas: {
     lon: 3.38,
     lat: 6.52,

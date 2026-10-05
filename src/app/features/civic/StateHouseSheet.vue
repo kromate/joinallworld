@@ -3,6 +3,7 @@
 // open('state-house'), e.g. from the State House on the map. Read-only; its button opens the
 // Governor app.
 import { computed } from 'vue'
+import { civicTitle } from '../../../game/cities/terminology.ts'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse, PulseResponse } from '../../../types/civic.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -31,7 +32,7 @@ const data = computed(() => item.value.data)
       <CivicStale :item="item" />
       <GovernorNews :data="data" :notices="notices" />
       <p class="civic-note">{{ PHASES[data.phase] }}: {{ NEXT[data.phase] }} in {{ until(data.phaseEndsAt, view.now) }}.</p>
-      <BaseButton variant="primary" block @click="shell.open('governor')">{{ houseButton(data.phase) }}</BaseButton>
+      <BaseButton variant="primary" block @click="shell.open('governor')">{{ houseButton(data.phase, civicTitle(data.city)) }}</BaseButton>
     </template>
   </div>
 </template>

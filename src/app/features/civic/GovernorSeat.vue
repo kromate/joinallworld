@@ -2,30 +2,39 @@
 // The State House block: the sitting Governor, or the empty seat. Shared by the Governor app and
 // the State House sheet.
 import { computed } from 'vue'
+import { civicTitle, civicOffice } from '../../../game/cities/terminology.ts'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
 import { count, dateTime, until, votes } from './civicModel.ts'
-import { cityRules } from '../../../game/cities/registry.ts'
+import { cachedCityContent, cityRules } from '../../../game/cities/registry.ts'
 import { STATE_HOUSE_TEXT } from './civicContent.ts'
 
 const props = defineProps<{ data: GovResponse }>()
 const { game } = useApp()
 const view = game.view
-const lagos = computed(() => view.value.cityId === 'lagos')
+// The seat shown is the one the answer is about (`data.city`), which is the player's city.
+const cityId = computed(() => props.data.city ?? view.value.cityId)
+const lagos = computed(() => cityId.value === 'lagos')
+const cityName = computed(() => cityRules(cityId.value)?.name ?? view.value.city.name)
 // A city is not a state: the house is named for the state the city is in ("Oyo State House"), not for the city.
-const stateName = computed(() => cityRules(view.value.cityId)?.state.name ?? view.value.city.name)
-const title = computed(() => (lagos.value ? STATE_HOUSE_TEXT.title : `${stateName.value} House`))
-const empty = computed(() => (lagos.value ? STATE_HOUSE_TEXT.empty : `${stateName.value} has no Governor yet. Sign up to vote, or run for office yourself.`))
+const stateName = computed(() => cityRules(cityId.value)?.state.name ?? cityName.value)
+const role = computed(() => civicTitle(cityId.value))
+// A city whose elected office is not a Governor's (the Federal Capital Territory has none) names its own office and says what it is.
+const governed = computed(() => role.value === 'Governor')
+const explanation = computed(() => cachedCityContent(cityId.value)?.civicExplanation)
+const title = computed(() => (lagos.value ? STATE_HOUSE_TEXT.title : governed.value ? `${stateName.value} House` : `${cityName.value} ${civicOffice(cityId.value)}`))
+const empty = computed(() => (lagos.value ? STATE_HOUSE_TEXT.empty : `${governed.value ? stateName.value : cityName.value} has no ${role.value} yet. Sign up to vote, or run for office yourself.`))
 </script>
 
 <template>
   <div v-if="!data.governor" class="governor-seat"><small>{{ title }}</small><h3>The seat is empty</h3><p>{{ empty }}</p></div>
   <div v-else class="governor-seat">
     <small>{{ title }}</small>
-    <h3>Governor {{ data.governor.name }}{{ data.governor.id === view.session?.id ? ' (you)' : '' }}</h3>
+    <h3>{{ role }} {{ data.governor.name }}{{ data.governor.id === view.session?.id ? ' (you)' : '' }}</h3>
     <p><q>{{ data.governor.slogan }}</q></p>
     <small>Elected with {{ votes(data.governor.votes) }} · term ends {{ dateTime(data.governor.termEndsAt) }} (in {{ until(data.governor.termEndsAt, view.now) }})</small>
   </div>
+  <p v-if="explanation" class="ui-note">{{ explanation }}</p>
 </template>
 
 <style scoped>

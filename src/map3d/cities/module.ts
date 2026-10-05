@@ -105,7 +105,8 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
     const district = module.rules.districts.find(item => item.id === home.districtId)
     const unit = lgas.find(item => item.id === district?.localUnitId)
     if (!unit) throw new TypeError(`Missing home district: ${home.definition.id}`)
-    return [home.definition.id, { x: unit.plate[0], z: unit.plate[1], district: district?.name ?? unit.name }]
+    const point = home.position ? toLocal(origin, home.position.lon, home.position.lat) : unit.plate
+    return [home.definition.id, { x: point[0], z: point[1], district: district?.name ?? unit.name }]
   }))
   const visible = Object.values(sites).map(({ x, z }): Point2 => [x, z]), core = extent(visible)
   const nw = fromLocal(origin, fit.minX, fit.minZ), se = fromLocal(origin, fit.maxX, fit.maxZ)
@@ -139,7 +140,8 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
     bounds: { ...fit, minX: fit.minX - 30, maxX: fit.maxX + 30, minZ: fit.minZ - 30, maxZ: fit.maxZ + 30, fit,
       sea: { x0: fit.minX, x1: fit.minX, z0: fit.maxZ, z1: fit.maxZ + 26 } },
     core: { minX: core.minX - 15, maxX: core.maxX + 15, minZ: core.minZ - 15, maxZ: core.maxZ + 15 },
-    land, lgas, sites, homes, roads: roadsOf(roadRows, origin, new Set(character.trunkRoads ?? [])), soon: {}, zones: [],
+    land, water: local(geometry.water).flatMap((part, i) => part[0] ? [{ id: `water-${i}`, points: part[0], holes: part.slice(1) }] : []),
+    lgas, sites, homes, roads: roadsOf(roadRows, origin, new Set(character.trunkRoads ?? [])), soon: {}, zones: [],
     ...(areas.length ? { areas } : {}), ...(relief.length ? { relief } : {}), ...(waters.length ? { waters } : {}), ...(rails.length ? { rails } : {}), ...(character.extent ? { extent: character.extent } : {}), ...(character.notable?.length ? { notable: character.notable } : {}),
     ...(context ? { context } : {}),
     districts: plates,

@@ -1,5 +1,7 @@
 import { project } from '../../geo/frame.ts'
 import { pointInPart } from '../lga.ts'
+import { cityRules } from '../../game/cities/registry.ts'
+import { cityUnit } from '../../game/cities/terminology.ts'
 import type { CityStateOverview, LonLatPolygon } from '../../types/content.ts'
 
 /** An open city of the state: its local units, and (for the pin and the travel lines) where the atlas marks it. */
@@ -20,6 +22,11 @@ const polygonPath = (polygons: readonly LonLatPolygon[]): string => polygons.fla
   const point = project(lon, lat)
   return `${index ? 'L' : 'M'}${number(point.x)} ${number(point.z)}`
 }).join('') + 'Z')).join('')
+
+/** The atlas card uses the same administrative-unit metadata as the overview. */
+export function stateOverviewToggleHtml(stateId: string, cityId: string, expanded: boolean): string {
+  return `<button type="button" class="atlas-chip" data-atlas-state-overview="${escape(stateId)}" aria-expanded="${expanded}">${expanded ? 'Hide state overview' : `View all ${escape(cityUnit(cityId, true))}`}</button>`
+}
 
 /** The width the state map is laid out for when pin names are placed; the real width only scales every distance alike. */
 const STAGE_PX = 340
@@ -45,10 +52,18 @@ export function stateOverviewHtml(overview: CityStateOverview, cities: readonly 
   const span = Math.max(maxX - minX, maxZ - minZ), margin = span * 0.025
   const view = { x: minX - margin, z: minZ - margin, w: maxX - minX + margin * 2, h: maxZ - minZ + margin * 2 }
   const units = overview.localUnits.map(unit => ({ ...unit, city: cities.find(city => city.units.some(item => item.id === unit.id)) }))
+  const unitName = cityRules(cities[0]?.id ?? '')?.unit ?? 'local government'
   const landmarks = (overview.landmarks ?? []).map(item => {
     const unit = units.find(unit => unit.polygons.some(polygon => pointInPart(item.lon, item.lat, polygon)))
-    return { ...item, status: unit?.city?.name ?? (unit ? 'Coming soon' : 'State landmark'), city: unit?.city }
+    return { ...item, status: item.context ?? unit?.city?.name ?? (unit ? 'Coming soon' : 'State landmark'), city: item.context ? undefined : unit?.city }
   })
+  const departureHtml = (item: NonNullable<CityStateOverview['landmarks']>[number]): string => {
+    const departure = item.departure
+    if (!departure) return ''
+    return departure.cityId === extras.current
+      ? `<button type="button" data-atlas-departure="${escape(item.id)}">${escape(departure.label)}</button>`
+      : `<small>Departs from ${escape(cityRules(departure.cityId)?.name ?? departure.cityId)}.</small>`
+  }
   const open = units.filter(unit => unit.city).length
   const title = (name: string, city?: OverviewCity): string => `${name} · ${city ? city.name : 'Coming soon'}`
 
@@ -67,6 +82,7 @@ export function stateOverviewHtml(overview: CityStateOverview, cities: readonly 
     ${overview.neighbours.map(item => `<path d="${polygonPath(item.polygons)}" fill="#d7ddcf" fill-rule="evenodd" stroke="#75826e" stroke-width="${number(span * 0.002)}"><title>${escape(item.name)} · neighbouring state</title></path>`).join('')}
     <path d="${polygonPath(overview.outline)}" fill="#eef0eb" fill-rule="evenodd" stroke="#345d43" stroke-width="${number(span * 0.003)}"/>
     ${units.map(unit => `<path d="${polygonPath(unit.polygons)}" fill="${unit.city?.id === selectedCity ? '#39734d' : unit.city ? '#b4d4a8' : '#e4e6e0'}" fill-rule="evenodd" stroke="#66755e" stroke-width="${number(span * 0.001)}" ${unit.city ? `data-atlas-inspect-city="${escape(unit.city.id)}"` : ''}><title>${escape(title(unit.name, unit.city))}</title></path>`).join('')}
+    ${(overview.water ?? []).map(polygon => `<path d="${polygonPath([polygon])}" fill="#7cb9cd" fill-rule="evenodd" pointer-events="none"/>`).join('')}
     ${landmarks.map(item => { const point = project(item.lon, item.lat); return `<circle cx="${number(point.x)}" cy="${number(point.z)}" r="${number(span * 0.006)}" fill="#a86c25"><title>${escape(item.name)} · ${escape(item.status)}</title></circle>` }).join('')}
     ${lines}${hits}
   </svg>`
@@ -106,5 +122,5 @@ export function stateOverviewHtml(overview: CityStateOverview, cities: readonly 
       ? `<div class="atlas-state-links"><h3>Travel from ${escape(name(selectedCity!))}</h3><ul>${own.map(link => `<li><button type="button" data-atlas-state-link="${escape(link.id)}" aria-pressed="false"><b>${escape(name(link.a === selectedCity ? link.b : link.a))}</b><span>${detail(link)}</span></button></li>`).join('')}</ul></div>`
       : links.length ? '<p class="atlas-state-key">Tap a city or a line for fares and times.</p>' : ''
 
-  return `<section class="atlas-state-overview" aria-label="${escape(overview.name)} local governments"><h3>${escape(overview.name)} · ${placed.length > 1 ? 'cities and ' : ''}local governments</h3>${stage}${caption}<p class="atlas-state-key">Pins: open cities · grey: coming soon${links.length ? ' · lines: travel links (dashed: train)' : ''}. Neighbouring outlines provide context.</p><details${expanded.units ? ' open' : ''}><summary data-atlas-overview-section="units">${units.length} local governments · ${open} in open cities · ${units.length - open} coming</summary><ul>${units.map(unit => `<li>${unit.city ? `<button type="button" data-atlas-inspect-city="${escape(unit.city.id)}">${escape(unit.name)} <small>${escape(unit.city.name)}</small></button>` : `<span>${escape(unit.name)} <small>Coming soon</small></span>`}</li>`).join('')}</ul></details>${landmarks.length ? `<details${expanded.landmarks ? ' open' : ''}><summary data-atlas-overview-section="landmarks">State landmarks</summary><ul>${landmarks.map(item => `<li><span>${escape(item.name)} <small>${escape(item.status)}</small></span></li>`).join('')}</ul></details>` : ''}</section>`
+  return `<section class="atlas-state-overview" aria-label="${escape(overview.name)} ${escape(unitName)}s"><h3>${escape(overview.name)} · ${placed.length > 1 ? 'cities and ' : ''}${escape(unitName)}s</h3>${stage}${caption}<p class="atlas-state-key">Pins: open cities · grey: coming soon${links.length ? ' · lines: travel links (dashed: train)' : ''}. Neighbouring outlines provide context.</p><details${expanded.units ? ' open' : ''}><summary data-atlas-overview-section="units">${units.length} ${escape(unitName)}s · ${open} in open cities · ${units.length - open} coming</summary><ul>${units.map(unit => `<li>${unit.city ? `<button type="button" data-atlas-inspect-city="${escape(unit.city.id)}">${escape(unit.name)} <small>${escape(unit.city.name)}</small></button>` : `<span>${escape(unit.name)} <small>Coming soon</small></span>`}</li>`).join('')}</ul></details>${landmarks.length ? `<details${expanded.landmarks ? ' open' : ''}><summary data-atlas-overview-section="landmarks">State landmarks</summary><ul>${landmarks.map(item => `<li><span>${escape(item.name)} <small>${escape(item.status)}</small></span>${departureHtml(item)}</li>`).join('')}</ul></details>` : ''}</section>`
 }

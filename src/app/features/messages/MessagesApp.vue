@@ -139,6 +139,12 @@ function messagePlayer(player: SearchResult): void {
   if (existing) void openThread(existing.id)
 }
 const group = reactive<{ open: boolean; name: string; members: string[]; clientId: string; busy: boolean }>({ open: false, name: '', members: [], clientId: '', busy: false })
+/** Whether a friend is in the game now: known for friends only (nothing is said about anyone else). */
+const presenceOf = (id: string | null | undefined): 'online' | 'offline' | null => {
+  const friend = id ? me.value?.friends.find((item) => item.id === id) : undefined
+  return friend ? (friend.status === 'online' || friend.status === 'away' ? 'online' : 'offline') : null
+}
+const presenceWord = (id: string | null | undefined): string | null => { const state = presenceOf(id); return state === 'online' ? 'Online now' : state === 'offline' ? 'Offline' : null }
 /** Send money from a chat: the player's card opens with its gift form already showing (the card owns the limits and the one-send client id). */
 async function sendMoneyTo(player: string, name: string): Promise<void> {
   shell.open('person', { player, name })
@@ -219,13 +225,13 @@ defineExpose({
           <RowMark v-if="conv?.kind === 'group'" round>👥</RowMark>
           <RowMark v-else-if="ui.open.startsWith('h.')" round>🏠</RowMark>
           <RowMark v-else :name="title" :seed="conv?.with ?? ui.open" />
-          <h3 v-if="withFounder">{{ title }}<FounderTag /><small>{{ threadKind(conv) }}</small></h3>
-          <h3 v-else>{{ title }}<small>{{ threadKind(conv) }}</small></h3>
+          <h3 v-if="withFounder">{{ title }}<FounderTag /><small :class="presenceOf(conv?.with) ? `messages-presence is-${presenceOf(conv?.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
+          <h3 v-else>{{ title }}<small :class="conv?.kind === 'dm' && presenceOf(conv.with) ? `messages-presence is-${presenceOf(conv.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
           <template v-else-if="conv?.kind === 'dm' && conv.with">
             <BaseButton small @click="shell.open('person', { player: conv.with, name: title })">Profile</BaseButton>
             <BaseButton small data-chat="send-money" @click="sendMoneyTo(conv.with, title)">Send money</BaseButton>
-            <PersonCallButton compact :id="conv.with" :name="title" />
+            <PersonCallButton compact :id="conv.with" :name="title" :status="presenceOf(conv.with) ?? undefined" />
           </template>
         </header>
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
@@ -329,7 +335,7 @@ defineExpose({
                 <RowMark v-else :name="item.name" :seed="item.with ?? item.id" />
               </template>
               <template #end>
-                <span class="messages-when"><small v-if="item.last?.at">{{ time(item.last.at) }}</small><span v-if="item.unread" class="messages-badge" :aria-label="`${item.unread} unread`">{{ item.unread }}</span></span>
+                <span class="messages-when"><small v-if="item.kind === 'dm' && presenceOf(item.with)" class="messages-presence" :class="`is-${presenceOf(item.with)}`">{{ presenceOf(item.with) === 'online' ? 'Online' : 'Offline' }}</small><small v-if="item.last?.at">{{ time(item.last.at) }}</small><span v-if="item.unread" class="messages-badge" :aria-label="`${item.unread} unread`">{{ item.unread }}</span></span>
               </template>
             </ListRow>
           </ListRows>
@@ -373,6 +379,9 @@ defineExpose({
 </template>
 
 <style scoped>
+.messages-presence { font-weight: 700; color: var(--c-muted); }
+.messages-presence::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: currentColor; vertical-align: 1px; }
+.messages-presence.is-online { color: var(--c-green-dark); }
 .messages-note { margin: 6px 2px; font-size: 12px; line-height: 1.45; color: var(--c-muted); }
 .messages-note.is-warn { color: var(--c-red); }
 .messages-note.is-inset { margin: 6px 14px; }

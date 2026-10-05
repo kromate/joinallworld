@@ -232,14 +232,17 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   function threadView(key: string): ThreadItem[] { void revision.value; return outbox.thread(key, state.threads.get(key)?.messages ?? []) }
 
   async function deliver(entry: { clientId: string; key: string; body: string; target?: SendTarget }): Promise<void> {
+    // The entry's key moves when a push adopts the new chat while this request is in flight, so the key it was sent under is read now.
+    const sentUnder = entry.key
     const guard = env.setTimeout(() => { if (outbox.expire(env.now())) refresh() }, SEND_TIMEOUT_MS + 50)
     const result = await call<{ conv: Conversation; message: Message }>('/api/social/messages', { ...entry.target, body: entry.body, clientId: entry.clientId })
     env.clearTimeout(guard)
     if (result.ok) {
       const thread = threadOf(result.conv.id)
       thread.messages = mergeMessages(thread.messages, [result.message])
-      const provisional = entry.key
-      if (provisional !== result.conv.id) { if (state.openConv === provisional) state.openConv = result.conv.id; outbox.rekey(provisional, result.conv.id); if (!thread.loaded) void openThread(result.conv.id) }
+      if (sentUnder !== result.conv.id) { if (state.openConv === sentUnder) state.openConv = result.conv.id; outbox.rekey(sentUnder, result.conv.id) }
+      // A new chat has no history read yet, whichever of this answer and the push reached the client first.
+      if (!thread.loaded && (sentUnder !== result.conv.id || state.openConv === result.conv.id)) void openThread(result.conv.id)
       outbox.confirm(entry.clientId)
       noteConv(result.conv)
     } else outbox.fail(entry.clientId, result.reason, result.code)
@@ -294,6 +297,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
           const provisional = `to:${message.conv.with}`
           if (state.openConv === provisional) state.openConv = message.conv.id
           outbox.rekey(provisional, message.conv.id)
+          if (state.openConv === message.conv.id && !thread.loaded) void openThread(message.conv.id)
         }
         const mine = message.message.from?.id === state.me?.me.id
         if (state.openConv === message.conv.id) { if (!mine) void markRead(message.conv.id) }

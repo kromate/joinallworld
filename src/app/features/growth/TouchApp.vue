@@ -21,6 +21,7 @@ import LinkButton from './LinkButton.vue'
 import { EMAIL_CONSENT, PUSH_CONSENT, loadPushModule } from './boundary.ts'
 import { COMEBACK_ACCOUNT_SENTENCE, COMEBACK_SENTENCE, WEEKLY_RULES, ageCard, devicesLine, emailCard, emailDisabled, emailReason, emailSavedWords, pushCard, pushDeclinedWords, showsChannels } from './touchModel.ts'
 import ComebackSwitches from './ComebackSwitches.vue'
+import { comebackRows } from './comebackModel.ts'
 import { pushKind, touch } from './touchState.ts'
 import { useGrowth } from './useGrowth.ts'
 
@@ -32,6 +33,7 @@ const hello = computed(() => growth.state.hello)
 const why = computed(() => linkWords(view.value)?.why ?? '')
 const address = computed(() => touch.email.trim())
 const sendReason = computed(() => emailReason({ busy: touch.busy === 'email', tick: touch.tick, email: address.value }))
+const emailTypes = comebackRows()
 const root = ref<HTMLElement | null>(null)
 
 onMounted(() => {
@@ -192,7 +194,10 @@ async function removeEmail(): Promise<void> {
           </div>
           <form v-else class="gr-card" novalidate @submit.prevent="askEmail">
             <h3>E-mail</h3>
-            <p>A few e-mails a week at most about your character: when someone is waiting, when something finished, and a weekly summary.</p>
+            <p>A few e-mails a week at most about your character. This is what you would get; each one gets its own switch once your address is confirmed.</p>
+            <ul class="gr-types" data-email-types aria-label="The e-mails you would get">
+              <li v-for="row in emailTypes" :key="row.key"><b>{{ row.label }}</b><small>{{ row.hint }}</small></li>
+            </ul>
             <label class="gr-field">Your e-mail address
               <input v-model="touch.email" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com" name="email">
             </label>
@@ -230,6 +235,9 @@ async function removeEmail(): Promise<void> {
 .gr-card p.gr-note { color: var(--c-muted); font-size: 12px; margin: var(--s-2) 0; }
 .gr-card :deep(.base-button) { margin: 4px 6px 0 0; }
 .gr-card :deep(.link-button) { margin: 4px 6px 0 0; }
+.gr-types { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 6px; }
+.gr-types li { display: grid; gap: 1px; font-size: 13px; line-height: 1.4; padding: 8px 10px; border-radius: 12px; background: var(--c-fill); }
+.gr-types small { font-size: 12px; color: var(--c-muted); }
 .gr-check { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.45; margin: 8px 0; min-height: var(--tap, 44px); }
 .gr-check input { width: 22px; height: 22px; flex: none; margin-top: 2px; }
 .gr-field { display: grid; gap: 4px; margin: 8px 0; font-size: 13px; }

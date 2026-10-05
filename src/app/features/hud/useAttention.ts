@@ -11,6 +11,7 @@ import { isTrip } from '../venue/venueModel.ts'
 import { useApp } from '../../state/app.ts'
 import { COACH_KEY } from './coachModel.ts'
 import { tour } from '../tour/tourState.ts'
+import { mapUi } from '../travel/travelState.ts'
 
 /** How many times each situational pointer has been acted on (it retires after a few: attention.ts TAPER). */
 export const SEEN_KEY = 'joinallworld-hints-seen'
@@ -44,7 +45,8 @@ export function useAttention() {
     return nextStep({
       state, view: view as StepContext['view'], mode: game.mode.value, expanded: shell.ui.expanded, clean: shell.ui.clean, hintsOff: off.value, sheet: shell.sheet.value?.kind ?? null, seen,
       apps: (id) => shell.byId.get(id), has: inOverlay,
-      picked: game.mode.value === 'map' && inOverlay('[data-slot="main"] .map-go:not(:disabled)'),
+      // The world map has no Go: a place picked there offers its own action (or none), so nothing is pointed at.
+      picked: game.mode.value === 'map' && mapUi.layer !== 'world' && inOverlay('[data-slot="main"] .map-go:not(:disabled)'),
     })
   }
   /** After the DOM the ring points into has been drawn (the venue panel, or the phone once it is open). */
@@ -116,6 +118,8 @@ export function useAttention() {
   })
   onBeforeUnmount(() => { document.removeEventListener('pointerdown', onClick, true); window.removeEventListener('jaw:hints', onHints); attention?.destroy(); attention = null })
   watch([game.state, game.mode, shell.sheet, off, () => shell.ui.clean, () => shell.ui.expanded, () => shell.ui.trayOpen, () => tour.active], () => { void nextTick(() => { point(); notice() }) }, { flush: 'post' })
+  // Going up to the world map, or picking another place there, changes what Go there is to point at.
+  watch([() => mapUi.layer, () => mapUi.destination], () => { void nextTick(point) }, { flush: 'post' })
   /** The goal line the coach speaks for (the first starter goals); null when the pointer is only a ring or a bubble. */
   const coach = computed(() => (step.value?.id === 'goal' && step.value.bubble ? step.value : null))
   return { step, coach, dismiss }

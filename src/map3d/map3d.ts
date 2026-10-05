@@ -860,6 +860,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     cameraView(): RigView { return { ...rig.view }; },
     /** Put the camera back where it was (a reload): at once when the map is open, otherwise when it first opens. */
     restoreView(next: RigView) { if (opened) { rig.jump(next); userMoved = true; tripCamera = false; request(); } else pendingView = next; },
+    /** Back to the opening view: the city core. */
+    recentre() { if (opened) { openView(); request(); } },
     /** For tests and screenshots: hold the lighting at 'day' | 'dusk' | 'night' (null follows Lagos time again). */
     holdTime(next: TimeOfDay | null) { heldTime = next; if (applyTime(next || timeOfDay(state?.t ?? 0))) request(); },
     /** What the Map panel says, for callers that do not go through the window event (tests, a host replaying it). */

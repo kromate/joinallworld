@@ -1053,7 +1053,9 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       point.project(camera);
       shown.id = tag.id; shown.kind = tag.kind; shown.text = tag.text; shown.name = tag.name; shown.marker = tag.marker; shown.colour = tag.colour;
       shown.x = Math.round(((point.x + 1) / 2) * size.width); shown.y = Math.round(((1 - point.y) / 2) * size.height);
-      shown.visible = point.z > -1 && point.z < 1 && Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1;
+      shown.visible = point.z > -1 && point.z < 1 && Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1
+        // A tag that would sit under the HUD's rows, or under a sheet at the bottom, is not drawn.
+        && shown.y >= Math.max(insets.top, hintTop) && shown.y <= size.height - insets.bottom;
     }
     if (!tagLayer) return;
     // Who is tagged is compared only when the list was read again — a frame of the motion loop builds no strings.

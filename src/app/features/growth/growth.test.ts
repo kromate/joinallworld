@@ -36,7 +36,7 @@ const mission = (over: Partial<MissionRow> = {}): MissionRow => ({ id: 'm1', kin
 // ---- the shared client -----------------------------------------------------------------------
 
 interface Sent { path: string; options?: FetchOptions }
-function harness(over: { connected?: boolean; required?: boolean; answer?: (path: string) => unknown } = {}) {
+function harness(over: { connected?: boolean; required?: boolean; copy?: boolean; answer?: (path: string) => unknown } = {}) {
   const sent: Sent[] = []
   const toasts: string[] = []
   const opened: string[] = []
@@ -47,7 +47,7 @@ function harness(over: { connected?: boolean; required?: boolean; answer?: (path
   const clock = { now: 1_000_000 }
   const view = { cityId: 'lagos', connected: over.connected ?? true, onboarding: { required: over.required ?? false } }
   const prepared: PreparedShare = { text: 'Hello', link: 'https://x/s/abc', file: null, url: 'blob:one', whatsapp: 'https://wa.me/?text=Hello', x: 'https://x.com/intent/post?text=Hello' }
-  const shareModule: ShareModule & { shared: number } = { shared: 0, prepareShare: async () => ({ ...prepared, url: `blob:${++shareModule.shared}` }), systemShare: async () => 'unavailable', copyText: async () => true }
+  const shareModule: ShareModule & { shared: number } = { shared: 0, prepareShare: async () => ({ ...prepared, url: `blob:${++shareModule.shared}` }), systemShare: async () => 'unavailable', copyText: async () => over.copy ?? true }
   const deps: GrowthDeps = {
     fetchJson: (async (path: string, options?: FetchOptions) => {
       sent.push({ path, options })
@@ -171,6 +171,15 @@ test('share sheet buttons: a browser without a share sheet is told, and copy say
   assert.match(h.toasts.at(-1) ?? '', /no share sheet/)
   await h.growth.copyShare()
   assert.equal(h.toasts.at(-1), 'Copied. Paste it into any chat.')
+})
+
+test('a refused copy is reported to the sheet, not toasted as a failure', async () => {
+  const h = harness({ copy: false, answer: (path) => (path === '/api/growth/share' ? { ok: true, code: 'shared', share: { code: 'abc', path: '/s/abc', facts: {} } } : { ok: true }) })
+  await h.growth.share('invite')
+  const before = h.toasts.length
+  assert.equal(await h.growth.copyLink(), false)
+  assert.equal(await h.growth.copyShare(), false)
+  assert.equal(h.toasts.length, before, 'no bare "Could not copy"')
 })
 
 test('a session change drops everything loaded and releases the picture', async () => {

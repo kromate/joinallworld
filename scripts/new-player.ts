@@ -108,11 +108,13 @@ export const SALT_PREFIX = 'new-player-salt';
 
 export async function runNewPlayer({ log = console.log, saltPrefix = SALT_PREFIX }: NewPlayerOptions = {}): Promise<NewPlayerResult> {
   const dataDir = await mkdtemp(join(tmpdir(), 'joinallworld-new-player-'));
-  let time = START, step = 0, ids = 0, lives = 0, server: NewPlayerServer | null = null, base = '';
+  let time = START, step = 0, ids = 0, lives = 0, draws = 0, server: NewPlayerServer | null = null, base = '';
   useSaltSourceForTests(() => `${saltPrefix}-${String(lives++).padStart(4, '0')}`);
   const sockets: WebSocket[] = [], heard: unknown[] = [];
   async function boot() {
-    const booted = await createServer({ dataDir, now: () => time, distDir: join(dataDir, 'no-dist'), publicOrigin: ORIGIN, env: {}, log: () => {} }) as unknown as NewPlayerServer;
+    const booted = await createServer({ dataDir, now: () => time, distDir: join(dataDir, 'no-dist'), publicOrigin: ORIGIN, env: {}, log: () => {},
+      // The Whot deal is seeded from the host's random ids: a counter makes the same game every run, so the money it ends on does too.
+      randomId: () => `${saltPrefix}-draw-${String(draws++).padStart(4, '0')}` }) as unknown as NewPlayerServer;
     server = booted;
     booted.listen(0, '127.0.0.1');
     await once(booted, 'listening');
@@ -173,7 +175,7 @@ export async function runNewPlayer({ log = console.log, saltPrefix = SALT_PREFIX
   async function paidWork(who: Who) {
     if ((await life(who)).location !== 'park') await travel(who, 'park', 'trek');
     if (!(await life(who)).job) await ok(who, 'apply-job', { id: 'community-helper' }, 'applied');
-    // A guest has no bed. The Whot game above is dealt by the server at random and can be long or short, the trek costs
+    // A guest has no bed. The Whot game above is long or short, whichever way the cards fell, the trek costs
     // energy and a roadside event may too: someone who arrives too tired for the shift (it needs Energy 20) rests under
     // the trees first, as a player would, so the run does not depend on how the cards fell.
     for (let rests = 0; rests < 8 && (await life(who)).needs.energy < 30; rests++) await run(who, 'trees', 'chill');

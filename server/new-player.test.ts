@@ -12,6 +12,6 @@ test('the new-player journey runs to the end with every assertion holding', asyn
   assert.equal(result.steps, 11);
   assert.ok(lines.some((line) => line.startsWith('New player complete')));
   assert.ok(result.moves > 4, 'a whole game was played');
-  // The same journey twice ends with the same money for the same outcome of the one thing that is random here (the deal).
-  assert.ok(Number.isSafeInteger(result.cash.ada) && Number.isSafeInteger(result.cash.bola));
+  // The deal is seeded from a counter and the clock is the script's own, so the same journey ends on the same money every time.
+  assert.deepEqual(result.cash, { ada: 22500, bola: 6900 });
 });

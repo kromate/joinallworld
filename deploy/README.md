@@ -2,7 +2,7 @@
 
 The edge adapter builds the same server context as the Node host (`server/host-context.ts` holds what both do the same way) and instantiates the same HTTP and WebSocket registries, so it runs the whole game: life and actions, the quick start and settling in, local governments and plots, social, civic, support, growth (missions, events, share pages, referral, e-mail and push), table games, telemetry, the UNILAG campus and — only when the `MODERATOR_TOKEN` secret is set — the operator routes. The SQLite transaction adapter and socket restoration hooks are described in [RECOVERY-ADAPTER.md](RECOVERY-ADAPTER.md). A separate SQLite Durable Object owns the new game's sessions, city state, receipts, collections and world shards. It never binds the original Allworld namespace.
 
-What every module gets from this host, and what does not work on it, is listed in the root README under "The Worker host".
+What every module gets from this host, and what does not work on it, is listed in [docs/REFERENCE.md](../docs/REFERENCE.md#the-worker-host) under "The Worker host".
 
 Local checks:
 

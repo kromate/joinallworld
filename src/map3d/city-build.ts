@@ -120,6 +120,8 @@ export const WATER_Y = -0.5;
 export const CITY_TRIANGLE_BUDGET = 90000;
 /** Landmarks are drawn a little larger than life, so each can be told apart on a view of the whole city. */
 export const LANDMARK_SCALE = 1.15;
+/** Footprint of a fabric house or block, as a share of its drawn size (see the fabric below). */
+const FABRIC_SIZE = 0.6;
 const LOT = PLINTH * LANDMARK_SCALE;
 const LAND_COLOURS: Record<LandKind, string> = { mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae' };
 /** The half-widths of the shallows and of the beach along a true-scale shoreline, in map units (100 m each at the frame's scale). */
@@ -596,6 +598,8 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     const room = Math.max(0, cap - inner.length);
     return [...take(inner, Math.ceil(cap * 0.8)), ...take(outer, Math.max(Math.floor(cap * 0.2), room))];
   };
+  // The fabric is a sketch of built-up areas and the landmarks are icons of places: at 100 m a unit a fabric house is drawn about 150 m wide, clearly smaller than a landmark, which is drawn larger than life on purpose.
+  for (const item of [...houses, ...towers]) { item.sx *= FABRIC_SIZE; item.sz *= FABRIC_SIZE; item.sy *= 0.85; }
   // The decorative fabric is thinner than it could be on purpose: the houses that matter are the players' own (src/map3d/houses.ts), and they need room in the budget.
   const HOUSE_CAP = 460, TOWER_CAP = 160, TREE_CAP = 330, PALM_CAP = 80;
   const fabric = { houses: thin(houses, HOUSE_CAP), towers: thin(towers, TOWER_CAP), trees: thin(trees, TREE_CAP), palms: thin(palms, PALM_CAP) };

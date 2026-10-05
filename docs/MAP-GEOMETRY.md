@@ -56,3 +56,11 @@ Boundary shapes are **land only**. Water is anything not covered by land: the La
 ## Lagos local-government ids
 
 `agege`, `ajeromi-ifelodun`, `alimosho`, `amuwo-odofin`, `apapa`, `badagry`, `epe`, `eti-osa`, `ibeju-lekki`, `ifako-ijaiye`, `ikeja`, `ikorodu`, `kosofe`, `lagos-island`, `lagos-mainland`, `mushin`, `ojo`, `oshodi-isolo`, `somolu`, `surulere` (the same as `LAGOS_LGAS` in `src/game/content/world.ts`), plus `lagos-state` for the outline. `lagosShapes()` in `src/map3d/geo/lagos-shapes.ts` returns them as lon/lat polygons, `[outer ring, ...holes]`.
+
+## Symbols are not to scale
+
+Shapes (coastline, local government borders, lagoon, island outlines, road routes) and positions are true to the frame. Symbols are not: at 100 m a unit, a venue landmark is drawn about 500 m across, a road about 180 m wide, and the fabric houses of built-up areas are sketches about 150 m wide, so that places can be read and told apart. Where two landmarks would overlap (the cluster on Lagos Island is under 400 m across) their order and direction are kept and only the icons are nudged apart by the minimum needed; the zoom levels, not any stretching of the map, make the dense core readable. A map never exaggerates the core non-linearly.
+
+## Known limits of the water
+
+Water is whatever the land polygons leave uncovered, so the Lagos Lagoon and the eastern Lekki Lagoon appear exactly as the source draws them. Water that lies inside a land polygon in the source is drawn as land: the Apapa harbour and the Badagry creeks. No open dataset with a compatible licence for them has been added; when one is, draw them as additional holes in the land polygons, not as overlays.

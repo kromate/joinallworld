@@ -233,7 +233,7 @@ export const districts: PackDistrict[] = [
   plate('YABA', 3.3745, 6.506, 4), plate('GBAGADA', 3.3915, 6.5665, 4),
   plate('IKOYI', 3.4310, 6.4505, 3.4), plate('BANANA ISLAND', 3.4440, 6.4720, 3, true),
   plate('VICTORIA ISLAND', 3.4200, 6.4325, 3.4), plate('LEKKI', 3.4850, 6.4395, 4.4),
-  plate('LAGOS LAGOON', 3.4650, 6.5500, 8, true), plate('LEKKI LAGOON', 3.5700, 6.5300, 6, true), plate('ATLANTIC OCEAN', 3.5200, 6.3900, 10, true),
+  plate('LAGOS LAGOON', 3.4650, 6.5500, 8, true), plate('LEKKI LAGOON', 4.2200, 6.5000, 7, true), plate('ATLANTIC OCEAN', 3.5200, 6.3900, 10, true),
   plate('THIRD MAINLAND BRIDGE', 3.4300, 6.4900, 3, true), plate('LINK BRIDGE', 3.4600, 6.4730, 2.4, true),
 ];
 

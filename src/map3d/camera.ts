@@ -154,8 +154,15 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
     /** The whole city, seen from the south at the default tilt. */
     whole() {
       // A city is seen at the default tilt; a state a long way out is tipped up so that its shape reads.
-      const first = distanceFor(corners(), centre.x, centre.z, 0, DEFAULT_PITCH, 1), pitch = Math.max(DEFAULT_PITCH, pitchFloor(first) + 0.04);
-      return { x: centre.x, z: centre.z, yaw: 0, pitch, distance: pitch === DEFAULT_PITCH ? first : distanceFor(corners(), centre.x, centre.z, 0, pitch, 1) };
+      // On a tall, narrow screen a long state is turned a quarter (west at the top) when that fills the screen better; nothing is distorted.
+      const fit = (yaw: number) => {
+        const first = distanceFor(corners(), centre.x, centre.z, yaw, DEFAULT_PITCH, 1), pitch = Math.max(DEFAULT_PITCH, pitchFloor(first) + 0.04);
+        return { x: centre.x, z: centre.z, yaw, pitch, distance: pitch === DEFAULT_PITCH ? first : distanceFor(corners(), centre.x, centre.z, yaw, pitch, 1) };
+      };
+      const north = fit(0);
+      if (size.height <= size.width * 1.1) return north;
+      const turned = fit(Math.PI / 2);
+      return turned.distance < north.distance * 0.85 ? turned : north;
     },
     core() {
       const area = bounds.core;

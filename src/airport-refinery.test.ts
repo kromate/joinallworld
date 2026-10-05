@@ -178,7 +178,8 @@ test('both scenes: every spot has its own landmark on walkable ground, with a pa
 
 test('on both maps they are ordinary venues in the right local government; a coming-soon place is still marked when there is one', () => {
   assert.deepEqual(Object.keys(pack.soon), []);
-  assert.equal(lgaAt(pack, pack.sites.airport.x, pack.sites.airport.z), 'ikeja');
+  // The airport is called Ikeja's; the real boundary puts the terminal itself in Oshodi-Isolo.
+  assert.equal(lgaAt(pack, pack.sites.airport.x, pack.sites.airport.z), 'oshodi-isolo');
   assert.equal(lgaAt(pack, pack.sites.refinery.x, pack.sites.refinery.z), 'ibeju-lekki');
   const network = buildNetwork(pack), kit = createKit();
   const city = buildCity(kit, pack, network, { venues: VENUES, soon: COMING_SOON });

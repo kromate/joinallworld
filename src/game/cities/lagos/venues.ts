@@ -17,7 +17,7 @@
  *   }
  * The first spot of a venue is where a player stands on arrival. Other systems (jobs, home
  * furniture, people) attach their own activities to these spots by id, so spot ids are stable.
- * CITY_LABELS overrides display names per city; ids and rules are shared between cities.
+ * Other cities supply their own venue definitions through their city modules.
  *
  * Extra activity fields understood by the world systems (any owner may use them):
  *   cooldown         seconds before the same activity can be started again (systems/travel.ts)

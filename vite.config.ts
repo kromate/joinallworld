@@ -54,11 +54,16 @@ export default defineConfig({
   //   engine  the rules (src/game, src/life.ts, the campus rules): the shell builds and reads every life through them, so it is
   //           part of the first load, but it changes far less often than the shell.
   build: { minify: 'terser', terserOptions: { ecma: 2020, compress: { passes: 3 }, format: { comments: false } }, sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
-    const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
-    if (city) return `city-${city[1]}-${city[2]}`
-    const geometry = id.match(/\/src\/game\/cities\/([^/]+)\/(landmarks|rail|geometry)\.ts$/)
-    if (geometry) return `city-${geometry[1]}-${geometry[2]}`
-    if (/\/src\/game\/cities\/lagos\/(venues|regulars)\.ts$|\/src\/game\/content\/venues-transport\.ts$|\/src\/campus\/unilag\/content\.ts$/.test(id)) return 'city-lagos-content'
+    if (id === '\0vite/preload-helper.js') return 'vue'
+    const cityFile = id.match(/\/src\/game\/cities\/([^/]+)\/([^/]+)\.ts$/)
+    if (cityFile) {
+      const [, city, file] = cityFile
+      if (file === 'index' || file === 'rules' || file === 'links') return 'engine'
+      if (file === 'map' || file === 'mapOverview' || file === 'geometry') return `city-${city}-map`
+      if (file === 'landmarks' || file === 'rail') return `city-${city}-${file}`
+      return `city-${city}-content`
+    }
+    if (/\/src\/game\/content\/venues-transport\.ts$|\/src\/campus\/unilag\/content\.ts$/.test(id)) return 'city-lagos-content'
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(student|games|shuttle|curriculum|trail|layout|walk)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'

@@ -1,3 +1,5 @@
+import { cachedCityContent } from '../cities/registry.ts';
+import { cityReference, readCityReference } from '../cities/references.ts';
 import { project, UNITS_PER_KM } from '../../geo/frame.ts';
 import { houseSpotFor, defaultHouseFor } from '../cities/housingRuntime.ts';
 import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
@@ -32,9 +34,9 @@ import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
  *   home       house id used to place Home on the map (learned from 'life.started' / 'house.moved')
  *   event      null | { id, at }           pending roadside choice
  *   lastTrip   null | { mode, from, to }   the trip that just ended (readable by any listener)
- *   visited    [venueId]                   venues arrived at, in first-visit order
+ *   visited    [city-qualified venue key]                   venues arrived at, in first-visit order
  *   trips      completed trips
- *   cooldowns  { [activityId]: readyAtMs }
+ *   cooldowns  { [city-qualified activity key]: readyAtMs }
  *   funded     true once the startup grant has been paid
  *   gigs       { day, count }   paid gigs finished on Lagos day `day` (the daily gig limit)
  *   eventDays  { [eventId]: day }  the Lagos day a once-a-day roadside event was last offered
@@ -67,7 +69,7 @@ import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
  *   'life.started' { house }, 'house.moved' { id }, 'activity.completed'
  */
 import type { ActivityDefinition, ActivityOutcomeRule, ActivitySuccessOutcome, Block, ComingSoonDefinition, FareBands, OutcomeBlock, RoadsideEvent, RouteBand, SkillCheck, VenueDefinition, VenueZone } from '../../types/content.ts';
-import type { ActivityId, HouseId, LifeContext, LifeState, NeedMap, RoadsideEventId, SkillMap, TravelAction, TravelModeId, TravelState, VenueId } from '../../types/life.ts';
+import type { ActivityId, HouseId, LifeContext, LifeState, NeedMap, RoadsideEventId, SkillMap, TravelAction, TravelModeId, VenueId } from '../../types/life.ts';
 import type { TravelBlockCode } from '../../types/actions.ts';
 import type { SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { TravelDestination, TravelModeCard, TravelView } from '../../types/view.ts';
@@ -83,6 +85,7 @@ import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.
 
 const MAP_WIDTH = 1000, MAP_HEIGHT = 700;
 const MAX_COOLDOWNS = 80;
+const MAX_VISITED = 512;
 /** Upper bound accepted for a saved trip's `fare` (no route costs anywhere near this). */
 const MAX_TRIP_FARE = 1_000_000;
 
@@ -248,8 +251,9 @@ function complete(state: LifeState, active: TravelAction, ctx: LifeContext): voi
   state.travel.lastTrip = { mode: modeId, from, to: destination };
   state.message = `Arrived at ${venueLabel(destination, ctx.cityId)}.`;
   arrive(state, destination, ctx, { mode: modeId }); // listeners (weather, goals) may append to state.message
-  const first = !state.travel.visited.includes(destination);
-  if (first) state.travel.visited.push(destination);
+  const identity = cityReference(state.estate.city, destination);
+  const first = !state.travel.visited.includes(identity);
+  if (first) state.travel.visited = [...state.travel.visited, identity].slice(-MAX_VISITED);
   state.travel.trips = Math.min(Number.MAX_SAFE_INTEGER, state.travel.trips + 1);
   if (trip) {
     changeNeeds(state, trip.needs);
@@ -325,7 +329,28 @@ function rollActivity(state: LifeState, id: ActivityId, rule: ActivityOutcomeRul
   emit(state, 'activity.outcome', { id, success }, ctx);
 }
 
-const cooldownLeft = (state: LifeState, id: string, now: number): number => Math.max(0, Math.ceil(((state.travel?.cooldowns?.[id] ?? 0) - now) / 1000));
+const cooldownLeft = (state: LifeState, id: string, now: number): number => Math.max(0, Math.ceil(((state.travel?.cooldowns?.[cityReference(state.estate.city, id)] ?? 0) - now) / 1000));
+
+const hasActivity = (city: string, id: string): boolean => Boolean(findActivity(id, city));
+const hasVenue = (city: string, id: string): boolean => Boolean(venueFor(city, id));
+const cleanVisits = (value: unknown, city: string): string[] => [...new Set((Array.isArray(value) ? value : []).slice(-MAX_VISITED).flatMap(key => {
+  const reference = readCityReference(key, city, hasVenue);
+  return reference ? [cityReference(reference.cityId, reference.id)] : [];
+}))];
+function cleanCooldowns(value: unknown, city: string, now: number): Record<string, number> {
+  const kept: Record<string, number> = {};
+  for (const [key, readyAt] of Object.entries(isRecord(value) ? value : {}).slice(0, MAX_COOLDOWNS)) {
+    if (!finite(readyAt) || readyAt <= now || readyAt > Number.MAX_SAFE_INTEGER) continue;
+    const reference = readCityReference(key, city, hasActivity);
+    if (!reference) continue;
+    const identity = cityReference(reference.cityId, reference.id);
+    if (!cachedCityContent(reference.cityId)) { kept[identity] = readyAt; continue; }
+    const seconds = findActivity(reference.id, reference.cityId)?.def.cooldown;
+    // Active-city rules always bound the timer. A cold origin is checked when its content loads.
+    if (finite(seconds) && seconds > 0) kept[identity] = Math.min(readyAt, now + seconds * 1000);
+  }
+  return kept;
+}
 
 // ---- state ------------------------------------------------------------------------------
 
@@ -336,16 +361,11 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   const trip = saved.lastTrip;
   const lastTrip = isRecord(trip) && isVenue(trip.to, ctx.cityId) && isVenue(trip.from, ctx.cityId)
     && (trip.mode === null || isModeId(trip.mode)) ? { mode: trip.mode, from: trip.from, to: trip.to } : null;
-  const cooldowns: TravelState['cooldowns'] = {};
-  for (const [id, readyAt] of Object.entries(isRecord(saved.cooldowns) ? saved.cooldowns : {}).slice(0, MAX_COOLDOWNS)) {
-    const seconds = findActivity(id, ctx.cityId)?.def.cooldown;
-    // A cooldown can never be longer than the activity's own, whatever the save claims.
-    if (finite(seconds) && seconds > 0 && finite(readyAt) && readyAt > now) cooldowns[id] = Math.min(readyAt, now + seconds * 1000);
-  }
+  const cooldowns = cleanCooldowns(saved.cooldowns, ctx.cityId, now);
   state.travel = {
     home: houseSpotFor(ctx.cityId, saved.home) ? String(saved.home) : defaultHouseFor(ctx.cityId).id,
     event, lastTrip,
-    visited: [...new Set((Array.isArray(saved.visited) ? saved.visited : []).filter((id): id is VenueId => isVenue(id, ctx.cityId)))],
+    visited: cleanVisits(saved.visited, ctx.cityId),
     trips: safeCount(saved.trips) ? saved.trips : 0,
     cooldowns,
     funded: saved.funded === true,
@@ -374,7 +394,7 @@ function destinationCard(state: LifeState, venue: VenueDefinition, ctx: LifeCont
   return {
     id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? (state.estate?.living === 'own' ? lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.name ?? 'Your house' : houseSpotFor(state.estate.city, homeId(state))?.district ?? '') : venueDistrict(id, ctx.cityId),
     icon: venue.icon, description: venue.description, category: venue.category, x: place.x, y: place.y, zone: place.zone,
-    here, visited: state.travel.visited.includes(id), open: opening.open, hours: opening.hours, status: opening.status,
+    here, visited: state.travel.visited.includes(cityReference(state.estate.city, id)), open: opening.open, hours: opening.hours, status: opening.status,
     band: here ? null : (contentFor(state.estate.city).localModes && routeBand(state, state.location, id) === 'far' ? 'Longer city trip' : BAND_LABELS[routeBand(state, state.location, id)]),
     ambient: venue.ambient?.length ? venue.ambient[Math.floor(now / 8000) % venue.ambient.length] ?? '' : '',
     preview: spotsOf(id, ctx.cityId).flatMap((spot) => spot.activities.map((def) => def.label)),
@@ -399,7 +419,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
     defaultMode: DEFAULT_MODE,
     home: homeId(state),
     trips: state.travel.trips,
-    visited: state.travel.visited.length,
+    visited: state.travel.visited.filter(key => readCityReference(key, ctx.cityId, hasVenue)?.cityId === ctx.cityId).length,
     destinations: [...venues, ...soon],
     event: pending && queued ? {
       id: pending.id, icon: pending.icon, title: pending.title, text: pending.text, at: queued.at,
@@ -410,7 +430,12 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
         blocked: choice.cost && !canAfford(state, choice.cost) ? { code: 'insufficient_funds', reason: `Costs ${naira(choice.cost)}; you have ${naira(state.cash)}.` } : null,
       })),
     } : null,
-    cooldowns: Object.fromEntries(Object.keys(state.travel.cooldowns).map((id): [string, number] => [id, cooldownLeft(state, id, ctx.now)]).filter(([, left]) => left > 0)),
+    cooldowns: Object.fromEntries(Object.keys(state.travel.cooldowns).flatMap((key): [string, number][] => {
+      const reference = readCityReference(key, ctx.cityId, hasActivity);
+      if (reference?.cityId !== ctx.cityId) return [];
+      const left = cooldownLeft(state, reference.id, ctx.now);
+      return left > 0 ? [[reference.id, left]] : [];
+    })),
     gigs: { limit: GIG_DAILY_LIMIT, used: gigsToday(state, ctx.now), left: Math.max(0, GIG_DAILY_LIMIT - gigsToday(state, ctx.now)) },
     // The gigs offered at the spot the player stands at (activity ids), so the venue panel can show the counter beside them.
     gigsHere: (spotsOf(state.location, ctx.cityId).find((spot) => spot.id === state.spot)?.activities || []).filter(isGig).map((def) => def.id),
@@ -445,15 +470,21 @@ export default {
   view,
   on: {
     'life.started': (state, data) => setHome(state, data?.house),
-    'house.moved': (state, data) => setHome(state, data?.id),
+    'house.moved': (state, data) => setHome(state, data?.house ?? data?.id),
+    'city.changed'(state, { from }, ctx) {
+      state.travel.cooldowns = cleanCooldowns(state.travel.cooldowns, from, ctx.now);
+      state.travel.visited = cleanVisits(state.travel.visited, from);
+      state.travel.lastTrip = null;
+      state.travel.event = null;
+    },
     'activity.completed': (state, data, ctx) => {
       const def = data?.def;
       if (!def) return;
       const now = finite(ctx?.now) ? ctx.now : state.t;
       if (finite(def.cooldown) && def.cooldown > 0) {
-        const ids = Object.keys(state.travel.cooldowns);
-        if (ids.length >= MAX_COOLDOWNS && !Object.hasOwn(state.travel.cooldowns, def.id)) delete state.travel.cooldowns[ids[0] ?? '']; // ids is never empty here: it holds MAX_COOLDOWNS entries
-        state.travel.cooldowns[def.id] = now + def.cooldown * 1000;
+        const key = cityReference(state.estate.city, def.id), ids = Object.keys(state.travel.cooldowns);
+        if (ids.length >= MAX_COOLDOWNS && !Object.hasOwn(state.travel.cooldowns, key)) delete state.travel.cooldowns[ids[0] ?? ''];
+        state.travel.cooldowns[key] = now + def.cooldown * 1000;
       }
       if (isGig(def)) {
         const day = lagosTime(now).day;

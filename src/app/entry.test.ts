@@ -69,7 +69,7 @@ test('the first download paints without the game shell, rules engine or city con
 })
 
 test('the shared shell does not statically import a city venue or regular catalogue', () => {
-  assert.deepEqual(gamePaths.filter(path => /^src\/game\/cities\/[^/]+\/(content|venues|regulars)\.ts$/.test(path)), [])
+  assert.deepEqual(gamePaths.filter(path => /^src\/game\/cities\/[^/]+\/(content|venues|regulars|descriptions)\.ts$/.test(path)), [])
 })
 
 test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell', () => {
@@ -83,7 +83,7 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
     ['the world map', /^src\/world-map\.ts$/],
     ['the venue scene host', /^src\/venue-world\.ts$/],
     ['the scene modules (only the pure walk grid, crowd metadata and type constants are allowed)', /^src\/scene\/(?!walk-grid\.ts$|crowd\.ts$|types\.ts$)/],
-    ['the campus scene and hosts', /^src\/campus\/unilag\/(host|scene|world-adapter|preview|landmark|model|characters)[\w-]*\.ts$/],
+    ['the campus scene and hosts', /^src\/campus\/unilag\/(host|scene|world-adapter|preview|landmark|model|characters|layout-appearance)[\w-]*\.ts$/],
     ['the campus shared scene code', /^src\/campus\/shared\//],
     ['the models', /^src\/models\//],
     ['the community and voice client', /^src\/community\.ts$/],

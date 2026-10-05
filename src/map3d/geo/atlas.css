@@ -169,3 +169,17 @@
   .atlas-legend{max-width:calc(100% - 60px);padding:6px 9px}
 }
 @media(prefers-reduced-motion:reduce){.atlas-canvas,.atlas.is-entering .atlas-canvas,.atlas.is-entering .atlas-labels,.atlas.is-entering .atlas-frame{transition:none}}
+
+.atlas-state-overview{display:grid;gap:8px;border-top:1px solid var(--c-line,#dce2dc);padding-top:12px}
+.atlas .atlas-state-map{display:block;width:100%;height:auto;max-height:260px;background:#fafbf7;border-radius:12px}
+.atlas-state-map [data-atlas-inspect-city]{cursor:pointer}
+.atlas-state-map [data-atlas-inspect-city]:hover{fill:#79a66b}
+.atlas-state-key{font-size:11px;line-height:1.4;color:var(--c-muted,#566457)}
+.atlas-state-overview summary{cursor:pointer;font-size:12px;font-weight:650;min-height:32px}
+.atlas-state-overview ul{list-style:none;padding:0;margin:4px 0;display:grid;gap:3px}
+.atlas-state-overview li>button,.atlas-state-overview li>span{display:flex;justify-content:space-between;gap:8px;width:100%;padding:7px 8px;border:0;border-radius:8px;font:inherit;font-size:12px;text-align:left;background:#eef2e9}
+.atlas-state-overview li>span{background:#f3f4f0;color:#6b7168}
+.atlas-state-overview small{font-size:10px;white-space:nowrap}
+.atlas-sheet nav[aria-label="Cities in this state"]{display:flex;flex-wrap:wrap;gap:6px}
+.atlas-sheet nav[aria-label="Cities in this state"] button{border:1px solid #cbd7c6;border-radius:18px;background:#f2f5ed;padding:7px 11px;color:#334b38;font:inherit;font-size:12px;cursor:pointer}
+.atlas-sheet nav[aria-label="Cities in this state"] button[aria-pressed="true"]{background:#2e6542;color:#fff;border-color:#2e6542}

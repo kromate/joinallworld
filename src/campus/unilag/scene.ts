@@ -4,7 +4,8 @@ import { createBatch, sceneMaterials, kitResources, releaseObjects } from '../..
 import { buildAvatar, poseAvatar } from '../../scene/characters.ts';
 import type { Pose, RiggedAvatar } from '../../scene/characters.ts';
 import { lagosTime } from '../../game/clock.ts';
-import { ZONES, BUILDINGS, ROADS, ANCHORS, ENTRANCE } from './layout.ts';
+import { ZONES, ROADS, ANCHORS, ENTRANCE } from './layout.ts';
+import { BUILDINGS } from './layout-appearance.ts';
 import type { CampusAnchor, CampusBuilding, CampusZone } from './layout.ts';
 import { createCampusWalk, footprintOf } from './walk.ts';
 import type { CampusWalk as NavigationApi, WalkCircle, WalkGrid, WalkPoint, WalkRect } from './walk.ts';

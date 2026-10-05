@@ -1,3 +1,4 @@
+import { IBADAN_LOCAL_UNIT_DESCRIPTIONS } from './descriptions.ts'
 import { LOTTERY } from '../../content/traits.ts'
 import { JOBS } from '../../content/jobs.ts'
 import { toLocal } from '../../../geo/frame.ts'
@@ -340,6 +341,7 @@ const localModes: readonly TravelModeDefinition[] = Object.freeze([
 
 export const IBADAN_CONTENT: CityContent<'ibadan'> = Object.freeze({
   cityId: 'ibadan',
+  localUnitDescriptions: IBADAN_LOCAL_UNIT_DESCRIPTIONS,
   dreamWording: {
     'lekki-landlord': { label: 'Ibadan Landlord' },
     'yaba-unicorn': {

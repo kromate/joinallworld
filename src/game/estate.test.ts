@@ -1,3 +1,4 @@
+import { localUnitDescription } from './cities/runtime.ts';
 import { allCityLinks, cityRules, loadCityContent as preloadCityContent } from './cities/registry.ts';
 await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: world — the house everyone has, local governments, styles, upgrades and travel between cities.
@@ -42,7 +43,7 @@ test('the twenty local governments of Lagos: ids, prices and capacity are data; 
   assert.equal(LAGOS_LGAS.length, 20);
   assert.equal(new Set(LAGOS_LGAS.map((lga) => lga.id)).size, 20);
   for (const name of ['Agege', 'Ajeromi-Ifelodun', 'Alimosho', 'Amuwo-Odofin', 'Apapa', 'Badagry', 'Epe', 'Eti-Osa', 'Ibeju-Lekki', 'Ifako-Ijaiye', 'Ikeja', 'Ikorodu', 'Kosofe', 'Lagos Island', 'Lagos Mainland', 'Mushin', 'Ojo', 'Oshodi-Isolo', 'Somolu', 'Surulere']) assert.ok(LAGOS_LGAS.some((lga) => lga.name === name), name);
-  for (const lga of LAGOS_LGAS) { assert.equal(lga.beta, true); assert.ok(lga.land >= 60000 && lga.line.length > 10); }
+  for (const lga of LAGOS_LGAS) { assert.equal(lga.beta, true); assert.ok(lga.land >= 60000 && localUnitDescription('lagos', lga.id).length > 10); }
   // The rented-home districts map onto local governments, so an old save has one.
   assert.deepEqual(Object.keys(HOUSES).map((id) => lgaOfDistrict('lagos', id)?.id), ['mushin', 'lagos-mainland', 'eti-osa', 'eti-osa', 'eti-osa']);
   assert.equal(LGA_CAPACITY, 100352);
@@ -209,7 +210,7 @@ test('renting stays a choice: moving to a rented home restarts the weekly rent, 
 });
 
 test('cities connect as data, while a trip to closed Abuja is refused without charging', () => {
-  for (const id of ['lagos', 'ibadan'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
+  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
   const soon: WorldCityId[] = ['abuja', 'port-harcourt'];
   for (const id of soon) { const city = cityRules(id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
   for (const link of allCityLinks()) { assert.ok(cityRules(link.a) && cityRules(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
@@ -221,9 +222,11 @@ test('cities connect as data, while a trip to closed Abuja is refused without ch
   assert.equal(act(state, 'estate.relocate', { to: 'lagos', mode: 'road' }).code, 'invalid_city');
   assert.equal(state.cash, cash); assert.equal(state.activeAction, null);
   const links = viewLife(state, at()).estate.links;
-  assert.equal(links.length, 6)
+  assert.equal(links.length, 9)
   assert.deepEqual(links.filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.open, link.blocked]), [['road', true, null], ['rail', true, null]])
-  assert.equal(links.filter((link) => link.to !== 'ibadan').every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
+  const openCities = new Set(['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu']);
+  assert.equal(links.filter((link) => openCities.has(link.to)).every((link) => link.open && link.blocked === null), true);
+  assert.equal(links.filter((link) => !openCities.has(link.to)).every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
 });
 
 test('one character between cities: money, skills and people travel; the home left behind is kept and found again on return', () => {

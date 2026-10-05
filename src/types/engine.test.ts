@@ -20,7 +20,7 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { actionTypes, advanceLife, createLife, dispatch, makeContext, spotsOf, viewLife } from '../life.ts'
 import { serverOnlyReason, systems } from '../game/registry.ts'
-import { CITY_LABELS, COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES } from '../game/content/venues.ts';
+import { COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES } from '../game/content/venues.ts';
 import { HOME_SPOTS, VENUES } from '../game/cities/lagos/venues.ts';
 import { ALL_MODES, FARE_BANDS, TRAVEL_MODES } from '../game/content/travel.ts'
 import { JOBS } from '../game/content/jobs.ts'
@@ -151,7 +151,6 @@ export const contentConformance = {
   comingSoon: COMING_SOON satisfies Partial<Record<ComingSoonId, Loose<ComingSoonDefinition>>>,
   homeMapSpots: HOME_SPOTS satisfies Table<HomeMapSpot>,
   venueCategories: VENUE_CATEGORIES satisfies Table<VenueCategory>,
-  cityLabels: CITY_LABELS satisfies Readonly<Partial<Record<string, SparseTable<CityVenueLabel>>>>,
   cityMaps: CITY_MAPS satisfies SparseTable<CityMapNames>,
   baseModes: TRAVEL_MODES satisfies Table<TravelModeDefinition>,
   allModes: ALL_MODES satisfies Table<TravelModeDefinition>,
@@ -1142,7 +1141,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
   for (const wish of WISHES) assert.deepEqual(Object.keys(wish).filter((key) => !wishFields.includes(key)), [], wish.id)
   assert.deepEqual([...new Set(WISHES.map((wish) => wish.on))].sort(), ['activity', 'earn', 'event', 'visit'])
   for (const goal of STARTER_GOALS) assert.deepEqual(Object.keys(goal.done).filter((key) => !['events', 'tags', 'venue', 'hasJob', 'activity', 'fresh'].includes(key)), [], goal.id)
-  declared<LgaDefinition>()(['id', 'name', 'zone', 'land', 'line', 'districts', 'beta'])(LAGOS_LGAS, 'local government')
+  declared<LgaDefinition>()(['id', 'name', 'zone', 'land', 'districts', 'beta'])(LAGOS_LGAS, 'local government')
   declared<HouseTierDefinition>()(['id', 'rank', 'label', 'icon', 'grid', 'cost', 'buildSeconds', 'groundRent', 'blurb', 'beta'])(Object.values(HOUSE_TIERS), 'house tier')
   declared<CityRules>()(['id', 'name', 'status', 'unit', 'units', 'hub', 'seaPlots', 'legacyLgaChoice', 'legacyVenueAliases'])(Object.values(CITY_RULES).map(required), 'city')
   declared<CityLink>()(['a', 'b', 'mode', 'label', 'icon', 'fare', 'seconds', 'km', 'beta'])(CITY_LINKS, 'city link')

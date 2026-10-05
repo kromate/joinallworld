@@ -347,12 +347,12 @@ export interface TravelState {
   event: { id: RoadsideEventId; at: Ms } | null
   /** The trip that just ended. `mode` is null for a legacy trip without one. */
   lastTrip: { mode: TravelModeId | null; from: VenueId; to: VenueId } | null
-  /** Venues arrived at by travelling, in first-visit order. */
-  visited: VenueId[]
+  /** City-qualified venues, in first-visit order (bare ids remain Lagos); bounded to 512. */
+  visited: string[]
   /** Completed trips. */
   trips: number
-  /** `{ [activityId]: readyAtMs }`, at most 80 entries; expired ones are removed on settlement. */
-  cooldowns: Record<ActivityId, Ms>
+  /** City-qualified activity keys (bare ids remain Lagos), at most 80; expired timers are removed. */
+  cooldowns: Record<string, Ms>
   /**
    * True once the CcHub 'hub-pitch' seed grant has been paid.
    * INCONSISTENT: written as `state.travel[outcome.once]` (travel.js:271-272), so the key name comes

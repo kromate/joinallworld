@@ -125,7 +125,7 @@ test('legacy Lagos NPC relationships keep their original saved shape', () => {
 test('a Lagos NPC friend survives a journey and a destination-only cold reload', async () => {
   await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan')])
   const now = Date.UTC(2026, 0, 5, 9)
-  const state = createLife({ cash: 100000, social: { rel: { kunle: { p: 20, d: 4, n: 2, npc: true, at: 9 } } } }, { cityId: 'lagos', now })
+  const state = createLife({ cash: 100000, job: 'tech', completedShifts: 7, career: { city: 'lagos', level: 3, performance: 77, shifts: 5, oriented: true }, social: { rel: { kunle: { p: 20, d: 4, n: 2, npc: true, at: 9 } } } }, { cityId: 'lagos', now })
   assert.equal(dispatch(state, { type: 'estate.relocate', payload: { to: 'ibadan', mode: 'road' } }, { now }).code, 'departed')
   const seconds = state.activeAction?.remaining
   assert.ok(typeof seconds === 'number')
@@ -139,6 +139,7 @@ test('a Lagos NPC friend survives a journey and a destination-only cold reload',
     await loadCityContent('ibadan');
     const state = createLife(JSON.parse(readFileSync(0, 'utf8')), { cityId: 'ibadan', trustedSave: true });
     console.log(JSON.stringify({ cold: cachedCityContent('lagos') === null, friend: state.social.rel.kunle,
+      job: state.job, career: state.career, careerView: viewLife(state).career,
       card: viewLife(state).social.relationships.find(item => item.id === 'kunle') }));
   `], { input: JSON.stringify(state), encoding: 'utf8' })
   assert.equal(child.status, 0, child.stderr)
@@ -148,4 +149,11 @@ test('a Lagos NPC friend survives a journey and a destination-only cold reload',
   assert.equal(result.card.name, 'Kunle')
   assert.equal(result.card.points, 20)
   assert.equal(result.card.friend, true)
+  assert.equal(result.job, 'tech')
+  assert.deepEqual(result.career, state.career)
+  assert.equal(result.career.level, 3)
+  assert.equal(result.career.performance, 77)
+  assert.equal(result.career.shifts, 5)
+  assert.equal(result.careerView.workplace, null)
+  assert.equal(result.careerView.pay, 0)
 })

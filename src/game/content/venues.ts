@@ -1,8 +1,8 @@
-import { cachedCityContent } from '../cities/registry.ts';
+import { cachedCityContent, cityRules } from '../cities/registry.ts';
 /** Shared venue categories, scene kinds, gig limits and city-aware display helpers. */
-import type { HouseId, VenueId, WorldCityId } from '../../types/life.ts';
+import type { HouseId } from '../../types/life.ts';
 import type {
-  CityVenueLabel, ComingSoonDefinition, SceneKind, VenueCategory, VenueCategoryId,
+  ComingSoonDefinition, SceneKind, VenueCategory, VenueCategoryId,
 } from '../../types/content.ts';
 
 /**
@@ -40,37 +40,10 @@ export const COMING_SOON: Record<string, ComingSoonDefinition> = {};
 
 /** Legacy balanced rental id; each city's module supplies its own home positions. */
 export const DEFAULT_HOME: HouseId = 'yaba';
-/** Labels for unrecognised ids in the old Ibadan preview. Loaded module definitions win. */
-export const CITY_LABELS: Partial<Record<WorldCityId, Partial<Record<VenueId, CityVenueLabel>>>> = {
-  ibadan: {
-    park: { label: 'Agodi Gardens', district: 'Agodi' },
-    library: { label: 'City Reading Room', district: 'Bodija' },
-    radio: { label: 'Oluyole Radio', district: 'Mokola' },
-    shrine: { label: 'Mokola Music Yard', district: 'Mokola' },
-    'viewing-centre': { label: 'Viewing Centre', district: 'Sango' },
-    'amala-shitta': { label: 'Bodija Amala Joint', district: 'Bodija' },
-    cchub: { label: 'Tech Hub', district: 'Agbowo' },
-    hospital: { label: 'Teaching Hospital', district: 'Oritamefa' },
-    salon: { label: 'Iya Ibeji’s Salon', district: 'Iwo Road' },
-    church: { label: 'Church', district: 'Oke Ado' },
-    mosque: { label: 'Mosque', district: 'Oja’ba' },
-    market: { label: 'Dugbe Market', district: 'Dugbe' },
-    police: { label: 'Police Station', district: 'Iyaganku' },
-    'polling-unit': { label: 'Polling Unit', district: 'Mapo' },
-    'state-house': { label: 'Oyo State House', district: 'Agodi' },
-    'i-fitness': { label: 'Ring Road Gym', district: 'Ring Road' },
-    office: { label: 'Cocoa House', district: 'Dugbe' },
-    quilox: { label: 'Seven Hills Club', district: 'Jericho' },
-    rooftop: { label: 'Premier Hill Rooftop', district: 'Mokola Hill' },
-    'canopy-walk': { label: 'Forest Reserve Walk', district: 'Akobo' },
-    palms: { label: 'Ring Road Mall', district: 'Ring Road' },
-    beach: { label: 'Eleyele Lakeside', district: 'Eleyele' },
-    airport: { label: 'Airport', district: 'Alakia' },
-    refinery: { label: 'Dry Port', district: 'Moniya' },
-  },
+/** Old saved references use the same authored aliases as life migration. */
+const displayVenue = (venueId: string, cityId: string) => {
+  const venues = cachedCityContent(cityId)?.venues;
+  return venues?.find(item => item.id === venueId) ?? venues?.find(item => item.id === cityRules(cityId)?.legacyVenueAliases?.[venueId]);
 };
-
-// The same tables read by an arbitrary (possibly unknown) id, as the callers do.
-const cityLabelsById: Record<string, Record<string, CityVenueLabel | undefined> | undefined> = CITY_LABELS;
-export const venueLabel = (venueId: string, cityId: string): string => cachedCityContent(cityId)?.venues.find(item => item.id === venueId)?.name ?? cityLabelsById[cityId]?.[venueId]?.label ?? COMING_SOON[venueId]?.label ?? venueId;
-export const venueDistrict = (venueId: string, cityId: string): string => cachedCityContent(cityId)?.venues.find(item => item.id === venueId)?.district ?? cityLabelsById[cityId]?.[venueId]?.district ?? COMING_SOON[venueId]?.district ?? '';
+export const venueLabel = (venueId: string, cityId: string): string => displayVenue(venueId, cityId)?.name ?? COMING_SOON[venueId]?.label ?? venueId;
+export const venueDistrict = (venueId: string, cityId: string): string => displayVenue(venueId, cityId)?.district ?? COMING_SOON[venueId]?.district ?? '';

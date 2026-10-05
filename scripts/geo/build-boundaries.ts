@@ -1,7 +1,8 @@
-// npm run geo:boundaries — rebuilds Lagos only. Pass --oyo for Oyo or --nigeria for the Nigeria atlas.
+// npm run geo:boundaries — rebuilds Lagos only. Pass --oyo, --ogun or --nigeria for another explicit target.
 //
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts [--lagos-only] [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --oyo [--check]
+//   node --experimental-strip-types scripts/geo/build-boundaries.ts --ogun [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --nigeria [--check]
 //
 // Sources (pinned by revision and sha256; fetched once into .cache/geo, verified every run):
@@ -11,6 +12,7 @@
 // Writes:
 //   src/map3d/geo/data/lagos.ts    the 20 Lagos local governments, the Lagos State outline and the derived lagoon
 //   src/map3d/geo/data/oyo.ts      all 33 Oyo local governments and an Oyo State outline cut from the shared ADM1 topology
+//   src/map3d/geo/data/ogun.ts     all 20 Ogun local governments and an Ogun State outline locked to accepted Lagos
 //   src/map3d/geo/data/nigeria.ts  the 37 states (geoBoundaries ADM1) plus, unchanged, the neighbouring countries
 //                                  and the rivers and lakes that file already held, plus the derived Lagos lagoon
 //
@@ -24,12 +26,14 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { project } from '../../src/map3d/geo/frame.ts';
+import { LAGOS } from '../../src/map3d/geo/data/lagos.ts';
 import { decodeTopology, encodeArc } from '../../src/map3d/geo/topo.ts';
 import type { FeatureData, RawTopo } from '../../src/map3d/geo/topo.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const cacheDir = join(root, '.cache', 'geo');
 const RELEASE = '9469f09';
+const ACCEPTED_LAGOS_SHA256 = 'e65bb768f638d863576bf64dc800fb4823777def95813e4ed8171678ec7ac1f9';
 const SOURCES = {
   adm1: { url: `https://github.com/wmgeolab/geoBoundaries/raw/${RELEASE}/releaseData/gbOpen/NGA/ADM1/geoBoundaries-NGA-ADM1.geojson`, sha256: '64fa218ac3d453cc1e66412ff461c5dfa1a4a1ade0da93b239a9891b587d28f9', bytes: 2289696 },
   adm2: { url: `https://github.com/wmgeolab/geoBoundaries/raw/${RELEASE}/releaseData/gbOpen/NGA/ADM2/geoBoundaries-NGA-ADM2.geojson`, sha256: 'bef7f2cfa45e012f4772eaa61c7b99e5188aeba4d5c6badae7e9f9aae8c02fcd', bytes: 9422551 },
@@ -39,6 +43,7 @@ const SOURCES = {
 export const TOLERANCE = {
   lagos: { grid: 0.0002, lga: 0.01, state: 0.01, lagoon: 0.05, rasterGrid: 0.0002 },
   oyo: { grid: 0.0002, lga: 0.01, state: 0.01 },
+  ogun: { grid: 0.0002, lga: 0.01, state: 0.01 },
   nigeria: { grid: 0.001, general: 3, lagos: 0.15, lagoonLake: 1.5 },
 };
 /** The smallest lagoon pieces kept, and the smallest islands of land inside it that still cut a hole, in km². */
@@ -265,6 +270,125 @@ function subsetBuilt(built: Built, owners: ReadonlySet<string>): Built {
   };
 }
 
+const quantised = ([x, y]: Pt, grid: number): Pt => [Math.round(x / grid), Math.round(y / grid)];
+const pointKey = ([x, y]: Pt): string => `${x},${y}`;
+const edgeKey = (a: Pt, b: Pt): string => pointKey(a) < pointKey(b) ? `${pointKey(a)}|${pointKey(b)}` : `${pointKey(b)}|${pointKey(a)}`;
+
+/** The one exact raw-source edge chain shared by `neighbour` and `target`, walked in target-ring order. */
+function rawSharedChain(neighbour: readonly Polygon[], target: readonly Polygon[]): Pt[] {
+  const targetRing = target[0]?.[0];
+  if (!targetRing || target.length !== 1) throw new Error('The Lagos-Ogun seam target requires one outer polygon');
+  const neighbourEdges = new Set<string>();
+  for (const polygon of neighbour) for (const ring of polygon) for (let index = 0; index < ring.length; index += 1) neighbourEdges.add(edgeKey(ring[index]!, ring[(index + 1) % ring.length]!));
+  const shared = new Set(targetRing.flatMap((point, index) => neighbourEdges.has(edgeKey(point, targetRing[(index + 1) % targetRing.length]!)) ? [index] : []));
+  const starts = [...shared].filter((index) => !shared.has((index - 1 + targetRing.length) % targetRing.length));
+  if (starts.length !== 1 || shared.size < 2) throw new Error(`Expected one Lagos-Ogun raw seam, found ${starts.length} chains and ${shared.size} edges`);
+  const points: Pt[] = [], start = starts[0]!;
+  let index = start;
+  points.push(targetRing[index]!);
+  while (shared.has(index)) {
+    index = (index + 1) % targetRing.length;
+    points.push(targetRing[index]!);
+    if (points.length > shared.size + 1) throw new Error('The Lagos-Ogun raw seam did not terminate');
+  }
+  if (points.length !== shared.size + 1) throw new Error('The Lagos-Ogun raw seam is not contiguous');
+  return points;
+}
+
+const ringPoints = (ring: Float64Array): Pt[] => {
+  const points: Pt[] = [];
+  for (let index = 0; index < ring.length; index += 2) points.push([ring[index]!, ring[index + 1]!]);
+  return points;
+};
+
+const cyclicPath = (points: readonly Pt[], from: number, to: number): Pt[] => {
+  const path: Pt[] = [];
+  for (let index = from; ; index = (index + 1) % points.length) {
+    path.push(points[index]!);
+    if (index === to) return path;
+  }
+};
+
+/** The accepted Lagos-state path corresponding to the exact raw shared chain, in accepted-ring order. */
+function acceptedLagosSeam(raw: readonly Pt[], grid: number): Pt[] {
+  const feature = decodeTopology(LAGOS).byId.get('lagos-state');
+  const ring = feature?.rings[0]?.[0];
+  if (!ring) throw new Error('The accepted Lagos topology has no state outline');
+  const accepted = ringPoints(ring).map((point) => quantised(point, grid));
+  const rawKeys = new Set(raw.map((point) => pointKey(quantised(point, grid))));
+  const endpoints = [quantised(raw[0]!, grid), quantised(raw.at(-1)!, grid)] as const;
+  const indexes = endpoints.map((endpoint) => accepted.findIndex((point) => pointKey(point) === pointKey(endpoint)));
+  if (indexes.some((index) => index < 0)) throw new Error('A raw Lagos-Ogun seam endpoint is absent from the accepted Lagos topology');
+  const forward = cyclicPath(accepted, indexes[0]!, indexes[1]!);
+  const backward = cyclicPath(accepted, indexes[1]!, indexes[0]!).reverse();
+  const score = (path: readonly Pt[]) => path.filter((point) => rawKeys.has(pointKey(point))).length;
+  const chosen = score(forward) > score(backward) ? forward : backward;
+  if (chosen.some((point) => !rawKeys.has(pointKey(point)))) throw new Error('The accepted Lagos seam contains a vertex outside the raw shared source chain');
+  if (pointKey(chosen[0]!) !== pointKey(endpoints[0]) || pointKey(chosen.at(-1)!) !== pointKey(endpoints[1])) throw new Error('The accepted Lagos seam has the wrong orientation');
+  return chosen;
+}
+
+const directedArc = (built: Built, ref: number): Pt[] => {
+  const points = built.arcs[ref < 0 ? ~ref : ref]!.points;
+  return ref < 0 ? [...points].reverse() : points;
+};
+
+/** Replaces only Ogun's Lagos-facing all-state arcs with the locked accepted Lagos-state seam. */
+function lockAcceptedLagosSeam(allStates: Built, rawLagos: readonly Polygon[], rawOgun: readonly Polygon[]): { built: Built; seamPoints: number } {
+  const target = subsetBuilt(allStates, new Set(['ogun-state']));
+  const reference = target.refs.find((ref) => ref.owner === 'ogun-state' && ref.poly === 0 && !ref.hole);
+  if (!reference) throw new Error('The Ogun state topology has no outer ring');
+  const shared = (ref: number): boolean => {
+    const owners = target.arcs[ref < 0 ? ~ref : ref]!.owners;
+    return owners.has('ogun-state') && owners.has('state:Lagos');
+  };
+  const starts = reference.ring.flatMap((ref, index) => shared(ref) && !shared(reference.ring[(index - 1 + reference.ring.length) % reference.ring.length]!) ? [index] : []);
+  if (starts.length !== 1) throw new Error(`Expected one Lagos-facing Ogun arc run, found ${starts.length}`);
+  const rotated = [...reference.ring.slice(starts[0]), ...reference.ring.slice(0, starts[0])];
+  const seamCount = rotated.findIndex((ref) => !shared(ref));
+  if (seamCount <= 0 || rotated.slice(seamCount).some(shared)) throw new Error('The Lagos-facing Ogun arcs are not one contiguous run');
+  const raw = rawSharedChain(rawLagos, rawOgun), accepted = acceptedLagosSeam(raw, target.grid);
+  const first = directedArc(target, rotated[0]!)[0]!, last = directedArc(target, rotated[seamCount - 1]!).at(-1)!;
+  const oriented = pointKey(first) === pointKey(accepted[0]!) && pointKey(last) === pointKey(accepted.at(-1)!)
+    ? accepted
+    : pointKey(first) === pointKey(accepted.at(-1)!) && pointKey(last) === pointKey(accepted[0]!) ? [...accepted].reverse() : null;
+  if (!oriented) throw new Error(`Accepted Lagos seam endpoints ${pointKey(accepted[0]!)}/${pointKey(accepted.at(-1)!)} do not match Ogun ${pointKey(first)}/${pointKey(last)}`);
+  const seamArc = target.arcs.length;
+  const withLocked: Built = {
+    ...target,
+    arcs: [...target.arcs, { points: oriented, owners: new Set(['ogun-state', 'state:Lagos']) }],
+    refs: target.refs.map((ref) => ref === reference ? { ...ref, ring: [seamArc, ...rotated.slice(seamCount)] } : ref),
+  };
+  return { built: subsetBuilt(withLocked, new Set(['ogun-state'])), seamPoints: accepted.length };
+}
+
+/** Locks the Ado Odo/Ota land edge to the same accepted Lagos path used by adjacent Lagos LGAs. */
+function lockAcceptedLagosLgaSeam(allLgas: Built, rawLagosLgas: readonly Polygon[], rawOta: readonly Polygon[]): { built: Built; seamPoints: number } {
+  const reference = allLgas.refs.find((ref) => ref.owner === 'ado-odo-ota' && ref.poly === 0 && !ref.hole);
+  if (!reference) throw new Error('The Ado Odo/Ota topology has no outer ring');
+  const raw = rawSharedChain(rawLagosLgas, rawOta), rawKeys = new Set(raw.map((point) => pointKey(quantised(point, allLgas.grid))));
+  const onSeam = (ref: number): boolean => directedArc(allLgas, ref).every((point) => rawKeys.has(pointKey(point)));
+  const starts = reference.ring.flatMap((ref, index) => onSeam(ref) && !onSeam(reference.ring[(index - 1 + reference.ring.length) % reference.ring.length]!) ? [index] : []);
+  if (starts.length !== 1) throw new Error(`Expected one Lagos-facing Ota LGA arc run, found ${starts.length}`);
+  const rotated = [...reference.ring.slice(starts[0]), ...reference.ring.slice(0, starts[0])];
+  const seamCount = rotated.findIndex((ref) => !onSeam(ref));
+  if (seamCount <= 0 || rotated.slice(seamCount).some(onSeam)) throw new Error('The Lagos-facing Ota LGA arcs are not one contiguous run');
+  const accepted = acceptedLagosSeam(raw, allLgas.grid);
+  const first = directedArc(allLgas, rotated[0]!)[0]!, last = directedArc(allLgas, rotated[seamCount - 1]!).at(-1)!;
+  const oriented = pointKey(first) === pointKey(accepted[0]!) && pointKey(last) === pointKey(accepted.at(-1)!)
+    ? accepted
+    : pointKey(first) === pointKey(accepted.at(-1)!) && pointKey(last) === pointKey(accepted[0]!) ? [...accepted].reverse() : null;
+  if (!oriented) throw new Error(`Accepted Lagos land seam endpoints do not match Ota ${pointKey(first)}/${pointKey(last)}`);
+  const seamArc = allLgas.arcs.length;
+  const withLocked: Built = {
+    ...allLgas,
+    arcs: [...allLgas.arcs, { points: oriented, owners: new Set(['ado-odo-ota', 'accepted:Lagos-LGAs']) }],
+    refs: allLgas.refs.map((ref) => ref === reference ? { ...ref, ring: [seamArc, ...rotated.slice(seamCount)] } : ref),
+  };
+  const owners = new Set(OGUN_LGAS.map(([, id]) => id));
+  return { built: subsetBuilt(withLocked, owners), seamPoints: accepted.length };
+}
+
 // ---- the lagoon: Lagos State minus the 20 local governments ----------------------------------------------------------
 
 /** Rasterises polygons (even-odd) at cell centres into `mask`. */
@@ -453,6 +577,65 @@ function oyoInputs(adm1: GeoFeatureCollection, adm2: GeoFeatureCollection): {
   return { lgaRings, stateRings, statePolys, lgaPolys };
 }
 
+// ---- Ogun ------------------------------------------------------------------------------------------------------------
+
+/** [name in geoBoundaries ADM2, game id, display name] */
+const OGUN_LGAS: readonly [string, string, string][] = [
+  ['Abeokuta North', 'abeokuta-north', 'Abeokuta North'], ['Abeokuta South', 'abeokuta-south', 'Abeokuta South'],
+  ['Ado Odo/Ota', 'ado-odo-ota', 'Ado Odo/Ota'], ['Ewekoro', 'ewekoro', 'Ewekoro'], ['Ifo', 'ifo', 'Ifo'],
+  ['Ijebu East', 'ijebu-east', 'Ijebu East'], ['Ijebu North', 'ijebu-north', 'Ijebu North'],
+  ['Ijebu North East', 'ijebu-north-east', 'Ijebu North East'], ['Ijebu Ode', 'ijebu-ode', 'Ijebu Ode'],
+  ['Ikenne', 'ikenne', 'Ikenne'], ['Imeko Afon', 'imeko-afon', 'Imeko/Afon'], ['Ipokia', 'ipokia', 'Ipokia'],
+  ['Obafemi Owode', 'obafemi-owode', 'Obafemi/Owode'], ['Odeda', 'odeda', 'Odeda'], ['Odogbolu', 'odogbolu', 'Odogbolu'],
+  ['Ogun Waterside', 'ogun-waterside', 'Ogun Water Side'], ['Remo North', 'remo-north', 'Remo North'],
+  ['Shagamu', 'sagamu', 'Sagamu'], ['Yewa North', 'yewa-north', 'Yewa North'], ['Yewa South', 'yewa-south', 'Yewa South'],
+];
+
+const OGUN_CITY_LGA_IDS = {
+  abeokuta: ['abeokuta-north', 'abeokuta-south', 'odeda', 'obafemi-owode'],
+  ota: ['ado-odo-ota'],
+  'ijebu-ode': ['ijebu-ode', 'ijebu-north-east', 'odogbolu'],
+  sagamu: ['sagamu', 'ikenne', 'remo-north'],
+} as const;
+const OGUN_COMING_LGA_IDS = ['ewekoro', 'ifo', 'ijebu-east', 'ijebu-north', 'imeko-afon', 'ipokia', 'ogun-waterside', 'yewa-north', 'yewa-south'] as const;
+
+function ogunInputs(adm1: GeoFeatureCollection, adm2: GeoFeatureCollection): {
+  lgaRings: RingInput[]
+  stateRings: RingInput[]
+  statePolys: Polygon[]
+  lagosPolys: Polygon[]
+  lgaPolys: Map<string, Polygon[]>
+} {
+  const state = adm1.features.find((feature) => feature.properties.shapeName === 'Ogun');
+  const lagos = adm1.features.find((feature) => feature.properties.shapeName === 'Lagos');
+  if (!state || !lagos) throw new Error('Ogun or Lagos State is missing from ADM1');
+  const statePolys = polygonsOf(state), lagosPolys = polygonsOf(lagos);
+  const inOgun = adm2.features.filter((feature) => {
+    const outer = polygonsOf(feature)[0]?.[0];
+    return outer ? inPolygons(ringMean(outer), statePolys) : false;
+  });
+  const expected = new Set(OGUN_LGAS.map(([source]) => source));
+  const unexpected = inOgun.filter((feature) => !expected.has(feature.properties.shapeName));
+  if (inOgun.length !== OGUN_LGAS.length || unexpected.length) {
+    throw new Error(`Ogun ADM2 selection found ${inOgun.length} features; unexpected: ${unexpected.map((feature) => feature.properties.shapeName).join(', ') || 'none'}`);
+  }
+  const byName = new Map(inOgun.map((feature): [string, GeoFeature] => [feature.properties.shapeName, feature]));
+  const lgaRings: RingInput[] = [], lgaPolys = new Map<string, Polygon[]>();
+  for (const [source, id] of OGUN_LGAS) {
+    const feature = byName.get(source);
+    if (!feature) throw new Error(`${source}: missing from the 20 Ogun local governments`);
+    const polygons = polygonsOf(feature);
+    lgaPolys.set(id, polygons);
+    polygons.forEach((polygon, poly) => polygon.forEach((ring, index) => lgaRings.push({ owner: id, poly, hole: index > 0, pts: ring })));
+  }
+  const stateRings: RingInput[] = [];
+  for (const feature of adm1.features) {
+    const owner = feature === state ? 'ogun-state' : `state:${feature.properties.shapeName}`;
+    polygonsOf(feature).forEach((polygon, poly) => polygon.forEach((ring, index) => stateRings.push({ owner, poly, hole: index > 0, pts: ring })));
+  }
+  return { lgaRings, stateRings, statePolys, lagosPolys, lgaPolys };
+}
+
 const featureText = (feature: Record<string, unknown>): string => JSON.stringify(feature);
 const bytes = (text: string): number => Buffer.byteLength(text);
 const sha256 = (text: string | Uint8Array): string => createHash('sha256').update(text).digest('hex');
@@ -530,15 +713,15 @@ function output(path: string, text: string, check: boolean, topologyNames: reado
   console.log(`${path}: wrote sha256 ${generatedHash}`);
 }
 
-interface Options { check: boolean; target: 'lagos' | 'oyo' | 'nigeria' }
+interface Options { check: boolean; target: 'lagos' | 'oyo' | 'ogun' | 'nigeria' }
 
 function optionsOf(args: readonly string[]): Options {
-  const allowed = new Set(['--check', '--lagos-only', '--oyo', '--nigeria']);
+  const allowed = new Set(['--check', '--lagos-only', '--oyo', '--ogun', '--nigeria']);
   const unknown = args.filter((arg) => !allowed.has(arg));
   if (unknown.length) throw new Error(`Unknown option: ${unknown.join(', ')}`);
-  const targets = [args.includes('--lagos-only'), args.includes('--oyo'), args.includes('--nigeria')].filter(Boolean).length;
-  if (targets > 1) throw new Error('--lagos-only, --oyo and --nigeria cannot be combined');
-  return { check: args.includes('--check'), target: args.includes('--oyo') ? 'oyo' : args.includes('--nigeria') ? 'nigeria' : 'lagos' };
+  const targets = [args.includes('--lagos-only'), args.includes('--oyo'), args.includes('--ogun'), args.includes('--nigeria')].filter(Boolean).length;
+  if (targets > 1) throw new Error('--lagos-only, --oyo, --ogun and --nigeria cannot be combined');
+  return { check: args.includes('--check'), target: args.includes('--oyo') ? 'oyo' : args.includes('--ogun') ? 'ogun' : args.includes('--nigeria') ? 'nigeria' : 'lagos' };
 }
 
 async function main(options: Options): Promise<void> {
@@ -585,6 +768,54 @@ ${stateFeature}
     output(path, oyoText, options.check, ['OYO_LGAS', 'OYO_STATE']);
     console.log(`oyo.ts ${bytes(oyoText)} bytes, ${lgaBuilt.arcs.length} LGA arcs, ${stateBuilt.arcs.length} state arcs`);
     console.log(`areas from source projection: Oyo State ${oyoStateKm2.toFixed(1)} km²; Ibadan 11-LGA play area ${ibadanPlayAreaKm2.toFixed(1)} km²; Lagos 20-LGA land ${lagos20LgaKm2.toFixed(1)} km² (administrative sets, not like-for-like metro areas)`);
+    return;
+  }
+
+  if (options.target === 'ogun') {
+    const lagosPath = join(root, 'src/map3d/geo/data/lagos.ts');
+    const acceptedLagosHash = sha256(readFileSync(lagosPath));
+    if (acceptedLagosHash !== ACCEPTED_LAGOS_SHA256) throw new Error(`Ogun seam requires accepted Lagos ${ACCEPTED_LAGOS_SHA256}; found ${acceptedLagosHash}`);
+    const T = TOLERANCE.ogun, ogun = ogunInputs(adm1, adm2), lagos = lagosInputs(adm1, adm2);
+    const lgaLocked = lockAcceptedLagosLgaSeam(build(ogun.lgaRings, T.grid, () => T.lga), lagos.lgaPolys, ogun.lgaPolys.get('ado-odo-ota') ?? []);
+    const lgaBuilt = lgaLocked.built;
+    const allStates = build(ogun.stateRings, T.grid, () => T.state);
+    const locked = lockAcceptedLagosSeam(allStates, ogun.lagosPolys, ogun.statePolys), stateBuilt = locked.built;
+    const lgaFeatures = OGUN_LGAS.map(([, id, name]) => featureText({ id, name, polys: polysOf(lgaBuilt, id) }));
+    const stateFeature = featureText({ id: 'ogun-state', name: 'Ogun State', polys: polysOf(stateBuilt, 'ogun-state') });
+    const stateArea = polygonsKm2(ogun.statePolys);
+    const cityAreas = Object.fromEntries(Object.entries(OGUN_CITY_LGA_IDS).map(([city, ids]) => [city, ids.reduce((sum, id) => sum + polygonsKm2(ogun.lgaPolys.get(id) ?? []), 0)]));
+    const ogunText = `/**
+ * GENERATED DATA — do not edit by hand (npm run geo:boundaries -- --ogun).
+ * All 20 Ogun State local governments are stored in OGUN_LGAS. OGUN_CITY_LGA_IDS selects the 11 local governments
+ * opened by Abeokuta, Ota, Ijebu-Ode and Sagamu; OGUN_COMING_LGA_IDS names the other nine for the state overview.
+ * Source: geoBoundaries gbOpen Nigeria, release ${RELEASE} (https://www.geoboundaries.org), ADM2 (boundaryID NGA-ADM2-59680162,
+ *   local governments) and ADM1 (NGA-ADM1-27671186, states). Original source GRID3, year 2022.
+ *   Licence CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Modified: selected, simplified, quantised, converted.
+ * Processing: LGA and non-Lagos state arcs use shared-arc topology, Visvalingam–Whyatt effective-area threshold ${T.lga}
+ *   square map units (1 unit = 100 m), quantised to ${T.grid} degrees. The ${locked.seamPoints}-vertex Lagos-facing state
+ *   path is copied exactly from accepted Lagos topology sha256 ${ACCEPTED_LAGOS_SHA256}; exact shared raw ADM1 edges select
+ *   its endpoints and orientation. Ado Odo/Ota's ${lgaLocked.seamPoints}-vertex shared land edge is locked the same way from
+ *   exact raw ADM2 edges shared with Lagos LGAs. Accepted paths are not simplified again. No water polygon is inferred from gaps.
+ */
+/* eslint-disable */
+import type { RawTopo } from '../topo.ts';
+export const OGUN_CITY_LGA_IDS = ${JSON.stringify(OGUN_CITY_LGA_IDS)} as const;
+export const OGUN_COMING_LGA_IDS = ${JSON.stringify(OGUN_COMING_LGA_IDS)} as const;
+export const OGUN_STATE_KM2 = ${stateArea.toFixed(1)};
+export const OGUN_CITY_AREA_KM2 = ${JSON.stringify(Object.fromEntries(Object.entries(cityAreas).map(([id, area]) => [id, Number(area.toFixed(1))])))} as const;
+export const OGUN_LAGOS_SEAM_VERTEX_COUNT = ${locked.seamPoints};
+export const OTA_LAGOS_SEAM_VERTEX_COUNT = ${lgaLocked.seamPoints};
+export const OGUN_LGAS: RawTopo = {"grid":${T.grid},"arcs":${JSON.stringify(arcText(lgaBuilt))},"features":[
+${lgaFeatures.join(',\n')}
+]};
+export const OGUN_STATE: RawTopo = {"grid":${T.grid},"arcs":${JSON.stringify(arcText(stateBuilt))},"features":[
+${stateFeature}
+]};
+`;
+    const path = join(root, 'src/map3d/geo/data/ogun.ts');
+    output(path, ogunText, options.check, ['OGUN_LGAS', 'OGUN_STATE']);
+    console.log(`ogun.ts ${bytes(ogunText)} bytes, ${lgaBuilt.arcs.length} LGA arcs, ${stateBuilt.arcs.length} state arcs, ${locked.seamPoints} locked state-seam vertices, ${lgaLocked.seamPoints} locked Ota land-seam vertices`);
+    console.log(`areas from source projection: Ogun State ${stateArea.toFixed(1)} km²; ${Object.entries(cityAreas).map(([city, area]) => `${city} ${area.toFixed(1)} km²`).join('; ')}`);
     return;
   }
 

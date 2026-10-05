@@ -1,3 +1,4 @@
+import { LAGOS_LOCAL_UNIT_DESCRIPTIONS } from '../../game/cities/lagos/descriptions.ts';
 /**
  * OWNER: world
  * City pack: Lagos State on its real shape. The land is the twenty local governments' open
@@ -312,7 +313,7 @@ const lgaShape = (lga: string): Pick<PackLga, 'polygon' | 'polygons' | 'plate' |
   for (const part of SHAPES.lgas[lga]!) for (const [lon, lat] of part[0]!) { south = Math.min(south, lat); north = Math.max(north, lat); west = Math.min(west, lon); east = Math.max(east, lon); }
   return { polygon: largest(parts), polygons: parts, plate: at(centre[0], centre[1]), tint: TINTS[lga]!, geo: { c: [centre[1], centre[0]], box: [south, west, north, east] } };
 };
-export const lgas: PackLga[] = LAGOS_LGAS.map((lga) => ({ id: lga.id, name: lga.name, line: lga.line, land: lga.land, districts: lga.districts, ...lgaShape(lga.id) }));
+export const lgas: PackLga[] = LAGOS_LGAS.map((lga) => ({ id: lga.id, name: lga.name, line: LAGOS_LOCAL_UNIT_DESCRIPTIONS[lga.id], land: lga.land, districts: lga.districts, ...lgaShape(lga.id) }));
 
 const STRIPE = ['#f2c230', '#22252a'];
 

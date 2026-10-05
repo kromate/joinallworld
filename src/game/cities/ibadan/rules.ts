@@ -16,17 +16,17 @@ export const IBADAN_LGAS: readonly (Omit<LgaDefinition, 'id' | 'districts'> & {
   id: IbadanLocalGovernmentId
   districts: IbadanDistrictId[]
 })[] = Object.freeze(([
-  { id: 'akinyele', name: 'Akinyele', zone: 'mainland', land: 80000, line: 'Moniya, the railway station and the green northern approach to the city.' },
-  { id: 'egbeda', name: 'Egbeda', zone: 'mainland', land: 90000, line: 'Iwo Road, Gbagi and Alakia airport on the eastern side.' },
-  { id: 'ibadan-north', name: 'Ibadan North', zone: 'mainland', land: 190000, line: 'Bodija, Agodi, Mokola and the university approach.', districts: ['bodija', 'mokola'] },
-  { id: 'ibadan-north-east', name: 'Ibadan North-East', zone: 'mainland', land: 125000, line: 'Iwo Road, Gate and the busy north-eastern entrance.' },
-  { id: 'ibadan-north-west', name: 'Ibadan North-West', zone: 'mainland', land: 145000, line: 'Dugbe, Cocoa House and the streets west of the old centre.', districts: ['dugbe'] },
-  { id: 'ibadan-south-east', name: 'Ibadan South-East', zone: 'mainland', land: 110000, line: 'Mapo and the old city below its brown-roof hills.' },
-  { id: 'ibadan-south-west', name: 'Ibadan South-West', zone: 'mainland', land: 155000, line: 'Ring Road, Alesinloye and the southern urban streets.', districts: ['ring-road'] },
-  { id: 'ido', name: 'Ido', zone: 'mainland', land: 70000, line: 'The western edge of the metropolis, with farms, research centres and new neighbourhoods.' },
-  { id: 'lagelu', name: 'Lagelu', zone: 'mainland', land: 65000, line: 'Akobo and the expanding north-eastern neighbourhoods.', districts: ['akobo'] },
-  { id: 'oluyole', name: 'Oluyole', zone: 'mainland', land: 85000, line: 'Challenge, Toll Gate and the southern approach.' },
-  { id: 'ona-ara', name: 'Ona Ara', zone: 'mainland', land: 65000, line: 'The south-eastern road out through Akanran.' },
+  { id: 'akinyele', name: 'Akinyele', zone: 'mainland', land: 80000 },
+  { id: 'egbeda', name: 'Egbeda', zone: 'mainland', land: 90000 },
+  { id: 'ibadan-north', name: 'Ibadan North', zone: 'mainland', land: 190000, districts: ['bodija', 'mokola'] },
+  { id: 'ibadan-north-east', name: 'Ibadan North-East', zone: 'mainland', land: 125000 },
+  { id: 'ibadan-north-west', name: 'Ibadan North-West', zone: 'mainland', land: 145000, districts: ['dugbe'] },
+  { id: 'ibadan-south-east', name: 'Ibadan South-East', zone: 'mainland', land: 110000 },
+  { id: 'ibadan-south-west', name: 'Ibadan South-West', zone: 'mainland', land: 155000, districts: ['ring-road'] },
+  { id: 'ido', name: 'Ido', zone: 'mainland', land: 70000 },
+  { id: 'lagelu', name: 'Lagelu', zone: 'mainland', land: 65000, districts: ['akobo'] },
+  { id: 'oluyole', name: 'Oluyole', zone: 'mainland', land: 85000 },
+  { id: 'ona-ara', name: 'Ona Ara', zone: 'mainland', land: 65000 },
 ] satisfies IbadanLgaSeed[]).map((unit) => Object.freeze({ beta: true, districts: [], ...unit })))
 
 /** Pinned shared-frame projection of the Ibadan anchor, 3.93 E and 7.38 N. */

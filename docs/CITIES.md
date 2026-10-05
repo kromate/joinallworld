@@ -1,16 +1,16 @@
 # City modules
 
-A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. No other city is open yet.
+A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode and Sagamu.
 
 ## Catalogue states
 
 The registry distinguishes three questions.
 
 - `isKnownCityId` accepts every city named by the atlas and compatibility layer.
-- `isCityId` accepts cities whose stored lives the server may read. This currently includes Lagos and legacy Ibadan lives.
-- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos only.
+- `isCityId` accepts cities whose stored lives the server may read. This currently includes the six open city modules.
+- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode and Sagamu.
 
-Ibadan, Abuja and Port Harcourt remain closed. Ibadan has compatibility metadata because earlier builds stored lives under that key. Loading its compatibility content uses the unchanged Lagos catalogue and does not open Ibadan or allow a fresh life there.
+Abuja and Port Harcourt remain closed. Older Ibadan saves may contain Lagos venue ids; the explicit aliases are `park → agodi-gardens`, `library → ui-campus`, `office → cocoa-house`, `hospital → uch`, `market → dugbe-market`, `beach → eleyele-lake`, `airport → ibadan-airport`, `polling-unit → mapo-polling`, `state-house → mapo-hall`, `amala-shitta → dugbe-amala`, `salon → mokola-salon`, `church → ui-chapel`, `mosque → ui-mosque`, `viewing-centre → lekan-salami-stadium`, `i-fitness → lekan-salami-stadium`, `canopy-walk → iita-forest`, `refinery → moniya-station`, `cchub → polytechnic`, `radio/shrine/quilox/rooftop → agodi-gardens`, `palms → dugbe-market`, and `police → mapo-hall`. They preserve old references while the current Ibadan module supplies the real city content.
 
 `registeredCityIds()` returns server-known ids. `playableCityIds()` returns open modules. Callers should choose the list that matches the action instead of treating an atlas label as permission to create a life.
 
@@ -30,7 +30,11 @@ Rules provide:
 
 Content provides the venue scene kind, existing activity definition, opening hours, display wording and position; regulars and their city; career workplaces; rented homes and their map spots; calendar entries; goal and wish wording; radio venues; billboard roads; table places; a ranked things-to-do list; and a short culture card.
 
+Local-unit rules contain identities, geography categories and prices only. Every content module supplies `localUnitDescriptions` keyed by its complete local-unit list. Engine price and address helpers work without prose; estate views, local-government panels and map packs attach descriptions after the city content loads.
+
 Dream and family-outcome wording can be localized through `dreamWording` and `lotteryWording`. These fields change labels, guidance and explanatory bullets only; IDs, targets, loans, cash, skill effects and rewards remain shared mechanics. Check the onboarding cards, profile, goals and completion messages when authoring these overrides.
+
+Travel visits and activity cooldowns are keyed by city outside Lagos; existing bare Lagos keys remain readable. Bounded references to an unloaded origin survive reload without loading its prose. Loaded catalogues validate the referenced IDs and cooldown duration. Daily earning and roadside-event caps remain global. The last local route and an unanswered roadside choice are transient and clear when the character changes city.
 
 The engine remains synchronous after startup. A host first awaits `loadCityContent(id)`, then reads `cityContent(id)`. Reading an unloaded city's content throws. `cachedCityContent(id)` is the non-throwing probe. Map hosts use the equivalent `loadCityMap` and `cityMap` pair.
 
@@ -59,7 +63,7 @@ A completed journey starts a new life, settles, works and travels out and back. 
 
 An open city needs at least one valid local unit, one rented-home district, a road hub, a venue for every required career track or an explicit unavailable-career declaration, two regulars at every public venue, and working civic venues for polling and government. It also needs food, health, worship, market, recreation and home scene coverage. Nightlife may use a club, shrine or rooftop scene, or a culturally appropriate activity tagged `nightlife` in another built scene, such as an evening tea and suya garden or film house. Calendar events, the gem hunt, radio, billboards, tables, goals and wishes may reference only ids in that city's content.
 
-Every venue needs a stable id unique within the city, an existing scene kind, a district, opening hours where applicable, one line describing what a player can do there, spots and activities, and a position. New cities use longitude and latitude. Lagos keeps its legacy map points until the current renderer adopts the shared geometry pack, which preserves existing play behavior.
+Every venue needs a stable id unique within the city, an existing scene kind, a district, opening hours where applicable, one line describing what a player can do there, spots and activities, and a position. New cities use longitude and latitude. Lagos keeps its legacy map points until the shared-frame renderer adopts the geometry pack; that renderer transition must preserve existing play behavior and city placement.
 
 Links must produce matching journeys from both endpoints through `linksFrom`. Local-unit ids must match the scene pack and decoded map geometry. Sampling covers the union of state, play-area, unit and water extents, so a footprint outside its state or a local polygon outside its footprint is rejected along with material gaps, land overlap and land-water overlap. Multi-unit geometry must expose exact shared segments from its shared-arc source. State-edge agreement between different modules, such as the Lagos-Ogun border, is checked when that neighbouring state module is added. Child ids must be unique, and loading the registry must not load content or geometry chunks. A city stays closed when any of these checks fails.
 
@@ -73,6 +77,6 @@ Money receipts, friend relationships, privacy preferences, consent and anti-farm
 
 ## Regenerating the reference geometry
 
-`npm run geo:boundaries` regenerates only the Lagos topology. It downloads the pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. `npm run geo:boundaries -- --check` compares both exact generated text and decoded geometry without writing. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. Changing the Nigeria atlas requires the explicit `--nigeria` option; the default cannot change it.
+`npm run geo:boundaries` regenerates only the Lagos topology. Use `npm run geo:boundaries -- --oyo`, `--ogun`, or `--nigeria` for the corresponding explicit targets; combine any target with `--check` to compare exact generated text and decoded geometry without writing. The command downloads pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. The default cannot change the Nigeria atlas.
 
 The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and three compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.

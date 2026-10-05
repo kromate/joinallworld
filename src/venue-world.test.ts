@@ -26,7 +26,8 @@ function makeWorld(host: StubContainer, options: VenueWorldOptions): TestWorld {
 /** The browser globals the tests replace and restore (assignable here, unlike on the real `globalThis`). */
 const browser = globalThis as unknown as Record<string, unknown>;
 
-test('idle venue performs zero renders; each change draws exactly one frame', async () => {
+test('idle venue performs zero renders; each change draws exactly one frame', async (t) => {
+  const errors = t.mock.method(console, 'error', () => {});
   let frames = 0, timers = 0;
   const original = { raf: globalThis.requestAnimationFrame, interval: globalThis.setInterval };
   globalThis.requestAnimationFrame = () => { frames += 1; return 0; };
@@ -41,8 +42,10 @@ test('idle venue performs zero renders; each change draws exactly one frame', as
     assert.equal(renderer.calls.render, afterCreate);
     assert.equal(frames, 0, 'no requestAnimationFrame'); assert.equal(timers, 0, 'no interval timers');
     world.setLocation('park'); assert.equal(world.diagnostics().renderCount, afterCreate, 'same venue: nothing to draw');
-    world.setState({ location: 'park' }); assert.equal(world.diagnostics().renderCount, afterCreate, 'static scene ignores state');
+    world.setState({ location: 'park', estate: { city: 'lagos' }, home: { items: [{ id: 'test-chair', itemId: 'plastic-chair', x: 3, y: 3, rot: 0 }] } }); assert.equal(world.diagnostics().renderCount, afterCreate, 'static scene ignores state');
     world.setLocation('home'); assert.equal(world.diagnostics().renderCount, afterCreate + 1);
+    assert.ok(world.diagnostics().objects.some(item => item.id === 'test-chair'), 'the Home scene builds the real furniture');
+    assert.equal(errors.mock.callCount(), 0, 'the scene must not silently recover from a build error');
     world.setLocation('library'); world.setLocation('park'); assert.equal(world.diagnostics().renderCount, afterCreate + 3);
     world.resize(); world.update(); assert.equal(world.diagnostics().renderCount, afterCreate + 5);
     await new Promise(resolve => setTimeout(resolve, 60));

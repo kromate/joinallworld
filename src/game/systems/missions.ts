@@ -1,3 +1,4 @@
+import { cityReference, readCityReference } from '../cities/references.ts';
 /**
  * OWNER: growth
  * Missions: three daily and three weekly tasks dealt from content/missions.ts, the weekly stamp
@@ -43,7 +44,6 @@ import { canCredit, credit } from '../api.ts';
 import { DAILY_MISSIONS, DAY_TITLES, MISSION_KINDS, MISSION_REWARDS, STAMP_CARD, WEEKLY_MISSIONS, WEEK_TITLE } from '../content/missions.ts';
 import { hasEventToday } from '../calendar.ts';
 import { venueFor } from '../cities/runtime.ts';
-import { cachedCityContent, isCityId } from '../cities/registry.ts';
 
 type Scope = 'daily' | 'weekly';
 const POOLS: Record<Scope, readonly MissionDefinition[]> = { daily: DAILY_MISSIONS, weekly: WEEKLY_MISSIONS };
@@ -60,18 +60,10 @@ const nowOf = (state: LifeState, ctx: LifeContext | undefined): number => (finit
 const need = (def: MissionDefinition): number => def.count ?? 1;
 const done = (entry: MissionEntry): boolean => entry.n >= need(defOf(entry.id));
 const scopeOf = (state: LifeState, id: string): Scope | null => (state.missions.daily.some((entry) => entry.id === id) ? 'daily' : state.missions.weekly.some((entry) => entry.id === id) ? 'weekly' : null);
-export const visitIdentity = (cityId: string, venueId: string): string => cityId === 'lagos' ? venueId : `${cityId}:${venueId}`;
+export const visitIdentity = cityReference;
 const cleanVisitIdentity = (value: unknown, currentCity: string): string | null => {
-  if (typeof value !== 'string') return null;
-  const separator = value.indexOf(':');
-  if (separator < 0) {
-    if (venueFor('lagos', value)) return value; // deployed Lagos keys keep their original shape
-    return venueFor(currentCity, value) ? visitIdentity(currentCity, value) : null;
-  }
-  const cityId = value.slice(0, separator), venueId = value.slice(separator + 1);
-  if (!isCityId(cityId) || !isId(venueId)) return null;
-  if ((cityId === 'lagos' || cachedCityContent(cityId)) && !venueFor(cityId, venueId)) return null;
-  return `${cityId}:${venueId}`;
+  const reference = readCityReference(value, currentCity, (city, id) => Boolean(venueFor(city, id)));
+  return reference ? cityReference(reference.cityId, reference.id) : null;
 };
 
 /** Can this mission be done at all by this life today? A mission that cannot is never dealt. */

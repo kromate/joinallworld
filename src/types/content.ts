@@ -1039,8 +1039,6 @@ export interface LgaDefinition {
   zone: VenueZone
   /** How dear land is, in naira: it scales the price of every house upgrade (world.js tierCost). */
   land: number
-  /** One line about the place. */
-  line: string
   /** The rented-home districts that lie inside it (possibly none). */
   districts: HouseId[]
   beta?: boolean
@@ -1189,10 +1187,21 @@ export interface CityMapPack<City extends string = string, LocalUnit extends str
   stateFeatureId: string
   loadScene: () => Promise<CityPack>
   loadGeometry: () => Promise<CityMapGeometry>
+  loadStateOverview?: () => Promise<CityStateOverview>
 }
 
 export type LonLatRing = readonly (readonly [number, number])[]
 export type LonLatPolygon = readonly LonLatRing[]
+
+/** Lazy state overview, retaining full local-unit geometry beyond the currently opened cities. */
+export interface CityStateOverview {
+  stateId: string
+  name: string
+  outline: readonly LonLatPolygon[]
+  localUnits: readonly { id: string; name: string; polygons: readonly LonLatPolygon[] }[]
+  neighbours: readonly { name: string; polygons: readonly LonLatPolygon[] }[]
+  landmarks?: readonly { id: string; name: string; lon: number; lat: number }[]
+}
 
 /** Decoded shared-frame geometry. Shared borders originate from one topology arc. */
 export interface CityMapGeometry {
@@ -1272,6 +1281,8 @@ export interface CityHousingContent {
 /** Prose and gameplay catalogues. This object is loaded only when the city is entered or previewed. */
 export interface CityContent<City extends string = string> {
   cityId: City
+  /** Display prose, keyed by every local unit in this city's compact rules. */
+  localUnitDescriptions: Readonly<Record<string, string>>
   /** Local names and beta quotes for the shared travel mechanics. */
   localModes?: readonly TravelModeDefinition[]
   /** City wording only; dream ids, targets and rewards remain shared rules. */
@@ -1315,6 +1326,8 @@ export interface CityModuleRules<
   defaultRentedHome: string
   /** Job ids whose mechanics are available in this city; enough to retain a foreign held job while its content is cold. */
   careerIds: readonly string[]
+  /** Advertises a lazy full-state local-government overview. */
+  hasStateOverview?: boolean
   hubs: readonly CityHub<HubId>[]
   links: readonly CityLink[]
 }

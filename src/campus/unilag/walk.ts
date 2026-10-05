@@ -1,7 +1,7 @@
 import { createWalkGrid } from '../../scene/walk-grid.ts';
 import type { WalkCircle, WalkGrid, WalkPoint, WalkRect } from '../../scene/walk-grid.ts';
 import { BUILDINGS, ZONES } from './layout.ts';
-import type { CampusBuilding, CampusZone, Portal } from './layout.ts';
+import type { CampusBuildingFootprint, CampusZone, Portal } from './layout.ts';
 
 export type { WalkCircle, WalkGrid, WalkPoint, WalkRect };
 
@@ -27,7 +27,7 @@ const zoneById = new Map(ZONES.map((zone) => [zone.id, zone]));
  * Gates are two pillars with a clear opening beneath the arch.
  * Sports grounds, gardens and water scenery do not create solid footprints.
  */
-export function footprintOf(building: CampusBuilding): WalkRect[] {
+export function footprintOf(building: CampusBuildingFootprint): WalkRect[] {
   const { x, z, w, d, kind, interior } = building;
   const x0 = x - w / 2, x1 = x + w / 2;
   const z0 = z - d / 2, z1 = z + d / 2;

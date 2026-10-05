@@ -28,5 +28,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
-      - run: npm test
+      # The build comes first: the tests that read dist/ (bundle budgets, the served files) skip themselves without it.
       - run: npm run build
+      - run: npm test

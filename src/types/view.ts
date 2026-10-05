@@ -346,6 +346,20 @@ export interface RoadsideChoiceCard {
   blocked: Block<'insufficient_funds'> | null
 }
 
+/** Paying to arrive now from the trip in progress ('travel.skip'). */
+export interface TripSkipOffer {
+  /** 'intercity' between two cities, 'travel' between two venues. */
+  kind: 'intercity' | 'travel'
+  /** Naira, as the trip stands; it falls as the trip goes on. 0 when `free`. */
+  fee: number
+  /** The character's first skip between cities costs nothing. */
+  free: boolean
+  /** The price is large enough to be asked about once more before it is paid. */
+  confirm: boolean
+  /** Why it cannot be bought right now. For 'insufficient_funds' the reason is "You need ₦X more". */
+  blocked: Block<'almost_there' | 'insufficient_funds'> | null
+}
+
 export interface TravelView {
   /** Legacy list of the five base modes with standard fares. */
   modes: TravelModeDefinition[]
@@ -378,6 +392,8 @@ export interface TravelView {
   gigsHere: ActivityId[]
   /** The trip in progress. `mode` and `fare` are null on a trip from an older save. A cancel never refunds. */
   active: { from: VenueId; to: VenueId; mode: TravelModeId | null; fare: number | null; refundable: false } | null
+  /** The price of arriving now, while a trip that can be skipped runs (between cities, or a long one inside the city). */
+  skip: TripSkipOffer | null
 }
 
 // ---- health -------------------------------------------------------------------------------
@@ -1056,7 +1072,7 @@ export const VIEW_FIELD_KEYS = {
     'topOfLadder', 'weeklyPay', 'workplace',
   ],
   activities: ['active', 'cards', 'spot', 'spots'],
-  travel: ['active', 'cooldowns', 'defaultMode', 'destinations', 'duration', 'event', 'gigs', 'gigsHere', 'home', 'modes', 'trips', 'visited'],
+  travel: ['active', 'cooldowns', 'defaultMode', 'destinations', 'duration', 'event', 'gigs', 'gigsHere', 'home', 'modes', 'skip', 'trips', 'visited'],
   health: [
     'advice', 'cause', 'cures', 'feelings', 'healsInMinutes', 'immune', 'immuneMinutes', 'low', 'rundown', 'sick', 'since',
     'soaked', 'status', 'strain', 'warning', 'weather',

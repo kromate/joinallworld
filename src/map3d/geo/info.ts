@@ -15,11 +15,12 @@ import { cityLinks, cityRules, citiesInState, linksFrom } from '../../game/citie
  *
  */
 import type { CityLinkMode } from '../../types/index.ts';
+import { TRIP_SKIP, tripSkipFee } from '../../game/content/travel.ts';
 import type { AfricaGroupId, ContinentId, RegionKind, RegionStatus } from '../types.ts';
 import { AFRICA_GROUPS, CONTINENTS, ZONES, cityAccess, cityEntry, regionEntry } from '../regions.ts';
 
 export interface RegionRef { kind: RegionKind; id: string }
-export interface RouteInfo { id: string; to: string; mode: CityLinkMode; label: string; fare: number; minutes: number; km: number; hub: string; live: boolean; why: string | null }
+export interface RouteInfo { id: string; to: string; mode: CityLinkMode; label: string; fare: number; minutes: number; km: number; hub: string; live: boolean; why: string | null; /** What arriving at once would add to the fare, in naira (0: this character's first skip, which is free). Absent when the player's own routes are not known. */ skip?: number }
 export interface RegionAction { kind: 'enter-city' | 'open-city' | 'zoom'; label: string; city?: string; level?: string }
 export type RegionTone = 'here' | 'open' | 'preview' | 'soon' | 'none';
 export interface RegionInfo {
@@ -35,7 +36,7 @@ export interface RegionContext {
   feature?: FeatureLike | null;
   current?: string | null;
   held?: string[];
-  routes?: { to: string; mode: string; blocked?: string | null }[] | null;
+  routes?: { to: string; mode: string; blocked?: string | null; /** The character still has its free first skip between cities. */ skipFree?: boolean }[] | null;
 }
 
 const TYPES: Readonly<Record<string, string>> = { country: 'Country', territory: 'Territory', continent: 'Continent' };
@@ -48,7 +49,7 @@ function routesBetween(from: string, to: string, mine: RegionContext['routes']):
     const live = mine?.find((item) => item.to === to && item.mode === link.mode), open = cityRules(to)?.status === 'open';
     const why = live ? live.blocked || null : open ? null : `${cityRules(to)?.name ?? 'It'} is not open yet, so nothing leaves for it. Departures start the day it opens.`;
     return { id: linkKey(link), to, mode: link.mode, label: link.label, fare: link.fare, minutes: Math.round((link.seconds / 60) * 10) / 10, km: link.km,
-      hub: cityRules(from)?.hub?.[link.mode] ?? 'the park', live: Boolean(live) && !live!.blocked && open, why };
+      hub: cityRules(from)?.hub?.[link.mode] ?? 'the park', live: Boolean(live) && !live!.blocked && open, why, ...(typeof live?.skipFree === 'boolean' ? { skip: live.skipFree && TRIP_SKIP.firstIntercityFree ? 0 : tripSkipFee('intercity', link.seconds, link.fare) } : {}) };
   });
 }
 

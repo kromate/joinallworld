@@ -366,6 +366,8 @@ export interface TravelState {
   gigs: { day: LagosDay; count: number }
   /** Lagos day a once-a-day roadside event was last offered. */
   eventDays: Partial<Record<RoadsideEventId, LagosDay>>
+  /** True once a trip between cities was skipped ('travel.skip': the first such skip is free). False on a save from before skipping. */
+  skipped: boolean
 }
 
 /** OWNER world. */
@@ -1078,7 +1080,7 @@ export const SYSTEM_STATE_KEYS = {
  */
 export const SLICE_FIELD_KEYS = {
   career: ['city', 'auto', 'autoDay', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
-  travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'trips', 'visited'],
+  travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'skipped', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],
   property: ['car', 'cars', 'house'],

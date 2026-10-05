@@ -2,13 +2,15 @@
 // What is happening right now: the running activity (or trip) with its bar, the time left, and
 // Cancel with the real cancel rule. The time is the server's: it moves when a state arrives
 // (about once a second while something runs), never on a timer of its own.
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import { cityName } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
 import { isTrip } from './venueModel.ts'
 
+// Paying to arrive now ('travel.skip') is fetched when a trip that offers it is running, not with the first screen.
+const SkipTrip = defineAsyncComponent(() => import('../travel/SkipTrip.vue'))
 const { game, command } = useApp()
 const state = game.state
 const view = game.view
@@ -44,5 +46,6 @@ async function cancel(): Promise<void> {
     <progress max="1" :value="progress" aria-label="Activity progress" />
     <p v-if="paid && activity" class="life-progress-note">Pays {{ money(activity.reward) }} when finished. Cancelling earns nothing.</p>
     <p v-else-if="fixed" class="life-progress-note">This cannot be cancelled once started.</p>
+    <SkipTrip v-if="view.travel.skip" />
   </section>
 </template>

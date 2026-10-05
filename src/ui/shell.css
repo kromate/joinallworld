@@ -232,6 +232,14 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-ui progress::-webkit-progress-value{background:#2f8a57;border-radius:8px;transition:width .3s linear}
 .life-ui progress::-moz-progress-bar{background:#2f8a57;border-radius:8px}
 .life-progress-note{grid-column:1/-1;font-size:11px;color:var(--c-muted)}
+/* Skip the trip (the progress chip and the Map's trip bar): one primary button, a line under it, and the question a large price asks */
+.trip-skip{grid-column:1/-1;display:grid;gap:5px;min-width:0}
+.life-ui .trip-skip .trip-skip-go{width:100%;min-height:var(--tap);padding:0 16px;border-radius:999px;background:var(--c-green-dark);color:#fff;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.life-ui .trip-skip .trip-skip-go:disabled{opacity:.55;cursor:not-allowed}
+.trip-skip-note{margin:0;font-size:11px;line-height:1.35;color:var(--c-muted)}
+.life-ui .trip-skip .ui-confirm .ui-button{min-height:var(--tap);padding:0 16px;border-radius:999px;font-size:13px;font-weight:700}
+.life-ui .trip-skip .ui-confirm .ui-button.is-primary{background:var(--c-green-dark);color:#fff}
+.life-ui .trip-skip .ui-confirm .ui-button:not(.is-primary){background:#fff;color:var(--c-ink)}
 
 /* Travel view (replaces the venue panel for the length of a trip) */
 

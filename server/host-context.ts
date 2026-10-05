@@ -7,6 +7,7 @@
  * are here, once, so the two hosts cannot drift apart. Portable: no Node imports.
  */
 import { settleCity, applyLifeAction } from './life-service.ts';
+import { fileCharacter } from './character.ts';
 import { archivedLife } from './protocol.ts';
 import { outcomeKey } from './routes/core.ts';
 import type { ActionRequest, CityId, LifeChangedFrame } from '../src/types/protocol.ts';
@@ -195,8 +196,16 @@ export function lifeAuthority({ now, receipts, changed }: { now: () => number; r
   const ownerOf = new WeakMap<LifeState, SessionRecord>();
   // What a player would see of a character: the outcome of its life in this city, and which city and lives it has.
   const seen = (session: SessionRecord, city: CityId): string => `${outcomeKey(session.cities?.[city]?.state)}${JSON.stringify([session.character, Object.keys(session.cities || {}), Object.keys(session.legacyLives ?? {})])}`;
+  /** The city a life is still filed under although it now says another one, or null. */
+  const cityFiling = (session: SessionRecord, state: LifeState): CityId | null => {
+    for (const [city, entry] of Object.entries(session.cities ?? {})) if (entry?.state === state) return state.estate.city === city ? null : city as CityId;
+    return null;
+  };
   const applied = (state: LifeState, result: ActionOutcome, actionId: string | undefined): ActionOutcome => {
     const owner = ownerOf.get(state);
+    // An action that ended a trip between cities (a skipped trip) left the life in another city: it is filed under that
+    // city in the same transaction, exactly as a settlement files a trip that ran out (settleCity).
+    if (owner && result.ok) { const from = cityFiling(owner, state); if (from) fileCharacter(owner, from, now()); }
     if (changed && owner && result.ok) changed(owner.publicId, owner.rev ?? 0, actionId);
     return result;
   };

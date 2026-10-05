@@ -7,7 +7,7 @@ import type { SqlBinding, SqliteStorage, SqlCursor, SqlRow } from './cf-types.ts
 import type { Db, SessionRecord, TransactOptions } from '../server/types.ts';
 
 /** The document as these tests use it: sessions plus whatever collections a test invents (the real `Db` types the five known ones). */
-interface Draft { version: number; sessions: Record<string, SessionRecord | undefined>; readonly $store: { scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]; onceCounts(liveSince: number, lightKinds: readonly string[]): { money: number; light: number } }; [collection: string]: unknown }
+interface Draft { version: number; sessions: Record<string, SessionRecord | undefined>; readonly $store: { scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]; expiredSessionKeys(now: number): string[]; onceCounts(liveSince: number, lightKinds: readonly string[]): { money: number; light: number } }; [collection: string]: unknown }
 interface LooseStore {
   transact<T>(operation: (db: Draft) => T | Promise<T>, options?: TransactOptions<T>): Promise<T>
   read<T>(operation: (db: Draft) => T | Promise<T>): Promise<T>
@@ -301,4 +301,27 @@ test('SQLite: a write names only what changed — a session is updated by its ke
  assert.deepEqual(await open(c.storage,{chunk:64}).read(d=>(d['social'] as {lines:string[]}).lines.length),30);
  // Unchanged: nothing.
  c.reset();await loose.transact(d=>{(d['social'] as {lines:string[]}).lines[0]=lines[0] as string;});assert.equal(c.writes.size,0);
+});
+
+test('SQLite: expired sessions are found by their stored expiry: no other record is read, and a held or drafted renewal is honoured',async t=>{
+ const db=new DatabaseSync(':memory:');
+ const inner=storageOn(db),queries: string[]=[];
+ const storage: SqliteStorage={...inner,sql:{exec<Row extends SqlRow>(query: string,...params: SqlBinding[]): SqlCursor<Row>{queries.push(`${query} ${params.join(',')}`);return inner.sql.exec<Row>(query,...params);}}};
+ const store=createSqliteStore(storage,{lazyFlushMs:3600000}),loose=store as unknown as LooseStore;
+ t.after(async()=>{await store.close();db.close();});
+ const at=1000000,record=(key: string,expiresAt: number)=>({...session(),secret:key,publicId:`public-${key}`,expiresAt});
+ await loose.transact(d=>{put(d,'gone',record('gone',at-1));put(d,'renewed',record('renewed',at-1));put(d,'drafted',record('drafted',at-1));for(let i=0;i<20;i++)put(d,`live-${i}`,record(`live-${i}`,at+5000));});
+ // One session is renewed by a change that is only held in memory: its row still says it has run out.
+ await loose.transact(d=>{(d.sessions['renewed'] as SessionRecord).expiresAt=at+5000;},lazy);
+ queries.length=0;
+ const found=await loose.transact(d=>{
+  (d.sessions['drafted'] as SessionRecord).expiresAt=at+5000; // renewed by this transaction
+  put(d,'fresh',record('fresh',at-5)); // made, already run out, by this transaction
+  return d.$store.expiredSessionKeys(at).sort();
+ },lazy);
+ assert.deepEqual(found,['fresh','gone']);
+ assert.equal(queries.some(query=>/SELECT secret,value FROM sessions/.test(query)),false,'the table is not read whole');
+ assert.equal(queries.some(query=>/FROM sessions WHERE secret = \? live-/.test(query)),false,'a session that has not run out is not read');
+ // A scan answers the same keys (and reads everything to do it).
+ assert.deepEqual((await loose.read(d=>d.$store.scanSessions(item=>!(item.expiresAt>at)))).sort(),['fresh','gone']);
 });

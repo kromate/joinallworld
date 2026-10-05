@@ -48,6 +48,7 @@
  * reads one row, and only the receipts a transaction added, changed or removed are written.
  *
  * Extras for the host only: db.$store.scanSessions(predicate) → [secret] (records are read without receipts),
+ * db.$store.expiredSessionKeys(now) → [secret] (by the stored expiry: only the records that have run out are read),
  * db.$store.sessionKeyByPublicId(id), db.$store.onceCounts(liveSince, lightKinds) → { money, light }.
  */
 import { storageError } from '../server/protocol.ts';
@@ -234,6 +235,19 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
           else if (predicate(JSON.parse(heldText(held.sessions, row.secret, row.value) ?? row.value) as SessionRecord, row.secret)) keys.push(row.secret);
         }
         for (const [key, held] of sessions) if (!seen.has(key) && held !== undefined && predicate(held, key)) keys.push(key);
+        return keys;
+      },
+      // Found by the stored expiry, so a sweep reads the records that have run out and no others (scanSessions reads and
+      // parses every one). A row whose expiry a held change or this transaction has pushed out is not expired: each
+      // candidate is judged as the draft holds it.
+      expiredSessionKeys: now => {
+        const keys: string[] = [], seen = new Set<string>();
+        for (const row of sql.exec<{ secret: string }>('SELECT secret FROM sessions WHERE expires_at <= ?', now).toArray()) {
+          seen.add(row.secret);
+          const session = sessionMap[row.secret];
+          if (session !== undefined && !(session.expiresAt > now)) keys.push(row.secret);
+        }
+        for (const [key, session] of sessions) if (!seen.has(key) && session !== undefined && !(session.expiresAt > now)) keys.push(key);
         return keys;
       },
       sessionKeyByPublicId: publicId => {

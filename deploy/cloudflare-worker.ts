@@ -71,6 +71,8 @@ const LAZY_FLUSH_MS = 600000;
 const RENEW_SLACK_MS = 86400000;
 /** How often the limiter's stored rows and the day-old chat receipts are swept. A sweep that finds nothing writes nothing. */
 const SWEEP_MS = 600000;
+/** How often expired sessions are looked for after start-up (expiredSessions below). */
+const EXPIRY_SWEEP_MS = 60000;
 /** Path prefixes outside /api/ that a module may serve as an HTML page (ctx.pages). The Worker sends these to the object. */
 const PAGE_PREFIXES = ['/s/', '/e/'];
 /** A socket's attachment may hold 2,048 bytes. */
@@ -242,6 +244,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   store: SqliteStore;
   shards: ShardStore;
   sweepAt: number;
+  expirySweepAt: number;
   shortLimits: ReturnType<typeof createMemoryLimiter>;
   beatTimer: ReturnType<typeof setTimeout> | null;
   sleeps: boolean;
@@ -281,7 +284,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     this.sql.exec('CREATE TABLE IF NOT EXISTS turn_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS host_keys (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
-    this.sweepAt = 0; this.beatTimer = null;
+    this.sweepAt = 0; this.expirySweepAt = 0; this.beatTimer = null;
     // The operator token never leaves this closure: only its digest is kept. Unset or too short = no operator surface.
     const operatorToken = validOperatorToken(env.MODERATOR_TOKEN) ? env.MODERATOR_TOKEN as string : null;
     this.operatorDigest = operatorToken ? digest(operatorToken) : null;
@@ -345,7 +348,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       closing: [],
       core: {
         archiveSession: sessionArchiver({ now, randomId: () => crypto.randomUUID() }),
-        expiredSessionKeys: (db: Db) => db.$store!.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now()),
+        expiredSessionKeys: (db: Db, always?: boolean) => this.expiredSessions(db, now(), always === true),
         sessionByPublicId: (db: Db, id: string) => { const key = db.$store!.sessionKeyByPublicId(id); return key === undefined ? undefined : db.sessions[key]; },
         unresponsive,
         storeStats: () => ({ ...this.store.stats(), rows: this.meter.snapshot(), limits: this.limits() }),
@@ -434,6 +437,20 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     for (const table of Object.values(RATE_TABLES)) this.sql.exec(`DELETE FROM ${table} WHERE expires_at <= ?`, now);
     this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', now - 86400000);
     this.shortLimits.sweep();
+  }
+  /**
+   * The sessions to archive now. At start-up every record is read once (records of builds that kept no public id or no
+   * expiry are rotated then). After that a request must not be able to make the object read every session: expired
+   * ones are found by their stored expiry, and looked for when a session is about to be made (`always`: a request that
+   * is itself limited per address) and otherwise at most once every EXPIRY_SWEEP_MS, however often it is asked.
+   * A session that has run out is refused from that moment whether or not it has been archived yet (protocol.ts sessionOfCookie).
+   */
+  expiredSessions(db: Db, now: number, always = false): string[] {
+    const helpers = db.$store!;
+    if (!this.booted || !helpers.expiredSessionKeys) return helpers.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now);
+    if (!always && now < this.expirySweepAt) return [];
+    this.expirySweepAt = now + EXPIRY_SWEEP_MS;
+    return helpers.expiredSessionKeys(now);
   }
   /** Set the alarm. Setting it is a write, and is counted as one. */
   async arm(at: number): Promise<void> { await this.ctx.storage.setAlarm(at); this.meter.add(ALARM_TABLE, 1); }

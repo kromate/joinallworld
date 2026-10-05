@@ -1,14 +1,14 @@
 # City modules
 
-A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt and Abuja.
+A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt, Abuja and Kano.
 
 ## Catalogue states
 
 The registry distinguishes three questions.
 
 - `isKnownCityId` accepts every city named by the atlas and compatibility layer.
-- `isCityId` accepts cities whose stored lives the server may read. This currently includes the eight open city modules.
-- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt and Abuja.
+- `isCityId` accepts cities whose stored lives the server may read. This currently includes the nine open city modules.
+- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt, Abuja and Kano.
 
 Aba, Owerri and Kaduna remain closed atlas previews. Older Ibadan saves may contain Lagos venue ids; the explicit aliases are `park → agodi-gardens`, `library → ui-campus`, `office → cocoa-house`, `hospital → uch`, `market → dugbe-market`, `beach → eleyele-lake`, `airport → ibadan-airport`, `polling-unit → mapo-polling`, `state-house → mapo-hall`, `amala-shitta → dugbe-amala`, `salon → mokola-salon`, `church → ui-chapel`, `mosque → ui-mosque`, `viewing-centre → lekan-salami-stadium`, `i-fitness → lekan-salami-stadium`, `canopy-walk → iita-forest`, `refinery → moniya-station`, `cchub → polytechnic`, `radio/shrine/quilox/rooftop → agodi-gardens`, `palms → dugbe-market`, and `police → mapo-hall`. They preserve old references while the current Ibadan module supplies the real city content.
 
@@ -77,7 +77,7 @@ Money receipts, friend relationships, privacy preferences, consent and anti-farm
 
 ## Regenerating the reference geometry
 
-`npm run geo:boundaries` regenerates only the Lagos topology. Use `npm run geo:boundaries -- --oyo`, `--ogun`, or `--nigeria` for the corresponding explicit targets; combine any target with `--check` to compare exact generated text and decoded geometry without writing. The command downloads pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. The default cannot change the Nigeria atlas.
+`npm run geo:boundaries` regenerates only the Lagos topology. Use `npm run geo:boundaries -- --oyo`, `--ogun`, `--rivers`, `--fct`, `--kano`, or `--nigeria` for the corresponding explicit targets; combine any target with `--check` to compare exact generated text and decoded geometry without writing. The command downloads pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. The default cannot change the Nigeria atlas.
 
 The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and three compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.
 
@@ -86,3 +86,11 @@ The production bundle omits Vue's unused Options API runtime; all shipped compon
 Abuja uses area councils and a fictional Community Chair title, with explanatory copy in its lazy catalogue. Public civic headings and notices derive their terminology from city metadata; internal election keys and mechanics remain shared. See [CITIES-FCT.md](CITIES-FCT.md) for source qualifications and the game-role decision.
 
 A city may restrict a local mode through `localModeZones`. Both trip endpoints must belong to the same declared zone. Public venue ids, the actual rented-home id and an owned home’s unit are separate explicit endpoint sets. Modes without a zone retain normal availability; Trek remains free everywhere. Abuja uses this to limit keke to satellite-town trips. Rented-home map markers use their authored geographic positions; schematic owned-estate plots remain separate.
+
+## Planned routes and seasonal climate
+
+`CityLink.status: 'coming'` blocks new bookings before any fare is taken, even between open cities. The canonical registry and atlas use the same route-availability rule. An already paid trip still finishes when only the route status changes; the existing removed-route or changed-duration settlement rules remain intact. A planned rail route without sourced geometry has no invented preview line.
+
+Optional `CityRules.climate` supplies twelve monthly beta rain chances and seasonal clear-weather labels. The existing deterministic weather block and seed remain shared; omitted climate metadata preserves the original weather output. Kano uses a hot/dry and harmattan-labelled pattern, without new heat or dust penalties. See [CITIES-KANO.md](CITIES-KANO.md).
+
+State-overview landmarks may point to an authored local departure venue. This only opens the destination picker when the player is already in that city. It does not move the character, charge money or start an activity. The simulated Tiga outing uses the ordinary timed-activity rules from its city departure venue, without creating a residence outside the metropolitan footprint.

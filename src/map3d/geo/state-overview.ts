@@ -18,7 +18,7 @@ export function stateOverviewToggleHtml(stateId: string, cityId: string, expande
 }
 
 /** A geographic overview is an inspection surface; its controls never move a character. */
-export function stateOverviewHtml(overview: CityStateOverview, cities: readonly OverviewCity[], selectedCity: string | null, expanded: { units?: boolean; landmarks?: boolean } = {}): string {
+export function stateOverviewHtml(overview: CityStateOverview, cities: readonly OverviewCity[], selectedCity: string | null, expanded: { units?: boolean; landmarks?: boolean } = {}, currentCity: string | null = null): string {
   const points = [...overview.outline, ...overview.neighbours.flatMap(item => item.polygons)].flatMap(polygon => polygon.flatMap(ring => ring.map(([lon, lat]) => project(lon, lat))))
   if (!points.length) throw new TypeError('A state overview needs an outline')
   const minX = Math.min(...points.map(point => point.x)), maxX = Math.max(...points.map(point => point.x))
@@ -30,6 +30,13 @@ export function stateOverviewHtml(overview: CityStateOverview, cities: readonly 
     const unit = units.find(unit => unit.polygons.some(polygon => pointInPart(item.lon, item.lat, polygon)))
     return { ...item, status: item.context ?? unit?.city?.name ?? (unit ? 'Coming soon' : 'State landmark'), city: item.context ? undefined : unit?.city }
   })
+  const departureHtml = (item: NonNullable<CityStateOverview['landmarks']>[number]): string => {
+    const departure = item.departure
+    if (!departure) return ''
+    return departure.cityId === currentCity
+      ? `<button type="button" data-atlas-departure="${escape(item.id)}">${escape(departure.label)}</button>`
+      : `<small>Outing departs from ${escape(cityRules(departure.cityId)?.name ?? departure.cityId)}.</small>`
+  }
   const open = units.filter(unit => unit.city).length
   const title = (name: string, city?: OverviewCity): string => `${name} · ${city ? city.name : 'Coming soon'}`
   const svg = `<svg class="atlas-state-map" viewBox="${number(minX - margin)} ${number(minZ - margin)} ${number(maxX - minX + margin * 2)} ${number(maxZ - minZ + margin * 2)}" aria-hidden="true" focusable="false">
@@ -39,5 +46,5 @@ export function stateOverviewHtml(overview: CityStateOverview, cities: readonly 
     ${(overview.water ?? []).map(polygon => `<path d="${polygonPath([polygon])}" fill="#7cb9cd" fill-rule="evenodd" pointer-events="none"/>`).join('')}
     ${landmarks.map(item => { const point = project(item.lon, item.lat); return `<circle cx="${number(point.x)}" cy="${number(point.z)}" r="${number(span * 0.006)}" fill="#a86c25"><title>${escape(item.name)} · ${escape(item.status)}</title></circle>` }).join('')}
   </svg>`
-  return `<section class="atlas-state-overview" aria-label="${escape(overview.name)} ${escape(unitName)}s"><h3>${escape(overview.name)} · ${escape(unitName)}s</h3>${svg}<p class="atlas-state-key">Green: open city · grey: coming soon. Neighbouring outlines provide context.</p><details${expanded.units ? ' open' : ''}><summary data-atlas-overview-section="units">${units.length} ${escape(unitName)}s · ${open} in open cities · ${units.length - open} coming</summary><ul>${units.map(unit => `<li>${unit.city ? `<button type="button" data-atlas-inspect-city="${escape(unit.city.id)}">${escape(unit.name)} <small>${escape(unit.city.name)}</small></button>` : `<span>${escape(unit.name)} <small>Coming soon</small></span>`}</li>`).join('')}</ul></details>${landmarks.length ? `<details${expanded.landmarks ? ' open' : ''}><summary data-atlas-overview-section="landmarks">State landmarks</summary><ul>${landmarks.map(item => `<li><span>${escape(item.name)} <small>${escape(item.status)}</small></span></li>`).join('')}</ul></details>` : ''}</section>`
+  return `<section class="atlas-state-overview" aria-label="${escape(overview.name)} ${escape(unitName)}s"><h3>${escape(overview.name)} · ${escape(unitName)}s</h3>${svg}<p class="atlas-state-key">Green: open city · grey: coming soon. Neighbouring outlines provide context.</p><details${expanded.units ? ' open' : ''}><summary data-atlas-overview-section="units">${units.length} ${escape(unitName)}s · ${open} in open cities · ${units.length - open} coming</summary><ul>${units.map(unit => `<li>${unit.city ? `<button type="button" data-atlas-inspect-city="${escape(unit.city.id)}">${escape(unit.name)} <small>${escape(unit.city.name)}</small></button>` : `<span>${escape(unit.name)} <small>Coming soon</small></span>`}</li>`).join('')}</ul></details>${landmarks.length ? `<details${expanded.landmarks ? ' open' : ''}><summary data-atlas-overview-section="landmarks">State landmarks</summary><ul>${landmarks.map(item => `<li><span>${escape(item.name)} <small>${escape(item.status)}</small></span>${departureHtml(item)}</li>`).join('')}</ul></details>` : ''}</section>`
 }

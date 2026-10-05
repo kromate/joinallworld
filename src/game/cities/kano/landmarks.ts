@@ -1,0 +1,267 @@
+export interface KanoLandmark {readonly id:string;readonly name:string;readonly lon:number;readonly lat:number;readonly kind:'landmark'|'campus'|'market'|'transport'|'water'|'context'|'route-reference';readonly accuracy:'mapped-feature'|'feature-centroid'|'published-point'|'route-reference';readonly source:string;readonly licence:string;readonly note:string}
+export const KANO_LANDMARKS:readonly KanoLandmark[]=Object.freeze([
+  {
+    "id": "palace",
+    "name": "Gidan Rumfa — public exterior gate",
+    "lon": 8.519661,
+    "lat": 11.9887528,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/2867650821",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped Kofar Kudu main-gate reference; only an exterior visitor scene, with no private-quarter entry."
+  },
+  {
+    "id": "museum",
+    "name": "Gidan Makama Museum",
+    "lon": 8.5210264,
+    "lat": 11.9883725,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/359594979",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped OSM feature point; not a surveyed entrance."
+  },
+  {
+    "id": "dala-hill",
+    "name": "Dala Hill",
+    "lon": 8.5069739,
+    "lat": 12.0093051,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/2938797598",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped OSM feature point; not a surveyed entrance."
+  },
+  {
+    "id": "goron-dutse",
+    "name": "Goron Dutse Hill",
+    "lon": 8.4944515,
+    "lat": 12.001466,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/501288980",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped OSM feature point; not a surveyed entrance."
+  },
+  {
+    "id": "kofar-nassarawa",
+    "name": "Kofar Nassarawa",
+    "lon": 8.5306777,
+    "lat": 11.9908895,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/4395771247",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped OSM feature point; not a surveyed entrance."
+  },
+  {
+    "id": "kofar-mata",
+    "name": "Kofar Mata",
+    "lon": 8.5263759,
+    "lat": 12.0008285,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/4395782139",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped OSM feature point; not a surveyed entrance."
+  },
+  {
+    "id": "kofar-kabuga",
+    "name": "Kofar Kabuga — historic site",
+    "lon": 8.4814435,
+    "lat": 11.9873961,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/4395858272",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "OSM maps this historical gate reference as demolished in 2014 for the Ibrahim Badamasi Babangida underpass. Historic site reference only; no intact ancient gate is claimed."
+  },
+  {
+    "id": "central-mosque",
+    "name": "Kano Central Mosque",
+    "lon": 8.5176406,
+    "lat": 11.9948552,
+    "kind": "landmark",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/290490441",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped feature centroid; not a surveyed entrance."
+  },
+  {
+    "id": "buk-new",
+    "name": "Bayero University — New Campus",
+    "lon": 8.4251222,
+    "lat": 11.9704448,
+    "kind": "campus",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/285197270",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped feature centroid; not a surveyed entrance."
+  },
+  {
+    "id": "buk-old",
+    "name": "Bayero University — Old Campus",
+    "lon": 8.4782432,
+    "lat": 11.9807581,
+    "kind": "campus",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/291923762",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped feature centroid; not a surveyed entrance."
+  },
+  {
+    "id": "stadium",
+    "name": "Sani Abacha Stadium",
+    "lon": 8.5292741,
+    "lat": 11.9996585,
+    "kind": "landmark",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/613753750",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped feature centroid; not a surveyed entrance."
+  },
+  {
+    "id": "airport",
+    "name": "Mallam Aminu Kano International Airport",
+    "lon": 8.5210497,
+    "lat": 12.0457085,
+    "kind": "transport",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/185718323",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped feature centroid; not a surveyed entrance."
+  },
+  {
+    "id": "racecourse",
+    "name": "Kano Racecourse",
+    "lon": 8.5538047,
+    "lat": 11.9974416,
+    "kind": "landmark",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/207545909",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped feature centroid; not a surveyed entrance."
+  },
+  {
+    "id": "polo-ground",
+    "name": "Kano Polo Ground",
+    "lon": 8.5492967,
+    "lat": 12.0215466,
+    "kind": "landmark",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/207548967",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped feature centroid; not a surveyed entrance."
+  },
+  {
+    "id": "railway-station",
+    "name": "Kano Railway Station",
+    "lon": 8.5394241,
+    "lat": 11.9994967,
+    "kind": "transport",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/1737874144",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped OSM feature point; not a surveyed entrance."
+  },
+  {
+    "id": "sabon-gari",
+    "name": "Sabon Gari quarter",
+    "lon": 8.53824,
+    "lat": 12.0185,
+    "kind": "landmark",
+    "accuracy": "mapped-feature",
+    "source": "https://www.openstreetmap.org/node/2974797975",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped quarter reference, not a surveyed property or market gate."
+  },
+  {
+    "id": "kurmi-market",
+    "name": "Kurmi Market",
+    "lon": 8.51421,
+    "lat": 12.00239,
+    "kind": "market",
+    "accuracy": "published-point",
+    "source": "https://dergipark.org.tr/en/download/article-file/3357082",
+    "licence": "Published coordinate fact; no source prose or map reproduced",
+    "note": "2023 study sampling-location reference; not a surveyed market gate."
+  },
+  {
+    "id": "kwari-market",
+    "name": "Kantin Kwari Textile Market",
+    "lon": 8.53087,
+    "lat": 12.00404,
+    "kind": "market",
+    "accuracy": "published-point",
+    "source": "https://dergipark.org.tr/en/download/article-file/3357082",
+    "licence": "Published coordinate fact; no source prose or map reproduced",
+    "note": "2023 study sampling-location reference; not a surveyed market gate."
+  },
+  {
+    "id": "sabon-market",
+    "name": "Sabon Gari Market",
+    "lon": 8.53784,
+    "lat": 12.01314,
+    "kind": "market",
+    "accuracy": "published-point",
+    "source": "https://dergipark.org.tr/en/download/article-file/3357082",
+    "licence": "Published coordinate fact; no source prose or map reproduced",
+    "note": "2023 study sampling-location reference; not a surveyed market gate."
+  },
+  {
+    "id": "dye-pits",
+    "name": "Kofar Mata Dye Pits",
+    "lon": 8.526098888888889,
+    "lat": 12.000853055555556,
+    "kind": "landmark",
+    "accuracy": "published-point",
+    "source": "https://www.wikidata.org/wiki/Q109265005",
+    "licence": "Wikidata, CC0 1.0",
+    "note": "Published attraction reference; coordinate statement has no underlying cited survey and does not establish an entrance."
+  },
+  {
+    "id": "wudil-university",
+    "name": "Aliko Dangote University of Science and Technology — Wudil",
+    "lon": 8.8540795,
+    "lat": 11.8051051,
+    "kind": "context",
+    "accuracy": "feature-centroid",
+    "source": "https://www.openstreetmap.org/way/389351930",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped Wudil campus centroid outside the eight-LGA play footprint; state overview only, with no playable campus or gate claim."
+  },
+  {
+    "id": "tiga-dam",
+    "name": "Tiga Dam — state context",
+    "lon": 8.4025,
+    "lat": 11.437222222222223,
+    "kind": "context",
+    "accuracy": "published-point",
+    "source": "https://www.wikidata.org/wiki/Q2432731",
+    "licence": "Wikidata, CC0 1.0",
+    "note": "Published dam area reference outside the metropolitan play footprint; no public entrance is asserted. The outing departure button opens Kano Railway Station, where a separate fictional beta activity starts and returns; it does not enter the dam or a verified rock site."
+  },
+  {
+    "id": "zaria-bridge",
+    "name": "Zaria Road bridge reference",
+    "lon": 8.5455337,
+    "lat": 11.91059,
+    "kind": "route-reference",
+    "accuracy": "route-reference",
+    "source": "https://www.openstreetmap.org/way/161619537",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped road segment tagged bridge; a transport-context reference, not a surveyed flyover entrance or verified engineering designation."
+  },
+  {
+    "id": "murtala-bridge",
+    "name": "Murtala Mohammed Way bridge reference",
+    "lon": 8.5249872,
+    "lat": 12.0147006,
+    "kind": "route-reference",
+    "accuracy": "route-reference",
+    "source": "https://www.openstreetmap.org/way/161831977",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "note": "Mapped road segment tagged bridge; a transport-context reference, not a surveyed flyover entrance or verified engineering designation."
+  }
+])

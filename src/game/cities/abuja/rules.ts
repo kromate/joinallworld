@@ -1,3 +1,5 @@
+import { NIGERIA } from '../country.ts'
+import { CAREER_IDS } from '../../content/career-ids.ts'
 import type { CityModuleRules, LgaDefinition } from '../../../types/content.ts'
 import { ABUJA_LINKS } from './links.ts'
 export type AbujaAreaCouncilId = 'abuja-municipal' | 'bwari' | 'gwagwalada' | 'kuje' | 'kwali' | 'abaji'
@@ -93,10 +95,7 @@ export const ABUJA_RULES = Object.freeze({...{
     "name": "Federal Capital Territory",
     "unit": "area council"
   },
-  "country": {
-    "id": "ng",
-    "name": "Nigeria"
-  },
+  country: NIGERIA,
   "timezone": "Africa/Lagos",
   "rentedHomeIds": [
     "fct-garki-home",
@@ -115,23 +114,7 @@ export const ABUJA_RULES = Object.freeze({...{
     "fct-central-business-district-home"
   ],
   "defaultRentedHome": "fct-kubwa-home",
-  "careerIds": [
-    "community-helper",
-    "tech",
-    "banking",
-    "music",
-    "trading",
-    "nursing",
-    "hair",
-    "chef",
-    "dj",
-    "fitness",
-    "creator",
-    "teaching",
-    "event",
-    "football",
-    "retail"
-  ],
+  "careerIds": CAREER_IDS,
   "atlas": {
     "lon": 7.49,
     "lat": 9.06,

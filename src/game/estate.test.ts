@@ -210,7 +210,7 @@ test('renting stays a choice: moving to a rented home restarts the weekly rent, 
 });
 
 test('cities connect as data, while a trip to closed Abuja is refused without charging', () => {
-  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
+  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
   const soon: WorldCityId[] = ['aba', 'owerri', 'kaduna'];
   for (const id of soon) { const city = cityRules(id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
   for (const link of allCityLinks()) { assert.ok(cityRules(link.a) && cityRules(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
@@ -224,10 +224,10 @@ test('cities connect as data, while a trip to closed Abuja is refused without ch
   assert.equal(act(state, 'estate.relocate', { to: 'lagos', mode: 'road' }).code, 'invalid_city');
   assert.equal(state.cash, cash); assert.equal(state.activeAction, null);
   const links = viewLife(state, at()).estate.links;
-  assert.equal(links.length, 9)
+  assert.equal(links.length, 12)
   assert.deepEqual(links.filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.open, link.blocked]), [['road', true, null], ['rail', true, null]])
-  const openCities = new Set(['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja']);
-  assert.equal(links.filter((link) => openCities.has(link.to)).every((link) => link.open && link.blocked === null), true);
+  const openCities = new Set(['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano']);
+  assert.equal(links.filter((link) => openCities.has(link.to)).every((link) => link.open), true);
   assert.equal(links.filter((link) => !openCities.has(link.to)).every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
 });
 

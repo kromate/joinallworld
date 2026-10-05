@@ -1,5 +1,5 @@
 import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
-await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja'].map(preloadCityContent));
+await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'].map(preloadCityContent));
 // The 3D city map: registry, routing, the server-timed trip, the render budget and the battery rule.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -36,7 +36,7 @@ const mainlandLand = pack.land.filter((entry) => entry.kind === 'mainland');
 const onMainland = (spot: GroundPoint) => mainlandLand.some((entry) => pointInPolygon(spot.x, spot.z, entry.points));
 
 test('the region registry: the seven opened cities are playable while Abuja, Aba and Owerri are coming soon', async () => {
-  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'playable'], ['abuja', 'playable'], ['port-harcourt', 'playable'], ['aba', 'soon'], ['owerri', 'soon'], ['kaduna', 'soon'], ['abeokuta', 'playable'], ['ota', 'playable'], ['ijebu-ode', 'playable'], ['sagamu', 'playable']]);
+  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'playable'], ['abuja', 'playable'], ['port-harcourt', 'playable'], ['aba', 'soon'], ['owerri', 'soon'], ['kaduna', 'soon'], ['abeokuta', 'playable'], ['ota', 'playable'], ['ijebu-ode', 'playable'], ['sagamu', 'playable'], ['kano', 'playable']]);
   for (const country of Object.values(COUNTRIES)) {
     assert.ok(country.outline.length > 8 && country.name, country.id);
     const flat = projector(country.id, 1000);
@@ -57,7 +57,7 @@ test('the region registry: the seven opened cities are playable while Abuja, Aba
   assert.equal(cityAccess('aba', { current: 'lagos', held: ['aba'] }), 'soon', 'a closed preview is never offered');
   assert.equal(cityAccess('owerri', { current: 'lagos', held: ['owerri'] }), 'soon', 'a closed preview is never offered');
   const loaded = await loadCityPack('lagos');
-  assert.equal(loaded!.id, 'lagos'); assert.equal((await loadCityPack('ibadan'))?.id, 'ibadan'); assert.equal((await loadCityPack('port-harcourt'))?.id, 'port-harcourt'); assert.equal((await loadCityPack('abuja'))?.id, 'abuja'); assert.equal(await loadCityPack('aba'), null); assert.equal(await loadCityPack('owerri'), null); assert.equal(await loadCityPack('kaduna'), null);
+  assert.equal(loaded!.id, 'lagos'); assert.equal((await loadCityPack('ibadan'))?.id, 'ibadan'); assert.equal((await loadCityPack('port-harcourt'))?.id, 'port-harcourt'); assert.equal((await loadCityPack('abuja'))?.id, 'abuja'); assert.equal((await loadCityPack('kano'))?.id, 'kano'); assert.equal(await loadCityPack('aba'), null); assert.equal(await loadCityPack('owerri'), null); assert.equal(await loadCityPack('kaduna'), null);
 });
 
 test('the Lagos pack places every venue (the airport and the refinery among them) and every home district, and every scene kind has a landmark', () => {

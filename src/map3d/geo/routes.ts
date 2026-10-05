@@ -83,6 +83,7 @@ export const linkId = (link: { a: string; b: string; mode: string }): string => 
  * The line a link between two cities follows: a road through its towns, or a flight between the two cities.
  */
 export function linkPath(link: { a: string; b: string; mode: string }, cityAt: (cityId: string) => { lon: number; lat: number } | null): LinkPath | null {
+  if (link.mode === 'rail') return null; // Rail is drawn only from the lazy authored track geometry.
   const a = cityAt(link.a), b = cityAt(link.b);
   if (!a || !b) return null;
   if (link.mode === 'air') return { id: linkId(link), mode: 'air', towns: null, points: [[a.lon, a.lat], [b.lon, b.lat]] };

@@ -65,7 +65,7 @@ export type TransferBlockCode =
 export type CivicCheckCode = 'too_new' | 'insufficient_funds' | 'work_days' | 'wrong_place'
 
 /** Why a trip to another city cannot start (estate.js relocateBlock). */
-export type RelocateBlockCode = 'invalid_city' | 'no_route' | 'city_not_open' | 'insufficient_funds'
+export type RelocateBlockCode = 'invalid_city' | 'no_route' | 'city_not_open' | 'route_not_open' | 'insufficient_funds'
 
 /**
  * The settle-in choices 'onboarding.home' takes besides where to live. `via` records how the local

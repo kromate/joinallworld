@@ -1,3 +1,4 @@
+import { routeUnavailable } from '../cities/routeAvailability.ts';
 import { localUnitDescription, publicArrivalVenue } from '../cities/runtime.ts';
 /**
  * OWNER: world
@@ -276,6 +277,8 @@ export function relocateBlock(state: LifeState, to: unknown, mode: unknown, ctx?
   const link = dest ? linksFrom(e.city).find((item) => item.to === to && item.mode === mode) : null;
   if (!dest || to === e.city) return { code: 'invalid_city', reason: 'Choose another city to travel to.' };
   if (!link) return { code: 'no_route', reason: `There is no ${mode === 'air' ? 'flight' : mode === 'rail' ? 'train' : 'road link'} from ${cityRules(e.city)?.name ?? 'here'} to ${dest.name}.` };
+  const unavailable = routeUnavailable(link);
+  if (unavailable) return unavailable;
   const open = dest.status === 'open' || (Array.isArray(ctx?.openCities) && ctx.openCities.includes(dest.id));
   if (!open) return { code: 'city_not_open', reason: `${dest.name} is not open yet, so nothing leaves for it. Departures start the day it opens.` };
   if (!canAfford(state, link.fare)) return { code: 'insufficient_funds', reason: `${link.label} costs ${naira(link.fare)}; you have ${naira(state.cash)}.` };

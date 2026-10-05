@@ -187,6 +187,51 @@
         "https://www.openstreetmap.org/node/7449693942"
       ],
       "optionalRefreshDependency": "pyosmium 4.3.1; normal Node.js generator has no new dependency"
+    },
+    "kano-surface": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "license": "ODbL 1.0; administrative sources CC BY 4.0",
+      "date": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "attribution": "© OpenStreetMap contributors; geoBoundaries gbOpen, GRID3 2022, William & Mary geoLab",
+      "derivedSource": "scripts/geo/sources/kano-surface.geojson",
+      "derivedSha256": "10ca8a37bc7a9c4b95fc443ad0a8b7c6e971cf5b04aa804a3948f20fccd51fab",
+      "derivedBytes": 648855,
+      "refreshTool": "scripts/geo/refresh-kano-surface.py",
+      "optionalRefreshDependencies": "pyosmium 4.3.1; Shapely 2.1.2",
+      "administrativeSources": [
+        "nigeria-states-adm1",
+        "nigeria-lgas-adm2"
+      ],
+      "processing": "44 original ADM2 polygons partition Kano ADM1 exactly; eight independently define the metropolis footprint. Their dry land excludes mapped water. Administrative and surface shared arcs use 0.000001-degree grid and 0.0001-square-unit threshold to preserve near-border point ownership. Local roads and rail retain source vertices at 0.00006-degree simplification.",
+      "frame": "src/geo/frame.ts; originAt(8.52,12) = {x:571,z:-3336}; nigeria-equirectangular-v1",
+      "reproduction": "npm run geo:boundaries -- --kano --check",
+      "wallLimitation": "No identified ancient city-wall line in the pinned PBF. Compound walls and modern road embankments are not relabelled. Separate licensed alignment required.",
+      "documentation": "docs/MAP-KANO-SOURCES.md"
+    },
+    "kano-historic-wall-illustration": {
+      "url": "https://library.acadlore.com/TSDD/2024/1/1/TSDD_01.01_03.pdf",
+      "retrieved": "2026-10-05",
+      "licence": "CC BY 4.0",
+      "pdfSha256": "c1f353068e077689854de6483863a6b424c87fdc2e645eb9d66d078e1c9b12e0",
+      "figure": "3(a), original image 1502 x 682 pixels",
+      "figureSha256": "f2264629fc8decee973d95b83dc45de142e51539a7c5d05a284c48ec75014866",
+      "attribution": "Adamu et al. (2024), DOI10.56578/tsdd010103. Combined caption credits Yusuf et al. (2023a), DOI10.3390/buildings13081899. Red-overlay upstream authorship not independently established.",
+      "modification": "Trace red outline only; affine georeference from three mapped gate ties; no underlying basemap or photograph redistributed.",
+      "controlsLicence": "OpenStreetMap contributors, ODbL 1.0",
+      "independentCheckResidualMetres": [
+        49.8,
+        97.0
+      ],
+      "otherGateComparisonRangeMetres": [
+        140,
+        803
+      ],
+      "qualification": "Observed residuals are not a guaranteed error bound. Published historical alignment, not a survey of current standing walls. No collision, navigation or road use.",
+      "output": "src/map3d/geo/data/kano-wall.ts",
+      "generator": "scripts/geo/refresh-kano-wall.py --pdf TSDD_01.01_03.pdf --check"
     }
   },
   "attribution": {

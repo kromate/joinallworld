@@ -1,7 +1,5 @@
-export const OGUN_CAREER_IDS = Object.freeze([
-  'community-helper', 'tech', 'banking', 'music', 'trading', 'nursing', 'hair', 'chef', 'dj',
-  'fitness', 'creator', 'teaching', 'event', 'football', 'retail',
-])
+import { NIGERIA } from '../country.ts'
+import { CAREER_IDS } from '../../content/career-ids.ts'
 
 /** Compact eager metadata shared by every open Ogun city. No prose or lazy catalogue imports. */
 export const OGUN_RULES_BASE = Object.freeze({
@@ -10,7 +8,7 @@ export const OGUN_RULES_BASE = Object.freeze({
   seaPlots: false,
   hasStateOverview: true,
   state: Object.freeze({ id: 'ogun' as const, name: 'Ogun State', unit: 'local government' }),
-  country: Object.freeze({ id: 'ng', name: 'Nigeria' }),
+  country: NIGERIA,
   timezone: 'Africa/Lagos',
-  careerIds: OGUN_CAREER_IDS,
+  careerIds: CAREER_IDS,
 })

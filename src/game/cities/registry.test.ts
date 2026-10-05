@@ -44,9 +44,9 @@ test('test registration is scoped and keeps closed cities closed', async () => {
 })
 
 test('the catalogue has seven open cities and three closed previews in registry order', () => {
-  assert.deepEqual(knownCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'aba', 'owerri', 'kaduna', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
-  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
-  assert.deepEqual(playableCityIds(), ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja'])
+  assert.deepEqual(knownCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'aba', 'owerri', 'kaduna', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'])
+  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'])
+  assert.deepEqual(playableCityIds(), ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'])
 })
 
 test('authored Ibadan content is open and exposes its canonical road and rail links', async () => {

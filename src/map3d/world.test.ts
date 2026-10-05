@@ -201,7 +201,7 @@ test('the maps fetch only what is in view: one summary with a version stamp, one
 test('open and coming-soon cities share the live registry and canonical links', () => {
   for (const id of Object.keys(COUNTRIES.nigeria.cities)) assert.ok(cityEntry(id), `${id} is on the country map`);
   for (const link of allCityLinks()) assert.ok(cityEntry(link.a) && cityEntry(link.b));
-  assert.deepEqual(Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'playable').map((item) => item.id), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu']);
+  assert.deepEqual(Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'playable').map((item) => item.id), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano']);
   const soon = Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'soon');
   assert.deepEqual(soon.map((item) => item.id), ['aba', 'owerri', 'kaduna']);
   for (const item of soon) { assert.equal(item.preview!.length, 3); const city = cityRules(item.id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); assert.ok(allCityLinks().some((link) => link.a === item.id || link.b === item.id)); }

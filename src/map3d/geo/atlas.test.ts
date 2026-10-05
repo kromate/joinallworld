@@ -69,11 +69,13 @@ test('simplification kept the shapes sound: no ring crosses itself among the mos
 });
 
 test('the data modules are small, say where they came from, and decode from their compact form', () => {
-  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000, 'rivers.ts': 900000, 'fct.ts': 150000 };
+  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000, 'rivers.ts': 900000, 'fct.ts': 150000, 'kano.ts': 200000 };
+  const wallPath = here('./data/kano-wall.ts');
+  assert.ok(statSync(wallPath).size <= 30000, `kano-wall.ts is ${statSync(wallPath).size} bytes (limit 30000)`);
   for (const [file, limit] of Object.entries(limits)) {
     const path = here(`./data/${file}`), text = readFileSync(path, 'utf8');
     assert.ok(statSync(path).size <= limit, `${file} is ${statSync(path).size} bytes (limit ${limit})`);
-    if (file === 'fct.ts') {
+    if (file === 'fct.ts' || file === 'kano.ts') {
       assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/);
     } else if (file === 'lagos.ts' || file === 'oyo.ts' || file === 'ogun.ts' || file === 'rivers.ts') {
       assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/); assert.match(text, /shared-arc topology/);
@@ -81,7 +83,7 @@ test('the data modules are small, say where they came from, and decode from thei
       assert.match(text, /Natural Earth/); assert.match(text, /public domain/); assert.match(text, /Visvalingam/); assert.match(text, /default view/);
     }
   }
-  assert.deepEqual(readdirSync(here('./data/')).sort(), Object.keys(limits).sort());
+  assert.deepEqual(readdirSync(here('./data/')).filter((file) => file !== 'kano-wall.ts').sort(), Object.keys(limits).sort());
   const values = [0, 1, -1, 31, 32, -33, 1024, -99999, 1234567];
   assert.deepEqual(decodeInts(encodeInts(values)), values);
   const arc = [[100, 200], [101, 198], [90, 260]] satisfies [number, number][];
@@ -116,13 +118,13 @@ test('pick() finds the right region at known places, at every level, through the
 });
 
 test('open versus coming soon is the live registry: Lagos, Oyo, Ogun and Rivers are open', () => {
-  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)), ['lagos', 'oyo', 'fct', 'rivers', 'ogun']);
+  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)), ['lagos', 'oyo', 'fct', 'rivers', 'ogun', 'kano']);
   assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)), ['ng']);
   const context = { current: 'lagos', held: ['lagos'], routes: null };
   for (const feature of nigeria.features) {
     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });
     assert.equal(Boolean(info.action), feature.id === 'lagos', `${feature.id}: ${info.tag}`);
-    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : ['oyo', 'ogun', 'rivers', 'fct'].includes(feature.id) ? 'Open' : 'Coming soon');
+    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : ['oyo', 'ogun', 'rivers', 'fct', 'kano'].includes(feature.id) ? 'Open' : 'Coming soon');
     assert.ok(info.teaser && info.type.includes(feature.id === 'fct' ? 'Territory' : 'State') && info.capital === feature.cap[0]);
     for (const route of info.routes) assert.equal(route.live, false, 'a route is not live until supplied by the server');
   }
@@ -157,7 +159,7 @@ test('open versus coming soon is the live registry: Lagos, Oyo, Ogun and Rivers 
   assert.equal(regionInfo({ kind: 'country', id: 'ng' }, { ...context, feature: africa.byId.get('ng') }).action!.kind, 'zoom');
   assert.match(regionInfo({ kind: 'country', id: 'gh' }, { ...context, feature: africa.byId.get('gh') }).planned!, /Lagos and Accra/);
   const rows = nigeria.features.map((feature) => regionInfo({ kind: 'state', id: feature.id }, { ...context, feature })).sort(listOrder);
-  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['fct', 'lagos', 'ogun', 'oyo', 'rivers']);
+  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['fct', 'kano', 'lagos', 'ogun', 'oyo']);
 });
 
 test('levels: thresholds half-way between the fits, hysteresis at each, and a closer level only over its own frame', () => {
@@ -208,6 +210,7 @@ test('routes: the roads pass real towns in Nigeria, every link has a line, and a
   const originalNamedRoads = new Set(['lagos:ibadan', 'ibadan:abuja', 'lagos:port-harcourt']);
   for (const link of CITY_LINKS) {
     const path = linkPath(link, cityEntry);
+    if (link.mode === 'rail') { assert.equal(path, null, 'rail never borrows a road or straight-line fallback'); continue; }
     assert.ok(path, linkId(link));
     const line = measure(path.points);
     assert.ok(line.total > 0, linkId(link));
@@ -239,11 +242,11 @@ test('routes: the roads pass real towns in Nigeria, every link has a line, and a
 });
 
 // ---- the view: a fake renderer and a hand-cranked frame queue, as in ../map3d.test.ts ----
-function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0 } = {}) {
+function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0, failures = new Set<string>() } = {}) {
   const queue: (() => void)[] = [], env = { now: 1000, hidden: false, loads: [] as string[], opened: [] as string[], entered: [] as string[] }, calls = { render: 0 };
   const renderer = { calls, domElement: {} as HTMLCanvasElement, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
   const container = { hidden: false, getBoundingClientRect: () => ({ left: 0, top: 0, right: width, bottom: height, width, height }) };
-  const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
+  const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); if (failures.has(id)) throw new Error(`Unavailable test level: ${id}`); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
   const atlas = createAtlas(container as unknown as HTMLElement, { renderer, reducedMotion, load, raf: (fn) => { queue.push(fn); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden,
     onOpenCity: (id) => env.opened.push(id), onEnterCity: (id) => env.entered.push(id) });
   /** Run frames until nothing asks for another (or the limit). Returns how many ran. */
@@ -401,4 +404,74 @@ test('the atlas stays out of the first download, and its one frame loop lives in
     if (name !== 'atlas.ts') assert.doesNotMatch(bare, /requestAnimationFrame/, name);
     if (!['atlas.ts', 'build.ts'].includes(name)) assert.doesNotMatch(bare, /from 'three'|document\.|window\./, `${name} is pure`);
   }
+});
+
+test('a failed level loads once across animation, navigation and resize, then rests until recreation', async t => {
+  const errors: unknown[][] = [];
+  t.mock.method(console, 'error', (...args: unknown[]) => errors.push(args));
+  const failures = new Set(['africa']);
+  const first = harness({ failures });
+  try {
+    await first.atlas.ready; first.atlas.resize(); await first.settle();
+    first.atlas.goLevel(1); await first.settle();
+    assert.equal(first.env.loads.filter(id => id === 'africa').length, 1);
+    assert.equal(errors.length, 1);
+    assert.equal(first.atlas.diagnostics().loading, 'Africa');
+    assert.equal(first.atlas.diagnostics().loop, false);
+    assert.equal(first.queue.length, 0, 'failed loading does not keep the RAF queue alive');
+    for (let i = 0; i < 4; i++) { first.atlas.resize(); first.atlas.goLevel(1); await first.settle(); }
+    assert.equal(first.env.loads.filter(id => id === 'africa').length, 1);
+    assert.equal(errors.length, 1, 'one failure is reported once');
+    failures.clear();
+    first.atlas.goLevel(1); await first.settle();
+    assert.equal(first.env.loads.filter(id => id === 'africa').length, 1, 'recovery is deliberate, not a background import retry');
+    const before = first.calls.render;
+    first.env.now += 60_000;
+    assert.equal(first.run(), 0);
+    assert.equal(first.calls.render, before);
+  } finally { first.atlas.destroy(); }
+  const recreated = harness();
+  try {
+    await recreated.atlas.ready; recreated.atlas.resize(); await recreated.settle();
+    recreated.atlas.goLevel(1); await recreated.settle();
+    assert.equal(recreated.atlas.diagnostics().levelId, 'africa');
+    assert.equal(recreated.atlas.diagnostics().loading, '');
+    assert.equal(recreated.atlas.diagnostics().loop, false);
+  } finally { recreated.atlas.destroy(); }
+});
+
+test('a successful sibling cannot erase a failed level and wanted failures take precedence', async t => {
+  t.mock.method(console, 'error', () => {});
+  const one = harness({ failures: new Set(['nigeria']) });
+  try {
+    await one.atlas.ready; one.atlas.resize(); await one.settle();
+    assert.deepEqual(one.atlas.diagnostics().loaded, ['world']);
+    assert.equal(one.atlas.diagnostics().loading, 'Nigeria', 'world success leaves the failed Nigeria message visible');
+    one.atlas.goLevel(2); await one.settle();
+    assert.equal(one.env.loads.filter(id => id === 'nigeria').length, 1);
+    assert.equal(one.atlas.diagnostics().loop, false);
+  } finally { one.atlas.destroy(); }
+  const multiple = harness({ failures: new Set(['africa', 'world']) });
+  try {
+    await multiple.atlas.ready; multiple.atlas.resize(); await multiple.settle();
+    assert.equal(multiple.atlas.diagnostics().loading, 'World');
+    multiple.atlas.goLevel(1); await multiple.settle();
+    assert.equal(multiple.atlas.diagnostics().loading, 'Africa');
+    assert.equal(multiple.env.loads.filter(id => id === 'world').length, 1);
+    assert.equal(multiple.env.loads.filter(id => id === 'africa').length, 1);
+    assert.equal(multiple.atlas.diagnostics().loop, false);
+  } finally { multiple.atlas.destroy(); }
+});
+
+test('destroying an atlas during a failed load neither logs nor starts sibling downloads', async t => {
+  const errors: unknown[][] = [];
+  t.mock.method(console, 'error', (...args: unknown[]) => errors.push(args));
+  const instance = harness({ failures: new Set(['nigeria']), delay: 10 });
+  await new Promise(resolve => setTimeout(resolve, 1));
+  instance.atlas.destroy();
+  await instance.atlas.ready;
+  await instance.settle();
+  assert.deepEqual(instance.env.loads, ['nigeria']);
+  assert.equal(errors.length, 0);
+  assert.equal(instance.queue.length, 0);
 });

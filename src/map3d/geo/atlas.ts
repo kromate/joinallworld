@@ -77,6 +77,8 @@ export interface AtlasRenderer {
 export interface AtlasOptions {
   onOpenCity?: (cityId: string) => void;
   onEnterCity?: (cityId: string) => void;
+  /** Inspect a local departure venue; never starts a trip or changes city. */
+  onInspectVenue?: (cityId: string, venueId: string) => void;
   onTravel?: (to: string, mode: string) => void;
   routes?: () => TripRoutes | null;
   held?: () => string[];
@@ -163,7 +165,7 @@ const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en
 const ICON = (path: string): string => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const GLYPH = { rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
 
-export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onTravel = () => {}, routes = () => null, held = () => [],
+export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, routes = () => null, held = () => [],
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), tabHidden, load = (levelId) => ATLAS_LEVELS.find((level) => level.id === levelId)!.data() }: AtlasOptions = {}): AtlasApi {
   const doc = typeof globalThis.document?.createElement === 'function' ? globalThis.document : null;
@@ -206,7 +208,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   let selected: RegionRef | null = null, hovered: RegionRef | null = null;
   let routeShown: string | null = null, trip: Run | null = null, preview: Preview | null = null, entering: (() => void) | null = null, keyboard = false;
   let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, fits: { x: number; z: number; distance: number }[] | null = null, cuts = [1, 1], lastLabels = 0, labelKey = '';
-  let rafId = 0, renderCount = 0, lastTick = 0, loading = '', failed = '';
+  let rafId = 0, renderCount = 0, lastTick = 0, loading = '';
+  const failedLevels = new Set<number>();
   const clock = createTripClock();
   /** One per level, filled when its data arrives: { topology, picker, layers… }. */
   const sheets: Sheets = [null, null, null], pending: (Promise<LevelSheet | null> | null)[] = [null, null, null];
@@ -344,7 +347,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     void Promise.all(routeCities.map(loadCityRoutes)).then(groups => {
       if (destroyed) return;
       for (const route of groups.flat()) authoredRoutes.set(linkId(route), { id: linkId(route), mode: route.mode, towns: null, points: route.points });
-      drawHighlights(); request();
+      drawHighlights(); drawSheet(); request();
     }, () => {});
     // Roads and flights between cities, in one mesh.
     const seen = new Set(), roads = [];
@@ -376,15 +379,19 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   const BUILD: ((module: LevelModule) => LevelSheet)[] = [buildWorld, buildAfrica, buildNigeria];
   /** Fetch and build a level once. Resolves when it is in the scene. */
   function ensure(index: number): Promise<LevelSheet | null> {
+    if (destroyed) return Promise.resolve(null);
     if (sheets[index]) return Promise.resolve(sheets[index]);
     pending[index] ??= Promise.resolve().then(() => load(ATLAS_LEVELS[index]!.id)).then((module) => {
       if (destroyed) return null;
       const built = BUILD[index]!(module);
       (sheets as (LevelSheet | null)[])[index] = built;
-      failed = '';
       syncResolution(); settleLevel(); drawChrome(); request();
       return built;
-    }).catch((error: unknown) => { pending[index] = null; failed = ATLAS_LEVELS[index]!.name; console.error(`The map of ${ATLAS_LEVELS[index]!.name} could not be loaded:`, error); showWait(); return null; });
+    }).catch((error: unknown) => {
+      if (!destroyed) { failedLevels.add(index); console.error(`The map of ${ATLAS_LEVELS[index]!.name} could not be loaded:`, error); showWait(); }
+      // Keep the settled promise: animation and resize cannot retry a failed module.
+      return null;
+    });
     return pending[index]!;
   }
 
@@ -409,11 +416,13 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     for (const entry of layers) if (reducedMotion || !raf) { entry.alpha = entry.levels.includes(level) ? 1 : 0; applyLayer(entry); }
   }
   function showWait() {
+    const failedIndex = failedLevels.has(wanted) ? wanted : failedLevels.values().next().value;
+    const failed = failedIndex === undefined ? '' : ATLAS_LEVELS[failedIndex]!.name;
     const name = failed || (!sheets[wanted] ? ATLAS_LEVELS[wanted]!.name : '');
     loading = name;
     if (!ui.wait) return;
     ui.wait.hidden = !name;
-    ui.wait.innerHTML = failed ? `The map of ${esc(failed)} could not be loaded. <button type="button" data-atlas-retry>Try again</button>` : name ? `Loading the map of ${esc(name)}…` : '';
+    ui.wait.innerHTML = failed ? `The map of ${esc(failed)} could not be loaded. <button type="button" data-atlas-retry>Reload to try again</button>` : name ? `Loading the map of ${esc(name)}…` : '';
   }
   /** Move every layer towards what its level wants. Returns true while a fade is still running. */
   function stepFade(dt: number): boolean {
@@ -691,12 +700,13 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     const stateCities = hit.kind === 'state' ? citiesInState(hit.id) : [];
     const overviewCity = stateCities.find(city => cityModule(city.id)?.rules.hasStateOverview);
     const overview = stateOverviewShown === hit.id ? stateOverviews.get(hit.id) : undefined;
-    const overviewBody = overview?.kind === 'ready' ? stateOverviewHtml(overview.data, stateCities, info.city?.id ?? null, { units: overviewExpanded.has(`${hit.id}:units`), landmarks: overviewExpanded.has(`${hit.id}:landmarks`) }) : overview?.kind === 'loading' ? '<p role="status">Loading the state map…</p>' : overview?.kind === 'error' ? '<p role="alert">The state map could not be loaded. <button type="button" data-atlas-state-retry>Reload to try again</button></p>' : '';
+    const overviewBody = overview?.kind === 'ready' ? stateOverviewHtml(overview.data, stateCities, info.city?.id ?? null, { units: overviewExpanded.has(`${hit.id}:units`), landmarks: overviewExpanded.has(`${hit.id}:landmarks`) }, current) : overview?.kind === 'loading' ? '<p role="status">Loading the state map…</p>' : overview?.kind === 'error' ? '<p role="alert">The state map could not be loaded. <button type="button" data-atlas-state-retry>Reload to try again</button></p>' : '';
     const guide = info.city ? cachedCityContent(info.city.id)?.thingsToDo.slice(0, 5) : undefined;
     const routeRow = (route: RouteInfo) => {
       const on = routeShown === route.id, playing = preview && routeShown === route.id;
-      return `<li class="${on ? 'is-on' : ''}"><button type="button" class="atlas-route" data-atlas-route="${esc(route.id)}" aria-pressed="${on}"><span class="atlas-route-mode" aria-hidden="true">${ICON(route.mode === 'air' ? GLYPH.plane : route.mode === 'rail' ? GLYPH.rail : GLYPH.bus)}</span><span><b>${esc(route.label)}</b><small>${naira(route.fare)} · about ${route.minutes} min · ${route.km} km · from ${esc(route.hub)}</small></span></button>
-        ${on ? `<div class="atlas-route-more">${route.live ? `<button type="button" class="atlas-go is-small" data-atlas-travel="${esc(route.to)}:${esc(route.mode)}">Travel · ${naira(route.fare)}</button>` : `<p>${esc(route.why || '')}</p>`}<button type="button" class="atlas-chip" data-atlas-preview="${esc(route.id)}" ${playing ? 'disabled' : ''}>${playing ? 'Showing the journey…' : 'Preview the journey'}</button></div>` : ''}</li>`;
+      const link = allCityLinks().find(link => linkId(link) === route.id), previewable = link && Boolean(pathOf(link));
+      return `<li class="${on ? 'is-on' : ''}"><button type="button" class="atlas-route" data-atlas-route="${esc(route.id)}" aria-pressed="${on}"><span class="atlas-route-mode" aria-hidden="true">${ICON(route.mode === 'air' ? GLYPH.plane : route.mode === 'rail' ? GLYPH.rail : GLYPH.bus)}</span><span><b>${esc(route.label)}</b><small>${route.status === 'coming' ? 'Coming soon · ' : ''}${naira(route.fare)} · about ${route.minutes} min · ${route.km} km · from ${esc(route.hub)}</small></span></button>
+        ${on ? `<div class="atlas-route-more">${route.live ? `<button type="button" class="atlas-go is-small" data-atlas-travel="${esc(route.to)}:${esc(route.mode)}">Travel · ${naira(route.fare)}</button>` : `<p>${esc(route.why || '')}</p>`}${previewable ? `<button type="button" class="atlas-chip" data-atlas-preview="${esc(route.id)}" ${playing ? 'disabled' : ''}>${playing ? 'Showing the journey…' : 'Preview the journey'}</button>` : '<p>Route preview unavailable.</p>'}</div>` : ''}</li>`;
     };
     const more = Boolean(overviewCity || info.preview || info.routes.length || info.planned || info.wait);
     ui.sheet.className = `atlas-sheet is-${info.tone}${sheetOpen ? ' is-expanded' : ''}`;
@@ -849,8 +859,13 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
     const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel');
-    const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section');
-    if (inspectCity) { selectedCity = inspectCity.dataset.atlasInspectCity ?? null; if (selectedCity && isOpenCityId(selectedCity)) void loadCityContent(selectedCity).then(drawSheet, () => {}); drawSheet(); }
+    const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section'), departure = hit('departure');
+    if (departure && stateOverviewShown) {
+      const overview = stateOverviews.get(stateOverviewShown);
+      const target = overview?.kind === 'ready' ? overview.data.landmarks?.find(item => item.id === departure.dataset.atlasDeparture)?.departure : undefined;
+      if (target && target.cityId === current) onInspectVenue(target.cityId, target.venueId);
+    }
+    else if (inspectCity) { selectedCity = inspectCity.dataset.atlasInspectCity ?? null; if (selectedCity && isOpenCityId(selectedCity)) void loadCityContent(selectedCity).then(drawSheet, () => {}); drawSheet(); }
     else if (overviewSection && stateOverviewShown) { const key = `${stateOverviewShown}:${overviewSection.dataset.atlasOverviewSection}`; if (overviewExpanded.has(key)) overviewExpanded.delete(key); else overviewExpanded.add(key); }
     else if (overviewButton) { const id = overviewButton.dataset.atlasStateOverview; if (id) { if (stateOverviewShown === id) { stateOverviewShown = null; drawSheet(); } else void showStateOverview(id); } }
     else if (hit('state-retry')) doc?.defaultView?.location.reload();
@@ -863,7 +878,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     else if (hit('close')) select(null);
     else if (hit('expand')) { sheetOpen = !sheetOpen; drawSheet(); ui.sheet!.querySelector<HTMLElement>('[data-atlas-expand]')?.focus(); }
     else if (hit('list')) { listOpen = !listOpen; drawCrumbs(); drawRail(); if (listOpen) ui.rail!.querySelector<HTMLElement>('[data-atlas-search]')?.focus(); }
-    else if (hit('retry')) { failed = ''; void ensure(wanted); showWait(); }
+    else if (hit('retry')) doc?.defaultView?.location.reload();
     else if (play) previewTrip(play.dataset.atlasPreview!);
     else if (go) { const [to, mode] = go.dataset.atlasTravel!.split(':'); onTravel(to!, mode!); }
     else if (route) { const id = route.dataset.atlasRoute!; if (!preview && !trip) { routeShown = routeShown === id ? null : id; drawSheet(); drawHighlights(); request(); ui.sheet!.querySelector<HTMLElement>(`[data-atlas-route="${CSS.escape(id)}"]`)?.focus(); } }

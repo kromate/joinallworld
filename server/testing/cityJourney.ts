@@ -3,7 +3,18 @@ import { randomUUID } from 'node:crypto'
 import { DEFAULT_LOOK } from '../../src/game/content/traits.ts'
 import { FICTIONAL_CITY_ID as CITY, FICTIONAL_NEIGHBOUR_CITY_ID as OTHER } from '../../src/game/cities/testing/fictionalCity.test-fixture.ts'
 
-export const JOURNEY_TIME = Date.parse('2026-10-05T10:00:00Z')
+// Miniflare schedules native alarms on wall time even when this fixture freezes game time.
+// Use an eligible Monday beyond the 60-second test deadline, avoiding overdue heartbeats
+// without changing job/election weekday semantics. Dedicated heartbeat tests use real time.
+export function journeyTimeAfter(now: number): number {
+  const deadline = now + 120_000
+  const monday = new Date(deadline)
+  monday.setUTCHours(10, 0, 0, 0)
+  monday.setUTCDate(monday.getUTCDate() + (8 - monday.getUTCDay()) % 7)
+  if (monday.getTime() <= deadline) monday.setUTCDate(monday.getUTCDate() + 7)
+  return monday.getTime()
+}
+export const JOURNEY_TIME = journeyTimeAfter(Date.now())
 export interface JourneyDevice { id: string; cookie: string }
 export interface JourneySocket { send(value: object): void; next(): Promise<unknown> }
 export interface JourneyHost {

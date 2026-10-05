@@ -1,10 +1,11 @@
-// npm run geo:boundaries — rebuilds Lagos only. Pass --oyo, --ogun, --rivers, --fct or --nigeria for another explicit target.
+// npm run geo:boundaries — rebuilds Lagos only. Pass --oyo, --ogun, --rivers, --fct, --kano or --nigeria for another explicit target.
 //
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts [--lagos-only] [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --oyo [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --ogun [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --rivers [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --fct [--check]
+//   node --experimental-strip-types scripts/geo/build-boundaries.ts --kano [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --nigeria [--check]
 //
 // Sources (pinned by revision and sha256; fetched once into .cache/geo, verified every run):
@@ -50,6 +51,7 @@ export const TOLERANCE = {
   ogun: { grid: 0.0002, lga: 0.01, state: 0.01 },
   rivers: { grid: 0.0002, lga: 0.01, state: 0.01, waterGrid: 0.000001, water: 0.0001,
     overviewWaterGrid: 0.00005, overviewWater: 0.05, mangroveGrid: 0.00002, mangrove: 0.02 },
+  kano: { grid: 0.000001, lga: 0.0001, state: 0.0001, surfaceGrid: 0.000001, surface: 0.0001, overviewGrid: 0.00002, overview: 0.02 },
   fct: { grid: 0.0002, council: 0.01, state: 0.01, surfaceGrid: 0.000001, surface: 0.0001 },
   nigeria: { grid: 0.001, general: 3, lagos: 0.15, lagoonLake: 1.5 },
 };
@@ -797,6 +799,71 @@ function fctInputs(adm1: GeoFeatureCollection, adm2: GeoFeatureCollection): {
   return { councilRings, stateRings, statePolys: polygonsOf(state), councilPolys };
 }
 
+const KANO_LGA_NAMES = ['Ajingi', 'Albasu', 'Bagwai', 'Bebeji', 'Bichi', 'Bunkure', 'Dala', 'Dambatta', 'Dawakin Kudu', 'Dawakin Tofa', 'Doguwa', 'Fagge', 'Gabasawa', 'Garko', 'Garun Malam', 'Gaya', 'Gezawa', 'Gwale', 'Gwarzo', 'Kabo', 'Kano Municipal', 'Karaye', 'Kibiya', 'Kiru', 'Kumbotso', 'Kunchi', 'Kura', 'Madobi', 'Makoda', 'Minjibir', 'Nassarawa', 'Rano', 'Rimin Gado', 'Rogo', 'Shanono', 'Sumaila', 'Takai', 'Tarauni', 'Tofa', 'Tsanyawa', 'Tudun Wada', 'Ungogo', 'Warawa', 'Wudil'] as const;
+const KANO_CITY_LGA_IDS = ['kano-municipal', 'dala', 'fagge', 'gwale', 'nassarawa', 'tarauni', 'kumbotso', 'ungogo'] as const;
+const KANO_LGAS = KANO_LGA_NAMES.map(name => ({ source: name, id: name.toLowerCase().replaceAll(' ', '-'), name }));
+const KANO_SURFACE_SOURCE_SHA256 = '10ca8a37bc7a9c4b95fc443ad0a8b7c6e971cf5b04aa804a3948f20fccd51fab';
+interface KanoTransport { id: string; name: string; bridge: boolean; points: Pt[] }
+
+function kanoInputs(adm1: GeoFeatureCollection, adm2: GeoFeatureCollection): {
+  lgaRings: RingInput[]; stateRings: RingInput[]; statePolys: Polygon[]; lgaPolys: Map<string, Polygon[]>;
+} {
+  const state = adm1.features.find(feature => feature.properties.shapeName === 'Kano');
+  if (!state) throw new Error('Kano is missing from pinned ADM1');
+  const statePolys = polygonsOf(state);
+  const selected = adm2.features.filter(feature => { const outer = polygonsOf(feature)[0]?.[0]; return outer ? inPolygons(ringMean(outer), statePolys) : false; });
+  const names = new Set<string>(KANO_LGA_NAMES);
+  if (selected.length !== 44 || selected.some(feature => !names.has(feature.properties.shapeName))) throw new Error('Kano ADM2 selection does not match the 44 source identities');
+  const byName = new Map(selected.map((feature): [string, GeoFeature] => [feature.properties.shapeName, feature]));
+  if (byName.size !== 44) throw new Error('Kano source names are not unique');
+  const lgaRings: RingInput[] = [], lgaPolys = new Map<string, Polygon[]>();
+  for (const { source, id } of KANO_LGAS) {
+    const feature = byName.get(source);
+    if (!feature) throw new Error(`Missing Kano ADM2 ${source}`);
+    const polygons = polygonsOf(feature); lgaPolys.set(id, polygons);
+    polygons.forEach((polygon, poly) => polygon.forEach((pts, ring) => lgaRings.push({ owner: id, poly, hole: ring > 0, pts })));
+  }
+  const stateRings: RingInput[] = [];
+  for (const feature of adm1.features) {
+    const owner = feature === state ? 'kano-state' : `state:${feature.properties.shapeName}`;
+    polygonsOf(feature).forEach((polygon, poly) => polygon.forEach((pts, ring) => stateRings.push({ owner, poly, hole: ring > 0, pts })));
+  }
+  return { lgaRings, stateRings, statePolys, lgaPolys };
+}
+
+function kanoSurfaceInputs(): { surface: RingInput[]; stateWater: RingInput[]; roads: KanoTransport[]; rail: KanoTransport[] } {
+  const raw = readFileSync(join(root, 'scripts/geo/sources/kano-surface.geojson'));
+  if (sha256(raw) !== KANO_SURFACE_SOURCE_SHA256) throw new Error('Kano surface source differs from pinned SHA-256');
+  const parsed: unknown = JSON.parse(raw.toString('utf8'));
+  if (!isRecord(parsed) || parsed.type !== 'FeatureCollection' || !isRecord(parsed.metadata)
+    || parsed.metadata.pbfSha256 !== RIVERS_PBF_SHA256 || !Array.isArray(parsed.features)) throw new TypeError('Invalid Kano source provenance');
+  const surface: RingInput[] = [], stateWater: RingInput[] = [], roads: KanoTransport[] = [], rail: KanoTransport[] = [];
+  const seen = new Set<string>();
+  for (const [index, item] of parsed.features.entries()) {
+    if (!isRecord(item) || !isRecord(item.properties) || typeof item.properties.kind !== 'string'
+      || typeof item.properties.id !== 'string') throw new TypeError(`Invalid Kano feature ${index}`);
+    const { kind, id } = item.properties, key = `${kind}:${id}`;
+    if (seen.has(key)) throw new Error(`Duplicate Kano feature ${key}`);
+    seen.add(key);
+    if (kind === 'road' || kind === 'rail') {
+      if (typeof item.properties.name !== 'string' || typeof item.properties.bridge !== 'boolean'
+        || !isRecord(item.geometry) || item.geometry.type !== 'LineString' || !Array.isArray(item.geometry.coordinates)) throw new TypeError(`Invalid Kano transport ${id}`);
+      const points = item.geometry.coordinates.map((point, i) => pointOf(point, `${id}[${i}]`));
+      if (points.length < 2) throw new Error(`Empty Kano transport ${id}`);
+      (kind === 'road' ? roads : rail).push({ id, name: item.properties.name, bridge: item.properties.bridge, points });
+    } else {
+      if (kind !== 'land' && kind !== 'water' && kind !== 'state-water') throw new Error(`Unknown Kano surface ${key}`);
+      if (kind !== 'state-water' && !KANO_CITY_LGA_IDS.some(lga => lga === id)) throw new Error(`Unknown Kano city LGA ${id}`);
+      const owner = kind === 'land' ? id : kind === 'water' ? `water-${id}` : 'state-water';
+      geometryPolygons(item.geometry, key).forEach((polygon, poly) => polygon.forEach((pts, ring) => {
+        (kind === 'state-water' ? stateWater : surface).push({ owner, poly, hole: ring > 0, pts });
+      }));
+    }
+  }
+  if (KANO_CITY_LGA_IDS.some(id => !seen.has(`land:${id}`)) || !seen.has('state-water:kano')) throw new Error('Kano surface lacks an expected land or water layer');
+  return { surface, stateWater, roads, rail };
+}
+
 const featureText = (feature: Record<string, unknown>): string => JSON.stringify(feature);
 const bytes = (text: string): number => Buffer.byteLength(text);
 const sha256 = (text: string | Uint8Array): string => createHash('sha256').update(text).digest('hex');
@@ -874,15 +941,15 @@ function output(path: string, text: string, check: boolean, topologyNames: reado
   console.log(`${path}: wrote sha256 ${generatedHash}`);
 }
 
-interface Options { check: boolean; target: 'lagos' | 'oyo' | 'ogun' | 'rivers' | 'fct' | 'nigeria' }
+interface Options { check: boolean; target: 'lagos' | 'oyo' | 'ogun' | 'rivers' | 'fct' | 'kano' | 'nigeria' }
 
 function optionsOf(args: readonly string[]): Options {
-  const allowed = new Set(['--check', '--lagos-only', '--oyo', '--ogun', '--rivers', '--fct', '--nigeria']);
+  const allowed = new Set(['--check', '--lagos-only', '--oyo', '--ogun', '--rivers', '--fct', '--kano', '--nigeria']);
   const unknown = args.filter((arg) => !allowed.has(arg));
   if (unknown.length) throw new Error(`Unknown option: ${unknown.join(', ')}`);
-  const targets = [args.includes('--lagos-only'), args.includes('--oyo'), args.includes('--ogun'), args.includes('--rivers'), args.includes('--fct'), args.includes('--nigeria')].filter(Boolean).length;
-  if (targets > 1) throw new Error('Only one of --lagos-only, --oyo, --ogun, --rivers, --fct and --nigeria can be selected');
-  return { check: args.includes('--check'), target: args.includes('--oyo') ? 'oyo' : args.includes('--ogun') ? 'ogun' : args.includes('--rivers') ? 'rivers' : args.includes('--fct') ? 'fct' : args.includes('--nigeria') ? 'nigeria' : 'lagos' };
+  const targets = [args.includes('--lagos-only'), args.includes('--oyo'), args.includes('--ogun'), args.includes('--rivers'), args.includes('--fct'), args.includes('--kano'), args.includes('--nigeria')].filter(Boolean).length;
+  if (targets > 1) throw new Error('Only one of --lagos-only, --oyo, --ogun, --rivers, --fct, --kano and --nigeria can be selected');
+  return { check: args.includes('--check'), target: args.includes('--oyo') ? 'oyo' : args.includes('--ogun') ? 'ogun' : args.includes('--rivers') ? 'rivers' : args.includes('--fct') ? 'fct' : args.includes('--kano') ? 'kano' : args.includes('--nigeria') ? 'nigeria' : 'lagos' };
 }
 
 async function main(options: Options): Promise<void> {
@@ -977,6 +1044,54 @@ ${stateFeature}
     output(path, ogunText, options.check, ['OGUN_LGAS', 'OGUN_STATE']);
     console.log(`ogun.ts ${bytes(ogunText)} bytes, ${lgaBuilt.arcs.length} LGA arcs, ${stateBuilt.arcs.length} state arcs, ${locked.seamPoints} locked state-seam vertices, ${lgaLocked.seamPoints} locked Ota land-seam vertices`);
     console.log(`areas from source projection: Ogun State ${stateArea.toFixed(1)} km²; ${Object.entries(cityAreas).map(([city, area]) => `${city} ${area.toFixed(1)} km²`).join('; ')}`);
+    return;
+  }
+
+  if (options.target === 'kano') {
+    const T = TOLERANCE.kano, kano = kanoInputs(adm1, adm2), wet = kanoSurfaceInputs();
+    const lgas = build(kano.lgaRings, T.grid, () => T.lga);
+    const state = subsetBuilt(build(kano.stateRings, T.grid, () => T.state), new Set(['kano-state']));
+    const surface = build(wet.surface, T.surfaceGrid, () => T.surface);
+    const land = subsetBuilt(surface, new Set(KANO_CITY_LGA_IDS));
+    const waterNames = KANO_CITY_LGA_IDS.map(id => ({ id: `water-${id}`, name: `Mapped water in ${id}` })).filter(feature => surface.refs.some(ref => ref.owner === feature.id));
+    const water = subsetBuilt(surface, new Set(waterNames.map(feature => feature.id)));
+    const stateWater = build(wet.stateWater, T.overviewGrid, () => T.overview);
+    const layer = (built: Built, features: readonly { id: string; name: string }[]): string =>
+      `{"grid":${built.grid},"arcs":${JSON.stringify(arcText(built))},"features":${JSON.stringify(features.map(feature => ({ ...feature, polys: polysOf(built, feature.id) })))}}`;
+    const names = KANO_LGAS.map(({ id, name }) => ({ id, name }));
+    const cityNames = KANO_CITY_LGA_IDS.map(id => { const feature = names.find(feature => feature.id === id); if (!feature) throw new Error(`Unknown Kano ${id}`); return feature; });
+    const text = `/**
+ * GENERATED DATA (npm run geo:boundaries -- --kano). All 44 Kano State local governments.
+ * Eight metropolis local governments form an independent original ADM2 playable footprint.
+ * Boundaries: geoBoundaries gbOpen Nigeria release ${RELEASE}, GRID3 2022, CC BY 4.0.
+ * ADM1 NGA-ADM1-27671186; ADM2 NGA-ADM2-59680162. Source-era names retained.
+ * Water and local transport: © OpenStreetMap contributors, ODbL 1.0; Geofabrik Nigeria 2026-10-03.
+ * PBF SHA-256 ${RIVERS_PBF_SHA256}.
+ * Derived source SHA-256 ${KANO_SURFACE_SOURCE_SHA256}; scripts/geo/refresh-kano-surface.py.
+ * Administrative arcs: grid ${T.grid} degrees, Visvalingam threshold ${T.lga} square frame units.
+ * State selected after all 37 states share arcs. City land and water share one topology,
+ * grid ${T.surfaceGrid} degrees, threshold ${T.surface}. Overview water grid ${T.overviewGrid}.
+ * Transport source vertices simplified at 0.00006 degrees; local railway segments only.
+ * No inferred national rail/road preview. Ancient walls require a separate identified source;
+ * modern unnamed compound walls and road embankments are not relabelled.
+ */
+/* eslint-disable */
+import type { RawTopo } from '../topo.ts';
+export const KANO_CITY_LGA_IDS = ${JSON.stringify(KANO_CITY_LGA_IDS)} as const;
+export const KANO_COMING_LGA_IDS = ${JSON.stringify(names.map(feature => feature.id).filter(id => !KANO_CITY_LGA_IDS.some(city => city === id)))} as const;
+export const KANO_STATE_KM2 = ${polygonsKm2(kano.statePolys).toFixed(1)};
+export const KANO_PLAY_AREA_KM2 = ${KANO_CITY_LGA_IDS.reduce((sum, id) => sum + polygonsKm2(kano.lgaPolys.get(id) ?? []), 0).toFixed(1)};
+export const KANO_LGAS: RawTopo = ${layer(lgas, names)};
+export const KANO_STATE: RawTopo = ${layer(state, [{ id: 'kano-state', name: 'Kano State' }])};
+export const KANO_LAND: RawTopo = ${layer(land, cityNames)};
+export const KANO_WATER: RawTopo = ${layer(water, waterNames)};
+export const KANO_STATE_WATER: RawTopo = ${layer(stateWater, [{ id: 'state-water', name: 'Kano mapped water' }])};
+export const KANO_ROADS = ${JSON.stringify(wet.roads)} as const;
+export const KANO_RAIL = ${JSON.stringify(wet.rail)} as const;
+export const KANO_SURFACE_SOURCE_SHA256 = '${KANO_SURFACE_SOURCE_SHA256}';
+`;
+    output(join(root, 'src/map3d/geo/data/kano.ts'), text, options.check, ['KANO_LGAS', 'KANO_STATE', 'KANO_LAND', 'KANO_WATER', 'KANO_STATE_WATER']);
+    console.log(`kano.ts ${bytes(text)} bytes, ${lgas.arcs.length} LGA arcs, ${surface.arcs.length} surface arcs; ${wet.roads.length} roads and ${wet.rail.length} local rail polylines`);
     return;
   }
 

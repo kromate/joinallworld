@@ -38,6 +38,12 @@ function load(): Promise<void> {
     scene.world.value = createWorldMap(worldBox.value, {
       onOpenCity: () => { worldLayer.value = false; showMapLayer('city') },
       onEnterCity: (cityId) => { void switchCity(cityId) },
+      onInspectVenue: (cityId, venueId) => {
+        if (cityId !== game.cityId.value) return
+        worldLayer.value = false
+        showMapLayer('city')
+        shell.open('map', { destination: venueId })
+      },
       // One character travels between cities: an ordinary game action, refused with its reason while the city is not open.
       onTravel: (to, mode) => { void command('estate.relocate', { to: to as WorldCityId, mode: mode as CityLinkMode }) }, // (the Atlas names the ids; the server validates them)
       routes: () => viewLife(game.state.value, { now: game.state.value.t, cityId: game.cityId.value }).estate?.links ?? null,

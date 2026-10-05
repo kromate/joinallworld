@@ -48,3 +48,13 @@ test('the atlas overview button uses the selected city unit while preserving Lag
   assert.match(stateOverviewToggleHtml('lagos', 'lagos', false), /View all local governments/)
   assert.match(stateOverviewToggleHtml('fct', 'abuja', true), /aria-expanded="true">Hide state overview/)
 })
+
+test('a remote landmark can inspect a local outing departure without offering a teleport or starting an activity', () => {
+  const withDeparture: CityStateOverview = { ...overview, landmarks: [{ id: 'lake', name: 'Lake reference', lon: 3.15, lat: 7.05, context: 'Outside the playable city', departure: { cityId: 'kano', venueId: 'railway-station', label: 'See simulated outing departure' } }] }
+  const local = stateOverviewHtml(withDeparture, [], 'kano', { landmarks: true }, 'kano')
+  assert.match(local, /data-atlas-departure="lake">See simulated outing departure/)
+  assert.doesNotMatch(local, /data-atlas-travel|data-atlas-action|data-activity/)
+  const elsewhere = stateOverviewHtml(withDeparture, [], 'kano', { landmarks: true }, 'lagos')
+  assert.doesNotMatch(elsewhere, /data-atlas-departure/)
+  assert.match(elsewhere, /Outing departs from Kano/)
+})

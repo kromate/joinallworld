@@ -1,3 +1,5 @@
+import { NIGERIA } from '../country.ts'
+import { CAREER_IDS } from '../../content/career-ids.ts'
 import type { CityModuleRules, LgaDefinition } from '../../../types/content.ts'
 import { PORT_HARCOURT_LINKS } from './links.ts'
 
@@ -22,9 +24,9 @@ export const PORT_HARCOURT_PLAY_BOUNDS = Object.freeze({minX:-338.6765386194545,
 export const PORT_HARCOURT_RULES = Object.freeze({
   id:'port-harcourt',name:'Port Harcourt',status:'open',unit:'local government',units:PORT_HARCOURT_LGAS,
   hub:{road:'Rumuola Interchange',air:'Port Harcourt International Airport',rail:'Port Harcourt Railway Station'},seaPlots:false,hasStateOverview:true,
-  state:{id:'rivers',name:'Rivers State',unit:'local government'},country:{id:'ng',name:'Nigeria'},timezone:'Africa/Lagos',
+  state:{id:'rivers',name:'Rivers State',unit:'local government'},country: NIGERIA,timezone:'Africa/Lagos',
   rentedHomeIds:['ph-diobu-room','ph-rumuola-flat','ph-eleme-flat','ph-okrika-room','ph-omagwa-flat','ph-oyigbo-house','ph-etche-house'],defaultRentedHome:'ph-rumuola-flat',
-  careerIds:['community-helper','tech','banking','music','trading','nursing','hair','chef','dj','fitness','creator','teaching','event','football','retail'],
+  careerIds:CAREER_IDS,
   atlas:{lon:7.03,lat:4.82,teaser:'The Garden City: markets, campuses, stadiums and waterways beside the Bonny River.',preview:['Pleasure Park and Aba Road','Diobu markets and the old township','Okrika and the waterfront landings']},
   mapOrigin:PORT_HARCOURT_MAP_ORIGIN,
   districts:[

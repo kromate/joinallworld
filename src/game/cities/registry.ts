@@ -6,6 +6,7 @@ import { ijebuOdeCity } from './ijebu-ode/index.ts'
 import { sagamuCity } from './sagamu/index.ts'
 import { portHarcourtCity } from './port-harcourt/index.ts'
 import { abujaCity } from './abuja/index.ts'
+import { kanoCity } from './kano/index.ts'
 import { CITY_LINKS } from './links.ts'
 import type { CityId } from './ids.ts'
 import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRules, CityState } from '../../types/content.ts'
@@ -67,10 +68,10 @@ function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker): Kno
   })
 }
 
-const publicRules = ({ id, name, status, unit, units, hub, civicTitle }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub, ...(civicTitle ? { civicTitle } : {}) })
+const publicRules = ({ id, name, status, unit, units, hub, civicTitle, climate }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub, ...(civicTitle ? { civicTitle } : {}), ...(climate ? { climate } : {}) })
 const futureCityPreview = Object.freeze(['Homes and local governments', 'Public places and activities', 'Road travel to neighbouring cities'])
 
-const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity, 'port-harcourt': portHarcourtCity, abuja: abujaCity })
+const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity, 'port-harcourt': portHarcourtCity, abuja: abujaCity, kano: kanoCity })
 
 type CoreKnownCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
 type KnownCityCatalogue = Readonly<Record<CoreKnownCityId, KnownCity> & Record<string, KnownCity | undefined>>
@@ -170,7 +171,7 @@ export const citiesInState = (stateId: unknown): readonly CataloguedCityRules[] 
   : []
 
 const linkKey = (link: Pick<CityLink, 'a' | 'b' | 'mode'>): string => `${[link.a, link.b].sort().join('|')}|${link.mode}`
-const sameLink = (a: CityLink, b: CityLink): boolean => a.a === b.a && a.b === b.b && a.mode === b.mode && a.label === b.label && a.icon === b.icon
+const sameLink = (a: CityLink, b: CityLink): boolean => a.a === b.a && a.b === b.b && a.mode === b.mode && (a.status ?? 'open') === (b.status ?? 'open') && a.label === b.label && a.icon === b.icon
   && a.fare === b.fare && a.seconds === b.seconds && a.km === b.km && a.beta === b.beta
 
 /** Canonical live link catalogue. Authored modules supersede legacy rows; authored conflicts are errors. */

@@ -31,6 +31,7 @@ import { pointInPolygon } from './roads.ts';
 import type { Network, Road } from './roads.ts';
 import { landOf, rasterLgas, scanRings } from './lga.ts';
 import { estateLayout } from './estates.ts';
+import { heritageDashes, HERITAGE_STYLE } from './heritage.ts';
 import type { Box4, CityPack, FabricStyle, LandKind, PackDistrict, Point2, Point3, XZ } from './types.ts';
 
 /** The Three.js namespace the map code is handed (it is loaded lazily, so it is never imported here as a value). */
@@ -534,6 +535,14 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
 
   // ---- what only this city has ----------------------------------------------------------------
   pack.decorate?.(b, { rng, w });
+  if (pack.heritageLines?.length) {
+    const heritage = createBatch(THREE);
+    for (const { from, to } of heritageDashes(pack.heritageLines)) {
+      const dx = to[0] - from[0], dz = to[1] - from[1];
+      heritage.box((from[0] + to[0]) / 2, HERITAGE_STYLE.height / 2 + 0.03, (from[1] + to[1]) / 2, HERITAGE_STYLE.width, HERITAGE_STYLE.height, Math.hypot(dx, dz), HERITAGE_STYLE.colour, { ry: Math.atan2(dx, dz) });
+    }
+    for (const mesh of heritage.build(shared).meshes) count(add(mesh, 'historic-wall-alignments'));
+  }
 
   /** The metropolitan core: the default view, where the boats sail and the fabric is densest. The whole board when the pack names none. */
   const core = pack.core ?? { minX: minX + 8, maxX: maxX - 8, minZ: minZ + 8, maxZ: maxZ - 8 };

@@ -10,6 +10,7 @@ import { makeContext, isRecord } from './util.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { ActionOutcome, LifeContext, LifeContextInit, LifeState, WorldCityId } from '../types/life.ts';
 import { HOUSES } from './content/housing.ts';
+import { intercitySeconds } from './content/travel.ts';
 import { ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_CAPACITY, LGA_RULES, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cleanStyle, lgaOf, lgaOfDistrict, moveLevy, packStyle, stylePrice, tierCost, unpackStyle } from './content/world.ts';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8), DAY = 86400000;
@@ -213,7 +214,7 @@ test('cities connect as data, while a trip to closed Kaduna is refused without c
   for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
   const soon: WorldCityId[] = ['kaduna'];
   for (const id of soon) { const city = cityRules(id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
-  for (const link of allCityLinks()) { assert.ok(cityRules(link.a) && cityRules(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
+  for (const link of allCityLinks()) { assert.ok(cityRules(link.a) && cityRules(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds === intercitySeconds(link.mode, link.km) && link.seconds >= 12 && link.seconds <= 75 && link.beta); }
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   const cash = state.cash;
   state.estate.city = 'abuja';
@@ -257,7 +258,7 @@ test('one character between cities: money, skills and people travel; the home le
   assert.equal(dispatch(reloaded, { type: 'estate.relocate', payload: { to: 'lagos', mode: 'road' } }, back).code, 'departed');
   advanceLife(reloaded, 121, makeContext({ now: reloaded.t + 121000, cityId: 'ibadan', seed: 'home' }));
   assert.deepEqual([reloaded.estate.city, reloaded.estate.lga, reloaded.estate.plot, reloaded.estate.style.wall, reloaded.estate.living], ['lagos', 'ikeja', { lga: 'ikeja', estate: 4, plot: 20 }, 3, 'own']);
-  assert.ok(reloaded.estate.away.ibadan);
+  assert.deepEqual([reloaded.estate.away.ibadan, reloaded.estate.home], [undefined, 'lagos'], 'Ibadan was a visit: nothing is kept there, and the one home is the Lagos one');
   conserved(reloaded, 5000);
 });
 

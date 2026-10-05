@@ -98,8 +98,9 @@ test('one Lagos character goes to Ibadan by road and returns by rail with one wa
     assert.deepEqual({ cash: state.cash, needs: state.needs, job: state.job, career: state.career }, afterRoad)
 
     const cashBeforeChoice = state.cash
-    assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'ibadan-north', via: 'manual' } }, clock.at(state)).code, 'lga_set')
-    assert.deepEqual([state.estate.lga, state.estate.lgaConfirmed, state.cash], ['ibadan-north', true, cashBeforeChoice], 'the first Ibadan home choice is free')
+    state.cash += viewLife(state, clock.at(state)).estate.settle?.buy.prices['ibadan-north'] ?? 0
+    assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'ibadan-north', via: 'manual', home: 'buy' } }, clock.at(state)).code, 'home_bought')
+    assert.deepEqual([state.estate.lga, state.estate.lgaConfirmed, state.cash], ['ibadan-north', true, cashBeforeChoice], 'the Ibadan home cost exactly its price')
     const cashBeforeRail = state.cash
     assert.equal(dispatch(state, { type: 'estate.relocate', payload: { to: 'lagos', mode: 'rail' } }, clock.at(state)).code, 'departed')
     clock.finish(state)

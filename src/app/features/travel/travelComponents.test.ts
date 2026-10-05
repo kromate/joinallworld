@@ -71,6 +71,7 @@ test('the registered panels carry the metadata of the existing ones', async () =
     { id: 'roadside', title: 'On the road', placement: 'modal', order: undefined, group: undefined, slot: undefined },
     { id: 'ride', title: 'Ride', placement: 'phone', order: 18, group: 'life', slot: undefined },
     { id: 'city', title: 'City', placement: 'modal', order: undefined, group: undefined, slot: undefined },
+    { id: 'visiting', title: 'Home', placement: 'modal', order: undefined, group: undefined, slot: undefined },
     { id: 'roadside-chip', title: 'On the road', placement: 'hud', order: 5, group: undefined, slot: 'alert' },
   ])
   const badge = TRAVEL_PANELS.find((panel) => panel.id === 'ride')?.badge
@@ -97,7 +98,12 @@ test('the Map overview: the handle, the filters, the layers and every place with
   const listed = view.travel.destinations.filter((item) => item.kind !== 'soon')
   assert.equal((html.match(/<li><button/g) ?? []).length, listed.length, 'every place is in the list')
   assert.ok(words.includes('You are here'))
-  assert.ok(words.includes('World map · 9 cities open'))
+  // The world is one tap from the Map: the level bar is on the city map itself, not at the end of the list.
+  assert.match(html, /<nav class="map-levels" aria-label="Map level\. You are in World › Africa › Nigeria › [^"]+">/)
+  assert.match(html, /<button[^>]*data-map-level="world"[^>]*data-tour="map-world"[^>]*title="World map · 9 cities open"/)
+  assert.deepEqual([...html.matchAll(/data-map-level="([a-z]+)"/g)].map((match) => match[1]), ['world', 'africa', 'nigeria', 'city'])
+  assert.match(html, /<button[^>]*data-map-level="city"[^>]*aria-current="true"/, 'the level in view is marked')
+  assert.doesNotMatch(html.slice(html.indexOf('id="map-list"')), /World map/, 'no second entry hidden at the end of the list')
   assert.match(html, /<svg class="ui-glyph"/, 'places and layers are drawn with glyphs')
   assert.doesNotMatch(html, /\p{Extended_Pictographic}/u, 'never the content emoji')
 })
@@ -196,7 +202,7 @@ test('the trip bar: from, to, how, the time left, Cancel with the real rule; the
 test('the world layer: the panel only names the screen', async () => {
   await resetMap()
   const html = await render('/src/app/features/travel/MapApp.vue', { params: { layer: 'world' } })
-  assert.match(html, /^<h1 class="ui-sr">World map\. Explore cities and travel routes\.<\/h1>$/)
+  assert.equal(html.replace(/<!--.*?-->/g, ''), '<h1 class="ui-sr">World map. Explore cities and travel routes.</h1>')
   await resetMap()
 })
 

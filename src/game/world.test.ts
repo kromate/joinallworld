@@ -362,7 +362,7 @@ test('modifiers: own car through travel.modes, and fare, duration and need cost 
   assert.deepEqual(quote(tuned, 'library', 'trek', at(DRY_NOON)).needs, { hygiene: -7 }, 'unknown needs and zeroes are dropped');
   go(tuned, 'library', 'trek', DRY_NOON);
   assert.deepEqual([tuned.needs.energy, tuned.needs.hygiene], [50, 43]);
-  assert.equal(quote(createLife({ worldprobe: { slow: true } }, at(DRY_NOON)), 'home', 'trek', at(DRY_NOON)).seconds, 36);
+  assert.equal(quote(createLife({ worldprobe: { slow: true } }, at(DRY_NOON)), 'home', 'trek', at(DRY_NOON)).seconds, 15, 'a slowed trek is still held to the longest a trip inside a city takes');
 });
 
 test('a save from before per-mode travel resumes and arrives; malformed trips are dropped', () => {

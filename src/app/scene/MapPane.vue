@@ -5,7 +5,7 @@
 // is kept and replayed, as before.
 //
 // Like the venue scene, the maps draw on demand: hidden, the city map draws nothing.
-import { onBeforeUnmount, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import { useApp } from '../state/app.ts'
 import { loadMaps } from './loaders.ts'
 import { viewLife } from '../../life.ts'
@@ -21,7 +21,28 @@ const worldLayer = ref(false)
 const mapUi: Record<string, unknown> = {}
 const keepMapUi = (event: Event): void => { Object.assign(mapUi, (event as CustomEvent<Record<string, unknown>>).detail ?? {}) }
 window.addEventListener('jaw:map-ui', keepMapUi)
-const onLayer = (event: Event): void => { const layer = (event as CustomEvent<{ layer?: string }>).detail?.layer; if (layer === 'world' || layer === 'city') worldLayer.value = layer === 'world' }
+/** What the atlas was asked to show when it comes to the front: a level (0 the world … 2 Nigeria) or a city's card. */
+let wanted: { level?: number; city?: string } | null = null
+const onLayer = (event: Event): void => {
+  const detail = (event as CustomEvent<{ layer?: string; level?: number; city?: string }>).detail
+  const layer = detail?.layer
+  if (layer !== 'world' && layer !== 'city') return
+  worldLayer.value = layer === 'world'
+  if (layer === 'world' && (typeof detail?.level === 'number' || typeof detail?.city === 'string')) { wanted = { ...(typeof detail.level === 'number' ? { level: detail.level } : {}), ...(typeof detail.city === 'string' ? { city: detail.city } : {}) }; aim() }
+}
+/** Point the atlas at what was asked for, once it exists and is in front. */
+function aim(): void {
+  const world = scene.world.value
+  if (!world || !wanted || !mapOpen() || !worldLayer.value) return
+  const { level, city } = wanted
+  wanted = null
+  // After the atlas has its first level and the shell has drawn, so it measures the screen it is shown on.
+  void world.ready.then(() => nextTick()).then(() => {
+    world.resize()
+    if (typeof level === 'number') world.goLevel(level)
+    if (city) world.selectCity(city)
+  })
+}
 window.addEventListener('jaw:map-ui', onLayer)
 let loading: Promise<void> | null = null
 
@@ -30,7 +51,7 @@ function show(): void {
   const city = scene.city.value
   // Told after the shell has drawn, so the map measures the panel it shares the screen with.
   city?.setShown(mapOpen() && !worldLayer.value)
-  if (mapOpen()) { scene.world.value?.resize(); city?.resize() }
+  if (mapOpen()) { scene.world.value?.resize(); city?.resize(); aim() }
 }
 function load(): Promise<void> {
   loading ??= loadMaps().then(({ createCityView, createWorldMap }) => {
@@ -48,6 +69,7 @@ function load(): Promise<void> {
       onTravel: (to, mode) => { void command('estate.relocate', { to: to as WorldCityId, mode: mode as CityLinkMode }) }, // (the Atlas names the ids; the server validates them)
       // Each route also says what arriving at once would add to its fare ('travel.skip'): free for a character that has never skipped.
       routes: () => viewLife(game.state.value, { now: game.state.value.t, cityId: game.cityId.value }).estate?.links?.map((link) => ({ ...link, skipFree: game.state.value.travel.skipped !== true })) ?? null,
+      wallet: () => game.state.value.cash,
       held: heldCities,
     })
     const city = createCityView(cityBox.value, {
@@ -74,6 +96,9 @@ function load(): Promise<void> {
     showLive()
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }))
     show()
+    // The wider levels are fetched while nothing else is going on, so the first look at Africa or the world does not wait.
+    const idle = (globalThis as { requestIdleCallback?: (run: () => void, options?: { timeout: number }) => number }).requestIdleCallback
+    if (idle) idle(() => scene.world.value?.warm(), { timeout: 5000 }); else globalThis.setTimeout(() => scene.world.value?.warm(), 2500)
   }).catch((error: unknown) => { loading = null; telemetry.chunkFailed('map', error); void noteChunkFailure(); console.error('The map could not be loaded:', error); game.toast('The map could not be loaded. Check your connection and open it again.', 'error') })
   return loading
 }

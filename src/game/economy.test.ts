@@ -341,7 +341,7 @@ test('economy: a life that starts in each Ogun city, and one that crosses Ota, A
   assert.deepEqual(trip.stages.map((stage) => stage.city), ['lagos', 'ota', 'ota', 'abeokuta', 'abeokuta', 'ibadan', 'abeokuta', 'lagos', 'lagos']);
   assert.equal(trip.player.lines.filter((line) => line.reason.startsWith('Start cash')).length, 1, 'start cash is paid once across five cities');
   assert.ok(trip.player.state.estate.lga !== null && trip.player.state.job === 'community-helper', 'the Lagos home and the job are still there');
-  assert.ok(Object.keys(trip.player.state.estate.away).sort().join() === 'abeokuta,ibadan,ota', 'the three houses away are kept');
+  assert.deepEqual([Object.keys(trip.player.state.estate.away), trip.player.state.estate.home], [[], 'lagos'], 'three cities visited, one home: nothing was left behind anywhere');
 });
 
 test('economy: a life that starts in Port Harcourt, Abuja or Kano, and one that crosses all three and home, conserve every naira', () => {
@@ -363,5 +363,5 @@ test('economy: a life that starts in Port Harcourt, Abuja or Kano, and one that 
   assert.deepEqual(trip.stages.map((stage) => stage.city), ['lagos', 'abuja', 'abuja', 'kano', 'kano', 'abuja', 'port-harcourt', 'port-harcourt', 'lagos', 'lagos']);
   assert.equal(trip.player.lines.filter((line) => line.reason.startsWith('Start cash')).length, 1, 'start cash is paid once across four cities');
   assert.ok(trip.player.state.estate.lga !== null && trip.player.state.job === 'community-helper', 'the Lagos home and the job are still there');
-  assert.equal(Object.keys(trip.player.state.estate.away).sort().join(), 'abuja,kano,port-harcourt', 'the three houses away are kept');
+  assert.deepEqual([Object.keys(trip.player.state.estate.away), trip.player.state.estate.home], [[], 'lagos'], 'three cities visited, one home: nothing was left behind anywhere');
 });

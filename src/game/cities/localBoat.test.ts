@@ -9,7 +9,9 @@ import { tripOf, tripPose } from '../../map3d/trip.ts'
 import { tripInfo } from '../../app/features/travel/travelModel.ts'
 import { VEHICLES } from '../../map3d/vehicles.ts'
 
+// The route asks for more than a trip inside a city may take: the quote is held to the local cap.
 const route = { a: 'test-square', b: 'polling-unit', mode: 'boat', fare: 700, seconds: 40, beta: true } as const
+const TRIP = 15
 
 test('local boat travel requires its jetty pair, charges once, resumes and returns without road events', async () => {
   const registered = registerCityForTest({ ...fictionalCity, loadContent: async () => ({ ...fictionalContent, localRoutes: [route] }) })
@@ -26,7 +28,7 @@ test('local boat travel requires its jetty pair, charges once, resumes and retur
     assert.equal(state.cash, before)
     assert.equal(dispatch(state, { type: 'travel', payload: { id: route.b, mode: 'boat' } }, context()).code, 'started')
     assert.equal(state.cash, before - route.fare)
-    assert.equal(state.activeAction?.duration, route.seconds)
+    assert.equal(state.activeAction?.duration, TRIP)
     assert.equal(tripOf(state)?.mode, 'boat')
     assert.equal(tripInfo(state, viewLife(state, context()))?.mode.label, 'Boat')
     now += 10000
@@ -35,14 +37,14 @@ test('local boat travel requires its jetty pair, charges once, resumes and retur
     state = createLife(saved, { ...context(), trustedSave: true })
     assert.deepEqual(state.activeAction, saved.activeAction)
     assert.equal(state.cash, saved.cash)
-    now += 31000
-    advanceLife(state, 31, context())
+    now += 6000
+    advanceLife(state, 6, context())
     assert.equal(state.location, route.b)
     assert.equal(state.travel.event, null)
     assert.equal(state.travel.lastTrip?.mode, 'boat')
     assert.equal(dispatch(state, { type: 'travel', payload: { id: route.a, mode: 'boat' } }, context()).code, 'started')
-    now += 41000
-    advanceLife(state, 41, context())
+    now += (TRIP + 1) * 1000
+    advanceLife(state, TRIP + 1, context())
     assert.equal(state.location, route.a)
     assert.equal(state.cash, before - 2 * route.fare)
     assert.equal(state.travel.event, null)

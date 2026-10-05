@@ -32,8 +32,8 @@ async function withState(change: (state: LifeState) => LifeState, body: () => Pr
   app.game.state.value = change(before)
   try { await body() } finally { app.game.state.value = before }
 }
-/** On the bus to Ibadan (₦3,500, 120 s) with `remaining` seconds to go. */
-const onTheBus = (state: LifeState, remaining: number, more: Partial<LifeState> = {}): LifeState => ({ ...state, ...more, activeAction: { kind: 'intercity', id: 'ibadan', from: 'lagos', mode: 'road', fare: 3500, duration: 120, remaining } })
+/** On the bus to Ibadan (₦3,500, 30 s) with `remaining` seconds to go. */
+const onTheBus = (state: LifeState, remaining: number, more: Partial<LifeState> = {}): LifeState => ({ ...state, ...more, activeAction: { kind: 'intercity', id: 'ibadan', from: 'lagos', mode: 'road', fare: 3500, duration: 30, remaining } })
 const buttons = (html: string): string[] => (html.match(/<button[^>]*>[^<]*<\/button>/g) ?? []).map((button) => text(button))
 
 before(async () => {
@@ -69,7 +69,7 @@ test('where the trip is chosen: each route of the atlas card carries what arrivi
   const card = (routes: { to: string; mode: string; blocked: null; skipFree?: boolean }[] | null) => regionInfo({ kind: 'state', id: 'oyo' }, { cityId: 'ibadan', feature: { name: 'Oyo State' }, current: 'lagos', routes })
     .routes.map((route) => [route.mode, route.fare, route.skip])
   const mine = (skipFree?: boolean) => ['road', 'rail'].map((mode) => ({ to: 'ibadan', mode, blocked: null, ...(skipFree === undefined ? {} : { skipFree }) }))
-  assert.deepEqual(card(mine(false)), [['road', 3500, 1300], ['rail', 9000, 1000]])
+  assert.deepEqual(card(mine(false)), [['road', 3500, 1300], ['rail', 9000, 950]])
   assert.deepEqual(card(mine(true)), [['road', 3500, 0], ['rail', 9000, 0]], 'a character that has never skipped is told its first one is free')
   // Routes that are not the player's own (nobody is playing, or an older caller) say nothing about skipping.
   assert.deepEqual(card(mine()), [['road', 3500, undefined], ['rail', 9000, undefined]])
@@ -77,14 +77,14 @@ test('where the trip is chosen: each route of the atlas card carries what arrivi
 })
 
 test('on a trip between cities the progress chip offers the skip: free the first time, then at the price as the trip stands', async () => {
-  await withState((state) => onTheBus(state, 80), async () => {
+  await withState((state) => onTheBus(state, 20), async () => {
     const html = await render('/src/app/features/venue/ActionProgress.vue')
     assert.deepEqual(buttons(html), ['Skip the trip · Free'])
     assert.match(html, /<button type="button" class="ui-button is-primary trip-skip-go" aria-label="Skip the trip and arrive now\. This one is free\.">/)
     assert.match(html, /<p class="trip-skip-note" role="status">Arrive now\. The rest of the journey is skipped\. Your first skip between cities is free\.<\/p>/)
   })
   const skipped = (state: LifeState): LifeState => ({ ...state, cash: 20000, travel: { ...state.travel, skipped: true } })
-  await withState((state) => onTheBus(skipped(state), 80), async () => {
+  await withState((state) => onTheBus(skipped(state), 20), async () => {
     const html = await render('/src/app/features/venue/ActionProgress.vue')
     assert.deepEqual(buttons(html), ['Skip the trip · ₦900'])
     assert.match(html, /aria-label="Skip the trip and arrive now for ₦900"/)
@@ -92,13 +92,13 @@ test('on a trip between cities the progress chip offers the skip: free the first
     assert.doesNotMatch(html, /disabled/)
   })
   // The price follows the trip.
-  await withState((state) => onTheBus(skipped(state), 20), async () => {
+  await withState((state) => onTheBus(skipped(state), 5), async () => {
     assert.deepEqual(buttons(await render('/src/app/features/venue/ActionProgress.vue')), ['Skip the trip · ₦300'])
   })
 })
 
 test('a skip that cannot be bought is a disabled button with the reason beside it', async () => {
-  await withState((state) => onTheBus({ ...state, cash: 600, travel: { ...state.travel, skipped: true } }, 100), async () => {
+  await withState((state) => onTheBus({ ...state, cash: 600, travel: { ...state.travel, skipped: true } }, 25), async () => {
     const html = await render('/src/app/features/venue/ActionProgress.vue')
     assert.match(html, /<button type="button" class="ui-button is-primary trip-skip-go" disabled aria-label="Skip the trip for ₦1,100\. You need ₦500 more\.">Skip the trip · ₦1,100<\/button>/)
     assert.match(text(html), /You need ₦500 more\. The price falls as you get closer\./)

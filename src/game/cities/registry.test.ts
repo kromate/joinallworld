@@ -51,6 +51,6 @@ test('authored Ibadan content is open and exposes its canonical road and rail li
   assert.ok(content.venues.every((venue) => venue.cityId === 'ibadan'))
   assert.ok(content.regulars.every((regular) => regular.cityId === 'ibadan'))
   assert.equal(isOpenCityId('ibadan'), true)
-  assert.deepEqual(linksFrom('lagos').filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.fare, link.seconds]), [['road', 3500, 120], ['rail', 9000, 90]])
-  assert.deepEqual(linksFrom('ibadan').filter((link) => link.to === 'lagos').map((link) => [link.mode, link.fare, link.seconds]), [['road', 3500, 120], ['rail', 9000, 90]])
+  assert.deepEqual(linksFrom('lagos').filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.fare, link.seconds]), [['road', 3500, 30], ['rail', 9000, 21]])
+  assert.deepEqual(linksFrom('ibadan').filter((link) => link.to === 'lagos').map((link) => [link.mode, link.fare, link.seconds]), [['road', 3500, 30], ['rail', 9000, 21]])
 })

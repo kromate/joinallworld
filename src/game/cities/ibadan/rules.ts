@@ -1,3 +1,4 @@
+import { timedLink } from '../../content/travel.ts'
 import { NIGERIA } from '../country.ts'
 import { CAREER_IDS } from '../../content/career-ids.ts'
 import type { CityModuleRules, LgaDefinition } from '../../../types/content.ts'
@@ -82,7 +83,7 @@ export const IBADAN_RULES = Object.freeze({
     { id: 'moniya-rail', name: 'Obafemi Awolowo Station', mode: 'rail', venueId: 'moniya-station' },
   ],
   links: [
-    { a: 'lagos', b: 'ibadan', mode: 'road', beta: true, label: 'Bus on the Lagos–Ibadan Expressway', icon: '🚌', fare: 3500, seconds: 120, km: 130 },
+    timedLink({ a: 'lagos', b: 'ibadan', mode: 'road', beta: true, label: 'Bus on the Lagos–Ibadan Expressway', icon: '🚌', fare: 3500, km: 130 }),
     LAGOS_IBADAN_RAIL,
     OGUN_LINKS.abeokutaIbadan,
     OGUN_LINKS.abeokutaIbadanRail,

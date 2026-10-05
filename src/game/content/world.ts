@@ -118,6 +118,20 @@ export const OWNING: Readonly<OwningRules> = Object.freeze({
   rateBase: 750000,            // an upgrade costs tier.cost × (1 + lga.land ÷ rateBase): dear land makes building dear
 });
 
+/**
+ * A room at a guest house, for a life visiting a city where it has no home ('estate.lodge'). `fee` is charged once per
+ * stay and the needs listed are brought up to `restoreTo`; nothing is sold while they are all at `restedFrom` or more.
+ * Original beta values: change `fee` to make visiting dearer or cheaper.
+ */
+export const LODGING = Object.freeze({ beta: true, fee: 2500, needs: Object.freeze(['energy', 'hygiene'] as const), restoreTo: 100, restedFrom: 90 });
+
+/**
+ * ONE HOME, AND MORE BY CHOICE. The free starter house is given once, for a character's first home. In any other city a
+ * visitor may BUY a home: a house of `tier` on a plot in the local unit it picks, at that tier's ordinary price there
+ * (tierCost). The main home can be moved to another city at most once every `moveCooldownDays` days.
+ */
+export const SECOND_HOME = Object.freeze({ beta: true, tier: 'bq' as const, moveCooldownDays: 7 });
+
 /** Changing your local government (original beta rule). Confirming the one the game guessed is free and immediate. */
 export const LGA_RULES: Readonly<LgaRules> = Object.freeze({ beta: true, changeCooldownDays: 7 });
 

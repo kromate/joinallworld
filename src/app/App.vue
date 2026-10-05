@@ -36,7 +36,7 @@ import PingHost from './features/ping/PingHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
 
-const { game, ready, shell, api, community, scene, command, connect, quickStart, startLife, switchCity, menu, landing } = useApp()
+const { game, ready, shell, api, community, scene, command, connect, quickStart, startLife, switchCity, menu, landing, showMapLayer } = useApp()
 const ui = shell.ui
 const mode = game.mode
 const navPanel = computed(() => (mode.value !== 'venue' ? shell.byId.get(mode.value) ?? null : null))
@@ -85,6 +85,7 @@ function onKey(event: KeyboardEvent): void {
     else if (ui.expanded) ui.expanded = false
   } else if (verb === 'help') window.dispatchEvent(new CustomEvent('jaw:shortcuts', { detail: { from: 'key' } }))
   else if (verb === 'clean') { ui.clean = !ui.clean; ui.trayOpen = false }
+  else if (verb === 'world') showMapLayer('world', { level: 0 })
   else if (verb === 'nav') nav.value?.navigate(arg, null)
   else if (verb === 'toggle') { if (mode.value === 'venue') { ui.clean = false; ui.expanded = !ui.expanded } }
   else if (verb === 'spot') {

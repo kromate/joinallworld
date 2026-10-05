@@ -88,7 +88,7 @@ button.m3-house{cursor:pointer}
 .m3-controls button.m3-pill{display:flex;align-items:center;gap:6px;width:auto;padding:0 14px 0 12px;border-radius:22px;font-family:inherit;font-size:12px;font-weight:700;line-height:1;white-space:nowrap}
 /* The way back: "Find me" lights up while the player's piece is out of sight or far away */
 .m3.is-away .m3-controls button.m3-me{background:#ffb224;border-color:#fff;box-shadow:0 0 0 2px #20232c,0 2px 8px #0003}
-.m3-hint{position:absolute;left:var(--m3-left,10px);top:var(--m3-top,66px);z-index:7;margin:0 0 0 4px;max-width:calc(100% - 20px);padding:7px 12px;border-radius:14px;background:#20242ae6;color:#fff;font-size:12px;font-weight:600;line-height:1.3;pointer-events:none}
+.m3-hint{position:absolute;left:var(--m3-left,10px);top:calc(var(--m3-top,66px) + 52px);z-index:7;margin:0 0 0 4px;max-width:calc(100% - 20px);padding:7px 12px;border-radius:14px;background:#20242ae6;color:#fff;font-size:12px;font-weight:600;line-height:1.3;pointer-events:none}
 @media(max-width:720px){
   .m3-controls{right:8px;bottom:calc(var(--m3-dock,150px) + 4px)}
   .m3-zoom,.m3-go{display:flex;justify-content:flex-end}

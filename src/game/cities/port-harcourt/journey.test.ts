@@ -158,9 +158,10 @@ test('Lagos flight, Rivers boat and return preserve the travelling character and
   fly(CITY)
   const paused = viewLife(state, clock.context(state)).career
   assert.deepEqual([paused.workplace, paused.shift, paused.pay], [null, null, 0])
-  const beforeHome = state.cash
-  assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'obio-akpor', via: 'manual' } }, clock.context(state)).code, 'lga_set')
-  assert.equal(state.cash, beforeHome)
+  const beforeHome = state.cash, homePrice = viewLife(state, clock.context(state)).estate.settle?.buy.prices['obio-akpor'] ?? 0
+  assert.ok(homePrice > 0, 'a visitor is quoted the price of a home here')
+  assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'obio-akpor', via: 'manual', home: 'buy' } }, clock.context(state)).code, 'home_bought')
+  assert.equal(state.cash, beforeHome - homePrice, 'a second home is bought at its price, never given')
   const riversHome = home(state)
   const route = contentFor(CITY).localRoutes?.find(route => [route.a, route.b].includes('bonny-jetty') && [route.a, route.b].includes('okrika-jetty'))
   assert.ok(route)

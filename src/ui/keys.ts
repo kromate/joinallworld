@@ -5,6 +5,7 @@
  *   'open:<panelId>'  open (or toggle) a registered panel; 'open:phone' and 'open:sim' are shell sheets
  *   'toggle:activities'  expand/collapse the activity cards
  *   'spot:<n>'        select the n-th spot of the current venue (1-based)
+ *   'world'           the Map on the atlas at the world level: every city that can be travelled to
  *   'clean'           toggle Clean screen (hide the panels, keep the top bar and the nav)
  *   'close'           close the open sheet, or leave a nav panel
  *   'help'            the shortcut overlay
@@ -31,6 +32,7 @@ export interface KeyLike { key: string; ctrlKey?: boolean; metaKey?: boolean; al
 
 export const SHORTCUTS: Shortcut[] = [
   { keys: ['m'], label: 'M', description: 'Map', run: 'open:map' },
+  { keys: ['g'], label: 'G', description: 'World map', run: 'world' },
   { keys: ['h'], label: 'H', description: 'Home', run: 'nav:home' },
   { keys: ['b'], label: 'B', description: 'Buy', run: 'open:buy' },
   { keys: ['p'], label: 'P', description: 'Phone', run: 'open:phone' },

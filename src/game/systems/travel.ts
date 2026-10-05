@@ -83,7 +83,7 @@ import { arrive, canAfford, credit, debit, changeNeeds, addSkillXp, addMoodlet, 
 import { lgaOf } from '../content/world.ts';
 import { COMING_SOON, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict } from '../content/venues.ts';
 import { lagosTime } from '../clock.ts';
-import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
+import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
 import { skipOffer, skipTrip } from '../trip-skip.ts';
 
@@ -173,7 +173,7 @@ export function quote(state: LifeState, destination: VenueId, modeId: TravelMode
   const baseFare = waterRoute?.fare ?? (contentFor(state.estate.city).localModes ? mode.fare : fareBands[band]?.[modeId] ?? mode.fare);
   const fare = Math.max(0, Math.round(Number(modify(state, 'travel.fare', baseFare, data, ctx)) || 0));
   const baseSeconds = waterRoute?.seconds ?? Math.round(mode.seconds * BAND_TIME[band]);
-  const seconds = clamp(Math.round(Number(modify(state, 'travel.duration', baseSeconds, data, ctx)) || baseSeconds), MIN_TRIP_SECONDS, MAX_TRIP_SECONDS);
+  const seconds = clamp(Math.round(Number(modify(state, 'travel.duration', baseSeconds, data, ctx)) || baseSeconds), MIN_TRIP_SECONDS, Math.min(MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS));
   const needs = cleanNeeds(modify(state, 'travel.needCost', { ...mode.needs }, data, ctx), { ...mode.needs });
   return { mode: modeId, band, fare, seconds, needs, xp: mode.xp || {} };
 }

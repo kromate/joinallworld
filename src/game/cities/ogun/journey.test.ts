@@ -117,7 +117,8 @@ test('Lagos → Ota → Abeokuta → Lagos keeps one wallet, the held job and bo
   let state = newGuest('lagos', clock)
   settle(state, clock)
   workLocally(state, clock)
-  const opening = cashBase(state), originalHome = home(state), job = state.job, career = structuredClone(state.career)
+  let opening = cashBase(state)
+  const originalHome = home(state), job = state.job, career = structuredClone(state.career)
   const skills = structuredClone(state.skills)
   const originalWork = contentFor('lagos').workplaces.find(item => item.careerId === job)?.definition
   assert.ok(originalWork)
@@ -156,11 +157,15 @@ test('Lagos → Ota → Abeokuta → Lagos keeps one wallet, the held job and bo
   const awayCareer = viewLife(state, clock.context(state)).career
   assert.equal(awayCareer.id, job, 'the held job identity is still visible')
   assert.deepEqual([awayCareer.workplace, awayCareer.hours, awayCareer.shift, awayCareer.pay, awayCareer.today.canWork], [null, null, null, 0, false], 'a job held in Lagos cannot be worked in Ota until it is moved')
+  // A second home is bought at its price; the money for it is put in hand here so the rest of the journey keeps its wallet.
+  const homePrice = viewLife(state, clock.context(state)).estate.settle?.buy.prices[defaultUnit('ota')] ?? 0
+  assert.ok(homePrice > 0, 'a visitor is quoted the price of a home here')
   const beforeHome = state.cash
-  assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: defaultUnit('ota'), via: 'manual' } }, clock.context(state)).code, 'lga_set')
+  state.cash += homePrice; opening += homePrice
+  assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: defaultUnit('ota'), via: 'manual', home: 'buy' } }, clock.context(state)).code, 'home_bought')
   assert.equal(state.estate.living, 'own')
   assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: defaultUnit('ota'), via: 'manual' } }, clock.context(state)).code, 'unchanged')
-  assert.equal(state.cash, beforeHome, 'the first Ota home is free')
+  assert.equal(state.cash, beforeHome, 'the Ota home cost exactly its price')
   const otaHome = home(state)
   travel('abeokuta')
   assert.equal(state.estate.lga, null)

@@ -102,7 +102,7 @@ test('finding a local government from a position happens in this module alone, f
   assert.ok(!/localStorage|sessionStorage|sendBeacon|console\./.test(card));
   assert.ok(!/localStorage|sessionStorage|sendBeacon/.test(cardView));
   assert.equal((card.match(/coords\./g) || []).length, 2, 'latitude and longitude are read once each, inside the callback');
-  assert.match(cardView, /command\('estate\.set-lga', \{ lga, via \}\)/, 'the action carries the id and how it was found — nothing else');
+  assert.match(cardView, /command\('estate\.set-lga', props\.home \? \{ lga, via, home: props\.home \} : \{ lga, via \}\)/, 'the action carries the id, how it was found and a visitor’s choice — nothing else');
   // Analytics is told how it was chosen and which local government (an id from the fixed list of twenty) — never the position.
   assert.match(cardView, /track\('lga_chosen', \{ method: via === 'device' \? 'device' : 'manual', lga \}\)/);
   assert.match(readFileSync(new URL('../app/features/start/CreatorApp.vue', import.meta.url), 'utf8'), /worldTrack\('lga_chosen', \{ method: draftNow\.area\.via === 'device' \? 'device' : 'manual', lga: draftNow\.area\.lga/, 'the settle-in card says the same two things');

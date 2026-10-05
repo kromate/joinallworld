@@ -139,3 +139,22 @@
 .map-list button>span:first-child,.map-card-icon,.map-trip-mode{color:var(--c-green-dark)}
 .map-modes button>span{color:var(--c-ink-2)}.map-modes button.is-selected>span{color:var(--c-green-dark)}
 .map-event-icon{color:var(--c-amber-dark)}.map-event-chip>span:first-child{color:var(--c-amber-dark)}
+
+/* The level bar at the top of the city map: World › Africa › Nigeria › the city. The same place and look as the atlas's own bar. */
+.map-levels{position:fixed;z-index:6;top:calc(74px * var(--ui-zoom,1));left:calc(14px * var(--ui-zoom,1));max-width:calc(100vw - 28px);pointer-events:auto}
+.map-levels ol{display:flex;align-items:center;gap:2px;margin:0;padding:4px;list-style:none;background:var(--c-surface,#fffffff7);border:1px solid #fff;border-radius:999px;box-shadow:var(--e-2,0 6px 18px #0000001f);overflow-x:auto;scrollbar-width:none}
+.map-levels li{display:flex;align-items:center;flex:none}
+.map-levels li+li::before{content:"›";padding:0 2px;color:var(--c-faint,#8a929b);font-size:16px}
+.life-ui .map-levels button,.map-levels button{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 13px;border:0;border-radius:999px;background:none;font-size:13px;font-weight:650;color:var(--c-ink-2,#39404b);white-space:nowrap;cursor:pointer}
+.map-levels button:hover{background:var(--c-fill,#eef1ef)}
+.life-ui .map-levels button[aria-current],.map-levels button[aria-current]{background:var(--c-ink,#1b1f27);color:#fff;cursor:default}
+.life-ui .map-levels button[data-map-level="world"],.map-levels button[data-map-level="world"]{background:var(--c-green-dark,#1d6b43);color:#fff}
+.map-levels button[data-map-level="world"]:hover{background:#17573a}
+@media(max-width:720px){
+  .map-levels{top:calc(60px * var(--ui-zoom,1));left:8px;max-width:calc(100vw - 16px)}
+  .map-levels button{padding:0 10px;font-size:12px}
+}
+@media(min-width:721px){
+  /* Docked, the Map's panel sits under the level bar. */
+  .map-panel.map-overview,.map-panel.map-card{top:124px;max-height:calc(100 * var(--ui-vh) - 138px)}
+}

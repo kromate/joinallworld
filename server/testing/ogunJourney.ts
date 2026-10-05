@@ -226,10 +226,10 @@ export async function ogunJourney(host: JourneyHost): Promise<void> {
     conserved(reloaded)
     return reloaded
   }
-  const toIbadan = await leg(tunde, 'abeokuta', 'ibadan', 'rail', 4000, 45)
+  const toIbadan = await leg(tunde, 'abeokuta', 'ibadan', 'rail', 4000, 19)
   assert.ok(contentOf('ibadan').venues.some(venue => venue.id === toIbadan.location && venue.id !== 'home'), 'a visitor arrives at a public Ibadan place')
   assert.equal(object(object(object(toIbadan.estate).away).abeokuta).lga, 'abeokuta-south', 'the Abeokuta house stays his')
-  await leg(tunde, 'ibadan', 'abeokuta', 'road', 3000, 90)
+  await leg(tunde, 'ibadan', 'abeokuta', 'road', 3000, 28)
   const home = await life(tunde, 'abeokuta')
   assert.equal(object(home.estate).lga, 'abeokuta-south')
   assert.equal(home.location, 'home', 'back at the Abeokuta house')
@@ -241,12 +241,12 @@ export async function ogunJourney(host: JourneyHost): Promise<void> {
   const lagosLife = await life(ada, 'lagos')
   const departed = object((await action(ada, 'lagos', 'estate.relocate', { to: 'ota', mode: 'road' })).state)
   assert.equal(Number(departed.cash), Number(lagosLife.cash) - 2000, 'the Ota fare is charged once, when the trip starts')
-  assert.equal(object(departed.activeAction).remaining, 60, 'the Ota trip is short')
+  assert.equal(object(departed.activeAction).remaining, 26, 'the Ota trip is short')
   await host.restart()
   const resumed = await life(ada, 'lagos')
   assert.equal(object(resumed.activeAction).kind, 'intercity', 'the trip is still under way after the host restarted')
   assert.equal(Number(resumed.cash), Number(departed.cash), 'a restart charges nothing')
-  await host.elapse(ada, 'lagos', 61000)
+  await host.elapse(ada, 'lagos', 27000)
   const inOta = await life(ada, 'lagos')
   assert.equal(object(inOta.estate).city, 'ota')
   assert.equal(Number(inOta.cash), Number(departed.cash))
@@ -308,13 +308,13 @@ export async function ogunJourney(host: JourneyHost): Promise<void> {
   }
 
   // ---- back to Lagos: one more fare, the Lagos house, and nothing lost ---------------------------------------------------------------------
-  const settledOta = object((await action(ada, 'ota', 'estate.set-lga', { lga: 'ado-odo-ota', via: 'manual' })).state)
-  assert.equal(Number(settledOta.cash), Number(inOta.cash), 'the first Ota home is free')
-  const back = await leg(ada, 'ota', 'lagos', 'road', 2000, 60)
+  // She was a visitor in Ota throughout: nothing was chosen or bought there, and her home is the Lagos one.
+  const stillVisiting = await life(ada, 'ota')
+  assert.deepEqual([object(stillVisiting.estate).lga, object(stillVisiting.estate).home], [null, 'lagos'])
+  const back = await leg(ada, 'ota', 'lagos', 'road', 2000, 26)
   assert.deepEqual([object(back.estate).lga, object(back.estate).living], ['ikeja', 'own'])
   assert.equal(back.location, 'home')
-  const away = object(object(object(back.estate).away).ota)
-  assert.equal(away.lga, 'ado-odo-ota', 'the Ota house stays hers')
+  assert.equal(object(object(back.estate).away).ota, undefined, 'Ota was a visit: nothing was left behind there')
   assert.ok(list(object(back.travel).visited).every(key => typeof key === 'string'))
   conserved(back)
 }

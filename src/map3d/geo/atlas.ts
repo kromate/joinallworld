@@ -50,7 +50,9 @@ import { LABEL_CAP, placeLabels } from './labels.ts';
 import type { LabelCandidate, PlacedLabel } from './labels.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, flightPoint, interCityTripOf, liftOf, linkId, linkPath, measure, tripPoint } from './routes.ts';
 import type { InterCitySource, LinkPath, MeasuredLine } from './routes.ts';
-import { listOrder, regionInfo } from './info.ts';
+import { linkKey, listOrder, regionInfo } from './info.ts';
+import { needsConfirm, travelWays } from './travel-card.ts';
+import type { TravelWay } from './travel-card.ts';
 import type { RegionContext, RegionInfo, RegionRef, RouteInfo } from './info.ts';
 import { arcSegments, mesher, outerEdges } from './build.ts';
 import type { RibbonLine } from './build.ts';
@@ -82,6 +84,8 @@ export interface AtlasOptions {
   onInspectVenue?: (cityId: string, venueId: string) => void;
   onTravel?: (to: string, mode: string) => void;
   routes?: () => TripRoutes | null;
+  /** The cash the player has in hand, or null when it is not known: the travel card says what a fare leaves short. */
+  wallet?: () => number | null;
   held?: () => string[];
   renderer?: AtlasRenderer;
   raf?: (callback: () => void) => number;
@@ -137,6 +141,10 @@ export interface AtlasApi {
   resize(): void;
   goLevel(index: number): void;
   previewTrip(routeId: string): boolean;
+  /** Fetch the wider levels now, so going out to Africa or the world later does not wait. */
+  warm(): void;
+  /** Open the card of a city: its state is selected and, where the state has several cities, that one is chosen. */
+  selectCity(cityId: string): boolean;
   select(ref: RegionRef | null, options?: SelectOptions): boolean;
   zoomBy(factor: number): void;
   screenOf(lon: number, lat: number): { x: number; y: number };
@@ -160,13 +168,15 @@ const MAJOR_CAPITALS = new Set(['Abuja', 'Cairo', 'Nairobi', 'Accra', 'Addis Aba
 const NEIGHBOUR_LABELS: [string, number, number][] = [['Benin', 2.15, 9.9], ['Niger', 8.6, 14.7], ['Chad', 15.9, 11.2], ['Cameroon', 12.5, 5.6]];
 const WATER_LABELS: [string, number, number, 'sea' | 'river' | 'town'][] = [['Gulf of Guinea', 4.6, 3.55, 'sea'], ['Niger', 5.25, 9.72, 'river'], ['Benue', 9.7, 8.05, 'river'], ['Lake Chad', 14.2, 13.55, 'river'], ['Lokoja', 6.74, 7.8, 'town']];
 const DRAG_START = 5, DOUBLE_MS = 340;
+/** How near a city's dot a tap counts as a tap on the city, in CSS pixels. */
+const CITY_TAP_PX = 22;
 const clamp = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
 const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }) as Record<string, string>)[c]!);
 const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en-NG')}`;
 const ICON = (path: string): string => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
-const GLYPH = { rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
+const GLYPH = { globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/>', rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
 
-export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, routes = () => null, held = () => [],
+export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, routes = () => null, wallet = () => null, held = () => [],
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), tabHidden, load = (levelId) => ATLAS_LEVELS.find((level) => level.id === levelId)!.data() }: AtlasOptions = {}): AtlasApi {
   const doc = typeof globalThis.document?.createElement === 'function' ? globalThis.document : null;
@@ -186,6 +196,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   let current = 'lagos', destroyed = false, opened = false, wasShown = false, resetView = false;
   let level = NIGERIA, wanted = NIGERIA, tintOn = false, listOpen = false, sheetOpen = false, query = '';
   let selectedCity: string | null = null;
+  /** The way of travelling the card is asking about once more (a link id): its fare is a large part of the player's cash. */
+  let confirming: string | null = null;
   let stateOverviewShown: string | null = null;
   /** The travel link the state view has in focus (a link id), chosen by tapping a line or a row. */
   let overviewLink: string | null = null;
@@ -587,13 +599,13 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       const sheet = sheets[AFRICA];
       for (const feature of sheet.topology.features) {
         const top = sheet.top(feature), open = statusOf('country', feature.id) === 'open', b = feature.bounds;
-        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? 13 : 11, cls: open ? 'is-city is-open' : 'is-region', note: open ? 'Open' : undefined, anchor: open ? 'above' : 'centre' });
+        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? 13 : 11, cls: open ? 'is-city is-open' : 'is-region', note: open ? (feature.id === ATLAS_LEVELS[NIGERIA]!.country ? 'You are here' : 'Open') : undefined, anchor: open ? 'above' : 'centre' });
         if (feature.cap && MAJOR_CAPITALS.has(feature.cap[0])) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: feature.cap[0] === 'Abuja' ? 60 : 30, size: 10, anchor: 'right', cls: 'is-capital' });
       }
     } else if (sheets[WORLD]) {
       for (const continent of Object.values(CONTINENTS)) push(`continent:${continent.id}`, at(relLon(continent.lon), continent.lat), continent.name, { priority: 100, size: 13, cls: 'is-continent' });
       const home = sheets[WORLD].topology.byId.get(ATLAS_LEVELS[NIGERIA]!.country!);
-      if (home) push('country:home', at(home.at[0], home.at[1]), home.name, { priority: 1000, fixed: true, size: 12, anchor: 'above', cls: 'is-city is-open', note: 'Open' });
+      if (home) push('country:home', at(home.at[0], home.at[1]), home.name, { priority: 1000, fixed: true, size: 12, anchor: 'above', cls: 'is-city is-open', note: 'You are here' });
       for (const route of plannedRoutes(current)) push(`hub:${route.to.id}`, at(relLon(route.to.lon), route.to.lat), route.to.name, { priority: 60, size: 10, anchor: 'right', cls: 'is-capital' });
     }
     return out;
@@ -672,7 +684,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function drawCrumbs() {
     if (!ui.crumbs) return;
     const city = cityEntry(current);
-    ui.crumbs.innerHTML = `<ol>${ATLAS_LEVELS.map((entry, i) => `<li><button type="button" data-atlas-level="${i}" ${i === level ? 'aria-current="true"' : ''}>${esc(entry.name)}</button></li>`).join('')}
+    ui.crumbs.innerHTML = `<ol>${ATLAS_LEVELS.map((entry, i) => `<li><button type="button" data-atlas-level="${i}" ${i === level ? 'aria-current="true"' : ''}>${i === WORLD ? ICON(GLYPH.globe) : ''}${esc(entry.name)}</button></li>`).join('')}
       <li><button type="button" class="atlas-back" data-atlas-city="${esc(current)}" aria-label="Back to ${esc(city?.name)}: open the city map">${esc(city?.name)}<span aria-hidden="true">Back to the city</span></button></li></ol>
       <button type="button" class="atlas-list-toggle" data-atlas-list aria-expanded="${listOpen}">${ICON('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>')}<span>Find a place</span></button>`;
     const fit = ui.controls!.querySelector<HTMLElement>('[data-atlas-fit]')!, layer = ui.controls!.querySelector<HTMLElement>('[data-atlas-layer]')!;
@@ -732,16 +744,33 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       return `<li class="${on ? 'is-on' : ''}"><button type="button" class="atlas-route" data-atlas-route="${esc(route.id)}" aria-pressed="${on}"><span class="atlas-route-mode" aria-hidden="true">${ICON(route.mode === 'air' ? GLYPH.plane : route.mode === 'rail' ? GLYPH.rail : GLYPH.bus)}</span><span><b>${esc(route.label)}</b><small>${route.status === 'coming' ? 'Coming soon · ' : ''}${naira(route.fare)} · about ${route.minutes} min · ${route.km} km · from ${esc(route.hub)}</small></span></button>
         ${on ? `<div class="atlas-route-more">${route.live ? `<button type="button" class="atlas-go is-small" data-atlas-travel="${esc(route.to)}:${esc(route.mode)}">Travel · ${naira(route.fare)}</button>${route.skip === undefined ? '' : `<small class="atlas-route-skip">${route.skip ? `or arrive at once for ${naira(route.skip)} more` : 'or arrive at once: your first skip is free'}</small>`}` : `<p>${esc(route.why || '')}</p>`}${previewable ? `<button type="button" class="atlas-chip" data-atlas-preview="${esc(route.id)}" ${playing ? 'disabled' : ''}>${playing ? 'Showing the journey…' : 'Preview the journey'}</button>` : '<p>Route preview unavailable.</p>'}</div>` : ''}</li>`;
     };
-    const more = Boolean(overviewCity || info.preview || info.routes.length || info.soon.length || info.planned || info.wait);
+    // THE TRAVEL CARD: the ways to the chosen city as one button each, cheapest first. One tap leaves; a fare that is a
+    // large part of the player's cash asks once, in place. A way that cannot leave says why under its button.
+    const openHere = stateCities.filter(city => city.status === 'open'), cash = wallet();
+    const choosing = openHere.length > 1 && !openHere.some(city => city.id === current) && !selectedCity;
+    const offered = info.city && info.status === 'open' && info.tone !== 'here' && !choosing ? info.routes : [];
+    const { shared, ways } = travelWays(offered, { cash, confirming });
+    const wayRow = (way: TravelWay) => {
+      const glyph = ICON(way.mode === 'air' ? GLYPH.plane : way.mode === 'rail' ? GLYPH.rail : GLYPH.bus);
+      if (way.state === 'coming') return `<li><div class="atlas-way is-coming"><span class="atlas-way-mode" aria-hidden="true">${glyph}</span><b>${way.name}</b><span>Coming soon</span></div></li>`;
+      if (way.state === 'ask') return `<li><div class="atlas-way-ask" role="group" aria-label="Confirm the fare"><p>${naira(way.fare)} is more than half of the ${naira(cash)} you have. Go by ${way.name.toLowerCase()}?</p><div><button type="button" class="atlas-go is-small" data-atlas-go="${esc(way.to)}:${esc(way.mode)}" data-atlas-sure>Pay ${naira(way.fare)} and go</button><button type="button" class="atlas-chip" data-atlas-cancel>Not now</button></div></div></li>`;
+      return `<li><button type="button" class="atlas-way" data-atlas-go="${esc(way.to)}:${esc(way.mode)}" ${way.state === 'go' ? '' : 'disabled'} aria-label="${way.name} to ${esc(info.city!.name)}: ${naira(way.fare)}, ${way.seconds} seconds${way.why ? `. ${esc(way.why)}` : ''}"><span class="atlas-way-mode" aria-hidden="true">${glyph}</span><b>${way.name}</b><span>${naira(way.fare)}</span><span>${way.seconds} s</span></button>${way.why ? `<small class="atlas-way-why">${esc(way.why)}</small>` : ''}</li>`;
+    };
+    const travelCard = ways.length ? `<section class="atlas-travel" aria-label="Travel to ${esc(info.city!.name)}"><h3>Go to ${esc(info.city!.name)}</h3>${shared ? `<p class="atlas-way-why" role="status">${esc(shared)}</p>` : ''}<ul>${ways.map(wayRow).join('')}</ul></section>`
+      : choosing ? `<p class="atlas-travel atlas-way-why">${esc(info.name)} has ${openHere.length} open cities. Choose one to go there.</p>` : '';
+    const more = Boolean(overviewCity || info.preview || info.routes.length || info.soon.length || info.planned || info.wait || guide?.length);
     ui.sheet.className = `atlas-sheet is-${info.tone}${sheetOpen ? ' is-expanded' : ''}`;
     ui.sheet.setAttribute('aria-label', `${info.name}: ${info.tag}`);
-    ui.sheet.innerHTML = `<header><div><h2>${esc(info.name)}</h2><p>${esc(info.type)}${info.capital ? ` · capital ${esc(info.capital)}` : ''}</p></div><span class="atlas-tag">${esc(info.tag)}</span><button type="button" class="atlas-close" data-atlas-close aria-label="Close ${esc(info.name)}">${ICON('<path d="M6 6l12 12M18 6 6 18"/>')}</button></header>
+    // An open city is the thing chosen: the card is named after it, with its state beneath.
+    const cityTitle = info.city && info.status === 'open' && !choosing && info.city.name !== info.name ? info.city.name : null;
+    ui.sheet.innerHTML = `<header><div><h2>${esc(cityTitle ?? info.name)}</h2><p>${cityTitle ? `${esc(info.name)} · ${esc(info.type.replace(/^(State|Territory) · /, ''))}` : `${esc(info.type)}${info.capital ? ` · capital ${esc(info.capital)}` : ''}`}</p></div><span class="atlas-tag">${esc(info.tag)}</span><button type="button" class="atlas-close" data-atlas-close aria-label="Close ${esc(info.name)}">${ICON('<path d="M6 6l12 12M18 6 6 18"/>')}</button></header>
       ${stateCities.length > 1 ? `<nav aria-label="Cities in this state">${stateCities.map(city => `<button type="button" data-atlas-inspect-city="${esc(city.id)}" aria-pressed="${city.id === info.city?.id}">${esc(city.name)}</button>`).join('')}</nav>` : ''}
       ${overviewCity ? `${stateOverviewToggleHtml(hit.id, overviewCity.id, stateOverviewShown === hit.id)}${overviewBody}` : ''}
-      <p class="atlas-teaser">${esc(info.teaser)}</p>
-      ${guide?.length ? `<section class="atlas-guide"><h3>Things to do in ${esc(info.city!.name)}</h3><ul>${guide.map(place => `<li><b>${esc(place.name)}</b> · ${esc(place.line)}</li>`).join('')}</ul></section>` : ''}
+      <p class="atlas-teaser">${esc(choosing ? regionEntry('state', hit.id).teaser || info.teaser : info.teaser)}</p>
+      ${travelCard}
       ${info.action ? `<button type="button" class="atlas-go" data-atlas-action>${esc(info.action.label)}<span aria-hidden="true"> →</span></button>` : ''}
-      ${more ? `<button type="button" class="atlas-more" data-atlas-expand aria-expanded="${sheetOpen}">${sheetOpen ? 'Less' : info.routes.length ? 'Routes and details' : 'More'}</button>` : ''}
+      ${more ? `<button type="button" class="atlas-more" data-atlas-expand aria-expanded="${sheetOpen}">${sheetOpen ? 'Less' : guide?.length && info.city ? `Things to do in ${esc(info.city.name)}` : info.routes.length ? 'Routes and details' : 'More'}</button>` : ''}
+      ${guide?.length ? `<section class="atlas-guide"><h3>Things to do in ${esc(info.city!.name)}</h3><ul>${guide.map(place => `<li><b>${esc(place.name)}</b> · ${esc(place.line)}</li>`).join('')}</ul></section>` : ''}
       ${info.preview ? `<div class="atlas-preview"><h3>${esc(info.city!.name)} will have</h3><ul>${info.preview.map((line) => `<li>${esc(line)}</li>`).join('')}</ul></div>` : ''}
       ${info.wait ? `<p class="atlas-waitline">${esc(info.wait)}</p>` : ''}
       ${info.planned ? `<p class="atlas-planned">${ICON(GLYPH.plane)}<span>${esc(info.planned)}</span></p>` : ''}
@@ -752,7 +781,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   /** Choose a region (or nothing). `from`: 'map' | 'list' | 'key' — the list and the keyboard move focus to the sheet. */
   function select(ref: RegionRef | null, { from = 'map', flyTo = false }: SelectOptions = {}): boolean {
     const hit = find(ref);
-    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; overviewLink = null; }
+    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; overviewLink = null; confirming = null; }
     if (preview && reducedMotion) preview = null; // the still preview lasts until something else is chosen
     selected = hit ? { kind: hit.kind, id: hit.id } : null;
     const city = hit ? infoOf(hit).city : null;
@@ -762,7 +791,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (!preview && !trip) routeShown = null;
     const inside = hit?.kind === 'country' ? ATLAS_LEVELS.findIndex((entry) => entry.id === regionEntry('country', hit.id).level) : -1;
     const back = !hit && doc && ui.sheet?.contains(doc.activeElement);
-    if (hit && flyTo) { if (inside > 0) goLevel(inside); else fly(viewOf(hit.feature)); }
+    // A state with several open cities, picked on the map: go closer, so each of its cities can be tapped.
+    const several = hit?.kind === 'state' && !flyTo && from === 'map' && fits && citiesInState(hit.id).filter(item => item.status === 'open').length > 1 && rig.view.distance > viewOf(hit.feature).distance * 1.15;
+    if (hit && (flyTo || several)) { if (inside > 0) goLevel(inside); else fly(viewOf(hit.feature)); }
     if (hit && from === 'list') listOpen = false;
     drawCrumbs(); drawRail(); drawSheet(); drawHighlights(); request();
     // The list and the keyboard move focus to the sheet; closing it hands focus back to the breadcrumb.
@@ -770,7 +801,38 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     else if (back) ui.crumbs!.querySelector<HTMLElement>('[aria-current]')?.focus();
     return Boolean(hit);
   }
-  function goLevel(index: number) { const next = clamp(index, WORLD, NIGERIA); void ensure(next); fly(levelView(next), 0.9); }
+  /** The open city whose dot is within a finger of a point of the canvas, at the level that shows cities; the nearest, or null. */
+  function cityNear(point: Point): string | null {
+    if (level !== NIGERIA || !sheets[NIGERIA]) return null;
+    let best: string | null = null, nearest = CITY_TAP_PX;
+    for (const feature of sheets[NIGERIA].topology.features) for (const city of citiesInState(feature.id)) {
+      const spot = city.status === 'open' ? cityEntry(city.id) : null;
+      if (!spot) continue;
+      const where = at(spot.lon, spot.lat, sheets[NIGERIA].top(feature) + 0.02), distance = Math.hypot(where.x - point.x, where.y - point.y);
+      if (!where.behind && distance < nearest) { nearest = distance; best = city.id; }
+    }
+    return best;
+  }
+  /** Open a city's card: select its state and, in a state with several cities, choose that one. */
+  function selectCity(id: string): boolean {
+    const state = stateOfCity(id);
+    if (!state || !select({ kind: 'state', id: state }, { from: 'map' })) return false;
+    selectedCity = id; confirming = null;
+    if (isOpenCityId(id) && !cachedCityContent(id)) void loadCityContent(id).then(() => { if (selectedCity === id) drawSheet(); }, () => {});
+    drawSheet();
+    return true;
+  }
+  /** Asked for before the map has been measured (it is not on screen yet): gone to when it is. */
+  let pendingLevel: number | null = null;
+  function goLevel(index: number) {
+    const next = clamp(index, WORLD, NIGERIA);
+    void ensure(next);
+    if (!fits) { pendingLevel = next; return; }
+    pendingLevel = null;
+    // Further out than the cities, the card of the player's own state would only cover the map it was asked to show.
+    if (next !== NIGERIA && selected?.kind === 'state') select(null);
+    fly(levelView(next), 0.9);
+  }
   /** Fly down into the open city, then hand over to the city map. */
   function enterCity(id: string) {
     const state = stateOfCity(id), hit = state ? find({ kind: 'state', id: state }) : null, city = cityEntry(id);
@@ -810,6 +872,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     else if (!rig.moving) rig.jump({ distance: clamp(rig.view.distance, minDistance(), maxDistance()) });
     wasShown = true;
     settleLevel(); request();
+    if (pendingLevel !== null) goLevel(pendingLevel);
   }
 
   // ---- input -------------------------------------------------------------------------------------------
@@ -860,6 +923,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     const t = now(), double = t - lastTap.t < DOUBLE_MS && Math.hypot(point.x - lastTap.x, point.y - lastTap.y) < 28;
     lastTap = double ? { t: -1e9, x: 0, y: 0 } : { t, x: point.x, y: point.y };
     const hit = pickAt(point.x, point.y);
+    // A tap on (or beside) an open city's dot is a tap on that city, whichever state's ground is under the finger.
+    const town = double ? null : cityNear(point);
+    if (town) { selectCity(town); return; }
+    // A tap on an open country from further out goes straight in to its cities: there is nothing else to do with it.
+    const into = !double && hit?.kind === 'country' && regionEntry('country', hit.id).status === 'open' ? ATLAS_LEVELS.findIndex((entry) => entry.id === regionEntry('country', hit.id).level) : -1;
+    if (into > level) { select(null); goLevel(into); return; }
     if (double) {
       // Twice on a region: go to it. Twice on open water: just closer.
       if (hit) { selected = { kind: hit.kind, id: hit.id }; select(selected, { flyTo: true }); }
@@ -885,7 +954,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   }
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
-    const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel');
+    const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel'), leave = hit('go');
     const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section'), stateLink = hit('state-link'), departure = hit('departure');
     if (departure && stateOverviewShown) {
       const overview = stateOverviews.get(stateOverviewShown);
@@ -893,7 +962,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       if (target && target.cityId === current) onInspectVenue(target.cityId, target.venueId);
     }
     else if (stateLink) { const id = stateLink.dataset.atlasStateLink ?? null; overviewLink = overviewLink === id ? null : id; drawSheet(); }
-    else if (inspectCity) { overviewLink = null; selectedCity = inspectCity.dataset.atlasInspectCity ?? null; if (selectedCity && isOpenCityId(selectedCity)) void loadCityContent(selectedCity).then(drawSheet, () => {}); drawSheet(); }
+    else if (inspectCity) { overviewLink = null; confirming = null; selectedCity = inspectCity.dataset.atlasInspectCity ?? null; if (selectedCity && isOpenCityId(selectedCity)) void loadCityContent(selectedCity).then(drawSheet, () => {}); drawSheet(); }
     else if (overviewSection && stateOverviewShown) { const key = `${stateOverviewShown}:${overviewSection.dataset.atlasOverviewSection}`; if (overviewExpanded.has(key)) overviewExpanded.delete(key); else overviewExpanded.add(key); }
     else if (overviewButton) { const id = overviewButton.dataset.atlasStateOverview; if (id) { if (stateOverviewShown === id) { stateOverviewShown = null; drawSheet(); } else void showStateOverview(id); } }
     else if (hit('state-retry')) doc?.defaultView?.location.reload();
@@ -909,6 +978,13 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     else if (hit('retry')) { failed = ''; void ensure(wanted); showWait(); }
     else if (play) previewTrip(play.dataset.atlasPreview!);
     else if (go) { const [to, mode] = go.dataset.atlasTravel!.split(':'); onTravel(to!, mode!); }
+    else if (hit('cancel')) { confirming = null; drawSheet(); }
+    else if (leave) {
+      const [to, mode] = leave.dataset.atlasGo!.split(':'), link = allCityLinks().find(item => ((item.a === current && item.b === to) || (item.b === current && item.a === to)) && item.mode === mode), cash = wallet();
+      // An ordinary fare leaves at once. One that takes more than TRAVEL_CONFIRM_SHARE of the cash in hand asks once, in place.
+      if (link && needsConfirm(link.fare, cash) && !('atlasSure' in leave.dataset)) { confirming = linkKey(link); drawSheet(); ui.sheet!.querySelector<HTMLElement>('[data-atlas-sure]')?.focus({ preventScroll: true }); }
+      else { confirming = null; onTravel(to!, mode!); }
+    }
     else if (route) { const id = route.dataset.atlasRoute!; if (!preview && !trip) { routeShown = routeShown === id ? null : id; drawSheet(); drawHighlights(); request(); ui.sheet!.querySelector<HTMLElement>(`[data-atlas-route="${CSS.escape(id)}"]`)?.focus(); } }
   }
   const onInput = (event: Event) => { const target = event.target as HTMLInputElement; if (target.matches?.('[data-atlas-search]')) { query = target.value; drawRail(); } };
@@ -959,13 +1035,14 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       const link = allCityLinks().find((item) => ((item.a === next.from && item.b === next.to) || (item.a === next.to && item.b === next.from)) && item.mode === next.mode);
       if (!link) return;
       const fresh = clock.sync(next, now());
-      if (fresh || !trip) { trip = startRun(link, next.from); preview = null; routeShown = linkId(link); drawHighlights(); }
+      if (fresh || !trip) { trip = startRun(link, next.from); preview = null; routeShown = linkId(link); confirming = null; if (selected) select(null); if (level !== NIGERIA && fits) goLevel(NIGERIA); drawHighlights(); }
       if (trip) trip.progress = clock.progress(now());
       request();
     },
     /** The held cities or the links may have changed. */
     refresh() { drawRail(); drawSheet(); },
-    resize, goLevel, previewTrip,
+    resize, goLevel, previewTrip, selectCity,
+    warm() { void ensure(WORLD).then(() => ensure(AFRICA)); },
     select: (ref, options) => select(ref, options),
     zoomBy: (factor) => { if (fits) zoomBy(factor); },
     /** Where a place is on screen (CSS pixels within the container), for tests and the screenshot harness. */

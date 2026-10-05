@@ -18,6 +18,8 @@ import type { LinkAction } from './travelBoundary.ts'
 /** What the panels read of the page's view. */
 export type TravelPanelView = Pick<PanelView, 'connected' | 'link' | 'session'> & Pick<LifeView, 'travel' | 'activities'> & { health?: Pick<LifeView['health'], 'weather'> | null }
 type TravelState = Pick<LifeState, 'cash' | 'location' | 'activeAction'>
+/** The names of the two cities of a trip between cities, for the trip bar. */
+export type CityNames = (cityId: string) => string
 
 /** What follows "…, so the trip cannot start." for each connection state: the way out, truthfully. */
 const LINK_NEXT: Readonly<Record<string, string>> = {
@@ -113,6 +115,22 @@ export function goBlock(state: TravelState, view: TravelPanelView, destination: 
 
 /** A way of travelling as the trip bar names it (a travel mode, the commute, your own car). */
 export interface TripMode { id: string; label: string; icon?: string | null }
+/** The ways between cities, as the trip bar and the travel card name them. */
+export const INTERCITY_MODES: Readonly<Record<string, TripMode>> = { road: { id: 'danfo', label: 'Bus', icon: '🚌' }, rail: { id: 'rail', label: 'Train', icon: '🚆' }, air: { id: 'air', label: 'Flight', icon: '✈️' } }
+
+// ---- the levels of the Map: the city, its country, the world ------------------------------------
+/** One step of the bar at the top of the Map: World › Africa › Nigeria › the city the player is in. */
+export interface MapLevel { id: 'world' | 'africa' | 'nigeria' | 'city'; label: string; /** The atlas level it opens (widest first), or null for the city map. */ atlas: number | null; current: boolean }
+/**
+ * The bar's steps. `layer` is what the Map shows ('city' or the atlas); on the atlas the level in view is `atlasLevel`
+ * (the atlas draws its own bar there, so this is what the city map shows and what the keyboard reads).
+ */
+export function mapLevels(cityName: string, layer: 'city' | 'world', atlasLevel = 2): MapLevel[] {
+  const wide = (['world', 'africa', 'nigeria'] as const).map((id, index): MapLevel => ({ id, label: id === 'world' ? 'World' : id === 'africa' ? 'Africa' : 'Nigeria', atlas: index, current: layer === 'world' && atlasLevel === index }))
+  return [...wide, { id: 'city', label: cityName, atlas: null, current: layer === 'city' }]
+}
+/** "World › Africa › Nigeria › Lagos": where the player is, as words. */
+export const mapCrumbText = (cityName: string): string => mapLevels(cityName, 'city').map((level) => level.label).join(' › ')
 export interface TripInfo {
   from: { id: string; label: string }
   to: { id: string; label: string }
@@ -123,14 +141,25 @@ export interface TripInfo {
   duration: number
   fraction: number
   rule: string
+  /** A trip between cities: it cannot be cancelled once it has left. */
+  locked: boolean
 }
 
 /**
  * The trip in progress, for the trip bar, or null. Everything is the server's: where it started, how,
  * what was paid and how long is left.
  */
-export function tripInfo(state: TravelState, view: Pick<TravelPanelView, 'travel'>): TripInfo | null {
+export function tripInfo(state: TravelState, view: Pick<TravelPanelView, 'travel'>, cityName: CityNames = (id) => id): TripInfo | null {
   const active = state.activeAction
+  if (active?.kind === 'intercity') {
+    const duration = active.duration || 1, remaining = Math.max(0, active.remaining ?? 0)
+    return {
+      from: { id: active.from, label: cityName(active.from) }, to: { id: active.id, label: cityName(active.id) },
+      mode: INTERCITY_MODES[active.mode] ?? { id: 'unknown', label: 'On the way' }, fare: Number.isFinite(active.fare) ? active.fare : null, commute: false,
+      remaining, duration, fraction: Math.max(0, Math.min(1, 1 - remaining / duration)), locked: true,
+      rule: `You are on the way to ${cityName(active.id)}. The trip has left, so it cannot be cancelled.`,
+    }
+  }
   if (!active || (active.kind !== 'travel' && active.kind !== 'commute')) return null
   const commute = active.kind === 'commute'
   const trip = commute ? null : view.travel?.active
@@ -144,7 +173,7 @@ export function tripInfo(state: TravelState, view: Pick<TravelPanelView, 'travel
     : fare === null ? `Cancel to stay at ${from.label}. A fare already paid is not refunded.`
       : fare > 0 ? `Cancel to stay at ${from.label}. The ${money(fare)} ${wanted === 'car' ? 'fuel' : 'fare'} you paid is not refunded.` : `Cancel to stay at ${from.label}. This trip was free, so nothing is lost.`
   const duration = active.duration || 1, remaining = Math.max(0, active.remaining ?? 0)
-  return { from, to, mode, fare, commute, remaining, duration, fraction: Math.max(0, Math.min(1, 1 - remaining / duration)), rule }
+  return { from, to, mode, fare, commute, remaining, duration, fraction: Math.max(0, Math.min(1, 1 - remaining / duration)), rule, locked: false }
 }
 /** "· ₦200 paid" / " · Free" / '' after the way of travelling on the trip bar. */
 export const paidText = (trip: Pick<TripInfo, 'fare'>): string => (trip.fare === null ? '' : trip.fare > 0 ? ` · ${fareText({ fare: trip.fare })} paid` : ' · Free')
@@ -224,6 +253,10 @@ export function layerNote(item: MapLayer, cached: LayerData, connected: boolean,
 /** What the Map tells the city map ('jaw:map-ui'). */
 export interface MapUiDetail {
   layer?: string
+  /** With `layer: 'world'`: the atlas level to show (0 the world, 1 Africa, 2 Nigeria). */
+  level?: number
+  /** With `layer: 'world'`: the city whose card to open. */
+  city?: string
   filter?: string
   selected?: string | null
   layers?: Partial<LayerState>
@@ -239,7 +272,7 @@ export const layoutKey = (parts: { layer: string; destination: string | null; li
 export const venueLink = (origin: string, pathname: string, venueId: string): string => `${origin}${pathname}?venue=${encodeURIComponent(venueId)}`
 
 /** The params the Map is opened with: a place, or a layer. */
-export interface MapParams { destination?: string | null; layer?: string }
+export interface MapParams { destination?: string | null; layer?: string; level?: number; city?: string }
 export const asMapParams = (value: unknown): MapParams | null => (typeof value === 'object' && value !== null ? value as MapParams : null)
 
 // ---- the roadside prompt ------------------------------------------------------------------------

@@ -97,12 +97,12 @@ export interface GovRules {
 
 /** One row of the eligibility checklist (src/game/systems/civic.ts civicEligibility()). */
 export interface EligibilityCheck {
-  id: 'days' | 'fee' | 'work' | 'place'
+  id: 'days' | 'fee' | 'work' | 'place' | 'home'
   met: boolean
   label: string
   detail: string
   /** The refusal code this check stands for. */
-  code: 'too_new' | 'insufficient_funds' | 'work_days' | 'wrong_place'
+  code: 'too_new' | 'insufficient_funds' | 'work_days' | 'wrong_place' | 'not_main_home'
 }
 export type Gate = { ok: true } | { ok: false; code: string; reason: string }
 /** Exactly why the signed-in viewer can or cannot run, vote and announce. */

@@ -44,7 +44,8 @@ test('Lagos to Ota is the short, cheap hop; the train stations are Abeokuta and 
   const lagosOta = linksFrom('lagos').find(link => link.to === 'ota')
   assert.ok(lagosOta)
   for (const link of linksFrom('lagos').filter(item => item.to !== 'ota' && OPEN.includes(item.to as typeof OPEN[number]))) {
-    assert.ok(lagosOta.fare < link.fare && lagosOta.seconds <= link.seconds, `Lagos to Ota is cheaper and shorter than ${link.to} by ${link.mode}`)
+    // A train or a flight may be quicker than the bus to Ota; no other road trip is.
+    assert.ok(lagosOta.fare < link.fare && (link.mode !== 'road' || lagosOta.seconds <= link.seconds), `Lagos to Ota is cheaper and shorter than ${link.to} by ${link.mode}`)
   }
   assert.deepEqual(openLinks.filter(link => link.mode === 'rail').flatMap(link => [link.a, link.b]).sort(), ['abeokuta', 'abeokuta', 'ibadan', 'ibadan', 'lagos', 'lagos'])
   for (const id of ['ota', 'sagamu', 'ijebu-ode']) assert.equal(cityRules(id)?.hub.rail, undefined, `${id} has no rail hub`)

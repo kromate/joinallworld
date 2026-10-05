@@ -12,7 +12,7 @@ await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota'].map(loadCityContent));
  *   2. the atlas shows Ibadan as an open city with a bus route and a rail route from Lagos, at the fares the city module declares
  *   3. the bus to Ibadan charges its fare once, at departure, and arriving costs nothing more
  *   4. an activity at the University of Ibadan and one at Bower's Tower are done at Ibadan's own venues
- *   5. the visitor settles in an Ibadan local government for free
+ *   5. the visitor stays a visitor: nothing is chosen or bought, its home is still in Lagos, and a guest house is its bed
  *   6. the train back to Lagos charges its fare once
  *   7. the Lagos home, its local government, the job and the wallet are all still there, and cash equals the seed plus the whole ledger
  * A third run plays one more pair of legs with the wait skipped for game money (`runSkippedLegs`, server/testing/skipJourney.ts):
@@ -110,7 +110,7 @@ export async function runTwoCities({ log = console.log }: TwoCitiesOptions = {})
     const departed = object((await action(device, 'lagos', 'estate.relocate', { to: 'ibadan', mode: 'road' })).state);
     assert.equal(num(departed.cash), num(home.cash) - 3500, 'the bus fare is charged once, at departure');
     say('Bus to Ibadan departs', departed, 'fare −₦3,500');
-    await host.elapse(device, 'lagos', 121000);
+    await host.elapse(device, 'lagos', 31000); // the bus takes 30 s
     const arrived = object((await host.request('/api/life?city=lagos', undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
     assert.deepEqual([object(arrived.estate).city, object(arrived.estate).lga, num(arrived.cash)], ['ibadan', null, num(departed.cash)]);
     assert.ok(ibadan.venues.some((venue) => venue.id === arrived.location && venue.id !== 'home'), 'a visitor arrives at a public Ibadan place');
@@ -131,17 +131,20 @@ export async function runTwoCities({ log = console.log }: TwoCitiesOptions = {})
       say(`${label}: ${activityId}`, done);
     }
 
-    // 5. settle
+    // 5. stays a visitor: nothing is chosen or bought, and a guest house is the bed
     const before = await life(device, 'ibadan');
-    const settled = object((await action(device, 'ibadan', 'estate.set-lga', { lga: 'ibadan-north', via: 'manual' })).state);
-    assert.deepEqual([object(settled.estate).lga, num(settled.cash)], ['ibadan-north', num(before.cash)]);
-    say('Settles in Ibadan North', settled, 'the first Ibadan home is free');
+    assert.deepEqual([object(before.estate).lga, object(before.estate).home], [null, 'lagos'], 'a visitor, with its home in Lagos');
+    const room = await host.request('/api/action', { cityId: 'ibadan', type: 'estate.lodge', payload: {}, actionId: `${host.now()}:${globalThis.crypto.randomUUID()}` }, device.cookie).then((response) => response.json()) as { ok: boolean; code: string; state: unknown };
+    const lodged = object(room.state);
+    assert.ok(room.code === 'rested' && num(lodged.cash) === num(before.cash) - (room.ok ? 2500 : 0), 'a room costs ₦2,500 once, or nothing when the visitor is already rested');
+    say(room.ok ? 'Rests at a guest house' : 'Already rested: no room is sold', lodged, room.ok ? 'guest house −₦2,500' : 'nothing charged');
+    const settled = lodged;
 
     // 6. the train
     const left = object((await action(device, 'ibadan', 'estate.relocate', { to: 'lagos', mode: 'rail' })).state);
     assert.equal(num(left.cash), num(settled.cash) - 9000, 'the train fare is charged once');
     say('Train to Lagos departs', left, 'fare −₦9,000');
-    await host.elapse(device, 'ibadan', 91000);
+    await host.elapse(device, 'ibadan', 22000); // the train takes 21 s
     const back = object((await host.request('/api/life?city=ibadan', undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
     assert.deepEqual([object(back.estate).city, num(back.cash)], ['lagos', num(left.cash)]);
 
@@ -186,12 +189,12 @@ export async function runThreePlaces({ log = console.log }: TwoCitiesOptions = {
     say('New Lagos player settles in Ikeja, takes a job', home, 'free starter house; community helper');
 
     const fares: number[] = [];
-    // [from, to, mode, fare, seconds, the local government of a free first home, or null for a pass-through stop]
+    // [from, to, mode, fare, seconds, the local government of a home bought on the way, or null for a visit]
     const legs = [
-      ['lagos', 'ota', 'road', 2000, 60, 'ado-odo-ota'],
-      ['ota', 'abeokuta', 'road', 2500, 90, 'abeokuta-south'],
-      ['abeokuta', 'ibadan', 'rail', 4000, 45, null],
-      ['ibadan', 'lagos', 'road', 3500, 120, null],
+      ['lagos', 'ota', 'road', 2000, 26, null],
+      ['ota', 'abeokuta', 'road', 2500, 27, null],
+      ['abeokuta', 'ibadan', 'rail', 4000, 19, null],
+      ['ibadan', 'lagos', 'road', 3500, 30, null],
     ] as const;
     let state = home;
     for (const [from, to, mode, fare, seconds, lga] of legs) {
@@ -208,15 +211,15 @@ export async function runThreePlaces({ log = console.log }: TwoCitiesOptions = {
       state = arrived;
       say(`Arrived in ${to} at ${String(arrived.location)}`, arrived, 'arriving costs nothing more');
       if (lga) {
-        const settled = object((await action(device, to, 'estate.set-lga', { lga, via: 'manual' })).state);
-        assert.deepEqual([object(settled.estate).lga, num(settled.cash)], [lga, num(arrived.cash)]);
+        const settled = object((await action(device, to, 'estate.set-lga', { lga, via: 'manual', home: 'buy' })).state);
+        assert.equal(object(settled.estate).lga, lga);
         state = settled;
-        say(`Settles in ${lga}`, settled, 'the first home in a city is free');
+        say(`Buys a home in ${lga}`, settled, 'a home in another city is bought');
       }
     }
     const back = await life(device, 'lagos');
     assert.deepEqual([object(back.estate).city, object(back.estate).lga, object(back.estate).living, back.job, back.location], ['lagos', 'ikeja', 'own', 'community-helper', 'home']);
-    assert.deepEqual(Object.keys(object(object(back.estate).away)).sort(), ['abeokuta', 'ibadan', 'ota'], 'the three houses away are kept');
+    assert.deepEqual([Object.keys(object(object(back.estate).away)), object(back.estate).home], [[], 'lagos'], 'three cities visited, one home: nothing was left behind anywhere');
     conserved(back);
     say('Back in Lagos: Ikeja home, job and wallet intact', back, 'cash = seed + the whole ledger');
     log(`Three places complete: ${step} steps, fares ${fares.map(naira).join(', ')} each charged once, ${naira(num(back.cash))} in hand.`);

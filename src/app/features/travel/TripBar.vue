@@ -21,7 +21,7 @@ const { command } = useApp()
         <b>{{ trip.from.label }} <span aria-hidden="true">→</span><span class="ui-sr"> to </span> {{ trip.to.label }}</b>
         <small>{{ trip.mode.label }}{{ paidText(trip) }} · <strong>{{ Math.ceil(trip.remaining) }}s left</strong></small>
       </div>
-      <button type="button" class="map-trip-cancel" :aria-label="`Cancel the trip and stay at ${trip.from.label}`" @click="command('cancel')">Cancel</button>
+      <button v-if="!trip.locked" type="button" class="map-trip-cancel" :aria-label="`Cancel the trip and stay at ${trip.from.label}`" @click="command('cancel')">Cancel</button>
     </div>
     <div class="map-trip-track" role="progressbar" aria-label="Trip progress" aria-valuemin="0" aria-valuemax="100" :aria-valuenow="Math.round(trip.fraction * 100)">
       <!-- Drawn again at each report so the animation restarts from the server's number. -->

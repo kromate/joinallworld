@@ -661,8 +661,8 @@ export function simulateTraveller({ daysEach = 3 }: { daysEach?: number } = {}):
   };
   player.awayUntil(dayStart(day++) + 9 * 3600000);
   travelTo('ibadan', 'road');
-  player.must('estate.set-lga', { lga: IBADAN_LGA, via: 'manual' });
-  mark('settled in Ibadan');
+  // A traveller is a visitor: nothing is bought or chosen in the city it visits.
+  mark('visiting Ibadan');
   for (let i = 0; i < daysEach; i++) {
     player.awayUntil(dayStart(day++) + 9 * 3600000);
     // The held job moves with the player (free, level kept): it is worked at the city's own workplace, then a city place is visited.
@@ -743,8 +743,7 @@ export function simulateOgunTraveller({ daysEach = 3 }: { daysEach?: number } = 
     mark(`arrived in ${to}`);
   };
   const live = (city: string) => {
-    player.must('estate.set-lga', { lga: must(OGUN_LGAS[city], `${city} local government`), via: 'manual' });
-    mark(`settled in ${city}`);
+    mark(`visiting ${city}`);
     const places = ogunPlaces(city);
     for (let i = 0; i < daysEach; i++) {
       player.awayUntil(dayStart(day++) + 9 * 3600000);
@@ -788,8 +787,7 @@ export function simulateStatesTraveller({ daysEach = 2 }: { daysEach?: number } 
     mark(`arrived in ${to}`);
   };
   const live = (city: string) => {
-    player.must('estate.set-lga', { lga: must(STATE_CITY_LGAS[city], `${city} local unit`), via: 'manual' });
-    mark(`settled in ${city}`);
+    mark(`visiting ${city}`);
     const places = ogunPlaces(city);
     for (let i = 0; i < daysEach; i++) {
       player.awayUntil(dayStart(day++) + 9 * 3600000);

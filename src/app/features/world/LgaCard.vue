@@ -3,7 +3,11 @@
 // a life chooses or changes where it lives (the local government's page, Profile); the mounting
 // screen does not know how it works.
 //
-// What it sends is the ordinary game action 'estate.set-lga' { lga, via }, validated by the server
+// A visitor's two choices use the same card with `home`: 'buy' (an additional home here, at the price beside each local
+// unit) or 'main' (the main home moves here); the action then carries it. Without `home` it is the first home or a move
+// inside the city, as before.
+//
+// What it sends is the ordinary game action 'estate.set-lga' { lga, via, home? }, validated by the server
 // and applied once per action id. The free house on a plot is allocated by the server as soon as
 // it is saved. "Find my local government" works the position out on this device and sends
 // nothing but the id the player confirms (see lgaCardModel.ts).
@@ -22,10 +26,12 @@ import ListboxSelect from './ListboxSelect.vue'
 import { findLga, lgaCardUi as ui } from './lgaCardModel.ts'
 import { track, worldChanged } from './worldModel.ts'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   heading?: string
   /** Kept for the callers that pass it; the card draws the same either way. */
   compact?: boolean
+  /** A visitor's choice: buy an additional home here, or move the main home here. */
+  home?: 'buy' | 'main'
 }>(), { heading: 'Where you live', compact: false })
 const emit = defineEmits<{ /** The server accepted the choice. */ chosen: [lga: LgaId] }>()
 
@@ -37,7 +43,10 @@ const current = computed(() => (estate.value.placed && estate.value.lga ? estate
 const guess = computed(() => (!estate.value.placed && !estate.value.lgaConfirmed && estate.value.lga ? estate.value.lga : null))
 const blocked = computed(() => (current.value && estate.value.change.blocked ? estate.value.change.blocked : ''))
 const showList = computed(() => ui.picking || (!current.value && !ui.found))
-const options = computed(() => [{ value: '', label: 'Choose…' }, ...estate.value.lgas.map((item) => ({ value: item.id, label: `${item.name}${current.value && item.levy ? ` · ${money(item.levy)} to move your house` : ''}` }))])
+const prices = computed(() => (props.home === 'buy' ? estate.value.settle?.buy.prices ?? null : null))
+const options = computed(() => [{ value: '', label: 'Choose…' }, ...estate.value.lgas.map((item) => ({ value: item.id, label: `${item.name}${prices.value ? ` · ${money(prices.value[item.id] ?? 0)}` : current.value && item.levy ? ` · ${money(item.levy)} to move your house` : ''}` }))])
+/** What the main button says for a visitor's choice. */
+const settleLabel = computed(() => (props.home === 'buy' ? `Buy this home${pick.value && prices.value ? ` · ${money(prices.value[pick.value] ?? 0)}` : ''}` : `Make ${estate.value.cityName} my main home`))
 
 // The list starts on the one just found, or the game's guess; what the player picks stays until one of those changes.
 const suggested = (): string => ui.found?.id ?? guess.value?.id ?? ''
@@ -56,7 +65,7 @@ async function send(via: 'device' | 'manual'): Promise<void> {
   if (!lga) { ui.note = `Choose ${/^[aeiou]/i.test(estate.value.unit) ? 'an' : 'a'} ${estate.value.unit} first.`; return }
   ui.sending = true
   ui.note = ''
-  const result = await command('estate.set-lga', { lga, via })
+  const result = await command('estate.set-lga', props.home ? { lga, via, home: props.home } : { lga, via })
   ui.sending = false
   if (result.ok) {
     Object.assign(ui, { found: null, picking: false, note: '' })
@@ -76,6 +85,8 @@ async function send(via: 'device' | 'manual'): Promise<void> {
       <p v-if="estate.plot" class="ui-note">Your house: {{ estate.plot.address }}</p>
       <p v-else class="ui-note">Your plot is being set aside…</p>
     </template>
+    <p v-else-if="home === 'buy'" class="ui-note">Pick the {{ estate.unit }} for your {{ estate.settle?.buy.tier.toLowerCase() }}. The price is beside each one; land is dearer in some. Your main home stays where it is.</p>
+    <p v-else-if="home === 'main'" class="ui-note">Pick your {{ estate.unit }} in {{ estate.cityName }}. Your starter house stands on a plot there, free, and you give up {{ estate.settle?.main.gives ?? 'the home you leave' }}.</p>
     <p v-else class="ui-note">Pick your {{ estate.unit }} and a starter house on your own plot there is yours, free. <template v-if="guess">Your home is in {{ guess.name }}.</template></p>
 
     <div v-if="ui.found" class="world-found" role="status">
@@ -94,7 +105,7 @@ async function send(via: 'device' | 'manual'): Promise<void> {
             <span @click="select?.focus()">Choose from the {{ estate.lgas.length }} {{ estate.unit }}s of {{ estate.cityName }}</span>
             <ListboxSelect :ref="setSelect" v-model="pick" :label="unitTitle" :options="options" :disabled="Boolean(offline || blocked)" />
           </div>
-          <button type="button" class="ui-button is-primary is-block" :class="{ 'is-loading': ui.sending }" :disabled="Boolean(offline || blocked || ui.sending)" @click="send('manual')">{{ ui.sending ? 'Saving…' : current ? 'Move here' : `This is my ${estate.unit}` }}</button>
+          <button type="button" class="ui-button is-primary is-block" :class="{ 'is-loading': ui.sending }" :disabled="Boolean(offline || blocked || ui.sending)" @click="send('manual')">{{ ui.sending ? 'Saving…' : home ? settleLabel : current ? 'Move here' : `This is my ${estate.unit}` }}</button>
         </template>
       </template>
       <template v-else-if="current && !ui.picking && !ui.found">

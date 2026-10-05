@@ -7,10 +7,11 @@
 //   overview   a handle, the filter chips and, opened, the layer toggles and the list of places
 //   card       a place picked on the map or in the list: hours, modes, Go, About (VenueCard)
 //   trip bar   WHILE A TRIP IS RUNNING the panel is a slim bar: from → to, how, time left, Cancel
-//   world      "Nigeria map" swaps the backdrop to the country map; the panel only names it
+//   levels     the bar at the top (MapLevels): World › Africa › Nigeria › the city; a wider level swaps the backdrop
+//              to the atlas, which draws the same bar itself. A trip between cities keeps its trip bar there
 //
-// Open with a destination: shell.open('map', { destination: venueId }); with the country map:
-// shell.open('map', { layer: 'world' }). Esc with a card open goes back to the map; a second Esc
+// Open with a destination: shell.open('map', { destination: venueId }); with the atlas:
+// shell.open('map', { layer: 'world', level?, city? }) (app.showMapLayer). Esc with a card open goes back to the map; a second Esc
 // leaves the Map. Everything shown comes from view.travel (src/game/systems/travel.ts).
 //
 // MAP LAYERS (Moving · Billboards · Sea · Neighbours · Gov): each toggle draws one civic overlay
@@ -22,6 +23,8 @@ import type { AdsResponse, GovResponse } from '../../../types/civic.ts'
 import { useApp } from '../../state/app.ts'
 import { adsKey, adsPath, govKey, govPath } from '../civic/civicModel.ts'
 import { useCivic } from '../civic/useCivic.ts'
+import { cityRules } from '../../../game/cities/registry.ts'
+import MapLevels from './MapLevels.vue'
 import MapOverview from './MapOverview.vue'
 import TripBar from './TripBar.vue'
 import VenueCard from './VenueCard.vue'
@@ -48,7 +51,7 @@ function reconcile(): void {
 watch([() => game.cityId.value, () => props.params], reconcile, { immediate: true, flush: 'sync' })
 
 const item = computed(() => view.value.travel.destinations.find((entry) => entry.id === mapUi.destination) ?? null)
-const trip = computed(() => tripInfo(game.state.value, view.value))
+const trip = computed(() => tripInfo(game.state.value, view.value, (id) => cityRules(id)?.name ?? id))
 
 // ---- telling the city map ----------------------------------------------------------------------
 const adsEntry = computed(() => civic.entry<AdsResponse>(adsKey(game.cityId.value)))
@@ -96,8 +99,15 @@ defineExpose({ keys })
 </script>
 
 <template>
-  <h1 v-if="mapUi.layer === 'world'" class="ui-sr">World map. Explore cities and travel routes.</h1>
-  <VenueCard v-else-if="item" :item="item" />
-  <TripBar v-else-if="trip" :trip="trip" />
-  <MapOverview v-else />
+  <template v-if="mapUi.layer === 'world'">
+    <h1 class="ui-sr">World map. Explore cities and travel routes.</h1>
+    <TripBar v-if="trip?.locked" :trip="trip" />
+  </template>
+  <template v-else>
+    <MapLevels />
+    <TripBar v-if="trip?.locked" :trip="trip" />
+    <VenueCard v-else-if="item" :item="item" />
+    <TripBar v-else-if="trip" :trip="trip" />
+    <MapOverview v-else />
+  </template>
 </template>

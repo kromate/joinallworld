@@ -221,9 +221,13 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       scene.world.value?.setCity(state.estate.city)
       scene.city.value?.setCity(state.estate.city)
       placeSent = false
-      // Brought here by joining a friend (features/ping): that notice says where the player is, so the city's own sheet stays closed.
+      // Brought here by joining a friend (features/ping): that notice says where the player is, so nothing else is said or opened.
       if (pingUi.arriving) { /* nothing more to open */ }
-      else if (state.onboarding.done && !state.estate.lga && !away) shell.open('city', { city: state.estate.city })
+      // Arriving asks for nothing: a visitor is welcomed by the server's own notice and plays on. Only a life that has no home
+      // anywhere (one from before homes were chosen) is shown where to choose its first.
+      else if (state.onboarding.done && !state.estate.lga && !state.estate.home && !away) shell.open('city', { city: state.estate.city })
+      // The welcome is said aloud: the notice of a new city would otherwise be taken for the first word of a life just read.
+      else if (!away && state.message.startsWith('Welcome to ')) game.toast(state.message)
     }
     // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
     const plot = state.estate?.plot
@@ -432,7 +436,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     } finally { ready.value = true }
     if (ok) {
       await firstMinute()
-      if (game.state.value.onboarding.done && game.state.value.estate.lga === null) shell.open('city')
+      if (game.state.value.onboarding.done && game.state.value.estate.lga === null && !game.state.value.estate.home) shell.open('city')
     }
     // Not awaited: a slow or failing community chunk must not hold up the game or block a later Reconnect.
     if (ok) void community.ensure()
@@ -499,9 +503,9 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
 
   /** Open the Map on the city map ('city') or the country map ('world'). The maps are told first. */
-  function showMapLayer(layer: 'city' | 'world'): void {
-    globalThis.window?.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: { layer } }))
-    shell.open('map', { layer })
+  function showMapLayer(layer: 'city' | 'world', at: { level?: number; city?: string } = {}): void {
+    globalThis.window?.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: { layer, ...at } }))
+    shell.open('map', { layer, ...at })
   }
   /** Entries of the More menu and the connection notice. */
   function menu(id: string): void {

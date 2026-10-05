@@ -405,7 +405,7 @@ export interface OutreachOperatorResponse {
     lastError: OutreachLogLine | null
   }
   /** Comeback mail per type over the last 14 days. No address, name or id. */
-  comeback: { days: number; types: Record<string, ComebackCounters>; today: Record<string, ComebackCounters>; waiting: number }
+  comeback: { days: number; types: Record<string, ComebackCounters>; today: Record<string, ComebackCounters>; waiting: number; /** Rounds that opened the store since the server started: the cost of the schedule. */ passes: number }
   push: { off: boolean; subscribers: number; devices: number; sentToday: number; dailyCap: number; pausedUntil: number | null; lastError: OutreachLogLine | null }
   whatsapp: { channel: string | null }
   rules: OutreachRules

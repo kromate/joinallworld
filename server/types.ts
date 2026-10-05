@@ -391,7 +391,7 @@ export interface ComebackRecord {
   types: Record<PrefKey, boolean>
   sent: { at: number; type: ComebackType }[]
   last: Partial<Record<ComebackType, number>>
-  away: Partial<Record<'3' | '7' | '30', number>>
+  away: Partial<Record<'3' | '7' | '28', number>>
   keys: string[]
   waitingAt: number
   nudgeAt: number

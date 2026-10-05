@@ -43,7 +43,7 @@ export function whenWords(start: number, now: number): string {
 }
 
 const AWAY = (name: string, step: number): { subject: string; intro: string; button: string } => {
-  if (step >= 30) return { subject: 'One last note from Allworld', intro: `It has been a month, ${name}, so this is the last e-mail you will get unless you come back. Your character and everything they own are exactly where you left them.`, button: 'Pick up where I left off' };
+  if (step >= 28) return { subject: 'One last note from Allworld', intro: `It has been four weeks, ${name}. Your character is still where you left them, and a life that goes a month without a visit is put away, so this is the last e-mail you will get unless you come back.`, button: 'Pick up where I left off' };
   if (step >= 7) return { subject: `${name}, your world is still here`, intro: `It has been a week. Your character is where you left them, and a few things moved on without you:`, button: 'Pick up where I left off' };
   return { subject: 'Your world is still here', intro: `It has been ${step === 3 ? 'three days' : `${step} days`}, ${name}. Here is some of what happened:`, button: 'See what happened' };
 };
@@ -89,7 +89,7 @@ export function mailWords(plan: Plan, { name, now }: { name: string; now: number
     }
     case 'away': {
       const w = AWAY(who, plan.step);
-      return { subject: w.subject, heading: w.subject, intro: w.intro, lines: plan.step >= 30 ? [] : plan.facts.slice(0, 3), button: { label: w.button, go: plan.go }, pref };
+      return { subject: w.subject, heading: w.subject, intro: w.intro, lines: plan.step >= 28 ? [] : plan.facts.slice(0, 3), button: { label: w.button, go: plan.go }, pref };
     }
   }
   return { subject: 'Allworld', heading: 'Allworld', intro: '', lines: [], button: { label: 'Open Allworld', go: 'needs' }, pref };

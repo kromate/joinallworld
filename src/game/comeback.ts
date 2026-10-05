@@ -6,7 +6,7 @@
  * The design and the numbers are written down in docs/COMEBACK-MAIL.md.
  *
  *   triggers   needAlert · waitingPlan · nudgePlan · milestonePlan (with milestoneFacts) · eventPlan · awayPlan
- *   policy     decide(): the gates (preference, pause, recent activity, the 30-day stop, quiet hours, caps,
+ *   policy     decide(): the gates (preference, pause, recent activity, the stop after the final away mail, quiet hours, caps,
  *              back-off), then the choice by priority, then when to look again
  *
  * Nothing here reads a message body, a balance or a place. The facts carry first names of friends and counts.
@@ -45,14 +45,17 @@ export const COMEBACK = Object.freeze({
   perDay: 1, perWeek: 3,
   /** After this many mails with no visit in between, at most one per `backoffDays`. */
   backoffAfter: 3, backoffDays: 14,
-  /** However it came about, this many mails in a row with no visit end the run (the 30-day mail is always the last of them). */
+  /** However it came about, this many mails in a row with no visit end the run (the final away mail is always the last of them). */
   stopAfter: 5,
   /** A need alert needs this many hours away, and a need this low once the player is back (the game's own "low"). */
   needAwayHours: 24, needLow: 20,
   /** The needs that make a character say so in a mail. */
   needs: ['hunger', 'energy', 'social'] as readonly ('hunger' | 'energy' | 'social')[],
-  /** Away mails: days away, each once per absence. The last one is the last mail. */
-  awaySteps: [3, 7, 30] as readonly number[],
+  /**
+   * Away mails: days away, each once per absence. The last one is the last mail. It is 28, not 30: a saved life that has not been
+   * visited for 30 days expires (SESSION_TTL_MS), so the goodbye has to arrive while the character still exists.
+   */
+  awaySteps: [3, 7, 28] as readonly number[],
   /** An event is mentioned when it starts within this many hours, to a player who has been away at least `eventAwayHours`. */
   eventAheadHours: 24, eventAwayHours: 24,
   /** Days before the same type may be sent again. */
@@ -90,7 +93,7 @@ export interface Facts {
 export interface Memory {
   sent: readonly { at: number; type: ComebackType }[]
   last: Readonly<Partial<Record<ComebackType, number>>>
-  away: Readonly<Partial<Record<'3' | '7' | '30', number>>>
+  away: Readonly<Partial<Record<'3' | '7' | '28', number>>>
   keys: readonly string[]
   waitingAt: number
   nudgeAt: number
@@ -171,13 +174,13 @@ export function eventPlan(facts: Pick<Facts, 'events'>, memory: Pick<Memory, 'ke
   return first ? { type: 'event', key: first.key, title: first.title, venue: first.venue, start: first.start, go: 'events' } : null;
 }
 
-/** The longest absence of 3, 7 and 30 days the player has reached whose mail has not been sent for this absence. */
+/** The longest absence of 3, 7 and 28 days the player has reached whose mail has not been sent for this absence. */
 export function awayPlan(memory: Pick<Memory, 'away'>, now: number, lastActive: number): Extract<Plan, { type: 'away' }> | null {
   const away = now - lastActive;
   const reached = COMEBACK.awaySteps.filter((days) => away >= days * DAY);
   const step = reached.at(-1);
   if (step === undefined) return null;
-  if ((memory.away[String(step) as '3' | '7' | '30'] ?? 0) > lastActive) return null;
+  if ((memory.away[String(step) as '3' | '7' | '28'] ?? 0) > lastActive) return null;
   return { type: 'away', key: `away:${step}:${lastActive}`, step, go: 'needs', facts: [] };
 }
 
@@ -236,7 +239,7 @@ export interface Decision {
 }
 export interface DecideInput { now: number; lastActive: number; facts: Facts; memory: Memory; prefs: Prefs }
 
-const cooled = (memory: Memory, type: keyof typeof COMEBACK.cooldownDays, now: number): boolean => now - (memory.last[type] ?? 0) >= COMEBACK.cooldownDays[type] * DAY;
+const cooled = (memory: Memory, type: keyof typeof COMEBACK.cooldownDays, now: number): boolean => { const at = memory.last[type]; return at === undefined || now - at >= COMEBACK.cooldownDays[type] * DAY; };
 
 /** Every type that qualifies now, honouring the player's switches and each type's own cooldown. */
 export function candidates({ now, lastActive, facts, memory, prefs }: DecideInput): Plan[] {
@@ -257,8 +260,8 @@ export function decide(input: DecideInput): Decision {
   const none = (why: Why, next: number, suppressed: ComebackType[] = []): Decision => ({ plan: null, next, why, suppressed });
   if (!prefs.on) return none('off', NEVER);
   if (prefs.pausedUntil > now) return none('paused', prefs.pausedUntil);
-  // A mail that was sent after the player's last visit and was the 30-day one ends the run until they come back.
-  if ((memory.away['30'] ?? 0) > lastActive || memory.sent.filter((entry) => entry.at > lastActive).length >= COMEBACK.stopAfter) return none('stopped', NEVER);
+  // A mail that was sent after the player's last visit and was the final one ends the run until they come back.
+  if ((memory.away['28'] ?? 0) > lastActive || memory.sent.filter((entry) => entry.at > lastActive).length >= COMEBACK.stopAfter) return none('stopped', NEVER);
   const quietUntil = activeUntil(lastActive);
   if (now < quietUntil) return none('active', quietUntil);
   const options = candidates(input);
@@ -267,7 +270,7 @@ export function decide(input: DecideInput): Decision {
   if (opens > now) return none('quiet_hours', opens);
   const release = releaseAt(memory.sent, now, lastActive);
   if (release > now) return none('capped', nextOpen(release), options.map((plan) => plan.type));
-  // The last away mail (30 days) is never starved by a stronger reason: it is what ends the run.
+  // The final away mail (28 days) is never starved by a stronger reason: it is what ends the run.
   const final = options.find((plan) => plan.type === 'away' && plan.step >= FINAL_STEP);
   const chosen = final ?? PRIORITY.map((type) => options.find((plan) => plan.type === type)).find((plan): plan is Plan => plan !== undefined);
   if (!chosen) return none('nothing_due', now + COMEBACK.checkMs);
@@ -281,7 +284,7 @@ export function remember(memory: Memory, plan: Plan, now: number): Memory {
   const sent = [...memory.sent, { at: now, type: plan.type }].slice(-COMEBACK.ledger);
   const last = { ...memory.last, [plan.type]: now };
   const keys = plan.type === 'milestone' || plan.type === 'event' ? [...memory.keys, plan.key].slice(-COMEBACK.keys) : [...memory.keys];
-  const away = plan.type === 'away' ? { ...memory.away, [String(plan.step) as '3' | '7' | '30']: now } : { ...memory.away };
+  const away = plan.type === 'away' ? { ...memory.away, [String(plan.step) as '3' | '7' | '28']: now } : { ...memory.away };
   return { sent, last, keys, away, waitingAt: plan.type === 'waiting' ? plan.newest : memory.waitingAt, nudgeAt: plan.type === 'nudge' ? plan.newest : memory.nudgeAt };
 }
 

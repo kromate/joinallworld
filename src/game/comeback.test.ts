@@ -83,14 +83,14 @@ test('events: only one that starts within the next 24 hours, once, for a player 
   assert.equal(candidates(input({ facts: f, lastActive: NOON - 25 * HOUR })).some((plan) => plan.type === 'event'), true);
 });
 
-test('away steps: 3, 7 and 30 days, each once per absence, the highest reached', () => {
+test('away steps: 3, 7 and 28 days, each once per absence, the highest reached', () => {
   const last = NOON - 8 * DAY;
   assert.equal(awayPlan({ away: {} }, NOON, NOON - 2 * DAY), null);
   assert.equal(must(awayPlan({ away: {} }, NOON, NOON - 3 * DAY)).step, 3);
   assert.equal(must(awayPlan({ away: {} }, NOON, last)).step, 7, 'the highest step reached');
   assert.equal(awayPlan({ away: { '7': NOON - HOUR } }, NOON, last), null, 'sent for this absence');
   assert.equal(must(awayPlan({ away: { '7': last - DAY } }, NOON, last)).step, 7, 'a mail from an earlier absence does not count');
-  assert.equal(must(awayPlan({ away: {} }, NOON, NOON - 31 * DAY)).step, 30);
+  assert.equal(must(awayPlan({ away: {} }, NOON, NOON - 29 * DAY)).step, 28);
 });
 
 // ---- the policy ------------------------------------------------------------------------------
@@ -163,7 +163,7 @@ test('cooldowns: a need at most every 3 days; waiting and milestones every 2; ea
   assert.equal(candidates(input({ facts: w, memory: { ...emptyMemory(), last: { waiting: NOON - 3 * DAY } } })).some((plan) => plan.type === 'waiting'), true);
 });
 
-test('back-off: three mails with no visit in between drop to one per 14 days; the 30-day mail ends the run until a visit', () => {
+test('back-off: three mails with no visit in between drop to one per 14 days; the final away mail ends the run until a visit', () => {
   const lastActive = NOON - 20 * DAY;
   const ago = (days: number[], type: ComebackType = 'away'): Memory => ({ ...emptyMemory(), sent: days.map((d) => ({ at: NOON - d * DAY, type })) });
   assert.equal(releaseAt(ago([10, 8, 6]).sent, NOON, lastActive), NOON - 6 * DAY + 14 * DAY);
@@ -172,20 +172,20 @@ test('back-off: three mails with no visit in between drop to one per 14 days; th
   assert.equal(releaseAt(ago([10, 8, 6]).sent, NOON, NOON - 5 * DAY), 0);
   assert.equal(decide(input({ lastActive, memory: ago([10, 8, 6]) })).why, 'capped');
   assert.equal(decide(input({ lastActive, memory: ago([20, 15, 14]) })).why, 'chosen', '14 days after the last is allowed');
-  // The 30-day mail: silence, however long they stay away, until they come back.
-  const thirty: Memory = { ...emptyMemory(), away: { '30': NOON - 2 * DAY } };
+  // The final mail: silence, however long they stay away, until they come back.
+  const thirty: Memory = { ...emptyMemory(), away: { '28': NOON - 2 * DAY } };
   const stopped = decide(input({ lastActive: NOON - 40 * DAY, memory: thirty }));
   assert.deepEqual([stopped.plan, stopped.why, stopped.next], [null, 'stopped', NEVER]);
   assert.equal(decide(input({ lastActive: NOON - 40 * DAY, memory: thirty, now: NOON + 60 * DAY })).why, 'stopped');
   // They came back after it: a new absence begins.
-  assert.notEqual(decide(input({ lastActive: NOON - 4 * DAY, memory: { ...thirty, away: { '30': NOON - 20 * DAY } } })).why, 'stopped');
+  assert.notEqual(decide(input({ lastActive: NOON - 4 * DAY, memory: { ...thirty, away: { '28': NOON - 20 * DAY } } })).why, 'stopped');
 });
 
-test('the 30-day mail is never starved, and five mails with no visit end the run whatever they were', () => {
+test('the final away mail is never starved, and five mails with no visit end the run whatever they were', () => {
   const events = [{ key: 'event:x', title: 'Jazz', venue: 'Park', start: NOON + 5 * HOUR }];
-  const lastActive = NOON - 31 * DAY;
+  const lastActive = NOON - 29 * DAY;
   const chosen = must(decide(input({ lastActive, facts: facts({ events }) })).plan);
-  assert.deepEqual([chosen.type, chosen.type === 'away' ? chosen.step : 0], ['away', 30], 'the final mail outranks an event');
+  assert.deepEqual([chosen.type, chosen.type === 'away' ? chosen.step : 0], ['away', 28], 'the final mail outranks an event');
   const many: Memory = { ...emptyMemory(), sent: [1, 2, 3, 4, 5].map((d) => ({ at: NOON - (40 - d * 10) * DAY, type: 'event' as const })) };
   const d = decide(input({ lastActive: NOON - 45 * DAY, memory: many }));
   assert.deepEqual([d.plan, d.why, d.next], [null, 'stopped', NEVER]);
@@ -225,9 +225,9 @@ test('words: in the character’s voice, one button, no message text, no balance
   assert.equal(w({ type: 'nudge', key: 'k', names: ['Ada'], newest: 1, go: 'people' }).subject, 'Ada is waiting for you in Allworld');
   assert.equal(w({ type: 'milestone', key: 'k', what: 'house', label: 'Duplex', go: 'houses' }).subject, 'Your house upgrade is finished');
   assert.equal(w({ type: 'milestone', key: 'k', what: 'shift', label: 'Tech hub', go: 'career' }).subject, 'Your Tech hub shift is open');
-  assert.match(w({ type: 'away', key: 'k', step: 30, go: 'needs', facts: ['x'] }).intro, /last e-mail/);
+  assert.match(w({ type: 'away', key: 'k', step: 28, go: 'needs', facts: ['x'] }).intro, /last e-mail/);
   assert.deepEqual(w({ type: 'away', key: 'k', step: 3, go: 'needs', facts: ['a', 'b', 'c', 'd'] }).lines, ['a', 'b', 'c']);
-  assert.deepEqual(w({ type: 'away', key: 'k', step: 30, go: 'needs', facts: ['a'] }).lines, [], 'the last mail is just a goodbye');
+  assert.deepEqual(w({ type: 'away', key: 'k', step: 28, go: 'needs', facts: ['a'] }).lines, [], 'the last mail is just a goodbye');
   assert.equal(whenWords(Date.UTC(2026, 0, 8, 18), NOON), 'tonight at 7PM');
   assert.equal(whenWords(Date.UTC(2026, 0, 8, 13), NOON), 'today at 2PM');
   assert.equal(whenWords(Date.UTC(2026, 0, 9, 9), NOON), 'tomorrow at 10AM');

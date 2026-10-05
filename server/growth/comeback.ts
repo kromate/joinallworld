@@ -78,7 +78,7 @@ function sane(raw: unknown): ComebackRecord {
     on: r.on === true, legacy: r.legacy === true, pausedUntil: num(r.pausedUntil), types: types(r.types),
     sent: list(r.sent, (item): item is { at: number; type: ComebackType } => isRecord(item) && typeof item.at === 'number' && typeof item.type === 'string' && Object.hasOwn(PREF_OF, item.type), COMEBACK.ledger),
     last: isRecord(r.last) ? Object.fromEntries(Object.entries(r.last).filter(([key, at]) => Object.hasOwn(PREF_OF, key) && typeof at === 'number')) : {},
-    away: isRecord(r.away) ? Object.fromEntries(Object.entries(r.away).filter(([key, at]) => ['3', '7', '30'].includes(key) && typeof at === 'number')) : {},
+    away: isRecord(r.away) ? Object.fromEntries(Object.entries(r.away).filter(([key, at]) => ['3', '7', '28'].includes(key) && typeof at === 'number')) : {},
     keys: list(r.keys, (item): item is string => typeof item === 'string', COMEBACK.keys),
     waitingAt: num(r.waitingAt), nudgeAt: num(r.nudgeAt),
     nudges: list(r.nudges, (item): item is { from: string; at: number } => isRecord(item) && typeof item.from === 'string' && typeof item.at === 'number', COMEBACK.nudge.kept),
@@ -90,6 +90,8 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
   const now = (): number => ctx.now();
   /** In memory only: the earliest time any record is due (0 = look; NEVER = nobody is due). */
   let wakeAt = 0;
+  /** Rounds that opened the store since this process started (the cost, for the operator). */
+  let passes = 0;
   let running = false, lastTick = 0, stopped = false, current: Promise<unknown> | null = null;
 
   const book = (g: GrowthCollection): Record<string, ComebackRecord> => { if (!isRecord(g.comeback)) g.comeback = {}; return g.comeback; };
@@ -123,7 +125,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     record.on = true; record.legacy = false; record.pausedUntil = 0; record.next = 0;
     wake();
   }
-  /** A visit: nothing is due for 12 hours. Also ends the back-off and the stop after the 30-day mail (the ledger compares with the visit). */
+  /** A visit: nothing is due for 12 hours. Also ends the back-off and the stop after the final away mail (the ledger compares with the visit). */
   function onVisit(g: GrowthCollection, id: string, at: number): void {
     const record = recordOf(g, id, false);
     if (!record) return;
@@ -157,9 +159,9 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
   /** An unsubscribe link: one kind (`type`) or everything (the link's `all`). Returns what it did, for the page. */
   function unsubscribeType(g: GrowthCollection, id: string, type: ComebackType | 'all'): void {
     const record = recordOf(g, id, true, false);
-    if (type === 'all') record.on = false; else record.types[PREF_OF[type]] = false;
-    record.legacy = type === 'all' ? false : record.legacy;
-    bump(g, type, 'unsubscribed');
+    const was = type === 'all' ? record.on : record.types[PREF_OF[type]];
+    if (type === 'all') { record.on = false; record.legacy = false; } else record.types[PREF_OF[type]] = false;
+    if (was) bump(g, type, 'unsubscribed'); // the same link twice is still one
   }
 
   // ---- the weekly digest shares the ledger -------------------------------------------------------
@@ -202,7 +204,8 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     for (const update of me.updates) {
       const from = update.data?.from;
       if (update.read || update.at < since || typeof from !== 'string' || !usableSender(db, id, from)) continue;
-      if (update.kind === 'friend-request') items.push({ kind: 'request', from: null, at: update.at });
+      // A request counts while it is still waiting for an answer, not after it was accepted or declined.
+      if (update.kind === 'friend-request') { if (me.in[from] !== undefined) items.push({ kind: 'request', from: null, at: update.at }); }
       else if (update.kind === 'transfer' && friends(db, id, from)) items.push({ kind: 'gift', from: nameOf(db, from), at: update.at });
     }
     for (const [convId, mark] of Object.entries(me.convs)) {
@@ -260,6 +263,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
    */
   function plan(db: Db): Job[] {
     const g = growthOf(ctx, db), t = now(), jobs: Job[] = [];
+    if (!isRecord(g.comeback) || !Object.keys(g.comeback).length) { wakeAt = NEVER; return jobs; } // nobody has opted in: nothing to look at, nothing stored
     const all = book(g), day = lagosTime(t).day;
     if (g.outreach?.off?.email === true) { wakeAt = t + 10 * 60000; return jobs; }
     const dailyCap = mailing.cap('EMAIL_DAILY_CAP', 500);
@@ -324,7 +328,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     if (running) return { ran: false };
     if (!force && now() - lastTick < LIMITS.tickMs) return { ran: false };
     if (!force && now() < wakeAt) return { ran: false, reason: 'idle' };
-    running = true; lastTick = now();
+    running = true; lastTick = now(); passes++;
     let jobs: Job[] = [];
     try {
       await ctx.store.transact((db) => { jobs = plan(db); }, { durable: () => jobs.length > 0 });
@@ -376,12 +380,12 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
   }
 
   // ---- the operator's view -------------------------------------------------------------------------
-  function operatorView(g: GrowthCollection): { days: number; types: Record<string, ComebackCounters>; today: Record<string, ComebackCounters>; waiting: number } {
+  function operatorView(g: GrowthCollection): { days: number; types: Record<string, ComebackCounters>; today: Record<string, ComebackCounters>; waiting: number; passes: number } {
     const stats = isRecord(g.comebackStats) ? g.comebackStats : {}, today = String(lagosTime(now()).day);
     const total: Record<string, ComebackCounters> = {};
     for (const day of Object.values(stats)) for (const [type, row] of Object.entries(day)) { const into = (total[type] ||= emptyCounters()); for (const field of STAT_FIELDS) into[field] += row[field] ?? 0; }
     const waiting = Object.values(isRecord(g.comeback) ? g.comeback : {}).filter((record) => record.on && record.next <= now()).length;
-    return { days: LIMITS.statDays, types: total, today: { ...(stats[today] ?? {}) }, waiting };
+    return { days: LIMITS.statDays, types: total, today: { ...(stats[today] ?? {}) }, waiting, passes };
   }
 
   return { tick, onConfirmed, onVisit, viewOf, setPrefs, unsubscribeType, weekAllowed, sendsFor, noteDigest, nudge, operatorView, wake };

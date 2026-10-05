@@ -17,8 +17,8 @@ Everything is decided on the server from stored state. The browser takes no part
 | nudge | Friends | A friend pressed "Nudge to come back" on your card. One per friend per 7 days; it expires after 7 days. | `Ada is waiting for you in Allworld` |
 | need | Needs | You have been away 24 hours or more and your hunger, energy or social need would be low (under 20) when you return. Only the worst one is named. | `Kunle is hungry` |
 | milestone | Milestones | Something finished: a house upgrade, a shift you can work today, a savings deposit that matured, a win at a table that is still to collect, the Governor election (you were elected, or voting opened today). | `Your house upgrade is finished` |
-| event | Events | A calendar event in your city starts within the next 24 hours. | `Lagos Jazz Night starts tonight` |
-| away | When I've been away | You have been away 3, 7 and 30 days. Each is sent once per absence. The 30-day mail is the last one: after it, silence until you come back. | `Your world is still here` |
+| event | Events | A calendar event in your city starts within the next 24 hours, and you have been away a day or more. | `Lagos Jazz Night starts tonight` |
+| away | When I've been away | You have been away 3, 7 and 28 days. Each is sent once per absence. The 28-day mail is the last one: after it, silence until you come back. (It is 28, not 30, because a saved life that has not been visited for 30 days expires; the goodbye must arrive while the character still exists.) | `Your world is still here` |
 | week | Weekly digest | The existing Sunday summary. | unchanged |
 
 ## The limits (one module, `src/game/comeback.ts`)
@@ -27,8 +27,8 @@ Everything is decided on the server from stored state. The browser takes no part
 * Never between 21:00 and 08:00 Lagos time. A mail that qualifies at night is sent at 08:00 or later.
 * At most one mail in 24 hours and three in 7 days, counted across every type. The weekly digest counts as one.
 * When several qualify, one is chosen: waiting, then nudge, then need, then milestone, then event, then away.
-* Per type: a need alert at most once every 3 days; waiting, nudge, milestone and event at most once every 2 days; each milestone or event only once; each away step once per absence.
-* Back-off: after 3 mails in a row that were not followed by a visit, at most one mail per 14 days. After the 30-day mail, none until the player returns.
+* Per type: a need alert at most once every 3 days; waiting, nudge and milestone at most once every 2 days and event once every 3; each milestone or event only once; each away step once per absence.
+* Back-off: after 3 mails in a row that were not followed by a visit, at most one mail per 14 days. After the 28-day mail, or after five mails in a row with no visit whatever they were, none until the player returns. The 28-day mail is never held back by a stronger reason.
 * The operator switch and the daily cap (`EMAIL_DAILY_CAP`) apply to every mail.
 
 A visit is any sign of play after the mail: the growth hello, a saved action, a social request.

@@ -8,6 +8,7 @@ import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed, watch } from 'vue'
 import { roomSummary, presenceText } from '../../../game/social-model.ts'
+import { cityName } from '../../../game/cities/registry.ts'
 import type { PeopleListing } from '../../../types/social.ts'
 import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -43,7 +44,9 @@ const summaryLine = computed(() => {
   return count ? `${summary.value} ${count} local${count === 1 ? '' : 's'} (NPCs) ${count === 1 ? 'is' : 'are'} always around.` : summary.value
 })
 const venueName = (id: string): string => venueNameOf(view.value.venues, id)
-const presence = (friend: { status?: string; seenAt?: number; venue?: string }): string => presenceText(friend, venueName, view.value.now)
+/** A friend in another city reads "in <city>": the reader's own city is what that is judged against. */
+const place = computed(() => ({ cityId: view.value.cityId, cityName: (id: string) => cityName(id) ?? id }))
+const presence = (friend: { status?: string; seenAt?: number; venue?: string; cityId?: string; going?: string; journey?: string }): string => presenceText(friend, venueName, view.value.now, place.value)
 
 // The listing is read when the place or the action changes, and again when it is 20 seconds old.
 // Server time moves with every poll, so nothing here needs a timer.

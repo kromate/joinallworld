@@ -13,7 +13,7 @@ import { telemetry } from '../../telemetry/index.ts'
 import { noteChunkFailure } from '../state/updateNotice.ts'
 import type { CityLinkMode, WorldCityId } from '../../types/life.ts'
 
-const { game, shell, scene, switchCity, playerLook, heldCities, command, showMapLayer, showFriends } = useApp()
+const { game, shell, scene, switchCity, playerLook, heldCities, command, showMapLayer, showFriends, showLive } = useApp()
 const cityBox = ref<HTMLElement | null>(null)
 const worldBox = ref<HTMLElement | null>(null)
 /** Which layer is in front: the country map while the city map says it is not ready. */
@@ -51,6 +51,8 @@ function load(): Promise<void> {
       // The world layer: a local government opens its page, a house its owner's card; the maps fetch only what is in view.
       onSelectLga: (lga) => { shell.open('lga', { lga }) },
       onSelectHouse: (house) => { shell.open('house-card', { house }) },
+      // A friend's pin opens their card (Chat, Call); a pin that stands for several opens the people list.
+      onSelectPeople: (ids) => { if (ids.length === 1) shell.open('person', { player: ids[0] }); else shell.open('people') },
       fetchJson: game.fetchJson,
       // The avatar reached the door: ask the server for the arrival now rather than at its next poll.
       onTripDue: () => { void game.refresh() },
@@ -62,6 +64,7 @@ function load(): Promise<void> {
     city.setPlayer(playerLook())
     showFriends()
     city.setState(game.state.value)
+    showLive()
     if (Object.keys(mapUi).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: mapUi }))
     show()
   }).catch((error: unknown) => { loading = null; telemetry.chunkFailed('map', error); void noteChunkFailure(); console.error('The map could not be loaded:', error); game.toast('The map could not be loaded. Check your connection and open it again.', 'error') })

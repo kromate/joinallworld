@@ -8,6 +8,7 @@ import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed, onMounted, watch } from 'vue'
 import { presenceText } from '../../../game/social-model.ts'
+import { cityName } from '../../../game/cities/registry.ts'
 import type { PersonCard } from '../../../types/social.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -53,6 +54,8 @@ const listing = computed(() => (state.people && !('error' in state.people) ? sta
 const together = computed(() => Boolean(listing.value?.players.some((player) => player.id === props.id)) && listing.value?.venue === game.state.value.location && game.state.value.location !== 'home')
 const left = computed(() => (rel.value ? rel.value.left : social.value.dailyInteractions))
 const venueName = (id: string): string => venueNameOf(view.value.venues, id)
+/** A friend in another city reads "in <city>": the reader's own city is what that is judged against. */
+const place = computed(() => ({ cityId: view.value.cityId, cityName: (id: string) => cityName(id) ?? id }))
 const whyAct = computed(() => (card.value ? interactReason({ card: card.value, together: together.value, left: left.value, daily: social.value.dailyInteractions, busy: personUi.busy }) : null))
 const whyBae = computed(() => (card.value ? baeReason({ card: card.value, social: social.value, meBae: Boolean(state.me?.bae), points: points.value }) : null))
 const whyMoney = computed(() => (card.value ? moneyReason(card.value, social.value.transfer) : null))
@@ -124,7 +127,7 @@ async function sendReport(): Promise<void> {
   <p v-else-if="card?.self">This is you, {{ card.name }}.</p>
   <div v-else-if="card" :data-c-player="id">
     <div class="social-head people-who"><PlayerAvatar :name="card.name" :seed="id" :status="card.status" /><h3>{{ card.name }}<FounderTag v-if="card.founder" /></h3></div>
-    <p>Real player · <span class="social-presence" :class="`is-${presenceClass(card.status)}`">{{ presenceText(card, venueName, view.now) }}</span><template v-if="together"> · here with you</template><template v-if="card.bae"> · your Bae <GameIcon name="heart" inline /></template><template v-else-if="card.friend"> · Friend</template></p>
+    <p>Real player · <span class="social-presence" :class="`is-${presenceClass(card.status)}`">{{ presenceText(card, venueName, view.now, place) }}</span><template v-if="together"> · here with you</template><template v-if="card.bae"> · your Bae <GameIcon name="heart" inline /></template><template v-else-if="card.friend"> · Friend</template></p>
     <button type="button" class="ui-button is-primary is-block" :disabled="card.blocked" @click="shell.open('messages', { to: id, name: card.name })">Chat</button>
     <span v-if="card.blocked" class="social-why">Unblock this player to chat.</span>
     <PersonCallButton :id="id" :name="card.name" :status="card.status" :blocked="card.blocked" />

@@ -11,6 +11,7 @@ import GoFix from './GoFix.vue'
 import { CHIP_LIMIT, chosenMode, fareText, goBlock, statusClass, tripLine, venueLink } from './travelModel.ts'
 import { mapUi, tell } from './travelState.ts'
 import { useTravelActions } from './useTravelActions.ts'
+import { useCrowd } from './useCrowd.ts'
 import { copyText } from '../../../ui/share.ts'
 
 const props = defineProps<{ item: TravelDestination }>()
@@ -21,6 +22,7 @@ const chosen = computed(() => chosenMode(props.item, mapUi.mode, game.view.value
 const block = computed(() => goBlock(game.state.value, game.view.value, props.item, chosen.value))
 const chips = computed(() => (mapUi.showAll ? props.item.preview : props.item.preview.slice(0, CHIP_LIMIT)))
 const more = computed(() => props.item.preview.length - chips.value.length)
+const crowd = useCrowd()
 
 function back(): void {
   mapUi.destination = null
@@ -53,7 +55,7 @@ const onAbout = (event: Event): void => { mapUi.aboutOpen = (event.currentTarget
       <div><h1>{{ item.label }}</h1><p>{{ item.district }}{{ item.band ? ` · ${item.band}` : '' }}</p></div>
       <button type="button" class="life-icon-button" :aria-label="`Copy a link to ${item.label}`" :title="`Copy a link to ${item.label}`" @click="share"><GameIcon bare name="link" /></button>
     </header>
-    <p class="map-status" :class="statusClass(item)"><b>{{ item.status }}</b><template v-if="item.open && item.hours !== item.status">{{ ' ' }}<span>{{ item.hours }}</span></template></p>
+    <p class="map-status" :class="statusClass(item)"><b>{{ item.status }}</b><template v-if="item.open && item.hours !== item.status">{{ ' ' }}<span>{{ item.hours }}</span></template><span v-if="crowd[item.id]" class="map-list-crowd" :data-crowd="item.id"> · {{ crowd[item.id] }}</span></p>
     <div v-if="item.modes.length" class="map-modes" role="group" aria-label="How to travel">
       <!-- A tile is dead only when no mode can go there (closed, already here). Being busy or offline is said once, on the card. -->
       <button

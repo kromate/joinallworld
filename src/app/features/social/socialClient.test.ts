@@ -104,7 +104,7 @@ test('start opens one socket and reads the overview once; the socket opening rea
   ctx.sockets[0]?.onopen?.()
   await settle()
   assert.equal(ctx.client.state.socket, 'open')
-  assert.deepEqual(ctx.sockets[0]?.sent.map((frame) => JSON.parse(frame) as unknown), [{ type: 'people-list', cityId: 'lagos' }])
+  assert.deepEqual(ctx.sockets[0]?.sent.map((frame) => JSON.parse(frame) as unknown), [{ type: 'people-list', cityId: 'lagos' }, { type: 'live-watch', cityId: 'lagos' }])
 })
 
 test('an invite link in the address opens the Invite app once the overview is here, then the address is cleared', async () => {
@@ -409,4 +409,79 @@ test('first incoming DM adopts an open provisional chat, marks read and keeps re
   socket?.push({ type: 'dm', conv: conv('group.one', { kind: 'group', name: 'Group' }), message: first })
   assert.equal(ctx.client.state.openConv, 'to:another-person', 'group messages do not adopt a provisional direct chat')
   assert.equal(readsOf(), readsBefore, 'background messages remain unread')
+})
+
+// ---- live location ---------------------------------------------------------------------------------
+const friendRow = (id: string, name: string, extra: Record<string, unknown> = {}) => ({ id, name, since: 1, bae: false, status: 'offline', ...extra })
+const sentTypes = (socket: FakeSocket | undefined): string[] => (socket?.sent ?? []).map((frame) => (JSON.parse(frame) as { type: string }).type)
+
+test('live location: the snapshot and each move are written over the friend rows, and a re-read of the overview does not put an older place back', async () => {
+  const ctx = setup({ '/api/social/me': () => overview({ friends: [friendRow('f1', 'Femi', { status: 'online', venue: 'market', cityId: 'lagos' }), friendRow('f2', 'Gbenga')] as SocialOverview['friends'] }) })
+  let told = 0
+  ctx.client.onLive(() => { told += 1 })
+  ctx.client.start(ctx.api)
+  await settle()
+  ctx.sockets[0]?.onopen?.()
+  await settle()
+  const socket = ctx.sockets[0]
+  // The device's clock is 5000; the server's is 105000. A trip that began at 100000 and takes 10 s has 5 s to run.
+  socket?.push({ type: 'live-snapshot', at: 105000, city: { cityId: 'lagos', venues: { park: 2 }, moving: 1 }, friends: [
+    { id: 'f1', status: 'online', cityId: 'lagos', trip: { from: 'market', to: 'park', mode: 'keke', startedAt: 100000, duration: 10 } },
+    { id: 'f2', status: 'online', cityId: 'ibadan', venue: 'agodi-gardens' },
+  ] })
+  const [femi, gbenga] = ctx.client.state.me?.friends ?? []
+  assert.deepEqual([femi?.status, femi?.venue, femi?.going, femi?.cityId], ['away', undefined, 'park', 'lagos'], 'on a trip: no venue, and where to')
+  assert.deepEqual([gbenga?.status, gbenga?.venue, gbenga?.cityId], ['online', 'agodi-gardens', 'ibadan'])
+  assert.equal(ctx.client.liveNow(), 105000, 'the server clock comes from the frame')
+  assert.equal(ctx.client.state.live.city?.venues.park, 2)
+  assert.ok(told >= 1, 'the map host is told')
+  // ONE follow-up is booked for the moment the trip reaches its door: no repeating timer.
+  const booked = ctx.timers.filter((timer) => !timer.cleared && timer.ms === 5050)
+  assert.equal(booked.length, 1)
+
+  // A re-read of the overview still says "market": the live table wins.
+  await ctx.client.sync()
+  assert.deepEqual([ctx.client.state.me?.friends[0]?.status, ctx.client.state.me?.friends[0]?.going, ctx.client.state.me?.friends[0]?.venue], ['away', 'park', undefined])
+
+  // He arrives, then goes home, then his connection drops.
+  socket?.push({ type: 'live-move', at: 111000, spots: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'park' }], city: { cityId: 'lagos', venues: { park: 3 }, moving: 0 } })
+  assert.deepEqual([ctx.client.state.me?.friends[0]?.status, ctx.client.state.me?.friends[0]?.venue, ctx.client.state.me?.friends[0]?.going], ['online', 'park', undefined])
+  assert.equal(ctx.client.state.live.city?.venues.park, 3)
+  socket?.push({ type: 'live-move', at: 112000, spots: [{ id: 'f1', status: 'reconnecting', seenAt: 112000 }] })
+  assert.deepEqual([ctx.client.state.me?.friends[0]?.status, ctx.client.state.me?.friends[0]?.venue, ctx.client.state.me?.friends[0]?.cityId, ctx.client.state.me?.friends[0]?.seenAt], ['reconnecting', undefined, undefined, 112000])
+  // The older presence frame does not undo what the live frame said.
+  socket?.push({ type: 'live-move', at: 113000, spots: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'home' }] })
+  socket?.push({ type: 'people-presence', id: 'f1', status: 'online' })
+  assert.deepEqual([ctx.client.state.me?.friends[0]?.status, ctx.client.state.me?.friends[0]?.venue], ['online', 'home'])
+})
+
+test('live location: watched again only when the city or the friends changed; a closed socket forgets what it knew and the next one asks afresh', async () => {
+  let friends = [friendRow('f1', 'Femi')] as SocialOverview['friends']
+  const ctx = setup({ '/api/social/me': () => overview({ friends }) })
+  ctx.client.start(ctx.api)
+  await settle()
+  ctx.sockets[0]?.onopen?.()
+  await settle()
+  assert.deepEqual(sentTypes(ctx.sockets[0]), ['people-list', 'live-watch'])
+  await ctx.client.sync(); await ctx.client.sync()
+  assert.deepEqual(sentTypes(ctx.sockets[0]), ['people-list', 'live-watch'], 'the same friends: not asked again')
+  friends = [...friends, friendRow('f2', 'Gbenga')] as SocialOverview['friends']
+  await ctx.client.sync()
+  assert.deepEqual(sentTypes(ctx.sockets[0]), ['people-list', 'live-watch', 'live-watch'], 'a new friend is watched')
+
+  ctx.sockets[0]?.push({ type: 'live-snapshot', at: 9000, city: { cityId: 'lagos', venues: { park: 1 }, moving: 0 }, friends: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'park' }] })
+  assert.equal(ctx.client.state.live.friends.size, 1)
+  let told = 0
+  ctx.client.onLive(() => { told += 1 })
+  ctx.sockets[0]?.onclose?.()
+  assert.deepEqual([ctx.client.state.live.friends.size, ctx.client.state.live.city], [0, null], 'nothing stale is kept on the map')
+  assert.equal(told, 1)
+  ctx.timers.at(-1)?.run()
+  ctx.sockets[1]?.onopen?.()
+  await settle()
+  assert.deepEqual(sentTypes(ctx.sockets[1]), ['people-list', 'live-watch'])
+  // A new identity starts with nothing.
+  ctx.sockets[1]?.push({ type: 'live-snapshot', at: 9000, city: null, friends: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'park' }] })
+  ctx.client.resetSocial()
+  assert.equal(ctx.client.state.live.friends.size, 0)
 })

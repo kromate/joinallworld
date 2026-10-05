@@ -15,6 +15,7 @@ import { FILTERS, LAYERS, layerNote, matchesFilter, overviewLine, statusClass } 
 import type { LayerData, LayerId, LayerNote } from './travelModel.ts'
 import { linkWords } from './travelBoundary.ts'
 import { isListOpen, layers, mapUi, tell, wide } from './travelState.ts'
+import { useCrowd } from './useCrowd.ts'
 
 const { game, shell } = useApp()
 const civic = useCivic()
@@ -39,6 +40,9 @@ const notes = computed((): LayerNote[] => {
     return note ? [note] : []
   })
 })
+
+// Who is at each place right now: part of the line under the name, so no row changes size.
+const crowd = useCrowd()
 
 function toggleList(): void { mapUi.listOpen = !isListOpen() }
 function choose(id: string): void { mapUi.filter = id; tell({ filter: id }) }
@@ -81,7 +85,7 @@ function showWorld(): void {
         <li v-for="item in places" :key="item.id">
           <button type="button" :class="[statusClass(item), { 'is-here': item.here }]" @click="pick(item.id)">
             <span aria-hidden="true"><GameIcon inline kind="venue" :id="item.id" :emoji="item.icon" /></span>
-            <span class="map-list-text"><b>{{ item.label }}</b><small>{{ item.district }}</small></span>
+            <span class="map-list-text"><b>{{ item.label }}</b><small>{{ item.district }}<span v-if="crowd[item.id]" class="map-list-crowd" :data-crowd="item.id"> · {{ crowd[item.id] }}</span></small></span>
             <em>{{ item.here ? 'You are here' : item.open ? 'Open' : 'Closed' }}</em>
           </button>
         </li>

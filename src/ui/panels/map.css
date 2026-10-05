@@ -32,7 +32,8 @@
 .map-list li{min-width:0}
 .map-list-text{flex:1;min-width:0}
 .map-list b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.map-list small{display:block;font-size:11px;color:var(--c-muted)}
+.map-list small{display:block;font-size:11px;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.map-list-crowd{color:var(--c-green-dark);font-weight:700}
 .map-list em{flex:none;white-space:nowrap;font-style:normal;font-size:11px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--c-green-soft);color:var(--c-green-dark)}
 .map-list .is-closed em{background:var(--c-fill);color:var(--c-muted);font-weight:600}
 .map-list .is-closed b{color:var(--c-muted)}

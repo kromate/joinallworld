@@ -8,6 +8,8 @@
 import type {
   ConversationId, KnockState, Message, OutboxEntry, PeopleListing, PersonCard, PresenceStatus, SocialOverview, ThreadItem,
 } from '../types/social.ts';
+import { freshLive } from './live-model.ts';
+import type { LiveTable } from './live-model.ts';
 
 export const SEND_TIMEOUT_MS = 12000;
 export const FAILURE_TEXT = 'No answer from the server. Check your connection and retry.';
@@ -116,10 +118,19 @@ const presenceByStatus: Readonly<Record<string, PresenceEntry | undefined>> = PR
  * "Online · Freedom Park", "Online · at home", "Online · visiting a friend", "Away", "Reconnecting…",
  * "Offline". Given the server's `now`, an offline player whose listing carries `seenAt` (the time
  * their last connection closed) reads "Offline · last seen 5 min ago".
+ * With live location a friend on the move reads "On the way to Freedom Park", "On the way home" or
+ * "Travelling to Ibadan". `place` names the reader's own city: a friend in another one reads
+ * "Online · in Ibadan" — the city only, never a venue of it.
  */
-export function presenceText(person: { status?: string; seenAt?: number; venue?: string } | null | undefined, venueName: (id: string) => string = (id) => id, now: number | null = null): string {
+export function presenceText(person: { status?: string; seenAt?: number; venue?: string; cityId?: string; going?: string; journey?: string } | null | undefined, venueName: (id: string) => string = (id) => id, now: number | null = null,
+  place: { cityId?: string; cityName?: (id: string) => string } | null = null): string {
   const entry = presenceByStatus[person?.status ?? ''] || PRESENCE.offline;
   if (entry === PRESENCE.offline && typeof person?.seenAt === 'number' && Number.isFinite(person.seenAt) && typeof now === 'number' && Number.isFinite(now)) return `${entry.label} · last seen ${agoText(person.seenAt, now)}`;
+  const cityName = (id: string): string => place?.cityName?.(id) ?? id;
+  const elsewhere = person?.cityId && place?.cityId && person.cityId !== place.cityId ? person.cityId : null;
+  if (person?.status === 'away' && person.journey) return `Travelling to ${cityName(person.journey)}`;
+  if (person?.status === 'away' && person.going) return elsewhere ? `On the move in ${cityName(elsewhere)}` : `On the way ${person.going === 'home' ? 'home' : `to ${venueName(person.going)}`}`;
+  if (elsewhere && (person?.status === 'online' || person?.status === 'away')) return `${entry.label} · in ${cityName(elsewhere)}`;
   if (person?.status !== 'online' || !person.venue) return entry.label;
   return `${entry.label} · ${person.venue === 'home' ? 'at home' : person.venue === 'visit' ? 'visiting a friend' : venueName(person.venue)}`;
 }
@@ -166,7 +177,9 @@ export interface SocialClientState {
   knock: KnockState | null
   /** While this socket is in a host's Home room as a guest. */
   houseRoom: { host: string; members: { id: string; name: string }[] } | null
+  /** Where friends are right now, from the live frames (live-model.ts). */
+  live: LiveTable
 }
 
 export const freshSocial = (): SocialClientState => ({ me: null, loading: false, error: null, people: null, peopleAt: 0, peopleLoading: false,
-  threads: new Map(), profiles: new Map(), openConv: null, knock: null, houseRoom: null });
+  threads: new Map(), profiles: new Map(), openConv: null, knock: null, houseRoom: null, live: freshLive() });

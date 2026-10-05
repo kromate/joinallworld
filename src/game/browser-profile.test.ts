@@ -35,20 +35,19 @@ import { campusFor, loadCampus } from '${url('./campus-gate.ts')}';
 import { isStandIn } from '${url('./registry.ts')}';
 const input = JSON.parse(readFileSync(process.argv[1], 'utf8'));
 if (input.mode === 'client') {
-// The client, with a server that answers with a life that uses the campus: the answer is accepted whole, after the campus rules have been fetched.
-const { createClient } = await import('${url('../client.ts')}');
-const reply = (status, body) => ({ ok: status < 300, status, json: async () => body });
-const wanted = input.lives.find((life) => life.name === 'a student at the campus');
-const stored = new Map([['joinallworld-life-v1', JSON.stringify({ version: 1, state: wanted.raw, identity: { name: 'Ada' }, cityId: 'lagos' })]]);
-const changes = [];
-const fetchLife = async (path) => (path === '/api/session' ? reply(200, { session: { id: 'public-1', name: 'Ada' }, serverTime: 5000 }) : reply(200, { state: wanted.raw, serverTime: wanted.ctx.now }));
-const client = createClient({ fetch: fetchLife, now: () => wanted.ctx.now, setTimeout: () => 0, clearTimeout: () => {}, randomUUID: () => '11111111-1111-4111-8111-111111111111',
-  storage: { getItem: (key) => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) }, onChange: (state) => changes.push(state) });
+  // The client, given a life that uses the campus (saved on the device, and answered by the server): it fetches the campus rules and keeps all of it.
+  const { createClient } = await import('${url('../client.ts')}');
+  const reply = (status, body) => ({ ok: status < 300, status, json: async () => body });
+  const wanted = input.lives.find((life) => life.name === 'a student at the campus');
+  const stored = new Map([['joinallworld-life-v1', JSON.stringify({ version: 1, state: wanted.raw, identity: { name: 'Ada' }, cityId: 'lagos' })]]);
+  const fetchLife = async (path) => (path === '/api/session' ? reply(200, { session: { id: 'public-1', name: 'Ada' }, serverTime: 5000 }) : reply(200, { state: wanted.raw, serverTime: wanted.ctx.now }));
+  const client = createClient({ fetch: fetchLife, now: () => wanted.ctx.now, setTimeout: () => 0, clearTimeout: () => {}, randomUUID: () => '11111111-1111-4111-8111-111111111111',
+    storage: { getItem: (key) => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) } });
   const standInAtStart = isStandIn('unilagStudent');
-const before = client.state.unilagStudent.status;
-const connected = await client.connect();
-const client_ = { standInAtStart, before, connected, standIn: isStandIn('unilagStudent'), status: client.state.unilagStudent.status, programme: client.state.unilagStudent.programme, rides: client.state.unilagShuttle.rides, clubs: client.state.unilagCommunity.clubs };
-  process.stdout.write(JSON.stringify({ client: client_ }));
+  const before = client.state.unilagStudent.status;
+  const connected = await client.connect();
+  const { unilagStudent, unilagShuttle, unilagCommunity } = client.state;
+  process.stdout.write(JSON.stringify({ client: { standInAtStart, before, connected, standIn: isStandIn('unilagStudent'), status: unilagStudent.status, programme: unilagStudent.programme, rides: unilagShuttle.rides, clubs: unilagCommunity.clubs } }));
   process.exit(0);
 }
 const results = [];

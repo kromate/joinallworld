@@ -31,6 +31,7 @@ import { useGame } from './game.ts'
 import type { Game } from './game.ts'
 import { buildRegistry } from './panels.ts'
 import { createShell } from './shell.ts'
+import { CAMERA_FRAME } from '../../map3d/geo/frame.ts'
 import { decideView, forgetViews, keepView, loadView } from './viewMemory.ts'
 import type { SavedCamera, SavedSheet } from './viewMemory.ts'
 import { mapUi } from '../features/travel/travelState.ts'
@@ -329,7 +330,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     if (!ready.value || !who || !game.connected.value || state.onboarding?.required || tripKey(state)) return
     const mode = game.mode.value
     if (mode === 'map') lastCamera = scene.city.value?.camera() ?? lastCamera
-    keepView({ v: 1, who, at: state.location, mode, layer: mapUi.layer, destination: mode === 'map' ? mapUi.destination : null, sheet: sheetToKeep(), camera: mode === 'map' ? lastCamera : null }, tabStore(), deviceStore())
+    keepView({ v: 1, who, at: state.location, mode, layer: mapUi.layer, destination: mode === 'map' ? mapUi.destination : null, sheet: sheetToKeep(), camera: mode === 'map' ? lastCamera : null, frame: CAMERA_FRAME }, tabStore(), deviceStore())
   }
   function restoreView(): void {
     const who = whoIs(), state = game.state.value

@@ -36,6 +36,13 @@ const DEG = Math.PI / 180;
 const UNITS_PER_DEG_LAT = EARTH_RADIUS_KM * DEG * UNITS_PER_KM;
 const UNITS_PER_DEG_LON = UNITS_PER_DEG_LAT * Math.cos(STANDARD_PARALLEL * DEG);
 
+/**
+ * The identity of the frame AND of the city geometry drawn in it. A camera position kept before this changed (an older,
+ * differently shaped board, another origin or scale) is meaningless now and must be dropped, not restored: bump the
+ * last part whenever a city's real-world layout is redrawn.
+ */
+export const CAMERA_FRAME = `nigeria-frame:${FRAME_LON},${FRAME_LAT},${UNITS_PER_KM}:lagos-real-1`;
+
 /** A position in map units: x east, z south. */
 export interface FramePoint { x: number; z: number }
 

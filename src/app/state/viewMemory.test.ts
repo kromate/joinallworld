@@ -1,11 +1,12 @@
 // OWNER: shell — the start-up view after a reload (./viewMemory.ts): pure decisions and the storage round trip.
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { CAMERA_FRAME } from '../../map3d/geo/frame.ts'
 import { decideView, forgetViews, keepView, loadView, savedViewFrom } from './viewMemory.ts'
 import type { LifeFacts, SavedView } from './viewMemory.ts'
 
 const facts = (extra: Partial<LifeFacts> = {}): LifeFacts => ({ who: 'p1:lagos', location: 'park', trip: false, allowsMode: (mode) => mode === 'map' || mode === 'buy', allowsSheet: () => true, ...extra })
-const saved = (extra: Partial<SavedView> = {}): SavedView => ({ v: 1, who: 'p1:lagos', at: 'park', mode: 'map', layer: 'city', destination: 'library', sheet: null, camera: { kind: '3d', x: 10, z: -4, yaw: 0.3, pitch: 0.9, distance: 80 }, ...extra })
+const saved = (extra: Partial<SavedView> = {}): SavedView => ({ v: 1, who: 'p1:lagos', at: 'park', mode: 'map', layer: 'city', destination: 'library', sheet: null, camera: { kind: '3d', x: 10, z: -4, yaw: 0.3, pitch: 0.9, distance: 80 }, frame: CAMERA_FRAME, ...extra })
 
 test('in the map when the page was reloaded: still the map, the same picked place and camera', () => {
   const view = decideView(JSON.parse(JSON.stringify(saved())), facts())
@@ -52,4 +53,14 @@ test('the tab keeps its own record; a new tab of the same player finds the playe
   assert.equal(loadView('p2:lagos', tab, device), null, 'another player sees nothing of it')
   forgetViews(tab, device, 'p1:lagos')
   assert.equal(loadView('p1:lagos', tab, device), null)
+})
+
+test('a camera kept in another map frame, or before frames were named, is dropped; the rest of the view is kept', () => {
+  for (const frame of [undefined, 'nigeria-frame:old', '']) {
+    const old = { ...saved(), ...(frame === undefined ? {} : { frame }) } as Record<string, unknown>
+    if (frame === undefined) delete old.frame
+    const view = decideView(JSON.parse(JSON.stringify(old)), facts())
+    assert.deepEqual([view.mode, view.destination, view.camera], ['map', 'library', null], String(frame))
+  }
+  assert.equal(decideView(saved(), facts()).camera?.kind, '3d')
 })

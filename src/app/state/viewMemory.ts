@@ -6,6 +6,8 @@
 // decideView() is the whole decision, pure: the saved record and what the server says about the life in, the view
 // to start with out. A record that names a place the player is no longer in, or another life, is ignored.
 
+import { CAMERA_FRAME } from '../../map3d/geo/frame.ts'
+
 export type SavedSheet = { kind: 'phone' } | { kind: 'panel'; id: string } | { kind: 'sim'; tab: string }
 export type SavedCamera =
   | { kind: '3d'; x: number; z: number; yaw: number; pitch: number; distance: number }
@@ -21,6 +23,8 @@ export interface SavedView {
   destination: string | null
   sheet: SavedSheet | null
   camera: SavedCamera | null
+  /** The map frame the camera was kept in (CAMERA_FRAME). A record without it, or with another, keeps no camera. */
+  frame?: string
 }
 /** What the server says about the life, and what this build knows how to open. */
 export interface LifeFacts {
@@ -66,7 +70,7 @@ export function savedViewFrom(value: unknown): SavedView | null {
   if (!value || typeof value !== 'object') return null
   const item = value as Record<string, unknown>
   if (item.v !== 1 || typeof item.who !== 'string' || !text(item.at) || !text(item.mode)) return null
-  return { v: 1, who: item.who, at: item.at, mode: item.mode, layer: item.layer === 'world' ? 'world' : 'city', destination: text(item.destination) ? item.destination : null, sheet: sheetOf(item.sheet), camera: cameraOf(item.camera) }
+  return { v: 1, who: item.who, at: item.at, mode: item.mode, layer: item.layer === 'world' ? 'world' : 'city', destination: text(item.destination) ? item.destination : null, sheet: sheetOf(item.sheet), camera: item.frame === CAMERA_FRAME ? cameraOf(item.camera) : null, ...(typeof item.frame === 'string' ? { frame: item.frame } : {}) }
 }
 
 /** The view to start with. */

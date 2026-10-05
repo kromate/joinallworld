@@ -38,8 +38,9 @@ function setup(routes: Record<string, Handler> = {}, options: { connected?: bool
   const sockets: FakeSocket[] = []
   const timers: { run: () => void; ms: number; cleared: boolean }[] = []
   const commands: string[] = []
+  const online: (() => void)[] = []
   let ids = 0
-  const flags = { connected: options.connected ?? true, onboarding: options.onboarding ?? false, refreshes: 0 }
+  const flags = { connected: options.connected ?? true, onboarding: options.onboarding ?? false, refreshes: 0, visible: true }
   const handlers: Record<string, Handler> = { '/api/social/me': () => overview(), ...routes }
   const api = {
     view: () => ({ connected: flags.connected, onboarding: flags.onboarding ? { required: true } : undefined, cityId: 'lagos', now: 1000 }) as unknown as PanelView,
@@ -60,12 +61,17 @@ function setup(routes: Record<string, Handler> = {}, options: { connected?: bool
     openSocket: () => { const socket = new FakeSocket(); sockets.push(socket); return socket },
     pageAddress: () => ({ pathname: options.pathname ?? '/', search: '' }),
     clearAddress: () => { opened.push({ id: 'address-cleared' }) },
-    onOnline: () => {},
+    onOnline: (listener) => { online.push(listener) },
+    visible: () => flags.visible,
     setTimeout: (run, ms) => { const timer = { run, ms, cleared: false }; timers.push(timer); return timer },
     clearTimeout: (handle) => { if (handle) (handle as { cleared: boolean }).cleared = true },
     now: () => 5000,
   })
-  return { client, api, calls, toasts, opened, sockets, timers, commands, flags }
+  /** The newest timer of that length that is still booked. */
+  const booked = (ms: number) => timers.filter((timer) => !timer.cleared && timer.ms === ms).at(-1)
+  /** The device is online again: what the browser's `online` event does. */
+  const backOnline = (): void => { for (const listener of online) listener() }
+  return { client, api, calls, toasts, opened, sockets, timers, commands, flags, booked, backOnline }
 }
 const settle = async (): Promise<void> => { for (let i = 0; i < 6; i += 1) await new Promise((resolve) => setImmediate(resolve)) }
 const failure = (status: number | undefined, extra: Partial<ApiError> = {}): ApiError => Object.assign(new Error('x'), { status }, extra)
@@ -269,7 +275,7 @@ test('a guest joins the host\'s Home room once, and the presence frame fills the
   assert.equal(ctx.client.state.houseRoom, null)
 })
 
-test('the socket closing reconnects with a back-off, gives up after six tries, and reconnect() starts again', async () => {
+test('the socket closing reconnects with a back-off; after six tries it reads offline and is still tried every half minute; reconnect() tries at once', async () => {
   const ctx = setup()
   ctx.client.start(ctx.api)
   await settle()
@@ -283,8 +289,148 @@ test('the socket closing reconnects with a back-off, gives up after six tries, a
   ctx.sockets.at(-1)?.onclose?.()
   assert.equal(ctx.client.state.socket, 'offline')
   const count = ctx.sockets.length
-  ctx.client.reconnect()
+  // Never given up: the next try is booked, and the one after it when that fails too.
+  assert.equal(ctx.timers.at(-1)?.ms, 30000)
+  ctx.timers.at(-1)?.run()
   assert.equal(ctx.sockets.length, count + 1)
+  ctx.sockets.at(-1)?.onclose?.()
+  assert.deepEqual([ctx.client.state.socket, ctx.timers.at(-1)?.ms, ctx.timers.at(-1)?.cleared], ['offline', 30000, false])
+  ctx.client.reconnect()
+  assert.equal(ctx.sockets.length, count + 2)
+  assert.equal(ctx.timers.filter((timer) => !timer.cleared && timer.ms === 30000).length, 0, 'the booked try was taken back')
+  // Opened: the count starts again, and the state says so.
+  ctx.sockets.at(-1)?.onopen?.()
+  assert.equal(ctx.client.state.socket, 'open')
+  ctx.sockets.at(-1)?.onclose?.()
+  assert.deepEqual([ctx.client.state.socket, ctx.timers.at(-1)?.ms], ['reconnecting', 1000])
+})
+
+/** A client whose socket is open, with one thread read and one friend on the map; every later opening must bring all of it back. */
+async function opened() {
+  const ctx = setup({
+    '/api/social/me': () => overview({ friends: [{ id: 'f1', name: 'Femi', since: 1, bae: false, status: 'online', venue: 'market', cityId: 'lagos' }] as SocialOverview['friends'] }),
+    '/api/social/conversations/c1': () => ({ ok: true, conv: conv('c1'), messages: [message(1, 'c1')] }),
+  })
+  const seen = { calls: [] as string[], closes: 0, opens: [] as boolean[] }
+  ctx.client.onCallFrame((frame) => { seen.calls.push(frame.type) })
+  ctx.client.onSocketClose(() => { seen.closes += 1 })
+  ctx.client.onSocketOpen((again) => { seen.opens.push(again) })
+  ctx.client.start(ctx.api)
+  await settle()
+  ctx.sockets[0]?.onopen?.()
+  await ctx.client.openThread('c1')
+  ctx.sockets[0]?.push({ type: 'live-snapshot', at: 9000, city: null, friends: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'park' }] })
+  await settle()
+  return { ...ctx, seen }
+}
+/** The socket just opened has everything again: the overview, the open thread, the people list, a live snapshot, and the call the server tells it about. */
+async function whole(ctx: Awaited<ReturnType<typeof opened>>, index: number): Promise<void> {
+  const socket = ctx.sockets[index]
+  const before = ctx.calls.length
+  socket?.onopen?.()
+  await settle()
+  assert.equal(ctx.client.state.socket, 'open')
+  assert.deepEqual(sentTypes(socket), ['people-list', 'live-watch'])
+  assert.deepEqual(ctx.calls.slice(before).map((call) => call.path).sort(), ['/api/social/conversations/c1?after=1', '/api/social/me'])
+  assert.equal(ctx.seen.opens.at(-1), true, 'the game is told it is a reconnection, and reads the life')
+  socket?.push({ type: 'live-snapshot', at: 9000, city: null, friends: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'library' }] })
+  socket?.push({ type: 'call-state', callId: 'k', state: 'accepted', role: 'callee', elsewhere: true, peer: { id: 'f1', name: 'Femi' } })
+  assert.equal(ctx.client.state.me?.friends[0]?.venue, 'library')
+  assert.equal(ctx.seen.calls.at(-1), 'call-state')
+}
+
+test('the network went and came back, the socket closing first: it reads offline while the game is not connected, and is opened as soon as the game hears from the server', async () => {
+  const ctx = await opened()
+  ctx.flags.connected = false
+  ctx.sockets[0]?.onclose?.()
+  assert.deepEqual([ctx.client.state.socket, ctx.client.state.live.friends.size, ctx.seen.closes], ['offline', 0, 1])
+  assert.equal(ctx.booked(30000)?.cleared, false, 'still tried, slowly')
+  ctx.backOnline()
+  ctx.client.socketWanted()
+  assert.equal(ctx.sockets.length, 1, 'nothing is opened while the game cannot reach the server')
+  // The slow try finds the game still away, and books the next one.
+  ctx.booked(30000)?.run()
+  assert.deepEqual([ctx.sockets.length, ctx.booked(30000)?.cleared], [1, false])
+  ctx.flags.connected = true
+  ctx.client.socketWanted()
+  assert.equal(ctx.sockets.length, 2)
+  ctx.client.socketWanted()
+  assert.equal(ctx.sockets.length, 2, 'once')
+  await whole(ctx, 1)
+})
+
+test('the network came back before the stale socket closed: the socket is asked for a sign of life, its late close is still followed by a new socket', async () => {
+  const ctx = await opened()
+  ctx.flags.connected = false
+  ctx.backOnline()
+  assert.deepEqual(sentTypes(ctx.sockets[0]).at(-1), 'call-settings', 'the socket that is still there is not trusted')
+  // The close arrives a moment later, while the game has not yet heard from the server.
+  ctx.sockets[0]?.onclose?.()
+  assert.deepEqual([ctx.client.state.socket, ctx.sockets.length], ['offline', 1])
+  ctx.flags.connected = true
+  ctx.client.socketWanted()
+  assert.equal(ctx.sockets.length, 2)
+  await whole(ctx, 1)
+})
+
+test('the network came back and the stale socket never closes: with no sign of life in four seconds it is closed and replaced; what it says afterwards is ignored', async () => {
+  const ctx = await opened()
+  ctx.backOnline()
+  assert.deepEqual(sentTypes(ctx.sockets[0]).at(-1), 'call-settings')
+  ctx.booked(4000)?.run()
+  assert.deepEqual([ctx.sockets[0]?.closed, ctx.sockets.length, ctx.seen.closes, ctx.client.state.live.friends.size], [true, 2, 1, 0])
+  ctx.sockets[0]?.push({ type: 'live-snapshot', at: 9000, city: null, friends: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'beach' }] })
+  ctx.sockets[0]?.onclose?.()
+  assert.deepEqual([ctx.client.state.live.friends.size, ctx.sockets.length, ctx.seen.closes], [0, 2, 1])
+  await whole(ctx, 1)
+  // The same while the game was not connected yet: the dead socket is dropped at once and the new one waits for the game.
+  const late = await opened()
+  late.flags.connected = false
+  late.backOnline()
+  late.booked(4000)?.run()
+  assert.deepEqual([late.sockets[0]?.closed, late.sockets.length, late.client.state.socket], [true, 1, 'offline'])
+  late.flags.connected = true
+  late.client.socketWanted()
+  assert.equal(late.sockets.length, 2)
+  await whole(late, 1)
+})
+
+test('a socket that went silent is asked for a sign of life: an answer keeps it, none replaces it; a socket that never finished opening is replaced when the device is online', async () => {
+  const ctx = await opened()
+  // Frames arrived since it opened: nothing is asked.
+  ctx.booked(25000)?.run()
+  assert.equal(sentTypes(ctx.sockets[0]).includes('call-settings'), false)
+  // A quiet stretch: asked, and answered.
+  ctx.booked(25000)?.run()
+  assert.equal(sentTypes(ctx.sockets[0]).at(-1), 'call-settings')
+  ctx.sockets[0]?.push({ type: 'call-settings', calls: 'friends' })
+  ctx.booked(4000)?.run()
+  assert.deepEqual([ctx.sockets.length, ctx.sockets[0]?.closed, ctx.client.state.socket], [1, false, 'open'])
+  // Quiet again, and this time nothing comes back.
+  ctx.booked(25000)?.run()
+  ctx.booked(4000)?.run()
+  assert.deepEqual([ctx.sockets.length, ctx.sockets[0]?.closed], [2, true])
+  // The new one has not opened when the device comes online again: it is not waited for.
+  ctx.backOnline()
+  assert.deepEqual([ctx.sockets.length, ctx.sockets[1]?.closed], [3, true])
+  ctx.sockets[1]?.onopen?.()
+  assert.notEqual(ctx.client.state.socket, 'open', 'a socket that was replaced opens nothing')
+  await whole(ctx, 2)
+})
+
+test('a hidden page opens no socket and asks nothing; it is opened when the page is in front again', async () => {
+  const ctx = await opened()
+  ctx.flags.visible = false
+  ctx.booked(25000)?.run(); ctx.booked(25000)?.run()
+  assert.equal(sentTypes(ctx.sockets[0]).includes('call-settings'), false)
+  ctx.sockets[0]?.onclose?.()
+  ctx.booked(1000)?.run()
+  assert.equal(ctx.sockets.length, 1)
+  assert.ok(ctx.timers.some((timer) => !timer.cleared && timer.ms > 1000), 'looked at again later')
+  ctx.flags.visible = true
+  ctx.client.wakeSocket()
+  assert.equal(ctx.sockets.length, 2)
+  await whole(ctx, 1)
 })
 
 test('perform toasts the reason when refused, the good text when done, and reads the overview either way', async () => {

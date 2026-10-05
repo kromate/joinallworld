@@ -152,3 +152,28 @@ test('Ogun cities: a Lagos life that travelled to Ota is filed under Ota, a v:2 
   }
   assert.throws(() => settleCity(session, 'lagos', 7000), { code: 'city_moved', city: 'abeokuta' })
 })
+
+test('the revision goes up at every settlement and never falls back when settlements that were not stored are lost', () => {
+  const at = 1791200000000
+  const session = record()
+  settleCity(session, 'lagos', at)
+  const stored = JSON.stringify(session), first = session.rev ?? 0
+  assert.ok(first >= at, 'never below the clock')
+  // Quiet polls in one millisecond still count up, and later ones follow the clock.
+  settleCity(session, 'lagos', at); settleCity(session, 'lagos', at)
+  assert.equal(session.rev, first + 2)
+  settleCity(session, 'lagos', at + 9 * 60000)
+  const given = session.rev ?? 0
+  assert.ok(given > first + 2)
+  // The host restarted: what it holds is the stored record. Its next settlement is above everything it had given.
+  const restarted = JSON.parse(stored) as SessionRecord
+  settleCity(restarted, 'lagos', at + 9 * 60000 + 2000)
+  assert.ok((restarted.rev ?? 0) > given, `${restarted.rev} after ${given}`)
+  // A record of a build that counted from one, and a clock that is not a time (a test's): one more than before.
+  const old = record()
+  old.rev = 41
+  settleCity(old, 'lagos', 5000)
+  assert.equal(old.rev, 5000)
+  settleCity(old, 'lagos', 5000)
+  assert.equal(old.rev, 5001)
+})

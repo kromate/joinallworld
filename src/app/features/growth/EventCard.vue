@@ -6,7 +6,7 @@ import type { CalendarOccurrence } from '../../../types/growth.ts'
 import type { EventsView } from '../../../types/view.ts'
 import { money } from '../../ui/format.ts'
 import BaseButton from '../../ui/BaseButton.vue'
-import { presenceNote, sprayReason, whenLine } from './eventsModel.ts'
+import { presenceNote, sprayReason, whenLine } from './eventsLines.ts'
 
 const props = defineProps<{
   event: CalendarOccurrence

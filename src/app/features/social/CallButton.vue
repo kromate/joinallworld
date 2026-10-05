@@ -8,7 +8,7 @@ import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import type { FamilyId } from '../../../types/life.ts'
 import { useAct } from '../kit/act.ts'
-import { callReason } from './socialModel.ts'
+import { callReason } from './socialWords.ts'
 
 const props = defineProps<{ member: { id: FamilyId; name: string } }>()
 const { game } = useApp()

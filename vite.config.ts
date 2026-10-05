@@ -88,6 +88,12 @@ export default defineConfig({
     // The default city is the exception: all of its content is part of the engine.
     const part = id.match(/\/src\/game\/cities\/([^/]+)\/([\w-]+)\.ts$/)
     if (part && part[1] !== 'lagos' && !/^(rules|index|links)$/.test(part[2] as string)) return `city-${part[1]}-${part[2]}`
+    // A city's own scenes are fetched when a venue of that city is shown (src/scene/city-scenes.ts): one chunk per city — Ogun's four
+    // cities share two, the signature scenes and the everyday ones. What several cities' scenes draw with (venues-common.ts) is left to the bundler: a small chunk of its own.
+    const scenes = id.match(/\/src\/scene\/venues-(ibadan|ogun|rivers|fct|kano)(?:-([ab]))?\.ts$/)
+    if (scenes) return scenes[1] === 'ogun' ? `city-ogun-scenes-${scenes[2]}` : `city-${{ ibadan: 'ibadan', rivers: 'port-harcourt', fct: 'abuja', kano: 'kano' }[scenes[1] as 'ibadan' | 'rivers' | 'fct' | 'kano']}-scenes`
+    // The table of which city needs which: nothing else is in it, so the page can ask for a city's scenes before the host has arrived.
+    if (/\/src\/scene\/city-scenes\.ts$/.test(id)) return 'city-scenes'
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.

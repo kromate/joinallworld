@@ -32,7 +32,8 @@ import PersonCallButton from '../calls/PersonCallButton.vue'
 import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
-import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
+import { unreadChats, updatesCount } from './messagesModel.ts'
+import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, api, menu } = useApp()

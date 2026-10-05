@@ -27,7 +27,7 @@ import {
   ground, bench, leafTree, tallTree, bush, lampPost, flag, parasol, fence, sign, signBoard, landmark, extra, table, car, crate,
   WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, LEAF, LEAF_LIGHT, WARM,
 } from './props.ts';
-import { PI, HALF, OPEN, seeded, plain, fit, labelled, FRONT_SPARE } from './venues-ogun-a.ts';
+import { PI, HALF, OPEN, seeded, plain, fit, labelled, FRONT_SPARE } from './venues-common.ts';
 
 export const ZINC: readonly Colour[] = ['#b7c1c7', '#a7b3bb', '#c5ccd0', '#98a6af'];
 /** Weathered sheet: dulled, with rust coming through. */

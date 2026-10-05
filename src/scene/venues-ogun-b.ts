@@ -30,7 +30,7 @@ import {
   fence, windowPane, sign, signBoard, car, speaker, laptop, desk, screen, landmark, extra, textWidth,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, LEAF, LEAF_DARK, WARM,
 } from './props.ts';
-import { PI, HALF, OPEN, seeded, plain, fit, labelled, gable, house, shed, boulder, drum, adireCloth, FRONT_CROWD, FRONT_SPARE, RUST } from './venues-ogun-a.ts';
+import { PI, HALF, OPEN, seeded, plain, fit, labelled, gable, house, shed, boulder, drum, adireCloth, FRONT_CROWD, FRONT_SPARE, RUST } from './venues-common.ts';
 
 const INDOORS: SceneWalkSpec = { bounds: [-11.5, -9.5, 11.5, 9.5], entrance: [0, 8.8], open: false };
 const standardCrowd = (): [number, number, number][] => FRONT_CROWD.map(([x, z, r]) => [x, z, r]);

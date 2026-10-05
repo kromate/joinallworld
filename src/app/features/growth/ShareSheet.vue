@@ -16,8 +16,9 @@ import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import LinkButton from './LinkButton.vue'
 import { useApp } from '../../state/app.ts'
-import { friendGetsLine, inviterLimitLine, inviterRewardLine, isInviteSheet, joinedState, progressLine } from './inviteModel.ts'
-import type { InviteRules, ShareChannel } from './inviteModel.ts'
+import { friendGetsLine, inviterLimitLine, inviterRewardLine, isInviteSheet, joinedState, progressLine } from './inviteLines.ts'
+import type { ShareChannel } from './inviteModel.ts'
+import type { InviteRules } from './inviteLines.ts'
 import { useGrowth } from './useGrowth.ts'
 
 defineProps<{ params?: unknown }>()

@@ -6,6 +6,7 @@
  */
 import { createKit } from './kit.ts';
 import { buildVenueScene, KINDS, TIMES } from './venue-scenes.ts';
+import { loadAllCityScenes, sceneCityOf } from './city-scenes.ts';
 import { createHostLights } from '../venue-world.ts';
 import { applyRendererLook, renderTier, createSky } from './look.ts';
 
@@ -28,6 +29,8 @@ const venueId = params.get('venue');
 const venueCity = params.get('city') || 'ibadan';
 await (await import('../game/cities/registry.ts')).loadCityContent('lagos');
 const ibadanVenues = venueId ? (await (await import('../game/cities/registry.ts')).loadCityContent(venueCity as never)).venues : [];
+// The viewer draws any city's scenes: all of them are fetched here (the game fetches one city's at a time).
+await loadAllCityScenes();
 const stage = document.getElementById('stage')!, info = document.getElementById('info')!, bar = document.getElementById('bar')!;
 const kit = createKit();
 const { THREE } = kit;
@@ -80,7 +83,7 @@ function build() {
   const own = venueId ? ibadanVenues.find((item) => item.id === venueId)?.definition : null;
   entry = own
     ? buildVenueScene(kit, { ...own, scene: { ...own.scene, time: settings.time, spots: Object.values(own.spots).map((spot) => ({ id: spot.id, label: spot.label })) } }, venueCity)
-    : buildVenueScene(kit, { id: settings.kind, label: settings.kind, scene: { kind: settings.kind, time: settings.time, variant: settings.variant || undefined } });
+    : buildVenueScene(kit, { id: settings.kind, label: settings.kind, scene: { kind: settings.kind, time: settings.time, variant: settings.variant || undefined } }, params.get('city') ?? sceneCityOf(settings.kind, settings.variant) ?? undefined);
   scene.add(entry.group);
   entry.setCrowd(names.slice(0, settings.crowd).map((name, i) => ({ id: `p${i}`, name, kind: i % 3 === 2 ? 'npc' : 'player' })));
   if (settings.spot) entry.setSpot(settings.spot);

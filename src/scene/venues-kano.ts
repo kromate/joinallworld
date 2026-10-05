@@ -28,7 +28,7 @@ import {
   ground, table, stool, bench, chair, palm, bush, lampPost, flag, parasol, stringLights, fence, windowPane, sign, signBoard, car, speaker, laptop, screen, crate, rug,
   landmark, extra, WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,
 } from './props.ts';
-import { PI, HALF, OPEN, seeded, labelled, gable, horse, drum } from './venues-ogun-a.ts';
+import { PI, HALF, OPEN, seeded, labelled, gable, horse, drum } from './venues-common.ts';
 import {
   OLD_CITY, EARTH, MAT, TALL, LOW, MAN, WOMAN, crowdFront, spareFront, places, dust, neem, earthWall, earthWallZ, stele, tricycle, lantern,
 } from './venues-kano-b.ts';

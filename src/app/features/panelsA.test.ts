@@ -31,7 +31,8 @@ import { chipAction, chipLabel, lagosDay, newFeed, rememberSeq } from './life/go
 import { itemControl, nextTrying, triedItem } from './life/boutiqueModel.ts'
 import { feelingsTotal, needLevel, skillRow } from './sim/simModel.ts'
 import { nameProblem, saveFailure, saveState } from './sim/profileModel.ts'
-import { DEFAULTS, hintsOn, readSettings } from './sim/settingsModel.ts'
+import { hintsOn } from './sim/settingsModel.ts'
+import { DEFAULTS, readSettings } from './sim/settingsOptions.ts'
 import { money } from '../ui/format.ts'
 import type { BoutiqueItem, CareerView, JobListing } from '../../types/view.ts'
 

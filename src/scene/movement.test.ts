@@ -18,6 +18,9 @@ import { sceneVenue } from '../venue-world.ts';
 import { VENUES } from '../game/cities/lagos/venues.ts';
 
 import { createLife } from '../life.ts';
+import { loadAllCityScenes } from './city-scenes.ts';
+// Every city's own scenes are a download of their own (src/scene/city-scenes.ts): the tests build all of them.
+await loadAllCityScenes();
 
 const near = (a: number, b: number, epsilon = 1e-6) => Math.abs(a - b) <= epsilon;
 /** Run a walker until it stops; returns the seconds it took. */

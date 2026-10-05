@@ -14,7 +14,7 @@ import type { Component } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import type { AdsResponse, GovResponse, NeighboursResponse, PulseResponse, RadioView, RichListResponse } from '../../../types/civic.ts'
 import type { App } from '../../state/app.ts'
-import type { Civic } from './civicCore.ts'
+import type { Civic } from './civicClient.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))

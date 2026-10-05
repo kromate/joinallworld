@@ -18,7 +18,7 @@ import ClosenessMeter from './ClosenessMeter.vue'
 import FounderTag from './FounderTag.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
-import { closenessText, presenceClass, STALE_MS, staleSteps, venueNameOf } from './socialModel.ts'
+import { closenessText, presenceClass, STALE_MS, staleSteps, venueNameOf } from './socialWords.ts'
 import { peopleUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
 

@@ -16,7 +16,7 @@ import ListRow from '../../ui/ListRow.vue'
 import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
-import { byLine, friendState, heroFigure, heroNote, paidLine, referRules, waitingLine } from './referModel.ts'
+import { byLine, friendState, heroFigure, heroNote, paidLine, referRules, waitingLine } from './referLines.ts'
 import { useGrowth } from './useGrowth.ts'
 
 defineProps<{ params?: unknown }>()

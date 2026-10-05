@@ -22,8 +22,9 @@ import HowItWorks from '../../ui/HowItWorks.vue'
 import CallSettings from '../calls/CallSettings.vue'
 import AccountSettings from '../account/AccountSettings.vue'
 import { useAccount } from '../account/useAccount.ts'
-import { HINTS_KEY, NOT_SAVED, OPTIONS, SESSION_RULES, SETTINGS_KEY, WALLPAPER_NOT_SAVED, hintsOn, readSettings } from './settingsModel.ts'
-import type { SettingId } from './settingsModel.ts'
+import { HINTS_KEY, hintsOn } from './settingsModel.ts'
+import { NOT_SAVED, OPTIONS, SESSION_RULES, SETTINGS_KEY, WALLPAPER_NOT_SAVED, readSettings } from './settingsOptions.ts'
+import type { SettingId } from './settingsOptions.ts'
 
 defineProps<{ params?: unknown }>()
 

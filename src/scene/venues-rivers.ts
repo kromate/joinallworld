@@ -28,7 +28,7 @@ import {
   table, crate, speaker, laptop, pot,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,
 } from './props.ts';
-import { PI, HALF, OPEN, seeded, plain, fit, labelled } from './venues-ogun-a.ts';
+import { PI, HALF, OPEN, seeded, plain, fit, labelled } from './venues-common.ts';
 import {
   INLAND, WIDE, view, ZINC, OLD_ZINC, ASPHALT, KERB, GRASS, GRASS_EDGE,
   zincRoof, openShed, block, royalPalm, mangrove, creek, mangroveBank, canoe, speedboat, woodenBoat, bus, keke, lorry, barrow, flyover,

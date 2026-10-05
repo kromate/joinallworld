@@ -37,6 +37,7 @@ import type { Game } from './game.ts'
 import { buildRegistry } from './panels.ts'
 import { createShell } from './shell.ts'
 import { CAMERA_FRAME } from './cameraFrame.ts'
+import { warmCityScenes } from '../scene/loaders.ts'
 import { CAMERA_KEEP_MS, decideView, forgetViews, keepView, loadView } from './viewMemory.ts'
 import type { SavedCamera, SavedSheet } from './viewMemory.ts'
 import { mapUi } from '../features/travel/travelState.ts'
@@ -67,7 +68,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   // The link this page was opened with is read once, here, before anything rewrites the address.
   { const link = captureLink(); if (link.join || link.ref || link.table) track('invite_opened', { kind: link.table ? 'table' : link.ref ? 'share' : 'house', has_session: game.client.hasSavedIdentity === true }) }
   let pendingRoute: { venue: string; spot?: string } | null = null
-  let shownTrip = ''
+  let shownTrip = '', warmedCity = ''
 
   const shell = createShell(game, panels, {
     onMode(mode: ShellMode) {
@@ -197,6 +198,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     // arriving is a reveal and not a wait. Nothing is drawn; the map is what is on screen.
     if (trip && trip !== shownTrip && state.activeAction?.kind === 'travel') { const to = state.activeAction.id; setTimeout(() => { if (tripKey(game.state.value) === trip) scene.venue.value?.prepare?.(to) }, 450) }
     shownTrip = trip
+    // On the way to another city: its own scenes are fetched during the trip, so the place the player arrives at is drawn at once.
+    if (state.activeAction?.kind === 'intercity' && state.activeAction.id !== warmedCity) { warmedCity = state.activeAction.id; void warmCityScenes(warmedCity) }
     const city = scene.city.value
     if (moved) {
       if (state.estate.city !== previous.estate.city) scene.venue.value?.setState(state)

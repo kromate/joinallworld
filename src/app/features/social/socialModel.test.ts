@@ -7,7 +7,8 @@ import { test } from 'node:test'
 import type { HouseView, KnockState } from '../../../types/social.ts'
 import { knockReason, knockView, roomLine, statusText, homeLine } from './inviteModel.ts'
 import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason, npcActionReason, npcMeterMax, npcReason } from './personModel.ts'
-import { callNote, callReason, closenessText, dotHint, dotOf, gateOf, knocksWaiting, meterPercent, presenceClass, reasonLabel, requestsWaiting, staleSteps, STALE_MS, tagLabel, venueNameOf } from './socialModel.ts'
+import { knocksWaiting, requestsWaiting } from './socialModel.ts'
+import { callNote, callReason, closenessText, dotHint, dotOf, gateOf, meterPercent, presenceClass, reasonLabel, staleSteps, STALE_MS, tagLabel, venueNameOf } from './socialWords.ts'
 
 const transfer = { min: 50, maxPerTransfer: 5000, dailyAmount: 20000, dailyCount: 3, dailyReceive: 50000, minEarned: 2000, minAccountAgeMs: 0, minFriendshipMs: 0, earned: 3000, sentToday: 0, countToday: 0, leftToday: 5000, giftsLeftToday: 3 }
 

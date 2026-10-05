@@ -26,7 +26,7 @@ import {
   signBoard, speaker, car, crate, landmark, extra,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, LEAF, WARM,
 } from './props.ts';
-import { PI, HALF, OPEN, seeded, plain, fit, labelled, house, shed, boulder, FRONT_CROWD, FRONT_SPARE } from './venues-ogun-a.ts';
+import { PI, HALF, OPEN, seeded, plain, fit, labelled, house, shed, boulder, FRONT_CROWD, FRONT_SPARE } from './venues-common.ts';
 
 export const STONE = '#ece5d2', STONE_DARK = '#d3cab2', PAVING = '#d9d2be', CONCRETE = '#c9c4b6', LAWN = '#62a04f', LAWN_EDGE = '#46703a';
 export const NATION: readonly Colour[] = ['#2f8f55', WHITE, '#2f8f55'];

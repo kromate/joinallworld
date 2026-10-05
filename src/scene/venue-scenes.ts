@@ -10,6 +10,9 @@
  *   ...the extensions below
  * })
  * Ibadan kinds: quad (a university court with a clock tower), hilltop (a tower terrace over the city's roofs), lakeside (a reservoir shore with a jetty); built in src/scene/venues-ibadan-a.ts.
+ * A CITY'S OWN SCENES — those three kinds and every scene asked for through `scene.variant` that is a scene of its own — are not part
+ * of this file's download: src/scene/city-scenes.ts fetches them per city, and buildVenueScene throws for a city whose scenes have
+ * not arrived (the caller awaits loadCityScenes(cityId) first).
  * Kinds: park, buka, hub, club, office, market, gym, mall, beach, hospital, salon, rooftop,
  * police, worship, radio, polling, viewing, shrine, walk, statehouse, airport, refinery — plus `library` (the
  * speakeasy variant of club) and `generic`, the fallback for unknown kinds. `home` belongs to
@@ -88,13 +91,7 @@ import * as social from './venues-social.ts';
 import * as work from './venues-work.ts';
 import * as civic from './venues-civic.ts';
 import * as transport from './venues-transport.ts';
-import * as ibadanA from './venues-ibadan-a.ts';
-import { VARIANTS as ibadanB } from './venues-ibadan-b.ts';
-import { VARIANTS as ogunA } from './venues-ogun-a.ts';
-import { VARIANTS as ogunB } from './venues-ogun-b.ts';
-import { VARIANTS as rivers } from './venues-rivers.ts';
-import { VARIANTS as fct } from './venues-fct.ts';
-import { VARIANTS as kano } from './venues-kano.ts';
+import { CITY_KINDS, citySceneDef, cityScenesReady } from './city-scenes.ts';
 
 export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
@@ -140,10 +137,11 @@ export function timeOfDay(ms: number): TimeOfDay {
 }
 export const lightingFor = (mood: string, time: unknown): Lighting => (LIGHTING[mood as Mood] || LIGHTING.outdoor)[isTime(time) ? time : 'day'];
 
-const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES, ...ibadanA.SCENES };
+/** The kinds every city draws with. A kind a city added (CITY_KINDS) arrives with that city's scenes. */
+const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
 /** Kinds that are another kind with a default variant. */
 const ALIASES: Record<string, [string, string]> = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };
-export const KINDS = Object.freeze(Object.keys(DEFS).filter((kind) => kind !== 'generic'));
+export const KINDS = Object.freeze([...Object.keys(DEFS).filter((kind) => kind !== 'generic'), ...Object.keys(CITY_KINDS)]);
 
 /** The scene materials plus the sky's, made once per kit by the first scene. */
 type SkyMaterials = SceneMaterials & { sky?: THREE.MeshBasicMaterial };
@@ -304,16 +302,21 @@ interface View {
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
 }
 
-function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneDef, kind: string, defaultVariant?: string, cityId: string = DEFAULT_CITY_ID): SceneEntry {
+function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: string, defaultVariant?: string, cityId: string = DEFAULT_CITY_ID, drawnAs: string = cityId): SceneEntry {
+  // drawnAs: the city whose own scenes are looked up (the venue's city; a bare kind that a city added is drawn as that city's).
+  if (!cityScenesReady(drawnAs)) throw new Error(`The scenes of ${drawnAs} have not been loaded`);
   const { THREE } = kit;
   const shared = kitResources(kit);
   const materials: SkyMaterials = shared.materials;
   if (!materials.sky) materials.sky = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, depthWrite: false, fog: false });
   const options: SceneOptions = venue?.scene && typeof venue.scene === 'object' ? venue.scene : {};
-  // A venue may ask for a variant that is a scene of its own (venues-ibadan-b.ts); the kind's walkable description then yields to the variant's.
+  // A venue may ask for a variant that is a scene of its own city (venues-ibadan-b.ts); the kind's walkable description then yields to the variant's.
+  // A kind neither shared nor this city's is the generic plaza.
   const variantKey = typeof options.variant === 'string' ? options.variant : defaultVariant ?? '';
-  const ownVariant = ibadanB[kind]?.[variantKey] ?? ogunA[kind]?.[variantKey] ?? ogunB[kind]?.[variantKey] ?? rivers[kind]?.[variantKey] ?? fct[kind]?.[variantKey] ?? kano[kind]?.[variantKey];
-  if (ownVariant) def = ownVariant;
+  const own = citySceneDef(drawnAs, wanted, variantKey) ?? (Object.hasOwn(DEFS, wanted) ? DEFS[wanted] : null);
+  const kind = own ? wanted : 'generic', found = own ?? DEFS.generic;
+  if (!found) throw new TypeError(`No scene builder for ${kind}`);
+  const def: SceneDef = found;
   const walkSpec = (): Readonly<WalkSpec> => def.walk ?? (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT)!;
   const spots: SceneSpot[] = Array.isArray(options.spots) ? options.spots : Object.values(venue?.spots || {});
   const context: SceneContext = {
@@ -920,16 +923,16 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
   return entry;
 }
 
-const builder = (kind: string, def: SceneDef, variant?: string): SceneBuilder => (kit, venue) => createEntry(kit, venue, def, kind, variant);
+const builder = (kind: string, variant?: string, drawnAs?: string): SceneBuilder => (kit, venue) => createEntry(kit, venue, kind, variant, DEFAULT_CITY_ID, drawnAs);
+/** One builder per kind and alias. A kind a city added is built as that city's (its scenes must have been loaded). */
 export const SCENES: Record<string, SceneBuilder> = Object.fromEntries([
-  ...Object.entries(DEFS).map(([kind, def]): [string, SceneBuilder] => [kind, builder(kind, def)]),
-  ...Object.entries(ALIASES).map(([alias, [kind, variant]]): [string, SceneBuilder] => [alias, builder(kind, DEFS[kind]!, variant)]),
+  ...Object.keys(DEFS).map((kind): [string, SceneBuilder] => [kind, builder(kind)]),
+  ...Object.entries(CITY_KINDS).map(([kind, cityId]): [string, SceneBuilder] => [kind, builder(kind, undefined, cityId)]),
+  ...Object.entries(ALIASES).map(([alias, [kind, variant]]): [string, SceneBuilder] => [alias, builder(kind, variant)]),
 ]);
 
-/** Build the scene for a venue; unknown or missing kinds get the generic plaza. */
+/** Build the scene for a venue; unknown or missing kinds get the generic plaza. Throws for a city whose own scenes have not been loaded (src/scene/city-scenes.ts). */
 export function buildVenueScene(kit: Kit, venue?: SceneVenue | null, cityId: string = DEFAULT_CITY_ID): SceneEntry {
   const requested = String(venue?.scene?.kind), alias = ALIASES[requested];
-  const kind = alias?.[0] ?? (Object.hasOwn(DEFS, requested) ? requested : 'generic'), def = DEFS[kind] ?? DEFS.generic;
-  if (!def) throw new TypeError(`No scene builder for ${kind}`);
-  return createEntry(kit, venue, def, kind, alias?.[1], cityId);
+  return createEntry(kit, venue, alias?.[0] ?? requested, alias?.[1], cityId);
 }

@@ -7,7 +7,7 @@ import { computed } from 'vue'
 import BaseChip from '../../ui/BaseChip.vue'
 import CallButton from './CallButton.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
-import { callNote } from './socialModel.ts'
+import { callNote } from './socialWords.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
 
 defineProps<{ params?: unknown }>()

@@ -14,6 +14,9 @@ import { SCENES, MAX_CROWD, SPOT_BEHIND, SPOT_FRONT, SPOT_SIDE, buildVenueScene 
 import { pickDetail, rigOf, PLAYER_DETAIL } from './avatar-rig.ts';
 import { DETAILS } from './characters.ts';
 import { room, leafTree } from './props.ts';
+import { loadAllCityScenes } from './city-scenes.ts';
+// Every city's own scenes are a download of their own (src/scene/city-scenes.ts): the tests build all of them.
+await loadAllCityScenes();
 
 test('the sweep finds the first box between the head and the camera, ignores what the head is inside, and resolve() pulls in or ghosts', () => {
   const occluders = createOccluders();

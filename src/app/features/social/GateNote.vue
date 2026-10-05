@@ -3,7 +3,7 @@
 // not chosen yet, the game is not connected (with the one tap that resolves it), the overview
 // could not be read (Retry), or it is still loading.
 import '../../../ui/panels/social.css'
-import type { Gate } from './socialModel.ts'
+import type { Gate } from './socialWords.ts'
 
 defineProps<{
   gate: Gate

@@ -13,7 +13,7 @@ import GameIcon from '../../ui/GameIcon.vue'
 import ClosenessMeter from './ClosenessMeter.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import { npcActionReason, npcMeterMax, npcReason } from './personModel.ts'
-import { closenessText, STRANGER_TEXT, tagLabel } from './socialModel.ts'
+import { closenessText, STRANGER_TEXT, tagLabel } from './socialWords.ts'
 
 const props = defineProps<{ id: string }>()
 const { game, shell } = useApp()

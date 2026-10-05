@@ -9,6 +9,9 @@ import type { SceneVenue } from './types.ts';
 import { MAX_CROWD, buildVenueScene } from './venue-scenes.ts';
 import { VARIANTS } from './venues-fct.ts';
 import { sceneVenue } from '../venue-world.ts';
+import { loadAllCityScenes } from './city-scenes.ts';
+// Every city's own scenes are a download of their own (src/scene/city-scenes.ts): the tests build all of them.
+await loadAllCityScenes();
 
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail, once, on top.
 const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
@@ -74,7 +77,7 @@ test('no two Abuja scenes are the same scene', () => {
   const sizes = new Map<number, string>();
   for (const [kind, variants] of Object.entries(VARIANTS)) {
     for (const variant of Object.keys(variants)) {
-      const entry = buildVenueScene(kit, { id: `${kind}-${variant}`, label: 'Test Place', scene: { kind, variant } } as SceneVenue);
+      const entry = buildVenueScene(kit, { id: `${kind}-${variant}`, label: 'Test Place', scene: { kind, variant } } as SceneVenue, 'abuja');
       const triangles = entry.stats().triangles;
       assert.ok(!sizes.has(triangles), `${kind}/${variant} has the same triangle count as ${sizes.get(triangles)}`);
       sizes.set(triangles, `${kind}/${variant}`);

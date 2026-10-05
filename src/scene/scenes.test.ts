@@ -20,6 +20,9 @@ import { VENUES } from '../game/cities/lagos/venues.ts';
 import { NPCS } from '../game/cities/lagos/regulars.ts';
 
 import { spotsOf } from '../life.ts';
+import { loadAllCityScenes } from './city-scenes.ts';
+// Every city's own scenes are a download of their own (src/scene/city-scenes.ts): the tests build all of them.
+await loadAllCityScenes();
 
 const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'quad', 'hilltop', 'lakeside'];
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail (up to ~2,700 triangles, once), on top.
@@ -587,7 +590,7 @@ test('no two Ogun scenes are the same scene', async () => {
   const sizes = new Map<string, string>();
   for (const [kind, variants] of [...Object.entries(signature), ...Object.entries(everyday)]) {
     for (const variant of Object.keys(variants)) {
-      const entry = buildVenueScene(kit, { id: `${kind}-${variant}`, label: 'Test Place', scene: { kind, variant } } as SceneVenue);
+      const entry = buildVenueScene(kit, { id: `${kind}-${variant}`, label: 'Test Place', scene: { kind, variant } } as SceneVenue, 'abeokuta');
       const key = `${entry.stats().triangles}`;
       assert.ok(!sizes.has(key), `${kind}/${variant} has the same triangle count as ${sizes.get(key)}`);
       sizes.set(key, `${kind}/${variant}`);

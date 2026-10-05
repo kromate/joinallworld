@@ -21,7 +21,7 @@ import PlayerAvatar from './PlayerAvatar.vue'
 import PersonCallButton from '../calls/PersonCallButton.vue'
 import type { SocialResult } from './socialClient.ts'
 import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason } from './personModel.ts'
-import { closenessText, presenceClass, reasonLabel, STRANGER_TEXT, tagLabel, venueNameOf } from './socialModel.ts'
+import { closenessText, presenceClass, reasonLabel, STRANGER_TEXT, tagLabel, venueNameOf } from './socialWords.ts'
 import { personUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
 

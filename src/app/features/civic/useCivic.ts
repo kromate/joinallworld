@@ -6,8 +6,9 @@ import { computed, onMounted, watch } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
-import type { CivicEntry, Civic } from './civicCore.ts'
-import { createCivic } from './civicCore.ts'
+import type { CivicEntry } from './civicCore.ts'
+import { createCivic } from './civicClient.ts'
+import type { Civic } from './civicClient.ts'
 
 let shared: Civic | null = null
 /** The one civic client of the page: one cache, one set of pending writes. */

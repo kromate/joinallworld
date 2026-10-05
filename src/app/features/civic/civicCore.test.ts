@@ -4,8 +4,9 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { FetchJson } from '../../types/client.ts'
 import type { CivicNotice } from '../../../types/civic.ts'
-import { civicNews, createCivic, createStore, requestSlot } from './civicCore.ts'
-import type { CivicDeps } from './civicCore.ts'
+import { civicNews, createStore, requestSlot } from './civicCore.ts'
+import { createCivic } from './civicClient.ts'
+import type { CivicDeps } from './civicClient.ts'
 
 function setup(options: { connected?: boolean; answer?: (path: string, body: unknown) => unknown | Promise<unknown> } = {}) {
   const calls: { path: string; method: string; body: unknown }[] = []

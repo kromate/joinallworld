@@ -10,6 +10,9 @@ import { MAX_CROWD, buildVenueScene } from './venue-scenes.ts';
 import { sceneVenue } from '../venue-world.ts';
 import { VARIANTS } from './venues-kano.ts';
 import { KANO_SCENES } from '../game/cities/kano/scenes.ts';
+import { loadAllCityScenes } from './city-scenes.ts';
+// Every city's own scenes are a download of their own (src/scene/city-scenes.ts): the tests build all of them.
+await loadAllCityScenes();
 
 const CITY = 'kano';
 // The same budget as src/scene/scenes.test.ts: the scene and a full crowd, with the player's own figure on top.

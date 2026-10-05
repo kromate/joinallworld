@@ -123,10 +123,12 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 // the other cities' water, landmarks and map character (a chunk rule had put them in the engine), the walk grid (only the campus rules and the scenes
 // read it) and the travel rules the Map and the Ride app use (the page's travel state needs only the starting layers). It measures 597.2 kB / 218.6 kB;
 // the budget is that plus 2%. `node --experimental-strip-types scripts/startup-size.ts` prints what is in it, by chunk and by module.
-// With Port Harcourt, Abuja and Kano registered it measures 613.1 kB / 222.8 kB: their rules, links and registry entries (about 10 kB) are read at
+// With Port Harcourt, Abuja and Kano registered it measured 613.1 kB / 222.8 kB: their rules, links and registry entries (about 10 kB) are read at
 // startup like every open city's, with the local travel zones, the boat route rule, the seasonal climate and the wording of local units and the
-// elected office. Their content, maps, roads, water and scenes are not in it. The budget is that plus 1%.
-const BUDGET = { raw: 619_000, gzip: 225_000 }
+// elected office. Their content, maps, roads, water and scenes are not in it. The budget was not raised for them: what only a lazily fetched screen
+// reads was moved out of the modules the startup shares with it (the civic request helpers, the thread, mission, invite, event, bank and social
+// lines, the settings list), and it measures 605.6 kB / 219.7 kB. The budget is the one from before the three cities.
+const BUDGET = { raw: 609_000, gzip: 223_000 }
 // A player who starts in another city also loads that city's own content chunk (venues, regulars, calendar, wording) and nothing else:
 // the set of eager chunks for it is the default-city set plus that one chunk, by name, and the default-city budget is unchanged.
 const LOADING_BUDGET = { raw: 92_000, gzip: 37_000 }

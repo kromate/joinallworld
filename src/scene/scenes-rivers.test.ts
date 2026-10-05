@@ -10,6 +10,9 @@ import { MAX_CROWD, buildVenueScene } from './venue-scenes.ts';
 import { sceneVenue } from '../venue-world.ts';
 import { VARIANTS } from './venues-rivers.ts';
 import { PORT_HARCOURT_SCENES } from '../game/cities/port-harcourt/scenes.ts';
+import { loadAllCityScenes } from './city-scenes.ts';
+// Every city's own scenes are a download of their own (src/scene/city-scenes.ts): the tests build all of them.
+await loadAllCityScenes();
 
 const CITY = 'port-harcourt';
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail, once, on top.
@@ -90,7 +93,7 @@ test('no two Port Harcourt scenes are the same scene, and each keeps its people 
   const sizes = new Map<string, string>();
   for (const [kind, variants] of Object.entries(VARIANTS)) {
     for (const variant of Object.keys(variants)) {
-      const entry = buildVenueScene(kit, { id: `${kind}-${variant}`, label: 'Test Place', scene: { kind, variant } } as SceneVenue);
+      const entry = buildVenueScene(kit, { id: `${kind}-${variant}`, label: 'Test Place', scene: { kind, variant } } as SceneVenue, CITY);
       const key = `${entry.stats().triangles}`;
       assert.ok(!sizes.has(key), `${kind}/${variant} has the same triangle count as ${sizes.get(key)}`);
       sizes.set(key, `${kind}/${variant}`);

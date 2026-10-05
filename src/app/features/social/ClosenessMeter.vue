@@ -2,7 +2,7 @@
 // The closeness bar: points towards the next tier. A meter for assistive technology.
 import '../../../ui/panels/social.css'
 import { computed } from 'vue'
-import { meterPercent } from './socialModel.ts'
+import { meterPercent } from './socialWords.ts'
 
 const props = defineProps<{ points: number; max: number; label: string }>()
 const width = computed(() => `${meterPercent(props.points, props.max)}%`)

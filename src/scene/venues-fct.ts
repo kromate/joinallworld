@@ -25,7 +25,7 @@ import {
   ground, room, table, bench, chair, leafTree, tallTree, palm, bush, lampPost, kiosk, flag, fence, windowPane, sign, signBoard, car, landmark, extra,
   WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, LEAF,
 } from './props.ts';
-import { PI, HALF, OPEN, seeded, plain, fit, labelled, adireCloth } from './venues-ogun-a.ts';
+import { PI, HALF, OPEN, seeded, plain, fit, labelled, adireCloth } from './venues-common.ts';
 import {
   EVERYDAY, INDOORS, STONE, STONE_DARK, PAVING, CONCRETE, LAWN, LAWN_EDGE, NATION, frontCrowd, frontSpare, plainLand, monolith, hills, farTrees,
   clipped, thatchShelter,

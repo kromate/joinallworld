@@ -14,7 +14,8 @@
 // draw the scene still gets the whole game.
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../state/app.ts'
-import { loadSceneWorld } from './loaders.ts'
+import { cityScenesHere, loadSceneWorld, warmCityScenes } from './loaders.ts'
+import type { ScenesState } from '../types/scene.ts'
 import { landingCodeSettled } from '../features/start/warmLanding.ts'
 import { telemetry } from '../../telemetry/index.ts'
 import { noteChunkFailure } from '../state/updateNotice.ts'
@@ -32,6 +33,9 @@ const { game, ready, shell, scene, showPlayer, showCrowd, showGoal, reportPlace,
 const container = ref<HTMLElement | null>(null)
 const failed = ref(false)
 const waiting = ref(true)
+/** The city's own scenes are not here: the fetch is waiting to try again, or has stopped until the player asks. */
+const stuck = ref<ScenesState | null>(null)
+let drawn = false
 let observer: ResizeObserver | null = null
 let disposed = false
 
@@ -46,6 +50,30 @@ function layout(): void {
   const rows = Math.max(0, ...props.rows().map((node) => { const row = node?.getBoundingClientRect(); return row?.height ? row.bottom : 0 }))
   venue.setInsets({ top: covered - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 })
 }
+/** A host is drawing: the wait is over. After a wait the scene comes up with the same short fade as an arrival — never a flash. */
+function hostUp(): void {
+  const box = container.value
+  if (!box) return
+  if (waiting.value) { box.classList.remove('is-arriving'); void box.offsetWidth; box.classList.add('is-arriving') }
+  waiting.value = false; stuck.value = null
+  if (!drawn) { drawn = true; telemetry.sceneReady(true, box.querySelector('canvas')) }
+}
+function onScenes(next: ScenesState): void {
+  if (next.status === 'ready') return // the host is built next: hostUp() ends the wait
+  waiting.value = true
+  stuck.value = next.status === 'loading' ? null : next
+  if (next.status === 'failed') { telemetry.chunkFailed('city-scenes', next.error); void noteChunkFailure() }
+}
+function sceneFailed(error: unknown): void {
+  telemetry.chunkFailed('scene', error); void noteChunkFailure(); telemetry.sceneReady(false)
+  waiting.value = true; stuck.value = null; failed.value = true
+}
+const waitLine = (): string => {
+  if (failed.value) return 'The 3D scene could not be drawn on this device. Everything else still works.'
+  if (stuck.value?.status === 'retrying') return `This place did not load · trying again in ${Math.round((stuck.value.retryInMs ?? 0) / 1000)} s`
+  if (stuck.value?.status === 'failed') return 'This place could not be loaded. Check your connection, then try again. Everything else still works.'
+  return 'Drawing the scene…'
+}
 const onResize = (): void => { if (game.mode.value !== 'map') scene.venue.value?.resize() }
 
 onMounted(() => {
@@ -53,9 +81,17 @@ onMounted(() => {
   setTimeout(async () => {
     try {
       await landingCodeSettled() // a new device is looking at the landing's 3D preview: its code goes first
-      const createVenueWorld = await loadSceneWorld()
       // Where the scene starts is where the server says the player is, never the copy this device kept.
-      if (!ready.value) await new Promise<void>((resolve) => { const stop = watch(ready, (now) => { if (now) { stop(); resolve() } }) })
+      const settled = ready.value ? Promise.resolve() : new Promise<void>((resolve) => { const stop = watch(ready, (now) => { if (now) { stop(); resolve() } }) })
+      // The city's own scenes are fetched side by side with the host: at once for the city this device last played in, and for
+      // the city the server names as soon as it has answered. The host is created when they are here (or could not be fetched:
+      // it then waits for them itself, with retries). With them already here nothing is awaited, so the first scene is built
+      // in the same turn as it always was — before anything else the answer brings up.
+      void warmCityScenes(game.cityId.value)
+      void settled.then(() => { if (!cityScenesHere(game.state.value.estate.city)) void warmCityScenes(game.state.value.estate.city) })
+      const createVenueWorld = await loadSceneWorld()
+      await settled
+      if (!cityScenesHere(game.state.value.estate.city)) await warmCityScenes(game.state.value.estate.city)
       if (disposed || !container.value) return
       const venue = createVenueWorld(container.value, { location: game.state.value.location, cityId: game.state.value.estate.city, onTag(tag) {
         // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
@@ -69,17 +105,17 @@ onMounted(() => {
       onMove,
       // The campus: its host walks the avatar to a landmark and then asks for the game's ordinary `spot` action; its shuttle runs on server time.
       commitSpot: ({ id }: { id: string }) => commitSpot(id), now: () => game.serverNow(),
-      onHost: () => { layout(); reportPlace() } })
+      onScenes, onError: sceneFailed,
+      onHost: () => { if (scene.venue.value) hostUp(); layout(); reportPlace() } })
       scene.venue.value = venue
-      waiting.value = false
       venue.setState(game.state.value)
       showPlayer(); showCrowd(); showGoal()
       venue.resize()
       layout()
       // The first frame is in the canvas: bring it up with the same short fade as an arrival, over the calm backdrop — never a flash.
-      container.value.classList.add('is-arriving')
+      // (A city whose own scenes are still on their way has no host yet: the wait goes on until onHost.)
+      if (venue.host) hostUp()
       reportPlace()
-      telemetry.sceneReady(true, container.value.querySelector('canvas'))
       // Three.js is here now, so the map's own code is a small download: fetch it ahead, so a first trip shows without a wait.
       // (Nothing is built or drawn until the Map opens.)
       void import('../../map3d/index.ts').catch(() => undefined)
@@ -114,6 +150,9 @@ defineExpose({ layout })
 
 <template>
   <div id="venue-scene" ref="container"  class="life-scene" :hidden="hidden">
-    <p v-if="waiting" class="scene-wait" role="status">{{ failed ? 'The 3D scene could not be drawn on this device. Everything else still works.' : 'Drawing the scene…' }}</p>
+    <p v-if="waiting" class="scene-wait" :class="{ 'is-stuck': failed || stuck }" role="status">
+      {{ waitLine() }}
+      <button v-if="stuck && !failed" type="button" class="scene-retry" @click="scene.venue.value?.retryScenes()">Try again</button>
+    </p>
   </div>
 </template>

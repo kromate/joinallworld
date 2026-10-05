@@ -8,6 +8,9 @@ import { createKit } from '../../../scene/kit.ts'
 import { buildVenueScene } from '../../../scene/venue-scenes.ts'
 import { sceneVenue } from '../../../venue-world.ts'
 import type { LifeContextInit, LifeState, NeedMap } from '../../../types/life.ts'
+import { loadAllCityScenes } from '../../../scene/city-scenes.ts'
+// Every city's own scenes are a download of their own (src/scene/city-scenes.ts): the tests build all of them.
+await loadAllCityScenes()
 
 const MONDAY = Date.UTC(2026, 0, 5, 9)
 

@@ -4,7 +4,7 @@
 import '../../../ui/panels/social.css'
 import { computed } from 'vue'
 import { hueOf, initialOf } from '../../ui/format.ts'
-import { dotHint, dotOf } from './socialModel.ts'
+import { dotHint, dotOf } from './socialWords.ts'
 
 const props = defineProps<{
   name: string

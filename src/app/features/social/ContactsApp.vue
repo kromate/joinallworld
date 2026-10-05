@@ -13,7 +13,7 @@ import CallButton from './CallButton.vue'
 import FounderTag from './FounderTag.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
-import { callNote, presenceClass, venueNameOf } from './socialModel.ts'
+import { callNote, presenceClass, venueNameOf } from './socialWords.ts'
 import { contactsUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
 

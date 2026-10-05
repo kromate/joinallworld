@@ -12,7 +12,7 @@ import type { CalendarOccurrence } from '../../../types/growth.ts'
 import EventCard from './EventCard.vue'
 import LinkButton from './LinkButton.vue'
 import { eventIcs, upcomingEvents } from './rulesBoundary.ts'
-import { attendedLine, nothingOn } from './eventsModel.ts'
+import { attendedLine, nothingOn } from './eventsLines.ts'
 import { useGrowth } from './useGrowth.ts'
 
 defineProps<{ params?: unknown }>()

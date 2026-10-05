@@ -20,7 +20,7 @@
 import { GLOW } from './build.ts';
 import type { Batch, Colour, SceneCamera, SceneDef } from './types.ts';
 import { ground, bench, palm, bush, lampPost, ropeLine, fence, sign, landmark, extra, table, stool, car, WOOD, WOOD_DARK, WOOD_LIGHT, METAL, METAL_DARK, BLACK, WARM } from './props.ts';
-import { PI, HALF, OPEN, seeded, plain, fit, labelled, horse, drum, adireCloth, FRONT_CROWD, FRONT_SPARE } from './venues-ogun-a.ts';
+import { PI, HALF, OPEN, seeded, plain, fit, labelled, horse, drum, adireCloth, FRONT_CROWD, FRONT_SPARE } from './venues-common.ts';
 
 // ---------------------------------------------------------------------------------------------
 // Shared: the colours of earth plaster and dust, Hausa building details, dry-country trees, people.

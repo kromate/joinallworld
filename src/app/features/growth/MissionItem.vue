@@ -7,7 +7,7 @@ import { money } from '../../ui/format.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import BaseChip from '../../ui/BaseChip.vue'
 import GameIcon from '../../ui/GameIcon.vue'
-import { missionAction, missionHint, missionIcon, missionPercent, showsProgress } from './missionsModel.ts'
+import { missionAction, missionHint, missionIcon, missionPercent, showsProgress } from './missionsLines.ts'
 
 const props = defineProps<{
   mission: MissionRow

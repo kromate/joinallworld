@@ -3,7 +3,7 @@
 import { computed, onMounted } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
-import { gateOf } from './socialModel.ts'
+import { gateOf } from './socialWords.ts'
 import { useSocial } from './useSocial.ts'
 
 export function useSocialScreen() {

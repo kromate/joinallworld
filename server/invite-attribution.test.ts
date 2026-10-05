@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
 import { sharePageHtml } from './growth/share.ts';
-import { progressLine } from '../src/app/features/growth/inviteModel.ts';
+import { progressLine } from '../src/app/features/growth/inviteLines.ts';
 import type { TestContext } from 'node:test';
 import type { HelloResult, ShareFacts } from '../src/types/growth.ts';
 

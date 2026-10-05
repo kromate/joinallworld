@@ -62,13 +62,15 @@ test('Worker Rivers boat receipts charge once and resume through durable SQLite 
   const stop = () => deadline(worker.dispose(), 'Worker disposal')
   t.after(async () => { await stop(); await rm(folder, { recursive: true, force: true }) })
   await deadline(worker.ready, 'Worker startup')
+  // A guest's cookie carries the key its session record is stored under (`__Host-sid=<key>`).
+  const key = (): string => cookie.slice(cookie.indexOf('=') + 1)
   async function modify(change: (entry: Record<string, unknown>) => void): Promise<void> {
     const storage = await worker.unsafeGetDurableObjectStorage('rivers-boat', 'JoinAllworldState', { name: 'joinallworld-v1' })
-    const rows = await storage.exec('SELECT value FROM sessions WHERE secret = ?', cookie.slice(4))
+    const rows = await storage.exec('SELECT value FROM sessions WHERE secret = ?', key())
     assert.equal(rows.length, 1)
     const session = object(JSON.parse(String(object(rows[0]).value)))
     change(object(object(session.cities)[CITY]))
-    await storage.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), cookie.slice(4))
+    await storage.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), key())
   }
   const origin = 'https://rivers-boat.test'
   await boatJourney({

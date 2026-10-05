@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE, NUDGE_CAP, NUDGE_QUIET_MS, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.ts';
 import type { JoinBanner } from './model.ts';
 import type { Look } from '../types/life.ts';
+import { DREAMS, TRAITS } from '../game/content/traits.ts';
 import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom } from './look-model.ts';
 import { checkLook } from '../game/systems/onboarding.ts';
 import { validateName } from '../../server/protocol.ts';
@@ -58,6 +59,18 @@ test('the draft is rebuilt from untrusted storage and is always ready to play', 
   const hostile = draftFrom({ name: 'x', look: { body: 'man', hair: '<script>' }, landedAt: 9e15, nameEdited: 'yes', shuffles: -1, preset: '__proto__' }, { random, now, name: 'Bola' });
   assert.deepEqual([hostile.name, hostile.landedAt, hostile.nameEdited, hostile.shuffles, hostile.preset], ['Bola', 5000, false, 0, 'street']);
   assert.equal(draftFrom('junk', { random, now, name: 'x' }).name, 'Sunny Tobi');
+});
+
+test('the draft keeps the creator\'s traits, dream and area across a reload, and drops anything that is no longer a real choice', () => {
+  const now = 5000, random = () => 0;
+  const [first, second] = Object.keys(TRAITS), dream = Object.keys(DREAMS)[0];
+  const stored = JSON.parse(JSON.stringify(draftFrom({ traits: [first, second], dream, area: { lga: 'surulere', via: 'device' } }, { random, now })));
+  const back = draftFrom(stored, { random, now });
+  assert.deepEqual([back.traits, back.dream, back.area], [[first, second], dream, { lga: 'surulere', via: 'device' }]);
+  const fresh = draftFrom(null, { random, now });
+  assert.deepEqual([fresh.traits, fresh.dream, fresh.area], [[], null, null]);
+  const stale = draftFrom({ traits: [first, 'nope'], dream: '__proto__', area: { lga: '<b>', via: 'x' } }, { random, now });
+  assert.deepEqual([stale.traits, stale.dream, stale.area], [[], null, null]);
 });
 
 test('the landing hook reads /v/<id>, ?join=<id> and ?v=<id>, and nothing else', () => {

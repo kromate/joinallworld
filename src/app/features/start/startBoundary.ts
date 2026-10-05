@@ -5,10 +5,10 @@
 import { keepDraft as keepDraftJs, firstLanding as firstLandingJs, quickDraft as quickDraftJs } from '../../../quick-start/draft.ts'
 import { joinTarget as joinTargetJs, pendingRef as pendingRefJs, track as trackJs } from '../../../quick-start/entry.ts'
 import { PRESETS as PRESETS_JS, nameProblem as nameProblemJs, presetLook as presetLookJs, shuffleLook as shuffleLookJs, starterLook as starterLookJs, suggestName as suggestNameJs, withBody as withBodyJs } from '../../../quick-start/look-model.ts'
-import type { Look } from '../../../types/life.ts'
+import type { DreamId, Look, TraitId } from '../../../types/life.ts'
 
 /** The draft the landing screen edits. `preset` is the id of the one-tap character it started from, or null. */
-export interface QuickDraft { name: string; look: Look; landedAt: number; nameEdited: boolean; shuffles: number; preset: string | null }
+export interface QuickDraft { name: string; look: Look; landedAt: number; nameEdited: boolean; shuffles: number; preset: string | null; traits: TraitId[]; dream: DreamId | null; area: { lga: string; via: 'device' | 'manual' } | null }
 /** The draft (made on first use, then kept). `name`: a name this device already uses. */
 export const quickDraft = quickDraftJs as unknown as (name?: string) => QuickDraft
 /** Change the draft and keep it on the device. */

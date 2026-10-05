@@ -16,6 +16,8 @@ export const PLACES: readonly CountryPlace[] = [
     { id: 'oyo-state', name: 'Oyo State', cities: [{ id: 'ibadan', name: 'Ibadan' }] },
     { id: 'fct', name: 'Federal Capital Territory', cities: [{ id: 'abuja', name: 'Abuja' }] },
     { id: 'rivers-state', name: 'Rivers State', cities: [{ id: 'port-harcourt', name: 'Port Harcourt' }] },
+    { id: 'ogun-state', name: 'Ogun State', cities: [{ id: 'abeokuta', name: 'Abeokuta' }] },
+    { id: 'kano-state', name: 'Kano State', cities: [{ id: 'kano', name: 'Kano' }] },
   ] },
 ]
 

@@ -6,7 +6,7 @@
  * of the landing screen is ./draft.js, fetched with that screen.
  *
  * KEPT ON THIS DEVICE (localStorage; a browser without storage keeps them in memory for the visit)
- *   joinallworld-quick-start   { name, look, landedAt, nameEdited, shuffles, preset } — the draft on the
+ *   joinallworld-quick-start   { name, look, landedAt, nameEdited, shuffles, preset, traits, dream, area } — the draft on the
  *                              landing screen, so a reload in the middle of the form loses nothing
  *   joinallworld-quick-play    { look, actionId? } — Play was tapped and the look is not confirmed by the
  *                              server yet. The action id is made once (after the session exists, so it

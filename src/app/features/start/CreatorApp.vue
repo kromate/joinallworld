@@ -72,7 +72,10 @@ function makeDraft(): CreatorDraft {
   const chosen = saved.traits.length === TRAITS_REQUIRED
   if (isNew) {
     const kept = currentDraft(view.value.name === 'New Lagosian' ? undefined : view.value.name)
-    return { look: { ...kept.look }, name: kept.name, traits: chosen ? [...saved.traits] : spirit.traits, dream: saved.dream ?? spirit.dream, area: undefined, spiritChosen: chosen }
+    // What this device kept of the later steps comes back after a reload; what the server already holds wins.
+    const keptSpirit = !chosen && kept.traits.length === TRAITS_REQUIRED
+    return { look: { ...kept.look }, name: kept.name, traits: chosen ? [...saved.traits] : keptSpirit ? [...kept.traits] : spirit.traits, dream: saved.dream ?? kept.dream ?? spirit.dream,
+      area: kept.area ? { ...kept.area } : undefined, spiritChosen: chosen || keptSpirit }
   }
   const key = `${view.value.session?.id ?? 'local'}:${view.value.cityId}`
   return { look: (saved.step === 0 && storedLook(key)) || { ...saved.look }, name: view.value.name, traits: chosen ? [...saved.traits] : spirit.traits, dream: saved.dream ?? spirit.dream, area: undefined, spiritChosen: chosen }
@@ -95,6 +98,11 @@ function ensureDraft(): CreatorDraft {
 const d = (): CreatorDraft => cr.draft ?? ensureDraft()
 ensureDraft()
 const draft = computed(() => d())
+// A new device keeps the later choices too (traits, dream, area), as it keeps the look and the name; the life starting clears them.
+if (isNew) watch(() => { const now = d(); return JSON.stringify([now.spiritChosen ? now.traits : [], now.spiritChosen ? now.dream : null, now.area ?? null]) }, () => {
+  const now = d()
+  quickDraftRef.value = keepDraft(now.spiritChosen ? { traits: [...now.traits], dream: now.dream, area: now.area ? { ...now.area } : null } : { area: now.area ? { ...now.area } : null })
+})
 if (!steps.value.some((item) => item.id === cr.step)) cr.step = steps.value[0]?.id ?? 'look'
 // A refusal the creator was reopened with: the refused name is put back once so it can be corrected.
 {

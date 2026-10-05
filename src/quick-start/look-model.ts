@@ -5,9 +5,10 @@
  * It is NOT part of the first download: it is fetched with the landing screen (src/ui/panels/groups/landing.js), which only
  * a device without a life ever sees. What the first download needs of the quick start is ./model.js.
  */
-import { APPEARANCE, ACCESSORY_BASICS } from '../game/content/traits.ts';
+import { APPEARANCE, ACCESSORY_BASICS, DREAMS, TRAITS, TRAITS_REQUIRED } from '../game/content/traits.ts';
 import type { AccessoryId, BodyId, ExpressionId, FaceId, HairId, Look, OutfitId } from '../types/life.ts';
-import type { Draft } from './model.ts';
+import type { Draft, DraftArea } from './model.ts';
+import type { DreamId, TraitId } from '../types/life.ts';
 
 // ---- names ---------------------------------------------------------------------------------
 /** Friendly suggestions for the name field: "<mood> <name>", always 3–24 ordinary characters. */
@@ -100,6 +101,14 @@ export function withBody(look: Look, requested: string): Look {
  * always one tap from Play.
  * `saved` is what storage held (any shape); `name` is a name this device already uses.
  */
+/** The traits, dream and area of a stored draft: only what is still a real choice, so a stale id never reaches the server. */
+function spiritFrom(kept: Record<string, unknown>): { traits: TraitId[]; dream: DreamId | null; area: DraftArea | null } {
+  const traits = Array.isArray(kept.traits) ? [...new Set(kept.traits.filter((id): id is TraitId => typeof id === 'string' && Object.hasOwn(TRAITS, id)))] : [];
+  const dream = typeof kept.dream === 'string' && Object.hasOwn(DREAMS, kept.dream) ? kept.dream as DreamId : null;
+  const area = kept.area && typeof kept.area === 'object' ? kept.area as Record<string, unknown> : null;
+  return { traits: traits.length === TRAITS_REQUIRED ? traits : [], dream,
+    area: area && typeof area.lga === 'string' && /^[a-z0-9-]{1,40}$/.test(area.lga) ? { lga: area.lga, via: area.via === 'device' ? 'device' : 'manual' } : null };
+}
 export function draftFrom(saved: unknown, { random, now, name }: { random: () => number, now: number, name?: string }): Draft {
   const kept = saved && typeof saved === 'object' ? saved as Record<string, unknown> : {};
   const keptName = typeof kept.name === 'string' && !nameProblem(kept.name) ? kept.name.trim() : null;
@@ -112,6 +121,7 @@ export function draftFrom(saved: unknown, { random, now, name }: { random: () =>
     landedAt: typeof kept.landedAt === 'number' && Number.isFinite(kept.landedAt) && kept.landedAt > 0 && kept.landedAt <= now ? kept.landedAt : now,
     nameEdited: keptName !== null && kept.nameEdited === true,
     shuffles: typeof kept.shuffles === 'number' && Number.isSafeInteger(kept.shuffles) && kept.shuffles >= 0 ? Math.min(kept.shuffles, 999) : 0,
+    ...spiritFrom(kept),
     preset: look ? (typeof kept.preset === 'string' && PRESETS.some((item) => item.id === kept.preset) ? kept.preset : null) : preset.id,
   };
 }

@@ -11,11 +11,13 @@
  * look by the 'onboarding.quick-start' action, each settle-in step by its own action. What is here
  * only decides what to SHOW and when.
  */
-import type { ActiveAction, Look, OnboardingState } from '../types/life.ts';
+import type { ActiveAction, DreamId, Look, OnboardingState, TraitId } from '../types/life.ts';
 import { isRecord, safeCount } from '../game/util.ts';
 
 /** The draft of the landing screen (./look-model.js draftFrom): rebuilt from storage, always ready to play. */
-export interface Draft { name: string; look: Look; landedAt: number; nameEdited: boolean; shuffles: number; preset: string | null }
+/** What the creator's later steps have so far: the two traits, the dream and the chosen area (empty until chosen). */
+export interface DraftArea { lga: string; via: 'device' | 'manual' }
+export interface Draft { name: string; look: Look; landedAt: number; nameEdited: boolean; shuffles: number; preset: string | null; traits: TraitId[]; dream: DreamId | null; area: DraftArea | null }
 /** `until`: server time (ms) before which settling in is not offered by itself, because it was offered and set aside. */
 export interface NudgeMemory { count: number; reasons: string[]; day: number | null; until: number | null }
 export interface FunnelSnap { guest: boolean; required: boolean; done: boolean; step: number; activities: number; firstAt: number | null; active: string | null; location: string }

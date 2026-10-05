@@ -18,7 +18,8 @@ export const starMarks = (stars: number): string => '★'.repeat(Math.round(star
 export function untilWords(at: number, now: number): string {
   const left = at - now
   if (left <= 0) return 'now'
-  if (left >= 2 * 86400000) return `${Math.floor(left / 86400000)} days`
+  // Rounded, not cut: a week of rent paid a moment ago is "7 days", not "6 days".
+  if (left >= 2 * 86400000) return `${Math.round(left / 86400000)} days`
   if (left >= 3600000) return `${Math.floor(left / 3600000)} h`
   return 'under an hour'
 }

@@ -328,9 +328,9 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   })
 
   /** Open the landing screen again with one sentence about what went wrong; the name and character are still on the device. */
-  function reopenLanding(reason: string, name?: string | null): void {
+  function reopenLanding(reason: string, name?: string | null, calm = false): void {
     const gate = shell.sessionGate('new')
-    if (gate) shell.open(gate.id, { reason: 'new', problem: { reason, ...(name ? { name } : {}) } })
+    if (gate) shell.open(gate.id, { reason: 'new', problem: { reason, ...(name ? { name } : {}), ...(calm ? { calm: true } : {}) } })
   }
   /**
    * After every successful connection: finish a quick start whose Play was tapped — now, or before a
@@ -460,12 +460,12 @@ function createApp(game: Game, native: readonly VuePanel[]) {
         if (game.client.refusal === 'full') {
           // Every place is taken. The visitor waits on the landing screen, told why, and is let in as soon as there is room.
           const wait = worldFullWait(fullTries++)
-          reopenLanding(worldFullText(wait), name)
+          reopenLanding(worldFullText(wait), name, true)
           fullRetry = globalThis.setTimeout(() => { fullRetry = null; if (!game.connected.value) void quickStart(name, startCity) }, wait * 1000)
         } else if (game.client.refusal === 'limit') {
           // Too many new players from this network address in the last hour: said plainly, with the wait the server gave, and tried again then.
           const wait = networkLimitWait(game.client.retryAfter)
-          reopenLanding(networkLimitText(wait), name)
+          reopenLanding(networkLimitText(wait), name, true)
           fullRetry = globalThis.setTimeout(() => { fullRetry = null; if (!game.connected.value) void quickStart(name, startCity) }, (wait + 2) * 1000)
         } else reopenLanding(`${linkWords(game.link.value)?.why || 'The game server did not answer.'} Your name and character are kept on this device — tap Play to try again.`, name)
       }

@@ -85,7 +85,8 @@ const unpack = (): Promise<SendResult> => paid('bag', 'unpack', '/api/business/b
 const sellBag = (): Promise<SendResult> => paid('bag', 'bag-return', '/api/business/bag/return', {}, 'The supplier took the goods back.')
 const pack = (product: string, units: number): Promise<SendResult> => paid('bag', `pack:${product}`, '/api/business/bag', { venue: here.value, product, units }, 'Packed for the road.')
 async function open(): Promise<void> {
-  const result = await paid('open', 'open', '/api/business/open', { venue: here.value, type: draft.type, name: draft.name.trim(), colour: draft.colour, icon: draft.icon }, 'Your stall is open. Stock it and set your prices.')
+  // No toast of its own: the game answers an opening with its own line ("<name> is open. Stock it and set your prices."), shown once.
+  const result = await paid('open', 'open', '/api/business/open', { venue: here.value, type: draft.type, name: draft.name.trim(), colour: draft.colour, icon: draft.icon }, '')
   if (result.ok) { draft.name = ''; tab.value = 'mine' }
 }
 const buy = (card: ShopCard, item: ShopItem): Promise<SendResult> => paid('buy', `buy:${card.id}:${item.id}`, '/api/business/buy', { shop: card.id, product: item.id, units: 1 }, `${item.label} from ${card.name}.`)

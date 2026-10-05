@@ -80,7 +80,7 @@ export const STEPS: readonly TourStep[] = [
     },
     keys: (context) => ((context.keys ?? !context.touch) ? [{ caps: ['walk:up', 'walk:left', 'walk:down', 'walk:right'].map(capOf), text: 'Walk' }, { caps: [capOf('walk:jog')], text: 'Hold to jog' }, { caps: ['Click'], text: 'Walk there' }, { caps: ['Drag'], text: 'Look around' }, { caps: ['Scroll'], text: 'Zoom' }] : []) },
   { id: 'map', title: 'The Map', targets: ['nav-map'], doneTargets: ['map-card'], wait: 'map',
-    text: 'Travel from here to anywhere in the city.', task: 'Tap Map to open it.',
+    text: (context) => `Travel from here to anywhere in the city. Drag to move the map, and ${context.touch ? 'twist two fingers' : 'right-drag'} to turn it.`, task: 'Tap Map to open it.',
     doneText: 'Pick a place to see the trip first: how long it takes, and what each way of travelling costs.' },
   { id: 'travel', title: 'Travel the world', targets: ['map-world', 'nav-map'], keeps: 'map', text: travelText },
   { id: 'phone', title: 'Your phone', targets: ['nav-phone'], doneTargets: ['phone-apps'], wait: 'phone', allows: 'phone',

@@ -16,12 +16,14 @@ export const shownError = (own: string, problem: { reason?: string } | null | un
 export const showsLinkNote = (words: object | null, error: string, link: string): boolean => Boolean(words) && !error && link !== 'new' && link !== 'connecting'
 
 /** The problem the sheet was reopened with (the server's sentence and the name that was refused). */
-export function problemOf(params: unknown): { reason?: string; name?: string } | null {
+export function problemOf(params: unknown): { reason?: string; name?: string; calm?: true } | null {
   const problem = params && typeof params === 'object' ? (params as { problem?: unknown }).problem : null
   if (!problem || typeof problem !== 'object') return null
-  const { reason, name } = problem as { reason?: unknown; name?: unknown }
-  return { ...(typeof reason === 'string' ? { reason } : {}), ...(typeof name === 'string' ? { name } : {}) }
+  const { reason, name, calm } = problem as { reason?: unknown; name?: unknown; calm?: unknown }
+  return { ...(typeof reason === 'string' ? { reason } : {}), ...(typeof name === 'string' ? { name } : {}), ...(calm === true ? { calm: true as const } : {}) }
 }
+/** Is the sentence shown a calm notice (the world is full, a wait is on) rather than an error? The sheet's own error always wins and is never calm. */
+export const isCalm = (own: string, problem: { reason?: string; calm?: true } | null | undefined): boolean => !own && problem?.calm === true && Boolean(problem.reason)
 
 export type PlayPlan =
   | { kind: 'name'; error: string }

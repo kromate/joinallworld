@@ -67,7 +67,7 @@ test('my business: the cash box, stock with its price range, rent, upgrades and 
   cache.put<MyBusinessResponse>(keys().mine, { city: 'lagos', mine: mine({ alert: 'The cash box is full, so passers-by cannot buy. Collect your takings.' }), bag: [{ id: 'adire', label: 'Adire cloth', icon: '👗', n: 6 }], limits })
   const html = await render(), words = text(html)
   for (const part of ['Food stall · Market, Lagos', 'Mama Put', '4.2 · about 34 customers a day', 'Cash box ₦4,200', 'Today ₦4,200 · 9 sold · 11 came', '12 of 30 on the shelves', 'You are away from your stall',
-    'Jollof rice & chicken 12 in stock · costs ₦360', 'Goods you carry', 'Adire cloth 6', '₦7,000 a week Paid for 4 days', 'Better display Draws 10% more customers.', '₦11,700 back', 'How businesses work']) assert.ok(words.includes(part), `${part} — in: ${words.slice(0, 900)}`)
+    'Jollof rice & chicken 12 in stock · costs ₦360', 'Goods you carry', 'Adire cloth 6', '₦7,000 a week Paid for 5 days', 'Better display Draws 10% more customers.', '₦11,700 back', 'How businesses work']) assert.ok(words.includes(part), `${part} — in: ${words.slice(0, 900)}`)
   assert.match(html, /role="alert"[^>]*>The cash box is full/)
   assert.match(html, /aria-label="4\.2 stars · 3 ratings"/)
   assert.match(html, /<input[^>]*type="number"[^>]*min="420"[^>]*max="840"[^>]*disabled/)

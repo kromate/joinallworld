@@ -93,9 +93,10 @@ async function interact(actionId: string): Promise<void> {
 const formEl = ref<HTMLFormElement | null>(null)
 function openForm(form: 'money' | 'report' | null): void {
   personUi.form = form; personUi.clientId = client.newClientId()
-  // The whole form, with its Send and Cancel, is brought into view.
-  if (form) void nextTick(() => { formEl.value?.scrollIntoView?.({ block: 'nearest' }) })
 }
+// Whoever opens a form (a button here, or "Send money" in a chat header), the whole of it, with its Send and Cancel, is brought into view
+// once it is drawn.
+watch(() => [personUi.form, formEl.value] as const, ([form, el]) => { if (form && el) void nextTick(() => { el.scrollIntoView?.({ block: 'nearest' }) }) }, { flush: 'post' })
 const actions: Record<string, () => Promise<unknown>> = {
   friend: () => run<{ code: string }>('/api/social/friends/request', { to: props.id, cityId: cityId() }, (done) => (done.code === 'accepted' ? 'You are now friends' : 'Friend request sent')),
   accept: () => run('/api/social/friends/answer', { from: props.id, accept: true, cityId: cityId() }, 'You are now friends'),

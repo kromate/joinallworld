@@ -915,6 +915,27 @@ export interface GrowthSlice {
   growth: GrowthState
 }
 
+// ---- business -----------------------------------------------------------------------------
+
+/** The life's side of businesses (systems/business.ts). The shop itself is shared state on the server. */
+export interface BusinessState {
+  /** Shops this life has opened. */
+  opened: number
+  /** Units sold by its shops, counted when the takings are collected. */
+  sales: number
+  /** Naira spent at other players' shops, for life: never more than `social.earned`. */
+  spent: number
+  /** Today's spending at players' shops. */
+  buys: { day: LagosDay; spent: number; count: number }
+  /** Trade goods carried, units by product id. */
+  bag: Record<string, number>
+}
+
+/** OWNER business. */
+export interface BusinessSlice {
+  business: BusinessState
+}
+
 // ---- the whole state ----------------------------------------------------------------------
 
 /**
@@ -923,12 +944,12 @@ export interface GrowthSlice {
  */
 export interface LifeState extends CoreSlice, WalletSlice, InventorySlice, NeedsSlice, SkillsSlice, CareerSlice, ActivitiesSlice,
   TravelSlice, HealthSlice, EconomySlice, PropertySlice, EstateSlice, HomeSlice, OnboardingSlice, GoalsSlice, SocialSlice, CivicSlice,
-  MissionsSlice, EventsSlice, GrowthSlice, UnilagStudentSlice, UnilagCommunitySlice, UnilagShuttleSlice {}
+  MissionsSlice, EventsSlice, GrowthSlice, BusinessSlice, UnilagStudentSlice, UnilagCommunitySlice, UnilagShuttleSlice {}
 
 /** System ids in registration order (systems/index.js). Sanitize, events and modifiers all run in this order. */
 export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
-  | 'economy' | 'property' | 'estate' | 'home' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth'
+  | 'economy' | 'property' | 'estate' | 'home' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
   | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
 
 /** The top-level keys each system owns. */
@@ -953,6 +974,7 @@ export interface SliceBySystem {
   missions: MissionsSlice
   events: EventsSlice
   growth: GrowthSlice
+  business: BusinessSlice
   unilagStudent: UnilagStudentSlice
   unilagCommunity: UnilagCommunitySlice
   unilagShuttle: UnilagShuttleSlice
@@ -1041,7 +1063,7 @@ export interface AdvanceOutcome {
 
 /** Every top-level key of a life, sorted. Equals `Object.keys(createLife(null, ctx)).sort()`. */
 export const LIFE_STATE_KEYS = [
-  'activeAction', 'career', 'cash', 'civic', 'completedShifts', 'decay', 'economy', 'estate', 'events', 'goals', 'growth',
+  'activeAction', 'business', 'career', 'cash', 'civic', 'completedShifts', 'decay', 'economy', 'estate', 'events', 'goals', 'growth',
   'health', 'home', 'homeOwned', 'inventory', 'job', 'ledger', 'ledgerDays', 'location', 'message', 'missions', 'moodlets',
   'name', 'needs', 'onboarding', 'property', 'skills', 'social', 'spot', 't', 'travel', 'unilagCommunity', 'unilagShuttle',
   'unilagStudent', 'v',
@@ -1069,6 +1091,7 @@ export const SYSTEM_STATE_KEYS = {
   missions: ['missions'],
   events: ['events'],
   growth: ['growth'],
+  business: ['business'],
   unilagStudent: ['unilagStudent'],
   unilagCommunity: ['unilagCommunity'],
   unilagShuttle: ['unilagShuttle'],
@@ -1096,6 +1119,7 @@ export const SLICE_FIELD_KEYS = {
   missions: ['active', 'claimed', 'daily', 'day', 'paidDay', 'rerolls', 'seed', 'sets', 'stamps', 'titles', 'visited', 'week', 'weekly'],
   events: ['attended', 'count', 'spray', 'sprayed'],
   growth: ['referrals', 'tables', 'welcomed'],
+  business: ['bag', 'buys', 'opened', 'sales', 'spent'],
   unilagStudent: ['admittedDay', 'applicationCount', 'hostel', 'lifetime', 'programme', 'records', 'status', 'studentId', 'term'],
   unilagCommunity: ['clubs', 'days', 'discoveries', 'elections', 'quiz', 'trail'],
   unilagShuttle: ['rides'],

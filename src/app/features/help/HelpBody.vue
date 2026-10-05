@@ -16,7 +16,7 @@ const STEPS = computed(() => [
   { icon: 'person', title: 'Look after your Sim', text: 'The six bars are your needs. Tap your avatar for your profile, goals, skills and people.' },
   { icon: 'globe', title: 'Travel to other cities', text: `Open the Map, then the ${country.value} map at the end of the list. Pick a city that is open and press Travel. More of Africa and the world are coming.` },
   { icon: 'chat', title: 'Call and chat', text: 'Tap the online count, then a player, to chat or Call them; they choose whether to answer. The chat button at a place opens its community.' },
-  { icon: 'career', title: 'Work and business', text: 'Jobs and Career earn your pay, Bank and Invest look after it, and Billboards advertise for you.' },
+  { icon: 'career', title: 'Work and business', text: 'Jobs and Career earn your pay, and Business lets you rent a stall at any market, stock it and sell to the city and to other players. Bank and Invest look after your money, and Billboards advertise for you.' },
 ] as const)
 const rows = shortcutRows()
 /** The walkthrough starts after this sheet closes (src/app/features/tour/TourTrigger.vue). */

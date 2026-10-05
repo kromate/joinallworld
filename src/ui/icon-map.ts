@@ -69,7 +69,7 @@ const BY_ID: Record<string, Record<string, string>> = {
   lottery: { 'lapo-baby': 'statement', 'civil-servant': 'jobs', 'street-smart': 'cars', ajebutter: 'crown' },
   notice: { 'rent-due': 'calendar', rent: 'home', 'rent-missed': 'error', loan: 'bank', 'loan-missed': 'error', promotion: 'career', illness: 'sick', recovered: 'health',
     gov: 'governor', transfer: 'coin', bae: 'heart' },
-  update: { transfer: 'coin', report: 'shield', 'friend-request': 'handshake', 'friend-accepted': 'handshake', 'invite-joined': 'handshake', 'invite-knock': 'invite', 'invite-answer': 'invite',
+  update: { transfer: 'coin', business: 'buy', report: 'shield', 'friend-request': 'handshake', 'friend-accepted': 'handshake', 'invite-joined': 'handshake', 'invite-knock': 'invite', 'invite-answer': 'invite',
     'group-added': 'people', 'bae-request': 'heart', 'bae-answer': 'heart' },
 };
 /** What a kind is drawn as when neither its id nor its emoji is known. */

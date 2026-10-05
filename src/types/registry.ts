@@ -202,6 +202,14 @@ export interface EngineEventMap {
   // -- growth --
   /** A finished table game that counts for missions. `paid` is the naira credited (0 when none). */
   'table.played': { game: string; won: boolean; human: boolean; paid: number }
+
+  // -- business --
+  /** This life opened a shop. */
+  'business.opened': { city: string; venue: string }
+  /** One unit its shop sold, told when the takings are collected (at most SALES_COUNTED_PER_COLLECT per collection). */
+  'business.sale': Record<string, never>
+  /** This life bought something at another player's shop. */
+  'business.bought': { amount: number }
 }
 
 export type EngineEvent = keyof EngineEventMap
@@ -396,7 +404,7 @@ export interface SystemDefinition<Id extends string = SystemId> {
 /** Every event name emitted anywhere in the engine, sorted. */
 export const EVENT_NAMES = [
   'action.cancelled', 'activity.completed', 'activity.outcome', 'activity.started', 'activity.unpaid', 'ad.bought',
-  'candidacy.declared', 'car.bought', 'car.sold', 'city.changed', 'deposit.closed', 'deposit.opened', 'dream.completed',
+  'business.bought', 'business.opened', 'business.sale', 'candidacy.declared', 'car.bought', 'car.sold', 'city.changed', 'deposit.closed', 'deposit.opened', 'dream.completed',
   'event.attended', 'event.sprayed', 'friend.made', 'gem.found', 'goal.completed', 'health.treat', 'home.owned', 'house.moved',
   'house.styled', 'house.upgrade-started', 'house.upgraded', 'hunt.claimed', 'illness.cured', 'illness.started', 'item.bought',
   'item.sold', 'job.applied', 'job.quit', 'lga.changed', 'life.started', 'loan.missed', 'loan.paid', 'meal.eaten',

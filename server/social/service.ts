@@ -1008,6 +1008,12 @@ function buildService(ctx: RouteContext) {
       return { push };
     },
     modKnows: (db: Db, id: string): boolean => Boolean(col(db).players[id]),
+    /** A line in a shop owner's Updates feed (a sale, rent taken or missed): server/business/service.ts. Nothing is written for a player this collection does not know. */
+    shopNote(db: Db, to: string, text: string) {
+      const s = col(db), push: PushList = [];
+      notify(s, to, 'business', text, null, push);
+      return { push };
+    },
 
     // ---- house invites: knock → let in / not now -----------------------------------------------
     house(db: Db, session: SessionRecord, rawHost: unknown) {

@@ -279,8 +279,10 @@ function transferBlock(state: LifeState, payload: Record<string, unknown>, ctx: 
   if (typeof amount !== 'number' || !Number.isSafeInteger(amount) || amount < L.min) return fail(state, 'amount_too_small', `The smallest gift is ${naira(L.min)}.`);
   if (amount > L.maxPerTransfer) return fail(state, 'amount_too_large', `The largest single gift is ${naira(L.maxPerTransfer)}.`);
   if (state.social.earned < L.minEarned) return fail(state, 'earn_first', `Earn at least ${naira(L.minEarned)} from paid work before sending money (you have earned ${naira(state.social.earned)}).`);
-  if (book.total + amount > state.social.earned) {
-    return fail(state, 'gift_exceeds_earned', `You can only give away money you have earned from work. You can still give ${naira(Math.max(0, state.social.earned - book.total))}.`);
+  // What was spent at other players' shops (systems/business.ts) came out of the same allowance: money earned from work passes to another player once.
+  const passed = book.total + (state.business?.spent ?? 0);
+  if (passed + amount > state.social.earned) {
+    return fail(state, 'gift_exceeds_earned', `You can only give away money you have earned from work. You can still give ${naira(Math.max(0, state.social.earned - passed))}.`);
   }
   const today = book.day === dayOf(state, ctx) ? book : { sent: 0, count: 0 };
   if (today.count >= L.dailyCount) return fail(state, 'daily_transfer_limit', `You have sent ${L.dailyCount} gifts today. The limit resets at midnight, Nigerian time.`);
@@ -468,7 +470,7 @@ export default {
       streak: book.streak.day >= day - 1 ? book.streak.count : 0,
       calling: state.activeAction?.kind === 'call' ? state.activeAction.id : null,
       transfer: { ...L, earned: book.earned, sentToday: today.sent, countToday: today.count,
-        leftToday: Math.max(0, Math.min(L.dailyAmount - today.sent, book.earned - book.transfer.total)), giftsLeftToday: Math.max(0, L.dailyCount - today.count) },
+        leftToday: Math.max(0, Math.min(L.dailyAmount - today.sent, book.earned - book.transfer.total - (state.business?.spent ?? 0))), giftsLeftToday: Math.max(0, L.dailyCount - today.count) },
       notices: book.notices.slice().reverse(),
     };
   },

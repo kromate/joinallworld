@@ -8,6 +8,7 @@
 // below), so this panel is the same size as the one the scene's camera is framed around.
 import { computed, nextTick, ref, watch } from 'vue'
 import type { ActivityCard } from '../../../types/view.ts'
+import { cachedCityContent } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { linkWording } from '../hud/hudModel.ts'
@@ -20,6 +21,8 @@ const view = game.view
 const privateHome = computed(() => state.value.location === 'home')
 const venue = computed(() => view.value.venues.find((item) => item.id === state.value.location) ?? { id: state.value.location, label: state.value.location, district: '', icon: '' })
 const activities = computed(() => view.value.activities)
+// A market rents stalls to players: its shops, and opening one, are in the Business app (fetched when opened).
+const market = computed(() => cachedCityContent(view.value.cityId)?.venues.find((item) => item.id === state.value.location)?.kind === 'market')
 const spots = computed(() => activities.value.spots.filter((spot) => !privateHome.value || spot.id !== 'people'))
 const spot = computed(() => spots.value.find((item) => item.id === state.value.spot))
 // Home shows the player's own house.
@@ -79,6 +82,7 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
       <button class="life-expand" :class="{ 'is-expanded': ui.expanded }" type="button" :aria-expanded="ui.expanded" :aria-label="`${ui.expanded ? 'Hide' : 'Show'} activities`" title="Activities (T)" @click="ui.expanded = !ui.expanded"><GameIcon name="chevron-down" /></button>
       <button v-for="(item, index) in spots" :key="item.id" type="button" :data-spot="item.id" :class="{ 'is-selected': item.id === state.spot }" :aria-pressed="item.id === state.spot" :aria-busy="pending === `spot:${item.id}`" :title="`Shortcut ${index + 1}`" @click="selectSpot(item.id)"><GameIcon inline kind="spot" :id="item.id" :emoji="item.icon" /><span>{{ item.label }}</span></button>
       <button v-if="!privateHome && !spots.some((item) => item.id === 'people')" type="button" @click="community.toggle(true)"><GameIcon inline name="people" /><span>People</span></button>
+      <button v-if="market" type="button" data-shops title="Players’ stalls at this market, and renting one" @click="shell.open('business', { venue: venue.id })"><GameIcon inline name="buy" /><span>Shops here</span></button>
     </div>
     <template v-if="ui.expanded">
       <p v-if="state.activeAction" class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>

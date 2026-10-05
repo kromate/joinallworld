@@ -326,7 +326,23 @@ export interface ActionMap extends CampusActionMap {
     fail: 'already_welcomed' | 'balance_limit' | 'referral_lifetime_cap' | 'referral_week_cap' | 'invalid_gift'
     serverOnly: true
   }
+
+  // -- business --
+  /** SERVER ONLY: the life's half of a shop change the server has checked (server/business/service.ts). `op` is a BusinessServerOp. */
+  'business.server': {
+    payload: { op: BusinessServerOp; [field: string]: unknown }
+    ok: 'opened' | 'paid' | 'collected' | 'refunded' | 'bought' | 'bagged' | 'unbagged' | 'returned'
+    fail: BusinessBlockCode
+    serverOnly: true
+  }
 }
+
+/** The operations 'business.server' accepts (systems/business.ts). */
+export type BusinessServerOp = 'open' | 'spend' | 'collect' | 'refund' | 'buy' | 'bag-add' | 'bag-take' | 'bag-return'
+/** Why the life's half of a shop change was refused. */
+export type BusinessBlockCode =
+  | 'invalid_operation' | 'invalid_amount' | 'insufficient_funds' | 'balance_limit' | 'earn_first' | 'spend_exceeds_earned'
+  | 'daily_shop_limit' | 'not_needed' | 'already_have' | 'bag_full' | 'bag_short'
 
 // ---- derived types ------------------------------------------------------------------------
 
@@ -419,6 +435,7 @@ export const ACTION_TYPES = [
   'missions.claim', 'missions.reroll', 'missions.refresh',
   'events.spray',
   'growth.table-result', 'growth.referral',
+  'business.server',
   // the campus: unilagStudent, unilagCommunity, unilagShuttle (campus.ts)
   ...CAMPUS_ACTION_TYPES,
 ] as const satisfies readonly ActionType[]
@@ -426,11 +443,14 @@ export const ACTION_TYPES = [
 /** The action types declared `serverOnly` (registry.js serverOnlyReason(type) !== null). */
 export const SERVER_ONLY_ACTIONS = [
   'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
-  'civic.shoutout', 'growth.table-result', 'growth.referral', 'unilag.election.nominate', 'unilag.election.vote',
+  'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]
 
 /** The server-only deliveries that pass a held life's veto (onboarding.js INBOUND). */
 export const INBOUND_ACTIONS = ['social.server', 'growth.referral', 'growth.table-result'] as const satisfies readonly InboundActionType[]
+
+/** The operations 'business.server' accepts (systems/business.ts). */
+export const BUSINESS_SERVER_OPS = ['open', 'spend', 'collect', 'refund', 'buy', 'bag-add', 'bag-take', 'bag-return'] as const satisfies readonly BusinessServerOp[]
 
 /** The operations 'social.server' accepts (social.js serverOps). */
 export const SOCIAL_SERVER_OPS = [

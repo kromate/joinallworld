@@ -14,7 +14,7 @@ test('every Phone app has its own drawn icon and colour, and an unknown id still
   assert.match(glyph('contacts'), /^<svg aria-hidden="true"/, 'a glyph that has not arrived yet still draws a placeholder');
   const { appIcon, TINTS, tintOf } = await import('./icons-more.ts'); // adds the rest of the set
   const apps = ['jobs', 'messages', 'bank', 'ride', 'statement', 'invest', 'career', 'richlist', 'goals', 'health', 'groceries', 'boutique', 'houses', 'cars', 'settings', 'help',
-    'contacts', 'people', 'family', 'invite', 'community', 'governor', 'neighbours', 'ads', 'hunt-sheet', 'radio', 'support'];
+    'contacts', 'people', 'family', 'invite', 'community', 'governor', 'neighbours', 'ads', 'hunt-sheet', 'radio', 'support', 'business'];
   const drawn = new Set();
   for (const id of apps) {
     assert.ok(hasGlyph(glyphFor(id)) && glyphFor(id) !== 'info', `${id} has a glyph`);

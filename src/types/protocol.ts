@@ -27,6 +27,7 @@ import type { CampusHttpRoutes } from './campus.ts'
 import type { CallClientFrame, CallServerFrame } from './calls.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
+import type { BusinessHttpRoutes } from './business.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -244,7 +245,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, BusinessHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -521,6 +522,24 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/account/delete',
   'POST /api/account/export',
   'POST /api/account/password-reset',
+  'GET /api/business/venue',
+  'GET /api/business/mine',
+  'POST /api/business/open',
+  'POST /api/business/stock',
+  'POST /api/business/price',
+  'POST /api/business/collect',
+  'POST /api/business/rent',
+  'POST /api/business/upgrade',
+  'POST /api/business/close',
+  'POST /api/business/bag',
+  'POST /api/business/bag/stock',
+  'POST /api/business/bag/return',
+  'POST /api/business/buy',
+  'POST /api/business/rate',
+  'POST /api/business/report',
+  'GET /api/mod/business/reports',
+  'POST /api/mod/business/rename',
+  'POST /api/mod/business/close',
 ] as const satisfies readonly HttpRouteKey[]
 
 /** WORKER: the same registry, so the same routes. (`/api/mod/*` answers only when the MODERATOR_TOKEN secret is set, as on Node.) */

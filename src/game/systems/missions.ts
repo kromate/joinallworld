@@ -71,6 +71,7 @@ const cleanVisitIdentity = (value: unknown, currentCity: string): string | null 
 function doable(def: MissionDefinition, state: LifeState, ctx: LifeContext | undefined): boolean {
   if (def.needs === 'job' && !state.job) return false;
   if (def.needs === 'event' && !hasEventToday(nowOf(state, ctx), state.estate.city)) return false;
+  if ((def.needs === 'stall' || def.needs === 'no-stall') && (def.needs === 'stall') !== ((state.business?.opened ?? 0) > 0)) return false;
   if (Array.isArray(def.go) && !venueFor(state.estate.city, def.go[0])) return false;
   return true;
 }

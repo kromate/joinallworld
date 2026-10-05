@@ -129,7 +129,7 @@ test('the steps come in one order, and a guest in a venue, a player at home and 
   assert.deepEqual([work.targets, work.needs, work.keeps, work.allows], [['phone-dock', 'nav-phone'], undefined, 'phone', 'phone'])
   assert.ok(showable(travel, context(['nav-map'])) && showable(work, context(['nav-phone'])))
   assert.ok(!showable(travel, context([])), 'with neither on screen the step is passed over')
-  assert.match(wordsOf(work, context([]), false).text, /Jobs.*Career.*Bank.*Invest.*Billboards/)
+  assert.match(wordsOf(work, context([]), false).text, /Jobs.*Career.*stall in Business.*Bank.*Invest.*Billboards/)
 })
 
 test('what a step opened is closed when the tour moves on, unless the next step carries on with it', () => {
@@ -307,8 +307,8 @@ test('the help text and the creator’s last card say the same things as the tou
   for (const title of ['Travel to other cities', 'Call and chat', 'Work and business']) assert.ok(help.includes(`title: '${title}'`), title)
   assert.match(help, /\$\{country\.value\} map at the end of the list.*press Travel.*More of Africa and the world are coming/)
   assert.match(help, /chat or Call them; they choose whether to answer/)
-  assert.match(help, /Jobs and Career.*Bank and Invest.*Billboards/)
-  assert.match(ready, /travel between cities.*Call and chat.*earn, invest and advertise/)
+  assert.match(help, /Jobs and Career.*Business.*rent a stall.*Bank and Invest.*Billboards/)
+  assert.match(ready, /travel between cities.*Call and chat.*earn, invest and advertise.*open a business of your own/)
   const names = Object.values(KNOWN_CITIES).flatMap((city) => (city ? [city.rules.name] : [])).concat(playableCityIds().map((id) => cityRules(id)!.name))
   for (const name of names) { assert.ok(!ready.includes(name), name); assert.ok(!help.slice(help.indexOf('const STEPS'), help.indexOf('const rows')).includes(name), name) }
 })

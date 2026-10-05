@@ -25,6 +25,7 @@ import civic from './civic.ts';
 import missions from './missions.ts';
 import events from './events.ts';
 import growth from './growth.ts';
+import business from './business.ts';
 
-export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, onboarding, goals, social, civic, missions, events, growth];
+export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, onboarding, goals, social, civic, missions, events, growth, business];
 for (const system of BASE_SYSTEMS) registerSystem(system);

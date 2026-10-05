@@ -365,3 +365,31 @@ test('economy: a life that starts in Port Harcourt, Abuja or Kano, and one that 
   assert.ok(trip.player.state.estate.lga !== null && trip.player.state.job === 'community-helper', 'the Lagos home and the job are still there');
   assert.equal(Object.keys(trip.player.state.estate.away).sort().join(), 'abuja,kano,port-harcourt', 'the three houses away are kept');
 });
+
+test('economy: a shop pays about what a job does, never without work, and cannot be used to pass money on', async () => {
+  const { runBusiness } = await import('../../scripts/business-sim.ts');
+  const rows = runBusiness({ days: 30 });
+  const row = (label: string) => { const found = rows.find((item) => item.label.startsWith(label)); assert.ok(found, label); return found; };
+  for (const item of rows) assert.equal(item.conserved, true, `${item.label}: every naira is in a ledger, and a shop's takings are in its box, collected or gone to rent`);
+  const career = row('career').perDay, diligent = row('diligent food stall').perDay, best = row('diligent food stall, every upgrade').perDay;
+  // A stall run well earns roughly one to two careers, its setup paid for inside the month; with every upgrade it is still within twice.
+  assert.ok(diligent >= career && diligent <= 2 * career, `diligent ₦${diligent} a day against a career's ₦${career}`);
+  assert.ok(best > diligent && best <= 2 * career, `every upgrade: ₦${best} a day`);
+  assert.ok(row('diligent provisions').perDay >= career * 0.8 && row('diligent provisions').perDay <= 2 * career);
+  assert.ok(row('fabric stall').perDay <= 2 * career);
+  // Effort is what pays: one visit a day earns less than two, every fourth day next to nothing, and never coming back loses the lot.
+  assert.ok(row('average owner').perDay < diligent && row('average owner').perDay > 0.5 * career);
+  assert.ok(row('absentee').perDay < 0.25 * career && row('absentee').stars < 2);
+  assert.ok(row('never returns').profit < 0 && row('never returns').status === 'closed');
+  // Prices: the top of the band empties the stall of customers and stars; the bottom sells a lot for nothing.
+  assert.ok(row('gouger').profit < 0 && row('gouger').stars < 2);
+  assert.ok(row('discounter').perDay < 0.25 * career);
+  // Carrying goods between cities is worth about what its fares cost: no more than a tenth better than buying at home.
+  const local = row('fabric stall, Lagos supplier').profit, trader = row('fabric trader').profit;
+  assert.ok(trader > 0.8 * local && trader < 1.1 * local, `trader ₦${trader} against ₦${local}`);
+  // Two players colluding: the owner is far worse off than an honest owner, and gets less than the buyer gave up.
+  const owner = row('colluding pair: the owner'), buyer = row('colluding pair: the buyer');
+  assert.ok(owner.profit < 0.5 * row('diligent food stall').profit);
+  assert.ok(owner.profit - row('gouger').profit < -buyer.fromPlayers, 'the pair lost money between them');
+  assert.ok(-buyer.fromPlayers <= 30 * 8000, 'inside the daily cap');
+});

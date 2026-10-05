@@ -26,6 +26,12 @@ import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityMo
  * OPEN / COMING SOON comes from the registry (../regions.js): only a region whose status is
  * 'open' is in colour and can be entered. Everything else is grey, still hoverable and tappable.
  *
+ * INPUT. North-up at every level. One finger or any mouse button drags the ground (the grabbed point stays under the pointer, the
+ * land's edge gives a little and springs back, a flick glides on unless motion is reduced); two fingers pinch about their middle and
+ * travel; the wheel and a trackpad pinch zoom towards the pointer. A quick press that stayed put selects (a city dot or name first,
+ * ./city-hit.ts); a drag or a press held 350 ms or more never does. The view is leashed to the middle of the world as it pulls
+ * back (./levels.ts leashAt). The arithmetic is shared with the city map (src/scene/gesture.ts, ../camera.ts).
+ *
  * BATTERY RULE — NO FRAME LOOP WHILE IDLE. A frame is drawn when something asks for one. Another
  * is scheduled only while something moves: a camera ease, a level cross-fade, the fly-in to the
  * city, or a trip (the server's timer, or the preview). diagnostics().renderCount is the proof
@@ -36,6 +42,7 @@ import * as THREE from 'three';
 import { allCityLinks } from '../../game/cities/registry.ts';
 import type { AfricaGroupId, Box4, RegionKind } from '../types.ts';
 import { createRig } from '../camera.ts';
+import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
 import type { RigInsets, RigView } from '../camera.ts';
 import { createTripClock } from '../trip.ts';
 import { AFRICA_GROUPS, ATLAS_LEVELS, CONTINENTS, ZONES, cityEntry, plannedRoutes, regionEntry, stateOfCity } from '../regions.ts';
@@ -45,7 +52,7 @@ import { decodeTopology } from './topo.ts';
 import type { AfricaFeature, Feature, FeatureData, NigeriaFeature, Topology, WorldFeature } from './topo.ts';
 import { createPicker } from './pick.ts';
 import type { Picker } from './pick.ts';
-import { focusLevel, levelAt, pitchAt, thresholds } from './levels.ts';
+import { focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
 import { cityHit } from './city-hit.ts';
 import type { CityTarget } from './city-hit.ts';
@@ -123,8 +130,12 @@ interface Insets { left: number; top: number; right: number; bottom: number }
 /** The trip being drawn: the line, who walks it from where, and how far (0…1). */
 interface Run { path: LinkPath; line: MeasuredLine; from: string; progress: number }
 interface Preview extends Run { start: number; seconds: number }
-/** A pointer gesture: a pan or an orbit has `start` and `last`; a pinch has `span`, `mid` and `angle`. */
-interface Gesture { kind: 'orbit' | 'pan' | 'pinch'; moved: boolean; start?: Point; last?: Point; span?: number; mid?: Point; angle?: number }
+/**
+ * A pointer gesture. One pointer pans: `grab` is the ground point under it when it went down, which stays under it. Two pointers
+ * pinch: `span` and `mid` are their distance and middle, and the ground between them stays between them. `down` is when the press
+ * began, for the tap-or-drag rule (src/scene/gesture.ts).
+ */
+interface Gesture { kind: 'pan' | 'pinch'; id: number; moved: boolean; from: Point; last: Point; down: number; type: string; grab: { x: number; z: number } | null; span: number; mid: Point }
 /** What the shell's `jaw:key` event carries. */
 interface KeyDetail { action?: string; mode?: string }
 interface Point { x: number; y: number }
@@ -171,7 +182,7 @@ const INK = {
 const MAJOR_CAPITALS = new Set(['Abuja', 'Cairo', 'Nairobi', 'Accra', 'Addis Ababa', 'Pretoria', 'Kinshasa', 'Dakar', 'Algiers', 'Rabat', 'Luanda', 'Khartoum', 'Dodoma', 'Kampala', 'Tunis', 'Tripoli', 'Antananarivo', 'Lusaka', 'Harare', 'Bamako', 'Niamey', "N'Djamena", 'Mogadishu', 'Windhoek', 'Maputo', 'Yaoundé', 'Abidjan', 'Yamoussoukro']);
 const NEIGHBOUR_LABELS: [string, number, number][] = [['Benin', 2.15, 9.9], ['Niger', 8.6, 14.7], ['Chad', 15.9, 11.2], ['Cameroon', 12.5, 5.6]];
 const WATER_LABELS: [string, number, number, 'sea' | 'river' | 'town'][] = [['Gulf of Guinea', 4.6, 3.55, 'sea'], ['Niger', 5.25, 9.72, 'river'], ['Benue', 9.7, 8.05, 'river'], ['Lake Chad', 14.2, 13.55, 'river'], ['Lokoja', 6.74, 7.8, 'town']];
-const DRAG_START = 5, DOUBLE_MS = 340;
+const DOUBLE_MS = 340;
 const clamp = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
 const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }) as Record<string, string>)[c]!);
 const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en-NG')}`;
@@ -188,7 +199,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   if ('outputColorSpace' in renderer) renderer.outputColorSpace = THREE.SRGBColorSpace;
   const canvas = renderer.domElement;
   const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(30, 1, 0.1, 4000);
-  const rig = createRig(THREE, camera, { minX: EXTENT.minX, maxX: EXTENT.maxX, minZ: -EXTENT.maxY, maxZ: -EXTENT.minY, minDistance: 0.4 });
+  /** Each level's frame: where the camera stands, and how far, when that level fills the free part of the screen (null until measured). */
+  let fits: { x: number; z: number; distance: number }[] | null = null;
+  const rig = createRig(THREE, camera, { minX: EXTENT.minX, maxX: EXTENT.maxX, minZ: -EXTENT.maxY, maxZ: -EXTENT.minY, minDistance: 0.4, leash: (distance) => (fits ? leashAt(distance, fits[NIGERIA]!.distance, fits[WORLD]!.distance) : 1) });
   const mesh = mesher(THREE);
   const ribbonMaterials: THREE.ShaderMaterial[] = [], probe = new THREE.Vector3();
   const ribbonMaterial = (opacity = 1, lift = 0.0004) => { const material = mesh.ribbonMaterial(opacity); material.uniforms.lift!.value = lift; ribbonMaterials.push(material); return material; };
@@ -226,7 +239,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   }
   let selected: RegionRef | null = null, hovered: RegionRef | null = null;
   let routeShown: string | null = null, trip: Run | null = null, preview: Preview | null = null, entering: (() => void) | null = null, keyboard = false;
-  let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, fits: { x: number; z: number; distance: number }[] | null = null, cuts = [1, 1], lastLabels = 0, labelKey = '';
+  let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, cuts = [1, 1], lastLabels = 0, labelKey = '';
   /** Where each shown name is on the screen, for taps. */
   const lastPlaced = new Map<string, LabelBox>();
   let rafId = 0, renderCount = 0, lastTick = 0, loading = '', failed = '';
@@ -483,13 +496,11 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (reducedMotion || !raf) rig.jump(view); else rig.ease(view, seconds);
     moved();
   }
-  /** Zoom by a factor about a point of the screen (NDC), keeping the ground under it where it is. */
+  /** Zoom by a factor about a point of the screen (NDC), keeping the ground under it where it is. The map is always north-up. */
   function zoomBy(factor: number, nx: number | null = null, ny: number | null = null) {
     const distance = clamp(rig.view.distance * factor, minDistance(), maxDistance());
     const before = nx === null ? null : rig.groundAt(nx, ny!);
-    // The turn a player gave the closest level unwinds on the way out: farther levels are always north-up.
-    const near = fits![NIGERIA]!.distance, turn = distance <= near ? 1 : clamp((cuts[1]! - distance) / (cuts[1]! - near), 0, 1);
-    rig.jump({ distance, pitch: pitchAt(distance, distances(), PITCHES), yaw: factor > 1 ? rig.view.yaw * turn : rig.view.yaw });
+    rig.jump({ distance, pitch: pitchAt(distance, distances(), PITCHES), yaw: 0 });
     const after = before ? rig.groundAt(nx!, ny!) : null;
     if (before && after) rig.pan(before.x - after.x, before.z - after.z);
     moved();
@@ -890,48 +901,86 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   // ---- input -------------------------------------------------------------------------------------------
   const pointers = new Map<number, Point>();
   let gesture: Gesture | null = null, lastTap = { t: -1e9, x: 0, y: 0 };
+  const flick = createFlick();
+  // A flick is timed by the moments the pointer reported, so a slow frame between them does not turn a fast flick into a stop.
+  const stampOf = (event: Event) => (Number.isFinite(event.timeStamp) ? event.timeStamp : now());
   const local = (event: MouseEvent): Point => { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; };
   const ndc = (point: Point): [number, number] => [(point.x / size.width) * 2 - 1, 1 - (point.y / size.height) * 2];
+  const ground = (point: Point) => { const [nx, ny] = ndc(point); return rig.groundAt(nx, ny); };
+  const middle = (a: Point, b: Point): Point => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+  /**
+   * The map is NORTH-UP at every level, so there is no rotation and no compass. A country, a continent and the world are each one
+   * flat sheet drawn from above: turning it changes none of what is on it, would put every name at an angle to the page, and would
+   * make the level frames (which are measured north-up) wrong. Every button, and one finger, drags the ground; two fingers pinch
+   * and travel; a twist does nothing. The tilt follows the zoom (pitchAt), not the pointer.
+   */
   function onDown(event: PointerEvent) {
     if (entering) return;
+    if (event.pointerType === 'mouse' && event.button > 2) return;
+    if (event.button === 1) event.preventDefault();
     keyboard = false; root!.classList.remove('is-keys');
-    pointers.set(event.pointerId, local(event));
+    if (event.isPrimary) { pointers.clear(); rig.endDrag(); }
+    const point = local(event);
+    pointers.set(event.pointerId, point);
     canvas.setPointerCapture?.(event.pointerId);
     rig.hold();
-    if (pointers.size === 1) gesture = { kind: event.button === 2 || event.shiftKey ? 'orbit' : 'pan', start: local(event), last: local(event), moved: false };
-    else if (pointers.size === 2) { const [a, b] = [...pointers.values()] as [Point, Point]; gesture = { kind: 'pinch', span: Math.hypot(a.x - b.x, a.y - b.y), mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, angle: Math.atan2(b.y - a.y, b.x - a.x), moved: true }; }
+    if (pointers.size === 1) {
+      flick.clear();
+      gesture = { kind: 'pan', id: event.pointerId, moved: false, from: point, last: point, down: now(), type: event.pointerType, grab: fits ? ground(point) : null, span: 1, mid: point };
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()] as [Point, Point];
+      gesture = { kind: 'pinch', id: event.pointerId, moved: true, from: a, last: a, down: now(), type: event.pointerType, grab: null, span: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: middle(a, b) };
+      rig.beginDrag(); root!.classList.add('is-dragging'); setHover(null);
+    }
   }
   function onMove(event: PointerEvent) {
     const point = local(event);
     if (!pointers.has(event.pointerId)) { if (event.pointerType === 'mouse') hover(point); return; }
     pointers.set(event.pointerId, point);
-    if (!gesture) return;
+    if (!gesture || !fits) return;
     if (gesture.kind === 'pinch' && pointers.size >= 2) {
-      const [a, b] = [...pointers.values()] as [Point, Point], span = Math.hypot(a.x - b.x, a.y - b.y), mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, angle = Math.atan2(b.y - a.y, b.x - a.x);
-      rig.panScreen(mid.x - gesture.mid!.x, mid.y - gesture.mid!.y);
-      if (level === NIGERIA) rig.orbit(clamp(rig.view.yaw - (angle - gesture.angle!), -0.6, 0.6) - rig.view.yaw, 0);
-      if (span > 0 && gesture.span! > 0) zoomBy(gesture.span! / span, ...ndc(mid));
-      Object.assign(gesture, { span, mid, angle });
+      // Two fingers: the pinch zooms about the middle, and the ground between the fingers stays between them as they travel.
+      const [a, b] = [...pointers.values()] as [Point, Point], span = Math.hypot(a.x - b.x, a.y - b.y) || 1, mid = middle(a, b);
+      const held = ground(gesture.mid), to = ndc(mid);
+      zoomBy(gesture.span / span, ...ndc(gesture.mid));
+      if (!held || !rig.dragTo(held, to[0], to[1])) rig.panScreen(mid.x - gesture.mid.x, mid.y - gesture.mid.y);
+      gesture.span = span; gesture.mid = mid;
       moved();
       return;
     }
-    const dx = point.x - gesture.last!.x, dy = point.y - gesture.last!.y;
-    if (!gesture.moved && Math.hypot(point.x - gesture.start!.x, point.y - gesture.start!.y) < DRAG_START) return;
-    if (!gesture.moved) { gesture.moved = true; root!.classList.add('is-dragging'); setHover(null); }
+    if (gesture.kind === 'pinch' || gesture.id !== event.pointerId) return;
+    const dx = point.x - gesture.last.x, dy = point.y - gesture.last.y;
+    if (!gesture.moved && !isDrag(Math.hypot(point.x - gesture.from.x, point.y - gesture.from.y), gesture.type)) return;
+    if (!gesture.moved) { gesture.moved = true; rig.beginDrag(); root!.classList.add('is-dragging'); setHover(null); }
     gesture.last = point;
-    // Turning and tilting is for the closest level; farther out the map stays flat-on.
-    if (gesture.kind === 'orbit' && level === NIGERIA) rig.orbit(clamp(rig.view.yaw - dx * 0.005, -0.6, 0.6) - rig.view.yaw, clamp(rig.view.pitch + dy * 0.004, 0.7, 1.4) - rig.view.pitch);
-    else rig.panScreen(dx, dy);
+    // The ground under the pointer when it went down stays under it.
+    const [nx, ny] = ndc(point);
+    if (!gesture.grab || !rig.dragTo(gesture.grab, nx, ny)) rig.panScreen(dx, dy);
+    flick.push(rig.view.x, rig.view.z, stampOf(event));
     moved();
   }
   function onUp(event: PointerEvent) {
     if (!pointers.has(event.pointerId)) return;
-    const point = local(event), was = gesture;
+    const point = local(event), was = gesture, cancelled = event.type === 'pointercancel';
     pointers.delete(event.pointerId);
-    root!.classList.remove('is-dragging');
-    if (pointers.size === 1 && was?.kind === 'pinch') { const rest = [...pointers.values()][0]!; gesture = { kind: 'pan', start: rest, last: rest, moved: true }; return; }
+    if (was?.kind === 'pinch') {
+      const rest = [...pointers.entries()][0];
+      // One finger stays down: it carries on as a drag from where it is, and nothing glides from a pinch.
+      if (rest) { gesture = { kind: 'pan', id: rest[0], moved: true, from: rest[1], last: rest[1], down: now(), type: 'touch', grab: ground(rest[1]), span: 1, mid: rest[1] }; flick.clear(); }
+      else { gesture = null; rig.endDrag(); root!.classList.remove('is-dragging'); moved(); }
+      return;
+    }
+    if (!was || was.id !== event.pointerId) return;
     gesture = null;
-    if (!was || was.moved || event.type === 'pointercancel') return;
+    root!.classList.remove('is-dragging');
+    if (was.moved) {
+      // A flick glides on; a drag that had stopped before the finger lifted does not, and nothing glides for a player who asked for less motion.
+      rig.endDrag(!reducedMotion && !cancelled ? flick.velocity(stampOf(event)) : null);
+      moved();
+      return;
+    }
+    // Only a quick press that stayed put is a tap: one held for too long selects nothing.
+    if (cancelled || !isTap(0, now() - was.down, was.type)) return;
     const t = now(), double = t - lastTap.t < DOUBLE_MS && Math.hypot(point.x - lastTap.x, point.y - lastTap.y) < 28;
     lastTap = double ? { t: -1e9, x: 0, y: 0 } : { t, x: point.x, y: point.y };
     const hit = pickAt(point.x, point.y);
@@ -944,7 +993,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (double) {
       // Twice on a region: go to it. Twice on open water: just closer.
       if (hit) { selected = { kind: hit.kind, id: hit.id }; select(selected, { flyTo: true }); }
-      else { const [nx, ny] = ndc(point), ground = rig.groundAt(nx, ny); if (ground) fly({ x: ground.x, z: ground.z, distance: rig.view.distance * 0.5, yaw: rig.view.yaw }, 0.45); }
+      else { const spot = ground(point); if (spot) fly({ x: spot.x, z: spot.z, distance: rig.view.distance * 0.5, yaw: 0 }, 0.45); }
       return;
     }
     select(hit, { from: 'map' });
@@ -960,9 +1009,10 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function onWheel(event: WheelEvent) {
     event.preventDefault();
     if (entering || !fits) return;
-    const delta = event.deltaMode === 1 ? event.deltaY * 16 : event.deltaY;
+    const delta = event.deltaY * (event.deltaMode === 1 ? 32 : event.deltaMode === 2 ? 320 : 1);
     rig.hold();
-    zoomBy(Math.exp(clamp(delta, -240, 240) * 0.0016), ...ndc(local(event)));
+    // A trackpad pinch arrives as a wheel with Ctrl held, in much smaller steps.
+    zoomBy(Math.exp(clamp(delta, -240, 240) * (event.ctrlKey ? 0.01 : 0.0016)), ...ndc(local(event)));
   }
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);

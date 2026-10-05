@@ -8,12 +8,15 @@ import { NIGERIA, AROUND, WATER } from './data/nigeria.ts';
 import { decodeTopology, decodeInts, encodeInts, encodeArc, selfIntersections, ringArea2 } from './topo.ts';
 import { createPicker } from './pick.ts';
 import { EXTENT, project, relLon, unproject } from './projection.ts';
-import { FRAME_MARGIN, HYSTERESIS, crumbs, focusLevel, levelAt, pitchAt, thresholds } from './levels.ts';
+import { FRAME_MARGIN, HYSTERESIS, LEASH_FLOOR, crumbs, focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { EDGE_MARGIN, LABEL_CAP, placeLabels, textWidth } from './labels.ts';
 import { DOT_EXACT_PX, MIN_TOUCH_PX, cityHit } from './city-hit.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
+import * as THREE from 'three';
+import { createRig } from '../camera.ts';
+import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
 import { ATLAS, ATLAS_LEVELS, ZONES, AFRICA_GROUPS, canEnter, cityEntry, plannedRoutes, regionEntry, regionStatus, stateOfCity, MORE_REGIONS } from '../regions.ts';
 import { allCityLinks, cityRules, playableCityIds } from '../../game/cities/registry.ts';
 
@@ -513,3 +516,56 @@ test('taps at 390 × 844: every open city is selectable by its dot and by its na
   assert.equal(cityHit({ x: 300, y: 300 }, dots), null, 'far from every city: the caller falls back to the state')
   assert.equal(cityHit({ x: 100, y: 130 }, [{ id: 'n', x: 400, y: 400, label: { left: 90, right: 130, top: 110, bottom: 124 } }]), 'n', 'a name is a target at least 44 px tall')
 })
+
+test('the map is dragged by the ground it was grabbed on, at every tilt the atlas uses, and pulls back to the middle of the world', () => {
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 4000);
+  const fit = { near: 3, far: 40 };
+  const rig = createRig(THREE, camera, { minX: EXTENT.minX, maxX: EXTENT.maxX, minZ: -EXTENT.maxY, maxZ: -EXTENT.minY, minDistance: 0.4, leash: (distance) => leashAt(distance, fit.near, fit.far) });
+  for (const [width, height] of [[390, 844], [1440, 900], [3440, 1300]] as const) {
+    rig.setViewport(width, height);
+    const [lon, lat] = [8, 9], [x, y] = project(lon, lat);
+    for (const [distance, pitch] of [[3, 1.04], [12, 1.44], [40, 1.5]] as const) {
+      rig.jump({ x, z: -y, distance, pitch, yaw: 0 });
+      const grab = rig.groundAt(0.2, -0.3)!;
+      rig.beginDrag();
+      for (const [nx, ny] of [[0.1, -0.2], [-0.2, 0.1]] as const) {
+        assert.equal(rig.dragTo(grab, nx, ny), true);
+        const under = rig.groundAt(nx, ny)!;
+        assert.ok(Math.abs(under.x - grab.x) < 1e-6 && Math.abs(under.z - grab.z) < 1e-6, `${width}x${height} at ${distance}: the point under the finger drifted`);
+      }
+      rig.endDrag();
+    }
+  }
+  // Pulled back until the world fits, the view is centred on it whatever was looked at before.
+  rig.jump({ x: EXTENT.maxX, z: -EXTENT.maxY, distance: fit.far });
+  const middleX = (EXTENT.minX + EXTENT.maxX) / 2, middleZ = -(EXTENT.minY + EXTENT.maxY) / 2;
+  assert.ok(Math.abs(rig.view.x - middleX) <= (EXTENT.maxX - EXTENT.minX) / 2 * LEASH_FLOOR + 1e-9);
+  assert.ok(Math.abs(rig.view.z - middleZ) <= (EXTENT.maxY - EXTENT.minY) / 2 * LEASH_FLOOR + 1e-9);
+});
+
+test('the leash is the whole world up close, narrows steadily with distance, and is harmless with odd fits', () => {
+  assert.equal(leashAt(3, 3, 40), 1);
+  assert.equal(leashAt(1, 3, 40), 1, 'closer than the closest fit is no tighter');
+  assert.equal(leashAt(40, 3, 40), LEASH_FLOOR);
+  assert.equal(leashAt(400, 3, 40), LEASH_FLOOR, 'past the widest fit is no looser');
+  let last = 1;
+  for (const distance of [3, 5, 8, 13, 20, 30, 40]) { const share = leashAt(distance, 3, 40); assert.ok(share <= last + 1e-12 && share >= LEASH_FLOOR, `${distance}: ${share}`); last = share; }
+  assert.equal(leashAt(10, 5, 5), 1); assert.equal(leashAt(10, 0, 5), 1); assert.equal(leashAt(Number.NaN, 3, 40) >= LEASH_FLOOR || Number.isNaN(leashAt(Number.NaN, 3, 40)), true);
+});
+
+test('a flick on the atlas glides a short way and stops; a press that moved little and was quick is a tap, a long or travelled one is not', () => {
+  const camera = new THREE.PerspectiveCamera(30, 1.6, 0.1, 4000);
+  const rig = createRig(THREE, camera, { minX: EXTENT.minX, maxX: EXTENT.maxX, minZ: -EXTENT.maxY, maxZ: -EXTENT.minY, minDistance: 0.4 });
+  rig.setViewport(1440, 900);
+  rig.jump({ x: 0, z: 0, distance: 6, pitch: 1.04, yaw: 0 });
+  const flick = createFlick();
+  for (let i = 0; i < 5; i++) flick.push(i * 0.05, 0, 1000 + i * 16);
+  const velocity = flick.velocity(1000 + 4 * 16 + 10);
+  assert.ok(velocity && velocity.x > 0);
+  rig.beginDrag(); rig.endDrag(velocity); assert.equal(rig.moving, true);
+  let frames = 0; while (rig.step(1 / 60) && frames < 600) frames += 1;
+  assert.ok(frames > 3 && frames < 150 && rig.view.x > 0, `${frames} frames`);
+  rig.beginDrag(); rig.endDrag(null); assert.equal(rig.moving, false, 'no glide without a velocity (reduced motion passes none)');
+  assert.equal(isTap(2, 120), true); assert.equal(isTap(2, 400), false, 'a press held for 350 ms or more selects nothing');
+  assert.equal(isTap(12, 100), false); assert.equal(isDrag(12), true); assert.equal(isDrag(8, 'touch'), false, 'a finger gets more room before a press is a drag');
+});

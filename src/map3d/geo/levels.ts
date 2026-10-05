@@ -35,6 +35,15 @@ export function levelAt(distance: number, cuts: readonly number[], current = -1)
   return level;
 }
 
+/** The share of the world's width and height the view may be centred within when the camera is this far out: all of it up close, only the middle when the whole world fits. */
+export const LEASH_FLOOR = 0.12;
+/** @param near the closest level's fit distance @param far the widest level's fit distance */
+export function leashAt(distance: number, near: number, far: number): number {
+  if (!(far > near) || !(near > 0)) return 1;
+  const t = Math.min(1, Math.max(0, Math.log(distance / near) / Math.log(far / near)));
+  return 1 - (1 - LEASH_FLOOR) * t;
+}
+
 /** How far outside a level's frame the view may be centred and still show that level, as a share of the frame's size. */
 export const FRAME_MARGIN = 0.3;
 /**

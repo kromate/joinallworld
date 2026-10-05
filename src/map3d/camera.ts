@@ -21,7 +21,7 @@ import { glide, northUp, rubber, wrapAngle } from '../scene/gesture.ts';
 
 export interface RigView { x: number; z: number; yaw: number; pitch: number; distance: number }
 /** What the rig needs to know of the city: the board it may wander over, the land to fit, and optional limits. */
-export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number; /** The pack draws the land around its state: the whole-state view is straight down, unturned, with that land filling what the state does not. */ context?: boolean; /** The state has no coast to leave room for: its whole-state view is centred, not nudged north. */ inland?: boolean }
+export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number; /** The pack draws the land around its state: the whole-state view is straight down, unturned, with that land filling what the state does not. */ context?: boolean; /** The state has no coast to leave room for: its whole-state view is centred, not nudged north. */ inland?: boolean; /** How much of the board may be wandered over at a distance, 0 (only the middle) to 1 (all of it): a map of the whole world cannot be dragged half off the screen. */ leash?: (distance: number) => number }
 /** Pixels of the canvas the HUD covers. */
 export interface RigInsets { left?: number; top?: number; right?: number; bottom?: number }
 export interface RigPoint { x: number; z: number; y?: number }
@@ -87,12 +87,19 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
 
   /** How far past the land's edge a dragged view may be pulled. */
   const margin = reach * 0.05;
+  /** The ground the view may look at from this far: the whole of `roam`, or a middle part of it where the pack asks for a leash. */
+  function range(distance: number) {
+    const share = bounds.leash ? clamp(bounds.leash(distance), 0, 1) : 1;
+    if (share >= 1) return roam;
+    const x = (roam.minX + roam.maxX) / 2, z = (roam.minZ + roam.maxZ) / 2, halfX = (roam.maxX - roam.minX) / 2 * share, halfZ = (roam.maxZ - roam.minZ) / 2 * share;
+    return { minX: x - halfX, maxX: x + halfX, minZ: z - halfZ, maxZ: z + halfZ };
+  }
   function limit<T extends RigView>(target: T, soft = false): T {
     target.distance = clamp(target.distance, floor, maxDistance);
     target.pitch = clamp(target.pitch, pitchFloor(target.distance), PITCH_MAX);
     // What is looked at never leaves the land (plus the sea plots), so the city cannot be dragged out of sight.
-    const give = soft ? margin : 0;
-    target.x = clamp(target.x, roam.minX - give, roam.maxX + give); target.z = clamp(target.z, roam.minZ - give, roam.maxZ + give);
+    const give = soft ? margin : 0, wander = range(target.distance);
+    target.x = clamp(target.x, wander.minX - give, wander.maxX + give); target.z = clamp(target.z, wander.minZ - give, wander.maxZ + give);
     return target;
   }
   function apply() {
@@ -178,15 +185,16 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
       const under = groundAt(nx, ny);
       if (!under) return false;
       // Moving the view moves what is under every pixel by the same amount, so one step lands the grabbed point exactly under the pointer.
-      view.x = rubber(view.x + grab.x - under.x, roam.minX, roam.maxX, margin);
-      view.z = rubber(view.z + grab.z - under.z, roam.minZ, roam.maxZ, margin);
+      const wander = range(view.distance);
+      view.x = rubber(view.x + grab.x - under.x, wander.minX, wander.maxX, margin);
+      view.z = rubber(view.z + grab.z - under.z, wander.minZ, wander.maxZ, margin);
       apply();
       return true;
     },
     beginDrag() { dragging = true; overscroll = false; goal = null; spin = 0; flick = null; },
     endDrag(velocity = null) {
       dragging = false;
-      const outside = view.x < roam.minX || view.x > roam.maxX || view.z < roam.minZ || view.z > roam.maxZ;
+      const wander = range(view.distance), outside = view.x < wander.minX || view.x > wander.maxX || view.z < wander.minZ || view.z > wander.maxZ;
       if (outside) { overscroll = true; goal = { from: { ...view }, to: limit({ ...view }), t: 0, seconds: 0.35 }; return; }
       overscroll = false;
       const speed = velocity ? Math.hypot(velocity.x, velocity.z) : 0;

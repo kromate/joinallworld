@@ -134,6 +134,8 @@ export interface SocialPlayerRecord {
   recv: { day: number; amount: number }
   /** Chats started with non-friends on Lagos day `day`. */
   chats: { day: number; count: number }
+  /** Who may ring this player (server/social/calls.ts); absent means the default, friends only. */
+  calls?: 'everyone' | 'friends' | 'nobody'
 }
 export interface MessageRecord {
   seq: number

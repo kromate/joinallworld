@@ -18,6 +18,7 @@ import LinkButton from '../growth/LinkButton.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
+import CallSettings from '../calls/CallSettings.vue'
 import { HINTS_KEY, NOT_SAVED, OPTIONS, SESSION_RULES, SETTINGS_KEY, WALLPAPER_NOT_SAVED, hintsOn, readSettings } from './settingsModel.ts'
 import type { SettingId } from './settingsModel.ts'
 
@@ -70,6 +71,8 @@ onMounted(() => { void growth.load() })
     </div>
     <p class="settings-note">No audio in this beta yet: your choice is saved on this device for when sound ships.</p>
     <p v-if="warning" class="ui-error" role="alert">{{ warning }}</p>
+
+    <CallSettings />
 
     <h3 class="ui-section">This device</h3>
     <div class="ui-rows">

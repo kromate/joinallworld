@@ -130,6 +130,9 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   let peopleDirty = false
   let profileVersion = 0
   const peopleWatchers = new Set<(people: PeopleState | null) => void>()
+  /** Other features that share this socket (calls): they get every frame whose type starts with their prefix, and are told when it closes. */
+  const frameListeners = new Set<(frame: { type: string }) => void>()
+  const closeListeners = new Set<() => void>()
 
   /** Call `listener` whenever the who-is-here listing changes (the scene host draws its crowd from it). */
   function onPeople(listener: (people: PeopleState | null) => void): () => void { peopleWatchers.add(listener); return () => peopleWatchers.delete(listener) }
@@ -278,6 +281,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     if (!message || typeof message.type !== 'string') return
     // The Worker's liveness probe: answered at once, or the social socket is closed as idle.
     if ((message.type as string) === 'heartbeat') { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return }
+    if (message.type.startsWith('call-')) { for (const listener of [...frameListeners]) listener(message); return }
     switch (message.type) {
       case 'dm': {
         if (!message.conv || !message.message) return
@@ -363,6 +367,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     current.onclose = () => {
       if (ws !== current) return
       ws = null; state.houseRoom = null; joiningHouse = null
+      for (const listener of [...closeListeners]) listener()
       if (connected() && attempts < MAX_ATTEMPTS) { state.socket = 'reconnecting'; timer = env.setTimeout(connectSocket, Math.min(1000 * 2 ** attempts, 15000)); attempts += 1 }
       else state.socket = 'offline'
       refresh()
@@ -383,9 +388,21 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     env.clearTimeout(timer); timer = null
     const old = ws; ws = null
     state.socket = 'idle'
+    for (const listener of [...closeListeners]) listener()
     try { old?.close() } catch { /* already closed */ }
     peopleChanged()
   }
+
+  /** Send one frame on the open socket; false when there is none. */
+  function sendFrame(frame: object): boolean {
+    if (ws?.readyState !== 1) return false
+    ws.send(JSON.stringify(frame))
+    return true
+  }
+  /** Call `listener` with every `call-*` frame the socket receives. */
+  function onCallFrame(listener: (frame: { type: string }) => void): () => void { frameListeners.add(listener); return () => frameListeners.delete(listener) }
+  /** Call `listener` whenever the socket closes (also when the identity changed). */
+  function onSocketClose(listener: () => void): () => void { closeListeners.add(listener); return () => closeListeners.delete(listener) }
 
   /** The landing of a brand-new visitor handled the invite link itself (src/life-main.js landJoin): do not also open the Invite app for it. */
   function takeLinkHost(): string | null { const host = state.linkHost; state.linkHost = null; return host }
@@ -411,6 +428,6 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     }
   }
 
-  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, cityId, newClientId, call, perform, refreshLife, sync, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
+  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, sendFrame, onCallFrame, onSocketClose, cityId, newClientId, call, perform, refreshLife, sync, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
 }
 export type SocialClient = ReturnType<typeof createSocialClient>

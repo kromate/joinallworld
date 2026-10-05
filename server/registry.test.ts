@@ -169,7 +169,7 @@ test('socket registry rejects duplicate or malformed message types and lists the
   for (const type of CORE) assert.ok(types.includes(type), `core message type ${type} is registered`);
   // The rooms module owns exactly the core types; every other type carries its owner's prefix.
   assert.deepEqual(Object.keys((WS_MODULES[0]?.(ctx) as WsHandlers | undefined)?.messages ?? {}).sort(), CORE);
-  for (const type of types.filter((item) => !CORE.includes(item))) assert.match(type, /^(dm|group|friend|invite|people|table)-/, `${type} is not prefixed with its area`);
+  for (const type of types.filter((item) => !CORE.includes(item))) assert.match(type, /^(dm|group|friend|invite|people|table|call)-/, `${type} is not prefixed with its area`);
   assert.throws(() => buildSocketHandlers(ctx, [...WS_MODULES, () => ({ messages: { chat: () => {} } })]), /Duplicate socket message type/);
   assert.throws(() => buildSocketHandlers(ctx, [() => ({ messages: { 'Bad Type': () => {} } })]), /Invalid socket message handler/);
   assert.throws(() => buildSocketHandlers(ctx, [unchecked<WsHandlerModule>(() => ({ messages: { ping: { room: true } } }))]), /Invalid socket message handler/);

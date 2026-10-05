@@ -55,6 +55,13 @@ export const EVENTS: Record<string, EventSpec> = {
   save_character_done: { from: 'quick-start', props: { activities: 'number', ms: 'number' }, when: 'Once per life: the life settled in (it has its local government and its house).', why: 'Funnel step 5: guest → resident.' },
   join_landed: { from: 'quick-start', props: { code: 'string', ms: 'number' }, when: 'A new visitor’s invite link was answered (code: joined | here | at_home | reconnecting | out | offline | refused).', why: 'How often an invite puts two people in the same place.' },
 
+  // ---- The walkthrough and the shortcuts sheet (src/app/features/tour). Step numbers and a source word only.
+  tour_started: { from: 'quick-start', props: { replay: 'boolean', steps: 'number' }, when: 'The first-time walkthrough started (replay: it was asked for from Help or Settings).', why: 'How many new players are shown the tour, and how many ask for it again.' },
+  tour_step: { from: 'quick-start', props: { index: 'number' }, when: 'A step of the walkthrough came on screen (its position, from 0).', why: 'Where players are when they stop reading.' },
+  tour_skipped: { from: 'quick-start', props: { at: 'number' }, when: 'The walkthrough was skipped (Skip tour, or Esc) at this step.', why: 'Which step loses people.' },
+  tour_finished: { from: 'quick-start', props: { steps: 'number' }, when: 'The walkthrough was finished at its last card.', why: 'How many reach the end.' },
+  shortcuts_opened: { from: 'quick-start', props: { from: 'string' }, when: 'The shortcuts sheet was opened (from: key | help | tour).', why: 'Whether people look for the shortcuts, and where from.' },
+
   // ---- After the first minute (derived by telemetry from the server’s states: src/telemetry/funnel.ts)
   activity_completed: { from: 'client', props: { activity_id: 'string', venue_id: 'string' }, when: 'Every time a timed activity ran to its end (not when cancelled).', why: 'What players actually do; engagement per venue.' },
   first_travel: { from: 'client', props: { mode: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed trip.', why: 'Funnel step 6.' },

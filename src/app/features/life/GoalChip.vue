@@ -13,6 +13,7 @@ import { useApp } from '../../state/app.ts'
 import { keepNudges, nudgesOf } from '../../../quick-start/entry.ts'
 import { NUDGE_QUIET_MS, nextNudge, nudged } from '../../../quick-start/model.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import { tour } from '../tour/tourState.ts'
 import GlyphText from '../kit/GlyphText.vue'
 import { chipAction, chipLabel, lagosDay, newFeed, rememberSeq } from './goalChipModel.ts'
 
@@ -38,7 +39,7 @@ const signature = computed(() => JSON.stringify([step.value, view.value.goals.se
 
 function bookkeeping(): void {
   const now = view.value, state = game.state.value
-  if (!now.connected) return
+  if (!now.connected || tour.active) return
   const { seq, feed } = now.goals
   lastSeq = rememberSeq(seq, lastSeq)
   for (const item of newFeed(feed, lastSeq)) game.toast(item.text, 'good')
@@ -57,7 +58,7 @@ function bookkeeping(): void {
       nudging = false
       // …nor on top of any other sheet (the analytics question is its own dialog).
       const latest = game.view.value
-      const still = latest.onboarding?.guest && !game.state.value.activeAction && !document.querySelector('dialog[open]')
+      const still = latest.onboarding?.guest && !game.state.value.activeAction && !document.querySelector('dialog[open]') && !tour.active
       if (!still) return // asked again at the next change
       keepNudges(who, nudged(nudgesOf(who), reason, day, game.view.value.now))
       shell.open('onboarding', { nudge: reason })
@@ -72,10 +73,12 @@ function bookkeeping(): void {
   }
 }
 watch(signature, bookkeeping, { immediate: true, flush: 'post' })
+// The walkthrough is over: whatever waited for it (the offer to settle in) is looked at again.
+watch(() => tour.active, (on) => { if (!on) bookkeeping() }, { flush: 'post' })
 </script>
 
 <template>
-  <button type="button" class="life-job goal-chip" :class="`is-${step.kind}`" :data-seq="view.goals.seq" :data-live="view.connected ? 1 : 0" :aria-label="chipLabel(step)" @click="press()">
+  <button type="button" class="life-job goal-chip" data-tour="goal" :class="`is-${step.kind}`" :data-seq="view.goals.seq" :data-live="view.connected ? 1 : 0" :aria-label="chipLabel(step)" @click="press()">
     <span aria-hidden="true"><GameIcon inline kind="goal" :id="step.kind === 'goal' ? step.id : undefined" :emoji="step.icon" /></span>
     <div>
       <strong>{{ step.title }}</strong>

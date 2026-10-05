@@ -30,7 +30,7 @@ watch(needs, (now) => {
 </script>
 
 <template>
-  <div class="needs-strip" role="group" aria-label="Your needs">
+  <div class="needs-strip" data-tour="needs" role="group" aria-label="Your needs">
     <div v-for="need in needs" :key="`${need.id}:${flashes[need.id]?.run ?? 0}`" class="need" :class="[flashes[need.id] ? `is-${flashes[need.id]?.way}` : undefined, { 'is-low': need.value < 35 }]" :title="need.label">
       <GameIcon :name="need.id" :size="15" />
       <BaseMeter compact :label="need.label" :value="need.value" />

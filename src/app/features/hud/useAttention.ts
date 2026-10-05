@@ -10,6 +10,7 @@ import type { Attention, NextStep, Point, StepContext } from '../../../ui/attent
 import { isTrip } from '../venue/venueModel.ts'
 import { useApp } from '../../state/app.ts'
 import { COACH_KEY } from './coachModel.ts'
+import { tour } from '../tour/tourState.ts'
 
 /** How many times each situational pointer has been acted on (it retires after a few: attention.ts TAPER). */
 export const SEEN_KEY = 'joinallworld-hints-seen'
@@ -48,6 +49,8 @@ export function useAttention() {
   }
   /** After the DOM the ring points into has been drawn (the venue panel, or the phone once it is open). */
   function point(): void {
+    // The walkthrough is talking: no ring, no bubble, and nothing counted as acted on. They come back when it ends.
+    if (tour.active) { for (const node of document.querySelectorAll('#life-dialog .is-coach')) node.classList.remove('is-coach'); attention?.clear(); step.value = null; return }
     const next = evaluate()
     // A step that was showing and is now gone (or replaced) was acted on: count it, so the situational pointers taper off.
     if (stepId && stepId !== 'goal' && stepId !== next?.id) {
@@ -67,6 +70,7 @@ export function useAttention() {
 
   /** Things that happen elsewhere: a card that has just appeared, money, a low need, something new in More. */
   function notice(): void {
+    if (tour.active) { lastCash = game.state.value.cash; return }
     if (!attention) return
     const state = game.state.value, view = game.view.value
     const life = `${view.session?.id ?? ''}:${view.cityId}`
@@ -111,7 +115,7 @@ export function useAttention() {
     void nextTick(() => { point(); notice() })
   })
   onBeforeUnmount(() => { document.removeEventListener('pointerdown', onClick, true); window.removeEventListener('jaw:hints', onHints); attention?.destroy(); attention = null })
-  watch([game.state, game.mode, shell.sheet, off, () => shell.ui.clean, () => shell.ui.expanded, () => shell.ui.trayOpen], () => { void nextTick(() => { point(); notice() }) }, { flush: 'post' })
+  watch([game.state, game.mode, shell.sheet, off, () => shell.ui.clean, () => shell.ui.expanded, () => shell.ui.trayOpen, () => tour.active], () => { void nextTick(() => { point(); notice() }) }, { flush: 'post' })
   /** The goal line the coach speaks for (the first starter goals); null when the pointer is only a ring or a bubble. */
   const coach = computed(() => (step.value?.id === 'goal' && step.value.bubble ? step.value : null))
   return { step, coach, dismiss }

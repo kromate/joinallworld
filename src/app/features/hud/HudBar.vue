@@ -45,7 +45,7 @@ function onSaved(): void {
 </script>
 
 <template>
-  <section class="hud-bar" aria-label="Player status">
+  <section class="hud-bar" data-tour="hud" aria-label="Player status">
     <i class="hud-mark" aria-hidden="true"><GameIcon name="globe" :size="19" /></i>
     <span class="hud-clock">{{ view.clock }}</span>
     <span class="hud-mood" :class="`is-${mood.tone}`"><GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /> {{ mood.word }}</span>

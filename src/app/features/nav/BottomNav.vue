@@ -30,7 +30,7 @@ defineExpose({ navigate })
 
 <template>
   <nav class="life-nav" data-slot="nav" aria-label="Main navigation">
-    <button v-for="tab in tabs" :key="tab.id" type="button" :data-nav="tab.id" :class="{ 'is-selected': tab.selected, 'is-off': tab.reason }" :aria-disabled="tab.reason ? 'true' : undefined" :aria-current="tab.selected ? 'page' : undefined" :title="tab.reason ?? undefined" @click="navigate(tab.id, tab.reason)">
+    <button v-for="tab in tabs" :key="tab.id" type="button" :data-nav="tab.id" :data-tour="`nav-${tab.id}`" :class="{ 'is-selected': tab.selected, 'is-off': tab.reason }" :aria-disabled="tab.reason ? 'true' : undefined" :aria-current="tab.selected ? 'page' : undefined" :title="tab.reason ?? undefined" @click="navigate(tab.id, tab.reason)">
       <GameIcon :name="tab.id" /><span>{{ tab.label }}</span>
     </button>
   </nav>

@@ -1,6 +1,6 @@
 # Allworld
 
-Allworld is an open-source, lightweight browser game about a digital world you can live in: explore cities and cultures, work, travel, make friends and play. Today Lagos, Ibadan and Ogun's cities (Abeokuta, Ota, Ijebu-Ode and Sagamu) are open and playable and more places are opening; the in-game atlas shows the world, then Africa, then Nigeria, with other places marked as coming. You pick a city on the map, travel between venues on a 3D city map, walk around inside them, and spend time on activities that change your cash and needs. Cities are meant to become reusable packs rather than one-off builds.
+Allworld is an open-source, lightweight browser game about a digital world you can live in: explore cities and cultures, work, travel, make friends and play. Today nine cities are open: Lagos, Ibadan, Ogun's cities (Abeokuta, Ota, Ijebu-Ode and Sagamu), Port Harcourt, Abuja and Kano, and more places are opening; the in-game atlas shows the world, then Africa, then Nigeria, with other places marked as coming. You pick a city on the map, travel between venues on a 3D city map, walk around inside them, and spend time on activities that change your cash and needs. Cities are meant to become reusable packs rather than one-off builds.
 
 Allworld (this repository, `joinallworld`) is original work built in a new repository. No files, assets or code were copied from the earlier Allworld v1 project or from any other game.
 

@@ -97,7 +97,7 @@ test('the Map overview: the handle, the filters, the layers and every place with
   const listed = view.travel.destinations.filter((item) => item.kind !== 'soon')
   assert.equal((html.match(/<li><button/g) ?? []).length, listed.length, 'every place is in the list')
   assert.ok(words.includes('You are here'))
-  assert.ok(words.includes('Nigeria map · more cities soon'))
+  assert.ok(words.includes('World map · 9 cities open'))
   assert.match(html, /<svg class="ui-glyph"/, 'places and layers are drawn with glyphs')
   assert.doesNotMatch(html, /\p{Extended_Pictographic}/u, 'never the content emoji')
 })

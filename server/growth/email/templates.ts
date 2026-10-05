@@ -134,7 +134,7 @@ export function accountWelcomeMail({ name, playUrl, contact, cities = [] }: { na
       { title: 'Settle into your home', text: 'Finish your character if you have not yet, then pick where you live and make the place yours.' },
       { title: 'Find work and keep fed', text: 'Open your Phone and choose Jobs to find work. Your needs bars show energy, food and more, and the line under them says what to do next.' },
       { title: 'Meet the people who are online', text: 'The green count in the top bar shows who is online. Tap it, pick a player, then press Chat to write to them or Call to ring them. They choose whether to answer.' },
-      { title: 'Travel to another city', text: 'Open the Map, open its list and choose the country map at the bottom. Pick an open city to see what there is to do there, what the trip costs and how long it takes, then press Travel.' },
+      { title: 'Travel to another city', text: 'Open the Map, open its list and choose the world map at the bottom. Pick an open city to see what there is to do there, what the trip costs and how long it takes, then press Travel.' },
     ],
     invite: { title: 'Bring a friend', text: 'A world is better with someone you know in it. Press Invite in the top bar to share your own link.' },
     tip: 'On a keyboard, press ? at any time to see the shortcuts. To see the guided tour again, open your Phone, then Help, then Take the tour.',

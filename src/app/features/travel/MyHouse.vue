@@ -52,7 +52,7 @@ function showOnMap(): void {
     <h3>Your own house</h3>
     <p class="ui-note">You are visiting {{ estate.cityName }}: you have no home here yet. Everyone gets a starter house on their own plot, free — in the {{ estate.unit }} they choose.</p>
     <button v-if="!choosing" type="button" class="ui-button is-primary is-block" data-choose-lga @click="chooseLga">Choose your {{ estate.unit }}</button>
-    <LgaCard v-else heading="Choose your local government" compact />
+    <LgaCard v-else :heading="`Choose your ${estate.unit}`" compact />
   </section>
   <section v-else-if="estate" class="world-card" data-my-house>
     <h3>Your own house</h3>

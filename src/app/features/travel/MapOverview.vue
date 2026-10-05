@@ -4,7 +4,7 @@
 // screen-reader alternative to pointing at a building. What a switched-on layer shows stays
 // readable with the list closed, where the layer itself is in view.
 import { computed } from 'vue'
-import { cityRules } from '../../../game/cities/registry.ts'
+import { cityRules, playableCityIds } from '../../../game/cities/registry.ts'
 import type { AdsResponse, GovResponse } from '../../../types/civic.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -24,6 +24,8 @@ const view = game.view
 // The sea-plot layer is not offered on the map for now.
 const availableLayers = computed(() => LAYERS.filter(item => item.id !== 'sea'))
 const open = computed(() => isListOpen())
+/** The button to the atlas says how many cities can be travelled to today, read from the registry. */
+const openCities = playableCityIds().length
 const destinations = computed(() => view.value.travel.destinations)
 const places = computed(() => destinations.value.filter((item) => matchesFilter(item, mapUi.filter)))
 const weather = computed(() => view.value.health?.weather ?? null)
@@ -97,7 +99,7 @@ function showWorld(): void {
         <p>Closed places open again later in the day.</p>
         <button type="button" class="ui-button is-primary" @click="choose('all')">Show every place</button>
       </div>
-      <button type="button" class="map-chip-button map-world" @click="showWorld"><GameIcon inline name="globe" /><span>Nigeria map · more cities soon</span></button>
+      <button type="button" class="map-chip-button map-world" @click="showWorld"><GameIcon inline name="globe" /><span>World map · {{ openCities }} cities open</span></button>
     </div>
   </div>
 </template>

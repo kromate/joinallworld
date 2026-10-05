@@ -34,6 +34,23 @@ import { createLife, dispatch, viewLife } from '${url('../life.ts')}';
 import { campusFor, loadCampus } from '${url('./campus-gate.ts')}';
 import { isStandIn } from '${url('./registry.ts')}';
 const input = JSON.parse(readFileSync(process.argv[1], 'utf8'));
+if (input.mode === 'client') {
+// The client, with a server that answers with a life that uses the campus: the answer is accepted whole, after the campus rules have been fetched.
+const { createClient } = await import('${url('../client.ts')}');
+const reply = (status, body) => ({ ok: status < 300, status, json: async () => body });
+const wanted = input.lives.find((life) => life.name === 'a student at the campus');
+const stored = new Map([['joinallworld-life-v1', JSON.stringify({ version: 1, state: wanted.raw, identity: { name: 'Ada' }, cityId: 'lagos' })]]);
+const changes = [];
+const fetchLife = async (path) => (path === '/api/session' ? reply(200, { session: { id: 'public-1', name: 'Ada' }, serverTime: 5000 }) : reply(200, { state: wanted.raw, serverTime: wanted.ctx.now }));
+const client = createClient({ fetch: fetchLife, now: () => wanted.ctx.now, setTimeout: () => 0, clearTimeout: () => {}, randomUUID: () => '11111111-1111-4111-8111-111111111111',
+  storage: { getItem: (key) => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) }, onChange: (state) => changes.push(state) });
+  const standInAtStart = isStandIn('unilagStudent');
+const before = client.state.unilagStudent.status;
+const connected = await client.connect();
+const client_ = { standInAtStart, before, connected, standIn: isStandIn('unilagStudent'), status: client.state.unilagStudent.status, programme: client.state.unilagStudent.programme, rides: client.state.unilagShuttle.rides, clubs: client.state.unilagCommunity.clubs };
+  process.stdout.write(JSON.stringify({ client: client_ }));
+  process.exit(0);
+}
 const results = [];
 let playing = true;
 try { dispatch(createLife(null), { type: 'cancel' }); } catch { playing = false; }
@@ -107,9 +124,17 @@ test('the browser engine rebuilds and views every life as the full engine does, 
   const dir = mkdtempSync(join(tmpdir(), 'browser-profile-'));
   try {
     const file = join(dir, 'lives.json');
-    writeFileSync(file, JSON.stringify({ lives: given.map(({ raw, ctx }) => ({ raw, ctx })) }));
-    const output = JSON.parse(execFileSync(process.execPath, ['--experimental-strip-types', '--no-warnings', '--import', `data:text/javascript,${encodeURIComponent(REGISTER)}`, '--input-type=module', '--eval', PROBE, file], { encoding: 'utf8', maxBuffer: 1 << 28 })) as
+    writeFileSync(file, JSON.stringify({ mode: 'lives', lives: given.map(({ name, raw, ctx }) => ({ name, raw, ctx })) }));
+    const clientFile = join(dir, 'client.json');
+    writeFileSync(clientFile, JSON.stringify({ mode: 'client', lives: given.map(({ name, raw, ctx }) => ({ name, raw, ctx })) }));
+    const probe = (input: string): string => execFileSync(process.execPath, ['--experimental-strip-types', '--no-warnings', '--import', `data:text/javascript,${encodeURIComponent(REGISTER)}`, '--input-type=module', '--eval', PROBE, input], { encoding: 'utf8', maxBuffer: 1 << 28 });
+    const clientRun = JSON.parse(probe(clientFile)) as { client: Record<string, unknown> };
+    const output = JSON.parse(probe(file)) as
       { playing: boolean; standInsLeft: boolean; results: { waited: boolean; refused: string | null; state: unknown; view: unknown }[] };
+    const campusLife = given.find((life) => life.name === 'a student at the campus');
+    const savedStudent = (campusLife?.raw as { unilagStudent: { status: string; programme: string }; unilagShuttle: { rides: number }; unilagCommunity: { clubs: string[] } }) ;
+    assert.deepEqual(clientRun.client, { standInAtStart: true, before: 'none', connected: true, standIn: false, status: savedStudent.unilagStudent.status, programme: savedStudent.unilagStudent.programme,
+      rides: savedStudent.unilagShuttle.rides, clubs: savedStudent.unilagCommunity.clubs }, 'a client that is given a life with campus state fetches the campus rules and keeps all of it');
     assert.equal(output.playing, false, 'the browser profile cannot play a life');
     assert.equal(output.standInsLeft, false, 'the campus rules were loaded');
     assert.equal(output.results.length, given.length);

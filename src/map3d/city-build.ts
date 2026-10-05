@@ -27,9 +27,9 @@ import { sign, textWidth } from '../scene/props.ts';
 import { drawLandmark, PLINTH } from './landmarks.ts';
 import type { Batch, LandmarkContext } from './landmarks.ts';
 import { miniVehicle, boat } from './vehicles.ts';
-import { roundPolygon, pointInPolygon } from './roads.ts';
+import { pointInPolygon } from './roads.ts';
 import type { Network, Road } from './roads.ts';
-import { rasterLgas } from './lga.ts';
+import { landOf, rasterLgas, scanRings } from './lga.ts';
 import { estateLayout } from './estates.ts';
 import type { Box4, CityPack, FabricStyle, LandKind, PackDistrict, Point2, Point3, XZ } from './types.ts';
 
@@ -91,6 +91,8 @@ export interface City {
   readonly time: string;
   setHome(house: string | null, own?: OwnHome | null): boolean;
   setLgas(on: boolean, own?: string | null): boolean;
+  /** Level of detail for a camera this far from the ground: returns true when something was shown or hidden. */
+  setDetail(distance: number): boolean;
   fronts: CityFront[];
   setTime(next: string): TimePreset;
   setTraffic(on: boolean): boolean;
@@ -100,7 +102,7 @@ export interface City {
 }
 /** createRaw: a hand-rolled mesh collector for flat things the batch has no primitive for. */
 export interface Raw {
-  shape(polygon: readonly Point2[], y: number, colour: string): void;
+  shape(polygon: readonly Point2[], y: number, colour: string, holes?: readonly (readonly Point2[])[]): void;
   wall(polygon: readonly Point2[], y0: number, y1: number, colour: string): void;
   ribbon(points: readonly Point3[], width: number, lift: number, colour: string, side?: number): void;
   strip(points: readonly Point3[], side: number, low: number, high: number | number[], colour: string, facing?: number): void;
@@ -113,6 +115,8 @@ export const WATER_Y = -0.5;
 export const LANDMARK_SCALE = 1.15;
 const LOT = PLINTH * LANDMARK_SCALE;
 const LAND_COLOURS: Record<LandKind, string> = { mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae' };
+/** The half-widths of the shallows and of the beach along a true-scale shoreline, in map units (100 m each at the frame's scale). */
+const SHALLOWS = 0.55, BEACH = 0.22;
 const ASPHALT = '#5d626b', KERB = '#e4dfcf', DASH = '#f6f2e2', PATH = '#dcd2b6';
 
 export const CITY_LIGHT: Readonly<Record<TimeOfDay, TimePreset>> = Object.freeze({
@@ -125,6 +129,10 @@ function mulberry(seed: number) { let a = seed >>> 0; return () => { a = (a + 0x
 const segmentDistance = (x: number, z: number, a: XZ, b: XZ) => { const dx = b.x - a.x, dz = b.z - a.z, t = Math.max(0, Math.min(1, ((x - a.x) * dx + (z - a.z) * dz) / (dx * dx + dz * dz || 1))); return Math.hypot(x - a.x - dx * t, z - a.z - dz * t); };
 const circle = (x: number, z: number, radius: number, sides = 12) => Array.from({ length: sides }, (_, i): [number, number] => [x + Math.cos((i / sides) * Math.PI * 2) * radius, z + Math.sin((i / sides) * Math.PI * 2) * radius]);
 const PYLON_STAYS = 5;
+/** Fabric outside the core is spaced this many times wider. */
+const FAR_SPREAD = 2.4;
+/** From this camera distance the instanced fabric is left out: a house is a speck, and a whole state reads as its shape. */
+export const FABRIC_FAR = 760;
 const inBox = (x: number, z: number, [x0, z0, x1, z1]: Box4) => x >= x0 && x <= x1 && z >= z0 && z <= z1;
 
 /** A hand-rolled mesh collector for flat things the batch has no primitive for: polygons, ribbons, walls. */
@@ -141,10 +149,13 @@ export function createRaw(THREE: Three): Raw {
   }
   const raw: Raw = {
     /** A flat polygon [[x, z], …] at height y, facing up. */
-    shape(polygon, y, colour) {
+    shape(polygon, y, colour, holes = []) {
+      // A ring closed by repeating its first point is opened first, so the indices the triangulation returns match the vertices pushed here.
+      const rings = [polygon, ...holes].map((ring) => { const a = ring[0], b = ring[ring.length - 1]; return a && b && ring.length > 3 && a[0] === b[0] && a[1] === b[1] ? ring.slice(0, -1) : ring; });
       const base = pos.length / 3;
-      for (const [x, z] of polygon) v(x, y, z, 0, 1, 0, colour);
-      for (const [a, b, c] of THREE.ShapeUtils.triangulateShape(polygon.map(([x, z]) => new THREE.Vector2(x, z)), [])) tri(base + a!, base + b!, base + c!);
+      for (const ring of rings) for (const [x, z] of ring) v(x, y, z, 0, 1, 0, colour);
+      const vectors = rings.map((ring) => ring.map(([x, z]) => new THREE.Vector2(x, z)));
+      for (const [a, b, c] of THREE.ShapeUtils.triangulateShape(vectors[0]!, vectors.slice(1))) tri(base + a!, base + b!, base + c!);
     },
     /** The vertical side of a closed polygon between two heights, facing outwards. */
     wall(polygon, y0, y1, colour) {
@@ -314,73 +325,95 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
 
   // ---- land --------------------------------------------------------------------------------
   const raw = createRaw(THREE);
-  const lands = pack.land.map((entry) => { const polygon = roundPolygon(entry.points, 2); return { ...entry, polygon, wide: offsetPolygon(polygon, 3) }; });
+  // `k` shrinks what is drawn on a road (widths, kerbs, parapets, piers) for a map in true scale; the road's length and the deck's height are the pack's.
+  const k = pack.roadScale ?? 1;
+  const lands = landOf(pack).map((entry) => ({ ...entry, exact: pack.land.find((land) => land.id === entry.id)?.exact === true }));
+  const closed = (ring: readonly Point2[]): Point3[] => [...ring, ring[0]!].map(([x, z]) => ({ x, y: 0, z }));
   for (const entry of lands) {
-    const sand = entry.kind === 'sand';
-    raw.shape(offsetPolygon(entry.polygon, 2.6), WATER_Y + 0.03, '#7cc6d6');                       // the shallows
-    raw.shape(offsetPolygon(entry.polygon, 1.1), WATER_Y + 0.14, sand ? '#f8efd2' : '#ecdcae');    // the beach rim
-    raw.wall(entry.polygon, WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
-    raw.shape(entry.polygon, sand ? -0.12 : 0, LAND_COLOURS[entry.kind] || LAND_COLOURS.mainland);
+    const sand = entry.kind === 'sand', holes = entry.holes ?? [];
+    if (entry.exact) {
+      // A real shoreline is drawn as given: the shallows and the beach are bands laid along it (half of each lies under the land), so no corner moves.
+      for (const ring of [entry.polygon, ...holes]) {
+        raw.ribbon(closed(ring), SHALLOWS * 2, WATER_Y + 0.03, '#7cc6d6');
+        raw.ribbon(closed(ring), BEACH * 2, WATER_Y + 0.14, sand ? '#f8efd2' : '#ecdcae');
+      }
+      raw.wall(entry.polygon, WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
+      for (const hole of holes) raw.wall([...hole].reverse(), WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
+    } else {
+      raw.shape(offsetPolygon(entry.polygon, 2.6), WATER_Y + 0.03, '#7cc6d6');                       // the shallows
+      raw.shape(offsetPolygon(entry.polygon, 1.1), WATER_Y + 0.14, sand ? '#f8efd2' : '#ecdcae');    // the beach rim
+      raw.wall(entry.polygon, WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
+    }
+    raw.shape(entry.polygon, sand ? -0.12 : 0, LAND_COLOURS[entry.kind] || LAND_COLOURS.mainland, holes);
   }
-  const buildable = lands.filter((entry) => entry.kind !== 'sand');
-  const onLand = (x: number, z: number, margin = 0) => buildable.some((entry) => pointInPolygon(x, z, entry.polygon)
-    && (!margin || ([[margin, 0], [-margin, 0], [0, margin], [0, -margin]] as [number, number][]).every(([dx, dz]) => pointInPolygon(x + dx, z + dz, entry.polygon))));
-  const onAnyLand = (x: number, z: number) => lands.some((entry) => pointInPolygon(x, z, entry.wide));
+  // Where the land is, as a grid: bit 1 is any land, bit 2 is land that may be built on. Looked up thousands of times by the fabric, the boats and the waves.
+  const gridCell = Math.max(0.5, Math.sqrt((width * (maxZ - minZ)) / 6e6)), gridW = Math.ceil(width / gridCell), gridH = Math.ceil((maxZ - minZ) / gridCell);
+  const mask = new Uint8Array(gridW * gridH);
+  for (const entry of lands) {
+    const bits = entry.kind === 'sand' ? 1 : 3;
+    scanRings([entry.polygon, ...(entry.holes ?? [])], minX, minZ, gridCell, gridW, gridH, (row, from, to) => { for (let i = row * gridW + from; i <= row * gridW + to; i++) mask[i]! |= bits; });
+  }
+  const bitAt = (x: number, z: number, bit: number) => { const col = Math.floor((x - minX) / gridCell), row = Math.floor((z - minZ) / gridCell); return col >= 0 && row >= 0 && col < gridW && row < gridH && (mask[row * gridW + col]! & bit) !== 0; };
+  const around = (x: number, z: number, margin: number): [number, number][] => [[x, z], [x + margin, z], [x - margin, z], [x, z + margin], [x, z - margin]];
+  const onLand = (x: number, z: number, margin = 0) => (margin ? around(x, z, margin).every(([px, pz]) => bitAt(px, pz, 2)) : bitAt(x, z, 2));
+  /** Land, or its shore (3 units round it): where no boat sails and no wave breaks. */
+  const onAnyLand = (x: number, z: number) => around(x, z, 3).some(([px, pz]) => bitAt(px, pz, 1));
 
   // ---- roads and bridges --------------------------------------------------------------------
   const b = createBatch(THREE), w = createBatch(THREE);
   const g: Builder = { b, w, at: (x, y, z, ry, draw) => b.at(x, y, z, ry, () => w.at(x, y, z, ry, () => draw(g), 0, 0, LANDMARK_SCALE), 0, 0, LANDMARK_SCALE) };
+  const hk = Math.sqrt(k), pk = Math.max(0.5, k);               // heights follow roads by the square root; paths never get thinner than half
   const segments: Segment[] = [];                              // every ground stretch of road, for keeping the fabric off it
   for (const road of network.roads) {
-    const wide = road.major ? 2.5 : 1.8;
-    raw.ribbon(road.points, wide + 0.7, road.bridge ? 0.05 : 0.035, KERB);
+    const wide = (road.major ? 2.5 : 1.8) * k;
+    raw.ribbon(road.points, wide + 0.7 * k, road.bridge ? 0.05 : 0.035, KERB);
     raw.ribbon(road.points, wide, road.bridge ? 0.08 : 0.06, ASPHALT);
     if (road.major) {
       for (let i = 1; i < road.points.length - 1; i += 2) {
         const a = road.points[i]!, c = road.points[i + 1]!, mid = { x: (a.x + c.x) / 2, y: (a.y + c.y) / 2, z: (a.z + c.z) / 2 };
-        raw.ribbon([{ x: a.x + (mid.x - a.x) * 0.3, y: a.y, z: a.z + (mid.z - a.z) * 0.3 }, mid], 0.16, road.bridge ? 0.1 : 0.08, DASH);
+        raw.ribbon([{ x: a.x + (mid.x - a.x) * 0.3, y: a.y, z: a.z + (mid.z - a.z) * 0.3 }, mid], 0.16 * k, road.bridge ? 0.1 : 0.08, DASH);
       }
     }
     // Every road end is rounded off, so two roads that meet at an angle join in a smooth corner and not a notch.
     for (const end of [road.points[0]!, road.points[road.points.length - 1]!]) {
-      raw.shape(circle(end.x, end.z, wide / 2 + 0.35), 0.035, KERB); raw.shape(circle(end.x, end.z, wide / 2), 0.06, ASPHALT);
+      raw.shape(circle(end.x, end.z, wide / 2 + 0.35 * k), 0.035, KERB); raw.shape(circle(end.x, end.z, wide / 2), 0.06, ASPHALT);
     }
     if (road.bridge) {
       // The parapets grow out of the ground with the ramp, so the deck leaves the road without a step.
-      const span = road.points.slice(1, -1), rise = span.map((point) => 0.42 * Math.min(1, point.y / (road.bridge * 0.4)));
-      const coping = span.map((point, i) => ({ ...point, y: point.y + Math.max(0.1, rise[i]!) }));
+      const span = road.points.slice(1, -1), rise = span.map((point) => 0.42 * hk * Math.min(1, point.y / (road.bridge * 0.4)));
+      const coping = span.map((point, i) => ({ ...point, y: point.y + Math.max(0.1 * hk, rise[i]!) }));
       for (const side of [-1, 1]) {
-        const edge = side * (wide / 2 + 0.35);
-        raw.strip(span, edge, -0.4, rise, '#efe9da', side); raw.strip(span, edge - side * 0.12, 0.05, rise.map((high) => Math.max(0.05, high)), '#d6cfbc', -side);
-        raw.ribbon(coping, 0.14, 0, '#f6f2e6', edge - side * 0.06);
+        const edge = side * (wide / 2 + 0.35 * k);
+        raw.strip(span, edge, -0.4, rise, '#efe9da', side); raw.strip(span, edge - side * 0.12 * k, 0.05, rise.map((high) => Math.max(0.05, high)), '#d6cfbc', -side);
+        raw.ribbon(coping, 0.14 * k, 0, '#f6f2e6', edge - side * 0.06 * k);
       }
       const mid = Math.floor(road.points.length / 2), middle = road.points[mid]!;
       let since = 99;
       for (let i = 1; i < road.points.length - 1; i++) {
         const point = road.points[i]!, previous = road.points[i - 1]!;
         since += Math.hypot(point.x - previous.x, point.z - previous.z);
-        if (since < 5.5 || onLand(point.x, point.z) || (road.pylon && Math.hypot(point.x - middle.x, point.z - middle.z) < 3.2)) continue;
+        if (since < 5.5 || onLand(point.x, point.z) || (road.pylon && Math.hypot(point.x - middle.x, point.z - middle.z) < 3.2 * k)) continue;
         since = 0;
         const next = road.points[i + 1]!, ry = Math.atan2(next.x - previous.x, next.z - previous.z), height = point.y - WATER_Y;
-        b.box(point.x, WATER_Y + height / 2 - 0.2, point.z, wide * 0.8, height, 0.5, '#cfc8b6', { ry });
-        b.box(point.x, WATER_Y + 0.12, point.z, wide * 0.95, 0.24, 0.9, '#b9b2a0', { ry });
+        b.box(point.x, WATER_Y + height / 2 - 0.2, point.z, wide * 0.8, height, 0.5 * k, '#cfc8b6', { ry });
+        b.box(point.x, WATER_Y + 0.12, point.z, wide * 0.95, 0.24, 0.9 * k, '#b9b2a0', { ry });
       }
       if (road.pylon) {
         // A cable-stayed pylon astride the deck at mid-span: two legs rise from pile caps in the water and lean in to one
         // mast head, a cross-beam carries the deck between them, and the stays fan down in two planes to the parapets.
         const before = road.points[mid - 1]!, after = road.points[mid + 1]!, ry = Math.atan2(after.x - before.x, after.z - before.z);
-        const foot = wide / 2 + 1.25, apex = 0.2, top = middle.y + 8.2, tall = top - WATER_Y, lean = Math.atan2(foot - apex, tall), stone = '#f4f0e6';
+        const foot = wide / 2 + 1.25 * k, apex = 0.2 * k, top = middle.y + 8.2 * hk, tall = top - WATER_Y, lean = Math.atan2(foot - apex, tall), stone = '#f4f0e6';
         const legAt = (y: number) => foot - (foot - apex) * ((y - WATER_Y) / tall);
         const heads: Record<number, Point3[]> = { [-1]: [], 1: [] };
         b.at(middle.x, 0, middle.z, ry, () => {
           for (const side of [-1, 1]) {
-            b.box(side * (foot + apex) / 2, WATER_Y + tall / 2, 0, 0.5, Math.hypot(foot - apex, tall), 0.62, stone, { rz: side * lean });
-            b.box(side * foot, WATER_Y + 0.2, 0, 1.4, 0.4, 1.6, '#b9b2a0');
+            b.box(side * (foot + apex) / 2, WATER_Y + tall / 2, 0, 0.5 * k, Math.hypot(foot - apex, tall), 0.62 * k, stone, { rz: side * lean });
+            b.box(side * foot, WATER_Y + 0.2, 0, 1.4 * k, 0.4, 1.6 * k, '#b9b2a0');
             for (let n = 1; n <= PYLON_STAYS; n++) heads[side]!.push(b.world(-side * 0.16, top + 0.1 + n * 0.3, 0));
           }
-          b.box(0, middle.y - 0.42, 0, legAt(middle.y - 0.42) * 2, 0.44, 0.5, stone);
-          b.box(0, top + 0.55, 0, 0.66, 2.5, 0.72, stone);
-          b.box(0, top + 1.88, 0, 0.86, 0.16, 0.92, '#d9d3c4');
+          b.box(0, middle.y - 0.42, 0, legAt(middle.y - 0.42) * 2, 0.44, 0.5 * k, stone);
+          b.box(0, top + 0.55, 0, 0.66 * k, 2.5, 0.72 * k, stone);
+          b.box(0, top + 1.88, 0, 0.86 * k, 0.16, 0.92 * k, '#d9d3c4');
           b.ico(0, top + 2.14, 0, 0.17, 0.17, 0.17, '#ff3b30', { layer: 'glow' });
         });
         for (const way of [-1, 1]) {
@@ -388,20 +421,20 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
           for (let i = mid + way; i > 1 && i < road.points.length - 2 && n < PYLON_STAYS; i += way) {
             const point = road.points[i]!, previous = road.points[i - way]!;
             run += Math.hypot(point.x - previous.x, point.z - previous.z);
-            if (run < (n + 1) * 1.45) continue;
+            if (run < (n + 1) * 1.45 * hk) continue;
             const a = road.points[i - 1]!, c = road.points[i + 1]!, length = Math.hypot(c.x - a.x, c.z - a.z) || 1, px = -(c.z - a.z) / length, pz = (c.x - a.x) / length;
             for (const side of [-1, 1]) {
-              const head = heads[side]![n]!, reach = side * (wide / 2 + 0.29);
+              const head = heads[side]![n]!, reach = side * (wide / 2 + 0.29 * k);
               const anchor = { x: point.x + px * reach, y: point.y + 0.4, z: point.z + pz * reach };
               const flat = Math.hypot(anchor.x - head.x, anchor.z - head.z), drop = head.y - anchor.y;
-              b.at(head.x, head.y, head.z, Math.atan2(anchor.x - head.x, anchor.z - head.z), () => b.box(0, -drop / 2, flat / 2, 0.055, Math.hypot(flat, drop), 0.055, '#e6eaec', { rx: -Math.atan2(flat, drop) }));
+              b.at(head.x, head.y, head.z, Math.atan2(anchor.x - head.x, anchor.z - head.z), () => b.box(0, -drop / 2, flat / 2, 0.055 * hk, Math.hypot(flat, drop), 0.055 * hk, '#e6eaec', { rx: -Math.atan2(flat, drop) }));
             }
             n += 1;
           }
         }
       }
     } else {
-      for (let i = 1; i < road.points.length; i++) segments.push({ a: road.points[i - 1]!, b: road.points[i]!, half: wide / 2 + 0.5 });
+      for (let i = 1; i < road.points.length; i++) segments.push({ a: road.points[i - 1]!, b: road.points[i]!, half: wide / 2 + 0.5 * k });
     }
   }
 
@@ -413,8 +446,8 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     if (!place.gate) return;
     const length = Math.hypot(place.gate.x - place.x, place.gate.z - place.z), k = Math.min(1, (LOT / 2 - 0.2) / (length || 1));
     const start = { x: place.x + (place.gate.x - place.x) * k, y: 0, z: place.z + (place.gate.z - place.z) * k };
-    raw.ribbon([start, place.gate], 1.3, 0.045, PATH);
-    segments.push({ a: start, b: place.gate, half: 1.2 });
+    raw.ribbon([start, place.gate], 1.3 * pk, 0.045, PATH);
+    segments.push({ a: start, b: place.gate, half: 1.2 * pk });
   };
   for (const [id, spot] of Object.entries(pack.sites)) {
     const venue = venues[id], node = network.places[id];
@@ -456,10 +489,13 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   // ---- what only this city has ----------------------------------------------------------------
   pack.decorate?.(b, { rng, w });
 
+  /** The metropolitan core: the default view, where the boats sail and the fabric is densest. The whole board when the pack names none. */
+  const core = pack.core ?? { minX: minX + 8, maxX: maxX - 8, minZ: minZ + 8, maxZ: maxZ - 8 };
+  const inCore = (x: number, z: number, pad = 0) => x >= core.minX - pad && x <= core.maxX + pad && z >= core.minZ - pad && z <= core.maxZ + pad;
   // ---- boats on the lagoon and the creek ------------------------------------------------------
   const hulls = ['#b5483f', '#2b5fa8', '#e0a23a', '#3f9a5a', '#ece2c6'];
   for (let i = 0, placed = 0; i < 400 && placed < 16; i++) {
-    const x = minX + 8 + rng() * (width - 16), z = minZ + 8 + rng() * (maxZ - minZ - 16);
+    const x = core.minX + 8 + rng() * (core.maxX - core.minX - 16), z = core.minZ + 8 + rng() * (core.maxZ - core.minZ - 16);
     if (onAnyLand(x, z) || network.roads.some((road) => road.bridge && road.points.some((point) => Math.hypot(point.x - x, point.z - z) < 5)) || plates.some((plate) => inBox(x, z, plate.box))) continue;
     boat(b, x, z, rng() * Math.PI * 2, hulls[placed % hulls.length]!, placed % 3 !== 0);
     placed += 1;
@@ -487,7 +523,9 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   for (const area of pack.fabric || []) {
     const style = STYLES[area.style];
     if (!style) continue;
-    for (let x = area.box[0]; x <= area.box[2]; x += style.gap) for (let z = area.box[1]; z <= area.box[3]; z += style.gap) {
+    // Far suburbs are drawn lighter: the same fabric, spaced wider, so a whole state costs little more than the core.
+    const gap = style.gap * (inCore((area.box[0] + area.box[2]) / 2, (area.box[1] + area.box[3]) / 2, 20) ? 1 : FAR_SPREAD);
+    for (let x = area.box[0]; x <= area.box[2]; x += gap) for (let z = area.box[1]; z <= area.box[3]; z += gap) {
       const px = x + (rng() - 0.5) * 0.7, pz = z + (rng() - 0.5) * 0.7, roll = rng(), turn = rng() < 0.5 ? 0 : Math.PI / 2, pick = Math.floor(rng() * 6), tall = rng();
       // The first area that contains a point owns it, so overlapping areas never double up.
       if (pack.fabric.find((entry) => inBox(px, pz, entry.box)) !== area) continue;
@@ -516,9 +554,15 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
       if (!blocked(x, z, 1) && roadDistance(x, z) > 1 && pointInPolygon(x, z, entry.polygon)) palms.push({ x, z, s: 0.8 + rng() * 0.5, ry: rng() * 6, y: -0.12 });
     }
   }
-  const thin = <T,>(list: T[], cap: number): T[] => { if (list.length <= cap) return list; const step = list.length / cap; return Array.from({ length: cap }, (_, i) => list[Math.floor(i * step)]!); };
+  // The core keeps its share of every cap, so the far suburbs thin first.
+  const thin = <T extends XZ>(list: T[], cap: number): T[] => {
+    const inner = list.filter((item) => inCore(item.x, item.z, 20)), outer = list.filter((item) => !inCore(item.x, item.z, 20));
+    const take = (items: T[], limit: number): T[] => { if (items.length <= limit) return items; const step = items.length / limit; return Array.from({ length: limit }, (_, i) => items[Math.floor(i * step)]!); };
+    const room = Math.max(0, cap - inner.length);
+    return [...take(inner, Math.ceil(cap * 0.8)), ...take(outer, Math.max(Math.floor(cap * 0.2), room))];
+  };
   // The decorative fabric is thinner than it could be on purpose: the houses that matter are the players' own (src/map3d/houses.ts), and they need room in the budget.
-  const HOUSE_CAP = 420, TOWER_CAP = 150, TREE_CAP = 330, PALM_CAP = 90;
+  const HOUSE_CAP = 520, TOWER_CAP = 190, TREE_CAP = 400, PALM_CAP = 110;
   const fabric = { houses: thin(houses, HOUSE_CAP), towers: thin(towers, TOWER_CAP), trees: thin(trees, TREE_CAP), palms: thin(palms, PALM_CAP) };
 
   const dummy = new THREE.Object3D(), tint = new THREE.Color();
@@ -539,25 +583,27 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     return mesh;
   }
   const upright = (item: Upright, object: Object3D, sx = item.sx!, sy = item.sy!, sz = item.sz!) => { object.position.set(item.x, item.y || 0, item.z); object.rotation.set(0, item.ry || 0, 0); object.scale.set(sx, sy, sz); };
-  instanced('house-walls', leanGeometry(THREE, 'box'), materials.instanced, fabric.houses, (item, o) => upright(item, o), (item) => item.wall);
-  instanced('house-roofs', leanGeometry(THREE, 'pyramid'), materials.instanced, fabric.houses,
-    (item, o) => { o.position.set(item.x, item.sy, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.sx, 0.9 + item.sy * 0.25, item.sz); }, (item) => item.roof);
-  instanced('house-windows', unit((u) => { u.quad(0.18, 0.55, 0.506, 0.26, 0.3, '#ffe6ae'); u.quad(0.506, 0.55, -0.1, 0.26, 0.3, '#fff4d6', { ry: Math.PI / 2 }); }, materials.windows),
-    materials.windows, fabric.houses, (item, o) => upright(item, o));
-  instanced('towers', unit((u) => { u.box(0, 0.5, 0, 1, 1, 1, '#ffffff'); u.box(0, 1.01, 0, 0.7, 0.03, 0.7, '#c9ced3'); }), materials.instanced, fabric.towers, (item, o) => upright(item, o), (item) => item.colour);
-  instanced('tower-windows', unit((u) => {
+  const fabricMeshes: InstancedMesh[] = [];
+  const fabricLayer = (mesh: InstancedMesh) => { fabricMeshes.push(mesh); return mesh; };
+  fabricLayer(instanced('house-walls', leanGeometry(THREE, 'box'), materials.instanced, fabric.houses, (item, o) => upright(item, o), (item) => item.wall));
+  fabricLayer(instanced('house-roofs', leanGeometry(THREE, 'pyramid'), materials.instanced, fabric.houses,
+    (item, o) => { o.position.set(item.x, item.sy, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.sx, 0.9 + item.sy * 0.25, item.sz); }, (item) => item.roof));
+  fabricLayer(instanced('house-windows', unit((u) => { u.quad(0.18, 0.55, 0.506, 0.26, 0.3, '#ffe6ae'); u.quad(0.506, 0.55, -0.1, 0.26, 0.3, '#fff4d6', { ry: Math.PI / 2 }); }, materials.windows),
+    materials.windows, fabric.houses, (item, o) => upright(item, o)));
+  fabricLayer(instanced('towers', unit((u) => { u.box(0, 0.5, 0, 1, 1, 1, '#ffffff'); u.box(0, 1.01, 0, 0.7, 0.03, 0.7, '#c9ced3'); }), materials.instanced, fabric.towers, (item, o) => upright(item, o), (item) => item.colour));
+  fabricLayer(instanced('tower-windows', unit((u) => {
     const tones = ['#ffe6ae', '#fff4d6', '#2c3a4a', '#ffd98a', '#cfe4ff', '#2c3a4a'];
     for (let floor = 0; floor < 4; floor++) for (let face = 0; face < 4; face++) {
       const ry = face * Math.PI / 2;
       u.quad(Math.sin(ry) * 0.506, 0.2 + floor * 0.2, Math.cos(ry) * 0.506, 0.78, 0.085, tones[(floor * 5 + face * 3) % tones.length]!, { ry });
     }
-  }, materials.windows), materials.windows, fabric.towers, (item, o) => upright(item, o));
-  instanced('trees', unit((u) => { u.cyl(0, 0.45, 0, 0.13, 0.9, '#6b4f36', { seg: 4, open: true }); u.ico(0, 1.45, 0, 0.85, 0.95, 0.85, '#ffffff'); }), materials.instanced, fabric.trees,
-    (item, o) => upright(item, o, item.s, item.s, item.s), (item) => ['#3f8a57', '#4f9a5f', '#2c6b4a', '#5aa55f', '#3a7d4f'][Math.floor(item.ry * 7) % 5]!);
-  instanced('palms', unit((u) => {
+  }, materials.windows), materials.windows, fabric.towers, (item, o) => upright(item, o)));
+  fabricLayer(instanced('trees', unit((u) => { u.cyl(0, 0.45, 0, 0.13, 0.9, '#6b4f36', { seg: 4, open: true }); u.ico(0, 1.45, 0, 0.85, 0.95, 0.85, '#ffffff'); }), materials.instanced, fabric.trees,
+    (item, o) => upright(item, o, item.s, item.s, item.s), (item) => ['#3f8a57', '#4f9a5f', '#2c6b4a', '#5aa55f', '#3a7d4f'][Math.floor(item.ry * 7) % 5]!));
+  fabricLayer(instanced('palms', unit((u) => {
     u.cyl(0, 1.5, 0, 0.11, 3.0, '#8a7250', { seg: 5, top: 0.7 });
     for (let i = 0; i < 6; i++) { const a = i * 1.047; u.cone(Math.sin(a) * 0.8, 2.95, Math.cos(a) * 0.8, 0.32, 1.6, i % 2 ? '#3f8a57' : '#4f9a5f', { seg: 3, rz: -Math.sin(a) * 1.25, rx: Math.cos(a) * 1.25 }); }
-  }), materials.instanced, fabric.palms, (item, o) => upright(item, o, item.s, item.s, item.s));
+  }), materials.instanced, fabric.palms, (item, o) => upright(item, o, item.s, item.s, item.s)));
 
   // ---- flat shadows: one instanced quad beside everything that stands up -----------------------
   for (const item of fabric.houses) shadows.push({ x: item.x + 0.3 + item.sy * 0.22, z: item.z + 0.2 + item.sy * 0.16, w: item.sx + 0.5, d: item.sz + 0.5, ry: item.ry });
@@ -566,9 +612,12 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   const shadowGeometry = new THREE.PlaneGeometry(1, 1); shadowGeometry.rotateX(-Math.PI / 2);
   const shadowMesh = instanced('shadows', shadowGeometry, materials.shadow, shadows, (item, o) => { o.position.set(item.x, 0.02, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.w, 1, item.d); });
   shadowMesh.renderOrder = 1;
+  fabricLayer(shadowMesh);
+  let fabricOn = true;
 
   // ---- street traffic: parked until the Moving layer is on and a frame loop is running ---------
-  const lanes = network.roads.filter((road) => road.major && road.length > 20);
+  const lanes = network.roads.filter((road) => road.major && road.length > 20 && road.points.some((point) => inCore(point.x, point.z)));
+  if (!lanes.length) lanes.push(...network.roads.filter((road) => road.major && road.length > 20));
   const traffic: TrafficItem[] = [];
   for (let i = 0; i < 38 && lanes.length; i++) {
     const road = lanes[i % lanes.length]!;
@@ -590,13 +639,14 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
     return { mesh, items };
   });
+  const vehicleScale = Math.min(1, Math.max(0.5, k * 1.3));
   let trafficOn = false;
   function placeTraffic(seconds: number) {
     for (const { mesh, items } of fleets) {
       items.forEach((item, i) => {
-        const spot = along(item.road, item.at + (trafficOn ? item.speed * seconds : 0)), lane = item.speed > 0 ? -0.62 : 0.62, ry = spot.ry + (item.speed > 0 ? 0 : Math.PI);
+        const spot = along(item.road, item.at + (trafficOn ? item.speed * seconds : 0)), lane = (item.speed > 0 ? -0.62 : 0.62) * pk, ry = spot.ry + (item.speed > 0 ? 0 : Math.PI);
         dummy.position.set(spot.x - Math.cos(spot.ry) * lane, spot.y + 0.08, spot.z + Math.sin(spot.ry) * lane);
-        dummy.rotation.set(0, ry, 0); dummy.scale.set(1, 1, 1); dummy.updateMatrix();
+        dummy.rotation.set(0, ry, 0); dummy.scale.setScalar(vehicleScale); dummy.updateMatrix();
         mesh.setMatrixAt(i, dummy.matrix);
       });
       mesh.count = trafficOn ? items.length : Math.ceil(items.length / 2);
@@ -607,7 +657,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
 
   // ---- waves: a few pale dashes on open water ---------------------------------------------------
   const waveRaw = createRaw(THREE);
-  for (let i = 0, placed = 0; i < 900 && placed < 150; i++) {
+  for (let i = 0, placed = 0; i < 2400 && placed < 260; i++) {
     const x = minX + 3 + rng() * (width - 6), z = minZ + 3 + rng() * (depth - 6), length = 1.2 + rng() * 2.2;
     if (onAnyLand(x, z)) continue;
     waveRaw.ribbon([{ x: x - length / 2, y: 0, z }, { x, y: 0, z: z + 0.12 }, { x: x + length / 2, y: 0, z }], 0.12, WATER_Y + 0.05, '#ffffff');
@@ -672,7 +722,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     lgaMesh.visible = Boolean(on);
     if (on && (own !== lgaOwn || !lgaMesh.material.map)) {
       lgaOwn = own;
-      const image = rasterLgas(pack, { scale: 2, own });
+      const image = rasterLgas(pack, { scale: Math.min(2, 4000 / (maxX - minX)), own });
       lgaMesh.material.map?.dispose();
       const texture = new THREE.DataTexture(image.data, image.width, image.height, THREE.RGBAFormat);
       texture.magFilter = THREE.LinearFilter; texture.minFilter = THREE.LinearFilter; texture.colorSpace = THREE.SRGBColorSpace; texture.flipY = true; texture.needsUpdate = true;
@@ -690,6 +740,14 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     counts: { houses: fabric.houses.length, towers: fabric.towers.length, trees: fabric.trees.length, palms: fabric.palms.length, vehicles: traffic.length, shadows: shadows.length },
     get time() { return time; },
     setHome, setLgas, fronts,
+    /** Choose the level of detail for a camera this far away: the fabric is drawn near, and left out when the whole state is in view. True when it changed. */
+    setDetail(distance: number) {
+      const on = distance < FABRIC_FAR;
+      if (on === fabricOn) return false;
+      fabricOn = on;
+      for (const mesh of fabricMeshes) mesh.visible = on && mesh.count > 0;
+      return true;
+    },
     /** Lighting that belongs to the city's own materials. The host applies hemi, sun and sky. */
     setTime(next: string) {
       const preset = presets[next] || CITY_LIGHT.day;

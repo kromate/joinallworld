@@ -17,7 +17,7 @@
 /** The camera's view: what is looked at (x, z on the ground), the turn, the tilt and the distance. */
 export interface RigView { x: number; z: number; yaw: number; pitch: number; distance: number }
 /** What the rig needs to know of the city: the board it may wander over, the land to fit, and optional limits. */
-export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number }
+export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number }
 /** Pixels of the canvas the HUD covers. */
 export interface RigInsets { left?: number; top?: number; right?: number; bottom?: number }
 export interface RigPoint { x: number; z: number; y?: number }
@@ -37,7 +37,10 @@ export interface Rig {
   groundAt(nx: number, ny: number): { x: number; z: number } | null
   ease(target: Partial<RigView>, seconds?: number): void
   jump(target: Partial<RigView>): void
+  /** The whole city (or state): the land at once, tipped up towards the map at a long way out. */
   whole(): RigView
+  /** The opening view: the metropolitan core at the default tilt (the whole city when the pack names no core). */
+  core(): RigView
   framing(points: readonly RigPoint[], options?: { pad?: number; min?: number }): { x: number; z: number; distance: number }
   readonly moving: boolean
   step(dt: number): boolean
@@ -45,6 +48,10 @@ export interface Rig {
 
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 export const PITCH_MIN = 0.36, PITCH_MAX = 1.5, DEFAULT_PITCH = 0.92, MIN_DISTANCE = 34;
+/** Past this distance the view tips up towards straight down, so that a whole state reads as a map; by FLAT_FULL it is as flat as it gets. */
+export const FLAT_FROM = 520, FLAT_FULL = 1900, FLAT_PITCH = 1.2;
+/** The flattest-allowed tilt's lower limit at a distance: the usual one near, rising to FLAT_PITCH far out. */
+export const pitchFloor = (distance: number) => PITCH_MIN + (FLAT_PITCH - PITCH_MIN) * clamp((distance - FLAT_FROM) / (FLAT_FULL - FLAT_FROM), 0, 1);
 
 export function createRig(THREE: typeof import('three'), camera: import('three').PerspectiveCamera, bounds: RigBounds): Rig {
   const view: RigView = { x: 0, z: 0, yaw: 0, pitch: DEFAULT_PITCH, distance: 220 };
@@ -54,12 +61,13 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
   const floor = bounds.minDistance ?? MIN_DISTANCE;
   const whole = bounds.fit || bounds;
   const centre = { x: (whole.minX + whole.maxX) / 2, z: (whole.minZ + whole.maxZ) / 2 };
+  const reach = Math.max(whole.maxX - whole.minX, whole.maxZ - whole.minZ);
   const roam = { minX: whole.minX, maxX: whole.maxX, minZ: whole.minZ, maxZ: Math.max(whole.maxZ, bounds.roamZ ?? whole.maxZ) };
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), ground = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit = new THREE.Vector3(), probe = new THREE.Vector3();
 
   function limit<T extends RigView>(target: T): T {
-    target.pitch = clamp(target.pitch, PITCH_MIN, PITCH_MAX);
     target.distance = clamp(target.distance, floor, maxDistance);
+    target.pitch = clamp(target.pitch, pitchFloor(target.distance), PITCH_MAX);
     // What is looked at never leaves the land (plus the sea plots), so the city cannot be dragged out of sight.
     target.x = clamp(target.x, roam.minX, roam.maxX); target.z = clamp(target.z, roam.minZ, roam.maxZ);
     return target;
@@ -70,7 +78,7 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
     camera.position.set(view.x + Math.sin(view.yaw) * flat, Math.sin(view.pitch) * view.distance, view.z + Math.cos(view.yaw) * flat);
     camera.up.set(0, 1, 0);
     camera.lookAt(view.x, 0, view.z);
-    camera.near = Math.max(0.2, view.distance * 0.05); camera.far = view.distance * 4 + 600;
+    camera.near = Math.max(0.2, view.distance * 0.05); camera.far = view.distance * 4 + reach * 1.5 + 600;
     camera.aspect = size.width / size.height;
     // Shift the picture so the looked-at point sits in the middle of the free part of the canvas.
     const dx = (free.left - free.right) / 2, dy = (free.top - free.bottom) / 2;
@@ -84,7 +92,7 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
   /** The distance at which every point fits in the free part, looking at (x, z) with this yaw and pitch. */
   function distanceFor(points: readonly RigPoint[], x: number, z: number, yaw: number, pitch: number, pad = 1): number {
     const saved = { ...view }, share = freeShare();
-    let low = Math.min(floor, MIN_DISTANCE * 0.5), high = 1400;
+    let low = Math.min(floor, MIN_DISTANCE * 0.5), high = Math.max(1400, reach * 6);
     for (let i = 0; i < 22; i++) {
       const mid = (low + high) / 2;
       Object.assign(view, { x, z, yaw, pitch, distance: mid });
@@ -98,7 +106,8 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
     apply();
     return high;
   }
-  const corners = () => ([[whole.minX, whole.minZ], [whole.maxX, whole.minZ], [whole.minX, whole.maxZ], [whole.maxX, whole.maxZ]] as const).map(([x, z]) => ({ x, z }));
+  const cornersOf = (r: { minX: number; maxX: number; minZ: number; maxZ: number }) => ([[r.minX, r.minZ], [r.maxX, r.minZ], [r.minX, r.maxZ], [r.maxX, r.maxZ]] as const).map(([x, z]) => ({ x, z }));
+  const corners = () => cornersOf(whole);
 
   function groundAt(nx: number, ny: number): { x: number; z: number } | null {
     ndc.set(nx, ny);
@@ -143,7 +152,18 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
     /** Jump to a view at once (reduced motion, the first frame, a resize). */
     jump(target) { goal = null; spin = 0; Object.assign(view, limit({ ...view, ...target })); apply(); },
     /** The whole city, seen from the south at the default tilt. */
-    whole() { return { x: centre.x, z: centre.z, yaw: 0, pitch: DEFAULT_PITCH, distance: distanceFor(corners(), centre.x, centre.z, 0, DEFAULT_PITCH, 1) }; },
+    whole() {
+      // A city is seen at the default tilt; a state a long way out is tipped up so that its shape reads.
+      const first = distanceFor(corners(), centre.x, centre.z, 0, DEFAULT_PITCH, 1), pitch = Math.max(DEFAULT_PITCH, pitchFloor(first) + 0.04);
+      return { x: centre.x, z: centre.z, yaw: 0, pitch, distance: pitch === DEFAULT_PITCH ? first : distanceFor(corners(), centre.x, centre.z, 0, pitch, 1) };
+    },
+    core() {
+      const area = bounds.core;
+      if (!area) return rig.whole();
+      const x = (area.minX + area.maxX) / 2, z = (area.minZ + area.maxZ) / 2, wholeView = rig.whole();
+      const distance = distanceFor(cornersOf(area), x, z, 0, DEFAULT_PITCH, 1.04);
+      return distance >= wholeView.distance ? wholeView : { x, z, yaw: 0, pitch: DEFAULT_PITCH, distance };
+    },
     /** A view that holds every given ground point, keeping the current turn and tilt. */
     framing(points, { pad = 1.35, min = 60 } = {}) {
       const xs = points.map((point) => point.x), zs = points.map((point) => point.z);

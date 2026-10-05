@@ -127,3 +127,24 @@ test('the host says what went wrong while the code is not here, with both ways o
   store.recovery.value = { ...store.recovery.value, waiting: true, next: 'Trying again now…' }
   assert.match(await render('CommunityHost', store), /data-community-retry[^>]*disabled/)
 })
+
+test('room groups: the header says who is with you and how many are in the place; other groups are listed with friends named and a full one cannot be joined', async () => {
+  const group = { here: 13, total: 128, groups: 11, cap: 16, header: '12 here with you · 128 in this place' }
+  const html = await render('CommunityPanel', panel({ group, groupNote: 'You are now with 12 others.', apart: { id: 'd', name: 'Dara', waiting: false } }))
+  assert.match(text(html), /12 here with you · 128 in this place/)
+  assert.match(text(html), /You are now with 12 others\./)
+  assert.match(text(html), /Dara is in another part of the venue\. Join Dara's group/)
+  assert.match(html, /data-groups-open[^>]*>See other groups</)
+  const open = await render('CommunityPanel', panel({ group, groupList: { total: 128, more: 3, groups: [
+    { id: 'g1', no: 1, size: 13, open: true, mine: true, friends: [] },
+    { id: 'g2', no: 2, size: 16, open: false, mine: false, friends: ['Dara'] },
+    { id: 'g3', no: 3, size: 8, open: true, mine: false, friends: [] }] } }))
+  assert.match(text(open), /Group 1 \(yours\) · 13 people/)
+  assert.match(text(open), /Group 2 · 16 people · Dara Full/)
+  assert.match(open, /data-group-join="g3"[^>]*>Join</)
+  assert.match(open, /disabled[^>]*data-group-join="g2"|data-group-join="g2"[^>]*disabled/)
+  assert.match(text(open), /and 3 more groups/)
+  assert.doesNotMatch(html, /data-group-list/)
+  const home = await render('CommunityPanel', panel({ group: null }))
+  assert.doesNotMatch(home, /data-group-header|data-groups-open/)
+})

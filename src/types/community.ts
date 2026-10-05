@@ -32,8 +32,23 @@ export interface BlockedPlayback { id: string; name: string }
 /** The server refused a chat line you sent: `text` is the sentence to show wherever the player is looking. `seq` grows with each refusal. */
 export interface ChatRefusal { seq: number; text: string }
 
+/** The player's group of a public venue: how many are with them, in the venue, in how many groups; `header` is the line the lists lead with. */
+export interface GroupView { here: number; total: number; groups: number; cap: number; header: string }
+/** One group in "See other groups": a stranger is only a count, a friend is named. */
+export interface GroupChoice { id: string; no: number; size: number; open: boolean; mine: boolean; friends: string[] }
+export interface GroupList { groups: GroupChoice[]; more: number; total: number }
+/** A friend the player could not be placed with: the panel offers one tap to join their group. */
+export interface ApartFriend { id: string; name: string; waiting: boolean }
+
 export interface CommunityState {
   room: CommunityRoom
+  /** Null in a Home, or on a host that does not split venues into groups. */
+  group: GroupView | null
+  /** "See other groups" while it is open: null when closed or not read yet. */
+  groupList: GroupList | null
+  apart: ApartFriend | null
+  /** The calm line about being moved (or the first line about chatting with the people around you); cleared by the panel. */
+  groupNote: string | null
   /** "Lagos · The Park", or "… · Your home (private)". */
   roomText: string
   privateHome: boolean
@@ -118,6 +133,13 @@ export interface CommunityController {
   /** Send a chat line. True when it was accepted into the list (sent now or pending). */
   sendChat(body: string): boolean
   retryMessage(key: string): void
+  /** Ask for the venue's groups (shown as `groupList`); close the list. */
+  listGroups(): void
+  closeGroups(): void
+  /** Hop to a group by id, or to a friend's group (it waits for room when full). */
+  joinGroup(id: string): void
+  joinFriendGroup(friendId: string): void
+  clearGroupNote(): void
   /** User gesture only. */
   joinVoice(): Promise<void>
   toggleMute(): void

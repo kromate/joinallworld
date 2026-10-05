@@ -19,6 +19,7 @@ import type { LifeState } from '../types/life.ts';
  * calling this again with unchanged data never causes a frame.
  */
 import { isDeparting } from '../game/registry.ts';
+import { ROOM_GROUP_MAX } from '../game/roomGroups.ts';
 /** The room protocol's bounds (server/protocol.ts POSITION_BOUNDS); the scene keeps a figure on its own floor. */
 const SCENE_REACH = 20;
 export const CROWD_LIMIT = 12; // equals MAX_CROWD in venue-scenes.js (asserted in crowd.test.js)
@@ -43,7 +44,7 @@ export interface CrowdInput {
   /** { [publicId]: { x, z } } as the room's presence reports it. */
   positions?: unknown;
 }
-interface PlayerIn { id?: unknown; name?: unknown; here?: unknown; look?: unknown }
+interface PlayerIn { id?: unknown; name?: unknown; here?: unknown; look?: unknown; friend?: unknown }
 interface NpcIn { id?: unknown; name?: unknown; at?: unknown }
 /** The server's who-is-here listing for a venue room. */
 export interface PresenceListing { error?: unknown; venue?: unknown; cityId?: unknown; players?: unknown }
@@ -51,8 +52,13 @@ export interface PresenceListing { error?: unknown; venue?: unknown; cityId?: un
 export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_LIMIT, positions = null }: CrowdInput = {}): CrowdEntry[] {
   const seen = new Set<string>(selfId ? [selfId] : []);
   const list: CrowdEntry[] = [];
-  for (const player of (Array.isArray(players) ? players : []) as (PlayerIn | null)[]) {
+  // Whatever the server sent, at most a group's hard maximum of other players is drawn, and friends are drawn first.
+  const ordered = ((Array.isArray(players) ? players : []) as (PlayerIn | null)[]).filter((player) => Boolean(player)).sort((a, b) => Number(b?.friend === true) - Number(a?.friend === true));
+  let drawn = 0;
+  for (const player of ordered) {
+    if (drawn >= ROOM_GROUP_MAX) break;
     if (!player || typeof player.id !== 'string' || seen.has(player.id) || player.here === false) continue;
+    drawn++;
     seen.add(player.id);
     // Where the player stands, when presence reports it (see the header): the scene places them there instead of at a spare place.
     const at = (positions && typeof positions === 'object' ? (positions as Record<string, { x?: unknown; z?: unknown } | null | undefined>)[player.id] : null);

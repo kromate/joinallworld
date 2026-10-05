@@ -3,6 +3,7 @@ await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The crowd shown in a scene comes from real data only: server presence and the venue's regulars.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { ROOM_GROUP_MAX } from '../game/roomGroups.ts';
 import { crowdList, playersHere, CROWD_LIMIT } from './crowd.ts';
 import { MAX_CROWD } from './venue-scenes.ts';
 import { createLife, viewLife } from '../life.ts';
@@ -48,4 +49,11 @@ test('a reported position places a player in the scene; without one nothing chan
   const far = crowdList({ players, positions: { [a]: { x: 400, z: -400 } } });
   assert.deepEqual([far[0]!.x, far[0]!.z], [20, -20], 'kept inside the room protocol’s bounds (the scene then keeps the figure on its own floor)');
   assert.deepEqual(crowdList({ players, positions: 'junk' }), plain);
+});
+
+test('whatever the server sends, at most a group\'s hard maximum of players is drawn, and friends are drawn first', () => {
+  const many = Array.from({ length: 60 }, (_, i) => ({ id: `p${i}`, name: `P${i}`, friend: i === 55 }));
+  const list = crowdList({ players: many, max: 100 });
+  assert.equal(list.length, ROOM_GROUP_MAX);
+  assert.equal(list[0]?.id, 'p55', 'the friend comes first although they were last in the list');
 });

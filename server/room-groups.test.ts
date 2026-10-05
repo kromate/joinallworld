@@ -89,7 +89,7 @@ test('strangers fill the fullest group up to the target, then a new group opens;
 
 test('a join, a move, a voice change and a leave reach exactly the group, as changes after one snapshot', async (t) => {
   const h = await harness(t);
-  const [ada, bola, chidi] = await Promise.all(['Ada', 'Bola', 'Chidi'].map(async (name) => h.enter(await h.player(name))));
+  const ada = await h.enter(await h.player('Ada')), bola = await h.enter(await h.player('Bola')), chidi = await h.enter(await h.player('Chidi'));
   const dami = await h.enter(await h.player('Dami'));
   await h.enter(await h.player('Efe')); await h.enter(await h.player('Femi'));
   await ada.until(() => ada.view.size === 3 && dami.view.size === 3, 'group one and two');

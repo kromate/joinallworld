@@ -24,10 +24,11 @@
 import type { PublicSession } from './types/protocol.ts'
 import { cityName } from './game/cities/registry.ts'
 import { fetchIceConfig } from './voice-config.ts'
+import { GROUP_CHAT_NOTE, groupHeader } from './game/roomGroups.ts'
 import type { IceConfig } from './voice-config.ts'
 import type {
   BlockedPlayback, ChatLine, CommunityController, CommunityLinkStatus, CommunityRoom, CommunityState, DiagnosticsPeer,
-  DiagnosticsSnapshot, MemberRow, MicrophoneChoice, MembersEvent, CommunityStatus, RoomMember, VoicePosition,
+  DiagnosticsSnapshot, GroupList, GroupView, ApartFriend, MemberRow, MicrophoneChoice, MembersEvent, CommunityStatus, RoomMember, VoicePosition,
 } from './types/community.ts'
 
 /** What the controller is given. (Here, not in src/types: it names browser types, which the engine project does not have.) */
@@ -37,6 +38,8 @@ export interface CommunityOptions {
   onStatus?: (status: CommunityStatus) => void
   /** After every presence message and whenever the list empties (disconnect, room change, revocation, destroy). */
   onMembers?: (event: MembersEvent) => void
+  /** A calm line the game should say aloud (the player was moved to another group). */
+  onNotice?: (text: string) => void
   /** Called with the new state after every change. */
   onChange?: (state: CommunityState) => void
   /** The venue's name in that city, for the room line. */
@@ -60,11 +63,15 @@ const SPACE_BOUND = 20
 /** A frame from the room socket, as far as this module reads it. */
 type Incoming =
   | { type: 'heartbeat' }
-  | { type: 'presence'; members?: RoomMember[] }
+  | { type: 'presence'; members?: RoomMember[]; counts?: GroupCounts; delta?: boolean }
+  | { type: 'presence-delta'; joined?: RoomMember[]; left?: string[]; moved?: { id: string; x: number; z: number }[]; voice?: { id: string; enabled: boolean; muted?: boolean }[]; counts?: GroupCounts }
+  | { type: 'group'; event?: string; here?: number; text?: string; friend?: { id: string; name: string } }
+  | { type: 'groups'; total?: number; more?: number; groups?: { id: string; no: number; size: number; open: boolean; mine: boolean; friends?: { id: string; name: string }[] }[] }
   | { type: 'chat'; id: string; clientId?: string; from?: PublicSession; body: string }
   | { type: 'signal'; from: string; data?: unknown }
   | { type: 'error'; error?: string; code?: string; message?: string; clientId?: string; to?: string }
 
+interface GroupCounts { here: number; total: number; groups: number; cap: number }
 interface SignalPayload { description?: RTCSessionDescriptionInit; candidate?: RTCIceCandidateInit }
 interface Peer {
   pc: RTCPeerConnection
@@ -92,7 +99,7 @@ interface Browser {
 const browser = (): Browser => globalThis as unknown as Browser
 
 export async function createCommunity(options: CommunityOptions = {}): Promise<CommunityController> {
-  const { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, onChange = null, onStep = null, venueName = null, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all', createAudio = () => new Audio() } = options
+  const { cityId = 'lagos', venueId = 'park', onStatus = () => {}, onMembers = () => {}, onNotice = () => {}, onChange = null, onStep = null, venueName = null, audioStreamFactory = null, diagnostics = false, onPeerStats = () => {}, iceTransportPolicy = 'all', createAudio = () => new Audio() } = options
 
   let room: CommunityRoom = { cityId, venueId }
   let session: PublicSession | null = null
@@ -112,6 +119,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   let positionText = 'Waiting for your place in the venue…', walkDisabled = true, voiceText = 'Your microphone is off. Join voice to request access.'
   let relayNote = 'Relay availability is checked when you join voice. Microphone starts muted.'
   let playbackNote: string | null = null, devices: MicrophoneChoice[] | null = null, savingName = false
+  let counts: GroupCounts | null = null, groupList: GroupList | null = null, apart: ApartFriend | null = null, groupNote: string | null = null, chatNoted = false
   let memberRows: MemberRow[] = [], refusal: CommunityState['refusal'] = null, refusalSeq = 0, lineCounter = 0
   let diagnosticsText: string | null = diagnostics ? '' : null
   const chat: ChatLine[] = []
@@ -125,9 +133,13 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   const cleanups: (() => void)[] = []
 
   // ---- state out ---------------------------------------------------------------------------------------------
+  function groupView(): GroupView | null {
+    if (!counts || room.venueId === 'home') return null
+    return { here: counts.here, total: counts.total, groups: counts.groups, cap: counts.cap, header: groupHeader(counts) }
+  }
   function snapshot(): CommunityState {
     return {
-      room: { ...room }, roomText, privateHome, connection, hasSession: Boolean(session), session: session ? { ...session } : null, savingName,
+      room: { ...room }, group: groupView(), groupList: groupList ? { ...groupList, groups: groupList.groups.map((group) => ({ ...group, friends: [...group.friends] })) } : null, apart: apart ? { ...apart } : null, groupNote, roomText, privateHome, connection, hasSession: Boolean(session), session: session ? { ...session } : null, savingName,
       members: memberRows.map((row) => ({ ...row })), memberCount: members.length, positionText, walkDisabled,
       voice: {
         on: voice, joining: joiningVoice, muted, canJoin: !joiningVoice && roomReady,
@@ -417,14 +429,40 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     if (!message || typeof message !== 'object') return
     // The Worker host cannot ping a hibernating socket: it asks, and the answer proves this connection is alive.
     if (message.type === 'heartbeat') { if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'heartbeat-ack' })); return }
+    if (message.type === 'presence-delta') {
+      if (!roomReady) return
+      if (message.counts) counts = message.counts
+      const next = new Map(members.map((member) => [member.id, member]))
+      for (const member of message.joined ?? []) next.set(member.id, member)
+      for (const id of message.left ?? []) next.delete(id)
+      for (const at of message.moved ?? []) { const member = next.get(at.id); if (member) next.set(at.id, { ...member, position: { x: at.x, z: at.z } }) }
+      for (const change of message.voice ?? []) { const member = next.get(change.id); if (member) next.set(change.id, { ...member, enabled: change.enabled, ...(change.muted === undefined ? {} : { muted: change.muted }) }) }
+      members = [...next.values()]
+      renderMembers(); void syncPeers(); voiceStatus()
+      return
+    }
+    if (message.type === 'group') {
+      const text = String(message.text ?? '')
+      if (message.event === 'apart' && message.friend) { apart = { id: message.friend.id, name: message.friend.name, waiting: false }; emit() }
+      else if (message.event === 'waiting' && message.friend) { apart = { id: message.friend.id, name: message.friend.name, waiting: true }; groupNote = text; emit() }
+      else if (message.event === 'moved') { if (apart && members.some((member) => member.id === apart?.id)) apart = null; groupNote = text; groupList = null; emit(); try { onNotice(text) } catch { /* the game's own problem */ } }
+      return
+    }
+    if (message.type === 'groups') {
+      groupList = { total: Number(message.total ?? 0), more: Number(message.more ?? 0), groups: (message.groups ?? []).map((group) => ({ id: group.id, no: group.no, size: group.size, open: group.open, mine: group.mine, friends: (group.friends ?? []).map((friend) => friend.name) })) }
+      emit()
+      return
+    }
     if (message.type === 'presence') {
       const wasRevoked = roomRevoked
       members = message.members || []
+      counts = message.counts ?? null
       if (roomRevoked && !members.some((member) => member.id === session?.id)) return
       roomRevoked = false
       if (wasRevoked) feedbackText = ''
       if (connected && members.some((member) => member.id === session?.id)) connection = 'Connected'
       composeDisabled = false
+      if (apart && members.some((member) => member.id === apart?.id)) apart = null
       rejectedPeers.clear(); roomReady = true; renderMembers(); retryPending(); void syncPeers(); voiceStatus()
     } else if (message.type === 'chat') {
       if (seen.has(message.id)) return
@@ -434,6 +472,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
       if (local && message.clientId && message.from?.id === session?.id) { local.line.delivery = 'Sent'; local.line.canRetry = false; pending.delete(message.clientId); emit() }
       // A delivery label is about the player's own messages only: a message that arrived from someone else has none.
       else appendChat(message, message.from?.id === session?.id ? 'Sent' : '')
+      if (!chatNoted && counts) { chatNoted = true; groupNote = GROUP_CHAT_NOTE; emit() }
     } else if (message.type === 'signal') void receiveSignal(message)
     else if (message.type === 'error') {
       const refused = message.error || message.code
@@ -462,6 +501,9 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
         voiceStatus(); return
       }
       if (message.error === 'voice_room_full') { leaveVoice(); feedbackText = 'This voice circle is full. Try joining when someone leaves.' }
+      else if (message.error === 'group_full') feedbackText = message.message || 'That group is full right now.'
+      else if (message.error === 'group_gone') { feedbackText = message.message || 'That group is not there any more.'; groupList = null }
+      else if (message.error === 'in_voice') feedbackText = message.message || 'Leave voice before you change group.'
       else if (message.error === 'rate_limited') feedbackText = 'Messages are arriving too quickly. Pause briefly before sending more.'
       else feedbackText = message.message || 'The room could not process that action.'
       // A refused chat line: the sentence the server sent is repeated by the host (a toast), from this state.
@@ -477,11 +519,11 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     roomReady = false; canReconnect = false; report(attempts ? 'Reconnecting…' : 'Connecting…'); voiceStatus()
     const current = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/socket`)
     socket = current
-    current.onopen = () => { if (destroyed || socket !== current) return; connected = true; attempts = 0; report('Connected'); if (!roomRevoked) send({ type: 'join', ...room }) }
+    current.onopen = () => { if (destroyed || socket !== current) return; connected = true; attempts = 0; report('Connected'); if (!roomRevoked) send({ type: 'join', ...room, deltas: true }) }
     current.onmessage = (event) => { if (!destroyed && socket === current) { busyTries = 0; receive(event) } }
     current.onclose = (event?: { code?: number }) => {
       if (destroyed || socket !== current) return
-      socket = null; connected = false; roomReady = false; members = []; renderMembers(); leaveVoice(false)
+      socket = null; connected = false; roomReady = false; members = []; counts = null; groupList = null; renderMembers(); leaveVoice(false)
       for (const message of pending.values()) { message.sent = false; if (!message.failed) message.line.delivery = 'Pending reconnection' }
       report('Disconnected')
       if (roomRevoked) { canReconnect = false; feedback('You moved to another place. Return to the game to reconnect here.'); return }
@@ -613,6 +655,11 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     rejected.failed = false; rejected.sent = false; rejected.line.delivery = roomReady ? 'Sending…' : 'Pending reconnection'
     rejected.line.canRetry = false; retryPending()
   }
+  function listGroups(): void { if (roomReady && counts) send({ type: 'groups' }) }
+  function closeGroups(): void { groupList = null; emit() }
+  function joinGroup(id: string): void { if (roomReady && counts) send({ type: 'group-join', group: id }) }
+  function joinFriendGroup(friendId: string): void { if (roomReady && counts) send({ type: 'group-join', friend: friendId }) }
+  function clearGroupNote(): void { groupNote = null; emit() }
   async function saveName(text: string): Promise<boolean> {
     const name = text.trim()
     if (name.length < 3) { feedback('Use a nickname with at least three characters.'); return false }
@@ -629,11 +676,11 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   function join(nextCityId: string, nextVenueId: string): void {
     if (destroyed || (!roomRevoked && room.cityId === nextCityId && room.venueId === nextVenueId)) return
     leaveVoice(!roomRevoked); roomRevoked = false; composeDisabled = false
-    room = { cityId: nextCityId, venueId: nextVenueId }; roomReady = false; members = []
+    room = { cityId: nextCityId, venueId: nextVenueId }; roomReady = false; members = []; counts = null; groupList = null; apart = null; groupNote = null
     for (const message of pending.values()) { message.line.delivery = 'Not delivered: room changed'; message.line.canRetry = false }
     pending.clear(); seen.clear(); rejectedPeers.clear(); chat.length = 0; renderMembers(); labelRoom()
     feedbackText = ''
-    if (connected) send({ type: 'join', ...room }); else connect()
+    if (connected) send({ type: 'join', ...room, deltas: true }); else connect()
     voiceStatus()
   }
   function destroy(): void {
@@ -657,7 +704,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     get state() { return snapshot() },
     subscribe(listener) { listeners.add(listener); return () => { listeners.delete(listener) } },
     getSession() { return session ? { ...session } : null },
-    getDiagnostics, moveTo, join, walk, saveName, sendChat, retryMessage, joinVoice, toggleMute,
+    getDiagnostics, moveTo, join, walk, saveName, sendChat, retryMessage, listGroups, closeGroups, joinGroup, joinFriendGroup, clearGroupNote, joinVoice, toggleMute,
     leaveVoice: () => leaveVoice(), selectDevice, playPeer, reconnect, destroy,
   }
 }

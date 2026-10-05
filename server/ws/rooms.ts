@@ -34,6 +34,12 @@ import { venueFor } from '../../src/game/cities/runtime.ts';
  * signalling measures between these same positions. (The UNILAG campus alone uses campus coordinates, valid only on
  * its walkable ground, and a join there starts at the main gate: protocol.js.) A join resets it to the origin { x: 0, z: 0 },
  * which clients read as "has not reported a position yet" (a client never reports exactly the origin).
+ * GROUPS. A public venue's room is split into groups of bounded size (src/game/roomGroups.ts, rules in ./groups.ts, docs/CAPACITY.md
+ * "Room groups"). Presence, moves, chat, signalling and the voice circle (and its cap) are the GROUP's; `ws.room` stays the venue's key and
+ * `ws.group` names the group. A page that joined with `deltas` is sent one `presence` snapshot (with `counts`), then `presence-delta`
+ * frames; a page that did not gets its group's whole list as the room. Moves are gathered per group. `groups` lists the venue's groups
+ * (a friend is named, a stranger is a count); `group-join` hops, or waits for room in a friend's group. Home rooms are not grouped.
+ * Groups live in memory only; a host that lost its memory rebuilds them from the sockets' `group`.
  * ROOM-CHANGED. When a room's membership or a member's name changes, this module raises the
  * server event 'room-changed' { room, cityId, venueId, members: [publicId] } (ctx.emit). It sends
  * nothing itself, so the room protocol is unchanged; the social module turns the event into a

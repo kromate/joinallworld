@@ -38,7 +38,7 @@ export function qualifyState(value: unknown): void {
 }
 
 /** What a scripted run needs of a host: read a life, send one action, let a timed action finish, start a new life in a city. */
-export function driver(host: JourneyHost) {
+export function driver(host: Pick<JourneyHost, 'now' | 'request' | 'elapse'>) {
   const id = (): string => `${host.now()}:${randomUUID()}`
   async function read(path: string, cookie?: string): Promise<Record<string, unknown>> {
     const response = await host.request(path, undefined, cookie)

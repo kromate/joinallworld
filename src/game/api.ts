@@ -8,3 +8,4 @@ export { NEEDS, changeNeeds, addMoodlet, removeMoodlet, moodOf, feelingsOf } fro
 export { SKILLS, MAX_LEVEL, addSkillXp, skillLevel, setSkillLevel, xpForLevel } from './systems/skills.ts';
 export { countItem, hasItems, addItem, removeItems } from './systems/inventory.ts';
 export { arrive, spotsOf, defaultSpot, findActivity, blockReason } from './systems/activities.ts';
+export { advanceActive } from './systems/core.ts';

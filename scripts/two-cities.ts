@@ -15,6 +15,8 @@ await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota'].map(loadCityContent));
  *   5. the visitor settles in an Ibadan local government for free
  *   6. the train back to Lagos charges its fare once
  *   7. the Lagos home, its local government, the job and the wallet are all still there, and cash equals the seed plus the whole ledger
+ * A third run plays one more pair of legs with the wait skipped for game money (`runSkippedLegs`, server/testing/skipJourney.ts):
+ * the first skip between cities is free, the next is charged the price shown, once.
  * `runTwoCities({ log })` is also run by server/two-cities.test.ts.
  */
 import assert from 'node:assert/strict';
@@ -27,6 +29,8 @@ import { createServer } from '../server/server.ts';
 import { useSaltSourceForTests } from '../server/life-service.ts';
 import { driver, object, JOURNEY_TIME } from '../server/testing/cityJourney.ts';
 import type { JourneyHost } from '../server/testing/cityJourney.ts';
+import { skipJourney } from '../server/testing/skipJourney.ts';
+import type { SkipResult } from '../server/testing/skipJourney.ts';
 import { regionInfo } from '../src/map3d/geo/info.ts';
 import { cityEntry } from '../src/map3d/regions.ts';
 import type { AddressInfo } from 'node:net';
@@ -222,4 +226,18 @@ export async function runThreePlaces({ log = console.log }: TwoCitiesOptions = {
   }
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) { await runTwoCities(); log_blank(); await runThreePlaces(); }
+/** Lagos → Ibadan → Lagos by bus with both waits skipped: the first skip is free, the second costs the price shown and is charged once. */
+export async function runSkippedLegs({ log = console.log }: TwoCitiesOptions = {}): Promise<SkipResult & { steps: number }> {
+  const { host, done } = await bootServer('skipped-legs-salt-0001');
+  let step = 0;
+  try {
+    log('Skipped legs · one character, Lagos → Ibadan → Lagos by bus, arriving at once');
+    const result = await skipJourney({ now: host.now, request: host.request, elapse: host.elapse }, { log: (title, state, note) => log(`${String(++step).padStart(2, '0')}  ${title.padEnd(52)} ${naira(num(state.cash)).padStart(9)}  ${note}`) });
+    log(`Skipped legs complete: ${step} steps, the first skip free, the second ${naira(result.charged)} charged once, ${naira(result.cash)} in hand.`);
+    return { ...result, steps: step };
+  } finally {
+    await done();
+  }
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) { await runTwoCities(); log_blank(); await runThreePlaces(); log_blank(); await runSkippedLegs(); }

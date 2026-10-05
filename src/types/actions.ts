@@ -66,6 +66,8 @@ export type CivicCheckCode = 'too_new' | 'insufficient_funds' | 'work_days' | 'w
 
 /** Why a trip to another city cannot start (estate.js relocateBlock). */
 export type RelocateBlockCode = 'invalid_city' | 'no_route' | 'city_not_open' | 'insufficient_funds'
+/** Why 'travel.skip' is refused: no trip, a trip about to end, a trip inside the city with too little left, a price that rose above the one shown, not enough cash. */
+export type TripSkipCode = 'not_travelling' | 'almost_there' | 'too_short' | 'price_changed' | 'insufficient_funds'
 
 /**
  * The settle-in choices 'onboarding.home' takes besides where to live. `via` records how the local
@@ -167,6 +169,8 @@ export interface ActionMap extends CampusActionMap {
   travel: { payload: { id: VenueId; mode: TravelModeId }; ok: 'started'; fail: 'busy' | TravelBlockCode }
   /** Answer the pending roadside event (`view.travel.event`). Allowed while a timed action runs. */
   'world.roadside': { payload: { choice: string }; ok: 'resolved'; fail: 'no_event' | 'invalid_choice' | 'insufficient_funds' }
+  /** Pay to arrive now from a trip between venues or between cities. `quote` is the price the player was shown (`view.travel.skip.fee`). */
+  'travel.skip': { payload: { quote?: number }; ok: 'skipped'; fail: TripSkipCode }
 
   // -- economy --
   /** 'week' pays one instalment early; 'all' clears the balance ('loan_cleared' whenever nothing is left). */
@@ -400,7 +404,7 @@ export const ACTION_TYPES = [
   'cancel',
   'apply-job', 'career.switch', 'career.quit', 'career.auto',
   'activity', 'spot',
-  'travel', 'world.roadside',
+  'travel', 'world.roadside', 'travel.skip',
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',
   'property.house-move', 'property.car-buy', 'property.car-use', 'property.car-sell',
   'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate',

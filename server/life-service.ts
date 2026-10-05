@@ -169,6 +169,8 @@ export function applyLifeAction(state: LifeState, body: LifeActionBody, ctx?: Li
   }
   // The engine reads every payload as untrusted (each system validates its own), so the envelope-checked body goes in as it is.
   const result = dispatch(state, body as ActionBody, context);
+  // An action may end a trip between cities: the life is then announced under the city it arrived in, as a settlement would.
+  if (meta && cityRules(state.estate.city)) meta.cityId = state.estate.city as CityId;
   if (meta) announce(meta, state);
   return result;
 }

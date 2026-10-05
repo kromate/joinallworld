@@ -148,7 +148,8 @@ const presenceWord = (id: string | null | undefined): string | null => { const s
 /** Send money from a chat: the player's card opens with its gift form already showing (the card owns the limits and the one-send client id). */
 async function sendMoneyTo(player: string, name: string): Promise<void> {
   shell.open('person', { player, name })
-  await nextTick(); await nextTick()
+  // The card clears its forms when it first shows a player, so the form is opened once the card has taken this player.
+  for (let tries = 0; tries < 40 && personUi.player !== player; tries += 1) await new Promise((done) => setTimeout(done, 50))
   if (personUi.player === player) { personUi.form = 'money'; personUi.clientId = newClientId() }
 }
 function newGroup(): void { Object.assign(group, { open: true, name: '', members: [], clientId: newClientId() }) }
@@ -225,11 +226,10 @@ defineExpose({
           <RowMark v-if="conv?.kind === 'group'" round>👥</RowMark>
           <RowMark v-else-if="ui.open.startsWith('h.')" round>🏠</RowMark>
           <RowMark v-else :name="title" :seed="conv?.with ?? ui.open" />
-          <h3 v-if="withFounder">{{ title }}<FounderTag /><small :class="presenceOf(conv?.with) ? `messages-presence is-${presenceOf(conv?.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
-          <h3 v-else>{{ title }}<small :class="conv?.kind === 'dm' && presenceOf(conv.with) ? `messages-presence is-${presenceOf(conv.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
+          <h3 v-if="withFounder"><button type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="conv?.with && shell.open('person', { player: conv.with, name: title })">{{ title }}</button><FounderTag /><small :class="presenceOf(conv?.with) ? `messages-presence is-${presenceOf(conv?.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
+          <h3 v-else><button v-if="conv?.kind === 'dm' && conv.with" type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="shell.open('person', { player: conv.with, name: title })">{{ title }}</button><template v-else>{{ title }}</template><small :class="conv?.kind === 'dm' && presenceOf(conv.with) ? `messages-presence is-${presenceOf(conv.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
           <template v-else-if="conv?.kind === 'dm' && conv.with">
-            <BaseButton small @click="shell.open('person', { player: conv.with, name: title })">Profile</BaseButton>
             <BaseButton small data-chat="send-money" @click="sendMoneyTo(conv.with, title)">Send money</BaseButton>
             <PersonCallButton compact :id="conv.with" :name="title" :status="presenceOf(conv.with) ?? undefined" />
           </template>
@@ -379,6 +379,7 @@ defineExpose({
 </template>
 
 <style scoped>
+.messages-name { display: block; max-width: 100%; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
 .messages-presence { font-weight: 700; color: var(--c-muted); }
 .messages-presence::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: currentColor; vertical-align: 1px; }
 .messages-presence.is-online { color: var(--c-green-dark); }

@@ -325,3 +325,24 @@ test('SQLite: expired sessions are found by their stored expiry: no other record
  // A scan answers the same keys (and reads everything to do it).
  assert.deepEqual((await loose.read(d=>d.$store.scanSessions(item=>!(item.expiresAt>at)))).sort(),['fresh','gone']);
 });
+
+test('SQLite: walking a player\'s receipts is one statement however many there are, and what a transaction changed is kept',async t=>{
+ const db=new DatabaseSync(':memory:');
+ const inner=storageOn(db),queries: string[]=[];
+ const storage: SqliteStorage={...inner,sql:{exec<Row extends SqlRow>(query: string,...params: SqlBinding[]): SqlCursor<Row>{queries.push(query);return inner.sql.exec<Row>(query,...params);}}};
+ const store=open(storage);t.after(()=>db.close());
+ await store.transact(d=>{put(d,'secret',session());const s=life(d);for(let i=0;i<500;i++){s.actions[`a${i}`]={actionAt:i,ok:true,code:'done'};s.once[`o${i}`]={at:i,kind:'gift',fp:'f',result:{ok:true}};}});
+ queries.length=0;
+ const seen=await store.transact(d=>{
+  const s=life(d);
+  delete s.actions['a7'];s.actions['fresh']={actionAt:900,ok:false,code:'refused'}; // changed before the walk
+  const actions=Object.entries(s.actions),once=Object.values(s.once);
+  for(const [id,receipt] of actions) if((receipt as ActionReceipt).actionAt<100) delete s.actions[id]; // what the shared code does with expired ones
+  return {actions:actions.length,once:once.length,left:Object.keys(s.actions).length,has7:Object.hasOwn(s.actions,'a7'),fresh:s.actions['fresh']?.code,one:s.actions['a250']?.code};
+ });
+ assert.deepEqual(seen,{actions:500,once:500,left:401,has7:false,fresh:'refused',one:'done'});
+ const reads=queries.filter(query=>/^SELECT/.test(query)&&/FROM (action_receipts|once_receipts)/.test(query));
+ assert.equal(reads.length,2,`one read per kind of receipt, not one per receipt (${reads.length})`);
+ assert.equal(count(db,'SELECT COUNT(*) AS n FROM action_receipts'),401);assert.equal(count(db,'SELECT COUNT(*) AS n FROM once_receipts'),500);
+ assert.deepEqual(await store.read(d=>[life(d).actions['a7'],life(d).actions['a99'],life(d).actions['a100']?.code,life(d).actions['fresh']?.code]),[undefined,undefined,'done','refused']);
+});

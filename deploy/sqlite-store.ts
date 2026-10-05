@@ -184,8 +184,14 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
           let entry = entries.get(publicId);
           if (!entry) {
             const cache: Cache<R> = new Map(Object.entries(legacy)), original = new Map<string, string | undefined>();
+            // LISTING a player's receipts (the shared code does, to drop the expired ones and to count the rest) reads them all
+            // with this ONE statement. Read one at a time as they are walked, a player holding thousands of receipts would
+            // cost thousands of statements on every action they send.
             const map = lazyMap<R>(cache,
-              () => sql.exec<{ id: string }>(`SELECT ${idColumn} AS id FROM ${table} WHERE sender = ?`, publicId).toArray().map(row => row.id),
+              () => sql.exec<{ id: string; value: string }>(`SELECT ${idColumn} AS id, value FROM ${table} WHERE sender = ?`, publicId).toArray().map((row) => {
+                if (!cache.has(row.id)) { original.set(row.id, row.value); cache.set(row.id, JSON.parse(row.value) as R); }
+                return row.id;
+              }),
               key => { const row = sql.exec<{ value: string }>(`SELECT value FROM ${table} WHERE sender = ? AND ${idColumn} = ?`, publicId, key).toArray()[0]; original.set(key, row?.value); return row ? JSON.parse(row.value) as R : undefined; });
             entry = { cache, original, map }; entries.set(publicId, entry);
           }

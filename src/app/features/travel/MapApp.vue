@@ -96,7 +96,7 @@ defineExpose({ keys })
 </script>
 
 <template>
-  <h1 v-if="mapUi.layer === 'world'" class="ui-sr">World map. {{ view.city?.name || 'Lagos' }} is open; everything else is coming soon.</h1>
+  <h1 v-if="mapUi.layer === 'world'" class="ui-sr">World map. Explore cities and travel routes.</h1>
   <VenueCard v-else-if="item" :item="item" />
   <TripBar v-else-if="trip" :trip="trip" />
   <MapOverview v-else />

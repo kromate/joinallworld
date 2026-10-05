@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The crowd shown in a scene comes from real data only: server presence and the venue's regulars.
 import test from 'node:test';
 import assert from 'node:assert/strict';

@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The merged first minutes, as rules: one home model for a new player (a local government and the free starter house
 // there, chosen when settling in), guests who have no place yet, a first goal that completes on what it asks for,
 // missions that wait until the life has settled in, and deliveries from the server that pass the creation hold.

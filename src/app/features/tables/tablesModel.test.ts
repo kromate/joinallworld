@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The Tables app's words and rules, without a browser: the rows of the list, the split between
 // "where you are" and "elsewhere", the result sentence with its paid-win line, the turn clock, the
 // rules select's values, the back button's rule and the static registration of both panels.

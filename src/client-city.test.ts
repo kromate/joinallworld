@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { createClient } from './client.ts'
@@ -38,5 +40,30 @@ test('a stale-city action loads the authoritative city without replaying the mut
     assert.equal(client.state.estate.city, fictionalCity.id)
     assert.equal(client.state.cash, 9876)
     assert.ok(cachedCityContent(fictionalCity.id))
+  } finally { client.stop(); setup.dispose() }
+})
+
+test('starting in a chosen city loads it before creating the first life and never reads a Lagos life', async () => {
+  await loadCityContent('lagos')
+  const setup = registerCityForTest(fictionalCity)
+  const requested: string[] = []
+  const client = createClient({
+    now: () => now, storage: { getItem: () => null, setItem: () => {} },
+    setTimeout: () => 0, clearTimeout: () => {},
+    fetch: async (path) => {
+      requested.push(String(path))
+      if (path === '/api/session') return response({ session, serverTime: now })
+      if (path === `/api/life?city=${fictionalCity.id}`) {
+        assert.ok(cachedCityContent(fictionalCity.id))
+        return response({ state: createLife({ name: 'Tester' }, { now, cityId: fictionalCity.id }), serverTime: now })
+      }
+      throw new Error(`Unexpected request ${path}`)
+    },
+  })
+  try {
+    assert.equal(cachedCityContent(fictionalCity.id), null)
+    assert.equal(await client.connect(true, fictionalCity.id), true)
+    assert.equal(client.state.estate.city, fictionalCity.id)
+    assert.deepEqual(requested, ['/api/session', `/api/life?city=${fictionalCity.id}`])
   } finally { client.stop(); setup.dispose() }
 })

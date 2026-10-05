@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Exactly-once receipts (server/routes/once.ts) through the real routes: mandatory ids, conflicts,
 // expiry, capacity without eviction, restart, concurrency — and the gift and group rules that
 // depend on them.

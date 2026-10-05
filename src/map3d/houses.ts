@@ -75,7 +75,7 @@ interface HouseStyleIndexes { shape: number; wall: number; roof: number; door: n
 const STYLE_OPTIONS: Readonly<Record<string, readonly { id: string; hex?: string }[]>> = HOUSE_STYLE;
 
 export const BINS = 4;
-// With the city itself (about 45,000 triangles), the far blocks and the pads, this keeps the whole frame under 60,000:
+// With the city itself (about 67,000 triangles), the far blocks and the pads, this keeps the whole frame under CITY_TRIANGLE_BUDGET (city-build.ts):
 // one full estate of 196 houses, or several that are filling up.
 export const DETAIL_BUDGET = 10000;
 export const PAD_DISTANCE = 150;

@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import assert from 'node:assert/strict'
 import { after, before, test } from 'node:test'
 import { fileURLToPath } from 'node:url'
@@ -27,6 +29,8 @@ const text = (html: string): string => html.replace(/<!--.*?-->/g, '').replace(/
 
 before(async () => {
   vite = await createServer({ root, configFile: `${root}/vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../game/cities/registry.ts')
+  await cityLoader.loadCityContent('lagos')
   const registry = await load<typeof import('../game/cities/registry.ts')>('/src/game/cities/registry.ts')
   const fixtures = await load<typeof import('../game/cities/testing/fictionalCity.test-fixture.ts')>('/src/game/cities/testing/fictionalCity.test-fixture.ts')
   createLife = (await load<typeof import('../life.ts')>('/src/life.ts')).createLife

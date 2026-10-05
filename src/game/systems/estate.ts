@@ -1,4 +1,4 @@
-import { venuesFor } from '../cities/runtime.ts';
+import { publicArrivalVenue } from '../cities/runtime.ts';
 /**
  * OWNER: world
  * Where a life lives in the wider sense: its city, its local government, the house everyone has
@@ -69,7 +69,7 @@ import { emit } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
 import { arrive, canAfford, credit, debit } from '../api.ts';
-import { houseFor, housesFor, defaultHouseFor } from '../cities/housingRuntime.ts';
+import { houseFor, housesFor, housingFor, defaultHouseFor } from '../cities/housingRuntime.ts';
 import { isCityId } from '../cities/registry.ts';
 import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cheapestUpgrade, cityRules, cleanStyle,
   lgaOf, lgaOfDistrict, lgasOf, linksFrom, moveLevy, packStyle, stylePrice, tierCost, tierOf, validPlot } from '../content/world.ts';
@@ -101,7 +101,11 @@ const where = (e: EstateState): string => (e.plot ? addressLabel(e.city, e.plot.
 function defaultLga(cityId: WorldCityId, state: LifeState): LgaId | null {
   const units = lgasOf(cityId);
   if (!units.length) return null;
-  return (lgaOfDistrict(cityId, rentedHouse(state, cityId)) ?? units[0])?.id ?? null; // units is not empty
+  const houseId = rentedHouse(state, cityId);
+  const home = housingFor(cityId).find(item => item.definition.id === houseId);
+  const unit = lgaOfDistrict(cityId, home?.districtId ?? houseId);
+  if (home?.districtId && !unit) throw new TypeError(`Home ${houseId} has no declared local government`);
+  return (unit ?? units[0])?.id ?? null; // Legacy schematic homes may omit district metadata.
 }
 function cleanPlot(value: unknown, cityId: unknown): PlotAddress | null {
   if (!isRecord(value)) return null;
@@ -142,7 +146,11 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   if (!rules) throw new TypeError('A life requires a registered city');
   const city = rules.id;
   const home = cleanResidence(saved, city, now);
-  if (!home.lga && saved.lga !== null) Object.assign(home, { lga: defaultLga(city, state), lgaAt: null, lgaConfirmed: false, lgaVia: 'default' });
+  const onboarding = isRecord(input.onboarding) ? input.onboarding : null;
+  const legacy = !onboarding || typeof onboarding.done !== 'boolean' || (onboarding.done === true && onboarding.legacy === true);
+  const needsLegacyChoice = rules.legacyLgaChoice === true && legacy && !home.lgaConfirmed;
+  if (needsLegacyChoice) Object.assign(home, { lga: null, lgaAt: null, lgaConfirmed: false, lgaVia: 'default', plot: null, old: null });
+  else if (!home.lga && saved.lga !== null) Object.assign(home, { lga: defaultLga(city, state), lgaAt: null, lgaConfirmed: false, lgaVia: 'default' });
   const away: Partial<Record<WorldCityId, AwayResidence>> = {};
   if (isRecord(saved.away)) {
     for (const [id, value] of Object.entries(saved.away).slice(0, 16)) {
@@ -177,7 +185,7 @@ function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
     return fail(state, 'lga_cooldown', `You can change your local government once every ${LGA_RULES.changeCooldownDays} days. You can change again in ${days} day${days === 1 ? '' : 's'}.`);
   }
   if (e.upgrade) return fail(state, 'upgrade_running', 'Your house is being upgraded. Wait until the builders have finished before you move it to another local government.');
-  const levy = moveLevy(e.city, e.lga, unit.id, e.tier);
+  const levy = e.lgaConfirmed ? moveLevy(e.city, e.lga, unit.id, e.tier) : 0;
   if (levy > 0 && !canAfford(state, levy)) return fail(state, 'insufficient_funds', `Land is dearer in ${unit.name}: taking your ${HOUSE_TIERS[e.tier].label} there costs ${naira(levy)}; you have ${naira(state.cash)}.`);
   if (levy > 0) debit(state, levy, `Moving your ${HOUSE_TIERS[e.tier].label} to ${unit.name} (dearer land)`, ctx);
   Object.assign(e, { lga: unit.id, lgaAt: now, lgaConfirmed: true, lgaVia: via });
@@ -266,7 +274,7 @@ export function relocateBlock(state: LifeState, to: unknown, mode: unknown, ctx?
   const e = state.estate, dest = cityRules(to);
   const link = dest ? linksFrom(e.city).find((item) => item.to === to && item.mode === mode) : null;
   if (!dest || to === e.city) return { code: 'invalid_city', reason: 'Choose another city to travel to.' };
-  if (!link) return { code: 'no_route', reason: `There is no ${mode === 'air' ? 'flight' : 'road link'} from ${cityRules(e.city)?.name ?? 'here'} to ${dest.name}.` };
+  if (!link) return { code: 'no_route', reason: `There is no ${mode === 'air' ? 'flight' : mode === 'rail' ? 'train' : 'road link'} from ${cityRules(e.city)?.name ?? 'here'} to ${dest.name}.` };
   const open = dest.status === 'open' || (Array.isArray(ctx?.openCities) && ctx.openCities.includes(dest.id));
   if (!open) return { code: 'city_not_open', reason: `${dest.name} is not open yet, so nothing leaves for it. Departures start the day it opens.` };
   if (!canAfford(state, link.fare)) return { code: 'insufficient_funds', reason: `${link.label} costs ${naira(link.fare)}; you have ${naira(state.cash)}.` };
@@ -291,14 +299,13 @@ function arriveInCity(state: LifeState, active: IntercityAction, ctx: LifeContex
   const kept = away[to];
   delete away[to];
   const next = cleanResidence(kept ?? { living: 'own' }, to, now);
-  const house = houseFor(to, kept?.house)?.id ?? housesFor(to)[0]?.id ?? defaultHouseFor(to).id; // the fallback is never used: the list is not empty
+  const house = houseFor(to, kept?.house)?.id ?? defaultHouseFor(to).id;
   Object.assign(e, { city: to, ...next });
   ctx.cityId = to;
   emit(state, 'city.changed', { from, to }, ctx);
   emit(state, 'home.owned', { living: e.living === 'own', house }, ctx);
   emit(state, 'house.moved', { id: e.living === 'own' ? 'own' : house, from: 'away', cost: 0, house }, ctx);
-  const publicPlaces = venuesFor(to).filter(venue => venue.id !== 'home');
-  const destination = kept?.lga ? 'home' : (publicPlaces.find(venue => venue.scene.kind === 'park') ?? publicPlaces[0])?.id;
+  const destination = kept?.lga ? 'home' : publicArrivalVenue(to).id;
   if (!destination || !arrive(state, destination, ctx, { mode: null })) throw new TypeError('The destination city needs a public arrival venue');
   state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? 'You are back at your home here.' : `You are visiting. Choose a ${cityRules(to)?.unit ?? 'local government'} for your free starter house; your home in ${cityRules(from)?.name ?? from} stays yours.`}`;
 }

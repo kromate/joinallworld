@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
+await preloadCityContent('lagos');
 // The typed game store over the real client model, against a server that runs the real rules.
 // Runs in Node without a DOM: the store is Vue reactivity and the client model only.
 import assert from 'node:assert/strict'

@@ -1,7 +1,11 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Foundation tests for the rules engine: registry, sanitize, migration and the core systems.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLife, dispatch, advanceLife, viewLife, migrate, STATE_VERSION, VENUES, actionTypes, spotsOf } from '../life.ts';
+import { createLife, dispatch, advanceLife, viewLife, migrate, STATE_VERSION, actionTypes, spotsOf } from '../life.ts';
+import { VENUES } from './cities/lagos/venues.ts';
+
 import { registerSystem, systems, emit, modify } from './registry.ts';
 import { makeContext, makeRng, isRecord } from './util.ts';
 import { lagosTime, isOpen, minutesUntilOpen, formatClock } from './clock.ts';

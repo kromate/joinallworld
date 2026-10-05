@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await preloadCityContent('lagos');
 // Scene modules: every venue kind builds headlessly, stays inside the rendering budget and
 // frees everything it made. Nothing here needs WebGL.
 import test from 'node:test';
@@ -13,8 +15,10 @@ import type { LifeState } from '../types/life.ts';
 import { createBatch, sceneMaterials } from './build.ts';
 import { sign, textWidth, table, chair, bench, stall, speaker, screen, plant, palm, lampPost, signBoard } from './props.ts';
 import { createVenueWorld, createHostLights, sceneVenue, HOST_LIGHTING } from '../venue-world.ts';
-import { VENUES } from '../game/content/venues.ts';
-import { NPCS } from '../game/content/npcs.ts';
+import { VENUES } from '../game/cities/lagos/venues.ts';
+
+import { NPCS } from '../game/cities/lagos/regulars.ts';
+
 import { spotsOf } from '../life.ts';
 
 const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery'];

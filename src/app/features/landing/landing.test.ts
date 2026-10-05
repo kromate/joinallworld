@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The landing of a link, against fakes: the requests, what is kept and what is forgotten, the banner.
 import assert from 'node:assert/strict'
 import test from 'node:test'

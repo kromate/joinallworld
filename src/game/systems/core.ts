@@ -1,4 +1,5 @@
-import { venueFor, venuesFor } from '../cities/runtime.ts';
+import { cityRules } from '../cities/registry.ts';
+import { venueFor, publicArrivalVenue } from '../cities/runtime.ts';
 /**
  * OWNER: foundation (core — do not edit from a feature branch)
  * Identity of a life and the single timed-action slot.
@@ -24,13 +25,21 @@ import type { ActiveAction, AdvanceOutcome, LifeContext, LifeState, VenueId } fr
 
 export const STATE_VERSION = 1;
 export const DEFAULT_NAME = 'New Lagosian';
-const START_VENUE = 'park';
 
 export const isVenueId = (value: unknown, cityId: string): value is VenueId => typeof value === 'string' && Boolean(venueFor(cityId, value));
 
+/** Current venue ids win over aliases; an alias can only resolve to a venue in this city. */
+function savedVenue(value: unknown, cityId: string): VenueId | null {
+  if (isVenueId(value, cityId)) return value;
+  const alias = typeof value === 'string' ? cityRules(cityId)?.legacyVenueAliases?.[value] : null;
+  return isVenueId(alias, cityId) ? alias : null;
+}
+
 /** Run after every system has sanitized: the active action may depend on any of them. */
 export function sanitizeActive(input: SavedInput, state: LifeState, ctx: LifeContext): void {
-  const value = input.activeAction;
+  const raw = input.activeAction;
+  const destination = isRecord(raw) && raw.kind === 'travel' ? savedVenue(raw.id, ctx.cityId) : null;
+  const value = destination && isRecord(raw) ? { ...raw, id: destination } : raw;
   state.activeAction = null;
   if (!isRecord(value)) return;
   const timed = finite(value.remaining) && value.remaining > 0 && finite(value.duration)
@@ -71,7 +80,7 @@ export default {
     state.t = finite(input.t) && input.t >= 0 ? input.t : finite(ctx.now) ? ctx.now : 0;
     state.name = typeof input.name === 'string' ? input.name.trim().slice(0, 24) || DEFAULT_NAME : DEFAULT_NAME;
     state.message = typeof input.message === 'string' && input.message.length <= 500 ? input.message : '';
-    state.location = isVenueId(input.location, ctx.cityId) ? input.location : venueFor(ctx.cityId, START_VENUE)?.id ?? venuesFor(ctx.cityId)[0]?.id ?? (() => { throw new TypeError('City has no starting venue'); })();
+    state.location = savedVenue(input.location, ctx.cityId) ?? publicArrivalVenue(ctx.cityId).id;
     state.activeAction = null;
   },
   actions: {

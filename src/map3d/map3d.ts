@@ -57,7 +57,7 @@ import { estateLayout, plotAt } from './estates.ts';
 import { lgaAt } from './lga.ts';
 import { tripOf, createTripClock, tripPose } from './trip.ts';
 import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
-import { avatarBox, labelShift, nearPoints } from './labels.ts';
+import { avatarBox, labelShift, nearPoints, plateFit, plateWidth, spanOf, WHOLE_FROM } from './labels.ts';
 import { iconFor } from '../ui/icon-map.ts';
 
 /** What the map reads of a venue (src/game/content/venues.ts): its icon, filter category and opening hours. */
@@ -146,7 +146,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   scene.add(houses.group);
   const actor = createActor(kit, { travelVehicle });
   scene.add(actor.group);
-  const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
+  const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, core: pack.core, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
   const ringOf = (colour: string, opacity: number) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };
   const selectRing = ringOf('#14532d', 0.95), hoverRing = ringOf('#e8a643', 0.9);
   // The player's own plot: a ring that stays big enough to find from any distance.
@@ -176,8 +176,10 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   let state: MapState | null = null, layer = 'city', filter = 'all', selected: string | null = null, hovered: string | null = null, destroyed = false, lost = false;
   let layers: MapLayers = { billboards: false, sea: false, neighbours: false, gov: false, moving: false, lgas: true, homes: true }, data: OverlayData = { ads: null, neighbours: null, gov: null };
   // The world: local governments and the houses on their estates (src/map3d/houses.ts, world-data.js).
-  const plates = new Map<string, { node: HTMLButtonElement; note: HTMLElement; lga: PackLga }>(), tags: HTMLDivElement[] = [];
+  const plates = new Map<string, { node: HTMLButtonElement; note: HTMLElement; lga: PackLga; span: ReturnType<typeof spanOf>; scale: number }>(), tags: HTMLDivElement[] = [];
   let friends = new Set<string>(), summaryShown: ReturnType<WorldData['summary']> = null, hoverHouse: (PlotRef & { text: string }) | null = null, mine = null, pixels = 1;
+  let wholeFrom = WHOLE_FROM;       // beyond this camera distance the view is of the whole state (see labels.ts), judged against the opening view of this screen
+  let openedWhole = false;          // "Whole city" was pressed: a resize keeps that view, not the opening one
   let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, opened = false, userMoved = false, time: TimeOfDay | null = null, labelKey = '', chipKey = '';
   let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs: number[] = [], gaps: number[] = [];
   let trip: Trip | null = null, route: Route | null = null, returning: { p: number; rate: number } | null = null, settling = false, pendingArrive: (() => void) | null = null, dueAt = -Infinity, tripCamera = true, pose: (TripPose & { progress?: number }) | null = null;
@@ -205,7 +207,9 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   }
   function draw(t = now()) {
     // The player's piece grows as the view pulls back, so it can always be found — and a trip always followed.
-    actor.setSize(clamp(rig.view.distance / 62, rig.view.distance < 34 ? Math.max(0.12, rig.view.distance / 62) : 1.2, 4));
+    actor.setSize(clamp(rig.view.distance / 62, rig.view.distance < 34 ? Math.max(0.12, rig.view.distance / 62) : 1.2, Math.max(4, rig.view.distance / 110)));
+    city.setDetail(rig.view.distance, wholeFrom * 1.35);
+    if (route && routeStep() !== routeWidth) drawRoute();
     syncWorld();
     renderer.render(scene, camera);
     renderCount += 1;
@@ -287,11 +291,15 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const length = Math.hypot(b.x - a.x, b.z - a.z) || 1;
     return { from, to, points: [{ x: a.x, y: 0, z: a.z, bridge: null }, { x: b.x, y: 0, z: b.z, bridge: null }], lengths: [0, length], length, lead: length * 0.1, tail: length * 0.1, bridges: [] };
   }
+  /** The route line widens as the view pulls back, in steps (a halving of the zoom is two), so that it can be followed from a whole-state view. */
+  const routeStep = () => Math.round(Math.log2(clamp(rig.view.distance / 120, 1, 24)) * 2);
+  let routeWidth = 0;
   function drawRoute() {
     if (routeLine) { scene.remove(routeLine); routeLine.geometry.dispose(); routeLine = null; }
     if (!route) return;
-    const raw = createRaw(THREE);
-    raw.ribbon(route.points, 1.25, 0.16, '#14532d'); raw.ribbon(route.points, 0.7, 0.18, '#ffd166');
+    routeWidth = routeStep();
+    const widen = Math.pow(2, routeWidth / 2), raw = createRaw(THREE);
+    raw.ribbon(route.points, 1.25 * widen, 0.16 + widen * 0.02, '#14532d'); raw.ribbon(route.points, 0.7 * widen, 0.18 + widen * 0.02, '#ffd166');
     routeLine = raw.build(routeMaterial); routeLine.renderOrder = 2; routeLine.name = 'route';
     scene.add(routeLine);
   }
@@ -373,7 +381,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       name.textContent = lga.name;
       node.append(name, note);
       labelLayer.append(node);
-      plates.set(lga.id, { node, note, lga });
+      plates.set(lga.id, { node, note, lga, span: spanOf(lga.polygon), scale: 1 });
     }
     // House tags: the hovered house, your own, and friends' — a handful of nodes, however many houses there are.
     for (let i = 0; i < 14; i++) { const node = doc!.createElement('div'); node.className = 'm3-tag'; node.hidden = true; node.setAttribute('aria-hidden', 'true'); labelLayer.append(node); tags.push(node); }
@@ -441,10 +449,12 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   const project = (x: number, y: number, z: number) => { probe.set(x, y, z).project(camera); return { x: (probe.x * 0.5 + 0.5) * size.width, y: (-probe.y * 0.5 + 0.5) * size.height, front: probe.z < 1 }; };
   function placeLabels() {
     if (!labelLayer) return;
+    // Level of detail: a whole-state view names the local governments, and only the places that matter to the player (here, picked, on the way).
+    const wholeView = rig.view.distance > wholeFrom;
     const entries: { label: LabelEntry; at: ReturnType<typeof project>; visible: boolean }[] = [];
     for (const [id, label] of labels) {
       const place = city.places[id]!, at = project(place.x, place.top + 0.5, place.z);
-      entries.push({ label, at, visible: at.front && at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 });
+      entries.push({ label, at, visible: at.front && at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 && !(wholeView && label.priority < 70) });
     }
     entries.sort((a, b) => b.label.priority - a.label.priority || b.at.y - a.at.y);
     const taken: ScreenBox[] = [];
@@ -479,11 +489,18 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const far = rig.view.distance > 230;
     if (root!.classList.contains('is-far') !== far) root!.classList.toggle('is-far', far);
     // Local-government name plates stand on the ground at their plate point; near the houses they step back.
-    for (const { node, lga } of plates.values()) {
-      const at = project(lga.plate[0], 0.1, lga.plate[1]);
-      const visible = layers.lgas && at.front && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && rig.view.distance > 26;
+    const drawn: ScreenBox[] = [];
+    for (const plate of [...plates.values()].sort((p, q) => (q.span.maxX - q.span.minX) - (p.span.maxX - p.span.minX))) {
+      const { node, lga } = plate, at = project(lga.plate[0], 0.1, lga.plate[1]);
+      const fit = plateFit(lga.name, Math.abs(project(plate.span.maxX, 0.1, lga.plate[1]).x - project(plate.span.minX, 0.1, lga.plate[1]).x), rig.view.distance, wholeFrom * 1.25);
+      const w = plateWidth(lga.name) * fit.scale * 0.6, h = 24 * fit.scale, box = { l: at.x - w, r: at.x + w, t: at.y - h / 2, b: at.y + h / 2 };
+      const visible = layers.lgas && fit.show && at.front && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && rig.view.distance > 26
+        && !drawn.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t) && !(wholeView ? false : hits(box));
       if (node.hidden === visible) node.hidden = !visible;
-      if (visible) node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-50%)`;
+      if (!visible) continue;
+      drawn.push(box);
+      if (fit.scale !== plate.scale) { plate.scale = fit.scale; node.style.fontSize = fit.scale > 1 ? `${(11 * fit.scale).toFixed(1)}px` : ''; node.classList.toggle('is-sized', fit.scale > 1); }
+      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-50%)`;
     }
     // House tags: yours, the one under the pointer, friends' in the estates drawn as houses.
     const wanted: (PlotRef & { text: string; kind: string })[] = [], own = layers.homes ? ownPlot() : null;
@@ -528,7 +545,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   function openView() {
     opened = true; userMoved = false;
     rig.jump({ yaw: 0, pitch: DEFAULT_PITCH });
-    if (size.width > 720) { rig.jump(rig.whole()); return; }
+    openedWhole = false;
+    if (size.width > 720) { rig.jump(rig.core()); return; }
     // A phone cannot name the places of the whole city at once: it opens close on where the player is.
     rig.jump(nearView(city.places[state?.location!] || city.places.home!));
   }
@@ -548,11 +566,12 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, size.width <= 720 ? 1.75 : 2));
       renderer.setSize(size.width, size.height, false);
       rig.setViewport(size.width, size.height, insets);
+      wholeFrom = Math.max(WHOLE_FROM, rig.core().distance * 1.5);
       container.style?.setProperty('--map-dock', `${Math.round(insets.bottom)}px`);
       if (root) { root.style.setProperty('--m3-dock', `${Math.round(insets.bottom)}px`); root.style.setProperty('--m3-left', `${Math.round(insets.left)}px`); root.style.setProperty('--m3-top', `${Math.round(insets.top)}px`); }
     }
     if (!opened) { openView(); if (trip && route && !reducedMotion) rig.jump(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route!.points.length - 1), { pad: 1.5, min: 70 })); }
-    else if (changed && !userMoved && size.width > 720 && !trip) rig.jump(rig.whole());
+    else if (changed && !userMoved && size.width > 720 && !trip) rig.jump(openedWhole ? rig.whole() : rig.core());
     return true;
   }
   const motion = (target: Partial<RigView>, time = 0.5) => { if (reducedMotion) rig.jump(target); else rig.ease(target, time); request(); };
@@ -692,7 +711,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     grab();
     if (name === 'in') motion({ distance: rig.view.distance * 0.68 }, 0.3);
     else if (name === 'out') motion({ distance: rig.view.distance / 0.68 }, 0.3);
-    else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; }
+    else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; openedWhole = true; }
     else if (name === 'me') {
       // During a trip "find me" also keeps up with the traveller, until the player moves the view themselves.
       // It comes back to the close view the map opens on — or stays closer, if the player already is.

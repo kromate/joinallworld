@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The social screens' wording and rules without a browser: badges, closeness, why a call is off,
 // the gate, the person card's reasons and the Invite app's knock rules.
 import assert from 'node:assert/strict'

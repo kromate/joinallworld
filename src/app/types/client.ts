@@ -100,7 +100,7 @@ export interface GameClient {
   newId(): string
   api: FetchJson
   fetchJson: FetchJson
-  connect(createNew?: boolean): Promise<boolean>
+  connect(createNew?: boolean, startCity?: string): Promise<boolean>
   /**
    * `options.actionId`: an id made earlier with newId() and kept by the caller, so that a retry (also
    * after a reload) is the SAME action to the server and is applied exactly once. Without it each call gets a fresh id.

@@ -56,7 +56,7 @@ export interface Game {
    * exactly once. A refusal is returned, not toasted: the caller decides how to say it.
    */
   resend<T extends PlayerActionType>(actionId: string, type: T, ...args: CommandArgs<T>): Promise<CommandResult<T>>
-  connect(createNew?: boolean, name?: string | null): Promise<boolean>
+  connect(createNew?: boolean, name?: string | null, startCity?: string): Promise<boolean>
   switchCity(id: string): Promise<SwitchCityResult>
   refresh(): Promise<boolean>
   fetchJson: FetchJson
@@ -180,12 +180,12 @@ export function createGame(options: GameOptions = {}): Game {
   }
 
   let connecting = false
-  async function connect(createNew = false, name: string | null = null): Promise<boolean> {
+  async function connect(createNew = false, name: string | null = null, startCity?: string): Promise<boolean> {
     if (connecting) return false
     connecting = true
     try {
       if (name) client.identity.name = name
-      const pending = client.connect(createNew)
+      const pending = client.connect(createNew, startCity)
       publish()
       const ok = await pending
       publish()

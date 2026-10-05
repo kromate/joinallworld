@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Contract tests for the rules engine: the things a system could get wrong without anything
 // failing until much later — unpaid metered gains, state that vanishes at the next load, a charge
 // kept for an action that can no longer run, a random outcome a client can work out, and a timed
@@ -10,7 +12,8 @@ import { registerSystem, systems, activeHandler, undeclaredKeys, emit } from './
 import { makeContext, makeRng, keyedSeed, sha256Hex, isRecord } from './util.ts';
 import { rebuildCatalogue, usedShare, isMetered, MAX_LOCKED_SECONDS } from './systems/activities.ts';
 import { statementOf } from './systems/wallet.ts';
-import { VENUES } from './content/venues.ts';
+import { VENUES } from './cities/lagos/venues.ts';
+
 import type { ActionBody } from '../types/actions.ts';
 import type { ActivityPlacement } from '../types/content.ts';
 import type { AttachedActivity, EngineEvent, SystemDefinition } from '../types/registry.ts';

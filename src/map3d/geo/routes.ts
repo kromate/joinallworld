@@ -23,7 +23,7 @@ import { project } from './projection.ts';
 /** A line's points in map units, with the running length: what measure() returns and pointAlong() reads. */
 export interface MeasuredLine { points: [number, number][]; lengths: number[]; total: number }
 /** The line a link follows: `points` are [lon, lat]. */
-export interface LinkPath { id: string; mode: string; towns: readonly string[] | null; points: [number, number][] }
+export interface LinkPath { id: string; mode: string; towns: readonly string[] | null; points: readonly (readonly [number, number])[] }
 export interface Highway { id: string; name: string; towns: readonly string[] }
 export interface Airport { id: string; city: string; name: string; at: readonly [number, number] }
 /** A position along a line: map units, which way the traveller faces. */
@@ -134,7 +134,7 @@ export function interCityTripOf(state: InterCitySource | null | undefined): Inte
   if (!active || active.kind !== 'intercity' || typeof active.id !== 'string' || typeof active.from !== 'string' || active.id === active.from) return null;
   const duration = Number.isFinite(active.duration) && active.duration! > 0 ? active.duration! : 1;
   const remaining = Math.max(0, Math.min(duration, Number.isFinite(active.remaining) ? active.remaining! : duration));
-  const mode: CityLinkMode = active.mode === 'air' ? 'air' : 'road';
+  const mode: CityLinkMode = active.mode === 'air' ? 'air' : active.mode === 'rail' ? 'rail' : 'road';
   return { key: `intercity|${active.from}|${active.id}|${mode}|${duration}`, from: active.from, to: active.id, mode, duration, remaining };
 }
 

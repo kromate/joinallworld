@@ -1,4 +1,5 @@
-import { registeredCityIds, cityRules, loadCityContent, isCityId } from './game/cities/registry.ts';
+import { initialCity } from './storage-city.ts';
+import { registeredCityIds, cityRules, loadCityContent, isCityId, isOpenCityId } from './game/cities/registry.ts';
 import { STORAGE_KEY } from './storage-key.ts';
 /**
  * Client model: the browser's read-only mirror of the server-held life, plus networking.
@@ -80,7 +81,7 @@ export interface Client {
   readonly online: boolean
   api: Api
   fetchJson: Api
-  connect(createNew?: boolean): Promise<boolean>
+  connect(createNew?: boolean, startCity?: string): Promise<boolean>
   command(type: ActionRequest['type'], payload?: Record<string, unknown> | null, options?: { actionId?: string }): Promise<CommandResult>
   switchLegacy(id: string, clientId: string): Promise<CommandResult>
   switchCity(id: string): Promise<CommandResult>
@@ -183,11 +184,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   randomUUID = () => uuid(), isHidden = () => false, isOnline = () => globalThis.navigator?.onLine !== false, onChange = () => {}, onStatus = () => {}, onSessionExpired = () => {}, onNeedName = () => {}, onSession = () => {} }: ClientOptions = {}): Client {
   const cancelTimer = cancel as (handle: unknown) => void;
   let saved: SavedClient | null | undefined;
+  let cached: string | null = null;
   // getItem may answer null (parses to null) or undefined (JSON.parse throws, caught): either way nothing was saved.
-  try { saved = JSON.parse(storage?.getItem(STORAGE_KEY) as string) as SavedClient | null; } catch {}
+  try { cached = storage?.getItem(STORAGE_KEY) ?? null; saved = JSON.parse(cached ?? 'null') as SavedClient | null; } catch {}
+  const cityId = initialCity(cached, isCityId);
   const client: Client = {
-    state: createLife(saved?.state),
-    cityId: typeof saved?.cityId === 'string' && isCityId(saved.cityId) ? saved.cityId as CityId : 'lagos',
+    state: createLife(saved?.state, { cityId }),
+    cityId,
     identity: { name: saved?.identity?.name || 'New Lagosian' },
     hasSavedIdentity: Boolean(saved?.identity),
     session: null, ready: false, busy: false, serverTimeOffset: 0, link: 'connecting',
@@ -307,10 +310,15 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     }
   }
 
-  async function connect(createNew = false): Promise<boolean> {
+  async function connect(createNew = false, startCity?: string): Promise<boolean> {
     client.link = 'connecting';
     status('Connecting…');
     try {
+      if (createNew && startCity !== undefined) {
+        if (!isOpenCityId(startCity)) throw new TypeError('Choose an open city to start.');
+        await loadCityContent(startCity);
+        client.cityId = startCity;
+      }
       let response: SessionResponse;
       // `onboarding: true` tells the server this client shows the quick start: a life made for this new session starts as a guest (its look is confirmed by one action, then it plays).
       if (createNew) response = await api<SessionResponse>('/api/session', { method: 'POST', body: { name: client.identity.name, onboarding: true } satisfies SessionRequest });

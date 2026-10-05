@@ -1,8 +1,12 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: social — tests for src/game/systems/social.js, content/npcs.js and the client-side message model.
 // Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.js.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLife, dispatch, advanceLife, viewLife, hasAction, actionTypes, spotsOf, VENUES } from '../life.ts';
+import { createLife, dispatch, advanceLife, viewLife, hasAction, actionTypes, spotsOf } from '../life.ts';
+import { VENUES } from './cities/lagos/venues.ts';
+
 import { registerSystem } from './registry.ts';
 import { rebuildCatalogue } from './systems/activities.ts';
 import { makeContext } from './util.ts';
@@ -13,7 +17,9 @@ import type { FamilyId, LifeContextInit, LifeState } from '../types/life.ts';
 import type { EngineEventMap, SystemDefinition } from '../types/registry.ts';
 import type { Message, ThreadItem } from '../types/social.ts';
 import type { ProfileRecord, ThreadRecord } from './social-model.ts';
-import { NPCS, NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_UNLOCK, DAILY_INTERACTIONS, FAMILY, FAMILY_CALL, TRANSFER_LIMITS } from './content/npcs.ts';
+import { NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_UNLOCK, DAILY_INTERACTIONS, FAMILY, FAMILY_CALL, TRANSFER_LIMITS } from './content/npcs.ts';
+import { NPCS } from './cities/lagos/regulars.ts';
+
 
 const NOW = Date.UTC(2026, 0, 5, 9);
 const DAY = 86400000;

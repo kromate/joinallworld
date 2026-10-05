@@ -6,7 +6,7 @@ import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { play } from '../../../quick-start/entry.ts'
-import { quickStartRequired } from './quickStartModel.ts'
+import { quickStartRequired } from './startGate.ts'
 import { sessionRequired } from './sessionModel.ts'
 
 /** The landing screen of a new device; it replaces the nickname form as the session gate. */

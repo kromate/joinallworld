@@ -13,7 +13,7 @@ import { emit } from '../../game/registry.ts';
 import { addSkillXp, changeNeeds } from '../../game/api.ts';
 import { busy, cleanText, fail, ok } from '../../game/util.ts';
 import { lagosDayStart, lagosTime } from '../../game/clock.ts';
-import { DISCOVERY_TRAIL } from './content.ts';
+import { DISCOVERY_TRAIL } from './trail.ts';
 import { PROGRAMMES, programmeOf } from './curriculum.ts';
 import { tablesAt } from '../../tables/places.ts';
 import type {

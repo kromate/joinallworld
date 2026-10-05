@@ -101,7 +101,7 @@ const shown = (ad: AdRecord, info: { price: number }, viewerId: string | null): 
  *   Ad = { text, colour, icon, by: { id, name }, at, expiresAt, mine, price }
  * `colour` and `icon` are ids into `palette`; `text` is plain text that the renderer must escape.
  */
-export function adsView(city: CivicCityRecord, now: number, viewerId: string | null = null, billboardRoads: readonly BillboardSlot[] = BILLBOARDS.slots): AdsView {
+export function adsView(city: CivicCityRecord, now: number, viewerId: string | null = null, billboardRoads: readonly BillboardSlot[] = BILLBOARDS.slots, seaEnabled = true): AdsView {
   const slots = billboardRoads.map((entry) => {
     const ad = book(city, 'billboard')[entry.id];
     return { slot: entry.id, near: entry.near, road: entry.road, price: BILLBOARDS.price, ad: live(ad, now) ? shown(ad, BILLBOARDS, viewerId) : null };
@@ -115,6 +115,6 @@ export function adsView(city: CivicCityRecord, now: number, viewerId: string | n
   return {
     palette: { colours: AD_COLOURS, icons: AD_ICONS },
     billboards: { price: BILLBOARDS.price, days: BILLBOARDS.days, maxPerPlayer: BILLBOARDS.maxPerPlayer, slots },
-    sea: { rows: SEA_PLOTS.rows, cols: SEA_PLOTS.cols, price: SEA_PLOTS.price, shoreRows: SEA_PLOTS.shoreRows, shorePrice: SEA_PLOTS.shorePrice, days: SEA_PLOTS.days, maxPerPlayer: SEA_PLOTS.maxPerPlayer, plots },
+    sea: { rows: seaEnabled ? SEA_PLOTS.rows : 0, cols: seaEnabled ? SEA_PLOTS.cols : 0, price: SEA_PLOTS.price, shoreRows: SEA_PLOTS.shoreRows, shorePrice: SEA_PLOTS.shorePrice, days: SEA_PLOTS.days, maxPerPlayer: SEA_PLOTS.maxPerPlayer, plots },
   };
 }

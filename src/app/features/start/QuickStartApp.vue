@@ -18,6 +18,7 @@
 // shell opened it because the life is still held for its look.
 import '../../../ui/panels/quick-start.css'
 import { computed, nextTick, onMounted, ref } from 'vue'
+import { playableCityIds, cityName } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { keepPlay, play } from '../../../quick-start/entry.ts'
@@ -37,6 +38,8 @@ import type { QuickDraft } from './startBoundary.ts'
 const props = defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
 const view = game.view
+const startCity = ref(game.cityId.value)
+const openCities = playableCityIds()
 const root = ref<HTMLElement | null>(null)
 const input = ref<HTMLInputElement | null>(null)
 
@@ -86,7 +89,7 @@ function go(): void {
   track('play_tapped', { taps: qs.taps })
   play.sending = true
   shell.close()
-  window.dispatchEvent(new CustomEvent('jaw:quick-start', { detail: { name: plan.name, look: plan.look } }))
+  window.dispatchEvent(new CustomEvent('jaw:quick-start', { detail: { name: plan.name, look: plan.look, city: startCity.value } }))
 }
 
 function shuffle(): void {
@@ -137,6 +140,7 @@ function onEditorTap(event: MouseEvent): void {
     </div>
     <div v-if="qs.more" @click="onEditorTap"><LookEditor :look="current.look" :owned="wardrobe" @choose="choose" /></div>
     <label class="qs-name">Your name<span><input ref="input" name="name" data-qs-name minlength="3" maxlength="24" autocomplete="nickname" autocapitalize="words" spellcheck="false" enterkeyhint="go" :value="nameShown" @input="typed" @keydown.enter.prevent="go"><button type="button" class="qs-dice" data-qs="dice" data-key="dice" aria-label="Suggest another name" title="Suggest another name" @click="dice"><GameIcon name="game" inline /></button></span></label>
+    <label v-if="openCities.length > 1 && !invited()" class="qs-name">Start in<select v-model="startCity" aria-label="Starting city"><option v-for="city in openCities" :key="city" :value="city">{{ cityName(city) }}</option></select></label>
     <div class="qs-foot"><button type="button" class="ui-button is-primary qs-play" data-qs="play" data-key="play" @click="go">Play</button><p>No password, no e-mail. You can change everything later.</p></div>
   </div>
 </template>

@@ -5,7 +5,8 @@
 //
 // The preview itself (a Three.js canvas, drawn on demand only) is src/scene/avatar-preview.ts and
 // is driven from lookPreview.ts. The server validates every look; nothing here is a rule.
-import { reactive } from 'vue'
+import { lookUi } from './lookState.ts'
+export { lookUi, markSpun } from './lookState.ts'
 import { APPEARANCE } from '../../../game/content/traits.ts'
 import type { AccessoryId, BodyId, Look, Wardrobe } from '../../../types/life.ts'
 import type { PreviewFocus } from '../../../scene/avatar-preview.ts'
@@ -58,22 +59,6 @@ export const SECTIONS: readonly Section[] = [
   { id: 'extras', title: 'Extras', icon: 'crown', focus: 'body', groups: [{ kind: 'chips', field: 'accessories', title: `Accessories · up to ${APPEARANCE.accessoryLimit}, tap again to take one off` }] },
 ]
 const HEAD_FIELDS: ReadonlySet<string> = new Set(['hair', 'hairColor', 'skin', 'face', 'expression'])
-
-const SPUN_KEY = 'joinallworld-spun'
-function wasSpun(): boolean {
-  try { return globalThis.localStorage?.getItem(SPUN_KEY) === '1' } catch { return false }
-}
-/**
- * One editor state for the page, as the existing module has: the open tab, the field changed last
- * (head and shoulders while hair, face or skin is being changed), a Face / Full body override from
- * the stage's switch, and whether the player has ever spun the preview (kept on the device).
- */
-export const lookUi = reactive<{ section: string; lastField: string | null; zoomOverride: PreviewFocus | null; spun: boolean }>({ section: 'body', lastField: null, zoomOverride: null, spun: wasSpun() })
-export function markSpun(): void {
-  if (lookUi.spun) return
-  lookUi.spun = true
-  try { localStorage.setItem(SPUN_KEY, '1') } catch { /* private mode */ }
-}
 
 /** Where the preview should look now: head and shoulders while hair, face or skin is being changed. */
 export function lookFocus(): PreviewFocus {

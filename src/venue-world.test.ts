@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Battery rule: a venue scene renders on demand only — an idle scene does zero renders.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -574,7 +576,7 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
 // ---- the finished camera and walking: every venue, sight lines, other players, markers ------------
 
 test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit all the way round, zoom to both limits — and the loop always stops', async () => {
-  const { VENUES } = await import('./game/content/venues.ts');
+  const { VENUES } = await import('./game/cities/lagos/venues.ts');
   const { spotsOf } = await import('./life.ts');
   const report = [];
   // The UNILAG campus is drawn by its own host (src/campus/unilag/host.ts behind world-adapter.ts) and has its own scene, walk and budget tests there.

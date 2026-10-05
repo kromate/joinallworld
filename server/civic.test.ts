@@ -6,7 +6,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.ts';
-import { VENUES } from '../src/game/content/venues.ts';
+import { VENUES } from '../src/game/cities/lagos/venues.ts';
+
 import { isOpen, minutesUntilOpen } from '../src/game/clock.ts';
 import { spotsOf } from '../src/game/api.ts';
 import type { LifeState } from '../src/types/index.ts';

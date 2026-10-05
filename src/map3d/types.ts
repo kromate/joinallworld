@@ -5,6 +5,8 @@
  * Types only — nothing here exists at run time.
  */
 
+import type { MapOrigin } from './geo/frame.ts';
+
 // ---- Plain geometry -------------------------------------------------------------------------------------
 
 /** [x, z] in map units (x runs east, z runs south). */
@@ -37,8 +39,11 @@ export interface PackBounds extends Rect {
   /** The open-water block the sea-plot layer uses. */
   sea: { x0: number; x1: number; z0: number; z1: number }
 }
-/** A land mass as a control polygon; the builder rounds the corners. */
-export interface PackLand { id: string; kind: LandKind; points: readonly Point2[] }
+/**
+ * A land mass as a control polygon; the builder rounds the corners unless `exact` is set (real
+ * boundaries are drawn as given). `holes` are cut out of the land (inner rings).
+ */
+export interface PackLand { id: string; kind: LandKind; points: readonly Point2[]; exact?: boolean; holes?: readonly (readonly Point2[])[] }
 /** A road (or bridge) centre line as control points. `bridge` is the deck height above the water. */
 export interface PackRoad { id: string; name: string; major?: boolean; bridge?: number; pylon?: boolean; points: readonly Point2[] }
 /** Where a venue's landmark stands. */
@@ -58,7 +63,10 @@ export interface PackLga {
   line: string
   land: number
   districts?: readonly string[]
+  /** The largest part of the boundary (kept for callers that want one ring). */
   polygon: readonly Point2[]
+  /** Every part of the boundary, each as [outer ring, ...holes]. Estates and the finder use all parts. */
+  polygons?: readonly (readonly (readonly Point2[])[])[]
   plate: Point2
   tint: string
   /** `c` is [lat, lon]; `box` is [south, west, north, east]. */
@@ -66,6 +74,8 @@ export interface PackLga {
 }
 /** What a city module exports, and what the maps are drawn from. `decorate` receives a geometry batch (src/scene/build) and helpers. */
 export interface CityPack {
+  /** Ground continues beyond this inland footprint; uncovered space is not ocean. */
+  inland?: boolean
   id: string
   name: string
   bounds: PackBounds
@@ -81,6 +91,12 @@ export interface CityPack {
   lgas: readonly PackLga[]
   /** The rough box of the city's state [south, west, north, east]. */
   geo: { box: Box4 }
+  /** The map's projection frame (src/map3d/geo/frame.ts): where local (0, 0) sits and how many units make a km. */
+  frame?: { origin: MapOrigin; unitsPerKm: number }
+  /** The metropolitan core (where the venues are): the default camera view. */
+  core?: Rect
+  /** A multiplier the builder applies to road widths (default 1). */
+  roadScale?: number
   decorate: (batch: DecorateBatch, tools: { rng: () => number; w?: unknown }) => void
 }
 

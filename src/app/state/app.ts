@@ -196,7 +196,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       scene.world.value?.setCity(state.estate.city)
       scene.city.value?.setCity(state.estate.city)
       placeSent = false
-      if (!state.estate.lga) shell.open('city', { city: state.estate.city })
+      if (state.onboarding.done && !state.estate.lga) shell.open('city', { city: state.estate.city })
     }
     // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
     const plot = state.estate?.plot
@@ -300,20 +300,23 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     if (!game.state.value.onboarding.required) await landing.land()
   }
   /** Connect (or reconnect), then finish what the first minute left open. */
-  async function connect(createNew = false, name: string | null = null): Promise<boolean> {
-    const ok = await game.connect(createNew, name)
-    if (ok) await firstMinute()
+  async function connect(createNew = false, name: string | null = null, startCity?: string): Promise<boolean> {
+    const ok = await game.connect(createNew, name, startCity)
+    if (ok) {
+      await firstMinute()
+      if (game.state.value.onboarding.done && game.state.value.estate.lga === null) shell.open('city')
+    }
     // Not awaited: a slow or failing community chunk must not hold up the game or block a later Reconnect.
     if (ok) void community.ensure()
     return ok
   }
   /** Play was tapped on the landing screen ('jaw:quick-start'). A second tap while the first is on its way is the same start. */
   let starting = false
-  async function quickStart(name: string | null): Promise<void> {
+  async function quickStart(name: string | null, startCity?: string): Promise<void> {
     if (starting) return
     starting = true
     try {
-      const ok = await connect(true, name)
+      const ok = await connect(true, name, startCity)
       // A refused name comes back through 'needName' with the server's sentence; anything else is the connection.
       if (!ok && game.link.value !== 'new') {
         play.sending = false

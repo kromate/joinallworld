@@ -105,7 +105,7 @@ function onSceneSpot(event: Event): void {
 // The same window events the existing panels send (the landing screen, the session panel, the world map).
 const onStartLife = (event: Event): void => startLife((event as CustomEvent<{ name?: string | null }>).detail?.name ?? null)
 // Play on the landing screen: the session is opened and the look it kept on the device is confirmed (state/app.ts).
-const onQuickStart = (event: Event): void => { void quickStart((event as CustomEvent<{ name?: string | null }>).detail?.name ?? null) }
+const onQuickStart = (event: Event): void => { const detail = (event as CustomEvent<{ name?: string | null; city?: string }>).detail; void quickStart(detail?.name ?? null, detail?.city) }
 const onReconnect = (): void => menu('reconnect')
 const onSwitchCity = (event: Event): void => { const city = (event as CustomEvent<{ city?: string }>).detail?.city; if (city) void switchCity(city) }
 // The device got its network back: try the connection once, by itself (an event, not a timer).

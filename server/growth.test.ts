@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: growth — the growth routes against a real server: share links and their preview page,
 // referral (and what cannot be farmed), the age question and consent, and the operator's metrics.
 import test from 'node:test';

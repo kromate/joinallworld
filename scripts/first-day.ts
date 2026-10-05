@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { loadCityContent } from '../src/game/cities/registry.ts';
+await loadCityContent('lagos');
 /**
  * The scripted first day: one new life played end to end against the real server.
  *

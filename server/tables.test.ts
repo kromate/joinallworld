@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: growth — the game tables against a real server and real sockets: sitting, a whole game of
 // Whot between two players and against a bot, what each socket is and is not sent, exactly-once
 // moves, reconnecting, the clock, and what a result pays (the daily and per-pair caps).

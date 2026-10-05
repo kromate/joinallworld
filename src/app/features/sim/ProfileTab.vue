@@ -8,7 +8,8 @@
 // the world feature's LgaCard.
 import { computed, nextTick, onBeforeUnmount, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { DREAMS, START_HOMES, TRAITS } from '../../../game/content/traits.ts'
+import { dreamFor } from '../../../game/cities/characterContent.ts'
+import { START_HOMES, TRAITS } from '../../../game/content/traits.ts'
 import { linkWords } from '../../../ui/link.ts'
 import LgaCard from '../world/LgaCard.vue'
 import LookEditor from '../start/LookEditor.vue'
@@ -24,7 +25,8 @@ defineProps<{ params?: unknown }>()
 const { game, shell, command } = useApp()
 const state = game.state
 const view = game.view
-const traits = TRAITS, dreams = DREAMS, homes = START_HOMES
+const traits = TRAITS, homes = START_HOMES
+const dream = computed(() => state.value.onboarding.dream ? dreamFor(state.value.estate.city, state.value.onboarding.dream) : null)
 
 /** The draft is rebuilt whenever the saved name or look changes underneath it. */
 function sync(): void {
@@ -84,7 +86,7 @@ async function submit(): Promise<void> {
         <p class="sim-hint">{{ view.city.name }} · shown to other players. 3–24 characters.</p>
         <ul class="sim-about">
           <li v-if="onboarding.traits.length"><b>Traits</b> <template v-for="(id, index) in onboarding.traits" :key="id"><template v-if="index"> · </template><GameIcon inline kind="trait" :id="id" :emoji="traits[id]?.icon" /> {{ traits[id]?.label }}</template></li>
-          <li v-if="onboarding.dream"><b>Dream</b> <GameIcon inline kind="dream" :id="onboarding.dream" :emoji="dreams[onboarding.dream]?.icon" /> {{ dreams[onboarding.dream]?.label }}</li>
+          <li v-if="onboarding.dream"><b>Dream</b> <GameIcon inline kind="dream" :id="onboarding.dream" :emoji="dream?.icon" /> {{ dream?.label }}</li>
           <li v-if="onboarding.lottery"><b>Born</b> <GameIcon inline kind="lottery" :id="onboarding.lottery.id" :emoji="onboarding.lottery.icon" /> {{ onboarding.lottery.label }}</li>
           <li><b>Home</b> {{ home ? `${home.label}, ${home.district}` : 'Your home' }} · <button type="button" class="sim-link" @click="shell.open('houses')">See houses</button></li>
         </ul>

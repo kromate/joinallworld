@@ -24,7 +24,8 @@
 // step is confirmed.
 import '../../../ui/panels/onboarding.css'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { DREAMS, DREAM_REWARD, LOTTERY_NOTE, ONBOARDING_STEPS, TRAITS, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
+import { dreamsFor } from '../../../game/cities/characterContent.ts'
+import { DREAM_REWARD, LOTTERY_NOTE, ONBOARDING_STEPS, TRAITS, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
 import type { DreamId, TraitId } from '../../../types/life.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -58,7 +59,9 @@ const words = computed(() => linkWords(view.value))
 const intro = computed(() => introFor(props.params, { guest: o.value.guest, name: name.value, cash: state.value.cash, stars: view.value.goals?.stars ?? 0 }))
 const steps = computed(() => ONBOARDING_STEPS.map((step, index) => ({ step, index })).filter((item) => item.index >= first.value))
 const traits = Object.values(TRAITS)
-const dreams = Object.values(DREAMS)
+const dreams = computed(() => dreamsFor(state.value.estate.city))
+const rentalDistricts = computed(() => o.value.homes.map(home => home.district))
+const rentalNames = computed(() => rentalDistricts.value.length > 1 ? `${rentalDistricts.value.slice(0, -1).join(', ')} and ${rentalDistricts.value.at(-1)}` : rentalDistricts.value[0])
 const wardrobe = starterWardrobe()
 
 // The draft belongs to a life: it starts from the saved state, and starts again when the session or the city changes.
@@ -241,7 +244,7 @@ async function primary(stay = false): Promise<void> {
       <p class="ob-lead"><b>Your own house — free, furnished, with your start cash.</b> Everyone in this city gets a starter house on their own plot. Where will {{ name }} live?{{ kept }}</p>
       <div class="ob-list"><div class="ob-card is-row ob-home is-own"><span class="ob-card-icon" aria-hidden="true"><GameIcon kind="home" id="own" emoji="🏠" inline /></span><span><em class="ob-tag">Yours</em><strong>Starter house<template v-if="areaName"> · {{ areaName }}</template></strong><small>One good room on your own plot, furnished, with food in the kitchen.</small><small class="ob-money"><template v-if="o.own?.startCash != null">Start with {{ money(o.own.startCash) }} · </template>no rent</small></span></div></div>
       <div class="ob-extra" data-extra-root="area"><HomeLgaPick v-model="draft.extra.area" /></div>
-      <p class="preview-note">Prefer to rent? Homes in Mushin, Yaba and Lekki are in Phone → Houses once you have moved in. You keep your own house either way.</p>
+      <p class="preview-note">Prefer to rent? <template v-if="rentalNames">Homes in {{ rentalNames }}</template><template v-else>Local rental homes</template> are in Phone → Houses once you have moved in. You keep your own house either way.</p>
     </StepWithSim>
 
     <div class="ob-foot">

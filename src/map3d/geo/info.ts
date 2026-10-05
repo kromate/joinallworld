@@ -67,7 +67,7 @@ export function regionInfo(ref: RegionRef, { cityId = null, feature = null, curr
     const teaser = entry.teaser || `${name} is on the map for later.`;
     if (!city) return { ...base, type, teaser, tag: 'Coming soon', tone: 'soon', wait: `${name} is not open yet. We will announce it in the game when it is.` };
     const access = cityAccess(city.id, { current, held });
-    const info = { ...base, type, teaser, city: { id: city.id, name: city.name }, preview: city.preview ?? null };
+    const info = { ...base, type, teaser: city.status === 'playable' ? city.teaser : teaser, city: { id: city.id, name: city.name }, preview: city.status === 'playable' ? null : city.preview ?? null };
     if (city.status === 'playable') {
       // The open city: from here every link to a planned city can be looked at.
       const others = current === city.id ? [...new Set(linksFrom(city.id).map(link => link.to))] : [];

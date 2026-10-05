@@ -1,5 +1,6 @@
+import { project, UNITS_PER_KM } from '../../geo/frame.ts';
 import { houseSpotFor, defaultHouseFor } from '../cities/housingRuntime.ts';
-import { venueFor, venuesFor } from '../cities/runtime.ts';
+import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
 /**
  * OWNER: world
  * Travel between venues: modes, fares, trip time, need costs, opening hours, roadside events,
@@ -75,7 +76,7 @@ import { busy, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../ut
 import { openingInfo } from '../clock.ts';
 import { arrive, canAfford, credit, debit, changeNeeds, addSkillXp, addMoodlet, removeMoodlet, skillLevel, feelingsOf, findActivity, spotsOf, NEEDS } from '../api.ts';
 import { lgaOf } from '../content/world.ts';
-import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict } from '../content/venues.ts';
+import { COMING_SOON, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict } from '../content/venues.ts';
 import { lagosTime } from '../clock.ts';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
@@ -96,8 +97,10 @@ const outcomeRules: Partial<Record<string, ActivityOutcomeRule>> = ACTIVITY_OUTC
 const fareBands: Partial<Record<RouteBand, FareBands['near']>> = FARE_BANDS;
 const needNames: readonly string[] = NEEDS;
 const isVenue = (id: unknown, cityId: string): id is VenueId => typeof id === 'string' && Boolean(venueFor(cityId, id));
+const GEOGRAPHIC_BANDS = Object.freeze({ nearKm: 3, farKm: 15, beta: true });
+const localModes = (city: string) => contentFor(city).localModes ?? Object.values(TRAVEL_MODES);
+const modeFor = (city: string, id: TravelModeId) => localModes(city).find(mode => mode.id === id) ?? ALL_MODES[id];
 const isModeId = (id: unknown): id is TravelModeId => typeof id === 'string' && Object.hasOwn(ALL_MODES, id);
-const isHomeId = (id: unknown): id is HouseId => typeof id === 'string' && Object.hasOwn(HOME_SPOTS, id);
 const isEventId = (id: unknown): id is RoadsideEventId => typeof id === 'string' && Object.hasOwn(EVENTS, id);
 const outcomeRuleOf = (id: string): ActivityOutcomeRule | undefined => (Object.hasOwn(ACTIVITY_OUTCOMES, id) ? outcomeRules[id] : undefined);
 
@@ -116,6 +119,18 @@ export function placeOf(state: LifeState, venueId: VenueId): { x: number; y: num
 
 /** 'near' | 'standard' | 'far' for a trip between two venues. */
 export function routeBand(state: LifeState, from: VenueId, to: VenueId): RouteBand {
+  const geographic = (id: string) => {
+    if (id === 'home' && state.estate.living === 'own') return undefined;
+    if (id === 'home') return contentFor(state.estate.city).housing.find(home => home.definition.id === homeId(state))?.position;
+    const position = contentFor(state.estate.city).venues.find(venue => venue.id === id)?.position;
+    return position?.kind === 'lon-lat' ? position : undefined;
+  };
+  const origin = geographic(from), destination = geographic(to);
+  if (origin && destination) {
+    const a = project(origin.lon, origin.lat), b = project(destination.lon, destination.lat);
+    const km = Math.hypot(a.x - b.x, a.z - b.z) / UNITS_PER_KM;
+    return km < GEOGRAPHIC_BANDS.nearKm ? 'near' : km > GEOGRAPHIC_BANDS.farKm ? 'far' : 'standard';
+  }
   const a = placeOf(state, from), b = placeOf(state, to);
   if (!a || !b) return 'standard';
   if ((a.zone === 'mainland') !== (b.zone === 'mainland')) return 'far';
@@ -129,11 +144,11 @@ const cleanNeeds = (value: unknown, fallback: NeedMap): NeedMap => (isRecord(val
 
 /** Fare, trip time and need cost of one trip from where the player is, after every modifier. */
 export function quote(state: LifeState, destination: VenueId, modeId: TravelModeId, ctx: LifeContext): TripQuote {
-  const mode = ALL_MODES[modeId];
+  const mode = modeFor(state.estate.city, modeId);
   const from = state.location;
   const band = routeBand(state, from, destination);
   const data = { mode: modeId, destination, from, band };
-  const baseFare = fareBands[band]?.[modeId] ?? mode.fare;
+  const baseFare = contentFor(state.estate.city).localModes ? mode.fare : fareBands[band]?.[modeId] ?? mode.fare;
   const fare = Math.max(0, Math.round(Number(modify(state, 'travel.fare', baseFare, data, ctx)) || 0));
   const baseSeconds = Math.round(mode.seconds * BAND_TIME[band]);
   const seconds = clamp(Math.round(Number(modify(state, 'travel.duration', baseSeconds, data, ctx)) || baseSeconds), MIN_TRIP_SECONDS, MAX_TRIP_SECONDS);
@@ -143,7 +158,7 @@ export function quote(state: LifeState, destination: VenueId, modeId: TravelMode
 
 /** Mode ids offered for a trip. Trek is always first, so there is always a free way to go. */
 export function modesFor(state: LifeState, destination: VenueId, ctx: LifeContext): TravelModeId[] {
-  const offered = modify(state, 'travel.modes', [...BASE_MODE_IDS], { destination, from: state.location }, ctx);
+  const offered = modify(state, 'travel.modes', localModes(state.estate.city).map(mode => mode.id), { destination, from: state.location }, ctx);
   const ids = (Array.isArray(offered) ? offered : BASE_MODE_IDS).filter((id, index, list) => typeof id === 'string' && Object.hasOwn(ALL_MODES, id) && list.indexOf(id) === index);
   return ids.includes('trek') ? ids : ['trek', ...ids];
 }
@@ -160,12 +175,8 @@ export { openingInfo };
  * Codes: invalid_travel · coming_soon · already_here · travel_mode_unavailable · closed · insufficient_funds
  */
 export function travelBlock(state: LifeState, destination: unknown, modeId: unknown, ctx: LifeContext): Block<TravelBlockCode> | null {
-  // A venue that names its cities exists only there (the UNILAG campus is in Lagos).
-  if (typeof destination === 'string' && Object.hasOwn(VENUES, destination)) {
-    const cities = VENUES[destination as VenueId]?.cities;
-    if (cities && !(cities as readonly string[]).includes(ctx?.cityId)) {
-      return destination === 'unilag' ? { code: 'campus_lagos_only', reason: 'UNILAG is in Lagos. Choose Lagos from the world map to visit.' } : { code: 'invalid_travel', reason: 'That place is not in this city.' };
-    }
+  if (destination === 'unilag' && state.estate.city !== 'lagos') {
+    return { code: 'campus_lagos_only', reason: 'UNILAG is in Lagos. Choose Lagos from the world map to visit.' };
   }
   if (typeof destination === 'string' && Object.hasOwn(COMING_SOON, destination)) {
     return { code: 'coming_soon', reason: `${venueLabel(destination, ctx?.cityId)} is not open yet — it is coming soon.` };
@@ -175,7 +186,7 @@ export function travelBlock(state: LifeState, destination: unknown, modeId: unkn
   }
   if (destination === state.location) return { code: 'already_here', reason: 'You are already here.' };
   if (!modesFor(state, destination, ctx).includes(modeId)) {
-    return { code: 'travel_mode_unavailable', reason: modeId === 'car' ? 'You do not own a car yet. Buy one in Phone → Cars, or pick another way to travel.' : `${ALL_MODES[modeId].label} is not available for this trip.` };
+    return { code: 'travel_mode_unavailable', reason: modeId === 'car' ? 'You do not own a car yet. Buy one in Phone → Cars, or pick another way to travel.' : `${modeFor(state.estate.city, modeId).label} is not available for this trip.` };
   }
   const label = venueLabel(destination, ctx?.cityId);
   const opening = openingInfo(venueFor(ctx.cityId, destination)?.hours, ctx?.now ?? state.t);
@@ -201,7 +212,7 @@ function travel(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
   if (!isVenue(destination, ctx.cityId) || !isModeId(modeId)) return fail(state, 'invalid_travel', 'Choose a valid destination and travel option.');
   const trip = quote(state, destination, modeId, ctx);
   const label = venueLabel(destination, ctx.cityId);
-  const mode = ALL_MODES[modeId];
+  const mode = modeFor(state.estate.city, modeId);
   debit(state, trip.fare, `${mode.fuel ? 'Fuel' : mode.label} to ${label}`, ctx);
   state.travel.event = null; // an unanswered roadside choice lapses when you move on
   state.activeAction = { kind: 'travel', id: destination, duration: trip.seconds, remaining: trip.seconds, mode: modeId, fare: trip.fare };
@@ -223,7 +234,7 @@ function pickEvent(state: LifeState, modeId: TravelModeId, ctx: LifeContext): Ro
   if (!fits.length) return null;
   // The remedy seller always finds a sick trekker, so a cure is never down to luck.
   if (modeId === 'trek' && state.health?.sick === true) return EVENTS.agbo;
-  if (ctx.rng() >= ALL_MODES[modeId].eventChance) return null;
+  if (ctx.rng() >= modeFor(state.estate.city, modeId).eventChance) return null;
   let roll = ctx.rng() * fits.reduce((sum, event) => sum + event.weight, 0);
   for (const event of fits) { roll -= event.weight; if (roll < 0) return event; }
   return fits[fits.length - 1] ?? null;
@@ -244,7 +255,7 @@ function complete(state: LifeState, active: TravelAction, ctx: LifeContext): voi
     changeNeeds(state, trip.needs);
     for (const [skill, amount] of Object.entries(trip.xp)) addSkillXp(state, skill, amount, ctx);
     const costs = Object.fromEntries(Object.entries(trip.needs).filter(([, amount]) => amount < 0));
-    if (Object.keys(costs).length) state.message += ` The ${ALL_MODES[trip.mode].label.toLowerCase()} cost you ${needsText(costs)}.`;
+    if (Object.keys(costs).length) state.message += ` The ${modeFor(state.estate.city, trip.mode).label.toLowerCase()} cost you ${needsText(costs)}.`;
   }
   emit(state, 'venue.visited', { venue: destination, first }, ctx);
   const event = trip ? pickEvent(state, trip.mode, ctx) : null;
@@ -348,7 +359,7 @@ function setHome(state: LifeState, id: unknown): void { if (typeof id === 'strin
 // ---- view -------------------------------------------------------------------------------
 
 function modeCard(state: LifeState, destination: VenueId, modeId: TravelModeId, base: Block<TravelBlockCode> | null, ctx: LifeContext): TravelModeCard {
-  const mode = ALL_MODES[modeId];
+  const mode = modeFor(state.estate.city, modeId);
   const trip = quote(state, destination, modeId, ctx);
   const blocked = base || (!canAfford(state, trip.fare) ? travelBlock(state, destination, modeId, ctx) : null);
   return { id: modeId, label: mode.label, icon: mode.icon, blurb: mode.blurb, fuel: Boolean(mode.fuel), fare: trip.fare, seconds: trip.seconds, needs: trip.needs, xp: trip.xp, blocked };
@@ -364,7 +375,7 @@ function destinationCard(state: LifeState, venue: VenueDefinition, ctx: LifeCont
     id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? (state.estate?.living === 'own' ? lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.name ?? 'Your house' : houseSpotFor(state.estate.city, homeId(state))?.district ?? '') : venueDistrict(id, ctx.cityId),
     icon: venue.icon, description: venue.description, category: venue.category, x: place.x, y: place.y, zone: place.zone,
     here, visited: state.travel.visited.includes(id), open: opening.open, hours: opening.hours, status: opening.status,
-    band: here ? null : BAND_LABELS[routeBand(state, state.location, id)],
+    band: here ? null : (contentFor(state.estate.city).localModes && routeBand(state, state.location, id) === 'far' ? 'Longer city trip' : BAND_LABELS[routeBand(state, state.location, id)]),
     ambient: venue.ambient?.length ? venue.ambient[Math.floor(now / 8000) % venue.ambient.length] ?? '' : '',
     preview: spotsOf(id, ctx.cityId).flatMap((spot) => spot.activities.map((def) => def.label)),
     blocked: base,
@@ -383,7 +394,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
     band: null, ambient: '', preview: [], modes: [], blocked: travelBlock(state, place.id, 'trek', ctx),
   }));
   return {
-    modes: Object.values(TRAVEL_MODES), // legacy list of the five base modes with standard fares
+    modes: [...localModes(state.estate.city)],
     duration: TRAVEL_DURATION,
     defaultMode: DEFAULT_MODE,
     home: homeId(state),

@@ -201,7 +201,7 @@ export function adSlot(kind: unknown, slot: unknown, cityId: string): AdSlot | n
     const entry = contentFor(cityId).billboardRoads.find((item) => item.id === slot);
     return entry ? { kind, slot: entry.id, price: BILLBOARDS.price, days: BILLBOARDS.days, near: entry.near, road: entry.road, label: `Billboard · ${entry.road}` } : null;
   }
-  if (kind === 'sea') return seaSlot(slot);
+  if (kind === 'sea') return cityRules(cityId)?.seaPlots === false ? null : seaSlot(slot);
   return null;
 }
 

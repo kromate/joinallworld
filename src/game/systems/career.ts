@@ -74,7 +74,7 @@ import { cap, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../uti
 import { lagosTime, openingInfo, WEEKDAYS } from '../clock.ts';
 import { addMoodlet, arrive, skillLevel, spotsOf } from '../api.ts';
 import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIFT, HELPER_COOLDOWN_SECONDS } from '../content/jobs.ts';
-import { VENUES, venueLabel } from '../content/venues.ts';
+import { venueLabel } from '../content/venues.ts';
 import type { LadderRung, JobDefinition, TrackJobDefinition } from '../../types/content.ts';
 import type { ActionMap } from '../../types/actions.ts';
 import type { ActionOutcome, CareerState, JobId, LifeContext, LifeState, NeedId } from '../../types/life.ts';

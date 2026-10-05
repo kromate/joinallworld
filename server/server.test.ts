@@ -87,7 +87,8 @@ test('rooms expose actual presence, dedupe chat, and block cross-room signaling'
   const f = await fixtureOf(t); const a = await f.device('Ada'); const b = await f.device('Bola');
   const x = await f.socket(a); const y = await f.socket(b);
   x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); const solo = await x.next(); assert.equal(solo.members.length, 1); assert.ok(!JSON.stringify(solo).includes(a.cookie.slice(4)));
-  y.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); await y.next();
+  await f.request('/api/life?city=lagos', undefined, b.cookie);
+  y.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'agodi-gardens' })); assert.equal((await y.next()).code, 'city_moved');
   x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'test' } })); assert.equal((await x.next()).error, 'peer_not_in_room');
   y.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
   assert.equal((await x.next()).members.length, 2); await y.next();
@@ -288,8 +289,8 @@ test('departure removes room membership immediately and cross-city room joins ar
   assert.equal((await f.action(a.cookie, { type: 'travel', id: 'library', mode: 'cab' })).ok, true);
   assert.equal((await x.next()).code, 'venue_mismatch'); assert.equal((await y.next()).members.length, 1);
   x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'after departure' } })); assert.equal((await x.next()).code, 'join_required');
-  x.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await x.next()).code, 'city_moved');
-  y.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await y.next()).code, 'city_moved');
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'agodi-gardens' })); assert.equal((await x.next()).code, 'city_moved');
+  y.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'agodi-gardens' })); assert.equal((await y.next()).code, 'city_moved');
   x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); assert.equal((await x.next()).code, 'venue_mismatch');
   f.advance(6000); x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'library' }));
   assert.equal((await x.next()).members.length, 1);

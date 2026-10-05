@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Walking and the orbit camera: the arithmetic, and the walkable description of every scene.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -13,7 +15,8 @@ import { createMotionLoop } from './motion-loop.ts';
 import { SCENES, KINDS, WALK, WALK_DEFAULT, SPOT_REACH, buildVenueScene } from './venue-scenes.ts';
 import { buildHomeScene } from './home-scene.ts';
 import { sceneVenue } from '../venue-world.ts';
-import { VENUES } from '../game/content/venues.ts';
+import { VENUES } from '../game/cities/lagos/venues.ts';
+
 import { createLife } from '../life.ts';
 
 const near = (a: number, b: number, epsilon = 1e-6) => Math.abs(a - b) <= epsilon;

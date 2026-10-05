@@ -5,24 +5,22 @@ import { contentFor } from './runtime.ts'
 import { fictionalCity, fictionalContent } from './testing/fictionalCity.test-fixture.ts'
 import type { CityModule } from '../../types/content.ts'
 
-test('an authored city replaces closed compatibility content and requires loading', async () => {
-  assert.equal(cityModule('ibadan'), null)
-  const legacy = contentFor('ibadan')
-  assert.equal(legacy.venues.some(venue => venue.id === 'unilag'), false)
-  const content = { ...fictionalContent, cityId: 'ibadan' }
+test('city content requires an explicit load and concurrent callers share one load', async () => {
+  const id = 'test-explicit-content'
+  const content = { ...fictionalContent, cityId: id }
   let loads = 0
-  const module: CityModule = { ...fictionalCity, id: 'ibadan', rules: { ...fictionalCity.rules, id: 'ibadan' }, loadContent: async () => { loads += 1; return content } }
-  const registration = registerCityForTest(module, { replaceClosed: true })
+  const module: CityModule = { ...fictionalCity, id, rules: { ...fictionalCity.rules, id }, loadContent: async () => { loads += 1; return content } }
+  const registration = registerCityForTest(module)
   try {
-    assert.throws(() => contentFor('ibadan'), /has not been loaded/)
-    const [first, second] = await Promise.all([loadCityContent('ibadan'), loadCityContent('ibadan')])
+    assert.throws(() => contentFor(id), /has not been loaded/)
+    const [first, second] = await Promise.all([loadCityContent(id), loadCityContent(id)])
     assert.equal(loads, 1)
     assert.equal(first, second)
-    assert.equal(contentFor('ibadan'), content)
+    assert.equal(contentFor(id), content)
   } finally { registration.dispose() }
-  assert.equal(cachedCityContent('ibadan'), null)
-  assert.equal(cityModule('ibadan'), null)
-  assert.equal(contentFor('ibadan'), legacy)
+  assert.equal(cachedCityContent(id), null)
+  assert.equal(cityModule(id), null)
+  assert.throws(() => contentFor(id), /has not been loaded/)
 })
 
 test('a pending disposed loader cannot replace a newly registered catalogue', async () => {

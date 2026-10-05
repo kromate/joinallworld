@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Trust pass: the operator surface, the text filter, mutes, blocks in public rooms, problem
 // reports, the wallet statement, presence freshness, the heartbeat guest sweep, the vote cap and
 // the storage behaviour of polls. Everything runs against the real server through the shared fixture.

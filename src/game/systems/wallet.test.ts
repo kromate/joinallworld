@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The wallet: what a change may do to the balance, the statement, the view, and how a hostile
 // save is cleaned.
 import assert from 'node:assert/strict'

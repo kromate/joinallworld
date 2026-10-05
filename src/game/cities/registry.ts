@@ -1,5 +1,6 @@
 import { legacyCityContent } from './legacyContent.ts'
 import { lagosCity } from './lagos/index.ts'
+import { ibadanCity } from './ibadan/index.ts'
 import { CITY_LINKS } from './links.ts'
 import type { CityId } from './ids.ts'
 import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRules, CityState } from '../../types/content.ts'
@@ -62,7 +63,7 @@ function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker, serv
 
 const publicRules = ({ id, name, status, unit, units, hub }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub })
 
-const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity })
+const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity })
 
 type CoreKnownCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
 type KnownCityCatalogue = Readonly<Record<CoreKnownCityId, KnownCity> & Record<string, KnownCity | undefined>>
@@ -261,3 +262,6 @@ export function registerCityForTest(module: CityModule, { replaceClosed = false 
 }
 
 export { CITY_LINKS } from './links.ts'
+
+/** Map-only route geometry; loading rules never downloads its coordinates. */
+export const loadCityRoutes = async (id: string) => moduleOf(id)?.loadRoutes?.() ?? [];

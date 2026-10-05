@@ -1,8 +1,12 @@
+import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {makeContext} from '../../game/util.ts';
-import {VENUES} from '../../game/content/venues.ts';
-import {NPCS} from '../../game/content/npcs.ts';
+import { VENUES } from '../../game/cities/lagos/venues.ts';
+
+import { NPCS } from '../../game/cities/lagos/regulars.ts';
+
 import {ANCHORS} from './layout.ts';
 import {spotsOf} from '../../game/api.ts';
 import type {ActionBody} from '../../types/actions.ts';

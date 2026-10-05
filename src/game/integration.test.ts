@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: foundation — tests for the seams between the career, character, home and world systems.
 // Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
@@ -12,13 +14,15 @@ import type { GoalChip } from '../types/view.ts';
 import type { SystemDefinition } from '../types/registry.ts';
 import { isOpen, lagosDayStart, lagosTime, openingInfo } from './clock.ts';
 import { arrive, addSkillXp, xpForLevel } from './api.ts';
-import { VENUES } from './content/venues.ts';
+import { VENUES } from './cities/lagos/venues.ts';
+
 import { JOBS, TRACKS } from './content/jobs.ts';
 import { INGREDIENTS } from './content/food.ts';
 import { CARS } from './content/cars.ts';
 import { HOUSES } from './content/housing.ts';
 import { STARTER_GOALS } from './content/goals.ts';
-import { NPCS } from './content/npcs.ts';
+import { NPCS } from './cities/lagos/regulars.ts';
+
 import { workplaceHoursText, scheduleText } from './systems/career.ts';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8); // 09:00 in Lagos

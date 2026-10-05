@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The client side of telemetry, without a browser and without a network: a fake window, fake SDK
 // chunks and a fake transport that records what would have been sent.
 import test from 'node:test';

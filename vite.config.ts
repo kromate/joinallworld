@@ -55,10 +55,12 @@ export default defineConfig({
   //           part of the first load, but it changes far less often than the shell.
   build: { minify: 'terser', terserOptions: { ecma: 2020, compress: { passes: 3 }, format: { comments: false } }, sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
-    if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
     if (city) return `city-${city[1]}-${city[2]}`
+    const geometry = id.match(/\/src\/game\/cities\/([^/]+)\/(landmarks|rail|geometry)\.ts$/)
+    if (geometry) return `city-${geometry[1]}-${geometry[2]}`
+    if (/\/src\/game\/cities\/lagos\/(venues|regulars)\.ts$|\/src\/game\/content\/venues-transport\.ts$|\/src\/campus\/unilag\/content\.ts$/.test(id)) return 'city-lagos-content'
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(student|games|shuttle|curriculum|content|layout|walk)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(student|games|shuttle|curriculum|trail|layout|walk)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'
   } } } },
 });

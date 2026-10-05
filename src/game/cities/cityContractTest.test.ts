@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { CityContent, CityMapGeometry, CityMapPack, CityModule, LonLatPolygon } from '../../types/content.ts'
 import { JOBS } from '../content/jobs.ts'
-import { linksFrom } from './registry.ts'
+import { linksFrom, cityModule, loadCityContent, registerCityForTest } from './registry.ts'
 import { project, unproject } from '../../map3d/geo/frame.ts'
 import { KINDS as BUILT_SCENE_KINDS } from '../../scene/venue-scenes.ts'
 
@@ -31,6 +31,9 @@ export function assertCityContentContract(module: CityModule, content: CityConte
   assert.equal(content.cityId, module.id)
   const venueIds = content.venues.map((venue) => venue.id), venues = new Set(venueIds)
   unique(venueIds, 'venue')
+  for (const [oldId, target] of Object.entries(module.rules.legacyVenueAliases ?? {})) {
+    assert.ok(oldId.length > 0 && venues.has(target), `legacy venue ${oldId} resolves inside ${module.id}`)
+  }
   for (const venue of content.venues) {
     assert.equal(venue.cityId, module.id); assert.equal(venue.id, venue.definition.id); assert.equal(venue.kind, venue.definition.scene.kind)
     assert.equal(venue.name, venue.definition.label, 'venue name matches its definition')
@@ -64,7 +67,10 @@ export function assertCityContentContract(module: CityModule, content: CityConte
   unique(content.housing.map((house) => house.definition.id), 'rented home'); assert.ok(content.housing.length > 0, 'at least one rented home is available')
   assert.deepEqual([...module.rules.rentedHomeIds].sort(), content.housing.map(house => house.definition.id).sort(), 'eager home ids match the lazy housing catalogue')
   assert.ok(module.rules.rentedHomeIds.includes(module.rules.defaultRentedHome), 'the default rented home is registered')
-  for (const house of content.housing) assert.equal(house.definition.district, house.spot.district)
+  for (const house of content.housing) {
+    assert.equal(house.definition.district, house.spot.district)
+    if (house.districtId !== undefined) assert.ok(module.rules.districts.some(district => district.id === house.districtId), `${house.definition.id} has an authored district`)
+  }
   for (const venueId of content.radioVenueIds) assert.ok(venues.has(venueId), `radio venue ${venueId} exists`)
   for (const slot of content.billboardRoads) assert.ok(venues.has(slot.near), `billboard ${slot.id} has a local anchor`)
   for (const table of content.tablePlaces) assert.ok(venues.has(table.venueId), `table ${table.id} has a local venue`)
@@ -192,4 +198,17 @@ export function cityContractTest(module: CityModule, options: CityContractOption
   test(`${module.id}: eager city rules contract`, () => assertCityRulesContract(module, options))
   test(`${module.id}: lazy content contract`, async () => assertCityContentContract(module, await module.loadContent(), options))
   test(`${module.id}: lazy map contract`, async () => assertCityMapContract(module, await module.loadMap()))
+  test(`${module.id}: a new guest starts at a public venue`, async () => {
+    const registration = cityModule(module.id) ? null : registerCityForTest(module)
+    try {
+      await loadCityContent(module.id)
+      const [{ createLife, dispatch }, { DEFAULT_LOOK }] = await Promise.all([import('../../life.ts'), import('../content/traits.ts')])
+      const context = { cityId: module.id, now: Date.UTC(2026, 0, 5, 9), isNew: true, quickStart: true }
+      const state = createLife(null, context)
+      assert.notEqual(state.location, 'home')
+      assert.equal(dispatch(state, { type: 'onboarding.quick-start', payload: { look: DEFAULT_LOOK } }, context).ok, true)
+      assert.notEqual(state.location, 'home')
+      assert.equal(state.onboarding.done, false)
+    } finally { registration?.dispose() }
+  })
 }

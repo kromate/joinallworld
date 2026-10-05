@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The airport (Ikeja) and the refinery (Lekki Free Zone) are venues like any other: on the map,
 // reachable, enterable, with spots to walk to and activities that run. The coming-soon mechanism
 // they used to be the only users of is still there for the next place — checked with a made-up one.
@@ -7,6 +9,7 @@ import * as lifeModule from './life.ts';
 import { makeContext } from './game/util.ts';
 import { isOpen } from './game/clock.ts';
 import * as venuesModule from './game/content/venues.ts';
+import { VENUES } from './game/cities/lagos/venues.ts';
 import * as transportModule from './game/content/venues-transport.ts';
 import { CITY_LINKS, CITY_RULES } from './game/content/world.ts';
 import * as travelModule from './game/systems/travel.ts';
@@ -28,7 +31,7 @@ import { goBlock, chosenMode, statusClass } from './app/features/travel/travelMo
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const loose = <T>(value: T): any => value;
 const { createLife, dispatch, advanceLife, viewLife, spotsOf } = loose(lifeModule);
-const { VENUES, COMING_SOON, VENUE_CATEGORIES, GIG_DAILY_LIMIT } = loose(venuesModule);
+const { COMING_SOON, VENUE_CATEGORIES, GIG_DAILY_LIMIT } = loose(venuesModule);
 const { AIRPORT, REFINERY } = loose(transportModule);
 const { quote, isGig, travelBlock } = loose(travelModule);
 const { createKit } = loose(kitModule);
@@ -81,7 +84,8 @@ test('a trip to each works by trek and by danfo, and each is on the map list as 
       assert.deepEqual([state.activeAction.kind, state.activeAction.id, state.activeAction.mode], ['travel', id, mode]);
       assert.equal(state.cash, 5000 - trip.fare); assert.equal(trip.fare > 0, mode === 'danfo');
       advanceLife(state, state.activeAction.duration, at(NOON + state.activeAction.duration * 1000));
-      assert.deepEqual([state.location, state.activeAction, state.spot], [id, null, Object.keys(VENUES[id].spots)[0]], `arrived at ${id} by ${mode}, at its first spot`);
+      const authored = VENUES[id]; assert.ok(authored);
+      assert.deepEqual([state.location, state.activeAction, state.spot], [id, null, Object.keys(authored.spots)[0]], `arrived at ${id} by ${mode}, at its first spot`);
       assert.ok(state.travel.visited.includes(id));
       // And back out again: nobody is stranded there.
       assert.equal(dispatch(state, { type: 'travel', payload: { id: 'home', mode: 'trek' } }, at(NOON + 120000)).ok, true);
@@ -147,7 +151,8 @@ test('both scenes: every spot has its own landmark on walkable ground, with a pa
     assert.ok(grid.free(entrance.x, entrance.z), `${id}: the entrance is free`);
     const spots = entry.walk.spots();
     // Its own five spots, and the People spot the regulars bring.
-    assert.deepEqual(spots.map((spot: any) => spot.id), [...Object.keys(VENUES[id].spots), 'people']);
+    const authored = VENUES[id]; assert.ok(authored);
+    assert.deepEqual(spots.map((spot: any) => spot.id), [...Object.keys(authored.spots), 'people']);
     assert.deepEqual(spotsOf(id, 'lagos').map((spot: any) => spot.id), spots.map((spot: any) => spot.id));
     assert.equal(new Set(spots.map((spot: any) => `${spot.x},${spot.z}`)).size, spots.length, 'no two spots share a place');
     const walker = createWalker();
@@ -178,7 +183,8 @@ test('both scenes: every spot has its own landmark on walkable ground, with a pa
 
 test('on both maps they are ordinary venues in the right local government; a coming-soon place is still marked when there is one', () => {
   assert.deepEqual(Object.keys(pack.soon), []);
-  assert.equal(lgaAt(pack, pack.sites.airport.x, pack.sites.airport.z), 'ikeja');
+  // The pinned real-boundary pack locates the airport terminal in Oshodi-Isolo.
+  assert.equal(lgaAt(pack, pack.sites.airport.x, pack.sites.airport.z), 'oshodi-isolo');
   assert.equal(lgaAt(pack, pack.sites.refinery.x, pack.sites.refinery.z), 'ibeju-lekki');
   const network = buildNetwork(pack), kit = createKit();
   const city = buildCity(kit, pack, network, { venues: VENUES, soon: COMING_SOON });

@@ -39,6 +39,8 @@ before(async () => {
   // The store creates its client from the page's fetch: point it at the fake server before any module loads.
   globalThis.fetch = server.fetch
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../game/cities/registry.ts')
+  await cityLoader.loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   social = (await load<{ social: SocialClientState }>('/src/app/features/social/useSocial.ts')).social
   assert.equal(await app.game.connect(), true)

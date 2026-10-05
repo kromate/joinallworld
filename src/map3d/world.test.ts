@@ -6,16 +6,20 @@ import type { InstancedMesh } from 'three';
 import { createKit } from '../scene/kit.ts';
 import pack from './cities/lagos.ts';
 import { buildNetwork, pointInPolygon } from './roads.ts';
-import { buildCity } from './city-build.ts';
+import { ORIGINS, toLocal } from './geo/frame.ts';
+import { buildCity, CITY_TRIANGLE_BUDGET } from './city-build.ts';
 import { flatModel, flatSvg } from './flat.ts';
 import { lgaAt, landOf, onLand, rasterLgas, resolveLga } from './lga.ts';
-import { estateLayout, plotAt } from './estates.ts';
+import { estateLayout, plotAt, SITE_CLEAR } from './estates.ts';
 import type { EstateLayout } from './estates.ts';
 import { createHouses, DETAIL_BUDGET } from './houses.ts';
 import { createWorldData, ESTATES_KEPT } from './world-data.ts';
 import { COUNTRIES, cityEntry } from './regions.ts';
-import { VENUES, COMING_SOON } from '../game/content/venues.ts';
-import { CITY_LINKS, CITY_RULES, ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE, packStyle } from '../game/content/world.ts';
+import { COMING_SOON } from '../game/content/venues.ts';
+import { VENUES } from '../game/cities/lagos/venues.ts';
+import { allCityLinks, cityRules } from '../game/cities/registry.ts';
+
+import { ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE, packStyle } from '../game/content/world.ts';
 
 const network = buildNetwork(pack), kit = createKit();
 const city = buildCity(kit, pack, network, { venues: VENUES, soon: COMING_SOON as Record<string, unknown> });
@@ -68,20 +72,30 @@ test('the twenty local governments: geometry matches the rules, plates stand on 
   // The tint layer: coloured on land only, the player's own one brighter.
   const image = rasterLgas(pack, { scale: 1, own: 'ikeja' });
   const alphaAt = (x: number, z: number) => image.data[(Math.floor(z - image.z0) * image.width + Math.floor(x - image.x0)) * 4 + 3]!;
-  assert.equal(alphaAt(88, -40), 0, 'the lagoon is not tinted');
-  assert.ok(alphaAt(-70, -62) > alphaAt(-150, -80) && alphaAt(-150, -80) > 0);
+  const [lagoonX, lagoonZ] = toLocal(ORIGINS.lagos, 3.465, 6.55), plateOf = (id: string) => pack.lgas.find((lga) => lga.id === id)!.plate;
+  assert.equal(alphaAt(lagoonX, lagoonZ), 0, 'the lagoon is not tinted');
+  assert.ok(alphaAt(...plateOf('ikeja')) > alphaAt(...plateOf('alimosho')) && alphaAt(...plateOf('alimosho')) > 0, 'land is tinted, the player’s own local government brighter');
   assert.ok(city.setLgas(true, 'ikeja')); assert.equal(city.setLgas(true, 'ikeja'), false, 'nothing is rebuilt when nothing changed');
 });
 
-test('finding a local government from a position happens in this module alone, from bundled boxes, and returns an id', () => {
-  assert.deepEqual(resolveLga(pack, 6.6018, 3.3515), { id: 'ikeja', name: 'Ikeja', sure: true });
-  assert.equal(resolveLga(pack, 6.4281, 3.4219)!.id, 'eti-osa');
-  assert.equal(resolveLga(pack, 6.455, 3.39)!.id, 'lagos-island');
-  assert.equal(resolveLga(pack, 6.42, 2.88)!.id, 'badagry');
-  assert.equal(resolveLga(pack, 9.07, 7.4), null, 'Abuja is not in Lagos');
-  assert.equal(resolveLga(pack, NaN, 3), null);
-  const guess = resolveLga(pack, 6.70, 3.42);
-  assert.ok(guess && LAGOS_LGAS.some((lga) => lga.id === guess.id));
+test('finding a local government from a position happens in this module alone, from the real boundaries bundled in the pack, and returns an id', () => {
+  const find = (lat: number, lon: number) => resolveLga(pack, lat, lon);
+  // Places whose local government is known: [name, latitude, longitude, id]. Each is inside its real polygon.
+  const known: [string, number, number, string][] = [
+    ['Yaba (Sabo)', 6.5115, 3.3790, 'lagos-mainland'], ['Ikeja GRA', 6.5840, 3.3500, 'ikeja'], ['Lekki Phase 1', 6.4478, 3.4723, 'eti-osa'], ['Badagry town', 6.4155, 2.8813, 'badagry'],
+    ['Epe town', 6.5841, 3.9833, 'epe'], ['Ikorodu town', 6.6194, 3.5105, 'ikorodu'], ['Surulere', 6.5000, 3.3500, 'surulere'], ['Apapa', 6.4489, 3.3589, 'apapa'],
+    ['Freedom Park, Broad Street', 6.4497, 3.4000, 'lagos-island'], ['Victoria Island', 6.4290, 3.4200, 'eti-osa'], ['Mushin', 6.5330, 3.3550, 'mushin'], ['Bariga', 6.5370, 3.3870, 'somolu'],
+    ['Gbagada', 6.5620, 3.3975, 'kosofe'], ['Agege', 6.6200, 3.3200, 'agege'], ['Ojo', 6.4660, 3.1790, 'ojo'],
+  ];
+  for (const [place, lat, lon, id] of known) assert.deepEqual(find(lat, lon), { id, name: LAGOS_LGAS.find((lga) => lga.id === id)!.name, sure: true }, place);
+  assert.equal(find(6.30, 3.40), null, 'a point in the open Atlantic is in no local government');
+  assert.equal(find(7.15, 3.35), null, 'Abeokuta is not in Lagos');
+  assert.equal(find(9.07, 7.4), null, 'Abuja is not in Lagos');
+  assert.equal(find(NaN, 3), null);
+  // On the lagoon a little way from the shore: the nearest local government, as a guess to confirm. Far out on the water: none.
+  const shore = find(6.5000, 3.4120);
+  assert.ok(shore && !shore.sure && LAGOS_LGAS.some((lga) => lga.id === shore.id), 'the lagoon beside Akoka is a guess, not a certainty');
+  assert.equal(find(6.4000, 3.5800), null, 'the Atlantic off Lekki, beyond the shore, is none');
   // No network and no storage anywhere near a position.
   const lga = readFileSync(new URL('./lga.ts', import.meta.url), 'utf8'), card = readFileSync(new URL('../app/features/world/lgaCardModel.ts', import.meta.url), 'utf8'), cardView = readFileSync(new URL('../app/features/world/LgaCard.vue', import.meta.url), 'utf8');
   assert.ok(!/fetch|XMLHttpRequest|localStorage|sessionStorage|WebSocket|sendBeacon/.test(lga));
@@ -101,7 +115,7 @@ test('every local government holds its 512 estates on its own buildable land, an
   for (const lga of pack.lgas) {
     const layout = estateLayout(pack, lga.id)!;
     assert.equal(layout.cells.length, ESTATE.estates);
-    assert.ok(layout.front >= 7, `${lga.id} first estate is ${layout.front.toFixed(1)} units`);
+    assert.ok(layout.front >= 3, `${lga.id} first estate is ${layout.front.toFixed(1)} units`);
     for (const estate of [0, 1, 255, 511]) {
       const cell = layout.cells[estate]!;
       assert.equal(lgaAt(pack, cell.x, cell.z), lga.id);
@@ -109,7 +123,7 @@ test('every local government holds its 512 estates on its own buildable land, an
     }
     // No estate stands on a venue's lot, in a coming-soon zone or over another estate.
     for (const cell of layout.cells) {
-      for (const spot of Object.values(pack.sites)) assert.ok(Math.abs(cell.x - spot.x) > cell.size / 2 + 3 || Math.abs(cell.z - spot.z) > cell.size / 2 + 3);
+      for (const spot of Object.values(pack.sites)) assert.ok(Math.abs(cell.x - spot.x) > cell.size / 2 + SITE_CLEAR - 0.1 || Math.abs(cell.z - spot.z) > cell.size / 2 + SITE_CLEAR - 0.1);
       for (const zone of pack.zones) assert.ok(cell.x + cell.size / 2 < zone[0] + 0.3 || cell.x - cell.size / 2 > zone[2] - 0.3 || cell.z + cell.size / 2 < zone[1] + 0.3 || cell.z - cell.size / 2 > zone[3] - 0.3);
     }
     seen.push(layout);
@@ -131,7 +145,7 @@ test('houses at city scale: two million residents cost one mesh of blocks; only 
   assert.equal(houses.level, 'far'); assert.equal(asked, 0, 'nothing about individual houses is asked for');
   assert.ok(c.calls === 1 && c.far > 0 && c.far < 6000, `${c.far} triangles for the whole city`);
   // One local government in view: its estates as pads.
-  houses.update({ x: -64, z: -66, distance: 110, pixels: 6 }, data, {});
+  houses.update({ x: pack.lgas.find((lga) => lga.id === 'ikeja')!.plate[0], z: pack.lgas.find((lga) => lga.id === 'ikeja')!.plate[1], distance: 110, pixels: 6 }, data, {});
   c = houses.counts();
   assert.equal(houses.level, 'near'); assert.equal(c.pads, ESTATE.estates * 2); assert.equal(asked, 0);
   // Close on the first estate: real houses, every style a per-instance colour, a handful of draw calls.
@@ -141,7 +155,7 @@ test('houses at city scale: two million residents cost one mesh of blocks; only 
   assert.equal(houses.level, 'close'); assert.ok(wanted.length >= 1 && wanted.length <= 9);
   assert.ok(c.detail > 5000 && c.detail <= DETAIL_BUDGET, `${c.detail} triangles of houses`);
   assert.ok(c.calls <= 16, `${c.calls} draw calls`);
-  assert.ok(city.triangles + houses.triangles < 60000, `${city.triangles + houses.triangles} triangles with the city`);
+  assert.ok(city.triangles + houses.triangles < CITY_TRIANGLE_BUDGET, `${city.triangles + houses.triangles} triangles with the city`);
   const dots = houses.group.children.find((mesh) => mesh.name === 'houses-dots') as InstancedMesh, scaffold = houses.group.children.find((mesh) => mesh.name === 'houses-scaffold') as InstancedMesh;
   assert.equal(dots.count, c.estates * Math.ceil(PLOTS_PER_ESTATE / 3), 'one green light per owner who is online');
   assert.equal(scaffold.count, c.estates * 5, 'scaffolding round the houses being upgraded');
@@ -184,12 +198,13 @@ test('the maps fetch only what is in view: one summary with a version stamp, one
   assert.ok(changes.includes('city') && changes.includes('estate'));
 });
 
-test('cities connect as data, and each city that is coming soon has a preview on the country map', () => {
-  for (const id of Object.keys(CITY_RULES)) assert.ok(cityEntry(id), `${id} is on the country map`);
-  for (const link of CITY_LINKS) assert.ok(cityEntry(link.a) && cityEntry(link.b));
+test('open and coming-soon cities share the live registry and canonical links', () => {
+  for (const id of Object.keys(COUNTRIES.nigeria.cities)) assert.ok(cityEntry(id), `${id} is on the country map`);
+  for (const link of allCityLinks()) assert.ok(cityEntry(link.a) && cityEntry(link.b));
+  assert.deepEqual(Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'playable').map((item) => item.id), ['lagos', 'ibadan']);
   const soon = Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'soon');
-  assert.deepEqual(soon.map((item) => item.id), ['ibadan', 'abuja', 'port-harcourt']);
-  for (const item of soon) { assert.equal(item.preview!.length, 3); const city = CITY_RULES[item.id]; assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); assert.ok(CITY_LINKS.some((link) => link.a === item.id || link.b === item.id)); }
+  assert.deepEqual(soon.map((item) => item.id), ['abuja', 'port-harcourt']);
+  for (const item of soon) { assert.equal(item.preview!.length, 3); const city = cityRules(item.id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); assert.ok(allCityLinks().some((link) => link.a === item.id || link.b === item.id)); }
   // The atlas shows a route's Travel button only when the server would let it leave; otherwise it says why (src/map3d/geo).
   const atlas = readFileSync(new URL('./geo/atlas.ts', import.meta.url), 'utf8'), info = readFileSync(new URL('./geo/info.ts', import.meta.url), 'utf8');
   assert.match(atlas, /data-atlas-travel=/); assert.match(info, /is not open yet, so nothing leaves for it/);

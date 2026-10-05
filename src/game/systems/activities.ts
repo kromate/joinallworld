@@ -85,7 +85,7 @@ import { contentFor, jobFor, venuesFor, venueFor } from '../cities/runtime.ts';
 import { emit, modify, systems } from '../registry.ts';
 import { busy, cap, fail, isRecord, naira, ok, safeCount } from '../util.ts';
 import { isOpen, minutesUntilOpen } from '../clock.ts';
-import { VENUES, venueLabel } from '../content/venues.ts';
+import { venueLabel } from '../content/venues.ts';
 import { canAfford, canCredit, credit, debit } from './wallet.ts';
 import { changeNeeds, addMoodlet } from './needs.ts';
 import { addSkillXp, skillLevel } from './skills.ts';
@@ -117,7 +117,6 @@ export interface ArriveOptions {
 type StartOutcome = ReturnType<TypedActionHandler<'activity'>>;
 type ActivityFailCode = ActionMap['activity']['fail'];
 
-const venueTable: Record<string, VenueDefinition | undefined> = VENUES;
 /** Object.entries that keeps the key type: the keys of a typed table are its ids. */
 const entriesOf = <K extends string, V>(table: Partial<Record<K, V>> | null | undefined): [K, V][] => Object.entries(table || {}) as [K, V][]; // keys come from the typed table itself
 

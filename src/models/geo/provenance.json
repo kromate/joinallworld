@@ -58,6 +58,44 @@
       "year": 2022,
       "originalSource": "GRID3",
       "retrieved": "2026-10-05"
+    },
+    "openstreetmap-ibadan-landmarks": {
+      "url": "https://www.openstreetmap.org/copyright",
+      "license": "Open Database License 1.0",
+      "attribution": "OpenStreetMap contributors",
+      "objects": [
+        "node/2819861343",
+        "way/30045325",
+        "way/30050505",
+        "way/82244395",
+        "way/82244400",
+        "way/82466578",
+        "way/82467201",
+        "way/230958890",
+        "way/758353311",
+        "way/758353355",
+        "way/863990411",
+        "way/1009823166",
+        "way/1264087047",
+        "way/1283222827",
+        "relation/10307392",
+        "relation/11384438",
+        "relation/17748471"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    "openstreetmap-lagos-ibadan-rail": {
+      "url": "https://api.openstreetmap.org/api/0.6/relation/10699301/full",
+      "sha256": "1722b1a590981631d70d570871c9546b6dbd1518249c3635037093f8a3323c92",
+      "license": "Open Database License 1.0",
+      "attribution": "OpenStreetMap contributors",
+      "relation": 10699301,
+      "stationObjects": [
+        "relation/12868018",
+        "node/8841632699",
+        "way/863990411"
+      ],
+      "retrieved": "2026-10-05"
     }
   },
   "attribution": {
@@ -65,7 +103,9 @@
     "Kenya": "geoBoundaries, William & Mary geoLab, RCMRD GeoPortal / Africa GeoPortal; KEN-ADM1-32016919, year2020, release9469f09. Simplified, rounded, and converted to ES module by Allworld. CC BY4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/KEN/ADM1/. User approved attributed dataset exception on2026-10-04.",
     "Capital supplement": "Wikidata structured data CC0; Q1024647, Q1061665, Q304976, Q648749. https://www.wikidata.org/wiki/Wikidata:Licensing",
     "Airports": "OurAirports public-domain data; selected coordinates retained in sources/airports.json with original source hash. https://ourairports.com/data/",
-    "Nigeria states and Lagos local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/"
+    "Nigeria states and Lagos local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
+    "Oyo State and Ibadan local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 33 Oyo local governments are retained in the generated topology; the Ibadan play area selects 11. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
+    "Ibadan landmarks and Lagos-Ibadan railway": "© OpenStreetMap contributors. Landmark points and railway relation 10699301 are used under the Open Database License 1.0. The railway is simplified while retaining source vertices; its recorded 23.4 m source gap is disclosed in code. https://www.openstreetmap.org/copyright"
   },
   "limitations": [
     "Roads are original schematic travel corridors joining city coordinates, not surveyed highway alignments.",
@@ -84,9 +124,31 @@
         "src/map3d/geo/data/lagos.ts (feature lagoon)"
       ],
       "generator": "scripts/geo/build-boundaries.ts (npm run geo:boundaries; Lagos-only by default)"
+    },
+    "ibadan-play-area": {
+      "inputs": [
+        "nigeria-states-adm1",
+        "nigeria-lgas-adm2"
+      ],
+      "method": "The union of 11 named ADM2 local governments: Akinyele, Egbeda, Ibadan North, Ibadan North East, Ibadan North West, Ibadan South East, Ibadan South West, Ido, Lagelu, Oluyole and Ona Ara. The generated Oyo topology retains all 33 ADM2 local governments. Oyo State is selected only after all 37 ADM1 states are built as one shared-arc topology.",
+      "outputs": [
+        "src/map3d/geo/data/oyo.ts (OYO_LGAS, OYO_STATE and IBADAN_LGA_IDS)"
+      ],
+      "generator": "scripts/geo/build-boundaries.ts (npm run geo:boundaries -- --oyo)"
+    },
+    "lagos-ibadan-rail-route": {
+      "inputs": [
+        "openstreetmap-lagos-ibadan-rail"
+      ],
+      "method": "OSM relation 10699301 is simplified with Douglas-Peucker tolerance 0.0005 degrees while retaining source vertices and segment endpoints. The two source components have a recorded 23.4 m gap between nodes 11936864570 and 6287057206; the atlas joins only those recorded endpoints and invents no other bend.",
+      "outputs": [
+        "src/game/cities/ibadan/landmarks.ts (IBADAN_RAIL_ROUTE)",
+        "src/game/cities/ibadan/rail.ts (IBADAN_ROUTE_GEOMETRY)"
+      ]
     }
   },
   "processing": {
-    "lagos-boundaries": "Shared-arc topology: each border simplified and quantised once, then reused by its neighbours. Copied from the pinned generator output; tolerance and source metadata are recorded in the data header."
+    "lagos-boundaries": "Shared-arc topology: each border simplified and quantised once, then reused by its neighbours. Copied from the pinned generator output; tolerance and source metadata are recorded in the data header.",
+    "oyo-boundaries": "All 33 Oyo ADM2 features are built in one shared-arc topology at 0.0002 degrees. The full Oyo State outline is cut from a topology built from all 37 ADM1 features, preserving shared boundary arcs for neighbouring state packs. No inland water is inferred from gaps."
   }
 }

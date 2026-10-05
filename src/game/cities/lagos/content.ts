@@ -3,8 +3,8 @@ import { BILLBOARDS, RADIO } from '../../content/civic.ts'
 import { STARTER_GOALS, WISHES } from '../../content/goals.ts'
 import { JOBS } from '../../content/jobs.ts'
 import { HOUSES } from '../../content/housing.ts'
-import { NPCS } from '../../content/npcs.ts'
-import { HOME_SPOTS, VENUES } from '../../content/venues.ts'
+import { NPCS } from './regulars.ts';
+import { HOME_SPOTS, VENUES } from './venues.ts';
 import { TABLES } from '../../../tables/places.ts'
 import type { CityContent, CityGuidePlace, CityVenueContent } from '../../../types/content.ts'
 

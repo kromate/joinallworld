@@ -10,7 +10,8 @@ import { fixture } from './test-fixture.ts';
 import { createServer } from './server.ts';
 import { makeRng } from '../src/game/util.ts';
 import { spotsOf } from '../src/life.ts';
-import { VENUES } from '../src/game/content/venues.ts';
+import { VENUES } from '../src/game/cities/lagos/venues.ts';
+
 import type { AddressInfo } from 'node:net';
 import type { SessionRecord } from './types.ts';
 import type { LifeState } from '../src/types/life.ts';

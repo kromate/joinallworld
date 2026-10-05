@@ -1,8 +1,12 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: growth — tests for the missions, events and growth systems and the events calendar.
 // Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createLife, dispatch, advanceLife, viewLife, spotsOf, VENUES } from '../life.ts';
+import { createLife, dispatch, advanceLife, viewLife, spotsOf } from '../life.ts';
+import { VENUES } from './cities/lagos/venues.ts';
+
 import { makeContext } from './util.ts';
 import { lagosTime, lagosDayStart } from './clock.ts';
 import type { ActionBody, ActionResult, ActionType } from '../types/actions.ts';

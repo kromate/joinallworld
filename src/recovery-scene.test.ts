@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './game/cities/registry.ts';
+await preloadCityContent('lagos');
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createVenueWorld } from './venue-world.ts';

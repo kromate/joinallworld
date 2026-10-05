@@ -4,6 +4,7 @@
 // screen-reader alternative to pointing at a building. What a switched-on layer shows stays
 // readable with the list closed, where the layer itself is in view.
 import { computed } from 'vue'
+import { cityRules } from '../../../game/cities/registry.ts'
 import type { AdsResponse, GovResponse } from '../../../types/civic.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -19,6 +20,7 @@ const { game, shell } = useApp()
 const civic = useCivic()
 const view = game.view
 
+const availableLayers = computed(() => LAYERS.filter(item => item.id !== 'sea' || cityRules(game.cityId.value)?.seaPlots !== false))
 const open = computed(() => isListOpen())
 const destinations = computed(() => view.value.travel.destinations)
 const places = computed(() => destinations.value.filter((item) => matchesFilter(item, mapUi.filter)))
@@ -31,7 +33,7 @@ const line = computed(() => overviewLine(destinations.value, trip.value, weather
 const filterLabel = computed(() => FILTERS.find((item) => item.id === mapUi.filter)?.label || mapUi.filter)
 const notes = computed((): LayerNote[] => {
   const why = linkWords(view.value)?.why ?? ''
-  return LAYERS.filter((item) => layers[item.id]).flatMap((item) => {
+  return availableLayers.value.filter((item) => layers[item.id]).flatMap((item) => {
     const cached: LayerData = item.key === 'ads' ? civic.entry<AdsResponse>(adsKey(view.value.cityId)) : item.key === 'gov' ? civic.entry<GovResponse>(govKey(view.value.cityId)) : { data: null, error: null }
     const note = layerNote(item, cached, view.value.connected, why)
     return note ? [note] : []
@@ -72,7 +74,7 @@ function showWorld(): void {
     <LayerNotes v-if="!open" :notes="notes" />
     <div id="map-list" class="map-more" :hidden="!open">
       <div class="map-filters map-layers" role="group" aria-label="Map layers">
-        <button v-for="item in LAYERS" :key="item.id" type="button" :aria-pressed="layers[item.id]" :class="{ 'is-selected': layers[item.id] }" @click="toggleLayer(item.id)"><GameIcon inline :name="item.icon" /><span>{{ item.label }}</span></button>
+        <button v-for="item in availableLayers" :key="item.id" type="button" :aria-pressed="layers[item.id]" :class="{ 'is-selected': layers[item.id] }" @click="toggleLayer(item.id)"><GameIcon inline :name="item.icon" /><span>{{ item.label }}</span></button>
       </div>
       <LayerNotes :notes="notes" />
       <ul v-if="places.length" class="map-list" aria-label="Places">

@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test';
 import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
@@ -534,7 +536,7 @@ async function combined(t: TestContext, overrides?: Record<string, unknown>) {
 test('Combined game on the Worker: quick start, settle in with a plot, a mission, a share page, the invite landing, Whot over two sockets, the referral', async t => {
   const { REFERRAL, TABLE_REWARDS } = await import('../src/game/content/growth.ts');
   const { MISSION_REWARDS } = await import('../src/game/content/missions.ts');
-  const { NPCS } = await import('../src/game/content/npcs.ts');
+  const { NPCS } = await import('../src/game/cities/lagos/regulars.ts');
   const { joinIdFrom, linkParts } = await import('../src/quick-start/model.ts');
   const f = await combined(t, { bindings: { BUILD_ID: 'local-conformance', PUBLIC_ORIGIN: 'https://play.example' } });
   const LGA = 'ikeja', TABLE = 'buka-corner', ORIGIN = 'https://play.example';

@@ -1,6 +1,7 @@
-// npm run geo:boundaries — rebuilds Lagos only. Pass --nigeria to opt in to replacing the Nigeria atlas.
+// npm run geo:boundaries — rebuilds Lagos only. Pass --oyo for Oyo or --nigeria for the Nigeria atlas.
 //
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts [--lagos-only] [--check]
+//   node --experimental-strip-types scripts/geo/build-boundaries.ts --oyo [--check]
 //   node --experimental-strip-types scripts/geo/build-boundaries.ts --nigeria [--check]
 //
 // Sources (pinned by revision and sha256; fetched once into .cache/geo, verified every run):
@@ -9,6 +10,7 @@
 //
 // Writes:
 //   src/map3d/geo/data/lagos.ts    the 20 Lagos local governments, the Lagos State outline and the derived lagoon
+//   src/map3d/geo/data/oyo.ts      all 33 Oyo local governments and an Oyo State outline cut from the shared ADM1 topology
 //   src/map3d/geo/data/nigeria.ts  the 37 states (geoBoundaries ADM1) plus, unchanged, the neighbouring countries
 //                                  and the rivers and lakes that file already held, plus the derived Lagos lagoon
 //
@@ -36,6 +38,7 @@ const SOURCES = {
 /** Tolerances. Effective areas are in square map units (1 unit = 100 m, so 1 unit² = 10 000 m²). */
 export const TOLERANCE = {
   lagos: { grid: 0.0002, lga: 0.01, state: 0.01, lagoon: 0.05, rasterGrid: 0.0002 },
+  oyo: { grid: 0.0002, lga: 0.01, state: 0.01 },
   nigeria: { grid: 0.001, general: 3, lagos: 0.15, lagoonLake: 1.5 },
 };
 /** The smallest lagoon pieces kept, and the smallest islands of land inside it that still cut a hole, in km². */
@@ -119,6 +122,8 @@ function area2(ring: readonly Pt[]): number {
   return sum;
 }
 const km2 = (ring: readonly Pt[]): number => Math.abs(area2(ring.map(unitsOf))) / 2 / 100;
+const polygonKm2 = (polygon: Polygon): number => km2(polygon[0]!) - polygon.slice(1).reduce((sum, hole) => sum + km2(hole), 0);
+const polygonsKm2 = (polygons: readonly Polygon[]): number => polygons.reduce((sum, polygon) => sum + polygonKm2(polygon), 0);
 
 /** Visvalingam–Whyatt on map-unit coordinates; the ends stay. `keep` is the fewest points left. Returns indexes kept. */
 function visvalingam(points: readonly Pt[], threshold: number, keep: number): number[] {
@@ -240,6 +245,25 @@ function polysOf(built: Built, owner: string): number[][][] {
 }
 
 const arcText = (built: Built): string => built.arcs.map((arc) => encodeArc(arc.points)).join(',');
+
+/** Retains selected owners without rebuilding or resimplifying their arcs. */
+function subsetBuilt(built: Built, owners: ReadonlySet<string>): Built {
+  const refs = built.refs.filter((ref) => owners.has(ref.owner));
+  const used = new Set<number>();
+  for (const ref of refs) for (const arc of ref.ring) used.add(arc < 0 ? ~arc : arc);
+  const indexes = [...used].sort((a, b) => a - b);
+  const remap = new Map(indexes.map((old, index): [number, number] => [old, index]));
+  const mapRef = (ref: number): number => {
+    const index = remap.get(ref < 0 ? ~ref : ref);
+    if (index === undefined) throw new Error(`Arc ${ref} is absent from the selected topology`);
+    return ref < 0 ? ~index : index;
+  };
+  return {
+    grid: built.grid,
+    arcs: indexes.map((index) => built.arcs[index]!),
+    refs: refs.map((ref) => ({ ...ref, ring: ref.ring.map(mapRef) })),
+  };
+}
 
 // ---- the lagoon: Lagos State minus the 20 local governments ----------------------------------------------------------
 
@@ -369,6 +393,66 @@ function lagosInputs(adm1: GeoFeatureCollection, adm2: GeoFeatureCollection): { 
   return { rings, names, statePolys, lgaPolys };
 }
 
+// ---- Oyo -------------------------------------------------------------------------------------------------------------
+
+/** [name in geoBoundaries ADM2, game id, display name] */
+const OYO_LGAS: readonly [string, string, string][] = [
+  ['Afijio', 'afijio', 'Afijio'], ['Akinyele', 'akinyele', 'Akinyele'], ['Atiba', 'atiba', 'Atiba'], ['Atisbo', 'atisbo', 'Atisbo'],
+  ['Egbeda', 'egbeda', 'Egbeda'], ['Ibadan North', 'ibadan-north', 'Ibadan North'], ['Ibadan North East', 'ibadan-north-east', 'Ibadan North-East'],
+  ['Ibadan North West', 'ibadan-north-west', 'Ibadan North-West'], ['Ibadan South East', 'ibadan-south-east', 'Ibadan South-East'],
+  ['Ibadan South West', 'ibadan-south-west', 'Ibadan South-West'], ['Ibarapa Central', 'ibarapa-central', 'Ibarapa Central'],
+  ['Ibarapa East', 'ibarapa-east', 'Ibarapa East'], ['Ibarapa North', 'ibarapa-north', 'Ibarapa North'], ['Ido', 'ido', 'Ido'],
+  ['Irepo', 'irepo', 'Irepo'], ['Iseyin', 'iseyin', 'Iseyin'], ['Itesiwaju', 'itesiwaju', 'Itesiwaju'], ['Iwajowa', 'iwajowa', 'Iwajowa'],
+  ['Kajola', 'kajola', 'Kajola'], ['Lagelu', 'lagelu', 'Lagelu'], ['Ogbomosho North', 'ogbomoso-north', 'Ogbomoso North'],
+  ['Ogbomosho South', 'ogbomoso-south', 'Ogbomoso South'], ['Ogo Oluwa', 'ogo-oluwa', 'Ogo Oluwa'], ['Olorunsogo', 'olorunsogo', 'Olorunsogo'],
+  ['Oluyole', 'oluyole', 'Oluyole'], ['Ona Ara', 'ona-ara', 'Ona Ara'], ['Orelope', 'orelope', 'Orelope'], ['Ori Ire', 'ori-ire', 'Ori Ire'],
+  ['Oyo East', 'oyo-east', 'Oyo East'], ['Oyo West', 'oyo-west', 'Oyo West'], ['Saki East', 'saki-east', 'Saki East'],
+  ['Saki West', 'saki-west', 'Saki West'], ['Surulere', 'surulere', 'Surulere'],
+];
+
+const IBADAN_LGA_IDS = [
+  'akinyele', 'egbeda', 'ibadan-north', 'ibadan-north-east', 'ibadan-north-west', 'ibadan-south-east',
+  'ibadan-south-west', 'ido', 'lagelu', 'oluyole', 'ona-ara',
+] as const;
+
+const inPolygons = (point: Pt, polygons: readonly Polygon[]): boolean => polygons.some((polygon) => pointIn(point, polygon[0]!) && !polygon.slice(1).some((hole) => pointIn(point, hole)));
+const ringMean = (ring: readonly Pt[]): Pt => ring.reduce<Pt>((sum, point) => [sum[0] + point[0] / ring.length, sum[1] + point[1] / ring.length], [0, 0]);
+
+function oyoInputs(adm1: GeoFeatureCollection, adm2: GeoFeatureCollection): {
+  lgaRings: RingInput[]
+  stateRings: RingInput[]
+  statePolys: Polygon[]
+  lgaPolys: Map<string, Polygon[]>
+} {
+  const state = adm1.features.find((feature) => feature.properties.shapeName === 'Oyo');
+  if (!state) throw new Error('Oyo State is missing from ADM1');
+  const statePolys = polygonsOf(state);
+  const inOyo = adm2.features.filter((feature) => {
+    const outer = polygonsOf(feature)[0]?.[0];
+    return outer ? inPolygons(ringMean(outer), statePolys) : false;
+  });
+  const expected = new Set(OYO_LGAS.map(([source]) => source));
+  const unexpected = inOyo.filter((feature) => !expected.has(feature.properties.shapeName));
+  if (inOyo.length !== OYO_LGAS.length || unexpected.length) {
+    throw new Error(`Oyo ADM2 selection found ${inOyo.length} features; unexpected: ${unexpected.map((feature) => feature.properties.shapeName).join(', ') || 'none'}`);
+  }
+  const byName = new Map(inOyo.map((feature): [string, GeoFeature] => [feature.properties.shapeName, feature]));
+  const lgaRings: RingInput[] = [], lgaPolys = new Map<string, Polygon[]>();
+  for (const [source, id] of OYO_LGAS) {
+    const feature = byName.get(source);
+    if (!feature) throw new Error(`${source}: missing from the 33 Oyo local governments`);
+    const polygons = polygonsOf(feature);
+    lgaPolys.set(id, polygons);
+    polygons.forEach((polygon, poly) => polygon.forEach((ring, index) => lgaRings.push({ owner: id, poly, hole: index > 0, pts: ring })));
+  }
+  const stateRings: RingInput[] = [];
+  for (const feature of adm1.features) {
+    const owner = feature === state ? 'oyo-state' : `state:${feature.properties.shapeName}`;
+    polygonsOf(feature).forEach((polygon, poly) => polygon.forEach((ring, index) => stateRings.push({ owner, poly, hole: index > 0, pts: ring })));
+  }
+  return { lgaRings, stateRings, statePolys, lgaPolys };
+}
+
 const featureText = (feature: Record<string, unknown>): string => JSON.stringify(feature);
 const bytes = (text: string): number => Buffer.byteLength(text);
 const sha256 = (text: string | Uint8Array): string => createHash('sha256').update(text).digest('hex');
@@ -412,11 +496,11 @@ function rawTopoOf(value: unknown, label: string): RawTopo<FeatureData> {
   return { grid: value.grid, arcs: value.arcs, features };
 }
 
-function topologyFromText(text: string, label: string): RawTopo<FeatureData> {
-  const marker = 'export const LAGOS: RawTopo = ';
+function topologyFromText(text: string, label: string, exportName: string): RawTopo<FeatureData> {
+  const marker = `export const ${exportName}: RawTopo = `;
   const start = text.indexOf(marker);
   const end = start < 0 ? -1 : text.indexOf(';', start + marker.length);
-  if (start < 0 || end < 0) throw new TypeError(`${label}: cannot find the LAGOS topology`);
+  if (start < 0 || end < 0) throw new TypeError(`${label}: cannot find the ${exportName} topology`);
   const parsed: unknown = JSON.parse(text.slice(start + marker.length, end));
   return rawTopoOf(parsed, label);
 }
@@ -426,15 +510,15 @@ function decodedHash(raw: RawTopo<FeatureData>): string {
   return sha256(JSON.stringify({ grid: decoded.grid, arcs: decoded.arcs.map((arc) => [...arc]), features: decoded.features.map((feature) => ({ id: feature.id, rings: feature.rings.map((polygon) => polygon.map((ring) => [...ring])), bounds: feature.bounds })) }));
 }
 
-function output(path: string, text: string, check: boolean, topology = false): void {
+function output(path: string, text: string, check: boolean, topologyNames: readonly string[] = []): void {
   const generatedHash = sha256(text);
   if (check) {
     const actual = readFileSync(path, 'utf8');
     const actualHash = sha256(actual);
     if (actual !== text) throw new Error(`${path}: generated text ${generatedHash} differs from ${actualHash}`);
-    if (topology) {
-      const generatedGeometry = decodedHash(topologyFromText(text, `${path} generated`));
-      const actualGeometry = decodedHash(topologyFromText(actual, `${path} actual`));
+    if (topologyNames.length) {
+      const generatedGeometry = sha256(topologyNames.map((name) => decodedHash(topologyFromText(text, `${path} generated ${name}`, name))).join(':'));
+      const actualGeometry = sha256(topologyNames.map((name) => decodedHash(topologyFromText(actual, `${path} actual ${name}`, name))).join(':'));
       if (generatedGeometry !== actualGeometry) throw new Error(`${path}: decoded geometry differs (${generatedGeometry} != ${actualGeometry})`);
       console.log(`${path}: check ok, sha256 ${actualHash}, decoded ${actualGeometry}`);
       return;
@@ -446,18 +530,64 @@ function output(path: string, text: string, check: boolean, topology = false): v
   console.log(`${path}: wrote sha256 ${generatedHash}`);
 }
 
-interface Options { check: boolean; nigeria: boolean }
+interface Options { check: boolean; target: 'lagos' | 'oyo' | 'nigeria' }
 
 function optionsOf(args: readonly string[]): Options {
-  const allowed = new Set(['--check', '--lagos-only', '--nigeria']);
+  const allowed = new Set(['--check', '--lagos-only', '--oyo', '--nigeria']);
   const unknown = args.filter((arg) => !allowed.has(arg));
   if (unknown.length) throw new Error(`Unknown option: ${unknown.join(', ')}`);
-  if (args.includes('--lagos-only') && args.includes('--nigeria')) throw new Error('--lagos-only and --nigeria cannot be combined');
-  return { check: args.includes('--check'), nigeria: args.includes('--nigeria') };
+  const targets = [args.includes('--lagos-only'), args.includes('--oyo'), args.includes('--nigeria')].filter(Boolean).length;
+  if (targets > 1) throw new Error('--lagos-only, --oyo and --nigeria cannot be combined');
+  return { check: args.includes('--check'), target: args.includes('--oyo') ? 'oyo' : args.includes('--nigeria') ? 'nigeria' : 'lagos' };
 }
 
 async function main(options: Options): Promise<void> {
   const [adm1, adm2] = [await load('adm1'), await load('adm2')];
+
+  if (options.target === 'oyo') {
+    const T = TOLERANCE.oyo, oyo = oyoInputs(adm1, adm2), lagos = lagosInputs(adm1, adm2);
+    const lgaBuilt = build(oyo.lgaRings, T.grid, () => T.lga);
+    // Build every state together before selecting Oyo. Its exterior arcs therefore remain byte-for-byte reusable by
+    // neighbouring state packs generated from the same pinned source and tolerance.
+    const allStates = build(oyo.stateRings, T.grid, () => T.state);
+    const stateBuilt = subsetBuilt(allStates, new Set(['oyo-state']));
+    const lgaFeatures = OYO_LGAS.map(([, id, name]) => featureText({ id, name, polys: polysOf(lgaBuilt, id) }));
+    const stateFeature = featureText({ id: 'oyo-state', name: 'Oyo State', polys: polysOf(stateBuilt, 'oyo-state') });
+    const oyoStateKm2 = polygonsKm2(oyo.statePolys);
+    const ibadanPlayAreaKm2 = IBADAN_LGA_IDS.reduce((sum, id) => sum + polygonsKm2(oyo.lgaPolys.get(id) ?? []), 0);
+    const lagos20LgaKm2 = polygonsKm2(lagos.lgaPolys);
+    const oyoText = `/**
+ * GENERATED DATA — do not edit by hand (npm run geo:boundaries -- --oyo).
+ * All 33 Oyo State local governments are stored in OYO_LGAS. The Ibadan city map opens the 11 ids in
+ * IBADAN_LGA_IDS; their polygons are also the exact playable-area tiles. OYO_STATE is the full state outline.
+ * Source: geoBoundaries gbOpen Nigeria, release ${RELEASE} (https://www.geoboundaries.org), ADM2 (boundaryID NGA-ADM2-59680162,
+ *   local governments) and ADM1 (NGA-ADM1-27671186, states). Original source GRID3, year 2022.
+ *   Licence CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Modified: selected, simplified, quantised, converted.
+ * Processing: shared-arc topology, each arc simplified once with Visvalingam–Whyatt at effective-area threshold ${T.lga}
+ *   square map units (1 unit = 100 m), quantised to ${T.grid} degrees (about 22 m). The state outline is selected only
+ *   after all 37 ADM1 states are built together, preserving its shared border arcs for future neighbouring state packs.
+ * Water is deliberately absent from this file: no suitable pinned inland-water polygon source is used by this build.
+ */
+/* eslint-disable */
+import type { RawTopo } from '../topo.ts';
+export const IBADAN_LGA_IDS = ${JSON.stringify(IBADAN_LGA_IDS)} as const;
+export const OYO_STATE_KM2 = ${oyoStateKm2.toFixed(1)};
+export const IBADAN_PLAY_AREA_KM2 = ${ibadanPlayAreaKm2.toFixed(1)};
+export const LAGOS_20_LGA_KM2 = ${lagos20LgaKm2.toFixed(1)};
+export const OYO_LGAS: RawTopo = {"grid":${T.grid},"arcs":${JSON.stringify(arcText(lgaBuilt))},"features":[
+${lgaFeatures.join(',\n')}
+]};
+export const OYO_STATE: RawTopo = {"grid":${T.grid},"arcs":${JSON.stringify(arcText(stateBuilt))},"features":[
+${stateFeature}
+]};
+`;
+    const path = join(root, 'src/map3d/geo/data/oyo.ts');
+    output(path, oyoText, options.check, ['OYO_LGAS', 'OYO_STATE']);
+    console.log(`oyo.ts ${bytes(oyoText)} bytes, ${lgaBuilt.arcs.length} LGA arcs, ${stateBuilt.arcs.length} state arcs`);
+    console.log(`areas from source projection: Oyo State ${oyoStateKm2.toFixed(1)} km²; Ibadan 11-LGA play area ${ibadanPlayAreaKm2.toFixed(1)} km²; Lagos 20-LGA land ${lagos20LgaKm2.toFixed(1)} km² (administrative sets, not like-for-like metro areas)`);
+    return;
+  }
+
   const lagos = lagosInputs(adm1, adm2);
   const lagoon = lagoonOf(lagos.statePolys, lagos.lgaPolys);
   console.log(`lagoon: ${lagoon.length} pieces, ${lagoon.reduce((sum, poly) => sum + km2(poly[0]!), 0).toFixed(1)} km² outer`);
@@ -489,9 +619,9 @@ export const LAGOS: RawTopo = {"grid":${T.grid},"arcs":${JSON.stringify(arcText(
 ${lagosFeatures.join(',\n')}
 ]};
 `;
-  output(join(root, 'src/map3d/geo/data/lagos.ts'), lagosText, options.check, true);
+  output(join(root, 'src/map3d/geo/data/lagos.ts'), lagosText, options.check, ['LAGOS']);
   console.log(`lagos.ts ${bytes(lagosText)} bytes, ${lagosBuilt.arcs.length} arcs, ${lagosBuilt.arcs.reduce((n, a) => n + a.points.length, 0)} points`);
-  if (!options.nigeria) return;
+  if (options.target !== 'nigeria') return;
 
   // ---- nigeria.ts
   const nigeriaPath = join(root, 'src/map3d/geo/data/nigeria.ts');

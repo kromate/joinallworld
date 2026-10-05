@@ -3,6 +3,7 @@
 // Cancel with the real cancel rule. The time is the server's: it moves when a state arrives
 // (about once a second while something runs), never on a timer of its own.
 import { computed, ref } from 'vue'
+import { cityName } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
@@ -17,12 +18,13 @@ const placeOf = (id: string): string => { const venue = view.value.venues.find((
 const name = computed(() => {
   const now = active.value
   if (!now) return ''
+  if (now.kind === 'intercity') return `Travelling to ${cityName(now.id)}`
   if (activity.value?.label) return activity.value.label
   return now.kind === 'travel' ? `Travelling to ${placeOf(now.id)}` : now.kind === 'commute' ? `Commuting to work · ${placeOf(now.id)}` : 'Action in progress'
 })
 const paid = computed(() => (activity.value?.reward ?? 0) > 0)
 const sleeping = computed(() => Boolean(activity.value?.tags?.includes('sleep')))
-const fixed = computed(() => Boolean(activity.value) && !activity.value?.cancellable)
+const fixed = computed(() => active.value?.kind === 'intercity' || (Boolean(activity.value) && !activity.value?.cancellable))
 const progress = computed(() => { const now = active.value; return now ? Math.max(0, Math.min(1, 1 - now.remaining / (now.duration || 1))) : 0 })
 const cancelLabel = computed(() => (fixed.value ? 'This cannot be cancelled once started' : paid.value ? 'Cancel shift. Cancelling earns nothing' : sleeping.value ? 'Wake up. The rest you got is kept' : 'Cancel current activity'))
 

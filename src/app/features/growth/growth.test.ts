@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The logic behind the growth screens, without a browser: the shared client (hello at most every
 // five minutes, the exactly-once share flow, the session reset, the away card's dismissal), and
 // what Missions, Events, Bring a friend, Stay in touch, the away card and the inbox chip say.

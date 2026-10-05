@@ -54,6 +54,8 @@ export interface MapImpl {
   view?(): object
   cameraView?(): { x: number; z: number; yaw: number; pitch: number; distance: number }
   restoreView?(next: never): void
+  /** Back to the opening view (the city core). */
+  recentre?(): void
   worldChanged?(): void
   focusPlot?(plot: { lga: string; estate: number; plot: number } | null | undefined): void
   focusEstate?(lga: string, estate: number): void
@@ -88,6 +90,8 @@ export interface CityView {
   camera(): MapCamera | null
   /** Put the camera back (a reload): applied when the map first opens if it is not up yet. A camera of the other kind of map is dropped. */
   restoreCamera(next: MapCamera | null): void
+  /** Back to the opening view of the map in front (the city core). */
+  recentre(): void
   readonly map: MapImpl | null
   destroy(): void
 }
@@ -227,6 +231,8 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
       const flat = kind === '2d' ? impl.view?.() as { scale?: number; x?: number; y?: number; opened?: boolean } | undefined : undefined;
       return flat && flat.opened && typeof flat.scale === 'number' && typeof flat.x === 'number' && typeof flat.y === 'number' ? { kind: '2d', scale: flat.scale, x: flat.x, y: flat.y } : null;
     },
+    /** Back to the opening view of the map in front (the city core). */
+    recentre() { impl?.recentre?.(); },
     restoreCamera(next) { if (!next) return; if (impl) applyCamera(next); else wantedCamera = next; },
     get map() { return impl; },
     destroy() { mounting += 1; clearTimeout(releaseTimer ?? undefined); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:world-changed', onWorld); window.removeEventListener('jaw:map-focus', onFocus); impl?.destroy(); toggle.remove(); },

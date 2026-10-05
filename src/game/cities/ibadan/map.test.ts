@@ -52,3 +52,12 @@ test('Ibadan has its real main roads and the land around it, and the built city 
   const meshes = city.group.children.filter((child) => (child as { isMesh?: boolean }).isMesh).length
   assert.ok(meshes <= 40, `${meshes} draw calls`)
 })
+
+test('Ibadan shows the polling centre beside Mapo Hall on the map while its data keeps the real point, and rivers keep a visible line', async () => {
+  const map = await ibadanCity.loadMap(), pack = await map.loadScene(), plain = await createModulePack(ibadanCity)
+  const content = await ibadanCity.loadContent(), polling = content.venues.find((venue) => venue.id === 'mapo-polling')!
+  assert.deepEqual(polling.position, { kind: 'lon-lat', lon: 3.89706, lat: 7.37586 })
+  const moved = Math.hypot(pack.sites['mapo-polling']!.x - plain.sites['mapo-polling']!.x, pack.sites['mapo-polling']!.z - plain.sites['mapo-polling']!.z)
+  assert.ok(moved > 1.5 && moved < 2.2, `the icon moves about 180 m (${moved} units of 100 m)`)
+  assert.match(flatSvg(flatModel(pack, { roads: [] })), /data-water-line="Ogunpa"[^>]*non-scaling-stroke/)
+})

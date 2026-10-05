@@ -96,7 +96,7 @@ function slab(b: Batch, x: number, z: number, w: number, d: number, base: number
 // Cocoa House: a slab tower with vertical fins, and the plaza and road below it.
 const tower: SceneDef = {
   mood: 'outdoor', accent: '#f2c14e',
-  camera: { landscape: [20, 24, 33], portrait: [18, 33, 44] },
+  camera: { landscape: [27, 34, 44], portrait: [24, 44, 58], start: 3.5 },
   walk: { bounds: [-14.2, -12.2, 14.2, 12.2], entrance: [0, 7.6], open: true },
   build(b, { label }) {
     const X = -4.5;
@@ -152,6 +152,7 @@ const tower: SceneDef = {
 // Mapo Hall: a colonial hall on a hilltop; a clock tower, a colonnade and wide steps, rust roofs on the slope.
 const hillHall: SceneDef = {
   mood: 'outdoor', accent: '#e0a43a',
+  camera: { landscape: [21, 32, 36.5], portrait: [22, 43, 53], start: 3.5 },
   build(b, { label }) {
     ground(b, { w: 30, d: 26, color: '#7b8c4c', edge: '#6b4a35' });
     b.box(0, 0.04, 3.6, 16, 0.04, 15, '#dccfb2');

@@ -32,7 +32,7 @@ const done = ref(false)
 const hole = ref<(Rect & { radius: number }) | null>(null)
 const spot = ref<Placement | null>(null)
 const cardWidth = ref(360)
-const announce = ref('')
+const announced = ref(false)
 
 const step = computed(() => list.value[index.value] ?? null)
 const last = computed(() => index.value >= list.value.length - 1)
@@ -57,6 +57,8 @@ const context = (): StepContext => ({ home: game.state.value.location === 'home'
 startInputMode()
 const ctx = computed(() => { void index.value; void done.value; void input.touch; void input.keys; return context() })
 const words = computed(() => (step.value ? wordsOf(step.value, ctx.value, done.value) : { title: '', text: '', task: null }))
+/** The spoken text is derived from the words on the card, so it follows the input mode (keys or touch) exactly as the visible text does. */
+const announce = computed(() => (!announced.value || !step.value ? '' : done.value && step.value.wait ? words.value.text : `Step ${index.value + 1} of ${list.value.length}: ${words.value.title}. ${words.value.text}`))
 const keyRows = computed(() => (step.value?.keys ? step.value.keys(ctx.value) : []))
 const action = computed(() => step.value?.action ?? null)
 
@@ -126,7 +128,7 @@ function enter(): void {
   if (now.expand) { wasExpanded = shell.ui.expanded; shell.ui.expanded = true }
   track('tour_step', { index: index.value })
   if (now.id === 'signup') signupShown('tour')
-  announce.value = `Step ${index.value + 1} of ${list.value.length}: ${words.value.title}. ${words.value.text}`
+  announced.value = true
   void nextTick(() => {
     target()?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
     settle()
@@ -161,7 +163,6 @@ watch(() => step.value ? isDone(step.value.wait, { activeAction: Boolean(game.st
   done.value = now
   if (now === was || !step.value) return
   if (now) {
-    announce.value = `${words.value.text}`
     settle()
     const at = index.value
     if (step.value.advance) advancing = window.setTimeout(() => { if (index.value === at && !ended) go(1) }, 1100)

@@ -11,11 +11,12 @@ export const nextHouse = (property: Pick<PropertyView, 'houses' | 'nextHouse'>):
 /** Whole percent of the move-in cost the player holds. */
 export const savedPercent = (cash: number, moveIn: number): number => Math.max(0, Math.min(100, Math.round((cash / moveIn) * 100)))
 
-export const housesRules = (weeks: number): string[] => [
+/** `smallest`: the room the provisional-size note names (the first Lagos room where a city does not say). */
+export const housesRules = (weeks: number, smallest = 'Yaba room'): string[] => [
   `The move-in cost pays the landlord and the agent: ${weeks} weeks of rent, up front.`,
   'Your furniture moves with you. Anything that does not fit the new room waits in Buy → Storage.',
   'From then on the new rent is collected every Saturday (see Bank).',
-  'Rents and move-in costs are set per area. The Yaba room size and move-in cost are provisional and may change.',
+  `Rents and move-in costs are set per area. The ${smallest} size and move-in cost are provisional and may change.`,
 ]
 
 /** Why a car's Drive and Sell are unavailable, or ''. */

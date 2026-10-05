@@ -1053,7 +1053,9 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       point.project(camera);
       shown.id = tag.id; shown.kind = tag.kind; shown.text = tag.text; shown.name = tag.name; shown.marker = tag.marker; shown.colour = tag.colour;
       shown.x = Math.round(((point.x + 1) / 2) * size.width); shown.y = Math.round(((1 - point.y) / 2) * size.height);
-      shown.visible = point.z > -1 && point.z < 1 && Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1;
+      shown.visible = point.z > -1 && point.z < 1 && Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1
+        // A tag that would sit under the HUD's rows, or under a sheet at the bottom, is not drawn.
+        && shown.y >= Math.max(insets.top, hintTop) && shown.y <= size.height - insets.bottom;
     }
     if (!tagLayer) return;
     // Who is tagged is compared only when the list was read again — a frame of the motion loop builds no strings.
@@ -1154,7 +1156,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     // about a tenth of a phone's height. Zooming out still reaches the whole-venue view and beyond.
     const preset = portrait ? view.portrait : view.landscape;
     const whole = Math.hypot(preset[0], preset[1] - 0.7, preset[2]);
-    const close = Math.min(1, ((portrait ? START_DISTANCE.portrait : height <= 520 ? START_DISTANCE.short : START_DISTANCE.wide) * (walk?.scale || 1)) / whole);
+    const close = Math.min(1, ((portrait ? START_DISTANCE.portrait : height <= 520 ? START_DISTANCE.short : START_DISTANCE.wide) * (walk?.scale || 1) * (view.start || 1)) / whole);
     closeness = 1 / close;
     orbit.setBase([preset[0] * close, 0.7 + (preset[1] - 0.7) * close, preset[2] * close]);
     // Close enough to see a face, far enough to see the whole venue. The orbit is free all the way round:

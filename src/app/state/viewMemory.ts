@@ -25,7 +25,11 @@ export interface SavedView {
   camera: SavedCamera | null
   /** The map frame the camera was kept in (CAMERA_FRAME). A record without it, or with another, keeps no camera. */
   frame?: string
+  /** When the view was kept (ms). A camera is only put back while it is younger than CAMERA_KEEP_MS; older, the map opens on the city core. */
+  keptAt?: number
 }
+/** How long a remembered camera stays worth restoring. */
+export const CAMERA_KEEP_MS = 30 * 60 * 1000
 /** What the server says about the life, and what this build knows how to open. */
 export interface LifeFacts {
   who: string
@@ -36,6 +40,8 @@ export interface LifeFacts {
   allowsMode: (mode: string) => boolean
   /** Is this sheet something the shell may open again? */
   allowsSheet: (sheet: SavedSheet) => boolean
+  /** The time now (ms), to judge the age of a remembered camera. */
+  now?: number
 }
 export interface InitialView {
   mode: string
@@ -70,8 +76,11 @@ export function savedViewFrom(value: unknown): SavedView | null {
   if (!value || typeof value !== 'object') return null
   const item = value as Record<string, unknown>
   if (item.v !== 1 || typeof item.who !== 'string' || !text(item.at) || !text(item.mode)) return null
-  return { v: 1, who: item.who, at: item.at, mode: item.mode, layer: item.layer === 'world' ? 'world' : 'city', destination: text(item.destination) ? item.destination : null, sheet: sheetOf(item.sheet), camera: item.frame === CAMERA_FRAME ? cameraOf(item.camera) : null, ...(typeof item.frame === 'string' ? { frame: item.frame } : {}) }
+  return { v: 1, who: item.who, at: item.at, mode: item.mode, layer: item.layer === 'world' ? 'world' : 'city', destination: text(item.destination) ? item.destination : null, sheet: sheetOf(item.sheet), camera: item.frame === CAMERA_FRAME ? cameraOf(item.camera) : null, ...(typeof item.frame === 'string' ? { frame: item.frame } : {}), ...(finite(item.keptAt) ? { keptAt: item.keptAt } : {}) }
 }
+
+/** A camera is kept for half an hour; a record that does not say when it was kept, or whose clock is unknown, keeps none. */
+const fresh = (view: SavedView, now: number | undefined): boolean => finite(view.keptAt) && finite(now) && now - view.keptAt >= 0 && now - view.keptAt < CAMERA_KEEP_MS
 
 /** The view to start with. */
 export function decideView(saved: unknown, facts: LifeFacts): InitialView {
@@ -84,7 +93,7 @@ export function decideView(saved: unknown, facts: LifeFacts): InitialView {
   if (view.at !== facts.location) return none
   const mode = view.mode === 'venue' || facts.allowsMode(view.mode) ? view.mode : 'venue'
   const sheet = view.sheet && facts.allowsSheet(view.sheet) ? view.sheet : null
-  return { mode, layer: mode === 'map' ? view.layer : 'city', destination: mode === 'map' ? view.destination : null, sheet, camera: mode === 'map' ? view.camera : null, restored: mode !== 'venue' || sheet !== null }
+  return { mode, layer: mode === 'map' ? view.layer : 'city', destination: mode === 'map' ? view.destination : null, sheet, camera: mode === 'map' && fresh(view, facts.now) ? view.camera : null, restored: mode !== 'venue' || sheet !== null }
 }
 
 // ---- storage ---------------------------------------------------------------------------------------------------

@@ -36,6 +36,11 @@ const summary = computed(() => {
   if (state.people && 'error' in state.people) return `Could not check who is here: ${state.people.error}`
   return roomSummary(listing.value, venue.value)
 })
+// One string: a space at the start of a conditional template child is trimmed by the compiler, which glued the two sentences together.
+const summaryLine = computed(() => {
+  const count = here.value.length
+  return count ? `${summary.value} ${count} local${count === 1 ? '' : 's'} (NPCs) ${count === 1 ? 'is' : 'are'} always around.` : summary.value
+})
 const venueName = (id: string): string => venueNameOf(view.value.venues, id)
 const presence = (friend: { status?: string; seenAt?: number; venue?: string }): string => presenceText(friend, venueName, view.value.now)
 
@@ -57,7 +62,7 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
 <template>
   <div class="people">
     <div class="social-head"><h3>Here at {{ venue }}</h3><button type="button" class="social-btn" :disabled="!view.connected" @click="client.loadPeople()">Refresh</button></div>
-    <p class="social-note">{{ summary }}<template v-if="here.length"> {{ here.length }} local{{ here.length === 1 ? '' : 's' }} (NPCs) {{ here.length === 1 ? 'is' : 'are' }} always around.</template></p>
+    <p class="social-note">{{ summaryLine }}</p>
     <div v-if="listing?.players.length || here.length" class="social-cards">
       <button v-for="player in listing?.players ?? []" :key="`p${player.id}`" type="button" class="social-card" @click="shell.open('person', { player: player.id, name: player.name })">
         <PlayerAvatar :name="player.name" :seed="player.id" status="online" /><strong>{{ player.name }}</strong><small class="is-player">Real player{{ player.friend ? ' · Friend' : '' }}</small>

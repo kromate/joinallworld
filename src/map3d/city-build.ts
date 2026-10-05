@@ -113,6 +113,8 @@ export interface Raw {
   build(material: Material): Mesh;
 }
 
+/** The least width of a river ribbon, in map units (100 m): narrower than this a river line vanishes at the whole-city zoom. */
+const RIVER_MIN_WIDTH = 1;
 export const WATER_Y = -0.5;
 /**
  * The most triangles one frame of the city may cost: the city itself, its overlays, the route and the houses of an estate in view.
@@ -402,8 +404,8 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   }
   // The land around the state: flat, muted, under everything else, with no shore or beach of its own.
   for (const piece of pack.context?.land ?? []) raw.shape(piece.points, -0.06, piece.kind === 'country' ? CONTEXT_COLOURS.country : piece.kind === 'base' ? CONTEXT_COLOURS.state : CONTEXT_COLOURS.state, piece.holes);
-  // Two sources meet at a border (Natural Earth for the countries, geoBoundaries for the states): a band along every outline closes the hairline gaps between them.
-  for (const piece of pack.context?.land ?? []) if (piece.kind !== 'base') raw.ribbon([...piece.points, piece.points[0]!].map(([x, z]) => ({ x, y: 0, z })), 7, -0.07, piece.kind === 'country' ? CONTEXT_COLOURS.country : CONTEXT_COLOURS.state);
+  // Two sources meet at a border (Natural Earth for the countries, geoBoundaries for the states): a band along every outline closes the gaps between them (the country outlines are coarser, so their band is wider).
+  for (const piece of pack.context?.land ?? []) if (piece.kind !== 'base') raw.ribbon([...piece.points, piece.points[0]!].map(([x, z]) => ({ x, y: 0, z })), piece.kind === 'country' ? 60 : 12, -0.07, piece.kind === 'country' ? CONTEXT_COLOURS.country : CONTEXT_COLOURS.state);
   for (const road of pack.context?.roads ?? []) if (road.points.length > 1) raw.ribbon(road.points.map(([x, z]) => ({ x, y: 0, z })), 1.1 * (pack.roadScale ?? 1), -0.02, CONTEXT_COLOURS.road);
   for (const entry of lands) {
     const sand = entry.kind === 'sand', holes = entry.holes ?? [];
@@ -446,7 +448,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     if (water.kind === 'lake') {
       raw.shape(water.points, 0.022, '#79bfd2');
       raw.ribbon(flat([...water.points, water.points[0]!]), 0.5, 0.02, '#a9dbe4');
-    } else raw.ribbon(flat(water.points), water.width ?? 0.5, 0.025, '#6fb6cd');
+    } else raw.ribbon(flat(water.points), Math.max(water.width ?? 0.5, RIVER_MIN_WIDTH), 0.025, '#5aa8c6');
   }
   for (const rail of pack.rails ?? []) {
     const line = flat(rail.points);

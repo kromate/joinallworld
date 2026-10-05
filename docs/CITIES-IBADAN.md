@@ -29,6 +29,7 @@ The pack carries what makes Ibadan read as Ibadan from above (`character.ts`, dr
 - The Ogunpa river and the Eleyele Reservoir from OpenStreetMap (`water.ts`, rebuilt by `scripts/geo/build-ibadan-water.ts`), the standard-gauge railway with the Obafemi Awolowo station, and the expressways and Ring Road as the widest, darkest roads.
 - Landmark icons for Cocoa House, Mapo Hall, Bower's Tower, the University clock tower and the Adamasingba stadium.
 - The map's whole-extent button is named by the pack (`extent`): 'Whole city' for these eleven local governments; a pack with no `extent` says 'Whole state' when it draws a state's surroundings, as Lagos does.
+- The city module names a life that has none yet (`defaultName` in its rules: what the city calls someone new to it), and `carNicknames` gives the shared cars local nicknames ('Ring Road flex', 'Weekend special') where the shared ones name a Lagos place.
 - Orita Challenge Interchange stands at the junction of Challenge Road, the Lagos-Ibadan expressway (A1) and Ring Road in the bundled roads (3.8793 E, 7.3482 N). The boundary data puts that junction in Ibadan South-East, a little north of Oluyole.
 
 Name labels are level-of-detail: the player's place, picked and next places and the pack's `notable` landmarks come first, and an icon that would still overlap another is left out until the view is closer.
@@ -39,7 +40,25 @@ The content catalogue has 25 venues: Home and 24 public venues. Every public ven
 
 Landmark venues include the University of Ibadan, The Polytechnic, Lead City University, University College Hospital, Cocoa House, Mapo Hall, Bower's Tower, Agodi Gardens, Bodija Market, Dugbe Market, Gbagi New International Market, Lekan Salami Stadium, the National Museum of Unity, IITA Forest Reserve and Eleyele Reservoir. Transport venues include Iwo Road, Orita Challenge, Obafemi Awolowo Station at Moniya and Ibadan Airport.
 
-Scenes reuse the shared scene builders (a park, a market, a buka, a hospital, a worship hall, a statehouse, a hub, an airport, a walk). Bower's Tower and Eleyele Reservoir use the park builder; the University of Ibadan and the museum use the walk builder, which is a woodland trail. A scene of their own for the tower, the reservoir and a campus court is a separate piece of work.
+### Scenes
+
+Three scene kinds are Ibadan's own (`src/scene/venues-ibadan-a.ts`): `quad` (the University of Ibadan's campus court), `hilltop` (Bower's Tower, with the city's roofs below) and `lakeside` (Eleyele Reservoir). Venues that share a kind with another city's venue ask for a scene of their own through `variant` (`CitySceneVariant`, `src/scene/venues-ibadan-b.ts`; the variant replaces the kind's scene and, where it carries one, its walkable description):
+
+| Kind / variant | Venue |
+|---|---|
+| office / tower | Cocoa House: a finned slab tower over a plaza and a busy road |
+| office / campus | The Polytechnic, Lead City University |
+| statehouse / hill-hall | Mapo Hall: a colonial hall with a clock tower, colonnade and wide steps |
+| viewing / stadium | Lekan Salami Stadium |
+| walk / gallery, walk / forest | the National Museum, the IITA Forest Reserve |
+| hub / bus-park, hub / rail | the two interchanges, the Moniya station |
+| market / foodstuff, street, cloth | Bodija, Dugbe and Gbagi |
+| park / garden | Agodi Gardens |
+| worship / church, mosque | the chapel and the mosque at UI |
+
+The remaining venues (the hospital, the buka, the salon, the polling centre, the airport) use the shared builders. Every sign in these scenes is drawn from the venue's own label.
+
+A scene may carry its own default camera (`camera: { landscape, portrait, start }`). `start` scales how far back the view begins; the two tall scenes (the Cocoa House tower and Mapo Hall's clock tower) set it so the whole building is in view at first, on a phone, a laptop and an ultra-wide screen. The airport's flight board lists the cities this city has a flight to (the registry's open air links first, the planned ones marked SOON) and says so when there are none; Ibadan has none yet.
 
 Three generic venues provide required mechanics without claiming a real private business:
 

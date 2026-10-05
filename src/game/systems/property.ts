@@ -34,6 +34,7 @@ import { emit, modify } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok } from '../util.ts';
 import { canAfford, canCredit, credit, debit } from '../api.ts';
 import { defaultHouseFor, houseFor, housesFor } from '../cities/housingRuntime.ts';
+import { contentFor } from '../cities/runtime.ts';
 import { CARS, CAR_ORDER, CAR_MODE, CAR_RESALE_RATE } from '../content/cars.ts';
 import type { CarDefinition, HouseDefinition } from '../../types/content.ts';
 import type { CarId, LifeContext, LifeState, TravelModeId } from '../../types/life.ts';
@@ -168,7 +169,7 @@ export default {
     },
   },
   view(state, ctx): PropertyView {
-    const houses = housesFor(state.estate.city);
+    const houses = housesFor(state.estate.city), nicknames = contentFor(state.estate.city).carNicknames;
     const current = houseFor(state.estate.city, state.property.house) ?? defaultHouseFor(state.estate.city);
     const index = houses.findIndex((house) => house.id === current.id);
     return {
@@ -183,7 +184,7 @@ export default {
       car: drivenCar(state),
       cars: CAR_ORDER.map((id) => {
         const car = CARS[id], price = carPrice(state, car, ctx), owned = state.property.cars.includes(id);
-        return { ...car, price, listPrice: car.price, owned, driving: state.property.car === id, resale: resale(car), affordable: state.cash >= price,
+        return { ...car, nickname: nicknames?.[id] ?? car.nickname, price, listPrice: car.price, owned, driving: state.property.car === id, resale: resale(car), affordable: state.cash >= price,
           blocked: owned ? null : state.activeAction ? 'Finish your current action first' : state.cash < price ? `Need ${naira(price - state.cash)} more` : null };
       }),
     };

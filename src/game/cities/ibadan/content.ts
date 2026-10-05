@@ -350,6 +350,7 @@ export const IBADAN_CONTENT: CityContent<'ibadan'> = Object.freeze({
       measure: 'Coding to level 8 is 60%, Hustle to level 5 is 20%, a first Lead City University visit 5%, and getting funded the last 15%.',
     },
   },
+  carNicknames: { 'marina-v6': 'Ring Road flex', 'atlantic-x': 'Weekend special' },
   lotteryWording: Object.fromEntries(Object.values(LOTTERY).map(outcome => [outcome.id, {
     bullets: [...outcome.bullets.filter(line => !line.startsWith('Start in ') && line !== 'Any of the three homes is open to you'), 'Choose any Ibadan local government for your free starter house.'],
   }])),

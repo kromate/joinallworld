@@ -16,6 +16,7 @@
 
 /* ---- names on the map ---- */
 .atlas-labels{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.atlas-leaders{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.atlas-leaders line{stroke:#3d3520;stroke-width:1.5;stroke-linecap:round}.atlas-leaders circle{fill:#3d3520;stroke:#fff;stroke-width:1}
 .atlas-label{position:absolute;left:0;top:0;display:grid;justify-items:center;white-space:nowrap;line-height:1.2;font-size:11px;color:#444c55;text-shadow:0 0 2px #fff,0 0 3px #fff,0 0 4px #ffffffb3;will-change:transform}
 .atlas-label b{font-weight:650}
 .atlas-label.at-centre{translate:-50% -50%}.atlas-label.at-above{translate:-50% calc(-100% - 9px)}.atlas-label.at-right{translate:8px -50%}.atlas-label.at-left{translate:calc(-100% - 8px) -50%}.atlas-label.at-below{translate:-50% 9px}.atlas-label.at-far-above{translate:-50% calc(-100% - 55px)}.atlas-label.at-far-below{translate:-50% 55px}
@@ -35,6 +36,7 @@
 .atlas-label.is-city b{font-size:13px;font-weight:750}
 .atlas-label.is-city small{font-size:10px;font-weight:700;color:#7a5a12}
 .atlas-label.is-city::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:9px;margin-left:-1px;background:#fffffff2;box-shadow:0 0 2px #0b2b3a66}
+.atlas-label.is-city:not(.at-above)::after{display:none}
 .atlas-label.is-city.is-open{background:var(--c-green-dark,#1d6b43);color:#fff;z-index:3}
 .atlas-label.is-city.is-open small{color:#d5f0df}
 .atlas-marker{position:absolute;left:0;top:0;z-index:4;display:grid;place-items:center;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#ffb224;color:#20232c;box-shadow:0 0 0 3px #fff,0 3px 10px #0b2b3a80;pointer-events:none;will-change:transform}
@@ -115,7 +117,8 @@
 .atlas-route span:last-child{display:grid;gap:1px;min-width:0}
 .atlas-route b{font-size:var(--t-body,13px);line-height:1.25}
 .atlas-route small{font-size:var(--t-small,11px);color:var(--c-muted,#5f6770)}
-.atlas-route-more{display:grid;gap:8px;padding:0 10px 10px 52px}
+.atlas-route:focus-visible{outline-offset:-3px}
+.atlas-route-more{display:grid;gap:8px;padding:8px 10px 10px 52px}
 .atlas-route-more p{margin:0;font-size:var(--t-caption,12px);line-height:1.4;color:var(--c-amber-dark,#7a5a12)}
 .atlas-chip{justify-self:start;min-height:36px;padding:0 13px;border:0;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px var(--c-line,#e3e6e4);font-size:var(--t-caption,12px);font-weight:650}
 .atlas-chip[disabled]{color:var(--c-muted,#5f6770);cursor:default}

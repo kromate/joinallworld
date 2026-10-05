@@ -417,3 +417,14 @@ test('a state with several open cities names each of them on the map', async () 
     assert.equal(new Set(atlas.diagnostics().cityLabels.map(label => label.id)).size, atlas.diagnostics().cityLabels.length);
   } finally { atlas.destroy(); }
 });
+
+test('a label that gives way to another is marked displaced and remembers the point it names', () => {
+  const placed = placeLabels([
+    { id: 'a', x: 200, y: 200, text: 'Alpha', priority: 100, anchor: 'above', alts: ['far-below'] },
+    { id: 'b', x: 200, y: 200, text: 'Beta', priority: 10, anchor: 'above', alts: ['far-below'] },
+  ], { width: 640, height: 480 });
+  const [first, second] = [placed.find((label) => label.id === 'a')!, placed.find((label) => label.id === 'b')!];
+  assert.equal(first.displaced, false);
+  assert.equal(second.displaced, true);
+  assert.deepEqual(second.home, { x: 200, y: 200 });
+});

@@ -86,3 +86,8 @@ export const IBADAN_RAIL_ROUTE = Object.freeze({
     ] as const),
   ]),
 })
+
+/** Display-only map-icon shifts in metres (east, north) for venues that share a site with a neighbour; their coordinates stay as mapped. */
+export const IBADAN_ICON_OFFSETS: Readonly<Record<string, { east: number; north: number }>> = Object.freeze({
+  'mapo-polling': { east: 140, north: -110 },
+})

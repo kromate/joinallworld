@@ -127,17 +127,20 @@ export function createGrowth(deps: GrowthDeps) {
     if (outcome === 'unavailable') deps.toast('This browser has no share sheet. Use WhatsApp, X or Copy below.', 'info')
   }
   /** Copy the link alone (the invite sheet's Copy link). */
-  async function copyLink(): Promise<void> {
+  // A copy that the browser refuses is not an error: the sheet then shows the text selected for the player to copy (see ShareSheet.vue).
+  async function copyLink(): Promise<boolean> {
     const current = state.sharing
-    if (!current) return
+    if (!current) return false
     const copied = await (await deps.loadShare()).copyText(current.prepared.link)
-    deps.toast(copied ? 'Link copied. Paste it into any chat.' : 'Could not copy. Press and hold the link to copy it yourself.', copied ? 'good' : 'error')
+    if (copied) deps.toast('Link copied. Paste it into any chat.', 'good')
+    return copied
   }
-  async function copyShare(): Promise<void> {
+  async function copyShare(): Promise<boolean> {
     const current = state.sharing
-    if (!current) return
+    if (!current) return false
     const copied = await (await deps.loadShare()).copyText(current.prepared.text)
-    deps.toast(copied ? 'Copied. Paste it into any chat.' : 'Could not copy. Press and hold the text to copy it yourself.', copied ? 'good' : 'error')
+    if (copied) deps.toast('Copied. Paste it into any chat.', 'good')
+    return copied
   }
 
   /** The WhatsApp Channel link, only when the server says one is configured and it is https; else ''. */

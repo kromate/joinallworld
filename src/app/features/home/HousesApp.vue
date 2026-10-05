@@ -27,6 +27,8 @@ const property = computed(() => view.value.property)
 const next = computed(() => (property.value ? nextHouse(property.value) : undefined))
 const progress = computed(() => (next.value ? savedPercent(cash.value, next.value.moveIn) : 100))
 const offline = computed(() => (view.value.connected ? '' : `${linkWords(view.value)?.short ?? ''} — moving needs the server`))
+/** Where a city is not Lagos, the first room of its own ladder is the one named. */
+const smallest = computed(() => (game.state.value.estate.city === 'lagos' ? undefined : property.value?.houses[0]?.label.toLowerCase()))
 const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command('property.house-move', { id }))
 </script>
 
@@ -45,7 +47,7 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
       <p v-else>You live here already.</p>
     </section>
     <p class="ui-note houses-note">Moving in costs {{ MOVE_IN_WEEKS }} weeks of rent up front. Rent is then due every Saturday.</p>
-    <HowItWorks id="houses-rules" page label="How moving works" :rules="housesRules(MOVE_IN_WEEKS)" />
+    <HowItWorks id="houses-rules" page label="How moving works" :rules="housesRules(MOVE_IN_WEEKS, smallest)" />
     <div class="houses-list">
       <article v-for="(house, tier) in property.houses" :key="house.id" class="houses-card" :class="{ 'is-current': house.current }">
         <HouseArt :tier="tier" :grid="house.grid" />

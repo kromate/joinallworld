@@ -4,13 +4,25 @@
  * Their walkable descriptions (WALK) are with the other kinds in venue-scenes.js.
  */
 import { GLOW, GLASS } from './build.ts';
+import { cityRules, linksFrom } from '../game/cities/registry.ts';
 import type { Batch, Colour, SceneDef } from './types.ts';
 import {
   ground, table, chair, bench, counter, plant, lampPost, kiosk, ropeLine, fence, rug, sign, landmark, extra,
-  WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,
+  textWidth, WOOD_LIGHT, METAL, METAL_DARK, WHITE, BLACK, WARM,
 } from './props.ts';
 
 const PI = Math.PI, HALF = Math.PI / 2;
+
+/** The cities the board lists: those this city has a flight to, the open ones first, at most three. */
+function flightRows(cityId: string): { name: string; open: boolean }[] {
+  const seen = new Set<string>(), rows: { name: string; open: boolean }[] = [];
+  for (const link of linksFrom(cityId)) {
+    if (link.mode !== 'air' || seen.has(link.to)) continue;
+    seen.add(link.to);
+    rows.push({ name: (cityRules(link.to)?.name ?? link.to).toUpperCase(), open: cityRules(link.to)?.status === 'open' });
+  }
+  return rows.sort((a, c) => Number(c.open) - Number(a.open)).slice(0, 3);
+}
 const AMBER = '#ffc94a', NAVY = '#2f4a66', TANK = '#dfe2e0';
 
 /** An airliner on the ground, nose along local +z. */
@@ -34,7 +46,7 @@ function airliner(b: Batch, x: number, y: number, z: number, ry: number, tail: C
 
 const airport: SceneDef = {
   mood: 'indoor', accent: '#3f9ad0',
-  build(b, { accent }) {
+  build(b, { accent, cityId }) {
     // The hall: a floor, a solid left wall, and a back wall of glass on the apron (drawn here instead of room(), which has no glass).
     b.walls?.({ w: 24, d: 20 });
     b.box(0, -0.25, 0, 25, 0.5, 21, '#565c63');
@@ -110,9 +122,15 @@ const airport: SceneDef = {
     for (const x of [6.5, 10.7]) b.box(x, 1.7, 2.7, 0.12, 3.4, 0.12, METAL_DARK);
     b.box(8.6, 2.8, 2.7, 4.6, 1.9, 0.12, BLACK);
     sign(b, 8.6, 3.42, 2.78, 'FLIGHTS', { size: 0.26, color: WHITE, lit: true });
-    sign(b, 7.3, 2.86, 2.78, 'ABUJA', { size: 0.2, color: AMBER, lit: true });
-    sign(b, 8.26, 2.4, 2.78, 'PORT HARCOURT', { size: 0.2, color: AMBER, lit: true });
-    for (const y of [2.86, 2.4]) b.quad(10.3, y, 2.78, 0.5, 0.08, '#8a8f95', GLOW);
+    // Only the cities this city has a flight to: the open ones first, the others marked SOON.
+    const rows = flightRows(cityId);
+    if (!rows.length) sign(b, 8.6, 2.8, 2.78, 'NO FLIGHTS YET', { size: 0.2, color: AMBER, lit: true });
+    rows.forEach((row, i) => {
+      const y = 2.86 - i * 0.46;
+      sign(b, 6.5 + textWidth(row.name, 0.2) / 2, y, 2.78, row.name, { size: 0.2, color: AMBER, lit: true });
+      if (row.open) b.quad(10.3, y, 2.78, 0.5, 0.08, '#4fd08a', GLOW);
+      else sign(b, 10.3, y, 2.78, 'SOON', { size: 0.14, color: '#aeb4ba', lit: true });
+    });
     extra(b, 'airport-agent', 8.6, 3.4, 0, 'work', { look: { body: 'man', hair: 'fade', outfit: 'office', outfitColor: 'teal', fabric: 'plain' } });
     b.box(9.8, 1.42, 4.4, 0.5, 0.06, 0.36, '#f4f1e4'); b.cyl(7.2, 1.5, 4.5, 0.16, 0.3, accent, { seg: 8 });
     plant(b, 11, 8.9, { s: 1.3, pot: WHITE }); plant(b, -11, 9.2, { s: 1.1, pot: WHITE }); plant(b, -0.6, -9.2, { s: 1, pot: WHITE });

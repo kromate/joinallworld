@@ -162,9 +162,8 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
       // context fills above and below it, and on a tall one it fills the rest of the height. The strip is never distorted.
       if (bounds.context) {
         const distance = distanceFor(corners(), centre.x, centre.z, 0, TOP_DOWN, 1.04);
-        // The coast is the state's south edge and beyond it is sea: the view is nudged north so that land, not water, is most of the picture.
-        const half = Math.tan((camera.fov * Math.PI) / 360) * distance, ahead = bounds.inland ? 0 : Math.min(half * 0.3, reach * 0.9);
-        return { x: centre.x, z: centre.z - ahead, yaw: 0, pitch: TOP_DOWN, distance };
+        // The state itself is centred in the free part of the screen (the insets are already applied); the land and sea around it fill the rest.
+        return { x: centre.x, z: centre.z, yaw: 0, pitch: TOP_DOWN, distance };
       }
       // A city is seen at the default tilt; a state a long way out is tipped up so that its shape reads.
       const fit = (yaw: number) => {

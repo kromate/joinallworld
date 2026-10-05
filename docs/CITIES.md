@@ -22,7 +22,9 @@ Rules provide:
 
 - city, state and country identity;
 - timezone and the shared-frame map origin;
+- `defaultName`, the name of a life that has none yet (a city that does not say gets 'New Lagosian');
 - a separate atlas marker, teaser and preview text;
+- a map pack that may carry `character` (ground tint, roofs, hills, water, rail, landmark icons) and `extent` (the name of the whole-extent view);
 - the city's name for its local units, plus local-unit land tiers;
 - rented-home districts and the local unit each belongs to;
 - road, air and rail hubs;
@@ -33,6 +35,8 @@ Content provides the venue scene kind, existing activity definition, opening hou
 Local-unit rules contain identities, geography categories and prices only. Every content module supplies `localUnitDescriptions` keyed by its complete local-unit list. Engine price and address helpers work without prose; estate views, local-government panels and map packs attach descriptions after the city content loads.
 
 Dream and family-outcome wording can be localized through `dreamWording` and `lotteryWording`. These fields change labels, guidance and explanatory bullets only; IDs, targets, loans, cash, skill effects and rewards remain shared mechanics. Check the onboarding cards, profile, goals and completion messages when authoring these overrides.
+
+`carNicknames` replaces the shared nickname of any car (label, price and speed stay shared). `defaultName` is a rules field (above). A venue's scene is its `kind`, optionally refined by `variant`; a scene's `camera` may carry `start`, a factor on how far back the view begins. Dream and family-outcome wording can be localized through `dreamWording` and `lotteryWording`. These fields change labels, guidance and explanatory bullets only; IDs, targets, loans, cash, skill effects and rewards remain shared mechanics. Check the onboarding cards, profile, goals and completion messages when authoring these overrides.
 
 Travel visits and activity cooldowns are keyed by city outside Lagos; existing bare Lagos keys remain readable. Bounded references to an unloaded origin survive reload without loading its prose. Loaded catalogues validate the referenced IDs and cooldown duration. Daily earning and roadside-event caps remain global. The last local route and an unanswered roadside choice are transient and clear when the character changes city.
 

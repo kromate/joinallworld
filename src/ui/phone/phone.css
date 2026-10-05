@@ -7,7 +7,7 @@
  */
 
 /* ---- the dialog becomes a clear stage for the device ----------------------------------- */
-#life-dialog[data-phone]{box-sizing:border-box;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0 0 max(14px,env(safe-area-inset-bottom));background:transparent;box-shadow:none;border-radius:0;overflow:hidden}
+#life-dialog[data-phone]{box-sizing:border-box;inset:0;width:100%;height:100%;min-height:100dvh;max-width:none;max-height:none;margin:0;padding:0 0 max(14px,env(safe-area-inset-bottom));background:transparent;box-shadow:none;border-radius:0;overflow:hidden;overflow:clip}
 #life-dialog[data-phone][open]{display:grid;grid-template-rows:minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr);justify-items:center}
 #life-dialog[data-phone]::backdrop{background:rgba(8,14,11,.42);backdrop-filter:none}
 #life-dialog[data-phone] #life-dialog-content{grid-row:2;flex:none;padding:0;overflow:visible;max-width:100%}
@@ -36,7 +36,7 @@
 .ph::before,.ph::after{content:'';position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#1a1c21,#4a505b)}
 .ph::before{left:-3px;top:128px;height:34px;box-shadow:0 48px 0 #2d3138,0 96px 0 #2d3138}
 .ph::after{right:-3px;top:176px;height:76px;transform:scaleX(-1)}
-.ph-screen{position:relative;height:100%;border-radius:43px;overflow:hidden;background:#05070a;color:#fff;isolation:isolate}
+.ph-screen{position:relative;height:100%;border-radius:43px;overflow:hidden;background:#05070a;color:#fff;isolation:isolate;overflow:clip}
 /* A reset with NO specificity (:where): the phone's own buttons inherit, and an app's button keeps
    the colour and font its own class gives it (a bare `.ph button` used to beat `.ride-go{color:#fff}`
    and left dark text on a dark button). */

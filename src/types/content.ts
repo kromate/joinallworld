@@ -1299,6 +1299,8 @@ export interface CityContent<City extends string = string> {
   dreamWording?: Readonly<Partial<Record<DreamId, Partial<Pick<DreamDefinition, 'label' | 'goal' | 'measure'>>>>>
   /** Local explanation of a family outcome; its loan, skills and cash cannot be overridden. */
   lotteryWording?: Readonly<Partial<Record<LotteryId, { bullets: readonly string[] }>>>
+  /** Local nicknames for the shared cars (the label, price and speed stay as they are); a car without one keeps the shared nickname. */
+  carNicknames?: Readonly<Partial<Record<CarId, string>>>
   venues: readonly CityVenueContent<City>[]
   regulars: readonly CityRegularContent<City>[]
   workplaces: readonly CityWorkplaceContent[]

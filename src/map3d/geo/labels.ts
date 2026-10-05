@@ -19,7 +19,8 @@ export type LabelAnchor = 'centre' | 'above' | 'right' | 'left' | 'below' | 'far
 export interface LabelBox { left: number; top: number; right: number; bottom: number }
 export interface LabelCandidate { id: string; x: number; y: number; priority: number; size?: number; room?: number | undefined,
   text: string; short?: string | undefined; note?: string | undefined; anchor?: LabelAnchor | undefined; /** Other anchors to try, in order, when the first would overlap a label already shown. */ alts?: readonly LabelAnchor[] | undefined; fixed?: boolean | undefined; cls?: string | undefined; title?: string | undefined }
-export interface PlacedLabel extends LabelCandidate { shown: string; abbreviated: boolean; box: LabelBox }
+/** `home` is the point the label names; `displaced` is set when the label sits away from it (another anchor, or moved to stay on screen). */
+export interface PlacedLabel extends LabelCandidate { shown: string; abbreviated: boolean; box: LabelBox; home: { x: number; y: number }; displaced: boolean }
 
 /** The hard cap on labels on screen at once. */
 export const LABEL_CAP = 44;
@@ -58,7 +59,7 @@ export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL
     if (placed.length >= cap) break;
     for (const text of candidate.short && candidate.short !== candidate.text ? [candidate.text, candidate.short] : [candidate.text]) {
       if (candidate.room !== undefined && textWidth(text, candidate.size) > candidate.room) continue;
-      let box = boxOf(candidate, text), at = candidate;
+      let box = boxOf(candidate, text), at = candidate, displaced = false;
       if (box.right < 0 || box.left > width || box.bottom < 0 || box.top > height) break;
       // A label that would overlap another tries its other anchors before it gives way.
       if (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0)))) {
@@ -66,15 +67,15 @@ export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL
           const moved = { ...candidate, anchor }, trial = boxOf(moved, text);
           if (trial.right < 0 || trial.left > width || trial.bottom < 0 || trial.top > height) continue;
           if (placed.some((other) => overlaps(trial, other.box, pad)) || avoid.some((other) => overlaps(trial, other, 0))) continue;
-          box = trial; at = moved; break;
+          box = trial; at = moved; displaced = true; break;
         }
       }
       if (candidate.fixed) {
         const dx = nudge(box.left, box.right, width, EDGE_MARGIN), dy = nudge(box.top, box.bottom, height, EDGE_MARGIN);
-        if (dx || dy) { box = { left: box.left + dx, right: box.right + dx, top: box.top + dy, bottom: box.bottom + dy }; at = { ...candidate, x: candidate.x + dx, y: candidate.y + dy }; }
+        if (dx || dy) { box = { left: box.left + dx, right: box.right + dx, top: box.top + dy, bottom: box.bottom + dy }; at = { ...candidate, x: candidate.x + dx, y: candidate.y + dy }; displaced = true; }
       }
       if (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0)))) continue;
-      placed.push({ ...at, shown: text, abbreviated: text !== candidate.text, box });
+      placed.push({ ...at, shown: text, abbreviated: text !== candidate.text, box, home: { x: candidate.x, y: candidate.y }, displaced });
       break;
     }
   }

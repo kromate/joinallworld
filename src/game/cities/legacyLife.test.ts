@@ -22,9 +22,9 @@ test('a Lagos life saved without the city fields is read as it was, with its job
   assert.equal(state.career.city, 'lagos')
   assert.equal(state.civic.hunt?.city, 'lagos')
   assert.equal(state.job, 'community-helper')
-  // Nothing else moved: with the two new fields taken out, the life is exactly what was stored.
+  // Nothing else moved: with the new fields taken out (the job's city and its null last-move day), the life is exactly what was stored.
   const read = plain(state) as { t: number; career: Record<string, unknown>; civic: { hunt: Record<string, unknown> | null } }
-  delete read.career.city; if (read.civic.hunt) delete read.civic.hunt.city
+  delete read.career.city; delete read.career.transferDay; if (read.civic.hunt) delete read.civic.hunt.city
   assert.deepEqual(read, { ...old, t: read.t })
   assert.deepEqual(plain(createLife(plain(state), { now: NOW, cityId: 'lagos' })), plain(state), 'reading it again changes nothing')
   assert.equal(viewLife(state, { now: NOW, cityId: 'lagos' }).career.employed, true)

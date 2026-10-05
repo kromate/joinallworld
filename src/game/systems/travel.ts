@@ -338,7 +338,9 @@ const isStarterShift = (def: { requiresJob?: unknown; careerTrack?: unknown } | 
 const cooldownKey = (city: string, def: { id: string; requiresJob?: unknown; careerTrack?: unknown }): string => isStarterShift(def) ? SHARED_SHIFT : cityReference(city, def.id);
 const cooldownLeft = (state: LifeState, id: string, now: number): number => {
   const def = findActivity(id, state.estate.city)?.def;
-  const readyAt = state.travel?.cooldowns?.[def ? cooldownKey(state.estate.city, def) : cityReference(state.estate.city, id)] ?? 0;
+  const book = state.travel?.cooldowns ?? {};
+  // A break filed under the city (by a build before the starter break was shared) still counts.
+  const readyAt = Math.max(book[def ? cooldownKey(state.estate.city, def) : cityReference(state.estate.city, id)] ?? 0, book[cityReference(state.estate.city, id)] ?? 0);
   return Math.max(0, Math.ceil((readyAt - now) / 1000));
 };
 

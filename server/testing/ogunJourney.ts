@@ -121,9 +121,9 @@ export async function ogunJourney(host: JourneyHost): Promise<void> {
     const again = await host.request('/api/action', { cityId: city, type: 'activity', payload: { id: shift.id }, actionId: id() }, player.cookie)
     assert.equal(object(await again.json()).ok, false, `${city}: the same shift does not pay again at once`)
     assert.equal(Number((await life(player, city)).cash), Number(paid.cash))
-    // the shift cooldown is stored city-qualified, and the saved life is still read
+    // the starter shift's break is one for the character (filed once, whichever city's counter it was worked at), and the saved life is still read
     const cooldowns = object(object((await life(player, city)).travel).cooldowns)
-    assert.ok(Object.keys(cooldowns).some(key => key.startsWith(`${city}:`)), `${city}: the shift cooldown is city-qualified`)
+    assert.ok(Object.keys(cooldowns).length > 0, `${city}: the shift break is stored`)
 
     // ---- the gem hunt and the missions name this city's places ------------------------------------------------------------
     const hunt = object(object(paid.civic).hunt)

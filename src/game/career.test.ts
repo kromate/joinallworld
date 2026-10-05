@@ -414,7 +414,7 @@ test('the starter Community helper job still works for old saves, one shift per 
 
 test('career sanitize rebuilds every field from hostile input', () => {
   const state = createLife({ job: 'teaching', completedShifts: -4, career: { level: 99, performance: 1e9, shifts: -1, auto: 'no', lastShiftDay: 1.5, shiftStartDay: 'x', autoDay: {}, oriented: 'yes', extra: 1 } }, ctx);
-  assert.deepEqual(state.career, { city: 'lagos', level: 1, performance: 100, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, oriented: false });
+  assert.deepEqual(state.career, { city: 'lagos', level: 1, performance: 100, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, transferDay: null, oriented: false });
   assert.equal(state.completedShifts, 0);
   assert.deepEqual(createLife({ job: 'president', career: { level: 4, performance: 70 } }, ctx).career.level, 1);
   const valid = createLife({ job: 'teaching', career: { level: 4, performance: 70.5, shifts: 12, auto: false, lastShiftDay: 20458, shiftStartDay: null, autoDay: 20458, oriented: true } }, ctx);

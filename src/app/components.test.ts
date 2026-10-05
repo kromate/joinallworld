@@ -156,7 +156,7 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
   server.route('POST /api/social/messages', (request) => { posted = request.body; return new Promise((resolve) => { answer = resolve }) })
   server.route('GET /api/social/me', () => ({ status: 200, body: social.me }))
   const { send } = await load<{ send: (key: string, target: { conv: string }, body: string) => void }>('/src/app/features/social/useSocial.ts')
-  const { ui } = await load<{ ui: { open: string | null } }>('/src/app/features/messages/messagesState.ts')
+  const { ui } = await load<{ ui: { open: string | null; openName: string | null } }>('/src/app/features/messages/messagesState.ts')
   // Under Node there is no page and no WebSocket: the social client is given the api and nothing more.
   const { attach } = await load<{ attach: (api: unknown) => void }>('/src/app/features/social/useSocial.ts')
   attach(app.api)
@@ -180,7 +180,17 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
     assert.match(html, /class="is-failed bubble is-mine"[^>]*><span[^>]*>On my way<\/span><small[^>]*>Not sent · That wording is not allowed here\./, 'the server\'s own sentence')
     assert.ok(text(html).includes('Retry Delete'))
     assert.ok(!html.includes('is-pending'))
-  } finally { ui.open = null; social.threads.clear(); social.me = null }
+    // A chat with a friend before its first message: the name opens the profile, and Send money and Ping (the friend is away) are there already.
+    const bola = player('b01a', 'Bola')
+    social.me = { ...overview(), friends: [{ ...bola, status: 'offline', since: 1 }] } as SocialOverview
+    ui.open = 'to:b01a'; ui.openName = 'Bola'
+    app.shell.bump()
+    html = await render(messages)
+    assert.match(html, /<h3[^>]*><button[^>]*aria-label="Bola: open profile"[^>]*>Bola<\/button>/)
+    assert.match(html, /data-chat="send-money"/)
+    assert.match(html, /data-ping="send"/)
+    assert.ok(text(html).includes('No messages yet. Say something.'))
+  } finally { ui.open = null; ui.openName = null; social.threads.clear(); social.me = null }
 })
 
 test('Report a problem: the form, what is sent with it, and the empty list', async () => {

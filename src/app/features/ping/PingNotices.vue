@@ -15,7 +15,17 @@ import { closeBanner, joinFriend, loadIncoming, openKeptLink, pingState, takeFra
 defineProps<{ inDialog?: boolean }>()
 const { game, shell } = useApp()
 const { request } = useCall()
-const deps = { refresh: () => game.refresh() }
+// A join that changed city reads the life in that city (asking for it in the old one would only be told where it went).
+const deps = {
+  refresh: (cityId?: string) => (cityId && cityId !== game.cityId.value ? game.switchCity(cityId) : game.refresh()),
+  // The join is this device's own change: while it runs the client follows no hint that the life changed (src/client.ts catchUp).
+  async during<T>(work: () => Promise<T>): Promise<T> {
+    const client = game.client
+    if (client.busy) return work()
+    client.busy = true
+    try { return await work() } finally { client.busy = false }
+  },
+}
 /** In the game as somebody: connected, and not still held for a look. */
 const ready = computed(() => game.connected.value && game.view.value.onboarding?.required !== true)
 

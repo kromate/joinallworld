@@ -114,6 +114,21 @@ test('the first screen: a refusal of the name comes back with its sentence, and 
   assert.ok(html.includes('value="&quot;&gt;&lt;b&gt;x&lt;/b&gt;"') && !html.includes('<b>x</b>'))
 })
 
+test('the first screen opened again after a Play that was turned away (the world was full): the sentence is there, and so is Play now', async () => {
+  await resetCreator()
+  const full = 'The world is full right now: every place is taken. Nothing is lost — your name and character are kept on this device. Trying again in about 10 seconds; tap Play now to try at once.'
+  const first = await render('QuickStartApp', { params: { reason: 'new' } })
+  assert.match(first, /data-qs="play"/)
+  // Play was tapped: the screen closed with the start on its way, and what it remembered of that tap is still there when it is opened again.
+  const { cr } = await load<{ cr: { played: boolean; pending: string; settling: boolean; step: string } }>('/src/app/features/start/creatorState.ts')
+  Object.assign(cr, { played: true, pending: '', settling: false, step: 'look' })
+  const again = await render('QuickStartApp', { params: { reason: 'new', problem: { reason: full } } })
+  assert.match(again, /<div class="cr-root" data-step="who" data-mode="new" data-cr-root>/)
+  assert.ok(text(again).includes(full))
+  assert.match(again, /<button[^>]*data-qs="play"[^>]*>Play now<\/button>/, 'the visitor can tap Play at once, as the sentence says')
+  assert.equal(cr.played, false)
+})
+
 test('settling in as a guest opens the creator on the personality step, with the reason, the progress and Not now', async () => {
   await resetCreator()
   await withState(guest, async () => {

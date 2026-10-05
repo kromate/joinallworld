@@ -52,6 +52,31 @@ test('unseenNotices: a first visit replays nothing, then only what is new, and i
   assert.deepEqual(unseenNotices([notice('x')], null), [], 'no storage: nothing is replayed')
 })
 
+test('unseenNotices across cities: a city’s first look replays nothing, coming back does not tell its old news again, and what is new there is told once', () => {
+  const kept = new Map<string, string>()
+  const store = { getItem: (key: string) => kept.get(key) ?? null, setItem: (key: string, value: string) => { kept.set(key, value) } }
+  const notice = (id: string): CivicNotice => ({ id, kind: 'result', at: 1, title: id, text: '' })
+  const ids = (list: CivicNotice[]): string[] => list.map((item) => item.id)
+  // Every city numbers its notices alike: the week's result and the open polls have the same ids in Lagos and in Abuja.
+  const lagos = [notice('nominations-9'), notice('result-8'), notice('voting-8')], abuja = [notice('nominations-9')]
+  assert.deepEqual(unseenNotices(lagos, store, 'lagos'), [], 'the first look at Lagos')
+  assert.deepEqual(unseenNotices(abuja, store, 'abuja'), [], 'the first look at Abuja, on arriving there')
+  assert.deepEqual(unseenNotices(lagos, store, 'lagos'), [], 'home again: last week’s result and the open polls are not news')
+  assert.deepEqual(ids(unseenNotices([notice('voting-9'), ...abuja], store, 'abuja')), ['voting-9'], 'the polls opened in Abuja while the player was away')
+  assert.deepEqual(unseenNotices([notice('voting-9'), ...abuja], store, 'abuja'), [])
+  assert.deepEqual(ids(unseenNotices([notice('voting-9'), ...lagos], store, 'lagos')), ['voting-9'], 'and in Lagos: the same number there is Lagos’s own news, told once')
+  assert.deepEqual(unseenNotices([notice('voting-9'), ...lagos], store, 'lagos'), [])
+  // A tour of every city later (a week of notices in each), nothing of the first ones has been forgotten.
+  for (let city = 0; city < 12; city++) unseenNotices(Array.from({ length: 6 }, (_, index) => notice(`n${index}`)), store, `city-${city}`)
+  assert.deepEqual(unseenNotices([notice('voting-9'), ...lagos], store, 'lagos'), [])
+  assert.deepEqual(ids(unseenNotices([notice('n0'), notice('n6')], store, 'city-0')), ['n6'], 'a city looked at long ago: its old notice is not news, a new one is')
+  // A list kept by the build before (bare ids, one city at a time): what it holds still counts as shown, and nothing is replayed after the update.
+  kept.set('joinallworld-civic-seen', JSON.stringify(['result-8', 'voting-8']))
+  assert.deepEqual(ids(unseenNotices([notice('nominations-9'), notice('result-8'), notice('voting-8')], store, 'lagos')), ['nominations-9'])
+  assert.deepEqual(unseenNotices([notice('result-8')], store, 'abuja'), [], 'another city’s first look after the update')
+  assert.deepEqual(unseenNotices([notice('nominations-9'), notice('result-8'), notice('voting-8')], store, 'lagos'), [])
+})
+
 const rules: GovRules = { beta: true, minDaysToRun: 2, minDaysToVote: 1, minWorkDays: 2, votesPerAddress: 3, filingFee: 2000, sloganMin: 3, sloganMax: 60, maxCandidates: 30, announcementMax: 140, announcementsPerDay: 3, pollingVenue: null }
 test('electionRules: every line is real text with the numbers of this city', () => {
   const lines = electionRules(rules)

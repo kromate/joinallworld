@@ -97,8 +97,13 @@ export async function loadIncoming(): Promise<void> {
 }
 
 export interface JoinDeps {
-  /** Read the life again after the server moved it (a new venue, or another city). */
-  refresh(): Promise<unknown>
+  /** Read the life again after the server moved it: at a new venue, or in another city (`cityId`, so it is asked for where it now is). */
+  refresh(cityId?: string): Promise<unknown>
+  /**
+   * Run the join as one change of this device's own, from the request to the read after it: until it has finished, a hint
+   * from the server that the life changed is not followed (the join reads the life itself, where it now is).
+   */
+  during?<T>(work: () => Promise<T>): Promise<T>
 }
 /** Go to the friend who pinged. The server checks everything again and answers where the player now is. */
 export async function joinFriend(from: PlayerRef, deps: JoinDeps): Promise<void> {
@@ -108,7 +113,16 @@ export async function joinFriend(from: PlayerRef, deps: JoinDeps): Promise<void>
   if (notice) pingState.banner = { kind: 'incoming', notice, busy: true, error: null }
   const key = `join:${from.id}`, clientId = pending.get(key) ?? newClientId()
   pending.set(key, clientId)
-  const result = await call<Extract<PingJoinResult, { ok: true }>>('/api/social/ping/join', { from: from.id, clientId })
+  const during = deps.during?.bind(deps) ?? (<T>(work: () => Promise<T>): Promise<T> => work())
+  const result = await during(async () => {
+    const answer = await call<Extract<PingJoinResult, { ok: true }>>('/api/social/ping/join', { from: from.id, clientId })
+    if (answer.ok && answer.moved !== 'none') {
+      // The city's own "you have arrived" sheet stays closed: this notice says where the player is and whom they joined.
+      pingUi.arriving = true
+      try { await deps.refresh(answer.moved === 'city' ? answer.place.cityId : undefined) } finally { pingUi.arriving = false }
+    }
+    return answer
+  })
   if (!result.ok) {
     if (!result.transport) pending.delete(key)
     // Over (they left, it ran out): said once, with a way to write to them. Anything else can be tried again from the same notice.
@@ -119,11 +133,6 @@ export async function joinFriend(from: PlayerRef, deps: JoinDeps): Promise<void>
   }
   pending.delete(key)
   if (notice) closed.add(noticeKey(notice))
-  if (result.moved !== 'none') {
-    // The city's own "you have arrived" sheet stays closed: this notice says where the player is and whom they joined.
-    pingUi.arriving = true
-    try { await deps.refresh() } finally { pingUi.arriving = false }
-  }
   pingState.banner = { kind: 'joined', from: result.from, words: result.words, knock: result.knock, present: result.present }
   void sync()
 }

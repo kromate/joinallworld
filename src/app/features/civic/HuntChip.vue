@@ -25,7 +25,7 @@ const { item } = useLoaded<PulseResponse>({
   after(done) {
     const cityId = view.value.cityId
     if (done.data?.radio) civic.put(radioKey(cityId, done.data.radio.venue), done.data.radio)
-    if (done.data && !done.error) for (const notice of unseenNotices(done.data.notices, globalThis.localStorage).slice(0, 2).reverse()) game.toast(noticeToast(notice))
+    if (done.data && !done.error) for (const notice of unseenNotices(done.data.notices, globalThis.localStorage, cityId).slice(0, 2).reverse()) game.toast(noticeToast(notice))
   },
 })
 const lines = computed(() => (hunt.value ? huntChipLines(hunt.value, item.value.data) : null))

@@ -22,6 +22,12 @@ export function lastLine(conv: Conversation, meId: string): string {
 }
 /** The key a chat with a player has before the server has created the conversation. */
 export const provisionalKey = (playerId: string): string => `to:${playerId}`
+/**
+ * The other player of a direct chat: the conversation's, or — before the first message has made one — the player the chat
+ * was opened with. So the name, Send money and Call or Ping are in the header from the moment a chat with a friend opens.
+ */
+export const partnerOf = (key: string | null, conv: Conversation | null): string | null =>
+  (conv ? (conv.kind === 'dm' ? conv.with ?? null : null) : key?.startsWith('to:') ? key.slice(3) : null)
 /** What to POST for a conversation key: a player for a provisional key, else the conversation. */
 export const targetOf = (key: string): { to: string } | { conv: string } => (key.startsWith('to:') ? { to: key.slice(3) } : { conv: key })
 /** The host's public id for a house chat key (`h.<hostId>`), else null. */

@@ -187,12 +187,19 @@ test('the join: the life is read again only when the server moved it, the cityâ€
   let answer: unknown = { ok: true, code: 'joined', from: ADA, place: PARK, moved: 'city', knock: false, present: true, words: 'You joined Ada at Freedom Park, Lagos.' }
   const asked = server({ '/api/social/ping/join': () => answer })
   let refreshed = 0, held: boolean[] = []
-  const deps = { refresh: async () => { refreshed += 1; held.push(pingUi.arriving) } }
+  const cities: (string | undefined)[] = []
+  const deps = { refresh: async (cityId?: string) => { refreshed += 1; held.push(pingUi.arriving); cities.push(cityId) } }
   pingState.banner = { kind: 'incoming', notice: notice(), busy: false, error: null }
   await joinFriend(ADA, deps)
   assert.deepEqual([refreshed, held, pingUi.arriving], [1, [true], false])
+  assert.deepEqual(cities, ['lagos'], 'moved to another city: the life is read there')
   assert.deepEqual(pingState.banner, { kind: 'joined', from: ADA, words: 'You joined Ada at Freedom Park, Lagos.', knock: false, present: true })
   assert.deepEqual(asked.map((item) => [item.path, item.body?.from]), [['/api/social/ping/join', ADA.id]])
+  // The request and the read after it are one piece of work for the page: nothing else reads the life in between.
+  const order: string[] = []
+  pingState.banner = { kind: 'incoming', notice: notice({ at: NOW + 5 }), busy: false, error: null }
+  await joinFriend(ADA, { refresh: async () => { order.push('read') }, during: async (work) => { order.push('begin'); try { return await work() } finally { order.push('end') } } })
+  assert.deepEqual(order, ['begin', 'read', 'end'])
   // Already there: nothing to read again.
   answer = { ok: true, code: 'here', from: ADA, place: PARK, moved: 'none', knock: false, present: true, words: 'You joined Ada at Freedom Park, Lagos.' }
   pingState.banner = { kind: 'incoming', notice: notice({ at: NOW + 1 }), busy: false, error: null }

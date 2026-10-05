@@ -114,7 +114,8 @@ if (!steps.value.some((item) => item.id === cr.step)) cr.step = steps.value[0]?.
 {
   const refused = refusedNameToKeep(problem.value, d().name)
   if (isNew && refused !== null) { d().name = refused; quickDraftRef.value = keepDraft({ name: refused }) }
-  if (isNew && problem.value) cr.step = 'who'
+  // The Play that was refused is over: this screen, opened again for the same visitor, offers Play again (the draft is kept, so is what was tapped before).
+  if (isNew && problem.value) { cr.step = 'who'; cr.pending = ''; cr.settling = false; cr.played = false; play.settling = false }
 }
 openLookTab('body')
 

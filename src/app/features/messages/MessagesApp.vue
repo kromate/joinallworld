@@ -36,7 +36,7 @@ import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { unreadChats, updatesCount } from './messagesModel.ts'
-import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
+import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, api, menu } = useApp()
@@ -98,6 +98,8 @@ const conv = computed<Conversation | null>(() => (ui.open ? me.value?.conversati
 const thread = computed(() => { void tick.value; const now = ui.open ? social.threads.get(ui.open) : undefined; return now ? { loaded: now.loaded, error: now.error } : null })
 const items = computed(() => { void tick.value; return ui.open ? threadView(ui.open) : [] })
 const title = computed(() => (ui.open ? threadTitle(ui.open, conv.value, ui.openName) : ''))
+/** The other player of the direct chat on screen, also before its first message (messagesThread.ts partnerOf). */
+const partner = computed(() => partnerOf(ui.open, conv.value))
 /** A direct chat with the founder: the server marked that member. */
 const withFounder = computed(() => conv.value?.kind === 'dm' && conv.value.members.some((member) => member.id === conv.value?.with && member.founder === true))
 const readOnly = computed(() => (ui.open && me.value ? readOnlyReason(ui.open, me.value, connected.value ? null : linkWords(view.value)?.cannot('send messages') ?? 'Not connected.') : null))
@@ -234,16 +236,16 @@ defineExpose({
           <RowMark v-else-if="ui.open.startsWith('h.')" round>🏠</RowMark>
           <RowMark v-else :name="title" :seed="conv?.with ?? ui.open" />
           <h3 v-if="withFounder"><button type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="conv?.with && shell.open('person', { player: conv.with, name: title })">{{ title }}</button><FounderTag /><small :class="presenceOf(conv?.with) ? `messages-presence is-${presenceOf(conv?.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
-          <h3 v-else><button v-if="conv?.kind === 'dm' && conv.with" type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="shell.open('person', { player: conv.with, name: title })">{{ title }}</button><template v-else>{{ title }}</template><small :class="conv?.kind === 'dm' && presenceOf(conv.with) ? `messages-presence is-${presenceOf(conv.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
+          <h3 v-else><button v-if="partner" type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="shell.open('person', { player: partner, name: title })">{{ title }}</button><template v-else>{{ title }}</template><small :class="partner && presenceOf(partner) ? `messages-presence is-${presenceOf(partner)}` : undefined">{{ (partner && presenceWord(partner)) || threadKind(conv) }}</small></h3>
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
-          <template v-else-if="conv?.kind === 'dm' && conv.with">
-            <BaseButton small data-chat="send-money" @click="sendMoneyTo(conv.with, title)">Send money</BaseButton>
+          <template v-else-if="partner">
+            <BaseButton small data-chat="send-money" @click="sendMoneyTo(partner, title)">Send money</BaseButton>
             <!-- A friend who is not in the game cannot be rung: Ping takes Call's place, so the header never holds a fourth control. -->
-            <PingButton v-if="pingFor(conv.with)" compact :id="conv.with" :name="title" />
-            <PersonCallButton v-else compact :id="conv.with" :name="title" :status="presenceOf(conv.with) ?? undefined" />
+            <PingButton v-if="pingFor(partner)" compact :id="partner" :name="title" />
+            <PersonCallButton v-else compact :id="partner" :name="title" :status="presenceOf(partner) ?? undefined" />
           </template>
         </header>
-        <PingStrip v-if="conv?.kind === 'dm' && conv.with && pingFor(conv.with)" inset :id="conv.with" :name="title" />
+        <PingStrip v-if="partner && pingFor(partner)" inset :id="partner" :name="title" />
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
 
         <section v-if="conv?.kind === 'group' && ui.manage" class="messages-manage" aria-label="Group members">

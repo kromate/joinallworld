@@ -19,7 +19,7 @@ import { billsDue } from './bank/bankModel.ts'
 import { billsLine, loanReasons, loanRule, rentStanding } from './bank/bankLines.ts'
 import { LINKS, cashDelta, hudNotice, linkWording, moodOf, needFlash, savedPill } from './hud/hudModel.ts'
 import { createNoticeMarks, messagesBadge, notificationLines, unreadChats, unreadUpdates, updatesCount } from './messages/messagesModel.ts'
-import { lastLine, readOnlyReason, targetOf, threadTitle, updateLines } from './messages/messagesThread.ts'
+import { lastLine, partnerOf, readOnlyReason, targetOf, threadTitle, updateLines } from './messages/messagesThread.ts'
 import { DOCK, badgeText, battery, dockApps, listedApps, notificationsOf, phonePages } from './phone/phoneModel.ts'
 import { createSupport, sendFailure, statusTone, textProblem } from './support/supportModel.ts'
 import { activityFace, effectTags } from './venue/venueModel.ts'
@@ -157,6 +157,8 @@ test('messages: thread wording, where a message goes, and when it cannot be writ
   assert.ok(dm && group)
   assert.deepEqual([lastLine(dm, 'me'), lastLine(group, 'me'), lastLine({ ...dm, last: null }, 'me')], ['Ada: How far?', 'You: Hello', 'No messages yet'])
   assert.deepEqual([targetOf('to:ada'), targetOf('dm.ada.me')], [{ to: 'ada' }, { conv: 'dm.ada.me' }])
+  // The other player of a direct chat is known before its first message, so the header's controls are there from the start; a group and a house chat have none.
+  assert.deepEqual([partnerOf('to:ada', null), partnerOf('dm.ada.me', dm), partnerOf('g.1', group), partnerOf('h.ada', null), partnerOf(null, null)], ['ada', dm.with, null, null, null])
   assert.deepEqual([threadTitle('to:ada', null, 'Ada'), threadTitle('to:x', null, null), threadTitle('h.ada', null, null), threadTitle('g.1', group, 'ignored')], ['Ada', 'New chat', 'House chat', 'Yaba crew'])
   assert.equal(readOnlyReason('dm.ada.me', me, null), null)
   assert.equal(readOnlyReason('dm.ada.me', me, 'This device has no internet connection.'), 'This device has no internet connection.', 'the connection\'s own words')

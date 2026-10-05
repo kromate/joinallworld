@@ -27,17 +27,28 @@ export const count = (value: unknown): string => Math.round(Number(value) || 0).
 /** "1 vote", "3 votes". */
 export const votes = (n: number): string => `${count(n)} vote${n === 1 ? '' : 's'}`
 
+/** How many shown notices a browser remembers, across every city it has been in. */
+const SEEN_KEPT = 120
 /**
- * The notices the chip has not shown yet, remembering what it showed. The first visit on a browser
- * shows nothing: a week of old news is not replayed.
+ * The notices the chip has not shown yet, remembering what it showed. The first look at a city shows nothing: a week of
+ * old news is not replayed. What was shown is remembered PER CITY (`cityId`) and across cities: every city numbers its
+ * notices alike, and a player who travels and comes back must not be told a city's old news again as if it were new.
+ * (A list kept before cities were told apart holds bare ids; they still count as shown, wherever they were seen.)
  */
-export function unseenNotices(notices: readonly CivicNotice[], store: Pick<Storage, 'getItem' | 'setItem'> | null, storageKey = 'joinallworld-civic-seen'): CivicNotice[] {
+export function unseenNotices(notices: readonly CivicNotice[], store: Pick<Storage, 'getItem' | 'setItem'> | null, cityId = '', storageKey = 'joinallworld-civic-seen'): CivicNotice[] {
   let seen: unknown = null
   try { seen = JSON.parse(store?.getItem(storageKey) ?? 'null') } catch { /* nothing seen */ }
-  const known = new Set(Array.isArray(seen) ? seen : [])
-  const fresh = notices.filter((item) => !known.has(item.id))
-  try { store?.setItem(storageKey, JSON.stringify(notices.map((item) => item.id).slice(0, 40))) } catch { /* shown for this visit only */ }
-  return Array.isArray(seen) ? fresh : []
+  const before: string[] = Array.isArray(seen) ? seen.filter((id): id is string => typeof id === 'string') : []
+  const known = new Set(before)
+  const mark = (id: string): string => (cityId ? `${cityId}:${id}` : id), visited = mark('')
+  // Looked at before: this city has its mark, or the list is from before cities were told apart.
+  const looked = Array.isArray(seen) && (!cityId || known.has(visited) || !before.some((id) => id.endsWith(':')))
+  const fresh = notices.filter((item) => !known.has(mark(item.id)) && !known.has(item.id))
+  const now = [...(cityId ? [visited] : []), ...notices.map((item) => mark(item.id))]
+  // The marks of the cities come first, so a long list of notices never pushes a city's "looked at" out.
+  const kept = [...now, ...before.filter((id) => !now.includes(id))].sort((a, b) => Number(b.endsWith(':')) - Number(a.endsWith(':')))
+  try { store?.setItem(storageKey, JSON.stringify(kept.slice(0, SEEN_KEPT))) } catch { /* shown for this visit only */ }
+  return looked ? fresh : []
 }
 
 // ---- cache keys and paths ------------------------------------------------------------------

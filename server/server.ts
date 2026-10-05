@@ -22,6 +22,7 @@ import { createOnce } from './routes/once.ts';
 import { buildSocketHandlers } from './ws/index.ts';
 import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
 import { siteFile } from './site-files.ts';
+import { createMemoryLimiter } from './limiter.ts';
 import telemetryRoutes from './telemetry/routes.ts';
 import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue } from './protocol.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
@@ -177,23 +178,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     })().catch((error) => { keyFiles.delete(name); throw error; }));
     return keyFiles.get(name) as Promise<T>;
   }
-  const limits = new Map<string, { start: number; count: number; windowMs: number }>();
-  /**
-   * In-memory rate limiter: at most `count` calls per `windowMs` for one key. Each entry remembers its
-   * own window, so making room never forgets a long window early (the 10-minute failed-token window
-   * must not be cut short by a burst of one-minute keys). With 10,000 live keys a new key is refused,
-   * except the operator's own budget (`mod:`), which a flood of other keys must not be able to lock out.
-   */
-  function allow(key: string, count = 120, windowMs = 60000): boolean {
-    const time = now();
-    if (limits.size > 10000) for (const [id, entry] of limits) if (time - entry.start >= entry.windowMs || time < entry.start) limits.delete(id);
-    const entry = limits.get(key);
-    if (!entry || time - entry.start >= entry.windowMs || time < entry.start) {
-      if (!entry && limits.size >= 10000 && !String(key).startsWith('mod:')) return false;
-      limits.set(key, { start: time, count: 1, windowMs }); return true;
-    }
-    return ++entry.count <= count;
-  }
+  // The rate limiter (server/limiter.ts): bounded per class of key, and a full table makes room instead of refusing newcomers.
+  const { allow, peek } = createMemoryLimiter({ now });
   // Whose session a cookie is — a guest's own record, or the character of the account a signed-in browser is bound to: protocol.ts sessionOfCookie.
   const sessionFor = (req: IncomingMessage, db: Db, renew = false): SessionRecord | undefined => {
     const found = sessionOfCookie(db, cookieId(req), now());
@@ -430,7 +416,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, shards: shards as ShardStore, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS, telemetry,
+    store, shards: shards as ShardStore, now, fail, allow, peek, collection, send, publicSession, cityIds: CITY_IDS, telemetry,
     randomId: () => randomUUID(),
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },

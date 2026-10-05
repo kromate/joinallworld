@@ -251,6 +251,30 @@ test('Cloudflare: voice cap, per-session socket cap, durable rate-limit rejectio
   assert.equal((await f.request('/api/session', null, device.cookie, { 'cf-connecting-ip': '192.0.2.44' })).status, 429);
 });
 
+test('Cloudflare: a limiter table full of other people’s live rows turns no newcomer away — it makes room; long windows and the operator’s rows survive', async t => {
+  const f = await fixture(t), storage = await f.storage(), far = Date.now() + 3600000;
+  await f.request('/api/health');
+  // 10,000 live rows of other addresses (what a flood leaves behind), a long-window row and an operator row.
+  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 9998) INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) SELECT 'http-ip:flood-' || i, ${Date.now()}, 1, ${Date.now() + 900000} + i FROM n`);
+  await storage.exec('INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'mod:fail:operator', Date.now(), 1, Date.now() + 1000);
+  await storage.exec('INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'upgrade:long-window', Date.now(), 7, far + 86400000);
+  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n >= 10000);
+  // A visitor from an address never seen before: a session, a life, an action, a socket.
+  const fresh = { 'cf-connecting-ip': '198.51.100.77' };
+  const made = await f.request('/api/session', { name: 'Newcomer' }, null, fresh);
+  assert.equal(made.status, 200, 'a new visitor is not refused because the table is full');
+  const cookie = (made.headers.get('set-cookie') as string).split(';')[0] as string; await made.text();
+  assert.equal((await f.request('/api/life?city=lagos', null, cookie, fresh)).status, 200);
+  assert.equal((await f.upgrade({ origin: f.origin, cookie, 'cf-connecting-ip': '198.51.100.78' })).status, 101);
+  for (let i = 0; i < 20; i++) assert.equal((await f.request('/api/health', null, null, { 'cf-connecting-ip': `198.51.100.${100 + i}` })).status, 200, `address ${i}`);
+  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n <= 10000, 'the table stays inside its bound');
+  // What was dropped to make room expired soonest; the long window kept its count and the operator's row is still there.
+  assert.equal((await storage.exec("SELECT count AS n FROM rate_limits WHERE key = 'upgrade:long-window'"))[0].n, 7);
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'mod:fail:operator'"))[0].n, 1);
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'http-ip:flood-1'"))[0].n, 0, 'the soonest-to-expire flood rows went first');
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'http-ip:flood-9998'"))[0].n, 1);
+});
+
 test('Cloudflare: proximity survives hibernation, movement avoids SQL writes and private homes stay isolated', async t => {
   const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
   const x = await f.socket(a), y = await f.socket(b);

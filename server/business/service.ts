@@ -165,7 +165,7 @@ function buildService(ctx: RouteContext) {
     };
   }
   function alertOf(shop: ShopRecord): string {
-    if (shop.status === 'closed') return `The market closed this stall for unpaid rent. Collect the ${naira(shop.till)} it left you.`;
+    if (shop.status === 'closed') return shop.till > 0 ? `This stall has been closed. Collect the ${naira(shop.till)} it left you.` : 'This stall has been closed, and nothing was left after the rent. Clear it to rent a new one.';
     if (shop.owed > 0) return `Rent of ${naira(shop.owed)} is overdue. Takings go to it first; if it is still unpaid in ${Math.max(1, Math.ceil(((closesAt(shop) ?? now()) - now()) / 3600000))} h the market closes the stall.`;
     if (!stockUnits(shop)) return 'Nothing in stock. Customers are walking past and your stars will drop.';
     if (shop.till >= BUSINESS.tillCap) return 'The cash box is full, so passers-by cannot buy. Collect your takings.';

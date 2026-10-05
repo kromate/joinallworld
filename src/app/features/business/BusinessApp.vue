@@ -129,7 +129,7 @@ const rules = [
 
           <div class="biz-card biz-box">
             <div><small>Cash box</small><strong>{{ money(mine.till) }}</strong><small>Today {{ money(mine.today.takings) }} · {{ mine.today.sold }} sold · {{ mine.today.came }} came</small></div>
-            <CivicAction primary :working="server.busy('collect')" :reason="collectWhy(mine, offline('collect'))" @click="collect">{{ mine.status === 'closed' ? 'Take what is left' : 'Collect' }}</CivicAction>
+            <CivicAction primary :working="server.busy('collect')" :reason="collectWhy(mine, offline('collect'))" @click="collect">{{ mine.status !== 'closed' ? 'Collect' : mine.till > 0 ? 'Take what is left' : 'Clear it' }}</CivicAction>
           </div>
 
           <template v-if="mine.status === 'open'">
@@ -194,7 +194,7 @@ const rules = [
           <BaseButton small @click="shell.open('map')">Find a market on the Map</BaseButton>
         </EmptyState>
         <template v-else>
-          <p class="biz-note"><b>{{ stalls.venueName }}</b> · {{ stalls.stalls.taken }} of {{ stalls.stalls.total }} stalls taken · trading {{ stalls.hours.open }}:00–{{ stalls.hours.close }}:00<template v-if="stalls.known.length"> · known for {{ stalls.types.filter((type) => type.known).map((type) => type.label.toLowerCase()).join(', ') }}</template></p>
+          <p class="biz-note"><b>{{ stalls.venueName }}</b> · {{ stalls.stalls.taken }} of {{ stalls.stalls.total }} stalls taken · trading {{ stalls.hours.open }}:00–{{ stalls.hours.close }}:00<template v-if="stalls.known.length"> · known for {{ stalls.types.filter((type) => type.known).map((type) => type.label.toLowerCase().replace(/ (stall|kiosk)$/, '')).join(', ') }}</template></p>
 
           <SectionTitle :note="others.length ? plural(others.length, 'stall') : ''">Shops here</SectionTitle>
           <EmptyState v-if="!others.length" compact icon="buy" title="No other player trades here yet" :text="stalls.mine && stalls.shops.some((card) => card.mine) ? 'Yours is the only stall. Tell your friends where to find you.' : 'Be the first: rent a stall below.'" />

@@ -854,9 +854,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   for (const life of lives) console.log(`  ${life.label}: cash ${naira(life.player.seed)} seed → ${naira(life.finalCash)} · ledger ${naira(life.ledgerSum)} · ${life.conserved ? 'conserved' : 'NOT CONSERVED'} · ${life.stages.map((stage) => `${stage.stage} (${stage.city}) ${naira(stage.cash)}`).join(' → ')}`);
   const bad = rows.filter((row) => !row.conserved || must(row.unknown).length);
   console.log(bad.length ? `NOT CONSERVED or unknown reasons in ${bad.length} rows: ${JSON.stringify(bad.map((row) => [row.lottery, row.house, row.strategy, row.unknown]))}` : `Conservation: cash = seed + Σ ledger in all ${rows.length} lives; every ledger reason is classified.`);
-  // Player-owned shops: owners, a trader and two colluding players (scripts/business-sim.ts).
-  const { formatBusiness, runBusiness } = await import('./business-sim.ts');
-  console.log(`Businesses (${days} days; "made" = cash change + cash box + what closing would return; docs/BUSINESS.md):`);
-  console.log(formatBusiness(runBusiness({ days })));
   console.log(`Next house = move-in + 4 weeks' rent: ${HOUSE_ORDER.map((id) => `${id} ${naira((must(HOUSES[id]).moveIn ?? 0) + 4 * must(HOUSES[id]).rent)}`).join(' · ')} · own house upgrade (${TIER_ORDER[1]} in ${SIM_LGA}) ${naira((tierCost(CITY, SIM_LGA, must(TIER_ORDER[1])) ?? 0) + 4 * must(HOUSE_TIERS[must(TIER_ORDER[1])]).groundRent)} · cheapest car ${naira(CHEAPEST_CAR.price)}`);
+  // Player-owned shops: owners, a trader and two colluding players. That file plays this one's lives, so it is loaded once this one has finished loading (not awaited here).
+  void import('./business-sim.ts').then(({ formatBusiness, runBusiness }) => {
+    console.log(`Businesses (${days} days; "made" = cash change + cash box + what closing would return; docs/BUSINESS.md):`);
+    console.log(formatBusiness(runBusiness({ days })));
+  });
 }

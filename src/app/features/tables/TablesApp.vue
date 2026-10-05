@@ -70,7 +70,7 @@ function back(): void {
 }
 function forfeit(): void { if (window.confirm('Leave the game? You forfeit it.')) tables.leave() }
 function goToVenue(venue: string): void { shell.close(); void goTo(venue) }
-function invite(): void { void growth.share('table', t.value.tableId ? { table: t.value.tableId } : {}) }
+function invite(): void { void growth.share('table', t.value.tableId ? { table: t.value.tableId, surface: 'table' } : { surface: 'table' }) }
 function onOption(name: string, raw: string): void {
   const value = parseOption(raw)
   if (value !== undefined) tables.setOption(name, value)

@@ -49,7 +49,7 @@ export const touch = definePanel({
 })
 
 export const shareSheet = definePanel({
-  id: 'share-sheet', title: 'Share', icon: 'share', placement: 'modal', live: false,
+  id: 'share-sheet', title: 'Share', icon: 'people', placement: 'modal', live: false,
   component: defineAsyncComponent(() => import('./ShareSheet.vue')),
 })
 

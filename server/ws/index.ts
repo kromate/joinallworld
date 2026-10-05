@@ -68,7 +68,7 @@
  * same socket's next message starts).
  *
  * RULES
- *   - Message types are global: prefix yours with your area (dm-*, group-*, friend-*, invite-*, table-*).
+ *   - Message types are global: prefix yours with your area (dm-*, group-*, friend-*, invite-*, table-*, call-*).
  *     A duplicate type aborts start-up. join, move, voice-state, signal and chat are core.
  *   - Never send ws.secret or a stored session.secret to anyone.
  *   - Do not mutate ws.room, ws.voice or ws.position; rooms belong to ws/rooms.js.
@@ -84,9 +84,10 @@ import rooms from './rooms.ts';
 import social from './social.ts';
 import world from './world.ts';
 import tables from './tables.ts';
+import calls from './calls.ts';
 import type { RouteContext, WsConnection, WsDispatch, WsHandlerModule, WsLifecycle, WsMessageHandler } from '../types.ts';
 
-export const WS_MODULES: readonly WsHandlerModule[] = [rooms, social, world, tables];
+export const WS_MODULES: readonly WsHandlerModule[] = [rooms, social, world, tables, calls];
 
 const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'] as const satisfies readonly (keyof WsLifecycle)[];
 type LifecycleName = (typeof LIFECYCLE)[number];

@@ -29,6 +29,7 @@ import PanelHost from './features/phone/PanelHost.vue'
 import SheetHost from './features/phone/SheetHost.vue'
 import { createPageLifecycle } from './state/pageLifecycle.ts'
 import CommunityHost from './features/community/CommunityHost.vue'
+import CallsHost from './features/calls/CallsHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
 
@@ -160,6 +161,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
   <SheetHost />
   <TourTrigger />
   <CommunityHost />
+  <CallsHost :host="sheetOpen ? '#life-dialog' : 'body'" />
   <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
   <UpdateBanner />
   <ToastStack :host="sheetOpen ? '#life-dialog' : 'body'" />

@@ -27,6 +27,7 @@ import { linkWords } from '../../../ui/link.ts'
 import GlyphText from '../kit/GlyphText.vue'
 import LinkButton from '../growth/LinkButton.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
+import PersonCallButton from '../calls/PersonCallButton.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
 
@@ -210,6 +211,10 @@ defineExpose({
           <RowMark v-else :name="title" :seed="conv?.with ?? ui.open" />
           <h3>{{ title }}<small>{{ threadKind(conv) }}</small></h3>
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
+          <template v-else-if="conv?.kind === 'dm' && conv.with">
+            <BaseButton small @click="shell.open('person', { player: conv.with, name: title })">Profile</BaseButton>
+            <PersonCallButton compact :id="conv.with" :name="title" />
+          </template>
         </header>
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
 

@@ -14,6 +14,7 @@ import GameIcon from '../../ui/GameIcon.vue'
 import ClosenessMeter from './ClosenessMeter.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
+import PersonCallButton from '../calls/PersonCallButton.vue'
 import type { SocialResult } from './socialClient.ts'
 import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason } from './personModel.ts'
 import { closenessText, presenceClass, reasonLabel, STRANGER_TEXT, tagLabel, venueNameOf } from './socialModel.ts'
@@ -110,6 +111,7 @@ async function sendReport(): Promise<void> {
     <p>Real player · <span class="social-presence" :class="`is-${presenceClass(card.status)}`">{{ presenceText(card, venueName, view.now) }}</span><template v-if="together"> · here with you</template><template v-if="card.bae"> · your Bae <GameIcon name="heart" inline /></template><template v-else-if="card.friend"> · Friend</template></p>
     <button type="button" class="ui-button is-primary is-block" :disabled="card.blocked" @click="shell.open('messages', { to: id, name: card.name })">Chat</button>
     <span v-if="card.blocked" class="social-why">Unblock this player to chat.</span>
+    <PersonCallButton :id="id" :name="card.name" :status="card.status" :blocked="card.blocked" />
     <p>{{ rel ? closenessText(rel, social.maxCloseness) : STRANGER_TEXT }}</p>
     <ClosenessMeter :points="points" :max="social.baeUnlock" :label="`Closeness with ${card.name}`" />
     <div class="social-grid">

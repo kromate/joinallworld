@@ -24,6 +24,7 @@ import type { ModerationHttpRoutes, SupportHttpRoutes } from './support.ts'
 import type { WorldHttpRoutes } from './world.ts'
 import type { GrowthHttpRoutes, GrowthModerationHttpRoutes, TableClientFrame, TableErrorCode, TableServerFrame } from './growth.ts'
 import type { CampusHttpRoutes } from './campus.ts'
+import type { CallClientFrame, CallServerFrame } from './calls.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -374,13 +375,13 @@ export type SocketCloseCode = 1008 | 1011
 export interface HeartbeatFrame { type: 'heartbeat' }
 export interface HeartbeatAckFrame { type: 'heartbeat-ack' }
 /** Everything a browser may send (on the Worker also `HeartbeatAckFrame`). */
-export type ClientFrame = RoomClientFrame | SocialClientFrame | TableClientFrame
+export type ClientFrame = RoomClientFrame | SocialClientFrame | TableClientFrame | CallClientFrame
 /**
  * Everything a server may send. Clients must ignore types they do not know: the community panel's
  * socket and the social client's socket both receive every frame addressed to the player.
  * WORKER: also `HeartbeatFrame`.
  */
-export type ServerFrame = RoomServerFrame | SocialServerFrame | TableServerFrame
+export type ServerFrame = RoomServerFrame | SocialServerFrame | TableServerFrame | CallServerFrame
 export type ClientFrameType = ClientFrame['type']
 export type ServerFrameType = ServerFrame['type']
 
@@ -451,6 +452,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/mod/mutes/:id/lift',
   'POST /api/mod/content/remove',
   'GET /api/world/me',
+  'GET /api/world/pulse',
   'GET /api/world/city',
   'GET /api/world/lga/:id',
   'GET /api/world/lga/:id/estates',
@@ -487,6 +489,7 @@ export const CLIENT_FRAME_TYPES = [
   'join', 'move', 'voice-state', 'signal', 'chat',
   'dm-send', 'dm-read', 'people-list', 'friend-request', 'friend-answer', 'invite-knock', 'invite-answer',
   'table-list', 'table-watch', 'table-unwatch', 'table-sit', 'table-options', 'table-start', 'table-move', 'table-leave', 'table-again',
+  'call-invite', 'call-accept', 'call-decline', 'call-cancel', 'call-hangup', 'call-signal', 'call-settings',
 ] as const satisfies readonly ClientFrameType[]
 /** WORKER: every frame type of the registry, and the answer to its application heartbeat. */
 export const WORKER_CLIENT_FRAME_TYPES: readonly (ClientFrameType | HeartbeatAckFrame['type'])[] = [...CLIENT_FRAME_TYPES, 'heartbeat-ack']
@@ -498,6 +501,7 @@ export const SERVER_FRAME_TYPES = [
   'dm', 'social-update', 'social-sync', 'friend-request', 'friend-accepted', 'people-presence', 'people-changed',
   'people-interaction', 'invite-knock', 'invite-answer', 'invite-house', 'transfer',
   'tables', 'table-state', 'tables-changed',
+  'call-incoming', 'call-state', 'call-signal', 'call-settings',
 ] as const satisfies readonly ServerFrameType[]
 /** WORKER: every frame type the shared modules send, and its application heartbeat. */
 export const WORKER_SERVER_FRAME_TYPES: readonly (ServerFrameType | HeartbeatFrame['type'])[] = [...SERVER_FRAME_TYPES, 'heartbeat']

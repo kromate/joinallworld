@@ -8,6 +8,8 @@ import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
 import { cashDelta, moodOf, savedPill } from './hudModel.ts'
+import InviteButton from '../growth/InviteButton.vue'
+import OnlinePill from './OnlinePill.vue'
 
 const { game, shell, menu } = useApp()
 const view = game.view
@@ -47,6 +49,7 @@ function onSaved(): void {
 <template>
   <section class="hud-bar" data-tour="hud" aria-label="Player status">
     <i class="hud-mark" aria-hidden="true"><GameIcon name="globe" :size="19" /></i>
+    <OnlinePill />
     <span class="hud-clock">{{ view.clock }}</span>
     <span class="hud-mood" :class="`is-${mood.tone}`"><GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /> {{ mood.word }}</span>
     <button class="hud-name" type="button" @click="shell.open('sim')"><GameIcon name="person" :size="17" /><span>{{ state.name }}</span></button>
@@ -58,6 +61,7 @@ function onSaved(): void {
         <i aria-hidden="true"><GameIcon :name="saved.icon" :size="14" /></i><span>{{ saved.text }}</span>
       </span>
     </span>
+    <InviteButton />
     <button class="hud-cash" :class="cashFlash" type="button" @animationend="cashFlash = null" :aria-label="`Wallet ${cash}. Open the bank and your transactions`" @click="shell.open('bank')">{{ cash }}</button>
     <span v-if="delta" :key="delta.run" class="hud-delta" :class="delta.up ? 'is-up' : 'is-down'" aria-hidden="true">{{ delta.text }}</span>
   </section>

@@ -42,6 +42,7 @@ import type { LookField } from './lookModel.ts'
 import { failureText, introFor, keepLook, storedLook, toggleTrait, triggerOf } from './onboardingModel.ts'
 import { fallbackPreset, planPlay, problemOf, refusedNameToKeep, showsLinkNote, shownError } from './quickStartModel.ts'
 import { currentDraft, draft as quickDraftRef, qs } from './quickStartState.ts'
+import { invitedWords, inviterName } from '../growth/inviterLookup.ts'
 import { firstLanding, joinTarget, keepDraft, nameProblem, pendingRef, presetLook, shuffleLook, suggestName, track, withBody } from './startBoundary.ts'
 import type { QuickDraft } from './startBoundary.ts'
 
@@ -61,6 +62,8 @@ const steps = computed(() => stepsFor(props.mode))
 const problem = computed(() => problemOf(props.params))
 const words = computed(() => linkWords(view.value))
 const invited = (): boolean => Boolean(joinTarget() || pendingRef())
+const inviter = ref<string | null>(null)
+const invitedNote = computed(() => invitedWords(inviter.value))
 
 // ---- the draft ----------------------------------------------------------------------------------
 type Sender = (type: string, payload: unknown) => Promise<{ ok: boolean; code: string; reason?: string | undefined }>
@@ -284,6 +287,9 @@ function openSignIn(): void { account.openSignIn() }
 function openSave(): void { account.openSave() }
 
 onMounted(() => {
+  // A link that carried a share code names who sent it, as text, before the life starts.
+  const code = pendingRef()
+  if (code && props.mode === 'new') void inviterName(game.fetchJson, code).then((name) => { inviter.value = name })
   window.addEventListener('jaw:quick-start-done', onStarted)
   // Once per device, not once per page load: a reload in the middle of the form is the same landing.
   if (isNew && !qs.landed) { qs.landed = true; if (!(o.value.required && view.value.connected) && firstLanding()) track('landed', { join: invited() }) }
@@ -323,7 +329,7 @@ onBeforeUnmount(() => {
 
       <div ref="scroller" class="cr-scroll">
         <p v-if="intro" class="cr-banner is-info"><span aria-hidden="true"><GameIcon :name="intro.kind === 'why' ? 'home' : 'star'" inline /></span><span><strong>{{ intro.strong }}</strong> {{ intro.text }}</span></p>
-        <p v-if="isNew && invited()" class="cr-banner is-good" role="status"><span aria-hidden="true"><GameIcon name="invite" inline /></span><span><strong>A friend invited you.</strong> Start your life and you land where they are.</span></p>
+        <p v-if="isNew && invited()" class="cr-banner is-good" role="status"><span aria-hidden="true"><GameIcon name="invite" inline /></span><span><strong>{{ invitedNote.title }}</strong> {{ inviter ? `Start your life and you land where ${inviter} is.` : 'Start your life and you land where they are.' }}</span></p>
         <p v-if="showNote && words" class="cr-banner is-warn" role="status"><span aria-hidden="true"><GameIcon name="cloud-off" inline /></span><span><strong>{{ words.short }}.</strong> {{ words.why }} Your character is kept on this device.</span><LinkAction class-name="cr-btn is-small" /></p>
         <p v-if="shown" class="cr-banner is-error" role="alert" data-cr-error>{{ shown }}</p>
 

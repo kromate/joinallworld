@@ -22,6 +22,8 @@
  * is revoked (`venue_mismatch`, `visit_ended`) or refused (`not_a_guest`) stops voice.
  */
 import type { PublicSession } from './types/protocol.ts'
+import { fetchIceConfig } from './voice-config.ts'
+import type { IceConfig } from './voice-config.ts'
 import type {
   BlockedPlayback, ChatLine, CommunityController, CommunityLinkStatus, CommunityRoom, CommunityState, DiagnosticsPeer,
   DiagnosticsSnapshot, MemberRow, MicrophoneChoice, MembersEvent, CommunityStatus, RoomMember, VoicePosition,
@@ -61,7 +63,6 @@ type Incoming =
   | { type: 'error'; error?: string; code?: string; message?: string; clientId?: string; to?: string }
 
 interface SignalPayload { description?: RTCSessionDescriptionInit; candidate?: RTCIceCandidateInit }
-interface IceConfig { iceServers: RTCIceServer[]; expiresAt: number | null; turnConfigured?: boolean; mode?: string }
 interface Peer {
   pc: RTCPeerConnection
   audio: HTMLAudioElement
@@ -233,14 +234,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     const expired = iceConfig?.expiresAt && Date.now() >= iceConfig.expiresAt
     if (iceConfig && !expired) return true
     if (!iceConfigRequest) {
-      iceConfigRequest = fetch('/api/voice-config').then(async (response): Promise<IceConfig> => {
-        if (!response.ok) throw new Error('Voice configuration unavailable')
-        const config = await response.json() as { iceServers?: RTCIceServer[]; expiresAt?: number | string | null; turnConfigured?: boolean; mode?: string }
-        if (!Array.isArray(config.iceServers) || !config.iceServers.length) throw new Error('Voice configuration unavailable')
-        const expiresAt = config.expiresAt ? (typeof config.expiresAt === 'number' ? config.expiresAt : Date.parse(config.expiresAt)) : null
-        if (expiresAt && expiresAt <= Date.now()) throw new Error('Voice relay credentials expired')
-        return { ...config, iceServers: config.iceServers, expiresAt }
-      }).catch(() => { throw new Error('Voice configuration unavailable') }).finally(() => { iceConfigRequest = null })
+      iceConfigRequest = fetchIceConfig().finally(() => { iceConfigRequest = null })
     }
     const config = await iceConfigRequest
     if (destroyed || generation !== voiceGeneration) return false

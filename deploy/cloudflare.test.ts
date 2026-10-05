@@ -5,7 +5,7 @@ import { mkdtemp, mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 
 /** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
@@ -318,6 +318,42 @@ test('Cloudflare: gradual home nap cancellation survives eviction without repeat
 test('Cloudflare: real static HTML receives response security and cache headers', async t => {
   const f = await fixture(t); const response = await f.request('/');
   assert.equal(response.status, 200); assert.equal(response.headers.get('x-content-type-options'), 'nosniff'); assert.equal(response.headers.get('cache-control'), 'no-cache'); assert.match(await response.text(), /Allworld/);
+});
+
+test('Cloudflare: the game page, a deep link, module pages, the API and an asset carry their security headers', async t => {
+  const telemetry = { TELEMETRY_ENV: 'production', SENTRY_DSN_CLIENT: 'https://abcdef0123456789@o123.ingest.example-sentry.test/456', POSTHOG_KEY: 'phc_fakefakefake', POSTHOG_HOST: 'https://eu.i.example-posthog.test' };
+  const plain = await fixture(t), configured = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', ...telemetry } });
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const hashes = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(match => `'sha256-${createHash('sha256').update(match[1] as string).digest('base64')}'`);
+  assert.equal(hashes.length, 2);
+  const directive = (policy: string, name: string) => policy.split('; ').find(part => part.startsWith(`${name} `)) ?? '';
+  for (const path of ['/', '/some/deep/link']) {
+    const response = await plain.request(path); await response.arrayBuffer();
+    assert.equal(response.status, 200);
+    const csp = response.headers.get('content-security-policy') as string;
+    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')}`, 'the built page\'s inline scripts, by hash');
+    assert.equal(directive(csp, 'connect-src'), "connect-src 'self' wss://joinallworld.test", 'no telemetry host unless configured');
+    assert.match(csp, /default-src 'self'; /); assert.match(csp, /frame-ancestors 'none'; upgrade-insecure-requests$/);
+    assert.deepEqual([response.headers.get('strict-transport-security'), response.headers.get('x-frame-options'), response.headers.get('x-content-type-options'), response.headers.get('referrer-policy'), response.headers.get('cross-origin-opener-policy'), response.headers.get('cache-control')],
+      ['max-age=31536000; includeSubDomains', 'DENY', 'nosniff', 'strict-origin-when-cross-origin', 'same-origin', 'no-cache'], path);
+    assert.match(response.headers.get('permissions-policy') as string, /microphone=\(self\), geolocation=\(self\)/);
+  }
+  const head = await plain.fetch('/', { method: 'HEAD' });
+  assert.match(head.headers.get('content-security-policy') as string, /script-src 'self' 'sha256-/, 'HEAD gets the policy too');
+  const withTelemetry = await configured.request('/'); await withTelemetry.arrayBuffer();
+  assert.equal(directive(withTelemetry.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://o123.ingest.example-sentry.test https://eu.i.example-posthog.test");
+  const share = await plain.request('/s/unknown-code'); await share.arrayBuffer();
+  assert.match(share.headers.get('content-security-policy') as string, /^default-src 'none'; .*upgrade-insecure-requests$/);
+  assert.deepEqual([share.headers.get('referrer-policy'), share.headers.get('strict-transport-security'), share.headers.get('cross-origin-opener-policy')], ['no-referrer', 'max-age=31536000; includeSubDomains', 'same-origin']);
+  const mail = await plain.request('/e/unsubscribe?t=unknown'); await mail.arrayBuffer();
+  assert.match(mail.headers.get('content-security-policy') as string, /^default-src 'none'; .*upgrade-insecure-requests$/);
+  const api = await plain.request('/api/does-not-exist'); await api.arrayBuffer();
+  assert.deepEqual([api.status, api.headers.get('cache-control'), api.headers.get('x-content-type-options'), api.headers.get('cross-origin-resource-policy'), api.headers.get('strict-transport-security')], [404, 'no-store', 'nosniff', 'same-origin', 'max-age=31536000; includeSubDomains']);
+  const refused = await plain.request('/api/session', { name: 'x' }, null, { origin: 'https://evil.example' }); await refused.arrayBuffer();
+  assert.deepEqual([refused.status, refused.headers.get('cross-origin-resource-policy')], [403, 'same-origin'], 'the Worker\'s own refusals are sealed too');
+  const asset = (/src="(\/assets\/[^"]+)"/.exec(await (await plain.request('/')).text()) as RegExpExecArray)[1] as string;
+  const file = await plain.request(asset); await file.arrayBuffer();
+  assert.deepEqual([file.status, file.headers.get('x-content-type-options'), file.headers.get('content-security-policy')], [200, 'nosniff', null]);
 });
 
 test('Cloudflare: pre-job saves hydrate and award a completed shift once after restart', async t => {

@@ -38,8 +38,10 @@ const storage = process.env.DATA_DIR ? resolve(process.env.DATA_DIR) : join(scra
 await mkdir(storage, { recursive: true });
 const bundle = join(scratch, 'worker.mjs');
 await build({ entryPoints: [join(root, 'deploy/cloudflare-worker.ts')], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'], logLevel: 'error' });
+/** The telemetry settings (server/telemetry/config.ts); nothing is sent unless they are set. */
+const TELEMETRY_ENV = ['TELEMETRY_ENV', 'TELEMETRY_DEBUG', 'TELEMETRY_CONSENT_AT', 'TELEMETRY_REPLAY_ON_ERROR', 'SENTRY_DSN_CLIENT', 'SENTRY_DSN_SERVER', 'POSTHOG_KEY', 'POSTHOG_HOST'];
 const bindings: Record<string, string> = { BUILD_ID: process.env.BUILD_ID || 'local' };
-for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', ...OUTREACH_ENV]) { const value = process.env[name]; if (value) bindings[name] = value; }
+for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', ...TELEMETRY_ENV, ...OUTREACH_ENV]) { const value = process.env[name]; if (value) bindings[name] = value; }
 const options: Record<string, unknown> = { name: 'allworld-local', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
   durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: storage, bindings,
   // The same asset rules as wrangler.jsonc: the Worker runs first, and an unknown path is the game's own page.

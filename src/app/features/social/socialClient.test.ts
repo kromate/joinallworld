@@ -165,6 +165,21 @@ test('a message to a new chat moves from its provisional key to the real convers
   assert.ok(ctx.calls.some((item) => item.path === '/api/social/conversations/dm.a.b'), 'the history of the new conversation is read')
 })
 
+test('the sender of a first message reads the new thread even when the push for it arrives before the acknowledgement', async () => {
+  const ctx = setup({
+    '/api/social/messages': () => ({ ok: true, code: 'sent', conv: conv('dm.a.b'), message: message(1, 'dm.a.b', { clientId: '1001:uuid-1', from: { id: ME.id, name: ME.name } }) }),
+    '/api/social/conversations/*': () => ({ ok: true, code: 'ok', conv: conv('dm.a.b'), messages: [message(1, 'dm.a.b', { from: { id: ME.id, name: ME.name } })], read: 1 }),
+  })
+  ctx.client.start(ctx.api)
+  await settle()
+  ctx.client.state.openConv = 'to:bayo-id'
+  ctx.client.send('to:bayo-id', { to: 'bayo-id' }, 'hi')
+  ctx.sockets[0]?.push({ type: 'dm', conv: conv('dm.a.b'), message: message(1, 'dm.a.b', { clientId: '1001:uuid-1', from: { id: ME.id, name: ME.name } }) })
+  await settle()
+  assert.equal(ctx.client.state.openConv, 'dm.a.b')
+  assert.equal(ctx.client.state.threads.get('dm.a.b')?.loaded, true, 'the thread is not left on "Loading messages"')
+})
+
 test('openThread reads from the last message after the first load, merges, and marks an unread conversation read', async () => {
   let reads = 0
   const ctx = setup({

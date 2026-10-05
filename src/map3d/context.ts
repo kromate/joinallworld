@@ -62,7 +62,7 @@ const NAMES: { id: string; text: string; kind: ContextLabel['kind']; at: [number
   { id: 'ogun-east', text: 'Ogun State', kind: 'state', at: [4.1, 6.62] },
   { id: 'oyo', text: 'OYO STATE', kind: 'state', at: [3.9, 7.7] },
   { id: 'ondo', text: 'ONDO STATE', kind: 'state', at: [5.0, 6.75] },
-  { id: 'benin', text: 'REPUBLIC OF BENIN', kind: 'country', at: [2.35, 6.75] },
+  { id: 'benin', text: 'REPUBLIC OF BENIN', kind: 'country', at: [2.5, 6.7] },
   { id: 'sea', text: 'ATLANTIC OCEAN', kind: 'sea', at: [3.4, 6.05] },
   { id: 'gulf', text: 'Gulf of Guinea', kind: 'sea', at: [4.6, 5.8] },
 ];

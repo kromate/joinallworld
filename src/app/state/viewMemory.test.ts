@@ -6,12 +6,18 @@ import { FRAME_LAT, FRAME_LON, UNITS_PER_KM } from '../../map3d/geo/frame.ts'
 import { decideView, forgetViews, keepView, loadView, savedViewFrom } from './viewMemory.ts'
 import type { LifeFacts, SavedView } from './viewMemory.ts'
 
-const facts = (extra: Partial<LifeFacts> = {}): LifeFacts => ({ who: 'p1:lagos', location: 'park', trip: false, allowsMode: (mode) => mode === 'map' || mode === 'buy', allowsSheet: () => true, ...extra })
-const saved = (extra: Partial<SavedView> = {}): SavedView => ({ v: 1, who: 'p1:lagos', at: 'park', mode: 'map', layer: 'city', destination: 'library', sheet: null, camera: { kind: '3d', x: 10, z: -4, yaw: 0.3, pitch: 0.9, distance: 80 }, frame: CAMERA_FRAME, ...extra })
+const facts = (extra: Partial<LifeFacts> = {}): LifeFacts => ({ who: 'p1:lagos', location: 'park', trip: false, allowsMode: (mode) => mode === 'map' || mode === 'buy', allowsSheet: () => true, now: 1_000_000, ...extra })
+const saved = (extra: Partial<SavedView> = {}): SavedView => ({ v: 1, who: 'p1:lagos', at: 'park', mode: 'map', layer: 'city', destination: 'library', sheet: null, camera: { kind: '3d', x: 10, z: -4, yaw: 0.3, pitch: 0.9, distance: 80 }, frame: CAMERA_FRAME, keptAt: 1_000_000 - 60_000, ...extra })
 
 test('in the map when the page was reloaded: still the map, the same picked place and camera', () => {
   const view = decideView(JSON.parse(JSON.stringify(saved())), facts())
   assert.deepEqual([view.mode, view.layer, view.destination, view.camera?.kind, view.restored], ['map', 'city', 'library', '3d', true])
+})
+test('a camera older than half an hour is not put back: the map opens on the city core, the rest of the view is kept', () => {
+  const stale = decideView(saved({ keptAt: 1_000_000 - 31 * 60_000 }), facts())
+  assert.deepEqual([stale.mode, stale.destination, stale.camera], ['map', 'library', null])
+  assert.equal(decideView(saved({ keptAt: undefined }), facts()).camera, null, 'a record with no time keeps no camera')
+  assert.equal(decideView(saved({ keptAt: 1_000_000 - 29 * 60_000 }), facts()).camera?.kind, '3d')
 })
 test('nothing saved, or saved for another life: the venue, as the server places the player', () => {
   assert.equal(decideView(null, facts()).mode, 'venue')

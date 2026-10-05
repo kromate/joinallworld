@@ -33,7 +33,7 @@ import type { Game } from './game.ts'
 import { buildRegistry } from './panels.ts'
 import { createShell } from './shell.ts'
 import { CAMERA_FRAME } from './cameraFrame.ts'
-import { decideView, forgetViews, keepView, loadView } from './viewMemory.ts'
+import { CAMERA_KEEP_MS, decideView, forgetViews, keepView, loadView } from './viewMemory.ts'
 import type { SavedCamera, SavedSheet } from './viewMemory.ts'
 import { mapUi } from '../features/travel/travelState.ts'
 import { NATIVE_PANELS } from '../features/panels.ts'
@@ -337,14 +337,14 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     if (!ready.value || !who || !game.connected.value || state.onboarding?.required || tripKey(state)) return
     const mode = game.mode.value
     if (mode === 'map') lastCamera = scene.city.value?.camera() ?? lastCamera
-    keepView({ v: 1, who, at: state.location, mode, layer: mapUi.layer, destination: mode === 'map' ? mapUi.destination : null, sheet: sheetToKeep(), camera: mode === 'map' ? lastCamera : null, frame: CAMERA_FRAME }, tabStore(), deviceStore())
+    keepView({ v: 1, who, at: state.location, mode, layer: mapUi.layer, destination: mode === 'map' ? mapUi.destination : null, sheet: sheetToKeep(), camera: mode === 'map' ? lastCamera : null, frame: CAMERA_FRAME, keptAt: Date.now() }, tabStore(), deviceStore())
   }
   function restoreView(): void {
     const who = whoIs(), state = game.state.value
     if (viewDone || !who) return
     viewDone = true
     const view = decideView(loadView(who, tabStore(), deviceStore()), {
-      who, location: state.location, trip: Boolean(tripKey(state)),
+      who, now: Date.now(), location: state.location, trip: Boolean(tripKey(state)),
       allowsMode: (mode) => { const panel = shell.byId.get(mode); return panel?.placement === 'nav' && shell.gateOf(panel) === null },
       allowsSheet: (sheet) => sheet.kind === 'phone' || (sheet.kind === 'sim' ? shell.placed('sim-tab').some((panel) => panel.id === sheet.tab) : (() => { const panel = shell.byId.get(sheet.id); return panel?.placement === 'phone' && shell.gateOf(panel) === null && typeof panel.required !== 'function' })()),
     })
@@ -360,6 +360,12 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       else shell.open(view.sheet.id)
     }
   }
+  // Closing the map and opening it again within half an hour keeps the view the player left it in; after longer, it opens on the city core.
+  let mapLeftAt = 0
+  watch(game.mode, (mode, was) => {
+    if (was === 'map' && mode !== 'map') mapLeftAt = Date.now()
+    else if (mode === 'map' && was !== 'map' && mapLeftAt && Date.now() - mapLeftAt >= CAMERA_KEEP_MS) { mapLeftAt = 0; scene.city.value?.recentre() }
+  })
   watch(scene.city, (city) => { if (city && pendingCamera) { city.restoreCamera(pendingCamera); pendingCamera = null } })
   watch([game.mode, shell.sheet, () => mapUi.layer, () => mapUi.destination], saveView, { flush: 'post' })
   globalThis.window?.addEventListener('pagehide', saveView)

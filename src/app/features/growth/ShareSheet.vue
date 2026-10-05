@@ -7,7 +7,8 @@
 // For an invitation (the invite link, the house, a table) it also offers Copy link, Telegram and a
 // QR code, says what the inviter gets (the referral rules, with their conditions) and how many
 // friends have joined. The QR encoder is only fetched when the code is asked for.
-import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onMounted, ref } from 'vue'
+import { input } from '../../state/inputMode.ts'
 import { REFERRAL } from '../../../game/content/growth.ts'
 import { channelLinks } from '../../../ui/share-links.ts'
 import { money } from '../../ui/format.ts'
@@ -24,6 +25,16 @@ const growth = useGrowth()
 const sharing = growth.state
 const working = ref<'share' | 'copy' | 'link' | null>(null)
 const showQr = ref(false)
+/** Set when the browser refused the clipboard: the text is shown in a read-only field, selected, for the player to copy. */
+const manual = ref<'link' | 'text' | null>(null)
+const manualField = ref<HTMLTextAreaElement | null>(null)
+const manualHelp = computed(() => (input.touch && !input.keys ? 'Press and hold to copy.' : 'Press ⌘C (Ctrl+C on Windows) to copy.'))
+async function offerManual(what: 'link' | 'text'): Promise<void> {
+  manual.value = what
+  await nextTick()
+  const field = manualField.value
+  if (field) { field.focus({ preventScroll: true }); field.select(); field.setSelectionRange(0, field.value.length) }
+}
 const canNative = ref(false)
 const invite = computed(() => isInviteSheet(sharing.sharing?.facts.kind))
 const links = computed(() => { const made = sharing.sharing; return made ? channelLinks(made.prepared.text, made.prepared.link) : null })
@@ -37,14 +48,14 @@ async function run(what: 'share' | 'copy'): Promise<void> {
   if (working.value) return
   working.value = what
   channel(what === 'share' ? 'native' : 'copy')
-  try { await (what === 'share' ? growth.shareNow() : growth.copyShare()) } finally { working.value = null }
+  try { if (what === 'share') await growth.shareNow(); else if (!(await growth.copyShare())) await offerManual('text') } finally { working.value = null }
 }
 async function copyLink(): Promise<void> {
   const made = sharing.sharing
   if (working.value || !made) return
   working.value = 'link'
   channel('copy')
-  try { await growth.copyLink() } finally { working.value = null }
+  try { if (!(await growth.copyLink())) await offerManual('link') } finally { working.value = null }
 }
 function toggleQr(): void { showQr.value = !showQr.value; if (showQr.value) channel('qr') }
 onMounted(() => {
@@ -66,6 +77,10 @@ onMounted(() => {
         <BaseButton :disabled="working !== null" @click="run('copy')">{{ working === 'copy' ? 'Copying…' : 'Copy text' }}</BaseButton>
         <LinkButton v-if="sharing.sharing.prepared.url" :href="sharing.sharing.prepared.url" download="allworld.jpg">Save picture</LinkButton>
       </div>
+      <div v-if="manual" class="gr-manual" data-manual-copy>
+        <textarea ref="manualField" class="gr-manual-field" readonly rows="3" :aria-label="manual === 'link' ? 'Your link' : 'The text to copy'" :value="manual === 'link' ? sharing.sharing.prepared.link : sharing.sharing.prepared.text" @focus="($event.target as HTMLTextAreaElement).select()" />
+        <p role="status" class="gr-note">{{ manualHelp }}</p>
+      </div>
       <p class="gr-note">You choose who sees this. The link is the last line: delete it if you only want the result. Sharing pays nothing; a friend who really plays does.</p>
     </template>
     <template v-else>
@@ -78,6 +93,10 @@ onMounted(() => {
         <LinkButton v-if="links" :href="links.telegram" @click="channel('telegram')">Telegram</LinkButton>
         <LinkButton v-if="links" :href="links.x" @click="channel('x')">X</LinkButton>
         <BaseButton :aria-expanded="showQr" @click="toggleQr">{{ showQr ? 'Hide QR code' : 'Show QR code' }}</BaseButton>
+      </div>
+      <div v-if="manual" class="gr-manual" data-manual-copy>
+        <textarea ref="manualField" class="gr-manual-field" readonly rows="3" :aria-label="manual === 'link' ? 'Your link' : 'The text to copy'" :value="manual === 'link' ? sharing.sharing.prepared.link : sharing.sharing.prepared.text" @focus="($event.target as HTMLTextAreaElement).select()" />
+        <p role="status" class="gr-note">{{ manualHelp }}</p>
       </div>
       <ShareQr v-if="showQr" :link="sharing.sharing.prepared.link" />
       <p class="gr-progress" role="status" data-invite-progress>{{ progress || 'Your link is ready.' }}</p>
@@ -99,6 +118,8 @@ onMounted(() => {
 .gr-share-acts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); margin-bottom: var(--s-3); }
 .gr-share-acts > * { min-height: var(--tap, 44px); text-align: center; }
 .gr-share-acts .is-wide { grid-column: 1 / -1; }
+.gr-manual { margin: 0 0 var(--s-3); }
+.gr-manual-field { display: block; width: 100%; box-sizing: border-box; min-height: 64px; resize: none; font: inherit; font-size: 13px; line-height: 1.45; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--c-line); background: #fff; color: var(--c-ink); user-select: text; -webkit-user-select: text; }
 .gr-progress { margin: 0 0 var(--s-2); font-size: 14px; font-weight: 700; color: var(--c-green-dark); }
 .gr-reward { background: var(--c-fill); border-radius: 12px; padding: 8px 12px; }
 .gr-reward p { margin: 4px 0; font-size: 12.5px; line-height: 1.45; color: var(--c-ink-2); }

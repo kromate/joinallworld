@@ -577,6 +577,6 @@ test('level of detail: the fabric is drawn near and left out when the whole stat
   assert.equal(city.setDetail(300), true); assert.equal(fabric(), 3);
   assert.deepEqual(plateFit('Ikorodu', 40, 300), { show: true, scale: 1 }, 'near, the usual plate');
   assert.equal(plateFit('Ikorodu', 20, 3000).show, false, 'a polygon too small to hold its name keeps it hidden');
-  assert.ok(plateFit('Ikorodu', 400, 3000).scale > 1.5 && plateFit('Ikorodu', 4000, 3000).scale <= 2.6, 'a large one is named large, to a limit');
+  assert.ok(plateFit('Ikorodu', 400, 3000).scale > 1.5 && plateFit('Ikorodu', 4000, 3000).scale <= 2.5, 'a large one is named large, to a limit');
   h.map.destroy();
 });

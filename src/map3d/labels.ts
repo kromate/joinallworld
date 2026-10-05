@@ -55,7 +55,7 @@ export function nearPoints(at: GroundPoint, narrow = true): GroundPoint[] {
 export const WHOLE_FROM = 560;
 /** A local-government plate's size is by its polygon only from this far out; nearer it is the usual small plate. */
 export const PLATE_SIZED_FROM = 700;
-const PLATE_MAX = 2.6;
+const PLATE_MAX = 2.5;
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 /** The room a plate's lettering needs, in pixels, at its usual size (11px type): about 8.4px a letter (capitals, spaced) and the padding. */
 export const plateWidth = (name: string) => name.length * 8.4 + 22;

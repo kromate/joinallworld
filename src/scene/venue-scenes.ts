@@ -92,6 +92,9 @@ import * as ibadanA from './venues-ibadan-a.ts';
 import { VARIANTS as ibadanB } from './venues-ibadan-b.ts';
 import { VARIANTS as ogunA } from './venues-ogun-a.ts';
 import { VARIANTS as ogunB } from './venues-ogun-b.ts';
+import { VARIANTS as rivers } from './venues-rivers.ts';
+import { VARIANTS as fct } from './venues-fct.ts';
+import { VARIANTS as kano } from './venues-kano.ts';
 
 export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
@@ -309,7 +312,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
   const options: SceneOptions = venue?.scene && typeof venue.scene === 'object' ? venue.scene : {};
   // A venue may ask for a variant that is a scene of its own (venues-ibadan-b.ts); the kind's walkable description then yields to the variant's.
   const variantKey = typeof options.variant === 'string' ? options.variant : defaultVariant ?? '';
-  const ownVariant = ibadanB[kind]?.[variantKey] ?? ogunA[kind]?.[variantKey] ?? ogunB[kind]?.[variantKey];
+  const ownVariant = ibadanB[kind]?.[variantKey] ?? ogunA[kind]?.[variantKey] ?? ogunB[kind]?.[variantKey] ?? rivers[kind]?.[variantKey] ?? fct[kind]?.[variantKey] ?? kano[kind]?.[variantKey];
   if (ownVariant) def = ownVariant;
   const walkSpec = (): Readonly<WalkSpec> => def.walk ?? (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT)!;
   const spots: SceneSpot[] = Array.isArray(options.spots) ? options.spots : Object.values(venue?.spots || {});

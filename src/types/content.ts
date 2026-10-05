@@ -171,7 +171,10 @@ export type OgunSceneVariant = 'outcrop' | 'adire' | 'palace-court' | 'ojude-gro
   | 'bowl' | 'track-stadium' | 'ground-clay' | 'ground-terrace' | 'factory' | 'heritage-house' | 'heritage-gallery' | 'hall-brick' | 'hall-dome' | 'ayo-park' | 'evening-garden'
 
 /** Scenes of a city's own that share a kind with another (src/scene/venues-ibadan-b.ts). */
-export type CitySceneVariant = 'tower' | 'hill-hall' | 'campus' | 'stadium' | 'gallery' | 'bus-park' | 'rail' | 'foodstuff' | 'street' | 'cloth' | 'garden' | 'forest' | OgunSceneVariant
+/** Scenes of Port Harcourt, Abuja and Kano carry their city's prefix, so a name can never pick another city's scene (src/scene/venues-rivers.ts, venues-fct.ts, venues-kano.ts). */
+export type PrefixedSceneVariant = `ph-${string}` | `fct-${string}` | `kano-${string}`
+
+export type CitySceneVariant = 'tower' | 'hill-hall' | 'campus' | 'stadium' | 'gallery' | 'bus-park' | 'rail' | 'foodstuff' | 'street' | 'cloth' | 'garden' | 'forest' | OgunSceneVariant | PrefixedSceneVariant
 
 export interface VenueScene {
   kind: SceneKind

@@ -42,6 +42,7 @@ import { upcomingEvents } from '../../src/game/calendar.ts';
 import { composeDigest } from '../../src/game/digest.ts';
 import { cityRules } from '../../src/game/cities/index.ts';
 import { OUTREACH, channelUrl, checkEmail, inQuietHours, maskEmail, planMessage } from '../../src/game/outreach.ts';
+import { characterCity } from '../character.ts';
 import { UUID_PATTERN } from '../protocol.ts';
 import { COMEBACK_TYPES } from '../../src/game/comeback.ts';
 import type { ComebackType } from '../../src/game/comeback.ts';
@@ -73,7 +74,7 @@ export interface MessageLife { name: string; cityId: CityId; state: LifeState }
 export function messageLifeOf(session: SessionRecord | null | undefined, cityIds: readonly CityId[], now: number): MessageLife | null {
   if (!session || session.expiresAt <= now) return null;
   const cities = cityIds.filter((cityId) => session.cities?.[cityId]?.state).sort((a, b) => (session.cities[b]?.updatedAt ?? 0) - (session.cities[a]?.updatedAt ?? 0));
-  const active = cities.find((cityId) => cityId === session.character?.city) ?? cities[0];
+  const pinned = characterCity(session), active = cities.find((cityId) => cityId === pinned) ?? cities[0];
   const record = active === undefined ? undefined : session.cities[active];
   return active !== undefined && record ? { name: session.name, cityId: active, state: record.state } : null;
 }

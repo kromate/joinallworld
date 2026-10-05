@@ -71,8 +71,12 @@ const types = (value: unknown): Record<PrefKey, boolean> => {
 const withCareerCity = (state: LifeState): LifeState => (state.career && state.career.city === undefined ? { ...state, career: { ...state.career, city: state.estate.city } } : state);
 const num = (value: unknown, fallback = 0): number => (typeof value === 'number' && Number.isFinite(value) ? value : fallback);
 
-/** A new record. `on`: the preference "E-mail me about my character". */
-export const newRecord = (on: boolean, legacy = false): ComebackRecord => ({ on, legacy, pausedUntil: 0, types: defaultPrefs().types, sent: [], last: {}, away: {}, keys: [], waitingAt: 0, nudgeAt: 0, nudges: [], next: 0, suppressedDay: -1 });
+/**
+ * A new record. `on`: the preference "E-mail me about my character". `legacy`: a contact confirmed before this feature, who used to
+ * receive the "away" e-mail and the weekly digest: it keeps exactly those (the away type is the successor of the old mail), and every
+ * other type stays off until they turn it on.
+ */
+export const newRecord = (on: boolean, legacy = false): ComebackRecord => ({ on, legacy, pausedUntil: 0, types: legacy ? { needs: false, friends: false, milestones: false, events: false, away: true, week: true } : defaultPrefs().types, sent: [], last: {}, away: {}, keys: [], waitingAt: 0, nudgeAt: 0, nudges: [], next: 0, suppressedDay: -1 });
 
 /** A stored record read defensively: a database from an older build, or a damaged one, never throws here. */
 function sane(raw: unknown): ComebackRecord {
@@ -147,6 +151,8 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
       const account = accountOf(db, session)(id);
       if (account?.mailOptIn === true) { record = recordOf(g, id, true, true); record.acct = true; }
     }
+    // A contact confirmed before this feature has no record yet: it keeps the away mail it already had (see newRecord).
+    if (!record && recipientOf(db, g, id, session)?.source === 'contact') record = recordOf(g, id, true, false, true);
     if (!record) return;
     record.next = at + COMEBACK.activeHours * HOUR;
     wake(record.next);
@@ -155,7 +161,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     const record = recordOf(g, id, false), player = playerOf(g, id, { create: false }), t = now(), recipient = recipientOf(db, g, id, session);
     const nudged = Object.fromEntries(Object.entries(player?.nudged ?? {}).filter(([, at]) => t - at < COMEBACK.nudge.perFriendDays * DAY));
     const usable = record !== null && recipient !== null;
-    return { source: recipient?.source ?? null, ...(recipient?.source === 'account' ? { address: maskEmail(recipient.email) } : {}), on: usable && record.on, pausedUntil: usable && record.pausedUntil > t ? record.pausedUntil : 0, types: record ? { ...record.types } : defaultPrefs().types, nudged };
+    return { source: recipient?.source ?? null, ...(recipient?.source === 'account' ? { address: maskEmail(recipient.email) } : {}), on: usable && (record.on || record.legacy), pausedUntil: usable && record.pausedUntil > t ? record.pausedUntil : 0, types: record ? { ...record.types } : defaultPrefs().types, nudged };
   }
   /** The player's choices from Stay in touch. Switching anything on needs a confirmed address. */
   function setPrefs(db: Db, g: GrowthCollection, id: string, body: Record<string, unknown>, session?: SessionRecord) {
@@ -276,7 +282,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
       events: upcomingEvents(t, 2, life.cityId).map((event) => ({ key: `event:${event.key}`, title: event.title, venue: event.venueLabel, start: event.start })),
     };
   }
-  const prefsOf = (record: ComebackRecord): Prefs => ({ on: record.on, pausedUntil: record.pausedUntil, types: record.types });
+  const prefsOf = (record: ComebackRecord): Prefs => ({ on: record.on || record.legacy, pausedUntil: record.pausedUntil, types: record.types });
   const memoryOf = (record: ComebackRecord): Memory => ({ sent: record.sent, last: record.last, away: record.away, keys: record.keys, waitingAt: record.waitingAt, nudgeAt: record.nudgeAt });
 
   // ---- the schedule ------------------------------------------------------------------------------

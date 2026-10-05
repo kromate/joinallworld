@@ -42,6 +42,7 @@ import { fileCharacter } from '../character.ts';
 import { lagosTime } from '../../src/game/clock.ts';
 import { ESTATE, PLOTS_PER_ESTATE, cityRules, lgaOf, lgasOf, packStyle } from '../../src/game/content/world.ts';
 import { hasPlace } from '../../src/game/systems/estate.ts';
+import { characterCity } from '../character.ts';
 import { watchLives } from '../life-service.ts';
 import * as registry from './registry.ts';
 import type { RegistryRecord, RegistryState, RegistryWho, PersonLine } from './registry.ts';
@@ -61,22 +62,23 @@ const PRUNE_DAYS = 45;
 const b64 = (bytes: Uint8Array): string => { let text = ''; for (let i = 0; i < bytes.length; i++) text += String.fromCharCode(bytes[i]!); return btoa(text); };
 const shardOf = (cityId: string, lga: string): string => `${cityId}.${lga}`;
 
-/** Sessions stored before "one character" existed get a `character` record; nothing else of theirs is touched. */
+/** Sessions stored before "one character" existed, or pinned by an earlier build, get a current `character` pin; nothing else of theirs is touched. */
 export function migrateCharacters(db: Db): number {
-  const keys = db.$store ? db.$store.scanSessions((session) => !session.character) : Object.entries(db.sessions).filter(([, session]) => !session.character).map(([key]) => key);
+  const stale = (session: SessionRecord): boolean => !session.character || (session.character.v !== 2 && session.character.movedAt === undefined);
+  const keys = db.$store ? db.$store.scanSessions(stale) : Object.entries(db.sessions).filter(([, session]) => stale(session)).map(([key]) => key);
+  let changed = 0;
   for (const key of keys) {
     const session = db.sessions[key];
     if (!session) continue;
-    session.character = { v: 1, city: currentCity(session) };
+    const city = characterCity(session) ?? 'lagos';
+    session.character = { ...session.character, v: 2, city };
+    changed += 1;
   }
-  return keys.length;
+  return changed;
 }
-/** The city a session is in: the life played most recently (Lagos when there is none, or a tie). */
-export function currentCity(session: SessionRecord): string {
-  const lives = Object.entries(session.cities || {}).filter((item): item is [string, NonNullable<(typeof item)[1]>] => Boolean(cityRules(item[0]) && item[1]?.state));
-  if (!lives.length) return 'lagos';
-  return lives.reduce((best, item) => ((item[1].updatedAt ?? 0) > (best[1].updatedAt ?? 0) ? item : best), lives.find(([id]) => id === 'lagos') ?? lives[0]!)[0];
-}
+
+/** The city a session is in (Lagos when it has no life). */
+export const currentCity = (session: SessionRecord): string => characterCity(session) ?? 'lagos';
 
 export function worldOf(ctx: RouteContext): WorldService {
   const cached = services.get(ctx);

@@ -52,3 +52,70 @@ test('a travelling character supplies its actual city to subsequent engine calls
   assert.equal(viewed.cash, state.cash)
   assert.deepEqual(viewed.needs, state.needs)
 })
+
+// A bare `{v:1, city}` is the start-up pin of an earlier build: fixed at one moment, never updated.
+const withLegacyPin = (lagosAt: number, ibadanAt: number, pin = 'ibadan'): SessionRecord => {
+  const session = record(), lagos = held('lagos', 76000), ibadan = held('ibadan', 300)
+  lagos.updatedAt = lagosAt; ibadan.updatedAt = ibadanAt
+  session.cities = { lagos, ibadan }
+  session.character = { v: 1, city: pin }
+  return session
+}
+
+test('a stale legacy pin: the newest life is the character, the other goes to older characters, nothing is lost', () => {
+  const session = withLegacyPin(5000, 2000), lagos = session.cities.lagos, ibadan = session.cities.ibadan
+  assert.equal(characterCity(session), 'lagos')
+  assert.equal(normalizeCharacter(session), 'lagos')
+  assert.equal(session.cities.lagos, lagos)
+  assert.equal(session.cities.ibadan, undefined)
+  assert.equal(Object.values(session.legacyLives ?? {})[0], ibadan)
+  assert.equal(session.character?.v, 2)
+  const stored = structuredClone(session)
+  assert.equal(normalizeCharacter(session), 'lagos', 'stable once the pin is written')
+  assert.deepEqual(session, stored, 'running it twice changes nothing')
+})
+
+test('a legacy pin that is still right (the other life is older) keeps that city', () => {
+  const session = withLegacyPin(2000, 5000)
+  assert.equal(normalizeCharacter(session), 'ibadan')
+  assert.equal(session.cities.lagos, undefined)
+})
+
+test('only one life, pinned to its city: it stays the character', () => {
+  const session = record()
+  session.cities = { ibadan: held('ibadan', 300) }
+  session.character = { v: 1, city: 'ibadan' }
+  assert.equal(normalizeCharacter(session), 'ibadan')
+  assert.deepEqual(session.character, { v: 2, city: 'ibadan' })
+})
+
+test('a tie goes to the life with a house, then to Lagos', () => {
+  assert.equal(characterCity(withLegacyPin(1000, 1000)), 'lagos')
+  const settled = withLegacyPin(1000, 1000)
+  settled.cities.lagos!.state.estate.lga = null as never
+  const estate = settled.cities.ibadan!.state.estate
+  estate.lga = 'iyaganku' as typeof estate.lga
+  estate.lgaConfirmed = true
+  if (settled.cities.ibadan!.state.onboarding) settled.cities.ibadan!.state.onboarding.done = true
+  assert.equal(characterCity(settled), 'ibadan')
+})
+
+test('a pin written by this code (a real move) is honoured even when another life is newer', () => {
+  const session = withLegacyPin(9000, 1000)
+  session.character = { v: 2, city: 'ibadan', movedAt: 500, from: 'lagos' }
+  assert.equal(characterCity(session), 'ibadan')
+  session.character = { v: 1, city: 'ibadan', movedAt: 500, from: 'lagos' }
+  assert.equal(characterCity(session), 'ibadan', 'a recorded move is current whatever its version')
+})
+
+test('an account character and a set-aside character follow the same rule (a record carries its pin through the archive and back)', () => {
+  const session = withLegacyPin(5000, 2000)
+  session.account = 'fb:Ada'
+  const archived = { publicId: session.publicId, name: session.name, cities: structuredClone(session.cities), character: structuredClone(session.character) }
+  const restored: SessionRecord = { ...record(), ...structuredClone(archived), account: 'fb:Ada' }
+  assert.equal(normalizeCharacter(session), 'lagos')
+  assert.equal(normalizeCharacter(restored), 'lagos')
+  assert.deepEqual(Object.keys(restored.legacyLives ?? {}), ['ibadan:1'])
+  const current = { ...archived, character: { v: 2 as const, city: 'ibadan', movedAt: 1, from: 'lagos' } }
+  assert.equal(normalizeCharacter({ ...record(), ...structuredClone(current) }), 'ibadan')
+})

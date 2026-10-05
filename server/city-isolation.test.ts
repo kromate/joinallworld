@@ -96,7 +96,7 @@ test('scheduled digests follow the character city, not the most recently updated
   const session: SessionRecord = {
     secret: 'secret', publicId: ADA, name: 'Ada', expiresAt: NOW + 60_000,
     cities: { lagos: { state: lagos, updatedAt: NOW, salt: 'lagos-salt-123456' }, ibadan: { state: ibadan, updatedAt: NOW - 1000, salt: 'ibadan-salt-12345' } },
-    actions: {}, character: { v: 1, city: 'ibadan' },
+    actions: {}, character: { v: 2, city: 'ibadan' },
   }
   const life = messageLifeOf(session, ['lagos', 'ibadan'], NOW)
   if (!life) throw new Error('expected a message life')

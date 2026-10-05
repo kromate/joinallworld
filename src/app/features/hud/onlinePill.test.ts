@@ -9,7 +9,7 @@ import type { Component } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { createFakeServer } from '../../testing/fakeServer.ts'
 import type { App } from '../../state/app.ts'
-import { compactCount, easeSteps, exactCount, POLL_MS, pulseAria, pulseTitle, pulseTone, STALE_MS } from './onlinePillModel.ts'
+import { aloneLine, compactCount, easeSteps, exactCount, onlineView, POLL_MS, pulseAria, pulseTitle, pulseTone, STALE_MS } from './onlinePillModel.ts'
 import { createPulse, readPulse } from './usePulse.ts'
 
 test('compactCount shortens without ever rounding up', () => {
@@ -19,10 +19,10 @@ test('compactCount shortens without ever rounding up', () => {
 test('the exact value and the aria text', () => {
   assert.equal(exactCount(4210), '4,210')
   const numbers = { online: 128, visits: 4210, cities: {} }
-  assert.equal(pulseTitle(numbers), '128 online now · 4,210 visits in total')
-  assert.equal(pulseTitle({ ...numbers, cities: { ibadan: 9 } }, 'live', 'ibadan'), '9 online here · 128 in Allworld · 4,210 visits in total across all of Allworld')
-  assert.equal(pulseAria(numbers), '128 people online. 4,210 visits in total. Open People.')
-  assert.equal(pulseAria({ online: 1, visits: 1, cities: {} }), '1 person online. 1 visit in total. Open People.')
+  assert.equal(pulseTitle(numbers), '128 in Allworld · 4,210 visits in total across all of Allworld')
+  assert.equal(pulseTitle({ ...numbers, cities: { ibadan: 9 } }, 'live', 'ibadan'), '128 in Allworld · 9 here · 4,210 visits in total across all of Allworld')
+  assert.equal(pulseAria(numbers), '128 people online in Allworld. 4,210 visits in total. Open People.')
+  assert.equal(pulseAria({ online: 2, visits: 1, cities: { lagos: 1 } }, 'live', 'lagos'), '2 people online in Allworld, 1 here. 1 visit in total. Open People.')
   assert.match(pulseAria(numbers, 'stale'), /may be out of date/)
   assert.match(pulseTitle(numbers, 'stale'), /not up to date/)
 })
@@ -41,7 +41,8 @@ test('easeSteps: a few steps that end on the target; a first value has none', ()
   assert.deepEqual(easeSteps(10, 20, 0), [20])
 })
 test('readPulse takes the documented shape only', () => {
-  assert.deepEqual(readPulse({ online: 3, visits: 9, cities: { lagos: 2 }, serverTime: 1 }), { online: 3, visits: 9, cities: { lagos: 2 } })
+  assert.deepEqual(readPulse({ online: 3, visits: 9, today: 5, cities: { lagos: 2 }, serverTime: 1 }), { online: 3, visits: 9, today: 5, cities: { lagos: 2 } })
+  assert.equal(readPulse({ online: 3, visits: 9, cities: {} })?.today, 0, 'an older server does not say')
   assert.equal(readPulse({ online: '3' }), null)
   assert.equal(readPulse(null), null)
 })
@@ -113,17 +114,52 @@ test('the pill renders nothing until the first number arrives, then the compact 
   shared.state.numbers = { online: 128, visits: 4210, cities: { lagos: 100 } }; shared.state.at = Date.now(); shared.state.failing = false
   const out = await html()
   assert.match(out, /<button[^>]*class="pulse-pill"/)
-  assert.match(out, /title="100 online here · 128 in Allworld · 4,210 visits in total across all of Allworld"/)
-  assert.match(out, /aria-label="100 people online here\. 128 people online in Allworld\. 4,210 visits in total across Allworld\. Open People\."/)
+  assert.match(out, /title="128 in Allworld · 100 here · 4,210 visits in total across all of Allworld"/)
+  assert.match(out, /aria-label="128 people online in Allworld, 100 here\. 4,210 visits in total\. Open People\."/)
   assert.match(out, /class="is-live pulse-dot"/)
   const text = out.replace(/<!--.*?-->/g, '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
-  assert.equal(text, '100 online here · 128 in Allworld · 4.2k visits')
+  assert.equal(text, '128 in Allworld · 100 here · 4.2k visits')
   shared.state.numbers = { online: 128, visits: 4210, cities: { lagos: 100, ibadan: 7 } }
   app.game.cityId.value = 'ibadan'
   const other = (await html()).replace(/<!--.*?-->/g, '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
-  assert.equal(other, '7 online here · 128 in Allworld · 4.2k visits', 'the city count follows the city; the world count and visits do not')
+  assert.equal(other, '128 in Allworld · 7 here · 4.2k visits', 'the city count follows the city; the world count and visits do not')
   app.game.cityId.value = 'lagos'
+  // Alone: not a bare "1", and pressing it offers the invite.
+  shared.state.numbers = { online: 1, visits: 67, today: 1, cities: { lagos: 1 } }
+  const first = await html()
+  assert.equal(first.replace(/<!--.*?-->/g, '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(), "1 in Allworld · 1 here · 67 visits · You&#39;re first here: invite a friend", 'the format stays; the warm line is a secondary element')
+  assert.match(first, /class="pulse-pill is-alone"/)
+  assert.match(first, /aria-label="You are the only one online right now\. 1 player today\. 67 visits in total\. Invite a friend\."/)
+  shared.state.numbers = { online: 1, visits: 67, today: 5, cities: { lagos: 1 } }
+  assert.match(await html(), /5 played today/)
   shared.state.failing = true
   assert.match(await html(), /class="is-stale pulse-dot"/)
   shared.reset()
+})
+
+test('the reader is always counted: nothing is 0, the world is never below a city, and today never below the world', () => {
+  assert.deepEqual(onlineView({ online: 0, visits: 3, cities: { lagos: 0 } }, 'lagos'), { world: 1, here: 1, today: 1, alone: true })
+  assert.deepEqual(onlineView({ online: 2, visits: 3, today: 9, cities: { lagos: 1, ibadan: 1 } }, 'lagos'), { world: 2, here: 1, today: 9, alone: false })
+  assert.equal(onlineView({ online: 2, visits: 3, cities: { lagos: 7 } }, 'lagos').here, 2, 'a city is never above the world')
+  assert.equal(onlineView({ online: 4, visits: 3, cities: {} }, 'lagos').here, null, 'an answer that does not carry the city says only the world')
+  assert.equal(onlineView({ online: 4, visits: 3, today: 2, cities: {} }, null).today, 4)
+})
+test('the line for a reader who is alone is true: a number of players today when there is one, else "first here"', () => {
+  assert.deepEqual(aloneLine({ today: 1 }), { long: "You're first here", short: 'First here' })
+  assert.deepEqual(aloneLine({ today: 12 }), { long: '12 played today', short: '12 today' })
+  assert.deepEqual(aloneLine({ today: 1500 }), { long: '1.5k played today', short: '1.5k today' })
+})
+test('frames: a pulse frame is taken at once, an answer to an older request does not replace it, anything else is ignored', async () => {
+  const h = harness()
+  h.pulse.take({ type: 'pulse', online: 4, visits: 70, today: 6, cities: { lagos: 3 } })
+  assert.deepEqual(h.pulse.state.numbers, { online: 4, visits: 70, today: 6, cities: { lagos: 3 } }, 'the first number shown is the first frame')
+  h.pulse.take({ type: 'pulse', online: 'x' }); h.pulse.take(null)
+  assert.equal(h.pulse.state.numbers?.online, 4)
+  h.pulse.start(); await h.flush()
+  assert.equal(h.pulse.state.numbers?.online, 1, 'a poll that was asked after the frame is newer than it')
+  const slow = harness()
+  slow.pulse.start()
+  slow.pulse.take({ type: 'pulse', online: 9, visits: 1, today: 9, cities: {} })
+  await slow.flush()
+  assert.equal(slow.pulse.state.numbers?.online, 9, 'a poll started before a frame is older than it and is dropped')
 })

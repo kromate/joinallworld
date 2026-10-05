@@ -14,9 +14,11 @@ import type { PulseResponse } from '../../../types/civic.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { huntSeen } from './civicDrafts.ts'
 import { gemToast, huntChipLines, noticeToast, pulseKey, pulsePath, radioKey, unseenNotices } from './civicModel.ts'
+import { onlineView } from '../hud/onlinePillModel.ts'
+import { usePulse } from '../hud/usePulse.ts'
 import { useCivic, useLoaded } from './useCivic.ts'
 
-const { game, shell } = useApp()
+const { game, shell, api } = useApp()
 const civic = useCivic()
 const view = game.view
 const hunt = computed(() => view.value.civic?.hunt ?? null)
@@ -28,7 +30,10 @@ const { item } = useLoaded<PulseResponse>({
     if (done.data && !done.error) for (const notice of unseenNotices(done.data.notices, globalThis.localStorage, cityId).slice(0, 2).reverse()) game.toast(noticeToast(notice))
   },
 })
-const lines = computed(() => (hunt.value ? huntChipLines(hunt.value, item.value.data) : null))
+// The header pill's number for this city: the same one, as fresh as the pill.
+const pill = usePulse((path) => api.fetchJson(path)).state
+const online = computed(() => (pill.numbers ? onlineView(pill.numbers, view.value.cityId).here : null))
+const lines = computed(() => (hunt.value ? huntChipLines(hunt.value, item.value.data, online.value) : null))
 
 // One more gem since the chip last looked: one toast. The first look only sets the baseline.
 watch(hunt, (now) => {

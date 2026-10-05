@@ -10,7 +10,7 @@ export const POLL_MS = 30000
 export type PulseTone = 'live' | 'stale'
 
 /** What GET /api/world/pulse answers (server/pulse.ts). */
-export interface PulseNumbers { online: number; visits: number; cities: Record<string, number> }
+export interface PulseNumbers { online: number; visits: number; /** Distinct players seen today (0 from a server that does not say). */ today?: number; cities: Record<string, number> }
 
 const whole = (value: number): number => (Number.isFinite(value) && value > 0 ? Math.floor(value) : 0)
 const trim = (value: number): string => String(value).replace(/\.0$/, '')
@@ -40,21 +40,37 @@ export function onlineIn(numbers: PulseNumbers, cityId: string | null | undefine
   return typeof here === 'number' ? whole(here) : null
 }
 
-/** The label read aloud: "12 people online here. 128 people online in Allworld. 4,210 visits in total across Allworld." */
+/**
+ * What the pill is built from. The reader is online themselves, so nothing here is ever 0: the world is at least 1, the city is
+ * at least 1 and never more than the world. `today` is never below the world count (they have all played today).
+ */
+export interface OnlineView { world: number; here: number | null; today: number; alone: boolean }
+export function onlineView(numbers: PulseNumbers, cityId: string | null | undefined): OnlineView {
+  const world = Math.max(1, whole(numbers.online))
+  const city = onlineIn(numbers, cityId)
+  return { world, here: city === null ? null : Math.min(world, Math.max(1, city)), today: Math.max(world, whole(numbers.today ?? 0)), alone: world === 1 }
+}
+
+/** What stands in the pill instead of a bare "1" when the reader is the only one online: a true line, and the way to change it. */
+export function aloneLine(view: Pick<OnlineView, 'today'>): { long: string; short: string } {
+  return view.today >= 2 ? { long: `${compactCount(view.today)} played today`, short: `${compactCount(view.today)} today` } : { long: "You're first here", short: 'First here' }
+}
+
+/** The label read aloud: "128 people online in Allworld, 12 here. 4,210 visits in total." The reader alone hears a warmer, true line. */
 export function pulseAria(numbers: PulseNumbers, tone: PulseTone = 'live', cityId?: string | null): string {
-  const here = onlineIn(numbers, cityId)
-  const world = `${exactCount(numbers.online)} ${noun(numbers.online, 'person', 'people')} online${here === null ? '' : ' in Allworld'}.`
-  const lead = here === null ? '' : `${exactCount(here)} ${noun(here, 'person', 'people')} online here. `
-  const text = `${lead}${world} ${exactCount(numbers.visits)} ${noun(numbers.visits, 'visit', 'visits')} in total${here === null ? '' : ' across Allworld'}.`
-  return `${text}${tone === 'stale' ? ' These numbers may be out of date.' : ''} Open People.`
+  const view = onlineView(numbers, cityId), visits = `${exactCount(numbers.visits)} ${noun(numbers.visits, 'visit', 'visits')} in total`
+  const state = tone === 'stale' ? ' These numbers may be out of date.' : ''
+  if (view.alone) return `You are the only one online right now. ${exactCount(view.today)} ${noun(view.today, 'player', 'players')} today. ${visits}.${state} Invite a friend.`
+  return `${exactCount(view.world)} people online in Allworld${view.here === null ? '' : `, ${exactCount(view.here)} here`}. ${visits}.${state} Open People.`
 }
 
 /** The tooltip: the exact values. Visits are always for the whole game, and it says so. */
 export function pulseTitle(numbers: PulseNumbers, tone: PulseTone = 'live', cityId?: string | null): string {
-  const here = onlineIn(numbers, cityId)
+  const view = onlineView(numbers, cityId)
   const stale = tone === 'stale' ? ' (not up to date)' : ''
-  if (here === null) return `${exactCount(numbers.online)} online now · ${exactCount(numbers.visits)} visits in total${stale}`
-  return `${exactCount(here)} online here · ${exactCount(numbers.online)} in Allworld · ${exactCount(numbers.visits)} visits in total across all of Allworld${stale}`
+  const visits = `${exactCount(numbers.visits)} visits in total across all of Allworld`
+  if (view.alone) return `You are the only one online right now · ${exactCount(view.today)} ${noun(view.today, 'player', 'players')} today · ${visits}${stale}`
+  return `${exactCount(view.world)} in Allworld${view.here === null ? '' : ` · ${exactCount(view.here)} here`} · ${visits}${stale}`
 }
 
 /** Green while the last answer is recent; amber when the last request failed or nothing has come for a while. */

@@ -1,6 +1,7 @@
 // The numbers behind the online pill: who is online and how many visits there have been. One poll of
 // GET /api/world/pulse every 30 s while the page is visible, none while it is hidden, and one at once
-// when the page comes back after more than that. No number is shown until the first answer arrives.
+// when the page comes back after more than that; and the server's own `pulse` frames over the open socket,
+// which carry the same numbers the moment they change (take). No number is shown until the first answer arrives.
 import { reactive } from 'vue'
 import { POLL_MS } from './onlinePillModel.ts'
 import type { PulseNumbers } from './onlinePillModel.ts'
@@ -28,11 +29,11 @@ const count = (value: unknown): number => (typeof value === 'number' && Number.i
 /** The documented answer, or null for anything else. */
 export function readPulse(value: unknown): PulseNumbers | null {
   if (typeof value !== 'object' || value === null) return null
-  const { online, visits, cities } = value as Record<string, unknown>
+  const { online, visits, today, cities } = value as Record<string, unknown>
   if (typeof online !== 'number' || typeof visits !== 'number') return null
   const byCity: Record<string, number> = {}
   if (typeof cities === 'object' && cities !== null) for (const [id, n] of Object.entries(cities)) byCity[id] = count(n)
-  return { online: count(online), visits: count(visits), cities: byCity }
+  return { online: count(online), visits: count(visits), today: count(today), cities: byCity }
 }
 
 export function createPulse(deps: PulseDeps) {
@@ -42,13 +43,17 @@ export function createPulse(deps: PulseDeps) {
   let inFlight = false
   /** Answers so far: the second is asked early, because the first often lands before this page's own socket is counted. */
   let answers = 0
+  /** Counts the frames taken: an answer to a request that started before one arrived is older than it, and is dropped. */
+  let frames = 0
 
   async function poll(): Promise<void> {
     if (inFlight) return
     inFlight = true
+    const before = frames
     try {
       const numbers = readPulse(await deps.fetchJson('/api/world/pulse'))
-      if (numbers) { answers += 1; state.numbers = numbers; state.at = deps.now(); state.failing = false } else state.failing = true
+      if (numbers && frames !== before) state.failing = false
+      else if (numbers) { answers += 1; state.numbers = numbers; state.at = deps.now(); state.failing = false } else state.failing = true
     } catch { state.failing = true } finally { inFlight = false }
   }
   function schedule(): void {
@@ -71,6 +76,12 @@ export function createPulse(deps: PulseDeps) {
       if (!running) return
       if (!deps.visible()) { if (timer !== null) deps.clearTimer(timer); timer = null; return }
       if (state.at === null || deps.now() - state.at >= POLL_MS) void tick(); else schedule()
+    },
+    /** A `pulse` frame from the socket (the server's counts, pushed when they change). Anything else is ignored. */
+    take(frame: unknown): void {
+      const numbers = readPulse(frame)
+      if (!numbers) return
+      frames += 1; state.numbers = numbers; state.at = deps.now(); state.failing = false
     },
     /** The numbers are not trusted any more (the session ended). */
     reset(): void { state.numbers = null; state.at = null; state.failing = false },

@@ -996,6 +996,9 @@ export interface WsConnection {
   // social/live.js
   /** Set while this socket watches live location (`live-watch`): the city whose counts it is sent, or '' for its friends only. */
   liveCity?: string | null
+  // pulse.js
+  /** This socket asked for the counts frames (`pulse-watch`) and is sent them when they change. */
+  pulseWatch?: boolean
 }
 
 /** A parsed client frame: `type` selected the handler; every other field is untrusted. */

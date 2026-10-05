@@ -176,10 +176,11 @@ export const radioRules = (): string[] => [
 // ---- the gem hunt chip ---------------------------------------------------------------------
 
 /** The two small lines of the HUD chip. `pulse` is null until the city counters have loaded: then no number is shown. */
-export function huntChipLines(hunt: { found: number; total: number; claimed: boolean; prize: number }, pulse: Pick<PulseResponse, 'hunt' | 'counters'> | null): { first: string; second: string } {
+export function huntChipLines(hunt: { found: number; total: number; claimed: boolean; prize: number }, pulse: Pick<PulseResponse, 'hunt' | 'counters'> | null, online?: number | null): { first: string; second: string } {
   const found = pulse ? `${count(pulse.hunt.found)} found · ` : ''
   const prize = hunt.claimed ? 'prize claimed today' : `next prize ${money(hunt.prize)}`
-  const people = pulse ? ` · ${count(pulse.counters.online)} online` : ''
+  // The number is the header pill's own when the page has one (it is pushed as it changes); the city's answer can be a minute old.
+  const people = pulse ? ` · ${count(online ?? Math.max(1, pulse.counters.online))} online` : ''
   return { first: `${found}${prize}`, second: `You: ${hunt.found}/${hunt.total} today${people}` }
 }
 /** The toast for one more gem found since the chip last looked ('' when none). `last` is where it looked last. */

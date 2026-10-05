@@ -59,7 +59,7 @@ import type { LifeState } from '../../src/types/life.ts';
 import type { ActionType } from '../../src/types/actions.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { CityCounters, EligibilityCheck, Gate, GovResponse, GovRules, GovYou, HuntResponse, PulseResponse } from '../../src/types/civic.ts';
-import type { ActionOutcome, CivicCityRecord, CivicCollection, Db, RouteContext, RouteHandler, RouteKey, RouteRequest, RouteResult } from '../types.ts';
+import type { ActionOutcome, CivicCityRecord, CivicCollection, Db, RouteContext, RouteHandler, RouteKey, RouteRequest, RouteResult, SessionRecord } from '../types.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { makeContext } from '../../src/game/util.ts';
 import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.ts';
@@ -72,7 +72,9 @@ import { canOccupyVenue, hash53, isSharedAddress } from '../protocol.ts';
 import { moderationService } from '../moderation/service.ts';
 import { AD_KINDS, adsView, removeAd, rent, rentBlock, validateCreative } from '../civic/ads.ts';
 import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong } from '../civic/radio.ts';
+import { characterCity } from '../character.ts';
 import { pulseOf } from '../pulse.ts';
+import type { Viewer } from '../pulse.ts';
 import { checkIn, counters, huntCounters, neighboursView, richListView } from '../civic/residents.ts';
 
 const COUNTER_CACHE_MS = 5000;
@@ -135,16 +137,18 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
   // Presence is a scan over open sockets per resident, so the city totals are cached briefly.
   /** Players online in this city: the same number the header pill shows (server/pulse.ts), so every surface agrees. */
   const pulses = pulseOf(ctx);
-  const onlineHere = (cityId: CityId): number => pulses.pulse().cities[cityId] ?? 0;
+  const onlineHere = (cityId: CityId, viewer: Viewer | null): number => pulses.pulse(viewer).cities[cityId] ?? 0;
+  /** The caller, as the pulse counts them: online themselves, in the city their character is in. */
+  const viewerOf = (session: SessionRecord | null | undefined): Viewer | null => (session ? { id: session.publicId, city: characterCity(session) } : null);
   const counterCache = new Map<CityId, { at: number; value: CityCounters }>();
-  function cityCounters(city: CivicCityRecord, cityId: CityId): CityCounters {
+  function cityCounters(city: CivicCityRecord, cityId: CityId, viewer: Viewer | null): CityCounters {
     const hit = counterCache.get(cityId), now = ctx.now();
-    if (hit && now >= hit.at && now - hit.at < COUNTER_CACHE_MS) return { ...hit.value, online: onlineHere(cityId) };
+    if (hit && now >= hit.at && now - hit.at < COUNTER_CACHE_MS) return { ...hit.value, online: onlineHere(cityId, viewer) };
     // `online` is answered from the pulse below, for every caller: asking the presence registry about each resident here
     // would be work in proportion to the city's residents on every check-in, for a number that is then replaced.
     const value = counters(city, now, ttl(), () => false);
     counterCache.set(cityId, { at: now, value });
-    return { ...value, online: onlineHere(cityId) };
+    return { ...value, online: onlineHere(cityId, viewer) };
   }
 
   const rules = (cityId: CityId): GovRules => ({ beta: true, minDaysToRun: ELECTION.minDaysToRun, minDaysToVote: ELECTION.minDaysToVote, minWorkDays: ELECTION.minWorkDays, votesPerAddress: ctx.config.votesPerAddress, filingFee: ELECTION.filingFee, sloganMin: ELECTION.sloganMin, sloganMax: ELECTION.sloganMax,
@@ -179,11 +183,11 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       you: mine ? { found, total: mine.gems.length, claimed: mine.claimed, canClaim: found === mine.gems.length && !mine.claimed } : null };
   };
 
-  function pulseBody(city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null, checkedIn: boolean): PulseResponse {
+  function pulseBody(city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null, checkedIn: boolean, viewer: Viewer | null): PulseResponse {
     const now = ctx.now(), view = govView(city, now, who?.id ?? null);
     const hunt = huntCounters(city, now);
     const venue = life && canOccupyVenue(life, life.location) ? life.location : null;
-    return { city: cityId, checkedIn, counters: cityCounters(city, cityId),
+    return { city: cityId, checkedIn, counters: cityCounters(city, cityId, viewer),
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
       notices: notices(city, now, cityName(cityId), openedAtOf(city, cityId, now), civicTitle(cityId)),
@@ -199,16 +203,16 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       // counter current; it is allowed a few writes a minute and is read-only beyond that.
       if (signedIn && ctx.allow(`civic:checkin:${signedIn}`, 6)) {
         const body = await store.transact(db => {
-          const { who, life, city, resident } = enter(db, request, cityId);
+          const { session, who, life, city, resident } = enter(db, request, cityId);
           counterCache.delete(cityId);
           // City news the resident has not been told yet goes into their own Updates feed, once.
           const fresh = resident ? notices(city, ctx.now(), cityName(cityId), openedAtOf(city, cityId, ctx.now()), civicTitle(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
           if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) }, 'only notices whose id is not yet in life.civic.news are posted');
-          return pulseBody(city, cityId, who, life, resident);
+          return pulseBody(city, cityId, who, life, resident, viewerOf(session));
         }, { durable: false }); // a check-in acknowledges nothing: news not yet stored is simply posted again
         return { body, renew: true };
       }
-      return { body: await store.read(db => { const { who, life, city } = peek(db, request, cityId); return pulseBody(city, cityId, who, life, false); }) };
+      return { body: await store.read(db => { const { session, who, life, city } = peek(db, request, cityId); return pulseBody(city, cityId, who, life, false, viewerOf(session)); }) };
     },
 
     // ---- governor -------------------------------------------------------------------------
@@ -296,7 +300,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const viewer = ctx.publicSession(session);
         limit('read', session.publicId, 120);
         return { city: cityId, demonym: DEMONYMS[cityId] ?? `${cityName(cityId)} residents`, hidden: civic.prefs[viewer.id]?.directory === true,
-          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, viewer.id, districts(cityId)), online: onlineHere(cityId) };
+          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, viewer.id, districts(cityId)), online: onlineHere(cityId, viewerOf(session)) };
       });
       return { body };
     },
@@ -383,13 +387,13 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       const cityId = cityParam(request.query.get('city'));
       const signedIn = await store.read(db => request.session(db)?.publicId ?? null);
       limit('read', signedIn ?? `ip:${request.ip}`, 120);
-      const build = (civic: CivicCollection, city: CivicCityRecord, who: PlayerRef | null) => ({ city: cityId, ...richListView(city, ctx.now(), ttl(), civic.prefs, who?.id ?? null), counters: cityCounters(city, cityId) });
+      const build = (civic: CivicCollection, city: CivicCityRecord, who: PlayerRef | null, viewer: Viewer | null) => ({ city: cityId, ...richListView(city, ctx.now(), ttl(), civic.prefs, who?.id ?? null), counters: cityCounters(city, cityId, viewer) });
       // Opening the list checks the viewer in first, so their own row is never stale.
       if (signedIn && ctx.allow(`civic:checkin:${signedIn}`, 6)) {
-        const body = await store.transact(db => { const { who, civic, city } = enter(db, request, cityId); counterCache.delete(cityId); return build(civic, city, who); }, { durable: false });
+        const body = await store.transact(db => { const { session, who, civic, city } = enter(db, request, cityId); counterCache.delete(cityId); return build(civic, city, who, viewerOf(session)); }, { durable: false });
         return { body, renew: true };
       }
-      return { body: await store.read(db => { const { who, civic, city } = peek(db, request, cityId); return build(civic, city, who); }) };
+      return { body: await store.read(db => { const { session, who, civic, city } = peek(db, request, cityId); return build(civic, city, who, viewerOf(session)); }) };
     },
     'POST /api/civic/prefs': async (request) => {
       const body = await request.json();

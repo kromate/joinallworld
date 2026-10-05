@@ -178,6 +178,8 @@ test('the hunt chip: no number until the counters are here; a toast for one more
   assert.deepEqual(huntChipLines(hunt, null), { first: 'next prize ₦3,000', second: 'You: 1/3 today' })
   const pulse = { hunt: { found: 1234, today: 0, claims: 0, prize: 3000, gemsPerDay: 3 }, counters: { players: 9, online: 7, visits: 2 } }
   assert.deepEqual(huntChipLines({ ...hunt, claimed: true }, pulse), { first: '1,234 found · prize claimed today', second: 'You: 1/3 today · 7 online' })
+  assert.equal(huntChipLines(hunt, pulse, 12).second, 'You: 1/3 today · 12 online', 'the header pill\'s own number wins when the page has one')
+  assert.equal(huntChipLines(hunt, { ...pulse, counters: { ...pulse.counters, online: 0 } }).second, 'You: 1/3 today · 1 online', 'the reader is online: never 0')
   assert.equal(gemToast(null, 'lagos:1', hunt), '', 'the first look is the baseline')
   assert.equal(gemToast({ key: 'lagos:1', found: 0 }, 'lagos:1', hunt), 'Gem found: 1 of 3 today.')
   assert.equal(gemToast({ key: 'lagos:1', found: 2 }, 'lagos:1', { found: 3, total: 3 }), 'Gem found — that is all 3. Claim your prize from the gem hunt chip.')

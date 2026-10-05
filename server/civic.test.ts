@@ -398,9 +398,9 @@ test('neighbours, rich list and counters: real counts, truthful presence, opt-ou
   const peer = await f.joinRoom(bola);
   wait(6000);
   pulse = await get<PulseResponse>('/api/civic/pulse?city=lagos', ada);
-  assert.deepEqual(pulse.counters, { players: 3, online: 1, visits: 3 });
+  assert.deepEqual(pulse.counters, { players: 3, online: 2, visits: 3 }, 'Bola, and Ada who is asking');
   let hood = await get<NeighboursResponse>('/api/civic/neighbours?city=lagos', ada);
-  assert.equal(hood.demonym, 'Lagosians'); assert.equal(hood.total, 3); assert.equal(hood.online, 1); assert.equal(hood.hidden, false);
+  assert.equal(hood.demonym, 'Lagosians'); assert.equal(hood.total, 3); assert.equal(hood.online, 2); assert.equal(hood.hidden, false);
   // Every life in the merged game lives somewhere (the default house is in Yaba), so nobody is "not set".
   const yaba = must(hood.districts.find((group) => group.id === 'yaba'), 'Yaba district');
   assert.equal(yaba.label, 'Yaba'); assert.equal(yaba.count, 3);
@@ -408,7 +408,9 @@ test('neighbours, rich list and counters: real counts, truthful presence, opt-ou
   assert.deepEqual(hood.districts.map((group) => group.id), ['mushin', 'yaba', 'lekki', 'ikoyi', 'banana']);
   peer.ws.close(); await new Promise((resolve) => peer.ws.once('close', resolve)); await new Promise((resolve) => setTimeout(resolve, 30));
   wait(6000);
-  assert.equal((await get<NeighboursResponse>('/api/civic/neighbours?city=lagos', ada)).online, 0, 'presence drops when the connection closes');
+  assert.equal((await get<NeighboursResponse>('/api/civic/neighbours?city=lagos', ada)).online, 2, 'a connection that closed a moment ago is still inside the grace (a reload)');
+  wait(21000);
+  assert.equal((await get<NeighboursResponse>('/api/civic/neighbours?city=lagos', ada)).online, 1, 'presence drops after the grace; the one asking is always online');
   // Opt out of the directory: still counted, no longer listed for others.
   assert.deepEqual((await post('/api/civic/prefs', { directory: false }, chidi)).prefs, { richList: true, directory: false });
   hood = await get<NeighboursResponse>('/api/civic/neighbours?city=lagos', ada);

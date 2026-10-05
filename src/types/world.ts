@@ -117,11 +117,11 @@ export type WorldPeopleResponse =
   | { items: WorldPerson[]; next: number | null }
   | { items: []; next: null; short: true }
 
-export interface WorldPulseResponse { online: number; visits: number; cities: Record<string, number> }
+export interface WorldPulseResponse { online: number; visits: number; today: number; cities: Record<string, number> }
 export interface WorldHttpRoutes {
   /** Settles (or creates) the caller's life in that city exactly as a poll would, so it can also answer 409 `city_moved` and 503 `storage_unavailable`. */
   'GET /api/world/me': { query: { city: CityId }; response: Ok<WorldMeResponse>; errors: WorldCommon | StorageErrorCode | 'city_moved' }
-  /** Who is online now and how many visits there have been (server/pulse.ts); `cities` counts the players whose socket is in a room of that city. */
+  /** Who is online now and how many visits there have been (server/pulse.ts); `cities` counts the online players whose character is in that city (visitors too); the caller is always counted. */
   'GET /api/world/pulse': { query: Record<string, never>; response: Ok<WorldPulseResponse>; errors: HostErrorCode | SessionErrorCode | 'pulse_rate_limited' }
   'GET /api/world/city': { query: { city: CityId; v?: string }; response: Ok<WorldCityResponse>; errors: WorldCommon }
   'GET /api/world/lga/:id': { params: { id: LgaId }; query: { city: CityId }; response: Ok<WorldLgaResponse>; errors: WorldLga }

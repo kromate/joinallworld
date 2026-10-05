@@ -55,13 +55,19 @@ async function fixture(t: TestContext, sleeps = false) {
     const body = await response.json() as { session: { id: string; name: string } };
     return { ...body.session, cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '' };
   }
+  /** `heard` collects the `pulse` frames this socket is sent. */
   async function socket(who: Device) {
     const response = await send(origin + '/socket', { headers: { origin, cookie: who.cookie, upgrade: 'websocket' } });
     assert.equal(response.status, 101);
-    const ws = response.webSocket as StubSocket;
-    ws.addEventListener('message', (event) => { if ((JSON.parse(event.data) as { type: string }).type === 'heartbeat') ws.send(JSON.stringify({ type: 'heartbeat-ack' })); });
+    const ws = response.webSocket as StubSocket & { heard?: Pulse[] };
+    ws.heard = [];
+    ws.addEventListener('message', (event) => {
+      const frame = JSON.parse(event.data) as { type: string } & Partial<Pulse>;
+      if (frame.type === 'heartbeat') ws.send(JSON.stringify({ type: 'heartbeat-ack' }));
+      else if (frame.type === 'pulse') ws.heard?.push(frame as Pulse);
+    });
     ws.accept(); sockets.push(ws);
-    return ws;
+    return ws as StubSocket & { heard: Pulse[] };
   }
   const pulse = async (who: Device): Promise<Pulse> => { const response = await request('/api/world/pulse', null, who.cookie); assert.equal(response.status, 200); return await response.json() as Pulse; };
   const storage = () => mf.unsafeGetDurableObjectStorage('joinallworld-pulse', 'JoinAllworldState', { name: 'joinallworld-v1' });
@@ -84,7 +90,8 @@ test('Cloudflare pulse: online is distinct live players, visits one per player p
   assert.equal((await f.pulse(ada)).visits, 2, 'the same day is not counted twice');
   const bola = await f.device('Bola');
   assert.equal((await f.pulse(bola)).visits, 3, 'a player who arrives after the seed adds one');
-  assert.equal((await f.pulse(bola)).online, 2, 'a player who only polls is not online');
+  assert.equal((await f.pulse(bola)).online, 3, 'a player who only polls is not online, but is counted in the answer they ask for');
+  assert.equal((await f.pulse(ada)).online, 2, 'and not in anyone else\'s');
 
   // The count is a row of the collections table, beside the other collections.
   const stored = async () => JSON.parse((await (await f.storage()).exec("SELECT value FROM collections WHERE name = 'pulse'"))[0]?.value ?? '{}') as { visits?: number };
@@ -100,7 +107,7 @@ test('Cloudflare pulse: online is distinct live players, visits one per player p
   await f.restart();
   const after = await f.pulse(bola);
   assert.equal(after.visits, 3, 'visits survive a restart');
-  assert.equal(after.online, 0, 'nobody is connected any more');
+  assert.equal(after.online, 1, 'nobody is connected any more: only the player asking is counted');
 
   // A new Lagos day for Ada: her stored day moves back, and her next visit counts once.
   const db = await f.storage(), secret = ada.cookie.slice(ada.cookie.indexOf("=") + 1);
@@ -111,4 +118,28 @@ test('Cloudflare pulse: online is distinct live players, visits one per player p
   await f.restart();
   assert.equal((await f.pulse(ada)).visits, 4);
   assert.equal((await f.pulse(ada)).visits, 4);
+});
+
+test('Cloudflare pulse frame: counts are pushed to watching sockets, also after the object slept, and no row is written for a push', async (t) => {
+  const f = await fixture(t, true);
+  const ada = await f.device('Ada'), bola = await f.device('Bola'), cleo = await f.device('Cleo'), dayo = await f.device('Dayo');
+  const join = (ws: StubSocket) => ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
+  const until = async (what: string, test: () => boolean, ms = 6000) => { const end = Date.now() + ms; while (!test()) { if (Date.now() > end) assert.fail(what); await new Promise((resolve) => setTimeout(resolve, 50)); } };
+  const a = await f.socket(ada), b = await f.socket(bola);
+  join(a); join(b);
+  a.send(JSON.stringify({ type: 'pulse-watch' }));
+  await until('the first frame', () => a.heard.length > 0);
+  assert.ok((a.heard.at(-1)?.online ?? 0) >= 1, 'the first frame already counts the watcher');
+  const quiet = await f.socket(cleo);
+  join(quiet);
+  await until('an arrival is pushed', () => a.heard.at(-1)?.online === 3);
+  assert.equal(b.heard.length, 0, 'a socket that did not ask is sent nothing');
+  const writes = async () => (await (await f.storage()).exec('SELECT COUNT(*) AS n FROM collections WHERE name = ?', 'pulse'))[0]?.n;
+  const before = await writes();
+  // The object sleeps with its sockets; the watching socket still carries what it asked for.
+  await f.hibernate();
+  const d = await f.socket(dayo); join(d);
+  await until('an arrival after the sleep is pushed', () => a.heard.at(-1)?.online === 4);
+  assert.equal(a.heard.at(-1)?.cities['lagos'] !== undefined, true);
+  assert.equal(await writes(), before, 'a push writes no row');
 });

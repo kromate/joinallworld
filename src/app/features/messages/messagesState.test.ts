@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { afterEach, test } from 'node:test'
 import { showConversation, takeDraft, ui } from './messagesState.ts'
 
-afterEach(() => { showConversation(null) })
+afterEach(() => { showConversation(null); ui.prefill = '' })
 
 test('sending takes the draft and clears the field; an empty or unopened draft sends nothing', () => {
   showConversation('dm.ada.me')
@@ -27,4 +27,16 @@ test('switching conversation, or going back to the list, drops the old draft and
   ui.draft = 'another unsent line'
   showConversation(null)
   assert.deepEqual([ui.open, ui.draft], [null, ''])
+})
+
+test('a sentence another screen has ready (asking a friend) fills the box of the next conversation opened, once', () => {
+  ui.prefill = 'Hi! I am stuck.'
+  showConversation(null)
+  assert.equal(ui.draft, '', 'the list has no box to fill')
+  assert.equal(ui.prefill, 'Hi! I am stuck.', 'it waits for a conversation to be opened')
+  showConversation('to:friend')
+  assert.equal(ui.draft, 'Hi! I am stuck.')
+  assert.equal(ui.prefill, '')
+  showConversation('to:other')
+  assert.equal(ui.draft, '', 'the next conversation starts empty')
 })

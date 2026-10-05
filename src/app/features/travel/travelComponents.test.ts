@@ -263,10 +263,10 @@ test('the roadside prompt: nothing waiting, then a choice with its cost and chan
 
 test('the roadside chip: nothing without an event, a button with it', async () => {
   const path = '/src/app/features/travel/RoadsideChip.vue'
-  assert.equal(await render(path), '<!---->')
+  assert.equal(text(await render(path)), '', 'nothing: the chip, and the "What you can do now" card beside it, are both empty for a life that is fine')
   await withState((state) => ({ ...state, travel: { ...state.travel, event: { id: 'hawker', at: app.game.view.value.now } } }), async () => {
     const html = await render(path)
-    assert.match(html, /<button type="button" class="map-event-chip( is-new)?">/)
+    assert.match(html, /<button type="button" class="(is-new )?map-event-chip( is-new)?">/)
     assert.ok(text(html).includes('Hawker in the go-slow Tap to answer'))
   })
 })

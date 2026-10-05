@@ -9,6 +9,8 @@ import { computed, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useAct } from '../kit/act.ts'
+import { money } from '../../ui/format.ts'
+import { rideDebtText } from '../../../game/relief.ts'
 import LgaCard from '../world/LgaCard.vue'
 import { linkWords } from './travelBoundary.ts'
 import { visitorHome } from './visitorModel.ts'
@@ -23,6 +25,15 @@ const model = computed(() => visitorHome(estate.value, offline.value))
 const choosing = ref<'buy' | 'main' | null>(null)
 
 const rest = (): Promise<boolean> => act('lodge', () => command('estate.lodge'))
+/** The ride home on credit asks once, because it is a debt. */
+const askCredit = ref(false)
+async function rideOnCredit(): Promise<void> {
+  const offer = estate.value.ride.offer
+  if (!offer) return
+  if (!askCredit.value) { askCredit.value = true; return }
+  askCredit.value = false
+  if (await act('credit', () => command('estate.relocate', { to: offer.to, mode: offer.mode, credit: true }))) shell.closeSheet()
+}
 function goHome(): void {
   const home = estate.value.home
   if (!home) return
@@ -45,6 +56,11 @@ watch(model, (now, was) => { const open = shell.sheet.value; if (was && !now && 
       <p v-if="model.rest.why" class="ui-why">{{ model.rest.why }}</p>
       <p v-else class="ui-note">A bed and a bath: Energy and Hygiene are restored at once.</p>
       <button v-if="model.home" type="button" class="ui-button is-block" data-visitor="home" @click="goHome"><GameIcon inline name="globe" /><span>{{ model.home.label }}</span></button>
+      <template v-if="estate.ride.offer">
+        <button type="button" class="ui-button is-block" data-visitor="credit" :disabled="pending !== null || Boolean(offline)" @click="rideOnCredit"><GameIcon inline name="bus" /><span>{{ askCredit ? 'Yes: ride home and owe it' : `Ride home on credit · ${money(estate.ride.offer.fare)} owed` }}</span></button>
+        <p class="ui-note">{{ askCredit ? `You will owe ${money(estate.ride.offer.fare)}. It comes out of what you earn, half of each. No skipping the trip.` : 'Cannot pay the fare? It is advanced and you repay it from your earnings.' }}</p>
+      </template>
+      <p v-if="estate.ride.debt" class="ui-why">{{ rideDebtText(estate.ride.debt) }}.</p>
       <button type="button" class="ui-button is-block" data-visitor="things" @click="things"><GameIcon inline name="map" /><span>Things to do in {{ estate.cityName }}</span></button>
     </div>
     <h3>A home here, if you want one</h3>

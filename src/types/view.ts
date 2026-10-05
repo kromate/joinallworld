@@ -14,7 +14,7 @@ import type {
   MissionKind, OnboardingStep, StartHomeDefinition, TierDefinition, TransferLimits, TravelModeDefinition, VenueZone,
 } from './content.ts'
 import type {
-  AccessorySlot, ActivityId, WorldCityId, ComingSoonId, DepositTermId, DreamId, EventOccurrenceKey, FamilyId, FurnitureId, GemKind,
+  AccessorySlot, ActivityId, CityLinkMode, WorldCityId, ComingSoonId, DepositTermId, DreamId, EventOccurrenceKey, FamilyId, FurnitureId, GemKind,
   HouseId, HouseStyle, HouseStyleField, HouseTierId, IllnessCause, ItemId, JobId, LagosDay, LagosWeek, LedgerLine, LgaId, LgaVia,
   Look, LotteryId, MissionId, Moodlet, Ms, NeedId, NeedMap, Notice, NpcId, OnboardingStage, PerkId, PlotAddress, RoadsideEventId,
   SkillId, SkillMap, SpotId, StarterGoalId, StartHomeId, TierId, TraitId, TravelModeId, VenueId, Wardrobe, WardrobeKind, WishId,
@@ -357,7 +357,7 @@ export interface TripSkipOffer {
   /** The price is large enough to be asked about once more before it is paid. */
   confirm: boolean
   /** Why it cannot be bought right now. For 'insufficient_funds' the reason is "You need ₦X more". */
-  blocked: Block<'almost_there' | 'insufficient_funds'> | null
+  blocked: Block<'almost_there' | 'insufficient_funds' | 'ride_debt'> | null
 }
 
 export interface TravelView {
@@ -655,6 +655,35 @@ export interface EstateView {
   makeMain: { blocked: string | null } | null
   /** A room at a guest house ('estate.lodge'): the price, and why it cannot be taken now (null when it can). */
   lodging: { fee: number; blocked: string | null }
+  /** The ride home on credit (src/game/relief.ts): what is owed, and the ride on offer to a visitor who cannot pay the cheapest fare to the main home. */
+  ride: RideCreditView
+}
+
+export interface RideCreditView {
+  /** Naira still owed for a ride home taken on credit (0 when nothing is). */
+  debt: number
+  offer: { to: WorldCityId; mode: CityLinkMode; fare: number } | null
+}
+/** One thing a stuck player can do right now. `venue` is where it is done (null: anywhere); `here` says they are already there. */
+export interface ReliefAction {
+  id: 'odd-job' | 'bench' | 'tap' | 'credit-ride' | 'friend' | 'cash-box' | 'repay'
+  label: string
+  detail: string
+  /** Why it cannot be done now (null when it can). */
+  blocked: string | null
+  venue: string | null
+  here: boolean
+  activity: string | null
+  spot: string | null
+  to: WorldCityId | null
+  mode: CityLinkMode | null
+}
+export interface ReliefHelp {
+  /** What kind of moment this is; a dismissed card is not shown again for the same key. */
+  key: string
+  title: string
+  line: string
+  actions: ReliefAction[]
 }
 
 // ---- home ---------------------------------------------------------------------------------
@@ -1110,7 +1139,7 @@ export const VIEW_FIELD_KEYS = {
   property: ['car', 'cars', 'house', 'houses', 'nextHouse', 'rent'],
   estate: [
     'arrears', 'away', 'change', 'cheapest', 'city', 'cityName', 'home', 'lga', 'lgaConfirmed', 'lgaVia', 'lgas', 'links', 'living', 'lodging', 'makeMain', 'packed',
-    'placed', 'plot', 'rules', 'settle', 'style', 'styles', 'tier', 'tiers', 'unit', 'upgrade', 'visiting',
+    'placed', 'plot', 'ride', 'rules', 'settle', 'style', 'styles', 'tier', 'tiers', 'unit', 'upgrade', 'visiting',
   ],
   home: ['ambience', 'atHome', 'door', 'grid', 'groceries', 'house', 'kitchen', 'placed', 'prices', 'quality', 'refundRate', 'stocked', 'stored', 'window'],
   onboarding: [

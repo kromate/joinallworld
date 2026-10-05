@@ -1,0 +1,17 @@
+/* "What you can do now": the card in the HUD, and the same list in a sheet. Classes are prefixed relief-. */
+.relief-card{display:grid;gap:var(--s-2);padding:var(--s-3);background:var(--c-surface-solid,#fff);border:1px solid var(--c-line,#e4e7e5);border-radius:var(--r-sheet,18px);box-shadow:var(--shadow-soft);color:var(--c-ink);pointer-events:auto;text-align:left}
+.relief-card header{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2)}
+.relief-card header b{font-size:var(--t-heading,15px)}
+.relief-card p{margin:0;font-size:13px;color:var(--c-ink-2,#39404b)}
+.life-ui .relief-close{flex:none;width:var(--tap,44px);height:var(--tap,44px);margin:-8px -8px -8px 0;border-radius:50%;background:none;font-size:22px;line-height:1;color:var(--c-muted)}
+.relief-actions{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.relief-actions li{display:flex;align-items:center;gap:10px;min-width:0;padding:6px 8px;border-radius:14px;background:var(--c-fill,#f2f4f3)}
+.relief-mark{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--c-green-soft);color:var(--c-green-dark)}
+.relief-text{flex:1;min-width:0}
+.relief-text b{display:block;font-size:13px}
+.relief-text small{display:block;font-size:12px;color:var(--c-muted);overflow-wrap:anywhere}
+.life-ui .relief-go{flex:none;min-height:var(--tap,44px);padding:0 14px;border-radius:999px;background:var(--c-green-dark);color:#fff;font-size:12px;font-weight:700}
+.life-ui .relief-go:disabled{background:#d9dcdf;color:#454b55}
+.relief-link{display:grid;gap:var(--s-2);padding:var(--s-2) var(--s-3);border-radius:14px;background:var(--c-amber-soft);color:var(--c-amber-dark)}
+.relief-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s-2)}
+.relief-link p{margin:0;font-size:12px}

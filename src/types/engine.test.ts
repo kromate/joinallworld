@@ -361,8 +361,10 @@ function complete(read: Record<string, unknown>, actual: object, what: string): 
 function checkState(state: LifeState, what: string): void {
   assert.deepEqual(keys(state), sorted(LIFE_STATE_KEYS), `${what}: top-level keys`)
   for (const read of Object.values(readers)) for (const [field, value] of Object.entries(read(state))) assert.notEqual(value, undefined, `${what}: state.${field}`)
+  // A field that is ABSENT until it has something to say (the ride debt) is listed but need not exist.
+  const optional = ['rideDebt']
   for (const [slice, list] of Object.entries(SLICE_FIELD_KEYS)) {
-    assert.deepEqual(keys(state[slice as keyof typeof SLICE_FIELD_KEYS]), sorted(list), `${what}: keys of state.${slice}`)
+    assert.deepEqual(keys(state[slice as keyof typeof SLICE_FIELD_KEYS]).filter((key) => !optional.includes(key)), sorted(list).filter((key) => !optional.includes(key)), `${what}: keys of state.${slice}`)
   }
   for (const [slice, read] of Object.entries(inner)) complete(read(state), state[slice as keyof typeof inner], `${what}: state.${slice}`)
   assert.deepEqual(keys(state.needs), sorted(NEED_IDS), `${what}: state.needs`)

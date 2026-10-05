@@ -368,6 +368,11 @@ export interface TravelState {
   eventDays: Partial<Record<RoadsideEventId, LagosDay>>
   /** True once a trip between cities was skipped ('travel.skip': the first such skip is free). False on a save from before skipping. */
   skipped: boolean
+  /**
+   * Naira still owed for a ride home taken on credit (systems/relief: src/game/relief.ts). ABSENT when nothing is owed, so a life from
+   * before the rule is unchanged. Repaid from earnings; while it is above zero no other trip between cities starts.
+   */
+  rideDebt?: number
 }
 
 /** OWNER world. */
@@ -1107,7 +1112,7 @@ export const SYSTEM_STATE_KEYS = {
  */
 export const SLICE_FIELD_KEYS = {
   career: ['city', 'auto', 'autoDay', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
-  travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'skipped', 'trips', 'visited'],
+  travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'rideDebt', 'skipped', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],
   property: ['car', 'cars', 'house'],

@@ -86,6 +86,7 @@ import { lagosTime } from '../clock.ts';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
 import { skipOffer, skipTrip } from '../trip-skip.ts';
+import { cleanRideDebt, isReliefActivity, reliefActivities, reliefBlock, repayRide } from '../relief.ts';
 
 const MAP_WIDTH = 1000, MAP_HEIGHT = 700;
 const MAX_COOLDOWNS = 80;
@@ -355,7 +356,7 @@ function rollActivity(state: LifeState, id: ActivityId, rule: ActivityOutcomeRul
 /** The starter job's shift has one break for the whole character: it is filed once, whichever city's counter it was worked at. */
 const SHARED_SHIFT = 'helper-shift';
 const isStarterShift = (def: { requiresJob?: unknown; careerTrack?: unknown } | undefined): boolean => Boolean(def?.requiresJob) && !def?.careerTrack;
-const cooldownKey = (city: string, def: { id: string; requiresJob?: unknown; careerTrack?: unknown }): string => isStarterShift(def) ? SHARED_SHIFT : cityReference(city, def.id);
+const cooldownKey = (city: string, def: { id: string; requiresJob?: unknown; careerTrack?: unknown }): string => isStarterShift(def) ? SHARED_SHIFT : isReliefActivity(def) ? def.id : cityReference(city, def.id);
 const cooldownLeft = (state: LifeState, id: string, now: number): number => {
   const def = findActivity(id, state.estate.city)?.def;
   const book = state.travel?.cooldowns ?? {};
@@ -394,7 +395,7 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   const trip = saved.lastTrip;
   const lastTrip = isRecord(trip) && isVenue(trip.to, ctx.cityId) && isVenue(trip.from, ctx.cityId)
     && (trip.mode === null || isModeId(trip.mode)) ? { mode: trip.mode, from: trip.from, to: trip.to } : null;
-  const cooldowns = cleanCooldowns(saved.cooldowns, ctx.cityId, now);
+  const cooldowns = cleanCooldowns(saved.cooldowns, ctx.cityId, now), owed = cleanRideDebt(saved.rideDebt);
   state.travel = {
     home: houseSpotFor(ctx.cityId, saved.home) ? String(saved.home) : defaultHouseFor(ctx.cityId).id,
     event, lastTrip,
@@ -405,6 +406,7 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
     gigs: isRecord(saved.gigs) && safeCount(saved.gigs.day) && safeCount(saved.gigs.count) ? { day: saved.gigs.day, count: Math.min(saved.gigs.count, GIG_DAILY_LIMIT) } : { day: 0, count: 0 },
     eventDays: Object.fromEntries(Object.entries(isRecord(saved.eventDays) ? saved.eventDays : {}).filter(([id, day]) => isEventId(id) && EVENTS[id].oncePerDay && safeCount(day))),
     skipped: saved.skipped === true,
+    ...(owed ? { rideDebt: owed } : {}),
   };
 }
 
@@ -490,7 +492,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
  * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
  */
 const play = PLAYS ? {
-  actions: { travel, 'world.roadside': roadside, 'travel.skip': skipTrip },
+  actions: { travel, 'world.roadside': roadside, 'travel.skip': skipTrip, 'travel.repay-ride': repayRide },
   advance(state, dt, ctx) {
     const now = finite(ctx?.now) ? ctx.now : state.t;
     if (state.travel.event && now - state.travel.event.at >= EVENT_TTL_SECONDS * 1000) state.travel.event = null;
@@ -543,10 +545,12 @@ export default {
     },
   },
   view,
+  activitiesFor: reliefActivities,
   modifiers: {
     'activity.block': (value, state, data, ctx) => {
       const def = data?.def;
       if (value || !def) return value;
+      if (isReliefActivity(def)) { const held = reliefBlock(state, def); if (held) return held; }
       const left = cooldownLeft(state, def.id, ctx?.now ?? state.t);
       if (left > 0) return { code: 'cooldown', reason: `You did this recently. ${def.label} is available again in ${left >= 60 ? `${Math.floor(left / 60)}m ${left % 60}s` : `${left}s`}.` };
       if (isGig(def) && gigsToday(state, ctx?.now ?? state.t) >= GIG_DAILY_LIMIT) {

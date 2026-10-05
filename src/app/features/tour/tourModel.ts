@@ -61,7 +61,7 @@ export function cityWords(names: readonly string[]): string {
 function travelText(context: StepContext): string {
   const { cities, country } = context.world ?? { cities: [], country: 'Nigeria' }
   if (!cities.length) return `Allworld is the real world, one city at a time, and you will travel between them to see what there is to do in each. ${country} comes first, and more of Africa and the world are coming.`
-  return `The world map, at the end of the Map list, takes you to other real cities like ${cityWords(cities)}: go and see what there is to do there. Cities in ${country} are open now, and more of Africa and the world are coming.`
+  return `Tap World at the top of the Map, a city like ${cityWords(cities)}, then the bus, train or flight: you are on your way, and your home stays yours while you visit. Cities in ${country} are open now, and more of Africa and the world are coming.`
 }
 
 export const STEPS: readonly TourStep[] = [

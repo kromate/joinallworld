@@ -54,7 +54,8 @@ test('same local activity and venue ids keep separate histories through a cold-o
     assert.equal(state.travel.gigs.count, 2, 'the earning cap remains global')
     const bUnit = b.rules.units[0]
     assert.ok(bUnit)
-    assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: bUnit.id } }, context(state)).code, 'lga_set')
+    state.cash += 100_000
+    assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: bUnit.id, home: 'buy' } }, context(state)).code, 'home_bought')
     walk(state, 'home')
     walk(state, 'test-square')
     assert.ok(state.travel.visited.includes(cityReference(a.id, 'test-square')))

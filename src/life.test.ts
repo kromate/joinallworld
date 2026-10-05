@@ -173,8 +173,8 @@ test('home is reachable by every mode: a paid ride needs its fare, trek is free,
     assert.equal(state.cash, 0); assert.equal(state.activeAction, null);
   }
   assert.equal(startTravel(state, 'home', 'trek').code, 'started');
-  assert.equal(must(state.activeAction).duration, 18, 'Freedom Park → Home (Yaba) crosses the lagoon');
-  advanceLife(state, 17);
+  assert.equal(must(state.activeAction).duration, 15, 'Freedom Park → Home (Yaba) crosses the lagoon: the longest a trip inside a city takes');
+  advanceLife(state, 14);
   assert.equal(state.location, 'park');
   advanceLife(state, 1);
   assert.equal(state.location, 'home');

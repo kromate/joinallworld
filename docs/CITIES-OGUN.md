@@ -29,15 +29,15 @@ All fares and simulated durations are beta game values:
 
 | Link | Mode | Fare | Duration |
 |---|---|---:|---:|
-| Lagos–Ota | road | ₦2,000 | 60 seconds |
-| Lagos–Abeokuta | road | ₦3,500 | 120 seconds |
-| Lagos–Abeokuta | rail | ₦7,000 | 80 seconds |
-| Ota–Abeokuta | road | ₦2,500 | 90 seconds |
-| Abeokuta–Ibadan | road | ₦3,000 | 90 seconds |
-| Abeokuta–Ibadan | rail | ₦4,000 | 45 seconds |
-| Abeokuta–Sagamu | road | ₦2,500 | 90 seconds |
-| Ota–Sagamu | road | ₦2,500 | 90 seconds |
-| Sagamu–Ijebu-Ode | road | ₦1,500 | 50 seconds |
+| Lagos–Ota | road | ₦2,000 | 26 seconds |
+| Lagos–Abeokuta | road | ₦3,500 | 29 seconds |
+| Lagos–Abeokuta | rail | ₦7,000 | 19 seconds |
+| Ota–Abeokuta | road | ₦2,500 | 27 seconds |
+| Abeokuta–Ibadan | road | ₦3,000 | 28 seconds |
+| Abeokuta–Ibadan | rail | ₦4,000 | 19 seconds |
+| Abeokuta–Sagamu | road | ₦2,500 | 27 seconds |
+| Ota–Sagamu | road | ₦2,500 | 28 seconds |
+| Sagamu–Ijebu-Ode | road | ₦1,500 | 27 seconds |
 
 Local travel offers Trek, Okada, Bus and Taxi. Fares, durations, needs and roadside-event chances are beta.
 

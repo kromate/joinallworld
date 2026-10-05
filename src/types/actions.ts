@@ -62,7 +62,7 @@ export type TransferBlockCode =
   | 'daily_transfer_limit' | 'insufficient_funds'
 
 /** The unmet check of civic eligibility (civic.js civicEligibility → firstUnmet). */
-export type CivicCheckCode = 'too_new' | 'insufficient_funds' | 'work_days' | 'wrong_place'
+export type CivicCheckCode = 'too_new' | 'insufficient_funds' | 'work_days' | 'wrong_place' | 'not_main_home'
 
 /** Why a trip to another city cannot start (estate.js relocateBlock). */
 export type RelocateBlockCode = 'invalid_city' | 'no_route' | 'city_not_open' | 'route_not_open' | 'insufficient_funds'
@@ -196,7 +196,7 @@ export interface ActionMap extends CampusActionMap {
    * choice is free and immediate; later changes wait out LGA_RULES.changeCooldownDays and may cost a
    * levy for dearer land. 'unchanged' (already confirmed there) is a success.
    */
-  'estate.set-lga': { payload: { lga: LgaId; via?: 'device' | 'manual' }; ok: 'lga_set' | 'lga_confirmed' | 'unchanged'; fail: 'settle_required' | 'invalid_lga' | 'lga_cooldown' | 'upgrade_running' | 'insufficient_funds' }
+  'estate.set-lga': { payload: { lga: LgaId; via?: 'device' | 'manual'; home?: 'buy' | 'main' }; ok: 'lga_set' | 'lga_confirmed' | 'unchanged' | 'home_bought' | 'home_moved'; fail: 'settle_required' | 'invalid_lga' | 'lga_cooldown' | 'upgrade_running' | 'insufficient_funds' | 'choice_required' | 'home_owned' | 'home_cooldown' }
   /** SERVER ONLY: record the plot the server allocated (server/world/service.ts). 'unchanged' (the same plot again) is a success. */
   'estate.assign': { payload: PlotAddress; ok: 'assigned' | 'unchanged'; fail: 'no_place' | 'invalid_plot'; serverOnly: true }
   /** SERVER ONLY: the server freed the plot left behind (`state.estate.old`). Succeeds whether or not the address matched. */
@@ -209,6 +209,10 @@ export interface ActionMap extends CampusActionMap {
   'estate.move-in': { payload: NoPayload; ok: 'moved_in'; fail: 'busy' | 'already_home' | 'rent_arrears' }
   /** Leave for another city along a CITY_LINKS link (timed action kind 'intercity'). Refused while the destination is not open. */
   'estate.relocate': { payload: { to: WorldCityId; mode: CityLinkMode }; ok: 'departed'; fail: 'busy' | RelocateBlockCode }
+  /** A visitor's room at a guest house: LODGING.fee is charged and Energy and Hygiene are restored. Refused for a life with a home in this city. */
+  'estate.lodge': { payload: NoPayload; ok: 'rested'; fail: 'settle_required' | 'has_home' | 'busy' | 'rested' | 'insufficient_funds' }
+  /** Name the city the life is in its primary home. It must hold a house here. */
+  'estate.make-home': { payload: NoPayload; ok: 'home_set' | 'unchanged'; fail: 'no_place' | 'home_cooldown' }
 
   // -- home --
   /** At home only; charged when placed. */
@@ -407,7 +411,7 @@ export const ACTION_TYPES = [
   'travel', 'world.roadside', 'travel.skip',
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',
   'property.house-move', 'property.car-buy', 'property.car-use', 'property.car-sell',
-  'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate',
+  'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate', 'estate.lodge', 'estate.make-home',
   'home.furniture-buy', 'home.furniture-move', 'home.furniture-sell', 'home.furniture-store', 'home.furniture-place',
   'home.grocery-buy', 'home.kitchen-unpack',
   'onboarding.quick-start', 'onboarding.arrive',

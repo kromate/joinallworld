@@ -14,6 +14,7 @@ import { money } from '../../ui/format.ts'
 import { useAct } from '../kit/act.ts'
 import HouseArt from '../world/HouseArt.vue'
 import LgaCard from '../world/LgaCard.vue'
+import VisitorHome from './VisitorHome.vue'
 import { STYLE_FIELDS } from '../world/worldContent.ts'
 import { focusMap, track, worldChanged } from '../world/worldModel.ts'
 import { FIELD_NAMES, afterStyle, minutesToGo, offeredTiers, offlineWhy, swatchLabel, swatchOff, swatchTitle, tierWhy } from './myHouseModel.ts'
@@ -39,6 +40,7 @@ async function style(field: HouseStyleField, index: number): Promise<void> {
 }
 const upgrade = (to: HouseTierId): Promise<boolean> => act(`upgrade:${to}`, () => command('estate.upgrade', { to }))
 const moveIn = (): Promise<boolean> => act('move-in', () => command('estate.move-in'))
+const makeMain = (): Promise<boolean> => act('make-main', () => command('estate.make-home'))
 function showOnMap(): void {
   const plot = estate.value.plot
   if (!plot) return
@@ -48,7 +50,8 @@ function showOnMap(): void {
 </script>
 
 <template>
-  <section v-if="estate && !estate.placed" class="world-card">
+  <VisitorHome v-if="estate && estate.settle" />
+  <section v-else-if="estate && !estate.placed" class="world-card">
     <h3>Your own house</h3>
     <p class="ui-note">You are visiting {{ estate.cityName }}: you have no home here yet. Everyone gets a starter house on their own plot, free — in the {{ estate.unit }} they choose.</p>
     <button v-if="!choosing" type="button" class="ui-button is-primary is-block" data-choose-lga @click="chooseLga">Choose your {{ estate.unit }}</button>
@@ -63,6 +66,12 @@ function showOnMap(): void {
       <div class="world-bar"><i :style="{ width: `${Math.round(estate.upgrade.progress * 100)}%` }" /></div>
     </div>
     <p v-if="estate.arrears" class="ui-why">Ground rent owed: {{ money(estate.arrears) }}. It is collected on a Saturday when your balance covers it.</p>
+    <template v-if="estate.makeMain">
+      <p class="ui-note">This is a home you keep in {{ estate.cityName }}. Your main home is in {{ estate.home?.name }}: that is where you vote.</p>
+      <button type="button" class="ui-button is-block" data-make-main :disabled="Boolean(offline) || Boolean(estate.makeMain.blocked) || pending !== null" @click="makeMain">Make {{ estate.cityName }} my main home</button>
+      <p v-if="estate.makeMain.blocked" class="ui-why">{{ estate.makeMain.blocked }}</p>
+    </template>
+    <p v-else-if="estate.away.length" class="ui-note">This is your main home. You also keep {{ estate.away.map((item) => `a ${item.tier.toLowerCase()} in ${item.name}`).join(', ') }}.</p>
     <span v-if="estate.living === 'own'" class="ui-chip is-good">You live here · no weekly rent</span>
     <template v-else>
       <button type="button" class="ui-button is-primary is-block" :disabled="Boolean(offline) || pending !== null" @click="moveIn">Move into your own house · free</button>

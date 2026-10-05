@@ -67,9 +67,9 @@ export async function skipJourney(host: SkipHost, { log = () => {} }: { log?: (t
   assert.equal(number(departed.cash), number(home.cash) - out.fare, 'the fare is charged once, at departure')
   log('Bus to Ibadan departs', departed, `fare −₦${out.fare.toLocaleString('en-NG')}`)
   if (watching) await until(() => object(spot()?.journey ?? {}).to === 'ibadan', 'the friend sees the journey to Ibadan')
-  await host.elapse(ada, 'lagos', 40000)
+  await host.elapse(ada, 'lagos', 10000)
   const midway = await life(ada, 'lagos')
-  assert.equal(number(object(midway.activeAction).remaining), out.seconds - 40)
+  assert.equal(number(object(midway.activeAction).remaining), out.seconds - 10)
   assert.equal(object(midway.travel).skipped, false)
   const freeId = id()
   const free = await attempt(ada, 'lagos', { quote: 0 }, freeId)
@@ -96,8 +96,8 @@ export async function skipJourney(host: SkipHost, { log = () => {} }: { log?: (t
   // ---- back by bus: the price on the button is the price charged, once -----------------------------------------------------
   const back = bus('ibadan', 'lagos')
   const left = object((await action(ada, 'ibadan', 'estate.relocate', { to: 'lagos', mode: 'road' })).state)
-  await host.elapse(ada, 'ibadan', 30000)
-  const fee = tripSkipFee('intercity', back.seconds - 30, back.fare)
+  await host.elapse(ada, 'ibadan', 10000)
+  const fee = tripSkipFee('intercity', back.seconds - 10, back.fare)
   assert.ok(fee > 0 && fee <= back.fare / 2)
   // A price lower than the server's is refused, and a refusal is remembered like any answer.
   const lowId = id()
@@ -115,7 +115,7 @@ export async function skipJourney(host: SkipHost, { log = () => {} }: { log?: (t
   const lines = (after.ledger as unknown[]).map(object)
   assert.deepEqual(lines.filter((line) => String(line.reason).startsWith('Trip skipped')).map((line) => [line.amount, line.reason]), [[-fee, 'Trip skipped (Ibadan → Lagos)']])
   conserved(after)
-  log('Bus back to Lagos, skipped with 90 s to go', after, `fare −₦${back.fare.toLocaleString('en-NG')}, skip −₦${fee.toLocaleString('en-NG')}, charged once`)
+  log(`Bus back to Lagos, skipped with ${back.seconds - 10} s to go`, after, `fare −₦${back.fare.toLocaleString('en-NG')}, skip −₦${fee.toLocaleString('en-NG')}, charged once`)
   if (watching) {
     const seen = await until(() => (spot()?.cityId === 'lagos' && spot()?.venue === 'home' ? spot() : null), 'the friend sees the traveller home again')
     assert.equal(seen.journey, undefined)

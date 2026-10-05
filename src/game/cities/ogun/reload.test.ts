@@ -26,7 +26,8 @@ test('a life with homes in Lagos, Ota and Abeokuta reloads cleanly in each of th
   for (const to of ['ota', 'abeokuta', 'lagos']) {
     assert.equal(run('estate.relocate', { to, mode: 'road' }).code, 'departed', `a road trip to ${to}`)
     finish()
-    if (to !== 'lagos') assert.equal(run('estate.set-lga', { lga: unit(to), via: 'manual' }).code, 'lga_set')
+    if (to !== 'lagos') state.cash += 100_000
+    if (to !== 'lagos') assert.equal(run('estate.set-lga', { lga: unit(to), via: 'manual', home: 'buy' }).code, 'home_bought')
   }
   assert.deepEqual(Object.keys(state.estate.away).sort(), ['abeokuta', 'ota'])
   const dir = mkdtempSync(join(tmpdir(), 'allworld-reload-'))

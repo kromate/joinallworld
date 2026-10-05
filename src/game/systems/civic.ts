@@ -183,6 +183,14 @@ export function civicEligibility(state: LifeState, ctx: LifeContext | undefined)
     vote.push(check('place', there, `Be at ${venueLabel(polling.id, city)}`,
       there ? 'You are at the polling unit.' : `Travel to ${venueLabel(polling.id, city)} to cast your vote.`, 'wrong_place'));
   }
+  // One vote per election per character: a life that keeps homes in several cities votes and stands where its main home is.
+  // The check is listed only for such a life in a city that is not its main home.
+  const main = state.estate.home;
+  if (main && main !== city) {
+    const elsewhere = check('home', false, `Have your main home in ${cityRules(city)?.name ?? 'this city'}`,
+      `Your main home is in ${cityRules(main)?.name ?? main}, so that is where you vote and stand. Make this city your main home (Home → Houses) to do it here.`, 'not_main_home');
+    run.unshift(elsewhere); vote.unshift(elsewhere);
+  }
   return { days, pollingVenue: polling?.id ?? null, run, vote };
 }
 const firstUnmet = <Code extends CivicCheckCode>(state: LifeState, checks: readonly Check<Code>[]) => { const unmet = checks.find((item) => !item.met); return unmet ? fail(state, unmet.code, `${unmet.label}. ${unmet.detail}`) : null; };

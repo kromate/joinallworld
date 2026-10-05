@@ -21,7 +21,7 @@ import type { AfricaGroupId, ContinentId, RegionKind, RegionStatus } from '../ty
 import { AFRICA_GROUPS, CONTINENTS, ZONES, cityAccess, cityEntry, regionEntry } from '../regions.ts';
 
 export interface RegionRef { kind: RegionKind; id: string }
-export interface RouteInfo { status?: 'open' | 'coming'; id: string; to: string; mode: CityLinkMode; label: string; fare: number; minutes: number; km: number; hub: string; live: boolean; why: string | null; /** What arriving at once would add to the fare, in naira (0: this character's first skip, which is free). Absent when the player's own routes are not known. */ skip?: number }
+export interface RouteInfo { status?: 'open' | 'coming'; id: string; to: string; mode: CityLinkMode; label: string; fare: number; /** Whole seconds the trip takes. */ seconds: number; minutes: number; km: number; hub: string; live: boolean; why: string | null; /** What arriving at once would add to the fare, in naira (0: this character's first skip, which is free). Absent when the player's own routes are not known. */ skip?: number }
 export interface RegionAction { kind: 'enter-city' | 'open-city' | 'zoom'; label: string; city?: string; level?: string }
 export type RegionTone = 'here' | 'open' | 'preview' | 'soon' | 'none';
 export interface RegionInfo {
@@ -50,7 +50,7 @@ function routesBetween(from: string, to: string, mine: RegionContext['routes']):
     const live = mine?.find((item) => item.to === to && item.mode === link.mode), open = cityRules(to)?.status === 'open';
     const unavailable = routeUnavailable(link);
     const why = unavailable?.reason ?? (live ? live.blocked || null : open ? null : `${cityRules(to)?.name ?? 'It'} is not open yet, so nothing leaves for it. Departures start the day it opens.`);
-    return { ...(link.status ? { status: link.status } : {}), id: linkKey(link), to, mode: link.mode, label: link.label, fare: link.fare, minutes: Math.round((link.seconds / 60) * 10) / 10, km: link.km,
+    return { ...(link.status ? { status: link.status } : {}), id: linkKey(link), to, mode: link.mode, label: link.label, fare: link.fare, seconds: link.seconds, minutes: Math.round((link.seconds / 60) * 10) / 10, km: link.km,
       hub: cityRules(from)?.hub?.[link.mode] ?? 'the park', live: Boolean(live) && !unavailable && !live!.blocked && open, why, ...(typeof live?.skipFree === 'boolean' && !unavailable ? { skip: live.skipFree && TRIP_SKIP.firstIntercityFree ? 0 : tripSkipFee('intercity', link.seconds, link.fare) } : {}) };
   });
 }

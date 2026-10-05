@@ -22,7 +22,7 @@ test('a trip between cities is skipped once, for the price shown, on the Node ho
       return { send: (value) => peer.ws.send(JSON.stringify(value)), frames };
     },
   });
-  assert.deepEqual([result.fare, result.free, result.charged], [3500, 0, 1000]);
+  assert.deepEqual([result.fare, result.free, result.charged], [3500, 0, 900]);
 });
 
 test('a skip that cannot be paid is refused with the amount missing, and the character stays on its way', async (t) => {
@@ -36,15 +36,15 @@ test('a skip that cannot be paid is refused with the amount missing, and the cha
   const refused = await f.action(ada.cookie, { type: 'travel.skip', payload: { quote: 1300 } });
   assert.deepEqual([refused.ok, refused.code, refused.state.cash, refused.state.activeAction?.kind, refused.state.estate.city], [false, 'insufficient_funds', 900, 'intercity', 'lagos']);
   assert.match(refused.state.message, /costs ₦1,300; you have ₦900\. You need ₦400 more/);
-  // The price falls as the trip goes on: forty seconds later it is ₦900, and the skip goes through to the last naira.
-  f.advance(40000);
+  // The price falls as the trip goes on: ten seconds later it is ₦900, and the skip goes through to the last naira.
+  f.advance(10000);
   const paid = await f.action(ada.cookie, { type: 'travel.skip', payload: { quote: 900 } });
   assert.deepEqual([paid.ok, paid.code, paid.state.cash, paid.state.estate.city, paid.state.activeAction], [true, 'skipped', 0, 'ibadan', null]);
   // With three seconds or less to go nothing is sold.
   const bola = await f.device('Bola');
   await f.request('/api/life?city=lagos', null, bola.cookie);
   assert.equal((await f.action(bola.cookie, { type: 'estate.relocate', payload: { to: 'ibadan', mode: 'road' } })).ok, true);
-  f.advance(118000);
+  f.advance(28000);
   const late = await f.action(bola.cookie, { type: 'travel.skip', payload: {} });
   assert.deepEqual([late.ok, late.code, late.state.cash, late.state.travel.skipped], [false, 'almost_there', 1500, false]);
   // A payload that is not a plain small object never reaches the rules.

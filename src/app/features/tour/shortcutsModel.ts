@@ -43,6 +43,7 @@ const DESKTOP: ShortcutGroup[] = [
   ] },
   { id: 'map', title: 'Map', rows: [
     keys(['open:map'], 'Open or close the map'),
+    keys(['world'], 'World map: every city you can travel to'),
     keys(['key:move-up', 'key:move-down', 'key:move-left', 'key:move-right'], 'Pan the map'),
     keys(['key:zoom-in', 'key:zoom-out'], 'Zoom the map'),
     keys(['key:zoom-fit'], 'Fit the whole city'),
@@ -86,6 +87,7 @@ const TOUCH: ShortcutGroup[] = [
     gesture(['Pinch'], 'Zoom'),
     gesture(['Two fingers'], 'Move the view'),
     gesture(['Tap'], 'A building to go there'),
+    gesture(['Tap'], 'World, at the top of the map, then a city to travel there'),
   ] },
   { id: 'panels', title: 'Phone and panels', rows: [
     gesture(['Tap'], 'Home, Buy, Map and Phone at the bottom'),

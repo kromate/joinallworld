@@ -121,7 +121,7 @@ export async function ibadanJourney(host: JourneyHost): Promise<void> {
   const lagosLife = await life(ada, 'lagos')
   const departed = object((await action(ada, 'lagos', 'estate.relocate', { to: 'ibadan', mode: 'road' })).state)
   assert.equal(Number(departed.cash), Number(lagosLife.cash) - 3500, 'the bus fare is charged once, when the trip starts')
-  await host.elapse(ada, 'lagos', 121000)
+  await host.elapse(ada, 'lagos', 31000)
   const arrival = await host.request('/api/life?city=lagos', undefined, ada.cookie)
   const arrived = object(object(await arrival.json()).state)
   assert.equal(object(arrived.estate).city, 'ibadan')
@@ -131,8 +131,10 @@ export async function ibadanJourney(host: JourneyHost): Promise<void> {
   assert.equal(object(object(object(arrived.estate).away).lagos).lga, 'ikeja', 'the Lagos house stays hers')
   const visitor = await read('/api/world/me?city=ibadan', ada.cookie)
   assert.equal(visitor.placed, false)
-  const settled = object((await action(ada, 'ibadan', 'estate.set-lga', { lga: 'ibadan-north', via: 'manual' })).state)
-  assert.equal(Number(settled.cash), Number(arrived.cash), 'the first Ibadan home is free')
+  // She moves her main home here: the one free starter house goes along, so it costs nothing and the Lagos one is given up.
+  const settled = object((await action(ada, 'ibadan', 'estate.set-lga', { lga: 'ibadan-north', via: 'manual', home: 'main' })).state)
+  assert.equal(Number(settled.cash), Number(arrived.cash), 'moving the main home with the free starter house costs nothing')
+  assert.deepEqual([object(settled.estate).home, Object.keys(object(object(settled.estate).away))], ['ibadan', []])
   conserved(settled)
 
   // ---- two players meet in an Ibadan venue room ---------------------------------------------------------------------------

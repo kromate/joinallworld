@@ -422,14 +422,29 @@ test('Cloudflare: an Ogun trip survives the object sleeping; the fare is charged
   const midway = await f.life(a);
   assert.equal(midway.activeAction.kind, 'intercity'); assert.equal(midway.cash, before - 2000);
   assert.equal((await step('estate.relocate', { to: 'ota', mode: 'road' })).ok, false, 'a second departure while travelling is refused');
-  await f.skip(a, 61000);
+  await f.skip(a, 27000); // the bus to Ota takes 26 s
   await f.hibernate();
   const arrived = await f.life(a);
   assert.deepEqual([arrived.estate.city, arrived.cash, arrived.activeAction], ['ota', before - 2000, null]);
+  // She is a visitor: nothing was chosen for her, her home is still the Lagos one, and choosing a local government alone gives no house.
+  assert.deepEqual([arrived.estate.lga, arrived.estate.home, arrived.message], [null, 'lagos', 'Welcome to Ota. You are visiting: your home is in Lagos.']);
+  const bare = await step('estate.set-lga', { lga: 'ado-odo-ota', via: 'manual' }, 'ota');
+  assert.deepEqual([bare.ok, bare.code, bare.state.cash, bare.state.estate.lga], [false, 'choice_required', before - 2000, null]);
   await f.restart();
   const reloaded = await (await f.request('/api/life?city=ota', null, a.cookie)).json();
   assert.deepEqual([reloaded.state.estate.city, reloaded.state.cash, reloaded.state.location], ['ota', before - 2000, arrived.location], 'a reload shows the same city, wallet and place');
   assert.equal(reloaded.state.ledger.filter((line: { amount: number }) => line.amount === -2000).length, 1, 'one fare in the ledger');
+  // A guest house is her bed: the fee is charged once and survives the object sleeping.
+  const storage = await f.storage();
+  const session = JSON.parse((await storage.exec('SELECT value FROM sessions'))[0].value);
+  session.cities.ota.state.needs.energy = 15;
+  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(session), a.cookie.slice(11));
+  await f.restart();
+  const rested = await step('estate.lodge', {}, 'ota');
+  assert.deepEqual([rested.ok, rested.code, rested.state.cash, rested.state.needs.energy], [true, 'rested', before - 4500, 100]);
+  await f.hibernate();
+  const kept = await (await f.request('/api/life?city=ota', null, a.cookie)).json();
+  assert.deepEqual([kept.state.cash, kept.state.estate.lga, kept.state.estate.home], [before - 4500, null, 'lagos']);
 });
 
 test('Cloudflare: real static HTML receives response security and cache headers', async t => {

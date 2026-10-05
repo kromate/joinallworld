@@ -84,8 +84,8 @@ Two beta links connect Lagos and Ibadan:
 
 | Mode | Route | Fare | Simulated duration | Distance |
 |---|---|---:|---:|---:|
-| Bus | Lagos-Ibadan Expressway | ₦3,500 | 120 seconds | 130 km |
-| Train | Mobolaji Johnson Station to Obafemi Awolowo Station | ₦9,000 | 90 seconds | 157 km |
+| Bus | Lagos-Ibadan Expressway | ₦3,500 | 30 seconds | 130 km |
+| Train | Mobolaji Johnson Station to Obafemi Awolowo Station | ₦9,000 | 21 seconds | 157 km |
 
 Local geographic route bands use the shared frame, with beta thresholds of 3 km for a short hop and 15 km for a longer city trip. Owned-home trips retain the existing beta schematic quotation policy; they are not measured from the unrelated rented-home point.
 

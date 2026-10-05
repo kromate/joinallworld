@@ -35,7 +35,26 @@ import { localUnitDescription, publicArrivalVenue } from '../cities/runtime.ts';
  *                 the room is the tier's grid; state.property.house keeps the last rented tier
  *   ground        { week, arrears } — ground-rent billing: the last Saturday settled, and what is owed
  *   away          { [cityId]: residence } — homes kept in other cities: your Lagos house stays yours
+ *   home          the city of the PRIMARY home, or null for a life that has no home anywhere yet (see ONE HOME below)
  *   nudged        the "you can afford an upgrade" notice has been posted
+ *
+ * ONE HOME, AND MORE BY CHOICE
+ *   A character has one MAIN home: the city named by `home`, where it first settled. The free starter house is given
+ *   once, for that first home. In every other city it is a VISITOR: it arrives at a public place, nothing asks it to
+ *   choose a local government, and it works, eats, shops, banks and rests there (a guest house: 'estate.lodge', LODGING
+ *   in content/world.ts) for as long as it likes. Home actions, renting, building and the civic roll of a city belong to
+ *   the lives that hold a home there.
+ *   A visitor has two optional choices, both 'estate.set-lga' { lga, home }:
+ *     home: 'buy'   an ADDITIONAL home: a SECOND_HOME.tier house on a plot in the chosen local unit, at that tier's
+ *                   ordinary price there (tierCost). The main home is untouched.
+ *     home: 'main'  the main home MOVES here: the free starter house is given up where it stood and stands on a plot
+ *                   here instead (its look comes along). Allowed only while the main home IS the free starter house: a
+ *                   house that was paid for is property and is never given up, so its owner buys a home here first and
+ *                   then names it the main home ('estate.make-home').
+ *   The main home moves at most once every SECOND_HOME.moveCooldownDays days. Voting and standing for office are for the
+ *   main home's city only (systems/civic.ts), so a character with several homes has one vote.
+ *   A life from before this rule keeps every home it has, unchanged. A save without `home` gets it at load: the home
+ *   whose local government was chosen first (a home that never recorded a choice counts as the oldest).
  *
  * ACTIONS (every refusal names what is missing)
  *   'estate.set-lga'   { lga, via? }   confirm or change the local government. Confirming the
@@ -52,6 +71,9 @@ import { localUnitDescription, publicArrivalVenue } from '../cities/runtime.ts';
  *                      what does not fit goes to storage. Weekly rent stops.
  *   'estate.relocate'  { to, mode }    travel to another city along a CITY_LINKS link. Refused,
  *                      with the reason, while the destination is not open.
+ *   'estate.lodge'     {}              a visitor pays LODGING.fee for a room at a guest house: Energy and
+ *                      Hygiene are restored at once. Refused for a life that has a home in this city.
+ *   'estate.make-home' {}              name the city you are in your primary home (you must hold a house here).
  *   Moving from your own house to a rented one is the Houses app's 'property.house-move'.
  *
  * EMITS   'home.owned' { living, house }   the home changed between rented and owned (economy.ts
@@ -70,10 +92,10 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
-import { arrive, canAfford, credit, debit } from '../api.ts';
+import { arrive, canAfford, changeNeeds, credit, debit } from '../api.ts';
 import { houseFor, housesFor, housingFor, defaultHouseFor } from '../cities/housingRuntime.ts';
 import { isCityId } from '../cities/registry.ts';
-import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cheapestUpgrade, cityRules, cleanStyle,
+import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, LODGING, OWNING, SECOND_HOME, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cheapestUpgrade, cityRules, cleanStyle,
   lgaOf, lgaOfDistrict, lgasOf, linksFrom, moveLevy, packStyle, stylePrice, tierCost, tierOf, validPlot } from '../content/world.ts';
 import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
 import type { RelocateBlockCode } from '../../types/actions.ts';
@@ -85,6 +107,8 @@ const DAY_MS = 86400000;
 /** A life still held for its look, or a guest of the quick start: it has not settled in (systems/onboarding.ts THE STAGED MODEL). */
 const unsettled = (state: LifeState): boolean => { const o = state?.onboarding; return Boolean(o && o.done !== true && (o.required === true || o.stage === 'guest')); };
 const MAX_CATCHUP_WEEKS = 4;
+/** The longest trip between cities any earlier timetable had: a save may still carry one in progress. */
+const MAX_SAVED_TRIP_SECONDS = 600;
 const VIAS: readonly LgaVia[] = ['device', 'manual', 'default'];
 const isVia = (value: unknown): value is LgaVia => VIAS.some((via) => via === value);
 const isSafeInt = (value: unknown): value is number => Number.isSafeInteger(value);
@@ -164,7 +188,40 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
       away[rules.id] = { ...cleanResidence(value, id, now), house: typeof house === 'string' && rules.rentedHomeIds.includes(house) ? house : rules.defaultRentedHome };
     }
   }
-  state.estate = { city, ...home, away, nudged: saved.nudged === true };
+  state.estate = { city, ...home, away, nudged: saved.nudged === true, home: null, homeAt: finite(saved.homeAt) && saved.homeAt >= 0 ? Math.min(saved.homeAt, now) : null };
+  state.estate.home = mainHome(state.estate, saved.home);
+}
+
+/**
+ * The city of the main home. A saved value is kept while the life still holds a home there; otherwise it is worked out:
+ * of the homes the life holds, the one whose local government was chosen first (one that never recorded a choice is
+ * the oldest), else none.
+ */
+function mainHome(e: EstateState, saved: unknown): WorldCityId | null {
+  const held = (id: unknown): id is WorldCityId => typeof id === 'string' && (id === e.city ? Boolean(e.lga) : Boolean(e.away[id]?.lga));
+  if (held(saved)) return saved;
+  const homes: [WorldCityId, number][] = (Object.entries(e.away) as [WorldCityId, AwayResidence][]).filter(([, residence]) => residence.lga).map(([id, residence]) => [id, residence.lgaAt ?? -1]);
+  if (e.lga) homes.push([e.city, e.lgaAt ?? -1]);
+  homes.sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]));
+  return homes[0]?.[0] ?? null;
+}
+/** Why the main home cannot move now (it moved too recently), or null. */
+function homeCooldown(e: EstateState, now: number): string | null {
+  const ends = e.homeAt === null ? 0 : e.homeAt + SECOND_HOME.moveCooldownDays * DAY_MS;
+  if (ends <= now) return null;
+  const days = Math.ceil((ends - now) / DAY_MS);
+  return `You can move your main home once every ${SECOND_HOME.moveCooldownDays} days. You can move it again in ${days} day${days === 1 ? '' : 's'}.`;
+}
+/** A visitor: a settled life with a main home in another city and no local government in this one. */
+const visitingHere = (state: LifeState): boolean => !unsettled(state) && !state.estate.lga && Boolean(state.estate.home) && state.estate.home !== state.estate.city;
+/** Why a visitor's main home cannot move to the city it is in, or null. */
+function moveMainBlock(state: LifeState, now: number): { code: 'home_owned' | 'home_cooldown'; reason: string } | null {
+  const e = state.estate, old = e.home ? e.away[e.home] : undefined, from = cityRules(e.home)?.name ?? 'your main home';
+  if (old && (old.tier !== 'starter' || old.upgrade)) {
+    return { code: 'home_owned', reason: `Your ${HOUSE_TIERS[old.upgrade?.to ?? old.tier].label} in ${from} is property you paid for: it is never given up. Buy a home here first, then make it your main home.` };
+  }
+  const wait = homeCooldown(e, now);
+  return wait ? { code: 'home_cooldown', reason: wait } : null;
 }
 
 // ---- actions ---------------------------------------------------------------------------------
@@ -176,6 +233,7 @@ function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
   const unit = lgaOf(e.city, payload?.lga);
   if (!unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(e.city).length} ${cityUnit(e.city, true)} of ${cityRules(e.city)?.name ?? 'this city'}.`);
   const via = payload?.via === 'device' ? 'device' : 'manual';
+  if (visitingHere(state)) return settleHere(state, unit, via, payload?.home, ctx);
   if (unit.id === e.lga) {
     if (e.lgaConfirmed) return ok(state, 'unchanged');
     Object.assign(e, { lgaConfirmed: true, lgaAt: now, lgaVia: via });
@@ -191,10 +249,43 @@ function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
   const levy = e.lgaConfirmed ? moveLevy(e.city, e.lga, unit.id, e.tier) : 0;
   if (levy > 0 && !canAfford(state, levy)) return fail(state, 'insufficient_funds', `Land is dearer in ${unit.name}: taking your ${HOUSE_TIERS[e.tier].label} there costs ${naira(levy)}; you have ${naira(state.cash)}.`);
   if (levy > 0) debit(state, levy, `Moving your ${HOUSE_TIERS[e.tier].label} to ${unit.name} (dearer land)`, ctx);
+  const first = !e.lga;
   Object.assign(e, { lga: unit.id, lgaAt: now, lgaConfirmed: true, lgaVia: via });
-  state.message = `You now belong to ${unit.name}. Your house is being moved to a plot there.`;
+  e.home ??= e.city; // a life with no home anywhere: this, its first, is the main one
+  state.message = first ? `You now belong to ${unit.name}. Your house is being set on a plot there.` : `You now belong to ${unit.name}. Your house is being moved to a plot there.`;
   emit(state, 'lga.changed', { lga: unit.id }, ctx);
   return ok(state, 'lga_set');
+}
+
+/**
+ * A visitor takes a home in the city it is in: an additional one that it buys, or its main home moved here.
+ * See ONE HOME, AND MORE BY CHOICE in the header.
+ */
+function settleHere(state: LifeState, unit: { id: LgaId; name: string }, via: LgaVia, how: unknown, ctx: LifeContext) {
+  const e = state.estate, now = nowOf(state, ctx), here = cityRules(e.city)?.name ?? e.city, from = e.home, fromName = cityRules(from)?.name ?? String(from);
+  if (how === 'buy') {
+    const tier = HOUSE_TIERS[SECOND_HOME.tier], cost = tierCost(e.city, unit.id, tier.id);
+    if (cost === null) return fail(state, 'invalid_lga', `A home cannot be priced in ${unit.name}.`);
+    if (!canAfford(state, cost)) return fail(state, 'insufficient_funds', `A ${tier.label} in ${unit.name} costs ${naira(cost)}; you have ${naira(state.cash)} (${naira(cost - state.cash)} short).`);
+    debit(state, cost, `Home bought: ${tier.label} in ${unit.name}, ${here}`, ctx);
+    Object.assign(e, { lga: unit.id, lgaAt: now, lgaConfirmed: true, lgaVia: via, plot: null, old: null, tier: tier.id, upgrade: null, living: 'own', ground: { week: billingWeek(now), arrears: 0 } });
+    state.message = `You bought a ${tier.label} in ${unit.name} for ${naira(cost)}: it is being set on a plot there. Your main home stays in ${fromName}.`;
+    emit(state, 'lga.changed', { lga: unit.id }, ctx);
+    note(state, 'house', `You paid ${naira(cost)} for a ${tier.label} in ${unit.name}, ${here}. Your main home is still in ${fromName}.`, ctx);
+    return ok(state, 'home_bought');
+  }
+  if (how === 'main') {
+    const why = moveMainBlock(state, now);
+    if (why) return fail(state, why.code, why.reason);
+    // The one free starter house moves: it is given up where it stood and stands here, with the look it had.
+    const old = from ? e.away[from] : undefined;
+    if (from) delete e.away[from];
+    Object.assign(e, { lga: unit.id, lgaAt: now, lgaConfirmed: true, lgaVia: via, plot: null, old: null, tier: 'starter', style: cleanStyle(old?.style ?? e.style), upgrade: null, living: 'own', ground: { week: null, arrears: 0 }, home: e.city, homeAt: now });
+    state.message = `${here} is your main home now: ${unit.name} is your ${cityUnit(e.city)} and your starter house is being set on a plot there. Your starter house${old?.living === 'rent' ? ' and rented place' : ''} in ${fromName} ${old?.living === 'rent' ? 'were' : 'was'} given up.`;
+    emit(state, 'lga.changed', { lga: unit.id }, ctx);
+    return ok(state, 'home_moved');
+  }
+  return fail(state, 'choice_required', `You are visiting ${here}: your main home is in ${fromName}. Open Home and choose "Buy a home here" or "Make ${here} my main home". You can also simply stay as a visitor.`);
 }
 
 /** The server allocated a plot (server/world/service.ts). The one before it, if any, is remembered so it can be freed. */
@@ -264,6 +355,38 @@ function moveIn(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
   return ok(state, 'moved_in');
 }
 
+/** Why a room at a guest house cannot be taken now, or null. */
+export function lodgeBlock(state: LifeState): { code: 'settle_required' | 'has_home' | 'busy' | 'rested' | 'insufficient_funds'; reason: string } | null {
+  const e = state.estate, name = cityRules(e.city)?.name ?? 'this city';
+  if (unsettled(state)) return { code: 'settle_required', reason: 'Settle in first (tap the "Settle in" goal): then a room is there wherever you travel.' };
+  if (e.lga) return { code: 'has_home', reason: `You have a home in ${name}: rest there, free.` };
+  if (state.activeAction) return { code: 'busy', reason: 'Finish or cancel your current action before you take a room.' };
+  if (LODGING.needs.every((need) => (state.needs[need] ?? 0) >= LODGING.restedFrom)) return { code: 'rested', reason: 'You are rested and fresh already. Keep your money.' };
+  if (!canAfford(state, LODGING.fee)) return { code: 'insufficient_funds', reason: `A room costs ${naira(LODGING.fee)}; you have ${naira(state.cash)}. You need ${naira(LODGING.fee - state.cash)} more.` };
+  return null;
+}
+/** 'estate.lodge': a visitor's bed and bath for the night, paid for at once. */
+function lodge(state: LifeState, _payload: Record<string, unknown>, ctx: LifeContext) {
+  const why = lodgeBlock(state);
+  if (why) return fail(state, why.code, why.reason);
+  const name = cityRules(state.estate.city)?.name ?? state.estate.city;
+  debit(state, LODGING.fee, `Guest house in ${name}`, ctx);
+  changeNeeds(state, Object.fromEntries(LODGING.needs.map((need) => [need, LODGING.restoreTo - (state.needs[need] ?? 0)])));
+  state.message = `You took a room at a guest house in ${name} for ${naira(LODGING.fee)}: a bed and a bath. You are rested.`;
+  return ok(state, 'rested');
+}
+/** 'estate.make-home': the city the life is in becomes its primary home. It must hold a house here. */
+function makeHome(state: LifeState, _payload: Record<string, unknown>, ctx: LifeContext) {
+  const e = state.estate, name = cityRules(e.city)?.name ?? e.city;
+  if (!hasPlace(state)) return fail(state, 'no_place', `You have no house in ${name}. Choose ${cityUnitArticle(e.city)} here to move (Home → Move here).`);
+  if (e.home === e.city) return ok(state, 'unchanged');
+  const wait = homeCooldown(e, nowOf(state, ctx));
+  if (wait) return fail(state, 'home_cooldown', wait);
+  e.home = e.city; e.homeAt = nowOf(state, ctx);
+  state.message = `${name} is your main home now. The homes you keep elsewhere stay yours.`;
+  return ok(state, 'home_set');
+}
+
 /**
  * Does this life have a place in the city yet — a local government of its own, and so a house?
  * True once it has chosen one, and for a life from before local governments existed (it keeps the
@@ -299,8 +422,9 @@ function relocate(state: LifeState, payload: Record<string, unknown>, ctx: LifeC
 function arriveInCity(state: LifeState, active: IntercityAction, ctx: LifeContext): void {
   const e = state.estate, from = e.city, to = active.id, now = nowOf(state, ctx);
   // The home left behind is put away exactly as it is: the house stays yours.
-  const { city, away, nudged, ...residence } = e;
-  away[from] = { ...residence, house: rentedHouse(state) };
+  const { city, away, nudged, home, homeAt, ...residence } = e;
+  // Only a home is put away: a city that was merely visited leaves nothing behind.
+  if (residence.lga) away[from] = { ...residence, house: rentedHouse(state) };
   const kept = away[to];
   delete away[to];
   const next = cleanResidence(kept ?? { living: 'own' }, to, now);
@@ -312,7 +436,8 @@ function arriveInCity(state: LifeState, active: IntercityAction, ctx: LifeContex
   emit(state, 'house.moved', { id: e.living === 'own' ? 'own' : house, from: 'away', cost: 0, house }, ctx);
   const destination = kept?.lga ? 'home' : publicArrivalVenue(to).id;
   if (!destination || !arrive(state, destination, ctx, { mode: null })) throw new TypeError('The destination city needs a public arrival venue');
-  state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? 'You are back at your home here.' : `You are visiting. Choose ${cityUnitArticle(to)} for your free starter house; your home in ${cityRules(from)?.name ?? from} stays yours.`}`;
+  const homeName = e.home && e.home !== to ? cityRules(e.home)?.name ?? e.home : null;
+  state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? (e.home === to ? 'You are home.' : 'You are back at your house here.') : `You are visiting${homeName ? `: your home is in ${homeName}` : ''}.`}`;
 }
 
 function advance(state: LifeState, dt: number, ctx: LifeContext): void {
@@ -377,9 +502,20 @@ function view(state: LifeState, ctx: LifeContext): EstateView {
     cheapest: cheapest ? { ...cheapest, total: cheapest.total ?? 0, lgaName: lgaName(e.city, cheapest.lga), label: HOUSE_TIERS[cheapest.tier].label } : null,
     rules: { beta: true, housesPerLife: OWNING.housesPerLife, cooldownDays: LGA_RULES.changeCooldownDays },
     links: linksFrom(e.city).map((link) => ({ ...link, name: cityRules(link.to)?.name ?? link.to, open: cityRules(link.to)?.status === 'open', hub: city?.hub?.[link.mode] ?? null,
-      blocked: relocateBlock(state, link.to, link.mode, ctx)?.reason ?? (state.activeAction ? 'Finish your current action first.' : null) })),
+      blocked: (unsettled(state) ? 'Settle in first (tap the "Settle in" goal): then you can travel between cities.' : null) ?? relocateBlock(state, link.to, link.mode, ctx)?.reason
+        ?? (state.activeAction?.kind === 'intercity' ? `You are on the way to ${cityRules(state.activeAction.id)?.name ?? 'another city'}. Arrive first.` : state.activeAction ? 'Finish what you are doing first (or cancel it), then travel.' : null) })),
     // Object.entries widens the keys of the city table.
-    away: (Object.entries(e.away) as [WorldCityId, AwayResidence][]).map(([id, home]) => ({ city: id, name: cityRules(id)?.name ?? id, tier: HOUSE_TIERS[home.tier].label, living: home.living })),
+    away: (Object.entries(e.away) as [WorldCityId, AwayResidence][]).filter(([, home]) => home.lga).map(([id, home]) => ({ city: id, name: cityRules(id)?.name ?? id, tier: HOUSE_TIERS[home.tier].label, living: home.living })),
+    home: e.home ? { city: e.home, name: cityRules(e.home)?.name ?? e.home, here: e.home === e.city } : null,
+    visiting: !unsettled(state) && !e.lga,
+    settle: visitingHere(state) ? {
+      buy: { tier: HOUSE_TIERS[SECOND_HOME.tier].label, groundRent: HOUSE_TIERS[SECOND_HOME.tier].groundRent,
+        prices: Object.fromEntries(lgasOf(e.city).map((item) => [item.id, tierCost(e.city, item.id, SECOND_HOME.tier) ?? 0])),
+        from: Math.min(...lgasOf(e.city).map((item) => tierCost(e.city, item.id, SECOND_HOME.tier) ?? Infinity)) },
+      main: { blocked: moveMainBlock(state, now)?.reason ?? null, gives: e.home ? `your starter house${e.away[e.home]?.living === 'rent' ? ' and rented place' : ''} in ${cityRules(e.home)?.name ?? e.home}` : null },
+    } : null,
+    makeMain: hasPlace(state) && e.home !== null && e.home !== e.city ? { blocked: homeCooldown(e, now) } : null,
+    lodging: { fee: LODGING.fee, blocked: lodgeBlock(state)?.reason ?? null },
   };
 }
 
@@ -396,6 +532,8 @@ const play = PLAYS ? {
     'estate.upgrade': upgrade,
     'estate.move-in': moveIn,
     'estate.relocate': relocate,
+    'estate.lodge': lodge,
+    'estate.make-home': makeHome,
   },
   advance,
   on: {
@@ -406,8 +544,9 @@ const play = PLAYS ? {
       // confirmed — and with `own` the life lives in the free starter house there from the first moment: no weekly rent.
       if (unit && !e.lgaConfirmed) {
         Object.assign(e, { lga: unit.id, lgaAt: nowOf(state, ctx), lgaConfirmed: true, lgaVia: data.via === 'device' ? 'device' : 'manual' });
+        e.home ??= e.city;
         emit(state, 'lga.changed', { lga: unit.id }, ctx);
-      } else if (!e.lgaConfirmed) Object.assign(e, { lga: defaultLga(e.city, state), lgaVia: 'default' });
+      } else if (!e.lgaConfirmed) { Object.assign(e, { lga: defaultLga(e.city, state), lgaVia: 'default' }); if (e.lga) e.home ??= e.city; }
       if (data?.own === true && e.living !== 'own') { e.living = 'own'; emit(state, 'home.owned', { living: true, house: rentedHouse(state) }, ctx); }
     },
     /** Moving to a rented home through the Houses app ends living in the owned one (the house stays yours). */
@@ -425,7 +564,9 @@ export default {
       sanitize(value, state) {
         const from = state.estate.city;
         const link = linksFrom(from).find((item) => item.to === value.id && item.mode === value.mode);
-        return link && value.duration === link.seconds ? { mode: link.mode, fare: link.fare, from } : null;
+        // A trip that left under an earlier, longer timetable finishes on the clock it left with: same link, same fare.
+        const known = link && (value.duration === link.seconds || (value.fare === link.fare && value.duration > link.seconds && value.duration <= MAX_SAVED_TRIP_SECONDS));
+        return link && known ? { mode: link.mode, fare: link.fare, from } : null;
       },
       complete: arriveInCity,
       cancel: (state) => fail(state, 'no_cancel', 'The trip has left: it cannot be cancelled now. The fare is not refunded.'),

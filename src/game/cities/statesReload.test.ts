@@ -27,7 +27,7 @@ function traveller(seed: string) {
   assert.equal(run('onboarding.home', { lga: unit('lagos'), via: 'manual' }).code, 'life_started')
   state.cash = 5_000_000
   const go = (to: string, mode = 'road'): void => { assert.equal(run('estate.relocate', { to, mode }).code, 'departed', `a ${mode} trip to ${to}`); finish(); assert.equal(state.estate.city, to) }
-  const settle = (city: string): void => { assert.equal(run('estate.set-lga', { lga: unit(city), via: 'manual' }).code, 'lga_set', `a home in ${city}`) }
+  const settle = (city: string): void => { assert.equal(run('estate.set-lga', { lga: unit(city), via: 'manual', home: 'buy' }).code, 'home_bought', `a home in ${city}`) }
   return { state, go, settle, saved: (): string => JSON.stringify({ ...state, t: now }) }
 }
 

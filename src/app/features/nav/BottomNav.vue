@@ -20,6 +20,8 @@ function navigate(id: string, reason: string | null): void {
   if (id === 'phone') shell.open('phone')
   else if (id === 'home') {
     // At home (or already on the way somewhere): show the scene. Elsewhere: the travel card for Home, never a silent trek.
+    // A visitor has no home in this city: Home says so, with a guest house, the way home and the ways to a home here.
+    if (game.view.value.estate.visiting) { shell.open('visiting'); return }
     shell.closeSheet()
     if (game.state.value.location === 'home' || isTrip(game.state.value.activeAction)) shell.setMode('venue'); else void goTo('home')
   } else if (game.mode.value === id) shell.setMode('venue')

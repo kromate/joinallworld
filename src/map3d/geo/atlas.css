@@ -164,7 +164,7 @@
   .atlas-sheet{grid-column:1;grid-row:2;align-self:end;max-height:min(100%,calc(64 * var(--ui-vh)));padding:12px;gap:8px;border-radius:22px;z-index:4}
   .atlas-sheet h2{font-size:var(--t-title,17px)}
   /* Folded, the sheet is a name, a line and its one action: the map stays in view. "Routes and details" unfolds it. */
-  .atlas-sheet:not(.is-expanded)>:not(header):not(nav):not(.atlas-go):not(.atlas-more):not(.atlas-teaser){display:none}
+  .atlas-sheet:not(.is-expanded)>:not(header):not(nav):not(.atlas-go):not(.atlas-more):not(.atlas-teaser):not(.atlas-travel){display:none}
   .atlas-sheet nav[aria-label="Cities in this state"]{flex-wrap:nowrap;overflow-x:auto;min-height:44px;scrollbar-width:none}
   .atlas-sheet nav[aria-label="Cities in this state"] button{flex:none}
   .atlas.has-cities .atlas-frame>.atlas-stage{margin-bottom:262px}
@@ -237,3 +237,26 @@
 .atlas-sheet nav[aria-label="Cities in this state"]{display:flex;flex-wrap:wrap;gap:6px}
 .atlas-sheet nav[aria-label="Cities in this state"] button{min-height:44px;border:1px solid #cbd7c6;border-radius:22px;background:#f2f5ed;padding:7px 14px;color:#334b38;font:inherit;font-size:12px;cursor:pointer}
 .atlas-sheet nav[aria-label="Cities in this state"] button[aria-pressed="true"]{background:#2e6542;color:#fff;border-color:#2e6542}
+
+/* The travel card: one big button per way to the chosen city, cheapest first. */
+.atlas-travel{display:grid;gap:6px}
+.atlas-travel ul{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.atlas-travel li{display:grid;gap:3px}
+.atlas-way{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px;width:100%;min-height:52px;padding:8px 14px 8px 10px;border:0;border-radius:16px;background:var(--c-green-dark,#1d6b43);color:#fff;font:inherit;font-size:15px;text-align:left;cursor:pointer}
+button.atlas-way:hover{background:#17573a}
+.atlas-way b{font-weight:750}
+.atlas-way span{font-variant-numeric:tabular-nums;font-weight:650;white-space:nowrap}
+.atlas-way span:last-child{min-width:44px;text-align:right;opacity:.92}
+.atlas-way .atlas-way-mode{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#ffffff26}
+.atlas-way .atlas-way-mode svg{width:20px;height:20px}
+button.atlas-way:disabled{background:#e4e8e3;color:#59616b;cursor:not-allowed}
+button.atlas-way:disabled .atlas-way-mode{background:#00000012}
+.atlas-way.is-coming{background:#f1f3ef;color:#59616b;cursor:default}
+.atlas-way.is-coming .atlas-way-mode{background:#00000012}
+.atlas-way-why{margin:0;padding:0 4px;font-size:12px;line-height:1.35;color:#8a4b12}
+p.atlas-way-why{padding:8px 10px;border-radius:12px;background:#fff6e8}
+.atlas-way-ask{display:grid;gap:8px;padding:10px;border-radius:16px;background:#fff6e8;border:1px solid #f0d9b0}
+.atlas-way-ask p{margin:0;font-size:13px;line-height:1.4;color:#39404b}
+.atlas-way-ask div{display:flex;flex-wrap:wrap;gap:8px}
+.atlas-crumbs button svg{width:16px;height:16px;margin-right:6px;vertical-align:-3px}
+.atlas-crumbs button[data-atlas-level="0"]:not([aria-current]){background:var(--c-green-soft,#e8f5ec);color:var(--c-green-dark,#1d6b43)}

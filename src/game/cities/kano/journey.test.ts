@@ -159,9 +159,10 @@ test('Lagos–Kano flights preserve the travelling character and both homes', as
   fly(CITY)
   const paused = viewLife(state, clock.context(state)).career
   assert.deepEqual([paused.workplace, paused.shift, paused.pay], [null, null, 0])
-  const beforeHome = state.cash
-  assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'nassarawa', via: 'manual' } }, clock.context(state)).code, 'lga_set')
-  assert.equal(state.cash, beforeHome)
+  const beforeHome = state.cash, homePrice = viewLife(state, clock.context(state)).estate.settle?.buy.prices['nassarawa'] ?? 0
+  assert.ok(homePrice > 0, 'a visitor is quoted the price of a home here')
+  assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'nassarawa', via: 'manual', home: 'buy' } }, clock.context(state)).code, 'home_bought')
+  assert.equal(state.cash, beforeHome - homePrice, 'a second home is bought at its price, never given')
   const kanoHome = home(state)
   fly('lagos')
   assert.deepEqual(home(state), originalHome)

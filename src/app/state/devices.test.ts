@@ -39,7 +39,7 @@ test('the shell keeps the screen a device has open when the place changed elsewh
   // The three places the shell would otherwise change the screen for a change of place are each held back by `away`.
   assert.match(source, /game\.mode\.value !== 'map' && !away\) shell\.setMode\('map'\)/)
   assert.match(source, /game\.mode\.value !== 'venue' && !away\) shell\.setMode\('venue'\)/)
-  assert.match(source, /!state\.estate\.lga && !away\) shell\.open\('city'/)
+  assert.match(source, /!state\.estate\.lga && !state\.estate\.home && !away\) shell\.open\('city'/)
   assert.match(source, /if \(away\) game\.toast\(CONTINUED_TEXT\)/)
   // The place itself is always followed.
   assert.match(source, /scene\.venue\.value\?\.setLocation\(state\.location\)/)

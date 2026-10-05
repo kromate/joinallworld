@@ -316,7 +316,7 @@ const inner = {
   property: ({ property: p }: LifeState) => ({ house: p.house, cars: p.cars, car: p.car }),
   estate: ({ estate: e }: LifeState) => ({
     city: e.city, lga: e.lga, lgaAt: e.lgaAt, lgaConfirmed: e.lgaConfirmed, lgaVia: e.lgaVia, plot: e.plot, old: e.old, tier: e.tier, style: e.style, upgrade: e.upgrade,
-    living: e.living, ground: e.ground, away: e.away, nudged: e.nudged,
+    living: e.living, ground: e.ground, away: e.away, nudged: e.nudged, home: e.home, homeAt: e.homeAt,
   }),
   home: ({ home: h }: LifeState) => ({ items: h.items, storage: h.storage, seq: h.seq, stocked: h.stocked, custom: h.custom, boost: h.boost }),
   goals: ({ goals: g }: LifeState) => ({ started: g.started, chain: g.chain, cv: g.cv, seen: g.seen, stars: g.stars, perks: g.perks, wishes: g.wishes, rerolls: g.rerolls, granted: g.granted, dream: g.dream, dreamDone: g.dreamDone, stats: g.stats, besties: g.besties, seq: g.seq, feed: g.feed }),

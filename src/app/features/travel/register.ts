@@ -15,5 +15,6 @@ export const TRAVEL_PANELS: readonly VuePanel[] = [
     component: defineAsyncComponent(() => import('./RideApp.vue')),
   }),
   definePanel({ id: 'city', title: 'City', placement: 'modal', component: defineAsyncComponent(() => import('./CityPanel.vue')) }),
+  definePanel({ id: 'visiting', title: 'Home', placement: 'modal', component: defineAsyncComponent(() => import('./VisitorHome.vue')) }),
   definePanel({ id: 'roadside-chip', title: 'On the road', placement: 'hud', slot: 'alert', order: 5, component: defineAsyncComponent(() => import('./RoadsideChip.vue')) }),
 ]

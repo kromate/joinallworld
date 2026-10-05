@@ -641,6 +641,20 @@ export interface EstateView {
   links: CityLinkCard[]
   /** Homes kept in other cities; `tier` is the tier's LABEL. */
   away: { city: WorldCityId; name: string; tier: string; living: 'own' | 'rent' }[]
+  /** The main home: its city, and whether that is the city the life is in. Null for a life with no home anywhere yet. */
+  home: { city: WorldCityId; name: string; here: boolean } | null
+  /** A settled life in a city where it has no local government: it lives here as a visitor. */
+  visiting: boolean
+  /**
+   * What a visitor may do about a home here, or null for anyone else. `buy` is an additional home (the house, and its price in the
+   * cheapest local unit; each unit's own price is `prices`). `main` moves the main home here: `blocked` says why it cannot, and
+   * `gives` names what is given up when it can.
+   */
+  settle: { buy: { tier: string; from: number; prices: Record<string, number>; groundRent: number }; main: { blocked: string | null; gives: string | null } } | null
+  /** In a city where the life keeps a house that is not its main home: why it cannot be made the main home now (null when it can). Null elsewhere. */
+  makeMain: { blocked: string | null } | null
+  /** A room at a guest house ('estate.lodge'): the price, and why it cannot be taken now (null when it can). */
+  lodging: { fee: number; blocked: string | null }
 }
 
 // ---- home ---------------------------------------------------------------------------------
@@ -898,7 +912,7 @@ export interface SocialView {
 
 /** One requirement to run or vote, with its current status. */
 export interface EligibilityCheck {
-  id: 'days' | 'fee' | 'work' | 'place'
+  id: 'days' | 'fee' | 'work' | 'place' | 'home'
   met: boolean
   label: string
   detail: string
@@ -1080,8 +1094,8 @@ export const VIEW_FIELD_KEYS = {
   economy: ['deposits', 'loan', 'nextDue', 'nextDueLabel', 'rent', 'savings', 'weeklyBills'],
   property: ['car', 'cars', 'house', 'houses', 'nextHouse', 'rent'],
   estate: [
-    'arrears', 'away', 'change', 'cheapest', 'city', 'cityName', 'lga', 'lgaConfirmed', 'lgaVia', 'lgas', 'links', 'living', 'packed',
-    'placed', 'plot', 'rules', 'style', 'styles', 'tier', 'tiers', 'unit', 'upgrade',
+    'arrears', 'away', 'change', 'cheapest', 'city', 'cityName', 'home', 'lga', 'lgaConfirmed', 'lgaVia', 'lgas', 'links', 'living', 'lodging', 'makeMain', 'packed',
+    'placed', 'plot', 'rules', 'settle', 'style', 'styles', 'tier', 'tiers', 'unit', 'upgrade', 'visiting',
   ],
   home: ['ambience', 'atHome', 'door', 'grid', 'groceries', 'house', 'kitchen', 'placed', 'prices', 'quality', 'refundRate', 'stocked', 'stored', 'window'],
   onboarding: [

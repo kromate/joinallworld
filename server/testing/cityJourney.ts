@@ -170,8 +170,14 @@ export async function cityJourney(host: JourneyHost): Promise<JourneyDevice> {
 
   const visitor = await read(`/api/world/me?city=${OTHER}`, first.cookie)
   assert.equal(visitor.placed, false, 'arrival does not allocate a home before the visitor chooses')
-  const chosen = object((await action(first, OTHER, 'estate.set-lga', { lga: 'test-neighbour-central', via: 'manual' })).state)
-  assert.equal(chosen.cash, arrived.cash, 'the first local-government choice and starter home are free')
+  // A visitor is given nothing by choosing a local unit: it stays a visitor, or it moves its main home here. The one free
+  // starter house goes along, so the choice costs nothing and the home left behind is given up.
+  const bare = await host.request('/api/action', { cityId: OTHER, type: 'estate.set-lga', payload: { lga: 'test-neighbour-central', via: 'manual' }, actionId: `${host.now()}:${randomUUID()}` }, first.cookie)
+  const refused = object(await bare.json())
+  assert.deepEqual([refused.ok, refused.code, object(refused.state).cash], [false, 'choice_required', arrived.cash])
+  const chosen = object((await action(first, OTHER, 'estate.set-lga', { lga: 'test-neighbour-central', via: 'manual', home: 'main' })).state)
+  assert.equal(chosen.cash, arrived.cash, 'moving the main home with the free starter house costs nothing')
+  assert.deepEqual([object(chosen.estate).home, Object.keys(object(object(chosen.estate).away))], [OTHER, []], 'one home: the one left behind was given up')
   const resident = await read(`/api/world/me?city=${OTHER}`, first.cookie)
   assert.equal(resident.placed, true)
   assert.equal(resident.lga, 'test-neighbour-central')
@@ -181,8 +187,8 @@ export async function cityJourney(host: JourneyHost): Promise<JourneyDevice> {
   await host.elapse(first, OTHER, 1100)
   const returned = object((await read(`/api/life?city=${OTHER}`, first.cookie)).state)
   assert.equal(object(returned.estate).city, CITY)
-  assert.deepEqual([object(returned.estate).lga, object(returned.estate).tier, object(returned.estate).living], [home.lga, home.tier, home.living])
-  assert.equal(object(object(object(returned.estate).away)[OTHER]).lga, 'test-neighbour-central', 'the newly chosen home is also kept for a later visit')
+  assert.deepEqual([object(returned.estate).lga, object(returned.estate).home], [null, OTHER], 'back in the first city it is a visitor: its home is the one it moved to')
+  assert.equal(object(object(object(returned.estate).away)[OTHER]).lga, 'test-neighbour-central', 'the main home is kept for the way back')
   assert.deepEqual(Object.keys(object(object(await host.session(first)).cities)), [CITY])
   conserved(returned)
   conserved(await life(second, CITY))

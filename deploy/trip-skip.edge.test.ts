@@ -104,5 +104,5 @@ test('Worker: a trip between cities is skipped once, for the price shown', { tim
     },
   }
   const result = await skipJourney(host)
-  assert.deepEqual([result.fare, result.free, result.charged], [3500, 0, 1000])
+  assert.deepEqual([result.fare, result.free, result.charged], [3500, 0, 900])
 })

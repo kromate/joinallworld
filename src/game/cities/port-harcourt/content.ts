@@ -100,5 +100,5 @@ export const PORT_HARCOURT_CONTENT = Object.freeze({
   ...base,
   // Rooms in the Garden City: sea-green walls over a pale timber floor.
   homePalette: { back: '#cfe3da', left: '#b3d1c5', floor: ['#d9cdb4', '#b9a888'] as const },
-  localRoutes: Object.freeze([{a:'bonny-jetty',b:'okrika-jetty',mode:'boat' as const,fare:800,seconds:40,beta:true as const}]),
+  localRoutes: Object.freeze([{a:'bonny-jetty',b:'okrika-jetty',mode:'boat' as const,fare:800,seconds:15,beta:true as const}]),
 })

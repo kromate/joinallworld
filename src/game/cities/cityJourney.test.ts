@@ -108,7 +108,9 @@ test('one character can settle, work, make a local friend and return from anothe
     assert.equal(state.cash, beforeVisitorShift + 100, 'a visitor may work at the local equivalent without a home')
     assert.equal(state.estate.lga, null)
 
-    assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'test-neighbour-central', via: 'manual' } }, context()).code, 'lga_set')
+    assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'test-neighbour-central', via: 'manual' } }, context()).code, 'choice_required', 'a visitor is never given a home by choosing a local unit')
+    state.cash += viewLife(state, context()).estate.settle?.buy.prices['test-neighbour-central'] ?? 0
+    assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'test-neighbour-central', via: 'manual', home: 'buy' } }, context()).code, 'home_bought')
     assert.deepEqual([state.estate.lga, state.estate.lgaConfirmed, viewLife(state, context()).estate.placed], ['test-neighbour-central', true, true])
     assert.equal(dispatch(state, { type: 'travel', payload: { id: 'home', mode: 'trek' } }, context()).code, 'started')
     finish(state)

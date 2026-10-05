@@ -504,6 +504,10 @@ export interface EstateState extends Residence {
   away: Partial<Record<WorldCityId, AwayResidence>>
   /** The "you can afford an upgrade" notice has been posted. */
   nudged: boolean
+  /** The city of the primary home (it is the current city, or a key of `away`), or null while the life has no home anywhere. Worked out at load for a save without it. */
+  home: WorldCityId | null
+  /** Server ms the main home was last moved to another city by the player, or null. */
+  homeAt: Ms | null
 }
 
 /** OWNER world. */
@@ -1084,7 +1088,7 @@ export const SLICE_FIELD_KEYS = {
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],
   property: ['car', 'cars', 'house'],
-  estate: ['away', 'city', 'ground', 'lga', 'lgaAt', 'lgaConfirmed', 'lgaVia', 'living', 'nudged', 'old', 'plot', 'style', 'tier', 'upgrade'],
+  estate: ['away', 'city', 'ground', 'home', 'homeAt', 'lga', 'lgaAt', 'lgaConfirmed', 'lgaVia', 'living', 'nudged', 'old', 'plot', 'style', 'tier', 'upgrade'],
   home: ['boost', 'custom', 'items', 'seq', 'stocked', 'storage'],
   onboarding: [
     'activities', 'bonusAt', 'bornAt', 'completedAt', 'done', 'dream', 'firstAt', 'house', 'joined', 'legacy', 'look', 'lottery',

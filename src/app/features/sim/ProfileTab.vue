@@ -89,6 +89,7 @@ async function submit(): Promise<void> {
           <li v-if="onboarding.dream"><b>Dream</b> <GameIcon inline kind="dream" :id="onboarding.dream" :emoji="dream?.icon" /> {{ dream?.label }}</li>
           <li v-if="onboarding.lottery"><b>Born</b> <GameIcon inline kind="lottery" :id="onboarding.lottery.id" :emoji="onboarding.lottery.icon" /> {{ onboarding.lottery.label }}</li>
           <li v-if="view.estate.placed"><b>Home</b> {{ home ? `${home.label}, ${home.district}` : 'Your home' }} · <button type="button" class="sim-link" @click="shell.open('houses')">See houses</button></li>
+          <li v-else-if="view.estate.settle"><b>Home</b> {{ view.estate.home?.name }} · visiting {{ view.estate.cityName }} · <button type="button" class="sim-link" @click="shell.open('visiting')">Rest, go home or take a home here</button></li>
           <li v-else><b>Home</b> None in {{ view.estate.cityName }} yet · <button type="button" class="sim-link" @click="shell.open('houses')">Choose your {{ view.estate.unit }}</button></li>
         </ul>
       </div>
@@ -96,7 +97,7 @@ async function submit(): Promise<void> {
     <h3>Appearance</h3>
     <p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>
     <LookEditor :look="current.look" :owned="onboarding.wardrobe" @choose="onChoose" />
-    <LgaCard v-if="onboarding.done" />
+    <LgaCard v-if="onboarding.done && !view.estate.settle" />
     <p v-if="form.error" class="sim-error" role="alert">{{ form.error }}</p>
     <div class="sim-save-bar"><button type="submit" class="ui-button is-primary sim-save" data-key="save" :disabled="save.disabled">{{ save.label }}</button></div>
   </form>

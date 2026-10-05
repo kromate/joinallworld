@@ -17,7 +17,7 @@
  * Pure maths: no Three.js, no DOM. Layouts are cached per pack.
  */
 import { ESTATE } from '../game/content/world.ts';
-import { landOf, partsOf, scanRings } from './lga.ts';
+import { inLga, landOf, partsOf, scanRings } from './lga.ts';
 import type { CityPack, PackLga, Rect, XZ } from './types.ts';
 
 /** One estate's square on the map: its centre and its side. */
@@ -92,6 +92,16 @@ function squareFree(mine: Sampler, x: number, z: number, size: number): boolean 
   for (let i = 0; i <= steps; i++) for (let j = 0; j <= steps; j++) if (!mine(x - inset + (2 * inset * i) / steps, z - inset + (2 * inset * j) / steps)) return false;
   return true;
 }
+/**
+ * The grid answers to a quarter of a unit; a small local government's estates are not much bigger, so the grid's
+ * answer is confirmed against the real boundary itself: a 7 × 7 lattice over the square the plots cover (only for a square within a unit of an edge).
+ */
+function insideBoundary(lga: PackLga, mine: Sampler, x: number, z: number, size: number): boolean {
+  if (squareFree(mine, x, z, size + 1)) return true;   // well clear of every edge: the grid's answer stands
+  const half = (size * FILL) / 2;
+  for (let i = 0; i <= 6; i++) for (let j = 0; j <= 6; j++) if (!inLga(lga, x - half + (half * i) / 3, z - half + (half * j) / 3)) return false;
+  return true;
+}
 const boundsOf = (lga: PackLga): Rect => {
   const box = { minX: Infinity, maxX: -Infinity, minZ: Infinity, maxZ: -Infinity };
   for (const part of partsOf(lga)) for (const point of part[0]!) { box.minX = Math.min(box.minX, point[0]); box.maxX = Math.max(box.maxX, point[0]); box.minZ = Math.min(box.minZ, point[1]); box.maxZ = Math.max(box.maxZ, point[1]); }
@@ -109,7 +119,7 @@ function frontFor(lga: PackLga, mine: Sampler): EstateCell | null {
     let best: { x: number; z: number; size: number; far: number } | null = null;
     for (let z = minZ + size / 2; z <= maxZ - size / 2; z += size / 4) for (let x = minX + size / 2; x <= maxX - size / 2; x += size / 4) {
       const far = Math.hypot(x - px, z - pz);
-      if ((!best || far < best.far) && squareFree(mine, x, z, size)) best = { x, z, size, far };
+      if ((!best || far < best.far) && squareFree(mine, x, z, size) && insideBoundary(lga, mine, x, z, size)) best = { x, z, size, far };
     }
     if (best) return { x: best.x, z: best.z, size: best.size };
   }
@@ -119,7 +129,7 @@ function cellsFor(lga: PackLga, size: number, mine: Sampler, front: EstateCell |
   const { minX, maxX, minZ, maxZ } = boundsOf(lga), half = size / 2, cells: EstateCell[] = [], gap = front ? front.size / 2 + half + 0.4 : 0;
   for (let z = minZ + half; z + half <= maxZ + 1e-9; z += size) for (let x = minX + half; x + half <= maxX + 1e-9; x += size) {
     if (front && Math.abs(x - front.x) < gap && Math.abs(z - front.z) < gap) continue;
-    if (squareFree(mine, x, z, size)) cells.push({ x, z, size });
+    if (squareFree(mine, x, z, size) && insideBoundary(lga, mine, x, z, size)) cells.push({ x, z, size });
   }
   return cells.length >= want ? cells : null;
 }

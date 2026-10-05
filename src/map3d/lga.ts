@@ -5,16 +5,17 @@
  * DOM, no network — so it runs under `node --test` and in the browser alike.
  *
  * LOCATION PRIVACY. resolveLga() is the ONLY code that ever sees a latitude and a longitude. It
- * runs in the player's browser, on the boxes bundled in the city pack, and returns an id. Nothing
+ * runs in the player's browser, on the real boundaries bundled in the city pack, and returns an id. Nothing
  * in this file sends anything anywhere, and no caller keeps the position (src/ui/panels/lga-ui.js).
  *
  *   lgaAt(pack, x, z)            → the local government's id at a map point, or null
- *   landOf(pack)                 → the land outlines as the builder rounds them [{ id, kind, polygon }]
+ *   landOf(pack)                 → the land outlines as the builder draws them [{ id, kind, polygon, holes? }]
  *   onLand(lands, x, z)          → is the point on land (sand excluded unless `sand`)
  *   rasterLgas(pack, { scale, own })  → { width, height, data (RGBA), x0, z0, cell }: the tint layer —
  *                                 each local government's colour where it is land, a darker line
  *                                 along every boundary, the player's own one brighter
- *   resolveLga(pack, lat, lon)   → { id, name, sure } | null (not in this city)
+ *   resolveLga(pack, lat, lon)   → { id, name, sure } | null (not in this city); the position is projected into the
+ *                                 pack's frame and tested against the polygons — offline, pure
  */
 import { roundPolygon, pointInPolygon } from './roads.ts';
 import { toLocal } from './geo/frame.ts';

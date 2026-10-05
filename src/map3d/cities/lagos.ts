@@ -84,8 +84,8 @@ export const bounds: PackBounds = {
   minX: fit.minX - 30, maxX: fit.maxX + 30, minZ: fit.minZ - 30, maxZ: fit.maxZ + 50, fit,
   sea: { x0: at(3.42, 6.40)[0], x1: at(3.62, 6.40)[0], z0: at(3.42, 6.395)[1], z1: at(3.42, 6.372)[1] },
 };
-/** The metropolitan core, where the venues are: Ikeja to Lekki Phase 1 and Yaba to Victoria Island. The default camera view. */
-const coreNW = at(3.30, 6.62), coreSE = at(3.50, 6.40);
+/** The metropolitan core, where the venues are: Ikeja to the Lekki Conservation Centre and Yaba to Victoria Island. The default camera view. */
+const coreNW = at(3.30, 6.62), coreSE = at(3.55, 6.40);
 export const core: Rect = { minX: coreNW[0], maxX: coreSE[0], minZ: coreNW[1], maxZ: coreSE[1] };
 /** A multiplier on road widths: at 100 m a unit the old 2.5-unit road would be 250 m wide. */
 export const roadScale = 0.45;

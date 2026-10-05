@@ -5,7 +5,7 @@ import { screenText } from './moderation/text.ts';
 import { createCampusWalk } from '../src/campus/unilag/walk.ts';
 import { ENTRANCE } from '../src/campus/unilag/layout.ts';
 import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../src/types/protocol.ts';
-import type { ActionReceipt, ArchivedLife, Collections, CollectionName, Db, HttpError, SessionRecord } from './types.ts';
+import type { AccountDeviceRecord, ActionReceipt, ArchivedLife, Collections, CollectionName, Db, HttpError, SessionRecord } from './types.ts';
 
 /** A point on the ground: venue positions are x/z only. */
 type Point = { x: number; z: number };
@@ -118,6 +118,39 @@ export function readReceipt<R extends Pick<ActionReceipt, 'fingerprint'>>(action
 }
 export function archivedLife(session: Pick<SessionRecord, 'name' | 'cities'>, publicId: string, at: number): ArchivedLife { return { publicId, name: session.name, cities: structuredClone(session.cities || {}), archivedAt: at }; }
 
+
+/**
+ * One record of a keyed collection, read by key alone (never by listing the collection: on the Worker these are rows).
+ * Keys are UUIDs or `fb:`-prefixed ids, so none can name something every object inherits; a non-record answers undefined anyway.
+ */
+const own = <T>(map: Record<string, T> | undefined, key: string): T | undefined => {
+  const value = map && key !== '__proto__' ? map[key] : undefined;
+  return value !== null && typeof value === 'object' ? value : undefined;
+};
+/**
+ * WHOSE SESSION A COOKIE IS — one rule for both hosts.
+ *   a guest      the cookie is the key of a session record that belongs to no account;
+ *   signed in    the cookie is a device binding (`accountDevices`) of an account whose active character is the session.
+ * A record that belongs to an account is never reached by naming its key: only through a binding, so signing a device
+ * out (removing its binding) ends its access at once and the record's key is not a credential. Expired records and
+ * bindings answer undefined. Read-only: nothing is created or renewed here.
+ */
+export function sessionOfCookie(db: Db, cookie: string | undefined, now: number): { session: SessionRecord; device?: AccountDeviceRecord } | undefined {
+  if (!cookie || !UUID_PATTERN.test(cookie)) return undefined;
+  const direct = db.sessions[cookie];
+  if (direct) return direct.account === undefined && Number.isFinite(direct.expiresAt) && direct.expiresAt > now ? { session: direct } : undefined;
+  const device = own(db.accountDevices, cookie);
+  if (!device || !(device.expiresAt > now)) return undefined;
+  const account = own(db.accounts, device.account);
+  const session = account?.sessionKey ? db.sessions[account.sessionKey] : undefined;
+  if (!account || !session || session.account !== account.id || !(session.expiresAt > now)) return undefined;
+  return { session, device };
+}
+/** Renew what sessionOfCookie found: the session, and the device binding that led to it. */
+export function renewResolved(found: { session: SessionRecord; device?: AccountDeviceRecord }, now: number, ttlMs = SESSION_TTL_MS): void {
+  renewSession(found.session, now, ttlMs);
+  if (found.device) { found.device.expiresAt = now + ttlMs; found.device.seenAt = now; }
+}
 
 export function renewSession(session: Pick<SessionRecord, 'expiresAt'> | null | undefined, now: number, ttlMs = SESSION_TTL_MS): boolean {
   if (!session || !Number.isFinite(session.expiresAt) || session.expiresAt <= now) return false;

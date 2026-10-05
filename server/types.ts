@@ -90,6 +90,12 @@ export interface SessionRecord {
   once?: Record<TimedId, OnceReceipt>
   /** server/world/service.ts rekey(): a separate life that was already filed under the city a character arrived in, put aside as `<city>:<ms>`. */
   legacyLives?: Record<string, CityLifeRecord>
+  /**
+   * Set only on a character that belongs to an account (server/accounts/service.ts): the account's id. Such a record
+   * is filed under a key no browser holds — it is reached only through a device binding (`accountDevices`), and a
+   * cookie that names its key directly is refused (protocol.ts sessionOfCookie).
+   */
+  account?: string
 }
 /**
  * WORKER: what deploy/cloudflare-worker.ts stores in its `sessions` table. Action receipts live
@@ -103,7 +109,58 @@ export interface ArchivedLife {
   name: string
   cities: Partial<Record<CityId, CityLifeRecord>>
   archivedAt: number
+  /** A character an account set aside (server/accounts/service.ts): the account that may bring it back, and what a session record carries beside its lives. */
+  account?: string
+  character?: SessionRecord['character']
+  legacyLives?: SessionRecord['legacyLives']
+  onboarding?: true
 }
+
+// ---- accounts (db.accounts, db.accountDevices, db.accountLog — server/accounts/service.ts) ----------
+//
+// An account is optional. It records who may reach a character from another device; it never holds a
+// password, an ID token or a refresh token. Design: docs/ACCOUNTS.md.
+
+/** How the provider says the account last signed in. */
+export type AccountProviderId = 'google' | 'password'
+/** A character an account has set aside: an entry of `archivedLives` (by public id) that only this account may bring back. */
+export interface ParkedLife { id: string; name: string; at: number }
+/** Keyed by account id (`fb:<provider subject>`). */
+export interface AccountRecord {
+  v: 1
+  id: string
+  provider: AccountProviderId
+  /** The provider's subject id, taken from a verified ID token only. */
+  subject: string
+  /** The verified address the provider vouched for at the last sign-in: shown to its owner, used for nothing else. */
+  email: string
+  createdAt: number
+  lastSeenAt: number
+  /** Key of the account's active character in `sessions`, or null. Never a cookie value. */
+  sessionKey: string | null
+  /** Public id of the active character (kept so an expired, archived character can be brought back). */
+  publicId: string | null
+  /** Keys of this account's device bindings in `accountDevices`. At most MAX_DEVICES. */
+  devices: string[]
+  /** Characters set aside when a device that already had a played life signed in. At most MAX_PARKED. */
+  parked: ParkedLife[]
+}
+/** One signed-in browser. The key in `accountDevices` is that browser's `sid` cookie value. */
+export interface AccountDeviceRecord { account: string; createdAt: number; seenAt: number; expiresAt: number }
+export type AccountEvent = 'created' | 'signed_in' | 'linked' | 'restored' | 'parked' | 'switched' | 'character_started' | 'signed_out' | 'signed_out_everywhere' | 'deleted'
+/** One line of the account audit trail: what happened, never a token, an address or a cookie. `ref` is a salted hash of the account id. */
+export interface AccountAuditRecord { n: number; at: number; event: AccountEvent; ref: string; life?: string }
+export interface AccountLogCollection {
+  /** Random, made once; mixed into `ref`. */
+  salt: string
+  seq: number
+  /** At most 2000, newest last. */
+  audit: AccountAuditRecord[]
+  /** Digest of every ID token already used → when it stops being acceptable anyway (server ms). */
+  used: Record<string, number>
+}
+/** The public client configuration of the sign-in provider (server/host-context.ts accountsConfig); null = accounts are off. */
+export interface AccountsConfig { projectId: string; apiKey: string; googleClientId: string }
 
 // ---- social collection (db.social) ---------------------------------------------------------------
 
@@ -403,11 +460,15 @@ export interface Database {
   growth?: GrowthCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
   campus?: { election?: CampusElectionRecord }
+  /** server/accounts/service.ts. Created by the first sign-in, so none of the three is in COLLECTION_NAMES. WORKER: `accounts` and `accountDevices` are tables of their own. */
+  accounts?: Record<string, AccountRecord>
+  accountDevices?: Record<string, AccountDeviceRecord>
+  accountLog?: AccountLogCollection
   /** A collection a module added (collection names: a lower-case letter, then 1–31 letters or digits). */
   [collection: string]: unknown
 }
 /** Top-level keys of the document. */
-export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'campus'] as const satisfies readonly (keyof Database)[]
+export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'campus', 'accounts', 'accountDevices', 'accountLog'] as const satisfies readonly (keyof Database)[]
 /** The namespaced collections reached through `collection(db, name)`. */
 export const COLLECTION_NAMES = ['social', 'civic', 'support', 'moderation', 'growth'] as const
 export type CollectionName = (typeof COLLECTION_NAMES)[number]
@@ -482,8 +543,15 @@ export interface RouteRequest {
   requireSession(db: Db, options?: { renew?: boolean }): SessionRecord
   /** Set by session()/requireSession() once the request's session is known (server/server.ts); the telemetry route reads it. */
   publicId?: string
-  /** Foundation-only: the cookie secret and the raw Node request. */
+  /**
+   * Foundation-only. `secret` is the key of the caller's stored session: the cookie value until session() has resolved it,
+   * then the record's own key (the two differ for a signed-in device, whose cookie is a device binding). `cookie` is
+   * always the `sid` value the browser presented — the only value that may ever be sent back in a Set-Cookie.
+   */
   secret: string | undefined
+  cookie?: string | undefined
+  /** True only when the request carried an Origin header naming this host (and, when present, Sec-Fetch-Site: same-origin). The account routes require it. */
+  strictOrigin?: boolean
   raw: unknown
 }
 
@@ -562,6 +630,11 @@ export interface ContextChecks {
   cityGate?: (session: SessionRecord, cityId: string) => void
   /** Growth: that player answered the age question with "under 18" (the one home of the age answer). */
   minor?: (db: Db, publicId: string) => boolean
+  /**
+   * Accounts: a session POST /api/session has just created. When the presented cookie is a device binding of an account
+   * that has no character yet, the new record becomes that account's character (and is returned re-keyed).
+   */
+  adoptSession?: (db: Db, cookie: string | undefined, session: SessionRecord) => SessionRecord
 }
 
 export interface ServerConfig {
@@ -579,6 +652,8 @@ export interface ServerConfig {
   moderation: boolean
   /** PUBLIC_ORIGIN (`https://play.example`), or '' when it is not set: links in messages that leave the game need it. */
   publicOrigin: string
+  /** The sign-in provider's public configuration; null or absent = accounts are off and every account route says so. */
+  accounts?: AccountsConfig | null
 }
 
 /** In-process events between server modules; nothing is sent to a client by raising one. */
@@ -639,6 +714,10 @@ export interface ContextCore {
   newIdentity(): { secret: string; publicId: string }
   newId(): string
   cookieHeader(request: RouteRequest, secret: string): string
+  /** The Set-Cookie value that removes the session cookie, with the same attributes it was set with. */
+  clearCookieHeader?(request: RouteRequest): string
+  /** Close one socket now (a device that signed out, a session that was re-keyed). */
+  closeSocket?(ws: WsConnection, code: number, reason: string): void
   sockets(): WsConnection[]
   isOpen(ws: WsConnection): boolean
   /** The stored session of a socket, inside a transaction. */
@@ -732,8 +811,10 @@ export interface WsConnection {
   readyState: number
   /** The sender's PUBLIC identity. */
   session: PublicSession
-  /** The cookie secret: used to find the stored session; never sent to anyone. */
+  /** The key of the stored session: used to find it; never sent to anyone. */
   secret: string
+  /** The `sid` cookie the socket was opened with (differs from `secret` for a signed-in device). */
+  device?: string
   expiresAt: number
   lastSessionRenewedAt: number
   ip: string

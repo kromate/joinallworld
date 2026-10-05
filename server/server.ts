@@ -15,7 +15,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from './host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, sessionCookie, isStrictOrigin } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
@@ -23,7 +23,7 @@ import { buildSocketHandlers } from './ws/index.ts';
 import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
 import { siteFile } from './site-files.ts';
 import telemetryRoutes from './telemetry/routes.ts';
-import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue } from './protocol.ts';
+import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue } from './protocol.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Duplex } from 'node:stream';
 import type { ActionRequest, CityId, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
@@ -194,12 +194,18 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     }
     return ++entry.count <= count;
   }
+  // Whose session a cookie is — a guest's own record, or the character of the account a signed-in browser is bound to: protocol.ts sessionOfCookie.
   const sessionFor = (req: IncomingMessage, db: Db, renew = false): SessionRecord | undefined => {
-    const id = cookieId(req);
-    const session = id && uuid.test(id) ? db.sessions[id] : undefined;
-    if (!session || session.expiresAt <= now()) return undefined;
-    if (renew) renewSession(session, now(), sessionTtlMs);
-    return session;
+    const found = sessionOfCookie(db, cookieId(req), now());
+    if (!found) return undefined;
+    if (renew) renewResolved(found, now(), sessionTtlMs);
+    return found.session;
+  };
+  /** The stored session a socket was opened under, with its device binding — undefined once either is gone (signed out, moved, expired). */
+  const socketSession = (db: Db, ws: Connection) => {
+    if (ws.device === undefined || ws.device === ws.secret) { const session = db.sessions[ws.secret]; return session && session.account === undefined ? { session } : undefined; }
+    const found = sessionOfCookie(db, ws.device, now());
+    return found && found.session.secret === ws.secret ? found : undefined;
   };
   const receipts = createOnce({ now, windowMs: actionWindowMs, limits: receiptLimits });
   // ctx.settle, ctx.act (server authority, always under a receipt) and what POST /api/action runs: host-context.js, shared with the Worker.
@@ -207,13 +213,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** True from a failed write of the data file until the next successful one. Reads still work then; saving does not. */
   const storageFailing = () => { try { return store.stats?.().failing === true; } catch { return false; } };
   function cookieHeader(req: IncomingMessage, secret: string | undefined): string {
-    const secure = isSecure(req, trustProxy);
-    return `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${Math.floor(sessionTtlMs / 1000)}${secure ? '; Secure' : ''}`;
+    return sessionCookie(secret ?? '', sessionTtlMs / 1000, isSecure(req, trustProxy));
   }
-  function renewedHeaders(req: IncomingMessage): Record<string, string> {
-    const secret = cookieId(req);
-    for (const ws of connections()) if (ws.secret === secret) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
-    return { 'Set-Cookie': cookieHeader(req, secret) };
+  /** `key`: the stored session's key (its sockets are renewed with it). The cookie sent back is always the one the browser presented. */
+  function renewedHeaders(req: IncomingMessage, key: string | undefined): Record<string, string> {
+    for (const ws of connections()) if (ws.secret === key) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
+    return { 'Set-Cookie': cookieHeader(req, cookieId(req)) };
   }
   const addressOf = (req: IncomingMessage): string => clientAddress(req, trustProxy);
   /**
@@ -312,10 +317,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           /** True only for a request carrying the operator's bearer token (never a cookie or a query value). */
           moderator: () => isModerator(req),
           json: () => jsonBody(req).then(body => (request.body = body)),
-          session: (db: Db, { renew = false }: { renew?: boolean } = {}) => { const session = sessionFor(req, db, renew); if (session) request.publicId = session.publicId; return session; },
+          session: (db: Db, { renew = false }: { renew?: boolean } = {}) => { const session = sessionFor(req, db, renew); if (session) { request.publicId = session.publicId; request.secret = session.secret; } return session; },
           requireSession(db: Db, options?: { renew?: boolean }) { const session = this.session(db, options); if (!session) throw fail(401, 'device_session_required'); return session; },
-          // Foundation-only: the cookie secret and the raw request, used by core routes for cookies and room checks.
-          secret: cookieId(req), raw: req,
+          // Foundation-only: the stored session's key (the cookie until session() resolves it), the cookie as presented, and the raw request.
+          secret: cookieId(req), cookie: cookieId(req), raw: req,
+          // The account routes change state only for a request that NAMED this host as its origin (a missing Origin passes the host's own check).
+          strictOrigin: isStrictOrigin(req.headers.origin, req.headers.host, typeof req.headers['sec-fetch-site'] === 'string' ? req.headers['sec-fetch-site'] : undefined),
         };
         // ROOM REVALIDATION, for every route and every outcome. A request may have settled or changed
         // the caller's life (or been refused, or lost its write and been undone): before it is answered,
@@ -331,7 +338,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         // is stored, and nothing new is being saved.
         const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body)
           ? { ...result.body, serverTime: now(), ...(storageFailing() ? { storage: 'failing' } : {}) } : result.body ?? {};
-        const sent = reply(res, status, payload, { ...(result.renew === true ? renewedHeaders(req) : {}), ...routeHeaders(result.headers) });
+        const sent = reply(res, status, payload, { ...(result.renew === true ? renewedHeaders(req, request.secret) : {}), ...routeHeaders(result.headers) });
         telemetry.http({ method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.type, code: fieldOf(result.body, 'code') } });
         // `after` runs once the answer is out. Whatever it does, the request is already answered: a
         // failure in it is logged and goes no further.
@@ -472,7 +479,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // the Worker host keeps itself alive for it. A module calls ctx.waitUntil?.(promise) and never relies on the answer.
     waitUntil() {},
     keyFile,
-    config: { publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
+    config: { accounts: accountsConfig(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup,
     // Work a module must finish when the server stops, BEFORE the store is closed: async functions, run in order
@@ -487,6 +494,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       newIdentity: () => ({ secret: randomUUID(), publicId: randomUUID() }),
       newId: () => randomUUID(),
       cookieHeader: (request, secret) => { if (!isNodeRequest(request.raw)) throw new TypeError('The request has no raw Node request'); return cookieHeader(request.raw, secret); },
+      clearCookieHeader: (request) => { if (!isNodeRequest(request.raw)) throw new TypeError('The request has no raw Node request'); return cookieHeader(request.raw, ''); },
+      closeSocket: (ws, code, reason) => { try { (ws as Connection).close(code, reason); } catch { /* already closing */ } },
       sockets: () => connections(),
       isOpen: (ws) => ws.readyState === WebSocket.OPEN,
       sessionOf: (ws, db) => db.sessions[ws.secret],
@@ -521,11 +530,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         .catch(error => { if (fieldOf(error, 'code') !== 'storage_unavailable') throw error; return store.read(db => sessionFor(req, db, false)); });
       if (!session) throw Error('Unauthorized');
       if (wss.clients.size >= 1024 || connections().filter(ws => ws.session.id === session.publicId).length >= 8) throw Error('Connection capacity');
-      renewedCookies.set(req, cookieHeader(req, session.secret));
+      // The cookie renewed on the 101 answer is the one the browser presented — never the stored record's key, which a signed-in browser must not learn.
+      renewedCookies.set(req, cookieHeader(req, cookieId(req)));
       wss.handleUpgrade(req, socket, head, socketOfUpgrade => {
         const ws = socketOfUpgrade as Connection;
         ws.session = publicSession(session);
         ws.secret = session.secret;
+        ws.device = cookieId(req);
         ws.expiresAt = session.expiresAt;
         ws.lastSessionRenewedAt = now();
         ws.ip = addressOf(req);
@@ -541,9 +552,10 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     let pending = socketRenewals.get(ws.secret);
     if (!pending) {
       pending = store.transact(db => {
-        const session = db.sessions[ws.secret];
-        if (!session || !renewSession(session, now(), sessionTtlMs)) throw Error('device_session_required');
-        return session.expiresAt;
+        const found = socketSession(db, ws);
+        if (!found || !renewSession(found.session, now(), sessionTtlMs)) throw Error('device_session_required');
+        renewResolved(found, now(), sessionTtlMs);
+        return found.session.expiresAt;
       });
       socketRenewals.set(ws.secret, pending);
     }

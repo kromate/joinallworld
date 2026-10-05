@@ -24,6 +24,12 @@
  *                                                    a player's thousands of receipts are never rewritten with their
  *                                                    life, and a session row stays far below SQLite's 2 MB row limit.
  *   archived_lives(public_id, value)
+ *   accounts(id, public_id, value)                   one row per account (server/accounts/service.ts): `db.accounts`
+ *   account_devices(secret, account_id, expires_at, value)   one row per signed-in browser: `db.accountDevices`. Both are
+ *                                                    rows of their own, read by key, so a request by a signed-in browser
+ *                                                    reads two rows and a sign-in never rewrites every account. The two
+ *                                                    tables were added beside the others: a database made before them
+ *                                                    gains them empty on its next start, and no existing table changes.
  *   collections(name, value) + collection_parts(name, part, value)   each feature collection as JSON; one larger
  *                                                    than CHUNK characters is split over rows of collection_parts.
  * Inside a transaction, `session.actions` and `session.once` are lazy maps over their tables: reading one id
@@ -34,7 +40,7 @@
  */
 import { storageError } from '../server/protocol.ts';
 import type { SqlBinding, SqliteStorage } from './cf-types.ts';
-import type { ActionReceipt, Db, OnceReceipt, SessionRecord, StoreHelpers, TransactOptions } from '../server/types.ts';
+import type { AccountDeviceRecord, AccountRecord, ActionReceipt, Db, OnceReceipt, SessionRecord, StoreHelpers, TransactOptions } from '../server/types.ts';
 import type { SqliteStore } from './host-seam.ts';
 
 /** One row of `action_receipts` or `once_receipts`. */
@@ -61,6 +67,9 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   sql.exec('CREATE INDEX IF NOT EXISTS action_expiry ON action_receipts(action_at)');
   sql.exec('CREATE TABLE IF NOT EXISTS once_receipts (sender TEXT NOT NULL, id TEXT NOT NULL, at INTEGER NOT NULL, kind TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,id))');
   sql.exec('CREATE INDEX IF NOT EXISTS once_expiry ON once_receipts(at)');
+  sql.exec('CREATE TABLE IF NOT EXISTS accounts (id TEXT PRIMARY KEY, public_id TEXT, value TEXT NOT NULL)');
+  sql.exec('CREATE TABLE IF NOT EXISTS account_devices (secret TEXT PRIMARY KEY, account_id TEXT NOT NULL, expires_at INTEGER NOT NULL, value TEXT NOT NULL)');
+  sql.exec('CREATE INDEX IF NOT EXISTS account_devices_account ON account_devices(account_id)');
   sql.exec('CREATE TABLE IF NOT EXISTS collections (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
   sql.exec('CREATE TABLE IF NOT EXISTS collection_parts (name TEXT NOT NULL, part INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(name,part))');
   let serial: Promise<unknown> = Promise.resolve(), failed = false, executing = false;
@@ -86,6 +95,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
 
   function view(): { db: Db; commit: () => number } {
     const sessions: Cache<SessionRecord> = new Map(), archives: Cache<unknown> = new Map(), collections: Cache<unknown> = new Map();
+    const accounts: Cache<AccountRecord> = new Map(), devices: Cache<AccountDeviceRecord> = new Map();
     /** A map whose keys are read from a table on demand; `cache` holds what this transaction read or wrote (undefined = removed). */
     function lazyMap<T>(cache: Cache<T>, keys: () => string[], load: (key: string) => T | undefined): Record<string, T | undefined> {
       let known: Set<string> | undefined;
@@ -119,7 +129,8 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
       };
     }
     const actions = receiptTable<ActionReceipt>('action_receipts', 'action_id'), once = receiptTable<OnceReceipt>('once_receipts', 'id');
-    const originals = { sessions: new Map<string, string | undefined>(), archives: new Map<string, string | undefined>(), collections: new Map<string, string | undefined>() };
+    const originals = { sessions: new Map<string, string | undefined>(), archives: new Map<string, string | undefined>(), collections: new Map<string, string | undefined>(),
+      accounts: new Map<string, string | undefined>(), devices: new Map<string, string | undefined>() };
     const sessionMap = lazyMap<SessionRecord>(sessions, () => sql.exec<{ secret: string }>('SELECT secret FROM sessions').toArray().map(row => row.secret), key => {
       const row = sql.exec<{ value: string }>('SELECT value FROM sessions WHERE secret = ?', key).toArray()[0]; originals.sessions.set(key, row?.value);
       if (!row) return undefined;
@@ -130,6 +141,12 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     });
     const archiveMap = lazyMap<unknown>(archives, () => sql.exec<{ public_id: string }>('SELECT public_id FROM archived_lives').toArray().map(row => row.public_id), key => {
       const row = sql.exec<{ value: string }>('SELECT value FROM archived_lives WHERE public_id = ?', key).toArray()[0]; originals.archives.set(key, row?.value); return row ? JSON.parse(row.value) as unknown : undefined;
+    });
+    const accountMap = lazyMap<AccountRecord>(accounts, () => sql.exec<{ id: string }>('SELECT id FROM accounts').toArray().map(row => row.id), key => {
+      const row = sql.exec<{ value: string }>('SELECT value FROM accounts WHERE id = ?', key).toArray()[0]; originals.accounts.set(key, row?.value); return row ? JSON.parse(row.value) as AccountRecord : undefined;
+    });
+    const deviceMap = lazyMap<AccountDeviceRecord>(devices, () => sql.exec<{ secret: string }>('SELECT secret FROM account_devices').toArray().map(row => row.secret), key => {
+      const row = sql.exec<{ value: string }>('SELECT value FROM account_devices WHERE secret = ?', key).toArray()[0]; originals.devices.set(key, row?.value); return row ? JSON.parse(row.value) as AccountDeviceRecord : undefined;
     });
     /** A feature collection, read from its row the first time this transaction asks for it (undefined: it does not exist). */
     function collectionOf(key: string): unknown {
@@ -158,7 +175,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
         return sum;
       },
     };
-    const base: Record<string, unknown> = { version: 1, sessions: sessionMap, archivedLives: archiveMap };
+    const base: Record<string, unknown> = { version: 1, sessions: sessionMap, archivedLives: archiveMap, accounts: accountMap, accountDevices: deviceMap };
     const db = new Proxy(base, {
       get(target, key) {
         if (key === '$store') return helpers;
@@ -198,6 +215,17 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
         for (const [key, item] of archives) {
           if (item === undefined) { sql.exec('DELETE FROM archived_lives WHERE public_id = ?', key); wrote += 1; }
           else { const value = JSON.stringify(item); if (value !== originals.archives.get(key)) { sql.exec('INSERT INTO archived_lives(public_id,value) VALUES(?,?) ON CONFLICT(public_id) DO UPDATE SET value=excluded.value', key, value); wrote += 1; } }
+        }
+        for (const [key, account] of accounts) {
+          // Removed without having been read first is still removed: the delete does not depend on what this transaction loaded.
+          if (account === undefined) { sql.exec('DELETE FROM accounts WHERE id = ?', key); wrote += 1; continue; }
+          const value = JSON.stringify(account);
+          if (value !== originals.accounts.get(key)) { sql.exec('INSERT INTO accounts(id,public_id,value) VALUES(?,?,?) ON CONFLICT(id) DO UPDATE SET public_id=excluded.public_id,value=excluded.value', key, account.publicId ?? null, value); wrote += 1; }
+        }
+        for (const [key, device] of devices) {
+          if (device === undefined) { sql.exec('DELETE FROM account_devices WHERE secret = ?', key); wrote += 1; continue; }
+          const value = JSON.stringify(device);
+          if (value !== originals.devices.get(key)) { sql.exec('INSERT INTO account_devices(secret,account_id,expires_at,value) VALUES(?,?,?,?) ON CONFLICT(secret) DO UPDATE SET account_id=excluded.account_id,expires_at=excluded.expires_at,value=excluded.value', key, device.account, Number(device.expiresAt) || 0, value); wrote += 1; }
         }
         for (const [key, item] of collections) {
           if (item === undefined) continue;

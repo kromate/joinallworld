@@ -10,7 +10,7 @@ import { settleCity, applyLifeAction } from './life-service.ts';
 import { archivedLife } from './protocol.ts';
 import type { ActionRequest, CityId } from '../src/types/protocol.ts';
 import type { LifeState } from '../src/types/life.ts';
-import type { ActBody, ActionOutcome, ContextCore, Db, PageHandler, SessionRecord } from './types.ts';
+import type { AccountsConfig, ActBody, ActionOutcome, ContextCore, Db, PageHandler, SessionRecord } from './types.ts';
 
 /** The settings a module may read through ctx.env(name). Nothing else of the environment is reachable. */
 export const OUTREACH_ENV = Object.freeze(['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'EMAIL_FROM_NAME', 'EMAIL_CONTACT_LINE', 'EMAIL_DAILY_CAP', 'WHATSAPP_CHANNEL_URL', 'VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT', 'PUSH_DAILY_CAP']);
@@ -18,6 +18,29 @@ export const OUTREACH_ENV = Object.freeze(['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS
 export const envReader = (env: Readonly<Record<string, unknown>> | null | undefined) => (name: string): string => {
   const value = OUTREACH_ENV.includes(name) ? env?.[name] : undefined;
   return typeof value === 'string' ? value : '';
+};
+
+/**
+ * ACCOUNTS ARE OFF UNLESS CONFIGURED. The three settings are the sign-in provider's PUBLIC client configuration (they
+ * are sent to every browser that opens sign-in), kept in the environment so no deployment's identifiers are in the source:
+ *   ACCOUNTS_FIREBASE_PROJECT_ID   the project whose ID tokens this server accepts (audience and issuer)
+ *   ACCOUNTS_FIREBASE_API_KEY      the project's web API key
+ *   ACCOUNTS_GOOGLE_CLIENT_ID      optional: the OAuth web client id of the Google button; without it only e-mail sign-in is offered
+ * The first two must both be present and well formed, or accounts stay off.
+ */
+export const ACCOUNTS_ENV = Object.freeze(['ACCOUNTS_FIREBASE_PROJECT_ID', 'ACCOUNTS_FIREBASE_API_KEY', 'ACCOUNTS_GOOGLE_CLIENT_ID']);
+export function accountsConfig(env: Readonly<Record<string, unknown>> | null | undefined): AccountsConfig | null {
+  const text = (name: string): string => { const value = env?.[name]; return typeof value === 'string' ? value.trim() : ''; };
+  const projectId = text('ACCOUNTS_FIREBASE_PROJECT_ID'), apiKey = text('ACCOUNTS_FIREBASE_API_KEY'), client = text('ACCOUNTS_GOOGLE_CLIENT_ID');
+  if (!/^[a-z][a-z0-9-]{4,29}$/.test(projectId) || !/^[A-Za-z0-9_-]{20,80}$/.test(apiKey)) return null;
+  return { projectId, apiKey, googleClientId: /^[0-9]+-[A-Za-z0-9_-]+\.apps\.googleusercontent\.com$/.test(client) ? client : '' };
+}
+/** The Set-Cookie attributes of the session cookie; `secret` '' removes it. One place, so setting and clearing can never differ. */
+export const sessionCookie = (secret: string, maxAgeSeconds: number, secure: boolean): string => `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${secret ? Math.floor(maxAgeSeconds) : 0}${secure ? '; Secure' : ''}`;
+/** Whether a request may change account state: it named this host as its Origin, and did not say it came from another site. */
+export const isStrictOrigin = (origin: string | null | undefined, host: string | null | undefined, fetchSite: string | null | undefined): boolean => {
+  if (!origin || (fetchSite && fetchSite !== 'same-origin')) return false;
+  try { const url = new URL(origin); return url.host === host && ['http:', 'https:'].includes(url.protocol); } catch { return false; }
 };
 
 /** The longest an outside request (ctx.fetch) may take, whatever its caller asked for. */

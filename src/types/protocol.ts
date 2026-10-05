@@ -24,6 +24,7 @@ import type { ModerationHttpRoutes, SupportHttpRoutes } from './support.ts'
 import type { WorldHttpRoutes } from './world.ts'
 import type { GrowthHttpRoutes, GrowthModerationHttpRoutes, TableClientFrame, TableErrorCode, TableServerFrame } from './growth.ts'
 import type { CampusHttpRoutes } from './campus.ts'
+import type { AccountHttpRoutes } from './account.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -225,7 +226,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -475,6 +476,14 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/campus',
   'POST /api/campus/nominate',
   'POST /api/campus/vote',
+  'GET /api/account',
+  'POST /api/account/sign-in',
+  'POST /api/account/character',
+  'POST /api/account/sign-out',
+  'POST /api/account/sign-out-everywhere',
+  'POST /api/account/delete',
+  'GET /api/account/export',
+  'POST /api/account/password-reset',
 ] as const satisfies readonly HttpRouteKey[]
 
 /** WORKER: the same registry, so the same routes. (`/api/mod/*` answers only when the MODERATOR_TOKEN secret is set, as on Node.) */

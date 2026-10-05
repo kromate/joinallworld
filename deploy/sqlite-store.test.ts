@@ -153,7 +153,7 @@ test('SQLite: a database made before accounts existed gains the account tables e
  const rows=()=>['sessions','archived_lives','action_receipts','once_receipts','collections','collection_parts'].map(table=>JSON.stringify(db.prepare(`SELECT * FROM ${table}`).all()));
  const schemaBefore=schema(),rowsBefore=rows();
  const store=open(storageOn(db));
- assert.deepEqual(schema(),schemaBefore,'no existing table or index was altered');
+ assert.deepEqual(schema(),schemaBefore.filter(line=>!line.startsWith('action_expiry:')),'no existing table was altered; the one index no query reads is gone');
  assert.deepEqual(rows(),rowsBefore,'no existing row was touched by opening the store');
  assert.deepEqual((db.prepare("SELECT name FROM sqlite_master WHERE name LIKE 'account%' ORDER BY name").all() as {name:string}[]).map(row=>row.name).filter(name=>!name.startsWith('sqlite_')),['account_devices','account_devices_account','accounts']);
  assert.equal(count(db,'SELECT COUNT(*) AS n FROM accounts'),0);assert.equal(count(db,'SELECT COUNT(*) AS n FROM account_devices'),0);
@@ -163,7 +163,7 @@ test('SQLite: a database made before accounts existed gains the account tables e
  await store.transact(d=>{accountsOf(d)['fb:ada']={id:'fb:ada',publicId:old.publicId,devices:['cookie-1']};devicesOf(d)['cookie-1']={account:'fb:ada',expiresAt:99};life(d).cities.lagos.cash-=1;});
  assert.deepEqual(db.prepare('SELECT id,public_id FROM accounts').all().map(row=>({...row})),[{id:'fb:ada',public_id:old.publicId}]);
  assert.deepEqual(db.prepare('SELECT secret,account_id,expires_at FROM account_devices').all().map(row=>({...row})),[{secret:'cookie-1',account_id:'fb:ada',expires_at:99}]);
- assert.deepEqual(schema(),schemaBefore);
+ assert.deepEqual(schema(),schemaBefore.filter(line=>!line.startsWith('action_expiry:')));
  // A second start finds what the first one wrote.
  assert.deepEqual(await open(storageOn(db)).read(d=>[accountsOf(d)['fb:ada']?.devices,devicesOf(d)['cookie-1']?.account,life(d).cities.lagos.cash]),[['cookie-1'],'fb:ada',4999]);
 });
@@ -190,4 +190,115 @@ test('SQLite: account rows are read by key, change and disappear with their tran
  const {collection:shared}=await import('../server/protocol.ts');
  await f.store.transact(db=>{(shared(db as unknown as Db,'accounts',{}) as Record<string,AccountRow>)['fb:bo']={id:'fb:bo',publicId:null,devices:[]};});
  assert.equal(count(f.db,'SELECT COUNT(*) AS n FROM accounts'),1);assert.equal(count(f.db,"SELECT COUNT(*) AS n FROM collections WHERE name LIKE 'account%'"),0,'accounts are rows of their own table, never a JSON collection');
+});
+
+// ---- lazy transactions: held in memory, written later (sqlite-store.ts LAZY) ----
+/** A storage that also says how many statements wrote to each table. */
+function countingStorage(db: DatabaseSync): { storage: SqliteStorage; writes: Map<string, number>; reset(): void } {
+ const inner=storageOn(db),writes=new Map<string,number>();
+ return { writes, reset(){writes.clear();}, storage:{...inner,sql:{exec<Row extends SqlRow>(query: string,...params: SqlBinding[]): SqlCursor<Row>{
+  const table=/^\s*(?:INSERT INTO|UPDATE|DELETE FROM)\s+(\w+)/.exec(query)?.[1];
+  if(table)writes.set(table,(writes.get(table)??0)+1);
+  return inner.sql.exec<Row>(query,...params);
+ }}}};
+}
+const lazy={durable:false} as const;
+/** A store that holds lazy changes for an hour (so only an explicit flush writes them); it is closed before its database. */
+function lazyFixture(t: TestContext) {
+ const db=new DatabaseSync(':memory:');
+ const c=countingStorage(db),store=createSqliteStore(c.storage,{lazyFlushMs:3600000}),loose=store as unknown as LooseStore;
+ t.after(async()=>{await store.close();db.close();});
+ return {db,c,store,loose};
+}
+test('SQLite: a lazy change to a stored session or collection is held in memory, seen by everyone, and written by a flush',async t=>{
+ const {db,c,store,loose}=lazyFixture(t);
+ await loose.transact(d=>{put(d,'secret',session());d['pulse']={visits:1};});
+ const stored=sessionText(db);c.reset();
+ let announced=0;
+ await loose.transact(d=>{life(d).cities.lagos.cash=4000;(d['pulse'] as {visits:number}).visits=2;},{...lazy,committed(){announced++;}});
+ assert.equal(announced,1,'the commit hook of a lazy change runs');
+ assert.equal(c.writes.size,0,'nothing was written');assert.equal(sessionText(db),stored);
+ assert.deepEqual(await loose.read(d=>[life(d).cities.lagos.cash,(d['pulse'] as {visits:number}).visits]),[4000,2],'a read sees the held change');
+ assert.deepEqual(await loose.read(d=>d.$store.scanSessions(record=>(record as unknown as Life).cities.lagos.cash===4000)),['secret'],'and so does a scan');
+ assert.equal(store.stats().held,2);
+ // A second lazy change of the same rows replaces the first: still nothing written.
+ await loose.transact(d=>{life(d).cities.lagos.cash=3900;},lazy);
+ assert.equal(c.writes.size,0);
+ await store.flush();
+ assert.deepEqual(Object.fromEntries(c.writes),{sessions:1,collections:1},'one statement per held row');
+ assert.equal(store.stats().held,0);
+ assert.deepEqual(await open(c.storage).read(d=>[life(d).cities.lagos.cash,(d['pulse'] as {visits:number}).visits]),[3900,2],'a store opened on the same storage reads what was flushed');
+ c.reset();await store.flush();assert.equal(c.writes.size,0,'a flush with nothing held writes nothing');
+ // `durable` as a function of the result: false is lazy, true is written before the answer.
+ await loose.transact(d=>{life(d).cities.lagos.cash=3800;return {material:false};},{durable:result=>result.material});
+ assert.equal(c.writes.size,0);
+ await loose.transact(d=>{life(d).cities.lagos.cash=3700;return {material:true};},{durable:result=>result.material});
+ assert.deepEqual(Object.fromEntries(c.writes),{sessions:1});assert.equal(store.stats().held,0);
+});
+test('SQLite: a durable transaction writes the held change of what it touches with its own; memory lost first loses only what was lazy',async t=>{
+ const {db,c,store,loose}=lazyFixture(t);
+ await loose.transact(d=>{put(d,'secret',session());put(d,'other',{...session(),secret:'other',publicId:'public-2'});d['pulse']={visits:1};});
+ await loose.transact(d=>{life(d).cities.lagos.cash=4000;(d.sessions['other'] as unknown as Life).cities.lagos.cash=1;(d['pulse'] as {visits:number}).visits=2;},lazy);
+ c.reset();
+ // An action on the first session: its held clock is written with the action; the other session and the counter stay held.
+ await loose.transact(d=>{const s=life(d);s.cities.lagos.cash-=100;s.actions['a']={actionAt:1,ok:true};});
+ assert.deepEqual(Object.fromEntries(c.writes),{sessions:1,action_receipts:1});
+ assert.equal(JSON.parse(sessionText(db)).cities.lagos.cash,3900);assert.equal(store.stats().held,2);
+ // The object loses its memory: a new store on the same storage. The durable action is there; the two lazy changes are not.
+ const woken=open(c.storage);
+ assert.deepEqual(await woken.read(d=>[life(d).cities.lagos.cash,life(d).actions['a']?.ok,(d.sessions['other'] as unknown as Life).cities.lagos.cash,(d['pulse'] as {visits:number}).visits]),[3900,true,5000,1]);
+});
+test('SQLite: a lazy transaction that makes or removes a row, or touches a receipt, is written at once',async t=>{
+ const {db,c,store,loose}=lazyFixture(t);
+ await loose.transact(d=>{put(d,'secret',session());},lazy);
+ assert.equal(count(db,'SELECT COUNT(*) AS n FROM sessions'),1,'a new session');
+ await loose.transact(d=>{d['pulse']={visits:1};},lazy);
+ assert.equal(count(db,'SELECT COUNT(*) AS n FROM collections'),1,'a new collection');
+ await loose.transact(d=>{life(d).once['1:x']={at:1,kind:'gift',fp:'f',result:{ok:true}};},lazy);
+ assert.equal(count(db,'SELECT COUNT(*) AS n FROM once_receipts'),1,'a receipt');
+ // Held first, then removed lazily: the removal is durable and nothing held is written back over it.
+ await loose.transact(d=>{life(d).cities.lagos.cash=1;},lazy);assert.equal(store.stats().held,1);
+ await loose.transact(d=>{if(d.sessions['secret'])delete d.sessions['secret'];},lazy);
+ assert.equal(count(db,'SELECT COUNT(*) AS n FROM sessions'),0);assert.equal(store.stats().held,0);
+ await store.flush();assert.equal(count(db,'SELECT COUNT(*) AS n FROM sessions'),0);
+ assert.equal(store.stats().lazy,1,'one transaction was held');
+});
+test('SQLite: a held change gives way to a row that was written underneath it; without lazyFlushMs every write is durable',async t=>{
+ const {db,c,store,loose}=lazyFixture(t);
+ await loose.transact(d=>{put(d,'secret',session());});
+ await loose.transact(d=>{life(d).cities.lagos.cash=4000;},lazy);
+ const edited=JSON.parse(sessionText(db));edited.cities.lagos.cash=77;
+ db.prepare('UPDATE sessions SET value=? WHERE secret=?').run(JSON.stringify(edited),'secret');
+ assert.equal(await loose.read(d=>life(d).cities.lagos.cash),77);
+ await store.flush();assert.equal(JSON.parse(sessionText(db)).cities.lagos.cash,77);
+ const plain=fixture(t);await plain.store.transact(d=>{put(d,'secret',session());});
+ await plain.store.transact(d=>{life(d).cities.lagos.cash=4000;},lazy);
+ assert.equal(JSON.parse(sessionText(plain.db)).cities.lagos.cash,4000);
+});
+test('SQLite: a write names only what changed — a session is updated by its key, a split collection rewrites only the parts that differ',async t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());
+ const c=countingStorage(db),loose=open(c.storage,{chunk:64});
+ const statements: string[]=[];const exec=c.storage.sql.exec.bind(c.storage.sql);
+ c.storage.sql.exec=<Row extends SqlRow>(query: string,...params: SqlBinding[]): SqlCursor<Row>=>{statements.push(query);return exec<Row>(query,...params);};
+ await loose.transact(d=>{put(d,'secret',session());});
+ statements.length=0;
+ await loose.transact(d=>{life(d).cities.lagos.cash=1;});
+ assert.deepEqual(statements.filter(query=>/^(INSERT|UPDATE|DELETE)/.test(query)),['UPDATE sessions SET expires_at=?, value=? WHERE secret=?'],'the unique index by public id is not rewritten');
+ // A public id that changes goes through the full statement.
+ await loose.transact(d=>{(d.sessions['secret'] as SessionRecord).publicId='public-rotated';});
+ assert.equal(count(db,"SELECT COUNT(*) AS n FROM sessions WHERE public_id='public-rotated'"),1);
+ const lines=Array.from({length:40},(_,i)=>`line ${String(i).padStart(2,'0')} with some text`);
+ await loose.transact(d=>{d['social']={lines};});
+ const parts=count(db,"SELECT COUNT(*) AS n FROM collection_parts WHERE name='social'");assert.ok(parts>8);
+ c.reset();
+ // The same length, one line different: one part differs.
+ await loose.transact(d=>{(d['social'] as {lines:string[]}).lines[20]='LINE 20 WITH SOME TEXT';});
+ assert.ok((c.writes.get('collection_parts')??0)<=2&&c.writes.size===1,`the part or two the line lies in, and the head row is left alone (${JSON.stringify(Object.fromEntries(c.writes))} of ${parts} parts)`);
+ assert.equal((await loose.read(d=>(d['social'] as {lines:string[]}).lines[20])),'LINE 20 WITH SOME TEXT');
+ // Shorter: the changed tail is written and the surplus parts are removed with one statement.
+ c.reset();await loose.transact(d=>{(d['social'] as {lines:string[]}).lines.length=30;});
+ assert.ok((c.writes.get('collection_parts')??0)<=3,`only the tail was written (${c.writes.get('collection_parts')} statements)`);assert.equal(c.writes.get('collections'),1);
+ assert.deepEqual(await open(c.storage,{chunk:64}).read(d=>(d['social'] as {lines:string[]}).lines.length),30);
+ // Unchanged: nothing.
+ c.reset();await loose.transact(d=>{(d['social'] as {lines:string[]}).lines[0]=lines[0] as string;});assert.equal(c.writes.size,0);
 });

@@ -28,11 +28,12 @@ const { build } = require('esbuild') as { build(options: BundleOptions): Promise
 interface Device { id: string; name: string; cookie: string }
 interface Pulse { online: number; visits: number; cities: Record<string, number> }
 
-async function fixture(t: TestContext) {
+/** `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS), for a test that puts it to sleep. */
+async function fixture(t: TestContext, sleeps = false) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-pulse-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-pulse', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-pulse' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
+  const options = { name: 'joinallworld-pulse', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-pulse', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}) }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
   const make = () => new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
   let mf = make();
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
@@ -72,7 +73,7 @@ async function fixture(t: TestContext) {
 }
 
 test('Cloudflare pulse: online is distinct live players, visits one per player per day, both survive eviction and restart', async (t) => {
-  const f = await fixture(t);
+  const f = await fixture(t, true);
   const ada = await f.device('Ada'), guest = await f.device('Guest', true);
   assert.equal((await f.request('/api/world/pulse')).status, 401, 'a signed-in device is required');
 

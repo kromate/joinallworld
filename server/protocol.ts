@@ -161,15 +161,26 @@ export function sessionOfCookie(db: Db, cookie: string | undefined, now: number,
   if (!account || !session || session.account !== account.id || !(session.expiresAt > now)) return undefined;
   return { session, device };
 }
-/** Renew what sessionOfCookie found: the session, and the device binding that led to it (never past the binding's absolute lifetime). */
-export function renewResolved(found: { session: SessionRecord; device?: AccountDeviceRecord }, now: number, ttlMs = SESSION_TTL_MS): void {
-  renewSession(found.session, now, ttlMs);
-  if (found.device) { found.device.expiresAt = Math.min(now + ttlMs, found.device.createdAt + BINDING_MAX_AGE_MS); found.device.seenAt = now; }
+/** A device binding's "last seen" is at most this stale when a host renews with slack. */
+export const DEVICE_SEEN_SLACK_MS = 3600000;
+/**
+ * Renew what sessionOfCookie found: the session, and the device binding that led to it (never past the binding's absolute lifetime).
+ * `slackMs` (a host where every stored change is a row written): see renewSession; the binding is then touched once
+ * its "last seen" is DEVICE_SEEN_SLACK_MS old (or `slackMs`, when that is shorter), not on every request.
+ */
+export function renewResolved(found: { session: SessionRecord; device?: AccountDeviceRecord }, now: number, ttlMs = SESSION_TTL_MS, slackMs = 0): void {
+  renewSession(found.session, now, ttlMs, slackMs);
+  if (found.device && (slackMs <= 0 || now - found.device.seenAt >= Math.min(slackMs, DEVICE_SEEN_SLACK_MS))) { found.device.expiresAt = Math.min(now + ttlMs, found.device.createdAt + BINDING_MAX_AGE_MS); found.device.seenAt = now; }
 }
 
-export function renewSession(session: Pick<SessionRecord, 'expiresAt'> | null | undefined, now: number, ttlMs = SESSION_TTL_MS): boolean {
+/**
+ * Push a live session's expiry out to `now + ttlMs`; false for one that has expired (it is not brought back).
+ * `slackMs`: leave the record as it is unless renewing gains at least this much. The session is live either way — only
+ * the stored expiry is up to `slackMs` short of a full `ttlMs`, which a slack far below the lifetime never shows.
+ */
+export function renewSession(session: Pick<SessionRecord, 'expiresAt'> | null | undefined, now: number, ttlMs = SESSION_TTL_MS, slackMs = 0): boolean {
   if (!session || !Number.isFinite(session.expiresAt) || session.expiresAt <= now) return false;
-  session.expiresAt = now + ttlMs;
+  if (slackMs <= 0 || now + ttlMs - session.expiresAt >= slackMs) session.expiresAt = now + ttlMs;
   return true;
 }
 

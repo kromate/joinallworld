@@ -27,11 +27,12 @@ interface Device { id: string; name: string; cookie: string }
 interface Frame { type: string; code?: string; callId?: string; state?: string; clientId?: string; kind?: string; calls?: string; elsewhere?: boolean; from?: { id: string; name: string }; expiresAt?: number; data?: unknown; [field: string]: unknown }
 interface Peer { send(message: object): void; next(timeout?: number): Promise<Frame>; until(type: string): Promise<Frame>; drain(): Promise<Frame[]>; close(): void }
 
-async function fixture(t: TestContext) {
+/** `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS), for a test that puts it to sleep. */
+async function fixture(t: TestContext, sleeps = false) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-calls-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-calls', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-calls' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
+  const options = { name: 'joinallworld-calls', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-calls', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}) }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
   const within = <T>(step: string, work: Promise<T>, ms = 30000) => { let timer: NodeJS.Timeout; return Promise.race([work, new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Error(`${step} did not finish within ${ms} ms`)), ms); })]).finally(() => clearTimeout(timer)); };
@@ -192,7 +193,7 @@ test('on the Worker: a ring that is not answered ends close to 30 seconds, for b
 });
 
 test('on the Worker: when the object is evicted mid-call, the other side is told it ended, and new calls work afterwards', async (t) => {
-  const f = await fixture(t);
+  const f = await fixture(t, true);
   const ada = await f.device('Ada'), bola = await f.device('Bola');
   await f.befriend(ada, bola);
   const a = await f.socket(ada), b = await f.socket(bola);

@@ -5,7 +5,8 @@
  */
 export type SqlBinding = string | number | null
 export type SqlRow = Record<string, string | number | null | ArrayBuffer>
-export interface SqlCursor<Row> { toArray(): Row[]; one(): Row }
+/** `rowsWritten`: what the runtime counted for the statement, index entries included (the stand-in of the store test has none). */
+export interface SqlCursor<Row> { toArray(): Row[]; one(): Row; readonly rowsWritten?: number }
 export interface SqlStorageLike { exec<Row extends SqlRow = SqlRow>(query: string, ...bindings: SqlBinding[]): SqlCursor<Row> }
 export interface SqliteStorage {
   sql: SqlStorageLike

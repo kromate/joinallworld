@@ -42,7 +42,7 @@ await build({ entryPoints: [join(root, 'deploy/cloudflare-worker.ts')], outfile:
 /** The telemetry settings (server/telemetry/config.ts); nothing is sent unless they are set. */
 const TELEMETRY_ENV = ['TELEMETRY_ENV', 'TELEMETRY_DEBUG', 'TELEMETRY_CONSENT_AT', 'TELEMETRY_REPLAY_ON_ERROR', 'SENTRY_DSN_CLIENT', 'SENTRY_DSN_SERVER', 'POSTHOG_KEY', 'POSTHOG_HOST'];
 const bindings: Record<string, string> = { BUILD_ID: process.env.BUILD_ID || 'local' };
-for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', ...TELEMETRY_ENV, ...OUTREACH_ENV, ...ACCOUNTS_ENV]) { const value = process.env[name]; if (value) bindings[name] = value; }
+for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', 'SLEEP_BETWEEN_BEATS', ...TELEMETRY_ENV, ...OUTREACH_ENV, ...ACCOUNTS_ENV]) { const value = process.env[name]; if (value) bindings[name] = value; }
 if (process.env[FOUNDER_ENV] !== undefined) bindings[FOUNDER_ENV] = process.env[FOUNDER_ENV];
 const options: Record<string, unknown> = { name: 'allworld-local', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
   durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: storage, bindings,

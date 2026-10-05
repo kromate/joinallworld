@@ -192,7 +192,7 @@ export interface StoreStats {
   /** WORKER: 'sqlite' (deploy/sqlite-store.ts). */
   mode: 'grouped' | 'sqlite'
   transactions: number
-  /** WORKER: the SQLite store has no lazy writes, no byte count, no undo and no failure time, so it omits these four. */
+  /** Transactions that asked for nothing to be written before they were answered. WORKER: the SQLite store has no byte count, no undo and no failure time, so it omits those three. */
   lazy?: number
   reads: number
   writes: number
@@ -201,11 +201,24 @@ export interface StoreStats {
   writeFailures: number
   undone?: number
   failing: boolean
+  /** WORKER: sessions and collections whose lazy change is in memory, not yet written (deploy/sqlite-store.ts LAZY). */
+  held?: number
+  /** WORKER: keys the rate limiter holds per class — short windows in memory, long and protected ones stored (server/limiter.ts). */
+  limits?: { short: number; long: number; protected: number }
+  /** WORKER: rows the object's storage was asked to write since it last started (deploy/write-meter.ts). */
+  rows?: RowsWritten
   lastFailureAt?: number | null
   /** WORKER: the same flag as `failing`, kept for the Worker's own tests. */
   failed?: boolean
 }
 /** What the Node store (server/store.ts) keeps: every counter, always. */
+/** Rows written, as the storage counted them (an index entry is a row): in all, per table, and per kind of work. Counters only. */
+export interface RowsWritten {
+  since: number
+  total: number
+  tables: Record<string, number>
+  sources: Record<string, { calls: number; rows: number; tables: Record<string, number> }>
+}
 export type NodeStoreStats = StoreStats & { mode: 'grouped'; lazy: number; bytes: number; undone: number; lastFailureAt: number | null }
 export interface ModOverviewResponse {
   reports: { total: number; open: number }

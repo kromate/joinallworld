@@ -69,12 +69,17 @@ interface TableState {
 /** A socket with the frames it has received. `state` is set by the first table-state frame; the table steps read it only after one arrived. */
 interface Peer { who: Device; send(message: object): void; next(): Promise<Frame>; until(type: string, tries?: number): Promise<Frame>; seen: Frame[]; state: TableState }
 
-/** `clockShiftMs`: the object's clock runs this far ahead (a test of something that depends on the hour of the day cannot wait for it). */
-async function fixture(t: TestContext, { clockShiftMs = 0, ...overrides }: Record<string, unknown> & { clockShiftMs?: number } = {}) {
+/**
+ * `clockShiftMs`: the object's clock runs this far ahead (a test of something that depends on the hour of the day cannot wait for it).
+ * `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS) — for a test that puts it to sleep
+ * (`hibernate`). By default it stays in memory while anyone is connected, and an eviction would wait for it for ever.
+ */
+async function fixture(t: TestContext, { clockShiftMs = 0, sleeps = false, ...overrides }: Record<string, unknown> & { clockShiftMs?: number; sleeps?: boolean } = {}) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-do-test-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-conformance', script: (clockShiftMs ? `Date.now = ((real) => () => real() + ${Math.round(clockShiftMs)})(Date.now.bind(Date));\n` : '') + await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
+  const options = { name: 'joinallworld-conformance', script: (clockShiftMs ? `Date.now = ((real) => () => real() + ${Math.round(clockShiftMs)})(Date.now.bind(Date));\n` : '') + await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' } as Record<string, string>, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
+  if (sleeps) options.bindings = { ...options.bindings, SLEEP_BETWEEN_BEATS: '1' };
   // What the object wrote to its console is kept (and still shown): a test can say what must never be logged.
   const lines: string[] = [], handleStructuredLogs = ({ level, message }: { level: string; message: string }) => { lines.push(message); (level === 'error' || level === 'warn' ? console.error : console.log)(message); };
   let mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs });
@@ -141,7 +146,13 @@ async function fixture(t: TestContext, { clockShiftMs = 0, ...overrides }: Recor
     await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
   }
   const upgrade = (headers: Record<string, string>) => send(origin + '/socket', { headers: { upgrade: 'websocket', ...headers } });
-  return { logged: () => lines.join('\n'), atHost: (host: string,path: string,method='GET') => send(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path: string, init?: RequestInit & { headers?: Record<string, string> }) => send(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { await stop(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs }); await within('Miniflare restart', mf.ready); } };
+  /** Make `count` requests, fifty at a time, reading every answer; how many of each status came back. */
+  async function spend(count: number, make: (index: number) => Promise<MiniflareResponse>): Promise<Record<number, number>> {
+    const statuses: Record<number, number> = {};
+    for (let done = 0; done < count; done += 50) await Promise.all(Array.from({ length: Math.min(50, count - done) }, async (_, i) => { const response = await make(done + i); statuses[response.status] = (statuses[response.status] ?? 0) + 1; await response.arrayBuffer(); }));
+    return statuses;
+  }
+  return { spend, logged: () => lines.join('\n'), atHost: (host: string,path: string,method='GET') => send(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path: string, init?: RequestInit & { headers?: Record<string, string> }) => send(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { await stop(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs }); await within('Miniflare restart', mf.ready); } };
 }
 
 test('Cloudflare: public IDs, origin isolation, atomic duplicate fare, replay window and restart durability', async t => {
@@ -185,7 +196,7 @@ test('Cloudflare: settlement once across restart, sliding expiry, expired token 
 });
 
 test('Cloudflare: two clients presence, chat dedupe, signaling isolation and travel eviction', async t => {
-  const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
+  const f = await fixture(t, { sleeps: true }), a = await f.device('Ada'), b = await f.device('Bola');
   const x = await f.socket(a), y = await f.socket(b);
   x.send({ type: 'join', cityId: 'lagos', venueId: 'park' });
   const solo = await x.next(); assert.equal(solo.members.length, 1); assert.ok(!JSON.stringify(solo).includes(a.cookie.slice(11))); assert.equal(solo.members[0].muted, true);
@@ -214,7 +225,7 @@ test('Cloudflare: two clients presence, chat dedupe, signaling isolation and tra
 });
 
 test('Cloudflare: a replaced object instance leaves the room watcher alone: no cross-instance I/O, presence still updates, no stray frames', async t => {
-  const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
+  const f = await fixture(t, { sleeps: true }), a = await f.device('Ada'), b = await f.device('Bola');
   const x = await f.socket(a), y = await f.socket(b);
   x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next();
   y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
@@ -232,7 +243,7 @@ test('Cloudflare: a replaced object instance leaves the room watcher alone: no c
 });
 
 test('Cloudflare: socket auth, expired open connection and disconnect after hibernation', async t => {
-  const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
+  const f = await fixture(t, { sleeps: true }), a = await f.device('Ada'), b = await f.device('Bola');
   assert.equal((await f.upgrade({ cookie: a.cookie })).status, 403);
   assert.equal((await f.upgrade({ cookie: a.cookie, origin: 'https://foreign.test' })).status, 403);
   assert.equal((await f.upgrade({ origin: f.origin })).status, 401);
@@ -250,7 +261,7 @@ test('Cloudflare: socket auth, expired open connection and disconnect after hibe
   assert.equal((await f.upgrade({ origin: f.origin, cookie: a.cookie })).status, 401);
 });
 
-test('Cloudflare: voice cap, per-session socket cap, durable rate-limit rejection', async t => {
+test('Cloudflare: voice cap, per-session socket cap, and a session’s request limit follows it to another address', async t => {
   const f = await fixture(t), members = [];
   for (let index = 0; index < 9; index++) {
     const device = await f.device(`Voice ${index}`), socket = await f.socket(device);
@@ -264,36 +275,42 @@ test('Cloudflare: voice cap, per-session socket cap, durable rate-limit rejectio
   const device = await f.device('Many tabs');
   for (let count = 0; count < 8; count++) await f.socket(device);
   assert.equal((await f.upgrade({ origin: f.origin, cookie: device.cookie })).status, 503);
-  const storage = await f.storage();
-  await f.request("/api/session", null, device.cookie);
-  await storage.exec("UPDATE rate_limits SET count=600 WHERE key LIKE 'http:session:%'");
-  await f.hibernate();
+  // The session's allowance for a minute, spent for real (the count is in memory, where no test can set it).
+  assert.deepEqual(await f.spend(600, () => f.request('/api/session', null, device.cookie)), { 200: 600 });
   assert.equal((await f.request('/api/session', null, device.cookie)).status, 429);
   assert.equal((await f.request('/api/session', null, device.cookie, { 'cf-connecting-ip': '192.0.2.44' })).status, 429);
 });
 
-test('Cloudflare: a limiter table full of other people’s live rows turns no newcomer away — it makes room; long windows and the operator’s rows survive', async t => {
-  const f = await fixture(t), storage = await f.storage(), far = Date.now() + 3600000;
+test('Cloudflare: a short limiter full of other people’s live counts turns no newcomer away — it makes room, in memory; long windows and the operator’s rows are stored and survive', async t => {
+  const token = 'worker-operator-token-0123456789-abcdef';
+  const f = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } }), storage = await f.storage(), far = Date.now() + 3600000;
+  const limits = async (): Promise<{ short: number; long: number; protected: number }> => (await (await f.request('/api/mod/overview', null, null, { authorization: `Bearer ${token}` })).json()).store.limits;
   await f.request('/api/health');
-  // 10,000 live rows of other addresses (what a flood leaves behind), a long-window row and an operator row.
-  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 10000) INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) SELECT 'http-ip:flood-' || i, ${Date.now()}, 1, ${Date.now() + 900000} + i FROM n`);
-  await storage.exec('INSERT OR REPLACE INTO rate_limits_protected(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'mod:fail:operator', Date.now(), 1, Date.now() + 1000);
+  // A long-window row and an operator row, as stored; then a flood: more live short counts than the class may hold, each from another address.
+  await storage.exec('INSERT OR REPLACE INTO rate_limits_protected(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'mod:fail:operator', Date.now(), 1, far);
   await storage.exec('INSERT OR REPLACE INTO rate_limits_long(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'upgrade:long-window', Date.now(), 7, far + 86400000);
-  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n >= 10000);
+  assert.deepEqual(await f.spend(10400, i => f.request('/api/health', null, null, { 'cf-connecting-ip': `10.${Math.floor(i / 62500)}.${Math.floor(i / 250) % 250}.${1 + (i % 250)}` })), { 200: 10400 }, 'no address was refused its first request');
+  const held = await limits();
+  assert.ok(held.short > 9000 && held.short <= 10000, `the short class is full and inside its bound (${held.short})`);
   // A visitor from an address never seen before: a session, a life, an action, a socket.
   const fresh = { 'cf-connecting-ip': '198.51.100.77' };
   const made = await f.request('/api/session', { name: 'Newcomer' }, null, fresh);
-  assert.equal(made.status, 200, 'a new visitor is not refused because the table is full');
+  assert.equal(made.status, 200, 'a new visitor is not refused because the class is full');
   const cookie = (made.headers.get('set-cookie') as string).split(';')[0] as string; await made.text();
   assert.equal((await f.request('/api/life?city=lagos', null, cookie, fresh)).status, 200);
   assert.equal((await f.upgrade({ origin: f.origin, cookie, 'cf-connecting-ip': '198.51.100.78' })).status, 101);
   for (let i = 0; i < 20; i++) assert.equal((await f.request('/api/health', null, null, { 'cf-connecting-ip': `198.51.100.${100 + i}` })).status, 200, `address ${i}`);
-  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n <= 10000, 'the table stays inside its bound');
-  // What was dropped to make room expired soonest; the long window kept its count and the operator's row is still there.
+  assert.ok((await limits()).short <= 10000, 'the class stays inside its bound');
+  // The flood wrote no row: a short count is not stored, and the old table of short rows is not made any more.
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM sqlite_master WHERE name = 'rate_limits'"))[0].n, 0);
+  // The long window kept its count and the operator's row is still there — and both are still there after a restart.
   assert.equal((await storage.exec("SELECT count AS n FROM rate_limits_long WHERE key = 'upgrade:long-window'"))[0].n, 7);
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key = 'mod:fail:operator'"))[0].n, 1);
-  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'http-ip:flood-1'"))[0].n, 0, 'the soonest-to-expire flood rows went first');
-  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'http-ip:flood-10000'"))[0].n, 1);
+  await f.restart();
+  const after = await f.storage();
+  assert.equal((await after.exec("SELECT count AS n FROM rate_limits_long WHERE key = 'upgrade:long-window'"))[0].n, 7);
+  assert.equal((await after.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key = 'mod:fail:operator'"))[0].n, 1);
+  assert.equal((await limits()).short, 0, 'short counts start again with the object');
 });
 
 test('Cloudflare: a flood of hour-long rows cannot erase the operator guard or a session’s limit, and a newcomer still gets a session', async t => {
@@ -305,24 +322,24 @@ test('Cloudflare: a flood of hour-long rows cannot erase the operator guard or a
   assert.equal((await f.request('/api/mod/overview', null, null, ip(300))).status, 429, 'the guard is at its cap');
   // A session close to its limit.
   const ada = await f.device('Ada');
-  await f.request('/api/session', null, ada.cookie);
-  await storage.exec("UPDATE rate_limits SET count=599 WHERE key LIKE 'http:session:%'");
+  assert.deepEqual(await f.spend(599, () => f.request('/api/session', null, ada.cookie)), { 200: 599 });
   // The flood: the hour-long table full (what unauthenticated e-mail requests used to leave), then more new keys arriving.
   await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 10000) INSERT OR REPLACE INTO rate_limits_long(key,started_at,count,expires_at) SELECT 'growth:email:flood-' || i, ${Date.now()}, 1, ${Date.now() + 3600000} + i FROM n`);
   for (let i = 0; i < 30; i++) await f.request('/api/growth/email', { consent: true, email: `x${i}@example.test` }, null, ip(400 + i));
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_long WHERE key LIKE 'growth:email:203.%'"))[0].n, 0, 'a request without a session makes no hour-long row');
   for (let i = 0; i < 300; i++) await f.request('/api/health', null, null, ip(800 + i));
   assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_long'))[0].n <= 10000, 'the long table stays inside its bound');
-  // Nothing short or protected was erased.
+  // Nothing short or protected was erased: the guard still refuses, and the session's count went on from 599.
   assert.equal((await f.request('/api/mod/overview', null, null, ip(301))).status, 429, 'mod-fail:all still refuses at its cap');
   assert.equal((await f.request('/api/session', null, ada.cookie)).status, 200);
+  assert.equal((await f.request('/api/session', null, ada.cookie)).status, 429, 'the session’s own count was not forgotten');
   assert.equal((await f.request('/api/session', null, ada.cookie)).status, 429, 'the session is still held to its limit');
   const fresh = await f.request('/api/session', { name: 'Newcomer' }, null, ip(2000));
   assert.equal(fresh.status, 200, 'a newcomer is not turned away'); await fresh.text();
 });
 
 test('Cloudflare: proximity survives hibernation, movement avoids SQL writes and private homes stay isolated', async t => {
-  const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
+  const f = await fixture(t, { sleeps: true }), a = await f.device('Ada'), b = await f.device('Bola');
   const x = await f.socket(a), y = await f.socket(b);
   x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next();
   y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
@@ -350,7 +367,7 @@ test('Cloudflare: proximity survives hibernation, movement avoids SQL writes and
 });
 
 test('Cloudflare: twelve devices behind one IP retain independent HTTP allowance and receipts stay outside hot sessions', async t => {
-  const f = await fixture(t);
+  const f = await fixture(t, { sleeps: true });
   const devices = [];
   for (let i = 0; i < 12; i++) devices.push(await f.device(`Player ${i}`));
   for (const device of devices) for (let i = 0; i < 51; i++) assert.equal((await f.request('/api/session', null, device.cookie)).status, 200);
@@ -370,7 +387,7 @@ test('Cloudflare: twelve devices behind one IP retain independent HTTP allowance
 });
 
 test('Cloudflare: gradual home nap cancellation survives eviction without repeating gains', async t => {
-  const f = await fixture(t), a = await f.device('Ada'); await f.life(a);
+  const f = await fixture(t, { sleeps: true }), a = await f.device('Ada'); await f.life(a);
   let storage = await f.storage();
   const session = JSON.parse((await storage.exec('SELECT value FROM sessions'))[0].value);
   session.cities.lagos.state.location = 'home'; session.cities.lagos.state.needs.energy = 20;
@@ -388,7 +405,7 @@ test('Cloudflare: gradual home nap cancellation survives eviction without repeat
 });
 
 test('Cloudflare: an Ogun trip survives the object sleeping; the fare is charged once and a reload shows the new city', async t => {
-  const f = await fixture(t);
+  const f = await fixture(t, { sleeps: true });
   const opened = await f.request('/api/session', { name: 'Ada', onboarding: true });
   const a = { ...(await opened.json()).session, cookie: (opened.headers.get('set-cookie') as string).split(';')[0] as string };
   const step = async (type: string, payload: object = {}, cityId = 'lagos') => (await (await f.action(a, { type, payload, cityId })).json());
@@ -496,7 +513,7 @@ test('Cloudflare: pre-job saves hydrate and award a completed shift once after r
 
 test('Cloudflare: only two nominated relay testers mint, global budget survives hibernation, errors hide secrets', async t => {
   const publicId = '11111111-1111-4111-8111-111111111111'; let calls = 0; let providerFailure;
-  const f = await fixture(t, { bindings: { TURN_TEST_PUBLIC_IDS: publicId, TURN_KEY_ID: 'a'.repeat(32), TURN_API_TOKEN: 'synthetic-api-secret' }, outboundService: async (request: Request) => {
+  const f = await fixture(t, { sleeps: true, bindings: { TURN_TEST_PUBLIC_IDS: publicId, TURN_KEY_ID: 'a'.repeat(32), TURN_API_TOKEN: 'synthetic-api-secret' }, outboundService: async (request: Request) => {
     calls++; try { assert.equal(new URL(request.url).origin, 'https://rtc.live.cloudflare.com'); assert.deepEqual(await request.json(), { ttl: 600 }); } catch (error) { providerFailure = (error as Error).message; }
     return new Response(JSON.stringify({ iceServers: [{ urls: 'turn:turn.cloudflare.com:3478', username: 'synthetic-user', credential: 'synthetic-short-lived' }] }), { status: 201 });
   } });
@@ -562,7 +579,7 @@ test('Recovery Worker: SQL receipt failure rolls back debit; feature write failu
 });
 
 test('Recovery Worker: committed block changes presence and survives hibernation before signaling',async t=>{
- const f=await fixture(t),a=await f.device('Ada'),b=await f.device('Bola');
+ const f=await fixture(t, { sleeps: true }),a=await f.device('Ada'),b=await f.device('Bola');
  for(const who of [a,b])await f.request('/api/social/me',null,who.cookie);
  const x=await f.socket(a),y=await f.socket(b);
  x.send({type:'join',cityId:'lagos',venueId:'park'});await x.next();y.send({type:'join',cityId:'lagos',venueId:'park'});await x.next();await y.next();
@@ -578,21 +595,26 @@ test('Review B1: a new socket never postpones the already scheduled heartbeat',a
  assert.ok(x.heartbeats.length>=1,'first alarm must run despite the later upgrade');assert.ok((x.heartbeats[0] as number)<opened+11500);
 });
 test('Review B2: expired rate keys free capacity at their own windows; long windows remain enforced',async t=>{
- const f=await fixture(t);await f.device('Ada');const storage=await f.storage(),now=Date.now();
- await storage.exec("WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<10000) INSERT INTO rate_limits(key,started_at,count,expires_at) SELECT 'expired-'||x,?,1,? FROM n",now-1000,now-1);
- await storage.exec('INSERT INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?)','long-window',now-1000,5,now+86400000);
- assert.equal((await f.request('/api/health',null,null,{'cf-connecting-ip':'192.0.2.79'})).status,200);
- assert.equal((await storage.exec("SELECT COUNT(*) AS count FROM rate_limits WHERE key LIKE 'expired-%'"))[0].count,0);
- assert.equal((await storage.exec("SELECT count FROM rate_limits WHERE key='long-window'"))[0].count,5);
+ const f=await fixture(t),ada=await f.device('Ada');const storage=await f.storage(),now=Date.now();
+ // The stored long class, full of rows whose windows are over, and one whose window is not.
+ await storage.exec("WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<10000) INSERT INTO rate_limits_long(key,started_at,count,expires_at) SELECT 'expired-'||x,?,1,? FROM n",now-7200000,now-1);
+ await storage.exec('INSERT INTO rate_limits_long(key,started_at,count,expires_at) VALUES(?,?,?,?)','long-window',now-1000,5,now+86400000);
+ // A request that counts against an hour (an e-mail address given by a player with a session) needs a row of its own.
+ assert.equal((await f.request('/api/growth/email',{consent:true,email:'ada@example.test'},ada.cookie)).status,200);
+ assert.equal((await storage.exec("SELECT COUNT(*) AS count FROM rate_limits_long WHERE key LIKE 'expired-%'"))[0].count,0);
+ assert.equal((await storage.exec("SELECT count FROM rate_limits_long WHERE key='long-window'"))[0].count,5);
+ assert.ok((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_long WHERE key LIKE 'growth:%'"))[0].n>=1,'the new long window has its row');
 });
 test('Review B3: heartbeat acknowledgements hit the frame limiter before session storage reads',async t=>{
  const f=await fixture(t),a=await f.device('Ada'),x=await f.socket(a),storage=await f.storage();
- await storage.exec('INSERT INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?)',`ws:${a.id}`,Date.now(),600,Date.now()+60000);
+ // A minute's allowance of frames, spent for real; the last one is answered, so its answer says all of them were counted.
+ for(let i=0;i<599;i++)x.send({type:'heartbeat-ack'});
+ x.send({type:'people-list',cityId:'lagos'});await x.next();
  // If session validation runs first, malformed storage yields an internal error instead.
  await storage.exec('UPDATE sessions SET value=? WHERE secret=?','malformed-json',a.cookie.slice(11));
  x.send({type:'heartbeat-ack'});assert.equal((await x.next()).code,'rate_limited');
- assert.equal((await storage.exec('SELECT count FROM rate_limits WHERE key=?',`ws:${a.id}`))[0].count,601);
 });
+
 
 
 test('Continuity preparation: old-character bridge is apex-only, safe-method-only and uncached',async t=>{
@@ -872,7 +894,7 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
 });
 
 test('Invitations on the Worker: house link, friend request, first DM, knock and let-in — over sockets, across a sleep', async t => {
-  const f = await combined(t);
+  const f = await combined(t, { sleeps: true });
   const { who: ada } = await f.play('Ada'), { who: bola } = await f.play('Bola', { preset: 'street' });
   await f.settle(ada, 'ikeja');
   const me = await f.get('/api/social/me', ada);
@@ -926,7 +948,7 @@ test('Invitations on the Worker: house link, friend request, first DM, knock and
 });
 
 test('UNILAG on the Worker: a visitor walks the campus, rides the shuttle once, and only a settled life may enrol', async t => {
-  const f = await combined(t);
+  const f = await combined(t, { sleeps: true });
   const { who: ada } = await f.play('Ada'), { who: guest } = await f.play('Guest', { preset: 'street' });
   await f.settle(ada, 'lagos-mainland');
   // The campus is a Lagos venue on the mainland; a guest may visit but not become a student.
@@ -1035,10 +1057,10 @@ const EDGE_B64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 /** Placeholders in the shape of the provider's public configuration; none of them names anything real. */
 const ACCOUNT_BINDINGS = { BUILD_ID: 'local-conformance', ACCOUNTS_FIREBASE_PROJECT_ID: ACCOUNT_PROJECT, ACCOUNTS_FIREBASE_API_KEY: 'edge-web-api-key-0000000000000000000000', ACCOUNTS_GOOGLE_CLIENT_ID: '1234567890-edgeclient.apps.googleusercontent.com' };
 /** The Worker with accounts configured and a stand-in provider: its keys are made here and served to the Worker's own outbound requests. */
-async function accountsFixture(t: TestContext, extraBindings: Record<string, string> = {}) {
+async function accountsFixture(t: TestContext, extraBindings: Record<string, string> = {}, sleeps = false) {
   const key = await makeKey('edge-key-1');
   const outbound: { url: string; body: unknown }[] = [];
-  const f = await fixture(t, { bindings: { ...ACCOUNT_BINDINGS, ...extraBindings }, outboundService: async (request: Request) => {
+  const f = await fixture(t, { sleeps, bindings: { ...ACCOUNT_BINDINGS, ...extraBindings }, outboundService: async (request: Request) => {
     const url = request.url.split('?')[0] as string;
     outbound.push({ url, body: request.method === 'POST' ? await request.json().catch(() => null) : null });
     if (url === TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=3600' } });
@@ -1191,7 +1213,7 @@ test('Cloudflare: accounts — save, restore on another device, the merge choice
 });
 
 test('Cloudflare: accounts — fixation, CSRF, token replay, unverified address, one answer for every bad token, limits, and sockets closed on sign-out', async t => {
-  const f = await accountsFixture(t), ada = await f.player('Ada');
+  const f = await accountsFixture(t, {}, true), ada = await f.player('Ada');
   // An unverified address links nothing.
   const unverified = await f.signIn('UidAda', ada.cookie, { verified: false });
   assert.deepEqual([unverified.status, unverified.body.error, unverified.setCookie], [403, 'email_unverified', '']);
@@ -1271,7 +1293,6 @@ test('Cloudflare: accounts hardening — a flood of resets and junk sign-ins fil
   assert.equal(statuses.get(200), 120); assert.equal(statuses.get(429), 480);
   const rows = (await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_protected'))[0].n;
   assert.ok(rows <= 241, `a refused request made no row of its own (${rows} rows for 120 accepted requests)`);
-  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key LIKE 'account:%'"))[0].n, 0, 'account keys are not in the table the game’s own short limits use');
   // Junk sign-ins from thirty addresses do not spend the shared sign-in bucket.
   for (let address = 0; address < 30; address++) await Promise.all(Array.from({ length: 10 }, async (_, i) => { const response = await f.request('/api/account/sign-in', { idToken: `junk.${address}.${i}` }, null, { 'cf-connecting-ip': `198.51.100.${address + 1}` }); assert.equal(response.status, 401); await response.text(); }));
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key = 'account:sign-in'"))[0].n, 0, 'the shared bucket was not touched by tokens that did not verify');
@@ -1279,10 +1300,9 @@ test('Cloudflare: accounts hardening — a flood of resets and junk sign-ins fil
   for (let batch = 0; batch < 8; batch++) await Promise.all(Array.from({ length: 40 }, async (_, i) => { const n = batch * 40 + i; const response = await f.request('/api/account/sign-in', { idToken: await f.token(`UidThrowaway${n}`, { verified: false }) }, null, { 'cf-connecting-ip': `2001:db8:aaaa:${n.toString(16)}::1` }); assert.equal(response.status, 403); await response.text(); }));
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key = 'account:sign-in' OR key LIKE 'account:sign-in:id:%'"))[0].n, 0, '320 unconfirmed sign-ups from 320 addresses counted against nothing shared');
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key NOT LIKE 'account:sign-in%' AND key NOT LIKE 'account:reset%'"))[0].n, 0, 'every account key starts account:sign-in or account:reset');
-  // Now the worst case the tables allow: both full of long-lived rows.
+  // Now the worst case the stored class allows: full of long-lived rows. (A full short class is the flood test above.)
   const far = Date.now() + 3600000;
   await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 4000) INSERT OR REPLACE INTO rate_limits_protected(key,started_at,count,expires_at) SELECT 'account:reset:to:flood-' || i, ${Date.now()}, 3, ${far} + i FROM n`);
-  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 10000) INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) SELECT 'http-ip:flood-' || i, ${Date.now()}, 1, ${far} + i FROM n`);
   const fresh = { 'cf-connecting-ip': '203.0.113.240' };
   const made = await f.request('/api/session', { name: 'Newcomer' }, null, fresh);
   assert.equal(made.status, 200, 'a new visitor’s POST /api/session succeeds');
@@ -1291,7 +1311,7 @@ test('Cloudflare: accounts hardening — a flood of resets and junk sign-ins fil
   const csrf = (await (await f.request('/api/account', null, cookie, fresh)).json()).csrf;
   const signed = await f.request('/api/account/sign-in', { idToken: await f.token('UidNewcomer'), csrf }, cookie, { 'cf-connecting-ip': '203.0.113.241' });
   assert.equal(signed.status, 200, 'and a valid sign-in succeeds'); assert.equal((await signed.json()).outcome, 'linked');
-  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_protected'))[0].n <= 20000); assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n <= 10000);
+  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_protected'))[0].n <= 20000);
 });
 
 test('Cloudflare: accounts hardening — __Host-sid: an old `sid` guest keeps their life and is upgraded, a planted `sid` loses to it, and a binding is honoured under the new name only', async t => {
@@ -1407,7 +1427,7 @@ test('Worker: comeback mail is claimed before it is sent — concurrent rounds a
   const live = { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token, PUBLIC_ORIGIN: 'https://joinallworld.test', ZEPTOMAIL_AUTH: 'Zoho-enczapikey SYNTHETIC', EMAIL_FROM_ADDRESS: 'hello@mail.joinallworld.test' };
   // The object's clock is moved to 12:30 Lagos time (11:30 UTC): the rules never send at night, and the test cannot wait for noon.
   const DAY_MS = 86400000, clockShiftMs = (11.5 * 3600000 - (Date.now() % DAY_MS) + DAY_MS) % DAY_MS;
-  const f = await fixture(t, { bindings: live, outboundService, clockShiftMs });
+  const f = await fixture(t, { sleeps: true, bindings: live, outboundService, clockShiftMs });
   const operator = { authorization: `Bearer ${token}`, 'content-type': 'application/json' };
   type Round = { comeback?: { ran: boolean; jobs?: number; reason?: string } };
   const run = async () => (await (await f.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: operator, body: '{}' })).json()) as Round;
@@ -1452,7 +1472,7 @@ test('Worker: comeback mail is claimed before it is sent — concurrent rounds a
   assert.equal(JSON.stringify(stored.comeback).includes('@'), false, 'no address in the comeback record');
 
   // An object without a mailer does nothing at all.
-  const dry = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
+  const dry = await fixture(t, { sleeps: true, bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
   const result = await (await dry.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: operator, body: '{}' })).json() as Round;
   assert.deepEqual(result.comeback, { ran: false, reason: 'not_configured' });
 });
@@ -1461,7 +1481,8 @@ test('Worker: an account holder is a comeback recipient — on from the start, a
   const key = await makeKey('edge-key-1'), mails: { subject: string; headers?: Record<string, string>; personalizations: { to: { email: string }[] }[] }[] = [];
   const token = 'worker-operator-token-0123456789-abcdef';
   const DAY_MS = 86400000, clockShiftMs = (11.5 * 3600000 - (Date.now() % DAY_MS) + DAY_MS) % DAY_MS;
-  const f = await fixture(t, { clockShiftMs, bindings: { ...ACCOUNT_BINDINGS, MODERATOR_TOKEN: token, PUBLIC_ORIGIN: 'https://play.example', ZEPTOMAIL_AUTH: 'Zoho-enczapikey placeholder-not-a-key', EMAIL_FROM_ADDRESS: 'hello@mail.example.com' }, outboundService: async (request: Request) => {
+  // `sleeps`: this test reads the stored record straight after the visit that made it, and a visit is a lazy change (held in memory by default).
+  const f = await fixture(t, { sleeps: true, clockShiftMs, bindings: { ...ACCOUNT_BINDINGS, MODERATOR_TOKEN: token, PUBLIC_ORIGIN: 'https://play.example', ZEPTOMAIL_AUTH: 'Zoho-enczapikey placeholder-not-a-key', EMAIL_FROM_ADDRESS: 'hello@mail.example.com' }, outboundService: async (request: Request) => {
     if (request.url === TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'cache-control': 'public, max-age=3600' } });
     if (request.url === 'https://api.zeptomail.com/v1.1/sg/email') { mails.push(await request.json()); return new Response('{}', { status: 200 }); }
     return new Response('{}', { status: 200 });
@@ -1545,4 +1566,55 @@ test('Cloudflare: a character pin written by an earlier build is not trusted —
   assert.equal((await answer(stale, 'ibadan')).body.state?.cash, 300);
   assert.equal((await swap(Object.keys((await session(stale)).legacyLives)[0] as string)).city, 'lagos');
   assert.equal((await answer(stale, 'lagos')).body.state?.cash, 76000);
+});
+
+test('Worker row budget: a connected player who only polls writes nothing; an action writes three rows; a restart keeps what was acknowledged and forgets only what was lazy', async t => {
+  const token = 'worker-operator-token-0123456789-abcdef';
+  const f = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
+  type Rows = { total: number; tables: Record<string, number>; sources: Record<string, { rows: number }> };
+  const overview = async (): Promise<{ rows: Rows; held: number; limits: { short: number; protected: number } }> => (await (await f.request('/api/mod/overview', null, null, { authorization: `Bearer ${token}` })).json()).store;
+  /** Rows written between two readings, by table — without the operator's own budget row, which each reading costs. */
+  const since = (before: Rows, after: Rows): Record<string, number> => Object.fromEntries(Object.entries(after.tables).map(([table, rows]) => [table, rows - (before.tables[table] ?? 0)] as const).filter(([table, rows]) => rows !== 0 && table !== 'rate_limits_protected'));
+  const ada = await f.device('Ada'), x = await f.socket(ada);
+  await f.life(ada);
+  x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next();
+  const poll = async (): Promise<void> => { for (const path of ['/api/life?city=lagos', '/api/world/pulse', '/api/civic/pulse?city=lagos', '/api/social/people?city=lagos', '/api/session']) { const response = await f.request(path, null, ada.cookie); assert.ok(response.status < 500, `${path} answered ${response.status}`); await response.arrayBuffer(); } };
+  // The first poll of each kind, and the first beat, make what does not exist yet (a collection, a resident's entry): those are written.
+  await poll(); await new Promise(resolve => setTimeout(resolve, 11000)); await poll();
+  // From here on: what a page that is only open does, for longer than two beats — it answers the heartbeat, moves, and polls.
+  const quiet = (await overview()).rows;
+  for (let round = 0; round < 5; round++) {
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    x.send({ type: 'move', x: 1 + round, z: 2 });
+    await poll();
+  }
+  assert.ok(x.heartbeats.length >= 2, 'the beat ran');
+  const polled = await overview();
+  const wrote = Object.entries(polled.rows.sources).filter(([name, source]) => name !== '/api/mod/overview' && source.rows !== (quiet.sources[name]?.rows ?? 0)).map(([name, source]) => `${name} ${JSON.stringify(source)}`);
+  assert.deepEqual(wrote, [], 'no kind of work wrote a row');
+  assert.deepEqual(since(quiet, polled.rows), {}, 'twenty-five seconds of beats, moves and polls wrote no row — not a limit, not the alarm, not the session');
+  assert.ok(polled.limits.short >= 2, 'the limits were counted, in memory');
+  // One action: the session row and its receipt (the row and its primary-key entry).
+  const trip = { actionId: `${Date.now()}:${randomUUID()}`, cityId: 'lagos', type: 'travel', payload: { id: 'library', mode: 'trek' } };
+  assert.equal((await (await f.request('/api/action', trip, ada.cookie)).json()).ok, true);
+  const acted = await overview();
+  assert.deepEqual(since(polled.rows, acted.rows), { sessions: 1, action_receipts: 2 });
+  // The operator guard is a stored limit: a hundred token-less tries fill it, and it is still full after a restart.
+  for (let i = 0; i < 100; i++) await (await f.request('/api/mod/overview', null, null, { 'cf-connecting-ip': `203.0.113.${1 + (i % 200)}` })).arrayBuffer();
+  assert.equal((await f.request('/api/mod/overview', null, null, { 'cf-connecting-ip': '203.0.113.250' })).status, 429);
+  const storage = await f.storage();
+  const receipts = (await storage.exec('SELECT COUNT(*) AS n FROM action_receipts'))[0].n;
+  // A database that still has the index no query read: opening it drops the index for the price of one row, whatever the table holds.
+  await storage.exec('CREATE INDEX action_expiry ON action_receipts(action_at)');
+  await f.restart();
+  assert.equal((await f.request('/api/mod/overview', null, null, { 'cf-connecting-ip': '203.0.113.251' })).status, 429, 'the guard outlived the restart');
+  const woken = await overview();
+  assert.ok((woken.rows.tables['(schema)'] ?? 0) <= 2, `starting on stored data wrote ${woken.rows.tables['(schema)'] ?? 0} schema rows`);
+  assert.equal(woken.held, 0); assert.ok(woken.limits.short <= 2, 'short limits start again: only the requests made since are counted');
+  const after = await f.storage();
+  assert.equal((await after.exec("SELECT COUNT(*) AS n FROM sqlite_master WHERE name = 'action_expiry'"))[0].n, 0);
+  assert.equal((await after.exec('SELECT COUNT(*) AS n FROM action_receipts'))[0].n, receipts, 'no receipt was lost with the index');
+  // The session still works, and the action is still done: its id is a duplicate.
+  assert.equal((await f.request('/api/session', null, ada.cookie)).status, 200);
+  assert.equal((await (await f.request('/api/action', trip, ada.cookie)).json()).duplicate, true);
 });

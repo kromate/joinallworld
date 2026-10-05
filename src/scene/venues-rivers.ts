@@ -774,7 +774,9 @@ const WATERSIDE: Record<string, Record<string, SceneDef>> = {
 };
 
 const kinds = [...new Set([...Object.keys(WATERSIDE), ...Object.keys(INLAND)])];
+/** Every scene opens on the whole of itself, so a stand, a crane or the far bank is in view before the player walks in. */
+const WHOLE_START = 4.2;
 export const VARIANTS: Readonly<Record<string, Readonly<Record<string, SceneDef>>>> = Object.freeze(Object.fromEntries(kinds.map((kind) => [
   kind,
-  Object.freeze(Object.fromEntries(Object.entries({ ...WATERSIDE[kind], ...INLAND[kind] }).map(([variant, def]) => [variant, def.camera ? def : { ...def, camera: WIDE }]))),
+  Object.freeze(Object.fromEntries(Object.entries({ ...WATERSIDE[kind], ...INLAND[kind] }).map(([variant, def]) => { const camera = def.camera ?? WIDE; return [variant, { ...def, camera: { ...camera, start: Math.max(camera.start ?? 0, WHOLE_START) } }]; }))),
 ])));

@@ -119,7 +119,7 @@ function tallMinaret(b: Batch, x: number, z: number, h: number): void {
 
 const mosque: SceneDef = {
   mood: 'outdoor', accent: '#d8a838',
-  camera: { landscape: [22, 31, 40], portrait: [14, 50, 72], start: 5.4 },
+  camera: { landscape: [27, 38, 49], portrait: [14, 50, 72], start: 5.4 },
   walk: OPEN,
   build(b, context) {
     const label = plain(context.label), hall = '#efe8d6', shade = '#40525c';
@@ -530,7 +530,7 @@ const velodrome: SceneDef = {
 
 const gate: SceneDef = {
   mood: 'outdoor', accent: '#2f8f55',
-  camera: { landscape: [19, 17, 34], portrait: [16, 34, 82], start: 5.6 },
+  camera: { landscape: [24, 22, 43], portrait: [16, 34, 82], start: 5.6 },
   walk: { bounds: [-1.6, -12.2, 14.2, 12.2], entrance: [5, 11.4], open: true },
   build(b, context) {
     const label = plain(context.label), rand = seeded(53);
@@ -797,9 +797,12 @@ const SIGNATURE: Record<string, Record<string, SceneDef>> = {
 };
 
 /** A wide scene in a tall window needs the camera further back, and more nearly in front, than the rooms do: the whole ground is in view. */
+/** Every scene opens on the whole of itself, so a tower, a dome or the far bank is in view before the player walks in. */
+const WHOLE_START = 4.2;
+const whole = (def: SceneDef): SceneDef => (def.camera ? { ...def, camera: { ...def.camera, start: Math.max(def.camera.start ?? 0, WHOLE_START) } } : def);
 const WIDE: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [13, 48, 69] };
 const kinds = [...new Set([...Object.keys(SIGNATURE), ...Object.keys(EVERYDAY)])];
 export const VARIANTS: Readonly<Record<string, Readonly<Record<string, SceneDef>>>> = Object.freeze(Object.fromEntries(kinds.map((kind) => [
   kind,
-  Object.freeze(Object.fromEntries(Object.entries({ ...SIGNATURE[kind], ...EVERYDAY[kind] }).map(([variant, def]) => [variant, def.mood === 'outdoor' && !def.camera ? { ...def, camera: WIDE } : def]))),
+  Object.freeze(Object.fromEntries(Object.entries({ ...SIGNATURE[kind], ...EVERYDAY[kind] }).map(([variant, def]) => [variant, whole(def.mood === 'outdoor' && !def.camera ? { ...def, camera: WIDE } : def)]))),
 ])));

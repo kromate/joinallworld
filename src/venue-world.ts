@@ -362,7 +362,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   // Colour, tone mapping and what this device may cost (src/scene/look.ts): a phone draws at 1.5× with a 1024 shadow map.
   let tier = applyRendererLook(THREE, renderer, renderTier());
   container.appendChild(renderer.domElement);
-  const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 150);
+  const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 360);
   const lights = createHostLights(THREE, scene, { shadowMap: tier.shadowMap });
   // The graded sky behind the scene and the soft ground under it (one texture, one mesh, for every venue).
   const sky = createSky(THREE), ground = createGround(THREE);

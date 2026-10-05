@@ -150,7 +150,7 @@ type SkyMaterials = SceneMaterials & { sky?: THREE.MeshBasicMaterial };
 
 function skyDome(kit: Kit, materials: SkyMaterials) {
   const { THREE } = kit;
-  const geometry = new THREE.SphereGeometry(90, 16, 8);
+  const geometry = new THREE.SphereGeometry(170, 16, 8);
   geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(geometry.attributes.position!.count * 3), 3));
   const mesh = new THREE.Mesh(geometry, materials.sky);
   mesh.name = 'sky';

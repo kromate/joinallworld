@@ -29,9 +29,11 @@ test('a flight or a bus to Port Harcourt, Abuja or Kano can be skipped: the firs
   assert.deepEqual([life.offer()?.kind, life.offer()?.fee, life.offer()?.free], ['intercity', 0, true])
   assert.equal(life.run('travel.skip').code, 'skipped')
   assert.equal(life.state.estate.city, 'kano')
-  for (const [to, mode] of [['abuja', 'road'], ['port-harcourt', 'air'], ['lagos', 'road'], ['abuja', 'air']] as const) {
-    const link = linksFrom(life.state.estate.city).find((item) => item.to === to && item.mode === mode)
-    assert.ok(link, `${life.state.estate.city} to ${to} by ${mode}`)
+  const legs: readonly (readonly [string, string])[] = [['abuja', 'road'], ['port-harcourt', 'air'], ['lagos', 'road'], ['abuja', 'air']]
+  for (const [to, mode] of legs) {
+    const from: string = life.state.estate.city
+    const link = linksFrom(from).find((item) => item.to === to && item.mode === mode)
+    assert.ok(link, `${from} to ${to} by ${mode}`)
     assert.equal(life.run('estate.relocate', { to, mode }).code, 'departed')
     const fee = tripSkipFee('intercity', link.seconds, link.fare), before = life.state.cash
     assert.equal(fee, Math.min(Math.ceil((100 + 10 * link.seconds) / TRIP_SKIP.roundTo) * TRIP_SKIP.roundTo, Math.floor(link.fare * 0.5 / TRIP_SKIP.roundTo) * TRIP_SKIP.roundTo))

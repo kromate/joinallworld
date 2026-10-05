@@ -35,7 +35,7 @@ const scene = new THREE.Scene();
 const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
 applyRendererLook(THREE, renderer, renderTier());
 stage.appendChild(renderer.domElement);
-const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 150);
+const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 360);
 const lights = createHostLights(THREE, scene);
 const sky = createSky(THREE);
 scene.background = sky.texture;

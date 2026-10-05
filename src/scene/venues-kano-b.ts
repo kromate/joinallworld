@@ -220,7 +220,7 @@ function tallMinaret(b: Batch, x: number, z: number, h: number): void {
 
 const centralMosque: SceneDef = {
   mood: 'outdoor', accent: MOSQUE_GREEN,
-  camera: { landscape: [21, 30, 40], portrait: [22, 49, 64], start: 4.2 }, walk: OPEN,
+  camera: { landscape: [28, 40, 53], portrait: [29, 65, 85], start: 9 }, walk: OPEN,
   build(b, context) {
     ground(b, { w: 30, d: 26, color: '#e2dac2', edge: '#aea488' });
     for (let x = -13; x <= 13; x += 2) for (let z = -3; z <= 11; z += 2) if ((x + z + 40) % 4 === 0) b.box(x, 0.05, z, 2, 0.02, 2, '#d3c9ac');

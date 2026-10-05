@@ -208,6 +208,24 @@ test('Cloudflare: two clients presence, chat dedupe, signaling isolation and tra
   assert.ok(!/World sync failed|different Durable Object/.test(f.logged()), f.logged().split('\n').filter(line => /World sync failed|different Durable Object/.test(line)).join('\n'));
 });
 
+test('Cloudflare: a replaced object instance leaves the room watcher alone: no cross-instance I/O, presence still updates, no stray frames', async t => {
+  const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
+  const x = await f.socket(a), y = await f.socket(b);
+  x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next();
+  y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
+  // Put the object to sleep twice: each time a new instance is made, and the ones it replaced are still in memory.
+  await f.hibernate();
+  x.send({ type: 'voice-state', enabled: true, muted: true }); await x.next(); await y.next();
+  await f.hibernate();
+  y.send({ type: 'voice-state', enabled: true, muted: true }); await x.next(); await y.next();
+  // A life change inside the current instance's transaction reaches the room watcher of every instance in this isolate.
+  await f.action(a, { type: 'travel', id: 'library', mode: 'cab' });
+  assert.equal((await x.next()).code, 'venue_mismatch');
+  assert.equal((await y.next()).members.length, 1, 'the room still updates: the one who left is gone');
+  await assert.rejects(x.next(), /timeout/, 'the replaced instances send nothing of their own');
+  assert.ok(!/different Durable Object|Cannot perform I\/O|Request failed|World sync failed/i.test(f.logged()), f.logged());
+});
+
 test('Cloudflare: socket auth, expired open connection and disconnect after hibernation', async t => {
   const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
   assert.equal((await f.upgrade({ cookie: a.cookie })).status, 403);

@@ -23,7 +23,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .scene-wait::after{content:'';position:absolute;left:0;bottom:4px;width:40%;height:3px;border-radius:3px;background:var(--c-green-dark);opacity:.75;animation:ui-progress 1.1s ease-in-out infinite alternate}
 @keyframes ui-progress{from{transform:translateX(0)}to{transform:translateX(150%)}}
 
-.life-ui{position:absolute;inset:0;z-index:10;overflow:hidden;pointer-events:none;font-family:var(--font);color:var(--c-ink);font-size:13px;line-height:1.35}
+.life-ui{position:absolute;zoom:var(--ui-zoom);inset:0;z-index:10;overflow:hidden;pointer-events:none;font-family:var(--font);color:var(--c-ink);font-size:13px;line-height:1.35}
 .life-ui *,#life-dialog *{box-sizing:border-box}
 .life-ui button,.life-ui input{font:inherit}
 .life-ui button{cursor:pointer;border:0;color:inherit;pointer-events:auto;-webkit-tap-highlight-color:transparent}
@@ -33,7 +33,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-ui h1,.life-ui p{margin:0}
 
 /* ---- brand (top-left on a wide screen; a small mark inside the top bar on a narrow one) ---- */
-.life-wordmark{position:absolute;top:12px;left:calc(14px + var(--play-x));z-index:4;display:flex;align-items:center;gap:8px;height:48px;padding:0 16px 0 9px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-pill);box-shadow:var(--e-2);pointer-events:auto}
+.life-wordmark{position:absolute;top:12px;left:14px;z-index:4;display:flex;align-items:center;gap:8px;height:48px;padding:0 16px 0 9px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-pill);box-shadow:var(--e-2);pointer-events:auto}
 .life-wordmark i,.life-status-mark{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(150deg,#39c07a,#1d6b43);color:#fff;box-shadow:inset 0 1px 0 #ffffff59}
 .life-ui .life-wordmark svg,.life-ui .life-status-mark svg{width:19px;height:19px}
 .life-wordmark span{font-size:16px;font-weight:800;letter-spacing:-.5px;color:var(--c-ink)}
@@ -85,7 +85,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 @media(max-width:1183px){.life-notice{flex-wrap:wrap;width:min(600px,calc(100% - 24px))}.life-notice-actions{flex:1 1 100%}.life-notice-actions .ui-button{flex:1}.has-notice .life-sidebar{top:calc(78px + var(--notice-h,0px))}}
 
 /* ---- sidebar: needs strip, More, Clean screen, goal line, tray --------------------------- */
-.life-sidebar{position:absolute;top:70px;left:calc(14px + var(--play-x));width:264px;display:flex;flex-direction:column;gap:8px;max-height:calc(100dvh - 330px);z-index:3}
+.life-sidebar{position:absolute;top:70px;left:14px;width:264px;display:flex;flex-direction:column;gap:8px;max-height:calc(100dvh - 330px);z-index:3}
 .life-sidebar>*,.life-menu{flex:none;min-width:0}
 @media(min-width:1240px){.life-sidebar{max-height:calc(100dvh - 100px)}}
 .life-quick{display:flex;align-items:center;gap:6px;order:-2}
@@ -245,7 +245,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-ui .life-nav svg{width:22px;height:22px}
 
 /* ---- sheets (the dialog): one header, one close button, one scrolling body ---------------- */
-#life-dialog{border:0;padding:0;border-radius:var(--r-xl);width:min(480px,calc(100% - 24px));max-width:none;max-height:min(88dvh,780px);background:#fff;color:var(--c-ink);font-family:var(--font);overflow:hidden;box-shadow:var(--e-3)}
+#life-dialog{zoom:var(--ui-zoom);border:0;padding:0;border-radius:var(--r-xl);width:min(480px,calc(100% - 24px));max-width:none;max-height:min(88dvh,780px);background:#fff;color:var(--c-ink);font-family:var(--font);overflow:hidden;box-shadow:var(--e-3)}
 #life-dialog[open]{display:flex;flex-direction:column}
 #life-dialog:focus,#life-dialog:focus-visible{outline:none}
 #life-dialog::backdrop{background:#0c1a1485;backdrop-filter:blur(3px)}
@@ -422,7 +422,7 @@ button.ui-row:hover{background:#f7f9f8}
 .ph-appbody .ui-empty{background:#fff;border-style:solid;border-color:transparent;box-shadow:var(--e-1),var(--ring)}
 
 /* ---- community panel (content from src/community.js) ------------------------------------- */
-#community-panel{box-sizing:border-box;position:fixed;z-index:35;right:calc(14px + var(--play-x));top:70px;bottom:14px;width:min(380px,calc(100vw - 28px));background:#f9fbf8;border-radius:22px;box-shadow:0 10px 60px #0006;overflow:auto;padding:18px;font-family:var(--font)}
+#community-panel{box-sizing:border-box;position:fixed;z-index:35;right:14px;top:70px;bottom:14px;width:min(380px,calc(100vw - 28px));background:#f9fbf8;border-radius:22px;box-shadow:0 10px 60px #0006;overflow:auto;padding:18px;font-family:var(--font)}
 #community-close{position:sticky;float:right;top:0;margin:-8px -8px 0 0;z-index:3;display:grid;place-items:center;width:var(--tap);height:var(--tap);border:0;border-radius:50%;background:var(--c-fill);font-size:24px;line-height:1;cursor:pointer}
 
 /* ---- name tags over the venue scene (src/venue-world.js) ---------------------------------- */

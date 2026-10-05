@@ -106,7 +106,7 @@ function noticeBoard(b: Batch, x: number, z: number) {
 
 const quad: SceneDef = {
   mood: 'outdoor', accent: '#e0b04a',
-  camera: { landscape: [17, 23, 29], portrait: [18, 34, 44] },
+  camera: { landscape: [17, 23, 29], portrait: [18, 34, 44], start: 3.5 },
   build(b, context) {
     const label = plain(context.label);
     ground(b, { w: 30, d: 26, color: '#62a04f', edge: '#46703a' });
@@ -223,7 +223,7 @@ function drawTower(b: Batch, x: number, z: number) {
 
 const hilltop: SceneDef = {
   mood: 'outdoor', accent: '#f2c14e',
-  camera: { landscape: [17, 26, 32], portrait: [17, 36, 46] },
+  camera: { landscape: [23, 35, 43], portrait: [24, 49, 62], start: 3.5 },
   build(b, context) {
     const label = plain(context.label);
     // The terrace: paved stone, then the hillside falling away behind a low wall
@@ -305,7 +305,7 @@ function canoe(b: Batch, x: number, y: number, z: number, ry: number) {
 
 const lakeside: SceneDef = {
   mood: 'outdoor', accent: '#7fd1c8',
-  camera: { landscape: [16, 21.5, 27.5], portrait: [14, 27, 36] },
+  camera: { landscape: [20, 27, 35], portrait: [18, 35, 47], start: 3.5 },
   build(b, context) {
     const label = plain(context.label);
     const rand = seeded(11);

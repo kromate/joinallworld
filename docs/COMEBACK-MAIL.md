@@ -35,7 +35,10 @@ A visit is any sign of play after the mail: the growth hello, a saved action, a 
 
 ## Consent and control
 
-* Comeback mail goes only to an address the player has confirmed through the existing double opt-in, and only while "E-mail me about my character" is on. A later change lets a verified account address be that recipient, through `mailRecipientOf` in `server/growth/comeback.ts` and nothing else.
+* Comeback mail goes to one of two addresses, decided in one place (`mailRecipientOf`, `server/growth/recipient.ts`), and only while "E-mail me about my character" is on: the address confirmed through the double opt-in of Stay in touch, or — for the character that is an account's active one — the account's verified address (never for a player who said they are under 18).
+* An account made from now on starts with the preference on; the creation screen says so next to its button ("We'll e-mail you a few times a week at most about your character. You can turn this off any time."). An older account has to switch it on itself. The record is made at the character's first visit after the change (`account.mailOptIn`, then `growth.comeback[id].acct`).
+* The welcome message of a new account is one of the character's mails: it is in the same ledger (type `welcome`) and under the same daily cap, so no one is sent a welcome and a comeback mail on one day. The weekly digest is sent only to a Stay in touch address.
+* "Unsubscribe from everything" works for an account holder from the mail's link, with no sign-in; the account itself is untouched.
 * A player who confirms an address starts with the preference on. The confirmation page says: "We'll send you a few e-mails a week at most about your character. Change this any time."
 * An address that was confirmed before this feature existed starts with the preference off (it consented to a different sentence). The player can turn it on in Stay in touch. Their weekly digest is unchanged.
 * Stay in touch has a switch for each type (Needs, Friends, Milestones, Events, When I've been away, Weekly digest) and "Pause all for 30 days".

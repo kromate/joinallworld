@@ -110,11 +110,12 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 })
 
 // ---- the built bundle ------------------------------------------------------------------------------------------------------------
-// The automatic startup (entry, Vue, the shell and the engine with the default city) measured on the build of this change: 583.1 kB raw / 215.3 kB gzip
-// (the budget before the city modules, measured on the build of the first-load split, was 586.0 / 214.0 with 557.8 / 203.3 measured). The budget is that measurement plus about 3%.
-// The loading screen alone (entry, Vue, the module preload helper) measured 88.1 kB / 35.5 kB; its budget is that plus about 8%.
-const BUDGET = { raw: 600_000, gzip: 222_000 }
-const LOADING_BUDGET = { raw: 96_000, gzip: 38_000 }
+// The automatic startup (entry, Vue, the shell and the engine with the default city) measured on the combined build: 584.8 kB raw / 216.1 kB gzip.
+// (After the city modules alone it was 583.1 / 215.3; before them, on the first-load split, 557.8 / 203.3. About 17 kB of the difference is the eager
+// city registry and the Lagos rules and content the engine reads synchronously; the reserved cities' atlas text is about 3 kB of it.) The budget is the measurement plus about 4%.
+// The loading screen alone (entry, Vue, the module preload helper) measured 88.1 kB / 35.5 kB; its budget is that plus about 4%.
+const BUDGET = { raw: 608_000, gzip: 225_000 }
+const LOADING_BUDGET = { raw: 92_000, gzip: 37_000 }
 
 function eagerChunks(dist: string, additional: readonly string[] = []): string[] {
   const html = readFileSync(join(dist, 'index.html'), 'utf8')

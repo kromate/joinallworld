@@ -26,6 +26,8 @@ export interface SqliteStore extends Store {
 /** A socket's private state, carried through hibernation as its attachment. */
 export interface SocketInfo {
   secret: string
+  /** The cookie the socket was opened with; differs from `secret` for a signed-in browser (server/types.ts WsConnection). */
+  device?: string
   session: PublicSession
   expiresAt: number
   ip: string

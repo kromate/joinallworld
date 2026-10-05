@@ -1,32 +1,31 @@
-// The one place where character creation meets sign-in. The creator asks for two things only:
+// The start screens' way into accounts. An account is optional: this only says whether sign-in
+// exists on this server and opens the two screens.
 //
-//   openSignIn()  a returning player on the first screen: "I already have a character"
-//   openSave()    after the character is made: "Save your character" (keep it, and the life, on an account)
+//   const account = useAccountEntry()
+//   <button v-if="account.available" @click="account.openSignIn()">Sign in</button>
 //
-// and shows each button only while `available` is true. Nothing is wired here: with no account
-// feature registered the buttons are hidden and the guest flow is exactly the one without accounts.
-// The account feature calls registerAccountEntry() once, when it is ready to be used; the creator
-// reads the same reactive object, so the buttons appear the moment it does.
-import { shallowReactive } from 'vue'
+// `available` is false until the server has said accounts are configured, and stays false when they
+// are not — the caller shows nothing then. It is read from reactive state, so a template that reads
+// it is redrawn when the answer arrives.
+import { useApp } from '../../state/app.ts'
+import { ACCOUNT_PANEL } from '../account/register.ts'
+import { useAccount } from '../account/useAccount.ts'
 
 export interface AccountEntry {
-  /** True when the sign-in and save screens exist and can be opened. */
-  available: boolean
-  /** Open the sign-in screen for a player who already has a character. */
+  /** Accounts are configured on this server. */
+  readonly available: boolean
+  /** "I already have an account": sign in, and play the account's character on this device. */
   openSignIn(): void
-  /** Open the screen that keeps this character on an account. */
+  /** "Save your character": sign in or create an account, and keep this device's character with it. */
   openSave(): void
 }
 
-const entry = shallowReactive<AccountEntry>({ available: false, openSignIn() { /* not wired */ }, openSave() { /* not wired */ } })
-
-/** The account feature's side: make the buttons appear and say what they do. Returns a function that takes them away again. */
-export function registerAccountEntry(next: Pick<AccountEntry, 'openSignIn' | 'openSave'>): () => void {
-  entry.openSignIn = next.openSignIn
-  entry.openSave = next.openSave
-  entry.available = true
-  return () => { entry.available = false }
+export function useAccountEntry(): AccountEntry {
+  const account = useAccount(), { shell } = useApp()
+  void account.load()
+  return {
+    get available() { return account.state.loaded && account.state.enabled },
+    openSignIn() { shell.open(ACCOUNT_PANEL, { intent: 'sign-in' }) },
+    openSave() { shell.open(ACCOUNT_PANEL, { intent: 'save' }) },
+  }
 }
-
-/** The creator's side: read `available` and call the two functions. */
-export const useAccountEntry = (): AccountEntry => entry

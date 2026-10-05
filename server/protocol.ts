@@ -5,7 +5,7 @@ import { screenText } from './moderation/text.ts';
 import { createCampusWalk } from '../src/campus/unilag/walk.ts';
 import { ENTRANCE } from '../src/campus/unilag/layout.ts';
 import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../src/types/protocol.ts';
-import type { ActionReceipt, ArchivedLife, Collections, CollectionName, Db, HttpError, SessionRecord } from './types.ts';
+import type { AccountDeviceRecord, ActionReceipt, ArchivedLife, Collections, CollectionName, Db, HttpError, SessionRecord } from './types.ts';
 
 /** A point on the ground: venue positions are x/z only. */
 type Point = { x: number; z: number };
@@ -83,9 +83,10 @@ export function validateActionPayload(body: unknown, now: number, windowMs = ACT
   return parseActionId(fields.actionId, now, windowMs);
 }
 export function publicSession(session: Pick<SessionRecord, 'publicId' | 'name'>): PublicSession { return { id: session.publicId, name: session.name }; }
-export function isSameOrigin(origin: string | null | undefined, host: string | null | undefined, { requireOrigin = false }: { requireOrigin?: boolean } = {}): boolean {
+/** `secure`: this host is being reached over https, so an Origin naming it must be https too (the same host over plain http is another origin). */
+export function isSameOrigin(origin: string | null | undefined, host: string | null | undefined, { requireOrigin = false, secure = false }: { requireOrigin?: boolean; secure?: boolean } = {}): boolean {
   if (!origin) return !requireOrigin;
-  try { const url = new URL(origin); return url.host === host && ['http:', 'https:'].includes(url.protocol); } catch { return false; }
+  try { const url = new URL(origin); return url.host === host && (secure ? url.protocol === 'https:' : ['http:', 'https:'].includes(url.protocol)); } catch { return false; }
 }
 /**
  * WHO IS IN A VENUE — one rule for both hosts and every feature.
@@ -116,8 +117,55 @@ export function readReceipt<R extends Pick<ActionReceipt, 'fingerprint'>>(action
   if (receipt && receipt.fingerprint !== actionFingerprint(body)) throw protocolError(409, 'action_id_conflict');
   return receipt;
 }
-export function archivedLife(session: Pick<SessionRecord, 'name' | 'cities'>, publicId: string, at: number): ArchivedLife { return { publicId, name: session.name, cities: structuredClone(session.cities || {}), archivedAt: at }; }
+/**
+ * What is kept of a session whose secret is dropped: its lives, and everything else a record carries that a life needs
+ * to come back whole — the city its one character is in, lives put aside by a move, and whether it began in the quick
+ * start. (Its exactly-once receipts are not kept: by the time a session expires they are long past their window.)
+ */
+export function archivedLife(session: Pick<SessionRecord, 'name' | 'cities'> & Partial<Pick<SessionRecord, 'character' | 'legacyLives' | 'onboarding'>>, publicId: string, at: number): ArchivedLife {
+  return { publicId, name: session.name, cities: structuredClone(session.cities || {}), archivedAt: at,
+    ...(session.character ? { character: structuredClone(session.character) } : {}), ...(session.legacyLives ? { legacyLives: structuredClone(session.legacyLives) } : {}), ...(session.onboarding === true ? { onboarding: true as const } : {}) };
+}
 
+
+/**
+ * One record of a keyed collection, read by key alone (never by listing the collection: on the Worker these are rows).
+ * Keys are UUIDs or `fb:`-prefixed ids, so none can name something every object inherits; a non-record answers undefined anyway.
+ */
+const own = <T>(map: Record<string, T> | undefined, key: string): T | undefined => {
+  const value = map && key !== '__proto__' ? map[key] : undefined;
+  return value !== null && typeof value === 'object' ? value : undefined;
+};
+/** A device binding lives 30 days from its last use, and never longer than this from when it was made: after that the person signs in again. */
+export const BINDING_MAX_AGE_MS = 90 * 86400000;
+/** Is this binding still good? Its sliding expiry has not passed, and neither has its absolute lifetime. */
+export const bindingLive = (device: Pick<AccountDeviceRecord, 'expiresAt' | 'createdAt'>, now: number): boolean => device.expiresAt > now && now - device.createdAt < BINDING_MAX_AGE_MS;
+/**
+ * WHOSE SESSION A COOKIE IS — one rule for both hosts.
+ *   a guest      the cookie is the key of a session record that belongs to no account;
+ *   signed in    the cookie is a device binding (`accountDevices`) of an account whose active character is the session.
+ * A record that belongs to an account is never reached by naming its key: only through a binding, so signing a device
+ * out (removing its binding) ends its access at once and the record's key is not a credential. Expired records and
+ * bindings answer undefined. `binding: false` — the cookie arrived under a name a sibling host could have set — answers
+ * for a guest's own record only. Read-only: nothing is created or renewed here.
+ */
+export function sessionOfCookie(db: Db, cookie: string | undefined, now: number, binding = true): { session: SessionRecord; device?: AccountDeviceRecord } | undefined {
+  if (!cookie || !UUID_PATTERN.test(cookie)) return undefined;
+  const direct = db.sessions[cookie];
+  if (direct) return direct.account === undefined && Number.isFinite(direct.expiresAt) && direct.expiresAt > now ? { session: direct } : undefined;
+  if (!binding) return undefined;
+  const device = own(db.accountDevices, cookie);
+  if (!device || !bindingLive(device, now)) return undefined;
+  const account = own(db.accounts, device.account);
+  const session = account?.sessionKey ? db.sessions[account.sessionKey] : undefined;
+  if (!account || !session || session.account !== account.id || !(session.expiresAt > now)) return undefined;
+  return { session, device };
+}
+/** Renew what sessionOfCookie found: the session, and the device binding that led to it (never past the binding's absolute lifetime). */
+export function renewResolved(found: { session: SessionRecord; device?: AccountDeviceRecord }, now: number, ttlMs = SESSION_TTL_MS): void {
+  renewSession(found.session, now, ttlMs);
+  if (found.device) { found.device.expiresAt = Math.min(now + ttlMs, found.device.createdAt + BINDING_MAX_AGE_MS); found.device.seenAt = now; }
+}
 
 export function renewSession(session: Pick<SessionRecord, 'expiresAt'> | null | undefined, now: number, ttlMs = SESSION_TTL_MS): boolean {
   if (!session || !Number.isFinite(session.expiresAt) || session.expiresAt <= now) return false;

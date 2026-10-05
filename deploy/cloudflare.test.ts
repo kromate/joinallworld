@@ -6,9 +6,11 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { createHash, randomUUID } from 'node:crypto';
+import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts';
+import { TOKEN_KEYS_URL } from '../server/accounts/token.ts';
 
 /** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
-interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
+interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; addEventListener(type: 'close', listener: (event: { code: number }) => void): void; accept(): void; send(data: string): void; close(): void }
 type MiniflareResponse = Response & { webSocket?: StubSocket | null }
 /** A row of a table in the object's SQLite storage; the tests read `value`, `secret`, `name`, `n`, ... as they know their query. */
 type Row = { value: string; secret: string; name: string; n: number; [column: string]: string | number }
@@ -120,7 +122,7 @@ async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) 
    * back, and the next request settles the elapsed time through the engine exactly as a real wait would.
    */
   async function skip(device: Device, ms: number, cityId = 'lagos') {
-    const db = await storage(), secret = device.cookie.slice(4);
+    const db = await storage(), secret = device.cookie.slice(11);
     const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
     const entry = session.cities[cityId];
     entry.updatedAt -= ms;
@@ -129,7 +131,7 @@ async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) 
   }
   /** The next Lagos day for one life: the day its last paid work was counted on becomes yesterday. */
   async function nextDay(device: Device, cityId = 'lagos') {
-    const db = await storage(), secret = device.cookie.slice(4);
+    const db = await storage(), secret = device.cookie.slice(11);
     const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
     const work = session.cities[cityId].state.civic.work;
     if (work.last !== null) work.last -= 1;
@@ -141,7 +143,7 @@ async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) 
 
 test('Cloudflare: public IDs, origin isolation, atomic duplicate fare, replay window and restart durability', async t => {
   const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
-  assert.notEqual(a.id, a.cookie.slice(4));
+  assert.notEqual(a.id, a.cookie.slice(11));
   assert.equal((await f.request('/api/life?city=lagos')).status, 401);
   assert.equal((await f.request('/api/session', { name: 'Mallory' }, null, { origin: 'https://evil.test' })).status, 403);
   const action = { actionId: `${Date.now()}:${randomUUID()}`, type: 'travel', id: 'library', mode: 'cab' };
@@ -164,32 +166,32 @@ test('Cloudflare: settlement once across restart, sliding expiry, expired token 
   const rows = await storage.exec('SELECT value FROM sessions');
   const session = JSON.parse(rows[0].value);
   session.cities.lagos.updatedAt -= 12000; session.expiresAt = Date.now() + 60000;
-  await storage.exec('UPDATE sessions SET value = ?, expires_at = ? WHERE secret = ?', JSON.stringify(session), session.expiresAt, a.cookie.slice(4));
+  await storage.exec('UPDATE sessions SET value = ?, expires_at = ? WHERE secret = ?', JSON.stringify(session), session.expiresAt, a.cookie.slice(11));
   await f.restart();
   assert.equal((await f.life(a)).needs.fun, 60); assert.equal((await f.life(a)).needs.fun, 60);
   const currentStorage = await f.storage();
   const renewed = JSON.parse((await currentStorage.exec('SELECT value FROM sessions'))[0].value);
   assert.ok(renewed.expiresAt > Date.now() + 29 * 86400000);
   renewed.expiresAt = Date.now() - 1;
-  await currentStorage.exec('UPDATE sessions SET value = ?, expires_at = ? WHERE secret = ?', JSON.stringify(renewed), renewed.expiresAt, a.cookie.slice(4));
+  await currentStorage.exec('UPDATE sessions SET value = ?, expires_at = ? WHERE secret = ?', JSON.stringify(renewed), renewed.expiresAt, a.cookie.slice(11));
   assert.equal((await f.request('/api/session', null, a.cookie)).status, 401);
   const fresh = await f.device('New life'); assert.notEqual(fresh.id, a.id);
   const archives = await currentStorage.exec('SELECT value FROM archived_lives');
   assert.equal(archives.length, 1); assert.equal(JSON.parse(archives[0].value).cities.lagos.state.needs.fun, 60);
-  assert.ok(!archives[0].value.includes(a.cookie.slice(4)));
+  assert.ok(!archives[0].value.includes(a.cookie.slice(11)));
 });
 
 test('Cloudflare: two clients presence, chat dedupe, signaling isolation and travel eviction', async t => {
   const f = await fixture(t), a = await f.device('Ada'), b = await f.device('Bola');
   const x = await f.socket(a), y = await f.socket(b);
   x.send({ type: 'join', cityId: 'lagos', venueId: 'park' });
-  const solo = await x.next(); assert.equal(solo.members.length, 1); assert.ok(!JSON.stringify(solo).includes(a.cookie.slice(4))); assert.equal(solo.members[0].muted, true);
+  const solo = await x.next(); assert.equal(solo.members.length, 1); assert.ok(!JSON.stringify(solo).includes(a.cookie.slice(11))); assert.equal(solo.members[0].muted, true);
   y.send({ type: 'join', cityId: 'ibadan', venueId: 'park' }); await y.next();
   x.send({ type: 'signal', to: b.id, data: { candidate: 'test' } }); assert.equal((await x.next()).code, 'peer_not_in_room');
   y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
   x.send({ type: 'signal', to: b.id, data: { candidate: 'test' } }); assert.equal((await y.next()).from, a.id);
   const chat = { type: 'chat', body: 'Hello', clientId: randomUUID() };
-  x.send(chat); const first = await x.next(); assert.equal((await y.next()).id, first.id); assert.ok(!JSON.stringify(first).includes(a.cookie.slice(4)));
+  x.send(chat); const first = await x.next(); assert.equal((await y.next()).id, first.id); assert.ok(!JSON.stringify(first).includes(a.cookie.slice(11)));
   const receipts = await (await f.storage()).exec('SELECT value FROM chat_receipts');
   assert.ok(!JSON.stringify(receipts).includes('Hello')); assert.ok(!JSON.stringify(receipts).includes('Ada'));
   await f.hibernate();
@@ -237,9 +239,9 @@ test('Cloudflare: socket auth, expired open connection and disconnect after hibe
   y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
   await f.hibernate();
   const storage = await f.storage();
-  const row = (await storage.exec('SELECT value FROM sessions WHERE secret = ?', a.cookie.slice(4)))[0];
+  const row = (await storage.exec('SELECT value FROM sessions WHERE secret = ?', a.cookie.slice(11)))[0];
   const session = JSON.parse(row.value); session.expiresAt = Date.now() - 1;
-  await storage.exec('UPDATE sessions SET value=?,expires_at=? WHERE secret=?', JSON.stringify(session), session.expiresAt, a.cookie.slice(4));
+  await storage.exec('UPDATE sessions SET value=?,expires_at=? WHERE secret=?', JSON.stringify(session), session.expiresAt, a.cookie.slice(11));
   x.send({ type: 'chat', body: 'Expired', clientId: 'expired' });
   assert.equal((await x.next()).code, 'device_session_required'); assert.equal((await y.next()).members.length, 1);
   assert.equal((await f.upgrade({ origin: f.origin, cookie: a.cookie })).status, 401);
@@ -353,7 +355,7 @@ test('Cloudflare: twelve devices behind one IP retain independent HTTP allowance
   const action = { actionId: `${Date.now()}:${randomUUID()}`, type: 'travel', id: 'library', mode: 'cab' };
   assert.equal((await (await f.action(a, action)).json()).state.cash, 4600);
   const storage = await f.storage();
-  const session = JSON.parse((await storage.exec('SELECT value FROM sessions WHERE secret=?', a.cookie.slice(4)))[0].value);
+  const session = JSON.parse((await storage.exec('SELECT value FROM sessions WHERE secret=?', a.cookie.slice(11)))[0].value);
   assert.equal(session.actions, undefined);
   assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM action_receipts'))[0].n, 1);
   await f.hibernate();
@@ -369,12 +371,12 @@ test('Cloudflare: gradual home nap cancellation survives eviction without repeat
   let storage = await f.storage();
   const session = JSON.parse((await storage.exec('SELECT value FROM sessions'))[0].value);
   session.cities.lagos.state.location = 'home'; session.cities.lagos.state.needs.energy = 20;
-  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(session), a.cookie.slice(4));
+  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(session), a.cookie.slice(11));
   assert.equal((await (await f.action(a, { type: 'spot', id: 'bedroom' })).json()).ok, true);
   assert.equal((await (await f.action(a, { type: 'activity', id: 'nap' })).json()).ok, true);
   const started = JSON.parse((await storage.exec('SELECT value FROM sessions'))[0].value);
   started.cities.lagos.updatedAt -= 3000;
-  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(started), a.cookie.slice(4));
+  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(started), a.cookie.slice(11));
   await f.hibernate();
   const cancelled = await (await f.action(a, { type: 'cancel' })).json(); assert.equal(cancelled.ok, true); assert.equal(cancelled.state.activeAction, null);
   assert.ok(cancelled.state.needs.energy >= 26 && cancelled.state.needs.energy < 28);
@@ -385,6 +387,25 @@ test('Cloudflare: gradual home nap cancellation survives eviction without repeat
 test('Cloudflare: real static HTML receives response security and cache headers', async t => {
   const f = await fixture(t); const response = await f.request('/');
   assert.equal(response.status, 200); assert.equal(response.headers.get('x-content-type-options'), 'nosniff'); assert.equal(response.headers.get('cache-control'), 'no-cache'); assert.match(await response.text(), /Allworld/);
+});
+
+test('Cloudflare: the page is strict until accounts are configured, then allows the identity endpoints and Google\'s button, and the popup-friendly opener policy', async t => {
+  const directive = (policy: string, name: string) => policy.split('; ').find(part => part.startsWith(`${name} `)) ?? '';
+  const plain = await fixture(t);
+  const off = await plain.request('/'); await off.arrayBuffer();
+  assert.ok(!/google/.test(off.headers.get('content-security-policy') as string));
+  assert.equal(off.headers.get('cross-origin-opener-policy'), 'same-origin');
+  const bindings = { BUILD_ID: 'local-conformance', ACCOUNTS_FIREBASE_PROJECT_ID: 'demo-allworld-test', ACCOUNTS_FIREBASE_API_KEY: 'AIzaFakeFakeFakeFakeFakeFakeFakeFake1' };
+  const email = await fixture(t, { bindings }), withEmail = await email.request('/'); await withEmail.arrayBuffer();
+  assert.equal(directive(withEmail.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://identitytoolkit.googleapis.com https://securetoken.googleapis.com");
+  assert.equal(withEmail.headers.get('cross-origin-opener-policy'), 'same-origin', 'no Google client id: no popup');
+  const google = await fixture(t, { bindings: { ...bindings, ACCOUNTS_GOOGLE_CLIENT_ID: '123456789012-fakefakefake.apps.googleusercontent.com' } });
+  const response = await google.request('/some/deep/link'); await response.arrayBuffer();
+  const csp = response.headers.get('content-security-policy') as string;
+  assert.match(directive(csp, 'script-src'), /https:\/\/accounts\.google\.com\/gsi\/client$/);
+  assert.equal(directive(csp, 'frame-src'), 'frame-src https://accounts.google.com/gsi/');
+  assert.match(directive(csp, 'style-src'), /https:\/\/accounts\.google\.com\/gsi\/style$/);
+  assert.equal(response.headers.get('cross-origin-opener-policy'), 'same-origin-allow-popups');
 });
 
 test('Cloudflare: the game page, a deep link, module pages, the API and an asset carry their security headers', async t => {
@@ -429,17 +450,17 @@ test('Cloudflare: pre-job saves hydrate and award a completed shift once after r
   const session = JSON.parse((await storage.exec('SELECT value FROM sessions'))[0].value);
   delete session.cities.lagos.state.job; delete session.cities.lagos.state.completedShifts;
   session.cities.lagos.state.homeOwned = true; session.cities.lagos.state.spot = 'work'; session.cities.lagos.updatedAt = 'malformed';
-  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(session), a.cookie.slice(4));
+  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(session), a.cookie.slice(11));
   assert.equal((await f.life(a)).completedShifts, 0);
   assert.equal((await (await f.action(a, { type: 'apply-job', id: 'community-helper' })).json()).ok, true);
   const shift = { type: 'activity', id: 'helper-shift', actionId: `${Date.now()}:${randomUUID()}` };
   assert.equal((await (await f.action(a, shift)).json()).ok, true);
   const started = JSON.parse((await storage.exec('SELECT value FROM sessions'))[0].value); started.cities.lagos.updatedAt -= 10000;
-  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(started), a.cookie.slice(4));
+  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(started), a.cookie.slice(11));
   assert.equal((await f.life(a)).completedShifts, 0);
   await f.restart(); storage = await f.storage();
   const halfway = JSON.parse((await storage.exec('SELECT value FROM sessions'))[0].value); halfway.cities.lagos.updatedAt -= 10000;
-  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(halfway), a.cookie.slice(4));
+  await storage.exec('UPDATE sessions SET value=? WHERE secret=?', JSON.stringify(halfway), a.cookie.slice(11));
   const done = await f.life(a); assert.equal(done.cash, 5300); assert.equal(done.completedShifts, 1); assert.equal(done.homeOwned, true);
   assert.equal((await (await f.action(a, shift)).json()).duplicate, true); assert.equal((await f.life(a)).cash, 5300);
 });
@@ -452,8 +473,8 @@ test('Cloudflare: only two nominated relay testers mint, global budget survives 
     return new Response(JSON.stringify({ iceServers: [{ urls: 'turn:turn.cloudflare.com:3478', username: 'synthetic-user', credential: 'synthetic-short-lived' }] }), { status: 201 });
   } });
   const a = await f.device('Tester'), b = await f.device('Other'); const storage = await f.storage();
-  const session = JSON.parse((await storage.exec('SELECT value FROM sessions WHERE secret=?', a.cookie.slice(4)))[0].value); session.publicId = publicId;
-  await storage.exec('UPDATE sessions SET public_id=?,value=? WHERE secret=?', publicId, JSON.stringify(session), a.cookie.slice(4));
+  const session = JSON.parse((await storage.exec('SELECT value FROM sessions WHERE secret=?', a.cookie.slice(11)))[0].value); session.publicId = publicId;
+  await storage.exec('UPDATE sessions SET public_id=?,value=? WHERE secret=?', publicId, JSON.stringify(session), a.cookie.slice(11));
   assert.equal((await f.request('/api/voice-config', null, a.cookie)).status, 403); assert.equal(calls, 0);
   const x = await f.socket(a), y = await f.socket(b); x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
   assert.equal((await (await f.request('/api/voice-config', null, b.cookie)).json()).turnConfigured, false); assert.equal(calls, 0);
@@ -540,7 +561,7 @@ test('Review B3: heartbeat acknowledgements hit the frame limiter before session
  const f=await fixture(t),a=await f.device('Ada'),x=await f.socket(a),storage=await f.storage();
  await storage.exec('INSERT INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?)',`ws:${a.id}`,Date.now(),600,Date.now()+60000);
  // If session validation runs first, malformed storage yields an internal error instead.
- await storage.exec('UPDATE sessions SET value=? WHERE secret=?','malformed-json',a.cookie.slice(4));
+ await storage.exec('UPDATE sessions SET value=? WHERE secret=?','malformed-json',a.cookie.slice(11));
  x.send({type:'heartbeat-ack'});assert.equal((await x.next()).code,'rate_limited');
  assert.equal((await storage.exec('SELECT count FROM rate_limits WHERE key=?',`ws:${a.id}`))[0].count,601);
 });
@@ -818,7 +839,7 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   assert.deepEqual([replayed.code, replayed.duplicate], ['linked', true], 'the same link again is the same link');
   // Nothing stored for others carries a cookie secret, a device token or an address.
   const stored = JSON.stringify(await (await f.storage()).exec("SELECT value FROM collections UNION ALL SELECT value FROM collection_parts UNION ALL SELECT text FROM world_shards"));
-  for (const who of [ada, bola]) assert.ok(!stored.includes(who.cookie.slice(4)), `${who.name}’s cookie secret is in no collection or shard`);
+  for (const who of [ada, bola]) assert.ok(!stored.includes(who.cookie.slice(11)), `${who.name}’s cookie secret is in no collection or shard`);
   assert.ok(!stored.includes('device-bola') && !stored.includes('device-ada'), 'a device token is stored only as a salted hash');
 });
 
@@ -873,7 +894,7 @@ test('Invitations on the Worker: house link, friend request, first DM, knock and
   b.send({ type: 'join', cityId: CITY, venueId: 'home', hostId: ada.id });
   assert.equal((await b.until('error')).code, 'not_a_guest');
   // The secret of neither player was ever sent to the other.
-  for (const [mine, theirs] of [[a, bola], [b, ada]] as [Peer, Device][]) assert.ok(!JSON.stringify(mine.seen).includes(theirs.cookie.slice(4)));
+  for (const [mine, theirs] of [[a, bola], [b, ada]] as [Peer, Device][]) assert.ok(!JSON.stringify(mine.seen).includes(theirs.cookie.slice(11)));
 });
 
 test('UNILAG on the Worker: a visitor walks the campus, rides the shuttle once, and only a settled life may enrol', async t => {
@@ -977,4 +998,330 @@ test('assets: a missing hashed file is a 404 (never index.html); a real one is i
   const deep = await f.fetch('/some/deep/link');
   assert.equal(deep.status, 200); assert.match(deep.headers.get('content-type') as string, /text\/html/); assert.equal(deep.headers.get('cache-control'), 'no-cache');
   assert.ok((await deep.text()).includes('game'));
+});
+
+// ---- accounts (server/routes/auth.ts) on the Worker: the same routes over the SQLite tables ----
+const ACCOUNT_PROJECT = 'allworld-edge-project';
+/** The 64 characters of base64url, in value order. */
+const EDGE_B64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+/** Placeholders in the shape of the provider's public configuration; none of them names anything real. */
+const ACCOUNT_BINDINGS = { BUILD_ID: 'local-conformance', ACCOUNTS_FIREBASE_PROJECT_ID: ACCOUNT_PROJECT, ACCOUNTS_FIREBASE_API_KEY: 'edge-web-api-key-0000000000000000000000', ACCOUNTS_GOOGLE_CLIENT_ID: '1234567890-edgeclient.apps.googleusercontent.com' };
+/** The Worker with accounts configured and a stand-in provider: its keys are made here and served to the Worker's own outbound requests. */
+async function accountsFixture(t: TestContext) {
+  const key = await makeKey('edge-key-1');
+  const outbound: { url: string; body: unknown }[] = [];
+  const f = await fixture(t, { bindings: ACCOUNT_BINDINGS, outboundService: async (request: Request) => {
+    const url = request.url.split('?')[0] as string;
+    outbound.push({ url, body: request.method === 'POST' ? await request.json().catch(() => null) : null });
+    if (url === TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=3600' } });
+    return new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
+  } });
+  let minted = 0, address = 0;
+  /** Every request names another client address, so one test's sign-ins are not one address's ten a minute. */
+  const from = () => ({ 'cf-connecting-ip': `203.0.113.${(address++ % 250) + 1}` });
+  const token = (subject: string, extra: Record<string, unknown> = {}) => signToken(key, claimsFor(ACCOUNT_PROJECT, Date.now(), { subject, email: `${subject.toLowerCase()}@example.com`, n: ++minted, ...extra }));
+  const state = async (cookie?: string | null) => (await f.request('/api/account', null, cookie, from())).json();
+  const change = async (path: string, body: Record<string, unknown>, cookie?: string | null) => f.request(path, { ...body, csrf: cookie ? (await state(cookie)).csrf : null }, cookie, from());
+  /** The same, with PROOF: a fresh ID token of `subject`. */
+  const proved = async (path: string, body: Record<string, unknown>, cookie: string | null | undefined, subject: string) => change(path, { ...body, idToken: await token(subject) }, cookie);
+  async function signIn(subject: string, cookie?: string | null, extra: Record<string, unknown> = {}) {
+    const response = await change('/api/account/sign-in', { idToken: await token(subject, extra) }, cookie);
+    const set = response.headers.get('set-cookie');
+    return { status: response.status, body: await response.json(), cookie: set ? set.split(';')[0] as string : '', setCookie: set ?? '' };
+  }
+  async function player(name: string) { const device = await f.device(name); await f.life(device); return device; }
+  const whoAmI = async (cookie: string) => { const response = await f.request('/api/session', null, cookie, from()); const body = await response.json(); return { status: response.status, id: body.session?.id, name: body.session?.name }; };
+  const errorOf = async (response: Response) => [response.status, (await response.json()).error];
+  return { ...f, key, outbound, token, state, change, proved, signIn, player, whoAmI, errorOf, from };
+}
+
+test('Cloudflare: accounts are off unless configured — one disabled answer, every other account route a 404, no outbound request', async t => {
+  let outbound = 0;
+  const f = await fixture(t, { outboundService: async () => { outbound++; return new Response('{}', { status: 200 }); } });
+  const state = await f.request('/api/account'); assert.equal(state.status, 200);
+  assert.deepEqual(Object.keys(await state.json()).sort(), ['enabled', 'serverTime']);
+  for (const [path, body] of [['/api/account/sign-in', { idToken: 'x' }], ['/api/account/sign-out-everywhere', {}], ['/api/account/delete', { confirm: 'delete' }], ['/api/account/character', { use: 'x' }], ['/api/account/password-reset', { email: 'ada@example.com' }], ['/api/account/export', { idToken: 'x' }]] as const) {
+    const response = await f.request(path, body); assert.equal(response.status, 404, path); assert.equal(response.headers.get('set-cookie'), null); await response.text();
+  }
+  const a = await f.device('Ada'); assert.equal((await f.life(a)).cash, 5000);
+  const storage = await f.storage();
+  assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM accounts'))[0].n, 0); assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM account_devices'))[0].n, 0);
+  assert.equal(outbound, 0);
+});
+
+test('Cloudflare: accounts — save, restore on another device, the merge choice, sign out, sign out everywhere and delete, over rows that survive a restart', async t => {
+  const f = await accountsFixture(t), ada = await f.player('Ada');
+  const open = await f.state(ada.cookie);
+  assert.deepEqual([open.enabled, open.provider, open.guest, open.account], [true, { apiKey: ACCOUNT_BINDINGS.ACCOUNTS_FIREBASE_API_KEY, googleClientId: ACCOUNT_BINDINGS.ACCOUNTS_GOOGLE_CLIENT_ID }, true, null]);
+  // Save: the guest's character becomes the account's, under a new cookie with the cookie's usual flags.
+  const laptop = await f.signIn('UidAda', ada.cookie);
+  assert.deepEqual([laptop.status, laptop.body.outcome, laptop.body.created, laptop.body.character], [200, 'linked', true, { id: ada.id, name: 'Ada' }]);
+  assert.match(laptop.cookie, /^__Host-sid=[0-9a-f-]{36}$/); assert.notEqual(laptop.cookie, ada.cookie);
+  assert.match(laptop.setCookie, /HttpOnly/); assert.match(laptop.setCookie, /SameSite=Lax/); assert.match(laptop.setCookie, /Secure/);
+  assert.deepEqual(await f.whoAmI(laptop.cookie), { status: 200, id: ada.id, name: 'Ada' }); assert.equal((await f.whoAmI(ada.cookie)).status, 401);
+  const storage = await f.storage();
+  const account = JSON.parse((await storage.exec('SELECT value FROM accounts'))[0].value);
+  assert.deepEqual([account.subject, account.email, account.provider, account.publicId, account.devices], ['UidAda', 'uidada@example.com', 'password', ada.id, [laptop.cookie.slice(11)]]);
+  const row = (await storage.exec('SELECT secret,value FROM sessions WHERE public_id = ?', ada.id))[0];
+  assert.equal(row.secret, account.sessionKey); assert.notEqual(row.secret, laptop.cookie.slice(11)); assert.equal(JSON.parse(row.value).account, account.id);
+  assert.deepEqual((await storage.exec('SELECT secret,account_id FROM account_devices')).map(item => [item.secret, item['account_id']]), [[laptop.cookie.slice(11), account.id]]);
+  // The key the character is stored under is not a credential, and no answer sends it.
+  assert.equal((await f.whoAmI(`__Host-sid=${row.secret}`)).status, 401); assert.equal((await f.upgrade({ origin: f.origin, cookie: `__Host-sid=${row.secret}` })).status, 401);
+  const renewed = await f.request('/api/life?city=lagos', null, laptop.cookie); assert.equal(renewed.headers.get('set-cookie')?.split(';')[0], laptop.cookie); assert.ok(!(await renewed.text()).includes(row.secret));
+  // Restore: another device signs in and plays the same character; the game works through the binding (an action, its receipt, a retry).
+  const phone = await f.signIn('UidAda');
+  assert.deepEqual([phone.body.outcome, phone.body.created], ['restored', false]);
+  const travel = { actionId: `${Date.now()}:${randomUUID()}`, type: 'travel', id: 'library', mode: 'cab' };
+  const moved = await (await f.action({ ...ada, cookie: phone.cookie }, travel)).json(); assert.equal(moved.state.cash, 4600);
+  assert.equal((await (await f.action({ ...ada, cookie: laptop.cookie }, travel)).json()).duplicate, true, 'the same action id from the other device is the same action');
+  assert.equal((await f.life({ ...ada, cookie: laptop.cookie })).cash, 4600);
+  await f.restart();
+  assert.deepEqual(await f.whoAmI(phone.cookie), { status: 200, id: ada.id, name: 'Ada' }, 'bindings and the character survive a restart');
+  assert.equal((await f.state(phone.cookie)).account.devices, 2);
+  // Merge: a device with its own played life signs in. The account's character stays active; the device's is set aside.
+  const bola = await f.player('Bola'), tablet = await f.signIn('UidAda', bola.cookie);
+  assert.deepEqual([tablet.body.outcome, tablet.body.character, tablet.body.parked.id, tablet.body.parked.name], ['parked', { id: ada.id, name: 'Ada' }, bola.id, 'Bola']);
+  const current = await f.storage();
+  const aside = JSON.parse((await current.exec('SELECT value FROM archived_lives WHERE public_id = ?', bola.id))[0].value);
+  assert.equal(aside.account, account.id); assert.equal(aside.cities.lagos.state.cash, 5000);
+  // The explicit choice, both ways; neither life loses anything.
+  const chosen = await f.proved('/api/account/character', { use: bola.id }, tablet.cookie, 'UidAda'); assert.equal(chosen.status, 200); await chosen.text();
+  assert.deepEqual(await f.whoAmI(tablet.cookie), { status: 200, id: bola.id, name: 'Bola' }); assert.equal((await f.life({ ...bola, cookie: tablet.cookie })).cash, 5000);
+  assert.deepEqual(await f.errorOf(await f.proved('/api/account/character', { use: randomUUID() }, tablet.cookie, 'UidAda')), [404, 'character_not_found']);
+  assert.equal((await f.proved('/api/account/character', { use: ada.id }, tablet.cookie, 'UidAda')).status, 200);
+  assert.equal((await f.life({ ...ada, cookie: tablet.cookie })).cash, 4600);
+  assert.equal((await current.exec('SELECT COUNT(*) AS n FROM sessions WHERE public_id IN (?,?)', ada.id, bola.id))[0].n, 1);
+  // (Eight proofs per account per five minutes: the clock here is the real one, so the window is cleared instead of waited out.)
+  await current.exec('DELETE FROM rate_limits_protected');
+  // Sign out: this device only.
+  const out = await f.change('/api/account/sign-out', {}, tablet.cookie);
+  assert.equal(out.status, 200); assert.match(out.headers.get('set-cookie') as string, /^__Host-sid=; HttpOnly; SameSite=Lax; Path=\/; Max-Age=0; Secure$/); await out.text();
+  assert.equal((await f.whoAmI(tablet.cookie)).status, 401); assert.equal((await f.whoAmI(phone.cookie)).status, 200);
+  // Sign out everywhere: every other device.
+  const everywhere = await f.proved('/api/account/sign-out-everywhere', {}, phone.cookie, 'UidAda'); assert.equal((await everywhere.json()).ended, 1);
+  assert.equal((await f.whoAmI(laptop.cookie)).status, 401); assert.equal((await f.whoAmI(phone.cookie)).status, 200);
+  assert.deepEqual((await current.exec('SELECT secret FROM account_devices')).map(item => item.secret), [phone.cookie.slice(11)]);
+  // Export, then delete with a fresh token: the active character is handed back as a guest life; the set-aside one goes with the account.
+  const exported = await (await f.proved('/api/account/export', {}, phone.cookie, 'UidAda')).json();
+  assert.deepEqual([exported.account.email, exported.character.id, exported.setAside.map((item: { id: string }) => item.id)], ['uidada@example.com', ada.id, [bola.id]]);
+  assert.ok(!JSON.stringify(exported).includes(phone.cookie.slice(11)) && !JSON.stringify(exported).includes('UidAda'));
+  assert.deepEqual(await f.errorOf(await f.change('/api/account/delete', { confirm: 'delete' }, phone.cookie)), [401, 'invalid_token']);
+  assert.deepEqual(await f.errorOf(await f.change('/api/account/delete', { confirm: 'delete', idToken: await f.token('UidMallory') }, phone.cookie)), [403, 'account_mismatch']);
+  const gone = await f.change('/api/account/delete', { confirm: 'delete', idToken: await f.token('UidAda') }, phone.cookie);
+  assert.equal(gone.status, 200); const guest = (gone.headers.get('set-cookie') as string).split(';')[0] as string; assert.equal((await gone.json()).kept, true);
+  assert.deepEqual(await f.whoAmI(guest), { status: 200, id: ada.id, name: 'Ada' }); assert.equal((await f.whoAmI(phone.cookie)).status, 401);
+  assert.equal((await current.exec('SELECT COUNT(*) AS n FROM accounts'))[0].n, 0); assert.equal((await current.exec('SELECT COUNT(*) AS n FROM account_devices'))[0].n, 0);
+  assert.equal((await current.exec('SELECT COUNT(*) AS n FROM archived_lives WHERE public_id = ?', bola.id))[0].n, 0);
+  assert.ok(!JSON.parse((await current.exec('SELECT value FROM sessions WHERE public_id = ?', ada.id))[0].value).account);
+  // The audit trail holds events and a reference: no token, address, subject or cookie. Nothing of a token was stored or logged.
+  const log = JSON.parse((await current.exec("SELECT value FROM collections WHERE name = 'accountLog'"))[0].value);
+  assert.deepEqual(log.audit.map((line: { event: string }) => line.event), ['created', 'linked', 'restored', 'parked', 'parked', 'switched', 'parked', 'switched', 'signed_out', 'signed_out_everywhere', 'deleted']);
+  for (const secret of ['UidAda', 'example.com', 'eyJ', phone.cookie.slice(11)]) assert.ok(!JSON.stringify(log.audit).includes(secret), secret);
+  assert.ok(!/eyJ[A-Za-z0-9_-]{10,}/.test(f.logged()), 'no token is logged');
+  assert.deepEqual([...new Set(f.outbound.map(request => request.url))], [TOKEN_KEYS_URL], 'the only outbound request was for the provider’s keys');
+});
+
+test('Cloudflare: accounts — fixation, CSRF, token replay, unverified address, one answer for every bad token, limits, and sockets closed on sign-out', async t => {
+  const f = await accountsFixture(t), ada = await f.player('Ada');
+  // An unverified address links nothing.
+  const unverified = await f.signIn('UidAda', ada.cookie, { verified: false });
+  assert.deepEqual([unverified.status, unverified.body.error, unverified.setCookie], [403, 'email_unverified', '']);
+  const storage = await f.storage();
+  assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM accounts'))[0].n, 0);
+  // Every kind of bad token gets the same answer.
+  const stranger = await makeKey('edge-key-1'), at = Math.floor(Date.now() / 1000), answers = new Set<string>();
+  for (const idToken of [await f.token('UidAda', { exp: at - 5 }), await f.token('UidAda', { iat: at - 900 }), await f.token('UidAda', { aud: 'another-project' }), await f.token('UidAda', { iss: 'https://accounts.google.com' }), await signToken(stranger, claimsFor(ACCOUNT_PROJECT, Date.now())), 'not.a.token']) {
+    const response = await f.request('/api/account/sign-in', { idToken }, null, f.from());
+    assert.equal(response.headers.get('set-cookie'), null); answers.add(JSON.stringify([response.status, (await response.json()).error]));
+  }
+  assert.deepEqual([...answers], ['[401,"invalid_token"]']);
+  // Token replay: one token, one sign-in.
+  const idToken = await f.token('UidAda');
+  const first = await f.request('/api/account/sign-in', { idToken, csrf: (await f.state(ada.cookie)).csrf }, ada.cookie, f.from());
+  assert.equal(first.status, 200); const mine = (first.headers.get('set-cookie') as string).split(';')[0] as string; await first.text();
+  assert.deepEqual(await f.errorOf(await f.request('/api/account/sign-in', { idToken }, null, f.from())), [401, 'invalid_token']);
+  assert.ok(!JSON.stringify(await storage.exec("SELECT value FROM collections WHERE name = 'accountLog'")).includes(idToken.split('.')[2] as string), 'what is remembered of a used token is a digest');
+  // … and it survives a restart, under every spelling of the token.
+  await f.restart();
+  const [head, body, signature] = idToken.split('.') as [string, string, string], last = EDGE_B64.indexOf(signature.at(-1) as string);
+  const respelled = [idToken, ...Array.from({ length: 15 }, (_, n) => `${head}.${body}.${signature.slice(0, -1)}${EDGE_B64[last - (last % 16) + ((last % 16) + n + 1) % 16]}`), `${idToken}=`, `${idToken}==`, ` ${idToken}`, `${idToken}\n`];
+  for (const variant of respelled) {
+    assert.deepEqual(await f.errorOf(await f.request('/api/account/sign-in', { idToken: variant }, null, f.from())), [401, 'invalid_token'], `replay after a restart as ${JSON.stringify(variant.slice(-4))}`);
+    assert.deepEqual(await f.errorOf(await f.request('/api/account/delete', { idToken: variant, confirm: 'delete', erase: true, csrf: (await f.state(mine)).csrf }, mine, f.from())), [401, 'invalid_token'], 'a used token is not the fresh token a delete needs');
+  }
+  assert.equal((await f.whoAmI(mine)).status, 200, 'the account was not deleted');
+  // Fixation: a cookie planted before sign-in is never the signed-in cookie.
+  const attacker = await f.player('Mallory'), victim = await f.signIn('UidAda', attacker.cookie);
+  assert.equal(victim.status, 200); assert.notEqual(victim.cookie, attacker.cookie);
+  assert.equal((await f.whoAmI(attacker.cookie)).status, 401); assert.equal((await f.state(attacker.cookie)).account, null);
+  // CSRF: the Origin must name this host, and the session's own token must come with the request.
+  const good = (await f.state(mine)).csrf;
+  for (const [path, body] of [['/api/account/sign-out', {}], ['/api/account/sign-out-everywhere', { idToken: 'x' }], ['/api/account/export', { idToken: 'x' }], ['/api/account/delete', { confirm: 'delete', idToken: 'x' }], ['/api/account/sign-in', { idToken: 'x' }]] as const) {
+    const bare = await f.fetch(path, { method: 'POST', headers: { 'content-type': 'application/json', cookie: mine }, body: JSON.stringify({ ...body, csrf: good }) });
+    assert.deepEqual(await f.errorOf(bare), [403, 'origin_required'], `${path} without an Origin`);
+    assert.deepEqual(await f.errorOf(await f.request(path, { ...body, csrf: good }, mine, { origin: 'https://evil.test' })), [403, 'origin_rejected'], path);
+    assert.deepEqual(await f.errorOf(await f.request(path, { ...body, csrf: good }, mine, { 'sec-fetch-site': 'cross-site' })), [403, 'origin_required'], path);
+    assert.deepEqual(await f.errorOf(await f.request(path, body, mine)), [403, 'csrf_rejected'], `${path} without the token`);
+    assert.deepEqual(await f.errorOf(await f.request(path, { ...body, csrf: 'A'.repeat(43) }, mine)), [403, 'csrf_rejected'], path);
+  }
+  assert.equal((await f.state(mine)).account.devices, 2, 'no refused request changed anything');
+  // A signed-in device's socket is in the room as the character, is revoked when the character leaves, and is closed when the device signs out.
+  const x = await f.socket({ ...ada, cookie: mine }), y = await f.socket({ ...ada, cookie: victim.cookie });
+  x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); const presence = await x.next();
+  assert.equal(presence.members[0].id, ada.id); assert.ok(!JSON.stringify(presence).includes(mine.slice(11)));
+  await f.hibernate();
+  await f.action({ ...ada, cookie: victim.cookie }, { type: 'travel', id: 'library', mode: 'cab' });
+  assert.equal((await x.next()).code, 'venue_mismatch', 'an action from the other device revokes this device’s room');
+  const closed = new Promise<number>((resolve) => { y.ws.addEventListener('close', event => resolve(event.code)); });
+  await (await f.change('/api/account/sign-out', {}, victim.cookie)).text();
+  assert.equal(await closed, 4401);
+  assert.equal((await f.upgrade({ origin: f.origin, cookie: victim.cookie })).status, 401, 'a signed-out cookie opens no socket');
+  // The device that stayed signed in is still answered as the character (in transit now, so no room admits it): not as a stranger.
+  x.send({ type: 'join', cityId: 'lagos', venueId: 'library' }); assert.equal((await x.next()).code, 'venue_mismatch');
+  // Limits: ten attempts a minute from one address; a reset is answered the same for any address and never waits for the provider.
+  const one = { 'cf-connecting-ip': '198.51.100.7' };
+  for (let i = 0; i < 10; i++) assert.equal((await f.request('/api/account/sign-in', { idToken: 'not.a.token' }, null, one)).status, 401);
+  assert.deepEqual(await f.errorOf(await f.request('/api/account/sign-in', { idToken: await f.token('UidBola') }, null, one)), [429, 'account_rate_limited']);
+  const resets = [];
+  for (const email of ['known@example.com', 'unknown@example.com']) { const response = await f.request('/api/account/password-reset', { email }, null, { 'cf-connecting-ip': '198.51.100.8' }); resets.push(JSON.stringify([response.status, (await response.json()).ok])); }
+  assert.deepEqual(resets, ['[200,true]', '[200,true]']);
+  await new Promise(resolve => setTimeout(resolve, 300));
+  assert.deepEqual(f.outbound.filter(request => request.url.includes('sendOobCode')).map(request => request.body), [{ requestType: 'PASSWORD_RESET', email: 'known@example.com' }, { requestType: 'PASSWORD_RESET', email: 'unknown@example.com' }]);
+  assert.ok(!/example\.com|eyJ[A-Za-z0-9_-]{10,}/.test(f.logged()), 'neither an address nor a token is logged');
+});
+
+test('Cloudflare: accounts hardening — a flood of resets and junk sign-ins fills nothing that matters: rows stay bounded, a new visitor gets a session and a real sign-in works', async t => {
+  const f = await accountsFixture(t), storage = await f.storage();
+  // What the reviewer did, in small: requests from many addresses, each to another address, far past the shared bucket.
+  const statuses = new Map<number, number>();
+  for (let batch = 0; batch < 12; batch++) await Promise.all(Array.from({ length: 50 }, async (_, i) => {
+    const n = batch * 50 + i;
+    const response = await f.request('/api/account/password-reset', { email: `victim${n}@example.com` }, null, { 'cf-connecting-ip': `2001:db8:${n.toString(16)}::1` });
+    statuses.set(response.status, (statuses.get(response.status) ?? 0) + 1); await response.text();
+  }));
+  assert.equal(statuses.get(200), 120); assert.equal(statuses.get(429), 480);
+  const rows = (await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_protected'))[0].n;
+  assert.ok(rows <= 241, `a refused request made no row of its own (${rows} rows for 120 accepted requests)`);
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key LIKE 'account:%'"))[0].n, 0, 'account keys are not in the table the game’s own short limits use');
+  // Junk sign-ins from thirty addresses do not spend the shared sign-in bucket.
+  for (let address = 0; address < 30; address++) await Promise.all(Array.from({ length: 10 }, async (_, i) => { const response = await f.request('/api/account/sign-in', { idToken: `junk.${address}.${i}` }, null, { 'cf-connecting-ip': `198.51.100.${address + 1}` }); assert.equal(response.status, 401); await response.text(); }));
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key = 'account:sign-in'"))[0].n, 0, 'the shared bucket was not touched by tokens that did not verify');
+  // Nor do validly signed tokens of throwaway, unconfirmed accounts.
+  for (let batch = 0; batch < 8; batch++) await Promise.all(Array.from({ length: 40 }, async (_, i) => { const n = batch * 40 + i; const response = await f.request('/api/account/sign-in', { idToken: await f.token(`UidThrowaway${n}`, { verified: false }) }, null, { 'cf-connecting-ip': `2001:db8:aaaa:${n.toString(16)}::1` }); assert.equal(response.status, 403); await response.text(); }));
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key = 'account:sign-in' OR key LIKE 'account:sign-in:id:%'"))[0].n, 0, '320 unconfirmed sign-ups from 320 addresses counted against nothing shared');
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key NOT LIKE 'account:sign-in%' AND key NOT LIKE 'account:reset%'"))[0].n, 0, 'every account key starts account:sign-in or account:reset');
+  // Now the worst case the tables allow: both full of long-lived rows.
+  const far = Date.now() + 3600000;
+  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 4000) INSERT OR REPLACE INTO rate_limits_protected(key,started_at,count,expires_at) SELECT 'account:reset:to:flood-' || i, ${Date.now()}, 3, ${far} + i FROM n`);
+  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 10000) INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) SELECT 'http-ip:flood-' || i, ${Date.now()}, 1, ${far} + i FROM n`);
+  const fresh = { 'cf-connecting-ip': '203.0.113.240' };
+  const made = await f.request('/api/session', { name: 'Newcomer' }, null, fresh);
+  assert.equal(made.status, 200, 'a new visitor’s POST /api/session succeeds');
+  const cookie = (made.headers.get('set-cookie') as string).split(';')[0] as string; await made.text();
+  await f.request('/api/life?city=lagos', null, cookie, fresh);
+  const csrf = (await (await f.request('/api/account', null, cookie, fresh)).json()).csrf;
+  const signed = await f.request('/api/account/sign-in', { idToken: await f.token('UidNewcomer'), csrf }, cookie, { 'cf-connecting-ip': '203.0.113.241' });
+  assert.equal(signed.status, 200, 'and a valid sign-in succeeds'); assert.equal((await signed.json()).outcome, 'linked');
+  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_protected'))[0].n <= 20000); assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n <= 10000);
+});
+
+test('Cloudflare: accounts hardening — __Host-sid: an old `sid` guest keeps their life and is upgraded, a planted `sid` loses to it, and a binding is honoured under the new name only', async t => {
+  const f = await accountsFixture(t), old = await f.player('Oldtimer');
+  assert.match(old.cookie, /^__Host-sid=[0-9a-f-]{36}$/, 'every new cookie has the protected name');
+  const secret = old.cookie.slice(11), legacy = `sid=${secret}`; // the same session as a browser that got its cookie before the change holds it
+  const visit = await f.request('/api/life?city=lagos', null, legacy);
+  assert.equal(visit.status, 200); assert.equal((await visit.json()).state.cash, 5000);
+  assert.deepEqual(visit.headers.getSetCookie(), [`__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`], 'the new name is set and `sid` is NOT removed: the previous build, which reads only `sid`, would still find this guest after a rollback');
+  // The browser now holds both; that works, and so does `sid` alone. No answer to a guest clears `sid`.
+  for (const cookie of [`${legacy}; ${old.cookie}`, legacy, old.cookie]) {
+    const response = await f.request('/api/session', null, cookie);
+    assert.equal(response.status, 200); assert.ok(!response.headers.getSetCookie().some(line => line.startsWith('sid=')), cookie); await response.text();
+  }
+  assert.equal((await (await f.request('/api/session', { name: 'Oldtimer' }, legacy)).json()).session.id, old.id);
+  assert.equal((await f.upgrade({ origin: f.origin, cookie: legacy })).headers.getSetCookie()[0], `__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`, 'a socket opened with the old name is upgraded too');
+  const who = async (cookie: string) => { const answer = await f.whoAmI(cookie); return answer.status === 200 ? answer.id : answer.status; };
+  const attacker = await f.player('Mallory'), planted = `sid=${attacker.cookie.slice(11)}`;
+  assert.equal(await who(`${planted}; ${old.cookie}`), old.id, 'sid=attacker; __Host-sid=victim → the victim');
+  assert.equal(await who(`${old.cookie}; ${planted}`), old.id);
+  // A guest not upgraded yet sees what the previous build did: the first `sid` is the cookie.
+  assert.equal(await who(`${legacy}; ${planted}`), old.id, 'sid=victim; sid=attacker → the first, as before');
+  assert.equal(await who(`${planted}; ${legacy}`), attacker.id, 'sid=attacker; sid=victim → the first, as before');
+  assert.equal(await who(`${attacker.cookie}; ${old.cookie}`), 401, 'two values under the protected name → nobody');
+  // Signed in: the binding is honoured as __Host-sid, and not when the same value arrives as `sid`.
+  const signed = await f.signIn('UidOld', old.cookie);
+  assert.match(signed.setCookie, /^__Host-sid=[0-9a-f-]{36}; HttpOnly; SameSite=Lax; Path=\/; Max-Age=2592000; Secure$/);
+  const binding = signed.cookie.slice(11);
+  assert.equal(await who(signed.cookie), old.id);
+  assert.equal(await who(`sid=${binding}`), 401); assert.equal(await who(`sid=${binding}; ${planted}`), 401);
+  assert.equal((await f.state(`sid=${binding}`)).account, null);
+  // Signing out is where `sid` is removed.
+  const out = await f.change('/api/account/sign-out', {}, `${planted}; ${signed.cookie}`);
+  assert.deepEqual(out.headers.getSetCookie(), ['__Host-sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure', 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure']); await out.text();
+  const back = await f.signIn('UidOld');
+  assert.equal(await who(back.cookie), old.id);
+  assert.equal((await f.upgrade({ origin: f.origin, cookie: `sid=${binding}` })).status, 401);
+  assert.equal(await who(`${planted}; ${back.cookie}`), old.id, 'a guest cookie planted beside a signed-in browser changes nothing');
+  // Over https an Origin naming this host over plain http is another origin.
+  assert.equal((await f.request('/api/session', { name: 'Downgrade' }, null, { origin: f.origin.replace('https://', 'http://') })).status, 403);
+});
+
+test('Cloudflare: accounts hardening — a character archived by the 30-day sweep comes back whole from the Worker store', async t => {
+  const f = await accountsFixture(t), ada = await f.player('Ada');
+  const signed = await f.signIn('UidAda', ada.cookie);
+  const storage = await f.storage();
+  const row = (await storage.exec('SELECT secret,value FROM sessions WHERE public_id = ?', ada.id))[0], record = JSON.parse(row.value);
+  record.character = { v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' }; record.legacyLives = { 'lagos:99': record.cities.lagos }; record.onboarding = true; record.expiresAt = Date.now() - 1;
+  await storage.exec('UPDATE sessions SET value = ?, expires_at = ? WHERE secret = ?', JSON.stringify(record), record.expiresAt, row.secret);
+  assert.equal((await f.whoAmI(signed.cookie)).status, 401);
+  await f.device('Sweeper'); // the sweep archives the expired character
+  const archived = JSON.parse((await storage.exec('SELECT value FROM archived_lives WHERE public_id = ?', ada.id))[0].value);
+  assert.deepEqual(Object.keys(archived).sort(), ['archivedAt', 'character', 'cities', 'legacyLives', 'name', 'onboarding', 'publicId']);
+  const back = await f.signIn('UidAda');
+  assert.deepEqual([back.body.outcome, back.body.character], ['restored', { id: ada.id, name: 'Ada' }]);
+  const restored = JSON.parse((await storage.exec('SELECT value FROM sessions WHERE public_id = ?', ada.id))[0].value);
+  assert.deepEqual([restored.character, Object.keys(restored.legacyLives), restored.onboarding, restored.account], [{ v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' }, ['lagos:99'], true, 'fb:UidAda']);
+  assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM archived_lives WHERE public_id = ?', ada.id))[0].n, 0);
+  // The pre-hijack on this host too: linking a character into an account that already existed ends the earlier binding.
+  const early = await f.signIn('UidVictim'), victim = await f.player('Victim'), arrived = await f.signIn('UidVictim', victim.cookie);
+  assert.deepEqual([arrived.body.outcome, arrived.body.ended, arrived.body.devices], ['linked', 1, 1]); assert.equal((await f.whoAmI(early.cookie)).status, 401);
+});
+
+test('Cloudflare: the welcome message — one per new account, after the sign-in is answered, never again on another device or after a restart; nothing without the mailer', async t => {
+  const key = await makeKey('edge-key-1'), mails: { subject: string; personalizations: { to: { email: string }[] }[]; content: { type: string; value: string }[] }[] = [];
+  let mailStatus = 200;
+  const f = await fixture(t, { bindings: { ...ACCOUNT_BINDINGS, PUBLIC_ORIGIN: 'https://play.example', ZEPTOMAIL_AUTH: 'Zoho-enczapikey placeholder-not-a-key', EMAIL_FROM_ADDRESS: 'hello@mail.example.com' }, outboundService: async (request: Request) => {
+    if (request.url === TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'cache-control': 'public, max-age=3600' } });
+    if (request.url === 'https://api.zeptomail.com/v1.1/sg/email') { mails.push(await request.json()); return new Response('{}', { status: mailStatus }); }
+    return new Response('{}', { status: 200 });
+  } });
+  let n = 0;
+  const signIn = async (subject: string, cookie?: string) => {
+    const csrf = cookie ? (await (await f.request('/api/account', null, cookie)).json()).csrf : null;
+    const response = await f.request('/api/account/sign-in', { idToken: await signToken(key, claimsFor(ACCOUNT_PROJECT, Date.now(), { subject, email: `${subject.toLowerCase()}@example.com`, n: ++n })), csrf }, cookie, { 'cf-connecting-ip': `203.0.113.${n}` });
+    return { status: response.status, cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] as string, body: await response.json() };
+  };
+  const waitFor = async (count: number, ms = 3000) => { const until = Date.now() + ms; while (mails.length < count && Date.now() < until) await new Promise(resolve => setTimeout(resolve, 20)); await new Promise(resolve => setTimeout(resolve, 150)); };
+  const ada = await f.device('Ada'); await f.life(ada);
+  // Two first sign-ins at once: one account, one message.
+  const [first, second] = await Promise.all([signIn('UidAda', ada.cookie), signIn('UidAda')]);
+  assert.deepEqual([first.status, second.status], [200, 200]); assert.deepEqual([first.body.created, second.body.created].sort(), [false, true]);
+  await waitFor(1);
+  assert.equal(mails.length, 1);
+  assert.deepEqual([mails[0]?.subject, mails[0]?.personalizations[0]?.to[0]?.email], ['Welcome to Allworld', 'uidada@example.com']);
+  const text = mails[0]?.content.find(part => part.type === 'text/plain')?.value ?? '';
+  assert.ok(text.includes('Allworld is a digital world you can live in.') && text.includes('saved to this account — sign in on any device to continue.') && text.includes('Open Allworld: https://play.example/'));
+  const storage = await f.storage();
+  assert.equal(typeof JSON.parse((await storage.exec('SELECT value FROM accounts'))[0].value).welcome, 'number');
+  // Another device, and a restart, send nothing more.
+  await signIn('UidAda'); await f.restart(); await signIn('UidAda'); await waitFor(2, 600);
+  assert.equal(mails.length, 1, 'exactly once per account, also across a restart');
+  // A mailer that is down does not fail or slow the sign-in; the message stays owed.
+  mailStatus = 503;
+  const before = Date.now(), eve = await signIn('UidEve');
+  assert.equal(eve.status, 200); assert.ok(Date.now() - before < 1500);
+  await waitFor(4, 5000);
+  const current = await f.storage();
+  const log = JSON.parse((await current.exec("SELECT value FROM collections WHERE name = 'accountLog'"))[0].value);
+  assert.deepEqual(log.welcome.map((item: { id: string; tries: number; claimedAt?: number }) => [item.id, item.tries, item.claimedAt]), [['fb:UidEve', 1, undefined]]);
+  assert.ok(!/example\.com/.test(f.logged()), 'no address is logged');
 });

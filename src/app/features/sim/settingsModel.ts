@@ -33,8 +33,8 @@ export const NOT_SAVED = 'This browser would not save the setting, so it lasts o
 export const WALLPAPER_NOT_SAVED = 'This browser would not save the wallpaper, so it lasts only until you close the tab.'
 
 export const SESSION_RULES: string[] = [
-  'This is a device session, not an account: there is no password, no email and no sign-in.',
-  'A cookie in this browser is the only key to this life. Clearing cookies, or not playing for 30 days, ends the session; the life is kept on the server but cannot be recovered from another device yet.',
+  'This is a device session, not an account: it has no password and no e-mail address.',
+  'A cookie in this browser is the only key to this life. Clearing cookies, or not playing for 30 days, ends the session; the life is kept on the server but cannot be reached again without an account.',
   'Other players only ever see your name and player code — never the cookie.',
   'Change your name and look in your Sim’s Profile tab.',
 ]

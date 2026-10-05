@@ -6,8 +6,9 @@
 // switches change nothing audible yet and the panel says so. They are stored on this device
 // (localStorage) and nowhere else; nothing here is sent to the server.
 //
-// There is no account section: accounts are a separate proposal that is not merged. The panel
-// explains what a device session is instead, so nobody mistakes it for a password-protected account.
+// The account section (features/account/AccountSettings.vue) draws itself only when accounts are
+// configured on this server. A guest is still told what a device session is, so nobody mistakes it
+// for a password-protected account; that explanation is left out once the device is signed in.
 import { computed, onMounted, reactive, ref } from 'vue'
 // The wallpaper tiles are drawn by the phone's stylesheet; the phone's code may not have been fetched yet.
 import '../../../ui/phone/phone.css'
@@ -19,6 +20,8 @@ import { useGrowth } from '../growth/useGrowth.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import CallSettings from '../calls/CallSettings.vue'
+import AccountSettings from '../account/AccountSettings.vue'
+import { useAccount } from '../account/useAccount.ts'
 import { HINTS_KEY, NOT_SAVED, OPTIONS, SESSION_RULES, SETTINGS_KEY, WALLPAPER_NOT_SAVED, hintsOn, readSettings } from './settingsModel.ts'
 import type { SettingId } from './settingsModel.ts'
 
@@ -26,6 +29,7 @@ defineProps<{ params?: unknown }>()
 
 const { game, shell } = useApp()
 const growth = useGrowth()
+const account = useAccount()
 const view = game.view
 function store(): Storage | null { try { return window.localStorage } catch { return null } }
 
@@ -80,8 +84,11 @@ onMounted(() => { void growth.load() })
     <div class="ui-rows">
       <div class="ui-row"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>{{ game.state.value.name }}</b><small><template v-if="view.session">Player code #{{ view.session.id.slice(0, 6) }} · </template>{{ device }}</small></span></div>
     </div>
-    <p class="settings-note">A <strong>device session</strong>, not an account: a cookie in this browser is the only key. Clearing cookies, or 30 days without playing, ends it.</p>
-    <HowItWorks id="settings-session" page label="How a device session works" :rules="SESSION_RULES" />
+    <template v-if="!account.state.account">
+      <p class="settings-note">A <strong>device session</strong>, not an account: a cookie in this browser is the only key. Clearing cookies, or 30 days without playing, ends it.</p>
+      <HowItWorks id="settings-session" page label="How a device session works" :rules="SESSION_RULES" />
+    </template>
+    <AccountSettings />
 
     <h3 class="ui-section">Privacy</h3>
     <div class="ui-rows">
@@ -92,8 +99,6 @@ onMounted(() => { void growth.load() })
       <button type="button" class="ui-row" @click="openPrivacy()"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Analytics and error reports</b><small>What we collect, and your choice</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
     </div>
 
-    <h3 class="ui-section">Accounts</h3>
-    <p class="settings-note">Accounts (sign up, log in, recovery email, moving a life to another device) are not part of this build.</p>
     <h3 class="ui-section">Outside the game</h3>
     <div class="ui-rows">
       <button type="button" class="ui-row" @click="shell.open('touch')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="bell" /></span><span class="ui-row-body"><b>Stay in touch</b><small>Notifications and e-mail: off until you switch them on</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>

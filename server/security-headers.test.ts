@@ -128,3 +128,46 @@ test('the Node host without telemetry: no outside host in the policy', async (t)
   assert.ok(!/https:\/\//.test(response.headers.get('content-security-policy') as string));
   await response.arrayBuffer();
 });
+
+const ACCOUNTS_ENV = { ACCOUNTS_FIREBASE_PROJECT_ID: 'demo-allworld-test', ACCOUNTS_FIREBASE_API_KEY: 'AIzaFakeFakeFakeFakeFakeFakeFakeFake1', ACCOUNTS_GOOGLE_CLIENT_ID: '123456789012-fakefakefake.apps.googleusercontent.com' };
+
+test('accounts widen the policy only when configured: the identity endpoints, then Google’s button, and the popup-friendly opener policy', async () => {
+  const facts = { secure: true, host: 'joinallworld.com', scriptHashes: ["'sha256-x'"] };
+  const off = appHeaders(facts), none = appHeaders({ ...facts, accounts: null });
+  assert.deepEqual(none, off, 'null is the same as unset');
+  assert.equal(off['Cross-Origin-Opener-Policy'], 'same-origin');
+  assert.ok(!/googleapis|google\.com|frame-src/.test(off['Content-Security-Policy'] as string), 'unconfigured: exactly the strict policy');
+  const email = appHeaders({ ...facts, accounts: { projectId: 'demo-allworld-test', apiKey: 'k'.repeat(30), googleClientId: '' } });
+  const emailPolicy = email['Content-Security-Policy'] as string;
+  assert.equal(directive(emailPolicy, 'connect-src'), "connect-src 'self' wss://joinallworld.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com");
+  assert.equal(directive(emailPolicy, 'script-src'), "script-src 'self' 'sha256-x'");
+  assert.equal(directive(emailPolicy, 'frame-src'), '');
+  assert.equal(email['Cross-Origin-Opener-Policy'], 'same-origin', 'no Google button, no popup');
+  const google = appHeaders({ ...facts, accounts: { projectId: 'demo-allworld-test', apiKey: 'k'.repeat(30), googleClientId: ACCOUNTS_ENV.ACCOUNTS_GOOGLE_CLIENT_ID } });
+  const policy = google['Content-Security-Policy'] as string;
+  assert.equal(directive(policy, 'script-src'), "script-src 'self' 'sha256-x' https://accounts.google.com/gsi/client");
+  assert.equal(directive(policy, 'frame-src'), 'frame-src https://accounts.google.com/gsi/');
+  assert.equal(directive(policy, 'style-src'), "style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style");
+  assert.match(directive(policy, 'connect-src'), /https:\/\/accounts\.google\.com\/gsi\/$/);
+  assert.equal(google['Cross-Origin-Opener-Policy'], 'same-origin-allow-popups');
+  assert.match(policy, /default-src 'self'/); assert.match(policy, /frame-ancestors 'none'/); assert.ok(!/unsafe-eval/.test(policy));
+});
+
+test('the Node host: the page carries the strict policy until accounts are configured, then the sign-in additions', async (t) => {
+  const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
+  t.after(() => rm(dist, { recursive: true, force: true }));
+  await writeFile(join(dist, 'index.html'), INDEX);
+  const plain = await fixture(t, { distDir: dist, env: {}, log: () => {} });
+  const off = await fetch(`${plain.base}/`); await off.arrayBuffer();
+  assert.ok(!/google/.test(off.headers.get('content-security-policy') as string));
+  assert.equal(off.headers.get('cross-origin-opener-policy'), 'same-origin');
+  const on = await fixture(t, { distDir: dist, env: ACCOUNTS_ENV, log: () => {} });
+  const response = await fetch(`${on.base}/some/deep/link`); await response.arrayBuffer();
+  const csp = response.headers.get('content-security-policy') as string;
+  assert.match(directive(csp, 'connect-src'), /https:\/\/identitytoolkit\.googleapis\.com https:\/\/securetoken\.googleapis\.com https:\/\/accounts\.google\.com\/gsi\/$/);
+  assert.match(directive(csp, 'script-src'), /https:\/\/accounts\.google\.com\/gsi\/client$/);
+  assert.equal(directive(csp, 'frame-src'), 'frame-src https://accounts.google.com/gsi/');
+  assert.equal(response.headers.get('cross-origin-opener-policy'), 'same-origin-allow-popups');
+  const api = await fetch(`${on.base}/api/does-not-exist`); await api.arrayBuffer();
+  assert.equal(api.headers.get('content-security-policy'), null, 'the API answers carry no page policy');
+});

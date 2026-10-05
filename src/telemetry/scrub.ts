@@ -7,7 +7,7 @@
  *
  * What can never leave:
  *   - chat or message text, nicknames and any other free text a player typed
- *   - email addresses, long digit runs (phone numbers), cookies, bearer tokens
+ *   - email addresses, long digit runs (phone numbers), cookies, bearer tokens, signed sign-in tokens, passwords
  *   - any UUID (the session cookie is one; so is the public id — which is why the public id is
  *     carried ONLY as the explicit user id / distinct id, set by the telemetry code itself)
  *   - positions (x/y/z, latitude/longitude) and anything that looks like a pair of coordinates
@@ -33,7 +33,7 @@ const KEY = /^[a-z][a-z0-9_]{0,39}$/;
 /** Property names that are refused whatever they hold. */
 const DENIED_KEYS = new Set(['name', 'nickname', 'username', 'display_name', 'text', 'body', 'message', 'chat', 'content', 'draft', 'note', 'title', 'reason',
   'email', 'phone', 'x', 'y', 'z', 'lat', 'lng', 'lon', 'latitude', 'longitude', 'position', 'pos', 'coords', 'coordinates', 'location_exact',
-  'ip', 'ip_address', 'address', 'secret', 'sid', 'cookie', 'cookies', 'token', 'password', 'authorization', 'query', 'query_string', 'search', 'url', 'href', 'referrer', 'data', 'payload']);
+  'ip', 'ip_address', 'address', 'secret', 'sid', 'cookie', 'cookies', 'token', 'password', 'passwd', 'id_token', 'idtoken', 'refresh_token', 'credential', 'csrf', 'authorization', 'query', 'query_string', 'search', 'url', 'href', 'referrer', 'data', 'payload']);
 export const MAX_PROPS = 24;
 export const MAX_TEXT = 300;
 
@@ -59,6 +59,8 @@ export function scrubText(value: unknown, limit = MAX_TEXT): string {
     .replace(EMAIL, '[email]')
     .replace(/\b(authorization|set-cookie|cookie)\s*[=:][^\n]*/gi, '$1=[redacted]')
     .replace(/\bBearer\s+\S+/gi, 'Bearer [redacted]')
+    // A signed token (sign-in hands one to the server): three base64url parts, the first two starting as JSON does.
+    .replace(/\beyJ[A-Za-z0-9_-]{6,}\.eyJ[A-Za-z0-9_-]{6,}\.[A-Za-z0-9_-]{6,}/g, '[token]')
     .replace(/\b(sid|token|secret|password|passwd|api_key|apikey)\s*[=:]\s*\S+/gi, '$1=[redacted]')
     .replace(UUID, '[id]')
     .replace(/([a-z][a-z0-9+.-]*:\/\/[^\s?#"'<>]*)[?#][^\s"'<>]*/gi, '$1')

@@ -1,7 +1,7 @@
 /**
  * HTTP ROUTE REGISTRY — the contract for server/routes/*.js
  * ===========================================================================
- * OWNER: foundation. Feature owners edit only their own module (auth.js, social.js,
+ * OWNER: foundation. Feature owners edit only their own module (auth.ts, social.js,
  * civic.js); every module is already imported and registered here.
  *
  * A route module default-exports a function that receives the server context once at start-up
@@ -29,7 +29,7 @@
  *     };
  *   }
  *
- * PATHS   must start with /api/<your area>/ (auth → /api/auth/, social → /api/social/,
+ * PATHS   must start with /api/<your area>/ (accounts → /api/account, social → /api/social/,
  *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/, world → /api/world/, growth → /api/growth/ and,
  *         for its operator view, /api/mod/growth/). A ":name" segment captures into request.params. A duplicate
  *         "METHOD /path" aborts start-up.

@@ -13,6 +13,8 @@
  * for a request that came in over HTTPS to a real host: a developer's http://localhost must keep working.
  */
 import type { TelemetryConfig } from './telemetry/config.ts';
+import type { AccountsConfig } from './types.ts';
+import { accountsCspAdditions } from './accounts/csp.ts';
 
 /** What a host knows about the request that matters for the headers. */
 export interface RequestFacts {
@@ -81,22 +83,26 @@ export interface AppPolicy extends RequestFacts {
   scriptHashes: readonly string[]
   /** From telemetryOrigins(config). */
   telemetry?: readonly string[]
+  /** The sign-in configuration (host-context.ts accountsConfig). Unset or null: accounts are off and the policy is the strict one. */
+  accounts?: AccountsConfig | null
 }
 
 /** The Content-Security-Policy of the game's page. */
-export function appContentSecurityPolicy({ scriptHashes, telemetry = [], ...facts }: AppPolicy): string {
+export function appContentSecurityPolicy({ scriptHashes, telemetry = [], accounts = null, ...facts }: AppPolicy): string {
   const host = facts.host && /^[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(facts.host) ? facts.host : '';
   // 'self' covers a same-origin WebSocket in current browsers; older ones need the address spelled out.
   const sockets = host ? [`wss://${host}`, ...(facts.secure ? [] : [`ws://${host}`])] : [];
+  const extra = accountsCspAdditions(accounts).csp;
   const directives: string[] = [
     "default-src 'self'",
-    `script-src 'self' ${scriptHashes.join(' ')}`.trim(),
-    "style-src 'self' 'unsafe-inline'",
+    `script-src ${["'self'", ...scriptHashes, ...extra['script-src']].join(' ')}`,
+    `style-src ${["'self'", "'unsafe-inline'", ...extra['style-src']].join(' ')}`,
     "img-src 'self' data: blob:",
     "font-src 'self'",
-    `connect-src ${["'self'", ...sockets, ...telemetry].join(' ')}`,
+    `connect-src ${["'self'", ...sockets, ...telemetry, ...extra['connect-src']].join(' ')}`,
     "media-src 'self' blob:",
     "worker-src 'self' blob:",
+    ...(extra['frame-src'].length ? [`frame-src ${extra['frame-src'].join(' ')}`] : []),
     "manifest-src 'self'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -114,7 +120,7 @@ const hsts = (facts: RequestFacts): Record<string, string> => (production(facts)
 
 /** Headers of the game's page (the Content-Type and caching are the host's). */
 export function appHeaders(policy: AppPolicy): Record<string, string> {
-  return { ...BASE, ...hsts(policy), 'Content-Security-Policy': appContentSecurityPolicy(policy) };
+  return { ...BASE, 'Cross-Origin-Opener-Policy': accountsCspAdditions(policy.accounts).coop, ...hsts(policy), 'Content-Security-Policy': appContentSecurityPolicy(policy) };
 }
 
 /** Headers of a page a module serves. A page cannot change them. */

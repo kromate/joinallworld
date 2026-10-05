@@ -8,7 +8,7 @@
  *
  * DATA_DIR keeps the object's storage between runs (default: a temporary folder that is removed on exit). Bindings a
  * deployment would set as vars or secrets are read from the environment when present: BUILD_ID, PUBLIC_ORIGIN,
- * MODERATOR_TOKEN and the outreach settings (server/host-context.ts OUTREACH_ENV). Nothing here deploys anything.
+ * MODERATOR_TOKEN, the outreach settings and the account settings (server/host-context.ts OUTREACH_ENV, ACCOUNTS_ENV). Nothing here deploys anything.
  */
 import { mkdtemp, readFile, mkdir } from 'node:fs/promises';
 import { rmSync } from 'node:fs';
@@ -17,7 +17,7 @@ import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { createServer, connect, type Socket } from 'node:net';
 import { fileURLToPath } from 'node:url';
-import { OUTREACH_ENV } from '../server/host-context.ts';
+import { ACCOUNTS_ENV, OUTREACH_ENV } from '../server/host-context.ts';
 
 /** The few pieces of the pinned tooling (miniflare, esbuild) this runner uses. */
 interface MiniflareHandle { ready: Promise<URL>; dispose(): Promise<void> }
@@ -41,7 +41,7 @@ await build({ entryPoints: [join(root, 'deploy/cloudflare-worker.ts')], outfile:
 /** The telemetry settings (server/telemetry/config.ts); nothing is sent unless they are set. */
 const TELEMETRY_ENV = ['TELEMETRY_ENV', 'TELEMETRY_DEBUG', 'TELEMETRY_CONSENT_AT', 'TELEMETRY_REPLAY_ON_ERROR', 'SENTRY_DSN_CLIENT', 'SENTRY_DSN_SERVER', 'POSTHOG_KEY', 'POSTHOG_HOST'];
 const bindings: Record<string, string> = { BUILD_ID: process.env.BUILD_ID || 'local' };
-for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', ...TELEMETRY_ENV, ...OUTREACH_ENV]) { const value = process.env[name]; if (value) bindings[name] = value; }
+for (const name of ['PUBLIC_ORIGIN', 'MODERATOR_TOKEN', 'VOTES_PER_ADDRESS', 'VOTE_CAP_MODE', ...TELEMETRY_ENV, ...OUTREACH_ENV, ...ACCOUNTS_ENV]) { const value = process.env[name]; if (value) bindings[name] = value; }
 const options: Record<string, unknown> = { name: 'allworld-local', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
   durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: storage, bindings,
   // The same asset rules as wrangler.jsonc: the Worker runs first, and an unknown path is the game's own page.

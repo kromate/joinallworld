@@ -15,7 +15,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from './host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, sessionCookie, isStrictOrigin, presentedSession, mayBind } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
@@ -26,7 +26,7 @@ import { appHeaders, pageHeaders, apiHeaders, inlineScriptHashes, telemetryOrigi
 import { siteFile } from './site-files.ts';
 import { createMemoryLimiter } from './limiter.ts';
 import telemetryRoutes from './telemetry/routes.ts';
-import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue } from './protocol.ts';
+import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue } from './protocol.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Duplex } from 'node:stream';
 import type { ActionRequest, CityId, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
@@ -89,8 +89,8 @@ const isFrame = (value: unknown): value is { type: string; [field: string]: unkn
 const isNodeRequest = (value: unknown): value is IncomingMessage => isObject(value) && 'socket' in value && 'headers' in value;
 
 const mime: Record<string, string> = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8' };
-const cookieId = (req: IncomingMessage): string | undefined => (req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith('sid='))?.slice(4);
-const sameOrigin = (req: IncomingMessage): boolean => isSameOrigin(req.headers.origin, req.headers.host);
+/** The session cookie the request presented (host-context.ts: `__Host-sid`, or a lone legacy `sid`). */
+const cookieId = (req: IncomingMessage): string | undefined => presentedSession(req.headers.cookie).value;
 /**
  * The address limits and caps are keyed on. Directly connected: the socket's remote address. With
  * TRUST_PROXY=1 (one trusted reverse proxy in front): the right-most X-Forwarded-For entry, which is
@@ -141,6 +141,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   telemetry = createServerTelemetry({ env: process.env, buildId, now, log }) }: ServerOptions = {}): Promise<AllworldServer> {
   const configuredOrigin = cleanOrigin(givenOrigin);
   // The ingest hosts the browser may talk to: none unless telemetry is configured (the same reading the client's config comes from).
+  const accountsHeaderConfig = accountsConfig(env);
   const telemetryHosts = telemetryOrigins(readTelemetryConfig(env, { buildId }));
   /** What the security headers need to know of a request. */
   const factsOf = (req: IncomingMessage | undefined): RequestFacts => ({ secure: req ? isSecure(req, trustProxy) : false, host: cleanHost(req?.headers.host) });
@@ -188,28 +189,38 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   }
   // The rate limiter (server/limiter.ts): bounded per class of key, and a full table makes room instead of refusing newcomers.
   const { allow, peek } = createMemoryLimiter({ now });
+  // Whose session a cookie is — a guest's own record, or the character of the account a signed-in browser is bound to: protocol.ts sessionOfCookie.
   const sessionFor = (req: IncomingMessage, db: Db, renew = false): SessionRecord | undefined => {
-    const id = cookieId(req);
-    const session = id && uuid.test(id) ? db.sessions[id] : undefined;
-    if (!session || session.expiresAt <= now()) return undefined;
-    if (renew) renewSession(session, now(), sessionTtlMs);
-    return session;
+    const found = sessionOfCookie(db, cookieId(req), now(), bindingOf(req) !== undefined);
+    if (!found) return undefined;
+    if (renew) renewResolved(found, now(), sessionTtlMs);
+    return found.session;
+  };
+  /** The presented cookie, when it may name an account's device binding (not a legacy-named cookie over HTTPS). */
+  const bindingOf = (req: IncomingMessage): string | undefined => mayBind(presentedSession(req.headers.cookie), isSecure(req, trustProxy));
+  const sameOrigin = (req: IncomingMessage): boolean => isSameOrigin(req.headers.origin, req.headers.host, { secure: isSecure(req, trustProxy) });
+  /** The stored session a socket was opened under, with its device binding — undefined once either is gone (signed out, moved, expired). */
+  const socketSession = (db: Db, ws: Connection) => {
+    if (ws.device === undefined || ws.device === ws.secret) { const session = db.sessions[ws.secret]; return session && session.account === undefined ? { session } : undefined; }
+    const found = sessionOfCookie(db, ws.device, now());
+    return found && found.session.secret === ws.secret ? found : undefined;
   };
   const receipts = createOnce({ now, windowMs: actionWindowMs, limits: receiptLimits });
   // ctx.settle, ctx.act (server authority, always under a receipt) and what POST /api/action runs: host-context.js, shared with the Worker.
   const { settle, act, playerAct } = lifeAuthority({ now, receipts });
   /** True from a failed write of the data file until the next successful one. Reads still work then; saving does not. */
   const storageFailing = () => { try { return store.stats?.().failing === true; } catch { return false; } };
-  function cookieHeader(req: IncomingMessage, secret: string | undefined): string {
-    const secure = isSecure(req, trustProxy);
-    return `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${Math.floor(sessionTtlMs / 1000)}${secure ? '; Secure' : ''}`;
+  function cookieHeader(req: IncomingMessage, secret: string | undefined): string | string[] {
+    return sessionCookie(secret ?? '', sessionTtlMs / 1000, isSecure(req, trustProxy), presentedSession(req.headers.cookie).hadLegacy);
   }
-  function renewedHeaders(req: IncomingMessage): Record<string, string> {
-    const secret = cookieId(req);
-    for (const ws of connections()) if (ws.secret === secret) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
-    return { 'Set-Cookie': cookieHeader(req, secret) };
+  /** `key`: the stored session's key (its sockets are renewed with it). The cookie sent back is always the one the browser presented. */
+  function renewedHeaders(req: IncomingMessage, key: string | undefined): Record<string, string | string[]> {
+    for (const ws of connections()) if (ws.secret === key) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
+    return { 'Set-Cookie': cookieHeader(req, cookieId(req)) };
   }
   const addressOf = (req: IncomingMessage): string => clientAddress(req, trustProxy);
+  /** A guest whose session arrived under the old cookie name over HTTPS gets it back under the new one with this answer. */
+  const upgradesCookie = (req: IncomingMessage, request: { publicId?: string }): boolean => request.publicId !== undefined && isSecure(req, trustProxy) && presentedSession(req.headers.cookie).legacy;
   /**
    * The origin written into absolute links (a link preview needs absolute URLs): PUBLIC_ORIGIN when the operator set
    * it, otherwise the request's own Host — accepted only if it is made of host characters, so nothing a client sends
@@ -306,10 +317,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           /** True only for a request carrying the operator's bearer token (never a cookie or a query value). */
           moderator: () => isModerator(req),
           json: () => jsonBody(req).then(body => (request.body = body)),
-          session: (db: Db, { renew = false }: { renew?: boolean } = {}) => { const session = sessionFor(req, db, renew); if (session) request.publicId = session.publicId; return session; },
+          session: (db: Db, { renew = false }: { renew?: boolean } = {}) => { const session = sessionFor(req, db, renew); if (session) { request.publicId = session.publicId; request.secret = session.secret; } return session; },
           requireSession(db: Db, options?: { renew?: boolean }) { const session = this.session(db, options); if (!session) throw fail(401, 'device_session_required'); return session; },
-          // Foundation-only: the cookie secret and the raw request, used by core routes for cookies and room checks.
-          secret: cookieId(req), raw: req,
+          // Foundation-only: the stored session's key (the cookie until session() resolves it), the cookie as presented, and the raw request.
+          secret: cookieId(req), cookie: cookieId(req), binding: bindingOf(req), raw: req,
+          // The account routes change state only for a request that NAMED this host as its origin (a missing Origin passes the host's own check).
+          strictOrigin: isStrictOrigin(req.headers.origin, req.headers.host, typeof req.headers['sec-fetch-site'] === 'string' ? req.headers['sec-fetch-site'] : undefined, isSecure(req, trustProxy)),
         };
         // ROOM REVALIDATION, for every route and every outcome. A request may have settled or changed
         // the caller's life (or been refused, or lost its write and been undone): before it is answered,
@@ -325,7 +338,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         // is stored, and nothing new is being saved.
         const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body)
           ? { ...result.body, serverTime: now(), ...(storageFailing() ? { storage: 'failing' } : {}) } : result.body ?? {};
-        const sent = reply(res, status, payload, { ...(result.renew === true ? renewedHeaders(req) : {}), ...routeHeaders(result.headers) });
+        const sent = reply(res, status, payload, { ...(result.renew === true || upgradesCookie(req, request) ? renewedHeaders(req, request.secret) : {}), ...routeHeaders(result.headers) });
         telemetry.http({ method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.type, code: fieldOf(result.body, 'code') } });
         // `after` runs once the answer is out. Whatever it does, the request is already answered: a
         // failure in it is logged and goes no further.
@@ -384,7 +397,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const bytes = isIndex ? Buffer.from(html) : await readFile(path);
       if (res.headersSent || res.writableEnded) return;
       // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as served.
-      const security = isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts }) : {};
+      const security = isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts, accounts: accountsHeaderConfig }) : {};
       // Hashed files under /assets/ never change: cached for a year. The page itself is revalidated every time.
       const cache = inAssets ? 'public, max-age=31536000, immutable' : path === resolve(root, 'index.html') ? 'no-cache' : 'public, max-age=3600';
       res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': cache, 'X-Content-Type-Options': 'nosniff', ...security });
@@ -470,7 +483,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // the Worker host keeps itself alive for it. A module calls ctx.waitUntil?.(promise) and never relies on the answer.
     waitUntil() {},
     keyFile,
-    config: { publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
+    config: { accounts: accountsConfig(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup,
     // Work a module must finish when the server stops, BEFORE the store is closed: async functions, run in order
@@ -485,6 +498,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       newIdentity: () => ({ secret: randomUUID(), publicId: randomUUID() }),
       newId: () => randomUUID(),
       cookieHeader: (request, secret) => { if (!isNodeRequest(request.raw)) throw new TypeError('The request has no raw Node request'); return cookieHeader(request.raw, secret); },
+      clearCookieHeader: (request) => { if (!isNodeRequest(request.raw)) throw new TypeError('The request has no raw Node request'); return cookieHeader(request.raw, ''); },
+      closeSocket: (ws, code, reason) => { try { (ws as Connection).close(code, reason); } catch { /* already closing */ } },
       sockets: () => connections(),
       isOpen: (ws) => ws.readyState === WebSocket.OPEN,
       sessionOf: (ws, db) => db.sessions[ws.secret],
@@ -509,7 +524,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const routes = buildRoutes(ctx, routeModules || [...ROUTE_MODULES, telemetryRoutes]);
   telemetry.attach(ctx);
   /** The renewed session cookie each upgrade request gets on its 101 answer. */
-  const renewedCookies = new WeakMap<IncomingMessage, string>();
+  const renewedCookies = new WeakMap<IncomingMessage, string | string[]>();
   server.on('upgrade', async (req: IncomingMessage, socket: Duplex, head: Buffer) => {
     try {
       if (req.url !== '/socket' || !req.headers.origin || !sameOrigin(req) || !allow(`upgrade:${addressOf(req)}`, 60)) throw Error('Rejected');
@@ -519,11 +534,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         .catch(error => { if (fieldOf(error, 'code') !== 'storage_unavailable') throw error; return store.read(db => sessionFor(req, db, false)); });
       if (!session) throw Error('Unauthorized');
       if (wss.clients.size >= 1024 || connections().filter(ws => ws.session.id === session.publicId).length >= 8) throw Error('Connection capacity');
-      renewedCookies.set(req, cookieHeader(req, session.secret));
+      // The cookie renewed on the 101 answer is the one the browser presented — never the stored record's key, which a signed-in browser must not learn.
+      renewedCookies.set(req, cookieHeader(req, cookieId(req)));
       wss.handleUpgrade(req, socket, head, socketOfUpgrade => {
         const ws = socketOfUpgrade as Connection;
         ws.session = publicSession(session);
         ws.secret = session.secret;
+        ws.device = cookieId(req);
         ws.expiresAt = session.expiresAt;
         ws.lastSessionRenewedAt = now();
         ws.ip = addressOf(req);
@@ -532,16 +549,17 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       });
     } catch { socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n'); }
   });
-  wss.on('headers', (headers: string[], req: IncomingMessage) => { const renewedCookie = renewedCookies.get(req); if (renewedCookie) headers.push(`Set-Cookie: ${renewedCookie}`); });
+  wss.on('headers', (headers: string[], req: IncomingMessage) => { const renewedCookie = renewedCookies.get(req); for (const line of renewedCookie === undefined ? [] : [renewedCookie].flat()) headers.push(`Set-Cookie: ${line}`); });
   const socketRenewals = new Map<string, Promise<number>>();
   async function renewSocketSession(ws: Connection): Promise<void> {
     if (now() - ws.lastSessionRenewedAt < 60000) return;
     let pending = socketRenewals.get(ws.secret);
     if (!pending) {
       pending = store.transact(db => {
-        const session = db.sessions[ws.secret];
-        if (!session || !renewSession(session, now(), sessionTtlMs)) throw Error('device_session_required');
-        return session.expiresAt;
+        const found = socketSession(db, ws);
+        if (!found || !renewSession(found.session, now(), sessionTtlMs)) throw Error('device_session_required');
+        renewResolved(found, now(), sessionTtlMs);
+        return found.session.expiresAt;
       });
       socketRenewals.set(ws.secret, pending);
     }

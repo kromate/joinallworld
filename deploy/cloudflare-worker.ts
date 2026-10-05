@@ -48,10 +48,10 @@ import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.ts';
-import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
+import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
-import type { Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
+import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
 
 /** How often connected sockets are asked for a sign of life, and how often the object wakes with nobody connected. */
@@ -63,9 +63,19 @@ const ATTACHMENT_BYTES = 2000;
 /** The limiter's tables, one per class (server/limiter.ts). */
 const RATE_TABLES: Record<LimiterClass, string> = { short: 'rate_limits', long: 'rate_limits_long', protected: 'rate_limits_protected' };
 
-const json = (status: number, value: unknown, headers: Record<string, string> = {}): Response => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers } });
-const cookieId = (request: Request): string | undefined => (request.headers.get('cookie') || '').split(';').map(x => x.trim()).find(x => x.startsWith('sid='))?.slice(4);
-const cookie = (secret: string): string => `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${Math.floor(SESSION_TTL_MS / 1000)}; Secure`;
+/** Response headers from a plain record; a header given as a list (two Set-Cookie lines) is sent as that many headers. */
+function headersOf(headers: Record<string, string | string[]>): Headers {
+  const out = new Headers();
+  for (const [name, value] of Object.entries(headers)) for (const line of [value].flat()) out.append(name, line);
+  return out;
+}
+const json = (status: number, value: unknown, headers: Record<string, string | string[]> = {}): Response => new Response(JSON.stringify(value), { status, headers: headersOf({ 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers }) });
+/** The session cookie the request presented (host-context.ts: `__Host-sid`, or a lone legacy `sid`). */
+const cookieId = (request: Request): string | undefined => presentedSession(request.headers.get('cookie')).value;
+/** The session cookie (host-context.ts sessionCookie): `__Host-sid`, always Secure here. An empty value removes it. `request`: a cookie it carried under the old name is removed with it. */
+const cookie = (secret: string, request?: Request): string | string[] => sessionCookie(secret, SESSION_TTL_MS / 1000, true, request ? presentedSession(request.headers.get('cookie')).hadLegacy : false);
+/** Reached over https (always, when deployed): an Origin naming this host must then be https too. */
+const overHttps = (url: URL): boolean => url.protocol === 'https:';
 const digest = async (value: string): Promise<string> => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value)))].map(byte => byte.toString(16).padStart(2, '0')).join('');
 /** Compare two digests of equal length without stopping at the first difference. */
 function sameDigest(a: unknown, b: unknown): boolean { if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false; let diff = 0; for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i); return diff === 0; }
@@ -129,7 +139,7 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
     // Operator routes authenticate with a bearer token in a header, which a browser never attaches by itself, so
     // they are not tied to the page's origin. Every other route keeps the origin check.
     const operator = url.pathname.startsWith('/api/mod/');
-    if (!operator && !isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) return json(403, { error: 'origin_rejected' });
+    if (!operator && !isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket', secure: overHttps(url) })) return json(403, { error: 'origin_rejected' });
     return state().fetch(request);
   }
   const paged = PAGE_PREFIXES.some(prefix => url.pathname.startsWith(prefix));
@@ -167,7 +177,7 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
   // served. A HEAD answer has no body to hash, so the same page is read with a GET.
   const head = request.method === 'HEAD';
   const text = await (head ? await env.ASSETS.fetch(new Request(request.url, { method: 'GET' })) : response).text();
-  for (const [name, value] of Object.entries(appHeaders({ ...factsOfUrl(url), scriptHashes: await inlineScriptHashes(text), telemetry: telemetryOrigins(readTelemetryConfig(env, { buildId: env.BUILD_ID })) }))) headers.set(name, value);
+  for (const [name, value] of Object.entries(appHeaders({ ...factsOfUrl(url), scriptHashes: await inlineScriptHashes(text), telemetry: telemetryOrigins(readTelemetryConfig(env, { buildId: env.BUILD_ID })), accounts: accountsConfig(env) }))) headers.set(name, value);
   if (head || response.status !== 200) return new Response(head ? null : text, { status: response.status, headers });
   // The game's own page: its default link-preview image is made absolute, because the crawlers of chat apps do not
   // resolve a relative og:image. The length changes, so the asset's own validators no longer describe the body.
@@ -188,6 +198,10 @@ export interface WorkerEnv {
   TURN_KEY_ID?: string
   TURN_API_TOKEN?: string
   TURN_TEST_PUBLIC_IDS?: string
+  /** The sign-in provider's public client configuration (server/host-context.ts accountsConfig). Unset: accounts are off. */
+  ACCOUNTS_FIREBASE_PROJECT_ID?: string
+  ACCOUNTS_FIREBASE_API_KEY?: string
+  ACCOUNTS_GOOGLE_CLIENT_ID?: string
   [name: string]: unknown
 }
 
@@ -290,7 +304,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       },
       // Work that outlives the request that started it: the object stays up until it has finished.
       waitUntil: (promise) => { try { ctx.waitUntil(Promise.resolve(promise).catch(() => {})); } catch { /* not in a request */ } },
-      config: { publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
+      config: { accounts: accountsConfig(env), publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
       startup: [],
       // Nothing stops a Durable Object in an orderly way: every write is durable when it is acknowledged, and work in
       // flight is covered by waitUntil. The list exists so a module can register without asking which host it is on.
@@ -303,7 +317,9 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         storeStats: () => this.store.stats(),
         newIdentity: () => ({ secret: crypto.randomUUID(), publicId: crypto.randomUUID() }),
         newId: () => crypto.randomUUID(),
-        cookieHeader: (_: unknown, secret: string) => cookie(secret),
+        cookieHeader: (request, secret: string) => cookie(secret, request.raw as Request),
+        clearCookieHeader: (request) => cookie('', request.raw as Request),
+        closeSocket: (ws, code, reason) => { const peer = ws as HostSocket; peer.close(code, reason); this.release(peer); },
         sockets: open,
         isOpen: (ws: HostSocket) => ws.readyState === 1,
         sessionOf: (ws: HostSocket, db: Db) => db.sessions[ws.secret],
@@ -379,15 +395,24 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       try {
         if (JSON.stringify(info).length > ATTACHMENT_BYTES) { info.look = null; info.lastMoves = []; }
         socket.serializeAttachment(info);
-      } catch { try { socket.serializeAttachment({ secret: ws.secret, session: ws.session, expiresAt: ws.expiresAt, ip: ws.ip, room: ws.room ?? null, closed: ws.closed === true, alive: ws.alive, pingedAt: ws.pingedAt, seenAt: ws.seenAt, lastSessionRenewedAt: ws.lastSessionRenewedAt, position: ws.position, voice: ws.voice }); } catch { /* the socket is gone */ } }
+      } catch { try { socket.serializeAttachment({ secret: ws.secret, ...(ws.device !== undefined ? { device: ws.device } : {}), session: ws.session, expiresAt: ws.expiresAt, ip: ws.ip, room: ws.room ?? null, closed: ws.closed === true, alive: ws.alive, pingedAt: ws.pingedAt, seenAt: ws.seenAt, lastSessionRenewedAt: ws.lastSessionRenewedAt, position: ws.position, voice: ws.voice }); } catch { /* the socket is gone */ } }
     }
   }
   /** Tell the modules a socket is gone — once, however many ways its end was noticed (an expiry, an alarm, the close event). */
   release(ws: HostSocket): void { if (ws.released) return; ws.released = true; ws.closed = true; this.telemetry.socketClosed(ws); this.handlers.close(ws); }
+  /** Whose session the presented cookie is — a guest's own record, or the character of the account a signed-in browser is bound to (protocol.ts sessionOfCookie). */
   session(request: WorkerRequest, db: Db, renew = false): SessionRecord | undefined {
-    const s = request.secret && UUID_PATTERN.test(request.secret) ? db.sessions[request.secret] : undefined;
-    if (!s || !Number.isFinite(s.expiresAt) || s.expiresAt <= Date.now()) return undefined;
-    if (renew) renewSession(s, Date.now()); return s;
+    const found = sessionOfCookie(db, request.cookie, Date.now(), request.binding !== undefined);
+    if (!found) return undefined;
+    if (renew) renewResolved(found, Date.now());
+    request.secret = found.session.secret;
+    return found.session;
+  }
+  /** The stored session a socket was opened under, with its device binding — undefined once either is gone (signed out, moved, expired). */
+  socketSession(db: Db, ws: HostSocket): { session: SessionRecord; device?: AccountDeviceRecord } | undefined {
+    if (ws.device === undefined || ws.device === ws.secret) { const s = db.sessions[ws.secret]; return s && s.account === undefined && s.expiresAt > Date.now() ? { session: s } : undefined; }
+    const found = sessionOfCookie(db, ws.device, Date.now());
+    return found && found.session.secret === ws.secret ? found : undefined;
   }
   override async fetch(raw: Request): Promise<Response> {
     await this.ready;
@@ -398,11 +423,13 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       const secret = cookieId(raw), now = Date.now();
       const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
       const operator = url.pathname.startsWith('/api/mod/');
-      if (!operator && !isSameOrigin(raw.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) throw protocolError(403, 'origin_rejected');
+      if (!operator && !isSameOrigin(raw.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket', secure: overHttps(url) })) throw protocolError(403, 'origin_rejected');
       // True only for a request carrying the operator's bearer token (never a cookie or a query value).
       const bearer = this.operatorDigest ? bearerToken(raw.headers.get('authorization')) : null;
       const moderator = bearer !== null && sameDigest(await digest(bearer), await this.operatorDigest);
-      const request: WorkerRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, params: {}, raw,
+      // `secret` becomes the stored session's key once session() resolves it; `cookie` stays what the browser presented.
+      const request: WorkerRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, cookie: secret, binding: mayBind(presentedSession(raw.headers.get('cookie')), true), params: {}, raw,
+        strictOrigin: isStrictOrigin(raw.headers.get('origin'), url.host, raw.headers.get('sec-fetch-site'), overHttps(url)),
         moderator: () => moderator, json: () => bodyOf(raw).then(body => (request.body = body)),
         session: (db, options = {}) => { const s = this.session(request, db, options.renew); if (s) request.publicId = s.publicId; return s; },
         requireSession: (db, options = {}) => { const s = request.session(db, options); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
@@ -420,18 +447,20 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       // the caller's sockets are in is re-checked against the STORED lives.
       let returned: RouteResult | void;
       try { returned = await route.handler(request); }
-      finally { for (const publicId of new Set([...this.peers.values()].filter(ws => ws.secret === secret && ws.room && ws.readyState === 1).map(ws => ws.session.id))) await this.context.core.revalidate(publicId); }
+      finally { for (const publicId of new Set([...this.peers.values()].filter(ws => ws.secret === request.secret && ws.room && ws.readyState === 1).map(ws => ws.session.id))) await this.context.core.revalidate(publicId); }
       const result: RouteResult = returned && typeof returned === 'object' ? returned : {}, status = result.status || 200;
       this.telemetry.http({ method: raw.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.['type'], code: (result.body as { code?: unknown } | undefined)?.code } });
       const plain = result.body && typeof result.body === 'object' && !Array.isArray(result.body);
       const body: Record<string, unknown> = status < 300 && (plain || result.body === undefined) ? { ...(result.body as object || {}), serverTime: Date.now(), ...(this.context.core.storageFailing() ? { storage: 'failing' } : {}) } : (result.body ?? {}) as Record<string, unknown>;
       if (url.pathname === '/api/health') Object.assign(body, { transport: 'cloudflare', buildId: this.context.config.buildId });
-      if (result.renew === true) for (const ws of this.peers.values()) if (ws.secret === secret) { ws.expiresAt = now + SESSION_TTL_MS; ws.lastSessionRenewedAt = now; }
+      if (result.renew === true) for (const ws of this.peers.values()) if (ws.secret === request.secret) { ws.expiresAt = now + SESSION_TTL_MS; ws.lastSessionRenewedAt = now; }
       this.saveSockets();
       // `after` runs once the answer is on its way. Whatever it does, the request is already answered.
       const after = result.after;
       if (typeof after === 'function') this.ctx.waitUntil(Promise.resolve().then(() => after()).then(() => this.saveSockets()).catch(error => this.context.core.log(`After-response step of ${raw.method} ${route.key} failed: ${firstLine(error)}`)));
-      return json(status, body, { ...(result.renew === true ? { 'Set-Cookie': cookie(secret as string) } : {}), ...routeHeaders(result.headers) });
+      // A guest whose session arrived under the old cookie name gets it back under the new one with this answer.
+      const upgrade = request.publicId !== undefined && presentedSession(raw.headers.get('cookie')).legacy;
+      return json(status, body, { ...(result.renew === true || upgrade ? { 'Set-Cookie': cookie(secret as string, raw) } : {}), ...routeHeaders(result.headers) });
     } catch (thrown) {
       const error = (thrown && typeof thrown === 'object' ? thrown : { message: thrown }) as Partial<HttpError>;
       const known = Number.isInteger(error.status) && typeof error.code === 'string';
@@ -484,7 +513,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       try { config = validateVoiceConfig(await mintCloudflareIce(this.env), Date.now()); } catch { throw protocolError(503, 'voice_config_unavailable'); }
       await this.store.read(db => { const s = request.requireSession(db); if (!this.liveRoom(s, db)) throw protocolError(403, 'room_membership_required'); });
     }
-    return json(200, { ...config, radius: 12, serverTime: Date.now() }, { 'Set-Cookie': cookie(request.secret as string) });
+    return json(200, { ...config, radius: 12, serverTime: Date.now() }, { 'Set-Cookie': cookie(request.cookie as string, request.raw) });
   }
   liveRoom(session: SessionRecord, db: Db): boolean {
     return [...this.peers.values()].some(ws => ws.session.id === session.publicId && ws.readyState === 1 && ws.room && ws.expiresAt > Date.now() && !this.context.core.unresponsive(ws) && this.context.core.roomStillValid(ws, db, session, ws.room.split(':')[0] as string, this.context.settle(session, ws.room.split(':')[0] as CityId)));
@@ -492,7 +521,8 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   async upgrade(raw: Request, request: WorkerRequest): Promise<Response> {
     if (raw.headers.get('upgrade')?.toLowerCase() !== 'websocket' || raw.method !== 'GET') throw protocolError(403, 'websocket_required');
     if (!this.allow(`upgrade:${request.ip}`, 60)) throw protocolError(429, 'rate_limited');
-    const info = await this.store.transact(db => { const s = request.requireSession(db, { renew: true }); return { secret: s.secret as string, session: publicSession(s), expiresAt: s.expiresAt }; });
+    // `secret` is the stored record's key; `device` is the cookie the browser presented, the only value ever sent back to it.
+    const info = await this.store.transact(db => { const s = request.requireSession(db, { renew: true }); return { secret: s.secret as string, device: request.cookie as string, session: publicSession(s), expiresAt: s.expiresAt }; });
     const peers = [...this.peers.values()].filter(ws => ws.readyState === 1);
     if (peers.length >= 1024 || peers.filter(ws => ws.secret === info.secret).length >= 8 || peers.filter(ws => ws.ip === request.ip).length >= 32) throw protocolError(503, 'socket_capacity');
     const pair = new WebSocketPair(), socket = pair[1]; this.ctx.acceptWebSocket(socket);
@@ -501,7 +531,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     // Never postpone a beat that is already due; bring an idle one forward now that somebody is connected.
     const due = await this.ctx.storage.getAlarm();
     if (due === null || due > Date.now() + HEARTBEAT_MS) await this.ctx.storage.setAlarm(Date.now() + HEARTBEAT_MS);
-    return new Response(null, { status: 101, webSocket: pair[0], headers: { 'Set-Cookie': cookie(info.secret) } });
+    return new Response(null, { status: 101, webSocket: pair[0], headers: headersOf({ 'Set-Cookie': cookie(info.device, raw) }) });
   }
   chatHistory(ws: HostSocket, body: unknown) {
     this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', Date.now() - 86400000);
@@ -529,13 +559,13 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (typeof raw !== 'string' || new TextEncoder().encode(raw).length > 16384) throw Error('invalid_message');
       try { message = JSON.parse(raw) as IncomingFrame; } catch { throw Error('invalid_message'); }
       if (!message || typeof message !== 'object') throw Error('invalid_message');
-      const authenticated = await this.store.read(db => { const s = db.sessions[ws.secret]; return !!s && s.expiresAt > Date.now(); });
+      const authenticated = await this.store.read(db => Boolean(this.socketSession(db, ws)));
       if (!authenticated || ws.expiresAt <= Date.now()) { this.context.send(ws, { type: 'error', code: 'device_session_required', error: 'device_session_required' }); ws.close(1008, 'Device session expired'); this.release(ws); return; }
       ws.alive = true; ws.seenAt = Date.now(); // any frame proves the connection is alive
       if (message.type === 'heartbeat-ack') return;
       if (Date.now() - ws.lastSessionRenewedAt >= 60000) {
         // The renewal could not be saved, so it did not happen: the socket keeps its expiry and the message is still handled.
-        const expiration = await this.store.transact(db => { const s = db.sessions[ws.secret]; if (!renewSession(s, Date.now())) throw Error('device_session_required'); return (s as SessionRecord).expiresAt; }).catch((error: unknown) => { if ((error as Partial<HttpError> | null | undefined)?.code !== 'storage_unavailable') throw error; return null; });
+        const expiration = await this.store.transact(db => { const found = this.socketSession(db, ws); if (!found || !renewSession(found.session, Date.now())) throw Error('device_session_required'); renewResolved(found, Date.now()); return found.session.expiresAt; }).catch((error: unknown) => { if ((error as Partial<HttpError> | null | undefined)?.code !== 'storage_unavailable') throw error; return null; });
         if (expiration !== null) for (const peer of this.peers.values()) if (peer.secret === ws.secret) { peer.expiresAt = expiration; peer.lastSessionRenewedAt = Date.now(); }
       }
       const entry = typeof message.type === 'string' ? this.handlers.messages.get(message.type) : undefined;

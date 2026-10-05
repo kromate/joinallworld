@@ -103,6 +103,9 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
     'GET /api/health': () => ({ body: { ok: true, build: config.buildId } }),
     'POST /api/session': async (request) => {
       type Answer = { secret: string; session: PublicSession; own: PublicSession & { cities: CityId[] }; mute?: MuteVerdict; refused?: boolean };
+      // The cookie to send back. A character that belongs to an account is filed under a key no browser may hold: its
+      // browser keeps the cookie it presented (its device binding). Every other session's cookie is its record's key.
+      const cookieOf = (session: SessionRecord): string => (session.account !== undefined && request.cookie ? request.cookie : session.secret);
       const body = await request.json();
       const name = validateName(body.name);
       const result = await store.transact((db): Answer => {
@@ -112,16 +115,20 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
           if (Object.keys(db.sessions).length >= config.maxActiveSessions) throw fail(503, 'device_capacity');
           const { secret, publicId } = core.newIdentity();
           current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {}, ...(body.onboarding === true ? { onboarding: true as const } : {}) };
-          created = true;
+          // A browser signed in to an account that has no character yet: this new session is that character (server/accounts/service.ts).
+          // (If that account's own character came back from the archive instead, the caller is an existing player: `created` stays false.)
+          const fresh = current.publicId;
+          current = ctx.checks?.adoptSession?.(db, request.binding, current) ?? current;
+          created = current.publicId === fresh;
         }
         current.expiresAt = now() + config.sessionTtlMs;
         // A muted player keeps their session — it is renewed here like any other — but cannot put a
         // name in front of other players: a different name is refused, and the SAME name is not
         // written or announced again either.
         const mute = created ? null : ctx.checks?.muted?.(current.publicId) ?? null;
-        if (mute) return { secret: current.secret, session: publicSession(current), own: ownSession(current), mute, refused: current.name !== name };
+        if (mute) return { secret: cookieOf(current), session: publicSession(current), own: ownSession(current), mute, refused: current.name !== name };
         current.name = name;
-        return { secret: current.secret, session: publicSession(current), own: ownSession(current) };
+        return { secret: cookieOf(current), session: publicSession(current), own: ownSession(current) };
       });
       if (result.refused && result.mute) throw Object.assign(fail(403, 'muted'), { reason: result.mute.reason });
       return { body: { session: result.own }, headers: { 'Set-Cookie': core.cookieHeader(request, result.secret) }, ...(result.mute ? {} : { after: () => core.refreshNames(result.session) }) };

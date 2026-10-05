@@ -116,7 +116,7 @@ test('route registry rejects duplicate and malformed routes at start-up and list
   const CORE = ['GET /api/health', 'GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/session'];
   for (const key of CORE) assert.ok(keys.includes(key), `core route ${key} is registered`);
   // Every module registers only under its own namespace; the core module is exactly the core set.
-  const NAMESPACES = ['', '/api/auth/', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/growth/', '/api/mod/growth/', '/api/campus', '/api/world/pulse'];
+  const NAMESPACES = ['', '/api/account', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/growth/', '/api/mod/growth/', '/api/campus', '/api/world/pulse'];
   assert.equal(ROUTE_MODULES.length, NAMESPACES.length);
   ROUTE_MODULES.forEach((module, index) => {
     const own = Object.keys(module(ctx) || {});
@@ -135,15 +135,22 @@ test('route registry rejects duplicate and malformed routes at start-up and list
   assert.equal(routes.match('POST', '/api/a/1/b/2'), null); assert.equal(routes.match('GET', '/api/a//b/2'), null); assert.equal(routes.match('GET', '/api/a/%E0%A4%A/b/2'), null);
 });
 
-test('authentication stubs are inert: registered, no endpoint, device sessions unchanged', async t => {
+test('accounts are off unless configured: one disabled answer, every other account route a 404, device sessions unchanged', async t => {
   const f = await fixture(t);
-  const attempts: [string, unknown][] = [['/api/auth/signup', { username: 'ada', password: 'secret12' }], ['/api/auth/login', { username: 'ada', password: 'secret12' }], ['/api/auth/logout', {}], ['/api/auth/session', null]];
+  const state = await f.request('/api/account'); assert.equal(state.status, 200); assert.equal(state.headers.get('set-cookie'), null);
+  assert.deepEqual(Object.keys(await state.json() as object).sort(), ['enabled', 'serverTime']);
+  const attempts: [string, unknown][] = [['/api/account/sign-in', { idToken: 'x' }], ['/api/account/sign-out-everywhere', {}], ['/api/account/delete', { confirm: 'delete' }],
+    ['/api/account/character', { use: 'x' }], ['/api/account/password-reset', { email: 'ada@example.com' }], ['/api/account/export', { idToken: 'x' }], ['/api/auth/login', { username: 'ada', password: 'secret12' }]];
   for (const [path, body] of attempts) {
-    const response = await f.request(path, body); assert.equal(response.status, 404, path); assert.equal(response.headers.get('set-cookie'), null);
+    const response = await fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { Origin: f.base, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined });
+    assert.equal(response.status, 404, path); assert.equal(response.headers.get('set-cookie'), null);
   }
-  const auth = await import('./auth.ts'); assert.equal(auth.ACCOUNTS_ENABLED, false);
+  // Signing out is the one account route that outlives the configuration (a browser signed in earlier must not be stuck); with nobody signed in it finds nothing.
+  const out = await fetch(f.base + '/api/account/sign-out', { method: 'POST', headers: { Origin: f.base, 'Content-Type': 'application/json' }, body: '{}' });
+  assert.equal(out.status, 409); assert.equal(out.headers.get('set-cookie'), null);
   const a = await f.device('Ada'); assert.match(a.cookie, /^sid=[0-9a-f-]{36}$/); assert.notEqual(a.id, a.cookie.slice(4));
   assert.deepEqual(Object.keys(sessionOf(await database(f), a.cookie)).sort(), ['actions', 'cities', 'expiresAt', 'name', 'publicId', 'secret']);
+  assert.deepEqual(Object.keys(await database(f)).filter(key => key.startsWith('account')), [], 'nothing about accounts is stored');
 });
 
 test('socket registry: room-free and room-only handlers, error replies, open/close hooks, core behaviour intact', async t => {
@@ -322,7 +329,7 @@ test('an old-format saved life survives the refactor: state, timers, per-city en
 
 test('modules shared with the Cloudflare worker stay portable: no Node-only imports', async () => {
   const walk = async (dir: string): Promise<string[]> => (await Promise.all((await readdir(dir, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(`${dir}/${entry.name}`) : [`${dir}/${entry.name}`]))).flat();
-  const shared = ['server/protocol.ts', 'server/life-service.ts', 'server/auth.ts', 'src/life.ts', ...(await walk('server/routes')), ...(await walk('server/ws')),
+  const shared = ['server/protocol.ts', 'server/life-service.ts', 'server/host-context.ts', 'src/life.ts', ...(await walk('server/accounts')).filter((file) => !file.endsWith('.test.ts')), ...(await walk('server/routes')), ...(await walk('server/ws')),
     ...(await walk('src/game')).filter((file) => file.endsWith('.ts') && !file.endsWith('.test.ts'))];
   assert.ok(shared.length > 40);
   for (const file of shared) {

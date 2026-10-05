@@ -1,3 +1,4 @@
+import { civicTitle } from '../game/cities/terminology.ts';
 /**
  * OWNER: world
  * Civic layers on the 3D city map, drawn only from the server's own responses
@@ -167,7 +168,7 @@ export function createOverlays(kit: MapKit, city: City) {
     }
     const seat = city.places['state-house'];
     // `lift` raises the chip (in pixels) clear of the State House's own label, at every zoom.
-    if (seat) chipList.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, y: seat.top + 0.5, z: seat.z, icon: '', glyph: iconFor('panel', 'governor'), text: data.governor ? `Governor ${data.governor.name}` : 'No Governor yet', label: data.governor ? `The Governor is ${data.governor.name}` : 'There is no Governor yet' });
+    if (seat) chipList.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, y: seat.top + 0.5, z: seat.z, icon: '', glyph: iconFor('panel', 'governor'), text: data.governor ? `${civicTitle(pack.id)} ${data.governor.name}` : `No ${civicTitle(pack.id)} yet`, label: data.governor ? `The ${civicTitle(pack.id)} is ${data.governor.name}` : `There is no ${civicTitle(pack.id)} yet` });
   }
 
   return {

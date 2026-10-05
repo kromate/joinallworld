@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { civicOffice } from '../../../game/cities/terminology.ts'
 // The venue card on the Map: hours, mode tiles, the trip line, Go, a copy-link share and "About"
 // (description and things to do) folded away. Whatever stops the trip is said ON the card, with the
 // one-tap way out (Reconnect, Cancel, Trek instead). Go sends the 'travel' action; the shell then
@@ -71,7 +72,7 @@ const onAbout = (event: Event): void => { mapUi.aboutOpen = (event.currentTarget
     </div>
     <button v-if="block || !chosen" type="button" class="map-go" disabled :aria-label="`Cannot go: ${block?.label || 'unavailable'}`">{{ block ? block.label : '' }}</button>
     <button v-else type="button" class="map-go" :disabled="pending !== null" @click="go">Go · {{ fareText(chosen) }} <span aria-hidden="true">→</span></button>
-    <button v-if="item.id === 'state-house'" type="button" class="map-chip-button" @click="shell.open('state-house')"><GameIcon inline name="governor" /><span>Who governs? Open the State House</span></button>
+    <button v-if="item.id === 'state-house'" type="button" class="map-chip-button" @click="shell.open('state-house')"><GameIcon inline name="governor" /><span>Who governs? Open the {{ civicOffice(game.view.value.cityId) }}</span></button>
     <button v-else-if="item.id === 'polling-unit'" type="button" class="map-chip-button" @click="shell.open('governor')"><GameIcon inline name="ballot" /><span>Election: candidates, voting and results</span></button>
     <details v-if="item.description || chips.length" class="ui-details map-about" :open="mapUi.aboutOpen" @toggle="onAbout">
       <summary>About{{ item.preview.length ? ` · ${item.preview.length} things to do` : '' }}</summary>

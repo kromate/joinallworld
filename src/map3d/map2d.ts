@@ -29,6 +29,8 @@ import { buildNetwork, localTripRoute, pointAt } from './roads.ts';
 import { flatModel, flatSvg } from './flat.ts';
 import { estateLayout, plotAt } from './estates.ts';
 import { lgaAt } from './lga.ts';
+import { cityUnit } from '../game/cities/terminology.ts';
+import { civicTitle } from '../game/cities/terminology.ts';
 import { plateFit, plateWidth, spanOf } from './labels.ts';
 import type { CityPack, PackLga } from './types.ts';
 import type { Route } from './roads.ts';
@@ -207,7 +209,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       const counts = summary?.get(id);
       plate.note.textContent = counts ? `${counts.houses.toLocaleString('en-NG')} home${counts.houses === 1 ? '' : 's'}${counts.online ? ` · ${counts.online.toLocaleString('en-NG')} online` : ''}` : '';
       plate.node.classList.toggle('is-own', id === own);
-      plate.node.setAttribute('aria-label', `${plate.lga.name} local government${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
+      plate.node.setAttribute('aria-label', `${plate.lga.name} ${cityUnit(cityId)}${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
     }
     for (const node of lgaArt.querySelectorAll<SVGElement>('[data-lga]')) { const mine = node.dataset.lga === own; node.setAttribute('fill-opacity', mine ? '.58' : '.34'); node.setAttribute('stroke-width', mine ? '1.1' : '.5'); node.setAttribute('stroke', mine ? '#14532d' : '#46544a'); }
   }
@@ -221,7 +223,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       list.push({ key: `board:${slot.slot}`, kind: slot.ad ? 'board' : 'board-free', x: at.x + 5.2, z: at.z - 3.2, glyph: iconFor('ad', slot.ad?.icon ?? 'megaphone', '📢'), text: slot.ad ? slot.ad.text : '', bg: colour?.bg, ink: colour?.ink, label: slot.ad ? `Billboard on ${slot.road}: ${slot.ad.text}, by ${slot.ad.by.name}` : `Billboard on ${slot.road}: for rent` });
     }
     if (layers.sea && ads?.sea && model.sea) list.push({ key: 'sea-title', kind: 'title', x: (model.sea.x0 + model.sea.x1) / 2, z: model.sea.z0 - 2.5, glyph: iconFor('ad', 'sea', '🌊'), text: `Sea plots · ${ads.sea.plots.length} of ${ads.sea.rows * ads.sea.cols} rented`, label: `Sea plots: ${ads.sea.plots.length} of ${ads.sea.rows * ads.sea.cols} rented` });
-    if (layers.gov && data.gov && stateHouseId) { const seat = spotOf(stateHouseId); if (seat) list.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, z: seat.z, glyph: iconFor('panel', 'governor', '🏛️'), text: data.gov.governor ? `Governor ${data.gov.governor.name}` : 'No Governor yet', label: data.gov.governor ? `The Governor is ${data.gov.governor.name}` : 'There is no Governor yet' }); }
+    if (layers.gov && data.gov && stateHouseId) { const seat = spotOf(stateHouseId), title = civicTitle(cityId); if (seat) list.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, z: seat.z, glyph: iconFor('panel', 'governor', '🏛️'), text: data.gov.governor ? `${title} ${data.gov.governor.name}` : `No ${title} yet`, label: data.gov.governor ? `The ${title} is ${data.gov.governor.name}` : `There is no ${title} yet` }); }
     const next = JSON.stringify(list.map((chip) => [chip.key, chip.text, chip.bg]));
     if (next === chipKey) return;
     chipKey = next;

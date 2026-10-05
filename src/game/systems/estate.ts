@@ -73,6 +73,7 @@ import { houseFor, housesFor, housingFor, defaultHouseFor } from '../cities/hous
 import { isCityId } from '../cities/registry.ts';
 import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cheapestUpgrade, cityRules, cleanStyle,
   lgaOf, lgaOfDistrict, lgasOf, linksFrom, moveLevy, packStyle, stylePrice, tierCost, tierOf, validPlot } from '../content/world.ts';
+import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
 import type { RelocateBlockCode } from '../../types/actions.ts';
 import type { AwayResidence, EstateState, HouseId, HouseStyleField, HouseUpgrade, IntercityAction, LgaId, LgaVia, LifeContext, LifeState, PlotAddress, Residence, WorldCityId } from '../../types/life.ts';
 import type { NoticeKind, SavedInput, SystemDefinition } from '../../types/registry.ts';
@@ -96,7 +97,7 @@ const lgaName = (cityId: unknown, id: unknown): string => {
 const billingWeek = (ms: number): number => Math.floor((lagosTime(ms).day - 2) / 7);
 const note = (state: LifeState, kind: NoticeKind, text: string, ctx: LifeContext): void => emit(state, 'notice.posted', { kind, text }, ctx);
 const rentedHouse = (state: LifeState, cityId = state.estate.city): HouseId => houseFor(cityId, state.property?.house)?.id ?? defaultHouseFor(cityId).id;
-const where = (e: EstateState): string => (e.plot ? addressLabel(e.city, e.plot.lga, e.plot.estate, e.plot.plot) : `${lgaOf(e.city, e.lga)?.name ?? 'your local government'} (plot being allocated)`);
+const where = (e: EstateState): string => (e.plot ? addressLabel(e.city, e.plot.lga, e.plot.estate, e.plot.plot) : `${lgaOf(e.city, e.lga)?.name ?? `your ${cityUnit(e.city)}`} (plot being allocated)`);
 
 function defaultLga(cityId: WorldCityId, state: LifeState): LgaId | null {
   const units = lgasOf(cityId);
@@ -169,22 +170,22 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
 function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const e = state.estate, now = nowOf(state, ctx);
   // Chosen when the life settles in, not before: a life still being created belongs nowhere yet.
-  if (unsettled(state)) return fail(state, 'settle_required', 'Settle in first: your local government is chosen when you settle in (tap the "Settle in" goal), and your free house comes with it.');
+  if (unsettled(state)) return fail(state, 'settle_required', `Settle in first: your ${cityUnit(state.estate.city)} is chosen when you settle in (tap the "Settle in" goal), and your free house comes with it.`);
   const unit = lgaOf(e.city, payload?.lga);
-  if (!unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(e.city).length} local governments of ${cityRules(e.city)?.name ?? 'this city'}.`);
+  if (!unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(e.city).length} ${cityUnit(e.city, true)} of ${cityRules(e.city)?.name ?? 'this city'}.`);
   const via = payload?.via === 'device' ? 'device' : 'manual';
   if (unit.id === e.lga) {
     if (e.lgaConfirmed) return ok(state, 'unchanged');
     Object.assign(e, { lgaConfirmed: true, lgaAt: now, lgaVia: via });
-    state.message = `${unit.name} is your local government.`;
+    state.message = `${unit.name} is your ${cityUnit(e.city)}.`;
     return ok(state, 'lga_confirmed');
   }
   // The first real choice is free and immediate; after that the cooldown applies.
   if (e.lgaConfirmed && e.lgaAt !== null && now - e.lgaAt < LGA_RULES.changeCooldownDays * DAY_MS) {
     const days = Math.ceil((e.lgaAt + LGA_RULES.changeCooldownDays * DAY_MS - now) / DAY_MS);
-    return fail(state, 'lga_cooldown', `You can change your local government once every ${LGA_RULES.changeCooldownDays} days. You can change again in ${days} day${days === 1 ? '' : 's'}.`);
+    return fail(state, 'lga_cooldown', `You can change your ${cityUnit(e.city)} once every ${LGA_RULES.changeCooldownDays} days. You can change again in ${days} day${days === 1 ? '' : 's'}.`);
   }
-  if (e.upgrade) return fail(state, 'upgrade_running', 'Your house is being upgraded. Wait until the builders have finished before you move it to another local government.');
+  if (e.upgrade) return fail(state, 'upgrade_running', `Your house is being upgraded. Wait until the builders have finished before you move it to another ${cityUnit(e.city)}.`);
   const levy = e.lgaConfirmed ? moveLevy(e.city, e.lga, unit.id, e.tier) : 0;
   if (levy > 0 && !canAfford(state, levy)) return fail(state, 'insufficient_funds', `Land is dearer in ${unit.name}: taking your ${HOUSE_TIERS[e.tier].label} there costs ${naira(levy)}; you have ${naira(state.cash)}.`);
   if (levy > 0) debit(state, levy, `Moving your ${HOUSE_TIERS[e.tier].label} to ${unit.name} (dearer land)`, ctx);
@@ -197,8 +198,8 @@ function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
 /** The server allocated a plot (server/world/service.ts). The one before it, if any, is remembered so it can be freed. */
 function assign(state: LifeState, payload: Record<string, unknown>) {
   const e = state.estate, plot = cleanPlot(payload, e.city);
-  if (!hasPlace(state)) return fail(state, 'no_place', 'This life has not settled in: it has no local government and no house yet.');
-  if (!plot || plot.lga !== e.lga) return fail(state, 'invalid_plot', 'That plot is not in your local government.');
+  if (!hasPlace(state)) return fail(state, 'no_place', `This life has not settled in: it has no ${cityUnit(e.city)} and no house yet.`);
+  if (!plot || plot.lga !== e.lga) return fail(state, 'invalid_plot', `That plot is not in your ${cityUnit(e.city)}.`);
   if (e.plot && e.plot.lga === plot.lga && e.plot.estate === plot.estate && e.plot.plot === plot.plot) return ok(state, 'unchanged');
   if (e.plot) e.old = e.plot;
   e.plot = plot;
@@ -237,7 +238,7 @@ function upgrade(state: LifeState, payload: Record<string, unknown>, ctx: LifeCo
   if (to.rank <= current.rank) return fail(state, 'not_an_upgrade', `You already have a ${current.label}. Choose a bigger house.`);
   const cost = tierCost(e.city, e.lga, to.id);
   // A city without local governments has no price and no lga name: refuse instead of describing a cost.
-  if (cost === null) return fail(state, 'insufficient_funds', `A ${to.label} cannot be priced: ${cityRules(e.city)?.name ?? 'this city'} has no local governments to build in yet.`);
+  if (cost === null) return fail(state, 'insufficient_funds', `A ${to.label} cannot be priced: ${cityRules(e.city)?.name ?? 'this city'} has no ${cityUnit(e.city, true)} to build in yet.`);
   if (!canAfford(state, cost)) return fail(state, 'insufficient_funds', `A ${to.label} in ${lgaName(e.city, e.lga)} costs ${naira(cost)}; you have ${naira(state.cash)} (${naira(cost - state.cash)} short).`);
   debit(state, cost, `House upgrade: ${to.label} at ${where(e)}`, ctx);
   e.upgrade = { to: to.id, cost, startedAt: now, doneAt: now + to.buildSeconds * 1000 };
@@ -307,7 +308,7 @@ function arriveInCity(state: LifeState, active: IntercityAction, ctx: LifeContex
   emit(state, 'house.moved', { id: e.living === 'own' ? 'own' : house, from: 'away', cost: 0, house }, ctx);
   const destination = kept?.lga ? 'home' : publicArrivalVenue(to).id;
   if (!destination || !arrive(state, destination, ctx, { mode: null })) throw new TypeError('The destination city needs a public arrival venue');
-  state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? 'You are back at your home here.' : `You are visiting. Choose a ${cityRules(to)?.unit ?? 'local government'} for your free starter house; your home in ${cityRules(from)?.name ?? from} stays yours.`}`;
+  state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? 'You are back at your home here.' : `You are visiting. Choose ${cityUnitArticle(to)} for your free starter house; your home in ${cityRules(from)?.name ?? from} stays yours.`}`;
 }
 
 function advance(state: LifeState, dt: number, ctx: LifeContext): void {
@@ -411,7 +412,7 @@ export default {
     'action.block'(value, state, data) {
       if (value || state.estate.lga || !state.onboarding.done) return value;
       if ((data.type === 'travel' && data.payload.id === 'home') || (data.type === 'activity' && state.location === 'home') || data.type.startsWith('home.') || data.type === 'property.house-move' || ['estate.move-in', 'estate.style', 'estate.upgrade'].includes(data.type)) {
-        return { code: 'settle_required', reason: 'Choose a local government for your free starter house before going home.' };
+        return { code: 'settle_required', reason: `Choose ${cityUnitArticle(state.estate.city)} for your free starter house before going home.` };
       }
       return value;
     },

@@ -78,6 +78,7 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
     assert.ok(!gameGraph.packages.has(pkg), `${pkg} must be fetched by a dynamic import()`)
   }
   const forbidden: [string, RegExp][] = [
+    ['editable icon artwork', /^src\/ui\/phone\/icons-source\.ts$/],
     ['optional renderer diagnostics', /^src\/app\/diagnostics\.ts$/],
     ['furniture appearance and descriptions', /^src\/game\/content\/furniture-presentation\.ts$/],
     ['the 3D map', /^src\/map3d\//],

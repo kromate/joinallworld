@@ -59,6 +59,7 @@ import { tripOf, createTripClock, tripPose } from './trip.ts';
 import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
 import { avatarBox, labelShift, nearPoints, plateFit, plateWidth, spanOf, WHOLE_FROM } from './labels.ts';
 import { iconFor } from '../ui/icon-map.ts';
+import { cityUnit } from '../game/cities/terminology.ts';
 
 /** What the map reads of a venue (src/game/content/venues.ts): its icon, filter category and opening hours. */
 interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }
@@ -238,7 +239,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       const counts = summaryShown?.get(id);
       plate.note.textContent = counts ? `${counts.houses.toLocaleString('en-NG')} home${counts.houses === 1 ? '' : 's'}${counts.online ? ` · ${counts.online.toLocaleString('en-NG')} online` : ''}` : '';
       plate.node.classList.toggle('is-own', id === own);
-      plate.node.setAttribute('aria-label', `${plate.lga.name} local government${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
+      plate.node.setAttribute('aria-label', `${plate.lga.name} ${cityUnit(cityId)}${id === own ? ', yours' : ''}${counts ? `, ${counts.houses} homes, ${counts.online} online` : ''}. Open its page.`);
     }
   }
   /** The house under a point of the ground, if its estate is drawn as houses: { lga, estate, plot, house }. */

@@ -72,7 +72,7 @@ watch([() => o.value.done, () => view.value.session?.id, () => view.value.cityId
 const draft = computed(() => ob.draft)
 
 const area = computed(() => draft.value?.extra.area)
-const missing = computed(() => homeMissing(area.value))
+const missing = computed(() => homeMissing(area.value, view.value.cityId))
 const areaName = computed(() => view.value.estate?.lgas?.find((item) => item.id === area.value?.lga)?.name ?? '')
 const kept = computed(() => keptCash({ guest: o.value.guest, cash: state.value.cash, seed: state.value.onboarding.seed, start: o.value.own?.startCash ?? null }))
 const foot = computed<Foot>(() => {
@@ -81,7 +81,7 @@ const foot = computed<Foot>(() => {
   if (shown.value === 1) return traitsFoot(d?.traits.length ?? 0)
   if (shown.value === 2) return dreamFoot(d?.dream ?? null)
   if (shown.value === 3) return lotteryFoot(Boolean(o.value.lottery))
-  return homeFoot(missing.value, areaName.value)
+  return homeFoot(missing.value, areaName.value, view.value.cityId)
 })
 /** "Move in, but stay here for now": offered to a guest who is somewhere else than home. */
 const canStay = computed(() => shown.value === LAST_STEP && !missing.value && o.value.guest && state.value.location !== 'home')

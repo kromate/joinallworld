@@ -1,3 +1,4 @@
+import { civicTitle } from './game/cities/terminology.ts';
 import { DEFAULT_CITY_ID, isCityId } from './game/cities/registry.ts';
 /**
  * Public entry to the rules engine, shared by the Node server, the Cloudflare worker and
@@ -120,7 +121,7 @@ export function dispatch(state: LifeState, body: ActionBody, ctx?: LifeContextIn
   if (body.mode !== undefined && payload.mode === undefined) payload.mode = body.mode;
   const context = contextFor(state, ctx, `action|${body.actionId ?? ''}`);
   const refusal = serverOnlyReason(body.type);
-  if (refusal && context.internal !== true) return fail(state, 'server_only', refusal);
+  if (refusal && context.internal !== true) return fail(state, 'server_only', refusal.replace('Phone → Governor', `Phone → ${civicTitle(context.cityId)}`));
   const veto = modify(state, 'action.block', null, { type: body.type, payload, internal: Boolean(refusal) && context.internal === true }, context);
   if (isRecord(veto) && typeof veto.code === 'string') return fail(state, veto.code, typeof veto.reason === 'string' ? veto.reason : 'That is not possible right now.');
   const result = handler(state, payload, context);

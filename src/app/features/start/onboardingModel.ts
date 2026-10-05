@@ -6,6 +6,7 @@ import { APPEARANCE, DREAM_REWARD, TRAITS_REQUIRED } from '../../../game/content
 import type { DreamId, Look, StartHomeId, TraitId } from '../../../types/life.ts'
 import { hairOptions, outfitOptions, slotOf, starterWardrobe } from './lookModel.ts'
 import { money } from '../../ui/format.ts'
+import { cityUnit } from '../../../game/cities/terminology.ts'
 
 export const DRAFT_KEY = 'joinallworld-look-draft'
 /** The index of the Home card: the last of ONBOARDING_STEPS. */
@@ -84,9 +85,9 @@ export function traitsFoot(chosen: number): Foot {
 export const dreamFoot = (dream: DreamId | null): Foot => ({ label: dream ? 'Next: birth lottery' : 'Choose a dream', action: 'dream', disabled: !dream, why: dream ? '' : 'Tap one of the dreams above to continue.' })
 export const lotteryFoot = (rolled: boolean): Foot => (rolled ? { label: 'Choose where to live', action: 'to-home', disabled: false, why: '' } : { label: 'Roll the birth lottery', action: 'lottery', disabled: false, why: '' })
 /** What is still missing on the Home card ('' when nothing). */
-export const homeMissing = (area: AreaChoice | undefined): string => (area?.lga ? '' : 'Choose your local government to continue.')
-export function homeFoot(missing: string, areaName: string): Foot {
-  return { label: missing ? 'Choose your local government' : `Move in${areaName ? ` to ${areaName}` : ''}`, action: 'home', disabled: Boolean(missing), why: missing }
+export const homeMissing = (area: AreaChoice | undefined, cityId = 'lagos'): string => (area?.lga ? '' : `Choose your ${cityUnit(cityId)} to continue.`)
+export function homeFoot(missing: string, areaName: string, cityId = 'lagos'): Foot {
+  return { label: missing ? `Choose your ${cityUnit(cityId)}` : `Move in${areaName ? ` to ${areaName}` : ''}`, action: 'home', disabled: Boolean(missing), why: missing }
 }
 /** The sentence about the wallet on the Home card for a guest who has already earned something. */
 export function keptCash(facts: { guest: boolean; cash: number; seed: number; start: number | null }): string {

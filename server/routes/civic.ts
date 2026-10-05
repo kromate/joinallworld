@@ -1,3 +1,4 @@
+import { civicTitle } from '../../src/game/cities/terminology.ts';
 /**
  * OWNER: civic
  * Civic endpoints under /api/civic/. Shared city state is stored under ctx.collection(db, 'civic')
@@ -154,7 +155,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         days: eligibility.days, isGovernor: view.governor?.id === who.id, isCandidate: view.election.candidates.some((item) => item.you), votedFor: view.election.yourVote,
         run: { ...gate(declareBlock(city, now, who.id) ?? unmet(eligibility.run)), checks: eligibility.run },
         vote: { ...gate(voteBlock(city, now, who.id, view.election.candidates[0]?.id ?? '') ?? unmet(eligibility.vote)), checks: eligibility.vote },
-        announce: gate(announceBlock(city, now, who.id)),
+        announce: gate(announceBlock(city, now, who.id, civicTitle(cityId))),
       };
       // With an empty ballot the only thing missing is a candidate; say that rather than "unknown candidate".
       if (!youBody.vote.ok && youBody.vote.code === 'unknown_candidate') youBody.vote.reason = 'Nobody is on the ballot yet, so there is no one to vote for.';
@@ -177,7 +178,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     return { city: cityId, checkedIn, counters: cityCounters(city, cityId),
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
-      notices: notices(city, now, cityName(cityId)),
+      notices: notices(city, now, cityName(cityId), civicTitle(cityId)),
       radio: venue && isClub(venue, cityContent(cityId).radioVenueIds) ? radioView(city, now, venue, who?.id ?? null, cityContent(cityId).radioVenueIds) : null };
   }
 
@@ -193,7 +194,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
           const { who, life, city, resident } = enter(db, request, cityId);
           counterCache.delete(cityId);
           // City news the resident has not been told yet goes into their own Updates feed, once.
-          const fresh = resident ? notices(city, ctx.now(), cityName(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
+          const fresh = resident ? notices(city, ctx.now(), cityName(cityId), civicTitle(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
           if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) }, 'only notices whose id is not yet in life.civic.news are posted');
           return pulseBody(city, cityId, who, life, resident);
         }, { durable: false }); // a check-in acknowledges nothing: news not yet stored is simply posted again
@@ -270,7 +271,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       return store.transact(db => {
         const { who, life, city } = enter(db, request, cityId);
         limit('gov-announce', who.id, 6);
-        const block = announceBlock(city, ctx.now(), who.id) ?? muted(who) ?? (text.ok ? null : text);
+        const block = announceBlock(city, ctx.now(), who.id, civicTitle(cityId)) ?? muted(who) ?? (text.ok ? null : text);
         if (block) return refused(block, { gov: govBody(city, cityId, who, life) });
         if (!text.ok) return refused(text, { gov: govBody(city, cityId, who, life) });
         announce(city, ctx.now(), who, text.text, nextId(city, 'a'));

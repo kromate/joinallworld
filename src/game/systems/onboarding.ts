@@ -1,4 +1,5 @@
 import { dreamFor, dreamsFor, lotteryBulletsFor } from '../cities/characterContent.ts';
+import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
 /**
  * OWNER: character
  * The quick start (a look, then straight into a public venue as a GUEST), settling in (personality →
@@ -441,11 +442,11 @@ const actions = {
     const o = state.onboarding, outcome = outcomeOf(state);
     const city = state.estate.city;
     const wantsLga = payload?.lga !== undefined && payload?.lga !== null, unit = wantsLga ? lgaOf(city, payload.lga) : null;
-    if (wantsLga && !unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(city).length} local governments of ${cityRules(city)?.name ?? 'this city'}.`);
+    if (wantsLga && !unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(city).length} ${cityUnit(city, true)} of ${cityRules(city)?.name ?? 'this city'}.`);
     const rented = payload?.house !== undefined && payload?.house !== null;
     const home = isStartHomeId(payload?.house) ? START_HOMES[payload.house] : null;
     if (rented && !home) return fail(state, 'invalid_house', `Choose a starting home: ${Object.values(START_HOMES).map((item) => `${item.label} (${item.district})`).join(', ')}.`);
-    if (!rented && !unit) return fail(state, 'lga_required', 'Choose your local government: your free starter house stands on a plot there.');
+    if (!rented && !unit) return fail(state, 'lga_required', `Choose ${cityUnitArticle(city)}: your free starter house stands on a plot there.`);
     const locked = home ? homeLock(outcome, home.id) : null;
     if (locked) return fail(state, 'house_locked', locked);
     if (o.traits.length !== TRAITS_REQUIRED || !o.dream) return fail(state, 'step_required', 'Choose your two traits and a dream before moving in.');

@@ -5,6 +5,7 @@ import { otaCity } from './ota/index.ts'
 import { ijebuOdeCity } from './ijebu-ode/index.ts'
 import { sagamuCity } from './sagamu/index.ts'
 import { portHarcourtCity } from './port-harcourt/index.ts'
+import { abujaCity } from './abuja/index.ts'
 import { CITY_LINKS } from './links.ts'
 import type { CityId } from './ids.ts'
 import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRules, CityState } from '../../types/content.ts'
@@ -40,6 +41,7 @@ function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker): Kno
   const hubs: readonly CityHub[] = Object.freeze([
     { id: 'road', name: rules.hub.road, mode: 'road' },
     { id: 'air', name: rules.hub.air, mode: 'air' },
+    ...(rules.hub.rail ? [{ id: 'rail', name: rules.hub.rail, mode: 'rail' as const }] : []),
   ])
   const catalogued: CataloguedCityRules = Object.freeze({
     ...rules,
@@ -65,10 +67,10 @@ function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker): Kno
   })
 }
 
-const publicRules = ({ id, name, status, unit, units, hub }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub })
+const publicRules = ({ id, name, status, unit, units, hub, civicTitle }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub, ...(civicTitle ? { civicTitle } : {}) })
 const futureCityPreview = Object.freeze(['Homes and local governments', 'Public places and activities', 'Road travel to neighbouring cities'])
 
-const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity, 'port-harcourt': portHarcourtCity })
+const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity, 'port-harcourt': portHarcourtCity, abuja: abujaCity })
 
 type CoreKnownCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
 type KnownCityCatalogue = Readonly<Record<CoreKnownCityId, KnownCity> & Record<string, KnownCity | undefined>>
@@ -84,11 +86,11 @@ export const KNOWN_CITIES: KnownCityCatalogue = Object.freeze({
     serverKnown: true,
     compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'ibadan', note: 'Open and playable.' }),
   }),
-  abuja: closed(
-    { id: 'abuja', name: 'Abuja', status: 'soon', unit: 'district', units: [], hub: { road: 'Utako Motor Park', air: 'the airport on the Airport Road' } },
-    { id: 'fct', name: 'Federal Capital Territory', unit: 'area council' },
-    { lon: 7.49, lat: 9.06, teaser: 'The capital under Aso Rock: wide roads, big offices and bigger politics.', preview: ['The Three Arms Zone under Aso Rock', 'Wuse market and Jabi Lake', 'Garki, Maitama and the long expressways'] },
-  ),
+  abuja: Object.freeze({
+    rules: abujaCity.rules,
+    serverKnown: true,
+    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'abuja', note: 'Open and playable.' }),
+  }),
   'port-harcourt': Object.freeze({
     rules: portHarcourtCity.rules,
     serverKnown: true,
@@ -103,6 +105,11 @@ export const KNOWN_CITIES: KnownCityCatalogue = Object.freeze({
     { id: 'owerri', name: 'Owerri', status: 'soon', unit: 'local government', units: [], hub: { road: 'a planned motor park', air: 'No air route' } },
     { id: 'imo', name: 'Imo State', unit: 'local government' },
     { lon: 7.0341973, lat: 5.489736, teaser: 'The capital of Imo State. Road travel is planned; this city is not open yet.', preview: futureCityPreview },
+  ),
+  kaduna: closed(
+    { id: 'kaduna', name: 'Kaduna', status: 'soon', unit: 'local government', units: [], hub: { road: 'a planned motor park', air: 'No air route', rail: 'Rigasa Railway Station' } },
+    { id: 'kaduna', name: 'Kaduna State', unit: 'local government' },
+    { lon: 7.4359863, lat: 10.5182899, teaser: 'Kaduna is a future destination. The Idu–Rigasa railway can be previewed; arrivals open with the city.', preview: futureCityPreview },
   ),
 })
 

@@ -138,6 +138,55 @@
       "publisher": "Ogun State Government",
       "use": "Current display names for the 20 local governments, including Sagamu, Yewa North and Yewa South",
       "retrieved": "2026-10-05"
+    },
+    "fct-surface": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "license": "ODbL 1.0; administrative source CC BY 4.0",
+      "date": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "attribution": "© OpenStreetMap contributors; geoBoundaries gbOpen, GRID3 2022, William & Mary geoLab",
+      "derivedSource": "scripts/geo/sources/fct-surface.geojson",
+      "derivedSha256": "471e9789485dd7370da22d2f239cedb8bbadc3c43085caccb48b20a4842bd8f8",
+      "derivedBytes": 331199,
+      "refreshTool": "scripts/geo/refresh-fct-surface.py",
+      "dependencies": {
+        "optionalRefresh": "pyosmium 4.3.1; Shapely 2.1.2",
+        "normalGenerator": "Node.js only"
+      },
+      "administrativeSources": [
+        "nigeria-states-adm1",
+        "nigeria-lgas-adm2"
+      ],
+      "water": "Mapped polygons clipped to each of the six councils, retaining the original reservoir islands. Original ADM2 union defines the independent playArea.",
+      "transport": "Mapped airport/northern/southern expressways and city avenues; 0.00008-degree source-vertex simplification; light-rail tracks; local Idu northbound rail context to 9.6 N. The full Idu–Rigasa route is separately pinned under fct-kaduna-rail.",
+      "generator": "npm run geo:boundaries -- --fct [--check]",
+      "coordinateFrame": "src/geo/frame.ts, nigeria-equirectangular-v1, originAt(7.49,9.06) = {-560,-67}"
+    },
+    "fct-kaduna-rail": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "license": "ODbL 1.0",
+      "date": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "attribution": "© OpenStreetMap contributors",
+      "derivedSource": "scripts/geo/sources/fct-kaduna-rail.geojson",
+      "derivedSha256": "2cfbf6e46526d32d5b3ef7aaf00900444393ecac1ca4f37aed27588086014e9c",
+      "derivedBytes": 20521,
+      "refreshTool": "scripts/geo/refresh-fct-rail.py",
+      "processing": "Native rail-only corridor extraction; gauge=1435; exact source-node graph connects Idu to Rigasa. No simplification, no inferred crossings or invented station connectors.",
+      "stationReferences": [
+        "https://www.openstreetmap.org/node/10660810222",
+        "https://www.openstreetmap.org/node/3677156385",
+        "https://www.openstreetmap.org/way/488660318"
+      ],
+      "endpointTrackNodes": [
+        "https://www.openstreetmap.org/node/4597112607",
+        "https://www.openstreetmap.org/node/7449693942"
+      ],
+      "optionalRefreshDependency": "pyosmium 4.3.1; normal Node.js generator has no new dependency"
     }
   },
   "attribution": {

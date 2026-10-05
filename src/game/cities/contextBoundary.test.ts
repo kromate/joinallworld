@@ -10,9 +10,9 @@ import { FICTIONAL_CITY_ID, fictionalCity } from './testing/fictionalCity.test-f
 test('shared contexts require a registered city while new-game convenience chooses the declared default', () => {
   assert.throws(() => Reflect.apply(makeContext, null, [{ now: 0 }]), /registered city context/)
   assert.throws(() => makeContext({ now: 0, cityId: 'not-a-city' }), /Unknown city context/)
-  assert.throws(() => makeContext({ now: 0, cityId: 'abuja' }), /Unknown city context/, 'reserved atlas cities are not life contexts')
+  assert.throws(() => makeContext({ now: 0, cityId: 'kaduna' }), /Unknown city context/, 'reserved atlas cities are not life contexts')
   assert.equal(createLife(null).estate.city, 'lagos')
-  assert.equal(createLife({ estate: { city: 'abuja' } }).estate.city, 'lagos', 'a reserved atlas id is not adopted from a save')
+  assert.equal(createLife({ estate: { city: 'kaduna' } }).estate.city, 'lagos', 'a reserved atlas id is not adopted from a save')
 })
 
 test('an established life uses its saved city instead of a stale storage-key context', async () => {

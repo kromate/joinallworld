@@ -11,7 +11,7 @@ import GameIcon from '../../ui/GameIcon.vue'
 import { adsKey, govKey } from '../civic/civicModel.ts'
 import { useCivic } from '../civic/useCivic.ts'
 import LayerNotes from './LayerNotes.vue'
-import { FILTERS, LAYERS, layerNote, matchesFilter, overviewLine, statusClass } from './travelModel.ts'
+import { FILTERS, LAYERS, layerLabel, layerNote, matchesFilter, overviewLine, statusClass } from './travelModel.ts'
 import type { LayerData, LayerId, LayerNote } from './travelModel.ts'
 import { linkWords } from './travelBoundary.ts'
 import { isListOpen, layers, mapUi, tell, wide } from './travelState.ts'
@@ -35,7 +35,7 @@ const notes = computed((): LayerNote[] => {
   const why = linkWords(view.value)?.why ?? ''
   return availableLayers.value.filter((item) => layers[item.id]).flatMap((item) => {
     const cached: LayerData = item.key === 'ads' ? civic.entry<AdsResponse>(adsKey(view.value.cityId)) : item.key === 'gov' ? civic.entry<GovResponse>(govKey(view.value.cityId)) : { data: null, error: null }
-    const note = layerNote(item, cached, view.value.connected, why)
+    const note = layerNote(item, cached, view.value.connected, why, view.value.cityId)
     return note ? [note] : []
   })
 })
@@ -74,7 +74,7 @@ function showWorld(): void {
     <LayerNotes v-if="!open" :notes="notes" />
     <div id="map-list" class="map-more" :hidden="!open">
       <div class="map-filters map-layers" role="group" aria-label="Map layers">
-        <button v-for="item in availableLayers" :key="item.id" type="button" :aria-pressed="layers[item.id]" :class="{ 'is-selected': layers[item.id] }" @click="toggleLayer(item.id)"><GameIcon inline :name="item.icon" /><span>{{ item.label }}</span></button>
+        <button v-for="item in availableLayers" :key="item.id" type="button" :aria-pressed="layers[item.id]" :class="{ 'is-selected': layers[item.id] }" @click="toggleLayer(item.id)"><GameIcon inline :name="item.icon" /><span>{{ layerLabel(item, view.cityId) }}</span></button>
       </div>
       <LayerNotes :notes="notes" />
       <ul v-if="places.length" class="map-list" aria-label="Places">

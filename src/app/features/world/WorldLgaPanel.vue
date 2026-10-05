@@ -67,9 +67,9 @@ function useDirectory(): LgaDirectory {
 </script>
 
 <template>
-  <p v-if="!unit || !id || !page" class="ui-error">That local government is not on this map.</p>
+  <p v-if="!unit || !id || !page" class="ui-error">That {{ estate?.unit ?? 'local government' }} is not on this map.</p>
   <div v-else class="ui-stack" style="--gap: 16px" :data-lga-page="id">
-    <section class="ui-hero"><small>{{ game.view.value.city?.name ?? '' }} · local government{{ yours ? ' · yours' : '' }}</small><strong>{{ unit.name }}</strong><p>{{ unit.line }}</p></section>
+    <section class="ui-hero"><small>{{ game.view.value.city?.name ?? '' }} · {{ estate.unit }}{{ yours ? ' · yours' : '' }}</small><strong>{{ unit.name }}</strong><p>{{ unit.line }}</p></section>
     <ul v-if="page.info" class="ui-tiles">
       <li><b>{{ count(page.info.residents) }}</b><small>residents</small></li>
       <li><b>{{ count(page.info.houses) }}</b><small>houses</small></li>

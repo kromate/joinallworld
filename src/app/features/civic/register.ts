@@ -8,17 +8,18 @@
 // panels as chips today, so a Vue chip registered before it is taught to draw one would vanish
 // from the HUD. Register CIVIC_PANELS once it does (or CIVIC_APPS alone until then).
 import { defineAsyncComponent } from 'vue'
+import { civicTitle, civicOffice } from '../../../game/cities/terminology.ts'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { civicNews } from './civicCore.ts'
 
 export const governor = definePanel({
-  id: 'governor', title: 'Governor', placement: 'phone', order: 40, live: false, group: 'city',
+  id: 'governor', title: 'Governor', titleFor: state => civicTitle(state.estate.city), placement: 'phone', order: 40, live: false, group: 'city',
   badge: (state, view) => civicNews(view, state),
   component: defineAsyncComponent(() => import('./GovernorApp.vue')),
 })
 export const stateHouse = definePanel({
-  id: 'state-house', title: 'State House', placement: 'modal',
+  id: 'state-house', title: 'State House', titleFor: state => civicOffice(state.estate.city), placement: 'modal',
   component: defineAsyncComponent(() => import('./StateHouseSheet.vue')),
 })
 export const neighbours = definePanel({

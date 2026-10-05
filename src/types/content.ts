@@ -1095,6 +1095,8 @@ export interface LgaRules {
 
 /** A city as the rules see it (CITY_RULES). */
 export interface CityRules {
+  /** Public name of the simulated elected office; persisted governor keys remain shared. */
+  civicTitle?: string
   /** Inland cities disable offshore advertising. Omitted preserves older coastal saves. */
   seaPlots?: boolean
   /** Existing lives choose their first local unit when this city opens. */
@@ -1204,7 +1206,7 @@ export interface CityStateOverview {
   outline: readonly LonLatPolygon[]
   localUnits: readonly { id: string; name: string; polygons: readonly LonLatPolygon[] }[]
   neighbours: readonly { name: string; polygons: readonly LonLatPolygon[] }[]
-  landmarks?: readonly { id: string; name: string; lon: number; lat: number }[]
+  landmarks?: readonly { id: string; name: string; lon: number; lat: number; context?: string }[]
 }
 
 /** Decoded shared-frame geometry. Shared borders originate from one topology arc. */
@@ -1289,6 +1291,14 @@ export interface CityContent<City extends string = string> {
   localUnitDescriptions: Readonly<Record<string, string>>
   /** Local names and beta quotes for the shared travel mechanics. */
   localModes?: readonly TravelModeDefinition[]
+  civicExplanation?: string
+  /** A restricted mode must have both trip endpoints within one declared zone. */
+  localModeZones?: readonly {
+    mode: Exclude<TravelModeId, 'trek'>
+    venueIds: readonly string[]
+    rentedHomeIds: readonly string[]
+    ownedHomeUnitIds: readonly string[]
+  }[]
   /** Bidirectional jetty trips. Fares and fixed durations are original beta values. */
   localRoutes?: readonly { a: string; b: string; mode: 'boat'; fare: number; seconds: number; beta: true }[]
   /** City wording only; dream ids, targets and rewards remain shared rules. */

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { civicTitle } from '../../../game/cities/terminology.ts'
 // Messages app: Chats and Updates.
 //
 // Chats: find a player and message them, the conversation list with unread counts, groups (create,
@@ -346,7 +347,7 @@ defineExpose({
               <span class="messages-update-body"><b><GlyphText :text="line.text" /></b><small>{{ formatClock(line.at) }}{{ line.fresh ? ' · New' : '' }}</small></span>
             </div>
           </ListRows>
-          <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" icon="bell" title="Nothing yet" text="Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the Governor appear here." />
+          <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" icon="bell" title="Nothing yet" :text="`Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the ${civicTitle(view.cityId)} appear here.`" />
         </div>
         <LinkButton v-if="growth.channel.value" :href="growth.channel.value" block class="messages-channel">Follow Allworld on WhatsApp</LinkButton>
       </template>

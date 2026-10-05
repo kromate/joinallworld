@@ -1,3 +1,4 @@
+import { civicTitle } from './game/cities/terminology.ts';
 import { CITY_MAPS } from './map3d/city-labels.ts';
 /**
  * OWNER: world
@@ -509,7 +510,7 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
     if (layers.gov && overlay.gov) {
       const seat = stateHouseId() ? venueTable()[stateHouseId()!] : null;
       if (seat) {
-        const label = make('div', 'cmap-gov', overlay.gov.governor ? `Governor ${overlay.gov.governor.name}` : 'No Governor yet');
+        const label = make('div', 'cmap-gov', overlay.gov.governor ? `${civicTitle(cityId)} ${overlay.gov.governor.name}` : `No ${civicTitle(cityId)} yet`);
         label.style.left = `${seat.map.x}%`; label.style.top = `${seat.map.y - 7.5}%`;
         nodes.push(label);
       }

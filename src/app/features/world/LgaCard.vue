@@ -31,6 +31,7 @@ const emit = defineEmits<{ /** The server accepted the choice. */ chosen: [lga: 
 
 const { game, command } = useApp()
 const estate = computed(() => game.view.value.estate)
+const unitTitle = computed(() => { const unit = estate.value.unit; return unit.charAt(0).toUpperCase() + unit.slice(1) })
 const offline = computed(() => (game.connected.value ? '' : `${linkWords(game.view.value)?.short ?? 'Offline'} — this needs the server`))
 const current = computed(() => (estate.value.placed && estate.value.lga ? estate.value.lga : null))
 const guess = computed(() => (!estate.value.placed && !estate.value.lgaConfirmed && estate.value.lga ? estate.value.lga : null))
@@ -91,7 +92,7 @@ async function send(via: 'device' | 'manual'): Promise<void> {
         <template v-if="showList">
           <div class="ui-labelled">
             <span @click="select?.focus()">Choose from the {{ estate.lgas.length }} {{ estate.unit }}s of {{ estate.cityName }}</span>
-            <ListboxSelect :ref="setSelect" v-model="pick" label="Local government" :options="options" :disabled="Boolean(offline || blocked)" />
+            <ListboxSelect :ref="setSelect" v-model="pick" :label="unitTitle" :options="options" :disabled="Boolean(offline || blocked)" />
           </div>
           <button type="button" class="ui-button is-primary is-block" :class="{ 'is-loading': ui.sending }" :disabled="Boolean(offline || blocked || ui.sending)" @click="send('manual')">{{ ui.sending ? 'Saving…' : current ? 'Move here' : `This is my ${estate.unit}` }}</button>
         </template>

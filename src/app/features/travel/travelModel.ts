@@ -1,3 +1,4 @@
+import { civicTitle, civicOffice, cityUnit } from '../../../game/cities/terminology.ts'
 // Getting around without a DOM: the one place that decides what a trip costs, why Go is off, what
 // the trip bar says, which places the Map lists and what each Ride row offers. It is the typed
 // port of src/ui/panels/world-ui.js (the helpers the Map card and the Ride app shared, so the two
@@ -180,6 +181,11 @@ export const LAYERS: readonly MapLayer[] = [
   { id: 'sea', label: 'Sea', icon: 'wave', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'sea' }, action: 'Rent a sea plot' },
   { id: 'gov', label: 'Gov', icon: 'governor', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
 ]
+export function layerLabel(item: MapLayer, cityId: string): string {
+  if (item.id === 'lgas' && cityUnit(cityId) !== 'local government') return cap(cityUnit(cityId, true))
+  if (item.id === 'gov' && civicTitle(cityId) !== 'Governor') return civicTitle(cityId)
+  return item.label
+}
 export const DATA_LAYERS: readonly MapLayer[] = LAYERS.filter((item) => item.path)
 export type LayerState = Record<LayerId, boolean>
 export const initialLayers = (): LayerState => ({ lgas: true, homes: true, moving: false, billboards: false, sea: false, gov: false })
@@ -203,15 +209,15 @@ export interface LayerNote {
   reconnect: boolean
   action: { label: string; open: string; params: { tab: string } | null } | null
 }
-export function layerNote(item: MapLayer, cached: LayerData, connected: boolean, why: string): LayerNote | null {
+export function layerNote(item: MapLayer, cached: LayerData, connected: boolean, why: string, cityId: string): LayerNote | null {
   if (!item.path) return item.note ? { text: item.note, reconnect: false, action: null } : null
   const data = cached.data
   if (!data && !connected) return { text: `${why} This layer cannot be loaded right now.`, reconnect: true, action: null }
-  const action = item.open && item.action ? { label: item.action, open: item.open, params: item.params ?? null } : null
+  const action = item.open && item.action ? { label: item.id === 'gov' ? `Open the ${civicOffice(cityId)}` : item.action, open: item.open, params: item.params ?? null } : null
   if (!data) return { text: cached.error ? `Could not load: ${cached.error}` : 'Loading…', reconnect: false, action }
   const text = item.id === 'billboards' && 'billboards' in data ? `${data.billboards.slots.filter((slot) => slot.ad).length} of ${data.billboards.slots.length} billboards rented`
     : item.id === 'sea' && 'sea' in data ? `${data.sea.plots.length} sea plot${data.sea.plots.length === 1 ? '' : 's'} rented · shown in the water below the city`
-      : 'governor' in data ? (data.governor ? `Governor ${data.governor.name}` : 'No Governor yet') : ''
+      : 'governor' in data ? (data.governor ? `${civicTitle(cityId)} ${data.governor.name}` : `No ${civicTitle(cityId)} yet`) : ''
   return { text, reconnect: false, action }
 }
 

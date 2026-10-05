@@ -60,7 +60,8 @@ export async function createModulePack(module: CityModule, landmarks: readonly {
     const district = module.rules.districts.find(item => item.id === home.districtId)
     const unit = lgas.find(item => item.id === district?.localUnitId)
     if (!unit) throw new TypeError(`Missing home district: ${home.definition.id}`)
-    return [home.definition.id, { x: unit.plate[0], z: unit.plate[1], district: district?.name ?? unit.name }]
+    const point = home.position ? toLocal(origin, home.position.lon, home.position.lat) : unit.plate
+    return [home.definition.id, { x: point[0], z: point[1], district: district?.name ?? unit.name }]
   }))
   const visible = Object.values(sites).map(({ x, z }): Point2 => [x, z]), core = extent(visible)
   const nw = fromLocal(origin, fit.minX, fit.minZ), se = fromLocal(origin, fit.maxX, fit.maxZ)

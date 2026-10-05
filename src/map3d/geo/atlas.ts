@@ -1,4 +1,4 @@
-import { stateOverviewHtml } from './state-overview.ts';
+import { stateOverviewHtml, stateOverviewToggleHtml } from './state-overview.ts';
 import type { CityStateOverview } from '../../types/content.ts';
 import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityModule, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
 /**
@@ -704,7 +704,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     ui.sheet.innerHTML = `<header><div><h2>${esc(info.name)}</h2><p>${esc(info.type)}${info.capital ? ` · capital ${esc(info.capital)}` : ''}</p></div><span class="atlas-tag">${esc(info.tag)}</span><button type="button" class="atlas-close" data-atlas-close aria-label="Close ${esc(info.name)}">${ICON('<path d="M6 6l12 12M18 6 6 18"/>')}</button></header>
       ${stateCities.length > 1 ? `<nav aria-label="Cities in this state">${stateCities.map(city => `<button type="button" data-atlas-inspect-city="${esc(city.id)}" aria-pressed="${city.id === info.city?.id}">${esc(city.name)}</button>`).join('')}</nav>` : ''}
       <p class="atlas-teaser">${esc(info.teaser)}</p>
-      ${overviewCity ? `<button type="button" class="atlas-chip" data-atlas-state-overview="${esc(hit.id)}" aria-expanded="${stateOverviewShown === hit.id}">${stateOverviewShown === hit.id ? 'Hide state overview' : 'View all local governments'}</button>${overviewBody}` : ''}
+      ${overviewCity ? `${stateOverviewToggleHtml(hit.id, overviewCity.id, stateOverviewShown === hit.id)}${overviewBody}` : ''}
       ${guide?.length ? `<section class="atlas-guide"><h3>Things to do in ${esc(info.city!.name)}</h3><ul>${guide.map(place => `<li><b>${esc(place.name)}</b> · ${esc(place.line)}</li>`).join('')}</ul></section>` : ''}
       ${info.action ? `<button type="button" class="atlas-go" data-atlas-action>${esc(info.action.label)}<span aria-hidden="true"> →</span></button>` : ''}
       ${more ? `<button type="button" class="atlas-more" data-atlas-expand aria-expanded="${sheetOpen}">${sheetOpen ? 'Less' : info.routes.length ? 'Routes and details' : 'More'}</button>` : ''}

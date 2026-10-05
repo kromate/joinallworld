@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { CityContent, CityMapGeometry, CityMapPack, CityModule, LonLatPolygon } from '../../types/content.ts'
 import { JOBS } from '../content/jobs.ts'
+import { BASE_MODE_IDS } from '../content/travel.ts'
 import { linksFrom, cityModule, loadCityContent, registerCityForTest } from './registry.ts'
 import { project, unproject } from '../../map3d/geo/frame.ts'
 import { KINDS as BUILT_SCENE_KINDS } from '../../scene/venue-scenes.ts'
@@ -29,10 +30,21 @@ const activitiesAt = (content: CityContent, venueId: string, spotId?: string): r
 export function assertCityContentContract(module: CityModule, content: CityContent, options: CityContractOptions = {}): void {
   const { profile } = optionsFor(module, options)
   assert.equal(content.cityId, module.id)
+  if (module.rules.civicTitle) assert.ok(content.civicExplanation?.trim(), 'a custom civic title explains its game role')
   assert.deepEqual(Object.keys(content.localUnitDescriptions).sort(), module.rules.units.map(unit => unit.id).sort(), 'every local unit has city-owned prose')
   for (const line of Object.values(content.localUnitDescriptions)) assert.ok(line.trim().length > 0, 'local-unit description is not empty')
   const venueIds = content.venues.map((venue) => venue.id), venues = new Set(venueIds)
   unique(venueIds, 'venue')
+  for (const zone of content.localModeZones ?? []) {
+    assert.notEqual(String(zone.mode), 'trek', 'trek remains unrestricted')
+    assert.ok(zone.venueIds.length + zone.rentedHomeIds.length + zone.ownedHomeUnitIds.length > 0, 'a local mode zone has endpoints')
+    unique(zone.venueIds, 'mode zone venue'); unique(zone.rentedHomeIds, 'mode zone rented home'); unique(zone.ownedHomeUnitIds, 'mode zone owned-home unit')
+    const offered = zone.mode === 'car' || (zone.mode === 'boat' ? Boolean(content.localRoutes?.length) : (content.localModes?.map(mode => mode.id) ?? BASE_MODE_IDS).includes(zone.mode))
+    assert.ok(offered, 'restricted mode is an offered local mode')
+    for (const id of zone.venueIds) assert.ok(id !== 'home' && venues.has(id), `mode zone venue ${id} is public`)
+    for (const id of zone.rentedHomeIds) assert.ok(content.housing.some(home => home.definition.id === id), `mode zone rental ${id} exists`)
+    for (const id of zone.ownedHomeUnitIds) assert.ok(module.rules.units.some(unit => unit.id === id), `mode zone unit ${id} exists`)
+  }
   unique((content.localRoutes ?? []).map(route => [route.a, route.b].sort().join('|')), 'local route')
   for (const route of content.localRoutes ?? []) {
     assert.ok(route.a !== route.b && route.a !== 'home' && route.b !== 'home' && venues.has(route.a) && venues.has(route.b), 'local water route joins two public venues')
@@ -213,6 +225,7 @@ const linkShape = (link: { to: string; mode: string; label: string; icon: string
 export function assertCityRulesContract(module: CityModule, options: CityContractOptions = {}): void {
   const { profile } = optionsFor(module, options)
   assert.equal(module.id, module.rules.id); assert.equal(module.rules.status, 'open'); assert.ok(module.rules.timezone.length > 0); assert.ok(module.rules.units.length > 0)
+  if (module.rules.civicTitle !== undefined) assert.ok(module.rules.civicTitle.trim().length > 0 && module.rules.civicTitle.length <= 64, 'civic title is bounded nonempty public text')
   for (const unit of module.rules.units) assert.equal(Object.hasOwn(unit, 'line'), false, 'local-unit prose belongs in lazy content')
   unique(module.rules.units.map((unit) => unit.id), 'local unit'); unique(module.rules.districts.map((district) => district.id), 'district'); unique(module.rules.hubs.map((hub) => hub.id), 'hub')
   if (profile === 'opened') {

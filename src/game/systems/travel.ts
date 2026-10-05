@@ -104,6 +104,16 @@ const GEOGRAPHIC_BANDS = Object.freeze({ nearKm: 3, farKm: 15, beta: true });
 const localModes = (city: string) => contentFor(city).localModes ?? Object.values(TRAVEL_MODES);
 const modeFor = (city: string, id: TravelModeId) => localModes(city).find(mode => mode.id === id) ?? ALL_MODES[id];
 const localRoute = (state: LifeState, destination: string) => contentFor(state.estate.city).localRoutes?.find(route => (route.a === state.location && route.b === destination) || (route.b === state.location && route.a === destination));
+function modeAllowed(state: LifeState, destination: string, mode: TravelModeId): boolean {
+  const zones = contentFor(state.estate.city).localModeZones?.filter(zone => zone.mode === mode);
+  if (!zones?.length) return true;
+  return zones.some(zone => {
+    const includes = (id: string) => id !== 'home' ? zone.venueIds.includes(id)
+      : state.estate.living === 'own' ? Boolean(state.estate.lga && zone.ownedHomeUnitIds.includes(state.estate.lga))
+        : zone.rentedHomeIds.includes(state.property.house);
+    return includes(state.location) && includes(destination);
+  });
+}
 const isModeId = (id: unknown): id is TravelModeId => typeof id === 'string' && Object.hasOwn(ALL_MODES, id);
 const isEventId = (id: unknown): id is RoadsideEventId => typeof id === 'string' && Object.hasOwn(EVENTS, id);
 const outcomeRuleOf = (id: string): ActivityOutcomeRule | undefined => (Object.hasOwn(ACTIVITY_OUTCOMES, id) ? outcomeRules[id] : undefined);
@@ -168,7 +178,8 @@ export function modesFor(state: LifeState, destination: VenueId, ctx: LifeContex
   const waterRoute = localRoute(state, destination);
   const ids = (Array.isArray(offered) ? offered : BASE_MODE_IDS).filter((id, index, list) => typeof id === 'string' && Object.hasOwn(ALL_MODES, id) && list.indexOf(id) === index && (id !== 'boat' || Boolean(waterRoute)));
   if (waterRoute && !ids.includes('boat')) ids.push('boat');
-  return ids.includes('trek') ? ids : ['trek', ...ids];
+  const allowed = ids.filter(id => modeAllowed(state, destination, id));
+  return allowed.includes('trek') ? allowed : ['trek', ...allowed];
 }
 
 // ---- opening hours: one source of truth -------------------------------------------------
@@ -461,8 +472,7 @@ export default {
       sanitize(value, state, ctx) {
         if (!venueFor(ctx.cityId, value.id) || value.id === state.location) return null;
         if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;
-        const valid = isModeId(value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
-        if (!valid || (value.mode === 'boat' && !localRoute(state, value.id))) return null;
+        if (!isModeId(value.mode) || value.duration < MIN_TRIP_SECONDS || value.duration > MAX_TRIP_SECONDS || !modeAllowed(state, value.id, value.mode) || (value.mode === 'boat' && !localRoute(state, value.id))) return null;
         return { mode: value.mode, ...(typeof value.fare === 'number' && Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
       },
       complete,

@@ -92,7 +92,7 @@ test('every registered route is typed, and every typed route is registered', () 
   const keys: string[] = buildRoutes(bareContext()).keys
   assert.deepEqual(sorted(keys), sorted(HTTP_ROUTE_KEYS), 'server/routes/*.ts and HTTP_ROUTE_KEYS (src/types/protocol.ts) list different routes')
   assert.equal(new Set(HTTP_ROUTE_KEYS).size, HTTP_ROUTE_KEYS.length)
-  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
+  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
 })
 
 test('every frame type the server accepts or sends is typed', async () => {

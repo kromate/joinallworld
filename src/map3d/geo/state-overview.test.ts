@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { stateOverviewHtml } from './state-overview.ts'
+import { stateOverviewHtml, stateOverviewToggleHtml } from './state-overview.ts'
 import type { CityStateOverview } from '../../types/content.ts'
 
 const overview: CityStateOverview = {
@@ -33,4 +33,18 @@ test('a state overview can show explicit water without changing the unit choices
   const html = stateOverviewHtml({ ...overview, water: overview.localUnits[1]!.polygons }, [], null)
   assert.match(html, /fill="#7cb9cd" fill-rule="evenodd" pointer-events="none"/)
   assert.match(html, /2 local governments · 0 in open cities · 2 coming/)
+})
+
+test('an explicit context qualification overrides a conflicting polygon membership', () => {
+  const html = stateOverviewHtml({ ...overview, landmarks: [{ id: 'context', name: 'Context rock', lon: 3.05, lat: 7.05, context: 'Neighbouring jurisdiction · context only' }] }, [{ id: 'test-city', name: 'Test City', units: [{ id: 'open-unit' }] }], 'test-city')
+  assert.match(html, /Context rock <small>Neighbouring jurisdiction · context only<\/small>/)
+  assert.doesNotMatch(html, /Context rock <small>Test City/)
+})
+
+
+test('the atlas overview button uses the selected city unit while preserving Lagos wording', () => {
+  assert.match(stateOverviewToggleHtml('fct', 'abuja', false), /View all area councils/)
+  assert.doesNotMatch(stateOverviewToggleHtml('fct', 'abuja', false), /local governments/)
+  assert.match(stateOverviewToggleHtml('lagos', 'lagos', false), /View all local governments/)
+  assert.match(stateOverviewToggleHtml('fct', 'abuja', true), /aria-expanded="true">Hide state overview/)
 })

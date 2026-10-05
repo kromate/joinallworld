@@ -42,7 +42,7 @@ function showOnMap(): void {
 <template>
   <section v-if="estate && !estate.placed" class="world-card">
     <h3>Your own house</h3>
-    <p class="ui-note">Everyone gets a starter house on their own plot, free — in the local government they choose.</p>
+    <p class="ui-note">Everyone gets a starter house on their own plot, free — in the {{ estate.unit }} they choose.</p>
     <button type="button" class="ui-button is-primary is-block" @click="shell.open('profile')">Choose where you live</button>
   </section>
   <section v-else-if="estate" class="world-card" data-my-house>

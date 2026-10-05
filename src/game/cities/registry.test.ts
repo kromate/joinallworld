@@ -12,9 +12,9 @@ cityContractTest(fictionalNeighbourCity, { profile: 'test-fixture' })
 
 test('test registration is scoped and keeps closed cities closed', async () => {
   resetFictionalLoadCounts()
-  assert.equal(isKnownCityId('abuja'), true)
-  assert.equal(isCityId('abuja'), false)
-  assert.equal(isOpenCityId('abuja'), false)
+  assert.equal(isKnownCityId('kaduna'), true)
+  assert.equal(isCityId('kaduna'), false)
+  assert.equal(isOpenCityId('kaduna'), false)
   assert.equal(isKnownCityId('aba'), true)
   assert.equal(isCityId('aba'), false)
   assert.equal(isOpenCityId('aba'), false)
@@ -44,9 +44,9 @@ test('test registration is scoped and keeps closed cities closed', async () => {
 })
 
 test('the catalogue has seven open cities and three closed previews in registry order', () => {
-  assert.deepEqual(knownCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'aba', 'owerri', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
-  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
-  assert.deepEqual(playableCityIds(), ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt'])
+  assert.deepEqual(knownCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'aba', 'owerri', 'kaduna', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
+  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
+  assert.deepEqual(playableCityIds(), ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja'])
 })
 
 test('authored Ibadan content is open and exposes its canonical road and rail links', async () => {

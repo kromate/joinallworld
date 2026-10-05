@@ -145,14 +145,14 @@ export function removeAnnouncement(city: CivicCityRecord, id: string) {
 }
 
 /** Why the player cannot post a Governor's announcement right now, or null. */
-export function announceBlock(city: CivicCityRecord, now: number, playerId: string): Block | null {
+export function announceBlock(city: CivicCityRecord, now: number, playerId: string, title = 'Governor'): Block | null {
   const governor = governorAt(city, now);
-  if (governor?.id !== playerId) return { code: 'not_governor', reason: 'Only the sitting Governor can post an announcement. Win this week’s election first.' };
+  if (governor?.id !== playerId) return { code: 'not_governor', reason: `Only the sitting ${title} can post an announcement. Win this week’s election first.` };
   const rules = ELECTION.announcement, day = lagosTime(now).day;
   const mine = city.gov.announcements.filter((item) => item.by.id === playerId);
   const last = mine.at(-1);
   if (last && now - last.at < rules.cooldownMs) return { code: 'announcement_cooldown', reason: `Wait ${Math.ceil((rules.cooldownMs - (now - last.at)) / 60000)} more minutes before the next announcement.` };
-  if (mine.filter((item) => lagosTime(item.at).day === day).length >= rules.perDay) return { code: 'announcement_limit', reason: `A Governor may post ${rules.perDay} announcements a day. Post again after midnight, Lagos time.` };
+  if (mine.filter((item) => lagosTime(item.at).day === day).length >= rules.perDay) return { code: 'announcement_limit', reason: `A ${title} may post ${rules.perDay} announcements a day. Post again after midnight, Lagos time.` };
   return null;
 }
 
@@ -185,17 +185,17 @@ export function govView(city: CivicCityRecord, now: number, viewerId: string | n
 }
 
 /** Recent civic news for the notice surface, newest first: results, phase changes and announcements. */
-export function notices(city: CivicCityRecord, now: number, cityName = 'Lagos'): CivicNotice[] {
+export function notices(city: CivicCityRecord, now: number, cityName = 'Lagos', title = 'Governor'): CivicNotice[] {
   const phase = phaseAt(now), items: CivicNotice[] = [];
   for (const week of [phase.week, phase.week - 1]) {
     const times = timeline(week), result = resultOf(city, week, now);
     if (result) {
-      items.push({ id: `result-${week}`, kind: 'result', at: times.closesAt, title: result.winner ? `${result.winner.name} is the new Governor of ${cityName}` : `${cityName} has no Governor this week`,
+      items.push({ id: `result-${week}`, kind: 'result', at: times.closesAt, title: result.winner ? `${result.winner.name} is the new ${title} of ${cityName}` : `${cityName} has no ${title} this week`,
         text: result.winner ? `Elected with ${result.winner.votes} of ${result.totalVotes} vote${result.totalVotes === 1 ? '' : 's'}.` : result.candidates ? 'Nobody voted, so nobody took office.' : 'Nobody stood for election.' });
     }
-    if (now >= times.votingAt) items.push({ id: `voting-${week}`, kind: 'voting', at: times.votingAt, title: 'Polls are open', text: 'Voting for Governor runs until midnight on Saturday, Lagos time.' });
-    if (now >= times.nominationsAt) items.push({ id: `nominations-${week}`, kind: 'nominations', at: times.nominationsAt, title: 'Nominations are open', text: 'Run for Governor before Thursday, Lagos time.' });
+    if (now >= times.votingAt) items.push({ id: `voting-${week}`, kind: 'voting', at: times.votingAt, title: 'Polls are open', text: `Voting for ${title} runs until midnight on Saturday, Lagos time.` });
+    if (now >= times.nominationsAt) items.push({ id: `nominations-${week}`, kind: 'nominations', at: times.nominationsAt, title: 'Nominations are open', text: `Run for ${title} before Thursday, Lagos time.` });
   }
-  for (const item of city.gov.announcements) items.push({ id: `announcement-${item.id}`, kind: 'announcement', at: item.at, title: `Governor ${item.by.name} announced`, text: item.text });
+  for (const item of city.gov.announcements) items.push({ id: `announcement-${item.id}`, kind: 'announcement', at: item.at, title: `${title} ${item.by.name} announced`, text: item.text });
   return items.filter((item) => item.at <= now && item.at > now - 8 * DAY_MS).sort((a, b) => b.at - a.at || (a.id < b.id ? -1 : 1)).slice(0, 12);
 }

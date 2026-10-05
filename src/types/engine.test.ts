@@ -603,7 +603,9 @@ test('a guest who is playing is refused exactly what needs a home, until it sett
 
 test('a trip between cities is the timed action kind intercity', () => {
   const state = onboarded()
-  assert.equal(act(state, 'estate.relocate', { to: 'abuja', mode: 'road' }, at()).code, 'city_not_open')
+  state.estate.city = 'port-harcourt'
+  assert.equal(act(state, 'estate.relocate', { to: 'owerri', mode: 'road' }, at()).code, 'city_not_open')
+  state.estate.city = 'lagos'
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at()).code, 'departed')
   const active = state.activeAction
   assert.ok(active && active.kind === 'intercity')
@@ -1143,7 +1145,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
   for (const goal of STARTER_GOALS) assert.deepEqual(Object.keys(goal.done).filter((key) => !['events', 'tags', 'venue', 'hasJob', 'activity', 'fresh'].includes(key)), [], goal.id)
   declared<LgaDefinition>()(['id', 'name', 'zone', 'land', 'districts', 'beta'])(LAGOS_LGAS, 'local government')
   declared<HouseTierDefinition>()(['id', 'rank', 'label', 'icon', 'grid', 'cost', 'buildSeconds', 'groundRent', 'blurb', 'beta'])(Object.values(HOUSE_TIERS), 'house tier')
-  declared<CityRules>()(['id', 'name', 'status', 'unit', 'units', 'hub', 'seaPlots', 'legacyLgaChoice', 'legacyVenueAliases'])(Object.values(CITY_RULES).map(required), 'city')
+  declared<CityRules>()(['id', 'name', 'status', 'unit', 'units', 'hub', 'seaPlots', 'legacyLgaChoice', 'legacyVenueAliases', 'civicTitle'])(Object.values(CITY_RULES).map(required), 'city')
   declared<CityLink>()(['a', 'b', 'mode', 'label', 'icon', 'fare', 'seconds', 'km', 'beta'])(CITY_LINKS, 'city link')
   declared<CalendarEvent>()(['id', 'title', 'blurb', 'venue', 'icon', 'when', 'spray', 'table'])(EVENTS_CALENDAR, 'calendar event')
   for (const option of Object.values(HOUSE_STYLE).flat()) assert.deepEqual(Object.keys(option).filter((key) => !['id', 'label', 'hex', 'price'].includes(key)), [], option.id)

@@ -118,7 +118,8 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 // (After the city modules alone it was 583.1 / 215.3; before them, on the first-load split, 557.8 / 203.3. About 17 kB of the difference is the eager
 // city registry and the Lagos rules and content the engine reads synchronously; the reserved cities' atlas text is about 3 kB of it.) The budget is the measurement plus about 4%.
 // The loading screen alone (entry, Vue, the module preload helper) measured 88.1 kB / 35.5 kB; its budget is that plus about 4%.
-const BUDGET = { raw: 608_000, gzip: 225_000 }
+// With Ogun's four city modules registered (their compact rules, links and the shared reference and job-transfer code) it measures 623.4 kB / 228.7 kB; the budget is that plus about 1.5%.
+const BUDGET = { raw: 633_000, gzip: 232_000 }
 // A player who starts in another city also loads that city's own content chunk (venues, regulars, calendar, wording) and nothing else:
 // the set of eager chunks for it is the default-city set plus that one chunk, by name, and the default-city budget is unchanged.
 const LOADING_BUDGET = { raw: 92_000, gzip: 37_000 }
@@ -177,7 +178,10 @@ test('automatic game startup, including one selected city, stays within the orig
   for (const city of cityChunks) {
     const names = eagerChunks(dist, [...core, city].map(name => `assets/${name}`))
     const added = names.filter(name => !defaultNames.includes(name))
-    assert.deepEqual(added, [`assets/${city}`], `a city adds only its own content chunk (${city})`)
+    // Ogun's four cities are authored with one shared builder: it is a content chunk of its own, named by file, and is loaded only with an Ogun city.
+    const sharedBuilder = ['abeokuta', 'ota', 'ijebu-ode', 'sagamu'].some(id => city.startsWith(`city-${id}-content-`))
+    assert.deepEqual(added.filter(name => !(sharedBuilder && /^assets\/city-ogun-content-[\w-]+\.js$/.test(name))), [`assets/${city}`], `a city adds only its own content chunk (${city})`)
+    if (sharedBuilder) assert.equal(added.filter(name => /^assets\/city-ogun-content-/.test(name)).length, 1, 'and the one shared Ogun builder')
     const total = measure(names)
     t.diagnostic(`${city} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)
   }

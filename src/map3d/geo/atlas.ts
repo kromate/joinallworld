@@ -569,11 +569,11 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       const sheet = sheets[NIGERIA], close = rig.view.distance < fits![NIGERIA]!.distance * 0.62;
       for (const feature of sheet.topology.features) {
         const entry = regionEntry('state', feature.id), top = sheet.top(feature), city = entry.city ? cityEntry(entry.city) : null;
-        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? (city.id === current ? 2000 : 1000) : 90, size: 13, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below'], fixed: entry.status === 'open' && city.id === current, cls: `is-city is-${entry.status}`, note: city.id === current ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
+        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? (city.id === current ? 2000 : 1000) : 90, size: 13, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: entry.status === 'open' && city.id === current, cls: `is-city is-${entry.status}`, note: city.id === current ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
         // A state with several open cities names each of them; the one the player is in says so, whichever the state's own marker is.
         for (const other of citiesInState(feature.id)) {
           const spot = other.status === 'open' && other.id !== city?.id && (close || selected?.id === feature.id || other.id === current) ? cityEntry(other.id) : null;
-          if (spot) push(`city:${other.id}`, at(spot.lon, spot.lat, top + 0.02), other.name, { priority: other.id === current ? 2000 : 200, size: 12, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below'], fixed: other.id === current, cls: 'is-city is-open', note: other.id === current ? 'You are here' : 'Open' });
+          if (spot) push(`city:${other.id}`, at(spot.lon, spot.lat, top + 0.02), other.name, { priority: other.id === current ? 2000 : 200, size: 12, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: other.id === current, cls: 'is-city is-open', note: other.id === current ? 'You are here' : 'Open' });
         }
         if (entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: city ? 44 : 50, cls: 'is-region' });
         if (close && !city) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: 22, size: 10, anchor: 'right', cls: 'is-town' });
@@ -729,7 +729,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       return `<li class="${on ? 'is-on' : ''}"><button type="button" class="atlas-route" data-atlas-route="${esc(route.id)}" aria-pressed="${on}"><span class="atlas-route-mode" aria-hidden="true">${ICON(route.mode === 'air' ? GLYPH.plane : route.mode === 'rail' ? GLYPH.rail : GLYPH.bus)}</span><span><b>${esc(route.label)}</b><small>${naira(route.fare)} · about ${route.minutes} min · ${route.km} km · from ${esc(route.hub)}</small></span></button>
         ${on ? `<div class="atlas-route-more">${route.live ? `<button type="button" class="atlas-go is-small" data-atlas-travel="${esc(route.to)}:${esc(route.mode)}">Travel · ${naira(route.fare)}</button>` : `<p>${esc(route.why || '')}</p>`}<button type="button" class="atlas-chip" data-atlas-preview="${esc(route.id)}" ${playing ? 'disabled' : ''}>${playing ? 'Showing the journey…' : 'Preview the journey'}</button></div>` : ''}</li>`;
     };
-    const more = Boolean(overviewCity || info.preview || info.routes.length || info.planned || info.wait);
+    const more = Boolean(overviewCity || info.preview || info.routes.length || info.soon.length || info.planned || info.wait);
     ui.sheet.className = `atlas-sheet is-${info.tone}${sheetOpen ? ' is-expanded' : ''}`;
     ui.sheet.setAttribute('aria-label', `${info.name}: ${info.tag}`);
     ui.sheet.innerHTML = `<header><div><h2>${esc(info.name)}</h2><p>${esc(info.type)}${info.capital ? ` · capital ${esc(info.capital)}` : ''}</p></div><span class="atlas-tag">${esc(info.tag)}</span><button type="button" class="atlas-close" data-atlas-close aria-label="Close ${esc(info.name)}">${ICON('<path d="M6 6l12 12M18 6 6 18"/>')}</button></header>
@@ -742,7 +742,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       ${info.preview ? `<div class="atlas-preview"><h3>${esc(info.city!.name)} will have</h3><ul>${info.preview.map((line) => `<li>${esc(line)}</li>`).join('')}</ul></div>` : ''}
       ${info.wait ? `<p class="atlas-waitline">${esc(info.wait)}</p>` : ''}
       ${info.planned ? `<p class="atlas-planned">${ICON(GLYPH.plane)}<span>${esc(info.planned)}</span></p>` : ''}
-      ${info.routes.length ? `<div class="atlas-routes"><h3>${info.status === 'open' ? `Routes from ${esc(info.routesFrom)}` : `Getting there from ${esc(info.routesFrom)}`}</h3><ul>${info.routes.map(routeRow).join('')}</ul><p class="atlas-waitline">You stay one person: your money, skills, friends and look travel with you, and your house here stays yours.</p></div>` : ''}`;
+      ${info.routes.length ? `<div class="atlas-routes"><h3>${info.status === 'open' ? `Routes from ${esc(info.routesFrom)}` : `Getting there from ${esc(info.routesFrom)}`}</h3><ul>${info.routes.map(routeRow).join('')}</ul><p class="atlas-waitline">You stay one person: your money, skills, friends and look travel with you, and your house here stays yours.</p></div>` : ''}
+      ${info.soon.length ? `<div class="atlas-routes atlas-soon"><h3>Opening soon</h3><p class="atlas-waitline">${info.soon.map((name) => esc(name)).join(' · ')}. Fares and times are shown the day they open.</p></div>` : ''}`;
   }
 
   /** Choose a region (or nothing). `from`: 'map' | 'list' | 'key' — the list and the keyboard move focus to the sheet. */

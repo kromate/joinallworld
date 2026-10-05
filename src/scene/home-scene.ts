@@ -52,6 +52,8 @@ import { playerOptions, rigOf } from './avatar-rig.ts';
 import { createWalkGrid } from './movement.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
 import { housesFor } from '../game/cities/housingRuntime.ts';
+import { cachedCityContent } from '../game/cities/registry.ts';
+import type { HomePalette } from '../types/content.ts';
 import { HOUSE_DESIGNS } from '../game/content/world.ts';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.ts';
 import type * as THREE from 'three';
@@ -93,6 +95,8 @@ const ROOM = 10;         // world units along each wall, whatever the grid size
 const WALL_HEIGHT = 3.4;
 const WALL_ITEM_Y = 1.95;
 const SHIFT = -2.5;      // the room sits up-screen so the bottom panels do not cover it
+/** The shared room colours (Lagos): a city's content may give its own `homePalette`. */
+export const ROOM_PALETTE: HomePalette = Object.freeze({ back: '#d7ccb0', left: '#c3cbb6', floor: Object.freeze(['#d9cdb4', '#bfae8f'] as const) });
 const WOOD = '#7a5c40', DARK = '#33373d', WHITE = '#f3f1ea', STEEL = '#9aa3a8';
 /** An avatar is 2.45 units tall in venue scale; furniture here is modelled one unit per tile (about a metre). */
 const AVATAR_SCALE = 0.72;
@@ -222,7 +226,7 @@ export function buildHomeScene(kit: Kit) {
   glow.position.set(-1, 3, -1);
   group.add(glow);
 
-  let grid = 0, tile = 1, drawn = '', lastState: LifeState | null = null, camera: THREE.Camera | null = null, canvas: HTMLElement | null = null, status = '', undrawn = false;
+  let palette: HomePalette = ROOM_PALETTE, grid = 0, tile = 1, drawn = '', lastState: LifeState | null = null, camera: THREE.Camera | null = null, canvas: HTMLElement | null = null, status = '', undrawn = false;
   let ui: HomeUi = { selected: null, ghost: null, buy: false };
   let who: { look: unknown; seed: string; name: string; pose: Pose | null } = { look: undefined, seed: 'you', name: 'You', pose: null }, guests: Guest[] = [], guestTags: HomeTag[] = [], selfTag: HomeTag | null = null, guestKey = '', restKey = '', dressKey = '';
   const actorMeshes: THREE.Mesh[] = [], markMeshes: THREE.Mesh[] = [];
@@ -251,9 +255,9 @@ export function buildHomeScene(kit: Kit) {
     room.clear(); wallGroups.back.clear(); wallGroups.left.clear();
     const b = tools(room), back = tools(wallGroups.back), left = tools(wallGroups.left);
     b.box(0, -0.21, 0, ROOM + 0.5, 0.4, ROOM + 0.5, '#6f6253');
-    for (let y = 0; y < grid; y++) for (let x = 0; x < grid; x++) b.box(along(x), 0, along(y), tile * 0.985, 0.03, tile * 0.985, (x + y) % 2 ? '#d9cdb4' : '#bfae8f');
-    back.box(-0.125, WALL_HEIGHT / 2, -ROOM / 2 - 0.125, ROOM + 0.25, WALL_HEIGHT, 0.25, '#d7ccb0');
-    left.box(-ROOM / 2 - 0.125, WALL_HEIGHT / 2, 0, 0.25, WALL_HEIGHT, ROOM, '#c3cbb6');
+    for (let y = 0; y < grid; y++) for (let x = 0; x < grid; x++) b.box(along(x), 0, along(y), tile * 0.985, 0.03, tile * 0.985, (x + y) % 2 ? palette.floor[0] : palette.floor[1]);
+    back.box(-0.125, WALL_HEIGHT / 2, -ROOM / 2 - 0.125, ROOM + 0.25, WALL_HEIGHT, 0.25, palette.back);
+    left.box(-ROOM / 2 - 0.125, WALL_HEIGHT / 2, 0, 0.25, WALL_HEIGHT, ROOM, palette.left);
     back.box(0, 0.12, -ROOM / 2 + 0.02, ROOM, 0.24, 0.04, '#8c7a62');
     left.box(-ROOM / 2 + 0.02, 0.12, 0, 0.04, 0.24, ROOM, '#8c7a62');
     // Window on the back wall, door on the side wall — the same slots the placement rules keep clear.
@@ -309,7 +313,8 @@ export function buildHomeScene(kit: Kit) {
 
   function rebuild(state: LifeState | null) {
     const house = homeOf(state, HOUSE_DESIGNS, state ? housesFor(state.estate.city) : undefined); // the rented tier, or the design of the house the player built
-    if (house.grid !== grid) { grid = house.grid; tile = ROOM / grid; buildRoom(); }
+    const colours = (state && cachedCityContent(state.estate.city)?.homePalette) || ROOM_PALETTE;
+    if (house.grid !== grid || colours !== palette) { grid = house.grid; tile = ROOM / grid; palette = colours; buildRoom(); }
     furniture.clear(); overlay.clear();
     const items = Array.isArray(state?.home?.items) ? state.home.items : [];
     let placed = 0;

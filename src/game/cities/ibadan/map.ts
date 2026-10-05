@@ -72,7 +72,7 @@ export const IBADAN_MAP: CityMapPack<'ibadan', IbadanLocalGovernmentId> = Object
   stateFeatureId: 'oyo-state',
   loadScene: async () => {
     const [{ createModulePack }, { IBADAN_ROADS }, { IBADAN_CHARACTER }] = await Promise.all([import('../../../map3d/cities/module.ts'), import('./roads.ts'), import('./character.ts')])
-    return createModulePack(ibadanCity, { landmarks: IBADAN_LANDMARK_POINTS, iconOffsets: IBADAN_ICON_OFFSETS, roads: IBADAN_ROADS, character: IBADAN_CHARACTER, surroundings: { spec: SURROUNDINGS, planned: ['ogun', 'osun', 'ondo', 'kwara'].filter((state) => citiesInState(state).length > 0) } })
+    return createModulePack(ibadanCity, { landmarks: IBADAN_LANDMARK_POINTS, iconOffsets: IBADAN_ICON_OFFSETS, roads: IBADAN_ROADS, character: IBADAN_CHARACTER, surroundings: { spec: SURROUNDINGS, planned: ['ogun', 'osun', 'ondo', 'kwara'].filter((state) => citiesInState(state).some((city) => city.status !== 'open')) } })
   },
   loadGeometry: async () => geometry(),
 })

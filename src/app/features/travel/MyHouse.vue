@@ -1,17 +1,19 @@
 <script setup lang="ts">
 // "Your own house": the section the Houses app shows first. The look (free and priced options),
-// upgrades (paid, built on server time) and moving in. A life without a place is sent to Profile to
-// choose where it lives. Rules and prices: src/game/systems/estate.ts, src/game/content/world.ts.
+// upgrades (paid, built on server time) and moving in. A visitor (no local government chosen in this
+// city yet) is shown that state with one primary button that opens the picker: the local-government
+// card for a settled life, the settling-in screen for a guest. Rules and prices: src/game/systems/estate.ts, src/game/content/world.ts.
 //
 // Actions: 'estate.style' { style: { field: index } }, 'estate.upgrade' { to } and 'estate.move-in'.
 import '../../../ui/panels/world.css'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { HouseStyleField } from '../../../types/life.ts'
 import type { HouseTierId } from '../../../types/life.ts'
 import { useApp } from '../../state/app.ts'
 import { money } from '../../ui/format.ts'
 import { useAct } from '../kit/act.ts'
 import HouseArt from '../world/HouseArt.vue'
+import LgaCard from '../world/LgaCard.vue'
 import { STYLE_FIELDS } from '../world/worldContent.ts'
 import { focusMap, track, worldChanged } from '../world/worldModel.ts'
 import { FIELD_NAMES, afterStyle, minutesToGo, offeredTiers, offlineWhy, swatchLabel, swatchOff, swatchTitle, tierWhy } from './myHouseModel.ts'
@@ -22,6 +24,12 @@ const { act, pending } = useAct()
 const estate = computed(() => game.view.value.estate)
 const cash = computed(() => game.state.value.cash)
 const offline = computed(() => offlineWhy(game.view.value.connected, linkWords(game.view.value)?.short))
+const choosing = ref(false)
+/** A settled life picks from the card right here; a guest is taken to the settling-in screen, which ends at the same choice. */
+function chooseLga(): void {
+  if (game.state.value.onboarding.done) choosing.value = true
+  else shell.open('onboarding', { why: 'home' })
+}
 const tiers = computed(() => offeredTiers(estate.value.tiers))
 
 async function style(field: HouseStyleField, index: number): Promise<void> {
@@ -42,8 +50,9 @@ function showOnMap(): void {
 <template>
   <section v-if="estate && !estate.placed" class="world-card">
     <h3>Your own house</h3>
-    <p class="ui-note">Everyone gets a starter house on their own plot, free — in the local government they choose.</p>
-    <button type="button" class="ui-button is-primary is-block" @click="shell.open('profile')">Choose where you live</button>
+    <p class="ui-note">You are visiting {{ estate.cityName }}: you have no home here yet. Everyone gets a starter house on their own plot, free — in the {{ estate.unit }} they choose.</p>
+    <button v-if="!choosing" type="button" class="ui-button is-primary is-block" data-choose-lga @click="chooseLga">Choose your {{ estate.unit }}</button>
+    <LgaCard v-else heading="Choose your local government" compact />
   </section>
   <section v-else-if="estate" class="world-card" data-my-house>
     <h3>Your own house</h3>

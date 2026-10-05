@@ -473,6 +473,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     }
   }
   const project = (x: number, y: number, z: number) => { probe.set(x, y, z).project(camera); return { x: (probe.x * 0.5 + 0.5) * size.width, y: (-probe.y * 0.5 + 0.5) * size.height, front: probe.z < 1 }; };
+  // A visitor (no local government chosen in this city yet) has no home here: its Home label is left out until it chooses one.
+  const visitorHere = () => Boolean(state?.estate) && !state!.estate!.lga;
   function placeLabels() {
     if (!labelLayer) return;
     // Level of detail: a whole-state view names the local governments, and only the places that matter to the player (here, picked, on the way).
@@ -480,7 +482,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const entries: { label: LabelEntry; at: ReturnType<typeof project>; visible: boolean }[] = [];
     for (const [id, label] of labels) {
       const place = city.places[id]!, at = project(place.x, place.top + 0.5, place.z);
-      entries.push({ label, at, visible: at.front && at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 && !(wholeView && label.priority < 70) });
+      entries.push({ label, at, visible: !(place.kind === 'home' && visitorHere()) && at.front && at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 && !(wholeView && label.priority < 70) });
     }
     entries.sort((a, b) => b.label.priority - a.label.priority || b.at.y - a.at.y);
     const taken: ScreenBox[] = [];

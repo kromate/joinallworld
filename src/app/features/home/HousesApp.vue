@@ -24,6 +24,8 @@ const { act, pending } = useAct()
 const view = game.view
 const cash = computed(() => game.state.value.cash)
 const property = computed(() => view.value.property)
+/** A city with no rental flats offers none: the rent section is left out instead of showing an empty ladder. */
+const rentals = computed(() => Object.keys(property.value?.houses ?? {}).length > 0)
 const next = computed(() => (property.value ? nextHouse(property.value) : undefined))
 const progress = computed(() => (next.value ? savedPercent(cash.value, next.value.moveIn) : 100))
 const offline = computed(() => (view.value.connected ? '' : `${linkWords(view.value)?.short ?? ''} — moving needs the server`))
@@ -36,6 +38,7 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
   <p v-if="!property" class="ui-error">Houses could not be loaded. Close this app and open it again.</p>
   <div v-else class="houses-app">
     <MyHouse />
+    <template v-if="rentals">
     <h3 class="ui-section">Homes to rent</h3>
     <section class="ui-hero houses-hero">
       <small>{{ next ? 'Next step up' : 'Top of the ladder' }}</small>
@@ -70,6 +73,7 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
         </div>
       </article>
     </div>
+    </template>
   </div>
 </template>
 

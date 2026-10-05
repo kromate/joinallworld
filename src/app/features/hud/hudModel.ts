@@ -79,3 +79,15 @@ export function needFlash(before: number | undefined, value: number): 'up' | 'do
   if (value - before >= 1) return 'up'
   return before - value >= 3 ? 'down' : null
 }
+
+/** How long the cash-change note stays on the page: a little past its 3.4 s animation. */
+export const DELTA_MS = 3600
+/**
+ * Runs `clear` once, `ms` after the last `arm()`; `cancel()` drops a pending run. Arming again restarts the wait,
+ * so a second change keeps its own note for its full time.
+ */
+export function noteExpiry(clear: () => void, ms: number = DELTA_MS): { arm: () => void; cancel: () => void } {
+  let timer: ReturnType<typeof setTimeout> | undefined
+  const cancel = (): void => { if (timer !== undefined) clearTimeout(timer); timer = undefined }
+  return { arm: () => { cancel(); timer = setTimeout(() => { timer = undefined; clear() }, ms) }, cancel }
+}

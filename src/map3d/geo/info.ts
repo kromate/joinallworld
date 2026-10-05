@@ -25,7 +25,7 @@ export type RegionTone = 'here' | 'open' | 'preview' | 'soon' | 'none';
 export interface RegionInfo {
   kind: RegionKind; id: string; name: string; type: string; capital: string | null; teaser: string; status: RegionStatus;
   tag: string; tone: RegionTone; city: { id: string; name: string } | null; preview: readonly string[] | null;
-  routes: RouteInfo[]; routesFrom: string | null; planned: string | null; wait: string | null; action: RegionAction | null;
+  routes: RouteInfo[]; /** Cities this one is planned to link to: named under "Opening soon", with no fare. */ soon: string[]; routesFrom: string | null; planned: string | null; wait: string | null; action: RegionAction | null;
 }
 /** The part of a data feature the sheet reads: any of the three data modules' features fits. */
 export interface FeatureLike { name: string; k?: string; cap?: string | [string, number, number]; sub?: AfricaGroupId; c?: ContinentId }
@@ -55,7 +55,7 @@ function routesBetween(from: string, to: string, mine: RegionContext['routes']):
 export function regionInfo(ref: RegionRef, { cityId = null, feature = null, current = null, held = [], routes = null }: RegionContext = {}): RegionInfo {
   const entry = regionEntry(ref.kind, ref.id), status = entry.status, name = feature?.name ?? ref.id;
   const capital = Array.isArray(feature?.cap) ? feature.cap[0] : feature?.cap ?? null;
-  const base: Omit<RegionInfo, 'type' | 'teaser' | 'tag' | 'tone'> = { kind: ref.kind, id: ref.id, name, capital, status, city: null, preview: null, routes: [], routesFrom: null, planned: null, wait: null, action: null };
+  const base: Omit<RegionInfo, 'type' | 'teaser' | 'tag' | 'tone'> = { kind: ref.kind, id: ref.id, name, capital, status, city: null, preview: null, routes: [], soon: [], routesFrom: null, planned: null, wait: null, action: null };
   const fromName = cityRules(current)?.name ?? null;
 
   if (ref.kind === 'state') {
@@ -70,8 +70,11 @@ export function regionInfo(ref: RegionRef, { cityId = null, feature = null, curr
     const info = { ...base, type, teaser: city.status === 'playable' ? city.teaser : teaser, city: { id: city.id, name: city.name }, preview: city.status === 'playable' ? null : city.preview ?? null };
     if (city.status === 'playable') {
       // The open city: from here every link to a planned city can be looked at.
-      const others = current === city.id ? [...new Set(linksFrom(city.id).map(link => link.to))] : [];
-      return { ...info, tag: access === 'here' ? 'You are here' : 'Open', tone: access === 'here' ? 'here' : 'open',
+      // Only open destinations are listed with a fare; the planned ones are named under "Opening soon".
+      const every = current === city.id ? [...new Set(linksFrom(city.id).map(link => link.to))] : [];
+      const others = every.filter((to) => cityRules(to)?.status === 'open');
+      const soon = every.filter((to) => cityRules(to)?.status !== 'open').map((to) => cityRules(to)?.name ?? to);
+      return { ...info, soon, tag: access === 'here' ? 'You are here' : 'Open', tone: access === 'here' ? 'here' : 'open',
         routes: current && current !== city.id ? routesBetween(current, city.id, routes) : others.flatMap((to) => routesBetween(city.id, to, routes)), routesFrom: current && current !== city.id ? fromName : others.length ? city.name : null,
         action: access === 'here' ? { kind: 'open-city', label: `Enter ${city.name}`, city: city.id } : current ? null : { kind: 'enter-city', label: `Go to ${city.name}`, city: city.id } };
     }

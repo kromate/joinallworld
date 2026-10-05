@@ -3,11 +3,11 @@
 // one small pill. The name opens the Sim sheet and the wallet opens the Bank. A change of the
 // balance is flashed and written out with its reason from the ledger; the flash is one CSS
 // animation that ends by itself, so nothing runs while the game is idle.
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
-import { cashDelta, moodOf, savedPill } from './hudModel.ts'
+import { cashDelta, moodOf, noteExpiry, savedPill } from './hudModel.ts'
 import InviteButton from '../growth/InviteButton.vue'
 import OnlinePill from './OnlinePill.vue'
 import AccountHud from './AccountHud.vue'
@@ -29,14 +29,20 @@ const delta = ref<{ text: string; up: boolean; run: number } | null>(null)
 const cashFlash = ref<'is-up' | 'is-down' | null>(null)
 let lastCash: number | null = null
 let lastLife = ''
+/** The note leaves the page when its animation has ended, so it does not linger in the page text. */
+const expiry = noteExpiry(() => { delta.value = null })
+const clearDelta = expiry.cancel
+onBeforeUnmount(clearDelta)
 watch([state, view], () => {
   // A different life (another city, a new session): compare nothing against the old one.
   const life = `${view.value.session?.id ?? ''}:${view.value.cityId}`
-  if (life !== lastLife) { lastLife = life; lastCash = null }
+  if (life !== lastLife) { lastLife = life; lastCash = null; clearDelta(); delta.value = null }
   const now = state.value.cash
   if (lastCash !== null && view.value.connected && now !== lastCash) {
     const change = now - lastCash
     delta.value = { text: cashDelta(change, view.value.wallet?.ledger[0], money), up: change > 0, run: (delta.value?.run ?? 0) + 1 }
+    clearDelta()
+    expiry.arm()
     cashFlash.value = null
     void nextTick(() => { cashFlash.value = change > 0 ? 'is-up' : 'is-down' })
   }

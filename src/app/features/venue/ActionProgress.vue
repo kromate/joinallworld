@@ -40,7 +40,7 @@ async function cancel(): Promise<void> {
   <section v-if="active" class="life-progress" aria-label="Current activity">
     <span class="life-progress-icon" aria-hidden="true"><GameIcon inline kind="activity" :id="activity?.id" :emoji="activity?.icon || (isTrip(active) ? '🧭' : '⏳')" /></span>
     <div><strong>{{ name }}</strong><small>{{ Math.ceil(active.remaining) }}s left</small></div>
-    <button type="button" :disabled="fixed || cancelling" :title="fixed ? 'This cannot be cancelled once started' : undefined" :aria-label="cancelLabel" @click="cancel">{{ cancelling ? 'Cancelling…' : sleeping ? 'Wake up' : 'Cancel' }}</button>
+    <button v-if="!fixed" type="button" :disabled="cancelling" :aria-label="cancelLabel" @click="cancel">{{ cancelling ? 'Cancelling…' : sleeping ? 'Wake up' : 'Cancel' }}</button>
     <progress max="1" :value="progress" aria-label="Activity progress" />
     <p v-if="paid && activity" class="life-progress-note">Pays {{ money(activity.reward) }} when finished. Cancelling earns nothing.</p>
     <p v-else-if="fixed" class="life-progress-note">This cannot be cancelled once started.</p>

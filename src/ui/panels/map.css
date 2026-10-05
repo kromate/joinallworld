@@ -24,15 +24,16 @@
 .map-layer-note{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);font-size:12px;color:var(--c-muted);padding:0 4px}
 .map-layer-note span{min-width:0;overflow-wrap:anywhere}
 
-.map-more{display:grid;gap:var(--s-2);min-height:0}
-.map-list{list-style:none;margin:0;padding:0;display:grid;gap:2px;overflow-y:auto;max-height:38dvh;scrollbar-width:thin;overscroll-behavior:contain}
+.map-more{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-2);min-height:0}
+.map-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:2px;overflow-x:hidden;overflow-y:auto;max-height:38dvh;scrollbar-width:thin;overscroll-behavior:contain}
 .life-ui .map-list button{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:4px 8px;border-radius:14px;background:none;text-align:left}
 .life-ui .map-list button:hover{background:var(--c-fill)}
 .map-list button>span:first-child{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--c-surface-solid);border:1px solid var(--c-line);font-size:18px}
+.map-list li{min-width:0}
 .map-list-text{flex:1;min-width:0}
 .map-list b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .map-list small{display:block;font-size:11px;color:var(--c-muted)}
-.map-list em{flex:none;font-style:normal;font-size:11px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--c-green-soft);color:var(--c-green-dark)}
+.map-list em{flex:none;white-space:nowrap;font-style:normal;font-size:11px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--c-green-soft);color:var(--c-green-dark)}
 .map-list .is-closed em{background:var(--c-fill);color:var(--c-muted);font-weight:600}
 .map-list .is-closed b{color:var(--c-muted)}
 .map-list .is-here em{background:var(--c-amber-soft);color:var(--c-amber-dark)}

@@ -41,6 +41,6 @@ export function ogunScene(city: OgunCityId, landmarks: readonly OgunLandmarkPoin
     landmarks: [...landmarks, ...OGUN_QUARTERS[city].map((quarter) => ({ ...quarter, kind: 'quarter' }))],
     roads,
     character: { ...OGUN_CHARACTER[city], waters: waters(rowsWithin(OGUN_WATER, scope)) },
-    surroundings: { spec: OGUN_SURROUNDINGS[city], planned: ['osun', 'ondo', 'kwara'].filter((state) => citiesInState(state).length > 0) },
+    surroundings: { spec: OGUN_SURROUNDINGS[city], planned: ['osun', 'ondo', 'kwara'].filter((state) => citiesInState(state).some((city) => city.status !== 'open')) },
   }
 }

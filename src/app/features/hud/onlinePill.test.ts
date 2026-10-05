@@ -20,6 +20,7 @@ test('the exact value and the aria text', () => {
   assert.equal(exactCount(4210), '4,210')
   const numbers = { online: 128, visits: 4210, cities: {} }
   assert.equal(pulseTitle(numbers), '128 online now · 4,210 visits in total')
+  assert.equal(pulseTitle({ ...numbers, cities: { ibadan: 9 } }, 'live', 'ibadan'), '9 online here · 128 in Allworld · 4,210 visits in total across all of Allworld')
   assert.equal(pulseAria(numbers), '128 people online. 4,210 visits in total. Open People.')
   assert.equal(pulseAria({ online: 1, visits: 1, cities: {} }), '1 person online. 1 visit in total. Open People.')
   assert.match(pulseAria(numbers, 'stale'), /may be out of date/)
@@ -112,11 +113,16 @@ test('the pill renders nothing until the first number arrives, then the compact 
   shared.state.numbers = { online: 128, visits: 4210, cities: { lagos: 100 } }; shared.state.at = Date.now(); shared.state.failing = false
   const out = await html()
   assert.match(out, /<button[^>]*class="pulse-pill"/)
-  assert.match(out, /title="128 online now · 4,210 visits in total"/)
-  assert.match(out, /aria-label="128 people online\. 4,210 visits in total\. Open People\."/)
+  assert.match(out, /title="100 online here · 128 in Allworld · 4,210 visits in total across all of Allworld"/)
+  assert.match(out, /aria-label="100 people online here\. 128 people online in Allworld\. 4,210 visits in total across Allworld\. Open People\."/)
   assert.match(out, /class="is-live pulse-dot"/)
   const text = out.replace(/<!--.*?-->/g, '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
-  assert.equal(text, '128 online · 4.2k visits')
+  assert.equal(text, '100 online here · 128 in Allworld · 4.2k visits')
+  shared.state.numbers = { online: 128, visits: 4210, cities: { lagos: 100, ibadan: 7 } }
+  app.game.cityId.value = 'ibadan'
+  const other = (await html()).replace(/<!--.*?-->/g, '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+  assert.equal(other, '7 online here · 128 in Allworld · 4.2k visits', 'the city count follows the city; the world count and visits do not')
+  app.game.cityId.value = 'lagos'
   shared.state.failing = true
   assert.match(await html(), /class="is-stale pulse-dot"/)
   shared.reset()

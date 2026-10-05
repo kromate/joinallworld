@@ -420,7 +420,9 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
   const queued = state.travel.event;
   const pending = queued && EVENTS[queued.id];
   const trip = state.activeAction?.kind === 'travel' ? state.activeAction : null;
-  const venues = venuesFor(ctx.cityId).filter((venue) => !venue.cities || (venue.cities as readonly string[]).includes(ctx.cityId)).map((venue) => destinationCard(state, venue, ctx));
+  // A visitor has no home in this city until it chooses a local government: Home is not offered as a place (unless the life stands in it).
+  const placed = Boolean(state.estate.lga);
+  const venues = venuesFor(ctx.cityId).filter((venue) => !venue.cities || (venue.cities as readonly string[]).includes(ctx.cityId)).filter((venue) => placed || venue.id !== 'home' || state.location === 'home').map((venue) => destinationCard(state, venue, ctx));
   const soon = Object.values(COMING_SOON).map((place): TravelDestination => ({
     id: place.id, kind: 'soon', label: venueLabel(place.id, ctx.cityId), district: venueDistrict(place.id, ctx.cityId), icon: place.icon, description: place.description,
     category: 'soon', x: place.map.x, y: place.map.y, zone: place.zone, here: false, visited: false, open: false, hours: 'Coming soon', status: 'Coming soon',

@@ -39,6 +39,17 @@ const emptyCity = (): CivicCityRecord => ({
   ads: { billboard: {}, sea: {} }, hunt: { found: 0, claims: 0, byDay: {} }, radio: { queues: {}, daily: {} },
 });
 
+/**
+ * When a city's civic life began: its stored opening, else the first resident it ever had, else `now`. Lagos has no opening
+ * (0): its record predates the field and its notices stay as they were.
+ */
+export function openedAtOf(city: CivicCityRecord, cityId: CityId, now: number): number {
+  if (whole(city.openedAt)) return city.openedAt as number;
+  if (cityId === 'lagos') return 0;
+  const since = Object.values(city.residents ?? {}).map((entry) => entry?.since).filter((value): value is number => Number.isFinite(value));
+  return since.length ? Math.min(...since, now) : now;
+}
+
 /** One city's civic data, created or repaired in place so a damaged collection cannot crash a route. */
 export function cityOf(civic: CivicCollection, cityId: CityId): CivicCityRecord {
   if (!record(civic.cities)) civic.cities = {};

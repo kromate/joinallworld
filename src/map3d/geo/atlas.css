@@ -19,7 +19,7 @@
 .atlas-leaders{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.atlas-leaders line{stroke:#3d3520;stroke-width:1.5;stroke-linecap:round}.atlas-leaders circle{fill:#3d3520;stroke:#fff;stroke-width:1}
 .atlas-label{position:absolute;left:0;top:0;display:grid;justify-items:center;white-space:nowrap;line-height:1.2;font-size:11px;color:#444c55;text-shadow:0 0 2px #fff,0 0 3px #fff,0 0 4px #ffffffb3;will-change:transform}
 .atlas-label b{font-weight:650}
-.atlas-label.at-centre{translate:-50% -50%}.atlas-label.at-above{translate:-50% calc(-100% - 9px)}.atlas-label.at-right{translate:8px -50%}.atlas-label.at-left{translate:calc(-100% - 8px) -50%}.atlas-label.at-below{translate:-50% 9px}.atlas-label.at-far-above{translate:-50% calc(-100% - 55px)}.atlas-label.at-far-below{translate:-50% 55px}
+.atlas-label.at-centre{translate:-50% -50%}.atlas-label.at-above{translate:-50% calc(-100% - 9px)}.atlas-label.at-right{translate:8px -50%}.atlas-label.at-left{translate:calc(-100% - 8px) -50%}.atlas-label.at-below{translate:-50% 9px}.atlas-label.at-far-above{translate:-50% calc(-100% - 55px)}.atlas-label.at-far-below{translate:-50% 55px}.atlas-label.at-far-right{translate:48px -50%}.atlas-label.at-far-left{translate:calc(-100% - 48px) -50%}
 .atlas-label.is-continent{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#52626d}
 .atlas-label.is-continent b{font-weight:700}
 .atlas-label.is-neighbour{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8b949c;text-shadow:none}
@@ -195,6 +195,15 @@
 .atlas-state-pin.at-above span{bottom:34px;left:50%;transform:translateX(-50%)}
 .atlas-state-pin.at-right span{left:34px;top:50%;transform:translateY(-50%);justify-items:start}
 .atlas-state-pin.at-left span{right:34px;top:50%;transform:translateY(-50%);justify-items:end}
+.atlas-state-pin[class*="at-far-"] span::before{content:"";position:absolute;background:#1c2b21b3}
+.atlas-state-pin.at-far-below span{top:60px;left:50%;transform:translateX(-50%)}
+.atlas-state-pin.at-far-below span::before{left:50%;top:-26px;width:1px;height:24px}
+.atlas-state-pin.at-far-above span{bottom:60px;left:50%;transform:translateX(-50%)}
+.atlas-state-pin.at-far-above span::before{left:50%;bottom:-26px;width:1px;height:24px}
+.atlas-state-pin.at-far-right span{left:60px;top:50%;transform:translateY(-50%);justify-items:start}
+.atlas-state-pin.at-far-right span::before{left:-26px;top:50%;width:24px;height:1px}
+.atlas-state-pin.at-far-left span{right:60px;top:50%;transform:translateY(-50%);justify-items:end}
+.atlas-state-pin.at-far-left span::before{right:-26px;top:50%;width:24px;height:1px}
 .atlas-state-pin:focus-visible{outline:var(--focus,3px solid #1c5f3c);outline-offset:-4px;border-radius:50%}
 .atlas-state-ext{position:absolute;width:0;height:0}
 .atlas-state-ext i{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:#9a7a3c;border:1.5px solid #fff}
@@ -203,6 +212,11 @@
 .atlas-state-ext.at-above span{bottom:9px;left:0;transform:translateX(-50%)}
 .atlas-state-ext.at-right span{left:10px;top:0;transform:translateY(-50%)}
 .atlas-state-ext.at-left span{right:10px;top:0;transform:translateY(-50%)}
+.atlas-state-ext[class*="at-far-"] span::before{content:"";position:absolute;background:#6b5a2eb3}
+.atlas-state-ext.at-far-below span{top:36px;left:0;transform:translateX(-50%)}.atlas-state-ext.at-far-below span::before{left:50%;top:-26px;width:1px;height:24px}
+.atlas-state-ext.at-far-above span{bottom:36px;left:0;transform:translateX(-50%)}.atlas-state-ext.at-far-above span::before{left:50%;bottom:-26px;width:1px;height:24px}
+.atlas-state-ext.at-far-right span{left:36px;top:0;transform:translateY(-50%)}.atlas-state-ext.at-far-right span::before{left:-26px;top:50%;width:24px;height:1px}
+.atlas-state-ext.at-far-left span{right:36px;top:0;transform:translateY(-50%)}.atlas-state-ext.at-far-left span::before{right:-26px;top:50%;width:24px;height:1px}
 .atlas-state-links{display:grid;gap:4px}
 .atlas-state-links h3{margin:0}
 .atlas-state-links p{margin:0;display:grid;gap:2px;font-size:12px;padding:8px 10px;border-radius:10px;background:#f3efe2}

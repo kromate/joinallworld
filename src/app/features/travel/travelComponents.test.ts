@@ -285,8 +285,9 @@ test('your own house: a life without a place is sent to choose; a life with one 
   const path = '/src/app/features/travel/MyHouse.vue'
   if (!app.game.view.value.estate.placed) {
     const html = await render(path)
-    assert.ok(text(html).includes('Your own house Everyone gets a starter house on their own plot, free'))
-    assert.match(html, /<button[^>]*class="ui-button is-primary is-block"[^>]*>(?:<!--.*?-->)*Choose where you live/)
+    assert.ok(text(html).includes('you have no home here yet. Everyone gets a starter house on their own plot, free'))
+    assert.match(html, /<button[^>]*class="ui-button is-primary is-block"[^>]*data-choose-lga[^>]*>(?:<!--.*?-->)*Choose your local government/, 'one primary way to settle, which opens the picker (not Profile)')
+    assert.ok(!html.includes('Choose where you live'))
   }
   await withState((state) => ({ ...state, estate: { ...state.estate, lga: 'ikeja', lgaConfirmed: true } }), async () => {
     const estate = app.game.view.value.estate

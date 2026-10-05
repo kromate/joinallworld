@@ -5,14 +5,17 @@ import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
 import { count, dateTime, until, votes } from './civicModel.ts'
+import { cityRules } from '../../../game/cities/registry.ts'
 import { STATE_HOUSE_TEXT } from './civicContent.ts'
 
 const props = defineProps<{ data: GovResponse }>()
 const { game } = useApp()
 const view = game.view
 const lagos = computed(() => view.value.cityId === 'lagos')
-const title = computed(() => (lagos.value ? STATE_HOUSE_TEXT.title : `${view.value.city.name} State House`))
-const empty = computed(() => (lagos.value ? STATE_HOUSE_TEXT.empty : `${view.value.city.name} has no Governor yet. Sign up to vote, or run for office yourself.`))
+// A city is not a state: the house is named for the state the city is in ("Oyo State House"), not for the city.
+const stateName = computed(() => cityRules(view.value.cityId)?.state.name ?? view.value.city.name)
+const title = computed(() => (lagos.value ? STATE_HOUSE_TEXT.title : `${stateName.value} House`))
+const empty = computed(() => (lagos.value ? STATE_HOUSE_TEXT.empty : `${stateName.value} has no Governor yet. Sign up to vote, or run for office yourself.`))
 </script>
 
 <template>

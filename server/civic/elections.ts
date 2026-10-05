@@ -185,9 +185,10 @@ export function govView(city: CivicCityRecord, now: number, viewerId: string | n
 }
 
 /** Recent civic news for the notice surface, newest first: results, phase changes and announcements. */
-export function notices(city: CivicCityRecord, now: number, cityName = 'Lagos'): CivicNotice[] {
+export function notices(city: CivicCityRecord, now: number, cityName = 'Lagos', openedAt = 0): CivicNotice[] {
   const phase = phaseAt(now), items: CivicNotice[] = [];
   for (const week of [phase.week, phase.week - 1]) {
+    const before = items.length;
     const times = timeline(week), result = resultOf(city, week, now);
     if (result) {
       items.push({ id: `result-${week}`, kind: 'result', at: times.closesAt, title: result.winner ? `${result.winner.name} is the new Governor of ${cityName}` : `${cityName} has no Governor this week`,
@@ -195,6 +196,8 @@ export function notices(city: CivicCityRecord, now: number, cityName = 'Lagos'):
     }
     if (now >= times.votingAt) items.push({ id: `voting-${week}`, kind: 'voting', at: times.votingAt, title: 'Polls are open', text: 'Voting for Governor runs until midnight on Saturday, Nigerian time.' });
     if (now >= times.nominationsAt) items.push({ id: `nominations-${week}`, kind: 'nominations', at: times.nominationsAt, title: 'Nominations are open', text: 'Run for Governor before Thursday, Nigerian time.' });
+    // Nothing is dated before the city opened: a notice of the week in progress starts at the opening, an earlier week's is left out.
+    for (let i = items.length - 1; i >= before; i--) if (items[i]!.at < openedAt) { if (week === phase.week) items[i]!.at = openedAt; else items.splice(i, 1); }
   }
   for (const item of city.gov.announcements) items.push({ id: `announcement-${item.id}`, kind: 'announcement', at: item.at, title: `Governor ${item.by.name} announced`, text: item.text });
   return items.filter((item) => item.at <= now && item.at > now - 8 * DAY_MS).sort((a, b) => b.at - a.at || (a.id < b.id ? -1 : 1)).slice(0, 12);

@@ -33,15 +33,28 @@ export const exactCount = (value: number): string => whole(value).toLocaleString
 
 const noun = (n: number, one: string, many: string): string => (whole(n) === 1 ? one : many)
 
-/** The label read aloud: "128 people online. 4,210 visits in total." */
-export function pulseAria(numbers: PulseNumbers, tone: PulseTone = 'live'): string {
-  const text = `${exactCount(numbers.online)} ${noun(numbers.online, 'person', 'people')} online. ${exactCount(numbers.visits)} ${noun(numbers.visits, 'visit', 'visits')} in total.`
+/** Players online in one city, or null when the answer does not carry that city (then only the world count is known). */
+export function onlineIn(numbers: PulseNumbers, cityId: string | null | undefined): number | null {
+  if (!cityId) return null
+  const here = numbers.cities[cityId]
+  return typeof here === 'number' ? whole(here) : null
+}
+
+/** The label read aloud: "12 people online here. 128 people online in Allworld. 4,210 visits in total across Allworld." */
+export function pulseAria(numbers: PulseNumbers, tone: PulseTone = 'live', cityId?: string | null): string {
+  const here = onlineIn(numbers, cityId)
+  const world = `${exactCount(numbers.online)} ${noun(numbers.online, 'person', 'people')} online${here === null ? '' : ' in Allworld'}.`
+  const lead = here === null ? '' : `${exactCount(here)} ${noun(here, 'person', 'people')} online here. `
+  const text = `${lead}${world} ${exactCount(numbers.visits)} ${noun(numbers.visits, 'visit', 'visits')} in total${here === null ? '' : ' across Allworld'}.`
   return `${text}${tone === 'stale' ? ' These numbers may be out of date.' : ''} Open People.`
 }
 
-/** The tooltip: the exact values. */
-export function pulseTitle(numbers: PulseNumbers, tone: PulseTone = 'live'): string {
-  return `${exactCount(numbers.online)} online now · ${exactCount(numbers.visits)} visits in total${tone === 'stale' ? ' (not up to date)' : ''}`
+/** The tooltip: the exact values. Visits are always for the whole game, and it says so. */
+export function pulseTitle(numbers: PulseNumbers, tone: PulseTone = 'live', cityId?: string | null): string {
+  const here = onlineIn(numbers, cityId)
+  const stale = tone === 'stale' ? ' (not up to date)' : ''
+  if (here === null) return `${exactCount(numbers.online)} online now · ${exactCount(numbers.visits)} visits in total${stale}`
+  return `${exactCount(here)} online here · ${exactCount(numbers.online)} in Allworld · ${exactCount(numbers.visits)} visits in total across all of Allworld${stale}`
 }
 
 /** Green while the last answer is recent; amber when the last request failed or nothing has come for a while. */

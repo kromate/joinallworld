@@ -14,7 +14,7 @@ import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, 
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
 import { ATLAS, ATLAS_LEVELS, ZONES, AFRICA_GROUPS, canEnter, cityEntry, plannedRoutes, regionEntry, regionStatus, stateOfCity, MORE_REGIONS } from '../regions.ts';
-import { allCityLinks } from '../../game/cities/registry.ts';
+import { allCityLinks, cityRules } from '../../game/cities/registry.ts';
 
 const here = (name: string) => new URL(name, import.meta.url);
 const world = decodeTopology(WORLD), africa = decodeTopology(AFRICA), nigeria = decodeTopology(NIGERIA), around = decodeTopology(AROUND);
@@ -135,7 +135,11 @@ test('open versus coming soon is the live registry: Lagos, Oyo and Ogun are open
   }
   const lagos = regionInfo({ kind: 'state', id: 'lagos' }, { ...context, feature: nigeria.byId.get('lagos') });
   assert.deepEqual([lagos.action!.kind, lagos.action!.label, lagos.tone], ['open-city', 'Enter Lagos', 'here']);
-  assert.equal(lagos.routes.length, CITY_LINKS.filter((link) => link.a === 'lagos' || link.b === 'lagos').length);
+  const isOpen = (id: string): boolean => cityRules(id)?.status === 'open';
+  // Only open destinations are listed with a fare; planned ones are named under "Opening soon" and carry none.
+  assert.equal(lagos.routes.length, CITY_LINKS.filter((link) => (link.a === 'lagos' || link.b === 'lagos') && isOpen(link.a === 'lagos' ? link.b : link.a)).length);
+  assert.ok(lagos.routes.every((route) => isOpen(route.to)));
+  assert.ok(lagos.soon.length > 0 && lagos.soon.every((name) => !['Ibadan', 'Abeokuta'].includes(name)));
   const oyo = regionInfo({ kind: 'state', id: 'oyo' }, { ...context, feature: nigeria.byId.get('oyo') });
   assert.equal(regionStatus('state', 'oyo'), 'open'); assert.equal(stateOfCity('ibadan'), 'oyo');
   assert.equal(oyo.preview, null); assert.equal(oyo.teaser, cityEntry('ibadan')!.teaser); assert.deepEqual(oyo.routes.map((route) => route.mode), ['road', 'rail']);
@@ -427,4 +431,22 @@ test('a label that gives way to another is marked displaced and remembers the po
   assert.equal(first.displaced, false);
   assert.equal(second.displaced, true);
   assert.deepEqual(second.home, { x: 200, y: 200 });
+});
+
+test('open cities that crowd on a phone keep every name, none on another city’s dot, with a leader to the dot when a name is moved', () => {
+  const alts = ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'] as const
+  for (const pixels of [20, 30, 40]) {
+    const point = (lon: number, lat: number) => ({ x: 195 + (lon - 3.4) * pixels, y: 500 - (lat - 6.5) * pixels })
+    const cities: [string, number, number, number, boolean][] = [['Lagos', 3.38, 6.52, 2000, true], ['Ibadan', 3.9, 7.38, 1000, false], ['Abeokuta', 3.35, 7.16, 1000, false]]
+    const candidates = cities.map(([text, lon, lat, priority, fixed]) => ({ id: text, ...point(lon, lat), text, priority, size: 13, anchor: 'above' as const, alts, fixed, note: 'Open', cls: 'is-city is-open' }))
+    const placed = placeLabels(candidates, { width: 390, height: 844 });
+    assert.equal(placed.length, 3, `${pixels}px: every open city is named`);
+    for (const label of placed) {
+      for (const other of placed) if (other !== label) {
+        assert.ok(label.box.right <= other.box.left || other.box.right <= label.box.left || label.box.bottom <= other.box.top || other.box.bottom <= label.box.top, `${label.id} and ${other.id} do not overlap`);
+        assert.ok(!(other.home.x > label.box.left && other.home.x < label.box.right && other.home.y > label.box.top && other.home.y < label.box.bottom), `${label.id} is not on the dot of ${other.id}`);
+      }
+      if (label.displaced) assert.deepEqual(label.home, { x: candidates.find((item) => item.id === label.id)!.x, y: candidates.find((item) => item.id === label.id)!.y }, 'a moved name remembers its dot, for the leader line');
+    }
+  }
 });

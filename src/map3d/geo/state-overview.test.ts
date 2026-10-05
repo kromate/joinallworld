@@ -65,3 +65,17 @@ test('the state view pins each open city, draws the travel links in the shared f
   assert.match(html, /style="aspect-ratio:[\d.]+ \/ [\d.]+"/)
   assert.match(html, /style="left:[\d.]+%;top:[\d.]+%"/)
 })
+
+test('four cities a few kilometres apart each get a name of their own, set further out with a leader when the near sides are taken', () => {
+  const cities = [
+    { id: 'a', name: 'Abeokuta', units: [], at: { lon: 3.1, lat: 7.05 } },
+    { id: 'b', name: 'Ota', units: [], at: { lon: 3.101, lat: 7.049 } },
+    { id: 'c', name: 'Ijebu-Ode', units: [], at: { lon: 3.102, lat: 7.051 } },
+    { id: 'd', name: 'Sagamu', units: [], at: { lon: 3.1015, lat: 7.0495 } },
+  ]
+  const html = stateOverviewHtml(overview, cities, null, {}, { current: 'a' })
+  const sides = [...html.matchAll(/class="atlas-state-pin[^"]*? at-([a-z-]+)"/g)].map((match) => match[1])
+  assert.equal(sides.length, 4)
+  assert.equal(new Set(sides).size, 4, `no two names share a side: ${sides.join(', ')}`)
+  assert.ok(sides.some((side) => side?.startsWith('far-')), 'the crowded ones are set further out')
+})

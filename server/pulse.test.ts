@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import { once } from 'node:events';
 import { fixture } from './test-fixture.ts';
 import { createServer } from './server.ts';
+import { createLife } from '../src/life.ts';
 import type { Device } from './test-fixture.ts';
 
 type Pulse = { online: number; visits: number; cities: Record<string, number> };
@@ -113,4 +114,25 @@ test('the first start seeds from the stored sessions (and archived lives), and m
   assert.equal((await again.get(ada.cookie)).visits, 3, 'seeded with the three stored sessions, the caller included once');
   assert.equal((await again.get(ada.cookie)).visits, 3, 'a stored session is not counted again on the day it was seeded');
   await again.stop();
+});
+
+test('the header pill, the Neighbours directory and the hunt chip read one number per city, in two cities', async (t) => {
+  const f = await fixture(t);
+  const ada = await f.device('Ada'), bola = await f.device('Bola'), chidi = await f.device('Chidi');
+  const a = await f.joinRoom(ada), b = await f.joinRoom(bola), c = await f.joinRoom(chidi);
+  // Put Chidi's room in Ibadan (the registry holds both cities); the count follows the room's city.
+  for (const ws of f.server.wss.clients as Set<{ room?: string; session?: { id: string } }>) if (ws.session?.id === chidi.id) ws.room = 'ibadan:park';
+  await f.server.store.transact((db) => { const session = db.sessions[chidi.cookie.slice(4)]; assert.ok(session); session.character = { ...session.character, v: 2, city: 'ibadan' } as typeof session.character; session.cities.ibadan = { state: createLife({ estate: { city: 'ibadan' } }, { now: f.now(), cityId: 'ibadan' }), updatedAt: f.now(), salt: 'ibadan-salt-12345' }; delete session.cities.lagos; });
+  const read = async (path: string, who: Device) => { const res = await f.request(path, undefined, who.cookie); assert.equal(res.status, 200, `${path} ${JSON.stringify(await res.clone().json())}`); return await res.json() as Record<string, any>; };
+  for (const [city, expected, viewer] of [['lagos', 2, ada], ['ibadan', 1, chidi]] as const) {
+    f.advance(4000);
+    const pill = await read('/api/world/pulse', ada);
+    const hunt = await read(`/api/civic/pulse?city=${city}`, viewer);
+    const neighbours = await read(`/api/civic/neighbours?city=${city}`, viewer);
+    assert.equal(pill.cities[city], expected, `pill, ${city}`);
+    assert.equal(hunt.counters.online, expected, `hunt chip, ${city}`);
+    assert.equal(neighbours.online, expected, `directory, ${city}`);
+    assert.equal(pill.online, 3, 'the world count is every connected player');
+  }
+  void a; void b; void c;
 });

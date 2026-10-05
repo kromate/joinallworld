@@ -64,13 +64,14 @@ import { makeContext } from '../../src/game/util.ts';
 import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.ts';
 import { cityContent, cityRules } from '../../src/game/cities/index.ts';
 import { civicEligibility, pollingVenueFor } from '../../src/game/systems/civic.ts';
-import { cityOf, emptyCivic, nextId } from '../civic/data.ts';
+import { cityOf, emptyCivic, nextId, openedAtOf } from '../civic/data.ts';
 import { cleanLine } from '../civic/text.ts';
 import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapNotice, govView, notices, vote, voteBlock } from '../civic/elections.ts';
 import { canOccupyVenue, hash53, isSharedAddress } from '../protocol.ts';
 import { moderationService } from '../moderation/service.ts';
 import { AD_KINDS, adsView, removeAd, rent, rentBlock, validateCreative } from '../civic/ads.ts';
 import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong } from '../civic/radio.ts';
+import { pulseOf } from '../pulse.ts';
 import { checkIn, counters, huntCounters, neighboursView, richListView } from '../civic/residents.ts';
 
 const COUNTER_CACHE_MS = 5000;
@@ -112,10 +113,12 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     const who = ctx.publicSession(session);
     const life = ctx.settle(session, cityId);
     const civic = civicOf(db), city = cityOf(civic, cityId);
+    if (city.openedAt === undefined && cityId !== 'lagos') city.openedAt = openedAtOf(city, cityId, ctx.now());
     // A life still held for the quick start (Play not confirmed) is not a resident yet: it is in no directory, list or counter.
     // Nor is a guest who is playing: a guest has no local government and no house, so it is in no residents directory, estate
     // or rich list until it settles in (src/game/systems/onboarding.ts THE STAGED MODEL). It still plays, travels and meets people.
-    const resident = !(life.onboarding?.required === true && life.onboarding.done !== true) && !isGuestLife(life);
+    // A visitor in a city (arrived and no local government chosen yet) has no home there either, so it is not listed as a resident until it chooses.
+    const resident = !(life.onboarding?.required === true && life.onboarding.done !== true) && !isGuestLife(life) && Boolean(life.estate?.lga);
     if (resident) checkIn(city, ctx.now(), who, life, ttl(), districts(cityId));
     prunePrefs(civic);
     return { session, who, life, civic, city, resident };
@@ -129,13 +132,16 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
   const viewerKey = (request: RouteRequest, who: PlayerRef | null): string => who?.id ?? `ip:${request.ip}`;
 
   // Presence is a scan over open sockets per resident, so the city totals are cached briefly.
+  /** Players online in this city: the same number the header pill shows (server/pulse.ts), so every surface agrees. */
+  const pulses = pulseOf(ctx);
+  const onlineHere = (cityId: CityId): number => pulses.pulse().cities[cityId] ?? 0;
   const counterCache = new Map<CityId, { at: number; value: CityCounters }>();
   function cityCounters(city: CivicCityRecord, cityId: CityId): CityCounters {
     const hit = counterCache.get(cityId), now = ctx.now();
-    if (hit && now >= hit.at && now - hit.at < COUNTER_CACHE_MS) return hit.value;
+    if (hit && now >= hit.at && now - hit.at < COUNTER_CACHE_MS) return { ...hit.value, online: onlineHere(cityId) };
     const value = counters(city, now, ttl(), ctx.online);
     counterCache.set(cityId, { at: now, value });
-    return value;
+    return { ...value, online: onlineHere(cityId) };
   }
 
   const rules = (cityId: CityId): GovRules => ({ beta: true, minDaysToRun: ELECTION.minDaysToRun, minDaysToVote: ELECTION.minDaysToVote, minWorkDays: ELECTION.minWorkDays, votesPerAddress: ctx.config.votesPerAddress, filingFee: ELECTION.filingFee, sloganMin: ELECTION.sloganMin, sloganMax: ELECTION.sloganMax,
@@ -177,7 +183,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     return { city: cityId, checkedIn, counters: cityCounters(city, cityId),
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
-      notices: notices(city, now, cityName(cityId)),
+      notices: notices(city, now, cityName(cityId), openedAtOf(city, cityId, now)),
       radio: venue && isClub(venue, cityContent(cityId).radioVenueIds) ? radioView(city, now, venue, who?.id ?? null, cityContent(cityId).radioVenueIds) : null };
   }
 
@@ -193,7 +199,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
           const { who, life, city, resident } = enter(db, request, cityId);
           counterCache.delete(cityId);
           // City news the resident has not been told yet goes into their own Updates feed, once.
-          const fresh = resident ? notices(city, ctx.now(), cityName(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
+          const fresh = resident ? notices(city, ctx.now(), cityName(cityId), openedAtOf(city, cityId, ctx.now())).filter((item) => !life.civic.news.includes(item.id)) : [];
           if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) }, 'only notices whose id is not yet in life.civic.news are posted');
           return pulseBody(city, cityId, who, life, resident);
         }, { durable: false }); // a check-in acknowledges nothing: news not yet stored is simply posted again
@@ -287,7 +293,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const viewer = ctx.publicSession(session);
         limit('read', session.publicId, 120);
         return { city: cityId, demonym: DEMONYMS[cityId] ?? `${cityName(cityId)} residents`, hidden: civic.prefs[viewer.id]?.directory === true,
-          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, viewer.id, districts(cityId)) };
+          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, viewer.id, districts(cityId)), online: onlineHere(cityId) };
       });
       return { body };
     },

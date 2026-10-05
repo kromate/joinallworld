@@ -1301,6 +1301,8 @@ export interface CityContent<City extends string = string> {
   lotteryWording?: Readonly<Partial<Record<LotteryId, { bullets: readonly string[] }>>>
   /** Local nicknames for the shared cars (the label, price and speed stay as they are); a car without one keeps the shared nickname. */
   carNicknames?: Readonly<Partial<Record<CarId, string>>>
+  /** The colours of a home's room in this city (back wall, side wall and the two floor tiles, as #rrggbb); a city without one keeps the shared room colours. */
+  homePalette?: HomePalette
   venues: readonly CityVenueContent<City>[]
   regulars: readonly CityRegularContent<City>[]
   workplaces: readonly CityWorkplaceContent[]
@@ -1316,6 +1318,9 @@ export interface CityContent<City extends string = string> {
   thingsToDo: readonly CityGuidePlace[]
   culture: CityCultureCard
 }
+
+/** The wall and floor colours of a home interior: data only, never stored in a life. */
+export interface HomePalette { readonly back: string; readonly left: string; readonly floor: readonly [string, string] }
 
 /** Eager metadata needed by validation, storage compatibility, prices and travel. */
 export interface CityModuleRules<

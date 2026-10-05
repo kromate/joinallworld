@@ -15,7 +15,7 @@
  *   cls, title  carried through for the atlas's DOM node (a class list and a tooltip)
  */
 
-export type LabelAnchor = 'centre' | 'above' | 'right' | 'left' | 'below' | 'far-above' | 'far-below';
+export type LabelAnchor = 'centre' | 'above' | 'right' | 'left' | 'below' | 'far-above' | 'far-below' | 'far-right' | 'far-left';
 export interface LabelBox { left: number; top: number; right: number; bottom: number }
 export interface LabelCandidate { id: string; x: number; y: number; priority: number; size?: number; room?: number | undefined,
   text: string; short?: string | undefined; note?: string | undefined; anchor?: LabelAnchor | undefined; /** Other anchors to try, in order, when the first would overlap a label already shown. */ alts?: readonly LabelAnchor[] | undefined; fixed?: boolean | undefined; cls?: string | undefined; title?: string | undefined }
@@ -32,6 +32,8 @@ const boxOf = (candidate: LabelCandidate, text: string): LabelBox => {
   if (candidate.anchor === 'above') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y - h - 8, bottom: candidate.y - 8 };
   if (candidate.anchor === 'far-above') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y - h - 54, bottom: candidate.y - 54 };
   if (candidate.anchor === 'far-below') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y + 54, bottom: candidate.y + 54 + h };
+  if (candidate.anchor === 'far-right') return { left: candidate.x + 48, right: candidate.x + 48 + w, top: candidate.y - h / 2, bottom: candidate.y + h / 2 };
+  if (candidate.anchor === 'far-left') return { left: candidate.x - 48 - w, right: candidate.x - 48, top: candidate.y - h / 2, bottom: candidate.y + h / 2 };
   if (candidate.anchor === 'left') return { left: candidate.x - 7 - w, right: candidate.x - 7, top: candidate.y - h / 2, bottom: candidate.y + h / 2 };
   if (candidate.anchor === 'below') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y + 8, bottom: candidate.y + 8 + h };
   if (candidate.anchor === 'right') return { left: candidate.x + 7, right: candidate.x + 7 + w, top: candidate.y - h / 2, bottom: candidate.y + h / 2 };
@@ -54,6 +56,18 @@ export interface PlaceOptions { cap?: number; pad?: number; width?: number; heig
  */
 export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL_CAP, pad = 3, width = Infinity, height = Infinity, avoid = [] }: PlaceOptions = {}): PlacedLabel[] {
   const placed: PlacedLabel[] = [];
+  // A city's own dot: a label that has moved away from its point never sits on top of another city's dot.
+  const dots = candidates.filter((item) => item.cls?.includes('is-city'));
+  const covers = (box: LabelBox, self: LabelCandidate): boolean => dots.some((dot) => dot.id !== self.id && dot.x > box.left - 5 && dot.x < box.right + 5 && dot.y > box.top - 5 && dot.y < box.bottom + 5);
+  // The leader line from the point to a moved label must not run through a label already shown.
+  const crosses = (box: LabelBox, self: LabelCandidate): boolean => {
+    const x = Math.min(Math.max(self.x, box.left), box.right), y = Math.min(Math.max(self.y, box.top), box.bottom);
+    for (let step = 1; step < 8; step++) {
+      const px = self.x + (x - self.x) * step / 8, py = self.y + (y - self.y) * step / 8;
+      if (placed.some((other) => !(self.x > other.box.left && self.x < other.box.right && self.y > other.box.top && self.y < other.box.bottom) && px > other.box.left && px < other.box.right && py > other.box.top && py < other.box.bottom)) return true;
+    }
+    return false;
+  };
   const ordered = [...candidates].sort((a, b) => b.priority - a.priority || (a.id < b.id ? -1 : 1));
   for (const candidate of ordered) {
     if (placed.length >= cap) break;
@@ -62,12 +76,17 @@ export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL
       let box = boxOf(candidate, text), at = candidate, displaced = false;
       if (box.right < 0 || box.left > width || box.bottom < 0 || box.top > height) break;
       // A label that would overlap another tries its other anchors before it gives way.
-      if (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0)))) {
+      // A label keeps its place unless that would hide another city's dot (or, for one that may give way, overlap a label); then it moves to the nearest free side.
+      const hides = covers(box, candidate);
+      if (hides || (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0))))) {
+        // Of the other anchors that are free, the one nearest the point it names wins (the list order breaks ties).
+        let nearest = Infinity;
         for (const anchor of candidate.alts ?? []) {
           const moved = { ...candidate, anchor }, trial = boxOf(moved, text);
           if (trial.right < 0 || trial.left > width || trial.bottom < 0 || trial.top > height) continue;
-          if (placed.some((other) => overlaps(trial, other.box, pad)) || avoid.some((other) => overlaps(trial, other, 0))) continue;
-          box = trial; at = moved; displaced = true; break;
+          if (placed.some((other) => overlaps(trial, other.box, pad)) || avoid.some((other) => overlaps(trial, other, 0)) || covers(trial, candidate) || crosses(trial, candidate)) continue;
+          const away = Math.hypot((trial.left + trial.right) / 2 - candidate.x, (trial.top + trial.bottom) / 2 - candidate.y);
+          if (away < nearest - 0.5) { nearest = away; box = trial; at = moved; displaced = true; }
         }
       }
       if (candidate.fixed) {

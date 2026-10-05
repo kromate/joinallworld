@@ -558,7 +558,7 @@ const campusDome: SceneDef = {
     for (let i = 0; i < 8; i++) { const a = (i / 8) * PI * 2; b.box(Math.sin(a) * 4.44, 6.2, -9 + Math.cos(a) * 4.44, 0.5, 1.6, 0.14, '#7aa0b8', { ry: a }); }
     b.ball(0, 7.4, -9, 4.5, 3.8, 4.5, '#f6f1e2', { seg: 16 });
     b.cyl(0, 11.2, -9, 0.6, 1.2, '#d6a83a', { seg: 8 }); b.cone(0, 12.3, -9, 0.7, 1, '#d6a83a', { seg: 8 }); b.box(0, 13.1, -9, 0.1, 0.8, 0.1, '#d6a83a');
-    labelled(b, label, 0, 3.6, -4.9, 7.8, 0.4, '#f4e6b8', '#2f3b36', false);
+    labelled(b, label, 0, 5.9, -3.5, 7.8, 0.4, '#f4e6b8', '#2f3b36', false);
     // The long colonnade along the left: a row of columns carrying a flat roof from the chapel to the front
     for (let z = -10; z <= 9; z += 2.4) { b.cyl(-9.4, 1.7, z, 0.24, 3.4, WHITE, { seg: 8 }); b.cyl(-6.4, 1.7, z, 0.24, 3.4, WHITE, { seg: 8 }); }
     b.box(-7.9, 3.55, -0.5, 4.2, 0.3, 21.4, '#e8e0cc'); b.box(-7.9, 3.8, -0.5, 4.6, 0.12, 21.8, '#d6ccb2');

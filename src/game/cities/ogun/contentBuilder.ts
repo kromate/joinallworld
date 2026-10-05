@@ -34,6 +34,7 @@ export interface OgunContentSpec<City extends string> {
   readonly billboardRoads: CityContent<City>['billboardRoads']; readonly tablePlaces: CityContent<City>['tablePlaces']
   readonly dreamWording: Readonly<Partial<Record<DreamId, Partial<Pick<DreamDefinition, 'label' | 'goal' | 'measure'>>>>>
   readonly lotteryWording: Readonly<Partial<Record<LotteryId, { bullets: readonly string[] }>>>
+  readonly homePalette?: CityContent<City>['homePalette']
 }
 
 export const activity = (id: string, label: string, icon: string, tags: string[], fields: Partial<ActivityDefinition> = {}): ActivityDefinition => ({
@@ -137,7 +138,7 @@ export function buildOgunContent<City extends string>(spec: OgunContentSpec<City
     ajebutter: { bullets: ['No loan and a large allowance', 'Charisma starts at level 2', 'Soft life: learn every skill 10% slower', `Easily bored: Fun drops 15% faster; ${localHouse.toLowerCase()}`] },
   })
   return Object.freeze({
-    cityId: spec.cityId, localModes: spec.localModes, dreamWording, lotteryWording,
+    cityId: spec.cityId, localModes: spec.localModes, dreamWording, lotteryWording, ...(spec.homePalette ? { homePalette: spec.homePalette } : {}),
     localUnitDescriptions: spec.localUnitDescriptions, venues, regulars, workplaces, unavailableCareerIds: Object.freeze([]),
     housing: Object.freeze(spec.houses.map((house) => ({ districtId: house.districtId, position: house.point, definition: { id: house.id, label: house.label, district: house.district, grid: house.grid, rent: house.rent, moveIn: house.rent * 3, description: `A beta rental option in ${house.district}.`, betaFields: ['grid', 'rent', 'moveIn'] } satisfies HouseDefinition, spot: { district: house.district, zone: 'mainland' as const, map: displayPoint(spec.origin, spec.bounds, house.point) } }))),
     events: spec.events, starterGoals: goals(spec), wishes: wishes(spec), radioVenueIds: spec.radioVenueIds,

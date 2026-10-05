@@ -665,14 +665,15 @@ export function simulateTraveller({ daysEach = 3 }: { daysEach?: number } = {}):
   mark('settled in Ibadan');
   for (let i = 0; i < daysEach; i++) {
     player.awayUntil(dayStart(day++) + 9 * 3600000);
-    // The held job is Lagos's: its workplace is worked in Lagos, so the days away are spent at the city's places.
-    player.upkeep({ energy: 40, hunger: 45, mode: 'trek' });
+    // The held job moves with the player (free, level kept): it is worked at the city's own workplace, then a city place is visited.
+    if (i === 0) player.must('apply-job', { id: 'community-helper' });
+    helperDay(player, IBADAN_HELPER.venue, IBADAN_HELPER.spot);
     ibadanActivity(player, 'bowers-tower', 'ibadan-tower-view');
-    player.upkeep({ mode: 'trek' });
     player.settle();
   }
   player.awayUntil(dayStart(day++) + 9 * 3600000);
   travelTo('lagos', 'rail');
+  player.must('apply-job', { id: 'community-helper' });
   play('park', 'work', 'helper-shift', daysEach);
   mark('home again');
   return cityLife('Lagos, Ibadan, Lagos', day, player, player.seed, stages, fares);
@@ -744,10 +745,9 @@ export function simulateOgunTraveller({ daysEach = 3 }: { daysEach?: number } = 
     const places = ogunPlaces(city);
     for (let i = 0; i < daysEach; i++) {
       player.awayUntil(dayStart(day++) + 9 * 3600000);
-      // The held job is Lagos's and is worked in Lagos: away, the days go to the city's own places.
-      player.upkeep({ energy: 40, hunger: 45, mode: 'trek' });
-      if (player.travel(places.play.venue, 'trek')) player.run(places.play.spot, places.play.activity);
-      player.upkeep({ mode: 'trek' });
+      // The held job moves with the player (free, level kept), so each day is a shift at the city's workplace and one of its places.
+      if (i === 0) player.must('apply-job', { id: 'community-helper' });
+      ogunDay(player, places, true);
       player.settle();
     }
   };
@@ -757,6 +757,7 @@ export function simulateOgunTraveller({ daysEach = 3 }: { daysEach?: number } = 
   travelTo('ibadan', 'rail');
   travelTo('abeokuta', 'road');
   travelTo('lagos', 'road');
+  player.must('apply-job', { id: 'community-helper' });
   lagosDays(daysEach);
   mark('home again');
   return cityLife('Lagos, Ota, Abeokuta, Ibadan, Lagos', day, player, player.seed, stages, fares);

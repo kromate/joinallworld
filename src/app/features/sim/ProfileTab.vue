@@ -88,7 +88,8 @@ async function submit(): Promise<void> {
           <li v-if="onboarding.traits.length"><b>Traits</b> <template v-for="(id, index) in onboarding.traits" :key="id"><template v-if="index"> · </template><GameIcon inline kind="trait" :id="id" :emoji="traits[id]?.icon" /> {{ traits[id]?.label }}</template></li>
           <li v-if="onboarding.dream"><b>Dream</b> <GameIcon inline kind="dream" :id="onboarding.dream" :emoji="dream?.icon" /> {{ dream?.label }}</li>
           <li v-if="onboarding.lottery"><b>Born</b> <GameIcon inline kind="lottery" :id="onboarding.lottery.id" :emoji="onboarding.lottery.icon" /> {{ onboarding.lottery.label }}</li>
-          <li><b>Home</b> {{ home ? `${home.label}, ${home.district}` : 'Your home' }} · <button type="button" class="sim-link" @click="shell.open('houses')">See houses</button></li>
+          <li v-if="view.estate.placed"><b>Home</b> {{ home ? `${home.label}, ${home.district}` : 'Your home' }} · <button type="button" class="sim-link" @click="shell.open('houses')">See houses</button></li>
+          <li v-else><b>Home</b> None in {{ view.estate.cityName }} yet · <button type="button" class="sim-link" @click="shell.open('houses')">Choose your {{ view.estate.unit }}</button></li>
         </ul>
       </div>
     </div>

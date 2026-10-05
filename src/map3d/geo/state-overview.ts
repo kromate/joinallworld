@@ -23,10 +23,12 @@ const polygonPath = (polygons: readonly LonLatPolygon[]): string => polygons.fla
 
 /** The width the state map is laid out for when pin names are placed; the real width only scales every distance alike. */
 const STAGE_PX = 340
-type Side = 'below' | 'above' | 'right' | 'left'
+/** Where a name sits against its pin; the `far-` sides are set further out and drawn with a leader line to the pin they name. */
+type Side = 'below' | 'above' | 'right' | 'left' | 'far-below' | 'far-above' | 'far-right' | 'far-left'
+const FAR = 26
 interface Box { l: number; r: number; t: number; b: number }
-const nameBox = (x: number, y: number, name: string, side: Side): Box => {
-  const w = name.length * 6.6 + 8, h = 16, gap = 12
+const nameBox = (x: number, y: number, name: string, where: Side): Box => {
+  const w = name.length * 6.6 + 8, h = 16, far = where.startsWith('far-'), gap = 12 + (far ? FAR : 0), side = far ? where.slice(4) : where
   return side === 'below' ? { l: x - w / 2, r: x + w / 2, t: y + gap, b: y + gap + h } : side === 'above' ? { l: x - w / 2, r: x + w / 2, t: y - gap - h, b: y - gap }
     : side === 'right' ? { l: x + gap, r: x + gap + w, t: y - h / 2, b: y + h / 2 } : { l: x - gap - w, r: x - gap, t: y - h / 2, b: y + h / 2 }
 }
@@ -85,7 +87,7 @@ export function stateOverviewHtml(overview: CityStateOverview, cities: readonly 
   }
   const pins = placed.map(city => {
     const here = city.id === extras.current, picked = city.id === selectedCity, spot = at(city.id)
-    const label = side(city.id, here ? `${city.name} You are here` : city.name, ['below', 'above', 'right', 'left'])
+    const label = side(city.id, here ? `${city.name} You are here` : city.name, ['below', 'above', 'right', 'left', 'far-below', 'far-above', 'far-right', 'far-left'])
     return `<button type="button" class="atlas-state-pin${here ? ' is-here' : ''}${picked ? ' is-selected' : ''} at-${label}" style="left:${percent(spot.left)}%;top:${percent(spot.top)}%" data-atlas-inspect-city="${escape(city.id)}" aria-pressed="${picked}" aria-label="${escape(city.name)}${here ? ', you are here' : ', open'}"><i aria-hidden="true"></i><span><b>${escape(city.name)}</b>${here ? '<small>You are here</small>' : ''}</span></button>`
   }).join('')
   const ext = outside.filter(place => links.some(link => link.a === place.id || link.b === place.id)).map(place => {

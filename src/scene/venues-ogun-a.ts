@@ -151,83 +151,179 @@ function ledgeWall(b: Batch, x0: number, x1: number, z: number, tone: Colour, ca
 export const LOOK_WOMAN = (colour: string, extra2: Record<string, unknown> = {}) => ({ body: 'woman', outfit: 'kaftan', outfitColor: colour, ...extra2 });
 
 // ---------------------------------------------------------------------------------------------
-// Rock outcrop: granite swells above a stone ledge, carved steps climbing its face, cave mouths and an old tree.
+// Rock outcrop: the viewing terrace at the foot of a granite outcrop. Carved steps wind up the face in three flights to a
+// summit terrace with a railing and a shelter; cave mouths open at the base, an old forest tree grows on a rock shelf, and
+// the plaza ends in a railing over a sheer drop to the roofs, the river and the hills far below.
 
-const GRANITE = ['#8d8883', '#9c958d', '#7c7873', '#a59d94', '#6f6b66', '#b0a79c'];
+const GRANITE = ['#a79f94', '#b4ab9e', '#968f85', '#bfb6a8', '#8c857b'];
+const FLOOR_Y = -7.6;
 
-function rockMass(b: Batch, rand: () => number): void {
-  const blobs: [number, number, number, number, number, number][] = [
-    [-9, 4.6, -9.6, 8.6, 6, 6.4], [-3.4, 3.2, -8.8, 5, 4.2, 4.4], [-14, 4.8, -8, 5.6, 6.2, 5], [-10, 9.4, -10.4, 5.6, 4.4, 4.4], [-5.2, 7.2, -10.6, 3.8, 4.2, 3.4],
-    [-12.6, 12, -10, 3.2, 3.2, 3], [-7.6, 12, -11, 2.8, 3.2, 2.6], [-1.6, 1.8, -7.4, 3.2, 2.4, 2.6], [-14.4, 1.6, -4.4, 2.8, 2.6, 2.8], [-1, 4, -12.4, 5.4, 5, 3.2],
+/** A smooth granite swell: a sphere clipped by the ground below, so that it reads as one rounded rock rather than as facets. */
+function swell(b: Batch, x: number, y: number, z: number, rx: number, ry: number, rz: number, tone: number): void {
+  b.ball(x, y, z, rx, ry, rz, GRANITE[tone % GRANITE.length]!, { seg: 7 });
+}
+
+/** The rock itself: a massive stepped body under the flights and rounded swells that soften it into an outcrop. */
+function rockBody(b: Batch, rand: () => number): void {
+  // The solid core under the three flights, in jointed slabs
+  b.box(-8.4, 1.5, -8.2, 12.8, 3.0, 5.6, '#9a9389');
+  b.box(-6.6, 4.5, -9.2, 9.4, 3.0, 3.6, '#a29a8f');
+  // Rounded shoulders and a crest, left, right and behind
+  const swells: [number, number, number, number, number, number][] = [
+    [-15.4, 3, -7.2, 5.2, 7, 6.2], [-11, 9.4, -13.6, 6.4, 4.6, 4.4], [-4.8, 7, -14, 5.6, 6, 4.4], [-15, 8, -13, 4.6, 5.6, 4.2],
+    [1.6, 2.6, -9.8, 3.4, 3.6, 3.4], [-0.4, 5.2, -12, 4, 4, 3.6],
   ];
-  blobs.forEach(([x, y, z, rx, ry, rz], i) => b.ico(x, y, z, rx, ry, rz, GRANITE[i % GRANITE.length]!));
-  // Weathering streaks and lichen on the face
-  for (let i = 0; i < 16; i++) {
-    const x = -13 + rand() * 11, y = 0.8 + rand() * 8, z = -5.6 - rand() * 1.2;
-    b.quad(x, y, z, 0.15 + rand() * 0.2, 1 + rand() * 1.6, '#5e5a56');
+  swells.forEach(([x, y, z, rx, ry, rz], i) => swell(b, x, y, z, rx, ry, rz, i));
+  // Dark water streaks down the slabs and tufts of green in the cracks
+  for (let i = 0; i < 26; i++) {
+    const x = -14 + rand() * 12, y = 1 + rand() * 9, z = -3.7 - rand() * 0.2;
+    if (rand() < 0.5) b.quad(x, y, -4.62 - rand() * 0.2, 0.14 + rand() * 0.2, 0.8 + rand() * 1.6, '#5e5a54'); else b.quad(x, y, z - 2 - rand() * 3, 0.14 + rand() * 0.2, 0.8 + rand() * 1.6, '#5e5a54');
   }
-  for (let i = 0; i < 8; i++) b.ico(-12.6 + rand() * 10, 1.4 + rand() * 4.6, -5.4 - rand() * 1.4, 0.4 + rand() * 0.4, 0.2, 0.3, '#6f8a52');
+  for (const [x, y, z, r] of ([[-13, 3.3, -3.9, 0.7], [-1.4, 6.2, -5.4, 0.6], [-12.6, 6.4, -6.2, 0.8], [-7.8, 9, -7.6, 0.5], [0.4, 4.4, -7.8, 0.9]] as [number, number, number, number][])) {
+    b.ico(x, y + r * 0.4, z, r * 1.2, r * 0.7, r, '#4f7a46'); b.ico(x + r, y + r * 0.3, z + 0.2, r * 0.7, r * 0.5, r * 0.6, '#6b9a50');
+  }
 }
 
+/** One straight flight of carved steps. They climb from (x0, y0) to (x1, y1) along z and stand on a solid wall of rock. */
+function flight(b: Batch, x0: number, y0: number, x1: number, y1: number, z: number, d: number, n: number): void {
+  const dx = (x1 - x0) / n;
+  for (let i = 0; i < n; i++) {
+    const y = y0 + ((i + 1) * (y1 - y0)) / n, cx = x0 + (i + 0.5) * dx;
+    b.box(cx, y / 2 - 0.02, z, Math.abs(dx) + 0.01, y, d, i % 2 ? '#c9c1b2' : '#d8d0c1');
+  }
+}
+/** An iron railing along a slope or a level, with posts. */
+function railing(b: Batch, x0: number, y0: number, x1: number, y1: number, z: number, h = 1.1, tone: Colour = METAL_DARK): void {
+  const run = x1 - x0, rise = y1 - y0, length = Math.hypot(run, rise), posts = Math.max(2, Math.round(length / 2.4) + 1);
+  for (let i = 0; i < posts; i++) { const t = i / (posts - 1); b.box(x0 + run * t, y0 + rise * t + h / 2, z, 0.08, h, 0.08, tone); }
+  const rz = Math.atan2(rise, run);
+  b.box((x0 + x1) / 2, (y0 + y1) / 2 + h, z, length, 0.07, 0.09, tone, { rz });
+  b.box((x0 + x1) / 2, (y0 + y1) / 2 + h * 0.5, z, length, 0.05, 0.06, tone, { rz });
+}
 function carvedSteps(b: Batch): void {
-  // First flight along the foot of the face, a landing, a second flight turning back.
-  for (let i = 0; i < 9; i++) {
-    const x = -2.7 - i * 0.55;
-    b.box(x, (i + 1) * 0.22, -4.7, 0.55, (i + 1) * 0.44, 1.8, i % 2 ? '#bdb5a6' : '#cac2b3');
-  }
-  b.box(-8.7, 2.0, -4.9, 2.6, 4.0, 1.9, '#a29a90');
-  b.box(-8.7, 4.02, -4.9, 2.7, 0.1, 2, '#b8b0a4');
-  for (let i = 0; i < 9; i++) {
-    const x = -9.9 + i * 0.6;
-    b.box(x, 4 + (i + 1) * 0.22, -6.9, 0.6, (i + 1) * 0.44 + 0.04, 1.8, i % 2 ? '#bdb5a6' : '#cac2b3');
-  }
-  b.box(-4.2, 4.0 + 5 * 0.44 + 0.1, -7.2, 3, 0.4, 2.2, '#b0a89e');
-  // Iron rail along the first flight
-  for (let i = 0; i < 5; i++) b.cyl(-3.2 - i * 1.1, 0.8 + i * 0.5, -3.85, 0.05, 1.1, METAL_DARK, { seg: 4 });
-  b.box(-5.4, 1.9, -3.85, 5.4, 0.06, 0.08, METAL_DARK, { rz: 0.46 });
+  // First flight along the foot, rising left to a landing; the second doubles back right; the third climbs left to the summit
+  flight(b, -2.4, 0, -9.6, 3, -4.7, 1.8, 12);
+  b.box(-12, 1.48, -4.7, 4.6, 3, 1.8, '#a8a095'); b.box(-12, 3.02, -4.7, 4.7, 0.07, 1.9, '#e0d8c9');
+  flight(b, -9.6, 3, -2.6, 6, -6.5, 1.8, 12);
+  b.box(-1.2, 2.98, -6.5, 2.6, 6, 1.8, '#a8a095'); b.box(-1.2, 6.02, -6.5, 2.7, 0.07, 1.9, '#e0d8c9');
+  flight(b, -2.6, 6, -9.6, 9, -8.4, 1.8, 12);
+  // The summit terrace
+  b.box(-9.4, 4.5, -11.2, 11.6, 9, 4.2, '#a29a8f'); b.box(-9, 9.02, -11.2, 11.8, 0.1, 4.3, '#cfc7b8');
+  for (let i = 0; i < 5; i++) b.box(-14.4 + i * 1.7, 9.04, -9.0, 0.02, 0.02, 4.1, '#b3ab9d');
+  // Railings: along each flight, across the top terrace, round the landings
+  railing(b, -2.4, 0, -9.6, 3, -3.8, 1.0);
+  railing(b, -14.2, 3, -9.6, 3, -3.8, 1.0); b.box(-14.3, 3.5, -4.7, 0.08, 1, 1.8, METAL_DARK);
+  railing(b, -9.6, 3, -2.6, 6, -5.6, 1.0);
+  railing(b, -2.6, 6, 0.1, 6, -5.6, 1.0); railing(b, 0.1, 6, 0.1, 6, -7.4, 1.0);
+  railing(b, -2.6, 6, -9.6, 9, -7.5, 1.0);
+  railing(b, -14.4, 9, -2.7, 9, -9.2, 1.15);
 }
 
-function caveMouth(b: Batch, x: number, z: number, s: number): void {
-  b.ball(x, 0.8 * s, z, 1.0 * s, 1.1 * s, 0.5, '#1a1612', { seg: 8 });
-  b.ball(x, 0.2, z + 0.1, 1.3 * s, 0.3, 0.7, '#5f5a54', { seg: 6 });
-  b.box(x, 1.95 * s, z + 0.2, 2 * s, 0.3, 0.6, '#8f8a84', { rx: 0.1 });
+function caveMouth(b: Batch, x: number, z: number, s: number, y = 0): void {
+  // A dark opening under an overhanging slab, a worn threshold, and a stone lintel with rubble
+  b.at(x, y, z, 0, () => {
+    b.ball(0, 0.9 * s, 0.1, 1.15 * s, 1.2 * s, 0.7, '#14110e', { seg: 7 });
+    b.ico(0, 2.15 * s, 0.1, 1.5 * s, 0.5 * s, 0.9, '#b4ab9e');
+    b.ico(-1.5 * s, 0.5, 0.35, 0.7, 0.6, 0.6, '#968f85'); b.ico(1.4 * s, 0.4, 0.45, 0.6, 0.5, 0.5, '#a79f94');
+  });
 }
 
-function irokoTree(b: Batch, x: number, z: number): void {
-  b.cyl(x, 3.4, z, 0.8, 6.8, '#5e5446', { seg: 7, top: 0.62 });
-  for (let i = 0; i < 5; i++) { const a = (i / 5) * PI * 2 + 0.3; b.box(x + Math.sin(a) * 0.8, 0.7, z + Math.cos(a) * 0.8, 0.28, 1.5, 1.2, '#5e5446', { ry: a, rx: 0.1 }); }
-  for (const [dx, dy, dz, r, c] of ([[0, 8.4, 0, 3.4, '#2f6f46'], [-2.6, 7.6, 1, 2.6, '#3d7a4a'], [2.8, 7.8, -0.6, 2.8, '#2c6540'], [0.8, 10, 0.2, 2.4, '#4d8a4d'], [-1.2, 9.4, -1.6, 2.4, '#35704a'], [1.6, 7, 2, 2.2, '#478048']] as [number, number, number, number, Colour][])) b.ico(x + dx, dy, z + dz, r, r * 0.75, r, c);
-  b.cyl(x - 0.2, 5.8, z + 0.2, 0.2, 2.6, '#5e5446', { seg: 4, rz: 0.7 });
+/** The old forest tree: a buttressed iroko with a broad crown, growing on a ledge of rock. */
+function irokoTree(b: Batch, x: number, y: number, z: number, s = 1): void {
+  b.at(x, y, z, 0, () => {
+    b.cyl(0, 4.2, 0, 1, 8.4, '#5e5446', { seg: 8, top: 0.7 });
+    for (let i = 0; i < 6; i++) { const a = (i / 6) * PI * 2 + 0.3; b.box(Math.sin(a) * 0.95, 0.9, Math.cos(a) * 0.95, 0.3, 1.9, 1.5, '#5e5446', { ry: a, rx: 0.12 }); }
+    for (const [dx, dy, dz, r, c] of ([[0, 10, 0, 3.8, '#2f6f46'], [-3.2, 9.2, 1.2, 3, '#3d7a4a'], [3.4, 9.4, -0.6, 3.2, '#2c6540'], [0.8, 12, 0.2, 2.8, '#4d8a4d'], [-1.4, 11.4, -1.8, 2.8, '#35704a'], [1.8, 8.6, 2.4, 2.5, '#478048'], [-0.4, 8.2, -2.6, 2.4, '#2f6f46']] as [number, number, number, number, Colour][])) b.ico(dx, dy, dz, r, r * 0.72, r, c);
+    b.cyl(-0.3, 7, 0.3, 0.22, 3, '#5e5446', { seg: 4, rz: 0.7 });
+  }, 0, 0, s);
+}
+
+/** Roofs of the old town spread over the hillside far below the terrace, with a few towers and trees among them. */
+function valley(b: Batch, rand: () => number): void {
+  const roofs: Colour[] = ['#8d4a2c', '#9b5532', '#7b4430', '#a65f3a', '#6f3f2d', '#b06a3f', '#84432b', '#94512f', '#a9a7a0', '#c4bba8'];
+  // The valley floor and the far hills
+  b.box(0, FLOOR_Y - 3, -10, 140, 6, 120, '#6f6648');
+  b.box(0, FLOOR_Y + 0.02, -10, 140, 0.1, 120, '#7e8a58');
+  // The river: a brown-green ribbon winding through the valley on the right
+  const riverX = (z: number): number => 30 + Math.sin(z * 0.09) * 5 - z * 0.12;
+  for (let z = 48; z > -64; z -= 8) { const a = Math.atan2(riverX(z - 8) - riverX(z), -8); b.box(riverX(z - 4), FLOOR_Y + 0.07, z - 4, 4.8, 0.06, 9.4, '#5d6f4a', { ry: -a - PI / 2 + PI / 2 }); }
+  // Blocks of rust roofs with the streets between them, thickest behind the rock where the terrace looks out, thinner at its sides
+  for (let gx = -32; gx <= 50; gx += 4.6) {
+    for (let gz = -32; gz <= 30; gz += 4.2) {
+      const behind = gz < -9;
+      if (!behind && gx > -22 && gx < 24) continue;
+      if (Math.abs(gx - riverX(gz)) < 4.4) continue;
+      if (rand() < (behind ? 0.4 : 0.66)) continue;
+      const x = gx + (rand() - 0.5) * 0.8, z = gz + (rand() - 0.5) * 0.8, w = 3.2 + rand() * 1.1, d = 2.8 + rand() * 0.9, ry = (rand() - 0.5) * 0.35;
+      const tone = roofs[Math.floor(rand() * roofs.length)]!;
+      b.at(x, FLOOR_Y, z, ry, () => {
+        b.box(0, 0.5, 0, w, 1, d, tone, { rx: 0.06 });
+        b.quad(0, 1.05, -d * 0.18, w * 0.96, 0.14, '#6a3f2d', { rx: -HALF }); b.quad(0, 1.05, d * 0.18, w * 0.96, 0.14, '#6a3f2d', { rx: -HALF });
+      });
+    }
+  }
+  // The far town, in larger blocks so that fewer will do
+  for (let gx = -52; gx <= 64; gx += 7.2) {
+    for (let gz = -74; gz <= -35; gz += 6.4) {
+      if (Math.abs(gx - riverX(gz)) < 5 || rand() < 0.5) continue;
+      const x = gx + (rand() - 0.5) * 1.2, z = gz + (rand() - 0.5) * 1.2, w = 5.2 + rand() * 1.6, d = 4.4 + rand() * 1.2, tone = roofs[Math.floor(rand() * roofs.length)]!;
+      b.at(x, FLOOR_Y, z, (rand() - 0.5) * 0.35, () => { b.box(0, 0.6, 0, w, 1.2, d, tone, { rx: 0.06 }); b.quad(0, 1.25, 0, w * 0.96, 0.18, '#6a3f2d', { rx: -HALF }); });
+    }
+  }
+  for (let i = 0; i < 9; i++) { const x = -30 + rand() * 80, z = -8 - rand() * 50; if (Math.abs(x - riverX(z)) < 3.4) continue; b.ico(x, FLOOR_Y + 1, z, 1.2 + rand() * 0.6, 1.3, 1.2 + rand() * 0.6, rand() < 0.5 ? '#4f8a45' : '#3d7a4a'); }
+  // A minaret and a church tower among the roofs
+  b.cyl(18, FLOOR_Y + 2.8, -34, 0.3, 5.6, '#e9e1cd', { seg: 8 }); b.cone(18, FLOOR_Y + 6.1, -34, 0.45, 1, '#2f8f6a', { seg: 8 });
+  b.box(-6, FLOOR_Y + 2.2, -42, 1.8, 4.4, 1.8, '#d9d0bc'); b.cone(-6, FLOOR_Y + 5.5, -42, 1.2, 1.5, '#8d4a2c', { seg: 4, ry: PI / 4 });
+  ([[-46, -22, 8, '#6f8f66'], [-40, -4, 6, '#7a9a6a'], [30, -64, 12, '#6f8f72'], [4, -68, 9, '#7c9a82'], [-24, -66, 12, '#6c8c6e'], [-48, -50, 10, '#7a9a80'], [56, -56, 9, '#7a9a80']] as [number, number, number, Colour][]).forEach(([x, z, h, c]) => b.ball(x, FLOOR_Y + h * 0.1, z, 18, h, 11, c, { seg: 6 }));
 }
 
 const outcrop: SceneDef = {
   mood: 'outdoor', accent: '#e8b04a',
-  camera: { landscape: [17, 28, 34], portrait: [17, 38, 48] },
+  camera: { landscape: [19, 29, 36], portrait: [18, 38, 48] },
   walk: { bounds: [-12.4, -3.4, 12.4, 11.2], entrance: [0, 10.6], open: true },
   build(b, context) {
     const label = plain(context.label), rand = seeded(23);
-    // The ledge: a slab of grey granite, jointed, with the hill falling away at the back
-    b.box(0, -0.3, 3.6, 28, 0.5, 17, '#7c7873');
-    b.box(0, -0.02, 3.6, 27, 0.1, 16, '#a69e93');
-    for (let x = -11; x <= 11; x += 4.4) b.box(x + rand(), 0.04, 3.6, 0.06, 0.02, 16, '#8b857b');
-    for (const [x, z, r] of ([[6, 5, 2.4], [-3, 7.6, 1.8], [9.6, 9, 1.6], [-8.6, 3, 1.4]] as [number, number, number][])) b.disc(x, 0.05, z, r, '#b6ad9f', { seg: 9, sz: 0.7 });
-    b.box(0, -0.3, -4.2, 28, 0.5, 1, '#7c7873');
-    // The city far below, behind and to the right of the rock
-    roofTown(b, [[-12, -4.9, -1.6], [-19, -12, -3.4], [-26, -19, -5], [-34, -26, -6.2], [-44, -34, -5.4]], -34, 34, rand, (x, z) => x < -1 && z > -22);
-    // A minaret and a church tower among the roofs
-    b.cyl(14, -3.4 + 2.6, -22.5, 0.3, 5.2, '#e9e1cd', { seg: 8 }); b.cone(14, -3.4 + 5.6, -22.5, 0.42, 0.9, '#2f8f6a', { seg: 8 });
-    b.box(22, -3.4 + 2, -23, 1.7, 4, 1.7, '#d9d0bc'); b.cone(22, -3.4 + 5, -23, 1.15, 1.4, '#8d4a2c', { seg: 4, ry: PI / 4 });
-    ([[22, -46, 9, '#6f8f72'], [4, -49, 7, '#7c9a82'], [-14, -50, 10, '#6c8c6e'], [-30, -47, 8, '#7a9a80']] as [number, number, number, Colour][]).forEach(([x, z, h, c]) => b.ball(x, -5.4 + h * 0.15, z, 14, h, 9, c, { seg: 8 }));
-    // The granite itself: swells, streaks, steps and cave mouths
-    rockMass(b, rand);
+    // The terrace: a slab of grey granite on a cliff whose foot spreads out in a steep apron of jointed rock
+    b.box(0, -3.9, 3.6, 28, 7.7, 17, '#8a8379');
+    b.box(0, -0.02, 3.6, 28.2, 0.12, 17.2, '#b3aa9d');
+    const slope = Math.atan2(7.6, 3.6), length = Math.hypot(7.6, 3.6);
+    b.at(0, -3.8, 12.2 + 1.8, 0, () => {
+      b.box(0, 0, 0, 33, 0.9, length, '#9a9387');
+      for (let i = 0; i < 4; i++) b.box(0, 0.47, -3.2 + i * 2.2 + rand() * 0.4, 33, 0.04, 0.3, '#7d776d');
+      for (let i = 0; i < 12; i++) b.quad(-15 + rand() * 30, 0.48, -3.6 + rand() * 7, 0.18 + rand() * 0.2, 1 + rand() * 2, '#5e5a54', { rx: -HALF });
+    }, slope);
+    b.at(14.2 + 1.8, -3.8, 3.6, 0, () => {
+      b.box(0, 0, 0, length, 0.9, 20, '#a29b8f');
+      for (let i = 0; i < 4; i++) b.box(-3.2 + i * 2.2 + rand() * 0.4, 0.47, 0, 0.3, 0.04, 20, '#847e74');
+      for (let i = 0; i < 10; i++) b.quad(-3.6 + rand() * 7, 0.48, -8 + rand() * 16, 0.18 + rand() * 0.2, 1 + rand() * 2, '#5e5a54', { rx: -HALF, rz: HALF });
+    }, 0, -slope);
+    for (let x = -11; x <= 11; x += 4.4) b.box(x + rand(), 0.04, 3.6, 0.06, 0.02, 16, '#968f84');
+    for (const [x, z, r] of ([[6, 5, 2.4], [-3, 7.6, 1.8], [9.6, 9, 1.6], [-8.6, 3, 1.4]] as [number, number, number][])) b.disc(x, 0.05, z, r, '#c4bcae', { seg: 9, sz: 0.7 });
+    // Boulders at the foot of the apron
+    for (const [x, y, z, r] of ([[-4, -6.2, 16.6, 1.5], [18.4, -6.2, 9, 1.6]] as [number, number, number, number][])) swell(b, x, y, z, r * 1.2, r, r * 1.1, 4 + (Math.round(x) & 1));
+    valley(b, rand);
+    rockBody(b, rand);
     carvedSteps(b);
-    caveMouth(b, -12.4, -4.4, 1.15); caveMouth(b, -0.9, -5.6, 0.9);
-    // The summit shelf: a flag and a shelter, with people climbing
-    flag(b, -4.4, -7.2, { h: 3.6, w: 1.4, colors: ['#2f8f55', WHITE, '#2f8f55'] }); b.box(-4.2, 0, -7.2, 0.1, 0.1, 0.1, WHITE);
-    // The low wall along the drop, right of the rock
-    ledgeWall(b, -0.2, 13.4, -4.4, '#a09a8c', '#bab39f');
-    b.box(13.2, 0.45, -0.4, 0.46, 0.9, 7.8, '#a09a8c'); b.box(13.2, 0.95, -0.4, 0.62, 0.12, 7.8, '#bab39f');
-    irokoTree(b, 11.6, -2.2);
+    caveMouth(b, -12.2, -3.9, 1.1); caveMouth(b, -1.4, -3.9, 0.85);
+    caveMouth(b, -6.4, -5.6, 0.8, 3); // a low opening beside the second flight
+    // The summit terrace: a shelter on posts, a flag, a sign and a couple of climbers
+    b.at(-6.8, 9, -11, 0, () => {
+      for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.box(sx * 1.9, 1.4, sz * 0.9, 0.14, 2.8, 0.14, WOOD_DARK);
+      for (const side of [-1, 1]) b.box(0, 3.05, side * 0.55, 4.6, 0.12, 1.5, side < 0 ? '#a8653f' : '#9b5a3a', { rx: side * 0.3 });
+      b.box(0, 3.4, 0, 4.6, 0.1, 0.18, '#7a4530');
+      bench(b, 0, -0.4, { w: 2.8, ry: 0, back: false, color: '#8a6644', leg: '#5f4630' });
+    });
+    b.at(-12.2, 9, -10.4, 0, () => flag(b, 0, 0, { h: 4.6, w: 1.5, colors: ['#2f8f55', WHITE, '#2f8f55'] }));
+    b.at(-3.8, 9, -10.4, 0, () => { b.box(0, 0.4, 0, 0.5, 0.8, 0.5, '#8d887a'); b.cyl(0.2, 1.1, 0, 0.07, 0.5, METAL_DARK, { seg: 4 }); b.box(0.2, 1.45, 0, 0.3, 0.25, 0.5, METAL_DARK); });
+    extra(b, 'rock-climber-2', -4.6, -6.5, PI, 'walk', { y: 5.1, look: { body: 'man', outfit: 'casual', outfitColor: 'blue' } });
+    // The old iroko on a rock shelf at the right, its roots over the stone, the drop railing beside it
+    b.box(12.2, 0.3, -2.4, 3.6, 0.8, 3.6, '#a79f94'); swell(b, 12.4, 0.2, -3.2, 2.2, 1.1, 1.8, 3);
+    irokoTree(b, 12.2, 0.7, -2, 0.66);
+    // The viewing terrace: an iron railing along the drop, a coin telescope, a bench facing the view
+    railing(b, 1.2, 0, 10.2, 0, -4.4, 1.15); railing(b, 13.7, 0, 13.7, 0, -4.4, 1.15);
+    for (let z = -4.4; z < 8; z += 1.6) b.box(13.7, 0.58, z, 0.08, 1.15, 0.08, METAL_DARK);
+    b.box(13.7, 1.15, 1.8, 0.09, 0.07, 12.4, METAL_DARK); b.box(13.7, 0.58, 1.8, 0.06, 0.05, 12.4, METAL_DARK);
+    b.box(7.4, 0.95, -3.4, 0.3, 0.9, 0.3, '#34413f'); b.box(7.4, 1.55, -3.4, 0.9, 0.34, 0.34, '#34413f', { rz: 0.3 });
     // A plaque with the venue's own name at the foot of the steps
     b.box(-0.8, 0.35, 2.2, 3.6, 0.7, 0.5, '#8d887a');
     sign(b, -0.8, 0.38, 2.48, label, { size: fit(label, 3.2, 0.3), color: '#f1e6c4', board: '#2f3b36', pad: 0.12, depth: 0.04 });
@@ -236,12 +332,10 @@ const outcrop: SceneDef = {
     extra(b, 'rock-guide', 9.8, 6.6, PI, 'work', { look: { body: 'man', outfit: 'kaftan', outfitColor: 'teal' } });
     bench(b, 4.4, -3.4, { w: 2.8, ry: PI, back: true, color: '#8f8a7d', leg: '#6a665c' });
     extra(b, 'rock-sitter', 4.4, -3.4, PI, 'sit', { seat: 0.6 });
-    
-    extra(b, 'rock-climber-2', -7.5, -6.9, PI, 'walk', { y: 6.2, look: { body: 'woman', outfit: 'casual', outfitColor: 'orange' } });
     lampPost(b, 1.6, 1.6, { light: true }); lampPost(b, 8.6, 1.6);
     flag(b, 12.2, 9.6, { h: 5 });
-    ([[-11.4, 8.8, 1.2, 0], [-3.2, 10.4, 1, 2], [12, 3.4, 1, 1]] as [number, number, number, number][]).forEach(([x, z, s, tone]) => leafTree(b, x, z, { s, tone }));
-    ([[-9, 6.4], [5.6, 9.8], [12.2, 6.4]] as [number, number][]).forEach(([x, z], i) => bush(b, x, z, { s: 0.8 + (i % 2) * 0.3, color: i % 2 ? '#c0407e' : LEAF }));
+    ([[-11.4, 8.8, 1.2, 0], [12, 3.4, 0.9, 1]] as [number, number, number, number][]).forEach(([x, z, s, tone]) => leafTree(b, x, z, { s, tone }));
+    ([[-9, 6.4], [12.2, 6.4]] as [number, number][]).forEach(([x, z], i) => bush(b, x, z, { s: 0.8 + (i % 2) * 0.3, color: i % 2 ? '#c0407e' : LEAF }));
     return {
       spots: [
         landmark('summit', /summit|top|climb|view|city|roof|rock/, 3.4, -2.9, PI),
@@ -500,19 +594,23 @@ const hall: SceneDef = {
     const label = plain(context.label);
     ground(b, { w: 30, d: 26, color: '#6aa056', edge: '#46703a' });
     b.box(0, 0.05, 2, 6, 0.05, 20, '#d8cfb4'); b.box(0, 0.05, 2, 26, 0.05, 3, '#d8cfb4');
-    // The hall: a broad single storey, flat parapet roof with a low central gable over the portico
-    b.box(0, 2.6, -9.4, 20, 5.2, 6.4, '#ece3c8');
-    b.box(0, 5.35, -9.4, 20.6, 0.34, 7, '#cdc2a6');
-    b.box(0, 5.95, -9.4, 20, 0.9, 0.3, '#e0d6bb', { });
-    b.box(0, 7.2, -6.3, 8.2, 2.2, 0.6, '#ece3c8');
-    for (const side of [-1, 1]) b.box(side * 2.1, 8.4, -6.3, 4.6, 0.18, 0.8, '#cdc2a6', { rz: -side * 0.38 });
-    b.cyl(0, 7.3, -5.94, 0.7, 0.08, '#d6a83a', { seg: 12, rx: HALF });
-    // Portico of four columns, steps, a double door and windows either side
-    for (const x of [-3.6, -1.2, 1.2, 3.6]) b.cyl(x, 2.6, -4.6, 0.32, 5.2, WHITE, { seg: 8, top: 0.88 });
-    b.box(0, 5.35, -4.6, 9.6, 0.4, 2.2, '#d8cdb0');
-    for (let i = 0; i < 4; i++) b.box(0, 0.12 + i * 0.12, -3.6 + (3 - i) * 0.4, 10, 0.24 + i * 0.12, 0.5, '#d8cfb4');
-    b.box(0, 1.7, -6.14, 2.6, 3.4, 0.1, '#4a3626'); b.box(0, 1.7, -6.08, 0.06, 3.3, 0.06, '#d6a83a');
-    for (const x of [-8, -5.4, 5.4, 8]) windowPane(b, x, 2.8, -6.14, { w: 1.5, h: 2, glass: '#8fb0c4', frame: '#bdb298' });
+    // The hall: a long single storey on a red brick plinth under a hipped iron roof with a ventilating cupola
+    b.box(0, 3.0, -9.4, 20, 6, 6.4, '#efe4c6');
+    b.box(0, 0.8, -9.4, 20.4, 1.6, 6.8, '#a8553c');
+    b.box(0, 6.1, -9.4, 21, 0.3, 7.4, '#d8cdb0');
+    gable(b, 0, 6.2, -9.4, 18, 7, 0, 0.3);
+    for (const side of [-1, 1]) b.box(side * 9.6, 7.1, -9.4, 2.2, 0.16, 5.2, side < 0 ? '#9b5a3a' : '#8a4e34', { rz: -side * 0.7 });
+    b.box(0, 8.6, -9.4, 1.8, 1.4, 1.8, '#efe4c6'); b.cone(0, 9.8, -9.4, 1.5, 1.4, '#7a4530', { seg: 4, ry: PI / 4 });
+    // A deep arcaded portico across the middle: brick piers, round arches, a flat porch roof, wide steps
+    for (let i = 0; i < 4; i++) b.box(-4.5 + i * 3, 1.9, -5.2, 0.9, 3.8, 0.9, '#a8553c');
+    for (let i = 0; i < 3; i++) { b.cyl(-3 + i * 3, 3.8, -5.2, 1.0, 0.8, '#efe4c6', { seg: 10, rx: HALF }); b.box(-3 + i * 3, 4.4, -5.2, 2.1, 0.7, 0.9, '#efe4c6'); }
+    b.box(0, 4.95, -5.8, 10.8, 0.4, 2.8, '#d8cdb0');
+    b.box(0, 5.4, -4.5, 11, 0.5, 0.3, '#a8553c');
+    for (let i = 0; i < 4; i++) b.box(0, 0.12 + i * 0.12, -3.6 + (3 - i) * 0.4, 10.4, 0.24 + i * 0.12, 0.5, '#d8cfb4');
+    b.box(0, 1.8, -6.14, 2.8, 3.6, 0.1, '#4a3626'); b.box(0, 1.8, -6.08, 0.06, 3.5, 0.06, '#d6a83a');
+    for (const x of [-8.2, -5.8, 5.8, 8.2]) { windowPane(b, x, 3.2, -6.14, { w: 1.2, h: 2.2, glass: '#8fb0c4', frame: '#bdb298' }); b.cyl(x, 4.5, -6.1, 0.7, 0.1, '#bdb298', { seg: 8, rx: HALF }); }
+    for (const x of [-9.4, 9.4]) windowPane(b, x, 3.2, -6.14, { w: 0.9, h: 2.2, glass: '#8fb0c4', frame: '#bdb298' });
+    b.cyl(0, 5.8, -4.34, 0.5, 0.08, '#d6a83a', { seg: 12, rx: HALF });
     // The plaque on its own stone, in front of the portico: the venue's own name
     b.box(-6.6, 0.55, -1.4, 3.8, 1.1, 0.7, '#8d887a'); b.box(-6.6, 1.2, -1.4, 4, 0.14, 0.8, '#a8a396');
     sign(b, -6.6, 0.58, -1.02, label, { size: fit(label, 3.4, 0.28), color: '#f1e6c4', board: '#2a3f36', pad: 0.12, depth: 0.04 });
@@ -634,9 +732,9 @@ const riverBridge: SceneDef = {
     b.box(0, 0.03, 0.4, 28, 0.04, 2.6, '#d1c197');
     b.box(0, -0.45, RIVER_NEAR + 0.2, 29, 0.9, 0.8, '#8e8a7e');
     // The river: brown-green, wide, with ripples; the far bank rising to trees
-    b.box(0, -2, (RIVER_FAR + RIVER_NEAR) / 2 - 8, 76, 3.4, 40, '#4a4f36');
-    b.box(0, RIVER_Y - 0.02, (RIVER_FAR + RIVER_NEAR) / 2 - 0.2, 76, 0.1, RIVER_NEAR - RIVER_FAR + 0.4, '#5a6a42');
-    b.box(0, RIVER_Y + 0.03, (RIVER_FAR + RIVER_NEAR) / 2 - 0.2, 76, 0.06, RIVER_NEAR - RIVER_FAR, '#8a9a6a', GLASS);
+    b.box(0, -2, (RIVER_FAR + RIVER_NEAR) / 2 - 8, 76, 3.4, 40, '#5e5a40');
+    b.box(0, RIVER_Y - 0.02, (RIVER_FAR + RIVER_NEAR) / 2 - 0.2, 76, 0.1, RIVER_NEAR - RIVER_FAR + 0.4, '#7a6a4a');
+    b.box(0, RIVER_Y + 0.03, (RIVER_FAR + RIVER_NEAR) / 2 - 0.2, 76, 0.06, RIVER_NEAR - RIVER_FAR, '#a58c62', GLASS);
     for (let i = 0; i < 9; i++) b.box(-24 + i * 6.2, RIVER_Y + 0.07, -5 - (i % 4) * 2.2, 3.2, 0.02, 0.14, '#e0e8c8', { layer: 'glass' });
     b.box(0, 0.8, RIVER_FAR - 2, 80, 3.2, 5, '#6a8a4e');
     for (let i = 0; i < 20; i++) b.ico(-34 + rand() * 68, 2.4 + rand() * 3, RIVER_FAR - 1.4 - rand() * 6, 1.6 + rand(), 1.6 + rand() * 0.8, 1.5 + rand(), ['#3d7a4a', '#2f6a44', '#4f8a45', '#5b9a55'][i % 4]!);

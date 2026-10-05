@@ -18,19 +18,39 @@ export type ShareNavigator = Partial<Pick<Navigator, 'share' | 'canShare'>>;
 export const CARD_SIZE = 1080;
 const FONT = '"DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
 
-/** Break `text` into at most `max` lines that fit `width`. */
-function wrap(ctx: CanvasRenderingContext2D, text: unknown, width: number, max = 2): string[] {
-  const words = String(text).split(/\s+/), lines: string[] = [];
+/** Greedy word wrap: the lines of `text` at the context's current font, never breaking inside a word. */
+export function wordLines(measure: (text: string) => number, text: string, width: number): string[] {
+  const lines: string[] = [];
   let line = '';
-  for (const word of words) {
+  for (const word of String(text).split(/\s+/).filter(Boolean)) {
     const next = line ? `${line} ${word}` : word;
-    if (ctx.measureText(next).width <= width || !line) { line = next; continue; }
-    lines.push(line); line = word;
-    if (lines.length === max - 1) break;
+    if (!line || measure(next) <= width) line = next; else { lines.push(line); line = word; }
   }
-  const rest = words.slice(lines.join(' ').split(/\s+/).filter(Boolean).length).join(' ');
-  if (rest) { let last = rest; while (last.length > 1 && ctx.measureText(`${last}…`).width > width) last = last.slice(0, -1); lines.push(last === rest ? rest : `${last}…`); }
-  return lines.slice(0, max);
+  if (line) lines.push(line);
+  return lines;
+}
+/**
+ * The largest of `sizes` at which `text` fits `max` lines of `width` without a word being cut. A name too long even for the
+ * smallest size is shortened with an ellipsis as a last resort. `font(size)` is the canvas font string.
+ */
+export function fitText(ctx: Pick<CanvasRenderingContext2D, 'font' | 'measureText'>, text: string, width: number, max: number, sizes: readonly number[], font: (size: number) => string): { lines: string[]; size: number } {
+  for (const size of sizes) {
+    ctx.font = font(size);
+    const lines = wordLines((value) => ctx.measureText(value).width, text, width);
+    if (lines.length <= max && lines.every((line) => ctx.measureText(line).width <= width)) return { lines, size };
+  }
+  const size = sizes[sizes.length - 1] ?? 40;
+  ctx.font = font(size);
+  const lines = wordLines((value) => ctx.measureText(value).width, text, width);
+  const kept = lines.slice(0, max);
+  const last = kept.length === max ? lines.slice(max - 1).join(' ') : kept[kept.length - 1] ?? '';
+  let cut = last;
+  if (ctx.measureText(cut).width > width) {
+    while (cut.length > 1 && ctx.measureText(`${cut.trimEnd()}…`).width > width) cut = cut.slice(0, -1);
+    cut = `${cut.trimEnd()}…`;
+  }
+  if (kept.length) kept[kept.length - 1] = cut;
+  return { lines: kept, size };
 }
 
 function rounded(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number): void {
@@ -59,16 +79,22 @@ export function paintCard(canvas: HTMLCanvasElement, card: ShareCard): HTMLCanva
   ctx.fillStyle = 'rgba(255,255,255,.96)'; rounded(ctx, 70, 110, size - 140, 600, 44); ctx.fill();
   ctx.textBaseline = 'alphabetic';
   ctx.fillStyle = '#256b45'; ctx.font = `700 38px ${FONT}`; ctx.fillText(card.kicker, 120, 195);
-  ctx.fillStyle = '#20232c'; ctx.font = `800 84px ${FONT}`;
+  ctx.fillStyle = '#20232c';
+  // The headline takes two lines; a long place name makes it a little smaller instead of cutting it off.
+  const head = fitText(ctx, card.headline, size - 240, 2, [84, 76, 68, 60, 52, 46], (px) => `800 ${px}px ${FONT}`);
+  ctx.font = `800 ${head.size}px ${FONT}`;
   let y = 300;
-  for (const line of wrap(ctx, card.headline, size - 240, 2)) { ctx.fillText(line, 120, y); y += 96; }
+  for (const line of head.lines) { ctx.fillText(line, 120, y); y += Math.round(head.size * 1.14); }
   if (card.squares.length) {
     const box = Math.min(96, Math.floor((size - 240 - (card.squares.length - 1) * 18) / card.squares.length));
     card.squares.forEach((on, index) => { ctx.fillStyle = on ? '#2f9e5b' : '#dfe4e2'; rounded(ctx, 120 + index * (box + 18), y - 30, box, box, 18); ctx.fill(); });
     y += box + 40;
   }
   ctx.fillStyle = '#3c4654'; ctx.font = `500 46px ${FONT}`;
-  for (const line of card.lines.slice(0, 3)) { ctx.fillText(wrap(ctx, line, size - 240, 1)[0] ?? '', 120, y + 20); y += 64; }
+  for (const line of card.lines.slice(0, 3)) {
+    const fit = fitText(ctx, line, size - 240, 1, [46, 42, 38, 34], (px) => `500 ${px}px ${FONT}`);
+    ctx.font = `500 ${fit.size}px ${FONT}`; ctx.fillText(fit.lines[0] ?? '', 120, y + 20); y += 64;
+  }
   ctx.fillStyle = '#ffffff'; ctx.font = `700 44px ${FONT}`; ctx.fillText(card.footer, 70, size - 62);
   return canvas;
 }

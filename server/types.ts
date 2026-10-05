@@ -340,6 +340,8 @@ export interface AnnouncementRecord { id: string; by: PlayerRef; text: string; a
 export interface AdRecord { by: PlayerRef; text: string; colour: string; icon: string; at: number; expiresAt: number }
 export interface ShoutoutRecord { id: string; by: PlayerRef; title: string; artist: string; at: number; startsAt: number; endsAt: number; requestId: string | null }
 export interface CivicCityRecord {
+  /** When this city's civic record began (epoch ms); news is never dated before it. Absent in Lagos, whose record predates the field. */
+  openedAt?: number
   /** Last id issued for announcements (`a<n>`) and shout-outs (`r<n>`). */
   seq: number
   /** Resident-days. */

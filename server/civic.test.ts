@@ -395,7 +395,7 @@ test('neighbours, rich list and counters: real counts, truthful presence, opt-ou
   let pulse = await get<PulseResponse>('/api/civic/pulse?city=lagos');
   assert.deepEqual(pulse.counters, { players: 0, online: 0, visits: 0 }, 'nothing is invented before anyone checks in'); assert.equal(pulse.checkedIn, false);
   for (const device of [ada, bola, chidi]) assert.equal((await get<PulseResponse>('/api/civic/pulse?city=lagos', device)).checkedIn, true);
-  const peer = await f.socket(bola);
+  const peer = await f.joinRoom(bola);
   wait(6000);
   pulse = await get<PulseResponse>('/api/civic/pulse?city=lagos', ada);
   assert.deepEqual(pulse.counters, { players: 3, online: 1, visits: 3 });

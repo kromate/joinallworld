@@ -78,6 +78,15 @@ export function telemetryOrigins(config: TelemetryConfig | null | undefined): st
   return [...origins];
 }
 
+/**
+ * CLOUDFLARE'S WEB ANALYTICS BEACON. When the site is served through Cloudflare with Web Analytics on, Cloudflare injects
+ * `https://static.cloudflareinsights.com/beacon.min.js/…` into the page at the edge, and that script posts to
+ * `https://cloudflareinsights.com/cdn-cgi/rum`. The page's own source never contains either, so they are allowed here, by
+ * origin and nowhere else: one script host and one connect host. Everything else of the policy stays strict.
+ */
+export const BEACON_SCRIPT = 'https://static.cloudflareinsights.com';
+export const BEACON_CONNECT = 'https://cloudflareinsights.com';
+
 export interface AppPolicy extends RequestFacts {
   /** From inlineScriptHashes(the page as served). */
   scriptHashes: readonly string[]
@@ -95,11 +104,11 @@ export function appContentSecurityPolicy({ scriptHashes, telemetry = [], account
   const extra = accountsCspAdditions(accounts).csp;
   const directives: string[] = [
     "default-src 'self'",
-    `script-src ${["'self'", ...scriptHashes, ...extra['script-src']].join(' ')}`,
+    `script-src ${["'self'", ...scriptHashes, BEACON_SCRIPT, ...extra['script-src']].join(' ')}`,
     `style-src ${["'self'", "'unsafe-inline'", ...extra['style-src']].join(' ')}`,
     "img-src 'self' data: blob:",
     "font-src 'self'",
-    `connect-src ${["'self'", ...sockets, ...telemetry, ...extra['connect-src']].join(' ')}`,
+    `connect-src ${["'self'", ...sockets, ...telemetry, BEACON_CONNECT, ...extra['connect-src']].join(' ')}`,
     "media-src 'self' blob:",
     "worker-src 'self' blob:",
     ...(extra['frame-src'].length ? [`frame-src ${extra['frame-src'].join(' ')}`] : []),

@@ -131,13 +131,13 @@ export function createGrowth(deps: GrowthDeps) {
     const current = state.sharing
     if (!current) return
     const copied = await (await deps.loadShare()).copyText(current.prepared.link)
-    deps.toast(copied ? 'Link copied. Paste it into any chat.' : 'Could not copy. Press and hold the link to copy it yourself.', 'good')
+    deps.toast(copied ? 'Link copied. Paste it into any chat.' : 'Could not copy. Press and hold the link to copy it yourself.', copied ? 'good' : 'error')
   }
   async function copyShare(): Promise<void> {
     const current = state.sharing
     if (!current) return
     const copied = await (await deps.loadShare()).copyText(current.prepared.text)
-    deps.toast(copied ? 'Copied. Paste it into any chat.' : 'Could not copy. Press and hold the text to copy it yourself.', 'good')
+    deps.toast(copied ? 'Copied. Paste it into any chat.' : 'Could not copy. Press and hold the text to copy it yourself.', copied ? 'good' : 'error')
   }
 
   /** The WhatsApp Channel link, only when the server says one is configured and it is https; else ''. */

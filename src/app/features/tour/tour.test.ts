@@ -8,7 +8,7 @@ import { SHORTCUTS, shortcutFor } from '../../../ui/keys.ts'
 import { placeCard, spotlightOf } from './placement.ts'
 import type { Rect, Size } from './placement.ts'
 import { shortcutGroups, keysOf } from './shortcutsModel.ts'
-import { STEPS, isDone, playlist, seek, showable, wordsOf } from './tourModel.ts'
+import { STEPS, TOUR_Z, isDone, playlist, seek, showable, tourPaused, wordsOf } from './tourModel.ts'
 import type { StepContext } from './tourModel.ts'
 import { TOUR_KEY, markTourSeen, tourDue, tourSeen } from './tourSeen.ts'
 import type { TourFacts } from './tourSeen.ts'
@@ -197,4 +197,19 @@ test('the sign-up step lights the Sign up button only when it is on screen, and 
   assert.ok(titles(withIt).includes('Save your progress'))
   assert.ok(withIt.length <= 10)
   assert.equal(titles(withIt)[titles(withIt).indexOf('Time, mood and cash') + 1], 'Save your progress', 'it follows the bar it points at')
+})
+
+test('the tour steps aside for a call, and for a sheet that is not its own; urgent layers sit above its dim', () => {
+  assert.equal(tourPaused({ sheet: null, allows: undefined, call: false }), false)
+  assert.equal(tourPaused({ sheet: null, allows: undefined, call: true }), true, 'a ringing or running call pauses it: Accept must be reachable')
+  assert.equal(tourPaused({ sheet: 'phone', allows: 'phone', call: false }), false, 'the step’s own sheet')
+  assert.equal(tourPaused({ sheet: 'phone', allows: 'phone', call: true }), true)
+  assert.equal(tourPaused({ sheet: 'panel', allows: 'phone', call: false }), true)
+  // The incoming-call banner, the "reload" banner and the room invite/knock banner are above the tour's own layer.
+  const root = fileURLToPath(new URL('../../', import.meta.url))
+  for (const file of ['features/calls/CallsUi.vue', 'ui/UpdateBanner.vue', 'features/landing/LinkBanner.vue']) {
+    const z = [...readFileSync(`${root}${file}`, 'utf8').matchAll(/z-index:\s*(\d+)/g)].map((match) => Number(match[1]))
+    assert.ok(Math.max(...z) > TOUR_Z, `${file} sits above the tour (${z.join(', ')})`)
+  }
+  assert.match(readFileSync(`${root}features/tour/TourHost.vue`, 'utf8'), /z-index: 60/)
 })

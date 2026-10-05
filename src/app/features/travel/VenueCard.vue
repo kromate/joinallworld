@@ -11,6 +11,7 @@ import GoFix from './GoFix.vue'
 import { CHIP_LIMIT, chosenMode, fareText, goBlock, statusClass, tripLine, venueLink } from './travelModel.ts'
 import { mapUi, tell } from './travelState.ts'
 import { useTravelActions } from './useTravelActions.ts'
+import { copyText } from '../../../ui/share.ts'
 
 const props = defineProps<{ item: TravelDestination }>()
 const { game, shell } = useApp()
@@ -38,8 +39,8 @@ function go(): void {
 }
 async function share(): Promise<void> {
   const link = venueLink(window.location.origin, window.location.pathname, props.item.id)
-  try { await navigator.clipboard.writeText(link); game.toast('Link copied. Anyone who opens it lands on this place.', 'good') }
-  catch { game.toast(`Copy this link: ${link}`) }
+  if (await copyText(link)) game.toast('Link copied. Anyone who opens it lands on this place.', 'good')
+  else game.toast(`Copy this link: ${link}`)
 }
 const onAbout = (event: Event): void => { mapUi.aboutOpen = (event.currentTarget as HTMLDetailsElement).open }
 </script>

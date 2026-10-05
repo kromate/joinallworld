@@ -397,7 +397,7 @@ test('Cloudflare: the page is strict until accounts are configured, then allows 
   assert.equal(off.headers.get('cross-origin-opener-policy'), 'same-origin');
   const bindings = { BUILD_ID: 'local-conformance', ACCOUNTS_FIREBASE_PROJECT_ID: 'demo-allworld-test', ACCOUNTS_FIREBASE_API_KEY: 'AIzaFakeFakeFakeFakeFakeFakeFakeFake1' };
   const email = await fixture(t, { bindings }), withEmail = await email.request('/'); await withEmail.arrayBuffer();
-  assert.equal(directive(withEmail.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://identitytoolkit.googleapis.com https://securetoken.googleapis.com");
+  assert.equal(directive(withEmail.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://cloudflareinsights.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com");
   assert.equal(withEmail.headers.get('cross-origin-opener-policy'), 'same-origin', 'no Google client id: no popup');
   const google = await fixture(t, { bindings: { ...bindings, ACCOUNTS_GOOGLE_CLIENT_ID: '123456789012-fakefakefake.apps.googleusercontent.com' } });
   const response = await google.request('/some/deep/link'); await response.arrayBuffer();
@@ -419,8 +419,8 @@ test('Cloudflare: the game page, a deep link, module pages, the API and an asset
     const response = await plain.request(path); await response.arrayBuffer();
     assert.equal(response.status, 200);
     const csp = response.headers.get('content-security-policy') as string;
-    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')}`, 'the built page\'s inline scripts, by hash');
-    assert.equal(directive(csp, 'connect-src'), "connect-src 'self' wss://joinallworld.test", 'no telemetry host unless configured');
+    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')} https://static.cloudflareinsights.com`, 'the built page\'s inline scripts, by hash');
+    assert.equal(directive(csp, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://cloudflareinsights.com", 'no telemetry host unless configured');
     assert.match(csp, /default-src 'self'; /); assert.match(csp, /frame-ancestors 'none'; upgrade-insecure-requests$/);
     assert.deepEqual([response.headers.get('strict-transport-security'), response.headers.get('x-frame-options'), response.headers.get('x-content-type-options'), response.headers.get('referrer-policy'), response.headers.get('cross-origin-opener-policy'), response.headers.get('cache-control')],
       ['max-age=31536000; includeSubDomains', 'DENY', 'nosniff', 'strict-origin-when-cross-origin', 'same-origin', 'no-cache'], path);
@@ -429,7 +429,7 @@ test('Cloudflare: the game page, a deep link, module pages, the API and an asset
   const head = await plain.fetch('/', { method: 'HEAD' });
   assert.match(head.headers.get('content-security-policy') as string, /script-src 'self' 'sha256-/, 'HEAD gets the policy too');
   const withTelemetry = await configured.request('/'); await withTelemetry.arrayBuffer();
-  assert.equal(directive(withTelemetry.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://o123.ingest.example-sentry.test https://eu.i.example-posthog.test");
+  assert.equal(directive(withTelemetry.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://o123.ingest.example-sentry.test https://eu.i.example-posthog.test https://cloudflareinsights.com");
   const share = await plain.request('/s/unknown-code'); await share.arrayBuffer();
   assert.match(share.headers.get('content-security-policy') as string, /^default-src 'none'; .*upgrade-insecure-requests$/);
   assert.deepEqual([share.headers.get('referrer-policy'), share.headers.get('strict-transport-security'), share.headers.get('cross-origin-opener-policy')], ['no-referrer', 'max-age=31536000; includeSubDomains', 'same-origin']);

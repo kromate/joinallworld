@@ -92,7 +92,7 @@ watch(() => s.value?.chat.length ?? 0, async () => { await nextTick(); if (messa
         <h3>Room chat</h3>
         <ol ref="messages" class="community-messages" aria-label="Room messages" aria-live="polite" aria-relevant="additions">
           <li v-for="line in s.chat" :key="line.key">
-            <div><strong>{{ line.author }}</strong><small>{{ line.delivery }}</small></div>
+            <div><strong>{{ line.author }}</strong><small v-if="line.delivery">{{ line.delivery }}</small></div>
             <p>{{ line.body }}</p>
             <button v-if="line.canRetry" type="button" data-community-retry-message @click="control()?.retryMessage(line.key)">Retry message</button>
           </li>

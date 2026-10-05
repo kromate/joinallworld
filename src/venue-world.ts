@@ -98,6 +98,7 @@ import type { HomePick } from './scene/home-scene.ts';
 import type { SceneControls } from './scene/controls.ts';
 import type { WalkPoint, WalkMode } from './scene/movement.ts';
 import type { LifeState } from './types/life.ts';
+import { inputMode, readFacts } from './ui/inputMode.ts';
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). pose: set only by the host's own callers (a fixed pose). */
 export interface PlayerLook { look: unknown; seed: string; name: string; pose?: string | null }
@@ -1030,9 +1031,11 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     onStick(x, z, jog) { stick.x = x; stick.z = z; stick.jog = jog; if ((x || z) && walkOf() && !locked) loop.wake(); },
   });
   if (controls) {
-    const coarse = globalThis.matchMedia?.('(pointer: coarse)').matches === true;
-    controls.touch(coarse);
-    controls.teach(coarse ? LESSONS_TOUCH : LESSONS_DESKTOP);
+    // Touch or keyboard is decided from several facts (src/ui/inputMode.ts): the stick shows for any touch device; the lessons name
+    // gestures only when there are no keys to name.
+    const mode = inputMode(readFacts());
+    controls.touch(mode.touch);
+    controls.teach(mode.touch && !mode.keys ? LESSONS_TOUCH : LESSONS_DESKTOP);
   }
 
   /**

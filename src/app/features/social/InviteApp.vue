@@ -15,6 +15,7 @@ import PlayerAvatar from './PlayerAvatar.vue'
 import { HOST_STATUS, homeLine, knockReason, knockView, roomLine, statusText } from './inviteModel.ts'
 import { inviteUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
+import { copyText } from '../../../ui/share.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, client, state, view, gate, action, runAction, retryLoad } = useSocialScreen()
@@ -69,7 +70,7 @@ async function doKnock(host: string, name: string): Promise<void> {
   await client.sync(); void lookUp(host)
 }
 async function copy(): Promise<void> {
-  try { await navigator.clipboard.writeText(link.value); game.toast('Link copied', 'good') } catch { game.toast('Could not copy. Select the link and copy it yourself.', 'error') }
+  if (await copyText(link.value)) game.toast('Link copied', 'good'); else game.toast('Could not copy. Select the link and copy it yourself.', 'error')
 }
 function visit(): void {
   const host = inviteIdFrom(inviteUi.paste)

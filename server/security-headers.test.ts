@@ -28,11 +28,11 @@ test('the inline scripts are hashed from the page itself; data blocks and extern
 test('the game page policy: only what the app needs, scripts by hash, never unsafe-inline or unsafe-eval for scripts', async () => {
   const scriptHashes = await inlineScriptHashes(INDEX);
   const policy = appContentSecurityPolicy({ secure: true, host: 'joinallworld.com', scriptHashes });
-  assert.equal(directive(policy, 'script-src'), `script-src 'self' ${scriptHashes.join(' ')}`);
+  assert.equal(directive(policy, 'script-src'), `script-src 'self' ${scriptHashes.join(' ')} https://static.cloudflareinsights.com`);
   assert.ok(!/unsafe-eval/.test(policy) && !/script-src[^;]*unsafe-inline/.test(policy));
-  assert.equal(directive(policy, 'connect-src'), "connect-src 'self' wss://joinallworld.com");
+  assert.equal(directive(policy, 'connect-src'), "connect-src 'self' wss://joinallworld.com https://cloudflareinsights.com");
   for (const wanted of ["default-src 'self'", "style-src 'self' 'unsafe-inline'", "img-src 'self' data: blob:", "font-src 'self'", "media-src 'self' blob:", "worker-src 'self' blob:", "manifest-src 'self'", "base-uri 'self'", "form-action 'self'", "object-src 'none'", "frame-ancestors 'none'", 'upgrade-insecure-requests']) assert.ok(policy.split('; ').includes(wanted), wanted);
-  assert.ok(!/https?:\/\//.test(policy), 'no outside host without telemetry');
+  assert.deepEqual(policy.match(/https?:\/\/[^\s;]+/g), ['https://static.cloudflareinsights.com', 'https://cloudflareinsights.com'], 'without telemetry the only outside hosts are the edge analytics beacon\'s two');
 });
 
 test('HTTPS adds Strict-Transport-Security and upgrade-insecure-requests; a developer machine and plain HTTP get neither', async () => {
@@ -60,7 +60,7 @@ test('telemetry hosts reach connect-src only when telemetry is configured, from 
   const only = telemetryOrigins(readTelemetryConfig({ TELEMETRY_ENV: 'production', POSTHOG_KEY: 'phc_fakefakefake' }));
   assert.deepEqual(only, ['https://us.i.posthog.com'], 'the default PostHog host');
   const policy = appContentSecurityPolicy({ secure: true, host: 'joinallworld.com', scriptHashes: [], telemetry: only });
-  assert.equal(directive(policy, 'connect-src'), "connect-src 'self' wss://joinallworld.com https://us.i.posthog.com");
+  assert.equal(directive(policy, 'connect-src'), "connect-src 'self' wss://joinallworld.com https://us.i.posthog.com https://cloudflareinsights.com");
 });
 
 test('module pages and API answers have their own sets', () => {
@@ -92,8 +92,8 @@ test('the Node host: the page and its deep links, a module page, the API and a s
     const response = await fetch(`${f.base}${path}`);
     assert.equal(response.status, 200);
     const csp = response.headers.get('content-security-policy') as string;
-    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')}`, path);
-    assert.match(directive(csp, 'connect-src'), /^connect-src 'self' wss:\/\/127\.0\.0\.1:\d+ ws:\/\/127\.0\.0\.1:\d+ https:\/\/o123\.ingest\.example-sentry\.test https:\/\/eu\.i\.example-posthog\.test$/, 'telemetry configured: its hosts are allowed');
+    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')} https://static.cloudflareinsights.com`, path);
+    assert.match(directive(csp, 'connect-src'), /^connect-src 'self' wss:\/\/127\.0\.0\.1:\d+ ws:\/\/127\.0\.0\.1:\d+ https:\/\/o123\.ingest\.example-sentry\.test https:\/\/eu\.i\.example-posthog\.test https:\/\/cloudflareinsights\.com$/, 'telemetry configured: its hosts are allowed');
     assert.deepEqual([response.headers.get('x-frame-options'), response.headers.get('x-content-type-options'), response.headers.get('referrer-policy'), response.headers.get('cross-origin-opener-policy'), response.headers.get('strict-transport-security')], ['DENY', 'nosniff', 'strict-origin-when-cross-origin', 'same-origin', null], `${path}: localhost is not sent HSTS`);
     assert.match(response.headers.get('permissions-policy') as string, /microphone=\(self\)/);
     assert.equal(response.headers.get('cache-control'), 'no-cache');
@@ -125,7 +125,7 @@ test('the Node host without telemetry: no outside host in the policy', async (t)
   await writeFile(join(dist, 'index.html'), INDEX);
   const f = await fixture(t, { distDir: dist, env: {}, log: () => {} });
   const response = await fetch(`${f.base}/`);
-  assert.ok(!/https:\/\//.test(response.headers.get('content-security-policy') as string));
+  assert.deepEqual((response.headers.get('content-security-policy') as string).match(/https:\/\/[^\s;]+/g), ['https://static.cloudflareinsights.com', 'https://cloudflareinsights.com']);
   await response.arrayBuffer();
 });
 
@@ -139,13 +139,13 @@ test('accounts widen the policy only when configured: the identity endpoints, th
   assert.ok(!/googleapis|google\.com|frame-src/.test(off['Content-Security-Policy'] as string), 'unconfigured: exactly the strict policy');
   const email = appHeaders({ ...facts, accounts: { projectId: 'demo-allworld-test', apiKey: 'k'.repeat(30), googleClientId: '' } });
   const emailPolicy = email['Content-Security-Policy'] as string;
-  assert.equal(directive(emailPolicy, 'connect-src'), "connect-src 'self' wss://joinallworld.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com");
-  assert.equal(directive(emailPolicy, 'script-src'), "script-src 'self' 'sha256-x'");
+  assert.equal(directive(emailPolicy, 'connect-src'), "connect-src 'self' wss://joinallworld.com https://cloudflareinsights.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com");
+  assert.equal(directive(emailPolicy, 'script-src'), "script-src 'self' 'sha256-x' https://static.cloudflareinsights.com");
   assert.equal(directive(emailPolicy, 'frame-src'), '');
   assert.equal(email['Cross-Origin-Opener-Policy'], 'same-origin', 'no Google button, no popup');
   const google = appHeaders({ ...facts, accounts: { projectId: 'demo-allworld-test', apiKey: 'k'.repeat(30), googleClientId: ACCOUNTS_ENV.ACCOUNTS_GOOGLE_CLIENT_ID } });
   const policy = google['Content-Security-Policy'] as string;
-  assert.equal(directive(policy, 'script-src'), "script-src 'self' 'sha256-x' https://accounts.google.com/gsi/client");
+  assert.equal(directive(policy, 'script-src'), "script-src 'self' 'sha256-x' https://static.cloudflareinsights.com https://accounts.google.com/gsi/client");
   assert.equal(directive(policy, 'frame-src'), 'frame-src https://accounts.google.com/gsi/');
   assert.equal(directive(policy, 'style-src'), "style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style");
   assert.match(directive(policy, 'connect-src'), /https:\/\/accounts\.google\.com\/gsi\/$/);
@@ -170,4 +170,12 @@ test('the Node host: the page carries the strict policy until accounts are confi
   assert.equal(response.headers.get('cross-origin-opener-policy'), 'same-origin-allow-popups');
   const api = await fetch(`${on.base}/api/does-not-exist`); await api.arrayBuffer();
   assert.equal(api.headers.get('content-security-policy'), null, 'the API answers carry no page policy');
+});
+
+test('the edge analytics beacon is allowed by origin only: its script and its connection, nothing wider', async () => {
+  const policy = appContentSecurityPolicy({ secure: true, host: 'joinallworld.com', scriptHashes: ["'sha256-x'"] });
+  assert.match(directive(policy, 'script-src'), /(^| )https:\/\/static\.cloudflareinsights\.com( |$)/);
+  assert.match(directive(policy, 'connect-src'), /(^| )https:\/\/cloudflareinsights\.com( |$)/);
+  assert.ok(!/\*|https:( |;|$)/.test(policy), 'no wildcard and no bare scheme');
+  assert.ok(!/cloudflareinsights/.test(directive(policy, 'default-src') + directive(policy, 'img-src') + directive(policy, 'frame-src')), 'only the two directives');
 });

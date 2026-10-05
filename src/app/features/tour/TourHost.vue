@@ -12,7 +12,9 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch 
 import { useApp } from '../../state/app.ts'
 import { tour, track } from './tourState.ts'
 import { signupShown } from '../account/shownOnce.ts'
-import { STEPS, isDone, playlist, seek, showable, wordsOf } from './tourModel.ts'
+import { STEPS, isDone, playlist, seek, showable, tourPaused, wordsOf } from './tourModel.ts'
+import { callStore } from '../calls/callState.ts'
+import { input, startInputMode } from '../../state/inputMode.ts'
 import type { StepContext, TourStep } from './tourModel.ts'
 import { placeCard, spotlightOf } from './placement.ts'
 import type { Placement, Rect } from './placement.ts'
@@ -37,7 +39,8 @@ const last = computed(() => index.value >= list.value.length - 1)
 const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
 const sheetKind = computed(() => shell.sheet.value?.kind ?? null)
 /** A sheet that is not the tour's own (a settle-in offer, a call, anything): the tour waits behind it. */
-const paused = computed(() => sheetKind.value !== null && step.value?.allows !== sheetKind.value)
+const callUp = computed(() => callStore.view.phase !== 'idle' || callStore.confirm !== null)
+const paused = computed(() => tourPaused({ sheet: sheetKind.value, allows: step.value?.allows, call: callUp.value }))
 /** The phone is a modal dialog in the top layer, so the card lives inside it while the step is about the phone. */
 const host = computed(() => (sheetKind.value === 'phone' && step.value?.allows === 'phone' ? '#life-dialog' : 'body'))
 
@@ -50,8 +53,9 @@ function find(id: string): HTMLElement | null {
   for (const node of document.querySelectorAll(`[data-tour="${CSS.escape(id)}"]`)) if (visible(node)) return node
   return null
 }
-const context = (): StepContext => ({ home: game.state.value.location === 'home', touch: globalThis.matchMedia?.('(pointer: coarse)').matches === true, has: (id) => find(id) !== null })
-const ctx = computed(() => { void index.value; void done.value; return context() })
+const context = (): StepContext => ({ home: game.state.value.location === 'home', touch: input.touch, keys: input.keys, has: (id) => find(id) !== null })
+startInputMode()
+const ctx = computed(() => { void index.value; void done.value; void input.touch; void input.keys; return context() })
 const words = computed(() => (step.value ? wordsOf(step.value, ctx.value, done.value) : { title: '', text: '', task: null }))
 const keyRows = computed(() => (step.value?.keys ? step.value.keys(ctx.value) : []))
 const action = computed(() => step.value?.action ?? null)

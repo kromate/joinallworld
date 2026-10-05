@@ -9,9 +9,9 @@
  * It listens to the Map panel's 'jaw:map-ui' event (filter, selected place, layers and their data)
  * and to the shell's 'jaw:key' (arrows pan, + and − zoom, 0 shows the whole city).
  *
- * THE OPENING VIEW: a phone opens close on the player, where the places around them are named in
- * words; "Whole city" pulls back to all of it and "Find me" comes back (it lights up while the
- * player's piece is out of sight or far away). A wide screen has room for the whole city and opens on it.
+ * THE OPENING VIEW: every screen opens on the metropolitan core, filling the width; "Whole city" pulls back to the whole
+ * state (tipped well up, and turned a quarter on a tall phone when that is larger) and "Find me" comes back to the player
+ * (it lights up while the player's piece is out of sight or far away).
  * A label never covers the player's piece: see src/map3d/labels.ts.
  *
  * BATTERY RULE — NO FRAME LOOP WHILE IDLE
@@ -557,8 +557,9 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     rig.jump({ yaw: 0, pitch: DEFAULT_PITCH });
     openedWhole = false;
     if (size.width > 720) { rig.jump(rig.core()); return; }
-    // A phone cannot name the places of the whole city at once: it opens close on where the player is.
-    rig.jump(nearView(city.places[state?.location!] || city.places.home!));
+    // A phone opens on the metropolitan core, filling the width of the screen; "Find me" brings the view back to the player.
+    nearView(city.places[state?.location!] || city.places.home!);
+    rig.jump(rig.core());
   }
   /** The close view around a point (the player): near enough for the places around it to be named, on this screen. */
   function nearView(at: { x: number; z: number }) {

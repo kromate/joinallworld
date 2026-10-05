@@ -429,7 +429,8 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
       if (seen.size > 100) { const oldest = seen.values().next(); if (!oldest.done) seen.delete(oldest.value) }
       const local = message.clientId ? pending.get(message.clientId) : undefined
       if (local && message.clientId && message.from?.id === session?.id) { local.line.delivery = 'Sent'; local.line.canRetry = false; pending.delete(message.clientId); emit() }
-      else appendChat(message)
+      // A delivery label is about the player's own messages only: a message that arrived from someone else has none.
+      else appendChat(message, message.from?.id === session?.id ? 'Sent' : '')
     } else if (message.type === 'signal') void receiveSignal(message)
     else if (message.type === 'error') {
       const refused = message.error || message.code

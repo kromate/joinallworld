@@ -327,21 +327,16 @@ test('every venue has its landmark and label anchor; Home stands in the playerâ€
   h.map.destroy();
 });
 
-test('the opening view: a phone opens close on the player, a wide screen on the whole city, and neither costs a frame loop', () => {
+test('the opening view: a phone and a wide screen both open on the metropolitan core, and neither costs a frame loop', () => {
   const phone = harness({ home: 'ikoyi' });
   phone.map.setState(phone.state()); phone.map.resize();
   assert.equal(phone.pump(), 1, 'one frame, no ease');
-  const near = phone.map.diagnostics().view, whole = phone.map.rig.whole(), home = phone.map.city.places.home!;
-  assert.ok(Math.hypot(near.x - home.x, near.z - home.z) < 4, 'centred on the player');
-  assert.ok(near.distance < whole.distance * 0.3, `a close view (${Math.round(near.distance)} against ${Math.round(whole.distance)} for the whole city)`);
-  // Close means: the streets either side of the player fill the screen, so their places are named in words.
-  const span = nearPoints(home, true);
-  assert.ok(span[1]!.x - span[0]!.x < 60 && span[1]!.x - span[0]!.x > 40, 'a phone holds about fifty units of city across');
-  assert.ok(nearPoints(home, false)[1]!.x - nearPoints(home, false)[0]!.x > span[1]!.x - span[0]!.x, 'a wide screen holds more');
-  // Wherever the player is, that is where it opens.
+  const opened = phone.map.diagnostics().view, pcore = phone.map.rig.core(), pall = phone.map.rig.whole();
+  assert.deepEqual([opened.x, opened.z, Math.round(opened.distance)], [pcore.x, pcore.z, Math.round(pcore.distance)], 'a phone opens on the core, filling the width');
+  assert.ok(pcore.distance < pall.distance * 0.6, 'much closer than the whole state');
+  assert.ok(nearPoints(phone.map.city.places.home!, false)[1]!.x - nearPoints(phone.map.city.places.home!, false)[0]!.x > nearPoints(phone.map.city.places.home!, true)[1]!.x - nearPoints(phone.map.city.places.home!, true)[0]!.x, 'the close view of a wide screen holds more than a phoneâ€™s');
   const away = harness();
   away.map.setState(away.state({ location: 'beach' })); away.map.resize(); away.pump();
-  assert.ok(Math.hypot(away.map.diagnostics().view.x - pack.sites.beach!.x, away.map.diagnostics().view.z - pack.sites.beach!.z) < 4);
   const idle = away.count(); away.env.now += 60000;
   assert.equal(away.queue.length, 0); assert.equal(away.pump(), 0); assert.equal(away.count(), idle, 'still once open');
   const desk = harness({ width: 1280, height: 800 });

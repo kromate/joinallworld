@@ -12,7 +12,7 @@
 // nothing typed here is logged or sent to telemetry.
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { NEW_PASSWORD_MIN, PASSWORD_MAX, outcomeText } from './accountModel.ts'
+import { NEW_PASSWORD_MIN, PASSWORD_MAX, devicesText, outcomeText } from './accountModel.ts'
 import { useAccount } from './useAccount.ts'
 import AccountChoice from './AccountChoice.vue'
 
@@ -40,6 +40,7 @@ const lead = computed(() => {
 })
 const submitLabel = computed(() => (mode.value === 'reset' ? 'Send reset link' : mode.value === 'create' ? 'Create account' : 'Sign in'))
 const done = computed(() => (state.result ? outcomeText(state.result) : ''))
+const devices = computed(() => (state.result ? devicesText(state.result) : ''))
 
 function setMode(next: Mode): void { mode.value = next; password.value = ''; state.error = ''; state.notice = '' }
 async function submit(): Promise<void> {
@@ -134,7 +135,7 @@ onBeforeUnmount(() => {
     <AccountChoice v-else-if="state.step === 'choice'" />
 
     <template v-else>
-      <div class="session-card"><h3>{{ state.result?.outcome === 'linked' ? 'Your character is saved' : 'You are signed in' }}</h3><p>{{ done }}</p></div>
+      <div class="session-card"><h3>{{ state.result?.outcome === 'linked' ? 'Your character is saved' : 'You are signed in' }}</h3><p>{{ done }}</p><p v-if="devices" data-account-devices>{{ devices }}</p></div>
       <button type="button" class="ui-button is-primary is-block" data-account-continue @click="account.continueToGame()">Continue</button>
     </template>
   </div>

@@ -60,6 +60,7 @@ export const SERVER_TEXT: Readonly<Record<string, string>> = {
   csrf_rejected: 'This page is out of date. Reload it and try again.',
   origin_required: 'This page is out of date. Reload it and try again.',
   account_required: 'You are not signed in on this device.',
+  account_capacity: 'New accounts cannot be made right now. Try again later.',
   account_mismatch: 'That sign-in is for a different account.',
   character_not_found: 'That character is no longer set aside.',
   character_unavailable: 'That character could not be brought back. Nothing was changed.',
@@ -82,6 +83,12 @@ export function outcomeText(result: Pick<SignInResponse, 'outcome' | 'character'
     signed_in: 'You are signed in. The character you start now is kept with your account.',
   }
   return said[result.outcome]
+}
+/** After a sign-in: how many devices are signed in, and whether this sign-in signed others out. '' when this is the only one and nothing was ended. */
+export function devicesText(result: Pick<SignInResponse, 'devices' | 'ended'>): string {
+  const ended = result.ended > 0 ? `${result.ended === 1 ? 'One other device that was' : `${result.ended} other devices that were`} signed in to this account before ${result.ended === 1 ? 'has' : 'have'} been signed out. ` : ''
+  const now = result.devices > 1 ? `${result.devices} devices are signed in to this account. If one of them is not yours, use “Sign out everywhere else” in Settings.` : ''
+  return `${ended}${now}`.trim()
 }
 /** Whether the character in play on this device is a different one than before the sign-in (the cached copy of the old one must go). */
 export const characterChanged = (outcome: SignInOutcome): boolean => outcome !== 'linked'

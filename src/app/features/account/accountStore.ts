@@ -4,7 +4,8 @@
 //
 // WHAT IS KEPT WHERE. The reactive state holds only what may be on screen: an address, a character's
 // name, a sentence. Tokens live in this module's closure, in memory, for as long as a step needs them
-// and never longer; a password is passed through and not kept at all. Nothing is written to storage,
+// and never longer (a sign-in's refresh token until the page starts again, so the choice that may
+// follow it can be proved); a password is passed through and not kept at all. Nothing is written to storage,
 // and nothing here is reported to telemetry.
 //
 // The provider's code (identityProvider.ts) is imported the first time a sign-in is actually sent, so
@@ -34,8 +35,8 @@ export interface AccountState {
   error: string
   notice: string
   step: AccountStep
-  /** What the last sign-in did, for the sentence on the final screen and the choice screen. */
-  result: Pick<SignInResponse, 'outcome' | 'character' | 'parked'> | null
+  /** What the last sign-in did, for the sentences on the final screen and the choice screen. */
+  result: Pick<SignInResponse, 'outcome' | 'character' | 'parked' | 'devices' | 'ended'> | null
 }
 export interface AccountDeps {
   fetchJson: FetchJson
@@ -46,7 +47,11 @@ export interface AccountDeps {
   forgetLife(): void
   reload(): void
 }
-/** How the person proves who they are again before deleting: their password, or a new Google credential. */
+/**
+ * How the person proves who they are again — their password, or a new Google credential. Everything that reaches past
+ * this browser (ending other sign-ins, the account's data, which character is in play, deleting) asks for it: the
+ * server takes a fresh sign-in for that, never the cookie alone.
+ */
 export type Reauth = { password: string } | { credential: string }
 
 const codeOf = (error: unknown): string | undefined => (error !== null && typeof error === 'object' ? (error as ApiError).code : undefined)
@@ -73,7 +78,8 @@ export function createAccount(deps: AccountDeps) {
   function apply(answer: AccountResponse): void {
     state.loaded = true
     state.enabled = answer.enabled === true
-    if (!answer.enabled) { state.googleClientId = ''; state.account = null; state.character = null; state.parked = []; state.guest = false; apiKey = ''; csrf = null; return }
+    // Accounts are off. A browser that signed in while they were on is still told who it is, so that it can sign out.
+    if (!answer.enabled) { state.googleClientId = ''; state.account = answer.account ?? null; state.character = answer.character ?? null; state.parked = []; state.guest = false; apiKey = ''; csrf = answer.csrf ?? null; return }
     apiKey = answer.provider.apiKey; csrf = answer.csrf
     state.googleClientId = answer.provider.googleClientId; state.guest = answer.guest
     state.account = answer.account; state.character = answer.character; state.parked = answer.parked
@@ -95,17 +101,22 @@ export function createAccount(deps: AccountDeps) {
     catch (error) { state.error = sentence(error); return false }
     finally { state.busy = false }
   }
-  /** Hand a fresh ID token to the game server. The token is not kept after this call. */
-  async function finish(idToken: string): Promise<void> {
+  /** A fresh ID token from whatever the person just gave. */
+  async function proofOf(reauth: Reauth): Promise<ProviderTokens> {
+    const api = await theProvider()
+    return 'credential' in reauth ? api.withGoogle(reauth.credential) : api.signIn(state.account?.email ?? '', reauth.password)
+  }
+  /** Hand a fresh ID token to the game server. The ID token is used once; the sign-in itself (`tokens`) is kept in memory for the choice that may follow. */
+  async function finish(tokens: ProviderTokens): Promise<void> {
     let result: SignInResponse
-    try { result = await post<SignInResponse>('/api/account/sign-in', { idToken }) }
+    try { result = await post<SignInResponse>('/api/account/sign-in', { idToken: tokens.idToken }) }
     catch (error) {
       // The server is the one that decides an address is confirmed; if it says "not yet", wait for the person here.
-      if (codeOf(error) === 'email_unverified' && held) { state.step = 'verify'; state.notice = ''; throw new Error(VERIFY_PENDING) }
+      if (codeOf(error) === 'email_unverified') { held = tokens; state.step = 'verify'; state.notice = ''; throw new Error(VERIFY_PENDING) }
       throw error
     }
-    held = null; csrf = result.csrf; changed = characterChanged(result.outcome)
-    state.result = { outcome: result.outcome, character: result.character, parked: result.parked }
+    held = tokens; csrf = result.csrf; changed = characterChanged(result.outcome)
+    state.result = { outcome: result.outcome, character: result.character, parked: result.parked, devices: result.devices, ended: result.ended }
     state.notice = ''
     state.step = result.outcome === 'parked' && result.parked ? 'choice' : 'done'
     await load(true)
@@ -129,7 +140,7 @@ export function createAccount(deps: AccountDeps) {
           state.step = 'verify'; state.notice = VERIFY_SENT
           return
         }
-        await finish(tokens.idToken)
+        await finish(tokens)
       })
     },
     /** "I have confirmed my address": ask the provider for a fresh token and carry on if it now says so. */
@@ -138,7 +149,7 @@ export function createAccount(deps: AccountDeps) {
         if (!held) { state.step = 'form'; throw new Error('Sign in again to continue.') }
         held = await (await theProvider()).refresh(held.refreshToken)
         if (!tokenSaysVerified(held.idToken)) throw new Error(VERIFY_PENDING)
-        await finish(held.idToken)
+        await finish(held)
       })
     },
     resendVerification(): Promise<boolean> {
@@ -150,7 +161,7 @@ export function createAccount(deps: AccountDeps) {
     },
     /** A credential from the Google button. */
     withGoogle(credential: string): Promise<boolean> {
-      return attempt(async () => { await finish((await (await theProvider()).withGoogle(credential)).idToken) })
+      return attempt(async () => { await finish(await (await theProvider()).withGoogle(credential)) })
     },
     /** Ask for a password-reset e-mail. The answer on screen is the same whatever the address is. */
     resetPassword(email: string): Promise<boolean> {
@@ -158,38 +169,47 @@ export function createAccount(deps: AccountDeps) {
       if (problem) { state.error = problem; return Promise.resolve(false) }
       return attempt(async () => { await post('/api/account/password-reset', { email: cleanEmail(email) }); state.notice = RESET_SENT })
     },
-    /** The merge choice: play the set-aside character (`id`), or keep the account's (null). */
+    /**
+     * The merge choice: play the set-aside character (`id`), or keep the account's (null). Swapping is proved with a
+     * fresh token from the sign-in that has just happened (its refresh token is still in memory), so nothing is asked twice.
+     */
     choose(id: string | null): Promise<boolean> {
       return attempt(async () => {
-        if (id) { const answer = await post<SwitchCharacterResponse>('/api/account/character', { use: id }); state.character = answer.character; state.parked = answer.parked; changed = true }
+        if (id) {
+          if (!held) throw new Error('Sign in again to choose.')
+          held = await (await theProvider()).refresh(held.refreshToken)
+          const answer = await post<SwitchCharacterResponse>('/api/account/character', { use: id, idToken: held.idToken })
+          state.character = answer.character; state.parked = answer.parked; changed = true
+        }
         state.step = 'done'
       })
     },
     /** Leave the sign-in screens for the game: the cookie is new, so the page starts again; a different character means the cached one goes first. */
-    continueToGame(): void { if (changed) deps.forgetLife(); deps.reload() },
-    /** From Settings: bring a set-aside character into play. */
-    switchTo(id: string): Promise<boolean> {
-      return attempt(async () => { await post('/api/account/character', { use: id }); deps.forgetLife(); deps.reload() })
+    continueToGame(): void { held = null; if (changed) deps.forgetLife(); deps.reload() },
+    /** From Settings, with proof: bring a set-aside character into play. */
+    switchTo(id: string, reauth: Reauth): Promise<boolean> {
+      return attempt(async () => { await post('/api/account/character', { use: id, idToken: (await proofOf(reauth)).idToken }); deps.forgetLife(); deps.reload() })
     },
+    /** This browser only: its own sign-in is enough for that. Works while accounts are switched off too. */
     signOut(): Promise<boolean> {
       return attempt(async () => { await post('/api/account/sign-out', {}); deps.forgetLife(); deps.reload() })
     },
-    signOutEverywhere(): Promise<boolean> {
+    /** With proof: end every other browser's sign-in. */
+    signOutEverywhere(reauth: Reauth): Promise<boolean> {
       return attempt(async () => {
-        const answer = await post<{ ended: number }>('/api/account/sign-out-everywhere', {})
+        const answer = await post<{ ended: number }>('/api/account/sign-out-everywhere', { idToken: (await proofOf(reauth)).idToken })
         state.notice = answer.ended === 0 ? 'No other device was signed in.' : `Signed out on ${answer.ended} other ${answer.ended === 1 ? 'device' : 'devices'}.`
         await load(true)
       })
     },
     /**
-     * Delete the account. The person proves who they are again (`reauth`); `erase` also removes the character in play,
-     * otherwise it stays on this device as a guest life. The provider's own record of the person is removed last.
+     * With proof: delete the account. `erase` also removes the saved life of the character in play; otherwise it stays
+     * on this device as a guest life. The provider's own record of the person is removed last.
      */
     remove(reauth: Reauth, erase: boolean): Promise<boolean> {
       return attempt(async () => {
         const api = await theProvider()
-        const email = state.account?.email ?? ''
-        const tokens = 'credential' in reauth ? await api.withGoogle(reauth.credential) : await api.signIn(email, reauth.password)
+        const tokens = await proofOf(reauth)
         await post('/api/account/delete', { idToken: tokens.idToken, confirm: 'delete', erase })
         // The game's side is done. A provider that cannot be reached now keeps only the sign-in itself, which the next sign-in would show as a new account.
         await api.deleteUser(tokens.idToken).catch(() => { /* nothing of the game is left to protect */ })
@@ -197,10 +217,10 @@ export function createAccount(deps: AccountDeps) {
         deps.reload()
       })
     },
-    /** Everything the server stores about this account, for its owner. */
-    async exportData(): Promise<AccountExportResponse | null> {
+    /** With proof: everything the server stores about this account, for its owner. */
+    async exportData(reauth: Reauth): Promise<AccountExportResponse | null> {
       let data: AccountExportResponse | null = null
-      await attempt(async () => { data = await deps.fetchJson<AccountExportResponse>('/api/account/export') })
+      await attempt(async () => { data = await post<AccountExportResponse>('/api/account/export', { idToken: (await proofOf(reauth)).idToken }) })
       return data
     },
   }

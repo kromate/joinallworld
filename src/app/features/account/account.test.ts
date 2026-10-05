@@ -134,7 +134,7 @@ test('the provider client: refusals are reduced to a kind, and no error carries 
 
 // ---- the store ----
 
-const VERIFIED = jwt({ email_verified: true, sub: 'UidAda' }), UNVERIFIED = jwt({ email_verified: false, sub: 'UidAda' })
+const VERIFIED = jwt({ email_verified: true, sub: 'UidAda' }), UNVERIFIED = jwt({ email_verified: false, sub: 'UidAda' }), FRESH = jwt({ email_verified: true, sub: 'UidAda', n: 2 })
 interface ServerCall { path: string; method: string; body: Record<string, unknown> | null }
 function setup({ enabled = true, guest = true, account = null as { email: string; provider: 'google' | 'password'; createdAt: number; devices: number } | null, provider = {} as Record<string, { status?: number; body: unknown } | (() => never)>, server = {} as Record<string, (body: Record<string, unknown> | null) => unknown>,
   /** Answer some provider requests by hand (a refresh that changes its answer); anything it returns null for is answered from `provider`. */
@@ -166,7 +166,7 @@ function setup({ enabled = true, guest = true, account = null as { email: string
   return { store, calls, effects, provider: p, providerLoads: () => loaded, posts: () => calls.filter((call) => call.method === 'POST') }
 }
 /** What the game server answers to a sign-in that went through. */
-const SIGNED_IN = (outcome: string, extra: Record<string, unknown> = {}) => () => ({ outcome, created: false, character: { id: 'pub-ada', name: 'Ada' }, parked: null, csrf: 'csrf-of-the-new-cookie', serverTime: 2, ...extra })
+const SIGNED_IN = (outcome: string, extra: Record<string, unknown> = {}) => () => ({ outcome, created: false, character: { id: 'pub-ada', name: 'Ada' }, parked: null, devices: 1, ended: 0, csrf: 'csrf-of-the-new-cookie', serverTime: 2, ...extra })
 /** A refusal as fetchJson throws it. */
 const REFUSE = (status: number, code: string) => (): never => { throw Object.assign(new Error(code), { status, code }) }
 /** Nothing secret may sit in what the screens can read. */
@@ -281,16 +281,18 @@ test('store: a refused sign-in shows one sentence and changes nothing', async ()
 test('store: Google sign-in, and the merge choice when both the account and this device had a character', async () => {
   const parked = { id: 'pub-bola', name: 'Bola', at: 5 }
   const f = setup({
-    provider: { signInWithIdp: { body: { idToken: VERIFIED, refreshToken: 'refresh-token-0000000000000000', providerId: 'google.com' } } },
+    provider: { signInWithIdp: { body: { idToken: VERIFIED, refreshToken: 'refresh-token-0000000000000000', providerId: 'google.com' } }, token: { body: { id_token: FRESH, refresh_token: 'refresh-token-1111111111111111' } } },
     server: { 'POST /api/account/sign-in': SIGNED_IN('parked', { parked }), 'POST /api/account/character': (body) => ({ character: { id: body?.use, name: 'Bola' }, parked: [{ id: 'pub-ada', name: 'Ada', at: 6 }], serverTime: 3 }) },
   })
   await f.store.load(); f.store.begin()
   assert.equal(await f.store.withGoogle('google-credential'), true)
   assert.deepEqual(f.provider.bodyOf(0), { requestUri: ORIGIN, postBody: 'id_token=google-credential&providerId=google.com', returnSecureToken: true, returnIdpCredential: false })
   assert.deepEqual([f.store.state.step, f.store.state.result?.character?.name, f.store.state.result?.parked], ['choice', 'Ada', parked])
-  // Play the device's character instead: one request, with the NEW cookie's token.
+  // Play the device's character instead: proved with a FRESH token from the sign-in that just happened (nothing is asked twice), and the NEW cookie's token.
   assert.equal(await f.store.choose('pub-bola'), true)
-  assert.deepEqual(f.posts().at(-1), { path: '/api/account/character', method: 'POST', body: { use: 'pub-bola', csrf: 'csrf-of-the-new-cookie' } })
+  assert.match(f.provider.sent.at(-1)?.url ?? '', /securetoken\.googleapis\.com/)
+  assert.deepEqual(f.posts().at(-1), { path: '/api/account/character', method: 'POST', body: { use: 'pub-bola', idToken: FRESH, csrf: 'csrf-of-the-new-cookie' } })
+  noSecrets(f.store.state)
   assert.deepEqual([f.store.state.step, f.store.state.character, f.store.state.parked.map((item) => item.name)], ['done', { id: 'pub-bola', name: 'Bola' }, ['Ada']])
   f.store.continueToGame(); assert.deepEqual(f.effects, ['forget', 'reload'])
   // Keep the account's character: no request at all.
@@ -315,24 +317,55 @@ test('store: a reset request says the same thing for every address, and a malfor
   assert.equal(await limited.store.resetPassword('ada@example.com'), false); assert.equal(limited.store.state.error, SERVER_TEXT.account_rate_limited)
 })
 
-test('store: sign out, sign out everywhere, switch character and download', async () => {
+test('store: signing this browser out needs nothing more; ending other sign-ins, the data download and switching character each prove who you are first', async () => {
   const account = { email: 'ada@example.com', provider: 'password' as const, createdAt: 1, devices: 3 }
   const f = setup({ account, server: {
     'POST /api/account/sign-out': () => ({ ok: true }), 'POST /api/account/sign-out-everywhere': () => ({ ok: true, ended: 2 }),
-    'POST /api/account/character': () => ({ character: { id: 'pub-bola', name: 'Bola' }, parked: [] }), 'GET /api/account/export': () => ({ account: { email: 'ada@example.com' }, devices: [], character: null, setAside: [], history: [], serverTime: 9 }),
+    'POST /api/account/character': () => ({ character: { id: 'pub-bola', name: 'Bola' }, parked: [] }), 'POST /api/account/export': () => ({ account: { email: 'ada@example.com' }, devices: [], character: null, setAside: [], history: [], serverTime: 9 }),
   } })
   await f.store.load()
   assert.deepEqual(f.store.state.account, account)
-  assert.equal(await f.store.signOutEverywhere(), true)
+  assert.equal(await f.store.signOutEverywhere({ password: PASSWORD }), true)
   assert.equal(f.store.state.notice, 'Signed out on 2 other devices.'); assert.deepEqual(f.effects, [], 'this device stays signed in: no reload')
-  assert.equal((await f.store.exportData())?.account.email, 'ada@example.com')
-  assert.equal(await f.store.switchTo('pub-bola'), true); assert.deepEqual(f.effects, ['forget', 'reload'])
+  assert.equal((await f.store.exportData({ password: PASSWORD }))?.account.email, 'ada@example.com')
+  assert.equal(await f.store.switchTo('pub-bola', { password: PASSWORD }), true); assert.deepEqual(f.effects, ['forget', 'reload'])
+  // Each of the three signed in again at the provider with the ACCOUNT's address and handed that fresh token over.
+  assert.deepEqual(f.provider.sent.map((request) => (request.url.split('?')[0] ?? '').split(':').at(-1)), ['signInWithPassword', 'signInWithPassword', 'signInWithPassword'])
+  assert.deepEqual(f.provider.bodyOf(0), { email: 'ada@example.com', password: PASSWORD, returnSecureToken: true })
+  assert.deepEqual(f.posts().map((call) => [call.path, call.body]), [['/api/account/sign-out-everywhere', { idToken: VERIFIED, csrf: 'csrf-of-the-old-cookie' }], ['/api/account/export', { idToken: VERIFIED, csrf: 'csrf-of-the-old-cookie' }], ['/api/account/character', { use: 'pub-bola', idToken: VERIFIED, csrf: 'csrf-of-the-old-cookie' }]])
+  assert.ok(!f.calls.some((call) => call.method === 'GET' && call.path.includes('export')), 'the data is never asked for with a GET')
+  noSecrets(f.store.state)
+  // Signing out: the cookie's own token, no sign-in at the provider.
+  const sent = f.provider.sent.length
   assert.equal(await f.store.signOut(), true); assert.deepEqual(f.effects, ['forget', 'reload', 'forget', 'reload'])
-  assert.deepEqual(f.posts().map((call) => [call.path, call.body]), [['/api/account/sign-out-everywhere', { csrf: 'csrf-of-the-old-cookie' }], ['/api/account/character', { use: 'pub-bola', csrf: 'csrf-of-the-old-cookie' }], ['/api/account/sign-out', { csrf: 'csrf-of-the-old-cookie' }]])
-  assert.equal(f.providerLoads(), 0)
+  assert.deepEqual(f.posts().at(-1), { path: '/api/account/sign-out', method: 'POST', body: { csrf: 'csrf-of-the-old-cookie' } }); assert.equal(f.provider.sent.length, sent)
+  // A wrong password stops each of them before the game server is asked anything.
+  const wrong = setup({ account, provider: { signInWithPassword: { status: 400, body: { error: { message: 'INVALID_PASSWORD' } } } } })
+  await wrong.store.load()
+  assert.equal(await wrong.store.signOutEverywhere({ password: 'no' }), false); assert.equal(await wrong.store.switchTo('pub-bola', { password: 'no' }), false); assert.equal(await wrong.store.exportData({ password: 'no' }), null)
+  assert.deepEqual([wrong.posts().length, wrong.effects.length, wrong.store.state.error], [0, 0, 'That e-mail and password do not match an account.'])
   const guest = setup({ server: { 'POST /api/account/sign-out': REFUSE(409, 'account_required') } })
   await guest.store.load()
   assert.equal(await guest.store.signOut(), false); assert.equal(guest.store.state.error, SERVER_TEXT.account_required); assert.deepEqual(guest.effects, [], 'a refused sign-out forgets nothing')
+})
+
+test('store: accounts switched off — a browser still signed in is told who it is and can sign out; nothing else is offered', async () => {
+  const f = setup({ server: { 'GET /api/account': () => ({ enabled: false, csrf: 'csrf-of-the-old-cookie', account: { email: 'ada@example.com', provider: 'password', createdAt: 1, devices: 1 }, character: { id: 'pub-ada', name: 'Ada' }, serverTime: 1 }), 'POST /api/account/sign-out': () => ({ ok: true }) } })
+  await f.store.load()
+  assert.deepEqual([f.store.state.enabled, f.store.state.account?.email, f.store.state.googleClientId], [false, 'ada@example.com', ''])
+  assert.equal(await f.store.signOut(), true)
+  assert.deepEqual(f.posts(), [{ path: '/api/account/sign-out', method: 'POST', body: { csrf: 'csrf-of-the-old-cookie' } }]); assert.deepEqual(f.effects, ['forget', 'reload'])
+})
+
+test('after a sign-in the screen says how many devices are signed in, and when others were signed out', async () => {
+  const { devicesText } = await import('./accountModel.ts')
+  assert.equal(devicesText({ devices: 1, ended: 0 }), '')
+  assert.equal(devicesText({ devices: 3, ended: 0 }), '3 devices are signed in to this account. If one of them is not yours, use “Sign out everywhere else” in Settings.')
+  assert.equal(devicesText({ devices: 1, ended: 1 }), 'One other device that was signed in to this account before has been signed out.')
+  assert.equal(devicesText({ devices: 1, ended: 2 }), '2 other devices that were signed in to this account before have been signed out.')
+  const f = setup({ server: { 'POST /api/account/sign-in': SIGNED_IN('linked', { devices: 1, ended: 1 }) } })
+  await f.store.load(); f.store.begin(); await f.store.withPassword('ada@example.com', PASSWORD, false)
+  assert.deepEqual([f.store.state.result?.devices, f.store.state.result?.ended], [1, 1])
 })
 
 test('store: deleting proves who you are again, deletes here first and at the provider second, and keeps or erases the character as asked', async () => {
@@ -372,7 +405,7 @@ test('store: one thing at a time — a second tap while a request is out does no
   await f.store.load()
   const first = f.store.signOut()
   assert.equal(f.store.state.busy, true)
-  assert.equal(await f.store.signOut(), false); assert.equal(await f.store.signOutEverywhere(), false)
+  assert.equal(await f.store.signOut(), false); assert.equal(await f.store.signOutEverywhere({ password: PASSWORD }), false)
   release(); assert.equal(await first, true)
   assert.equal(f.posts().length, 1); assert.equal(f.store.state.busy, false)
 })

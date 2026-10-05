@@ -131,7 +131,7 @@ test('whatever a name or an address contains is rendered as text', async () => {
     assert.ok(!html.includes('<img'), 'no element was made from a name or an address')
     assert.ok(html.includes('&lt;img src=x onerror=alert(1)&gt;'))
   }
-  account.state.step = 'choice'; account.state.result = { outcome: 'parked', character: { id: 'p', name: hostile }, parked: { id: 'q', name: hostile, at: 0 } }
+  account.state.step = 'choice'; account.state.result = { outcome: 'parked', character: { id: 'p', name: hostile }, parked: { id: 'q', name: hostile, at: 0 }, devices: 1, ended: 0 }
   const choice = await render('AccountSignIn')
   assert.ok(!choice.includes('<img') && choice.includes('&lt;img'))
   account.state.error = hostile; account.state.step = 'form'; account.state.account = null
@@ -149,7 +149,7 @@ test('the confirm-your-address notice, the merge choice and the final screen', a
   assert.ok(!/<input/.test(verify), 'no field on the notice: nothing typed is kept on screen')
 
   account.state.notice = ''; account.state.step = 'choice'
-  account.state.result = { outcome: 'parked', character: { id: 'pub-ada', name: 'Ada' }, parked: { id: 'pub-bola', name: 'Bola', at: 5 } }
+  account.state.result = { outcome: 'parked', character: { id: 'pub-ada', name: 'Ada' }, parked: { id: 'pub-bola', name: 'Bola', at: 5 }, devices: 2, ended: 0 }
   const choice = await render('AccountSignIn')
   const words = text(choice)
   assert.ok(words.startsWith('Two characters, one to play This account already has a character, and this device had one of its own. Both are kept.'))
@@ -159,11 +159,16 @@ test('the confirm-your-address notice, the merge choice and the final screen', a
   assert.ok(words.includes('Nothing is deleted.'))
   assert.match(choice, /role="group" aria-label="Which character to play"/)
 
-  account.state.step = 'done'; account.state.result = { outcome: 'linked', character: { id: 'pub-ada', name: 'Ada' }, parked: null }
+  account.state.step = 'done'; account.state.result = { outcome: 'linked', character: { id: 'pub-ada', name: 'Ada' }, parked: null, devices: 1, ended: 0 }
   const done = await render('AccountSignIn')
   assert.equal(text(done), 'Your character is saved Saved. Ada is now kept with your account: sign in on any device to play on. Continue')
-  account.state.result = { outcome: 'restored', character: { id: 'pub-ada', name: 'Ada' }, parked: null }
+  account.state.result = { outcome: 'restored', character: { id: 'pub-ada', name: 'Ada' }, parked: null, devices: 1, ended: 0 }
   assert.equal(text(await render('AccountSignIn')), 'You are signed in Welcome back. This device now plays Ada. Continue')
+  // Other devices signed in, and devices this sign-in signed out, are said on the same screen.
+  account.state.result = { outcome: 'linked', character: { id: 'pub-ada', name: 'Ada' }, parked: null, devices: 3, ended: 1 }
+  const counted = await render('AccountSignIn')
+  assert.match(counted, /data-account-devices/)
+  assert.ok(text(counted).includes('One other device that was signed in to this account before has been signed out. 3 devices are signed in to this account. If one of them is not yours, use “Sign out everywhere else” in Settings.'))
 })
 
 test('Settings, as a guest: what an account is for and the two ways in', async () => {
@@ -188,8 +193,9 @@ test('Settings, signed in: who is signed in, sign out, sign out everywhere, the 
   const html = await render('AccountSettings'), words = text(html)
   assert.ok(words.includes('Signed in as ada@example.com') && words.includes('With e-mail and password · 2 devices signed in'))
   for (const marker of ['data-account-sign-out', 'data-account-everywhere', 'data-account-export', 'data-account-delete', 'data-account-play']) assert.ok(html.includes(marker), marker)
-  for (const label of ['Sign out On this device only. Your character stays with your account', 'Sign out everywhere else', 'Download my account data', 'Delete account…', 'Set-aside characters', 'Bola', 'Playing one sets Ada aside in its place. Nothing is deleted.']) assert.ok(words.includes(label), label)
-  assert.ok(!html.includes('data-account-delete-form') && !/<input/.test(html), 'deleting is a second step: no form, no password field, until it is asked for')
+  for (const label of ['Sign out On this device only. Your character stays with your account', 'Sign out everywhere else End every other device’s sign-in (2 devices signed in); this one stays', 'Download my account data', 'Delete account…', 'Set-aside characters', 'Bola', 'Playing one sets Ada aside in its place. Nothing is deleted.']) assert.ok(words.includes(label), label)
+  assert.match(html, /data-account-devices/)
+  assert.ok(!html.includes('data-account-confirm-form') && !/<input/.test(html), 'what reaches past this device is a second step: no form, no password field, until it is asked for')
   assert.ok(!words.includes('Save your character'))
   const google = text(await (async () => { await given({ ...CONFIGURED, account: { email: 'ada@example.com', provider: 'google', createdAt: 0, devices: 1 }, character: { id: 'pub-ada', name: 'Ada' }, parked: [] }); return render('AccountSettings') })())
   assert.ok(google.includes('With Google · 1 device signed in') && !google.includes('Set-aside characters'))
@@ -199,4 +205,25 @@ test('Settings, signed in: who is signed in, sign out, sign out everywhere, the 
   // The sign-in sheet, opened while signed in, says so instead of offering a form.
   const sheet = await render('AccountSignIn')
   assert.equal(text(sheet), 'You are signed in Signed in as ada@example.com . Your character is kept with your account. Back to the game')
+})
+
+test('accounts switched off after this browser signed in: Settings still says who is signed in and offers sign-out, and nothing else', async () => {
+  await given({ enabled: false, csrf: 'csrf-token', account: { email: 'ada@example.com', provider: 'password', createdAt: 0, devices: 1 }, character: { id: 'pub-ada', name: 'Ada' } })
+  const html = await render('AccountSettings'), words = text(html)
+  assert.equal(words, 'Account Signed in as ada@example.com Sign-in is switched off on this server for now. You can keep playing, and you can sign out. Sign out On this device. You will not be able to sign back in until sign-in is switched on again')
+  assert.match(html, /<button[^>]*data-account-sign-out/)
+  for (const marker of ['data-account-everywhere', 'data-account-export', 'data-account-delete', 'data-account-save', 'data-account-open']) assert.ok(!html.includes(marker), marker)
+  const { useAccountEntry } = await load<{ useAccountEntry: () => { available: boolean } }>('/src/app/features/start/accountEntry.ts')
+  assert.equal(useAccountEntry().available, false, 'the start screens offer no sign-in')
+})
+
+test('the delete step says exactly what is removed and what is not, and claims nothing more', async () => {
+  // The step is opened by a tap; its words are checked in the component's own template (a string render cannot tap).
+  const { readFile } = await import('node:fs/promises')
+  const source = (await readFile(new URL('./AccountSettings.vue', import.meta.url), 'utf8')).replace(/\s+/g, ' ')
+  for (const said of ['<strong>Removed:</strong> the account itself (its e-mail address and sign-in), its sign-in on every device', 'This cannot be undone.',
+    'Also remove <b>{{ name }}</b>’s saved life from this server. If this is not ticked, {{ name }} stays on this device as a guest life.',
+    '<strong>Not removed</strong>, even when that box is ticked: messages {{ name }} already sent to other players, {{ name }}’s place in neighbourhood and other public listings, and one anonymous line in this server’s account history']) assert.ok(source.includes(said), said)
+  assert.ok(!/\berase[sd]?\b/i.test(source.replace(/<script[\s\S]*?<\/script>/, '').replace(/name="erase"|v-model="erase"/g, '')), 'the screen does not say "erased" of what partly remains')
+  assert.match(source, /autocomplete="current-password"/)
 })

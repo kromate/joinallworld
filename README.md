@@ -78,7 +78,7 @@ A player never needs an account: a guest plays at once with a device session. Ac
 | `ACCOUNTS_FIREBASE_API_KEY` | unset | That project's **web API key**, e.g. `AIza…`. Public: it is sent to the browser. **Required** |
 | `ACCOUNTS_GOOGLE_CLIENT_ID` | unset | The OAuth web client id of the Google button, e.g. `000000000000-example.apps.googleusercontent.com`. Public. Without it only e-mail sign-in is offered |
 
-All three are public identifiers, not secrets; they are configuration so that no deployment's identifiers are in the source. There is no service-account key and no server secret. Set `PUBLIC_ORIGIN` as well when the API key is restricted by referrer. The design, the provider console steps, the Content-Security-Policy origins sign-in needs and the open questions are in [docs/ACCOUNTS.md](docs/ACCOUNTS.md). **Have the design and the code reviewed before enabling this on a public server.**
+All three are public identifiers, not secrets; they are configuration so that no deployment's identifiers are in the source. There is no service-account key and no server secret. Set `PUBLIC_ORIGIN` as well when the API key is restricted by referrer. The design, the provider console steps, the Content-Security-Policy origins sign-in needs and the open questions are in [docs/ACCOUNTS.md](docs/ACCOUNTS.md). When the mailer is configured too (`ZEPTOMAIL_AUTH`, `EMAIL_FROM_ADDRESS`, `PUBLIC_ORIGIN`), a new account is sent one welcome e-mail. **Before enabling this on a public server: have the design and the code reviewed, and turn on e-mail enumeration protection in the provider project** (docs/ACCOUNTS.md, "Setting it up").
 
 ### Telemetry (off unless configured)
 
@@ -266,7 +266,7 @@ HTTP routes (all under the per-address rate limit, and all except `/api/mod/*` u
 | World | `GET /api/world/me` (your place: local government, plot; allocates the plot of a settled life) · `GET /api/world/city` · `GET /api/world/lga/:id` · `GET /api/world/lga/:id/estates` · `GET /api/world/lga/:id/estate/:estate/houses` · `GET /api/world/lga/:id/people` — all read-only; where you live is changed by game actions on `POST /api/action` (`estate.*`, and `onboarding.home { lga }` at settle-in) |
 | Campus | `GET /api/campus` (`?city=lagos`: the Student Union election, the weekly boards and the shared goal, from server-saved records) · `POST /api/campus/nominate` · `POST /api/campus/vote` (identity from the stored life; exactly once per action id; the ballot is saved with its receipt) |
 | Telemetry | `GET /api/telemetry/config` (what the browser may load: public keys only, or `{ enabled: false }`; creates no session, and reads the caller's only to add `under18: true`) · `POST /api/telemetry/consent` (`{ analytics }`: the player's Accept or Reject, kept in memory; an under-18 player's Accept is not kept) |
-| Accounts | `GET /api/account` (always answers; `{ "enabled": false }` when not configured) and, only when configured, `POST /api/account/sign-in`, `/character`, `/sign-out`, `/sign-out-everywhere`, `/delete`, `/password-reset` and `GET /api/account/export` — [docs/ACCOUNTS.md](docs/ACCOUNTS.md) |
+| Accounts | `GET /api/account` (always answers; `{ "enabled": false }` when not configured) and, only when configured, `POST /api/account/sign-in`, `/character`, `/sign-out-everywhere`, `/export`, `/delete` and `/password-reset`; `POST /api/account/sign-out` answers either way — [docs/ACCOUNTS.md](docs/ACCOUNTS.md) |
 
 WebSocket messages on `/socket` (`server/ws/`):
 
@@ -297,7 +297,7 @@ Pages outside `/api/` (`ctx.pages`, written by the host itself with fixed header
 | Main store | one JSON file, group commit (`server/store.ts`) | SQLite tables of one Durable Object (`sqlite-store.ts`): `sessions`, `action_receipts`, `once_receipts`, `archived_lives`, `collections` + `collection_parts`. One SQL transaction per write, durable before it is acknowledged |
 | World shards | one append-only file per local government (`server/world/shards.ts`) | rows of `world_shards` (`sqlite-shards.ts`), through the same store code (`server/world/shard-core.ts`): the same bounded reads, group commit and compaction |
 | Keys the server makes (push, link signing) | `DATA_DIR/keys/*.json`, mode 0600 | rows of `host_keys` in the object's own storage |
-| Rate limits | in memory | the `rate_limits` table (they survive a sleep) |
+| Rate limits | in memory | the `rate_limits` and `rate_limits_account` tables (they survive a sleep). On both hosts rows are bounded per class of key (10,000; account keys 4,000) and a full table drops the rows that expire soonest instead of refusing new keys (`server/limiter.ts`) |
 | Sockets | `ws`, protocol ping | hibernating WebSockets; what a socket carries is its attachment, and the modules get each socket back (`restore`) when the object wakes. An application `heartbeat` frame is answered by every browser socket with `heartbeat-ack` |
 | Heartbeat and housekeeping | a 10 s timer | an alarm: every 10 s while a socket is connected, every 5 minutes otherwise (mail and push that are due, registry tidying) |
 | Work after the answer | runs in the process | `ctx.waitUntil` keeps the object up for it |

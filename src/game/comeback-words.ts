@@ -6,7 +6,7 @@
  *
  * TONE. A mail states a fact and an opening. It never says the player lost something by being away and never guilts.
  */
-import { formatHour, lagosTime } from './clock.ts';
+import { WEEKDAYS, formatHour, lagosTime } from './clock.ts';
 import { firstName, PREF_OF } from './comeback.ts';
 import type { GoTarget } from './go-links.ts';
 import type { Plan, PrefKey } from './comeback.ts';
@@ -38,7 +38,7 @@ const NEED_WORDS = {
 /** "tonight at 7 pm" / "today at 2 pm" / "tomorrow at 10 am", in Lagos time, from `now`. */
 export function whenWords(start: number, now: number): string {
   const a = lagosTime(now), b = lagosTime(start);
-  const part = b.day === a.day ? (b.hour >= 18 ? 'tonight' : 'today') : b.day === a.day + 1 ? 'tomorrow' : 'soon';
+  const part = b.day === a.day ? (b.hour >= 18 ? 'tonight' : 'today') : b.day === a.day + 1 ? 'tomorrow' : `on ${WEEKDAYS[b.weekday] ?? 'the day'}`;
   return `${part} at ${formatHour(b.hour + b.minute / 60)}`;
 }
 

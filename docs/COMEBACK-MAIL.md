@@ -53,4 +53,13 @@ Message text, exact balances, coordinates, another player's address, images, tra
 
 `players with a confirmed address` are the only ones considered. Each has a record with the next time it is worth looking at: after a visit, 12 hours later; in quiet hours, at 08:00; when capped, when the cap clears; otherwise hourly. A tick (the existing heartbeat, at most once a minute) does nothing at all when the mailer is not configured, when the switch is off, or when no record is due. When some are due it looks at a bounded batch, decides, claims the chosen mail in a stored transaction (so a restart or a second tick cannot send it twice) and then sends. One collection read per tick that has work; the game's lives are read only for players that are due.
 
-Counters (queued, sent, failed, suppressed, unsubscribed) per type are kept per day for 14 days in the operator view. They hold no address, name or id.
+Counters (queued, sent, failed, suppressed, unsubscribed) per type are kept per day for 14 days in the operator view (`GET /api/mod/growth/outreach`, section `comeback`), with the number of rounds that opened the store since the server started. They hold no address, name or id. They are not sent to analytics: a server-side mail has no player consent context.
+
+The e-mail "away" message that used to go to anyone away a day is replaced by the 3, 7 and 28 day steps and the reasons above; the weekly digest stays, on the shared ledger and with its own switch.
+
+## Where it lives
+
+* Rules and numbers: `src/game/comeback.ts` (pure), words: `src/game/comeback-words.ts`, switch names: `src/game/comeback-prefs.ts`, deep links: `src/game/go-links.ts`.
+* Schedule, claim, preferences, nudge: `server/growth/comeback.ts`; the recipient: `server/growth/recipient.ts`; the mail layout: `server/growth/email/comeback.ts`.
+* Client: the switches in `TouchApp.vue`, the nudge on `PlayerCard.vue`, the allow-listed `?go=` link in `src/quick-start/entry.ts` and `src/app/features/landing/landingStore.ts`.
+* A link in a mail opens `/?go=<panel>` (needs, messages, people, career, houses, events, governor, tables, bank, touch). Anything else is ignored.

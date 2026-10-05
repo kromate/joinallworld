@@ -231,4 +231,5 @@ test('words: in the character’s voice, one button, no message text, no balance
   assert.equal(whenWords(Date.UTC(2026, 0, 8, 18), NOON), 'tonight at 7PM');
   assert.equal(whenWords(Date.UTC(2026, 0, 8, 13), NOON), 'today at 2PM');
   assert.equal(whenWords(Date.UTC(2026, 0, 9, 9), NOON), 'tomorrow at 10AM');
+  assert.equal(whenWords(Date.UTC(2026, 0, 10, 9), NOON), 'on Saturday at 10AM', 'never "soon"');
 });

@@ -40,7 +40,11 @@ export function seat(venue: Venue, player: string, id: string | null = null): Gr
     venue.next = Math.max(venue.next, no + 1);
   }
   const before = venue.where.get(player);
-  if (before !== undefined && before !== group.id) venue.groups.get(before)?.players.delete(player);
+  if (before !== undefined && before !== group.id) {
+    const old = venue.groups.get(before);
+    old?.players.delete(player);
+    if (old && !old.players.size) venue.groups.delete(before);
+  }
   group.players.add(player); venue.where.set(player, group.id);
   return group;
 }

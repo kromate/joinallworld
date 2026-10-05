@@ -49,6 +49,11 @@ const nudge = (low: number, high: number, limit: number, margin: number): number
   return low < margin ? margin - low : high > limit - margin ? limit - margin - high : 0;
 };
 
+/** Where a name that found no free side is set down: rings round its point, nearest first, with a leader line back to the point. */
+const RING_RADII = [58, 86, 114, 142, 170, 198, 226] as const, RING_STEPS = 24;
+/** A box wholly on the screen, with EDGE_MARGIN to spare (always true when the screen is not known). */
+const onScreen = (box: LabelBox, width: number, height: number): boolean => (!Number.isFinite(width) || (box.left >= EDGE_MARGIN && box.right <= width - EDGE_MARGIN)) && (!Number.isFinite(height) || (box.top >= EDGE_MARGIN && box.bottom <= height - EDGE_MARGIN));
+
 export interface PlaceOptions { cap?: number; pad?: number; width?: number; height?: number; avoid?: readonly LabelBox[] }
 /**
  * options.width/height: the screen; a label wholly outside it is skipped, and a label that is always shown (`fixed`) is moved to lie
@@ -78,15 +83,37 @@ export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL
       // A label that would overlap another tries its other anchors before it gives way.
       // A label keeps its place unless that would hide another city's dot (or, for one that may give way, overlap a label); then it moves to the nearest free side.
       const hides = covers(box, candidate);
-      if (hides || (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0))))) {
+      // A name that may move (it has other anchors) also moves when its first place is cut off by the edge of the screen.
+      const cut = Boolean(candidate.alts?.length) && !onScreen(box, width, height);
+      /** True when a box cannot be used: it overlaps a name or a panel, or sits on another city's dot. */
+      const blocked = (trial: LabelBox): boolean => placed.some((other) => overlaps(trial, other.box, pad)) || avoid.some((other) => overlaps(trial, other, 0)) || covers(trial, candidate);
+      const taken = (trial: LabelBox): boolean => blocked(trial) || crosses(trial, candidate);
+      if (hides || cut || (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0))))) {
         // Of the other anchors that are free, the one nearest the point it names wins (the list order breaks ties).
         let nearest = Infinity;
         for (const anchor of candidate.alts ?? []) {
           const moved = { ...candidate, anchor }, trial = boxOf(moved, text);
           if (trial.right < 0 || trial.left > width || trial.bottom < 0 || trial.top > height) continue;
-          if (placed.some((other) => overlaps(trial, other.box, pad)) || avoid.some((other) => overlaps(trial, other, 0)) || covers(trial, candidate) || crosses(trial, candidate)) continue;
+          if (taken(trial) || !onScreen(trial, width, height)) continue;
           const away = Math.hypot((trial.left + trial.right) / 2 - candidate.x, (trial.top + trial.bottom) / 2 - candidate.y);
           if (away < nearest - 0.5) { nearest = away; box = trial; at = moved; displaced = true; }
+        }
+        // No side is free (several cities within a few pixels of each other): the name is set down on the nearest free spot of the rings round its
+        // point, wholly on screen, and a leader line joins it to the point.
+        if (!displaced && candidate.alts?.length && (cut || hides || taken(box))) {
+          const plain = boxOf({ ...candidate, anchor: 'centre' }, text), halfW = (plain.right - plain.left) / 2, halfH = (plain.bottom - plain.top) / 2;
+          // A leader that would pass under a name already shown is avoided; where every free spot needs one, the nearest is taken all the same.
+          search: for (const strict of [true, false]) for (const radius of RING_RADII) {
+            for (let step = 0; step < RING_STEPS; step++) {
+              // Below the point first, then alternately to either side of it, so that names fall into open water where a coast is near.
+              const turn = Math.ceil(step / 2) * (step % 2 ? 1 : -1) * (2 * Math.PI / RING_STEPS), angle = Math.PI / 2 + turn;
+              const cx = candidate.x + Math.cos(angle) * (radius + halfW * Math.abs(Math.cos(angle))), cy = candidate.y + Math.sin(angle) * (radius + halfH * Math.abs(Math.sin(angle)));
+              const trial = { left: cx - halfW, right: cx + halfW, top: cy - halfH, bottom: cy + halfH };
+              if (!onScreen(trial, width, height) || (strict ? taken(trial) : blocked(trial))) continue;
+              box = trial; at = { ...candidate, anchor: 'centre', x: cx, y: cy }; displaced = true;
+              break search;
+            }
+          }
         }
       }
       if (candidate.fixed) {

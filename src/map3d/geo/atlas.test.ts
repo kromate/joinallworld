@@ -14,7 +14,7 @@ import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, 
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
 import { ATLAS, ATLAS_LEVELS, ZONES, AFRICA_GROUPS, canEnter, cityEntry, plannedRoutes, regionEntry, regionStatus, stateOfCity, MORE_REGIONS } from '../regions.ts';
-import { allCityLinks, cityRules } from '../../game/cities/registry.ts';
+import { allCityLinks, cityRules, playableCityIds } from '../../game/cities/registry.ts';
 
 const here = (name: string) => new URL(name, import.meta.url);
 const world = decodeTopology(WORLD), africa = decodeTopology(AFRICA), nigeria = decodeTopology(NIGERIA), around = decodeTopology(AROUND);
@@ -456,3 +456,23 @@ test('open cities that crowd on a phone keep every name, none on another city’
     }
   }
 });
+
+test('all nine open cities are named on a phone-sized Nigeria: every name whole on screen, none over another name or another city’s dot', () => {
+  const alts = ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'] as const
+  const open = playableCityIds().map((id) => ({ id, name: cityRules(id)!.name }))
+  assert.equal(open.length, 9)
+  for (const current of ['lagos', 'kano', 'ota']) for (const pixels of [22, 26, 30]) {
+    // Nigeria fitted to a 390-pixel screen: its west edge (2.7°E) a few pixels in from the left, its north (13.9°N) under the top bar.
+    const point = (lon: number, lat: number) => ({ x: 14 + (lon - 2.7) * pixels, y: 190 + (13.9 - lat) * pixels })
+    const candidates = open.map((city) => { const entry = cityEntry(city.id)!; return { id: city.id, ...point(entry.lon, entry.lat), text: city.name, priority: city.id === current ? 2000 : ['abeokuta', 'lagos', 'ibadan', 'abuja', 'port-harcourt', 'kano'].includes(city.id) ? 1000 : 200, size: 13, anchor: 'above' as const, alts, fixed: city.id === current, note: city.id === current ? 'You are here' : 'Open', cls: 'is-city is-open' } })
+    const placed = placeLabels(candidates, { width: 390, height: 844 })
+    assert.deepEqual(placed.map((label) => label.id).sort(), open.map((city) => city.id).sort(), `${current} at ${pixels}px: every open city is named`)
+    for (const label of placed) {
+      assert.ok(label.box.left >= 0 && label.box.right <= 390 && label.box.top >= 0 && label.box.bottom <= 844, `${current} at ${pixels}px: ${label.id} is whole on screen`)
+      for (const other of placed) if (other !== label) {
+        if (!label.fixed && !other.fixed) assert.ok(label.box.right <= other.box.left || other.box.right <= label.box.left || label.box.bottom <= other.box.top || other.box.bottom <= label.box.top, `${current} at ${pixels}px: ${label.id} and ${other.id} do not overlap`)
+        assert.ok(!(other.home.x > label.box.left && other.home.x < label.box.right && other.home.y > label.box.top && other.home.y < label.box.bottom), `${current} at ${pixels}px: ${label.id} is not on the dot of ${other.id}`)
+      }
+    }
+  }
+})

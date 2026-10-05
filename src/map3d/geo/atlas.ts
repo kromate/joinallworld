@@ -572,9 +572,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       for (const feature of sheet.topology.features) {
         const entry = regionEntry('state', feature.id), top = sheet.top(feature), city = entry.city ? cityEntry(entry.city) : null;
         if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? (city.id === current ? 2000 : 1000) : 90, size: 13, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: entry.status === 'open' && city.id === current, cls: `is-city is-${entry.status}`, note: city.id === current ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
-        // A state with several open cities names each of them; the one the player is in says so, whichever the state's own marker is.
+        // A state with several open cities names each of them at every zoom; the one the player is in says so, whichever the state's own marker is.
         for (const other of citiesInState(feature.id)) {
-          const spot = other.status === 'open' && other.id !== city?.id && (close || selected?.id === feature.id || other.id === current) ? cityEntry(other.id) : null;
+          const spot = other.status === 'open' && other.id !== city?.id ? cityEntry(other.id) : null;
           if (spot) push(`city:${other.id}`, at(spot.lon, spot.lat, top + 0.02), other.name, { priority: other.id === current ? 2000 : 200, size: 12, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: other.id === current, cls: 'is-city is-open', note: other.id === current ? 'You are here' : 'Open' });
         }
         if (entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: city ? 44 : 50, cls: 'is-region' });

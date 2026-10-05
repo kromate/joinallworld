@@ -28,6 +28,7 @@ test('the bar is on the city map itself, the world is one key away, and arriving
   assert.equal((shell.match(/shell\.open\('city'/g) ?? []).length, 3)
   assert.match(shell, /!state\.estate\.lga && !state\.estate\.home && !away\) shell\.open\('city'/)
   assert.match(shell, /estate\.lga === null && !game\.state\.value\.estate\.home\) shell\.open\('city'\)/)
+  assert.match(shell, /else if \(!away && state\.message\.startsWith\('Welcome to '\)\) game\.toast\(state\.message\)/, 'the welcome notice is shown on arrival')
   assert.match(pane, /wallet: \(\) => game\.state\.value\.cash/)
   assert.match(pane, /scene\.world\.value\?\.warm\(\)/, 'the wider levels are fetched while the device is idle')
 })

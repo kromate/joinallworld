@@ -220,6 +220,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       // Arriving asks for nothing: a visitor is welcomed by the server's own notice and plays on. Only a life that has no home
       // anywhere (one from before homes were chosen) is shown where to choose its first.
       if (state.onboarding.done && !state.estate.lga && !state.estate.home && !away) shell.open('city', { city: state.estate.city })
+      // The welcome is said aloud: the notice of a new city would otherwise be taken for the first word of a life just read.
+      else if (!away && state.message.startsWith('Welcome to ')) game.toast(state.message)
     }
     // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
     const plot = state.estate?.plot

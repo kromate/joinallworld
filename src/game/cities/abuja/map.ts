@@ -18,7 +18,7 @@ export const ABUJA_MAP: CityMapPack<'abuja', AbujaAreaCouncilId> = Object.freeze
     const [{ abujaCity }, { createModulePack }, { abujaRailDecoration }] = await Promise.all([
       import('./index.ts'), import('../../../map3d/cities/module.ts'), import('./scenery.ts'),
     ])
-    const pack = await createModulePack(abujaCity, ABUJA_LANDMARKS)
+    const pack = await createModulePack(abujaCity, { landmarks: ABUJA_LANDMARKS, spread: true, character: { extent: 'city', notable: ['millennium-park', 'national-mosque', 'christian-centre', 'eagle-square', 'city-gate', 'jabi-lake-park', 'airport', 'idu-station'] } })
     const [x, z] = toLocal(ABUJA_MAP_ORIGIN, 7.3410781, 9.1526752)
     return {
       ...pack,

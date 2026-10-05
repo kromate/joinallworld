@@ -1,4 +1,5 @@
 import type { CityMapPack } from '../../../types/content.ts'
+import type { ModuleCharacter } from '../../../map3d/cities/module.ts'
 import { toLocal } from '../../../geo/frame.ts'
 import { PORT_HARCOURT_LGA_IDS, RIVERS_BOAT_ROUTE } from '../../../map3d/geo/data/rivers.ts'
 import { PORT_HARCOURT_LANDMARKS } from './landmarks.ts'
@@ -6,15 +7,22 @@ import { riversCityGeometry, riversMangrovePolygons, riversStateOverview } from 
 import { PORT_HARCOURT_MAP_ORIGIN } from './rules.ts'
 import type { PortHarcourtLocalGovernmentId } from './rules.ts'
 
+/** What the map of Port Harcourt adds to its roads and water: its expressways drawn strongest, the places whose names are kept longest, and the name of its whole-extent view. */
+const PORT_HARCOURT_CHARACTER: ModuleCharacter = {
+  trunkRoads: ['East - West Road', 'Port Harcourt - Aba Expressway', 'Enugu - Port Harcourt Expressway', 'Ikwerre Road'],
+  notable: ['pleasure-park', 'isaac-boro-park', 'mile-one-market', 'uniport', 'airport', 'bonny-jetty', 'okrika-jetty', 'refinery', 'government-house'],
+  extent: 'city',
+}
+
 export const PORT_HARCOURT_MAP: CityMapPack<'port-harcourt', PortHarcourtLocalGovernmentId> = Object.freeze({
   cityId: 'port-harcourt', origin: PORT_HARCOURT_MAP_ORIGIN,
   projection: 'nigeria-equirectangular-v1', unitsPerKm: 10,
   localUnitIds: PORT_HARCOURT_LGA_IDS, stateFeatureId: 'rivers-state',
   loadScene: async () => {
-    const [{ portHarcourtCity }, { createModulePack }, { mangroveDecoration }] = await Promise.all([
-      import('./index.ts'), import('../../../map3d/cities/module.ts'), import('./scenery.ts'),
+    const [{ portHarcourtCity }, { createModulePack }, { mangroveDecoration }, { PORT_HARCOURT_ROADS }] = await Promise.all([
+      import('./index.ts'), import('../../../map3d/cities/module.ts'), import('./scenery.ts'), import('./roads.ts'),
     ])
-    const pack = await createModulePack(portHarcourtCity, PORT_HARCOURT_LANDMARKS)
+    const pack = await createModulePack(portHarcourtCity, { landmarks: PORT_HARCOURT_LANDMARKS, roads: PORT_HARCOURT_ROADS, character: PORT_HARCOURT_CHARACTER, spread: true })
     return {
       ...pack,
       localRoutes: [{

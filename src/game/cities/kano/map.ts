@@ -21,7 +21,7 @@ export const KANO_MAP: CityMapPack<'kano', KanoLocalGovernmentId> = Object.freez
       const [x, z] = toLocal(KANO_MAP_ORIGIN, marker.lon, marker.lat)
       return playArea.some(polygon => pointInPart(x, z, polygon))
     })
-    const pack = await createModulePack(kanoCity, markers)
+    const pack = await createModulePack(kanoCity, { landmarks: markers, spread: true, character: { extent: 'city', notable: ['palace', 'central-mosque', 'kurmi-market', 'dye-pits', 'dala-hill', 'kofar-mata', 'kwari-market', 'airport', 'railway-station'] } })
     const wall = KANO_HISTORIC_WALL.map(([lon, lat]) => toLocal(KANO_MAP_ORIGIN, lon, lat))
     const heritageLines: NonNullable<CityPack['heritageLines']> = [{
       id: 'kano-historic-wall', name: 'Published historic wall outline · approximate', kind: 'historic-wall-alignment', points: wall,

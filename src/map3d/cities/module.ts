@@ -58,6 +58,8 @@ export interface ModuleScene {
   surroundings?: { spec: ContextSpec; planned: readonly string[] }
   /** Display-only shifts, in metres, of a venue's map icon where two sit on almost the same point; the venue keeps its true coordinate in the data. */
   iconOffsets?: Readonly<Record<string, { east: number; north: number }>>
+  /** Fan out the icons of venues authored on one reference point (see fanOut); venues named in `iconOffsets` keep their own shift. */
+  spread?: boolean
 }
 
 function roadsOf(rows: RoadRows, origin: CityModule['rules']['mapOrigin'], trunk: ReadonlySet<string>): PackRoad[] {
@@ -72,9 +74,32 @@ function roadsOf(rows: RoadRows, origin: CityModule['rules']['mapOrigin'], trunk
   return out
 }
 
+/** How far apart (metres) two venues may be authored and still count as standing on one reference point. */
+const SAME_POINT_M = 60
+/**
+ * Display-only shifts for venues authored on one reference point (a neighbourhood's services share its locality point): the first keeps its
+ * place and the others are fanned out on rings round it, six to a ring, so that every icon can be seen and pressed. A venue with a shift of
+ * its own is left alone, and no coordinate in the data changes.
+ */
+export function fanOut(venues: readonly { id: string; lon: number; lat: number }[], explicit: Readonly<Record<string, { east: number; north: number }>> = {}): Record<string, { east: number; north: number }> {
+  const shifts: Record<string, { east: number; north: number }> = { ...explicit }
+  const placed = new Set<string>()
+  for (const first of venues) {
+    if (placed.has(first.id)) continue
+    const metres = (other: { lon: number; lat: number }): number => Math.hypot((other.lon - first.lon) * 111320 * Math.cos(first.lat * Math.PI / 180), (other.lat - first.lat) * 110574)
+    const group = venues.filter(other => !placed.has(other.id) && metres(other) <= SAME_POINT_M)
+    for (const member of group) placed.add(member.id)
+    group.filter(member => member.id !== first.id && !Object.hasOwn(explicit, member.id)).forEach((member, index) => {
+      const ring = Math.floor(index / 6), angle = (index % 6) * Math.PI / 3 + Math.PI / 6 + ring * Math.PI / 6, radius = 260 * (ring + 1)
+      shifts[member.id] = { east: Math.round(Math.cos(angle) * radius), north: Math.round(Math.sin(angle) * radius) }
+    })
+  }
+  return shifts
+}
+
 /** The same shared-frame renderer for authored city modules; no second projection or outline. */
 export async function createModulePack(module: CityModule, scene: ModuleScene['landmarks'] | ModuleScene = {}): Promise<CityPack> {
-  const { landmarks = [], roads: roadRows = [], surroundings, character = {}, iconOffsets = {} } = Array.isArray(scene) ? { landmarks: scene } as ModuleScene : scene as ModuleScene
+  const { landmarks = [], roads: roadRows = [], surroundings, character = {}, iconOffsets = {}, spread = false } = Array.isArray(scene) ? { landmarks: scene } as ModuleScene : scene as ModuleScene
   const [content, map] = await Promise.all([module.loadContent(), module.loadMap()])
   const geometry = await map.loadGeometry(), origin = map.origin
   const local = (parts: readonly LonLatPolygon[]): Point2[][][] => parts.map(part => part.map(ring => ring.map(([lon, lat]) => toLocal(origin, lon, lat))))
@@ -95,9 +120,14 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
     if (typeof line !== 'string') throw new TypeError(`Missing description for ${unit.id}`)
     return { ...unit, line, polygon, polygons: parts, plate, tint: '#baad87', geo: { c: [at.lat, at.lon], box: [se.lat, nw.lon, nw.lat, se.lon] } }
   })
+  const mapped = content.venues.filter(venue => venue.id !== 'home').map(venue => {
+    if (venue.position.kind !== 'lon-lat') throw new TypeError(`A new city needs geographic venue coordinates: ${venue.id}`)
+    return { id: venue.id, lon: venue.position.lon, lat: venue.position.lat }
+  })
+  const shifts = spread ? fanOut(mapped, iconOffsets) : iconOffsets
   const sites = Object.fromEntries(content.venues.filter(venue => venue.id !== 'home').map(venue => {
     if (venue.position.kind !== 'lon-lat') throw new TypeError(`A new city needs geographic venue coordinates: ${venue.id}`)
-    const shift = iconOffsets[venue.id], lat = venue.position.lat
+    const shift = shifts[venue.id], lat = venue.position.lat
     const [x, z] = toLocal(origin, venue.position.lon + (shift ? shift.east / (111320 * Math.cos(lat * Math.PI / 180)) : 0), lat + (shift ? shift.north / 110574 : 0))
     return [venue.id, { x, z }]
   }))

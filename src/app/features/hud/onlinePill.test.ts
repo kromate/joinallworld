@@ -64,7 +64,7 @@ test('poller: nothing before the first answer, then one poll every 30 s, paused 
   assert.equal(h.pulse.state.numbers === null, true)
   h.pulse.start(); await h.flush()
   assert.equal(h.asked(), 1); assert.equal(h.pulse.state.numbers?.online, 1)
-  assert.deepEqual([...h.timers.values()].map((timer) => timer.ms), [POLL_MS], 'exactly one timer pending, 30 s')
+  assert.deepEqual([...h.timers.values()].map((timer) => timer.ms), [5000], 'exactly one timer pending: the early second look, 5 s after the first answer')
   h.hide(true); assert.equal(h.timers.size, 0, 'hidden: no timer')
   h.advance(60000); h.hide(false); await h.flush()
   assert.equal(h.asked(), 2, 'back after a while: asks at once')

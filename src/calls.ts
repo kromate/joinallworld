@@ -343,7 +343,7 @@ export function createCallController(env: CallsEnv) {
           peerReady = makePeer(stream, generation).catch(() => { if (active()) finish('The call could not be set up. Try again.', true) })
         } else finish('Call ended.', true)
         return
-      case 'declined': finish(`${nameOf()} declined the call.`, false); return
+      case 'declined': finish(role === 'callee' ? 'Call declined.' : `${nameOf()} declined the call.`, false); return
       case 'cancelled': finish(role === 'callee' ? `Missed call from ${nameOf()}.` : 'Call cancelled.', false); return
       case 'timeout': finish(role === 'callee' ? `Missed call from ${nameOf()}.` : `${nameOf()} did not answer.`, false); return
       case 'unreachable': finish(`${nameOf()} can’t be reached right now.`, false); return

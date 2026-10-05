@@ -5,6 +5,9 @@ import { reactive } from 'vue'
 import { POLL_MS } from './onlinePillModel.ts'
 import type { PulseNumbers } from './onlinePillModel.ts'
 
+/** The one early follow-up after the first answer. */
+const EARLY_MS = 5000
+
 export interface PulseState {
   /** The last answer, or null until the first one. */
   numbers: PulseNumbers | null
@@ -37,20 +40,22 @@ export function createPulse(deps: PulseDeps) {
   let timer: unknown = null
   let running = false
   let inFlight = false
+  /** Answers so far: the second is asked early, because the first often lands before this page's own socket is counted. */
+  let answers = 0
 
   async function poll(): Promise<void> {
     if (inFlight) return
     inFlight = true
     try {
       const numbers = readPulse(await deps.fetchJson('/api/world/pulse'))
-      if (numbers) { state.numbers = numbers; state.at = deps.now(); state.failing = false } else state.failing = true
+      if (numbers) { answers += 1; state.numbers = numbers; state.at = deps.now(); state.failing = false } else state.failing = true
     } catch { state.failing = true } finally { inFlight = false }
   }
   function schedule(): void {
     if (timer !== null) deps.clearTimer(timer)
     timer = null
     if (!running || !deps.visible()) return
-    timer = deps.setTimer(() => { timer = null; void tick() }, POLL_MS)
+    timer = deps.setTimer(() => { timer = null; void tick() }, answers === 1 ? EARLY_MS : POLL_MS)
   }
   async function tick(): Promise<void> {
     if (running && deps.visible()) await poll()

@@ -23,6 +23,9 @@ const settings: HarnessSettings = {
   spot: params.get('spot') || '',
   busy: params.has('busy'),
 };
+/** ?venue=<id> builds one of the authored second-city venues (its own name, spots and scene options) instead of a bare kind. */
+const venueId = params.get('venue');
+const ibadanVenues = venueId ? (await (await import('../game/cities/registry.ts')).loadCityContent('ibadan')).venues : [];
 const stage = document.getElementById('stage')!, info = document.getElementById('info')!, bar = document.getElementById('bar')!;
 const kit = createKit();
 const { THREE } = kit;
@@ -72,7 +75,10 @@ function draw() {
 }
 function build() {
   entry?.dispose();
-  entry = buildVenueScene(kit, { id: settings.kind, label: settings.kind, scene: { kind: settings.kind, time: settings.time, variant: settings.variant || undefined } });
+  const own = venueId ? ibadanVenues.find((item) => item.id === venueId)?.definition : null;
+  entry = own
+    ? buildVenueScene(kit, { ...own, scene: { ...own.scene, time: settings.time, spots: Object.values(own.spots).map((spot) => ({ id: spot.id, label: spot.label })) } }, 'ibadan')
+    : buildVenueScene(kit, { id: settings.kind, label: settings.kind, scene: { kind: settings.kind, time: settings.time, variant: settings.variant || undefined } });
   scene.add(entry.group);
   entry.setCrowd(names.slice(0, settings.crowd).map((name, i) => ({ id: `p${i}`, name, kind: i % 3 === 2 ? 'npc' : 'player' })));
   if (settings.spot) entry.setSpot(settings.spot);

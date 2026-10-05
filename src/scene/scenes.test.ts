@@ -21,7 +21,7 @@ import { NPCS } from '../game/cities/lagos/regulars.ts';
 
 import { spotsOf } from '../life.ts';
 
-const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery'];
+const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'quad', 'hilltop', 'lakeside'];
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail (up to ~2,700 triangles, once), on top.
 const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
@@ -468,4 +468,70 @@ test('every game table stands in its venue’s scene: on free floor, reachable f
   const library = buildVenueScene(kit, sceneVenue('library') ?? VENUES.library);
   assert.deepEqual(library.walk.things(), []);
   library.dispose();
+});
+
+test('the Ibadan campus court, hilltop and reservoir scenes: every spot of their venues has a place and a way to it, with an identity of their own', async () => {
+  await preloadCityContent('ibadan');
+  const { TABLE_PLACES } = await import('./venue-scenes.ts');
+  const kit = createKit();
+  const wanted: Record<string, string> = { 'ui-campus': 'quad', 'bowers-tower': 'hilltop', 'eleyele-lake': 'lakeside' };
+  const triangles: Record<string, number> = {};
+  for (const [id, kind] of Object.entries(wanted)) {
+    const venue = sceneVenue(id, 'ibadan') as unknown as SceneVenue;
+    assert.equal(venue.scene?.kind, kind, `${id} uses the ${kind} scene`);
+    assert.ok(Object.hasOwn(TABLE_PLACES, kind), `${kind} has preferred table places`);
+    const entry = buildVenueScene(kit, venue, 'ibadan');
+    assert.equal(entry.kind, kind);
+    const { grid, entrance } = entry.walk;
+    const spots = entry.walk.spots();
+    assert.ok(spots.length >= 1, `${id} has spots`);
+    for (const spot of spots) {
+      assert.ok(spot.x !== undefined && entry.anchors[spot.id]?.landmark, `${id}.${spot.id} is pinned to a landmark of the scene`);
+      const at = grid!.nearest(spot.approach?.x ?? spot.x, spot.approach?.z ?? spot.z);
+      assert.ok(at && grid!.path(entrance!.x, entrance!.z, at.x, at.z)?.length! > 0, `${id}.${spot.id} is reachable from the entrance`);
+      assert.ok(Math.hypot(at.x - spot.x, at.z - spot.z) < 1.5, `${id}.${spot.id}: the floor reaches the spot`);
+    }
+    triangles[kind] = entry.stats().triangles;
+    entry.dispose();
+  }
+  assert.equal(new Set(Object.values(triangles)).size, 3, 'three different scenes');
+  kit.dispose();
+});
+
+test('every Ibadan venue builds in budget with its own scene: each spot and game table has a place and a way to it', async () => {
+  const content = await preloadCityContent('ibadan');
+  const { VARIANTS } = await import('./venues-ibadan-b.ts');
+  const kit = createKit();
+  const used = new Set<string>();
+  for (const authored of content.venues) {
+    if (authored.kind === 'home') continue;
+    const venue = sceneVenue(authored.id, 'ibadan') as unknown as SceneVenue;
+    const variant = ['church', 'mosque', 'speakeasy'].includes(String(venue.scene?.variant)) ? undefined : venue.scene?.variant;
+    if (variant) {
+      used.add(`${venue.scene!.kind}/${variant}`);
+      assert.ok(VARIANTS[venue.scene!.kind!]?.[variant], `${authored.id}: ${venue.scene!.kind}/${variant} is a scene of its own`);
+    }
+    const entry = buildVenueScene(kit, venue, 'ibadan');
+    entry.setCrowd(crowd());
+    const stats = entry.stats();
+    assert.ok(stats.triangles > 1500 && stats.triangles < TRIANGLE_BUDGET, `${authored.id} triangles ${stats.triangles}`);
+    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= 4, `${authored.id} draw calls ${stats.drawCalls}`);
+    const { grid, entrance } = entry.walk;
+    const reach = (what: string, x: number, z: number, approach?: { x: number; z: number } | null, within = 1.5) => {
+      const at = grid!.nearest(approach?.x ?? x, approach?.z ?? z);
+      assert.ok(at && grid!.path(entrance!.x, entrance!.z, at.x, at.z)?.length! > 0, `${authored.id}.${what} is reachable from the entrance`);
+      assert.ok(Math.hypot(at.x - (approach?.x ?? x), at.z - (approach?.z ?? z)) < within, `${authored.id}.${what}: the floor reaches it`);
+    };
+    for (const spot of entry.walk.spots()) {
+      assert.ok(entry.anchors[spot.id]?.landmark, `${authored.id}.${spot.id} is pinned to a landmark of the scene`);
+      reach(spot.id, spot.x, spot.z, spot.approach);
+    }
+    for (const thing of entry.walk.things()) reach(thing.id, thing.x, thing.z, null, 2.6);
+    // A variant is a different scene from the bare kind it replaces.
+    if (variant) assert.notEqual(stats.triangles, buildVenueScene(kit, { ...venue, scene: { ...venue.scene, variant: undefined } }, 'ibadan').stats().triangles, `${authored.id} differs from the bare ${venue.scene!.kind}`);
+    entry.dispose();
+  }
+  const all = Object.entries(VARIANTS).flatMap(([kind, variants]) => Object.keys(variants).map((variant) => `${kind}/${variant}`));
+  assert.deepEqual([...used].sort(), all.sort(), 'every variant scene is used by a venue');
+  kit.dispose();
 });

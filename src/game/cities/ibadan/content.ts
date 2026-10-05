@@ -4,7 +4,7 @@ import { toLocal } from '../../../geo/frame.ts'
 import { IBADAN_MAP_ORIGIN } from './rules.ts'
 import type {
   ActivityDefinition, CalendarEvent, CityContent, CityVenueContent, HouseDefinition, JobDefinition,
-  NpcDefinition, SceneKind, SpotDefinition, StarterGoal, TravelModeDefinition, VenueCategoryId, VenueDefinition, WishDefinition,
+  NpcDefinition, SceneKind, VenueScene, SpotDefinition, StarterGoal, TravelModeDefinition, VenueCategoryId, VenueDefinition, WishDefinition,
 } from '../../../types/content.ts'
 
 type Point = Readonly<{ lon: number; lat: number }>
@@ -21,7 +21,7 @@ type VenueSeed = Readonly<{
   ambient: readonly string[]
   spots: readonly SpotSeed[]
   hours?: Readonly<{ open: number; close: number; days?: number[] }>
-  variant?: 'speakeasy' | 'church' | 'mosque'
+  variant?: VenueScene['variant']
   beta?: boolean
   note?: string
 }>
@@ -43,19 +43,19 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     ],
   },
   {
-    id: 'ui-campus', name: 'University of Ibadan', district: 'UI, Ibadan North', kind: 'walk', category: 'fun', icon: 'school', point: { lon: 3.9068, lat: 7.4412 },
+    id: 'ui-campus', name: 'University of Ibadan', district: 'UI, Ibadan North', kind: 'quad', category: 'fun', icon: 'school', point: { lon: 3.9068, lat: 7.4412 },
     description: 'Walk the visitor route, read by Trenchard Hall and spend time around the gardens.',
     ambient: ['Students cross the court between lectures.', 'The trees make the campus feel cooler than the road outside.'],
     spots: [spot('court', 'University Court', activity('ibadan-ui-walk', 'Walk the university court', 'walk', ['walk'], { xp: { fitness: 8 } })), work()],
     note: 'The playable visitor entry uses the published UI–Agbowo main-gate point. Trenchard Hall and the gardens remain separately sourced map overlays; this is not a full campus model.',
   },
   {
-    id: 'polytechnic', name: 'The Polytechnic, Ibadan', district: 'Sango, Ibadan North', kind: 'office', category: 'work', icon: 'school', point: { lon: 3.8837345, lat: 7.4369114 },
+    id: 'polytechnic', name: 'The Polytechnic, Ibadan', district: 'Sango, Ibadan North', kind: 'office', category: 'work', icon: 'school', point: { lon: 3.8837345, lat: 7.4369114 }, variant: 'campus',
     description: 'Visit the campus and join a practical workshop.', ambient: ['Project boards lean against the workshop walls.'],
     spots: [spot('quad', 'Main campus', activity('ibadan-poly-workshop', 'Join a practical workshop', 'tools', ['learn'], { xp: { coding: 8 } })), work()],
   },
   {
-    id: 'lead-city', name: 'Lead City University', district: 'Toll Gate, Oluyole', kind: 'office', category: 'work', icon: 'school', point: { lon: 3.87577, lat: 7.32637 },
+    id: 'lead-city', name: 'Lead City University', district: 'Toll Gate, Oluyole', kind: 'office', category: 'work', icon: 'school', point: { lon: 3.87577, lat: 7.32637 }, variant: 'campus',
     description: 'Attend a digital-skills session and meet people building local projects.', ambient: ['A group compares notes outside the lecture rooms.'],
     spots: [spot('lab', 'Digital lab', activity('ibadan-code-session', 'Join a coding session', 'code', ['learn'], { xp: { coding: 15 } })), work()],
   },
@@ -72,12 +72,12 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     ],
   },
   {
-    id: 'cocoa-house', name: 'Cocoa House', district: 'Dugbe, Ibadan North-West', kind: 'office', category: 'work', icon: 'office', point: { lon: 3.8788769, lat: 7.3880524 },
+    id: 'cocoa-house', name: 'Cocoa House', district: 'Dugbe, Ibadan North-West', kind: 'office', category: 'work', icon: 'office', point: { lon: 3.8788769, lat: 7.3880524 }, variant: 'tower',
     description: 'Visit the Dugbe landmark and work above the commercial district.', ambient: ['Dugbe traffic threads around the tower below.'],
     spots: [spot('lobby', 'Ground-floor lobby', activity('ibadan-cocoa-history', 'Read the cocoa-trade display', 'book', ['art', 'learn'], { xp: { charisma: 6 } })), work()],
   },
   {
-    id: 'mapo-hall', name: 'Mapo Hall', district: 'Mapo, Ibadan South-East', kind: 'statehouse', category: 'civic', icon: 'governor', point: { lon: 3.8969774, lat: 7.3759998 },
+    id: 'mapo-hall', name: 'Mapo Hall', district: 'Mapo, Ibadan South-East', kind: 'statehouse', category: 'civic', icon: 'governor', point: { lon: 3.8969774, lat: 7.3759998 }, variant: 'hill-hall',
     description: 'Visit the civic hall, read notices and look across the old city.', ambient: ['The broad steps face the old city.'],
     spots: [spot('steps', 'Mapo steps', activity('ibadan-mapo-view', 'Look across old Ibadan', 'view', ['view', 'history'], { effects: { fun: 7, social: 2 } })), work()],
   },
@@ -88,7 +88,7 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     note: 'Beta gameplay polling centre co-located with the mapped Mapo civic complex; it is not presented as a permanent electoral office.',
   },
   {
-    id: 'agodi-gardens', name: 'Agodi Gardens', district: 'Agodi, Ibadan North', kind: 'park', category: 'fun', icon: 'park', point: { lon: 3.8982644, lat: 7.4093254 },
+    id: 'agodi-gardens', name: 'Agodi Gardens', district: 'Agodi, Ibadan North', kind: 'park', category: 'fun', icon: 'park', point: { lon: 3.8982644, lat: 7.4093254 }, variant: 'garden',
     description: 'Walk under the trees, play ayo and stay for an evening garden set.', ambient: ['Families spread out under the trees.'],
     spots: [spot('garden', 'Garden lawn',
       activity('ibadan-play-ayo', 'Play a round of ayo', 'tables', ['fun'], { duration: 7 }),
@@ -96,22 +96,22 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     ), work()],
   },
   {
-    id: 'bowers-tower', name: 'Bower’s Tower', district: 'Oke Aare, Ibadan North', kind: 'park', category: 'fun', icon: 'view', point: { lon: 3.896598, lat: 7.392036 },
+    id: 'bowers-tower', name: 'Bower’s Tower', district: 'Oke Aare, Ibadan North', kind: 'hilltop', category: 'fun', icon: 'view', point: { lon: 3.896598, lat: 7.392036 },
     description: 'Climb for a view over the seven hills and the brown-roof skyline.', ambient: ['The city spreads in every direction below the hill.'],
     spots: [spot('top', 'Tower viewpoint', activity('ibadan-tower-view', 'Take in the seven hills', 'view', ['view', 'photography'], { xp: { photography: 15 }, effects: { fun: 10 } })), work()],
   },
   {
-    id: 'bodija-market', name: 'Bodija Market', district: 'Bodija, Ibadan North', kind: 'market', category: 'food', icon: 'market', point: { lon: 3.9157404, lat: 7.4359015 },
+    id: 'bodija-market', name: 'Bodija Market', district: 'Bodija, Ibadan North', kind: 'market', category: 'food', icon: 'market', point: { lon: 3.9157404, lat: 7.4359015 }, variant: 'foodstuff',
     description: 'Price foodstuffs, greet traders and buy ingredients.', ambient: ['Sellers call out today’s prices over the market noise.'],
     spots: [spot('aisle', 'Foodstuff aisle', activity('ibadan-bodija-price', 'Price the market', 'groceries', ['market'], { xp: { hustle: 8 } })), work()],
   },
   {
-    id: 'dugbe-market', name: 'Dugbe Market', district: 'Dugbe, Ibadan North-West', kind: 'market', category: 'work', icon: 'market', point: { lon: 3.88040447, lat: 7.3870279 },
+    id: 'dugbe-market', name: 'Dugbe Market', district: 'Dugbe, Ibadan North-West', kind: 'market', category: 'work', icon: 'market', point: { lon: 3.88040447, lat: 7.3870279 }, variant: 'street',
     description: 'Browse the commercial heart of Dugbe and bargain for household goods.', ambient: ['Buses, traders and office workers share the same crowded streets.'],
     spots: [spot('arcade', 'Market arcade', activity('ibadan-dugbe-bargain', 'Bargain for household goods', 'shop', ['market'], { xp: { hustle: 10 } })), work()],
   },
   {
-    id: 'gbagi-market', name: 'Gbagi New International Market', district: 'Gbagi, Egbeda', kind: 'market', category: 'work', icon: 'market', point: { lon: 3.9558975, lat: 7.39337 },
+    id: 'gbagi-market', name: 'Gbagi New International Market', district: 'Gbagi, Egbeda', kind: 'market', category: 'work', icon: 'market', point: { lon: 3.9558975, lat: 7.39337 }, variant: 'cloth',
     description: 'Walk the large market, compare cloth and talk with wholesalers.', ambient: ['Bolts of cloth and cartons fill the long rows.'],
     spots: [spot('cloth', 'Cloth row', activity('ibadan-gbagi-cloth', 'Compare cloth', 'fabric', ['market', 'fashion'], { xp: { hustle: 8 } })), work()],
   },
@@ -122,22 +122,22 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     note: 'Fictional beta food counter placed inside the verified Dugbe Market area; no private business identity is claimed.',
   },
   {
-    id: 'lekan-salami-stadium', name: 'Lekan Salami Stadium', district: 'Adamasingba, Ibadan North-West', kind: 'viewing', category: 'fun', icon: 'ball', point: { lon: 3.8853064, lat: 7.3963017 },
+    id: 'lekan-salami-stadium', name: 'Lekan Salami Stadium', district: 'Adamasingba, Ibadan North-West', kind: 'viewing', category: 'fun', icon: 'ball', point: { lon: 3.8853064, lat: 7.3963017 }, variant: 'stadium',
     description: 'Train, watch a match and argue over the final whistle.', ambient: ['Supporters gather around the entrances.'],
     spots: [spot('stand', 'Main stand', activity('ibadan-match-view', 'Watch the match', 'ball', ['sport'], { effects: { fun: 12, social: 5 } })), work()],
   },
   {
-    id: 'national-museum', name: 'National Museum of Unity', district: 'Alesinloye, Ibadan South-West', kind: 'walk', category: 'fun', icon: 'museum', point: { lon: 3.868776, lat: 7.384937 },
+    id: 'national-museum', name: 'National Museum of Unity', district: 'Alesinloye, Ibadan South-West', kind: 'walk', category: 'fun', icon: 'museum', point: { lon: 3.868776, lat: 7.384937 }, variant: 'gallery',
     description: 'See ethnographic collections from communities across Nigeria.', ambient: ['Visitors slow down beside the carved and woven objects.'],
     spots: [spot('gallery', 'Unity gallery', activity('ibadan-museum-tour', 'Tour the collection', 'art', ['art', 'history'], { xp: { photography: 8 } })), work()],
   },
   {
-    id: 'iita-forest', name: 'IITA Forest Reserve', district: 'Moniya, Akinyele', kind: 'walk', category: 'fun', icon: 'forest', point: { lon: 3.8875769, lat: 7.4951861 },
+    id: 'iita-forest', name: 'IITA Forest Reserve', district: 'Moniya, Akinyele', kind: 'walk', category: 'fun', icon: 'forest', point: { lon: 3.8875769, lat: 7.4951861 }, variant: 'forest',
     description: 'Take a guided forest walk at the research campus.', ambient: ['Bird calls carry across the forest trail.'],
     spots: [spot('trail', 'Forest trail', activity('ibadan-forest-walk', 'Walk the forest trail', 'walk', ['walk', 'nature'], { duration: 15, xp: { fitness: 12 }, effects: { fun: 10 } })), work()],
   },
   {
-    id: 'eleyele-lake', name: 'Eleyele Reservoir', district: 'Eleyele, Ido', kind: 'park', category: 'fun', icon: 'water', point: { lon: 3.8687741, lat: 7.4333509 },
+    id: 'eleyele-lake', name: 'Eleyele Reservoir', district: 'Eleyele, Ido', kind: 'lakeside', category: 'fun', icon: 'water', point: { lon: 3.8687741, lat: 7.4333509 },
     description: 'Sit by the reservoir and watch the water and birds.', ambient: ['The reservoir opens out beyond the city streets.'],
     spots: [spot('shore', 'Reservoir edge', activity('ibadan-eleyele-watch', 'Watch birds by the water', 'view', ['nature'], { xp: { photography: 8 }, effects: { fun: 8 } }))],
   },
@@ -158,17 +158,17 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     note: 'Fictional beta salon placed at the published Mokola commercial sampling point; no private business identity is claimed.',
   },
   {
-    id: 'iwo-road-interchange', name: 'Iwo Road Interchange', district: 'Iwo Road, Egbeda', kind: 'hub', category: 'civic', icon: 'bus', point: { lon: 3.9444816, lat: 7.40288 },
+    id: 'iwo-road-interchange', name: 'Iwo Road Interchange', district: 'Iwo Road, Egbeda', kind: 'hub', category: 'civic', icon: 'bus', point: { lon: 3.9444816, lat: 7.40288 }, variant: 'bus-park',
     description: 'Catch an intercity bus or change to a local route.', ambient: ['Micra taxis and buses keep moving through the junction.'],
     spots: [spot('platform', 'Bus platform', activity('ibadan-hub-wait', 'Wait for your bus', 'bus', ['travel'], { duration: 4, effects: { social: 1 } }))],
   },
   {
-    id: 'challenge-interchange', name: 'Orita Challenge Interchange', district: 'Challenge, Oluyole', kind: 'hub', category: 'civic', icon: 'bus', point: { lon: 3.8700195, lat: 7.3378698 },
+    id: 'challenge-interchange', name: 'Orita Challenge Interchange', district: 'Challenge, Ibadan South-East', kind: 'hub', category: 'civic', icon: 'bus', point: { lon: 3.8793, lat: 7.3482 }, variant: 'bus-park',
     description: 'Change buses at the southern entrance to the city.', ambient: ['Conductors call routes over the traffic.'],
     spots: [spot('platform', 'Bus stop', activity('ibadan-challenge-wait', 'Wait for a local bus', 'bus', ['travel'], { duration: 4 }))],
   },
   {
-    id: 'moniya-station', name: 'Obafemi Awolowo Station', district: 'Moniya, Akinyele', kind: 'hub', category: 'civic', icon: 'train', point: { lon: 3.896621, lat: 7.559368 },
+    id: 'moniya-station', name: 'Obafemi Awolowo Station', district: 'Moniya, Akinyele', kind: 'hub', category: 'civic', icon: 'train', point: { lon: 3.896621, lat: 7.559368 }, variant: 'rail',
     description: 'Board the Lagos–Ibadan train at Moniya.', ambient: ['Passengers gather under the high station roof.'],
     spots: [spot('platform', 'Rail platform', activity('ibadan-station-wait', 'Wait on the platform', 'train', ['travel'], { duration: 4 }))],
   },

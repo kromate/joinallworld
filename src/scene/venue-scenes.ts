@@ -9,6 +9,7 @@
  *   update(state) → boolean,    // reflect game state; true if anything changed (host draws one frame)
  *   ...the extensions below
  * })
+ * Ibadan kinds: quad (a university court with a clock tower), hilltop (a tower terrace over the city's roofs), lakeside (a reservoir shore with a jetty); built in src/scene/venues-ibadan-a.ts.
  * Kinds: park, buka, hub, club, office, market, gym, mall, beach, hospital, salon, rooftop,
  * police, worship, radio, polling, viewing, shrine, walk, statehouse, airport, refinery — plus `library` (the
  * speakeasy variant of club) and `generic`, the fallback for unknown kinds. `home` belongs to
@@ -87,6 +88,8 @@ import * as social from './venues-social.ts';
 import * as work from './venues-work.ts';
 import * as civic from './venues-civic.ts';
 import * as transport from './venues-transport.ts';
+import * as ibadanA from './venues-ibadan-a.ts';
+import { VARIANTS as ibadanB } from './venues-ibadan-b.ts';
 
 export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
@@ -132,7 +135,7 @@ export function timeOfDay(ms: number): TimeOfDay {
 }
 export const lightingFor = (mood: string, time: unknown): Lighting => (LIGHTING[mood as Mood] || LIGHTING.outdoor)[isTime(time) ? time : 'day'];
 
-const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
+const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES, ...ibadanA.SCENES };
 /** Kinds that are another kind with a default variant. */
 const ALIASES: Record<string, [string, string]> = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };
 export const KINDS = Object.freeze(Object.keys(DEFS).filter((kind) => kind !== 'generic'));
@@ -236,6 +239,9 @@ export const WALK: Readonly<Record<string, Readonly<WalkSpec>>> = Object.freeze(
   buka: indoors(), club: indoors(), viewing: indoors(), shrine: indoors(), mall: indoors(), hub: indoors(), office: indoors(),
   gym: indoors(), salon: indoors(), radio: indoors(), hospital: indoors(), police: indoors(), worship: indoors(),
   airport: indoors(), refinery: outdoors(),
+  quad: outdoors(),
+  hilltop: outdoors({ bounds: [-12.4, -3.4, 12.4, 11.2], entrance: [0, 10.6] }),
+  lakeside: outdoors({ bounds: [-13.4, -9.6, 13.4, 11.4], entrance: [0, 10.6], clear: [[3.7, -9.7, 5.5, -1.2]] }),
 });
 /**
  * GAME TABLES IN THE SCENE. Every table of src/tables/places.ts stands in its venue: a visible table (props.js gameTable)
@@ -259,6 +265,11 @@ export const TABLE_PLACES: Readonly<Record<string, readonly (readonly [number, n
   rooftop: [[6.6, 3.6], [-6.8, 4.0], [6.8, -2.2]],
   viewing: [[7.8, 5.0], [-7.6, 5.4], [8.0, 0.2], [-7.8, 0.8]],
   beach: [[9.4, 5.8], [-9.6, 6.2], [10.2, -0.6]],
+  // Ibadan tables (src/game/cities/ibadan/content.ts): the garden's ayo table on the lawn, the stadium's penalty spot on the apron.
+  'ibadan-agodi-ayo': [[-2.6, 3.8], [8, 6.4]], 'ibadan-stadium-penalty': [[-6.4, 9], [6.2, 9.4]],
+  quad: [[-3.8, 6.8], [10, 2.6], [-9.6, 8.4]],
+  hilltop: [[6.6, 6], [-9, 5.6], [-1.4, 8.6]],
+  lakeside: [[-5.8, 4], [8.6, 6.4], [-9.4, 8.4]],
 });
 const TABLE_FALLBACK: readonly (readonly [number, number])[] = Object.freeze([[7.5, 4.5], [-7.5, 4.5], [7.5, -1], [-7.5, -1], [0, 5]]);
 /** A table's clear ground: nothing else within this radius of its centre (it is 0.9 across, with stools to 1.6). */
@@ -294,6 +305,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
   const materials: SkyMaterials = shared.materials;
   if (!materials.sky) materials.sky = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, depthWrite: false, fog: false });
   const options: SceneOptions = venue?.scene && typeof venue.scene === 'object' ? venue.scene : {};
+  // A venue may ask for a variant that is a scene of its own (venues-ibadan-b.ts); the kind's walkable description then yields to the variant's.
+  const ownVariant = ibadanB[kind]?.[typeof options.variant === 'string' ? options.variant : defaultVariant ?? ''];
+  if (ownVariant) def = ownVariant;
+  const walkSpec = (): Readonly<WalkSpec> => def.walk ?? (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT)!;
   const spots: SceneSpot[] = Array.isArray(options.spots) ? options.spots : Object.values(venue?.spots || {});
   const context: SceneContext = {
     kind, venue, spots,
@@ -350,7 +365,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
   }
   /** The walk grid for this kind's walkable description and a set of recorded footprints. */
   function gridFor(shapes: FootprintShapes | null) {
-    const data = (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT)!;
+    const data = walkSpec();
     const floor = shapes?.floor;
     const bounds = (data.bounds || (floor ? [floor[0] + 1.3, floor[1] + 1.3, floor[2] - 1.3, floor[3] - 1.3] : [-10, -8, 10, 8])) as WalkRect;
     return { data, bounds, grid: createWalkGrid({ bounds, block: [...(shapes?.block || []), ...(data.block || [])], clear: data.clear || [] }) };
@@ -711,7 +726,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
   const walk: SceneWalk = {
     get grid() { return grid; },
     get entrance() { return entrance; },
-    get open() { return (Object.hasOwn(WALK, kind) ? WALK[kind] : WALK_DEFAULT)!.open !== false; },
+    get open() { return walkSpec().open !== false; },
     scale: 1,
     centre: [0, 0.7, 0],
     avatar,

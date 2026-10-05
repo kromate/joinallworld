@@ -141,11 +141,21 @@ export interface SceneContext {
   accent: Colour
   label: string
 }
+/** A scene's own walkable description, where it differs from its kind's (see WALK in venue-scenes.ts). */
+export interface SceneWalkSpec {
+  bounds: [number, number, number, number] | null
+  entrance: [number, number] | null
+  open: boolean
+  block?: import('./movement.ts').WalkShape[]
+  clear?: import('./movement.ts').WalkShape[]
+}
 /** One scene kind: `{ mood, accent?, camera?, build(b, context) }`. */
 export interface SceneDef {
   mood: Mood | ((context: SceneContext) => Mood)
   accent?: Colour
   camera?: SceneCamera
+  /** Replaces the walkable description of the scene's kind (a variant that is walled, or open, where its kind is not). */
+  walk?: SceneWalkSpec
   build(b: Batch, context: SceneContext): SceneLayout | void
 }
 /** The slice of game state a scene reads in update(). */

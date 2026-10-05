@@ -13,9 +13,12 @@ import {
 
 const PI = Math.PI, HALF = Math.PI / 2;
 
+/** The dish on the eatery's menu board where the city's own is not amala. */
+const MENU_BOARD: Readonly<Record<string, string>> = { kano: 'TUWO', abuja: 'SUYA', 'port-harcourt': 'BOLE' };
+
 const buka: SceneDef = {
   mood: 'indoor', accent: '#e0822f',
-  build(b, { accent }) {
+  build(b, { accent, cityId }) {
     room(b, { floor: '#b3936a', wall: '#dcb875', side: '#cfa765', trim: '#8a5a34' });
     b.box(0, 1.1, -9.94, 24, 1.4, 0.06, '#b5673a');
     b.box(-11.94, 1.1, 0, 0.06, 1.4, 20, '#b5673a');
@@ -28,7 +31,7 @@ const buka: SceneDef = {
     for (let i = 0; i < 4; i++) b.cyl(-4.6 + i * 0.26, 1.42, -6.6, 0.16, 0.05 + i * 0.02, WHITE, { seg: 8 });
     // Menu board
     b.box(0.6, 4, -9.72, 6.4, 1.9, 0.12, '#2f3a36');
-    sign(b, 0.6, 4.45, -9.64, 'AMALA', { size: 0.5, color: '#f4e6b8' });
+    sign(b, 0.6, 4.45, -9.64, MENU_BOARD[cityId] ?? 'AMALA', { size: 0.5, color: '#f4e6b8' });
     for (let i = 0; i < 4; i++) { b.quad(-0.6 + (i % 2) * 2.6, 3.75 - Math.floor(i / 2) * 0.4, -9.65, 1.6, 0.12, '#d9d2b8'); b.quad(0.5 + (i % 2) * 2.6, 3.75 - Math.floor(i / 2) * 0.4, -9.65, 0.4, 0.12, accent); }
     extra(b, 'buka-mama', 0.2, -8.5, 0, 'work', { look: { body: 'woman', outfit: 'owambe', fabric: 'ankara', hair: 'gele', outfitColor: 'orange', bottomsColor: 'green' } });
     extra(b, 'buka-server', 3.6, -8.5, -0.2, 'stand', { look: { body: 'woman', outfit: 'casual', hair: 'braids' } });

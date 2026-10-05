@@ -83,7 +83,7 @@ const hub: SceneDef = {
 
 const office: SceneDef = {
   mood: 'indoor', accent: '#3f72c4',
-  build(b, { accent }) {
+  build(b, { accent, label }) {
     room(b, { floor: '#dcd8d0', wall: '#cfc8b8', side: '#c2ccd4', trim: '#8f8a7e', h: 6 });
     b.box(0, 0.056, 0, 21, 0.02, 17, '#cfcabf'); b.box(0, 0.06, 0, 20.4, 0.02, 16.4, '#e6e2da');
     // Tall windows with a skyline on the left wall
@@ -104,7 +104,8 @@ const office: SceneDef = {
     sign(b, -6.9, 4.6, -9.68, 'LIFTS', { size: 0.26, color: '#4a4a44' });
     // Reception with a logo wall
     b.box(3, 3, -9.7, 8, 4.6, 0.16, '#2d3f5c');
-    sign(b, 3, 4, -9.6, 'TOWERS', { size: 0.6, color: '#f4e6b8', lit: true });
+    // The logo wall of an office tower; a neighbourhood savings hall says what it is instead.
+    sign(b, 3, 4, -9.6, /savings/i.test(label) ? 'SAVINGS' : 'TOWERS', { size: 0.6, color: '#f4e6b8', lit: true });
     b.box(3, 3.2, -9.6, 5.4, 0.06, 0.04, accent, GLOW);
     for (let i = 0; i < 3; i++) b.box(0.6 + i * 0.4, 2.2 + i * 0.3, -9.6, 0.3, 0.9 + i * 0.6, 0.06, '#d6a83a');
     counter(b, 3, -6.4, { w: 6, d: 1.1, color: '#e9e4d8', top: '#3a3f46', stripe: accent });

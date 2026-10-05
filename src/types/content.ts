@@ -1410,7 +1410,7 @@ interface MissionBase {
   /** How many times the trigger must happen (default 1). */
   count?: number
   /** A gate checked when missions are dealt: the life has a job, or an event is on today. */
-  needs?: 'job' | 'event'
+  needs?: 'job' | 'event' | 'stall' | 'no-stall'
   /** The Go button opens this panel … */
   open?: string
   /** … or walks to `[venue]` / `[venue, spot]`. */

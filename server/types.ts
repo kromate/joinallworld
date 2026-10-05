@@ -16,6 +16,7 @@ import type { ConversationKind, LookIds, PlayerReportReceipt, ReportReason, Soci
 import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types/support.ts'
 import type { ConsentView, OutreachLogLine, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
+import type { BusinessCollection } from '../src/types/business.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
@@ -561,6 +562,8 @@ export interface Database {
   support?: SupportCollection
   moderation?: ModerationCollection
   growth?: GrowthCollection
+  /** server/business/service.ts: every player-owned shop. Created by the first shop, so it is not in COLLECTION_NAMES. */
+  business?: BusinessCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
   campus?: { election?: CampusElectionRecord }
   /** server/accounts/service.ts. Created by the first sign-in, so none of the three is in COLLECTION_NAMES. WORKER: `accounts` and `accountDevices` are tables of their own. */
@@ -571,7 +574,7 @@ export interface Database {
   [collection: string]: unknown
 }
 /** Top-level keys of the document. */
-export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'campus', 'accounts', 'accountDevices', 'accountLog'] as const satisfies readonly (keyof Database)[]
+export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog'] as const satisfies readonly (keyof Database)[]
 /** The namespaced collections reached through `collection(db, name)`. */
 export const COLLECTION_NAMES = ['social', 'civic', 'support', 'moderation', 'growth'] as const
 export type CollectionName = (typeof COLLECTION_NAMES)[number]

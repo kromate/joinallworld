@@ -15,7 +15,7 @@ npm run first-day   # one scripted new life, start to Saturday rent, with a tran
 npm run first-minute # one brand-new player: Play → first reward → settling in, timed in server time
 npm run new-player  # the merged game end to end: two new players, a house, missions, a share link, Whot, a referral
 npm run two-players # two scripted players: presence, messages, a house visit, a gift, an election
-npm run economy     # scripted lives under eight strategies (a UNILAG student among them), played through the rules engine: the balance table
+npm run economy     # scripted lives under eight strategies (a UNILAG student among them), played through the rules engine: the balance table, then shop owners, a trader and two colluding players ([BUSINESS.md](BUSINESS.md))
 npm run load        # N simulated players against an in-process server: latency and file writes
 npm run world-load  # the local-government registry at city scale (writes large temporary files and deletes them)
 npm run capacity    # N simulated open pages (polls, two sockets, actions, chat) against either host: docs/CAPACITY.md

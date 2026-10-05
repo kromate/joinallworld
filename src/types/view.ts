@@ -1039,6 +1039,20 @@ export interface GrowthView {
   }
 }
 
+// ---- business -----------------------------------------------------------------------------
+
+/** The life's side of businesses; the shop itself is read from /api/business/. */
+export interface BusinessView {
+  opened: number
+  sales: number
+  /** Trade goods carried: `[productId, units]`, and how many more units fit. */
+  bag: [string, number][]
+  bagRoom: number
+  /** What this life may still spend at players' shops today, and why it may not buy at all ('' when it may). */
+  canSpend: number
+  buyWhy: string
+}
+
 // ---- the whole view -----------------------------------------------------------------------
 
 /** The object returned by `viewLife(state, ctx)`. `core` has no view. The three campus views are in campus.ts. */
@@ -1062,6 +1076,7 @@ export interface LifeView {
   missions: MissionsView
   events: EventsView
   growth: GrowthView
+  business: BusinessView
   unilagStudent: UnilagStudentView
   unilagCommunity: UnilagCommunityView
   unilagShuttle: UnilagShuttleView
@@ -1072,7 +1087,7 @@ export interface LifeView {
 /** The keys of `viewLife(state, ctx)`, in registration order. */
 export const VIEW_KEYS = [
   'wallet', 'inventory', 'needs', 'skills', 'career', 'activities', 'travel', 'health', 'economy', 'property', 'estate', 'home',
-  'onboarding', 'goals', 'social', 'civic', 'missions', 'events', 'growth', 'unilagStudent', 'unilagCommunity', 'unilagShuttle',
+  'onboarding', 'goals', 'social', 'civic', 'missions', 'events', 'growth', 'business', 'unilagStudent', 'unilagCommunity', 'unilagShuttle',
 ] as const satisfies readonly (keyof LifeView)[]
 
 /** The keys of each system's view, sorted. (`skills` is keyed by SkillId.) */
@@ -1114,6 +1129,7 @@ export const VIEW_FIELD_KEYS = {
   ],
   events: ['count', 'here', 'live', 'spray', 'sprayed'],
   growth: ['referral', 'tables'],
+  business: ['bag', 'bagRoom', 'buyWhy', 'canSpend', 'opened', 'sales'],
   unilagStudent: [
     'admittedDay', 'applicationCount', 'betaRules', 'campusJobs', 'courses', 'degree', 'hostel', 'lifetime', 'programme', 'records',
     'status', 'studentId', 'term',

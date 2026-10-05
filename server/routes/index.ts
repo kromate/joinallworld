@@ -31,7 +31,7 @@
  *
  * PATHS   must start with /api/<your area>/ (accounts → /api/account, social → /api/social/,
  *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/, world → /api/world/, growth → /api/growth/ and,
- *         for its operator view, /api/mod/growth/). A ":name" segment captures into request.params. A duplicate
+ *         for its operator view, /api/mod/growth/; business → /api/business/ and /api/mod/business/). A ":name" segment captures into request.params. A duplicate
  *         "METHOD /path" aborts start-up.
  *
  * REQUEST (portable — no Node req/res, so the same module can run in the Worker later)
@@ -209,8 +209,10 @@ import growthMod from './growth-mod.ts';
 import campus from './campus.ts';
 import pulse from './pulse.ts';
 import ping from './ping.ts';
+import business from './business.ts';
+import businessMod from './business-mod.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, business, businessMod];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 interface PatternRoute { key: string; method: string; segments: string[]; handler: RouteHandler }

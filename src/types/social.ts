@@ -99,7 +99,7 @@ export interface Message {
 
 export type SocialUpdateKind =
   | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
-  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping'
+  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
   id: number

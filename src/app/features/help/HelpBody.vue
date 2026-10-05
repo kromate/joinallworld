@@ -17,7 +17,7 @@ const STEPS = computed(() => [
   { icon: 'globe', title: 'Travel to other cities', text: `Open the Map and tap World at the top. Tap a city that is open, then the bus, train or flight: the price and the seconds it takes are on each button. You stay a visitor there, with a guest house for the night, and your home stays where it is. Cities in ${country.value} are open; more of Africa and the world are coming.` },
   { icon: 'chat', title: 'Call and chat', text: 'Tap the online count, then a player, to chat or Call them; they choose whether to answer. The chat button at a place opens its community.' },
   { icon: 'bell', title: 'Ping a friend', text: 'A friend who is not in the game has Ping where Call would be: one tap tells them you are here. If they come, they land right where you are.' },
-  { icon: 'career', title: 'Work and business', text: 'Jobs and Career earn your pay, Bank and Invest look after it, and Billboards advertise for you.' },
+  { icon: 'career', title: 'Work and business', text: 'Jobs and Career earn your pay, and Business lets you rent a stall at any market, stock it and sell to the city and to other players. Bank and Invest look after your money, and Billboards advertise for you.' },
 ] as const)
 const rows = shortcutRows()
 /** The walkthrough starts after this sheet closes (src/app/features/tour/TourTrigger.vue). */

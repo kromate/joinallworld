@@ -14,7 +14,8 @@
  *     'paid'        an activity that pays completes (a shift or a gig)
  *     'venue'       arriving somewhere other than home; with `fresh: true` only a venue not yet
  *                   visited this Lagos week counts, and every venue counts once per mission
- *   needs   optional gate, checked when missions are dealt: 'job' (the life has a job)
+ *   needs   optional gate, checked when missions are dealt: 'job' (the life has a job), 'event' (one is on today),
+ *           'stall' (the life has opened a business) or 'no-stall' (it never has)
  *   open / go   what the Go button does: open a panel, or walk to [venue, spot?]
  *
  * NUMBERS (see RESEARCH-GROWTH.md §4.1 and scripts/economy-sim.ts, strategy "social")
@@ -64,6 +65,8 @@ export const DAILY_MISSIONS: readonly MissionDefinition[] = Object.freeze([
 export const WEEKLY_MISSIONS: readonly MissionDefinition[] = Object.freeze([
   { id: 'w-work', kind: 'life', label: 'Get paid on four different days', hint: 'One paid shift or gig a day counts', on: 'event', event: 'work.day', count: 4, open: 'career' },
   { id: 'w-meals', kind: 'life', label: 'Eat ten meals', hint: 'Home cooking counts', on: 'tag', tags: ['food'], count: 10, go: ['home', 'kitchen'] },
+  { id: 'w-stall', kind: 'life', label: 'Open your first stall', hint: 'Rent one at any market: Phone → Business', on: 'event', event: 'business.opened', needs: 'no-stall', open: 'business' },
+  { id: 'w-sales', kind: 'life', label: 'Make ten sales at your stall', hint: 'Keep it stocked, then collect your takings', on: 'event', event: 'business.sale', count: 10, needs: 'stall', open: 'business' },
   { id: 'w-places', kind: 'discovery', label: 'Visit six different places', hint: 'Each place counts once this week', on: 'venue', fresh: true, count: 6, open: 'map' },
   { id: 'w-gems', kind: 'discovery', label: 'Find nine gems', hint: 'Three days of the gem hunt', on: 'event', event: 'gem.found', count: 9, open: 'hunt-sheet' },
   { id: 'w-tables', kind: 'social', label: 'Play five table games', hint: 'Win or lose, a finished game counts', on: 'event', event: 'table.played', count: 5, open: 'tables' },

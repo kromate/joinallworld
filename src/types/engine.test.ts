@@ -328,6 +328,7 @@ const inner = {
   }),
   events: ({ events: e }: LifeState) => ({ attended: e.attended, count: e.count, spray: e.spray, sprayed: e.sprayed }),
   growth: ({ growth: g }: LifeState) => ({ tables: g.tables, welcomed: g.welcomed, referrals: g.referrals }),
+  business: ({ business: b }: LifeState) => ({ opened: b.opened, sales: b.sales, spent: b.spent, buys: b.buys, bag: b.bag }),
   unilagStudent: ({ unilagStudent: u }: LifeState) => ({
     status: u.status, programme: u.programme, studentId: u.studentId, admittedDay: u.admittedDay, applicationCount: u.applicationCount, term: u.term, records: u.records,
     hostel: u.hostel, lifetime: u.lifetime,

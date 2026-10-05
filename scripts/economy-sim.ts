@@ -39,6 +39,9 @@ await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 
  *   plus four weeks of its rent) and the cheapest car (found by playing on, up to `horizon` days —
  *   never extrapolated).
  *
+ *   After the table: player-owned shops — owners of several kinds, a trader between two cities and two colluding players
+ *   (scripts/business-sim.ts).
+ *
  * The assertions that encode the design intent are in src/game/economy.test.ts.
  * Everything here is deterministic: the same arguments give the same table.
  */
@@ -118,6 +121,9 @@ export function categoryOf(line: LedgerLine): string {
   // The UNILAG campus (src/campus/unilag/student.ts): what a student pays the university, and what the campus pays a student.
   if (reason === 'UNILAG application fee' || /^UNILAG semester \d+ tuition and levy$/.test(reason) || /^UNILAG hostel semester \d+$/.test(reason)) return 'campusFees';
   if (reason === 'UNILAG scholarship' || CAMPUS_JOB_REASONS.has(reason)) return 'campusPay';
+  // Player-owned shops (src/game/systems/business.ts): what a shop costs its owner, and what it pays them.
+  if (/^Shop (setup|stock|rent|upgrade|goods): /.test(reason)) return 'shopCosts';
+  if (reason.startsWith('Shop takings: ') || reason.startsWith('Shop closed: ') || reason === 'Shop goods returned') return 'shopIncome';
   if (reason.startsWith('Groceries')) return 'food';
   if (reason.startsWith('Landlord and agent') || reason.startsWith('Bought') || reason.startsWith('Sold') || reason.startsWith('Boutique') || reason.startsWith('House upgrade') || reason === 'House styling' || reason.startsWith('Moving your ')) return 'purchases';
   if (EVENT_TITLES.has(reason)) return 'events';
@@ -847,4 +853,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const bad = rows.filter((row) => !row.conserved || must(row.unknown).length);
   console.log(bad.length ? `NOT CONSERVED or unknown reasons in ${bad.length} rows: ${JSON.stringify(bad.map((row) => [row.lottery, row.house, row.strategy, row.unknown]))}` : `Conservation: cash = seed + Σ ledger in all ${rows.length} lives; every ledger reason is classified.`);
   console.log(`Next house = move-in + 4 weeks' rent: ${HOUSE_ORDER.map((id) => `${id} ${naira((must(HOUSES[id]).moveIn ?? 0) + 4 * must(HOUSES[id]).rent)}`).join(' · ')} · own house upgrade (${TIER_ORDER[1]} in ${SIM_LGA}) ${naira((tierCost(CITY, SIM_LGA, must(TIER_ORDER[1])) ?? 0) + 4 * must(HOUSE_TIERS[must(TIER_ORDER[1])]).groundRent)} · cheapest car ${naira(CHEAPEST_CAR.price)}`);
+  // Player-owned shops: owners, a trader and two colluding players. That file plays this one's lives, so it is loaded once this one has finished loading (not awaited here).
+  void import('./business-sim.ts').then(({ formatBusiness, runBusiness }) => {
+    console.log(`Businesses (${days} days; "made" = cash change + cash box + what closing would return; docs/BUSINESS.md):`);
+    console.log(formatBusiness(runBusiness({ days })));
+  });
 }

@@ -87,7 +87,7 @@ export const STEPS: readonly TourStep[] = [
     text: 'Jobs, Bank, Messages, Missions and more are apps in your phone.', task: 'Tap Phone to open it.',
     doneText: 'These are your apps. Jobs finds you work, Bank keeps your money, Messages keeps you in touch and Missions gives you something to aim for.' },
   { id: 'work', title: 'Work and business', targets: ['phone-dock', 'nav-phone'], allows: 'phone', keeps: 'phone',
-    text: 'Jobs pays you for every shift, and a Career moves you up. Keep your money in Bank, grow it in Invest and rent Billboards to advertise.' },
+    text: 'Jobs pays you for every shift, and a Career moves you up. Rent a stall in Business to sell for yourself, keep your money in Bank, grow it in Invest and rent Billboards to advertise.' },
   { id: 'people', title: 'Talk to people', targets: ['online', 'invite'], needs: ['online', 'invite', 'call'],
     text: (context) => `${context.has('online') ? 'Tap the green count to see who is online, then a player to chat or press Call to ring them; they choose whether to answer.' : 'Other people live here too: find one in People in your phone, then chat or press Call to ring them; they choose whether to answer.'} ${context.has('invite') ? 'Messages keeps your chats and groups, and Invite brings a friend in with your link.' : 'Messages in your phone keeps your chats and groups.'}` },
   { id: 'community', title: 'Community', targets: ['community'], needs: ['community'],

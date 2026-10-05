@@ -1,7 +1,7 @@
 // OWNER: quick start — the pure client logic of the first minute (./model.ts).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE, NUDGE_CAP, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.ts';
+import { joinIdFrom, joinBanner, linkParts, linkBanner, GIFT_LINE, NUDGE_CAP, NUDGE_QUIET_MS, nudgeMemory, nextNudge, nudged, funnelSnap, funnelEvents } from './model.ts';
 import type { JoinBanner } from './model.ts';
 import type { Look } from '../types/life.ts';
 import { NAME_MOODS, NAME_STEMS, suggestName, nameProblem, starterLook, PRESETS, presetLook, shuffleLook, withBody, draftFrom } from './look-model.ts';
@@ -75,24 +75,40 @@ test('the landing hook reads /v/<id>, ?join=<id> and ?v=<id>, and nothing else',
   for (const none of [null, { ok: false, code: 'unknown_player' }, { ok: true, code: 'joined' }]) assert.equal(joinBanner(none, label), null);
 });
 
+const NOON = Date.UTC(2026, 0, 5, 11);
 test('settling in is offered at natural moments, each once, never while busy and never past the cap', () => {
   let memory = nudgeMemory(null);
-  const facts = (extra: Partial<Parameters<typeof nextNudge>[0]> = {}) => ({ guest: true, activities: 0, firstAt: null, busy: false, day: 10, ...extra });
+  const facts = (extra: Partial<Parameters<typeof nextNudge>[0]> = {}) => ({ guest: true, activities: 0, firstAt: null, busy: false, day: 10, at: NOON, ...extra });
   assert.equal(nextNudge(facts(), memory), null, 'nothing before the first reward');
   assert.equal(nextNudge(facts({ firstAt: 7, activities: 1, busy: true }), memory), null, 'not in the middle of something');
   assert.equal(nextNudge(facts({ firstAt: 7, activities: 1 }), memory), 'first-reward');
-  memory = nudged(memory, 'first-reward', 10);
-  assert.equal(nextNudge(facts({ firstAt: 7, activities: 2 }), memory), null);
-  assert.equal(nextNudge(facts({ firstAt: 7, activities: 3 }), memory), 'third-activity');
-  memory = nudged(memory, 'third-activity', 10);
-  assert.equal(nextNudge(facts({ firstAt: 7, activities: 9 }), memory), null, 'not again the same day');
-  assert.equal(nextNudge(facts({ firstAt: 7, activities: 9, day: 11 }), memory), 'next-day');
-  memory = nudged(memory, 'next-day', 11);
+  memory = nudged(memory, 'first-reward', 10, NOON);
+  const later = NOON + NUDGE_QUIET_MS;
+  assert.equal(nextNudge(facts({ firstAt: 7, activities: 2, at: later }), memory), null);
+  assert.equal(nextNudge(facts({ firstAt: 7, activities: 3, at: later }), memory), 'third-activity');
+  memory = nudged(memory, 'third-activity', 10, later);
+  assert.equal(nextNudge(facts({ firstAt: 7, activities: 9, at: later + NUDGE_QUIET_MS }), memory), null, 'not again the same day');
+  assert.equal(nextNudge(facts({ firstAt: 7, activities: 9, day: 11, at: later + NUDGE_QUIET_MS }), memory), 'next-day');
+  memory = nudged(memory, 'next-day', 11, later + NUDGE_QUIET_MS);
   assert.equal(memory.count, NUDGE_CAP);
-  assert.equal(nextNudge(facts({ firstAt: 7, activities: 9, day: 12 }), memory), null, 'capped');
+  assert.equal(nextNudge(facts({ firstAt: 7, activities: 9, day: 12, at: later + 3 * NUDGE_QUIET_MS }), memory), null, 'capped');
   assert.equal(nextNudge(facts({ guest: false, firstAt: 7, activities: 9 }), nudgeMemory(null)), null, 'never for a settled life');
-  assert.deepEqual(nudgeMemory({ count: -3, reasons: [1, 'x', {}], day: 'today' }), { count: 0, reasons: ['x'], day: null });
+  assert.deepEqual(nudgeMemory({ count: -3, reasons: [1, 'x', {}], day: 'today', until: 'soon' }), { count: 0, reasons: ['x'], day: null, until: null });
   assert.deepEqual(nudgeMemory(JSON.parse(JSON.stringify(memory))), memory, 'survives storage');
+});
+
+test('Not now holds: an offer that was set aside stays quiet through a reload, a later moment the same day and a midnight, then comes back by the usual rules', () => {
+  const at = Date.UTC(2026, 0, 5, 22, 58); // Lagos 23:58
+  let memory = nudged(nudgeMemory(null), 'first-reward', 20458, at);
+  assert.equal(memory.until, at + NUDGE_QUIET_MS);
+  memory = nudgeMemory(JSON.parse(JSON.stringify(memory))); // a reload: only what storage kept
+  const facts = (extra: Partial<Parameters<typeof nextNudge>[0]> = {}) => ({ guest: true, activities: 9, firstAt: 7, busy: false, day: 20458, at, ...extra });
+  assert.equal(nextNudge(facts(), memory), null, 'right after the reload');
+  assert.equal(nextNudge(facts({ at: at + 3 * 60000, day: 20459 }), memory), null, 'three minutes later, past midnight: the next-day rule does not fire inside the quiet period');
+  assert.equal(nextNudge(facts({ at: at + NUDGE_QUIET_MS - 1, day: 20459 }), memory), null, 'one millisecond before it ends');
+  assert.equal(nextNudge(facts({ at: at + NUDGE_QUIET_MS, day: 20459 }), memory), 'third-activity', 'when it ends the usual rules apply');
+  assert.equal(nextNudge(facts({ at: at - 5 * NUDGE_QUIET_MS }), memory), 'third-activity', 'a remembered time further ahead than one quiet period is a moved clock, not a reason to stay quiet');
+  assert.equal(nextNudge(facts({ guest: false }), memory), null);
 });
 
 test('funnel events come from the server state, once each', () => {

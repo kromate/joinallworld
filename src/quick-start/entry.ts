@@ -16,7 +16,7 @@
  *   joinallworld-quick-table   the table id a table link carried, until the Tables app was opened on it
  *   allworld-ref               { code, at } — the share code a link carried, until it was attached as a referral (the
  *                              growth client reads the same key; a code is dropped after a week)
- *   joinallworld-quick-nudge   { [life]: { count, reasons, day } } — how often settling in was offered
+ *   joinallworld-quick-nudge   { [life]: { count, reasons, day, until } } — how often settling in was offered, and until when it stays quiet
  *   joinallworld-quick-landed  1 once the landing screen was shown, so 'landed' is reported once per device
  * None of it is a credential: the session is the cookie the server sets, exactly as before.
  *

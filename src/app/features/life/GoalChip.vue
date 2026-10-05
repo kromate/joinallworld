@@ -11,7 +11,7 @@
 import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { keepNudges, nudgesOf } from '../../../quick-start/entry.ts'
-import { nextNudge, nudged } from '../../../quick-start/model.ts'
+import { NUDGE_QUIET_MS, nextNudge, nudged } from '../../../quick-start/model.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import GlyphText from '../kit/GlyphText.vue'
 import { chipAction, chipLabel, lagosDay, newFeed, rememberSeq } from './goalChipModel.ts'
@@ -49,7 +49,7 @@ function bookkeeping(): void {
   if (o.guest) {
     if (o.required || nudging) return
     const day = lagosDay(now.now), memory = nudgesOf(who)
-    const reason = nextNudge({ guest: true, activities: o.activities, firstAt: o.timing.firstAt, busy: Boolean(state.activeAction), day }, memory)
+    const reason = nextNudge({ guest: true, activities: o.activities, firstAt: o.timing.firstAt, busy: Boolean(state.activeAction), day, at: now.now }, memory)
     if (!reason) return
     nudging = true
     // One timer, once: the reward toast is read first, and the offer never lands on top of another sheet.
@@ -59,10 +59,17 @@ function bookkeeping(): void {
       const latest = game.view.value
       const still = latest.onboarding?.guest && !game.state.value.activeAction && !document.querySelector('dialog[open]')
       if (!still) return // asked again at the next change
-      keepNudges(who, nudged(nudgesOf(who), reason, day))
+      keepNudges(who, nudged(nudgesOf(who), reason, day, game.view.value.now))
       shell.open('onboarding', { nudge: reason })
     }, NUDGE_DELAY_MS)
-  } else if (!state.onboarding.done && offeredTo !== who) { offeredTo = who; queueMicrotask(() => { shell.open('onboarding') }) }
+  } else if (!state.onboarding.done && offeredTo !== who) {
+    // Offered once per visit, and not again on a reload while the last offer is still quiet.
+    offeredTo = who
+    const memory = nudgesOf(who)
+    if (memory.until !== null && now.now < memory.until && memory.until - now.now <= NUDGE_QUIET_MS) return
+    keepNudges(who, nudged(memory, 'create', lagosDay(now.now), now.now))
+    queueMicrotask(() => { shell.open('onboarding') })
+  }
 }
 watch(signature, bookkeeping, { immediate: true, flush: 'post' })
 </script>

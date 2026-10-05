@@ -47,7 +47,7 @@ import { weatherAt } from '../src/game/systems/health.ts';
 import { LOTTERY } from '../src/game/content/traits.ts';
 import { STARTER_GOALS } from '../src/game/content/goals.ts';
 import { EVENTS } from '../src/game/content/events.ts';
-import { nextNudge, nudgeMemory, nudged, funnelSnap, funnelEvents } from '../src/quick-start/model.ts';
+import { NUDGE_QUIET_MS, nextNudge, nudgeMemory, nudged, funnelSnap, funnelEvents } from '../src/quick-start/model.ts';
 import { presetLook } from '../src/quick-start/look-model.ts';
 import type { AddressInfo } from 'node:net';
 import type { Server } from 'node:http';
@@ -175,9 +175,9 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     // ---- 3. settling in is offered, not forced -------------------------------------------------------
     const day = Math.floor((time + 3600000) / 86400000);
     let memory = nudgeMemory(null);
-    const offer = () => nextNudge({ guest: view(state).onboarding.guest, activities: state.onboarding.activities, firstAt: state.onboarding.firstAt, busy: Boolean(state.activeAction), day }, memory);
+    const offer = () => nextNudge({ guest: view(state).onboarding.guest, activities: state.onboarding.activities, firstAt: state.onboarding.firstAt, busy: Boolean(state.activeAction), day, at: time }, memory);
     assert.equal(offer(), 'first-reward');
-    memory = nudged(memory, 'first-reward', day);
+    memory = nudged(memory, 'first-reward', day, time);
     assert.equal(offer(), null, 'offered once; play is never blocked');
     shown = view(state);
     assert.deepEqual([shown.goals.chip.title, shown.onboarding.guest, shown.onboarding.step], ['Say hello to someone', true, 1]);
@@ -190,9 +190,9 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     say(`Say Hello to ${regular.name} (6s)`, state, 'goal 2 +₦500 +1✨; the goal chip now reads “Settle in”');
     state = await activity('trees', 'chill', 11);
     assert.deepEqual([state.cash, state.onboarding.activities], [6000, 3]);
-    assert.equal(offer(), 'third-activity', 'after the third activity it is offered once more');
-    memory = nudged(memory, 'third-activity', day);
-    say('Chill Under the Trees (11s)', state, 'third activity: settling in is offered a second time, and again declined');
+    assert.equal(offer(), null, 'Not now holds: after the third activity it stays quiet, and so after a reload (the memory is on the device)');
+    assert.equal(nextNudge({ guest: true, activities: 3, firstAt: must(state.onboarding.firstAt), busy: false, day, at: time + NUDGE_QUIET_MS }, nudgeMemory(JSON.parse(JSON.stringify(memory)))), 'third-activity', 'and it comes back once the quiet period is over');
+    say('Chill Under the Trees (11s)', state, 'third activity: settling in is not pushed again (Not now holds); Home and Buy still ask for it when needed');
     const home = await action('travel', { id: 'home', mode: 'trek' });
     assert.deepEqual([home.ok, home.code], [false, 'settle_required']);
     assert.match(home.state.message, /^Settle in to get your home/);

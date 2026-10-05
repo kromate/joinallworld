@@ -5,7 +5,7 @@
 // main home. Nothing here has to be done: a visitor may stay a visitor for as long as it likes.
 // Shown as the Home tab's sheet (the 'visiting' panel) and at the top of the Houses app.
 import '../../../ui/panels/world.css'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useAct } from '../kit/act.ts'
@@ -30,7 +30,10 @@ function goHome(): void {
   showMapLayer('world', { city: home.city })
 }
 function things(): void { shell.open('city') }
-function chosen(): void { choosing.value = null; shell.closeSheet() }
+function chosen(): void { choosing.value = null }
+// A home was taken here: the life is no longer a visitor, so the visitor's sheet has nothing left to say and closes.
+// (In the Houses app this section simply makes way for the house.)
+watch(model, (now, was) => { const open = shell.sheet.value; if (was && !now && open?.kind === 'panel' && open.id === 'visiting') shell.closeSheet() })
 </script>
 
 <template>

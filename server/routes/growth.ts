@@ -60,7 +60,7 @@ interface GrowthCall { db: Db; g: GrowthCollection; session: SessionRecord; stat
 const SESSION_GAP_MS = 30 * 60000;
 const AGES: readonly ConsentView['age'][] = ['adult', 'minor'];
 /** What a comeback mail's "stop these" page calls each kind. */
-const KINDS: Readonly<Record<ComebackType, string>> = { waiting: 'e-mails about your friends', nudge: 'e-mails about your friends', need: 'e-mails about your character’s needs', milestone: 'milestone e-mails', event: 'event e-mails', away: 'e-mails for when you have been away', week: 'the weekly digest' };
+const KINDS: Readonly<Record<ComebackType, string>> = { waiting: 'e-mails about your friends', nudge: 'e-mails about your friends', need: 'e-mails about your character’s needs', milestone: 'milestone e-mails', event: 'event e-mails', away: 'e-mails for when you have been away', week: 'the weekly digest', ping: 'e-mails about your friends' };
 
 const ready = (state: LifeState | null | undefined): boolean => Boolean(state) && !(state?.onboarding?.required === true && state.onboarding.done !== true);
 /** What the caller may see of their own consent. */

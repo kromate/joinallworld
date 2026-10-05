@@ -62,6 +62,7 @@ import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.ts';
 import { lagosTime } from '../../src/game/clock.ts';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
 import { venueLabel } from '../../src/game/content/venues.ts';
+import { cityName } from '../../src/game/cities/index.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
@@ -569,6 +570,8 @@ function buildService(ctx: RouteContext) {
   const service = {
     LIMITS,
     presence,
+    /** For server/social/ping.ts: the same registration, lookups and notice every method here uses. */
+    kit: { enter, other, notify, pub, areFriends, whereabouts, founderId },
     /**
      * Call INSIDE the transaction, last: attaches the visits this transaction ended to its result
      * (hidden from JSON), so deliver() can announce exactly those after the commit.
@@ -603,7 +606,7 @@ function buildService(ctx: RouteContext) {
       const owed: unknown = typeof result === 'object' && result !== null ? Reflect.get(result, PUSHES) : undefined;
       for (const [to, message] of (owed ?? []) as PushList) {
         ctx.push(to, message);
-        if (message.type === 'social-update' && message.update.kind === 'invite-joined') ctx.emit?.('invite-joined', { inviter: to });
+        if (message.type === 'social-update' && message.update.kind === 'invite-joined') ctx.emit?.('invite-joined', { inviter: to, ...(message.update.data?.from ? { newcomer: message.update.data.from } : {}) });
       }
       if (!result || !Array.isArray((result as { push?: unknown }).push)) return result as Delivered<R>;
       const { push, ...rest } = result as R & { push: PushList };
@@ -1041,7 +1044,9 @@ function buildService(ctx: RouteContext) {
       const host = pub(s, hostId), where = whereabouts(hostId, true);
       if (where.status !== 'online') return yes(where.status === 'reconnecting' ? 'reconnecting' : 'offline', { host, hostStatus: where.status === 'reconnecting' ? 'reconnecting' : 'offline' });
       if (where.venue === 'home' && where.cityId === cityId) return yes('at_home', { host, hostStatus: 'home' });
-      if (where.cityId !== cityId || where.venue === 'visit' || where.venue === 'home' || !venueFor(cityId, where.venue)) return yes('out', { host, hostStatus: 'out' });
+      // In another city: a friend (a newcomer who came through this player's link is one by now) is told which, as any friend sees it. A new guest cannot travel there yet.
+      const elsewhere = where.cityId !== undefined && where.cityId !== cityId && areFriends(s, id, hostId) ? cityName(where.cityId) : null;
+      if (where.cityId !== cityId || where.venue === 'visit' || where.venue === 'home' || !venueFor(cityId, where.venue)) return yes('out', { host, hostStatus: 'out', ...(elsewhere ? { elsewhere } : {}) });
       const life = ctx.settle(session, cityId);
       if (life.location === where.venue && !isDeparting(life)) return yes('here', { host, hostStatus: 'out', venue: where.venue });
       const moved = ctx.act(life, { type: 'onboarding.arrive', cityId, payload: { venue: where.venue }, stateGuard: 'onboarding.joined: the first arrival sets it and a second is refused' });

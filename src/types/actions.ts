@@ -120,6 +120,12 @@ export interface SocialServerOpMap {
   bae: { payload: { id: PlayerPublicId; name?: string }; ok: 'bae'; fail: 'invalid_bae' | 'already_have_bae' }
   /** 'no_bae' (nothing to end, or `id` names someone else) is also a success. */
   'bae-end': { payload: { id?: PlayerPublicId }; ok: 'no_bae' | 'ended'; fail: never }
+  /**
+   * Stand beside a friend who pinged (server/social/ping.ts): free, at a public venue of `city`. In the life's own city the
+   * life is placed there ('joined', or 'here' when it already stands there); in another open city it arrives there exactly
+   * as at the end of a trip, with no fare ('joined_city'). `name` is the friend's display name, for the message line.
+   */
+  join: { payload: { city: string; venue: string; name?: string }; ok: 'joined' | 'here' | 'joined_city'; fail: 'busy' | 'onboarding_required' | 'settle_required' | 'invalid_place' | 'city_not_open' | 'no_route' }
 }
 
 export type SocialServerOp = keyof SocialServerOpMap
@@ -434,5 +440,5 @@ export const INBOUND_ACTIONS = ['social.server', 'growth.referral', 'growth.tabl
 
 /** The operations 'social.server' accepts (social.js serverOps). */
 export const SOCIAL_SERVER_OPS = [
-  'transfer-check', 'transfer-out', 'transfer-in', 'friend', 'unfriend', 'interact', 'bae-check', 'bae', 'bae-end',
+  'transfer-check', 'transfer-out', 'transfer-in', 'friend', 'unfriend', 'interact', 'bae-check', 'bae', 'bae-end', 'join',
 ] as const satisfies readonly SocialServerOp[]

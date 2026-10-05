@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// A real player's card: Chat, Add friend, the interactions you can have when you are in the same
+// A real player's card: Chat, Call (or, for someone who is not in the game, Ping), Add friend, the interactions you can have when you are in the same
 // venue, Ask to be my Bae, Send money, Block and Report. Every disabled control says why, and
 // every write goes through the social client (which re-reads the overview and this card after).
 // A money gift carries one client id from the moment its form opens, so a double tap or a retry
@@ -19,6 +19,9 @@ import FounderTag from './FounderTag.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import PersonCallButton from '../calls/PersonCallButton.vue'
+import PingButton from '../ping/PingButton.vue'
+import PingStrip from '../ping/PingStrip.vue'
+import { pingInstead } from '../ping/pingModel.ts'
 import type { SocialResult } from './socialClient.ts'
 import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason } from './personModel.ts'
 import { closenessText, presenceClass, reasonLabel, STRANGER_TEXT, tagLabel, venueNameOf } from './socialWords.ts'
@@ -136,7 +139,11 @@ async function sendReport(): Promise<void> {
     <p>Real player · <span class="social-presence" :class="`is-${presenceClass(card.status)}`">{{ presenceText(card, venueName, view.now, place) }}</span><template v-if="together"> · here with you</template><template v-if="card.bae"> · your Bae <GameIcon name="heart" inline /></template><template v-else-if="card.friend"> · Friend</template></p>
     <button type="button" class="ui-button is-primary is-block" :disabled="card.blocked" @click="shell.open('messages', { to: id, name: card.name })">Chat</button>
     <span v-if="card.blocked" class="social-why">Unblock this player to chat.</span>
-    <PersonCallButton :id="id" :name="card.name" :status="card.status" :blocked="card.blocked" />
+    <template v-if="pingInstead(card.status)">
+      <PingButton :id="id" :name="card.name" :stranger="!card.friend" :blocked="card.blocked" />
+      <PingStrip :id="id" :name="card.name" />
+    </template>
+    <PersonCallButton v-else :id="id" :name="card.name" :status="card.status" :blocked="card.blocked" />
     <template v-if="nudge">
       <button type="button" class="ui-button is-block player-nudge" data-nudge :disabled="nudge.disabled" @click="sendNudge"><GameIcon name="heart" inline /> {{ nudge.label }}</button>
       <span class="player-nudge-note">{{ nudge.reason ?? 'Ask them to come back to Allworld.' }}</span>

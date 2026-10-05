@@ -208,8 +208,9 @@ import growth from './growth.ts';
 import growthMod from './growth-mod.ts';
 import campus from './campus.ts';
 import pulse from './pulse.ts';
+import ping from './ping.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 interface PatternRoute { key: string; method: string; segments: string[]; handler: RouteHandler }

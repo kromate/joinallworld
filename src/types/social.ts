@@ -14,6 +14,7 @@
  * every one of them; a guest who has tapped Play is in the city like anyone else.
  * WORKER: none of this exists on the Cloudflare Worker (every path is 404, every frame `invalid_message`).
  */
+import type { PingServerFrame } from './ping.ts'
 import type { ApiEnvelope, CityId, HostErrorCode, JsonBodyErrorCode, Ok, OnceErrorCode, PlayerRef, Refusal, SessionErrorCode, StorageErrorCode, TimedId } from './protocol.ts'
 
 // ---- building blocks -----------------------------------------------------------------------------
@@ -98,7 +99,7 @@ export interface Message {
 
 export type SocialUpdateKind =
   | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
-  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined'
+  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
   id: number
@@ -300,7 +301,7 @@ export type KnockResult =
 export type JoinResult =
   | Done<'joined' | 'here', { host: PlayerRef; hostStatus: 'out'; venue: string }>
   | Done<'at_home', { host: PlayerRef; hostStatus: 'home' }>
-  | Done<'out', { host: PlayerRef; hostStatus: 'out' }>
+  | Done<'out', { host: PlayerRef; hostStatus: 'out'; /** The name of the city a friend is in, when it is not the caller's. */ elsewhere?: string }>
   | Done<'offline', { host: PlayerRef; hostStatus: 'offline' }>
   | Done<'reconnecting', { host: PlayerRef; hostStatus: 'reconnecting' }>
   | Refusal<'self' | 'unknown_player' | 'rate_limited'>
@@ -431,7 +432,7 @@ export type SocialReplyFrame = DmSentFrame | DmFailedFrame | DmReadOkFrame | Peo
 export type SocialPushFrame =
   | DmFrame | SocialUpdateFrame | SocialSyncFrame | FriendRequestFrame | FriendAcceptedFrame | PeoplePresenceFrame | PeopleChangedFrame
   | PeopleInteractionFrame | InviteKnockFrame | InviteAnswerFrame | InviteHouseFrame | TransferFrame
-  | SocialReadFrame | SocialChangedFrame
+  | SocialReadFrame | SocialChangedFrame | PingServerFrame
 export type SocialServerFrame = SocialReplyFrame | SocialPushFrame
 
 // ---- browser side --------------------------------------------------------------------------------

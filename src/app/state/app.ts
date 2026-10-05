@@ -22,6 +22,7 @@ import { deviceToken } from '../features/growth/boundary.ts'
 import { GO_TARGETS } from '../../game/go-links.ts'
 import type { GoTarget } from '../../game/go-links.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
+import { pingUi } from '../features/ping/pingLoader.ts'
 import { tableById } from '../../tables/city-places.ts'
 import { liveNow, loadPeople, onLifeFrame, onLive, onPeople, onSocketClose, onSocketOpen, resetSocial, social, socketWanted, takeLinkHost } from '../features/social/useSocial.ts'
 import { STORAGE_KEY } from '../../storage-key.ts'
@@ -220,7 +221,9 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       scene.world.value?.setCity(state.estate.city)
       scene.city.value?.setCity(state.estate.city)
       placeSent = false
-      if (state.onboarding.done && !state.estate.lga && !away) shell.open('city', { city: state.estate.city })
+      // Brought here by joining a friend (features/ping): that notice says where the player is, so the city's own sheet stays closed.
+      if (pingUi.arriving) { /* nothing more to open */ }
+      else if (state.onboarding.done && !state.estate.lga && !away) shell.open('city', { city: state.estate.city })
     }
     // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
     const plot = state.estate?.plot

@@ -488,6 +488,10 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         if (message.type === 'social-sync') refreshLife()
         void sync()
         return
+      case 'ping-incoming': case 'ping-joined': case 'ping-ended':
+        // A friend's ping (features/ping): shown by its own notices, which listen beside the calls.
+        for (const listener of [...frameListeners]) listener(message)
+        return
       default:
     }
   }

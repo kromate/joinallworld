@@ -296,7 +296,8 @@ function relocate(state: LifeState, payload: Record<string, unknown>, ctx: LifeC
   state.message = `On the way to ${cityRules(link.to)?.name ?? link.to}.`;
   return ok(state, 'departed');
 }
-function arriveInCity(state: LifeState, active: IntercityAction, ctx: LifeContext): void {
+/** The arrival at the end of a trip between cities. `venue`: a public venue to arrive at instead (a friend's ping, systems/social.ts 'join'). */
+export function arriveInCity(state: LifeState, active: Pick<IntercityAction, 'id'>, ctx: LifeContext, venue?: string): void {
   const e = state.estate, from = e.city, to = active.id, now = nowOf(state, ctx);
   // The home left behind is put away exactly as it is: the house stays yours.
   const { city, away, nudged, ...residence } = e;
@@ -310,7 +311,7 @@ function arriveInCity(state: LifeState, active: IntercityAction, ctx: LifeContex
   emit(state, 'city.changed', { from, to }, ctx);
   emit(state, 'home.owned', { living: e.living === 'own', house }, ctx);
   emit(state, 'house.moved', { id: e.living === 'own' ? 'own' : house, from: 'away', cost: 0, house }, ctx);
-  const destination = kept?.lga ? 'home' : publicArrivalVenue(to).id;
+  const destination = venue ?? (kept?.lga ? 'home' : publicArrivalVenue(to).id);
   if (!destination || !arrive(state, destination, ctx, { mode: null })) throw new TypeError('The destination city needs a public arrival venue');
   state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? 'You are back at your home here.' : `You are visiting. Choose ${cityUnitArticle(to)} for your free starter house; your home in ${cityRules(from)?.name ?? from} stays yours.`}`;
 }

@@ -49,6 +49,7 @@ import type { ComebackType } from '../../src/game/comeback.ts';
 import { growthOf, keyed, playerOf } from './data.ts';
 import { count } from './metrics.ts';
 import { comebackService } from './comeback.ts';
+import { pingMailService } from './ping-mail.ts';
 import { mailConfig, sendMail } from './email/zeptomail.ts';
 import { awayMail, confirmMail, welcomeMail, weekMail } from './email/templates.ts';
 import { b64u, cleanSubscription, sendPush, vapidKeys } from './webpush.ts';
@@ -182,7 +183,7 @@ function buildService(ctx: RouteContext) {
       if (contact && counts) { contact.sends.push(now()); if (contact.sends.length > 12) contact.sends.shift(); }
       if (result.dryRun) {
         // A preview never keeps a working link: the signature is cut off, so it cannot confirm or unsubscribe anyone.
-        const safe = { kind, at: now(), subject: message.subject, text: message.text.replace(/([?&]t=[A-Za-z0-9_-]{6})[A-Za-z0-9_.-]*/g, '$1…') };
+        const safe = { kind, at: now(), subject: message.subject, text: message.text.replace(/([?&]t=[A-Za-z0-9_-]{6})[A-Za-z0-9_.-]*/g, '$1…').replace(/(\/j\/[A-Za-z0-9_-]{6})[A-Za-z0-9_-]*/g, '$1…') };
         if (contact) contact.preview = safe;
         o.previews.push(safe); if (o.previews.length > LIMITS.previews) o.previews.shift();
       }
@@ -214,6 +215,16 @@ function buildService(ctx: RouteContext) {
     token: (purpose, id, nonce, expires) => token(purpose, id, nonce, expires),
     deliver: (id, kind, to, message) => deliverMail(id, kind, to, message),
   });
+
+  // A friend's ping (./ping-mail.ts) leaves through the same sender, under caps of its own.
+  const pingMail = pingMailService(ctx, {
+    contactLine, origin, cap, sentToday, token: (purpose, id, nonce, expires) => token(purpose, id, nonce, expires),
+    deliverMail: (id, kind, to, message) => deliverMail(id, kind, to, message), deliverPush: (id, kind, subs, payload) => deliverPush(id, kind, subs, payload),
+    pushSubs(g, id) {
+      const o = book(g), player = playerOf(g, id, { create: false });
+      return o.off.push || (o.pushPausedUntil ?? 0) > now() || player?.consent?.age !== 'adult' || player.consent.push !== true ? [] : pushOf(g)[id]?.subs ?? [];
+    },
+  }, comeback);
 
   // ---- e-mail: ask, confirm, remove ------------------------------------------------------------------
   /** Store an address the player consented to and send its confirmation. `address` is the request's, for the limit only. */
@@ -432,5 +443,5 @@ function buildService(ctx: RouteContext) {
     return { ok: true, channel, off };
   }
 
-  return { requestEmail, confirmEmail, unsubscribe, unsubscribeScope, comeback, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
+  return { requestEmail, confirmEmail, unsubscribe, unsubscribeScope, comeback, pingMail, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
 }

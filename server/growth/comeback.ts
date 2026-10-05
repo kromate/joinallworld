@@ -32,6 +32,7 @@ import { governorAt, phaseAt } from '../civic/elections.ts';
 import { UUID_PATTERN } from '../protocol.ts';
 import { COMEBACK, NEVER, PREF_KEYS, PREF_OF, decide, defaultPrefs, firstName, milestoneFacts, remember } from '../../src/game/comeback.ts';
 import { comebackMail } from './email/comeback.ts';
+import { PING } from '../../src/game/ping.ts';
 import { growthOf, playerOf } from './data.ts';
 import { maskEmail } from '../../src/game/outreach.ts';
 import { cityName } from '../../src/game/cities/index.ts';
@@ -100,6 +101,8 @@ function sane(raw: unknown): ComebackRecord {
     nudges: list(r.nudges, (item): item is { from: string; at: number } => isRecord(item) && typeof item.from === 'string' && typeof item.at === 'number', COMEBACK.nudge.kept),
     next: num(r.next), suppressedDay: num(r.suppressedDay, -1),
     ...(r.acct === true ? { acct: true as const } : {}),
+    // Ping mails (./ping-mail.ts) have a ledger of their own, with their own caps.
+    ...(Array.isArray(r.pings) ? { pings: list(r.pings, (item): item is { at: number; from: string } => isRecord(item) && typeof item.at === 'number' && typeof item.from === 'string', PING.mail.kept) } : {}),
   };
 }
 
@@ -445,5 +448,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     return { days: LIMITS.statDays, types: total, today: { ...(stats[today] ?? {}) }, waiting, passes };
   }
 
-  return { tick, onConfirmed, onVisit, viewOf, recipientOf, accountOf, setPrefs, unsubscribeType, weekAllowed, sendsFor, noteDigest, nudge, operatorView, wake };
+  return { tick, onConfirmed, onVisit, viewOf, recipientOf, accountOf, setPrefs, unsubscribeType, weekAllowed, sendsFor, noteDigest, nudge, operatorView, wake,
+    /** For ./ping-mail.ts: a player's record (never created by a ping), their latest sign of play, and the counters. */
+    recordFor: (g: GrowthCollection, id: string): ComebackRecord | null => recordOf(g, id, false), lastActiveOf, bump };
 }

@@ -10,7 +10,7 @@ The registry distinguishes three questions.
 - `isCityId` accepts cities whose stored lives the server may read. This currently includes the nine open city modules.
 - `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt, Abuja and Kano.
 
-Abuja, Port Harcourt and Kano remain closed. Ibadan is an authored module (`src/game/cities/ibadan`). Lives that earlier builds filed under its key are read by that module: their venue ids resolve through `legacyVenueAliases`, and the owner chooses a local government once, for free (`legacyLgaChoice`).
+Kaduna is the one closed preview: it is on the atlas, at the end of the Abuja railway, and cannot be travelled to. Ibadan is an authored module (`src/game/cities/ibadan`). Lives that earlier builds filed under its key are read by that module: their venue ids resolve through `legacyVenueAliases`, and the owner chooses a local government once, for free (`legacyLgaChoice`).
 
 `registeredCityIds()` returns server-known ids. `playableCityIds()` returns open modules. Callers should choose the list that matches the action instead of treating an atlas label as permission to create a life.
 
@@ -114,4 +114,20 @@ The production bundle omits Vue's unused Options API runtime; all shipped compon
 
 ## Atlas markers
 
-Every city of the registry is a marker on the Nigeria atlas, open or not. Where markers crowd (Lagos, Abeokuta and Ibadan lie within a few pixels of each other), a closed city's marker tries its other anchors (`alts` in `src/map3d/geo/labels.ts`) before it is left out, so a city the creator lists is never missing from the atlas.
+Every city of the registry is a marker on the Nigeria atlas, open or not, and every open city is named at every zoom. Where markers crowd (Lagos, Ibadan and the four Ogun cities lie within a few pixels of each other on a phone), a name tries its other anchors (`alts` in `src/map3d/geo/labels.ts`); when no side is free it is set down on the nearest free spot of the rings round its dot, whole on screen, and a leader line joins it to the dot. A name never covers another city's dot.
+
+## Local units, the elected office and local travel zones
+
+`rules.unit` names a city's local units ("local government", or "area council" in Abuja) and every sentence that says it reads the city (`src/game/cities/terminology.ts`). `rules.civicTitle` names the office the players of a city elect where it is not a Governor's: the Federal Capital Territory has no governor, so Abuja's is the Community Chair, and `civicExplanation` in its content says under the seat what the office is and that it is not a real public office. Stored civic keys and the election rules are shared by every city. See [CITIES-FCT.md](CITIES-FCT.md).
+
+A city may restrict a local mode through `localModeZones`: both ends of a trip must belong to one declared zone (public venue ids, the rented home's id and an owned home's local unit are separate lists). Modes without a zone go everywhere; Trek is always free. Abuja keeps keke to its satellite towns and Kano to its neighbourhoods. `localRoutes` declares a trip between two named venues by another mode: Port Harcourt's boat runs between its two landings and nowhere else (see [CITIES-RIVERS.md](CITIES-RIVERS.md)).
+
+Venues authored on one reference point (a neighbourhood's services share its locality point) are fanned out round it on the map for display (`spread` in `src/map3d/cities/module.ts`); their coordinates in the data do not change.
+
+## Planned routes and seasonal climate
+
+`CityLink.status: 'coming'` lists a link between two open cities that cannot be booked yet: it is refused before any fare is taken, the atlas shows it as coming, and a trip already paid for still finishes. The Lagos–Kano railway is the one such link. A rail link is drawn only from track geometry a city module holds; one without it has no line.
+
+Optional `rules.climate` gives twelve monthly rain chances and the names of clear weather by season; a city without it keeps the shared weather. Kano's is hot and dry with harmattan dust from November to February, and adds no penalty. See [CITIES-KANO.md](CITIES-KANO.md).
+
+A landmark of a state's overview may point at a venue of an open city (`departure`): the button only opens that venue's card for a player who is in the city. It moves nobody and starts nothing.

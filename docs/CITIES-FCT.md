@@ -2,7 +2,7 @@
 
 Abuja opens the six FCT area councils: Abuja Municipal (AMAC), Bwari, Gwagwalada, Kuje, Kwali and Abaji. The administrative source calls AMAC Municipal Area Council. Local units are displayed as area councils throughout the city. The play footprint covers the FCT and shares its exact outline with the state overview.
 
-A new character arrives at the fictional beta Kubwa Community Garden. Kubwa’s mapped town reference and the default rental are inside Bwari. Every area council offers a free starter estate. Fourteen rentals use verified district or town references, including Central Business District, Garki, Wuse, Maitama, Asokoro, Gwarinpa, Jabi, Utako, Lugbe and Kubwa. These points represent neighbourhoods; they do not identify real rental properties.
+A new character arrives at the fictional beta Kubwa Community Garden. Kubwa’s mapped town reference and the default rental are inside Bwari. Every area council offers a free starter estate. Fourteen rentals use mapped district or town references, including Central Business District, Garki, Wuse, Maitama, Asokoro, Gwarinpa, Jabi, Utako, Lugbe and Kubwa. These points represent neighbourhoods; they do not identify real rental properties.
 
 The catalogue supplies 28 public venues, 56 fictional regulars and all 15 career workplaces. National worship landmarks use respectful visitor scenes. The clinic includes the shared paid check-up and free treatment queue. The crafts activity introduces Gbagyi pottery; the culture card also recognises the FCT’s other original peoples and residents from across Nigeria. Suya, kilishi, multilingual greetings, parks and harmattan give the city its local character.
 
@@ -16,11 +16,11 @@ University of Abuja uses the mapped Giri main-campus reference. That point belon
 
 ## Community election
 
-The elected game office is Community Chair. Its polling room and community house are fictional beta services in the Central Business District. They represent a citywide game-community election, separate from the FCT Minister and the real area council chairmen. Persisted civic keys and election rules continue to use the shared implementation.
+The Federal Capital Territory has no governor: it is run by the FCT Minister, whom the President appoints, and each area council elects its own chairman. The game therefore elects no governor in Abuja. The office its players elect is the Community Chair; every heading, button and notice that says "Governor" elsewhere says "Community Chair" here, the seat is the "Community Chair's office", and a line under it says that the office is the game's own and not a real public office. Its polling room and community house are fictional places in the Central Business District, drawn as a modest hall and not as any real seat of power. Persisted civic keys and election rules continue to use the shared implementation.
 
 ## Travel
 
-Lagos–Abuja and Port Harcourt–Abuja flight fares and simulated durations preserve their existing beta values. Existing long-distance bus links also retain their values. Kaduna is a closed atlas preview; the Idu–Rigasa rail link is marked coming and cannot start a playable trip.
+Lagos–Abuja and Port Harcourt–Abuja flight fares and simulated durations preserve their existing beta values. Existing long-distance bus links also retain their values. Abuja also has a bus and a flight to Kano. Kaduna is a closed atlas preview: the Idu–Rigasa railway is drawn from its mapped track, and no trip can start until Kaduna opens.
 
 Local travel offers Trek, Bus and Along taxi citywide. Keke is limited to endpoints inside the same declared satellite-town zone: Kubwa/Bwari or Gwagwalada. Public venues, the actual rented home and owned estate unit participate in the same endpoint rule. Keke cannot connect the two zones or enter the central city. Okada is not offered. All local fares and timers are beta game values.
 

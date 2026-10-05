@@ -4,7 +4,7 @@ The Port Harcourt module opens seven local governments: Port Harcourt, Obio/Akpo
 
 The catalogue covers markets, universities, stadiums, parks, the old township railway, tourist beach, airport, Government House area, Trans-Amadi, the refinery corridor and two mapped waterfront landings. Every public venue has two distinct fictional regulars with roles and dialogue written for that place. All 15 careers have local workplaces, and Home and clinic activities provide free recovery.
 
-The culture card names bole and fish, native soup and the Garden City identity. Regulars use varied local names without assigning one community to the whole city. Carniriv and boat-regatta calendar rows are clearly labelled beta game editions.
+The culture card names bole and fish, native soup and the Garden City identity. Regulars use varied local names without assigning one community to the whole city. Carniriv and boat-regatta calendar rows are named as the game's own editions.
 
 ## Boat travel
 
@@ -17,7 +17,7 @@ The route costs ₦800 and takes 40 simulated seconds. These are beta game value
 
 ## Other travel
 
-The Lagos road and air rows preserve their established values. Beta road previews point toward Aba and Owerri, which remain closed. Local travel offers Trek, Keke, Bus, Taxi and the fixed-pair Boat. Okada is not offered in the Port Harcourt module.
+A bus and a flight join Port Harcourt to Lagos and to Abuja. The railway station is a place to visit: no train leaves it in the game. Local travel offers Trek, Keke, Bus, Taxi and the fixed-pair Boat. Okada is not offered in the Port Harcourt module.
 
 ## Sources and licences
 
@@ -25,7 +25,7 @@ The complete Rivers geometry source chain and deterministic reproduction recipe 
 
 Administrative geometry uses [geoBoundaries gbOpen Nigeria release `9469f09`](https://www.geoboundaries.org/), originally GRID3, under CC BY 4.0. Most landmark and jetty points use [OpenStreetMap](https://www.openstreetmap.org/copyright) under ODbL 1.0; Tourist Beach uses [Wikidata Q39047321](https://www.wikidata.org/wiki/Q39047321) under CC0. Every mapped landmark records its source and accuracy in the landmark catalogue.
 
-Mile Three uses a published [Nkpolu-Oroworukwo locality coordinate](https://rsisinternational.org/journals/ijrsi/articles/evaluation-of-access-to-drinking-water-sources-in-port-harcourt-rivers-state/), which is not a surveyed market gate. Garden City Amusement Park has a verified [Birabi Street address](https://gardencityamusementpark.com/contacts/); its marker is an OSM street reference, not a surveyed entrance. Wharf Road likewise represents the historic port area rather than a berth gate. The Bonny/Nembe point is a mapped mainland ferry terminal, and the Okrika point is an unnamed mapped pier. The route between them is a game route, not a claim about an existing operator or schedule.
+Mile Three uses a published [Nkpolu-Oroworukwo locality coordinate](https://rsisinternational.org/journals/ijrsi/articles/evaluation-of-access-to-drinking-water-sources-in-port-harcourt-rivers-state/), which is not a surveyed market gate. Garden City Amusement Park has a published [Birabi Street address](https://gardencityamusementpark.com/contacts/); its marker is an OSM street reference, not a surveyed entrance. Wharf Road likewise represents the historic port area rather than a berth gate. The Bonny/Nembe point is a mapped mainland ferry terminal, and the Okrika point is an unnamed mapped pier. The route between them is a game route, not a claim about an existing operator or schedule.
 
 ## Beta values
 

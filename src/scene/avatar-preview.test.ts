@@ -346,3 +346,29 @@ test('the preview and the panels that use it hold no interval timers or free-run
   }
   assert.match(await read('../app/features/start/lookPreview.ts'), /import\('\.\.\/\.\.\/\.\.\/scene\/avatar-preview\.ts'\)/, 'the preview is fetched with a dynamic import');
 });
+
+test('turning around and the outfit view are bounded animations; the inset costs one frame and nothing at rest', () => {
+  const { preview, clock } = make();
+  const count = () => preview.diagnostics().renderCount;
+  const yaw = preview.diagnostics().yaw;
+  preview.turnBy(Math.PI);
+  const [frames, elapsed] = clock.drain();
+  assert.ok(frames > 2 && elapsed <= ANIMATION_LIMIT_MS, `turn: ${frames} frames, ${elapsed} ms`);
+  assert.ok(Math.abs(preview.diagnostics().yaw - (yaw + Math.PI)) < 1e-9);
+  assert.equal(preview.setFocus('outfit'), true);
+  clock.drain();
+  assert.equal(preview.diagnostics().focus, 'outfit');
+  const settled = count();
+  assert.equal(preview.setInset(90), true);
+  assert.equal(count(), settled + 1);
+  assert.equal(preview.setInset(90), false);
+  for (let i = 0; i < 30; i++) clock.step(16);
+  assert.equal(count(), settled + 1, 'at rest: zero renders');
+  preview.dispose();
+  const still = make({ reducedMotion: true });
+  const before = still.preview.diagnostics().yaw;
+  still.preview.turnBy(1);
+  assert.equal(still.clock.pending(), 0);
+  assert.ok(Math.abs(still.preview.diagnostics().yaw - (before + 1)) < 1e-9);
+  still.preview.dispose();
+});

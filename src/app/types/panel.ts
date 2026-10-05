@@ -99,6 +99,8 @@ export interface PanelMeta {
   tint?: string
   /** false = do not re-render on every state update (forms). */
   live?: boolean
+  /** true = the panel takes the whole screen (no sheet, no app bar): the character creator. */
+  fullscreen?: boolean
   /** 'session-gate' marks the panel that handles "no session / expired session". */
   role?: string
   slot?: HudSlot | ((state: LifeState, view: PanelView) => HudSlot | undefined)

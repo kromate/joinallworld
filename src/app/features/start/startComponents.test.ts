@@ -58,52 +58,77 @@ test('the registered panels carry the metadata of the existing ones', async () =
   assert.equal(required?.(app.game.state.value, { ...view, connected: true, onboarding: { ...view.onboarding, required: false } }), null)
 })
 
-test('the landing screen: the lead, the quick characters, the body toggle, the name and one Play', async () => {
+async function resetCreator(): Promise<void> {
+  const { cr } = await load<{ cr: { draft: unknown; owner: string | null; step: string } }>('/src/app/features/start/creatorState.ts')
+  cr.draft = null
+  cr.owner = null
+}
+
+test('the first screen: full-screen creator with the welcome, the quick characters, the body, the name, Play now and Next', async () => {
+  await resetCreator()
   const html = await render('QuickStartApp', { params: { reason: 'new' } })
   const words = text(html)
-  assert.ok(words.startsWith('Step into a world to live in, with your friends. Start playing in seconds. Build your life as you go.'))
+  assert.match(html, /<div class="cr-root" data-step="who" data-mode="new" data-cr-root>/)
+  assert.ok(words.includes('Welcome to Allworld') && words.includes('A digital world you can live in'))
+  assert.ok(words.includes('Step 1 of 5 · You'))
   for (const label of ['Street', 'Owambe', 'Office', 'Sporty', 'Chill']) assert.match(html, new RegExp(`aria-label="${label} character"`))
   assert.match(html, /role="group" aria-label="Body"/)
-  assert.ok(words.includes('Shuffle') && words.includes('More options') && words.includes('Your name'))
+  assert.ok(words.includes('Surprise me') && words.includes('Your name'))
   assert.match(html, /<input[^>]*name="name"[^>]*minlength="3"[^>]*maxlength="24"[^>]*autocomplete="nickname"/)
-  assert.match(html, /<button[^>]*class="ui-button is-primary qs-play"[^>]*>Play<\/button>/)
-  assert.ok(words.includes('No password, no e-mail. You can change everything later.'))
-  assert.ok(!html.includes('look-editor'), 'the full creator is behind "More options"')
-  assert.match(html, /aria-pressed="true"/, 'one preset is chosen')
+  assert.match(html, /<button[^>]*data-key="play-now"[^>]*>Play now<\/button>/)
+  assert.match(html, /<button[^>]*data-key="primary"[^>]*>Next: Look<\/button>/)
+  assert.ok(words.includes('No password, no e-mail.'))
+  assert.ok(!html.includes('look-editor'), 'the editor is on the next step')
+  assert.ok(!html.includes('sign-in') && !html.includes('I already have a character'), 'no sign-in button while accounts are not wired')
+  for (const control of ['Turn left', 'Turn right', 'Turn around']) assert.ok(html.includes(`aria-label="${control}"`))
+  for (const view of ['Body', 'Face', 'Outfit']) assert.ok(words.includes(view))
 })
 
-test('the landing screen: a refusal of the name comes back with its sentence, and the refused name is in the field as text', async () => {
+test('the first screen shows the sign-in entry only when the account feature has wired it', async () => {
+  await resetCreator()
+  const { registerAccountEntry } = await load<{ registerAccountEntry: (entry: { openSignIn(): void; openSave(): void }) => () => void }>('/src/app/features/start/accountEntry.ts')
+  const unregister = registerAccountEntry({ openSignIn() {}, openSave() {} })
+  try {
+    const html = await render('QuickStartApp', { params: { reason: 'new' } })
+    assert.match(html, /<button[^>]*data-key="sign-in"[^>]*>I already have a character<\/button>/)
+  } finally { unregister() }
+  await resetCreator()
+  assert.ok(!(await render('QuickStartApp', { params: { reason: 'new' } })).includes('I already have a character'))
+})
+
+test('the first screen: a refusal of the name comes back with its sentence, and the refused name is in the field as text', async () => {
+  await resetCreator()
   const html = await render('QuickStartApp', { params: { reason: 'new', problem: { reason: 'That name is not allowed.', name: '"><b>x</b>' } } })
-  assert.match(html, /<p class="qs-error" role="alert">That name is not allowed\.<\/p>/)
+  assert.match(html, /<p class="cr-banner is-error" role="alert" data-cr-error>That name is not allowed\.<\/p>/)
   assert.ok(html.includes('value="&quot;&gt;&lt;b&gt;x&lt;/b&gt;"') && !html.includes('<b>x</b>'))
 })
 
-test('the settle-in sheet of a guest: the reason it opened, the step, the progress and the card\'s one action', async () => {
+test('settling in as a guest opens the creator on the personality step, with the reason, the progress and Not now', async () => {
+  await resetCreator()
   await withState(guest, async () => {
     const html = await render('OnboardingApp', { params: { nudge: 'first-reward' } })
     const words = text(html)
-    assert.match(html, /<div class="ob-root" data-step="1">/)
+    assert.match(html, /<div class="cr-root" data-step="spirit" data-mode="settle" data-cr-root>/)
     assert.ok(words.includes('Nice start,') && words.includes('Save this character'))
-    assert.ok(words.includes('Step 1 of 4 · Personality'))
-    assert.match(html, /<ol class="ob-steps" aria-label="Progress">/)
-    assert.equal((html.match(/<li class="[^"]*"/g) ?? []).length, 4, 'a guest\'s look is already chosen: four numbered steps')
-    assert.ok(words.includes('Pick 2 traits — each one is a boost.'))
+    assert.ok(words.includes('Step 2 of 4 · Spirit'), 'a guest has a name already: four steps')
+    assert.match(html, /<ol class="cr-progress" aria-label="Progress">/)
     assert.equal((html.match(/data-trait="/g) ?? []).length, 10)
-    assert.match(html, /<button[^>]*class="ui-button is-primary ob-primary"[^>]*disabled[^>]*>Choose 2 more<\/button>/)
-    assert.ok(words.includes('0 of 2 traits chosen.'))
-    assert.match(html, /<button[^>]*class="ui-button ob-later"[^>]*>Not now — keep playing<\/button>/)
-    assert.ok(!html.includes('class="sheet-back"'), 'no way back from the first card of a guest')
+    assert.ok(words.includes('2 of 2 chosen.'), 'two traits are chosen for a player who skips the step')
+    assert.match(html, /<button[^>]*data-key="later"[^>]*>Not now<\/button>/)
+    assert.ok(!html.includes('data-key="play-now"'), 'a guest is already playing')
   })
+  await resetCreator()
 })
 
-test('the settle-in sheet of a life that finished: its Sim is ready, with a way to edit the look', async () => {
+test('a life that finished: its Sim is ready, with a way to edit the look', async () => {
+  await resetCreator()
   await withState((state) => ({ ...state, name: 'Ada', onboarding: { ...state.onboarding, done: true, legacy: false, stage: 'settled' } }), async () => {
     const html = await render('OnboardingApp')
     const words = text(html)
-    assert.match(html, /<div class="ob-root ob-done">/)
     assert.ok(words.includes('Ada is ready') && words.includes('Your Sim has moved in.') && words.includes('You can change your look any time in Sim → Profile.'))
     assert.ok(words.includes('Edit look') && words.includes('Close'))
   })
+  await resetCreator()
 })
 
 test('the look editor: tabs, the open tab\'s options, locked styles say where they are sold, colours are free', async () => {
@@ -158,37 +183,40 @@ test('the account placeholder says accounts are not available', async () => {
   assert.equal(words, 'Account Accounts are not available yet. Your progress is saved to this device session.')
 })
 
-test('the Look card of a life that was never a guest: the creator with Shuffle and Undo, and the first action', async () => {
-  const { ob } = await load<{ ob: { draft: unknown; shown: number } }>('/src/app/features/start/onboardingState.ts')
-  ob.draft = null
+
+test('a life that never had a character starts the creator on the look, with undo, reset and the whole editor', async () => {
+  await resetCreator()
   await withState((state) => ({ ...state, onboarding: { ...state.onboarding, stage: 'settled', done: false, required: false, step: 0, traits: [], dream: null, lottery: null } }), async () => {
     const html = await render('OnboardingApp')
     const words = text(html)
-    assert.match(html, /<div class="ob-root" data-step="0">/)
-    assert.ok(words.includes('Step 1 of 5 · Look') && words.includes('Shuffle') && words.includes('Undo'))
-    assert.match(html, /<button[^>]*data-key="undo"[^>]*disabled[^>]*aria-label="Undo the last shuffle"/)
-    assert.ok(words.includes('Looks good — next: personality') && words.includes('Still to choose: 2 traits, a dream, the birth lottery and a home.'))
-    assert.ok(html.includes('look-editor') && !html.includes('Not now'), 'no "Not now" for a life that was not a guest')
+    assert.match(html, /data-step="look" data-mode="settle"/)
+    assert.ok(words.includes('Step 1 of 4 · Look') && words.includes('Undo') && words.includes('Reset') && words.includes('Surprise me'))
+    assert.match(html, /<button[^>]*data-key="undo"[^>]*disabled/)
+    assert.ok(html.includes('look-editor') && !html.includes('data-key="later"'), 'no "Not now" for a life that was not a guest')
   })
-  ob.draft = null
+  await resetCreator()
 })
 
-test('the Home card: the free starter house, the local government choice that rides with the move-in, and what is missing', async () => {
-  const { ob } = await load<{ ob: { draft: unknown; shown: number } }>('/src/app/features/start/onboardingState.ts')
-  ob.draft = null
+test('the home step: state, city, the starter house, find my area, and the local governments by zone', async () => {
+  await resetCreator()
   await withState(guest, async () => {
+    const { cr } = await load<{ cr: { step: string } }>('/src/app/features/start/creatorState.ts')
     await render('OnboardingApp')
-    ob.shown = 4
+    cr.step = 'home'
     const html = await render('OnboardingApp')
     const words = text(html)
-    assert.ok(words.includes('Step 4 of 4 · Home') && words.includes('Your own house — free, furnished, with your start cash.'))
-    assert.ok(words.includes('Starter house') && words.includes('no rent') && words.includes('Prefer to rent?'))
-    assert.match(html, /data-extra-root="area"/)
+    assert.ok(words.includes('Step 3 of 4 · Home') && words.includes('Where do you live?'))
+    assert.ok(words.includes('Nigeria') && words.includes('Lagos State') && words.includes('More places are opening: Ibadan Abuja Port Harcourt'))
+    assert.ok(words.includes('Your free starter house') && words.includes('No rent'))
     const estate = app.game.view.value.estate
-    if (estate.lgas.length) assert.ok(words.includes(`Or choose from the ${estate.lgas.length} local governments of ${estate.cityName}`) && words.includes('Find my local government'))
-    assert.match(html, /<button[^>]*class="ui-button is-primary ob-primary"[^>]*disabled[^>]*>Choose your local government<\/button>/)
-    assert.ok(words.includes('Choose your local government to continue.'))
-    assert.match(html, /aria-label="Back to Birth lottery"/)
+    if (estate.lgas.length) {
+      assert.ok(words.includes('Find my area') && words.includes(`Or choose from the ${estate.lgas.length} local governments of ${estate.cityName}`))
+      assert.equal((html.match(/data-lga="/g) ?? []).length, estate.lgas.length)
+    }
+    assert.match(html, /<button[^>]*data-key="primary"[^>]*disabled[^>]*>Next: Ready<\/button>/)
+    assert.ok(words.includes('Choose where you live'))
+    assert.match(html, /aria-label="Back to Spirit"/)
+    assert.ok(!html.includes('Coming soon</button>'), 'places that are not open are text, not controls')
   })
-  ob.draft = null
+  await resetCreator()
 })

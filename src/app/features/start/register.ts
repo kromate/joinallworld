@@ -11,14 +11,14 @@ import { sessionRequired } from './sessionModel.ts'
 
 /** The landing screen of a new device; it replaces the nickname form as the session gate. */
 export const quickStart = definePanel({
-  id: 'quick-start', title: 'Welcome to Allworld', placement: 'modal', role: 'session-gate', live: false,
+  id: 'quick-start', title: 'Welcome to Allworld', placement: 'modal', role: 'session-gate', live: false, fullscreen: true,
   /** A life whose look the server has not confirmed is held here — unless its Play is being sent right now. */
   required: (_state, view) => quickStartRequired(view, play.sending),
   component: defineAsyncComponent(() => import('./QuickStartApp.vue')),
 })
 /** Settling in is offered, never required: a new life starts from the landing screen. */
 export const onboarding = definePanel({
-  id: 'onboarding', title: 'Make this life yours', placement: 'modal', live: false,
+  id: 'onboarding', title: 'Make this life yours', placement: 'modal', live: false, fullscreen: true,
   component: defineAsyncComponent(() => import('./OnboardingApp.vue')),
 })
 export const session = definePanel({

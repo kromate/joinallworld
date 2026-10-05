@@ -76,7 +76,7 @@ export const kept: { draft: Draft | null } = { draft: null };
 export const store = { read, write, KEYS };
 let landed: number | null = null;
 /** True while life-main is sending a tapped Play: the landing screen stays out of the way until it has an answer. */
-export const play = { sending: false };
+export const play = { sending: false, settling: false };
 /** The moment this device first landed (kept with the draft, so it survives a reload): what every funnel event's `ms` counts from. */
 export function landedAt(): number {
   if (landed === null) { const saved = recordOf(read(KEYS.draft))?.landedAt; landed = typeof saved === 'number' && Number.isFinite(saved) && saved > 0 && saved <= Date.now() ? saved : Date.now(); }

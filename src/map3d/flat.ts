@@ -29,6 +29,8 @@ export interface FlatZone { id: string; x: number; z: number; width: number; hei
 export interface FlatPlace { id: string; kind: 'venue' | 'soon'; x: number; z: number }
 export interface FlatName { name: string; x: number; z: number; size: number; water: boolean }
 /** The board, in map units (x east, z south: north is up). */
+/** The land and names around a state (CityPack.context), as paths and text in map units. */
+export interface FlatContext { land: { id: string; kind: string; d: string }[]; roads: { id: string; d: string }[]; names: { text: string; kind: string; x: number; z: number }[] }
 export interface FlatBox { x: number; z: number; width: number; height: number }
 export interface FlatModel {
   id: string
@@ -42,6 +44,8 @@ export interface FlatModel {
   homes: Record<string, { x: number; z: number; district: string }>
   names: FlatName[]
   sea: PackBounds['sea'] | null
+  /** Present for a state map: drawn under everything, muted. */
+  context: FlatContext | null
   /** The multiplier of every stroke of the ground (see groundScale) and of the roads (CityPack.roadScale). */
   scale: { ground: number; road: number }
 }
@@ -54,14 +58,22 @@ const esc = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, (c) => (
 /** The ground colours of the 3D build (src/map3d/city-build.ts LAND_COLOURS), so both maps are the same green. */
 export const FLAT_COLOURS = { water: '#4faacb', shallows: '#7cc6d6', rim: '#ecdcae', mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae', asphalt: '#5d626b', kerb: '#e4dfcf', dash: '#f6f2e2', parapet: '#efe9da' };
 
+/** How far past the state's board a state map's flat drawing reaches into the land around it, in map units (150 km). */
+export const CONTEXT_REACH = 1500;
+
 export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { venues = {}, soon = {} }: { venues?: object; soon?: object } = {}): FlatModel {
   const { minX, maxX, minZ, maxZ } = pack.bounds;
   const places: FlatPlace[] = [];
   for (const [id, spot] of Object.entries(pack.sites)) if ((venues as Record<string, unknown>)[id]) places.push({ id, kind: 'venue', x: spot.x, z: spot.z });
   for (const [id, spot] of Object.entries<PackSoon>(pack.soon || {})) if ((soon as Record<string, unknown>)[id]) places.push({ id, kind: 'soon', x: spot.x, z: spot.z });
+  // A state map reaches a little way into the land around it (the drawing is a screen-sized element: it is not made as big as the 3D board).
+  const seaEnd = pack.bounds.sea ? pack.bounds.sea.z1 + 4 : maxZ, reach = pack.context ? CONTEXT_REACH : 0;
+  const edge = { minX: minX - reach, maxX: maxX + reach, minZ: minZ - reach, maxZ: seaEnd + reach };
+  const ctx = pack.context;
   return {
     id: pack.id, name: pack.name,
-    box: { x: minX, z: minZ, width: maxX - minX, height: (pack.bounds.sea ? pack.bounds.sea.z1 + 4 : maxZ) - minZ },
+    box: { x: edge.minX, z: edge.minZ, width: edge.maxX - edge.minX, height: edge.maxZ - edge.minZ },
+    context: ctx ? { land: ctx.land.map((piece) => ({ id: piece.id, kind: piece.kind, d: rings([piece.points, ...piece.holes]) })), roads: ctx.roads.filter((road) => road.points.length > 1).map((road) => ({ id: road.id, d: path(road.points) })), names: ctx.labels.map((label) => ({ text: label.text, kind: label.kind, x: label.x, z: label.z })) } : null,
     land: landOf(pack).map((entry) => ({ id: entry.id, kind: entry.kind, d: rings([entry.polygon, ...(entry.holes ?? [])]) })),
     roads: network.roads.map((road) => ({ id: road.id, name: road.name, major: road.major, bridge: road.bridge > 0, d: path(road.points), width: (road.major ? 2.5 : 1.8) * (pack.roadScale ?? 1), from: road.points[0]!, to: road.points[road.points.length - 1]! })),
     lgas: (pack.lgas || []).map((lga) => ({ id: lga.id, name: lga.name, tint: lga.tint, d: partsOf(lga).map(rings).join(''), plate: lga.plate })),
@@ -83,6 +95,7 @@ export function flatSvg(model: FlatModel): string {
   return `<svg class="m3-flat-art" viewBox="${fixed(box.x)} ${fixed(box.z)} ${fixed(box.width)} ${fixed(box.height)}" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <defs><clipPath id="m3-flat-land-${esc(model.id)}" clip-rule="evenodd">${model.land.map((entry) => `<path d="${entry.d}"/>`).join('')}</clipPath></defs>
     <rect x="${fixed(box.x)}" y="${fixed(box.z)}" width="${fixed(box.width)}" height="${fixed(box.height)}" fill="${c.water}"/>
+    ${model.context ? `<g class="m3-flat-context" fill-rule="evenodd" aria-hidden="true"><g>${model.context.land.map((piece) => `<path d="${piece.d}" data-context="${esc(piece.id)}" fill="${piece.kind === 'country' ? '#e4dfd0' : '#dde1d3'}"/>`).join('')}</g><g fill="none" stroke="#b7b8ae" stroke-width="${fixed(1.1 * k)}" stroke-linecap="round" stroke-linejoin="round">${model.context.roads.map((road) => `<path d="${road.d}"/>`).join('')}</g><g font-family="DM Sans, Arial, sans-serif" font-weight="700" text-anchor="middle" font-size="46" letter-spacing="7">${model.context.names.map((label) => `<text x="${fixed(label.x)}" y="${fixed(label.z)}" fill="${label.kind === 'sea' ? '#e2f4f8' : '#56684f'}" fill-opacity=".75">${esc(label.text)}</text>`).join('')}</g></g>` : ''}
     <g fill="${c.shallows}" fill-rule="evenodd" stroke="${c.shallows}" stroke-width="${fixed(5.2 * g)}" stroke-linejoin="round">${ground.map((entry) => `<path d="${entry.d}"/>`).join('')}</g>
     <g stroke-width="${fixed(2.2 * g)}" stroke-linejoin="round" fill-rule="evenodd">${ground.map((entry) => `<path d="${entry.d}" data-land="${esc(entry.id)}" fill="${c[entry.kind] || c.mainland}" stroke="${entry.kind === 'sand' ? '#f8efd2' : c.rim}"/>`).join('')}</g>
     <g class="m3-flat-lgas" clip-path="url(#m3-flat-land-${esc(model.id)})" fill-rule="evenodd">${model.lgas.map((lga) => `<path d="${lga.d}" data-lga="${esc(lga.id)}" fill="${esc(lga.tint)}" fill-opacity=".34" stroke="#46544a" stroke-opacity=".6" stroke-width="${fixed(0.5 * Math.max(g, 0.5))}" stroke-linejoin="round"/>`).join('')}</g>

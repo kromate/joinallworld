@@ -145,3 +145,9 @@ button.m3-house{cursor:pointer}
   .m3-lga small { font-size: 12px; }
   .m3-lga:not(.is-sized) { font-size: 13px; }
 }
+
+/* The land and sea around a state: quiet lettering that never competes with the state's own names. */
+.m3-ctx { position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none; white-space: nowrap; font-weight: 700; letter-spacing: .16em; font-size: 11px; color: rgba(70, 86, 74, .62); text-shadow: 0 0 3px rgba(255, 255, 255, .7); }
+.m3-ctx.is-sea { color: rgba(255, 255, 255, .72); text-shadow: 0 0 4px rgba(20, 70, 90, .5); letter-spacing: .3em; font-style: italic; font-weight: 600; }
+.m3-ctx.is-country { font-size: 12px; }
+@supports (zoom: 2) { .m3-ctx { zoom: var(--ui-zoom, 1); } }

@@ -131,7 +131,8 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
     container.dataset.map = kind || '';
   }
 
-  const callbacks = { onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse };
+  const onSelectContext = (land: { id: string; name: string; planned: boolean }): void => { if (land.planned) onNotice(`${land.name}: opening soon.`); };
+  const callbacks = { onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse, onSelectContext };
   async function mount() {
     const ticket = ++mounting;
     const want3d = !simple && !brokenGl && hasCityPack(cityId) && webglAvailable();

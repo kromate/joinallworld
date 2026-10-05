@@ -123,6 +123,8 @@ export const LANDMARK_SCALE = 1.15;
 /** Footprint of a fabric house or block, as a share of its drawn size (see the fabric below). */
 const FABRIC_SIZE = 0.6;
 const LOT = PLINTH * LANDMARK_SCALE;
+/** The land around a state map: quiet greys-greens that stay behind the state's own colours. */
+export const CONTEXT_COLOURS = { state: '#dde1d3', country: '#e4dfd0', road: '#c2c3b8' } as const;
 const LAND_COLOURS: Record<LandKind, string> = { mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae' };
 /** The half-widths of the shallows and of the beach along a true-scale shoreline, in map units (100 m each at the frame's scale). */
 const SHALLOWS = 0.55, BEACH = 0.22;
@@ -323,7 +325,10 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   // ---- the board and the water -------------------------------------------------------------
   const { minX, maxX, minZ, maxZ } = pack.bounds;
   const seaZ = pack.bounds.sea ? pack.bounds.sea.z1 + 4 : maxZ;
-  const width = maxX - minX, depth = seaZ - minZ, midX = (minX + maxX) / 2, midZ = (minZ + seaZ) / 2;
+  // A state map sits in the real map around it: the water and the board reach as far as the context land does.
+  const edge = pack.context?.rect;
+  const [bx0, bx1, bz0, bz1] = edge ? [Math.min(minX, edge.minX), Math.max(maxX, edge.maxX), Math.min(minZ, edge.minZ), Math.max(seaZ, edge.maxZ)] : [minX, maxX, minZ, seaZ];
+  const width = bx1 - bx0, depth = bz1 - bz0, midX = (bx0 + bx1) / 2, midZ = (bz0 + bz1) / 2;
   const board = new THREE.Mesh(new THREE.BoxGeometry(width + 2, 3, depth + 2), materials.board);
   board.position.set(midX, WATER_Y - 1.56, midZ);
   count(add(board, 'board'));
@@ -374,6 +379,11 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     if (run.length) runs.push(run);
     return runs;
   }
+  // The land around the state: flat, muted, under everything else, with no shore or beach of its own.
+  for (const piece of pack.context?.land ?? []) raw.shape(piece.points, -0.06, piece.kind === 'country' ? CONTEXT_COLOURS.country : piece.kind === 'base' ? CONTEXT_COLOURS.state : CONTEXT_COLOURS.state, piece.holes);
+  // Two sources meet at a border (Natural Earth for the countries, geoBoundaries for the states): a band along every outline closes the hairline gaps between them.
+  for (const piece of pack.context?.land ?? []) if (piece.kind !== 'base') raw.ribbon([...piece.points, piece.points[0]!].map(([x, z]) => ({ x, y: 0, z })), 7, -0.07, piece.kind === 'country' ? CONTEXT_COLOURS.country : CONTEXT_COLOURS.state);
+  for (const road of pack.context?.roads ?? []) if (road.points.length > 1) raw.ribbon(road.points.map(([x, z]) => ({ x, y: 0, z })), 1.1 * (pack.roadScale ?? 1), -0.02, CONTEXT_COLOURS.road);
   for (const entry of lands) {
     const sand = entry.kind === 'sand', holes = entry.holes ?? [];
     if (entry.exact) {

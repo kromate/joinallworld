@@ -17,7 +17,7 @@
 /** The camera's view: what is looked at (x, z on the ground), the turn, the tilt and the distance. */
 export interface RigView { x: number; z: number; yaw: number; pitch: number; distance: number }
 /** What the rig needs to know of the city: the board it may wander over, the land to fit, and optional limits. */
-export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number }
+export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number; /** The pack draws the land around its state: the whole-state view is straight down, unturned, with that land filling what the state does not. */ context?: boolean }
 /** Pixels of the canvas the HUD covers. */
 export interface RigInsets { left?: number; top?: number; right?: number; bottom?: number }
 export interface RigPoint { x: number; z: number; y?: number }
@@ -52,6 +52,8 @@ export const PITCH_MIN = 0.36, PITCH_MAX = 1.5, DEFAULT_PITCH = 0.92, MIN_DISTAN
 export const FLAT_FROM = 520, FLAT_FULL = 1900, FLAT_PITCH = 1.2;
 /** The tilt of the whole-state view: nearly straight down. */
 export const STATE_PITCH = 1.36;
+/** The tilt of a whole-state view that has land around it: as near straight down as the camera allows. */
+export const TOP_DOWN = PITCH_MAX;
 /** The flattest-allowed tilt's lower limit at a distance: the usual one near, rising to FLAT_PITCH far out. */
 export const pitchFloor = (distance: number) => PITCH_MIN + (FLAT_PITCH - PITCH_MIN) * clamp((distance - FLAT_FROM) / (FLAT_FULL - FLAT_FROM), 0, 1);
 
@@ -64,7 +66,7 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
   const whole = bounds.fit || bounds;
   const centre = { x: (whole.minX + whole.maxX) / 2, z: (whole.minZ + whole.maxZ) / 2 };
   const reach = Math.max(whole.maxX - whole.minX, whole.maxZ - whole.minZ);
-  const roam = { minX: whole.minX, maxX: whole.maxX, minZ: whole.minZ, maxZ: Math.max(whole.maxZ, bounds.roamZ ?? whole.maxZ) };
+  const roam = { minX: whole.minX, maxX: whole.maxX, minZ: bounds.context ? whole.minZ - reach * 0.9 : whole.minZ, maxZ: Math.max(whole.maxZ, bounds.roamZ ?? whole.maxZ) };
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), ground = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit = new THREE.Vector3(), probe = new THREE.Vector3();
 
   function limit<T extends RigView>(target: T): T {
@@ -125,6 +127,7 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
       size = { width: Math.max(1, width), height: Math.max(1, height) };
       free = { left: 0, top: 0, right: 0, bottom: 0, ...insets };
       maxDistance = distanceFor(corners(), centre.x, centre.z, 0, DEFAULT_PITCH, 1) * 1.3;
+      if (bounds.context) maxDistance = Math.max(maxDistance, distanceFor(corners(), centre.x, centre.z, 0, TOP_DOWN, 1.02) * 1.15);
       apply();
     },
     apply,
@@ -155,6 +158,14 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
     jump(target) { goal = null; spin = 0; Object.assign(view, limit({ ...view, ...target })); apply(); },
     /** The whole city, seen from the south at the default tilt. */
     whole() {
+      // A state with land around it is seen from nearly straight above, not turned, its width fitted to the screen's: on a wide screen the
+      // context fills above and below it, and on a tall one it fills the rest of the height. The strip is never distorted.
+      if (bounds.context) {
+        const distance = distanceFor(corners(), centre.x, centre.z, 0, TOP_DOWN, 1.04);
+        // The coast is the state's south edge and beyond it is sea: the view is nudged north so that land, not water, is most of the picture.
+        const half = Math.tan((camera.fov * Math.PI) / 360) * distance, ahead = Math.min(half * 0.3, reach * 0.9);
+        return { x: centre.x, z: centre.z - ahead, yaw: 0, pitch: TOP_DOWN, distance };
+      }
       // A city is seen at the default tilt; a state a long way out is tipped up so that its shape reads.
       const fit = (yaw: number) => {
         const first = distanceFor(corners(), centre.x, centre.z, yaw, DEFAULT_PITCH, 1);

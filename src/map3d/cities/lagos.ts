@@ -36,6 +36,8 @@
 import { LAGOS_LGAS } from '../../game/content/world.ts';
 import { ORIGINS, toLocal } from '../geo/frame.ts';
 import { lagosShapes } from '../geo/lagos-shapes.ts';
+import { mapContext } from '../context.ts';
+import { citiesInState } from '../../game/cities/registry.ts';
 import type { LonLatPolygon } from '../geo/lagos-shapes.ts';
 import type { Box4, CityPack, DecorateBatch, PackBounds, PackDistrict, PackEstate, PackFabric, PackHome, PackLand, PackLga, PackRoad, PackSite, PackSoon, Point2, Rect } from '../types.ts';
 
@@ -426,5 +428,8 @@ export function decorate(batch: DecorateBatch, { rng }: { rng: () => number }) {
   }
 }
 
-const pack: CityPack = { id, name, bounds, land, roads, sites, homes, soon, districts, zones, fabric, estates, lgas, geo, frame, core, roadScale, decorate };
+/** The land around the state (Ogun, Oyo, Ondo, Benin, Togo), flat and quiet; Ogun answers a tap with "Opening soon" because the registry has a reserved city in it. */
+export const context = mapContext(ORIGINS.lagos, fit, ['ogun', 'oyo', 'ondo'].filter((state) => citiesInState(state).length > 0));
+
+const pack: CityPack = { id, name, bounds, context, land, roads, sites, homes, soon, districts, zones, fabric, estates, lgas, geo, frame, core, roadScale, decorate };
 export default pack;

@@ -47,7 +47,7 @@ import { createKit } from '../scene/kit.ts';
 import { COMING_SOON } from '../game/content/venues.ts';
 import { contentFor } from '../game/cities/runtime.ts';
 import { openingInfo, lagosTime } from '../game/clock.ts';
-import { buildNetwork } from './roads.ts';
+import { buildNetwork, pointInPolygon } from './roads.ts';
 import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.ts';
 import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.ts';
 import { createActor } from './actor.ts';
@@ -99,6 +99,8 @@ export interface Map3DOptions {
   onSelectVenue?: (id: string) => void
   onSelectGov?: () => void
   onSelectNeighbour?: (neighbour: { id: string | undefined; name: string | undefined }) => void
+  /** A tap on the land around a state map (not interactive, except that a planned state says so). */
+  onSelectContext?: (land: { id: string; name: string; planned: boolean }) => void
   onTripDue?: () => void
   onContextLost?: () => void
   world?: WorldData | null
@@ -118,7 +120,7 @@ export const detailOf = (event: CustomEvent<unknown>): Record<string, unknown> =
   return detail && typeof detail === 'object' ? detail as Record<string, unknown> : {};
 };
 
-export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, travelVehicle = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onTripDue = () => {}, onContextLost = () => {},
+export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, travelVehicle = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onSelectContext = () => {}, onTripDue = () => {}, onContextLost = () => {},
   world = null, onSelectLga = () => {}, onSelectHouse = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden }: Map3DOptions) {
@@ -147,7 +149,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   scene.add(houses.group);
   const actor = createActor(kit, { travelVehicle });
   scene.add(actor.group);
-  const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, core: pack.core, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
+  const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, core: pack.core, context: Boolean(pack.context), roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
   const ringOf = (colour: string, opacity: number) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };
   const selectRing = ringOf('#14532d', 0.95), hoverRing = ringOf('#e8a643', 0.9);
   // The player's own plot: a ring that stays big enough to find from any distance.
@@ -163,7 +165,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     root = doc.createElement('div');
     root.className = 'm3';
     root.innerHTML = `<div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
-      <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill m3-fit" data-m3="fit" aria-label="Show the whole city" title="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Find me: show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
+      <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill m3-fit" data-m3="fit" aria-label="Show the whole ${pack?.context ? 'state' : 'city'}" title="Show the whole ${pack?.context ? 'state' : 'city'}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${pack?.context ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Find me: show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
       <p class="m3-hint" data-m3-hint ${hintSeen ? 'hidden' : ''}>Drag to turn the city · pinch or scroll to zoom · two fingers to move. Tap a building to go there.</p>`;
     root.prepend(canvas);
     canvas.classList?.add('m3-canvas');
@@ -177,6 +179,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   let state: MapState | null = null, layer = 'city', filter = 'all', selected: string | null = null, hovered: string | null = null, destroyed = false, lost = false;
   let layers: MapLayers = { billboards: false, sea: false, neighbours: false, gov: false, moving: false, lgas: true, homes: true }, data: OverlayData = { ads: null, neighbours: null, gov: null };
   // The world: local governments and the houses on their estates (src/map3d/houses.ts, world-data.js).
+  const quiet: { node: HTMLElement; x: number; z: number }[] = [];   // the names of the land and sea around a state: shown on the whole-state view only
   const plates = new Map<string, { node: HTMLButtonElement; note: HTMLElement; lga: PackLga; span: ReturnType<typeof spanOf>; scale: number }>(), tags: HTMLDivElement[] = [];
   let friends = new Set<string>(), summaryShown: ReturnType<WorldData['summary']> = null, hoverHouse: (PlotRef & { text: string }) | null = null, mine = null, pixels = 1;
   let wholeFrom = WHOLE_FROM;       // beyond this camera distance the view is of the whole state (see labels.ts), judged against the opening view of this screen
@@ -263,6 +266,12 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   const groundOf = (event: PointerEvent | MouseEvent) => { const n = toNdc(local(event)); return rig.groundAt(n.x, n.y); };
   /** A tap that hit no building: a house opens its owner's card, an estate is flown into, a local government opens its page. */
   function worldTap(event: PointerEvent | MouseEvent) {
+    // The land around the state: a state with a reserved city answers "Opening soon"; the rest is quiet.
+    if (pack.context && layer === 'city') {
+      const spot = groundOf(event);
+      const piece = spot && !lgaAt(pack, spot.x, spot.z) ? pack.context.land.find((item) => item.kind === 'state' && pointInPolygon(spot.x, spot.z, item.points)) : null;
+      if (piece) { onSelectContext({ id: piece.id.split(':')[0]!, name: piece.name, planned: piece.status === 'planned' }); return true; }
+    }
     if (!hasWorld) return false;
     const point = groundOf(event), hit = houseAtGround(point);
     const lga = hit?.lga ?? (point ? lgaAt(pack, point.x, point.z) : null);
@@ -392,6 +401,12 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       labelLayer.append(node);
       plates.set(lga.id, { node, note, lga, span: spanOf(lga.polygon), scale: 1 });
     }
+    for (const item of pack.context?.labels ?? []) {
+      const node = doc!.createElement('div');
+      node.className = `m3-ctx is-${item.kind}`; node.hidden = true; node.setAttribute('aria-hidden', 'true'); node.textContent = item.text;
+      labelLayer.append(node);
+      quiet.push({ node, x: item.x, z: item.z });
+    }
     // House tags: the hovered house, your own, and friends' — a handful of nodes, however many houses there are.
     for (let i = 0; i < 14; i++) { const node = doc!.createElement('div'); node.className = 'm3-tag'; node.hidden = true; node.setAttribute('aria-hidden', 'true'); labelLayer.append(node); tags.push(node); }
     you = doc!.createElement('div');
@@ -510,6 +525,13 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       drawn.push(box);
       if (fit.scale !== plate.scale) { plate.scale = fit.scale; node.style.fontSize = fit.scale > 1 ? `${(11 * fit.scale).toFixed(1)}px` : ''; node.classList.toggle('is-sized', fit.scale > 1); }
       node.style.transform = `translate(${here(at.x)},${here(at.y)}) translate(-50%,-50%)`;
+    }
+    // The names around the state: quiet, only on the whole-state view, and never over a name plate that is already there.
+    for (const item of quiet) {
+      const at = project(item.x, 0, item.z), w = item.node.textContent!.length * 5.2 * uz, h = 14 * uz, box = { l: at.x - w, r: at.x + w, t: at.y - h, b: at.y + h };
+      const visible = wholeView && at.front && at.x > w && at.x < size.width - w && at.y > insets.top + h && at.y < size.height - insets.bottom - h && !drawn.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t);
+      if (item.node.hidden === visible) item.node.hidden = !visible;
+      if (visible) item.node.style.transform = `translate(${here(at.x)},${here(at.y)}) translate(-50%,-50%)`;
     }
     // House tags: yours, the one under the pointer, friends' in the estates drawn as houses.
     const wanted: (PlotRef & { text: string; kind: string })[] = [], own = layers.homes ? ownPlot() : null;

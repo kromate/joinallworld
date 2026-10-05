@@ -6,6 +6,7 @@
  */
 
 import type { MapOrigin } from './geo/frame.ts';
+import type { MapContext } from './context.ts';
 
 // ---- Plain geometry -------------------------------------------------------------------------------------
 
@@ -91,6 +92,8 @@ export interface CityPack {
   geo: { box: Box4 }
   /** The map's projection frame (src/map3d/geo/frame.ts): where local (0, 0) sits and how many units make a km. */
   frame?: { origin: MapOrigin; unitsPerKm: number }
+  /** The land around a state map (src/map3d/geo/context.ts): drawn flat and quiet, not interactive. A pack that has it covers a whole state. */
+  context?: MapContext
   /** The metropolitan core (where the venues are): the default camera view. */
   core?: Rect
   /** A multiplier the builder applies to road widths (default 1). */

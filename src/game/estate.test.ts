@@ -246,7 +246,7 @@ test('one character between cities: money, skills and people travel; the home le
   assert.equal(act(state, 'cancel', {}).code, 'no_cancel');
   assert.deepEqual([state.activeAction?.kind, state.estate.city], ['intercity', 'lagos']);
   settle(state, MONDAY_9AM + 121000);
-  assert.deepEqual([state.estate.city, state.location, state.activeAction, state.estate.plot, state.estate.lga], ['ibadan', 'agodi-gardens', null, null, null]);
+  assert.deepEqual([state.estate.city, state.location, state.activeAction, state.estate.plot, state.estate.lga], ['ibadan', 'iwo-road-interchange', null, null, null]);
   assert.equal(hasPlace(state), false, 'a first arrival is a visitor until a local government is chosen');
   assert.deepEqual(found(state.estate.away.lagos, 'the home left in lagos').plot, { lga: 'ikeja', estate: 4, plot: 20 });
   assert.equal(found(state.estate.away.lagos, 'the home left in lagos').style.wall, 3);

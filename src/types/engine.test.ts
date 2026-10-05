@@ -617,7 +617,7 @@ test('a trip between cities is the timed action kind intercity', () => {
   assert.equal(act(state, 'cancel', {}, at()).code, 'no_cancel')
   const arrival = MONDAY_9AM + active.duration * 1000
   assert.equal(settle(state, active.duration, arrival), 'completed')
-  assert.deepEqual([state.estate.city, state.location, keys(state.estate.away)], ['ibadan', 'agodi-gardens', ['lagos']])
+  assert.deepEqual([state.estate.city, state.location, keys(state.estate.away)], ['ibadan', 'iwo-road-interchange', ['lagos']])
   checkState(state, 'in another city')
   const shown = view(state, at(arrival))
   assert.equal(shown.estate.city, 'ibadan'); assert.equal(shown.estate.lga, null); assert.ok(shown.estate.cheapest, 'Ibadan offers its cheapest local starter upgrade')

@@ -33,6 +33,7 @@ import { skipJourney } from '../server/testing/skipJourney.ts';
 import type { SkipResult } from '../server/testing/skipJourney.ts';
 import { regionInfo } from '../src/map3d/geo/info.ts';
 import { cityEntry } from '../src/map3d/regions.ts';
+import { ticketArrivalVenue } from '../src/game/cities/runtime.ts';
 import type { AddressInfo } from 'node:net';
 
 export interface TwoCitiesResult { steps: number; fares: { bus: number; train: number }; cash: number }
@@ -113,6 +114,7 @@ export async function runTwoCities({ log = console.log }: TwoCitiesOptions = {})
     await host.elapse(device, 'lagos', 31000); // the bus takes 30 s
     const arrived = object((await host.request('/api/life?city=lagos', undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
     assert.deepEqual([object(arrived.estate).city, object(arrived.estate).lga, num(arrived.cash)], ['ibadan', null, num(departed.cash)]);
+    assert.equal(arrived.location, ticketArrivalVenue('ibadan', 'road').id, 'a visitor off the bus arrives at the road terminal of Ibadan');
     assert.ok(ibadan.venues.some((venue) => venue.id === arrived.location && venue.id !== 'home'), 'a visitor arrives at a public Ibadan place');
     const ibadanPin = await pinned(device);
     assert.deepEqual([ibadanPin?.v, ibadanPin?.city], [2, 'ibadan'], 'the move wrote a current pin for Ibadan');
@@ -206,6 +208,7 @@ export async function runThreePlaces({ log = console.log }: TwoCitiesOptions = {
       await host.elapse(device, from, (seconds + 1) * 1000);
       const arrived = object((await host.request(`/api/life?city=${from}`, undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
       assert.deepEqual([object(arrived.estate).city, num(arrived.cash)], [to, num(departed.cash)], 'arriving costs nothing more');
+      if (to !== 'lagos') assert.equal(arrived.location, ticketArrivalVenue(to, mode).id, `a visitor off the ${mode === 'rail' ? 'train' : 'bus'} lands at the ${to} ${mode === 'rail' ? 'station' : 'terminal'}`);
       if (to !== 'lagos') assert.ok(content(to).venues.some((venue) => venue.id === arrived.location && venue.id !== 'home'), `a visitor arrives at a public ${to} place`);
       fares.push(fare);
       state = arrived;

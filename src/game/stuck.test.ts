@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { loadCityContent, playableCityIds } from './cities/registry.ts'
+import { cityRules } from './cities/registry.ts'
 import { publicArrivalVenue, venueFor } from './cities/runtime.ts'
 import { START_SAMPLE, playOut, rng, sampleOf, stuck } from './stuckSearch.ts'
 
@@ -39,4 +40,24 @@ test('every city has somewhere open at every hour for the nets: its arrival plac
     const place = publicArrivalVenue(city)
     assert.equal(venueFor(city, place.id)?.hours, undefined, `${city}: ${place.id} has no closing hours`)
   }
+})
+
+test('a visitor who lands at an airport, a terminal or a station is never stuck there: the nets are one free walk away, at any hour', () => {
+  const next = rng(20261006)
+  let played = 0
+  const failing = []
+  for (const city of playableCityIds()) {
+    const hubs = (cityRules(city)?.hubs ?? []).flatMap((hub) => (hub.venueId && venueFor(city, hub.venueId) ? [hub.venueId] : []))
+    for (const venue of hubs) for (let i = 0; i < 40; i++) {
+      const sample = { ...sampleOf(next, [city], ['lagos', 'port-harcourt', 'kano']), city, venue }
+      delete sample.midTrip
+      // A visitor (the home is not here) with little or no money and low needs: the case the nets are for.
+      const visitor = { ...sample, home: sample.home === city ? (city === 'lagos' ? 'kano' : 'lagos') : sample.home, cash: [0, 50, 300, 1000][i % 4]!, hunger: [10, 19, 100][i % 3]!, energy: [10, 19, 100][(i + 1) % 3]! }
+      played++
+      const outcome = playOut(visitor, { nets: true })
+      if (stuck(outcome)) failing.push(outcome)
+    }
+  }
+  assert.ok(played > 100, `${played} states played`)
+  assert.deepEqual(failing.slice(0, 3), [], `${failing.length} dead ends starting at a hub`)
 })

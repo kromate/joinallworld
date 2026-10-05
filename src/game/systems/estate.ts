@@ -1,5 +1,5 @@
 import { routeUnavailable } from '../cities/routeAvailability.ts';
-import { localUnitDescription, publicArrivalVenue } from '../cities/runtime.ts';
+import { localUnitDescription, ticketArrivalVenue } from '../cities/runtime.ts';
 /**
  * OWNER: world
  * Where a life lives in the wider sense: its city, its local government, the house everyone has
@@ -91,7 +91,7 @@ import { localUnitDescription, publicArrivalVenue } from '../cities/runtime.ts';
 import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
-import { lagosTime } from '../clock.ts';
+import { isOpen as openAt, lagosTime } from '../clock.ts';
 import { arrive, canAfford, changeNeeds, credit, debit } from '../api.ts';
 import { rideDebtOf, rideDebtReason, rideDebtText, setRideDebt } from '../relief.ts';
 import { houseFor, housesFor, housingFor, defaultHouseFor } from '../cities/housingRuntime.ts';
@@ -458,8 +458,12 @@ function relocate(state: LifeState, payload: Record<string, unknown>, ctx: LifeC
   state.message = onCredit ? `On the way to ${cityRules(link.to)?.name ?? link.to} on credit. ${rideDebtText(link.fare)}: it comes out of what you earn.` : `On the way to ${cityRules(link.to)?.name ?? link.to}.`;
   return ok(state, 'departed');
 }
-/** The arrival at the end of a trip between cities. `venue`: a public venue to arrive at instead (a friend's ping, systems/social.ts 'join'). */
-export function arriveInCity(state: LifeState, active: Pick<IntercityAction, 'id'>, ctx: LifeContext, venue?: string): void {
+/**
+ * The arrival at the end of a trip between cities. A resident of the city (one with a house there) arrives at Home, as before. A visitor lands at the
+ * venue of the way they came (flight: the airport, road: the motor park or terminal, rail: the station; ticketArrivalVenue), else the city's public
+ * arrival place. `venue`: a public venue to arrive at instead (a friend's ping, systems/social.ts 'join').
+ */
+export function arriveInCity(state: LifeState, active: Pick<IntercityAction, 'id'> & Partial<Pick<IntercityAction, 'mode'>>, ctx: LifeContext, venue?: string): void {
   const e = state.estate, from = e.city, to = active.id, now = nowOf(state, ctx);
   // The home left behind is put away exactly as it is: the house stays yours.
   const { city, away, nudged, home, homeAt, ...residence } = e;
@@ -474,7 +478,7 @@ export function arriveInCity(state: LifeState, active: Pick<IntercityAction, 'id
   emit(state, 'city.changed', { from, to }, ctx);
   emit(state, 'home.owned', { living: e.living === 'own', house }, ctx);
   emit(state, 'house.moved', { id: e.living === 'own' ? 'own' : house, from: 'away', cost: 0, house }, ctx);
-  const destination = venue ?? (kept?.lga ? 'home' : publicArrivalVenue(to).id);
+  const destination = venue ?? (kept?.lga ? 'home' : ticketArrivalVenue(to, active.mode, (place) => !place.cities && openAt(place.hours, now)).id);
   if (!destination || !arrive(state, destination, ctx, { mode: null })) throw new TypeError('The destination city needs a public arrival venue');
   const homeName = e.home && e.home !== to ? cityRules(e.home)?.name ?? e.home : null;
   state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? (e.home === to ? 'You are home.' : 'You are back at your house here.') : `You are visiting${homeName ? `: your home is in ${homeName}` : ''}.`}`;

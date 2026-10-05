@@ -84,9 +84,10 @@ export interface SessionRecord {
    * stored (server/world/service.ts migrateCharacters) and when an intercity trip arrives, which also
    * records when and from where — a session that moved is then refused a new life in the city it left
    * (409 `city_moved`). A session created since the last start has none until it travels; readers
-   * fall back to the city asked for.
+   * fall back to the city asked for. Version 1 without `movedAt` is the start-up pin of the earlier build,
+   * fixed at one moment: it is not trusted; the newest life decides (server/character.ts characterCity).
    */
-  character?: { v: 1; city: string; movedAt?: number; from?: string }
+  character?: { v: 1 | 2; city: string; movedAt?: number; from?: string }
   /** Keyed by client/request id; created by the first ctx.once. */
   once?: Record<TimedId, OnceReceipt>
   /** server/world/service.ts rekey(): a separate life that was already filed under the city a character arrived in, put aside as `<city>:<ms>`. */

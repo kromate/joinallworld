@@ -196,7 +196,7 @@ test('a gift reaches the active character life; archived lives are preserved and
     const adaState = must(sessionOf(db, ada).cities.lagos, 'life').state; adaState.cash = 10000; adaState.social.earned = 5000;
     const bolaSession = sessionOf(db, bola);
     bolaSession.cities.ibadan = { state: createLife({ name: 'Bola' }, { now: f.now(), cityId: 'ibadan' }), updatedAt: f.now(), salt: 'b'.repeat(32) };
-    bolaSession.character = { v: 1, city: 'ibadan' };
+    bolaSession.character = { v: 2, city: 'ibadan' };
     const chiSession = sessionOf(db, chi);
     chiSession.legacyLives = { 'ibadan:1': { state: createLife({ name: 'Chi' }, { now: f.now(), cityId: 'ibadan' }), updatedAt: f.now() - 1, salt: 'c'.repeat(32) } };
     chiSession.legacyLifeCities = { 'ibadan:1': 'ibadan' };

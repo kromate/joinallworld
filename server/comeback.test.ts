@@ -59,7 +59,7 @@ async function harness(t: TestContext, { env = LIVE, respond }: { env?: Record<s
 type Harness = Awaited<ReturnType<typeof harness>>;
 const lowHunger = (h: Harness, who: Who) => h.life(who, (state) => { state.needs.hunger = 12; });
 
-test('consent: confirming starts the preference on with the sentence; without an address nothing can be switched on; older addresses start off', async (t) => {
+test('consent: confirming starts the preference on with the sentence; without an address nothing can be switched on; older addresses keep only the away mail', async (t) => {
   const h = await harness(t);
   const ada = await h.player('Ada');
   assert.deepEqual(await h.post('/api/growth/comeback', { cityId: 'lagos', on: true }, ada), { status: 200, ok: false, code: 'no_address', reason: 'Confirm an e-mail address first. Phone, Stay in touch.', serverTime: h.f.now() });
@@ -79,17 +79,23 @@ test('consent: confirming starts the preference on with the sentence; without an
   const paused = await h.post('/api/growth/comeback', { cityId: 'lagos', pause: true }, ada);
   assert.equal(paused.comeback.pausedUntil, h.f.now() + 30 * DAY);
   assert.equal((await h.post('/api/growth/comeback', { cityId: 'lagos', pause: false }, ada)).comeback.pausedUntil, 0);
-  // An address confirmed before this feature: no record, so the preference is off, and nothing is sent until it is switched on.
+  // An address confirmed before this feature: no record yet. Its first visit makes one that keeps the away mail and the digest, and nothing else.
   const bola = await h.player('Bola');
   await h.optIn(bola, 'bola@example.com');
   await h.edit((db) => { delete db.growth?.comeback; });
-  assert.equal((await h.hello(bola)).contact.comeback.on, false);
+  const old = (await h.hello(bola)).contact.comeback;
+  assert.deepEqual([old.on, old.types], [true, { needs: false, friends: false, milestones: false, events: false, away: true, week: true }]);
   await h.life(bola, (state) => { state.needs.hunger = 5; });
   h.go(2); await h.run();
-  assert.equal(h.comebackMails().filter((mail) => /Bola/.test(mail.subject)).length, 0);
-  assert.equal((await h.post('/api/growth/comeback', { cityId: 'lagos', on: true }, bola)).comeback.on, true);
-  h.go(3); await h.run();
-  assert.equal(h.comebackMails().filter((mail) => mail.subject === 'Bola is hungry').length, 1);
+  assert.equal(h.comebackMails().filter((mail) => /Bola/.test(mail.subject)).length, 0, 'no need alert: that type is off until they turn it on');
+  h.go(3, 12); await h.run(); await h.run();
+  assert.deepEqual(h.comebackMails().map((mail) => mail.subject), ['Your world is still here'], 'exactly one away mail, three days on');
+  // Unsubscribing from everything still ends it, and the master switch is the player's to turn on again.
+  const everything = must(/^<https:\/\/play\.example(\/e\/unsub\?t=[^>]+)>$/.exec(must(must(h.mails().at(-1)).headers['List-Unsubscribe'])))[1] ?? '';
+  assert.equal((await h.page(everything, 'POST', 'List-Unsubscribe=One-Click')).status, 200);
+  assert.equal((await h.hello(bola)).contact.comeback.on, false);
+  h.go(10); await h.run();
+  assert.equal(h.comebackMails().length, 1, 'nothing after unsubscribing');
 });
 
 test('a need alert: the worst need only, in the characterâ€™s voice, with one button and the three controls', async (t) => {
@@ -382,7 +388,7 @@ test('a database from before the feature: no comeback fields, a legacy contact, 
   await h.optIn(ada, 'ada@example.com');
   await h.edit((db) => { const g = must(db.growth); delete g.comeback; delete g.comebackStats; for (const player of Object.values(g.players)) delete player.nudged; });
   const view = (await h.hello(ada)).contact.comeback;
-  assert.deepEqual([view.on, view.nudged], [false, {}]);
+  assert.deepEqual([view.on, view.nudged], [true, {}], 'an address from before the feature keeps its away mail');
   assert.equal((await h.run()).comeback?.ran, true);
   assert.equal((await h.mod<OutreachOperatorResponse>('/api/mod/growth/outreach')).comeback.waiting, 0);
   // A damaged record is repaired, not fatal.
@@ -433,7 +439,7 @@ test('per city: a character in another city is written about its own city only â
     const there = structuredClone(must(session.cities.lagos, 'a life'));
     there.state.estate.city = fictionalCity.id; there.state.goals.wishes = [];
     session.cities[fictionalCity.id] = there;
-    session.character = { v: 1, city: fictionalCity.id };
+    session.character = { v: 2, city: fictionalCity.id };
   });
   // The first day with a Lagos event starting within the next 24 hours, two days or more from the start.
   let day = 2;

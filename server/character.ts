@@ -1,14 +1,29 @@
 /** One active character and recoverable older lives, shared by both hosts. */
 import { cityRules } from '../src/game/content/world.ts'
+import { hasPlace } from '../src/game/systems/estate.ts'
 import type { CityId } from '../src/types/protocol.ts'
 import type { CityLifeRecord, SessionRecord } from './types.ts'
 
+/** A pin this code wrote (version 2, or a recorded move). A bare `{v:1, city}` is the start-up pin of an older build, fixed at one moment and never updated. */
+const isCurrentPin = (character: SessionRecord['character']): boolean => Boolean(character && (character.v === 2 || character.movedAt !== undefined))
+
+/** The city of the life played most recently; ties go to the city with a house, then to Lagos. */
+function newestLifeCity(session: SessionRecord): CityId | null {
+  const entries = Object.entries(session.cities).filter((entry): entry is [CityId, CityLifeRecord] => Boolean(cityRules(entry[0]) && entry[1]?.state))
+  const rank = (entry: [CityId, CityLifeRecord]): number => (hasPlace(entry[1].state) ? 2 : 0) + (entry[0] === 'lagos' ? 1 : 0)
+  const latest = entries.reduce<[CityId, CityLifeRecord] | null>((best, entry) => {
+    if (!best) return entry
+    const a = entry[1].updatedAt ?? 0, b = best[1].updatedAt ?? 0
+    return a > b || (a === b && rank(entry) > rank(best)) ? entry : best
+  }, null)
+  return latest?.[0] ?? null
+}
+
+/** The one place the active city is derived. Pure: normalizeCharacter writes the result down as a current pin. */
 export function characterCity(session: SessionRecord): CityId | null {
   const explicit = session.character?.city
-  if (explicit && cityRules(explicit) && session.cities[explicit as CityId]) return explicit as CityId
-  const entries = Object.entries(session.cities).filter((entry): entry is [CityId, CityLifeRecord] => Boolean(cityRules(entry[0]) && entry[1]?.state))
-  const latest = entries.reduce<[CityId, CityLifeRecord] | null>((best, entry) => !best || entry[1].updatedAt > best[1].updatedAt || (entry[1].updatedAt === best[1].updatedAt && entry[0] === 'lagos') ? entry : best, null)
-  return latest?.[0] ?? null
+  if (isCurrentPin(session.character) && explicit && cityRules(explicit) && session.cities[explicit as CityId]) return explicit as CityId
+  return newestLifeCity(session)
 }
 
 export function archiveLife(session: SessionRecord, city: string, entry: CityLifeRecord): string {
@@ -31,7 +46,7 @@ export function normalizeCharacter(session: SessionRecord): CityId | null {
       delete session.cities[city as CityId]
     }
   }
-  session.character = { ...session.character, v: 1, city: active }
+  session.character = { ...session.character, v: 2, city: active }
   return active
 }
 
@@ -53,8 +68,8 @@ export function fileCharacter(session: SessionRecord, from: CityId, now: number)
     if (aside && aside !== entry) archiveLife(session, to, aside)
     session.cities[to as CityId] = entry
     delete session.cities[from]
-    session.character = { v: 1, city: to, from, movedAt: now }
-  } else session.character = { ...session.character, v: 1, city: to }
+    session.character = { v: 2, city: to, from, movedAt: now }
+  } else session.character = { ...session.character, v: 2, city: to }
 }
 
 export function swapLegacyLife(session: SessionRecord, id: string): { ok: true; city: string } {
@@ -70,7 +85,7 @@ export function swapLegacyLife(session: SessionRecord, id: string): { ok: true; 
   else { delete session.legacyLives![id]; if (session.legacyLifeCities) delete session.legacyLifeCities[id] }
   if (active) delete session.cities[active]
   session.cities[city as CityId] = selected
-  session.character = { v: 1, city }
+  session.character = { v: 2, city }
   return { ok: true, city }
 }
 

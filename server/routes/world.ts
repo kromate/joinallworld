@@ -1,4 +1,4 @@
-import { requireCharacterCity } from '../character.ts';
+import { characterCity, requireCharacterCity } from '../character.ts';
 /**
  * OWNER: world
  * World endpoints under /api/world/: your place in the city, the city at a glance, one local
@@ -56,7 +56,7 @@ export default function worldRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     const state = session.cities?.[cityId]?.state;
     // A life that has not settled in has no local government and no house (src/game/systems/estate.ts hasPlace).
     const placed = state !== undefined && hasPlace(state);
-    return { id: session.publicId, placed, lga: placed ? state.estate.lga : null, plot: placed ? state.estate.plot ?? null : null, hasLife: Boolean(state?.estate), character: { city: session.character?.city ?? cityId } };
+    return { id: session.publicId, placed, lga: placed ? state.estate.lga : null, plot: placed ? state.estate.plot ?? null : null, hasLife: Boolean(state?.estate), character: { city: characterCity(session) ?? cityId } };
   });
   // One character: once a life has travelled to another city, asking for the city it left must not start a second life there.
   const cityGate = requireCharacterCity;

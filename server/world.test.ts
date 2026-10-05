@@ -74,7 +74,7 @@ test('migration: every session gets a character record with its current city; ev
   await writeFile(join(dir, 'devices.json'), JSON.stringify(before));
   const boot = async (): Promise<Stored> => { const server = await createServer({ dataDir: dir, now: () => now, log: () => {} }); await new Promise<void>((done) => server.close(() => done())); return readStored(dir); };
   const after = await boot();
-  assert.deepEqual(Object.values(after.sessions).map((item) => item.character), [{ v: 1, city: 'lagos' }, { v: 1, city: 'ibadan' }, { v: 1, city: 'ibadan' }, { v: 1, city: 'lagos' }]);
+  assert.deepEqual(Object.values(after.sessions).map((item) => item.character), [{ v: 2, city: 'lagos' }, { v: 2, city: 'ibadan' }, { v: 2, city: 'ibadan' }, { v: 2, city: 'lagos' }]);
   for (const [secret, saved] of Object.entries(before.sessions)) { const { character: _character, ...rest } = defined(after.sessions[secret]); assert.deepEqual(rest, saved, 'the session, its secret and every life are untouched'); }
   for (const key of ['archivedLives', 'social', 'civic']) assert.deepEqual(after[key], before[key]);
   assert.deepEqual(await boot(), after, 'running it again changes nothing');

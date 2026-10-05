@@ -24,7 +24,7 @@ test('an older session record is read as it is: the newest life is the character
   const session = oldRecord(), ibadan = session.cities.ibadan
   assert.equal(characterCity(session), 'lagos')
   assert.equal(normalizeCharacter(session), 'lagos')
-  assert.deepEqual(session.character, { v: 1, city: 'lagos' })
+  assert.deepEqual(session.character, { v: 2, city: 'lagos' })
   assert.equal(session.cities.ibadan, undefined)
   const kept = Object.entries(session.legacyLives ?? {})
   assert.equal(kept.length, 2, 'the timestamp-keyed life and the displaced one are both kept')

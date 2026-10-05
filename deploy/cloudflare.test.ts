@@ -1431,3 +1431,52 @@ async function storage_(f: { storage(): Promise<ObjectStorage> }, query: string)
   const rows = await (await f.storage()).exec(query).catch(() => []);
   return JSON.stringify(rows);
 }
+
+test('Cloudflare: a character pin written by an earlier build is not trusted — the newest life is the character, on persisted storage, and stays so across restarts', async t => {
+  const f = await fixture(t);
+  const session = async (d: Device) => { const row = (await (await f.storage()).exec('SELECT value FROM sessions WHERE public_id = ?', d.id))[0]; return JSON.parse(row.value); };
+  const write = async (d: Device, record: Record<string, unknown>) => (await f.storage()).exec('UPDATE sessions SET value = ? WHERE public_id = ?', JSON.stringify(record), d.id);
+  const both = async (name: string, pin: { v: number; city: string; movedAt?: number; from?: string } | null, lagosNewest: boolean) => {
+    const d = await f.device(name);
+    await f.life(d);
+    const record = await session(d), lagos = record.cities.lagos;
+    lagos.state.cash = 76000;
+    const ibadan = structuredClone(lagos);
+    ibadan.state.estate.city = 'ibadan'; ibadan.state.cash = 300;
+    lagos.updatedAt = lagosNewest ? 5000 : 2000; ibadan.updatedAt = lagosNewest ? 2000 : 5000;
+    record.cities.ibadan = ibadan;
+    if (pin) record.character = pin; else delete record.character;
+    await write(d, record);
+    return d;
+  };
+  const answer = async (d: Device, city: string) => { const r = await f.request(`/api/life?city=${city}`, null, d.cookie); return { status: r.status, body: await r.json() as Record<string, unknown> & { state?: { cash: number } } }; };
+  const stale = await both('Stale', { v: 1, city: 'ibadan' }, true);
+  const right = await both('Right', { v: 1, city: 'ibadan' }, false);
+  const moved = await both('Moved', { v: 2, city: 'ibadan', movedAt: 500, from: 'lagos' }, true);
+  await f.restart();
+  // (a) the earlier pin says Ibadan, Lagos was played last: Lagos answers, Ibadan is kept under older characters.
+  const a = await answer(stale, 'lagos');
+  assert.equal(a.status, 200); assert.equal(a.body.state?.cash, 76000);
+  const older = await (await f.request('/api/characters', null, stale.cookie)).json() as { active: string; legacy: { city: string; cash: number }[] };
+  assert.deepEqual([older.active, older.legacy.map((x) => [x.city, x.cash])], ['lagos', [['ibadan', 300]]]);
+  // (b) the earlier pin is right: Ibadan.
+  const b = await answer(right, 'lagos');
+  assert.deepEqual([b.status, b.body.error, b.body.city], [409, 'city_moved', 'ibadan']);
+  // (d) a recorded move is honoured even though Lagos is newer.
+  const d = await answer(moved, 'lagos');
+  assert.deepEqual([d.status, d.body.error, d.body.city], [409, 'city_moved', 'ibadan']);
+  // Nothing lost, and it is stable across another restart.
+  const kept = async () => { const r = await session(stale); return JSON.stringify([Object.keys(r.cities), r.cities.lagos.state.cash, Object.values(r.legacyLives as Record<string, { state: { cash: number } }>).map((x) => x.state.cash), r.character]); };
+  const lagosKept = await kept();
+  await f.restart();
+  assert.equal((await answer(stale, 'lagos')).body.state?.cash, 76000);
+  assert.equal(await kept(), lagosKept);
+  assert.equal((await session(stale)).character.v, 2);
+  // Switching to the older character and back loses nothing.
+  const swap = async (id: string) => (await (await f.request('/api/characters/switch', { id, clientId: `${Date.now()}:${randomUUID()}` }, stale.cookie)).json()) as { ok?: boolean; city?: string };
+  const switched = await swap(Object.keys((await session(stale)).legacyLives)[0] as string);
+  assert.deepEqual([switched.ok, switched.city], [true, 'ibadan']);
+  assert.equal((await answer(stale, 'ibadan')).body.state?.cash, 300);
+  assert.equal((await swap(Object.keys((await session(stale)).legacyLives)[0] as string)).city, 'lagos');
+  assert.equal((await answer(stale, 'lagos')).body.state?.cash, 76000);
+});

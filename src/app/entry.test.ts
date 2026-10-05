@@ -119,9 +119,8 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 // city registry and the Lagos rules and content the engine reads synchronously; the reserved cities' atlas text is about 3 kB of it.) The budget is the measurement plus about 4%.
 // The loading screen alone (entry, Vue, the module preload helper) measured 88.1 kB / 35.5 kB; its budget is that plus about 4%.
 const BUDGET = { raw: 608_000, gzip: 225_000 }
-// A player who starts in another city also loads that city's own content (venues, regulars, calendar, wording): Ibadan's is 29.2 kB raw / 10.8 kB gzip.
-// That chunk may add up to this much on top of the default-city budget, and never counts for a player who starts in Lagos.
-const CITY_ALLOWANCE = { raw: 36_000, gzip: 13_000 }
+// A player who starts in another city also loads that city's own content chunk (venues, regulars, calendar, wording) and nothing else:
+// the set of eager chunks for it is the default-city set plus that one chunk, by name, and the default-city budget is unchanged.
 const LOADING_BUDGET = { raw: 92_000, gzip: 37_000 }
 
 function eagerChunks(dist: string, additional: readonly string[] = []): string[] {
@@ -163,16 +162,23 @@ test('automatic game startup, including one selected city, stays within the orig
   const core = all.filter(name => /^startApp-[\w-]+\.js$/.test(name))
   assert.equal(core.length, 1, 'the automatic startup has one deferred game shell')
   const cityChunks = all.filter(name => /^city-.+-content-[\w-]+\.js$/.test(name))
-  // Every city loads its own content; the shell closure alone is checked as well.
-  for (const city of [null, ...cityChunks]) {
-    const names = eagerChunks(dist, [...core, ...(city ? [city] : [])].map(name => `assets/${name}`))
-    const total = names.reduce((sum, name) => {
-      const bytes = readFileSync(join(dist, name))
-      return { raw: sum.raw + bytes.length, gzip: sum.gzip + gzipSync(bytes).length }
-    }, { raw: 0, gzip: 0 })
-    t.diagnostic(`${city ?? 'default city'} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)
-    const allowed = city ? CITY_ALLOWANCE : { raw: 0, gzip: 0 }
-    assert.ok(total.raw <= BUDGET.raw + allowed.raw, `automatic startup for ${city ?? 'default city'} is ${total.raw} bytes (baseline ${BUDGET.raw} + ${allowed.raw})`)
-    assert.ok(total.gzip <= BUDGET.gzip + allowed.gzip, `automatic startup for ${city ?? 'default city'} is ${total.gzip} gzip bytes (baseline ${BUDGET.gzip} + ${allowed.gzip})`)
+  const defaultNames = eagerChunks(dist, core.map(name => `assets/${name}`))
+  const measure = (names: readonly string[]) => names.reduce((sum, name) => {
+    const bytes = readFileSync(join(dist, name))
+    return { raw: sum.raw + bytes.length, gzip: sum.gzip + gzipSync(bytes).length }
+  }, { raw: 0, gzip: 0 })
+  const base = measure(defaultNames)
+  t.diagnostic(`default city automatic startup: ${base.raw} raw ${base.gzip} gzip bytes`)
+  assert.ok(base.raw <= BUDGET.raw, `automatic startup for the default city is ${base.raw} bytes (budget ${BUDGET.raw})`)
+  assert.ok(base.gzip <= BUDGET.gzip, `automatic startup for the default city is ${base.gzip} gzip bytes (budget ${BUDGET.gzip})`)
+  assert.ok(!defaultNames.some(name => /^assets\/city-.+-content-/.test(name)), 'a city content chunk is never part of the default startup')
+  // Every other city adds its own content chunk and no other chunk.
+  assert.ok(cityChunks.length >= 1, 'a non-default city has a content chunk')
+  for (const city of cityChunks) {
+    const names = eagerChunks(dist, [...core, city].map(name => `assets/${name}`))
+    const added = names.filter(name => !defaultNames.includes(name))
+    assert.deepEqual(added, [`assets/${city}`], `a city adds only its own content chunk (${city})`)
+    const total = measure(names)
+    t.diagnostic(`${city} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)
   }
 })

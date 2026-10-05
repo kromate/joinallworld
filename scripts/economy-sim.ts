@@ -1,5 +1,5 @@
 import { loadCityContent } from '../src/game/cities/registry.ts';
-await loadCityContent('lagos');
+await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan')]);
 /**
  * Economy simulation: scripted players on a virtual clock, played through the real rules engine
  * (createLife / dispatch / advanceLife — nothing here sets cash, needs or skills by hand).
@@ -114,7 +114,7 @@ export function categoryOf(line: LedgerLine): string {
   if (reason.startsWith('Welcome gift') || reason.startsWith('Referral reward')) return 'referral';
   if (reason.startsWith('Sprayed at ')) return 'leisure';
   if (reason.startsWith('Fixed deposit')) return 'savings';
-  if (/^(Danfo|Keke|Okada|Cab|Trek|Fuel) to /.test(reason) || reason.startsWith('Campus shuttle to ')) return 'transport';
+  if (/^(Danfo|Keke|Okada|Cab|Trek|Fuel|Bus|Micra) to /.test(reason) || /^(Bus on|Train between) /.test(reason) || reason.startsWith('Campus shuttle to ')) return 'transport';
   // The UNILAG campus (src/campus/unilag/student.ts): what a student pays the university, and what the campus pays a student.
   if (reason === 'UNILAG application fee' || /^UNILAG semester \d+ tuition and levy$/.test(reason) || /^UNILAG hostel semester \d+$/.test(reason)) return 'campusFees';
   if (reason === 'UNILAG scholarship' || CAMPUS_JOB_REASONS.has(reason)) return 'campusPay';
@@ -130,7 +130,7 @@ export function categoryOf(line: LedgerLine): string {
 }
 
 /** One simulated life. Every change goes through dispatch() or advanceLife(). */
-export interface PlayerOptions { lottery: string; house: string; start?: number }
+export interface PlayerOptions { lottery: string; house: string; start?: number; /** Start as a brand-new player of this city, settled in the named local government (any city but the default). */ city?: { id: string; lga: string } }
 type Ctx = LifeContextInit & { now: number; cityId: string; actionId: string };
 
 export class Player {
@@ -146,7 +146,10 @@ export class Player {
   lastLine: LedgerLine | undefined;
   /** Set by simulate() at the start of each day: the active seconds already spent. */
   dayStartSeconds = 0;
-  constructor({ lottery, house, start = SIM_START + 9 * 3600000 }: PlayerOptions) {
+  /** The city the life is in: a journey changes it when the arrival is settled. */
+  private home: string = CITY;
+  get cityId(): string { return this.state?.estate?.city ?? this.home; }
+  constructor({ lottery, house, start = SIM_START + 9 * 3600000, city }: PlayerOptions) {
     this.now = start;
     this.seq = 0;
     this.lines = [];
@@ -154,6 +157,18 @@ export class Player {
     this.refusals = {};
     // A new player as the quick start makes one: a guest in Freedom Park who plays the two opening
     // goals (a round of Ayo, a hello) and then settles in. The three opening goals are original beta rewards.
+    if (city) {
+      // A new player who chose this city in the creator: the full character flow, then a free home in the named local government.
+      this.home = city.id;
+      this.state = createLife(null, { now: this.now, cityId: city.id, isNew: true });
+      this.seed = this.state.cash;
+      this.must('onboarding.look', { look: LOOK });
+      this.must('onboarding.traits', { traits: TRAITS });
+      this.must('onboarding.dream', { dream: DREAM });
+      this.must('onboarding.lottery', {});
+      this.must('onboarding.home', { lga: city.lga, via: 'manual' });
+      return;
+    }
     this.state = createLife(null, { now: this.now, cityId: CITY, isNew: true, quickStart: true });
     this.seed = this.state.cash;
     this.must('onboarding.quick-start', { look: LOOK });
@@ -178,7 +193,7 @@ export class Player {
   dispatchOn(state: LifeState, type: string, payload: Json, ctx: Ctx): ActionOutcome {
     return dispatch(state, { type, payload, actionId: ctx.actionId } as unknown as ActionBody, ctx);
   }
-  ctx(): Ctx { const actionId = `sim-${++this.seq}`; return { now: this.now, cityId: CITY, actionId }; }
+  ctx(): Ctx { const actionId = `sim-${++this.seq}`; return { now: this.now, cityId: this.cityId, actionId }; }
   do(type: string, payload: Json = {}) {
     const ctx = this.ctx();
     const result = this.dispatchOn(this.state, type, payload, ctx);
@@ -209,14 +224,14 @@ export class Player {
   pass(seconds: number, active = true) {
     if (seconds <= 0) return;
     this.now += seconds * 1000;
-    advanceLife(this.state, seconds, { now: this.now, cityId: CITY });
+    advanceLife(this.state, seconds, { now: this.now, cityId: this.cityId });
     if (active) this.activeSeconds += seconds;
     this.collectAll();
   }
   /** Finish whatever timed action is running (the automatic commute starts by itself). */
   settle() { let guard = 0; while (this.state.activeAction && guard++ < 10) this.pass(must(this.state.activeAction).remaining); }
   awayUntil(ms: number) { if (ms > this.now) this.pass((ms - this.now) / 1000, false); }
-  view() { return viewLife(this.state, { now: this.now, cityId: CITY }); }
+  view() { return viewLife(this.state, { now: this.now, cityId: this.cityId }); }
   answerEvent(pocket: boolean) {
     const pending = this.state.travel.event;
     if (!pending) return;
@@ -573,6 +588,94 @@ export function simulate({ lottery, house, strategy, days = 30, horizon = days, 
   return row;
 }
 
+// ---- lives across two cities ---------------------------------------------------------------------------------------------------
+/** What one life across cities reports. */
+export interface CityLife {
+  label: string; days: number; startCash: number; finalCash: number; ledgerSum: number; conserved: boolean; unknown: string[];
+  /** Where the life was at each stage, and what it held then. */
+  stages: { stage: string; city: string; cash: number }[];
+  fares: { to: string; mode: string; fare: number }[];
+  player: Player;
+}
+/** The local government a simulated Ibadan player settles in. */
+export const IBADAN_LGA = 'ibadan-north';
+const IBADAN_HELPER = { venue: 'mapo-hall', spot: 'work' };
+
+/** One day in the starting city's own helper job: free upkeep at home, then a shift where the job is. */
+function helperDay(player: Player, venue: string, spot: string, shift?: string) {
+  player.upkeep({ energy: 40, hunger: 45, mode: 'trek' });
+  if (player.travel(venue, 'trek')) player.run(spot, shift ?? must(player.view().career.shift, 'the city\'s helper shift').id);
+  player.upkeep({ mode: 'trek' });
+}
+/** An activity of the Ibadan venue by id, wherever the venue puts it. */
+function ibadanActivity(player: Player, venue: string, id: string) {
+  const spot = spotsOf(venue as VenueId, 'ibadan').find((candidate) => candidate.activities.some((def) => def.id === id));
+  if (!spot) throw new Error(`${venue} has no activity ${id}`);
+  return player.travel(venue, 'trek') && player.run(spot.id, id).ok;
+}
+function cityLife(label: string, days: number, player: Player, startCash: number, stages: CityLife['stages'], fares: CityLife['fares']): CityLife {
+  player.settle();
+  const ledgerSum = player.lines.reduce((sum, line) => sum + line.amount, 0);
+  const unknown = [...new Set(player.lines.filter((line) => categoryOf(line) === 'other').map((line) => line.reason))];
+  return { label, days, startCash, finalCash: player.state.cash, ledgerSum, conserved: player.seed + ledgerSum === player.state.cash, unknown, stages, fares, player };
+}
+
+/** A new player who starts in Ibadan: settles in an Ibadan local government, plays the helper job and two of the city's own activities for `days`. */
+export function simulateIbadanStart({ days = 14, lga = IBADAN_LGA }: { days?: number; lga?: string } = {}): CityLife {
+  const player = new Player({ lottery: '', house: OWN, city: { id: 'ibadan', lga } });
+  const stages: CityLife['stages'] = [];
+  const mark = (stage: string) => stages.push({ stage, city: player.cityId, cash: player.state.cash });
+  mark('settled');
+  firstSitting(player, 'community-helper');
+  for (let index = 0; index < days; index++) {
+    player.awayUntil(dayStart(index) + 9 * 3600000);
+    helperDay(player, IBADAN_HELPER.venue, IBADAN_HELPER.spot);
+    if (index % 2 === 0) ibadanActivity(player, 'ui-campus', 'ibadan-ui-walk');
+    else ibadanActivity(player, 'bowers-tower', 'ibadan-tower-view');
+    player.settle();
+  }
+  mark('played');
+  return cityLife('Ibadan start', days, player, player.seed, stages, []);
+}
+
+/** One Lagos life that goes to Ibadan by road, works and settles there, comes home by rail and works in Lagos again. */
+export function simulateTraveller({ daysEach = 3 }: { daysEach?: number } = {}): CityLife {
+  const player = new Player({ lottery: 'civil-servant', house: OWN });
+  const stages: CityLife['stages'] = [];
+  const fares: CityLife['fares'] = [];
+  const mark = (stage: string) => stages.push({ stage, city: player.cityId, cash: player.state.cash });
+  let day = 0;
+  const play = (venue: string, spot: string, shift: string, count: number) => {
+    for (let i = 0; i < count; i++) { player.awayUntil(dayStart(day++) + 9 * 3600000); helperDay(player, venue, spot, shift); player.settle(); }
+  };
+  firstSitting(player, 'community-helper');
+  mark('lagos');
+  play('park', 'work', 'helper-shift', daysEach);
+  const travelTo = (to: string, mode: string) => {
+    player.settle();
+    const before = player.state.cash;
+    player.must('estate.relocate', { to, mode });
+    player.settle();
+    fares.push({ to, mode, fare: before - player.state.cash });
+    mark(`arrived in ${to}`);
+  };
+  player.awayUntil(dayStart(day++) + 9 * 3600000);
+  travelTo('ibadan', 'road');
+  player.must('estate.set-lga', { lga: IBADAN_LGA, via: 'manual' });
+  mark('settled in Ibadan');
+  for (let i = 0; i < daysEach; i++) {
+    player.awayUntil(dayStart(day++) + 9 * 3600000);
+    helperDay(player, IBADAN_HELPER.venue, IBADAN_HELPER.spot);
+    ibadanActivity(player, 'bowers-tower', 'ibadan-tower-view');
+    player.settle();
+  }
+  player.awayUntil(dayStart(day++) + 9 * 3600000);
+  travelTo('lagos', 'rail');
+  play('park', 'work', 'helper-shift', daysEach);
+  mark('home again');
+  return cityLife('Lagos, Ibadan, Lagos', day, player, player.seed, stages, fares);
+}
+
 const naira = (value: number | null | undefined) => (value === undefined || value === null ? '—' : `${value < 0 ? '−' : ''}₦${Math.abs(Math.round(value)).toLocaleString('en-NG')}`);
 const short = (value: number | null | undefined) => (value === undefined || value === null ? '—' : Math.abs(value) >= 1e6 ? `${(value / 1e6).toFixed(2)}m` : Math.abs(value) >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value));
 
@@ -608,6 +711,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   console.log(`Economy simulation · ${days} Lagos days from Monday 5 January 2026 · career track ${track} · milestones searched to day ${horizon}`);
   console.log('Net worth = cash + deposits − loan left − rent arrears. Flows are 30-day totals in naira; costs are negative. "act s/d" = active seconds a day.');
   console.log(formatTable(rows));
+  const lives = [simulateIbadanStart(), simulateTraveller()];
+  console.log('Lives across cities (14 days in Ibadan; Lagos → Ibadan by road → Lagos by rail):');
+  for (const life of lives) console.log(`  ${life.label}: cash ${naira(life.player.seed)} seed → ${naira(life.finalCash)} · ledger ${naira(life.ledgerSum)} · ${life.conserved ? 'conserved' : 'NOT CONSERVED'} · ${life.stages.map((stage) => `${stage.stage} (${stage.city}) ${naira(stage.cash)}`).join(' → ')}`);
   const bad = rows.filter((row) => !row.conserved || must(row.unknown).length);
   console.log(bad.length ? `NOT CONSERVED or unknown reasons in ${bad.length} rows: ${JSON.stringify(bad.map((row) => [row.lottery, row.house, row.strategy, row.unknown]))}` : `Conservation: cash = seed + Σ ledger in all ${rows.length} lives; every ledger reason is classified.`);
   console.log(`Next house = move-in + 4 weeks' rent: ${HOUSE_ORDER.map((id) => `${id} ${naira((must(HOUSES[id]).moveIn ?? 0) + 4 * must(HOUSES[id]).rent)}`).join(' · ')} · own house upgrade (${TIER_ORDER[1]} in ${SIM_LGA}) ${naira((tierCost(CITY, SIM_LGA, must(TIER_ORDER[1])) ?? 0) + 4 * must(HOUSE_TIERS[must(TIER_ORDER[1])]).groundRent)} · cheapest car ${naira(CHEAPEST_CAR.price)}`);

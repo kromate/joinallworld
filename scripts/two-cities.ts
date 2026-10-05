@@ -1,0 +1,134 @@
+#!/usr/bin/env node
+import { loadCityContent, cachedCityContent } from '../src/game/cities/registry.ts';
+await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan')]);
+/**
+ * Two cities, one character: the journey from Lagos to Ibadan and back, played end to end against the real server.
+ *
+ *   npm run two-cities
+ *
+ * Starts the server in-process on an ephemeral port with a temporary data directory and a clock this script controls, then drives
+ * one device exactly as a browser does (HTTP only). What it proves, in order:
+ *   1. a new Lagos player settles in a Lagos local government and has a home there
+ *   2. the atlas shows Ibadan as an open city with a bus route and a rail route from Lagos, at the fares the city module declares
+ *   3. the bus to Ibadan charges its fare once, at departure, and arriving costs nothing more
+ *   4. an activity at the University of Ibadan and one at Bower's Tower are done at Ibadan's own venues
+ *   5. the visitor settles in an Ibadan local government for free
+ *   6. the train back to Lagos charges its fare once
+ *   7. the Lagos home, its local government, the job and the wallet are all still there, and cash equals the seed plus the whole ledger
+ * `runTwoCities({ log })` is also run by server/two-cities.test.ts.
+ */
+import assert from 'node:assert/strict';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { once } from 'node:events';
+import { fileURLToPath } from 'node:url';
+import { createServer } from '../server/server.ts';
+import { useSaltSourceForTests } from '../server/life-service.ts';
+import { driver, object, JOURNEY_TIME } from '../server/testing/cityJourney.ts';
+import type { JourneyHost } from '../server/testing/cityJourney.ts';
+import { regionInfo } from '../src/map3d/geo/info.ts';
+import { cityEntry } from '../src/map3d/regions.ts';
+import type { AddressInfo } from 'node:net';
+
+export interface TwoCitiesResult { steps: number; fares: { bus: number; train: number }; cash: number }
+export interface TwoCitiesOptions { log?: (line: string) => void }
+
+const naira = (value: number) => `₦${value.toLocaleString('en-NG')}`;
+const num = (value: unknown): number => { assert.equal(typeof value, 'number'); return value as number };
+
+export async function runTwoCities({ log = console.log }: TwoCitiesOptions = {}): Promise<TwoCitiesResult> {
+  // The server keys every random outcome with a secret salt per life; this process is the server, so the run fixes it and is the same every time.
+  useSaltSourceForTests(() => 'two-cities-salt-000001');
+  const folder = await mkdtemp(join(tmpdir(), 'allworld-two-cities-'));
+  let time = JOURNEY_TIME, step = 0;
+  const server = await createServer({ dataDir: folder, now: () => time, distDir: join(folder, 'no-dist') });
+  server.listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
+  const host: JourneyHost = {
+    now: () => time,
+    request: (path, body, cookie) => fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) }),
+    elapse: async (_device, _city, ms) => { time += ms; },
+    qualify: async () => {}, socket: async () => { throw new Error('no sockets in this script'); }, session: async () => null, seedLegacy: async () => {}, restart: async () => {},
+  };
+  const say = (title: string, state: Record<string, unknown>, note = '') => log(`${String(++step).padStart(2, '0')}  ${title.padEnd(52)} ${naira(num(state.cash)).padStart(9)}  ${note}`);
+  try {
+    const { life, action, finish, conserved, start } = driver(host);
+    const ibadan = cachedCityContent('ibadan');
+    assert.ok(ibadan);
+    log('Two cities · one character, Lagos → Ibadan by bus, Ibadan → Lagos by train');
+
+    // 1. a new Lagos player, settled
+    const device = await start('Ada', 'lagos', 'ikeja');
+    await action(device, 'lagos', 'apply-job', { id: 'community-helper' });
+    const home = await life(device, 'lagos');
+    assert.deepEqual([object(home.estate).city, object(home.estate).lga, home.job], ['lagos', 'ikeja', 'community-helper']);
+    say('New Lagos player settles in Ikeja, takes a job', home, 'free starter house; community helper');
+
+    // 2. the atlas card for Ibadan, read as the atlas reads it
+    assert.equal(cityEntry('ibadan')?.status, 'playable', 'the atlas lists Ibadan as open');
+    const card = regionInfo({ kind: 'state', id: 'oyo' }, { cityId: 'ibadan', feature: { name: 'Oyo State' }, current: 'lagos' });
+    assert.deepEqual([card.tag, card.city?.name], ['Open', 'Ibadan']);
+    const modes = card.routes.map((route) => `${route.mode}:${route.fare}`).sort();
+    assert.deepEqual(modes, ['rail:9000', 'road:3500'], 'the card offers the bus and the train at the declared fares');
+    say('Atlas: Ibadan is open; bus ₦3,500 and train ₦9,000', home, card.teaser);
+
+    // 3. the bus
+    const departed = object((await action(device, 'lagos', 'estate.relocate', { to: 'ibadan', mode: 'road' })).state);
+    assert.equal(num(departed.cash), num(home.cash) - 3500, 'the bus fare is charged once, at departure');
+    say('Bus to Ibadan departs', departed, 'fare −₦3,500');
+    await host.elapse(device, 'lagos', 121000);
+    const arrived = object((await host.request('/api/life?city=lagos', undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
+    assert.deepEqual([object(arrived.estate).city, object(arrived.estate).lga, num(arrived.cash)], ['ibadan', null, num(departed.cash)]);
+    assert.ok(ibadan.venues.some((venue) => venue.id === arrived.location && venue.id !== 'home'), 'a visitor arrives at a public Ibadan place');
+    say(`Arrived in Ibadan at ${String(arrived.location)}`, arrived, 'a visitor; arriving costs nothing more');
+
+    // 4. two activities, at the University of Ibadan and Bower's Tower
+    for (const [venueId, activityId, label] of [['ui-campus', 'ibadan-ui-walk', 'University of Ibadan'], ['bowers-tower', 'ibadan-tower-view', 'Bower’s Tower']] as const) {
+      const venue = ibadan.venues.find((item) => item.id === venueId);
+      assert.ok(venue, venueId);
+      const spot = Object.values(venue.definition.spots).find((item) => item.activities?.some((activity) => activity.id === activityId));
+      assert.ok(spot, `${venueId} offers ${activityId}`);
+      await finish(device, 'ibadan', object((await action(device, 'ibadan', 'travel', { id: venueId, mode: 'trek' })).state));
+      await action(device, 'ibadan', 'spot', { id: spot.id });
+      const done = await finish(device, 'ibadan', object((await action(device, 'ibadan', 'activity', { id: activityId })).state));
+      assert.equal(done.location, venueId);
+      say(`${label}: ${activityId}`, done);
+    }
+
+    // 5. settle
+    const before = await life(device, 'ibadan');
+    const settled = object((await action(device, 'ibadan', 'estate.set-lga', { lga: 'ibadan-north', via: 'manual' })).state);
+    assert.deepEqual([object(settled.estate).lga, num(settled.cash)], ['ibadan-north', num(before.cash)]);
+    say('Settles in Ibadan North', settled, 'the first Ibadan home is free');
+
+    // 6. the train
+    const left = object((await action(device, 'ibadan', 'estate.relocate', { to: 'lagos', mode: 'rail' })).state);
+    assert.equal(num(left.cash), num(settled.cash) - 9000, 'the train fare is charged once');
+    say('Train to Lagos departs', left, 'fare −₦9,000');
+    await host.elapse(device, 'ibadan', 91000);
+    const back = object((await host.request('/api/life?city=ibadan', undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
+    assert.deepEqual([object(back.estate).city, num(back.cash)], ['lagos', num(left.cash)]);
+
+    // 7. Lagos is still there
+    assert.deepEqual([object(back.estate).lga, object(back.estate).living, object(back.estate).tier, back.job], ['ikeja', 'own', 'starter', 'community-helper']);
+    // The train home arrives at the Lagos home itself; it can be left for a public place and entered again.
+    assert.equal(back.location, 'home', 'the returning character arrives at the Lagos home');
+    const out = await finish(device, 'lagos', object((await action(device, 'lagos', 'travel', { id: 'park', mode: 'trek' })).state));
+    assert.equal(out.location, 'park');
+    const lagosAgain = await finish(device, 'lagos', object((await action(device, 'lagos', 'travel', { id: 'home', mode: 'trek' })).state));
+    assert.equal(lagosAgain.location, 'home', 'the Lagos home can be entered');
+    conserved(await life(device, 'lagos'));
+    say('Back in Lagos: Ikeja home, job and wallet intact', lagosAgain, 'cash = seed + the whole ledger');
+    log(`Two cities complete: ${step} steps, bus ${naira(3500)} and train ${naira(9000)} each charged once, ${naira(num(lagosAgain.cash))} in hand.`);
+    return { steps: step, fares: { bus: 3500, train: 9000 }, cash: num(lagosAgain.cash) };
+  } finally {
+    server.closeAllConnections();
+    if (server.listening) await new Promise<void>((done) => server.close(() => done()));
+    await server.store.close?.();
+    await rm(folder, { recursive: true, force: true });
+  }
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await runTwoCities();

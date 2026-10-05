@@ -698,27 +698,29 @@ test('the join and the one main home: a friend who owns a second home there arri
   assert.deepEqual(must((await h.social()).pingJoins)[bayo.id]?.length, 2, 'each free journey is counted, homeowner or not');
 });
 
-test('the join from a city that is only being visited: nothing is left behind there, home is still home, and a city with no way back is refused', async (t) => {
+test('the join from a city that is only being visited: nothing is left behind there, home is still home, and a join across the country is free too', async (t) => {
   const h = await harness(t), { ada, bayo } = await pair(h);
   await h.fund(bayo, 'lagos', 100000);
   await h.trip(bayo, 'lagos', 'abeokuta');
   const visiting = await h.life(bayo, 'abeokuta');
   assert.deepEqual([visiting.estate.lga, visiting.estate.home, Object.keys(visiting.estate.away)], [null, 'lagos', ['lagos']]);
-  // Ada flies to Abuja: nothing runs between Abeokuta and Abuja, so he could not get back the way he came.
+  // Ada flies to Abuja. Every open city reaches every other, so he can join her there and come back.
   await h.fund(ada, 'lagos', 200000);
   await h.trip(ada, 'lagos', 'abuja', 'air');
   assert.equal((await h.ping(ada, bayo)).code, 'pinged');
   const far = await h.join(bayo, ada);
-  assert.deepEqual([far.ok, far.code, far.reason], [false, 'no_route', 'Nothing runs between Abeokuta and Abuja yet.']);
-  assert.equal((await h.life(bayo, 'abeokuta')).estate.city, 'abeokuta');
-  assert.equal((await h.social()).pingJoins?.[bayo.id], undefined, 'a refused journey is not counted');
-  // She takes the bus to Ibadan, which Abeokuta has a road to. The ping follows her; he joins her there.
+  assert.deepEqual([far.ok, far.code, must(far.place).cityId], [true, 'joined', 'abuja']);
+  assert.equal((await h.life(bayo, 'abuja')).cash, visiting.cash, 'a join is free');
+  // She takes the bus to Ibadan. The ping follows her; he joins her there.
   await h.trip(ada, 'abuja', 'ibadan');
+  h.f.advance(31 * MINUTE);
+  assert.equal((await h.ping(ada, bayo)).code, 'pinged');
   const there = await h.life(ada, 'ibadan');
   const done = await h.join(bayo, ada);
   assert.deepEqual([done.code, done.moved, must(done.place).cityId, must(done.place).venue], ['joined', 'city', 'ibadan', there.location]);
   const after = await h.life(bayo, 'ibadan');
-  assert.deepEqual([after.estate.city, after.estate.lga, after.estate.home, Object.keys(after.estate.away), after.cash], ['ibadan', null, 'lagos', ['lagos'], visiting.cash]);
+  assert.deepEqual([after.estate.city, after.estate.lga, after.estate.home, after.cash], ['ibadan', null, 'lagos', visiting.cash]);
+  assert.ok(Object.keys(after.estate.away).includes('lagos'));
   assert.match(after.message, / You are visiting: your home is in Lagos\.$/);
   // Asking for the life where it was says where it went.
   const moved = await h.get('/api/life?city=abeokuta', bayo);

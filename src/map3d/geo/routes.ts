@@ -107,7 +107,9 @@ export function pointAlong(line: MeasuredLine, progress: number): LinePoint {
   let i = 1;
   while (i < line.lengths.length - 1 && line.lengths[i]! < want) i += 1;
   const a = line.points[i - 1]!, b = line.points[i]!, span = line.lengths[i]! - line.lengths[i - 1]! || 1, k = clamp01((want - line.lengths[i - 1]!) / span);
-  return { x: a[0] + (b[0] - a[0]) * k, y: a[1] + (b[1] - a[1]) * k, heading: Math.atan2(b[1] - a[1], b[0] - a[0]) };
+  // The end of a line is exactly its last point, however the sum rounds.
+  const mix = (from: number, to: number): number => (k >= 1 ? to : from + (to - from) * k);
+  return { x: mix(a[0], b[0]), y: mix(a[1], b[1]), heading: Math.atan2(b[1] - a[1], b[0] - a[0]) };
 }
 
 /** A flight: straight over the ground from a to b (map units), rising to `lift` at the middle. */

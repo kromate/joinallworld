@@ -176,7 +176,9 @@ test('Lagos–Kano flights preserve the travelling character and both homes', as
 
 test('Kano keeps the planned train closed, opens its roads and flights, and offers neighbourhood keke without okada', async () => {
   await Promise.all(['lagos', 'abuja', CITY].map(loadCityContent))
-  assert.deepEqual(linksFrom(CITY).filter(link => link.status !== 'coming').map(link => `${link.to}:${link.mode}`).sort(), ['abuja:air', 'abuja:road', 'lagos:air', 'lagos:road'])
+  const hand = ['abuja:air', 'abuja:road', 'lagos:air', 'lagos:road']
+  assert.deepEqual(linksFrom(CITY).filter(link => link.status !== 'coming').map(link => `${link.to}:${link.mode}`).sort().filter(way => hand.includes(way)), hand)
+  assert.equal(linksFrom(CITY).some(link => link.mode === 'rail' && link.status !== 'coming'), false, 'no generated railway')
   for (const from of ['lagos', CITY]) {
     const clock = journeyClock(from), state = createLife({ cash: 1_000_000 }, clock.context())
     const planned = linksFrom(from).filter(link => link.status === 'coming' && (from === CITY || link.to === CITY))

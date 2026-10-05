@@ -8,7 +8,9 @@ import type { CityLink } from '../../../types/content.ts'
 
 const OPEN = ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'] as const
 const key = (link: Pick<CityLink, 'a' | 'b' | 'mode'>): string => `${[link.a, link.b].sort().join('|')}|${link.mode}`
-const openLinks = allCityLinks().filter(link => OPEN.includes(link.a as typeof OPEN[number]) && OPEN.includes(link.b as typeof OPEN[number]))
+// The links the modules write by hand; every other pair is generated (see generatedLinks.test.ts).
+const openLinks = allCityLinks().filter(link => OPEN.includes(link.a as typeof OPEN[number]) && OPEN.includes(link.b as typeof OPEN[number])
+  && cityModule(link.a)?.rules.links.some(item => key(item) === key(link)))
 
 test('the open links are exactly the declared passenger routes, each listed once', () => {
   assert.deepEqual(openLinks.map(key).sort(), [
@@ -68,6 +70,7 @@ test('no link can be used to travel to a city that is not open', async () => {
   }
   rich.estate.city = 'lagos'
   assert.equal(relocateBlock(rich, 'ota', 'rail')?.code, 'no_route', 'Ota has no train')
-  assert.equal(relocateBlock(rich, 'sagamu', 'road')?.code, 'no_route', 'Lagos to Sagamu is not a direct link')
+  assert.equal(relocateBlock(rich, 'sagamu', 'road'), null, 'Lagos to Sagamu is a generated road')
+  assert.equal(relocateBlock(rich, 'sagamu', 'air')?.code, 'no_route', 'Sagamu has no airport')
   assert.equal(relocateBlock(rich, 'papalanto', 'rail')?.code, 'invalid_city')
 })

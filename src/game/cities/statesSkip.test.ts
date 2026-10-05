@@ -6,7 +6,7 @@ import { DEFAULT_LOOK } from '../content/traits.ts'
 import { cityRules, linksFrom, loadCityContent } from './registry.ts'
 import type { LifeContextInit, LifeState } from '../../types/life.ts'
 
-await Promise.all(['lagos', 'port-harcourt', 'abuja', 'kano'].map(loadCityContent))
+await Promise.all(['lagos', 'port-harcourt', 'abuja', 'kano', 'abeokuta'].map(loadCityContent))
 
 function settled(seed: string) {
   let now = Date.UTC(2026, 0, 5, 9)
@@ -23,13 +23,13 @@ function settled(seed: string) {
   return { state, run, wait, offer: () => viewLife(state, context(state)).travel.skip }
 }
 
-test('a flight or a bus to Port Harcourt, Abuja or Kano can be skipped: the first for nothing, the next for ₦100 and ₦40 a second, never more than half the fare', () => {
+test('a flight or a bus to Port Harcourt, Abuja or Kano can be skipped: the first for nothing, the next for ₦100 and ₦40 a second, never more than half the fare (generated routes included)', () => {
   const life = settled('skip-states')
   assert.equal(life.run('estate.relocate', { to: 'kano', mode: 'air' }).code, 'departed')
   assert.deepEqual([life.offer()?.kind, life.offer()?.fee, life.offer()?.free], ['intercity', 0, true])
   assert.equal(life.run('travel.skip').code, 'skipped')
   assert.equal(life.state.estate.city, 'kano')
-  const legs: readonly (readonly [string, string])[] = [['abuja', 'road'], ['port-harcourt', 'air'], ['lagos', 'road'], ['abuja', 'air']]
+  const legs: readonly (readonly [string, string])[] = [['abuja', 'road'], ['port-harcourt', 'air'], ['lagos', 'road'], ['abuja', 'air'], ['abeokuta', 'road'], ['kano', 'road']]
   for (const [to, mode] of legs) {
     const from: string = life.state.estate.city
     const link = linksFrom(from).find((item) => item.to === to && item.mode === mode)

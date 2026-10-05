@@ -225,7 +225,7 @@ test('cities connect as data, while a trip to closed Kaduna is refused without c
   assert.equal(act(state, 'estate.relocate', { to: 'lagos', mode: 'road' }).code, 'invalid_city');
   assert.equal(state.cash, cash); assert.equal(state.activeAction, null);
   const links = viewLife(state, at()).estate.links;
-  assert.equal(links.length, 12)
+  assert.equal(links.length, 14)
   assert.deepEqual(links.filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.open, link.blocked]), [['road', true, null], ['rail', true, null]])
   const openCities = new Set(['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano']);
   assert.equal(links.filter((link) => openCities.has(link.to)).every((link) => link.open), true);

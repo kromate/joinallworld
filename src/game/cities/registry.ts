@@ -8,6 +8,7 @@ import { portHarcourtCity } from './port-harcourt/index.ts'
 import { abujaCity } from './abuja/index.ts'
 import { kanoCity } from './kano/index.ts'
 import { CITY_LINKS } from './links.ts'
+import { generateCityLinks } from './generatedLinks.ts'
 import type { CityId } from './ids.ts'
 import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRules, CityState } from '../../types/content.ts'
 
@@ -171,7 +172,9 @@ const sameLink = (a: CityLink, b: CityLink): boolean => a.a === b.a && a.b === b
   && a.fare === b.fare && a.seconds === b.seconds && a.km === b.km && a.beta === b.beta
 
 /** Canonical live link catalogue. Authored modules supersede legacy rows; authored conflicts are errors. */
+let linkCache: readonly CityLink[] | null = null
 export function allCityLinks(): readonly CityLink[] {
+  if (linkCache) return linkCache
   const merged = new Map(CITY_LINKS.map((link): [string, CityLink] => [linkKey(link), link]))
   for (const [source, links] of [['modules', Object.values(MODULES).flatMap(module => module?.rules.links ?? [])], ['fixtures', Array.from(fixtures.values()).flatMap(module => module.rules.links)]] as const) {
     const authored = new Map<string, CityLink>()
@@ -181,7 +184,13 @@ export function allCityLinks(): readonly CityLink[] {
       authored.set(key, link); merged.set(key, link)
     }
   }
-  return Object.freeze([...merged.values()])
+  // Only the cities that ship connect themselves: a test fixture keeps exactly the links it declares.
+  const open = Object.values(MODULES).flatMap(module => module ? [module] : []).flatMap(module => {
+    const atlas = module.rules.atlas
+    return atlas ? [{ id: module.id, name: module.rules.name, lon: atlas.lon, lat: atlas.lat, airport: module.rules.hubs.some(hub => hub.mode === 'air') }] : []
+  })
+  for (const link of generateCityLinks(open, [...merged.values()])) merged.set(linkKey(link), link)
+  return linkCache = Object.freeze([...merged.values()])
 }
 
 export const cityLinks = (cityId: string): readonly CityLink[] => allCityLinks().filter(link => link.a === cityId || link.b === cityId)
@@ -257,13 +266,13 @@ export function registerCityForTest(module: CityModule, { replaceClosed = false 
   const replacesReserved = replaceClosed && KNOWN_CITIES[module.id]?.rules.status === 'soon' && !moduleOf(module.id)
   if (!module.id.startsWith('test-') && !replacesReserved) throw new Error('Test city ids must start with test- or replace a closed reserved city')
   if (isKnownCityId(module.id) && !replacesReserved) throw new Error(`City id is already registered: ${module.id}`)
-  fixtures.set(module.id, module)
+  fixtures.set(module.id, module); linkCache = null
   let disposed = false
   return Object.freeze({
     dispose: () => {
       if (disposed) return
       disposed = true
-      if (fixtures.get(module.id) === module) fixtures.delete(module.id)
+      if (fixtures.get(module.id) === module) { fixtures.delete(module.id); linkCache = null }
       pendingContent.delete(module.id)
       pendingMaps.delete(module.id)
       loadedContent.delete(module.id)

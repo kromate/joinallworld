@@ -102,7 +102,7 @@ test('Cloudflare pulse: online is distinct live players, visits one per player p
   assert.equal(after.online, 0, 'nobody is connected any more');
 
   // A new Lagos day for Ada: her stored day moves back, and her next visit counts once.
-  const db = await f.storage(), secret = ada.cookie.slice(4);
+  const db = await f.storage(), secret = ada.cookie.slice(ada.cookie.indexOf("=") + 1);
   const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0]?.value ?? '{}') as { visitDay?: number };
   assert.equal(typeof session.visitDay, 'number');
   session.visitDay = (session.visitDay ?? 0) - 1;

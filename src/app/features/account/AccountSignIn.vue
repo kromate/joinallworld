@@ -144,7 +144,7 @@ onBeforeUnmount(() => {
     </template>
 
     <template v-else-if="state.step === 'verify'">
-      <div class="account-inbox" data-account-inbox>
+      <div class="account-inbox" data-account-inbox role="status">
         <i aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 7 8 6 8-6" /></svg></i>
         <h3>Check your inbox</h3>
         <p v-if="state.pendingEmail">We sent a confirmation link to <b class="account-address">{{ state.pendingEmail }}</b>. Open it, then come back here.</p>

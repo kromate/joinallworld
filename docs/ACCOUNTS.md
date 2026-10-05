@@ -301,7 +301,7 @@ Nothing here is done by the game; an operator does it once in the provider's con
 
 ## 10. Content-Security-Policy and Cross-Origin-Opener-Policy
 
-The game page is given a Content-Security-Policy and `Cross-Origin-Opener-Policy: same-origin` by the host's security headers. **When accounts are configured**, these additions are needed, and only then:
+The game page is given a Content-Security-Policy and `Cross-Origin-Opener-Policy: same-origin` by the host's security headers (`server/security-headers.ts`, one builder for the Node server and the Worker, which calls `accountsCspAdditions(config)` from `server/accounts/csp.ts`; tests for both states on both hosts). **When accounts are configured**, these additions are needed, and only then:
 
 | Directive | Addition | For | Needed when |
 | --- | --- | --- | --- |
@@ -382,3 +382,17 @@ A new account is sent **one** e-mail, to the address its owner has confirmed, th
 6. **The reset request is proxied; sign-in is not.** Someone who talks to the provider directly meets the provider's own limits and replies, not the game's. Enumeration protection in the provider project is what covers that path.
 7. **A guest not yet upgraded is where they were before this release** with respect to a sibling host planting `sid` (section 6); their first answer from this release ends that. `sid` itself is still read and kept, for rollback; removing it is a later release.
 8. **One character per account per world.** A second world would need the account to hold a character per world.
+
+
+## Where sign-up is offered
+
+Only when accounts are configured; with none of the settings nothing below is drawn.
+
+| Place | What the player sees |
+|---|---|
+| Top bar | After the online pill: "Sign up" (filled) and "Log in" (quiet) for anyone not signed in; an account chip (first letter and the character's name) once signed in, which opens the account sheet (who, devices, sign out). A phone keeps "Sign up"; "Log in" is in the sheet ("I already have an account") and in Settings. |
+| First step of the creator | "Play now" (one tap, as before), "Sign up free — keep your character", and the link "I already have an account · Log in". |
+| Guest bar | A slim bar above the bottom navigation while someone plays as a guest; closed for 7 days with its ×; never during the tour, a sheet, a running activity, a call or the coach tip. Stored on the device as `joinallworld-signup-bar` (the time it may return). |
+| Tour | The step "Save your progress" lights the Sign up button. |
+
+The sheet has a show/hide eye on every password field, a "Check your inbox" screen that names the address (resend, "I've confirmed — continue", use a different address), and puts the provider's refusals next to the field they concern. The funnel (`signup_shown`, `signup_opened`, `signup_created`, `login_opened`, `login_done`) goes through the consent-gated `jaw:track` path with words only. The first download holds only the small account state (`accountLite.ts`) and the top bar's buttons; the sheet, its store and the provider client are fetched when it is opened, and no provider script is requested before that.

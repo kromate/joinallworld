@@ -103,7 +103,7 @@ test('a player who has not finished character creation, or who is on a trip, is 
   assert.equal((await nextOf(b, 'error', (message) => message.error !== 'venue_mismatch')).error, 'join_required');
 });
 
-test('the session response tells the caller — and only the caller — which cities the session has lives in', async (t) => {
+test('the session response exposes only the active life, and a GET cannot create another city life', async (t) => {
   const f = await fixture(t);
   const opened = await f.request('/api/session', { name: 'Ada Cities' });
   const cookie = cookieOf(opened);
@@ -112,10 +112,11 @@ test('the session response tells the caller — and only the caller — which ci
   assert.deepEqual(Object.keys(first).sort(), ['cities', 'id', 'name']);
   await f.request('/api/life?city=lagos', null, cookie);
   assert.deepEqual((await sessionOf(await f.request('/api/session', null, cookie))).cities, ['lagos']);
-  await f.request('/api/life?city=ibadan', null, cookie);
-  const both = await sessionOf(await f.request('/api/session', null, cookie));
-  assert.deepEqual(both.cities, ['lagos', 'ibadan'], 'a returning Ibadan player is recognised from the server, on any device');
-  assert.deepEqual((await sessionOf(await f.request('/api/session', { name: 'Ada Cities' }, cookie))).cities, ['lagos', 'ibadan'], 'a rename answers the same shape');
+  const refused = await f.request('/api/life?city=ibadan', null, cookie);
+  assert.deepEqual([refused.status, (await refused.json()).error], [409, 'city_moved']);
+  const current = await sessionOf(await f.request('/api/session', null, cookie));
+  assert.deepEqual(current.cities, ['lagos'], 'the refused read creates no second life');
+  assert.deepEqual((await sessionOf(await f.request('/api/session', { name: 'Ada Cities' }, cookie))).cities, ['lagos'], 'a rename answers the same shape');
   // Nobody else learns it: not presence, not chat.
   const other = await f.device('Bola Other');
   await f.request('/api/life?city=lagos', null, other.cookie);

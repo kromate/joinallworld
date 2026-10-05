@@ -192,6 +192,15 @@ The player is then shown both characters by name and asked which to play. Choosi
 
 An account can hold five set-aside characters. A sign-in that would need a sixth is refused (`409 parked_full`) with nothing changed: that device simply stays a guest, life intact. Only the account's own set-aside characters can be chosen; another account's, or an unowned archive entry, is `404`.
 
+### Two kinds of set-aside life
+
+A *character* is a whole session record: one traveller, its one active life (`cities`, filed under `character.city`), and the older lives it carries (`legacyLives`, with `legacyLifeCities` saying which city each belongs to). The word "set aside" is used for two different moves, and they never touch each other's data:
+
+- **An account sets a character aside** (this section): the whole record of a device that signed in, moved to the archive under the account, with its `legacyLives` and `legacyLifeCities` inside it. The record is copied and restored as one value, so the older lives travel with the character that held them. Restoring it makes it the account's active character again, bound to a key no browser holds.
+- **A character carries older lives** (docs/CITIES.md, "Saved characters"): lives that predate one-character-per-session, or that a trip displaced. They are listed and switched inside the one record (`GET /api/characters`, `POST /api/characters/switch`) by whoever may play that record, a guest by cookie or a signed-in browser by its binding. Signing in does not change them, and the account never lists them as its own set-aside characters.
+
+A second character is never created by a sign-in, a trip or a read of another city.
+
 ### What a binding is worth
 
 A binding lets its browser **play the character** and **sign itself out**. Nothing else. A stolen cookie therefore cannot read the account's address, end the owner's other sign-ins, swap the character in play or delete anything.

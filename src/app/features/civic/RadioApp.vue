@@ -20,6 +20,7 @@ import { RADIO } from './civicContent.ts'
 import { radioDraft as draft } from './civicDrafts.ts'
 import { inClub, radioKey, radioPath, radioRules, radioWhy, schedule, shoutoutMissing, song, until } from './civicModel.ts'
 import { useCivic, useLinkWhy, useLoaded, useOffline } from './useCivic.ts'
+import { contentFor } from '../../../game/cities/runtime.ts'
 
 defineProps<{ params?: unknown }>()
 const { game, shell, goTo } = useApp()
@@ -29,12 +30,13 @@ const linkWhy = useLinkWhy()
 const view = game.view
 const state = game.state
 const cityId = computed(() => view.value.cityId)
-const inside = computed(() => inClub(state.value))
+const radioVenueIds = computed(() => contentFor(cityId.value).radioVenueIds)
+const inside = computed(() => inClub(state.value, radioVenueIds.value))
 const { item, reload } = useLoaded<RadioView>({
   key: () => radioKey(cityId.value, state.value.location), path: () => radioPath(cityId.value, state.value.location), maxAge: 12000, when: () => inside.value,
 })
 const data = computed(() => item.value.data)
-const clubs = computed(() => view.value.venues.filter((venue) => RADIO.venues.includes(venue.id)))
+const clubs = computed(() => view.value.venues.filter((venue) => radioVenueIds.value.includes(venue.id)))
 const here = computed(() => view.value.venues.find((venue) => venue.id === state.value.location)?.label ?? 'here')
 const onAir = computed(() => schedule(data.value, view.value.now))
 const why = computed(() => (data.value ? radioWhy(offline('buy a shout-out'), data.value, onAir.value.queue.length, Boolean(onAir.value.playing), state.value.cash) : ''))

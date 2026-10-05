@@ -68,10 +68,13 @@ test('the settle plan sends only what the server does not hold, in order, and th
 
 test('places are data: the open city is found, the others are coming and have no local governments to choose', () => {
   assert.equal(PLACES[0]?.id, 'nigeria')
-  assert.deepEqual(firstOpen() && [firstOpen()?.state.id, firstOpen()?.city.id], ['lagos-state', 'lagos'])
+  assert.deepEqual(firstOpen() && [firstOpen()?.state.id, firstOpen()?.city.id], ['lagos', 'lagos'])
   assert.equal(cityOpen('lagos'), true)
-  for (const id of ['ibadan', 'abuja', 'port-harcourt']) assert.equal(cityOpen(id), false)
-  assert.deepEqual(PLACES[0]?.states.filter(stateOpen).map((state) => state.id), ['lagos-state'])
+  for (const id of ['ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'kano']) assert.equal(cityOpen(id), false)
+  // The list is read from the city registry: the planned cities come from there, grouped by their state.
+  assert.deepEqual(PLACES[0]?.states.flatMap((state) => state.cities.map((city) => city.id)), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'kano'])
+  assert.deepEqual(stateOfCity('ibadan'), { id: 'oyo', name: 'Oyo State', cities: [{ id: 'ibadan', name: 'Ibadan' }] })
+  assert.deepEqual(PLACES[0]?.states.filter(stateOpen).map((state) => state.id), ['lagos'])
   assert.equal(stateOfCity('abuja')?.id, 'fct')
   const lgas = ['eti-osa', 'agege', 'badagry', 'epe'].map((id) => ({ id, name: id, line: '', land: 0, levy: 0 }))
   const groups = groupLgas('lagos', lgas as never)

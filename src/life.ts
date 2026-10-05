@@ -1,3 +1,4 @@
+import { DEFAULT_CITY_ID, isCityId } from './game/cities/registry.ts';
 /**
  * Public entry to the rules engine, shared by the Node server, the Cloudflare worker and
  * the browser (display only). Pure: no I/O and no clocks other than ctx.now.
@@ -62,8 +63,11 @@ export function migrate(saved: unknown): SavedInput {
  */
 /** A caller that already built a context hands one in: a generator is the sign of it. */
 const isBuilt = (ctx: LifeContextInit | undefined): ctx is LifeContext => Boolean(ctx) && typeof ctx?.rng === 'function';
-const contextFor = (state: LifeState | null, ctx: LifeContextInit | undefined, seed: string): LifeContext => (isBuilt(ctx) ? ctx
-  : makeContext({ ...ctx, now: finite(ctx?.now) ? ctx.now : state?.t ?? 0, cityId: ctx?.cityId ?? 'lagos', seed }));
+const contextFor = (state: LifeState | null, ctx: LifeContextInit | undefined, seed: string): LifeContext => {
+  const cityId = state ? state.estate.city : ctx?.cityId;
+  if (!isCityId(cityId)) throw new TypeError('A life requires a registered city');
+  return isBuilt(ctx) ? { ...ctx, cityId } : makeContext({ ...ctx, now: finite(ctx?.now) ? ctx.now : state?.t ?? 0, cityId, seed });
+};
 
 /**
  * Build a life from saved input. Nothing in `saved` is trusted: every system rebuilds its own
@@ -78,8 +82,9 @@ const contextFor = (state: LifeState | null, ctx: LifeContextInit | undefined, s
  * invalid action is dropped with no money moved, so no input can mint a refund.
  */
 export function createLife(saved: unknown, ctx?: LifeContextInit): LifeState {
-  const context = contextFor(null, { isNew: !isRecord(saved), ...ctx }, 'create');
   const input = migrate(saved);
+  const savedCity = isRecord(input.estate) && isCityId(input.estate.city) ? input.estate.city : undefined;
+  const context = contextFor(null, { cityId: DEFAULT_CITY_ID, isNew: !isRecord(saved), ...ctx, ...(savedCity ? { cityId: savedCity } : {}) }, 'create');
   // Built key by key: each system's sanitize() fills its own keys (the registry contract types `state` as the whole life).
   const state = {} as LifeState;
   let known = 0;

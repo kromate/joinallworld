@@ -52,7 +52,7 @@ async function send(via: 'device' | 'manual'): Promise<void> {
   if (ui.sending) return
   const wanted = via === 'device' ? ui.found?.id : pick.value
   const lga = estate.value.lgas.find((item) => item.id === wanted)?.id
-  if (!lga) { ui.note = 'Choose a local government first.'; return }
+  if (!lga) { ui.note = `Choose a ${estate.value.unit} first.`; return }
   ui.sending = true
   ui.note = ''
   const result = await command('estate.set-lga', { lga, via })
@@ -75,7 +75,7 @@ async function send(via: 'device' | 'manual'): Promise<void> {
       <p v-if="estate.plot" class="ui-note">Your house: {{ estate.plot.address }}</p>
       <p v-else class="ui-note">Your plot is being set aside…</p>
     </template>
-    <p v-else class="ui-note">Pick your local government and a starter house on your own plot there is yours, free. <template v-if="guess">Your home is in {{ guess.name }}.</template></p>
+    <p v-else class="ui-note">Pick your {{ estate.unit }} and a starter house on your own plot there is yours, free. <template v-if="guess">Your home is in {{ guess.name }}.</template></p>
 
     <div v-if="ui.found" class="world-found" role="status">
       <p>{{ ui.found.sure ? 'You are in' : 'Nearest to you is' }} <b>{{ ui.found.name }}</b>. Is that right?</p>
@@ -90,16 +90,16 @@ async function send(via: 'device' | 'manual'): Promise<void> {
       <template v-if="part === 'list'">
         <template v-if="showList">
           <div class="ui-labelled">
-            <span @click="select?.focus()">Choose from the {{ estate.lgas.length }} local governments of {{ estate.cityName }}</span>
+            <span @click="select?.focus()">Choose from the {{ estate.lgas.length }} {{ estate.unit }}s of {{ estate.cityName }}</span>
             <ListboxSelect :ref="setSelect" v-model="pick" label="Local government" :options="options" :disabled="Boolean(offline || blocked)" />
           </div>
-          <button type="button" class="ui-button is-primary is-block" :class="{ 'is-loading': ui.sending }" :disabled="Boolean(offline || blocked || ui.sending)" @click="send('manual')">{{ ui.sending ? 'Saving…' : current ? 'Move here' : 'This is my local government' }}</button>
+          <button type="button" class="ui-button is-primary is-block" :class="{ 'is-loading': ui.sending }" :disabled="Boolean(offline || blocked || ui.sending)" @click="send('manual')">{{ ui.sending ? 'Saving…' : current ? 'Move here' : `This is my ${estate.unit}` }}</button>
         </template>
       </template>
       <template v-else-if="current && !ui.picking && !ui.found">
         <div class="ui-actions">
           <button type="button" class="ui-button" :disabled="Boolean(blocked)" @click="choosePick">Change</button>
-          <button type="button" class="ui-button is-quiet" :disabled="Boolean(blocked) || ui.finding" @click="find">{{ ui.finding ? 'Finding…' : 'Find my local government' }}</button>
+          <button type="button" class="ui-button is-quiet" :disabled="Boolean(blocked) || ui.finding" @click="find">{{ ui.finding ? 'Finding…' : `Find my ${estate.unit}` }}</button>
         </div>
         <p v-if="blocked" class="ui-why">{{ blocked }}</p>
         <p v-else class="ui-note">You can change once every {{ estate.change.cooldownDays }} days. Your house moves with you.</p>
@@ -108,7 +108,7 @@ async function send(via: 'device' | 'manual'): Promise<void> {
         <div class="ui-cluster is-between">
           <button type="button" class="ui-button is-quiet" :disabled="ui.finding" @click="find"><GameIcon name="compass" inline /><span>{{ ui.finding ? 'Finding…' : 'Find it for me' }}</span></button>
         </div>
-        <p class="ui-help">Worked out on this device. Your position is never sent or stored — only the local government you confirm.</p>
+        <p class="ui-help">Worked out on this device. Your position is never sent or stored — only the {{ estate.unit }} you confirm.</p>
       </template>
     </template>
 

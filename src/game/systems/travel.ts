@@ -1,3 +1,5 @@
+import { houseSpotFor, defaultHouseFor } from '../cities/housingRuntime.ts';
+import { venueFor, venuesFor } from '../cities/runtime.ts';
 /**
  * OWNER: world
  * Travel between venues: modes, fares, trip time, need costs, opening hours, roadside events,
@@ -94,7 +96,7 @@ const comingSoon: Partial<Record<string, ComingSoonDefinition>> = COMING_SOON;
 const outcomeRules: Partial<Record<string, ActivityOutcomeRule>> = ACTIVITY_OUTCOMES;
 const fareBands: Partial<Record<RouteBand, FareBands['near']>> = FARE_BANDS;
 const needNames: readonly string[] = NEEDS;
-const isVenue = (id: unknown): id is VenueId => typeof id === 'string' && Object.hasOwn(VENUES, id);
+const isVenue = (id: unknown, cityId: string): id is VenueId => typeof id === 'string' && Boolean(venueFor(cityId, id));
 const isModeId = (id: unknown): id is TravelModeId => typeof id === 'string' && Object.hasOwn(ALL_MODES, id);
 const isHomeId = (id: unknown): id is HouseId => typeof id === 'string' && Object.hasOwn(HOME_SPOTS, id);
 const isEventId = (id: unknown): id is RoadsideEventId => typeof id === 'string' && Object.hasOwn(EVENTS, id);
@@ -102,14 +104,14 @@ const outcomeRuleOf = (id: string): ActivityOutcomeRule | undefined => (Object.h
 
 const homeId = (state: LifeState): HouseId => {
   const home = state?.travel?.home;
-  return isHomeId(home) ? home : DEFAULT_HOME;
+  return houseSpotFor(state.estate.city, home) ? home as HouseId : defaultHouseFor(state.estate.city).id;
 };
 
 /** Map position and landmass of a venue; Home depends on which house the player lives in. */
 export function placeOf(state: LifeState, venueId: VenueId): { x: number; y: number; zone: VenueZone } | null {
   // Home in a house the player built: the landmass of its local government; the middle of the map for distance.
   if (venueId === 'home' && state?.estate?.living === 'own') return { x: 50, y: 50, zone: lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.zone ?? 'mainland' };
-  const place = venueId === 'home' ? HOME_SPOTS[homeId(state)] : VENUES[venueId] || comingSoon[venueId];
+  const place = venueId === 'home' ? houseSpotFor(state.estate.city, homeId(state)) : venueFor(state.estate.city, venueId) || comingSoon[venueId];
   return place ? { x: place.map.x, y: place.map.y, zone: place.zone } : null;
 }
 
@@ -169,7 +171,7 @@ export function travelBlock(state: LifeState, destination: unknown, modeId: unkn
   if (typeof destination === 'string' && Object.hasOwn(COMING_SOON, destination)) {
     return { code: 'coming_soon', reason: `${venueLabel(destination, ctx?.cityId)} is not open yet — it is coming soon.` };
   }
-  if (!isVenue(destination) || !isModeId(modeId)) {
+  if (!isVenue(destination, ctx.cityId) || !isModeId(modeId)) {
     return { code: 'invalid_travel', reason: 'Choose a valid destination and travel option.' };
   }
   if (destination === state.location) return { code: 'already_here', reason: 'You are already here.' };
@@ -177,7 +179,7 @@ export function travelBlock(state: LifeState, destination: unknown, modeId: unkn
     return { code: 'travel_mode_unavailable', reason: modeId === 'car' ? 'You do not own a car yet. Buy one in Phone → Cars, or pick another way to travel.' : `${ALL_MODES[modeId].label} is not available for this trip.` };
   }
   const label = venueLabel(destination, ctx?.cityId);
-  const opening = openingInfo(VENUES[destination].hours, ctx?.now ?? state.t);
+  const opening = openingInfo(venueFor(ctx.cityId, destination)?.hours, ctx?.now ?? state.t);
   if (!opening.open) {
     return { code: 'closed', reason: `${label} is closed: ${opening.opensAt ? `opens ${opening.opensAt} (in ${waitText(opening.minutes)})` : 'no opening time is set'}. You can look at it on the map, but you cannot travel there yet.` };
   }
@@ -197,7 +199,7 @@ function travel(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
   const why = travelBlock(state, destination, modeId, ctx);
   if (why) return fail(state, why.code, why.reason);
   // travelBlock only returns null for a known venue and mode; this narrows the untrusted payload.
-  if (!isVenue(destination) || !isModeId(modeId)) return fail(state, 'invalid_travel', 'Choose a valid destination and travel option.');
+  if (!isVenue(destination, ctx.cityId) || !isModeId(modeId)) return fail(state, 'invalid_travel', 'Choose a valid destination and travel option.');
   const trip = quote(state, destination, modeId, ctx);
   const label = venueLabel(destination, ctx.cityId);
   const mode = ALL_MODES[modeId];
@@ -298,7 +300,7 @@ function roadside(state: LifeState, payload: Record<string, unknown>, ctx: LifeC
 function rollActivity(state: LifeState, id: ActivityId, rule: ActivityOutcomeRule, ctx: LifeContext): void {
   const success = ctx.rng() < chanceOf(state, rule);
   let outcome: ActivitySuccessOutcome = success ? rule.success : rule.failure;
-  const label = findActivity(id)?.def.label ?? id;
+  const label = findActivity(id, ctx.cityId)?.def.label ?? id;
   if (success && outcome.once) {
     if (state.travel[outcome.once]) {
       // Every `once` outcome in content has a `repeat`; paying the one-time reward again would be silent corruption.
@@ -322,18 +324,18 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   const now = finite(ctx?.now) ? ctx.now : state.t;
   const event = isRecord(saved.event) && isEventId(saved.event.id) && finite(saved.event.at) ? { id: saved.event.id, at: saved.event.at } : null;
   const trip = saved.lastTrip;
-  const lastTrip = isRecord(trip) && isVenue(trip.to) && isVenue(trip.from)
+  const lastTrip = isRecord(trip) && isVenue(trip.to, ctx.cityId) && isVenue(trip.from, ctx.cityId)
     && (trip.mode === null || isModeId(trip.mode)) ? { mode: trip.mode, from: trip.from, to: trip.to } : null;
   const cooldowns: TravelState['cooldowns'] = {};
   for (const [id, readyAt] of Object.entries(isRecord(saved.cooldowns) ? saved.cooldowns : {}).slice(0, MAX_COOLDOWNS)) {
-    const seconds = findActivity(id)?.def.cooldown;
+    const seconds = findActivity(id, ctx.cityId)?.def.cooldown;
     // A cooldown can never be longer than the activity's own, whatever the save claims.
     if (finite(seconds) && seconds > 0 && finite(readyAt) && readyAt > now) cooldowns[id] = Math.min(readyAt, now + seconds * 1000);
   }
   state.travel = {
-    home: isHomeId(saved.home) ? saved.home : DEFAULT_HOME,
+    home: houseSpotFor(ctx.cityId, saved.home) ? String(saved.home) : defaultHouseFor(ctx.cityId).id,
     event, lastTrip,
-    visited: [...new Set((Array.isArray(saved.visited) ? saved.visited : []).filter(isVenue))],
+    visited: [...new Set((Array.isArray(saved.visited) ? saved.visited : []).filter((id): id is VenueId => isVenue(id, ctx.cityId)))],
     trips: safeCount(saved.trips) ? saved.trips : 0,
     cooldowns,
     funded: saved.funded === true,
@@ -342,7 +344,7 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   };
 }
 
-function setHome(state: LifeState, id: unknown): void { if (isHomeId(id)) state.travel.home = id; }
+function setHome(state: LifeState, id: unknown): void { if (typeof id === 'string' && houseSpotFor(state.estate.city, id)) state.travel.home = id; }
 
 // ---- view -------------------------------------------------------------------------------
 
@@ -360,12 +362,12 @@ function destinationCard(state: LifeState, venue: VenueDefinition, ctx: LifeCont
   // Reasons that do not depend on the mode are worked out once and shared by every tile.
   const base: Block<TravelBlockCode> | null = venue.cities && !(venue.cities as readonly string[]).includes(ctx.cityId) ? travelBlock(state, id, 'trek', ctx) : here ? { code: 'already_here', reason: 'You are already here.' } : !opening.open ? travelBlock(state, id, 'trek', ctx) : null;
   return {
-    id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? (state.estate?.living === 'own' ? lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.name ?? 'Your house' : HOME_SPOTS[homeId(state)].district) : venueDistrict(id, ctx.cityId),
+    id, kind: id === 'home' ? 'home' : 'venue', label: venueLabel(id, ctx.cityId), district: id === 'home' ? (state.estate?.living === 'own' ? lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.name ?? 'Your house' : houseSpotFor(state.estate.city, homeId(state))?.district ?? '') : venueDistrict(id, ctx.cityId),
     icon: venue.icon, description: venue.description, category: venue.category, x: place.x, y: place.y, zone: place.zone,
     here, visited: state.travel.visited.includes(id), open: opening.open, hours: opening.hours, status: opening.status,
     band: here ? null : BAND_LABELS[routeBand(state, state.location, id)],
     ambient: venue.ambient?.length ? venue.ambient[Math.floor(now / 8000) % venue.ambient.length] ?? '' : '',
-    preview: spotsOf(id).flatMap((spot) => spot.activities.map((def) => def.label)),
+    preview: spotsOf(id, ctx.cityId).flatMap((spot) => spot.activities.map((def) => def.label)),
     blocked: base,
     modes: modesFor(state, id, ctx).map((modeId) => modeCard(state, id, modeId, base, ctx)),
   };
@@ -375,7 +377,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
   const queued = state.travel.event;
   const pending = queued && EVENTS[queued.id];
   const trip = state.activeAction?.kind === 'travel' ? state.activeAction : null;
-  const venues = Object.values(VENUES).filter((venue) => !venue.cities || (venue.cities as readonly string[]).includes(ctx.cityId)).map((venue) => destinationCard(state, venue, ctx));
+  const venues = venuesFor(ctx.cityId).filter((venue) => !venue.cities || (venue.cities as readonly string[]).includes(ctx.cityId)).map((venue) => destinationCard(state, venue, ctx));
   const soon = Object.values(COMING_SOON).map((place): TravelDestination => ({
     id: place.id, kind: 'soon', label: venueLabel(place.id, ctx.cityId), district: venueDistrict(place.id, ctx.cityId), icon: place.icon, description: place.description,
     category: 'soon', x: place.map.x, y: place.map.y, zone: place.zone, here: false, visited: false, open: false, hours: 'Coming soon', status: 'Coming soon',
@@ -401,7 +403,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
     cooldowns: Object.fromEntries(Object.keys(state.travel.cooldowns).map((id): [string, number] => [id, cooldownLeft(state, id, ctx.now)]).filter(([, left]) => left > 0)),
     gigs: { limit: GIG_DAILY_LIMIT, used: gigsToday(state, ctx.now), left: Math.max(0, GIG_DAILY_LIMIT - gigsToday(state, ctx.now)) },
     // The gigs offered at the spot the player stands at (activity ids), so the venue panel can show the counter beside them.
-    gigsHere: (spotsOf(state.location).find((spot) => spot.id === state.spot)?.activities || []).filter(isGig).map((def) => def.id),
+    gigsHere: (spotsOf(state.location, ctx.cityId).find((spot) => spot.id === state.spot)?.activities || []).filter(isGig).map((def) => def.id),
     // The trip in progress: where it started (a cancel leaves the player there), how, and the fare already paid (null on an older save).
     active: trip ? { from: state.location, to: trip.id, mode: typeof trip.mode === 'string' ? trip.mode : null, fare: typeof trip.fare === 'number' && Number.isSafeInteger(trip.fare) ? trip.fare : null, refundable: false } : null,
   };
@@ -448,8 +450,8 @@ export default {
   active: {
     travel: {
       moves: true,
-      sanitize(value, state) {
-        if (!Object.hasOwn(VENUES, value.id) || value.id === state.location) return null;
+      sanitize(value, state, ctx) {
+        if (!venueFor(ctx.cityId, value.id) || value.id === state.location) return null;
         if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;
         const valid = isModeId(value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
         if (!valid) return null;

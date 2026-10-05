@@ -200,7 +200,7 @@ function fromArchive(db: Db, deps: AccountDeps, account: AccountRecord, publicId
   const key = deps.newId();
   const record: SessionRecord = { secret: key, publicId, name: entry.name, expiresAt: deps.now() + deps.ttlMs, cities: structuredClone(entry.cities || {}), actions: entry.actions ? structuredClone(entry.actions) : {}, account: account.id,
     ...(entry.once ? { once: structuredClone(entry.once) } : {}),
-    ...(entry.character ? { character: structuredClone(entry.character) } : {}), ...(entry.legacyLives ? { legacyLives: structuredClone(entry.legacyLives) } : {}), ...(entry.onboarding === true ? { onboarding: true as const } : {}) };
+    ...(entry.character ? { character: structuredClone(entry.character) } : {}), ...(entry.legacyLives ? { legacyLives: structuredClone(entry.legacyLives) } : {}), ...(entry.legacyLifeCities ? { legacyLifeCities: structuredClone(entry.legacyLifeCities) } : {}), ...(entry.onboarding === true ? { onboarding: true as const } : {}) };
   db.sessions[key] = record;
   delete archive[publicId];
   account.sessionKey = key; account.publicId = publicId;
@@ -229,7 +229,7 @@ function park(db: Db, deps: AccountDeps, account: AccountRecord, record: Session
   db.archivedLives ||= {};
   const entry: ArchivedLife = { publicId: record.publicId, name: record.name, cities: structuredClone(record.cities || {}), archivedAt: deps.now(), account: account.id,
     ...(receiptsInline(db) ? { actions: structuredClone({ ...record.actions }), ...(record.once ? { once: structuredClone({ ...record.once }) } : {}) } : {}),
-    ...(record.character ? { character: structuredClone(record.character) } : {}), ...(record.legacyLives ? { legacyLives: structuredClone(record.legacyLives) } : {}), ...(record.onboarding === true ? { onboarding: true as const } : {}) };
+    ...(record.character ? { character: structuredClone(record.character) } : {}), ...(record.legacyLives ? { legacyLives: structuredClone(record.legacyLives) } : {}), ...(record.legacyLifeCities ? { legacyLifeCities: structuredClone(record.legacyLifeCities) } : {}), ...(record.onboarding === true ? { onboarding: true as const } : {}) };
   db.archivedLives[record.publicId] = entry;
   delete db.sessions[record.secret];
   const parked: ParkedLife = { id: record.publicId, name: record.name, at: deps.now() };

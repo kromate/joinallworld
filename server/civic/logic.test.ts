@@ -117,11 +117,11 @@ test('player text: trimmed, control and invisible characters removed, length-lim
 });
 
 test('ads: slots and prices come from content; creatives use the fixed palette only', () => {
-  assert.deepEqual(adSlot('sea', 'sea-5-3'), { kind: 'sea', slot: 'sea-5-3', row: 5, col: 3, price: SEA_PLOTS.price, days: 30, label: 'Sea plot 6·4' });
+  assert.deepEqual(adSlot('sea', 'sea-5-3', 'lagos'), { kind: 'sea', slot: 'sea-5-3', row: 5, col: 3, price: SEA_PLOTS.price, days: 30, label: 'Sea plot 6·4' });
   assert.equal(SEA_PLOTS.price, 100); assert.equal(SEA_PLOTS.days, 30);
-  assert.equal(adSlot('sea', 'sea-0-0')?.price, SEA_PLOTS.shorePrice);
-  for (const bad of ['sea-16-0', 'sea-0-16', 'sea-01-1', 'sea--1-1', 'sea-1', '__proto__', 5, null]) assert.equal(adSlot('sea', bad), null, String(bad));
-  assert.equal(adSlot('billboard', 'bb-01')?.price, BILLBOARDS.price); assert.equal(adSlot('billboard', 'bb-99'), null); assert.equal(adSlot('image', 'bb-01'), null);
+  assert.equal(adSlot('sea', 'sea-0-0', 'lagos')?.price, SEA_PLOTS.shorePrice);
+  for (const bad of ['sea-16-0', 'sea-0-16', 'sea-01-1', 'sea--1-1', 'sea-1', '__proto__', 5, null]) assert.equal(adSlot('sea', bad, 'lagos'), null, String(bad));
+  assert.equal(adSlot('billboard', 'bb-01', 'lagos')?.price, BILLBOARDS.price); assert.equal(adSlot('billboard', 'bb-99', 'lagos'), null); assert.equal(adSlot('image', 'bb-01', 'lagos'), null);
   assert.equal(validateCreative({ text: 'Mama Put', colour: 'green', icon: 'food' }).ok, true);
   assert.equal(codeOf(validateCreative({ text: 'Mama Put', colour: '#ff0000', icon: 'food' })), 'invalid_colour');
   assert.equal(codeOf(validateCreative({ text: 'Mama Put', colour: 'green', icon: '<svg>' })), 'invalid_icon');
@@ -273,11 +273,11 @@ test('gem hunt: deterministic per player and day, found by searching and by acti
   listener.on = { ...listener.on, 'gem.found': (s, data) => events.push(['gem', data.prize, data.found]), 'hunt.claimed': (s, data) => events.push(['claim', data.prize]) };
   // The merged city has opening hours and trips of 4–18 seconds: take the gems whose venue is open
   // first, wait (within the same Lagos day) for the others to open, and give every trip time to end.
-  const openNow = (gem: HuntGem) => isOpen(VENUES[gem.venue].hours, now);
+  const openNow = (gem: HuntGem) => isOpen(must(VENUES[gem.venue], 'registered venue').hours, now);
   const settle = (seconds: number) => { now += seconds * 1000; advanceLife(state, seconds, at(now)); };
   /** A free activity with no requirements that can start here right now: [spotId, activityId]. */
   const anyActivity = (venue: VenueId): [string, string] | null => {
-    for (const spot of spotsOf(venue)) for (const def of spot.activities) {
+    for (const spot of spotsOf(venue, 'lagos')) for (const def of spot.activities) {
       if (def.cost || def.choices || def.requiresJob || def.requiresSkill || def.reward || blockReason(state, def, venue, at(now))) continue;
       return [spot.id, def.id];
     }
@@ -286,10 +286,10 @@ test('gem hunt: deterministic per player and day, found by searching and by acti
   for (let left = hunt.gems.filter((gem) => !gem.found); left.length; left = hunt.gems.filter((gem) => !gem.found)) {
     let gem = left.find(openNow);
     if (!gem) {
-      gem = left.reduce((best, item) => (minutesUntilOpen(VENUES[item.venue].hours, now) < minutesUntilOpen(VENUES[best.venue].hours, now) ? item : best));
+      gem = left.reduce((best, item) => (minutesUntilOpen(must(VENUES[item.venue], 'registered venue').hours, now) < minutesUntilOpen(must(VENUES[best.venue], 'registered venue').hours, now) ? item : best));
       const refused = dispatch(state, { type: 'travel', payload: { id: gem.venue, mode: 'trek' } }, at(now, 'closed'));
       assert.equal(refused.code, 'closed', 'a gem behind a closed door waits for opening time'); assert.match(reasonOf(refused), /opens/);
-      settle(minutesUntilOpen(VENUES[gem.venue].hours, now) * 60);
+      settle(minutesUntilOpen(must(VENUES[gem.venue], 'registered venue').hours, now) * 60);
       assert.equal(lagosTime(now).day, hunt.day, 'every venue opens at some point of the same Lagos day');
     }
     if (state.location !== gem.venue) {

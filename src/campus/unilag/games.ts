@@ -17,7 +17,7 @@ import { lagosDayStart, lagosTime } from '../../game/clock.ts';
 import { DISCOVERY_TRAIL } from './content.ts';
 import { PROGRAMMES, programmeOf } from './curriculum.ts';
 import { freshCommunity } from './slices.ts';
-import { STUDENT_REQUIRED, STUDENT_REQUIRED_BLOCK, VOLUNTEER_ACTIVITY, VOLUNTEER_RULES } from './volunteer.ts';
+import { STUDENT_REQUIRED, STUDENT_REQUIRED_BLOCK, VOLUNTEER_ACTIVITY, VOLUNTEER_RULES, hasCampus } from './volunteer.ts';
 import { tablesAt } from '../../tables/places.ts';
 import type {
   CampusCandidate, CampusClubDefinition, CampusClubId, CampusDiscoveryDefinition, CampusDiscoveryId, CampusElectionRecord,
@@ -602,7 +602,7 @@ export default {
   active: {
     [CAMPUS_GAME_KIND]: { moves: false, sanitize: sanitizeCampusGame, complete: completeCampusGame },
   },
-  activities: [VOLUNTEER_ACTIVITY],
+  activitiesFor: (cityId) => hasCampus(cityId) ? [VOLUNTEER_ACTIVITY] : [],
   modifiers: {
     'activity.block'(value, state, { def }, ctx): Block<ActivityVetoCode> | null {
       if (value || def?.id !== VOLUNTEER_ACTIVITY.id) return value;

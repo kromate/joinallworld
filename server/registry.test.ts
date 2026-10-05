@@ -113,7 +113,7 @@ test('route registry: a module gets storage, sessions, settlement, actions and p
 test('route registry rejects duplicate and malformed routes at start-up and lists the core routes', () => {
   const ctx = bareContext();
   const keys = buildRoutes(ctx).keys;
-  const CORE = ['GET /api/health', 'GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/session'];
+  const CORE = ['GET /api/characters', 'GET /api/health', 'GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/characters/switch', 'POST /api/session'];
   for (const key of CORE) assert.ok(keys.includes(key), `core route ${key} is registered`);
   // Every module registers only under its own namespace; the core module is exactly the core set.
   const NAMESPACES = ['', '/api/account', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/growth/', '/api/mod/growth/', '/api/campus', '/api/world/pulse'];
@@ -313,18 +313,29 @@ test('an old-format saved life survives the refactor: state, timers, per-city en
   const loaded = await life('lagos');
   for (const key of ['cash', 'name', 'homeOwned', 'job', 'completedShifts', 'needs', 'location', 'spot', 'activeAction', 'message']) assert.deepEqual(loaded[key], lagos[key], `lagos.${key}`);
   assert.equal(loaded.v, 1); assert.equal(loaded.t, 100000);
-  const other = await life('ibadan');
-  for (const key of ['cash', 'name', 'homeOwned', 'job', 'completedShifts', 'needs', 'location', 'activeAction']) assert.deepEqual(other[key], ibadan[key], `ibadan.${key}`);
-  assert.equal(other.spot, 'bookcase', 'a save from before the Library had spots stands at its first spot');
+  const characters = await (await fetch(`${base}/api/characters`, { headers })).json() as { active: string; legacy: { id: string; city: string; cash: number }[] };
+  assert.equal(characters.active, 'lagos');
+  assert.deepEqual(characters.legacy.map(({ city, cash }) => [city, cash]), [['ibadan', 900]], 'the pre-migration second life is archived whole');
   // The stored receipt still replays as a duplicate (same fingerprint format) and a different body still conflicts.
   const replay = await fetch(`${base}/api/action`, { method: 'POST', headers, body: JSON.stringify({ actionId: oldId, cityId: 'lagos', type: 'activity', id: 'helper-shift' }) });
   const replayed = await replay.json(); assert.equal(replayed.duplicate, true); assert.equal(replayed.code, 'started'); assert.equal(replayed.state.cash, 4321);
   assert.equal((await fetch(`${base}/api/action`, { method: 'POST', headers, body: JSON.stringify({ actionId: oldId, cityId: 'lagos', type: 'activity', id: 'chill' }) })).status, 409);
   time += 12000;
   const done = await life('lagos'); assert.equal(done.cash, 4621); assert.equal(done.completedShifts, 8); assert.equal(done.activeAction, null); assert.equal(done.needs.energy, 64); assert.equal(done.needs.hunger, 19);
+  const legacy = characters.legacy[0];
+  if (!legacy) throw new Error('Expected the Ibadan legacy life');
+  const switched = await fetch(`${base}/api/characters/switch`, { method: 'POST', headers, body: JSON.stringify({ id: legacy.id, clientId: `${time}:${randomUUID()}` }) });
+  assert.deepEqual(await switched.json(), { ok: true, city: 'ibadan', serverTime: time });
   const arrived = await life('ibadan'); assert.equal(arrived.location, 'home'); assert.equal(arrived.spot, 'kitchen'); assert.equal(arrived.cash, 900); assert.equal(arrived.message, 'Arrived at Home.');
   const stored = JSON.parse(await readFile(join(dir, 'devices.json'), 'utf8')).sessions[secret];
-  assert.deepEqual(stored.actions[oldId], receipt); assert.equal(stored.publicId, publicId); assert.deepEqual(Object.keys(stored.cities).sort(), ['ibadan', 'lagos']);
+  assert.deepEqual(stored.actions[oldId], receipt); assert.equal(stored.publicId, publicId); assert.deepEqual(Object.keys(stored.cities), ['ibadan']);
+  const legacyCash = Object.values(stored.legacyLives).map((entry: unknown) => {
+    const state = typeof entry === 'object' && entry !== null ? Reflect.get(entry, 'state') : null;
+    const cash = typeof state === 'object' && state !== null ? Reflect.get(state, 'cash') : null;
+    if (typeof cash !== 'number') throw new Error('Expected a legacy life with cash');
+    return cash;
+  });
+  assert.deepEqual(legacyCash, [4621], 'switching replaced the archive slot with the complete Lagos life');
 });
 
 test('modules shared with the Cloudflare worker stay portable: no Node-only imports', async () => {

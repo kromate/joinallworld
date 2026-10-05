@@ -19,7 +19,8 @@
  * placed from the server's own `remaining ÷ duration` each time a state arrives.
  * Player text (ads) is written with textContent only and is never a link or a button.
  */
-import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.ts';
+import { COMING_SOON } from '../game/content/venues.ts';
+import { contentFor } from '../game/cities/runtime.ts';
 import { dockOf } from './insets.ts';
 import { openingInfo } from '../game/clock.ts';
 import { isDeparting } from '../game/registry.ts';
@@ -32,7 +33,6 @@ import { lgaAt } from './lga.ts';
 import { plateFit, plateWidth, spanOf } from './labels.ts';
 import type { CityPack, PackLga } from './types.ts';
 import type { Route } from './roads.ts';
-import type { VenueDefinition } from '../types/index.ts';
 import type { HouseStyle, PlotAddress } from '../types/index.ts';
 
 // ---- the contract ---------------------------------------------------------------------------------
@@ -118,12 +118,20 @@ const DRAG_START = 6, MAX_SCALE = 150, WHOLE_SCALE = 1.9, HOUSE_PIXELS = 6, MAX_
 const ICON = (path: string) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 let hintSeen = false;
-/** The venue catalogue and the coming-soon list, read by id. */
-const VENUE_TABLE: Readonly<Record<string, { hours?: VenueDefinition['hours'], category: string, icon: string }>> = VENUES;
+/** The coming-soon list, read by id. */
 const SOON_TABLE = COMING_SOON as Readonly<Record<string, { icon?: string }>>;
 
+/** Pure flat model for one loaded city catalogue. */
+export function cityFlatModel(pack: CityPack, cityId = pack.id, network = buildNetwork(pack)) {
+  const venues = Object.fromEntries(contentFor(cityId).venues.map((venue) => [venue.id, venue.definition]));
+  return flatModel(pack, network, { venues, soon: COMING_SOON });
+}
+
 export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, world = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectLga = () => {}, onSelectHouse = () => {}, deepLink = null }: Map2DOptions = {} as Map2DOptions): Map2D {
-  const network = buildNetwork(pack), model = flatModel(pack, network, { venues: VENUES, soon: COMING_SOON });
+  const content = contentFor(cityId), venueTable = Object.fromEntries(content.venues.map((venue) => [venue.id, venue.definition]));
+  const stateHouseId = content.venues.find((venue) => venue.kind === 'statehouse')?.id ?? null;
+  const govVenueIds = new Set(content.venues.filter((venue) => venue.kind === 'statehouse' || venue.kind === 'polling').map((venue) => venue.id));
+  const network = buildNetwork(pack), model = cityFlatModel(pack, cityId, network);
   const { box } = model, fit = pack.bounds.fit || { minX: box.x, maxX: box.x + box.width, minZ: box.z, maxZ: box.z + box.height };
   let state: Map2DState | null = null, layer: 'city' | 'world' = 'city', filter = 'all', selected: string | null = null, friends = new Set<string>(), destroyed = false;
   let layers: MapLayers = { billboards: false, sea: false, neighbours: false, gov: false, moving: false, lgas: true, homes: true }, data: { ads: AdsData | null, gov: GovData | null } = { ads: null, gov: null };
@@ -147,7 +155,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   const places = [...model.places, { id: 'home', kind: 'home', x: 0, z: 0 }].sort((a, b) => a.x - b.x || a.z - b.z);
   const labels = new Map<string, { node: HTMLButtonElement, name: HTMLElement, note: HTMLElement, place: { id: string, kind: string, x: number, z: number }, width: number, height: number, priority: number }>(), plates = new Map<string, { node: HTMLButtonElement, note: HTMLElement, lga: PackLga, span: ReturnType<typeof spanOf>, scale: number }>(), tags: HTMLDivElement[] = [], chips = new Map<string, { node: HTMLDivElement, chip: Chip }>();
   for (const place of places) {
-    const source = VENUE_TABLE[place.id] || SOON_TABLE[place.id];
+    const source = venueTable[place.id] || SOON_TABLE[place.id];
     const node = document.createElement('button');
     node.type = 'button'; node.className = `m3-label is-${place.kind}`; node.dataset.venue = place.id;
     const icon = document.createElement('span'); icon.className = 'm3-label-icon'; icon.setAttribute('aria-hidden', 'true'); icon.innerHTML = iconFor('venue', place.id, source?.icon);
@@ -171,23 +179,23 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   const project = (x: number, z: number) => ({ x: ox + (x - box.x) * scale, y: oy + (z - box.z) * scale });
   const ground = (px: number, py: number) => ({ x: box.x + (px - ox) / scale, z: box.z + (py - oy) / scale });
   const spotOf = (id: string | undefined): Spot | null => (id === 'home' ? homeAt : labels.get(id as string)?.place) || null;
-  const nameOf = (id: string) => (id === 'home' ? 'Home' : venueLabel(id, cityId));
+  const nameOf = (id: string) => (id === 'home' ? 'Home' : venueTable[id]?.label ?? id);
   const ownPlot = (): PlotAddress | null => { const plot = state?.estate?.plot; return plot && pack.lgas?.some((lga) => lga.id === plot.lga) ? plot : null; };
 
   function updateLabels() {
     const at = state?.t ?? 0, going = isDeparting(state) && state!.activeAction!.id !== state!.location ? state!.activeAction!.id : null;
     homeAt = homeSpot();
-    const next = JSON.stringify([state?.location, going, homeAt.x, homeAt.z, filter, selected, layers.gov, Object.values(VENUE_TABLE).map((venue) => openingInfo(venue.hours, at).status)]);
+    const next = JSON.stringify([state?.location, going, homeAt.x, homeAt.z, filter, selected, layers.gov, Object.values(venueTable).map((venue) => openingInfo(venue.hours, at).status)]);
     if (next === labelKey) return;
     labelKey = next;
     for (const [id, label] of labels) {
-      const venue = VENUE_TABLE[id], soon = label.place.kind === 'soon';
+      const venue = venueTable[id], soon = label.place.kind === 'soon';
       const opening = venue ? openingInfo(venue.hours, at) : null, open = Boolean(opening?.open), here = state?.location === id;
       const status = soon ? 'Coming soon' : here ? (going ? 'Leaving from here' : 'You are here') : going === id ? 'On the way' : open ? '' : opening?.opensAt ? `opens ${opening.opensAt}` : 'Closed';
       const dimmed = soon ? filter !== 'all' : filter === 'open' ? !open : filter !== 'all' && venue!.category !== filter && id !== 'home';
-      const district = id === 'home' ? homeAt.district : venueDistrict(id, cityId);
+      const district = id === 'home' ? homeAt.district : venue?.district ?? '';
       label.name.textContent = nameOf(id); label.note.textContent = status;
-      label.node.className = `m3-label is-${label.place.kind}${here ? ' is-here' : ''}${going === id ? ' is-going' : ''}${!soon && !open ? ' is-closed' : ''}${dimmed && !here ? ' is-dimmed' : ''}${selected === id ? ' is-selected' : ''}${layers.gov && (id === 'state-house' || id === 'polling-unit') ? ' is-gov' : ''}`;
+      label.node.className = `m3-label is-${label.place.kind}${here ? ' is-here' : ''}${going === id ? ' is-going' : ''}${!soon && !open ? ' is-closed' : ''}${dimmed && !here ? ' is-dimmed' : ''}${selected === id ? ' is-selected' : ''}${layers.gov && govVenueIds.has(id) ? ' is-gov' : ''}`;
       label.node.setAttribute('aria-label', `${nameOf(id)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
       label.node.title = `${nameOf(id)}${status ? ` · ${status}` : ''}`;
       if (here) label.node.setAttribute('aria-current', 'location'); else label.node.removeAttribute('aria-current');
@@ -215,7 +223,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       list.push({ key: `board:${slot.slot}`, kind: slot.ad ? 'board' : 'board-free', x: at.x + 5.2, z: at.z - 3.2, glyph: iconFor('ad', slot.ad?.icon ?? 'megaphone', '📢'), text: slot.ad ? slot.ad.text : '', bg: colour?.bg, ink: colour?.ink, label: slot.ad ? `Billboard on ${slot.road}: ${slot.ad.text}, by ${slot.ad.by.name}` : `Billboard on ${slot.road}: for rent` });
     }
     if (layers.sea && ads?.sea && model.sea) list.push({ key: 'sea-title', kind: 'title', x: (model.sea.x0 + model.sea.x1) / 2, z: model.sea.z0 - 2.5, glyph: iconFor('ad', 'sea', '🌊'), text: `Sea plots · ${ads.sea.plots.length} of ${ads.sea.rows * ads.sea.cols} rented`, label: `Sea plots: ${ads.sea.plots.length} of ${ads.sea.rows * ads.sea.cols} rented` });
-    if (layers.gov && data.gov) { const seat = spotOf('state-house'); if (seat) list.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, z: seat.z, glyph: iconFor('panel', 'governor', '🏛️'), text: data.gov.governor ? `Governor ${data.gov.governor.name}` : 'No Governor yet', label: data.gov.governor ? `The Governor is ${data.gov.governor.name}` : 'There is no Governor yet' }); }
+    if (layers.gov && data.gov && stateHouseId) { const seat = spotOf(stateHouseId); if (seat) list.push({ key: 'gov', kind: 'gov', lift: 40, x: seat.x, z: seat.z, glyph: iconFor('panel', 'governor', '🏛️'), text: data.gov.governor ? `Governor ${data.gov.governor.name}` : 'No Governor yet', label: data.gov.governor ? `The Governor is ${data.gov.governor.name}` : 'There is no Governor yet' }); }
     const next = JSON.stringify(list.map((chip) => [chip.key, chip.text, chip.bg]));
     if (next === chipKey) return;
     chipKey = next;
@@ -472,7 +480,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   }
   function choose(id: string) {
     selected = id; labelKey = ''; dismissHint(); updateLabels(); apply();
-    if (layers.gov && id === 'state-house') onSelectGov(); else onSelectVenue(id);
+    if (layers.gov && id === stateHouseId) onSelectGov(); else onSelectVenue(id);
   }
   function onClick(event: MouseEvent) {
     const target = event.target as Element;

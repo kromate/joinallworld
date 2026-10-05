@@ -386,6 +386,7 @@ export interface SystemDefinition<Id extends string = SystemId> {
   modifiers?: { [K in ModifierKey]?: Modifier<K> }
   /** Static activity definitions attached to venue spots. */
   activities?: AttachedActivity[]
+  activitiesFor?: (cityId: string) => AttachedActivity[]
   /** Handlers for the timed-action kinds this system owns. */
   active?: { [K in ActiveKind]?: ActiveKindHandler<Extract<ActiveAction, { kind: K }>> }
 }

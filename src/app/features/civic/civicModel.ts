@@ -138,7 +138,7 @@ export function podium(rows: readonly RichRow[]): { steps: [RichRow | undefined,
 
 // ---- club radio ----------------------------------------------------------------------------
 
-export const inClub = (state: Pick<LifeState, 'location' | 'activeAction'>): boolean => RADIO.venues.includes(state.location) && state.activeAction?.kind !== 'travel'
+export const inClub = (state: Pick<LifeState, 'location' | 'activeAction'>, radioVenueIds: readonly string[]): boolean => radioVenueIds.includes(state.location) && state.activeAction?.kind !== 'travel'
 /** What is on air at `now`, from the cached schedule. */
 export function schedule(data: Pick<RadioView, 'playing' | 'queue'> | null | undefined, now: number): { playing: RadioEntry | null; queue: RadioEntry[] } {
   const all = [...(data?.playing ? [data.playing] : []), ...(data?.queue ?? [])].filter((item) => item.endsAt > now)

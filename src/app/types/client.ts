@@ -106,6 +106,7 @@ export interface GameClient {
    * after a reload) is the SAME action to the server and is applied exactly once. Without it each call gets a fresh id.
    */
   command(type: string, payload?: unknown, options?: { actionId?: string }): Promise<{ ok: boolean; code: string; reason?: string }>
+  switchLegacy(id: string, clientId: string): Promise<SwitchCityResult>
   switchCity(id: string): Promise<SwitchCityResult>
   refresh(lostText?: string): Promise<boolean>
   schedule(): void

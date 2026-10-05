@@ -3,8 +3,9 @@
 // images and no links, so a map can draw every ad procedurally from one response.
 // Portable and pure: functions take the city's civic data and a time.
 import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from '../../src/game/content/civic.ts';
-import { adSlot } from '../../src/game/systems/civic.ts';
+import { adSlot, seaSlot } from '../../src/game/systems/civic.ts';
 import type { AdKind, AdsView, Ad } from '../../src/types/civic.ts';
+import type { BillboardSlot } from '../../src/types/content.ts';
 import type { PlayerRef } from '../../src/types/protocol.ts';
 import type { AdRecord, CivicCityRecord } from '../types.ts';
 import { field } from './data.ts';
@@ -18,6 +19,14 @@ export const AD_KINDS: readonly AdKind[] = ['billboard', 'sea'];
 const isKind = (kind: unknown): kind is AdKind => AD_KINDS.some((item) => item === kind);
 const LIMITS: Record<AdKind, number> = { billboard: BILLBOARDS.maxPerPlayer, sea: SEA_PLOTS.maxPerPlayer };
 const NOUN: Record<AdKind, string> = { billboard: 'billboards', sea: 'sea plots' };
+type SlotInfo = NonNullable<ReturnType<typeof adSlot>>;
+const slotInfo = (kind: unknown, slot: unknown, billboardRoads: readonly BillboardSlot[]): SlotInfo | null => {
+  if (kind === 'billboard' && typeof slot === 'string') {
+    const found = billboardRoads.find((entry) => entry.id === slot);
+    return found ? { kind, slot: found.id, price: BILLBOARDS.price, days: BILLBOARDS.days, near: found.near, road: found.road, label: `Billboard · ${found.road}` } : null;
+  }
+  return kind === 'sea' ? seaSlot(slot) : null;
+};
 
 /** Validate the creative. Returns { ok: true, creative: { text, colour, icon } } or { ok: false, code, reason }. */
 export function validateCreative(input: unknown): { ok: false; code: string; reason: string } | { ok: true; creative: Creative } {
@@ -33,13 +42,13 @@ const live = (ad: AdRecord | null | undefined, now: number): ad is AdRecord => !
 const book = (city: CivicCityRecord, kind: AdKind): Record<string, AdRecord> => city.ads[kind];
 
 /** Drop expired ads (call inside a write). */
-export function pruneAds(city: CivicCityRecord, now: number): void {
-  for (const kind of AD_KINDS) for (const [slot, ad] of Object.entries(book(city, kind))) if (!live(ad, now) || !adSlot(kind, slot)) delete book(city, kind)[slot];
+export function pruneAds(city: CivicCityRecord, now: number, billboardRoads: readonly BillboardSlot[] = BILLBOARDS.slots): void {
+  for (const kind of AD_KINDS) for (const [slot, ad] of Object.entries(book(city, kind))) if (!live(ad, now) || !slotInfo(kind, slot, billboardRoads)) delete book(city, kind)[slot];
 }
 
 /** Why `playerId` cannot rent this slot now, or null. The wallet is checked by the rules engine. */
-export function rentBlock(city: CivicCityRecord, now: number, playerId: string, kind: unknown, slot: unknown): Block | null {
-  const info = adSlot(kind, slot);
+export function rentBlock(city: CivicCityRecord, now: number, playerId: string, kind: unknown, slot: unknown, billboardRoads: readonly BillboardSlot[] = BILLBOARDS.slots): Block | null {
+  const info = slotInfo(kind, slot, billboardRoads);
   if (!info) return { code: 'invalid_slot', reason: 'Choose a billboard or sea plot from the list.' };
   const current = book(city, info.kind)[info.slot];
   if (live(current, now)) {
@@ -51,10 +60,10 @@ export function rentBlock(city: CivicCityRecord, now: number, playerId: string, 
   return null;
 }
 
-export function rent(city: CivicCityRecord, now: number, who: PlayerRef, kind: unknown, slot: unknown, creative: Creative): AdRecord {
-  const info = adSlot(kind, slot);
+export function rent(city: CivicCityRecord, now: number, who: PlayerRef, kind: unknown, slot: unknown, creative: Creative, billboardRoads: readonly BillboardSlot[] = BILLBOARDS.slots): AdRecord {
+  const info = slotInfo(kind, slot, billboardRoads);
   if (!info) throw new Error('invalid_slot');
-  pruneAds(city, now);
+  pruneAds(city, now, billboardRoads);
   return (book(city, info.kind)[info.slot] = { by: { id: who.id, name: who.name }, ...creative, at: now, expiresAt: now + info.days * DAY_MS });
 }
 
@@ -92,14 +101,14 @@ const shown = (ad: AdRecord, info: { price: number }, viewerId: string | null): 
  *   Ad = { text, colour, icon, by: { id, name }, at, expiresAt, mine, price }
  * `colour` and `icon` are ids into `palette`; `text` is plain text that the renderer must escape.
  */
-export function adsView(city: CivicCityRecord, now: number, viewerId: string | null = null): AdsView {
-  const slots = BILLBOARDS.slots.map((entry) => {
+export function adsView(city: CivicCityRecord, now: number, viewerId: string | null = null, billboardRoads: readonly BillboardSlot[] = BILLBOARDS.slots): AdsView {
+  const slots = billboardRoads.map((entry) => {
     const ad = book(city, 'billboard')[entry.id];
     return { slot: entry.id, near: entry.near, road: entry.road, price: BILLBOARDS.price, ad: live(ad, now) ? shown(ad, BILLBOARDS, viewerId) : null };
   });
   const plots: AdsView['sea']['plots'] = [];
   for (const [slot, ad] of Object.entries(book(city, 'sea'))) {
-    const info = adSlot('sea', slot);
+    const info = seaSlot(slot);
     if (info && info.kind === 'sea' && live(ad, now)) plots.push({ slot, row: info.row, col: info.col, ...shown(ad, info, viewerId) });
   }
   plots.sort((a, b) => a.row - b.row || a.col - b.col);

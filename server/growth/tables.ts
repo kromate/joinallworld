@@ -38,7 +38,8 @@ import { lagosTime } from '../../src/game/clock.ts';
 import { makeRng } from '../../src/game/util.ts';
 import { TABLE_REWARDS } from '../../src/game/content/growth.ts';
 import { venueLabel } from '../../src/game/content/venues.ts';
-import { TABLES, BOT_NAMES, tableById } from '../../src/tables/places.ts';
+import { cityContent } from '../../src/game/cities/index.ts';
+import { BOT_NAMES } from '../../src/tables/places.ts';
 import type { TableDef } from '../../src/tables/places.ts';
 import { GAMES } from '../../src/tables/games.ts';
 import { RulesError, RATING, cleanOptions, eloChange, withNames } from '../../src/tables/rules.ts';
@@ -49,7 +50,7 @@ import { count } from './metrics.ts';
 import type { CityId } from '../../src/types/protocol.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { TableGameId, TableOptionValue, TableRating, TableResultMine, TableStateFrame, TableSummary, TablesFrame } from '../../src/types/growth.ts';
-import type { GrowthCollection, RouteContext, SessionRecord, WsConnection } from '../types.ts';
+import type { GrowthCityTablesRecord, GrowthCollection, GrowthPlayerRecord, PendingTableResult, RouteContext, SessionRecord, WsConnection } from '../types.ts';
 
 /** Timings. A test may shorten them; nothing else should. */
 export const TUNING = { botDelayMs: 900, awayForfeitMs: 120000, resetMs: 45000, missesToForfeit: 3, maxSockets: 40, logLines: 30, minMovesEach: 2, keepAwakeMs: 45000 };
@@ -57,6 +58,27 @@ const isRecord = (value: unknown): value is Record<string, unknown> => value !==
 const refuse = (code: string, reason: string) => Object.assign(new Error(code), { reason });
 const ready = (state: LifeState | null | undefined): state is LifeState => Boolean(state) && !(state?.onboarding?.required === true && state.onboarding.done !== true);
 const messageOf = (error: unknown): unknown => (typeof error === 'object' && error !== null && 'message' in error ? error.message : undefined);
+
+/** Ratings are city-local. Legacy ratings predate multi-city play and therefore belong to Lagos. */
+export function ratingsForCity(g: GrowthCollection, cityId: CityId): NonNullable<GrowthCityTablesRecord['ratings']> {
+  if (!g.tables.cities) g.tables.cities = {};
+  let city = g.tables.cities[cityId];
+  if (!city) {
+    city = cityId === 'lagos' && g.tables.ratings ? { ratings: g.tables.ratings } : {};
+    g.tables.cities[cityId] = city;
+  }
+  if (!city.ratings) city.ratings = {};
+  if (cityId === 'lagos') g.tables.ratings = city.ratings;
+  return city.ratings;
+}
+
+/** Remove only results earned in this city. Other-city wins wait for the character to return there. */
+export function takePendingTableResults(player: GrowthPlayerRecord | null, cityId: CityId, limit = 12): PendingTableResult[] {
+  if (!player) return [];
+  const due = player.wins.filter((result) => (result.cityId ?? 'lagos') === cityId).slice(0, limit);
+  player.wins = player.wins.filter((result) => !due.includes(result));
+  return due;
+}
 
 // ---- one game, with its state type hidden ---------------------------------------------------------
 //
@@ -199,12 +221,18 @@ function buildService(ctx: RouteContext) {
   const tables = new Map<string, Table>();
   /** publicId → the key of the table that player is seated at */
   const seated = new Map<string, string>();
+  const gameId = (value: string): TableGameId | null => (value === 'whot' || value === 'penalty' ? value : null);
+  const places = (cityId: CityId): TableDef[] => cityContent(cityId).tablePlaces.flatMap((place) => {
+    const game = gameId(place.game);
+    return game ? [{ id: place.id, venue: place.venueId, game, label: place.label, seats: place.seats }] : [];
+  });
+  const venueName = (cityId: CityId, venueId: string): string => cityContent(cityId).venues.find((venue) => venue.id === venueId)?.name ?? venueLabel(venueId, cityId);
 
   function tableOf(cityId: unknown, id: unknown): Table {
     const city = ctx.cityIds.find((item) => item === cityId);
     if (city === undefined) throw refuse('invalid_city', 'That city is not available.');
-    const place = typeof id === 'string' ? tableById(id) : null;
-    if (!place || !Object.hasOwn(GAMES, place.game)) throw refuse('unknown_table', 'That table does not exist.');
+    const place = typeof id === 'string' ? places(city).find((entry) => entry.id === id) ?? null : null;
+    if (!place) throw refuse('unknown_table', 'That table does not exist.');
     const key = `${city}:${place.id}`;
     let table = tables.get(key);
     if (!table) {
@@ -220,7 +248,7 @@ function buildService(ctx: RouteContext) {
 
   /** What anyone may know about a table: who sits, whether a game is on. Never a card. */
   function summary(table: Table): TableSummary {
-    return { id: table.place.id, venue: table.place.venue, venueLabel: venueLabel(table.place.venue, table.cityId), game: table.place.game, gameLabel: table.game.label, label: table.place.label,
+    return { id: table.place.id, venue: table.place.venue, venueLabel: venueName(table.cityId, table.place.venue), game: table.place.game, gameLabel: table.game.label, label: table.place.label,
       status: table.status, max: Math.min(table.place.seats, table.game.seats.max), min: table.game.seats.min, options: table.options,
       seats: table.seats.map((seat) => ({ name: seat.name, bot: seat.bot, ...(seat.bot ? {} : { id: seat.id, away: seat.away > 0 }), ...(seat.left ? { left: true as const } : {}) })),
       watching: new Set([...table.sockets].map((ws) => ws.session.id).filter((id) => seatIndex(table, id) < 0)).size };
@@ -340,11 +368,10 @@ function buildService(ctx: RouteContext) {
     try {
       await ctx.store.transact((db) => {
         const g = growthOf(ctx, db), book = g.tables, day = lagosTime(t).day;
-        count(g, t, `table.${calledOff ? 'abandoned' : 'finished'}.${game}`);
+        count(g, t, table.cityId, `table.${calledOff ? 'abandoned' : 'finished'}.${game}`);
         if (calledOff) return;
-        if (!isRecord(book.ratings)) book.ratings = {};
         if (!isRecord(book.pairs) || book.pairs.day !== day) book.pairs = { day, counts: {} };
-        const ratings = book.ratings, pairs = book.pairs;
+        const ratings = ratingsForCity(g, table.cityId), pairs = book.pairs;
         const pairKey = (a: string, b: string) => [a, b].sort().join('|');
         // A game counts for a player when at least one real opponent is someone they have not yet played the day's limit against.
         const fresh = (id: string) => humans.some(({ seat }) => seat.id !== id && (pairs.counts[pairKey(id, seat.id)] ?? 0) < TABLE_REWARDS.pairGamesPerDay);
@@ -368,15 +395,15 @@ function buildService(ctx: RouteContext) {
         }
         humans.forEach(({ seat, index }, i) => {
           const player = playerOf(g, seat.id), won = outcome.winners.includes(index);
-          const entry = { id: match.id, game, label, won, human: humans.length > 1, counted: counted[seat.id] === true };
+          const entry = { cityId: table.cityId, id: match.id, game, label, won, human: humans.length > 1, counted: counted[seat.id] === true };
           const change = changes?.[i], rated = ratings[seat.id]?.[game];
           per[seat.id] = { won, draw: outcome.draw, human: entry.human, counted: entry.counted, ...(changes && rated && change !== undefined ? { rating: rated.rating, change } : {}) };
           if (!player) return;
-          player.table = { game, label, won, at: t };
+          player.table = { cityId: table.cityId, game, label, won, at: t };
           if (!Array.isArray(player.wins)) player.wins = [];
           if (player.wins.length < 12) player.wins.push(entry);
         });
-        count(g, t, humans.length > 1 ? 'table.human' : 'table.bot');
+        count(g, t, table.cityId, humans.length > 1 ? 'table.human' : 'table.bot');
       });
     } catch (error) {
       // The write failed, so nothing was recorded: the table says so instead of promising a reward.
@@ -413,7 +440,7 @@ function buildService(ctx: RouteContext) {
       if (cityId === undefined) throw refuse('invalid_city', 'That city is not available.');
       const venue = typeof message.venue === 'string' ? message.venue : null;
       ws.tablesVenue = venue ? `${cityId}:${venue}` : null;
-      return { type: 'tables', cityId, venue, tables: TABLES.filter((place) => Object.hasOwn(GAMES, place.game) && (!venue || place.venue === venue)).map((place) => summary(tableOf(cityId, place.id))) };
+      return { type: 'tables', cityId, venue, tables: places(cityId).filter((place) => !venue || place.venue === venue).map((place) => summary(tableOf(cityId, place.id))) };
     },
     watch(ws: WsConnection, message: Frame): void {
       limit(ws);
@@ -431,7 +458,7 @@ function buildService(ctx: RouteContext) {
       if (seated.has(id)) throw refuse('already_seated', 'You are sitting at another table. Leave it first.');
       if (table.seats.length >= Math.min(table.place.seats, table.game.seats.max)) throw refuse('table_full', 'Every seat at this table is taken.');
       if (table.seats.some((seat) => ctx.checks?.blocked?.(id, seat.id) === true)) throw refuse('table_closed', 'You cannot sit at this table right now.');
-      if (!(await atVenue(ws, table))) throw refuse('not_here', `Go to ${venueLabel(table.place.venue, table.cityId)} to sit at this table. You can watch from anywhere.`);
+      if (!(await atVenue(ws, table))) throw refuse('not_here', `Go to ${venueName(table.cityId, table.place.venue)} to sit at this table. You can watch from anywhere.`);
       if (table.status !== 'open' || seatIndex(table, id) >= 0 || seated.has(id) || table.seats.length >= Math.min(table.place.seats, table.game.seats.max)) throw refuse('table_changed', 'The table changed while you were sitting down. Try again.');
       attach(ws, table);
       table.seats.push({ id, name: ws.session.name, bot: false, away: 0 });
@@ -467,7 +494,7 @@ function buildService(ctx: RouteContext) {
       match.botAt = engine.toMove().some((index) => seatOf(table, index).bot) ? now() + TUNING.botDelayMs : null;
       log(table, `${table.game.label} begins: ${names(table).join(', ')}.`);
       const humans = table.seats.filter((seat) => !seat.bot).length;
-      ctx.store.transact((db) => count(growthOf(ctx, db), now(), `table.started.${table.place.game}`), { durable: false }).catch(() => {});
+      ctx.store.transact((db) => count(growthOf(ctx, db), now(), table.cityId, `table.started.${table.place.game}`), { durable: false }).catch(() => {});
       broadcast(table);
       await pump(table);
       return { humans };
@@ -520,7 +547,7 @@ function buildService(ctx: RouteContext) {
      */
     claim(g: GrowthCollection, session: SessionRecord, state: LifeState, cityId: CityId) {
       const player = playerOf(g, session.publicId, { create: false }), results: { game: TableGameId; label: string; won: boolean; code: string }[] = [];
-      for (const result of (player?.wins ?? []).splice(0, 12)) {
+      for (const result of takePendingTableResults(player, cityId)) {
         const done = ctx.act(state, { type: 'growth.table-result', cityId, payload: { game: result.game, label: result.label, won: result.won, human: result.human, counted: result.counted },
           stateGuard: 'the pending table result is removed from the queue in this same transaction' });
         results.push({ game: result.game, label: result.label, won: result.won, code: done.code });
@@ -528,8 +555,8 @@ function buildService(ctx: RouteContext) {
       return { ok: true as const, code: 'claimed' as const, results, material: results.length > 0, ...(results.length ? { state } : {}) };
     },
     /** The caller's ratings, for their own screen. */
-    ratings(g: GrowthCollection, id: string): Partial<Record<TableGameId, TableRating>> {
-      return Object.fromEntries(Object.entries(g.tables?.ratings?.[id] ?? {}).map(([game, rating]) => [game, { rating: rating.rating, played: rating.played, won: rating.won, provisional: rating.played < RATING.provisionalGames }]));
+    ratings(g: GrowthCollection, id: string, cityId: CityId = 'lagos'): Partial<Record<TableGameId, TableRating>> {
+      return Object.fromEntries(Object.entries(ratingsForCity(g, cityId)[id] ?? {}).map(([game, rating]) => [game, { rating: rating.rating, played: rating.played, won: rating.won, provisional: rating.played < RATING.provisionalGames }]));
     },
   };
   ctx.on?.('heartbeat', () => { void api.pumpAll(); });

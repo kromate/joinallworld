@@ -51,6 +51,7 @@ import type { Pose } from './characters.ts';
 import { playerOptions, rigOf } from './avatar-rig.ts';
 import { createWalkGrid } from './movement.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
+import { housesFor } from '../game/cities/housingRuntime.ts';
 import { HOUSE_DESIGNS } from '../game/content/world.ts';
 import { footprint, windowSlot, doorSlot } from '../game/home-layout.ts';
 import type * as THREE from 'three';
@@ -88,9 +89,6 @@ type Figure = ReturnType<typeof buildAvatar>;
 interface Guest { id: unknown; name: unknown; kind: unknown; look: unknown; seed: unknown }
 const FURNITURE = CATALOGUE as unknown as Readonly<Record<string, FurnitureDefinition | undefined>>;
 const KINDS = KIND_TABLE as unknown as Readonly<Record<string, { spot: string | null } | undefined>>;
-/** homeOf(state, designs): the rented tier, or the design of the house the player built (housing.js types `designs` as null: it is a table). */
-const houseOf = homeOf as unknown as (state: LifeState | null | undefined, designs: unknown) => { grid: number };
-
 const ROOM = 10;         // world units along each wall, whatever the grid size
 const WALL_HEIGHT = 3.4;
 const WALL_ITEM_Y = 1.95;
@@ -310,7 +308,7 @@ export function buildHomeScene(kit: Kit) {
   }
 
   function rebuild(state: LifeState | null) {
-    const house = houseOf(state, HOUSE_DESIGNS);   // the rented tier, or the design of the house the player built
+    const house = homeOf(state, HOUSE_DESIGNS, state ? housesFor(state.estate.city) : undefined); // the rented tier, or the design of the house the player built
     if (house.grid !== grid) { grid = house.grid; tile = ROOM / grid; buildRoom(); }
     furniture.clear(); overlay.clear();
     const items = Array.isArray(state?.home?.items) ? state.home.items : [];

@@ -7,7 +7,7 @@
  * event is on there counts as attending it, once per occurrence.
  *
  * STATE — state.events
- *   attended   [occurrenceKey] — the last occurrences attended, newest last (so each counts once)
+ *   attended   [occurrenceKey] — city-qualified outside Lagos; the last occurrences attended, newest last
  *   count      lifetime events attended
  *   spray      { day, spent } — naira sprayed on that Lagos day;  sprayed  lifetime naira sprayed
  *
@@ -20,18 +20,31 @@
  */
 import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, isDeparting } from '../registry.ts';
-import { fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
+import { fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
 import { canAfford, changeNeeds, debit } from '../api.ts';
 import { SPRAY } from '../content/calendar.ts';
 import { eventAtVenue, eventsAt } from '../calendar.ts';
 import type { SystemDefinition, TypedActionHandler } from '../../types/registry.ts';
 import type { LifeContext, LifeState } from '../../types/life.ts';
+import { cachedCityContent, isCityId } from '../cities/registry.ts';
+import { contentFor } from '../cities/runtime.ts';
 
 const KEEP = 24;
-const KEY = /^[a-z0-9-]{1,40}:\d{1,7}$/;
+const DAY = /^\d{1,7}$/;
+const occurrenceKey = (value: unknown): string | null => {
+  if (typeof value !== 'string') return null;
+  const parts = value.split(':');
+  if (parts.length === 2 && isId(parts[0]) && DAY.test(parts[1] ?? '') && contentFor('lagos').events.some((event) => event.id === parts[0])) return value; // deployed Lagos key
+  if (parts.length === 3 && isCityId(parts[0]) && isId(parts[1]) && DAY.test(parts[2] ?? '')) {
+    const origin = cachedCityContent(parts[0]);
+    if (origin && !origin.events.some((event) => event.id === parts[1])) return null;
+    return value;
+  }
+  return null;
+};
 const nowOf = (state: LifeState, ctx: LifeContext): number => (finite(ctx?.now) && ctx.now > 0 ? ctx.now : state.t);
-const here = (state: LifeState, ctx: LifeContext) => (isDeparting(state) ? null : eventAtVenue(nowOf(state, ctx), state.location, ctx?.cityId ?? 'lagos'));
+const here = (state: LifeState, ctx: LifeContext) => (isDeparting(state) ? null : eventAtVenue(nowOf(state, ctx), state.location, ctx.cityId));
 const sprayedToday = (state: LifeState, ctx: LifeContext): number => (state.events.spray.day === lagosTime(nowOf(state, ctx)).day ? state.events.spray.spent : 0);
 
 export const spray: TypedActionHandler<'events.spray'> = (state, payload, ctx) => {
@@ -76,7 +89,7 @@ export default {
     const saved = isRecord(input.events) ? input.events : {};
     const attended: unknown[] = Array.isArray(saved.attended) ? saved.attended : [];
     state.events = {
-      attended: [...new Set(attended.filter((key): key is string => typeof key === 'string' && KEY.test(key)))].slice(-KEEP),
+      attended: [...new Set(attended.flatMap((key) => { const clean = occurrenceKey(key); return clean ? [clean] : []; }))].slice(-KEEP),
       count: safeCount(saved.count) ? saved.count : 0,
       spray: isRecord(saved.spray) && safeCount(saved.spray.day) && safeCount(saved.spray.spent) && saved.spray.spent <= SPRAY.perDay ? { day: saved.spray.day, spent: saved.spray.spent } : { day: 0, spent: 0 },
       sprayed: safeCount(saved.sprayed) ? saved.sprayed : 0,
@@ -85,7 +98,7 @@ export default {
   view(state, ctx) {
     const now = nowOf(state, ctx), event = here(state, ctx), spent = sprayedToday(state, ctx);
     return {
-      live: eventsAt(now, ctx?.cityId ?? 'lagos').map((item) => ({ id: item.id, key: item.key, venue: item.venue, attended: state.events.attended.includes(item.key) })),
+      live: eventsAt(now, ctx.cityId).map((item) => ({ id: item.id, key: item.key, venue: item.venue, attended: state.events.attended.includes(item.key) })),
       here: event ? { id: event.id, key: event.key, title: event.title, spray: event.spray, attended: state.events.attended.includes(event.key) } : null,
       spray: { amounts: SPRAY.amounts, perDay: SPRAY.perDay, spentToday: spent, left: Math.max(0, SPRAY.perDay - spent) },
       count: state.events.count, sprayed: state.events.sprayed,

@@ -1,3 +1,4 @@
+import { contentFor, venueFor } from './cities/runtime.ts';
 /**
  * OWNER: growth
  * The events calendar as pure functions of a server time: what is on now, what is coming, and an
@@ -12,13 +13,15 @@ import type { CalendarEvent, VenueDefinition } from '../types/content.ts';
 
 /** The calendar as the functions below read it: any event may carry any of its `when` fields. */
 type WhenFields = Partial<{ weekday: number; start: string; end: string; from: number; to: number }>;
-/** One occurrence of an event: server ms; `key` is unique per occurrence. */
+/** One occurrence of an event: server ms; eventsBetween qualifies `key` by city outside Lagos. */
 export interface Occurrence {
   id: string
   key: string
   start: number
   end: number
 }
+/** Lagos keeps its deployed key; every other city qualifies the same local event id. */
+export const eventOccurrenceKey = (cityId: string, eventId: string, day: number): string => cityId === 'lagos' ? `${eventId}:${day}` : `${cityId}:${eventId}:${day}`;
 /** VENUES read by an arbitrary id (an event may name a venue that is not in the build). */
 const venuesById: Record<string, VenueDefinition | undefined> = VENUES;
 
@@ -55,9 +58,9 @@ export function occurrenceOn(event: CalendarEvent | null | undefined, day: numbe
   return { id: event.id, key: `${event.id}:${day}`, start, end: start + length };
 }
 
-const known = (event: CalendarEvent, cityId: string): boolean => Object.hasOwn(VENUES, event.venue) && typeof venueLabel(event.venue, cityId) === 'string';
+const known = (event: CalendarEvent, cityId: string): boolean => Boolean(venueFor(cityId, event.venue)) && typeof venueLabel(event.venue, cityId) === 'string';
 const describe = (event: CalendarEvent, occurrence: Occurrence, cityId: string, now: number): CalendarOccurrence => ({
-  id: event.id, key: occurrence.key, title: event.title, blurb: event.blurb, venue: event.venue, venueLabel: venueLabel(event.venue, cityId), icon: event.icon,
+  id: event.id, key: eventOccurrenceKey(cityId, event.id, lagosTime(occurrence.start).day), title: event.title, blurb: event.blurb, venue: event.venue, venueLabel: venueLabel(event.venue, cityId), icon: event.icon,
   start: occurrence.start, end: occurrence.end, live: now >= occurrence.start && now < occurrence.end,
   spray: event.spray === true, table: event.table ?? null,
 });
@@ -67,7 +70,7 @@ const describe = (event: CalendarEvent, occurrence: Occurrence, cityId: string, 
  * for its whole length is left out: a closed door never hosts.
  * `from` and `to` are server ms.
  */
-export function eventsBetween(from: number, to: number, cityId = 'lagos', calendar: readonly CalendarEvent[] = EVENTS_CALENDAR): CalendarOccurrence[] {
+export function eventsBetween(from: number, to: number, cityId: string, calendar: readonly CalendarEvent[] = contentFor(cityId).events): CalendarOccurrence[] {
   const out: CalendarOccurrence[] = [];
   if (!Number.isFinite(from) || !Number.isFinite(to) || to <= from) return out;
   // An occurrence may have started the day before (a club night past midnight).
@@ -75,7 +78,7 @@ export function eventsBetween(from: number, to: number, cityId = 'lagos', calend
     for (const event of calendar) {
       const occurrence = occurrenceOn(event, day);
       if (!occurrence || occurrence.end <= from || occurrence.start >= to || !known(event, cityId)) continue;
-      const hours = venuesById[event.venue]?.hours;
+      const hours = venueFor(cityId, event.venue)?.hours;
       if (hours && !isOpen(hours, occurrence.start) && !isOpen(hours, occurrence.end - 60000)) continue;
       out.push(describe(event, occurrence, cityId, from));
     }
@@ -84,13 +87,13 @@ export function eventsBetween(from: number, to: number, cityId = 'lagos', calend
 }
 
 /** What is on at `now`. */
-export const eventsAt = (now: number, cityId = 'lagos', calendar: readonly CalendarEvent[] = EVENTS_CALENDAR): CalendarOccurrence[] => eventsBetween(now, now + 1, cityId, calendar).filter((event) => event.live);
+export const eventsAt = (now: number, cityId: string, calendar: readonly CalendarEvent[] = contentFor(cityId).events): CalendarOccurrence[] => eventsBetween(now, now + 1, cityId, calendar).filter((event) => event.live);
 /** What is on now or starts within `days` days, soonest first. */
-export const upcomingEvents = (now: number, days = 7, cityId = 'lagos', calendar: readonly CalendarEvent[] = EVENTS_CALENDAR): CalendarOccurrence[] => eventsBetween(now, now + days * DAY, cityId, calendar);
+export const upcomingEvents = (now: number, days: number, cityId: string, calendar: readonly CalendarEvent[] = contentFor(cityId).events): CalendarOccurrence[] => eventsBetween(now, now + days * DAY, cityId, calendar);
 /** The live event at a venue, or null. */
-export const eventAtVenue = (now: number, venue: string, cityId = 'lagos', calendar: readonly CalendarEvent[] = EVENTS_CALENDAR): CalendarOccurrence | null => eventsAt(now, cityId, calendar).find((event) => event.venue === venue) ?? null;
+export const eventAtVenue = (now: number, venue: string, cityId: string, calendar: readonly CalendarEvent[] = contentFor(cityId).events): CalendarOccurrence | null => eventsAt(now, cityId, calendar).find((event) => event.venue === venue) ?? null;
 /** Is anything on during the Lagos day that contains `now`? */
-export const hasEventToday = (now: number, cityId = 'lagos', calendar: readonly CalendarEvent[] = EVENTS_CALENDAR): boolean => { const start = lagosDayStart(lagosTime(now).day); return eventsBetween(Math.max(now, start), start + DAY, cityId, calendar).length > 0; };
+export const hasEventToday = (now: number, cityId: string, calendar: readonly CalendarEvent[] = contentFor(cityId).events): boolean => { const start = lagosDayStart(lagosTime(now).day); return eventsBetween(Math.max(now, start), start + DAY, cityId, calendar).length > 0; };
 
 const stamp = (ms: number): string => new Date(ms).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
 const fold = (text: unknown): string => String(text ?? '').replace(/[\\;,]/g, (c) => `\\${c}`).replace(/[\r\n]+/g, ' ');

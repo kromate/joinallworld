@@ -82,7 +82,7 @@ registerSystem(asSystem({
     { id: 'test-choice', label: 'Test Choice', duration: 9, choices: [{ id: 'poem', label: 'Poem', duration: 3, effects: { fun: 7 } }, { id: 'song', label: 'Song', cost: 50, chargeOn: 'start', effects: { social: 9 } }], where: { venue: 'park', spot: 'stall', spotLabel: 'Test stall' } },
   ],
 }));
-rebuildCatalogue();
+rebuildCatalogue('lagos');
 const atDrinks = (saved: Record<string, unknown> = {}, now = MONDAY_9AM): ProbeLife => createLife({ spot: 'drinks', ...saved }, at(now)) as ProbeLife;
 
 test('registry: every system declares disjoint state keys and sanitize writes only those', () => {
@@ -214,7 +214,7 @@ test('needs never trap a player: home is a free trek away and restores without p
   assert.equal(found(state.activeAction, 'the trek').duration, 18, 'the trek home from Freedom Park crosses the lagoon');
   advanceLife(state, 18, at(MONDAY_9AM + 18000));
   assert.equal(state.location, 'home');
-  const free = spotsOf('home').flatMap(spot => spot.activities).filter(def => !def.unavailable && !def.cost && !def.minimumNeeds && !def.requiresJob && !def.requiresSkill && !def.consumes && !def.hours);
+  const free = spotsOf('home', 'lagos').flatMap(spot => spot.activities).filter(def => !def.unavailable && !def.cost && !def.minimumNeeds && !def.requiresJob && !def.requiresSkill && !def.consumes && !def.hours);
   const recovered: NeedId[] = ['hunger', 'energy', 'hygiene'];
   for (const need of recovered) assert.ok(free.some(def => (def.effects?.[need] ?? 0) > 0 || (def.effectsPerSecond?.[need] ?? 0) > 0), `free ${need} recovery at home`);
   assert.equal(VENUES.home.hours, undefined);
@@ -383,7 +383,7 @@ test('inventory consumption, production and completion moodlets', () => {
 });
 
 test('choice activities and system-contributed spots', () => {
-  assert.ok(spotsOf('park').some(spot => spot.id === 'stall' && spot.label === 'Test stall'));
+  assert.ok(spotsOf('park', 'lagos').some(spot => spot.id === 'stall' && spot.label === 'Test stall'));
   const state = createLife(null, at(MONDAY_9AM));
   assert.equal(dispatch(state, { type: 'spot', payload: { id: 'stall' } }).code, 'selected');
   assert.equal(dispatch(state, { type: 'spot', payload: { id: 'nowhere' } }).code, 'invalid_spot');

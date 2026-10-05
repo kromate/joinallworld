@@ -15,7 +15,7 @@ import type { FetchJson } from '../../types/client.ts'
 import type { ToastKind } from '../../types/panel.ts'
 
 export type { TableGameId, TableOptionValue, TableRating, TableResultMine, TableSeat, TableStateFrame, TableSummary } from '../../../types/growth.ts'
-export { GAME_LABELS, TABLES, tableById, tablesAt } from './tablesPlaces.ts'
+export { GAME_LABELS, tableById, tablesAt, tablesFor } from './tablesPlaces.ts'
 export type { TablePlace } from './tablesPlaces.ts'
 
 /** The `api` the client is handed (the legacy panel contract, only what client.js calls). */

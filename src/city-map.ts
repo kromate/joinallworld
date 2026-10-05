@@ -1,3 +1,4 @@
+import { CITY_MAPS } from './map3d/city-labels.ts';
 /**
  * OWNER: world
  * The simple city map: a flat schematic of the city (mainland, island, lagoon, bridges) with one
@@ -54,19 +55,22 @@
  * A link with ?venue=<id> opens that venue's card once the life has loaded.
  */
 import './city-map.css';
-import { VENUES, COMING_SOON, HOME_SPOTS, DEFAULT_HOME, CITY_MAPS, venueLabel, venueDistrict } from './game/content/venues.ts';
+import { COMING_SOON } from './game/content/venues.ts';
+import { contentFor } from './game/cities/runtime.ts';
+import { defaultHouseFor, housingFor } from './game/cities/housingRuntime.ts';
 import { isOpen } from './game/clock.ts';
 import { isDeparting } from './game/registry.ts';
 import { iconFor } from './ui/icon-map.ts';
 import type { CityMapNames, MapPoint, VenueDefinition } from './types/index.ts';
 import type { AdsData, GovData, MapLayers, MapUiDetail, NeighboursData } from './map3d/map2d.ts';
 
-/** The venue catalogue, the coming-soon list, the home spots and the city names, read by id. */
-type PinSource = { id: string; category?: string; icon?: string; map: MapPoint; hours?: VenueDefinition['hours'] };
-const VENUE_TABLE: Readonly<Record<string, PinSource>> = VENUES;
+/** The coming-soon list and compatibility city names, read by id. */
+type PinSource = { id: string; label?: string; district?: string; category?: string; icon?: string; map: MapPoint; hours?: VenueDefinition['hours'] };
 const SOON_TABLE: Readonly<Record<string, PinSource>> = COMING_SOON as Readonly<Record<string, PinSource>>;
-const HOME_TABLE: Readonly<Record<string, { district: string; map: MapPoint }>> = HOME_SPOTS;
-const CITY_TABLE: Readonly<Record<string, CityMapNames>> = CITY_MAPS;
+const CITY_TABLE: Readonly<Partial<Record<string, CityMapNames>>> = CITY_MAPS;
+
+export const svgVenueTable = (cityId: string): Readonly<Record<string, PinSource>> => Object.fromEntries(contentFor(cityId).venues.map((venue) => [venue.id, venue.definition]));
+export const svgHomeTable = (cityId: string) => Object.fromEntries(housingFor(cityId).map(({ definition, spot }) => [definition.id, spot]));
 
 /** The part of the life state this map reads (a full LifeState fits). */
 export interface CityMapState {
@@ -164,17 +168,21 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
   container.appendChild(root);
   let view: HTMLElement | null = null, worldNode: HTMLElement | null = null, canvas: HTMLElement | null = null, controls: Record<string, HTMLElement | undefined> = {};
 
-  const homeSpot = () => HOME_TABLE[Object.hasOwn(HOME_SPOTS, state?.travel?.home as string) ? state!.travel!.home! : DEFAULT_HOME]!;
+  const venueTable = () => svgVenueTable(cityId);
+  const homeTable = () => svgHomeTable(cityId);
+  const stateHouseId = () => contentFor(cityId).venues.find((venue) => venue.kind === 'statehouse')?.id ?? null;
+  const govVenueIds = () => new Set(contentFor(cityId).venues.filter((venue) => venue.kind === 'statehouse' || venue.kind === 'polling').map((venue) => venue.id));
+  const homeSpot = () => { const homes = homeTable(); return homes[state?.travel?.home ?? ''] ?? homes[defaultHouseFor(cityId).id]!; };
   const places = () => [
-    ...Object.values(VENUE_TABLE).map((venue) => (venue.id === 'home' ? { ...venue, map: homeSpot().map, district: homeSpot().district, kind: 'home' } : { ...venue, kind: 'venue' })),
+    ...Object.values(venueTable()).map((venue) => (venue.id === 'home' ? { ...venue, map: homeSpot().map, district: homeSpot().district, kind: 'home' } : { ...venue, kind: 'venue' })),
     ...Object.values(SOON_TABLE).map((place) => ({ ...place, kind: 'soon' })),
   ].sort((a, b) => a.map.x - b.map.x || a.map.y - b.map.y);
-  const pointOf = (id: string | undefined): MapPoint | undefined => (id === 'home' ? homeSpot().map : (VENUE_TABLE[id as string] || SOON_TABLE[id as string])?.map);
+  const pointOf = (id: string | undefined): MapPoint | undefined => (id === 'home' ? homeSpot().map : (venueTable()[id ?? ''] || SOON_TABLE[id ?? ''])?.map);
 
   function build() {
     const names = CITY_TABLE[cityId] || CITY_TABLE.lagos!;
     root.innerHTML = `<div class="cmap-view"><div class="cmap-world"><div class="cmap-canvas" role="group" aria-label="Map of the city. Choose a place to see it and travel there. Drag to move the map; plus and minus zoom; zero shows the whole city.">${backdrop(names)}${places().map((place) =>
-      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${iconFor('venue', place.id, place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId))}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-trip" data-trip aria-hidden="true"></div><div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
+      `<button type="button" class="cmap-pin is-${place.kind}" data-venue="${esc(place.id)}" data-category="${esc(place.category || place.kind)}"><span class="cmap-pin-icon" aria-hidden="true">${iconFor('venue', place.id, place.icon)}</span><span class="cmap-pin-name">${esc(place.kind === 'home' ? 'Home' : place.label ?? place.id)}</span><span class="cmap-pin-note"></span></button>`).join('')}<div class="cmap-trip" data-trip aria-hidden="true"></div><div class="cmap-overlay" data-overlay></div></div><section class="cmap-sea" data-sea hidden aria-label="Sea plots"></section></div></div>
       <div class="cmap-controls" role="group" aria-label="Map view"><button type="button" data-cmap="in" aria-label="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-cmap="out" aria-label="Zoom out">${ICON('<path d="M5 12h14"/>')}</button><button type="button" class="cmap-fit" data-cmap="fit" aria-label="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" data-cmap="me" aria-label="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}</button></div>
       <p class="cmap-hint" data-hint ${hintSeen ? 'hidden' : ''}>Drag to look around. Choose a place to travel there.</p>`;
     view = root.querySelector('.cmap-view'); worldNode = root.querySelector('.cmap-world'); canvas = root.querySelector('.cmap-canvas');
@@ -399,14 +407,14 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
   /** Reflect the state in class names and labels. Touches the DOM only when something changed. */
   function update() {
     if (!built) return;
-    const now = state?.t ?? 0, home = homeSpot();
+    const now = state?.t ?? 0, home = homeSpot(), venues = venueTable();
     const going = isDeparting(state) ? state!.activeAction!.id : null; // a trip or the commute
-    const openIds = Object.values(VENUE_TABLE).filter((venue) => isOpen(venue.hours, now)).map((venue) => venue.id).join(',');
+    const openIds = Object.values(venues).filter((venue) => isOpen(venue.hours, now)).map((venue) => venue.id).join(',');
     const next = [state?.location, going, home.map.x, home.map.y, filter, selected, openIds].join('|');
     if (next === signature) return;
     signature = next;
     for (const pin of root.querySelectorAll<HTMLButtonElement>('.cmap-pin')) {
-      const id = pin.dataset.venue!, venue = VENUE_TABLE[id], soon = !venue;
+      const id = pin.dataset.venue!, venue = venues[id], soon = !venue;
       const here = state?.location === id, open = venue ? isOpen(venue.hours, now) : false;
       const place = id === 'home' ? home.map : (venue || SOON_TABLE[id])!.map;
       pin.style.left = `${place.x}%`; pin.style.top = `${place.y}%`;
@@ -424,9 +432,9 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
       const note = pin.querySelector('.cmap-pin-note')!;
       note.textContent = status;
       note.className = `cmap-pin-note${status === 'Closed' ? ' is-quiet' : ''}`;
-      const district = id === 'home' ? home.district : venueDistrict(id, cityId);
-      pin.setAttribute('aria-label', `${id === 'home' ? 'Home' : venueLabel(id, cityId)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
-      pin.title = `${id === 'home' ? 'Home' : venueLabel(id, cityId)}${status ? ` · ${status}` : ''}`;
+      const district = id === 'home' ? home.district : venue?.district ?? '';
+      pin.setAttribute('aria-label', `${id === 'home' ? 'Home' : venue?.label ?? id}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
+      pin.title = `${id === 'home' ? 'Home' : venue?.label ?? id}${status ? ` · ${status}` : ''}`;
       if (here) pin.setAttribute('aria-current', 'location'); else pin.removeAttribute('aria-current');
     }
   }
@@ -459,7 +467,7 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
     const boardIcon = (className: string, id: string | undefined) => { const node = make('span', className); node.innerHTML = iconFor('ad', id, ads?.palette?.icons?.find((item) => item.id === id)?.icon); return node; };
     if (layers.billboards && ads) {
       for (const slot of ads.billboards!.slots) {
-        const venue = VENUE_TABLE[slot.near];
+        const venue = venueTable()[slot.near];
         if (!venue) continue;
         const place = slot.near === 'home' ? home.map : venue.map;
         const board = make('div', `cmap-board${slot.ad ? '' : ' is-free'}`);
@@ -479,7 +487,7 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
     }
     if (layers.neighbours && overlay.neighbours) {
       for (const group of overlay.neighbours.districts) {
-        const spot = HOME_TABLE[group.id];
+        const spot = homeTable()[group.id];
         if (!spot || !group.count) continue;
         const hood = make('div', 'cmap-hood');
         hood.style.left = `${spot.map.x}%`; hood.style.top = `${spot.map.y + 7.5}%`;
@@ -499,7 +507,7 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
       }
     }
     if (layers.gov && overlay.gov) {
-      const seat = VENUE_TABLE['state-house'];
+      const seat = stateHouseId() ? venueTable()[stateHouseId()!] : null;
       if (seat) {
         const label = make('div', 'cmap-gov', overlay.gov.governor ? `Governor ${overlay.gov.governor.name}` : 'No Governor yet');
         label.style.left = `${seat.map.x}%`; label.style.top = `${seat.map.y - 7.5}%`;
@@ -507,7 +515,8 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
       }
     }
     host.replaceChildren(...nodes);
-    for (const pin of root.querySelectorAll<HTMLElement>('.cmap-pin')) pin.classList.toggle('is-gov', layers.gov && ['state-house', 'polling-unit'].includes(pin.dataset.venue!));
+    const civic = govVenueIds();
+    for (const pin of root.querySelectorAll<HTMLElement>('.cmap-pin')) pin.classList.toggle('is-gov', layers.gov && civic.has(pin.dataset.venue!));
     // Sea plots: a block of open water below the city.
     seaHost.hidden = !(layers.sea && ads);
     shown = ''; // the world's height changes with the sea plots
@@ -546,7 +555,7 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
     dismissHint();
     update();
     // With the Gov layer on, the State House opens the Governor sheet instead of the travel card.
-    if (layers.gov && pin.dataset.venue === 'state-house') { onSelectGov(); return; }
+    if (layers.gov && pin.dataset.venue === stateHouseId()) { onSelectGov(); return; }
     onSelectVenue(pin.dataset.venue!);
   }
   function onUi(event: Event) {
@@ -604,7 +613,7 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
       // A shared link opens its venue card once, after the life has loaded.
       if (deepLink) {
         const id = deepLink; deepLink = null;
-        if (Object.hasOwn(VENUES, id) || Object.hasOwn(COMING_SOON, id)) { selected = id; update(); onSelectVenue(id); }
+        if (Object.hasOwn(venueTable(), id) || Object.hasOwn(COMING_SOON, id)) { selected = id; update(); onSelectVenue(id); }
       }
     },
     /** The container was shown or changed size: set the opening view the first time, afterwards only keep it in bounds. */

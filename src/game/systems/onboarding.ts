@@ -114,8 +114,9 @@ import { bonusNeeds, fxModifiers } from '../character-effects.ts';
 import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, FEELING_LINES, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, START_NEEDS,
   TRAITS, TRAITS_REQUIRED, WARDROBE_BASICS, ACCESSORY_BASICS } from '../content/traits.ts';
 
-import { VENUES } from '../content/venues.ts';
 import { lgaOf, lgasOf, cityRules } from '../content/world.ts';
+import { venueFor } from '../cities/runtime.ts';
+import { housesFor } from '../cities/housingRuntime.ts';
 
 /** An accessory of the catalogue: its id and the slot it is worn in. */
 type AccessoryEntry = Appearance['accessories'][number];
@@ -155,7 +156,7 @@ const isTraitId = (id: unknown): id is TraitId => typeof id === 'string' && Obje
 const isDreamId = (id: unknown): id is DreamId => typeof id === 'string' && Object.hasOwn(DREAMS, id);
 const isLotteryId = (id: unknown): id is LotteryId => typeof id === 'string' && Object.hasOwn(LOTTERY, id);
 const isStartHomeId = (id: unknown): id is StartHomeId => typeof id === 'string' && Object.hasOwn(START_HOMES, id);
-const isVenueId = (id: unknown): id is VenueId => typeof id === 'string' && Object.hasOwn(VENUES, id);
+const isVenueId = (id: unknown, cityId: string): id is VenueId => typeof id === 'string' && Boolean(venueFor(cityId, id));
 const isKind = (kind: unknown): kind is WardrobeKind => typeof kind === 'string' && (KINDS as readonly string[]).includes(kind);
 /** Whether `value` is one of `known` (any type of value may be asked). */
 const isOneOf = (known: readonly unknown[], value: unknown): boolean => known.includes(value);
@@ -352,10 +353,10 @@ const actions = {
       o.playedAt = finite(ctx.now) ? ctx.now : state.t;
       startNeeds(state);
       const spot = WELCOME_SPOT[state.location];
-      if (spot && !state.activeAction && spotsOf(state.location).some((item) => item.id === spot)) state.spot = spot;
+      if (spot && !state.activeAction && spotsOf(state.location, ctx.cityId).some((item) => item.id === spot)) state.spot = spot;
     }
     // A visitor who came by a friend's link is welcomed by the one banner that says who they are joining (`joining`).
-    state.message = payload?.joining === true ? '' : `Welcome to ${VENUES[state.location]?.label ?? 'the city'}, ${state.name}.`;
+    state.message = payload?.joining === true ? '' : `Welcome to ${venueFor(ctx.cityId, state.location)?.label ?? 'the city'}, ${state.name}.`;
     return ok(state, 'playing');
   },
   'onboarding.arrive': { serverOnly: true, refusal: 'Joining a friend is done from their invite link.', run(state, payload, ctx) {
@@ -363,7 +364,7 @@ const actions = {
     if (!isGuest(o) || o.required) return fail(state, 'not_a_guest', 'Only a brand-new guest is brought to a friend’s venue. Use the Map to go there.');
     if (o.joined) return fail(state, 'already_joined', 'You have already joined a friend once. Use the Map to go there.');
     if (o.bornAt === null || now - o.bornAt > JOIN_WINDOW_MS) return fail(state, 'join_window_closed', 'That invite brings you along only in your first minutes. Use the Map to go there.');
-    const venue = isVenueId(payload?.venue) && payload.venue !== 'home' ? payload.venue : null;
+    const venue = isVenueId(payload?.venue, ctx.cityId) && payload.venue !== 'home' ? payload.venue : null;
     if (!venue) return fail(state, 'invalid_venue', 'That is not a public venue.');
     const stop = busy(state, 'Finish or cancel your current action first.');
     if (stop) return stop;
@@ -438,7 +439,7 @@ const actions = {
     const blocked = notDone(state) || needStep(state, 4) || (stay ? null : busy(state, 'Finish or cancel your current action before moving in.'));
     if (blocked) return blocked;
     const o = state.onboarding, outcome = outcomeOf(state);
-    const city = state.estate?.city ?? ctx.cityId;
+    const city = state.estate.city;
     const wantsLga = payload?.lga !== undefined && payload?.lga !== null, unit = wantsLga ? lgaOf(city, payload.lga) : null;
     if (wantsLga && !unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(city).length} local governments of ${cityRules(city)?.name ?? 'this city'}.`);
     const rented = payload?.house !== undefined && payload?.house !== null;
@@ -625,7 +626,7 @@ export default {
       lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery!.at } : null, // outcomeOf found it through o.lottery
       /** The start a new life is offered: its own starter house, free, in the local government it chooses. */
       own: { startCash: outcome ? outcome.ownCash : null, rent: 0 },
-      homes: Object.values(START_HOMES).map((home) => {
+      homes: Object.values(START_HOMES).filter((home) => housesFor(state.estate.city).some((house) => house.id === home.id)).map((home) => {
         const locked = outcome ? homeLock(outcome, home.id) : null;
         return { ...home, startCash: outcome && !locked ? outcome.startCash[home.id]! : null, locked }; // not locked: homeLock found the start cash
       }),

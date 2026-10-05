@@ -13,6 +13,7 @@ import type {
   JobId, LgaId, LotteryId, MissionId, MissionTitleId, NeedId, NeedMap, NpcId, OutfitColourId, OutfitId, PerkId, RoadsideEventId,
   SkillId, SkillMap, SkinId, SpotId, StarterGoalId, StartHomeId, TierId, TraitId, TravelModeId, VenueId, WardrobeKind, WishId,
 } from './life.ts'
+import type { CityPack } from '../map3d/types.ts'
 
 // ---- shared pieces ------------------------------------------------------------------------
 
@@ -1122,6 +1123,201 @@ export interface CityLink {
 /** A link as seen from one city (world.js linksFrom): `a`/`b` replaced by the other end. */
 export interface CityLinkFrom extends Omit<CityLink, 'a' | 'b'> {
   to: WorldCityId
+}
+
+// ---- city modules -------------------------------------------------------------------------
+
+/** A country's stable catalogue identity. Geography and display names are separate on purpose. */
+export interface CityCountry<Country extends string = string> {
+  id: Country
+  name: string
+}
+
+/** A state can contain several playable cities. `unit` is the public name of its subdivisions. */
+export interface CityState<State extends string = string> {
+  id: State
+  name: string
+  unit: string
+}
+
+/** A rented-home district belongs to exactly one local unit in one city. */
+export interface CityDistrict<LocalUnit extends string = string, DistrictId extends string = string> {
+  id: DistrictId
+  name: string
+  localUnitId: LocalUnit
+}
+
+/** A transport hub used by links leaving a city. */
+export interface CityHub<HubId extends string = string> {
+  id: HubId
+  name: string
+  mode: CityLinkMode | 'rail'
+  venueId?: string
+}
+
+/** The shared Nigeria frame uses x east, z south, in whole 100 m units. */
+export interface CityMapOrigin {
+  x: number
+  z: number
+}
+
+/** Country and state atlas marker. It is independent of the city map's projection anchor. */
+export interface CityAtlasMarker {
+  lon: number
+  lat: number
+  stand?: 'low' | 'high'
+  teaser: string
+  preview?: readonly string[]
+}
+
+/**
+ * A lightweight map descriptor. Geometry is a separate lazy chunk owned by the map subsystem;
+ * the city catalogue carries the shared-frame contract and the ids it must contain.
+ */
+export interface CityMapPack<City extends string = string, LocalUnit extends string = string> {
+  cityId: City
+  origin: CityMapOrigin
+  projection: 'nigeria-equirectangular-v1'
+  unitsPerKm: 10
+  localUnitIds: readonly LocalUnit[]
+  stateFeatureId: string
+  loadScene: () => Promise<CityPack>
+  loadGeometry: () => Promise<CityMapGeometry>
+}
+
+export type LonLatRing = readonly (readonly [number, number])[]
+export type LonLatPolygon = readonly LonLatRing[]
+
+/** Decoded shared-frame geometry. Shared borders originate from one topology arc. */
+export interface CityMapGeometry {
+  localUnits: Readonly<Record<string, readonly LonLatPolygon[]>>
+  /** The part of the state this city opens. Local units plus local water tile this footprint. */
+  playArea: readonly LonLatPolygon[]
+  /** Full first-level state outline for overview and travel. Several city modules may share it. */
+  state: readonly LonLatPolygon[]
+  water: readonly LonLatPolygon[]
+  gridDegrees: number
+  sharedArcCount: number
+  source: string
+  licence: string
+}
+
+/** Existing Lagos positions stay in their current map frame until geodetic venue data is authored. */
+export type CityVenuePosition =
+  | { kind: 'lon-lat'; lon: number; lat: number }
+  | { kind: 'legacy-map'; point: MapPoint }
+
+/** A city's use of one existing venue scene and activity definition. */
+export interface CityVenueContent<City extends string = string> {
+  cityId: City
+  id: string
+  kind: SceneKind
+  name: string
+  district: string
+  position: CityVenuePosition
+  hours?: OpeningHours
+  whatYouCanDo: string
+  definition: VenueDefinition
+  spotWording: Readonly<Record<string, { label?: string; caption?: string }>>
+  activityWording: Readonly<Record<string, string>>
+}
+
+export interface CityRegularContent<City extends string = string> {
+  cityId: City
+  id: string
+  venueId: string
+  definition: NpcDefinition
+}
+
+export interface CityWorkplaceContent {
+  careerId: string
+  venueId: string
+  definition: JobDefinition
+}
+
+export interface CityTablePlace {
+  id: string
+  venueId: string
+  game: string
+  label: string
+  seats: number
+}
+
+export interface CityGuidePlace {
+  venueId: string
+  name: string
+  line: string
+}
+
+export interface CityCultureCard {
+  greeting: string
+  food: readonly string[]
+  knownFor: readonly string[]
+}
+
+export interface CityHousingContent {
+  definition: HouseDefinition
+  spot: HomeMapSpot
+}
+
+/** Prose and gameplay catalogues. This object is loaded only when the city is entered or previewed. */
+export interface CityContent<City extends string = string> {
+  cityId: City
+  venues: readonly CityVenueContent<City>[]
+  regulars: readonly CityRegularContent<City>[]
+  workplaces: readonly CityWorkplaceContent[]
+  /** Career ids intentionally unavailable in this city. Together with workplaces this is exhaustive. */
+  unavailableCareerIds: readonly string[]
+  housing: readonly CityHousingContent[]
+  events: readonly CalendarEvent[]
+  starterGoals: readonly StarterGoal[]
+  wishes: readonly WishDefinition[]
+  radioVenueIds: readonly string[]
+  billboardRoads: readonly BillboardSlot[]
+  tablePlaces: readonly CityTablePlace[]
+  thingsToDo: readonly CityGuidePlace[]
+  culture: CityCultureCard
+}
+
+/** Eager metadata needed by validation, storage compatibility, prices and travel. */
+export interface CityModuleRules<
+  City extends string = string,
+  State extends string = string,
+  LocalUnit extends string = string,
+  DistrictId extends string = string,
+  HubId extends string = string,
+> extends Omit<CityRules, 'id' | 'status' | 'units'> {
+  id: City
+  status: 'open'
+  state: CityState<State>
+  country: CityCountry
+  timezone: string
+  atlas: CityAtlasMarker
+  mapOrigin: CityMapOrigin
+  units: readonly (Omit<LgaDefinition, 'id' | 'districts'> & { id: LocalUnit; districts: DistrictId[] })[]
+  districts: readonly CityDistrict<LocalUnit, DistrictId>[]
+  rentedHomeIds: readonly string[]
+  defaultRentedHome: string
+  /** Job ids whose mechanics are available in this city; enough to retain a foreign held job while its content is cold. */
+  careerIds: readonly string[]
+  /** The campus (rules and scene) this city carries, if any. The campus loads on demand, and only for a city that names it. */
+  campus?: 'unilag'
+  hubs: readonly CityHub<HubId>[]
+  links: readonly CityLink[]
+}
+
+/** One folder supplies the eager rules and two independently lazy chunks for a playable city. */
+export interface CityModule<
+  City extends string = string,
+  State extends string = string,
+  LocalUnit extends string = string,
+  DistrictId extends string = string,
+  HubId extends string = string,
+> {
+  id: City
+  rules: CityModuleRules<City, State, LocalUnit, DistrictId, HubId>
+  loadContent: () => Promise<CityContent<City>>
+  loadMap: () => Promise<CityMapPack<City, LocalUnit>>
 }
 
 // ---- missions (content/missions.js) -------------------------------------------------------

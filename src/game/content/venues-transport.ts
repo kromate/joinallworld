@@ -10,15 +10,15 @@
  * cost, a cooldown and a place in the GIG_DAILY_LIMIT paid gigs a Lagos day allows.
  *
  * The airport's Travel desk does not sell tickets. Travel between cities is the country map's
- * business (systems/estate.ts 'estate.relocate', over CITY_LINKS); the desk only reads the
+ * business (systems/estate.ts 'estate.relocate', over the city link registry); the desk only reads the
  * flights that already exist there and says which cities they wait for.
  */
-import { CITY_RULES, linksFrom } from './world.ts';
+import { cityRules, linksFrom } from '../cities/registry.ts';
 import type { VenueDefinition } from '../../types/content.ts';
 
 const list = (names: string[]): string => (names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0] ?? '');
-/** Cities a flight out of Lagos is defined for (CITY_LINKS) but that are not open yet. */
-const waiting = [...new Set(linksFrom('lagos').filter((link) => link.mode === 'air' && CITY_RULES[link.to]?.status !== 'open').map((link) => CITY_RULES[link.to].name))];
+/** Cities a flight out of Lagos is defined for but that are not open yet. */
+const waiting = [...new Set(linksFrom('lagos').filter((link) => link.mode === 'air' && cityRules(link.to)?.status !== 'open').map((link) => cityRules(link.to)?.name ?? link.to))];
 const flightsLine = waiting.length ? `Flights to ${list(waiting)} begin when those cities open` : 'Flights to other cities leave from the country map';
 
 export const AIRPORT: VenueDefinition = {

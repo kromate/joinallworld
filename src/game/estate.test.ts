@@ -209,7 +209,7 @@ test('renting stays a choice: moving to a rented home restarts the weekly rent, 
 test('cities connect as data, and a trip to a city that is not open is refused with the reason and charges nothing', () => {
   assert.equal(CITY_RULES.lagos.status, 'open');
   const soon: WorldCityId[] = ['ibadan', 'abuja', 'port-harcourt'];
-  for (const id of soon) assert.equal(CITY_RULES[id].status, 'soon');
+  for (const id of soon) { const city = CITY_RULES[id]; assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
   for (const link of CITY_LINKS) { assert.ok(CITY_RULES[link.a] && CITY_RULES[link.b] && ['road', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   const cash = state.cash;
@@ -236,7 +236,8 @@ test('one character between cities: money, skills and people travel; the home le
   assert.equal(act(state, 'cancel', {}).code, 'no_cancel');
   assert.deepEqual([state.activeAction?.kind, state.estate.city], ['intercity', 'lagos']);
   settle(state, MONDAY_9AM + 121000);
-  assert.deepEqual([state.estate.city, state.location, state.activeAction, state.estate.plot], ['ibadan', 'home', null, null]);
+  assert.deepEqual([state.estate.city, state.location, state.activeAction, state.estate.plot, state.estate.lga], ['ibadan', 'park', null, null, null]);
+  assert.equal(hasPlace(state), false, 'a first arrival is a visitor until a local government is chosen');
   assert.deepEqual(found(state.estate.away.lagos, 'the home left in lagos').plot, { lga: 'ikeja', estate: 4, plot: 20 });
   assert.equal(found(state.estate.away.lagos, 'the home left in lagos').style.wall, 3);
   assert.deepEqual([state.skills, state.onboarding.look, state.cash], [skills, look, cash - 3500]);
@@ -253,10 +254,10 @@ test('one character between cities: money, skills and people travel; the home le
 
 test('hostile saves: every field of the slice is rebuilt or dropped', () => {
   const hostile = createLife({ estate: { city: 'mars', lga: '__proto__', lgaAt: 1e30, lgaConfirmed: 'yes', plot: { lga: 'ikeja', estate: -1, plot: 1e9 }, old: 'x', tier: 'palace', style: { wall: 400, roof: null },
-    upgrade: { to: 'villa', cost: -5, startedAt: 0, doneAt: 1e30 }, living: 'hotel', ground: { week: 1e30, arrears: -4 }, away: { mars: {}, lagos: {}, abuja: { tier: 'villa', plot: { lga: 'x', estate: 0, plot: 0 } } }, nudged: 1 } }, at());
+    upgrade: { to: 'villa', cost: -5, startedAt: 0, doneAt: 1e30 }, living: 'hotel', ground: { week: 1e30, arrears: -4 }, away: { mars: {}, lagos: {}, abuja: { tier: 'villa', plot: { lga: 'x', estate: 0, plot: 0 } }, ibadan: { tier: 'villa', plot: { lga: 'x', estate: 0, plot: 0 } } }, nudged: 1 } }, at());
   const e = hostile.estate;
   assert.deepEqual([e.city, e.lga, e.lgaAt, e.lgaConfirmed, e.plot, e.old, e.tier, e.upgrade, e.living, e.ground, e.nudged], ['lagos', 'lagos-mainland', null, false, null, null, 'starter', null, 'rent', { week: null, arrears: 0 }, false]);
-  assert.deepEqual(Object.keys(e.away), ['abuja']); assert.equal(found(e.away.abuja, 'an abuja residence').plot, null);
+  assert.deepEqual(Object.keys(e.away), ['ibadan'], 'known legacy homes remain; unregistered and atlas-only labels are not residences'); assert.equal(found(e.away.ibadan, 'a legacy Ibadan residence').plot, null);
   assert.equal(lgaOf('lagos', 'constructor'), null);
   // An upgrade can never be made to last longer than its tier allows.
   const long = createLife({ estate: { lga: 'ikeja', upgrade: { to: 'bq', cost: 60000, startedAt: MONDAY_9AM - 1000, doneAt: MONDAY_9AM + 1e12 } } }, at());

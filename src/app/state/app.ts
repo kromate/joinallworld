@@ -12,16 +12,15 @@ import type { Panel, PanelApi, ShellMode, VuePanel } from '../types/panel.ts'
 import type { CityView, PlayerLook, SceneWorld, WorldMap } from '../types/scene.ts'
 import type { PlayerActionType } from '../../types/actions.ts'
 import type { CommandArgs, CommandResult } from '../types/client.ts'
-import { NPCS } from '../../game/content/npcs.ts'
+import { contentFor, regularsFor } from '../../game/cities/runtime.ts'
 import { isDeparting } from '../../life.ts'
 import { roomJoinNeeded } from '../../client.ts'
-import { venueLabel } from '../../game/content/venues.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
 import { linkWords } from '../../ui/link.ts'
 import { captureLink, forgetDraft, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
 import { deviceToken } from '../features/growth/boundary.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
-import { tableById } from '../../tables/places.ts'
+import { tableById } from '../../tables/city-places.ts'
 import { loadPeople, onPeople, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
 import { funnelEvents, funnelSnap } from '../../quick-start/model.ts'
 import { telemetry } from '../../telemetry/index.ts'
@@ -74,11 +73,12 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   })
 
   const playerLook = (): PlayerLook => ({ look: game.state.value.onboarding?.look, seed: game.session.value?.id ?? 'you', name: game.state.value.name || game.client.identity.name })
+  const cityVenueLabel = (id: string, cityId: string): string => contentFor(cityId).venues.find((venue) => venue.id === id)?.name ?? id
   function showPlayer(): void { scene.venue.value?.setPlayer(playerLook()); scene.city.value?.setPlayer(playerLook()) }
   /** The crowd in the scene, from real data only: the server's who-is-here listing and the venue's regulars. */
   function showCrowd(): void {
     const state = game.state.value
-    const npcs = isDeparting(state) ? [] : Object.values(NPCS).filter((npc) => npc.venue === state.location)
+    const npcs = isDeparting(state) ? [] : regularsFor(game.cityId.value).filter((npc) => npc.venue === state.location)
     scene.venue.value?.setCrowd(crowdList({ players: playersHere(social.people, state, game.cityId.value), npcs, selfId: game.session.value?.id ?? null, positions }))
   }
   onPeople(showCrowd)
@@ -132,7 +132,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
   const community = installCommunity({
     game,
-    venueLabel,
+    venueLabel: cityVenueLabel,
     status: (text, error = false) => { game.net.value = { text, error } },
     toast: (text, kind) => game.toast(text, kind),
     onMembers,
@@ -162,7 +162,6 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
 
   let lastPlot: string | null = null
-  let followingCity = false
   game.on('accepted', (state, previous) => {
     const moved = previous.location !== state.location
     // The funnel, from the server's own state: each event once, when it happens.
@@ -183,6 +182,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     shownTrip = trip
     const city = scene.city.value
     if (moved) {
+      if (state.estate.city !== previous.estate.city) scene.venue.value?.setState(state)
       scene.venue.value?.setLocation(state.location)
       // Arrived while watching the trip: the map shows the arrival for a moment, then the venue comes up.
       if (game.mode.value === 'map' && city && isDeparting(previous)) { city.setState(state); city.arrive(showVenue) }
@@ -196,12 +196,11 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     showPlayer()
     showCrowd()
     showGoal()
-    // One character: the life has arrived in another city. The server files it under that city (asked for here, so it is
-    // done before the new city's life is requested), then the game follows it there.
-    if (state.estate?.city && state.estate.city !== game.cityId.value && !followingCity) {
-      followingCity = true
-      const to = state.estate.city
-      game.fetchJson(`/api/world/me?city=${game.cityId.value}`).catch(() => undefined).finally(() => { followingCity = false; void switchCity(to) })
+    if (state.estate.city !== previous.estate.city) {
+      scene.world.value?.setCity(state.estate.city)
+      scene.city.value?.setCity(state.estate.city)
+      placeSent = false
+      if (!state.estate.lga) shell.open('city', { city: state.estate.city })
     }
     // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
     const plot = state.estate?.plot
@@ -258,9 +257,9 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     refresh: () => game.refresh(),
     open: (id, params) => shell.open(id, params),
     toast: (text) => game.toast(text),
-    venueLabel: (id) => venueLabel(id, game.cityId.value),
-    welcomeText: () => `Welcome to ${venueLabel(game.state.value.location, game.cityId.value)}, ${game.state.value.name || game.client.identity.name}.`,
-    tableExists: (id) => tableById(id) !== null,
+    venueLabel: (id) => cityVenueLabel(id, game.cityId.value),
+    welcomeText: () => `Welcome to ${cityVenueLabel(game.state.value.location, game.cityId.value)}, ${game.state.value.name || game.client.identity.name}.`,
+    tableExists: (id) => tableById(game.cityId.value, id) !== null,
     deviceToken,
     track,
     cleanAddress() { try { if (location.pathname !== '/' || location.search) history.replaceState(null, '', '/') } catch { /* the address stays as it was */ } },

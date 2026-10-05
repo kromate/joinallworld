@@ -12,12 +12,12 @@
  *   seed      integer — fixes which missions this life is dealt each day
  *   day       Lagos day the daily set belongs to;  daily   [{ id, n, marks, claimed }]
  *   week      Lagos week the weekly set belongs to; weekly  [{ id, n, marks, claimed }]
- *               n = progress, marks = venue ids already counted (for 'venue' missions)
+ *               n = progress, marks = city-qualified visit ids already counted (Lagos keeps raw venue ids)
  *   rerolls   daily swaps used on `day`
  *   sets      { day, week } — the Lagos day / week whose set bonus was already granted (0 = none)
  *   active    { days, last } — Lagos days with any counted activity (only ever goes up), and the last one
  *   stamps    { week, days, paid } — this week's stamp card
- *   visited   { week, list } — venues arrived at this Lagos week (for "somewhere new")
+ *   visited   { week, list } — city-qualified places reached this Lagos week (for "somewhere new")
  *   paidDay   last Lagos day a paid activity was counted as a day worked
  *   titles    [titleId] earned;  claimed  lifetime missions claimed
  *
@@ -38,12 +38,13 @@ import type { LagosTime } from '../clock.ts';
 import type { LifeContext, LifeState, MissionDefinition, MissionEntry, MissionRow, MissionSet, MissionTitleId, SystemDefinition, VenueId } from '../../types/index.ts';
 import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
-import { fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
+import { fail, finite, isId, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, lagosDayStart } from '../clock.ts';
 import { canCredit, credit } from '../api.ts';
-import { VENUES } from '../content/venues.ts';
 import { DAILY_MISSIONS, DAY_TITLES, MISSION_KINDS, MISSION_REWARDS, STAMP_CARD, WEEKLY_MISSIONS, WEEK_TITLE } from '../content/missions.ts';
 import { hasEventToday } from '../calendar.ts';
+import { venueFor } from '../cities/runtime.ts';
+import { cachedCityContent, isCityId } from '../cities/registry.ts';
 
 type Scope = 'daily' | 'weekly';
 const POOLS: Record<Scope, readonly MissionDefinition[]> = { daily: DAILY_MISSIONS, weekly: WEEKLY_MISSIONS };
@@ -60,12 +61,25 @@ const nowOf = (state: LifeState, ctx: LifeContext | undefined): number => (finit
 const need = (def: MissionDefinition): number => def.count ?? 1;
 const done = (entry: MissionEntry): boolean => entry.n >= need(defOf(entry.id));
 const scopeOf = (state: LifeState, id: string): Scope | null => (state.missions.daily.some((entry) => entry.id === id) ? 'daily' : state.missions.weekly.some((entry) => entry.id === id) ? 'weekly' : null);
+export const visitIdentity = (cityId: string, venueId: string): string => cityId === 'lagos' ? venueId : `${cityId}:${venueId}`;
+const cleanVisitIdentity = (value: unknown, currentCity: string): string | null => {
+  if (typeof value !== 'string') return null;
+  const separator = value.indexOf(':');
+  if (separator < 0) {
+    if (venueFor('lagos', value)) return value; // deployed Lagos keys keep their original shape
+    return venueFor(currentCity, value) ? visitIdentity(currentCity, value) : null;
+  }
+  const cityId = value.slice(0, separator), venueId = value.slice(separator + 1);
+  if (!isCityId(cityId) || !isId(venueId)) return null;
+  if ((cityId === 'lagos' || cachedCityContent(cityId)) && !venueFor(cityId, venueId)) return null;
+  return `${cityId}:${venueId}`;
+};
 
 /** Can this mission be done at all by this life today? A mission that cannot is never dealt. */
 function doable(def: MissionDefinition, state: LifeState, ctx: LifeContext | undefined): boolean {
   if (def.needs === 'job' && !state.job) return false;
-  if (def.needs === 'event' && !hasEventToday(nowOf(state, ctx), ctx?.cityId ?? 'lagos')) return false;
-  if (Array.isArray(def.go) && !Object.hasOwn(VENUES, def.go[0] ?? '')) return false;
+  if (def.needs === 'event' && !hasEventToday(nowOf(state, ctx), state.estate.city)) return false;
+  if (Array.isArray(def.go) && !venueFor(state.estate.city, def.go[0])) return false;
   return true;
 }
 
@@ -74,7 +88,7 @@ function doable(def: MissionDefinition, state: LifeState, ctx: LifeContext | und
  * scope, period) and for what is doable at the moment of dealing.
  */
 export function dealMissions(state: LifeState, scope: Scope, period: number, ctx: LifeContext | undefined, exclude: readonly string[] = []): MissionEntry[] {
-  const rng = makeRng(`missions|${ctx?.cityId ?? 'lagos'}|${scope}|${period}|${state.missions.seed}`);
+  const rng = makeRng(`missions|${state.estate.city}|${scope}|${period}|${state.missions.seed}`);
   const picked: MissionEntry[] = [];
   for (const kind of MISSION_KINDS) {
     const options = POOLS[scope].filter((def) => def.kind === kind && doable(def, state, ctx) && !exclude.includes(def.id));
@@ -196,14 +210,14 @@ export function rerollMission(state: LifeState, payload: Record<string, unknown>
   return ok(state, 'rerolled');
 }
 
-function sanitizeList(value: unknown, scope: Scope): MissionEntry[] {
+function sanitizeList(value: unknown, scope: Scope, cityId: string): MissionEntry[] {
   const out: MissionEntry[] = [];
   const saved: unknown[] = Array.isArray(value) ? value.slice(0, MISSION_REWARDS[scope].slots) : [];
   for (const entry of saved) {
     const def = isRecord(entry) && typeof entry.id === 'string' ? BY_ID.get(entry.id) : null;
     if (!isRecord(entry) || !def || !POOLS[scope].includes(def) || out.some((item) => item.id === def.id)) continue;
     const n = safeCount(entry.n) ? Math.min(entry.n, need(def)) : 0;
-    const marks = [...new Set((Array.isArray(entry.marks) ? entry.marks : []).filter((mark): mark is VenueId => typeof mark === 'string' && Object.hasOwn(VENUES, mark)))].slice(0, MARKS);
+    const marks = [...new Set((Array.isArray(entry.marks) ? entry.marks : []).flatMap((mark) => { const clean = cleanVisitIdentity(mark, cityId); return clean ? [clean] : []; }))].slice(0, MARKS);
     out.push({ id: def.id, n, marks, claimed: entry.claimed === true && n >= need(def) });
   }
   return out;
@@ -243,11 +257,11 @@ const play = PLAYS ? {
     },
     'travel.arrived'(state, data, ctx) {
       const venue = data?.venue;
-      if (typeof venue !== 'string' || venue === 'home' || !Object.hasOwn(VENUES, venue) || !open(state)) return;
+      if (typeof venue !== 'string' || venue === 'home' || !venueFor(ctx.cityId, venue) || !open(state)) return;
       roll(state, ctx);
-      const visited = state.missions.visited, fresh = !visited.list.includes(venue);
-      progress(state, ctx, (def) => def.on === 'venue' && (!def.fresh || fresh), venue);
-      if (fresh && visited.list.length < 64) visited.list.push(venue);
+      const visited = state.missions.visited, identity = visitIdentity(ctx.cityId, venue), fresh = !visited.list.includes(identity);
+      progress(state, ctx, (def) => def.on === 'venue' && (!def.fresh || fresh), identity);
+      if (fresh && visited.list.length < 64) visited.list.push(identity);
     },
   },
   advance(state, dt, ctx) { roll(state, ctx); },
@@ -263,16 +277,16 @@ export default {
       && (saved.active.days === 0) === (saved.active.last === null) ? { days: saved.active.days, last: saved.active.last } : { days: 0, last: null };
     state.missions = {
       seed: typeof saved.seed === 'number' && Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
-        : Math.floor(makeRng(`missions-seed|${state.t}|${state.name}|${ctx?.cityId}`)() * 4294967296),
-      day: count(saved.day), daily: sanitizeList(saved.daily, 'daily'),
-      week: count(saved.week), weekly: sanitizeList(saved.weekly, 'weekly'),
+        : Math.floor(makeRng(`missions-seed|${state.t}|${state.name}|${state.estate.city}`)() * 4294967296),
+      day: count(saved.day), daily: sanitizeList(saved.daily, 'daily', state.estate.city),
+      week: count(saved.week), weekly: sanitizeList(saved.weekly, 'weekly', state.estate.city),
       rerolls: count(saved.rerolls, MISSION_REWARDS.rerollsPerDay),
       sets: { day: count(isRecord(saved.sets) ? saved.sets.day : undefined), week: count(isRecord(saved.sets) ? saved.sets.week : undefined) },
       active,
       stamps: isRecord(saved.stamps) && safeCount(saved.stamps.week) && safeCount(saved.stamps.days) && saved.stamps.days <= 7
         ? { week: saved.stamps.week, days: saved.stamps.days, paid: saved.stamps.paid === true && saved.stamps.days >= STAMP_CARD.need } : { week: 0, days: 0, paid: false },
       visited: isRecord(saved.visited) && safeCount(saved.visited.week)
-        ? { week: saved.visited.week, list: [...new Set((Array.isArray(saved.visited.list) ? saved.visited.list : []).filter((id): id is VenueId => typeof id === 'string' && Object.hasOwn(VENUES, id)))].slice(0, 64) } : { week: 0, list: [] },
+        ? { week: saved.visited.week, list: [...new Set((Array.isArray(saved.visited.list) ? saved.visited.list : []).flatMap((id) => { const clean = cleanVisitIdentity(id, state.estate.city); return clean ? [clean] : []; }))].slice(0, 64) } : { week: 0, list: [] },
       paidDay: count(saved.paidDay),
       titles: [...new Set((Array.isArray(saved.titles) ? saved.titles : []).filter((id): id is MissionTitleId => TITLE_IDS.includes(id)))],
       claimed: count(saved.claimed),

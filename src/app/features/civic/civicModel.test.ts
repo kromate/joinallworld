@@ -120,9 +120,12 @@ test('schedule: what is on air now, what is next, and what has ended is dropped'
 })
 
 test('inClub: only a club venue, and not while travelling', () => {
-  assert.equal(inClub({ location: 'quilox', activeAction: null }), true)
-  assert.equal(inClub({ location: 'market', activeAction: null }), false)
-  assert.equal(inClub({ location: 'quilox', activeAction: { kind: 'travel' } as never }), false)
+  const venues = ['quilox']
+  assert.equal(inClub({ location: 'quilox', activeAction: null }, venues), true)
+  assert.equal(inClub({ location: 'market', activeAction: null }, venues), false)
+  assert.equal(inClub({ location: 'quilox', activeAction: { kind: 'travel' } as never }, venues), false)
+  assert.equal(inClub({ location: 'test-square', activeAction: null }, ['test-square']), true)
+  assert.equal(inClub({ location: 'quilox', activeAction: null }, ['test-square']), false)
 })
 
 test('radioWhy: offline, used up, queue full, cannot afford, ok', () => {

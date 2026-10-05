@@ -34,7 +34,7 @@ A map is drawn in coordinates relative to its own origin: `local = frame - origi
 | Nigeria states (ADM1), Lagos local governments (ADM2) | geoBoundaries gbOpen, release 9469f09, original source GRID3, year 2022 | CC BY 4.0 |
 | Neighbouring countries, rivers, lakes, world and Africa | Natural Earth | Public domain |
 
-Exact URLs, hashes and byte counts are in `src/models/geo/provenance.json`; the attribution text is in `NOTICE.md`. `npm run geo:boundaries` downloads the pinned geoBoundaries files into `.cache/geo` (git-ignored), verifies their sha256, and rewrites `data/lagos.ts` and `data/nigeria.ts`. Each data file's header records source, processing and tolerance.
+Exact URLs, hashes and byte counts are in `src/models/geo/provenance.json`; the attribution text is in `NOTICE.md`. `npm run geo:boundaries` downloads the pinned geoBoundaries files into `.cache/geo` (git-ignored), verifies their sha256, and rewrites `data/lagos.ts` only. The Nigeria atlas (`data/nigeria.ts`) is replaced only with the explicit `--nigeria` option, so a routine run cannot change it. `npm run geo:boundaries -- --check` compares the generated text and the decoded geometry with the committed files without writing. Each data file's header records source, processing and tolerance.
 
 ## Chunks and lazy loading
 

@@ -233,10 +233,10 @@ test('all fourteen career tracks can be applied for, show a work spot, and can b
     assert.ok(Object.hasOwn(VENUES, job.workplace.venue), `${job.id}: ${job.workplace.venue} is on the map`);
     const state = createLife({}, at());
     assert.equal(act(state, 'apply-job', { id: job.id }).code, 'applied', job.id);
-    const spot = spotsOf(job.workplace.venue).find((item) => item.id === 'work');
+    const spot = spotsOf(job.workplace.venue, 'lagos').find((item) => item.id === 'work');
     assert.ok(spot?.label && spot.activities.some((def) => def.id === job.shift.id), `${job.id}: the work spot lists the shift`);
     // On each work day there is a time the venue is open, so travel there is possible that day.
-    const hours = VENUES[job.workplace.venue].hours;
+    const hours = need(VENUES[job.workplace.venue], 'registered venue').hours;
     for (const weekday of job.days) {
       const day = lagosTime(MONDAY_9AM).day + ((weekday - 1 + 7) % 7); // the first such weekday on or after that Monday
       assert.equal(lagosTime(lagosDayStart(day)).weekday, weekday);
@@ -259,8 +259,8 @@ test('a new life starts with the three opening wishes now that their venues exis
   const state = onboard(createLife(null, at(MONDAY_9AM, 'wishes', { isNew: true })));
   assert.deepEqual(viewLife(state, at()).goals.wishes.map((wish) => wish.label), ['Make ₦15,000 today', 'See art at Freedom Park', 'See a movie at The Palms']);
   // The Palms really has a film to see: the wish can be granted by a real activity.
-  assert.ok(spotsOf('palms').some((spot) => spot.activities.some((def) => !def.unavailable && (def.tags || []).some((tag) => ['movie', 'cinema'].includes(tag)))));
-  assert.ok(spotsOf('park').some((spot) => spot.id === 'art' && spot.activities.some((def) => (def.tags || []).includes('art'))));
+  assert.ok(spotsOf('palms', 'lagos').some((spot) => spot.activities.some((def) => !def.unavailable && (def.tags || []).some((tag) => ['movie', 'cinema'].includes(tag)))));
+  assert.ok(spotsOf('park', 'lagos').some((spot) => spot.id === 'art' && spot.activities.some((def) => (def.tags || []).includes('art'))));
 });
 
 test('"Make a new friend" completes when a regular is greeted — the real thing, not any social-tagged activity', () => {
@@ -456,7 +456,7 @@ test('gift cap in the merged economy: start cash, the loan principal, goal rewar
   refused = gift(700);
   assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(why(refused), /You can still give ₦600/);
   // A paid gig counts too: Freelance Gig at the hot desks pays through the same activity engine.
-  const gig = spotsOf('cchub').flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def }))).find((item) => (item.def.reward ?? 0) > 0 && !item.def.requiresJob && !item.def.requiresSkill);
+  const gig = spotsOf('cchub', 'lagos').flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def }))).find((item) => (item.def.reward ?? 0) > 0 && !item.def.requiresJob && !item.def.requiresSkill);
   if (gig) {
     state.spot = gig.spot; for (const key of NEEDS) state.needs[key] = 90;
     const before = state.social.earned;

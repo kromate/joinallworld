@@ -13,11 +13,11 @@ import { join } from 'node:path'
 import { fixture } from '../../server/test-fixture.ts'
 import { buildRoutes } from '../../server/routes/index.ts'
 import { buildSocketHandlers } from '../../server/ws/index.ts'
-import { CITY_IDS as SERVER_CITY_IDS } from '../../server/protocol.ts'
+import { registeredCityIds } from '../game/cities/registry.ts'
 import { CATEGORIES, STATUSES } from '../../server/support/service.ts'
 import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/service.ts'
 import {
-  ACTION_DUPLICATE_RESPONSE_KEYS, ACTION_RESPONSE_KEYS, CHAT_FRAME_KEYS, CITY_IDS, CLIENT_FRAME_TYPES, ERROR_BODY_KEYS, HEALTH_RESPONSE_KEYS, HTTP_ROUTE_KEYS,
+  ACTION_DUPLICATE_RESPONSE_KEYS, ACTION_RESPONSE_KEYS, CHAT_FRAME_KEYS, CLIENT_FRAME_TYPES, ERROR_BODY_KEYS, HEALTH_RESPONSE_KEYS, HTTP_ROUTE_KEYS,
   LIFE_RESPONSE_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
   WORKER_CLIENT_FRAME_TYPES, WORKER_HOST_ROUTE_KEYS, WORKER_HTTP_ROUTE_KEYS, WORKER_SERVER_FRAME_TYPES,
 } from './protocol.ts'
@@ -79,7 +79,7 @@ async function serverSources(): Promise<string> {
     for (const entry of await readdir(directory, { withFileTypes: true })) {
       const path = join(directory, entry.name)
       // server/telemetry builds Sentry and PostHog payloads (`{ type: 'transaction' …`), which go to those services, never to a socket.
-      if (entry.isDirectory()) { if (path !== join(root, 'server', 'telemetry')) await walk(path) }
+      if (entry.isDirectory()) { if (path !== join(root, 'server', 'telemetry') && path !== join(root, 'server', 'testing')) await walk(path) }
       else if (entry.name.endsWith('.ts') && !entry.name.endsWith('.test.ts') && entry.name !== 'test-fixture.ts' && entry.name !== 'types.ts') files.push(path)
     }
   }
@@ -92,7 +92,7 @@ test('every registered route is typed, and every typed route is registered', () 
   const keys: string[] = buildRoutes(bareContext()).keys
   assert.deepEqual(sorted(keys), sorted(HTTP_ROUTE_KEYS), 'server/routes/*.ts and HTTP_ROUTE_KEYS (src/types/protocol.ts) list different routes')
   assert.equal(new Set(HTTP_ROUTE_KEYS).size, HTTP_ROUTE_KEYS.length)
-  assert.deepEqual([...SERVER_CITY_IDS], [...CITY_IDS])
+  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan'])
 })
 
 test('every frame type the server accepts or sends is typed', async () => {
@@ -318,11 +318,11 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   const database = record(JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')) as unknown, 'devices.json')
   for (const key of Object.keys(database)) assert.ok((DATABASE_KEYS as readonly string[]).includes(key), `devices.json has an untyped top-level key "${key}"`)
   for (const name of COLLECTION_NAMES) assert.ok(Object.hasOwn(database, name), `the ${name} collection was created`)
-  const stored = sameKeys(record(database.sessions, 'sessions')[cookie.slice(4)], ['actions', 'cities', 'expiresAt', 'name', 'once', 'publicId', 'secret'] satisfies (keyof SessionRecord)[], 'stored session')
+  const stored = sameKeys(record(database.sessions, 'sessions')[cookie.slice(4)], ['actions', 'character', 'cities', 'expiresAt', 'name', 'once', 'publicId', 'secret'] satisfies (keyof SessionRecord)[], 'stored session')
   const growth = record(database.growth, 'growth')
   for (const key of Object.keys(growth)) assert.ok((['contacts', 'metrics', 'outreach', 'players', 'push', 'salt', 'shares', 'sweptAt', 'tables'] satisfies (keyof GrowthCollection)[] as string[]).includes(key), `the growth collection has an untyped key "${key}"`)
   sameKeys(record(growth.players, 'players')[efe.id], ['consent', 'counted', 'devices', 'invited', 'owed', 'ref', 'seen', 'shares', 'table', 'wins'] satisfies (keyof GrowthPlayerRecord)[], 'growth player')
-  sameKeys(Object.values(record(growth.shares, 'shares'))[0], ['at', 'by', 'facts', 'joined', 'kind', 'opened'] satisfies (keyof ShareRecord)[], 'stored share')
+  sameKeys(Object.values(record(growth.shares, 'shares'))[0], ['at', 'by', 'cityId', 'facts', 'joined', 'kind', 'opened'] satisfies (keyof ShareRecord)[], 'stored share')
   sameKeys(record(stored.cities, 'cities').lagos, ['salt', 'state', 'updatedAt'] satisfies (keyof CityLifeRecord)[], 'stored city life')
   sameKeys(Object.values(record(stored.actions, 'actions'))[0], ['actionAt', 'code', 'fingerprint', 'ok', 'type'] satisfies (keyof ActionReceipt)[], 'action receipt')
   sameKeys(Object.values(record(stored.once, 'once'))[0], ['at', 'fp', 'kind', 'result'] satisfies (keyof OnceReceipt)[], 'once receipt')

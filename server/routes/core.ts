@@ -1,3 +1,4 @@
+import { normalizeCharacter, swapLegacyLife, legacyLifeCity } from '../character.ts';
 /**
  * OWNER: foundation
  * Core routes: device session, life, action and voice configuration. Behaviour is unchanged
@@ -164,6 +165,20 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       }
       return { body: { ...voice, radius: VOICE_RADIUS }, renew: renewed };
     },
+    'GET /api/characters': async (request) => ({ body: await store.transact(db => {
+      const session = request.requireSession(db);
+      normalizeCharacter(session);
+      return { active: session.character?.city ?? null, legacy: Object.entries(session.legacyLives ?? {}).map(([id, entry]) => ({ id, city: legacyLifeCity(session, id, entry), cash: entry.state.cash, updatedAt: entry.updatedAt })) };
+    }) }),
+    'POST /api/characters/switch': async (request) => {
+      const body = await request.json();
+      if (typeof body.id !== 'string') throw fail(400, 'invalid_character');
+      const id = body.id;
+      return { body: await store.transact(db => {
+        const session = request.requireSession(db, { renew: true });
+        return ctx.once(db, session, { id: body.clientId, kind: 'character.switch', fingerprint: { id } }, () => swapLegacyLife(session, id));
+      }), renew: true };
+    },
     'GET /api/life': async (request) => {
       const city = request.query.get('city');
       if (!isCityId(city)) throw fail(400, 'invalid_city');
@@ -177,8 +192,9 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
         // A character that travelled to another city has no life left in this one (server/world/service.ts).
         ctx.checks?.cityGate?.(session, city);
         const before = outcomeKey(session.cities?.[city]?.state);
+        const filing = JSON.stringify([session.character, Object.keys(session.cities), Object.keys(session.legacyLives ?? {})]);
         const state = settle(session, city);
-        return { state, publicId: session.publicId, material: before !== outcomeKey(state) };
+        return { state, publicId: session.publicId, material: before !== outcomeKey(state) || filing !== JSON.stringify([session.character, Object.keys(session.cities), Object.keys(session.legacyLives ?? {})]) };
       }, { durable: result => result.material, waitForObserved: true });
       // The settlement is saved: rooms are told with the state it produced. When it could not be saved
       // (or the request was refused) the route host re-checks the rooms against the stored life instead

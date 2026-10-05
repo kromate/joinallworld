@@ -12,6 +12,9 @@ import { advanceLife, createLife, dispatch, viewLife } from '../life.ts';
 import { makeContext } from './util.ts';
 import { lagosTime } from './clock.ts';
 import { CAMPUS_SLICES, isFreshSlice, needsCampusRules } from '../campus/unilag/slices.ts';
+import { DEFAULT_LOOK } from './content/traits.ts';
+import { loadCityContent, registerCityForTest } from './cities/registry.ts';
+import { FICTIONAL_CITY_ID, FICTIONAL_NEIGHBOUR_CITY_ID, fictionalCity, fictionalNeighbourCity } from './cities/testing/fictionalCity.test-fixture.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { LifeContextInit, LifeState } from '../types/life.ts';
 
@@ -33,6 +36,11 @@ import { readFileSync } from 'node:fs';
 import { createLife, dispatch, viewLife } from '${url('../life.ts')}';
 import { campusFor, loadCampus } from '${url('./campus-gate.ts')}';
 import { isStandIn } from '${url('./registry.ts')}';
+// The fictional cities of the city contract: lives in them must read the same in the browser engine (the city's content comes through the registry).
+const { loadCityContent, registerCityForTest } = await import('${url('./cities/registry.ts')}');
+const fixtures = await import('${url('./cities/testing/fictionalCity.test-fixture.ts')}');
+registerCityForTest(fixtures.fictionalCity); registerCityForTest(fixtures.fictionalNeighbourCity);
+await Promise.all([loadCityContent(fixtures.FICTIONAL_CITY_ID), loadCityContent(fixtures.FICTIONAL_NEIGHBOUR_CITY_ID)]);
 const input = JSON.parse(readFileSync(process.argv[1], 'utf8'));
 if (input.mode === 'client') {
   // The client, given a life that uses the campus (saved on the device, and answered by the server): it fetches the campus rules and keeps all of it.
@@ -66,15 +74,35 @@ process.stdout.write(JSON.stringify({ playing, standInsLeft: isStandIn('unilagSt
 const START = Date.UTC(2026, 0, 5, 8);
 const CAMPUS_KEYS = ['unilagStudent', 'unilagCommunity', 'unilagShuttle'];
 
-function player(seed: string): { state: LifeState; act(body: ActionBody): void; wait(seconds: number): void; ctx(): LifeContextInit } {
+function player(seed: string, cityId = 'lagos'): { state: LifeState; act(body: ActionBody): void; wait(seconds: number): void; ctx(): LifeContextInit } {
   let now = START;
-  const ctx = (): LifeContextInit => makeContext({ now, cityId: 'lagos', seed });
+  const ctx = (): LifeContextInit => makeContext({ now, cityId, seed });
   const state = createLife(null, ctx());
   return {
     state, ctx,
     act(body) { dispatch(state, { ...body, actionId: `${seed}-${now}` }, { ...ctx(), internal: true }); },
     wait(seconds) { now += seconds * 1000; advanceLife(state, seconds, ctx()); },
   };
+}
+
+/** Lives in the fictional city, played by the full engine: a visitor, a settled resident, a worker mid-shift with a local friend. */
+function testCityLives(): { name: string; raw: unknown; ctx: LifeContextInit }[] {
+  const out: { name: string; raw: unknown; ctx: LifeContextInit }[] = [];
+  const keep = (name: string, p: ReturnType<typeof player>): void => { out.push({ name, raw: JSON.parse(JSON.stringify(p.state)), ctx: { now: p.state.t, cityId: FICTIONAL_CITY_ID } }); };
+  const visitor = player('test-visitor', FICTIONAL_CITY_ID);
+  keep('test city: a visitor who has not chosen a local unit', visitor);
+  for (const [type, payload] of [['onboarding.look', { look: DEFAULT_LOOK }], ['onboarding.traits', { traits: ['clean-pikin', 'musical'] }], ['onboarding.dream', { dream: 'afrobeats-star' }], ['onboarding.lottery', {}], ['onboarding.home', { lga: 'test-central', via: 'manual' }]] as const) visitor.act({ type, payload } as ActionBody);
+  keep('test city: settled at home', visitor);
+  visitor.act({ type: 'travel', payload: { id: 'test-square', mode: 'trek' } } as ActionBody); visitor.wait(600);
+  visitor.act({ type: 'apply-job', payload: { id: 'community-helper' } } as ActionBody);
+  visitor.act({ type: 'spot', payload: { id: 'work' } } as ActionBody);
+  visitor.act({ type: 'activity', payload: { id: 'test-help-shift' } } as ActionBody); visitor.wait(2);
+  keep('test city: mid-shift', visitor);
+  visitor.wait(600);
+  visitor.act({ type: 'spot', payload: { id: 'people' } } as ActionBody);
+  visitor.act({ type: 'activity', payload: { id: 'npc-test-fictional-one-hello' } } as ActionBody); visitor.wait(600);
+  keep('test city: a job, a local friend, hours later', visitor);
+  return out;
 }
 
 function lives(): { name: string; raw: unknown; ctx: LifeContextInit }[] {
@@ -111,13 +139,20 @@ function lives(): { name: string; raw: unknown; ctx: LifeContextInit }[] {
   const away = JSON.parse(JSON.stringify(rebuilt)) as Record<string, unknown>;
   away.location = 'park'; away.spot = 'amphitheatre';
   out.push({ name: 'a student, away from the campus', raw: JSON.parse(JSON.stringify(createLife(away, { now: rebuilt.t, cityId: 'lagos' }))), ctx: { now: rebuilt.t, cityId: 'lagos' } });
+  out.push(...testCityLives());
   return out;
 }
 
 const withoutCampus = (view: unknown): unknown => Object.fromEntries(Object.entries(view as Record<string, unknown>).filter(([key]) => !CAMPUS_KEYS.includes(key)));
 
-test('the browser engine rebuilds and views every life as the full engine does, and refuses a campus life until the campus rules are loaded', (t) => {
+test('the browser engine rebuilds and views every life as the full engine does, and refuses a campus life until the campus rules are loaded', async (t) => {
+  const registrations = [registerCityForTest(fictionalCity), registerCityForTest(fictionalNeighbourCity)];
+  await Promise.all([loadCityContent(FICTIONAL_CITY_ID), loadCityContent(FICTIONAL_NEIGHBOUR_CITY_ID)]);
   const given = lives();
+  for (const registration of registrations) registration.dispose();
+  const again = [registerCityForTest(fictionalCity), registerCityForTest(fictionalNeighbourCity)];
+  await Promise.all([loadCityContent(FICTIONAL_CITY_ID), loadCityContent(FICTIONAL_NEIGHBOUR_CITY_ID)]);
+  try {
   assert.ok(given.some((life) => CAMPUS_SLICES.some((key) => !isFreshSlice(key, (life.raw as Record<string, unknown> | null)?.[key]))), 'the sample includes a life with campus state');
   assert.ok(given.some((life) => !needsCampusRules(life.raw) && life.raw !== null), 'and lives that do not');
   const dir = mkdtempSync(join(tmpdir(), 'browser-profile-'));
@@ -149,9 +184,11 @@ test('the browser engine rebuilds and views every life as the full engine does, 
       loaded ||= uses;
       const holdsCampusState = CAMPUS_SLICES.some((key) => !isFreshSlice(key, (life.raw as Record<string, unknown> | null)?.[key]));
       assert.equal(result.refused, holdsCampusState && !loadedBefore ? 'CampusNotLoaded' : null, `${life.name}: a stand-in refuses what only the campus rules can rebuild`);
-      if (uses) assert.deepEqual(result.view, fullView, `${life.name}: the view`);
+      // Once the campus rules have been fetched (by an earlier life) every later view carries the campus views too.
+      if (loaded) assert.deepEqual(result.view, fullView, `${life.name}: the view`);
       else assert.deepEqual(result.view, withoutCampus(fullView), `${life.name}: the view (the campus views arrive with the campus rules)`);
     });
-    t.diagnostic(`${given.length} lives, ${given.filter((life) => needsCampusRules(life.raw)).length} using the campus`);
+    t.diagnostic(`${given.length} lives, ${given.filter((life) => needsCampusRules(life.raw)).length} using the campus, ${given.filter((life) => life.ctx.cityId === FICTIONAL_CITY_ID).length} in the test city`);
   } finally { rmSync(dir, { recursive: true, force: true }); }
+  } finally { for (const registration of again) registration.dispose(); }
 });

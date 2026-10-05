@@ -1,6 +1,7 @@
-// npm run geo:boundaries — builds the Nigeria state shapes and the Lagos local-government shapes.
+// npm run geo:boundaries — rebuilds Lagos only. Pass --nigeria to opt in to replacing the Nigeria atlas.
 //
-//   node --experimental-strip-types scripts/geo/build-boundaries.ts [--check]
+//   node --experimental-strip-types scripts/geo/build-boundaries.ts [--lagos-only] [--check]
+//   node --experimental-strip-types scripts/geo/build-boundaries.ts --nigeria [--check]
 //
 // Sources (pinned by revision and sha256; fetched once into .cache/geo, verified every run):
 //   geoBoundaries gbOpen NGA ADM1 (states) and ADM2 (local governments), release 9469f09, source GRID3,
@@ -21,7 +22,8 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { project } from '../../src/map3d/geo/frame.ts';
-import { encodeArc } from '../../src/map3d/geo/topo.ts';
+import { decodeTopology, encodeArc } from '../../src/map3d/geo/topo.ts';
+import type { FeatureData, RawTopo } from '../../src/map3d/geo/topo.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const cacheDir = join(root, '.cache', 'geo');
@@ -42,9 +44,56 @@ const LAGOON_MIN_KM2 = 0.5, ISLAND_MIN_KM2 = 0.05;
 type Pt = [number, number];
 type Polygon = Pt[][];
 
+interface GeoFeature {
+  properties: { shapeName: string }
+  polygons: Polygon[]
+}
+interface GeoFeatureCollection { features: GeoFeature[] }
+
+const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
+const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
+
+function pointOf(value: unknown, label: string): Pt {
+  if (!Array.isArray(value) || !finite(value[0]) || !finite(value[1])) throw new TypeError(`${label}: expected a longitude/latitude position`);
+  return [value[0], value[1]];
+}
+
+function ringOf(value: unknown, label: string): Pt[] {
+  if (!Array.isArray(value) || value.length < 4) throw new TypeError(`${label}: expected a closed GeoJSON ring`);
+  const points = value.map((point, index) => pointOf(point, `${label}[${index}]`));
+  const first = points[0], last = points.at(-1);
+  if (!first || !last || first[0] !== last[0] || first[1] !== last[1]) throw new TypeError(`${label}: ring is not closed`);
+  const open = points.slice(0, -1);
+  if (open.length < 3) throw new TypeError(`${label}: ring has fewer than three vertices`);
+  return open;
+}
+
+function polygonOf(value: unknown, label: string): Polygon {
+  if (!Array.isArray(value) || value.length < 1) throw new TypeError(`${label}: expected polygon rings`);
+  return value.map((ring, index) => ringOf(ring, `${label}[${index}]`));
+}
+
+function geometryPolygons(value: unknown, label: string): Polygon[] {
+  if (!isRecord(value) || (value.type !== 'Polygon' && value.type !== 'MultiPolygon')) throw new TypeError(`${label}: expected Polygon or MultiPolygon geometry`);
+  if (!Array.isArray(value.coordinates)) throw new TypeError(`${label}: geometry coordinates are missing`);
+  return value.type === 'Polygon'
+    ? [polygonOf(value.coordinates, `${label}.coordinates`)]
+    : value.coordinates.map((polygon, index) => polygonOf(polygon, `${label}.coordinates[${index}]`));
+}
+
+function featureCollectionOf(value: unknown, label: string): GeoFeatureCollection {
+  if (!isRecord(value) || value.type !== 'FeatureCollection' || !Array.isArray(value.features)) throw new TypeError(`${label}: expected a GeoJSON FeatureCollection`);
+  return { features: value.features.map((feature, index): GeoFeature => {
+    if (!isRecord(feature) || feature.type !== 'Feature' || !isRecord(feature.properties) || typeof feature.properties.shapeName !== 'string') {
+      throw new TypeError(`${label}.features[${index}]: expected a named GeoJSON feature`);
+    }
+    return { properties: { shapeName: feature.properties.shapeName }, polygons: geometryPolygons(feature.geometry, `${label}.features[${index}].geometry`) };
+  }) };
+}
+
 // ---- sources -------------------------------------------------------------------------------------------------------
 
-async function load(key: keyof typeof SOURCES): Promise<any> {
+async function load(key: keyof typeof SOURCES): Promise<GeoFeatureCollection> {
   const source = SOURCES[key], path = join(cacheDir, `geoBoundaries-NGA-${key.toUpperCase()}-${RELEASE}.geojson`);
   if (!existsSync(path)) {
     mkdirSync(cacheDir, { recursive: true });
@@ -54,13 +103,11 @@ async function load(key: keyof typeof SOURCES): Promise<any> {
   }
   const raw = readFileSync(path);
   if (createHash('sha256').update(raw).digest('hex') !== source.sha256 || raw.length !== source.bytes) throw new Error(`${key}: the file does not match its pinned hash`);
-  return JSON.parse(raw.toString('utf8'));
+  const parsed: unknown = JSON.parse(raw.toString('utf8'));
+  return featureCollectionOf(parsed, key);
 }
 
-function polygonsOf(feature: any): Polygon[] {
-  const g = feature.geometry;
-  return (g.type === 'Polygon' ? [g.coordinates] : g.coordinates).map((poly: number[][][]) => poly.map((ring) => ring.slice(0, -1).map(([x, y]): Pt => [x!, y!])));
-}
+const polygonsOf = (feature: GeoFeature): Polygon[] => feature.polygons;
 
 // ---- geometry helpers ----------------------------------------------------------------------------------------------
 
@@ -303,16 +350,20 @@ const LGAS: readonly [string, string, string][] = [
   ['Lagos Mainland', 'lagos-mainland', 'Lagos Mainland'], ['Mushin', 'mushin', 'Mushin'], ['Ojo', 'ojo', 'Ojo'], ['Oshodi/Isolo', 'oshodi-isolo', 'Oshodi-Isolo'], ['Shomolu', 'somolu', 'Somolu'], ['Surulere', 'surulere', 'Surulere'],
 ];
 
-function lagosInputs(adm1: any, adm2: any): { rings: RingInput[]; names: Map<string, string>; statePolys: Polygon[]; lgaPolys: Polygon[] } {
+function lagosInputs(adm1: GeoFeatureCollection, adm2: GeoFeatureCollection): { rings: RingInput[]; names: Map<string, string>; statePolys: Polygon[]; lgaPolys: Polygon[] } {
   const rings: RingInput[] = [], lgaPolys: Polygon[] = [], names = new Map<string, string>();
   for (const [source, id, name] of LGAS) {
     // 'Surulere' also exists in Oyo State: take the one inside Lagos.
-    const found = adm2.features.filter((f: any) => f.properties.shapeName === source && polygonsOf(f)[0]![0]!.every(([lon, lat]) => lon > 2.6 && lon < 4.5 && lat > 6.3 && lat < 6.8));
+    const found = adm2.features.filter((feature) => feature.properties.shapeName === source && polygonsOf(feature)[0]?.[0]?.every(([lon, lat]) => lon > 2.6 && lon < 4.5 && lat > 6.3 && lat < 6.8) === true);
     if (found.length !== 1) throw new Error(`${source}: ${found.length} matches in Lagos`);
+    const feature = found[0];
+    if (!feature) throw new Error(`${source}: missing matched feature`);
     names.set(id, name);
-    polygonsOf(found[0]).forEach((poly, p) => { poly.forEach((ring, r) => rings.push({ owner: id, poly: p, hole: r > 0, pts: ring })); lgaPolys.push(poly); });
+    polygonsOf(feature).forEach((poly, p) => { poly.forEach((ring, r) => rings.push({ owner: id, poly: p, hole: r > 0, pts: ring })); lgaPolys.push(poly); });
   }
-  const statePolys = polygonsOf(adm1.features.find((f: any) => f.properties.shapeName === 'Lagos'));
+  const state = adm1.features.find((feature) => feature.properties.shapeName === 'Lagos');
+  if (!state) throw new Error('Lagos State is missing from ADM1');
+  const statePolys = polygonsOf(state);
   names.set('lagos-state', 'Lagos State');
   statePolys.forEach((poly, p) => poly.forEach((ring, r) => rings.push({ owner: 'lagos-state', poly: p, hole: r > 0, pts: ring })));
   return { rings, names, statePolys, lgaPolys };
@@ -320,8 +371,92 @@ function lagosInputs(adm1: any, adm2: any): { rings: RingInput[]; names: Map<str
 
 const featureText = (feature: Record<string, unknown>): string => JSON.stringify(feature);
 const bytes = (text: string): number => Buffer.byteLength(text);
+const sha256 = (text: string | Uint8Array): string => createHash('sha256').update(text).digest('hex');
 
-async function main(): Promise<void> {
+interface AtlasFeature extends Record<string, unknown> { id: string; name: string }
+interface AtlasModule {
+  NIGERIA: { features: AtlasFeature[] }
+  AROUND: Record<string, unknown>
+  WATER: { rivers: unknown[]; lakes: { name: string; ring: number[] }[] }
+}
+
+function atlasModuleOf(value: unknown): AtlasModule {
+  if (!isRecord(value) || !isRecord(value.NIGERIA) || !Array.isArray(value.NIGERIA.features) || !isRecord(value.AROUND) || !isRecord(value.WATER)
+    || !Array.isArray(value.WATER.rivers) || !Array.isArray(value.WATER.lakes)) throw new TypeError('The existing Nigeria atlas module has an unexpected shape');
+  const features = value.NIGERIA.features.map((feature, index): AtlasFeature => {
+    if (!isRecord(feature) || typeof feature.id !== 'string' || typeof feature.name !== 'string') throw new TypeError(`NIGERIA.features[${index}] is invalid`);
+    return { ...feature, id: feature.id, name: feature.name };
+  });
+  const lakes = value.WATER.lakes.map((lake, index) => {
+    if (!isRecord(lake) || typeof lake.name !== 'string' || !Array.isArray(lake.ring) || !lake.ring.every(finite)) throw new TypeError(`WATER.lakes[${index}] is invalid`);
+    return { name: lake.name, ring: [...lake.ring] };
+  });
+  return { NIGERIA: { features }, AROUND: value.AROUND, WATER: { rivers: [...value.WATER.rivers], lakes } };
+}
+
+function refsOf(value: unknown, label: string): number[] {
+  if (!Array.isArray(value) || !value.every((item) => Number.isSafeInteger(item))) throw new TypeError(`${label}: expected integer arc references`);
+  return [...value];
+}
+
+function rawTopoOf(value: unknown, label: string): RawTopo<FeatureData> {
+  if (!isRecord(value) || !finite(value.grid) || value.grid <= 0 || typeof value.arcs !== 'string' || !Array.isArray(value.features)) throw new TypeError(`${label}: invalid topology`);
+  const features = value.features.map((feature, featureIndex): FeatureData => {
+    if (!isRecord(feature) || typeof feature.id !== 'string' || typeof feature.name !== 'string' || !Array.isArray(feature.polys)) throw new TypeError(`${label}.features[${featureIndex}]: invalid feature`);
+    const polys = feature.polys.map((polygon, polygonIndex) => {
+      if (!Array.isArray(polygon)) throw new TypeError(`${label}.features[${featureIndex}].polys[${polygonIndex}]: invalid polygon`);
+      return polygon.map((ring, ringIndex) => refsOf(ring, `${label}.features[${featureIndex}].polys[${polygonIndex}][${ringIndex}]`));
+    });
+    return { id: feature.id, name: feature.name, polys };
+  });
+  return { grid: value.grid, arcs: value.arcs, features };
+}
+
+function topologyFromText(text: string, label: string): RawTopo<FeatureData> {
+  const marker = 'export const LAGOS: RawTopo = ';
+  const start = text.indexOf(marker);
+  const end = start < 0 ? -1 : text.indexOf(';', start + marker.length);
+  if (start < 0 || end < 0) throw new TypeError(`${label}: cannot find the LAGOS topology`);
+  const parsed: unknown = JSON.parse(text.slice(start + marker.length, end));
+  return rawTopoOf(parsed, label);
+}
+
+function decodedHash(raw: RawTopo<FeatureData>): string {
+  const decoded = decodeTopology(raw);
+  return sha256(JSON.stringify({ grid: decoded.grid, arcs: decoded.arcs.map((arc) => [...arc]), features: decoded.features.map((feature) => ({ id: feature.id, rings: feature.rings.map((polygon) => polygon.map((ring) => [...ring])), bounds: feature.bounds })) }));
+}
+
+function output(path: string, text: string, check: boolean, topology = false): void {
+  const generatedHash = sha256(text);
+  if (check) {
+    const actual = readFileSync(path, 'utf8');
+    const actualHash = sha256(actual);
+    if (actual !== text) throw new Error(`${path}: generated text ${generatedHash} differs from ${actualHash}`);
+    if (topology) {
+      const generatedGeometry = decodedHash(topologyFromText(text, `${path} generated`));
+      const actualGeometry = decodedHash(topologyFromText(actual, `${path} actual`));
+      if (generatedGeometry !== actualGeometry) throw new Error(`${path}: decoded geometry differs (${generatedGeometry} != ${actualGeometry})`);
+      console.log(`${path}: check ok, sha256 ${actualHash}, decoded ${actualGeometry}`);
+      return;
+    }
+    console.log(`${path}: check ok, sha256 ${actualHash}`);
+    return;
+  }
+  writeFileSync(path, text);
+  console.log(`${path}: wrote sha256 ${generatedHash}`);
+}
+
+interface Options { check: boolean; nigeria: boolean }
+
+function optionsOf(args: readonly string[]): Options {
+  const allowed = new Set(['--check', '--lagos-only', '--nigeria']);
+  const unknown = args.filter((arg) => !allowed.has(arg));
+  if (unknown.length) throw new Error(`Unknown option: ${unknown.join(', ')}`);
+  if (args.includes('--lagos-only') && args.includes('--nigeria')) throw new Error('--lagos-only and --nigeria cannot be combined');
+  return { check: args.includes('--check'), nigeria: args.includes('--nigeria') };
+}
+
+async function main(options: Options): Promise<void> {
   const [adm1, adm2] = [await load('adm1'), await load('adm2')];
   const lagos = lagosInputs(adm1, adm2);
   const lagoon = lagoonOf(lagos.statePolys, lagos.lgaPolys);
@@ -354,16 +489,18 @@ export const LAGOS: RawTopo = {"grid":${T.grid},"arcs":${JSON.stringify(arcText(
 ${lagosFeatures.join(',\n')}
 ]};
 `;
-  writeFileSync(join(root, 'src/map3d/geo/data/lagos.ts'), lagosText);
+  output(join(root, 'src/map3d/geo/data/lagos.ts'), lagosText, options.check, true);
   console.log(`lagos.ts ${bytes(lagosText)} bytes, ${lagosBuilt.arcs.length} arcs, ${lagosBuilt.arcs.reduce((n, a) => n + a.points.length, 0)} points`);
+  if (!options.nigeria) return;
 
   // ---- nigeria.ts
   const nigeriaPath = join(root, 'src/map3d/geo/data/nigeria.ts');
-  const old = await import(`${nigeriaPath}?t=${Date.now()}`) as { NIGERIA: { features: { id: string; name: string }[] }; AROUND: unknown; WATER: { rivers: unknown[]; lakes: { name: string; ring: number[] }[] } };
+  const imported: unknown = await import(`${nigeriaPath}?t=${Date.now()}`);
+  const old = atlasModuleOf(imported);
   const N = TOLERANCE.nigeria, byName = new Map(old.NIGERIA.features.map((f) => [f.name, f]));
   const states: RingInput[] = [];
-  for (const feature of adm1.features as any[]) {
-    const name = feature.properties.shapeName === 'Abuja Federal Capital Territory' ? 'Federal Capital Territory' : feature.properties.shapeName as string;
+  for (const feature of adm1.features) {
+    const name = feature.properties.shapeName === 'Abuja Federal Capital Territory' ? 'Federal Capital Territory' : feature.properties.shapeName;
     const meta = byName.get(name);
     if (!meta) throw new Error(`No state ${name} in the atlas data`);
     polygonsOf(feature).forEach((poly, p) => poly.forEach((ring, r) => states.push({ owner: meta.id, poly: p, hole: r > 0, pts: ring })));
@@ -404,7 +541,7 @@ export const NIGERIA: NigeriaTopology = ${JSON.stringify(nigeriaTopo)};
 export const AROUND: AroundTopology = ${JSON.stringify(old.AROUND)};
 export const WATER: WaterData = ${JSON.stringify({ rivers: old.WATER.rivers, lakes })};
 `;
-  writeFileSync(nigeriaPath, nigeriaText);
+  output(nigeriaPath, nigeriaText, options.check);
   console.log(`nigeria.ts ${bytes(nigeriaText)} bytes, ${nigeriaBuilt.arcs.length} arcs, ${nigeriaBuilt.arcs.reduce((n, a) => n + a.points.length, 0)} points; lakes: ${lakes.map((l) => l.name).join(', ')}`);
 }
-await main();
+await main(optionsOf(process.argv.slice(2)));

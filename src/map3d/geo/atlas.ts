@@ -1,3 +1,4 @@
+import { cachedCityContent, loadCityContent, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
 /**
  * OWNER: world
  * The atlas: ONE continuous map with three levels of detail — the world, Africa, Nigeria — and
@@ -29,14 +30,13 @@
  * is a marker moved when the server reports progress.
  */
 import * as THREE from 'three';
-import type { CityLink } from '../../types/index.ts';
+import { allCityLinks } from '../../game/cities/registry.ts';
 import type { AfricaGroupId, Box4, RegionKind } from '../types.ts';
 import { createRig } from '../camera.ts';
 import type { RigInsets, RigView } from '../camera.ts';
 import { createTripClock } from '../trip.ts';
 import { AFRICA_GROUPS, ATLAS_LEVELS, CONTINENTS, ZONES, cityEntry, plannedRoutes, regionEntry, stateOfCity } from '../regions.ts';
 import type { AtlasLevel } from '../regions.ts';
-import { CITY_LINKS as RAW_CITY_LINKS } from '../../game/content/world.ts';
 import { EXTENT, project, relLon, unproject } from './projection.ts';
 import { decodeTopology } from './topo.ts';
 import type { AfricaFeature, Feature, FeatureData, NigeriaFeature, Topology, WorldFeature } from './topo.ts';
@@ -51,9 +51,6 @@ import { listOrder, regionInfo } from './info.ts';
 import type { RegionContext, RegionInfo, RegionRef, RouteInfo } from './info.ts';
 import { arcSegments, mesher, outerEdges } from './build.ts';
 import type { RibbonLine } from './build.ts';
-
-/** CITY_LINKS with the literal modes the data has ('road' | 'air'): the JavaScript module's inference widens them. */
-const CITY_LINKS = RAW_CITY_LINKS as readonly CityLink[];
 
 /** What a level's data module exports (the type of ATLAS_LEVELS[i].data()'s result). */
 export type LevelModule = Awaited<ReturnType<AtlasLevel['data']>>;
@@ -182,6 +179,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   // ---- state ------------------------------------------------------------------------------------
   let current = 'lagos', destroyed = false, opened = false, wasShown = false, resetView = false;
   let level = NIGERIA, wanted = NIGERIA, tintOn = false, listOpen = false, sheetOpen = false, query = '';
+  let selectedCity: string | null = null;
   let selected: RegionRef | null = null, hovered: RegionRef | null = null;
   let routeShown: string | null = null, trip: Run | null = null, preview: Preview | null = null, entering: (() => void) | null = null, keyboard = false;
   let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, fits: { x: number; z: number; distance: number }[] | null = null, cuts = [1, 1], lastLabels = 0, labelKey = '';
@@ -327,7 +325,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       if (seen.has(key)) continue;
       seen.add(key); roads.push({ colour: INK.road, width: 1.8, points: [spot(...TOWNS[road.towns[i - 1]!]!, y + 0.004), spot(...TOWNS[road.towns[i]!]!, y + 0.004)] });
     }
-    const flights = CITY_LINKS.filter((link) => link.mode === 'air').map((link) => ({ colour: INK.air, width: 1.3, points: pathPoints(linkPath(link, cityEntry), y + 0.01) }));
+    const flights = allCityLinks().filter((link) => link.mode === 'air').map((link) => ({ colour: INK.air, width: 1.3, points: pathPoints(linkPath(link, cityEntry), y + 0.01) }));
     addLayer(ribbonMesh([...rivers, ...roads, ...flights], 1, 3), [NIGERIA], { extrude: true });
     // The open state: a bright outline round its lifted plate.
     const open = topology.features.filter((feature) => statusOf('state', feature.id) === 'open');
@@ -498,7 +496,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     const path = routePath(routeShown);
     swap(routeLine, path && level === NIGERIA ? mesh.ribbons([{ colour: '#ffffff', width: 7, points: pathPoints(path, HEIGHT.state + 0.03) }, { colour: INK.route, width: 4, points: pathPoints(path, HEIGHT.state + 0.032) }]).geometry : null);
   }
-  const routePath = (id: string | null) => { const link = id ? CITY_LINKS.find((item) => linkId(item) === id) : null; return link ? linkPath(link, cityEntry) : null; };
+  const routePath = (id: string | null) => { const link = id ? allCityLinks().find((item) => linkId(item) === id) : null; return link ? linkPath(link, cityEntry) : null; };
 
   // ---- drawing: on demand, and only as long as something moves ---------------------------------------
   function request() { if (!rafId && shown() && raf) rafId = raf(tick); }
@@ -601,7 +599,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   }
   /** Play a link's journey on the map without leaving: a preview, clearly not a real trip. */
   function previewTrip(routeId: string): boolean {
-    const link = CITY_LINKS.find((item) => linkId(item) === routeId);
+    const link = allCityLinks().find((item) => linkId(item) === routeId);
     if (!link || trip) return false;
     const run = startRun(link, link.a === current || link.b !== current ? link.a : link.b);
     if (!run) return false;
@@ -615,7 +613,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
 
   // ---- the chrome: breadcrumb, list, sheet -------------------------------------------------------------
   const context = () => ({ current, held: held() || [], routes: routes() });
-  const infoOf = (hit: Pick<Hit, 'kind' | 'id' | 'feature'>): RegionInfo => regionInfo({ kind: hit.kind, id: hit.id }, { ...context(), feature: hit.feature });
+  const infoOf = (hit: Pick<Hit, 'kind' | 'id' | 'feature'>): RegionInfo => regionInfo({ kind: hit.kind, id: hit.id }, { ...context(), cityId: selectedCity, feature: hit.feature });
   function drawChrome() { drawCrumbs(); drawRail(); drawSheet(); drawHighlights(); }
   function drawCrumbs() {
     if (!ui.crumbs) return;
@@ -660,6 +658,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     root!.classList.toggle('has-sheet', Boolean(hit));
     if (!hit) { ui.sheet.innerHTML = ''; return; }
     const info = infoOf(hit);
+    const stateCities = hit.kind === 'state' ? citiesInState(hit.id) : [];
+    const guide = info.city ? cachedCityContent(info.city.id)?.thingsToDo.slice(0, 5) : undefined;
     const routeRow = (route: RouteInfo) => {
       const on = routeShown === route.id, playing = preview && routeShown === route.id;
       return `<li class="${on ? 'is-on' : ''}"><button type="button" class="atlas-route" data-atlas-route="${esc(route.id)}" aria-pressed="${on}"><span class="atlas-route-mode" aria-hidden="true">${ICON(route.mode === 'air' ? GLYPH.plane : GLYPH.bus)}</span><span><b>${esc(route.label)}</b><small>${naira(route.fare)} · about ${route.minutes} min · ${route.km} km · from ${esc(route.hub)}</small></span></button>
@@ -669,7 +669,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     ui.sheet.className = `atlas-sheet is-${info.tone}${sheetOpen ? ' is-expanded' : ''}`;
     ui.sheet.setAttribute('aria-label', `${info.name}: ${info.tag}`);
     ui.sheet.innerHTML = `<header><div><h2>${esc(info.name)}</h2><p>${esc(info.type)}${info.capital ? ` · capital ${esc(info.capital)}` : ''}</p></div><span class="atlas-tag">${esc(info.tag)}</span><button type="button" class="atlas-close" data-atlas-close aria-label="Close ${esc(info.name)}">${ICON('<path d="M6 6l12 12M18 6 6 18"/>')}</button></header>
+      ${stateCities.length > 1 ? `<nav aria-label="Cities in this state">${stateCities.map(city => `<button type="button" data-atlas-inspect-city="${esc(city.id)}" aria-pressed="${city.id === info.city?.id}">${esc(city.name)}</button>`).join('')}</nav>` : ''}
       <p class="atlas-teaser">${esc(info.teaser)}</p>
+      ${guide?.length ? `<section class="atlas-guide"><h3>Things to do in ${esc(info.city!.name)}</h3><ul>${guide.map(place => `<li><b>${esc(place.name)}</b> · ${esc(place.line)}</li>`).join('')}</ul></section>` : ''}
       ${info.action ? `<button type="button" class="atlas-go" data-atlas-action>${esc(info.action.label)}<span aria-hidden="true"> →</span></button>` : ''}
       ${more ? `<button type="button" class="atlas-more" data-atlas-expand aria-expanded="${sheetOpen}">${sheetOpen ? 'Less' : info.routes.length ? 'Routes and details' : 'More'}</button>` : ''}
       ${info.preview ? `<div class="atlas-preview"><h3>${esc(info.city!.name)} will have</h3><ul>${info.preview.map((line) => `<li>${esc(line)}</li>`).join('')}</ul></div>` : ''}
@@ -681,9 +683,11 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   /** Choose a region (or nothing). `from`: 'map' | 'list' | 'key' — the list and the keyboard move focus to the sheet. */
   function select(ref: RegionRef | null, { from = 'map', flyTo = false }: SelectOptions = {}): boolean {
     const hit = find(ref);
-    if (!same(hit, selected)) sheetOpen = false;
+    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; }
     if (preview && reducedMotion) preview = null; // the still preview lasts until something else is chosen
     selected = hit ? { kind: hit.kind, id: hit.id } : null;
+    const city = hit ? infoOf(hit).city : null;
+    if (city && isOpenCityId(city.id) && !cachedCityContent(city.id)) void loadCityContent(city.id).then(() => { if (selected?.id === hit?.id) drawSheet(); }, () => {});
     if (!preview && !trip) routeShown = null;
     const inside = hit?.kind === 'country' ? ATLAS_LEVELS.findIndex((entry) => entry.id === regionEntry('country', hit.id).level) : -1;
     const back = !hit && doc && ui.sheet?.contains(doc.activeElement);
@@ -811,7 +815,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
     const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel');
-    if (lvl) goLevel(Number(lvl.dataset.atlasLevel));
+    const inspectCity = hit('inspect-city');
+    if (inspectCity) { selectedCity = inspectCity.dataset.atlasInspectCity ?? null; if (selectedCity && isOpenCityId(selectedCity)) void loadCityContent(selectedCity).then(drawSheet, () => {}); drawSheet(); }
+    else if (lvl) goLevel(Number(lvl.dataset.atlasLevel));
     else if (city) enterCity(city.dataset.atlasCity!);
     else if (pick) { const [kind, id] = pick.dataset.atlasPick!.split(':'); select({ kind: kind as RegionKind, id: id! }, { from: 'list', flyTo: true }); }
     else if (zoom) { const how = zoom.dataset.atlasZoom; if (how === 'fit') fly(levelView(level)); else fly({ distance: rig.view.distance * (how === 'in' ? 0.6 : 1 / 0.6), x: rig.view.x, z: rig.view.z, yaw: rig.view.yaw }, 0.3); }
@@ -870,7 +876,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     setState(state) {
       const next = interCityTripOf(state);
       if (!next) { if (trip) { trip = null; clock.clear(); routeShown = null; drawHighlights(); request(); } return; }
-      const link = CITY_LINKS.find((item) => ((item.a === next.from && item.b === next.to) || (item.a === next.to && item.b === next.from)) && item.mode === next.mode);
+      const link = allCityLinks().find((item) => ((item.a === next.from && item.b === next.to) || (item.a === next.to && item.b === next.from)) && item.mode === next.mode);
       if (!link) return;
       const fresh = clock.sync(next, now());
       if (fresh || !trip) { trip = startRun(link, next.from); preview = null; routeShown = linkId(link); drawHighlights(); }

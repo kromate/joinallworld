@@ -1,3 +1,5 @@
+import { registeredCityIds, cityRules, loadCityContent, isCityId } from './game/cities/registry.ts';
+import { STORAGE_KEY } from './storage-key.ts';
 /**
  * Client model: the browser's read-only mirror of the server-held life, plus networking.
  * DOM-free so it can be tested in Node (src/client.test.ts).
@@ -12,7 +14,11 @@ import type { LifeState } from './types/life.ts';
 import type { ActionRequest, ActionResponse, ApiEnvelope, CityId, LifeResponse, OwnSession, SessionRequest, SessionResponse, TimedId } from './types/protocol.ts';
 
 export interface City { id: CityId; name: string; region: string }
-export const CITIES: Readonly<Record<CityId, City>> = Object.freeze({ lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State' }, ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State' } });
+export function clientCity(id: string): City {
+  const rules = cityRules(id);
+  if (!rules) throw new TypeError(`Unknown city ${id}`);
+  return { id, name: rules.name, region: rules.state?.name ?? rules.name };
+}
 
 /** Why the game is or is not playable (see createClient). */
 export type LinkState = 'connecting' | 'online' | 'new' | 'expired' | 'offline' | 'unreachable'
@@ -25,7 +31,7 @@ export interface StorageProblem { reason: string }
 /** Outcome of command() and switchCity(). `ok: false` with `code: 'offline' | 'busy'` means nothing was sent. */
 export interface CommandResult { ok: boolean; code: string | undefined; reason?: string }
 /** What api() rejects with. A network failure has neither status nor code. */
-export interface ApiError extends Error { status?: number; code?: string; reason?: string }
+export interface ApiError extends Error { status?: number; code?: string; reason?: string; city?: string }
 /** Options of api(): fetch's, except that `body` may be an object (sent as JSON). */
 export type ApiOptions = Omit<RequestInit, 'body' | 'headers'> & { body?: unknown; headers?: Record<string, string> }
 
@@ -77,6 +83,7 @@ export interface Client {
   fetchJson: Api
   connect(createNew?: boolean): Promise<boolean>
   command(type: ActionRequest['type'], payload?: Record<string, unknown> | null, options?: { actionId?: string }): Promise<CommandResult>
+  switchLegacy(id: string, clientId: string): Promise<CommandResult>
   switchCity(id: string): Promise<CommandResult>
   refresh(lostText?: string): Promise<boolean>
   schedule(): void
@@ -89,7 +96,7 @@ export type Api = <T extends object = Record<string, unknown>>(path: string, opt
 interface Payload extends Partial<ApiEnvelope> { error?: string; code?: string; message?: string; reason?: unknown }
 /** What the browser cache holds (nothing in it is trusted). */
 interface SavedClient { state?: unknown; identity?: { name?: string }; cityId?: unknown }
-export const STORAGE_KEY = 'joinallworld-life-v1';
+export { STORAGE_KEY } from './storage-key.ts';
 export const TEXT = Object.freeze({
   connectionLost: 'Connection lost. Reconnect to check your saved progress.',
   offlinePaused: 'This device has no internet. Nothing changes until you are back online.',
@@ -113,7 +120,8 @@ export const TEXT = Object.freeze({
  * needs an explicit rejoin. This only joins the room (presence and text chat): the join puts the
  * player back with voice off and muted, and nothing here turns voice or the microphone on.
  */
-export function roomJoinNeeded(previous: Pick<LifeState, 'location' | 'activeAction'>, next: Pick<LifeState, 'location' | 'activeAction'>): boolean {
+export function roomJoinNeeded(previous: Pick<LifeState, 'location' | 'activeAction'> & Partial<Pick<LifeState, 'estate'>>, next: Pick<LifeState, 'location' | 'activeAction'> & Partial<Pick<LifeState, 'estate'>>): boolean {
+  if (previous.estate && next.estate && previous.estate.city !== next.estate.city) return true;
   if (previous.location !== next.location) return true;
   return isDeparting(previous) && !next.activeAction;
 }
@@ -181,7 +189,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   const client: Client = {
     // A saved life that uses the campus waits for the campus rules (below); until then the device shows a new one.
     state: createLife(campusFor(saved?.state) ? null : saved?.state),
-    cityId: typeof saved?.cityId === 'string' && Object.hasOwn(CITIES, saved.cityId) ? saved.cityId as CityId : 'lagos',
+    cityId: typeof saved?.cityId === 'string' && isCityId(saved.cityId) ? saved.cityId as CityId : 'lagos',
     identity: { name: saved?.identity?.name || 'New Lagosian' },
     hasSavedIdentity: Boolean(saved?.identity),
     session: null, ready: false, busy: false, serverTimeOffset: 0, link: 'connecting',
@@ -194,7 +202,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     /** null while the server is saving normally; { reason } from the moment it says it cannot (storage: "failing", or 503 storage_unavailable). */
     storage: null,
     get online() { return client.ready && Boolean(client.session); },
-    api, fetchJson: api, connect, command, switchCity, refresh, schedule, stop,
+    api, fetchJson: api, connect, command, switchCity, switchLegacy, refresh, schedule, stop,
   };
   let pollTimer: unknown = null;
   // A saved life that uses the campus is rebuilt as soon as the campus rules have arrived, unless the server has answered first.
@@ -234,6 +242,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (!response.ok) {
       const error: ApiError = Error(payload.error === 'action_expired' ? TEXT.outOfSync : payload.error || payload.message || 'Connection failed');
       error.status = response.status; error.code = payload.code || payload.error;
+      if (typeof Reflect.get(payload, 'city') === 'string') error.city = String(Reflect.get(payload, 'city'));
       if (typeof payload.reason === 'string' && payload.reason) error.reason = payload.reason; // the sentence the server wrote for the player
       throw error;
     }
@@ -253,6 +262,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     const stamp = (next as { t?: unknown } | null | undefined)?.t;
     const snapshotTime = typeof stamp === 'number' ? stamp : Number.NaN;
     client.state = createLife(next, { now: Number.isFinite(snapshotTime) ? snapshotTime : client.serverNow(), cityId: client.cityId });
+    if (isCityId(client.state.estate.city)) client.cityId = client.state.estate.city as CityId;
     persist();
     onChange(client.state, previous);
     schedule();
@@ -278,9 +288,28 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   }
   function stop(): void { cancelTimer(pollTimer); }
 
+  async function loadedSnapshot<T extends { state: LifeState }>(response: T): Promise<T> {
+    const city: unknown = response.state?.estate?.city;
+    if (isCityId(city)) await loadCityContent(city);
+    return response;
+  }
+
+  async function fetchCurrentLife(city: string): Promise<LifeResponse> {
+    try { await loadCityContent(city); return await loadedSnapshot(await api<LifeResponse>(`/api/life?city=${city}`)); }
+    catch (error) {
+      if (typeof error !== 'object' || error === null || Reflect.get(error, 'code') !== 'city_moved') throw error;
+      const destination: unknown = Reflect.get(error, 'city');
+      if (typeof destination !== 'string' || !isCityId(destination)) throw error;
+      await loadCityContent(destination);
+      const response = await api<LifeResponse>(`/api/life?city=${destination}`);
+      client.cityId = destination as CityId;
+      return loadedSnapshot(response);
+    }
+  }
+
   async function refresh(lostText = 'Reconnect to refresh progress'): Promise<boolean> {
     if (!client.online) return false;
-    try { await accept((await api<LifeResponse>(`/api/life?city=${client.cityId}`)).state); return true; }
+    try { await accept((await fetchCurrentLife(client.cityId)).state); return true; }
     catch (e) {
       const error = e as ApiError;
       // The server answered, it just could not save this settlement: still connected, try again at the next poll.
@@ -311,7 +340,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = true;
       onSession(client.session, createNew);
       client.link = 'online';
-      await accept((await api<LifeResponse>(`/api/life?city=${client.cityId}`)).state);
+      await accept((await fetchCurrentLife(client.cityId)).state);
       holdCity(client.cityId);
       status('Connected · progress saved');
       return true;
@@ -359,11 +388,17 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       const body: Omit<ActionRequest, 'actionId'> & { actionId: string } = { actionId: typeof options?.actionId === 'string' ? options.actionId : client.newId(), cityId: client.cityId, type };
       if (payload !== undefined && payload !== null) body.payload = outgoing(type, payload);
       const response = await api<ActionResponse>('/api/action', { method: 'POST', body });
+      await loadedSnapshot(response);
       await accept(response.state);
       if (!response.ok && client.state.message) status(client.state.message, true);
       return { ok: response.ok, code: response.code, reason: response.ok ? undefined : client.state.message };
     } catch (e) {
       const error = e as ApiError;
+      if (error.code === 'city_moved' && isCityId(error.city)) {
+        try { await accept((await fetchCurrentLife(error.city)).state); }
+        catch { lost(error); }
+        return { ok: false, code: 'city_moved', reason: error.reason ?? 'Your character moved. Review its current city before trying again.' };
+      }
       // Not saved means not done (the server undid it): the player is still connected and may try again.
       if (error.code === 'storage_unavailable') return { ok: false, code: error.code, reason: error.reason || TEXT.notSaving };
       if (error.status === 401) expired(); else lost(error);
@@ -371,14 +406,29 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     } finally { client.busy = false; }
   }
 
+  async function switchLegacy(id: string, clientId: string): Promise<CommandResult> {
+    if (client.busy || client.state.activeAction) return { ok: false, code: 'busy' };
+    client.busy = true;
+    try {
+      const result = await api<{ ok: true; city: string }>('/api/characters/switch', { method: 'POST', body: { id, clientId } });
+      const current = await fetchCurrentLife(result.city);
+      await accept(current.state);
+      return { ok: true, code: 'switched' };
+    } catch (error) {
+      return { ok: false, code: error instanceof Error ? (error as ApiError).code ?? 'network' : 'network', reason: error instanceof Error ? error.message : 'Could not switch characters.' };
+    } finally { client.busy = false; }
+  }
+
   /** Move to another city's life. Refused mid-action and while offline. */
   async function switchCity(id: string): Promise<CommandResult> {
-    if (typeof id !== 'string' || !Object.hasOwn(CITIES, id)) return { ok: false, code: 'invalid_city' };
+    if (typeof id !== 'string' || !isCityId(id)) return { ok: false, code: 'invalid_city' };
     if (client.state.activeAction) return { ok: false, code: 'busy', reason: 'Complete or cancel your current action before switching cities.' };
     if (!client.online) { const reason = client.session ? 'Reconnect before switching cities.' : 'Connect before entering a city.'; status(reason, true); return { ok: false, code: 'offline', reason }; }
     try {
+      await loadCityContent(id);
       const data = await api<LifeResponse>(`/api/life?city=${id}`);
       client.cityId = id as CityId;
+      await loadedSnapshot(data);
       await accept(data.state);
       holdCity(id as CityId);
       return { ok: true, code: 'switched' };

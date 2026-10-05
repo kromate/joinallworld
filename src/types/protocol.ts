@@ -33,7 +33,7 @@ import type { AccountHttpRoutes } from './account.ts'
  * server/protocol.ts CITY_IDS: the cities a server keeps lives for. (The rules engine knows more
  * cities as data — life.ts `WorldCityId` — but only these can be asked for.)
  */
-export type CityId = 'lagos' | 'ibadan'
+export type CityId = import('../game/cities/ids.ts').CityId
 
 /** The only identity a server ever exposes: `id` is the session's PUBLIC id, never the cookie secret. */
 export interface PublicSession {
@@ -201,6 +201,15 @@ export interface CoreHttpRoutes {
     errors: HostErrorCode | JsonBodyErrorCode | StorageErrorCode | 'invalid_name' | 'name_not_allowed' | 'device_capacity' | 'muted'
   }
   'GET /api/session': { response: SessionResponse; errors: HostErrorCode | SessionErrorCode }
+  'GET /api/characters': {
+    response: { active: string | null; legacy: { id: string; city: string; cash: number; updatedAt: number }[] }
+    errors: HostErrorCode | SessionErrorCode | StorageErrorCode
+  }
+  'POST /api/characters/switch': {
+    body: { id: string; clientId: TimedId }
+    response: { ok: true; city: string; duplicate?: true }
+    errors: HostErrorCode | SessionErrorCode | StorageErrorCode | 'unknown_legacy_life' | 'invalid_character' | 'busy' | 'client_id_conflict'
+  }
   'GET /api/life': {
     query: { city: CityId }
     response: LifeResponse
@@ -388,13 +397,15 @@ export type ServerFrameType = ServerFrame['type']
 
 // ---- runtime key lists (compared with the running server by protocol.test.ts) -------------------
 
-export const CITY_IDS = ['lagos', 'ibadan'] as const
+export { registeredCityIds } from '../game/cities/registry.ts'
 
 export const HTTP_ROUTE_KEYS = [
   'GET /api/health',
   'POST /api/session',
   'GET /api/session',
   'GET /api/voice-config',
+  'GET /api/characters',
+  'POST /api/characters/switch',
   'GET /api/life',
   'POST /api/action',
   'GET /api/social/me',

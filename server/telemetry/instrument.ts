@@ -9,7 +9,7 @@
 import type { WsConnection } from '../types.ts';
 
 /** One event to record. `to` is a PUBLIC id. */
-export interface Recorded { to: string; name: string; props?: Record<string, string | number | boolean> }
+export interface Recorded { to: string; name: string; cityId?: string; props?: Record<string, string | number | boolean> }
 type SocialOp = 'friend-request' | 'friend-answer' | 'knock' | 'knock-answer' | 'message';
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 /** A field of anything that may be an object; undefined for every other value. */
@@ -60,6 +60,11 @@ export function replyEvents(selfId: unknown, message: unknown): Recorded[] {
 }
 
 const venueOf = (room: unknown): string => String(room ?? '').split(':')[1] || 'unknown';
+const cityOf = (room: unknown): string | undefined => String(room ?? '').split(':')[0] || undefined;
+const cityEvent = (event: Recorded, cityId: string | undefined): Recorded => {
+  if (cityId) Object.defineProperty(event, 'cityId', { value: cityId });
+  return event;
+};
 
 /**
  * Time spent in a room with another real player, and house visits, from snapshots of who is where.
@@ -74,7 +79,7 @@ export function createCoPresence({ minSeconds = 30 }: { minSeconds?: number } = 
   const finish = (id: string, events: Recorded[]): void => {
     const run = together.get(id);
     together.delete(id);
-    if (run && run.seconds >= minSeconds) events.push({ to: id, name: 'co_presence', props: { venue_id: venueOf(run.room), seconds: Math.round(run.seconds), minutes: Math.round(run.seconds / 6) / 10, peers_max: run.peers } });
+    if (run && run.seconds >= minSeconds) events.push(cityEvent({ to: id, name: 'co_presence', props: { venue_id: venueOf(run.room), seconds: Math.round(run.seconds), minutes: Math.round(run.seconds / 6) / 10, peers_max: run.peers } }, cityOf(run.room)));
   };
   return {
     beat(rooms: Map<string, Set<string>>, seconds: number): Recorded[] {
@@ -94,7 +99,7 @@ export function createCoPresence({ minSeconds = 30 }: { minSeconds?: number } = 
           if (venue === 'home' && owner && id !== owner && members.has(owner)) {
             const key = `${room}|${id}`;
             live.add(key);
-            if (!visits.has(key)) { visits.add(key); events.push({ to: id, name: 'house_visit', props: { role: 'guest' } }, { to: owner, name: 'house_visit', props: { role: 'host' } }); }
+            if (!visits.has(key)) { visits.add(key); events.push(cityEvent({ to: id, name: 'house_visit', props: { role: 'guest' } }, cityOf(room)), cityEvent({ to: owner, name: 'house_visit', props: { role: 'host' } }, cityOf(room))); }
           }
         }
       }
@@ -111,13 +116,13 @@ export function createCoPresence({ minSeconds = 30 }: { minSeconds?: number } = 
 /** Voice sessions per socket: on → voice_joined; off, room left or socket closed → voice_left with its length. */
 export type VoiceSocket = Pick<WsConnection, 'room'> & { session?: { id?: unknown } | undefined };
 export function createVoice({ now }: { now: () => number }) {
-  const started = new WeakMap<object, { at: number; id: string; venue: string }>();
+  const started = new WeakMap<object, { at: number; id: string; cityId?: string; venue: string }>();
   const leave = (ws: VoiceSocket): Recorded[] => {
     const run = started.get(ws);
     if (!run) return [];
     started.delete(ws);
     const seconds = Math.max(0, Math.round((now() - run.at) / 1000));
-    return [{ to: run.id, name: 'voice_left', props: { venue_id: run.venue, seconds } }];
+    return [cityEvent({ to: run.id, name: 'voice_left', props: { venue_id: run.venue, seconds } }, run.cityId)];
   };
   return {
     /** A 'voice-state' message the room accepted. */
@@ -125,8 +130,8 @@ export function createVoice({ now }: { now: () => number }) {
       if (enabled !== true) return leave(ws);
       const id = ws?.session?.id;
       if (started.has(ws) || typeof id !== 'string') return [];
-      started.set(ws, { at: now(), id, venue: venueOf(ws.room) });
-      return [{ to: id, name: 'voice_joined', props: { venue_id: venueOf(ws.room) } }];
+      started.set(ws, { at: now(), id, cityId: cityOf(ws.room), venue: venueOf(ws.room) });
+      return [cityEvent({ to: id, name: 'voice_joined', props: { venue_id: venueOf(ws.room) } }, cityOf(ws.room))];
     },
     leave,
   };

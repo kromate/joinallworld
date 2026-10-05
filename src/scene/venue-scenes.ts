@@ -79,7 +79,8 @@ import { buildAvatar, drawCrowd } from './characters.ts';
 import { playerOptions, rigOf } from './avatar-rig.ts';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
 import { spotMarker, gameTable } from './props.ts';
-import { tablesAt, GAME_LABELS } from '../tables/places.ts';
+import { tablesAt, GAME_LABELS } from '../tables/city-places.ts';
+import { DEFAULT_CITY_ID } from '../game/cities/registry.ts';
 import { lagosTime } from '../game/clock.ts';
 import * as outdoor from './venues-outdoor.ts';
 import * as social from './venues-social.ts';
@@ -287,7 +288,7 @@ interface View {
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
 }
 
-function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneDef, kind: string, defaultVariant?: string): SceneEntry {
+function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneDef, kind: string, defaultVariant?: string, cityId: string = DEFAULT_CITY_ID): SceneEntry {
   const { THREE } = kit;
   const shared = kitResources(kit);
   const materials: SkyMaterials = shared.materials;
@@ -360,7 +361,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
    * scene's own builder drew.
    */
   function placeTables(recorder: FootprintRecorder) {
-    const wanted = venue?.id ? tablesAt(venue.id) : [];
+    const wanted = venue?.id ? tablesAt(cityId, venue.id) : [];
     if (!wanted.length) return;
     if (!tableList.length) {
       const before = gridFor(recorder.shapes()), free = before.grid, door = before.data.entrance || [(before.bounds[0] + before.bounds[2]) / 2, before.bounds[3] - 0.8];
@@ -904,7 +905,9 @@ export const SCENES: Record<string, SceneBuilder> = Object.fromEntries([
 ]);
 
 /** Build the scene for a venue; unknown or missing kinds get the generic plaza. */
-export function buildVenueScene(kit: Kit, venue?: SceneVenue | null): SceneEntry {
-  const kind = String(venue?.scene?.kind);
-  return (Object.hasOwn(SCENES, kind) ? SCENES[kind] : SCENES.generic)!(kit, venue);
+export function buildVenueScene(kit: Kit, venue?: SceneVenue | null, cityId: string = DEFAULT_CITY_ID): SceneEntry {
+  const requested = String(venue?.scene?.kind), alias = ALIASES[requested];
+  const kind = alias?.[0] ?? (Object.hasOwn(DEFS, requested) ? requested : 'generic'), def = DEFS[kind] ?? DEFS.generic;
+  if (!def) throw new TypeError(`No scene builder for ${kind}`);
+  return createEntry(kit, venue, def, kind, alias?.[1], cityId);
 }

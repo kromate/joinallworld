@@ -62,7 +62,7 @@ test('the airport and the refinery are venues of the catalogue, and nothing in L
   assert.deepEqual(paid.map((def: any) => def.id), ['airport-carry-bags', 'refinery-load-drums']);
   for (const def of paid) { assert.ok(isGig(def) && def.cooldown >= 300 && def.effects.energy < 0 && def.minimumNeeds.energy >= 20 && def.reward <= 450, def.id); }
   // The travel desk names the flights that exist as data and are refused while their city is not open. It sells nothing.
-  const flights = CITY_LINKS.filter((link) => link.mode === 'air' && (link.a === 'lagos' || link.b === 'lagos')).map((link) => CITY_RULES[link.a === 'lagos' ? link.b : link.a]);
+  const flights = CITY_LINKS.filter((link) => link.mode === 'air' && (link.a === 'lagos' || link.b === 'lagos')).map((link) => { const city = CITY_RULES[link.a === 'lagos' ? link.b : link.a]; assert.ok(city, 'flight destination is registered'); return city; });
   assert.ok(flights.length >= 2 && flights.every((city) => city.status !== 'open'));
   for (const city of flights) assert.ok(AIRPORT.spots.desk.caption.includes(city.name), city.name);
   assert.match(AIRPORT.spots.desk.caption, /begin when those cities open/);
@@ -110,7 +110,7 @@ test('a trip to each works by trek and by danfo, and each is on the map list as 
 
 test('every activity at both venues starts and completes; the paid gigs pay once, cool down and count towards the daily limit', () => {
   for (const id of IDS) {
-    for (const spot of spotsOf(id)) {
+    for (const spot of spotsOf(id, 'lagos')) {
       for (const def of spot.activities) {
         const state = createLife({ location: id, spot: spot.id, cash: 5000 }, at(NOON));
         state.needs.energy = 80;
@@ -148,7 +148,7 @@ test('both scenes: every spot has its own landmark on walkable ground, with a pa
     const spots = entry.walk.spots();
     // Its own five spots, and the People spot the regulars bring.
     assert.deepEqual(spots.map((spot: any) => spot.id), [...Object.keys(VENUES[id].spots), 'people']);
-    assert.deepEqual(spotsOf(id).map((spot: any) => spot.id), spots.map((spot: any) => spot.id));
+    assert.deepEqual(spotsOf(id, 'lagos').map((spot: any) => spot.id), spots.map((spot: any) => spot.id));
     assert.equal(new Set(spots.map((spot: any) => `${spot.x},${spot.z}`)).size, spots.length, 'no two spots share a place');
     const walker = createWalker();
     walker.setGrid(grid); walker.place(entrance.x, entrance.z, Math.PI);

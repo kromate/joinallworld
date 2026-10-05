@@ -578,11 +578,11 @@ test('EVERY VENUE: spawn on free floor, walk to every spot and back out, orbit a
   const { spotsOf } = await import('./life.ts');
   const report = [];
   // The UNILAG campus is drawn by its own host (src/campus/unilag/host.ts behind world-adapter.ts) and has its own scene, walk and budget tests there.
-  for (const id of Object.keys(VENUES).filter((venue) => VENUES[venue as keyof typeof VENUES].scene.kind !== 'unilag')) {
+  for (const id of Object.values(VENUES).filter((venue) => venue.scene.kind !== 'unilag').map((venue) => venue.id)) {
     const bench = motionBench({ location: id });
     try {
       const { world } = bench;
-      const spots = spotsOf(id).map((spot) => spot.id);
+      const spots = spotsOf(id, 'lagos').map((spot) => spot.id);
       const base = id === 'home' ? createLife({ location: 'home', name: 'Ada' }, { now: NOON, cityId: 'lagos' }) : { location: id, spot: spots[0], t: NOON, name: 'Ada' };
       world.setState(base);
       const spawn = world.diagnostics();

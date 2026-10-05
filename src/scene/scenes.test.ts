@@ -234,7 +234,7 @@ test('every spot of every venue stands at a landmark of its scene, and every reg
     // The UNILAG campus is drawn by its own host (src/campus/unilag/host.ts behind world-adapter.ts) and has its own scene, walk and budget tests there.
     if (venue.scene.kind === 'home' || venue.scene.kind === 'unilag') continue;
     const seen = sceneVenue(venue.id);
-    assert.deepEqual(seen!.scene.spots.map((spot) => spot.id), spotsOf(venue.id).map((spot) => spot.id), `${venue.id}: spots added by other systems are passed to the scene`);
+    assert.deepEqual(seen!.scene.spots.map((spot) => spot.id), spotsOf(venue.id, 'lagos').map((spot) => spot.id), `${venue.id}: spots added by other systems are passed to the scene`);
     const entry = buildVenueScene(kit, seen);
     for (const spot of seen!.scene.spots) assert.ok(entry.anchors[spot.id]?.landmark, `${venue.id}.${spot.id} is on open floor`);
     for (const [spot, landmark] of Object.entries((venue.scene as SceneOptions).anchors || {})) {

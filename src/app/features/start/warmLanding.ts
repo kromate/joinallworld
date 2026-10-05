@@ -3,7 +3,7 @@
 // with the scene, instead of one hop after another once the HUD is up: the preview is drawn as soon as
 // the page can. A device with a saved life is not on the landing and fetches none of it.
 // Nothing here runs the preview; it only fetches the modules the landing will import anyway.
-import { STORAGE_KEY } from '../../../client.ts'
+import { STORAGE_KEY } from '../../../storage-key.ts'
 
 /** True when this browser has no saved life, so the first screen is the landing. */
 export function isNewDevice(storage: Pick<Storage, 'getItem'> | null): boolean {

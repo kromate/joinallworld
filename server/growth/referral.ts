@@ -70,14 +70,14 @@ export function referralService(ctx: Pick<RouteContext, 'now' | 'fail' | 'checks
   }
 
   /** Attach the caller's young life to the owner of a share code. */
-  function link(g: GrowthCollection, session: SessionRecord, state: LifeState, body: Record<string, unknown>, ip: string) {
+  function link(g: GrowthCollection, session: SessionRecord, state: LifeState, cityId: CityId, body: Record<string, unknown>, ip: string) {
     const now = ctx.now(), id = session.publicId;
     const code = body?.code, token = body.device;
     if (typeof code !== 'string' || !isShareCode(code)) throw ctx.fail(400, 'invalid_share_code');
     if (typeof token !== 'string' || !DEVICE.test(token)) throw ctx.fail(400, 'device_required');
     const me = playerOf(g, id);
     if (!me) return no('server_full', 'Invites are not available right now. Try again later.');
-    const refuse = (code: string, reason: string) => { count(g, now, `referral.refused.${code.replace(/_/g, '-')}`); return no(code, reason); };
+    const refuse = (code: string, reason: string) => { count(g, now, cityId, `referral.refused.${code.replace(/_/g, '-')}`); return no(code, reason); };
     if (me.ref) return me.ref.code === code ? { ok: true, code: 'linked', duplicate: true } : refuse('already_linked', 'This life already came through a friend’s link. That cannot be changed.');
     const share = findShare(g, code, now);
     if (!share) return refuse('unknown_link', 'That invite link has expired or does not exist.');
@@ -103,7 +103,7 @@ export function referralService(ctx: Pick<RouteContext, 'now' | 'fail' | 'checks
     inviter.invited[id] = { name: session.name, at: now, state: 'joined', device };
     share.joined = Math.min(Number.MAX_SAFE_INTEGER, (share.joined ?? 0) + 1);
     // One act, one counter: the share keeps its own `joined` number; the day's total is referral.linked.
-    count(g, now, 'referral.linked');
+    count(g, now, cityId, 'referral.linked');
     return { ok: true, code: 'linked', by: share.facts?.name ?? 'a friend' };
   }
 
@@ -121,7 +121,7 @@ export function referralService(ctx: Pick<RouteContext, 'now' | 'fail' | 'checks
     if (me.ref && !me.ref.welcomed && worked >= REFERRAL.welcomeWorkDays) {
       const inviter = playerOf(g, me.ref.by, { create: false });
       const result = act('welcome', inviter?.invited?.[id] ? (g.shares[me.ref.code]?.facts?.name ?? 'a friend') : 'a friend');
-      if (result.ok || result.code === 'already_welcomed') { me.ref.welcomed = true; material = true; if (result.ok) count(g, now, 'referral.welcomed'); }
+      if (result.ok || result.code === 'already_welcomed') { me.ref.welcomed = true; material = true; if (result.ok) count(g, now, cityId, 'referral.welcomed'); }
     }
     if (me.ref && !me.ref.counted && worked >= REFERRAL.countWorkDays) {
       me.ref.counted = true; material = true;
@@ -130,13 +130,13 @@ export function referralService(ctx: Pick<RouteContext, 'now' | 'fail' | 'checks
         inviter.invited[id].state = 'counted'; inviter.invited[id].name = session.name;
         inviter.counted = Math.min(Number.MAX_SAFE_INTEGER, inviter.counted + 1);
         if (inviter.owed.length < LIMITS.owed && !inviter.owed.includes(id)) inviter.owed.push(id);
-        count(g, now, 'referral.counted');
+        count(g, now, cityId, 'referral.counted');
       }
     }
     // As an inviter: collect what is owed, a few at a time, until a cap says stop.
     for (let paid = 0; me.owed.length && paid < 6; paid++) {
       const result = act('reward', (me.owed[0] === undefined ? undefined : me.invited[me.owed[0]]?.name) ?? 'A friend');
-      if (result.ok) { me.owed.shift(); material = true; count(g, now, 'referral.paid'); continue; }
+      if (result.ok) { me.owed.shift(); material = true; count(g, now, cityId, 'referral.paid'); continue; }
       if (result.code === 'referral_lifetime_cap') { me.owed.length = 0; material = true; } // they still count for titles
       break; // the weekly cap or a full wallet: it stays owed
     }

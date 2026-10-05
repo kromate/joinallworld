@@ -152,7 +152,7 @@ test('a guest the host asks to leave is dropped at once, and a visit in another 
   const { g, host, guest } = world;
   let from = g.log.length;
   say(g, { type: 'join', cityId: 'ibadan', venueId: 'home', hostId: host.id });
-  assert.equal((await until(g, (m) => m.type === 'error', 'wrong city', from)).code, 'not_a_guest', 'the visit is for Lagos only');
+  assert.equal((await until(g, (m) => m.type === 'error', 'wrong city', from)).code, 'city_moved', 'one character cannot enter a second city room');
   assert.deepEqual(await exchange(world, 'still inside'), delivered, 'a refused join leaves the socket where it was');
   from = g.log.length;
   assert.equal((await world.post('/api/social/house/leave', { host: host.id, guest: guest.id }, host)).code, 'left');

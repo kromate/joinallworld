@@ -57,7 +57,7 @@ onMounted(() => {
       // Where the scene starts is where the server says the player is, never the copy this device kept.
       if (!ready.value) await new Promise<void>((resolve) => { const stop = watch(ready, (now) => { if (now) { stop(); resolve() } }) })
       if (disposed || !container.value) return
-      const venue = createVenueWorld(container.value, { location: game.state.value.location, onTag(tag) {
+      const venue = createVenueWorld(container.value, { location: game.state.value.location, cityId: game.state.value.estate.city, onTag(tag) {
         // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
         if (tag.kind === 'goal') void goTo(game.state.value.location, tag.id.replace(/^goal:/, ''))
         // A game table in the venue (walked up to, or tapped): the Tables app opens on that table — sit, watch or invite.

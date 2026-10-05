@@ -1,3 +1,4 @@
+import { fileCharacter } from '../character.ts';
 /**
  * OWNER: world
  * THE WORLD SERVICE — keeps the per-local-government registry (server/world/registry.ts, stored in
@@ -204,11 +205,7 @@ function buildWorld(ctx: RouteContext) {
       const session = ctx.core.sessionByPublicId(db, publicId);
       const entry = session?.cities?.[from];
       if (!session || !entry || entry.state?.estate?.city !== to) return;
-      const aside = session.cities[target];
-      if (aside) { session.legacyLives ||= {}; session.legacyLives[`${to}:${ctx.now()}`] = aside; }
-      session.cities[target] = entry;
-      delete session.cities[from];
-      session.character = { v: 1, city: to, movedAt: ctx.now(), from };
+      fileCharacter(session, from, ctx.now());
     });
   }
 

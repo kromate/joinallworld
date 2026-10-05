@@ -19,7 +19,7 @@ import type { HouseDefinition, HouseTierDefinition } from '../../types/content.t
 
 export const MOVE_IN_WEEKS = 3;
 
-export const HOUSES: Record<HouseId, HouseDefinition> = {
+const HOUSES_DATA = {
   mushin: {
     id: 'mushin', label: 'Face-me-I-face-you', district: 'Mushin', grid: 6, rent: 2400, moveIn: 7200, tag: 'Hard start',
     description: 'One room off a shared corridor. The neighbours are loud, the rent is kind.',
@@ -42,7 +42,8 @@ export const HOUSES: Record<HouseId, HouseDefinition> = {
     id: 'banana', label: 'Mansion', district: 'Banana Island', grid: 14, rent: 1500000, moveIn: 4500000,
     description: 'The island address. Marble floors, sea breeze and more space than furniture.',
   },
-};
+} satisfies Record<string, HouseDefinition>;
+export const HOUSES: Record<string, HouseDefinition> & Record<keyof typeof HOUSES_DATA, HouseDefinition> = HOUSES_DATA;
 
 /** Kept for the placeholder's export name. */
 export const HOUSING = HOUSES;
@@ -67,13 +68,22 @@ export type HomeInfo =
  * (state.estate, systems/estate.ts — pass HOUSE_TIERS of content/world.ts), otherwise the rented tier.
  * → { grid, label, district, owned }
  */
-export function homeOf(state: HomeOfState | null | undefined, designs: HomeDesigns | null = null): HomeInfo {
+export function homeOf(state: HomeOfState | null | undefined, designs: HomeDesigns | null = null,
+  houses: readonly HouseDefinition[] = Object.values(HOUSES)): HomeInfo {
   const design = state?.estate?.living === 'own' && designs ? designs[state.estate.tier] : null;
   if (design) return { id: 'own', grid: design.grid, label: design.label, district: 'Your own house', owned: true };
   const houseId = state?.property?.house;
-  const house = (houseId === undefined ? undefined : HOUSES[houseId]) ?? HOUSES[DEFAULT_HOUSE];
+  const house = houses.find((item) => item.id === houseId) ?? houses.find((item) => item.id === DEFAULT_HOUSE) ?? houses[0];
+  if (!house) throw new TypeError('A city requires at least one rented home');
   return { ...house, owned: false };
 }
 
 /** Where a life lives until onboarding says otherwise (the balanced start). */
-export const DEFAULT_HOUSE: HouseId = 'yaba';
+export const DEFAULT_HOUSE = 'yaba';
+
+/** Resolve a validated house id, failing if the catalogue and saved state disagree. */
+export function requireHouse(id: HouseId, houses: readonly HouseDefinition[] = Object.values(HOUSES)): HouseDefinition {
+  const house = houses.find((item) => item.id === id)
+  if (!house) throw new TypeError(`Unknown house ${id}`)
+  return house
+}

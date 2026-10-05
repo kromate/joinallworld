@@ -36,6 +36,7 @@ import { lagosTime } from '../../src/game/clock.ts';
 import { STARTER_GOALS } from '../../src/game/content/goals.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { FunnelStep, GrowthMetricsResponse, MetricsCohort, MetricsDay, RetentionCell } from '../../src/types/growth.ts';
+import type { CityId } from '../../src/types/protocol.ts';
 import type { GrowthCollection } from '../types.ts';
 
 export const KEEP = Object.freeze({ days: 400, cohorts: 120, window: 31, lives: 50000 });
@@ -69,18 +70,35 @@ interface MetricsBook {
   cohorts: Record<string, { size: number; r: Record<string, number> }>
   lives: Record<string, { first: number; last: number | null; steps: number }>
 }
-function book(g: GrowthCollection): MetricsBook {
+function book(g: GrowthCollection, cityId: CityId = 'lagos'): MetricsBook {
   const m = g.metrics;
-  if (!isRecord(m.days)) m.days = {};
-  if (!isRecord(m.cohorts)) m.cohorts = {};
-  if (!isRecord(m.lives)) m.lives = {};
-  return { days: m.days, cohorts: m.cohorts, lives: m.lives };
+  if (!isRecord(m.cities)) m.cities = {};
+  let city = m.cities[cityId];
+  if (!isRecord(city)) {
+    city = cityId === 'lagos' ? { days: isRecord(m.days) ? m.days : {}, cohorts: isRecord(m.cohorts) ? m.cohorts : {}, lives: isRecord(m.lives) ? m.lives : {} } : {};
+    m.cities[cityId] = city;
+  }
+  if (!isRecord(city.days)) city.days = {};
+  if (!isRecord(city.cohorts)) city.cohorts = {};
+  if (!isRecord(city.lives)) city.lives = {};
+  if (cityId === 'lagos') { m.days = city.days; m.cohorts = city.cohorts; m.lives = city.lives; }
+  return { days: city.days, cohorts: city.cohorts, lives: city.lives };
 }
 
+const cityBooks = (g: GrowthCollection): [CityId, MetricsBook][] => {
+  book(g, 'lagos');
+  return Object.keys(g.metrics.cities ?? {}).map((cityId) => [cityId, book(g, cityId)]);
+};
+
 /** Add to one of today's counters. A name that is not a plain counter name is ignored. */
-export function count(g: GrowthCollection, now: number, name: string, n = 1): void {
+export function count(g: GrowthCollection, now: number, name: string, n?: number): void;
+export function count(g: GrowthCollection, now: number, cityId: CityId, name: string, n?: number): void;
+export function count(g: GrowthCollection, now: number, cityOrName: CityId | string, nameOrN: string | number = 1, amount = 1): void {
+  const cityId: CityId = typeof nameOrN === 'string' ? cityOrName : 'lagos';
+  const name = typeof nameOrN === 'string' ? nameOrN : cityOrName;
+  const n = typeof nameOrN === 'number' ? nameOrN : amount;
   if (typeof name !== 'string' || !COUNTER.test(name) || !Number.isSafeInteger(n) || n <= 0) return;
-  const m = book(g), day = lagosTime(now).day;
+  const m = book(g, cityId), day = lagosTime(now).day;
   const today = (m.days[day] ||= {});
   if (Object.keys(today).length >= 200 && !Object.hasOwn(today, name)) return;
   today[name] = Math.min(Number.MAX_SAFE_INTEGER, (today[name] ?? 0) + n);
@@ -92,21 +110,22 @@ export function count(g: GrowthCollection, now: number, name: string, n = 1): vo
  * counted once a day and not once per visit.
  */
 export function touch(g: GrowthCollection, now: number, publicId: string, state: LifeState, lastSeen: number | null = null): void {
-  const m = book(g), day = lagosTime(now).day;
+  const cityId: CityId = typeof state.estate?.city === 'string' ? state.estate.city : 'lagos';
+  const m = book(g, cityId), day = lagosTime(now).day;
   const first = lagosTime(Number.isFinite(state?.civic?.since) ? state.civic.since : now).day;
   let found: MetricsBook['lives'][string] | null = Object.hasOwn(m.lives, publicId) ? m.lives[publicId] ?? null : null;
   if (!found) {
     // Only a life still inside its window is followed; an old life is counted as active and nothing else.
-    if (day - first > KEEP.window - 1 || Object.keys(m.lives).length >= KEEP.lives) { if (typeof lastSeen !== 'number' || !Number.isFinite(lastSeen) || lagosTime(lastSeen).day !== day) count(g, now, 'active-untracked'); return; }
+    if (day - first > KEEP.window - 1 || Object.keys(m.lives).length >= KEEP.lives) { if (typeof lastSeen !== 'number' || !Number.isFinite(lastSeen) || lagosTime(lastSeen).day !== day) count(g, now, cityId, 'active-untracked'); return; }
     found = m.lives[publicId] = { first, last: null, steps: 0 };
     const cohort = (m.cohorts[first] ||= { size: 0, r: {} });
     cohort.size += 1;
-    if (first === day) count(g, now, 'new');
+    if (first === day) count(g, now, cityId, 'new');
   }
   const life = found;
   if (life.last !== day) {
     life.last = day;
-    count(g, now, 'active');
+    count(g, now, cityId, 'active');
     const offset = day - life.first;
     const cohort = m.cohorts[life.first];
     if (RETENTION_DAYS.includes(offset) && cohort) cohort.r[offset] = (cohort.r[offset] ?? 0) + 1;
@@ -114,22 +133,36 @@ export function touch(g: GrowthCollection, now: number, publicId: string, state:
   FUNNEL.forEach((step, index) => {
     if (life.steps & (1 << index) || !step.reached(state)) return;
     life.steps |= 1 << index;
-    count(g, now, `funnel.${step.id}`);
+    count(g, now, cityId, `funnel.${step.id}`);
   });
 }
 
 /** Drop what is past its retention. Called from the hourly sweep. */
 export function prune(g: GrowthCollection, now: number): void {
-  const m = book(g), day = lagosTime(now).day;
-  for (const key of Object.keys(m.days)) if (day - Number(key) > KEEP.days) delete m.days[key];
-  for (const key of Object.keys(m.cohorts)) if (day - Number(key) > KEEP.cohorts) delete m.cohorts[key];
-  for (const [id, life] of Object.entries(m.lives)) if (day - life.first > KEEP.window) delete m.lives[id];
+  const day = lagosTime(now).day;
+  for (const [, m] of cityBooks(g)) {
+    for (const key of Object.keys(m.days)) if (day - Number(key) > KEEP.days) delete m.days[key];
+    for (const key of Object.keys(m.cohorts)) if (day - Number(key) > KEEP.cohorts) delete m.cohorts[key];
+    for (const [id, life] of Object.entries(m.lives)) if (day - life.first > KEEP.window) delete m.lives[id];
+  }
 }
 
 const dateOf = (day: number): string => new Date(day * 86400000).toISOString().slice(0, 10);
 /** The operator's report: totals per day and the cohort table. Carries no player id. */
 export function report(g: GrowthCollection, now: number, { days = 35 }: { days?: number } = {}): Omit<GrowthMetricsResponse, 'analytics'> {
-  const m = book(g), today = lagosTime(now).day, span = Math.max(1, Math.min(KEEP.days, days));
+  const books = cityBooks(g), today = lagosTime(now).day, span = Math.max(1, Math.min(KEEP.days, days));
+  const m: MetricsBook = { days: {}, cohorts: {}, lives: {} };
+  for (const [cityId, source] of books) {
+    for (const [day, counters] of Object.entries(source.days)) {
+      const target = (m.days[day] ||= {});
+      for (const [name, value] of Object.entries(counters)) target[name] = (target[name] ?? 0) + value;
+    }
+    for (const [day, cohort] of Object.entries(source.cohorts)) {
+      const target = (m.cohorts[day] ||= { size: 0, r: {} }); target.size += cohort.size;
+      for (const [offset, value] of Object.entries(cohort.r)) target.r[offset] = (target.r[offset] ?? 0) + value;
+    }
+    for (const [id, life] of Object.entries(source.lives)) m.lives[`${cityId}:${id}`] = life;
+  }
   const daily: MetricsDay[] = [];
   for (let day = today - span + 1; day <= today; day++) { const counters = m.days[day]; if (counters) daily.push({ day, date: dateOf(day), ...counters }); }
   const cohorts = Object.keys(m.cohorts).map(Number).filter((day) => today - day < span + 30).sort((a, b) => a - b).flatMap((day): MetricsCohort[] => {

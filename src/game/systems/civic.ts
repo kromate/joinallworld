@@ -1,3 +1,4 @@
+import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
 /**
  * OWNER: civic
  * Per-life civic state: the daily gem hunt, days lived in the city, this week's earnings, and
@@ -51,24 +52,28 @@ import { emit, isDeparting } from '../registry.ts';
 import { fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
 import { canAfford, canCredit, credit, debit, spotsOf } from '../api.ts';
-import { VENUES, venueLabel } from '../content/venues.ts';
+import { venueLabel } from '../content/venues.ts';
 import { BILLBOARDS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../content/civic.ts';
+import { cityRules } from '../content/world.ts';
+import { isCityId } from '../cities/registry.ts';
 
 const KINDS: readonly unknown[] = ['visit', 'activity'];
 const isKind = (value: unknown): value is GemKind => KINDS.includes(value);
-const isVenue = (value: unknown): value is VenueId => typeof value === 'string' && Object.hasOwn(VENUES, value);
 const nowOf = (state: LifeState, ctx: LifeContext | undefined): number => (finite(ctx?.now) && ctx.now > 0 ? ctx.now : state.t);
 /** On the way out of a venue by any means (a trip, the commute): the shared departing predicate. */
 const travelling = (state: LifeState): boolean => isDeparting(state);
 const startable = (def: ActivityDefinition): boolean => !def.unavailable && !def.requiresJob && !def.requiresSkill;
 
+/** The city-local venue whose scene provides election polling mechanics. */
+export const pollingVenueFor = (cityId: string) => venuesFor(cityId).find((venue) => venue.scene.kind === 'polling') ?? null;
+
 /** Every place a gem may hide: each spot of each venue except Home (a venue without spots counts once). */
 interface HidingPlace { venue: VenueId; spot: SpotId | null; hasActivity: boolean }
-function hidingPlaces(): HidingPlace[] {
+function hidingPlaces(cityId: string): HidingPlace[] {
   const places: HidingPlace[] = [];
-  for (const venue of Object.keys(VENUES) as VenueId[]) { // the keys of the VENUES table are the venue ids
+  for (const venue of venuesFor(cityId).map(venue => venue.id)) { // the keys of the VENUES table are the venue ids
     if (venue === 'home') continue;
-    const spots = spotsOf(venue);
+    const spots = spotsOf(venue, cityId);
     const hasActivity = spots.some((spot) => spot.activities.some(startable));
     if (!spots.length) places.push({ venue, spot: null, hasActivity });
     for (const spot of spots) places.push({ venue, spot: spot.id, hasActivity });
@@ -79,7 +84,7 @@ function hidingPlaces(): HidingPlace[] {
 /** Where a player's gems hide on a Lagos day. Deterministic for (seed, city, day); spreads over venues first. */
 export function gemsFor(seed: number, cityId: string, day: number): HuntGem[] {
   const rng = makeRng(`gems|${cityId}|${day}|${seed}`);
-  const places = hidingPlaces();
+  const places = hidingPlaces(cityId);
   for (let i = places.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1));
     const a = places[i], b = places[j];
@@ -97,12 +102,16 @@ export function gemsFor(seed: number, cityId: string, day: number): HuntGem[] {
   return gems;
 }
 
-const freshHunt = (state: LifeState, cityId: string, day: number): DailyHunt => ({ day, claimed: false, gems: gemsFor(state.civic.seed, cityId, day) });
+const freshHunt = (state: LifeState, cityId: string, day: number): DailyHunt => ({ city: cityId, day, claimed: false, gems: gemsFor(state.civic.seed, cityId, day) });
 
 /** Today's hunt without touching state: the saved one if it is today's, otherwise what it will be. */
 function currentHunt(state: LifeState, ctx: LifeContext | undefined): DailyHunt {
   const day = lagosTime(nowOf(state, ctx)).day;
-  return state.civic.hunt?.day === day ? state.civic.hunt : freshHunt(state, ctx?.cityId ?? 'lagos', day);
+  const previous = state.civic.hunt;
+  if (previous?.day === day && (!previous.city || previous.city === state.estate.city)) return previous;
+  const next = freshHunt(state, state.estate.city, day);
+  if (previous?.day === day && previous.claimed) { next.claimed = true; for (const gem of next.gems) gem.found = true; }
+  return next;
 }
 function roll(state: LifeState, ctx: LifeContext | undefined): DailyHunt {
   const hunt = currentHunt(state, ctx);
@@ -151,8 +160,8 @@ const check = <Code extends CivicCheckCode>(id: EligibilityCheck['id'], met: boo
  * the ballot and "already voted" are shared state and are checked by the server on top of these.
  */
 export function civicEligibility(state: LifeState, ctx: LifeContext | undefined): Omit<CivicView['eligibility'], 'run' | 'vote'> & { run: RunCheck[]; vote: VoteCheck[] } {
-  const days = daysLived(state, ctx), city = ctx?.cityId ?? 'lagos';
-  const polling = Object.hasOwn(VENUES, ELECTION.pollingVenue);
+  const days = daysLived(state, ctx), city = state.estate.city;
+  const polling = pollingVenueFor(city);
   const lived = (min: number, verb: string) => check('days', days >= min, `Lived here for at least ${min} Lagos day${min === 1 ? '' : 's'}`,
     days >= min ? `You have lived here ${days} day${days === 1 ? '' : 's'}.`
       : `You have lived here ${days} day${days === 1 ? '' : 's'}; you can ${verb} after ${min - days} more midnight${min - days === 1 ? '' : 's'} (Lagos time).`, 'too_new');
@@ -169,11 +178,11 @@ export function civicEligibility(state: LifeState, ctx: LifeContext | undefined)
   run.push(working);
   const vote: VoteCheck[] = [lived(ELECTION.minDaysToVote, 'vote'), working];
   if (polling) {
-    const there = state.location === ELECTION.pollingVenue && !travelling(state);
-    vote.push(check('place', there, `Be at ${venueLabel(ELECTION.pollingVenue, city)}`,
-      there ? 'You are at the polling unit.' : `Travel to ${venueLabel(ELECTION.pollingVenue, city)} to cast your vote.`, 'wrong_place'));
+    const there = state.location === polling.id && !travelling(state);
+    vote.push(check('place', there, `Be at ${venueLabel(polling.id, city)}`,
+      there ? 'You are at the polling unit.' : `Travel to ${venueLabel(polling.id, city)} to cast your vote.`, 'wrong_place'));
   }
-  return { days, pollingVenue: polling ? ELECTION.pollingVenue : null, run, vote };
+  return { days, pollingVenue: polling?.id ?? null, run, vote };
 }
 const firstUnmet = <Code extends CivicCheckCode>(state: LifeState, checks: readonly Check<Code>[]) => { const unmet = checks.find((item) => !item.met); return unmet ? fail(state, unmet.code, `${unmet.label}. ${unmet.detail}`) : null; };
 
@@ -181,17 +190,19 @@ const firstUnmet = <Code extends CivicCheckCode>(state: LifeState, checks: reado
 export type AdSlot =
   | { kind: 'billboard'; slot: string; price: number; days: number; near: string; road: string; label: string }
   | { kind: 'sea'; slot: string; row: number; col: number; price: number; days: number; label: string };
-export function adSlot(kind: unknown, slot: unknown): AdSlot | null {
+export function seaSlot(slot: unknown): Extract<AdSlot, { kind: 'sea' }> | null {
+  const parts = typeof slot === 'string' ? /^sea-(\d{1,2})-(\d{1,2})$/.exec(slot) : null;
+  const row = Number(parts?.[1]), col = Number(parts?.[2]);
+  if (!parts || row >= SEA_PLOTS.rows || col >= SEA_PLOTS.cols || slot !== `sea-${row}-${col}`) return null;
+  return { kind: 'sea', slot: `sea-${row}-${col}`, row, col, price: row < SEA_PLOTS.shoreRows ? SEA_PLOTS.shorePrice : SEA_PLOTS.price, days: SEA_PLOTS.days, label: `Sea plot ${row + 1}·${col + 1}` };
+}
+export function adSlot(kind: unknown, slot: unknown, cityId: string): AdSlot | null {
+  if (!isCityId(cityId)) throw new TypeError(`Unknown city ads: ${cityId}`);
   if (kind === 'billboard') {
-    const entry = BILLBOARDS.slots.find((item) => item.id === slot);
+    const entry = contentFor(cityId).billboardRoads.find((item) => item.id === slot);
     return entry ? { kind, slot: entry.id, price: BILLBOARDS.price, days: BILLBOARDS.days, near: entry.near, road: entry.road, label: `Billboard · ${entry.road}` } : null;
   }
-  if (kind === 'sea') {
-    const parts = typeof slot === 'string' ? /^sea-(\d{1,2})-(\d{1,2})$/.exec(slot) : null;
-    const row = Number(parts?.[1]), col = Number(parts?.[2]);
-    if (!parts || row >= SEA_PLOTS.rows || col >= SEA_PLOTS.cols || slot !== `sea-${row}-${col}`) return null;
-    return { kind, slot: `sea-${row}-${col}`, row, col, price: row < SEA_PLOTS.shoreRows ? SEA_PLOTS.shorePrice : SEA_PLOTS.price, days: SEA_PLOTS.days, label: `Sea plot ${row + 1}·${col + 1}` };
-  }
+  if (kind === 'sea') return seaSlot(slot);
   return null;
 }
 
@@ -254,7 +265,7 @@ export function castVote(state: LifeState, payload: Record<string, unknown>, ctx
 
 /** Charge the rent for an ad slot the server has already found free. payload: { kind, slot }. */
 export function payForAd(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
-  const slot = adSlot(payload?.kind, payload?.slot);
+  const slot = adSlot(payload?.kind, payload?.slot, ctx.cityId);
   if (!slot) return fail(state, 'invalid_slot', 'Choose a billboard or sea plot from the list.');
   if (!canAfford(state, slot.price)) return fail(state, 'insufficient_funds', `${slot.label} costs ${naira(slot.price)} for ${slot.days} days; you have ${naira(state.cash)}.`);
   debit(state, slot.price, `${slot.label} · ${slot.days} days`, ctx);
@@ -265,8 +276,8 @@ export function payForAd(state: LifeState, payload: Record<string, unknown>, ctx
 
 /** Charge for a club-radio shout-out. The player must be standing in a club. */
 export function payForShoutout(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
-  if (!RADIO.venues.includes(state.location) || travelling(state)) {
-    const clubs = RADIO.venues.filter((id) => Object.hasOwn(VENUES, id)).map((id) => venueLabel(id, ctx?.cityId));
+  if (!contentFor(ctx.cityId).radioVenueIds.includes(state.location) || travelling(state)) {
+    const clubs = contentFor(ctx.cityId).radioVenueIds.map((id) => venueLabel(id, ctx.cityId));
     return fail(state, 'not_in_club', `Shout-outs are bought inside a club. ${clubs.length ? `Travel to ${clubs.join(' or ')} first.` : 'No club is open in this city yet.'}`);
   }
   if (!canAfford(state, RADIO.price)) return fail(state, 'insufficient_funds', `A shout-out costs ${naira(RADIO.price)}; you have ${naira(state.cash)}.`);
@@ -297,15 +308,16 @@ export function postNews(state: LifeState, payload: Record<string, unknown>, ctx
   return ok(state, posted ? 'posted' : 'nothing_new');
 }
 
-function sanitizeHunt(value: unknown): DailyHunt | null {
+function sanitizeHunt(value: unknown, cityId: string, currentCity: string): DailyHunt | null {
   if (!isRecord(value) || !safeCount(value.day) || !Array.isArray(value.gems) || !value.gems.length || value.gems.length > HUNT.gemsPerDay) return null;
+  const local = cityId === currentCity;
   const gems: HuntGem[] = [];
   for (const gem of value.gems) {
-    if (!isRecord(gem) || !isVenue(gem.venue) || !isKind(gem.kind)) return null;
-    if (gem.spot !== null && (gem.kind !== 'visit' || typeof gem.spot !== 'string' || !spotsOf(gem.venue).some((spot) => spot.id === gem.spot))) return null;
+    if (!isRecord(gem) || typeof gem.venue !== 'string' || !isKind(gem.kind) || (local && !venueFor(cityId, gem.venue))) return null;
+    if (gem.spot !== null && (gem.kind !== 'visit' || typeof gem.spot !== 'string' || (local && !spotsOf(gem.venue, cityId).some((spot) => spot.id === gem.spot)))) return null;
     gems.push({ venue: gem.venue, spot: gem.spot, kind: gem.kind, found: gem.found === true });
   }
-  return { day: value.day, claimed: value.claimed === true && gems.every((gem) => gem.found), gems };
+  return { city: cityId, day: value.day, claimed: value.claimed === true && gems.every((gem) => gem.found), gems };
 }
 
 /**
@@ -351,6 +363,7 @@ export default {
   stateKeys: ['civic'],
   sanitize(input, state, ctx) {
     const saved: Record<string, unknown> = isRecord(input.civic) ? input.civic : {};
+    const savedHuntCity = isRecord(saved.hunt) && isCityId(saved.hunt.city) ? saved.hunt.city : ctx.cityId;
     const week = isRecord(saved.week) && safeCount(saved.week.week) && safeCount(saved.week.earned) ? { week: saved.week.week, earned: saved.week.earned } : { week: 0, earned: 0 };
     state.civic = {
       seed: typeof saved.seed === 'number' && Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
@@ -362,11 +375,11 @@ export default {
       work: isRecord(saved.work) && safeCount(saved.work.days) && saved.work.days <= 100000 && (saved.work.last === null || safeCount(saved.work.last)) && (saved.work.days === 0) === (saved.work.last === null)
         ? { days: saved.work.days, last: saved.work.last } : { days: 0, last: null },
       news: [...new Set((Array.isArray(saved.news) ? saved.news : []).filter((id): id is string => typeof id === 'string' && NEWS_ID.test(id)))].slice(-NEWS_LIMIT),
-      hunt: sanitizeHunt(saved.hunt),
+      hunt: sanitizeHunt(saved.hunt, savedHuntCity, ctx.cityId),
     };
   },
   view(state, ctx) {
-    const hunt = currentHunt(state, ctx), city = ctx?.cityId ?? 'lagos';
+    const hunt = currentHunt(state, ctx), city = state.estate.city;
     const count = hunt.gems.filter((gem) => gem.found).length;
     const week = lagosTime(nowOf(state, ctx)).week;
     return {

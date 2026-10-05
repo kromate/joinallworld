@@ -14,15 +14,17 @@ import type { CivicCityRecord, CivicCollection, ResidentRecord } from '../types.
 
 const PRUNE_EVERY_MS = 3600000;
 const count = (value: unknown): number => (typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? value : 0);
+export interface ResidentDistrict { id: string; name?: string; label?: string }
+const districtView = (district: ResidentDistrict): DistrictView => ({ id: district.id, label: district.label ?? district.name ?? district.id, count: 0, online: 0, homes: [] });
 
 /**
  * The home a life lives in, read defensively (a slice may not exist yet): the district of its rented home, or 'own' while it
  * lives in its own house on its plot — then `property.house` is only the last home it rented, not where it lives.
  */
-export function houseOf(life: LifeState): string | null {
+export function houseOf(life: LifeState, districts: readonly ResidentDistrict[] = DISTRICTS): string | null {
   if (life?.estate?.living === 'own') return OWN_DISTRICT.id;
   const id = life?.property?.house;
-  return typeof id === 'string' && DISTRICTS.some((district) => district.id === id) ? id : null;
+  return typeof id === 'string' && districts.some((district) => district.id === id) ? id : null;
 }
 
 /**
@@ -30,12 +32,12 @@ export function houseOf(life: LifeState): string | null {
  * found gems to the city counter and counts a visit on the first check-in of a Lagos day.
  * Residents not seen for a whole session lifetime are dropped (their session has expired).
  */
-export function checkIn(city: CivicCityRecord, now: number, who: PlayerRef, life: LifeState, ttlMs: number): ResidentRecord {
+export function checkIn(city: CivicCityRecord, now: number, who: PlayerRef, life: LifeState, ttlMs: number, districts: readonly ResidentDistrict[] = DISTRICTS): ResidentRecord {
   const day = lagosTime(now).day;
   const resident = city.residents[who.id] ||= { name: who.name, house: null, since: now, lastSeen: 0, day: -1, cash: 0, week: 0, earned: 0, gems: 0, claims: 0 };
   if (resident.day !== day) { resident.day = day; city.visits = count(city.visits) + 1; }
   resident.name = who.name;
-  resident.house = houseOf(life);
+  resident.house = houseOf(life, districts);
   resident.lastSeen = now;
   resident.cash = count(life.cash);
   resident.week = count(life.civic?.week?.week);
@@ -77,9 +79,10 @@ export function huntCounters(city: CivicCityRecord, now: number): Pick<HuntCount
  * out anyone who hid themselves, and are capped (online first, then most recently seen).
  *   { total, online, listed, districts: [{ id, label, count, online, homes: [{ id, name, online, you }] }] }
  */
-export function neighboursView(city: CivicCityRecord, now: number, ttlMs: number, online: (id: string) => boolean, prefs: CivicCollection['prefs'] | undefined, viewerId: string | null = null) {
+export function neighboursView(city: CivicCityRecord, now: number, ttlMs: number, online: (id: string) => boolean, prefs: CivicCollection['prefs'] | undefined, viewerId: string | null = null,
+  cityDistricts: readonly ResidentDistrict[] = DISTRICTS) {
   type Group = Omit<DistrictView, 'homes'> & { homes: (NeighbourHome & { lastSeen: number })[] };
-  const groups = new Map<string, Group>([...DISTRICTS, OWN_DISTRICT, UNKNOWN_DISTRICT].map((district) => [district.id, { id: district.id, label: district.label, count: 0, online: 0, homes: [] }]));
+  const groups = new Map<string, Group>([...cityDistricts.map(districtView), OWN_DISTRICT, UNKNOWN_DISTRICT].map((district) => [district.id, { id: district.id, label: district.label, count: 0, online: 0, homes: [] }]));
   let total = 0, onlineTotal = 0;
   for (const [id, entry] of current(city, now, ttlMs)) {
     const group = groups.get(entry.house ?? UNKNOWN_DISTRICT.id) ?? groups.get(UNKNOWN_DISTRICT.id);

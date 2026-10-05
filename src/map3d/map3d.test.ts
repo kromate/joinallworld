@@ -31,8 +31,8 @@ const keyOf = (id: string, home = 'yaba') => (id === 'home' ? `home:${home}` : i
 const mainlandLand = pack.land.filter((entry) => entry.kind === 'mainland');
 const onMainland = (spot: GroundPoint) => mainlandLand.some((entry) => pointInPolygon(spot.x, spot.z, entry.points));
 
-test('the region registry: Lagos is playable, Ibadan, Abuja and Port Harcourt are coming soon, and a city is data plus a pack', async () => {
-  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'soon'], ['abuja', 'soon'], ['port-harcourt', 'soon']]);
+test('the region registry: Lagos is playable, Ibadan, Abuja, Port Harcourt, Abeokuta and Kano are coming soon, and a city is data plus a pack', async () => {
+  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'soon'], ['abuja', 'soon'], ['port-harcourt', 'soon'], ['abeokuta', 'soon'], ['kano', 'soon']]);
   for (const country of Object.values(COUNTRIES)) {
     assert.ok(country.outline.length > 8 && country.name, country.id);
     const flat = projector(country.id, 1000);
@@ -51,6 +51,7 @@ test('the region registry: Lagos is playable, Ibadan, Abuja and Port Harcourt ar
   assert.equal(cityAccess('ibadan', { current: 'ibadan', held: ['ibadan'] }), 'here');
   assert.equal(cityAccess('lagos', { current: 'ibadan', held: ['ibadan'] }), 'enter');
   assert.equal(cityAccess('abuja', { current: 'lagos', held: ['abuja'] }), 'soon', 'a city without server lives is never offered');
+  for (const id of ['abeokuta', 'kano']) assert.equal(cityAccess(id, { current: 'lagos', held: [id] }), 'soon', `${id} is only planned`);
   const loaded = await loadCityPack('lagos');
   assert.equal(loaded!.id, 'lagos'); assert.equal(await loadCityPack('abuja'), null);
 });

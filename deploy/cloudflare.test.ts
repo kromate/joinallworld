@@ -1270,16 +1270,16 @@ test('Cloudflare: accounts hardening — a character archived by the 30-day swee
   const signed = await f.signIn('UidAda', ada.cookie);
   const storage = await f.storage();
   const row = (await storage.exec('SELECT secret,value FROM sessions WHERE public_id = ?', ada.id))[0], record = JSON.parse(row.value);
-  record.character = { v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' }; record.legacyLives = { 'lagos:99': record.cities.lagos }; record.onboarding = true; record.expiresAt = Date.now() - 1;
+  record.character = { v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' }; record.legacyLives = { 'lagos:99': record.cities.lagos }; record.legacyLifeCities = { 'lagos:99': 'lagos' }; record.onboarding = true; record.expiresAt = Date.now() - 1;
   await storage.exec('UPDATE sessions SET value = ?, expires_at = ? WHERE secret = ?', JSON.stringify(record), record.expiresAt, row.secret);
   assert.equal((await f.whoAmI(signed.cookie)).status, 401);
   await f.device('Sweeper'); // the sweep archives the expired character
   const archived = JSON.parse((await storage.exec('SELECT value FROM archived_lives WHERE public_id = ?', ada.id))[0].value);
-  assert.deepEqual(Object.keys(archived).sort(), ['archivedAt', 'character', 'cities', 'legacyLives', 'name', 'onboarding', 'publicId']);
+  assert.deepEqual(Object.keys(archived).sort(), ['archivedAt', 'character', 'cities', 'legacyLifeCities', 'legacyLives', 'name', 'onboarding', 'publicId']);
   const back = await f.signIn('UidAda');
   assert.deepEqual([back.body.outcome, back.body.character], ['restored', { id: ada.id, name: 'Ada' }]);
   const restored = JSON.parse((await storage.exec('SELECT value FROM sessions WHERE public_id = ?', ada.id))[0].value);
-  assert.deepEqual([restored.character, Object.keys(restored.legacyLives), restored.onboarding, restored.account], [{ v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' }, ['lagos:99'], true, 'fb:UidAda']);
+  assert.deepEqual([restored.character, Object.keys(restored.legacyLives), restored.legacyLifeCities, restored.onboarding, restored.account], [{ v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' }, ['lagos:99'], { 'lagos:99': 'lagos' }, true, 'fb:UidAda']);
   assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM archived_lives WHERE public_id = ?', ada.id))[0].n, 0);
   // The pre-hijack on this host too: linking a character into an account that already existed ends the earlier binding.
   const early = await f.signIn('UidVictim'), victim = await f.player('Victim'), arrived = await f.signIn('UidVictim', victim.cookie);

@@ -1,5 +1,6 @@
 // Shared pure helpers for the rules engine. Anyone may import this file.
 import type { ActionFailure, ActionSuccess, LifeContext, LifeContextInit, LifeState } from '../types/life.ts'
+import { isCityId } from './cities/registry.ts'
 
 export const clamp = (value: number, min = 0, max = 100): number => Math.min(max, Math.max(min, value));
 export const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -133,7 +134,10 @@ export const keyedSeed = (salt: string, seed: unknown): string => `k|${sha256Hex
  *   salt    optional secret (a non-empty string) the seed is keyed with. It is consumed here and
  *           is NOT part of the returned context, so no system can read, store or display it.
  */
-export function makeContext({ now = 0, cityId = 'lagos', seed = '', salt, ...rest }: LifeContextInit = {}): LifeContext {
+export function makeContext(input: LifeContextInit & { cityId: string }): LifeContext {
+  if (!input || typeof input.cityId !== 'string') throw new TypeError('A registered city context is required');
+  const { now = 0, cityId, seed = '', salt, ...rest } = input;
+  if (!isCityId(cityId)) throw new TypeError(`Unknown city context: ${cityId}`);
   const text = `${cityId}|${seed}`;
   return { now, cityId, rng: makeRng(typeof salt === 'string' && salt ? keyedSeed(salt, text) : text), ...rest };
 }

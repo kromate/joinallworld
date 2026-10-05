@@ -288,11 +288,11 @@ test('daily gem hunt: found through play, real city counter, prize paid through 
     const left = huntOf(state).gems.filter((item) => !item.found);
     if (!left.length) break;
     const clock = now();
-    let gem = left.find((item) => isOpen(VENUES[item.venue].hours, clock));
+    let gem = left.find((item) => isOpen(must(VENUES[item.venue], 'registered venue').hours, clock));
     if (!gem) {
-      gem = left.reduce((best, item) => (minutesUntilOpen(VENUES[item.venue].hours, clock) < minutesUntilOpen(VENUES[best.venue].hours, clock) ? item : best));
+      gem = left.reduce((best, item) => (minutesUntilOpen(must(VENUES[item.venue], 'registered venue').hours, clock) < minutesUntilOpen(must(VENUES[best.venue], 'registered venue').hours, clock) ? item : best));
       assert.equal((await f.action(ada.cookie, { type: 'travel', payload: { id: gem.venue, mode: 'trek' } })).code, 'closed');
-      wait(minutesUntilOpen(VENUES[gem.venue].hours, clock) * 60000);
+      wait(minutesUntilOpen(must(VENUES[gem.venue], 'registered venue').hours, clock) * 60000);
     }
     const index = huntOf(state).gems.findIndex((item) => item.venue === gem.venue && item.spot === gem.spot && item.kind === gem.kind);
     if (state.location !== gem.venue) {
@@ -307,7 +307,7 @@ test('daily gem hunt: found through play, real city counter, prize paid through 
       const stuck = await f.action(ada.cookie, { type: 'civic.hunt-search' });
       assert.equal(stuck.code, 'activity_needed'); assert.match(reasonOf(stuck), /Finish any activity/);
       // Every venue has regulars to greet: a free activity that shakes the gem loose.
-      const hello = must(spotsOf(gem.venue).find((spot) => spot.id === 'people')?.activities.find((def) => def.id.endsWith('-hello')), 'greeting activity');
+      const hello = must(spotsOf(gem.venue, 'lagos').find((spot) => spot.id === 'people')?.activities.find((def) => def.id.endsWith('-hello')), 'greeting activity');
       await f.action(ada.cookie, { type: 'spot', payload: { id: 'people' } });
       assert.equal((await f.action(ada.cookie, { type: 'activity', payload: { id: hello.id } })).ok, true);
       wait(12000);

@@ -761,13 +761,14 @@ test('M4 — a character archived by the 30-day sweep comes back whole: its city
     if (!record?.cities.lagos) throw new Error('no record');
     record.character = { v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' };
     record.legacyLives = { 'lagos:99': structuredClone(record.cities.lagos) };
+    record.legacyLifeCities = { 'lagos:99': 'lagos' };
     record.onboarding = true;
     return structuredClone(record.cities.lagos);
   });
   a.f.advance(31 * 86400000);
   await a.f.request('/api/session', { name: 'Sweeper' }); // the sweep archives the expired character
   let db = await a.stored();
-  assert.deepEqual(Object.keys(db.archivedLives?.[ada.id] ?? {}).sort(), ['archivedAt', 'character', 'cities', 'legacyLives', 'name', 'onboarding', 'publicId']);
+  assert.deepEqual(Object.keys(db.archivedLives?.[ada.id] ?? {}).sort(), ['archivedAt', 'character', 'cities', 'legacyLifeCities', 'legacyLives', 'name', 'onboarding', 'publicId']);
   assert.equal((await a.whoAmI(signed.cookie)).status, 401);
   const back = await a.signIn('UidAda');
   assert.equal(back.body.outcome, 'restored');
@@ -775,6 +776,7 @@ test('M4 — a character archived by the 30-day sweep comes back whole: its city
   const record = db.sessions[Object.values(db.accounts ?? {})[0]?.sessionKey ?? ''];
   assert.deepEqual(record?.character, { v: 1, city: 'lagos', movedAt: 123, from: 'ibadan' });
   assert.deepEqual(record?.legacyLives, { 'lagos:99': lagos });
+  assert.deepEqual(record?.legacyLifeCities, { 'lagos:99': 'lagos' }, 'where each set-aside life belongs travels with the record, through the archive and back');
   assert.equal(record?.onboarding, true); assert.equal(record?.publicId, ada.id);
   // A guest's expired life is archived whole as well (nothing restores it, but nothing is dropped from it).
   const guest = await a.player('Guest');

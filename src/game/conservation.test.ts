@@ -46,9 +46,9 @@ function step(rng: Rng, state: LifeState): Step {
   const venues = Object.keys(VENUES);
   if (roll < 0.16) return { wait: pick(rng, [1, 5, 9, 20, 45, 300, 3600, 4 * 3600, 26 * 3600, 8 * 86400]) };
   if (roll < 0.32) return { type: 'travel', payload: { id: pick(rng, venues), mode: pick(rng, Object.keys(ALL_MODES)) } };
-  if (roll < 0.40) return { type: 'spot', payload: { id: pick(rng, spotsOf(state.location)).id } };
+  if (roll < 0.40) return { type: 'spot', payload: { id: pick(rng, spotsOf(state.location, 'lagos')).id } };
   if (roll < 0.62) {
-    const here = spotsOf(state.location).find((spot) => spot.id === state.spot)?.activities ?? [];
+    const here = spotsOf(state.location, 'lagos').find((spot) => spot.id === state.spot)?.activities ?? [];
     const def = pick<{ id: string; choices?: readonly { id: string }[] }>(rng, here.length ? here : [{ id: 'nap' }]);
     return { type: 'activity', payload: { id: def.id, ...(def.choices ? { choice: pick(rng, def.choices).id } : {}) } };
   }

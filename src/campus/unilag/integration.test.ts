@@ -19,7 +19,7 @@ VENUES.unilag=UNILAG_VENUE;Object.assign(NPCS,CAMPUS_NPCS);
 const {createLife,dispatch:dispatchTyped,advanceLife,viewLife}=await import('../../life.ts');
 /** Loose on purpose, like a request body. */
 const dispatch=(state:LifeState,body:{type:string;payload?:Record<string,unknown>},ctx:LifeContext):ActionOutcome=>dispatchTyped(state,body as ActionBody,ctx);
-rebuildCatalogue();
+rebuildCatalogue('lagos');
 
 test('actual campus content and all three systems survive a shuttle, enrolment, job and reload',()=>{
  const semester=PROGRAMMES.computer.semesters[0];assert.ok(semester);
@@ -46,7 +46,7 @@ test('actual campus content and all three systems survive a shuttle, enrolment, 
  const view=viewLife(state,context());assert.equal(view.unilagStudent.programme?.id,'computer');
  assert.ok(view.social.here.some(n=>n.id==='lecturer-ada'));
  assert.equal(view.unilagShuttle.stops.length,8);
- for(const spot of spotsOf('unilag'))assert.ok(ANCHORS[spot.id],`Missing anchor for system-attached spot ${spot.id}`);
+ for(const spot of spotsOf('unilag', 'lagos'))assert.ok(ANCHORS[spot.id],`Missing anchor for system-attached spot ${spot.id}`);
  const copy=createLife(structuredClone(state),context());
  assert.deepEqual(copy.unilagStudent,state.unilagStudent);assert.deepEqual(copy.unilagCommunity,state.unilagCommunity);assert.deepEqual(copy.unilagShuttle,state.unilagShuttle);
  assert.equal(copy.cash,state.cash);

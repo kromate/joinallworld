@@ -60,7 +60,7 @@ test('home systems are registered and survive hostile saves', () => {
 
 test('content: fixed values are exact and every original value is marked', () => {
   // Houses: grid, weekly rent and move-in cost.
-  assert.deepEqual(HOUSE_ORDER.map((id) => [id, HOUSES[id].grid, HOUSES[id].rent, HOUSES[id].moveIn]), [
+  assert.deepEqual(HOUSE_ORDER.map((id) => { const house = need(HOUSES[id], 'registered house'); return [id, house.grid, house.rent, house.moveIn]; }), [
     ['mushin', 6, 2400, 7200], ['yaba', 8, 6000, 18000], ['lekki', 10, 17000, 51000], ['ikoyi', 12, 250000, 750000], ['banana', 14, 1500000, 4500000]]);
   for (const house of Object.values(HOUSES)) assert.equal(house.moveIn, MOVE_IN_WEEKS * house.rent, house.id);
   assert.deepEqual(HOUSES.yaba.betaFields, ['grid', 'moveIn']);
@@ -93,7 +93,7 @@ test('content: fixed values are exact and every original value is marked', () =>
   // Sleep and bath timings.
   const byId = Object.fromEntries(HOME_ACTIVITIES.map((def) => [def.id, def]));
   assert.equal(need(byId.sleep).duration, 36); assert.equal(need(byId['stay-in-bed']).duration, 36);
-  const ported = Object.fromEntries(spotsOf('home').flatMap((spot) => spot.activities).map((def) => [def.id, def]));
+  const ported = Object.fromEntries(spotsOf('home', 'lagos').flatMap((spot) => spot.activities).map((def) => [def.id, def]));
   assert.equal(need(ported.nap).duration, 15); assert.equal(need(ported.bath).duration, 6); assert.equal(need(need(ported.bath).effects).hygiene, 25);
 });
 
@@ -468,7 +468,7 @@ test('better furniture gives better results: beds restore faster, stoves feed an
 
 test('catalogue objects unlock their actions: sitting area and skills corner', () => {
   const state = atHome({ cash: 2000000, needs: { fun: 10, energy: 50 } });
-  assert.deepEqual(spotsOf('home').map((spot) => spot.id), ['kitchen', 'bathroom', 'bedroom', 'living', 'study']);
+  assert.deepEqual(spotsOf('home', 'lagos').map((spot) => spot.id), ['kitchen', 'bathroom', 'bedroom', 'living', 'study']);
   assert.equal(act(state, 'spot', { id: 'living' }).code, 'selected');
   assert.equal(act(state, 'activity', { id: 'home-watch-tv' }).code, 'furniture_required');
   act(state, 'activity', { id: 'home-listen-radio' }); run(state, 10); assert.equal(state.needs.fun, 22);

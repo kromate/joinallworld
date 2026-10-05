@@ -33,14 +33,14 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok } from '../util.ts';
 import { canAfford, canCredit, credit, debit } from '../api.ts';
-import { HOUSES, HOUSE_ORDER, DEFAULT_HOUSE } from '../content/housing.ts';
+import { defaultHouseFor, houseFor, housesFor } from '../cities/housingRuntime.ts';
 import { CARS, CAR_ORDER, CAR_MODE, CAR_RESALE_RATE } from '../content/cars.ts';
 import type { CarDefinition, HouseDefinition } from '../../types/content.ts';
-import type { CarId, HouseId, LifeContext, LifeState, TravelModeId } from '../../types/life.ts';
+import type { CarId, LifeContext, LifeState, TravelModeId } from '../../types/life.ts';
 import type { SystemDefinition } from '../../types/registry.ts';
 import type { PropertyView } from '../../types/view.ts';
 
-const houseOf = (id: unknown): HouseDefinition | null => (typeof id === 'string' && Object.hasOwn(HOUSES, id) ? HOUSES[id as HouseId] : null); // hasOwn proved the key
+const houseOf = (state: LifeState, id: unknown): HouseDefinition | null => houseFor(state.estate.city, id);
 const carOf = (id: unknown): CarDefinition | null => (typeof id === 'string' && Object.hasOwn(CARS, id) ? CARS[id as CarId] : null); // hasOwn proved the key
 const isCarId = (id: unknown): id is CarId => carOf(id) !== null;
 const drivenCar = (state: LifeState): CarDefinition | null => carOf(state.property?.car);
@@ -52,7 +52,7 @@ const shortBy = (state: LifeState, cost: number): string => `It costs ${naira(co
 function moveHouse(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = busy(state, 'Finish or cancel your current action before moving house.');
   if (blocked) return blocked;
-  const house = houseOf(payload?.id);
+  const house = houseOf(state, payload?.id);
   if (!house) return fail(state, 'invalid_house', 'Choose a house from the Houses list.');
   const from = state.property.house;
   if (from === house.id && state.estate?.living !== 'own') return fail(state, 'already_home', `You already live in the ${house.label} in ${house.district}.`);
@@ -117,15 +117,15 @@ const play = PLAYS ? {
   actions: { 'property.house-move': moveHouse, 'property.car-buy': buyCar, 'property.car-use': useCar, 'property.car-sell': sellCar },
   on: {
     /** End of onboarding: live in the chosen house. Free — the move-in fee is for later moves. */
-    'life.started'(state, data) {
+    'life.started'(state, data, ctx) {
       // The house arrives as an id string; an object carrying `id` is accepted too.
       const given: unknown = data?.house; // the event types a StartHomeId; an object carrying `id` is accepted too
-      const house = houseOf(typeof given === 'string' ? given : isRecord(given) ? given.id : undefined);
+      const house = houseOf(state, typeof given === 'string' ? given : isRecord(given) ? given.id : undefined);
       if (house) state.property.house = house.id;
     },
     /** Arriving in another city (systems/estate.ts): the rented home there becomes the current one. */
-    'house.moved'(state, data) {
-      const house = data?.from === 'away' ? houseOf(data.house) : null;
+    'house.moved'(state, data, ctx) {
+      const house = data?.from === 'away' ? houseOf(state, data.house) : null;
       if (house) state.property.house = house.id;
     },
   },
@@ -135,13 +135,13 @@ const play = PLAYS ? {
 export default {
   id: 'property',
   stateKeys: ['homeOwned', 'property'],
-  sanitize(input, state) {
+  sanitize(input, state, ctx) {
     state.homeOwned = input.homeOwned === true;
     const saved = isRecord(input.property) ? input.property : {};
     const listed: unknown[] = Array.isArray(saved.cars) ? saved.cars : [];
     const cars = [...new Set(listed.filter(isCarId))];
     state.property = {
-      house: houseOf(saved.house)?.id ?? DEFAULT_HOUSE,
+      house: houseFor(ctx.cityId, saved.house)?.id ?? defaultHouseFor(ctx.cityId).id,
       cars,
       car: isCarId(saved.car) && cars.includes(saved.car) ? saved.car : cars.at(-1) ?? null,
     };
@@ -168,18 +168,18 @@ export default {
     },
   },
   view(state, ctx): PropertyView {
-    const current = HOUSES[state.property.house];
-    const index = HOUSE_ORDER.indexOf(current.id);
+    const houses = housesFor(state.estate.city);
+    const current = houseFor(state.estate.city, state.property.house) ?? defaultHouseFor(state.estate.city);
+    const index = houses.findIndex((house) => house.id === current.id);
     return {
       house: current,
       rent: current.rent,
-      houses: HOUSE_ORDER.map((id) => {
-        const house = HOUSES[id];
-        const here = id === current.id && state.estate?.living !== 'own';
+      houses: houses.map((house) => {
+        const here = house.id === current.id && state.estate?.living !== 'own';
         return { ...house, current: here, affordable: state.cash >= house.moveIn,
           blocked: here ? 'You live here' : state.activeAction ? 'Finish your current action first' : state.cash < house.moveIn ? `Need ${naira(house.moveIn - state.cash)} more` : null };
       }),
-      nextHouse: HOUSE_ORDER[index + 1] ?? null,
+      nextHouse: houses[index + 1]?.id ?? null,
       car: drivenCar(state),
       cars: CAR_ORDER.map((id) => {
         const car = CARS[id], price = carPrice(state, car, ctx), owned = state.property.cars.includes(id);

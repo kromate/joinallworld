@@ -88,9 +88,9 @@ export const CHEAPEST_CAR = must(CARS[must(CAR_ORDER[0])]);
 export interface Gig { venue: VenueId; spot: string; def: ActivityDefinition }
 
 /** Every paid activity a player without a job can do: [{ venue, spot, def }]. */
-export const GIGS: Gig[] = VENUE_IDS.flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities
+export const GIGS: Gig[] = VENUE_IDS.flatMap((venue) => spotsOf(venue, 'lagos').flatMap((spot) => spot.activities
   .filter((def) => (def.reward ?? 0) > 0 && !def.requiresJob && !def.unavailable).map((def) => ({ venue, spot: spot.id, def }))));
-const LABELS = new Map(VENUE_IDS.flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities.map((def) => [def.label, def]))));
+const LABELS = new Map(VENUE_IDS.flatMap((venue) => spotsOf(venue, 'lagos').flatMap((spot) => spot.activities.map((def) => [def.label, def]))));
 const EVENT_TITLES = new Set(Object.values(EVENTS).map((event) => event.title));
 const CAMPUS_JOB_REASONS = new Set(Object.values(CAMPUS_JOBS).map((job) => `UNILAG ${job.label}`));
 /** The programme the simulated student reads, and the best-paid campus job. */
@@ -276,7 +276,7 @@ function workShift(player: Player) {
   player.settle();
   const venue = job.workplace.venue;
   if (player.state.location !== venue) {
-    const hours = VENUES[venue].hours;
+    const hours = must(VENUES[venue], 'registered venue').hours;
     if (!isOpen(hours, player.now)) player.awayUntil(player.now + minutesUntilOpen(hours, player.now) * 60000);
     player.settle(); // the automatic commute may have started on that settlement
     if (player.state.location !== venue && !player.travel(venue)) return false;
@@ -287,7 +287,7 @@ function workShift(player: Player) {
 /** Every gig that can be started right now from somewhere, best pay per second first. */
 function gigsNow(player: Player) {
   const ctx = makeContext({ now: player.now, cityId: CITY });
-  return GIGS.filter(({ venue, def }) => isOpen(VENUES[venue].hours, player.now) && !blockReason(player.state, def, venue, ctx))
+  return GIGS.filter(({ venue, def }) => isOpen(must(VENUES[venue], 'registered venue').hours, player.now) && !blockReason(player.state, def, venue, ctx))
     .sort((a, b) => (b.def.reward ?? 0) / b.def.duration - (a.def.reward ?? 0) / a.def.duration);
 }
 
@@ -317,10 +317,10 @@ function gemHunt(player: Player) {
   if (!hunt || hunt.claimed) return;
   for (const gem of hunt.gems) {
     if (gem.found) continue;
-    if (!isOpen(VENUES[gem.venue].hours, player.now) || !player.travel(gem.venue)) continue;
+    if (!isOpen(must(VENUES[gem.venue], 'registered venue').hours, player.now) || !player.travel(gem.venue)) continue;
     if (gem.kind === 'visit') { if (gem.spot && player.state.spot !== gem.spot) player.do('spot', { id: gem.spot }); player.do('civic.hunt-search'); continue; }
     const ctx = makeContext({ now: player.now, cityId: CITY });
-    const free = spotsOf(gem.venue).flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def })))
+    const free = spotsOf(gem.venue, 'lagos').flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def })))
       .filter(({ def }) => !def.choices && !def.requiresJob && !((def.cost ?? 0) > 0) && !blockReason(player.state, def, gem.venue, ctx)).sort((a, b) => a.def.duration - b.def.duration)[0];
     if (free) player.run(free.spot, free.def.id);
   }
@@ -341,7 +341,7 @@ function keepDeposits(player: Player) {
 /** The cheapest startable activity anywhere open that satisfies `wanted(def)`; goes there and runs it. */
 function doSomewhere(player: Player, wanted: (def: ActivityDefinition) => boolean) {
   const ctx = makeContext({ now: player.now, cityId: CITY });
-  const options = VENUE_IDS.filter((venue) => isOpen(VENUES[venue].hours, player.now)).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities
+  const options = VENUE_IDS.filter((venue) => isOpen(must(VENUES[venue], 'registered venue').hours, player.now)).flatMap((venue) => spotsOf(venue, 'lagos').flatMap((spot) => spot.activities
     .filter((def) => !def.choices && !def.requiresJob && !((def.cost ?? 0) > 300) && wanted(def) && !blockReason(player.state, def, venue, ctx)).map((def) => ({ venue, spot: spot.id, def }))));
   const next = options.find((item) => item.venue === player.state.location) ?? options.sort((a, b) => (a.def.cost ?? 0) - (b.def.cost ?? 0) || a.def.duration - b.def.duration)[0];
   return next !== undefined && player.travel(next.venue) && player.run(next.spot, next.def.id).ok;
@@ -357,7 +357,7 @@ function missionRun(player: Player) {
     for (let left = mission.count - mission.n; left > 0 && guard++ < 40; left--) {
       if (player.state.needs.energy < 35 || player.state.needs.hunger < 30) player.upkeep({ energy: 80, hunger: 70 });
       if (rule.on === 'venue') {
-        const fresh = VENUE_IDS.find((venue) => venue !== 'home' && venue !== player.state.location && isOpen(VENUES[venue].hours, player.now) && !player.state.missions.visited.list.includes(venue));
+        const fresh = VENUE_IDS.find((venue) => venue !== 'home' && venue !== player.state.location && isOpen(must(VENUES[venue], 'registered venue').hours, player.now) && !player.state.missions.visited.list.includes(venue));
         if (!fresh || !player.travel(fresh)) break;
       } else if (rule.on === 'tag') { if (!doSomewhere(player, (item) => (item.tags ?? []).some((tag) => rule.tags.includes(tag)))) break; }
       else if (rule.on === 'event' && rule.event === 'npc.greeted') { if (!doSomewhere(player, (item) => item.social?.action === 'hello')) break; }

@@ -1,4 +1,6 @@
 // Portable settlement logic shared by the Node server and the Cloudflare worker (no I/O).
+import { normalizeCharacter, requireCharacterCity, fileCharacter } from './character.ts';
+import { cityRules } from '../src/game/content/world.ts';
 import { createLife, advanceLife, dispatch, hasAction, VENUES } from '../src/life.ts';
 import type { ActionType, ActionBody } from '../src/types/actions.ts';
 import type { LifeContextInit, LifeState } from '../src/types/life.ts';
@@ -112,8 +114,11 @@ function announce(meta: LifeMeta | undefined, state: LifeState): void {
  */
 export function settleCity(session: SessionRecord, cityId: CityId, now: number): LifeState {
   session.cities ||= {};
+  requireCharacterCity(session, cityId);
+  normalizeCharacter(session);
   let entry: CityLifeRecord | undefined = session.cities[cityId];
   if (!entry) {
+    if (cityRules(cityId)?.status !== 'open') throw Object.assign(new Error('city_closed'), { status: 409, code: 'city_closed' });
     const salt = newSalt();
     entry = session.cities[cityId] = { state: createLife({ name: session.name }, { now, cityId, isNew: true, quickStart: session.onboarding === true, salt }), updatedAt: now, salt };
   }
@@ -126,7 +131,8 @@ export function settleCity(session: SessionRecord, cityId: CityId, now: number):
   entry.state.t = now;
   entry.updatedAt = now;
   entry.state.name = session.name;
-  const meta: LifeMeta = { salt, publicId: session.publicId, cityId };
+  fileCharacter(session, cityId, now);
+  const meta: LifeMeta = { salt, publicId: session.publicId, cityId: entry.state.estate.city as CityId };
   lives.set(entry.state, meta);
   announce(meta, entry.state);
   return entry.state;

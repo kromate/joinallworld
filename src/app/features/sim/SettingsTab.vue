@@ -53,7 +53,27 @@ function pickWall(id: string): void { warning.value = setWallpaper(id) ? '' : WA
 function showTour(): void { window.dispatchEvent(new CustomEvent('jaw:tour')) }
 function openPrivacy(): void { window.dispatchEvent(new CustomEvent('jaw:privacy')) }
 
-onMounted(() => { void growth.load() })
+const olderLives = ref<{ id: string; city: string; cash: number }[]>([])
+const switching = ref(false)
+const switchError = ref('')
+const switchReceipts = new Map<string, string>()
+async function loadOlderLives(): Promise<void> {
+  if (!game.client.online) return
+  try { olderLives.value = (await game.client.api<{ legacy: typeof olderLives.value }>('/api/characters')).legacy }
+  catch { switchError.value = 'Older characters could not be loaded. Try again.' }
+}
+async function switchOlderLife(id: string): Promise<void> {
+  if (switching.value) return
+  switching.value = true
+  const receipt = switchReceipts.get(id) ?? game.client.newId()
+  switchReceipts.set(id, receipt)
+  const result = await game.client.switchLegacy(id, receipt)
+  switching.value = false
+  switchError.value = result.ok ? '' : result.reason ?? 'Could not switch characters. Try again.'
+  if (result.ok) { switchReceipts.delete(id); await loadOlderLives() }
+}
+
+onMounted(() => { void growth.load(); void loadOlderLives() })
 </script>
 
 <template>
@@ -80,6 +100,13 @@ onMounted(() => { void growth.load() })
 
     <CallSettings />
 
+    <section v-if="olderLives.length || switchError" aria-label="Older characters">
+      <h3 class="ui-section">Older characters</h3>
+      <p class="settings-note">Switch to a character kept from an earlier visit. Your current character is saved here to return to.</p>
+      <button v-for="life in olderLives" :key="life.id" type="button" :disabled="switching || Boolean(game.state.value.activeAction)" @click="switchOlderLife(life.id)">Open character in {{ life.city }} · ₦{{ life.cash.toLocaleString() }}</button>
+      <p v-if="switchError" role="alert">{{ switchError }}</p>
+      <button v-if="switchError" type="button" @click="loadOlderLives">Retry</button>
+    </section>
     <h3 class="ui-section">This device</h3>
     <div class="ui-rows">
       <div class="ui-row"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>{{ game.state.value.name }}</b><small><template v-if="view.session">Player code #{{ view.session.id.slice(0, 6) }} · </template>{{ device }}</small></span></div>

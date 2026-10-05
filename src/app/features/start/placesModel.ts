@@ -2,24 +2,30 @@
 // tree, so a new place is a new entry here and nothing else: a city is open when the rules say it
 // is (CITY_RULES), and its local governments come from the life's view (estate.lgas), which is
 // what the server validates. Places that are not open yet are listed as coming, never as dead controls.
-import { cityRules } from '../../../game/content/world.ts'
+import { cityRules, knownCityIds } from '../../../game/cities/registry.ts'
 import type { LgaCard } from '../../../types/view.ts'
 
 export interface CityPlace { id: string; name: string }
 export interface StatePlace { id: string; name: string; cities: readonly CityPlace[] }
 export interface CountryPlace { id: string; name: string; states: readonly StatePlace[] }
 
-/** The places Allworld knows about. Open or coming is not written here: it is the city's own status in the rules. */
-export const PLACES: readonly CountryPlace[] = [
-  { id: 'nigeria', name: 'Nigeria', states: [
-    { id: 'lagos-state', name: 'Lagos State', cities: [{ id: 'lagos', name: 'Lagos' }] },
-    { id: 'oyo-state', name: 'Oyo State', cities: [{ id: 'ibadan', name: 'Ibadan' }] },
-    { id: 'fct', name: 'Federal Capital Territory', cities: [{ id: 'abuja', name: 'Abuja' }] },
-    { id: 'rivers-state', name: 'Rivers State', cities: [{ id: 'port-harcourt', name: 'Port Harcourt' }] },
-    { id: 'ogun-state', name: 'Ogun State', cities: [{ id: 'abeokuta', name: 'Abeokuta' }] },
-    { id: 'kano-state', name: 'Kano State', cities: [{ id: 'kano', name: 'Kano' }] },
-  ] },
-]
+/**
+ * The places Allworld knows about, read from the city registry (src/game/cities): every catalogued city under its state, the first
+ * state being the first city's. Open or coming is not written here either: it is the city's own status in the rules. A city that is
+ * added to the registry (a module, or a reserved id) shows up here without another table.
+ */
+export function placesFrom(cityIds: readonly string[]): readonly CountryPlace[] {
+  const states = new Map<string, { id: string; name: string; cities: CityPlace[] }>()
+  for (const id of cityIds) {
+    const rules = cityRules(id)
+    if (!rules || id.startsWith('test-')) continue
+    const state = states.get(rules.state.id) ?? { id: rules.state.id, name: rules.state.name, cities: [] }
+    state.cities.push({ id: rules.id, name: rules.name })
+    states.set(state.id, state)
+  }
+  return [{ id: 'nigeria', name: 'Nigeria', states: [...states.values()] }]
+}
+export const PLACES: readonly CountryPlace[] = placesFrom(knownCityIds())
 
 /** Whether lives can be lived in this city today. */
 export const cityOpen = (cityId: string): boolean => cityRules(cityId)?.status === 'open'

@@ -40,7 +40,7 @@ type TestOutcome = ActionOutcome;
 // only here), so each definition crosses the registry boundary through one cast.
 const asSystem = (def: object): SystemDefinition => def as unknown as SystemDefinition;
 /** emit() for an event name only this test knows. */
-const emitTest = (state: LifeState, event: string, data: object, ctx: LifeContextInit): void => emit(state, event as EngineEvent, data as never, makeContext(ctx));
+const emitTest = (state: LifeState, event: string, data: object, ctx: LifeContextInit): void => emit(state, event as EngineEvent, data as never, makeContext({ ...ctx, cityId: state.estate.city }));
 /** dispatch() for an action type only this test knows (or a malformed body): the engine's own validation is what is under test. */
 const dispatchTest = (state: LifeState, body: { type: string; payload?: object; actionId?: string }, ctx: LifeContextInit): ActionOutcome => dispatch(state, body as unknown as ActionBody, ctx);
 
@@ -73,7 +73,7 @@ registerSystem(asSystem({
     'contract-sneak': { moves: false, sanitize: () => ({}), complete(state: { location: string; spot: string | null }, active: { id: string }) { state.location = active.id; state.spot = null; } },
   },
 }));
-rebuildCatalogue();
+rebuildCatalogue('lagos');
 
 const at = (now = NOW): LifeContextInit => ({ now, cityId: CITY });
 /** The context of the server loading its OWN save (life-service.js settleCity): the only one allowed to settle money at load. */
@@ -201,12 +201,12 @@ test('every shipped system only ever leaves declared keys on a life, and each ke
 // ---- an action invalidated at load gives back what was paid --------------------------------------
 
 test('a start-charged activity whose definition changed is refunded through the ledger, exactly once', (t) => {
-  t.after(() => { startPaid.duration = 10; startPaid.cost = 100; rebuildCatalogue(); });
+  t.after(() => { startPaid.duration = 10; startPaid.cost = 100; rebuildCatalogue('lagos'); });
   const state = fresh();
   start(state, 'contract-booth');
   assert.deepEqual([state.cash, activityOf(state).paid], [4900, 100]);
   const saved = structuredClone(state);
-  startPaid.duration = 20; startPaid.cost = 40; rebuildCatalogue(); // a deploy changed the activity: longer and cheaper
+  startPaid.duration = 20; startPaid.cost = 40; rebuildCatalogue('lagos'); // a deploy changed the activity: longer and cheaper
   // Anything that is not the server's own save is only cleaned up: no money moves, so no input can mint a refund.
   const untrusted = createLife(structuredClone(saved), at(NOW + 1000));
   assert.deepEqual([untrusted.activeAction, untrusted.cash, untrusted.ledger.length], [null, 4900, 1]);
@@ -223,7 +223,7 @@ test('a start-charged activity whose definition changed is refunded through the 
 });
 
 test('a start-charged activity whose venue or definition is gone is refunded from the server’s own save, and from nothing else', (t) => {
-  t.after(() => { rebuildCatalogue(); });
+  t.after(() => { rebuildCatalogue('lagos'); });
   const state = fresh();
   start(state, 'contract-booth');
   // The player's saved location is no longer the activity's venue.
@@ -257,10 +257,10 @@ test('the amount charged at the start is kept through a reload even when a modif
 });
 
 test('invalidation settles a metered activity like an early stop: unused part refunded, or time used charged', (t) => {
-  t.after(() => { meteredFirst.duration = 10; meteredLater.duration = 10; rebuildCatalogue(); });
+  t.after(() => { meteredFirst.duration = 10; meteredLater.duration = 10; rebuildCatalogue('lagos'); });
   const sauna = fresh(); start(sauna, 'contract-sauna'); run(sauna, 4);
   const massage = fresh(); start(massage, 'contract-massage'); run(massage, 4);
-  meteredFirst.duration = 30; meteredLater.duration = 30; rebuildCatalogue();
+  meteredFirst.duration = 30; meteredLater.duration = 30; rebuildCatalogue('lagos');
   const a = createLife(structuredClone(sauna), stored(NOW + 4000));
   assert.deepEqual([a.activeAction, a.cash], [null, 4920], '₦200 paid, 4 of 10 seconds used: ₦120 back');
   const b = createLife(structuredClone(massage), stored(NOW + 4000));
@@ -355,7 +355,7 @@ test('an event loop between systems is an error, not a silently dropped event', 
 test('the catalogue refuses an activity without a real duration and a long activity that cannot be cancelled', (t) => {
   const extra: object[] = [];
   registerSystem(asSystem({ id: 'contract-bad-content', stateKeys: [], sanitize() {}, get activities() { return extra; } }));
-  t.after(() => { extra.length = 0; rebuildCatalogue(); });
+  t.after(() => { extra.length = 0; rebuildCatalogue('lagos'); });
   const where2 = { venue: 'park', spot: 'contract' };
   // Deliberately malformed content (no duration, zero, infinite, negative choice): typed loosely on purpose.
   const bad: [{ id: string; [field: string]: unknown }, RegExp][] = [
@@ -367,8 +367,8 @@ test('the catalogue refuses an activity without a real duration and a long activ
   ];
   for (const [def, pattern] of bad) {
     extra.length = 0; extra.push(def);
-    assert.throws(() => rebuildCatalogue(), pattern, def.id);
+    assert.throws(() => rebuildCatalogue('lagos'), pattern, def.id);
   }
   extra.length = 0; extra.push({ id: 'ok-locked', label: 'Locked', duration: MAX_LOCKED_SECONDS, cancellable: false, where: where2 });
-  assert.doesNotThrow(() => rebuildCatalogue());
+  assert.doesNotThrow(() => rebuildCatalogue('lagos'));
 });

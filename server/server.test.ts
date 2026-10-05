@@ -57,7 +57,8 @@ test('device auth, isolation, concurrent duplicate fare, and server time persist
   const [first, second] = await Promise.all([f.action(a.cookie, fields), f.action(a.cookie, fields)]);
   assert.equal(first.state.cash, 4600); assert.equal(second.state.cash, 4600); assert.equal(second.duplicate, true);
   assert.equal((await (await f.request('/api/life?city=lagos', null, b.cookie)).json()).state.cash, 5000);
-  assert.equal((await (await f.request('/api/life?city=ibadan', null, a.cookie)).json()).state.cash, 5000);
+  const otherCity = await f.request('/api/life?city=ibadan', null, a.cookie);
+  assert.deepEqual([otherCity.status, (await otherCity.json()).error], [409, 'city_moved']);
   f.advance(6000);
   const settled = (await (await f.request('/api/life?city=lagos', null, a.cookie)).json()).state;
   assert.equal(settled.location, 'library'); assert.equal(settled.activeAction, null);
@@ -279,7 +280,7 @@ test('movement keeps JSON unchanged between at-most-minute session renewals', as
   for (let i = 0; i < 4; i++) { x.ws.send(JSON.stringify({ type: 'move', x: i, z: 0 })); await x.next(); assert.equal(await signature(), renewed); }
 });
 
-test('departure removes room membership immediately and city switching removes prior presence', async t => {
+test('departure removes room membership immediately and cross-city room joins are refused', async t => {
   const f = await fixtureOf(t); const a = await f.device('Ada'); const b = await f.device('Bola');
   const x = await f.socket(a); const y = await f.socket(b);
   x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await x.next();
@@ -287,11 +288,11 @@ test('departure removes room membership immediately and city switching removes p
   assert.equal((await f.action(a.cookie, { type: 'travel', id: 'library', mode: 'cab' })).ok, true);
   assert.equal((await x.next()).code, 'venue_mismatch'); assert.equal((await y.next()).members.length, 1);
   x.ws.send(JSON.stringify({ type: 'signal', to: b.id, data: { candidate: 'after departure' } })); assert.equal((await x.next()).code, 'join_required');
-  x.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await x.next()).members.length, 1);
-  y.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await x.next()).members.length, 2); await y.next();
+  x.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await x.next()).code, 'city_moved');
+  y.ws.send(JSON.stringify({ type: 'join', cityId: 'ibadan', venueId: 'park' })); assert.equal((await y.next()).code, 'city_moved');
   x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); assert.equal((await x.next()).code, 'venue_mismatch');
   f.advance(6000); x.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'library' }));
-  assert.equal((await y.next()).members.length, 1); assert.equal((await x.next()).members.length, 1);
+  assert.equal((await x.next()).members.length, 1);
 });
 
 

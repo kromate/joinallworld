@@ -76,8 +76,9 @@ test('a session created with onboarding: true is a guest: held until its look is
   const again = await (await f.request('/api/action', body, ada.cookie)).json();
   assert.deepEqual([first.code, again.code, again.duplicate], ['onboarding_required', 'onboarding_required', true]);
 
-  // The other city's life for the same session is a guest too.
-  assert.deepEqual([(await life(f, ada, 'ibadan')).onboarding.required, (await life(f, ada, 'ibadan')).onboarding.stage], [true, 'guest']);
+  // A GET cannot create a second life for the same character.
+  const otherCity = await f.request('/api/life?city=ibadan', null, ada.cookie);
+  assert.deepEqual([otherCity.status, (await otherCity.json()).error], [409, 'city_moved']);
 
   // The quick start is validated like any creation step, and it is exactly-once: a double tap or a retry is one start.
   assert.equal((await quick(f, ada, { ...LOOK, hair: 'bantu-knots' })).code, 'invalid_look');
@@ -119,10 +120,12 @@ test('a session created without the flag keeps today’s behaviour, and a rename
   const state = await life(f, old);
   assert.deepEqual([state.onboarding.required, state.onboarding.stage, state.onboarding.done], [false, 'settled', false]);
   assert.equal((await f.action(old.cookie, { type: 'spot', payload: { id: 'trees' } })).code, 'selected');
-  // An existing session cannot be switched into enforcement, even before a city's life exists…
+  // An existing session cannot be switched into enforcement…
   const renamed = await f.request('/api/session', { name: 'Bola B', onboarding: true }, old.cookie);
   assert.equal((await sessionOf(renamed)).name, 'Bola B');
-  assert.equal((await life(f, old, 'ibadan')).onboarding.required, false);
+  assert.equal((await life(f, old)).onboarding.required, false);
+  const refusedCity = await f.request('/api/life?city=ibadan', null, old.cookie);
+  assert.deepEqual([refusedCity.status, (await refusedCity.json()).error], [409, 'city_moved']);
   // …and an enforced session cannot rename its way out.
   const ada = await open(f, { name: 'Ada', onboarding: true });
   assert.equal((await sessionOf(await f.request('/api/session', { name: 'Ada A' }, ada.cookie))).id, ada.id);

@@ -1,3 +1,4 @@
+import { CITY_MAPS } from '../map3d/city-labels.ts';
 // OWNER: world — tests for venues, travel, roadside events, weather and illness.
 // Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
@@ -6,7 +7,7 @@ import { createLife, dispatch, advanceLife, viewLife, spotsOf } from '../life.ts
 import { registerSystem, systems } from './registry.ts';
 import { makeContext, isRecord } from './util.ts';
 import { isOpen } from './clock.ts';
-import { VENUES, COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES, HOME_SPOTS, CITY_LABELS, CITY_MAPS, GIG_DAILY_LIMIT, venueLabel } from './content/venues.ts';
+import { VENUES, COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES, HOME_SPOTS, CITY_LABELS, GIG_DAILY_LIMIT, venueLabel } from './content/venues.ts';
 import { TRAVEL_MODES, ALL_MODES, DEFAULT_MODE, TRAVEL_DURATION } from './content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from './content/events.ts';
 import { HEALTH } from './content/health.ts';
@@ -127,11 +128,11 @@ test('venue catalogue: 25 venues and the UNILAG campus with district, hours, sce
   // Mainland lies north of the lagoon, the island and Lekki south of it.
   for (const venue of Object.values(VENUES)) assert.equal(venue.zone === 'mainland', venue.map.y < 40, venue.id);
   // The merged catalogue (venues + other systems' activities) builds without clashes.
-  assert.ok(spotsOf('park').some((spot) => spot.id === 'work' && spot.activities.some((def) => def.id === 'helper-shift')));
+  assert.ok(spotsOf('park', 'lagos').some((spot) => spot.id === 'work' && spot.activities.some((def) => def.id === 'helper-shift')));
   assert.ok(seen.size >= 180, `${seen.size} activities`);
   // Places that must be reachable at any hour.
-  for (const id of ['home', 'park', 'hospital', 'police', 'amala-shitta'] as const) assert.equal(VENUES[id].hours, undefined, id);
-  for (const id of ids.filter((id) => id !== 'home' && (!VENUES[id].cities || VENUES[id].cities.includes('ibadan')))) assert.ok(need(CITY_LABELS.ibadan)[id]?.label, `Ibadan label for ${id}`);
+  for (const id of ['home', 'park', 'hospital', 'police', 'amala-shitta'] as const) assert.equal(need(VENUES[id], 'registered venue').hours, undefined, id);
+  for (const id of ids.filter((id) => { const venue = need(VENUES[id], 'registered venue'); return id !== 'home' && (!venue.cities || venue.cities.includes('ibadan')); })) assert.ok(need(CITY_LABELS.ibadan)[id]?.label, `Ibadan label for ${id}`);
   assert.equal(venueLabel('park', 'ibadan'), 'Agodi Gardens'); assert.equal(venueLabel('airport', 'lagos'), 'Airport');
   assert.deepEqual(Object.keys(CITY_MAPS).sort(), ['ibadan', 'lagos']);
   assert.deepEqual(Object.keys(HOME_SPOTS).sort(), ['banana', 'ikoyi', 'lekki', 'mushin', 'yaba']);
@@ -276,7 +277,7 @@ test('Home is reachable by every mode, from anywhere, at any hour, even with not
   assert.equal(broke.location, 'home');
   for (const house of Object.keys(HOME_SPOTS) as HouseId[]) { // the table's own keys
     const state = createLife({ travel: { home: house } }, at(DRY_NOON));
-    assert.equal(viewLife(state, at(DRY_NOON)).travel.destinations.find((item) => item.id === 'home')?.district, HOME_SPOTS[house].district);
+    assert.equal(viewLife(state, at(DRY_NOON)).travel.destinations.find((item) => item.id === 'home')?.district, need(HOME_SPOTS[house], 'home district').district);
   }
   // The house is learned from the shared events, never from another system's state.
   const mover = createLife(null, at(DRY_NOON));
@@ -310,9 +311,9 @@ test('a closed venue can be previewed but not travelled to, with one consistent 
   for (let hour = 0; hour < 168; hour += 1) {
     const time = MONDAY_3AM + hour * HOUR + 17 * 60000;
     for (const item of viewLife(probe, at(time)).travel.destinations.filter((item) => item.kind === 'venue')) {
-      const open = isOpen(VENUES[item.id].hours, time), block = travelBlock(probe, item.id, 'trek', at(time)), info = openingInfo(VENUES[item.id].hours, time);
+      const open = isOpen(need(VENUES[item.id], 'registered venue').hours, time), block = travelBlock(probe, item.id, 'trek', at(time)), info = openingInfo(need(VENUES[item.id], 'registered venue').hours, time);
       assert.equal(item.open, open, item.id); assert.equal(item.status, info.status, item.id); assert.equal(block === null, open, item.id);
-      if (!open) { assert.ok(need(block).reason.includes(`opens ${info.opensAt} (in `), item.id); assert.ok(item.status.includes(`opens ${info.opensAt} (in `), item.id); assert.ok(isOpen(VENUES[item.id].hours, time + info.minutes * 60000), `${item.id} opens when promised`); }
+      if (!open) { assert.ok(need(block).reason.includes(`opens ${info.opensAt} (in `), item.id); assert.ok(item.status.includes(`opens ${info.opensAt} (in `), item.id); assert.ok(isOpen(need(VENUES[item.id], 'registered venue').hours, time + info.minutes * 60000), `${item.id} opens when promised`); }
     }
   }
   assert.equal(openingInfo({ open: 9, close: 17, days: [1] }, MONDAY_3AM + 20 * HOUR).status, 'Closed · opens Mon 9AM (in 154h 0m)');
@@ -605,7 +606,7 @@ test('daily gig limit: paid gigs across the whole city stop at the limit and reo
   state.needs.energy = 100; state.needs.hunger = 100;
   const act = <T extends ActionType>(type: T, payload: unknown) => dispatch(state, { type, payload, actionId: `gig-${now}-${type}` } as unknown as ActionBody<T>, at(now, `gig-${now}`));
   const wait = (seconds: number) => { now += seconds * 1000; advanceLife(state, seconds, at(now)); };
-  const gigs = (Object.keys(VENUES) as VenueId[]).flatMap((venue) => spotsOf(venue).flatMap((spot) => spot.activities.filter((def) => (def.reward ?? 0) > 0 && !def.requiresJob && !def.requiresSkill && !def.hours).map((def) => ({ venue, spot: spot.id, def }))));
+  const gigs = (Object.keys(VENUES) as VenueId[]).flatMap((venue) => spotsOf(venue, 'lagos').flatMap((spot) => spot.activities.filter((def) => (def.reward ?? 0) > 0 && !def.requiresJob && !def.requiresSkill && !def.hours).map((def) => ({ venue, spot: spot.id, def }))));
   assert.ok(gigs.length > GIG_DAILY_LIMIT, 'there are more unskilled gigs than the daily limit');
   assert.ok(gigs.every(({ def }) => isGig(def)));
   assert.equal(isGig(need(need(VENUES.park.spots.trees).activities[0])), false, 'an unpaid activity is not a gig');
@@ -614,7 +615,7 @@ test('daily gig limit: paid gigs across the whole city stop at the limit and reo
   assert.equal(isGig({ id: 'x', reward: 300, requiresJob: 'community-helper' } as ActivityDefinition), false, 'nor does a job shift');
   let done = 0, refused: ActionResult<'activity'> | null = null;
   for (const gig of gigs) {
-    if (!isOpen(VENUES[gig.venue].hours, now)) continue;
+    if (!isOpen(need(VENUES[gig.venue], 'registered venue').hours, now)) continue;
     state.needs.energy = 100; state.needs.hunger = 100;
     if (state.location !== gig.venue) { assert.equal(act('travel', { id: gig.venue, mode: 'trek' }).ok, true); wait(need(state.activeAction).remaining); }
     assert.equal(act('spot', { id: gig.spot }).ok, true);

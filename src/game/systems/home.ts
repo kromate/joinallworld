@@ -67,7 +67,8 @@ import { busy, fail, finite, isRecord, naira, ok } from '../util.ts';
 import { addItem, addMoodlet, addSkillXp, canAfford, canCredit, changeNeeds, countItem, credit, debit, findActivity, hasItems, removeItems } from '../api.ts';
 import { FURNITURE, HOME_ACTIVITIES, HOME_SPOTS, KINDS, PORTED_ACTIVITY_KIND, POWERED_KINDS, POWER_BONUS, SELL_REFUND_RATE, STAR_MULTIPLIER, STARTER_FURNITURE } from '../content/furniture.ts';
 import { INGREDIENTS, INGREDIENT_ORDER, MAX_PACKS_PER_ORDER, RECIPES } from '../content/food.ts';
-import { HOUSES, DEFAULT_HOUSE, homeOf } from '../content/housing.ts';
+import { homeOf } from '../content/housing.ts';
+import { defaultHouseFor, houseFor, housesFor } from '../cities/housingRuntime.ts';
 import { HOUSE_DESIGNS } from '../content/world.ts';
 import type { WantedItem } from '../home-layout.ts';
 import { MAX_PLACED, MAX_STORED_PER_ITEM, checkPlacement, doorSlot, fitInto, normalise, starterLayout, windowSlot } from '../home-layout.ts';
@@ -90,7 +91,7 @@ const ingredientOf = (id: unknown): IngredientDefinition | null => (typeof id ==
 const furnitureDef = (id: FurnitureId): FurnitureDefinition => FURNITURE[id]!; // placed and stored ids are catalogue keys: sanitize drops the rest
 const ingredientDef = (id: ItemId): IngredientDefinition => INGREDIENTS[id]!; // callers pass INGREDIENT_ORDER ids or recipe ingredient ids
 /** The room's size: the rented tier's, or the design's while the player lives in a house they built. */
-export const gridOf = (state: LifeState): number => homeOf(state, HOUSE_DESIGNS).grid;
+export const gridOf = (state: LifeState): number => homeOf(state, HOUSE_DESIGNS, housesFor(state.estate.city)).grid;
 const whole = (value: unknown, fallback: number): number => (finite(value) ? Math.max(0, Math.round(value)) : fallback);
 const priceOf = (state: LifeState, item: FurnitureDefinition, ctx: LifeContext): number => whole(modify(state, 'shop.price', item.price, { item, kind: 'furniture' }, ctx), item.price);
 const refundOf = (item: FurnitureDefinition): number => Math.floor(item.price * SELL_REFUND_RATE);
@@ -294,8 +295,8 @@ function completionBonus(state: LifeState, def: ResolvedActivity, mult: number, 
   if (mult > 1) for (const [skill, amount] of Object.entries(def.xp || {})) addSkillXp(state, skill, amount * (mult - 1), ctx);
 }
 
-function sanitizeBoost(value: unknown): HomeState['boost'] {
-  if (!isRecord(value) || typeof value.id !== 'string' || !findActivity(value.id)?.def.effectsPerSecond) return null;
+function sanitizeBoost(value: unknown, cityId: string): HomeState['boost'] {
+  if (!isRecord(value) || typeof value.id !== 'string' || !findActivity(value.id, cityId)?.def.effectsPerSecond) return null;
   if (!finite(value.mult) || value.mult < 0.5 || value.mult > 4 || !finite(value.done) || value.done < 0) return null;
   return { id: value.id, mult: value.mult, done: value.done, finished: value.finished === true };
 }
@@ -359,7 +360,7 @@ const play = PLAYS ? {
     'action.cancelled'(state, data) {
       state.home.boost = null;
       // Stopping sleep early is waking up, not cancelling: the rest already gained is kept.
-      const def = data?.kind === 'activity' ? findActivity(data.id)?.def : null;
+      const def = data?.kind === 'activity' ? findActivity(data.id, state.estate.city)?.def : null;
       if (def?.tags?.includes('sleep')) state.message = `${state.name} woke up. The rest you got is kept.`;
     },
   },
@@ -367,7 +368,7 @@ const play = PLAYS ? {
   advance(state) {
     const boost = state.home.boost;
     if (!boost) return;
-    const def = findActivity(boost.id)?.def;
+    const def = findActivity(boost.id, state.estate.city)?.def;
     const active = state.activeAction;
     const running = active?.kind === 'activity' && active.id === boost.id;
     if (!def || (!running && !boost.finished)) { state.home.boost = null; return; }
@@ -383,7 +384,7 @@ export default {
   id: 'home',
   stateKeys: ['home'],
 
-  sanitize(input: SavedInput, state: LifeState): void {
+  sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
     const grid = gridOf(state);
     const saved = isRecord(input.home) ? input.home : null;
     if (!saved || !Array.isArray(saved.items)) { state.home = freshHome(grid, saved?.stocked === true); return; }
@@ -399,7 +400,7 @@ export default {
     for (const id of seen) seq = Math.max(seq, Number(id.slice(1)) + 1);
     for (const entry of wanted) if (!entry.id) { entry.id = `f${seq}`; seq += 1; }
     const { items, stored } = fitInto(grid, wanted);
-    state.home = { items, storage: {}, seq, stocked: saved.stocked === true, custom: saved.custom === true, boost: sanitizeBoost(saved.boost) };
+    state.home = { items, storage: {}, seq, stocked: saved.stocked === true, custom: saved.custom === true, boost: sanitizeBoost(saved.boost, ctx.cityId) };
     if (isRecord(saved.storage)) {
       for (const [itemId, count] of Object.entries(saved.storage)) {
         if (itemOf(itemId) && typeof count === 'number' && Number.isSafeInteger(count) && count > 0) state.home.storage[itemId] = Math.min(count, MAX_STORED_PER_ITEM);
@@ -436,7 +437,7 @@ export default {
     const quality: Record<string, number> = {};
     for (const [kind, info] of Object.entries(KINDS)) if (info.spot) quality[kind] = placedOfKind(state, kind).length ? qualityOf(state, kind) : 0;
     return {
-      house: state.property?.house ?? DEFAULT_HOUSE,
+      house: houseFor(state.estate.city, state.property?.house)?.id ?? defaultHouseFor(state.estate.city).id,
       grid, window: windowSlot(grid), door: doorSlot(grid),
       atHome: state.location === HOME,
       placed: state.home.items.length,

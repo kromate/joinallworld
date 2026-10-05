@@ -1,3 +1,4 @@
+import { contentFor, jobFor, venuesFor, venueFor } from '../cities/runtime.ts';
 /**
  * OWNER: foundation (core — do not edit from a feature branch)
  * Generic data-driven activity engine. Venue spots, job shifts and home furniture all run
@@ -86,7 +87,6 @@ import { emit, modify, systems } from '../registry.ts';
 import { busy, cap, fail, isRecord, naira, ok, safeCount } from '../util.ts';
 import { isOpen, minutesUntilOpen } from '../clock.ts';
 import { VENUES, venueLabel } from '../content/venues.ts';
-import { JOBS } from '../content/jobs.ts';
 import { canAfford, canCredit, credit, debit } from './wallet.ts';
 import { changeNeeds, addMoodlet } from './needs.ts';
 import { addSkillXp, skillLevel } from './skills.ts';
@@ -124,10 +124,10 @@ const entriesOf = <K extends string, V>(table: Partial<Record<K, V>> | null | un
 
 /** The longest a non-cancellable activity may run (original beta value): the player cannot leave it, so it must be short. */
 export const MAX_LOCKED_SECONDS = 300;
-let catalogue: Catalogue | null = null;
+const catalogues = new Map<string, { content: ReturnType<typeof contentFor>; catalogue: Catalogue }>();
 
 /** Rebuild the merged venue/spot/activity index (tests that register extra systems call this). */
-export function rebuildCatalogue(): Catalogue {
+export function rebuildCatalogue(cityId: string): Catalogue {
   const byId = new Map<ActivityId, CatalogueEntry>();
   const venues: Catalogue['venues'] = {};
   const add = (venue: string, spot: CatalogueSpot, def: ActivityDefinition): void => {
@@ -141,7 +141,7 @@ export function rebuildCatalogue(): Catalogue {
     byId.set(def.id, { def, venue, spot: spot.id });
     spot.activities.push(def);
   };
-  for (const venue of Object.values(VENUES)) {
+  for (const venue of venuesFor(cityId)) {
     const spots: Record<SpotId, CatalogueSpot> = {};
     venues[venue.id] = spots;
     for (const source of Object.values(venue.spots)) {
@@ -149,22 +149,42 @@ export function rebuildCatalogue(): Catalogue {
       for (const def of source.activities || []) add(venue.id, spot, def);
     }
   }
-  for (const system of systems()) for (const def of system.activities || []) {
+  for (const system of systems()) for (const def of system.activitiesFor?.(cityId) ?? system.activities ?? []) {
     const { venue, spot: spotId, spotLabel, spotIcon }: Partial<ActivityPlacement> = def.where || {};
     const venueSpots = venue === undefined ? undefined : venues[venue];
     if (venue === undefined || !venueSpots || typeof spotId !== 'string') throw new Error(`Activity ${def.id} has no valid where.venue/where.spot`);
     const spot = venueSpots[spotId] ||= { id: spotId, label: spotLabel || cap(spotId), icon: spotIcon, activities: [] };
     add(venue, spot, def);
   }
-  catalogue = { byId, venues };
+  for (const venue of contentFor(cityId).venues) {
+    const spots = venues[venue.id];
+    if (!spots) continue;
+    for (const [id, wording] of Object.entries(venue.spotWording)) {
+      const spot = spots[id];
+      if (!spot) throw new TypeError(`Unknown wording spot ${venue.id}/${id}`);
+      if (wording.label !== undefined) spot.label = wording.label;
+      if (wording.caption !== undefined) spot.caption = wording.caption;
+    }
+    for (const [id, label] of Object.entries(venue.activityWording)) {
+      const entry = byId.get(id), spot = entry && spots[entry.spot];
+      if (!entry || entry.venue !== venue.id || !spot) throw new TypeError(`Unknown wording activity ${venue.id}/${id}`);
+      entry.def = { ...entry.def, label };
+      spot.activities = spot.activities.map(def => def.id === id ? entry.def : def);
+    }
+  }
+  const catalogue = { byId, venues };
+  catalogues.set(cityId, { content: contentFor(cityId), catalogue });
   return catalogue;
 }
-const index = (): Catalogue => catalogue || rebuildCatalogue();
+const index = (cityId: string): Catalogue => {
+  const content = contentFor(cityId), cached = catalogues.get(cityId);
+  return cached?.content === content ? cached.catalogue : rebuildCatalogue(cityId);
+};
 
 /** Ordered spots of a venue, including spots and activities contributed by systems. */
-export const spotsOf = (venueId: string): CatalogueSpot[] => Object.values(index().venues[venueId] || {});
-export const defaultSpot = (venueId: string): SpotId | null => spotsOf(venueId)[0]?.id ?? null;
-export const findActivity = (id: unknown): CatalogueEntry | undefined => (typeof id === 'string' ? index().byId.get(id) : undefined);
+export const spotsOf = (venueId: string, cityId: string): CatalogueSpot[] => Object.values(index(cityId).venues[venueId] || {});
+export const defaultSpot = (venueId: string, cityId: string): SpotId | null => spotsOf(venueId, cityId)[0]?.id ?? null;
+export const findActivity = (id: unknown, cityId: string): CatalogueEntry | undefined => (typeof id === 'string' ? index(cityId).byId.get(id) : undefined);
 
 /**
  * Put the player in a venue (used by travel, the commute and moving in).
@@ -174,10 +194,10 @@ export const findActivity = (id: unknown): CatalogueEntry | undefined => (typeof
  * system sees the same { venue, from, mode, ... } whatever order it was registered in.
  */
 export function arrive(state: LifeState, venueId: string, ctx: LifeContext, { spot, mode = null, ...extra }: ArriveOptions = {}): boolean {
-  if (!isVenueId(venueId)) return false;
+  if (!venueFor(ctx.cityId, venueId)) return false;
   const from = state.location;
   state.location = venueId;
-  state.spot = typeof spot === 'string' && Object.hasOwn(index().venues[venueId] || {}, spot) ? spot : defaultSpot(venueId);
+  state.spot = typeof spot === 'string' && Object.hasOwn(index(ctx.cityId).venues[venueId] || {}, spot) ? spot : defaultSpot(venueId, ctx.cityId);
   emit(state, 'travel.arrived', { ...extra, venue: venueId, from, mode }, ctx);
   return true;
 }
@@ -194,11 +214,11 @@ const waitText = (minutes: number): string => (minutes === Infinity ? '' : ` Ope
 /** Why `def` (already resolved) cannot start right now, or null. Pure: never mutates state. */
 export function blockReason(state: LifeState, def: ResolvedActivity, venueId: string, ctx: LifeContext): Block<ActivityBlockCode> | null {
   if (def.unavailable) return { code: 'unavailable', reason: 'This activity is unavailable in the local preview.' };
-  const hours = def.hours ?? venueTable[venueId]?.hours;
+  const hours = def.hours ?? venueFor(ctx.cityId, venueId)?.hours;
   const now = ctx?.now ?? state.t;
   if (!isOpen(hours, now)) return { code: 'closed', reason: `${venueLabel(venueId, ctx?.cityId)} is closed right now.${waitText(minutesUntilOpen(hours, now))}` };
   if (def.requiresJob && state.job !== def.requiresJob) {
-    return { code: 'job_required', reason: `Requires the ${JOBS[def.requiresJob]?.label ?? def.requiresJob} job. Apply in Phone → Jobs.` };
+    return { code: 'job_required', reason: `Requires the ${jobFor(ctx.cityId, def.requiresJob)?.label ?? def.requiresJob} job. Apply in Phone → Jobs.` };
   }
   if (def.requiresSkill && skillLevel(state, def.requiresSkill.id) < def.requiresSkill.level) {
     return { code: 'skill_required', reason: `Requires ${cap(def.requiresSkill.id)} level ${def.requiresSkill.level} (yours is ${skillLevel(state, def.requiresSkill.id)}).` };
@@ -253,7 +273,7 @@ function settleEarlyStop(state: LifeState, def: ActivityDefinition, action: { du
 function start(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext): StartOutcome {
   const blocked = busy(state);
   if (blocked) return blocked;
-  const entry = findActivity(payload.id);
+  const entry = findActivity(payload.id, ctx.cityId);
   if (!entry || entry.venue !== state.location || entry.spot !== state.spot) {
     return fail(state, 'unavailable', 'This activity is unavailable in the local preview.');
   }
@@ -273,8 +293,8 @@ function start(state: LifeState, payload: Record<string, unknown>, ctx: LifeCont
 }
 
 /** The definition a running activity was started from. start() and sanitize() checked both lookups, so neither fails for a stored action. */
-function runningDef(action: ActivityAction): ResolvedActivity {
-  const entry = findActivity(action.id);
+function runningDef(action: ActivityAction, cityId: string): ResolvedActivity {
+  const entry = findActivity(action.id, cityId);
   const def = entry ? resolve(entry.def, action.choice) : null;
   if (!def) throw new Error(`Running activity "${action.id}" is not in the catalogue.`);
   return def;
@@ -283,7 +303,7 @@ function runningDef(action: ActivityAction): ResolvedActivity {
 const active = {
   moves: false,
   sanitize(value: SavedActiveAction, state: LifeState, ctx: LifeContext) {
-    const entry = findActivity(value.id);
+    const entry = findActivity(value.id, ctx.cityId);
     const def = entry ? resolve(entry.def, value.choice) : null;
     if (!entry || !def || entry.venue !== state.location || def.unavailable || value.duration !== def.duration
       || (def.requiresJob && state.job !== def.requiresJob)) return null;
@@ -303,7 +323,7 @@ const active = {
    * player is told, and — the action being gone — no later load can pay it either.
    */
   invalidated(state: LifeState, value: SavedActiveAction, ctx: LifeContext) {
-    const entry = typeof value.id === 'string' ? findActivity(value.id) : undefined;
+    const entry = typeof value.id === 'string' ? findActivity(value.id, ctx.cityId) : undefined;
     const def = entry && (resolve(entry.def, value.choice) || entry.def);
     const paid = safeCount(value.paid) && value.paid > 0 ? value.paid : 0;
     const label = def?.label ?? 'an activity';
@@ -321,12 +341,12 @@ const active = {
     else if (charged) state.message = `${cap(label)} is no longer available here, so it was stopped. You paid ${naira(charged)} for the time used.`;
   },
   tick(state: LifeState, action: ActivityAction, elapsed: number, ctx: LifeContext) {
-    const def = runningDef(action);
+    const def = runningDef(action, ctx.cityId);
     for (const [need, rate] of entriesOf(def.effectsPerSecond)) changeNeeds(state, { [need]: rate * elapsed });
     for (const [skill, rate] of entriesOf(def.xpPerSecond)) addSkillXp(state, skill, rate * elapsed, ctx);
   },
   complete(state: LifeState, action: ActivityAction, ctx: LifeContext) {
-    const def = runningDef(action);
+    const def = runningDef(action, ctx.cityId);
     if (def.chargeOn !== 'start') {
       const cost = costOf(state, def, ctx);
       if (!debit(state, cost, def.label, ctx)) {
@@ -348,7 +368,7 @@ const active = {
     emit(state, 'activity.completed', { id: def.id, def, tags: def.tags || [], choice: action.choice ?? null }, ctx);
   },
   cancel(state: LifeState, action: ActivityAction, ctx: LifeContext) {
-    const def = runningDef(action);
+    const def = runningDef(action, ctx.cityId);
     if (def.cancellable === false) return fail(state, 'not_cancellable', `${def.label} cannot be cancelled once started.`);
     const { charged, refunded } = settleEarlyStop(state, def, action, ctx);
     if (charged) state.message = `${def.label} stopped early. You paid ${naira(charged)} for the time used.`;
@@ -371,10 +391,10 @@ function card(state: LifeState, def: ActivityDefinition, venueId: string, ctx: L
 const play = PLAYS ? {
   actions: {
     activity: (state, payload, ctx) => start(state, isRecord(payload) ? payload : {}, ctx),
-    spot(state, payload) {
+    spot(state, payload, ctx) {
       if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before moving.');
       const id = payload?.id;
-      if (typeof id !== 'string' || !Object.hasOwn(index().venues[state.location] || {}, id)) return fail(state, 'invalid_spot', 'That spot is not in this venue.');
+      if (typeof id !== 'string' || !Object.hasOwn(index(ctx.cityId).venues[state.location] || {}, id)) return fail(state, 'invalid_spot', 'That spot is not in this venue.');
       state.spot = id;
       return ok(state, 'selected');
     },
@@ -385,16 +405,16 @@ const play = PLAYS ? {
 export default {
   id: 'activities',
   stateKeys: ['spot'],
-  sanitize(input, state) {
-    const spots = index().venues[state.location] || {};
-    state.spot = typeof input.spot === 'string' && Object.hasOwn(spots, input.spot) ? input.spot : defaultSpot(state.location);
+  sanitize(input, state, ctx) {
+    const spots = index(ctx.cityId).venues[state.location] || {};
+    state.spot = typeof input.spot === 'string' && Object.hasOwn(spots, input.spot) ? input.spot : defaultSpot(state.location, ctx.cityId);
   },
   active: { activity: active },
   view(state, ctx) {
-    const spots = spotsOf(state.location);
+    const spots = spotsOf(state.location, ctx.cityId);
     const here = spots.find((spot) => spot.id === state.spot);
     const current = state.activeAction?.kind === 'activity' ? state.activeAction : null;
-    const running = current ? findActivity(current.id) : null;
+    const running = current ? findActivity(current.id, ctx.cityId) : null;
     const runningDef = running && resolve(running.def, current?.choice);
     return {
       spot: state.spot,

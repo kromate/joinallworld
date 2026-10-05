@@ -53,6 +53,8 @@ function browserSystems(): Plugin {
 export default defineConfig({
   // The page is a Vue 3 + TypeScript application: index.html → src/app/main.ts (docs/MIGRATION-VUE-TS.md).
   plugins: [browserSystems(), vue(), ...(wantMaps ? [moveMaps()] : [])],
+  // Every shipped component uses Composition API; omit the unused Options API runtime.
+  define: { __VUE_OPTIONS_API__: false },
   server: {
     host: '127.0.0.1', port: 5173,
     proxy: {
@@ -70,7 +72,10 @@ export default defineConfig({
   //   vue     the framework: changes with a Vue upgrade only;
   //   engine  the rules (src/game, src/life.ts, the campus rules): the shell builds and reads every life through them, so it is
   //           part of the first load, but it changes far less often than the shell.
-  build: { sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { manualChunks(id) {
+  build: { sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
+    const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
+    if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
+    if (city) return `city-${city[1]}-${city[2]}`
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.
@@ -79,6 +84,6 @@ export default defineConfig({
     if (/\/src\/scene\/(movement|build)\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'
   } } } },
 });

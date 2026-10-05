@@ -257,13 +257,13 @@ async function runSettle(stay: boolean): Promise<void> {
 async function finish(stay: boolean): Promise<void> {
   if (cr.pending) return
   if (isNew && !cr.played) { playNow(true); return }
-  await runSettle(isNew ? true : stay)
+  await runSettle(isNew ? false : stay) // a new life ends at home; "stay" is only for a guest already in the world
 }
 /** The shell finished the Play this screen sent: on success the rest is sent, otherwise the reopened screen says why. */
 function onStarted(event: Event): void {
   if (!cr.settling) return
   const ok = (event as CustomEvent<{ ok?: boolean }>).detail?.ok === true
-  if (ok) { void runSettle(true); return }
+  if (ok) { void runSettle(false); return }
   cr.pending = ''
   cr.settling = false
   cr.played = false

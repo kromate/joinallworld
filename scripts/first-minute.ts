@@ -216,7 +216,7 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     const rolled = await ok('onboarding.lottery', {}, 'rolled');
     const outcome = LOTTERY[must(rolled.onboarding.lottery).id];
     const stars = rolled.goals.stars, before = rolled.cash;
-    const move = { actionId: nextId(), cityId: CITY, type: 'onboarding.home', payload: { lga: LGA, via: 'manual', stay: true } };
+    const move = { actionId: nextId(), cityId: CITY, type: 'onboarding.home', payload: { lga: LGA, via: 'manual' } }; // as the creator sends it: the new life ends at home
     const moved = await send(move);
     assert.deepEqual([moved.ok, moved.code], [true, 'life_started']);
     state = moved.state;
@@ -233,7 +233,8 @@ export async function runFirstMinute({ log = console.log, salt = FIRST_MINUTE_SA
     const startLines = state.ledger.filter((entry) => entry.reason.startsWith('Start cash'));
     assert.equal(startLines.length, 1, 'one start-cash line');
     assert.equal(state.ledger.filter((entry) => entry.reason === 'Goal: Settle in').length, 1, 'the Settle in goal paid once');
-    assert.deepEqual([state.onboarding.done, state.onboarding.stage, state.onboarding.house, state.onboarding.completedAt, state.location], [true, 'settled', null, time, 'amala-shitta'], 'moved in without leaving the buka');
+    assert.deepEqual([state.onboarding.done, state.onboarding.stage, state.onboarding.house, state.onboarding.completedAt, state.location], [true, 'settled', null, time, 'home'], 'moved in: the player arrives at home');
+    assert.match(moved.state.message, /Open the Map to see the world\.$/, 'a short welcome that points at the map');
     assert.deepEqual([state.estate.lga, state.estate.lgaConfirmed, state.estate.lgaVia, state.estate.living, state.estate.tier, state.economy.rent.house, state.economy.started], [LGA, true, 'manual', 'own', 'starter', null, true], 'the local government and the own starter house are recorded; no rent house');
     const mine = (await http<WorldMe>(`/api/world/me?city=${CITY}`)).json;
     assert.deepEqual([mine.placed, mine.lga, mine.plot?.lga], [true, LGA, LGA], 'the server set a plot aside in that local government');

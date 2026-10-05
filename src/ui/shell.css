@@ -618,3 +618,6 @@ button.ui-row:hover{background:#f7f9f8}
 .life-menu>a{font:inherit;color:inherit;text-decoration:none}
 .legacy-character-link:focus-visible{outline:3px solid var(--c-green-dark);outline-offset:3px}
 .session-legacy{display:grid;gap:2px;margin:12px 0 0;font-size:var(--t-small);color:var(--c-muted)}
+
+/* Until the server has said where the player is (and the view they left has been put back), the life is not drawn: no jump from a cached place to the real one. */
+.life-ui.is-resuming{visibility:hidden}

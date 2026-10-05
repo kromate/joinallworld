@@ -104,6 +104,7 @@ export interface Map2D {
   select(id: string): void;
   ui(detail: MapUiDetail | null | undefined): void;
   view(): Map2DView;
+  restoreView(next: { scale: number; x: number; y: number }): void;
   /** Where a place or a map point is on screen (for tests that compare the two maps). */
   screenOf(id: string): { x: number; y: number } | null;
   readonly model: ReturnType<typeof flatModel>;
@@ -303,7 +304,9 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   function centreOn(x: number, z: number) { const area = free(); ox = insets.left + area.width / 2 - (x - box.x) * scale; oy = insets.top + area.height / 2 - (z - box.z) * scale; }
   function whole() { scale = fitScale(); centreOn((fit.minX + fit.maxX) / 2, (fit.minZ + fit.maxZ) / 2); userMoved = false; }
   function near(at: { x: number, z: number }) { scale = Math.max(fitScale(), free().width / 58); centreOn(at.x, at.z); }
-  function open() { opened = true; userMoved = false; if (size.width > 720) whole(); else near(spotOf(state?.location) || homeSpot()); }
+  /** A view kept before a reload, applied when the map first opens. */
+  let pendingView: { scale: number; x: number; y: number } | null = null;
+  function open() { opened = true; userMoved = false; if (pendingView) { scale = pendingView.scale; ox = pendingView.x; oy = pendingView.y; pendingView = null; userMoved = true; return; } if (size.width > 720) whole(); else near(spotOf(state?.location) || homeSpot()); }
   function apply() {
     if (!scale) return;
     scale = clamp(scale, fitScale() * 0.8, MAX_SCALE);
@@ -519,6 +522,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     select(id: string) { choose(id); },
     ui(detail: MapUiDetail | null | undefined) { applyUi(detail); },
     view: () => ({ scale, x: ox, y: oy, opened, userMoved }),
+    restoreView(next: { scale: number; x: number; y: number }) { if (opened && measure()) { scale = next.scale; ox = next.x; oy = next.y; userMoved = true; apply(); } else pendingView = next; },
     /** Where a place or a map point is on screen (for tests that compare the two maps). */
     screenOf(id: string) { const spot = spotOf(id); if (!spot) return null; const page = container.getBoundingClientRect(), at = project(spot.x, spot.z); return { x: at.x + page.left, y: at.y + page.top }; },
     model,

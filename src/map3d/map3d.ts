@@ -522,8 +522,11 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     }
     return { left, top, right, bottom, wide };
   }
+  /** A camera kept before a reload, applied when the map first opens (or at once when it is open). */
+  let pendingView: RigView | null = null;
   function openView() {
     opened = true; userMoved = false;
+    if (pendingView) { rig.jump(pendingView); pendingView = null; userMoved = true; return; }
     rig.jump({ yaw: 0, pitch: DEFAULT_PITCH });
     if (size.width > 720) { rig.jump(rig.whole()); return; }
     // A phone cannot name the places of the whole city at once: it opens close on where the player is.
@@ -794,6 +797,10 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     /** Run `done` once the arrival has been shown (at once when there is nothing to show). */
     arrive(done: () => void) { if (settling) pendingArrive = done; else done(); },
     select(id: string) { choose(id); },
+    /** The camera as it is now, for keeping it across a reload. */
+    cameraView(): RigView { return { ...rig.view }; },
+    /** Put the camera back where it was (a reload): at once when the map is open, otherwise when it first opens. */
+    restoreView(next: RigView) { if (opened) { rig.jump(next); userMoved = true; tripCamera = false; request(); } else pendingView = next; },
     /** For tests and screenshots: hold the lighting at 'day' | 'dusk' | 'night' (null follows Lagos time again). */
     holdTime(next: TimeOfDay | null) { heldTime = next; if (applyTime(next || timeOfDay(state?.t ?? 0))) request(); },
     /** What the Map panel says, for callers that do not go through the window event (tests, a host replaying it). */

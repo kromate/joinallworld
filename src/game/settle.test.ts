@@ -154,6 +154,23 @@ test('the first goal never traps a guest who went elsewhere: the free thing the 
   assert.equal(g.state.goals.chain, 1, 'what the chip asked for completed the goal');
 });
 
+test('a new life that moves in straight away ends at home, with the first goal still pointing out to the park', () => {
+  const g = game();
+  g.act('onboarding.quick-start', { look: LOOK });
+  g.ready();
+  const moved = g.act('onboarding.home', { lga: 'ikeja' });
+  assert.equal(moved.code, 'life_started');
+  assert.equal(g.state.location, 'home', 'the player arrives in the new house');
+  assert.match(g.state.message, /Open the Map to see the world\.$/);
+  const chip = goalChip(g);
+  assert.deepEqual([chip.id, chip.go, chip.title], ['first-fun', ['park', 'trees'], 'Play a round of Ayo'], 'the goal that needed the venue still says where to go');
+  assert.match(chip.hint, /^Head out to Freedom Park/);
+  assert.equal(g.act('travel', { id: 'park', mode: 'trek' }).ok, true); g.finish();
+  if (g.state.travel.event) g.act('world.roadside', { choice: need(need(g.view().travel.event).choices.at(-1)).id });
+  assert.equal(g.run('trees', 'play-ayo').ok, true);
+  assert.equal(g.state.goals.chain >= 1, true, 'and it is reachable: Ayo in the park completes it');
+});
+
 test('missions wait until the life has settled in: nothing is dealt, counted, shown or claimable to a guest', () => {
   const g = game();
   g.act('onboarding.quick-start', { look: LOOK });

@@ -466,7 +466,7 @@ const actions = {
       look: { ...o.look, ...(o.look.accessories ? { accessories: [...o.look.accessories] } : {}) }, loan: rolled.loan ? { ...rolled.loan } : null, rent: home?.rent ?? 0, startCash,
       ...(unit ? { lga: unit.id, via: payload.via === 'device' ? 'device' as const : 'manual' as const, own: !home } : {}) }, ctx);
     const place = home ? `${home.label} in ${home.district}` : `starter house in ${unit!.name}`;
-    state.message = stay ? `Your ${place} is ready. Tap Home whenever you want to see it. You have ${naira(state.cash)}.` : `Welcome to ${home ? home.district : unit!.name}. You moved into your ${home ? home.label : 'own starter house'} with ${naira(state.cash)}.`;
+    state.message = stay ? `Your ${place} is ready. Tap Home whenever you want to see it. You have ${naira(state.cash)}.` : `Welcome to ${home ? home.district : unit!.name}. You moved into your ${home ? home.label : 'own starter house'} with ${naira(state.cash)}. Open the Map to see the world.`;
     return ok(state, 'life_started');
   },
   'onboarding.set-look'(state, payload) {

@@ -28,7 +28,7 @@ const props = defineProps<{
   rows: () => (Element | null)[]
   hidden: boolean
 }>()
-const { game, shell, scene, showPlayer, showCrowd, showGoal, reportPlace, onMove, commitSpot, goTo } = useApp()
+const { game, ready, shell, scene, showPlayer, showCrowd, showGoal, reportPlace, onMove, commitSpot, goTo } = useApp()
 const container = ref<HTMLElement | null>(null)
 const failed = ref(false)
 const waiting = ref(true)
@@ -54,6 +54,8 @@ onMounted(() => {
     try {
       await landingCodeSettled() // a new device is looking at the landing's 3D preview: its code goes first
       const createVenueWorld = await loadSceneWorld()
+      // Where the scene starts is where the server says the player is, never the copy this device kept.
+      if (!ready.value) await new Promise<void>((resolve) => { const stop = watch(ready, (now) => { if (now) { stop(); resolve() } }) })
       if (disposed || !container.value) return
       const venue = createVenueWorld(container.value, { location: game.state.value.location, onTag(tag) {
         // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).

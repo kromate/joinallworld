@@ -6,7 +6,7 @@
 // themselves here (ScenePane, MapPane) so those rules can reach them; until one has loaded its
 // callers skip it, exactly as before, and it is given the current state the moment it exists.
 import { noteChunkFailure } from './updateNotice.ts'
-import { shallowRef } from 'vue'
+import { shallowRef, watch } from 'vue'
 import type { LifeState } from '../../types/life.ts'
 import type { Panel, PanelApi, ShellMode, VuePanel } from '../types/panel.ts'
 import type { CityView, PlayerLook, SceneWorld, WorldMap } from '../types/scene.ts'
@@ -31,6 +31,9 @@ import { useGame } from './game.ts'
 import type { Game } from './game.ts'
 import { buildRegistry } from './panels.ts'
 import { createShell } from './shell.ts'
+import { decideView, forgetViews, keepView, loadView } from './viewMemory.ts'
+import type { SavedCamera, SavedSheet } from './viewMemory.ts'
+import { mapUi } from '../features/travel/travelState.ts'
 import { NATIVE_PANELS } from '../features/panels.ts'
 
 /** The trip a state is on, as a key ('' when it is not travelling): a different key is a different trip. */
@@ -232,14 +235,16 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   function sessionChanged(id: string | null): void {
     if (sessionId === id) return
     const first = sessionId === undefined
+    const before = sessionId
     sessionId = id
     if (first) return // the first session of this page: nothing was held for anyone else
     resetSocial()
+    forgetViews(tabStore(), deviceStore(), before ? `${before}:${game.cityId.value}` : null)
     globalThis.window?.dispatchEvent(new CustomEvent('jaw:session', { detail: { id } }))
   }
   game.on('session', (session) => { sessionChanged(session.id ?? null) })
   // The saved life is gone: its own sheet says so, not the welcome of the landing screen.
-  game.on('expired', () => { positions = {}; sessionChanged(null); const gate = shell.sessionGate('expired'); if (gate) shell.open(gate.id, { reason: 'expired' }) })
+  game.on('expired', () => { positions = {}; forgetViews(tabStore(), deviceStore(), whoIs()); sessionChanged(null); const gate = shell.sessionGate('expired'); if (gate) shell.open(gate.id, { reason: 'expired' }) })
   game.on('needName', (problem) => { const gate = shell.sessionGate('new'); if (gate) shell.open(gate.id, { reason: 'new', problem }) })
 
   /** The landing of an invite, share or table link (features/landing): handled once, after the quick start. */
@@ -300,9 +305,66 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     shell.enforceRequired()
     if (!game.state.value.onboarding.required) await landing.land()
   }
+  // ---- the view after a reload ----------------------------------------------------------------------------------
+  // The place is the server's. What this remembers is how the player was looking: the venue or the map (layer, picked place,
+  // camera), and the phone app or Sim tab that was open. Until the server has answered (and this has been applied) nothing of
+  // the life is drawn, so the first screen is already the right one and there is no jump from a cached place to the real one.
+  const ready = shallowRef(false)
+  let viewDone = false
+  let lastCamera: SavedCamera | null = null
+  let pendingCamera: SavedCamera | null = null
+  const tabStore = (): Storage | null => { try { return globalThis.sessionStorage ?? null } catch { return null } }
+  const deviceStore = (): Storage | null => { try { return globalThis.localStorage ?? null } catch { return null } }
+  const whoIs = (): string | null => { const id = game.session.value?.id; return id ? `${id}:${game.cityId.value}` : null }
+  const sheetToKeep = (): SavedSheet | null => {
+    const open = shell.sheet.value
+    if (!open) return null
+    if (open.kind === 'phone') return { kind: 'phone' }
+    if (open.kind === 'sim') return open.tab ? { kind: 'sim', tab: open.tab } : null
+    if (open.kind === 'panel' && (open.from === 'phone' || shell.byId.get(open.id)?.placement === 'phone')) return { kind: 'panel', id: open.id }
+    return null
+  }
+  function saveView(): void {
+    const who = whoIs(), state = game.state.value
+    if (!ready.value || !who || !game.connected.value || state.onboarding?.required || tripKey(state)) return
+    const mode = game.mode.value
+    if (mode === 'map') lastCamera = scene.city.value?.camera() ?? lastCamera
+    keepView({ v: 1, who, at: state.location, mode, layer: mapUi.layer, destination: mode === 'map' ? mapUi.destination : null, sheet: sheetToKeep(), camera: mode === 'map' ? lastCamera : null }, tabStore(), deviceStore())
+  }
+  function restoreView(): void {
+    const who = whoIs(), state = game.state.value
+    if (viewDone || !who) return
+    viewDone = true
+    const view = decideView(loadView(who, tabStore(), deviceStore()), {
+      who, location: state.location, trip: Boolean(tripKey(state)),
+      allowsMode: (mode) => { const panel = shell.byId.get(mode); return panel?.placement === 'nav' && shell.gateOf(panel) === null },
+      allowsSheet: (sheet) => sheet.kind === 'phone' || (sheet.kind === 'sim' ? shell.placed('sim-tab').some((panel) => panel.id === sheet.tab) : (() => { const panel = shell.byId.get(sheet.id); return panel?.placement === 'phone' && shell.gateOf(panel) === null && typeof panel.required !== 'function' })()),
+    })
+    if (state.onboarding?.required) return
+    if (view.mode !== 'venue') {
+      if (view.camera) { lastCamera = view.camera; pendingCamera = view.camera }
+      shell.setMode(view.mode, view.mode === 'map' ? { layer: view.layer, ...(view.destination ? { destination: view.destination } : {}) } : null)
+    }
+    if (view.sheet && !shell.sheet.value) {
+      if (view.sheet.kind === 'phone') shell.open('phone')
+      else if (view.sheet.kind === 'sim') shell.open('sim', { tab: view.sheet.tab })
+      else shell.open(view.sheet.id)
+    }
+  }
+  watch(scene.city, (city) => { if (city && pendingCamera) { city.restoreCamera(pendingCamera); pendingCamera = null } })
+  watch([game.mode, shell.sheet, () => mapUi.layer, () => mapUi.destination], saveView, { flush: 'post' })
+  globalThis.window?.addEventListener('pagehide', saveView)
+  globalThis.document?.addEventListener('visibilitychange', () => { if (globalThis.document.hidden) saveView() })
+  // A page that never hears from the server still shows what it has, after a moment.
+  if (globalThis.window) globalThis.setTimeout(() => { ready.value = true }, 6000)
+
   /** Connect (or reconnect), then finish what the first minute left open. */
   async function connect(createNew = false, name: string | null = null): Promise<boolean> {
-    const ok = await game.connect(createNew, name)
+    let ok = false
+    try {
+      ok = await game.connect(createNew, name)
+      if (ok && !game.state.value.onboarding.required) restoreView()
+    } finally { ready.value = true }
     if (ok) await firstMinute()
     // Not awaited: a slow or failing community chunk must not hold up the game or block a later Reconnect.
     if (ok) void community.ensure()
@@ -407,7 +469,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     view: () => shell.viewFor(),
   }
 
-  return { game, panels, shell, landing, api, community, scene, command, connect, showFriends, showGoal, reportPlace, onMove, commitSpot, quickStart, goTo, menu, startLife, switchCity, showMapLayer, showPlayer, showCrowd, heldCities, playerLook }
+  return { game, ready, panels, shell, landing, api, community, scene, command, connect, showFriends, showGoal, reportPlace, onMove, commitSpot, quickStart, goTo, menu, startLife, switchCity, showMapLayer, showPlayer, showCrowd, heldCities, playerLook }
 }
 export type App = ReturnType<typeof createApp>
 

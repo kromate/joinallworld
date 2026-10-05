@@ -31,7 +31,7 @@ import CommunityHost from './features/community/CommunityHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
 
-const { game, shell, api, community, scene, command, connect, quickStart, startLife, switchCity, menu, landing } = useApp()
+const { game, ready, shell, api, community, scene, command, connect, quickStart, startLife, switchCity, menu, landing } = useApp()
 const ui = shell.ui
 const mode = game.mode
 const navPanel = computed(() => (mode.value !== 'venue' ? shell.byId.get(mode.value) ?? null : null))
@@ -141,7 +141,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
 <template>
   <ScenePane :top="topCover" :rows="hudRows" :bottom="() => bottom" :hidden="mode === 'map'" />
   <MapPane />
-  <div id="life-overlay" ref="root" class="life-ui" :class="{ 'has-coach': ui.coaching, 'is-guest': Boolean(game.view.value.onboarding?.guest), 'is-clean': ui.clean, 'is-tray-open': ui.trayOpen, 'is-expanded': ui.expanded && mode === 'venue' }" :data-mode="mode">
+  <div id="life-overlay" ref="root" class="life-ui" :class="{ 'has-coach': ui.coaching, 'is-resuming': !ready, 'is-guest': Boolean(game.view.value.onboarding?.guest), 'is-clean': ui.clean, 'is-tray-open': ui.trayOpen, 'is-expanded': ui.expanded && mode === 'venue' }" :data-mode="mode">
     <p class="life-wordmark" aria-label="Allworld"><i aria-hidden="true"><GameIcon name="globe" :size="19" /></i><span><b>Allworld</b></span></p>
     <HudBar />
     <ConnectionNotice />

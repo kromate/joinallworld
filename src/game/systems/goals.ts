@@ -398,6 +398,8 @@ function chipOf(state: LifeState, ctx: LifeContext): GoalChip {
       // Wherever the guest stands: the goal's own spot at its venue, otherwise the quickest free thing to do right here.
       if (!goal.go) throw new TypeError('A goal done here has a place to go'); // the original read goal.go[0] of undefined
       if (state.location === goal.go[0]) return { ...chip, go: goal.go, activity: goal.activity };
+      // At home (a life that moved in before this goal was done) the way out is the point: the Map, then the venue.
+      if (state.location === 'home') return { ...chip, hint: `Head out to ${Object.hasOwn(VENUES, goal.go[0]) ? VENUES[goal.go[0] as VenueId].label : 'the venue'}: ${goal.hint}`, go: goal.go };
       const near = quickest(state, ctx);
       return near ? { ...chip, title: 'Do something fun', hint: `${near.spot.label} → ${near.def.label} · takes ${near.def.duration} seconds`, go: [state.location, near.spot.id], activity: near.def.id } : { ...chip, go: goal.go };
     }

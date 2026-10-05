@@ -52,6 +52,8 @@ export interface MapImpl {
   arrive?(done: () => void): void
   diagnostics?(): object
   view?(): object
+  cameraView?(): { x: number; z: number; yaw: number; pitch: number; distance: number }
+  restoreView?(next: never): void
   worldChanged?(): void
   focusPlot?(plot: { lga: string; estate: number; plot: number } | null | undefined): void
   focusEstate?(lga: string, estate: number): void
@@ -60,6 +62,8 @@ export interface MapImpl {
 }
 /** The detail of 'jaw:map-focus': { plot } | { lga } | { lga, estate }. */
 interface MapFocusDetail { plot?: { lga: string; estate: number; plot: number }; lga?: string; estate?: number }
+/** The camera of the city map: the 3D rig, or the flat map's scale and offset. */
+export type MapCamera = { kind: '3d'; x: number; z: number; yaw: number; pitch: number; distance: number } | { kind: '2d'; scale: number; x: number; y: number }
 /** Which map is on screen: the 3D one, or the flat one. */
 export type CityViewKind = '3d' | '2d'
 /** The handle the host talks to. */
@@ -80,6 +84,10 @@ export interface CityView {
   /** Show the arrival, then call `done`. With nothing to show (2D, hidden, reduced motion) it is called at once. */
   arrive(done: () => void): void
   diagnostics(): object
+  /** Where the camera is, for keeping it across a reload (null while no map is up). */
+  camera(): MapCamera | null
+  /** Put the camera back (a reload): applied when the map first opens if it is not up yet. A camera of the other kind of map is dropped. */
+  restoreCamera(next: MapCamera | null): void
   readonly map: MapImpl | null
   destroy(): void
 }
@@ -165,7 +173,13 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
     impl.setFriends?.(friends);
     if (state) impl.setState(state);
     if (Object.keys(ui).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: { ...ui, layout: true } }));
+    if (wantedCamera) { const camera = wantedCamera; wantedCamera = null; applyCamera(camera); }
     impl.resize();
+  }
+  let wantedCamera: MapCamera | null = null;
+  function applyCamera(camera: MapCamera): void {
+    if (camera.kind !== kind || !impl) return;
+    if (camera.kind === '3d') { const { kind: _kind, ...rig } = camera; impl.restoreView?.(rig as never); } else { const { kind: _kind, ...flat } = camera; impl.restoreView?.(flat as never); }
   }
   function release() {
     releaseTimer = null;
@@ -196,6 +210,13 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
     /** Show the arrival, then call `done`. With nothing to show (2D, hidden, reduced motion) it is called at once. */
     arrive(done) { if (impl?.arrive && shown) impl.arrive(done); else done(); },
     diagnostics() { return impl?.diagnostics ? impl.diagnostics() : { kind: kind || 'none', renderCount: 0, released, view: impl?.view?.() }; },
+    camera() {
+      if (!impl) return null;
+      if (kind === '3d' && impl.cameraView) return { kind: '3d', ...impl.cameraView() };
+      const flat = kind === '2d' ? impl.view?.() as { scale?: number; x?: number; y?: number; opened?: boolean } | undefined : undefined;
+      return flat && flat.opened && typeof flat.scale === 'number' && typeof flat.x === 'number' && typeof flat.y === 'number' ? { kind: '2d', scale: flat.scale, x: flat.x, y: flat.y } : null;
+    },
+    restoreCamera(next) { if (!next) return; if (impl) applyCamera(next); else wantedCamera = next; },
     get map() { return impl; },
     destroy() { mounting += 1; clearTimeout(releaseTimer ?? undefined); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:world-changed', onWorld); window.removeEventListener('jaw:map-focus', onFocus); impl?.destroy(); toggle.remove(); },
   };

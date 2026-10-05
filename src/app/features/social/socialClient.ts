@@ -69,7 +69,8 @@ export interface SocketLike {
   close(): void
   onopen: (() => void) | null
   onmessage: ((event: { data: unknown }) => void) | null
-  onclose: (() => void) | null
+  /** A browser hands the close event (its `code` says why the server closed it); a test may call it with nothing. */
+  onclose: ((event?: { code?: number }) => void) | null
 }
 /** What the client needs from the page; every field has a browser default. Tests pass fakes. */
 export interface SocialEnv {
@@ -134,7 +135,11 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   const peopleWatchers = new Set<(people: PeopleState | null) => void>()
   /** Other features that share this socket (calls): they get every frame whose type starts with their prefix, and are told when it closes. */
   const frameListeners = new Set<(frame: { type: string }) => void>()
-  const closeListeners = new Set<() => void>()
+  const closeListeners = new Set<(code?: number) => void>()
+  /** The game's own listeners (one character on several devices): the life changed on the server, and the socket opened. */
+  const lifeListeners = new Set<(hint: { rev: number; by?: readonly string[] }) => void>()
+  const openListeners = new Set<(again: boolean) => void>()
+  let opened = 0
 
   /** Call `listener` whenever the who-is-here listing changes (the scene host draws its crowd from it). */
   function onPeople(listener: (people: PeopleState | null) => void): () => void { peopleWatchers.add(listener); return () => peopleWatchers.delete(listener) }
@@ -302,6 +307,8 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     // The Worker's liveness probe: answered at once, or the social socket is closed as idle.
     if ((message.type as string) === 'heartbeat') { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return }
     if (message.type.startsWith('call-')) { for (const listener of [...frameListeners]) listener(message); return }
+    // The player's life changed on the server (an action on another of their devices, a settlement): the game reads it again.
+    if ((message.type as string) === 'life-changed') { const hint = message as unknown as { rev?: unknown; by?: unknown }; if (typeof hint.rev === 'number') for (const listener of [...lifeListeners]) listener({ rev: hint.rev, ...(Array.isArray(hint.by) ? { by: hint.by.filter((id): id is string => typeof id === 'string') } : {}) }); return }
     switch (message.type) {
       case 'dm': {
         if (!message.conv || !message.message) return
@@ -369,6 +376,20 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
       case 'transfer':
         refreshLife(); void sync()
         return
+      case 'social-read': {
+        // Read on another device of this player: the same badge clears here, in place and without a request.
+        if (!state.me) return
+        const conv = message.conv
+        if (conv) state.me.conversations = state.me.conversations.map((item) => (item.id === conv.id ? conv : item))
+        if (message.updates) for (const update of state.me.updates) update.read = true
+        refresh()
+        return
+      }
+      case 'social-changed':
+        // This player's own request, made on any of their devices, changed their friends, groups, blocks or visits.
+        profileVersion += 1; state.profiles.clear()
+        void sync()
+        return
       case 'social-sync': case 'friend-request': case 'friend-accepted': case 'invite-knock': case 'invite-house':
         if (message.type === 'social-sync' || message.type === 'friend-request' || message.type === 'friend-accepted') { profileVersion += 1; state.profiles.clear() }
         if (message.type === 'social-sync') refreshLife()
@@ -383,12 +404,16 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     if (ws || !connected()) return
     state.socket = attempts ? 'reconnecting' : 'connecting'
     const current = ws = env.openSocket()
-    current.onopen = () => { attempts = 0; state.socket = 'open'; for (const [id, thread] of state.threads) if (thread.loaded) void openThread(id); void sync(); watchPeople() }
+    current.onopen = () => {
+      attempts = 0; state.socket = 'open'; for (const [id, thread] of state.threads) if (thread.loaded) void openThread(id); void sync(); watchPeople()
+      opened += 1
+      for (const listener of [...openListeners]) listener(opened > 1)
+    }
     current.onmessage = receive
-    current.onclose = () => {
+    current.onclose = (event) => {
       if (ws !== current) return
       ws = null; state.houseRoom = null; joiningHouse = null
-      for (const listener of [...closeListeners]) listener()
+      for (const listener of [...closeListeners]) listener(event?.code)
       if (connected() && attempts < MAX_ATTEMPTS) { state.socket = 'reconnecting'; timer = env.setTimeout(connectSocket, Math.min(1000 * 2 ** attempts, 15000)); attempts += 1 }
       else state.socket = 'offline'
       refresh()
@@ -396,6 +421,8 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   }
   /** Manual reconnect after the automatic attempts ran out. */
   function reconnect(): void { attempts = 0; connectSocket(); refresh() }
+  /** The page is in front again, or the device is back online: a socket that was lost meanwhile is opened now, not at the next back-off. */
+  function wakeSocket(): void { if (started && !ws && connected()) reconnect() }
 
   /**
    * The device session changed (a new life was started, or the old one is gone): everything this client holds belonged to the
@@ -405,7 +432,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   function resetSocial(): void {
     Object.assign(state, freshSocial())
     outbox.clear()
-    joiningHouse = null; syncing = false; dirty = false; peopleDirty = false; profileVersion += 1; attempts = 0
+    joiningHouse = null; syncing = false; dirty = false; peopleDirty = false; profileVersion += 1; attempts = 0; opened = 0
     env.clearTimeout(timer); timer = null
     const old = ws; ws = null
     state.socket = 'idle'; state.friendsLoading = false
@@ -422,8 +449,12 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   }
   /** Call `listener` with every `call-*` frame the socket receives. */
   function onCallFrame(listener: (frame: { type: string }) => void): () => void { frameListeners.add(listener); return () => frameListeners.delete(listener) }
-  /** Call `listener` whenever the socket closes (also when the identity changed). */
-  function onSocketClose(listener: () => void): () => void { closeListeners.add(listener); return () => closeListeners.delete(listener) }
+  /** Call `listener` whenever the socket closes (also when the identity changed), with the server's close code when there is one. */
+  function onSocketClose(listener: (code?: number) => void): () => void { closeListeners.add(listener); return () => closeListeners.delete(listener) }
+  /** Call `listener` with every `life-changed` frame (src/types/protocol.ts): the server's hint that the player's life changed. */
+  function onLifeFrame(listener: (hint: { rev: number; by?: readonly string[] }) => void): () => void { lifeListeners.add(listener); return () => lifeListeners.delete(listener) }
+  /** Call `listener` whenever the socket opens; `again` is true when it had been open before for this identity (a reconnection). */
+  function onSocketOpen(listener: (again: boolean) => void): () => void { openListeners.add(listener); return () => openListeners.delete(listener) }
 
   /** The landing of a brand-new visitor handled the invite link itself (src/life-main.js landJoin): do not also open the Invite app for it. */
   function takeLinkHost(): string | null { const host = state.linkHost; state.linkHost = null; return host }
@@ -449,6 +480,6 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     }
   }
 
-  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, sendFrame, onCallFrame, onSocketClose, cityId, newClientId, call, perform, refreshLife, sync, loadMoreFriends, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
+  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, sendFrame, onCallFrame, onSocketClose, onLifeFrame, onSocketOpen, wakeSocket, cityId, newClientId, call, perform, refreshLife, sync, loadMoreFriends, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
 }
 export type SocialClient = ReturnType<typeof createSocialClient>

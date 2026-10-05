@@ -11,7 +11,7 @@ class FakeSocket implements SocketLike {
   sent: string[] = []
   onopen: (() => void) | null = null
   onmessage: ((event: { data: unknown }) => void) | null = null
-  onclose: (() => void) | null = null
+  onclose: ((event?: { code?: number }) => void) | null = null
   send(data: string): void { this.sent.push(data) }
   close(): void { this.readyState = 3 }
   push(frame: unknown): void { this.onmessage?.({ data: JSON.stringify(frame) }) }
@@ -66,4 +66,53 @@ test('the close listener runs when the socket closes and when the identity is re
   stop()
   client.resetSocial()
   assert.equal(closed, 2)
+})
+
+// ---- one character on several devices (docs/DEVICES.md) ----
+test('the life hint reaches the game, read state from another device clears here without a request, and an own change elsewhere reads the overview again', async () => {
+  const sockets: FakeSocket[] = []
+  const requests: string[] = []
+  const overview = () => ({ ok: true, me: { id: 'me', name: 'Ada' }, friends: [], requests: [], updates: [{ id: 'u1', text: 'Hello', read: false }, { id: 'u2', text: 'Again', read: false }],
+    conversations: [{ id: 'c1', kind: 'dm', name: 'Bola', unread: 2 }, { id: 'c2', kind: 'dm', name: 'Cleo', unread: 1 }] })
+  const api = {
+    view: () => ({ connected: true, cityId: 'lagos', now: 1000 }) as unknown as PanelView,
+    fetchJson: async (path: string) => { requests.push(path); return path === '/api/social/me' ? overview() : { ok: false, code: 'unknown' } },
+    newId: () => '1:x', toast: () => {}, refresh: () => {}, open: () => true, command: async () => ({ ok: true, code: 'synced' }),
+  } as unknown as PanelApi
+  const client = createSocialClient({
+    openSocket: () => { const socket = new FakeSocket(); sockets.push(socket); return socket },
+    pageAddress: () => ({ pathname: '/', search: '' }), clearAddress: () => {}, onOnline: () => {},
+    setTimeout: () => 0, clearTimeout: () => {}, now: () => 5000,
+  })
+  const hints: { rev: number; by?: readonly string[] }[] = [], opens: boolean[] = [], closes: (number | undefined)[] = []
+  client.onLifeFrame((hint) => { hints.push(hint) })
+  client.onSocketOpen((again) => { opens.push(again) })
+  client.onSocketClose((code) => { closes.push(code) })
+  client.start(api)
+  const socket = sockets[0] as FakeSocket
+  socket.onopen?.()
+  for (let i = 0; i < 10; i++) await Promise.resolve()
+  assert.deepEqual(opens, [false], 'the first socket of this identity is not a reconnection')
+  socket.push({ type: 'life-changed', rev: 7, by: ['5:a'] })
+  socket.push({ type: 'life-changed', rev: 'x' })
+  assert.deepEqual(hints, [{ rev: 7, by: ['5:a'] }], 'a malformed hint is ignored')
+  const before = requests.length
+  socket.push({ type: 'social-read', conv: { id: 'c2', kind: 'dm', name: 'Cleo', unread: 0 } })
+  assert.deepEqual(client.state.me?.conversations.map((conv) => [conv.id, conv.unread]), [['c1', 2], ['c2', 0]], 'the badge clears in place: the list keeps its order')
+  socket.push({ type: 'social-read', updates: true })
+  assert.deepEqual(client.state.me?.updates.map((update) => update.read), [true, true])
+  assert.equal(requests.length, before, 'neither cost a request')
+  socket.push({ type: 'social-changed' })
+  for (let i = 0; i < 10; i++) await Promise.resolve()
+  assert.deepEqual(requests.slice(before), ['/api/social/me'])
+  // The server closes the socket because the session changed: the listener is told why.
+  socket.readyState = 3; socket.onclose?.({ code: 4401 })
+  assert.deepEqual(closes, [4401])
+  // Back in front with no socket: it is opened at once, and that one is a reconnection.
+  client.wakeSocket()
+  assert.equal(sockets.length, 2)
+  sockets[1]?.onopen?.()
+  assert.deepEqual(opens, [false, true])
+  client.wakeSocket()
+  assert.equal(sockets.length, 2, 'an open socket is left alone')
 })

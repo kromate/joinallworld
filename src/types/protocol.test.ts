@@ -318,7 +318,7 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   const database = record(JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')) as unknown, 'devices.json')
   for (const key of Object.keys(database)) assert.ok((DATABASE_KEYS as readonly string[]).includes(key), `devices.json has an untyped top-level key "${key}"`)
   for (const name of COLLECTION_NAMES) assert.ok(Object.hasOwn(database, name), `the ${name} collection was created`)
-  const stored = sameKeys(record(database.sessions, 'sessions')[cookie.slice(4)], ['actions', 'character', 'cities', 'expiresAt', 'name', 'once', 'publicId', 'secret'] satisfies (keyof SessionRecord)[], 'stored session')
+  const stored = sameKeys(record(database.sessions, 'sessions')[cookie.slice(4)], ['actions', 'character', 'cities', 'expiresAt', 'name', 'once', 'publicId', 'rev', 'secret'] satisfies (keyof SessionRecord)[], 'stored session')
   const growth = record(database.growth, 'growth')
   for (const key of Object.keys(growth)) assert.ok((['comeback', 'comebackStats', 'contacts', 'metrics', 'outreach', 'players', 'push', 'salt', 'shares', 'sweptAt', 'tables'] satisfies (keyof GrowthCollection)[] as string[]).includes(key), `the growth collection has an untyped key "${key}"`)
   sameKeys(record(growth.players, 'players')[efe.id], ['consent', 'counted', 'devices', 'invited', 'owed', 'ref', 'seen', 'shares', 'table', 'wins'] satisfies (keyof GrowthPlayerRecord)[], 'growth player')

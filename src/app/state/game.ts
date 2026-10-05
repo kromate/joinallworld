@@ -12,7 +12,7 @@ import type { ComputedRef, Ref, ShallowRef } from 'vue'
 import type { LifeState } from '../../types/life.ts'
 import type { CityId, OwnSession } from '../../types/protocol.ts'
 import type { PlayerActionType } from '../../types/actions.ts'
-import type { ClientOptions, CommandArgs, CommandResult, FetchJson, GameClient, LinkState, NameProblem, NetStatus, StorageProblem, SwitchCityResult } from '../types/client.ts'
+import type { ChangeCause, ClientOptions, CommandArgs, LifeHint, CommandResult, FetchJson, GameClient, LinkState, NameProblem, NetStatus, StorageProblem, SwitchCityResult } from '../types/client.ts'
 import type { PanelView, ShellMode, ToastKind } from '../types/panel.ts'
 import { clientCity, createClient } from '../../client.ts'
 import { viewLife } from '../../life.ts'
@@ -24,8 +24,12 @@ import { telemetry as realTelemetry } from '../../telemetry/index.ts'
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true })
 
 export interface GameEvents {
-  /** After every accepted server state (also when only the link or the storage notice changed: then `previous === state`). */
-  accepted: (state: LifeState, previous: LifeState) => void
+  /**
+   * After every accepted server state (also when only the link or the storage notice changed: then `previous === state`).
+   * `cause` says why it was accepted: this device's own action or poll, a change made on another device of the same
+   * character ('elsewhere'), or the first read after this device was away ('wake').
+   */
+  accepted: (state: LifeState, previous: LifeState, cause: ChangeCause) => void
   /** No session yet: ask for a nickname. */
   needName: (problem: NameProblem | null) => void
   /** The server no longer knows this browser's session. */
@@ -60,6 +64,10 @@ export interface Game {
   connect(createNew?: boolean, name?: string | null, startCity?: string): Promise<boolean>
   switchCity(id: string): Promise<SwitchCityResult>
   refresh(): Promise<boolean>
+  /** The server said the life changed (a `life-changed` frame on the social socket). */
+  lifeChanged(hint: LifeHint): void
+  /** This device was away (the tab was hidden, the network or the socket came back): read the life now. */
+  wake(): Promise<boolean>
   fetchJson: FetchJson
   newId(): string
   serverNow(): number
@@ -106,7 +114,7 @@ export function createGame(options: GameOptions = {}): Game {
     ...clientOptions,
     ...(deviceStorage ? { storage: deviceStorage } : {}),
     onStatus(text, error) { net.value = { text, error }; telemetry.link(client.link) },
-    onChange(next, previous) { publish(); announce(next); telemetry.state(next, previous, client); emit('accepted', next, previous) },
+    onChange(next, previous, cause = 'own') { publish(); announce(next, cause === 'own'); telemetry.state(next, previous, client); emit('accepted', next, previous, cause) },
     onSessionExpired() { publish(); emit('expired') },
     onNeedName(problem) { publish(); telemetry.needName(); emit('needName', problem ?? null) },
     // The session is known a moment before its life is (GET /api/life follows): 'connected' is published with that life,
@@ -133,14 +141,18 @@ export function createGame(options: GameOptions = {}): Game {
     if (withOnline) online.value = client.online
   }
 
-  /** What the server last said becomes a toast when it changes; it never sits on the scene. */
-  function announce(next: LifeState): void {
+  /**
+   * What the server last said becomes a toast when it changes; it never sits on the scene. `aloud` is false for a state
+   * that another device's action produced, or that this device read on coming back: that sentence answered a tap made
+   * somewhere else, or some time ago, and is not repeated here.
+   */
+  function announce(next: LifeState, aloud = true): void {
     const life = `${client.session?.id ?? ''}:${client.cityId}`
     if (life !== lastLife) { lastLife = life; lastMessage = null }
     const text = next.message || ''
     const active = next.activeAction
     const activity = active ? view.value.activities?.active?.label ?? '' : ''
-    if (lastMessage !== null && text && text !== lastMessage && !(active && (text === activity || text.startsWith('Travelling to ')))) toast(text)
+    if (aloud && lastMessage !== null && text && text !== lastMessage && !(active && (text === activity || text.startsWith('Travelling to ')))) toast(text)
     lastMessage = text
   }
 
@@ -209,6 +221,8 @@ export function createGame(options: GameOptions = {}): Game {
     state, view, link, connected, net, storage, session, cityId, saving, mode,
     command, resend, connect, switchCity,
     async refresh() { const ok = client.online ? await client.refresh() : false; publish(); return ok },
+    lifeChanged: (hint) => client.lifeChanged(hint),
+    async wake() { const ok = await client.wake(); publish(); return ok },
     fetchJson: (path, fetchOptions) => client.fetchJson(path, fetchOptions),
     newId: () => client.newId(),
     serverNow: () => client.serverNow(),

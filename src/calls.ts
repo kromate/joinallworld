@@ -13,6 +13,13 @@
  *            call-accept. The connection is made when the server confirms `accepted`.
  * Either side can hang up at any moment; a call that ends stops every track and closes the connection.
  *
+ * SEVERAL DEVICES (docs/DEVICES.md). A player's every open device rings. The one that answers, or that placed the call,
+ * CARRIES it: the microphone, the connection and the Hang up button are there and nowhere else. Every other device of
+ * that player is in the phase `elsewhere`: it shows that the call is on another device ("Answered on another device" for
+ * a moment when it had been ringing), opens no microphone, makes no connection, and sends the server nothing about the
+ * call — so it cannot end it, by a button or by being closed. It goes quiet when the server says the call is over.
+ * A device that is closed while it only rings tells the server nothing either: the other devices go on ringing.
+ *
  * LIFETIME. A ring that is not answered, a declined or cancelled call, a hang-up, a closed socket and
  * a server that lost its memory of calls (an `ended` frame with an empty call id) all end the call
  * locally. A network drop during a call shows "Reconnecting"; the caller restarts the connection after
@@ -24,7 +31,7 @@ import type { MicrophoneChoice } from './types/community.ts'
 import { fetchIceConfig, microphoneFailure } from './voice-config.ts'
 import type { IceConfig } from './voice-config.ts'
 
-export type CallPhase = 'idle' | 'calling' | 'ringing' | 'incoming' | 'starting' | 'needs-tap' | 'connecting' | 'connected' | 'reconnecting' | 'ended'
+export type CallPhase = 'idle' | 'calling' | 'ringing' | 'incoming' | 'starting' | 'needs-tap' | 'connecting' | 'connected' | 'reconnecting' | 'ended' | 'elsewhere'
 export interface CallView {
   phase: CallPhase
   peer: PlayerRef | null
@@ -35,7 +42,7 @@ export interface CallView {
   /** Browser ms when the audio connected; the timer counts from here. */
   startedAt: number | null
   muted: boolean
-  /** Why the last call ended, in plain words; shown while the phase is `ended`. */
+  /** Why the last call ended, in plain words, while the phase is `ended`; what to say about a call on another device while it is `elsewhere`. */
   notice: string | null
   /** A problem the player can act on (the microphone was refused, ...), with the call still up. */
   error: string | null
@@ -70,6 +77,8 @@ export const CONNECT_TIMEOUT_MS = 30000
 export const ENDED_SHOWN_MS = 4000
 const REGRET_MS = 1500
 
+export const ANSWERED_ELSEWHERE_TEXT = 'Answered on another device.'
+export const ELSEWHERE_TEXT = 'On a call on another device.'
 export const NO_CONNECTION_TEXT = 'The call could not connect. Calls need a direct path between two devices, and some networks (work, school, some mobile networks) do not allow it. Try another network.'
 
 /** The browser's own pieces; `send` is the one thing the page must supply. */
@@ -222,7 +231,7 @@ export function createCallController(env: CallsEnv) {
   // ---- what the player does -------------------------------------------------------------------------------------
   /** Ring a player. Opens nothing: the microphone and the connection wait for the answer. */
   function call(target: PlayerRef): boolean {
-    if (active()) return false
+    if (active() || phase === 'elsewhere') return false
     clear('ended'); release()
     if (!env.supported()) { peer = { ...target }; phase = 'ended'; notice = 'Calls need a supported browser on HTTPS.'; role = 'caller'; timers.ended = env.setTimeout(() => finish(null, false), ENDED_SHOWN_MS); emit(); return false }
     peer = { ...target }; role = 'caller'; callId = ''; clientId = env.randomId(); notice = null; error = null; abandoned = null
@@ -307,7 +316,7 @@ export function createCallController(env: CallsEnv) {
 
   // ---- what the server says -------------------------------------------------------------------------------------
   function onIncoming(frame: CallIncomingFrame): void {
-    if (active()) return
+    if (active() || phase === 'elsewhere') return
     clear('ended'); release()
     peer = { ...frame.from }; role = 'callee'; callId = frame.callId; clientId = ''; expiresAt = frame.expiresAt; notice = null; error = null
     phase = 'incoming'; muted = false
@@ -315,9 +324,28 @@ export function createCallController(env: CallsEnv) {
     timers.ring = env.setTimeout(() => { timers.ring = null; if (phase === 'incoming') finish(`Missed call from ${nameOf()}.`, false) }, Math.min(wait, 40000))
     emit()
   }
+  /**
+   * The call is on another device of this player: it was answered there, or placed there. Whatever this device had begun
+   * (the ring, a microphone it was opening) is dropped, and it only shows that the call exists.
+   */
+  function onElsewhere(frame: CallStateFrame): void {
+    if (frame.state !== 'ringing' && frame.state !== 'accepted') return
+    if (active() && frame.callId !== callId) return
+    const rang = phase === 'incoming' || (phase === 'starting' && role === 'callee')
+    const fresh = phase !== 'elsewhere' || frame.callId !== callId
+    if (!fresh) return
+    clear('ended'); release()
+    peer = frame.peer ? { ...frame.peer } : peer
+    role = frame.role ?? role; callId = frame.callId; clientId = ''
+    muted = false; playBlocked = false; error = null; startedAt = null; expiresAt = null; devices = null
+    phase = 'elsewhere'; notice = rang ? ANSWERED_ELSEWHERE_TEXT : ELSEWHERE_TEXT
+    if (rang) timers.ended = env.setTimeout(() => { timers.ended = null; if (phase === 'elsewhere') { notice = ELSEWHERE_TEXT; emit() } }, ENDED_SHOWN_MS)
+    emit()
+  }
   function onState(frame: CallStateFrame): void {
     // The host lost its memory of calls, or an unknown call was named: whatever this side holds is over.
-    if (frame.callId === '' && frame.state === 'ended') { if (active()) finish('The call ended.', false); return }
+    if (frame.callId === '' && frame.state === 'ended') { if (active()) finish('The call ended.', false); else if (phase === 'elsewhere') finish(null, false); return }
+    if (frame.elsewhere) { onElsewhere(frame); return }
     if (frame.callId === '') {
       // A refusal to ring: only ever for our own invite, and never says why.
       if (frame.clientId !== clientId || phase !== 'calling') return
@@ -328,12 +356,13 @@ export function createCallController(env: CallsEnv) {
     if (abandoned !== null && frame.clientId === abandoned && frame.state === 'ringing') { abandoned = null; env.send({ type: 'call-cancel', callId: frame.callId }); return }
     if (phase === 'calling' && frame.clientId === clientId) callId = frame.callId
     if (frame.callId !== callId) return
+    // The call on another device is over, however it ended: this device has nothing to say about it.
+    if (phase === 'elsewhere') { if (frame.state !== 'ringing' && frame.state !== 'accepted') finish(null, false); return }
     switch (frame.state) {
       case 'ringing':
         if (role === 'caller') { phase = 'ringing'; expiresAt = frame.expiresAt ?? null; emit() }
         return
       case 'accepted':
-        if (frame.elsewhere) { finish(null, false); return }
         clear('ring'); expiresAt = null
         if (role === 'caller') {
           phase = 'needs-tap'; emit()
@@ -379,14 +408,23 @@ export function createCallController(env: CallsEnv) {
     else if (frame.type === 'call-signal') onSignal(frame)
   }
   /** The social socket closed: the server ends a player's call when their last socket goes, so this side is over too. */
-  function socketClosed(): void { if (active()) finish('The connection was lost.', false) }
+  function socketClosed(): void { if (active()) finish('The connection was lost.', false); else if (phase === 'elsewhere') finish(null, false) }
+  /**
+   * The page is being closed or put away for good. A device that carries a call, or is placing one, ends it: the other
+   * side must not be left ringing and no microphone may stay open. A device that only rings says nothing to the server
+   * (the player's other devices go on ringing), and one that shows a call on another device has nothing to end.
+   */
+  function pageHidden(): void {
+    if (phase === 'incoming' || (phase === 'starting' && role === 'callee')) { finish(null, false); return }
+    if (active()) hangup()
+  }
   function dismiss(): void { if (phase === 'ended') { clear('ended'); finish(null, false) } else if (error) { error = null; emit() } }
   function destroy(): void { if (active()) finish(null, true); else release(); listeners.clear() }
 
   return {
     get view(): CallView { return view() },
     subscribe(listener: (next: CallView) => void): () => void { listeners.add(listener); return () => { listeners.delete(listener) } },
-    call, hangup, accept, startMicrophone, toggleMute, playAudio, selectDevice, handle, socketClosed, dismiss, destroy,
+    call, hangup, accept, startMicrophone, toggleMute, playAudio, selectDevice, handle, socketClosed, pageHidden, dismiss, destroy,
   }
 }
 export type CallController = ReturnType<typeof createCallController>

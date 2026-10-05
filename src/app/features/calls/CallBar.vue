@@ -1,7 +1,8 @@
 <script setup lang="ts">
 // The floating call bar. It stays on screen while you play: who, how long, mute, microphone choice, hang up.
 // Before the call connects it says what is happening (Calling, Tap to start your microphone, Connecting), and after it
-// ends it says why for a few seconds.
+// ends it says why for a few seconds. While the call is on another device of this player it is one quiet line with no
+// button: only the device that carries the call can end it.
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { CallView } from '../../../calls.ts'
 import { NO_CONNECTION_TEXT } from '../../../calls.ts'
@@ -33,6 +34,8 @@ const line = computed(() => {
 })
 const live = computed(() => ['connecting', 'connected', 'reconnecting'].includes(props.view.phase))
 const waiting = computed(() => ['calling', 'ringing'].includes(props.view.phase))
+// The call is on another device of this player: this bar only says so. It offers nothing that could end or join it.
+const passive = computed(() => props.view.phase === 'elsewhere')
 const failed = computed(() => props.view.phase === 'ended' && props.view.notice === NO_CONNECTION_TEXT)
 const choices = computed(() => (props.view.devices && props.view.devices.length > 2 ? props.view.devices : null))
 
@@ -47,11 +50,13 @@ const controller = () => loadedCalls()
         <p class="call-title">{{ line }}</p>
         <p v-if="view.phase === 'connected'" class="call-sub">{{ clock }}<template v-if="view.muted"> · Muted</template></p>
         <p v-else-if="view.phase === 'needs-tap'" class="call-sub">Tap to start your microphone.</p>
+        <p v-else-if="passive && view.peer" class="call-sub">With {{ name }}</p>
         <p v-else-if="failed" class="call-note">Calls need a direct path between two devices. Some networks, such as work or school networks and some mobile networks, do not allow it. Try another network.</p>
       </div>
     </div>
     <p v-if="view.error" class="call-error" role="alert">{{ view.error }}</p>
-    <div v-if="view.phase !== 'ended'" class="call-actions">
+    <div v-if="passive" class="call-sr">This device is not in the call.</div>
+    <div v-else-if="view.phase !== 'ended'" class="call-actions">
       <button v-if="view.phase === 'needs-tap'" type="button" class="call-btn is-primary" data-call="start" @click="controller()?.startMicrophone()">Start microphone</button>
       <button v-if="live" type="button" class="call-btn" :aria-pressed="view.muted" data-call="mute" @click="controller()?.toggleMute()">{{ view.muted ? 'Unmute' : 'Mute' }}</button>
       <button v-if="view.playBlocked" type="button" class="call-btn" data-call="hear" @click="controller()?.playAudio()">Tap to hear {{ name }}</button>

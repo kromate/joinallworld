@@ -114,7 +114,7 @@ async function fixture(t: TestContext, { clockShiftMs = 0, ...overrides }: Recor
     assert.equal(response.status, 101);
     const ws = response.webSocket as StubSocket;
     const queue: Frame[] = [], pending: ((item: Frame) => void)[] = [], heartbeats: number[] = [];
-    ws.addEventListener('message', event => { const item = JSON.parse(event.data) as Frame; if (item.type === 'heartbeat') { heartbeats.push(Date.now()); ws.send(JSON.stringify({type:'heartbeat-ack'})); return; } const listener = pending.shift(); if (listener) listener(item); else queue.push(item); });
+    ws.addEventListener('message', event => { const item = JSON.parse(event.data) as Frame; if (item.type === 'heartbeat') { heartbeats.push(Date.now()); ws.send(JSON.stringify({type:'heartbeat-ack'})); return; } if (item.type === 'life-changed') return; /* the hint that a life changed (docs/DEVICES.md) arrives a moment after its cause: deploy/devices.edge.test.ts reads it */ const listener = pending.shift(); if (listener) listener(item); else queue.push(item); });
     ws.accept(); sockets.push(ws);
     return { ws, heartbeats, send: (message: object) => ws.send(JSON.stringify(message)), next: (): Promise<Frame> => queue.length ? Promise.resolve(queue.shift() as Frame) : new Promise<Frame>((resolve, reject) => { const timer = setTimeout(() => reject(Error('Socket message timeout')), 3000); pending.push((item: Frame) => { clearTimeout(timer); resolve(item); }); }) };
   }
@@ -568,7 +568,8 @@ test('Recovery Worker: committed block changes presence and survives hibernation
  x.send({type:'join',cityId:'lagos',venueId:'park'});await x.next();y.send({type:'join',cityId:'lagos',venueId:'park'});await x.next();await y.next();
  const response=await f.request('/api/social/block',{id:b.id,cityId:'lagos'},a.cookie);assert.equal((await response.json()).code,'blocked');
  assert.deepEqual((await x.next()).members.map(m=>m.id),[a.id]);assert.deepEqual((await y.next()).members.map(m=>m.id),[b.id]);
- await f.hibernate();x.send({type:'signal',to:b.id,data:{candidate:'synthetic'}});assert.equal((await x.next()).code,'peer_not_in_room');
+ // (Ada's own sockets are also told that her block list changed — social-changed, docs/DEVICES.md — after the presence frame.)
+ await f.hibernate();x.send({type:'signal',to:b.id,data:{candidate:'synthetic'}});let refused=await x.next();if(refused.type==='social-changed')refused=await x.next();assert.equal(refused.code,'peer_not_in_room');
 });
 
 test('Review B1: a new socket never postpones the already scheduled heartbeat',async t=>{

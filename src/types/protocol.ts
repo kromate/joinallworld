@@ -128,6 +128,8 @@ export interface SessionResponse extends ApiEnvelope {
 export interface LifeResponse extends ApiEnvelope {
   /** The server-held life, settled to `serverTime`. */
   state: LifeState
+  /** The character's revision when this answer was made (see LifeChangedFrame). */
+  rev: number
 }
 
 /**
@@ -154,6 +156,8 @@ export interface ActionResponse extends ApiEnvelope {
   /** Only on a first refusal that has a sentence; the same sentence is in `state.message`. */
   reason?: string
   duplicate?: true
+  /** The character's revision when this answer was made (see LifeChangedFrame). */
+  rev: number
 }
 
 export interface IceServerConfig {
@@ -351,6 +355,8 @@ export type NodeSocketErrorCode =
   | 'invalid_chat' | 'text_blocked' | 'muted'
   // malformed social frames (server/social/service.ts throws ctx.fail(400, code))
   | 'invalid_player' | 'invalid_city' | 'invalid_conversation' | 'invalid_answer'
+  // a call frame from a device that does not carry the call (server/social/calls.ts)
+  | 'call_elsewhere'
   // refused table frames (server/growth/tables.ts), always with a `reason`
   | TableErrorCode
 /** WORKER: codes only the Worker sends, in addition to every code above: a retried chat id with another body, and an expired session on an open socket. */
@@ -390,11 +396,22 @@ export interface HeartbeatAckFrame { type: 'heartbeat-ack' }
 /** Everything a browser may send (on the Worker also `HeartbeatAckFrame`). */
 export type ClientFrame = RoomClientFrame | SocialClientFrame | TableClientFrame | CallClientFrame
 /**
+ * ONE CHARACTER ON SEVERAL DEVICES (docs/DEVICES.md). Every answer that carries the life (GET /api/life, POST /api/action)
+ * carries `rev`, a number that only goes up for one character: a device never replaces what it shows with an answer whose
+ * `rev` is lower than the one it already took. When the life changes in a way a player would see — an accepted action from
+ * any device, a settlement with an outcome, another city — every open socket of that character is sent this frame, a few
+ * tens of milliseconds later so that a burst is one frame. `rev` is the revision to have at least; a device that holds a
+ * lower one reads the life again. `by` lists the action ids that caused it, so the device that sent one of them (and has
+ * the answer already) does not read again, and another device knows the change was made elsewhere.
+ */
+export interface LifeChangedFrame { type: 'life-changed'; rev: number; by?: string[] }
+
+/**
  * Everything a server may send. Clients must ignore types they do not know: the community panel's
  * socket and the social client's socket both receive every frame addressed to the player.
  * WORKER: also `HeartbeatFrame`.
  */
-export type ServerFrame = RoomServerFrame | SocialServerFrame | TableServerFrame | CallServerFrame
+export type ServerFrame = RoomServerFrame | SocialServerFrame | TableServerFrame | CallServerFrame | LifeChangedFrame
 export type ClientFrameType = ClientFrame['type']
 export type ServerFrameType = ServerFrame['type']
 
@@ -528,6 +545,7 @@ export const SERVER_FRAME_TYPES = [
   'people-interaction', 'invite-knock', 'invite-answer', 'invite-house', 'transfer',
   'tables', 'table-state', 'tables-changed',
   'call-incoming', 'call-state', 'call-signal', 'call-settings',
+  'life-changed', 'social-read', 'social-changed',
 ] as const satisfies readonly ServerFrameType[]
 /** WORKER: every frame type the shared modules send, and its application heartbeat. */
 export const WORKER_SERVER_FRAME_TYPES: readonly (ServerFrameType | HeartbeatFrame['type'])[] = [...SERVER_FRAME_TYPES, 'heartbeat']
@@ -538,10 +556,10 @@ export const SESSION_RESPONSE_KEYS = ['serverTime', 'session'] as const satisfie
 export const PUBLIC_SESSION_KEYS = ['id', 'name'] as const satisfies readonly (keyof PublicSession)[]
 /** What the Node server sends as its own session. */
 export const OWN_SESSION_KEYS = ['cities', 'id', 'name'] as const satisfies readonly (keyof OwnSession)[]
-export const LIFE_RESPONSE_KEYS = ['serverTime', 'state'] as const satisfies readonly (keyof LifeResponse)[]
+export const LIFE_RESPONSE_KEYS = ['rev', 'serverTime', 'state'] as const satisfies readonly (keyof LifeResponse)[]
 /** A first answer to an accepted action; a refusal with a sentence adds `reason`, a repeat adds `duplicate`. */
-export const ACTION_RESPONSE_KEYS = ['code', 'ok', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
-export const ACTION_DUPLICATE_RESPONSE_KEYS = ['code', 'duplicate', 'ok', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
+export const ACTION_RESPONSE_KEYS = ['code', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
+export const ACTION_DUPLICATE_RESPONSE_KEYS = ['code', 'duplicate', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
 export const VOICE_CONFIG_RESPONSE_KEYS = ['iceServers', 'mode', 'radius', 'serverTime', 'turnConfigured'] as const satisfies readonly (keyof VoiceConfigResponse)[]
 export const ERROR_BODY_KEYS = ['error'] as const satisfies readonly (keyof ApiErrorBody)[]
 export const PRESENCE_MEMBER_KEYS = ['enabled', 'id', 'muted', 'name', 'position'] as const satisfies readonly (keyof PresenceMember)[]

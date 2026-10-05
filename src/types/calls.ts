@@ -14,10 +14,12 @@
  *   call-signal   { callId, kind, data }           offer | answer | ice, for the other side of an ACCEPTED call only.
  *   call-settings { calls? }                       who may ring you; without `calls` it only reads the current value.
  * SERVER -> CLIENT
- *   call-incoming { callId, from, expiresAt }      to the callee's open sockets.
+ *   call-incoming { callId, from, expiresAt }      to every open socket of the callee, and to one that opens while it rings.
  *   call-state    { callId, state, ... }           every change of one call, to both sides.
  *   call-signal   { callId, kind, data }           relayed signalling; the target comes from the call record.
- *   call-settings { calls }
+ *   call-settings { calls }                        the answer to a read; a change goes to every open socket of the player.
+ * A call is carried by one socket on each side (the one that invited, the one that accepted): signalling goes between
+ * those two only, and only they can cancel or hang up (server/social/calls.ts, ONE CALL, SEVERAL DEVICES).
  * The caller learns `unreachable` and nothing else when the callee cannot be rung for any reason
  * (blocked either way, muted, not accepting calls from them, busy, offline, unknown).
  */
@@ -53,7 +55,9 @@ export type CallClientFrame = CallInviteFrame | CallAcceptFrame | CallDeclineFra
 export interface CallIncomingFrame { type: 'call-incoming'; callId: string; from: PlayerRef; expiresAt: number }
 /**
  * `role` says which side of the call this socket's player is. `peer` is the other player. `clientId` is echoed to the
- * caller. `elsewhere` marks the callee's other tabs when one tab answered. An empty `callId` is a refusal to ring
+ * caller's own socket. `elsewhere` (with `ringing` or `accepted`) is for a socket that does not carry the call: another
+ * socket of the same player placed it or answered it. Such a socket shows the call and can do nothing to it; a
+ * cancel, hang-up or signal from it is refused with the error `call_elsewhere`. An empty `callId` is a refusal to ring
  * (`unreachable`, never saying why); `limited` and `busy` say it was the caller's own attempts or call. A frame naming
  * a call the server does not hold is answered `ended`.
  */

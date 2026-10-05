@@ -4,7 +4,7 @@
 // stops every track.
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { CONNECT_TIMEOUT_MS, ENDED_SHOWN_MS, NO_CONNECTION_TEXT, RECONNECT_GRACE_MS, RECONNECT_RESTART_MS, createCallController } from './calls.ts'
+import { ANSWERED_ELSEWHERE_TEXT, CONNECT_TIMEOUT_MS, ELSEWHERE_TEXT, ENDED_SHOWN_MS, NO_CONNECTION_TEXT, RECONNECT_GRACE_MS, RECONNECT_RESTART_MS, createCallController } from './calls.ts'
 import type { CallsEnv } from './calls.ts'
 import type { CallClientFrame, CallInviteFrame } from './types/calls.ts'
 
@@ -305,11 +305,18 @@ test('a call that never connects ends with the network explanation', async () =>
   assert.equal(r.streams[0]?.tracks[0]?.stopped, true)
 })
 
-test('answered on another tab: this tab only dismisses its banner; an unsupported browser says so before ringing', async () => {
+test('answered on another device: this one stops ringing, says so for a moment, then only shows the call; an unsupported browser says so before ringing', async () => {
   const r = rig()
   r.controller.handle({ type: 'call-incoming', callId: 'in-1', from: ADA, expiresAt: r.now() + 30000 })
-  r.controller.handle({ type: 'call-state', callId: 'in-1', state: 'accepted', role: 'callee', elsewhere: true })
-  assert.deepEqual([r.controller.view.phase, r.sent.length], ['idle', 0])
+  r.controller.handle({ type: 'call-state', callId: 'in-1', state: 'accepted', role: 'callee', peer: ADA, elsewhere: true })
+  assert.deepEqual([r.controller.view.phase, r.controller.view.notice, r.controller.view.peer?.name, r.sent.length], ['elsewhere', ANSWERED_ELSEWHERE_TEXT, 'Ada', 0])
+  await r.advance(ENDED_SHOWN_MS + 10)
+  assert.deepEqual([r.controller.view.phase, r.controller.view.notice], ['elsewhere', ELSEWHERE_TEXT])
+  // The ring's own timer is gone with the ring: nothing calls it a missed call later.
+  await r.advance(40000)
+  assert.deepEqual([r.controller.view.phase, r.controller.view.notice], ['elsewhere', ELSEWHERE_TEXT])
+  r.controller.handle({ type: 'call-state', callId: 'in-1', state: 'ended', role: 'callee', peer: ADA })
+  assert.deepEqual([r.controller.view.phase, r.controller.view.notice, r.sent.length], ['idle', null, 0], 'over: nothing is said, nothing was ever sent')
   const old = rig({ unsupported: true })
   assert.equal(old.controller.call(BOLA), false)
   assert.match(old.controller.view.notice ?? '', /supported browser/)
@@ -335,4 +342,62 @@ test('an invite that cannot be sent says so and opens nothing', async () => {
   r.controller.call(BOLA)
   assert.match(r.controller.view.notice ?? '', /not connected/)
   assert.deepEqual([r.state.media, r.peers.length], [0, 0])
+})
+
+// ---- one player, several devices (docs/DEVICES.md) ----
+
+test('a device that shows a call on another device opens nothing and can end nothing: no microphone, no connection, no frame, whatever is pressed or closed', async () => {
+  const r = rig({ active: true })
+  // The call was placed on another device of this player.
+  r.controller.handle({ type: 'call-state', callId: 'out-1', state: 'ringing', role: 'caller', peer: BOLA, elsewhere: true })
+  assert.deepEqual([r.controller.view.phase, r.controller.view.notice, r.controller.view.role], ['elsewhere', ELSEWHERE_TEXT, 'caller'])
+  r.controller.handle({ type: 'call-state', callId: 'out-1', state: 'accepted', role: 'caller', peer: BOLA, elsewhere: true })
+  await flush()
+  assert.equal(r.controller.view.phase, 'elsewhere', 'the other side answering does not make this device start a microphone')
+  r.controller.handle({ type: 'call-signal', callId: 'out-1', kind: 'answer', data: { sdp: 'x' } })
+  r.controller.hangup(); r.controller.dismiss(); r.controller.pageHidden()
+  await r.controller.accept(); await r.controller.startMicrophone(); r.controller.toggleMute()
+  await flush()
+  assert.deepEqual([r.sent.length, r.state.media, r.peers.length, r.controller.view.phase], [0, 0, 0, 'elsewhere'])
+  assert.equal(r.controller.call(ADA), false, 'the player is in a call: this device cannot place another')
+  // A second caller is the server's business (it answers them busy); a stray incoming frame does not replace the call.
+  r.controller.handle({ type: 'call-incoming', callId: 'in-9', from: ADA, expiresAt: r.now() + 30000 })
+  assert.equal(r.controller.view.callId, 'out-1')
+  // The socket drops: this device simply stops showing it; when it is back the server says again what is going on.
+  r.controller.socketClosed()
+  assert.deepEqual([r.controller.view.phase, r.sent.length], ['idle', 0])
+  r.controller.handle({ type: 'call-state', callId: 'out-1', state: 'accepted', role: 'caller', peer: BOLA, elsewhere: true })
+  assert.equal(r.controller.view.phase, 'elsewhere')
+  r.controller.destroy()
+  assert.equal(r.sent.length, 0)
+})
+
+test('a device closed while it only rings does not decline for the player; one that carries or places a call ends it', async () => {
+  const ringingOnly = rig()
+  ringingOnly.controller.handle({ type: 'call-incoming', callId: 'in-1', from: ADA, expiresAt: ringingOnly.now() + 30000 })
+  ringingOnly.controller.pageHidden()
+  assert.deepEqual([ringingOnly.controller.view.phase, ringingOnly.sent.length], ['idle', 0], 'the other devices go on ringing')
+  const placing = rig()
+  const id = ringing(placing)
+  placing.controller.pageHidden()
+  assert.deepEqual(placing.lastSent('call-cancel'), { type: 'call-cancel', callId: id })
+  const carrying = rig()
+  carrying.controller.handle({ type: 'call-incoming', callId: 'in-2', from: ADA, expiresAt: carrying.now() + 30000 })
+  await carrying.controller.accept()
+  carrying.controller.handle({ type: 'call-state', callId: 'in-2', state: 'accepted', role: 'callee', peer: ADA })
+  await flush()
+  carrying.controller.pageHidden()
+  assert.deepEqual(carrying.lastSent('call-hangup'), { type: 'call-hangup', callId: 'in-2' })
+  assert.equal(carrying.streams[0]?.tracks[0]?.stopped, true, 'and its microphone is closed')
+})
+
+test('pressing Accept here while another device answers first: the microphone this device was opening is closed and it shows the call elsewhere', async () => {
+  const r = rig()
+  r.controller.handle({ type: 'call-incoming', callId: 'in-1', from: ADA, expiresAt: r.now() + 30000 })
+  const accepting = r.controller.accept()
+  r.controller.handle({ type: 'call-state', callId: 'in-1', state: 'accepted', role: 'callee', peer: ADA, elsewhere: true })
+  await accepting
+  await flush()
+  assert.deepEqual([r.controller.view.phase, r.types(), r.peers.length], ['elsewhere', [], 0])
+  assert.ok(r.streams.every((stream) => stream.tracks.every((track) => track.stopped)), 'no microphone stays open')
 })

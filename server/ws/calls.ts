@@ -6,6 +6,8 @@
  *
  * CLIENT -> SERVER   call-invite, call-accept, call-decline, call-cancel, call-hangup, call-signal, call-settings
  * SERVER -> CLIENT   call-incoming, call-state, call-signal, call-settings
+ * A player with several sockets open (tabs, or the devices of one account) is rung on all of them and carries the call on
+ * one: server/social/calls.ts, ONE CALL, SEVERAL DEVICES.
  *
  * Nothing here touches the venue room's voice (ws.voice), ws.room or ws.position.
  */
@@ -15,6 +17,7 @@ import type { RouteContext, WsHandlers } from '../types.ts';
 export default function callsSocket(ctx: RouteContext): WsHandlers {
   const service = callService(ctx);
   return {
+    open(ws) { service.open(ws); },
     close(ws) { service.close(ws); },
     messages: {
       'call-invite': (ws, message) => service.invite(ws, message),
@@ -25,7 +28,9 @@ export default function callsSocket(ctx: RouteContext): WsHandlers {
       'call-signal': (ws, message) => service.signal(ws, message),
       async 'call-settings'(ws, message) {
         const calls = await service.settings(ws, message);
-        ctx.send(ws, { type: 'call-settings', calls });
+        // A change is the player's, not the device's: every open socket of theirs is told. A read answers the asker.
+        if (message.calls !== undefined) ctx.push(ws.session.id, { type: 'call-settings', calls });
+        else ctx.send(ws, { type: 'call-settings', calls });
       },
     },
   };

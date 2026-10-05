@@ -49,7 +49,7 @@ import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
 import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
@@ -264,7 +264,9 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     type Listener = (data: ServerEvents[keyof ServerEvents]) => void;
     const listeners = new Map<keyof ServerEvents, Listener[]>();
     const receipts = createOnce({ now, windowMs: ACTION_WINDOW_MS });
-    const { settle, act, playerAct } = lifeAuthority({ now, receipts });
+    // One character on several devices: a change a player would see is announced to every socket of that character (host-context.ts lifeAnnouncer).
+    const lifeSync = lifeAnnouncer((publicId, frame) => context.push(publicId, frame));
+    const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note });
     const keys = new Map<string, Promise<object>>();
     const unresponsive = (ws: HostSocket): boolean => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= HEARTBEAT_MS / 2;
     const open = (): HostSocket[] => [...this.peers.values()].filter(ws => ws.readyState === 1);
@@ -328,6 +330,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         sessionOf: (ws: HostSocket, db: Db) => db.sessions[ws.secret],
         playerAct,
         actionOnce: receipts.action,
+        lifeChanged: lifeSync.note,
         storageFailing: () => this.store.stats().failing === true,
         log,
         // This host forgets what is in memory when nothing is pending: a module that must not lose a seat keeps a timer going.

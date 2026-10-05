@@ -164,7 +164,7 @@ A signed-in browser's cookie is the key of a **device binding**. The binding nam
 
 Consequences:
 
-- Several browsers can be bound to one account. They play one character, as two tabs always could.
+- Several browsers can be bound to one account. They play one character, as two tabs always could. How those browsers are kept the same — the life, messages, calls — is in docs/DEVICES.md.
 - Removing a binding ends that browser's access at once, without touching the character.
 - A binding has the same sliding 30-day lifetime as a session, and an **absolute lifetime of 90 days** from when it was made: after that the person signs in again, however often they played.
 - A character nobody has reached for 30 days is archived by the existing sweep — with the city its character is in, its set-aside lives and its quick-start flag — and brought back whole from the archive at the next sign-in.

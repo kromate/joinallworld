@@ -16,7 +16,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from './host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
@@ -208,7 +208,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   };
   const receipts = createOnce({ now, windowMs: actionWindowMs, limits: receiptLimits });
   // ctx.settle, ctx.act (server authority, always under a receipt) and what POST /api/action runs: host-context.js, shared with the Worker.
-  const { settle, act, playerAct } = lifeAuthority({ now, receipts });
+  // One character on several devices: a change a player would see is announced to every socket of that character (host-context.ts lifeAnnouncer).
+  const lifeSync = lifeAnnouncer((publicId, frame) => ctx.push(publicId, frame));
+  const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note });
   /** True from a failed write of the data file until the next successful one. Reads still work then; saving does not. */
   const storageFailing = () => { try { return store.stats?.().failing === true; } catch { return false; } };
   function cookieHeader(req: IncomingMessage, secret: string | undefined): string | string[] {
@@ -508,6 +510,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       playerAct,
       // The receipt steps of an action, shared by POST /api/action and ctx.act (server/routes/once.ts).
       actionOnce: receipts.action,
+      lifeChanged: lifeSync.note,
       storageFailing,
       log,
       // Room hooks. The socket registry (ws/index.js) replaces these four; the defaults keep the core

@@ -16,8 +16,9 @@ export function loadCalls(): Promise<CallController> {
     const controller = createCallController(browserCallsEnv(sendFrame))
     callStore.view = controller.view
     controller.subscribe((next) => { callStore.view = next })
-    // A tab that is closed or hidden for good must not leave the other side ringing or the microphone open.
-    window.addEventListener('pagehide', () => controller.hangup())
+    // A tab that is closed or hidden for good must not leave the other side ringing or the microphone open; a device that
+    // only rings, or only shows a call on another device, tells the server nothing (src/calls.ts pageHidden).
+    window.addEventListener('pagehide', () => controller.pageHidden())
     ready = controller
     return controller
   })
@@ -27,6 +28,11 @@ export function loadCalls(): Promise<CallController> {
 export const loadedCalls = (): CallController | null => ready
 
 const SETTINGS: readonly CallsFrom[] = ['everyone', 'friends', 'nobody']
+/** A `call-state` frame saying this player is ringing someone, or in a call, on another of their devices. */
+export function startsElsewhere(frame: { type: string }): boolean {
+  const state = frame as { type: string; elsewhere?: unknown; state?: unknown }
+  return state.type === 'call-state' && state.elsewhere === true && (state.state === 'ringing' || state.state === 'accepted')
+}
 /** Start listening. Idempotent. */
 export function startCalls(): void {
   if (listening) return
@@ -38,8 +44,9 @@ export function startCalls(): void {
       if (found) callStore.accepting = found
       return
     }
-    // Nothing is fetched for a frame about a call this page never saw; only an incoming call starts the controller.
-    if (!ready && frame.type !== 'call-incoming') return
+    // Nothing is fetched for a frame about a call this page never saw; only an incoming call, or a call that began on
+    // another device of this player, starts the controller.
+    if (!ready && frame.type !== 'call-incoming' && !startsElsewhere(frame)) return
     void loadCalls().then((controller) => controller.handle(frame as CallServerFrame))
   })
   onSocketClose(() => { ready?.socketClosed() })

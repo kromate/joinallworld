@@ -51,7 +51,7 @@ export const outcomeKey = (state: LifeState | null | undefined): string => (stat
  *                that belongs to the charge: throw and the charge, the receipt and every other change
  *                are discarded together. It must be synchronous and must not send anything.
  */
-export async function executeCommand(ctx: RouteContext, request: RouteRequest, body: ActionRequest, { internal = false, scope, afterAction }: CommandOptions = {}): Promise<ActionOutcome> {
+export async function executeCommand(ctx: RouteContext, request: RouteRequest, body: ActionRequest, { internal = false, scope, afterAction }: CommandOptions = {}, withRevision = false): Promise<ActionOutcome> {
   const { store, now, settle, core, config } = ctx;
   if (scope !== undefined && (typeof scope !== 'string' || !/^[a-z][a-z0-9_.-]{0,63}$/.test(scope))) throw new Error('A command scope is a fixed server string');
   if (afterAction !== undefined && (typeof afterAction !== 'function' || scope === undefined)) throw new Error('A command callback requires a fixed server scope');
@@ -71,7 +71,9 @@ export async function executeCommand(ctx: RouteContext, request: RouteRequest, b
       }
       return done;
     }, { authority });
-    return { publicId: session.publicId, outcome: result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true as const } : result };
+    const outcome: ActionOutcome = result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true as const } : result;
+    // POST /api/action answers with the character's revision, so a device can order this answer among its others.
+    return { publicId: session.publicId, outcome: withRevision ? { ...outcome, rev: session.rev ?? 0 } : outcome };
   });
   await core.validateMemberships(request.secret, body.cityId, outcome.state, publicId);
   return outcome;
@@ -176,7 +178,13 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       const id = body.id;
       return { body: await store.transact(db => {
         const session = request.requireSession(db, { renew: true });
-        return ctx.once(db, session, { id: body.clientId, kind: 'character.switch', fingerprint: { id } }, () => swapLegacyLife(session, id));
+        return ctx.once(db, session, { id: body.clientId, kind: 'character.switch', fingerprint: { id } }, () => {
+          const swapped = swapLegacyLife(session, id);
+          // Another life is in play: a later answer than any before it, and the character's other devices are told.
+          session.rev = (session.rev ?? 0) + 1;
+          core.lifeChanged?.(session.publicId, session.rev);
+          return swapped;
+        });
       }), renew: true };
     },
     'GET /api/life': async (request) => {
@@ -187,20 +195,20 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       // outcomeKey) is in the data file before it is answered, exactly like an action. Either way the
       // poll waits for other requests' unsaved outcomes it may have seen (waitForObserved), so it
       // never shows a player something that a failed write then takes back.
-      const { state, publicId } = await store.transact(db => {
+      const { state, publicId, rev } = await store.transact(db => {
         const session = request.requireSession(db, { renew: true });
         // A character that travelled to another city has no life left in this one (server/world/service.ts).
         ctx.checks?.cityGate?.(session, city);
         const before = outcomeKey(session.cities?.[city]?.state);
         const filing = JSON.stringify([session.character, Object.keys(session.cities), Object.keys(session.legacyLives ?? {})]);
         const state = settle(session, city);
-        return { state, publicId: session.publicId, material: before !== outcomeKey(state) || filing !== JSON.stringify([session.character, Object.keys(session.cities), Object.keys(session.legacyLives ?? {})]) };
+        return { state, publicId: session.publicId, rev: session.rev ?? 0, material: before !== outcomeKey(state) || filing !== JSON.stringify([session.character, Object.keys(session.cities), Object.keys(session.legacyLives ?? {})]) };
       }, { durable: result => result.material, waitForObserved: true });
       // The settlement is saved: rooms are told with the state it produced. When it could not be saved
       // (or the request was refused) the route host re-checks the rooms against the stored life instead
       // — core.revalidate(publicId), after every API request (server.js).
       await core.validateMemberships(request.secret, city, state, publicId);
-      return { body: { state }, renew: true };
+      return { body: { state, rev }, renew: true };
     },
     'POST /api/action': async (request) => {
       const body = await request.json();
@@ -210,7 +218,7 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       // saved the rooms are told with the state it produced (a repeat is checked like a first answer).
       // A rejected or unsaved action changed nothing: the route host then re-checks the rooms against
       // the stored life (core.revalidate, server.js).
-      return { body: await executeCommand(ctx, request, body), renew: true };
+      return { body: await executeCommand(ctx, request, body, {}, true), renew: true };
     },
   };
 }

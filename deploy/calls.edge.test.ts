@@ -66,6 +66,8 @@ async function fixture(t: TestContext) {
     ws.addEventListener('message', (event) => {
       const frame = JSON.parse(event.data) as Frame;
       if (frame.type === 'heartbeat') { ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return; }
+      // The hint that a character's life changed (docs/DEVICES.md) arrives a moment after its cause: not what these tests read.
+      if (frame.type === 'life-changed') return;
       const wait = waiting.shift(); if (wait) wait(frame); else queue.push(frame);
     });
     ws.accept(); sockets.push(ws);

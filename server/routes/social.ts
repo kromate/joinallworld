@@ -54,7 +54,7 @@ export const HTTP_PER_MINUTE = 240;
 export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const service = socialService(ctx);
   /** Wrap a service call: parse the body, authenticate, rate limit, transact, then push. */
-  const route = (call: Call): RouteHandler => async (request) => {
+  const route = (call: Call, own = false): RouteHandler => async (request) => {
     const body = request.method === 'POST' ? await request.json() : {};
     // Every POST is durable before it is answered. A GET that only registered the caller need not
     // wait for the disk; one that applied something owed to their life (a gift, a friendship) does.
@@ -64,8 +64,14 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       if (!ctx.allow(`social:http:${session.publicId}`, HTTP_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
       return service.finish(db, call(db, session, body, request));
     }, { durable: (value) => request.method !== 'GET' || typeof value === 'object' && value !== null && Reflect.get(value, MATERIAL) === true, waitForObserved: true, committed: (value) => service.committed(value) });
-    return { body: service.deliver(result), renew: true };
+    const answer = service.deliver(result);
+    // One player, several devices: a change the caller made to their own friends, groups, blocks or visits is told to
+    // every open socket of theirs, so the other devices read the overview again (docs/DEVICES.md).
+    if (own && request.publicId && typeof answer === 'object' && answer !== null && Reflect.get(answer, 'ok') === true) ctx.push(request.publicId, { type: 'social-changed' });
+    return { body: answer, renew: true };
   };
+  /** The same, for a request that changes what the caller's own overview shows. */
+  const mine = (call: Call): RouteHandler => route(call, true);
   const after = (request: RouteRequest): number => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };
   return {
     'GET /api/social/me': route((db, session) => service.me(db, session)),
@@ -75,26 +81,26 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'GET /api/social/search': route((db, session, body, request) => service.search(db, session, request.query.get('q'))),
     'GET /api/social/players/:id': route((db, session, body, request) => service.profile(db, session, request.params.id)),
     'POST /api/social/players/:id/interact': route((db, session, body, request) => service.interact(db, session, { ...body, id: request.params.id })),
-    'POST /api/social/friends/request': route((db, session, body) => service.friendRequest(db, session, body)),
-    'POST /api/social/friends/answer': route((db, session, body) => service.friendAnswer(db, session, body)),
-    'POST /api/social/friends/remove': route((db, session, body) => service.friendRemove(db, session, body)),
-    'POST /api/social/block': route((db, session, body) => service.block(db, session, body)),
-    'POST /api/social/unblock': route((db, session, body) => service.unblock(db, session, body)),
+    'POST /api/social/friends/request': mine((db, session, body) => service.friendRequest(db, session, body)),
+    'POST /api/social/friends/answer': mine((db, session, body) => service.friendAnswer(db, session, body)),
+    'POST /api/social/friends/remove': mine((db, session, body) => service.friendRemove(db, session, body)),
+    'POST /api/social/block': mine((db, session, body) => service.block(db, session, body)),
+    'POST /api/social/unblock': mine((db, session, body) => service.unblock(db, session, body)),
     'POST /api/social/reports': route((db, session, body) => service.report(db, session, body)),
     'GET /api/social/conversations': route((db, session) => service.conversations(db, session)),
     'GET /api/social/conversations/:id': route((db, session, body, request) => service.history(db, session, request.params.id, after(request))),
     'POST /api/social/conversations/:id/read': route((db, session, body, request) => service.read(db, session, { ...body, conv: request.params.id })),
     'POST /api/social/messages': route((db, session, body) => service.send(db, session, body)),
-    'POST /api/social/groups': route((db, session, body) => service.groupCreate(db, session, body)),
-    'POST /api/social/groups/:id': route((db, session, body, request) => service.groupUpdate(db, session, { ...body, conv: request.params.id })),
+    'POST /api/social/groups': mine((db, session, body) => service.groupCreate(db, session, body)),
+    'POST /api/social/groups/:id': mine((db, session, body, request) => service.groupUpdate(db, session, { ...body, conv: request.params.id })),
     'GET /api/social/house/:host': route((db, session, body, request) => service.house(db, session, request.params.host)),
     'POST /api/social/join': route((db, session, body) => service.join(db, session, body)),
-    'POST /api/social/house/knock': route((db, session, body) => service.knock(db, session, body)),
-    'POST /api/social/house/answer': route((db, session, body) => service.knockAnswer(db, session, body)),
-    'POST /api/social/house/leave': route((db, session, body) => service.houseLeave(db, session, body)),
-    'POST /api/social/bae/ask': route((db, session, body) => service.baeAsk(db, session, body)),
-    'POST /api/social/bae/answer': route((db, session, body) => service.baeAnswer(db, session, body)),
-    'POST /api/social/bae/end': route((db, session, body) => service.baeEnd(db, session, body)),
+    'POST /api/social/house/knock': mine((db, session, body) => service.knock(db, session, body)),
+    'POST /api/social/house/answer': mine((db, session, body) => service.knockAnswer(db, session, body)),
+    'POST /api/social/house/leave': mine((db, session, body) => service.houseLeave(db, session, body)),
+    'POST /api/social/bae/ask': mine((db, session, body) => service.baeAsk(db, session, body)),
+    'POST /api/social/bae/answer': mine((db, session, body) => service.baeAnswer(db, session, body)),
+    'POST /api/social/bae/end': mine((db, session, body) => service.baeEnd(db, session, body)),
     'POST /api/social/transfers': route((db, session, body) => service.transfer(db, session, body)),
   };
 }

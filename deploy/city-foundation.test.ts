@@ -125,6 +125,8 @@ test('Worker city modules: complete city journey and lossless legacy switches su
       socket.addEventListener('message', event => {
         const frame: unknown = JSON.parse(event.data)
         if (object(frame).type === 'heartbeat') { socket.send(JSON.stringify({ type: 'heartbeat-ack' })); return }
+        // The hint that a character's life changed (docs/DEVICES.md) arrives a moment after its cause; the journeys do not read it (the Node fixture leaves it out too).
+        if (object(frame).type === 'life-changed') return
         const resolve = waiting.shift()
         if (resolve) resolve(frame)
         else queue.push(frame)

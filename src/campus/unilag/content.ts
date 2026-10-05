@@ -1,7 +1,7 @@
 import type { ActivityDefinition, NpcDefinition, SpotDefinition, VenueDefinition } from '../../types/content.ts';
 import type { TrailStopDefinition } from '../../types/campus.ts';
 import type { NeedMap, SkillMap } from '../../types/life.ts';
-import { ANCHORS } from './layout.ts';
+import { LANDMARKS } from './spot-names.ts';
 
 /**
  * UNILAG content for the campus beta.
@@ -58,9 +58,9 @@ const special: Record<string, ActivityDefinition[]> = {
   'central-mosque': [activity('mosque-worship', 'Worship at the mosque', '🕌', 12, 0, { fun: 8, social: 6 }, {}, ['worship'])],
 };
 
-export const spots: Record<string, SpotDefinition> = Object.fromEntries(Object.entries(ANCHORS).map(([id, anchor]) => [
+export const spots: Record<string, SpotDefinition> = Object.fromEntries(LANDMARKS.map(([id, label]) => [
   id,
-  spot(id, anchor.label, `A beta campus landmark at ${anchor.label}.`, special[id] ?? []),
+  spot(id, label, `A beta campus landmark at ${label}.`, special[id] ?? []),
 ]));
 
 // These links describe existing phone surfaces. The bank landmark does not implement deposits.

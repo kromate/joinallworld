@@ -4,7 +4,6 @@
 // the page can. A device with a saved life is not on the landing and fetches none of it.
 // Nothing here runs the preview; it only fetches the modules the landing will import anyway.
 import { STORAGE_KEY } from '../../../client.ts'
-import { warmLookPreview } from './lookPreview.ts'
 
 /** True when this browser has no saved life, so the first screen is the landing. */
 export function isNewDevice(storage: Pick<Storage, 'getItem'> | null): boolean {
@@ -21,7 +20,11 @@ let landing: Promise<void> | null = null
 export function warmLanding(storage: Pick<Storage, 'getItem'> | null = globalThis.localStorage ?? null): void {
   if (landing || !isNewDevice(storage)) return
   const sheet = import('./QuickStartApp.vue').then(() => undefined, () => undefined)
-  landing = Promise.all([sheet, warmLookPreview()]).then(() => undefined)
+  // The preview's own module (and the look tables it reads) is part of the landing, not of the first download of a device that has a life.
+  const preview = import('./lookPreview.ts').then((module) => module.warmLookPreview()).then(() => undefined, () => undefined)
+  // ...and the 3D module is asked for at once too (the same request lookPreview.ts makes), not one hop after the preview's module.
+  const scene = import('../../../scene/avatar-preview.ts').then(() => undefined, () => undefined)
+  landing = Promise.all([sheet, preview, scene]).then(() => undefined)
 }
 
 /** Resolves when the landing's code has arrived (or failed to), at once on a device that is not asked for it. Never rejects. */

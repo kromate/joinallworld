@@ -9,6 +9,11 @@
 // The rules engine (src/game, src/life.ts) IS reachable and is meant to be: the shell builds and reads every
 // life through it. It has its own chunk (vite.config.ts, `engine`), so a change to the shell does not
 // invalidate it. Making it lazy needs the shell to paint without a life; see docs/MIGRATION-VUE-TS.md.
+// What the browser's engine does NOT carry (the page only reads lives the server has played):
+//   - the UNILAG campus rules (student, games, shuttle, curriculum, walk, layout): a chunk of their own, fetched by src/game/campus-gate.ts
+//     when a life uses the campus and by the Campus app. The browser registers stand-ins (src/game/systems/browser.ts), which vite.config.ts
+//     puts in the place of src/game/systems/index.ts; the walk below makes the same swap.
+//   - the player actions, settling and event listeners of every system (src/game/profile.ts: PLAYS is false in the build).
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
@@ -33,7 +38,8 @@ function staticSpecifiers(file: string): string[] {
 
 function resolveFile(from: string, specifier: string): string | null {
   if (!specifier.startsWith('.')) return null
-  const target = resolve(dirname(from), specifier)
+  // The browser build registers its own systems in place of the full set (vite.config.ts, browserSystems).
+  const target = resolve(dirname(from), specifier).replace(/src\/game\/systems\/index\.ts$/, 'src/game/systems/browser.ts')
   return existsSync(target) ? target : null
 }
 
@@ -58,6 +64,7 @@ const paths = [...reachable.files].map((file) => relative(root, file))
 
 test('the first download reaches the shell and the rules engine, and sees them through the same files as before', () => {
   assert.ok(paths.includes('src/app/App.vue') && paths.includes('src/life.ts') && paths.includes('src/client.ts'), `${paths.length} files reached`)
+  assert.ok(paths.includes('src/game/systems/browser.ts') && paths.includes('src/campus/unilag/slices.ts') && paths.includes('src/game/campus-gate.ts'), 'the browser registers the campus stand-ins and can fetch the campus rules')
   assert.ok(paths.length > 150, 'the walk really followed the imports')
 })
 
@@ -68,7 +75,11 @@ test('Three.js, the maps, the scene hosts, the campus world, the models and the 
     ['the SVG city map', /^src\/city-map\.ts$/],
     ['the world map', /^src\/world-map\.ts$/],
     ['the venue scene host', /^src\/venue-world\.ts$/],
-    ['the scene modules (only movement.ts, build.ts (plain typed-array code the campus rules use) and the small crowd.ts are allowed)', /^src\/scene\/(?!movement\.ts$|build\.ts$|crowd\.ts$|types\.ts$)/],
+    ['the scene modules (only the small crowd.ts and the types are allowed; movement.ts and build.ts are plain code the campus and the scenes share, in a chunk of their own)', /^src\/scene\/(?!crowd\.ts$|types\.ts$)/],
+    ['the UNILAG campus rules (fetched when a life uses the campus: src/game/campus-gate.ts)', /^src\/campus\/unilag\/(student|games|shuttle|curriculum|walk|layout|register)\.ts$/],
+    ['the full system set (the browser registers campus stand-ins: systems/browser.ts)', /^src\/game\/systems\/index\.ts$/],
+    ['the share card rules (the share sheet fetches them)', /^src\/game\/share-model\.ts$/],
+    ['the look preview and the look tables of the landing (fetched with the landing, by warmLanding)', /^src\/app\/features\/start\/(lookPreview|lookModel)\.ts$/],
     ['the campus scene and hosts', /^src\/campus\/unilag\/(host|scene|world-adapter|preview|landmark|model|characters)[\w-]*\.ts$/],
     ['the campus shared scene code', /^src\/campus\/shared\//],
     ['the models', /^src\/models\//],
@@ -84,8 +95,9 @@ test('Three.js, the maps, the scene hosts, the campus world, the models and the 
 })
 
 // ---- the built bundle ------------------------------------------------------------------------------------------------------------
-// Measured on the build of this change (raw bytes / gzip): app 180 kB / 66.6, vue 79 / 31.3, engine 412 / 140. Budget: that + ~5%.
-const BUDGET = { raw: 705_000, gzip: 250_000 }
+// Measured on the build of this change (raw bytes / gzip): app 173.3 kB / 63.9, vue 79.3 / 31.3, engine 263.8 / 93.0; total 516.3 / 188.2.
+// (Before the campus rules, the code only playing needs and the landing's look code left the first download: 674 / 239.) Budget: that + ~5%.
+const BUDGET = { raw: 542_000, gzip: 198_000 }
 
 function eagerChunks(dist: string): string[] {
   const html = readFileSync(join(dist, 'index.html'), 'utf8')

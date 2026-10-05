@@ -8,7 +8,7 @@ import { avatarShapes, chooseLook, chosen, lookAlt, lookFocus, lookFocusBody, lo
 import {
   DRAFT_KEY, dreamFoot, failureText, firstStep, homeFoot, homeMissing, homePayload, introFor, keepLook, keptCash, lookFoot, lotteryFoot, reasonOf, storedLook, toggleTrait, traitsFoot, triggerOf,
 } from './onboardingModel.ts'
-import { LOOK_REFUSED, PLAY_HELD, held, planPlay, problemOf, quickStartRequired, showsLinkNote, shownError } from './quickStartModel.ts'
+import { LOOK_REFUSED, PLAY_HELD, held, planPlay, problemOf, quickStartRequired, networkLimitText, networkLimitWait, showsLinkNote, shownError, worldFullText, worldFullWait } from './quickStartModel.ts'
 import { nicknameOf, sessionRequired } from './sessionModel.ts'
 import { PRESETS, presetLook, starterLook } from './startBoundary.ts'
 
@@ -240,4 +240,20 @@ test('fresh nickname entry is mandatory only until connection; expired saved pre
   assert.equal(sessionRequired({ reason: 'new' }, true), null)
   assert.equal(sessionRequired({ reason: 'expired' }, false), null)
   assert.equal(sessionRequired(undefined, false), null)
+})
+
+test('a full world: the wait before the start is sent again grows to a minute and is spread, and the screen says nothing is lost', () => {
+  assert.deepEqual([0, 1, 2, 3, 9].map((tries) => worldFullWait(tries, () => 0.5)), [10, 20, 40, 60, 60])
+  assert.equal(worldFullWait(0, () => 0), 8)
+  assert.equal(worldFullWait(0, () => 1), 12)
+  assert.equal(worldFullWait(50, () => 1), 72)
+  const text = worldFullText(20)
+  assert.match(text, /full right now/); assert.match(text, /kept on this device/); assert.match(text, /about 20 seconds/); assert.match(text, /tap Play/)
+})
+
+test('too many new players from one network: the screen says it is the network, how long to wait, and that nothing is lost', () => {
+  assert.equal(networkLimitWait(1380), 1380); assert.equal(networkLimitWait(null), 300); assert.equal(networkLimitWait(5), 30); assert.equal(networkLimitWait(99999), 3600)
+  const text = networkLimitText(1380)
+  assert.match(text, /from your network/); assert.match(text, /shared Wi-Fi or mobile network/); assert.match(text, /about 23 minutes/); assert.match(text, /kept on this device/)
+  assert.match(networkLimitText(45), /about 1 minute;/)
 })

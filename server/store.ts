@@ -110,6 +110,8 @@ export interface JsonFileStore<D extends object = Db> {
   flush(): Promise<void>
   close(): Promise<void>
   stats(): StoreStats
+  /** JSON characters held per collection, for the operator's overview. Uses the texts the last write made; what changed since is serialised once. */
+  sizes(): Record<string, number>
 }
 /** The part of one transaction that is applied or undone later. */
 interface PendingChange { seq: number; undo: (() => void)[]; hook: ((value: unknown) => void) | undefined; value: unknown; durable: boolean; names: Set<string> | null }
@@ -472,5 +474,22 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
     async flush() { await queue; if (pending.length) await onDisk(commitSeq); },
     async close() { closed = true; if (lazyTimer) { clearTimeout(lazyTimer); lazyTimer = null; } await queue; if (pending.length) await onDisk(commitSeq); },
     stats: () => ({ ...stats }),
+    sizes() {
+      const sizes: Record<string, number> = {};
+      for (const name of KEYED) {
+        const map = base[name];
+        if (!isRecord(map)) continue;
+        let total = 0;
+        for (const [key, record] of Object.entries(map)) { let text = textOf[name].get(key); if (text === undefined) { text = JSON.stringify(record) ?? 'null'; textOf[name].set(key, text); } total += text.length; }
+        sizes[name] = total;
+      }
+      for (const [key, value] of Object.entries(base)) {
+        if (key === 'version' || isKeyed(key)) continue;
+        let text = partText.get(key);
+        if (text === undefined) { text = JSON.stringify(value); if (text === undefined) continue; partText.set(key, text); }
+        sizes[key] = text.length;
+      }
+      return sizes;
+    },
   };
 }

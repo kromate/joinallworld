@@ -140,7 +140,9 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
   function cityCounters(city: CivicCityRecord, cityId: CityId): CityCounters {
     const hit = counterCache.get(cityId), now = ctx.now();
     if (hit && now >= hit.at && now - hit.at < COUNTER_CACHE_MS) return { ...hit.value, online: onlineHere(cityId) };
-    const value = counters(city, now, ttl(), ctx.online);
+    // `online` is answered from the pulse below, for every caller: asking the presence registry about each resident here
+    // would be work in proportion to the city's residents on every check-in, for a number that is then replaced.
+    const value = counters(city, now, ttl(), () => false);
     counterCache.set(cityId, { at: now, value });
     return { ...value, online: onlineHere(cityId) };
   }

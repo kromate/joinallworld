@@ -254,8 +254,11 @@ export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
 //
 // The socket is opened with the session cookie and an Origin header; a refused upgrade is a bare
 // HTTP 403 on Node (WORKER: a JSON error — 403 origin_rejected or websocket_required, 401 device_session_required,
-// 429 rate_limited, 503 socket_capacity). Frames are JSON text of at most 16 KB. There is no `leave` frame on
-// either host: a socket leaves its room by joining another one or by closing.
+// 429 rate_limited, 503 socket_capacity — one session or one address holding too many). When EVERY socket the host takes is
+// in use, the upgrade succeeds and the socket is closed at once with code 1013 ("try again later") and the reason
+// 'socket_capacity' on both hosts: a page can read a close code, and tries again with a growing pause (docs/CAPACITY.md).
+// Frames are JSON text of at most 16 KB. There is no `leave` frame on either host: a socket leaves its room by joining
+// another one or by closing.
 
 /**
  * Enter a venue room. The server admits the socket only to the venue the stored life occupies.

@@ -60,6 +60,12 @@ export function createMemoryLimiter({ now, caps = LIMITER_CAPS }: { now: () => n
       for (const table of Object.values(tables)) { const entry = table.get(key); if (entry !== undefined) return live(entry, time) ? entry.count < count : true; }
       return true;
     },
+    /** Milliseconds until the window of `key` ends; 0 when none is running. Counts nothing. */
+    wait(key: string): number {
+      const time = now();
+      for (const table of Object.values(tables)) { const entry = table.get(key); if (live(entry, time)) return entry.start + entry.windowMs - time; }
+      return 0;
+    },
     /** Drop what has expired. A host calls this now and then, so a table that was busy once does not stay at its high-water mark. */
     sweep(): void { const time = now(); for (const table of Object.values(tables)) for (const [id, entry] of table) if (!live(entry, time)) table.delete(id); },
     /** Rows held per class (for tests and the operator's view). */

@@ -22,12 +22,12 @@ class WS {
   readyState = 0
   sent: Loose[] = []
   onopen: (() => void) | null = null
-  onclose: (() => void) | null = null
+  onclose: ((event?: { code?: number }) => void) | null = null
   onmessage: ((event: { data: string }) => void) | null = null
   onerror: (() => void) | null = null
   constructor() { WS.instances.push(this) }
   send(text: string): void { this.sent.push(JSON.parse(text)) }
-  close(): void { this.readyState = 3; this.onclose?.() }
+  close(code?: number): void { this.readyState = 3; this.onclose?.(code === undefined ? undefined : { code }) }
   open(): void { this.readyState = 1; this.onopen?.() }
   receive(data: Loose, origin = true): void {
     if (origin) (data.members as Loose[] | undefined)?.forEach((member) => { member.position ??= { x: 0, z: 0 } })
@@ -512,4 +512,34 @@ test('destroy cancels a pending reconnect: no socket is opened afterwards', asyn
   api.destroy()
   assert.equal(timers.size, 0, 'destroy clears the reconnect timer')
   assert.equal(WS.instances.length, sockets)
+})
+
+test('a socket closed because every connection is taken (1013) says so and keeps trying, however long it takes', async (t) => {
+  const { start } = browserFor(t, {})
+  const realSet = globalThis.setTimeout, realClear = globalThis.clearTimeout
+  const timers = new Map<number, { run: () => void; delay: number }>()
+  let nextTimer = 1000
+  g.setTimeout = (callback: () => void, delay?: number) => { if (!delay) return realSet(callback, delay); timers.set(++nextTimer, { run: callback, delay }); return nextTimer }
+  g.clearTimeout = (id: number) => { if (timers.has(id)) timers.delete(id); else realClear(id) }
+  t.after(() => { g.setTimeout = realSet; g.clearTimeout = realClear })
+  const api = await start()
+  t.after(() => api.destroy())
+  const delays: number[] = []
+  // More refusals than the five tries an ordinary disconnection gets: the room still tries again, more and more slowly.
+  for (let round = 0; round < 8; round++) {
+    const ws = lastSocket()
+    ws.open(); ws.close(1013)
+    assert.match(api.state.feedback, /very busy right now/)
+    assert.equal(timers.size, 1, `try ${round + 1} is waiting`)
+    const [id, timer] = [...timers][0] as [number, { run: () => void; delay: number }]
+    delays.push(timer.delay); timers.delete(id); timer.run()
+  }
+  assert.ok((delays[0] as number) >= 4000 && (delays[0] as number) <= 6000, `the first wait is about five seconds: ${delays[0]}`)
+  assert.ok(delays.slice(3).every((delay) => delay >= 24000 && delay <= 36000), `later waits are about thirty seconds: ${delays.map(Math.round).join(', ')}`)
+  // A place opened: the room is connected, and a later refusal starts from the short wait again.
+  const ws = lastSocket()
+  ws.open(); ws.receive({ type: 'presence', members: [{ id: 'a', name: 'Alex', enabled: false }] })
+  assert.equal(api.state.connection, 'Connected')
+  ws.close(1013)
+  assert.ok(([...timers.values()][0] as { delay: number }).delay <= 6000)
 })

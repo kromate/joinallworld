@@ -617,6 +617,8 @@ export interface Store {
   flush?(): Promise<void>
   close?(): Promise<void>
   stats?(): StoreStats
+  /** JSON characters held per collection, for the operator's overview. */
+  sizes?(): Record<string, number>
   /** True while one of THIS store's transaction or read callbacks is running (hosts with several stores in one isolate). */
   executing?(): boolean
 }
@@ -628,6 +630,8 @@ export interface HttpError extends Error {
   status: number
   code: string
   reason?: string
+  /** Seconds after which trying again can succeed: the host sends it as `Retry-After` and as `retryAfter` in the answer. */
+  retryAfter?: number
 }
 
 /** Portable request: no Node req/res, so a module can run on another host. */
@@ -749,7 +753,14 @@ export interface ContextChecks {
 export interface ServerConfig {
   sessionTtlMs: number
   actionWindowMs: number
+  /** Stored device sessions the host takes; a new visitor beyond it is asked to wait (server/host-context.ts capacityConfig). */
   maxActiveSessions: number
+  /** Open sockets in all, per network address and per session (the same place). */
+  maxSockets: number
+  socketsPerAddress: number
+  socketsPerPlayer: number
+  /** New sessions one network address may make in an hour. */
+  newSessionsPerAddress: number
   /** Optional TURN credential source for GET /api/voice-config. */
   voiceConfigProvider?: (session: PublicSession) => Promise<{ iceServers: IceServerConfig[]; expiresAt: number }> | { iceServers: IceServerConfig[]; expiresAt: number }
   /** At most 40 characters. */
@@ -834,6 +845,8 @@ export interface ContextCore {
   /** Close one socket now (a device that signed out, a session that was re-keyed). */
   closeSocket?(ws: WsConnection, code: number, reason: string): void
   sockets(): WsConnection[]
+  /** The open sockets of one player, found without walking everyone's. Absent on a host built without it: ask sockets(). */
+  socketsOf?(publicId: string): WsConnection[]
   isOpen(ws: WsConnection): boolean
   /** The stored session of a socket, inside a transaction. */
   sessionOf(ws: WsConnection, db: Db): SessionRecord | undefined
@@ -871,11 +884,15 @@ export interface RouteContext {
   allow(key: string, count?: number, windowMs?: number): boolean
   /** Would a call of allow(key, count) be allowed now? Counts nothing and creates no row: for checking a shared bucket before counting against a key of the caller's own. Absent on a host without it. */
   peek?(key: string, count?: number): boolean
+  /** Milliseconds until the window of a limiter key ends (0: no window is running). For telling a refused caller when to come back. Absent on a host without it. */
+  retryIn?(key: string): number
   /** The module's namespaced top-level collection, created on first use. */
   collection<K extends CollectionName>(db: Db, name: K, initial?: Partial<Collections[K]>): Collections[K]
   collection(db: Db, name: string, initial?: object): Record<string, unknown>
   /** To one socket (dropped silently unless it is open). */
   send(ws: WsConnection, message: ServerFrame): void
+  /** The same frame to many sockets, turned into text once (a room's member list goes to everyone in it). Absent on a host built without it: send to each. */
+  broadcast?(sockets: Iterable<WsConnection>, message: ServerFrame): void
   /** The ONLY identity a module may expose. */
   publicSession(session: SessionRecord): PublicSession
   cityIds: readonly CityId[]

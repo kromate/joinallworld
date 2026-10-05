@@ -208,6 +208,8 @@ export interface StoreStats {
   /** WORKER: rows the object's storage was asked to write since it last started (deploy/write-meter.ts). */
   rows?: RowsWritten
   lastFailureAt?: number | null
+  /** JSON characters stored per collection; the operator's overview adds it. Node: also `sessions` and `archivedLives`, as the sum of their records. WORKER: the feature collections only. */
+  collections?: Record<string, number>
   /** WORKER: the same flag as `failing`, kept for the Worker's own tests. */
   failed?: boolean
 }
@@ -227,6 +229,8 @@ export interface ModOverviewResponse {
   mutes: number
   sessions: number
   archivedLives: number
+  /** How full the host is: stored sessions and open sockets beside the most it takes (docs/CAPACITY.md). */
+  capacity: { sessions: { held: number; most: number }; sockets: { open: number; most: number; perAddress: number; perPlayer: number } }
   store: StoreStats | null
   build: string
 }
@@ -306,7 +310,7 @@ export const STATEMENT_RESPONSE_KEYS = ['city', 'name', 'ok', 'serverTime', 'sta
 export const STATEMENT_KEYS = ['closing', 'days', 'kept', 'lines', 'linesOpening', 'opening', 'problems', 'reconciled', 'totals'] as const satisfies readonly (keyof Statement)[]
 export const SUPPORT_REPORT_KEYS = ['at', 'by', 'category', 'cityId', 'context', 'id', 'name', 'note', 'status', 'text', 'updatedAt'] as const satisfies readonly (keyof SupportReport)[]
 export const SUPPORT_CONTEXT_KEYS = ['actions', 'at', 'build', 'cityId', 'lastError', 'ledger', 'life'] as const satisfies readonly (keyof SupportContext)[]
-export const MOD_OVERVIEW_RESPONSE_KEYS = ['archivedLives', 'build', 'mutes', 'problems', 'reports', 'serverTime', 'sessions', 'store'] as const satisfies readonly (keyof ModOverviewResponse | keyof ApiEnvelope)[]
+export const MOD_OVERVIEW_RESPONSE_KEYS = ['archivedLives', 'build', 'capacity', 'mutes', 'problems', 'reports', 'serverTime', 'sessions', 'store'] as const satisfies readonly (keyof ModOverviewResponse | keyof ApiEnvelope)[]
 /** A mute without the optional `report`. */
 export const MUTE_KEYS = ['at', 'id', 'reason', 'until'] as const satisfies readonly (keyof Mute)[]
 export const AUDIT_LINE_KEYS = ['action', 'at', 'detail', 'from', 'n', 'target'] as const satisfies readonly (keyof AuditLine)[]

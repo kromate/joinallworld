@@ -17,6 +17,7 @@ import { isDeparting } from '../../life.ts'
 import { roomJoinNeeded } from '../../client.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
 import { linkWords } from '../../ui/link.ts'
+import { networkLimitText, networkLimitWait, worldFullText, worldFullWait } from '../features/start/quickStartModel.ts'
 import { captureLink, forgetDraft, forgetGo, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingGo, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
 import { deviceToken } from '../features/growth/boundary.ts'
 import { GO_TARGETS } from '../../game/go-links.ts'
@@ -444,15 +445,29 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
   /** Play was tapped on the landing screen ('jaw:quick-start'). A second tap while the first is on its way is the same start. */
   let starting = false
+  /** The world was full when Play was tapped: the start is sent again by itself after a growing pause (quickStartModel.ts worldFullWait). */
+  let fullRetry: ReturnType<typeof globalThis.setTimeout> | null = null, fullTries = 0
   async function quickStart(name: string | null, startCity?: string): Promise<void> {
     if (starting) return
     starting = true
+    if (fullRetry !== null) { globalThis.clearTimeout(fullRetry); fullRetry = null }
     try {
       const ok = await connect(true, name, startCity)
+      if (ok) fullTries = 0
       // A refused name comes back through 'needName' with the server's sentence; anything else is the connection.
       if (!ok && game.link.value !== 'new') {
         play.sending = false
-        reopenLanding(`${linkWords(game.link.value)?.why || 'The game server did not answer.'} Your name and character are kept on this device — tap Play to try again.`, name)
+        if (game.client.refusal === 'full') {
+          // Every place is taken. The visitor waits on the landing screen, told why, and is let in as soon as there is room.
+          const wait = worldFullWait(fullTries++)
+          reopenLanding(worldFullText(wait), name)
+          fullRetry = globalThis.setTimeout(() => { fullRetry = null; if (!game.connected.value) void quickStart(name, startCity) }, wait * 1000)
+        } else if (game.client.refusal === 'limit') {
+          // Too many new players from this network address in the last hour: said plainly, with the wait the server gave, and tried again then.
+          const wait = networkLimitWait(game.client.retryAfter)
+          reopenLanding(networkLimitText(wait), name)
+          fullRetry = globalThis.setTimeout(() => { fullRetry = null; if (!game.connected.value) void quickStart(name, startCity) }, (wait + 2) * 1000)
+        } else reopenLanding(`${linkWords(game.link.value)?.why || 'The game server did not answer.'} Your name and character are kept on this device — tap Play to try again.`, name)
       }
     } finally {
       starting = false; play.sending = false; shell.bump(); shell.enforceRequired()

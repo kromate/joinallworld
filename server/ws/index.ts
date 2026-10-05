@@ -146,9 +146,10 @@ export function buildSocketHandlers(ctx: RouteContext, modules: readonly WsHandl
     core.refreshNames = (session) => {
       if (!session || typeof session.id !== 'string') return;
       const renewed = typeof ctx.now === 'function' ? ctx.now() : null;
-      for (const ws of everySocket()) {
+      for (const ws of typeof core.socketsOf === 'function' ? core.socketsOf(session.id) : everySocket()) {
         if (ws.session?.id !== session.id) continue;
-        ws.session.name = session.name;
+        // Assigned, not changed in place: a host that writes what a socket carries only when it changed must see this.
+        ws.session = { ...ws.session, name: session.name };
         if (renewed !== null && Number.isFinite(ctx.config?.sessionTtlMs)) { ws.expiresAt = renewed + ctx.config.sessionTtlMs; ws.lastSessionRenewedAt = renewed; }
       }
       for (const hook of hooks.refreshNames) { try { hook(session); } catch (error) { console.error('Socket refreshNames hook failed:', messageOf(error)); } }

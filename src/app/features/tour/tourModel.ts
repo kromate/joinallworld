@@ -9,8 +9,10 @@ export type Wait = 'activity' | 'map' | 'phone'
 export interface StepContext {
   /** The player stands in their own home. */
   home: boolean
-  /** A device without a keyboard or a mouse. */
+  /** A device that is touched: gestures are offered. */
   touch: boolean
+  /** A device with keys or a mouse: key shortcuts are offered. A device can be both. Defaults to "not touch". */
+  keys?: boolean
   /** Is a `data-tour` target on screen? */
   has: (id: string) => boolean
 }
@@ -52,8 +54,12 @@ export const STEPS: readonly TourStep[] = [
     text: text('Your home has spots too. Pick one, then tap something to do. Each one runs on a timer and finishes even if you close the tab.', 'Every place has spots to stand at. Pick one, then tap an activity. Each one runs on a timer and finishes even if you close the tab.'),
     task: 'Try one now: tap an activity.' },
   { id: 'move', title: 'Getting around', prefer: 'center',
-    text: (context) => (context.touch ? 'Drag the stick to walk, or tap where you want to go. Drag anywhere to look around and pinch to zoom.' : 'Walk with the keys, or click where you want to go. Drag to look around and scroll to zoom.'),
-    keys: (context) => (context.touch ? [] : [{ caps: ['walk:up', 'walk:left', 'walk:down', 'walk:right'].map(capOf), text: 'Walk' }, { caps: [capOf('walk:jog')], text: 'Hold to jog' }, { caps: ['Click'], text: 'Walk there' }, { caps: ['Drag'], text: 'Look around' }, { caps: ['Scroll'], text: 'Zoom' }]) },
+    text: (context) => {
+      const keys = context.keys ?? !context.touch
+      if (context.touch && keys) return 'Walk with the keys or the stick, or click or tap where you want to go. Drag to look around; scroll or pinch to zoom.'
+      return context.touch ? 'Drag the stick to walk, or tap where you want to go. Drag anywhere to look around and pinch to zoom.' : 'Walk with the keys, or click where you want to go. Drag to look around and scroll to zoom.'
+    },
+    keys: (context) => ((context.keys ?? !context.touch) ? [{ caps: ['walk:up', 'walk:left', 'walk:down', 'walk:right'].map(capOf), text: 'Walk' }, { caps: [capOf('walk:jog')], text: 'Hold to jog' }, { caps: ['Click'], text: 'Walk there' }, { caps: ['Drag'], text: 'Look around' }, { caps: ['Scroll'], text: 'Zoom' }] : []) },
   { id: 'map', title: 'The Map', targets: ['nav-map'], doneTargets: ['map-card'], wait: 'map',
     text: 'Travel from here to anywhere in the city.', task: 'Tap Map to open it.',
     doneText: 'Pick a place to see the trip first: how long it takes, and what each way of travelling costs. The world atlas shows the bigger picture, and more places are opening.' },
@@ -97,3 +103,11 @@ export function isDone(wait: Wait | undefined, facts: WaitFacts): boolean {
   if (wait === 'phone') return facts.sheet === 'phone'
   return false
 }
+
+/**
+ * The tour steps aside — its dim layer hidden, its step kept — while something else is in front: a sheet that is not the step's
+ * own, or a call (ringing, calling or connected): an incoming call must be answerable at once, and the tour resumes when it ends.
+ */
+export const tourPaused = (facts: { sheet: string | null; allows: string | undefined; call: boolean }): boolean => facts.call || (facts.sheet !== null && facts.allows !== facts.sheet)
+/** Layers that are urgent and interactive sit above the tour (z-index 60) and are never trapped under its dim. */
+export const TOUR_Z = 60

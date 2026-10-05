@@ -100,8 +100,8 @@ const TOUCH: ShortcutGroup[] = [
   ] },
 ]
 
-/** The groups the sheet lists: the keys on a device with a keyboard, the gestures on one without. */
-export const shortcutGroups = (touch: boolean): ShortcutGroup[] => (touch ? TOUCH : DESKTOP)
+/** The groups the sheet lists: the keys on a device with a keyboard, the gestures on one without, both on a device that has both. */
+export const shortcutGroups = (touch: boolean, keys = !touch): ShortcutGroup[] => (touch && keys ? [...DESKTOP, ...TOUCH.map((group) => ({ ...group, id: `touch-${group.id}`, title: `${group.title} · touch` }))] : touch ? TOUCH : DESKTOP)
 
 /** The `event.key` values of the bindings a row describes: what a test presses to see the row is true. */
 export function keysOf(row: ShortcutRow): string[] {

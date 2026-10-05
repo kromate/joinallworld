@@ -3,11 +3,13 @@
 // key-caps; on a device with no keyboard, the gestures. The rows come from src/ui/keys.ts (shortcutsModel.ts).
 import { computed } from 'vue'
 import BaseSheet from '../../ui/BaseSheet.vue'
+import { currentInput } from '../../state/inputMode.ts'
 import { shortcutGroups } from './shortcutsModel.ts'
 
 const emit = defineEmits<{ close: [] }>()
-const touch = globalThis.matchMedia?.('(pointer: coarse)').matches === true
-const groups = computed(() => shortcutGroups(touch))
+const mode = currentInput()
+const touch = mode.touch && !mode.keys
+const groups = computed(() => shortcutGroups(mode.touch, mode.keys))
 // The sheet owns the keyboard while it is open: Esc and ? close it, and nothing reaches the game behind it.
 function onKey(event: KeyboardEvent): void {
   event.stopPropagation()

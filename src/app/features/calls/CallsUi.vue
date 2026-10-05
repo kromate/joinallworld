@@ -26,7 +26,7 @@ onBeforeUnmount(stopRinging)
 </template>
 
 <style scoped>
-.calls-layer { position: fixed; top: var(--calls-top, 68px); left: 50%; transform: translateX(-50%); width: min(420px, calc(100% - 24px)); z-index: 45; font-family: var(--font); display: grid; gap: 8px; pointer-events: none; }
+.calls-layer { position: fixed; top: var(--calls-top, 68px); left: 50%; transform: translateX(-50%); width: min(420px, calc(100% - 24px)); z-index: 70; font-family: var(--font); display: grid; gap: 8px; pointer-events: none; }
 .calls-layer.is-in-dialog { z-index: 14; }
 .calls-layer > * { pointer-events: auto; }
 @media (max-width: 720px) { .calls-layer { --calls-top: 64px; } }

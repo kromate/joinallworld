@@ -104,6 +104,19 @@ export async function systemShare(prepared: Pick<PreparedShare, 'file' | 'text'>
   } catch (error) { return (error as { name?: unknown } | null)?.name === 'AbortError' ? 'cancelled' : 'unavailable'; }
 }
 
-export async function copyText(text: string, nav: { clipboard?: Pick<Clipboard, 'writeText'> } = globalThis.navigator): Promise<boolean> {
-  try { await nav.clipboard!.writeText(text); return true; } catch { return false; }
+/** The old way: select the text of a hidden field and ask the document to copy it. Works inside a click where the clipboard API is refused. */
+export function legacyCopy(text: string, doc: Pick<Document, 'createElement' | 'body' | 'execCommand'> & Partial<Pick<Document, 'querySelector'>> | undefined = globalThis.document): boolean {
+  if (!doc?.body || typeof doc.execCommand !== 'function') return false;
+  const field = doc.createElement('textarea');
+  field.value = text; field.setAttribute('readonly', ''); field.setAttribute('aria-hidden', 'true'); field.tabIndex = -1;
+  Object.assign(field.style, { position: 'fixed', top: '0', left: '0', width: '1px', height: '1px', opacity: '0', pointerEvents: 'none' });
+  // Inside the open modal sheet when there is one: everything outside a modal dialog is inert, and an inert field cannot be selected.
+  (doc.querySelector?.('dialog[open]') ?? doc.body).append(field);
+  try { field.select(); field.setSelectionRange?.(0, text.length); return doc.execCommand('copy'); } catch { return false; } finally { field.remove(); }
+}
+
+/** Copy `text`. Called from a click: the clipboard API first, then the hidden-field fallback when the browser refuses it (a permission, an insecure page). */
+export async function copyText(text: string, nav: { clipboard?: Pick<Clipboard, 'writeText'> } | undefined = globalThis.navigator, doc?: Pick<Document, 'createElement' | 'body' | 'execCommand'> & Partial<Pick<Document, 'querySelector'>>): Promise<boolean> {
+  try { if (nav?.clipboard?.writeText) { await nav.clipboard.writeText(text); return true; } } catch { /* refused: try the old way */ }
+  return legacyCopy(text, doc ?? globalThis.document);
 }

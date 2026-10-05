@@ -624,3 +624,6 @@ button.ui-row:hover{background:#f7f9f8}
 
 /* The first landing holds the scene's hint until the walkthrough is over (state/landingHold.ts). */
 body[data-hold-hint] .scene-hint{display:none!important}
+
+/* A phone shows the invitation chip right under the top bar: a toast waits below it instead of lying over it. */
+@media(max-width:720px){body:has(.inv-chip) .life-toasts{top:calc(var(--toast-top,74px) + 72px)}}

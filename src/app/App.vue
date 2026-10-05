@@ -16,6 +16,7 @@ import GameIcon from './ui/GameIcon.vue'
 import ToastStack from './ui/ToastStack.vue'
 import LinkBanner from './features/landing/LinkBanner.vue'
 import UpdateBanner from './ui/UpdateBanner.vue'
+import NoticeHost from './features/notice/NoticeHost.vue'
 import { useGrowth } from './features/growth/useGrowth.ts'
 import CoachTip from './features/hud/CoachTip.vue'
 import HudBar from './features/hud/HudBar.vue'
@@ -156,6 +157,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
     <ConnectionNotice />
     <HudSidebar />
     <div ref="bottom" class="life-bottom">
+      <div data-slot="notice"><NoticeHost /></div>
       <div data-slot="coach"><CoachTip /></div>
       <div data-slot="progress"><ActionProgress /></div>
       <div data-slot="main">

@@ -24,6 +24,20 @@ Sessions use an HttpOnly secret cookie and a separate public peer ID. This is br
 
 Position and voice state are ephemeral WebSocket attachments that survive hibernation; movement does not rewrite wallet state. Public venue chat bodies are not persisted. Direct, group and house message histories are stored by the shared social service. Minimal public-venue dedupe records retain only message IDs, timestamp and a body hash for up to24hours, capped100 per sender/room. An expired open socket is closed at the next check/alarm, with a ten-second heartbeat check. Current caps are safety bounds, not a tested capacity guarantee.
 
+## Announcing an update
+
+A release drops every socket for a moment (players reconnect on their own and saved state is safe) but ends any voice call and pending ping in progress. `POST /api/notice` lets the person releasing tell players a few minutes ahead: the page then shows "Allworld is updating in about N minutes", and afterwards "Allworld has been updated" with a one-tap "Call again" for a call the update cut.
+
+The route needs no server secret. The body `{ kind: "update", minutes: 1-15, issuedAt: <ms>, nonce, sig }` carries an Ed25519 signature (base64url, over `allworld-notice-v1`, the kind, minutes, issuedAt and nonce, one per line; see `server/notice.ts`) that is checked against a public key in the source, `NOTICE_PUBLIC_KEY` in `server/notice.ts`. The private half is held only by whoever announces releases and is never in the repository. An announcement is refused when the signature is wrong, `issuedAt` is more than five minutes from the server's clock, the nonce was seen before, or a field is out of range; refused attempts are rate limited per address. The only effect is the page's own fixed wording with a number of minutes: no text and no links can be sent, and nothing is stored (the notice lives in the host's memory and ends by itself).
+
+To announce from your own fork, make a key pair, keep the private key to yourself and publish the public one:
+
+```
+node -e "const c=require('crypto');const k=c.generateKeyPairSync('ed25519');require('fs').writeFileSync('notice-key.pem',k.privateKey.export({type:'pkcs8',format:'pem'}),{mode:0o600,flag:'wx'});console.log(c.createPublicKey(k.privateKey).export({format:'jwk'}).x)"
+```
+
+Set the printed value as the `NOTICE_PUBLIC_KEY` setting (a Worker var or an environment variable of the Node host; unset, the built-in key applies), then sign and POST the body above with the private key. Do not commit the `.pem` file.
+
 ## Controlled TURN testing
 
 With no test configuration, /api/voice-config returns STUN-only. General public TURN issuance is disabled. User-entered encrypted Worker secrets TURN_API_TOKEN, TURN_KEY_ID and TURN_TEST_PUBLIC_IDS allow at most two explicitly nominated public session IDs to request ten-minute credentials. KeyID is nonsecret but stored with encrypted settings so fixed-config releases preserve it. Never commit credentials or paste them into a conversation.

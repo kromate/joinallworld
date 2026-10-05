@@ -37,6 +37,7 @@ import type { ThreadRecord } from '../../../game/social-model.ts'
 import { applyWhereabouts, freshLive, LIVE_GRACE_MS, takeMove, takeSnapshot, whereabouts } from '../../../game/live-model.ts'
 import type { LiveTable } from '../../../game/live-model.ts'
 import type { LiveServerFrame } from '../../../types/live.ts'
+import type { NoticeFrame } from '../../../types/notice.ts'
 import type { ErrorFrame, PresenceFrame } from '../../../types/protocol.ts'
 import type { Conversation, Friend, KnockState, Message, PeopleFrame, PeopleListing, PersonCard, SocialOverview, SocialPushFrame, ThreadItem } from '../../../types/social.ts'
 import type { ApiError } from '../../types/client.ts'
@@ -123,7 +124,7 @@ const browserEnv = (): SocialEnv => ({
 })
 
 /** What a server push may be: the social frames, the answer to people-list, and the room's presence and error frames. */
-type Incoming = SocialPushFrame | PeopleFrame | PresenceFrame | ErrorFrame | LiveServerFrame
+type Incoming = SocialPushFrame | PeopleFrame | PresenceFrame | ErrorFrame | LiveServerFrame | NoticeFrame
 
 /** The refusal sentence for a failed request (the server's own wording when it explained one). */
 export function failureReason(error: ApiError): string {
@@ -490,6 +491,10 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         return
       case 'ping-incoming': case 'ping-joined': case 'ping-ended':
         // A friend's ping (features/ping): shown by its own notices, which listen beside the calls.
+        for (const listener of [...frameListeners]) listener(message)
+        return
+      case 'notice':
+        // An update is coming (features/notice): shown by its own banner, which listens beside the calls.
         for (const listener of [...frameListeners]) listener(message)
         return
       default:

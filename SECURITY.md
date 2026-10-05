@@ -13,13 +13,27 @@ There is no bug bounty and no guaranteed response time. Only the latest `main` i
 
 ## Device sessions are not accounts
 
-- A session is a random secret stored in an `HttpOnly`, `SameSite=Lax` cookie, plus a nickname of 3–24 characters. There are no passwords, email addresses or verification. **Accounts are not included**: an accounts design is a separate proposal that has not been merged, and nothing in this build authenticates a person.
+- A session is a random secret stored in an `HttpOnly`, `SameSite=Lax` cookie, plus a nickname of 3–24 characters. A device session has no password, e-mail address or verification, and does not authenticate a person. **Accounts are a separate, optional layer that is off unless configured** — see [Accounts](#accounts-off-unless-configured) below.
 - **Anyone who obtains the cookie is that device.** The secret is never sent to other players: presence, chat and voice signalling use a separate public ID.
 - Nicknames are not unique or reserved. A name is not proof of identity.
 - **Sessions expire.** The default lifetime is 30 days (`SESSION_TTL_DAYS`), renewed on authenticated use. Open connections are closed when the session expires.
 - **There is no recovery.** Authenticated use renews the device session for 30 days. If the cookie is cleared, lost or expired, a browser with a cached life shows an explicit choice before creating a separate new identity. The old life is moved to an archive in the server's data file so it is not destroyed, but no endpoint or tool restores it, and players cannot retrieve it themselves. Do not treat progress as durable. A session that expires without ever having finished character creation has no life to keep and is deleted rather than archived.
 - Sessions created before the public ID was introduced are archived the same way at server start, so those devices start fresh.
 - The cookie is marked `Secure` only when the server itself receives TLS, or when `TRUST_PROXY=1` is set and the proxy sends `X-Forwarded-Proto: https`. Serve over HTTPS.
+
+## Accounts (off unless configured)
+
+Design, threat list and open questions: [docs/ACCOUNTS.md](docs/ACCOUNTS.md). **This feature has not had an independent review; have it reviewed before enabling it on a public server.** With `ACCOUNTS_FIREBASE_PROJECT_ID` and `ACCOUNTS_FIREBASE_API_KEY` unset nothing below exists: no sign-in is shown, nothing is stored and no request is made to a provider.
+
+- **Who a person is comes from a signed ID token only.** The browser signs in with the identity provider (Google, or an e-mail address and password) and hands the server a short-lived ID token. The server verifies it itself on both hosts: RS256 signature against the provider's published keys, audience and issuer of the configured project, expiry, an age of at most five minutes, a sign-in at most an hour old, and a confirmed e-mail address. A uid, an address or a "verified" flag sent beside the token is never read. A token is accepted once.
+- **The game never sees or stores a password,** and stores no ID token or refresh token. It stores, per account: the provider's subject id, the confirmed address (shown to its owner; used for nothing else), how the person signed in, and two times. The audit trail records events without a token, address, subject id or cookie.
+- **Signing in always issues a new cookie** (same attributes as the device cookie). A cookie presented at sign-in is never kept, so a planted cookie gains nothing. A signed-in browser's cookie is a *device binding*; the account's character is stored under a key that is never sent to a browser and is refused if presented as a cookie.
+- **Account state changes** require an `Origin` header naming this host (the general rule lets a request with no `Origin` through; these routes do not) and, when a session cookie is presented, an anti-forgery token derived from that cookie.
+- **Sign out** ends this browser's binding; **sign out everywhere** ends the others; sockets of an ended binding are closed. **Deleting** an account needs a fresh ID token for that account as well as the cookie.
+- **No answer says whether an address has an account**: every refused token is one answer, and a password-reset request is answered the same way, before the provider has replied. What the provider itself reveals to someone who asks it directly depends on the provider project's settings (turn on its e-mail enumeration protection).
+- **Limits** on sign-in, delete and reset are per address, per account and per address written to. On the Node host they are in memory and reset on restart, like the other limits.
+- **Signing in never destroys a life.** A played life that cannot be the active character is set aside in the archive, marked with the account that may bring it back.
+- **Limits of this design:** an ID token stolen in the minutes before it is used can be used once from elsewhere; a copy of the data file contains valid cookie values (for device bindings as for sessions); erasing a character does not erase what other features hold under its public id; there is no second factor. The provider is a dependency and knows who signs in.
 
 ## Game state
 

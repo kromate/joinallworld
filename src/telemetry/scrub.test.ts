@@ -147,3 +147,12 @@ test('an analytics event as it leaves: only catalogued properties and the allowe
   // Anything the SDK would send by itself is dropped.
   for (const event of ['$autocapture', '$pageleave', '$rageclick', '$exception', '$snapshot', '$web_vitals', '$feature_flag_called']) assert.equal(cleanEvent({ event, properties: {} }), null, event);
 });
+
+test('sign-in never reaches telemetry: a signed token in any text is replaced, and credential-like properties are refused', () => {
+  const jwt = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImsxIn0.eyJzdWIiOiJVaWRBZGEiLCJlbWFpbCI6ImFkYUBleGFtcGxlLmNvbSJ9.c2lnbmF0dXJlLWJ5dGVzLWhlcmU';
+  assert.equal(scrubText(`sign-in failed for ${jwt} at step 2`), 'sign-in failed for [token] at step 2');
+  assert.equal(scrubText(`{"idToken":"${jwt}"}`).includes('eyJ'), false);
+  assert.equal(scrubText('refused: password=correct-horse-battery idToken: abc'), 'refused: password=[redacted] idToken: abc');
+  assert.deepEqual(scrubProps({ step: 'verify', password: 'hunter2hunter2', passwd: 'x', id_token: 'abc', idtoken: 'abc', refresh_token: 'abc', credential: 'abc', csrf: 'abc', token: 'abc', email: 'ada', idToken: 'abc', provider: 'google' }), { step: 'verify', provider: 'google' });
+  assert.deepEqual(scrubProps({ value: jwt, who: 'ada@example.com' }), {}, 'a token or an address is refused as a VALUE too, whatever its property is called');
+});

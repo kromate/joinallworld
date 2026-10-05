@@ -292,7 +292,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       keepPlay(null)
       shell.ui.expanded = true
       const open = shell.sheet.value
-      if (open?.kind === 'panel' && shell.byId.get(open.id)?.role === 'session-gate') shell.closeSheet()
+      if (open?.kind === 'panel' && shell.byId.get(open.id)?.role === 'session-gate' && !play.settling) shell.closeSheet()
     } else if (result.code === 'invalid_look' || result.code === 'action_id_conflict' || result.code === 'action_expired') {
       keepPlay(null)
       reopenLanding('That character could not be saved. Choose again and tap Play.')
@@ -320,7 +320,11 @@ function createApp(game: Game, native: readonly VuePanel[]) {
         play.sending = false
         reopenLanding(`${linkWords(game.link.value)?.why || 'The game server did not answer.'} Your name and character are kept on this device — tap Play to try again.`, name)
       }
-    } finally { starting = false; play.sending = false; shell.bump(); shell.enforceRequired() }
+    } finally {
+      starting = false; play.sending = false; shell.bump(); shell.enforceRequired()
+      // The creator that sent this Play may be waiting to send the rest of its choices.
+      globalThis.window?.dispatchEvent(new CustomEvent('jaw:quick-start-done', { detail: { ok: game.connected.value && !game.state.value.onboarding.required } }))
+    }
   }
 
   /** One action, with the routing the shell adds: a cancel or a refused trip forgets where the player was heading. */

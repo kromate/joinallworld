@@ -7,8 +7,10 @@
  *
  *   const preview = createAvatarPreview(host, { look, focus, label, onSpin, onLost });
  *   preview.setLook(look, { react })   rebuild the avatar; one frame (plus a short turn if react)
- *   preview.setFocus('body' | 'head')  full body, or head and shoulders
+ *   preview.setFocus('body' | 'head' | 'outfit')  full body, head and shoulders, or the outfit (hips to shoulders, legs to the ankles)
+ *   preview.turnBy(radians)            turn the character with a short ease (turnBy(Math.PI) turns it around)
  *   preview.setLabel(text)             the canvas' text alternative
+ *   preview.setInset(px)               keep the bottom `px` of the view free of the character (a stage puts its buttons there)
  *   preview.rotate(radians)            turn the character (arrow keys do this when the canvas has focus)
  *   preview.resize()                   re-measure the host; one frame if the size changed
  *   preview.attach(host)               move the canvas into another host element
@@ -43,13 +45,15 @@ export class PreviewUnavailable extends Error {}
 
 /** Where the camera looks: the height of the centre of the view, and how much must fit. */
 export interface PreviewFrame { y: number; height: number; width: number }
-export type PreviewFocus = 'body' | 'head';
+export type PreviewFocus = 'body' | 'head' | 'outfit';
 /** The options of createAvatarPreview (renderer, raf, caf and now are injected by tests). */
 export interface PreviewOptions {
   look?: unknown;
   focus?: PreviewFocus;
   label?: string;
   reducedMotion?: boolean;
+  /** Pixels at the bottom of the view kept clear of the character and its ground (see setInset). */
+  inset?: number;
   onSpin?: () => void;
   onLost?: () => void;
   renderer?: THREE.WebGLRenderer;
@@ -66,7 +70,9 @@ export interface AvatarPreview {
   canvas: HTMLCanvasElement;
   setLook(look: unknown, options?: { react?: boolean }): boolean;
   setFocus(next: string): boolean;
+  setInset(px: number): boolean;
   rotate(delta: number): void;
+  turnBy(delta: number): void;
   resize(): boolean;
   attach(target: HTMLElement | null | undefined): void;
   setLabel(text: unknown): void;
@@ -79,7 +85,8 @@ interface Drag { id: number; x: number; time: number; speed: number; moved?: boo
 
 const FRAMES: Record<PreviewFocus, PreviewFrame> = {
   body: { y: 1.47, height: 3.22, width: 1.9 },
-  head: { y: 2.26, height: 1.62, width: 1.5 }, // head and shoulders, with room for the tallest hair, a gele or a hat // head and shoulders, with room above for the stage's buttons
+  head: { y: 2.26, height: 1.62, width: 1.5 }, // head and shoulders, with room for the tallest hair, a gele or a hat
+  outfit: { y: 1.5, height: 2.5, width: 1.9 }, // shoulders to the shoes: what is worn, without the empty space above the hair
 };
 const FOV = 26, START_YAW = -0.42, DRAG_SPEED = 0.011, KEY_STEP = Math.PI / 12, MAX_PIXEL_RATIO = 2.5;
 const clamp = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
@@ -178,13 +185,16 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
   scene.add(ground.group, turntable);
 
   let avatar: AvatarGroup | null = null, lookKey = '', renderCount = 0, frames = 0, disposed = false, lost = false, lastMs = 0;
-  let yaw = START_YAW, zoom = options.focus === 'head' ? 1 : 0, focus: PreviewFocus = options.focus === 'head' ? 'head' : 'body';
+  const asFocus = (value: unknown): PreviewFocus => (value === 'head' || value === 'outfit' ? value : 'body');
+  let inset = Math.max(0, options.inset ?? 0), yaw = START_YAW, focus: PreviewFocus = asFocus(options.focus), shown: PreviewFrame = { ...FRAMES[focus] };
   let size = { width: 0, height: 0 }, frameId = 0;
   const tweens = new Map<string, Tween>(); // name → { start, duration, step(t, dt) → false to stop early, last }
 
   function frame() {
-    const a = FRAMES.body, b = FRAMES.head, t = zoom;
-    frameCamera(camera, { y: a.y + (b.y - a.y) * t, height: a.height + (b.height - a.height) * t, width: a.width + (b.width - a.width) * t }, size.width / Math.max(1, size.height) || 1);
+    // The subject sits in the top part of the view; the inset below it is left empty (the ground's front edge and a stage's buttons).
+    const reserved = clamp(inset / Math.max(1, size.height), 0, 0.45);
+    const height = shown.height / (1 - reserved);
+    frameCamera(camera, { y: shown.y + shown.height / 2 - height / 2, height, width: shown.width }, size.width / Math.max(1, size.height) || 1);
   }
   function render() {
     if (disposed || lost || !size.width || !size.height) return;
@@ -247,11 +257,21 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
     return true;
   }
   function setFocus(next: string): boolean {
-    const wanted = next === 'head' ? 'head' : 'body';
+    const wanted = asFocus(next);
     if (disposed || wanted === focus) return false;
     focus = wanted;
-    const from = zoom, to = wanted === 'head' ? 1 : 0;
-    animate('zoom', 340, (t: number) => { zoom = from + (to - from) * ease(t); });
+    const from = { ...shown }, to = FRAMES[wanted];
+    animate('zoom', 340, (t: number) => {
+      const k = ease(t);
+      shown = { y: from.y + (to.y - from.y) * k, height: from.height + (to.height - from.height) * k, width: from.width + (to.width - from.width) * k };
+    });
+    return true;
+  }
+  function setInset(px: number): boolean {
+    const next = Math.max(0, Math.round(px));
+    if (disposed || next === inset) return false;
+    inset = next;
+    render();
     return true;
   }
   function rotate(delta: number): void {
@@ -259,6 +279,14 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
     stop('inertia');
     yaw += delta;
     render();
+  }
+
+  /** Turn by `delta` radians with a short ease (bounded like every animation here); with reduced motion, at once. */
+  function turnBy(delta: number): void {
+    if (disposed || !delta) return;
+    stop('inertia');
+    const from = yaw;
+    animate('turn', 420, (t: number) => { yaw = from + delta * ease(t); });
   }
 
   // Drag to spin: one frame per pointer event, then a short ease to rest.
@@ -319,7 +347,7 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
   }
 
   const api: AvatarPreview = {
-    canvas, setLook, setFocus, rotate, resize, attach,
+    canvas, setLook, setFocus, setInset, rotate, turnBy, resize, attach,
     setLabel(text: unknown) { canvas.setAttribute?.('aria-label', String(text ?? '')); },
     diagnostics: () => ({ renderCount, frames, animating: tweens.size > 0 || frameId !== 0, live: previewStats.live, lost, disposed, triangles: avatar?.userData.triangles ?? 0, yaw, focus, lastRenderMs: Math.round(lastMs * 10) / 10 }),
     dispose() {

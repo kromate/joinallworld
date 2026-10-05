@@ -30,6 +30,8 @@ const panel = computed(() => (sheet.value?.kind === 'panel' ? shell.byId.get(she
 const lock = computed(() => { void game.view.value; return sheet.value ? shell.lockOf() : null })
 const phone = ref<InstanceType<typeof PhoneDeviceType> | null>(null)
 const content = ref<HTMLElement | null>(null)
+/** A panel that takes the whole screen (the character creator): no app bar, no lock note, no corner button. */
+const fullscreen = computed(() => panel.value?.fullscreen === true)
 
 function onClose(by: 'escape' | 'backdrop' | 'button'): void {
   if (by === 'escape') {
@@ -50,7 +52,7 @@ watch(() => (sheet.value ? `${sheet.value.kind}:${sheet.value.kind === 'panel' ?
 </script>
 
 <template>
-  <BaseSheet id="life-dialog" :open="Boolean(sheet)" :locked="Boolean(lock)" :data-phone="inPhone ? '' : undefined" :label="inPhone ? 'Phone' : undefined" :class="{ 'is-phone': inPhone }" @close="onClose" @refused="refused">
+  <BaseSheet id="life-dialog" :open="Boolean(sheet)" :locked="Boolean(lock)" :data-phone="inPhone ? '' : undefined" :label="inPhone ? 'Phone' : fullscreen ? panel?.title : undefined" :class="{ 'is-phone': inPhone, 'is-fullscreen': fullscreen }" @close="onClose" @refused="refused">
     <div v-if="sheet" id="life-dialog-content" ref="content">
       <PhoneDevice v-if="inPhone" ref="phone" />
       <template v-else-if="sheet.kind === 'help'">
@@ -58,6 +60,7 @@ watch(() => (sheet.value ? `${sheet.value.kind}:${sheet.value.kind === 'panel' ?
         <div class="sheet-body"><HelpBody /></div>
       </template>
       <SimSheet v-else-if="sheet.kind === 'sim'" :tab="sheet.tab" :params="sheet.params" />
+      <PanelHost v-else-if="panel && fullscreen" :key="panel.id" class="sheet-fullscreen" :panel="panel" :params="sheet.kind === 'panel' ? sheet.params : null" />
       <template v-else-if="panel">
         <AppBar :title="`${panel.icon ?? ''} ${panel.title}`.trim()" :back="sheet.kind === 'panel' && sheet.from === 'phone' ? 'Back to phone' : null" @back="shell.open('phone')" />
         <p v-if="lock" class="sheet-lock" role="note">🔒 {{ lock.reason }}</p>

@@ -19,7 +19,7 @@ export interface StageHandle {
   /** False once the stage has left the page. */
   connected(): boolean
 }
-export interface PreviewRequest { stage: StageHandle; look: SceneLook; focus: PreviewFocus; label: string }
+export interface PreviewRequest { stage: StageHandle; look: SceneLook; focus: PreviewFocus; label: string; /** Pixels at the bottom of the stage kept clear of the character. */ inset?: number }
 
 type AvatarModule = typeof import('../../../scene/avatar-preview.ts')
 let scene3d: AvatarModule | null = null
@@ -43,7 +43,7 @@ export function releaseLookPreview(): void {
 function show(): void {
   const request = wanted
   if (!request || !request.stage.connected()) return
-  const { stage, look, focus, label } = request
+  const { stage, look, focus, label, inset = 0 } = request
   const key = JSON.stringify(look)
   const react = lastShown !== '' && lastShown !== key
   lastShown = key
@@ -51,7 +51,7 @@ function show(): void {
     if (!preview) {
       if (!scene3d) return
       preview = scene3d.createAvatarPreview(stage.host, {
-        look, focus, label,
+        look, focus, label, inset,
         onSpin: markSpun,
         // The context was lost: every stage shows the flat figure; the next stage to appear tries again.
         onLost() { releaseLookPreview(); for (const other of stages) other.setMode('2d') },
@@ -59,6 +59,7 @@ function show(): void {
     } else {
       preview.attach(stage.host)
       preview.setLook(look, { react })
+      preview.setInset(inset)
       preview.setFocus(focus)
       preview.setLabel(label)
     }
@@ -96,6 +97,9 @@ export function warmLookPreview(): Promise<void> {
 
 /** The preview alone follows a Face / Full body switch. */
 export function setPreviewFocus(focus: PreviewFocus): void { preview?.setFocus(focus) }
+
+/** Turn the character with a short ease: a quarter turn, or π to see it from behind. */
+export function turnPreview(radians: number): void { preview?.turnBy(radians) }
 
 /**
  * A stage left the page. The preview lives exactly as long as a stage is on it: when the last one

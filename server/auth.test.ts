@@ -708,7 +708,7 @@ test('M2 — over HTTPS the cookie is __Host-sid: a sibling host cannot plant it
 test('N3 — validly signed tokens of throwaway, unconfirmed accounts cannot spend the shared sign-in bucket: 320 of them from 320 addresses, then a real sign-in works', async t => {
   const a = await accounts(t, { trustProxy: true });
   for (let i = 0; i < 320; i++) {
-    const response = await a.call('/api/account/sign-in', { idToken: await a.token(`UidThrowaway${i}`, { verified: false }) }, null, { 'X-Forwarded-For': `2001:db8::${(i + 1).toString(16)}` });
+    const response = await a.call('/api/account/sign-in', { idToken: await a.token(`UidThrowaway${i}`, { verified: false }) }, null, { 'X-Forwarded-For': `2001:db8:0:${(i + 1).toString(16)}::1` }); // 320 networks: addresses inside one /64 are one visitor
     assert.equal(response.status, 403, `attempt ${i}`); await response.arrayBuffer();
   }
   const real = await a.call('/api/account/sign-in', { idToken: await a.token('UidAda') }, null, { 'X-Forwarded-For': '203.0.113.200' });

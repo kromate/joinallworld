@@ -324,7 +324,10 @@ test('Cloudflare: a flood of hour-long rows cannot erase the operator guard or a
   const ada = await f.device('Ada');
   assert.deepEqual(await f.spend(599, () => f.request('/api/session', null, ada.cookie)), { 200: 599 });
   // The flood: the hour-long table full (what unauthenticated e-mail requests used to leave), then more new keys arriving.
-  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 10000) INSERT OR REPLACE INTO rate_limits_long(key,started_at,count,expires_at) SELECT 'growth:email:flood-' || i, ${Date.now()}, 1, ${Date.now() + 3600000} + i FROM n`);
+  // (The table is topped up to its bound: it already holds the row of the session made above.)
+  const held = Number((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_long'))[0].n);
+  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < ${10000 - held}) INSERT OR REPLACE INTO rate_limits_long(key,started_at,count,expires_at) SELECT 'growth:email:flood-' || i, ${Date.now()}, 1, ${Date.now() + 3600000} + i FROM n`);
+  assert.equal((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_long'))[0].n, 10000, 'the long table is full');
   for (let i = 0; i < 30; i++) await f.request('/api/growth/email', { consent: true, email: `x${i}@example.test` }, null, ip(400 + i));
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_long WHERE key LIKE 'growth:email:203.%'"))[0].n, 0, 'a request without a session makes no hour-long row');
   for (let i = 0; i < 300; i++) await f.request('/api/health', null, null, ip(800 + i));

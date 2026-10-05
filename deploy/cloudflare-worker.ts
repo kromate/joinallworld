@@ -57,8 +57,8 @@ import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
-import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from '../server/host-context.ts';
+import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig, SOCKETS_PER_ADDRESS } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
@@ -97,12 +97,6 @@ const digest = async (value: string): Promise<string> => [...new Uint8Array(awai
 /** Compare two digests of equal length without stopping at the first difference. */
 function sameDigest(a: unknown, b: unknown): boolean { if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false; let diff = 0; for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i); return diff === 0; }
 const firstLine = (error: unknown): string => { try { return String((error as { message?: unknown } | null | undefined)?.message ?? error).split('\n')[0]?.slice(0, 300) ?? ''; } catch { return 'unprintable error'; } };
-function addressBucket(ip: string): string {
-  if (!ip.includes(':')) return ip;
-  const [left, right = ''] = ip.toLowerCase().split('::');
-  const start = left ? left.split(':') : [], end = right ? right.split(':') : [];
-  return [...start, ...Array(Math.max(0, 8 - start.length - end.length)).fill('0'), ...end].slice(0, 4).map(part => parseInt(part || '0', 16).toString(16)).join(':');
-}
 async function bodyOf(request: Request): Promise<Record<string, unknown>> {
   if (!request.headers.get('content-type')?.startsWith('application/json')) throw protocolError(415, 'json_required');
   const reader = request.body?.getReader();
@@ -604,7 +598,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     // `secret` is the stored record's key; `device` is the cookie the browser presented, the only value ever sent back to it.
     const info = await this.store.transact(db => { const s = request.requireSession(db, { renew: true }); return { secret: s.secret as string, device: request.cookie as string, session: publicSession(s), expiresAt: s.expiresAt }; });
     const peers = [...this.peers.values()].filter(ws => ws.readyState === 1);
-    if (peers.length >= 1024 || peers.filter(ws => ws.secret === info.secret).length >= 8 || peers.filter(ws => ws.ip === request.ip).length >= 32) throw protocolError(503, 'socket_capacity');
+    if (peers.length >= 1024 || peers.filter(ws => ws.secret === info.secret).length >= 8 || peers.filter(ws => ws.ip === request.ip).length >= SOCKETS_PER_ADDRESS) throw protocolError(503, 'socket_capacity');
     const pair = new WebSocketPair(), socket = pair[1]; this.ctx.acceptWebSocket(socket);
     const ws = this.wrap(socket, { ...info, ip: request.ip, room: null, closed: false, alive: true, pingedAt: 0, seenAt: Date.now(), lastSessionRenewedAt: Date.now() });
     this.handlers.open(ws); this.saveSockets();

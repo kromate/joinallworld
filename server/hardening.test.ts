@@ -5,6 +5,10 @@ import assert from 'node:assert/strict';
 import { fixture } from './test-fixture.ts';
 import type { Device, TestSocket } from './test-fixture.ts';
 import type { LiveCity, LiveSnapshotFrame } from '../src/types/live.ts';
+import { once } from 'node:events';
+import { WebSocket } from 'ws';
+import { addressBucket } from './host-context.ts';
+import { isSharedAddress, NEW_SESSIONS_PER_ADDRESS, SOCKETS_PER_ADDRESS } from './protocol.ts';
 
 type Fixture = Awaited<ReturnType<typeof fixture>>;
 interface Reply { status: number; [field: string]: unknown }
@@ -103,4 +107,55 @@ test('confirmation e-mails: one address is written to a few times a day whoever 
   for (const name of ['Ada', 'Bola', 'Chidi']) more.push((await post(two.f, '/api/growth/email', { email: `${name.toLowerCase()}@example.com`, consent: true }, await two.adult(name))).code);
   assert.deepEqual(more, ['confirm_sent', 'confirm_sent', 'try_later']);
   assert.equal(two.sent.length, 2);
+});
+
+test('the address a limit is keyed on: an IPv6 address is its /64, an IPv4 address is itself, and a digest is never a private network', () => {
+  assert.equal(addressBucket('2001:db8:12:34:aaaa:bbbb:cccc:dddd'), addressBucket('2001:db8:12:34::1'));
+  assert.notEqual(addressBucket('2001:db8:12:34::1'), addressBucket('2001:db8:12:35::1'));
+  assert.equal(addressBucket('2001:DB8::1'), '2001:db8:0:0');
+  assert.equal(addressBucket('203.0.113.9'), '203.0.113.9');
+  assert.equal(addressBucket('::ffff:203.0.113.9'), '203.0.113.9', 'an IPv4 address written as IPv6 is that IPv4 address');
+  assert.notEqual(addressBucket('::ffff:203.0.113.9'), addressBucket('::ffff:203.0.113.10'));
+  assert.equal(addressBucket('::1'), '::1');
+  assert.equal(isSharedAddress(addressBucket('fd00::1')), true);
+  assert.equal(isSharedAddress(addressBucket('fe80::1234')), true);
+  // The Worker host keys on a SHA-256 of the address: one that begins with these letters is not a private range.
+  for (const digest of ['fc', 'fd', 'fe80'].map(head => head.padEnd(64, '0'))) assert.equal(isSharedAddress(digest), false, digest);
+});
+
+test('one network address makes a bounded number of new sessions an hour, wherever in its /64 it asks from', async t => {
+  const f = await fixture(t, { trustProxy: true });
+  const create = async (address: string, name: string): Promise<number> => {
+    const res = await fetch(`${f.base}/api/session`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': address }, body: JSON.stringify({ name }) });
+    await res.arrayBuffer();
+    return res.status;
+  };
+  let made = 0;
+  for (let i = 0; i < NEW_SESSIONS_PER_ADDRESS + 5; i++) if (await create(`2001:db8:1:2::${(i + 1).toString(16)}`, `Guest ${i}`) === 200) made += 1;
+  assert.equal(made, NEW_SESSIONS_PER_ADDRESS);
+  assert.equal(await create('2001:db8:1:2:ffff::9', 'One more'), 429);
+  // Another network is not affected, a session that exists is not counted, and the hour passes.
+  assert.equal(await create('2001:db8:1:3::1', 'Neighbour'), 200);
+  assert.equal(await create('198.51.100.7', 'Elsewhere'), 200);
+  f.advance(3600000);
+  assert.equal(await create('2001:db8:1:2::1', 'Later'), 200);
+});
+
+test('one network address holds a bounded number of sockets, so it cannot take every place on the server', async t => {
+  const f = await fixture(t, { trustProxy: true });
+  const from = '203.0.113.40';
+  const open = async (device: Device, address: string): Promise<boolean> => {
+    const ws = new WebSocket(`${f.base.replace('http', 'ws')}/socket`, { headers: { Cookie: device.cookie, Origin: f.base, 'X-Forwarded-For': address } });
+    ws.on('error', () => {});
+    t.after(() => ws.terminate());
+    const [event] = await Promise.race([once(ws, 'open').then(() => ['open']), once(ws, 'unexpected-response').then(() => ['refused']), once(ws, 'close').then(() => ['refused'])]);
+    return event === 'open';
+  };
+  // Eight sockets a session: five sessions would be forty.
+  const devices: Device[] = [];
+  for (let i = 0; i < 5; i++) devices.push(await f.device(`Holder ${i}`));
+  let held = 0;
+  for (const device of devices) for (let i = 0; i < 8; i++) if (await open(device, from)) held += 1;
+  assert.equal(held, SOCKETS_PER_ADDRESS);
+  assert.equal(await open(await f.device('Visitor'), '203.0.113.41'), true, 'a visitor from another address still connects');
 });

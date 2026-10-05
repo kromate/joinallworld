@@ -103,6 +103,20 @@ export const isStrictOrigin = (origin: string | null | undefined, host: string |
   try { const url = new URL(origin); return url.host === host && (secure ? url.protocol === 'https:' : ['http:', 'https:'].includes(url.protocol)); } catch { return false; }
 };
 
+/**
+ * THE ADDRESS A LIMIT IS KEYED ON, on both hosts. An IPv4 address is itself (also when it arrives written as an
+ * IPv4-mapped IPv6 address). An IPv6 address is its /64: a network hands one subscriber at least that much, so every
+ * address inside it is the same visitor, and a limit keyed on the full address could be dodged by changing the last
+ * bits. The loopback address stays as it is.
+ */
+export function addressBucket(ip: string): string {
+  const text = ip.toLowerCase().replace(/^::ffff:(?=\d{1,3}(?:\.\d{1,3}){3}$)/, '');
+  if (!text.includes(':') || text === '::1') return text;
+  const [left, right = ''] = text.split('::');
+  const start = left ? left.split(':') : [], end = right ? right.split(':') : [];
+  return [...start, ...Array(Math.max(0, 8 - start.length - end.length)).fill('0'), ...end].slice(0, 4).map(part => parseInt(part || '0', 16).toString(16)).join(':');
+}
+
 /** The longest an outside request (ctx.fetch) may take, whatever its caller asked for. */
 export const OUTBOUND_TIMEOUT_MS = 15000;
 /**

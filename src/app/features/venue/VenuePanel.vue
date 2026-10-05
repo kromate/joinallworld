@@ -80,9 +80,9 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
     </header>
     <div ref="rail" class="life-spots">
       <button class="life-expand" :class="{ 'is-expanded': ui.expanded }" type="button" :aria-expanded="ui.expanded" :aria-label="`${ui.expanded ? 'Hide' : 'Show'} activities`" title="Activities (T)" @click="ui.expanded = !ui.expanded"><GameIcon name="chevron-down" /></button>
+      <button v-if="market" type="button" data-shops title="Players’ stalls at this market, and renting one" @click="shell.open('business', { venue: venue.id })"><GameIcon inline name="buy" /><span>Shops here</span></button>
       <button v-for="(item, index) in spots" :key="item.id" type="button" :data-spot="item.id" :class="{ 'is-selected': item.id === state.spot }" :aria-pressed="item.id === state.spot" :aria-busy="pending === `spot:${item.id}`" :title="`Shortcut ${index + 1}`" @click="selectSpot(item.id)"><GameIcon inline kind="spot" :id="item.id" :emoji="item.icon" /><span>{{ item.label }}</span></button>
       <button v-if="!privateHome && !spots.some((item) => item.id === 'people')" type="button" @click="community.toggle(true)"><GameIcon inline name="people" /><span>People</span></button>
-      <button v-if="market" type="button" data-shops title="Players’ stalls at this market, and renting one" @click="shell.open('business', { venue: venue.id })"><GameIcon inline name="buy" /><span>Shops here</span></button>
     </div>
     <template v-if="ui.expanded">
       <p v-if="state.activeAction" class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>

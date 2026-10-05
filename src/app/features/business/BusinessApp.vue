@@ -220,7 +220,7 @@ const rules = [
           <template v-if="!stalls.mine">
             <SectionTitle>Open a stall here</SectionTitle>
             <div class="biz-card biz-form">
-              <div class="ui-seg" role="group" aria-label="What to sell">
+              <div class="biz-types" role="group" aria-label="What to sell">
                 <button v-for="type in stalls.types" :key="type.id" type="button" :aria-pressed="draft.type === type.id" @click="draft.type = type.id">{{ type.label }}</button>
               </div>
               <template v-if="picked">
@@ -251,7 +251,12 @@ const rules = [
 </template>
 
 <style scoped>
-.biz { display: grid; gap: var(--s-2); }
+.biz { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
+.biz-types { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.biz-types button { min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: var(--c-fill); font: 600 13px var(--font); cursor: pointer; }
+.biz-types button[aria-pressed=true] { background: var(--c-ink); color: #fff; }
+.biz-types button:focus-visible { outline: var(--focus); outline-offset: 2px; }
+:global(.ph.is-wide) .biz-types { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 620px; }
 .biz-note { font-size: 12.5px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-1) 2px !important; }
 .biz-alert { margin: 0 !important; padding: 10px 14px; border-radius: var(--r-md); background: var(--c-red-soft); color: var(--c-red-dark); font-size: 13px !important; line-height: 1.4 !important; font-weight: 600; }
 .biz-card { border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); padding: 12px 14px; }

@@ -30,6 +30,7 @@ New here? [docs/FIRST-CHANGE.md](docs/FIRST-CHANGE.md) walks through one small c
 | The rules: what an action does to cash, needs, skills, time | `src/life.ts` (the public entry) and `src/game/systems/` (one file per system). `src/game/registry.ts` is the contract for a system |
 | Shared content: jobs, food, furniture, cars, traits, goals, missions | `src/game/content/` (plain data) |
 | A city: its venues, activities, fares, local governments, links | `src/game/cities/<city>/` (one folder per city; [docs/CITIES.md](docs/CITIES.md)) |
+| Player-owned businesses: shop types, products, prices, caps | `src/game/content/business.ts` (the numbers), `src/game/business-model.ts` (the rules), `server/business/` (the shared record); [docs/BUSINESS.md](docs/BUSINESS.md) |
 | A screen, sheet or phone app | `src/app/features/<group>/` (Vue components). `src/app/features/panels.ts` is the contract for a panel; `src/app/state/` holds the stores, `src/app/ui/` the base components |
 | Shared styles, keyboard shortcuts, the control kit | `src/ui/` (`tokens.css`, `keys.ts`, `controls.ts`) |
 | The 3D city map and the atlas | `src/map3d/` (`geo/` is the atlas; [docs/MAP-GEOMETRY.md](docs/MAP-GEOMETRY.md)) |

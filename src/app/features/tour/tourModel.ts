@@ -61,7 +61,7 @@ export const STEPS: readonly TourStep[] = [
     text: 'Jobs, Bank, Messages, Missions and more are apps in your phone.', task: 'Tap Phone to open it.',
     doneText: 'These are your apps. Jobs finds you work, Bank keeps your money, Messages keeps you in touch and Missions gives you something to aim for.' },
   { id: 'people', title: 'People', targets: ['online', 'community'], needs: ['online', 'community', 'invite', 'call'],
-    text: (context) => `Other people live here too. Open Community to talk to whoever is around.${context.has('call') ? ' Call a friend when they are online.' : ''}${context.has('invite') ? ' Tap Invite to bring a friend with your link.' : ''}` },
+    text: (context) => `Other people live here too.${context.has('online') ? ' The green count shows who is online: tap it to meet them.' : ' Open Community to talk to whoever is around.'} ${context.has('online') || context.has('call') ? 'Tap a player to chat, or press Call to ring them; they choose whether to answer.' : ''}${context.has('invite') ? ' Invite brings a friend in with your link.' : ''}`.trim() },
   { id: 'done', title: 'You’re set', text: 'Need this again? Open Phone, then Help, then Take the tour. Press ? any time for the shortcuts.', action: { label: 'See the shortcuts', run: 'shortcuts' } },
 ]
 

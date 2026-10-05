@@ -102,8 +102,9 @@ test('the people step says only what is on screen', () => {
   const people = STEPS.find((step) => step.id === 'people')!
   const say = (present: string[]): string => wordsOf(people, context(present), false).text
   assert.doesNotMatch(say(['community']), /Call|Invite/)
-  assert.match(say(['community', 'call']), /Call a friend/)
-  assert.match(say(['online', 'invite']), /Invite to bring a friend with your link/)
+  assert.match(say(['community', 'call']), /press Call to ring them/)
+  assert.match(say(['online', 'invite']), /Invite brings a friend in with your link/)
+  assert.match(say(['online']), /who is online/)
 })
 
 test('the activity step speaks of the home when the player lands there; interactive steps change their words when done', () => {

@@ -24,6 +24,6 @@ async function press(): Promise<void> {
 </script>
 
 <template>
-  <button type="button" class="ui-button" :class="compact ? 'is-small' : 'is-primary is-block'" data-call="start-call" :disabled="Boolean(reason)" :title="reason ?? undefined" :aria-label="`Call ${name}${reason ? `. ${reason}` : ''}`" @click="press">Call</button>
+  <button type="button" class="ui-button" :class="compact ? 'is-small' : 'is-primary is-block'" data-call="start-call" data-tour="call" :disabled="Boolean(reason)" :title="reason ?? undefined" :aria-label="`Call ${name}${reason ? `. ${reason}` : ''}`" @click="press">Call</button>
   <span v-if="reason && !compact" class="social-why">{{ reason }}</span>
 </template>

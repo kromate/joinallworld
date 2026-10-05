@@ -46,7 +46,7 @@ watch(connected, (on) => { if (on) pulse.start(); else { pulse.stop(); pulse.res
 </script>
 
 <template>
-  <button v-if="shown" class="pulse-pill" type="button" :title="title" :aria-label="aria" @click="shell.open('people')">
+  <button v-if="shown" class="pulse-pill" data-tour="online" type="button" :title="title" :aria-label="aria" @click="shell.open('people')">
     <i class="pulse-dot" :class="`is-${tone}`" aria-hidden="true"></i>
     <span class="pulse-online">{{ compactCount(online) }}<span class="pulse-word"> online</span></span>
     <span class="pulse-visits"><span class="pulse-sep" aria-hidden="true"> · </span>{{ compactCount(visits) }} visits</span>

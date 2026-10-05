@@ -141,7 +141,7 @@ onBeforeUnmount(() => {
 
 <template>
   <span v-if="shown" class="inv-slot">
-    <button type="button" class="inv-button" aria-label="Invite your friends" title="Invite your friends" :disabled="sending" data-invite-button @click="press">
+    <button type="button" class="inv-button" aria-label="Invite your friends" title="Invite your friends" :disabled="sending" data-invite-button data-tour="invite" @click="press">
       <GameIcon name="people" :size="17" /><span class="inv-label">Invite</span>
     </button>
     <InviteChip v-if="prompt" :moment="prompt" @accept="accept" @dismiss="dismiss" />

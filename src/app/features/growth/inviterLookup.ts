@@ -17,5 +17,5 @@ export async function inviterName(fetchJson: FetchJson, code: string): Promise<s
 /** The bold line and the sentence of the quick start's "invited you" note. */
 export const invitedWords = (name: string | null): { title: string; text: string } => ({
   title: name ? `${name} invited you.` : 'A friend invited you.',
-  text: name ? `Make your Sim, tap Play and you land where ${name} is.` : 'Tap Play and you land where they are.',
+  text: name ? `Make your character, tap Play and you land where ${name} is.` : 'Tap Play and you land where they are.',
 })

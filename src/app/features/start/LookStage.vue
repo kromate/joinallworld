@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<{
   /** Whose Sim it is, for the text alternative. */
   name?: string
   caption?: string
-}>(), { variant: 'hero', name: 'Your Sim', caption: '' })
+}>(), { variant: 'hero', name: 'Your character', caption: '' })
 
 const mini = computed(() => props.variant === 'mini')
 const mode = ref<StageMode>('loading')

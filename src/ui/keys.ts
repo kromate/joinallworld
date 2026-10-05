@@ -36,7 +36,7 @@ export const SHORTCUTS: Shortcut[] = [
   { keys: ['h'], label: 'H', description: 'Home', run: 'nav:home' },
   { keys: ['b'], label: 'B', description: 'Buy', run: 'open:buy' },
   { keys: ['p'], label: 'P', description: 'Phone', run: 'open:phone' },
-  { keys: ['i'], label: 'I', description: 'Your Sim', run: 'open:sim' },
+  { keys: ['i'], label: 'I', description: 'Your character', run: 'open:sim' },
   { keys: ['t'], label: 'T', description: 'Show or hide activities', run: 'toggle:activities' },
   ...Array.from({ length: 9 }, (_, i) => ({ keys: [String(i + 1)], label: String(i + 1), description: `Spot ${i + 1}`, run: `spot:${i + 1}`, group: 'spots' })),
   { keys: ['e'], label: 'E', description: 'People here', run: 'open:people' },

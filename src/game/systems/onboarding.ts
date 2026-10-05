@@ -29,7 +29,7 @@ import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
  *   done         boolean — the life has moved in. Traits and lottery effects apply only once true.
  *   legacy       boolean — true for a life saved before character creation existed: it is treated
  *                as onboarded with the default look, keeps everything it had, and is never asked
- *                to create a character (it may edit its look in Sim → Profile).
+ *                to create a character (it may edit its look in your Profile).
  *   step         0–5: index of the next step in ONBOARDING_STEPS still to be confirmed (5 = done)
  *   seed         cash the life was created with, so the start-cash grant tops the wallet up to
  *                the chosen home's start cash instead of adding to it
@@ -320,12 +320,12 @@ function homeLock(outcome: LotteryOutcome | null | undefined, houseId: StartHome
 }
 
 const notDone = (state: LifeState) => (state.onboarding.done
-  ? fail(state, 'already_onboarded', 'Your Sim is already created. Change your look in Sim → Profile, or shop in Phone → Boutique.') : null);
+  ? fail(state, 'already_onboarded', 'Your character is already created. Change your look in your Profile, or shop in Phone → Boutique.') : null);
 // `step` is at most 4 here, and below it the step index is in range of ONBOARDING_STEPS.
 const needStep = (state: LifeState, step: number) => (state.onboarding.step < step
   ? fail(state, 'step_required', `Finish the ${ONBOARDING_STEPS[state.onboarding.step]!.label} step first.`) : null);
 const reach = (state: LifeState, step: number): void => { state.onboarding.step = Math.max(state.onboarding.step, step); };
-const mustBeDone = (state: LifeState) => (state.onboarding.done ? null : fail(state, 'onboarding_required', isGuest(state.onboarding) ? 'Settle in first: tap the "Settle in" goal. The Boutique and your wardrobe open once you have a home.' : 'Finish creating your Sim first: tap the "Create your Sim" goal.'));
+const mustBeDone = (state: LifeState) => (state.onboarding.done ? null : fail(state, 'onboarding_required', isGuest(state.onboarding) ? 'Settle in first: tap the "Settle in" goal. The Boutique and your wardrobe open once you have a home.' : 'Finish creating your character first: tap the "Create your character" goal.'));
 
 function giveBonus(state: LifeState, tags: string[]): void {
   const bonus = bonusNeeds(sources(state), tags);
@@ -345,7 +345,7 @@ const actions = {
     const blocked = notDone(state);
     if (blocked) return blocked;
     const o = state.onboarding;
-    if (!isGuest(o)) return fail(state, 'not_a_guest', 'This life was not started with the quick start. Tap the "Create your Sim" goal to choose your look.');
+    if (!isGuest(o)) return fail(state, 'not_a_guest', 'This life was not started with the quick start. Tap the "Create your character" goal to choose your look.');
     const { look, reason } = checkLook(payload?.look, { starter: true });
     if (!look) return fail(state, 'invalid_look', reason);
     o.look = look;
@@ -499,9 +499,9 @@ const actions = {
     const extra = kind === 'accessories';
     if (!(isKind(kind) || extra) || typeof id !== 'string' || !Object.hasOwn(BOUTIQUE_PRICES[kind], id)) return fail(state, 'invalid_item', 'Choose a hairstyle, outfit, fabric or accessory from the Boutique list.');
     if (!extra && !optionsFor(kind, o.look.body).includes(id)) {
-      return fail(state, 'wrong_body', `${name(id)} is not made for the ${o.look.body} body. Switch body in Sim → Profile first.`);
+      return fail(state, 'wrong_body', `${name(id)} is not made for the ${o.look.body} body. Switch body in your Profile first.`);
     }
-    if (extra ? isOneOf(ownedAccessories(o), id) : ownsStyle(o, kind, id)) return fail(state, 'already_owned', `You already own ${name(id)}. Put it on in Sim → Profile.`);
+    if (extra ? isOneOf(ownedAccessories(o), id) : ownsStyle(o, kind, id)) return fail(state, 'already_owned', `You already own ${name(id)}. Put it on in your Profile.`);
     const price = priceOfStyle(kind, id);
     if (!canAfford(state, price)) return fail(state, 'insufficient_funds', `${name(id)} costs ${naira(price)}; you have ${naira(state.cash)}.`);
     debit(state, price, `Boutique: ${name(id)} ${kindWord(kind)}`, ctx);
@@ -621,7 +621,7 @@ export default {
   view(state: LifeState): OnboardingView {
     const o = state.onboarding, outcome = outcomeOf(state), mood = moodOf(state);
     const word = moodWord(mood.score);
-    const notYet = isGuest(o) ? 'Settle in first.' : 'Finish creating your Sim first.';
+    const notYet = isGuest(o) ? 'Settle in first.' : 'Finish creating your character first.';
     return {
       stage: o.stage, guest: isGuest(o), done: o.done, legacy: o.legacy, required: o.required && !o.done, step: o.step,
       /** The first-minute timings in server ms (null until they happen) and what a guest has done so far. */

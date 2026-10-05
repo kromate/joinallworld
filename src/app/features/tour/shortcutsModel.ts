@@ -56,7 +56,7 @@ const DESKTOP: ShortcutGroup[] = [
   ] },
   { id: 'panels', title: 'Phone and panels', rows: [
     keys(['open:phone'], 'Phone'),
-    keys(['open:sim'], 'Your Sim: profile, needs, goals'),
+    keys(['open:sim'], 'Your character: profile, needs, goals'),
     keys(['nav:home'], 'Go home'),
     keys(['open:buy'], 'Buy furniture'),
     keys(['open:people'], 'People here'),
@@ -99,7 +99,7 @@ const TOUCH: ShortcutGroup[] = [
   ] },
   { id: 'panels', title: 'Phone and panels', rows: [
     gesture(['Tap'], 'Home, Buy, Map and Phone at the bottom'),
-    gesture(['Tap'], 'Your avatar for your Sim'),
+    gesture(['Tap'], 'Your avatar for your character'),
     gesture(['Tap'], 'The eye to hide the panels'),
   ] },
   { id: 'chat', title: 'Chat and voice', rows: [

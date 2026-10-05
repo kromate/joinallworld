@@ -326,7 +326,7 @@ test('Bring a friend: figures, titles, rewards and the friends list words', () =
   assert.equal(heroFigure(3), '3 friends playing because of you')
   assert.equal(heroNote(referral({ title: 'Connector', nextTitle: { id: 'x', count: 5, label: 'Host' }, counted: 3 })), 'Your title: Connector. 2 more for “Host”.')
   assert.equal(heroNote(referral()), '')
-  assert.equal(friendState({ state: 'joined' }), 'Made a Sim · has not worked two days yet')
+  assert.equal(friendState({ state: 'joined' }), 'Made a character · has not worked two days yet')
   assert.equal(friendState({ state: 'counted' }), 'Playing · counted')
   assert.equal(waitingLine(null), 'Loading your invites…')
   assert.equal(waitingLine('Not ready yet.'), 'Not ready yet.')

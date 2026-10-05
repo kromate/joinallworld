@@ -18,7 +18,7 @@ export const STEPS: readonly StepDef[] = [
   { id: 'look', label: 'Look', title: 'Make it yours', lead: 'Change anything. The character on the left follows every choice, and you can turn it around.' },
   { id: 'spirit', label: 'Spirit', title: 'What drives you?', lead: 'Two traits and a dream shape how your life plays out. We picked some for you: keep them, or choose your own.' },
   { id: 'home', label: 'Home', title: 'Where do you live?', lead: 'Everyone gets their own free starter house on a plot of their own. Pick the area it stands in.' },
-  { id: 'ready', label: 'Ready', title: 'Ready to start your life?', lead: 'This is you. Everything can still be changed later, in your Sim’s profile.' },
+  { id: 'ready', label: 'Ready', title: 'Ready to start your life?', lead: 'This is you. Everything can still be changed later, in your character’s profile.' },
 ]
 export const stepDef = (id: StepId): StepDef => STEPS.find((step) => step.id === id) ?? STEPS[0] as StepDef
 

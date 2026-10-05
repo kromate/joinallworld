@@ -330,7 +330,7 @@ function restyle(state: LifeState, payload: Record<string, unknown>, ctx: LifeCo
 
 function upgrade(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const e = state.estate, now = nowOf(state, ctx), to = tierOf(payload?.to), current = HOUSE_TIERS[e.tier];
-  if (state.onboarding && state.onboarding.done !== true) return fail(state, 'onboarding_required', 'Finish creating your Sim before you build.');
+  if (state.onboarding && state.onboarding.done !== true) return fail(state, 'onboarding_required', 'Finish creating your character before you build.');
   if (!to) return fail(state, 'invalid_tier', 'Choose a house from the list.');
   if (e.upgrade) return fail(state, 'upgrade_running', `The builders are still working on your ${HOUSE_TIERS[e.upgrade.to].label}: about ${Math.ceil((e.upgrade.doneAt - now) / 60000)} minutes to go.`);
   if (to.rank <= current.rank) return fail(state, 'not_an_upgrade', `You already have a ${current.label}. Choose a bigger house.`);

@@ -28,7 +28,7 @@ export type ItemControl =
 
 /** What an item's one control is, and the reason it is disabled ('' when it can be pressed). `offline` is already worded for this app. */
 export function itemControl(item: BoutiqueItem, input: { offline: string; done: boolean }): ItemControl {
-  const unfinished = input.done ? '' : 'Finish creating your Sim first.'
+  const unfinished = input.done ? '' : 'Finish creating your character first.'
   if (item.wearing && item.kind === 'accessories') return { kind: 'take-off', why: input.offline || unfinished }
   if (item.wearing) return { kind: 'worn' }
   if (item.owned) return { kind: 'wear', why: input.offline || unfinished }
@@ -37,5 +37,5 @@ export function itemControl(item: BoutiqueItem, input: { offline: string; done: 
 
 /** The small line under an item's name. */
 export function itemNote(item: Pick<BoutiqueItem, 'wearing' | 'owned' | 'price'>, money: (value: number) => string): string {
-  return item.wearing ? 'On your Sim now' : item.owned ? (item.price ? 'In your wardrobe' : 'Free · yours') : money(item.price)
+  return item.wearing ? 'On your character now' : item.owned ? (item.price ? 'In your wardrobe' : 'Free · yours') : money(item.price)
 }

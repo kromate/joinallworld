@@ -46,7 +46,7 @@ export const STARTER_GOALS: StarterGoal[] = [
   // This goal pays on arrival; the amount is provisional.
   { id: 'visit-buka', title: 'Visit the buka', hint: 'Open Map → Amala Shitta', icon: '🍛', cash: 1500, stars: 1, betaFields: ['cash'],
     done: { venue: 'amala-shitta' }, open: 'map', params: { destination: 'amala-shitta' } },
-  // Completes when you greet one of a venue's regulars (Say Hello) or make a friend. Tapping the chip opens Sim → People, which
+  // Completes when you greet one of a venue's regulars (Say Hello) or make a friend. Tapping the chip opens your People tab, which
   // lists who is here; at home it says to go out first.
   { id: 'make-a-friend', title: 'Make a new friend', hint: 'Tap someone at a venue', icon: '👋', cash: 1500, stars: 1,
     done: { events: ['npc.greeted', 'friend.made'], fresh: true }, open: 'people' },

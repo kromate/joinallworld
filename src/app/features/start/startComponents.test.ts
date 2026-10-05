@@ -158,7 +158,7 @@ test('a life that finished: its Sim is ready, with a way to edit the look', asyn
   await withState((state) => ({ ...state, name: 'Ada', onboarding: { ...state.onboarding, done: true, legacy: false, stage: 'settled' } }), async () => {
     const html = await render('OnboardingApp')
     const words = text(html)
-    assert.ok(words.includes('Ada is ready') && words.includes('Your Sim has moved in.') && words.includes('You can change your look any time in Sim → Profile.'))
+    assert.ok(words.includes('Ada is ready') && words.includes('Your character has moved in.') && words.includes('You can change your look any time in your Profile.'))
     assert.ok(words.includes('Edit look') && words.includes('Close'))
   })
   await resetCreator()

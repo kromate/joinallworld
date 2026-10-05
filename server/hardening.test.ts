@@ -70,3 +70,37 @@ test('the counts of a city are the same for every watcher, so a block cannot be 
   assert.equal((await post(f, '/api/social/block', { id: mallory.id, cityId: 'lagos' }, cy)).ok, true);
   assert.deepEqual(counts((await liveSnapshot(m)).city), before);
 });
+
+/** A server whose mail provider is a fake that accepts everything, with players who have answered the age question. */
+async function mailServer(t: Parameters<typeof fixture>[0], cap: string) {
+  const sent: string[] = [];
+  const provider = async (_url: string, init: RequestInit): Promise<Response> => { sent.push(String(init.body)); return new Response(null, { status: 202 }); };
+  const f = await fixture(t, { publicOrigin: 'https://play.example', fetch: provider, env: { ZEPTOMAIL_AUTH: 'Zoho-enczapikey TESTKEY-not-a-real-key', EMAIL_FROM_ADDRESS: 'hello@mail.play.example', EMAIL_DAILY_CAP: cap } });
+  const adult = async (name: string): Promise<Device> => {
+    const who = await f.device(name);
+    await get(f, '/api/life?city=lagos', who);
+    await post(f, '/api/growth/hello', { cityId: 'lagos' }, who);
+    assert.equal((await post(f, '/api/growth/consent', { cityId: 'lagos', age: 'adult' }, who)).status, 200);
+    return who;
+  };
+  return { f, sent, adult };
+}
+
+test('confirmation e-mails: one address is written to a few times a day whoever asks, and they stay inside the daily total', async t => {
+  // Four different players name the same address, which belongs to none of them.
+  const one = await mailServer(t, '500');
+  const codes: unknown[] = [];
+  for (const name of ['Ada', 'Bola', 'Chidi', 'Dayo']) codes.push((await post(one.f, '/api/growth/email', { email: 'Somebody@Example.com', consent: true }, await one.adult(name))).code);
+  assert.deepEqual(codes, ['confirm_sent', 'confirm_sent', 'confirm_sent', 'confirm_limit']);
+  assert.equal(one.sent.length, 3, 'the fourth request sent nothing');
+  // The next day the address may be asked again.
+  one.f.advance(86400000);
+  assert.equal((await post(one.f, '/api/growth/email', { email: 'somebody@example.com', consent: true }, await one.adult('Efe'))).code, 'confirm_sent');
+
+  // With a daily total of four, confirmations may use two of it, to whatever addresses.
+  const two = await mailServer(t, '4');
+  const more: unknown[] = [];
+  for (const name of ['Ada', 'Bola', 'Chidi']) more.push((await post(two.f, '/api/growth/email', { email: `${name.toLowerCase()}@example.com`, consent: true }, await two.adult(name))).code);
+  assert.deepEqual(more, ['confirm_sent', 'confirm_sent', 'try_later']);
+  assert.equal(two.sent.length, 2);
+});

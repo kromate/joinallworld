@@ -258,8 +258,9 @@ test('e-mail schedule: exactly once, quiet hours, the kill switch and the global
   // The player comes back: the run starts again.
   await hello(ada);
   // The global cap: three more confirmed players are due the same day, and the cap of two a day (none used yet today) stops the rest.
+  // (They confirm on three different days: a confirmation and its welcome are inside the same cap of two.)
   const others = [];
-  for (const name of ['Bola', 'Chidi', 'Dayo']) { const who = await player(name); await optIn(h, who, `${name.toLowerCase()}@example.com`); await awayOnly(h, who); others.push(who); }
+  for (const name of ['Bola', 'Chidi', 'Dayo']) { f.advance(DAY); const who = await player(name); await optIn(h, who, `${name.toLowerCase()}@example.com`); await awayOnly(h, who); others.push(who); }
   f.advance(3 * DAY + HOUR); await run();
   const view = await mod<OutreachOperatorResponse>('/api/mod/growth/outreach');
   assert.deepEqual([view.email.sentToday, view.email.dailyCap], [2, 2]);

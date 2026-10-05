@@ -96,9 +96,10 @@ test('Three.js, the maps, the scene hosts, the campus world, the models and the 
 })
 
 // ---- the built bundle ------------------------------------------------------------------------------------------------------------
-// Measured on the build of this change (raw bytes / gzip): app 173.3 kB / 63.9, vue 79.3 / 31.3, engine 263.8 / 93.0; total 516.3 / 188.2.
-// (Before the campus rules, the code only playing needs and the landing's look code left the first download: 674 / 239.) Budget: that + ~5%.
-const BUDGET = { raw: 542_000, gzip: 198_000 }
+// Measured on the build of this change (raw bytes / gzip): app 203.1 kB / 74.8, vue 85.6 / 33.8, engine 263.9 / 93.0; total 552.7 / 201.6.
+// (The shell grew with the online count, the Invite button, the tour's trigger and the call controller's loader; the QR encoder, the share sheet,
+// the call controller and the tour itself load on demand.) Budget: that + ~5%.
+const BUDGET = { raw: 580_000, gzip: 212_000 }
 
 function eagerChunks(dist: string): string[] {
   const html = readFileSync(join(dist, 'index.html'), 'utf8')

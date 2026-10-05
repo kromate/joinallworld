@@ -27,7 +27,7 @@
 // The lagoon is derived: Lagos State (ADM1, which includes the lagoon) minus the union of the 20 local governments
 // (ADM2, which are land only), found on a raster of 0.0002 degrees, traced, and simplified.
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, renameSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { project } from '../../src/map3d/geo/frame.ts';
@@ -116,7 +116,10 @@ async function load(key: keyof typeof SOURCES): Promise<GeoFeatureCollection> {
     mkdirSync(cacheDir, { recursive: true });
     const response = await fetch(source.url);
     if (!response.ok) throw new Error(`${source.url}: HTTP ${response.status}`);
-    writeFileSync(path, Buffer.from(await response.arrayBuffer()));
+    // Written beside the cache file and moved into place, so a second run started at the same moment never reads half a file.
+    const partial = `${path}.${process.pid}.part`;
+    writeFileSync(partial, Buffer.from(await response.arrayBuffer()));
+    renameSync(partial, path);
   }
   const raw = readFileSync(path);
   if (createHash('sha256').update(raw).digest('hex') !== source.sha256 || raw.length !== source.bytes) throw new Error(`${key}: the file does not match its pinned hash`);

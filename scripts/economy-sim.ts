@@ -1,5 +1,5 @@
 import { cachedCityContent, loadCityContent } from '../src/game/cities/registry.ts';
-await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'].map(loadCityContent));
+await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'].map(loadCityContent));
 /**
  * Economy simulation: scripted players on a virtual clock, played through the real rules engine
  * (createLife / dispatch / advanceLife — nothing here sets cash, needs or skills by hand).
@@ -682,6 +682,9 @@ export function simulateTraveller({ daysEach = 3 }: { daysEach?: number } = {}):
 // ---- Ogun lives ----------------------------------------------------------------------------------------------------------------
 /** The local government a simulated player settles in, in each open Ogun city. */
 export const OGUN_LGAS: Readonly<Record<string, string>> = Object.freeze({ abeokuta: 'abeokuta-south', ota: 'ado-odo-ota', 'ijebu-ode': 'ijebu-ode', sagamu: 'sagamu' });
+/** The local government or area council a simulated player settles in, in Port Harcourt, Abuja and Kano. */
+export const STATE_CITY_LGAS: Readonly<Record<string, string>> = Object.freeze({ 'port-harcourt': 'obio-akpor', abuja: 'bwari', kano: 'nassarawa' });
+const CITY_LGAS: Readonly<Record<string, string>> = { ...OGUN_LGAS, ...STATE_CITY_LGAS };
 
 /** Where a city's helper job is worked, and the first free activity at some other venue of the city. */
 function ogunPlaces(cityId: string) {
@@ -704,7 +707,7 @@ function ogunDay(player: Player, places: ReturnType<typeof ogunPlaces>, play: bo
 /** A new player who starts in one Ogun city: settles in a local government there, works the city's helper job and plays one of its places for `days`. */
 export function simulateOgunStart({ city = 'abeokuta', days = 14 }: { city?: string; days?: number } = {}): CityLife {
   const places = ogunPlaces(city);
-  const player = new Player({ lottery: '', house: OWN, city: { id: city, lga: must(OGUN_LGAS[city], `${city} local government`) } });
+  const player = new Player({ lottery: '', house: OWN, city: { id: city, lga: must(CITY_LGAS[city], `${city} local government`) } });
   const stages: CityLife['stages'] = [];
   stages.push({ stage: 'settled', city: player.cityId, cash: player.state.cash });
   firstSitting(player, 'community-helper');
@@ -763,6 +766,48 @@ export function simulateOgunTraveller({ daysEach = 3 }: { daysEach?: number } = 
   return cityLife('Lagos, Ota, Abeokuta, Ibadan, Lagos', day, player, player.seed, stages, fares);
 }
 
+/**
+ * One Lagos life with a comfortable start that takes the night bus to Abuja, settles and works there, goes on to Kano by road, settles and works there,
+ * flies back to Abuja, takes the bus to Port Harcourt, settles and works there and returns to Lagos by road: five fares across four cities, one wallet.
+ */
+export function simulateStatesTraveller({ daysEach = 2 }: { daysEach?: number } = {}): CityLife {
+  const player = new Player({ lottery: 'ajebutter', house: OWN });
+  const stages: CityLife['stages'] = [];
+  const fares: CityLife['fares'] = [];
+  const mark = (stage: string) => stages.push({ stage, city: player.cityId, cash: player.state.cash });
+  let day = 0;
+  firstSitting(player, 'community-helper');
+  mark('lagos');
+  const travelTo = (to: string, mode: string) => {
+    player.awayUntil(dayStart(day++) + 9 * 3600000);
+    player.settle();
+    const before = player.state.cash;
+    player.must('estate.relocate', { to, mode });
+    player.settle();
+    fares.push({ to, mode, fare: before - player.state.cash });
+    mark(`arrived in ${to}`);
+  };
+  const live = (city: string) => {
+    player.must('estate.set-lga', { lga: must(STATE_CITY_LGAS[city], `${city} local unit`), via: 'manual' });
+    mark(`settled in ${city}`);
+    const places = ogunPlaces(city);
+    for (let i = 0; i < daysEach; i++) {
+      player.awayUntil(dayStart(day++) + 9 * 3600000);
+      if (i === 0) player.must('apply-job', { id: 'community-helper' });
+      ogunDay(player, places, true);
+      player.settle();
+    }
+  };
+  travelTo('abuja', 'road'); live('abuja');
+  travelTo('kano', 'road'); live('kano');
+  travelTo('abuja', 'air');
+  travelTo('port-harcourt', 'road'); live('port-harcourt');
+  travelTo('lagos', 'road');
+  player.must('apply-job', { id: 'community-helper' });
+  mark('home again');
+  return cityLife('Lagos, Abuja, Kano, Abuja, Port Harcourt, Lagos', day, player, player.seed, stages, fares);
+}
+
 const naira = (value: number | null | undefined) => (value === undefined || value === null ? '—' : `${value < 0 ? '−' : ''}₦${Math.abs(Math.round(value)).toLocaleString('en-NG')}`);
 const short = (value: number | null | undefined) => (value === undefined || value === null ? '—' : Math.abs(value) >= 1e6 ? `${(value / 1e6).toFixed(2)}m` : Math.abs(value) >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value));
 
@@ -798,8 +843,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   console.log(`Economy simulation · ${days} Lagos days from Monday 5 January 2026 · career track ${track} · milestones searched to day ${horizon}`);
   console.log('Net worth = cash + deposits − loan left − rent arrears. Flows are 30-day totals in naira; costs are negative. "act s/d" = active seconds a day.');
   console.log(formatTable(rows));
-  const lives = [simulateIbadanStart(), simulateTraveller(), ...Object.keys(OGUN_LGAS).map((city) => simulateOgunStart({ city })), simulateOgunTraveller()];
-  console.log('Lives across cities (14 days in Ibadan and in each Ogun city; Lagos → Ibadan by road → Lagos by rail; Lagos → Ota → Abeokuta → Ibadan → Abeokuta → Lagos):');
+  const lives = [simulateIbadanStart(), simulateTraveller(), ...Object.keys(CITY_LGAS).map((city) => simulateOgunStart({ city })), simulateOgunTraveller(), simulateStatesTraveller()];
+  console.log('Lives across cities (14 days in Ibadan, each Ogun city, Port Harcourt, Abuja and Kano; Lagos → Ibadan by road → Lagos by rail; Lagos → Ota → Abeokuta → Ibadan → Abeokuta → Lagos; Lagos → Abuja → Kano → Abuja → Port Harcourt → Lagos):');
   for (const life of lives) console.log(`  ${life.label}: cash ${naira(life.player.seed)} seed → ${naira(life.finalCash)} · ledger ${naira(life.ledgerSum)} · ${life.conserved ? 'conserved' : 'NOT CONSERVED'} · ${life.stages.map((stage) => `${stage.stage} (${stage.city}) ${naira(stage.cash)}`).join(' → ')}`);
   const bad = rows.filter((row) => !row.conserved || must(row.unknown).length);
   console.log(bad.length ? `NOT CONSERVED or unknown reasons in ${bad.length} rows: ${JSON.stringify(bad.map((row) => [row.lottery, row.house, row.strategy, row.unknown]))}` : `Conservation: cash = seed + Σ ledger in all ${rows.length} lives; every ledger reason is classified.`);

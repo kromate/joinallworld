@@ -8,6 +8,8 @@ import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
 import { cashDelta, moodOf, savedPill } from './hudModel.ts'
+import InviteButton from '../growth/InviteButton.vue'
+import OnlinePill from './OnlinePill.vue'
 
 const { game, shell, menu } = useApp()
 const view = game.view
@@ -47,6 +49,7 @@ function onSaved(): void {
 <template>
   <section class="hud-bar" aria-label="Player status">
     <i class="hud-mark" aria-hidden="true"><GameIcon name="globe" :size="19" /></i>
+    <OnlinePill />
     <span class="hud-clock">{{ view.clock }}</span>
     <span class="hud-mood" :class="`is-${mood.tone}`"><GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /> {{ mood.word }}</span>
     <button class="hud-name" type="button" @click="shell.open('sim')"><GameIcon name="person" :size="17" /><span>{{ state.name }}</span></button>

@@ -90,6 +90,8 @@ export interface SessionRecord {
   once?: Record<TimedId, OnceReceipt>
   /** server/world/service.ts rekey(): a separate life that was already filed under the city a character arrived in, put aside as `<city>:<ms>`. */
   legacyLives?: Record<string, CityLifeRecord>
+  /** server/pulse.ts: the Lagos day (src/game/clock.ts) this player was last counted as a visit. Absent on older sessions. */
+  visitDay?: number
 }
 /**
  * WORKER: what deploy/cloudflare-worker.ts stores in its `sessions` table. Action receipts live

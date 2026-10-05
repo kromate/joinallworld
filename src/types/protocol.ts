@@ -452,6 +452,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/mod/content/remove',
   'GET /api/world/me',
   'GET /api/world/city',
+  'GET /api/world/pulse',
   'GET /api/world/lga/:id',
   'GET /api/world/lga/:id/estates',
   'GET /api/world/lga/:id/estate/:estate/houses',

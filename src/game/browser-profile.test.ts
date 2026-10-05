@@ -40,7 +40,7 @@ import { isStandIn } from '${url('./registry.ts')}';
 const { loadCityContent, registerCityForTest } = await import('${url('./cities/registry.ts')}');
 const fixtures = await import('${url('./cities/testing/fictionalCity.test-fixture.ts')}');
 registerCityForTest(fixtures.fictionalCity); registerCityForTest(fixtures.fictionalNeighbourCity);
-await Promise.all([loadCityContent('lagos'), loadCityContent(fixtures.FICTIONAL_CITY_ID), loadCityContent(fixtures.FICTIONAL_NEIGHBOUR_CITY_ID)]);
+await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan'), loadCityContent(fixtures.FICTIONAL_CITY_ID), loadCityContent(fixtures.FICTIONAL_NEIGHBOUR_CITY_ID)]);
 const input = JSON.parse(readFileSync(process.argv[1], 'utf8'));
 if (input.mode === 'client') {
   // The client, given a life that uses the campus (saved on the device, and answered by the server): it fetches the campus rules and keeps all of it.
@@ -140,6 +140,12 @@ function lives(): { name: string; raw: unknown; ctx: LifeContextInit }[] {
   away.location = 'park'; away.spot = 'amphitheatre';
   out.push({ name: 'a student, away from the campus', raw: JSON.parse(JSON.stringify(createLife(away, { now: rebuilt.t, cityId: 'lagos' }))), ctx: { now: rebuilt.t, cityId: 'lagos' } });
   out.push(...testCityLives());
+  // A life with a home in each city (settled in both, now in one of them): the other home is kept as it is.
+  for (const [city, other, lga, house] of [['ibadan', 'lagos', 'ikeja', 'mushin'], ['lagos', 'ibadan', 'ibadan-north', 'ibadan-mokola-room']] as const) {
+    const home = { lga, tier: 'starter', living: 'rent', house };
+    const two = createLife({ cash: 9000, name: 'Two homes', estate: { city, lga: city === 'lagos' ? 'ikeja' : 'ibadan-north', away: { [other]: home } }, career: { city: other } }, { now: START, cityId: city });
+    out.push({ name: `two homes: in ${city} with a home in ${other}`, raw: JSON.parse(JSON.stringify(two)), ctx: { now: START, cityId: city } });
+  }
   return out;
 }
 
@@ -147,11 +153,11 @@ const withoutCampus = (view: unknown): unknown => Object.fromEntries(Object.entr
 
 test('the browser engine rebuilds and views every life as the full engine does, and refuses a campus life until the campus rules are loaded', async (t) => {
   const registrations = [registerCityForTest(fictionalCity), registerCityForTest(fictionalNeighbourCity)];
-  await Promise.all([loadCityContent('lagos'), loadCityContent(FICTIONAL_CITY_ID), loadCityContent(FICTIONAL_NEIGHBOUR_CITY_ID)]);
+  await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan'), loadCityContent(FICTIONAL_CITY_ID), loadCityContent(FICTIONAL_NEIGHBOUR_CITY_ID)]);
   const given = lives();
   for (const registration of registrations) registration.dispose();
   const again = [registerCityForTest(fictionalCity), registerCityForTest(fictionalNeighbourCity)];
-  await Promise.all([loadCityContent('lagos'), loadCityContent(FICTIONAL_CITY_ID), loadCityContent(FICTIONAL_NEIGHBOUR_CITY_ID)]);
+  await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan'), loadCityContent(FICTIONAL_CITY_ID), loadCityContent(FICTIONAL_NEIGHBOUR_CITY_ID)]);
   try {
   assert.ok(given.some((life) => CAMPUS_SLICES.some((key) => !isFreshSlice(key, (life.raw as Record<string, unknown> | null)?.[key]))), 'the sample includes a life with campus state');
   assert.ok(given.some((life) => !needsCampusRules(life.raw) && life.raw !== null), 'and lives that do not');

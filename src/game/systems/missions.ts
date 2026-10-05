@@ -66,12 +66,12 @@ const cleanVisitIdentity = (value: unknown, currentCity: string): string | null 
   if (typeof value !== 'string') return null;
   const separator = value.indexOf(':');
   if (separator < 0) {
-    if (venueFor('lagos', value)) return value; // deployed Lagos keys keep their original shape
+    if (cachedCityContent('lagos') ? venueFor('lagos', value) : (!venueFor(currentCity, value) && isId(value))) return value; // deployed Lagos keys keep their original shape (kept as they are while Lagos is not loaded)
     return venueFor(currentCity, value) ? visitIdentity(currentCity, value) : null;
   }
   const cityId = value.slice(0, separator), venueId = value.slice(separator + 1);
   if (!isCityId(cityId) || !isId(venueId)) return null;
-  if ((cityId === 'lagos' || cachedCityContent(cityId)) && !venueFor(cityId, venueId)) return null;
+  if (cachedCityContent(cityId) && !venueFor(cityId, venueId)) return null; // another city's key is kept as it is until that city is loaded
   return `${cityId}:${venueId}`;
 };
 

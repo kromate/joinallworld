@@ -28,14 +28,13 @@ import { eventAtVenue, eventsAt } from '../calendar.ts';
 import type { SystemDefinition, TypedActionHandler } from '../../types/registry.ts';
 import type { LifeContext, LifeState } from '../../types/life.ts';
 import { cachedCityContent, isCityId } from '../cities/registry.ts';
-import { contentFor } from '../cities/runtime.ts';
 
 const KEEP = 24;
 const DAY = /^\d{1,7}$/;
 const occurrenceKey = (value: unknown): string | null => {
   if (typeof value !== 'string') return null;
   const parts = value.split(':');
-  if (parts.length === 2 && isId(parts[0]) && DAY.test(parts[1] ?? '') && contentFor('lagos').events.some((event) => event.id === parts[0])) return value; // deployed Lagos key
+  if (parts.length === 2 && isId(parts[0]) && DAY.test(parts[1] ?? '') && (cachedCityContent('lagos')?.events.some((event) => event.id === parts[0]) ?? true)) return value; // deployed Lagos key (kept while Lagos is not loaded)
   if (parts.length === 3 && isCityId(parts[0]) && isId(parts[1]) && DAY.test(parts[2] ?? '')) {
     const origin = cachedCityContent(parts[0]);
     if (origin && !origin.events.some((event) => event.id === parts[1])) return null;

@@ -10,6 +10,7 @@ import { STORAGE_KEY } from './storage-key.ts';
  * is shown read-only until the server is reachable again.
  */
 import { createLife, isDeparting } from './life.ts';
+import { loadLifeCities } from './game/cities/lifeCities.ts';
 import { campusFor } from './game/campus-gate.ts';
 import type { LifeState } from './types/life.ts';
 import type { ActionRequest, ActionResponse, ApiEnvelope, CityId, LifeResponse, OwnSession, SessionRequest, SessionResponse, TimedId } from './types/protocol.ts';
@@ -256,6 +257,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   let accepted = false;
   /** Rebuild `next` (it waits first for the campus rules when the life uses the campus and they are not loaded yet) and take it as the life. */
   async function accept(next: unknown): Promise<void> {
+    await loadLifeCities(next, [client.cityId]).catch(() => []); // every city the life refers to, before it is rebuilt
     const waiting = campusFor(next);
     if (waiting) await waiting;
     accepted = true;
@@ -292,8 +294,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   function stop(): void { cancelTimer(pollTimer); }
 
   async function loadedSnapshot<T extends { state: LifeState }>(response: T): Promise<T> {
-    const city: unknown = response.state?.estate?.city;
-    if (isCityId(city)) await loadCityContent(city);
+    await loadLifeCities(response.state);
     return response;
   }
 

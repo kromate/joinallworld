@@ -93,7 +93,7 @@ export type ShiftStatus =
   | { code: Extract<ShiftStatusCode, 'no_job' | 'working' | 'shift_done' | 'day_off'>; canWork: false; text: string; next: string }
 
 const canonicalJobOf = (id: unknown): JobDefinition | null => typeof id === 'string' ? Object.values(JOBS).find((job) => job.id === id) ?? null : null;
-const contentReady = (cityId: string): boolean => Boolean(cachedCityContent(cityId)) || cityId === 'lagos' || (cityId === 'ibadan' && !cityModule(cityId));
+const contentReady = (cityId: string): boolean => Boolean(cachedCityContent(cityId));
 const cityHasCareer = (cityId: string, id: unknown): boolean => {
   const canonical = canonicalJobOf(id);
   if (!canonical) return false;

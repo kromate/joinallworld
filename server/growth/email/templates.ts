@@ -54,7 +54,7 @@ export function confirmMail({ name, confirmUrl, hours, contact }: { name: string
 }
 
 export function welcomeMail({ name, playUrl, unsubscribeUrl, contact }: { name: string; playUrl: string; unsubscribeUrl: string; contact?: string }): Mail {
-  return build(`You are in, ${name}`, { heading: 'Your e-mail is confirmed', intro: `From now on ${BRAND} can tell you what happened while you were away and what is on this week. Never more than one message a day and three a week, and never at night.`,
+  return build(`You are in, ${name}`, { heading: 'Your e-mail is confirmed', intro: `We’ll send you a few e-mails a week at most about your character: when someone is waiting, when something finished, and a weekly summary. Never at night, and you can change this any time in the game: Phone, Stay in touch.`,
     button: { label: `Open ${BRAND}`, url: playUrl }, ...footer({ unsubscribeUrl, contact }) });
 }
 

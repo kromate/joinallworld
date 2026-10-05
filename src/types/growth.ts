@@ -18,7 +18,7 @@ import type { LifeState } from './life.ts'
 import type { GrowthView } from './view.ts'
 import type { CityId, HostErrorCode, JsonBodyErrorCode, Ok, PlayerRef, Refusal, SessionErrorCode, StorageErrorCode } from './protocol.ts'
 import type { Done, Repeat } from './social.ts'
-import type { PrefKey } from '../game/comeback.ts'
+import type { PrefKey } from '../game/comeback-prefs.ts'
 
 // ---- shares and the events calendar ---------------------------------------------------------------
 

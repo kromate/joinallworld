@@ -6,11 +6,13 @@
 // cannot send it twice.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { presenceText } from '../../../game/social-model.ts'
 import type { PersonCard } from '../../../types/social.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import { NUDGE_SENTENCE, nudgeControl } from '../growth/comebackModel.ts'
+import { useGrowth } from '../growth/useGrowth.ts'
 import ClosenessMeter from './ClosenessMeter.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
@@ -23,6 +25,8 @@ import { useSocialScreen } from './useSocialScreen.ts'
 const props = defineProps<{ id: string }>()
 const { game, shell, client, state, view, gate, action, runAction, retryLoad } = useSocialScreen()
 const cityId = (): string => client.cityId()
+const growth = useGrowth()
+onMounted(() => { void growth.load() })
 
 /** Opening the card for another player starts clean; the same player keeps an open form. */
 watch([() => props.id, () => view.value.connected], ([id, connected]) => {
@@ -52,6 +56,17 @@ const whyBae = computed(() => (card.value ? baeReason({ card: card.value, social
 const whyMoney = computed(() => (card.value ? moneyReason(card.value, social.value.transfer) : null))
 const friend = computed(() => (card.value ? friendControl(card.value) : 'none'))
 const t = computed(() => social.value.transfer)
+const nudge = computed(() => (card.value ? nudgeControl({ self: card.value.self, friend: card.value.friend, blocked: card.value.blocked, name: card.value.name, status: card.value.status, seenAt: card.value.seenAt, now: view.value.now,
+  nudgedAt: growth.state.hello?.contact.comeback.nudged[props.id] ?? null, busy: personUi.busy }) : null))
+/** Ask an away friend to come back. The answer is the same sentence whether or not they have an address. */
+async function sendNudge(): Promise<void> {
+  if (personUi.busy) return
+  personUi.busy = true
+  const result = await growth.call<{ ok: boolean; reason?: string }>('/api/growth/nudge', { to: props.id })
+  personUi.busy = false
+  game.toast(result.ok ? NUDGE_SENTENCE : ('reason' in result && result.reason) || 'That could not be sent.', result.ok ? 'good' : 'error')
+  await growth.load({ force: true })
+}
 
 /** One write: the card says "Working…" meanwhile, and is read again after. */
 async function run<T = Record<string, unknown>>(path: string, body: unknown, good: string | ((done: { ok: true } & T) => string)): Promise<SocialResult<T>> {
@@ -137,6 +152,9 @@ async function sendReport(): Promise<void> {
       <p class="social-note">A moderator reviews reports. You get a receipt in Messages → Updates.</p>
       <span class="social-actions"><button type="submit" class="social-btn is-primary" :disabled="personUi.busy">Send report</button><button type="button" class="social-btn" @click="openForm(null)">Cancel</button></span>
     </form>
+    <template v-if="nudge">
+      <button type="button" class="social-act" :disabled="nudge.disabled" @click="sendNudge"><strong><GameIcon name="heart" inline /> {{ nudge.label }}</strong><small>{{ nudge.reason ?? 'Ask them to come back to Allworld' }}</small></button>
+    </template>
     <span class="social-actions">
       <button v-if="friend === 'unfriend'" type="button" class="social-btn" :disabled="personUi.busy" @click="doAction('unfriend')">Remove friend</button>
       <button v-else-if="friend === 'accept'" type="button" class="social-btn is-primary" :disabled="personUi.busy" @click="doAction('accept')">Accept friend request</button>

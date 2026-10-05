@@ -17,6 +17,8 @@ import { DEPOSIT_TERMS } from './systems/economy.ts';
 import { JOBS } from './content/jobs.ts';
 import { HOUSE_TIERS } from './content/world.ts';
 import { makeContext } from './util.ts';
+import { PREF_OF } from './comeback-prefs.ts';
+import type { ComebackType, PrefKey } from './comeback-prefs.ts';
 import type { GoTarget } from './go-links.ts';
 import type { LifeState, NeedId } from '../types/life.ts';
 
@@ -24,15 +26,8 @@ const HOUR = 3600000, DAY = 86400000;
 /** `next` for a player who is not to be looked at again until something changes (a visit, a preference). */
 export const NEVER = Number.MAX_SAFE_INTEGER;
 
-export type ComebackType = 'waiting' | 'nudge' | 'need' | 'milestone' | 'event' | 'away' | 'week';
-export type PrefKey = 'needs' | 'friends' | 'milestones' | 'events' | 'away' | 'week';
-export const PREF_KEYS: readonly PrefKey[] = Object.freeze(['needs', 'friends', 'milestones', 'events', 'away', 'week'] as const);
-export const PREF_LABELS: Readonly<Record<PrefKey, string>> = Object.freeze({
-  needs: 'Needs', friends: 'Friends', milestones: 'Milestones', events: 'Events', away: 'When I’ve been away', week: 'Weekly digest',
-});
-/** Which switch a type of mail answers to. */
-export const PREF_OF: Readonly<Record<ComebackType, PrefKey>> = Object.freeze({ waiting: 'friends', nudge: 'friends', need: 'needs', milestone: 'milestones', event: 'events', away: 'away', week: 'week' });
-export const COMEBACK_TYPES: readonly ComebackType[] = Object.freeze(['waiting', 'nudge', 'need', 'milestone', 'event', 'away', 'week'] as const);
+export { COMEBACK_TYPES, PREF_KEYS, PREF_LABELS, PREF_OF } from './comeback-prefs.ts';
+export type { ComebackType, PrefKey } from './comeback-prefs.ts';
 /** Strongest first: the order in which one mail is chosen when several qualify. The weekly digest has its own schedule. */
 const PRIORITY: readonly Exclude<ComebackType, 'week'>[] = ['waiting', 'nudge', 'need', 'milestone', 'event', 'away'];
 

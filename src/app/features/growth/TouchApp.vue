@@ -9,7 +9,8 @@
 // The form is bound to a draft kept for the page (touchState.ts), so a state update never touches
 // what is being typed. The control that was pressed says so until the server answers.
 import { computed, nextTick, onMounted, ref } from 'vue'
-import type { ConsentResult, EmailResult } from '../../../types/growth.ts'
+import type { ComebackView, ConsentResult, EmailResult } from '../../../types/growth.ts'
+import type { PrefKey } from '../../../game/comeback-prefs.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -19,7 +20,8 @@ import SectionTitle from '../../ui/SectionTitle.vue'
 import DigestPreview from './DigestPreview.vue'
 import LinkButton from './LinkButton.vue'
 import { EMAIL_CONSENT, PUSH_CONSENT, loadPushModule } from './boundary.ts'
-import { WEEKLY_RULES, ageCard, devicesLine, emailCard, emailDisabled, emailReason, emailSavedWords, pushCard, pushDeclinedWords, showsChannels } from './touchModel.ts'
+import { COMEBACK_SENTENCE, WEEKLY_RULES, ageCard, devicesLine, emailCard, emailDisabled, emailReason, emailSavedWords, pushCard, pushDeclinedWords, showsChannels } from './touchModel.ts'
+import { comebackRows, pausedWords } from './comebackModel.ts'
 import { pushKind, touch } from './touchState.ts'
 import { useGrowth } from './useGrowth.ts'
 
@@ -97,6 +99,17 @@ async function askEmail(): Promise<void> {
   } else game.toast(result.reason || 'That address was not accepted.', 'error')
   await settle()
 }
+const comeback = computed<ComebackView | null>(() => hello.value?.contact.comeback ?? null)
+const rows = comebackRows()
+const paused = computed(() => (comeback.value ? pausedWords(comeback.value, Date.now()) : null))
+/** One switch, or "pause all": the control that was pressed says so until the server answers. */
+async function saveComeback(body: { on?: boolean; types?: Partial<Record<PrefKey, boolean>>; pause?: boolean }): Promise<void> {
+  if (touch.busy) return
+  touch.busy = 'comeback'
+  const result = await growth.call<{ ok: boolean; reason?: string }>('/api/growth/comeback', body)
+  if (!result.ok) game.toast(('reason' in result && result.reason) || 'That could not be saved.', 'error')
+  await settle()
+}
 async function removeEmail(): Promise<void> {
   if (touch.busy) return
   touch.busy = 'email'
@@ -164,6 +177,16 @@ async function removeEmail(): Promise<void> {
             <h3>E-mail is on</h3>
             <p>{{ hello.contact.email.address }} · confirmed. At most one message a day and three a week.</p>
             <p v-if="!hello.contact.live.email" class="gr-note">E-mail is not switched on for this server yet: messages are composed and shown here, and nothing is sent.</p>
+            <template v-if="comeback">
+              <p>{{ COMEBACK_SENTENCE }}</p>
+              <label class="gr-check"><input type="checkbox" name="comeback-on" :checked="comeback.on" :disabled="touch.busy !== null" @change="saveComeback({ on: ($event.target as HTMLInputElement).checked })"><span>E-mail me about my character</span></label>
+              <template v-if="comeback.on">
+                <label v-for="row in rows" :key="row.key" class="gr-check"><input type="checkbox" :name="`comeback-${row.key}`" :checked="comeback.types[row.key]" :disabled="touch.busy !== null" @change="saveComeback({ types: { [row.key]: ($event.target as HTMLInputElement).checked } })"><span><b>{{ row.label }}</b><br>{{ row.hint }}</span></label>
+                <p v-if="paused" class="gr-note">{{ paused }}</p>
+                <BaseButton v-if="paused" :disabled="touch.busy !== null" @click="saveComeback({ pause: false })">Resume e-mails</BaseButton>
+                <BaseButton v-else :disabled="touch.busy !== null" @click="saveComeback({ pause: true })">Pause all for 30 days</BaseButton>
+              </template>
+            </template>
             <template v-if="hello.contact.email.preview">
               <div class="gr-preview"><b>{{ hello.contact.email.preview.subject }}</b><span class="gr-text">{{ hello.contact.email.preview.text }}</span></div>
               <p class="gr-note">The last message composed for you.</p>
@@ -179,7 +202,7 @@ async function removeEmail(): Promise<void> {
           </div>
           <form v-else class="gr-card" novalidate @submit.prevent="askEmail">
             <h3>E-mail</h3>
-            <p>What happened while you were away, and a weekly summary with a few things to do.</p>
+            <p>A few e-mails a week at most about your character: when someone is waiting, when something finished, and a weekly summary.</p>
             <label class="gr-field">Your e-mail address
               <input v-model="touch.email" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com" name="email">
             </label>

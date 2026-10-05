@@ -543,7 +543,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       const sheet = sheets[NIGERIA], close = rig.view.distance < fits![NIGERIA]!.distance * 0.62;
       for (const feature of sheet.topology.features) {
         const entry = regionEntry('state', feature.id), top = sheet.top(feature), city = entry.city ? cityEntry(entry.city) : null;
-        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? 1000 : 90, size: 13, anchor: 'above', fixed: entry.status === 'open', cls: `is-city is-${entry.status}`, note: feature.id === here ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
+        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? 1000 : 90, size: 13, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below'], fixed: entry.status === 'open', cls: `is-city is-${entry.status}`, note: feature.id === here ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
         if (entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: city ? 44 : 50, cls: 'is-region' });
         if (close && !city) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: 22, size: 10, anchor: 'right', cls: 'is-town' });
       }

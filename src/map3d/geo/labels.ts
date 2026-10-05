@@ -15,10 +15,10 @@
  *   cls, title  carried through for the atlas's DOM node (a class list and a tooltip)
  */
 
-export type LabelAnchor = 'centre' | 'above' | 'right';
+export type LabelAnchor = 'centre' | 'above' | 'right' | 'left' | 'below' | 'far-above' | 'far-below';
 export interface LabelBox { left: number; top: number; right: number; bottom: number }
 export interface LabelCandidate { id: string; x: number; y: number; priority: number; size?: number; room?: number | undefined,
-  text: string; short?: string | undefined; note?: string | undefined; anchor?: LabelAnchor | undefined; fixed?: boolean | undefined; cls?: string | undefined; title?: string | undefined }
+  text: string; short?: string | undefined; note?: string | undefined; anchor?: LabelAnchor | undefined; /** Other anchors to try, in order, when the first would overlap a label already shown. */ alts?: readonly LabelAnchor[] | undefined; fixed?: boolean | undefined; cls?: string | undefined; title?: string | undefined }
 export interface PlacedLabel extends LabelCandidate { shown: string; abbreviated: boolean; box: LabelBox }
 
 /** The hard cap on labels on screen at once. */
@@ -29,6 +29,10 @@ export const textWidth = (text: unknown, size = 12): number => Math.ceil(String(
 const boxOf = (candidate: LabelCandidate, text: string): LabelBox => {
   const size = candidate.size || 12, w = Math.max(textWidth(text, size), candidate.note ? textWidth(candidate.note, 10) : 0) + (candidate.note ? 8 : 0), h = Math.round(size * 1.5) + (candidate.note ? 16 : 0);
   if (candidate.anchor === 'above') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y - h - 8, bottom: candidate.y - 8 };
+  if (candidate.anchor === 'far-above') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y - h - 54, bottom: candidate.y - 54 };
+  if (candidate.anchor === 'far-below') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y + 54, bottom: candidate.y + 54 + h };
+  if (candidate.anchor === 'left') return { left: candidate.x - 7 - w, right: candidate.x - 7, top: candidate.y - h / 2, bottom: candidate.y + h / 2 };
+  if (candidate.anchor === 'below') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y + 8, bottom: candidate.y + 8 + h };
   if (candidate.anchor === 'right') return { left: candidate.x + 7, right: candidate.x + 7 + w, top: candidate.y - h / 2, bottom: candidate.y + h / 2 };
   return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y - h / 2, bottom: candidate.y + h / 2 };
 };
@@ -56,6 +60,15 @@ export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL
       if (candidate.room !== undefined && textWidth(text, candidate.size) > candidate.room) continue;
       let box = boxOf(candidate, text), at = candidate;
       if (box.right < 0 || box.left > width || box.bottom < 0 || box.top > height) break;
+      // A label that would overlap another tries its other anchors before it gives way.
+      if (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0)))) {
+        for (const anchor of candidate.alts ?? []) {
+          const moved = { ...candidate, anchor }, trial = boxOf(moved, text);
+          if (trial.right < 0 || trial.left > width || trial.bottom < 0 || trial.top > height) continue;
+          if (placed.some((other) => overlaps(trial, other.box, pad)) || avoid.some((other) => overlaps(trial, other, 0))) continue;
+          box = trial; at = moved; break;
+        }
+      }
       if (candidate.fixed) {
         const dx = nudge(box.left, box.right, width, EDGE_MARGIN), dy = nudge(box.top, box.bottom, height, EDGE_MARGIN);
         if (dx || dy) { box = { left: box.left + dx, right: box.right + dx, top: box.top + dy, bottom: box.bottom + dy }; at = { ...candidate, x: candidate.x + dx, y: candidate.y + dy }; }

@@ -57,7 +57,7 @@ import { estateLayout, plotAt } from './estates.ts';
 import { lgaAt } from './lga.ts';
 import { tripOf, createTripClock, tripPose } from './trip.ts';
 import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
-import { avatarBox, labelShift, nearPoints, plateFit, plateWidth, spanOf, WHOLE_FROM } from './labels.ts';
+import { avatarBox, extentWord, labelShift, nearPoints, plateFit, plateWidth, spanOf, WHOLE_FROM } from './labels.ts';
 import { iconFor } from '../ui/icon-map.ts';
 import { dockOf } from './insets.ts';
 
@@ -165,7 +165,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     root = doc.createElement('div');
     root.className = 'm3';
     root.innerHTML = `<div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
-      <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill m3-fit" data-m3="fit" aria-label="Show the whole ${pack?.context ? 'state' : 'city'}" title="Show the whole ${pack?.context ? 'state' : 'city'}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${pack?.context ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Find me: show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
+      <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill m3-fit" data-m3="fit" aria-label="Show the whole ${extentWord(pack)}" title="Show the whole ${extentWord(pack)}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${extentWord(pack) === 'state' ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Find me: show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
       <p class="m3-hint" data-m3-hint ${hintSeen ? 'hidden' : ''}>Drag to turn the city · pinch or scroll to zoom · two fingers to move. Tap a building to go there.</p>`;
     root.prepend(canvas);
     canvas.classList?.add('m3-canvas');
@@ -376,6 +376,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
 
   // ---- labels ------------------------------------------------------------------------------------
   const probe = new THREE.Vector3();
+  /** The places a pack names as its landmarks are lettered before the rest. */
+  const notable = new Set(pack.notable ?? []);
   const nameOf = (place: CityPlace) => (place.kind === 'home' ? 'Home' : venueTable[place.id]?.label ?? place.id);
   function buildLabels() {
     if (!labelLayer) return;
@@ -432,7 +434,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       node.setAttribute('aria-label', `${nameOf(place)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
       node.title = `${nameOf(place)}${status ? ` · ${status}` : ''}`;
       if (here) node.setAttribute('aria-current', 'location'); else node.removeAttribute('aria-current');
-      label.priority = (here ? 100 : 0) + (selected === id ? 90 : 0) + (going === id ? 80 : 0) + (hovered === id ? 70 : 0) + (place.kind === 'home' ? 40 : 0) + (soon ? 5 : open ? 20 : 10) - (dimmed ? 30 : 0);
+      label.priority = (notable.has(id) ? 25 : 0) + (here ? 100 : 0) + (selected === id ? 90 : 0) + (going === id ? 80 : 0) + (hovered === id ? 70 : 0) + (place.kind === 'home' ? 40 : 0) + (soon ? 5 : open ? 20 : 10) - (dimmed ? 30 : 0);
       label.width = (node.offsetWidth || 90) * uz; label.height = (node.offsetHeight || 30) * uz;
     }
   }
@@ -490,14 +492,17 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     for (const { label, at, visible } of entries) {
       const node = label.node;
       if (!visible) { if (!node.hidden) node.hidden = true; continue; }
-      if (node.hidden) node.hidden = false;
       const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 };
       // A name that would sit on top of a more important one shrinks to its icon; it is still a button with its full name.
       const lift = labelShift(full, piece), moved = lift ? { l: full.l, r: full.r, t: full.t + lift, b: full.b + lift } : full;
       const compact = hits(moved), small = { l: at.x - 15 * uz, r: at.x + 15 * uz, t: at.y - 30 * uz, b: at.y };
       // It steps clear of the player's piece: up on a longer stalk, or down over its own roof (src/map3d/labels.ts).
       const shift = compact ? labelShift(small, piece) : lift;
-      taken.push(compact ? { l: small.l, r: small.r, t: small.t + shift, b: small.b + shift } : moved);
+      const used = compact ? { l: small.l - 2, r: small.r + 2, t: small.t + shift - 2, b: small.b + shift + 2 } : moved;
+      // Level of detail: an icon that would still sit on a more important label or icon is left out; it returns as the view comes closer.
+      if (compact && label.priority < 70 && hits(used)) { if (!node.hidden) node.hidden = true; continue; }
+      if (node.hidden) node.hidden = false;
+      taken.push(used);
       node.classList.toggle('is-compact', compact);
       if (shift !== label.shift) {
         label.shift = shift;

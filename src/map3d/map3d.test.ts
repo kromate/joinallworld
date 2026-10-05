@@ -312,7 +312,7 @@ test('render budget: the whole city, with every layer on and a trip running, sta
   h.map.destroy();
 });
 
-test('every venue has its landmark and label anchor; Home stands in the player’s own district; the lights follow Lagos time', () => {
+test('every venue has its landmark and label anchor; Home stands in the player’s own district; the lights follow Nigerian time', () => {
   const h = harness({ home: 'ikoyi' });
   h.map.setState(h.state()); h.map.resize(); h.pump();
   const places = h.map.city.places;

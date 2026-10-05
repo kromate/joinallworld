@@ -143,7 +143,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   root.innerHTML = `<div class="m3-flat-world">${flatSvg(model)}<svg class="m3-flat-trip" viewBox="${box.x} ${box.z} ${box.width} ${box.height}" preserveAspectRatio="none" aria-hidden="true"><path data-trip fill="none" stroke="#14532d" stroke-linecap="round" stroke-linejoin="round"/><path data-trip-top fill="none" stroke="#ffd166" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <canvas class="m3-flat-houses" aria-hidden="true"></canvas>
     <div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
-    <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill" data-m3="fit" aria-label="Show the whole ${model.context ? 'state' : 'city'}" title="Show the whole ${model.context ? 'state' : 'city'}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${model.context ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
+    <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill" data-m3="fit" aria-label="Show the whole ${model.extent}" title="Show the whole ${model.extent}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${model.extent === 'state' ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
     <p class="m3-hint" data-m3-hint ${hintSeen ? 'hidden' : ''}>Drag to move the map · pinch or scroll to zoom. Tap a place to go there.</p>`;
   container.appendChild(root);
   const worldNode = root.querySelector<HTMLElement>('.m3-flat-world')!, canvas = root.querySelector('canvas')!, labelLayer = root.querySelector<HTMLElement>('.m3-labels')!, hint = root.querySelector<HTMLElement>('[data-m3-hint]')!;
@@ -153,6 +153,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   // ---- places, plates and tags: the 3D map's own markup, so the styles are literally shared -------
   const homeSpot = (): Spot => { const e = state?.estate; if (e?.living === 'own' && e.plot && pack.lgas?.some((lga) => lga.id === e.plot!.lga)) return { ...estateLayout(pack, e.plot.lga)!.plot(e.plot.estate, e.plot.plot), district: pack.lgas.find((lga) => lga.id === e.plot!.lga)!.name, own: true }; return model.homes[state?.travel?.home as string] ?? Object.values(model.homes)[0]!; };
   const places = [...model.places, { id: 'home', kind: 'home', x: 0, z: 0 }].sort((a, b) => a.x - b.x || a.z - b.z);
+  const notable = new Set(pack.notable ?? []);
   const labels = new Map<string, { node: HTMLButtonElement, name: HTMLElement, note: HTMLElement, place: { id: string, kind: string, x: number, z: number }, width: number, height: number, priority: number }>(), plates = new Map<string, { node: HTMLButtonElement, note: HTMLElement, lga: PackLga, span: ReturnType<typeof spanOf>, scale: number }>(), tags: HTMLDivElement[] = [], chips = new Map<string, { node: HTMLDivElement, chip: Chip }>();
   for (const place of places) {
     const source = venueTable[place.id] || SOON_TABLE[place.id];
@@ -199,7 +200,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       label.node.setAttribute('aria-label', `${nameOf(id)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
       label.node.title = `${nameOf(id)}${status ? ` · ${status}` : ''}`;
       if (here) label.node.setAttribute('aria-current', 'location'); else label.node.removeAttribute('aria-current');
-      label.priority = (here ? 100 : 0) + (selected === id ? 90 : 0) + (going === id ? 80 : 0) + (id === 'home' ? 40 : 0) + (soon ? 5 : open ? 20 : 10) - (dimmed ? 30 : 0);
+      label.priority = (notable.has(id) ? 25 : 0) + (here ? 100 : 0) + (selected === id ? 90 : 0) + (going === id ? 80 : 0) + (id === 'home' ? 40 : 0) + (soon ? 5 : open ? 20 : 10) - (dimmed ? 30 : 0);
       label.width = label.node.offsetWidth || 90; label.height = label.node.offsetHeight || 30;
     }
   }
@@ -354,7 +355,11 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       if (node.hidden === visible) node.hidden = !visible;
       if (!visible) continue;
       const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 }, compact = hits(full);
-      taken.push(compact ? { l: at.x - 15, r: at.x + 15, t: at.y - 30, b: at.y } : full);
+      const used = compact ? { l: at.x - 17, r: at.x + 17, t: at.y - 32, b: at.y + 2 } : full;
+      // Level of detail: an icon that would still sit on a more important label or icon is left out until the view is closer.
+      if (compact && label.priority < 70 && hits(used)) { if (!node.hidden) node.hidden = true; continue; }
+      if (node.hidden) node.hidden = false;
+      taken.push(used);
       node.classList.toggle('is-compact', compact);
       node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
     }

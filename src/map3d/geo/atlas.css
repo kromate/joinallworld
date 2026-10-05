@@ -18,7 +18,7 @@
 .atlas-labels{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .atlas-label{position:absolute;left:0;top:0;display:grid;justify-items:center;white-space:nowrap;line-height:1.2;font-size:11px;color:#444c55;text-shadow:0 0 2px #fff,0 0 3px #fff,0 0 4px #ffffffb3;will-change:transform}
 .atlas-label b{font-weight:650}
-.atlas-label.at-centre{translate:-50% -50%}.atlas-label.at-above{translate:-50% calc(-100% - 9px)}.atlas-label.at-right{translate:8px -50%}
+.atlas-label.at-centre{translate:-50% -50%}.atlas-label.at-above{translate:-50% calc(-100% - 9px)}.atlas-label.at-right{translate:8px -50%}.atlas-label.at-left{translate:calc(-100% - 8px) -50%}.atlas-label.at-below{translate:-50% 9px}.atlas-label.at-far-above{translate:-50% calc(-100% - 55px)}.atlas-label.at-far-below{translate:-50% 55px}
 .atlas-label.is-continent{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#52626d}
 .atlas-label.is-continent b{font-weight:700}
 .atlas-label.is-neighbour{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8b949c;text-shadow:none}

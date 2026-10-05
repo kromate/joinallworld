@@ -138,8 +138,18 @@ const KINDS: Record<string, DrawKind> = {
     sign(b, 0, Y + 3.45, 2.4, 'SHRINE', { size: 0.36, color: '#ffe86b', lit: true, board: '#3a2f2a', pad: 0.14 });
     return 4.3;
   },
-  viewing(g) {
+  viewing(g, variant) {
     const { b } = g; plinth(b, '#d9d2bd');
+    if (variant === 'stadium') {                                           // an open bowl: pitch, a ring of stands, four floodlight masts
+      b.cyl(0, Y + 0.05, 0, 2.2, 0.1, '#4c9a52', { seg: 14 }); b.box(0, Y + 0.12, 0, 0.06, 0.02, 4.0, WHITE);
+      for (let i = 0; i < 16; i++) {
+        const a = (i / 16) * Math.PI * 2, x = Math.sin(a) * 2.9, z = Math.cos(a) * 3.0;
+        b.box(x, Y + 0.7, z, 1.15, 1.4 + (i % 2) * 0.12, 0.8, i % 4 < 2 ? '#3f72c4' : '#ece2c6', { ry: a });
+        b.box(Math.sin(a) * 3.35, Y + 1.4, Math.cos(a) * 3.45, 1.2, 0.12, 0.7, '#d9d2bd', { ry: a });
+      }
+      for (const [x, z] of [[-3.1, -3.1], [3.1, -3.1], [-3.1, 3.1], [3.1, 3.1]] as [number, number][]) { b.cyl(x, Y + 3.0, z, 0.08, 6, '#8a8f95', { seg: 5 }); b.box(x, Y + 6.1, z, 0.7, 0.35, 0.2, '#fff4d6', GLOW); }
+      return 6.6;
+    }
     b.box(0, Y + 0.04, 0.5, 4.4, 0.06, 3.0, '#4c9a52');                  // a strip of pitch
     b.box(0, Y + 0.08, 0.5, 0.06, 0.02, 3.0, WHITE); b.cyl(0, Y + 0.08, 0.5, 0.6, 0.02, WHITE, { seg: 10, open: true });
     for (let step = 0; step < 4; step++) for (const sx of [-1, 1]) b.box(sx * (2.5 + step * 0.22), Y + 0.25 + step * 0.42, 0.5, 0.5, 0.5 + step * 0.84, 4.6, step % 2 ? '#3f72c4' : '#ece2c6');
@@ -303,8 +313,16 @@ const KINDS: Record<string, DrawKind> = {
     b.box(2.1, Y + 0.3, 2.4, 0.5, 0.6, 1.2, '#f08a1d');
     return 5.6;
   },
-  office(g) {
+  office(g, variant) {
     const { b } = g; plinth(b);
+    if (variant === 'tower') {                                             // a slim cream tower with a banded crown over a low podium
+      b.box(0, Y + 0.7, 0.6, 5.2, 1.4, 3.6, '#d8cfb8');
+      b.box(0, Y + 7.6, -0.4, 2.8, 14.4, 2.6, '#e9dfc4');
+      for (const ry of [0, Math.PI / 2, Math.PI, -Math.PI / 2]) winGrid(g, 0, Y + 7.6, ry % Math.PI ? 1.71 : (ry ? 0.91 : 1.31), 3, 9, 0.5, 0.55, 0.8, 1.4, ry);
+      b.box(0, Y + 14.9, -0.4, 3.0, 0.9, 2.8, '#8f4a30'); b.box(0, Y + 15.5, -0.4, 2.2, 0.5, 2.0, '#d8cfb8');
+      b.cyl(0.4, Y + 17.1, -0.4, 0.05, 2.2, '#8a8f95', { seg: 4 }); b.ico(0.4, Y + 18.3, -0.4, 0.14, 0.14, 0.14, '#ff3b30', { layer: 'glow' });
+      return 18.8;
+    }
     b.box(0, Y + 0.9, 0, 5.4, 1.8, 4.6, '#c9d2d4');
     b.box(0, Y + 5.3, -0.3, 3.6, 7.0, 3.2, '#5b7f96');
     b.box(0, Y + 8.95, -0.3, 3.8, 0.3, 3.4, '#3d5a6c');
@@ -391,6 +409,43 @@ const KINDS: Record<string, DrawKind> = {
       b.box(0, 0.46, 0.1, 3.4, 0.08, 0.7, '#d9d4c4'); b.box(0, 0.6, -1.3, 1.3, 0.06, 0.4, '#d9d4c4'); b.box(0, 0.95, -1.35, 0.08, 0.8, 0.5, '#3f9a5a');
     });
     return 7.0;
+  },
+  /** A university court under its clock tower: a stone shaft with a face on each side, a low range of halls and lawns. */
+  quad(g) {
+    const { b } = g; plinth(b, '#8fba74', '#6f9c5a');
+    b.box(0, Y + 0.03, 1.4, 4.6, 0.05, 3.4, '#d8cdb0');
+    b.box(0, Y + 3.6, -0.6, 1.5, 7.2, 1.5, '#e8dfc6'); b.box(0, Y + 7.45, -0.6, 1.7, 0.3, 1.7, '#cfc4a8');
+    for (const ry of [0, Math.PI / 2, Math.PI, -Math.PI / 2]) {
+      const x = Math.sin(ry) * 0.78, z = -0.6 + Math.cos(ry) * 0.78;
+      b.cyl(x, Y + 6.3, z, 0.5, 0.05, WHITE, { seg: 10, rx: Math.PI / 2, rz: 0, ry }); b.box(x * 1.04, Y + 6.38, -0.6 + (z + 0.6) * 1.04, 0.05, 0.4, 0.05, '#2c3a4a', { ry });
+    }
+    b.cone(0, Y + 8.5, -0.6, 1.2, 1.9, TERRACOTTA, { seg: 4, ry: Math.PI / 4 });
+    for (const sx of [-1, 1]) { b.box(sx * 2.4, Y + 0.8, -0.2, 1.5, 1.6, 4.4, '#efe6d0'); b.box(sx * 2.4, Y + 1.75, -0.2, 1.8, 0.2, 4.7, TERRACOTTA); }
+    tree(b, -1.2, 2.4, 1.0); tree(b, 1.4, 2.5, 1.1, LEAF_DARK);
+    return 9.6;
+  },
+  /** A stone tower terrace on a hilltop: a round battlemented tower over the roofs. */
+  hilltop(g) {
+    const { b } = g; plinth(b, '#8fb06a', '#6f9558');
+    b.cyl(0, Y + 0.2, 0, 3.0, 0.4, '#cfc4a8', { seg: 12 }); b.cyl(0, Y + 0.55, 0, 2.2, 0.5, '#d9cfb4', { seg: 12 });
+    b.cyl(0, Y + 3.8, 0, 1.2, 6.2, '#cbbfa2', { seg: 12, top: 1.05 });
+    b.cyl(0, Y + 7.0, 0, 1.45, 0.4, '#b9ad90', { seg: 12 });
+    for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2; b.box(Math.sin(a) * 1.3, Y + 7.45, Math.cos(a) * 1.3, 0.4, 0.5, 0.4, '#cbbfa2', { ry: a }); }
+    for (let floor = 0; floor < 3; floor++) b.box(0, Y + 2.2 + floor * 1.5, 1.14, 0.3, 0.55, 0.06, '#2c3a4a');
+    flag(b, 0, 0, 3.4);
+    tree(b, -2.3, 1.9, 1.0, LEAF_DARK); tree(b, 2.4, 1.6, 0.9);
+    return 8.4;
+  },
+  /** A reservoir shore: a pool of water with a jetty, reeds and a bench. */
+  lakeside(g) {
+    const { b } = g; plinth(b, '#8fb87a', '#6f9c62');
+    b.cyl(0.6, Y + 0.03, -0.8, 2.7, 0.06, '#79bfd2', { seg: 14 });
+    b.box(0.6, Y + 0.12, 1.2, 0.8, 0.12, 3.0, WOOD);
+    for (const z of [0.2, 1.4, 2.4]) { b.box(0.2, Y + 0.05, z, 0.1, 0.5, 0.1, '#5f4630'); b.box(1.0, Y + 0.05, z, 0.1, 0.5, 0.1, '#5f4630'); }
+    for (const [x, z] of [[-1.8, 1.0], [-2.4, 0.2], [2.6, 0.9], [3.0, -0.4]] as [number, number][]) b.cyl(x, Y + 0.5, z, 0.05, 1.0, '#7da05a', { seg: 4 });
+    b.box(-2.2, Y + 0.3, 2.3, 1.0, 0.1, 0.34, WOOD);
+    tree(b, -2.5, -2.4, 1.2); tree(b, 2.5, -2.5, 1.0, LEAF_DARK);
+    return 3.6;
   },
   refinery(g) {
     const { b } = g; plinth(b, '#cfd0c8', '#aeb0a6');

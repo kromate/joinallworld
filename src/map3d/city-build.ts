@@ -31,7 +31,8 @@ import { pointInPolygon } from './roads.ts';
 import type { Network, Road } from './roads.ts';
 import { landOf, rasterLgas, scanRings } from './lga.ts';
 import { estateLayout } from './estates.ts';
-import type { Box4, CityPack, FabricStyle, LandKind, PackDistrict, Point2, Point3, XZ } from './types.ts';
+import { reliefAt, reliefNormal } from './relief.ts';
+import type { Box4, CityPack, FabricStyle, LandKind, PackDistrict, PackFabric, PackHill, Point2, Point3, XZ } from './types.ts';
 
 /** The Three.js namespace the map code is handed (it is loaded lazily, so it is never imported here as a value). */
 type Three = typeof import('three');
@@ -105,6 +106,8 @@ export interface Raw {
   shape(polygon: readonly Point2[], y: number, colour: string, holes?: readonly (readonly Point2[])[]): void;
   wall(polygon: readonly Point2[], y0: number, y1: number, colour: string): void;
   ribbon(points: readonly Point3[], width: number, lift: number, colour: string, side?: number): void;
+  /** A low round hill standing on the ground, in the ground's own colour at each point (`base`), lighter towards the crest and shaded by its slope. */
+  mound(hill: PackHill, hills: readonly PackHill[], base: (x: number, z: number) => string): void;
   strip(points: readonly Point3[], side: number, low: number, high: number | number[], colour: string, facing?: number): void;
   readonly triangles: number;
   build(material: Material): Mesh;
@@ -128,7 +131,7 @@ export const CONTEXT_COLOURS = { state: '#dde1d3', country: '#e4dfd0', road: '#c
 const LAND_COLOURS: Record<LandKind, string> = { mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae' };
 /** The half-widths of the shallows and of the beach along a true-scale shoreline, in map units (100 m each at the frame's scale). */
 const SHALLOWS = 0.55, BEACH = 0.22;
-const ASPHALT = '#5d626b', KERB = '#e4dfcf', DASH = '#f6f2e2', PATH = '#dcd2b6';
+const ASPHALT = '#5d626b', TRUNK = '#464a52', TRUNK_KERB = '#f0eadb', KERB = '#e4dfcf', DASH = '#f6f2e2', PATH = '#dcd2b6';
 
 export const CITY_LIGHT: Readonly<Record<TimeOfDay, TimePreset>> = Object.freeze({
   day: { sky: ['#cfeaf5', '#8fcbe6'], hemi: ['#f4fbff', '#9fb07f', 2.1], sun: ['#fff0d2', 2.5, [-70, 120, 90]], water: '#4faacb', windows: '#56748c', waves: 0.5, shadow: 0.2 },
@@ -190,6 +193,23 @@ export function createRaw(THREE: Three): Raw {
         v(p.x + px * (side - width / 2), p.y + lift, p.z + pz * (side - width / 2), 0, 1, 0, colour);
       }
       for (let i = 0; i < points.length - 1; i++) { const k = base + i * 2; tri(k, k + 1, k + 2); tri(k + 1, k + 3, k + 2); }
+    },
+    mound(hill, hills, ground) {
+      const sides = 20, rings = 6, base = pos.length / 3, lit = new THREE.Color('#f2efc0'), mixed = new THREE.Color();
+      // The sun is to the west and south: that flank is lighter, the far one darker.
+      const colourAt = (x: number, z: number, t: number, nx: number, nz: number) => { const shade = 1 + (-nx * 0.5 + nz * 0.35) * 2.4; mixed.set(ground(x, z)).lerp(lit, t * t * 0.3); return `#${mixed.multiplyScalar(Math.max(0.55, Math.min(1.3, shade))).getHexString()}`; };
+      const centre = reliefNormal(hills, hill.x, hill.z);
+      v(hill.x, reliefAt(hills, hill.x, hill.z) + 0.01, hill.z, centre[0], centre[1], centre[2], colourAt(hill.x, hill.z, 1, 0, 0));
+      for (let ring = 1; ring <= rings; ring++) for (let i = 0; i < sides; i++) {
+        const r = (hill.r * ring) / rings, angle = (i / sides) * Math.PI * 2, x = hill.x + Math.cos(angle) * r, z = hill.z + Math.sin(angle) * r;
+        const n = reliefNormal(hills, x, z);
+        v(x, ring === rings ? 0 : reliefAt(hills, x, z) + 0.01, z, n[0], n[1], n[2], colourAt(x, z, 1 - ring / rings, n[0], n[2]));
+      }
+      for (let i = 0; i < sides; i++) tri(base, base + 1 + i, base + 1 + ((i + 1) % sides));
+      for (let ring = 1; ring < rings; ring++) for (let i = 0; i < sides; i++) {
+        const p = base + 1 + (ring - 1) * sides, q = p + sides, j = (i + 1) % sides;
+        tri(p + i, q + i, q + j); tri(p + i, q + j, p + j);
+      }
     },
     /** A vertical strip along a polyline, `side` units to one side, between two lifts (`high` may be a list, one per point); it faces away from the line. */
     strip(points, side, low, high, colour, facing = Math.sign(side) || 1) {
@@ -407,24 +427,54 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     raw.shape(entry.polygon, sand ? -0.12 : 0, LAND_COLOURS[entry.kind] || LAND_COLOURS.mainland, holes);
   }
 
+  // ---- character: ground colour of old and planned areas, hills, inland water, railways ------
+  const AREA_COLOURS = { old: '#cdb48c', planned: '#a6cc7c' } as const;
+  const blob = (x: number, z: number, radius: number, seed: number): [number, number][] => Array.from({ length: 22 }, (_, i) => {
+    const angle = (i / 22) * Math.PI * 2, wobble = 0.86 + 0.28 * ((hash(`${pack.id}:blob:${seed}:${i}`) % 100) / 100);
+    return [x + Math.cos(angle) * radius * wobble, z + Math.sin(angle) * radius * wobble];
+  });
+  (pack.areas ?? []).forEach((area, i) => {
+    // A wide soft edge: a larger, fainter patch under the main one.
+    raw.shape(blob(area.x, area.z, area.r * 1.18, i), 0.016, area.tone === 'old' ? '#c4c19a' : '#b3d08a');
+    raw.shape(blob(area.x, area.z, area.r, i + 100), 0.019, AREA_COLOURS[area.tone]);
+  });
+  const hills = pack.relief ?? [];
+  const groundAt = (x: number, z: number) => { const area = (pack.areas ?? []).find((item) => Math.hypot(x - item.x, z - item.z) < item.r * 0.95); return area ? AREA_COLOURS[area.tone] : LAND_COLOURS.mainland; };
+  for (const hill of hills) raw.mound(hill, hills, groundAt);
+  const flat = (points: readonly Point2[], y = 0): Point3[] => points.map(([x, z]) => ({ x, y, z }));
+  for (const water of pack.waters ?? []) {
+    if (water.kind === 'lake') {
+      raw.shape(water.points, 0.022, '#79bfd2');
+      raw.ribbon(flat([...water.points, water.points[0]!]), 0.5, 0.02, '#a9dbe4');
+    } else raw.ribbon(flat(water.points), water.width ?? 0.5, 0.025, '#6fb6cd');
+  }
+  for (const rail of pack.rails ?? []) {
+    const line = flat(rail.points);
+    raw.ribbon(line, 0.9, 0.03, '#a7a395');
+    raw.ribbon(line, 0.64, 0.034, '#6f6b60');
+    for (const side of [-0.2, 0.2]) raw.ribbon(line, 0.08, 0.04, '#d8d4c6', side);
+  }
+
   // ---- roads and bridges --------------------------------------------------------------------
   const b = createBatch(THREE), w = createBatch(THREE);
   const g: Builder = { b, w, at: (x, y, z, ry, draw) => b.at(x, y, z, ry, () => w.at(x, y, z, ry, () => draw(g), 0, 0, LANDMARK_SCALE), 0, 0, LANDMARK_SCALE) };
   const hk = Math.sqrt(k), pk = Math.max(0.5, k);               // heights follow roads by the square root; paths never get thinner than half
   const segments: Segment[] = [];                              // every ground stretch of road, for keeping the fabric off it
   for (const road of network.roads) {
-    const wide = (road.major ? 2.5 : 1.8) * k;
-    raw.ribbon(road.points, wide + 0.7 * k, road.bridge ? 0.05 : 0.035, KERB);
-    raw.ribbon(road.points, wide, road.bridge ? 0.08 : 0.06, ASPHALT);
-    if (road.major) {
+    const wide = (road.trunk ? 3.6 : road.major ? 2.5 : 1.8) * k;
+    // On a hill the ribbon rides a little higher, so the mound's coarse surface never covers it.
+    const hl = !road.bridge && road.points.some((point) => point.y > 0.05) ? 0.08 : 0;
+    raw.ribbon(road.points, wide + 0.7 * k, road.bridge ? 0.05 : 0.035 + hl, road.trunk ? TRUNK_KERB : KERB);
+    raw.ribbon(road.points, wide, road.bridge ? 0.08 : 0.06 + hl, road.trunk ? TRUNK : ASPHALT);
+    if (road.major || road.trunk) {
       for (let i = 1; i < road.points.length - 1; i += 2) {
         const a = road.points[i]!, c = road.points[i + 1]!, mid = { x: (a.x + c.x) / 2, y: (a.y + c.y) / 2, z: (a.z + c.z) / 2 };
-        raw.ribbon([{ x: a.x + (mid.x - a.x) * 0.3, y: a.y, z: a.z + (mid.z - a.z) * 0.3 }, mid], 0.16 * k, road.bridge ? 0.1 : 0.08, DASH);
+        raw.ribbon([{ x: a.x + (mid.x - a.x) * 0.3, y: a.y, z: a.z + (mid.z - a.z) * 0.3 }, mid], 0.16 * k, road.bridge ? 0.1 : 0.08 + hl, DASH);
       }
     }
     // Every road end is rounded off, so two roads that meet at an angle join in a smooth corner and not a notch.
     for (const end of [road.points[0]!, road.points[road.points.length - 1]!]) {
-      raw.shape(circle(end.x, end.z, wide / 2 + 0.35 * k), 0.035, KERB); raw.shape(circle(end.x, end.z, wide / 2), 0.06, ASPHALT);
+      raw.shape(circle(end.x, end.z, wide / 2 + 0.35 * k), 0.035 + hl + end.y, road.trunk ? TRUNK_KERB : KERB); raw.shape(circle(end.x, end.z, wide / 2), 0.06 + hl + end.y, road.trunk ? TRUNK : ASPHALT);
     }
     if (road.bridge) {
       // The parapets grow out of the ground with the ramp, so the deck leaves the road without a step.
@@ -487,13 +537,22 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   }
 
   // ---- landmarks ----------------------------------------------------------------------------
+  const ground = (x: number, z: number) => reliefAt(hills, x, z);
+  // A railway keeps the fabric off it, and each station stands beside its line.
+  for (const rail of pack.rails ?? []) {
+    for (let i = 1; i < rail.points.length; i++) segments.push({ a: { x: rail.points[i - 1]![0], z: rail.points[i - 1]![1] }, b: { x: rail.points[i]![0], z: rail.points[i]![1] }, half: 0.7 });
+    for (const station of rail.stations) {
+      b.box(station.x + 1.1, 0.14, station.z, 0.7, 0.2, 5.2, '#d8d1bd'); b.box(station.x + 1.1, 0.95, station.z, 0.9, 0.12, 5.6, '#b5593c');
+      for (const dz of [-2.4, 2.4]) b.box(station.x + 1.1, 0.5, station.z + dz, 0.1, 0.9, 0.1, '#8d8a80');
+    }
+  }
   const places: Record<string, CityPlace> = {};
   const shadows: Shadow[] = [];                               // { x, z, w, d, ry } flat shadows, drawn as one instanced mesh
   const clear: Clear[] = [];                                 // { x, z, r } circles the fabric keeps out of
   const path = (place: { x: number; z: number; gate: Point3 | null }) => {
     if (!place.gate) return;
     const length = Math.hypot(place.gate.x - place.x, place.gate.z - place.z), k = Math.min(1, (LOT / 2 - 0.2) / (length || 1));
-    const start = { x: place.x + (place.gate.x - place.x) * k, y: 0, z: place.z + (place.gate.z - place.z) * k };
+    const start = { x: place.x + (place.gate.x - place.x) * k, y: ground(place.x, place.z), z: place.z + (place.gate.z - place.z) * k };
     raw.ribbon([start, place.gate], 1.3 * pk, 0.045, PATH);
     segments.push({ a: start, b: place.gate, half: 1.2 * pk });
   };
@@ -501,8 +560,9 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     const venue = venues[id], node = network.places[id];
     if (!venue || !node) continue;
     let top = 4;
-    g.at(node.x, 0, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
-    places[id] = { id, kind: 'venue', x: spot.x, z: spot.z, ry: node.ry, top, gate: node.gate };
+    const lift = ground(node.x, node.z);
+    g.at(node.x, lift, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
+    places[id] = { id, kind: 'venue', x: spot.x, z: spot.z, ry: node.ry, top: top + lift, gate: node.gate };
     shadows.push({ x: spot.x + 0.7, z: spot.z + 0.55, w: LOT + 1.3, d: LOT + 1.3, ry: node.ry });
     clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
     path(places[id]);
@@ -511,7 +571,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   for (const [house, spot] of Object.entries(pack.homes)) {
     const node = network.places[`home:${house}`]!;
     // An empty lot is a small garden: three trees, so it never reads as a hole in the city.
-    for (const [dx, dz, size] of [[-2.2, -1.8, 1.1], [2, -0.6, 0.9], [-0.6, 2, 1]] as [number, number, number][]) { b.cyl(spot.x + dx, 0.5 * size, spot.z + dz, 0.14 * size, size, '#6b4f36', { seg: 5 }); b.ico(spot.x + dx, 1.5 * size, spot.z + dz, 0.85 * size, 0.95 * size, 0.85 * size, '#3f8a57'); }
+    for (const [dx, dz, size] of [[-2.2, -1.8, 1.1], [2, -0.6, 0.9], [-0.6, 2, 1]] as [number, number, number][]) { b.cyl(spot.x + dx, ground(spot.x, spot.z) + 0.5 * size, spot.z + dz, 0.14 * size, size, '#6b4f36', { seg: 5 }); b.ico(spot.x + dx, ground(spot.x, spot.z) + 1.5 * size, spot.z + dz, 0.85 * size, 0.95 * size, 0.85 * size, '#3f8a57'); }
     clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
     path({ x: spot.x, z: spot.z, gate: node.gate });
   }
@@ -527,7 +587,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   const plates: (PackDistrict & { box: Box4 })[] = [];
   for (const plate of pack.districts || []) {
     const size = plate.size || 2, wide = textWidth(plate.name, size);
-    b.at(plate.x, plate.water ? WATER_Y + 0.07 : 0.1, plate.z, 0, () => {
+    b.at(plate.x, plate.water ? WATER_Y + 0.07 : 0.1 + ground(plate.x, plate.z), plate.z, 0, () => {
       if (!plate.water) b.box(0, 0, -0.04, wide + size * 0.9, size * 1.7, 0.08, '#8fb07a');
       sign(b, 0, 0, 0, plate.name, { size, color: plate.water ? '#d6f1f7' : '#f6faea' });
     }, -Math.PI / 2);
@@ -567,6 +627,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   };
   const WALLS = ['#f3ead6', '#ece0c4', '#f6f0e2', '#e9d9b8', '#efe3d0', '#dfe8ea'], ROOFS = ['#a85c40', '#96483a', '#8d9399', '#b67a45', '#6f8492', '#9b9b8f'];
   const BLOCKS = ['#e6dcc6', '#d9cdb4', '#cfd8dc', '#e8d6c0', '#d6dfd0', '#f0e4cc'], GLASSY = ['#9fb9c8', '#b7c9d2', '#8fa9bd', '#c9d6da', '#a9bfc0', '#d9d2c0'];
+  const inArea = (entry: PackFabric, x: number, z: number) => inBox(x, z, entry.box) && (!entry.circle || Math.hypot(x - entry.circle[0], z - entry.circle[1]) <= entry.circle[2]);
   const houses: HouseItem[] = [], towers: TowerItem[] = [], trees: TreeItem[] = [], palms: TreeItem[] = [];
   for (const area of pack.fabric || []) {
     const style = STYLES[area.style];
@@ -576,18 +637,18 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     for (let x = area.box[0]; x <= area.box[2]; x += gap) for (let z = area.box[1]; z <= area.box[3]; z += gap) {
       const px = x + (rng() - 0.5) * 0.7, pz = z + (rng() - 0.5) * 0.7, roll = rng(), turn = rng() < 0.5 ? 0 : Math.PI / 2, pick = Math.floor(rng() * 6), tall = rng();
       // The first area that contains a point owns it, so overlapping areas never double up.
-      if (pack.fabric.find((entry) => inBox(px, pz, entry.box)) !== area) continue;
+      if (pack.fabric.find((entry) => inArea(entry, px, pz)) !== area) continue;
       if (!onLand(px, pz, 2.2) || blocked(px, pz, 1.6)) continue;
       const toRoad = roadDistance(px, pz);
       if (toRoad < 1.5) continue;
       const patch = noise(px, pz);
       // Built-up patches along the roads, green between them.
-      const built = toRoad < 24 && patch < style.keep + (toRoad < 7 ? 0.3 : 0);
+      const built = toRoad < 24 && patch < style.keep + (area.keep ?? 0) + (toRoad < 7 ? 0.3 : 0);
       if (!built || roll < style.tree) {
         if (roll < (built ? 1 : 0.5)) (area.style === 'villas' && tall < 0.35 ? palms : trees).push({ x: px, z: pz, s: 0.8 + tall * 0.7, ry: tall * 6 });
         continue;
       }
-      if (area.style === 'dense') houses.push({ x: px, z: pz, ry: turn, sx: 1.9 + tall * 0.6, sy: 1.0 + tall * 0.5, sz: 2.2 + roll * 0.7, wall: WALLS[pick]!, roof: ROOFS[(pick + Math.floor(tall * 3)) % 6]! });
+      if (area.style === 'dense') houses.push({ x: px, z: pz, ry: turn, sx: 1.9 + tall * 0.6, sy: 1.0 + tall * 0.5, sz: 2.2 + roll * 0.7, wall: WALLS[pick]!, roof: (area.roofs ?? ROOFS)[(pick + Math.floor(tall * 3)) % (area.roofs ?? ROOFS).length]! });
       else if (area.style === 'villas') houses.push({ x: px, z: pz, ry: turn, sx: 2.7 + tall * 0.6, sy: 1.5 + tall * 0.5, sz: 3.0 + roll * 0.6, wall: '#f6f1e6', roof: ['#b5593c', '#a85c40', '#3f7f86', '#b5593c', '#96483a', '#55707c'][pick]! });
       else if (area.style === 'blocks') towers.push({ x: px, z: pz, ry: turn, sx: 2.5 + roll * 0.9, sy: 2.4 + tall * 2.4, sz: 2.5 + tall * 0.8, colour: BLOCKS[pick]! });
       else towers.push({ x: px, z: pz, ry: turn, sx: 2.7 + roll * 0.8, sy: 4.6 + tall * tall * 7.5, sz: 2.7 + tall * 0.6, colour: GLASSY[pick]! });
@@ -632,12 +693,12 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     mesh.visible = items.length > 0;
     return mesh;
   }
-  const upright = (item: Upright, object: Object3D, sx = item.sx!, sy = item.sy!, sz = item.sz!) => { object.position.set(item.x, item.y || 0, item.z); object.rotation.set(0, item.ry || 0, 0); object.scale.set(sx, sy, sz); };
+  const upright = (item: Upright, object: Object3D, sx = item.sx!, sy = item.sy!, sz = item.sz!) => { object.position.set(item.x, (item.y || 0) + ground(item.x, item.z), item.z); object.rotation.set(0, item.ry || 0, 0); object.scale.set(sx, sy, sz); };
   const fabricMeshes: InstancedMesh[] = [];
   const fabricLayer = (mesh: InstancedMesh) => { fabricMeshes.push(mesh); return mesh; };
   fabricLayer(instanced('house-walls', leanGeometry(THREE, 'box'), materials.instanced, fabric.houses, (item, o) => upright(item, o), (item) => item.wall));
   fabricLayer(instanced('house-roofs', leanGeometry(THREE, 'pyramid'), materials.instanced, fabric.houses,
-    (item, o) => { o.position.set(item.x, item.sy, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.sx, 0.9 + item.sy * 0.25, item.sz); }, (item) => item.roof));
+    (item, o) => { o.position.set(item.x, item.sy + ground(item.x, item.z), item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.sx, 0.9 + item.sy * 0.25, item.sz); }, (item) => item.roof));
   fabricLayer(instanced('house-windows', unit((u) => { u.quad(0.18, 0.55, 0.506, 0.26, 0.3, '#ffe6ae'); u.quad(0.506, 0.55, -0.1, 0.26, 0.3, '#fff4d6', { ry: Math.PI / 2 }); }, materials.windows),
     materials.windows, fabric.houses, (item, o) => upright(item, o)));
   fabricLayer(instanced('towers', unit((u) => { u.box(0, 0.5, 0, 1, 1, 1, '#ffffff'); u.box(0, 1.01, 0, 0.7, 0.03, 0.7, '#c9ced3'); }), materials.instanced, fabric.towers, (item, o) => upright(item, o), (item) => item.colour));
@@ -660,7 +721,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   for (const item of fabric.towers) shadows.push({ x: item.x + 0.3 + item.sy * 0.2, z: item.z + 0.2 + item.sy * 0.14, w: item.sx + 0.5 + item.sy * 0.12, d: item.sz + 0.5 + item.sy * 0.1, ry: item.ry });
   for (const item of fabric.trees) shadows.push({ x: item.x + 0.4 * item.s, z: item.z + 0.3 * item.s, w: 1.7 * item.s, d: 1.5 * item.s, ry: 0.5 });
   const shadowGeometry = new THREE.PlaneGeometry(1, 1); shadowGeometry.rotateX(-Math.PI / 2);
-  const shadowMesh = instanced('shadows', shadowGeometry, materials.shadow, shadows, (item, o) => { o.position.set(item.x, 0.02, item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.w, 1, item.d); });
+  const shadowMesh = instanced('shadows', shadowGeometry, materials.shadow, shadows, (item, o) => { o.position.set(item.x, 0.02 + ground(item.x, item.z), item.z); o.rotation.set(0, item.ry, 0); o.scale.set(item.w, 1, item.d); });
   shadowMesh.renderOrder = 1;
   fabricLayer(shadowMesh);
   let fabricOn = true;
@@ -748,8 +809,8 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     if (id === homeId) return false;
     homeId = id; home.visible = true;
     const node = network.places[`home:${id}`]!, spot = pack.homes[id]!;
-    home.position.set(spot.x, 0, spot.z); home.rotation.y = node.ry; home.scale.setScalar(LANDMARK_SCALE);
-    places.home = { id: 'home', kind: 'home', house: id, district: spot.district, x: spot.x, z: spot.z, ry: node.ry, top: homeTop, gate: node.gate };
+    home.position.set(spot.x, ground(spot.x, spot.z), spot.z); home.rotation.y = node.ry; home.scale.setScalar(LANDMARK_SCALE);
+    places.home = { id: 'home', kind: 'home', house: id, district: spot.district, x: spot.x, z: spot.z, ry: node.ry, top: homeTop + ground(spot.x, spot.z), gate: node.gate };
     return true;
   }
   setHome(null);

@@ -51,6 +51,12 @@ export function nearPoints(at: GroundPoint, narrow = true): GroundPoint[] {
   return [{ x: at.x - side, z: at.z }, { x: at.x + side, z: at.z }, { x: at.x, z: at.z - north }, { x: at.x, z: at.z + south }];
 }
 
+/**
+ * What the whole-extent view button names: what the pack says its extent is ('state' for a state with the land around it, 'city' for a
+ * metropolitan area), or, where it does not say, 'state' for a pack that draws its surroundings and 'city' for one that does not.
+ */
+export const extentWord = (pack: { extent?: 'state' | 'city'; context?: unknown } | null | undefined): 'state' | 'city' => pack?.extent ?? (pack?.context ? 'state' : 'city');
+
 /** Beyond this camera distance (map units) a view is of a whole state, not a city: only a name that matters is lettered, and local governments are named instead. */
 export const WHOLE_FROM = 560;
 /** A local-government plate's size is by its polygon only from this far out; nearer it is the usual small plate. */

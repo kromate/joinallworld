@@ -46,7 +46,7 @@ export interface PackBounds extends Rect {
  */
 export interface PackLand { id: string; kind: LandKind; points: readonly Point2[]; exact?: boolean; holes?: readonly (readonly Point2[])[] }
 /** A road (or bridge) centre line as control points. `bridge` is the deck height above the water. */
-export interface PackRoad { id: string; name: string; major?: boolean; bridge?: number; pylon?: boolean; points: readonly Point2[] }
+export interface PackRoad { id: string; name: string; major?: boolean; /** The strongest roads of the city (expressways, ring roads): drawn wider than the other main roads. */ trunk?: boolean; bridge?: number; pylon?: boolean; points: readonly Point2[] }
 /** Where a venue's landmark stands. */
 export interface PackSite extends XZ { }
 /** Where Home stands for one house. */
@@ -55,7 +55,24 @@ export interface PackHome extends XZ { district: string }
 export interface PackSoon extends XZ { zone: Box4; gate: Point2 }
 /** A district name plate laid on the ground. */
 export interface PackDistrict { name: string; x: number; z: number; size: number; water?: boolean }
-export interface PackFabric { box: Box4; style: FabricStyle }
+export interface PackFabric {
+  box: Box4
+  style: FabricStyle
+  /** Keep the area to this circle [x, z, radius] inside its box. */
+  circle?: readonly [number, number, number]
+  /** Roof colours of this area's houses, instead of the usual mix. */
+  roofs?: readonly string[]
+  /** Added to the share of the area that is built up (0 to 1). */
+  keep?: number
+}
+/** How an area of the city reads from above: old and dense (brown roofs) or planned and leafy. A soft patch of ground colour and, with `PackFabric`, the roofs. */
+export interface PackArea { name: string; x: number; z: number; r: number; tone: 'old' | 'planned' }
+/** A hill as a low shaded mound under the fabric: centre, radius and height in map units. */
+export interface PackHill { name: string; x: number; z: number; r: number; h: number }
+/** Inland water: a lake is a closed ring, a river a line (with its width in map units). */
+export interface PackWater { name: string; kind: 'lake' | 'river'; points: readonly Point2[]; width?: number }
+/** A railway line with its stations. */
+export interface PackRail { name: string; points: readonly Point2[]; stations: readonly { name: string; x: number; z: number }[] }
 /** Where one district's player homes are drawn. */
 export interface PackEstate extends XZ { cols: number; max?: number }
 export interface PackLga {
@@ -86,6 +103,15 @@ export interface CityPack {
   homes: Readonly<Record<string, PackHome>>
   soon: Readonly<Record<string, PackSoon>>
   districts: readonly PackDistrict[]
+  /** Character of parts of the city, drawn as ground colour (src/map3d/city-build.ts). */
+  areas?: readonly PackArea[]
+  relief?: readonly PackHill[]
+  waters?: readonly PackWater[]
+  rails?: readonly PackRail[]
+  /** What the whole-extent view button says: 'state' when the pack covers a state with its surroundings, 'city' for a metropolitan area. */
+  extent?: 'state' | 'city'
+  /** Venue ids lettered before the rest where the labels crowd (the city's landmarks). */
+  notable?: readonly string[]
   zones: readonly Box4[]
   fabric: readonly PackFabric[]
   estates: Readonly<Record<string, PackEstate>>

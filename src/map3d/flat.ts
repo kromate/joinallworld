@@ -18,6 +18,7 @@
  */
 import { landOf, partsOf } from './lga.ts';
 import type { Network } from './roads.ts';
+import { extentWord } from './labels.ts';
 import type { CityPack, LandKind, PackBounds, PackSoon, Point2, Point3, XZ } from './types.ts';
 
 export interface FlatLand { id: string; kind: LandKind; d: string }
@@ -44,9 +45,13 @@ export interface FlatModel {
   homes: Record<string, { x: number; z: number; district: string }>
   names: FlatName[]
   inland: boolean
+  /** What the whole-extent button names (see labels.ts extentWord). */
+  extent: 'state' | 'city'
   sea: PackBounds['sea'] | null
   /** Present for a state map: drawn under everything, muted. */
   context: FlatContext | null
+  /** The character of a city's ground (CityPack areas, waters, rails); empty for a city without any. */
+  character: { areas: { x: number; z: number; r: number; tone: string }[]; waters: { name: string; kind: string; d: string; width: number }[]; rails: { d: string }[] }
   /** The multiplier of every stroke of the ground (see groundScale) and of the roads (CityPack.roadScale). */
   scale: { ground: number; road: number }
 }
@@ -76,13 +81,19 @@ export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { ven
     box: { x: edge.minX, z: edge.minZ, width: edge.maxX - edge.minX, height: edge.maxZ - edge.minZ },
     context: ctx ? { land: ctx.land.map((piece) => ({ id: piece.id, kind: piece.kind, d: rings([piece.points, ...piece.holes]) })), roads: ctx.roads.filter((road) => road.points.length > 1).map((road) => ({ id: road.id, d: path(road.points) })), names: ctx.labels.map((label) => ({ text: label.text, kind: label.kind, x: label.x, z: label.z })) } : null,
     land: landOf(pack).map((entry) => ({ id: entry.id, kind: entry.kind, d: rings([entry.polygon, ...(entry.holes ?? [])]) })),
-    roads: network.roads.map((road) => ({ id: road.id, name: road.name, major: road.major, bridge: road.bridge > 0, d: path(road.points), width: (road.major ? 2.5 : 1.8) * (pack.roadScale ?? 1), from: road.points[0]!, to: road.points[road.points.length - 1]! })),
+    roads: network.roads.map((road) => ({ id: road.id, name: road.name, major: road.major, bridge: road.bridge > 0, d: path(road.points), width: (road.trunk ? 3.6 : road.major ? 2.5 : 1.8) * (pack.roadScale ?? 1), from: road.points[0]!, to: road.points[road.points.length - 1]! })),
     lgas: (pack.lgas || []).map((lga) => ({ id: lga.id, name: lga.name, tint: lga.tint, d: partsOf(lga).map(rings).join(''), plate: lga.plate })),
     zones: Object.entries<PackSoon>(pack.soon || {}).map(([id, spot]) => ({ id, x: spot.zone[0], z: spot.zone[1], width: spot.zone[2] - spot.zone[0], height: spot.zone[3] - spot.zone[1] })),
     places,
     homes: Object.fromEntries(Object.entries(pack.homes).map(([id, spot]) => [id, { x: spot.x, z: spot.z, district: spot.district }])),
     names: (pack.districts || []).map((plate) => ({ name: plate.name, x: plate.x, z: plate.z, size: plate.size || 2, water: Boolean(plate.water) })),
     inland: pack.inland === true,
+    extent: extentWord(pack),
+    character: {
+      areas: (pack.areas ?? []).map((area) => ({ x: area.x, z: area.z, r: area.r, tone: area.tone })),
+      waters: (pack.waters ?? []).map((water) => ({ name: water.name, kind: water.kind, d: water.kind === 'lake' ? rings([water.points]) : path(water.points), width: water.width ?? 0.5 })),
+      rails: (pack.rails ?? []).map((rail) => ({ d: path(rail.points) })),
+    },
     sea: pack.inland ? null : pack.bounds.sea || null,
     scale: { ground: groundScale(pack), road: pack.roadScale ?? 1 },
   };
@@ -101,6 +112,9 @@ export function flatSvg(model: FlatModel): string {
     <g fill="${model.inland ? c.mainland : c.shallows}" fill-rule="evenodd" stroke="${model.inland ? c.mainland : c.shallows}" stroke-width="${fixed(5.2 * g)}" stroke-linejoin="round">${ground.map((entry) => `<path d="${entry.d}"/>`).join('')}</g>
     <g stroke-width="${fixed(2.2 * g)}" stroke-linejoin="round" fill-rule="evenodd">${ground.map((entry) => `<path d="${entry.d}" data-land="${esc(entry.id)}" fill="${c[entry.kind] || c.mainland}" stroke="${entry.kind === 'sand' ? '#f8efd2' : c.rim}"/>`).join('')}</g>
     <g class="m3-flat-lgas" clip-path="url(#m3-flat-land-${esc(model.id)})" fill-rule="evenodd">${model.lgas.map((lga) => `<path d="${lga.d}" data-lga="${esc(lga.id)}" fill="${esc(lga.tint)}" fill-opacity=".34" stroke="#46544a" stroke-opacity=".6" stroke-width="${fixed(0.5 * Math.max(g, 0.5))}" stroke-linejoin="round"/>`).join('')}</g>
+    ${model.character.areas.length ? `<g class="m3-flat-areas" aria-hidden="true">${model.character.areas.map((area) => `<circle cx="${fixed(area.x)}" cy="${fixed(area.z)}" r="${fixed(area.r)}" fill="${area.tone === 'old' ? '#cdb48c' : '#a6cc7c'}" fill-opacity=".55"/>`).join('')}</g>` : ''}
+    ${model.character.waters.length ? `<g class="m3-flat-waters" aria-hidden="true" fill="#79bfd2" stroke="#6fb6cd" stroke-linecap="round" stroke-linejoin="round">${model.character.waters.map((water) => water.kind === 'lake' ? `<path d="${water.d}" data-water="${esc(water.name)}" stroke-width="${fixed(0.3 * k)}"/>` : `<path d="${water.d}" data-water="${esc(water.name)}" fill="none" stroke-width="${fixed(water.width * k)}"/>`).join('')}</g>` : ''}
+    ${model.character.rails.length ? `<g class="m3-flat-rails" aria-hidden="true" fill="none" stroke-linejoin="round">${model.character.rails.map((rail) => `<path d="${rail.d}" stroke="#a7a395" stroke-width="${fixed(0.9 * k)}"/><path d="${rail.d}" stroke="#6f6b60" stroke-width="${fixed(0.4 * k)}" stroke-dasharray="${fixed(1.2 * k)} ${fixed(0.8 * k)}"/>`).join('')}</g>` : ''}
     <g class="m3-flat-zones">${model.zones.map((zone) => `<rect data-zone="${esc(zone.id)}" x="${fixed(zone.x)}" y="${fixed(zone.z)}" width="${fixed(zone.width)}" height="${fixed(zone.height)}" fill="#c8bfa4" stroke="#f2c230" stroke-width=".8" stroke-dasharray="2.2 2.2"/>`).join('')}</g>
     <g class="m3-flat-roads">
     <g data-ink="parapet">${bridges.map((road) => stroke(road, c.parapet, 1.5 * k)).join('')}</g>

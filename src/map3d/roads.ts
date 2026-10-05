@@ -15,9 +15,10 @@
  */
 
 import type { CityPack, Point2, Point3, XZ } from './types.ts';
+import { reliefAt } from './relief.ts';
 
 /** A smoothed road: the control polyline curved through its points, with deck heights (`y`) on a bridge. */
-export interface Road { id: string; name: string; major: boolean; bridge: number; pylon: boolean; points: Point3[]; length: number }
+export interface Road { id: string; name: string; major: boolean; trunk?: boolean; bridge: number; pylon: boolean; points: Point3[]; length: number }
 /** Where a venue or a home stands on the network: `ry` faces the road; a trip runs door to door. `gate` is null for a place no road reaches. */
 export interface Place { x: number; z: number; ry: number; gate: Point3 | null; door: Point3 }
 /** A point of a route; `bridge` is the id of the bridge it lies on, if any. */
@@ -101,6 +102,8 @@ const BRIDGE_STEP = 1.25;
 export const bridgeRamp = (height: number, length: number) => Math.min(0.46, Math.max(0.24, Math.max(5, height * 4.2) / (length || 1)));
 
 export function buildNetwork(pack: CityPack, { door = 4.7 }: { door?: number } = {}): Network {
+  /** The ground's height from the pack's hills (0 for a pack without any). */
+  const ground = (x: number, z: number) => reliefAt(pack.relief, x, z);
   const nodes = new Map<string, GraphNode>();
   const node = (x: number, y: number, z: number): GraphNode => {
     const id = key(x, z);
@@ -120,12 +123,12 @@ export function buildNetwork(pack: CityPack, { door = 4.7 }: { door?: number } =
     const ramp = road.bridge ? bridgeRamp(road.bridge, total) : 0;
     const points = flat.map(([x, z], i) => {
       const t = total ? run[i]! / total : 0;
-      return { x, z, y: road.bridge ? road.bridge * smoothstep(0, ramp, t) * (1 - smoothstep(1 - ramp, 1, t)) : 0 };
+      return { x, z, y: road.bridge ? road.bridge * smoothstep(0, ramp, t) * (1 - smoothstep(1 - ramp, 1, t)) : ground(x, z) };
     });
     for (let i = 1; i < points.length; i++) {
       link(node(points[i - 1]!.x, points[i - 1]!.y, points[i - 1]!.z), node(points[i]!.x, points[i]!.y, points[i]!.z), { road: road.id, bridge: road.bridge ? road.id : null, cost: road.major ? 1 : 1.2 });
     }
-    return { id: road.id, name: road.name, major: Boolean(road.major), bridge: road.bridge || 0, pylon: Boolean(road.pylon), points, length: total };
+    return { id: road.id, name: road.name, major: Boolean(road.major), ...(road.trunk ? { trunk: true } : {}), bridge: road.bridge || 0, pylon: Boolean(road.pylon), points, length: total };
   });
 
   /** Join a place to the nearest ground road with a short path; returns its gate on that road. */
@@ -143,12 +146,12 @@ export function buildNetwork(pack: CityPack, { door = 4.7 }: { door?: number } =
     let gate: GraphNode;
     if (best.t < 0.02) gate = best.a; else if (best.t > 0.98) gate = best.b;
     else {
-      gate = node(best.x, 0, best.z);
+      gate = node(best.x, ground(best.x, best.z), best.z);
       best.a.links.delete(best.b.id); best.b.links.delete(best.a.id);
       link(best.a, gate, { road: best.data.road, bridge: null, cost: best.data.cost });
       link(gate, best.b, { road: best.data.road, bridge: null, cost: best.data.cost });
     }
-    const place: GraphNode = { id: `place:${id}`, x, y: 0, z, links: new Map() };
+    const place: GraphNode = { id: `place:${id}`, x, y: ground(x, z), z, links: new Map() };
     nodes.set(place.id, place);
     link(place, gate, { road: 'path', bridge: null, cost: 1 });
     return gate;
@@ -159,8 +162,8 @@ export function buildNetwork(pack: CityPack, { door = 4.7 }: { door?: number } =
     const gate = attach(id, spot.x, spot.z);
     const reach = gate ? Math.hypot(gate.x - spot.x, gate.z - spot.z) : 0, k = reach ? Math.min(door, reach * 0.78) / reach : 0;
     // The door: where a traveller stands, just off the plinth on the side facing the road.
-    places[id] = { x: spot.x, z: spot.z, ry: gate ? Math.atan2(gate.x - spot.x, gate.z - spot.z) : 0, gate: gate ? { x: gate.x, y: 0, z: gate.z } : null,
-      door: gate ? { x: spot.x + (gate.x - spot.x) * k, y: 0, z: spot.z + (gate.z - spot.z) * k } : { x: spot.x, y: 0, z: spot.z } };
+    places[id] = { x: spot.x, z: spot.z, ry: gate ? Math.atan2(gate.x - spot.x, gate.z - spot.z) : 0, gate: gate ? { x: gate.x, y: gate.y, z: gate.z } : null,
+      door: gate ? { x: spot.x + (gate.x - spot.x) * k, y: ground(spot.x + (gate.x - spot.x) * k, spot.z + (gate.z - spot.z) * k), z: spot.z + (gate.z - spot.z) * k } : { x: spot.x, y: ground(spot.x, spot.z), z: spot.z } };
   };
   for (const [id, spot] of Object.entries(pack.sites)) add(id, spot);
   for (const [id, spot] of Object.entries(pack.homes)) add(`home:${id}`, spot);
